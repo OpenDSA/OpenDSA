@@ -45,9 +45,10 @@ $(document).ready(function () {
   }
       
   function modelSolution(jsav) {
+    var i;
     jsav._undo = [];
     var modelStack = jsav.ds.stack({center: true});
-    for (var i = 0; i < insertSize; i++) {
+    for (i = 0; i < insertSize; i++) {
       modelStack.addLast(insertArray[i]);
     }
     modelStack.layout();
@@ -60,7 +61,7 @@ $(document).ready(function () {
 
     jsav.displayInit();
 
-    for (var i = 0; i < insertSize; i++) {
+    for (i = 0; i < insertSize; i++) {
       var val = insertArray[i];
       var node = modelTree.root();
       while (node.value() !== "") {

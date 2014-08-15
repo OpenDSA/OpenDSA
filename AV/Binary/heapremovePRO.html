@@ -1,31 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-  <title>BST Delete</title>
+  <title>Heap Delete Proficiency Exercise</title>
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
   <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
   <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
-  <style>
-    #container {
-      width: 830px;
-      height: 600px;
-    }
-    .jsavtreenode {
-      cursor: pointer;
-    }
-    .jsavtreenode.jsavnullnode, .jsavnode.jsavindex{
-      cursor: default;
-    }
-    .jsavtree {
-      top: 20px;
-    }
-    .jsavcontainer {
-      height: 580px;
-    }
-  </style>
+  <link rel="stylesheet" href="heapPRO.css" type="text/css" />
 </head>
-
 <body>
   <div id="container">
     <table class="proHeaderTable">
@@ -42,8 +23,10 @@
     </table>
     <form class="avcontainer">
       <p class="instructLabel"></p>
-      <p class="instructions"></p>
+      <p class="instructions">
+      </p>
       <p align="center">
+        <input id="decrement" type="button" name="decrement" />
         <span class="jsavscore"></span>
       </p>
 
@@ -51,16 +34,14 @@
       </div>
     </form>
   </div>
-
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
   <script src="../../JSAV/lib/jquery.transit.js"></script>
   <script src="../../JSAV/lib/raphael.js"></script>
   <script src="../../JSAV/build/JSAV-min.js"></script>
-  <script src="../../lib/odsaUtils.js"></script>
-  <script src="../../lib/odsaAV.js"></script>
-  <script src="../../JSAV/extras/stack.js"></script>
-  <script src="BSTCODE.js"></script>
-  <script src="BSTremovePRO.js"></script>
+  <script src="../../JSAV/extras/binaryheap.js"></script>
+  <script src="../../lib/odsaUtils-min.js"></script>
+  <script src="../../lib/odsaAV-min.js"></script>
+  <script src="heapremovePRO.js"></script>
 </body>
 </html>

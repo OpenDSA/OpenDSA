@@ -1,4 +1,5 @@
 /*global alert: true, console: true, ODSA */
+"use strict";
 $(document).ready(function () {
   // Process help button: Give a full help page for this activity
   function help() {
@@ -10,13 +11,13 @@ $(document).ready(function () {
     alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
   }
 
-  var comp = function(a, b) {
+  function comp(a, b) {
     return a - b;
-  };
+  }
 
-  JSAV._types.ds.BinaryTree.prototype.insert = function(value) {
+  JSAV._types.ds.BinaryTree.prototype.insert = function (value) {
     // helper function to recursively insert
-    var ins = function(node, insval) {
+    var ins = function (node, insval) {
       var val = node.value();
       if (!val || val === "jsavnull") { // no value in node
         node.value(insval);
@@ -44,10 +45,10 @@ $(document).ready(function () {
     return this;
   };
   
-  JSAV._types.ds.BinaryTree.prototype.postOrderTraversal = function() {
+  JSAV._types.ds.BinaryTree.prototype.postOrderTraversal = function () {
     var i = 0,
         av = this.jsav;
-    var postorderNode = function(node) {
+    var postorderNode = function (node) {
       if (node.left()) {
         postorderNode(node.left());
       }
@@ -63,10 +64,10 @@ $(document).ready(function () {
     postorderNode(this.root());
   };
   
-  JSAV._types.ds.BinaryTree.prototype.preOrderTraversal = function() {
+  JSAV._types.ds.BinaryTree.prototype.preOrderTraversal = function () {
     var i = 0,
         av = this.jsav;
-    var preorderNode = function(node) {
+    var preorderNode = function (node) {
       node.highlight();
       av.label(i + 1, {relativeTo: node, visible: true, anchor: "right top"});
       i++;
@@ -82,10 +83,10 @@ $(document).ready(function () {
     preorderNode(this.root());
   };
   
-  JSAV._types.ds.BinaryTree.prototype.inOrderTraversal = function() {
+  JSAV._types.ds.BinaryTree.prototype.inOrderTraversal = function () {
     var i = 0,
         av = this.jsav;
-    var inorderNode = function(node) {
+    var inorderNode = function (node) {
       if (node.left()) {
         inorderNode(node.left());
       }
@@ -101,7 +102,7 @@ $(document).ready(function () {
     inorderNode(this.root());
   };
   
-  JSAV._types.ds.BinaryTree.prototype.levelOrderTraversal = function() {
+  JSAV._types.ds.BinaryTree.prototype.levelOrderTraversal = function () {
     var i = 0,
         av = this.jsav,
         queue = [this.root()],
@@ -122,7 +123,7 @@ $(document).ready(function () {
     }
   };
   
-  JSAV._types.ds.BinaryTree.prototype.state = function(newState) {
+  JSAV._types.ds.BinaryTree.prototype.state = function (newState) {
     var state,
         i,
         queue = [this.root()],
@@ -155,7 +156,7 @@ $(document).ready(function () {
     }
   };
 
-  var modelWrapper = function(tt) {
+  function modelWrapper(tt) {
     return function model(modelav) {
       var modelBst = modelav.ds.binarytree({center: true, nodegap: 15});
       for (var i = 0, l = tt.initData.length; i < l; i++) {
@@ -166,16 +167,16 @@ $(document).ready(function () {
       tt.modelFunction.call(modelBst);
       return modelBst;
     };
-  };
+  }
   var bt;
-  var initWrapper = function (tt) {
-    return function() {
+  function initWrapper(tt) {
+    return function () {
       var nodeNum = 9;
       if (bt) {
         bt.clear();
       }
-      var dataTest = (function() {
-        return function(dataArr) {
+      var dataTest = (function () {
+        return function (dataArr) {
           var bst = tt.jsav.ds.binarytree();
           bst.insert(dataArr);
           var result = bst.height() <= 4;
@@ -184,7 +185,7 @@ $(document).ready(function () {
         };
       })();
       tt.jsav.canvas.find(".jsavlabel").remove();
-      initData = JSAV.utils.rand.numKeys(10, 100, nodeNum, {test: dataTest, tries: 30});
+      var initData = JSAV.utils.rand.numKeys(10, 100, nodeNum, {test: dataTest, tries: 30});
       bt = tt.jsav.ds.binarytree({center: true, visible: true, nodegap: 15});
       bt.insert(initData);
       bt.layout();
@@ -194,9 +195,9 @@ $(document).ready(function () {
       tt.jsav.displayInit();
       return bt;
     };
-  };
+  }
 
-  var fixFunction = function(modelTree) {
+  function fixFunction(modelTree) {
     // get the highlight states in model tree (see state() above)
     var modelState = modelTree.state(),
         queue = [bt.root()],
@@ -221,9 +222,9 @@ $(document).ready(function () {
       if (curr.left()) { queue.push(curr.left()); }
       if (curr.right()) { queue.push(curr.right()); }
     }
-  };
+  }
 
-  var TreeTraversal = function (modelFunction) {
+  function TreeTraversal(modelFunction) {
     // Load the interpreter created by odsaAV.js
     interpret = ODSA.UTILS.loadConfig(
                            {"json_path": "btTravPRO.json"}).interpreter;
@@ -232,13 +233,13 @@ $(document).ready(function () {
     this.jsav = new JSAV($(".avcontainer"), {settings: settings});
     this.jsav.recorded();
     this.exercise = this.jsav.exercise(modelWrapper(this), initWrapper(this),
-       { compare: { "css": "background-color" },
-	 controls: $(".jsavexercisecontrols"), fix: fixFunction});
+       {compare: {"css": "background-color"},
+        controls: $(".jsavexercisecontrols"), fix: fixFunction});
     this.exercise.reset();
-  };
+  }
   
-  TreeTraversal.prototype.nodeClick = function(exercise) {
-    return function() {
+  TreeTraversal.prototype.nodeClick = function (exercise) {
+    return function () {
       if (this.element.hasClass("jsavnullnode") || this.isHighlight()) { return; }
       this.highlight();
       var pos = exercise.jsav.canvas.find(".jsavlabel:visible").size();

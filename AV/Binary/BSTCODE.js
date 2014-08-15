@@ -1,11 +1,13 @@
-(function($) {
+"use strict";
+/*global ODSA */
+$(document).ready(function () {
   // TODO: This block can be removed if / when a fixstate function is created
   window.JSAV_EXERCISE_OPTIONS.fixmode = "undo";
   ODSA.UTILS.parseURLParams();
 
   JSAV._types.ds.BinaryTree.prototype.insert = function (value) {
     // helper function to recursively insert
-    var ins = function(node, insval) {
+    var ins = function (node, insval) {
       var val = node.value();
       if (!val || val === "jsavnull") { // no value in node
         node.value(insval);
@@ -50,4 +52,4 @@
   bst.turnAnimationOff = turnAnimationOff;
   bst.restoreAnimationState = restoreAnimationState;
   window.BST = bst;
-}(jQuery));
+});

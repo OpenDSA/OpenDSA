@@ -14,3 +14,7 @@
 .jsavcontainer {
   overflow: visible;
 }
+
+.jsavhighlight {
+  font-size: 110%;
+}

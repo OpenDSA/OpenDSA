@@ -8,6 +8,7 @@ $(document).ready(function () {
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
   var pseudo = av.code(code);
+  var temp1;
 
   var bt = av.ds.binarytree({visible: true, nodegap: 15});
   bt.root(37);
@@ -76,7 +77,7 @@ $(document).ready(function () {
 
   // Slide 9
   av.umsg("Unwind the recursion, and set the left pointer of the node with value of 37");
-  var temp1 = rt.edgeToLeft();
+  temp1 = rt.edgeToLeft();
   temp1.addClass("rededge");
   rt1.target(rt);
   pseudo.setCurrentLine("visitleft");
@@ -142,7 +143,7 @@ $(document).ready(function () {
 
   // Slide 18
   av.umsg("Unwind the recursion, and set the left pointer of the node with value of 37");
-  var temp1 = rt.edgeToLeft();
+  temp1 = rt.edgeToLeft();
   temp1.addClass("rededge");
   rt1.target(rt);
   pseudo.setCurrentLine("visitleft");

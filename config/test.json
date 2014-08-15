@@ -208,8 +208,8 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "binheapInsertPRO": {
-            "long_name": "Heap Insert Exercise",
+          "heapinsertPRO": {
+            "long_name": "Heap Insert Proficiency Exercise",
             "required": true,
             "points": 2.0,
             "threshold": 0.90
@@ -220,8 +220,8 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "binheapBuildPRO": {
-            "long_name": "Heap Build Exercise",
+          "heapbuildPRO": {
+            "long_name": "Heap Build Proficiency Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 0.90
@@ -245,8 +245,8 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "binheapDeletePRO": {
-            "long_name": "Heap Delete Min Exercise",
+          "heapremovePRO": {
+            "long_name": "Heap Remove Exercise",
             "required": true,
             "points": 2.0,
             "threshold": 0.90
@@ -265,15 +265,7 @@
           }
         }
       },
-      "Development/Spatial": {
-        "long_name": "Spatial Data Structures",
-        "exercises": {}
-      },
-      "Development/Bintree": {
-        "long_name": "Bintrees",
-        "exercises": {}
-      },
-      "Development/Huffman": {
+      "Binary/Huffman": {
         "long_name": "Huffman Coding Trees",
         "exercises": {
           "huffmanCON1": {
@@ -287,6 +279,47 @@
             "required": true,
             "points": 0.0,
             "showhide": "show",
+            "threshold": 1.0
+          },
+          "huffmanCON2": {
+            "long_name": "Huffman Coding Tree Slideshow 2",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "huffmanCON3": {
+            "long_name": "Huffman Coding Tree Slideshow 3",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "huffmanCON4": {
+            "long_name": "Huffman Coding Tree Slideshow 4",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "huffmanCON5": {
+            "long_name": "Huffman Coding Tree Slideshow 5",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      },
+       "Binary/TreeTrie": {
+        "long_name": "Trees versus Tries",
+        "exercises": {
+          "TreeTimeline": {
+            "long_name": "Tree timeline Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "TrieTimeline": {
+            "long_name": "Trie timeline Slideshow",
+            "required": true,
+            "points": 0.0,
             "threshold": 1.0
           }
         }

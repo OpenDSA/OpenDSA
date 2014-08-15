@@ -31,10 +31,10 @@ $(document).ready(function () {
     //generate random tree
     jsavTree = av.ds.binarytree({center: true, visible: true, nodegap: 15});
     do {
-      initialArray = []
+      initialArray = [];
       perfectBinTree(initialArray, 1, 10, 100, 3, 1);
       initialArray = initialArray.concat(JSAV.utils.rand.numKeys(10, 100, treeSize - 7));
-    } while (!dataTest(initialArray))
+    } while (!dataTest(initialArray));
     jsavTree.insert(initialArray);
     jsavTree.click(clickHandler);
     jsavTree.layout();
@@ -93,9 +93,9 @@ $(document).ready(function () {
       var n = node;
       var css;
       if (undo) {
-        css = {"stroke-width":"1", "stroke":"black"};
+        css = {"stroke-width": "1", "stroke": "black"};
       } else {
-        css = {"stroke-width":"4", "stroke":"blue"};
+        css = {"stroke-width": "4", "stroke": "blue"};
       }
       while (n !== root) {
         n.edgeToParent().css(css);
@@ -105,7 +105,7 @@ $(document).ready(function () {
 
     var modelStack = av.ds.stack({center: true});
     for (var i = 0; i < deleteSize; i++) {
-        modelStack.addLast(deleteValues[i]);
+      modelStack.addLast(deleteValues[i]);
     }
     modelStack.layout();
 
@@ -236,7 +236,7 @@ $(document).ready(function () {
   // helper function for creating a perfect binary tree
   function perfectBinTree(arr, level, min, max, levelsInTotal, arrayIndex) {
     var diff = max - min;
-    var value = JSAV.utils.rand.numKey(min + Math.floor(diff / 3), max - Math.floor(diff / 3))
+    var value = JSAV.utils.rand.numKey(min + Math.floor(diff / 3), max - Math.floor(diff / 3));
     arr[arrayIndex - 1] = value;
     if (level < levelsInTotal) {
       perfectBinTree(arr, level + 1, min, value - 1, levelsInTotal, 2 * arrayIndex);
@@ -265,7 +265,7 @@ $(document).ready(function () {
   av.recorded(); // we are not recording an AV with an algorithm
 
   var exercise = av.exercise(modelSolution, initialize,
-			     { controls: $(".jsavexercisecontrols"),
-			       modelDialog: {width: 700} });
+                             {controls: $(".jsavexercisecontrols"),
+                              modelDialog: {width: 700}});
   exercise.reset();
 });

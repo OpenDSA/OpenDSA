@@ -123,6 +123,6 @@ $(document).ready(function () {
   av.step();
 
   // Slide 13
-    av.umsg("We have n=31 nodes, and so the total amount of work required is $\\theta(n)$.");
-    av.recorded();
+  av.umsg("We have n=31 nodes, and so the total amount of work required is $\\theta(n)$.");
+  av.recorded();
 });

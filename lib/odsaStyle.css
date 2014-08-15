@@ -147,7 +147,8 @@
   background-color: inherit;
 }
 
-.jsavstacknode {
+.jsavstack .jsavstacknode {
+  font-size: 120%;
   position: absolute;
   border-radius: 5px;
   width: 30px;

@@ -2,7 +2,7 @@
  * Shows how to decode the string '11101' to reach the character "K".
  */
 (function ($) {
-  var av = new JSAV("HuffmanCon2");
+  var av = new JSAV("huffmanCON2");
   av.umsg("Here is a Huffman tree for C, D, E, K, L, M, N.");
 
   var t = construct_tree(av);
@@ -62,7 +62,7 @@
  * A static image of the huffman tree. This is used for a "dgm" not an "ss"
  */
 (function ($) {
-  var av = new JSAV("HuffmanCon5");
+  var av = new JSAV("huffmanCON5");
   var t = construct_tree(av);
   var r = t.root("");
 
@@ -75,7 +75,7 @@
  * in the given huffman tree.
  */
 (function ($) {
-  var av = new JSAV("HuffmanCon4");
+  var av = new JSAV("huffmanCON4");
   var t = construct_tree(av);
   var r = t.root("");
 
@@ -121,7 +121,7 @@
  * using that tree.
  */
 (function ($) {
-  var av = new JSAV("HuffmanCon3");
+  var av = new JSAV("huffmanCON3");
   
   var t = construct_tree(av);
   var r = t.root("");

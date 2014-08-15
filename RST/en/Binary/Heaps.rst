@@ -158,7 +158,7 @@ the two elements swap positions.
 From here, the process of comparing :math:`V` to its (current)
 parent continues until :math:`V` reaches its correct position.
 
-.. avembed:: AV/Development/binheapInsertPRO.html pe
+.. avembed:: AV/Binary/heapinsertPRO.html pe
 
 Since the heap is a complete binary tree, its height is guaranteed to
 be the minimum possible.
@@ -260,7 +260,7 @@ Here is a visualization of the heap build process.
 
 Method ``buildHeap`` implements the building algorithm.
 
-.. avembed:: AV/Development/binheapBuildPRO.html pe
+.. avembed:: AV/Binary/heapbuildPRO.html pe
 
 What is the cost of ``buildHeap``?
 Clearly it is the sum of the costs for the calls to ``siftdown``.
@@ -300,7 +300,7 @@ Because the heap is :math:`\log n` levels deep, the cost of deleting
 the maximum element is :math:`\Theta(\log n)` in the average and worst
 cases.
 
-.. avembed:: AV/Development/binheapDeletePRO.html pe
+.. avembed:: AV/Binary/heapremovePRO.html pe
 
 .. inlineav:: heapremoveCON ss
    :output: show
