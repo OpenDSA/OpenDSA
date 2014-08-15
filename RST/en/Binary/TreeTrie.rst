@@ -5,7 +5,7 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :requires: BST, Huffman coding tree
+   :requires: BST; Huffman coding tree
    :satisfies: 
    :topic: Trie
 

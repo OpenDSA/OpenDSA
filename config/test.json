@@ -5,7 +5,7 @@
   "code_lang": {
     "Processing": ["pde"],
     "Java": ["java"],
-    "C++": ["cpp"]
+    "C++": ["cpp", "h"]
   },
   "lang": "en",
   "module_origin": "http://algoviz.org",
@@ -299,15 +299,10 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "huffmanCON5": {
-            "long_name": "Huffman Coding Tree Slideshow 5",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          }
+          "huffmanCON5": {}
         }
       },
-       "Binary/TreeTrie": {
+      "Binary/TreeTrie": {
         "long_name": "Trees versus Tries",
         "exercises": {
           "TreeTimeline": {

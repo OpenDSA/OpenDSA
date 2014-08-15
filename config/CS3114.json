@@ -4,7 +4,7 @@
   "code_dir": "SourceCode/",
   "code_lang": {
     "Processing": ["pde"],
-    "C++": ["cpp"]
+    "C++": ["cpp", "h"]
   },
   "lang": "en",
   "module_origin": "http://algoviz.org",
@@ -12,6 +12,9 @@
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": true,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
   "chapters": {
     "Preface": {
       "Intro": {
@@ -798,34 +801,67 @@
         "long_name": "Dictionary Implementation with BST",
         "exercises": {}
       },
-      "Development/CompleteTree": {
+      "Binary/CompleteTree": {
         "long_name": "Array Implementation for Complete Trees",
         "exercises": {}
       },
-      "Development/Heaps": {
+      "Binary/Heaps": {
         "long_name": "Heaps and Priority Queues",
         "exercises": {
-          "heapinsertCON": {},
-          "binheapInsertPRO": {
-            "long_name": "Heap Insert Exercise",
+          "heapinsertCON": {
+            "long_name": "Heap insert Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "heapinsertPRO": {
+            "long_name": "Heap Insert Proficiency Exercise",
             "required": true,
             "points": 2.0,
             "threshold": 0.90
           },
-          "heapbuildCON": {},
-          "binheapBuildPRO": {
-            "long_name": "Heap Build Exercise",
+          "heapbuildCON": {
+            "long_name": "Heapbuild Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "heapbuildPRO": {
+            "long_name": "Heap Build Proficiency Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 0.90
           },
-          "heapmaxCON": {},
-          "heapdeleteCON": {},
-          "binheapDeletePRO": {
-            "long_name": "Heap Delete Exercise",
+          "heapbuildProofCON": {
+            "long_name": "Heap build analysis proof Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "BuildHeapVisualProof": {
+            "long_name": "Buildheap Visual Proof",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "heapmaxCON": {
+            "long_name": "Remove Max Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "heapremovePRO": {
+            "long_name": "Heap Remove Exercise",
             "required": true,
             "points": 2.0,
             "threshold": 0.90
+          },
+          "heapremoveCON": {
+            "long_name": "Remove Any Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
           },
           "HeapSumm": {
             "long_name": "BST/Heap Summary",
@@ -835,11 +871,7 @@
           }
         }
       },
-      "Development/Bintree": {
-        "long_name": "Bintrees",
-        "exercises": {}
-      },
-      "Development/Huffman": {
+      "Binary/Huffman": {
         "long_name": "Huffman Coding Trees",
         "exercises": {
           "huffmanCON1": {
@@ -853,6 +885,42 @@
             "required": true,
             "points": 0.0,
             "showhide": "show",
+            "threshold": 1.0
+          },
+          "huffmanCON2": {
+            "long_name": "Huffman Coding Tree Slideshow 2",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "huffmanCON3": {
+            "long_name": "Huffman Coding Tree Slideshow 3",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "huffmanCON4": {
+            "long_name": "Huffman Coding Tree Slideshow 4",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "huffmanCON5": {}
+        }
+      },
+      "Binary/TreeTrie": {
+        "long_name": "Trees versus Tries",
+        "exercises": {
+          "TreeTimeline": {
+            "long_name": "Tree timeline Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "TrieTimeline": {
+            "long_name": "Trie timeline Slideshow",
+            "required": true,
+            "points": 0.0,
             "threshold": 1.0
           }
         }
