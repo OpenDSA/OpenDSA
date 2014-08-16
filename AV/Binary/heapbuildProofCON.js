@@ -19,13 +19,13 @@ $(document).ready(function () {
   }
   // This really should be a binary tree (we never use the array view),
   // but making it a heap object is easier to set up.
-  var bh = av.ds.binheap(arr, {left: 152, top: bhvoffset, nodegap: 15});
+  var bh = av.ds.binheap(arr, {left: 190, top: bhvoffset, nodegap: 15});
   bh.element.hide(); // Because we don't want to see the array
-  av.label("depth 4", {top: bhvoffset + 126, left: 85});
-  av.label("depth 3", {top: bhvoffset + 94, left: 85});
-  av.label("depth 2", {top: bhvoffset + 62, left: 85});
-  av.label("depth 1", {top: bhvoffset + 30, left: 85});
-  av.label("depth 0", {top: bhvoffset - 2, left: 85});
+  av.label("depth 4 -------", {top: bhvoffset + 126, left: 85});
+  av.label("depth 3 ----------", {top: bhvoffset + 94, left: 85});
+  av.label("depth 2 -----------------", {top: bhvoffset + 62, left: 85});
+  av.label("depth 1 ------------------------------", {top: bhvoffset + 30, left: 85});
+  av.label("depth 0 --------------------------------------------------------", {top: bhvoffset - 2, left: 85});
   slider1 = av.g.rect(150, bhvoffset + 140, 515, 20).css({"fill": "green"});
   slider1.hide();
 
@@ -71,7 +71,7 @@ $(document).ready(function () {
   av.g.rect(360, voffset + 10, 25, 20);
   av.g.rect(360, voffset - 10, 25, 20);
   av.label("$1$", {top: voffset + 60, left: 370});
-  av.label("}", {top: voffset - 97, left: 390}).css({"font-size": 70, "text-align": "center"});
+  av.label(" depth = 4 ", {top: voffset + 8, left: 365}).css({"font-size": 12, "text-align": "center"}).addClass("rotated");
   av.step();
 
   // Slide 7
