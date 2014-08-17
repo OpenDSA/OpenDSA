@@ -26,7 +26,7 @@ $(document).ready(function () {
   av.label("depth 2 -----------------", {top: bhvoffset + 62, left: 85});
   av.label("depth 1 ------------------------------", {top: bhvoffset + 30, left: 85});
   av.label("depth 0 --------------------------------------------------------", {top: bhvoffset - 2, left: 85});
-  slider1 = av.g.rect(150, bhvoffset + 140, 515, 20).css({"fill": "green"});
+  slider1 = av.g.rect(190, bhvoffset + 140, 515, 20).css({"fill": "green"});
   slider1.hide();
 
   // Slide 1
@@ -77,7 +77,7 @@ $(document).ready(function () {
   // Slide 7
   av.umsg('Rearrange the rectangles...');
   slider1.hide();
-  slider2 = av.g.rect(0, voffset + 49, 400, 20).css({"fill": "green"});
+  slider2 = av.g.rect(10, voffset + 49, 375, 20).css({"fill": "green"});
   slider2.css({"opacity": 0.3});
   av.g.rect(430, voffset + 50, 200, 20);
   av.g.rect(630, voffset + 50, 100, 20);
