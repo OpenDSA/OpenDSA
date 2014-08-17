@@ -1,7 +1,7 @@
 /*global ODSA */
 "use strict";
 $(document).ready(function () {
-  var av_name = "huffmanBuildCON";
+  var av_name = "huffmanLabelCON";
   var config = ODSA.UTILS.loadConfig(
                 {"av_name": av_name, "json_path": "AV/binary/huffman.json"}),
       interpret = config.interpreter;       // get the interpreter
@@ -22,12 +22,19 @@ $(document).ready(function () {
     root.freq = freqs[i];
   }
 
-  // Initialize the display
-  av.umsg(interpret("av_c1"));
+  // Setup: Construct the huffman coding tree WITHOUT animation.
+  HUFF.huffBuild(av, freqs, trees);
+
+  trees[0].show();
   HUFF.layAll(trees);
+
+  av.umsg(interpret("av_c6"));
   av.displayInit();
 
-  // Construct the huffman coding tree with animation.
-  HUFF.huffBuild_animated(av, interpret, freqs, trees);
+  av.umsg(interpret("av_c7"));
+  av.step();
+
+  // Now assign the edge labels with animation
+  HUFF.setLabels_animated(av, interpret, trees[0], trees[0].root());
   av.recorded(); // done recording changes, will rewind
 });

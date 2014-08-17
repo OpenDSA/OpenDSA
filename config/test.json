@@ -268,38 +268,30 @@
       "Binary/Huffman": {
         "long_name": "Huffman Coding Trees",
         "exercises": {
-          "huffmanbuildCON": {
-            "long_name": "Huffman Coding Tree Build Slideshow",
+          "huffmanBuildCON": {
+            "long_name": "Huffman Coding Tree Slideshow: Build",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "HuffmanCoding": {
-            "long_name": "Huffman Coding Tree Visualization",
-            "required": true,
-            "points": 0.0,
-            "showhide": "show",
-            "threshold": 1.0
-          },
-          "huffmanCON2": {
-            "long_name": "Huffman Coding Tree Slideshow 2",
+          "huffmanLabelCON": {
+            "long_name": "Huffman Coding Tree Slideshow: Label Edges",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "huffmanCON3": {
-            "long_name": "Huffman Coding Tree Slideshow 3",
+          "huffmanCodesCON": {
+            "long_name": "Huffman Coding Tree Slideshow: Setting Codes",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "huffmanCON4": {
-            "long_name": "Huffman Coding Tree Slideshow 4",
+          "huffmanDecodeCON": {
+            "long_name": "Huffman Coding Tree Slideshow: Decoding",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
-          },
-          "huffmanCON5": {}
+          }
         }
       },
       "Binary/TreeTrie": {

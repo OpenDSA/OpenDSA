@@ -9,8 +9,8 @@
    :satisfies: Huffman coding tree
    :topic: BinTreeImp
 
-.. odsalink:: AV/Binary/huffmanBuildCON.css
-.. odsalink:: AV/Development/HuffmanCON.css
+.. odsalink:: AV/Binary/huffman.css
+.. odsalink:: AV/Binary/huffmanCON.css
 
 .. index:: ! Huffman
 
@@ -157,16 +157,12 @@ been combined into one.
       \hline
       \end{array}
 
-The following slideshow illustrates part of the Huffman tree
+The following slideshow illustrates the Huffman tree
 construction process for the eight letters of
 Table :num:`Table #FreqExamp`. [#]_
 
 .. inlineav:: huffmanBuildCON ss
    :output: show
-
-Here is a complete visualization of building the Huffman tree.
-
-.. avembed:: AV/Development/HuffmanCoding.html ss
 
 Here is the implementation for Huffman tree nodes.
 
@@ -212,32 +208,20 @@ the tree. '0' is assigned to edges connecting a node with its left
 child, and '1' to edges connecting a node with its right child.
 This process is illustrated by the following slideshow.
 
-.. inlineav:: huffmanCON2 ss 
+.. inlineav:: huffmanLabelCON ss 
    :output: show
 
-Here are the final codes for all eight letters.
+Now that we see how the edges associate with bits in the code, it is a
+simple matter to generate the codes for each letter (since each letter
+corresponds to a leaf node in the tree).
 
-.. math::
+.. inlineav:: huffmanCodesCON ss 
+   :output: show
 
-   \begin{array}{c|c|c|c}
-   \textbf{Letter}&\textbf{Freq}&\textbf{Code}&\textbf{Bits}\\
-   \textrm C & 32 & 1110 & 4\\
-   \textrm D & 42 & 101 & 3\\
-   \textrm E & 120 & 0 & 1\\
-   \textrm K & 7 & 111101 & 6\\
-   \textrm L & 42 & 110 & 3\\
-   \textrm M & 24 & 11111 & 5\\
-   \textrm U & 37 & 100 & 3\\
-   \textrm Z & 2 & 111100 & 6\\
-   \end{array}
-
-Given codes for the letters, it is a simple matter to use these codes
-to encode a text message.
-We simply replace each letter in the string with its binary code.
+Now that we have a code for each letter,
+encoding a text message is done by replacing each letter of the
+message with its binary code.
 A lookup table can be used for this purpose.
-
-.. inlineav:: huffmanCON3 ss
-   :output: show
 
 A set of codes is said to meet the :term:`prefix property` if no
 code in the set is the prefix of another.
@@ -249,13 +233,22 @@ Huffman codes certainly have the prefix property because any prefix
 for a code would correspond to an internal node, while all codes
 correspond to leaf nodes.
 
-.. inlineav:: huffmanCON4 ss
+When we decode a character using the Huffman coding tree, we follow a
+path through the tree dictated by the bits in the code string.
+Each '0' bit indicates a left branch while each '1' bit indicates a
+right branch.
+The following slideshow shows an example for how to decode a message
+by traversing the tree appropriately.
+
+.. inlineav:: huffmanDecodeCON ss
    :output: show
 
 How efficient is Huffman coding?
-In theory, it is an optimal coding method whenever the true
-frequencies are known, and the frequency of a letter is independent of
-the context of that letter in the message.
+--------------------------------
+
+In theory, Huffman coding is an optimal coding method whenever the
+true frequencies are known, and the frequency of a letter is
+independent of the context of that letter in the message.
 In practice, the frequencies of letters in an English text document do
 change depending on context.
 For example, while E is the most commonly used letter of the alphabet
@@ -325,35 +318,14 @@ have a different space savings.
 Most commercial compression programs use two or three coding schemes
 to adjust to different types of files.
 
-In the preceding example, "DEED" was coded in 8 bits, a saving of 33%
+In decoding example, "DEED" was coded in 8 bits, a saving of 33%
 over the twelve bits required from a fixed-length coding.
-However, "MUCK" requires 18 bits, more space than required by the
+However, "MUCK" would require 18 bits, more space than required by the
 corresponding fixed-length coding.
 The problem is that "MUCK" is composed of letters that are not
 expected to occur often.
 If the message does not match the expected frequencies of the letters,
 than the length of the encoding will not be as expected either.
-
-Search in Huffman Trees
-------------------------
-
-When we decode a character using the Huffman coding tree, we follow a
-path through the tree dictated by the bits in the code string.
-Each '0' bit indicates a left branch while each '1' bit indicates a
-right branch.
-Look at this Huffman tree and consider this
-structure in terms of searching for a given letter (whose key value is
-its Huffman code).
-
-.. inlineav:: huffmanCON5 dgm
-
-We see that all letters with codes beginning with
-'0' are stored in the left branch, while all letters with codes
-beginning with '1' are stored in the right branch.
-Contrast this with storing records in a BST.
-There, all records with key value less than the root value are stored
-in the left branch, while all records with key values greater than the
-root are stored in the right branch.
 
 Notes
 -----
@@ -372,4 +344,6 @@ Notes
 
 .. odsascript:: AV/Binary/huffman.js
 .. odsascript:: AV/Binary/huffmanBuildCON.js
-.. odsascript:: AV/Development/HuffmanCON.js
+.. odsascript:: AV/Binary/huffmanLabelCON.js
+.. odsascript:: AV/Binary/huffmanCodesCON.js
+.. odsascript:: AV/Binary/huffmanDecodeCON.js
