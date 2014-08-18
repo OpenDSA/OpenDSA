@@ -1669,7 +1669,7 @@
           }
         }
       },
-      "Stubs/PerfectHash": {
+      "Development/PerfectHash": {
         "long_name": "Perfect Hashing",
         "exercises": {
           "perfectHashAV": {
@@ -1969,10 +1969,6 @@
       },
       "Development/NPCoping": {
         "long_name": "Coping with NP-complete problems",
-        "exercises": {}
-      },
-      "Stubs/Computability": {
-        "long_name": "Computability",
         "exercises": {}
       }
     },

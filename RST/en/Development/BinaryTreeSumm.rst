@@ -5,7 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires:
+   :satisfies:
    :topic: Binary Trees
 
 Binary Tree Chapter Summary [Stub]

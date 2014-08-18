@@ -947,9 +947,17 @@
       "Development/HuffProof": {
         "long_name": "Proof for Huffman Coding",
         "exercises": {}
+      },
+      "Development/BinaryTreeSumm": {
+        "long_name": "Binary Tree Exercises",
+        "exercises": {}
       }
     },
     "Spatial Data Structures": {
+      "Development/Spatial": {
+        "long_name": "Spatial Data Structures",
+        "exercises": {}
+      },
       "Development/Bintree": {
         "long_name": "Bintrees",
         "exercises": {}
@@ -1979,7 +1987,7 @@
           }
         }
       },
-      "Stubs/PerfectHash": {
+      "Development/PerfectHash": {
         "long_name": "Perfect Hashing",
         "exercises": {
           "perfectHashAV": {
@@ -2196,26 +2204,6 @@
         "exercises": {}
       }
     },
-    "Advanced Linear Structures": {
-      "Stubs/Multilists": {
-        "long_name": "Multilists",
-        "exercises": {}
-      },
-      "Stubs/SparseMatrix": {
-        "long_name": "Sparse Matrices",
-        "exercises": {}
-      }
-    },
-    "Advanced Trees": {
-      "Stubs/Spatial": {
-        "long_name": "Spatial Data Structures",
-        "exercises": {}
-      },
-      "Stubs/Trie": {
-        "long_name": "Tries",
-        "exercises": {}
-      }
-    },
     "Algorithms": {
       "Development/DynamicProgramming": {
         "long_name": "Dynamic Programming",
@@ -2385,10 +2373,6 @@
       },
       "Development/NPCoping": {
         "long_name": "Coping with NP-complete problems",
-        "exercises": {}
-      },
-      "Stubs/Computability": {
-        "long_name": "Computability",
         "exercises": {}
       }
     },
