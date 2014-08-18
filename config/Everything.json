@@ -1545,7 +1545,34 @@
       },
       "Development/BuffPool": {
         "long_name": "Buffer Pools",
-        "exercises": {}
+        "exercises": {
+         "buffpoolS1CON": {
+            "long_name": "Buffer Pool Slideshow 1",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+         "buffpoolS2CON": {
+            "long_name": "Buffer Pool Slideshow 2",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "buffpoolS3CON": {},
+          "BufferPoolAV": {
+            "long_name": "Buffer Pool Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "bufferpoolPRO": {
+            "long_name": "Buffer Pool Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1.0
+          }
+        }
       },
       "Development/FileProg": {
         "long_name": "Programmer's View of Files",
@@ -2025,7 +2052,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "linkedindexCON": {
+          "linindexCON": {
             "long_name": "Two-level linear index Slideshow",
             "required": false,
             "points": 0.0,

@@ -1,6 +1,6 @@
-
-(function () {
-  "use strict";
+/*global ODSA */
+"use strict";
+$(document).ready(function () {
 
   /**
    * Toggles the highlighting of a node.
@@ -42,7 +42,7 @@
   ODSA.toggleNodeHighlight = toggleNodeHighlight;
   ODSA.setNodeHighlightDefault = setNodeHighlightDefault;
   window.ODSA = ODSA;
-}());
+});
 
 
 
@@ -51,9 +51,13 @@
  *
  * Container ID: pagedBSTCON
  */
-(function () {
-  "use strict";
-  var jsav = new JSAV("pagedBST_CON");
+$(document).ready(function () {
+  var av_name = "pagedBST_CON";
+  // Load the config object with interpreter and code created by odsaUtils.js
+  var config = ODSA.UTILS.loadConfig(
+                 {"av_name": av_name, "json_path": "AV/Development/treeIndexingCON.json"});
+
+  var jsav = new JSAV(av_name);
 
   var n = [10, 5, 15, 3, 8, 13, 18, 2, 4, 7, 9, 12, 14, 17, 19];
   var colors = ["#7BFF95", "#77CCFF", "#FF6F52", "#FFDE70", "#E39BCF"];
@@ -130,11 +134,15 @@
   }
 
   jsav.recorded();
-}());
+});
 
-(function () {
-  "use strict";
-  var jsav = new JSAV("rebalanceBST_CON");
+$(document).ready(function () {
+  var av_name = "rebalanceBST_CON";
+  // Load the config object with interpreter and code created by odsaUtils.js
+  var config = ODSA.UTILS.loadConfig(
+                 {"av_name": av_name, "json_path": "AV/Development/treeIndexingCON.json"});
+
+  var jsav = new JSAV(av_name);
 
   var n = [10, 5, 15, 3, 8, 13, 18, 2, 4, 7, 9, 12, 14, 17, 19];  // Tree node values.
   var colors = ["#7BFF95", "#77CCFF", "#FF6F52", "#FFDE70", "#E39BCF"]; // Tree node colors.
@@ -347,4 +355,4 @@
 
   jsav.recorded();
 
-}());
+});

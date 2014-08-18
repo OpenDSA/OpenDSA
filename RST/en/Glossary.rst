@@ -16,7 +16,7 @@ Glossary
    :sorted:
 
    2-3 tree
-      A specialized form of the :term:`b-tree` where each internal
+      A specialized form of the :term:`B-tree` where each internal
       node has either 2 children or 3 children.
       Key values are ordered to maintain the
       :term:`binary search tree property`.
@@ -177,6 +177,14 @@ Glossary
       instances have equal probability of occurring, then average case
       must be calculated using a weighted average.
 
+   average seek time
+      Expected (average) time to perform a :term:`seek` operation on a
+      :term:`disk drive`, assuming that the seek is between two
+      randomly selected tracks.
+      This is one of two metrics commonly provided by disk drive
+      vendors for disk drive performance, with the other being
+      :term:`track-to-track seek time`.
+
    AVL Tree
       A variant implementation for the :term:`BST`, which differs from
       the standard BST in that it uses modified insert and remove
@@ -186,7 +194,7 @@ Glossary
       :term:`rotations <rotation>` in the insert and remove operations.
 
    B$^+$-tree
-      The most commonly implemented form of B-tree.
+      The most commonly implemented form of :term:`B-tree`.
       A B$^+$-tree does not store data at the
       :term:`internal nodes <internal node>`, but
       instead only stores :term:`search key` values as direction
@@ -208,6 +216,15 @@ Glossary
       :term:`disk accesses <disk access>`.
       The most commonly implemented variant of the B-tree is the
       :term:`B$^+$-tree`.
+
+   backing storage
+      In the context of a :term:`caching` system or
+      :term:`buffer pool`, backing storage is the relatively large but
+      slower source of data that needs to be cached.
+      For example, in a :term:`virtual memory`, the disk drive would
+      be the backing storage.
+      In the context of a web browser, the Internet might be
+      considered the backing storage.
 
    bag
       In set notation, a bag is a collection of elements with no order
@@ -391,6 +408,17 @@ Glossary
       have been developed for deciding which data to :term:`flush`
       from the buffer pool when new data must be stored,
       such as :term:`least recently used`.
+
+   buffering
+      A synonym for :term:`caching`.
+      More specifically, it refers to an arrangement where all
+      accesses to data (such as on a
+      :term:`peripheral storage` device) must 
+      be done in multiples of some minimum unit of storage.
+      On a :term:`disk drive`, this basic or smallest unit of I/O is a
+      :term:`sector`.
+      It is called "buffering" because the block of data returned by
+      such an access is stored in a :term:`buffer`.
 
    caching
       The concept of keeping selected data in :term:`primary storage`.
@@ -587,6 +615,10 @@ Glossary
    cost
       The amount of resources that the solution consumes.
 
+   CPU
+      Acronym for Central Processing Unit, the primary processing
+      device for a computer.
+
    current position
       A property of some list ADTs, where there is maintained a
       "current position" state that can be referred to later.
@@ -706,6 +738,20 @@ Glossary
       from one of its defining :term:`vertices <vertex>` to the
       other.
 
+   dirty bit
+      Within a :term:`buffer pool`, a piece of information associated
+      with each :term:`buffer` that indicates whether the contents of
+      the buffer have changed since being read in from
+      :term:`backing storage`.
+      When the buffer is :term:`flushed <flush>` from the buffer pool,
+      the buffer's contents must be written to the backing storage if
+      the dirty bit is set (that is, if the contents have changed).
+      This means that a relatively expensive write operation is
+      required.
+      In contrast, if the dirty bit is not set, then it is unnecessary
+      to write the contents to backing storage, thus saving time over
+      not keeping track of whether the contents have changed or not.
+
    discriminator
       A part of a :term:`multi-dimensional search key`.
       Certain tree data structures such as the :term:`bintree` and the
@@ -782,6 +828,16 @@ Glossary
    
    domain
       The set of possible inputs to a function.
+
+   double buffering
+      The idea of using multiple :term:`buffers <buffer>` to allow the
+      :term:`CPU` to operate in parallel with a
+      :term:`peripheral storage` device.
+      Once the first buffer's worth of data has been read in, the CPU
+      can process this while the next block of data is being
+      read from the peripheral storage.
+      For this idea to work, the next block of data to be processed
+      must be known or predicted with reasonable accuracy.
 
    doubly linked list
       A :term:`linked list` implementation variant where each list
@@ -954,7 +1010,7 @@ Glossary
       such as a :term:`disk drive` or DVD drive.
 
    FIFO
-      Abbreviation for "First-In, First-Out".
+      Abbreviation for "first-in, first-out".
       This is the access paradigm for a :term:`queue`,
       and an old terminolgy for the queue is "FIFO list".
 
@@ -997,6 +1053,16 @@ Glossary
       improving those costs by allowing paths through :term:`vertex`
       0, then the cheapest paths involving paths going through
       vertices 0 and 1, and so on.
+
+   flush
+      The the context of a :term:`buffer pool`, the process of
+      removing the contents stored in a :term:`buffer`
+      when that buffer is required in order to store new data.
+      If the buffer's contents have been changed since having been
+      read in from :term:`backing storage` (this fact would
+      normally be tracked by using a :term:`dirty bit`),
+      then they must be copied back to the backing storage before the
+      buffer can be reused.
 
    Flyweight
       A :term:`design pattern` that is meant to solve the following
@@ -1377,6 +1443,10 @@ Glossary
    inverted file
       Synonym for :term:`inverted list` when the inverted list is
       stored in a disk file.
+
+   I/O head
+      On a :term:`disk drive` (or similar device), the part of the
+      machinery that actually reads data from the disk.
 
    irreflexive
       In set notation, binary relation :math:`R` on set :math:`S` is
@@ -1891,6 +1961,14 @@ Glossary
       :term:`BST`, or the unused positions in an
       :term:`array-based list`. 
 
+   page
+      A term often used to refer to the contents of a single
+      :term:`buffer` within a :term:`buffer pool` or other
+      :term:`virtual memory`. 
+      This corresponds to a single :term:`block` or :term:`sector` of
+      data from :term:`backing storage`, which is the fundamental unit
+      of I/O.
+
    parameters
       The values making up an input to a :term:`function`.
 
@@ -2379,6 +2457,12 @@ Glossary
       hardware.
       This is typically 512 bytes.
 
+   seek
+      On a :term:`disk drive`, the act of moving the :term:`I/O head`
+      from one :term:`track` to another.
+      This is usually considered the most expensive step during a
+      :term:`disk access`.
+
    selection sort
       While this sort requires :math:`\Theta(n^2)` time in the best,
       average, and worst cases, it requires only :math:`\Theta(n)`
@@ -2598,6 +2682,24 @@ Glossary
       A list-like structure in which elements may be inserted or
       removed from only one end.
 
+   stale pointer
+      Within the context of a :term:`buffer pool` or
+      :term:`memory manager`, this refers to a reference to a
+      :term:`buffer` or memory location that is no longer valid.
+      For example, a program might make a memory request to a buffer
+      pool, and be given a reference to the buffer holding the
+      requested data. 
+      Over time, due to inactivity, the contents of this buffer might
+      be flushed.
+      If the program holding the buffer reference then tries to access
+      the contents of that buffer again, then the data contents will
+      have changed.
+      The possibility for this to occur depends on the design of the
+      interface to the buffer pool system.
+      Some designs make this impossible to occur.
+      Other designs make it possible in an attempt to deliver greater
+      performance.
+
    Strassen's algorithm
       A recursive algorithm for matrix multiplication.
       When multiplying two :math:`n \times n` matrices,
@@ -2722,6 +2824,23 @@ Glossary
       A binary relation on a set where every pair of distinct elements
       in the set are :term:`comparable` (that is, one can determine
       which of the pair is greater than the other).
+
+   track
+      On a :term:`disk drive`, a concentric circle representing all of
+      the :term:`sectors <sector>` that can be viewed by the
+      :term:`I/O head` as the disk rotates.
+      The significance is that, for a given placement of the I/O head,
+      the sectors on the track can be read without performing a
+      (relatively expensive) :term:`seek` operation.
+
+   track-to-track seek time
+      Expected (average) time to perform a :term:`seek` operation from
+      a random :term:`track` to an adjacent track.
+      Thus, this can be viewed as the minimum possible seek time for the
+      :term:`disk drive`.
+      This is one of two metrics commonly provided by disk drive
+      vendors for disk drive performance, with the other being
+      :term:`average seek time`.
 
    trailer node
       Commonly used in implementations for a :term:`linked list` or
@@ -2859,6 +2978,20 @@ Glossary
 
    vertex
       Another name for a :term:`node` in a :term:`graph`.
+
+   virtual memory
+      A memory management technique for making relatively fast but
+      small memory appear larger to the program.
+      The large "virtual" data space is actually stored on a
+      relatively slow but large :term:`backing storage` device, and
+      portions of the data are copied into the smaller, faster memory
+      as needed by use of a :term:`buffer pool`.
+      A common example is to use :term:`RAM` to manage access to a
+      large virtual space that is actually stored on a
+      :term:`disk drive`.
+      The programmer can implement a program as though the entire
+      data content were stored in RAM, even if that is larger than the
+      physical RAM available making it easier to implement.
 
    visitor design pattern
       A :term:`design pattern` where a traversal process is given a
