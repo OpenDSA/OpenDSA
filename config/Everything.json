@@ -2071,8 +2071,27 @@
         "exercises": {}
       },
       "Development/TreeIndexing": {
-        "long_name": "Linear Indexing",
-        "exercises": {}
+        "long_name": "Tree Indexing",
+        "exercises": {
+          "pagedBST_CON": {
+            "long_name": "Paged BST Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "rebalanceBST_CON": {
+            "long_name": "Paged BST With Disk Accesses Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "TreeIndexing": {
+            "long_name": "Tree Indexing Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
       },
       "Development/TwoThreeTree": {
         "long_name": "2-3 Trees",
