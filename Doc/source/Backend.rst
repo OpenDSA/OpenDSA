@@ -68,6 +68,7 @@ Both
    * If this doesn't work in Windows, you can install from an EXE - https://code.google.com/p/soemin/downloads/detail?name=MySQL-python-1.2.3.win32-py2.7.exe
 
 2. Install required modules, remove sudo for Windows
+
    * sudo easy_install oauth2
    * sudo easy_install simplejson
    * sudo easy_install feedparser
@@ -77,13 +78,16 @@ Both
    * sudo easy_install django-tastypie
 
 3. Install memcache
+
    * pip install python-memcached
 
 4. Install user agent (http://pypi.python.org/pypi/django-user_agents)
+
    * pip install pyyaml ua-parser user-agents
    * pip install django-user-agents	
 
 5. Install OpenDSA-server
+
    * git clone https://YOURGITHUBID@github.com/OpenDSA/OpenDSA-server.git 
    * cd OpenDSA-server/ODSA-django
    * Change values in settings.py file
@@ -100,10 +104,9 @@ Both
 					Ex: BASE_URL = "127.0.0.1:8000"
 
 6. Create an empty file named daily_stats.json, inside  the "media root"
- directory specified in settings.py file 
-7.  python manage.py syncdb
+   directory specified in settings.py file 
+7. python manage.py syncdb
 8. Create an administrator (superuser) account when prompted 
-
 9. python manage.py runserver 0.0.0.0:8000
 10. In your web browser, go to: http://127.0.0.1:8000/admin/
 
