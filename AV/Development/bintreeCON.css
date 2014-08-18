@@ -4,6 +4,10 @@
  height: 675px;
 }
 
-svg{
+svg {
   stroke-width: 1;
+}
+
+.emptyLeaf {
+  border-radius: 1px;
 }

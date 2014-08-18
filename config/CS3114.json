@@ -874,38 +874,30 @@
       "Binary/Huffman": {
         "long_name": "Huffman Coding Trees",
         "exercises": {
-          "huffmanCON1": {
-            "long_name": "Huffman Coding Tree Slideshow",
+          "huffmanBuildCON": {
+            "long_name": "Huffman Coding Tree Slideshow: Build",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "HuffmanCoding": {
-            "long_name": "Huffman Coding Tree Visualization",
-            "required": true,
-            "points": 0.0,
-            "showhide": "show",
-            "threshold": 1.0
-          },
-          "huffmanCON2": {
-            "long_name": "Huffman Coding Tree Slideshow 2",
+          "huffmanLabelCON": {
+            "long_name": "Huffman Coding Tree Slideshow: Label Edges",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "huffmanCON3": {
-            "long_name": "Huffman Coding Tree Slideshow 3",
+          "huffmanCodesCON": {
+            "long_name": "Huffman Coding Tree Slideshow: Setting Codes",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "huffmanCON4": {
-            "long_name": "Huffman Coding Tree Slideshow 4",
+          "huffmanDecodeCON": {
+            "long_name": "Huffman Coding Tree Slideshow: Decoding",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
-          },
-          "huffmanCON5": {}
+          }
         }
       },
       "Binary/TreeTrie": {
@@ -1460,7 +1452,7 @@
         "long_name": "Disk Drives",
         "exercises": {}
       },
-      "Development/BuffPool": {
+      "IS/BuffPool": {
         "long_name": "Buffer Pools",
         "exercises": {}
       },
@@ -1470,7 +1462,48 @@
       },
       "Development/ExternalSort": {
         "long_name": "ExternalSort",
-        "exercises": {}
+        "exercises": {
+          "ExternalMergeSort": {
+            "long_name": "External Merge Sort Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "ExternalMergeSortExample": {
+            "long_name": "External Merge Sort Example Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "externalSortOver": {},
+          "ExternalReplacementSelection": {
+            "long_name": "External Replacement Selection Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "externalReplacementSelectionPRO": {
+            "long_name": "Replacement Selection Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "externalSortSnow": {},
+          "MultiMerge": {
+            "long_name": "Multiway Merge Example Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "externalMultiwayMergePRO": {
+            "long_name": "Multi-way Merge Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "showhide": "none",
+            "threshold": 1.0
+          }
+        }
       }
     },
     "Hashing": {
@@ -1785,9 +1818,28 @@
         "long_name": "Indexing Chapter Introduction",
         "exercises": {}
       },
-      "Development/LinearIndexing": {
-        "long_name": "Linear Indexing",
-        "exercises": {}
+      "Development/LinearIndexing.rst": {
+        "long_name": "LinearIndexing",
+        "exercises": {
+          "varindexCON": {
+            "long_name": "Simple linear index Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "linindexCON": {
+            "long_name": "Two-level linear index Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "linearIndexingPRO": {
+            "long_name": "Linear Indexing Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90
+          }
+        }
       },
       "Development/ISAM": {
         "long_name": "ISAM",

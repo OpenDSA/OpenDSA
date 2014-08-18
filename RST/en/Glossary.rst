@@ -23,6 +23,14 @@ Glossary
       The 2-3 tree is always height balanced, and its insert, search,
       and remove operations all have :math:`\Theta(\log n)` cost.
 
+   80/20 rule
+      Given a typical application where there is a collection of
+      records and a series of search operations for records,
+      the 80/20 rule is an empirical observation that
+      80% of the record accessess typically go to 20% of the records.
+      The exact values varies between data collections, and is related
+      to the concept of :term:`locality of reference`.
+
    abstract data type
       Abreviated :term:`ADT`. The realization of a :term:`data type`
       as a software component.
@@ -197,7 +205,7 @@ Glossary
       size).
       This makes it easy to gain access to the record associated with
       a given :term:`search key` stored in the tree with few
-      :term:`disk fetches <disk fetch>`.
+      :term:`disk accesses <disk access>`.
       The most commonly implemented variant of the B-tree is the
       :term:`B$^+$-tree`.
 
@@ -752,12 +760,18 @@ Glossary
       Disk drives and RAM are typical parts of a computer's
       :term:`memory hierarchy`.
 
-   disk fetch
+   disk access
       The act of reading data from a disk drive (or other form of
       :term:`peripheral storage`).
       The number of times data must be read from (or written to) a
       disk is often a good measure of cost for an algorithm that
       involves disk I/O, since this is usually the dominant cost.
+
+   disk I/O
+      Refers to the act of reading data from or writing data to a
+      :term:`disk drive`.
+      All disk reads and writes are done in units of a :term:`sector`
+      or :term:`block`.
 
    divide and conquer
       A technique for designing algorithms where a solution is found
@@ -912,6 +926,8 @@ Glossary
    external sort
       A sorting algorithm that is applied to data stored in
       :term:`peripheral storage` such as on a :term:`disk drive`.
+      This is in contrast to an :term:`internal sort` that works on
+      data stored in :term:`main memory`.
 
    factorial
       The factorial function is defined as :math:`f(n) = n f(n-1)` for
@@ -1031,6 +1047,18 @@ Glossary
       A connected, undirected graph with no simple cycles.
       An equivalent definition is that a free tree is connected and
       has :math:`|\mathbf{V}| - 1` edges.
+
+   frequency count
+      A :term:`heuristic` used to maintain a
+      :term:`self-organizing list`.
+      Under this heuristic, a count is maintained for every record.
+      When a record access is made, its count is increased.
+      If this makes its count greater than that of another record in
+      the list, it moves up toward the front of the list accordingly
+      so as to keep the list sorted by frequency.
+      Analogous to the :term:`least frequently used` heuristic for
+      maintaining a :term:`buffer pool`.
+      
 
    full binary tree theorem
       This theorem states that 
@@ -1327,12 +1355,28 @@ Glossary
       In a tree, any node that has at least one non-empty
       :term:`child` is an  internal node.
 
+   internal sort
+      A sorting algorithm that is applied to data stored in
+      :term:`main memory`.
+      This is in contrast to an :term:`external sort` that is meant to
+      work on data stored in 
+      :term:`peripheral storage` such as on a :term:`disk drive`.
+
    inversion
       A measure of how disordered a series of values is. For each
       element :math:`X` in the series, count one inversion for each
       element to left of :math:`X` that is greater than the value of
       :math:`X` (and so must ultimately be moved to the right of
       :math:`X` during a sorting process).
+
+   inverted list
+      An :term:`index <indexing>` which links
+      :term:`secondary keys <secondary key>` to either the associated
+      :term:`primary key` or the actual record in the database.
+
+   inverted file
+      Synonym for :term:`inverted list` when the inverted list is
+      stored in a disk file.
 
    irreflexive
       In set notation, binary relation :math:`R` on set :math:`S` is
@@ -1386,6 +1430,21 @@ Glossary
       A field or part of a larger record used to represent that record
       for the purpose of searching or comparing.
       Another term for :term:`search key`.
+
+   key sort
+      Any sorting opertation applied to a collection of
+      :term:`key-value pairs <key-value pair>` where the value in this
+      case is a reference to a complete record (that is, a pointer to
+      the record in memory or a position for a record on disk).
+      This is in contrast to a sorting operation that works directly
+      on a collection of records.
+      The intention is that the collection of key-value pairs is far
+      smaller than the collection of records themselves.
+      As such, this might allow for an :term:`internal sort` when
+      sorting the records directly would require an :term:`external
+      sort`.
+      The collection of key-value pairs can also act as an
+      :term:`index <indexing>`.
 
    key-value pair
       A standard solution for solving the problem of how to relate a
@@ -1448,6 +1507,8 @@ Glossary
        replaced by new data being read into a
        :term:`cache <caching>`.
        However, :term:`least recently used` is more popular than LFU.
+       Analogous to the :term:`frequency count` heuristic for
+       maintaining a :term:`self-organizing list`.
 
    least recently used
        Abbreviated :term:`LRU`, it is a popular :term:`heuristic` to
@@ -1455,6 +1516,8 @@ Glossary
        to :term:`flush` when data in the buffer pool must be
        replaced by new data being read into a :term:`cache
        <caching>`.
+       Analogous to the :term:`move-to-front` heuristic for
+       maintaining a :term:`self-organizing list`.
 
    length
       In a :term:`list`, the number of elements. In a string, the
@@ -1513,6 +1576,16 @@ Glossary
       between :term:`key` values for the list elements (that is,
       "ordered" does not mean "sorted").
 
+   locality of reference
+      The concept that accesses within a collection of records is not
+      evenly distributed.
+      This can express itself as some small fraction of the records
+      receiving the bulk of the accesses (:term:`80/20 rule`).
+      Alternatively, it can express itself as an increased probability
+      that the next or future accesses will come close to the most
+      recent access.
+      This is the fundamental property for success of :term:`caching`.
+
    logarithm
       The `logarithm` of base :math:`b` for value :math:`y` is the power
       to which :math:`b` is raised to get :math:`y`.
@@ -1548,6 +1621,10 @@ Glossary
       sorting (:math:`n`).
       Proving such "non-trivial" lower bounds for problems is
       notoriously difficult.
+
+   main memory
+      A synonym for :term:`primary storage`.
+      In a computer, typically this will be :term:`RAM`.
 
    map
       A :term:`data structure` that relates a :term:`key` to a
@@ -1705,6 +1782,14 @@ Glossary
       Sometimes written :math:`n \bmod m` in mathematical expressions,
       the syntax in many programming languages is ``n % m``.
 
+   move-to-front
+      A :term:`heuristic` used to maintain a
+      :term:`self-organizing list`.
+      Under this heuristic, whenever a record is accessed it is moved
+      to the front of the list.
+      Analogous to the :term:`least recently used` heuristic for
+      maintaining a :term:`buffer pool`.
+
    multi-dimensional search key
       A search key containing multiple parts, that works in
       conjunction with a :term:`multi-dimensional search structure`.
@@ -1789,6 +1874,15 @@ Glossary
       with the same slot of a :term:`hash table`.
       Typically this is done using a linked list to store the records.
       This is in contrast to a :term:`closed hash system`.
+
+   optimal static ordering
+      A theoretical construct defining the best static (non-changing)
+      order in which to place a collection of records so as to
+      minimize the number of records visited by a series of sequential
+      searches.
+      It is a useful concept for the purpose of defining a theoretical
+      optimum against which to compare the performance for a
+      :term:`self-organizing list heuristic`.
 
    overhead
       All information stored by a data structure aside from the actual
@@ -2181,6 +2275,16 @@ Glossary
       :math:`\mathbf{S}` is a set of ordered pairs from
       :math:`\mathbf{S}`.
 
+   replacement selection
+      A variant of :term:`Heapsort` most often used as one phase of an
+      :term:`external sort`.
+      Given a collection of records stored in an array, and a stream
+      of additional records too large to fit into
+      :term:`working memory`, replacement selection will unload the
+      :term:`heap` by sending records to an output stream, and seek to
+      bring new records into the heap from the input stream in
+      preference to shrinking the heap size whenever possible.
+
    resource constraints
       Examples of resource constraints include the total space
       available to store the data |---| possibly divided into separate
@@ -2198,6 +2302,19 @@ Glossary
       grandchildren that can result in reordering their relationship.
       The goal of performing a rotation is to make the tree more
       :term:`balanced <balanced tree>`.
+
+   run
+      A series of sorted records.
+      Most often this refers to a (sorted) subset of records that are
+      being sorted by means of an :term:`external sort`.
+
+   run file
+      A temporary file that is created during the operation of an
+      :term:`external sort`, the run file contains a collection of
+      :term:`runs <run>`.
+      A common structure for an external sort is to first create a
+      series of runs (stored in a run file), followed by merging the
+      runs together.
 
    runtime environment
       The environment in which a program (of a particular programming
@@ -2283,6 +2400,12 @@ Glossary
       be sorted (and so do not pay the cost of doing the sorting
       operation).
 
+   self-organizing list heuristic
+      A :term:`heuristic` to use for the purpose of maintaining a
+      :term:`self-organizing list`.
+      Commonly used heuristics include
+      :term:`move-to-front` and :term:`transpose`.
+
    sequence
       In set notation, a collection of elements with an order, and
       which may contain duplicate-valued elements.
@@ -2350,6 +2473,34 @@ Glossary
    singly linked list
       A :term:`linked list` implementation variant where each list
       node contains access an pointer only to the next element in the list.
+
+   snowplow argument
+      An analogy used to give intuition for why :term:`replacement
+      selection` will generate :term:`runs <run>` that are on average
+      twice the size of working memory.
+      Records coming from the input stream have key values that might
+      be of any size, whose size is related to the position of a
+      falling snowflake.
+      The replacement selection process is analogous to a snowplow
+      that moves around a circular track picking up snow.
+      In steady state, given a certain amount of snow equivalent to
+      :term:`working memory` size :math:`M`, an amount of snow
+      (incoming records from the input stream) is expected to fall
+      ahead of the plow as the size of the working memory during one
+      cycle of the plow (analogously, one run of the replacement
+      selection algorithm).
+      Thus, the snowplow is expected in one pass (one run of
+      replacement selection) to pick up :math:`2M` snow.
+
+   software engineering
+      The study and application of engineering to the design,
+      development, and maintenance of software.
+
+   software reuse
+      In :term:`software engineering`, the concept of reusing a piece
+      of software.
+      In particular, using an existing piece of software (such as a
+      function or library) when creating new software.
 
    sorted list
       A :term:`list` where the records stored in the list are arranged
@@ -2447,6 +2598,25 @@ Glossary
       A list-like structure in which elements may be inserted or
       removed from only one end.
 
+   Strassen's algorithm
+      A recursive algorithm for matrix multiplication.
+      When multiplying two :math:`n \times n` matrices,
+      this algorithm runs faster than the :math:`\Theta(n^3)` time
+      required by the standard matrix multiplication algorithm.
+      Specifically, Strassen's algorithm requires time
+      :math:`Theta(n^{\log_2 7})` time.
+      This is achieved by refactoring the sub-matrix multiplication
+      and addition operations so as to need only 7 sub-matrix
+      multiplications instead of 8, at a cost of additional sub-matrix
+      addition operations.
+      Thus, while the asymptotic cost is lower, the constant factor in
+      the growth rate equation is higher.
+      This makes Strassen's algorithm inefficient in practice unless
+      the arrays being multiplied are rather large.
+      Variations on Strassen's algorithm exist that reduce the number
+      of sub-matrix multiplications even futher at a cost of even more
+      sub-matrix additions.
+
    strategy
       An approach to accomplish a task, often encapsulated as an
       algorithm.
@@ -2530,6 +2700,11 @@ Glossary
       In set notation, relation :math:`R` is symmetric if whenever
       :math:`aRb`, then :math:`bRa`, for all :math:`a, b \in \mathbf{S}`.
 
+   symmetric matrix
+      A square matrix that is equal to its :term:`transpose`.
+      Equivalently, for a :math:`n \times n` matrix :math:`A`,
+      for all :math:`i,j < n`, :math:`A[i, j] = A[j, i]`.
+
    tail
       The end of a :term:`list`.
 
@@ -2559,6 +2734,16 @@ Glossary
    transitive
       In set notation, relation :math:`R` is transitive if whenever
       :math:`aRb`, then :math:`bRa`, for all :math:`a, b \in \mathbf{S}`.
+
+   transpose
+      In the context of linear algebra,
+      the transpose of a matrix :math:`A` is
+      another matrix :math:`A^T` created by writing the rows of
+      :math:`A` as the columns of :math:`A^T`.
+      In the context of a :term:`self-organizing list`,
+      transpose is a :term:`heuristic` used to maintain the list.
+      Under this heuristic, whenever a record is accessed it is moved
+      one position closer to the front of the list.
 
    traversal
       Any process for visiting all of the objects in a collection
@@ -2705,9 +2890,34 @@ Glossary
       will be less than if the assignment had been made in the other
       direction.
 
+   working memory
+      The portion of :term:`main memory` available to an algorithm for
+      its use.
+      Typically refers to main memory made available to an algorithm
+      that is operating on large amounts of data stored in
+      :term:`peripheral storage`, the working memory represents space
+      that can hold some subset of the total data being processed.
+
    worst case
       In algorithm analysis, the problem instance from among all
       problem instances for a given input size :math:`n` that has
       the greatest cost. Note that the worst case is **not** when
       :math:`n` is big, since we are referring to the wost from a
       class of inputs (i.e, those inputs of size :math:`n`).
+
+   Zipf distribution
+      A data distribution that follows Zipf's law, an emprical
+      observation that many types of data studied in the physical and
+      social sciences follow a power law probability distribution.
+      That is, the frequency of any record in the data collection is
+      inversely proportional to its rank when the collection is sorted
+      by frequency.
+      Thus, the most frequently appearing record has a frequency much
+      higher than the next most frequently appearing record, which in
+      turn has a frequency much higher than the third (but with ratio
+      slightly lower than that for the first two records) and so on.
+      The :term:`80/20 rule` is a casual characterization of a Zipf
+      distribution.
+      Adherence to a Zipf distribution is important to the successful
+      operation of a :term:`cache <caching>` or
+      :term:`self-organizing list`.

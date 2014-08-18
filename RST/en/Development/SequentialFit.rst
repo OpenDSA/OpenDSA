@@ -7,6 +7,8 @@
    :author: Cliff Shaffer
    :prerequisites: 
    :topic: Memory Management
+   
+.. odsalink:: AV/Development/seqFitCON.css
 
 Sequential-Fit Methods
 ======================
@@ -19,12 +21,8 @@ this figure.
 
 .. _FreeBlck:
 
-.. odsafig:: Images/FreeBlck.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Doubly linked list of free blocks
+.. inlineav:: seqFitCON dgm
+   :align: justify
 
    A doubly linked list of free blocks as seen by the memory manager.
    Shaded areas represent allocated memory.
@@ -150,3 +148,5 @@ on the freelist of sizes 25, 35, 32, and 45 (in that order).
 Assume that a request is made for 30 units of storage.
 For our examples, we ignore the overhead imposed for the tag, link,
 and size fields discussed above.
+
+.. odsascript:: AV/Development/seqFitCON.js

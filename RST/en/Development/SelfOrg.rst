@@ -9,17 +9,19 @@
    :satisfies:
    :topic: Search
 
+.. odsalink:: AV/Development/selforgCON.css
+
 Self-Organizing Lists
 =====================
 
-While ordering of lists is most commonly done by key value,
+While ordering of lists is most commonly done by :term:`key` value,
 this is not the only viable option.
 Another approach to organizing lists to speed search is to order the
 records by expected frequency of access.
-While the benefits might not be as great as when organized by key
+While the benefits might not be as great as when sorted by key
 value, the cost to organize (at least approximately) by frequency of
 access can be much cheaper,
-and thus can speed up sequential search in some situations.
+and thus can speed up :term:`sequential search` in some situations.
 
 Assume that we know, for each key :math:`k_i`, the probability
 :math:`p_i` that the record with key :math:`k_i` will be requested.
@@ -62,10 +64,10 @@ Certain probability distributions give easily computed results.
    accessed on average by normal sequential search.
    If the records truly have equal access probabilities, then ordering
    records by frequency yields no benefit.
-   We saw in Module :numref:`<SortedSearch>` the more general case
-   where we must consider the probability (labeled :math:`p_n`) that
+   In the :ref:`more general case <SortedSearch>`,
+   we must consider the probability (labeled :math:`p_n`) that
    the search key does not match that for any record in the array.
-   In that case, in accordance with our general formula, we get
+   In that case, the general formula gives us
 
    .. math::
 
@@ -112,11 +114,11 @@ of the records.
 The values of 80 and 20 are only estimates; every data access pattern
 has its own values.
 However, behavior of this nature occurs surprisingly often in practice
-(which explains the success of caching techniques widely
+(which explains the success of :term:`caching` techniques widely
 used by web browsers for speeding access to web pages,
-and by disk drive and CPU manufacturers for speeding access to data
-stored in slower memory; see the discussion on buffer
-pools in Module :numref:`<BuffPool>`).
+and the use of a
+:ref:`buffer pool <buffer pool> <BuffPool>` to speed access
+to data stored in slower memory such as a :term:`disk drive`).
 When the 80/20 rule applies, we can expect considerable improvements
 to search performance from a list ordered by frequency of access over
 standard sequential search in an unordered list.
@@ -133,7 +135,7 @@ standard sequential search in an unordered list.
    cities (i.e., view the relative proportions for the populations as
    equivalent to the "frequency of use").
    Zipf distributions are related to the
-   Harmonic Series defined in Module :numref:`<Summations>`.
+   :ref:`Harmonic Series <Harmonic series> <Summations>`.
    Define the Zipf frequency for item :math:`i` in the distribution for
    :math:`n` records as :math:`1/(i {\cal H}_n)`.
    The expected cost for the series whose members follow this Zipf
@@ -165,14 +167,15 @@ To complicate matters further, certain records might be accessed
 frequently for a brief period of time, and then rarely thereafter.
 Thus, the probability of access for records might change over time (in
 most database systems, this is to be expected).
-:term:`Self-organizing lists` seek to solve both of these problems.
+:term:`Self-organizing lists <self-organizing list>` seek to solve
+both of these problems.
 
 Self-organizing lists modify the order of records within the
 list based on the actual pattern of record access.
 Self-organizing lists use a heuristic for
 deciding how to reorder the list.
-These heuristics are similar to the rules for managing buffer
-pools (see Module :numref:`<BuffPool>`).
+These heuristics are similar to the rules for managing
+:ref:`buffer pools <buffer pool> <BuffPool>`.
 In fact, a buffer pool is a form of self-organizing list.
 Ordering the buffer pool by expected frequency of access is a good
 strategy, because typically we must search the contents of the buffers
@@ -186,9 +189,10 @@ lists:
 #. The most obvious way to keep a list ordered by frequency would be to
    store a count of accesses to each record and always maintain records
    in this order.
-   This method will be referred to as ``count``.
-   ``Count`` is similar to the least frequently used buffer replacement
-   strategy.
+   This method will be referred to as :term:`frequency count` or just
+   "count".
+   Count is similar to the :term:`least frequently used` buffer
+   replacement strategy.
    Whenever a record is accessed, it might move toward the front of
    the list if its number of accesses becomes greater than a record
    preceding it.
@@ -203,9 +207,9 @@ lists:
 
 #. Bring a record to the front of the list when it is
    found, pushing all the other records back one position.
-   This is analogous to the least recently used
+   This is analogous to the :term:`least recently used`
    buffer replacement strategy and is called
-   ``move-to-front``.
+   :term:`move-to-front`.
    This heuristic is easy to implement if the records are stored using
    a linked list.
    When records are stored in an array, bringing a record forward from
@@ -219,8 +223,8 @@ lists:
    searches in advance and had stored the records in order of frequency
    so as to minimize the total cost for these accesses, this cost would
    be at least half the cost required by the move-to-front heuristic.
-   (This will be proved using
-   amortized analysis in Module :numref:`<AmortAnal>`.)
+   (This can be proved using
+   :ref:`amortized analysis <amortized analysis> <AmortAnal>`.)
    Finally, move-to-front responds well to local changes in frequency
    of access, in that if a record is frequently accessed for a brief
    period of time it will be near the front of the list during that
@@ -231,7 +235,7 @@ lists:
 
 #. Swap any record found with the record immediately
    preceding it in the list.
-   This heuristic is called ``transpose`` or ``move ahead one`.
+   This heuristic is called :term:`transpose`.
    Transpose is good for list implementations based on either linked
    lists or arrays.
    Frequently used records will, over time, move to the front of the
@@ -255,47 +259,23 @@ lists:
    forward in the list by some fixed number of steps.
 
 
-.. topic:: Example
+.. inlineav:: SelforgCON1 ss
+   :output: show
 
-   Assume that we have eight records, with key values A to H,
-   and that they are initially placed in alphabetical order.
-   Now, consider the result of applying the following access pattern:
 
-   .. math::
+Now lets do the move-to-front method
 
-      F\ D\ F\ G\ E\ G\ F\ A\ D\ F\ G\ E.
 
-   Assume that when a record's frequency count goes up, it moves
-   forward in the list to become the last record with that value for
-   its frequency count.
-   After the first two accesses, F will be the first record and D
-   will be the second.
-   The final list resulting from these accesses will be
+.. inlineav:: SelforgCON2 ss
+   :output: show
 
-   .. math::
 
-      F\ G\ D\ E\ A\ B\ C\ H,
+And finally the Transpose method
 
-   and the total cost for the twelve accesses will be
-   45 comparisons.
 
-   If the list is organized by the move-to-front heuristic, then the
-   final list will be
+.. inlineav:: SelforgCON3 ss
+   :output: show
 
-   .. math::
-
-      E\ G\ F\ D\ A\ B\ C\ H,
-
-   and the total number of comparisons required is 54.
-
-   Finally, if the list is organized by the transpose heuristic, then
-   the final list will be
-
-   .. math::
-
-      A\ B\ F\ D\ G\ E\ C\ H,
-
-   and the total number of comparisons required is 62.
 
 While self-organizing lists do not generally perform as well
 as search trees or a sorted list, both of which require
@@ -364,6 +344,14 @@ The codes are stored in a self-organizing list in order to speed
 up the time required to search for a string that has previously been
 seen.
 
+
+.. avembed:: Exercises/Development/SelfOrgMove-to-FrontPro.html ka
+
+.. avembed:: Exercises/Development/SelfOrgTransposePro.html ka
+
+.. avembed:: Exercises/Development/SelfOrgCounterPro.html ka
+
+
 Notes
 -----
 
@@ -372,3 +360,5 @@ Notes
        J.L. Bentley, D.D. Sleator, R.E. Tarjan, and V.K. Wei,
        "A Locally Adaptive Data Compression Scheme", 
        *Communications of the ACM 29*, 4(April 1986), 320-330.
+
+.. odsascript:: AV/Development/selforgCON.js

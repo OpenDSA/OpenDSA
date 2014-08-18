@@ -13,75 +13,31 @@
   },
   "chapters": {
     "Testing": {
-      "IS/Bintree": {
-        "long_name": "Bintree",
-        "exercises": {}
-      },
       "IS/FirstFit": {
         "long_name": "First Fit",
         "exercises": {}
       },
-      "IS/TwoThreeTree.rst": {
-        "long_name": "2-3 Trees",
-        "exercises": {}
-      },
       "IS/BuffPool": {
         "long_name": "Buffer Pool",
-        "exercises": {}
-      },
-      "IS/Huffman": {
-        "long_name": "Huffman Coding Trees",
         "exercises": {
-          "huffmanCON1": {
-            "long_name": "Huffman Coding Tree Slideshow",
+         "buffpoolS1CON": {
+            "long_name": "Buffer Pool Slideshow 1",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "HuffmanCoding": {
-            "long_name": "Huffman Coding Tree Visualization",
+         "buffpoolS2CON": {
+            "long_name": "Buffer Pool Slideshow 2",
             "required": true,
             "points": 0.0,
-            "showhide": "show",
             "threshold": 1.0
-          }
+          },
+         "buffpoolS3CON": {}
         }
-      },
-       "IS/TreeTrie": {
-        "long_name": "Trees versus Tries",
-        "exercises": {}
-      },
-      "IS/LinearIndexing.rst": {
-          "long_name": "LinearIndexing",
-          "exercises": {}
       },
       "IS/TreeIndexing.rst": {
         "long_name": "Tree Indexing",
         "exercises": {}
-      },
-      "IS/SelfOrg": {
-        "long_name": "Self Organizing Lists",
-        "exercises": {}
-      },
-      "IS/Reduction.rst": {
-        "long_name": "Reductions",
-        "exercises": {}
-      },
-      "IS/ExternalSort": {
-        "long_name": "ExternalSort",
-        "exercises": {}
-      },
-      "IS/Archie": {
-        "long_name": "Insertion Sort Optimization",
-        "exercises": {
-          "insertionSortWithoutSwapPRO": {
-            "long_name": "Insertion Sort Without Swap Exercise",
-            "required": true,
-            "points": 1.0,
-            "showhide": "none",
-            "threshold": 1.0
-          }
-        }
       }
     },
     "Appendix": {

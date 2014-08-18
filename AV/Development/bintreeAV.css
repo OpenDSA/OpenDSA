@@ -11,16 +11,13 @@
   z-index: 100; /* Prevents the tails of the edges from showing up in the background of the node */
 }
 
+.jsavcanvas { height: 500px;} /* set the height of the container */
+
+
 #container {
   /* Change the size of the container */
   width: 780px;
-  height: 800px;
-}
-
-/* Change the size of the AV container */
-.avcontainer {
-  width: 700px;
-  height: 505px;
+  height: 600px;
 }
 
 /* Change the size of the tree nodes */

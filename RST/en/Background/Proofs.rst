@@ -438,7 +438,8 @@ induction hypothesis.
    set of regions as a way of assigning one of two colors to each region
    such that no two regions sharing a side have the same color.
    For example, a chessboard is two-colored.
-   The figure shows a two-coloring for the plane with three lines.
+   Figure :num:`Figure #TwoColor` shows a two-coloring for the plane
+   with three lines. 
    We will assume that the two colors to be used are black and white.
 
    **Theorem:**

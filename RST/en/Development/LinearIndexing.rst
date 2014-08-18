@@ -7,45 +7,38 @@
    :author: Cliff Shaffer
    :prerequisites:
    :topic: Indexing
+   
+.. odsalink:: AV/Development/linearIndexingCON.css
 
 Linear Indexing
 ===============
 
-A :term:`linear index` is an index file organized as a
-sequence of key/pointer pairs where the keys are in
-sorted order and the pointers either (1) point to the position of the
-complete record on disk, (2) point to the position of the primary
-key in the primary index, or (3) are actually the value of the primary
-key.
+A :term:`linear index` is an :term:`index file` organized as a
+sequence of :term:`key-value pairs <key-value pair>` where the
+:term:`keys <key>` are in sorted order and the pointers either
+(1) point to the position of the complete record on disk,
+(2) point to the position of the :term:`primary key` in the primary
+index, or
+(3) are actually the value of the primary key.
 Depending on its size, a linear index might be stored in main
 memory or on disk.
 A linear index provides a number of advantages.
 It provides convenient access to variable-length database records,
 because each entry in the index file contains a fixed-length key field
 and a fixed-length pointer to the beginning of a (variable-length)
-record as shown in Figure :num:`Figure #LinVar`.
+record as shown in the following slideshow
 A linear index also allows for efficient search and random access to
 database records, because it is amenable to
-binary search.
+:ref:`binary search <binary search> <ProgAnal>`.
 
-.. _LinVar:
-
-.. odsafig:: Images/LinVar.png
-   :width: 450
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Linear indexing for variable-length records
-
-   Linear indexing for variable-length records.
-   Each record in the index file is of fixed length and contains a
-   pointer to the beginning of the corresponding record in the database
-   file.
+.. inlineav:: varindexCON ss
+   :output: show
 
 If the database contains enough records, the linear index might
-be too large to store in main memory.
-This makes binary search of the index more expensive because many disk
-accesses would typically be required by the search process.
+be too large to store in :term:`main memory`.
+This makes binary search of the index more expensive because many
+:term:`disk accesses <disk access>` would typically be required by the
+search process.
 One solution to this problem is to store a second-level linear index
 in main memory that indicates which disk block in the index file
 stores a desired key.
@@ -57,9 +50,15 @@ If each key/pointer pair in the linear index requires 8~bytes
 The second-level index, stored in main memory, consists of a simple
 table storing the value of the key in the first position of each block
 in the linear index file.
-This arrangement is shown in Figure :num:`Figure #LinIndex`.
+This arrangement is shown in the next slideshow.
 If the linear index requires 1024 disk blocks (1MB), the second-level
 index contains only 1024 entries, one per disk block.
+
+.. TODO::
+   :type: Explanation
+
+   The slideshow should subsume the next paragraph and the caption.
+
 To find which disk block contains a desired search key value,
 first search through the 1024-entry table to
 find the greatest value less than or equal to the search key.
@@ -72,14 +71,9 @@ accessing a record by this method requires two disk reads:
 one from the index file and one from the database file for the actual
 record.
 
-.. _LinIndex:
-
-.. odsafig:: Images/LinIndex.png
-   :width: 450
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: A simple two-level linear index
+.. inlineav:: linindexCON ss
+   :output: show
+   :align: justify
 
    A simple two-level linear index.
    The linear index is stored on disk.
@@ -92,6 +86,8 @@ record.
    Thus, the first entry of the second-level index is key value 1
    (the first key in the first block of the linear index), while the
    second entry of the second-level index is key value 2003.
+
+.. avembed:: AV/Development/linearIndexingPRO.html pe
 
 Every time a record is inserted to or deleted from the database,
 all associated secondary indices must be updated.
@@ -205,3 +201,5 @@ this a good implementation for disk-based inverted files.
    in the primary key array.
    The ``next`` field of the primary key array indicates the next
    record with that secondary key value.
+   
+.. odsascript:: AV/Development/linearIndexingCON.js

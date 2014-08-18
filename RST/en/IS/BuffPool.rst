@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: File Processing
 
-.. odsalink:: AV/Development/BuffPoolTestCON.css      
+.. odsalink:: AV/Development/buffpoolCON.css      
 
 Buffer Pools
 ============
@@ -17,13 +17,15 @@ Buffer Pools
 
    Fix the reference to the example.
 
-Given the specifications of the disk drive from
-Example :num:`DiskExamp`, we find that it takes about
+Given a :ref:`disk drive <DiskExamp>`
+rotating at 5400 rpm, :term:`average seek time` of 9.5ms,
+and :term:`track-to-track seek time` of 2.2ms,
+we can calculate that it takes about
 :math:`9.5 + 11.1 \times 1.5 = 26.2` ms
-to read one track of data on average.
+to read one :term:`track` of data on average.
 It takes about
 :math:`9.5 + 11.1/2 + (1/256)\times11.1 = 15.1` ms on average
-to read a single sector of data.
+to read a single :term:`sector` of data.
 This is a good savings (slightly over half the time), but
 less than 1% of the data on the track are read.
 If we want to read only a single byte, it would save us effectively no
@@ -37,20 +39,21 @@ This is known as :term:`buffering` or :term:`caching` the information.
 If the next disk request is to that same sector, then
 it is not necessary to read from disk again because the information is
 already stored in main memory.
-Buffering is an example of one method for minimizing disk
-accesses mentioned at the beginning of the chapter:
+Buffering is an example of a standard method for minimizing disk
+accesses:
 Bring off additional information from disk to satisfy future
 requests.
 If information from files were accessed at random, then the
 chance that two consecutive disk requests are to the same sector
 would be low.
 However, in practice most disk requests are close to the location
-(in the logical file at least) of the previous request.
+(in the logical file at least) of the previous request,
+a concept referred to as :term:`locality of reference`.
 This means that the probability of the next request
 "hitting the cache" is much higher than chance would indicate.
 
 This principle explains one reason why average access times for new
-disk drives are lower than in the past.
+:term:`disk drives <disk drive>` are lower than in the past.
 Not only is the hardware faster, but information is also now stored
 using better algorithms and larger caches that minimize the number
 of times information needs to be fetched from disk.
@@ -210,76 +213,13 @@ The advantage is reduced programmer effort because a good virtual memory
 system provides the appearance of larger main memory without
 modifying the program.
 
-.. topic:: Example
-
-   Consider a virtual memory whose size is ten sectors, and which has a
-   buffer pool of five buffers (each one sector in size) associated with
-   it.
-   We will use a LRU replacement scheme.
-   The following series of memory requests occurs.
-
-   .. math::
-
-      9 0 1 7 6 6 8 1 3 5 1 7 1
-
-   After the first five requests, the buffer pool will store
-   the sectors in the order 6, 7, 1, 0, 9.
-   Because Sector 6 is already at the front, the next request can be
-   answered without reading new data from disk or reordering the
-   buffers.
-   The request to Sector 8 requires emptying the contents of the least
-   recently used buffer, which contains Sector 9.
-   The request to Sector 1 brings the buffer holding Sector 1's contents
-   back to the front.
-   Processing the remaining requests results in the buffer pool as shown
-   in Figure :num:`Figure #VirtMem`.
-
-.. inlineav:: TestCON ss
+.. inlineav:: buffpoolS1CON ss
    :align: center
    :output: show
 
-.. topic:: Example
-
-   Figure :num:`Figure #VirtMem` illustrates a buffer pool of five blocks 
-   mediating a virtual memory of ten blocks.
-   At any given moment, up to five sectors of information can be in main
-   memory.
-   Assume that Sectors 1, 7, 5, 3, and 8 are currently in the buffer pool,
-   stored in this order, and that we use the LRU buffer replacement
-   strategy.
-   If a request for Sector~9 is then received, then one sector currently
-   in the buffer pool must be replaced.
-   Because the buffer containing Sector 8 is the least recently used
-   buffer, its contents will be copied back to disk at Sector 8.
-   The contents of Sector 9 are then copied into this buffer, and it is
-   moved to the front of the buffer pool (leaving the buffer containing
-   Sector 3 as the new least-recently used buffer).
-   If the next memory request were to Sector 5, then no data would
-   need to be read from disk.
-   Instead, the buffer already containing Sector 5 would be moved to the
-   front of the buffer pool.
-
-.. inlineav:: Test2CON ss
+.. inlineav:: buffpoolS2CON ss
    :align: center
    :output: show
-.. _VirtMem:
-
-.. odsafig:: Images/Virtual.png
-   :width: 300
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Virtual memory
-
-   An illustration of virtual memory.
-   The complete collection of information resides in the slower, secondary
-   storage (on disk).
-   Those sectors recently accessed are held in the fast main memory
-   (in RAM).
-   In this example, copies of Sectors 1, 7, 5, 3, and 8 from
-   secondary storage are currently stored in the main memory.
-   If a memory access to Sector 9 is received, one of the sectors
-   currently in main memory must be replaced.
 
 When implementing buffer pools, there are two basic approaches that can 
 be taken regarding the transfer of information between the user of the 
@@ -302,14 +242,23 @@ in the buffer pool's logical storage space.
 Physically, it will actually be copied to the appropriate byte
 position in some buffer in the buffer pool.
 This ADT is similar to the ``read`` and ``write`` methods of the
-``RandomAccessFile`` class discussed in Module :numref:`<FileProg>`.
+:ref:`RandomAccessFile <FileProg>` class of Java.
 
-.. topic:: Exmaple
+.. _buffdgm:
+
+.. inlineav:: buffpoolS3CON dgm
+   :align: center
+
+   Example configuration for bufferpool.
+
+.. _ExampleBuffer:
+
+.. topic:: Example
 
    Assume each sector of the disk file (and thus each block in the
    buffer pool) stores 1024 bytes.
    Assume that the buffer pool is in the state shown in
-   Figure :num:`Figure #VirtMem`.
+   Figure :num:`Figure #buffdgm`.
    If the next request is to copy 40 bytes beginning at position 6000 of
    the file, these bytes should be placed into Sector 5 (whose bytes go
    from position 5120 to position 6143).
@@ -344,7 +293,7 @@ out.
    We wish to write 40 bytes beginning at logical position 6000 in
    the file.
    Assume that the buffer pool is in the state shown in
-   Figure :num:`Figure #VirtMem`.
+   Figure :num:`Figure #buffdgm`.
    Using the second ADT, the client would need to know that blocks
    (buffers) are of size 1024, and therefore would request access to
    Sector 5.
@@ -473,4 +422,4 @@ This is in contrast to the memory manager described in
 Module :numref:`<MemmanIntro>` in which the user passes a record to
 the manager and has no control at all over where the record is stored.
 
-.. odsascript:: AV/Development/BuffPoolTestCON.js
+.. odsascript:: AV/Development/buffpoolCON.js

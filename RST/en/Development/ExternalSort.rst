@@ -8,22 +8,24 @@
    :prerequisites: FileProc
    :topic: External Sorting
 
+.. odsalink:: AV/Development/externalsort.css
+
 External Sorting
 ================
 
 We now consider the problem of sorting collections of
 records too large to fit in main memory.
 Because the records must reside in peripheral or external memory,
-such sorting methods are called :term:`external sorts`.
-This is in contrast to the internal sorts discussed in
-Chapter :chap:`Sorting` which assume that the records to be sorted are
-stored in main memory.
+such sorting methods are called
+:term:`external sorts <external sort>`. 
+This is in contrast to :ref:`internal sorts <internal sort> <InSort>`,
+which assume that the records to be sorted are stored in main memory.
 Sorting large collections of records is central to many applications,
 such as processing payrolls and other large business databases.
 As a consequence, many external sorting algorithms have been devised.
 Years ago, sorting algorithm designers sought to optimize
 the use of specific hardware configurations, such as multiple
-tape or disk drives.
+tape or :term:`disk drives <disk drive>`.
 Most computing today is done on personal computers and low-end
 workstations with relatively powerful CPUs, but only one or at most
 two disk drives.
@@ -33,21 +35,22 @@ This approach allows us to cover the most important issues in
 external sorting while skipping many less important machine-dependent
 details.
 
-When a collection of records is too large to fit in main memory,
+When a collection of records is too large to fit in
+:term:`main memory`, 
 the only practical way to sort it is to read some records from disk,
 do some rearranging, then write them back to disk.
 This process is repeated until the file is sorted, with each record
 read perhaps many times.
-Given the high cost of disk I/O, it should come as no surprise that
-the primary goal of an external sorting algorithm is to minimize the
-number of times information must be read from or written to disk.
+Given the high cost of :term:`disk I/O`, it should come as no surprise
+that the primary goal of an external sorting algorithm is to minimize
+the number of times information must be read from or written to disk.
 A certain amount of additional CPU processing can profitably be traded
 for reduced disk access.
 
 Before discussing external sorting techniques, consider again the
 basic model for accessing information from disk.
 The file to be sorted is viewed by the programmer as a sequential
-series of fixed-size :term:`blocks`.
+series of fixed-size :term:`blocks <block>`.
 Assume (for simplicity) that each block contains the same
 number of fixed-size data records.
 Depending on the application, a record might be only a few bytes |---|
@@ -58,7 +61,7 @@ These assumptions can be relaxed for special-purpose sorting
 applications, but ignoring such complications makes the principles
 clearer.
 
-As explained in Module :numref:`Diskdrive`, a sector is the basic unit
+Recall that a :ref:`sector <sector> <DiskDrive>` is the basic unit
 of I/O.
 In other words, all disk reads and writes are for one or more complete
 sectors.
@@ -71,12 +74,11 @@ or a multiple of the sector size.
 Under this model, a sorting algorithm reads a block of data into a
 buffer in main memory, performs some processing on it, and at some
 future time writes it back to disk.
-From Module :numref:`Secondary` we see that reading or writing a
-block from disk takes on the order of one million times longer than a
-memory access.
+:ref:`Recall that <Secondary>` reading or writing a block from disk
+takes on the order of one million times longer than a memory access.
 Based on this fact, we can reasonably expect that the records
 contained in a single block can be sorted by an internal
-sorting algorithm such as Quicksort
+sorting algorithm such as :ref:`Quicksort Quicksort <Quicksort>`
 in less time than is required to read or write the block.
 
 Under good conditions, reading from a file in sequential
@@ -220,27 +222,12 @@ Figure :num:`Figure #ExMerge`.
 
 .. _ExMerge:
 
-.. odsafig:: Images/ExMerge.png
-   :width: 500
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: A simple external Mergesort algorithm
-
-   A simple external Mergesort algorithm.
-   Input records are divided equally between two input files.
-   The first runs from each input file are merged and placed into the
-   first output file.
-   The second runs from each input file are merged and placed in the
-   second output file.
-   Merging alternates between the two output files until the input
-   files are empty.
-   The roles of input and output files are then reversed, allowing
-   the runlength to be doubled with each pass.
+.. inlineav:: ExternalMergeSort ss
+   :output: show
 
 
 #. Split the original file into two equal-sized
-   :term:`run files`.
+   :term:`run files <run file>`.
 
 #. Read one block from each run file into input buffers.
 
@@ -267,28 +254,6 @@ Figure :num:`Figure #ExMerge`.
 #. Each pass through the run files provides larger and larger runs
    until only one run remains.
 
-.. topic:: Example
-
-   Using the input of Figure :num:`Figure #ExMerge`,
-   we first create runs of length one split between two input files.
-   We then process these two input files sequentially, making runs of
-   length two.
-   The first run has the values 20 and 36, which are output to the
-   first output file.
-   The next run has 13 and 17, which is output to the second file.
-   The run 14, 28 is sent to the first file, then run 15, 23 is sent
-   to the second file, and so on.
-   Once this pass has completed, the roles of the input files and
-   output files are reversed.
-   The next pass will merge runs of length two into runs of length
-   four.
-   Runs 20, 36 and 13, 17 are merged to send 13, 17, 20, 36 to the
-   first output file.
-   Then runs 14, 28 and 15, 23 are merged to send run 14, 15, 23, 28
-   to the second output file.
-   In the final pass, these runs are merged to form the final run 13,
-   14, 15, 17, 20, 23, 28, 36.
-
 This algorithm can easily take advantage of the
 double buffering techniques described in Module :numref:`BuffPool`.
 Note that the various passes read the input run files
@@ -310,20 +275,8 @@ A simple modification is to read in a block of data, sort it in
 memory (perhaps using Quicksort), and then output it as a single
 sorted run.
 
-.. topic:: Example
-
-   Assume that we have blocks of size 4KB, and records are eight bytes
-   with four bytes of data and a 4-byte key.
-   Thus, each block contains 512~records.
-   Standard Mergesort would require nine passes to generate runs of
-   512 records, whereas processing each block as a unit can be done
-   in one pass with an internal sort.
-   These runs can then be merged by Mergesort.
-   Standard Mergesort requires eighteen passes to process 256K records.
-   Using an internal sort to create initial runs of 512 records reduces
-   this to one initial pass to create the runs and nine merge passes to
-   put them all together, approximately half as many passes.
-
+.. inlineav:: ExternalMergeSortExample ss
+   :output: show
 
 We can extend this concept to improve performance even
 further.
@@ -396,12 +349,8 @@ This process is illustrated by Figure :num:`Figure #RSOver`.
 
 .. _RSOver:
 
-.. odsafig:: Images/RSOver.png
-   :width: 500
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Overview of replacement selection
+.. inlineav:: externalSortOver dgm
+   :align: justify
 
    Overview of replacement selection.
    Input records are processed sequentially.
@@ -458,28 +407,15 @@ run.
 Once the first run is complete (i.e., the heap becomes empty), the
 array will be filled with records ready to be processed for the second
 run.
-Figure :num:`Figure #RepSel` illustrates part of a run being created
+Figure :num:`Figure #ReplacementSelection` illustrates part of a run being created
 by replacement selection.
 
-.. _RepSel:
 
-.. odsafig:: Images/RepSel.png
-   :width: 300
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Replacement selection
+.. _ReplacementSelection:
 
-   Replacement selection example.
-   After building the heap, root value 12
-   is output and incoming value 16 replaces it.
-   Value 16 is output next, replaced with incoming value 29.
-   The heap is reordered, with 19 rising to the root.
-   Value 19 is output next.
-   Incoming value 14 is too small for this run and is placed at en
-   of the array, moving value 40 to the root.
-   Reordering the heap results in 21 rising to the root, which
-   is output next.
+.. inlineav:: ExternalReplacementSelection ss
+   :output: show
+
 
 It should be clear that the minimum length of a run will be :math:`M`
 records if the size of the heap is :math:`M`, because at least those
@@ -518,12 +454,8 @@ revolution (leaving :math:`S` snow behind).
 
 .. _SnowPlow:
 
-.. odsafig:: Images/SnowPlow.png
-   :width: 250
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: The snowplow analogy
+.. inlineav:: externalSortSnow dgm
+   :align: justify
 
    The snowplow analogy showing the action during one
    revolution of the snowplow.
@@ -552,6 +484,7 @@ snow falls evenly throughout the track).
 Sorted and reverse sorted inputs do not meet this expectation and so
 change the length of the run.
 
+.. avembed:: AV/Development/externalReplacementSelectionPRO.html pe
 
 Multiway Merging
 ----------------
@@ -588,26 +521,10 @@ and selects the smallest one to output.
 This value is removed from its run, and the process is repeated.
 When the current block for any run is exhausted, the next block from
 that run is read from disk.
-Figure :num:`Figure #MultiMrg` illustrates a multiway merge.
+The following slideshow illustrates a multiway merge.
 
-.. _MultiMrg:
-
-.. odsafig:: Images/MultiMrg.png
-   :width: 350
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Multiway merge
-
-   Illustration of multiway merge.
-   The first value in each input run is examined and the smallest sent
-   to the output.
-   This value is removed from the input and the process repeated.
-   In this example, values 5, 6, and 12 are compared first.
-   Value 5  is removed from the first run and sent to the output.
-   Values 10, 6, and 12 will be compared next.
-   After the first five values have been output, the "current" value
-   of each block is the one underlined.
+.. inlineav:: MultiMerge ss
+   :output: show
 
 Conceptually, multiway merge assumes that each run is stored in a
 separate file.
@@ -624,6 +541,8 @@ Thus, multiway merging replaces several (potentially) sequential
 passes with a single random access pass.
 If the processing would not be sequential anyway (such as when all
 processing is on a single disk drive), no time is lost by doing so.
+
+.. avembed:: AV/Development/externalMultiwayMergePRO.html pe
 
 Multiway merging can greatly reduce the number of passes required.
 If there is room in memory to store one block for each run, then all
@@ -760,3 +679,11 @@ following:
 * If possible, use additional disk drives for more overlapping of
   processing with I/O, and to allow for sequential file
   processing.
+
+.. odsascript:: JSAV/extras/binaryheap.js
+.. odsascript:: AV/Development/externalsort.js
+.. odsascript:: AV/Development/externalsortsnow.js
+.. odsascript:: AV/Development/externalMergeSort.js
+.. odsascript:: AV/Development/externalMergeSortExample.js
+.. odsascript:: AV/Development/externalReplacementSelection.js
+.. odsascript:: AV/Development/externalMultiMerge.js

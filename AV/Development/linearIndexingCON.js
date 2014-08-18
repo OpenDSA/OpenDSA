@@ -194,4 +194,3 @@ arr3.css(index, {"background-color": "#ddf"});
 
   
 }(jQuery));
-  
