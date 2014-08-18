@@ -99,11 +99,13 @@ Both
 					BASE_URL = "<IP>:<PORT>"
 					Ex: BASE_URL = "127.0.0.1:8000"
 
-6.  python manage.py syncdb
-7. Create an administrator (superuser) account when prompted 
+6. Create an empty file named daily_stats.json, inside  the "media root"
+ directory specified in settings.py file 
+7.  python manage.py syncdb
+8. Create an administrator (superuser) account when prompted 
 
-8. python manage.py runserver 0.0.0.0:8000
-9. In your web browser, go to: http://127.0.0.1:8000/admin/
+9. python manage.py runserver 0.0.0.0:8000
+10. In your web browser, go to: http://127.0.0.1:8000/admin/
 
 Notes
 -----
