@@ -28,27 +28,30 @@
       color: #000 !important;
       font-weight: bold;
     }
+    #jsavcontainer .jsavline {
+      height: 20px;
+    }
   </style>
 </head>
 
 <body>
-  <h1>Radix Exchange Sort</h1>
   <div id="jsavcontainer">
-    <p class="instructLabel">Instructions:</p>
-    <p class="instructions">
-      Click on two elements to swap their values. Call the radix exchange sort function for the next bit by clicking the <strong>call</strong> button and by selecting the bounds for the function. Return from the function by clicking the <strong>return</strong> button.
-    </p>
+    <h1 class="exerciseTitle"></h1>
+    <p class="instructLabel"></p>
+    <p class="instructions"></p>
     <p align="center" class="jsavexercisecontrols"></p>
     <p class="jsavscore"></p>
     <p class="jsavoutput jsavline"></p>
   </div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
   <script src="../../JSAV/lib/jquery.transit.js"></script>
   <script src="../../JSAV/lib/raphael.js"></script>
-  <script src="../../JSAV/build/JSAV.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
   <script src="../../JSAV/extras/stack.js"></script>
+  <script src="../../lib/odsaUtils-min.js"></script>
+  <script src="../../lib/odsaAV-min.js"></script>
   <script src="ClickHandler.js"></script>
   <script src="radixExchangeSortPRO.js"></script>
 </body>
