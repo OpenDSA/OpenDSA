@@ -69,7 +69,7 @@ variables and expressions should use LaTeX markup embedded in a
 ``:math:`` directive.
 "Codey" variables and expressions should be marked up as::
 
-    ``code``
+   ``my codey text``
 
 All variables (and expressions) should always get their appropriate
 typeface.

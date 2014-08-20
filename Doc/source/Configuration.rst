@@ -70,8 +70,16 @@ Please see the comment at the beginning of configure.py for more information abo
 Module and Exercise Removal
 ===========================
 
-* Only the modules listed in the configuration file will be included.  To remove a module from the book, simply remove the module object from the configuration file.
-* To remove an exercise from a module, set the "remove" attribute to true.  Exercises that do not appear in the configuration file will still be included in the book using the default configuration options.  During configuration, a list will be printed of any exercises which were encountered in the modules but not present in the configuration file.
+* Only the modules listed in the configuration file will be included.
+  To remove a module from the book, simply remove the module object
+  from the configuration file.
+
+* To remove an exercise from a module, set the "remove" attribute to
+  true.  Exercises that do not appear in the configuration file will
+  still be included in the book using the default configuration
+  options.  During compilation, a list will be printed of any
+  exercises which were encountered in the modules but not present in
+  the configuration file.
 
 
 Future Features
@@ -244,3 +252,60 @@ All are required unless otherwise specified.
 
       * The following example would set C++ as the language for the codeinclude "Sorting/Mergesort"
       * Ex: "codeinclude": {"Sorting/Mergesort": "C++"}
+
+---------------------
+Configuring Exercises
+---------------------
+
+The most important concern when configuring proficiency exercises is
+the scoring option to be used.
+JSAV-based proficiency exercises have a number of possible grading
+methods:
+
+* ``atend``: Scores are only shown at the end of the exercise.
+* ``continuous:undo``: Mistakes are undone, the student will lose that
+  point but have to repeat the step.
+* ``continuous:fix``: On a mistake, the step is corrected, the student
+  loses that point, and then is ready to attempt the next step. This
+  mode requires that the exercise have the capability to fix the
+  step. If it does not, this grading mode will default to
+  ``continuous:undo``.
+
+All proficiency exercises can be controlled through URL
+parameters. What the configuration file actualy does by setting
+``exer_options`` is specify what should be in those URL parameters
+that are sent to the exercise by the OpenDSA module page.
+Here is an example for configuring an exercise::
+
+          "shellsortPRO": {
+            "long_name": "Shellsort Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.9,
+            "exer_options": {
+              "JXOP-feedback": "continuous",
+              "JXOP-fixmode": "fix"
+            }
+          },
+
+This configuration will affect the configuration of an entity called
+``shellsortPRO`` (presumeably defined by an ``..avembed`` directive in
+the corresponding OpenDSA module).
+It is scored (as defined by the ``required`` field being ``true``),
+and is worth 2.0 points of credit once he/she reaches "proficiency".
+To reach "proficiency" requires correctly achieving 90% of the
+possible steps on some attempt at the exercise (as defined by
+``threshold``).
+The exercise is instructed to use the ``continuous:fix`` mode of
+scoring.
+
+In addition to the standard ``JXOP-feedback`` and ``JXOP-fixmode``
+parameters, a given AV or exercise might have ad hoc parameter
+settings that it can accept via URL parameter.
+Examples might be algorithm variations or initial data input values.
+Those would have to be defined by the exercise itself.
+These (along with the standard grading options) can also have defaults
+defined in the ``.json`` file associated with the AV or exercise,
+which might help to document the available options.
+Any such ad hoc parameter defaults can be over-ridden in the
+``exer_options`` setting in the configuration file.

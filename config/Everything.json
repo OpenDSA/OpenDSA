@@ -947,9 +947,17 @@
       "Development/HuffProof": {
         "long_name": "Proof for Huffman Coding",
         "exercises": {}
+      },
+      "Development/BinaryTreeSumm": {
+        "long_name": "Binary Tree Exercises",
+        "exercises": {}
       }
     },
     "Spatial Data Structures": {
+      "Development/Spatial": {
+        "long_name": "Spatial Data Structures",
+        "exercises": {}
+      },
       "Development/Bintree": {
         "long_name": "Bintrees",
         "exercises": {}
@@ -1545,7 +1553,34 @@
       },
       "Development/BuffPool": {
         "long_name": "Buffer Pools",
-        "exercises": {}
+        "exercises": {
+         "buffpoolS1CON": {
+            "long_name": "Buffer Pool Slideshow 1",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+         "buffpoolS2CON": {
+            "long_name": "Buffer Pool Slideshow 2",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "buffpoolS3CON": {},
+          "BufferPoolAV": {
+            "long_name": "Buffer Pool Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "bufferpoolPRO": {
+            "long_name": "Buffer Pool Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1.0
+          }
+        }
       },
       "Development/FileProg": {
         "long_name": "Programmer's View of Files",
@@ -1952,7 +1987,7 @@
           }
         }
       },
-      "Stubs/PerfectHash": {
+      "Development/PerfectHash": {
         "long_name": "Perfect Hashing",
         "exercises": {
           "perfectHashAV": {
@@ -2025,7 +2060,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "linkedindexCON": {
+          "linindexCON": {
             "long_name": "Two-level linear index Slideshow",
             "required": false,
             "points": 0.0,
@@ -2044,8 +2079,27 @@
         "exercises": {}
       },
       "Development/TreeIndexing": {
-        "long_name": "Linear Indexing",
-        "exercises": {}
+        "long_name": "Tree Indexing",
+        "exercises": {
+          "pagedBST_CON": {
+            "long_name": "Paged BST Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "rebalanceBST_CON": {
+            "long_name": "Paged BST With Disk Accesses Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "TreeIndexing": {
+            "long_name": "Tree Indexing Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
       },
       "Development/TwoThreeTree": {
         "long_name": "2-3 Trees",
@@ -2147,26 +2201,6 @@
       },
       "Development/AmortAnal": {
         "long_name": "Amortized Analysis",
-        "exercises": {}
-      }
-    },
-    "Advanced Linear Structures": {
-      "Stubs/Multilists": {
-        "long_name": "Multilists",
-        "exercises": {}
-      },
-      "Stubs/SparseMatrix": {
-        "long_name": "Sparse Matrices",
-        "exercises": {}
-      }
-    },
-    "Advanced Trees": {
-      "Stubs/Spatial": {
-        "long_name": "Spatial Data Structures",
-        "exercises": {}
-      },
-      "Stubs/Trie": {
-        "long_name": "Tries",
         "exercises": {}
       }
     },
@@ -2339,10 +2373,6 @@
       },
       "Development/NPCoping": {
         "long_name": "Coping with NP-complete problems",
-        "exercises": {}
-      },
-      "Stubs/Computability": {
-        "long_name": "Computability",
         "exercises": {}
       }
     },

@@ -5,7 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: comparison; insertion sort
+   :satisfies: shellsort
    :topic: Indexing
 
 .. odsalink:: AV/Development/treeIndexingCON.css
@@ -74,36 +75,22 @@ a minimum.
 
 We could select a scheme for balancing the BST and allocating BST
 nodes to blocks in a way that minimizes disk I/O, as illustrated by
-Figure :num:`Figure #PagedBST`.
+the first slideshow.
 However, maintaining such a scheme in the face of insertions and
 deletions is difficult.
 In particular, the tree should remain balanced when an update takes
 place, but doing so might require much reorganization.
 Each update should affect only a few blocks, or its cost will be
 too high.
-As you can see from Figure :num:`Figure #Rebalance`,
+As you can see from the second slideshow,
 adopting a rule such as requiring the BST to be complete can cause a
 great deal of rearranging of data within the tree.
 
-.. _PagedBST:
+.. inlineav:: pagedBST_CON ss
+   :output: show
 
-.. inlineav:: pagedBSTCON dgm
-   :align: justify
-
-   Breaking the BST into blocks.
-   The BST is divided among disk blocks, each with space for three nodes.
-   The path from the root to any leaf is contained on two blocks.
-
-.. _Rebalance:
-
-.. inlineav:: balanceBSTCON dgm
-   :align: justify
-
-   An attempt to re-balance a BST after insertion can be expensive.
-   (a) A BST with six nodes in the shape of a complete binary tree.
-   (b) A node with value 1 is inserted into the BST of (a).
-   To maintain both the complete binary tree shape and the BST property,
-   a major reorganization of the tree is required.
+.. inlineav:: rebalanceBST_CON ss
+   :output: show
 
 We can solve these problems by selecting another tree structure that
 automatically remains balanced after updates, and which is amenable
@@ -111,12 +98,14 @@ to storing in blocks.
 There are a number of balanced tree data structures, and
 there are also techniques for keeping BSTs balanced.
 Examples are the AVL and splay trees.
-As an alternative, Module :numref:`<TwoThreeTree>` presents the
-2-3 Tree, which has the property that its leaves are always at the
-same level.
+As an alternative,
+the :ref:`2-3 Tree <2-3 tree> <TwoThreeTree>` has the property that its leaves
+are always at the same level.
 The main reason for discussing the 2-3 Tree here in preference to the
 other balanced search trees is that it naturally
-leads to the B-tree of Module :numref:`<BTree>`, which is by far the
+leads to the :ref:`B-tree <B-tree> <BTree>`, which is by far the
 most widely used indexing method today.
+
+.. avembed:: Exercises/Development/TreeIndexing.html ka
 
 .. odsascript:: AV/Development/treeIndexingCON.js

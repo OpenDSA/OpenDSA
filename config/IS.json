@@ -16,28 +16,6 @@
       "IS/FirstFit": {
         "long_name": "First Fit",
         "exercises": {}
-      },
-      "IS/BuffPool": {
-        "long_name": "Buffer Pool",
-        "exercises": {
-         "buffpoolS1CON": {
-            "long_name": "Buffer Pool Slideshow 1",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-         "buffpoolS2CON": {
-            "long_name": "Buffer Pool Slideshow 2",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-         "buffpoolS3CON": {}
-        }
-      },
-      "IS/TreeIndexing.rst": {
-        "long_name": "Tree Indexing",
-        "exercises": {}
       }
     },
     "Appendix": {

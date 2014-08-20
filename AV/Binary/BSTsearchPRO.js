@@ -1,5 +1,5 @@
 ﻿"use strict";
-/*global alert: true, BST, ODSA */
+/*global alert: true, BST, ODSA, PARAMS */
 $(document).ready(function () {
   // Process about button: Pop up a message with an Alert
   function about() {
@@ -52,7 +52,16 @@ $(document).ready(function () {
     $key.html("<li>" + keyToFind + "</li>");
     av.ds.array($key, {indexed: false}).css(0, {"background-color": "#ddf"}).toggleArrow(0);
 
-    av.container.find(".jsavcanvas").css("min-height", 455);
+    var minHeight = 455;
+    if (pseudo) {
+      var $container = $("#container"),
+          height = $container.height(),
+          pseudoHeight = pseudo.element.outerHeight(true);
+
+      $container.height(height + pseudoHeight);
+      minHeight += pseudoHeight;
+    }
+    av.container.find(".jsavcanvas").css("min-height", minHeight);
 
     return jsavBinaryTree;
   }
@@ -116,7 +125,9 @@ $(document).ready(function () {
   // Start processing here
   //////////////////////////////////////////////////////////////////
   // Load the interpreter created by odsaAV.js
-  var interpret = ODSA.UTILS.loadConfig().interpreter;
+  var config = ODSA.UTILS.loadConfig(),
+      interpret = config.interpreter,
+      code = config.code;
 
   // Settings for the AV
   var settings = new JSAV.utils.Settings($(".jsavsettings"));
@@ -124,12 +135,17 @@ $(document).ready(function () {
   var levels = 6,
       nodeNum = Math.pow(2, levels) - 1,
       keyToFind,
+      pseudo,
       initialData = [],
       jsavBinaryTree,
       $key = $('#keyToFind'),
       av = new JSAV($(".avcontainer"), {settings: settings});
 
   av.recorded(); // we are not recording an AV with an algorithm
+
+  if (PARAMS["JXOP-code"] && PARAMS["JXOP-code"].toLowerCase() !== "none") {
+    pseudo = av.code($.extend({after: {element: $(".instructions")}, visible: true}, code));
+  }
 
   var exercise = av.exercise(modelSolution, initialize,
                              { compare: [{ "css": "background-color" }, {}],

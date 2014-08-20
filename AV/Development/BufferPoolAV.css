@@ -1,6 +1,6 @@
 #container {
   width: 800px;
-  height: 740px;
+  height: 600px;
 }
 
 #bottom {
@@ -28,8 +28,12 @@
   display: none;
 }
 
+
+#container {
+  top: 30px;
+}
 .avcontainer {
-  margin-top: 0;
+  top: 30px;
 }
 
 .jsavarray {
@@ -43,9 +47,18 @@
   padding-left: 20px;
 }
 
+.jsavcontainer {
+  top: 50px;
+}
+
+.jsavoutput.jsavline {
+  top: 50px;
+  border: 1px;
+}
+
 .jsavcanvas {
   margin-top: 10px;
-  height: 550px;
+  height: 500px;
   width: 800px;
 }
 

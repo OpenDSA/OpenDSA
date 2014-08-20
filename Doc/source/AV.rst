@@ -3,6 +3,24 @@
 Notes for AV and Exercise Developers
 ====================================
 
+Configuration
+-------------
+
+Any JSAV-based AV (both standalone and in-lined slideshows) and
+exercises can be associated with a configuration file.
+This is a ``.json`` file whose default name is the same as the name of
+the container for an inlined slideshow, or the same as the standalone
+AV or exercise (that is, ``myAV.html``, ``myAV.js``, and
+``myAV.json``).
+
+Configuration files support sections for defining all strings (used
+for internationalziation support), mapping logical names to code lines
+(to support alternate programming language examples in JSAV code
+objects), and setting defaults for configuration parameters.
+
+Until we get proper documentation, see some of the ``.json`` files in
+the ``AV`` directory for examples.
+
 Equations
 ---------
 
