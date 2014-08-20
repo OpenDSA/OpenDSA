@@ -27,6 +27,8 @@
             "points": 0.0,
             "threshold": 1.0}
         }
+             
+
       },
       "RecurTutor/Write": {
       "long_name": "How to write a recursive function",
@@ -267,6 +269,13 @@
           },
          "recwprog30": { 
             "long_name": "Recursion Programming Exercise 30",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0,
+            "showhide": "Show" 
+          },
+         "recwprog31": { 
+            "long_name": "Recursion Programming Exercise 31",
             "required": true,
             "points": 0.0,
             "threshold": 1.0,

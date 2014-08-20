@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math math-format word-problems spin">
 <head>
-  <title> Recursion Programming Exercise 30</title>
+  <title> Recursion Programming Exercise 31</title>
   <script src="../../lib/jquery.min.js">
   </script>
   <script src="../../lib/jquery-ui.min.js">
@@ -12,8 +12,8 @@
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
   <style>
     #codeTextarea{
-      width:650px;
-      height:300px;
+      width:550px;
+      height:200px;
     }
     .textAreaWithLines{
       font-family:courier;      
@@ -23,7 +23,7 @@
     .textAreaWithLines textarea,.textAreaWithLines div{
       border:0px;
       line-height:120%;
-      height:300px;
+      height:200px;
       font-size:12px;
     }
     .lineObj{
@@ -49,12 +49,12 @@
       ta.style.position = 'absolute';
       ta.style.left = '30px';
       var currHeight=300;
-      var currWidth=500;
+      var currWidth=400;
       console.log(navigator.appCodeName);
        if ($.browser.mozilla) //if (navigator.appCodeName== "Mozilla" )
        {
          var currHeight=15;
-         var currWidth=70;
+         var currWidth=100;
       
        }
       el.style.height = (ta.offsetHeight + currHeight) + 'px';
@@ -70,7 +70,7 @@
       lineObj.style.textAlign = 'right';
       lineObj.className='lineObj';
       var string = '';
-      for(var no=1;no<300;no++){
+      for(var no=1;no<200;no++){
          if(string.length>0)string = string + '<br>';
          string = string + no;
       }
@@ -108,10 +108,11 @@
   <div class="problems">
     <div> <!-- Supresses answer box -->
       <p class="problem" id = "test"> 
-Write a function that takes two stacks (A and B) as inputs, with some number of integer values in Stack A, and puts these values in sorted (ascending) order into stack B. There is one int variable named temp that you can use. You may declare no other variable. 
-<textarea  id="codeTextarea">void stacksort(Stack A, Stack B){
-int temp;
-// Put your code between these lines,do not declare any variables
+Given the following recursive function signature, write the function code such that this function find out if a certain target weight can be measured or not<br />
+<p align ="center"> <img src= "../../RST/Images/oldmerch1.png" width="220" height="80"> 
+<img src= "../../RST/Images/oldmerch2.png" width="220" height="80"> </p>
+<textarea  id="codeTextarea">boolean RecIsMeasurable(int target, Vector<Integer> weights, int index)
+{
 
 
 
@@ -122,10 +123,6 @@ int temp;
 
 
 
-
-
-
-// Put your code between these lines
 }
 </textarea></p>
 
@@ -135,7 +132,8 @@ int temp;
       <div class="solution" data-type="custom">
        <div class="guess"> [ $('#codeTextarea').val() ] </div>
         <div class="validator-function">
-         window.checkdefvar =  "True";
+         
+         //return "openPop";
         </div>
       </div>
       <div class="hints">
