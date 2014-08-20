@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, BST, ODSA */
+/*global alert: true, BST, ODSA, PARAMS */
 $(document).ready(function () {
   // Process about button: Pop up a message with an Alert
   function about() {
@@ -9,16 +9,16 @@ $(document).ready(function () {
   // Set click handlers
   $("#about").click(about);
 
-  $("#decrement").click(function() {
-      var heapsize = bh.heapsize() - 1; // decrement by one
-      bh.heapsize(heapsize); // set heapsize
-      // hide last item and the edge in the tree
-      bh.css(heapsize, {"opacity": "0"});
-      bh._treenodes[heapsize].edgeToParent().css({stroke: "white"});
-      if (swapIndex.value() !== -1) {
-        swapIndex.value(-1);
-      }
-      exercise.gradeableStep();
+  $("#decrement").click(function () {
+    var heapsize = bh.heapsize() - 1; // decrement by one
+    bh.heapsize(heapsize); // set heapsize
+    // hide last item and the edge in the tree
+    bh.css(heapsize, {"opacity": "0"});
+    bh._treenodes[heapsize].edgeToParent().css({stroke: "white"});
+    if (swapIndex.value() !== -1) {
+      swapIndex.value(-1);
+    }
+    exercise.gradeableStep();
   });
 
   function init() {
@@ -28,7 +28,7 @@ $(document).ready(function () {
       swapIndex.element.remove();
     }
     $.fx.off = true;
-    var test = function(data) {
+    var test = function (data) {
       var min = 1000,
           mmax = Math.max;
       // make sure we get a collision
@@ -78,7 +78,7 @@ $(document).ready(function () {
       modelbh.heapsize(modelbh.heapsize() - 1);
       modeljsav.step();
 
-      modelbh.css(modelbh.heapsize(), {"opacity": "0"})
+      modelbh.css(modelbh.heapsize(), {"opacity": "0"});
       modelbh._treenodes[modelbh.heapsize()].edgeToParent().css("stroke", "white");
       modeljsav.stepOption("grade", true);
       modeljsav.step();
@@ -120,22 +120,38 @@ $(document).ready(function () {
   //////////////////////////////////////////////////////////////////
   // Start processing here
   //////////////////////////////////////////////////////////////////
-  // Load the interpreter created by odsaAV.js
-  var interpret = ODSA.UTILS.loadConfig().interpreter;
 
-  var initData, bh,
+  var initData,
+      bh,
+      swapIndex,
+      pseudo,
+
+      // Load the configurations created by odsaAV.js
+      config = ODSA.UTILS.loadConfig(),
+      interpret = config.interpreter,
+      code = config.code,
+      codeOptions = {after: {element: $(".instructions")}, visible: true},
+
+      // Settings for the AV
       settings = new JSAV.utils.Settings($(".jsavsettings")),
-      av = new JSAV($('.avcontainer'), {settings: settings}),
-      swapIndex;
+
+      // Create a JSAV instance
+      av = new JSAV($('.avcontainer'), {settings: settings});
 
   av.recorded();
 
-  $(".jsavcontainer").on("click", ".jsavarray .jsavindex", function() {
+  // show a JSAV code instance only if the code is defined in the parameter
+  // and the parameter value is not "none"
+  if (PARAMS["JXOP-code"] && code) {
+    pseudo = av.code($.extend(codeOptions, code));
+  }
+
+  $(".jsavcontainer").on("click", ".jsavarray .jsavindex", function () {
     var index = $(this).parent(".jsavarray").find(".jsavindex").index(this);
     clickHandler(index);
   });
     
-  $(".jsavcontainer").on("click", ".jsavbinarytree .jsavbinarynode", function() {
+  $(".jsavcontainer").on("click", ".jsavbinarytree .jsavbinarynode", function () {
     var index = $(this).data("jsav-heap-index") - 1;
     clickHandler(index);
   });
