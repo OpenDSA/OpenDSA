@@ -52,16 +52,8 @@ $(document).ready(function () {
     $key.html("<li>" + keyToFind + "</li>");
     av.ds.array($key, {indexed: false}).css(0, {"background-color": "#ddf"}).toggleArrow(0);
 
-    var minHeight = 455;
-    if (pseudo) {
-      var $container = $("#container"),
-          height = $container.height(),
-          pseudoHeight = pseudo.element.outerHeight(true);
-
-      $container.height(height + pseudoHeight);
-      minHeight += pseudoHeight;
-    }
-    av.container.find(".jsavcanvas").css("min-height", minHeight);
+    // set min-height for the canvas
+    av.container.find(".jsavcanvas").css("min-height", 442);
 
     return jsavBinaryTree;
   }
@@ -124,14 +116,8 @@ $(document).ready(function () {
   //////////////////////////////////////////////////////////////////
   // Start processing here
   //////////////////////////////////////////////////////////////////
-  // Load the interpreter created by odsaAV.js
-  var config = ODSA.UTILS.loadConfig(),
-      interpret = config.interpreter,
-      code = config.code;
 
-  // Settings for the AV
-  var settings = new JSAV.utils.Settings($(".jsavsettings"));
-
+  // AV variables
   var levels = 6,
       nodeNum = Math.pow(2, levels) - 1,
       keyToFind,
@@ -139,12 +125,28 @@ $(document).ready(function () {
       initialData = [],
       jsavBinaryTree,
       $key = $('#keyToFind'),
+
+      // Load the configurations created by odsaAV.js
+      config = ODSA.UTILS.loadConfig(),
+      interpret = config.interpreter,
+      code = config.code,
+      codeOptions = {after: {element: $(".instructions")}, visible: true},
+
+      // Settings for the AV
+      settings = new JSAV.utils.Settings($(".jsavsettings")),
+
+      // create a JSAV instance
       av = new JSAV($(".avcontainer"), {settings: settings});
 
   av.recorded(); // we are not recording an AV with an algorithm
 
-  if (PARAMS["JXOP-code"] && PARAMS["JXOP-code"].toLowerCase() !== "none") {
-    pseudo = av.code($.extend({after: {element: $(".instructions")}, visible: true}, code));
+  // show a JSAV code instance only if the code is defined in the parameter
+  // and the parameter value is not "none"
+  if (PARAMS["JXOP-code"] && code) {
+    pseudo = av.code($.extend(codeOptions, code));
+  } else {
+    // create a dummy JSAV code instance
+    pseudo = av.code([], codeOptions);
   }
 
   var exercise = av.exercise(modelSolution, initialize,

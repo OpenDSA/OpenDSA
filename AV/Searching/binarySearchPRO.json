@@ -37,9 +37,9 @@
       "url": "../../SourceCode/Java/Searching/bsearch.java",
       "lineNumbers": true,
       "tags": {
-        "highlight": 9,
-        "tbl_mid_lt_key": [10, 11],
-        "tbl_mid_gt_key": [12, 13]
+        "highlight": 7,
+        "tbl_mid_lt_key": 8,
+        "tbl_mid_gt_key": 9
       }
     },
     "processing" : {
