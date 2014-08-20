@@ -1,5 +1,5 @@
 ﻿"use strict";
-/*global alert: true, BST, ODSA */
+/*global alert: true, BST, ODSA, PARAMS */
 $(document).ready(function () {
   // Process about button: Pop up a message with an Alert
   function about() {
@@ -104,7 +104,8 @@ $(document).ready(function () {
     }
 
     var modelStack = av.ds.stack({center: true});
-    for (var i = 0; i < deleteSize; i++) {
+    var i;
+    for (i = 0; i < deleteSize; i++) {
       modelStack.addLast(deleteValues[i]);
     }
     modelStack.layout();
@@ -116,7 +117,7 @@ $(document).ready(function () {
 
     av._undo = [];
 
-    for (var i = 0; i < deleteSize; i++) {
+    for (i = 0; i < deleteSize; i++) {
       //highlight the value which should be deleted
       modelStack.first().highlight();
       //node which should be deleted
@@ -191,7 +192,7 @@ $(document).ready(function () {
     }
   }
 
-  function clickHandler() {
+  var clickHandler = function () {
     if (stack.size() && !this.hasClass("jsavnullnode")) {
       //find possible empty node between this and root
       var empty = this;
@@ -231,7 +232,7 @@ $(document).ready(function () {
       }
       exercise.gradeableStep();
     }
-  }
+  };
 
   // helper function for creating a perfect binary tree
   function perfectBinTree(arr, level, min, max, levelsInTotal, arrayIndex) {
@@ -247,12 +248,8 @@ $(document).ready(function () {
   //////////////////////////////////////////////////////////////////
   // Start processing here
   //////////////////////////////////////////////////////////////////
-  // Load the interpreter created by odsaAV.js
-  var interpret = ODSA.UTILS.loadConfig().interpreter;
 
-  // Settings for the AV
-  var settings = new JSAV.utils.Settings($(".jsavsettings"));
-
+  // AV variables
   var initialArray = [],
       deleteValues = [],
       jsavTree,
@@ -260,9 +257,30 @@ $(document).ready(function () {
       deleteSize = 5,          //delete 5 values/nodes
       treeSize = 20,          //20 nodes
       maxHeight = 6,
+      pseudo,
+
+      // Load the configurations created by odsaAV.js
+      config = ODSA.UTILS.loadConfig(),
+      interpret = config.interpreter,
+      code = config.code,
+      codeOptions = {after: {element: $(".instructions")}, visible: true},
+
+      // Settings for the AV
+      settings = new JSAV.utils.Settings($(".jsavsettings")),
+
+      // Create a JSAV instance
       av = new JSAV($(".avcontainer"));
 
   av.recorded(); // we are not recording an AV with an algorithm
+
+  // show a JSAV code instance only if the code is defined in the parameter
+  // and the parameter value is not "none"
+  if (PARAMS["JXOP-code"] && code) {
+    pseudo = av.code($.extend(codeOptions, code));
+  } else {
+    // create a dummy JSAV code instance
+    pseudo = av.code([], codeOptions);
+  }
 
   var exercise = av.exercise(modelSolution, initialize,
                              {controls: $(".jsavexercisecontrols"),

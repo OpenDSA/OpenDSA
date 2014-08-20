@@ -316,9 +316,11 @@ def initialize_conf_py_options(config, slides):
   return options
 
 
-def configure(config_file_path, slides = False):
+def configure(config_file_path, options):
   """Configure an OpenDSA textbook based on a validated configuration file"""
   global satisfied_requirements
+
+  slides = options.slides
 
   print "Configuring OpenDSA, using " + config_file_path
 
@@ -364,6 +366,10 @@ def configure(config_file_path, slides = False):
     # Print an extra line to separate this section from any additional errors
     print_err('')
 
+  # Stop if we are just running a dry-run
+  if options.dry_run:
+    return
+
   # Entries are only added to todo_list if config.suppress_todo is False
   if len(todo_list) > 0:
     generate_todo_rst(config, slides)
@@ -382,11 +388,11 @@ def configure(config_file_path, slides = False):
   options = initialize_conf_py_options(config, slides)
 
   # Create a Makefile in the output directory
-  with open(config.book_dir + 'Makefile','w') as makefile:
+  with open(config.book_dir + 'Makefile', 'w') as makefile:
     makefile.writelines(makefile_template % options)
 
   # Create conf.py file in output source directory
-  with codecs.open(config.book_src_dir + 'conf.py','w', "utf-8") as conf_py:
+  with codecs.open(config.book_src_dir + 'conf.py', 'w', "utf-8") as conf_py:
     conf_py.writelines(conf % options)
 
   # Copy only the images used by the book from RST/Images/ to the book source directory
@@ -416,7 +422,8 @@ def configure(config_file_path, slides = False):
 # Code to execute when run as a standalone program
 if __name__ == "__main__":
   parser = OptionParser()
-  parser.add_option("-s", "--slides", help="Causes configure.py to create slides", dest="slides", action="store_true")
+  parser.add_option("-s", "--slides", help="Causes configure.py to create slides", dest="slides", action="store_true", default=False)
+  parser.add_option("--dry-run", help="Causes configure.py to configure the book but stop before compiling it", dest="dry_run", action="store_true", default=False)
   (options, args) = parser.parse_args()
 
   if options.slides:
@@ -425,9 +432,8 @@ if __name__ == "__main__":
     os.environ['SLIDES'] = 'no'
 
   # Process script arguments
-  if len(sys.argv) > 3:
-    print_err("Invalid config filename")
-    print_err("Usage: " + sys.argv[0] + " [-s] config_file_path")
+  if len(args) != 1:
+    print_err("Usage: " + sys.argv[0] + " [-s] [--dry-run] config_file_path")
     sys.exit(1)
 
-  configure(args[0], options.slides)
+  configure(args[0], options)

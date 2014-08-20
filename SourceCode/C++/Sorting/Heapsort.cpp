@@ -7,9 +7,9 @@ void heapsort(Comparable* A[], int n) {
   for (int j = 0; j<n; j++)
     std::cout << *A[j] << " ";
   std::cout << std::endl;
-  MaxHeap H(A,n,n);  
+  MaxHeap H(A,n,n);
   std::cout << "Now, ready to unpack the heap" << std::endl;
-  for (int i = 0; i < n; i++) 
+  for (int i = 0; i < n; i++)
      H.removemax();
 }
 /* *** ODSAendTag: Heapsort *** */
@@ -40,7 +40,7 @@ bool sorttest(int array[], int n, int threshold) {
   //    cout << *A[i] << " ";
   //  }
   //  cout << std::endl;
-  
+
   heapsort(A, n);
 
   if (!checkorder(A, n)) return false;
@@ -50,7 +50,7 @@ bool sorttest(int array[], int n, int threshold) {
   }
 
   /* Sort an array of KVPairs */
-  
+
   for (i = 0; i < n; ++i) {
     A[i] = new KVPair(array[i], &array[i]);
   }
@@ -62,7 +62,7 @@ bool sorttest(int array[], int n, int threshold) {
   for (i = 0; i < n; ++i) {
     delete A[i];
   }
-  
+
   delete[] array;
 
   return true;

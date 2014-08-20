@@ -1,5 +1,5 @@
 ﻿"use strict";
-/*global alert: true, BST, ODSA */
+/*global alert: true, BST, ODSA, PARAMS */
 $(document).ready(function () {
   // Process about button: Pop up a message with an Alert
   function about() {
@@ -39,7 +39,7 @@ $(document).ready(function () {
     binaryTree.click(clickHandler);
     binaryTree.layout();
 
-    av.container.find(".jsavcanvas").css("min-height", 455);
+    av.container.find(".jsavcanvas").css("min-height", 442);
 
     return binaryTree;
   }
@@ -125,19 +125,36 @@ $(document).ready(function () {
   //////////////////////////////////////////////////////////////////
   // Start processing here
   //////////////////////////////////////////////////////////////////
-  // Load the interpreter created by odsaAV.js
-  var interpret = ODSA.UTILS.loadConfig().interpreter;
 
-  // Settings for the AV
-  var settings = new JSAV.utils.Settings($(".jsavsettings"));
-
+  // AV variables
   var insertArray = [],
       binaryTree,
       stack,
       insertSize = 10,
-      av = new JSAV($(".avcontainer"));
+      pseudo,
+
+      // Load the configurations created by odsaAV.js
+      config = ODSA.UTILS.loadConfig(),
+      interpret = config.interpreter,
+      code = config.code,
+      codeOptions = {after: {element: $(".instructions")}, visible: true},
+
+      // Settings for the AV
+      settings = new JSAV.utils.Settings($(".jsavsettings")),
+
+      // create a JSAV instance
+      av = new JSAV($(".avcontainer"), {settings: settings});
 
   av.recorded(); // we are not recording an AV with an algorithm
+
+  // show a JSAV code instance only if the code is defined in the parameter
+  // and the parameter value is not "none"
+  if (PARAMS["JXOP-code"] && code) {
+    pseudo = av.code($.extend(codeOptions, code));
+  } else {
+    // create a dummy JSAV code instance
+    pseudo = av.code([], codeOptions);
+  }
 
   var exercise = av.exercise(modelSolution, initialize,
                              {compare: {"css": "background-color"},

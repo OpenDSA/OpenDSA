@@ -121,7 +121,7 @@ The book configuration  program will read the language variable.
 If a translation for the entered language is not available, the
 default language English is used.
 The configuration process will then insert the language inside the
-translation file, and then copy the translation file to the 
+translation file, and then copy the translation file to the
 ``Books/<bookname>/_static`` directory.
 
 AVs and exercises also support internationalization through the use of
@@ -152,7 +152,7 @@ Here is an example of a relationship definition between the terms ``graph`` and 
       of a set of :term:`vertices` :math:`\mathbf{V}` and a set of
       :term:`edges` :math:`\mathbf{E}`,
       such that each edge in :math:`\mathbf{E}` is a connection between a
-      pair of vertices in :math:`\mathbf{V}`.   
+      pair of vertices in :math:`\mathbf{V}`.
 
 
 
@@ -269,40 +269,42 @@ Please refer to the example below::
       privFunct();
     }
 
-    var ODSA = {};
-    ODSA.publicFunct = publicFunct;
-    window.ODSA = ODSA;
+    var AV = {};
+    AV.publicFunct = publicFunct;
+    window.AV = AV;
   }(jQuery));
 
 Another alternative is::
 
   (function() {
-    var ODSA = {};
+    var AV = {};
 
     function privFunct() {
       alert('ODSA private function');
-      ODSA.publicFunct();
+      AV.publicFunct();
     }
 
-    ODSA.publicFunct = function() {
+    AV.publicFunct = function() {
       alert('ODSA publicFunct');
     }
 
-    ODSA.callPrivFunct = function() {
+    AV.callPrivFunct = function() {
       privFunct();
     }
 
-    window.ODSA = ODSA;
+    window.AV = AV;
   }(jQuery));
 
 In both of these example, ``publicFunct()`` can be referenced outside
-the anonymous function using ``ODSA.publicFunct()`` (or
-``window.ODSA.publicFunct()``).  We prefer the first method because it
+the anonymous function using ``AV.publicFunct()`` (or
+``window.AV.publicFunct()``).  We prefer the first method because it
 looks more like a standard JavaScript file, internal function
 references are simpler and its easy to add all the public functions in
 one place, giving the developer greater control over what they make
 public.
 
+Be sure not to overwrite any existing namespaces (such as window.ODSA
+which is used by the OpenDSA framework)!
 
 ---------------
 Troubleshooting

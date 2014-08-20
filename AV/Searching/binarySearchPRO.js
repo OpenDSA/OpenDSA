@@ -8,11 +8,6 @@ $(document).ready(function () {
 
   // show the code and highlight the row where mid is calculated
   function initialize() {
-    if (!pseudo && code) {
-      pseudo = av.code($.extend({after: {element: $(".instructions")}}, code));
-      pseudo.show();
-      pseudo.highlight("highlight");
-    }
 
     //generate random array with ascending values
     var randomVal = 0;
@@ -149,17 +144,21 @@ $(document).ready(function () {
       pseudo,
       config = ODSA.UTILS.loadConfig({"av_container": "jsavcontainer"}),
       interpret = config.interpreter,
-      av = new JSAV($("#container")),
-      code;
+      code = config.code,
+      codeOptions = {after: {element: $(".instructions")}, visible: true},
+      av = new JSAV($("#container"));
 
-  console.log("PARAMS: " + JSON.stringify(PARAMS));
-  if (PARAMS["JXOP-code"] !== undefined) {
-    code = config.code;
+  av.recorded(); // we are not recording an AV with an algorithm
+
+  if (PARAMS["JXOP-code"] && code) {
+    pseudo = av.code($.extend(codeOptions, code));
+    pseudo.highlight("highlight");
   }
+
   if (PARAMS["JXOP-feedback"] === undefined) { // Default to "atend" grading
     window.JSAV_EXERCISE_OPTIONS.feedback = "atend";
   }
-  av.recorded(); // we are not recording an AV with an algorithm
+
   var exercise = av.exercise(modelSolution, initialize,
                              {modelDialog: {width: 780}});
   exercise.reset();

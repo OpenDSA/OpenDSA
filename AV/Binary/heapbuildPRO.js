@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, ODSA */
+/*global alert: true, ODSA, PARAMS */
 $(document).ready(function () {
   // Process about button: Pop up a message with an Alert
   function about() {
@@ -14,13 +14,13 @@ $(document).ready(function () {
     if (bh) {
       bh.clear();
     }
-   $.fx.off = true;
-   var test = function(data) {
+    $.fx.off = true;
+    var test = function (data) {
       bh = av.ds.binheap(data, {size: nodeNum, stats: true, tree: false});
       var stats = bh.stats;
       bh.clear();
-      return (stats.swaps > 3 && stats.recursiveswaps > 0 && stats.leftswaps > 0
-              && stats.rightswaps > 0 && stats.partlyrecursiveswaps > 0);
+      return (stats.swaps > 3 && stats.recursiveswaps > 0 && stats.leftswaps > 0 &&
+              stats.rightswaps > 0 && stats.partlyrecursiveswaps > 0);
     };
     initData = JSAV.utils.rand.numKeys(10, 100, nodeNum, {test: test, tries: 50});
 
@@ -88,20 +88,37 @@ $(document).ready(function () {
   //////////////////////////////////////////////////////////////////
   // Start processing here
   //////////////////////////////////////////////////////////////////
-  // Load the interpreter created by odsaAV.js
-  var interpret = ODSA.UTILS.loadConfig().interpreter;
 
-  var initData, bh,
+  // AV variables
+  var initData,
+      bh,
+      swapIndex,
+      pseudo,
+
+      // Load the configurations created by odsaAV.js
+      config = ODSA.UTILS.loadConfig(),
+      interpret = config.interpreter,
+      code = config.code,
+      codeOptions = {after: {element: $(".instructions")}, visible: true},
+
+      // Settings for the AV
       settings = new JSAV.utils.Settings($(".jsavsettings")),
-      av = new JSAV($('.avcontainer'), {settings: settings}),
-      swapIndex;
+
+      // Create a JSAV instance
+      av = new JSAV($('.avcontainer'), {settings: settings});
 
   av.recorded();
 
-  $(".jsavcontainer").on("click", ".jsavindex", function() {
+  // show a JSAV code instance only if the code is defined in the parameter
+  // and the parameter value is not "none"
+  if (PARAMS["JXOP-code"] && code) {
+    pseudo = av.code($.extend(codeOptions, code));
+  }
+
+  $(".jsavcontainer").on("click", ".jsavindex", function () {
     var index = $(this).parent(".jsavarray").find(".jsavindex").index(this);
     clickHandler(index);
-  }).on("click", ".jsavbinarynode", function() {
+  }).on("click", ".jsavbinarynode", function () {
     var index = $(this).data("jsav-heap-index") - 1;
     clickHandler(index);
   });

@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, BST, ODSA */
+/*global alert: true, BST, ODSA, PARAMS */
 $(document).ready(function () {
   // Process about button: Pop up a message with an Alert
   function about() {
@@ -96,6 +96,7 @@ $(document).ready(function () {
     if (nodeNum - items !== stack.size()) {
       stack.removeFirst();
       stack.first().highlight();
+      stack.layout();
     }
     bh.heapsize(modelHeap.heapsize());
   }
@@ -108,6 +109,7 @@ $(document).ready(function () {
         bh.value(index, stack.first().value());
         stack.removeFirst();
         stack.first().highlight();
+        stack.layout();
         exercise.gradeableStep();
       }
       return;
@@ -131,19 +133,35 @@ $(document).ready(function () {
   //////////////////////////////////////////////////////////////////
   // Start processing here
   //////////////////////////////////////////////////////////////////
-  // Load the interpreter created by odsaAV.js
-  var interpret = ODSA.UTILS.loadConfig().interpreter;
 
-  var initData, bh,
-      settings = new JSAV.utils.Settings($(".jsavsettings")),
-      av = new JSAV($('.avcontainer'), {settings: settings}),
+  var initData,
+      bh,
       swapIndex,
       nodeNum = 10,
       initNum = 0,
       stack,
-      insertLabel;
+      insertLabel,
+      pseudo,
+
+      // Load the configurations created by odsaAV.js
+      config = ODSA.UTILS.loadConfig(),
+      interpret = config.interpreter,
+      code = config.code,
+      codeOptions = {after: {element: $(".instructions")}, visible: true},
+
+      // Settings for the AV
+      settings = new JSAV.utils.Settings($(".jsavsettings")),
+
+      // Create a JSAV instance
+      av = new JSAV($('.avcontainer'), {settings: settings});
 
   av.recorded();
+
+  // show a JSAV code instance only if the code is defined in the parameter
+  // and the parameter value is not "none"
+  if (PARAMS["JXOP-code"] && code) {
+    pseudo = av.code($.extend(codeOptions, code));
+  }
 
   $(".jsavcontainer").on("click", ".jsavarray .jsavindex", function () {
     var index = $(this).parent(".jsavarray").find(".jsavindex").index(this);

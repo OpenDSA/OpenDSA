@@ -1,0 +1,33 @@
+radix_exchange_sort( array :Array, bit :integer, left :integer, right :integer)
+
+  split = partition(array, bit, left, right)
+
+  if bit > 0
+    if left < split-1 // range is greater than 1
+      radix_exchange_sort(array, bit-1, left, split-1)
+ 
+    if split < right // range is greater than 1
+      radix_exchange_sort(array, bit-1, split, right)
+  end if
+
+return from function
+
+
+partition( array :Array, bit :integer, left :integer, right :integer) :integer
+
+  while left != right
+    // getBit(n) returns the n'th bit
+    while ( array[left].getBit(bit) == 0 && left < right)
+      left = left + 1
+
+    while ( array[right].getBit(bit) == 1 && left < right)
+      right = right - 1
+    
+    swap array elements at left, right
+
+  end while
+
+  if array[right].getBit(bit) == 0
+    right = right + 1
+
+  return right
