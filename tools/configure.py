@@ -432,9 +432,8 @@ if __name__ == "__main__":
     os.environ['SLIDES'] = 'no'
 
   # Process script arguments
-  if len(sys.argv) > 3:
-    print_err("Invalid config filename")
-    print_err("Usage: " + sys.argv[0] + " [-s] config_file_path")
+  if len(args) != 1:
+    print_err("Usage: " + sys.argv[0] + " [-s] [--dry-run] config_file_path")
     sys.exit(1)
 
   configure(args[0], options)
