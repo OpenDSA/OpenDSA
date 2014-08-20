@@ -15,7 +15,8 @@
   "suppress_todo": false,
   "build_cmap": true,
   "glob_exer_options": {
-    "JXOP-debug": "true"
+    "JXOP-debug": "true",
+    "JXOP-code": "none"
   },
   "chapters": {
     "Design 2": {
@@ -149,7 +150,8 @@
             "points": 1.0,
             "threshold": 0.90,
             "exer_options": {
-              "JXOP-feedback": "atend"
+              "JXOP-feedback": "atend",
+              "JXOP-code": "none"
             }
           },
           "BSTinsertCON": {
@@ -164,7 +166,8 @@
             "points": 1.0,
             "threshold": 0.90,
             "exer_options": {
-              "JXOP-feedback": "atend"
+              "JXOP-feedback": "atend",
+              "JXOP-code": "none"
             }
           },
           "BSTdeletemaxCON": {
@@ -186,7 +189,8 @@
             "threshold": 0.90,
             "exer_options": {
               "JXOP-feedback": "continuous",
-              "JXOP-fixmode": "undo"
+              "JXOP-fixmode": "undo",
+              "JXOP-code": "none"
             }
           }
         }

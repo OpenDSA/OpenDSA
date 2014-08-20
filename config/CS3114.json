@@ -761,6 +761,7 @@
           },
           "BSTsearchPRO": {
             "long_name": "BST Search Proficiency Exercise",
+            "exer_options": { "JXOP-code": "none" },
             "required": true,
             "points": 1.0,
             "threshold": 0.90
