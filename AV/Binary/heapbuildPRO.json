@@ -12,5 +12,11 @@
   "params": {
     "JXOP-feedback": "continuous",
     "JXOP-fixmode": "undo"
+  },
+  "code": {
+    "pseudo": {
+      "url": "../../SourceCode/Pseudo/heapbuild.txt",
+      "tags": {}
+    }
   }
 }

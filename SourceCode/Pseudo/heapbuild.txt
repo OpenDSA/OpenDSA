@@ -1,0 +1,20 @@
+Algorithm 1 Build-Min-Heap(A)
+    for i ← heap-size[A]/2 - 1 downto 0 do
+        Min-Heapify (A, i)
+    end for
+
+Algorithm 2 Min-Heapify(A, i)
+    l ← Left-child-index(i)
+    r ← Right-child-index(i)
+    if l < heap-size[A] and A[l] < A[i] then
+        smallest ← l
+    else
+        smallest ← i
+    end if
+    if r < heap-size[A] and A[r] < A[smallest] then
+        smallest ← r
+    end if
+    if smallest ≠ i then
+        Swap(A[i], A[smallest])
+        Min-Heapify(A, smallest)
+    end if
