@@ -1,6 +1,6 @@
 #container {
   width: 800px;
-  height: 550px;
+  min-height: 550px;
 }
 
 #decrement {
