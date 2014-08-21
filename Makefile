@@ -67,6 +67,9 @@ CS2114: min
 CS223: min
 	python $(CONFIG_SCRIPT) config/CS223.json
 
+CS2401: min
+	python $(CONFIG_SCRIPT) config/CS2401.json
+
 CS3114: min
 	python $(CONFIG_SCRIPT) config/CS3114.json
 
