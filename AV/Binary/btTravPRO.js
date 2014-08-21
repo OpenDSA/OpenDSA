@@ -1,4 +1,4 @@
-/*global alert: true, console: true, ODSA */
+/*global alert: true, console: true, ODSA, PARAMS */
 "use strict";
 $(document).ready(function () {
   // Process help button: Give a full help page for this activity
@@ -45,7 +45,7 @@ $(document).ready(function () {
     return this;
   };
   
-  JSAV._types.ds.BinaryTree.prototype.postOrderTraversal = function () {
+  var postOrderTraversal = function () {
     var i = 0,
         av = this.jsav;
     var postorderNode = function (node) {
@@ -64,7 +64,7 @@ $(document).ready(function () {
     postorderNode(this.root());
   };
   
-  JSAV._types.ds.BinaryTree.prototype.preOrderTraversal = function () {
+  var preOrderTraversal = function () {
     var i = 0,
         av = this.jsav;
     var preorderNode = function (node) {
@@ -83,7 +83,7 @@ $(document).ready(function () {
     preorderNode(this.root());
   };
   
-  JSAV._types.ds.BinaryTree.prototype.inOrderTraversal = function () {
+  var inOrderTraversal = function () {
     var i = 0,
         av = this.jsav;
     var inorderNode = function (node) {
@@ -102,7 +102,7 @@ $(document).ready(function () {
     inorderNode(this.root());
   };
   
-  JSAV._types.ds.BinaryTree.prototype.levelOrderTraversal = function () {
+  var levelOrderTraversal = function () {
     var i = 0,
         av = this.jsav,
         queue = [this.root()],
@@ -122,6 +122,11 @@ $(document).ready(function () {
       }
     }
   };
+
+  JSAV._types.ds.BinaryTree.prototype.postOrderTraversal = postOrderTraversal;
+  JSAV._types.ds.BinaryTree.prototype.preOrderTraversal = preOrderTraversal;
+  JSAV._types.ds.BinaryTree.prototype.inOrderTraversal = inOrderTraversal;
+  JSAV._types.ds.BinaryTree.prototype.levelOrderTraversal = levelOrderTraversal;
   
   JSAV._types.ds.BinaryTree.prototype.state = function (newState) {
     var state,
@@ -225,16 +230,42 @@ $(document).ready(function () {
   }
 
   function TreeTraversal(modelFunction) {
-    // Load the interpreter created by odsaAV.js
-    interpret = ODSA.UTILS.loadConfig(
-                           {"json_path": "btTravPRO.json"}).interpreter;
+    // Load the configuration created by odsaAV.js
+    var config = ODSA.UTILS.loadConfig({"json_path": "btTravPRO.json"}),
+        code = config.code;
+    interpret = config.interpreter;
+
     this.modelFunction = modelFunction;
     var settings = new JSAV.utils.Settings($(".jsavsettings"));
     this.jsav = new JSAV($(".avcontainer"), {settings: settings});
     this.jsav.recorded();
-    this.exercise = this.jsav.exercise(modelWrapper(this), initWrapper(this),
-       {compare: {"css": "background-color"},
-        controls: $(".jsavexercisecontrols"), fix: fixFunction});
+
+    if (PARAMS["JXOP-code"] && code) {
+      switch (modelFunction) {
+      case inOrderTraversal:
+        code = code.inorder;
+        break;
+      case preOrderTraversal:
+        code = code.preorder;
+        break;
+      case postOrderTraversal:
+        code = code.postorder;
+        break;
+      case levelOrderTraversal:
+        code = code.levelorder;
+        break;
+      }
+
+      if (code !== config.code) {
+        this.jsav.code($.extend({after: {element: $(".instructions")}, visible: true}, code));
+      }
+    }
+
+    this.exercise = this.jsav.exercise(modelWrapper(this), initWrapper(this), {
+      compare:  {"css": "background-color"},
+      controls: $(".jsavexercisecontrols"),
+      fix:      fixFunction
+    });
     this.exercise.reset();
   }
   

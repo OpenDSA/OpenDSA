@@ -1,0 +1,36 @@
+/* *** ODSATag: inorder *** */
+inorder(node)
+  if node == null then return
+  inorder(node.left)
+  visit(node)
+  inorder(node.right)
+/* *** ODSAendTag: inorder *** */
+
+/* *** ODSATag: preorder *** */
+preorder(node)
+  if node == null then return
+  visit(node)
+  preorder(node.left) 
+  preorder(node.right)
+/* *** ODSAendTag: preorder *** */
+
+/* *** ODSATag: postorder *** */
+postorder(node)
+  if node == null then return
+  postorder(node.left)
+  postorder(node.right)
+  visit(node)
+/* *** ODSAendTag: postorder *** */
+
+/* *** ODSATag: levelorder *** */
+levelorder(root)
+  q = empty queue
+  q.enqueue(root)
+  while not q.empty do
+    node := q.dequeue()
+    visit(node)
+    if node.left ≠ null then
+      q.enqueue(node.left)
+    if node.right ≠ null then
+      q.enqueue(node.right)
+/* *** ODSAendTag: levelorder *** */
