@@ -108,8 +108,10 @@ $(document).ready(function () {
       if (stack.size() > 0) {
         bh.value(index, stack.first().value());
         stack.removeFirst();
-        stack.first().highlight();
-        stack.layout();
+        if (stack.size()) {
+          stack.first().highlight();
+          stack.layout();
+        }
         exercise.gradeableStep();
       }
       return;
