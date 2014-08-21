@@ -6,7 +6,7 @@
 
 /* For array cells and the like that are unused */
 .unused {
-  background-color: #eee;
+  background-color: #ddd;
 }
 
 /* For marking a node (array cell, etc) as "special". This is a light red. */
