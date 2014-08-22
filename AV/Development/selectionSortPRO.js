@@ -83,10 +83,6 @@
     return modelArray;
   }
 
-
-  var exercise = av.exercise(modelSolution, initialize, {}, {feedback: "atend"});
-  exercise.reset();
-
   // a function to handle all click events on the array
   var clickHandler = function (index) {
     
@@ -124,5 +120,8 @@
     }
     
   };
+
+  var exercise = av.exercise(modelSolution, initialize, {}, {});
+  exercise.reset();
 
 }(jQuery));
