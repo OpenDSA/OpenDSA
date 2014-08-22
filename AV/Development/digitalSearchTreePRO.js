@@ -1,13 +1,28 @@
+/* global ODSA */
 (function ($) {
   "use strict";
+  // AV variables
   var insertArray,
-    tree,
-    stack,
-    stackLabels,
-    insertSize = 10,
-    av = new JSAV($("#jsavcontainer"));
+      tree,
+      stack,
+      stackLabels,
+      insertSize = 10,
+
+      // Load the configurations created by odsaAV.js
+      config = ODSA.UTILS.loadConfig({"av_container": "jsavcontainer"}),
+      interpret = config.interpreter,
+      code = config.code,
+      codeOptions = {after: {element: $(".instructions")}, visible: true, lineNumbers: false},
+
+      // Create a JSAV instance
+      av = new JSAV($("#jsavcontainer"));
 
   av.recorded(); // we are not recording an AV with an algorithm
+
+  if (code) {
+    av.code(code[1], codeOptions);
+    av.code(code[0], codeOptions);
+  }
 
   function initialize() {
 
