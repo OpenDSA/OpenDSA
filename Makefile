@@ -4,7 +4,7 @@ TARGET = build
 CSSLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 MINIMIZE = java -jar tools/yuicompressor-2.4.7.jar --nomunge
 
-.PHONY: all clean lint csslint jshint min CS2114 CS223 CS5114 CS3114 CS3114notes CS150 OpenDSA test IS allBooks nomin pull CS2401
+.PHONY: all clean lint csslint jshint min CS2114 CS223 CS5114 CS3114 CS3114notes CS150 OpenDSA test IS allBooks nomin pull CS2401 COP3530 CS208
 
 all: lint
 
@@ -73,6 +73,9 @@ CS2401: min
 CS3114: min
 	python $(CONFIG_SCRIPT) config/CS3114.json
 
+COP3530: min
+	python $(CONFIG_SCRIPT) config/COP3530.json
+
 CS5114: min
 	python $(CONFIG_SCRIPT) config/CS5114.json
 
@@ -81,6 +84,9 @@ CSCI102: min
 
 CSCI204: min
 	python $(CONFIG_SCRIPT) config/CSCI204.json
+
+CS208: min
+	python $(CONFIG_SCRIPT) config/CS208.json
 
 CS3114AM: min
 	python $(CONFIG_SCRIPT) config/CS3114AM.json
@@ -145,7 +151,7 @@ invalid: min
 slides: min
 	python $(CONFIG_SCRIPT) -s config/slides.json
 
-allBooks: CS2114 CS2401 CS3114 OpenDSA Everything testcmap
+allBooks: CS208 CS2114 CS2401 CS3114 CS3530 OpenDSA Everything testcmap
 
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
