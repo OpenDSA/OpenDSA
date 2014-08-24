@@ -61,32 +61,35 @@ good: min
 RecurTutor: min
 	python $(CONFIG_SCRIPT) config/RecurTutor.json
 
-CS2114: min
-	python $(CONFIG_SCRIPT) config/CS2114.json
-
-CS223: min
-	python $(CONFIG_SCRIPT) config/CS223.json
-
-CS2401: min
-	python $(CONFIG_SCRIPT) config/CS2401.json
-
-CS3114: min
-	python $(CONFIG_SCRIPT) config/CS3114.json
-
-COP3530: min
-	python $(CONFIG_SCRIPT) config/COP3530.json
-
-CS5114: min
-	python $(CONFIG_SCRIPT) config/CS5114.json
-
 CSCI102: min
 	python $(CONFIG_SCRIPT) config/CSCI102.json
+
+CS150: min
+	python $(CONFIG_SCRIPT) config/CS150.json
 
 CSCI204: min
 	python $(CONFIG_SCRIPT) config/CSCI204.json
 
 CS208: min
 	python $(CONFIG_SCRIPT) config/CS208.json
+
+CS223: min
+	python $(CONFIG_SCRIPT) config/CS223.json
+
+CSE-A1140: min
+	python $(CONFIG_SCRIPT) config/CSE-A1140.json
+
+CSE-A1141: min
+	python $(CONFIG_SCRIPT) config/CSE-A1141.json
+
+CS2114: min
+	python $(CONFIG_SCRIPT) config/CS2114.json
+
+CS2401: min
+	python $(CONFIG_SCRIPT) config/CS2401.json
+
+CS3114: min
+	python $(CONFIG_SCRIPT) config/CS3114.json
 
 CS3114AM: min
 	python $(CONFIG_SCRIPT) config/CS3114AM.json
@@ -97,14 +100,11 @@ CS3114PM: min
 CS3114notes: min
 	python $(CONFIG_SCRIPT) s config/CS3114notes.json
 
-CS150: min
-	python $(CONFIG_SCRIPT) config/CS150.json
+COP3530: min
+	python $(CONFIG_SCRIPT) config/COP3530.json
 
-CSE-A1140: min
-	python $(CONFIG_SCRIPT) config/CSE-A1140.json
-
-CSE-A1141: min
-	python $(CONFIG_SCRIPT) config/CSE-A1141.json
+CS5114: min
+	python $(CONFIG_SCRIPT) config/CS5114.json
 
 OpenDSA: min
 	python $(CONFIG_SCRIPT) config/OpenDSA.json
