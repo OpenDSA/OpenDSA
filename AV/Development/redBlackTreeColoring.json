@@ -1,0 +1,18 @@
+{
+  "translations" :{
+    "en": {
+      ".exerciseTitle": "Coloring of Red-Black Tree",
+      "av_Authors": "Kasper Hellström",
+      ".instructLabel": "Instructions:",
+      ".instructions": "Click on a node to toggle the color. When the tree fulfills all the requirments of a red-black tree click the grade button."
+    }
+  },
+  "code": {
+    "english": [
+      "A node is either red or black.",
+      "The root is black.",
+      "Every red node must have black child nodes.",
+      "Every path from the root to any leaf node contains the same number of black nodes."
+    ]
+  }
+}
