@@ -1,15 +1,29 @@
+/* global ODSA, ClickHandler */
 (function ($) {
   "use strict";
+  // AV variables
   var insertValues = [],
-    tree,
-    stack,
-    insertSize = 10,
-    clickHandler,
-    av = new JSAV($("#jsavcontainer"));
+      tree,
+      stack,
+      insertSize = 10,
+      clickHandler,
+
+      // Load the configurations created by odsaAV.js
+      config = ODSA.UTILS.loadConfig({av_container: "jsavcontainer"}),
+      interpret = config.interpreter,
+      code = config.code,
+      codeOptions = {after: {element: $(".instructions")}, visible: true, lineNumbers: false},
+
+      // Create a JSAV instance
+      av = new JSAV($("#jsavcontainer"));
 
   av.recorded(); // we are not recording an AV with an algorithm
 
+  av.code(code, codeOptions);
+
   function initialize() {
+
+    av.container.find(".jsavcanvas").css("min-height", 475);
 
     if (typeof clickHandler === "undefined") {
       clickHandler = new ClickHandler(av, exercise, {selectedClass: "selected", effect: "move"});
@@ -98,13 +112,13 @@
   // create buttoncontainer if it doesn't exist
   if ($("#buttoncontainer").length === 0) {
     $("#jsavcontainer .jsavcanvas").prepend(
-      '<div id="buttoncontainer" style="margin: auto; text-align: center; padding: 15px">'+
-      '  <button id="buttonL">Single Rotation Left</button>'+
-      '  <button id="buttonLR">Double Rotation LR</button>'+
-      '  <button id="buttonRL">Double Rotation RL</button>'+
-      '  <button id="buttonR">Single Rotation Right</button>'+
-      '<br>'+
-      '<button id="buttonColor">Toggle Color</button>'+
+      '<div id="buttoncontainer" style="margin: auto; text-align: center; padding: 15px">' +
+      '  <button id="buttonL">Single Rotation Left</button>' +
+      '  <button id="buttonLR">Double Rotation LR</button>' +
+      '  <button id="buttonRL">Double Rotation RL</button>' +
+      '  <button id="buttonR">Single Rotation Right</button>' +
+      '<br>' +
+      '<button id="buttonColor">Toggle Color</button>' +
       '</div>');
   }
 
