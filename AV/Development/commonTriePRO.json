@@ -23,5 +23,10 @@
       "av_already_true": "Merkkijonoa \"{str}\" vastaavan solmun arvo on jo true, eli merkkijono on jo lisätty puuhun."
     }
   },
-  "code": {}
+  "code": {
+    "pseudo": {
+      "url": "../../SourceCode/Pseudo/Binary/CommonTrie.txt",
+      "tags": {}
+    }
+  }
 }
