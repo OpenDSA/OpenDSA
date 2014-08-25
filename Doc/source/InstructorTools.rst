@@ -41,4 +41,14 @@ Select ``Assignments``, then ``Add assignments``. In the creation form, select t
 then the corresponding book. There is no need to add exercises to the assignement at this point, 
 it will be done by the teacher through the teacher view (standard backend site).
 
-#. Assignment creation by instructors: (1) Go to the course ``Teacher's view``. (2) Select ``Add new assignment``, (3) Fill out the form then press ``submit``. (4) Return to the ``Teacher's view`` homepage, you can now see the assignment you just created in the list of assignments. (5) Select the corresponding ``Add new exercises`` button to load the edit module form. (6) Do not change the value of ``Course module`` and ``Assignment book`` fields. Select the chapter(s) from the ``Assignment chapter`` drop-down list. The exercises presents in the chapters are now displayed under ``Exercises in chapter`` label.  (7) Select the exercises you want to add to the assignment. The selected exercises are added to the ``Assignment exercises`` list. (8) Repeat steps (6) and (7) to add exercises from several chapters into the assignment. (9) Click on submit and return to the Teacher's view homepage.      
+Assignment creation by instructors: 
+
+ (1) Go to the course ``Teacher's view`` 
+ (2) Select ``Add new assignment`` 
+ (3) Fill out the form then press ``submit``
+ (4) Return to the ``Teacher's view`` homepage, you can now see the assignment you just created in the list of assignments 
+ (5) Select the corresponding ``Add new exercises`` button to load the edit module form 
+ (6) Do not change the value of ``Course module`` and ``Assignment book`` fields. Select the chapter(s) from the ``Assignment chapter`` drop-down list. The exercises presents in the chapters are now displayed under ``Exercises in chapter`` label  
+ (7) Select the exercises you want to add to the assignment. The selected exercises are added to the ``Assignment exercises`` list 
+ (8) Repeat steps (6) and (7) to add exercises from several chapters into the assignment
+ (9) Click on submit and return to the Teacher's view homepage      
