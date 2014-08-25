@@ -1238,30 +1238,63 @@
         "long_name": "Array Implementation for Complete Trees",
         "exercises": {}
       },
-      "Development/Heaps": {
+      "Binary/Heaps": {
         "long_name": "Heaps and Priority Queues",
         "exercises": {
-          "heapinsertCON": {},
-          "binheapInsertPRO": {
-            "long_name": "Heap Insert Exercise",
+          "heapinsertCON": {
+            "long_name": "Heap insert Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "heapinsertPRO": {
+            "long_name": "Heap Insert Proficiency Exercise",
             "required": true,
             "points": 2.0,
-            "threshold": 0.9
+            "threshold": 0.90
           },
-          "heapbuildCON": {},
-          "binheapBuildPRO": {
-            "long_name": "Heap Build Exercise",
+          "heapbuildCON": {
+            "long_name": "Heapbuild Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "heapbuildPRO": {
+            "long_name": "Heap Build Proficiency Exercise",
             "required": true,
             "points": 1.0,
-            "threshold": 0.9
+            "threshold": 0.90
           },
-          "heapmaxCON": {},
-          "heapdeleteCON": {},
-          "binheapDeletePRO": {
-            "long_name": "Heap Delete Exercise",
+          "heapbuildProofCON": {
+            "long_name": "Heap build analysis proof Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "BuildHeapVisualProof": {
+            "long_name": "Buildheap Visual Proof",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "heapmaxCON": {
+            "long_name": "Remove Max Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "heapremovePRO": {
+            "long_name": "Heap Remove Exercise",
             "required": true,
             "points": 2.0,
-            "threshold": 0.9
+            "threshold": 0.90
+          },
+          "heapremoveCON": {
+            "long_name": "Remove Any Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
           },
           "HeapSumm": {
             "long_name": "BST/Heap Summary",
