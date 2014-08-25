@@ -27,5 +27,24 @@
       "av_ms_com_push": "<br/>Laskettu arvo viedään pinoon."
     }
   },
-  "code" : {}
+  "code": {
+    "english": [
+      "1. read postfix expression token by token",
+      "2.   if the token is an operand, push it into the stack",
+      "3.   if the token is a binary operator,",
+      "3.1    pop the two top most operands from the stack",
+      "3.2    apply the binary operator with the two operands",
+      "3.3    push the result into the stack",
+      "4. finally, the value of the whole postfix expression remains in the stack"
+    ],
+    "finnish": [
+      "1. lue postfix lauseke merkki merkiltä",
+      "2.   jos merkki on operandi, lisää se pinoon",
+      "3.   jos merkki on operaattori,",
+      "3.1    poista kaksi päällimmäistä operandia pinosta",
+      "3.2    sovella operaattoria näihin operandeihin",
+      "3.3    lisää tulos pinoon",
+      "4. koko lausekkeen arvo on nyt päällimmäisenä pinossa"
+    ]
+  }
 }
