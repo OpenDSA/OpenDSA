@@ -1776,6 +1776,13 @@
             "points": 0,
             "showhide": "none",
             "threshold": 1.0
+          },
+          "qTopSort": {
+            "long_name": "Topological Sort (Queue) visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
           }
         }
       },

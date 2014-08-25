@@ -205,6 +205,12 @@
             "required": true,
             "points": 1,
             "threshold": 3
+          },
+          "LstLnkdSumm": {
+            "long_name": "Linked List Summary Exercise",
+            "required": true,
+            "points": 2,
+            "threshold": 6
           }
         }
       },

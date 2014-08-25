@@ -12,6 +12,7 @@
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": true,
+  "assumes": "ADT; relations; sort code tuning",
   "glob_exer_options": {
     "JXOP-debug": "true"
   },

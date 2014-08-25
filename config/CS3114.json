@@ -1898,7 +1898,27 @@
       },
       "Development/TwoThreeTree": {
         "long_name": "2-3 Trees",
-        "exercises": {}
+        "exercises": {
+          "twoThreeTreeCON": {},
+          "simpleInsertCON": {
+            "long_name": "2-3 Tree Insert Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "promoteCON": {
+            "long_name": "2-3 Tree Insert Promotion Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "splitCON": {
+            "long_name": "2-3 Tree Insert Split Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "Development/BTree": {
         "long_name": "B-Trees",
@@ -1976,6 +1996,13 @@
           "topsortCON1": {},
           "topSort": {
             "long_name": "Topological Sort (DFS) visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "qTopSort": {
+            "long_name": "Topological Sort (Queue) visualization",
             "required": false,
             "points": 0,
             "showhide": "none",

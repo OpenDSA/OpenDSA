@@ -226,6 +226,9 @@ Glossary
       In the context of a web browser, the Internet might be
       considered the backing storage.
 
+   BFS
+      Abbreviation for :term:`breadth-first search`.
+
    bag
       In set notation, a bag is a collection of elements with no order
       (like a set), but which allows for duplicate-valued elements
@@ -369,6 +372,17 @@ Glossary
       list implementation becomes more space efficent, while as the
       list becomes less full below this point, the linked list
       implementation becomes more space efficient.
+
+   breadth-first search
+     A :term:`graph` :term:`traversal` algorithm.
+     As the name implies, all immediate :term:`neighbors <neighbor>`
+     for a :term:`node` are :term:`visited <visit>` before any
+     more-distant nodes are visited. 
+     BFS is driven by a :term:`queue`.
+     A start vertex is placed on the queue.
+     Then, until the queue is empty, a node is taken off the
+     queue, visited, and and then any :term:`unvisited` neighbors are
+     placed onto the queue.
 
    BST
       Abbreviation for :term:`binary search tree`.
@@ -557,8 +571,8 @@ Glossary
       In the composite design, each object is required to implement
       the collection of behaviors.
       This is in contrast to the procedural approach where a behavior
-      (such as a tree traversal) is implemented as a method on the
-      object collection (such as a tree).
+      (such as a tree :term:`traversal`) is implemented as a
+      method on  the object collection (such as a :term:`tree`).
       Procedural tree traversal requires that the tree have a method
       that understands what to do when it encounters any of the object
       types (:term:`internal <internal node>` or
@@ -671,6 +685,19 @@ Glossary
      The depth of a node :math:`M` in a tree is the length
      of the path from the root of the tree to :math:`M`.
 
+   depth-first search
+     A :term:`graph` :term:`traversal` algorithm.
+     Whenever a :math:`v` is :term:`visited <visit>` during the
+     traversal, DFS will :term:`recursively <recursion>` visit all of
+     :math:`v` 's :term:`unvisited` :term:`neighbors <neighbor>`.
+
+   depth-first search tree
+      A :term:`tree` that can be defined by the operation of a
+      :term:`depth-first search` (DFS) on a :term:`graph`.
+      This tree would consist of the :term:`nodes <node>` of the graph
+      and a subset of the :term:`edges <edge>` of the graph that was
+      followed during the DFS.
+
    dequeue
       A specialized term used to indicate removing an element from a queue.
 
@@ -694,6 +721,9 @@ Glossary
       An algorithm that does not involve any element of randomness,
       and so its behavior on a given input will always be the same.
       This is in contrast to a :term:`randomized algorithm`.
+
+   DFS
+      Abbreviation for :term:`depth-first search`.
 
    dictionary
       An abstract data type or interface for a data structure or
@@ -819,6 +849,9 @@ Glossary
       All disk reads and writes are done in units of a :term:`sector`
       or :term:`block`.
 
+   distance
+      In :term:`graph` representations, a synonym for :term:`weight`.
+
    divide and conquer
       A technique for designing algorithms where a solution is found
       by breaking the problem into smaller (similar) subproblems,
@@ -872,9 +905,10 @@ Glossary
    dynamic programming
       An approach to designing algorithms that works by storing a table
       of results for subproblems.
-      A typical cause for excessive cost in recursive algorithms is
-      that different branches of the recursion might solve the same
-      subproblem.
+      A typical cause for excessive cost in
+      :term:`recursive <recursion>` 
+      algorithms is that different branches of the recursion might
+      solve the same subproblem.
       Dynamic programming uses a table to store information about
       which subproblems have already been solved, and uses the stored
       information to immediately give the answer for any repeated
@@ -1377,8 +1411,9 @@ Glossary
       The key assumption used in a :term:`proof by induction`,
       that the theorem to be proved holds for smaller instances of the
       theorem.
-      The induction hypothesis is equivalent to the recursive
-      call in a :term:`recursive <recursion>` function.
+      The induction hypothesis is equivalent to the
+      :term:`recursive <recursion>` 
+      call in a recursive function.
 
    induction step
       Part of a :term:`proof by induction`.
@@ -1402,8 +1437,9 @@ Glossary
 
    inorder traversal
       In a :term:`binary tree`, a :term:`traversal` that first
-      recursively visits the left :term:`child`, then visits the
-      :term:`root`, an then recursively visits the right child.
+      :term:`recursively <recursion>` :term:`visits <visit>` the left
+      :term:`child`, then visits the :term:`root`,
+      an then recursively visits the right child.
       In a :term:`binary search tree`, this traversal will
       :term:`enumerate <enumeration>` the nodes in sorted order.
 
@@ -1705,6 +1741,13 @@ Glossary
       :term:`set` to a unique element of another set; a
       correspondence.
 
+   mark array
+      It is typical in :term:`graph` algorithms that there is a need
+      to track which nodes have been visited at some point in the
+      algorithm.
+      An array of bits or values called the :term:`mark array` is
+      often maintained for this purpose.
+
    max heap
       A :term:`heap` where every :term:`node` has a :term:`key` value
       greater than its :term:`children <child>`.
@@ -1948,8 +1991,8 @@ Glossary
    optimal static ordering
       A theoretical construct defining the best static (non-changing)
       order in which to place a collection of records so as to
-      minimize the number of records visited by a series of sequential
-      searches.
+      minimize the number of records :term:`visited <visit>` by a
+      series of sequential searches.
       It is a useful concept for the purpose of defining a theoretical
       optimum against which to compare the performance for a
       :term:`self-organizing list heuristic`.
@@ -2075,7 +2118,8 @@ Glossary
 
    postorder traversal
       In a :term:`binary tree`, a :term:`traversal` that first
-      :term:`recursively <recursion>` visits the left :term:`child`,
+      :term:`recursively <recursion>` :term:`visits <visit>` the left
+      :term:`child`, 
       then recursively visits the right child, and then visits the
       :term:`root`.
 
@@ -2090,7 +2134,7 @@ Glossary
       space.
       If that space stores more than one data point, then the region
       is decomposed into four equal subquadrants, each represented
-      recursively by a subtree of the PR quadtree.
+      :term:`recursively <recursion>` by a subtree of the PR quadtree.
       Since many leaf nodes of the PR quadtree will contain no data
       points, implementation often makes use of the :term:`Flyweight`
       :term:`design pattern`.
@@ -2107,10 +2151,10 @@ Glossary
       property is a set of :term:`Huffman codes`.
 
    preorder traversal
-      In a :term:`binary tree`, a :term:`traversal` that first visits
-      the :term:`root`, then :term:`recursively <recursion>` visits
-      the left :term:`child`, then recursively visits the right
-      child.
+      In a :term:`binary tree`, a :term:`traversal` that first
+      :term:`visits <visit>` the :term:`root`, then
+      :term:`recursively <recursion>` visits the left :term:`child`,
+      then recursively visits the right child.
 
    primary key index
       Relates each :term:`primary key` value with a pointer to the
@@ -2308,7 +2352,8 @@ Glossary
       recurrence) defines a function by means of an 
       expression that includes one or more (smaller) instances of
       itself.
-      A classic example is the recursive definition for the
+      A classic example is the :term:`recursive <recursion>`
+      definition for the
       factorial function, :math:`F(n) = n*F(n-1)`.
 
    recursion
@@ -2538,9 +2583,10 @@ Glossary
       A type whose values contain no subparts. An example is the integers.
 
    simulating recursion
-      If a programming language does not support recursion, or if you
-      want to implement the effects of recursion more efficiently, you
-      can use a stack to maintain the collection of subproblems that
+      If a programming language does not support :term:`recursion`,
+      or if you want to implement the effects of recursion more
+      efficiently, you can use a :term:`stack` to maintain the
+      collection of subproblems that 
       would be waiting for completion during the recursive process.
       Using a loop, whenever a recursive call would have been made,
       simply add the necessary program state to the stack.
@@ -2701,7 +2747,8 @@ Glossary
       performance.
 
    Strassen's algorithm
-      A recursive algorithm for matrix multiplication.
+      A :term:`recursive <recursion>` algorithm for matrix
+      multiplication. 
       When multiplying two :math:`n \times n` matrices,
       this algorithm runs faster than the :math:`\Theta(n^3)` time
       required by the standard matrix multiplication algorithm.
@@ -2866,7 +2913,7 @@ Glossary
 
    traversal
       Any process for visiting all of the objects in a collection
-      (such as a tree or graph) in some order.
+      (such as a :term:`tree` or :term:`graph`) in some order.
 
    tree
       A tree :math:`\mathbf{T}` is a finite set of one or more
@@ -2951,6 +2998,12 @@ Glossary
       The alternative to an unsuccessful search is a
       :term:`successful search`.
 
+   unvisited
+      In :term:`graph` algorithms, this refers to a node that has not
+      been processed at the current point in the algorithm.
+      This information is typically maintained by using a
+      :term:`mark array`.
+
    upper bound
       In algorithm analysis, the upper or highest growth rate that
       an algorithm can have. In practice, this is the smallest-growing
@@ -2993,12 +3046,24 @@ Glossary
       data content were stored in RAM, even if that is larger than the
       physical RAM available making it easier to implement.
 
+   visit
+      During the process of a :term:`traversal` on a :term:`graph` or
+      :term:`tree` the action that takes place on each :term:`node`.
+
+   visited
+      In :term:`graph` algorithms, this refers to a node that has
+      previously been processed at the current point in the
+      algorithm.
+      This information is typically maintained by using a
+      :term:`mark array`.
+
    visitor design pattern
-      A :term:`design pattern` where a traversal process is given a
-      function (known as the visitor) that is applied to every object
-      in the collection being traversed. For example, a generic tree
-      or graph :term:`traversal` might be designed such that it takes a
-      function parameter, where that function is applied to each node.
+      A :term:`design pattern` where a :term:`traversal` process is
+      given a function (known as the visitor) that is applied to every
+      object in the collection being traversed.
+      For example, a generic tree or graph traversal might be
+      designed such that it takes a function parameter,
+      where that function is applied to each node.
 
    weight
       A cost or distance most often associated with an :term:`edge` in
