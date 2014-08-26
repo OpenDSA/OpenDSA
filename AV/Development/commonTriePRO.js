@@ -15,16 +15,17 @@
       config = ODSA.UTILS.loadConfig({av_container: "jsavcontainer"}),
       interpret = config.interpreter,
       code = config.code,
-      codeOptions = {after: $(".instructions"), visible: true},
+      codeOptions = {after: {element: $(".instructions")}, visible: true},
 
       // Create a JSAV instance
       av = new JSAV("jsavcontainer", {autoresize: false});
 
   av.recorded(); // we are not recording an AV with an algorithm
 
-  av.code(code, codeOptions);
+  av.code($.extend(codeOptions, code));
 
   function initialize() {
+
     if (stack) {
       stack.clear();
     }

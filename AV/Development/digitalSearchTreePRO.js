@@ -26,6 +26,8 @@
 
   function initialize() {
 
+    av.container.find(".jsavcanvas").css("min-height", 450);
+
     //generate values. 65 = A, 80 = 0
     insertArray = generateValues(insertSize, 65, 80);
     //clear the old stack

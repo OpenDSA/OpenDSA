@@ -13,7 +13,7 @@
   },
   "code": {
     "processing": {
-      "url": "../../../SourceCode/Processing/Binary/BST.pde",
+      "url": "../../SourceCode/Processing/Binary/BST.pde",
       "startAfter": "/* *** ODSATag: inserthelp *** */",
       "endBefore": "/* *** ODSAendTag: inserthelp *** */",
       "tags": {}

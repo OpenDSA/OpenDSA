@@ -23,6 +23,8 @@
 
   function initialize() {
 
+    av.container.find(".jsavcanvas").css("min-height", 450);
+
     // create clickHandler if undefined
     if (typeof clickHandler === "undefined") {
       clickHandler = new ClickHandler(av, exercise, {selectedClass: "selected", effect: "move"});
