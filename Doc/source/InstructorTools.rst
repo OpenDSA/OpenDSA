@@ -39,7 +39,9 @@ Firs create a ``Course module``, select the add ``Add`` link next to ``course mo
 
 Select ``Assignments``, then ``Add assignments``. In the creation form, select the course module you want to associate with the assignment,
 then the corresponding book. There is no need to add exercises to the assignement at this point, 
-it will be done by the teacher through the teacher view (standard backend site).
+it will be done by the teacher through the teacher view (standard backend site). 
+Note that until this has been done, certain
+functionality in the teachers view is not available.
 
 Assignment creation by instructors: 
 
