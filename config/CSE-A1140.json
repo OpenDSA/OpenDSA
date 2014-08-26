@@ -15,9 +15,9 @@
   "backend_address": "",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
-  "suppress_todo": false,
+  "suppress_todo": true,
   "glob_exer_options": {
-    "JXOP-debug": "true"
+    "JXOP-feedback": "atend"
   },
   "chapters": {
     "Introduction": {

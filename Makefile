@@ -82,6 +82,9 @@ CSE-A1140: min
 CSE-A1141: min
 	python $(CONFIG_SCRIPT) config/CSE-A1141.json
 
+CSE-A1141eng: min
+	python $(CONFIG_SCRIPT) config/CSE-A1141eng.json
+
 CS2114: min
 	python $(CONFIG_SCRIPT) config/CS2114.json
 
