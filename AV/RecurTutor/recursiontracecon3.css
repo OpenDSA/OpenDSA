@@ -1,17 +1,4 @@
-
-
-#RecursionTraceCON3 .jsavcanvas{
- height: 300px;
- width: 700px;
+#RecursionTraceCON3.jsavcontainer {
+  height: 350px;
 }
 
-.jsavcanvas {
- margin-left: auto;
- margin-right: auto;
- height: 300px;
- width: 540px;
-}
-
-.svg{
-  stroke-width: 1;
-}

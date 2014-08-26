@@ -8,10 +8,11 @@
    :prerequisites:
    :topic: Recursion
 
-.. odsalink:: AV/RecurTutor/recursionwritecon1.css
 .. odsalink:: AV/RecurTutor/recursionwritecon2.css
+.. odsalink:: AV/RecurTutor/recursionwritecon1.css
 
-How to write a recursive function?
+
+Writing a recursive function
 ==================================
 
 As we have mentioned before, solving a "big" problem recursively means to solve one or more smaller versions of the problem, and using those solutions of the smaller problems to solve the "big" problem. 
