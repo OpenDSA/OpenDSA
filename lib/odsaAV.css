@@ -76,6 +76,7 @@ form {
 
 .jsavmodelanswer .jsavline {
   margin: 0 0 0 20px;
+  width: auto;
 }
 
 .jsavmodelanswer .jsavcontrols a {
