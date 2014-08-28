@@ -7,10 +7,11 @@
     initialArray = [],
     array,
     keyholder,
-    findLabel,
+    $findLabel,
     stateVar,
     lowIndex,
     highIndex,
+    returnValue,
     interLine,
     pseudo,
     config = ODSA.UTILS.loadConfig({'av_container': 'jsavcontainer'}),
@@ -48,8 +49,8 @@
     if (keyholder) {
       keyholder.clear();
     }
-    if (findLabel) {
-      findLabel.clear();
+    if ($findLabel) {
+      $findLabel.remove();
     }
     if (array) {
       array.clear();
@@ -63,11 +64,21 @@
     if (highIndex) {
       highIndex.clear();
     }
+    if (returnValue) {
+      returnValue.clear();
+    }
+    // hide return box
+    $("form.returnbox")[0].reset();
+    $("#returndone").css("visibility", "hidden");
 
     // insert key into the array (the blue box)
     keyholder = av.ds.array([key], {indexed: false});
     keyholder.css(0, {"background-color": "#ddf"});
-    findLabel = av.label(interpret("av_find_label"), {relativeTo: keyholder, anchor: "center top", myAnchor: "center bottom"});
+    $findLabel = $("<p>" + interpret("av_find_label") + "</p>").css({
+      "text-align": "center",
+      "font-weight": "bold",
+      "margin-bottom": -15
+    }).insertBefore(keyholder.element);
 
     // create the array
     array = av.ds.array(initialArray, {indexed: true, layout: "bar", autoresize: false});
@@ -93,11 +104,12 @@
     stateVar = av.variable(0);
     lowIndex = av.variable(0);
     highIndex = av.variable(arraySize - 1);
+    returnValue = av.variable(-1337);
 
     av.umsg(interpret("av_select_low"));
     av.forward();
 
-    return [array, lowIndex, highIndex];
+    return [array, lowIndex, highIndex, returnValue];
   }
 
   function modelSolution(jsav) {
@@ -110,6 +122,7 @@
 
     var modelLow = jsav.variable(0);
     var modelHigh = jsav.variable(arraySize - 1);
+    var modelReturn = jsav.variable(-1337);
     var low = 0,
         high = arraySize - 1,
         mid;
@@ -181,27 +194,28 @@
       jsav.stepOption("grade", true);
       jsav.step();
       if (modelArray.value(mid) === key) {
-        return [modelArray, modelLow, modelHigh];
+        modelReturn.value(mid);
+        jsav.gradeableStep();
+        return [modelArray, modelLow, modelHigh, modelReturn];
       }
     }
     if (initialArray[low] >= key) {
       jsav.umsg(interpret("av_ms_loop_stopped_1"), {fill: { low: low }});
       if (initialArray[low] === key) {
         jsav.umsg("<br/>" + interpret("av_ms_found"), {preserve: true, fill: { mid: low }});
+        modelReturn.value(low);
       } else {
         jsav.umsg("<br/>" + interpret("av_ms_not_found"), {preserve: true});
+        modelReturn.value(-1);
       }
     } else {
       jsav.umsg(interpret("av_ms_loop_stopped_2"), {fill: { high: high }});
       jsav.umsg("<br/>" + interpret("av_ms_not_found"), {preserve: true});
+      modelReturn.value(-1);
     }
-    return [modelArray, modelLow, modelHigh];
+    jsav.gradeableStep();
+    return [modelArray, modelLow, modelHigh, modelReturn];
   }
-
-  var exercise = av.exercise(modelSolution, initialize,
-                             { compare:  {css: "background-color"},
-                               feedback: "atend", modelDialog: {width: 780}});
-  exercise.reset();
 
   function hideLine(interLine) {
     interLine.css({opacity: 0});
@@ -236,6 +250,24 @@
     return Math.floor(result * 100) / 100;
   }
 
+  function refLines(av, code, lineTag) {
+    if (!code) {
+      return;
+    }
+    var lines = code.tags[lineTag];
+    if (typeof lines === "number") {
+      av.umsg(" " + interpret("av_line"), {preserve: true, fill: {first: lines}});
+    } else if (typeof lines === "object") {
+      av.umsg(" " + interpret("av_lines"), {preserve: true, fill: {first: lines[0], second: lines[1]}});
+    }
+  }
+
+  var showHidden = JSAV.utils.getUndoableFunction(
+    av,
+    function (element) { element.css("visibility", "visible"); },
+    function (element) { element.css("visibility", "hidden"); }
+  );
+
   function clickhandler(index) {
 
     if (stateVar.value() === 0) {
@@ -264,16 +296,18 @@
     }
   }
 
-  function refLines(av, code, lineTag) {
-    if (!code) {
-      return;
-    }
-    var lines = code.tags[lineTag];
-    if (typeof lines === "number") {
-      av.umsg(" " + interpret("av_line"), {preserve: true, fill: {first: lines}});
-    } else if (typeof lines === "object") {
-      av.umsg(" " + interpret("av_lines"), {preserve: true, fill: {first: lines[0], second: lines[1]}});
-    }
-  }
+  $("form.returnbox").submit(function () {
+    returnValue.value(parseInt($("#returninput").val(), 10));
+    showHidden($("#returndone"));
+    exercise.gradeableStep();
+    return false;
+  });
+
+  var exercise = av.exercise(modelSolution, initialize, {
+    compare: {css: "background-color"},
+    feedback: "atend",
+    modelDialog: {width: 780}
+  });
+  exercise.reset();
 
 }(jQuery));

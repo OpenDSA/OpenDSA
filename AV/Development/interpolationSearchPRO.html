@@ -13,6 +13,19 @@
     .jsavbararray .jsavnode {
       width: 35px;
     }
+    .returnbox {
+      width: 400px;
+      text-align: center;
+      margin: 15px auto;
+      padding: 10px;
+      border: 1px solid #555;
+      background-color: #ddd;
+      border-radius: 5px;
+    }
+    #returndone {
+      color: #090;
+      font-weight: bold;
+    }
   </style>
 </head>
 
@@ -24,6 +37,9 @@
     <p align="center" class="jsavexercisecontrols"></p>
     <p class="jsavoutput jsavline"></p>
     <div class="jsavcanvas"></div>
+    <form class="returnbox">
+      <span id="returnlabel"></span><input id="returninput" type="number" value="0" style="width: 50px"></input>&nbsp;<input type="submit" id="returnbutton"></input>&nbsp;<span id="returndone" style="visibility: hidden;"></span>
+    </form>
   </div>
 
   <script src="../../lib/jquery.min.js"></script>
