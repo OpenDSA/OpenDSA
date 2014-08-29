@@ -1871,6 +1871,7 @@
             "threshold": 1.0
           },
           "sackTreePluck": {
+            "long_name": "Knapsack Call Tree Pluck",
             "required": true,
             "points": 0.1,
             "threshold": 1.0
