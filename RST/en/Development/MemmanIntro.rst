@@ -79,8 +79,8 @@ requested, first released (stack order), or first requested, first
 released (queue order), memory management is fairly easy.
 We are concerned here with the general case where blocks
 of any size might be requested and released in any order.
-This is known as :term:`dynamic storage allocation`.
-One example of dynamic storage allocation is managing free store for a
+This is known as :term:`dynamic memory allocation`.
+One example of dynamic memory allocation is managing free store for a
 compiler's runtime environment, such as the system-level
 ``new`` and ``delete`` operations in C++.
 Another example is managing main memory in a multitasking operating

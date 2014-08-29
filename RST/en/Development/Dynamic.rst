@@ -15,10 +15,10 @@ Dynamic Storage Allocation
 
 For the purpose of dynamic storage allocation, we view memory as a
 single array broken into a series of variable-size blocks, where
-some of the blocks are :term:`free blocks` and some are
-:term:`reserved blocks` or already allocated.
+some of the blocks are :term:`free blocks <free block>` and some are
+:term:`reserved blocks <reserved block>` or already allocated.
 The free blocks are linked together to form a :term:`freelist` used
-for servicing future memory requests.
+for servicing future :term:`memory requests <memory request>`.
 This figure illustrates the situation that can arise after
 a series of memory allocations and deallocations.
 
@@ -85,8 +85,8 @@ Another example of sacrificing space to internal fragmentation so as
 to simplify memory management is the :term:`buddy method`
 described later in this chapter.
 
-The process of searching the memory pool for a block large enough to
-service the request, possibly reserving the remaining space as a free
-block, is referred to as a :term:`sequential fit` method.
+The process of searching the :term:`memory pool` for a block large
+enough to service the request, possibly reserving the remaining space
+as a free block, is referred to as a :term:`sequential fit` method.
 
 .. odsascript:: AV/Development/dynamicCON.js
