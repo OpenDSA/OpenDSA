@@ -157,6 +157,7 @@
    * @param options   Options to be passed to the Array Tree Node.
    */
   arrayTreeNodeProto.init = function (container, value, parent, options) {
+    // Set global variables for array tree node.
     this.jsav = container.jsav;
     this.container = container;
     this.parentnode = parent;
@@ -165,7 +166,7 @@
     var parent_options = parent ? parent.options: {};
     this.options = $.extend(true, {visible: true}, parent_options, options);
 
-    if (value === null) {
+    if (value === null) { // Set default value if none was provided.
       value = [""];
     }
 
@@ -194,7 +195,6 @@
 
     // Add the Array Tree Node element to the Array Tree container.
     this.container.element.append(this.element);
-    
     this.node_array.layout();
 
     // Shows or hides the data structure based on options.visible
@@ -206,7 +206,6 @@
     if (parent) {
       // Draw edge from the parent Array Tree Node to this node.
       this._edgetoparent = new JSAV._types.ds.Edge(this.jsav, this, parent);
-      // this._edgetoparent = new ArrayEdge(this.jsav, this, parent);
       // Draw edge label if necessary.
       if (this.options.edgeLabel) {
         this._edgetoparent.label(this.options.edgeLabel);
@@ -245,6 +244,7 @@
     return self;
   };
 
+  // Create a new array tree node, or gets the child at position 'pos'.
   arrayTreeNodeProto.child = function (pos, node, options) {
     if (typeof node === "undefined") {
       return this.childnodes[pos];
@@ -256,6 +256,13 @@
     }
   };
 
+  /**
+   *  Gets or sets the values of the array tree node.
+   *  - If index is an array, all the values in index are set in their appropriate
+   *  index.
+   *  - If index is a number, the newValue is set at the specified index.
+   *  - If no parameter is passed the values of the array tree node are returned.
+   */
   arrayTreeNodeProto.value = function (index, newValue) {
     if (typeof(index) === "undefined") {
       // return all values in the array
@@ -263,6 +270,9 @@
     } else if ($.isArray(index)) {
       // replace all values in the array with the new array
       // TODO: What if the new array (index) is smaller than node_array???
+      // Looks like when the new array (index) is smaller the remaining elements
+      // are left untouched. Whereas if it is bigger, the array grows. Does it
+      // make sense to leave it as it is?
       for (var i = 0; i < index.length; i ++) {
         this.node_array.value(i, index[i]);
       }
