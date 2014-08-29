@@ -8,7 +8,7 @@
   /*****************************************************************************
    * Add the Array Tree constructor to the public facing JSAV interface.
    ****************************************************************************/
-  JSAV.ext.ds.arraytree = function (node_len, options) {
+  JSAV.ext.ds.arraytree = function (options) {
     /**
      * Add attributes to options:
      * - Set visibility by default to true.
@@ -19,15 +19,15 @@
      */
     var ex_options = $.extend(true, {visible: true, autoresize: true}, options);
     // Create new Array Tree object.
-    return new ArrayTree(this, node_len, ex_options);
+    return new ArrayTree(this, ex_options);
   };
 
   /*****************************************************************************
    * Implement Array Tree data structure.
    ****************************************************************************/
 
-  var ArrayTree = function (jsav, node_len, options) {
-    this.init(jsav, node_len, options);
+  var ArrayTree = function (jsav, options) {
+    this.init(jsav, options);
   };
   JSAV.utils.extend(ArrayTree, JSAV._types.ds.Tree);
 
@@ -37,15 +37,12 @@
   /**
    * Initialize the Array Tree. Creates an empty root node.
    * @param jsav      The JSAV object for this Array Tree.
-   * @param node_len  The length of each node in this Array Tree.
    * @param options   Options to be passed to the Array Tree structure.
    */
-  arrayTreeProto.init = function (jsav, node_len, options) {
+  arrayTreeProto.init = function (jsav, options) {
     this._layoutDone = false; // Set layout as done.
     this.jsav = jsav; // Set the JSAV object for this tree.
     this.options = options; // Set the options for the tree
-    // Set the length of the Array Tree Nodes. Default length of 2.
-    this.node_len = typeof(node_len) === "number" ? node_len : 2;
 
     /**
      * Generate the element where this tree is going to be placed. The element
