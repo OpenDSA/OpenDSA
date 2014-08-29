@@ -278,55 +278,55 @@
     return this;
   };
 
-  var ArrayEdge = function (jsav, start, end, options) {
-    this.jsav = jsav;
-    this.startnode = start;
-    this.endnode = end;
-    this.options = $.extend(true, {"display": true}, options);
-    this.container = start.container;
-    // console.lg(bla);
-    // console.log(start.arrayelement.html());
-    var startPos = start ? start.element.position() : {left: 0, top: 0},
-        endPos = end ? end.element.position() : {left: 0, top: 0};
-    if (startPos.left === endPos.left && startPos.top === endPos.top) {
-      // layout not done yet
-      this.g = this.jsav.g.line(-1, -1, -1, -1, $.extend({container: this.container}, this.options));
-    } else {
-      if (end) {
-        endPos.left += end.element.outerWidth() / 2;
-        endPos.top += end.element.outerHeight();
-      }
-      if (!startPos.left && !startPos.top) {
-        startPos = endPos;
-      }
-      this.g = this.jsav.g.line(startPos.left,
-                              startPos.top,
-                              endPos.left,
-                              endPos.top, $.extend({container: this.container}, this.options));
-    }
+  // var ArrayEdge = function (jsav, start, end, options) {
+  //   this.jsav = jsav;
+  //   this.startnode = start;
+  //   this.endnode = end;
+  //   this.options = $.extend(true, {"display": true}, options);
+  //   this.container = start.container;
+  //   // console.lg(bla);
+  //   // console.log(start.arrayelement.html());
+  //   var startPos = start ? start.element.position() : {left: 0, top: 0},
+  //       endPos = end ? end.element.position() : {left: 0, top: 0};
+  //   if (startPos.left === endPos.left && startPos.top === endPos.top) {
+  //     // layout not done yet
+  //     this.g = this.jsav.g.line(-1, -1, -1, -1, $.extend({container: this.container}, this.options));
+  //   } else {
+  //     if (end) {
+  //       endPos.left += end.element.outerWidth() / 2;
+  //       endPos.top += end.element.outerHeight();
+  //     }
+  //     if (!startPos.left && !startPos.top) {
+  //       startPos = endPos;
+  //     }
+  //     this.g = this.jsav.g.line(startPos.left,
+  //                             startPos.top,
+  //                             endPos.left,
+  //                             endPos.top, $.extend({container: this.container}, this.options));
+  //   }
 
-    this.element = $(this.g.rObj.node);
+  //   this.element = $(this.g.rObj.node);
 
-    var visible = (typeof this.options.display === "boolean" && this.options.display === true);
-    this.g.rObj.attr({"opacity": 0});
-    this.element.addClass("jsavedge");
-    if (start) {
-      this.element[0].setAttribute("data-startnode", this.startnode.id());
-    }
-    if (end) {
-      this.element[0].setAttribute("data-endnode", this.endnode.id());
-    }
-    this.element[0].setAttribute("data-container", this.container.id());
-    this.element.data("edge", this);
+  //   var visible = (typeof this.options.display === "boolean" && this.options.display === true);
+  //   this.g.rObj.attr({"opacity": 0});
+  //   this.element.addClass("jsavedge");
+  //   if (start) {
+  //     this.element[0].setAttribute("data-startnode", this.startnode.id());
+  //   }
+  //   if (end) {
+  //     this.element[0].setAttribute("data-endnode", this.endnode.id());
+  //   }
+  //   this.element[0].setAttribute("data-container", this.container.id());
+  //   this.element.data("edge", this);
 
-    if (typeof this.options.weight !== "undefined") {
-      this._weight = this.options.weight;
-      this.label(this._weight);
-    }
-    if (visible) {
-      this.g.show();
-    }
-  };
+  //   if (typeof this.options.weight !== "undefined") {
+  //     this._weight = this.options.weight;
+  //     this.label(this._weight);
+  //   }
+  //   if (visible) {
+  //     this.g.show();
+  //   }
+  // };
 
-  JSAV.utils.extend(ArrayEdge, JSAV._types.ds.Edge);
+  // JSAV.utils.extend(ArrayEdge, JSAV._types.ds.Edge);
 }(jQuery));
