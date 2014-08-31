@@ -201,58 +201,60 @@ cost?
 
    Proficiency exercise for Prim's algorithm.
 
-Kruskal's Algorithm
--------------------
+.. showhidecontent:: kruskals
 
-Our next MCST algorithm is commonly referred to as
-:term:`Kruskal's algorithm`.
-Kruskal's algorithm is also a simple, greedy algorithm.
-First partition the set of vertices into :math:`|\mathbf{V}|`
-:ref:`disjoint sets <UNION/FIND> <UnionFind>`,
-each consisting of one vertex.
-Then process the edges in order of weight.
-An edge is added to the MCST, and two disjoint sets combined,
-if the edge connects two vertices in different disjoint sets.
-This process is repeated until only one disjoint set remains.
+   Kruskal's Algorithm
+   -------------------
 
-.. avembed:: AV/Development/KruskalUFAV.html ss
+   Our next MCST algorithm is commonly referred to as
+   :term:`Kruskal's algorithm`.
+   Kruskal's algorithm is also a simple, greedy algorithm.
+   First partition the set of vertices into :math:`|\mathbf{V}|`
+   :ref:`disjoint sets <UNION/FIND> <UnionFind>`,
+   each consisting of one vertex.
+   Then process the edges in order of weight.
+   An edge is added to the MCST, and two disjoint sets combined,
+   if the edge connects two vertices in different disjoint sets.
+   This process is repeated until only one disjoint set remains.
 
-The edges can be processed in order of weight by using a
-min-heap.
-This is generally faster than sorting the edges first, because in
-practice we need only visit a small fraction of the edges before
-completing the MCST.
-This is an example of finding only a
-:ref:`few smallest elements <HeapSort>` in a list.
+   .. avembed:: AV/Development/KruskalUFAV.html ss
 
-The only tricky part to this algorithm is determining if two vertices
-belong to the same equivalence class.
-Fortunately, the ideal algorithm is available for the purpose ---
-the :ref:`UNION/FIND <UNION/FIND> <UnionFind>`.
-Here is an implementation for Kruskal's algorithm.
-Class ``KruskalElem`` is used to store the edges on the min-heap.
+   The edges can be processed in order of weight by using a
+   min-heap.
+   This is generally faster than sorting the edges first, because in
+   practice we need only visit a small fraction of the edges before
+   completing the MCST.
+   This is an example of finding only a
+   :ref:`few smallest elements <HeapSort>` in a list.
 
-.. codeinclude:: Graphs/Kruskal
-   :tag: Kruskal
+   The only tricky part to this algorithm is determining if two vertices
+   belong to the same equivalence class.
+   Fortunately, the ideal algorithm is available for the purpose ---
+   the :ref:`UNION/FIND <UNION/FIND> <UnionFind>`.
+   Here is an implementation for Kruskal's algorithm.
+   Class ``KruskalElem`` is used to store the edges on the min-heap.
 
-Kruskal's algorithm is dominated by the time required to
-process the edges.
-The ``differ`` and ``UNION`` functions are nearly
-constant in time if path compression and weighted union is used.
-Thus, the total cost of the algorithm is
-:math:`\Theta(|\mathbf{E}| \log |\mathbf{E}|)` in the worst case,
-when nearly all edges must be processed before all the edges of the
-spanning tree are found and the algorithm can stop.
-More often the edges of the spanning tree are the shorter ones,and
-only about :math:`|\mathbf{V}|` edges must be processed.
-If so, the cost is often close to
-:math:`\Theta(|\mathbf{V}| \log |\mathbf{E}|)` in the average case.
+   .. codeinclude:: Graphs/Kruskal
+      :tag: Kruskal
 
-.. avembed:: AV/Development/KruskalPE.html pe
+   Kruskal's algorithm is dominated by the time required to
+   process the edges.
+   The ``differ`` and ``UNION`` functions are nearly
+   constant in time if path compression and weighted union is used.
+   Thus, the total cost of the algorithm is
+   :math:`\Theta(|\mathbf{E}| \log |\mathbf{E}|)` in the worst case,
+   when nearly all edges must be processed before all the edges of the
+   spanning tree are found and the algorithm can stop.
+   More often the edges of the spanning tree are the shorter ones,and
+   only about :math:`|\mathbf{V}|` edges must be processed.
+   If so, the cost is often close to
+   :math:`\Theta(|\mathbf{V}| \log |\mathbf{E}|)` in the average case.
 
-.. TODO::
-   :type: Exercise
+   .. avembed:: AV/Development/KruskalPE.html pe
 
-   Summary battery of questions for Prim's and Kruskal's algorithms.
+   .. TODO::
+      :type: Exercise
+
+      Summary battery of questions for Prim's and Kruskal's algorithms.
 
 .. odsascript:: AV/Development/MCSTCON.js
