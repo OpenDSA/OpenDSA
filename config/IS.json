@@ -16,6 +16,25 @@
       "IS/FirstFit": {
         "long_name": "First Fit",
         "exercises": {}
+      },
+      "Binary/BinaryTree": {
+        "long_name": "Binary Tree Terminology",
+        "exercises": {
+          "DprobsAll": {
+            "long_name": "Tree Definition Summary",
+            "required": true,
+            "points": 3,
+            "threshold": 8
+          }
+        }
+      },
+      "Development/AVL": {
+        "long_name": "The AVL Tree",
+        "exercises": {}
+      },
+      "Development/GenTreeIntro": {
+        "long_name": "General Trees",
+        "exercises": {}
       }
     },
     "Appendix": {
