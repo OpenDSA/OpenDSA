@@ -4,6 +4,11 @@
   stroke-width: 2.0;
 }
 
+.edgeHighlightStrong {
+  stroke: blue;
+  stroke-width: 3.0;
+}
+
 .jsavarraytree .jsavarraytreenode {
   border: none;
   background-color: transparent;
