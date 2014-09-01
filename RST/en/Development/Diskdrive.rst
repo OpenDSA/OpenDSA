@@ -109,10 +109,10 @@ density.
 This arrangement is illustrated by
 Figure :num:`Figure #Diskfig` (a).
 Disk drives today actually group tracks into
-"zones" such that the tracks in the innermost zone adjust their data
-density going out to maintain the same radial data density, then the
-tracks of the next zone reset the data density to make better use of
-their storage ability, and so on.
+:term:`zones <zone>` such that the tracks in the innermost zone adjust
+their data density going out to maintain the same radial data density,
+then the tracks of the next zone reset the data density to make better
+use of their storage ability, and so on.
 This arrangement is shown in Figure :num:`Figure #Diskfig` (b).
 
 .. _Diskfig:

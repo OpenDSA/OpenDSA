@@ -152,7 +152,7 @@
           "binsearchpro": {
             "long_name": "Binary Search Proficiency Exercise",
             "showhide": "none",
-            "remove": true
+            "remove": false
           }
         },
         "exercises": {

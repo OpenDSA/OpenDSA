@@ -510,7 +510,7 @@
         "exercises": {}
       }
     },
-    "Design 2": {
+    "Design Considerations": {
       "Design/Comparison": {
         "long_name": "Comparing Records",
         "exercises": {
@@ -1194,124 +1194,6 @@
           }
         }
       },
-      "Hashing/HashCImproved": {
-        "long_name": "Improved Collision Resolution",
-        "exercises": {
-          "collisionCON1": {
-            "long_name": "Linear Probing By Steps Slideshow 1",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "collisionCON2": {
-            "long_name": "Linear Probing By Steps Slideshow 2",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "HashingLinearStepProbePRO": {
-            "long_name": "Linear Probing By Steps Proficiency Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 5
-          },
-          "collisionCON3": {
-            "long_name": "Pseudo-Random Probing Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "HashingPseudoRandomProbePRO": {
-            "long_name": "Pseudo-Random Probing Proficiency Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 5
-          },
-          "collisionCON4": {
-            "long_name": "Quadratic Probing Slideshow 1",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "collisionCON5": {
-            "long_name": "Quadratic Probing Slideshow 2",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "HashingQuadraticProbePRO": {
-            "long_name": "Quadratic Probing Proficiency Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 5
-          },
-          "collisionCON6": {
-            "long_name": "Double Hashing Slideshow 1",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "collisionCON7": {
-            "long_name": "Double Hashing Slideshow 2",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "collisionCON8": {
-            "long_name": "Double Hashing Slideshow 3",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "HashingDoubleProbePRO": {
-            "long_name": "Double Hashing Proficiency Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 5
-          },
-          "hashAV": {
-            "long_name": "Hashing Visualization",
-            "required": false,
-            "showhide": "none",
-            "points": 0,
-            "threshold": 1.0
-          }
-        }
-      },
-      "Hashing/HashAnal": {
-        "long_name": "Analysis of Closed Hashing",
-        "exercises": {
-          "HashAnalSumm": {
-            "long_name": "Analysis of Closed Hashing Summary Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5
-          }
-        }
-      },
-      "Hashing/HashDel": {
-        "long_name": "Deletion",
-        "exercises": {
-          "hashdelCON1": {
-            "long_name": "Hash Deletion Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "HashingDelPRO": {
-            "long_name": "Hash Deletion Proficiency Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 0.90
-          },
-          "HashDelSumm": {
-            "long_name": "Hash Deletion Summary Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 3
-          }
-        }
-      },
       "Hashing/HashSumm": {
         "long_name": "Hashing Chapter Summary Exercises",
         "exercises": {
@@ -1385,6 +1267,13 @@
       },
       "Development/MCST": {
         "long_name": "Minimal Cost Spanning Trees",
+        "sections": {
+          "kruskals": {
+            "long_name": "Kruskal's Algorithm",
+            "showhide": "none",
+            "remove": true
+          }
+        },
         "exercises": {
           "MCSTCON1": {},
           "PrimAV": {
@@ -1416,7 +1305,7 @@
           },
           "KruskalPE": {
             "long_name": "Kruskal's Algorithm Proficiency Exercise",
-            "required": true,
+            "required": false,
             "points": 2.0,
             "threshold": 0.90
           }

@@ -56,8 +56,7 @@ To get credit for the exercise, answer the following two questions:
 To be practical, a database organized by hashing must store records in a
 hash table that is not so large that it wastes space.
 To balance time and space efficiency, this means that the hash table
-should be around half full (as explained in
-Module :numref:`<HashAnal>`).
+should be :ref:`around half full <HashAnal>`.
 Because collisions are extremely likely to occur under these conditions
 (by chance, any record inserted into a table that is half full should
 have a collision half of the time),
