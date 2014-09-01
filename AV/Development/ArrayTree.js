@@ -135,7 +135,15 @@
   };
 
   arrayTreeProto.moveValue = function (fromNode, fromIndex, toNode, toIndex) {
-    this.jsav.effects.moveValue(fromNode.node_array, fromIndex, toNode.node_array, toIndex);
+    // Test if fromNode is of type Array Tree Node
+    if (ArrayTreeNode.prototype.isPrototypeOf(fromNode)) {
+      fromNode = fromNode.node_array;
+    }
+    // Test if toNode is of type Array Tree Node
+    if (ArrayTreeNode.prototype.isPrototypeOf(toNode)) {
+      toNode = toNode.node_array;
+    }
+    this.jsav.effects.moveValue(fromNode, fromIndex, toNode, toIndex);
   };
 
   /*****************************************************************************
