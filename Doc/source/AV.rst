@@ -51,7 +51,7 @@ notice that most visual elements can be styled with a ``.css()``
 method on the element.
 But in nearly all cases, we wish to avoid using that method.
 We prefer to use the ``.addClass()`` and ``.removeClass()`` methods to
-control element styling whenever possible.
+control dynamic element styling whenever possible.
 These methods will dynamically assign or remove a CSS class to the
 element in the DOM.
 You can define any necessary new class in your AV's CSS file.
@@ -66,3 +66,44 @@ your AV is currently acting on, then you probably want to indicate
 this by styling it using ``mynode.addClass("processing")`` for a tree
 node object named ``mynode``, or using ``myarray.(index,
 "processing")`` for array position ``index`` in JSAV array ``myarray``.
+
+
+"Stand-alone" vs. "Inline" AVs and Exercises
+--------------------------------------------
+
+Structurally, there are two ways that we include AVs and exerices into
+a module.
+First is the "stand-alone" artifact, which has its own HTML pages.
+In principle, this might be anything with its own URL, though in
+practice we usually only include our own materials.
+This is done using the ``avembed`` directive
+(see :ref:`avembed`).
+When converted to HTML, the mechanism used is a standard ``iframe``
+tag to include the artifact.
+
+"Inline" AVs are usually either a JSAV diagram or a JSAV slideshow
+(a diagram is just a "slideshow" with no slide controls at the top).
+These are included using the ``inlineav`` directive
+(see :ref:`inlineav`).
+The ``avID`` is the container name for the AV.
+Of course, the final HTML page has to get access to the relevent
+JavaScript and CSS files.
+This is done by putting at the bottom of the .rst file an
+``odsascript`` directive giving the path and name of the Javascript
+file (see :ref:`odsascript`).
+If a CSS file is used, then you put near the top of the .rst file
+(right after the ``avmetadata`` block) an ``odsalink`` directive
+giving the path and name of the CSS file (see :ref:`odsalink`).
+Our naming convention is that all inlineavs use container names that
+end in ``CON``, and that the .js and .css files use the container
+name.
+Further, our convention is that each individual slideshow or diagram
+be in its own JavaScript file (though this is convention is violated
+on occasion if there are a lot of very short slideshow files in a
+given page).
+
+The ``odsascript`` and ``odsalink`` directives do nothing more than
+map down to ``<script></script>`` and ``<link></link>`` tags,
+respectively, in the final HTML pages.
+Their purpose is merely to keep module authors from needing to use raw
+HTML code in an RST file.
