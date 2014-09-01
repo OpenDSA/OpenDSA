@@ -34,6 +34,7 @@
       },
       "IS/GenTreeIntro": {
         "long_name": "General Trees",
+        "exercises": {}
       },
       "IS/TwoThreeTree_Test": {
         "long_name": "Two Three Tree",

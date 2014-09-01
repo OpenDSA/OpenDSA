@@ -19,6 +19,8 @@ as not being set manually (i.e., by the module author) within the ReST
 file. You just leave those options out when you create your module,
 and specify them instead in your configuration file.
 
+.. _avembed:
+
 avembed
 -------
 NAME
@@ -170,6 +172,8 @@ NOTES
         .. literalinclude:: <relative_path>
            :start-after: /* *** ODSATag: my_tag *** */
            :end-before: /* *** ODSAendTag: my_tag *** */
+
+.. _inlineav:
 
 inlineav
 -----------
@@ -360,6 +364,8 @@ NOTES
     part of the table of contents for the eBook.
 
 
+.. _odsalink:
+
 odsalink
 --------
 NAME
@@ -395,6 +401,8 @@ NOTES
 
     in the HTML output file.
 
+
+.. _odsascript:
 
 odsascript
 ----------
