@@ -26,6 +26,8 @@
 (function() {
   var jsav = new JSAV("TTTreeSimpleInsert");
   var at = jsav.ds.arraytree(); // Create Array Tree
+  jsav.label("Insert:", {left: '2%', top: '3%'});
+  var ins_arr = jsav.ds.array([14], {left: "8%", top: "0px"});
 
   // Create root node and all child nodes.
   var r = at.root([18, 31]);
@@ -83,7 +85,8 @@
   step();
 
   // Slide 6
-  r.child(0).child(1).value(0, 14);
+  at.moveValue(ins_arr, 0, r.child(0).child(1), 0);
+  // r.child(0).child(1).value(0, 14);
   step();
 
   jsav.recorded(); // End slideshow
@@ -93,6 +96,9 @@
 (function() {
   var jsav = new JSAV("TTTreePromoteInsert");
   var at = jsav.ds.arraytree(); // Create Array Tree
+  jsav.label("Insert:", {left: '2%', top: '3%'});
+  var ins_arr = jsav.ds.array([55], {left: "8%", top: "0px"});
+
 
   // Create root node and all child nodes.
   var r = at.root([18, 31]);
@@ -159,7 +165,8 @@
   r.child(2).child(1).unhighlight();
   r.child(2).child(2).unhighlight();
   r.child(2).child(2).highlight(0);
-  r.child(2).child(2).value(0, 55);
+  // r.child(2).child(2).value(0, 55);
+  at.moveValue(ins_arr, 0, r.child(2).child(2), 0);
   step();
 
   // Slide 7
@@ -185,6 +192,10 @@
 (function() {
   var jsav = new JSAV("TTTreeSplitInsert");
   var at = jsav.ds.arraytree(); // Create Array Tree
+  jsav.label("Insert:", {left: '3%', top: '-15%'});
+  var ins_arr = jsav.ds.array([19], {left: "9%", top: "-18%"});
+  jsav.label("Promote:", {left: '1%', top: '5%'});
+  var prom_arr = jsav.ds.array([""], {left: "9%", top: "2%"});
 
   // Create root node and all child nodes.
   var r = at.root([18, 31]);
@@ -199,4 +210,87 @@
   r.child(2).addChild([45, 47]);
   r.child(2).addChild([50, 52]);
   at.layout(); // Layout array tree.
+
+  var msg = [
+    "Example of inserting a record that causes the 2-3 tree root to split. We want to insert the key 19 into the tree.",
+    "The key is first compared against the root node. Since 19 is more than the left key and less than the right key of the root node, the center child node is followed next.",
+    "This node has only two elements, and 19 is less than 23 so the left child is followed next.",
+    "A leaf node has being reached. Since the leaf node has no empty spaces it will have to be split.",
+    "Next we have to rearrange the keys. First the largest key (21) goes in the new node.",
+    "The middle key (20) has to be promoted.",
+    "The smallest key (19) goes is the old node",
+    "The parent node is full, so the promoted element cannot be inserted. Therefore the parent node has to be split.",
+    "Again, the largest key (30) goes in the new node, the smallest key (20) goes is the old node, and the middle key (23) is promoted",
+    "The pointers can now be updated",
+    "The parent node is full so the promoted element cannot be inserted. Therefore the parent node has to be split. Because the parent node is the root node, a new root has to be created as well.",
+    "Again, the largest key (23) goes in the new node, the smallest key (13) goes is the old node, and the middle key (18) is promoted.",
+    "The pointers can now be updated.",
+    "The insertion is complete."
+  ];
+
+  function step() {
+    jsav.umsg(msg.shift());
+    jsav.step();
+  }
+
+  // Slide 1
+  jsav.umsg(msg.shift());
+  jsav.displayInit(); // Start slide show
+
+  // Slide 2
+  r.highlight();
+  r.edgeToChild(1).toggleClass('edgeHighlightStrong');
+  step();
+
+  // Slide 3
+  r.unhighlight();
+  r.edgeToChild(1).toggleClass('edgeHighlightStrong');
+  r.child(1).highlight(0);
+  r.child(1).edgeToChild(0).toggleClass('edgeHighlight');
+  step();
+
+  // Slide 4
+  r.child(1).unhighlight(0);
+  r.child(1).edgeToChild(0).toggleClass('edgeHighlight');
+  r.child(1).child(0).highlight();
+  step();
+
+  // Slide 5
+  // Remove children 1 and 2.
+  r.child(1).child(2, null);
+  r.child(1).child(1, null);
+  // Add children back in correct order with an empty node.
+  r.child(1).addChild(["", ""]);
+  r.child(1).addChild([24, ""]);
+  r.child(1).addChild([31, ""]);
+  at.layout();
+  r.child(1).edgeToChild(1).hide();
+  r.child(1).child(1).highlight();
+  step();
+
+  // Slide 6
+  r.child(1).child(0).unhighlight();
+  r.child(1).child(1).unhighlight();
+  at.moveValue(r.child(1).child(0), 1, r.child(1).child(1), 0);
+  step();
+
+  // Slide 7
+  at.moveValue(r.child(1).child(0), 0, prom_arr, 0);
+  step();
+
+  // Slide 8
+  at.moveValue(ins_arr, 0, r.child(1).child(0), 0);
+  step();
+
+  // Slide 9
+  r.child(2, null); // Remove child.
+  // Add children back in correct order with an empty node.
+  r.addChild(["", ""]);
+  r.addChild([48, ""]);
+  r.child(3).addChild([45, 47]);
+  r.child(3).addChild([50, 52]);
+  at.layout();
+  step();
+
+  jsav.recorded(); // End slide show
 }());
