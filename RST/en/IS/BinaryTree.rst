@@ -10,6 +10,7 @@
    :topic: Binary Trees
 
 .. odsalink:: AV/Development/BinExamp.css
+.. odsalink:: AV/Development/BinDiff.css
 
 Binary Trees
 ============
@@ -91,6 +92,13 @@ any node that has at least one non-empty child.
    The depth of :math:`I` is 3.
    The height of this tree is 4.
 
+.. _BinDiff1:
+
+.. inlineav:: BinDiff dgm
+   :align: justify
+
+   Two different binary trees.
+
 .. _BinDiff:
 
 .. odsafig:: Images/BinDiff.png
@@ -168,3 +176,4 @@ Notes
        level of a complete binary tree is as wide as possible.
 
 .. odsascript:: AV/Development/BinExamp.js
+.. odsascript:: AV/Development/BinDiff.js

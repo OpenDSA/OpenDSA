@@ -4,8 +4,8 @@ $(document).ready(function () {
   var av = new JSAV("BinExamp", {"animationMode": "none"});
   // Setup the tree
   var btTop = 10;
-  var btLeft = 105;
-  var bt = av.ds.binarytree({nodegap: 10, top: btTop, left: btLeft});
+  var btLeft = 305;
+  var bt = av.ds.binarytree({nodegap: 15, top: btTop, left: btLeft});
   bt.root('A');
   var rt = bt.root();
   rt.left('B');
