@@ -35,16 +35,16 @@
    */
   function getArrayNodesEdges(jsav, array_nodes, array_node_length, edge_properties) {
     var lines = [];
-    lines.push(window.ODSA.drawEdge(jsav, edge_properties, array_nodes[0], array_nodes[1], 0, array_node_length));
-    lines.push(window.ODSA.drawEdge(jsav, edge_properties, array_nodes[0], array_nodes[2], 1, array_node_length));
-    lines.push(window.ODSA.drawEdge(jsav, edge_properties, array_nodes[0], array_nodes[3], 2, array_node_length));
-    lines.push(window.ODSA.drawEdge(jsav, edge_properties, array_nodes[1], array_nodes[4], 0, array_node_length));
-    lines.push(window.ODSA.drawEdge(jsav, edge_properties, array_nodes[1], array_nodes[5], 1, array_node_length));
-    lines.push(window.ODSA.drawEdge(jsav, edge_properties, array_nodes[2], array_nodes[6], 0, array_node_length));
-    lines.push(window.ODSA.drawEdge(jsav, edge_properties, array_nodes[2], array_nodes[7], 1, array_node_length));
-    lines.push(window.ODSA.drawEdge(jsav, edge_properties, array_nodes[2], array_nodes[8], 2, array_node_length));
-    lines.push(window.ODSA.drawEdge(jsav, edge_properties, array_nodes[3], array_nodes[9], 0, array_node_length));
-    lines.push(window.ODSA.drawEdge(jsav, edge_properties, array_nodes[3], array_nodes[10], 1, array_node_length));
+    lines.push(window.twothreetree.drawEdge(jsav, edge_properties, array_nodes[0], array_nodes[1], 0, array_node_length));
+    lines.push(window.twothreetree.drawEdge(jsav, edge_properties, array_nodes[0], array_nodes[2], 1, array_node_length));
+    lines.push(window.twothreetree.drawEdge(jsav, edge_properties, array_nodes[0], array_nodes[3], 2, array_node_length));
+    lines.push(window.twothreetree.drawEdge(jsav, edge_properties, array_nodes[1], array_nodes[4], 0, array_node_length));
+    lines.push(window.twothreetree.drawEdge(jsav, edge_properties, array_nodes[1], array_nodes[5], 1, array_node_length));
+    lines.push(window.twothreetree.drawEdge(jsav, edge_properties, array_nodes[2], array_nodes[6], 0, array_node_length));
+    lines.push(window.twothreetree.drawEdge(jsav, edge_properties, array_nodes[2], array_nodes[7], 1, array_node_length));
+    lines.push(window.twothreetree.drawEdge(jsav, edge_properties, array_nodes[2], array_nodes[8], 2, array_node_length));
+    lines.push(window.twothreetree.drawEdge(jsav, edge_properties, array_nodes[3], array_nodes[9], 0, array_node_length));
+    lines.push(window.twothreetree.drawEdge(jsav, edge_properties, array_nodes[3], array_nodes[10], 1, array_node_length));
     return lines;
   }
 
@@ -145,14 +145,14 @@
   var edge_highlight_remove = {"stroke": "black", "stroke-width": 1.0};
 
 
-  var ODSA = {};
-  ODSA.drawEdge = drawEdge;
-  ODSA.positionRow = positionRow;
-  ODSA.getArrayNodes = getArrayNodes;
-  ODSA.getArrayNodesEdges = getArrayNodesEdges;
-  ODSA.toggleArrayHiglight = toggleArrayHighlight;
-  ODSA.toggleEdgeHiglight = toggleEdgeHighlight;
-  window.ODSA = ODSA;
+  var twothreetree = {};
+  twothreetree.drawEdge = drawEdge;
+  twothreetree.positionRow = positionRow;
+  twothreetree.getArrayNodes = getArrayNodes;
+  twothreetree.getArrayNodesEdges = getArrayNodesEdges;
+  twothreetree.toggleArrayHiglight = toggleArrayHighlight;
+  twothreetree.toggleEdgeHiglight = toggleEdgeHighlight;
+  window.twothreetree = twothreetree;
 }());
 
 /**
@@ -166,17 +166,17 @@
   var jsav = new JSAV("twoThreeTreeCON");
 
   // Create all the arrays that represent the nodes in the 2-3 tree.
-  var arrays = window.ODSA.getArrayNodes(jsav);
+  var arrays = window.twothreetree.getArrayNodes(jsav);
   // Position the array nodes.
   var width = 560;
-  window.ODSA.positionRow(arrays.slice(0, 1), 0, width, 70);
-  window.ODSA.positionRow(arrays.slice(1, 4), 80, width, 450);
-  window.ODSA.positionRow(arrays.slice(4), 160, width, 560);
+  window.twothreetree.positionRow(arrays.slice(0, 1), 0, width, 70);
+  window.twothreetree.positionRow(arrays.slice(1, 4), 80, width, 450);
+  window.twothreetree.positionRow(arrays.slice(4), 160, width, 560);
 
   // Create lines that connect all the nodes.
   var properties = {"stroke-width": 1.5};
   var length = 2;
-  window.ODSA.getArrayNodesEdges(jsav, arrays, length, properties);
+  window.twothreetree.getArrayNodesEdges(jsav, arrays, length, properties);
 }());
 
 /**
@@ -189,17 +189,17 @@
   var jsav = new JSAV("simpleInsertCON");
 
   // Create all the arrays that represent the nodes in the 2-3 tree.
-  var arrays = window.ODSA.getArrayNodes(jsav);
+  var arrays = window.twothreetree.getArrayNodes(jsav);
   // Position the array nodes.
   var width = 700;
-  window.ODSA.positionRow(arrays.slice(0, 1), 0, width, 70);
-  window.ODSA.positionRow(arrays.slice(1, 4), 80, width, 450);
-  window.ODSA.positionRow(arrays.slice(4), 160, width, 560);
+  window.twothreetree.positionRow(arrays.slice(0, 1), 0, width, 70);
+  window.twothreetree.positionRow(arrays.slice(1, 4), 80, width, 450);
+  window.twothreetree.positionRow(arrays.slice(4), 160, width, 560);
 
   // Create lines that connect all the nodes.
   var properties = {"stroke-width": 1.5};
   var length = 2;
-  var lines = window.ODSA.getArrayNodesEdges(jsav, arrays, length, properties);
+  var lines = window.twothreetree.getArrayNodesEdges(jsav, arrays, length, properties);
 
   var messages = [
     "Simple insert into the 2-3 tree. We want to insert the key 14 into the tree.",
@@ -218,26 +218,26 @@
 
   /* 2nd Slide *************************************************************/
   jsav.umsg(messages.shift());
-  window.ODSA.toggleArrayHiglight(arrays[0]);
+  window.twothreetree.toggleArrayHiglight(arrays[0]);
   arrays[0].highlight(0);
-  window.ODSA.toggleEdgeHiglight(lines[0]);
+  window.twothreetree.toggleEdgeHiglight(lines[0]);
   jsav.step();
 
   /* 3rd Slide *************************************************************/
   jsav.umsg(messages.shift());
-  window.ODSA.toggleArrayHiglight(arrays[1]);
-  window.ODSA.toggleArrayHiglight(arrays[0]);
-  window.ODSA.toggleEdgeHiglight(lines[0]);
+  window.twothreetree.toggleArrayHiglight(arrays[1]);
+  window.twothreetree.toggleArrayHiglight(arrays[0]);
+  window.twothreetree.toggleEdgeHiglight(lines[0]);
   arrays[0].unhighlight(0);
   arrays[1].highlight(0);
-  window.ODSA.toggleEdgeHiglight(lines[4]);
+  window.twothreetree.toggleEdgeHiglight(lines[4]);
   jsav.step();
 
   /* 4th Slide *************************************************************/
   jsav.umsg(messages.shift());
-  window.ODSA.toggleArrayHiglight(arrays[5]);
-  window.ODSA.toggleArrayHiglight(arrays[1]);
-  window.ODSA.toggleEdgeHiglight(lines[4]);
+  window.twothreetree.toggleArrayHiglight(arrays[5]);
+  window.twothreetree.toggleArrayHiglight(arrays[1]);
+  window.twothreetree.toggleEdgeHiglight(lines[4]);
   arrays[1].unhighlight(0);
   jsav.step();
 
@@ -248,7 +248,7 @@
 
   /* 5th Slide *************************************************************/
   jsav.umsg(messages.shift());
-  window.ODSA.toggleArrayHiglight(arrays[5]);
+  window.twothreetree.toggleArrayHiglight(arrays[5]);
   jsav.effects.moveValue(insert, 0, arrays[5], 0);
   jsav.step();
 
@@ -267,17 +267,17 @@
   var jsav = new JSAV("promoteCON");
 
   // Create all the arrays that represent the nodes in the 2-3 tree.
-  var arrays = window.ODSA.getArrayNodes(jsav);
+  var arrays = window.twothreetree.getArrayNodes(jsav);
   // Position the array nodes.
   var width = 700;
-  window.ODSA.positionRow(arrays.slice(0, 1), 0, width, 70);
-  window.ODSA.positionRow(arrays.slice(1, 4), 80, width, 450);
-  window.ODSA.positionRow(arrays.slice(4), 160, width, 560);
+  window.twothreetree.positionRow(arrays.slice(0, 1), 0, width, 70);
+  window.twothreetree.positionRow(arrays.slice(1, 4), 80, width, 450);
+  window.twothreetree.positionRow(arrays.slice(4), 160, width, 560);
 
   // Create lines that connect all the nodes.
   var properties = {"stroke-width": 1.5};
   var length = 2;
-  var lines = window.ODSA.getArrayNodesEdges(jsav, arrays, length, properties);
+  var lines = window.twothreetree.getArrayNodesEdges(jsav, arrays, length, properties);
 
   var messages = [
     "A simple node-splitting insert for a 2-3 tree. We want to insert the key 55 into the tree. ",
@@ -299,35 +299,35 @@
 
   /* 2nd Slide *************************************************************/
   jsav.umsg(messages.shift());
-  window.ODSA.toggleArrayHiglight(arrays[0]);
+  window.twothreetree.toggleArrayHiglight(arrays[0]);
   arrays[0].highlight(1);
-  window.ODSA.toggleEdgeHiglight(lines[2]);
+  window.twothreetree.toggleEdgeHiglight(lines[2]);
   jsav.step();
 
   /* 3rd Slide *************************************************************/
   jsav.umsg(messages.shift());
-  window.ODSA.toggleArrayHiglight(arrays[3]);
-  window.ODSA.toggleArrayHiglight(arrays[0]);
-  window.ODSA.toggleEdgeHiglight(lines[2]);
+  window.twothreetree.toggleArrayHiglight(arrays[3]);
+  window.twothreetree.toggleArrayHiglight(arrays[0]);
+  window.twothreetree.toggleEdgeHiglight(lines[2]);
   arrays[0].unhighlight(1);
   arrays[3].highlight(0);
-  window.ODSA.toggleEdgeHiglight(lines[9]);
+  window.twothreetree.toggleEdgeHiglight(lines[9]);
   jsav.step();
 
   /* 4th Slide *************************************************************/
   jsav.umsg(messages.shift());
-  window.ODSA.toggleArrayHiglight(arrays[10]);
-  window.ODSA.toggleArrayHiglight(arrays[3]);
-  window.ODSA.toggleEdgeHiglight(lines[9]);
+  window.twothreetree.toggleArrayHiglight(arrays[10]);
+  window.twothreetree.toggleArrayHiglight(arrays[3]);
+  window.twothreetree.toggleEdgeHiglight(lines[9]);
   arrays[3].unhighlight(0);
   jsav.step();
 
   /* 5th Slide *************************************************************/
   jsav.umsg(messages.shift());
   arrays.push(jsav.ds.array(["", ""], {visible: false}));
-  window.ODSA.positionRow(arrays.slice(4), 160, width + 80, 639);
+  window.twothreetree.positionRow(arrays.slice(4), 160, width + 80, 639);
   arrays[11].show();
-  window.ODSA.toggleArrayHiglight(arrays[11]);
+  window.twothreetree.toggleArrayHiglight(arrays[11]);
   jsav.step();
 
   /* 6th Slide *************************************************************/
@@ -341,18 +341,18 @@
 
   /* 8th Slide *************************************************************/
   jsav.umsg(messages.shift());
-  window.ODSA.toggleArrayHiglight(arrays[3]);
-  window.ODSA.toggleArrayHiglight(arrays[11]);
-  window.ODSA.toggleArrayHiglight(arrays[10]);
+  window.twothreetree.toggleArrayHiglight(arrays[3]);
+  window.twothreetree.toggleArrayHiglight(arrays[11]);
+  window.twothreetree.toggleArrayHiglight(arrays[10]);
   jsav.effects.moveValue(arrays[10], 1, arrays[3], 1);
   arrays[3].highlight(1);
   jsav.step();
 
   /* 9th Slide *************************************************************/
   jsav.umsg(messages.shift());
-  window.ODSA.drawEdge(jsav, properties, arrays[3], arrays[11], 2, length);
+  window.twothreetree.drawEdge(jsav, properties, arrays[3], arrays[11], 2, length);
   arrays[3].unhighlight(1);
-  window.ODSA.toggleArrayHiglight(arrays[3]);
+  window.twothreetree.toggleArrayHiglight(arrays[3]);
   jsav.step();
 
   // Mark the slide show as finished.
@@ -371,17 +371,17 @@
   var jsav = new JSAV("splitCON");
 
   // Create all the arrays that represent the nodes in the 2-3 tree.
-  var arrays = window.ODSA.getArrayNodes(jsav);
+  var arrays = window.twothreetree.getArrayNodes(jsav);
   // Position the array nodes.
   var width = 800;
-  window.ODSA.positionRow(arrays.slice(0, 1), 80, width, 70);
-  window.ODSA.positionRow(arrays.slice(1, 4), 160, width, 480);
-  window.ODSA.positionRow(arrays.slice(4), 240, width, 560);
+  window.twothreetree.positionRow(arrays.slice(0, 1), 80, width, 70);
+  window.twothreetree.positionRow(arrays.slice(1, 4), 160, width, 480);
+  window.twothreetree.positionRow(arrays.slice(4), 240, width, 560);
 
   // Create lines that connect all the nodes.
   var properties = {"stroke-width": 1.5};
   var length = 2;
-  var lines = window.ODSA.getArrayNodesEdges(jsav, arrays, length, properties);
+  var lines = window.twothreetree.getArrayNodesEdges(jsav, arrays, length, properties);
 
   var messages = [
     "Example of inserting a record that causes the 2-3 tree root to split. We want to insert the key 19 into the tree.",
@@ -410,43 +410,43 @@
 
   /* 2nd Slide *************************************************************/
   jsav.umsg(messages.shift());
-  window.ODSA.toggleArrayHiglight(arrays[0]);
-  window.ODSA.toggleEdgeHiglight(lines[1]);
+  window.twothreetree.toggleArrayHiglight(arrays[0]);
+  window.twothreetree.toggleEdgeHiglight(lines[1]);
   jsav.step();
 
   /* 3rd Slide *************************************************************/
   jsav.umsg(messages.shift());
-  window.ODSA.toggleArrayHiglight(arrays[2]);
-  window.ODSA.toggleArrayHiglight(arrays[0]);
-  window.ODSA.toggleEdgeHiglight(lines[1]);
+  window.twothreetree.toggleArrayHiglight(arrays[2]);
+  window.twothreetree.toggleArrayHiglight(arrays[0]);
+  window.twothreetree.toggleEdgeHiglight(lines[1]);
   arrays[2].highlight(0);
-  window.ODSA.toggleEdgeHiglight(lines[5]);
+  window.twothreetree.toggleEdgeHiglight(lines[5]);
   jsav.step();
 
   /* 4th Slide *************************************************************/
   jsav.umsg(messages.shift());
-  window.ODSA.toggleArrayHiglight(arrays[6]);
-  window.ODSA.toggleArrayHiglight(arrays[2]);
-  window.ODSA.toggleEdgeHiglight(lines[5]);
+  window.twothreetree.toggleArrayHiglight(arrays[6]);
+  window.twothreetree.toggleArrayHiglight(arrays[2]);
+  window.twothreetree.toggleEdgeHiglight(lines[5]);
   arrays[2].unhighlight(0);
   jsav.step();
 
   /* 5th Slide *************************************************************/
   jsav.umsg(messages.shift());
   arrays.splice(7, 0, jsav.ds.array(["", ""], {visible: false}));
-  window.ODSA.positionRow(arrays.slice(4), 240, width, 640);
+  window.twothreetree.positionRow(arrays.slice(4), 240, width, 640);
   arrays[7].show();
   for (var i = 3; i < lines.length; i += 1) {
     lines[i].hide();
   }
-  lines.splice(3, 1, window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[4], 0, length));
-  lines.splice(4, 1, window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[5], 1, length));
-  lines.splice(5, 1, window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[6], 0, length));
-  lines.splice(6, 1, window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[8], 1, length));
-  lines.splice(7, 1, window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[9], 2, length));
-  lines.splice(8, 1, window.ODSA.drawEdge(jsav, properties, arrays[3], arrays[10], 0, length));
-  lines.splice(9, 1, window.ODSA.drawEdge(jsav, properties, arrays[3], arrays[11], 1, length));
-  window.ODSA.toggleArrayHiglight(arrays[7]);
+  lines.splice(3, 1, window.twothreetree.drawEdge(jsav, properties, arrays[1], arrays[4], 0, length));
+  lines.splice(4, 1, window.twothreetree.drawEdge(jsav, properties, arrays[1], arrays[5], 1, length));
+  lines.splice(5, 1, window.twothreetree.drawEdge(jsav, properties, arrays[2], arrays[6], 0, length));
+  lines.splice(6, 1, window.twothreetree.drawEdge(jsav, properties, arrays[2], arrays[8], 1, length));
+  lines.splice(7, 1, window.twothreetree.drawEdge(jsav, properties, arrays[2], arrays[9], 2, length));
+  lines.splice(8, 1, window.twothreetree.drawEdge(jsav, properties, arrays[3], arrays[10], 0, length));
+  lines.splice(9, 1, window.twothreetree.drawEdge(jsav, properties, arrays[3], arrays[11], 1, length));
+  window.twothreetree.toggleArrayHiglight(arrays[7]);
   jsav.step();
 
   /* 6th Slide *************************************************************/
@@ -466,26 +466,26 @@
 
   /* 9th Slide *************************************************************/
   jsav.umsg(messages.shift());
-  window.ODSA.toggleArrayHiglight(arrays[6]);
-  window.ODSA.toggleArrayHiglight(arrays[7]);
+  window.twothreetree.toggleArrayHiglight(arrays[6]);
+  window.twothreetree.toggleArrayHiglight(arrays[7]);
   arrays.splice(3, 0, jsav.ds.array(["", ""], {visible: false}));
-  window.ODSA.positionRow(arrays.slice(1, 5), 160, width, 550);
+  window.twothreetree.positionRow(arrays.slice(1, 5), 160, width, 550);
   arrays[3].show();
-  window.ODSA.toggleArrayHiglight(arrays[2]);
-  window.ODSA.toggleArrayHiglight(arrays[3]);
+  window.twothreetree.toggleArrayHiglight(arrays[2]);
+  window.twothreetree.toggleArrayHiglight(arrays[3]);
   for (i = 0; i < lines.length; i += 1) {
     lines[i].hide();
   }
-  lines.splice(0, 1, window.ODSA.drawEdge(jsav, properties, arrays[0], arrays[1], 0, length));
-  lines.splice(1, 1, window.ODSA.drawEdge(jsav, properties, arrays[0], arrays[2], 1, length));
-  lines.splice(2, 1, window.ODSA.drawEdge(jsav, properties, arrays[0], arrays[4], 2, length));
-  lines.splice(3, 1, window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[5], 0, length));
-  lines.splice(4, 1, window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[6], 1, length));
-  lines.splice(5, 1, window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[7], 0, length));
-  lines.splice(6, 1, window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[9], 1, length));
-  lines.splice(7, 1, window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[10], 2, length));
-  lines.splice(8, 1, window.ODSA.drawEdge(jsav, properties, arrays[4], arrays[11], 0, length));
-  lines.splice(9, 1, window.ODSA.drawEdge(jsav, properties, arrays[4], arrays[12], 1, length));
+  lines.splice(0, 1, window.twothreetree.drawEdge(jsav, properties, arrays[0], arrays[1], 0, length));
+  lines.splice(1, 1, window.twothreetree.drawEdge(jsav, properties, arrays[0], arrays[2], 1, length));
+  lines.splice(2, 1, window.twothreetree.drawEdge(jsav, properties, arrays[0], arrays[4], 2, length));
+  lines.splice(3, 1, window.twothreetree.drawEdge(jsav, properties, arrays[1], arrays[5], 0, length));
+  lines.splice(4, 1, window.twothreetree.drawEdge(jsav, properties, arrays[1], arrays[6], 1, length));
+  lines.splice(5, 1, window.twothreetree.drawEdge(jsav, properties, arrays[2], arrays[7], 0, length));
+  lines.splice(6, 1, window.twothreetree.drawEdge(jsav, properties, arrays[2], arrays[9], 1, length));
+  lines.splice(7, 1, window.twothreetree.drawEdge(jsav, properties, arrays[2], arrays[10], 2, length));
+  lines.splice(8, 1, window.twothreetree.drawEdge(jsav, properties, arrays[4], arrays[11], 0, length));
+  lines.splice(9, 1, window.twothreetree.drawEdge(jsav, properties, arrays[4], arrays[12], 1, length));
   jsav.step();
 
   /* 10th Slide *************************************************************/
@@ -500,35 +500,35 @@
   for (i = 3; i < lines.length; i += 1) {
     lines[i].hide();
   }
-  lines.splice(3, 1, window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[5], 0, length));
-  lines.splice(4, 1, window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[6], 1, length));
-  lines.splice(5, 1, window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[7], 0, length));
-  lines.splice(6, 1, window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[8], 1, length));
-  lines.splice(7, 1, window.ODSA.drawEdge(jsav, properties, arrays[3], arrays[9], 0, length));
-  lines.splice(8, 1, window.ODSA.drawEdge(jsav, properties, arrays[3], arrays[10], 1, length));
-  lines.splice(9, 1, window.ODSA.drawEdge(jsav, properties, arrays[4], arrays[11], 0, length));
-  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[4], arrays[12], 1, length));
+  lines.splice(3, 1, window.twothreetree.drawEdge(jsav, properties, arrays[1], arrays[5], 0, length));
+  lines.splice(4, 1, window.twothreetree.drawEdge(jsav, properties, arrays[1], arrays[6], 1, length));
+  lines.splice(5, 1, window.twothreetree.drawEdge(jsav, properties, arrays[2], arrays[7], 0, length));
+  lines.splice(6, 1, window.twothreetree.drawEdge(jsav, properties, arrays[2], arrays[8], 1, length));
+  lines.splice(7, 1, window.twothreetree.drawEdge(jsav, properties, arrays[3], arrays[9], 0, length));
+  lines.splice(8, 1, window.twothreetree.drawEdge(jsav, properties, arrays[3], arrays[10], 1, length));
+  lines.splice(9, 1, window.twothreetree.drawEdge(jsav, properties, arrays[4], arrays[11], 0, length));
+  lines.push(window.twothreetree.drawEdge(jsav, properties, arrays[4], arrays[12], 1, length));
   jsav.step();
 
   /* 12th Slide *************************************************************/
   jsav.umsg(messages.shift());
-  window.ODSA.toggleArrayHiglight(arrays[2]);
-  window.ODSA.toggleArrayHiglight(arrays[3]);
+  window.twothreetree.toggleArrayHiglight(arrays[2]);
+  window.twothreetree.toggleArrayHiglight(arrays[3]);
   arrays.splice(0, 0, jsav.ds.array(["", ""], {visible: false}));
   arrays.splice(2, 0, jsav.ds.array(["", ""], {visible: false}));
-  window.ODSA.positionRow(arrays.slice(0, 1), 0, width, 80);
-  window.ODSA.positionRow(arrays.slice(1, 3), 80, width, 400);
+  window.twothreetree.positionRow(arrays.slice(0, 1), 0, width, 80);
+  window.twothreetree.positionRow(arrays.slice(1, 3), 80, width, 400);
   arrays[0].show();
   arrays[2].show();
-  window.ODSA.toggleArrayHiglight(arrays[0]);
-  window.ODSA.toggleArrayHiglight(arrays[1]);
-  window.ODSA.toggleArrayHiglight(arrays[2]);
+  window.twothreetree.toggleArrayHiglight(arrays[0]);
+  window.twothreetree.toggleArrayHiglight(arrays[1]);
+  window.twothreetree.toggleArrayHiglight(arrays[2]);
   for (i = 0; i < 3; i += 1) {
     lines[i].hide();
   }
-  lines.splice(0, 1, window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[3], 0, length));
-  lines.splice(1, 1, window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[4], 1, length));
-  lines.splice(2, 1, window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[6], 2, length));
+  lines.splice(0, 1, window.twothreetree.drawEdge(jsav, properties, arrays[1], arrays[3], 0, length));
+  lines.splice(1, 1, window.twothreetree.drawEdge(jsav, properties, arrays[1], arrays[4], 1, length));
+  lines.splice(2, 1, window.twothreetree.drawEdge(jsav, properties, arrays[1], arrays[6], 2, length));
   jsav.step();
 
   /* 13th Slide *************************************************************/
@@ -544,23 +544,23 @@
     lines[i].hide();
   }
   lines = [];
-  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[0], arrays[1], 0, length));
-  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[0], arrays[2], 1, length));
-  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[3], 0, length));
-  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[1], arrays[4], 1, length));
-  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[5], 0, length));
-  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[2], arrays[6], 1, length));
-  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[3], arrays[7], 0, length));
-  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[3], arrays[8], 1, length));
-  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[4], arrays[9], 0, length));
-  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[4], arrays[10], 1, length));
-  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[5], arrays[11], 0, length));
-  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[5], arrays[12], 1, length));
-  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[6], arrays[13], 0, length));
-  lines.push(window.ODSA.drawEdge(jsav, properties, arrays[6], arrays[14], 1, length));
-  window.ODSA.toggleArrayHiglight(arrays[0]);
-  window.ODSA.toggleArrayHiglight(arrays[1]);
-  window.ODSA.toggleArrayHiglight(arrays[2]);
+  lines.push(window.twothreetree.drawEdge(jsav, properties, arrays[0], arrays[1], 0, length));
+  lines.push(window.twothreetree.drawEdge(jsav, properties, arrays[0], arrays[2], 1, length));
+  lines.push(window.twothreetree.drawEdge(jsav, properties, arrays[1], arrays[3], 0, length));
+  lines.push(window.twothreetree.drawEdge(jsav, properties, arrays[1], arrays[4], 1, length));
+  lines.push(window.twothreetree.drawEdge(jsav, properties, arrays[2], arrays[5], 0, length));
+  lines.push(window.twothreetree.drawEdge(jsav, properties, arrays[2], arrays[6], 1, length));
+  lines.push(window.twothreetree.drawEdge(jsav, properties, arrays[3], arrays[7], 0, length));
+  lines.push(window.twothreetree.drawEdge(jsav, properties, arrays[3], arrays[8], 1, length));
+  lines.push(window.twothreetree.drawEdge(jsav, properties, arrays[4], arrays[9], 0, length));
+  lines.push(window.twothreetree.drawEdge(jsav, properties, arrays[4], arrays[10], 1, length));
+  lines.push(window.twothreetree.drawEdge(jsav, properties, arrays[5], arrays[11], 0, length));
+  lines.push(window.twothreetree.drawEdge(jsav, properties, arrays[5], arrays[12], 1, length));
+  lines.push(window.twothreetree.drawEdge(jsav, properties, arrays[6], arrays[13], 0, length));
+  lines.push(window.twothreetree.drawEdge(jsav, properties, arrays[6], arrays[14], 1, length));
+  window.twothreetree.toggleArrayHiglight(arrays[0]);
+  window.twothreetree.toggleArrayHiglight(arrays[1]);
+  window.twothreetree.toggleArrayHiglight(arrays[2]);
   jsav.step();
 
   // Mark the slide show as finished.
