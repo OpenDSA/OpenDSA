@@ -9,6 +9,8 @@
    :satisfies: binary tree terminology
    :topic: Binary Trees
 
+.. odsalink:: AV/Development/BinExamp.css
+
 Binary Trees
 ============
 
@@ -53,6 +55,13 @@ The root is the only node at level 0, and its depth is 0.
 A :term:`leaf node` is any node that has two empty children.
 An :term:`internal node` is
 any node that has at least one non-empty child.
+
+.. _BinExample1:
+
+.. inlineav:: BinExamp dgm
+   :align: justify
+
+   An example binary tree.
 
 .. _BinExample:
 
@@ -157,3 +166,5 @@ Notes
        "Complete" is a wider word than "full", and complete binary
        trees tend to be wider than full binary trees because each
        level of a complete binary tree is as wide as possible.
+
+.. odsascript:: AV/Development/BinExamp.js
