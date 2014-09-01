@@ -160,6 +160,12 @@ In either case, all leaf nodes continue to have equal depth.
    :output: show
    :align: justify
 
+.. _TTTreeSplit:
+
+.. inlineav:: TTTreeSplitInsert ss
+   :output: show
+   :align: justify
+
 .. _TTSplit:
 
 .. inlineav:: splitCON ss
