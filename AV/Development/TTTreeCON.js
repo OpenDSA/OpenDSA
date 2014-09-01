@@ -62,24 +62,24 @@
 
   // Slide 2
   r.highlight(0);
-  r.highlightEdgeToChild(0);
+  r.edgeToChild(0).toggleClass("edgeHighlight");
   step();
 
   // Slide 3
   r.unhighlight(0);
-  r.unhighlightEdgeToChild(0);
+  r.edgeToChild(0).toggleClass("edgeHighlight");
   r.child(0).highlight(0);
-  r.child(0).highlightEdgeToChild(1);
+  r.child(0).edgeToChild(1).toggleClass("edgeHighlight");
   step();
 
   // Slide 4
   r.child(0).unhighlight(0);
-  r.child(0).unhighlightEdgeToChild(1);
+  r.child(0).edgeToChild(1).toggleClass("edgeHighlight");
   r.child(0).child(1).highlight();
   step();
 
   // Slide 5
-  r.child(0).child(1).swap(0, 1, {arrow: false});
+  r.child(0).child(1).swap(0, 1);
   step();
 
   // Slide 6
@@ -110,20 +110,15 @@
 
   // Messages for slideshow
   var msg = [
-    "Example of inserting a record that causes the 2-3 tree root to split. We want to insert the key 19 into the tree.",
-    "The key is first compared against the root node. Since 19 is more than the left key and less than the right key of the root node, the center child node is followed next.",
-    "This node has only two elements, and 19 is less than 23 so the left child is followed next.",
+    "A simple node-splitting insert for a 2-3 tree. We want to insert the key 55 into the tree. ",
+    "The key is first compared against the root node. Since 55 is more than the right key of the root node, the right child node if followed.",
+    "This node has only one element, and 55 is greater than 48 so the center child is followed next.",
     "A leaf node has being reached. Since the leaf node has no empty spaces it will have to be split.",
-    "Next we have to rearrange the keys. First the largest key (21) goes in the new node.",
-    "The middle key (20) has to be promoted.",
-    "The smallest key (19) goes is the old node",
-    "The parent node is full, so the promoted element cannot be inserted. Therefore the parent node has to be split.",
-    "Again, the largest key (30) goes in the new node, the smallest key (20) goes is the old node, and the middle key (23) is promoted",
-    "The pointers can now be updated",
-    "The parent node is full so the promoted element cannot be inserted. Therefore the parent node has to be split. Because the parent node is the root node, a new root has to be created as well.",
-    "Again, the largest key (23) goes in the new node, the smallest key (13) goes is the old node, and the middle key (18) is promoted.",
-    "The pointers can now be updated.",
-    "The insertion is complete."
+    "Next we have to rearrange the keys. First the largest key 55 goes to the new node.",
+    "The smallest key 50 goes to the old node. In this case it stays in the same place.",
+    "The middle key 52 gets promoted. Because the parent node has space available, the key can just be inserted in the parent node.",
+    "The pointers can be updated now.",
+    "The insertion is complete"
   ];
 
   function step() {
@@ -134,6 +129,54 @@
   // Slide 1
   jsav.umsg(msg.shift());
   jsav.displayInit(); // Start slideshow
+
+  // Slide 2
+  r.highlight(1);
+  r.edgeToChild(2).toggleClass('edgeHighlight');
+  step();
+
+  // Slide 3
+  r.unhighlight(1);
+  r.edgeToChild(2).toggleClass('edgeHighlight');
+  r.child(2).highlight(0);
+  r.child(2).edgeToChild(1).toggleClass('edgeHighlight');
+  step();
+
+  // Slide 4
+  r.child(2).unhighlight(0);
+  r.child(2).edgeToChild(1).toggleClass('edgeHighlight');
+  r.child(2).child(1).highlight();
+  step();
+
+  // Slide 5
+  r.child(2).addChild(["", ""]);
+  at.layout();
+  r.child(2).child(2).highlight();
+  r.child(2).edgeToChild(2).hide();
+  step();
+
+  // Slide 6
+  r.child(2).child(1).unhighlight();
+  r.child(2).child(2).unhighlight();
+  r.child(2).child(2).highlight(0);
+  r.child(2).child(2).value(0, 55);
+  step();
+
+  // Slide 7
+  r.child(2).child(2).unhighlight(0);
+  r.child(2).child(1).highlight(1);
+  step();
+
+  // Slide 8
+  at.moveValue(r.child(2).child(1), 1, r.child(2), 1);
+  r.child(2).child(1).unhighlight(1);
+  r.child(2).highlight(1);
+  step();
+
+  // Slide 9
+  r.child(2).unhighlight(1);
+  r.child(2).edgeToChild(2).show();
+  step();
 
   jsav.recorded(); // End slideshow
 }());
