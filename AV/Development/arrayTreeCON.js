@@ -11,14 +11,25 @@
 
   function createArrayTree() {
     var jsav = new JSAV("arrayTree");
-    var tree = new jsav.ds.arraytree(3);
+    var tree = new jsav.ds.arraytree();
 
-    tree.root([1, 1, 1]);
+    var n1 = tree.root([1, 1, 1]);
 
-    var child1 = tree.root().addChild([2, 2, 2]);
-    var child2 = tree.root().addChild([3, 3, 3]);
-    var child3 = tree.root().addChild([4, 4, 4]);
-    var child4 = tree.root().addChild([5, 5, 5]);
+    var n2 = n1.addChild([2,2,2]).child(0);
+    var n3 = n1.addChild([3,3,3,3]).child(1);
+    var n4 = n1.addChild([4,4,4]).child(2);
+    var n5 = n1.addChild([5,5,5]).child(3);
+
+    var n6 = n2.addChild([6,6,6]).child(0);
+    var n7 = n2.addChild([7,7,7]).child(1);
+    var n8 = n2.addChild([8,8,8]).child(2);
+    var n9 = n2.addChild([9,9,9]).child(3);
+
+    n6.value([6, 5, 4]);
+
+    n6.value([6, 5, 4, 3]);
+
+    n6.edgeToParent().addClass("superclass");
 
     tree.layout();
   }

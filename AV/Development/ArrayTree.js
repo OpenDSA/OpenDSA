@@ -134,6 +134,10 @@
     return new ArrayTreeNode(this, value, parent, options);
   };
 
+  arrayTreeProto.moveValue = function (fromNode, fromIndex, toNode, toIndex) {
+    this.jsav.effects.moveValue(fromNode.node_array, fromIndex, toNode.node_array, toIndex);
+  };
+
   /*****************************************************************************
    * Implement Array Tree Node for the Array Tree data structure.
    ****************************************************************************/
@@ -284,6 +288,37 @@
 
     return this;
   };
+
+  // Add interface for array methods
+  
+  arrayTreeNodeProto.isHighlight = function(index, options) {
+    this.node_array.isHighlight(index, options);
+  };
+
+  arrayTreeNodeProto.highlight = function(indices, options) {
+    this.node_array.highlight(indices, options);
+  };
+
+  arrayTreeNodeProto.unhighlight = function(indices, options) {
+    this.node_array.unhighlight(indices, options);
+  };
+
+  arrayTreeNodeProto.css = function(indices, cssprop, options) {
+    this.node_array.css(indices, cssprop, options);
+  };
+
+  arrayTreeNodeProto.index = function(index) {
+    this.node_array.index(index);
+  };  
+
+  arrayTreeNodeProto.swap = function(index1, index2, options) {
+    this.node_array.swap(index1, index2, options);
+  };
+
+  // arrayTreeNodeProto. = function() {
+  //   this.node_array.();
+  // };
+
 
   // var ArrayEdge = function (jsav, start, end, options) {
   //   this.jsav = jsav;
