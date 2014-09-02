@@ -29,13 +29,4 @@ In other words, best fit tends to maximize problems of external
 fragmentation while it minimizes the chance of not being able to
 service an occasional large request.
 
-.. raw:: html
-
-   <center> 
-   <iframe id="FirstFit_iframe" 
-        src="http://research.cs.vt.edu/AVresearch/MMtutorial/BestFit.html"
-        width="1000" height="600"
-        frameborder="1" marginwidth="0" marginheight="0"
-	scrolling="no">
-   </iframe>
-   </center>
+.. avembed:: AV/Development/firstFit.html ss

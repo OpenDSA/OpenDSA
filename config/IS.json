@@ -15,7 +15,16 @@
     "Testing": {
       "IS/FirstFit": {
         "long_name": "First Fit",
-        "exercises": {}
+        "exercises": {
+          "firstFit": {
+            "long_name": "First Fit Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0,
+            "exer_options": { "fitAlgorithm": "1" }
+          }
+        }
       },
       "IS/BinaryTree": {
         "long_name": "Binary Tree Terminology",

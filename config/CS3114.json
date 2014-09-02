@@ -1814,19 +1814,55 @@
       },
       "Development/FirstFit": {
         "long_name": "First Fit",
-        "exercises": {}
+        "exercises": {
+          "firstFit": {
+            "long_name": "First Fit Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0,
+            "exer_options": { "fitAlgorithm": "1" }
+          }
+        }
       },
       "Development/CircularFit": {
         "long_name": "Circular First Fit",
-        "exercises": {}
+        "exercises": {
+          "firstFit": {
+            "long_name": "Circular First Fit Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0,
+            "exer_options": { "fitAlgorithm": "2" }
+          }
+        }
       },
       "Development/BestFit": {
         "long_name": "Best Fit",
-        "exercises": {}
+        "exercises": {
+          "firstFit": {
+            "long_name": "Best Fit Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0,
+            "exer_options": { "fitAlgorithm": "3" }
+          }
+        }
       },
       "Development/WorstFit": {
         "long_name": "Worst Fit",
-        "exercises": {}
+        "exercises": {
+          "firstFit": {
+            "long_name": "Worst Fit Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0,
+            "exer_options": { "fitAlgorithm": "4" }
+          }
+        }
       },
       "Development/MMPerformance": {
         "long_name": "Sequential-Fit Performance",
