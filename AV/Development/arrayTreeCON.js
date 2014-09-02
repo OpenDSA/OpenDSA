@@ -6,8 +6,9 @@
   // Tree array testing function
   function init($) {
     // Toggle between these two for common tree and array tree.
-    createArrayTree();
+    // createArrayTree();
     // createCommonTree();
+    createCommonTree2();
   }
 
   function createArrayTree() {
@@ -67,6 +68,28 @@
     r.addChild(4);
     r.child(3).addChild(11);
     r.child(3).addChild(12);
+
+    tree.layout();
+  }
+
+  function createCommonTree2() {
+    var jsav = new JSAV("other");
+    var tree = new jsav.ds.tree();
+
+    var r = tree.root(1);
+    r.addChild(2);
+    r.addChild(3);
+    r.addChild("");
+    r.addChild(4);
+
+    r.child(0).addChild(5);
+    r.child(0).addChild(6);
+
+    r.child(1).addChild(7);
+    r.child(1).addChild(8);
+
+    r.child(3).addChild(9);
+    r.child(3).addChild(10);
 
     tree.layout();
   }
