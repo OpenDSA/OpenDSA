@@ -1,0 +1,18 @@
+#FullComp .jsavcanvas {
+ margin-left: auto;
+ margin-right: auto;
+ height: 320px;
+}
+
+.blacknode {
+  min-width: 5px;
+  max-width: 5px;
+  min-height: 5px;
+  max-height: 5px;
+  background-color: #000000;
+  border-color: #000000;
+}
+
+svg {
+  stroke-width: 1;
+}

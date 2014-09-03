@@ -4,6 +4,12 @@
  height: 340px;
 }
 
+.clearnode {
+  background-color: #eed;
+  border-color: #eed;
+  box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.0);
+}
+
 svg {
   stroke-width: 1;
 }

@@ -29,9 +29,10 @@ $(document).ready(function () {
   bt3.root().left('B');
   // TODO is empty leaf class preferable? or something else?
   bt3.root().right('');
+  bt3.root().right('EMPTY').addClass("clearnode");
   var bt4 = av.ds.binarytree({nodegap: 25, top: btTop, left: btRight});
   bt4.root('A');
-  bt4.root().left('');
+  bt4.root().left('EMPTY').addClass("clearnode");
   bt4.root().right('B');
 
   bt3.layout();

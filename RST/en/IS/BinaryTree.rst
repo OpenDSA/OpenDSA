@@ -11,6 +11,7 @@
 
 .. odsalink:: AV/Development/BinExamp.css
 .. odsalink:: AV/Development/BinDiff.css
+.. odsalink:: AV/Development/FullComp.css
 
 Binary Trees
 ============
@@ -134,6 +135,13 @@ In the complete binary tree of height :math:`d`, all levels
 except possibly level :math:`d-1` are completely full.
 The bottom level has its nodes filled in from the left side.
 
+.. _FullComplete1:
+
+.. inlineav:: FullComp dgm
+   :align: justify
+
+   Full and complete binary trees.
+
 .. _FullComplete:
 
 .. odsafig:: Images/FullComp.png
@@ -177,3 +185,4 @@ Notes
 
 .. odsascript:: AV/Development/BinExamp.js
 .. odsascript:: AV/Development/BinDiff.js
+.. odsascript:: AV/Development/FullComp.js
