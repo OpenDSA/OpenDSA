@@ -296,7 +296,7 @@ html_static_path = ['_static']
 # The code that appends these scripts can be found in RST/_themes/haiku/layout.html and basic/layout.html
 html_context = {"script_files": [
                   '%(eb2root)slib/jquery.min.js',
-                  'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                  '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
                 ],
                 "search_scripts": [
                   '_static/underscore.js',
