@@ -138,6 +138,10 @@ Glossary
       :math:`aRb` and :math:`bRa`, then :math:`a = b`, for all
       :math:`a, b \in \mathbf{S}`.
 
+   arm
+      In the context of an :term:`I/O head`, this attaches the sensor
+      on the I/O head to the term:`boom`.
+
    array-based list
       An implementation for the :term:`list` ADT that uses an array to
       store the list elements. Typical implementations fix the array
@@ -358,6 +362,11 @@ Glossary
       A variable that takes on one of the two values ``True`` and
       ``False``.
 
+   boom
+      In the context of an :term:`I/O head`, is the central structure
+      to which all of the I/O heads are attached.
+      Thus, the all move together during a :term:`seek` operation.
+
    bounding box
       A box (usually aligned to the coordinate axes of the reference
       system) that contains a (potentially complex) object. In
@@ -547,6 +556,20 @@ Glossary
       process known as :term:`collision resolution` to find the
       location of the desired record.
 
+   cluster
+      In :term:`file processing`, a collection of physically adjacent
+      :term:`sectors <sector>` that define the smallest allowed
+      allocation unit of space to a disk file.
+      The idea of requiring space to be allocated in multiples of
+      sectors is that this will reduce the number of
+      :term:`extents <extent>` required to store the file, which
+      reduces the expected number of :term:`seek` operations reuquired
+      to process a series of :term:`disk accesses <disk access>` to
+      the file.
+      The disadvantage of large cluster size is that it increases
+      :term:`internal fragmentation` since any space not actually
+      used by the file in the last cluster is wasted.
+
    collision resolution
       In a :term:`closed hash system`, this is the process of finding
       the proper position in a :term:`hash table` that contains the
@@ -688,6 +711,28 @@ Glossary
       a :term:`cycle` is a :term:`path` of length three or more that
       connects some :term:`vertex` :math:`v_1` to itself.
 
+   cylinder
+      A :term:`disk drive` normally consists of a stack of
+      :term:`platters <platter>`.
+      While this might not be so true today, traditionally all of the
+      :term:`I/O heads <I/O head>` moved together during a
+      :term:`seek` operation.
+      Thus, when a given I/O head is positioned over a particular
+      :term:`track` on a platter, the other I/O heads are also
+      positioned over the corresponding track on their platters.
+      That collection of tracks is called a cylinder.
+      A given cylinder represents all of the data that can be read
+      from all of the platters without doing another seek operation.
+
+   cylinder index
+      In the :term:`ISAM` system, a simple :term:`linear index` that
+      stores the lowest key value stored in each :term:`cylinder`.
+
+   cylinder overflow
+      In the :term:`ISAM` system, this is space reserved for storing
+      any records that can not fit in their respective
+      :term:`cylinder`.
+
    DAG
       Abbreviation for :term:`directed acyclic graph`.
 
@@ -790,6 +835,12 @@ Glossary
    diminishing increment sort
       Another name for :term:`Shellsort`.
 
+   direct access
+      A storage device, such as a disk drive, that has some ability to
+      move to a desired data location more-or-less directly.
+      This is in contrast to a :term:`sequential access` storage
+      device such as a tape drive.
+
    direct proof
       In general, a direct proof is just a "logical explanation".
       A direct proof is sometimes referred to as an argument by deduction.
@@ -866,6 +917,11 @@ Glossary
       additional computation needed to unpack the data is going to be
       less than the disk-reading time saved by reducing the storage
       requirements.
+
+   disk controller
+      The control mechanism for a :term:`disk drive`.
+      Responsible for the action of reading or writing a :term:`sector`
+      of data.
 
    disk drive
       An example of term:`peripheral storage` or
@@ -1059,6 +1115,14 @@ Glossary
       sub-expressions that are its operand.
       All :term:`leaf nodes <leaf node>` are operands.
 
+   extent
+      A physically contiguous block of :term:`sectors <sector>` on a
+      :term:`disk drive` that are all part of a given disk file.
+      The fewer extents needed to store the data for a disk file,
+      generally the fewer :term:`seek` operations that will be
+      required to process a series of :term:`disk access` operations
+      on that file.
+
    external fragmentation
       A condition that arises when a series of
       :term:`memory requests <memory request>`
@@ -1083,6 +1147,18 @@ Glossary
       Possibilities include rejecting the request, expanding the
       memory pool, collecting :term:`garbage`, and reorganizing the
       memory pool (to collect together free space).
+
+   file allocation table
+      A legacy file system architecture orginially developed for DOS
+      and then used in Windows.
+      It is still in use in many small-scale peripheral devices such
+      as USB memory sticks and digital camera memory.
+
+   file manager
+      A part of the :term:`operating system`
+      responsible for taking requests for data from a
+      :term:`logical file` and mapping those requests to the
+      physical location of the data on disk.
 
    file processing
       The domain with Computer Science that deals with processing data
@@ -1465,6 +1541,12 @@ Glossary
    Huffman tree
       Shorter form of the term :term:`Huffman coding tree`.
 
+   inode
+      Short for "index node".
+      In UNIX-style file systems, specific disk :term:`sectors <sector>`
+      that hold indexing information to define the layout of the file
+      system.
+
    image space decomposition
       A from of :term:`key space decomposition` where the
       :term:`key space` splitting points is predetermined (typically
@@ -1554,6 +1636,11 @@ Glossary
    internal node
       In a tree, any node that has at least one non-empty
       :term:`child` is an  internal node.
+
+   inter-sector gap
+      On a disk drive, a physical gap in the data that occurs between
+      the :term:`sectors <sector>`.
+      This allows the :term:`I/O head` detect the end of the sector.
 
    internal sort
       A sorting algorithm that is applied to data stored in
@@ -1793,6 +1880,13 @@ Glossary
    logarithm
       The `logarithm` of base :math:`b` for value :math:`y` is the power
       to which :math:`b` is raised to get :math:`y`.
+
+   logical file
+      In :term:`file processing`, the programmer's view of a
+      :term:`random access` file stored on :term:`disk <disk drive>`
+      as a contiguous series of bytes, with those bytes possibly
+      combining to form data records.
+      This is in contrast to the :term:`physical file`.
 
    logical form
       The definition for a data type in terms of an ADT. Contrast to
@@ -2107,6 +2201,12 @@ Glossary
       Typically this is done using a linked list to store the records.
       This is in contrast to a :term:`closed hash system`.
 
+   operating system
+      The control program for a computer.
+      Its purpose is to control hardware, manage resources, and
+      present a standard interface to these to other software
+      components.
+
    optimal static ordering
       A theoretical construct defining the best static (non-changing)
       order in which to place a collection of records so as to
@@ -2209,6 +2309,16 @@ Glossary
       is the :term:`elements <element>` of :math:`\mathbf{S}` arranged
       in some order.
 
+   persistent
+      In the context of computer memory, this refers to a memory that
+      does not lose its stored information when the power is turned
+      off.
+
+   physical file
+      The collection of sectors that comprise a file on a
+      :term:`disk drive`.
+      This is in contrast to the :term:`logical file`.
+
    physical form
       The implementation of a data type as a data structure.
       Contrast to the :term:`physical form` for the data type.
@@ -2222,6 +2332,12 @@ Glossary
       In :term:`Quicksort`, the value that is used to split the list
       into sublists, one with lesser values than the pivot, the other
       with greater values than the pivot.
+
+   platter
+      In a :term:`disk drive`, one of a series of flat disks that
+      comprise the storage space for the drive.
+      Typically, each surface (top and bottom) of each platter stores
+      data, and each surface has its own :term:`I/O head`.
 
    pop
       A specialized term used to indicate removing an :term:`element`
@@ -2441,6 +2557,12 @@ Glossary
       tends to be much slower than other sorting algorithms like
       :term:`Quicksort` or :term:`mergesort`.
 
+   random access
+      In :term:`file processing` terminology, a :term:`disk access` to
+      a random position within the file.
+      More generally, the ability to access an arbitrary record in the
+      file.
+
    random access memory
       Abbreviated ;term:`RAM`, this is the principle example of
       :term:`primary storage` in a modern computer.
@@ -2477,6 +2599,9 @@ Glossary
    range query
       Records are returned if their relevant key value falls with a
       specified range.
+
+   read/write head
+      Synonym for :term:`I/O head`.
 
    record
       A collection of information, typical implemented as an object in
@@ -2583,6 +2708,17 @@ Glossary
       The goal of performing a rotation is to make the tree more
       :term:`balanced <balanced tree>`.
 
+   rotational delay
+      When processing a :term:`disk access`, the time that it takes
+      for the first byte of the desired data to move to under the
+      :term:`I/O head`.
+      On average, this will take one half of a disk rotation, and so
+      constitutes a substantial portion of the time required for the
+      disk access.
+
+   rotational latency
+      A synonym for :term:`rotational delay`.
+
    run
       A series of sorted records.
       Most often this refers to a (sorted) subset of records that are
@@ -2662,6 +2798,11 @@ Glossary
       hardware.
       This is typically 512 bytes.
 
+   sector header
+      On a disk drive, a piece of information at the start of a
+      :term:`sector` that allows the :term:`I/O head` to recognize the
+      identity (or equivalently, the address) of the current sector. 
+
    seek
       On a :term:`disk drive`, the act of moving the :term:`I/O head`
       from one :term:`track` to another.
@@ -2700,6 +2841,12 @@ Glossary
       which may contain duplicate-valued elements.
       A sequence is also sometimes called a :term:`tuple` or a
       :term:`vector`.
+
+   sequential access
+      In :term:`file processing` terminology, the requirement that all
+      records in a file are accessed in sequential order.
+      Alternatively, a storage device that can only access data
+      sequentially, such as a tape drive.
 
    sequential fit
       In a :term:`memory manager`, the process of searching the
@@ -2873,6 +3020,10 @@ Glossary
       Examples of spatial data structures to store point data include
       the :term:`bintree`, the :term:`PR quadtree` and the
       :term:`kd tree`.
+
+   spindle
+      The center of a :term:`disk drive` that holds the
+      :term:`platters <platter>` in place.
 
    Splay Tree
       A variant implementation for the :term:`BST`, which differs from
@@ -3241,6 +3392,10 @@ Glossary
       For example, a generic tree or graph traversal might be
       designed such that it takes a function parameter,
       where that function is applied to each node.
+
+   volatile
+      In the context of computer memory, this refers to a memory that
+      loses all stored information when the power is turned off.
 
    weight
       A cost or distance most often associated with an :term:`edge` in

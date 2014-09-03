@@ -13,9 +13,9 @@
 Disk Drives
 ===========
 
-A programmer typically views a random access file stored on disk
-as a contiguous series of bytes, with those bytes possibly combining
-to form data records.
+A programmer typically views a :term:`random access` file stored on
+:term:`disk <disk drive>` as a contiguous series of bytes, with those
+bytes possibly combining to form data records.
 This is called the :term:`logical file`.
 The :term:`physical file` actually stored on disk is
 usually not a contiguous series of
@@ -35,10 +35,10 @@ operations, you need to understand the physical structure and basic
 workings of a disk drive.
 
 Disk drives are often referred to as
-:term:`direct access storage devices`.
+:term:`direct access` storage devices.
 This means that it takes roughly equal time to access any record in
 the file.
-This is in contrast to :term:`sequential access storage devices`
+This is in contrast to :term:`sequential access` storage devices
 such as tape drives, which require the tape reader to
 process data from the beginning of the tape until the desired position
 has been reached.
@@ -49,7 +49,8 @@ others.
 Disk Drive Architecture
 -----------------------
 
-A hard disk drive is composed of one or more round :term:`platters`,
+A hard disk drive is composed of one or more round
+:term:`platters <platter>`,
 stacked one on top of another and attached to a central
 :term:`spindle`.
 Platters spin continuously at a constant rate.
@@ -96,8 +97,9 @@ are in a particular position.
    (a) A typical disk drive arranged as a stack of platters.
    (b) One track on a disk drive platter.
 
-Each track is subdivided into :term:`sectors`.
-Between each sector there are :term:`inter-sector gaps`
+Each track is subdivided into :term:`sectors <sector>`.
+Between each sector there are
+:term:`inter-sector gaps <inter-sector gap>`
 in which no data are stored.
 These gaps allow the read head to recognize the end of a sector.
 Note that each sector contains the same amount of data.
@@ -198,7 +200,7 @@ The smallest unit of file allocation and the smallest unit that can be
 read/written is a sector, which in Unix terminology is called
 a :term:`block`.
 Unix maintains information about file organization in certain disk
-blocks called :term:`i-nodes`.
+blocks called :term:`inodes <inode>`.
 
 A group of physically contiguous clusters from the same file is called
 an :term:`extent`.
@@ -247,7 +249,8 @@ to organize the sectors, clusters, and so forth.
 The layout of sectors within a track is illustrated by
 Figure :num:`Figure #Layout`.
 Typical information that must be stored on the disk itself includes
-the File Allocation Table, :term:`sector headers` that contain address
+the File Allocation Table, :term:`sector headers <sector header>`
+that contain address
 marks and information about the condition (whether usable or not) for
 each sector, and gaps between sectors.
 The sector header also contains error detection codes to help verify

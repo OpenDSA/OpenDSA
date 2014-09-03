@@ -26,13 +26,4 @@ the requests can all be serviced by first fit, but not by best fit.
 Alternatively, the series of requests 600, 500, 700, 900 can be
 serviced by best fit but not by first fit on this same freelist.
 
-.. raw:: html
-
-   <center> 
-   <iframe id="FirstFit_iframe" 
-        src="http://research.cs.vt.edu/AVresearch/MMtutorial/allInOne.html"
-        width="1000" height="600"
-        frameborder="1" marginwidth="0" marginheight="0"
-	scrolling="no">
-   </iframe>
-   </center>
+.. avembed:: AV/Development/firstFit.html ss
