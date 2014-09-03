@@ -1822,6 +1822,12 @@
             "showhide": "none",
             "threshold": 1.0,
             "exer_options": { "fitAlgorithm": "1" }
+          },
+          "firstFitPRO": {
+            "long_name": "First Fit Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90
           }
         }
       },
@@ -1866,7 +1872,15 @@
       },
       "Development/MMPerformance": {
         "long_name": "Sequential-Fit Performance",
-        "exercises": {}
+        "exercises": {
+          "firstFit": {
+            "long_name": "Sequential Fit Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          }
+        }
       },
       "Development/Buddy": {
         "long_name": "Other Memory Allocation Methods",
@@ -2067,13 +2081,6 @@
       },
       "Development/MCST": {
         "long_name": "Minimal Cost Spanning Trees",
-        "sections": {
-          "kruskals": {
-            "long_name": "Kruskal's Algorithm",
-            "showhide": "none",
-            "remove": false
-          }
-        },
         "exercises": {
           "MCSTCON1": {},
           "PrimAV": {
@@ -2095,7 +2102,12 @@
             "required": true,
             "points": 2.0,
             "threshold": 0.90
-          },
+          }
+        }
+      },
+      "Development/Kruskal": {
+        "long_name": "Kruskal's Algorithm",
+        "exercises": {
           "KruskalUFAV": {
             "long_name": "Kruskal's Algorithm Visualization",
             "required": false,

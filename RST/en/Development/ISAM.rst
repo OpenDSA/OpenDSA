@@ -48,11 +48,11 @@ widely used by IBM prior to adoption of the B-tree.
 
    Illustration of the ISAM indexing system.
 
-ISAM is based on a modified form of the linear index, as illustrated by
-Figure :num:`Figure #ISAMfig`.
+ISAM is based on a modified form of the :term:`linear index`, as
+illustrated by Figure :num:`Figure #ISAMfig`.
 Records are stored in sorted order by primary key.
 The disk file is divided among a number of
-cylinders on disk. [#]_ 
+:term:`cylinders <cylinder>` on disk. [#]_ 
 Each cylinder holds a section of the list in sorted order.
 Initially, each cylinder is not filled to capacity, and the extra
 space is set aside in the :term:`cylinder overflow`.
