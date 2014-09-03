@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+  <title>Hashing</title>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+  <link rel="stylesheet" href="proficiency.css" type="text/css" />
+  <style>
+    .jsavarray .jsavnode {
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      border-color: #888;
+    }
+    .jsavstack .jsavnode {
+      width: 55px;
+      height: 50px;
+      border-color: #888;
+    }
+    .jsavstack .jsavnode.first {
+      border-width: 2px;
+    }
+    .jsavvalue {
+      height: 32px;
+    }
+    .jsavindex.jsavarrow:before {
+      left: 12px;
+    }
+    .jsavindex.jsavarrow .jsavvalue {
+      background-color: #fb7;
+    }
+/*    .jsavnode.insert {
+      background-color: #5cb85c;
+      border-color: #4cae4c;
+    }
+    .jsavnode.remove {
+      background-color: #d9534f;
+      border-color: #d43f3a;
+    }
+    .jsavnode.search {
+      background-color: #428bca;
+      border-color: #357ebd;
+    }*/
+    .jsavnode:before {
+      position: absolute;
+      bottom: 0;
+    }
+    .jsavnode.insert:before {
+      content: "insert";
+      left: 8px;
+      color: #4cae4c;
+    }
+    .jsavnode.remove:before {
+      content: "remove";
+      left: 2px;
+      color: #d43f3a;
+    }
+    .jsavnode.search:before {
+      content: "search";
+      left: 4px;
+      color: #357ebd;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="jsavcontainer">
+    <h1 class="exerciseTitle"></h1>
+    <p class="instructLabel"></p>
+    <p class="instructions"></p>
+    <p align="center" class="jsavexercisecontrols"></p>
+    <p align="center" class="jsavoutput jsavline"></p>
+    <p class="jsavscore"></p>
+  </div>
+
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transit.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <script src="../../JSAV/extras/stack.js"></script>
+  <script src="../../lib/odsaUtils-min.js"></script>
+  <script src="../../lib/odsaAV-min.js"></script>
+  <script src="ClickHandler.js"></script>
+  <script src="hashingPRO.js"></script>
+</body>
+</html>
