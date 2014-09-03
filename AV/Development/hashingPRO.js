@@ -1,4 +1,4 @@
-/* global ODSA, PARAMS, ClickHandler */
+/* global ODSA, PARAMS */
 (function ($) {
   "use strict";
 
@@ -12,7 +12,6 @@
       $hashLabel,
       $stackLabel,
       pseudo,
-      clickHandler,
 
       // get the configurations from the configuration file
       config = ODSA.UTILS.loadConfig({'av_container': 'jsavcontainer'}),
@@ -55,28 +54,11 @@
     var probeMessage = interpret("av_probing") + " <strong style='color: #c00'>" +
       interpret("av_" + probing) + "</strong><br>" + hashFunctionString[probing]("k", "i", hashSize, true);
 
-    // set up click handler
-    if (typeof clickHandler === "undefined") {
-      clickHandler = new ClickHandler(av, exercise, {selectedClass: ""});
-      // clear message when deselecting
-      var origdeselect = clickHandler.deselect;
-      clickHandler.deselect = function () {
-        origdeselect.call(this);
-        av.umsg(probeMessage);
-        // remove all arrows from the hash table
-        hashArray.removeClass(true, "jsavarrow");
-      };
-    }
-    clickHandler.reset();
-
-
     // clear old structures
     if (hashArray) {
-      clickHandler.remove(hashArray);
       hashArray.clear();
     }
     if (opStack) {
-      clickHandler.remove(opStack);
       opStack.clear();
     }
     // remove all old labels
@@ -89,11 +71,6 @@
     opStack = av.ds.stack(initialOps.values, {center: true, ytransition: -9, xtransition: 7});
     opStack.css("min-height", 100);
     opStack.layout();
-    clickHandler.addList(opStack, {
-      onSelect: function () { return false; },
-      beforeDrop: function () { return false; }
-    });
-    clickHandler.select(opStack, opStack.first());
     for (var i = 0; i < opSize; i++) {
       opStack.get(i).addClass(initialOps.operations[i]);
     }
@@ -101,11 +78,7 @@
     // create array
     hashArray = av.ds.array(new Array(hashSize), {indexed: true, center: true, autoresize: false});
     hashArray.layout();
-    clickHandler.addArray(hashArray, {
-      onSelect: onSelect,
-      beforeDrop: beforeDrop,
-      onDrop: onDrop
-    });
+    hashArray.click(clickHandler);
 
     // create new labels
     $hashLabel = $("<p class='exerciseLabel'>" + interpret("av_hash") + "</p>");
@@ -201,44 +174,67 @@
   }
 
 
-  // onSelect function
-  var onSelect = function (index) {
-    var val;
-    if (typeof index === "number") {
-      val = this.value(index);
-    } else {
-      val = this.value();
-    }
-    av.umsg("<br><strong>{key} mod {size} = {result}</strong>", {preserve: true, fill: {
-      key: val,
-      size: hashSize,
-      result: val % hashSize
-    }});
-  };
-
-  // beforeDrop function
-  var beforeDrop = function (index) {
-    if (this.value(index) !== "") {
-      this.addClass(index, "jsavarrow");
-      av.gradeableStep();
-      return false;
-    }
-  };
-
-  // onDrop function
-  var onDrop = function (index) {
-    // clear hash function from the message
-    av.clearumsg();
-    // remove all arrows from the hash table
-    hashArray.removeClass(true, "jsavarrow");
-    // show next value in the stack
-    if (opStack.size()) {
-      opStack.removeFirst();
-      opStack.layout();
+  var clickHandler = function (index) {
+    function nextOperation() {
+      hashArray.removeClass(true, "jsavarrow");
       if (opStack.size()) {
-        clickHandler.select(opStack, opStack.first());
+        opStack.removeFirst();
+        opStack.layout();
       }
+      exercise.gradeableStep();
     }
+
+    if (!opStack.size()) {
+      return;
+    }
+    var first = opStack.first(),
+        operation;
+    if (first.hasClass("insert")) {
+      operation = "insert";
+    } else if (first.hasClass("remove")) {
+      operation = "remove";
+    } else if (first.hasClass("search")) {
+      operation = "search";
+    } else {
+      // unknown operation
+      return;
+    }
+
+    switch (operation) {
+    case "insert":
+      if (this.value(index) === "" || this.value(index) === "[del]") {
+        // insert element
+        this.value(index, first.value());
+        nextOperation();
+      } else {
+        this.addClass(index, "jsavarrow");
+        exercise.gradeableStep();
+      }
+      break;
+    case "remove":
+      if (this.value(index) === "") {
+        nextOperation();
+      } else if (this.value(index) === first.value()) {
+        this.value(index, "[del]");
+        nextOperation();
+      } else {
+        this.addClass(index, "jsavarrow");
+        exercise.gradeableStep();
+      }
+      break;
+    case "search":
+      if (this.value(index) === "") {
+        nextOperation();
+      } else if (this.value(index) === first.value()) {
+        nextOperation();
+      } else {
+        this.addClass(index, "jsavarrow");
+        exercise.gradeableStep();
+      }
+      break;
+    }
+
+
   };
 
 
