@@ -23,6 +23,7 @@
   av.code(code, codeOptions);
 
   function initialize() {
+    av.container.find(".jsavcanvas").height(600);
 
     // create ClickHandler
     if (typeof clickHandler === "undefined") {
@@ -97,7 +98,8 @@
       if (i === 0 || i === 2) {
         evaluatorArrays[i].element.children().css({
           "border": "none",
-          "box-shadow": "none"
+          "box-shadow": "none",
+          "cursor": "default"
         });
       }
       evaluatorArrays[i].layout();
