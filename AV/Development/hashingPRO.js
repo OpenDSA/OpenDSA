@@ -5,7 +5,7 @@
   // AV variables
   var hashSize = PARAMS.size || 19,
       opSize = 20,
-      probing = PARAMS.probing || "quadratic",
+      probing = PARAMS.probing || "linear",
       hashArray,
       opStack,
       clickedIndex,
@@ -30,6 +30,9 @@
     },
     quadratic: function (key, i, size) {
       return (key + i * i) % size;
+    },
+    double: function (key, i, size) {
+      return (key + i * (7 - key % 7)) % size;
     }
   };
 
@@ -41,6 +44,17 @@
     quadratic: function (key, i, size, hideAns) {
       return "<em>h(" + key + ", " + i + ") = (" + key + " + " + i + "<sup>2</sup>) mod " + size +
         (hideAns ? "" : " = " + hashFunction.quadratic(key, i, size)) + "</em>";
+    },
+    double: function (key, i, size, hideAns) {
+      if (hideAns) {
+        return "<em>h(" + key + ", " + i + ") = (" + key + " + " + i +
+          " * (7 - (" + key + " mod 7))) mod " + size + "</em>";
+      }
+      return "<em>h(" + key + ", " + i + ") = (" + key + " + " + i +
+        " * <strong style='color: #00c'>" + (7 - key % 7) + "</strong>) mod " + size +
+        " = <strong>" + hashFunction.double(key, i, size) + "</strong>" +
+        ",&nbsp;&nbsp;&nbsp;&nbsp;7 - (" + key + " mod 7) = <strong style='color: #00c'>" +
+        (7 - key % 7) + "</strong></em>";
     }
   };
 
@@ -81,7 +95,7 @@
       ytransition: -9,
       xtransition: 7
     });
-    opStack.css("min-height", 100);
+    opStack.css("min-height", 130);
     opStack.layout();
     for (var i = 0; i < opSize; i++) {
       opStack.get(i).addClass(initialOps.operations[i]);
@@ -141,14 +155,18 @@
     jsav.displayInit();
 
     function find(key, stopArray) {
-      var i = 0,
-          ind;
+      i = 0;
+      var ind;
       while (stopArray.indexOf(msHash.value(ind = hashFunction[probing](key, i, hashSize))) === -1) {
         msClickedIndex.value(ind);
         msHash.addClass(ind, "jsavarrow");
-        jsav.umsg(interpret("av_ms_collision"), {fill: {
-          index: ind
-        }});
+        jsav.umsg(
+          interpret("av_ms_collision") + "<br>" +
+          hashFunctionString[probing](key, i, hashSize), {
+          fill: {
+            index: ind
+          }
+        });
         jsav.gradeableStep();
         i++;
       }
@@ -168,18 +186,20 @@
     // insert the values in the stack to the new hash table
     while (msStack.size()) {
       var first = msStack.first(),
+          firstValue = first.value(),
           operation = getOperationType(first);
 
       switch (operation) {
       case "insert":
-        ind = find(first.value(), ["", "[del]"]);
+        ind = find(firstValue, ["", "[del]"]);
         jsav.effects.moveValue(first, msHash, ind);
         jsav.umsg(interpret("av_ms_insert"), {fill: {
           index: ind
         }});
+        jsav.umsg("<br>" + hashFunctionString[probing](firstValue, i, hashSize), {preserve: true});
         break;
       case "remove":
-        ind = find(first.value(), ["", first.value()]);
+        ind = find(firstValue, ["", firstValue]);
         if (msHash.value(ind)) {
           msHash.value(ind, "[del]");
           jsav.umsg(interpret("av_ms_remove"), {fill: {
@@ -187,21 +207,23 @@
           }});
         } else {
           jsav.umsg(interpret("av_ms_remove_failed"), {fill: {
-            key: first.value()
+            key: firstValue
           }});
         }
+        jsav.umsg("<br>" + hashFunctionString[probing](firstValue, i, hashSize), {preserve: true});
         break;
       case "search":
-        ind = find(first.value(), ["", first.value()]);
+        ind = find(firstValue, ["", firstValue]);
         if (msHash.value(ind)) {
           jsav.umsg(interpret("av_ms_search"), {fill: {
             index: ind
           }});
         } else {
           jsav.umsg(interpret("av_ms_search_failed"), {fill: {
-            key: first.value()
+            key: firstValue
           }});
         }
+        jsav.umsg("<br>" + hashFunctionString[probing](firstValue, i, hashSize), {preserve: true});
       }
       nextOperation();
 
@@ -291,6 +313,12 @@
       size: hashSize,
       result: val % hashSize
     }});
+    if (probing === "double") {
+      av.umsg("<br><strong>7 - ({key} mod 7) = {result}</strong>", {preserve: true, fill: {
+        key: val,
+        result: 7 - val % 7
+      }});
+    }
   }
 
 
