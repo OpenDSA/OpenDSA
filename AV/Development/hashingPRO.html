@@ -44,7 +44,7 @@
     }*/
     .jsavnode:before {
       position: absolute;
-      bottom: 0;
+      bottom: 2px;
     }
     .jsavnode.insert:before {
       content: "insert";
@@ -61,6 +61,10 @@
       left: 4px;
       color: #357ebd;
     }
+    .exerciseLabel {
+      text-align: center;
+      font-weight: bold;
+    }
   </style>
 </head>
 
@@ -69,8 +73,9 @@
     <h1 class="exerciseTitle"></h1>
     <p class="instructLabel"></p>
     <p class="instructions"></p>
-    <p align="center" class="jsavexercisecontrols"></p>
-    <p align="center" class="jsavoutput jsavline"></p>
+    <p id="probingMessage" style="text-align: center;"></p>
+    <p class="jsavexercisecontrols"></p>
+    <p class="jsavoutput jsavline" style="text-align: center;"></p>
     <p class="jsavscore"></p>
   </div>
 

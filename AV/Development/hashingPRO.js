@@ -8,6 +8,7 @@
       probing = PARAMS.probing || "quadratic",
       hashArray,
       opStack,
+      clickedIndex,
       initialOps,
       $hashLabel,
       $stackLabel,
@@ -48,11 +49,14 @@
     pseudo.show();
   }
 
+  // create probeMessage and show it on the page
+  var probeMessage = interpret("av_probing") + " <strong style='color: #c00'>" +
+    interpret("av_" + probing) + "</strong><br>" +
+    hashFunctionString[probing]("k", "i", hashSize, true);
+  $("#probingMessage").html(probeMessage);
+
+
   function initialize() {
-
-
-    var probeMessage = interpret("av_probing") + " <strong style='color: #c00'>" +
-      interpret("av_" + probing) + "</strong><br>" + hashFunctionString[probing]("k", "i", hashSize, true);
 
     // clear old structures
     if (hashArray) {
@@ -61,6 +65,10 @@
     if (opStack) {
       opStack.clear();
     }
+    if (clickedIndex) {
+      clickedIndex.clear();
+    }
+
     // remove all old labels
     av.container.find(".exerciseLabel").remove();
 
@@ -68,7 +76,11 @@
     initialOps = generateHashOperations(opSize);
 
     // create operation stack
-    opStack = av.ds.stack(initialOps.values, {center: true, ytransition: -9, xtransition: 7});
+    opStack = av.ds.stack(initialOps.values, {
+      center: true,
+      ytransition: -9,
+      xtransition: 7
+    });
     opStack.css("min-height", 100);
     opStack.layout();
     for (var i = 0; i < opSize; i++) {
@@ -76,101 +88,126 @@
     }
 
     // create array
-    hashArray = av.ds.array(new Array(hashSize), {indexed: true, center: true, autoresize: false});
+    hashArray = av.ds.array(new Array(hashSize), {
+      indexed: true,
+      center: true,
+      autoresize: false
+    });
     hashArray.layout();
     hashArray.click(clickHandler);
+
+    // create clickedIndex JSAV variable
+    clickedIndex = av.variable(-1);
 
     // create new labels
     $hashLabel = $("<p class='exerciseLabel'>" + interpret("av_hash") + "</p>");
     $stackLabel = $("<p class='exerciseLabel'>" + interpret("av_operations") + "</p>");
 
-    // style the labels
-    $hashLabel.add($stackLabel)
-      .css("text-align", "center")
-      .css("font-weight", "bold");
-
     // insert the labels
     $hashLabel.insertBefore(hashArray.element);
     $stackLabel.insertBefore(opStack.element);
 
+    // show hash function for the first element
+    showModulusOfKey();
 
-    // show the used probing type
-    av.umsg(probeMessage);
-
-    return hashArray;
+    return [hashArray, clickedIndex];
   }
 
+
   function modelSolution(jsav) {
-    // initialize infix array
-    var msOldHash = jsav.ds.array(initialHash, {
-      indexed: true,
-      center: true,
-      autoresize: false
-    });
-
+    var i, ind;
     // initialize stack
-    var msStack = jsav.ds.stack(initialInsert, {center: true});
-    msStack.css("min-height", msOldHash.css("height"));
+    var msStack = jsav.ds.stack(initialOps.values, {
+      center: true,
+      ytransition: -9,
+      xtransition: 7
+    });
+    msStack.css("min-height", 100);
     msStack.layout();
-    msStack.hide();
+    for (i = 0; i < opSize; i++) {
+      msStack.get(i).addClass(initialOps.operations[i]);
+    }
 
-    // initialize result array
-    var msNewHash = jsav.ds.array(new Array(newSize), {
+    // initialize infix array
+    var msHash = jsav.ds.array(new Array(hashSize), {
       indexed: true,
       center: true,
       autoresize: false
     });
+    msHash.layout();
+
+    var msClickedIndex = jsav.variable(-1);
 
     jsav.displayInit();
 
-    var i, ind;
-
-    // rehash the values from the old table
-    for (i = 0; i < msOldHash.size(); i++) {
-      if (msOldHash.value(i) !== "") {
-        msOldHash.addClass(i, "selected");
-        var t = 0;
-        while (msNewHash.value(ind = hashFunction[probing](msOldHash.value(i), t, newSize))) {
-          jsav.umsg(hashFunctionString[probing](msOldHash.value(i), t, newSize) + "<br>" + interpret("av_ms_collision"), {fill: {index: ind}});
-          // add arrows on top of
-          msNewHash.addClass(ind, "jsavarrow");
-          jsav.gradeableStep();
-          t++;
-        }
-        jsav.umsg(hashFunctionString[probing](msOldHash.value(i), t, newSize) + "<br>" + interpret("av_ms_insert"), {fill: {index: ind}});
-        // move the value from the old hash table to new hash table
-        jsav.effects.moveValue(msOldHash, i, msNewHash, ind);
-        msOldHash.removeClass(i, "selected");
-        // remove all arrows
-        msNewHash.removeClass(true, "jsavarrow");
-        jsav.gradeableStep();
-      }
-    }
-
-    msOldHash.hide();
-    msStack.show();
-    jsav.step();
-
-    // insert the values in the stack to the new hash table
-    while (msStack.size()) {
-      msStack.first().addClass("selected");
-      i = 0;
-      while (msNewHash.value(ind = hashFunction[probing](msStack.first().value(), i, newSize))) {
-        jsav.umsg(hashFunctionString[probing](msStack.first().value(), i, newSize) + "<br>" + interpret("av_ms_collision"), {fill: {index: ind}});
-        msNewHash.addClass(ind, "jsavarrow");
+    function find(key, stopArray) {
+      var i = 0,
+          ind;
+      while (stopArray.indexOf(msHash.value(ind = hashFunction[probing](key, i, hashSize))) === -1) {
+        msClickedIndex.value(ind);
+        msHash.addClass(ind, "jsavarrow");
+        jsav.umsg(interpret("av_ms_collision"), {fill: {
+          index: ind
+        }});
         jsav.gradeableStep();
         i++;
       }
-      jsav.umsg(hashFunctionString[probing](msStack.first().value(), i, newSize) + "<br>" + interpret("av_ms_insert"), {fill: {index: ind}});
-      jsav.effects.moveValue(msStack.first(), msNewHash, ind);
-      msStack.removeFirst();
-      msStack.layout();
-      // remove all arrows
-      msNewHash.removeClass(true, "jsavarrow");
+      msClickedIndex.value(ind);
+      return ind;
+    }
+
+    function nextOperation() {
+      msHash.removeClass(true, "jsavarrow");
+      if (msStack.size()) {
+        msStack.removeFirst();
+        msStack.layout();
+      }
       jsav.gradeableStep();
     }
 
-    return msNewHash;
+    // insert the values in the stack to the new hash table
+    while (msStack.size()) {
+      var first = msStack.first(),
+          operation = getOperationType(first);
+
+      switch (operation) {
+      case "insert":
+        ind = find(first.value(), ["", "[del]"]);
+        jsav.effects.moveValue(first, msHash, ind);
+        jsav.umsg(interpret("av_ms_insert"), {fill: {
+          index: ind
+        }});
+        break;
+      case "remove":
+        ind = find(first.value(), ["", first.value()]);
+        if (msHash.value(ind)) {
+          msHash.value(ind, "[del]");
+          jsav.umsg(interpret("av_ms_remove"), {fill: {
+            index: ind
+          }});
+        } else {
+          jsav.umsg(interpret("av_ms_remove_failed"), {fill: {
+            key: first.value()
+          }});
+        }
+        break;
+      case "search":
+        ind = find(first.value(), ["", first.value()]);
+        if (msHash.value(ind)) {
+          jsav.umsg(interpret("av_ms_search"), {fill: {
+            index: ind
+          }});
+        } else {
+          jsav.umsg(interpret("av_ms_search_failed"), {fill: {
+            key: first.value()
+          }});
+        }
+      }
+      nextOperation();
+
+    }
+
+    return [msHash, msClickedIndex];
   }
 
 
@@ -180,6 +217,7 @@
       if (opStack.size()) {
         opStack.removeFirst();
         opStack.layout();
+        showModulusOfKey();
       }
       exercise.gradeableStep();
     }
@@ -188,23 +226,16 @@
       return;
     }
     var first = opStack.first(),
-        operation;
-    if (first.hasClass("insert")) {
-      operation = "insert";
-    } else if (first.hasClass("remove")) {
-      operation = "remove";
-    } else if (first.hasClass("search")) {
-      operation = "search";
-    } else {
-      // unknown operation
-      return;
-    }
+        operation = getOperationType(first);
+
+    clickedIndex.value(index);
 
     switch (operation) {
     case "insert":
       if (this.value(index) === "" || this.value(index) === "[del]") {
         // insert element
-        this.value(index, first.value());
+        av.effects.moveValue(first, this, index);
+        // this.value(index, first.value());
         nextOperation();
       } else {
         this.addClass(index, "jsavarrow");
@@ -233,9 +264,34 @@
       }
       break;
     }
-
-
   };
+
+
+  function getOperationType(node) {
+    if (node.hasClass("insert")) {
+      return "insert";
+    } else if (node.hasClass("remove")) {
+      return "remove";
+    } else if (node.hasClass("search")) {
+      return "search";
+    } else {
+      // unknown operation
+      return undefined;
+    }
+  }
+
+
+  function showModulusOfKey() {
+    if (!opStack.size()) {
+      return;
+    }
+    var val = opStack.first().value();
+    av.umsg("<strong>{key} mod {size} = {result}</strong>", {fill: {
+      key: val,
+      size: hashSize,
+      result: val % hashSize
+    }});
+  }
 
 
   // generate hash operations
@@ -261,8 +317,8 @@
     // collision index
     colInd = hashFunction[probing](values[0], 0, hashSize);
     // generate colliding values
-    values[ind1] = Math.floor(JSAV.utils.rand.numKey(100, 900) / size) * size + colInd;
-    values[ind2] = Math.floor(JSAV.utils.rand.numKey(100, 900) / size) * size + colInd;
+    values[ind1] = Math.floor(JSAV.utils.rand.numKey(100, 900) / hashSize) * hashSize + colInd;
+    values[ind2] = Math.floor(JSAV.utils.rand.numKey(100, 900) / hashSize) * hashSize + colInd;
 
 
     // the second quarter contains remove operations
