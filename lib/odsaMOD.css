@@ -85,8 +85,8 @@ form.signin p, form.signin span {
 /* Style for mini-slideshow checkmark proficiency indicator */
 .prof_check_mark {
   position: absolute;
-  bottom: 45px; /* top: 65px; */
-  right: 10px;
+  top: 10px;
+  left: 35px;
   display: none;
 }
 /* Saving message for checkmark proficiency indicator */
