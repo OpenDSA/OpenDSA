@@ -62,7 +62,7 @@
  *   - Based on http://stackoverflow.com/questions/1403888/get-url-parameter-with-jquery
 **/
 function getURLParam(name) {
-  var param = new RegExp('[?|&]' + name + '=' + '(.+?)(&|$)').exec(location.href)
+  var param = new RegExp('[?|&]' + name + '=' + '(.+?^&$)(&|$)').exec(location.href)
 
   return (param) ? decodeURIComponent(param[1]) : "";
 }

@@ -87,11 +87,7 @@ if(server !== null){
         error: function(){
             testdeffer.done(function(){
                 $('#points-area').empty();
-                // Check if server variable points to a valid server.
-                if (server.lastIndexOf('http') == 0) {
-                    // If server is valid, print error message.
-                    $('#points-area').text(" Score server cannot be reached!");
-                }
+                $('#points-area').text(" Score server cannot be reached!");
             });
        }
     });
