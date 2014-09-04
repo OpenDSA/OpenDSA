@@ -191,7 +191,7 @@
 // Array tree split root insert slide show
 (function() {
   var jsav = new JSAV("TTTreeSplitInsert");
-  var at = jsav.ds.arraytree(); // Create Array Tree
+  var at = jsav.ds.arraytree({nodegap: 10}); // Create Array Tree
   jsav.label("Insert:", {left: '3%', top: '-15%'});
   var ins_arr = jsav.ds.array([19], {left: "9%", top: "-18%"});
   jsav.label("Promote:", {left: '1%', top: '5%'});
@@ -201,14 +201,20 @@
   var r = at.root([18, 31]);
   r.addChild([12, ""]);
   r.addChild([23, 30]);
+  r.addChild(["", ""]);
   r.addChild([48, ""]);
+
   r.child(0).addChild([10, ""]);
   r.child(0).addChild([15, ""]);
+
   r.child(1).addChild([20, 21]);
   r.child(1).addChild([24, ""]);
   r.child(1).addChild([31, ""]);
-  r.child(2).addChild([45, 47]);
-  r.child(2).addChild([50, 52]);
+
+  r.child(3).addChild([45, 47]);
+  r.child(3).addChild([50, 52]);
+
+  r.child(2).hide();
   at.layout(); // Layout array tree.
 
   var msg = [
@@ -256,39 +262,55 @@
   step();
 
   // Slide 5
-  // Remove children 1 and 2.
-  r.child(1).child(2, null);
-  r.child(1).child(1, null);
-  // Add children back in correct order with an empty node.
-  r.child(1).addChild(["", ""]);
-  r.child(1).addChild([24, ""]);
-  r.child(1).addChild([31, ""]);
+  var n = r.child(1);
+  n.child(1).value(["", ""]);
+  n.child(2).value([24, ""]);
+  n.addChild([31, ""]);
+  n.child(1).edgeToParent().hide();
   at.layout();
-  r.child(1).edgeToChild(1).hide();
-  r.child(1).child(1).highlight();
   step();
 
   // Slide 6
-  r.child(1).child(0).unhighlight();
-  r.child(1).child(1).unhighlight();
-  at.moveValue(r.child(1).child(0), 1, r.child(1).child(1), 0);
+  n.child(0).unhighlight();
+  n.child(1).unhighlight();
+  n.child(1).highlight(0);
+  at.moveValue(n.child(0), 1, n.child(1), 0);
   step();
 
   // Slide 7
-  at.moveValue(r.child(1).child(0), 0, prom_arr, 0);
+  n.child(1).unhighlight(0);
+  at.moveValue(n.child(0), 0, prom_arr, 0);
   step();
 
   // Slide 8
-  at.moveValue(ins_arr, 0, r.child(1).child(0), 0);
+  at.moveValue(ins_arr, 0, n.child(0), 0);
   step();
 
   // Slide 9
-  r.child(2, null); // Remove child.
-  // Add children back in correct order with an empty node.
-  r.addChild(["", ""]);
-  r.addChild([48, ""]);
-  r.child(3).addChild([45, 47]);
-  r.child(3).addChild([50, 52]);
+  r.child(2).show();
+  r.child(2).edgeToParent().hide();
+  at.layout();
+  step();
+
+  // Slide 10
+  at.moveValue(r.child(1), 1, r.child(2), 0);
+  at.moveValue(prom_arr, 0, r.child(1), 0);
+  prom_arr.value(0, 23);
+  step();
+
+  // Slide 11
+  r.child(2).addChild([24, ""]);
+  r.child(2).addChild([31, ""]);
+  r.child(1).child(3, null);
+  r.child(1).child(2, null);
+  r.child(1).child(1).edgeToParent().show();
+  at.layout();
+  step();
+
+  // Slide 12
+  var root = at.root(["", ""]);
+  root.addChild(r);
+  root.addChild(["", ""]);
   at.layout();
   step();
 
