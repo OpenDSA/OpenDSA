@@ -242,7 +242,6 @@ samp {
 
 /**
  * 1. Correct color not being inherited.
- *    Known issue: affects color of disabled elements.
  * 2. Correct font properties not being inherited.
  * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
  */
@@ -300,6 +299,7 @@ input[type="submit"] {
 button[disabled],
 html input[disabled] {
   cursor: default;
+  color: #545454;
 }
 
 /**
