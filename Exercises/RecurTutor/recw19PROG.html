@@ -10,10 +10,13 @@
     window.OpenPopKa = true;
   </script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../lib/odsaStyle-min.css"></script>
+<style>
+    .jsavcanvas { height: 700px;} </style>
   <style>
     #codeTextarea{
-      width:400px;
-      height:200px;
+      width:500px;
+      height:280px;
     }
     .textAreaWithLines{
       font-family:courier;      
@@ -48,13 +51,13 @@
       el.className='textAreaWithLines';
       ta.style.position = 'absolute';
       ta.style.left = '30px';
-      var currHeight=200;
-      var currWidth=400;
+      var currHeight=280;
+      var currWidth=500;
       console.log(navigator.appCodeName);
        if ($.browser.mozilla) //if (navigator.appCodeName== "Mozilla" )
        {
          var currHeight=15;
-         var currWidth=50;
+         var currWidth=55;
       
        }
       el.style.height = (ta.offsetHeight + currHeight) + 'px';
@@ -110,8 +113,7 @@
       <p class="problem" id = "test">    Given the following recursive function signature, write down the recursive function reverse a given stack without using any other data structures(or without extra memory). You cannot use any memory at all. All what you have to do is use recursion only to attain this. You don’t need to implement a function to push, pop or check if the stack is empty or not. You may use the given getLast function with no modifications if needed.
 <br />
 </h4>
-<textarea  id="codeTextarea"> 
-void stackReversal(Stack s)
+<textarea  id="codeTextarea"> void stackReversal(Stack s)
 {
 	
 }
