@@ -3,54 +3,121 @@
 Instructor's Tools
 ==================
 
-Register a Book Instance
-------------------------
+Instructor's Tools Page
+-----------------------
 
-To send over to the data server all information (chapters, modules, exercises, points, etc.) 
-related to a newly created book instance, it is necessary to register the book instance.
-The rigistration can be done on the `RegisterBook` page at `Book_Base_URL/html/RegisterBook.html`.
+Instructor's tools are available from an OpenDSA scoring server
+installation.
+For example, the main Virginia Tech scoring server supplies its
+instructor tools page from ``http://opendsa.cc.vt.edu/``.
+You will have to log in with an account that has instructor
+permissions for the course that you wish to work on.
 
-Teacher View Configuration
---------------------------
+On the opening page, you will see at the top a number of links to
+various informational displays related to overall OpenDSA use.
+The bottom of the page shows buttons for active courses.
+If your course has been configured, then you should see a button for
+it that you can click to go to the instructor's work page for the
+course.
 
-To configure a view for a specific course/book instance, it is required to 
-create a course and an assignement for that course through the backend 
-administration `console <http://opendsa.cc.vt.edu/admin/>`_. Only Django
-administration account can perform these tasks.
+Course Page
+-----------
 
-Course Creation
+The course page contains a menu of links on the left side, with the
+main portion of the page containing a listing of assignments.
+Really, the only thing of practical value that you can do on this page
+is click the "Teacher's View" link.
+
+Teacher's View Page
+-------------------
+This page is the main hub of activity for managing your course.
+
+Student Accounts
+----------------
+
+There are fundamentally two ways to get students registered for using
+OpenDSA.
+
+#. One way is to let them register themselves.
+   Scoring data for completing exercises is collected based on the URL
+   for the book instance that they use.
+   So if a student goes to the URL for your book instance, then any
+   exercises that they complete will be associated with that book
+   instance (and show up on the class activty spreadsheet for that book
+   instance).
+
+#. The other way is to create accounts.
+   If you like, you can upload a CSV file that defines the account
+   names and associated emails
+   (using the ``Upload students list`` button).
+   Alternatively, you can have OpenDSA generate a set of anonymized
+   account names, with a set prefix
+   (using the ``Create students accounts`` button).
+   For example, you could create accounts names like ``CS101F14_01``
+   through ``CS101F14_10``.
+   In either case, you will then be responsible for informing your
+   students about the account that they must use.
+
+Class Activity
+--------------
+
+The ``Class Activity`` button lets you see what your students have
+done.
+It shows a spreadsheet with a row for each account, and columns for
+assignments, exercises, and summed scores.
+Be aware that this table is driven by the assignments that you have
+created, **not** by what work the students have done.
+So if you want to see who has done a given exercise, you have to have
+associated that exercise with some assignment.
+
+The "Toggle exercises columns" controls whether you just see
+assignment total scores, or whether you see all of the details for
+every exercise.
+
+Hovering your cursor over a cell in the spreadsheet provides more
+detailed information about when the student completed the assignment.
+
+You can download the spreadsheet as a CSV file.
+
+Manage Students
 ---------------
 
-Select ``course``, then ``Add course``, and fill in the form and assign teacher(s) to the course.
-
-Select ``course instance`` to create an instance of the course you just created. Fill in the 
-form and eventually assign teaching assistants. 
-
-Select ``Books``, and click on the url of the OpenDSA book instance you want to associate to the
-course. In the book's form select the appropriate course.
+There are a number of ways and reasons why there might be accounts
+associated with your book instance that you do not want mixed up with
+your grading.
+If you don't want a given account to show up on your spreadsheet, you
+can make it invisible to the spreadsheet by using the ``Edit Students
+Visibility`` page that you reach by clicking the ``Manage Students``
+button.
+Simply click the Grade checkbox to toggle visibility for that account.
 
 Assignment Creation
 -------------------
 
-At this point it is necessary to create an assignment after configuring a course.
-Assignment creation is a two steps process:
+An assignment is just a collection of exercises with a name and an
+associated due date.
+You create a new assignment by clicking the ``Add new assignment``
+button at the bottom of the page.
+This takes you to the ``Edit Module`` form.
+The key fields are the assignment name, the closing time (this will
+affect the colors for the cells on the spreadsheet), and whether late
+submissions are allowed.
+OpenDSA is not using the "penalty" field.
 
-Firs create a ``Course module``, select the add ``Add`` link next to ``course module`` in the backend administration console. Fill out the form and save.
+Once you have created an assignment, there are two distinct things
+that you can do with it.
+You can edit the assignment fields (``Edit Assignment`` button), which
+takes you to the same form as when you created the assignment.
+Or you can modify the list of exercises associated with the assignment
+(somewhat misnamed as the ``Add new exercise`` button).
 
-Select ``Assignments``, then ``Add assignments``. In the creation form, select the course module you want to associate with the assignment,
-then the corresponding book. There is no need to add exercises to the assignement at this point, 
-it will be done by the teacher through the teacher view (standard backend site). 
-Note that until this has been done, certain
-functionality in the teachers view is not available.
-
-Assignment creation by instructors: 
-
- (1) Go to the course ``Teacher's view`` 
- (2) Select ``Add new assignment`` 
- (3) Fill out the form then press ``submit``
- (4) Return to the ``Teacher's view`` homepage, you can now see the assignment you just created in the list of assignments 
- (5) Select the corresponding ``Add new exercises`` button to load the edit module form 
- (6) Do not change the value of ``Course module`` and ``Assignment book`` fields. Select the chapter(s) from the ``Assignment chapter`` drop-down list. The exercises presents in the chapters are now displayed under ``Exercises in chapter`` label  
- (7) Select the exercises you want to add to the assignment. The selected exercises are added to the ``Assignment exercises`` list 
- (8) Repeat steps (6) and (7) to add exercises from several chapters into the assignment
- (9) Click on submit and return to the Teacher's view homepage      
+The page for adding exercises has two key parts: the
+``Assignment Chapter`` field and the list of Assignment Exercises.
+To add an exercise, select the chapter that contains it, and then
+check its box in the list that will be displayed.
+That will add it to the ``Assignment exercises`` list.
+An assignment can contain exercises from different chapters.
+If you uncheck an exercise on the list, it will be removed from the
+assignment.
+When you are done editing the list of exercises, click the ``Submit``
+button.
