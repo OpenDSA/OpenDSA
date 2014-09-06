@@ -80,6 +80,14 @@ This is done using the ``avembed`` directive
 (see :ref:`avembed`).
 When converted to HTML, the mechanism used is a standard ``iframe``
 tag to include the artifact.
+Note that the size of the iframe is controlled by an XML file
+corresponding to the thing being embedded.
+For example, if you are going to avembed something at
+``AV/Sorting/insertionsortAV.html``, then there must be an XML file to
+define the size at
+``AV/Sorting/xml/insertionsortAV.xml``.
+The book compilation script will hard stop when processing the avembed
+directive if that XML file does not exist.
 
 "Inline" AVs are usually either a JSAV diagram or a JSAV slideshow
 (a diagram is just a "slideshow" with no slide controls at the top).
@@ -107,3 +115,53 @@ map down to ``<script></script>`` and ``<link></link>`` tags,
 respectively, in the final HTML pages.
 Their purpose is merely to keep module authors from needing to use raw
 HTML code in an RST file.
+
+When you embed multiple slideshows on the page (with ``inlineav``),
+they will naturally share the same namespace, both for code 
+and for CSS.
+
+For code, this is not generally an issue, because it is our standard
+procedure to wrap all of our code in an "anonymous function", and then
+reference the key identifier (the container div) by name.
+This is why you will always see (in any of our code that has been
+cleaned to our internal spec, which should be everything except
+perhaps code in the Development directory)
+something like the following::
+
+   $(document).ready(function () {
+     var av_name = "insertionsortS1CON";
+     ...
+     var av = new JSAV(av_name);
+     ...
+   });
+
+This does the following:
+
+* document.ready makes it wait until everything is loaded
+
+* It is all wrapped in a function, so that it doesn't collide its
+  namespace with other slideshows.
+  That way, for example, the global
+  variables for one slideshow (like ``av`` in this example) are
+  separate from the other slideshows.
+  (This actually causes a problem if you want to include functions
+  from other .js files.
+  See  :ref:`Encapsulation`.)
+
+* Use of the container name (such as in the JSAV call) is why THIS
+  code gets executed on THIS container instead of the OTHER .js files
+  that you loaded on the page. 
+
+Each ``inlineav`` might need to set some CSS styling with the same
+name as other slideshows will use.
+You handle this by "qualifying" the relevant variable to the name of
+the div that contains it.
+Look for example at ``AV/Binary/BSTCON.css`` to see examples.
+Notice lines that look like::
+
+   #avnameCON .jsav.jsavtreenode {
+     ...
+   }
+
+This will make your styling changes on the tree nodes only affect that
+particular slideshow.
