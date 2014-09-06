@@ -117,16 +117,15 @@ Here is the structure for language_msg.json::
      }
    }
 
+The gradebook text strings are taken from ``RST/<lang>/Gradebook.rst``.
+
 The book configuration  program will read the language variable.
 If a translation for the entered language is not available, the
 default language English is used.
-The configuration process will then insert the language inside the
-translation file, and then copy the translation file to the
-``Books/<bookname>/_static`` directory.
 
-AVs and exercises also support internationalization through the use of
-an associated ``.json`` file that provides the various translation
-text for all strings that appear in the AV.
+Individual AVs and exercises support internationalization through the
+use of an associated ``.json`` file that provides the various
+translation text for all strings that appear in the AV.
 JSAV provides translations to many languages for its infrastructure
 strings.
 
@@ -244,21 +243,24 @@ referencing elements or functions through the ``contentDocument`` or
 or ``window.top``.
 
 
+.. _Encapsulation:
+
 Encapsulation
 =============
 
 You should always wrap your JavaScript code in an anonymous function
 to prevent the DOM from getting cluttered and to prevent outside
-access to specific data or functions.  All functions and global
-variables defined within an anonymous function are visible to each
-other and can be used normally.  However, sometimes you will need to
-define a publically accessible function that interacts with functions
-you wish to keep private.  The simplest way to do this is to write
-your JavaScript as normal within an anonymous function and then assign
-specific "public" functions to be properties of the ``window`` object.
-Please refer to the example below::
+access to specific data or functions.
+All functions and global variables defined within an anonymous
+function are visible to each other and can be used normally.
+However, sometimes you will need to define a publically accessible
+function that interacts with functions you wish to keep private.
+The simplest way to do this is to write your JavaScript as normal
+within an anonymous function and then assign specific "public"
+functions to be properties of the ``window`` object.
+For example::
 
-  (function() {
+  $(document).ready(function () {
     var privateData = 0;
 
     function privFunct() {
@@ -272,11 +274,11 @@ Please refer to the example below::
     var AV = {};
     AV.publicFunct = publicFunct;
     window.AV = AV;
-  }(jQuery));
+  });
 
 Another alternative is::
 
-  (function() {
+  $(document).ready(function () {
     var AV = {};
 
     function privFunct() {
@@ -293,15 +295,15 @@ Another alternative is::
     }
 
     window.AV = AV;
-  }(jQuery));
+  });
 
-In both of these example, ``publicFunct()`` can be referenced outside
-the anonymous function using ``AV.publicFunct()`` (or
-``window.AV.publicFunct()``).  We prefer the first method because it
-looks more like a standard JavaScript file, internal function
-references are simpler and its easy to add all the public functions in
-one place, giving the developer greater control over what they make
-public.
+In both of these examples, ``publicFunct()`` can be referenced outside
+the anonymous function using ``AV.publicFunct()``
+(or ``window.AV.publicFunct()``).
+We prefer the first method because it looks more like a standard
+JavaScript file, internal function references are simpler, and its
+easy to add all the public functions in one place, giving the
+developer greater control over what they make public.
 
 Be sure not to overwrite any existing namespaces (such as window.ODSA
 which is used by the OpenDSA framework)!
