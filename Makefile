@@ -53,7 +53,7 @@ jshint:
 	-@jshint lib/conceptMap.js
 
 min: nomin
-#lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/khan-exercise-min.js lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
+#lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
 Tutorial: min
 	python $(CONFIG_SCRIPT) config/Tutorial.json
@@ -195,10 +195,6 @@ lib/odsaAV-min.js: lib/odsaAV.js
 lib/odsaAV-min.css: lib/odsaAV.css
 	@echo 'Minimizing lib/odsaAV.css'
 	@$(MINIMIZE) lib/odsaAV.css -o lib/odsaAV-min.css
-
-lib/khan-exercise-min.js: ODSAkhan-exercises/khan-exercise.js
-	@echo 'Minimizing lib/khan-exercise.js'
-	@$(MINIMIZE) ODSAkhan-exercises/khan-exercise.js -o lib/khan-exercise-min.js
 
 lib/odsaMOD-min.js: lib/odsaMOD.js
 	@echo 'Minimizing lib/odsaMOD.js'
