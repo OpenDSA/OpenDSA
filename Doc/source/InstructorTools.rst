@@ -91,8 +91,8 @@ Visibility`` page that you reach by clicking the ``Manage Students``
 button.
 Simply click the Grade checkbox to toggle visibility for that account.
 
-Assignment Creation
--------------------
+Assignment Creation and Updating
+--------------------------------
 
 An assignment is just a collection of exercises with a name and an
 associated due date.
