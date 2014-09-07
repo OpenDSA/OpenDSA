@@ -1,6 +1,8 @@
 {
   "invalid_field": "invalid",
-  "backend_address": "http://opendsa.cc.vt.edu",
+  "exercise_server": "https://opendsa.cc.vt.edu/",
+  "logging_server": "https://opendsa.cc.vt.edu/",
+  "score_server": "https://opendsa.cc.vt.edu/",
   "allow_anymous_credit": true,
   "av_origin": "",
   "exercises_root_dir": "",

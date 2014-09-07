@@ -8,7 +8,6 @@
   },
   "lang": "en",
   "module_origin": "http://algoviz.org",
-  "backend_address": "",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
@@ -186,7 +185,7 @@
         "long_name": "Abstract Data Types",
         "exercises": {
           "ADTCON": { }
-	}
+  }
       }
     },
     "Linear Structures": {

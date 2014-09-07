@@ -7,7 +7,9 @@
     "C++": ["cpp"]
   },
   "module_origin": "http://algoviz.org",
-  "backend_address": "http://opendsa.cc.vt.edu:8090",
+  "exercise_server": "https://opendsa.cc.vt.edu:8090",
+  "logging_server": "https://opendsa.cc.vt.edu:8090",
+  "score_server": "https://opendsa.cc.vt.edu:8090",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": true,

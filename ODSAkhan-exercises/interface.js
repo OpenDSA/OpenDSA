@@ -43,8 +43,7 @@ var PerseusBridge = Exercises.PerseusBridge,
     lastAttemptOrHint,
     firstProblem = true;
 
-//
-var server = SERVER_URL ? SERVER_URL : typeof OpenPopKa !== "undefined"? "https://opendsa.cc.vt.edu": null;
+var server = EXERCISE_SERVER ? EXERCISE_SERVER : typeof OpenPopKa !== "undefined"? "https://opendsa.cc.vt.edu": null;
 BOOK_ID =  BOOK_ID ? BOOK_ID : typeof OpenPopKa !== "undefined"? "CS3114": null;
 
 var jsonData = {};

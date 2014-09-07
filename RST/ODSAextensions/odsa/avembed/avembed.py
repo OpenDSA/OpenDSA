@@ -155,7 +155,9 @@ class avembed(Directive):
     self.options['type'] = self.arguments[1]
 
     url_params = {}
-    url_params['serverURL'] = conf.server_url
+    url_params['exerciseServer'] = conf.exercise_server
+    url_params['loggingServer'] = conf.logging_server
+    url_params['scoreServer'] = conf.score_server
     url_params['moduleOrigin'] = conf.module_origin
     url_params['module'] = self.options['module']
     url_params['selfLoggingEnabled'] = 'false'
@@ -169,7 +171,7 @@ class avembed(Directive):
 
 
     # Load translation
-    langDict = loadTable()  
+    langDict = loadTable()
 
     # Add the JSAV exercise options to the AV address
     if 'exer_opts' in self.options and self.options['exer_opts'] != '':

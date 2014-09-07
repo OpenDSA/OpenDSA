@@ -194,7 +194,7 @@ def generate_index_rst(config, slides = False):
   header_data['mod_chapter'] = ''
   header_data['mod_date'] = str(datetime.datetime.now()).split('.')[0]
   header_data['mod_options'] = ''
-  header_data['build_cmap'] = config.build_cmap
+  header_data['build_cmap'] = str(config.build_cmap).lower()
   header_data['unicode_directive'] = rst_header_unicode if not slides else ''
 
   # Generate the index.rst file
@@ -237,7 +237,7 @@ def generate_todo_rst(config, slides = False):
     header_data['mod_chapter'] = ''
     header_data['mod_date'] = str(datetime.datetime.now()).split('.')[0]
     header_data['mod_options'] = ''
-    header_data['build_cmap'] = config.build_cmap
+    header_data['build_cmap'] = str(config.build_cmap).lower()
     header_data['unicode_directive'] = rst_header_unicode if not slides else ''
     todo_file.write(rst_header % header_data)
     todo_file.write(todo_rst_template)
@@ -291,7 +291,9 @@ def initialize_conf_py_options(config, slides):
   options = {}
   options['title'] = config.title
   options['book_name'] = config.book_name
-  options['backend_address'] = config.backend_address
+  options['exercise_server'] = config.exercise_server
+  options['logging_server'] = config.logging_server
+  options['score_server'] = config.score_server
   options['module_origin'] = config.module_origin
   options['theme_dir'] = config.theme_dir
   options['theme'] = config.theme

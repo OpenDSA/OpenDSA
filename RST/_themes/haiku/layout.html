@@ -24,7 +24,7 @@
       <script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
     {%- endfor %}
   {%- endif %}
-  
+
   {%- for scriptfile in odsa_scripts %}
     <script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
   {%- endfor %}
@@ -38,15 +38,15 @@
   <form method="post" class="signin" action="#">
     <fieldset class="textbox">
       <label class="username">
-        <span>{{ username_email  }}</span>
-        <input id="username" value="" type="text" autocomplete="on" placeholder="{{ username_email  }}" tabindex="1">
+        <span>{{ username  }}</span>
+        <input id="username" value="" type="text" autocomplete="on" placeholder="{{ username  }}" tabindex="1">
       </label>
       <label class="password">
         <span>{{ password }}</span>
         <input id="password" value="" type="password" placeholder="{{ password }}" tabindex="2">
         <span><a id="forgot" href="#">{{ password_forget  }}</a></span>
       </label>
-      
+
       <p>
         <input type="submit" id="login-submit-button" value="{{ sign_in  }}" tabindex="3" />
       </p>
@@ -69,7 +69,7 @@
         <span>{{ username }}:</span>
         <input type="text" id="user" placeholder="{{ username }}" />
       </label>
-      
+
       <label class="password">
         <span>{{ password }}</span>
         <input id="pass" type="password" placeholder="{{ password }}" />
@@ -200,7 +200,7 @@
         <h1 class="heading" ><a href="{{ pathto('index') }}">
           <span style="margin-left: 60px;">{{ shorttitle|e }}</span></a></h1>
         {%- if pagename=="index" -%}
-        <h2 class="heading" ><span  style="margin-left: 60px;"> {{ tofc }} </span></h2> 
+        <h2 class="heading" ><span  style="margin-left: 60px;"> {{ tofc }} </span></h2>
         {%- else %}
           <h2 class="heading" ><span  style="margin-left: 60px;">{{ chapter_items[pagename] }}</span></h2>
         {%- endif %}
@@ -214,13 +214,13 @@
             <a style="float:left;color:blue;" href="{{ pathto('../source/' + sourcename.replace('.txt', '.rst'), true)|e }}"
               target="_blank" rel="nofollow">{{ _('Show Source') }} | </a>&#160;&#160;
           {%- endif %}
-          
+
           {%- if pagename=="ToDo" or pagename =="search" -%}
             &#160;&#160;
           {%- else %}
             <a class="abt" style="float:left;color:blue;" href="#" rel="nofollow">| {{ about }}</a>&#160;&#160;
           {%- endif %}
-          
+
           {{ nav() }}
         </p>
       </div>

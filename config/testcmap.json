@@ -5,7 +5,6 @@
   "code_lang": {"C++": ["cpp", "h"], "Processing": ["pde"]},
   "lang": "en",
   "module_origin": "http://algoviz.org",
-  "backend_address": "",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
@@ -39,7 +38,7 @@
         "long_name": "Abstract Data Types",
         "exercises": {
           "ADTCON": {}
-	}
+  }
       }
     },
     "Linear Structures": {
@@ -477,13 +476,13 @@
             "showhide": "hide",
             "threshold": 1.0
           },
-	  "qTopSort": {
+    "qTopSort": {
             "long_name": "Queue-based Topological Sort visualization",
             "required": false,
             "points": 0,
             "showhide": "hide",
             "threshold": 1.0
-	  }
+    }
         }
       }
     },

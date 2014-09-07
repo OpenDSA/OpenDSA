@@ -200,7 +200,7 @@ def process_ref_chap(extension, line, book_objects, start_space, last):
     rel_tags = re.split('<|>', rel_labels)
     #We encountered the alternate :ref:/:chap: syntax
     if len(rel_tags) == 3:
-      if not rel_tags[1].strip().lower() in lower_listed_modules: 
+      if not rel_tags[1].strip().lower() in lower_listed_modules:
         #just output anchor text
         line_t = line_t.replace(extension,'')
         line_t = line_t.replace('`' + rel_labels + '`', rel_tags[0])
@@ -278,7 +278,7 @@ class ODSA_RST_Module:
       header_data['mod_chapter'] = chap
       header_data['mod_date'] = str(datetime.datetime.now()).split('.')[0]
       header_data['mod_options'] = format_mod_options(mod_options)
-      header_data['build_cmap'] = config.build_cmap
+      header_data['build_cmap'] = str(config.build_cmap).lower()
       # Include an empty unicode directive when building slides
       header_data['unicode_directive'] = rst_header_unicode if os.environ.get('SLIDES', None) == "no" else ''
       # Prepend the header data to the exisiting module data
