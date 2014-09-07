@@ -97,25 +97,36 @@ Assignment Creation
 An assignment is just a collection of exercises with a name and an
 associated due date.
 You create a new assignment by clicking the ``Add new assignment``
-button at the bottom of the page.
+button at the bottom of the "Teacher's View" page.
 This takes you to the ``Edit Module`` form.
 The key fields are the assignment name, the closing time (this will
 affect the colors for the cells on the spreadsheet), and whether late
 submissions are allowed.
-OpenDSA is not using the "penalty" field.
+OpenDSA does not use the "penalty" field.
+The other fields are ignored (unfortunately, this current form is
+inherited from another system, and we are at present unable to tune it
+properly for the purpose).
+Once you have set the fields as you like them, click the "Submit"
+button.
+You will then need to click on the "Teacher's View" item in the left
+menu list to proceed to the next step.
 
 Once you have created an assignment, there are two distinct things
-that you can do with it.
-You can edit the assignment fields (``Edit Assignment`` button), which
-takes you to the same form as when you created the assignment.
-Or you can modify the list of exercises associated with the assignment
-(somewhat misnamed as the ``Add new exercise`` button).
+that you can do with it:
+
+* Edit the assignment fields (``Edit Assignment`` button), which
+  takes you to the same form as when you created the assignment.
+
+* Modify the list of exercises associated with the assignment
+  (somewhat misnamed as the ``Add new exercise`` button).
 
 The page for adding exercises has two key parts: the
 ``Assignment Chapter`` field and the list of Assignment Exercises.
-To add an exercise, select the chapter that contains it, and then
-check its box in the list that will be displayed.
-That will add it to the ``Assignment exercises`` list.
+To add an exercise, select the chapter that contains it
+This will cause a list of all associated exercises to appear, from
+which you can check the desired exercises.
+Checked exercises will then be added to the
+``Assignment exercises`` list.
 An assignment can contain exercises from different chapters.
 If you uncheck an exercise on the list, it will be removed from the
 assignment.

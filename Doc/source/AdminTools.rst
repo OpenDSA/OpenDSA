@@ -33,9 +33,9 @@ Register a Book Instance
 To send over to the data server all information (chapters, modules,
 exercises, points, etc.) related to a newly created book instance, it
 is necessary to register the book instance.
-The rigistration can be done on the `RegisterBook` page at
-`Book_Base_URL/html/RegisterBook.html`.
+The rigistration can be done on the ``RegisterBook`` page at
+``Book_Base_URL/html/RegisterBook.html``.
 For example,
-`http://algoviz.org/OpenDSA/Books/OpenDSA/html/RegisterBook.html`.
+``http://algoviz.org/OpenDSA/Books/OpenDSA/html/RegisterBook.html``.
 This presumes that the book instance has already been configured by a
 Django administrator.
