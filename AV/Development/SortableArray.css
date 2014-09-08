@@ -1,5 +1,5 @@
 .jsavsortablearray {
-  width: 500px;
+  width: 410px !important;
 }
 .jsavsortablearray .jsavnode {
   width: 100%;
@@ -16,7 +16,7 @@
 }
 .jsavsortablearray .jsavvaluelabel {
   text-align: left;
-  padding-left: 15px;
+  padding: 15px;
 }
 .jsavsortablearray .sortable-ghost {
   background-color: #eee;

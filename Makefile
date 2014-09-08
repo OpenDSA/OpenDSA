@@ -133,6 +133,9 @@ testanal: min
 testfi: min
 	python $(CONFIG_SCRIPT) config/testfi.json
 
+testpt: min
+	python $(CONFIG_SCRIPT) config/testpt.json
+
 testsv: min
 	python $(CONFIG_SCRIPT) config/testsv.json
 

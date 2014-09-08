@@ -65,6 +65,28 @@
       "av_c10": "Välj det minsta av de två värdena",
       "av_c11": "Lägg till det valda värdet i den sorterade sekvensen",
       "av_c12": "Färdig med merge"
+    },
+    "pt": {
+      ".avTitle": " Visualização do Mergesort",
+      "av_Authors": "Daniel Breakiron",
+      "#about": "Sobre",
+      "#run": "Executar",
+      "#reset": "Resetar",
+      "#arraysizeLabel": " Tamanho da Lista: ",
+      "#arrayValuesLabel": " Seus valores: ",
+      "av_arrValsPlaceholder": "Digite alguns valores para o array, ou clique 'Executar' para usar valores aleatórios",
+      "av_c1": "Seleciona o array inteiro",
+      "av_c2": "Ordenação pronta!",
+      "av_c3": "Um array de comprimento 1 não pode ser dividido, pronto para mesclar",
+      "av_c4": "Dividir o array selecionado (tão igualmente quanto possível)",
+      "av_c5": "Seleciona o sub array esquerdo",
+      "av_c6": "Seleciona o sub array direito",
+      "av_c7": "Mescla arrays selecionados de volta, ordenados",
+      "av_c8": "Quando uma lista ficar vazia, copie todos os valores do array restante para o array ordenado",
+      "av_c9": "Seleciona o menor valor a partir do início de cada lista (excluindo valores que já constem no array ordenado)",
+      "av_c10": "Seleciona o menor entre os dois valores",
+      "av_c11": "Adiciona o valor selecionado ao array ordenado",
+      "av_c12": "Fim da mesclagem"
     }
   }
 }
