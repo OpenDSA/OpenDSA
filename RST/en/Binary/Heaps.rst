@@ -347,7 +347,7 @@ For a story on Priority Queues and dragons, see
 Prince's Complaint Line
 <http://computationaltales.blogspot.com/2011/04/stacks-queues-priority-queues-and.html>`_.
 
-.. odsascript:: JSAV/extras/binaryheap.js
+.. odsascript:: AV/DS/binaryheap.js
 .. odsascript:: AV/Binary/heapinsertCON.js
 .. odsascript:: AV/Binary/heapbuildCON.js
 .. odsascript:: AV/Binary/heapbuildProofCON.js
