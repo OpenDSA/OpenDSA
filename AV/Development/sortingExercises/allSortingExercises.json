@@ -9,9 +9,10 @@
   "code": {
     "all": [
       "orderOfGrowth",
-      "2nd exercise",
-      "3rd exercise",
-      "4th exercise"
+      "orderOfGrowthEasy",
+      "analysisOfIterativeCode",
+      "analysisOfRecursiveCode",
+      "runningTimeOfRecursiveAlgorithms"
     ]
   }
 }

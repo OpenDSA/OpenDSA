@@ -26,6 +26,7 @@
   // AV variable
   var sortedItems = [],
       sortableArray,
+      numberOfItems = (PARAMS.show ? parseInt(PARAMS.show, 10) : 0),
 
       // get the configurations from the configuration file
       config = ODSA.UTILS.loadConfig({
@@ -41,6 +42,8 @@
   av.recorded(); // we are not recording an AV with an algorithm
 
   function initialize() {
+    var i, index;
+
     if (sortableArray) {
       sortableArray.clear();
     }
@@ -48,10 +51,19 @@
     // make a copy of code into sortedItems
     sortedItems = code.slice(0);
 
-    // If there are several options for one item, pick one randomly
-    for (var i = 0; i < sortedItems.length; i++) {
+    // if the number of items has been limited, remove items randomly from sortedItems
+    if (numberOfItems) {
+      while (sortedItems.length > numberOfItems) {
+        index = Math.floor(Math.random() * sortedItems.length);
+        sortedItems.splice(index, 1);
+      }
+    }
+
+    // if there are several options for one item, pick one randomly
+    for (i = 0; i < sortedItems.length; i++) {
       if ($.isArray(sortedItems[i])) {
-        sortedItems[i] = sortedItems[i][Math.floor(Math.random() * sortedItems[i].length)];
+        index = Math.floor(Math.random() * sortedItems[i].length);
+        sortedItems[i] = sortedItems[i][index];
       }
     }
 
@@ -59,7 +71,7 @@
     var items = sortedItems.slice(0),
         shuffledItems = [];
     while (items.length) {
-      var index = Math.floor(Math.random() * items.length);
+      index = Math.floor(Math.random() * items.length);
       shuffledItems.push(items.splice(index, 1)[0]);
     }
 
