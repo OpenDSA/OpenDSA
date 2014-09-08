@@ -136,11 +136,11 @@
 
   arrayTreeProto.moveValue = function (fromNode, fromIndex, toNode, toIndex) {
     // Test if fromNode is of type Array Tree Node
-    if (ArrayTreeNode.prototype.isPrototypeOf(fromNode)) {
+    if (fromNode instanceof ArrayTreeNode) {
       fromNode = fromNode.node_array;
     }
     // Test if toNode is of type Array Tree Node
-    if (ArrayTreeNode.prototype.isPrototypeOf(toNode)) {
+    if (toNode instanceof ArrayTreeNode) {
       toNode = toNode.node_array;
     }
     this.jsav.effects.moveValue(fromNode, fromIndex, toNode, toIndex);
@@ -255,6 +255,7 @@
 
   // Create a new array tree node, or gets the child at position 'pos'.
   arrayTreeNodeProto.child = function (pos, node, options) {
+    // If no node value was given return existing node.
     if (typeof node === "undefined") {
       return this.childnodes[pos];
     } else {
@@ -297,86 +298,35 @@
     return this;
   };
 
+  // ---------------------------------------------------------------------------
   // Add interface for array methods
+  // ---------------------------------------------------------------------------
   
-  arrayTreeNodeProto.isHighlight = function(index, options) {
+  arrayTreeNodeProto.isHighlight = function (index, options) {
     this.node_array.isHighlight(index, options);
   };
 
-  arrayTreeNodeProto.highlight = function(indices, options) {
+  arrayTreeNodeProto.highlight = function (indices, options) {
     this.node_array.highlight(indices, options);
   };
 
-  arrayTreeNodeProto.unhighlight = function(indices, options) {
+  arrayTreeNodeProto.unhighlight = function (indices, options) {
     this.node_array.unhighlight(indices, options);
   };
 
-  arrayTreeNodeProto.css = function(indices, cssprop, options) {
+  arrayTreeNodeProto.css = function (indices, cssprop, options) {
     this.node_array.css(indices, cssprop, options);
   };
 
-  arrayTreeNodeProto.index = function(index) {
+  arrayTreeNodeProto.index = function (index) {
     this.node_array.index(index);
-  };  
+  };
 
-  arrayTreeNodeProto.swap = function(index1, index2, options) {
+  arrayTreeNodeProto.swap = function (index1, index2, options) {
     this.node_array.swap(index1, index2, options);
   };
 
   // arrayTreeNodeProto. = function() {
   //   this.node_array.();
   // };
-
-
-  // var ArrayEdge = function (jsav, start, end, options) {
-  //   this.jsav = jsav;
-  //   this.startnode = start;
-  //   this.endnode = end;
-  //   this.options = $.extend(true, {"display": true}, options);
-  //   this.container = start.container;
-  //   // console.lg(bla);
-  //   // console.log(start.arrayelement.html());
-  //   var startPos = start ? start.element.position() : {left: 0, top: 0},
-  //       endPos = end ? end.element.position() : {left: 0, top: 0};
-  //   if (startPos.left === endPos.left && startPos.top === endPos.top) {
-  //     // layout not done yet
-  //     this.g = this.jsav.g.line(-1, -1, -1, -1, $.extend({container: this.container}, this.options));
-  //   } else {
-  //     if (end) {
-  //       endPos.left += end.element.outerWidth() / 2;
-  //       endPos.top += end.element.outerHeight();
-  //     }
-  //     if (!startPos.left && !startPos.top) {
-  //       startPos = endPos;
-  //     }
-  //     this.g = this.jsav.g.line(startPos.left,
-  //                             startPos.top,
-  //                             endPos.left,
-  //                             endPos.top, $.extend({container: this.container}, this.options));
-  //   }
-
-  //   this.element = $(this.g.rObj.node);
-
-  //   var visible = (typeof this.options.display === "boolean" && this.options.display === true);
-  //   this.g.rObj.attr({"opacity": 0});
-  //   this.element.addClass("jsavedge");
-  //   if (start) {
-  //     this.element[0].setAttribute("data-startnode", this.startnode.id());
-  //   }
-  //   if (end) {
-  //     this.element[0].setAttribute("data-endnode", this.endnode.id());
-  //   }
-  //   this.element[0].setAttribute("data-container", this.container.id());
-  //   this.element.data("edge", this);
-
-  //   if (typeof this.options.weight !== "undefined") {
-  //     this._weight = this.options.weight;
-  //     this.label(this._weight);
-  //   }
-  //   if (visible) {
-  //     this.g.show();
-  //   }
-  // };
-
-  // JSAV.utils.extend(ArrayEdge, JSAV._types.ds.Edge);
 }(jQuery));
