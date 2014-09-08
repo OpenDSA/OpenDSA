@@ -11,10 +11,11 @@
   </script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
   <script src="../../lib/odsaStyle-min.css"></script>
-  <style>
+   <style>
+   #problemarea { height: 500px;}
     #codeTextarea{
-      width:400px;
-      height:200px;
+      width:500px;
+      height:300px;
     }
     .textAreaWithLines{
       font-family:courier;      
@@ -24,7 +25,7 @@
     .textAreaWithLines textarea,.textAreaWithLines div{
       border:0px;
       line-height:120%;
-      height:200px;
+      height:300px;
       font-size:12px;
     }
     .lineObj{
@@ -49,8 +50,8 @@
       el.className='textAreaWithLines';
       ta.style.position = 'absolute';
       ta.style.left = '30px';
-      var currHeight=200;
-      var currWidth=400;
+      var currHeight=300;
+      var currWidth=500;
       console.log(navigator.appCodeName);
        if ($.browser.mozilla) //if (navigator.appCodeName== "Mozilla" )
        {
@@ -111,10 +112,13 @@
       <p class="problem" id = "test"> Given the following recursive function signature, write the function code such that this function takes a string and returns true if it is read the same forwards or back-wards (palindrome) <br />
 </h4>
 
-<textarea  id="codeTextarea"> 
-boolean CheckPalindrome(String s)
+<textarea  id="codeTextarea"> boolean CheckPalindrome(String s)
 {
 		
+
+
+
+
 }
 </textarea></p>
 

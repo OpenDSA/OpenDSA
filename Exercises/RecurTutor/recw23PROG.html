@@ -13,9 +13,10 @@
 
   <script src="../../lib/odsaStyle-min.css"></script>
   <style>
+#problemarea { height: 550px;}
     #codeTextarea{
-      width:400px;
-      height:200px;
+      width:500px;
+      height:300px;
     }
     .textAreaWithLines{
       font-family:courier;      
@@ -25,7 +26,7 @@
     .textAreaWithLines textarea,.textAreaWithLines div{
       border:0px;
       line-height:120%;
-      height:200px;
+      height:300px;
       font-size:12px;
     }
     .lineObj{
@@ -50,8 +51,8 @@
       el.className='textAreaWithLines';
       ta.style.position = 'absolute';
       ta.style.left = '30px';
-      var currHeight=200;
-      var currWidth=400;
+      var currHeight=300;
+      var currWidth=500;
       console.log(navigator.appCodeName);
        if ($.browser.mozilla) //if (navigator.appCodeName== "Mozilla" )
        {
@@ -112,9 +113,15 @@
       <p class="problem" id = "test"> Given the following recursive function signature, write the function code such that this function returns the given string in a reverse order. <br />
 </h4>
 
-<textarea  id="codeTextarea"> 
-String ReverseStringRecursive (String str)
+<textarea  id="codeTextarea"> String ReverseStringRecursive (String str)
 {
+
+
+
+
+
+
+
 		
 }
 </textarea></p>

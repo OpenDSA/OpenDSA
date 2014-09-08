@@ -13,9 +13,10 @@
   <script src="../../lib/odsaStyle-min.css"></script>
   
   <style>
+   #problemarea { height: 700px;}
     #codeTextarea{
       width:500px;
-      height:200px;
+      height:300px;
     }
     .textAreaWithLines{
       font-family:courier;      
@@ -25,7 +26,7 @@
     .textAreaWithLines textarea,.textAreaWithLines div{
       border:0px;
       line-height:120%;
-      height:200px;
+      height:300px;
       font-size:12px;
     }
     .lineObj{
@@ -33,7 +34,6 @@
       background-color: #E8E8E8;
     }
   </style>
-<style> .jsavcanvas { height: 1000px;} </style>
 </head>
 <body>
    <script>
@@ -51,8 +51,8 @@
       el.className='textAreaWithLines';
       ta.style.position = 'absolute';
       ta.style.left = '30px';
-      var currHeight=200;
-      var currWidth=400;
+      var currHeight=300;
+      var currWidth=500;
       console.log(navigator.appCodeName);
        if ($.browser.mozilla) //if (navigator.appCodeName== "Mozilla" )
        {
@@ -73,7 +73,7 @@
       lineObj.style.textAlign = 'right';
       lineObj.className='lineObj';
       var string = '';
-      for(var no=1;no<50;no++){
+      for(var no=1;no<200;no++){
          if(string.length>0)string = string + '<br>';
          string = string + no;
       }
@@ -120,6 +120,8 @@
 
 
 		 
+
+
 }
 </textarea>
 

@@ -12,9 +12,10 @@
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
   <script src="../../lib/odsaStyle-min.css"></script>
   <style>
+  #problemarea { height: 700px;}
     #codeTextarea{
       width:500px;
-      height:300px;
+      height:270px;
     }
     .textAreaWithLines{
       font-family:courier;      
@@ -24,7 +25,7 @@
     .textAreaWithLines textarea,.textAreaWithLines div{
       border:0px;
       line-height:120%;
-      height:200px;
+      height:270px;
       font-size:12px;
     }
     .lineObj{
@@ -49,8 +50,8 @@
       el.className='textAreaWithLines';
       ta.style.position = 'absolute';
       ta.style.left = '30px';
-      var currHeight=400;
-      var currWidth=400;
+      var currHeight=270;
+      var currWidth=500;
       console.log(navigator.appCodeName);
        if ($.browser.mozilla) //if (navigator.appCodeName== "Mozilla" )
        {
