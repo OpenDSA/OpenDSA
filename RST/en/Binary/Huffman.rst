@@ -9,7 +9,7 @@
    :satisfies: Huffman coding tree
    :topic: BinTreeImp
 
-.. odsalink:: AV/Binary/huffman.css
+.. odsalink:: AV/DS/huffman.css
 .. odsalink:: AV/Binary/huffmanCON.css
 
 .. index:: ! Huffman
@@ -342,7 +342,7 @@ Notes
        The eigth bit as a :term:`parity` bit, that can be used to
        check if there is a transmission error for the character.
 
-.. odsascript:: AV/Binary/huffman.js
+.. odsascript:: AV/BS/huffman.js
 .. odsascript:: AV/Binary/huffmanBuildCON.js
 .. odsascript:: AV/Binary/huffmanLabelCON.js
 .. odsascript:: AV/Binary/huffmanCodesCON.js
