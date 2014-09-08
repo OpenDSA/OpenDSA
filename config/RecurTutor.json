@@ -220,7 +220,7 @@
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recwprog23": {
+          "recw23PROG": {
             "long_name": "Recursion Programming Exercise 23",
             "required": true,
             "points": 0.0,
@@ -429,7 +429,8 @@
             "long_name": "Recursion Tracing Exercise 13",
             "required": true,
             "points": 0.0,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "showhide": "Show"
           },
           "rectMCQfwder14": {
             "long_name": "Recursion Tracing Exercise 14",
