@@ -19,7 +19,7 @@ $(document).ready(function () {
     if (inputarray) {
       inputarray.clear();
     }
-   if (outputarray) {
+    if (outputarray) {
       outputarray.clear();
     }
     initoutput = ["", "", "", "", ""];
@@ -66,7 +66,7 @@ $(document).ready(function () {
 
     // check output
     for (var j = 0; j < outputsize; j++) {
-      outputarray.value(j, modeloutputarray.value(j));	
+      outputarray.value(j, modeloutputarray.value(j));
     }
 
     // check input
@@ -95,7 +95,7 @@ $(document).ready(function () {
 
     var modelinputlabel = modeljsav.label("Input:", {left: 650, top: 230});
     var modeloutputlabel = modeljsav.label("Output:", {left: 10, top: 230});
-    var modelinputarray = modeljsav.ds.array(initinput, {indexed: false, left: 650, top: 270}); 
+    var modelinputarray = modeljsav.ds.array(initinput, {indexed: false, left: 650, top: 270});
     var modeloutputarray = modeljsav.ds.array(initoutput, {indexed: false, left: 10, top: 270});
     modeljsav.displayInit();
     var currentoutput = 0;
@@ -113,7 +113,7 @@ $(document).ready(function () {
       modeljsav.stepOption("grade", true);
       modeljsav.step();
       // swap with last value
-      if(modeloutputarray.value(currentoutput - 1) > modelinputarray.value(currentinput)) {
+      if (modeloutputarray.value(currentoutput - 1) > modelinputarray.value(currentinput)) {
         modeljsav.umsg("<br/>...The heap now takes an input", {preserve: true});
 	//        modeljsav.effects.moveValue(modelinputarray, currentinput, modelbh, 0);
         modelbh.value(0, modelinputarray.value(currentinput));
@@ -121,7 +121,7 @@ $(document).ready(function () {
         currentinput++;
         modeljsav.stepOption("grade", true);
         modeljsav.step();
-	modeljsav.umsg("The value is too small for this run and is swapped with the end of the array");
+        modeljsav.umsg("The value is too small for this run and is swapped with the end of the array");
         modelbh.swap(0, modelbh.heapsize() - 1);
         modeljsav.stepOption("grade", true);
         modeljsav.step();
@@ -227,7 +227,7 @@ $(document).ready(function () {
       initoutput;
   var firstSelection, secondSelection;
 
-      jsav.recorded();
+  jsav.recorded();
 
   exercise = jsav.exercise(model, init,
                              { compare:  { css: "background-color" },
