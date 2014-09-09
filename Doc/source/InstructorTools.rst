@@ -61,14 +61,15 @@ OpenDSA.
 Class Activity
 --------------
 
-The ``Class Activity`` button lets you see what your students have
+The ``Assignments Activity`` button lets you see what your students have
 done.
 It shows a spreadsheet with a row for each account, and columns for
 assignments, exercises, and summed scores.
 Be aware that this table is driven by the assignments that you have
 created, **not** by what work the students have done.
-So if you want to see who has done a given exercise, you have to have
-associated that exercise with some assignment.
+
+So if you want to see who has done a given exercise, and the exercise is 
+not part of an assignment, use the ``Class activity`` button instead.
 
 The "Toggle exercises columns" controls whether you just see
 assignment total scores, or whether you see all of the details for
@@ -114,11 +115,11 @@ menu list to proceed to the next step.
 Once you have created an assignment, there are two distinct things
 that you can do with it:
 
-* Edit the assignment fields (``Edit Assignment`` button), which
+* Edit the assignment fields (``Edit assignment`` button), which
   takes you to the same form as when you created the assignment.
 
 * Modify the list of exercises associated with the assignment
-  (somewhat misnamed as the ``Add new exercise`` button).
+  (``Set exercises`` button).
 
 The page for adding exercises has two key parts: the
 ``Assignment Chapter`` field and the list of Assignment Exercises.

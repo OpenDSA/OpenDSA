@@ -25,7 +25,7 @@
       }
     },
     "Introduction": {
-      "Background/IntroDSA.rst": {
+      "Background/IntroDSA": {
         "long_name": "Introduction to Data Structures and Algorithms",
         "exercises": {
           "IntroSumm": {
