@@ -12,28 +12,9 @@
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
   <script src="../../lib/odsaStyle-min.css"></script>
    <script src="../../lib/ExAreaPROG.js"> </script>
+   <link rel= "stylesheet" href="../../lib/ExAreaPROG.css" type="text/css">
 <style>
     #problemarea { height: 600px;}
-
-    #codeTextarea{
-      width:500px;
-      height:340px;
-    }
-    .textAreaWithLines{
-      font-family:courier;      
-      border:1px solid #000;
-      
-    }
-    .textAreaWithLines textarea,.textAreaWithLines div{
-      border:0px;
-      line-height:120%;
-      height:200px;
-      font-size:12px;
-    }
-    .lineObj{
-      color: #787878 ;
-      background-color: #E8E8E8;
-    }
   </style>
 </head>
 <body>
@@ -60,19 +41,14 @@
 
 	
 }
-public static int getLast(Stack<Integer> s)
-{
+public static int getLast(Stack<Integer> s){
  int a = s.pop();
  if(s.size() == 0)
- {
   return a;
- }
- else
- {
+ else{ 
   int k = getLast(s);
   s.push(a);
-  return k;
- }
+  return k;}
 }
 </textarea></p>
 
