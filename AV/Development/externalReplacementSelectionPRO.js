@@ -1,6 +1,6 @@
-"use strict";
 /*global alert: true, ODSA */
 $(document).ready(function () {
+  "use strict";
   // Process help button: Give a full help page for this activity
   function help() {
     window.open("extRSHelpPRO.html", "helpwindow");
@@ -22,11 +22,14 @@ $(document).ready(function () {
     if (outputarray) {
       outputarray.clear();
     }
+    // Generate array and tree data
     initoutput = ["", "", "", "", ""];
     initinput = JSAV.utils.rand.numKeys(10, 100, 5);
-    initData = JSAV.utils.rand.numKeys(10, 100, nodeNum);
-    var inputlabel = jsav.label("Input:", {left: 650, top: 250});
-    var outputlabel = jsav.label("Output:", {left: 10, top: 250});
+    initData = JSAV.utils.rand.numKeys(10, 100, nodeNum); // Tree data
+    // Create labels
+    jsav.label("Input:", {left: 650, top: 250});
+    jsav.label("Output:", {left: 10, top: 250});
+    // Create arrays
     inputarray = jsav.ds.array(initinput, {indexed: false, left: 650, top: 290});
     outputarray = jsav.ds.array(initoutput, {indexed: false, left: 10, top: 290});
 
@@ -43,7 +46,14 @@ $(document).ready(function () {
     exInitInput.gen_array = initinput;
     ODSA.AV.logExerciseInit(exInitInput);
 
-    bh = jsav.ds.binheap(initData, { nodegap: 25, compare: function (a, b) { return a - b; }});
+    // Create binary heap tree
+    bh = jsav.ds.binheap(initData,
+      { nodegap: 25,
+        compare: function (a, b) {
+          return a - b;
+        }
+      });
+
     swapIndex = jsav.variable(-1);
     jsav._undo = [];
     jsav.displayInit();
@@ -85,19 +95,30 @@ $(document).ready(function () {
   }
 
   function model(modeljsav) {
-    var modelbh = modeljsav.ds.binheap(initData, {nodegap: 20, compare: function (a, b) { return a - b; }});
+    // Create binary heap tree
+    var modelbh = modeljsav.ds.binheap(initData,
+      { nodegap: 20,
+        compare: function (a, b) {
+          return a - b;
+        }
+      });
+
     modelbh.origswap = modelbh.swap; // store original heap grade function
-    // set all steps gradeable that include a swap
+    // set all steps that include a swap to be gradable
     modelbh.swap = function (ind1, ind2, opts) {
       this.origswap(ind1, ind2, opts);
       this.jsav.stepOption("grade", true);
     };
 
-    var modelinputlabel = modeljsav.label("Input:", {left: 650, top: 230});
-    var modeloutputlabel = modeljsav.label("Output:", {left: 10, top: 230});
+    // Create labels
+    modeljsav.label("Input:", {left: 650, top: 230});
+    modeljsav.label("Output:", {left: 10, top: 230});
+
+    // Create arrays
     var modelinputarray = modeljsav.ds.array(initinput, {indexed: false, left: 650, top: 270});
     var modeloutputarray = modeljsav.ds.array(initoutput, {indexed: false, left: 10, top: 270});
-    modeljsav.displayInit();
+
+    modeljsav.displayInit(); // Set initial setup for model answer
     var currentoutput = 0;
     var currentinput = 0;
 
@@ -106,18 +127,24 @@ $(document).ready(function () {
       modeljsav.umsg("We start by sending the root to the output.");
       modeljsav.step();
 
-      //      modeljsav.effects.moveValue(modelbh, 0, modeloutputarray, currentoutput);
+      // Swap values
+      // modeljsav.effects.moveValue(modelbh, 0, modeloutputarray, currentoutput);
       modeloutputarray.value(currentoutput, modelbh.value(0));
-      currentoutput++;
       modelbh.value(0, "");
+
+      currentoutput++;
       modeljsav.stepOption("grade", true);
       modeljsav.step();
+
       // swap with last value
       if (modeloutputarray.value(currentoutput - 1) > modelinputarray.value(currentinput)) {
         modeljsav.umsg("<br/>...The heap now takes an input", {preserve: true});
-	//        modeljsav.effects.moveValue(modelinputarray, currentinput, modelbh, 0);
+
+        // Swap values
+        // modeljsav.effects.moveValue(modelinputarray, currentinput, modelbh, 0);
         modelbh.value(0, modelinputarray.value(currentinput));
         modelinputarray.value(currentinput, "");
+
         currentinput++;
         modeljsav.stepOption("grade", true);
         modeljsav.step();
@@ -135,11 +162,14 @@ $(document).ready(function () {
         modeljsav.umsg("<br/>...and restore the heap property", {preserve: true});
         modelbh.heapify(1);
       }
-      else {       // normal insert
+      else { // normal insert
         modeljsav.umsg("<br/>...The heap now takes an input", {preserve: true});
-	//        modeljsav.effects.moveValue(modelinputarray, currentinput, modelbh, 0);
+
+        // Swap values
+        // modeljsav.effects.moveValue(modelinputarray, currentinput, modelbh, 0);
         modelbh.value(0, modelinputarray.value(currentinput));
         modelinputarray.value(currentinput, "");
+
         currentinput++;
         modeljsav.stepOption("grade", true);
         modeljsav.step();
@@ -157,6 +187,7 @@ $(document).ready(function () {
     }
     jsav._redo = []; // clear the forward stack, should add a method for this in lib
     var sIndex = swapIndex.value();
+
     if (sIndex === -1) { // if first click
       firstSelection = (entity === bh) ? bh : this;
       firstSelection.css(index, {"font-size": "145%"});
@@ -168,9 +199,9 @@ $(document).ready(function () {
         swapIndex.value(-1);
         firstSelection = null;
         secondSelection = null;
-      } else {    // different entities were selected
+      } else { // different entities were selected
         firstSelection.css(sIndex, {"font-size": "100%"});
-	//        jsav.effects.moveValue(firstSelection, sIndex, secondSelection, index);
+        // jsav.effects.moveValue(firstSelection, sIndex, secondSelection, index);
         secondSelection.value(index, firstSelection.value(sIndex));
         firstSelection.value(sIndex, "");
         firstSelection = null;
@@ -184,9 +215,9 @@ $(document).ready(function () {
         firstSelection.css([sIndex, index], {"font-size": "100%"});
         firstSelection.swap(sIndex, index, {});
       }
-      else {  // different entities were selected
+      else { // different entities were selected
         firstSelection.css(sIndex, {"font-size": "100%"});
-	//        jsav.effects.moveValue(firstSelection, sIndex, secondSelection, index);
+        // jsav.effects.moveValue(firstSelection, sIndex, secondSelection, index);
         secondSelection.value(index, firstSelection.value(sIndex));
         firstSelection.value(sIndex, "");
       }
@@ -216,23 +247,24 @@ $(document).ready(function () {
   // Load the interpreter created by odsaAV.js
   var interpret = ODSA.UTILS.loadConfig().interpreter;
 
-  var initData, bh,
-      settings = new JSAV.utils.Settings($(".jsavsettings")),
-      jsav = new JSAV($('.avcontainer'), {settings: settings}),
-      exercise,
-      inputarray,
-      outputarray,
-      swapIndex,
-      initinput,
-      initoutput;
+  var settings = new JSAV.utils.Settings($(".jsavsettings")),
+    jsav = new JSAV($('.avcontainer'), {settings: settings}),
+    exercise,
+    swapIndex;
+
+  var bh, inputarray, outputarray; // Data structures
+  var initData, initinput, initoutput; // Generated data
+
+
   var firstSelection, secondSelection;
 
   jsav.recorded();
 
   exercise = jsav.exercise(model, init,
-                             { compare:  { css: "background-color" },
-                               controls: $('.jsavexercisecontrols'),
-                               fix: fixState });
+    { compare: { css: "background-color" },
+      controls: $('.jsavexercisecontrols'),
+      fix: fixState
+    });
 
   $(".jsavcontainer").on("click", ".jsavbinarytree .jsavbinarynode", function () {
     var index = $(this).data("jsav-heap-index") - 1;
