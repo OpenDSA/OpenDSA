@@ -127,10 +127,10 @@ $(document).ready(function () {
       modeljsav.umsg("We start by sending the root to the output.");
       modeljsav.step();
 
-      // Swap values
-      // modeljsav.effects.moveValue(modelbh, 0, modeloutputarray, currentoutput);
-      modeloutputarray.value(currentoutput, modelbh.value(0));
-      modelbh.value(0, "");
+//      modeljsav.effects.moveValue(modelbh, 0, modeloutputarray, currentoutput);
+//      modeloutputarray.value(currentoutput, modelbh.value(0));
+//      modelbh.value(0, "");
+      modelbh.moveValue(modelbh, 0, modeloutputarray, currentoutput);
 
       currentoutput++;
       modeljsav.stepOption("grade", true);
@@ -140,10 +140,10 @@ $(document).ready(function () {
       if (modeloutputarray.value(currentoutput - 1) > modelinputarray.value(currentinput)) {
         modeljsav.umsg("<br/>...The heap now takes an input", {preserve: true});
 
-        // Swap values
-        // modeljsav.effects.moveValue(modelinputarray, currentinput, modelbh, 0);
-        modelbh.value(0, modelinputarray.value(currentinput));
-        modelinputarray.value(currentinput, "");
+//        modeljsav.effects.moveValue(modelinputarray, currentinput, modelbh, 0);
+//        modelbh.value(0, modelinputarray.value(currentinput));
+//        modelinputarray.value(currentinput, "");
+        modelbh.moveValue(modelinputarray, currentinput, modelbh, 0);
 
         currentinput++;
         modeljsav.stepOption("grade", true);
@@ -165,10 +165,10 @@ $(document).ready(function () {
       else { // normal insert
         modeljsav.umsg("<br/>...The heap now takes an input", {preserve: true});
 
-        // Swap values
-        // modeljsav.effects.moveValue(modelinputarray, currentinput, modelbh, 0);
-        modelbh.value(0, modelinputarray.value(currentinput));
-        modelinputarray.value(currentinput, "");
+//        modeljsav.effects.moveValue(modelinputarray, currentinput, modelbh, 0);
+//        modelbh.value(0, modelinputarray.value(currentinput));
+//        modelinputarray.value(currentinput, "");
+        modelbh.moveValue(modelinputarray, currentinput, modelbh, 0);
 
         currentinput++;
         modeljsav.stepOption("grade", true);
@@ -186,13 +186,13 @@ $(document).ready(function () {
       return;
     }
     jsav._redo = []; // clear the forward stack, should add a method for this in lib
-    var sIndex = swapIndex.value();
+    var prevIndex = swapIndex.value();
 
-    if (sIndex === -1) { // if first click
+    if (prevIndex === -1) { // if first click
       firstSelection = (entity === bh) ? bh : this;
       firstSelection.css(index, {"font-size": "145%"});
       swapIndex.value(index);
-    } else if (sIndex === index) {
+    } else if (prevIndex === index) {
       secondSelection = (entity === bh) ? bh : this;
       if (firstSelection === secondSelection) {
         firstSelection.css(index, {"font-size": "100%"});
@@ -200,10 +200,13 @@ $(document).ready(function () {
         firstSelection = null;
         secondSelection = null;
       } else { // different entities were selected
-        firstSelection.css(sIndex, {"font-size": "100%"});
-        // jsav.effects.moveValue(firstSelection, sIndex, secondSelection, index);
-        secondSelection.value(index, firstSelection.value(sIndex));
-        firstSelection.value(sIndex, "");
+        firstSelection.css(prevIndex, {"font-size": "100%"});
+
+//        jsav.effects.moveValue(firstSelection, prevIndex, secondSelection, index);
+//        secondSelection.value(index, firstSelection.value(prevIndex));
+//        firstSelection.value(prevIndex, "");
+        bh.moveValue(firstSelection, prevIndex, secondSelection, index);
+
         firstSelection = null;
         secondSelection = null;
         swapIndex.value(-1);
@@ -212,14 +215,16 @@ $(document).ready(function () {
     } else { // second click will swap
       secondSelection = (entity === bh) ? bh : this;
       if (firstSelection === secondSelection) {
-        firstSelection.css([sIndex, index], {"font-size": "100%"});
-        firstSelection.swap(sIndex, index, {});
+        firstSelection.css([prevIndex, index], {"font-size": "100%"});
+        firstSelection.swap(prevIndex, index, {});
       }
       else { // different entities were selected
-        firstSelection.css(sIndex, {"font-size": "100%"});
-        // jsav.effects.moveValue(firstSelection, sIndex, secondSelection, index);
-        secondSelection.value(index, firstSelection.value(sIndex));
-        firstSelection.value(sIndex, "");
+        firstSelection.css(prevIndex, {"font-size": "100%"});
+
+//        jsav.effects.moveValue(firstSelection, prevIndex, secondSelection, index);
+//        secondSelection.value(index, firstSelection.value(prevIndex));
+//        firstSelection.value(prevIndex, "");
+        bh.moveValue(firstSelection, prevIndex, secondSelection, index);
       }
       firstSelection = null;
       secondSelection = null;
@@ -254,9 +259,7 @@ $(document).ready(function () {
 
   var bh, inputarray, outputarray; // Data structures
   var initData, initinput, initoutput; // Generated data
-
-
-  var firstSelection, secondSelection;
+  var firstSelection, secondSelection; // Click handler selection structures
 
   jsav.recorded();
 

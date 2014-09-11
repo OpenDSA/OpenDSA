@@ -155,6 +155,7 @@
     this.element.attr("data-jsav-heap-size", newsize);
     return [oldsize];
   });
+
   bhproto.heapsize = function (newsize) {
     if (typeof newsize !== "undefined") {
       return this._setsize(newsize);
@@ -201,6 +202,7 @@
     }
     return false;
   };
+
   bhproto.swap = function (index1, index2, options) {
     this.arrayswap(index1, index2, options);
     if (this.options.tree) {
@@ -209,6 +211,29 @@
                                    this._treenodes[index2]);
     }
   };
+
+  bhproto.moveValue = function (fromStructure, fromIndex, toStructure, toIndex) {
+    if ((fromStructure instanceof BinaryHeap) &&
+      (toStructure instanceof JSAV._types.ds.AVArray)) {
+      // Case: From structure is a Binary Heap and To structure is an Array
+      // Set the array index to empty
+      this.arrayvalue(fromIndex, "");
+      // Move tree node value to array.
+      this.jsav.effects.moveValue(this._treenodes[fromIndex], toStructure, toIndex);
+    } else if ((toStructure instanceof BinaryHeap) &&
+      (fromStructure instanceof JSAV._types.ds.AVArray)) {
+      // Case: From structure is an Array and To structure is a Binary Heap
+      // Set binary heap array index to From structure value
+      this.arrayvalue(toIndex, fromStructure.value(fromIndex));
+      // Move From structure value into Binary Heap tree node.
+      this.jsav.effects.moveValue(fromStructure, fromIndex, this._treenodes[toIndex]);
+    } else {
+      throw "Move value function only supports moving values from a " +
+        "Binary Heap to an Array and vice versa. Any other type of data " +
+        "structures are not supported yet.";
+    }
+  };
+
   bhproto.insert = function (val) {
     var i = this.heapsize() + 1,
       parent = Math.floor(i / 2),
