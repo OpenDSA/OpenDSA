@@ -227,6 +227,9 @@
       this.arrayvalue(toIndex, fromStructure.value(fromIndex));
       // Move From structure value into Binary Heap tree node.
       this.jsav.effects.moveValue(fromStructure, fromIndex, this._treenodes[toIndex]);
+    } else if (!(fromStructure instanceof BinaryHeap) && !(toStructure instanceof BinaryHeap)) {
+      // Case: Neither structure is of binary heap type.
+      this.jsav.effects.moveValue(fromStructure, fromIndex, toStructure, toIndex);
     } else {
       throw "Move value function only supports moving values from a " +
         "Binary Heap to an Array and vice versa. Any other type of data " +
