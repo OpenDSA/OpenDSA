@@ -1,12 +1,12 @@
 {
   "translations": {
     "en": {
-      ".exerciseTitle": "Analysis of Iterative Code",
+      ".exerciseTitle": "Running Time of Iterative Algorithms",
       ".instructLabel": "Instructions:",
       ".instructions": "Analyse the worst case running time of the following program fragments. Select the most tight upper bound for n. Rank the program fragments by order of growth, from the lowest rate of growth to the highest rate of growth. Note that if the functions are used to measure running time, then low rates of growth correspond to faster running times for large N, so that f<sub>1</sub>(N) &lt; f<sub>2</sub>(N) &lt; ... &lt; f<sub>10</sub>(N)."
     },
     "fi": {
-      ".exerciseTitle": "Iteratiivisen koodin analyysi",
+      ".exerciseTitle": "Iteratiivisen koodin aikakompleksisuus",
       ".instructLabel": "Ohjeet:",
       ".instructions": "Analysoi seuraavien ohjelmanpätkien pahimman tapauksen aikavaatimus iso O -notaatiossa ja valitse tiukin yläraja, kun syötteen koko on n. Laita ohjelmanpätkät niiden kasvunopeuden mukaiseen järjestykseen hitaimmasta nopeimpaan. Huomaa, että jos funktiot kuvaisivat algoritmien suoritusaikaa, niin hitaimman kasvunopeuden omaava funktio vastaa nopeinta suoritusaikaa siten, että suurilla N:n arvoilla f<sub>1</sub>(N) &lt; f<sub>2</sub>(N) &lt; ... &lt; f<sub>10</sub>(N)."
     }

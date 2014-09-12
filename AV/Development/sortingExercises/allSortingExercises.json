@@ -10,8 +10,8 @@
     "all": [
       "orderOfGrowth",
       "orderOfGrowthEasy",
-      "analysisOfIterativeCode",
-      "analysisOfRecursiveCode",
+      "recurrences",
+      "runningTimeOfIterativeAlgorithms",
       "runningTimeOfRecursiveAlgorithms"
     ]
   }
