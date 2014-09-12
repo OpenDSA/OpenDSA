@@ -15,8 +15,8 @@
   "code" : {
     "processing": {
       "url": "../../SourceCode/Processing/Binary/BST.pde",
-      "startAfter": "/* *** ODSATag: deletemax *** */",
-      "endBefore": "/* *** ODSAendTag: deletemax *** */",
+      "startAfter": "/* *** ODSATag: removehelp *** */",
+      "endBefore": "/* *** ODSAendTag: removehelp *** */",
       "tags": {}
     }
   }
