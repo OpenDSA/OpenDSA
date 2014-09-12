@@ -207,7 +207,7 @@ All are required unless otherwise specified.
 
   * **hidden** - This is an optional field to signal the preprocessor to not display the content of the chapter in the TOC. The configuration script will add the new directive ``odsatoctree``. The flagged chapters entries in the TOC will be of class ``hide-from-toc``, and will be removed by a CSS rule in odsaMOD.css file.
 
-  * Modules
+  * **Modules**
 
     * The key relating to each module object must correspond with a path to an RST file found in ~OpenDSA/RST/source/ or a sub-directory
     * If a module contains no exercises, it should still contain a key "exercises" with a value of an empty object

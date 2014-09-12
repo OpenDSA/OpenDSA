@@ -152,7 +152,16 @@ for more complex traversals it can become awkward to place the check
 for the ``null`` pointer in the calling code.
 Even here we had to write two tests for ``null``,
 rather than the one needed by ``preorder``.
-The more important concern with ``preorder2`` is that it
+The key point is that it is much easier to write a recursive function
+on a tree when we only think about the needs of the current node.
+Whenever we can, we want to let the children take care of themselves.
+In this case, we care that the current node is not null, and we care
+about how to invoke the recursion on the children, but we do **not**
+want to care about how or when that is done.
+Looking at the children to see if they are null means that we are
+worrying too much about something that can be dealt with just as well
+by the children.
+The second concern with ``preorder2`` is that it
 tends to be error prone.
 While ``preorder2`` insures that no recursive
 calls will be made on empty subtrees, it will fail if the initial call
@@ -160,8 +169,9 @@ passes in a ``null`` pointer.
 This would occur if the original tree is empty.
 To avoid the bug, either ``preorder2`` needs
 an additional test for a ``null`` pointer at the beginning
-(making the subsequent tests redundant after all), or the caller of
-``preorder2`` has a hidden obligation to
+(making the subsequent tests on the children redundant after all
+because they will just repeat the test),
+or the caller of ``preorder2`` has a hidden obligation to
 pass in a non-empty tree, which is unreliable design.
 The net result is that many programmers forget to test for the
 possibility that the empty tree is being traversed.
