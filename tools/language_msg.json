@@ -210,5 +210,58 @@
       "points": "Poäng",
       "chapter": "Kapitel"
     }
+  },
+  "pt": {
+    "jinja": {
+      "register": "Register",
+      "login": "Login",
+      "logout": "Logout",
+      "about": "About",
+      "close": "Close Window",
+      "tofc": "Table Of Contents",
+      "the_book": "the book",
+      "username": "Username",
+      "password": "Password",
+      "password_confirm": "Confirm Password",
+      "email": "Email",
+      "username_email": "Username or email",
+      "sign_in": "Sign in",
+      "password_forget": "Forgot your password?",
+      "about_msg": "Created as part of the OpenDSA hypertextbook project. For more information, see. JSAV library version",
+      "contact": "Contact Us",
+      "privacy": "Privacy",
+      "license": "License",
+      "report_bug": "Report a bug",
+      "summary": "Summary",
+      "os": "Operating system",
+      "browser": "Browser",
+      "description": "Description",
+      "screenshot": "Attach a screenshot (optional)",
+      "submit": "Submit",
+      "login_warn": "You must be logged in to receive credit",
+      "login_error": "Incorrect username / password combination",
+      "bug_desc": "***BUG** Please enter: (1) a consice description of the problem. (2) steps to reproduce bug. (3) the version of your browser and operating system."
+    },
+    "js": {
+      "project_msg": " \nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nJSAV library version ",
+      "session_expired": "Your current session has expired.",
+      "session_invalid": "Your account has been logged in on another computer and the\n current session is no longer valid. Please login again to continue.",
+      "account_disabled": "This account has been disabled",
+      "server_down": "Login failed because the server could not be contacted. If the problem persists, please contact the OpenDSA team.",
+      "login_fail": "Login failed",
+      "credential_warn": "Please enter your username and password",
+      "bug_ack": "Your bug/feedback has been successfully submitted.\n Thank You",
+      "hide": "Hide",
+      "show": "Show",
+      "no_reply_server": "The server did not respond.  Please try again later.",
+      "assignment": "Assignment",
+      "due_date": "Due Date",
+      "score": "Score",
+      "total": "Total",
+      "no_exercises":"There are no exercises in this section",
+      "exercises": "Exercises",
+      "points": "Points",
+      "chapter": "Chapter"
+    }
   }
 }

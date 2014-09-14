@@ -5,9 +5,6 @@
   "code_lang": {"C++": ["cpp", "h"], "Processing": ["pde"]},
   "lang": "pt",
   "module_origin": "http://algoviz.org",
-  "exercise_server": "https://opendsa.cc.vt.edu/",
-  "logging_server": "https://opendsa.cc.vt.edu/",
-  "score_server": "https://opendsa.cc.vt.edu/",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
@@ -21,7 +18,7 @@
         "sections": {
           "MergeSortAnalysis": {
             "long_name": "Merge Sort Analysis Discussion",
-            "showhide": "hide"
+            "showhide": "none"
           }
         },
         "exercises": {

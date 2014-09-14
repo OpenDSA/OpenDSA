@@ -27,9 +27,9 @@ apresentando boa performance, tanto em termos assintóticos quanto em termos
 de desempenho empírico.
 Infelizmente, embora esteja baseado num conceito simples, é relativamente
 complicado de implementar na prática.
-Aqui temos um pseudocódigo do Mergesort:
+Aqui temos um pseudocódigo do Mergesort::
 
- List mergesort(List inlist) {
+    List mergesort(List inlist) {
       if (inlist.length() <= 1) return inlist;;
       List L1 = half of the items from inlist;
       List L2 = other half of the items from inlist;
@@ -46,9 +46,9 @@ entre eles para se tornar o menor da lista.
 Esse primeiro menor valor é removido de sua sublista e colocado na lista de saída.
 A mesclagem continua dessa maneira, comparando os valores frontais de cada sublista
 e continuamente adicionando o menor à lista de saída até que não reste nenhum.
-Aqui está o pseudocódigo de mesclagem de listas:
+Aqui está o pseudocódigo de mesclagem de listas::
 
-List merge(List L1, List L2) {
+    List merge(List L1, List L2) {
       List answer = new List();
       while (L1 != NULL || L2 != NULL) {
         if (L1 == NULL) { // Done L1
