@@ -197,13 +197,19 @@
         {%- if logo -%}
           <img class="leftlogo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>
         {%- endif -%}
-        <h1 class="heading" ><a href="{{ pathto('index') }}">
-          <span style="margin-left: 60px;">{{ shorttitle|e }}</span></a></h1>
-        {%- if pagename=="index" -%}
-        <h2 class="heading" ><span  style="margin-left: 60px;"> {{ tofc }} </span></h2>
-        {%- else %}
-          <h2 class="heading" ><span  style="margin-left: 60px;">{{ chapter_items[pagename] }}</span></h2>
-        {%- endif %}
+        <div class="title-wrapper">
+          <div class="title-inbetween" style="display: table-cell; vertical-align: middle;">
+            <div class="title-content">
+              <h1 class="heading" ><a href="{{ pathto('index') }}">
+                <span>{{ shorttitle|e }}</span></a></h1>
+              {%- if pagename=="index" -%}
+              <h2 class="heading" ><span> {{ tofc }} </span></h2>
+              {%- else %}
+              <h2 class="heading" ><span>{{ chapter_items[pagename] }}</span></h2>
+              {%- endif %}
+            </div>
+          </div>
+        </div>
 
         {%- endif %}
         {%- endblock %}
