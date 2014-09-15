@@ -58,7 +58,7 @@ min: nomin
 Tutorial: min
 	python $(CONFIG_SCRIPT) config/Tutorial.json
 
-TDDD_2014: min
+TDDD86_2014: min
 	python $(CONFIG_SCRIPT) config/TDDD86_2014.json
 
 good: min
