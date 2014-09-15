@@ -4,7 +4,7 @@ TARGET = build
 CSSLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 MINIMIZE = java -jar tools/yuicompressor-2.4.7.jar --nomunge
 
-.PHONY: all clean lint csslint jshint min CS2114 CS223 CS5114 CS3114 CS3114notes CS150 OpenDSA test IS allBooks nomin pull CS2401 COP3530 CS208 Tutorial
+.PHONY: all clean lint csslint jshint min CS2114 CS223 CS5114 CS3114 CS3114notes CS150 OpenDSA test IS allBooks nomin pull CS2401 COP3530 CS208 Tutorial TDDD86_2014
 
 all: lint
 
@@ -57,6 +57,9 @@ min: nomin
 
 Tutorial: min
 	python $(CONFIG_SCRIPT) config/Tutorial.json
+
+TDDD_2014: min
+	python $(CONFIG_SCRIPT) config/TDDD86_2014.json
 
 good: min
 	python $(CONFIG_SCRIPT) config/good.json
