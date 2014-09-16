@@ -210,5 +210,58 @@
       "points": "Poäng",
       "chapter": "Kapitel"
     }
+  },
+  "pt": {
+    "jinja": {
+      "register": "Registro",
+      "login": "Login",
+      "logout": "Logout",
+      "about": "Sobre",
+      "close": "Fechar Janela",
+      "tofc": "Conteúdo",
+      "the_book": "O livro",
+      "username": "Nome de Usuário",
+      "password": "Senha",
+      "password_confirm": "Repita a Senha",
+      "email": "Email",
+      "username_email": "Nome de Usuário ou email",
+      "sign_in": "Sign in",
+      "password_forget": "Esqueceu sua senha?",
+      "about_msg": "Criado como parte do projeto OpenDSA hypertextbook. Para maiores informações, veja. JSAV library version",
+      "contact": "Entre em Contato",
+      "privacy": "Privacidade",
+      "license": "Licença",
+      "report_bug": "Reportar um erro",
+      "summary": "Sumário",
+      "os": "Sistema Operacional",
+      "browser": "Navegador",
+      "description": "Descrição",
+      "screenshot": "Anexar uma imagem (opcional)",
+      "submit": "Enviar",
+      "login_warn": "Você precisa estar logado para receber créditos.",
+      "login_error": "Nome de usuário / senha incorretos.",
+      "bug_desc": "***BUG** Por favor informe: (1) Uma descrição concisa do problema. (2) Passos para reproduzir o erro. (3) A versão do seu navegador e sistema operacional."
+    },
+    "js": {
+      "project_msg": " \nCriado como parte do projeto OpenDSA hypertextbook.\nPara maiores informações, veja. http://algoviz.org/OpenDSA\nJSAV library version ",
+      "session_expired": "Sua sessão expirou.",
+      "session_invalid": "Sua conta está logada em outro computador \ne essa sessão não é mais válida. Por favor, faça outro login para continuar.",
+      "account_disabled": "Essa conta foi desabilitada.",
+      "server_down": "Login falhou porque o servidor não pode ser contactado. Se o problema persistir, por favor entre em contato com a equipe do OpenDSA.",
+      "login_fail": "Login falhou.",
+      "credential_warn": "Por favor, entre com seu nome de usuário e senha.",
+      "bug_ack": "Seu bug/feedback foi enviado com sucesso.\n Obrigado.",
+      "hide": "Ocultar",
+      "show": "Mostrar",
+      "no_reply_server": "O servidor não responde.  Por favor, tente mais tarde.",
+      "assignment": "Tarefa",
+      "due_date": "Prazo",
+      "score": "Pontuação",
+      "total": "Total",
+      "no_exercises":"Não há exercícios nessa seção.",
+      "exercises": "Exercícios",
+      "points": "Pontos",
+      "chapter": "Capítulo"
+    }
   }
 }
