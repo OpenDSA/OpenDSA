@@ -304,7 +304,7 @@
   });
 
   var exercise = av.exercise(modelSolution, initialize, {
-    compare: {css: "background-color"},
+    compare: [{class: "jsavhighlight"}],
     feedback: "atend",
     modelDialog: {width: 780}
   });

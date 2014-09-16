@@ -29,7 +29,7 @@
       ".exerciseTitle": "Interpolaatiohaku",
       ".instructLabel": "Ohjeet:",
       ".instructions": "Simuloi Interpolaatiohakua seuraamalla alla annettuja ohjeita. Taulukon päällä oleva sininen suora esittää etsittävän avaimen arvoa.",
-      "#returnlabel": "Palautus arvo: ",
+      "#returnlabel": "Paluuarvo: ",
       "#returnbutton": "Return",
       "#returndone": "Palautettu!",
       "av_find_label": "Etsi",
