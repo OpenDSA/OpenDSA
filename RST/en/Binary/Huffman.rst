@@ -9,7 +9,7 @@
    :satisfies: Huffman coding tree
    :topic: BinTreeImp
 
-.. odsalink:: AV/DS/huffman.css
+.. odsalink:: DataStructures/huffman.css
 .. odsalink:: AV/Binary/huffmanCON.css
 
 .. index:: ! Huffman
