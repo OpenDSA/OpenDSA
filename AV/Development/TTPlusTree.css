@@ -1,0 +1,22 @@
+
+.leaf-node li {
+    background-color: #BBDFF2;
+}
+
+.leaf-node-value {
+    background-color: #EB96AE;
+}
+
+.jsavarray {
+    margin: 0;
+}
+
+.highlight-edge {
+    /*stroke: #FF0 !important;*/
+    stroke-width: 4.0
+}
+
+.jsavcanvas {
+    height: 300px;
+    min-height: 300px;
+}
