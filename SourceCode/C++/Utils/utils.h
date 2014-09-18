@@ -3,6 +3,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <time.h>  // Used by timing functions
+#include <algorithm>
 
 // Now all the standard names that we use
 using std::cout;
@@ -12,6 +13,8 @@ using std::ostream;
 
 using std::fstream;
 using std::ios;
+
+using std::sort;
 
 // Random number generator functions
 inline void Randomize() // Seed the generator
