@@ -2,6 +2,43 @@
   "use strict";
   var global = window.ttplustree = {};
 
+  global.leafArrows = [];
+  global.leafList = [];
+
+  global.drawLeafArrows = function (jsav) {
+    // Add as many elements to the leafs arrows arrays as there are leafs
+    while (global.leafArrows.length !== global.leafList.length) {
+      if (global.leafArrows.length < global.leafList.length) {
+        global.leafArrows.push(null);
+      } else if (global.leafArrows.length > global.leafList.length) {
+        var edge = global.leafArrows.pop();
+        if (edge) {
+          edge.hide();
+        }
+      }
+    }
+
+    // Draw the arrows
+    for (var i = 0; i < global.leafList.length - 1; i++) {
+      var p1 = $(global.leafList[i].array.element).position();
+      var p2 = $(global.leafList[i + 1].array.element).position();
+      var w1 = $(global.leafList[i].array.element).outerWidth();
+      var h1 = $(global.leafList[i].array.element).outerHeight();
+      var h2 = $(global.leafList[i + 1].array.element).outerHeight();
+
+      var x1 = p1.left + w1,
+        y1 = p1.top + (h1 / 2),
+        x2 = p2.left,
+        y2 = p2.top + (h2 / 2);
+
+      if (!global.leafArrows[i]) {
+        global.leafArrows[i] = jsav.g.line(x1, y1, x2, y2, {"arrow-end": "classic", "stroke-width": 3.0});
+      } else {
+        global.leafArrows[i].movePoints([[0, x1, y1], [1, x2, y2]]);
+      }
+    }
+  };
+
   global.newNode = function (jsav, keys, isLeaf, values) {
     if (isLeaf) {
       for (var i = 0; i < keys.length; i++) {
@@ -52,6 +89,18 @@
     this.drawEdge(this.children.length - 1);
   };
 
+  nodeproto.removeChild = function (idx) {
+    // Remove child and edge
+    var child = this.children.splice(idx, 1);
+    var edge = this.edges.splice(idx, 1);
+    // Hide edge
+    if (edge[0]) {
+      edge[0].hide();
+    }
+    // Return child
+    return child[0];
+  };
+
   nodeproto.drawEdge = function (child_idx) {
     // Calculate edge position
     var pos = $(this.array.element).position();
@@ -65,16 +114,16 @@
     var left_off = ($(this.array.element).outerWidth() / $(this.array.element).children('li').size()) * child_idx;
     var top_off = $(this.array.element).outerHeight();
     x1 += left_off;
-    y1 += top_off - 2;
+    y1 += top_off;
     x2 += $(this.children[child_idx].array.element).outerWidth() / 2;
     y2 += 2;
 
     if (child_idx === 0) {
-      x1 += 3;
-      y1 -= 3;
+      x1 += 2;
+      y1 -= 1;
     } else if (child_idx === 2) {
-      x1 -= 3;
-      y1 -= 3;
+      x1 -= 2;
+      y1 -= 1;
     }
 
     // Set edge to right position

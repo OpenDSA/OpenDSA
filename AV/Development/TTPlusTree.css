@@ -20,3 +20,32 @@
     height: 300px;
     min-height: 300px;
 }
+
+.jsavarray, .jsavarray .jsavnode {
+    min-height: 30px;
+    height: 30px;
+    min-width: 35px;
+    width: 35px
+}
+
+.jsavarray.leaf-node, .jsavarray.leaf-node .jsavnode {
+    min-height: 45px;
+    height: 45px;
+}
+
+.jsavnode .jsavvalue {
+    height: 30px;
+    line-height: 30px;
+}
+
+.leaf-node .jsavnode .jsavvalue {
+    line-height: 17px;
+}
+
+.insert-label {
+    display: block;
+    width: 3.5em;
+    position: relative;
+    font-size: 1.3em;
+    margin: 0;
+}
