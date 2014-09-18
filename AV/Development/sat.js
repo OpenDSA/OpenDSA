@@ -198,8 +198,20 @@ $(document).ready(function () {
   }
   mat3.show();
   mat4.show();
+//slide 9
 
+  av.step();
+  av.umsg("<b>3 SAT</b>");
+  mat3.hide();
+  mat4.hide();
+  label1.hide();
+  label2.hide();
+  label3.hide();
+  label1 = av.label("Size of the truth table is 2<sup>n</sup> where n is the number of boolean variables involved ",{top: y+20,left:150}).css({"text-align": "center"}); 
+  label1.show();
+  label2 = av.label("Hence the problem gets exponentially harder as number of variables increase ",{top: y+80,left:150}).css({"text-align": "center"}); 
 
+  label2.show();
 
   av.recorded();
 });
