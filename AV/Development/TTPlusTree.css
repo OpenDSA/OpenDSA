@@ -1,4 +1,13 @@
 
+.jsavcanvas {
+    height: 300px;
+    min-height: 300px;
+}
+
+.jsavoutput {
+    min-height: 55px;
+}
+
 .leaf-node li {
     background-color: #BBDFF2;
 }
@@ -14,11 +23,6 @@
 .highlight-edge {
     /*stroke: #FF0 !important;*/
     stroke-width: 4.0
-}
-
-.jsavcanvas {
-    height: 300px;
-    min-height: 300px;
 }
 
 .jsavarray, .jsavarray .jsavnode {

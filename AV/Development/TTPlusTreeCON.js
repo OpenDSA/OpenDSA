@@ -37,10 +37,10 @@
     "The lowest key (65) of the new node has to be promoted",
     "The parent node is full however.",
     "The parent node has to be split.",
-    "A new root has to be created.",
     "The middle (65) and highest (71) key go to the new node. The lowest key (46) stays in the old node.",
     "Now update the pointers.",
     "The middle key (52) of the internal node now has to be promoted",
+    "A new root has to be created.",
     "The new root is empty.",
     "The key can be inserted here.",
     "And the pointers are updated."
@@ -80,7 +80,7 @@
 
   // Slide 3
   av.effects.moveValue(ins.array, 0, n1.array, 0);
-  step();
+  step();2
 
   // Slide 4
   ins.value(0, "46", "X");
@@ -256,43 +256,44 @@
   n3.updateEdges();
   step();
 
-  // Slide 33
-  var n7 = global.newNode(av, ["", ""], false, ["", ""]);
-  n3.child(0).move(0, nvg);
-  n3.child(1).move(0, nvg);
-  n3.child(2).move(0, nvg);
-  n3.move(0, nvg);
-  n5.move(0, nvg);
-  n6.move(0, nvg);
-  n3.updateEdges();
-  global.drawLeafArrows(av);
-  step();
-
-  // Slide 31
+  // Slide 34
   av.effects.moveValue(n3.array, 1, n6.array, 0);
   n6.value(1, 65);
   step();
 
-  // Slide 32
+  // Slide 35
   var child = n3.removeChild(2);
   n6.addChild(child);
   n6.addChild(n5);
   n6.updateEdges();
   step();
 
-  // Slide 33
+  // Slide 36
   step();
 
-  // Slide 34
+  // Slide 33
+  var n7 = global.newNode(av, ["", ""], false, ["", ""]);
+  n3.child(0).move(0, nvg);
+  n3.child(1).move(0, nvg);
+  n6.child(0).move(0, nvg);
+  n6.child(1).move(0, nvg);
+  n3.move(0, nvg);
+  n6.move(0, nvg);
+  n3.updateEdges();
+  n6.updateEdges();
+  global.drawLeafArrows(av);
+  step();
+
+  // Slide 37
   n7.highlightToggle();
   step();
 
-  // Slide 35
+  // Slide 38
   n7.highlightToggle();
   n7.value(0, "52");
   step();
 
-  // Slide 36
+  // Slide 39
   n7.addChild(n3);
   n7.addChild(n6);
   n7.updateEdges();
