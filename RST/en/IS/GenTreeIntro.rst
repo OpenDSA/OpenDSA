@@ -8,6 +8,8 @@
    :prerequisites:
    :topic: General Trees
 
+.. odsalink:: AV/Development/GenTreeCON.css
+
 General Trees
 =============
 
@@ -75,12 +77,8 @@ generalized from the notation for binary trees.
 
 .. _GenTreeFig:
 
-.. odsafig:: Images/GTreeFig.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Notation for general trees
+.. inlineav:: GenTreeCON dgm
+   :align: justify
 
    Notation for general trees.
    Node :math:`P` is the parent of nodes :math:`V`, :math:`S1`,
@@ -186,3 +184,4 @@ to the next child until calling	``next`` returns ``null``.
 
 .. codeinclude:: General/GenTree
    :tag: GenTreePrint
+.. odsascript:: AV/Development/GenTreeCON.js

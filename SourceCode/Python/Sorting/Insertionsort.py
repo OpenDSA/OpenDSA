@@ -71,14 +71,17 @@ def sorttime(B):
   print "Python'y Insertion Sort with shift: Size ", testsize, ", Time: ", totaltime
 
 # Instead of swapping, "shift" the values down the array
+# /* *** ODSATag: Insertionsort shift *** */
 def inssortshift(A):
-  for i in range(1, len(A)-1): # Insert i'th record
+  for i in range(1, len(A)): # Insert i'th record
     temp = A[i]
     j=i
     while (j > 0) and (temp < A[j-1]):
       A[j] = A[j-1]
       j -= 1
     A[j] = temp
+# /* *** ODSAendTag: Insertionsort shift *** */
+
 
 # Same as inssortshift, but try != instead of < for the zero test
 # This will only matter to JavaScript
@@ -127,6 +130,7 @@ def myinssort(A):
 
 # Instead of swapping, "shift" the values down the array
 # Try to make it more "native" python
+# SOLUTION BELOW NOT WORKING
 def inssortshiftpy(A):
   for i in range(1, len(A)-1): # Insert i'th record
     temp = A[i]
@@ -135,3 +139,4 @@ def inssortshiftpy(A):
         break
       A[j] = A[j-1]
     A[j-1] = temp
+# SOLUTION ABOVE NOT WORKING

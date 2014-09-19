@@ -11,13 +11,13 @@ $(document).ready(function () {
       var key = trees[i].root().freq;
       var tmpTree = trees[i];
       var j = i - 1;
-      while(j >= 0 && key < trees[j].root().freq) {
+      while (j >= 0 && key < trees[j].root().freq) {
         trees[j + 1] = trees[j];
         j--;
       }
       trees[j + 1] = tmpTree;
     }
-  }
+  };
 
   // Shuffle the array by moving left
   var shuffle = function (trees) {
@@ -25,10 +25,10 @@ $(document).ready(function () {
       trees[i] = trees[i + 2];
     }
     trees.length -= 2;
-  }
+  };
 
   // traverse to reset background color of the entire tree
-  var traverse_color = function(node) {
+  var traverse_color = function (node) {
     var val = node.value();
 
     // the node is an empty node
@@ -47,10 +47,10 @@ $(document).ready(function () {
         node.addClass("huffmanleaf");
       }
     }
-  }
+  };
 
   // traverse one tree and copy all its nodes to another tree
-  var traverse_copy = function(startNode, treeOne, treeTwoRoot) {
+  var traverse_copy = function (startNode, treeOne, treeTwoRoot) {
     var val = treeTwoRoot.value();
     var freq = treeTwoRoot.freq;
 
@@ -78,35 +78,35 @@ $(document).ready(function () {
         traverse_copy(rchild, treeOne, treeTwoRoot.right());
       }
     }
-  }
+  };
 
   // Layout all the trees
-  var layAll = function(trees) {
+  var layAll = function (trees) {
     var leftSoFar = 30;
     for (var i = 0; i < trees.length; i++) {
-      trees[i].css({"left": leftSoFar, "top":"-40px"});
+      trees[i].css({"left": leftSoFar, "top": "-40px"});
       traverse_color(trees[i].root());
       trees[i].layout();
       leftSoFar += trees[i].element.width() + 50;
     }
-  }
+  };
 
   // Hide all the trees
-  var hideAll = function(trees) {
+  var hideAll = function (trees) {
     for (var i = 0; i < trees.length; i++) {
       trees[i].hide();
     }
-  }
+  };
 
   // Show all the trees
-  var showAll = function(trees) {
+  var showAll = function (trees) {
     for (var i = 0; i < trees.length; i++) {
       trees[i].show();
     }
-  }
+  };
 
   // Set or clear the highlights from a specific leaf node to the root
-  var highlight_path = function(aLeafNode, highlight) {
+  var highlight_path = function (aLeafNode, highlight) {
     if (highlight) {
       aLeafNode.highlight();
     } else {
@@ -115,7 +115,7 @@ $(document).ready(function () {
     if (aLeafNode.parent()) {
       highlight_path(aLeafNode.parent(), highlight);
     }
-  }
+  };
 
   // Construct the Huffman coding tree without visualization
   // This is rather inefficent and should be re-written
@@ -150,7 +150,7 @@ $(document).ready(function () {
       shuffle(trees);
       sortArray(trees);
     }
-  }
+  };
 
   // Construct the Huffman coding tree with visualization
   // This is rather inefficent and should be re-written
@@ -199,10 +199,10 @@ $(document).ready(function () {
       layAll(trees);
       av.step();
     }
-  }
+  };
 
   // Add "0" or "1" to the label of edges with animation
-  var setLabels_animated = function(av, interpret, tree, subroot) {
+  var setLabels_animated = function (av, interpret, tree, subroot) {
     if (subroot.left()) {
       av.umsg(interpret("av_c29") + subroot.freq + "\".");
       subroot.edgeToLeft().label(0);
@@ -219,10 +219,10 @@ $(document).ready(function () {
     } else {
       return;
     }
-  }
+  };
 
   // Add "0" or "1" to the label of edges without animation
-  var setLabels = function(tree, subroot) {
+  var setLabels = function (tree, subroot) {
     if (subroot.left()) {
       subroot.edgeToLeft().label(0);
       setLabels(tree, subroot.left());
@@ -233,13 +233,14 @@ $(document).ready(function () {
     } else {
       return;
     }
-  }
+  };
 
   // Find the Huffman Code for a specific leaf node
-  var leafCode = function(aLeafNode) {
+  var leafCode = function (aLeafNode) {
     var leafVal = aLeafNode.value();
-    if (!leafVal || leafVal === "jsavnull")
+    if (!leafVal || leafVal === "jsavnull") {
       return;
+    }
     else {
       if (aLeafNode.parent()) {
         var parent = aLeafNode.parent();
@@ -259,10 +260,10 @@ $(document).ready(function () {
         return;
       }
     }
-  }
+  };
 
   // Find and return the leaf node with a specific value
-  var findNode = function(node, anValue) {
+  var findNode = function (node, anValue) {
     var val = node.freq;
     var temp;
     // Looking for (only) a leaf node that matches
@@ -285,10 +286,10 @@ $(document).ready(function () {
       }
       return null;
     }
-  }
+  };
 
   // find the Huffman codes for all leaf nodes with animation
-  var showCodes_animated = function(av, interpret, freqs, chars, codeArr, tree) {
+  var showCodes_animated = function (av, interpret, freqs, chars, codeArr, tree) {
     var aLeaf;
     for (var i = 0; i < freqs.length; i++) {
       aLeaf = findNode(tree.root(), freqs[i]);
@@ -304,7 +305,7 @@ $(document).ready(function () {
       av.step();
       highlight_path(aLeaf, false);
     }
-  }
+  };
 
   // Publicize the public functions
   var huff = {};

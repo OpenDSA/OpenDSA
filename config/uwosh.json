@@ -4,12 +4,19 @@
   "code_dir": "SourceCode/",
   "code_lang": {"Javascript": ["js"]},
   "module_origin": "http://algoviz.org",
-  "backend_address": "https://opendsa.cc.vt.edu/",
+  "exercise_server": "https://opendsa.cc.vt.edu/",
+  "logging_server": "https://opendsa.cc.vt.edu/",
+  "score_server": "https://opendsa.cc.vt.edu/",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
   "chapters": {
-    "UWO Algorithms": {
+    "UWOshkosh Materials": {
+      "Development/LambdaCalculus": {
+        "long_name": "Current Work on Lambda Calculus",
+        "exercises": {
+  }
+      },
       "Development/StringSearchKMP": {
         "long_name": "Current Work on KMP String Search",
         "exercises": {

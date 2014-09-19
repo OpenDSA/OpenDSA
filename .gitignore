@@ -27,5 +27,5 @@ lib/khan-exercises/exercises/khan-site.html
 # Minified JS and CSS files
 lib/*-min.*
 
-# File used by webstorm to store project settings.
+# File used by JetBrains IDE's to store project settings.
 .idea

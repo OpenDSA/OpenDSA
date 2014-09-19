@@ -26,7 +26,7 @@ error_count = 0
 
 required_fields = ['chapters', 'code_lang', 'module_origin', 'title']
 
-optional_fields = ['allow_anonymous_credit', 'assumes', 'av_origin', 'av_root_dir', 'backend_address', 'build_cmap', 'build_dir', 'build_JSAV', 'code_dir', 'exercise_origin', 'exercises_root_dir', 'glob_mod_options', 'glob_exer_options', 'lang', 'req_full_ss', 'start_chap_num', 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir']
+optional_fields = ['allow_anonymous_credit', 'assumes', 'av_origin', 'av_root_dir', 'build_cmap', 'build_dir', 'build_JSAV', 'code_dir', 'exercise_origin', 'exercises_root_dir', 'exercise_server', 'glob_mod_options', 'glob_exer_options', 'lang', 'logging_server', 'req_full_ss', 'score_server', 'start_chap_num', 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir']
 
 lang_file = os.path.abspath('tools/language_msg.json')
 
@@ -230,8 +230,8 @@ def validate_config_file(config_file_path, conf_data):
   validate_origin(conf_data['module_origin'], 'module')
 
   # Ensure optional fields are configured properly
-  if 'backend_address' in conf_data and conf_data['backend_address'] != '' and not conf_data['backend_address'].startswith('https'):
-    print_err('WARNING: "backend_address" should use HTTPS')
+  if 'score_server' in conf_data and conf_data['score_server'] != '' and not conf_data['score_server'].startswith('https'):
+    print_err('WARNING: "score_server" should use HTTPS')
 
   if 'av_origin' in conf_data:
     validate_origin(conf_data['av_origin'], 'av')
@@ -325,12 +325,22 @@ def set_defaults(conf_data):
   if 'av_root_dir' not in conf_data:
     conf_data['av_root_dir'] = odsa_dir
 
-  # If no backend address is specified, use an empty string to specify a disabled server
-  if 'backend_address' not in conf_data:
-    conf_data['backend_address'] = ''
+  # If no exercise_server is specified, use an empty string to specify a disabled server
+  if 'exercise_server' not in conf_data:
+    conf_data['exercise_server'] = ''
 
-  # Strip the '/' from the end of the SERVER_URL
-  conf_data['backend_address'] = conf_data['backend_address'].rstrip('/')
+  # If no logging_server is specified, use an empty string to specify a disabled server
+  if 'logging_server' not in conf_data:
+    conf_data['logging_server'] = ''
+
+  # If no score_server is specified, use an empty string to specify a disabled server
+  if 'score_server' not in conf_data:
+    conf_data['score_server'] = ''
+
+  # Strip the '/' from the end of the server URLs
+  conf_data['exercise_server'] = conf_data['exercise_server'].rstrip('/')
+  conf_data['logging_server'] = conf_data['logging_server'].rstrip('/')
+  conf_data['score_server'] = conf_data['score_server'].rstrip('/')
 
   if 'build_dir' not in conf_data:
     conf_data['build_dir'] = 'Books'

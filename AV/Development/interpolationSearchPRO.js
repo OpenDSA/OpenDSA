@@ -17,7 +17,7 @@
     config = ODSA.UTILS.loadConfig({'av_container': 'jsavcontainer'}),
     interpret = config.interpreter,
     code = config.code,
-    av = new JSAV($("#jsavcontainer"));
+    av = new JSAV($("#jsavcontainer"), {autoresize: false});
 
 
   av.recorded(); // we are not recording an AV with an algorithm
@@ -304,7 +304,7 @@
   });
 
   var exercise = av.exercise(modelSolution, initialize, {
-    compare: {css: "background-color"},
+    compare: [{class: "jsavhighlight"}],
     feedback: "atend",
     modelDialog: {width: 780}
   });

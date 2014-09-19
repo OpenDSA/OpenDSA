@@ -376,8 +376,15 @@ todo_include_todos = True
 
 # @efouh: despise the fact that we are using an url hash, gradebook still needs book name
 book_name = '%(book_name)s'
-# Protocol and domain of the backend server
-server_url = '%(backend_address)s'
+
+# Protocol and domain of the exercise_server
+exercise_server = '%(exercise_server)s'
+
+# Protocol and domain of the logging_server
+logging_server = '%(logging_server)s'
+
+# Protocol and domain of the score_server
+score_server = '%(score_server)s'
 
 # Protocol and domain of the server hosting the module files
 module_origin = '%(module_origin)s'
@@ -415,9 +422,9 @@ config_js_template = '''\
   //@efouh: added this variable back because it is needed by gradebook.html
   settings.BOOK_NAME = "%(book_name)s";
   settings.BOOK_LANG = "%(lang)s";
-  // The (protocol and) domain address of the backend server
-  // Set SERVER_URL = "" in order to disable server communication and logging
-  settings.SERVER_URL = "%(backend_address)s";
+  settings.EXERCISE_SERVER = "%(exercise_server)s";
+  settings.LOGGING_SERVER = "%(logging_server)s";
+  settings.SCORE_SERVER = "%(score_server)s";
   settings.MODULE_ORIGIN = "%(module_origin)s";
   settings.EXERCISE_ORIGIN = "%(exercise_origin)s";
   settings.AV_ORIGIN = "%(av_origin)s";

@@ -78,7 +78,7 @@ $(document).ready(function () {
   }
 
   // Create labels
-  var t = 310, l = 30, v = false;
+  var t = 295, l = 30, v = false;
   var labels = [
     jsav.label(n[0], {visible: v, left: (l + 0) + "px", top: (t + 0) + "px"}),
     jsav.label(n[1], {visible: v, left: (l + 40) + "px", top: (t + 0) + "px"}),
@@ -179,7 +179,7 @@ $(document).ready(function () {
   }
 
   // Create labels
-  var t = 310, l = 30, v = true;
+  var t = 295, l = 30, v = true;
   var labels = [
     jsav.label(n[0], {visible: v, left: (l + 0) + "px", top: (t + 0) + "px"}),
     jsav.label(n[1], {visible: v, left: (l + 40) + "px", top: (t + 0) + "px"}),

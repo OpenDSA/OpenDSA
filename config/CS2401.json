@@ -8,7 +8,9 @@
   },
   "lang": "en",
   "module_origin": "http://algoviz.org",
-  "backend_address": "https://opendsa.cc.vt.edu/",
+  "exercise_server": "https://opendsa.cc.vt.edu/",
+  "logging_server": "https://opendsa.cc.vt.edu/",
+  "score_server": "https://opendsa.cc.vt.edu/",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": true,
@@ -36,7 +38,7 @@
           "binarySearchPRO": {
             "long_name": "Binary Search Proficiency Exercise",
             "required": true,
-            "points": 0.0,
+            "points": 1.0,
             "threshold": 1.0
           }
         }

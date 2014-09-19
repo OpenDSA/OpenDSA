@@ -4,7 +4,7 @@ TARGET = build
 CSSLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 MINIMIZE = java -jar tools/yuicompressor-2.4.7.jar --nomunge
 
-.PHONY: all clean lint csslint jshint min CS2114 CS223 CS5114 CS3114 CS3114notes CS150 OpenDSA test IS allBooks nomin pull CS2401 COP3530 CS208 Tutorial
+.PHONY: all clean lint csslint jshint min CS2114 CS223 CS5114 CS3114 CS3114notes CS150 OpenDSA test IS allBooks nomin pull CS2401 COP3530 CS208 Tutorial TDDD86_2014
 
 all: lint
 
@@ -53,10 +53,13 @@ jshint:
 	-@jshint lib/conceptMap.js
 
 min: nomin
-#lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/khan-exercise-min.js lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
+#lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
 Tutorial: min
 	python $(CONFIG_SCRIPT) config/Tutorial.json
+
+TDDD86_2014: min
+	python $(CONFIG_SCRIPT) config/TDDD86_2014.json
 
 good: min
 	python $(CONFIG_SCRIPT) config/good.json
@@ -133,6 +136,9 @@ testanal: min
 testfi: min
 	python $(CONFIG_SCRIPT) config/testfi.json
 
+testpt: min
+	python $(CONFIG_SCRIPT) config/testpt.json
+
 testsv: min
 	python $(CONFIG_SCRIPT) config/testsv.json
 
@@ -195,10 +201,6 @@ lib/odsaAV-min.js: lib/odsaAV.js
 lib/odsaAV-min.css: lib/odsaAV.css
 	@echo 'Minimizing lib/odsaAV.css'
 	@$(MINIMIZE) lib/odsaAV.css -o lib/odsaAV-min.css
-
-lib/khan-exercise-min.js: ODSAkhan-exercises/khan-exercise.js
-	@echo 'Minimizing lib/khan-exercise.js'
-	@$(MINIMIZE) ODSAkhan-exercises/khan-exercise.js -o lib/khan-exercise-min.js
 
 lib/odsaMOD-min.js: lib/odsaMOD.js
 	@echo 'Minimizing lib/odsaMOD.js'
