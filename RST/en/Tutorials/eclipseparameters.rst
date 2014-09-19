@@ -1,0 +1,64 @@
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://algoviz.org/OpenDSA for more details.
+.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
+
+.. avmetadata::
+   :author: Jordan Sablan
+   :requires: 
+   :satisfies: 
+   :topic:
+
+===========================
+Using Parameters in Eclipse
+===========================
+When running your programs in Eclipse often you will need to use command line 
+parameters. You can view a video tutorial of the same material
+`here <https://www.youtube.com/watch?v=0tpsXmchBfk&feature=youtu.be>`__.
+ 
+1. Open your project and select the drop down arrow next to the Green Run Arrow 
+(circled below). If you can not see this arrow you may be in the wrong Eclipse 
+perspective. Select Window->Open Perspective->Java.
+
+.. odsafig:: Images/ParametersStep1.png
+   :width: 600
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: Step 1
+
+2. You will now see a Run Configurations window. Select the Java Application
+section. Now depending on whether or not you have ran this project previously 
+you may or may not have a configuration saved. If you have one saved already
+Continue on to Step 3. Otherwise select Java Application and right click on new. 
+
+.. odsafig:: Images/ParametersStep2.png
+   :width: 600
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: Step 2
+
+3. You will now have a profile inside the Java Application window. Select the
+arguments tab and add the arguments you would like to run (in this case I am
+adding the -h argument).
+
+.. odsafig:: Images/ParametersStep3.png
+   :width: 600
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: Step 3
+
+4. You may now hit Run and the program will launch with the parameters you
+provided. The Console window will display any output from your program.
+
+.. odsafig:: Images/ParametersStep4.png
+   :width: 600
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: Step 4
+
+5. To change the parameters you can either create a new profile or edit an
+existing profile.
