@@ -23,7 +23,11 @@
 }
 
 #BSTremoveCON {
-  height: 720px;
+  height: 700px;
+}
+
+#BSTremoveCON .jsavcode{
+  margin-top: -10px;
 }
 
 #BSTremoveCON .jsavtree { 

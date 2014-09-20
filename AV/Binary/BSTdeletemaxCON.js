@@ -33,6 +33,7 @@ $(document).ready(function () {
 
   // Slide 3
   av.umsg(interpret("av_c3"));
+  bt.root().addClass("processing");
   rt1.target(rt.right(), {anchor: "right top"});
   pseudo.setCurrentLine("sig");
   av.step();
@@ -45,6 +46,7 @@ $(document).ready(function () {
   // Slide 5
   av.umsg(interpret("av_c5"));
   pseudo.setCurrentLine("setright");
+  bt.root().removeClass("processing");
   rt1.target(rt, {anchor: "left top"});
   rt.right(rt.right().left());
   var newedge = rt.edgeToRight();
