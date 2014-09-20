@@ -29,33 +29,25 @@ import json
 #translation_file
 
 def loadTable():
-   try:
-      table=open(conf.translation_file)
-      data = json.load(table)
-      table.close()
-      if conf.language in data:
-         return dict(data[conf.language]['jinja'].items() + data[conf.language]['js'].items())
-      else:
-         return dict(data['en']['jinja'].items() + data['en']['js'].items())
-   except IOError:
-      print 'ERROR: No table.json file.'
+  try:
+    table=open(conf.translation_file)
+    data = json.load(table)
+    table.close()
+    if conf.language in data:
+      return dict(data[conf.language]['jinja'].items() + data[conf.language]['js'].items())
+    else:
+      return dict(data['en']['jinja'].items() + data['en']['js'].items())
+  except IOError:
+    print 'ERROR: No table.json file.'
 
 
 def setup(app):
     app.add_directive('avembed',avembed)
 
-
-ANCHOR_HTML = '''\
-<a id="%(exer_name)s_exer"></a>
-'''
-
-BUTTON_HTML = '''\
-<input type="button"
-    id="%(exer_name)s_showhide_btn"
-    class="showHideLink"
-    value="%(show_hide_text)s %(long_name)s"/>
-'''
-
+# Must use the exercise name as the ID of the container (required for
+# client-side framework processing and as an anchor for hyperlinking
+# directly to the exercise)
+# The div with ID '[exer_name]_iframe' is a placeholder that is replaced after the page finishes loading
 CONTAINER_HTML= '''\
 <div
     id="%(exer_name)s"
@@ -65,29 +57,31 @@ CONTAINER_HTML= '''\
     data-frame-src="%(av_address)s"
     data-frame-width="%(width)s"
     data-frame-height="%(height)s"
+    data-oembed="%(oembed)s"
     data-points="%(points)s"
     data-required="%(required)s"
+    data-showhide="%(showhide)s"
     data-threshold="%(threshold)s"
-    data-type="%(type)s"
-    data-oembed="%(oembed)s">
+    data-type="%(type)s">
   %(content)s
+  <div class="center">
+    <div id="%(exer_name)s_iframe"></div>
+  </div>
 </div>
-<p></p>
 '''
 
-IFRAME_HTML = '''\
-<iframe id="%(exer_name)s_iframe" src="%(av_address)s" width="%(width)s" height="%(height)s" scrolling="no">Your browser does not support iframes.</iframe>
+BUTTON_HTML = '''\
+<input type="button"
+  id="%(exer_name)s_showhide_btn"
+  class="showHideLink"
+  data-target="%(exer_name)s_iframe"
+  value="%(show_hide_text)s %(long_name)s"/>
+<span id="%(exer_name)s_shb_error_msg" class="shb_msg">
+  <img src="_static/Images/warning.png" class="shb_warning_icon" />
+  &nbsp;Server Error&nbsp;<a class="resubmit_link" href="#">Resubmit</a>
+</span>
+<span id="%(exer_name)s_shb_saving_msg" class="shb_msg">Saving...</span>
 '''
-
-OEMBED_HTML = '''\
-<div class="warning">
-    <p>Failed to load exercise. Log in to <a href="%(oembed_server)s">%(oembed_server)s</a> to see all the exercises.</p>
-</div>
-<script>
-    ODSA.MOD.initOembedAV($("#%(exer_name)s"));
-</script>
-'''
-
 
 def embedlocal(av_path):
   embed=[]
@@ -189,41 +183,37 @@ class avembed(Directive):
     if 'long_name' not in self.options:
       self.options['long_name'] = self.options['exer_name']
 
+    if 'showhide' not in self.options:
+      self.options['showhide'] = 'hide'
+
+    if self.options['showhide'] == "show":
+      self.options['show_hide_text'] = langDict["hide"]
+    elif self.options['showhide'] == "hide":
+      self.options['show_hide_text'] = langDict["show"]
+
     if 'oembed_url' not in self.options:
-      self.options['oembed'] = False
+      # Exercise does not use oembed
+      self.options['oembed'] = 'false'
+
+      if self.options['showhide'] != "none":
+        self.options['content'] = BUTTON_HTML % (self.options)
     else:
-      self.options['oembed'] = True
+      # Exercise uses oembed
+      self.options['oembed'] = 'true'
       self.options['av_address'] = self.options['oembed_url']
       parts = self.options['oembed_url'].split("//", 1)
       self.options['oembed_server'] = parts[0] + "//" + parts[1].split("/", 1)[0]
 
-    res = ANCHOR_HTML % self.options
-
-    if self.options['oembed']:
-      if 'showhide' in self.options and self.options['showhide'] == "none":
-        self.options['content'] = OEMBED_HTML % (self.options)
-      elif 'showhide' in self.options and self.options['showhide'] == "show":
+      if self.options['showhide'] == "show":
         self.options['show_hide_text'] = langDict["hide"]
-        self.options['content'] = OEMBED_HTML % (self.options)
-        res += BUTTON_HTML % (self.options)
-      else:
+        self.options['content'] = BUTTON_HTML % (self.options)
+      elif self.options['showhide'] == "hide":
         self.options['show_hide_text'] = langDict["show"]
-        res += BUTTON_HTML % (self.options)
-    else:
-      if 'showhide' in self.options and self.options['showhide'] == "none":
-        self.options['content'] = IFRAME_HTML % (self.options)
-      elif 'showhide' in self.options and self.options['showhide'] == "show":
-        self.options['show_hide_text'] = langDict["hide"]
-        self.options['content'] = IFRAME_HTML % (self.options)
-        res += BUTTON_HTML % (self.options)
-      else:
-        self.options['show_hide_text'] = langDict["show"]
-        res += BUTTON_HTML % (self.options)
+        self.options['content'] = BUTTON_HTML % (self.options)
 
-    res += CONTAINER_HTML % (self.options)
+    res = CONTAINER_HTML % (self.options)
 
     return [nodes.raw('', res, format='html')]
-
 
 
 source = """\

@@ -1,18 +1,18 @@
 #codeTextarea{
-   width:500px;
-   height:270px;
+   width: 500px;
+   height: 270px;
 }
 
 .textAreaWithLines{
-   font-family:courier;      
-   border:1px solid #000;  
+   font-family: courier;      
+   border: 1px solid #000;  
 }
 
 .textAreaWithLines textarea,.textAreaWithLines div{
-   border:0px;
-   line-height:120%;
-   height:200px;
-   font-size:12px;
+   border: 0;
+   line-height: 120%;
+   height: 200px;
+   font-size: 12px;
 }
 
 .lineObj{
