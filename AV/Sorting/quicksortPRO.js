@@ -291,7 +291,7 @@ $(document).ready(function () {
   function resetStateVars() {
     pivotIndex.value(-1);
     pivotMoved.value(false);
-     partitioned.value(false);
+    partitioned.value(false);
     left.value(-1);
     right.value(-1);
   }

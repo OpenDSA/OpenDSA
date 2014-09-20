@@ -1,4 +1,5 @@
 "use strict";
+/*global ODSA */
 (function ($) {
   var move = function (o, i, h) {
     av.step();
