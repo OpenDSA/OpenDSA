@@ -163,6 +163,13 @@ class avembed(Directive):
     self.options['height'] = embed[3]
     self.options['content'] = ''
 
+    # TODO: Can replace the embedlocal block with this block after KA exercises are set up to dynamically resize
+    #av_path = self.arguments[0]
+    #self.options['exer_name'] = os.path.basename(av_path).partition('.')[0]
+    #self.options['av_address'] = '%s/%s?%s' % (os.path.relpath(conf.av_dir, conf.ebook_path), av_path, urllib.urlencode(url_params).replace('&', '&amp;'))
+    #self.options['width'] = 800
+    #self.options['height'] = 450
+    #self.options['content'] = ''
 
     # Load translation
     langDict = loadTable()

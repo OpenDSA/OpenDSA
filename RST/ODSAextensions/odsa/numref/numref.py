@@ -1,4 +1,4 @@
-# Copyright (C) 2012 Eric Fouh 
+# Copyright (C) 2012 Eric Fouh
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the MIT License as published by
@@ -15,10 +15,9 @@
 __author__ = 'efouh'
 
 import random
-import os, sys 
+import os, sys
 import re
 import json
-from xml.dom.minidom import parse, parseString
 import re
 import warnings
 
@@ -46,7 +45,6 @@ def loadTable():
       print 'ERROR: No table.json file.'
 
 
-
 def numref_role(typ, rawtext, etext, lineno, inliner,
                      options={}, content=[]):
     """Role for numbered cross references"""
@@ -60,26 +58,26 @@ def numref_role(typ, rawtext, etext, lineno, inliner,
 #    indexnode = addnodes.index()
     targetnode = nodes.target('', '', ids=[targetid])
     inliner.document.note_explicit_target(targetnode)
-    syn = 0 
+    syn = 0
     if '<' in text:
        syn = 1
-    if '>' in text:   
-       syn +=1   
+    if '>' in text:
+       syn +=1
     if syn != 0 and syn != 2 :
        msg = inliner.reporter.error('Syntax error label %s' % text,
                                          line=lineno)
        prb = inliner.problematic(rawtext, rawtext, msg)
        return [prb], [msg]
-    if syn == 2: 
-       desc = re.split('<', text, re.IGNORECASE)[0].rstrip()            
-       lab = re.split('>',re.split('<', text, re.IGNORECASE)[1], re.IGNORECASE)[0]  
+    if syn == 2:
+       desc = re.split('<', text, re.IGNORECASE)[0].rstrip()
+       lab = re.split('>',re.split('<', text, re.IGNORECASE)[1], re.IGNORECASE)[0]
     if syn == 0:
        desc=''
        lab = text
     if typ == 'numref':
 #        indexnode['entries'] = [('single', 'ref %s' % text,
 #                                 targetid, 'ref %s' % text)]
-        level = 0 
+        level = 0
         try:
             json_data = loadTable()
             if lab in json_data:
@@ -87,18 +85,18 @@ def numref_role(typ, rawtext, etext, lineno, inliner,
                 if '#' in xrefs:
                    level = 2
                    xrefs = xrefs[:-1]
-                   v = xrefs.split('.')                    
+                   v = xrefs.split('.')
                    if len(v) > 2:
-                      pr = '%s.%s' %(v[0],v[1])   
+                      pr = '%s.%s' %(v[0],v[1])
                       for obj, val in json_data.items():
-                         if val == pr:      
-                            parent = obj      
+                         if val == pr:
+                            parent = obj
 
             else:
                 msg = inliner.reporter.error('invalid reference label %s' % lab,
                                          line=lineno)
                 prb = inliner.problematic(rawtext, rawtext, msg)
-                return [prb], [msg] 
+                return [prb], [msg]
         except ValueError:
             msg = inliner.reporter.error('invalid reference label %s' % text,
                                          line=lineno)
@@ -106,13 +104,13 @@ def numref_role(typ, rawtext, etext, lineno, inliner,
             return [prb], [msg]
 
         if level == 2:
-           ref = '%s.html#%s' %(parent, lab)          
+           ref = '%s.html#%s' %(parent, lab)
         else:
-           ref = '%s.html' % lab 
-        if not desc.isspace() and len(desc) > 1:            
+           ref = '%s.html' % lab
+        if not desc.isspace() and len(desc) > 1:
            sn = nodes.strong(' '+xrefs+' '+desc, ' '+xrefs+' '+desc)
         else:
-           sn = nodes.strong(' '+xrefs, ' '+xrefs)  
+           sn = nodes.strong(' '+xrefs, ' '+xrefs)
         rn = nodes.reference('', '', internal=False, refuri=ref,
                              classes=[typ])
         rn += sn
@@ -121,15 +119,7 @@ def numref_role(typ, rawtext, etext, lineno, inliner,
 roles.register_canonical_role('numref', numref_role)
 
 
-
-
-
 if __name__ == '__main__':
 
     roles.register_canonical_role('numref', numref_role)
 
-
-
-
-
- 
