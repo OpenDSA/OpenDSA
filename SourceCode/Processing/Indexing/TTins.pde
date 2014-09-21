@@ -41,10 +41,11 @@ public TTNode<Key,E> add(TTNode<Key,E> it) {
     return this;
   }
   else if (lkey.compareTo(it.lkey()) >= 0) { // Add left
-    center = new TTNode<Key,E>(rkey, rval, null, null, center, right, null);
-    rkey = null; rval = null; right = null;
-    it.setLeftChild(left); left = it;
-    return this;
+    TTNode<Key,E> N1 = new TTNode<Key,E>(lkey, lval, null, null, it, this, null);
+    it.setLeftChild(left);
+    left = center; center = right; right = null;
+    lkey = rkey; lval = rval; rkey = null; rval = null;
+    return N1;
   }
   else if (rkey.compareTo(it.lkey()) < 0) { // Add center
     it.setCenterChild(new TTNode<Key,E>(rkey, rval, null, null, it.cchild(), right, null));
