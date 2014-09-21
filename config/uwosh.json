@@ -11,7 +11,12 @@
   "allow_anonymous_credit": true,
   "suppress_todo": false,
   "chapters": {
-    "UWO Algorithms": {
+    "UWOshkosh Materials": {
+      "Development/LambdaCalculus": {
+        "long_name": "Current Work on Lambda Calculus",
+        "exercises": {
+  }
+      },
       "Development/StringSearchKMP": {
         "long_name": "Current Work on KMP String Search",
         "exercises": {

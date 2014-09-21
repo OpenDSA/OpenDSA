@@ -10,17 +10,18 @@
   var adjacencyMatrix = [,];
   var randomWeights = [];
   
-  function sort(nodes) {
-    for (var i = 0;i < nodes.length-1;i++) {
-	  for (var j = i + 1;j < nodes.length; j++) {
-	    if (nodes[i].value().charAt(0) > nodes[j].value().charAt(0)) {
-		  var temp = nodes[i];
-		  nodes[i] = nodes[j];
-		  nodes[j] = temp;
-		}
-	  }
-	}
-  }
+  // function sort(nodes) {
+  //   for (var i = 0; i < nodes.length - 1; i++) {
+  //     for (var j = i + 1;j < nodes.length; j++) {
+  //       if (nodes[i].value().charAt(0) > nodes[j].value().charAt(0)) {
+  //         var temp = nodes[i];
+  //         nodes[i] = nodes[j];
+  //         nodes[j] = temp;
+  //       }
+  //     }
+  //   }
+  // }
+
   function generateNodeEdgeCounts() {
     //generate the number of nodes and edges
     var n;
@@ -70,9 +71,7 @@
         (adjacencyMatrix[endIndex][startIndex] === 1)) {
       return false;
     }
-    else {
-      return true;
-    }
+    return true;
   }
 
   function generateRandomPairs() {
@@ -86,12 +85,11 @@
       }
     }
     while (true) {
-      index1 = Math.floor((Math.random() * 10));
-      index2 = Math.floor((Math.random() * 10));
+      index1 = Math.floor((Math.random() * nNodes));
+      index2 = Math.floor((Math.random() * nNodes));
       if (!isEligibleEdge(index1, index2)) {
         continue;
-      }
-      else {
+      } else {
         edgeStarts[count] = index1;
         edgeEnds[count] = index2;
         count++;
@@ -127,12 +125,11 @@
       g.addNode(nodes[i]);
     }
     for (i = 0; i < nEdges; i++) {
-      console.log(edgeStarts[i] + "  " + edgeEnds[i]);
+      // console.log(edgeStarts[i] + "  " + edgeEnds[i]);
       if (weighted) {
         g.addEdge(g.nodes()[edgeStarts[i]], g.nodes()[edgeEnds[i]],
-                  {"weight": parseInt(randomWeights[i])});
-      }
-      else {
+                  {"weight": parseInt(randomWeights[i], 10)});
+      } else {
         g.addEdge(g.nodes()[edgeStarts[i]], g.nodes()[edgeEnds[i]]);
       }
     }
@@ -140,26 +137,38 @@
 
   $(document).ready(function () {
     var settings = new JSAV.utils.Settings($(".jsavsettings")),
-    jsav = new JSAV($('.avcontainer'), {settings: settings}),
-    exercise, graph, modelGraph, graphNodes = [], gnodes = [];
-    var exerciseStep, step;
+        jsav = new JSAV($('.avcontainer'), {settings: settings}),
+        exercise,
+        graph,
+        modelGraph,
+        graphNodes = [],
+        gnodes = [],
+        exerciseStep,
+        step;
     //jsav.recorded();
-	
+
     function init() {
       exerciseStep = 0;
       step = 0;
+      gnodes = [];
       var i;
       if (graph) {
         graph.clear();
       }
-      graph = jsav.ds.graph({width: 400, height: 400, layout: "automatic", directed: false});
+      graph = jsav.ds.graph({
+        width: 400,
+        height: 400,
+        layout: "automatic",
+        directed: false
+      });
       generate(graph, false);  //Randomly generate the graph without weights
       //initGraph("orig");
       graph.layout();
       graphNodes = graph.nodes();
-      for (i = 0; i < graph.edges().length; i++) {
-        console.log(graph.edges()[i].start().value() + "  " + graph.edges()[i].end().value());
-      }
+      // for (i = 0; i < graph.edges().length; i++) {
+      //   var tempEdge = graph.edges()[i];
+      //   console.log(tempEdge.start().value() + "  " + tempEdge.end().value());
+      // }
       jsav.displayInit();
       return graph;
     }
@@ -235,7 +244,10 @@
       var next;
       markIt(start, av);
       adjacent = start.neighbors();
-	  sort(adjacent); //Sort the neighbors according to their value 
+      // sort(adjacent); //Sort the neighbors according to their value 
+      adjacent.sort(function (a, b) {
+        return a.value().charCodeAt(0) - b.value().charCodeAt(0);
+      });
       for (next = adjacent.next(); next; next = adjacent.next()) {
         av.umsg("Process edge (" + start.value() + "," + next.value() + ")");
         if (next.hasClass("visited")) {
@@ -249,61 +261,62 @@
       }
     }
 
-    function initGraph(type) {
-      var a, b, c, d, e, f;
-      //Nodes of the original graph
-      if (type === "orig") {
-        a = graph.addNode("A", {"left": 25, "top": 50});
-        b = graph.addNode("B", {"left": 325, "top": 50});
-        c = graph.addNode("C", {"left": 145, "top": 75});
-        d = graph.addNode("D", {"left": 145, "top": 200});
-        e = graph.addNode("E", {"left": 0, "top": 300});
-        f = graph.addNode("F", {"left": 325, "top": 250});
-        //Original graph edges
-        graph.addEdge(a, c);
-        graph.addEdge(a, e);
-        graph.addEdge(c, b);
-        graph.addEdge(c, d);
-        graph.addEdge(c, e);
-        graph.addEdge(c, f);
-        graph.addEdge(f, b);
-        graph.addEdge(d, f);
-        graph.addEdge(e, f);
-        graphNodes = graph.nodes();
-      }
-      else {
-        //Nodes of the model Graph
-        a = modelGraph.addNode("A", {"left": 25, "top": 50});
-        b = modelGraph.addNode("B", {"left": 325, "top": 50});
-        c = modelGraph.addNode("C", {"left": 145, "top": 75});
-        d = modelGraph.addNode("D", {"left": 145, "top": 200});
-        e = modelGraph.addNode("E", {"left": 0, "top": 300});
-        f = modelGraph.addNode("F", {"left": 325, "top": 250});
-        //Model graph edges
-        modelGraph.addEdge(a, c);
-        modelGraph.addEdge(a, e);
-        modelGraph.addEdge(c, b);
-        modelGraph.addEdge(c, d);
-        modelGraph.addEdge(c, e);
-        modelGraph.addEdge(c, f);
-        modelGraph.addEdge(f, b);
-        modelGraph.addEdge(d, f);
-        modelGraph.addEdge(e, f);
-        gnodes = modelGraph.nodes();
-      }
-    }
+    // function initGraph(type) {
+    //   var a, b, c, d, e, f;
+    //   //Nodes of the original graph
+    //   if (type === "orig") {
+    //     a = graph.addNode("A", {"left": 25, "top": 50});
+    //     b = graph.addNode("B", {"left": 325, "top": 50});
+    //     c = graph.addNode("C", {"left": 145, "top": 75});
+    //     d = graph.addNode("D", {"left": 145, "top": 200});
+    //     e = graph.addNode("E", {"left": 0, "top": 300});
+    //     f = graph.addNode("F", {"left": 325, "top": 250});
+    //     //Original graph edges
+    //     graph.addEdge(a, c);
+    //     graph.addEdge(a, e);
+    //     graph.addEdge(c, b);
+    //     graph.addEdge(c, d);
+    //     graph.addEdge(c, e);
+    //     graph.addEdge(c, f);
+    //     graph.addEdge(f, b);
+    //     graph.addEdge(d, f);
+    //     graph.addEdge(e, f);
+    //     graphNodes = graph.nodes();
+    //   }
+    //   else {
+    //     //Nodes of the model Graph
+    //     a = modelGraph.addNode("A", {"left": 25, "top": 50});
+    //     b = modelGraph.addNode("B", {"left": 325, "top": 50});
+    //     c = modelGraph.addNode("C", {"left": 145, "top": 75});
+    //     d = modelGraph.addNode("D", {"left": 145, "top": 200});
+    //     e = modelGraph.addNode("E", {"left": 0, "top": 300});
+    //     f = modelGraph.addNode("F", {"left": 325, "top": 250});
+    //     //Model graph edges
+    //     modelGraph.addEdge(a, c);
+    //     modelGraph.addEdge(a, e);
+    //     modelGraph.addEdge(c, b);
+    //     modelGraph.addEdge(c, d);
+    //     modelGraph.addEdge(c, e);
+    //     modelGraph.addEdge(c, f);
+    //     modelGraph.addEdge(f, b);
+    //     modelGraph.addEdge(d, f);
+    //     modelGraph.addEdge(e, f);
+    //     gnodes = modelGraph.nodes();
+    //   }
+    // }
 
     // Process About button: Pop up a message with an Alert
     function about() {
-      alert("Heapsort Proficiency Exercise\nWritten by Ville Karavirta\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
+      alert("Depth First Search Proficiency Exercise\nWritten by --\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
     }
-	
-    exercise = jsav.exercise(model, init,
-                             { compare:  { css: "background-color" },
-                               controls: $('.jsavexercisecontrols'),
-                               fix: fixState });
+
+    exercise = jsav.exercise(model, init, {
+      compare: { css: "background-color" },
+      controls: $('.jsavexercisecontrols'),
+      fix: fixState
+    });
     exercise.reset();
-	
+
     $(".jsavcontainer").on("click", ".jsavgraphnode", function () {
       var nodeIndex = $(this).parent(".jsavgraph").find(".jsavgraphnode").index(this);
       var node = graphNodes[nodeIndex];
@@ -311,7 +324,9 @@
       if (!node.hasClass('visited')) {
         markIt(node, null);
         exerciseStep++;
-        prev = graphNodes[gnodes.indexOf(gnodes[nodeIndex].prev)];
+        if (gnodes.length) {
+          prev = graphNodes[gnodes.indexOf(gnodes[nodeIndex].prev)];
+        }
         if (prev) {
           node.edgeFrom(prev).css({"stroke-width": "4", "stroke": "red"});
         }

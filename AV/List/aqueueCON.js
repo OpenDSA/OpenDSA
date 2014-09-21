@@ -105,7 +105,7 @@ function setPointer(name, obj, index) {
     }
     pointer.arrow = this.jsav.g.line(fx, fy, tx, ty, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
     // CAS: Stuck this in here to patch up positioning for now
-    pointer.label.element.css({top: top-15});
+    pointer.label.element.css({top: top - 15});
     return pointer;
   };
 

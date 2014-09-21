@@ -33,57 +33,68 @@ $(document).ready(function () {
   av.displayInit();
 
   // Slide 2
-  av.umsg("Since 37 is greater than the value we want to delete (30), we go left.");
-  pseudo.setCurrentLine("visitleft");
-  rt1.target(rt.left());
+  av.umsg("As always, the first thing that we do is check if the root is null. Since it is not, we are going to be recursively descending the tree until we find the value that we are looking for (if it exists).");
+  pseudo.setCurrentLine("checknull");
   av.step();
 
   // Slide 3
-  av.umsg("Since 24 is less than the value we want to delete (30), we go right.");
-  pseudo.setCurrentLine("visitright");
-  rt1.target(rt.left().right(), {anchor: "right top"});
+  av.umsg("Since 37 is greater than the value we want to delete (30), we go left.");
+  pseudo.setCurrentLine("visitleft");
+  rt.addClass("processing");
+  rt1.target(rt.left());
   av.step();
 
   // Slide 4
-  av.umsg("Since 32 is greater than the value we want to delete (30), we go left.");
-  pseudo.setCurrentLine("visitleft");
-  rt1.target(rt.left().right().left(), {anchor: "left top"});
+  av.umsg("Since 24 is less than the value we want to delete (30), we go right.");
+  pseudo.setCurrentLine("visitright");
+  rt.left().addClass("processing");
+  rt1.target(rt.left().right(), {anchor: "right top"});
   av.step();
 
   // Slide 5
+  av.umsg("Since 32 is greater than the value we want to delete (30), we go left.");
+  pseudo.setCurrentLine("visitleft");
+  rt.left().right().addClass("processing");
+  rt1.target(rt.left().right().left(), {anchor: "left top"});
+  av.step();
+
+  // Slide 6
   av.umsg("Now we have found the value that we want to delete.");
   pseudo.setCurrentLine("found");
   av.step();
 
-  // Slide 6
-  av.umsg("Since the value of the left child of 30 is null, we can just return that node's right pointer back to the parent. Since the node with value 30 is a leaf node, that happens to be null.");
+  // Slide 7
+  av.umsg("Since the value of the left child of 30 is null, we can just return that node's right pointer back to the parent. Since the node with value 30 is a leaf node, that right pointer also happens to be null.");
   pseudo.setCurrentLine("checkleft");
   av.step();
   
-  // Slide 7
+  // Slide 8
   av.umsg("Unwind the recursion, and set the left pointer of the node with value of 32");
+  rt.left().right().removeClass("processing");
   rt1.target(rt.left().right(), {anchor: "right top"});
   rt.left().right().left(null);
   pseudo.setCurrentLine("visitleft");
   av.step();
 
-  // Slide 8
+  // Slide 9
   av.umsg("Unwind the recursion, and set the right pointer of the node with value of 24");
   var temp = rt.left().edgeToRight();
   temp.addClass("rededge");
+  rt.left().removeClass("processing");
   rt1.target(rt.left(), {anchor: "left top"});
   pseudo.setCurrentLine("visitright");
   av.step();
 
-  // Slide 9
+  // Slide 10
   av.umsg("Unwind the recursion, and set the left pointer of the node with value of 37");
   temp1 = rt.edgeToLeft();
   temp1.addClass("rededge");
+  rt.removeClass("processing");
   rt1.target(rt);
   pseudo.setCurrentLine("visitleft");
   av.step();
 
-  // Slide 10
+  // Slide 11
   av.umsg("Now we return from the initial call to removehelp, setting the root of the tree to the result");
   rt1.arrow.addClass("thinredline");
   // This line should not be needed, but it is here to fix Raphael bug with arrows
@@ -91,7 +102,7 @@ $(document).ready(function () {
   pseudo.setCurrentLine("end");
   av.step();
 
-  // Slide 11
+  // Slide 12
   av.umsg("Now let's try something a little bit harder. We will see what happens when we remove 32.");
   pseudo.setCurrentLine("sig");
   pseudo.unhighlight("end");
@@ -104,35 +115,43 @@ $(document).ready(function () {
   bt.layout();
   av.step();
 
-  // Slide 12
-  av.umsg("Since 37 is greater than the value we want to delete (32), we go left.");
-  pseudo.setCurrentLine("visitleft");
-  rt1.target(rt.left());
-  av.step();
-
   // Slide 13
-  av.umsg("Since 24 is less than the value we want to delete (32), we go right.");
-  pseudo.setCurrentLine("visitright");
-  rt1.target(rt.left().right(), {anchor: "right top"});
+  av.umsg("As always, the first thing that we do is check if the root is null. Since it is not, we are going to be recursively descending the tree until we find the value that we are looking for (if it exists).");
+  pseudo.setCurrentLine("checknull");
   av.step();
 
   // Slide 14
+  av.umsg("Since 37 is greater than the value we want to delete (32), we go left.");
+  pseudo.setCurrentLine("visitleft");
+  rt.addClass("processing");
+  rt1.target(rt.left());
+  av.step();
+
+  // Slide 15
+  av.umsg("Since 24 is less than the value we want to delete (32), we go right.");
+  pseudo.setCurrentLine("visitright");
+  rt.left().addClass("processing");
+  rt1.target(rt.left().right(), {anchor: "right top"});
+  av.step();
+
+  // Slide 16
   av.umsg("Now we have found the value that we want to delete.");
   pseudo.setCurrentLine("checkgreater");
   av.step();
 
-  // Slide 15
+  // Slide 17
   av.umsg("We check, and the left child is not null.");
   pseudo.setCurrentLine("checkleft");
   av.step();
 
-  // Slide 16
+  // Slide 18
   av.umsg("We check and find that the right child is null. So we can just return a pointer to the left child.");
   pseudo.setCurrentLine("checkright");
   av.step();
 
-  // Slide 17
+  // Slide 19
   av.umsg("Unwind the recursion, and set the right pointer of the node with value of 24");
+  rt.left().removeClass("processing");
   rt1.target(rt.left(), {anchor: "left top"});
   rt.left().right(rt.left().right().left());
   temp = rt.left().edgeToRight();
@@ -145,6 +164,7 @@ $(document).ready(function () {
   av.umsg("Unwind the recursion, and set the left pointer of the node with value of 37");
   temp1 = rt.edgeToLeft();
   temp1.addClass("rededge");
+  rt.removeClass("processing");
   rt1.target(rt);
   pseudo.setCurrentLine("visitleft");
   av.step();
@@ -210,6 +230,7 @@ $(document).ready(function () {
   av.umsg("Call getmax to set a temporary variable to point to the node with the greatest value in the left subtree.");
   pseudo.setCurrentLine("getmax");
   var tnode = rt.left().right();
+  tnode.addClass("processing");
   var rt2 = av.pointer("temp", tnode, {anchor: "right top", top: -10});
   av.step();
 

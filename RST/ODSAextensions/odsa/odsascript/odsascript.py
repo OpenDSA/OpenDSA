@@ -1,4 +1,4 @@
-# Copyright (C) 2012 Eric Fouh 
+# Copyright (C) 2012 Eric Fouh
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the MIT License as published by
@@ -18,11 +18,10 @@ from docutils import nodes
 from docutils.parsers.rst import directives
 from docutils.parsers.rst import Directive
 import random
-import os, sys 
+import os, sys
 import re
 sys.path.append(os.path.abspath('./source'))
-import conf 
-from xml.dom.minidom import parse, parseString
+import conf
 
 def setup(app):
     app.add_directive('odsascript',odsascript)
@@ -37,15 +36,15 @@ CODE = """\
 
 class odsascript(Directive):
     required_arguments = 1
-    optional_arguments = 0 
+    optional_arguments = 0
     final_argument_whitespace = True
-    option_spec = {} 
+    option_spec = {}
 
     def run(self):
-                
+
         """ Restructured text extension for including CSS and other libraries """
-        self.options['address'] = os.path.relpath(conf.av_dir,conf.ebook_path)+'/'+ self.arguments[0] 
-        res = CODE % self.options 
+        self.options['address'] = os.path.relpath(conf.av_dir,conf.ebook_path)+'/'+ self.arguments[0]
+        res = CODE % self.options
         return [nodes.raw('', res, format='html')]
 
 
@@ -53,7 +52,7 @@ class odsascript(Directive):
 source = """\
 This is some text.
 
-.. odsascript:: address 
+.. odsascript:: address
 
 
 This is some more text.
@@ -70,8 +69,3 @@ if __name__ == '__main__':
             writer_name="html")
 
     print doc_parts['html_body']
-
-
-
-
- 

@@ -680,7 +680,7 @@ following:
   processing with I/O, and to allow for sequential file
   processing.
 
-.. odsascript:: AV/DS/binaryheap.js
+.. odsascript:: DataStructures/binaryheap.js
 .. odsascript:: AV/Development/externalsort.js
 .. odsascript:: AV/Development/externalsortsnow.js
 .. odsascript:: AV/Development/externalMergeSort.js

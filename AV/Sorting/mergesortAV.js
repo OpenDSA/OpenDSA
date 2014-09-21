@@ -110,7 +110,7 @@ $(document).ready(function () {
     if (arr1.size() > 1) {
       arr1.unhighlight();
       arr2.unhighlight();
-      }
+    }
 
     var pos1 = 0;
     var pos2 = 0;

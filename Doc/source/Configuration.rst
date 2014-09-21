@@ -177,10 +177,20 @@ All are required unless otherwise specified.
   * Used on module pages to allow HTML5 post messages from this origin, allows embedded exercises to communicate with the parent module page
   * Ex: "exercise_origin": "http://algoviz.org",
 
-* **backend_address** - (optional) the protocol and domain (and port number, if different than the protocol default) of the backend server which supports centralized user scoring and interaction data collection, defaults to an empty string (backend server disabled) if omitted
+* **exercise_server** - (optional) the protocol and domain (and port number, if different than the protocol default) of the exercise server which provides verification for the programming exercises, defaults to an empty string (exercise server disabled) if omitted
 
   * Trailing '/' is optional
-  * Ex: "backend_address": "https://opendsa.cc.vt.edu/",
+  * Ex: "exercise_server": "https://opendsa.cc.vt.edu/",
+
+* **logging_server** - (optional) the protocol and domain (and port number, if different than the protocol default) of the logging server which supports interaction data collection, defaults to an empty string (logging server disabled) if omitted
+
+  * Trailing '/' is optional
+  * Ex: "logging_server": "https://opendsa.cc.vt.edu/",
+
+* **score_server** - (optional) the protocol and domain (and port number, if different than the protocol default) of the score server which supports centralized user score collection, defaults to an empty string (score server disabled) if omitted
+
+  * Trailing '/' is optional
+  * Ex: "score_server": "https://opendsa.cc.vt.edu/",
 
 * **build_JSAV** - (optional) a boolean controlling whether or not the JSAV library should be rebuild every time the configuration file is run, defaults to ``false`` if omitted
 
