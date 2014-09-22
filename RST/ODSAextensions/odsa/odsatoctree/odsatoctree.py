@@ -1,4 +1,4 @@
-# Copyright (C) 2012 Eric Fouh 
+# Copyright (C) 2012 Eric Fouh
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the MIT License as published by
@@ -23,12 +23,11 @@ from sphinx.util.nodes import set_source_info, explicit_title_re, \
      set_source_info, process_index_entry
 from sphinx.directives.other import int_or_nothing
 import random
-import os, sys 
+import os, sys
 import re
 import codecs
 sys.path.append(os.path.abspath('./source'))
-import conf  
-from xml.dom.minidom import parse, parseString
+import conf
 from string import whitespace as ws
 
 

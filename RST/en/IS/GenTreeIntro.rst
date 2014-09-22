@@ -159,14 +159,18 @@ inorder, then the root, then visit the remaining subtrees in inorder
 However, inorder traversals are generally not useful with
 general trees.
 
-.. TODO::
-   :type: Slideshow
+.. inlineav:: GenTreePreTravCON ss
+   :output: show
 
-   Show that the preorder traversal of the tree in Figure 6.3
-   visits the nodes in order R A C D E B F.
+To perform a preorder traversal, it is necessary to visit each of the
+children for a given node (say :math:`R`) from left to right.
+This is accomplished by starting at R's leftmost child
+(call it :math:`T`).
+From :math:`T`, we can move to :math:`T`'s right sibling, and then
+to that node's right sibling, and so on.
 
-   A postorder traversal of this tree visits the nodes in
-   order C D E A F B R.
+.. inlineav:: GenTreePostTravCON ss
+   :output: show
 
 To perform a preorder traversal, it is necessary to visit each of the
 children for a given node (say :math:`R`) from left to right.
@@ -185,3 +189,5 @@ to the next child until calling	``next`` returns ``null``.
 .. codeinclude:: General/GenTree
    :tag: GenTreePrint
 .. odsascript:: AV/Development/GenTreeCON.js
+.. odsascript:: AV/Development/GenTreePreTravCON.js
+.. odsascript:: AV/Development/GenTreePostTravCON.js

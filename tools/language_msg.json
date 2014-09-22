@@ -49,7 +49,8 @@
       "no_exercises":"There are no exercises in this section",
       "exercises": "Exercises",
       "points": "Points",
-      "chapter": "Chapter"
+      "chapter": "Chapter",
+      "module_complete": "Module Complete"
     }
   },
   "fr": {
@@ -82,7 +83,7 @@
       "login_warn": "Connectez vous pour sauvegarder votre score",
       "login_error": "Identifiant ou mot de passe incorrect",
       "bug_desc": "***BUG** Veuillez fournir : (1) une description du probleme. (2) comment reproduire le probleme. (3) les details du navigateur et systeme d'exploitation."
-    },  
+    },
     "js": {
       "project_msg": " \nProjet OpenDSA hypertextbook.\nPour plus d information visitez http://algoviz.org/OpenDSA\nLibrairie JSAV version ",
       "session_expired": "Votre session est expirée.",
@@ -101,8 +102,9 @@
       "total": "Total",
       "no_exercises":"Cette section ne contient pas d'exercises",
       "exercises": "Exercises",
-      "points": "Points",  
-      "chapter": "Chapitre"
+      "points": "Points",
+      "chapter": "Chapitre",
+      "module_complete": "Module Complet"
     }
   },
   "fi": {
@@ -155,10 +157,11 @@
       "no_exercises": "Tässä osiossa ei ole harjoituksia",
       "exercises": "Harjoitukset",
       "points": "Pisteet",
-      "chapter": "Kappale"
+      "chapter": "Kappale",
+      "module_complete": "Moduuli Complete"
     }
   },
-    "sv": {
+  "sv": {
     "jinja": {
       "register": "Registrera",
       "login": "Logga in",
@@ -208,7 +211,8 @@
       "no_exercises":"Det finns inga övningar i denna sektion",
       "exercises": "Övningar",
       "points": "Poäng",
-      "chapter": "Kapitel"
+      "chapter": "Kapitel",
+      "module_complete": "Modul Komplett"
     }
   },
   "pt": {
@@ -261,7 +265,8 @@
       "no_exercises":"Não há exercícios nessa seção.",
       "exercises": "Exercícios",
       "points": "Pontos",
-      "chapter": "Capítulo"
+      "chapter": "Capítulo",
+      "module_complete": "Módulo Completo"
     }
   }
 }

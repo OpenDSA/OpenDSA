@@ -53,6 +53,7 @@ $(document).ready(function () {
   // Slide 5
   av.umsg(interpret("av_c5"));
   pseudo.setCurrentLine("sig");
+  bt.root().addClass("processing");
   rt1.target(bt.root().left(), {anchor: "left top"});
   av.step();
 
@@ -74,6 +75,7 @@ $(document).ready(function () {
   // Slide 9
   av.umsg(interpret("av_c9"));
   pseudo.setCurrentLine("sig");
+  bt.root().left().addClass("processing");
   rt1.target(bt.root().left().right(), {anchor: "right top"});
   av.step();
 
@@ -95,6 +97,7 @@ $(document).ready(function () {
   // Slide 13
   av.umsg(interpret("av_c5"));
   pseudo.setCurrentLine("sig");
+  bt.root().left().right().addClass("processing");
   rt1.target(newnode, {anchor: "left top"});
   av.step();
 
@@ -115,6 +118,7 @@ $(document).ready(function () {
   av.umsg(interpret("av_c16"));
   newnode = newnode.parent();
   newedge.show();
+  bt.root().left().right().removeClass("processing");
   rt1.target(newnode, {anchor: "left top"});
   pseudo.setCurrentLine("visitleft");
   av.step();
@@ -124,6 +128,7 @@ $(document).ready(function () {
   newedge = newnode.edgeToParent();
   newnode = newnode.parent();
   newedge.addClass("rededge");
+  bt.root().left().removeClass("processing");
   rt1.target(newnode, {anchor: "left top"});
   pseudo.setCurrentLine("visitright");
   av.step();
@@ -133,6 +138,7 @@ $(document).ready(function () {
   newedge = newnode.edgeToParent();
   newnode = newnode.parent();
   newedge.addClass("rededge");
+  bt.root().removeClass("processing");
   rt1.target(newnode, {anchor: "left top"});
   pseudo.setCurrentLine("visitleft");
   av.step();
