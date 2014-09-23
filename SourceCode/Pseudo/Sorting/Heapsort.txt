@@ -1,6 +1,6 @@
 Algorithm 1 Heapsort(A)
-    while heap-size[A] > 1 do
-        Swap(A[0], A[heap-size[A]-1])
+    while heap-size[A] > 0 do
+        Swap(A[0], A[heap-size[A] - 1])
         heap-size[A] ← heap-size[A] - 1
         Max-Heapify(A, 0)
 
