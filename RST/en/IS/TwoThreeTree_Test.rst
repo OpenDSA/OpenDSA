@@ -252,5 +252,5 @@ San Francisco as part of his
 <http://www.cs.usfca.edu/~galles/visualization/Algorithms.html>`_ package.
 
 .. odsascript:: AV/Development/twoThreeTreeCON.js
-.. odsascript:: AV/Development/ArrayTree.js
+.. odsascript:: DataStructures/ArrayTree.js
 .. odsascript:: AV/Development/TTTreeCON.js
