@@ -81,14 +81,17 @@ class showhidecontent(Directive):
     else:
       self.options['showhide'] = 'none'
 
+
+    node_list = []
+
     # Parse the contents of the directive with Sphinx
     # node.children will be an array of raw HTML nodes containing the parsed text
     if self.content:
       node = nodes.Element()          # anonymous container for parsing
       self.state.nested_parse(self.content, self.content_offset, node)
+      node_list = node.children
 
     # Add raw HTML nodes for the header and footer to the list
-    node_list = node.children
     node_list.insert(0, nodes.raw('', HEADER_HTML % template_args, format='html'))
     node_list.append(nodes.raw('', FOOTER_HTML, format='html'))
 
