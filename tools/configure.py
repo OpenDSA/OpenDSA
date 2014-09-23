@@ -256,7 +256,7 @@ def generate_todo_rst(config, slides = False):
       todo_file.write('.. raw:: html\n\n   <h2><a href="' + mod_name + '.html#' + todo_id + '">source: ' + mod_name + '</a></h2>\n\n')
 
       # Clean up and write the TODO directive itself
-      todo_file.write('\n'.join(todo_directive).rstrip() + '\n\n')
+      todo_file.write('\n'.join(todo_directive).encode('utf-8').strip() + '\n\n')
 
 
 def initialize_output_directory(config):
