@@ -1,0 +1,16 @@
+#GenTreeCON .jsavcanvas {
+  height: 470px;
+  width: 600px;
+}
+
+#GenTreeCON {
+  height: 470px;
+}
+
+#GenTreePreTravCON {
+  height: 330px;
+}
+
+#GenTreePostTravCON {
+  height: 330px;
+}
