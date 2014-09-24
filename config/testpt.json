@@ -64,29 +64,6 @@
             }
           }
         }
-      },
-      "Sorting/MergesortImpl": {
-        "long_name": "Implementing Mergesort",
-        "exercises": {
-          "mergeImplS1CON": {
-            "long_name": "Mergesort Implementation Slideshow 1",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "mergeImplS2CON": {
-            "long_name": "Mergesort Implementation Slideshow 2",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "MergesortSumm": {
-            "long_name": "Mergesort Summary Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5
-          }
-        }
       }
     },
     "Appendix": {
