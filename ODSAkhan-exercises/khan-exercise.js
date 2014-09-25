@@ -2255,6 +2255,7 @@ var KhanUtil = Khan.Util;
 //*************               OpenDSA Modifications               *************
 //*****************************************************************************
 
+/*
 function getNameFromURL(url) {
   // If no URL is specified, uses the pathname of the current page
   url = (url) ? url : location.pathname;
@@ -2273,7 +2274,8 @@ function sendResizeMsg() {
   // wait a while in case the exercise is rendering
   setTimeout(function () {
     // try to find the container for the whole exercise
-    var $container = $("#page-container");
+    //var $container = $("#page-container");
+    var $container = $("#problem-and-answer");
 
     if ($container.length === 0) {
       return; // give up
@@ -2282,12 +2284,12 @@ function sendResizeMsg() {
     var $body = $("body"),
         bodyXMargin = $body.outerWidth(true) - $body.outerWidth(),
         bodyYMargin = $body.outerHeight(true) - $body.outerHeight(),
-        width = $container.outerWidth(true) + bodyXMargin,
-        height = $container.outerHeight(true) + bodyYMargin;
+        width = $container.outerWidth(true) + bodyXMargin + 10,
+        height = $container.outerHeight(true) + bodyYMargin + 50;
 
     // IMPORTANT: Replace MODULE_ORIGIN with '*' (including
     // quotes) in order to perform local testing
-    parent.postMessage(
+    top.postMessage(
       {
         type: "resize-iframe",
         exerName: getNameFromURL(location.href),
@@ -2304,3 +2306,5 @@ $(window).load(function () {
   $('h2').css('margin-bottom', '10px');
   sendResizeMsg();
 });
+
+*/
