@@ -221,7 +221,7 @@ $(document).ready(function () {
         av.forward();
       }
     }
-  };
+  }
 
   // Connect the action callbacks to the HTML entities
   $('#help').click(help);

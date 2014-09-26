@@ -20,7 +20,6 @@
 #   - Generates ToDo.rst, if any TODO directives were encountered when processing the book AND if the configuration file does not suppress them
 #   - Creates table.json and page_chapter.json which are used by Sphinx during the building process
 #   - Generates a Makefile and conf.py based on templates found in config_templates.py
-#     - Makefile is configured to copy the original .htaccess file from lib to the html output directory
 #     - conf.py is configured to point to the original ODSAextensions and _themes directories
 #     - CONTROLLING INCLUSION OF GLOBAL JS AND CSS FILES - conf.py contains a dictionary called html_context
 #       which controls what JS and CSS files are included on ALL module pages, please see the assoicated comment
@@ -257,7 +256,7 @@ def generate_todo_rst(config, slides = False):
       todo_file.write('.. raw:: html\n\n   <h2><a href="' + mod_name + '.html#' + todo_id + '">source: ' + mod_name + '</a></h2>\n\n')
 
       # Clean up and write the TODO directive itself
-      todo_file.write('\n'.join(todo_directive).rstrip() + '\n\n')
+      todo_file.write('\n'.join(todo_directive).encode('utf-8').strip() + '\n\n')
 
 
 def initialize_output_directory(config):

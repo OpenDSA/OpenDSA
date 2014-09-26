@@ -27,7 +27,7 @@ csslint:
 	@csslint $(CSSLINTFLAGS) AV/Sorting/*.css
 	@csslint $(CSSLINTFLAGS) AV/Hashing/*.css
 	@csslint $(CSSLINTFLAGS) AV/Searching/*.css
-	@csslint $(CSSLINTFLAGS) AV/*.css
+	#@csslint $(CSSLINTFLAGS) AV/*.css
 	@csslint $(CSSLINTFLAGS) Doc/*.css
 	@csslint $(CSSLINTFLAGS) lib/*.css
 

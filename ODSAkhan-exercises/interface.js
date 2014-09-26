@@ -53,9 +53,8 @@ jsonData.key = 'phantom-key';
 
 var exerciseName = Khan.getSeedInfo().sha1;
 
-if (localStorage.session) {
-   var session = JSON.parse(localStorage.session);
-   jsonData.key = session.key;
+if (localStorage.session_key) {
+   jsonData.key = localStorage.session_key;
 }
 
 if(server !== null){
@@ -590,9 +589,8 @@ function buildAttemptData(correct, attemptNum, attemptContent, timeTaken,
 
     var key = 'phantom-key';
 
-    if (localStorage.session) {
-      var session = JSON.parse(localStorage.session);
-      key = session.key;
+    if (localStorage.session_key) {
+      key = localStorage.session_key;
     }
 
     var OpenPop_code = typeof $('#codeTextarea').val() !== "undefined" ? $('#codeTextarea').val(): null;

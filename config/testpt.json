@@ -9,16 +9,29 @@
   "allow_anonymous_credit": true,
   "suppress_todo": false,
   "glob_exer_options": {
-  "JXOP-debug": "true"
+    "JXOP-debug": "true"
   },
   "chapters": {
+    "Algorithm Analysis": {
+      "AlgAnal/AnalChap": {
+        "long_name": "Chapter Intro: Algorithm Analysis",
+        "exercises": {}
+      },
+      "AlgAnal/AnalIntro": {
+        "long_name": "Comparing Algorithms",
+        "exercises": {}
+      },
+      "AlgAnal/AnalCases": {
+        "long_name": "Best, Average, and Worst Cases",
+        "exercises": {}
+      }
+    },
     "Sorting": {
       "Sorting/Mergesort": {
         "long_name": "Mergesort Concepts",
         "sections": {
           "MergeSortAnalysis": {
-            "long_name": "Merge Sort Analysis Discussion",
-            "showhide": "none"
+            "long_name": "Merge Sort Analysis Discussion"
           }
         },
         "exercises": {
@@ -26,7 +39,6 @@
             "long_name": "Mergesort Visualization",
             "required": false,
             "points": 0,
-            "showhide": "none",
             "threshold": 1.0
           },
           "mergesortCON": {
@@ -50,29 +62,6 @@
               "JXOP-feedback": "continuous",
               "JXOP-fixmode": "fix"
             }
-          }
-        }
-      },
-      "Sorting/MergesortImpl": {
-        "long_name": "Implementing Mergesort",
-        "exercises": {
-          "mergeImplS1CON": {
-            "long_name": "Mergesort Implementation Slideshow 1",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "mergeImplS2CON": {
-            "long_name": "Mergesort Implementation Slideshow 2",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "MergesortSumm": {
-            "long_name": "Mergesort Summary Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5
           }
         }
       }

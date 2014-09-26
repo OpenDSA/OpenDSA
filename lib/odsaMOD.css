@@ -60,9 +60,10 @@ form.signin p, form.signin span {
 /* All showHide buttons default to red */
 .showHideLink {
   background-color: #FF0000;
-  color: #fff;
   border: 1px solid #aaa;
   border-radius: 5px;
+  color: #fff;
+  margin-bottom: 15px;
   padding: 3px 5px;
 }
 .showHideLink:hover {
@@ -130,8 +131,7 @@ form.signin p, form.signin span {
   font-weight: bold;
 }
 
-/* Container that holds the iframes for embedded content */
-.embedContainer {
+.center {
   text-align: center;
 }
 
