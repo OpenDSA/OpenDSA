@@ -140,20 +140,20 @@ $(document).ready(function () {
   for (var i=1; i< 9; i++){
 	if (matdata[i][4] == 0){
 		for(var j=0; j<5 ; j++)
-			mat1.css(i,j,{"background-color":"red"});
+			mat1.css(i,j,{"background-color":"#CC3333"});
 	}
 	else{
 		for(var j=0; j<5 ; j++)
-			mat1.css(i,j,{"background-color":"green"});
+			mat1.css(i,j,{"background-color":"#669966"});
 	}
 
 	if (matdata1[i][4] == 0){
 		for(var j=0; j<8 ; j++)
-			mat2.css(i,j,{"background-color":"red"});
+			mat2.css(i,j,{"background-color":"#CC3333"});
 	}
 	else{
 		for(var j=0; j<8 ; j++)
-			mat2.css(i,j,{"background-color":"green"});
+			mat2.css(i,j,{"background-color":"#669966"});
 	}
 	
   }
@@ -191,8 +191,8 @@ $(document).ready(function () {
    var mat4= new av.ds.matrix(matdata3,{style:"table",left:250,top:y+50});
   for ( var k=1; k< 9; k++){
 	for(var l=0; l<5 ; l++){
-		mat3.css(k,l,{"background-color":"red"});
-		mat4.css(k,l,{"background-color":"red"});
+		mat3.css(k,l,{"background-color":"#CC3333"});
+		mat4.css(k,l,{"background-color":"#CC3333"});
 	}
 	
   }
