@@ -4,10 +4,10 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Jordan Sablan
-   :requires: 
-   :satisfies: 
-   :topic: 
+:author: Jordan Sablan
+:requires:
+:satisfies:
+:topic:
 
 ===================
 Command Line Basics
@@ -15,27 +15,26 @@ Command Line Basics
 What's A CLI?
 -------------
 A CLI or Command Line Interface is a simple text only interface. A user provides
- a command with or without some additional information and then the command is 
+a command with or without some additional information and then the command is
 exectued.
 
 Basics:
 
 1. When you execute a command you must type the name of the command, in addition
- the command must be located in your PATH
+the command must be located in your PATH
 
-	- What's a PATH? A PATH is a list of directories, in these directories 
-executables will be located. Common directories are /bin/, /usr/bin/
+   - What's a PATH? A PATH is a list of directories, in these directories executables will be located. Common directories are /bin/, /usr/bin/
 
-2. When you execute a command, you often will need to provide additional 
-information. These are called arguments. 
+2. When you execute a command, you often will need to provide additional
+information. These are called arguments.
 
-	+------------------+-------------------------------------------------------+
-	| Common Arguments | Meanings                                              |
-	+==================+=======================================================+
-	|     -h           | displays help information                             |
-	+------------------+-------------------------------------------------------+
-	|     -v           | increases information output, v is for verbosity      |
-        +------------------+-------------------------------------------------------+
++------------------+-------------------------------------------------------+
+| Common Arguments | Meanings                                              |
++==================+=======================================================+
+|     -h           | displays help information                             |
++------------------+-------------------------------------------------------+
+|     -v           | increases information output, v is for verbosity      |
++------------------+-------------------------------------------------------+
 
 .. odsafig:: Images/hexample.png
    :width: 500
@@ -56,8 +55,8 @@ information. These are called arguments.
 
    Image 2
 
-3. If you can not get enough information from the -h argument you can make use 
-of the man command. The man command brings up the man page for information and 
+3. If you can not get enough information from the -h argument you can make use
+of the man command. The man command brings up the man page for information and
 is a more in depth explanation of the command.
 
 .. odsafig:: Images/manexample.png
@@ -70,7 +69,7 @@ is a more in depth explanation of the command.
    Image 3
 
 *\*Author's Note: The man command should be available in any GNU-style terminal.
- If you are using Windows the native Command Prompt does not have a man command.*
+If you are using Windows the native Command Prompt does not have a man command.*
 
 |
 |
