@@ -22,24 +22,10 @@ import os, sys
 import re
 sys.path.append(os.path.abspath('./source'))
 import conf
-from xml.dom.minidom import parse, parseString
+import xml.etree.ElementTree as ET
+from xml.dom.minidom import parse, parseString # Can be removed when embedlocal is gone
 import urllib
 import json
-
-#translation_file
-
-def loadTable():
-  try:
-    table=open(conf.translation_file)
-    data = json.load(table)
-    table.close()
-    if conf.language in data:
-      return dict(data[conf.language]['jinja'].items() + data[conf.language]['js'].items())
-    else:
-      return dict(data['en']['jinja'].items() + data['en']['js'].items())
-  except IOError:
-    print 'ERROR: No table.json file.'
-
 
 def setup(app):
     app.add_directive('avembed',avembed)
@@ -83,6 +69,32 @@ BUTTON_HTML = '''\
 <span id="%(exer_name)s_shb_saving_msg" class="shb_msg">Saving...</span>
 '''
 
+
+def getDimensions(exer_path):
+  """Read the specified KA exercise HTML file and extract the height and width from the body's data attributes"""
+  try:
+    body = ET.parse(exer_path).getroot().find('body')
+    return {'height': body.attrib['data-height'], 'width': body.attrib['data-width']}
+  except Exception, err:
+    return {'err': err}
+
+# Prints the given string to standard error
+def print_err(err_msg):
+  sys.stderr.write('%s\n' % err_msg)
+
+# Loads translation file
+def loadTable():
+  try:
+    table=open(conf.translation_file)
+    data = json.load(table)
+    table.close()
+    if conf.language in data:
+      return dict(data[conf.language]['jinja'].items() + data[conf.language]['js'].items())
+    else:
+      return dict(data['en']['jinja'].items() + data['en']['js'].items())
+  except IOError:
+    print 'ERROR: No table.json file.'
+
 def embedlocal(av_path):
   embed=[]
   av_fullname = os.path.basename(av_path)
@@ -119,8 +131,6 @@ def embedlocal(av_path):
     sys.exit()
 
 
-
-
 def showhide(argument):
   """Conversion function for the "showhide" option."""
   return directives.choice(argument, ('show', 'hide', 'none'))
@@ -143,9 +153,8 @@ class avembed(Directive):
                  }
 
   def run(self):
-
     """ Restructured text extension for inserting embedded AVs with show/hide button """
-    self.options['address'] = self.arguments[0]
+    av_path = self.arguments[0]
     self.options['type'] = self.arguments[1]
 
     url_params = {}
@@ -156,20 +165,35 @@ class avembed(Directive):
     url_params['module'] = self.options['module']
     url_params['selfLoggingEnabled'] = 'false'
 
-    embed = embedlocal(self.arguments[0])
-    self.options['exer_name'] = embed[0]
-    self.options['av_address'] = embed[1] + '?' + urllib.urlencode(url_params).replace('&', '&amp;')
-    self.options['width'] = embed[2]
-    self.options['height'] = embed[3]
     self.options['content'] = ''
+    self.options['exer_name'] = os.path.basename(av_path).partition('.')[0]
 
-    # TODO: Can replace the embedlocal block with this block after KA exercises are set up to dynamically resize
-    #av_path = self.arguments[0]
-    #self.options['exer_name'] = os.path.basename(av_path).partition('.')[0]
-    #self.options['av_address'] = '%s/%s?%s' % (os.path.relpath(conf.av_dir, conf.ebook_path), av_path, urllib.urlencode(url_params).replace('&', '&amp;'))
-    #self.options['width'] = 800
-    #self.options['height'] = 450
-    #self.options['content'] = ''
+    # Set av_address and dimensions (depends on whether it is an AV or a KA exercise)
+    if self.options['type'] == 'ka':
+      self.options['av_address'] = os.path.relpath(conf.exercises_dir, conf.ebook_path)
+      dimensions = getDimensions(conf.exercises_dir + av_path)
+
+      if 'height' in dimensions and 'width' in dimensions:
+        self.options['height'] = dimensions['height']
+        self.options['width'] = dimensions['width']
+      else:
+        print_err('ERROR: Unable to parse dimensions of %s' % av_path)
+
+        if 'err' in dimensions:
+          print_err('  %s' % str(dimensions['err']))
+
+        # Use XML files as a backup until data attributes have been implemented for all exercises
+        # TODO: Remove embedlocal and replace this section with hardcoded defaults after XML files have been removed
+        embed = embedlocal(av_path)
+        self.options['width'] = embed[2]
+        self.options['height'] = embed[3]
+    else:
+      self.options['av_address'] = os.path.relpath(conf.av_dir, conf.ebook_path)
+      self.options['width'] = 800
+      self.options['height'] = 450
+
+    # Append AV path and URL parameters to base av_address
+    self.options['av_address'] += '/%s?%s' % (av_path, urllib.urlencode(url_params).replace('&', '&amp;'))
 
     # Load translation
     langDict = loadTable()
