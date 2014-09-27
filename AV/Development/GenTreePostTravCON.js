@@ -31,36 +31,36 @@ $(document).ready(function () {
 
   var rt1 = av.pointer("rt", rt, {anchor: "left top", top: -10});
   // Slide 1
-  av.umsg("Postorder traversals start by going as far to the left as possible");
+  av.umsg("Postorder traversals start by going as far to the left as possible.");
   av.displayInit();
 
   // Slide 2
-  av.umsg("Continue going to the left-most child until you reach a leaf node");
+  av.umsg("Continue going to the left-most child until you reach a leaf node.");
   rt1.target(a);
   av.step();
 
   // Slide 3
-  av.umsg("We have reached a leaf node, so we process this node");
+  av.umsg("We have reached a leaf node, so we process this node.");
   rt1.target(c);
   av.step();
 
   // Slide 4
-  av.umsg("We do NOT process the parent until all children have been processed");
+  av.umsg("We do NOT process the parent until all children have been processed.");
   rt1.target(a);
   av.step();
 
   // Slide 5
-  av.umsg("Continue processing children from left to right");
+  av.umsg("Continue processing children from left to right.");
   rt1.target(d, {anchor: "left top"});
   av.step();
 
   // Slide 6
-  av.umsg("Visit the next child (to the right)");
+  av.umsg("Visit the next child (to the right).");
   rt1.target(e, {anchor: "right top"});
   av.step();
   
   // Slide 7
-  av.umsg("Now we visit and process the A node");
+  av.umsg("Now we visit and process the A node.");
   rt1.target(a, {anchor: "left top"});
   av.step();
 
@@ -70,24 +70,23 @@ $(document).ready(function () {
   av.step();
 
   // Slide 9
-  av.umsg("Now we go down the right subtree of the root until we hit a leaf using the same method");
+  av.umsg("Now we go down the right subtree of the root until we hit a leaf using the same method.");
   rt1.target(b, {anchor: "right top"});
   av.step();
 
   // Slide 10
-  av.umsg("Process F");
+  av.umsg("Process F.");
   rt1.target(f, {anchor: "right bottom"});
   av.step();
 
   // Slide 11
-  av.umsg("Process B");
+  av.umsg("Process B.");
   rt1.target(b);
   av.step();
 
-  // Slied 12
-  av.umsg("Finally, process the root node");
+  // Slide 12
+  av.umsg("Finally, process the root node.");
   rt1.target(rt);
   av.step();
   av.recorded();
-
 });
