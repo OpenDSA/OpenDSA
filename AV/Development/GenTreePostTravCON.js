@@ -42,6 +42,7 @@ $(document).ready(function () {
   // Slide 3
   av.umsg("We have reached a leaf node, so we process this node.");
   rt1.target(c);
+  c.addClass("processedNode");
   av.step();
 
   // Slide 4
@@ -52,20 +53,30 @@ $(document).ready(function () {
   // Slide 5
   av.umsg("Continue processing children from left to right.");
   rt1.target(d, {anchor: "left top"});
+  d.addClass("processedNode");
   av.step();
 
   // Slide 6
-  av.umsg("Visit the next child (to the right).");
-  rt1.target(e, {anchor: "right top"});
+  av.umsg("pop back to the parent");
+  rt1.target(a);
   av.step();
   
   // Slide 7
-  av.umsg("Now we visit and process the A node.");
+  av.umsg("visit the next child");
+  rt1.target(e, {anchor: "right top"});
+  e.addClass("processedNode");
+  av.step();
+
+  av.umsg("pop back to the parent");
   rt1.target(a, {anchor: "left top"});
   av.step();
 
+  av.umsg("Since there are no more unvisited children, we process node A")
+  a.addClass("processedNode");
+  av.step();
+
   // Slide 8
-  av.umsg("");
+  av.umsg("pop back to the root");
   rt1.target(rt);
   av.step();
 
@@ -77,16 +88,19 @@ $(document).ready(function () {
   // Slide 10
   av.umsg("Process F.");
   rt1.target(f, {anchor: "right bottom"});
+  f.addClass("processedNode");
   av.step();
 
   // Slide 11
   av.umsg("Process B.");
   rt1.target(b);
+  b.addClass("processedNode");
   av.step();
 
   // Slide 12
   av.umsg("Finally, process the root node.");
   rt1.target(rt);
+  rt.addClass("processedNode");
   av.step();
   av.recorded();
 });
