@@ -8,15 +8,25 @@
 }
 
 #GenTreePreTravCON {
-  height: 330px;
+  height: 400px;
 }
 
 #GenTreePreTravCON .jsavoutput {
   height: 20px;
 }
 
+.processedNode{
+	border: 2px solid blue;
+}
+
 #GenTreePreTravCON .jsavtree {
-  top: 30px;
+  position: relative;
+  top: -200px;
+  left: -100px;
+}
+
+#GenTreePreTravCON .jsavcode{
+  margin-left: 10px;
 }
 
 #GenTreePostTravCON {
