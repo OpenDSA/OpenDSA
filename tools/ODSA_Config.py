@@ -413,11 +413,11 @@ def get_translated_text(lang_):
         # Force python to maintain original order of JSON objects (or else the chapters and modules will appear out of order)
         lang_text_json = json.load(msg_trans)
         if lang_ in lang_text_json:
-           lang_text = lang_text_json[lang_]["jinja"]
+          lang_text = lang_text_json[lang_]["jinja"]
         else:
-           print_err('WARNING: Translation for "' + lang_ + '" not found, the language has been switched to english')
-           lang_text = lang_text_json["en"]["jinja"]
-           final_lang = "en"
+          print_err('WARNING: Translation for "' + lang_ + '" not found, the language has been switched to english')
+          lang_text = lang_text_json["en"]["jinja"]
+          final_lang = "en"
    except ValueError, err:
       # Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
       msg = err.message
@@ -541,7 +541,8 @@ class ODSA_Config:
     self.rel_book_output_path = 'html/'
 
     # The Unix-style relative path between the build directory and the OpenDSA root directory
-    self.rel_build_to_odsa_path = os.path.relpath(self.odsa_dir, self.book_dir + 'html/').replace("\\", "/") + '/'
+    self.rel_build_to_odsa_path = os.path.relpath(self.odsa_dir, self.book_dir + self.rel_book_output_path).replace("\\", "/") + '/'
+
 
 
 # Code to execute when run as a standalone program

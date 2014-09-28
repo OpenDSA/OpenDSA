@@ -49,6 +49,8 @@ var server = SCORE_SERVER ? SCORE_SERVER : typeof OpenPopKa !== "undefined" ? "h
 BOOK_ID = BOOK_ID ? BOOK_ID : typeof OpenPopKa !== "undefined"? "CS3114": null;
 var SESSION_KEY = 'phantom-key';
 
+var exerciseName = Khan.getSeedInfo().sha1;
+
 $(Exercises)
     .bind("problemTemplateRendered", problemTemplateRendered)
     .bind("newProblem", newProblem)
@@ -810,11 +812,11 @@ function updatePoints() {
   jsonData.module = MODULE_NAME;
   jsonData.key = SESSION_KEY;
 
-  var exerciseName = Khan.getSeedInfo().sha1;
-
   $('#points-area').empty();
 
-  if (server !== null) {
+  // Don't display the user's progress if there is no score server to
+  // check or if no one is logged in (since there is a shared guest account on the server)
+  if (server !== null && SESSION_KEY !== 'phantom-key') {
     // Load in the exercise data from the server
     jQuery.ajax({
       // Do a request to the server API
