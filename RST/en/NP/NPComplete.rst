@@ -260,6 +260,8 @@ Another such problem is called K-CLIQUE.
    **Output:** YES if there is a complete subgraph of at
    least :math:`k` vertices, and NO otherwise.
 
+.. avembed:: AV/Development/clique.html ss
+
 Nobody knows whether there is a polynomial time solution for
 K-CLIQUE, but if such an algorithm is found for K-CLIQUE *or*
 for TRAVELING SALESMAN, then that solution can be modified to solve
@@ -460,6 +462,8 @@ NP-completeness proof is done.
    **Output:** YES if the expression can be satisfied, NO
    otherwise.
 
+.. avembed:: AV/Development/sat.html ss
+
 .. topic:: Example
 
    3 SAT is a special case of SAT.
@@ -562,6 +566,8 @@ Next we define the problem VERTEX COVER for use in further examples.
    vertices in :math:`G` of size :math:`k` or less such that every
    edge of :math:`G` has at least one of its endpoints in :math:`S`,
    and NO otherwise.
+
+.. avembed:: AV/Development/vertexcover.html ss
 
 .. topic:: Example
 
@@ -692,3 +698,6 @@ Next we define the problem VERTEX COVER for use in further examples.
    That truth assignment satisfies :math:`B`.
 
    We conclude that K-CLIQUE is NP-hard, therefore NP-complete.
+
+.. avembed:: AV/Development/3satToClique.html ss
+

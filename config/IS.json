@@ -36,6 +36,10 @@
           }
         }
       },
+      "IS/CompleteTree": {
+        "long_name": "Array Implementation for Complete Trees",
+        "exercises": {}
+      },
       "IS/AVL": {
         "long_name": "The AVL Tree",
         "exercises": {}

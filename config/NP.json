@@ -17,7 +17,7 @@
   },
   "chapters": {
     "Limits to Computing": {
-      "Development/Reduction": {
+      "NP/Reduction": {
         "long_name": "Reductions",
         "exercises": {
           "pairToSortReduction": {
@@ -36,11 +36,11 @@
           }
         }
       },
-      "Development/NPComplete": {
+      "NP/NPComplete": {
         "long_name": "NP-Complete Problems",
         "exercises": {}
       },
-      "Development/NPCoping": {
+      "NP/NPCoping": {
         "long_name": "Coping with NP-complete problems",
         "exercises": {}
       }

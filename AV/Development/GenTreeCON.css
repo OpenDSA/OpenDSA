@@ -11,6 +11,23 @@
   height: 330px;
 }
 
+#GenTreePreTravCON .jsavoutput {
+  height: 20px;
+}
+
+#GenTreePreTravCON .jsavtree {
+  top: 30px;
+}
+
 #GenTreePostTravCON {
   height: 330px;
 }
+
+#GenTreePostTravCON .jsavoutput {
+  height: 20px;
+}
+
+#GenTreePostTravCON .jsavtree {
+  top: 30px;
+}
+

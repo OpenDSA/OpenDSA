@@ -165,3 +165,14 @@ Notice lines that look like::
 
 This will make your styling changes on the tree nodes only affect that
 particular slideshow.
+
+Slideshows
+----------
+
+The text in slideshows should be complete sentences.
+Which means that nearly always, there should be a period at the end of
+the sentence.
+The only exception would be when a series of slides is building up a
+sentence, such as if one slide said "First we do this...", and then
+the following slide replaced it with
+"First we do this, then we do that."
