@@ -6,7 +6,7 @@ Written by Junyang Chen and Cliff Shaffer
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title>Array-Based List Deletion Proficiency Exercise</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
@@ -19,12 +19,11 @@ Written by Junyang Chen and Cliff Shaffer
   <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
   <link rel="stylesheet" href="alistPRO.css" type="text/css" />
 </head>
-<body>
-
+<body data-height="720" data-width="950">
 <div class="exercise">
   <div class="vars">
     <var id="arr_size">randRange(1, 6)</var>
-	<var id="delete_pos">randRange(0, arr_size-1)</var>
+    <var id="delete_pos">randRange(0, arr_size-1)</var>
     <var id="JSAV">initJSAV(arr_size, delete_pos)</var>
   </div>
 
@@ -50,14 +49,14 @@ Written by Junyang Chen and Cliff Shaffer
         <div class="validator-function">
           if (!checkAnswer(arr_size) && !guess[0])
             return ""; // User did not click, and correct answer is not
-	               // initial array state
+                 // initial array state
           else return checkAnswer(arr_size);
         </div>
       </div>
       <div class="hints">
-        <p>Move the element being deleted to the return box.</p> 
+        <p>Move the element being deleted to the return box.</p>
         <p>If "current" is not the last element of the array, shift
-          all elements after "current" one position to the left.</p> 
+          all elements after "current" one position to the left.</p>
       </div>
     </div>
   </div>

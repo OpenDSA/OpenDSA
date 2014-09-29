@@ -179,11 +179,15 @@ class avembed(Directive):
       else:
         print_err('ERROR: Unable to parse dimensions of %s' % av_path)
 
+        # Use reasonable defaults
+        self.options['width'] = 950
+        self.options['height'] = 650
+
         if 'err' in dimensions:
           print_err('  %s' % str(dimensions['err']))
 
         # Use XML files as a backup until data attributes have been implemented for all exercises
-        # TODO: Remove embedlocal and replace this section with hardcoded defaults after XML files have been removed
+        # TODO: Remove embedlocal and replace this section after XML files have been removed
         embed = embedlocal(av_path)
         self.options['width'] = embed[2]
         self.options['height'] = embed[3]

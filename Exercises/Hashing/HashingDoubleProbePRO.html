@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title>Double Hashing Proficiency Exercise</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
@@ -17,8 +17,7 @@
     #reset { margin-right: 20px;}
   </style>
 </head>
-
-<body>
+<body data-height="750" data-width="950">
 <script>
 var
   jsav,           // The JSAV object
@@ -62,7 +61,7 @@ var randomizeInputData = function() {
       val,
       count,
       solutionArray;
-  
+
   arr.length = arr_size; // set the size of the array
   // randomize keys to the indices tested by the hash function; as many as we like the student
   // to think about (see tries above)
@@ -146,7 +145,7 @@ var getH2 = function(K) {
 </script>
 
 <div class="exercise">
-    <div class="vars">                
+    <div class="vars">
       <var id="JSAV">initJSAV()</var>
       <var id="hashFunction">"h(k) = k  mod " + arr_size</var>
       <var id="H1">getH1(currentKey)</var>
@@ -159,14 +158,14 @@ var getH2 = function(K) {
           function <var>hashFunction</var> and handle collisions
           using Double Hashing with probe function
           p(K, i) = i*h2(K), and h2(K) = 1 + (k % 10).
-        </p>          
-        <p class="question"> 
+        </p>
+        <p class="question">
           In which slot should the record with key
           value <var>currentKey</var> be inserted?
         </p>
-	<p>h1(<var>currentKey</var>) = <var>H1</var>.</p>
-	<p>h2(<var>currentKey</var>) = <var>H2</var>.</p>
-        <input id="reset" type="button" value="Reset" />  
+  <p>h1(<var>currentKey</var>) = <var>H1</var>.</p>
+  <p>h2(<var>currentKey</var>) = <var>H2</var>.</p>
+        <input id="reset" type="button" value="Reset" />
         <div id="jsav"></div>
       <div class="solution" data-type="custom">
         <div class="guess">
@@ -183,7 +182,7 @@ var getH2 = function(K) {
         <p>First, we hash to the home slot with the first hash function.</p>
         <p>If there is a collistion, then we use the second hash
           function to compute a stepsize.</p>
-	<p>We then use linear probing by the computed step size.</p>
+  <p>We then use linear probing by the computed step size.</p>
       </div>
     </div>
   </div>

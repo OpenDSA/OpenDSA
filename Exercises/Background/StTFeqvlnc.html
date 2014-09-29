@@ -6,8 +6,7 @@
   <script src="../../lib/jquery-ui.min.js"></script>
 <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
 </head>
-
-<body>
+<body data-height="650" data-width="950">
 <div class="exercise">
   <div class="vars">
     <var id="CHOICESINDEX">randRange(0,5)</var>
@@ -26,21 +25,21 @@
       <p class="question"><var>CHOICES[CHOICESINDEX]</var></p>
       <div class="solution"><var>ANSWER[CHOICESINDEX]</var></div>
       <ul class="choices" data-category="true">
-	<li><var>"True"</var></li>
-	<li><var>"False"</var></li>			  	  	 
+        <li><var>"True"</var></li>
+        <li><var>"False"</var></li>
       </ul>
       <div class="hints">
         <p> A relation is an equivalence relation if it is reflextive,
         symmetric, and transitive.</p>
-	<p> Is the relation reflexive? That is, for every element A in
-	the set, is (A, A) in the relation?</p>
+        <p> Is the relation reflexive? That is, for every element A in
+            the set, is (A, A) in the relation?</p>
         <p> Is the relation symmetric? That is, for every pair A, B of
             distinct elements in the set, if (A, B) is in the
             relation, is (B, A) also in the relation?</p>
-        <p>Is the relation transitive? That is, for every triple A, B,
-           and C of distinct elements in the set, if (A, B) is in the
-           relation and (B, C) is in the relation, is (A, C) also in
-           the relation?</p>
+        <p> Is the relation transitive? That is, for every triple A, B,
+            and C of distinct elements in the set, if (A, B) is in the
+            relation and (B, C) is in the relation, is (A, C) also in
+            the relation?</p>
       </div>
     </div>
   </div>

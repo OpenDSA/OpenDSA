@@ -22,12 +22,10 @@
     }
   </style>
 </head>
-<body>
-
+<body data-height="750" data-width="950">
 <script src="../../AV/Development/TreeIndexingPRO.js"></script>
 
 <div class="exercise">
-
   <div class="vars">
     <var id="temp">10</var>
     <var id="tree_root">window.ODSA.initJSAV()</var>
@@ -40,14 +38,14 @@
         <p>
           Starting at the root of the binary search tree, determine how many
           disk accesses are required to reach the selected (highlighted) node.
-          <br>
-          <br>
-          <b>Assumptions:</b><br>
-            1) Same color nodes are in the same disk block.<br>
+          <br />
+          <br />
+          <b>Assumptions:</b><br />
+            1) Same color nodes are in the same disk block.<br />
             2) Consecutive reads from the same color block only count as one
-            disk access.<br>
+            disk access.<br />
             3) Consider only the direct path from the root to the
-            selected node.<br>
+            selected node.<br />
             4) There are no buffers. Every new block read has to be read from
             disk and never from memory.
         </p>
@@ -56,7 +54,6 @@
         </div>
       </div>
       <p class="solution" data-type="text"><var>answer</var></p>
-
       <div class="hints">
         <p>
           Accessing the root node always takes one disk access.
@@ -70,7 +67,6 @@
           node) if the color is different from the parent node.
         </p>
       </div>
-
     </div>
   </div>
 </div>
