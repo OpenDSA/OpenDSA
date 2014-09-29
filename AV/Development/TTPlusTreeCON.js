@@ -71,7 +71,7 @@
   var label = av.label("Insert:"); // Label for insert values
   label.addClass('insert-label');
   var lw = $(label.element).outerWidth();
-  label.css({"left": (w - aw - lw - 15) + "px", "top": "10px"});
+  label.css({"left": (w - aw - lw - 15) + "px", "top": "25px"});
   step(false, true);
 
   // Slide 2
