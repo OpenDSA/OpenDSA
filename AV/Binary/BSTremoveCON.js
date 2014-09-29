@@ -38,37 +38,72 @@ $(document).ready(function () {
   av.step();
 
   // Slide 3
-  av.umsg("Since 37 is greater than the value we want to delete (30), we go left.");
+  av.umsg("Compare the root value of 37 to the value that we want to delete (30). Since 37 is greater, we will left.");
   pseudo.setCurrentLine("visitleft");
-  rt.addClass("processing");
-  rt1.target(rt.left());
   av.step();
 
   // Slide 4
-  av.umsg("Since 24 is less than the value we want to delete (30), we go right.");
-  pseudo.setCurrentLine("visitright");
-  rt.left().addClass("processing");
-  rt1.target(rt.left().right(), {anchor: "right top"});
+  rt.addClass("processing");
+  rt1.target(rt.left());
+  av.umsg("Now we start the recursive call on removehelp with 24 as the root.");
+  pseudo.setCurrentLine("sig");
   av.step();
 
   // Slide 5
-  av.umsg("Since 32 is greater than the value we want to delete (30), we go left.");
-  pseudo.setCurrentLine("visitleft");
-  rt.left().right().addClass("processing");
-  rt1.target(rt.left().right().left(), {anchor: "left top"});
+  av.umsg("The subtree is not null");
+  pseudo.setCurrentLine("checknull");
   av.step();
 
   // Slide 6
-  av.umsg("Now we have found the value that we want to delete.");
-  pseudo.setCurrentLine("found");
+  av.umsg("Compare rt's value of 24 against the search key value of 32. 24 is not greater than 32.");
+  pseudo.setCurrentLine("checkless");
   av.step();
 
   // Slide 7
+  av.umsg("So check whether 24 is less than the search key of 32.");
+  pseudo.setCurrentLine("checkgreater");
+  av.step();
+
+  // Slide 8
+  av.umsg("Since 24 is less than the value we want to delete (30), we wil make a recursive call on the right subtree.");
+  pseudo.setCurrentLine("visitright");
+  av.step();
+
+  // Slide 9
+  rt.left().addClass("processing");
+  rt1.target(rt.left().right(), {anchor: "right top"});
+  av.umsg("Now we start the recursive call on removehelp with 32 as the root.");
+  pseudo.setCurrentLine("sig");
+  av.step();
+
+  // Slide 10
+  av.umsg("The subtree is not null");
+  pseudo.setCurrentLine("checknull");
+  av.step();
+
+  // Slide 11
+  av.umsg("Since 32 is greater than the value we want to delete (30), we will go left.");
+  pseudo.setCurrentLine("visitleft");
+  av.step();
+
+  // Slide 12
+  rt.left().right().addClass("processing");
+  rt1.target(rt.left().right().left(), {anchor: "left top"});
+  pseudo.setCurrentLine("sig");
+  av.umsg("Start the recursive call again. As usual, we are going to check if the root is null, then if its value is greater or less than what we want to delete");
+  av.step();
+
+  // Slide 13
+  av.umsg("This time, we have found the value that we want to delete.");
+  pseudo.setCurrentLine("found");
+  av.step();
+
+  // Slide 14
   av.umsg("Since the value of the left child of 30 is null, we can just return that node's right pointer back to the parent. Since the node with value 30 is a leaf node, that right pointer also happens to be null.");
   pseudo.setCurrentLine("checkleft");
   av.step();
   
-  // Slide 8
+  // Slide 15
   av.umsg("Unwind the recursion, and set the left pointer of the node with value of 32");
   rt.left().right().removeClass("processing");
   rt1.target(rt.left().right(), {anchor: "right top"});
@@ -76,7 +111,7 @@ $(document).ready(function () {
   pseudo.setCurrentLine("visitleft");
   av.step();
 
-  // Slide 9
+  // Slide 16
   av.umsg("Unwind the recursion, and set the right pointer of the node with value of 24");
   var temp = rt.left().edgeToRight();
   temp.addClass("rededge");
@@ -85,7 +120,7 @@ $(document).ready(function () {
   pseudo.setCurrentLine("visitright");
   av.step();
 
-  // Slide 10
+  // Slide 17
   av.umsg("Unwind the recursion, and set the left pointer of the node with value of 37");
   temp1 = rt.edgeToLeft();
   temp1.addClass("rededge");
@@ -94,7 +129,7 @@ $(document).ready(function () {
   pseudo.setCurrentLine("visitleft");
   av.step();
 
-  // Slide 11
+  // Slide 18
   av.umsg("Now we return from the initial call to removehelp, setting the root of the tree to the result");
   rt1.arrow.addClass("thinredline");
   // This line should not be needed, but it is here to fix Raphael bug with arrows
@@ -102,8 +137,8 @@ $(document).ready(function () {
   pseudo.setCurrentLine("end");
   av.step();
 
-  // Slide 12
-  av.umsg("Now let's try something a little bit harder. We will see what happens when we remove 32.");
+  // Slide 19
+  av.umsg("Now let's try something a little bit harder. We will see what happens when we remove 32. We won't show all of the details of direction tests and the multiple recursive calls this time.");
   pseudo.setCurrentLine("sig");
   pseudo.unhighlight("end");
   rt1.arrow.removeClass("thinredline");
@@ -115,28 +150,28 @@ $(document).ready(function () {
   bt.layout();
   av.step();
 
-  // Slide 13
+  // Slide 20
   av.umsg("As always, the first thing that we do is check if the root is null. Since it is not, we are going to be recursively descending the tree until we find the value that we are looking for (if it exists).");
   pseudo.setCurrentLine("checknull");
   av.step();
 
-  // Slide 14
+  // Slide 21
   av.umsg("Since 37 is greater than the value we want to delete (32), we go left.");
   pseudo.setCurrentLine("visitleft");
   rt.addClass("processing");
   rt1.target(rt.left());
   av.step();
 
-  // Slide 15
+  // Slide 22
   av.umsg("Since 24 is less than the value we want to delete (32), we go right.");
   pseudo.setCurrentLine("visitright");
   rt.left().addClass("processing");
   rt1.target(rt.left().right(), {anchor: "right top"});
   av.step();
 
-  // Slide 16
+  // Slide 23
   av.umsg("Now we have found the value that we want to delete.");
-  pseudo.setCurrentLine("checkgreater");
+  pseudo.setCurrentLine("found");
   av.step();
 
   // Slide 17

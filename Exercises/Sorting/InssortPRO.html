@@ -6,7 +6,7 @@ Written by Gayathri Subramanian and Cliff Shaffer
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title>Insertion Sort Proficiency Exercise</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
@@ -17,8 +17,7 @@ Written by Gayathri Subramanian and Cliff Shaffer
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
   <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
 </head>
-<body>
-
+<body data-height="650" data-width="950">
 <script>
 var
   jsav,           // The JSAV object
@@ -121,7 +120,7 @@ var checkAnswer = function (arr_size) {
   <div class="problems">
     <div> <!-- Supresses answer box -->
       <p class="problem">Your task in this exercise is to show the
-	behavior for one iteration of the outer for loop of Insertion Sort.
+        behavior for one iteration of the outer for loop of Insertion Sort.
         In the array displayed below, the record at
         position <var>sort_pos</var> is highlighted. Insertion Sort has
         already processed the values to the left of
@@ -129,7 +128,7 @@ var checkAnswer = function (arr_size) {
       <div class="question">
         <p> Perform the next part of Insertion Sort to move the
             highlighted record to its proper place in the array.</p>
-        <input id="reset" type="button" value="Reset" />	
+        <input id="reset" type="button" value="Reset" />
         <div id="jsav" class="jsavcanvas"></div>
       </div>
       <div class="solution" data-type="custom">
@@ -139,13 +138,13 @@ var checkAnswer = function (arr_size) {
         <div class="validator-function">
           if (!checkAnswer(arr_size) && !guess[0])
             return ""; // User did not click, and correct answer is not
-	               // initial array state
+                 // initial array state
           else return checkAnswer(arr_size);
         </div>
       </div>
       <div class="hints">
-        <p>Insert the highlighted element into its proper position in the array using Insertion Sort.</p> 
-	<p>Nothing to the right of position <var>sort_pos</var> should be changed.</p>
+        <p>Insert the highlighted element into its proper position in the array using Insertion Sort.</p>
+        <p>Nothing to the right of position <var>sort_pos</var> should be changed.</p>
         <p>All elements from position 0 to position <var>sort_pos</var> should be in ascending order.</p>
       </div>
     </div>

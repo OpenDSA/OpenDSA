@@ -3,11 +3,11 @@
 // Pre-order traversal slideshow
 $(document).ready(function () {
   var av_name = "GenTreePreTravCON";
-  //var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
-     // interpret = config.interpreter,       // get the interpreter
-      //code = config.code;                   // get the code object
+  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+  interpret = config.interpreter,       // get the interpreter
+  code = config.code;                   // get the code object
   var av = new JSAV(av_name);
-  //var pseudo = av.code(code);
+  var pseudo = av.code(code);
   var temp1;
 
   var gt = av.ds.tree({visible: true, nodegap: 35});
@@ -31,65 +31,126 @@ $(document).ready(function () {
 
   var rt1 = av.pointer("rt", rt, {anchor: "left top", top: -10});
   // Slide 1
-  av.umsg("Preorder traversals start by analyzing the root node");
+  pseudo.setCurrentLine("processNode");
+  av.umsg("Preorder traversals start by processing the root node.");
   av.displayInit();
 
-  // Slide 2
-  av.umsg("The left child is examined next, and is treated as the root of a new subtree");
+  rt.addClass("processedNode");
+  pseudo.setCurrentLine("checkLeaf");
+  av.step();
+  pseudo.setCurrentLine("leftChild");
+  av.step();
+  pseudo.setCurrentLine("checkNull");
+  av.step();
+  av.umsg("Next we visit the left most child");
+  pseudo.setCurrentLine("processChild");
+  av.step();
+
+  av.umsg("This node is processed next, and is treated as the root of a new subtree.");
+  pseudo.setCurrentLine("processNode");
   rt1.target(a);
   av.step();
 
-  // Slide 3
-  av.umsg("Continue Examining the left children");
-  rt1.target(c, {anchor: "right top"});
+  a.addClass("processedNode");
+  pseudo.setCurrentLine("checkLeaf");
   av.step();
-
-  // Slide 4
-  av.umsg("Now we arrive at the leaf node C. After processing, must go back to previous rt");
+  pseudo.setCurrentLine("leftChild");
   av.step();
-
-  // Slide 5
-  av.umsg("We have already examined node A");
+  pseudo.setCurrentLine("checkNull");
+  av.step();
+  av.umsg("Next we visit the left most child");
+  pseudo.setCurrentLine("processChild");
+  av.step();
+  av.umsg("This node is processed next, and is treated as the root of a new subtree.");
+  pseudo.setCurrentLine("processNode");
+  rt1.target(c);
+  av.step();
+  c.addClass("processedNode");
+  pseudo.setCurrentLine("checkLeaf");
+  av.umsg("Since this is a leaf, we pop back to the parent");
+  av.step();
+  pseudo.setCurrentLine("checkLeaf");
   rt1.target(a);
+  av.step();
+
+  av.umsg("Continue Examining the left children.");
+  pseudo.setCurrentLine("getNextSibling");
+  av.step();
+  pseudo.setCurrentLine("checkNull");
+  av.step();
+  pseudo.setCurrentLine("processChild");
+  av.step();  
+  rt1.target(d);
+  pseudo.setCurrentLine("processNode");
+  av.step();
+  d.addClass("processedNode");
+  pseudo.setCurrentLine("checkLeaf");
+  av.step();
+  av.umsg("Since this is a leaf, we pop back to the parent");
+  rt1.target(a);
+  pseudo.setCurrentLine("getNextSibling"); 
+  av.step();
+  pseudo.setCurrentLine("checkNull");
+  av.step();
+  pseudo.setCurrentLine("processChild");
   av.step();
 
   // Slide 6
-  av.umsg("Visit the next child (to the right) of node A");
-  rt1.target(d, {anchor: "left top"});
+  av.umsg("Visit the next child of node A.");
+  rt1.target(e, {anchor: "right top"});
+  pseudo.setCurrentLine("processNode");
+  av.step();
+  e.addClass("processedNode");
+  pseudo.setCurrentLine("checkLeaf");
   av.step();
   
-  // Slide 7
-  av.umsg("Process the node");
+  av.umsg("Since this is a leaf, we pop back to the parent");
+  rt1.target(a);
+  pseudo.setCurrentLine("getNextSibling"); 
   av.step();
-
-  // Slide 8
-  av.umsg("Since this is another leaf, we return to the parent");
-  rt1.target(a, {anchor: "left top"});
+  pseudo.setCurrentLine("checkNull");
   av.step();
-
-  // Slide 9
-  av.umsg("Continue traversing the subtree with A as the root and process the node");
-  rt1.target(e, {anchor: "left top"});
+  av.umsg("We have no children left to be processed.");
   av.step();
-
-  // Slide 10
-  av.umsg("Return to parent");
-  rt1.target(a, {anchor: "left top"});
+  pseudo.setCurrentLine("getNextSibling"); 
+  av.umsg("We pop back up to the parent node."); 
+  rt1.target(rt);
   av.step();
-
-  // Slide 11
-  av.umsg("Continue going back up the tree");
-  rt1.target(rt)
+  pseudo.setCurrentLine("checkNull");
   av.step();
-
-  // Slied 12
-  av.umsg("Visit and process the right child");
+  pseudo.setCurrentLine("processChild");
+  av.step();
+  rt1.target(b);
+  pseudo.setCurrentLine("processNode");
+  av.step();
+  b.addClass("processedNode");
+  pseudo.setCurrentLine("checkLeaf");
+  av.step();
+  av.umsg("Continue Examining the left children.");
+  pseudo.setCurrentLine("leftChild");
+  av.step();
+  pseudo.setCurrentLine("checkNull"); 
+  av.step();
+  pseudo.setCurrentLine("processChild");
+  av.step();  
+  rt1.target(f);
+  pseudo.setCurrentLine("processNode");
+  av.step();
+  f.addClass("processedNode");
+  pseudo.setCurrentLine("checkLeaf");
+  av.step();
+  av.umsg("We have no children left to be processed.");
+  av.step();
+  pseudo.setCurrentLine("getNextSibling"); 
+  av.umsg("We pop back up to the parent node."); 
   rt1.target(b);
   av.step();
-
-  // Slide 13
-  av.umsg("Treat the B node as the new root and start processing this subtree");
-  rt1.target(f);
+  pseudo.setCurrentLine("checkNull");
+  av.step();
+  av.umsg("We have no children left to be processed.");
+  av.step(); 
+  rt1.target(rt);
+  pseudo.setCurrentLine("end");
   av.recorded();
 
 });

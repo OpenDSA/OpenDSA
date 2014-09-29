@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title>Alternate Bucket Hashing Exercise</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
@@ -45,8 +45,7 @@
     .jsavcanvas { height: 350px;}
   </style>
 </head>
-
-<body>
+<body data-height="780" data-width="950">
 <script>
 "use strict";
 var
@@ -164,7 +163,7 @@ var initJSAV = function (key, steps) {
   // Set up handler for reset button
   $("#reset").click(function () { f_reset(); });
 };
-	
+
 // Check user's answer for correctness
 function checkAnswer() {
   var i;
@@ -191,29 +190,29 @@ function checkAnswer() {
   <div class="problems">
     <div> <!-- Supresses answer box -->
       <div class="question">
-	<p>You are given a hash table of 5 buckets, each of size 2.
+        <p>You are given a hash table of 5 buckets, each of size 2.
           Using the <b>alternate</b> bucket hash method described above,
-	  put key value <var>iKey</var> into the hash table.</p>
+          put key value <var>iKey</var> into the hash table.</p>
         <input id="reset" type="button" value="Reset" />
-	<div id="jsav" class="jsavcanvas"></div>
+        <div id="jsav" class="jsavcanvas"></div>
       </div>
       <div class="solution" data-type="custom">
-	<div class="guess">
+        <div class="guess">
           [userInput]
         </div>
-	<div class="validator-function">
+        <div class="validator-function">
           if (!checkAnswer(arr_size) && !guess[0])
           return ""; // User did not click, and correct answer is not
-	             // initial array state
+               // initial array state
           else return checkAnswer(arr_size);
-	</div>
+        </div>
       </div>
       <div class="hints">
         <p>The alternate bucket hash first hashes to a home slot in the
           normal way.</p>
         <p>If there is a collision, then linear probing is used to
           locate another slot <b>within that bucket</b>.
-	<p>If the bucket is full, then put the record into the overflow.</p>
+        <p>If the bucket is full, then put the record into the overflow.</p>
       </div>
     </div>
   </div>

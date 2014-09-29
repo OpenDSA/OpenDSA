@@ -310,7 +310,7 @@ def initialize_conf_py_options(config, slides):
   options['av_root_dir'] = config.av_root_dir
   options['exercises_root_dir'] = config.exercises_root_dir
   # The relative path between the ebook output directory (where the HTML files are generated) and the root ODSA directory
-  options['eb2root'] = os.path.relpath(config.odsa_dir, config.book_dir + config.rel_book_output_path) + '/'
+  options['eb2root'] = config.rel_build_to_odsa_path
   options['rel_book_output_path'] = config.rel_book_output_path
   options['slides_lib'] = 'hieroglyph' if slides else ''
 

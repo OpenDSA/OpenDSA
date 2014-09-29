@@ -4,7 +4,7 @@ Written by Cliff Shaffer -->
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title>Open Hashing Exercise</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
@@ -34,8 +34,7 @@ Written by Cliff Shaffer -->
     .jsavcanvas { height: 460px;}
   </style>
 </head>
-
-<body>
+<body data-height="840" data-width="950">
 <script>
 "use strict";
 var
@@ -137,7 +136,7 @@ var initJSAV = function (asize) {
     }
   }
 };
-	
+
 // Check user's answer for correctness
 function checkAnswer(arr_size) {
   var i, j;
@@ -163,30 +162,30 @@ console.log("curr is " + curr + ", arr_size is " + arr_size);
   <div class="problems">
     <div> <!-- Supresses answer box -->
       <div id="problem-type-or-description">
-	<p class="problem">On the left is an array of numbers that are
-	  to be inserted into the hash table on the right. The hash
-	  table uses open hashing to deal with collisions.</p>
-	<p class="question"> Move each record on the left to the
+        <p class="problem">On the left is an array of numbers that are
+          to be inserted into the hash table on the right. The hash
+          table uses open hashing to deal with collisions.</p>
+        <p class="question"> Move each record on the left to the
           appropriate bin on the right when using the simple mod hash
           function.</p>
-	<input id="reset" type="button" value="Reset" />
-	<div id="jsav" class="jsavcanvas"></div>
-	<div class="solution" data-type="custom">
-	  <div class="guess">
+        <input id="reset" type="button" value="Reset" />
+        <div id="jsav" class="jsavcanvas"></div>
+        <div class="solution" data-type="custom">
+          <div class="guess">
             [userInput]
           </div>
-	  <div class="validator-function">
+          <div class="validator-function">
             if (!checkAnswer(arr_size) && !guess[0])
             return ""; // User did not click, and correct answer is not
                        // initial array state
             else return checkAnswer(arr_size);
-	  </div>
-	</div>
+          </div>
+        </div>
       </div>
       <div class="hints">
         <p>This is easy. Just click on each value from top to bottom
           in the left array ...</p>
-	<p>... compute modulo 10, and click on that bin in the right array.</p>
+        <p>... compute modulo 10, and click on that bin in the right array.</p>
       </div>
     </div>
   </div>

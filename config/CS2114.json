@@ -111,6 +111,49 @@
         }
       }
     },
+    "Array-based Stacks": {
+      "List/StackArray": {
+        "long_name": "Array-based Stacks",
+          "exercises": {
+          "astackVarCON": {
+            "long_name": "Array stack variables slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "astackTopCON": {
+            "long_name": "Array stack top position slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "astackPushCON": {
+            "long_name": "Array stack push slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "astackPopCON": {
+            "long_name": "Array stack pop slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "astackPushPRO": {
+            "long_name": "Array-based Stack Push Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "astackPopPRO": {
+            "long_name": "Array-based Stack Pop Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
+      }
+    },
     "Linked Lists": {
       "List/ListLinked": {
         "long_name": "Linked Lists",
@@ -226,50 +269,34 @@
             "threshold": 1.0
           }
         }
-      }
-    },
-    "Stacks": {
-      "List/StackArray": {
-        "long_name": "Array-based Stacks",
-          "exercises": {
-          "astackVarCON": {
-            "long_name": "Array stack variables slideshow",
+      },
+      "List/ListElement": {
+        "long_name": "List Element Implementations",
+        "exercises": {
+          "listElementDataCON": {
+            "long_name": "List Element Data",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "astackTopCON": {
-            "long_name": "Array stack top position slideshow",
+          "listElementTypeCON": {
+            "long_name": "List Element Type",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "astackPushCON": {
-            "long_name": "Array stack push slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
+          "listElementDeleteCON": {
           },
-          "astackPopCON": {
-            "long_name": "Array stack pop slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "astackPushPRO": {
-            "long_name": "Array-based Stack Push Exercise",
+          "LstSumm": {
+            "long_name": "List Summary Questions",
             "required": true,
             "points": 1,
-            "threshold": 5
-          },
-          "astackPopPRO": {
-            "long_name": "Array-based Stack Pop Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
+            "threshold": 3
           }
         }
-      },
+      }
+    },
+    "Linked Stacks and Queues": {
       "List/StackLinked": {
         "long_name": "Linked Stacks",
         "exercises": {
@@ -311,9 +338,7 @@
             "threshold": 1.0
           }
         }
-      }
-    },
-    "Queues": {
+      },
       "List/Queue": {
         "long_name": "Queues",
         "exercises": {

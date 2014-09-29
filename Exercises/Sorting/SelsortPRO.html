@@ -6,7 +6,7 @@ Written by Gayathri Subramanian and Cliff Shaffer
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title>Selection Sort Proficiency Exercise</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
@@ -24,8 +24,7 @@ Written by Gayathri Subramanian and Cliff Shaffer
     #reset { margin-right: 20px;}
   </style>
 </head>
-
-<body>
+<body data-height="560" data-width="950">
 <script>
 var
   jsav,           // The JSAV object
@@ -134,14 +133,14 @@ var checkAnswer = function (arr_size) {
   <div class="problems">
     <div> <!-- Supresses answer box -->
       <p class="problem">In the array of size <var>arr_size</var>
-	displayed below, the element at position <var>sort_pos</var> is
-	highlighted. The array represents an intermediate state in
-	Selection Sort, with all elements to the right of the
-	highlighted element holding the biggest values in the array.</p> 
+        displayed below, the element at position <var>sort_pos</var> is
+        highlighted. The array represents an intermediate state in
+        Selection Sort, with all elements to the right of the
+        highlighted element holding the biggest values in the array.</p>
       <div class="question">
         <p>Perform the next iteration of Selection Sort, to put the
            proper array element into the highlighted position.</p>
-        <input id="reset" type="button" value="Reset" />	
+        <input id="reset" type="button" value="Reset" />
         <div id="jsav" class="jsavcanvas"></div>
       </div>
       <div class="solution" data-type="custom">
@@ -151,7 +150,7 @@ var checkAnswer = function (arr_size) {
         <div class="validator-function">
           if (!checkAnswer(arr_size) && !guess[0])
             return ""; // User did not click, and correct answer is not
-	               // initial array state
+                 // initial array state
           else return checkAnswer(arr_size);
         </div>
       </div>

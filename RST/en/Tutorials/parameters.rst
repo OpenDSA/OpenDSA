@@ -46,7 +46,7 @@ I receive an array containing
 
 ::
 
-	{"-l", "file.txt"}
+   {"-l", "file.txt"}
 
 *\*Authors Note: I am stating this as if this is a Java terminal and not C 
 style. In C the first parameter you are given is always the command name so 
@@ -60,22 +60,22 @@ do a simple analysis of how it works.
 
 .. codeinclude:: Java/Tutorials/Main.java
 
-We have our main function which takes an array of strings. If that array is 
-empty we may or may not want to exit as we have no parameters. It will then 
-progress into a while loop that iterates through all parameters. The syntax of 
-this loop is useful as it does not lock parameters into any fixed order. You 
+We have our main function which takes an array of strings. If that array is
+empty we may or may not want to exit as we have no parameters. It will then
+progress into a while loop that iterates through all parameters. The syntax of
+this loop is useful as it does not lock parameters into any fixed order. You
 can invoke them anyway you wish. The switch case statement allows you to easily 
-write for any parameter and add a case for unrecognized parameters by using the 
-default case for any non matching parameters. In this example I choose to exit 
-printing the unrecognized string. In the future you may wish to change this to 
-something else. Switch case statements are fairly standard, but if you wish to 
-review them you may do so 
+write for any parameter and add a case for unrecognized parameters by using the
+default case for any non matching parameters. In this example I choose to exit
+printing the unrecognized string. In the future you may wish to change this to
+something else. Switch case statements are fairly standard, but if you wish to
+review them you may do so
 `here <http://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html>`__.
- It is also important to note that this function will possibly throw an 
+It is also important to note that this function will possibly throw an
 exception or behave in an unexpected way if you use "-f" but do not give a file
- name. For example you call the program with {"-f", "-v"}, this will set the 
+name. For example you call the program with {"-f", "-v"}, this will set the 
 filename to -v. Or if you call the program with {"-f"}, you will get an 
 exception for trying to access outside the array bounds. You can prevent this by
- using a try catch, but for simplicity's sake I chose to make this very simple.
- Once you have your parameters set you can write the code to launch your 
+using a try catch, but for simplicity's sake I chose to make this very simple.
+Once you have your parameters set you can write the code to launch your
 program. There you go simple command line parsing!
