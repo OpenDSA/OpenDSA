@@ -4,6 +4,12 @@
     margin-bottom: 1em;
 }
 
+#tree .node-split-rect {
+    stroke-width: 2.0;
+    stroke: rgba(250, 190, 222, 0.7);
+    fill: rgba(250, 190, 222, 0.1);
+}
+
 .jsavcanvas {
     height: 300px;
     min-height: 300px;
@@ -90,7 +96,6 @@
     background-color: #13870F;
     color: white;
 }
-
 
 
 
