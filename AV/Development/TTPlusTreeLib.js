@@ -102,7 +102,7 @@
     var cw = $(canvas).outerWidth();
     var aw = $(this.array.element).outerWidth();
     var left_offset = (cw / 2) - (aw / 2);
-    this.array.css({left: left_offset + "px", top: "5px"});
+    this.array.css({left: left_offset + "px", top: "15px"});
     return this;
   };
 
