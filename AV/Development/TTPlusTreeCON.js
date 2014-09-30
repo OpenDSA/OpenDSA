@@ -13,7 +13,7 @@
     "Insert key-value pair (46, X).",
     "The root node is a leaf node, and the right key-value pair is empty. Since 46 is less than 52, we can move 52 over to the right and insert 46 on the left",
     "Insert key-value pair (33, D).",
-    "The root node is a leaf node, and it is full. A new leaf node must be created.",
+    "The root node is a leaf node, and it is full. The root leaf node must be split.",
     "The middle (46) and highest (52) key go to the new node. The lowest key (33) goes to the old node and the smallest key on the new node gets promoted",
     "Link the two leaf nodes together.",
     "A new internal node is created. This is going to become the new root node",
@@ -28,7 +28,7 @@
     "The leaf node has to be split.",
     "The middle (52) and highest (71) key values go to the new node. The lowest (46) key value stays in the old node and the smallest key on the new node gets promoted.",
     "Link the leaf nodes together",
-    "Update the key of the parent node and add link to the leaf node.",
+    "The lowest value in the new node gets promoted and the links to the leaf nodes get updated",
     "Insert key-value pair (65, S)",
     "First look at the root node. The new key (65) is greater than the right value, so we follow the right child",
     "This is a leaf node and there is no more space to insert the new key.",
@@ -67,20 +67,11 @@
   var canvas = $(ins.array.element).parent();
   var w = $(canvas).innerWidth();
   var aw = $(ins.array.element).outerWidth();
-  var ah = $(ins.array.element).outerHeight();
   ins.move((w / 2) - aw, 0);
   var label = av.label("Insert:"); // Label for insert values
   label.addClass('insert-label');
   var lw = $(label.element).outerWidth();
-  label.css({"left": (w - aw - lw - 15) + "px", "top": "10px"});
-  // Create promote node
-  var prom = global.newNode(av, [""], false, [""]); // Array for promote values
-  prom.array.addClass('promote-node');
-  prom.move((w / 2) - aw, ah + 10);
-  label = av.label("Promote:"); // Label for promote valus
-  label.addClass('promote-label');
-  lw = $(label.element).outerWidth();
-  label.css({"left": (w - aw - lw - 15) + "px", "top": "35px"});
+  label.css({"left": (w - aw - lw - 15) + "px", "top": "25px"});
   step(false, true);
 
   // Slide 2
@@ -119,13 +110,14 @@
   n1.move(-shift, 0);
   var n2 = global.newNode(av, ["", ""], true, ["", ""]);
   n2.move(shift, 0);
+  var rect;
+  rect = global.drawRectangle(av, rect, n1, n2);
   step();
 
   // Slide 9
   av.effects.moveValue(n1.array, 0, n2.array, 0);
   av.effects.moveValue(n1.array, 1, n2.array, 1);
   av.effects.moveValue(ins.array, 0, n1.array, 0);
-  prom.array.value(0, 46);
   step();
 
   // Slide 10
@@ -137,16 +129,18 @@
   // Slide 11
   n1.move(0, nvg);
   n2.move(0, nvg);
+  rect.translateY(nvg);
+  global.drawLeafArrows(av, leafList, arrowList);
   var n3 = global.newNode(av, ["", ""], false);
   n3.addChild(n1);
   n3.addChild(n2);
   n3.hideEdges();
-  global.drawLeafArrows(av, leafList, arrowList);
   step();
 
   // Slide 12
+  rect.hide();
+  n3.value(0, 46);
   n3.showEdges();
-  av.effects.moveValue(prom.array, 0, n3.array, 0);
   step();
 
   // Fourth Insert -------------------------------------------------------------
@@ -205,12 +199,12 @@
   n3.child(1).move(-shift, 0);
   n3.updateEdges().showEdge(0).showEdge(1);
   global.drawLeafArrows(av, leafList, arrowList);
+  rect = global.drawRectangle(av, rect, n3.child(1), n4);
   step();
 
   // Slide 22
   av.effects.moveValue(n3.child(1).array, 1, n3.child(2).array, 0);
   av.effects.moveValue(ins.array, 0, n4.array, 1);
-  prom.value(0, 52);
   step();
 
   // Slide 23
@@ -219,8 +213,9 @@
   step();
 
   // Slide 24
-  av.effects.moveValue(prom.array, 0, n3.array, 1);
+  n3.value(1, 52);
   n3.showEdges();
+  rect.hide();
   step();
 
   // Sixth Insert -------------------------------------------------------------
@@ -252,12 +247,12 @@
   n3.child(2).move(-shift);
   n3.updateEdges();
   global.drawLeafArrows(av, leafList, arrowList);
+  rect = global.drawRectangle(av, rect, n3.child(2), n5);
   step();
 
   // Slide 29
   av.effects.moveValue(n3.child(2).array, 1, n5.array, 1);
   av.effects.moveValue(ins.array, 0, n5.array, 0);
-  prom.value(0, 65);
   step();
 
   // Slide 30
@@ -279,12 +274,12 @@
   n3.move(-shift, 0);
   n6.move(shift, 0);
   n3.updateEdges();
+  var rect2;
+  rect2 = global.drawRectangle(av, rect2, n3, n6);
   step();
 
   // Slide 34
-  av.effects.moveValue(prom.array, 0, n6.array, 0);
-  prom.value(0, "52");
-//  av.effects.moveValue(n3.array, 1, n6.array, 0);
+  n6.value(0, 65);
   n3.value(1, "");
 //  n6.value(0, 65);
   step();
@@ -294,6 +289,7 @@
   n6.addChild(child);
   n6.addChild(n5);
   n6.updateEdges();
+  rect.hide();
   step();
 
   // Slide 36
@@ -305,6 +301,7 @@
   n3.child(1).move(0, nvg);
   n6.child(0).move(0, nvg);
   n6.child(1).move(0, nvg);
+  rect2.translateY(nvg);
   n3.move(0, nvg);
   n6.move(0, nvg);
   n3.updateEdges();
@@ -317,14 +314,15 @@
   step();
 
   // Slide 39
+  n7.value(0, 52);
   n7.highlightToggle();
-  av.effects.moveValue(prom.array, 0, n7.array, 0);
   step();
 
   // Slide 40
   n7.addChild(n3);
   n7.addChild(n6);
   n7.updateEdges();
+  rect2.hide();
   step();
 
   av.recorded();
@@ -401,14 +399,12 @@
   find.value(0, 65);
   step(true, true);
 
-  root.compare(av, 65);
   root.highlightToggle();
   root.highlightToggleEdge(1);
   step(true);
 
   root.highlightToggle();
   root.highlightToggleEdge(1);
-  root.child(1).compare(av, 65);
   root.child(1).highlightToggle();
   root.child(1).highlightToggleEdge(1);
   step(true);
@@ -424,14 +420,12 @@
   find.highlightToggle();
   step(true);
 
-  root.compare(av, 15);
   root.highlightToggle();
   root.highlightToggleEdge(0);
   step(true);
 
   root.highlightToggle();
   root.highlightToggleEdge(0);
-  root.child(0).compare(av, 15);
   root.child(0).highlightToggle();
   root.child(0).highlightToggleEdge(0);
   step(true);

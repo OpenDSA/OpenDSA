@@ -2,6 +2,29 @@
   "use strict";
   var global = window.ttplustree = {};
 
+  global.rect_padding = 10;
+
+  global.drawRectangle = function (jsav, rect, node1, node2) {
+    var stoke = 2;
+    var padding = global.rect_padding;
+    var n1p = $(node1.array.element).position();
+    var n2p = $(node2.array.element).position();
+    var width = $(node1.array.element).outerWidth();
+    var height = $(node1.array.element).outerHeight();
+
+    var x = n1p.left - padding + 3;
+    var y = n1p.top - padding + 3;
+    var w = (n2p.left + width) - (n1p.left) + (padding * 2);
+    var h = height + (padding * 2);
+
+    if (rect) {
+      rect.hide();
+    }
+    rect = jsav.g.rect(x, y, w, h);
+    rect.addClass("node-split-rect");
+    return rect;
+  };
+
   global.drawLeafArrows = function (jsav, leafList, arrowList) {
     // Add as many elements to the leafs arrows arrays as there are leafs
     while (arrowList.length !== leafList.length) {
@@ -61,7 +84,7 @@
 
   var nodeproto = global.node.prototype;
   nodeproto.value = function (idx, key, value) {
-    if (!key) {
+    if (!key && key !== "") {
       return this.array.value(idx);
     }
     if (this.isLeaf && value) {
@@ -79,7 +102,7 @@
     var cw = $(canvas).outerWidth();
     var aw = $(this.array.element).outerWidth();
     var left_offset = (cw / 2) - (aw / 2);
-    this.array.css({left: left_offset + "px"});
+    this.array.css({left: left_offset + "px", top: "15px"});
     return this;
   };
 
@@ -200,35 +223,4 @@
     return this.children[pos];
   };
 
-  nodeproto.compare = function (jsav, compare) {
-    var lchild = '<div class="compare-labels" id="lchild">' + compare + ' &lt; ' + this.value(0) +
-      '<span class="compare-description">[New Key &lt; Left Key]</span></div>';
-    var cchild = "";
-    var rchild = "";
-    if (this.children.length > 2) {
-      cchild = '<div class="compare-labels" id="cchild">' + this.value(0) + ' &lt;= ' + compare + ' and ' + compare + ' &lt; ' + this.value(1) +
-        '<span class="compare-description">[Left Key &lt;= New Key && New Key &lt; Right Key]</span></div>';
-      rchild = '<div class="compare-labels" id="rchild">' + this.value(1) + ' &lt;= ' + compare +
-        '<span class="compare-description">[Right Key &lt; New Key]</span></div>';
-    } else {
-      cchild = '<div class="compare-labels" id="cchild">' + this.value(0) + ' &gt;= ' + compare +
-        '<span class="compare-description">[Left Key &lt;= New Key]</span></div>';
-    }
-    var msg = $('<div></div>').append(lchild + cchild + rchild);
-    if (compare < this.value(0)) {
-      msg.find('#lchild').addClass('correct').append(' Left Child');
-    }
-    if (this.children.length <= 2) {
-      if (this.value(0) <= compare) {
-        msg.find('#cchild').addClass('correct').append(' Center Child');
-      }
-    } else {
-      if (this.value(0) <= compare && compare < this.value(1)) {
-        msg.find('#cchild').addClass('correct').append(' Center Child');
-      } else if (this.value(1) < compare) {
-        msg.find('#rchild').addClass('correct').append(' Right Child');
-      }
-    }
-    jsav.umsg(msg.html());
-  };
 }(jQuery));
