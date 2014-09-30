@@ -72,11 +72,28 @@ BUTTON_HTML = '''\
 
 def getDimensions(exer_path):
   """Read the specified KA exercise HTML file and extract the height and width from the body's data attributes"""
-  try:
-    body = ET.parse(exer_path).getroot().find('body')
-    return {'height': body.attrib['data-height'], 'width': body.attrib['data-width']}
-  except Exception, err:
-    return {'err': err}
+  # Originally used xml.etree.ElementTree to parse the entire file, but
+  # JavaScript conditionals interfered with the parsing, so I reverted
+  # to reading the file line-by-line and just looking for and parsing
+  # the body tag
+  with open(exer_path, 'r') as exer_file:
+    lines = exer_file.readlines()
+
+  # Loop through all the lines in the file until it find the body tag
+  for line in lines:
+    if line.strip().startswith('<body'):
+      try:
+        body = ET.fromstring(line + '</body>')
+        attribs = body.attrib
+      except Exception, err:
+        return {'err': err}
+
+      if 'data-height' not in attribs or 'data-width' not in attribs:
+        return {'err': 'data-height or data-width not found'}
+
+      return {'height': attribs['data-height'], 'width': attribs['data-width']}
+
+  return {'err': 'No body tag detected'}
 
 # Prints the given string to standard error
 def print_err(err_msg):
@@ -177,7 +194,7 @@ class avembed(Directive):
         self.options['height'] = dimensions['height']
         self.options['width'] = dimensions['width']
       else:
-        print_err('ERROR: Unable to parse dimensions of %s' % av_path)
+        print_err('WARNING: Unable to parse dimensions of %s' % av_path)
 
         # Use reasonable defaults
         self.options['width'] = 950

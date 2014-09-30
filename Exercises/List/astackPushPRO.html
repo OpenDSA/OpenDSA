@@ -18,7 +18,7 @@ Written by Junyang Chen and Cliff Shaffer
   <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
   <link rel="stylesheet" href="astackPRO.css" type="text/css" />
 </head>
-
+<body data-height="750" data-width="950">
 <div class="exercise">
   <div class="vars">
     <var id="max_size">randRange(6, 8)</var>
@@ -38,11 +38,11 @@ Written by Junyang Chen and Cliff Shaffer
         <p>Click on a value of the stack to highlight it, then click
           on the "Insert" button to insert
           <b><var>insert_value</var></b> to the highlighted position.</p>
-	<p>To move the "top" pointer, you should click the label to
+        <p>To move the "top" pointer, you should click the label to
           highlight it, then click the position of the stack that you
-          want to move to.</p> 
+          want to move to.</p>
         <input id="reset" type="button" value="Reset" />
-	<input id="insert" type="button" value="Insert" />
+        <input id="insert" type="button" value="Insert" />
         <div id="astackPushPRO" class="jsavcanvas"></div>
       </div>
       <div class="solution" data-type="custom">
@@ -51,8 +51,8 @@ Written by Junyang Chen and Cliff Shaffer
         </div>
         <div class="validator-function">
           if (!checkAnswer(max_size, arr_size) && !guess[0])
-            return ""; // User did not click, and correct answer is not
-	               // initial array state
+            return "";  // User did not click, and correct answer is not
+                        // initial array state
           else return checkAnswer(max_size, arr_size);
         </div>
       </div>
