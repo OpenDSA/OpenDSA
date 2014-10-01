@@ -4,8 +4,9 @@
 
   global.rect_padding = 10;
 
+  // Draw rectangle around node1 and node2. Assumes that node1 is to the left
+  // of node2 and that both nodes are horizontally aligned.
   global.drawRectangle = function (jsav, rect, node1, node2) {
-    var stoke = 2;
     var padding = global.rect_padding;
     var n1p = $(node1.array.element).position();
     var n2p = $(node2.array.element).position();
@@ -25,6 +26,7 @@
     return rect;
   };
 
+  // Draw arrows between all leaf nodes.
   global.drawLeafArrows = function (jsav, leafList, arrowList) {
     // Add as many elements to the leafs arrows arrays as there are leafs
     while (arrowList.length !== leafList.length) {
@@ -59,6 +61,7 @@
     }
   };
 
+  // Initialize a new tree node.
   global.newNode = function (jsav, keys, isLeaf, values) {
     if (isLeaf) {
       for (var i = 0; i < keys.length; i++) {
@@ -74,6 +77,7 @@
     return new global.node(jsav, arr, isLeaf).center();
   };
 
+  // Node constructor.
   global.node = function (jsav, arr, isLeaf) {
     this.jsav = jsav;
     this.array = arr;
@@ -82,7 +86,10 @@
     this.edges = [];
   };
 
+  // Add functions to node prototype.
   var nodeproto = global.node.prototype;
+
+  // Get/Set node value.
   nodeproto.value = function (idx, key, value) {
     if (!key && key !== "") {
       return this.array.value(idx);
@@ -93,10 +100,12 @@
     this.array.value(idx, key);
   };
 
+  // Shift the position of the node.
   nodeproto.move = function (left, top) {
     this.array.css({"left": "+=" + left + "px", "top": "+=" + top + "px"});
   };
 
+  // Move the node horizontally to the center of the canvas.
   nodeproto.center = function () {
     var canvas = $(this.array.element).parent();
     var cw = $(canvas).outerWidth();
@@ -106,17 +115,20 @@
     return this;
   };
 
+  // Add child node to this node.
   nodeproto.addChild = function (newChild) {
     this.children.push(newChild);
     this.edges.push(null);
     this.drawEdge(this.children.length - 1);
   };
 
+  // Insert child node at specified index.
   nodeproto.insertChild = function (idx, newChild) {
     this.children.splice(idx, 0, newChild);
     this.edges.splice(idx, 0, null);
   };
 
+  // Remove child at specified index.
   nodeproto.removeChild = function (idx) {
     // Remove child and edge
     var child = this.children.splice(idx, 1);
@@ -129,6 +141,7 @@
     return child[0];
   };
 
+  // Draw edge from this node to child node.
   nodeproto.drawEdge = function (child_idx) {
     // Calculate edge position
     var pos = $(this.array.element).position();
@@ -162,6 +175,7 @@
     }
   };
 
+  // Draw/Update all edges to all children of this node.
   nodeproto.updateEdges = function (recursive) {
     for (var i = 0; i < this.edges.length; i++) {
       this.drawEdge(i);
@@ -172,6 +186,7 @@
     return this;
   };
 
+  // Traverse tree and get all leafs recursively.
   nodeproto.getLeafs = function () {
     if (this.isLeaf) {
       return [this];
@@ -184,6 +199,7 @@
     }
   };
 
+  // Hide all edges.
   nodeproto.hideEdges = function () {
     for (var i = 0; i < this.edges.length; i++) {
       this.edges[i].hide();
@@ -191,10 +207,12 @@
     return this;
   };
 
+  // Hide edge at specified index.
   nodeproto.hideEdge = function (idx) {
     this.edges[idx].hide();
   };
 
+  // Show all edges.
   nodeproto.showEdges = function () {
     for (var i = 0; i < this.edges.length; i++) {
       this.edges[i].show();
@@ -202,11 +220,13 @@
     return this;
   };
 
+  // Show edge at specified index.
   nodeproto.showEdge = function (idx) {
     this.edges[idx].show();
     return this;
   };
 
+  // Toggle node highlighting.
   nodeproto.highlightToggle = function () {
     if (this.array.isHighlight()) {
       this.array.unhighlight();
@@ -215,10 +235,12 @@
     }
   };
 
+  // Toggle edge highlighting. Index specified which edge is highlighted.
   nodeproto.highlightToggleEdge = function (idx) {
     this.edges[idx].toggleClass('highlight-edge');
   };
 
+  // Get child at specified index.
   nodeproto.child = function (pos) {
     return this.children[pos];
   };
