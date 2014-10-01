@@ -1,6 +1,14 @@
+"use strict";
+
+// Helper functions for miscellaneous features.
 (function ($) {
-  "use strict";
-  var global = window.ttplustree = {};
+  // Get global variable
+  var global;
+  if (window.ttplustree) {
+    global = window.ttplustree;
+  } else {
+    global = window.ttplustree = {};
+  }
 
   global.rect_padding = 10;
 
@@ -61,6 +69,100 @@
     }
   };
 
+  /**
+   * Find the specified key
+   * @param av JSAV object
+   * @param key The key to find
+   * @param root The root node of the tree
+   */
+  global.findKey = function (av, key, root, helper_node) {
+    var curr_node = root;
+    var prev_node = null;
+    // Iterate until a leaf node is reached.
+    while (!curr_node.isLeaf) {
+      var has_right_key = (curr_node.length() === 2);
+      var lkey = curr_node.value(0);
+      var rkey = null;
+      if (has_right_key) {
+        rkey = curr_node.value(1);
+      }
+      var follow_child = -1;
+      if (key < lkey) { // Go left child
+        follow_child = 0;
+        av.umsg("<b>" + key + "</b> is less than " + lkey +
+          ". The left child is followed.<br><b>" + key + "</b> &lt; " + lkey);
+      } else if (!has_right_key && lkey <= key) { // Go center child
+        follow_child = 1;
+        av.umsg("<b>" + key + "</b> is greater than or equal to " + lkey +
+          ". The center child is followed.<br>" + lkey + " &lt;= <b>" + key + "</b>");
+      } else if (has_right_key && lkey <= key && key < rkey) {
+        follow_child = 1;
+        av.umsg("<b>" + key + "</b> is greater than or equal to " + lkey + " and less than " + rkey +
+          ". The center child is followed.<br>" + lkey + " &lt;= <b>" + key + "</b> &lt; " + rkey);
+      } else if (has_right_key && rkey <= key) { // Go to right child
+        follow_child = 2;
+        av.umsg("<b>" + key + "</b> is greater than or equal to " + rkey +
+          ". The right child is followed.<br>" + rkey + " &lt;= <b>" + key + "</b>");
+      }
+
+      // Un-hilight previous node
+      if (prev_node !== null) {
+        prev_node.highlightToggle();
+        prev_node.unhighlightEdges();
+      }
+      // Higlight current node.
+      curr_node.highlightToggle();
+      if (!curr_node.isLeaf) {
+        curr_node.highlightToggleEdge(follow_child);
+      }
+
+      // Update node pointers and step through slide show.
+      prev_node = curr_node;
+      curr_node = curr_node.child(follow_child);
+      av.step();
+    }
+
+    // Display success/failure message
+    if (isLeafEqual(key, curr_node)) {
+      av.umsg("We have found the correct leaf node.");
+    } else {
+      av.umsg("Oops, no exact was found.");
+    }
+
+    // Un-highlight previous node.
+    prev_node.highlightToggle();
+    prev_node.unhighlightEdges();
+    curr_node.highlightToggle();
+    if (helper_node) {
+      helper_node.highlightToggle();
+    }
+    av.step();
+
+    return curr_node;
+  };
+
+  // Determines if the given leaf node contains the specified key.
+  function isLeafEqual(key, leaf) {
+    // Iterate over all leaf keys
+    for (var i = 0; i < leaf.length(); i++) {
+      if (leaf.value(i).indexOf(key) === 0) {
+        return true; // Found a match
+      }
+    }
+    return false; // Did not find a match
+  }
+}(jQuery));
+
+// Helper function for tree nodes
+(function ($) {
+  // Get global variable
+  var global;
+  if (window.ttplustree) {
+    global = window.ttplustree;
+  } else {
+    global = window.ttplustree = {};
+  }
+
   // Initialize a new tree node.
   global.newNode = function (jsav, keys, isLeaf, values) {
     if (isLeaf) {
@@ -81,7 +183,11 @@
   global.node = function (jsav, arr, isLeaf) {
     this.jsav = jsav;
     this.array = arr;
-    this.isLeaf = isLeaf;
+    if (isLeaf) {
+      this.isLeaf = isLeaf;
+    } else {
+      this.isLeaf = false;
+    }
     this.children = [];
     this.edges = [];
   };
@@ -98,6 +204,15 @@
       key = key + '<br><div class="leaf-node-value">' + value + '</div>';
     }
     this.array.value(idx, key);
+  };
+
+  // Get array node length
+  nodeproto.length = function () {
+    if (this.value(1) !== "") {
+      return 2;
+    } else {
+      return 1;
+    }
   };
 
   // Shift the position of the node.
@@ -238,6 +353,13 @@
   // Toggle edge highlighting. Index specified which edge is highlighted.
   nodeproto.highlightToggleEdge = function (idx) {
     this.edges[idx].toggleClass('highlight-edge');
+  };
+
+  // Un-highlight all edges of this node.
+  nodeproto.unhighlightEdges = function () {
+    for (var i = 0; i < this.edges.length; i++) {
+      this.edges[i].removeClass('highlight-edge');
+    }
   };
 
   // Get child at specified index.
