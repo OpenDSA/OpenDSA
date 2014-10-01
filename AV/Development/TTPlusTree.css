@@ -1,4 +1,4 @@
-#tree, #find {
+.jsavcontainer {
     max-width: 900px;
     background-color: #E2EEDD;
     margin-bottom: 1em;
@@ -57,41 +57,11 @@
     line-height: 17px;
 }
 
-.insert-label, .find-label {
+.helper-label {
     display: block;
     width: 3.5em;
     position: relative;
     font-size: 1.3em;
     margin: 0;
+    text-align: right;
 }
-
-.promote-label, .compare-label {
-    display: block;
-    width: 4.8em;
-    position: relative;
-    font-size: 1.3em;
-    margin: 0;
-}
-
-.compare-description {
-    font-size: .7em;
-    color: #5E5E5E;
-    padding-left: 1em;
-}
-
-.compare-label {
-    width: 5em;
-}
-
-#find .jsavoutput .compare-labels {
-    padding: .2em;
-    padding-left: .5em;
-}
-
-#find .jsavoutput .correct, .correct .compare-description {
-    background-color: #13870F;
-    color: white;
-}
-
-
-

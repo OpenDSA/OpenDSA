@@ -69,6 +69,12 @@
     }
   };
 
+  global.moveNodes = function (nodes, left, top) {
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].move(left, top);
+    }
+  };
+
   /**
    * Find the specified key
    * @param av JSAV object

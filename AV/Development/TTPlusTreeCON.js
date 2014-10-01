@@ -69,9 +69,9 @@
   var aw = $(ins.array.element).outerWidth();
   ins.move((w / 2) - aw, 0);
   var label = av.label("Insert:"); // Label for insert values
-  label.addClass('insert-label');
+  label.addClass('helper-label insert-label');
   var lw = $(label.element).outerWidth();
-  label.css({"left": (w - aw - lw - 15) + "px", "top": "25px"});
+  label.css({"left": (w - aw - lw - 25) + "px", "top": "25px"});
   step(false, true);
 
   // Slide 2
@@ -328,22 +328,12 @@
 (function () {
   var global = window.ttplustree;
   var av = new JSAV("find");
-  var leafList = [];
-  var arrowList = [];
+  var leafList, arrowList = [];
 
   var msg = [
     "Find <b>65</b>",
-    "<b>65</b> is greater-than or equal to 52. The center child is followed.<br><b>65</b> &lt; 52",
-    "<b>65</b> is greater-than or equal to 65 and less than 71. The center child is followed.<br>65 &lt;= <b>65</b> &lt; 71",
-    "We have found the correct leaf node",
     "Find <b>15</b>",
-    "<b>15</b> is less than 53. The left child is followed.<br><b>15</b> &lt; 52",
-    "<b>15</b> is less than 22. The left child is followed.<br><b>15</b> &lt; 22",
-    "We have found the correct leaf node",
-    "Find <b>47</b>",
-    "<b>47</b> is less than 52. The left child is followed.<br>47 &lt; 52",
-    "<b>47</b> is greated-than or equal to 46. The right child is followed.<br>46 &lt; <b>47</b>",
-    "We have found the correct leaf node"
+    "Find <b>47</b>"
   ];
 
   function step(skip_message, init) {
@@ -395,85 +385,202 @@
   var canvas = $(find.array.element).parent();
   var w = $(canvas).innerWidth();
   var aw = $(find.array.element).outerWidth();
-  var ah = $(find.array.element).outerHeight();
   find.move((w / 2) - aw, 5);
   var label = av.label("Find:"); // Label for insert values
-  label.addClass('find-label');
+  label.addClass('helper-label find-label');
   var lw = $(label.element).outerWidth();
-  label.css({"left": (w - aw - lw - 5) + "px", "top": "25px"});
+  label.css({"left": (w - aw - lw - 25) + "px", "top": "25px"});
 
-  // Slide 1
   find.value(0, 65);
   step(false, true);
 
-  // Slide 2
-  root.highlightToggle();
-  root.highlightToggleEdge(1);
-  step();
+  // Find 65
+  var result = global.findKey(av, 65, root, find);
 
-  // Slide 3
-  root.highlightToggle();
-  root.highlightToggleEdge(1);
-  root.child(1).highlightToggle();
-  root.child(1).highlightToggleEdge(1);
-  step();
-
-  // Slide 4
-  root.child(1).highlightToggle();
-  root.child(1).highlightToggleEdge(1);
-  root.child(1).child(1).highlightToggle();
+  result.highlightToggle();
   find.highlightToggle();
-  step();
-
-  // Slide 5
-  root.child(1).child(1).highlightToggle();
   find.value(0, 15);
-  find.highlightToggle();
   step();
 
-  // Slide 6
-  root.highlightToggle();
-  root.highlightToggleEdge(0);
-  step();
+  // Find 15
+  result = global.findKey(av, 15, root, find);
 
-  // Slide 7
-  root.highlightToggle();
-  root.highlightToggleEdge(0);
-  root.child(0).highlightToggle();
-  root.child(0).highlightToggleEdge(0);
-  step();
-
-  // Slide 8
-  root.child(0).highlightToggle();
-  root.child(0).highlightToggleEdge(0);
-  root.child(0).child(0).highlightToggle();
-  find.highlightToggle();
-  step();
-
-  // slide 9
-  root.child(0).child(0).highlightToggle();
+  result.highlightToggle();
   find.highlightToggle();
   find.value(0, 47);
   step();
 
-  // Slide 10
-  root.highlightToggle();
-  root.highlightToggleEdge(0);
+  // Find 47
+  global.findKey(av, 47, root, find);
+
+  av.recorded();
+}());
+
+(function () {
+  var global = window.ttplustree;
+  var av = new JSAV("delete");
+  var leafList, arrowList = [];
+
+  var msg = [
+    "Delete <b>70</b>. First we need to find the leaf node with matching key.",
+    "This node has two key-value pairs. Therefore we can just delete the key-value pair.",
+    "Delete <b>65</b>. First we need to find the leaf node with matching key.",
+    "This node has only one key-value pair. Its right sibling however has two key-value pairs. This means we can steal a key-value pair from the right sibling.",
+    "Firsr delete <b>65</b>, then move the smallest key from the sibling to the node.",
+    "Now update the parent keys and shift the remaining key-value pair to the left.",
+    "Delete <b>71</b>. First we need to find the leaf node with matching key.",
+    "This node has only one key-value pair. Its right sibling is exactly half full, however. This means that we cannot borrow a key-value pair.",
+    "Therefore, this node has to be deleted.",
+    "Now the parent node has to be updated.",
+    "Delete <b>89</b>. First we need to find the leaf node with matching key.",
+    "As with the previous deletion, this node only has one key-value pair and it is not possible to steal from the right sibling.",
+    "Therefore, this node has to be deleted",
+    "The parent node now has an underflow, so it must steal from its sibling."
+  ];
+
+  function step(skip_message, init) {
+    if (!skip_message) {
+      av.umsg(msg.shift());
+    }
+    if (init) {
+      av.displayInit();
+    } else {
+      av.step();
+    }
+  }
+
+  // Setup initial tree state
+  var root = global.newNode(av, ["52", ""], false);
+  root.addChild(global.newNode(av, ["22", "46"], false));
+  root.addChild(global.newNode(av, ["65", "71"], false));
+  root.child(0).addChild(global.newNode(av, ["15", ""], true, ["J", ""]));
+  root.child(0).addChild(global.newNode(av, ["22", "33"], true, ["X", "O"]));
+  root.child(0).addChild(global.newNode(av, ["46", "47"], true, ["H", "L"]));
+  root.child(1).addChild(global.newNode(av, ["52", ""], true, ["B", ""]));
+  root.child(1).addChild(global.newNode(av, ["65", "70"], true, ["S", "F"]));
+  root.child(1).addChild(global.newNode(av, ["71", "89"], true, ["W", "M"]));
+
+  // Position tree nodes.
+  var nw = $(root.array.element).outerWidth(); // Node width
+  var nhg = 30; // Node horizontal gap
+  var nvg = 70; // Node vertical gap
+
+  var shift = (nw / 2) + (nhg / 2);
+  root.child(0).child(0).move(-5 * shift, nvg * 2);
+  root.child(0).child(1).move(-3 * shift, nvg * 2);
+  root.child(0).child(2).move(-shift, nvg * 2);
+  root.child(1).child(0).move(shift, nvg * 2);
+  root.child(1).child(1).move(3 * shift, nvg * 2);
+  root.child(1).child(2).move(5 * shift, nvg * 2);
+  shift = shift * 3;
+  root.child(0).move(-shift, nvg);
+  root.child(1).move(shift, nvg);
+
+  // Draw node edges
+  root.updateEdges(true);
+  leafList = root.getLeafs();
+  global.drawLeafArrows(av, leafList, arrowList);
+
+  // Create "del" node and label
+  var del = global.newNode(av, [""], false); // Array for insert values
+  del.array.element.addClass('delete-node');
+  var canvas = $(del.array.element).parent();
+  var w = $(canvas).innerWidth();
+  var aw = $(del.array.element).outerWidth();
+  del.move((w / 2) - aw, 5);
+  var label = av.label("Delete:"); // Label for insert values
+  label.addClass('helper-label delete-label');
+  var lw = $(label.element).outerWidth();
+  label.css({"left": (w - aw - lw - 25) + "px", "top": "25px"});
+
+  del.value(0, 70);
+  step(false, true);
+
+  // Find 70
+  var result = global.findKey(av, 70, root, del);
+
+  // Delete 70
+  del.highlightToggle();
+  result.value(1, "");
   step();
 
-  // Slide 11
-  root.highlightToggle();
-  root.highlightToggleEdge(0);
-  root.child(0).highlightToggle();
-  root.child(0).highlightToggleEdge(2);
+  result.highlightToggle();
+  del.value(0, 65);
   step();
 
-  // Slide 12
-  root.child(0).highlightToggle();
-  root.child(0).highlightToggleEdge(2);
-  root.child(0).child(2).highlightToggle();
-  find.highlightToggle();
+  // Find 65
+  result = global.findKey(av, 65, root, del);
+
+  // Delete 65
+  del.highlightToggle();
   step();
+
+  var sibling = root.child(1).child(2);
+  av.effects.moveValue(sibling.array, 0, result.array, 0);
+  step();
+
+  root.child(1).value(1, 89);
+  root.child(1).value(0, 71);
+  sibling.array.swap(0, 1);
+  result.highlightToggle();
+  step();
+
+  del.value(0, 71);
+  step();
+
+  // Find 71
+  result = global.findKey(av, 71, root, del);
+
+  // Delete 71
+  del.highlightToggle();
+  step();
+
+  result.array.hide(); // Hide node
+  root.child(1).hideEdge(1);
+  shift = nw + nhg;
+  root.child(1).child(2).move(-shift, 0);
+  root.child(1).drawEdge(2);
+  leafList.splice(4, 1);
+  arrowList.splice(3, 1)[0].hide();
+  global.drawLeafArrows(av, leafList, arrowList);
+  step();
+
+  av.effects.moveValue(root.child(1).array, 1, root.child(1).array, 0);
+  root.child(1).removeChild(1);
+  root.child(1).updateEdges();
+  step();
+
+  del.value(0, 89);
+  step();
+
+  // Find 71
+  global.findKey(av, 89, root, del);
+
+  // Delete 89
+  del.highlightToggle();
+  step();
+
+  root.child(1).removeChild(1).array.hide();
+  root.child(1).updateEdges();
+  root.child(1).value(0, "");
+  leafList = root.getLeafs();
+  arrowList.splice(3, 1)[0].hide();
+  step();
+
+  av.effects.moveValue(root.array, 0, root.child(1).array, 0);
+  av.effects.moveValue(root.child(0).array, 1, root.array, 0);
+  step();
+
+  var node = root.child(0).removeChild(2);
+  root.child(1).insertChild(0, node);
+  shift = nw + nhg;
+  global.moveNodes(leafList, shift, 0);
+  shift = shift / 2;
+  root.child(0).move(shift, 0);
+  root.child(1).move(-shift, 0);
+  root.updateEdges(true);
+  global.drawLeafArrows(av, leafList, arrowList)
+  step(true);
 
   av.recorded();
 }());
