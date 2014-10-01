@@ -83,10 +83,6 @@
     width: 5em;
 }
 
-#find .jsavoutput {
-    min-height: 95px;
-}
-
 #find .jsavoutput .compare-labels {
     padding: .2em;
     padding-left: .5em;

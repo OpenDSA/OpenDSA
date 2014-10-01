@@ -193,7 +193,6 @@
   n4.move(shift, nvg);
   n3.addChild(n4);
   n3.hideEdges();
-
   shift = (nhg / 2) + (nw / 2);
   n3.child(0).move(-shift, 0);
   n3.child(1).move(-shift, 0);
@@ -240,7 +239,6 @@
   var n5 = global.newNode(av, ["", ""], true, ["", ""]);
   shift = (nw * 1.5) + (nhg * 1.5);
   n5.move(shift, nvg);
-
   shift = (nw / 2) + (nhg / 2);
   n3.child(0).move(-shift);
   n3.child(1).move(-shift);
@@ -281,7 +279,6 @@
   // Slide 34
   n6.value(0, 65);
   n3.value(1, "");
-//  n6.value(0, 65);
   step();
 
   // Slide 35
@@ -335,8 +332,18 @@
   var arrowList = [];
 
   var msg = [
-    "",
-    ""
+    "Find <b>65</b>",
+    "<b>65</b> is greater-than or equal to 52. The center child is followed.<br><b>65</b> &lt; 52",
+    "<b>65</b> is greater-than or equal to 65 and less than 71. The center child is followed.<br>65 &lt;= <b>65</b> &lt; 71",
+    "We have found the correct leaf node",
+    "Find <b>15</b>",
+    "<b>15</b> is less than 53. The left child is followed.<br><b>15</b> &lt; 52",
+    "<b>15</b> is less than 22. The left child is followed.<br><b>15</b> &lt; 22",
+    "We have found the correct leaf node",
+    "Find <b>47</b>",
+    "<b>47</b> is less than 52. The left child is followed.<br>47 &lt; 52",
+    "<b>47</b> is greated-than or equal to 46. The right child is followed.<br>46 &lt; <b>47</b>",
+    "We have found the correct leaf node"
   ];
 
   function step(skip_message, init) {
@@ -354,15 +361,14 @@
   var root = global.newNode(av, ["52", ""], false);
   root.addChild(global.newNode(av, ["22", "46"], false));
   root.addChild(global.newNode(av, ["65", "71"], false));
-
   root.child(0).addChild(global.newNode(av, ["15", ""], true, ["J", ""]));
   root.child(0).addChild(global.newNode(av, ["22", "33"], true, ["X", "O"]));
   root.child(0).addChild(global.newNode(av, ["46", "47"], true, ["H", "L"]));
-
   root.child(1).addChild(global.newNode(av, ["52", ""], true, ["B", ""]));
   root.child(1).addChild(global.newNode(av, ["65", ""], true, ["S", ""]));
   root.child(1).addChild(global.newNode(av, ["71", "89"], true, ["W", "M"]));
 
+  // Position tree nodes.
   var nw = $(root.array.element).outerWidth(); // Node width
   var nhg = 30; // Node horizontal gap
   var nvg = 70; // Node vertical gap
@@ -374,16 +380,16 @@
   root.child(1).child(0).move(shift, nvg * 2);
   root.child(1).child(1).move(3 * shift, nvg * 2);
   root.child(1).child(2).move(5 * shift, nvg * 2);
-
   shift = shift * 3;
   root.child(0).move(-shift, nvg);
   root.child(1).move(shift, nvg);
 
+  // Draw node edges
   root.updateEdges(true);
   leafList = root.getLeafs();
   global.drawLeafArrows(av, leafList, arrowList);
 
-  // Create find node
+  // Create "find" node and label
   var find = global.newNode(av, [""], false); // Array for insert values
   find.array.element.addClass('find-node');
   var canvas = $(find.array.element).parent();
@@ -394,45 +400,78 @@
   var label = av.label("Find:"); // Label for insert values
   label.addClass('find-label');
   var lw = $(label.element).outerWidth();
-  label.css({"left": (w - aw - lw - 15) + "px", "top": "10px"});
+  label.css({"left": (w - aw - lw - 5) + "px", "top": "25px"});
 
+  // Slide 1
   find.value(0, 65);
-  step(true, true);
+  step(false, true);
 
+  // Slide 2
   root.highlightToggle();
   root.highlightToggleEdge(1);
-  step(true);
+  step();
 
+  // Slide 3
   root.highlightToggle();
   root.highlightToggleEdge(1);
   root.child(1).highlightToggle();
   root.child(1).highlightToggleEdge(1);
-  step(true);
+  step();
 
+  // Slide 4
   root.child(1).highlightToggle();
   root.child(1).highlightToggleEdge(1);
   root.child(1).child(1).highlightToggle();
   find.highlightToggle();
   step();
 
+  // Slide 5
   root.child(1).child(1).highlightToggle();
   find.value(0, 15);
   find.highlightToggle();
-  step(true);
+  step();
 
+  // Slide 6
   root.highlightToggle();
   root.highlightToggleEdge(0);
-  step(true);
+  step();
 
+  // Slide 7
   root.highlightToggle();
   root.highlightToggleEdge(0);
   root.child(0).highlightToggle();
   root.child(0).highlightToggleEdge(0);
-  step(true);
+  step();
 
+  // Slide 8
   root.child(0).highlightToggle();
   root.child(0).highlightToggleEdge(0);
   root.child(0).child(0).highlightToggle();
+  find.highlightToggle();
+  step();
+
+  // slide 9
+  root.child(0).child(0).highlightToggle();
+  find.highlightToggle();
+  find.value(0, 47);
+  step();
+
+  // Slide 10
+  root.highlightToggle();
+  root.highlightToggleEdge(0);
+  step();
+
+  // Slide 11
+  root.highlightToggle();
+  root.highlightToggleEdge(0);
+  root.child(0).highlightToggle();
+  root.child(0).highlightToggleEdge(2);
+  step();
+
+  // Slide 12
+  root.child(0).highlightToggle();
+  root.child(0).highlightToggleEdge(2);
+  root.child(0).child(2).highlightToggle();
   find.highlightToggle();
   step();
 
