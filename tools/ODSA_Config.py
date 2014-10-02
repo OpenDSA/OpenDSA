@@ -71,14 +71,11 @@ def get_mod_name(mod_config):
 def get_odsa_dir():
   """Calculate the path to the OpenDSA root directory based on the location of this file"""
 
-  # Auto-detect ODSA directory
-  (odsa_dir, script) = os.path.split(os.path.abspath(__file__))
-
-  # Move up one directory (assumes configure.py is one level below root OpenDSA directory)
+  # Auto-detect ODSA root directory by getting the directory where this
+  # file is located and getting its parent directory (assumes
+  # ODSA_Config.py is one level below root OpenDSA directory)
   # Convert to Unix-style path
-  odsa_dir = os.path.dirname(odsa_dir).replace("\\", "/") + '/'
-
-  return odsa_dir
+  return os.path.dirname(os.path.dirname(os.path.abspath(__file__))).replace("\\", "/") + '/'
 
 
 # Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
