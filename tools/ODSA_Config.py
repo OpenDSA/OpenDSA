@@ -74,9 +74,11 @@ def get_odsa_dir():
   # Auto-detect ODSA directory
   (odsa_dir, script) = os.path.split(os.path.abspath(__file__))
 
-  # Convert to Unix-style path and move up a directory
-  # (assumes configure.py is one level below root OpenDSA directory)
-  return os.path.abspath(odsa_dir.replace("\\", "/") + '/..') + '/'
+  # Move up one directory (assumes configure.py is one level below root OpenDSA directory)
+  # Convert to Unix-style path
+  odsa_dir = os.path.dirname(odsa_dir).replace("\\", "/") + '/'
+
+  return odsa_dir
 
 
 # Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
@@ -306,10 +308,10 @@ def set_defaults(conf_data):
 
   odsa_dir = get_odsa_dir()
 
-  if 'code_dir' in conf_data:
-    conf_data['code_dir'] = process_path(conf_data['code_dir'], odsa_dir)
-  else:
+  if 'code_dir' not in conf_data:
     conf_data['code_dir'] = 'SourceCode/'
+
+  conf_data['code_dir'] = process_path(conf_data['code_dir'], odsa_dir)
 
   # Allow anonymous credit by default
   if 'allow_anonymous_credit' not in conf_data:
