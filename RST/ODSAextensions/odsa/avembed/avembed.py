@@ -67,6 +67,7 @@ BUTTON_HTML = '''\
   &nbsp;Server Error&nbsp;<a class="resubmit_link" href="#">Resubmit</a>
 </span>
 <span id="%(exer_name)s_shb_saving_msg" class="shb_msg">Saving...</span>
+<img id="%(exer_name)s_spinner" class="loading-spinner" src="_static/Images/spinner.gif" />
 '''
 
 
