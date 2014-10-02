@@ -210,7 +210,7 @@ class avembed(Directive):
         self.options['height'] = embed[3]
     else:
       self.options['av_address'] = os.path.relpath(conf.av_dir, conf.ebook_path)
-      self.options['width'] = 800
+      self.options['width'] = 950
       self.options['height'] = 450
 
     # Append AV path and URL parameters to base av_address
