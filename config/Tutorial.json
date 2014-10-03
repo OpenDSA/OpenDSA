@@ -38,6 +38,10 @@
       "Tutorials/debug": {
         "long_name": "Debugging in Eclipse",
         "exercises": {}
+      },
+      "Tutorials/scanning": {
+        "long_name": "Reading In Input",
+        "exercises": {}
       }
     }
   }

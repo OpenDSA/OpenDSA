@@ -58,7 +58,7 @@ set up simply and makes use of switch cases. You can download it
 `here <http://pastebin.com/gwSH2cEa>`__. Given the provided source code let's 
 do a simple analysis of how it works.
 
-.. codeinclude:: Java/Tutorials/Main.java
+.. codeinclude:: Java/Tutorials/MainParameters.java
 
 We have our main function which takes an array of strings. If that array is
 empty we may or may not want to exit as we have no parameters. It will then

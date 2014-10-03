@@ -4,10 +4,10 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-:author: Jordan Sablan
-:requires:
-:satisfies:
-:topic:
+   :author: Jordan Sablan
+   :requires:
+   :satisfies:
+   :topic:
 
 ===================
 Command Line Basics

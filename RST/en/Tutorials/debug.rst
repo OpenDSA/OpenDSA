@@ -12,10 +12,8 @@
 ====================
 Debugging In Eclipse
 ====================
-In this tutorial we will show basic debugging steps on a Binary Search Tree 
-or BST. The BST is borrowed from Edoardo Biagioni from his hawaii.edu site
-please view the source for the full citation. To begin debugging a program
-select the Debug mode by clicking the icon circled in blue below.
+In this tutorial we will show basic debugging steps. To begin debugging a
+program select the Debug mode by clicking the icon circled in blue below.
 
 .. odsafig:: Images/Debug1.png
    :width: 600
