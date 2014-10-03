@@ -23,7 +23,7 @@ program.
 However, in many cases there are alternatives to simply returning an
 error.
 The possible options are referred to collectively as
-:term:`failure policies`.
+:term:`failure policies <failure policy>`.
 
 In some cases, there might be sufficient free memory to satisfy the
 request, but it is scattered among small blocks.
@@ -40,7 +40,7 @@ to different locations.
 If the application program relies on the absolute positions of the
 data in any way, this would be disastrous.
 One approach for dealing with this problem is the use of
-:term:`handles`.
+:term:`handles <handle>`.
 A handle is a second level of indirection to a memory location.
 The memory allocation routine does not return a pointer to the block
 of storage, but rather a pointer to a variable that in turn points to
@@ -84,8 +84,8 @@ terminate, freeing memory.
 
 Another option might be to allocate more memory to the memory
 manager.
-In a zoned memory allocation system where the memory manager is
-part of a larger system, this might be a viable option.
+In a :term:`zoned <zone>` memory allocation system where the memory
+manager is part of a larger system, this might be a viable option.
 In a C++ program that implements its own memory manager, it might be
 possible to get more memory from the system-level ``new`` operator,
 such as is done by a freelist.

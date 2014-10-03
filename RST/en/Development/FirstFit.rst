@@ -21,13 +21,8 @@ units of space.
 Because this approach selects the first block with enough space, it is
 called :term:`first fit`.
 
-.. raw:: html
+.. avembed:: AV/Development/firstFit.html ss
 
-   <center> 
-   <iframe id="FirstFit_iframe" 
-        src="http://research.cs.vt.edu/AVresearch/MMtutorial/FirstFit.html"
-        width="1000" height="600"
-        frameborder="1" marginwidth="0" marginheight="0"
-	scrolling="no">
-   </iframe>
-   </center>
+Now try it for yourself with the following exercise.
+
+.. avembed:: AV/Development/firstFitPRO.html pe

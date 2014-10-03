@@ -4,7 +4,7 @@
         <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
         <title>Selection Sort</title>
         <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-        <!-- <link rel="stylesheet" href="opendsaAV.css" type="text/css" /> -->
+        <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
         <link rel="stylesheet" href="proficiency.css" type="text/css" />
         <style>
           #jsavcontainer {
@@ -14,12 +14,12 @@
     </head>
 
     <body>
-        <h1>Selection Sort</h1>
         <div id="jsavcontainer">
+            <h1>Selection Sort</h1>
             <!-- <a class="jsavsettings" href="#">Settings</a> -->
             <p class="instructLabel">Instructions:</p>
             <p class="instructions">
-                    Use Selection Sort to sort the table given below in ascending order.
+                Use Selection Sort to sort the table given below in ascending order.
             </p>
             <p align="center" class="jsavexercisecontrols"></p>
             <p class="jsavscore"></p>
@@ -27,11 +27,13 @@
             <p class="jsavoutput jsavline"></p>
         </div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+        <script src="../../lib/jquery.min.js"></script>
+        <script src="../../lib/jquery-ui.min.js"></script>
         <script src="../../JSAV/lib/jquery.transit.js"></script>
         <script src="../../JSAV/lib/raphael.js"></script>
-        <script src="../../JSAV/build/JSAV.js"></script>
+        <script src="../../JSAV/build/JSAV-min.js"></script>
+        <script src="../../lib/odsaUtils-min.js"></script>
+        <script src="../../lib/odsaAV-min.js"></script>
 
         <script>
 
@@ -43,12 +45,12 @@
             $array = $("#exerArray"),
             av = new JSAV($("#jsavcontainer")),
             code = av.code(
-                "for i = 0 to n-2 do\n"+
-                "    min = i\n"+
-                "    for j = i+1 to n-1 do\n"+
-                "        if (a[j] < a[min]) do\n"+
-                "            min = j\n"+
-                "    swap a[i] and a[min]");
+                "for i = 0 to n-2 do\n" +
+                "    min = i\n" +
+                "    for j = i+1 to n-1 do\n" +
+                "        if (a[j] < a[min]) do\n" +
+                "            min = j\n" +
+                "    swap a[i] and a[min]\n\n");
 
         av.recorded(); // we are not recording an AV with an algorithm
 
@@ -68,9 +70,9 @@
 
             jsavArray = av.ds.array($array, {indexed: true, layout: "bar"});
             code.show();
-            code.highlight(1);
-            code.highlight(4);
+            code.highlight(2);
             code.highlight(5);
+            code.highlight(6);
 
             av.umsg("Begin by highlighting the bar at index min, assuming line #2 has just been run.");
             av.forward();

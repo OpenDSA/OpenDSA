@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html data-require="math math-format word-problems spin">
+<head>
+  <title> Recursion Programming Exercise 20</title>
+  <script src="../../lib/jquery.min.js">
+  </script>
+  <script src="../../lib/jquery-ui.min.js">
+  </script>
+  <script>
+    window.OpenPopKa = true;
+  </script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../lib/odsaStyle-min.css"></script>
+ <script src="../../lib/ExAreaPROG.js"> </script>
+ <link rel= "stylesheet" href="../../lib/ExAreaPROG.css" type="text/css">
+  
+  <style>
+   #problemarea { height: 700px;}
+  </style>
+</head>
+<body>
+   
+<div class="exercise">
+  <div class="vars">
+    <var id="listel1">randRange(0, 99)</var>
+    <var id="listel2">randRange(0, 99)</var>
+    <var id="listel3">randRange(0, 99)</var>
+    <var id="listel4">randRange(0, 99)</var>
+  </div>
+
+  <div class="problems">
+    <div> <!-- Supresses answer box -->
+
+<p class="problem" id = "test"> <p align ="center">
+<img src= "../../RST/Images/PascalTriangle.png" width="150" height="100"> </p>Pascal’s triangle is a useful recursive definition that tells us the coefficients in the expansion of the polynomial (x + a)n . Each element in the triangle has a coordinate, given by the row it is on and its position in the row (which you could call a column). Every number in Pascals triangle is defined as the sum of the item above it and the item above it and to the left. If there is a position that does not have an entry, we treat it as if we had a 0 there. Given the following recursive function signature, write down the recursive function which takes a row and a column and finds the value at that position in the triangle.
+<textarea  id="codeTextarea">int pascal(int row, int column){
+
+
+
+
+
+		 
+
+
+}
+</textarea>
+
+</p>
+
+      <div class="question">
+	
+      </div>
+      <div class="solution" data-type="custom">
+       <div class="guess"> [ $('#codeTextarea').val() ] </div>
+        <div class="validator-function">
+         
+         //return "openPop";
+        </div>
+      </div>
+      <div class="hints">
+      </div>
+    </div>
+  </div>
+</div>
+ 
+</body>
+</html>

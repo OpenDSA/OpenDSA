@@ -112,9 +112,16 @@ div.header {
     position: relative;
     left: 0px;
     top: 0px;
-    height: 85px;
+    height: 121px;
     /* background: #eeeeee; */
     padding: 0 40px;
+}
+div.header .title-wrapper {
+    top: 0;
+    margin-left: 152px;
+    height: 120px;
+    display: table;
+    overflow: hidden;
 }
 div.header h1 {
     font-size: 25px;  /* 1.6em;*/
@@ -123,7 +130,8 @@ div.header h1 {
     color: {{ theme_headingcolor }};
     border: 0;
     margin: 0;
-    padding-top: 15px;
+    padding-top: 0;
+    padding-left: 60px;
 }
 div.header h1 a {
     font-weight: normal;
@@ -136,8 +144,8 @@ div.header h2 {
     text-transform: uppercase;
     color: #aaa;
     border: 0;
-    margin-top: -3px;
-    padding: 0;
+    margin: 0;
+    padding: 0 0 0 60px;
 }
 
 div.header img.rightlogo {
@@ -147,7 +155,7 @@ div.header img.rightlogo {
 div.header img.leftlogo {
     float: left;
     height: 64px;
-    margin-top: 8px;
+    margin-top: 28px;
 }  
 
 div.title {

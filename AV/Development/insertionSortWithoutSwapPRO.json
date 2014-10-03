@@ -14,11 +14,12 @@
   "code" : {
     "python": {
       "url": "../../SourceCode/Python/Sorting/Insertionsort.py",
-      "startAfter": "# Try to make it more \"native\" python",
+      "startAfter": "# /* *** ODSATag: Insertionsort shift *** */",
+      "endBefore": "# /* *** ODSAendTag: Insertionsort shift *** */",
       "tags": {
-        "highlight": [3, 7, 8],
+        "highlight": [3, 6, 8],
         "copy_to_tmp": 3,
-        "shift": 7,
+        "shift": 6,
         "copy_back": 8
       }
     }

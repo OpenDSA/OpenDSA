@@ -22,40 +22,18 @@ import os, sys
 import re
 sys.path.append(os.path.abspath('./source'))
 import conf
-from xml.dom.minidom import parse, parseString
+import xml.etree.ElementTree as ET
+from xml.dom.minidom import parse, parseString # Can be removed when embedlocal is gone
 import urllib
 import json
-
-#translation_file
-
-def loadTable():
-   try:
-      table=open(conf.translation_file)
-      data = json.load(table)
-      table.close()
-      if conf.language in data:
-         return dict(data[conf.language]['jinja'].items() + data[conf.language]['js'].items())
-      else:
-         return dict(data['en']['jinja'].items() + data['en']['js'].items())
-   except IOError:
-      print 'ERROR: No table.json file.'
-
 
 def setup(app):
     app.add_directive('avembed',avembed)
 
-
-ANCHOR_HTML = '''\
-<a id="%(exer_name)s_exer"></a>
-'''
-
-BUTTON_HTML = '''\
-<input type="button"
-    id="%(exer_name)s_showhide_btn"
-    class="showHideLink"
-    value="%(show_hide_text)s %(long_name)s"/>
-'''
-
+# Must use the exercise name as the ID of the container (required for
+# client-side framework processing and as an anchor for hyperlinking
+# directly to the exercise)
+# The div with ID '[exer_name]_iframe' is a placeholder that is replaced after the page finishes loading
 CONTAINER_HTML= '''\
 <div
     id="%(exer_name)s"
@@ -65,29 +43,75 @@ CONTAINER_HTML= '''\
     data-frame-src="%(av_address)s"
     data-frame-width="%(width)s"
     data-frame-height="%(height)s"
+    data-oembed="%(oembed)s"
     data-points="%(points)s"
     data-required="%(required)s"
+    data-showhide="%(showhide)s"
     data-threshold="%(threshold)s"
-    data-type="%(type)s"
-    data-oembed="%(oembed)s">
+    data-type="%(type)s">
   %(content)s
+  <div class="center">
+    <div id="%(exer_name)s_iframe"></div>
+  </div>
 </div>
-<p></p>
 '''
 
-IFRAME_HTML = '''\
-<iframe id="%(exer_name)s_iframe" src="%(av_address)s" width="%(width)s" height="%(height)s" scrolling="no">Your browser does not support iframes.</iframe>
+BUTTON_HTML = '''\
+<input type="button"
+  id="%(exer_name)s_showhide_btn"
+  class="showHideLink"
+  data-target="%(exer_name)s_iframe"
+  value="%(show_hide_text)s %(long_name)s"/>
+<span id="%(exer_name)s_shb_error_msg" class="shb_msg">
+  <img src="_static/Images/warning.png" class="shb_warning_icon" />
+  &nbsp;Server Error&nbsp;<a class="resubmit_link" href="#">Resubmit</a>
+</span>
+<span id="%(exer_name)s_shb_saving_msg" class="shb_msg">Saving...</span>
+<img id="%(exer_name)s_spinner" class="loading-spinner" src="_static/Images/spinner.gif" />
 '''
 
-OEMBED_HTML = '''\
-<div class="warning">
-    <p>Failed to load exercise. Log in to <a href="%(oembed_server)s">%(oembed_server)s</a> to see all the exercises.</p>
-</div>
-<script>
-    ODSA.MOD.initOembedAV($("#%(exer_name)s"));
-</script>
-'''
 
+def getDimensions(exer_path):
+  """Read the specified KA exercise HTML file and extract the height and width from the body's data attributes"""
+  # Originally used xml.etree.ElementTree to parse the entire file, but
+  # JavaScript conditionals interfered with the parsing, so I reverted
+  # to reading the file line-by-line and just looking for and parsing
+  # the body tag
+  with open(exer_path, 'r') as exer_file:
+    lines = exer_file.readlines()
+
+  # Loop through all the lines in the file until it find the body tag
+  for line in lines:
+    if line.strip().startswith('<body'):
+      try:
+        body = ET.fromstring(line + '</body>')
+        attribs = body.attrib
+      except Exception, err:
+        return {'err': err}
+
+      if 'data-height' not in attribs or 'data-width' not in attribs:
+        return {'err': 'data-height or data-width not found'}
+
+      return {'height': attribs['data-height'], 'width': attribs['data-width']}
+
+  return {'err': 'No body tag detected'}
+
+# Prints the given string to standard error
+def print_err(err_msg):
+  sys.stderr.write('%s\n' % err_msg)
+
+# Loads translation file
+def loadTable():
+  try:
+    table=open(conf.translation_file)
+    data = json.load(table)
+    table.close()
+    if conf.language in data:
+      return dict(data[conf.language]['jinja'].items() + data[conf.language]['js'].items())
+    else:
+      return dict(data['en']['jinja'].items() + data['en']['js'].items())
+  except IOError:
+    print 'ERROR: No table.json file.'
 
 def embedlocal(av_path):
   embed=[]
@@ -125,8 +149,6 @@ def embedlocal(av_path):
     sys.exit()
 
 
-
-
 def showhide(argument):
   """Conversion function for the "showhide" option."""
   return directives.choice(argument, ('show', 'hide', 'none'))
@@ -149,27 +171,54 @@ class avembed(Directive):
                  }
 
   def run(self):
-
     """ Restructured text extension for inserting embedded AVs with show/hide button """
-    self.options['address'] = self.arguments[0]
+    av_path = self.arguments[0]
     self.options['type'] = self.arguments[1]
 
     url_params = {}
-    url_params['serverURL'] = conf.server_url
+    url_params['exerciseServer'] = conf.exercise_server
+    url_params['loggingServer'] = conf.logging_server
+    url_params['scoreServer'] = conf.score_server
     url_params['moduleOrigin'] = conf.module_origin
     url_params['module'] = self.options['module']
     url_params['selfLoggingEnabled'] = 'false'
 
-    embed = embedlocal(self.arguments[0])
-    self.options['exer_name'] = embed[0]
-    self.options['av_address'] = embed[1] + '?' + urllib.urlencode(url_params).replace('&', '&amp;')
-    self.options['width'] = embed[2]
-    self.options['height'] = embed[3]
     self.options['content'] = ''
+    self.options['exer_name'] = os.path.basename(av_path).partition('.')[0]
 
+    # Set av_address and dimensions (depends on whether it is an AV or a KA exercise)
+    if self.options['type'] == 'ka':
+      self.options['av_address'] = os.path.relpath(conf.exercises_dir, conf.ebook_path)
+      dimensions = getDimensions(conf.exercises_dir + av_path)
+
+      if 'height' in dimensions and 'width' in dimensions:
+        self.options['height'] = dimensions['height']
+        self.options['width'] = dimensions['width']
+      else:
+        print_err('WARNING: Unable to parse dimensions of %s' % av_path)
+
+        # Use reasonable defaults
+        self.options['width'] = 950
+        self.options['height'] = 650
+
+        if 'err' in dimensions:
+          print_err('  %s' % str(dimensions['err']))
+
+        # Use XML files as a backup until data attributes have been implemented for all exercises
+        # TODO: Remove embedlocal and replace this section after XML files have been removed
+        embed = embedlocal(av_path)
+        self.options['width'] = embed[2]
+        self.options['height'] = embed[3]
+    else:
+      self.options['av_address'] = os.path.relpath(conf.av_dir, conf.ebook_path).replace('\\', '/')
+      self.options['width'] = 950
+      self.options['height'] = 450
+
+    # Append AV path and URL parameters to base av_address
+    self.options['av_address'] += '/%s?%s' % (av_path, urllib.urlencode(url_params).replace('&', '&amp;'))
 
     # Load translation
-    langDict = loadTable()  
+    langDict = loadTable()
 
     # Add the JSAV exercise options to the AV address
     if 'exer_opts' in self.options and self.options['exer_opts'] != '':
@@ -187,41 +236,37 @@ class avembed(Directive):
     if 'long_name' not in self.options:
       self.options['long_name'] = self.options['exer_name']
 
+    if 'showhide' not in self.options:
+      self.options['showhide'] = 'hide'
+
+    if self.options['showhide'] == "show":
+      self.options['show_hide_text'] = langDict["hide"]
+    elif self.options['showhide'] == "hide":
+      self.options['show_hide_text'] = langDict["show"]
+
     if 'oembed_url' not in self.options:
-      self.options['oembed'] = False
+      # Exercise does not use oembed
+      self.options['oembed'] = 'false'
+
+      if self.options['showhide'] != "none":
+        self.options['content'] = BUTTON_HTML % (self.options)
     else:
-      self.options['oembed'] = True
+      # Exercise uses oembed
+      self.options['oembed'] = 'true'
       self.options['av_address'] = self.options['oembed_url']
       parts = self.options['oembed_url'].split("//", 1)
       self.options['oembed_server'] = parts[0] + "//" + parts[1].split("/", 1)[0]
 
-    res = ANCHOR_HTML % self.options
-
-    if self.options['oembed']:
-      if 'showhide' in self.options and self.options['showhide'] == "none":
-        self.options['content'] = OEMBED_HTML % (self.options)
-      elif 'showhide' in self.options and self.options['showhide'] == "show":
+      if self.options['showhide'] == "show":
         self.options['show_hide_text'] = langDict["hide"]
-        self.options['content'] = OEMBED_HTML % (self.options)
-        res += BUTTON_HTML % (self.options)
-      else:
+        self.options['content'] = BUTTON_HTML % (self.options)
+      elif self.options['showhide'] == "hide":
         self.options['show_hide_text'] = langDict["show"]
-        res += BUTTON_HTML % (self.options)
-    else:
-      if 'showhide' in self.options and self.options['showhide'] == "none":
-        self.options['content'] = IFRAME_HTML % (self.options)
-      elif 'showhide' in self.options and self.options['showhide'] == "show":
-        self.options['show_hide_text'] = langDict["hide"]
-        self.options['content'] = IFRAME_HTML % (self.options)
-        res += BUTTON_HTML % (self.options)
-      else:
-        self.options['show_hide_text'] = langDict["show"]
-        res += BUTTON_HTML % (self.options)
+        self.options['content'] = BUTTON_HTML % (self.options)
 
-    res += CONTAINER_HTML % (self.options)
+    res = CONTAINER_HTML % (self.options)
 
     return [nodes.raw('', res, format='html')]
-
 
 
 source = """\

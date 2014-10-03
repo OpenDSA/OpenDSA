@@ -114,12 +114,12 @@ function addEdge(node1, node2) {
   var edge2_ty = node1.element.position().top + node1.container.position().top + nodeHeight / 3 * 2;
 
 
-  edges.topEdge = jsav.g.line(edge1_fx, edge1_fy+15, edge1_tx, edge1_ty+15, {
+  edges.topEdge = jsav.g.line(edge1_fx, edge1_fy + 15, edge1_tx, edge1_ty + 15, {
     'arrow-end': 'classic-wide-long',
     'stroke-width': 2,
     'stroke-dasharray': '-'
   });
-  edges.bottomEdge = jsav.g.line(edge2_fx, edge2_fy+15, edge2_tx, edge2_ty+15, {
+  edges.bottomEdge = jsav.g.line(edge2_fx, edge2_fy + 15, edge2_tx, edge2_ty + 15, {
     'arrow-end': 'classic-wide-long',
     'stroke-width': 2,
     'stroke-dasharray': '-'

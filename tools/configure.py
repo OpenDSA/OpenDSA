@@ -20,7 +20,6 @@
 #   - Generates ToDo.rst, if any TODO directives were encountered when processing the book AND if the configuration file does not suppress them
 #   - Creates table.json and page_chapter.json which are used by Sphinx during the building process
 #   - Generates a Makefile and conf.py based on templates found in config_templates.py
-#     - Makefile is configured to copy the original .htaccess file from lib to the html output directory
 #     - conf.py is configured to point to the original ODSAextensions and _themes directories
 #     - CONTROLLING INCLUSION OF GLOBAL JS AND CSS FILES - conf.py contains a dictionary called html_context
 #       which controls what JS and CSS files are included on ALL module pages, please see the assoicated comment
@@ -194,7 +193,7 @@ def generate_index_rst(config, slides = False):
   header_data['mod_chapter'] = ''
   header_data['mod_date'] = str(datetime.datetime.now()).split('.')[0]
   header_data['mod_options'] = ''
-  header_data['build_cmap'] = config.build_cmap
+  header_data['build_cmap'] = str(config.build_cmap).lower()
   header_data['unicode_directive'] = rst_header_unicode if not slides else ''
 
   # Generate the index.rst file
@@ -237,7 +236,7 @@ def generate_todo_rst(config, slides = False):
     header_data['mod_chapter'] = ''
     header_data['mod_date'] = str(datetime.datetime.now()).split('.')[0]
     header_data['mod_options'] = ''
-    header_data['build_cmap'] = config.build_cmap
+    header_data['build_cmap'] = str(config.build_cmap).lower()
     header_data['unicode_directive'] = rst_header_unicode if not slides else ''
     todo_file.write(rst_header % header_data)
     todo_file.write(todo_rst_template)
@@ -257,7 +256,7 @@ def generate_todo_rst(config, slides = False):
       todo_file.write('.. raw:: html\n\n   <h2><a href="' + mod_name + '.html#' + todo_id + '">source: ' + mod_name + '</a></h2>\n\n')
 
       # Clean up and write the TODO directive itself
-      todo_file.write('\n'.join(todo_directive).rstrip() + '\n\n')
+      todo_file.write('\n'.join(todo_directive).encode('utf-8').strip() + '\n\n')
 
 
 def initialize_output_directory(config):
@@ -291,7 +290,9 @@ def initialize_conf_py_options(config, slides):
   options = {}
   options['title'] = config.title
   options['book_name'] = config.book_name
-  options['backend_address'] = config.backend_address
+  options['exercise_server'] = config.exercise_server
+  options['logging_server'] = config.logging_server
+  options['score_server'] = config.score_server
   options['module_origin'] = config.module_origin
   options['theme_dir'] = config.theme_dir
   options['theme'] = config.theme
@@ -309,7 +310,7 @@ def initialize_conf_py_options(config, slides):
   options['av_root_dir'] = config.av_root_dir
   options['exercises_root_dir'] = config.exercises_root_dir
   # The relative path between the ebook output directory (where the HTML files are generated) and the root ODSA directory
-  options['eb2root'] = os.path.relpath(config.odsa_dir, config.book_dir + config.rel_book_output_path) + '/'
+  options['eb2root'] = config.rel_build_to_odsa_path
   options['rel_book_output_path'] = config.rel_book_output_path
   options['slides_lib'] = 'hieroglyph' if slides else ''
 

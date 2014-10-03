@@ -1,18 +1,8 @@
 RecursionWriteCON2.jsavcanvas {
  margin-left: auto;
  margin-right: auto;
- height:900px;
- width: 900px;
-}
-
-.jsavcanvas {
- margin-left: auto;
- margin-right: auto;
- height: 600px;
+ height: 700px;
  width: 900px;
 }
 
 
-.svg{
-  stroke-width: 1;
-}

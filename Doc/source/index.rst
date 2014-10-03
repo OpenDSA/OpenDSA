@@ -11,6 +11,7 @@ Table of Contents
    :maxdepth: 3
 
    Introduction
+   InstructorTools
    Configuration
    ModAuthor
    Style
@@ -19,9 +20,9 @@ Table of Contents
    Client-sideDevelopment
    Extensions
    Preprocessor
-   InstructorTools
    Backend
    BackendSpecs
+   AdminTools
    Client-sideFramework
    QBankUserManual
    QBankDevManual

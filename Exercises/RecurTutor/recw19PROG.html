@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html data-require="math math-format word-problems spin">
+<head>
+  <title> Recursion Programming Exercise 19</title>
+  <script src="../../lib/jquery.min.js">
+  </script>
+  <script src="../../lib/jquery-ui.min.js">
+  </script>
+  <script>
+    window.OpenPopKa = true;
+  </script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../lib/odsaStyle-min.css"></script>
+   <script src="../../lib/ExAreaPROG.js"> </script>
+   <link rel= "stylesheet" href="../../lib/ExAreaPROG.css" type="text/css">
+<style>
+    #problemarea { height: 600px;}
+  </style>
+</head>
+<body>
+   
+
+<div class="exercise">
+  <div class="vars">
+    <var id="listel1">randRange(0, 99)</var>
+    <var id="listel2">randRange(0, 99)</var>
+    <var id="listel3">randRange(0, 99)</var>
+    <var id="listel4">randRange(0, 99)</var>
+  </div>
+
+  <div class="problems">
+    <div> <!-- Supresses answer box -->
+      <p class="problem" id = "test">    Given the following recursive function signature, write down the recursive function reverse a given stack without using any other data structures(or without extra memory). You cannot use any memory at all. All what you have to do is use recursion only to attain this. You don’t need to implement a function to push, pop or check if the stack is empty or not. You may use the given getLast function with no modifications if needed.
+<br />
+
+</h4>
+<textarea  id="codeTextarea">void stackReversal(Stack s)
+{
+
+
+
+	
+}
+public static int getLast(Stack<Integer> s){
+ int a = s.pop();
+ if(s.size() == 0)
+  return a;
+ else{ 
+  int k = getLast(s);
+  s.push(a);
+  return k;}
+}
+</textarea></p>
+
+      <div class="question">
+	
+      </div>
+      <div class="solution" data-type="custom">
+       <div class="guess"> [ $('#codeTextarea').val() ] </div>
+        <div class="validator-function">
+         
+         //return "openPop";
+        </div>
+      </div>
+      <div class="hints">
+      </div>
+    </div>
+  </div>
+</div>
+ 
+</body>
+</html>

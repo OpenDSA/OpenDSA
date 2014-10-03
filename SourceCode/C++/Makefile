@@ -19,6 +19,22 @@ clean:
 	-rm -rf build
 	mkdir build
 
+Anal: build build/Anal/success
+
+build/Anal/success: Misc/Anal.cpp Searching/bsearch.cpp Searching/Sequential.cpp Misc/Largest.cpp Utils/utils.h
+	@echo "Analysis Chapter Test"
+	@rm -rf build/Anal
+	@mkdir build/Anal
+	@cp Misc/Anal.cpp build/Anal
+	@cp Searching/bsearch.cpp build/Anal
+	@cp Searching/Sequential.cpp build/Anal
+	@cp Misc/Largest.cpp build/Anal
+	@cp Utils/utils.h build/Anal
+	cd build/Anal; \
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o Anal.o Anal.cpp; \
+	$(CC) $(CFLAGS) Anal.o -o Anal; \
+	./Anal
+
 lists: ListTest
 
 ListTest: build build/ListTest/success

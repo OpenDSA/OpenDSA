@@ -1,0 +1,21 @@
+Algorithm 1 Heapsort(A)
+    while heap-size[A] > 0 do
+        Swap(A[0], A[heap-size[A] - 1])
+        heap-size[A] ← heap-size[A] - 1
+        Max-Heapify(A, 0)
+
+Algorithm 2 Max-Heapify(A, i)
+    l ← Left-child-index(i)
+    r ← Right-child-index(i)
+    if l < heap-size[A] and A[l] > A[i] then
+        largest ← l
+    else
+        largest ← i
+    end if
+    if r < heap-size[A] and A[r] > A[largest] then
+        largest ← r
+    end if
+    if largest ≠ i then
+        Swap(A[i], A[largest])
+        Max-Heapify(A, largest)
+    end if

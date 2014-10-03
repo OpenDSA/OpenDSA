@@ -1,3 +1,4 @@
+/* global ODSA, ClickHandler */
 (function ($) {
   "use strict";
   JSAV._types.ds.BinaryTreeNode.prototype.createLabel = function (val) {
@@ -21,10 +22,10 @@
   };
 
   //modified to remove label when value is empty and create label when it's not empty
-  JSAV._types.ds.BinaryTreeNode.prototype._setvalue = JSAV.anim(function(newValue) {
+  JSAV._types.ds.BinaryTreeNode.prototype._setvalue = JSAV.anim(function (newValue) {
     var oldVal = this.value(),
       valtype = typeof(newValue);
-    if (typeof oldVal === "undefined") {oldVal = ""};
+    if (typeof oldVal === "undefined") { oldVal = ""; }
     if (valtype === "object") { valtype = "string"; }
     this.element
       .removeClass("jsavnullnode")
@@ -41,19 +42,35 @@
       this.element.addClass("jsavnullnode");
     }
     return [oldVal];
-    });
+  });
 
+  // AV varialbles
   var insertArray,
-    tree,
-    stack,
-    stackLabels,
-    insertSize = 6,
-    clickHandler,
-    av = new JSAV($("#jsavcontainer"));
+      tree,
+      stack,
+      stackLabels,
+      insertSize = 6,
+      clickHandler,
+
+      // Load the configurations created by odsaAV.js
+      config = ODSA.UTILS.loadConfig({"av_container": "jsavcontainer"}),
+      interpret = config.interpreter,
+      code = config.code,
+      codeOptions = {after: {element: $(".instructions")}, visible: true, lineNumbers: false},
+
+      // Create a JSAV instance
+      av = new JSAV($("#jsavcontainer"));
 
   av.recorded(); // we are not recording an AV with an algorithm
 
+  if (code) {
+    av.code(code[1], codeOptions);
+    av.code(code[0], codeOptions);
+  }
+
   function initialize() {
+
+    av.container.find(".jsavcanvas").css("min-height", 450);
 
     if (typeof clickHandler === "undefined") {
       clickHandler = new ClickHandler(av, exercise, {
@@ -67,7 +84,8 @@
     //generate values. 65 = A, 80 = 0
     insertArray = generateValues(insertSize, 65, 80);
     //convert the values into characters and push them into the stack
-    for (var i = 0; i < insertSize; i++) {
+    var i;
+    for (i = 0; i < insertSize; i++) {
       insertArray[i] = String.fromCharCode(insertArray[i]);
       // stack.addLast(insertArray[i]);
     }
@@ -88,7 +106,7 @@
     //contains references to the labels of the stack nodes
     stackLabels = [];
     //put labels on the stack nodes and hide all except the first one by default
-    for (var i = 0; i < insertSize; i++) {
+    for (i = 0; i < insertSize; i++) {
       var l = av.label(getBinary(insertArray[i]), {container: stack.get(i).element, visible: i === 0});
       l.element.css({
         left: stack.last().element.outerWidth() - 10,
@@ -142,10 +160,12 @@
           this.right().element.addClass("emptynode");
         }
         this.container.layout();
-        if (stack.first() && !stack.first().value())
+        if (stack.first() && !stack.first().value()) {
           stack.removeFirst();
-        if (stack.size())
+        }
+        if (stack.size()) {
           stackLabels[insertSize - stack.size()].show();
+        }
         stack.layout();
       }
     });
@@ -158,7 +178,7 @@
 
     var modelStack = jsav.ds.stack(insertArray, {center: true});
     modelStack.layout();
-    var l = jsav.label(getBinary(insertArray[0]),{container: modelStack.first().element});
+    var l = jsav.label(getBinary(insertArray[0]), { container: modelStack.first().element });
     l.element.css({
       left: modelStack.first().element.outerWidth() - 10,
       top: - l.element.outerHeight() + 10
@@ -172,7 +192,7 @@
     jsav.displayInit();
 
     for (var i = 0; i < insertSize; i++) {
-      var val = getBinary( insertArray[i] );
+      var val = getBinary(insertArray[i]);
       var level = 0;
       var node = modelTree.root();
       //find the node where the value should be inserted
@@ -194,8 +214,8 @@
         node.removeClass("emptynode");
       } else {
         // level += 1;
-        while (val.charAt(level) === getBinary( node.value() ).charAt(level)) {
-          node = node.child(parseInt(val.charAt(level)))
+        while (val.charAt(level) === getBinary(node.value()).charAt(level)) {
+          node = node.child(parseInt(val.charAt(level), 10))
             .removeClass("emptynode")
             .value(node.value());
           node.parent().value("");
@@ -206,21 +226,21 @@
           level += 1;
         }
         //insert value
-        node.child(parseInt(val.charAt(level)))
+        node.child(parseInt(val.charAt(level), 10))
           .removeClass("emptynode")
           .value(insertArray[i])
           .left("")
           .element.addClass("emptynode");
-        node.child(parseInt(val.charAt(level)))
+        node.child(parseInt(val.charAt(level), 10))
           .right("")
           .element.addClass("emptynode");
         //move value from node to the sibling of the newly inserted node
-        node.child( 1 - parseInt(val.charAt(level)))
+        node.child(1 - parseInt(val.charAt(level), 10))
           .removeClass("emptynode")
           .value(node.value())
           .left("")
           .element.addClass("emptynode");
-        node.child( 1 - parseInt(val.charAt(level)))
+        node.child(1 - parseInt(val.charAt(level), 10))
           .right("")
           .element.addClass("emptynode");
         node.value("");
@@ -263,7 +283,7 @@
     if (typeof char === "string") {
       char = char.charCodeAt(0);
     }
-    return Array(binLen + 1 - (char % 64).toString(2).length).join("0") + (char % 64).toString(2);
+    return new Array(binLen + 1 - (char % 64).toString(2).length).join("0") + (char % 64).toString(2);
   }
 
   var exercise = av.exercise(modelSolution, initialize, {feedback: "atend", grader: "finder"});

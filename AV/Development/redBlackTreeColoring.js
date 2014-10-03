@@ -1,11 +1,23 @@
+/* global ODSA */
 (function ($) {
   "use strict";
+  // AV variables
   var initialArray,
-    tree,
-    treeSize = 25,
-    av = new JSAV($("#jsavcontainer"));
+      tree,
+      treeSize = 25,
+
+      // Load the configurations created by odsaAV.js
+      config = ODSA.UTILS.loadConfig({av_container: "jsavcontainer"}),
+      interpret = config.interpreter,
+      code = config.code,
+      codeOptions = {after: {element: $(".instructions")}, visible: true},
+
+      // Create a JSAV instance
+      av = new JSAV($("#jsavcontainer"));
 
   av.recorded(); // we are not recording an AV with an algorithm
+
+  av.code(code, codeOptions);
 
   function initialize() {
 
@@ -25,7 +37,7 @@
     }
     colorTreeRed(tree.root());
     tree.layout();
-    tree.click( function () {
+    tree.click(function () {
       this.toggleColor();
     });
     
@@ -65,52 +77,58 @@
   }
 
   function colorTreeRed(node) {
-    if (!node)
+    if (!node) {
       return;
+    }
     node.colorRed();
     colorTreeRed(node.left());
     colorTreeRed(node.right());
   }
 
   function blackNodesBetweenRootAndLeaves(root) {
-    if (!root)
+    if (!root) {
       return 0;
+    }
     var left = blackNodesBetweenRootAndLeaves(root.left());
     var right = blackNodesBetweenRootAndLeaves(root.right());
     if (left === right && left !== -1) {
-      return left + (root.hasClass("blacknode")? 1:0);
+      return left + (root.hasClass("blacknode") ? 1 : 0);
     } else {
       return -1;
     }
   }
 
   function redHaveOnlyBlackChildren(root) {
-    if (!root)
+    if (!root) {
       return true;
-    if (!redHaveOnlyBlackChildren(root.left()))
+    }
+    if (!redHaveOnlyBlackChildren(root.left())) {
       return false;
-    if (!redHaveOnlyBlackChildren(root.right()))
+    }
+    if (!redHaveOnlyBlackChildren(root.right())) {
       return false;
+    }
     if (root.isRed() &&
-      (   
-        (root.left() && root.left().isRed()) || 
+      (
+        (root.left() && root.left().isRed()) ||
         (root.right() && root.right().isRed())
       )
-       )
+    ) {
       return false;
+    }
     return true;
   }
 
   JSAV._types.Exercise.prototype.grade = function () {
     var score = 0;
     //black root
-    score += tree.root().hasClass("blacknode")? 1:0;
+    score += tree.root().hasClass("blacknode") ? 1 : 0;
     //paths from the leaves to the roots have an equal amount of black nodes
-    score += blackNodesBetweenRootAndLeaves(tree.root()) > 0? 1:0;
+    score += blackNodesBetweenRootAndLeaves(tree.root()) > 0 ? 1 : 0;
     //red nodes only have black children 
-    score += redHaveOnlyBlackChildren(tree.root())? 1:0;
+    score += redHaveOnlyBlackChildren(tree.root()) ? 1 : 0;
 
-    score = score === 3? 1: 0;
+    score = score === 3 ? 1 : 0;
     
     this.score = {
       correct: score,

@@ -1,0 +1,11 @@
+// p is a pointer to the root of the Common Trie structure
+// A is the string to be inserted
+// n is the length of A
+TRIE-INSERT(p, A, n)
+  for i := 1 to n do
+    if p->C[ A[i] ] = NIL then
+      construct a new node in which: 
+        node->C[i] := NIL, bit := FALSE
+      p->C[ A[i] ] := node
+    p := p->C[ A[i] ]
+  p->bit := TRUE

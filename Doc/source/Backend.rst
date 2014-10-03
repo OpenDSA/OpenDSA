@@ -84,6 +84,7 @@ Both
      sudo easy_install mimeparse
      sudo easy_install python-dateutil
      sudo easy_install django-tastypie
+     sudo easy_install html5lib
 
 3. Install memcache::
 

@@ -81,7 +81,19 @@ When complete, your file should go in the
       <div class="solution"><var>"True"</var></div>
       <div class="solution"><var>"False"</var></div>
 
-   * Replace ``<<ANY HINTS YOU HAVE>>`` with any hints you may think will
+   * Replace ``<<ANY HINTS YOU HAVE>>`` with hints that you think will
      be useful to the student. If you don't have any just delete this
      code from this question. If you have multiple hints, you can add
      as many as you like, each within its own ``<p></p>`` tags.
+
+
+Using JSAV within the Khan Academy Framework
+--------------------------------------------
+
+* To change the height of the area that JSAV can work within, set the
+  height for ``jsavcanvas`` within a style block.
+  For example::
+
+     <style>
+       .jsavcanvas { height: 470px;}
+     </style>

@@ -5,7 +5,10 @@
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
- 
+  <script src="../../lib/odsaStyle-min.css"></script>
+  <style> 
+   #problemarea { height: 800px;}
+  </style>
 </head>
  
 <body>
@@ -61,6 +64,10 @@ function checkAnswer(answer , k , n) {
         </div>
       </div>
       <div class="hints">
+      <p> The answer depends on the relationship between k and n.</p>
+      <p> if n is greater than k then the first recursive call will execute. Otherwise, the second one will excuse.</p>
+      <p> In any of the cases, n or k is decremented till it becomes equal to the other one.</p>
+      <p> k is returned in both cases. </p>
       </div> 
   </div>
 </div>

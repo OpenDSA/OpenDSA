@@ -6,7 +6,7 @@
 
 /* For array cells and the like that are unused */
 .unused {
-  background-color: #eee;
+  background-color: #ddd;
 }
 
 /* For marking a node (array cell, etc) as "special". This is a light red. */
@@ -187,7 +187,7 @@
 }
 
 .jsavtreenode.jsavredblacknode.selected {
-  box-shadow: 0px 0px 5px 10px #ddf;  
+  box-shadow: 0 0 5px 10px #ddf;  
 }
 
 .greybg, .greybg.jsavvalue, .jsavarray.jsavbararray .jsavindex.greybg .jsavvalue {

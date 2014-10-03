@@ -8,8 +8,9 @@
    :prerequisites:
    :topic: Recursion
 
-.. odsalink:: AV/RecurTutor/recursiontracecon1.css
+
 .. odsalink:: AV/RecurTutor/recursiontracecon2.css
+.. odsalink:: AV/RecurTutor/recursiontracecon1.css
 .. odsalink:: AV/RecurTutor/recursiontracecon3.css
 .. odsalink:: AV/RecurTutor/recursiontracecon4.css
 .. odsalink:: AV/RecurTutor/recursiontracecon5.css
@@ -18,7 +19,7 @@
 .. odsalink:: AV/RecurTutor/recursiontracecon8.css
 
 
-How to trace a recursive code?
+Tracing a recursive code
 ==============================
 Tracing recursive functions is a great way to learn how it behave. After you
 become comfortable with tracing, you rarely need to trace again. You begin to
@@ -111,9 +112,8 @@ Next visualization will show a tracing for the Towers of Hanoi problem.
 	   
 
 
- 
-.. odsascript:: AV/RecurTutor/recursiontracecon1.js
 .. odsascript:: AV/RecurTutor/recursiontracecon2.js
+.. odsascript:: AV/RecurTutor/recursiontracecon1.js
 .. odsascript:: AV/RecurTutor/recursiontracecon3.js
 .. odsascript:: AV/RecurTutor/recursiontracecon4.js
 .. odsascript:: AV/RecurTutor/recursiontracecon5.js

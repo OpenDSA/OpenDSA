@@ -1,0 +1,36 @@
+{
+  "translations" :{
+    "en": {
+      ".exerciseTitle": "Red-Black Tree Insertion",
+      "av_Authors": "Kasper Hellström",
+      ".instructLabel": "Instructions:",
+      ".instructions": "Move the values from the stack to the tree. Color the nodes and balance the tree using rotations when it becomes necessary."
+    }
+  },
+  "code": {
+    "english": [
+      "1. Search (top-down) and insert the new item u as in a Binary Search Tree.",
+      "2. Return (bottom-up) and",
+      "2.1 If u is root, make it black and the algorithm ends or",
+      "2.2 if its parent t is black, the algorithm ends",
+      "2.3 If both u and its parent t are red, do one of the following:",
+      "2.3.1. [change colors] If t and its sibling v are red:",
+      "         Color t and v black and their parent p red.",
+      "         Continue the algorithm with p if necessary.",
+      "2.3.2. [rotations] If t is red and v black, perform a rotation.",
+      "         After the rotation, p and its new parent exchange their colors.",
+      "         There are no longer two consequtive red nodes in the tree.",
+      "",
+      "ROTATION:",
+      "1 While the recursion returns, keep track of",
+      "    node p,",
+      "    p's child t and",
+      "    p's grandchild u within the path from inserted node to p.",
+      "2 If rotation is needed in p, do one of the following rotations:",
+      "    if (p.left == t) and (p.left.left == u), single rotation right in p;",
+      "    if (p.right == t) and (p.right.right == u), single rotation left in p;",
+      "    if (p.left == t) and (p.left.right == u), LR-double rotation in p; or",
+      "    if (p.right == t) and (p.right.left == u), RL-double rotation in p."
+    ]
+  }
+}

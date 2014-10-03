@@ -4,7 +4,7 @@ TARGET = build
 CSSLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 MINIMIZE = java -jar tools/yuicompressor-2.4.7.jar --nomunge
 
-.PHONY: all clean lint csslint jshint min CS2114 CS223 CS5114 CS3114 CS3114notes CS150 OpenDSA test IS allBooks nomin pull
+.PHONY: all clean lint csslint jshint min CS2114 CS223 CS5114 CS3114 CS3114notes CS150 OpenDSA test IS allBooks nomin pull CS2401 COP3530 CS208 Tutorial TDDD86_2014
 
 all: lint
 
@@ -27,7 +27,7 @@ csslint:
 	@csslint $(CSSLINTFLAGS) AV/Sorting/*.css
 	@csslint $(CSSLINTFLAGS) AV/Hashing/*.css
 	@csslint $(CSSLINTFLAGS) AV/Searching/*.css
-	@csslint $(CSSLINTFLAGS) AV/*.css
+	#@csslint $(CSSLINTFLAGS) AV/*.css
 	@csslint $(CSSLINTFLAGS) Doc/*.css
 	@csslint $(CSSLINTFLAGS) lib/*.css
 
@@ -53,7 +53,13 @@ jshint:
 	-@jshint lib/conceptMap.js
 
 min: nomin
-#lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/khan-exercise-min.js lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
+#lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
+
+Tutorial: min
+	python $(CONFIG_SCRIPT) config/Tutorial.json
+
+TDDD86_2014: min
+	python $(CONFIG_SCRIPT) config/TDDD86_2014.json
 
 good: min
 	python $(CONFIG_SCRIPT) config/good.json
@@ -61,23 +67,38 @@ good: min
 RecurTutor: min
 	python $(CONFIG_SCRIPT) config/RecurTutor.json
 
-CS2114: min
-	python $(CONFIG_SCRIPT) config/CS2114.json
+CSCI102: min
+	python $(CONFIG_SCRIPT) config/CSCI102.json
+
+CS150: min
+	python $(CONFIG_SCRIPT) config/CS150.json
+
+CSCI204: min
+	python $(CONFIG_SCRIPT) config/CSCI204.json
+
+CS208: min
+	python $(CONFIG_SCRIPT) config/CS208.json
 
 CS223: min
 	python $(CONFIG_SCRIPT) config/CS223.json
 
+CSE-A1140: min
+	python $(CONFIG_SCRIPT) config/CSE-A1140.json
+
+CSE-A1141: min
+	python $(CONFIG_SCRIPT) config/CSE-A1141.json
+
+CSE-A1141eng: min
+	python $(CONFIG_SCRIPT) config/CSE-A1141eng.json
+
+CS2114: min
+	python $(CONFIG_SCRIPT) config/CS2114.json
+
+CS2401: min
+	python $(CONFIG_SCRIPT) config/CS2401.json
+
 CS3114: min
 	python $(CONFIG_SCRIPT) config/CS3114.json
-
-CS5114: min
-	python $(CONFIG_SCRIPT) config/CS5114.json
-
-CSCI102: min
-	python $(CONFIG_SCRIPT) config/CSCI102.json
-
-CSCI204: min
-	python $(CONFIG_SCRIPT) config/CSCI204.json
 
 CS3114AM: min
 	python $(CONFIG_SCRIPT) config/CS3114AM.json
@@ -88,14 +109,11 @@ CS3114PM: min
 CS3114notes: min
 	python $(CONFIG_SCRIPT) s config/CS3114notes.json
 
-CS150: min
-	python $(CONFIG_SCRIPT) config/CS150.json
+COP3530: min
+	python $(CONFIG_SCRIPT) config/COP3530.json
 
-CSE-A1140: min
-	python $(CONFIG_SCRIPT) config/CSE-A1140.json
-
-CSE-A1141: min
-	python $(CONFIG_SCRIPT) config/CSE-A1141.json
+CS5114: min
+	python $(CONFIG_SCRIPT) config/CS5114.json
 
 OpenDSA: min
 	python $(CONFIG_SCRIPT) config/OpenDSA.json
@@ -117,6 +135,9 @@ testanal: min
 
 testfi: min
 	python $(CONFIG_SCRIPT) config/testfi.json
+
+testpt: min
+	python $(CONFIG_SCRIPT) config/testpt.json
 
 testsv: min
 	python $(CONFIG_SCRIPT) config/testsv.json
@@ -142,7 +163,7 @@ invalid: min
 slides: min
 	python $(CONFIG_SCRIPT) -s config/slides.json
 
-allBooks: CS150 CS3114 CSCI204 CSCI102 CS5114 CS2114 OpenDSA Everything test testcmap uwosh good slides
+allBooks: CS208 CS2114 CS2401 CS3114 CS3530 OpenDSA Everything testcmap
 
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
@@ -180,10 +201,6 @@ lib/odsaAV-min.js: lib/odsaAV.js
 lib/odsaAV-min.css: lib/odsaAV.css
 	@echo 'Minimizing lib/odsaAV.css'
 	@$(MINIMIZE) lib/odsaAV.css -o lib/odsaAV-min.css
-
-lib/khan-exercise-min.js: ODSAkhan-exercises/khan-exercise.js
-	@echo 'Minimizing lib/khan-exercise.js'
-	@$(MINIMIZE) ODSAkhan-exercises/khan-exercise.js -o lib/khan-exercise-min.js
 
 lib/odsaMOD-min.js: lib/odsaMOD.js
 	@echo 'Minimizing lib/odsaMOD.js'

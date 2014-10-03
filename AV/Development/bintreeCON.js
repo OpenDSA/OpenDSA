@@ -1,6 +1,6 @@
+/*global ODSA */
 "use strict";
-
-(function ($) {
+$(document).ready(function () {
   var av = new JSAV("bintreeCONBTEX", {"animationMode": "none"});
 
   // Draw the rectangles
@@ -78,5 +78,4 @@
   av.g.line(lLeft + 20, btTop + 198, lLeft + 180, btTop + 198);
   av.label("y", {left: lLeft, top: btTop + 214}).show;
   av.g.line(lLeft + 20, btTop + 240, lLeft + 275, btTop + 240);
-
-}(jQuery));
+});

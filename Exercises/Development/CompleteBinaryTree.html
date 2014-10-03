@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>Complete Binary Tree</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+
+<body>
+<script>
+function genAnswer(node, relation) {
+  if(relation == "parent") {
+    if(node == 0) { return "NONE"; }
+      if(node%2 == 0) { return ((node-1)/2 - .5); }
+      else { return (node-1)/2; }
+  } else if(relation == "left child") {
+    num = (node*2) + 1;
+    if(num > 10) { return "NONE"; }
+    return num;
+  } else if(relation == "right child") {
+    num = (node*2) + 2;
+    if(num > 10) { return "NONE"; }
+    return num;
+  } else if(relation == "left sibling") {
+    if(node%2 != 0 && node != 0) { return "NONE"; }
+    return node - 1;
+  } else {
+    num = node + 1;
+    if(node%2 == 0 || node == 0 || num > 10) { return "NONE"; }
+    return num;
+  }
+}
+</script>
+
+<script>
+function genHint(relation) {
+  if(relation == "parent") {
+    return "To find the parent of node R, calculate <b>(R - 1)/2</b> rounded down.<br>If <b>R = 0</b>, then it has no parent.";
+  } else if(relation == "left child") {
+    return "To find the left child of node R, calculate <b>2R + 1</b>. <br>If <b>2R + 1 <u><</u> N</b>, then R has no left child.";
+  } else if(relation == "right child") {
+    return "To find the right child of node R, calculate <b>2R + 2</b>. <br>If <b>2R + 2 <u><</u> N</b>, then R has no right child.";
+  } else if(relation == "left sibling") {
+    return "To find the left sibling of node R, calculate <b>R - 1</b> if R is even. <br>If R is not even, it has no left sibling.";
+  } else {
+    return "To find the right sibling of node R, calculate <b>R + 1</b> if R is odd, and <b>R + 1 <u><</u> N</b>. <br>If these conditions are not met, R has no right sibling.";
+  }
+}
+</script>
+
+<script>
+function whichNode(chance) {
+  if(chance == 0) { return 0; }
+  else { return 8; }
+}
+</script>
+
+<div class="exercise">
+  <div class="vars">
+    <var id="node">randRange(0,11)+whichNode(randRange(0,1))</var>
+    <var id="relationType">["parent", "left child", "right child", "left sibling", "right sibling"]</var>
+    <var id="relation">relationType[randRange(0,4)]</var>
+    <var id="ANS">genAnswer(node, relation)</var>
+    <var id="HINT">genHint(relation)</var>
+  </div>
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="problem">WARNING! Read the conditions for the problems
+        in this set very carefully! The type of tree and node structure
+        can change from problem to problem.</p>
+      <p class="question">For the above complete binary tree, what is
+        the <var>relation</var> of the node labeled <var>node</var>?
+        Type in the node number of the <var>relation</var>, or if one does
+        not exist, then type NONE.
+      </p>
+      <p class="solution" data-type="text"><var>ANS</var></p>
+      <div class="hints">
+         <p><var>HINT</var></p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

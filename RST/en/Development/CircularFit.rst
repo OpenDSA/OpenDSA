@@ -19,13 +19,4 @@ head of the freelist.
 This modification reduces the number of unnecessary searches through
 small blocks that were passed over by previous requests.
 
-.. raw:: html
-
-   <center> 
-   <iframe id="FirstFit_iframe" 
-        src="http://research.cs.vt.edu/AVresearch/MMtutorial/CircularFit.html"
-        width="1000" height="600"
-        frameborder="1" marginwidth="0" marginheight="0"
-	scrolling="no">
-   </iframe>
-   </center>
+.. avembed:: AV/Development/firstFit.html ss

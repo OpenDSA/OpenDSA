@@ -1,6 +1,7 @@
 ﻿/* global ODSA, PARAMS */
 (function ($) {
   "use strict";
+  // AV variables
   var initialData = [],
       size = PARAMS.size ? parseInt(PARAMS.size, 10) : 7,
       length = PARAMS.length ? parseInt(PARAMS.length, 10) : 4,
@@ -9,12 +10,22 @@
       $insertLabel,
       $trieLabel,
       $nextButton,
-      interpret = ODSA.UTILS.loadConfig({av_container: "jsavcontainer"}).interpreter,
+
+      // configurations
+      config = ODSA.UTILS.loadConfig({av_container: "jsavcontainer"}),
+      interpret = config.interpreter,
+      code = config.code,
+      codeOptions = {after: {element: $(".instructions")}, visible: true},
+
+      // Create a JSAV instance
       av = new JSAV("jsavcontainer", {autoresize: false});
 
   av.recorded(); // we are not recording an AV with an algorithm
 
+  av.code($.extend(codeOptions, code));
+
   function initialize() {
+
     if (stack) {
       stack.clear();
     }

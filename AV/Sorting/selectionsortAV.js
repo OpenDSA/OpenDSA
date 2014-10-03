@@ -61,12 +61,12 @@ $(document).ready(function () {
   // Execute the "Run" button function
   function runIt() {
     var arrValues = ODSA.AV.processArrayValues();
-    
+
     // If arrValues is null, the user gave us junk which they need to fix
     if (arrValues) {
       ODSA.AV.reset(true);
       av = new JSAV($('.avcontainer'));
-      
+
       // Create a new array using the layout the user has selected
       arr = av.ds.array(arrValues, {indexed: true, layout: arrayLayout.val()});
 
@@ -76,6 +76,7 @@ $(document).ready(function () {
       av.displayInit();
       selsort();
       av.recorded(); // mark the end
+      ODSA.AV.sendResizeMsg();
     }
   }
 

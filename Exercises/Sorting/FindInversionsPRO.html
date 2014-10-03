@@ -6,7 +6,7 @@ Written by Gayathri Subramanian and Cliff Shaffer
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title>Count Inversions</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
@@ -17,8 +17,7 @@ Written by Gayathri Subramanian and Cliff Shaffer
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
   <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
 </head>
-
-<body>
+<body data-height="520" data-width="950">
 <script>
 var av,     // The JSAV object
     arr,    // The JSAV array
@@ -30,7 +29,7 @@ function initJSAV(a) {
   arr = av.ds.array(JSAV.utils.rand.numKeys(0, 999, a),
                     {indexed: true, center: false});
   av.recorded();
-  
+
   // Compute the answer
   answer = 0;
   for (i = 1; i < arr.size(); i++) {
@@ -57,15 +56,15 @@ function genAnswer() {
   <div class="problems">
     <div>
       <div class="question">
-	How many inversions are in the following array?
-	<div id="jsav" class="jsavcanvas"></div>
+  How many inversions are in the following array?
+  <div id="jsav" class="jsavcanvas"></div>
       </div>
       <p class="solution" data-type="text"><var>CorrectAnswer</var></p>
-      <div class="hints"> 
-	<p>To count the number of inversions look at each value and
-	  count the number of times that a bigger value is to its
-	  left.</p>
-	<p> The total number of inversions is <var>CorrectAnswer</var></p>
+      <div class="hints">
+  <p>To count the number of inversions look at each value and
+    count the number of times that a bigger value is to its
+    left.</p>
+  <p> The total number of inversions is <var>CorrectAnswer</var></p>
       </div>
     </div>
   </div>

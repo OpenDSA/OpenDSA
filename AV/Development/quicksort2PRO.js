@@ -338,11 +338,12 @@
   function highlightAndSwapPivot(arr, first, last) {
     var index = pivotFunction[pivotSelectionMethod](first, last, arr);
 
-    arr.addClass(index, "pivot");
-
     if (index !== last) {
       arr.swap(index, last, swapOptions);
     }
+
+    arr.addClass(last, "pivot");
+
     return index;
   }
 

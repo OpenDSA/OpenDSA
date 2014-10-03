@@ -62,7 +62,7 @@
  *   - Based on http://stackoverflow.com/questions/1403888/get-url-parameter-with-jquery
 **/
 function getURLParam(name) {
-  var param = new RegExp('[?|&]' + name + '=' + '(.+?)(&|$)').exec(location.href)
+  var param = new RegExp('[?|&]' + name + '=' + '([^&]+)(&|$)').exec(location.href);
 
   return (param) ? decodeURIComponent(param[1]) : "";
 }
@@ -71,7 +71,7 @@ function getURLParam(name) {
 window.urlBaseOverride = "../../ODSAkhan-exercises/";
 
 // The address of the server where the data is sent
-var SERVER_URL = getURLParam('serverURL');
+var SCORE_SERVER = getURLParam('scoreServer');
 
 // The domain where the OpenDSA modules are hosted, used by postMessage to send data to the parent module page
 var MODULE_ORIGIN = getURLParam('moduleOrigin');

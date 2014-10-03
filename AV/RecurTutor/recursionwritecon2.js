@@ -9,19 +9,19 @@
   av.umsg("To solve the sum problem, we use the simpler of the two versions. The first one:");
   av.step();
 
-  var  pseudo = av.code(" int sum(int arr[],int size)\n{ if (size==0)\n  return 0;\n else{\n  int smallResult=sum(arr,size-1);\n  return smallResult + arr[size-1];\n  }\n}" , {lineNumbers:false , top:0 , left:0});
+  var  pseudo = av.code(" int sum(int arr[],int size)\n{ if (size==0)\n  return 0;\n else{\n  int smallResult=sum(arr,size-1);\n  return smallResult + arr[size-1];\n  }\n}" , {lineNumbers:false , top:0 , left:70});
   
   av.step();
     
   av.umsg("Some people don’t like multiple return statements. That can be easily handled by the second version:");
 
-  var  pseudo2 = av.code("int sum(int arr[],int size)\n{ if (size==0)\n  return 0;\n else\n  {\n  int smallResult=sum(arr,size-1);\n  result= smallResult+arr[size-1];\n  }\n  return result;\n}", {lineNumbers:false , top:0 , left:350});
+  var  pseudo2 = av.code("int sum(int arr[],int size)\n{ if (size==0)\n  return 0;\n else\n  {\n  int smallResult=sum(arr,size-1);\n  result= smallResult+arr[size-1];\n  }\n  return result;\n}", {lineNumbers:false , top:0 , left:430});
   pseudo2.highlight(7);
   av.step();
   av.umsg(" You may even think there's no reason to declare smallResult and prefer to write:");
   av.step();
  
-   var  pseudo3 = av.code("int sum(int arr[],int size)\n{ if ( size == 0 )\n  return 0;\n else\n{\nreturn sum( arr, size - 1 )+ arr[ size - 1 ];\n}", {lineNumbers:false , top:270 , left:150});
+   var  pseudo3 = av.code("int sum(int arr[],int size)\n{ if ( size == 0 )\n  return 0;\n else\n{\nreturn sum( arr, size - 1 )+ arr[ size - 1 ];\n}", {lineNumbers:false , top:215 , left:150});
   pseudo3.highlight(6);
   av.step();
 

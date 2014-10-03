@@ -1,3 +1,4 @@
+/* global ClickHandler */
 (function ($) {
   "use strict";
   var arraySize = 10,
@@ -6,14 +7,14 @@
     clickHandler,
     av = new JSAV($("#jsavcontainer")),
     code = av.code(
-      "public static void insertionSort(int[] table) {\n"+
-      "   for (int i = 1; i < table.length; i++) {\n"+
-      "       int j = i;\n"+
-      "       while (j > 0 && table[j - 1] > table[j]) {\n"+
-      "           swap(table, j - 1, j);\n"+
-      "           j--;\n"+
-      "       }\n"+
-      "   }\n"+
+      "public static void insertionSort(int[] table) {\n" +
+      "   for (int i = 1; i < table.length; i++) {\n" +
+      "       int j = i;\n" +
+      "       while (j > 0 && table[j - 1] > table[j]) {\n" +
+      "           swap(table, j - 1, j);\n" +
+      "           j--;\n" +
+      "       }\n" +
+      "   }\n" +
       "}");
 
   av.recorded(); // we are not recording an AV with an algorithm
@@ -30,7 +31,7 @@
     clickHandler.reset();
 
     // initialize the array
-    initialArray = [];    
+    initialArray = [];
     for (var i = 0; i < arraySize; i++) {
       initialArray[i] = Math.floor(Math.random() * 100) + 10;
     }
@@ -44,7 +45,7 @@
 
     // show the code and highlight the necessary row
     code.show();
-    code.highlight(4);
+    code.highlight(5);
 
     return barArray;
   }
@@ -56,9 +57,9 @@
 
     for (var i = 1; i < arraySize; i++) {
       var j = i;
-      while (j > 0 && modelArray.value(j-1) > modelArray.value(j)) {
-        jsav.umsg('Shift "'+modelArray.value(j)+'" to the left.<br/>&nbsp;&nbsp;i: ' + i + '<br/>&nbsp;&nbsp;j: ' + j)
-        modelArray.swap(j, j-1);
+      while (j > 0 && modelArray.value(j - 1) > modelArray.value(j)) {
+        jsav.umsg('Shift "' + modelArray.value(j) + '" to the left.<br/>&nbsp;&nbsp;i: ' + i + '<br/>&nbsp;&nbsp;j: ' + j);
+        modelArray.swap(j, j - 1);
         jsav.stepOption("grade", true);
         jsav.step();
         j--;

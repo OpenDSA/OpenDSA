@@ -109,7 +109,7 @@ In addition to sequential-fit and buddy methods, there are many
 ad hoc approaches to memory management.
 If the application is sufficiently complex, it might be
 desirable to break available memory into several memory
-:term:`zones`, each with a different memory management scheme.
+:term:`zones <zone>`, each with a different memory management scheme.
 For example, some zones might have a simple memory access pattern of
 first-in, first-out.
 This zone can therefore be managed efficiently by using a simple

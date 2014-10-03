@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html data-require="math math-format word-problems spin">
+<head>
+  <title> Recursion Programming Exercise 13</title>
+  <script src="../../lib/jquery.min.js">
+  </script>
+  <script src="../../lib/jquery-ui.min.js">
+  </script>
+  <script>
+    window.OpenPopKa = true;
+  </script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../lib/odsaStyle-min.css"></script>
+  <script src="../../lib/ExAreaPROG.js"> </script>
+  <link rel= "stylesheet" href="../../lib/ExAreaPROG.css" type="text/css">
+</head>
+<body>
+   
+<div class="exercise">
+  <div class="vars">
+    <var id="listel1">randRange(0, 99)</var>
+    <var id="listel2">randRange(0, 99)</var>
+    <var id="listel3">randRange(0, 99)</var>
+    <var id="listel4">randRange(0, 99)</var>
+  </div>
+
+  <div class="problems">
+    <div> <!-- Supresses answer box -->
+      <p class="problem" id = "test">   Given the following recursive function write down the missing recursive call such that this function takes a non-negative integer and returns the sum of its digits. For example, sumOfDigits(1234) returns 1+2+3+4 =10.
+    <br />
+    </h4>
+
+    <textarea  id="codeTextarea">int sumOfDigits(int number)
+{  
+  if(number/10 == 0) 
+    return number;    
+  return //<<Missing a Recursive call>>
+}
+
+</textarea></p>
+
+      <div class="question">
+	
+      </div>
+      <div class="solution" data-type="custom">
+       <div class="guess"> [ $('#codeTextarea').val() ] </div>
+        <div class="validator-function">
+         
+         //return "openPop";
+        </div>
+      </div>
+      <div class="hints">
+      </div>
+    </div>
+  </div>
+</div>
+ 
+</body>
+</html>

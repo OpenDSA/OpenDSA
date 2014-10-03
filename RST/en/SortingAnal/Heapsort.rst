@@ -105,6 +105,6 @@ Now here are summary questions.
 
 .. avembed:: Exercises/Sorting/HeapsortSumm.html ka
 
-.. odsascript:: JSAV/extras/binaryheap.js
+.. odsascript:: DataStructures/binaryheap.js
 .. odsascript:: AV/Sorting/heapsortCON.js
 .. odsascript:: AV/Development/HeapSortAnalysisCON.js

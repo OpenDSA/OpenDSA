@@ -1,15 +1,32 @@
+/* global ODSA */
 (function ($) {
   "use strict";
+  // AV variables
   var insertArray,
-    tree,
-    stack,
-    stackLabels,
-    insertSize = 10,
-    av = new JSAV($("#jsavcontainer"));
+      tree,
+      stack,
+      stackLabels,
+      insertSize = 10,
+
+      // Load the configurations created by odsaAV.js
+      config = ODSA.UTILS.loadConfig({"av_container": "jsavcontainer"}),
+      interpret = config.interpreter,
+      code = config.code,
+      codeOptions = {after: {element: $(".instructions")}, visible: true, lineNumbers: false},
+
+      // Create a JSAV instance
+      av = new JSAV($("#jsavcontainer"));
 
   av.recorded(); // we are not recording an AV with an algorithm
 
+  if (code) {
+    av.code(code[1], codeOptions);
+    av.code(code[0], codeOptions);
+  }
+
   function initialize() {
+
+    av.container.find(".jsavcanvas").css("min-height", 450);
 
     //generate values. 65 = A, 80 = 0
     insertArray = generateValues(insertSize, 65, 80);
@@ -20,7 +37,8 @@
     //create a new stack
     stack = av.ds.stack({center: true});
     //convert the values into characters and push them into the stack
-    for (var i = 0; i < insertSize; i++) {
+    var i;
+    for (i = 0; i < insertSize; i++) {
       insertArray[i] = String.fromCharCode(insertArray[i]);
       stack.addLast(insertArray[i]);
     }
@@ -29,7 +47,7 @@
     //contains references to the labels of the stack nodes
     stackLabels = [];
     //put labels on the stack nodes and hide all except the first one by default
-    for (var i = 0; i < insertSize; i++) {
+    for (i = 0; i < insertSize; i++) {
       var l = av.label(getBinary(insertArray[i]), {container: stack.get(i).element, visible: i === 0});
       l.element.css({
         left: stack.last().element.outerWidth() - 10,
@@ -56,11 +74,12 @@
     jsav._undo = [];
 
     var modelStack = jsav.ds.stack({center: true});
-    for (var i = 0; i < insertSize; i++) {
+    var i;
+    for (i = 0; i < insertSize; i++) {
       modelStack.addLast(insertArray[i]);
     }
     modelStack.layout();
-    var l = jsav.label(getBinary(insertArray[0]),{container: modelStack.first().element});
+    var l = jsav.label(getBinary(insertArray[0]), {container: modelStack.first().element});
     l.element.css({
       left: modelStack.first().element.outerWidth() - 10,
       top: - l.element.outerHeight() + 10
@@ -73,8 +92,8 @@
 
     jsav.displayInit();
 
-    for (var i = 0; i < insertSize; i++) {
-      var val = getBinary( insertArray[i] );
+    for (i = 0; i < insertSize; i++) {
+      var val = getBinary(insertArray[i]);
       var level = 0;
       var node = modelTree.root();
       //find the node where the value should be inserted
@@ -119,7 +138,7 @@
     return modelTree;
   }
 
-  function clickHandler() {
+  var clickHandler = function () {
     if (stack.size()) {
       //insert value into this node
       this.value(stack.first().value());
@@ -135,8 +154,9 @@
       stack.removeFirst();
       stack.layout();
       //show the next label
-      if (stack.size())
+      if (stack.size()) {
         stackLabels[insertSize - stack.size()].show();
+      }
       if (!this.left()) {
         //add empty node on the left side
         this.left("");
@@ -154,7 +174,7 @@
       //gradeable step
       exercise.gradeableStep();
     }
-  }
+  };
 
   //generate values without duplicates
   function generateValues(n, min, max) {
@@ -174,7 +194,7 @@
     if (typeof char === "string") {
       char = char.charCodeAt(0);
     }
-    return Array(binLen + 1 - (char % 64).toString(2).length).join("0") + (char % 64).toString(2);
+    return new Array(binLen + 1 - (char % 64).toString(2).length).join("0") + (char % 64).toString(2);
   }
 
   var exercise = av.exercise(modelSolution, initialize, {feedback: "atend"});

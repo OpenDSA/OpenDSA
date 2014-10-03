@@ -60,9 +60,10 @@ form.signin p, form.signin span {
 /* All showHide buttons default to red */
 .showHideLink {
   background-color: #FF0000;
-  color: #fff;
   border: 1px solid #aaa;
   border-radius: 5px;
+  color: #fff;
+  margin-bottom: 15px;
   padding: 3px 5px;
 }
 .showHideLink:hover {
@@ -82,11 +83,17 @@ form.signin p, form.signin span {
   top: 5px;
   width: 20px;
 }
+.loading-spinner {
+  height: 25px;
+  position: relative;
+  top: 7px;
+  width: 25px;
+}
 /* Style for mini-slideshow checkmark proficiency indicator */
 .prof_check_mark {
   position: absolute;
-  bottom: 45px; /* top: 65px; */
-  right: 10px;
+  top: 10px;
+  left: 35px;
   display: none;
 }
 /* Saving message for checkmark proficiency indicator */
@@ -130,8 +137,7 @@ form.signin p, form.signin span {
   font-weight: bold;
 }
 
-/* Container that holds the iframes for embedded content */
-.embedContainer {
+.center {
   text-align: center;
 }
 

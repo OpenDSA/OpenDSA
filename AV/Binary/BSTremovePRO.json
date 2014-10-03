@@ -14,9 +14,9 @@
   },
   "code" : {
     "processing": {
-      "url": "../../../SourceCode/Processing/Binary/BST.pde",
-      "startAfter": "/* *** ODSATag: deletemax *** */",
-      "endBefore": "/* *** ODSAendTag: deletemax *** */",
+      "url": "../../SourceCode/Processing/Binary/BST.pde",
+      "startAfter": "/* *** ODSATag: removehelp *** */",
+      "endBefore": "/* *** ODSAendTag: removehelp *** */",
       "tags": {}
     }
   }

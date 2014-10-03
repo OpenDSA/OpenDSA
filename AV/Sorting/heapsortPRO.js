@@ -1,5 +1,5 @@
 "use strict";
-/*global alert: true, ODSA */
+/*global alert: true, ODSA, PARAMS */
 $(document).ready(function () {
   // Process help button: Give a full help page for this activity
   function help() {
@@ -119,31 +119,47 @@ $(document).ready(function () {
   //////////////////////////////////////////////////////////////////
   // Start processing here
   //////////////////////////////////////////////////////////////////
-  // Load the interpreter created by odsaAV.js
-  var interpret = ODSA.UTILS.loadConfig().interpreter;
 
-  var initData, bh,
+  // AV variables
+  var initData,
+      bh,
+      swapIndex,
+      pseudo,
+
+      // Load the configurations created by odsaAV.js
+      config = ODSA.UTILS.loadConfig(),
+      interpret = config.interpreter,
+      code = config.code,
+      codeOptions = {after: {element: $(".instructions")}, visible: true},
+
+      // Settings for the AV
       settings = new JSAV.utils.Settings($(".jsavsettings")),
-      av = new JSAV($(".avcontainer"), {settings: settings}),
-      exercise,
-      swapIndex;
+
+      // Create a JSAV instance
+      av = new JSAV($('.avcontainer'), {settings: settings});
 
   av.recorded();
 
-  exercise = av.exercise(model, initialize,
-                         {compare: [{css: "background-color"}, {}],
-                          controls: $(".jsavexercisecontrols"),
-                          fix: fixState });
+  // show a JSAV code instance only if the code is defined in the parameter
+  // and the parameter value is not "none"
+  if (PARAMS["JXOP-code"] && code) {
+    pseudo = av.code($.extend(codeOptions, code));
+  }
 
-    // Set click handlers
-    $(".jsavcontainer").on("click", ".jsavarray .jsavindex", function () {
-      var index = $(this).parent(".jsavarray").find(".jsavindex").index(this);
-      clickHandler(index);
-    });
-    $(".jsavcontainer").on("click", ".jsavbinarytree .jsavbinarynode", function () {
-      var index = $(this).data("jsav-heap-index") - 1;
-      clickHandler(index);
-    });
+  // Set click handlers
+  $(".jsavcontainer").on("click", ".jsavarray .jsavindex", function () {
+    var index = $(this).parent(".jsavarray").find(".jsavindex").index(this);
+    clickHandler(index);
+  });
+  $(".jsavcontainer").on("click", ".jsavbinarytree .jsavbinarynode", function () {
+    var index = $(this).data("jsav-heap-index") - 1;
+    clickHandler(index);
+  });
 
+  var exercise = av.exercise(model, initialize, {
+    compare: [{css: "background-color"}, {}],
+    controls: $(".jsavexercisecontrols"),
+    fix: fixState
+  });
   exercise.reset();
 });

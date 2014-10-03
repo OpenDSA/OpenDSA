@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html data-require="math math-format word-problems spin">
+<head>
+  <title> Recursion Programming Exercise 2</title>
+  <script src="../../lib/jquery.min.js">
+  </script>
+  <script src="../../lib/jquery-ui.min.js">
+  </script>
+  <script>
+    window.OpenPopKa = true;
+  </script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+
+  <script src="../../lib/odsaStyle-min.css"></script>
+  <script src="../../lib/ExAreaPROG.js"> </script>
+  <link rel= "stylesheet" href="../../lib/ExAreaPROG.css" type="text/css">
+</head>
+<body>
+  
+<div class="exercise">
+  <div class="vars">
+    <var id="listel1">randRange(0, 99)</var>
+    <var id="listel2">randRange(0, 99)</var>
+    <var id="listel3">randRange(0, 99)</var>
+    <var id="listel4">randRange(0, 99)</var>
+  </div>
+
+  <div class="problems">
+    <div> <!-- Supresses answer box -->
+      <p class="problem" id = "test"> Given the following recursive function, write down the missing action that should be done at the base case so that this function
+   concatenate the values in an array named list and return it in a string. The values must be seprated with a space and in the order of increasing subscript.
+      <br />
+    </h4>
+
+    <textarea  id="codeTextarea">
+String recursiveprint(String[] list, int index) { 
+ if (index < list.length) 
+   // <<Missing code>> 
+
+ return "";   
+}
+</textarea></p>
+
+      <div class="question">
+	
+      </div>
+      <div class="solution" data-type="custom">
+       <div class="guess"> [ $('#codeTextarea').val() ] </div>
+        <div class="validator-function">
+         
+         //return "openPop";
+        </div>
+      </div>
+      <div class="hints">
+      </div>
+    </div>
+  </div>
+</div>
+ 
+</body>
+</html>

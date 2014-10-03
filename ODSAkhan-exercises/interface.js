@@ -43,55 +43,13 @@ var PerseusBridge = Exercises.PerseusBridge,
     lastAttemptOrHint,
     firstProblem = true;
 
-//
-var server = SERVER_URL ? SERVER_URL : typeof OpenPopKa !== "undefined"? "https://opendsa.cc.vt.edu": null;
-BOOK_ID =  BOOK_ID ? BOOK_ID : typeof OpenPopKa !== "undefined"? "CS3114": null;
 
-var jsonData = {};
-jsonData.book = BOOK_ID;
-jsonData.module = MODULE_NAME;
-jsonData.key = 'phantom-key';
+
+var server = SCORE_SERVER ? SCORE_SERVER : typeof OpenPopKa !== "undefined" ? "https://opendsa.cc.vt.edu": null;
+BOOK_ID = BOOK_ID ? BOOK_ID : typeof OpenPopKa !== "undefined"? "CS3114": null;
+var SESSION_KEY = 'phantom-key';
 
 var exerciseName = Khan.getSeedInfo().sha1;
-
-if (localStorage.session) {
-   var session = JSON.parse(localStorage.session);
-   jsonData.key = session.key;
-}
-
-if(server !== null){
-    // Load in the exercise data from the server
-    jQuery.ajax({
-       // Do a request to the server API
-       url: server + "/api/v1/exercises/?name=" + exerciseName,
-       type: "GET",
-       data: jsonData,
-       dataType: "json",
-       // Make sure cookies are passed along
-       xhrFields: { withCredentials: true },
-       success: function(data){
-           var streakval= data.objects[0] && data.objects[0].streak? data.objects[0].streak : 0;
-           var progress = data.objects[0] && data.objects[0].progress_streak ? data.objects[0].progress_streak : 0;
-           testdeffer.done(function(){
-               $('#points-area').empty();
-               var points_progress_text = $("<span style = 'font-size:60%'>Current score:  </span>");
-               var points_progress = $("<span id = 'points-progress' style = 'font-size : 65%; font-weight : bold;'></span>").text(Math.min(parseInt(progress), parseInt(streakval)));
-               var points_total_text = $("<span style = 'font-size:60%'> out of  </span>");
-               var points_total = $("<span id = 'points-total' style = 'font-size : 65%; font-weight : bold;'></span>").text(parseInt(streakval));
-               $('#points-area').append(points_progress_text);
-               $('#points-area').append(points_progress);
-               $('#points-area').append(points_total_text);
-               $('#points-area').append(points_total);
-           });
-        },
-        error: function(){
-            testdeffer.done(function(){
-                $('#points-area').empty();
-                $('#points-area').text(" Score server cannot be reached!");
-            });
-       }
-    });
-}
 
 $(Exercises)
     .bind("problemTemplateRendered", problemTemplateRendered)
@@ -431,7 +389,7 @@ function handleAttempt(data) {
          }
       }
       // Update DOM elements for the scores.
-      if(data) {
+      if (data) {
         progress = data.streak;
         if (parseInt(data.progress._sign) != 0) {
           progress = 0;
@@ -443,7 +401,6 @@ function handleAttempt(data) {
       if (total >= streakNum && MODULE_ORIGIN !== ""){
          total = streakNum;
          parent.postMessage('{"exercise":"' + exerciseName + '", "proficient":' + true + '}', MODULE_ORIGIN);
-
       }
 
       total = parseInt(total, 10);
@@ -589,18 +546,11 @@ function buildAttemptData(correct, attemptNum, attemptContent, timeTaken,
         data = Khan.getSeedInfo();
     }
 
-    var key = 'phantom-key';
-
-    if (localStorage.session) {
-      var session = JSON.parse(localStorage.session);
-      key = session.key;
-    }
-
     var OpenPop_code = typeof $('#codeTextarea').val() !== "undefined" ? $('#codeTextarea').val(): null;
     var OpenPop_genlist = typeof generatedList !== "undefined" ? generatedList : null;
 
     _.extend(data, {
-        key: key,
+        key: SESSION_KEY,
         book: BOOK_ID,
 
         // The module name. If the exercise is embedded in one
@@ -844,5 +794,84 @@ function clearExistingProblem() {
 
     Khan.scratchpad.clear();
 }
+
+
+//*****************************************************************************
+//*************               OpenDSA Modifications               *************
+//*****************************************************************************
+
+/**
+ * Queries the server for the user's current progress
+ *
+ * Can be triggered by the module page using postMessage when the page
+ * loads or when a new user logs in
+ */
+function updatePoints() {
+  var jsonData = {};
+  jsonData.book = BOOK_ID;
+  jsonData.module = MODULE_NAME;
+  jsonData.key = SESSION_KEY;
+
+  $('#points-area').empty();
+
+  // Don't display the user's progress if there is no score server to
+  // check or if no one is logged in (since there is a shared guest account on the server)
+  if (server !== null && SESSION_KEY !== 'phantom-key') {
+    // Load in the exercise data from the server
+    jQuery.ajax({
+      // Do a request to the server API
+      url: server + "/api/v1/exercises/?name=" + exerciseName,
+      type: "GET",
+      data: jsonData,
+      dataType: "json",
+      // Make sure cookies are passed along
+      xhrFields: { withCredentials: true },
+      success: function(data){
+        var streakval= data.objects[0] && data.objects[0].streak? data.objects[0].streak : 0;
+        var progress = data.objects[0] && data.objects[0].progress_streak ? data.objects[0].progress_streak : 0;
+        testdeffer.done(function(){
+          var points_progress_text = $("<span style = 'font-size:60%'>Current score:  </span>");
+          var points_progress = $("<span id = 'points-progress' style = 'font-size : 65%; font-weight : bold;'></span>").text(Math.min(parseInt(progress), parseInt(streakval)));
+          var points_total_text = $("<span style = 'font-size:60%'> out of  </span>");
+          var points_total = $("<span id = 'points-total' style = 'font-size : 65%; font-weight : bold;'></span>").text(parseInt(streakval));
+          $('#points-area').append(points_progress_text);
+          $('#points-area').append(points_progress);
+          $('#points-area').append(points_total_text);
+          $('#points-area').append(points_total);
+        });
+      },
+      error: function(){
+        testdeffer.done(function(){
+          $('#points-area').text(" Score server cannot be reached!");
+        });
+      }
+    });
+  }
+}
+
+$(document).ready(function () {
+  // Create event handler to listen for messages from embedded exercises
+  var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent",
+      eventer = window[eventMethod],
+      messageEvent = (eventMethod === "attachEvent") ? "onmessage" : "message";
+
+  // Listen for message from parent
+  eventer(messageEvent, function (e) {
+    // Only accept post messages from the module page
+    // IMPORTANT: This IF must be commented out (or 'module_origin' must
+    // be changed in the config file and the book rebuilt) in order to do local testing
+    if (e.origin !== MODULE_ORIGIN) {
+      return;
+    }
+
+    var data = JSON.parse(e.data);
+
+    // Update session information based on message from parent page
+    if (data.hasOwnProperty('session_key')) {
+      SESSION_KEY = data.session_key;
+      updatePoints();
+    }
+  });
+});
 
 })();

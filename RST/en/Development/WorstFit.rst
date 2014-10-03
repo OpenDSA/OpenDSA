@@ -27,13 +27,4 @@ each memory request to find the largest block.
 Alternatively, the freelist can be ordered from largest to smallest
 free block, possibly by using a priority queue implementation.
 
-.. raw:: html
-
-   <center> 
-   <iframe id="FirstFit_iframe" 
-        src="http://research.cs.vt.edu/AVresearch/MMtutorial/WorstFit.html"
-        width="1000" height="600"
-        frameborder="1" marginwidth="0" marginheight="0"
-	scrolling="no">
-   </iframe>
-   </center>
+.. avembed:: AV/Development/firstFit.html ss

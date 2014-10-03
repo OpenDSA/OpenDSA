@@ -38,10 +38,8 @@ $(document).ready(function () {
   // The CSS to remove the highlighting effect.
   var node_highlight_remove = {"box-shadow": "node"};
 
-  var ODSA = {};
-  ODSA.toggleNodeHighlight = toggleNodeHighlight;
-  ODSA.setNodeHighlightDefault = setNodeHighlightDefault;
-  window.ODSA = ODSA;
+  window.toggleNodeHighlight = toggleNodeHighlight;
+  window.setNodeHighlightDefault = setNodeHighlightDefault;
 });
 
 
@@ -80,7 +78,7 @@ $(document).ready(function () {
   }
 
   // Create labels
-  var t = 310, l = 30, v = false;
+  var t = 295, l = 30, v = false;
   var labels = [
     jsav.label(n[0], {visible: v, left: (l + 0) + "px", top: (t + 0) + "px"}),
     jsav.label(n[1], {visible: v, left: (l + 40) + "px", top: (t + 0) + "px"}),
@@ -181,7 +179,7 @@ $(document).ready(function () {
   }
 
   // Create labels
-  var t = 310, l = 30, v = true;
+  var t = 295, l = 30, v = true;
   var labels = [
     jsav.label(n[0], {visible: v, left: (l + 0) + "px", top: (t + 0) + "px"}),
     jsav.label(n[1], {visible: v, left: (l + 40) + "px", top: (t + 0) + "px"}),
@@ -221,7 +219,7 @@ $(document).ready(function () {
   disk_access_count.css({height: "30px", width: "30px"});
 
   jsav.umsg(messages.shift());
-  window.ODSA.setNodeHighlightDefault(nodes[0]);
+  setNodeHighlightDefault(nodes[0]);
   jsav.displayInit();
   /* 1st Slide ***************************************************************/
 
@@ -231,33 +229,33 @@ $(document).ready(function () {
 
   /* 3rd Slide ***************************************************************/
   jsav.umsg(messages.shift());
-  window.ODSA.toggleNodeHighlight(nodes[0]);
+  toggleNodeHighlight(nodes[0]);
   disk_access_count.value(0, 1);
   jsav.step();
 
   /* 4th Slide ***************************************************************/
   jsav.umsg(messages.shift());
-  window.ODSA.toggleNodeHighlight(nodes[0]);
-  window.ODSA.toggleNodeHighlight(nodes[1]);
+  toggleNodeHighlight(nodes[0]);
+  toggleNodeHighlight(nodes[1]);
   jsav.step();
 
   /* 5th Slide ***************************************************************/
   jsav.umsg(messages.shift());
-  window.ODSA.toggleNodeHighlight(nodes[1]);
-  window.ODSA.toggleNodeHighlight(nodes[4]);
+  toggleNodeHighlight(nodes[1]);
+  toggleNodeHighlight(nodes[4]);
   disk_access_count.value(0, 2);
   jsav.step();
 
   /* 6th Slide ***************************************************************/
   jsav.umsg(messages.shift());
-  window.ODSA.toggleNodeHighlight(nodes[4]);
-  window.ODSA.toggleNodeHighlight(nodes[10]);
+  toggleNodeHighlight(nodes[4]);
+  toggleNodeHighlight(nodes[10]);
   disk_access_count.value(0, 3);
   jsav.step();
 
   /* 7th Slide ***************************************************************/
   jsav.umsg(messages.shift());
-  window.ODSA.toggleNodeHighlight(nodes[10]);
+  toggleNodeHighlight(nodes[10]);
   disk_access_count.value(0, "");
   jsav.step();
 
@@ -299,49 +297,49 @@ $(document).ready(function () {
 
   /* 10th Slide ***************************************************************/
   jsav.umsg(messages.shift());
-  window.ODSA.toggleNodeHighlight(nodes[0]);
-  window.ODSA.toggleNodeHighlight(nodes[1]);
-  window.ODSA.toggleNodeHighlight(nodes[4]);
-  window.ODSA.toggleNodeHighlight(nodes[10]);
+  toggleNodeHighlight(nodes[0]);
+  toggleNodeHighlight(nodes[1]);
+  toggleNodeHighlight(nodes[4]);
+  toggleNodeHighlight(nodes[10]);
   disk_access_count.value(0, 2);
   jsav.step();
 
   /* 11th Slide ***************************************************************/
   jsav.umsg(messages.shift());
-  window.ODSA.toggleNodeHighlight(nodes[0]);
-  window.ODSA.toggleNodeHighlight(nodes[1]);
-  window.ODSA.toggleNodeHighlight(nodes[4]);
-  window.ODSA.toggleNodeHighlight(nodes[10]);
+  toggleNodeHighlight(nodes[0]);
+  toggleNodeHighlight(nodes[1]);
+  toggleNodeHighlight(nodes[4]);
+  toggleNodeHighlight(nodes[10]);
   disk_access_count.value(0, "");
   jsav.step();
 
   /* 12th Slide ***************************************************************/
   jsav.umsg(messages.shift());
-  window.ODSA.toggleNodeHighlight(nodes[0]);
+  toggleNodeHighlight(nodes[0]);
   nodes[0].value("");
   disk_access_count.value(0, 1);
   labels[0].text("");
   jsav.step();
 
   /* 13th Slide ***************************************************************/
-  window.ODSA.toggleNodeHighlight(nodes[2]);
-  window.ODSA.toggleNodeHighlight(nodes[0]);
+  toggleNodeHighlight(nodes[2]);
+  toggleNodeHighlight(nodes[0]);
   jsav.effects.moveValue(nodes[2], nodes[0]);
   disk_access_count.value(0, 1);
   labels[2].css({left: "30px"});
   jsav.step();
 
   /* 14th Slide ***************************************************************/
-  window.ODSA.toggleNodeHighlight(nodes[6]);
-  window.ODSA.toggleNodeHighlight(nodes[2]);
+  toggleNodeHighlight(nodes[6]);
+  toggleNodeHighlight(nodes[2]);
   jsav.effects.moveValue(nodes[6], nodes[2]);
   disk_access_count.value(0, 2);
   labels[12].css({left: "105px"});
   jsav.step();
 
   /* 15th Slide ***************************************************************/
-  window.ODSA.toggleNodeHighlight(nodes[14]);
-  window.ODSA.toggleNodeHighlight(nodes[6]);
+  toggleNodeHighlight(nodes[14]);
+  toggleNodeHighlight(nodes[6]);
   jsav.effects.moveValue(nodes[14], nodes[6]);
   disk_access_count.value(0, 2);
   labels[14].css({left: "510px"});
@@ -349,7 +347,7 @@ $(document).ready(function () {
 
   /* 16th Slide ***************************************************************/
   jsav.umsg(messages.shift());
-  window.ODSA.toggleNodeHighlight(nodes[14]);
+  toggleNodeHighlight(nodes[14]);
   nodes[14].remove();
   jsav.step();
 

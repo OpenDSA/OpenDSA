@@ -11,6 +11,10 @@
   background-color: #fff !important;
   color: #777 !important;
 }
+.selected, .selected .jsavvalue, .jsavarray.jsavbararray .jsavindex.selected .jsavvalue {
+  font-size: 110%;
+  background-color: #ddf;
+}
 .jsavtreenode.rednode {
   background-color: #f00;
   color: #fff;
@@ -19,18 +23,8 @@
   background-color: #000;
   color: #fff;
 }
-.selected, .selected .jsavvalue, .jsavarray.jsavbararray .jsavindex.selected .jsavvalue {
-  font-size: 110%;
-  background-color: #ddf;
-}
-.jsavtreenode.jsavredblacknode.rednode.selected {
-  background-color: #f00;
-}
-.jsavtreenode.jsavredblacknode.blacknode.selected {
-  background-color: #000;
-}
 .jsavtreenode.jsavredblacknode.selected {
-  box-shadow: 0px 0px 5px 10px #ddf;  
+  box-shadow: 0px 0px 5px 10px #ddf;
 }
 .greybg, .greybg.jsavvalue, .jsavarray.jsavbararray .jsavindex.greybg .jsavvalue {
   background-color: #eee;

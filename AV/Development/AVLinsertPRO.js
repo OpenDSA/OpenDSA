@@ -1,15 +1,29 @@
+/* global ODSA, ClickHandler */
 (function ($) {
   "use strict";
+  // AV variables
   var insertValues,
-    tree,
-    stack,
-    insertSize = 10,
-    clickHandler,
-    av = new JSAV($("#jsavcontainer"));
+      tree,
+      stack,
+      insertSize = 10,
+      clickHandler,
+
+      // Configurations
+      config = ODSA.UTILS.loadConfig({av_container: "jsavcontainer"}),
+      interpret = config.interpreter,
+      code = config.code,
+      codeOptions = {after: {element: $(".instructions")}, visible: true},
+
+      // Create a JSAV instance
+      av = new JSAV($("#jsavcontainer"));
 
   av.recorded(); // we are not recording an AV with an algorithm
 
+  av.code(code, codeOptions);
+
   function initialize() {
+
+    av.container.find(".jsavcanvas").css("min-height", 450);
 
     // create clickHandler if undefined
     if (typeof clickHandler === "undefined") {
@@ -90,7 +104,7 @@
           node = node.right();
         }
       }
-      jsav.umsg("The value " + val + " is inserted into the tree.")
+      jsav.umsg("The value " + val + " is inserted into the tree.");
       node.value(val);
       node.removeClass("emptynode");
       node.highlight();
@@ -103,15 +117,15 @@
       //perform rotation
       node = modelTree.getUnbalancedNode(val);
       if (node) {
-        jsav.umsg("This node is now unbalanced.")
+        jsav.umsg("This node is now unbalanced.");
         node.highlight();
         jsav.step();
-        jsav.umsg("The rotation is performed on the unbalanced node in order to balance the tree.")
+        jsav.umsg("The rotation is performed on the unbalanced node in order to balance the tree.");
         node.balance();
         node.unhighlight();
         modelTree.layout();
         jsav.stepOption("grade", true);
-        jsav.step();   
+        jsav.step();
       }
     }
 
@@ -122,11 +136,11 @@
   // create buttoncontainer if it doesn't exist
   if ($("#buttoncontainer").length === 0) {
     $("#jsavcontainer .jsavcanvas").prepend(
-      '<div id="buttoncontainer" style="margin: auto; text-align: center; padding: 15px">'+
-      '  <button id="buttonL">Single Rotation Left</button>'+
-      '  <button id="buttonLR">Double Rotation LR</button>'+
-      '  <button id="buttonRL">Double Rotation RL</button>'+
-      '  <button id="buttonR">Single Rotation Right</button>'+
+      '<div id="buttoncontainer" style="margin: auto; text-align: center; padding: 15px">' +
+      '  <button id="buttonL">Single Rotation Left</button>' +
+      '  <button id="buttonLR">Double Rotation LR</button>' +
+      '  <button id="buttonRL">Double Rotation RL</button>' +
+      '  <button id="buttonR">Single Rotation Right</button>' +
       '</div>');
   }
 

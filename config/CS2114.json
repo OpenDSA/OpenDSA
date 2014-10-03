@@ -1,11 +1,13 @@
 {
-  "title": "CS2114 Spring 2014",
+  "title": "CS2114 Fall 2014",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "lang": "en",
   "code_lang": {"Processing": ["pde"]},
   "module_origin": "http://algoviz.org",
-  "backend_address": "https://opendsa.cc.vt.edu/",
+  "exercise_server": "https://opendsa.cc.vt.edu/",
+  "logging_server": "https://opendsa.cc.vt.edu/",
+  "score_server": "https://opendsa.cc.vt.edu/",
   "build_JSAV": false,
   "build_cmap": false,
   "allow_anonymous_credit": true,
@@ -105,6 +107,49 @@
             "required": true,
             "points": 1,
             "threshold": 3
+          }
+        }
+      }
+    },
+    "Array-based Stacks": {
+      "List/StackArray": {
+        "long_name": "Array-based Stacks",
+          "exercises": {
+          "astackVarCON": {
+            "long_name": "Array stack variables slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "astackTopCON": {
+            "long_name": "Array stack top position slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "astackPushCON": {
+            "long_name": "Array stack push slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "astackPopCON": {
+            "long_name": "Array stack pop slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "astackPushPRO": {
+            "long_name": "Array-based Stack Push Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "astackPopPRO": {
+            "long_name": "Array-based Stack Pop Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
           }
         }
       }
@@ -224,50 +269,34 @@
             "threshold": 1.0
           }
         }
-      }
-    },
-    "Stacks": {
-      "List/StackArray": {
-        "long_name": "Array-based Stacks",
-          "exercises": {
-          "astackVarCON": {
-            "long_name": "Array stack variables slideshow",
+      },
+      "List/ListElement": {
+        "long_name": "List Element Implementations",
+        "exercises": {
+          "listElementDataCON": {
+            "long_name": "List Element Data",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "astackTopCON": {
-            "long_name": "Array stack top position slideshow",
+          "listElementTypeCON": {
+            "long_name": "List Element Type",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "astackPushCON": {
-            "long_name": "Array stack push slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
+          "listElementDeleteCON": {
           },
-          "astackPopCON": {
-            "long_name": "Array stack pop slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "astackPushPRO": {
-            "long_name": "Array-based Stack Push Exercise",
+          "LstSumm": {
+            "long_name": "List Summary Questions",
             "required": true,
             "points": 1,
-            "threshold": 5
-          },
-          "astackPopPRO": {
-            "long_name": "Array-based Stack Pop Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
+            "threshold": 3
           }
         }
-      },
+      }
+    },
+    "Linked Stacks and Queues": {
       "List/StackLinked": {
         "long_name": "Linked Stacks",
         "exercises": {
@@ -309,9 +338,7 @@
             "threshold": 1.0
           }
         }
-      }
-    },
-    "Queues": {
+      },
       "List/Queue": {
         "long_name": "Queues",
         "exercises": {
@@ -555,18 +582,21 @@
           },
           "btTravInorderPRO": {
             "long_name": "Binary Tree Inorder Traversal Exercise",
+            "exer_options": { "JXOP-code": "none" },
             "required": true,
             "points": 1.0,
             "threshold": 0.90
           },
           "btTravPreorderPRO": {
             "long_name": "Binary Tree Preorder Traversal Exercise",
+            "exer_options": { "JXOP-code": "none" },
             "required": true,
             "points": 1.0,
             "threshold": 0.90
           },
           "btTravPostorderPRO": {
             "long_name": "Binary Tree Postorder Traversal Exercise",
+            "exer_options": { "JXOP-code": "none" },
             "required": true,
             "points": 1.0,
             "threshold": 0.90

@@ -4,7 +4,9 @@
   "code_dir": "SourceCode/",
   "code_lang": {"Processing": ["pde"]},
   "module_origin": "http://algoviz.org",
-  "backend_address": "https://opendsa.cc.vt.edu/",
+  "exercise_server": "https://opendsa.cc.vt.edu/",
+  "logging_server": "https://opendsa.cc.vt.edu/",
+  "score_server": "https://opendsa.cc.vt.edu/",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
@@ -192,6 +194,7 @@
             "threshold": 1.0
           },
           "sackTreePluck": {
+            "long_name": "Knapsack Call Tree Pluck",
             "required": true,
             "points": 0.1,
             "threshold": 1.0

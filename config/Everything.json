@@ -9,7 +9,6 @@
   },
   "lang": "en",
   "module_origin": "http://algoviz.org",
-  "backend_address": "",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
@@ -2218,6 +2217,7 @@
             "threshold": 1.0
           },
           "sackTreePluck": {
+            "long_name": "Knapsack Call Tree Pluck",
             "required": true,
             "points": 0.1,
             "threshold": 1.0

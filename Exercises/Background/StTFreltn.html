@@ -6,8 +6,7 @@
   <script src="../../lib/jquery-ui.min.js"></script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
 </head>
-
-<body>
+<body data-height="650" data-width="950">
 <div class="exercise">
   <div class="vars">
     <var id= "RELTYPE">["reflexive", "symmetric", "antisymmetric", "transitive"]</var>
@@ -20,7 +19,7 @@
                        "Relation R = {&lt; x, y &gt; | x mod y = 0} for x, y &#8712; {1,2,3,4} ",
                        "Empty relation &#8709; (i.e., the relation with no ordered pairs for which it is true) on the set of integers ",
                        "Empty relation &#8709; (i.e., the relation with no ordered pairs for which it is true) on the empty set "] </var>
-      
+
     <var id="ANSWER"> [ ["False", "False", "False", "True"],
                         ["False", "False", "True",  "False"],
                         ["False", "True",  "False", "False"],
@@ -33,12 +32,12 @@
     <div id="problem-type-or-description">
       <p class="problem">Answer TRUE or FALSE.</p>
       <p class="question">
-	<var>CHOICES[CHOICESINDEX]</var> is <var> RELTYPE[RELTYPEINDEX]</var>
+        <var>CHOICES[CHOICESINDEX]</var> is <var> RELTYPE[RELTYPEINDEX]</var>
       </p>
       <div class="solution"><var>ANSWER[CHOICESINDEX][RELTYPEINDEX]</var></div>
       <ul class="choices" data-category="true">
-	<li><var>"True"</var></li>
-	<li><var>"False"</var></li>			  	  	 
+        <li><var>"True"</var></li>
+        <li><var>"False"</var></li>
       </ul>
       <div class="hints">
         <p>A relation is reflexive if <code>a</code> holds the

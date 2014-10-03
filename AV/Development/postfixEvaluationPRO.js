@@ -1,18 +1,29 @@
 /*global ODSA, ClickHandler*/
 (function ($) {
   "use strict";
+  // AV variables
   var arraySize = 15, // size needs to be odd
-    initialArray = [],
-    jsavArray,
-    evaluatorArrays = [],
-    stack,
-    clickHandler,
-    interpret = ODSA.UTILS.loadConfig({'av_container': 'jsavcontainer'}).interpreter,
-    av = new JSAV($("#jsavcontainer"));
+      initialArray = [],
+      jsavArray,
+      evaluatorArrays = [],
+      stack,
+      clickHandler,
+
+      // configurations
+      config = ODSA.UTILS.loadConfig({'av_container': 'jsavcontainer'}),
+      interpret = config.interpreter,
+      code = config.code,
+      codeOptions = {after: {element: $(".instructions")}, visible: true, lineNumbers: false},
+
+      // Create a JSAV instance
+      av = new JSAV($("#jsavcontainer"));
 
   av.recorded(); // we are not recording an AV with an algorithm
 
+  av.code(code, codeOptions);
+
   function initialize() {
+    av.container.find(".jsavcanvas").height(600);
 
     // create ClickHandler
     if (typeof clickHandler === "undefined") {
@@ -87,7 +98,8 @@
       if (i === 0 || i === 2) {
         evaluatorArrays[i].element.children().css({
           "border": "none",
-          "box-shadow": "none"
+          "box-shadow": "none",
+          "cursor": "default"
         });
       }
       evaluatorArrays[i].layout();

@@ -9,7 +9,6 @@
   },
   "lang": "en",
   "module_origin": "http://algoviz.org",
-  "backend_address": "",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
@@ -18,7 +17,7 @@
   },
   "chapters": {
     "Limits to Computing": {
-      "Development/Reduction": {
+      "NP/Reduction": {
         "long_name": "Reductions",
         "exercises": {
           "pairToSortReduction": {
@@ -37,11 +36,11 @@
           }
         }
       },
-      "Development/NPComplete": {
+      "NP/NPComplete": {
         "long_name": "NP-Complete Problems",
         "exercises": {}
       },
-      "Development/NPCoping": {
+      "NP/NPCoping": {
         "long_name": "Coping with NP-complete problems",
         "exercises": {}
       }

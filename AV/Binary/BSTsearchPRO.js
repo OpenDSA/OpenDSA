@@ -144,9 +144,6 @@ $(document).ready(function () {
   // and the parameter value is not "none"
   if (PARAMS["JXOP-code"] && code) {
     pseudo = av.code($.extend(codeOptions, code));
-  } else {
-    // create a dummy JSAV code instance
-    pseudo = av.code([], codeOptions);
   }
 
   var exercise = av.exercise(modelSolution, initialize,

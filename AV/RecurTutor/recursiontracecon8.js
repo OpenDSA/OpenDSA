@@ -18,7 +18,7 @@
   var rect5 = av.g.rect(-10, 180, 240, 20).css({"fill": "blue"});
   
   var pseudo = av.code({url: "../../../SourceCode/Java/RecurTutor/RecTOH.java",
-                       lineNumbers: false,top:250 , left:100});
+                       lineNumbers: false,top:200 , left:100});
   //av.umsg("Towers of Hanoi Visualizations"); 
   av.step();
   pseudo.highlight(2);

@@ -138,6 +138,10 @@ Glossary
       :math:`aRb` and :math:`bRa`, then :math:`a = b`, for all
       :math:`a, b \in \mathbf{S}`.
 
+   arm
+      In the context of an :term:`I/O head`, this attaches the sensor
+      on the I/O head to the term:`boom`.
+
    array-based list
       An implementation for the :term:`list` ADT that uses an array to
       store the list elements. Typical implementations fix the array
@@ -226,14 +230,20 @@ Glossary
       In the context of a web browser, the Internet might be
       considered the backing storage.
 
+   BFS
+      Abbreviation for :term:`breadth-first search`.
+
    bag
       In set notation, a bag is a collection of elements with no order
       (like a set), but which allows for duplicate-valued elements
       (unlike a set).
 
    balanced tree
-      A tree where the :term:`depths <depth>` of each :term:`subtree`
-      are roughly the same.
+      A :term:`tree` where the :term:`subtrees <subtree>` meet some
+      criteria for being balanced.
+      Two possibilities are that the tree is
+      :term:`height balanced`, or that the tree has a roughly equal
+      number of :term:`nodes <node>` in each subtree.
 
    base
       Synonym for :term:`radix`.
@@ -266,6 +276,19 @@ Glossary
       least cost. Note that the best case is **not** when :math:`n` is
       small, since we are referring to the best from a class of inputs
       (i.e, those inputs of size :math:`n`).
+
+   best fit
+      In a :term:`memory manager`, best fit is a :term:`heuristic`
+      for deciding which :term:`free block` to use when allocating
+      memory from a :term:`memory pool`.
+      Best fit will always allocate from the smallest
+      :term:`free block` that is large enough to service the memory
+      request.
+      The rationale is that this will be the method that best
+      preserves large blocks needed for unusually large requests.
+      The disadvantage is that it tends to 
+      cause :term:`external fragmentation` in the form of small,
+      unuseable memory blocks.
 
    big-Oh notation
       In algorithm analysis, a shorthand notation for describing the
@@ -339,6 +362,11 @@ Glossary
       A variable that takes on one of the two values ``True`` and
       ``False``.
 
+   boom
+      In the context of an :term:`I/O head`, is the central structure
+      to which all of the I/O heads are attached.
+      Thus, the all move together during a :term:`seek` operation.
+
    bounding box
       A box (usually aligned to the coordinate axes of the reference
       system) that contains a (potentially complex) object. In
@@ -370,6 +398,17 @@ Glossary
       list becomes less full below this point, the linked list
       implementation becomes more space efficient.
 
+   breadth-first search
+     A :term:`graph` :term:`traversal` algorithm.
+     As the name implies, all immediate :term:`neighbors <neighbor>`
+     for a :term:`node` are :term:`visited <visit>` before any
+     more-distant nodes are visited. 
+     BFS is driven by a :term:`queue`.
+     A start vertex is placed on the queue.
+     Then, until the queue is empty, a node is taken off the
+     queue, visited, and and then any :term:`unvisited` neighbors are
+     placed onto the queue.
+
    BST
       Abbreviation for :term:`binary search tree`.
 
@@ -386,6 +425,21 @@ Glossary
       with a range of :term:`key` values.
       This will require some method of
       sorting the records placed into each bin.
+
+   buddy method
+      In a :term:`memory manager`, an alternative to using a
+      :term:`free block list` and a :term:`sequential fit` method to
+      seach for a suitable free block to service a
+      :term:`memory request`.
+      Instead, the memory pool is broken down as needed into smaller
+      chunks by splitting it in half repeatedly until the smallest
+      power of 2 that is as big or bigger than the size of the memory
+      request is reached.
+      The name comes from the fact that the binary representation for
+      the start of the block positions only differ by one bit for
+      adjacent blocks of the same size.
+      These are referred to as "buddies" and will be merged together
+      if both are free.
 
    buffer
       A block of memory, most often in :term:`primary storage`.
@@ -421,8 +475,8 @@ Glossary
       such an access is stored in a :term:`buffer`.
 
    caching
-      The concept of keeping selected data in :term:`primary storage`.
-      The goal is to have in primary storage the data values that are
+      The concept of keeping selected data in :term:`main memory`.
+      The goal is to have in main memory the data values that are
       most likely to be used in the near future.
       An example of a caching technique is the use of a
       :term:`buffer pool`.
@@ -434,6 +488,21 @@ Glossary
    child
       In a tree, the set of :math:`nodes` directly pointed to by a node
       :math:`R` are the :term:`children <child>` of :math:`R`.
+
+   circular first fit
+      In a :term:`memory manager`, circular first fit is a
+      :term:`heuristic` for deciding which :term:`free block` to use
+      when allocating memory from a :term:`memory pool`.
+      Circular first fit is a minor modification on :term:`first fit`
+      memory allocation, where the last free block allocated from is
+      remembered, and search for the next suitable free block picks up
+      from there.
+      Like first fit, it has the advantage that it is typically not
+      necessary to look at all free blocks on the free block list to
+      find a suitable free block.
+      And it has the advantage over first fit that it spreads out
+      memory allocations evenly across the :term:`free block list`.
+      This might help to minimize :term:`external fragmentation`.
 
    circular list
       A :term:`list` ADT implementation variant where the last element
@@ -486,6 +555,20 @@ Glossary
       In this case, a :term:`closed hash system` will require a
       process known as :term:`collision resolution` to find the
       location of the desired record.
+
+   cluster
+      In :term:`file processing`, a collection of physically adjacent
+      :term:`sectors <sector>` that define the smallest allowed
+      allocation unit of space to a disk file.
+      The idea of requiring space to be allocated in multiples of
+      sectors is that this will reduce the number of
+      :term:`extents <extent>` required to store the file, which
+      reduces the expected number of :term:`seek` operations reuquired
+      to process a series of :term:`disk accesses <disk access>` to
+      the file.
+      The disadvantage of large cluster size is that it increases
+      :term:`internal fragmentation` since any space not actually
+      used by the file in the last cluster is wasted.
 
    collision resolution
       In a :term:`closed hash system`, this is the process of finding
@@ -557,8 +640,8 @@ Glossary
       In the composite design, each object is required to implement
       the collection of behaviors.
       This is in contrast to the procedural approach where a behavior
-      (such as a tree traversal) is implemented as a method on the
-      object collection (such as a tree).
+      (such as a tree :term:`traversal`) is implemented as a
+      method on  the object collection (such as a :term:`tree`).
       Procedural tree traversal requires that the tree have a method
       that understands what to do when it encounters any of the object
       types (:term:`internal <internal node>` or
@@ -628,6 +711,28 @@ Glossary
       a :term:`cycle` is a :term:`path` of length three or more that
       connects some :term:`vertex` :math:`v_1` to itself.
 
+   cylinder
+      A :term:`disk drive` normally consists of a stack of
+      :term:`platters <platter>`.
+      While this might not be so true today, traditionally all of the
+      :term:`I/O heads <I/O head>` moved together during a
+      :term:`seek` operation.
+      Thus, when a given I/O head is positioned over a particular
+      :term:`track` on a platter, the other I/O heads are also
+      positioned over the corresponding track on their platters.
+      That collection of tracks is called a cylinder.
+      A given cylinder represents all of the data that can be read
+      from all of the platters without doing another seek operation.
+
+   cylinder index
+      In the :term:`ISAM` system, a simple :term:`linear index` that
+      stores the lowest key value stored in each :term:`cylinder`.
+
+   cylinder overflow
+      In the :term:`ISAM` system, this is space reserved for storing
+      any records that can not fit in their respective
+      :term:`cylinder`.
+
    DAG
       Abbreviation for :term:`directed acyclic graph`.
 
@@ -671,6 +776,19 @@ Glossary
      The depth of a node :math:`M` in a tree is the length
      of the path from the root of the tree to :math:`M`.
 
+   depth-first search
+     A :term:`graph` :term:`traversal` algorithm.
+     Whenever a :math:`v` is :term:`visited <visit>` during the
+     traversal, DFS will :term:`recursively <recursion>` visit all of
+     :math:`v` 's :term:`unvisited` :term:`neighbors <neighbor>`.
+
+   depth-first search tree
+      A :term:`tree` that can be defined by the operation of a
+      :term:`depth-first search` (DFS) on a :term:`graph`.
+      This tree would consist of the :term:`nodes <node>` of the graph
+      and a subset of the :term:`edges <edge>` of the graph that was
+      followed during the DFS.
+
    dequeue
       A specialized term used to indicate removing an element from a queue.
 
@@ -695,6 +813,9 @@ Glossary
       and so its behavior on a given input will always be the same.
       This is in contrast to a :term:`randomized algorithm`.
 
+   DFS
+      Abbreviation for :term:`depth-first search`.
+
    dictionary
       An abstract data type or interface for a data structure or
       software subsystem that supports insertion, search, and deletion
@@ -713,6 +834,12 @@ Glossary
 
    diminishing increment sort
       Another name for :term:`Shellsort`.
+
+   direct access
+      A storage device, such as a disk drive, that has some ability to
+      move to a desired data location more-or-less directly.
+      This is in contrast to a :term:`sequential access` storage
+      device such as a tape drive.
 
    direct proof
       In general, a direct proof is just a "logical explanation".
@@ -791,6 +918,11 @@ Glossary
       less than the disk-reading time saved by reducing the storage
       requirements.
 
+   disk controller
+      The control mechanism for a :term:`disk drive`.
+      Responsible for the action of reading or writing a :term:`sector`
+      of data.
+
    disk drive
       An example of term:`peripheral storage` or
       :term:`secondary storage`.
@@ -818,6 +950,9 @@ Glossary
       :term:`disk drive`.
       All disk reads and writes are done in units of a :term:`sector`
       or :term:`block`.
+
+   distance
+      In :term:`graph` representations, a synonym for :term:`weight`.
 
    divide and conquer
       A technique for designing algorithms where a solution is found
@@ -872,9 +1007,10 @@ Glossary
    dynamic programming
       An approach to designing algorithms that works by storing a table
       of results for subproblems.
-      A typical cause for excessive cost in recursive algorithms is
-      that different branches of the recursion might solve the same
-      subproblem.
+      A typical cause for excessive cost in
+      :term:`recursive <recursion>` 
+      algorithms is that different branches of the recursion might
+      solve the same subproblem.
       Dynamic programming uses a table to store information about
       which subproblems have already been solved, and uses the stored
       information to immediately give the answer for any repeated
@@ -979,6 +1115,20 @@ Glossary
       sub-expressions that are its operand.
       All :term:`leaf nodes <leaf node>` are operands.
 
+   extent
+      A physically contiguous block of :term:`sectors <sector>` on a
+      :term:`disk drive` that are all part of a given disk file.
+      The fewer extents needed to store the data for a disk file,
+      generally the fewer :term:`seek` operations that will be
+      required to process a series of :term:`disk access` operations
+      on that file.
+
+   external fragmentation
+      A condition that arises when a series of
+      :term:`memory requests <memory request>`
+      result in lots of small :term:`free blocks <free block>`, no one
+      of which is useful for servicing typical requests.
+
    external sort
       A sorting algorithm that is applied to data stored in
       :term:`peripheral storage` such as on a :term:`disk drive`.
@@ -988,6 +1138,27 @@ Glossary
    factorial
       The factorial function is defined as :math:`f(n) = n f(n-1)` for
       :math:`n > 0`.
+
+   failure policy
+      In a :term:`memory manager`, a failure policy is the response
+      that takes place when there is no way to satisfy a
+      :term:`memory request` from the current
+      :term:`free blocks <free block>` in the :term:`memory pool`.
+      Possibilities include rejecting the request, expanding the
+      memory pool, collecting :term:`garbage`, and reorganizing the
+      memory pool (to collect together free space).
+
+   file allocation table
+      A legacy file system architecture orginially developed for DOS
+      and then used in Windows.
+      It is still in use in many small-scale peripheral devices such
+      as USB memory sticks and digital camera memory.
+
+   file manager
+      A part of the :term:`operating system`
+      responsible for taking requests for data from a
+      :term:`logical file` and mapping those requests to the
+      physical location of the data on disk.
 
    file processing
       The domain with Computer Science that deals with processing data
@@ -1019,6 +1190,19 @@ Glossary
       :term:`disjoint sets`.
       It is the process of moving upwards in a
       tree to find the tree's root.
+
+   first fit
+      In a :term:`memory manager`, first fit is a :term:`heuristic`
+      for deciding which :term:`free block` to use when allocating
+      memory from a :term:`memory pool`.
+      First fit will always allocate the first :term:`free block` on
+      the :term:`free block list` that is large enough to service the
+      memory request.
+      The advantage of this approach is that it is typically not
+      necessary to look at all free blocks on the free block list to
+      find a suitable free block.
+      The disadvantage is that it is not "intelligently" selecting
+      what might be a better choice of free block.
 
    fixed-length coding
       Given a collection of objects, a fixed-length coding scheme
@@ -1088,6 +1272,16 @@ Glossary
       Flyweights can also used to advantage in the implementation of the
       :term:`bintree` and :term:`PR quadtree`.
 
+   free block
+      A block of unused space in a :term:`memory pool`.
+
+   free block list
+      In a :term:`memory manager`, the list that stores the necessary
+      information about the current :term:`free blocks <free block>`.
+      Generally, this is done with some sort of :term:`linked list`,
+      where each node of the linked list indicates the start position
+      and length of the free block in the :term:`memory pool`.
+
    free store
       Space available to a program during runtime to be used for
       :term:`dynamic allocation` of objects.
@@ -1149,13 +1343,15 @@ Glossary
       (doing so is called a side effect).
 
    garbage
-      In programming, any memory that was previously (dynamically)
+      In :term:`memory management <memory manager>`,
+      any memory that was previously (dynamically)
       allocated by the program during runtime, but which is no longer
       accessible since all pointers to the memory have been deleted or
-      overwritten. In some languages, garbage can be recovered by
+      overwritten.
+      In some languages, garbage can be recovered by
       :term:`garbage collection`.
       In languages such as C and C++ that do not support garbage
-      collection, creating garbage is considered a
+      collection, so creating garbage is considered a
       :term:`memory leak`.
 
    garbage collection
@@ -1305,6 +1501,10 @@ Glossary
       The height of a tree is one more than the :term:`depth` of the
       deepest :term:`node` in the tree.
 
+   height balanced
+      The condition the :term:`depths <depth>` of each :term:`subtree`
+      in a tree are roughly the same.
+
    heuristic
       A way to solve a problem that is not guarenteed to be optimal.
       While it might not be guarenteed to be optimal, it is generally
@@ -1340,6 +1540,12 @@ Glossary
 
    Huffman tree
       Shorter form of the term :term:`Huffman coding tree`.
+
+   inode
+      Short for "index node".
+      In UNIX-style file systems, specific disk :term:`sectors <sector>`
+      that hold indexing information to define the layout of the file
+      system.
 
    image space decomposition
       A from of :term:`key space decomposition` where the
@@ -1377,8 +1583,9 @@ Glossary
       The key assumption used in a :term:`proof by induction`,
       that the theorem to be proved holds for smaller instances of the
       theorem.
-      The induction hypothesis is equivalent to the recursive
-      call in a :term:`recursive <recursion>` function.
+      The induction hypothesis is equivalent to the
+      :term:`recursive <recursion>` 
+      call in a recursive function.
 
    induction step
       Part of a :term:`proof by induction`.
@@ -1402,8 +1609,9 @@ Glossary
 
    inorder traversal
       In a :term:`binary tree`, a :term:`traversal` that first
-      recursively visits the left :term:`child`, then visits the
-      :term:`root`, an then recursively visits the right child.
+      :term:`recursively <recursion>` :term:`visits <visit>` the left
+      :term:`child`, then visits the :term:`root`,
+      an then recursively visits the right child.
       In a :term:`binary search tree`, this traversal will
       :term:`enumerate <enumeration>` the nodes in sorted order.
 
@@ -1417,9 +1625,22 @@ Glossary
       A specific selection of values for the parameters to a problem.
       In other words, a specific set of inputs to a problem.
 
+
+   internal fragmentation
+      A condition that occurs when more than :math:`m` bytes
+      are allocated to service a :term:`memory request` for :math:`m`
+      bytes, wasting free storage.
+      This is often done to simplify
+      :term:`memory management <memory manager>`.
+
    internal node
       In a tree, any node that has at least one non-empty
       :term:`child` is an  internal node.
+
+   inter-sector gap
+      On a disk drive, a physical gap in the data that occurs between
+      the :term:`sectors <sector>`.
+      This allows the :term:`I/O head` detect the end of the sector.
 
    internal sort
       A sorting algorithm that is applied to data stored in
@@ -1609,7 +1830,7 @@ Glossary
       :term:`key-value pairs <key-value pair>` in a sorted array.
       Typically this is used for an index to a large collection of
       records stored on disk, where the linear index itself might be
-      on disk or in main memory.
+      on disk or in :term:`main memory`.
       It allows for efficient search (including for
       :term:`range queries <range query>`), but it is not good for
       inserting and deleting entries in the array.
@@ -1660,6 +1881,13 @@ Glossary
       The `logarithm` of base :math:`b` for value :math:`y` is the power
       to which :math:`b` is raised to get :math:`y`.
 
+   logical file
+      In :term:`file processing`, the programmer's view of a
+      :term:`random access` file stored on :term:`disk <disk drive>`
+      as a contiguous series of bytes, with those bytes possibly
+      combining to form data records.
+      This is in contrast to the :term:`physical file`.
+
    logical form
       The definition for a data type in terms of an ADT. Contrast to
       the :term:`physical form` for the data type.
@@ -1705,6 +1933,21 @@ Glossary
       :term:`set` to a unique element of another set; a
       correspondence.
 
+   mark array
+      It is typical in :term:`graph` algorithms that there is a need
+      to track which nodes have been visited at some point in the
+      algorithm.
+      An array of bits or values called the :term:`mark array` is
+      often maintained for this purpose.
+
+   mark/sweep algorithm
+      An algorithm for :term:`garbage collection`.
+      All accessible variables, and any space that is reachable by a
+      chain of pointers from any accessible variable, is "marked".
+      Then a sequential sweep of all memory in the pool is made.
+      Any unmarked memory locations are assumed to not be needed by
+      the program and can be considered as free to be reused.
+
    max heap
       A :term:`heap` where every :term:`node` has a :term:`key` value
       greater than its :term:`children <child>`.
@@ -1744,6 +1987,14 @@ Glossary
       Each operation associated with the ADT is implemented by a
       member function or :term:`method`.
 
+   memory allocation
+      In a :term:`memory manager`, the act of honoring a request for
+      memory.
+
+   memory deallocation
+      In a :term:`memory manager`, the act of freeing a block of
+      memory, which should create or add to a :term:`free block`.
+
    memory hierarchy
       The concept that a computer system stores data in a range of
       storage types that range from fast but expensive
@@ -1781,6 +2032,11 @@ Glossary
       :term:`peripheral storage` device) that is logically viewed as
       an array of memory positions.
       A memory pool is usually managed by a :term:`memory manager`.
+
+   memory request
+      In a :term:`memory manager`, a request from some :term:`client`
+      to the memory manager to reserve a block of memory and store
+      some bytes there.
 
    message
       In a :term:`memory manager` implementation (particularly a
@@ -1945,14 +2201,28 @@ Glossary
       Typically this is done using a linked list to store the records.
       This is in contrast to a :term:`closed hash system`.
 
+   operating system
+      The control program for a computer.
+      Its purpose is to control hardware, manage resources, and
+      present a standard interface to these to other software
+      components.
+
    optimal static ordering
       A theoretical construct defining the best static (non-changing)
       order in which to place a collection of records so as to
-      minimize the number of records visited by a series of sequential
-      searches.
+      minimize the number of records :term:`visited <visit>` by a
+      series of sequential searches.
       It is a useful concept for the purpose of defining a theoretical
       optimum against which to compare the performance for a
       :term:`self-organizing list heuristic`.
+
+   overflow
+      The condition where the amount of data stored in an entity has
+      exceeded its capacity.
+      For example, a node in a :term:`B-tree` can store a certain
+      number of records.
+      If a record is attempted to be inserted into a node that is
+      full, then something has to be done to handle this case.
 
    overhead
       All information stored by a data structure aside from the actual
@@ -2039,6 +2309,16 @@ Glossary
       is the :term:`elements <element>` of :math:`\mathbf{S}` arranged
       in some order.
 
+   persistent
+      In the context of computer memory, this refers to a memory that
+      does not lose its stored information when the power is turned
+      off.
+
+   physical file
+      The collection of sectors that comprise a file on a
+      :term:`disk drive`.
+      This is in contrast to the :term:`logical file`.
+
    physical form
       The implementation of a data type as a data structure.
       Contrast to the :term:`physical form` for the data type.
@@ -2052,6 +2332,12 @@ Glossary
       In :term:`Quicksort`, the value that is used to split the list
       into sublists, one with lesser values than the pivot, the other
       with greater values than the pivot.
+
+   platter
+      In a :term:`disk drive`, one of a series of flat disks that
+      comprise the storage space for the drive.
+      Typically, each surface (top and bottom) of each platter stores
+      data, and each surface has its own :term:`I/O head`.
 
    pop
       A specialized term used to indicate removing an :term:`element`
@@ -2075,7 +2361,8 @@ Glossary
 
    postorder traversal
       In a :term:`binary tree`, a :term:`traversal` that first
-      :term:`recursively <recursion>` visits the left :term:`child`,
+      :term:`recursively <recursion>` :term:`visits <visit>` the left
+      :term:`child`, 
       then recursively visits the right child, and then visits the
       :term:`root`.
 
@@ -2090,7 +2377,7 @@ Glossary
       space.
       If that space stores more than one data point, then the region
       is decomposed into four equal subquadrants, each represented
-      recursively by a subtree of the PR quadtree.
+      :term:`recursively <recursion>` by a subtree of the PR quadtree.
       Since many leaf nodes of the PR quadtree will contain no data
       points, implementation often makes use of the :term:`Flyweight`
       :term:`design pattern`.
@@ -2107,10 +2394,13 @@ Glossary
       property is a set of :term:`Huffman codes`.
 
    preorder traversal
-      In a :term:`binary tree`, a :term:`traversal` that first visits
-      the :term:`root`, then :term:`recursively <recursion>` visits
-      the left :term:`child`, then recursively visits the right
-      child.
+      In a :term:`binary tree`, a :term:`traversal` that first
+      :term:`visits <visit>` the :term:`root`, then
+      :term:`recursively <recursion>` visits the left :term:`child`,
+      then recursively visits the right child.
+
+   primary index
+      Synonym for :term:`primary key index`.
 
    primary key index
       Relates each :term:`primary key` value with a pointer to the
@@ -2201,6 +2491,13 @@ Glossary
       An instance, or concrete representation, of an algorithm in some
       programming language.
 
+   promotion
+      In the context of certain :term:`balanced tree` structures such
+      as the :term:2-3 tree`, a promotion takes place when an
+      insertion causes the node to :term:`overflow`.
+      In the case of the 2-3 tree, the :term:`key` with the middlemost
+      value is sent to be stored in the parent.
+
    proving the contrapositive
       We can prove that :math:`P \Rightarrow Q` by proving
       :math:`(\mathrm{not}\ Q) \Rightarrow (\mathrm{not}\ P)`.
@@ -2260,6 +2557,12 @@ Glossary
       tends to be much slower than other sorting algorithms like
       :term:`Quicksort` or :term:`mergesort`.
 
+   random access
+      In :term:`file processing` terminology, a :term:`disk access` to
+      a random position within the file.
+      More generally, the ability to access an arbitrary record in the
+      file.
+
    random access memory
       Abbreviated ;term:`RAM`, this is the principle example of
       :term:`primary storage` in a modern computer.
@@ -2297,6 +2600,9 @@ Glossary
       Records are returned if their relevant key value falls with a
       specified range.
 
+   read/write head
+      Synonym for :term:`I/O head`.
+
    record
       A collection of information, typical implemented as an object in
       an object-oriented programming language.
@@ -2308,7 +2614,8 @@ Glossary
       recurrence) defines a function by means of an 
       expression that includes one or more (smaller) instances of
       itself.
-      A classic example is the recursive definition for the
+      A classic example is the :term:`recursive <recursion>`
+      definition for the
       factorial function, :math:`F(n) = n*F(n-1)`.
 
    recursion
@@ -2344,6 +2651,18 @@ Glossary
       concept of a pointer, since it does not define a reference to
       necessarily be a byte position in memory.)
 
+   reference count algorithm
+      An algorithm for :term:`garbage collection`.
+      Whenever a reference is made from a variable to some memory
+      location, a counter associated with that memory location is
+      incremented.
+      Whenever the reference is changed or deleted, the reference
+      count is decremented.
+      If this count goes to zero, then the memory is considered free
+      for reuse.
+      This approach can fail if there is a cycle in the chain of
+      references.
+
    reflexive
       In set notation, binary relation :math:`R` on set :math:`S` is
       reflexive if :math:`aRa` for all :math:`a \in \mathbf{S}`.
@@ -2363,6 +2682,14 @@ Glossary
       bring new records into the heap from the input stream in
       preference to shrinking the heap size whenever possible.
 
+   reserved block
+      In a :term:`memory manager`, this refers to space in the
+      :term:`memory pool` that has been allocated to store data
+      received from the :term:`client`.
+      This is in contrast to the :term:`free blocks <free block>` that
+      represent space in the memory pool that is not allocated to
+      storing client data.
+
    resource constraints
       Examples of resource constraints include the total space
       available to store the data |---| possibly divided into separate
@@ -2380,6 +2707,17 @@ Glossary
       grandchildren that can result in reordering their relationship.
       The goal of performing a rotation is to make the tree more
       :term:`balanced <balanced tree>`.
+
+   rotational delay
+      When processing a :term:`disk access`, the time that it takes
+      for the first byte of the desired data to move to under the
+      :term:`I/O head`.
+      On average, this will take one half of a disk rotation, and so
+      constitutes a substantial portion of the time required for the
+      disk access.
+
+   rotational latency
+      A synonym for :term:`rotational delay`.
 
    run
       A series of sorted records.
@@ -2441,6 +2779,9 @@ Glossary
       is more likely to be used by a user as a search key than is the
       record's :term:`primary key`.
 
+   secondary index
+      Synonym for :term:`secondary key index`.
+
    secondary key index
       Associates a :term:`secondary key` value with the
       :term:`primary key` of each record having that secondary key
@@ -2456,6 +2797,11 @@ Glossary
       data that will be read or written at one time by the disk drive
       hardware.
       This is typically 512 bytes.
+
+   sector header
+      On a disk drive, a piece of information at the start of a
+      :term:`sector` that allows the :term:`I/O head` to recognize the
+      identity (or equivalently, the address) of the current sector. 
 
    seek
       On a :term:`disk drive`, the act of moving the :term:`I/O head`
@@ -2495,6 +2841,20 @@ Glossary
       which may contain duplicate-valued elements.
       A sequence is also sometimes called a :term:`tuple` or a
       :term:`vector`.
+
+   sequential access
+      In :term:`file processing` terminology, the requirement that all
+      records in a file are accessed in sequential order.
+      Alternatively, a storage device that can only access data
+      sequentially, such as a tape drive.
+
+   sequential fit
+      In a :term:`memory manager`, the process of searching the
+      :term:`memory pool` for a :term:`free block` large enough to
+      service a :term:`memory request`, possibly reserving the
+      remaining space as a free block.
+      Examples are :term:`first fit`, :term:`circular first fit`,
+      :term:`best fit`, and :term:`worst fit`.
 
    sequential search
       The simplest search algorithm: In an array, simply look at the
@@ -2538,9 +2898,10 @@ Glossary
       A type whose values contain no subparts. An example is the integers.
 
    simulating recursion
-      If a programming language does not support recursion, or if you
-      want to implement the effects of recursion more efficiently, you
-      can use a stack to maintain the collection of subproblems that
+      If a programming language does not support :term:`recursion`,
+      or if you want to implement the effects of recursion more
+      efficiently, you can use a :term:`stack` to maintain the
+      collection of subproblems that 
       would be waiting for completion during the recursive process.
       Using a loop, whenever a recursive call would have been made,
       simply add the necessary program state to the stack.
@@ -2660,6 +3021,10 @@ Glossary
       the :term:`bintree`, the :term:`PR quadtree` and the
       :term:`kd tree`.
 
+   spindle
+      The center of a :term:`disk drive` that holds the
+      :term:`platters <platter>` in place.
+
    Splay Tree
       A variant implementation for the :term:`BST`, which differs from
       the standard BST in that it uses modified insert and remove
@@ -2701,7 +3066,8 @@ Glossary
       performance.
 
    Strassen's algorithm
-      A recursive algorithm for matrix multiplication.
+      A :term:`recursive <recursion>` algorithm for matrix
+      multiplication. 
       When multiplying two :math:`n \times n` matrices,
       this algorithm runs faster than the :math:`\Theta(n^3)` time
       required by the standard matrix multiplication algorithm.
@@ -2866,7 +3232,7 @@ Glossary
 
    traversal
       Any process for visiting all of the objects in a collection
-      (such as a tree or graph) in some order.
+      (such as a :term:`tree` or :term:`graph`) in some order.
 
    tree
       A tree :math:`\mathbf{T}` is a finite set of one or more
@@ -2913,6 +3279,15 @@ Glossary
    type
       A collection of values.
 
+   underflow
+      The condition where the amount of data stored in an entity has
+      dropped below some minimum threshold.
+      For example, a node in a :term:`B-tree` is required to be at
+      least half full.
+      If a record deletion causes the node to be less than half full,
+      then it is in a condition of underflow, and something has to be
+      done to correct this.
+
    undirected graph
       A graph whose edges do not have a direction.
 
@@ -2950,6 +3325,12 @@ Glossary
       require this to be true).
       The alternative to an unsuccessful search is a
       :term:`successful search`.
+
+   unvisited
+      In :term:`graph` algorithms, this refers to a node that has not
+      been processed at the current point in the algorithm.
+      This information is typically maintained by using a
+      :term:`mark array`.
 
    upper bound
       In algorithm analysis, the upper or highest growth rate that
@@ -2993,12 +3374,28 @@ Glossary
       data content were stored in RAM, even if that is larger than the
       physical RAM available making it easier to implement.
 
+   visit
+      During the process of a :term:`traversal` on a :term:`graph` or
+      :term:`tree` the action that takes place on each :term:`node`.
+
+   visited
+      In :term:`graph` algorithms, this refers to a node that has
+      previously been processed at the current point in the
+      algorithm.
+      This information is typically maintained by using a
+      :term:`mark array`.
+
    visitor design pattern
-      A :term:`design pattern` where a traversal process is given a
-      function (known as the visitor) that is applied to every object
-      in the collection being traversed. For example, a generic tree
-      or graph :term:`traversal` might be designed such that it takes a
-      function parameter, where that function is applied to each node.
+      A :term:`design pattern` where a :term:`traversal` process is
+      given a function (known as the visitor) that is applied to every
+      object in the collection being traversed.
+      For example, a generic tree or graph traversal might be
+      designed such that it takes a function parameter,
+      where that function is applied to each node.
+
+   volatile
+      In the context of computer memory, this refers to a memory that
+      loses all stored information when the power is turned off.
 
    weight
       A cost or distance most often associated with an :term:`edge` in
@@ -3038,6 +3435,17 @@ Glossary
       :math:`n` is big, since we are referring to the wost from a
       class of inputs (i.e, those inputs of size :math:`n`).
 
+   worst fit
+      In a :term:`memory manager`, worst fit is a :term:`heuristic`
+      for deciding which :term:`free block` to use when allocating
+      memory from a :term:`memory pool`.
+      Worst fit will always allocate from the largest free block.
+      The rationale is that this will be the method least likely to
+      cause :term:`external fragmentation` in the form of small,
+      unuseable memory blocks.
+      The disadvantage is that it tends to eliminate the availability
+      of large freeblocks needed for unusually large requests.
+
    Zipf distribution
       A data distribution that follows Zipf's law, an emprical
       observation that many types of data studied in the physical and
@@ -3054,3 +3462,22 @@ Glossary
       Adherence to a Zipf distribution is important to the successful
       operation of a :term:`cache <caching>` or
       :term:`self-organizing list`.
+
+   zone
+      In :term:`memory management <memory manager>`, the concept that
+      different parts of the :term:`memory pool` are handled in
+      different ways.
+      For example, some of the memory might be handled by a simple
+      :term:`freelist`, while other portions of the memory pool might
+      be handled by a :term:`sequential fit` memory manager.
+      On a :term:`disk drive` the concept of a zone relates to the
+      fact that there are limits to the maximum data density, combined
+      with the fact that the need for the same angular distance to be
+      used for a sector in each track means that tracks further from
+      the center of the disk will become progressively less dense.
+      A zone in this case is a series of adjacent tracks whose data
+      density is set by the maximum density of the innermost track of
+      that zone.
+      The next zone can then reset the data density for its innermost
+      track, thereby gaining more total storage space while preserving
+      angular distance for each sector.

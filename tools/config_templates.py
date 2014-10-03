@@ -4,7 +4,7 @@ rst_header = '''\
 
 .. raw:: html
 
-   <script>ODSA.SETTINGS.DISP_MOD_COMP = %(dispModComp)s;ODSA.SETTINGS.MODULE_NAME = "%(mod_name)s";ODSA.SETTINGS.MODULE_LONG_NAME = "%(long_name)s";ODSA.SETTINGS.MODULE_CHAPTER = "%(mod_chapter)s"; ODSA.SETTINGS.BUILD_DATE = "%(mod_date)s"; ODSA.SETTINGS.BUILD_CMAP = "%(build_cmap)s";%(mod_options)s</script>
+   <script>ODSA.SETTINGS.DISP_MOD_COMP = %(dispModComp)s;ODSA.SETTINGS.MODULE_NAME = "%(mod_name)s";ODSA.SETTINGS.MODULE_LONG_NAME = "%(long_name)s";ODSA.SETTINGS.MODULE_CHAPTER = "%(mod_chapter)s"; ODSA.SETTINGS.BUILD_DATE = "%(mod_date)s"; ODSA.SETTINGS.BUILD_CMAP = %(build_cmap)s;%(mod_options)s</script>
 
 %(unicode_directive)s
 '''
@@ -86,7 +86,6 @@ min-searchtools:
 html:
 	$(SPHINXBUILD) -b html source $(HTMLDIR)
 	rm html/_static/jquery.js html/_static/websupport.js
-	cp "%(odsa_dir)slib/.htaccess" $(HTMLDIR)
 	cp "%(odsa_dir)slib/conceptMap.html" $(HTMLDIR)
 	rm *.json
 	@echo
@@ -97,7 +96,6 @@ slides:
 	@SLIDES=yes \
 	$(SPHINXBUILD) -b slides source $(HTMLDIR)
 	rm html/_static/jquery.js html/_static/websupport.js
-	cp "%(odsa_dir)slib/.htaccess" $(HTMLDIR)
 	rm *.json
 	@echo
 	@echo "Build finished. The HTML pages are in $(HTMLDIR)."
@@ -296,7 +294,7 @@ html_static_path = ['_static']
 # The code that appends these scripts can be found in RST/_themes/haiku/layout.html and basic/layout.html
 html_context = {"script_files": [
                   '%(eb2root)slib/jquery.min.js',
-                  'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                  '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
                 ],
                 "search_scripts": [
                   '_static/underscore.js',
@@ -376,8 +374,15 @@ todo_include_todos = True
 
 # @efouh: despise the fact that we are using an url hash, gradebook still needs book name
 book_name = '%(book_name)s'
-# Protocol and domain of the backend server
-server_url = '%(backend_address)s'
+
+# Protocol and domain of the exercise_server
+exercise_server = '%(exercise_server)s'
+
+# Protocol and domain of the logging_server
+logging_server = '%(logging_server)s'
+
+# Protocol and domain of the score_server
+score_server = '%(score_server)s'
 
 # Protocol and domain of the server hosting the module files
 module_origin = '%(module_origin)s'
@@ -415,9 +420,9 @@ config_js_template = '''\
   //@efouh: added this variable back because it is needed by gradebook.html
   settings.BOOK_NAME = "%(book_name)s";
   settings.BOOK_LANG = "%(lang)s";
-  // The (protocol and) domain address of the backend server
-  // Set SERVER_URL = "" in order to disable server communication and logging
-  settings.SERVER_URL = "%(backend_address)s";
+  settings.EXERCISE_SERVER = "%(exercise_server)s";
+  settings.LOGGING_SERVER = "%(logging_server)s";
+  settings.SCORE_SERVER = "%(score_server)s";
   settings.MODULE_ORIGIN = "%(module_origin)s";
   settings.EXERCISE_ORIGIN = "%(exercise_origin)s";
   settings.AV_ORIGIN = "%(av_origin)s";

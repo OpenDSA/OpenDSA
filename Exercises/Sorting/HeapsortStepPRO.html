@@ -6,7 +6,7 @@ Written by Gayathri Subramanian and Cliff Shaffer
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title>Heapsort Remove Maximum Exercise</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
@@ -14,12 +14,11 @@ Written by Gayathri Subramanian and Cliff Shaffer
   <script src="../../JSAV/lib/raphael.js"></script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
   <script src="../../JSAV/build/JSAV-min.js"></script>
-  <script src="../../JSAV/extras/binaryheap.js"></script>
+  <script src="../../DataStructures/binaryheap.js"></script>
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
   <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
 </head>
-
-<body>
+<body data-height="820" data-width="950">
 <script>
 "use strict";
 var
@@ -93,7 +92,7 @@ var initJSAV = function (size) {
   // Set up handler for reset button
   $("#reset").click(function () { f_reset(); });
 };
-	
+
 // Validate student's answer
 var checkAnswer = function (arr_size) {
   for (var i = 0; i < arr_size; i++) {
@@ -113,28 +112,28 @@ var checkAnswer = function (arr_size) {
   <div class="problems">
     <div> <!-- Supresses answer box -->
       <div class="question">
-	<p> Perform one iteration of heap sort. Swap the last key with
-	  the largest key and restore the heap in the array/tree shown
-	  below. </p> 
-	<p align="center" class="jsavexercisecontrols">
-          <input id="reset" type="button" value="Reset" />	
-	  <input id="decrement" type="button" value="Decrement heap size" />
-	</p>
-	<div id="jsav" class="jsavcanvas"></div>
+        <p> Perform one iteration of heap sort. Swap the last key with
+          the largest key and restore the heap in the array/tree shown
+          below. </p>
+        <p align="center" class="jsavexercisecontrols">
+          <input id="reset" type="button" value="Reset" />
+          <input id="decrement" type="button" value="Decrement heap size" />
+        </p>
+        <div id="jsav" class="jsavcanvas"></div>
       </div>
       <div class="solution" data-type="custom">
-	<div class="guess">
+        <div class="guess">
           [userInput]
         </div>
-	<div class="validator-function">
+        <div class="validator-function">
           if (!guess[0])
             return ""; // User did not click, and correct answer is not
-	               // initial array state
+                 // initial array state
           else return checkAnswer(arr_size);
-	</div>
+        </div>
       </div>
       <div class="hints">
-	<p> Select the maximum element and move it to the correct
+        <p> Select the maximum element and move it to the correct
           location. Then restore the heap order.</p>
         <p>Don't forget to decrement the heap size.</p>
       </div>

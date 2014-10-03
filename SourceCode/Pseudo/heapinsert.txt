@@ -1,7 +1,0 @@
-Algorithm MinHeap-Insert(A, key)
-    heap-size[A] ← heap-size[A] + 1
-    i ← heap-size[A]
-    while i > 1 and A[Parent(i)] > key
-        do   A[i] ← A[Parent(i)]
-             i ← Parent(i)
-             A[i] ← key

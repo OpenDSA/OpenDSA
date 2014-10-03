@@ -25,7 +25,7 @@
   },
   "code" : {
     "pseudo": {
-      "url": "../../SourceCode/Pseudo/radixExchangeSort.txt",
+      "url": "../../SourceCode/Pseudo/Sorting/RadixExchangeSort.txt",
       "tags": {}
     }
   }

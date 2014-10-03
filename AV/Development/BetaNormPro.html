@@ -29,7 +29,7 @@
 		<p class="instructLabel">Instructions:</p>
 		<p class="instructions">
 			Directions: Enter the lambda-calculus expression that results from one Normal-Order &#946;-Reduction. 
-			Continue this until no more reductions can be done. Click "Done" when the last reduction is completed.(Use ^ to express &#955;)
+			Continue this until no more reductions can be done. Be mindful of proper spacing and parenthesizing. (Use ^ to express &#955;)
 		</p>
 		<div id="left">
 		<p><b>Expression:</b></p>
@@ -43,9 +43,11 @@
 	
 		<input type="button" id="submit" name="submit"
 		data-desc="Indicates user is ready for next step." value="Submit" />
+		<input type="button" id="done" name="done"
+		data-desc="Indicates user is done with reductions." value="Done" />
 		</p></div></div>
 		
-		<div id="left"><p id="score"></p></div>
+		<div id="left"><p id="scoring">Current Score: <span class="jsavcurrentscore"></span> / <span class="jsavcurrentmaxscore"></span></p></div>
 	
 		<p class="jsavoutput jsavline"></p>
 		</div>

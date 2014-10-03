@@ -1,0 +1,14 @@
+.jsavarraytreenode {
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+  border-radius: 8px;
+}
+
+.jsavarraytreenode .jsavarray {
+  margin: 0;
+}
+
+.jsavarraytreenode .jsavarray {
+  min-height: 47px;
+}
