@@ -498,8 +498,9 @@
             "threshold": 1.0,
             "showhide": "Show"
           }
-       }
-      },
+        }
+      }
+    },
     "Appendix": {
       "Glossary": {
         "long_name": "Glossary",
@@ -509,8 +510,6 @@
         "long_name": "Bibliography",
         "exercises": {}
       }
-     }
     }
   }
-
 }

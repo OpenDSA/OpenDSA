@@ -7,7 +7,7 @@
 # (Bash) export DISPLAY=:0.0
 # (csh/tcsh) setenv DISPLAY :0.0
 
-PROCESS = ~/processing-2.0b9/processing-java
+PROCESS = ~/processing-2.0b8/processing-java
 
 # Use this one on Linux
 # BUILD = build
