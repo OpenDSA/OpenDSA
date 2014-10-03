@@ -210,7 +210,7 @@ class avembed(Directive):
         self.options['width'] = embed[2]
         self.options['height'] = embed[3]
     else:
-      self.options['av_address'] = os.path.relpath(conf.av_dir, conf.ebook_path)
+      self.options['av_address'] = os.path.relpath(conf.av_dir, conf.ebook_path).replace('\\', '/')
       self.options['width'] = 950
       self.options['height'] = 450
 

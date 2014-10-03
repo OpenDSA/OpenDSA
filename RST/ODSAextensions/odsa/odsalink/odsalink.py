@@ -41,7 +41,7 @@ class odsalink(Directive):
     def run(self):
 
         """ Restructured text extension for including CSS and other libraries """
-        self.options['address'] = os.path.relpath(conf.odsa_path,conf.ebook_path)+'/'+ self.arguments[0]
+        self.options['address'] = os.path.relpath(conf.odsa_path,conf.ebook_path).replace('\\', '/') + '/' + self.arguments[0]
         res = CODE % self.options
         return [nodes.raw('', res, format='html')]
 
