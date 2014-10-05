@@ -8,7 +8,7 @@
     "C++": ["cpp", "h"]
   },
   "lang": "en",
-  "module_origin": "http://algoviz.org",
+  "module_origin": "http://127.0.0.1:8000",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,

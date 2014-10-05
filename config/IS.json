@@ -48,6 +48,10 @@
         "long_name": "General Trees",
         "exercises": {}
       },
+      "IS/SequentialRep": {
+        "long_name": "Sequential Tree Representations",
+        "exercises": {}
+      },
       "IS/TwoThreeTree_Test": {
         "long_name": "Two Three Tree",
         "exercises": {}
