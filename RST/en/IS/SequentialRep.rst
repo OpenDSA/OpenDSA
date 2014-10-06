@@ -161,6 +161,9 @@ implementation, and so requires less overhead.
    Note that slashes are needed for the empty children because
    this is not a full binary tree.
 
+.. inlineav:: SequentialTreeAltCON ss
+   :output: show
+
 Storing :math:`n` extra bits can be a considerable savings over
 storing :math:`n` ``null`` values.
 In Example :num:`Example #Serialbintwo`, each node is shown with a
@@ -235,3 +238,5 @@ Figure :num:`Figure #BinExampb` is the left or right child of node
 :math:`B`.
 
 .. odsascript:: AV/Development/SequentialTreeCON.js
+.. odsascript:: AV/Development/SequentialTreeAltCON.js
+
