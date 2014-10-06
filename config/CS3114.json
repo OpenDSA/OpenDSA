@@ -824,6 +824,7 @@
           },
           "heapinsertPRO": {
             "long_name": "Heap Insert Proficiency Exercise",
+            "exer_options": { "JXOP-code": "none" },
             "required": true,
             "points": 2.0,
             "threshold": 0.90
@@ -836,6 +837,7 @@
           },
           "heapbuildPRO": {
             "long_name": "Heap Build Proficiency Exercise",
+            "exer_options": { "JXOP-code": "none" },
             "required": true,
             "points": 1.0,
             "threshold": 0.90
@@ -861,6 +863,7 @@
           },
           "heapremovePRO": {
             "long_name": "Heap Remove Exercise",
+            "exer_options": { "JXOP-code": "none" },
             "required": true,
             "points": 2.0,
             "threshold": 0.90
@@ -1107,6 +1110,7 @@
         "exercises": {
           "insertionSortWithoutSwapPRO": {
             "long_name": "Insertion Sort Without Swap Proficiency Exercise",
+            "exer_options": { "JXOP-code": "none" },
             "required": false,
             "points": 1.0,
             "threshold": 5
@@ -1341,8 +1345,9 @@
             "threshold": 0.9,
             "exer_options": {
               "JXOP-feedback": "continuous",
-              "JXOP-fixmode": "fix"
-            }
+              "JXOP-fixmode": "fix",
+	      "JXOP-code": "none" 
+	    }
           },
           "HeapsortSumm": {
             "long_name": "Heapsort Summary Exercise",

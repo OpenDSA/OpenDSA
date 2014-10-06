@@ -395,7 +395,7 @@
     "Again, the largest key (30) goes in the new node, the smallest key (20) goes is the old node, and the middle key (23) is promoted",
     "The pointers can now be updated",
     "The parent node is full so the promoted element cannot be inserted. Therefore the parent node has to be split. Because the parent node is the root node, a new root has to be created as well.",
-    "Again, the largest key (23) goes in the new node, the smallest key (13) goes is the old node, and the middle key (18) is promoted.",
+    "Again, the largest key (31) goes in the new node, the smallest key (18) stays in the old node, and the middle key (23) is promoted.",
     "The pointers can now be updated.",
     "The insertion is complete."
   ];
@@ -533,9 +533,11 @@
 
   /* 13th Slide *************************************************************/
   jsav.umsg(messages.shift());
-  jsav.effects.moveValue(promote, 0, arrays[2], 0);
-  jsav.effects.moveValue(arrays[1], 1, arrays[1], 0);
-  arrays[0].value(0, 18);
+//  jsav.effects.moveValue(promote, 0, arrays[2], 0);
+  jsav.effects.moveValue(promote, 0, arrays[0], 0);
+//  jsav.effects.moveValue(arrays[1], 1, arrays[1], 0);
+  jsav.effects.moveValue(arrays[1], 1, arrays[2], 0);
+//  arrays[0].value(0, 18);
   jsav.step();
 
   /* 14th Slide *************************************************************/
