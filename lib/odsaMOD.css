@@ -1,3 +1,7 @@
+/* Eliminate max-width restriction from haiku.css */
+body {
+  max-width: 100%;
+}
 .more {
   display: none;
 }
@@ -153,6 +157,10 @@ iframe {
   border: 0;
   margin: 0;
   overflow: hidden;
+  /* Set the position and top attributes to prevent the page from */
+  /* automatically scrolling to iframes as they load */
+  position: absolute;
+  top: -9999em;
 }
 
 svg {
