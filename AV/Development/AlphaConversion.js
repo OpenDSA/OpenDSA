@@ -1,6 +1,7 @@
 (function() {
 	var x = 0; var y = 0;
-	var av = new JSAV("av");
+        var av = new JSAV($(".avcontainer"));
+//	var av = new JSAV("av");
 	var stepOne = ["(", "&#955;x.", "&#955;y.", "(", "x", "y", ")", "y", ")"];
 	var stepTwo = ["&#955;y.", "(", "y", "y", ")"];
 	var stepThree = ["(", "&#955;x.", "&#955;z.", "(", "x", "z", ")", "y", ")"];

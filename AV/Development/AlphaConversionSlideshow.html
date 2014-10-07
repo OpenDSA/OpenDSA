@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>&#945;-Conversion Slideshow</title>
-    <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
-    <style>
+<head>
+  <title>&#945;-Conversion Slideshow</title>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+  <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
+  <style>
     #av {
       width: 98%;
       position: relative;
@@ -12,21 +14,35 @@
       position: absolute;
       top: 15px;
     }
-    </style>
-  </head>
-  <body>
-    <h1>&#945;-Conversion Slideshow</h1>
-  <div id="av">
-    <div class="jsavcontrols"></div><span class="jsavcounter"></span>
+  </style>
+</head>
+
+<body>
+<div id="container">
+  <table class="headerTable">
+    <tr>
+      <td class="headerLeft"></td>
+      <td class="headerCenter avTitle">&#945;-Conversion Slideshow</td>
+      <td class="headerRight">
+        <input type="button" id="about" name="about" />
+        <a id="settings" class="jsavsettings" href="#"></a>
+      </td>
+    </tr>
+  </table>
+  <div class="avcontainer">
+    <span class="jsavcounter"></span>
+    <div class="jsavcontrols"></div>
     <p class="jsavoutput jsavline"></p>
-  </div>
-    <script
-       src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-    <script src="../../JSAV/lib/jquery.transit.js"></script>
-    <script src="../../JSAV/lib/raphael.js"></script>
-    <script src="../../JSAV/build/JSAV.js"></script>
-    <script src="AlphaConversion.js"></script>
-  </body>
+  </div> <!--avcontainer-->
+</div>
+
+<script src="../../lib/jquery.min.js"></script>
+<script src="../../lib/jquery-ui.min.js"></script>
+<script src="../../JSAV/lib/jquery.transit.js"></script>
+<script src="../../JSAV/lib/raphael.js"></script>
+<script src="../../JSAV/build/JSAV-min.js"></script>
+<script src="../../lib/odsaUtils-min.js"></script>
+<script src="../../lib/odsaAV-min.js"></script>
+<script src="AlphaConversion.js"></script>
+</body>
 </html>
