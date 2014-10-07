@@ -14,7 +14,8 @@ Alpha conversion is used when substituting for a formal parameter in a lambda ca
 
 .. Slideshow for Alpha Conversion
 
-.. avembed:: AV/Development/AlphaConversionSlideshow.html ss
+.. inlineav:: AlphaConversionCON ss
+   :output: show
 
 Practice alpha conversion with the following exercise:
 
@@ -93,3 +94,4 @@ As a final test of your proficiency in doing beta reductions, try doing
 
 .. avembed:: AV/Development/BetaNormPro.html pe
 
+.. odsascript:: AV/Development/AlphaConversionCON.js

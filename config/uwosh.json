@@ -3,10 +3,7 @@
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {"Javascript": ["js"]},
-  "module_origin": "http://algoviz.org",
-  "exercise_server": "https://opendsa.cc.vt.edu/",
-  "logging_server": "https://opendsa.cc.vt.edu/",
-  "score_server": "https://opendsa.cc.vt.edu/",
+  "module_origin": "http://127.0.0.1:8000",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
@@ -15,7 +12,13 @@
       "Development/LambdaCalculus": {
         "long_name": "Current Work on Lambda Calculus",
         "exercises": {
-  }
+          "AlphaConversionCON": {
+            "long_name": "Alpha Conversion Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "Development/StringSearchKMP": {
         "long_name": "Current Work on KMP String Search",
