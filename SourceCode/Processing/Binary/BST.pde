@@ -52,6 +52,37 @@ class BST {
   }
 /* *** ODSAendTag: findhelp *** */
 
+
+  // Visit BST nodes via inorder traversal
+/* *** ODSATag: inorder *** */
+  inorder(BSTNode rt) {
+    if (rt == null) return null;
+    inorder(rt.left());
+    visit(rt);
+    inorder(rt.right());
+  }
+/* *** ODSAendTag: inorder *** */
+
+  // Visit BST nodes via preorder traversal
+/* *** ODSATag: preorder *** */
+  preorder(BSTNode rt) {
+    if (rt == null) return null;
+    visit(rt);
+    preorder(rt.left());
+    preorder(rt.right());
+  }
+/* *** ODSAendTag: preorder *** */
+
+  // Visit BST nodes via postorder traversal
+/* *** ODSATag: postorder *** */
+  postorder(BSTNode rt) {
+    if (rt == null) return null;
+    postorder(rt.left());
+    postorder(rt.right());
+    visit(rt);
+  }
+/* *** ODSAendTag: postorder *** */
+
   // Return the current subtree,
   // modified to contain the new item
 /* *** ODSATag: inserthelp *** */
