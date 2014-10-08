@@ -422,20 +422,29 @@
   var leafList, arrowList = [];
 
   var msg = [
+    "Delete <b>51</b>. First we need to find the leaf node with matching key.",
+    "This node has two key-value pairs. Therefore we can just delete the key-value pair.",
+    "Next we update the parent keys",
     "Delete <b>70</b>. First we need to find the leaf node with matching key.",
     "This node has two key-value pairs. Therefore we can just delete the key-value pair.",
     "Delete <b>65</b>. First we need to find the leaf node with matching key.",
-    "This node has only one key-value pair. Its right sibling however has two key-value pairs. This means we can steal a key-value pair from the right sibling.",
-    "Firsr delete <b>65</b>, then move the smallest key from the sibling to the node.",
+    "This node has only one key-value pair. Its right sibling however has two key-value pairs. " +
+      "This means we can borrow a key-value pair from the right sibling. " +
+      "(The left sibling only has one key-value pair, so we cannot borrow from it)",
+    "First delete <b>65</b>",
+    "Then move the smallest key from the sibling to the node.",
     "Now update the parent keys and shift the remaining key-value pair to the left.",
     "Delete <b>71</b>. First we need to find the leaf node with matching key.",
-    "This node has only one key-value pair. Its right sibling is exactly half full, however. This means that we cannot borrow a key-value pair.",
+    "This node has only one key-value pair. " +
+      "Its right and left siblings have only one key-value pair, however. " +
+      "This means that we cannot borrow a key-value pair from either sibling.",
     "Therefore, this node has to be deleted.",
     "Now the parent node has to be updated.",
     "Delete <b>89</b>. First we need to find the leaf node with matching key.",
-    "As with the previous deletion, this node only has one key-value pair and it is not possible to steal from the right sibling.",
+    "As with the previous deletion, this node only has one key-value pair and it is not possible to borrow from the right or left sibling.",
     "Therefore, this node has to be deleted",
-    "The parent node now has an underflow, so it must steal from its sibling."
+    "The parent node now has an underflow, so it must borrow a leaf node from its sibling.",
+    "Now the keys of the internal nodes are updated"
   ];
 
   function step(skip_message, init) {
@@ -450,13 +459,13 @@
   }
 
   // Setup initial tree state
-  var root = global.newNode(av, ["52", ""], false);
+  var root = global.newNode(av, ["51", ""], false);
   root.addChild(global.newNode(av, ["22", "46"], false));
   root.addChild(global.newNode(av, ["65", "71"], false));
   root.child(0).addChild(global.newNode(av, ["15", ""], true, ["J", ""]));
   root.child(0).addChild(global.newNode(av, ["22", "33"], true, ["X", "O"]));
   root.child(0).addChild(global.newNode(av, ["46", "47"], true, ["H", "L"]));
-  root.child(1).addChild(global.newNode(av, ["52", ""], true, ["B", ""]));
+  root.child(1).addChild(global.newNode(av, ["51", "52"], true, ["B", "T"]));
   root.child(1).addChild(global.newNode(av, ["65", "70"], true, ["S", "F"]));
   root.child(1).addChild(global.newNode(av, ["71", "89"], true, ["W", "M"]));
 
@@ -493,11 +502,33 @@
   var lw = $(label.element).outerWidth();
   label.css({"left": (w - aw - lw - 25) + "px", "top": "25px"});
 
-  del.value(0, 70);
+  del.value(0, 51);
   step(false, true);
 
+  // Find 51
+  var result = global.findKey(av, 51, root, del);
+
+  // Delete 51
+  del.highlightToggle();
+  result.value(0, "");
+  step();
+
+  result.array.swap(1, 0);
+  step(true);
+
+  root.value(0, 52);
+  result.highlightToggle();
+  root.highlightToggle();
+  root.child(1).highlightToggle();
+  step();
+
+  root.highlightToggle();
+  root.child(1).highlightToggle();
+  del.value(0, 70);
+  step();
+
   // Find 70
-  var result = global.findKey(av, 70, root, del);
+  result = global.findKey(av, 70, root, del);
 
   // Delete 70
   del.highlightToggle();
@@ -513,6 +544,9 @@
 
   // Delete 65
   del.highlightToggle();
+  step();
+
+  result.value(0, "");
   step();
 
   var sibling = root.child(1).child(2);
@@ -567,10 +601,6 @@
   arrowList.splice(3, 1)[0].hide();
   step();
 
-  av.effects.moveValue(root.array, 0, root.child(1).array, 0);
-  av.effects.moveValue(root.child(0).array, 1, root.array, 0);
-  step();
-
   var node = root.child(0).removeChild(2);
   root.child(1).insertChild(0, node);
   shift = nw + nhg;
@@ -580,7 +610,11 @@
   root.child(1).move(-shift, 0);
   root.updateEdges(true);
   global.drawLeafArrows(av, leafList, arrowList)
-  step(true);
+  step();
+
+  av.effects.moveValue(root.array, 0, root.child(1).array, 0);
+  av.effects.moveValue(root.child(0).array, 1, root.array, 0);
+  step();
 
   av.recorded();
 }());
