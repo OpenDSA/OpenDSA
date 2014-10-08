@@ -1,28 +1,28 @@
 {
   "translations" :{
     "en": {
-      "av_preorder": "Preorder traversal begins.",
+      "av_postorder": "Postorder traversal begins.",
       "av_nullcheck": "Check to see if node is null.",
       "av_isnotnull": "Not null.",
       "av_leftchild": "Make recursive call on left child.",
       "av_rightchild": "Make recursive call on right child.",
       "av_isnull": "Null.",
       "av_visit": "Visit ",
-      "av_done": "Finished the preorder traversal on "
+      "av_done": "Finished the postorder traversal on "
     }
   },
   "code" : {
     "processing": {
-      "url": "../../../SourceCode/Processing/Binary/BST.pde",
+      "url": "../../../SourceCode/Processing/Binary/Traverse.pde",
       "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: preorder *** */",
-      "endBefore": "/* *** ODSAendTag: preorder *** */",
+      "startAfter": "/* *** ODSATag: postorder *** */",
+      "endBefore": "/* *** ODSAendTag: postorder *** */",
       "tags": {
          "sig": 1,
          "checknull": 2,
-         "visit": 3,
-         "visitleft": 4,
-         "visitright": 5,
+         "visitleft": 3,
+         "visitright": 4,
+         "visit": 5,
          "end": 6
       }
     }

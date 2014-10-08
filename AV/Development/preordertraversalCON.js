@@ -2,7 +2,7 @@
 "use strict";
 // Remove slideshow
 $(document).ready(function () {
-  var av_name = "BSTinordertraversalCON";
+  var av_name = "preordertraversalCON";
   var config = ODSA.UTILS.loadConfig({"av_name": av_name}), 
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
@@ -24,18 +24,16 @@ $(document).ready(function () {
 
   var rt1 = av.pointer("rt", bt.root(), {anchor: "left top", top: -10});
   var btLeft =  250;
-
-  av.umsg(interpret("av_inorder"));
+  
+  av.umsg(interpret("av_preorder"));
   pseudo.setCurrentLine("sig");
   av.displayInit();
 
-  inorder(rt);
+  preorder(rt);
 
   av.recorded();
 
-
-    
-  function inorder(node) {
+  function preorder(node) {
 
     //check if null
     if(typeof node == 'undefined') { 
@@ -52,38 +50,38 @@ $(document).ready(function () {
     pseudo.setCurrentLine("checknull");
     av.step();
 
-    //left child
-    av.umsg(interpret("av_leftchild"));
-    pseudo.setCurrentLine("visitleft");
-    node.addClass("processing");
-    rt1.target(node.left(), {anchor: "left top"});
-    av.step();
-    inorder(node.left());
-
     //visit
     rt1.target(node, {anchor: "left top"});
-    //node.removeClass("processing");
+    node.removeClass("processing");
     node.addClass("thickblacknode");
     av.umsg(interpret("av_visit") + node.value());
     pseudo.setCurrentLine("visit");
     btLeft+=35;
     av.label("" + node.value(), {left: btLeft, top: 400}).show;
     av.step();
+
+    //left
+    rt1.target(node.left(), {anchor: "left top"});
+    av.umsg(interpret("av_leftchild"));
+    pseudo.setCurrentLine("visitleft");
+    node.addClass("processing");
+    av.step();
+    preorder(node.left());
     
     //right child
+    rt1.target(node, {anchor: "left top"});
     av.umsg(interpret("av_rightchild"));
     pseudo.setCurrentLine("visitright");
     node.addClass("thickblacknode");
-    rt1.target(node.right(), {anchor: "left top"});
     av.step();
-    inorder(node.right());
+    preorder(node.right());
 
     //finish
     rt1.target(node, {anchor: "left top"});
     node.removeClass("processing");
-    av.umsg(interpret("av_finish") + node.value());
+    av.umsg(interpret("av_done") + node.value());
     pseudo.setCurrentLine("end");
-    av.step();  
+    av.step();
   }
 
 });

@@ -3,7 +3,7 @@
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {"Processing": ["pde"]},
-  "module_origin": "http://127.0.0.1:8000",
+  "module_origin": "http://algoviz.org",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,

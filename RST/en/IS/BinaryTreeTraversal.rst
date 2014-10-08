@@ -50,7 +50,7 @@ This is called a :term:`preorder traversal`.
    Then all nodes of the left subtree are printed (in preorder) before
    any node of the right subtree.
 
-.. inlineav:: BSTpreordertraversalCON ss
+.. inlineav:: preordertraversalCON ss
    :output: show
 
 Alternatively, we might wish to visit each node only
@@ -69,7 +69,7 @@ This is called a :term:`postorder traversal`.
    Figure :num:`Figure #BinTravExample` is
    **D B G E H I F C A**.
 
-.. inlineav:: BSTpostordertraversalCON ss
+.. inlineav:: postordertraversalCON ss
    :output: show
 
 An :term:`inorder traversal` first visits the left child
@@ -85,7 +85,7 @@ this traversal to print all nodes in ascending order of value.
    Figure :num:`Figure #BinTravExample` is
    **B D A G E C H F I**.
 
-.. inlineav:: BSTinordertraversalCON ss
+.. inlineav:: inordertraversalCON ss
    :output: show
 
 Now we will discuss some implementations for the traversals, but we
@@ -296,8 +296,8 @@ Here are some exercises to practice the traversals.
 
 .. avembed:: AV/Binary/btTravPreorderPRO.html pe
 
-.. odsascript:: AV/Development/BSTinordertraversalCON.js
+.. odsascript:: AV/Development/inordertraversalCON.js
 
-.. odsascript:: AV/Development/BSTpreordertraversalCON.js
+.. odsascript:: AV/Development/preordertraversalCON.js
 
-.. odsascript:: AV/Development/BSTpostordertraversalCON.js
+.. odsascript:: AV/Development/postordertraversalCON.js

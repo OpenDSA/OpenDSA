@@ -1,5 +1,43 @@
 boolean SUCCESS = true;
 
+  // Visit nodes via inorder traversal
+/* *** ODSATag: inorder *** */
+void inorder(BinNode rt) {
+    if (rt == null) return null;
+    inorder(rt.left());
+    visit(rt);
+    inorder(rt.right());
+  }
+/* *** ODSAendTag: inorder *** */
+
+  // Visit nodes via postorder traversal
+/* *** ODSATag: postorder *** */
+void postorder(BinNode rt) {
+    if (rt == null) return null;
+    postorder(rt.left());
+    postorder(rt.right());
+    visit(rt);
+  }
+/* *** ODSAendTag: postorder *** */
+
+/* *** ODSATag: preorder *** */
+void preorder(BinNode rt) {
+  if (rt == null) return; // Empty subtree - do nothing
+  visit(rt);              // Process root node
+  preorder(rt.left());    // Process all nodes in left
+  preorder(rt.right());   // Process all nodes in right
+}
+/* *** ODSAendTag: preorder *** */
+
+/* *** ODSATag: preorder2 *** */
+// This is a bad idea
+void preorder2(BinNode rt) {
+  visit(rt);
+  if (rt.left() != null) preorder2(rt.left());
+  if (rt.right() != null) preorder2(rt.right());
+}
+/* *** ODSAendTag: preorder2 *** */
+
 void visit(BinNode rt) {
   print(rt.element() + " ");
 }

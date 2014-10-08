@@ -15,7 +15,8 @@
   "allow_anonymous_credit": true,
   "suppress_todo": true,
   "glob_exer_options": {
-    "JXOP-debug": "true"
+    "JXOP-debug": "true",
+    "JXOP-code": "none"
   },
   "chapters": {
     "Preface": {
@@ -166,7 +167,6 @@
           },
           "binarySearchPRO": {
             "long_name": "Binary Search Proficiency Exercise",
-            "exer_options": { "JXOP-code": "none" },
             "required": true,
             "points": 1.0,
             "threshold": 1.0
@@ -715,21 +715,18 @@
           },
           "btTravInorderPRO": {
             "long_name": "Binary Tree Inorder Traversal Exercise",
-            "exer_options": { "JXOP-code": "none" },
             "required": true,
             "points": 1.0,
             "threshold": 0.90
           },
           "btTravPreorderPRO": {
             "long_name": "Binary Tree Preorder Traversal Exercise",
-            "exer_options": { "JXOP-code": "none" },
             "required": true,
             "points": 1.0,
             "threshold": 0.90
           },
           "btTravPostorderPRO": {
             "long_name": "Binary Tree Postorder Traversal Exercise",
-            "exer_options": { "JXOP-code": "none" },
             "required": true,
             "points": 1.0,
             "threshold": 0.90
@@ -766,7 +763,6 @@
           },
           "BSTsearchPRO": {
             "long_name": "BST Search Proficiency Exercise",
-            "exer_options": { "JXOP-code": "none" },
             "required": true,
             "points": 1.0,
             "threshold": 0.90
@@ -779,7 +775,6 @@
           },
           "BSTinsertPRO": {
             "long_name": "BST Insert Proficiency Exercise",
-            "exer_options": { "JXOP-code": "none" },
             "required": true,
             "points": 1.0,
             "threshold": 0.90
@@ -798,7 +793,6 @@
           },
           "BSTremovePRO": {
             "long_name": "BST Remove Proficiency Exercise",
-            "exer_options": { "JXOP-code": "none" },
             "required": true,
             "points": 2.0,
             "threshold": 0.90
@@ -824,7 +818,6 @@
           },
           "heapinsertPRO": {
             "long_name": "Heap Insert Proficiency Exercise",
-            "exer_options": { "JXOP-code": "none" },
             "required": true,
             "points": 2.0,
             "threshold": 0.90
@@ -837,7 +830,6 @@
           },
           "heapbuildPRO": {
             "long_name": "Heap Build Proficiency Exercise",
-            "exer_options": { "JXOP-code": "none" },
             "required": true,
             "points": 1.0,
             "threshold": 0.90
@@ -863,7 +855,6 @@
           },
           "heapremovePRO": {
             "long_name": "Heap Remove Exercise",
-            "exer_options": { "JXOP-code": "none" },
             "required": true,
             "points": 2.0,
             "threshold": 0.90
@@ -1110,7 +1101,6 @@
         "exercises": {
           "insertionSortWithoutSwapPRO": {
             "long_name": "Insertion Sort Without Swap Proficiency Exercise",
-            "exer_options": { "JXOP-code": "none" },
             "required": false,
             "points": 1.0,
             "threshold": 5
@@ -1345,8 +1335,7 @@
             "threshold": 0.9,
             "exer_options": {
               "JXOP-feedback": "continuous",
-              "JXOP-fixmode": "fix",
-	      "JXOP-code": "none" 
+              "JXOP-fixmode": "fix"
 	    }
           },
           "HeapsortSumm": {
