@@ -34,42 +34,6 @@
   top: 35px;
 }
 
-#BSTinordertraversalCON {
-  height: 600px;
-}
-
-#BSTinordertraversalCON .jsavcode{
-  margin-top: -15px;
-}
-
-#BSTinordertraversalCON .jsavtree { 
-  top: 40px;
-}
-
-#BSTpreordertraversalCON {
-  height: 600px;
-}
-
-#BSTpreordertraversalCON .jsavcode{
-  margin-top: -15px;
-}
-
-#BSTpreordertraversalCON .jsavtree { 
-  top: 40px;
-}
-
-#BSTpostordertraversalCON {
-  height: 600px;
-}
-
-#BSTpostordertraversalCON .jsavcode{
-  margin-top: -15px;
-}
-
-#BSTpostordertraversalCON .jsavtree { 
-  top: 40px;
-}
-
 .thinredline {
   stroke: red;
 }
@@ -77,13 +41,6 @@
 .rededge { /* Make a tree edge to be red */
   stroke: red;
   stroke-width: 3;
-}
-
-.thickblacknode { /* Make a node edge to be thick and black */
-  background-color: white;
-  color: black;
-  border-color: black;
-  border-width: 2px;
 }
 
 .clearnode { /* Make a node invisible in a slideshow */

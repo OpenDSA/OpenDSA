@@ -1,0 +1,42 @@
+#inordertraversalCON {
+  height: 600px;
+}
+
+#inordertraversalCON .jsavcode{
+  margin-top: -15px;
+}
+
+#inordertraversalCON .jsavtree { 
+  top: 40px;
+}
+
+#preordertraversalCON {
+  height: 600px;
+}
+
+#preordertraversalCON .jsavcode{
+  margin-top: -15px;
+}
+
+#preordertraversalCON .jsavtree { 
+  top: 40px;
+}
+
+#postordertraversalCON {
+  height: 600px;
+}
+
+#postordertraversalCON .jsavcode{
+  margin-top: -15px;
+}
+
+#postordertraversalCON .jsavtree { 
+  top: 40px;
+}
+
+.thickblacknode { /* Make a node edge to be thick and black */
+  background-color: white;
+  color: black;
+  border-color: black;
+  border-width: 2px;
+}
