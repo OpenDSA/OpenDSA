@@ -8,8 +8,27 @@ $(document).ready(function () {
   var msg = av.label(" A B / D / / C E G / / / F H / / I / /",{bottom: 50});
   var bt = av.ds.binarytree({visible: true, nodegap: 35});
   bt.root('A');
-  var cur = av.g.rect(0, 338,13, 25);
+  var cur = av.g.rect(0, 338,13, 28);
   var a = bt.root();
+  //BEGIN TEST
+  a.left('B'); //<--- HERE IS THE LINE IN QUESTION
+  var b = a.left();
+  var d = a.left().right('D');
+  var c = a.right('C');
+  var e = a.right().left('E');
+  var g = a.right().left().left('G');
+  var f = a.right().right('F');
+  var h = a.right().right().left('H');
+  var i = a.right().right().right('I');
+  b.hide();
+  d.hide();
+  c.hide();
+  e.hide();
+  g.hide();
+  f.hide();
+  h.hide();
+  i.hide();
+  //END TEST
   bt.layout();
 
   var ptr = av.pointer("rt", a, {anchor: "middle top", top: -10});
@@ -21,13 +40,12 @@ $(document).ready(function () {
   //Slide 2
   av.umsg("The next character in the serialized string represents A's left child");
   cur.hide();
-  var cur = av.g.rect(12, 338,13, 25);
+  var cur = av.g.rect(14, 338,13, 28);
   av.step();
 
   //Slide 3
   av.umsg("We insert B as the left child of A");
-  a.left('B'); //<--- HERE IS THE LINE IN QUESTION
-  var b = a.left();
+  b.show();
   bt.layout();
   ptr.target(b);
   av.step();
@@ -35,22 +53,21 @@ $(document).ready(function () {
   //Slide 4
   av.umsg("The next character in the serialized string says B has no left child ('/') ");
   cur.hide();
-  var cur = av.g.rect(24, 338,13, 25);
+  var cur = av.g.rect(24, 338,13, 28);
   av.step();
 
   //Slide 5
   av.umsg("The next token 'D' is the right child of 'B' ");
-  var d = a.left().right('D');
-  bt.layout();
+  d.show();
   ptr.target(d);
   cur.hide();
-  var cur = av.g.rect(36, 338,13, 25);
+  var cur = av.g.rect(36, 338,13, 28);
   //point to D
   av.step();
 
   //Slide 6
   cur.hide();
-  var cur = av.g.rect(49, 338,18, 25);
+  var cur = av.g.rect(49, 338,18, 28);
   av.umsg("The two slashes imply D has no children and is a leaf node");
   av.step();
 
@@ -68,38 +85,35 @@ $(document).ready(function () {
 
   //Slide 9
   av.umsg("The next character in the string represents A's right child 'C' ");
-  var c = a.right('C');
-  bt.layout();
+  c.show();
   ptr.target(c);
   cur.hide();
-  var cur = av.g.rect(68, 338,13, 25);
+  var cur = av.g.rect(68, 338,13, 28);
   //point to C
   av.step();
 
   //Slide 10
   av.umsg("'E' must be C's left child");
-  var e = a.right().left('E');
-  bt.layout();
+  e.show();
   ptr.target(e);
   cur.hide();
-  var cur = av.g.rect(82, 338,13, 25);
+  var cur = av.g.rect(82, 338,13, 28);
   //point to E
   av.step(); 
 
   //Slide 11
   av.umsg("The next character 'G' represents E's left child");
-  var g = a.right().left().left('G');
-  bt.layout();
+  g.show();
   ptr.target(g);
   cur.hide();
-  var cur = av.g.rect(97, 338,13, 25);
+  var cur = av.g.rect(97, 338,13, 28);
   //point to G
   av.step();
 
   //Slide 12
   av.umsg("Double slashes implies G has no children");
   cur.hide();
-  var cur = av.g.rect(112, 338,17, 25);
+  var cur = av.g.rect(112, 338,17, 28);
   av.step();
 
   //Slide 13
@@ -111,7 +125,7 @@ $(document).ready(function () {
   //Slide 14
   av.umsg("The next character in the serialized string ('/') represents E's right child");
   cur.hide();
-  var cur = av.g.rect(126, 338,13, 25);
+  var cur = av.g.rect(126, 338,13, 28);
   av.step();
 
   //Slide 15
@@ -126,21 +140,19 @@ $(document).ready(function () {
 
   //Slide 17
   av.umsg("F represents C's right child");
-  var f = a.right().right('F');
-  bt.layout();
+  f.show();
   ptr.target(f);
   cur.hide();
-  var cur = av.g.rect(138, 338,13, 25);
+  var cur = av.g.rect(138, 338,13, 28);
   //point to F
   av.step();
 
   //Slide 18
   av.umsg("H represents F's left child");
-  var h = a.right().right().left('H');
-  bt.layout();
+  h.show();
   ptr.target(h);
   cur.hide();
-  var cur = av.g.rect(152, 338,13, 25);
+  var cur = av.g.rect(152, 338,13, 28);
   //point to H
   av.step();
 
@@ -148,23 +160,22 @@ $(document).ready(function () {
   av.umsg("Double slash implies H is a leaf node with no children. Pop back up to F");
   ptr.target(f);
   cur.hide();
-  var cur = av.g.rect(165, 338,17, 25);
+  var cur = av.g.rect(165, 338,17, 28);
   av.step();
 
   //Slide 20
   av.umsg("I must be the right child of F");
-  var i = a.right().right().right('I');
-  bt.layout();
+  i.show();
   ptr.target(i);
   //point to I
   cur.hide();
-  var cur = av.g.rect(181, 338,11, 25);
+  var cur = av.g.rect(181, 338,11, 28);
   av.step();
 
   //Slide 21
   av.umsg("Double slashes implies I is a leaf node with no children");
   cur.hide();
-  var cur = av.g.rect(191, 338,17, 25);
+  var cur = av.g.rect(191, 338,17, 28);
   av.step();
   av.recorded();
 
