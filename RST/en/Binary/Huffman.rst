@@ -342,7 +342,7 @@ Notes
        The eigth bit as a :term:`parity` bit, that can be used to
        check if there is a transmission error for the character.
 
-.. odsascript:: AV/BS/huffman.js
+.. odsascript:: DataStructures/huffman.js
 .. odsascript:: AV/Binary/huffmanBuildCON.js
 .. odsascript:: AV/Binary/huffmanLabelCON.js
 .. odsascript:: AV/Binary/huffmanCodesCON.js

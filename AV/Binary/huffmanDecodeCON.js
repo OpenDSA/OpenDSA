@@ -49,7 +49,7 @@ $(document).ready(function () {
 
   var av_name = "huffmanDecodeCON";
   var config = ODSA.UTILS.loadConfig(
-                {"av_name": av_name, "json_path": "AV/binary/huffman.json"}),
+                {"av_name": av_name, "json_path": "AV/Binary/huffman.json"}),
       interpret = config.interpreter;       // get the interpreter
   var av = new JSAV(av_name);
 
