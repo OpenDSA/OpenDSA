@@ -8,7 +8,7 @@
     "C++": ["cpp", "h"]
   },
   "lang": "en",
-  "module_origin": "http://algoviz.org",
+  "module_origin": "http://127.0.0.1:8000",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
@@ -18,305 +18,98 @@
     "JXOP-code": "none"
   },
   "chapters": {
-    "Design 2": {
-      "Design/DesignPatterns": {
-        "long_name": "Design Patterns",
+    "File Processing": {
+      "Development/FileProc": {
+        "long_name": "File Processing Chapter Introduction",
         "exercises": {}
       },
-      "Design/DesignAltList": {
-        "long_name": "Alternate List ADT Design",
+      "Development/Secondary": {
+        "long_name": "Primary versus Secondary Storage",
         "exercises": {}
       },
-      "Design/Comparison": {
-        "long_name": "Comparing Records",
+      "Development/Diskdrive": {
+        "long_name": "Disk Drives",
+        "exercises": {}
+      },
+      "Development/BuffPool": {
+        "long_name": "Buffer Pools",
         "exercises": {
-          "CompareSumm": {
-            "long_name": "Record Comparison Summary Exercise",
+         "buffpoolS1CON": {
+            "long_name": "Buffer Pool Slideshow 1",
             "required": true,
-            "points": 1,
-            "threshold": 5
-          }
-        }
-      },
-      "Design/Dictionary": {
-        "long_name": "The Dictionary ADT",
-        "exercises": {}
-      },
-      "Design/DesignSumm": {
-        "long_name": "Design Chapter Summary",
-        "exercises": {
-          "DesignSumm": {
-            "long_name": "Design Summary Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          }
-        }
-      }
-    },
-    "Binary Trees": {
-      "Binary/BinaryTreeIntro": {
-        "long_name": "Binary Trees Chapter Introduction",
-        "exercises": {}
-      },
-      "Binary/BinaryTree": {
-        "long_name": "Binary Tree Terminology",
-        "exercises": {
-          "DprobsAll": {
-            "long_name": "Tree Definition Summary",
-            "required": true,
-            "points": 3,
-            "threshold": 8
-          }
-        }
-      },
-      "Binary/BinaryTreeFullThm": {
-        "long_name": "Full Binary Tree Theorem",
-        "exercises": {}
-      },
-      "Binary/BinaryTreeTraversal": {
-        "long_name": "Binary Tree Traversals",
-        "exercises": {
-          "BTLeafPROG": {
-            "long_name": "Node Count Programming Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1
-          },
-          "btTravInorderPRO": {
-            "long_name": "Binary Tree Inorder Traversal Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 0.90,
-            "exer_options": {
-              "JXOP-feedback": "continuous",
-              "JXOP-fixmode": "fix"
-            }
-          },
-          "btTravPreorderPRO": {
-            "long_name": "Binary Tree Preorder Traversal Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 0.90,
-            "exer_options": {
-              "JXOP-feedback": "continuous",
-              "JXOP-fixmode": "fix"
-            }
-          },
-          "btTravPostorderPRO": {
-            "long_name": "Binary Tree Postorder Traversal Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 0.90,
-            "exer_options": {
-              "JXOP-feedback": "continuous",
-              "JXOP-fixmode": "fix"
-            }
-          }
-        }
-      },
-      "Binary/BinaryTreeImpl": {
-        "long_name": "Full Binary Tree Node Implementations",
-        "exercises": {}
-      },
-      "Binary/Composite": {
-        "long_name": "Composite Design Pattern",
-        "exercises": {}
-      },
-      "Binary/BinaryTreeNodeSpace": {
-        "long_name": "Full Binary Tree Node Space Requirements",
-        "exercises": {
-          "TreeOverheadSumm": {
-            "long_name": "Tree Overhead Exercise",
-            "required": true,
-            "points": 2,
-            "threshold": 5
-          }
-        }
-      },
-      "Binary/BST": {
-        "long_name": "Binary Search Trees",
-        "exercises": {
-          "BSTsearchCON": {
-            "long_name": "BST Search Slideshow",
-            "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "BSTsearchPRO": {
-            "long_name": "BST Search Proficiency Exercise",
+         "buffpoolS2CON": {
+            "long_name": "Buffer Pool Slideshow 2",
             "required": true,
-            "points": 1.0,
-            "threshold": 0.90,
-            "exer_options": {
-              "JXOP-feedback": "atend",
-              "JXOP-code": "none"
-            }
-          },
-          "BSTinsertCON": {
-            "long_name": "BST Insert Slideshow",
-            "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "BSTinsertPRO": {
-            "long_name": "BST Insert Proficiency Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 0.90,
-            "exer_options": {
-              "JXOP-feedback": "atend",
-              "JXOP-code": "none"
-            }
-          },
-          "BSTdeletemaxCON": {
-            "long_name": "BST deletemax Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "BSTremoveCON": {
-            "long_name": "BST remove Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "BSTremovePRO": {
-            "long_name": "BST Remove Proficiency Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 0.90,
-            "exer_options": {
-              "JXOP-feedback": "continuous",
-              "JXOP-fixmode": "undo",
-              "JXOP-code": "none"
-            }
-          }
-        }
-      },
-      "Binary/BSTDict": {
-        "long_name": "Dictionary Implementation with BST",
-        "exercises": {}
-      },
-      "Binary/CompleteTree": {
-        "long_name": "Array Implementation for Complete Trees",
-        "exercises": {}
-      },
-      "Binary/Heaps": {
-        "long_name": "Heaps and Priority Queues",
-        "exercises": {
-          "heapinsertCON": {
-            "long_name": "Heap insert Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "heapinsertPRO": {
-            "long_name": "Heap Insert Proficiency Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 0.90
-          },
-          "heapbuildCON": {
-            "long_name": "Heapbuild Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "heapbuildPRO": {
-            "long_name": "Heap Build Proficiency Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 0.90
-          },
-          "heapbuildProofCON": {
-            "long_name": "Heap build analysis proof Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "BuildHeapVisualProof": {
-            "long_name": "Buildheap Visual Proof",
+          "buffpoolS3CON": {},
+          "BufferPoolAV": {
+            "long_name": "Buffer Pool Visualization",
             "required": false,
             "points": 0,
             "showhide": "none",
             "threshold": 1.0
           },
-          "heapmaxCON": {
-            "long_name": "Remove Max Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "heapremovePRO": {
-            "long_name": "Heap Remove Exercise",
+          "bufferpoolPRO": {
+            "long_name": "Buffer Pool Proficiency Exercise",
             "required": true,
-            "points": 2.0,
-            "threshold": 0.90
-          },
-          "heapremoveCON": {
-            "long_name": "Remove Any Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "HeapSumm": {
-            "long_name": "BST/Heap Summary",
-            "required": true,
-            "points": 1,
-            "threshold": 3
-          }
-        }
-      },
-      "Binary/Huffman": {
-        "long_name": "Huffman Coding Trees",
-        "exercises": {
-          "huffmanBuildCON": {
-            "long_name": "Huffman Coding Tree Slideshow: Build",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "huffmanLabelCON": {
-            "long_name": "Huffman Coding Tree Slideshow: Label Edges",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "huffmanCodesCON": {
-            "long_name": "Huffman Coding Tree Slideshow: Setting Codes",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "huffmanDecodeCON": {
-            "long_name": "Huffman Coding Tree Slideshow: Decoding",
-            "required": true,
-            "points": 0.0,
+            "points": 1.0,
             "threshold": 1.0
           }
         }
       },
-      "Binary/TreeTrie": {
-        "long_name": "Trees versus Tries",
-        "exercises": {
-          "TreeTimeline": {
-            "long_name": "Tree timeline Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "TrieTimeline": {
-            "long_name": "Trie timeline Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          }
-        }
-      },
-      "Development/HuffProof": {
-        "long_name": "Proof for Huffman Coding",
+      "Development/FileProg": {
+        "long_name": "Programmer's View of Files",
         "exercises": {}
+      },
+      "Development/ExternalSort": {
+        "long_name": "ExternalSort",
+        "exercises": {
+          "ExternalMergeSort": {
+            "long_name": "External Merge Sort Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "ExternalMergeSortExample": {
+            "long_name": "External Merge Sort Example Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "externalSortOver": {},
+          "ExternalReplacementSelection": {
+            "long_name": "External Replacement Selection Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "externalReplacementSelectionPRO": {
+            "long_name": "Replacement Selection Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "externalSortSnow": {},
+          "MultiMerge": {
+            "long_name": "Multiway Merge Example Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "externalMultiwayMergePRO": {
+            "long_name": "Multi-way Merge Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "showhide": "none",
+            "threshold": 1.0
+          }
+        }
       }
     },
     "Appendix": {

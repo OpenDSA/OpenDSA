@@ -1,25 +1,11 @@
 "use strict";
-(function ($) {
-  var jsav,                 // jsav
-      buffer_size = 0,      // number of elements in buffer pool
-      pool,                 // array holding jsav array (for buffers)
-      list,                 // jsav array for list representation
-      memory,               // jsav array for disk
-      lines,                // array holding jsav lines
-      LRU_moveup = 0,
-      LRU_moveup_kai = 0,    
-      LRU_replace = 0,
-      empty_index = 0,
-      into_list = 0,
-      LFU_index = 0;
-  var letter = ["A", "B", "C", "D", "E", "F", "G", "F", "I"];
-  var lines_end = [];
-  var LFU_counter = [];
-  var label_array = [];
-  var divider;
-  var dirty_bits = [];
-  var dirty_bit_array = [];
-  var read_write = 0;       // if reading = 0, writing = 1
+/*global alert: true, ODSA, console */
+$(document).ready(function () {
+  // Process About button: Pop up a message with an Alert
+  function about() {
+    alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
+  }
+
   // check if one of the buffers contains the sector
   // returns index if value is found
   function contains(val) {
@@ -1117,14 +1103,47 @@
     }
   }
 
-  $(document).ready(initialize);
+  // Connect action callbacks to the HTML entities
+  $("#about").click(about);
+  $("#read").click(read);
+  $("#write").click(write);
+  $("#next").click(next);
   $("#function").change(update);
   $("#mainmemory_size").change(update);
   $("#bufferpool_size").change(update);
-  $('#read').click(read);
-  $('#write').click(write);
-  $('#next').click(next);
-  $('#reset').click(function () {
+  $("#restart").click(function () {
     location.reload(true);
   });
-}(jQuery));
+
+  var jsav,                 // jsav
+      buffer_size = 0,      // number of elements in buffer pool
+      pool,                 // array holding jsav array (for buffers)
+      list,                 // jsav array for list representation
+      memory,               // jsav array for disk
+      lines,                // array holding jsav lines
+      LRU_moveup = 0,
+      LRU_moveup_kai = 0,    
+      LRU_replace = 0,
+      empty_index = 0,
+      into_list = 0,
+      LFU_index = 0;
+  var letter = ["A", "B", "C", "D", "E", "F", "G", "F", "I"];
+  var lines_end = [];
+  var LFU_counter = [];
+  var label_array = [];
+  var divider;
+  var dirty_bits = [];
+  var dirty_bit_array = [];
+  var read_write = 0;       // if reading = 0, writing = 1
+
+  // Load the config object with interpreter and code created by odsaUtils.js
+  var config = ODSA.UTILS.loadConfig(),
+      interpret = config.interpreter,       // get the interpreter
+      code = config.code;                   // get the code object
+  console.log("Code object: " + JSON.stringify(code));
+
+  // create a new settings panel and specify the link to show it
+  var settings = new JSAV.utils.Settings($(".jsavsettings"));
+
+  initialize()
+});
