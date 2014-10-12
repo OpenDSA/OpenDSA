@@ -157,6 +157,9 @@ iframe {
   border: 0;
   margin: 0;
   overflow: hidden;
+}
+
+.embeddedExercise {
   /* Set the position and top attributes to prevent the page from */
   /* automatically scrolling to iframes as they load */
   /* https://stackoverflow.com/questions/6596668/iframe-on-the-page-bottom-avoid-automatic-scroll-of-the-page */

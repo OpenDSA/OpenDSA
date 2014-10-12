@@ -8,7 +8,7 @@ $(document).ready(function () {
   var msg = av.label(" A B / D / / C E G / / / F H / / I / /",{bottom: 50});
   var bt = av.ds.binarytree({visible: true, nodegap: 35});
   bt.root('A');
-  var cur = av.g.rect(0, 338,13, 28);
+  var cur = av.g.rect(0, 338, 13, 28);
   var a = bt.root();
   //BEGIN TEST
   a.left('B'); 
@@ -20,6 +20,11 @@ $(document).ready(function () {
   var f = a.right().right('F');
   var h = a.right().right().left('H');
   var i = a.right().right().right('I');
+  bt.layout();
+
+  av.umsg("Test");
+  av.displayInit();
+
   b.hide();
   d.hide();
   c.hide();
@@ -29,24 +34,24 @@ $(document).ready(function () {
   h.hide();
   i.hide();
   //END TEST
-  bt.layout();
+  av.umsg("Test 2");
+  av.step();
 
   var ptr = av.pointer("rt", a, {anchor: "middle top", top: -10});
 
   //Slide 1
   av.umsg("We begin with the first node in the string 'A' which will be the root node");
-  av.displayInit();
+  av.step();
 
   //Slide 2
   av.umsg("The next character in the serialized string represents A's left child");
   cur.hide();
-  var cur = av.g.rect(14, 338,13, 28);
+  var cur = av.g.rect(14, 338, 13, 28);
   av.step();
 
   //Slide 3
   av.umsg("We insert B as the left child of A");
   b.show();
-  bt.layout();
   ptr.target(b);
   av.step();
 
