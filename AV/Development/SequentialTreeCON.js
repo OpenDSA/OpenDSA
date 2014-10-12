@@ -11,7 +11,7 @@ $(document).ready(function () {
   var cur = av.g.rect(0, 338,13, 28);
   var a = bt.root();
   //BEGIN TEST
-  a.left('B'); //<--- HERE IS THE LINE IN QUESTION
+  a.left('B'); 
   var b = a.left();
   var d = a.left().right('D');
   var c = a.right('C');
