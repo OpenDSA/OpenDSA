@@ -36,7 +36,7 @@ $(document).ready(function () {
   function show_counters() {
     for (var i = 0; i < buffer_size; i++) {
       if (list.value(i) != "") {
-        label_array[i] = jsav.label(LFU_counter[list.value(i)], {"top": 40 + i * 45, "left": 700});
+        label_array[i] = jsav.label(LFU_counter[list.value(i)], {"top": 15 + i * 45, "left": 700});
       }
     }
   }
@@ -50,7 +50,7 @@ $(document).ready(function () {
       if (list.value(i)) {
       if (list.value(i) != "") {
         var temp = dirty_bits[list.value(i)];
-        dirty_bit_array[i] = jsav.label(temp, {"top": 40 + i*45, "left": 650});
+        dirty_bit_array[i] = jsav.label(temp, {"top": 15 + i*45, "left": 650});
       }
     }
     }
@@ -175,7 +175,7 @@ $(document).ready(function () {
     for (var i = 0; i < pool.length; i++) {
       var endpoint = contains_kai(pool[i].value(0));
       if (pool[i].value(0) != "") {
-        lines[i] = jsav.g.line(465,  43 + 75 * i, 550,  lines_end[endpoint], {'stroke-width' : 2});
+        lines[i] = jsav.g.line(452,  40 + 75 * i, 552,  lines_end[endpoint], {'stroke-width' : 2});
       }
     }
   }
@@ -1081,7 +1081,7 @@ $(document).ready(function () {
       }
       empty.length =  $('#bufferpool_size').val();
       list = jsav.ds.array(empty, {layout: "vertical", left: 550});
-      divider = jsav.g.line(635, 21, 635, 67 + (empty.length-1) * 46.5, {'stroke-width' : 1.5});
+      divider = jsav.g.line(635, 16, 635, 62 + (empty.length-1) * 46.5, {'stroke-width' : 1.5});
     }
     // disable input box if fields are missing
     if (missingFields.length > 0) {
