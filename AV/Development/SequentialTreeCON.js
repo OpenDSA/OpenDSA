@@ -10,8 +10,7 @@ $(document).ready(function () {
   bt.root('A');
   var cur = av.g.rect(0, 338, 13, 28);
   var a = bt.root();
-  //BEGIN TEST
-  a.left('B'); 
+  a.left('B');
   var b = a.left();
   var d = a.left().right('D');
   var c = a.right('C');
@@ -20,38 +19,37 @@ $(document).ready(function () {
   var f = a.right().right('F');
   var h = a.right().right().left('H');
   var i = a.right().right().right('I');
-  bt.layout();
-
-  av.umsg("Test");
-  av.displayInit();
 
   b.hide();
   d.hide();
-  c.hide();
-  e.hide();
-  g.hide();
-  f.hide();
-  h.hide();
-  i.hide();
-  //END TEST
-  av.umsg("Test 2");
-  av.step();
+  c.hide({recursive:false});
+  e.hide({recursive:false});
+  g.hide({recursive:false});
+  f.hide({recursive:false});
+  h.hide({recursive:false});
+  i.hide({recursive:false});
+  av.umsg("We begin with the first node in the string 'A' which will be the root node");
+    bt.layout();
 
-  var ptr = av.pointer("rt", a, {anchor: "middle top", top: -10});
+  var ptr = av.pointer("rt", bt.root(), {anchor: "center top", top: -10});
+
+  av.displayInit();
+
+
 
   //Slide 1
-  av.umsg("We begin with the first node in the string 'A' which will be the root node");
-  av.step();
 
   //Slide 2
   av.umsg("The next character in the serialized string represents A's left child");
   cur.hide();
   var cur = av.g.rect(14, 338, 13, 28);
+
   av.step();
 
   //Slide 3
   av.umsg("We insert B as the left child of A");
-  b.show();
+  b.show({recursive:false});
+  bt.layout();
   ptr.target(b);
   av.step();
 
@@ -64,6 +62,7 @@ $(document).ready(function () {
   //Slide 5
   av.umsg("The next token 'D' is the right child of 'B' ");
   d.show();
+  bt.layout();
   ptr.target(d);
   cur.hide();
   var cur = av.g.rect(36, 338,13, 28);
@@ -90,7 +89,8 @@ $(document).ready(function () {
 
   //Slide 9
   av.umsg("The next character in the string represents A's right child 'C' ");
-  c.show();
+  c.show({recursive:false});
+  bt.layout();
   ptr.target(c);
   cur.hide();
   var cur = av.g.rect(68, 338,13, 28);
@@ -99,7 +99,8 @@ $(document).ready(function () {
 
   //Slide 10
   av.umsg("'E' must be C's left child");
-  e.show();
+  e.show({recursive:false});
+  bt.layout();
   ptr.target(e);
   cur.hide();
   var cur = av.g.rect(82, 338,13, 28);
@@ -108,7 +109,8 @@ $(document).ready(function () {
 
   //Slide 11
   av.umsg("The next character 'G' represents E's left child");
-  g.show();
+  g.show({recursive:false});
+  bt.layout();
   ptr.target(g);
   cur.hide();
   var cur = av.g.rect(97, 338,13, 28);
@@ -145,7 +147,8 @@ $(document).ready(function () {
 
   //Slide 17
   av.umsg("F represents C's right child");
-  f.show();
+  f.show({recursive:false});
+  bt.layout();
   ptr.target(f);
   cur.hide();
   var cur = av.g.rect(138, 338,13, 28);
@@ -154,7 +157,8 @@ $(document).ready(function () {
 
   //Slide 18
   av.umsg("H represents F's left child");
-  h.show();
+  h.show({recursive:false});
+  bt.layout();
   ptr.target(h);
   cur.hide();
   var cur = av.g.rect(152, 338,13, 28);
@@ -170,7 +174,8 @@ $(document).ready(function () {
 
   //Slide 20
   av.umsg("I must be the right child of F");
-  i.show();
+  i.show({recursive:false});
+  bt.layout();
   ptr.target(i);
   //point to I
   cur.hide();

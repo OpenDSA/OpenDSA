@@ -5,48 +5,76 @@ $(document).ready(function () {
   var av_name = "SequentialTreeAltCON";
   var av = new JSAV(av_name);
   var temp1;
-
+  var msg = av.label(" A' B' / D C' E' G / F' H I",{bottom: 50});
   var bt = av.ds.binarytree({visible: true, nodegap: 35});
   bt.root('A');
+  var cur = av.g.rect(0, 338, 15, 28);
   var a = bt.root();
-  bt.layout();
+  a.left('B');
+  var b = a.left();
+  var d = a.left().right('D');
+  var c = a.right('C');
+  var e = a.right().left('E');
+  var g = a.right().left().left('G');
+  var f = a.right().right('F');
+  var h = a.right().right().left('H');
+  var i = a.right().right().right('I');
 
-  var ptr = av.pointer("rt", a, {anchor: "middle top", top: -10});
+  b.hide();
+  d.hide();
+  c.hide({recursive:false});
+  e.hide({recursive:false});
+  g.hide({recursive:false});
+  f.hide({recursive:false});
+  h.hide({recursive:false});
+  i.hide({recursive:false});
+  av.umsg("The first character A' means A is an internal node, and is the root node");
+    bt.layout();
 
-  //Slide 1
-  av.umsg("We begin with the first node in the string 'A' which will be the root node");
+  var ptr = av.pointer("rt", bt.root(), {anchor: "center top", top: -10});
+
   av.displayInit();
 
+
+
+  //Slide 1
+
   //Slide 2
-  av.umsg("The next character in the serialized string represents A's left child");
+  av.umsg("B' is an internal node, and A's left child");
+  cur.hide();
+  var cur = av.g.rect(16, 338, 15, 28);
+
   av.step();
 
   //Slide 3
   av.umsg("We insert B as the left child of A");
-  a.left('B'); //<--- HERE IS THE LINE IN QUESTION
-  var b = a.left();
+  b.show({recursive:false});
   bt.layout();
   ptr.target(b);
   av.step();
 
   //Slide 4
-  av.umsg("The next character in the serialized string says B has no left child ('/') ");
+  av.umsg("The '/' implies the left child is null (B does not have a left child)");
+  cur.hide();
+  b.left('/').show();
+  bt.layout();
+  var cur = av.g.rect(31, 338,11, 28);
   av.step();
 
   //Slide 5
   av.umsg("The next token 'D' is the right child of 'B' ");
-  var d = a.left().right('D');
+  d.show();
   bt.layout();
   ptr.target(d);
+  cur.hide();
+  var cur = av.g.rect(42, 338,13, 28);
   //point to D
   av.step();
 
   //Slide 6
-  av.umsg("The two slashes imply D has no children and is a leaf node");
-  av.step();
-
-  //Slide 7
-  av.umsg("We pop back up to the parent of D");
+  cur.hide();
+  var cur = av.g.rect(57, 338,16, 28);
+  av.umsg("Since D was a leaf node, we know to pop back up to the parent of D");
   //point to B
   ptr.target(b);
   av.step();
@@ -59,7 +87,7 @@ $(document).ready(function () {
 
   //Slide 9
   av.umsg("The next character in the string represents A's right child 'C' ");
-  var c = a.right('C');
+  c.show({recursive:false});
   bt.layout();
   ptr.target(c);
   //point to C
@@ -67,76 +95,80 @@ $(document).ready(function () {
 
   //Slide 10
   av.umsg("'E' must be C's left child");
-  var e = a.right().left('E');
+  e.show({recursive:false});
   bt.layout();
   ptr.target(e);
+  cur.hide();
+  var cur = av.g.rect(74, 338,16, 28);
   //point to E
   av.step(); 
 
   //Slide 11
   av.umsg("The next character 'G' represents E's left child");
-  var g = a.right().left().left('G');
+  g.show({recursive:false});
   bt.layout();
   ptr.target(g);
+  cur.hide();
+  var cur = av.g.rect(92, 338,13, 28);
   //point to G
   av.step();
 
-  //Slide 12
-  av.umsg("Double slashes implies G has no children");
-  av.step();
-
-  //Slide 13
-  av.umsg("Pop back up to G's parent ('E') ");
+  //Slide 11
+  av.umsg("G is a leaf node so we pop back to E");
   ptr.target(e);
   //point to E
   av.step(); 
 
-  //Slide 14
-  av.umsg("The next character in the serialized string ('/') represents E's right child");
+  //Slide 12
+  av.umsg("The next character in the serialized string ('/') represents E's right child (null)");
+  cur.hide();
+  e.right('/').show();
+  bt.layout();
+  var cur = av.g.rect(104, 338,13, 28);
   av.step();
 
-  //Slide 15
-  av.umsg("It is a slash, so no right child for E");
-  av.step();  
-
-  //Slide 16
+  //Slide 13
   av.umsg("We pop back up to E's parent ('C') ");
   ptr.target(c);
   //point to C
   av.step();  
 
-  //Slide 17
+  //Slide 14
   av.umsg("F represents C's right child");
-  var f = a.right().right('F');
+  f.show({recursive:false});
   bt.layout();
   ptr.target(f);
+  cur.hide();
+  var cur = av.g.rect(116, 338,15, 28);
   //point to F
   av.step();
 
-  //Slide 18
+  //Slide 15
   av.umsg("H represents F's left child");
-  var h = a.right().right().left('H');
+  h.show({recursive:false});
   bt.layout();
   ptr.target(h);
+  cur.hide();
+  var cur = av.g.rect(132, 338,13, 28);
   //point to H
   av.step();
 
   //Slide 19
-  av.umsg("Double slash implies H is a leaf node with no children. Pop back up to F");
+  av.umsg("H is a leaf node, so pop back up to F");
   ptr.target(f);
   av.step();
 
   //Slide 20
   av.umsg("I must be the right child of F");
-  var i = a.right().right().right('I');
+  i.show({recursive:false});
   bt.layout();
   ptr.target(i);
   //point to I
+  cur.hide();
+  var cur = av.g.rect(146, 338,10, 28);
   av.step();
 
-  //Slide 21
-  av.umsg("Double slashes implies I is a leaf node with no children");
-  av.step();
+  av.umsg("I is a leaf node, and we have processed the entire string")
   av.recorded();
 
 });
