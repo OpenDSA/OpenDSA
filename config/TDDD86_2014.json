@@ -1371,9 +1371,9 @@
         "exercises": {
           "insertionSortWithoutSwapPRO": {
             "long_name": "Insertion Sort Without Swap Proficiency Exercise",
-            "required": false,
+            "required": true,
             "points": 1.0,
-            "threshold": 5
+            "threshold": 0.9
           }
         }
       },

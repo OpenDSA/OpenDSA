@@ -8,7 +8,10 @@
     "C++": ["cpp", "h"]
   },
   "lang": "en",
-  "module_origin": "http://127.0.0.1:8000",
+  "module_origin": "http://algoviz.org",
+  "exercise_server": "https://opendsa.cc.vt.edu/",
+  "logging_server": "https://opendsa.cc.vt.edu/",
+  "score_server": "https://opendsa.cc.vt.edu/",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
@@ -19,6 +22,41 @@
   },
   "chapters": {
     "File Processing": {
+      "Sorting/ExchangeSort": {
+        "long_name": "The Cost of Exchange Sorting",
+        "exercises": {
+          "FindInversionsPRO": {
+            "long_name": "Inversions Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          },
+          "ExchangeSumm": {
+            "long_name": "Exchange Sorting Summary Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "Sorting/SortOpt": {
+        "long_name": "Optimizing Sorts with Code Tuning",
+        "sections": {
+          "inssortnoswapex": {
+            "long_name": "Insertion Sort Exercise",
+            "showhide": "none",
+            "remove": false
+          }
+        },
+        "exercises": {
+          "insertionSortWithoutSwapPRO": {
+            "long_name": "Insertion Sort Without Swap Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.9
+          }
+        }
+      },
       "Development/FileProc": {
         "long_name": "File Processing Chapter Introduction",
         "exercises": {}
