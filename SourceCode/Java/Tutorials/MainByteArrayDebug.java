@@ -19,7 +19,6 @@ public class Main {
          loc += ind+" ";
       }
       System.out.println(loc);
-      System.out.println();
    }
 
 }

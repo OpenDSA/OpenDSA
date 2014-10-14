@@ -40,4 +40,4 @@ This code will parse through a command file, read in each command and each of
 their parameters (if the command has one). It is important to note, however,
 that this code is not necessarily safe. It assumes that the command file
 given is properly formatted, and as such if a user decides to give the program
-a malformed file the program will behavior in a possibly unknown way. 
+a malformed file the program will behave in a possibly unknown way.

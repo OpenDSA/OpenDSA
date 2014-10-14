@@ -71,7 +71,7 @@ Consider the following code.
 It spawns a 1000 byte array and then places 1 of
 27 characters chosen randomly in a position randomly chosen in one of the 1000
 places. Suppose you wanted to evaluate the contents of the memory, how would 
-you do this? Luckily Eclipse has the functionality that can do this. In the 
+you do this? Luckily Eclipse has the functionality that can do this. The 
 variable window (shown in Figure 1) will allow you to view the memory dump. 
 
 .. odsafig:: Images/DebugMemoryPool1.png
