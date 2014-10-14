@@ -91,8 +91,8 @@ it might be possible to keep the CPU continuously fed with data from
 the file.
 The same concept can also be applied to output, writing one sector to
 disk while the CPU is writing to a second output buffer in memory.
-Thus, in computers that support double buffering, it pays to have at
-least two input buffers and two output buffers available.
+Thus, in an operationg system that support double buffering, it pays
+to have at least two input buffers and two output buffers available.
 
 Caching information in memory is such a good idea that
 it is usually extended to multiple buffers.
@@ -123,7 +123,7 @@ information, that is, the information least likely to be requested
 again.
 Because the buffer pool cannot know for certain what the pattern of
 future requests will look like, a decision based on some
-\defit{heuristic}, or best guess, must be used.
+:term:`heuristic`, or best guess, must be used.
 There are several approaches to making this decision.
 
 One heuristic is :term:`first-in, first-out <FIFO>`.
@@ -194,8 +194,7 @@ the buffer's contents are modified by the client.
 At the time when the block is flushed from the buffer pool, it is
 written to disk if and only if the dirty bit has been turned on.
 
-Modern operating systems\index{operating system} support
-:term:`virtual memory`.
+Modern operating systems support :term:`virtual memory`.
 Virtual memory is a technique that allows the programmer to write
 programs as though there is more of the faster main memory (such as
 RAM) than actually exists.
