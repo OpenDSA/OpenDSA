@@ -30,7 +30,6 @@ function runit() {
 
 function preVisit(node, prev) {
   jsav.umsg("Add " + node.value() + " to the stack ");
-  arr.css({"left": "600px", "bottom": "500px", "width": "30px"});
   arr.value(size, node.value());
   size--;
   if (prev) {

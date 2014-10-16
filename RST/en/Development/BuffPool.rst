@@ -426,4 +426,5 @@ This is in contrast to the :ref:`memory manager <MemmanIntro>`, in
 which the user passes a record to the manager and has no control at
 all over where the record is stored.
 
+.. odsascript:: AV/Development/buffpoolS1CON.js
 .. odsascript:: AV/Development/buffpoolCON.js
