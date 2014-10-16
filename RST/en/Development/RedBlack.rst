@@ -12,6 +12,6 @@
 The Red-Black Tree
 ==================
 
-.. avembed:: AV/Development/red-black-tree-coloring.html ss
+.. avembed:: AV/Development/redBlackTreeColoring.html ss
 
-.. avembed:: AV/Development/red-black-tree-proficiency.html pe
+.. avembed:: AV/Development/redBlackTreePRO.html pe
