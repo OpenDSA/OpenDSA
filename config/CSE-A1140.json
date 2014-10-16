@@ -1344,7 +1344,14 @@
       },
       "Development/RedBlack": {
         "long_name": "The Red-Black Tree",
-        "exercises": {}
+        "exercises": {
+          "redBlackTreePRO": {
+            "long_name": "Red-Black Tree Proficiency"
+          },
+          "redBlackTreeColoring": {
+            "long_name": "Red-Black Tree Coloring Exercises"
+          }
+        }
       },
       "Development/IndexIntro": {
         "long_name": "External Searching",
