@@ -155,8 +155,7 @@
             },
             "required": true,
             "points": 1.0,
-            "threshold": 1.0,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/466/"
+            "threshold": 1.0
           },
           "AnalProgramSumm": {
             "long_name": "Program Code Analysis",
@@ -678,8 +677,7 @@
             "long_name": "Insertion Sort Proficiency",
             "required": true,
             "points": 1,
-            "threshold": 5,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/484/"
+            "threshold": 5
           },
           "InssortSumm": {
             "long_name": "Insertion Sort Summary",
@@ -751,8 +749,7 @@
             "long_name": "Selection Sort Proficiency",
             "required": true,
             "points": 1,
-            "threshold": 5,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/485/"
+            "threshold": 5
           },
           "SelsortSumm": {
             "long_name": "Selection Sort Summary",
@@ -788,8 +785,7 @@
             "required": true,
             "points": 1.0,
             "remove": false,
-            "threshold": 5,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/484/"
+            "threshold": 5
           }
         }
       },
@@ -900,8 +896,7 @@
             "long_name": "Mergesort Proficiency",
             "required": true,
             "points": 1,
-            "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/486/"
+            "threshold": 0.9
           }
         }
       },
@@ -960,8 +955,7 @@
             "long_name": "Quicksort Proficiency Exercise",
             "required": true,
             "points": 1,
-            "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/457/"
+            "threshold": 0.9
           },
           "QuicksortSumm": {
             "long_name": "Quicksort Summary",
@@ -990,8 +984,7 @@
             "long_name": "Heapsort Proficiency Exercise",
             "required": true,
             "points": 1,
-            "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/513/"
+            "threshold": 0.9
           },
           "HeapsortSumm": {
             "long_name": "Heapsort Summary Exercise",
@@ -1081,46 +1074,6 @@
             "threshold": 10
           }
         }
-      },
-      "Development/SortProgExer.rst": {
-        "long_name": "Sorting Chapter Programming Exercises",
-        "exercises": {}
-      }
-    },
-    "Design Patterns": {
-      "Design/DesignPatterns": {
-        "long_name": "Design Patterns",
-        "exercises": {}
-      },
-      "Design/DesignAltList": {
-        "long_name": "Alternate List ADT Design",
-        "exercises": {}
-      },
-      "Design/Comparison": {
-        "long_name": "Comparing Records",
-        "exercises": {
-          "CompareSumm": {
-            "long_name": "Record Comparison Summary",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          }
-        }
-      },
-      "Design/Dictionary": {
-        "long_name": "The Dictionary ADT",
-        "exercises": {}
-      },
-      "Design/DesignSumm": {
-        "long_name": "The Dictionary ADT",
-        "exercises": {
-          "DesignSumm": {
-            "long_name": "Design Summary",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          }
-        }
       }
     },
     "Binary Trees": {
@@ -1156,22 +1109,19 @@
             "long_name": "Binary Tree Inorder Traversal Exercise",
             "required": true,
             "points": 1.0,
-            "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/499/"
+            "threshold": 0.9
           },
           "btTravPreorderPRO": {
             "long_name": "Binary Tree Preorder Traversal Exercise",
             "required": true,
             "points": 1.0,
-            "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/496/"
+            "threshold": 0.9
           },
           "btTravPostorderPRO": {
             "long_name": "Binary Tree Postorder Traversal Exercise",
             "required": true,
             "points": 1.0,
-            "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/497/"
+            "threshold": 0.9
           }
         }
       },
@@ -1207,8 +1157,7 @@
             "long_name": "BST Search Proficiency Exercise",
             "required": true,
             "points": 1.0,
-            "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/500/"
+            "threshold": 0.9
           },
           "BSTinsertCON": {
             "long_name": "BST Insert Slideshow",
@@ -1220,8 +1169,7 @@
             "long_name": "BST Insert Proficiency Exercise",
             "required": true,
             "points": 1.0,
-            "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/501/"
+            "threshold": 0.9
           },
           "BSTdeletemaxCON": {
             "long_name": "BST deletemax Slideshow",
@@ -1239,8 +1187,7 @@
             "long_name": "BST Remove Proficiency Exercise",
             "required": true,
             "points": 2.0,
-            "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/502/"
+            "threshold": 0.9
           }
         }
       },
@@ -1265,8 +1212,7 @@
             "long_name": "Heap Insert Proficiency Exercise",
             "required": true,
             "points": 2.0,
-            "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/490/"
+            "threshold": 0.9
           },
           "heapbuildCON": {
             "long_name": "Heapbuild Slideshow",
@@ -1278,8 +1224,7 @@
             "long_name": "Heap Build Proficiency Exercise",
             "required": true,
             "points": 1.0,
-            "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/489/"
+            "threshold": 0.9
           },
           "heapbuildProofCON": {
             "long_name": "Heap build analysis proof Slideshow",
@@ -1304,8 +1249,7 @@
             "long_name": "Heap Remove Exercise",
             "required": true,
             "points": 2.0,
-            "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/491/"
+            "threshold": 0.9
           },
           "heapremoveCON": {
             "long_name": "Remove Any Slideshow",
@@ -1320,32 +1264,6 @@
             "threshold": 3
           }
         }
-      },
-      "Development/Bintree": {
-        "long_name": "Bintrees",
-        "exercises": {}
-      },
-      "Development/Huffman": {
-        "long_name": "Huffman Coding Trees",
-        "exercises": {
-          "huffmanCON1": {
-            "long_name": "Huffman Coding Tree Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "HuffmanCoding": {
-            "long_name": "Huffman Coding Tree Visualization",
-            "required": true,
-            "points": 0.0,
-            "showhide": "show",
-            "threshold": 1.0
-          }
-        }
-      },
-      "Development/HuffProof": {
-        "long_name": "Proof for Huffman Coding",
-        "exercises": {}
       }
     },
     "GeneralTrees": {
@@ -1718,90 +1636,6 @@
             "threshold": 10
           }
         }
-      },
-      "Development/PerfectHash": {
-        "long_name": "Perfect Hashing",
-        "exercises": {
-          "perfectHashAV": {
-            "long_name": "Perfect Hashing Visualization",
-            "required": false,
-            "showhide": "none",
-            "points": 0,
-            "threshold": 1.0
-          }
-        }
-      }
-    },
-    "Memory Management": {
-      "Development/MemmanIntro": {
-        "long_name": "Chapter Introduction: Memory Management",
-        "exercises": {}
-      },
-      "Development/Dynamic": {
-        "long_name": "Dynamic Memory Allocation",
-        "exercises": {}
-      },
-      "Development/SequentialFit": {
-        "long_name": "Sequential-Fit Methods",
-        "exercises": {}
-      },
-      "Development/FirstFit": {
-        "long_name": "First Fit",
-        "exercises": {}
-      },
-      "Development/CircularFit": {
-        "long_name": "Circular First Fit",
-        "exercises": {}
-      },
-      "Development/BestFit": {
-        "long_name": "Best Fit",
-        "exercises": {}
-      },
-      "Development/WorstFit": {
-        "long_name": "Worst Fit",
-        "exercises": {}
-      },
-      "Development/MMPerformance": {
-        "long_name": "Sequential-Fit Performance",
-        "exercises": {}
-      },
-      "Development/MMPerformance2": {
-        "long_name": "Sequential-Fit Performance 2",
-        "exercises": {}
-      },
-      "Development/Buddy": {
-        "long_name": "Other Memory Allocation Methods",
-        "exercises": {}
-      },
-      "Development/Garbage": {
-        "long_name": "Failure Policies and Garbage Collection",
-        "exercises": {}
-      }
-    },
-    "File Processing": {
-      "Development/FileProc": {
-        "long_name": "File Processing Chapter Introduction",
-        "exercises": {}
-      },
-      "Development/Secondary": {
-        "long_name": "Primary versus Secondary Storage",
-        "exercises": {}
-      },
-      "Development/Diskdrive": {
-        "long_name": "Disk Drives",
-        "exercises": {}
-      },
-      "Development/BuffPool": {
-        "long_name": "Buffer Pools",
-        "exercises": {}
-      },
-      "Development/FileProg": {
-        "long_name": "Programmer's View of Files",
-        "exercises": {}
-      },
-      "Development/ExternalSort": {
-        "long_name": "External Sorting",
-        "exercises": {}
       }
     },
     "Graphs": {
@@ -1868,140 +1702,6 @@
     "Algorithms": {
       "Development/DynamicProgramming": {
         "long_name": "Dynamic Programming",
-        "exercises": {}
-      },
-      "Development/Knapsack": {
-        "exercises": {
-          "sackCallTree": {
-            "long_name": "Knapsack Call Tree",
-            "required": true,
-            "points": 0.1,
-            "threshold": 1.0
-          },
-          "sackTreePluck": {
-            "long_name": "Knapsack Call Tree Pluck",
-            "required": true,
-            "points": 0.1,
-            "threshold": 1.0
-          },
-          "sackTraceBack": {
-            "long_name": "Knapsack Tree Reduction",
-            "required": true,
-            "points": 0.1,
-            "threshold": 1.0
-          },
-          "knapsackSelect": {
-            "long_name": "Knapsack Select",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          },
-          "knapsackFillRow": {
-            "long_name": "Knapsack Fill Row",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          },
-          "knapsackSolution": {
-            "long_name": "Knapsack Solution",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          },
-          "sackProficiency": {
-            "long_name": "Knapsack Proficiency",
-            "required": true,
-            "points": 1,
-            "threshold": 0.9
-          }
-        }
-      },
-      "Development/EditDistance": {
-        "exercises": {
-          "editRCT": {
-            "long_name": "Edit RCT",
-            "required": true,
-            "points": 1,
-            "threshold": 0.9
-          },
-          "editPrune": {
-            "long_name": "Edit Prune",
-            "required": true,
-            "points": 1,
-            "threshold": 0.9
-          },
-          "editOptimal": {
-            "long_name": "Edit Optimal",
-            "required": true,
-            "points": 1,
-            "threshold": 0.9
-          },
-          "edit-KA1": {
-            "long_name": "Edit KA1",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          },
-          "edit-KA2": {
-            "long_name": "Edit KA2",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          }
-        }
-      },
-      "Development/StringSearchKMP": {
-        "long_name": "KMP String Search Algorithm",
-        "exercises": {}
-      },
-      "Development/StringSearchBoyerMoore": {
-        "long_name": "Boyer-Moore String Search Algorithm",
-        "exercises": {}
-      },
-      "Development/StringSearchRabinKarp": {
-        "long_name": "Rabin-Karp String Search Algorithm",
-        "exercises": {}
-      },
-      "Development/RandomIntro": {
-        "long_name": "Introduction to Randomized Algorithms",
-        "exercises": {}
-      },
-      "Development/SkipList": {
-        "long_name": "Skip Lists",
-        "exercises": {}
-      },
-      "Development/RandomNums": {
-        "long_name": "Random Numbers",
-        "exercises": {}
-      }
-    },
-    "Lower Bounds": {
-      "Development/BoundLower": {
-        "long_name": "Introduction to Lower Bounds",
-        "exercises": {}
-      },
-      "Development/BoundSearch": {
-        "long_name": "Lower Bounds on Search",
-        "exercises": {}
-      },
-      "Development/BoundMax": {
-        "long_name": "Lower Bounds on Search",
-        "exercises": {}
-      },
-      "Development/BoundAdversary": {
-        "long_name": "Adversary Lower Bounds",
-        "exercises": {}
-      },
-      "Development/BoundState": {
-        "long_name": "State Space Lower Bounds",
-        "exercises": {}
-      },
-      "Development/BoundiBest": {
-        "long_name": "Finding ith Best Element",
-        "exercises": {}
-      },
-      "Development/SortingOptimal": {
-        "long_name": "Optimal Sorting",
         "exercises": {}
       }
     },
