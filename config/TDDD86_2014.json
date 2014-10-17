@@ -196,7 +196,7 @@
           "ListADTPROG": {
             "long_name": "List ADT Exercise",
             "required": true,
-            "points": 1.0,
+            "points": 0.0,
             "threshold": 3
           }
         }
