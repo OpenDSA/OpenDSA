@@ -42,6 +42,10 @@
       "Tutorials/scanning": {
         "long_name": "Reading In Input",
         "exercises": {}
+      },
+      "Tutorials/webcattools": {
+        "long_name": "Configuring Eclipse For Virginia Tech",
+        "exercises": {}
       }
     }
   }

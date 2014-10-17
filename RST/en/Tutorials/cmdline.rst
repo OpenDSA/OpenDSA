@@ -28,54 +28,49 @@ the command must be located in your PATH
 2. When you execute a command, you often will need to provide additional
 information. These are called arguments.
 
-+------------------+-------------------------------------------------------+
-| Common Arguments | Meanings                                              |
-+==================+=======================================================+
-|     -h           | displays help information                             |
-+------------------+-------------------------------------------------------+
-|     -v           | increases information output, v is for verbosity      |
-+------------------+-------------------------------------------------------+
+   +------------------+------------------------------------------------------------------------------------------------+
+   | Common Arguments | Meanings                                                                                       |
+   +==================+================================================================================================+
+   |     -h           | displays help information                                                                      |
+   +------------------+------------------------------------------------------------------------------------------------+
+   |     -v           | increases information output, v is for verbosity, or in some cases displays version information|
+   +------------------+------------------------------------------------------------------------------------------------+
 
+|
 .. odsafig:: Images/hexample.png
    :width: 500
    :align: center
    :capalign: justify
    :figwidth: 90%
-   :alt: Image 1
+   :alt: -h is commonly called the help switch. It displays basic help informatio
 
-   Image 1
+   The -h switch is often used to display basic help information
 
-
-.. odsafig:: Images/vexample.png
-   :width: 500
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Image 2
-
-   Image 2
 
 3. If you can not get enough information from the -h argument you can make use
 of the man command. The man command brings up the man page for information and
-is a more in depth explanation of the command.
+is a more in depth explanation of the command. Below is an example of running
+
+::
+
+   man ls
+
 
 .. odsafig:: Images/manexample.png
    :width: 500
    :align: center
    :capalign: justify
    :figwidth: 90%
-   :alt: Image 3
+   :alt: An example of the man command
 
-   Image 3
+   The man command is extremely useful for learning about the syntax/usage of a command
 
 *\*Author's Note: The man command should be available in any GNU-style terminal.
 If you are using Windows the native Command Prompt does not have a man command.*
 
 |
-|
-|
 
 Give the terminal a try
 =======================
 
-.. avembed:: AV/Tutorials/terminal.html ss
+.. avembed:: AV/Tutorials/terminal.html ka
