@@ -1103,7 +1103,7 @@
             "long_name": "Insertion Sort Without Swap Proficiency Exercise",
             "required": false,
             "points": 1.0,
-            "threshold": 5
+            "threshold": 0.9
           }
         }
       },
@@ -1456,20 +1456,20 @@
       },
       "Development/BuffPool": {
         "long_name": "Buffer Pools",
+        "sections": {
+          "BPextra": {
+            "long_name": "Buffer Pool Extra Material",
+            "showhide": "none",
+            "remove": true
+          }
+        },
         "exercises": {
-         "buffpoolS1CON": {
-            "long_name": "Buffer Pool Slideshow 1",
+         "LRUCON": {
+            "long_name": "LRU Replacement Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-         "buffpoolS2CON": {
-            "long_name": "Buffer Pool Slideshow 2",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "buffpoolS3CON": {},
           "BufferPoolAV": {
             "long_name": "Buffer Pool Visualization",
             "required": false,
@@ -1479,9 +1479,9 @@
           },
           "bufferpoolPRO": {
             "long_name": "Buffer Pool Proficiency Exercise",
-            "required": true,
+            "required": false,
             "points": 1.0,
-            "threshold": 1.0
+            "threshold": 0.9
           }
         }
       },

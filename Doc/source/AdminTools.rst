@@ -27,6 +27,15 @@ Select ``Books``, and click on the url of the OpenDSA book instance
 you want to associate to the course.
 In the book's form, select the appropriate course.
 
+Granting Instructor Access
+--------------------------
+
+To give instructor access to an existing account, from the django
+administration page
+go to "Course" to display the list of available courses,
+then click on the course ID to edit course settings.
+
+
 Register a Book Instance
 ------------------------
 

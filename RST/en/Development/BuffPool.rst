@@ -208,22 +208,20 @@ The advantage is reduced programmer effort because a good virtual memory
 system provides the appearance of larger main memory without
 modifying the program.
 
-.. inlineav:: buffpoolS1CON ss
+.. inlineav:: LRUCON ss
    :align: center
    :output: show
 
-.. inlineav:: buffpoolS2CON ss
-   :align: center
-   :output: show
+.. showhidecontent:: BPextra
 
-Here is a visualization to let you experiment with the various buffer
-pool replacement strategies.
+   Here is a visualization to let you experiment with the various buffer
+   pool replacement strategies.
 
-.. avembed:: AV/Development/BufferPoolAV.html ss
+   .. avembed:: AV/Development/BufferPoolAV.html ss
 
-Here is an exercise to help you practice.
+   Here is an exercise to help you practice.
 
-.. avembed:: AV/Development/bufferpoolPRO.html pe
+   .. avembed:: AV/Development/bufferpoolPRO.html pe
 
 When implementing buffer pools, there are two basic approaches that can 
 be taken regarding the transfer of information between the user of the 
@@ -248,28 +246,15 @@ position in some buffer in the buffer pool.
 This ADT is similar to the ``read`` and ``write`` methods of the
 :ref:`RandomAccessFile <FileProg>` class of Java.
 
-.. _buffdgm:
-
-.. inlineav:: buffpoolS3CON dgm
-   :align: center
-
-   Example configuration for bufferpool.
-
 .. _ExampleBuffer:
 
 .. topic:: Example
 
    Assume each sector of the disk file (and thus each block in the
    buffer pool) stores 1024 bytes.
-   Assume that the buffer pool is in the state shown in
-   Figure :num:`Figure #buffdgm`.
    If the next request is to copy 40 bytes beginning at position 6000 of
    the file, these bytes should be placed into Sector 5 (whose bytes go
    from position 5120 to position 6143).
-   Because Sector 5 is currently in the buffer pool, we simply copy the 40
-   bytes contained in ``space`` to byte positions 880-919.
-   The buffer containing Sector 5 is then moved to the buffer pool ahead
-   of the buffer containing Sector 1.
 
 An alternative interface is to have the buffer pool provide to the
 user a direct pointer to a buffer that contains the requested
@@ -296,8 +281,6 @@ out.
 
    We wish to write 40 bytes beginning at logical position 6000 in
    the file.
-   Assume that the buffer pool is in the state shown in
-   Figure :num:`Figure #buffdgm`.
    Using the second ADT, the client would need to know that blocks
    (buffers) are of size 1024, and therefore would request access to
    Sector 5.
@@ -426,5 +409,4 @@ This is in contrast to the :ref:`memory manager <MemmanIntro>`, in
 which the user passes a record to the manager and has no control at
 all over where the record is stored.
 
-.. odsascript:: AV/Development/buffpoolS1CON.js
-.. odsascript:: AV/Development/buffpoolCON.js
+.. odsascript:: AV/Development/LRUCON.js

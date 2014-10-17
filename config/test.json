@@ -8,10 +8,7 @@
     "C++": ["cpp", "h"]
   },
   "lang": "en",
-  "module_origin": "http://algoviz.org",
-  "exercise_server": "https://opendsa.cc.vt.edu/",
-  "logging_server": "https://opendsa.cc.vt.edu/",
-  "score_server": "https://opendsa.cc.vt.edu/",
+  "module_origin": "http://127.0.0.1:8000",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
@@ -71,20 +68,20 @@
       },
       "Development/BuffPool": {
         "long_name": "Buffer Pools",
+        "sections": {
+          "BPextra": {
+            "long_name": "Buffer Pool Extra Material",
+            "showhide": "none",
+            "remove": true
+          }
+        },
         "exercises": {
-         "buffpoolS1CON": {
-            "long_name": "Buffer Pool Slideshow 1",
+         "LRUCON": {
+            "long_name": "LRU Replacement Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-         "buffpoolS2CON": {
-            "long_name": "Buffer Pool Slideshow 2",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "buffpoolS3CON": {},
           "BufferPoolAV": {
             "long_name": "Buffer Pool Visualization",
             "required": false,
@@ -94,9 +91,9 @@
           },
           "bufferpoolPRO": {
             "long_name": "Buffer Pool Proficiency Exercise",
-            "required": true,
+            "required": false,
             "points": 1.0,
-            "threshold": 1.0
+            "threshold": 0.9
           }
         }
       },
