@@ -91,6 +91,10 @@ def update_mod_html(file_path, data, prefix):
         new_link_text = '%s.' % data[link_mod][1] + link_text
         html[line_num] = line.replace(link_text, new_link_text)
 
+      if link_mod in ['RegisterBook']:
+        html[line_num] = line.replace(link_text, "")
+
+
     if '&lt;anchor-text&gt;' in line:
       line_args = re.split('&lt;anchor-text&gt;|&lt;/anchor-text&gt;', line)
       texts = re.split(':', line_args[1])
