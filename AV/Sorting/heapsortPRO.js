@@ -17,8 +17,6 @@ $(document).ready(function () {
       bh.clear();
     }
     initData = JSAV.utils.rand.numKeys(10, 100, nodeNum);
-    initData[9] = 9;
-    initData[8] = 9;
 
     // Log the initial state of the exercise
     var exInitData = {};
