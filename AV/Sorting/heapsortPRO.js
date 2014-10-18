@@ -17,6 +17,8 @@ $(document).ready(function () {
       bh.clear();
     }
     initData = JSAV.utils.rand.numKeys(10, 100, nodeNum);
+    initData[9] = 9;
+    initData[8] = 9;
 
     // Log the initial state of the exercise
     var exInitData = {};
@@ -109,6 +111,7 @@ $(document).ready(function () {
   $("#decrement").click(function () {
     if (bh.heapsize() === 0) {
       alert("Heapsize is already zero, cannot decrement!");
+      exercise.gradeableStep();
       return;
     }
     bh.heapsize(bh.heapsize() - 1);

@@ -1390,7 +1390,7 @@
             "long_name": "Radix Sort Proficiency Exercise",
             "required": true,
             "points": 2.0,
-            "threshold": 5
+            "threshold": 4
           },
           "radixArrayAV": {
             "long_name": "Radix Sort Array Visualization",
