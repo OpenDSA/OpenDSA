@@ -26,18 +26,52 @@ look at the input file
 `here <http://courses.cs.vt.edu/~cs3114/Fall13/watcherP4.txt>`__.
 
 1. debug - prints information about the tree in the program
+
 2. search - searches a region based off coordinates given
+
 3. add - adds a node at the coordinates given
+
 4. delete - deletes a node at the specific point
 
 *\*Every command except debug takes additional parameters*\*
 
 Consider the following code snippet.
 
-.. codeinclude:: Java/Tutorials/MainScanner.java
+.. codeinclude:: Java/Tutorials/ScannerPt1.java
 
 This code will parse through a command file, read in each command and each of
 their parameters (if the command has one). It is important to note, however,
 that this code is not necessarily safe. It assumes that the command file
 given is properly formatted, and as such if a user decides to give the program
 a malformed file the program will behave in a possibly unknown way.
+
+
+Depending on the structure of your file you may not wish to simply do the token
+method. Another approach would be to read in an entire line and then work from
+there. Consider the input file found
+`here <http://courses.cs.vt.edu/~cs3114/Fall14/P1sampleInput.txt>`__.
+We now have 3 commands we must support.
+
+1. insert {artist-name}<SEP>{song-name} - inserts a song using the information
+provided in the fields
+
+2. remove {artist|song} {name} - removes a song given a song name or artist name
+
+3. print {artist|song|blocks} - depending on the parameter value, you will print
+out either a complete listing of the artists contained in the database, or the
+songs, or else the free block list for the memory manager
+
+So this time we have less commands to support, but more options for each command
+, no worries! We simply need to change our code just a little bit. We see this
+time that the insert command has no spacing between artist/song tokens rather it
+uses the seperator <SEP>.
+
+.. codeinclude:: Java/Tutorials/ScannerPt2.java
+
+In many ways it presents a similar challenge as the first, however as our
+information could possibly include spaces it makes using a default scanner
+somewhat problematic. In particular seperating artists and song name on the same
+line can prove to be rather difficult due to the fact that either bit of
+information may include a space or other traditional deliminator. By seperating
+these fields using <SEP> we drastically reduce the possibilty of a valid name
+containing the delimeter.

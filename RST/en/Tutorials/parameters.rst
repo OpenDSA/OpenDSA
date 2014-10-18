@@ -21,14 +21,10 @@ documented. The first thing needed is a function you can designate as the Main
 function. Consider this the "launch" function. Usually the "main" function is 
 named Main and takes an array of strings as its parameter (see below).
 
-.. odsafig:: Images/mainskeleton.png
-   :width: 500
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Image 1
+::
 
-   Image 1
+   public static void main(String[] args)
+
 
 So when you launch the command from the terminal it passes in an array of all 
 the additional information (and it usually trims white space). So if I run
@@ -38,9 +34,8 @@ the additional information (and it usually trims white space). So if I run
    :align: center
    :capalign: justify
    :figwidth: 90%
-   :alt: Image 2
+   :alt: ls with paramaters 
 
-   Image 2
 
 I receive an array containing
 
@@ -50,8 +45,12 @@ I receive an array containing
 
 *\*Authors Note: I am stating this as if this is a Java terminal and not C 
 style. In C the first parameter you are given is always the command name so 
-your array in C would be {"ls", "-l", "file.txt"}. Java however, removes the 
-command name and only provides parameters.*
+your array in C would be* 
+
+::
+
+{"ls", "-l", "file.txt"}
+*Java however, removes the command name and only provides parameters.*
 
 I have created a main function skeleton for you to use in your projects. It is 
 set up simply and makes use of switch cases. You can download it 

@@ -97,3 +97,8 @@ Using JSAV within the Khan Academy Framework
      <style>
        .jsavcanvas { height: 470px;}
      </style>
+
+* Do not include ``"use strict";`` in the JavaScript for exercises
+  that you want to include in summary exercises. This breaks for some
+  reason.
+
