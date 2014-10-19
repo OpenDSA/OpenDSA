@@ -173,6 +173,10 @@ method of choice for managing buffer pools unless
 special knowledge about information access patterns for an application
 suggests a special-purpose buffer management scheme.
 
+.. inlineav:: LRUCON ss
+   :align: center
+   :output: show
+
 The main purpose of a buffer pool is to minimize disk I/O.
 When the contents of a block are modified, we could write the updated
 information to disk immediately.
@@ -194,6 +198,10 @@ the buffer's contents are modified by the client.
 At the time when the block is flushed from the buffer pool, it is
 written to disk if and only if the dirty bit has been turned on.
 
+.. inlineav:: LRUwriteCON ss
+   :align: center
+   :output: show
+
 Modern operating systems support :term:`virtual memory`.
 Virtual memory is a technique that allows the programmer to write
 programs as though there is more of the faster main memory (such as
@@ -207,10 +215,6 @@ programs whose data are stored completely in main memory.
 The advantage is reduced programmer effort because a good virtual memory
 system provides the appearance of larger main memory without
 modifying the program.
-
-.. inlineav:: LRUCON ss
-   :align: center
-   :output: show
 
 .. showhidecontent:: BPextra
 
@@ -410,3 +414,4 @@ which the user passes a record to the manager and has no control at
 all over where the record is stored.
 
 .. odsascript:: AV/Development/LRUCON.js
+.. odsascript:: AV/Development/LRUwriteCON.js

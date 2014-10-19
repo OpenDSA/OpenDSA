@@ -107,13 +107,10 @@ $(document).ready(function () {
   $("#help").click(help);
   $("#about").click(about);
   $("#decrement").click(function () {
-    if (bh.heapsize() === 0) {
-      alert("Heapsize is already zero, cannot decrement!");
-      exercise.gradeableStep();
-      return;
+    if (bh.heapsize() !== 0) {
+      bh.heapsize(bh.heapsize() - 1);
+      bh.addClass(bh.heapsize(), "unused");
     }
-    bh.heapsize(bh.heapsize() - 1);
-    bh.addClass(bh.heapsize(), "unused");
     exercise.gradeableStep();
   });
 

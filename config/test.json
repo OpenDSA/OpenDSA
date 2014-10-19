@@ -82,6 +82,12 @@
             "points": 0.0,
             "threshold": 1.0
           },
+         "LRUwriteCON": {
+            "long_name": "LRU Replacement with write Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "BufferPoolAV": {
             "long_name": "Buffer Pool Visualization",
             "required": false,
