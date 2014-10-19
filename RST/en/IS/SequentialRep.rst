@@ -195,6 +195,9 @@ a leaf node.
 
       11001100100
 
+.. inlineav:: SequentialTreeBitVectorCON ss
+   :output: show
+
 Storing general trees by means of a sequential implementation requires
 that more explicit structural information be included with the node
 list.
@@ -239,4 +242,6 @@ Figure :num:`Figure #BinExampb` is the left or right child of node
 
 .. odsascript:: AV/Development/SequentialTreeCON.js
 .. odsascript:: AV/Development/SequentialTreeAltCON.js
+.. odsascript:: AV/Development/SequentialTreeBitVectorCON.js
+
 
