@@ -5,10 +5,10 @@ $(document).ready(function () {
   var av_name = "SequentialTreeCON";
   var av = new JSAV(av_name);
   var temp1;
-  var msg = av.label(" A B / D / / C E G / / / F H / / I / /",{bottom: 50});
+  var arr = av.ds.array(['A','B','/','D','/','/','C','E','G','/','/','/','F','H','/','/','I','/','/']);
+  arr.highlight(0);
   var bt = av.ds.binarytree({visible: true, nodegap: 35});
   bt.root('A');
-  var cur = av.g.rect(0, 338, 13, 28);
   var a = bt.root();
   a.left('B');
   var b = a.left();
@@ -41,9 +41,7 @@ $(document).ready(function () {
 
   //Slide 2
   av.umsg("The next character in the serialized string represents A's left child");
-  cur.hide();
-  var cur = av.g.rect(14, 338, 13, 28);
-
+  arr.highlight(1);
   av.step();
 
   //Slide 3
@@ -55,8 +53,7 @@ $(document).ready(function () {
 
   //Slide 4
   av.umsg("The next character in the serialized string says B has no left child ('/') ");
-  cur.hide();
-  var cur = av.g.rect(24, 338,13, 28);
+  arr.highlight(2);
   av.step();
 
   //Slide 5
@@ -64,14 +61,13 @@ $(document).ready(function () {
   d.show();
   bt.layout();
   ptr.target(d);
-  cur.hide();
-  var cur = av.g.rect(36, 338,13, 28);
+  arr.highlight(3);
   //point to D
   av.step();
 
   //Slide 6
-  cur.hide();
-  var cur = av.g.rect(49, 338,18, 28);
+  arr.highlight(4);
+  arr.highlight(5);
   av.umsg("The two slashes imply D has no children and is a leaf node");
   av.step();
 
@@ -92,8 +88,7 @@ $(document).ready(function () {
   c.show({recursive:false});
   bt.layout();
   ptr.target(c);
-  cur.hide();
-  var cur = av.g.rect(68, 338,13, 28);
+  arr.highlight(6);
   //point to C
   av.step();
 
@@ -102,8 +97,7 @@ $(document).ready(function () {
   e.show({recursive:false});
   bt.layout();
   ptr.target(e);
-  cur.hide();
-  var cur = av.g.rect(82, 338,13, 28);
+  arr.highlight(7);
   //point to E
   av.step(); 
 
@@ -112,15 +106,14 @@ $(document).ready(function () {
   g.show({recursive:false});
   bt.layout();
   ptr.target(g);
-  cur.hide();
-  var cur = av.g.rect(97, 338,13, 28);
+  arr.highlight(8);
   //point to G
   av.step();
 
   //Slide 12
   av.umsg("Double slashes implies G has no children");
-  cur.hide();
-  var cur = av.g.rect(112, 338,17, 28);
+  arr.highlight(9);
+  arr.highlight(10);
   av.step();
 
   //Slide 13
@@ -131,8 +124,7 @@ $(document).ready(function () {
 
   //Slide 14
   av.umsg("The next character in the serialized string ('/') represents E's right child");
-  cur.hide();
-  var cur = av.g.rect(126, 338,13, 28);
+  arr.highlight(11);
   av.step();
 
   //Slide 15
@@ -150,8 +142,7 @@ $(document).ready(function () {
   f.show({recursive:false});
   bt.layout();
   ptr.target(f);
-  cur.hide();
-  var cur = av.g.rect(138, 338,13, 28);
+  arr.highlight(12);
   //point to F
   av.step();
 
@@ -160,16 +151,15 @@ $(document).ready(function () {
   h.show({recursive:false});
   bt.layout();
   ptr.target(h);
-  cur.hide();
-  var cur = av.g.rect(152, 338,13, 28);
+  arr.highlight(13);
   //point to H
   av.step();
 
   //Slide 19
   av.umsg("Double slash implies H is a leaf node with no children. Pop back up to F");
   ptr.target(f);
-  cur.hide();
-  var cur = av.g.rect(165, 338,17, 28);
+  arr.highlight(14);
+  arr.highlight(15);
   av.step();
 
   //Slide 20
@@ -178,14 +168,13 @@ $(document).ready(function () {
   bt.layout();
   ptr.target(i);
   //point to I
-  cur.hide();
-  var cur = av.g.rect(181, 338,11, 28);
+  arr.highlight(16);
   av.step();
 
   //Slide 21
   av.umsg("Double slashes implies I is a leaf node with no children");
-  cur.hide();
-  var cur = av.g.rect(191, 338,17, 28);
+  arr.highlight(17);
+  arr.highlight(18);
   av.step();
   av.recorded();
 

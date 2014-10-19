@@ -5,10 +5,10 @@ $(document).ready(function () {
   var av_name = "SequentialTreeAltCON";
   var av = new JSAV(av_name);
   var temp1;
-  var msg = av.label(" A' B' / D C' E' G / F' H I",{bottom: 50});
+  var arr = av.ds.array(['A\'','B\'','/','D','C\'','E\'','G','/','F\'','H','I']);
+  arr.highlight(0);
   var bt = av.ds.binarytree({visible: true, nodegap: 35});
   bt.root('A');
-  var cur = av.g.rect(0, 338, 15, 28);
   var a = bt.root();
   a.left('B');
   var b = a.left();
@@ -41,9 +41,7 @@ $(document).ready(function () {
 
   //Slide 2
   av.umsg("B' is an internal node, and A's left child");
-  cur.hide();
-  var cur = av.g.rect(16, 338, 15, 28);
-
+  arr.highlight(1);
   av.step();
 
   //Slide 3
@@ -55,10 +53,9 @@ $(document).ready(function () {
 
   //Slide 4
   av.umsg("The '/' implies the left child is null (B does not have a left child)");
-  cur.hide();
   b.left('/').show();
   bt.layout();
-  var cur = av.g.rect(31, 338,11, 28);
+  arr.highlight(2);
   av.step();
 
   //Slide 5
@@ -66,14 +63,11 @@ $(document).ready(function () {
   d.show();
   bt.layout();
   ptr.target(d);
-  cur.hide();
-  var cur = av.g.rect(42, 338,13, 28);
+  arr.highlight(3);
   //point to D
   av.step();
 
   //Slide 6
-  cur.hide();
-  var cur = av.g.rect(57, 338,16, 28);
   av.umsg("Since D was a leaf node, we know to pop back up to the parent of D");
   //point to B
   ptr.target(b);
@@ -86,9 +80,10 @@ $(document).ready(function () {
   av.step();
 
   //Slide 9
-  av.umsg("The next character in the string represents A's right child 'C' ");
+  av.umsg("The next character in the string represents A's right child C' ");
   c.show({recursive:false});
   bt.layout();
+  arr.highlight(4);
   ptr.target(c);
   //point to C
   av.step();
@@ -97,9 +92,8 @@ $(document).ready(function () {
   av.umsg("'E' must be C's left child");
   e.show({recursive:false});
   bt.layout();
+  arr.highlight(5);
   ptr.target(e);
-  cur.hide();
-  var cur = av.g.rect(74, 338,16, 28);
   //point to E
   av.step(); 
 
@@ -107,9 +101,8 @@ $(document).ready(function () {
   av.umsg("The next character 'G' represents E's left child");
   g.show({recursive:false});
   bt.layout();
+  arr.highlight(6);
   ptr.target(g);
-  cur.hide();
-  var cur = av.g.rect(92, 338,13, 28);
   //point to G
   av.step();
 
@@ -121,10 +114,9 @@ $(document).ready(function () {
 
   //Slide 12
   av.umsg("The next character in the serialized string ('/') represents E's right child (null)");
-  cur.hide();
   e.right('/').show();
+  arr.highlight(7);
   bt.layout();
-  var cur = av.g.rect(104, 338,13, 28);
   av.step();
 
   //Slide 13
@@ -137,9 +129,8 @@ $(document).ready(function () {
   av.umsg("F represents C's right child");
   f.show({recursive:false});
   bt.layout();
+  arr.highlight(8);
   ptr.target(f);
-  cur.hide();
-  var cur = av.g.rect(116, 338,15, 28);
   //point to F
   av.step();
 
@@ -147,9 +138,8 @@ $(document).ready(function () {
   av.umsg("H represents F's left child");
   h.show({recursive:false});
   bt.layout();
+  arr.highlight(9);
   ptr.target(h);
-  cur.hide();
-  var cur = av.g.rect(132, 338,13, 28);
   //point to H
   av.step();
 
@@ -163,9 +153,8 @@ $(document).ready(function () {
   i.show({recursive:false});
   bt.layout();
   ptr.target(i);
+  arr.highlight(10);
   //point to I
-  cur.hide();
-  var cur = av.g.rect(146, 338,10, 28);
   av.step();
 
   av.umsg("I is a leaf node, and we have processed the entire string")
