@@ -5,3 +5,13 @@
 #LRUwriteCON .jsavline {
   height: 100px;
 }
+
+.jsavverticalarray .jsavnode.buffer {
+  max-width: 100px !important;
+  min-width: 100px !important;
+}
+
+.jsavhorizontalarray .jsavnode.buffer {
+  max-width: 100px !important;
+  min-width: 100px !important;
+}

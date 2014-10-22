@@ -32,19 +32,25 @@ $(document).ready(function () {
   var lLeft = 450;  
   var lRight = 600;
 
-  var arr = av.ds.array(["AA", "BB", "CC", "DD", "EE", "FF", "GG", "HH", "II", "JJ"],
+  var arr = av.ds.array(["AAAAAA", "BBBBBB", "CCCCCC", "DDDDDD", "EEEEEE", "FFFFFF", "GGGGGG", "HHHHHH", "IIIIII", "JJJJJJ"],
 			{layout: "vertical", indexed: true, top: 0, left: 150 });
+  arr.addClass(true, "buffer");
   var buffer_pool = av.ds.array(["", "", "", "", ""],
                                 {layout: "vertical", indexed: true,
                                  top: 40, left: bpLeft });
-  av.label("Disk File", {left: 140, top: 320});
+  av.label("Disk File", {left: 180, top: 320});
   av.label("Buffer Pool", {left: 390, top: 320});
-  av.label("Buffers", {left: 600, top: 320});
+  av.label("Buffers", {left: 630, top: 320});
   var arrB0 = av.ds.array([""], {top: buffTop, left: lRight});
+  arrB0.addClass(true, "buffer");
   var arrB1 = av.ds.array([""], {top: buffTop+1*buffdist, left: lRight});
+  arrB1.addClass(true, "buffer");
   var arrB2 = av.ds.array([""], {top: buffTop+2*buffdist, left: lRight});
+  arrB2.addClass(true, "buffer");
   var arrB3 = av.ds.array([""], {top: buffTop+3*buffdist, left: lRight});
+  arrB3.addClass(true, "buffer");
   var arrB4 = av.ds.array([""], {top: buffTop+4*buffdist, left: lRight});
+  arrB4.addClass(true, "buffer");
   var lines = [];
   var blocks = [0, 1, 2, 3, 4];
 

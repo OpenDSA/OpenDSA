@@ -32,22 +32,28 @@ $(document).ready(function () {
   var lLeft = 475;  
   var lRight = 600;
 
-  var arr = av.ds.array(["AA", "BB", "CC", "DD", "EE", "FF", "GG", "HH", "II", "JJ"],
+  var arr = av.ds.array(["AAAAAA", "BBBBBB", "CCCCCC", "DDDDDD", "EEEEEE", "FFFFFF", "GGGGGG", "HHHHHH", "IIIIII", "JJJJJJ"],
 			{layout: "vertical", indexed: true, top: 0, left: 150 });
+  arr.addClass(true, "buffer");
   var buffer_pool = av.ds.matrix([["", 0], ["", 0], ["", 0], ["", 0], ["", 0]],
                                  {
                                   top: 40, left: bpLeft });
   //  var buffer_pool = av.ds.array(["", "", "", "", ""],
   //                                {layout: "vertical", indexed: true,
   //                                 top: 40, left: bpLeft });
-  av.label("Disk File", {left: 140, top: 320});
+  av.label("Disk File", {left: 180, top: 320});
   av.label("Buffer Pool", {left: 390, top: 320});
-  av.label("Buffers", {left: 600, top: 320});
+  av.label("Buffers", {left: 630, top: 320});
   var arrB0 = av.ds.array([""], {top: buffTop, left: lRight});
+  arrB0.addClass(true, "buffer");
   var arrB1 = av.ds.array([""], {top: buffTop+1*buffdist, left: lRight});
+  arrB1.addClass(true, "buffer");
   var arrB2 = av.ds.array([""], {top: buffTop+2*buffdist, left: lRight});
+  arrB2.addClass(true, "buffer");
   var arrB3 = av.ds.array([""], {top: buffTop+3*buffdist, left: lRight});
+  arrB3.addClass(true, "buffer");
   var arrB4 = av.ds.array([""], {top: buffTop+4*buffdist, left: lRight});
+  arrB4.addClass(true, "buffer");
   var lines = [];
   var blocks = [0, 1, 2, 3, 4];
 
@@ -63,12 +69,12 @@ $(document).ready(function () {
   av.step();
 
   // Slide 3
-  av.umsg("The next request is to block 0. This is not in the buffer pool, so it goes to into the next free buffer. But since we are using LRU replacement, we then need to move it to the top of the buffer pool. For this example, we will also assume that the value is being written to (we will change the second letter to X). This means that the dirty bit must be set.");
+  av.umsg("The next request is to block 0. This is not in the buffer pool, so it goes to into the next free buffer. But since we are using LRU replacement, we then need to move it to the top of the buffer pool. For this example, we will also assume that the value is being written to (we will change the middle letters to X). This means that the dirty bit must be set.");
   blockswap(0, 1);
   buffer_pool.value(1, 0, 0);
   buffer_pool.swap(0, 0, 1, 0); buffer_pool.swap(0, 1, 1, 1);
   av.effects.copyValue(arr, 0, arrB1, 0);
-  arrB1.value(0, "AX");
+  arrB1.value(0, "AXXXXA");
   buffer_pool.value(0, 1, 1);
   hidelines();
   writelines();
@@ -117,8 +123,8 @@ $(document).ready(function () {
   av.step();
 
   // Slide 7
-  av.umsg("Another request for block 6 can be served without reading any new data into memory. And since buffer 0 stores block 6, the blocks in the buffer pool need not be moved. But if this writes to the block (here we change the second letter to X), then the dirty bit must be set.");
-  arrB4.value(0, "GX");
+  av.umsg("Another request for block 6 can be served without reading any new data into memory. And since buffer 0 stores block 6, the blocks in the buffer pool need not be moved. But if this writes to the block (here we change the middle letters to X), then the dirty bit must be set.");
+  arrB4.value(0, "GXXXXG");
   buffer_pool.value(0, 1, 1);
   av.step();
   
@@ -151,8 +157,8 @@ $(document).ready(function () {
   av.step();
 
   // Slide 10
-  av.umsg("Let's add one more request, for block 4. Since block 4 is not in the buffer pool, this will require emptying the contents of the least recently used buffer (the block in position 4), which is block 0. So block 9's data will be removed from the buffer pool, the other blocks in the pool are shifted down one step, and block 4 will be read into the buffer now at position 0. However, since the dirty bit for block 0 is 1, we must first write the contents for block 0 back to the file. Notice that the value is changed.");
-  av.effects.copyValue(arrB4, 0, arr, 0);
+  av.umsg("Let's add one more request, for block 4. Since block 4 is not in the buffer pool, this will require emptying the contents of the least recently used buffer (the block in position 4), which is block 0. So block 0's data will be removed from the buffer pool, the other blocks in the pool are shifted down one step, and block 4 will be read into the buffer now at position 0. However, since the dirty bit for block 0 is 1, we must first write the contents for block 0 back to the file. Notice that the value is changed.");
+  av.effects.copyValue(arrB1, 0, arr, 0);
   av.step();
 
   // Slide 11
@@ -167,7 +173,7 @@ $(document).ready(function () {
   buffer_pool.swap(3, 0, 2, 0); buffer_pool.swap(3, 1, 2, 1);
   buffer_pool.swap(2, 0, 1, 0); buffer_pool.swap(2, 1, 1, 1);
   buffer_pool.swap(1, 0, 0, 0); buffer_pool.swap(1, 1, 0, 1);
-  av.effects.copyValue(arr, 8, arrB0, 0);
+  av.effects.copyValue(arr, 4, arrB1, 0);
   hidelines();
   writelines();
   av.recorded();
