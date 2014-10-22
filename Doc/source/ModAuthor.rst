@@ -21,7 +21,11 @@ in :ref:`OpenDSA ReST Extensions <ODSAExtensions>`.
 
 Documentation for writing OpenDSA exercises using the Khan Academy
 infrastructure is in
-:ref:`Using OpenDSA with Khan Academy infrastructure <Exercise>`.
+:ref:`Using OpenDSA with Khan Academy infrastructure <KAExercise>`.
+
+Documentation for writing pure JSAV-based proficiency exercises
+is in
+:ref:`Using OpenDSA with Khan Academy infrastructure <KAExercise>`.
 
 The best way to get a sense for how things work is to look at some
 existing modules.
