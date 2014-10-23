@@ -155,7 +155,7 @@ $(document).ready(function () {
   });
 
   var exercise = av.exercise(model, initialize, {
-    compare: [{css: "background-color"}, {}],
+    compare: [{"class": "unused"}, {}],
     controls: $(".jsavexercisecontrols"),
     fix: fixState
   });

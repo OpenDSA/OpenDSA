@@ -19,7 +19,8 @@ Windows
 
 2. Install python setuptools
 
-   * Download EXE from http://pypi.python.org/pypi/setuptools
+   * Download the executeable from
+     http://pypi.python.org/pypi/setuptools
 
 3. Install Django::
 
@@ -121,6 +122,42 @@ Both
 9. ``python manage.py runserver 0.0.0.0:8000``
 10. In your web browser, go to: http://127.0.0.1:8000/admin/
 
+SSL Certificates
+----------------
+
+An OpenDSA installation might encounter the symptom that some students
+cannot log on.
+If this is happening, it might be caused by a problem with your SSL
+certificate chain.
+If this is the cause, then hopefully you will be able to tell because
+either the browser console window or the Network tab under Firebug
+might indicate a message such as
+"Failed to load response data network error, ERR_INSECURE_RESPONSE".
+
+The cause for this condition is that either the root certificate is
+missing in your Apache configuration, or else the certifciate
+signature chain is broken.
+In our experience, this can easily happen in a University setting.
+
+You can use online tools to help diagnose SSL installation issues.
+See https://www.digicert.com/help/ or 
+https://www.sslshopper.com/ssl-checker.html.
+Then, if necessary you will have to update your Apache configuration
+file (such as /etc/apache2/sites-enabled/default-ssl).
+Depending on your problem, you might need to:
+
+* Add the root certificate by setting the ``SSLCACertificateFile``
+  variable (see
+  http://httpd.apache.org/docs/2.2/mod/mod_ssl.html#sslcacertificatefile).
+
+* Specify the certificate signature chain file with
+  ``SSLCertificateChainFile``
+  (see http://httpd.apache.org/docs/2.2/mod/mod_ssl.html#sslcertificatechainfile).
+  If your certificate vendor did not provide you with a single chain
+  file, you might have to concatenate all the intermediate
+  certificates into one file.
+
+
 Notes
 -----
 
@@ -132,8 +169,3 @@ For OpenDSA development, we host our files on
 ``http://algoviz-beta.cc.vt.edu``.
 
 To enable OpenDSA to communicate with the Django server, you must include the IP of your server in your book instance configuration file.
-
-
-
-
-
