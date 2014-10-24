@@ -6,8 +6,6 @@
   var topMargin = 25;
   // JSAV list
   var list1 = jsav.ds.list({
-      'nodegap': 30,
-      'center': false,
       'left': leftMargin,
       'top': topMargin
     });
@@ -16,8 +14,6 @@
   list1.hide();
 
   var list2 = jsav.ds.list({
-      'nodegap': 30,
-      'center': false,
       'left': leftMargin,
       'top': topMargin + 100
     });
@@ -40,9 +36,11 @@
       'Office : 212'
     ], {
       layout: 'vertical',
-      top: 100,
-      left: 10
+      top: 140,
+      left: 40
     });
+  bigData.addClass(true, "widerecord");
+
   var bigData1 = jsav.ds.array([
       'ID : 546213',
       'Name : Mike',
@@ -51,9 +49,11 @@
       'Office : 212'
     ], {
       layout: 'vertical',
-      top: 100,
-      left: 210
+      top: 140,
+      left: 240
     });
+  bigData1.addClass(true, "widerecord");
+
   var bigData2 = jsav.ds.array([
       'ID : 546805',
       'Name : John',
@@ -62,9 +62,11 @@
       'Office : 212'
     ], {
       layout: 'vertical',
-      top: 100,
-      left: 410
+      top: 140,
+      left: 440
     });
+  bigData2.addClass(true, "widerecord");
+
   var bigData3 = jsav.ds.array([
       'ID : 546991',
       'Name : Lucy',
@@ -73,13 +75,19 @@
       'Office : 212'
     ], {
       layout: 'vertical',
-      top: 100,
-      left: 610
+      top: 140,
+      left: 640
     });
-  var listP1 = connect(list1.get(1), bigData);
-  var listP2 = connect(list1.get(2), bigData1);
-  var listP3 = connect(list1.get(3), bigData2);
-  var listP4 = connect(list1.get(4), bigData3);
+  bigData3.addClass(true, "widerecord");
+
+  var listP1 = jsav.g.line(320, 55, 120, 150,
+                 {'arrow-end': 'classic-wide', 'stroke-width': 2});
+  var listP2 = jsav.g.line(410, 55, 320, 150,
+                 {'arrow-end': 'classic-wide', 'stroke-width': 2});
+  var listP3 = jsav.g.line(500, 55, 520, 150,
+                 {'arrow-end': 'classic-wide', 'stroke-width': 2});
+  var listP4 = jsav.g.line(590, 55, 720, 150,
+                 {'arrow-end': 'classic-wide', 'stroke-width': 2});
   jsav.umsg('That is how to deal with the memory of the objects stored on the list when the list is deleted or the clear method is called. In C++ for example, list destructor and the clear method are problematic in that there is a potential that they will be misused. ');
   jsav.step();
 
@@ -96,11 +104,6 @@
   jsav.umsg('Deleting listArray in the array-based implementation, or deleting a link node in the linked list implementation, might remove the only reference to an object, leaving its memory space inaccessible. ');
   jsav.step();
 
-  bigData.css({ top: 50 });
-  bigData1.css({ top: 50 });
-  bigData2.css({ top: 50 });
-  bigData3.css({ top: 50 });
   jsav.umsg('Unfortunately, there is no way for the list implementation to know whether a given object is pointed to in another part of the program or not. Thus, the user of the list must be responsible for deleting these objects when that is appropriate.');
-  //jsav.step();
   jsav.recorded();
 }(jQuery));
