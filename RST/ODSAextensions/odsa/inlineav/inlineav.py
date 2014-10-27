@@ -105,13 +105,15 @@ SLIDESHOW = '''\
  <div class="jsavcontrols"></div>
  %(output_code)s
  <div class="jsavcanvas"></div>
- <img id="%(exer_name)s_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" alt="Proficient" />
- <span id="%(exer_name)s_cm_saving_msg" class="cm_saving_msg">Saving...</span>
- <span id="%(exer_name)s_cm_error_msg" class="cm_error_msg">
-  <img id="%(exer_name)s_cm_warning_icon" class="cm_warning_icon" src="_static/Images/warning.png" alt="Error Saving" /><br />
-  Server Error<br />
-  <a href="#" class="resubmit_link">Resubmit</a>
- </span>
+ <div class="prof_indicators">
+  <img id="%(exer_name)s_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" alt="Proficient" />
+  <span id="%(exer_name)s_cm_saving_msg" class="cm_saving_msg">Saving...</span>
+  <span id="%(exer_name)s_cm_error_msg" class="cm_error_msg">
+   <img id="%(exer_name)s_cm_warning_icon" class="cm_warning_icon" src="_static/Images/warning.png" alt="Error Saving" /><br />
+   Server Error<br />
+   <a href="#" class="resubmit_link">Resubmit</a>
+  </span>
+ </div>
 </div>
 <p></p>
 '''
