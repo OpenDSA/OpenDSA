@@ -2,16 +2,11 @@
 "use strict";
 $(document).ready(function () {
 
-  function hidelines() {
-    var i;
-    for (i = 0; i < 5; i++) {
-      lines[i].hide();
-    }
-  }
   function writelines() {
     var i;
     for (i = 0; i < 5; i++) {
-      lines[i] = av.g.line(lLeft-10, buffTop+70+i*arrdist, lRight, buffTop+30+blocks[i]*buffdist, {"stroke-width": 2});
+      lines[i].movePoints(lLeft-10, buffTop+70+i*arrdist,
+                          lRight, buffTop+30+blocks[i]*buffdist);
     }
   }
 
@@ -57,6 +52,10 @@ $(document).ready(function () {
   var lines = [];
   var blocks = [0, 1, 2, 3, 4];
 
+  for (var i = 0; i < 5; i++) {
+    lines[i] = av.g.line(0, 0, 0, 0, {"stroke-width": 2});
+  }
+
   // Slide 1
   av.umsg("Let's see an example of buffer pool replacement using the LRU replacement heuristic. The following series of memory requests will be processed: 9 0 1 7 6 6 8 1");
   writelines();
@@ -76,7 +75,6 @@ $(document).ready(function () {
   av.effects.copyValue(arr, 0, arrB1, 0);
   arrB1.value(0, "AXXXXA");
   buffer_pool.value(0, 1, 1);
-  hidelines();
   writelines();
   av.step();
 
@@ -88,7 +86,6 @@ $(document).ready(function () {
   buffer_pool.swap(2, 0, 1, 0); buffer_pool.swap(2, 1, 1, 1);
   buffer_pool.swap(1, 0, 0, 0); buffer_pool.swap(1, 1, 0, 1);
   av.effects.copyValue(arr, 1, arrB2, 0);
-  hidelines();
   writelines();
   av.step();
 
@@ -102,7 +99,6 @@ $(document).ready(function () {
   buffer_pool.swap(2, 0, 1, 0); buffer_pool.swap(2, 1, 1, 1);
   buffer_pool.swap(1, 0, 0, 0); buffer_pool.swap(1, 1, 0, 1);
   av.effects.copyValue(arr, 7, arrB3, 0);
-  hidelines();
   writelines();
   av.step();
 
@@ -118,7 +114,6 @@ $(document).ready(function () {
   buffer_pool.swap(2, 0, 1, 0); buffer_pool.swap(2, 1, 1, 1);
   buffer_pool.swap(1, 0, 0, 0); buffer_pool.swap(1, 1, 0, 1);
   av.effects.copyValue(arr, 6, arrB4, 0);
-  hidelines();
   writelines();
   av.step();
 
@@ -140,7 +135,6 @@ $(document).ready(function () {
   buffer_pool.swap(2, 0, 1, 0); buffer_pool.swap(2, 1, 1, 1);
   buffer_pool.swap(1, 0, 0, 0); buffer_pool.swap(1, 1, 0, 1);
   av.effects.copyValue(arr, 8, arrB0, 0);
-  hidelines();
   writelines();
   av.step();
 
@@ -152,7 +146,6 @@ $(document).ready(function () {
   buffer_pool.swap(3, 0, 2, 0); buffer_pool.swap(3, 1, 2, 1);
   buffer_pool.swap(2, 0, 1, 0); buffer_pool.swap(2, 1, 1, 1);
   buffer_pool.swap(1, 0, 0, 0); buffer_pool.swap(1, 1, 0, 1);
-  hidelines();
   writelines();
   av.step();
 
@@ -174,7 +167,6 @@ $(document).ready(function () {
   buffer_pool.swap(2, 0, 1, 0); buffer_pool.swap(2, 1, 1, 1);
   buffer_pool.swap(1, 0, 0, 0); buffer_pool.swap(1, 1, 0, 1);
   av.effects.copyValue(arr, 4, arrB1, 0);
-  hidelines();
   writelines();
   av.recorded();
 });

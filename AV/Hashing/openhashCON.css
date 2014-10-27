@@ -1,14 +1,14 @@
 .jsavcontainer {
-  height: 490px;
+  height: 350px;
 }
 
 .jsavlist .jsavlistnode {
-  min-height: 30px !important;
-  max-height: 30px !important;
-  line-height: 30px;
+  min-height: 25px !important;
+  max-height: 25px !important;
+  line-height: 23px !important;
 }
 
 .jsavcanvas > svg {
-  height: 550px;
+  height: 350px;
   width: 835px;
 }
