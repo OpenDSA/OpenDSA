@@ -229,6 +229,9 @@ this by two or more successive ")" symbols.
    because it is a leaf, the last node of :math:`B` 's rightmost
    subtree, and the last node of :math:`R` 's rightmost subtree.
 
+.. inlineav:: SequentialGenTreeCON ss
+   :output: show
+   
 Note that this representation for serializing general trees cannot be
 used for binary trees.
 This is because a binary tree is not merely a restricted form of
@@ -240,8 +243,11 @@ cannot let us distinguish whether node :math:`D` in
 Figure :num:`Figure #BinExampb` is the left or right child of node
 :math:`B`.
 
+
+
 .. odsascript:: AV/Development/SequentialTreeCON.js
 .. odsascript:: AV/Development/SequentialTreeAltCON.js
 .. odsascript:: AV/Development/SequentialTreeBitVectorCON.js
+.. odsascript:: AV/Development/SequentialGenTreeCON.js
 
 

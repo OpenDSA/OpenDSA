@@ -28,20 +28,17 @@ $(document).ready(function () {
   f.hide({recursive:false});
   h.hide({recursive:false});
   i.hide({recursive:false});
-  av.umsg("We begin with the first node in the string 'A' which will be the root node");
-    bt.layout();
-
-  var ptr = av.pointer("rt", bt.root(), {anchor: "center top", top: -10});
-
-  av.displayInit();
-
-
 
   //Slide 1
+  av.umsg("We begin with the first node in the string 'A' which will be the root node");
+  bt.layout();
+  var ptr = av.pointer("rt", bt.root(), {anchor: "center top", top: -10});
+  av.displayInit();
 
   //Slide 2
   av.umsg("The next character in the serialized string represents A's left child");
   arr.highlight(1);
+  arr.unhighlight(0);
   av.step();
 
   //Slide 3
@@ -54,6 +51,7 @@ $(document).ready(function () {
   //Slide 4
   av.umsg("The next character in the serialized string says B has no left child ('/') ");
   arr.highlight(2);
+  arr.unhighlight(1);
   av.step();
 
   //Slide 5
@@ -62,12 +60,14 @@ $(document).ready(function () {
   bt.layout();
   ptr.target(d);
   arr.highlight(3);
+  arr.unhighlight(2);
   //point to D
   av.step();
 
   //Slide 6
   arr.highlight(4);
   arr.highlight(5);
+  arr.unhighlight(3);
   av.umsg("The two slashes imply D has no children and is a leaf node");
   av.step();
 
@@ -89,6 +89,8 @@ $(document).ready(function () {
   bt.layout();
   ptr.target(c);
   arr.highlight(6);
+  arr.unhighlight(4);
+  arr.unhighlight(5);
   //point to C
   av.step();
 
@@ -98,6 +100,7 @@ $(document).ready(function () {
   bt.layout();
   ptr.target(e);
   arr.highlight(7);
+  arr.unhighlight(6);
   //point to E
   av.step(); 
 
@@ -107,6 +110,7 @@ $(document).ready(function () {
   bt.layout();
   ptr.target(g);
   arr.highlight(8);
+  arr.unhighlight(7);
   //point to G
   av.step();
 
@@ -114,6 +118,7 @@ $(document).ready(function () {
   av.umsg("Double slashes implies G has no children");
   arr.highlight(9);
   arr.highlight(10);
+  arr.unhighlight(8);
   av.step();
 
   //Slide 13
@@ -125,6 +130,8 @@ $(document).ready(function () {
   //Slide 14
   av.umsg("The next character in the serialized string ('/') represents E's right child");
   arr.highlight(11);
+  arr.unhighlight(9);
+  arr.unhighlight(10);
   av.step();
 
   //Slide 15
@@ -143,6 +150,7 @@ $(document).ready(function () {
   bt.layout();
   ptr.target(f);
   arr.highlight(12);
+  arr.unhighlight(11);
   //point to F
   av.step();
 
@@ -152,6 +160,7 @@ $(document).ready(function () {
   bt.layout();
   ptr.target(h);
   arr.highlight(13);
+  arr.unhighlight(12);
   //point to H
   av.step();
 
@@ -160,6 +169,7 @@ $(document).ready(function () {
   ptr.target(f);
   arr.highlight(14);
   arr.highlight(15);
+  arr.unhighlight(13);
   av.step();
 
   //Slide 20
@@ -169,12 +179,15 @@ $(document).ready(function () {
   ptr.target(i);
   //point to I
   arr.highlight(16);
+  arr.unhighlight(14);
+  arr.unhighlight(15);
   av.step();
 
   //Slide 21
   av.umsg("Double slashes implies I is a leaf node with no children");
   arr.highlight(17);
   arr.highlight(18);
+  arr.unhighlight(16);
   av.step();
   av.recorded();
 

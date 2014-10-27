@@ -18,7 +18,7 @@ parameters. You can view a video tutorial of the same material
 
 1. Open your project and select the drop down arrow next to the Green Run Arrow
 (circled below). If you can not see this arrow you may be in the wrong Eclipse
-perspective. Select Window->Open Perspective->Java.
+perspective. ``Select Window`` -> ``Open Perspective`` -> ``Java``.
 
 .. odsafig:: Images/ParametersStep1.png
    :width: 600

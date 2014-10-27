@@ -28,6 +28,8 @@ $(document).ready(function () {
   f.hide({recursive:false});
   h.hide({recursive:false});
   i.hide({recursive:false});
+
+  //Slide 1
   av.umsg("The first character A' means A is an internal node, and is the root node");
     bt.layout();
 
@@ -37,11 +39,10 @@ $(document).ready(function () {
 
 
 
-  //Slide 1
-
   //Slide 2
   av.umsg("B' is an internal node, and A's left child");
   arr.highlight(1);
+  arr.unhighlight(0);
   av.step();
 
   //Slide 3
@@ -56,6 +57,7 @@ $(document).ready(function () {
   b.left('/').show();
   bt.layout();
   arr.highlight(2);
+  arr.unhighlight(1);
   av.step();
 
   //Slide 5
@@ -64,6 +66,7 @@ $(document).ready(function () {
   bt.layout();
   ptr.target(d);
   arr.highlight(3);
+  arr.unhighlight(2);
   //point to D
   av.step();
 
@@ -73,35 +76,38 @@ $(document).ready(function () {
   ptr.target(b);
   av.step();
 
-  //Slide 8
+  //Slide 7
   av.umsg("Since we have already processed both of B's children, we continue popping up to the root.");
   //point to A
   ptr.target(a);
   av.step();
 
-  //Slide 9
+  //Slide 8
   av.umsg("The next character in the string represents A's right child C' ");
   c.show({recursive:false});
   bt.layout();
   arr.highlight(4);
+  arr.unhighlight(3);
   ptr.target(c);
   //point to C
   av.step();
 
-  //Slide 10
+  //Slide 9
   av.umsg("'E' must be C's left child");
   e.show({recursive:false});
   bt.layout();
   arr.highlight(5);
+  arr.unhighlight(4);
   ptr.target(e);
   //point to E
   av.step(); 
 
-  //Slide 11
+  //Slide 10
   av.umsg("The next character 'G' represents E's left child");
   g.show({recursive:false});
   bt.layout();
   arr.highlight(6);
+  arr.unhighlight(5);
   ptr.target(g);
   //point to G
   av.step();
@@ -116,6 +122,7 @@ $(document).ready(function () {
   av.umsg("The next character in the serialized string ('/') represents E's right child (null)");
   e.right('/').show();
   arr.highlight(7);
+  arr.unhighlight(6);
   bt.layout();
   av.step();
 
@@ -130,6 +137,7 @@ $(document).ready(function () {
   f.show({recursive:false});
   bt.layout();
   arr.highlight(8);
+  arr.unhighlight(7);
   ptr.target(f);
   //point to F
   av.step();
@@ -139,24 +147,27 @@ $(document).ready(function () {
   h.show({recursive:false});
   bt.layout();
   arr.highlight(9);
+  arr.unhighlight(8);
   ptr.target(h);
   //point to H
   av.step();
 
-  //Slide 19
+  //Slide 16
   av.umsg("H is a leaf node, so pop back up to F");
   ptr.target(f);
   av.step();
 
-  //Slide 20
+  //Slide 17
   av.umsg("I must be the right child of F");
   i.show({recursive:false});
   bt.layout();
   ptr.target(i);
   arr.highlight(10);
+  arr.unhighlight(9);
   //point to I
   av.step();
 
+  //Slide 18
   av.umsg("I is a leaf node, and we have processed the entire string")
   av.recorded();
 
