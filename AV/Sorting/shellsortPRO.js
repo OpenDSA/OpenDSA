@@ -102,7 +102,7 @@ $(document).ready(function () {
 
     theArray = av.ds.array($theArray, {indexed: true, layout: arrayLayout.val()});
     // register click handlers for the array indices
-    theArray.click(function (index) { clickHandler(index); });
+//    theArray.click(function (index) { clickHandler(index); });
 
     currIncrIndex = av.variable(0);
     currSublist = av.variable(0);
@@ -267,5 +267,11 @@ $(document).ready(function () {
                 controls: $('.jsavexercisecontrols'), fix: fixState});
 
   exer.reset();
+
+  // I don't know why this had to get pulled out of the initialize() method
+  // But when it is here, it does not register duplicate handlers
+  // register click handlers for the array indices
+  theArray.click(function (index) { clickHandler(index); });
+
   var swapIndex;
 });
