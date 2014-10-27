@@ -34,6 +34,32 @@
   top: 40px;
 }
 
+#pointerBasedPreorderTraversalCON {
+  height: 675px;
+}
+
+#pointerBasedPreorderTraversalCON .jsavcode {
+  margin-top: -15px;
+}
+
+#pointerBasedPreorderTraversalCON .jsavtree {
+  top: 40px;
+}
+
+#compositeBasedPreorderTraversalCON {
+  height: 630px;
+}
+
+#compositeBasedPreorderTraversalCON .jsavcode {
+  margin-top: -15px;
+  margin-left: 350px;
+}
+
+#compositeBasedPreorderTraversalCON .jsavtree {
+  top: -400px;
+  right: -260px;
+}
+
 .thickblacknode { /* Make a node edge to be thick and black */
   background-color: white;
   color: black;

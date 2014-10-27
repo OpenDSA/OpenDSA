@@ -39,17 +39,22 @@
       "IS/CompleteTree": {
         "long_name": "Array Implementation for Complete Trees",
         "exercises": {}
+        
       },
       "IS/BinaryTreeTraversal": {
         "long_name": "Binary Tree Traversals",
-        "exercises": {
-          "BSTinordertraversalCON": {
-            "long_name": "BST Inorder Traversal",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          }
-        }
+        "exercises": {}
+        
+      },
+      "IS/BinaryTreeImpl": {
+        "long_name": "Binary Tree Implementations",
+        "exercises": {}
+        
+      },
+      "IS/Composite": {
+        "long_name": "Composite Design Pattern",
+        "exercises": {}
+        
       },
       "IS/AVL": {
         "long_name": "The AVL Tree",

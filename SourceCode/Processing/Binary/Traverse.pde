@@ -29,6 +29,46 @@ void preorder(BinNode rt) {
 }
 /* *** ODSAendTag: preorder *** */
 
+/* *** ODSATag: pointer based preorder *** */
+void traverse(VarBinNode rt) {
+  if (rt == null) return;
+  if (rt.isLeaf())      
+    Visit.VisitLeafNode(((VarLeafNode)rt).value());
+  else {               
+    Visit.VisitIntlNode(((VarIntlNode)rt).value());
+    traverse(((VarIntlNode)rt).leftchild());
+    traverse(((VarIntlNode)rt).rightchild());
+  }
+}
+/* *** ODSAendTag: pointer based preorder *** */
+
+/* *** ODSATag: composite based preorder *** */
+/** Preorder traversal */
+  void traverse(VarBinNode rt) {
+    if (rt != null) { rt.traverse(); }
+  }
+/** Leaf node: Composite */
+  class VarLeafNode implements VarBinNode {
+   ...
+    boolean isLeaf() { return true; }
+   ...
+    void traverse() { Visit.VisitLeafNode(operand); }
+  }
+/** Internal node: Composite */
+  class VarIntlNode implements VarBinNode { 
+   ...
+     boolean isLeaf() { return false; }
+     VarBinNode leftchild() { return left; }
+     VarBinNode rightchild() { return right; }
+   ...
+     void traverse() {
+       Visit.VisitIntlNode(operator);
+       if (left != null) left.traverse();
+       if (right != null) right.traverse();
+     }
+   }
+/* *** ODSAendTag: composite based preorder *** */
+
 /* *** ODSATag: preorder2 *** */
 // This is a bad idea
 void preorder2(BinNode rt) {
