@@ -1,4 +1,4 @@
-.. _Exercise:
+.. _KAExercise:
 
 Using OpenDSA with the Khan Academy infrastructure
 ==================================================

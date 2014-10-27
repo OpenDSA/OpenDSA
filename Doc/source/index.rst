@@ -16,7 +16,8 @@ Table of Contents
    ModAuthor
    Style
    AV
-   Exercise 
+   JSAVExercise
+   KAExercise 
    Client-sideDevelopment
    Extensions
    Preprocessor

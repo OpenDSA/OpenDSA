@@ -2,16 +2,11 @@
 "use strict";
 $(document).ready(function () {
 
-  function hidelines() {
-    var i;
-    for (i = 0; i < 5; i++) {
-      lines[i].hide();
-    }
-  }
   function writelines() {
     var i;
     for (i = 0; i < 5; i++) {
-      lines[i] = av.g.line(lLeft-10, buffTop+70+i*arrdist, lRight, buffTop+30+blocks[i]*buffdist, {"stroke-width": 2});
+      lines[i].movePoints(lLeft-10, buffTop+70+i*arrdist,
+                          lRight, buffTop+30+blocks[i]*buffdist);
     }
   }
 
@@ -32,21 +27,31 @@ $(document).ready(function () {
   var lLeft = 450;  
   var lRight = 600;
 
-  var arr = av.ds.array(["AA", "BB", "CC", "DD", "EE", "FF", "GG", "HH", "II", "JJ"],
+  var arr = av.ds.array(["AAAAAA", "BBBBBB", "CCCCCC", "DDDDDD", "EEEEEE", "FFFFFF", "GGGGGG", "HHHHHH", "IIIIII", "JJJJJJ"],
 			{layout: "vertical", indexed: true, top: 0, left: 150 });
+  arr.addClass(true, "buffer");
   var buffer_pool = av.ds.array(["", "", "", "", ""],
                                 {layout: "vertical", indexed: true,
                                  top: 40, left: bpLeft });
-  av.label("Disk File", {left: 140, top: 320});
+  av.label("Disk File", {left: 180, top: 320});
   av.label("Buffer Pool", {left: 390, top: 320});
-  av.label("Buffers", {left: 600, top: 320});
+  av.label("Buffers", {left: 630, top: 320});
   var arrB0 = av.ds.array([""], {top: buffTop, left: lRight});
+  arrB0.addClass(true, "buffer");
   var arrB1 = av.ds.array([""], {top: buffTop+1*buffdist, left: lRight});
+  arrB1.addClass(true, "buffer");
   var arrB2 = av.ds.array([""], {top: buffTop+2*buffdist, left: lRight});
+  arrB2.addClass(true, "buffer");
   var arrB3 = av.ds.array([""], {top: buffTop+3*buffdist, left: lRight});
+  arrB3.addClass(true, "buffer");
   var arrB4 = av.ds.array([""], {top: buffTop+4*buffdist, left: lRight});
+  arrB4.addClass(true, "buffer");
   var lines = [];
   var blocks = [0, 1, 2, 3, 4];
+
+  for (var i = 0; i < 5; i++) {
+    lines[i] = av.g.line(0, 0, 0, 0, {"stroke-width": 2});
+  }
 
   // Slide 1
   av.umsg("Let's see an example of buffer pool replacement using the LRU replacement heuristic. The following series of memory requests will be processed: 9 0 1 7 6 6 8 1");
@@ -65,7 +70,6 @@ $(document).ready(function () {
   buffer_pool.value(1, 0);
   buffer_pool.swap(0, 1);
   av.effects.copyValue(arr, 0, arrB1, 0);
-  hidelines();
   writelines();
   av.step();
 
@@ -77,7 +81,6 @@ $(document).ready(function () {
   buffer_pool.swap(2, 1);
   buffer_pool.swap(1, 0);
   av.effects.copyValue(arr, 1, arrB2, 0);
-  hidelines();
   writelines();
   av.step();
 
@@ -91,7 +94,6 @@ $(document).ready(function () {
   buffer_pool.swap(2, 1);
   buffer_pool.swap(1, 0);
   av.effects.copyValue(arr, 7, arrB3, 0);
-  hidelines();
   writelines();
   av.step();
 
@@ -107,7 +109,6 @@ $(document).ready(function () {
   buffer_pool.swap(2, 1);
   buffer_pool.swap(1, 0);
   av.effects.copyValue(arr, 6, arrB4, 0);
-  hidelines();
   writelines();
   av.step();
 
@@ -127,7 +128,6 @@ $(document).ready(function () {
   buffer_pool.swap(2, 1);
   buffer_pool.swap(1, 0);
   av.effects.copyValue(arr, 8, arrB0, 0);
-  hidelines();
   writelines();
   av.step();
 
@@ -139,7 +139,6 @@ $(document).ready(function () {
   buffer_pool.swap(3, 2);
   buffer_pool.swap(2, 1);
   buffer_pool.swap(1, 0);
-  hidelines();
   writelines();
   av.recorded();
 });

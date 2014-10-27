@@ -5,22 +5,12 @@
   var leftMargin = 200;
   var topMargin = 25;
   // JSAV list
-  var list1 = jsav.ds.list({
-      'nodegap': 30,
-      'center': false,
-      'left': leftMargin,
-      'top': topMargin
-    });
+  var list1 = jsav.ds.list({'left': leftMargin, 'top': topMargin});
   list1.addFirst('null').addFirst('').addFirst('').addFirst('').addFirst('').addFirst('null');
   list1.layout();
   list1.hide();
 
-  var list2 = jsav.ds.list({
-      'nodegap': 30,
-      'center': false,
-      'left': leftMargin,
-      'top': topMargin + 100
-    });
+  var list2 = jsav.ds.list({'left': leftMargin, 'top': topMargin + 100});
   list2.addFirst('null').addFirst('').addFirst('').addFirst('').addFirst('').addFirst('null');
   list2.layout();
   list2.hide();
@@ -28,10 +18,11 @@
   var head = setPointer('head', list1.get(2));
   var tail = setPointer('tail', list1.get(5));
 
-
+  // Slide 1
   jsav.umsg('A second issue faced by implementors of a list class (or any other data structure that stores a collection of user-defined data elements) is whether the elements stored are all required to be of the same type. This is known as homogeneity in a data structure.');
   jsav.displayInit();
-  list1.show();
+
+  // Slide 2
   var bigData = jsav.ds.array([
       'ID : 546457',
       'Name : Jake',
@@ -40,9 +31,11 @@
       'Office : 212'
     ], {
       layout: 'vertical',
-      top: 100,
-      left: 10
+      top: 125,
+      left: 50
     });
+  bigData.addClass(true, "widerecord");
+
   var bigData1 = jsav.ds.array([
       'ID : 546213',
       'Name : Mike',
@@ -51,9 +44,11 @@
       'Office : 212'
     ], {
       layout: 'vertical',
-      top: 100,
-      left: 210
+      top: 125,
+      left: 250
     });
+  bigData1.addClass(true, "widerecord");
+
   var bigData2 = jsav.ds.array([
       'ID : 546805',
       'Name : John',
@@ -62,9 +57,11 @@
       'Office : 212'
     ], {
       layout: 'vertical',
-      top: 100,
-      left: 410
+      top: 125,
+      left: 450
     });
+  bigData2.addClass(true, "widerecord");
+
   var bigData3 = jsav.ds.array([
       'ID : 546991',
       'Name : Lucy',
@@ -73,16 +70,25 @@
       'Office : 212'
     ], {
       layout: 'vertical',
-      top: 100,
-      left: 610
+      top: 125,
+      left: 650
     });
-  var listP1 = connect(list1.get(1), bigData);
-  var listP2 = connect(list1.get(2), bigData1);
-  var listP3 = connect(list1.get(3), bigData2);
-  var listP4 = connect(list1.get(4), bigData3);
+  bigData3.addClass(true, "widerecord");
+
+  list1.show();
+  list1.layout();
+  var listP1 = jsav.g.line(320, 60, 130, 140,
+                 {'arrow-end': 'classic-wide', 'stroke-width': 2});
+  var listP2 = jsav.g.line(410, 60, 330, 140,
+                 {'arrow-end': 'classic-wide', 'stroke-width': 2});
+  var listP3 = jsav.g.line(500, 60, 530, 140,
+                 {'arrow-end': 'classic-wide', 'stroke-width': 2});
+  var listP4 = jsav.g.line(590, 60, 730, 140,
+                 {'arrow-end': 'classic-wide', 'stroke-width': 2});
   jsav.umsg('In some applications, the user would like to define the class of the data element that is stored on a given list, and then never permit objects of a different class to be stored on that same list.');
   jsav.step();
 
+  // Slide 3
   listP1.hide();
   listP2.hide();
   listP3.hide();
@@ -93,10 +99,11 @@
   bigData1.css({ left: 400 });
   bigData2.hide();
   bigData3.hide();
-  connect(list1.get(1), bigData);
-  connect(list1.get(3), bigData1);
+  var listX1 = jsav.g.line(320, 60, 240, 140,
+                 {'arrow-end': 'classic-wide', 'stroke-width': 2});
+  var listX2 = jsav.g.line(500, 60, 480, 140,
+                 {'arrow-end': 'classic-wide', 'stroke-width': 2});
 
   jsav.umsg('In other applications, the user would like to permit the objects stored on a single list to be of differing types.');
-  jsav.step();
   jsav.recorded();
 }(jQuery));

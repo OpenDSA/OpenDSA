@@ -1,24 +1,24 @@
-<!-- Open Hashing mini-proficiency exercise.
-Written by Cliff Shaffer -->
+<!--
+  Open Hashing mini-proficiency exercise.
+  Written by Cliff Shaffer
+-->
 
 <!DOCTYPE html>
 <html data-require="math">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <title>Open Hashing Exercise</title>
+  <title>Open Hashing Proficiency Exercise</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
   <script src="../../JSAV/lib/jquery.transit.js"></script>
-  <script type="text/javascript" src="/MathJax/MathJax.js?config=default"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-  <script src="http://algoviz.org/OpenDSA/JSAV/lib/raphael.js"></script>
   <script src="../../JSAV/build/JSAV-min.js"></script>
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
   <style>
     #container {
       border: 0;
-      width: 780px;
-      height: 850px;
       padding: 10px;
       overflow: hidden;
     }
@@ -30,13 +30,18 @@ Written by Cliff Shaffer -->
       height: 80px;
     }
 
+    .jsavlist .jsavlistnode {
+      min-height: 25px !important;
+      max-height: 25px !important;
+      line-height: 25px !important;
+    }
+
     #reset { margin-right: 20px;}
-    .jsavcanvas { height: 460px;}
+    .jsavcanvas { height: 340px;}
   </style>
 </head>
-<body data-height="840" data-width="950">
+<body data-height="720" data-width="950">
 <script>
-"use strict";
 var
   jsav,           // The JSAV object
   arr_size,       // Full array size
@@ -48,8 +53,7 @@ var
   jsavLists = [], // The actual set of lists
   empty = [],     // Dummy for empty data to reset bin array
   isSelected;     // Boolean: True iff user has already clicked an array element
-
-var blockHeight = 47;  // Width/height of an array or list element
+  var blockHeight = 31;  // Width/height of an array or list element
 
 // Variables used to keep track of the index and array of the
 // currently selected element within click handler
@@ -93,7 +97,7 @@ function resetInit() {
                            layout: "vertical", top: 10, left: 200});
   jsavBins.click(function (index) { clickHandler(this, index); });
   for (i = 0; i < 10; i++) {
-    jsavLists[i] = jsav.ds.list({top: (11 + i * 46), left: 260, nodegap: 30});
+    jsavLists[i] = jsav.ds.list({top: (12 + i * blockHeight), left: 260, nodegap: 30});
     jsavLists[i].layout({center: false});
   }
   jsav.step();
@@ -115,7 +119,8 @@ var initJSAV = function (asize) {
   var temp = [];
   // Do all of the one-time initializations
   arr_size = asize;
-  jsav = new JSAV($("#container"));
+  jsav = new JSAV("jsav");
+  jsav.recorded();
   arrdata = JSAV.utils.rand.numKeys(0, 999, arr_size);
   for (i = 0; i < 10; i++) { empty[i] = ""; }
   resetInit();
@@ -153,6 +158,7 @@ console.log("curr is " + curr + ", arr_size is " + arr_size);
   return true;
 }
 </script>
+
 <div class="exercise">
   <div class="vars">
     <var id="arr_size">randRange(5, 8)</var>
@@ -161,25 +167,25 @@ console.log("curr is " + curr + ", arr_size is " + arr_size);
 
   <div class="problems">
     <div> <!-- Supresses answer box -->
-      <div id="problem-type-or-description">
-        <p class="problem">On the left is an array of numbers that are
-          to be inserted into the hash table on the right. The hash
-          table uses open hashing to deal with collisions.</p>
-        <p class="question"> Move each record on the left to the
-          appropriate bin on the right when using the simple mod hash
-          function.</p>
+      <p class="problem">On the left is an array of numbers that are
+         to be inserted (in order, from top to bottom) into the hash
+         table on the right. The hash table uses open hashing to deal
+         with collisions.</p>
+      <div class="question">
+        <p> Move each record on the left to the appropriate bin on the
+            right when using the simple mod hash function.</p>
         <input id="reset" type="button" value="Reset" />
         <div id="jsav" class="jsavcanvas"></div>
-        <div class="solution" data-type="custom">
-          <div class="guess">
-            [userInput]
-          </div>
-          <div class="validator-function">
-            if (!checkAnswer(arr_size) && !guess[0])
-            return ""; // User did not click, and correct answer is not
-                       // initial array state
-            else return checkAnswer(arr_size);
-          </div>
+      </div>
+      <div class="solution" data-type="custom">
+        <div class="guess">
+          [userInput]
+        </div>
+        <div class="validator-function">
+          if (!checkAnswer(arr_size) && !guess[0])
+          return ""; // User did not click, and correct answer is not
+                     // initial array state
+          else return checkAnswer(arr_size);
         </div>
       </div>
       <div class="hints">

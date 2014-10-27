@@ -5,28 +5,16 @@
   var leftMargin = 200;
   var topMargin = 130;
   // JSAV list
-  var l = jsav.ds.list({
-      'nodegap': 30,
-      'center': false,
-      'left': leftMargin,
-      'top': topMargin
-    });
+  var l = jsav.ds.list({'left': leftMargin, 'top': topMargin});
   l.addFirst('null').addFirst('9').addFirst('12').addFirst('35').addFirst('21').addFirst('null');
   l.layout();
-  var arr = jsav.ds.array([21, 35, 12, 9], {
-      top: 10,
-      left: 360
-    });
+  var arr = jsav.ds.array([21, 35, 12, 9], {top: 10, left: 360});
 
   // JSAV dlist
-  var dl = jsav.ds.dlist({
-      'nodegap': 30,
-      'center': false,
-      'left': leftMargin,
-      'top': topMargin + 100
-    });
+  var dl = jsav.ds.dlist({'left': leftMargin, 'top': topMargin + 100});
   dl.addFirst('null').addFirst('9').addFirst('12').addFirst('35').addFirst('21').addFirst('null');
   dl.layout();
+
   var bigData = jsav.ds.array([
       'ID : 546457',
       'Name : Jake',
@@ -35,9 +23,11 @@
       'Office : 212'
     ], {
       layout: 'vertical',
-      top: 100,
+      top: 150,
       left: 170
     });
+  bigData.addClass(true, "widerecord");
+
   var bigData1 = jsav.ds.array([
       'ID : 546213',
       'Name : Mike',
@@ -46,9 +36,11 @@
       'Office : 212'
     ], {
       layout: 'vertical',
-      top: 100,
+      top: 150,
       left: 470
     });
+  bigData1.addClass(true, "widerecord");
+
   var bigData2 = jsav.ds.array([
       'ID : 546805',
       'Name : John',
@@ -57,9 +49,11 @@
       'Office : 212'
     ], {
       layout: 'vertical',
-      top: 100,
+      top: 150,
       left: 470
     });
+  bigData2.addClass(true, "widerecord");
+
   var bigData3 = jsav.ds.array([
       'ID : 546991',
       'Name : Lucy',
@@ -68,9 +62,11 @@
       'Office : 212'
     ], {
       layout: 'vertical',
-      top: 100,
+      top: 150,
       left: 470
     });
+  bigData3.addClass(true, "widerecord");
+
   bigData.hide();
   bigData1.hide();
   bigData2.hide();
@@ -82,10 +78,12 @@
   var dhead = setPointer('head', dl.get(0));
   var dcurr = setPointer('curr', dl.get(2));
   var dtail = setPointer('tail', dl.get(5));
+
+  // Slide 1
   jsav.umsg('List users must decide whether they wish to store a copy of any given element on each list that contains it. For small elements such as an integer, this makes sense.');
   jsav.displayInit();
 
-  // Step 2
+  // Slide 2
   arr.hide();
   dl.hide();
   dhead.hide();
@@ -99,14 +97,18 @@
   l.translateY(-80);
   bigData.show();
   bigData1.show();
-  var listP1 = connect(l.get(1), bigData);
-  var listP2 = connect(l.get(2), bigData);
-  var listP3 = connect(l.get(3), bigData1);
-  var listP4 = connect(l.get(4), bigData1);
-  listP1.show();
+  var listP1 = jsav.g.line(320, 80, 250, 165,
+                 {'arrow-end': 'classic-wide', 'stroke-width': 2});
+  var listP2 = jsav.g.line(410, 80, 260, 165,
+                 {'arrow-end': 'classic-wide', 'stroke-width': 2});
+  var listP3 = jsav.g.line(500, 80, 560, 165,
+                 {'arrow-end': 'classic-wide', 'stroke-width': 2});
+  var listP4 = jsav.g.line(590, 80, 570, 165,
+                 {'arrow-end': 'classic-wide', 'stroke-width': 2});
   jsav.umsg('If the elements are payroll records, it might be desirable for the list node to store a pointer to the record rather than store a copy of the record itself. This change would allow multiple list nodes (or other data structures) to point to the same record, rather than make repeated copies of the record. Not only might this save space, but it also means that a modification to an element\'s value is automatically reflected at all locations where it is referenced.');
   jsav.step();
 
+  // Slide 3
   l.hide();
   head.hide();
   curr.hide();

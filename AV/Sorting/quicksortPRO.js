@@ -399,7 +399,7 @@ $(document).ready(function () {
   // {fix: fixState}: The function to call to fix the state of the exercise
   // if the user makes a mistake in 'fix' mode
   var exercise = av.exercise(modelSolution, initialize,
-         {compare: [{css: "background-color"}, {}, {}, {}, {}, {}],
+         {compare: [{"class": ["processing", "sorted"]}, {}, {}, {}, {}, {}],
           controls: $('.jsavexercisecontrols'), fix: fixState});
   exercise.reset();
 });

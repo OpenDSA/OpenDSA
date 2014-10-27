@@ -108,6 +108,10 @@ stored in memory in hopes of increasing the likelihood that new
 information requests can be satisfied from the buffer pool rather
 than requiring new information to be read from disk.
 
+.. inlineav:: buffintroCON ss
+   :align: center
+   :output: show
+
 As long as there is an unused buffer available in the buffer pool,
 new information can be read in from disk on demand.
 When an application continues to read new information from
@@ -341,8 +345,8 @@ This will lead to a problem if the client neglects to release active
 blocks when they are no longer needed.
 There would also be a problem if there were more total active blocks
 than buffers in the buffer pool.
-However, the buffer pool should always be initialized to include more
-buffers than should ever be active at one time.
+So, the buffer pool should be initialized to include more
+buffers than will ever need to be active at one time.
 
 An additional problem with both ADTs presented so far comes when the
 user intends to completely overwrite the contents of a block, and does
@@ -360,9 +364,7 @@ blocks to buffers from actually reading in data for the block.
 In particular, the following revised buffer-passing ADT does not
 actually read data in the ``acquireBuffer`` method.
 Users who wish to see the old contents must then issue a
-``readBlock`` request to read the data from disk into the buffer,
-and then a ``getDataPointer`` request to gain direct access to the
-buffer's data contents.
+``readBlock`` request to read the data from disk into the buffer.
 
 .. codeinclude:: BufferPool/BufferADT
 
@@ -413,5 +415,6 @@ This is in contrast to the :ref:`memory manager <MemmanIntro>`, in
 which the user passes a record to the manager and has no control at
 all over where the record is stored.
 
+.. odsascript:: AV/Development/buffintroCON.js
 .. odsascript:: AV/Development/LRUCON.js
 .. odsascript:: AV/Development/LRUwriteCON.js
