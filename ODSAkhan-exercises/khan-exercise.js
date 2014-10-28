@@ -74,7 +74,9 @@ window.urlBaseOverride = "../../ODSAkhan-exercises/";
 var SCORE_SERVER = getURLParam('scoreServer');
 
 // The domain where the OpenDSA modules are hosted, used by postMessage to send data to the parent module page
-var MODULE_ORIGIN = getURLParam('moduleOrigin');
+// IMPORTANT: Uses parent.location so that the MODULE_ORIGIN doesn't have to be 
+// specified in the config file in order for postMessage to work
+var MODULE_ORIGIN = parent.location.protocol + '//' + parent.location.host; //getURLParam('moduleOrigin');
 
 // The name of the module in which the KA exercises is embedded
 var MODULE_NAME = getURLParam('module');

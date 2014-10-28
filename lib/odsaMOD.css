@@ -93,37 +93,42 @@ form.signin p, form.signin span {
   top: 7px;
   width: 25px;
 }
+.prof_indicators {
+  left: 45px;
+  position: absolute;
+  top: 20px;
+}
 /* Style for mini-slideshow checkmark proficiency indicator */
 .prof_check_mark {
-  position: absolute;
-  top: 10px;
-  left: 35px;
+  position: relative;
+  top: 0;
+  left: 0;
   display: none;
 }
 /* Saving message for checkmark proficiency indicator */
 .cm_saving_msg {
-  bottom: 25px;
   color: red;
   display: none;
   font-size: x-small;
+  left: 25px;
   position: absolute;
-  right: 12px;
+  top: 35px;
 }
 /* Warning icon for checkmark proficiency indicator */
 .cm_warning_icon {
   position: relative;
-  right: -10px;
   width: 20px;
 }
 /* Error message for checkmark proficiency indicator */
 .cm_error_msg {
-  bottom: 10px;
   color: red;
   display: none;
   font-size: x-small;
   position: absolute;
-  right: 10px;
+  left: 20px;
   text-align: center;
+  top: 0;
+  width: 75px;
 }
 .resubmit_link {
   text-decoration: underline;
