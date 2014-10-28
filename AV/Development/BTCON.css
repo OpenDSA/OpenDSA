@@ -64,12 +64,17 @@
 
 .thickblacknode { /* Make a node edge to be thick and black */
   background-color: white;
-  color: black;
   border-color: black;
   border-width: 2px;
 }
 
-#rectangle .internalnode {
+.internalnode {
+  background-color: white;
+  color: blue;
+  border-color: blue;
+}
+
+#rectangle .intlnode {
   background-color: white;
   color: black;
   border-color: black;
