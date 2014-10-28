@@ -25,7 +25,7 @@ $(document).ready(function () {
   bt.layout();
 
   var rt1 = av.pointer("rt", bt.root(), {anchor: "left top", top: -10});
-  var btLeft =  200;
+  var btLeft =  20;
   
   av.umsg(interpret("av_preorder"));
   pseudo.setCurrentLine("sig");
@@ -59,8 +59,8 @@ $(document).ready(function () {
      node.addClass("thickblacknode");
      av.umsg(interpret("av_visitleaf"));
      pseudo.setCurrentLine("visitleaf");
-     btLeft+=35;
-     av.label("" + node.value(), {left: btLeft, top: 500}).show;
+     btLeft+=25;
+     av.label("" + node.value(), {left: btLeft, top: 250}).show;
      av.step();
    }
    else {
@@ -70,8 +70,8 @@ $(document).ready(function () {
       node.addClass("thickblacknode");
       av.umsg(interpret("av_visitinternal"));
       pseudo.setCurrentLine("visitinternal");
-      btLeft+=35;
-      av.label("" + node.value(), {left: btLeft, top: 500}).show;
+      btLeft+=25;
+      av.label("" + node.value(), {left: btLeft, top: 250}).show;
       av.step();
 
       //left

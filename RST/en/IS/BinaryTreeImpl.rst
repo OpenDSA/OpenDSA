@@ -91,9 +91,6 @@ implementations for internal and leaf nodes.
 
    An expression tree for :math:`4x(2x + a) - c`.
 
-.. inlineav:: pointerBasedPreorderTraversalCON ss
-   :output: show
-
 As an example of a tree that stores different information at the leaf
 and internal nodes, consider the expression tree illustrated by
 Figure :num:`Figure #DiffNodes`.
@@ -134,6 +131,9 @@ the node's subclass.
 
 .. codeinclude:: Binary/ExpressionTree
    :tag: ExpressionTree
+
+.. inlineav:: pointerBasedPreorderTraversalCON ss
+   :output: show
 
 The Expression Tree implementation includes two subclasses derived
 from class ``VarBinNode``, named ``LeafNode`` and

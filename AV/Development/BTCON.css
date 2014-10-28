@@ -35,15 +35,17 @@
 }
 
 #pointerBasedPreorderTraversalCON {
-  height: 675px;
+  height: 430px;
 }
 
 #pointerBasedPreorderTraversalCON .jsavcode {
-  margin-top: -15px;
+  margin-top: 20px;
+  margin-left: 350px;
 }
 
 #pointerBasedPreorderTraversalCON .jsavtree {
-  top: 40px;
+  top: -200px;
+  right: -260px;
 }
 
 #compositeBasedPreorderTraversalCON {
@@ -61,6 +63,13 @@
 }
 
 .thickblacknode { /* Make a node edge to be thick and black */
+  background-color: white;
+  color: black;
+  border-color: black;
+  border-width: 2px;
+}
+
+#rectangle .internalnode {
   background-color: white;
   color: black;
   border-color: black;
