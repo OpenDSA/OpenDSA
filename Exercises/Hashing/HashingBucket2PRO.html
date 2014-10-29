@@ -13,41 +13,16 @@
   <script src="../../JSAV/lib/raphael.js"></script>
   <script src="../../JSAV/build/JSAV-min.js"></script>
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
   <style>
-    #container {
-      border: 0;
-      width: 780px;
-      height: 710px;
-      padding: 10px;
-      overflow: hidden;
-    }
-
-    .jsavarray { position: absolute; }
-
-    #container .jsavarray {
-      left: -10px;
-      height: 80px;
-    }
-
-    .jsavarray .jsavindex {
-      min-height: 30px !important;
-      max-height: 30px !important;
-      min-width: 30px;
-      line-height: 30px;
-    }
-
-    .jsavverticalarray .jsavindexlabel {
-      right: 40px;
-    }
-
-    #reset { margin-right: 20px;}
-
     .jsavcanvas { height: 350px;}
+    .jsavverticalarray .jsavindexlabel {
+      top: 5px !important;
+    }
   </style>
 </head>
-<body data-height="780" data-width="950">
+<body data-height="850" data-width="950">
 <script>
-"use strict";
 var
   jsav,             // The JSAV object
   inputkey,         // The value that the user is inserting
@@ -83,24 +58,26 @@ var setGray = function (a, index) {
 // function that creates and initialises the arrays
 function resetInit() {
   var i;
+  var offset = 107;
+
   // Do initializations, both for initial use and reset
   userInput = false;
   jsavInput = jsav.ds.array(initData, {indexed: true, center: false,
                             layout: "vertical", left: 20, top: 30});
-  jsav.label("Hash Table", {left: 20, top: 8});
+  jsav.label("Hash Table", {left: 0, top: 0});
   jsav.label("<b style='color:#0b0;'>B0</b>", {left: 80, top: 51});
   jsav.label("<b style='color:#0b0;'>B1</b>", {left: 80, top: 113});
   jsav.label("<b style='color:#0b0;'>B2</b>", {left: 80, top: 175});
   jsav.label("<b style='color:#0b0;'>B3</b>", {left: 80, top: 237});
   jsav.label("<b style='color:#0b0;'>B4</b>", {left: 80, top: 299});
   for (i = 0; i < 4; i++) {
-    jsav.g.line(20, 93 + (i * 62), 70, 93 + (i * 62), {"stroke-width": 2});
+    jsav.g.line(15, offset + (i * 62), 65, offset + (i * 62), {"stroke-width": 2});
   }
   setGray(jsavInput, [0, 1, 4, 5, 8, 9]);
   jsavInput.click(function (index) { clickHandler(this, index); });
   jsavOverflow = jsav.ds.array(empty8, {indexed: true, center: false,
                            layout: "vertical", top: 30, left: 200});
-  jsav.label("Overflow", {left: 195, top: 8});
+  jsav.label("Overflow", {left: 190, top: 0});
   jsavOverflow.click(function (index) { clickHandler(this, index); });
   jsavInput.layout();
   jsavOverflow.layout();
@@ -155,7 +132,8 @@ var initJSAV = function (key, steps) {
   inputkey = key;
   // Do all of the one-time initializations
   arr_size = 10;
-  jsav = new JSAV($("#container"));
+  jsav = new JSAV("jsav");
+  jsav.recorded();
   for (i = 0; i < 10; i++) { empty[i] = ""; }
   for (i = 0; i < 8; i++) { empty8[i] = ""; }
   gen_instance(steps);

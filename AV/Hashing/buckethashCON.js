@@ -9,24 +9,27 @@ var setGray = function (a, index) {
   var empty = [];
   var empty2 = [];
   var i;
+  var offset = 79;
+  var stepsize = 62;
+
   for (i = 0; i < 10; i++) { empty[i] = ""; }
   for (i = 0; i < 8; i++) { empty2[i] = ""; }
   var av = new JSAV('buckethashCON1');
   var arr = av.ds.array(empty, {indexed: true, center: false,
                             layout: "vertical", left: 20});
-  for (i = 0; i < 5; i++) {
-    av.g.line(20, 108 + (i * 92), 85, 108 + (i * 92), {"stroke-width": 2});
+  for (i = 0; i < 4; i++) {
+    av.g.line(15, offset + (i * stepsize), 80, offset + (i * stepsize), {"stroke-width": 2});
   }
   setGray(arr, [0, 1, 4, 5, 8, 9]);
   av.umsg("Demonstration of bucket hash for an array of size 10 storing 5 buckets, each two slots in size. The alternating gray and white cells indicate the buckets.");
-  av.label("<b style='color:#0b0;'>B0</b>", {left: 80, top: 50});
-  av.label("<b style='color:#0b0;'>B1</b>", {left: 80, top: 142});
-  av.label("<b style='color:#0b0;'>B2</b>", {left: 80, top: 234});
-  av.label("<b style='color:#0b0;'>B3</b>", {left: 80, top: 326});
-  av.label("<b style='color:#0b0;'>B4</b>", {left: 80, top: 418});
+  av.label("<b style='color:#0b0;'>B0</b>", {left: 80, top: 22});
+  av.label("<b style='color:#0b0;'>B1</b>", {left: 80, top: 84});
+  av.label("<b style='color:#0b0;'>B2</b>", {left: 80, top: 146});
+  av.label("<b style='color:#0b0;'>B3</b>", {left: 80, top: 208});
+  av.label("<b style='color:#0b0;'>B4</b>", {left: 80, top: 270});
   av.displayInit();
   var overflow = av.ds.array(empty2, {indexed: false, center: false,
-                            layout: "vertical", top: 30, left: 150});
+                            layout: "vertical", top: 50, left: 150});
   av.label("Overflow", {before: overflow, left: 140, top: 20});
   av.umsg("We also need an overflow 'bucket' of infinite capacity to hold records from buckets in the main hash table that fill up.");
   av.step();
@@ -123,24 +126,27 @@ var setGray = function (a, index) {
   var empty = [];
   var empty2 = [];
   var i;
+  var offset = 79;
+  var stepsize = 62;
+
   for (i = 0; i < 10; i++) { empty[i] = ""; }
   for (i = 0; i < 8; i++) { empty2[i] = ""; }
   var av = new JSAV('buckethashCON2');
   var arr = av.ds.array(empty, {indexed: true, center: false,
                             layout: "vertical", left: 20});
-  for (i = 0; i < 5; i++) {
-    av.g.line(20, 108 + (i * 92), 85, 108 + (i * 92), {"stroke-width": 2});
+  for (i = 0; i < 4; i++) {
+    av.g.line(15, offset + (i * stepsize), 80, offset + (i * stepsize), {"stroke-width": 2});
   }
   setGray(arr, [0, 1, 4, 5, 8, 9]);
   av.umsg("Demonstration of alternative bucket hash for an array of size 10 storing 5 buckets, each two slots in size. The alternating gray and white cells indicate the buckets.");
-  av.label("<b style='color:#0b0;'>B0</b>", {left: 80, top: 50});
-  av.label("<b style='color:#0b0;'>B1</b>", {left: 80, top: 142});
-  av.label("<b style='color:#0b0;'>B2</b>", {left: 80, top: 234});
-  av.label("<b style='color:#0b0;'>B3</b>", {left: 80, top: 326});
-  av.label("<b style='color:#0b0;'>B4</b>", {left: 80, top: 418});
+  av.label("<b style='color:#0b0;'>B0</b>", {left: 80, top: 22});
+  av.label("<b style='color:#0b0;'>B1</b>", {left: 80, top: 84});
+  av.label("<b style='color:#0b0;'>B2</b>", {left: 80, top: 146});
+  av.label("<b style='color:#0b0;'>B3</b>", {left: 80, top: 208});
+  av.label("<b style='color:#0b0;'>B4</b>", {left: 80, top: 270});
   av.displayInit();
   var overflow = av.ds.array(empty2, {indexed: false, center: false,
-                            layout: "vertical", top: 30, left: 150});
+                            layout: "vertical", top: 50, left: 150});
   av.label("Overflow", {before: overflow, left: 140, top: 20});
   av.umsg("We also need an overflow 'bucket' of infinite capacity to hold records from buckets in the main hash table that fill up.");
   av.step();

@@ -10,13 +10,7 @@
   <script src="../../JSAV/build/JSAV-min.js"></script>
   <script src="HashingProbingPRO.js"></script>
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-
-  <style>
-    .jsavcontainer {
-      border: 0px;
-    }
-    #reset { margin-right: 20px;}
-  </style>
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
 </head>
 <body data-height="700" data-width="950">
 <script>
@@ -123,7 +117,7 @@ var checkAnswer = function() {
           value <var>currentKey </var> be inserted?
         </p>
         <input id="reset" type="button" value="Reset" />
-        <div id="jsav"></div>
+        <div id="jsav" class="jsavcanvas"></div>
       <div class="solution" data-type="custom">
         <div class="guess">
           [userInput]

@@ -239,13 +239,16 @@ We can get that result with this secondary hash function:
 .. inlineav:: collisionCON8 ss
    :output: show
 
-Now you can try it yourself.
+Now you can try it.
 
 .. avembed:: Exercises/Hashing/HashingDoubleProbePRO.html ka
 
-The following visualization lets you test out different combinations
-of hash function and collision resolution, on your own input data.
+.. TODO::
+   :type: AV
 
-.. avembed:: AV/Hashing/hashAV.html pe
+   Fix and return hashAV.html to here.
+
+   The following visualization lets you test out different combinations
+   of hash function and collision resolution, on your own input data.
 
 .. odsascript:: AV/Hashing/collisionCON.js

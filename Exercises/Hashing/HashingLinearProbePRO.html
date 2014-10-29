@@ -10,13 +10,7 @@
   <script src="../../JSAV/build/JSAV-min.js"></script>
   <script src="HashingProbingPRO.js"></script>
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-
-  <style>
-    .jsavcontainer {
-      border: 0px;
-    }
-    #reset { margin-right: 20px;}
-  </style>
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
 </head>
 <body data-height="650" data-width="950">
 <script>
@@ -31,7 +25,8 @@ var
 
 // Click event handler on the array
 var clickHandler = function (index, e) {
-  jsavArr.value(index, currentKey);
+//  jsavArr.value(index, currentKey);
+  this.value(index, currentKey);
   userInput = true;
 };
 
@@ -81,24 +76,24 @@ var checkAnswer = function() {
 };
 </script>
 
-  <div class="exercise">
-    <div class="vars">
-      <var id="hashFunction">"h(k) = k  mod " + arr_size</var>
-      <var id="JSAV">initJSAV()</var>
-    </div>
-    <div class="problems">
-      <div> <!-- Supresses answer box -->
-        <p class="problem">
-          Given the following hash table, use hash
-          function <var>hashFunction</var> and handle collisions
-          using Linear Probing.
-        </p>
-        <p class="question">
-          In which slot should the record with key
-          value <var>currentKey </var> be inserted?
-        </p>
-        <input id="reset" type="button" value="Reset" />
-        <div id="jsav"></div>
+<div class="exercise">
+  <div class="vars">
+    <var id="hashFunction">"h(k) = k  mod " + arr_size</var>
+    <var id="JSAV">initJSAV()</var>
+  </div>
+  <div class="problems">
+    <div> <!-- Supresses answer box -->
+      <p class="problem">
+        Given the following hash table, use hash
+        function <var>hashFunction</var> and handle collisions
+        using Linear Probing.
+      </p>
+      <p class="question">
+        In which slot should the record with key
+        value <var>currentKey </var> be inserted?
+      </p>
+      <input id="reset" type="button" value="Reset" />
+      <div id="jsav" class="jsavcanvas"></div>
       <div class="solution" data-type="custom">
         <div class="guess">
           [userInput]
@@ -106,7 +101,7 @@ var checkAnswer = function() {
         <div class="validator-function">
           if (!checkAnswer() && !guess[0])
             return ""; // User did not click, and correct answer is not
-                 // initial array state
+          // initial array state
           else return checkAnswer();
         </div>
       </div>

@@ -13,42 +13,17 @@
   <script src="../../JSAV/lib/raphael.js"></script>
   <script src="../../JSAV/build/JSAV-min.js"></script>
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
   <style>
-    #container {
-      border: 0;
-      width: 780px;
-      height: 740px;
-      padding: 10px;
-      overflow: hidden;
-    }
-
-    .jsavarray { position: absolute; }
-
-    .jsavarray .jsavindex {
-      min-height: 30px !important;
-      max-height: 30px !important;
-      min-width: 30px;
-      line-height: 30px;
-    }
-
-    .jsavverticalarray .jsavindexlabel {
-      right: 40px;
-    }
-
-    #container .jsavarray {
-      left: -10px;
-      height: 80px;
-    }
-
-    #reset { margin-right: 20px;}
-
     .jsavcanvas { height: 350px;}
+    .jsavverticalarray .jsavindexlabel {
+      top: 5px !important;
+    }
   </style>
 </head>
 
-<body data-height="750" data-width="950">
+<body data-height="850" data-width="950">
 <script>
-"use strict";
 var
   jsav,             // The JSAV object
   inputkey,         // The value that the user is inserting
@@ -66,13 +41,8 @@ var
 
 // Handle a click event on an array
 // Place the value where user puts it
-var clickHandler = function (arr, index) {
-  if (arr === jsavInput) {
-    jsavInput.value(index, inputkey);
-  } else if (arr === jsavOverflow) {
-    jsavOverflow.value(index, inputkey);
-  }
-else { console.log("OOOPS!!!"); }
+var clickHandler = function (index, e) {
+  this.value(index, inputkey);
   userInput = true;
 };
 
@@ -85,25 +55,27 @@ var setGray = function (a, index) {
 // function that creates and initialises the arrays
 function resetInit() {
   var i;
+  var offset = 107;
+
   // Do initializations, both for initial use and reset
   userInput = false;
   jsavInput = jsav.ds.array(initData, {indexed: true, center: false,
                             layout: "vertical", left: 20, top: 30});
-  jsav.label("Hash Table", {left: 20, top: 8});
+  jsav.label("Hash Table", {left: 0, top: 0});
   jsav.label("<b style='color:#0b0;'>B0</b>", {left: 80, top: 51});
   jsav.label("<b style='color:#0b0;'>B1</b>", {left: 80, top: 113});
   jsav.label("<b style='color:#0b0;'>B2</b>", {left: 80, top: 175});
   jsav.label("<b style='color:#0b0;'>B3</b>", {left: 80, top: 237});
   jsav.label("<b style='color:#0b0;'>B4</b>", {left: 80, top: 299});
   for (i = 0; i < 4; i++) {
-    jsav.g.line(20, 93 + (i * 62), 70, 93 + (i * 62), {"stroke-width": 2});
+    jsav.g.line(15, offset + (i * 62), 65, offset + (i * 62), {"stroke-width": 2});
   }
   setGray(jsavInput, [0, 1, 4, 5, 8, 9]);
-  jsavInput.click(function (index) { clickHandler(this, index); });
+  jsavInput.click(clickHandler);
   jsavOverflow = jsav.ds.array(empty8, {indexed: true, center: false,
                            layout: "vertical", top: 30, left: 200});
-  jsav.label("Overflow", {left: 195, top: 8});
-  jsavOverflow.click(function (index) { clickHandler(this, index); });
+  jsav.label("Overflow", {left: 190, top: 0});
+  jsavOverflow.click(clickHandler);
   jsavInput.layout();
   jsavOverflow.layout();
   jsav.step();
@@ -153,7 +125,8 @@ var initJSAV = function (key, steps) {
   inputkey = key;
   // Do all of the one-time initializations
   arr_size = 10;
-  jsav = new JSAV($("#container"));
+  jsav = new JSAV("jsav");
+  jsav.recorded();
   for (i = 0; i < 10; i++) { empty[i] = ""; }
   for (i = 0; i < 8; i++) { empty8[i] = ""; }
   gen_instance(steps);
@@ -178,6 +151,7 @@ function checkAnswer() {
   return true;
 }
 </script>
+
 <div class="exercise">
   <div class="vars">
     <var id="iKey">randRange(1, 999)</var>
@@ -196,13 +170,13 @@ function checkAnswer() {
       </div>
       <div class="solution" data-type="custom">
   <div class="guess">
-          [userInput]
-        </div>
+    [userInput]
+  </div>
   <div class="validator-function">
-          if (!checkAnswer(arr_size) && !guess[0])
-          return ""; // User did not click, and correct answer is not
-               // initial array state
-          else return checkAnswer(arr_size);
+    if (!checkAnswer() && !guess[0])
+      return ""; // User did not click, and correct answer is not
+    // initial array state
+    else return checkAnswer();
   </div>
       </div>
       <div class="hints">
