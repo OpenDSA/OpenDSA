@@ -11,6 +11,7 @@
   var Pointer1 = av.g.line(165 , 80,215, 30,{"arrow-end": "classic-wide-long", "opacity": 0, "stroke":'black',"stroke-width":2});
   Pointer1.show(); 
   var  pseudo2 = av.code(" b()\n{ \n c();  \n}" , {lineNumbers:false , top:0 , left:200});
+  av.displayInit();
   av.step();
   
   av.umsg("Function b() has a call to function c().");

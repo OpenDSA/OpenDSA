@@ -9,7 +9,7 @@
   var pseudo = av.code({url: "../../../SourceCode/Java/RecurTutor/Recsum.java",
                        lineNumbers: false,});
   pseudo.highlight(3);
-
+  av.displayInit();
   av.step();
   av.umsg("Thus, the value returned by the base case is important.");
   pseudo.unhighlight(3);

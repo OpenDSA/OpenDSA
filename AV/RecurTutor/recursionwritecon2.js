@@ -7,6 +7,7 @@
   var av = new JSAV("RecursionWriteCON2");
   
   av.umsg("To solve the sum problem, we use the simpler of the two versions. The first one:");
+  av.displayInit();
   av.step();
 
   var  pseudo = av.code(" int sum(int arr[],int size)\n{ if (size==0)\n  return 0;\n else{\n  int smallResult=sum(arr,size-1);\n  return smallResult + arr[size-1];\n  }\n}" , {lineNumbers:false , top:0 , left:70});

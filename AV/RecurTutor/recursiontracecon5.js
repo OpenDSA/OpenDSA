@@ -22,7 +22,7 @@
   av.umsg("To model the domino effect recursively, think of it as to tip n dominos over. For symbolization, let's use the functional notation Domino(n) to represent the correspondent solution. Thus, Domino(1) is the solution to tip a single domino over, Domino(2) is the solution to tip two, Domino(3) is the solution to tip three.");
  
   var  pseudo = av.code("Domino(n){\n If(n == 1) \n  manually tip the domino over.\n else{\n  Domino(n-1) //to tip the first (n-1) dominos over\n  the nth domino will be tipped over subsequently //where 1 < n <= N\n  }\n}" , {lineNumbers:false , top:130 , left:100}); 
-  
+  av.displayInit();
   av.step();
   
   av.umsg("If there is only one domino, it is easy enough to tip it over manually. Let’s think of that Domino(1) is solved nonrecursively.");
