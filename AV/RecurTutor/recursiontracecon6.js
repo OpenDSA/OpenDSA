@@ -20,7 +20,7 @@
   av.umsg("To apply Domino effect solving technique, it is assumed that there is a sequence of integers, from 1 to N, hidden behind the dominos, and the only way to see the integer behind a domino is tipping its front domino over");
  
   var  pseudo = av.code("PrintOneToN(n){\n If(n==1)\n  print 1\n else{\n  PrintOneToN(n-1) //to print integers from 1 to n-1\n  print n //where 1<n≤N\n  }\n}" , {lineNumbers:false , top:130 , left:150}); 
-  
+  av.displayInit();
   av.step();
   av.umsg("Since the first domino has to be tipped over manually, the solution for the base case, PrintOneToN(1), is solved nonrecursively by printing 1.");
 

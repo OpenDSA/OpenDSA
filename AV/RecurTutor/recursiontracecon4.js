@@ -15,6 +15,7 @@ var setWhite = function (arr, index) {
   av.umsg("Let's consider an easy recursive call. We want to sum the elements of an array.");
   var pseudo = av.code({url: "../../../SourceCode/Java/RecurTutor/Recsum.java",
                        lineNumbers: false,});
+  av.displayInit();
   av.step();
   av.umsg("Assume the array contains: { 2, 4, 6 }, and that the call to the sum is: sum( arr, 3 ) which will sum the first three elements of the array");
   var arr = av.ds.array(theArray, {indexed: true});
