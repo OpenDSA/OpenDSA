@@ -210,6 +210,17 @@ $(document).ready(function () {
     partitioned.value(part.value());
     left.value(l.value());
     right.value(r.value());
+
+    // Fix the message being displayed
+    av.umsg(interpret("av_c1"));
+
+    if (pivotMoved.value() && !partitioned.value()) {
+      av.umsg(interpret("av_c9"));
+    } else if (partitioned.value() && !pivotMoved.value()) {
+      av.umsg(interpret("av_c15"));
+    } else if (partitioned.value() && pivotMoved.value()) {
+      av.umsg(interpret("av_c6"));
+    }
   }
 
   // Click handler for all array elements
