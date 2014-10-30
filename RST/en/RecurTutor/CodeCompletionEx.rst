@@ -13,45 +13,18 @@
 Code Completion Practice Exercises
 ==================================
 
+First, complete the base case condition and/or the base case action for the following exercises:
+.. avembed:: Exercises/RecurTutor/recCodeCompSumm1.html ka
 
-.. avembed:: Exercises/RecurTutor/recwbc1PROG.html ka
+Next, complete the recursive case and/or the recursive call for the following mathematical function related exercises.
 
+.. avembed:: Exercises/RecurTutor/recCodeCompSumm2.html ka
 
-.. avembed:: Exercises/RecurTutor/recwbca2PROG.html ka
+Then, complete the recursive case and/or the recursive call for the following summation related exercises.
+.. avembed:: Exercises/RecurTutor/recCodeCompSumm3.html ka
 
-
-.. avembed:: Exercises/RecurTutor/recwbcrc3PROG.html ka
-
-
-.. avembed:: Exercises/RecurTutor/recwrc4PROG.html ka
-
-      
-.. avembed:: Exercises/RecurTutor/recwbcba5PROG.html ka
-
-
-.. avembed:: Exercises/RecurTutor/recwrc6PROG.html ka
-
-
-.. avembed:: Exercises/RecurTutor/recwrc7PROG.html ka
-
-
-.. avembed:: Exercises/RecurTutor/recwrc8PROG.html ka
-	
-
-.. avembed:: Exercises/RecurTutor/recwbcba9PROG.html ka	   
-	
-
-.. avembed:: Exercises/RecurTutor/recwrc10PROG.html ka	 
-
-
-.. avembed:: Exercises/RecurTutor/recwrc11PROG.html ka
-
-
-.. avembed:: Exercises/RecurTutor/recwrc12PROG.html ka
-
-
-.. avembed:: Exercises/RecurTutor/recwrc13PROG.html ka
-
+Finally, complete the recursive case and/or the recursive call for the following conting related exercises.
+.. avembed:: Exercises/RecurTutor/recCodeCompSumm4.html ka
 
 You need to practice harder recursive functions in order to gain more experience on recursion.
 

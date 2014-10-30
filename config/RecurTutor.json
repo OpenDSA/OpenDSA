@@ -52,92 +52,29 @@
       "RecurTutor/CodeCompletionEx": {
         "long_name": "Code Completion Exercises",
         "exercises": {
-          "recwbc1PROG": {
-            "long_name": "Recursion Programming Exercise 1",
+          "recCodeCompSumm1": {
+            "long_name": "Recursion Code Completion Exercises Set 1",
             "required": true,
             "points": 0.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recwbca2PROG": {
-            "long_name": "Recursion Programming Exercise 2",
+          "recCodeCompSumm2": {
+            "long_name": "Recursion Code Completion Exercises Set 2",
             "required": true,
             "points": 0.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recwbcrc3PROG": {
-            "long_name": "Recursion Programming Exercise 3",
+          "recCodeCompSumm3": {
+            "long_name": "Recursion Code Completion Exercises Set 3",
             "required": true,
             "points": 0.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recwrc4PROG": {
-            "long_name": "Recursion Programming Exercise 4",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "recwbcba5PROG": {
-            "long_name": "Recursion Programming Exercise 5",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "recwrc6PROG": {
-            "long_name": "Recursion Programming Exercise 6",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "recwrc7PROG": {
-            "long_name": "Recursion Programming Exercise 7",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "recwrc8PROG": {
-            "long_name": "Recursion Programming Exercise 8",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "recwbcba9PROG": {
-            "long_name": "Recursion Programming Exercise 9",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "recwrc10PROG": {
-            "long_name": "Recursion Programming Exercise 10",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "recwrc11PROG": {
-            "long_name": "Recursion Programming Exercise 11",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "recwrc12PROG": {
-            "long_name": "Recursion Programming Exercise 12",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "recwrc13PROG": {
-            "long_name": "Recursion Programming Exercise 13",
+          "recCodeCompSumm4": {
+            "long_name": "Recursion Code Completion Exercises Set 4",
             "required": true,
             "points": 0.0,
             "threshold": 1.0,
@@ -342,42 +279,42 @@
         "long_name": "Tracing Practice Exercises",
         "exercises": {
           "recTracingSumm1": {
-            "long_name": "Recursion Tracing Exercise Set 1",
+            "long_name": "Recursion Tracing Exercises Set 1",
             "required": true,
             "points": 0.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
           "recTracingSumm2": {
-            "long_name": "Recursion Tracing Exercise Set 2",
+            "long_name": "Recursion Tracing Exercises Set 2",
             "required": true,
             "points": 0.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
           "recTracingSumm3": {
-            "long_name": "Recursion Tracing Exercise Set 3",
+            "long_name": "Recursion Tracing Exercises Set 3",
             "required": true,
             "points": 0.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
           "recTracingSumm4": {
-            "long_name": "Recursion Tracing Exercise Set 4",
+            "long_name": "Recursion Tracing Exercises Set 4",
             "required": true,
             "points": 0.0,
             "threshold": 1.0,
             "showhide": "Show"
           }, 
           "recTracingSumm5": {
-            "long_name": "Recursion Tracing Exercise Set 5",
+            "long_name": "Recursion Tracing Exercises Set 5",
             "required": true,
             "points": 0.0,
             "threshold": 1.0,
             "showhide": "Show"
           },        
           "recTracingSumm6": {
-            "long_name": "Recursion Tracing Exercise Set 6",
+            "long_name": "Recursion Tracing Exercises Set 6",
             "required": true,
             "points": 0.0,
             "threshold": 1.0,
