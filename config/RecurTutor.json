@@ -341,148 +341,43 @@
       "RecurTutor/TracingEx": {
         "long_name": "Tracing Practice Exercises",
         "exercises": {
-          "rectFIBmystbc1": {
-            "long_name": "Recursion Tracing Exercise 1",
+          "recTracingSumm1": {
+            "long_name": "Recursion Tracing Exercise Set 1",
             "required": true,
             "points": 0.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "rectMCQresrc2": {
-            "long_name": "Recursion Tracing Exercise 2",
+          "recTracingSumm2": {
+            "long_name": "Recursion Tracing Exercise Set 2",
             "required": true,
             "points": 0.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "rectFIBbwd3": {
-            "long_name": "Recursion Tracing Exercise 3",
+          "recTracingSumm3": {
+            "long_name": "Recursion Tracing Exercise Set 3",
             "required": true,
             "points": 0.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "rectFIBfwd4": {
-            "long_name": "Recursion Tracing Exercise 4",
+          "recTracingSumm4": {
+            "long_name": "Recursion Tracing Exercise Set 4",
             "required": true,
             "points": 0.0,
             "threshold": 1.0,
             "showhide": "Show"
-          },
-          "rectFIB2rc5": {
-            "long_name": "Recursion Tracing Exercise 5",
+          }, 
+          "recTracingSumm5": {
+            "long_name": "Recursion Tracing Exercise Set 5",
             "required": true,
             "points": 0.0,
             "threshold": 1.0,
             "showhide": "Show"
-          },
-          "rectMCQbwd6": {
-            "long_name": "Recursion Tracing Exercise 6",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "rectFIBir7": {
-            "long_name": "Recursion Tracing Exercise 7",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "rectFIBfwd8": {
-            "long_name": "Recursion Tracing Exercise 8",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "rectMCQbwd9": {
-            "long_name": "Recursion Tracing Exercise 9",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "rectFIBfwd10": {
-            "long_name": "Recursion Tracing Exercise 10",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "rectFIBfwd11": {
-            "long_name": "Recursion Tracing Exercise 11",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "rectFIBir12": {
-            "long_name": "Recursion Tracing Exercise 12",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "rectFIBfwd13": {
-            "long_name": "Recursion Tracing Exercise 13",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "rectMCQfwder14": {
-            "long_name": "Recursion Tracing Exercise 14",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "rectMCQmrc15": {
-            "long_name": "Recursion Tracing Exercise 15",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "rectMCQbc16": {
-            "long_name": "Recursion Tracing Exercise 16",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "rectMCQrc17": {
-            "long_name": "Recursion Tracing Exercise 17",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "rectFIB2rc18": {
-            "long_name": "Recursion Tracing Exercise 18",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "rectFIBfwd19": {
-            "long_name": "Recursion Tracing Exercise 19",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "rectMCQerr20": {
-            "long_name": "Recursion Tracing Exercise 20",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "rectMCQerrfx21": {
-            "long_name": "Recursion Tracing Exercise 21",
+          },        
+          "recTracingSumm6": {
+            "long_name": "Recursion Tracing Exercise Set 6",
             "required": true,
             "points": 0.0,
             "threshold": 1.0,
