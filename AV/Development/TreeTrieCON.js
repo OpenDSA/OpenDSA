@@ -142,16 +142,16 @@
   var split23 = tl.add_value(23, "23", ht3);
   split23.css({"fill": highlight_background_color});
   split59.css({"fill": unhighlight_background_split_color});
-  r.right().left("23");
+  r.left().right().left("23");
   r.right().right().right().left().right().css({"background-color": unhighlight_background_color, "color": "black"});
-  r.right().left().css({"background-color": highlight_background_color, "color": "white"});
+  r.left().right().left().css({"background-color": highlight_background_color, "color": "white"});
   t.layout();
   av.step();
 
   // step 12
   av.umsg("We have reached our final tree and corresponding number line.")
   split23.css({"fill": unhighlight_background_split_color});
-  r.right().left().css({"background-color": unhighlight_background_color, "color": "black"});
+  r.left().right().left().css({"background-color": unhighlight_background_color, "color": "black"});
   t.layout();
   av.step();
 
