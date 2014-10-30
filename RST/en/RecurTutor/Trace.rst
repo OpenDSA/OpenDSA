@@ -21,6 +21,8 @@
 
 Tracing a recursive code
 ==============================
+As we have seen in the previous section that to write a recursive code you should think in a top-down manner. The successful way is not to worry about how the recursive callcursive f slves the sub-problem. Simply accept that it will solve it correctly, and use this result to in turn correctly solve the original problem. On the other hand, if it is required to read or trace a recursive function you need to think in a bottom-up manner. That means you will nedd first to evaluate the base case and work backward until reaching the required function call. In this section we will illustarte how can you trace a recursive call.
+
 Tracing recursive functions is a great way to learn how it behave. After you
 become comfortable with tracing, you rarely need to trace again. You begin to
 trust that recursion will work.
