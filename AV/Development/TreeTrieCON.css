@@ -28,7 +28,6 @@
 .jsavoutput.jsavline {
   width: 650px;
   padding-top: 20px;
-  text-align: center;
 }
 
 .jsavnode .jsavvalue {
@@ -141,6 +140,7 @@
 /* There are no numbers in these leaf nodes, so have to adjust. */
 #TrieTimeline .jsavnode.jsavtreenode.jsavbinarynode.huffmanleaf {
   line-height: 32px;
+  border-radius: 1px;
 }
 
 /*====================== Misc. =======================*/
