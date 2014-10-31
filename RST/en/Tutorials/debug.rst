@@ -164,3 +164,40 @@ execute it. This means you can edit and view information programatically.
 
    Figure 9: The Display
 
+Conditional Breakpoints
+=======================
+Often times when troubleshooting you may wish to stop at breakpoint at certain
+times. However adding in additional code to catch those specified conditions
+can lead to issues later if you forget to remove the additional code.
+Fortunately many debuggers have the functionality to only stop at breakpoints
+when needed.
+
+Step 1: Create a breakpoint. For this example I will be using the source code
+from the memory pool that is randomly filled with characters. I want to hit my
+breakpoint if and only if the value of ind is 10.
+
+.. odsafig:: Images/DebugConditionalBreakpoint.png
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: Breakpoint set
+
+Step 2: Right click on the breakpoint and select Breakpoint Properties
+
+Step 3: You will then be presented with a screen similar to the picture below.
+There are two option to halt at a breakpoint: by hitcount and when a condition
+is satisfied. For this example I have chosen to stop my program only when the
+randomly generated index is equal to 10. Choose the option you would like, if
+you choose conditional, create an arbitrary boolean expression to satisfy.
+
+.. odsafig:: Images/DebugConditional.png
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :scale: 50%
+   :alt: Breakpoint condition
+
+By making use of conditional breakpoints you can speed up debugging and eliminate
+the chance of accidentally progressing too far. For more information on using
+breakpoints check out Eclipse's official documentation found
+`here <https://wiki.eclipse.org/FAQ_How_do_I_set_a_conditional_breakpoint%3F>`__.
