@@ -2208,6 +2208,10 @@
         "long_name": "Dynamic Programming",
         "exercises": {}
       },
+      "Development/Floyd": {
+        "long_name": "All-Pairs Shortest Paths",
+        "exercises": {}
+      },
       "Development/Knapsack": {
         "exercises": {
           "sackCallTree": {

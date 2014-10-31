@@ -140,7 +140,7 @@ Glossary
 
    arm
       In the context of an :term:`I/O head`, this attaches the sensor
-      on the I/O head to the term:`boom`.
+      on the I/O head to the :term:`boom`.
 
    array-based list
       An implementation for the :term:`list` ADT that uses an array to
@@ -924,7 +924,7 @@ Glossary
       of data.
 
    disk drive
-      An example of term:`peripheral storage` or
+      An example of :term:`peripheral storage` or
       :term:`secondary storage`.
       Data access times are typically measured in thousandths of a
       second (milliseconds), which
@@ -1793,7 +1793,7 @@ Glossary
 
    least frequently used
        Abbreviated :term:`LFU`, it is a :term:`heuristic` that can be
-       used to decide which :term:`buffer` in a :term`buffer pool`
+       used to decide which :term:`buffer` in a :term:`buffer pool`
        to :term:`flush` when data in the buffer pool must be
        replaced by new data being read into a
        :term:`cache <caching>`.
@@ -1803,7 +1803,7 @@ Glossary
 
    least recently used
        Abbreviated :term:`LRU`, it is a popular :term:`heuristic` to
-       use for deciding which :term:`buffer` in a :term`buffer pool`
+       use for deciding which :term:`buffer` in a :term:`buffer pool`
        to :term:`flush` when data in the buffer pool must be
        replaced by new data being read into a :term:`cache
        <caching>`.
@@ -1999,7 +1999,7 @@ Glossary
       The concept that a computer system stores data in a range of
       storage types that range from fast but expensive
       (:term:`primary storage`) to slow but cheap
-      (:term`secondary storage`).
+      (:term:`secondary storage`).
       When there is too much data to store in :term:`primary storage`,
       the goal is to have the data that is needed soon or
       most often in the primary storage as much as possible,
