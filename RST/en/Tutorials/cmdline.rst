@@ -14,7 +14,7 @@ Command Line Basics
 ===================
 What's A CLI?
 -------------
-A CLI or Command Line Interface is a simple text only interface. A user provides
+A Command Line Interface or CLI is a simple text only interface. A user provides
 a command with or without some additional information and then the command is
 exectued.
 
@@ -54,6 +54,11 @@ is a more in depth explanation of the command. Below is an example of running
 ::
 
    man ls
+
+4. Further Reading: This was a very brief introduction to the terminal. It was
+included only to give some context to further chapters that make use of
+arguments. For more information feel free to check this resource
+`here <https://help.ubuntu.com/community/UsingTheTerminal>`__.
 
 
 .. odsafig:: Images/manexample.png
