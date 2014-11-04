@@ -548,6 +548,7 @@ function buildAttemptData(correct, attemptNum, attemptContent, timeTaken,
 
     var OpenPop_code = typeof $('#codeTextarea').val() !== "undefined" ? $('#codeTextarea').val(): null;
     var OpenPop_genlist = typeof generatedList !== "undefined" ? generatedList : null;
+    var OpenPop_summexname= typeof summexName !== "undefined" ? summexName : null;
 
     _.extend(data, {
         key: SESSION_KEY,
@@ -604,7 +605,9 @@ function buildAttemptData(correct, attemptNum, attemptContent, timeTaken,
         code : OpenPop_code,
 
         // OpenPop random list
-        genlist : OpenPop_genlist
+        genlist : OpenPop_genlist,
+       
+        summexname : OpenPop_summexname
 
     });
 
