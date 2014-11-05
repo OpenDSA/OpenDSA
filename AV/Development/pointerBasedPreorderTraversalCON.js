@@ -11,15 +11,20 @@ $(document).ready(function () {
 
   var bt = av.ds.binarytree({visible: true, nodegap: 15});
   bt.root("-");
+  bt.root().addClass("squareleaf");
   var rt = bt.root();
   rt.left("*");
+  rt.left().addClass("squareleaf");
   rt.right("c");
   rt.left().left("*");
+  rt.left().left().addClass("squareleaf");
   rt.left().left().left("4");
   rt.left().left().right("x");
   rt.left().right("+");
+  rt.left().right().addClass("squareleaf");
   rt.left().right().right("a");
   rt.left().right().left("*");
+  rt.left().right().left().addClass("squareleaf");
   rt.left().right().left().left("2");
   rt.left().right().left().right("x");
   bt.layout();

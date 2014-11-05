@@ -11,7 +11,7 @@
     "english": [
       "A node is either red or black.",
       "The root is black.",
-      "Each red node must have black child nodes.",
+      "A red node's child nodes are black.",
       "Each path from the root to an empty subtree contains\nthe same number of black nodes."
     ]
   }

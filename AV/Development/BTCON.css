@@ -64,14 +64,28 @@
 
 .thickblacknode { /* Make a node edge to be thick and black */
   background-color: white;
-  color: black;
   border-color: black;
   border-width: 2px;
 }
 
-#rectangle .internalnode {
+.internalnode {
   background-color: white;
-  color: black;
-  border-color: black;
-  border-width: 2px;
+  color: blue;
+  border-color: blue;
 }
+
+.squareleaf {
+  border-radius: 1px;
+  background-color: white;
+  line-height: 22px;
+  z-index: 100; /* Prevents the tails of the edges from showing up in the background of the node */
+}
+
+/*.jsavnode.jsavtreenode.jsavbinarynode.huffmanleaf {
+  height:32px;
+  width:32px;
+  line-height: 16px;
+  z-index: 100;
+  margin-top:3px;
+  padding-top: 1px;
+}*/
