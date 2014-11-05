@@ -42,3 +42,13 @@ a window similar to the below screenshot. Hit the Add button (circled in red)
 
 Step 4: You will now be prompted with window requesting a Name/Location. Use
 NAME: WebCAT, LOCATION: http://web-cat.cs.vt.edu/eclipse
+
+Step 5: You will now be prompated with a window similar to below. Select the
+Java plugin and install it.
+
+.. odsafig:: Images/Webcatnewsoftwareselection.png
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :scale: 50%
+   :alt: Add New Software Window Selection

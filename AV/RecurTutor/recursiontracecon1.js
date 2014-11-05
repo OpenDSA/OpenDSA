@@ -8,6 +8,7 @@
   var pseudo = av.code({url: "../../../SourceCode/Java/RecurTutor/Recfact.java",
                        lineNumbers: false,});
   av.umsg("Suppose we want to compute the value of factorial(5) using the following recursive factorial implementation:");
+  av.displayInit();
   av.step();
  
   av.umsg("The recursive call creates a new copy of the code where n = 5");

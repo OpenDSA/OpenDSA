@@ -11,8 +11,8 @@
     "english": [
       "A node is either red or black.",
       "The root is black.",
-      "Every red node must have black child nodes.",
-      "Every path from the root to any leaf node contains the same number of black nodes."
+      "Each red node must have black child nodes.",
+      "Each path from the root to an empty subtree contains\nthe same number of black nodes."
     ]
   }
 }

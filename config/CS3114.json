@@ -2129,6 +2129,10 @@
             "threshold": 0.90
           }
         }
+      },
+      "Development/Floyd": {
+        "long_name": "All-Pairs Shortest Paths",
+        "exercises": {}
       }
     },
     "Appendix": {

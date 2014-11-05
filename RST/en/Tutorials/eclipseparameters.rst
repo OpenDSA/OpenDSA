@@ -12,13 +12,13 @@
 ===========================
 Using Parameters in Eclipse
 ===========================
-When running your programs in Eclipse often you will need to use command line
-parameters. You can view a video tutorial of the same material
-`here <https://www.youtube.com/watch?v=0tpsXmchBfk&feature=youtu.be>`__.
+Sometimes your projects developed Eclipse need to use command line parameters.
+You can view a tutorial of the material in this 
+`tutorial <https://www.youtube.com/watch?v=0tpsXmchBfk&feature=youtu.be>`__.
 
 1. Open your project and select the drop down arrow next to the Green Run Arrow
-(circled below). If you can not see this arrow you may be in the wrong Eclipse
-perspective. ``Select Window`` -> ``Open Perspective`` -> ``Java``.
+(circled below). If you cannot see this arrow then you may be in the wrong
+Eclipse perspective. ``Select Window`` -> ``Open Perspective`` -> ``Java``.
 
 .. odsafig:: Images/ParametersStep1.png
    :width: 600

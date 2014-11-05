@@ -23,8 +23,7 @@
       "av_c12": "",
       "av_c13": "Select the right endpoint, then click on 'Partition'.",
       "av_c14": "Select the left endpoint.",
-      "av_c15": "Done partitioning. Now click on the position where the pivot should be moved to, and click 'Mark Selected as Sorted'.",
-      "av_c16": "Select the pivot and then click on where it should be moved to."
+      "av_c15": "Done partitioning. Now click on the position where the pivot should be moved to, and click 'Mark Selected as Sorted'."
     }
   },
   "params": {

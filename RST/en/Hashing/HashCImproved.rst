@@ -102,9 +102,9 @@ where :math:`r_i` is the :math:`i` th value in a random permutation
 of the numbers from 1 to :math:`M-1`.
 All inserts and searches must use the same sequence of random numbers.
 The probe function would be
-:math:`\textbf{p}(K, i) = \textbf{Perm}[i]`
-where **Perm** is an array of length :math:`M` that stores a value of
-0 in position **Perm[0]**, and stores a
+:math:`\textbf{p}(K, i) = \textbf{Permutation}[i]`
+where **Permutation** is an array of length :math:`M` that stores a value of
+0 in position **Permutation[0]**, and stores a
 random permutation of the values from 1 to :math:`M - 1` in slots 1 to
 :math:`M - 1`.
 
@@ -239,13 +239,16 @@ We can get that result with this secondary hash function:
 .. inlineav:: collisionCON8 ss
    :output: show
 
-Now you can try it yourself.
+Now you can try it.
 
 .. avembed:: Exercises/Hashing/HashingDoubleProbePRO.html ka
 
-The following visualization lets you test out different combinations
-of hash function and collision resolution, on your own input data.
+.. TODO::
+   :type: AV
 
-.. avembed:: AV/Hashing/hashAV.html pe
+   Fix and return hashAV.html to here.
+
+   The following visualization lets you test out different combinations
+   of hash function and collision resolution, on your own input data.
 
 .. odsascript:: AV/Hashing/collisionCON.js

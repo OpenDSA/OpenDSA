@@ -10,6 +10,8 @@
 
 .. index:: ! collision resolution
 
+.. odsalink:: AV/Hashing/linProbeCON.css
+
 Collision Resolution
 ====================
 

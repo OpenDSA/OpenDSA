@@ -126,9 +126,9 @@ var setRed = function (arr, index) {
   av.umsg("Let's see an example of collision resolution using pseudorandom probing on a hash table of size 10 using the simple mod hash function.");
   av.displayInit();
 
-  av.umsg("We need to first define a random permutation of the values 1 to M-1 that all inserts and searches will use. The example permuation will show the second array, so that you can see it during the whole slideshow.");
+  av.umsg("We need to first define a random permutation of the values 1 to M-1 that all inserts and searches will use. This is shown in the <code>permuation</code> array, so that you can see it during the whole slideshow.");
   perm.show();
-  av.label("Perm:", {before: perm, top: 100});
+  av.label("Permutation:", {before: perm, top: 70});
   av.step();
 
   av.umsg("Insert a record with key value 157.");
@@ -190,7 +190,7 @@ var setRed = function (arr, index) {
   arr.value(1, 110);
   av.step();
 
-  av.umsg("Be aware that potentially any permutation is possible. Even one that gives us a bad probe sequence, such as the same as we would get from linear probing. But this will almost never happen in practice, since any given permutation is expected to appear once in n! tries.");
+  av.umsg("Of course, any permutation is possible. Even one that gives us a bad probe sequence, such as the same as we would get from linear probing. But this will almost never happen in practice, since any given permutation is expected to appear once in n! tries.");
   var i;
   arr.unhighlight(1);
   for (i = 0; i < 10; i++) { arr.value(i, ""); }

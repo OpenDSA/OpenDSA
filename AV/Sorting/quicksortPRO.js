@@ -210,6 +210,17 @@ $(document).ready(function () {
     partitioned.value(part.value());
     left.value(l.value());
     right.value(r.value());
+
+    // Fix the message being displayed
+    av.umsg(interpret("av_c1"));
+
+    if (pivotMoved.value() && !partitioned.value()) {
+      av.umsg(interpret("av_c9"));
+    } else if (partitioned.value() && !pivotMoved.value()) {
+      av.umsg(interpret("av_c15"));
+    } else if (partitioned.value() && pivotMoved.value()) {
+      av.umsg(interpret("av_c6"));
+    }
   }
 
   // Click handler for all array elements
@@ -320,7 +331,7 @@ $(document).ready(function () {
       return;
     }
 
-    partition(userArr, left.value(), right.value() + 1, userArr.value(pivotIndex.value()));
+    partition(userArr, left.value(), right.value(), userArr.value(pivotIndex.value()));
 
     // Update state variables and clear left and right marker arrows
     partitioned.value(true);
@@ -349,7 +360,7 @@ $(document).ready(function () {
     // Mark this as a step to be graded and a step that can be undone (continuous feedback)
     exercise.gradeableStep();
 
-    av.umsg(interpret("av_c16"));
+    av.umsg(interpret("av_c1"));
   }
 
   // Attach the button handlers

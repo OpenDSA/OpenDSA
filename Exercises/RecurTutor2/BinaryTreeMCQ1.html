@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>Binary Tree: Which Order?</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+
+<body>
+<div class="exercise">
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="question"> 
+      What does the following code describes?
+      <pre>	
+      void someOrder (BinNode root)
+      {
+        if(root == null) return;
+        someOrder( root.leftNode() );
+        root.printNodeValue();
+        someOrder( root.rightNode() ); 
+      }
+      </pre>
+      <div class="solution"><var>"inorder"</var></div>
+      <ul class="choices" >
+	<li><var>"preorder"</var></li>
+	<li><var>"postorder"</var></li>			  	  	   	  	 
+      </ul>
+      <div class="hints">
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

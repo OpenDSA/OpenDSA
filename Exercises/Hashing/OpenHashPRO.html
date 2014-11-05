@@ -17,29 +17,15 @@
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
   <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
   <style>
-    #container {
-      border: 0;
-      padding: 10px;
-      overflow: hidden;
-    }
-
-    .jsavarray { position: absolute; }
-
-    #container .jsavarray {
-      left: -10px;
-      height: 80px;
-    }
-
+    .jsavcanvas { height: 340px; }
     .jsavlist .jsavlistnode {
       min-height: 25px !important;
       max-height: 25px !important;
-      line-height: 25px !important;
+      line-height: 23px !important;
     }
-
-    #reset { margin-right: 20px;}
-    .jsavcanvas { height: 340px;}
   </style>
 </head>
+
 <body data-height="720" data-width="950">
 <script>
 var
@@ -77,7 +63,6 @@ var clickHandler = function (arr, index) {
     jsavLists[index].addLast(jsavInput.value(ValueIndex));
     jsavLists[index].layout({center: false});
     jsavInput.unhighlight(ValueIndex);
-    arr.value(index, jsavInput.value(ValueIndex));
     jsavInput.value(ValueIndex, "");
     ValueIndex = -1;
   }
@@ -153,7 +138,6 @@ function checkAnswer(arr_size) {
       }
     }
   }
-console.log("curr is " + curr + ", arr_size is " + arr_size);
   if (curr !== arr_size) { return false; }
   return true;
 }

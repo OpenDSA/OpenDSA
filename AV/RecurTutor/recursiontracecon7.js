@@ -20,7 +20,7 @@
   av.umsg("To apply Domino effect solving technique, it is assumed that the digits within the integer, from most significant to lest significant, are hidden behind the dominos. The dominos are tipped over from right to left, so that tipping over dominos can be imagined as counting digits from the least significant to the most significant.");
  
   var  pseudo = av.code("NumOfDig(n){\n If(0≤n≤9) \n  result = 1\n else{\n  result = NumOfDig( floor(n / 10) ) + 1  //where n≥10.  }\n}" , {lineNumbers:false , top:130 , left:150}); 
-  
+  av.displayInit();
   av.step();
   av.umsg("Since the first domino has to be tipped over manually, the solution for the base case, NumOfDig(0≤n≤9), is counted nonrecursively and the result is 1 ");
 
