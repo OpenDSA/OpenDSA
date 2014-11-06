@@ -1,0 +1,47 @@
+{
+  "title": "Advance Recursion Tutor",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {"Java": ["java"]},
+  "module_origin": "http://algoviz.org",
+  "exercise_server": "https://opendsa.cc.vt.edu",
+  "logging_server": "https://opendsa.cc.vt.edu",
+  "score_server": "https://opendsa.cc.vt.edu",
+  "build_JSAV": false,
+  "allow_anonymous_credit": true,
+  "suppress_todo": false,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "chapters": {
+    "Binary Tree Exercises": {
+      "RecurTutor2/btPROGExercises": {
+        "long_name": "Recursion Chapter Introduction",
+        "exercises": {
+          "btCntPROG": {
+            "long_name": "Binary Tree Nodes Count Exercise",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0,
+            "showhide": "Show"
+          },
+          "btLeafPROG": {
+            "long_name": "Binary Tree Leaf Count Exercise",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0,
+            "showhide": "Show"
+          },
+          "btDepthPROG": {
+            "long_name": "Binary Tree Depth Exercise",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0,
+            "showhide": "Show"
+          }
+        }
+      }
+  }
+}
+}
+
