@@ -158,6 +158,30 @@ Depending on your problem, you might need to:
   certificates into one file.
 
 
+Caching
+-------
+
+If you frequently update your OpenDSA's files, you might want 
+to configure Apache to cache your files for a shorter period
+of time. In our case we configured Apache  to cache js and css 
+files for an hour.
+
+The Apache documentation recommends to make configuration changes inside
+httpd main server config file rather that using ``.htaccess`` files 
+(see http://httpd.apache.org/docs/2.4/howto/htaccess.html).
+Below is our caching settings::
+
+    ExpiresActive On
+    ExpiresByType image/png "now plus 1 month"
+    ExpiresByType image/jpeg "now plus 1 month"
+    ExpiresByType image/gif "now plus 1 month"
+    ExpiresByType application/javascript "now plus 1 hour"
+    ExpiresByType application/x-javascript "now plus 1 hour"
+    ExpiresByType text/javascript "now plus 1 hour"
+    ExpiresByType text/css "now plus 1 hour"
+
+
+
 Notes
 -----
 
