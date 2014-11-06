@@ -166,7 +166,7 @@
   
   var av = new JSAV("TrieTimeline");
   var t = av.ds.binarytree({nodegap: 25});
-  var r = t.root("E");
+  var r = t.root("");
   r.addClass("huffmanleaf");
   var tl = new timeline(av, 49, 325, 500, 0, 64, 10);
 

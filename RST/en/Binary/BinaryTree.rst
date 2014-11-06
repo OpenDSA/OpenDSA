@@ -142,7 +142,7 @@ of a complete binary tree.
 The :ref:`Huffman coding tree <Huffman coding tree> <Huffman>`
 is an example of a full binary tree.
 
-.. avembed:: Exercises/Binary/DprobsAll.html ka
+.. avembed:: Exercises/Binary/DefSumm.html ka
 
 Notes
 -----

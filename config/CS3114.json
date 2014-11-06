@@ -692,7 +692,7 @@
       "Binary/BinaryTree": {
         "long_name": "Binary Tree Terminology",
         "exercises": {
-          "DprobsAll": {
+          "Dprobs": {
             "long_name": "Tree Definition Summary",
             "required": true,
             "points": 3,
