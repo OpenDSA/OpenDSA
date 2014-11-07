@@ -39,6 +39,10 @@
         "long_name": "Debugging in Eclipse",
         "exercises": {}
       },
+      "Tutorials/debugmethods": {
+        "long_name": "Configuring Eclipse For Virginia Tech",
+        "exercises": {}
+      },
       "Tutorials/scanning": {
         "long_name": "Reading In Input",
         "exercises": {}
