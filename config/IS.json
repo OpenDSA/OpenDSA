@@ -28,8 +28,8 @@
       "IS/BinaryTree": {
         "long_name": "Binary Tree Terminology",
         "exercises": {
-          "DprobsAll": {
-            "long_name": "Tree Definition Summary",
+          "DefSumm": {
+            "long_name": "Tree Definition Summary Exercises",
             "required": true,
             "points": 3,
             "threshold": 8
