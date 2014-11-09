@@ -19,26 +19,28 @@
 
 <body data-height="650" data-width="950">
 <script>
-var initJSAV = function () {
-  var jsav = new JSAV("jsav");
-  jsav.recorded();
-  var bt = jsav.ds.binarytree({center: true, visible: true, nodegap: 35});
-  var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  var letterIndex = 1;
-  bt.root(letters.charAt(0));
-  //generate random tree with between 6-10 nodes
-  var numNodes = Math.floor(Math.random() * (10-6))+6;
-  var i = 1;
-  while (i <= numNodes)
-  {
-    randomNode(bt, bt.root(), letters.charAt(i));
-    i++;
-  }
-  bt.layout();
-  //traverse the tree here and store the string representation
-  var sequentialString = preOrderTraversal(bt);
+  var jsav;
 
-}
+  var initJSAV = function () {
+    jsav = new JSAV("jsav");
+    jsav.recorded();
+  }
+
+  var makeTree = function () {
+    var bt = jsav.ds.binarytree({center: true, visible: true, nodegap: 35});
+    var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var letterIndex = 1;
+    bt.root(letters.charAt(0));
+    //generate random tree with between 6-10 nodes
+    var numNodes = Math.floor(Math.random() * (10-6))+6;
+    var i = 1;
+    while (i <= numNodes) {
+      randomNode(bt, bt.root(), letters.charAt(i));
+      i++;
+    }
+    bt.layout();
+    return bt;
+  }
 
   function preOrderTraversal(bt) {
     var retString = "";
@@ -56,6 +58,7 @@ var initJSAV = function () {
         retString += '/';
     };
     preorderNode(bt.root());
+    console.log("Answer: " + retString);
     return retString;
   }
 
@@ -79,13 +82,12 @@ function randomNode(bt,root, value)
 <div class="exercise">
   <div class="vars">
     <var id="JSAV">initJSAV()</var>
+    <var id="BT">makeTree()</var>
+    <var id="ANS">preOrderTraversal(BT)</var>
   </div>
 
   <div class="problems">
     <div id="problem-type-or-description-2">
-      <div class="vars">
-        <var id="ANS">1</var>
-      </div>
       <p class="problem">
         <div id="jsav" class="jsavcanvas"></div>
       </p>
