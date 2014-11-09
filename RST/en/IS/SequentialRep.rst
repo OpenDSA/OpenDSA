@@ -95,6 +95,8 @@ the tree structure.
 .. inlineav:: SequentialTreeCON ss
    :output: show
 
+.. avembed:: AV/Development/SequentialTreePRO.html ka
+
 .. _BinExampb:
 
 .. odsafig:: Images/BinExamp.png
@@ -231,7 +233,7 @@ this by two or more successive ")" symbols.
 
 .. inlineav:: SequentialGenTreeCON ss
    :output: show
-   
+
 Note that this representation for serializing general trees cannot be
 used for binary trees.
 This is because a binary tree is not merely a restricted form of
