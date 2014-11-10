@@ -38,6 +38,13 @@
             "points": 0.0,
             "threshold": 1.0,
             "showhide": "Show"
+          },
+          "btCheckValPROG": {
+            "long_name": "Binary Tree Check Value Exercise",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0,
+            "showhide": "Show"
           }
         }
       }
