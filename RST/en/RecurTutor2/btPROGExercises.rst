@@ -24,3 +24,5 @@ Binary Tree Programming Exercises
 .. avembed:: Exercises/RecurTutor2/btCheckValPROG.html ka
 
 .. avembed:: Exercises/RecurTutor2/btCntValPROG.html ka
+
+.. avembed:: Exercises/RecurTutor2/btSumAllPROG.html ka

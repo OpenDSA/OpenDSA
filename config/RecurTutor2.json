@@ -52,6 +52,13 @@
             "points": 0.0,
             "threshold": 1.0,
             "showhide": "Show"
+          },
+          "btSumAllPROG": {
+            "long_name": "Binary Tree Sum All Exercise",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0,
+            "showhide": "Show"
           }
         }
       }
