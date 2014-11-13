@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>Huffman Tree Encoding Exercise</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transit.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../../AV/Binary/huffmanCON.css" type="text/css" />
+  <link rel="stylesheet" href="../../../DataStructures/huffman.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
+  <style>
+    .jsavcontainer {
+      top: -60px;
+      height: 350px;
+    }
+  </style>
+</head>
+
+<body>
+<script>
+var jsav;
+var initJSAV = function() {
+  var jsav = new JSAV("jsav");
+  jsav.recorded();
+  var btTop = 10;
+  var btLeft = 150;
+  var t = jsav.ds.binarytree({nodegap: 15, top: btTop, left: btLeft});
+  var r = t.root("");
+
+  // constructs tree
+  r.left("E");
+  r.right("").right("").right("").right("").right("M");
+  r.right().left("").left("U");
+  r.right().left().right("D");
+  r.right().right().left("L");
+  r.right().right().right().left("C");
+  r.right().right().right().right().left("");
+  r.right().right().right().right().left().left("Z");
+  r.right().right().right().right().left().right("K");
+
+  // Add more classes for leaf nodes for css styling
+  r.left().addClass("huffmanleaf");
+  r.right().right().right().right().right().addClass("huffmanleaf");
+  r.right().left().left().addClass("huffmanleaf");
+  r.right().left().right().addClass("huffmanleaf");
+  r.right().right().left().addClass("huffmanleaf");
+  r.right().right().right().left().addClass("huffmanleaf");
+  r.right().right().right().right().left().left().addClass("huffmanleaf");
+  r.right().right().right().right().left().right().addClass("huffmanleaf");
+
+  // Add edge labels
+  r.edgeToLeft().label("0");
+  r.edgeToRight().label("1");
+  r.right().edgeToLeft().label("0");
+  r.right().left().edgeToLeft().label("0");
+  r.right().left().edgeToRight().label("1");
+  r.right().edgeToRight().label("1");
+  r.right().right().edgeToLeft().label("0");
+  r.right().right().edgeToRight().label("1");
+  r.right().right().right().edgeToLeft().label("0");
+  r.right().right().right().edgeToRight().label("1");
+  r.right().right().right().right().edgeToRight().label("1");
+  r.right().right().right().right().edgeToLeft().label("0");
+  r.right().right().right().right().left().edgeToLeft().label("0");
+  r.right().right().right().right().left().edgeToRight().label("1");
+
+  t.layout();
+}
+</script>
+
+<script>
+function genIndices(type) {
+  var indices = [];
+  var length = 1;
+  if (type == 0) { length = Math.floor(Math.random()*3)+1; }
+  for (var i = 0; i < length; i++) {
+    indices[i] = Math.floor(Math.random()*8);
+  }
+  return indices;
+}
+</script>
+
+<script>
+function genQuestionOrAnswer(indices, sequenceType, questionOrAnswer) {
+  var letters = ["E", "U", "D", "L", "C", "Z", "K", "M"];
+  var codes = ["0", "100", "101", "110", "1110", "111100", "111101", "11111"];
+  var question = "";
+  var answers = "";
+  if(sequenceType == 0) {
+    for (var i = 0; i < indices.length; i++) {
+      question += "" + letters[indices[i]];
+      answers += "" + codes[indices[i]];
+    }
+  } else {
+    for (var i = 0; i < indices.length; i++) {
+      question += "" + codes[indices[i]];
+      answers += "" + letters[indices[i]];
+    }
+  }
+
+  if(questionOrAnswer == 0) {
+    return question;
+  } else {
+    return answers;
+  }
+}
+</script>
+
+<script>
+function genHint(type) {
+  if(type == 0) {
+    return "To decode every individual letter, trace the path down the tree and add a 0 for left branches or 1 for right branches each time you traverse deeper until you get to the leaf you are looking for. For example, the letter Z would be 1+1+1+1+0+0 (111100). Then, to decode the rest, add that letter's code to your overall answer, and repeat for the other letters.";
+  } else {
+    return "To find the corresponding letter for the code, trace the path down according to the 0s (left) or 1s (right) until you get to a letter. For example, with 1110, you would go left (1), left (1), left (1), and then right (0) where find the letter C.";
+  }
+}
+</script>
+
+<div class="exercise">
+  <div class="vars">
+    <var id="JSAV">initJSAV()</var>
+    <var id="type">0</var>
+    <var id="sequenceNames">["sequence of bits", "letter"]</var>
+    <var id="sequence">sequenceNames[type]</var>
+    <var id="answerNames">["1s or 0s", "letter"]</var>
+    <var id="answer">answerNames[type]</var>
+    <var id="indices">genIndices(type)</var>
+    <var id="question">genQuestionOrAnswer(indices, type, 0)</var>
+    <var id="ANS">genQuestionOrAnswer(indices, type, 1)</var>
+    <var id="HINT">genHint(type)</var>
+  </div>
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="problem">
+        <div id="jsav" class="jsavcanvas"></div></p>
+      <p class="question">
+        For the above Huffman tree, what is
+        the corresponding <var>sequence</var> represented by <var>question</var>? 
+        Type its representation as a concatenation of <var>answer</var>.
+      </p>
+      <p class="solution" data-type="text"><var>ANS</var></p>
+      <div class="hints">
+         <p><var>HINT</var></p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
