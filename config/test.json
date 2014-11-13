@@ -8,7 +8,10 @@
     "C++": ["cpp", "h"]
   },
   "lang": "en",
-  "module_origin": "http://127.0.0.1:8000",
+  "module_origin": "http://algoviz.org",
+  "exercise_server": "https://opendsa.cc.vt.edu/",
+  "logging_server": "https://opendsa.cc.vt.edu/",
+  "score_server": "https://opendsa.cc.vt.edu/",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
@@ -18,267 +21,37 @@
     "JXOP-code": "none"
   },
   "chapters": {
-    "Hashing": {
-      "Hashing/HashIntro": {
-        "long_name": "Introduction",
-        "dispModComp": true,
-        "exercises": {
-          "hashIntroCON1": {
-            "long_name": "Hashing Intro Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          }
-        }
+    "Test": {
+      "Development/TestProg": {
+        "long_name": "Test Programming Exercises",
+        "exercises": {}
       },
-      "Hashing/HashFunc": {
-        "long_name": "Hash Function Principles",
+      "Binary/BinaryTreeTraversal": {
+        "long_name": "Binary Tree Traversals",
         "exercises": {
-          "Birthday": {
-            "long_name": "Birthday Problem Calculator",
+          "BTLeafPROG": {
+            "long_name": "Node Count Programming Exercise",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0
-          }
-        }
-      },
-      "Hashing/HashFuncExamp": {
-        "long_name": "Sample Hash Functions",
-        "exercises": {
-          "hashFuncExCON1": {
-            "long_name": "Hash Function Slideshow 1",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
+            "threshold": 1
           },
-          "hashFuncExCON2": {
-            "long_name": "Hash Function Slideshow 2",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "MidSquare": {
-            "long_name": "Mid-Square Calculator",
-            "required": true,
-            "points": 0.5,
-            "threshold": 1.0
-          },
-          "StringSimple": {
-            "long_name": "Simple String Folding Calculator",
-            "required": true,
-            "points": 0.5,
-            "threshold": 1.0
-          },
-          "StringSfold": {
-            "long_name": "Improved String Folding Calculator",
-            "required": true,
-            "points": 0.5,
-            "threshold": 1.0
-          },
-          "HashFuncPROSumm": {
-            "long_name": "Hash Function Proficiency Summary",
+          "btTravInorderPRO": {
+            "long_name": "Binary Tree Inorder Traversal Exercise",
             "required": true,
             "points": 1.0,
-            "threshold": 5
-          },
-          "HashFuncSumm": {
-            "long_name": "Hash Function Summary Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5
-          }
-        }
-      },
-      "Hashing/OpenHash": {
-        "long_name": "Open Hashing",
-        "exercises": {
-          "openhashCON1": {},
-          "OpenHashPRO": {
-            "long_name": "Open Hashing Proficiency Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 5
-          }
-        }
-      },
-      "Hashing/BucketHash": {
-        "long_name": "Bucket Hashing",
-        "exercises": {
-          "buckethashCON1": {
-            "long_name": "Bucket Hashing Slideshow 1",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "buckethashCON2": {
-            "long_name": "Bucket Hashing Slideshow 2",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "HashingBucketPRO": {
-            "long_name": "Bucket Hashing Proficiency Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5
-          },
-          "HashingBucket2PRO": {
-            "long_name": "Alternate Bucket Hashing Proficiency Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5
-          }
-        }
-      },
-      "Hashing/HashCSimple": {
-        "long_name": "Collision Resolution",
-        "exercises": {
-          "linProbeCON1": {
-            "long_name": "Linear Probing Slideshow 1",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "linProbeCON2": {
-            "long_name": "Linear Probing Slideshow 2",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "HashingLinearProbePRO": {
-            "long_name": "Linear Probing Proficiency Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5
-          }
-        }
-      },
-      "Hashing/HashCImproved": {
-        "long_name": "Improved Collision Resolution",
-        "exercises": {
-          "collisionCON1": {
-            "long_name": "Linear Probing By Steps Slideshow 1",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "collisionCON2": {
-            "long_name": "Linear Probing By Steps Slideshow 2",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "HashingLinearStepProbePRO": {
-            "long_name": "Linear Probing By Steps Proficiency Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 5
-          },
-          "collisionCON3": {
-            "long_name": "Pseudo-Random Probing Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "HashingPseudoRandomProbePRO": {
-            "long_name": "Pseudo-Random Probing Proficiency Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 5
-          },
-          "collisionCON4": {
-            "long_name": "Quadratic Probing Slideshow 1",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "collisionCON5": {
-            "long_name": "Quadratic Probing Slideshow 2",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "HashingQuadraticProbePRO": {
-            "long_name": "Quadratic Probing Proficiency Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 5
-          },
-          "collisionCON6": {
-            "long_name": "Double Hashing Slideshow 1",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "collisionCON7": {
-            "long_name": "Double Hashing Slideshow 2",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "collisionCON8": {
-            "long_name": "Double Hashing Slideshow 3",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "HashingDoubleProbePRO": {
-            "long_name": "Double Hashing Proficiency Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 5
-          },
-          "hashAV": {
-            "long_name": "Hashing Visualization",
-            "required": false,
-            "showhide": "none",
-            "points": 0,
-            "threshold": 1.0
-          }
-        }
-      },
-      "Hashing/HashAnal": {
-        "long_name": "Analysis of Closed Hashing",
-        "exercises": {
-          "HashAnalSumm": {
-            "long_name": "Analysis of Closed Hashing Summary Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5
-          }
-        }
-      },
-      "Hashing/HashDel": {
-        "long_name": "Deletion",
-        "exercises": {
-          "hashdelCON1": {
-            "long_name": "Hash Deletion Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "HashingDelPRO": {
-            "long_name": "Hash Deletion Proficiency Exercise",
-            "required": true,
-            "points": 2.0,
             "threshold": 0.90
           },
-          "HashDelSumm": {
-            "long_name": "Hash Deletion Summary Exercise",
+          "btTravPreorderPRO": {
+            "long_name": "Binary Tree Preorder Traversal Exercise",
             "required": true,
             "points": 1.0,
-            "threshold": 3
-          }
-        }
-      },
-      "Hashing/HashSumm": {
-        "long_name": "Hashing Chapter Summary Exercises",
-        "exercises": {
-          "HashChapterSumm": {
-            "long_name": "Hashing Chapter Summary Exercise",
+            "threshold": 0.90
+          },
+          "btTravPostorderPRO": {
+            "long_name": "Binary Tree Postorder Traversal Exercise",
             "required": true,
-            "points": 2.0,
-            "threshold": 10
+            "points": 1.0,
+            "threshold": 0.90
           }
         }
       }

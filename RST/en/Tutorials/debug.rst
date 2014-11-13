@@ -19,7 +19,7 @@ program select the Debug mode by clicking the icon circled in blue below.
    :width: 600
    :align: center
    :capalign: justify
-   :figwidth: 90%
+   :figwidth: 600
    :alt: Debug view
 
    Figure 1
@@ -29,8 +29,8 @@ Debugging Terms
 1. Resume - Resuming will run the code until another breakpoint is hit or until
 the program finishes (see Figure 2 for icon).
 
-2. Step Into - Stepping into will drop you into the next function called for 
-example, stepping into the bst.add() call in the above photo will take you to
+2. Step Into - Stepping into will drop you into the next function called. For 
+example, stepping into the bst.add() call in the above image will take you to
 the bst class and inside the add method (see Figure 2 for icon).
 
 3. Step Over - Stepping Over will execute the current line of code and progress
@@ -47,28 +47,23 @@ window (see Figure 1).
 .. odsafig:: Images/DebugList.png
    :align: center
    :capalign: justify
-   :figwidth: 90%
+   :figwidth: 269
    :alt: Debug Steps
 
    Figure 2
 
-*\*Author's note - There are a few more step functions not documented here, to
+*\*Note - There are a few more step functions not documented here, to
 learn more about them visit*
 `here <http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2Ftasks%2Ftask-stepping.htm>`__.
-*Please note that I have not documented the Stop Icon (Red Square) or the Pause
-Icon (Two Vertical Bars). These are simple enough to understand, Stop will kill
-execution of your program and Pause pauses the program.*
 
 Debugging A Memory Pool
 =======================
-There will be times when you are working with your programs that you may need
-to analyze byte chunks. Doing so can be difficult however, as the computer will
-treat it as a primitive. So how do we meaningfully analyze a chunk of bytes?
-Consider the following code. 
+For some programs you may need to analyze byte chunks. Doing so can be difficult.
+So how do we meaningfully analyze a chunk of bytes? Consider the following code. 
 
 .. codeinclude:: Java/Tutorials/MainByteArrayDebug.java
 
-It spawns a 1000 byte array and then places 1 of
+This program spawns a 1000 byte array and then places 1 of
 27 characters chosen randomly in a position randomly chosen in one of the 1000
 places. Suppose you wanted to evaluate the contents of the memory, how would 
 you do this? Luckily Eclipse has the functionality that can do this. The 
@@ -78,7 +73,7 @@ variable window (shown in Figure 1) will allow you to view the memory dump.
    :width: 600
    :align: center
    :capalign: justify
-   :figwidth: 90%
+   :figwidth: 600
    :alt: Debug Steps
 
    Figure 3
@@ -93,23 +88,23 @@ By default Eclipse will dump a byte as an integer.
 
    Figure 4
 
-However there are a number of ways to dump the information otherwise. You can 
-open the Preferences window by selecting Window->Preferences (see figure 5). 
-Then you will be able to select the raw dump information. In this case I will 
-choose ASCII text so I can see the character stored at the location.
+However there are a number of other ways to dump the information. You
+can open the Preferences window by selecting Window->Preferences (see Figure 5).
+Then you will be able to select the raw dump information. In this case I
+chose ASCII text so I can see the character stored at the location.
 
 .. odsafig:: Images/DebugMemoryPoolPreferences.png
    :width: 300
    :height: 350
    :align: center
    :capalign: justify
-   :figwidth: 90%
+   :figwidth: 300
    :alt: Debug Steps
 
    Figure 5
 
 Now when we view the memory location we can see the character stored there. We
-can also change our display preferences we can also see the hex value and the
+can also change our display preferences to see the hex value and the
 unsigned value as well.
 
 .. odsafig:: Images/DebugValue1.png
@@ -150,11 +145,17 @@ So you can now view memory, set breakpoints and even step through functions to
 the points you care about. What's next? Well by now you should be familiar with
 gdb. gdb's command line interface is very handy for dumping information quickly
 and programmatically. Eclipse has a similar functionality. Eclipse's Display
-window functions very similarly. If the Display window is not visible you can
-enable it using Window->Show View->Display. Once the Display window is open you
-can turn on autocomplete by right clicking and selecting Content Assist, or by
-hitting CTRL-SPACE. The Display window allows you to write Java code and then
-execute it. This means you can edit and view information programatically.
+window is a debug terminal. If the Display window is not visible you can
+enable it using ``Window->Show View->Display``. Once the Display window is open
+you can turn on autocomplete by right clicking and selecting Content Assist, or
+by hitting CTRL-SPACE. The Display window allows you to write Java code and then
+execute it. Anytime you pause your program, you may access local variables,
+change them, and print information out about them. In the below example
+I have chosen to debug the String ``loc`` out to the output. While this particular
+example may not appear useful (as the program will print ``loc`` anyway), imagine
+you are debugging a program. You know a bug occurs, now instead of stopping and
+recompiling your program with bug changes, you can rapidly prototype
+your replacement code and then test the values to insure success.
 
 .. odsafig:: Images/DebugDisplay1.png
    :align: center
