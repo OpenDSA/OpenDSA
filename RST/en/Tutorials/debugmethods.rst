@@ -46,3 +46,13 @@ be sure to be thorough in your explanations and to consider every possible case.
 For an example of Rubber Duck Debugging read this
 `blog <http://blog.codinghorror.com/rubber-duck-problem-solving/>`__.
 
+Method 3: Wolf Fence Debugging
+==============================
+Imagine there is only one wolf in Alaska. How would you find him? The most
+effective way would be to fence Alaska in half and wait for the wolf to "howl"
+again splitting the area in half. Keep repeating until you find the wolf.
+This is the basis of Wolf Fence Debugging. Work to find where the bug occurs,
+eliminating areas repeatedly until the method and then the line of code causing
+the problem has been found. The method is particularly useful when used in
+conjunction with Exceptions as the stack trace can show each line of code called
+leading to the actual Exception being thrown.

@@ -18,8 +18,8 @@ program select the Debug mode by clicking the icon circled in blue below.
 .. odsafig:: Images/Debug1.png
    :width: 600
    :align: center
-   :capalign: justify
-   :figwidth: 600
+   :capalign: center
+   :figwidth: 90%
    :alt: Debug view
 
    Figure 1
@@ -46,8 +46,8 @@ window (see Figure 1).
 
 .. odsafig:: Images/DebugList.png
    :align: center
-   :capalign: justify
-   :figwidth: 269
+   :capalign: center
+   :figwidth: 90%
    :alt: Debug Steps
 
    Figure 2
@@ -72,8 +72,8 @@ variable window (shown in Figure 1) will allow you to view the memory dump.
 .. odsafig:: Images/DebugMemoryPool1.png
    :width: 600
    :align: center
-   :capalign: justify
-   :figwidth: 600
+   :capalign: center
+   :figwidth: 90%
    :alt: Debug Steps
 
    Figure 3
@@ -82,7 +82,7 @@ By default Eclipse will dump a byte as an integer.
 
 .. odsafig:: Images/DebugMemoryPoolRaw1.png
    :align: center
-   :capalign: justify
+   :capalign: center
    :figwidth: 90%
    :alt: Debug Steps
 
@@ -97,8 +97,8 @@ chose ASCII text so I can see the character stored at the location.
    :width: 300
    :height: 350
    :align: center
-   :capalign: justify
-   :figwidth: 300
+   :capalign: center
+   :figwidth: 90%
    :alt: Debug Steps
 
    Figure 5
@@ -109,7 +109,7 @@ unsigned value as well.
 
 .. odsafig:: Images/DebugValue1.png
    :align: center
-   :capalign: justify
+   :capalign: center
    :figwidth: 90%
    :alt: ASCII View
 
@@ -117,7 +117,7 @@ unsigned value as well.
 
 .. odsafig:: Images/DebugValue2.png
    :align: center
-   :capalign: justify
+   :capalign: center
    :figwidth: 90%
    :alt: Hex View
 
@@ -125,7 +125,7 @@ unsigned value as well.
 
 .. odsafig:: Images/DebugValue3.png
    :align: center
-   :capalign: justify
+   :capalign: center
    :figwidth: 90%
    :alt: Unsiged View
 
@@ -133,7 +133,7 @@ unsigned value as well.
 
 .. odsafig:: Images/DebugValue4.png
    :align: center
-   :capalign: justify
+   :capalign: center
    :figwidth: 90%
    :alt: All Three Views
 
@@ -159,7 +159,7 @@ your replacement code and then test the values to insure success.
 
 .. odsafig:: Images/DebugDisplay1.png
    :align: center
-   :capalign: justify
+   :capalign: center
    :figwidth: 90%
    :alt: Result Of Running Display
 

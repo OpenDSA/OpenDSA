@@ -40,7 +40,7 @@
         "exercises": {}
       },
       "Tutorials/debugmethods": {
-        "long_name": "Configuring Eclipse For Virginia Tech",
+        "long_name": "Debugging Methods",
         "exercises": {}
       },
       "Tutorials/scanning": {
@@ -50,7 +50,12 @@
       "Tutorials/webcattools": {
         "long_name": "Configuring Eclipse For Virginia Tech",
         "exercises": {}
+      },
+     "Tutorials/randomaccessfile": {
+        "long_name": "Using the Java RandomAccessFile class",
+        "exercises": {}
       }
+
     }
   }
 }
