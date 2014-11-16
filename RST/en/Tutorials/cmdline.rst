@@ -37,6 +37,7 @@ information. These are called arguments.
    +------------------+------------------------------------------------------------------------------------------------+
 
 |
+
 .. odsafig:: Images/hexample.png
    :width: 500
    :align: center

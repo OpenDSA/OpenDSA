@@ -36,19 +36,16 @@ the additional information (and it usually trims white space). So if I run
    :alt: ls with paramaters 
 
 
-Then args is an array containing
-
-::
+Then args is an array containing::
 
    {"-l", "file.txt"}
 
 \*Authors Note: This is true for Java, but is a little different for C or C++.
 In C, the first parameter that you are given is always the command name so 
-your array in C would be
+your array in C would be::
 
-::
+   {"ls", "-l", "file.txt"}
 
-{"ls", "-l", "file.txt"}
 Java however, removes the command name and only provides parameters.
 
 I have created a main function skeleton for you to use in your projects. It is 

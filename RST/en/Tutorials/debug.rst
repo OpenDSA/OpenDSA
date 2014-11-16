@@ -53,7 +53,7 @@ window (see Figure 1).
    Figure 2
 
 *\*Note - There are a few more step functions not documented here, to
-learn more about them visit*
+learn more about them*
 `here <http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2Ftasks%2Ftask-stepping.htm>`__.
 
 Debugging A Memory Pool
@@ -66,8 +66,9 @@ So how do we meaningfully analyze a chunk of bytes? Consider the following code.
 This program spawns a 1000 byte array and then places 1 of
 27 characters chosen randomly in a position randomly chosen in one of the 1000
 places. Suppose you wanted to evaluate the contents of the memory, how would 
-you do this? Luckily Eclipse has the functionality that can do this. The 
-variable window (shown in Figure 1) will allow you to view the memory dump. 
+you do this?
+Eclipse let's do it with a memory dump in the variable window
+(shown in Figure 1).
 
 .. odsafig:: Images/DebugMemoryPool1.png
    :width: 600
