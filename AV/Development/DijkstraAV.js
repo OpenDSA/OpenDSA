@@ -55,6 +55,8 @@
       arr[i] = gnodes[i].value();
     }
     labels = jsav.ds.array(arr, {layout: "vertical", left: 603, top: -25});
+    jsav.umsg("We will call Dijkstra's algorithm with a start vertex of " +
+              gnodes[0].value());
     jsav.displayInit();
     dijkstra(gnodes[0]);            // Run Dijkstra's algorithm from start node.
     displayMST();
@@ -71,7 +73,7 @@
   // Mark a node in the graph.
   function markIt(node) {
     node.addClass("visited");
-    jsav.umsg("Add node " + node.value());
+    jsav.umsg("The unmarked vertex with the smallest value is now " + node.value() + ". Mark it.");
     distances.highlight(gnodes.indexOf(node));
     labels.highlight(gnodes.indexOf(node));
     node.highlight();
@@ -100,6 +102,7 @@
     console.log("v is " + v.value() + ", Distance for v is " + distances.value(v.index));
     return v;
   }
+
   // Compute Prim's algorithm and return edges
   function dijkstra(s) {
     var v;         // The current node added to the MST
@@ -112,20 +115,21 @@
       next.parent = next;
     }
     distances.value(s.index, 0);
-    jsav.umsg("Update the distance value of node " + s.value());
+    jsav.umsg("Since " + s.value() +
+              " is the start node, its distance is initially 0");
     jsav.step();
     for (i = 0; i < graph.nodeCount(); i++) {
       v = minVertex();
-      markIt(v);
       if (distances.value(v.index) === Infinity) {
         jsav.umsg("No other nodes are reachable, so quit.");
         jsav.step();
         return;
       }
+      markIt(v);
       if (v !== s) {
         //Add an edge
         var edge = graph.getEdge(v.parent, v);
-		console.log(v.parent.value()+'    '+v.value());
+	console.log(v.parent.value() + '    ' + v.value());
         edge.css({"stroke-width": "4", "stroke": "red"});
         var mstedge = mst.addEdge(mstnodes[v.parent.index], mstnodes[v.index], {"weight": edge.weight()});
         mstedge.css({"stroke-width": "2", "stroke": "red"});

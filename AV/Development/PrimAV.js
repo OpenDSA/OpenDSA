@@ -87,6 +87,8 @@
       arr[i] = gnodes[i].value();
     }
     labels = jsav.ds.array(arr, {layout: "vertical", left: 603, top: -25});
+    jsav.umsg("We will call Prim's algorithm with a start vertex of " +
+              gnodes[0].value() + ". Any vertex would do to start.");
     jsav.displayInit();
     prim(gnodes[0]);            // Run Prim's algorithm from start node.
     displayMST();
@@ -120,7 +122,7 @@
 	  jsav.step();
 	}
     node.addClass("visited");
-    jsav.umsg("Add node " + node.value() + " to the MST");
+    jsav.umsg("The unmarked vertex with the smallest value is now " + node.value() + ". Mark it and add to the MST.");
     distances.highlight(gnodes.indexOf(node));
     labels.highlight(gnodes.indexOf(node));
     node.highlight();
