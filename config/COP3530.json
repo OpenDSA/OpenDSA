@@ -1106,10 +1106,9 @@
         "exercises": {
           "insertionSortWithoutSwapPRO": {
             "long_name": "Insertion Sort Without Swap Proficiency Exercise",
-            "exer_options": { "JXOP-code": "none" },
             "required": false,
-            "points": 1.0,
-            "threshold": 5
+            "points": 0.0,
+            "threshold": 0.9
           }
         }
       },
@@ -1855,6 +1854,28 @@
             "threshold": 0.90
           }
         }
+      },
+      "Development/Kruskal": {
+        "long_name": "Kruskal's Algorithm",
+        "exercises": {
+          "KruskalUFAV": {
+            "long_name": "Kruskal's Algorithm Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "KruskalPE": {
+            "long_name": "Kruskal's Algorithm Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90
+          }
+        }
+      },
+      "Development/Floyd": {
+        "long_name": "All-Pairs Shortest Paths",
+        "exercises": {}
       }
     },
     "Appendix": {
