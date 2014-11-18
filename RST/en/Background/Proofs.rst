@@ -346,10 +346,14 @@ not be helpful or relevant when proving other summations.
    **Theorem:**
    The recurrence relation
    :math:`\mathbf{T}(n) = \mathbf{T}(n-1) + 1; \quad \mathbf{T}(1) = 0`
-   has closed-form solution :math:`\mathbf{T}(n) = n-1`.
+   has closed-form solution :math:`\mathbf{T}(n) = n - 1`.
 
    **Proof:**
-   To prove the base case, we observe that :math:`\mathbf{T}(1) = 1-1 = 0`.
+   To prove the base case, we observe from the definition that
+   :math:`\mathbf{T}(2) = \mathbf{T}(1) + 1 = 0 + 1 = 1`.
+   From the proposed closed-form solution we get
+   :math:`\mathbf{T}(2) = 2 - 1 = 1`, which matches the definition.
+
    The induction hypothesis is that :math:`\mathbf{T}(n-1) = n-2`.
    Combining the definition of the recurrence with the induction
    hypothesis, we see immediately that
