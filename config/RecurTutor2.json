@@ -1,12 +1,12 @@
 {
-  "title": "Advance Recursion Tutor",
+  "title": "Advanced Recursion Tutor",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
-  "code_lang": {"Java": ["java"]},
+  "code_lang": {"Processing": ["pde"]},
   "module_origin": "http://algoviz.org",
-  "exercise_server": "https://opendsa.cc.vt.edu",
-  "logging_server": "https://opendsa.cc.vt.edu",
-  "score_server": "https://opendsa.cc.vt.edu",
+  "exercise_server": "http://opendsa.cc.vt.edu:8090",
+  "logging_server": "http://opendsa.cc.vt.edu:8090",
+  "score_server": "http://opendsa.cc.vt.edu:8090",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
@@ -14,17 +14,41 @@
     "JXOP-debug": "true"
   },
   "chapters": {
-    "Binary Tree Exercises": {
+    "Advanced Recursion Tutorial": {
+      "RecurTutor2/recDataStr": {
+        "long_name": "Recursive Data Structures",
+        "exercises": {}
+      },
+      "RecurTutor2/recListOp": {
+        "long_name": "Recursive List Operations",
+        "exercises": {}
+      },
+      "RecurTutor2/recbtOp": {
+        "long_name": "Binary Tree Operations",
+        "exercises": {
+          "btTravInorderPRO": {
+            "long_name": "Binary Tree Inorder Traversal Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.90
+          },
+          "btTravPreorderPRO": {
+            "long_name": "Binary Tree Preorder Traversal Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.90
+          },
+          "btTravPostorderPRO": {
+            "long_name": "Binary Tree Postorder Traversal Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.90
+          }
+        }
+      },
       "RecurTutor2/btPROGExercises": {
         "long_name": "Recursion Chapter Introduction",
         "exercises": {
-          "btCntPROG": {
-            "long_name": "Binary Tree Nodes Count Exercise",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
           "btLeafPROG": {
             "long_name": "Binary Tree Leaf Count Exercise",
             "required": true,
@@ -68,8 +92,22 @@
             "showhide": "Show"
           }
         }
+      },
+     "RecurTutor2/recSorting": {
+        "long_name": "Recursive Sorting",
+        "exercises": {}
+      },  
+     "Appendix": {
+      "Glossary": {
+        "long_name": "Glossary",
+        "exercises": {}
+      },
+      "Bibliography": {
+        "long_name": "Bibliography",
+        "exercises": {}
       }
+    }
   }
-}
+ }
 }
 
