@@ -23,7 +23,6 @@
 
   var initJSAV = function () {
     jsav = new JSAV("jsav");
-    av.
     jsav.recorded();
   }
 
@@ -46,16 +45,22 @@
   function preOrderTraversal(bt) {
     var retString = "";
     var preorderNode = function (node) {
+      var isInternal = false;
       retString+=node.value();
       if (node.left()) {
+        isInternal = true;
+        retString+='\'';
         preorderNode(node.left());
       }
-      else
+      else if (node.right())
+      {
+        retString += '\'';
         retString += '/';
+      }
       if (node.right()) {
         preorderNode(node.right());
       }
-      else
+      else if (node.left())
         retString += '/';
     };
     preorderNode(bt.root());
@@ -81,7 +86,7 @@ function randomNode(bt,root, value)
 </script>
 
 <div class="exercise">
-  <p class="question">Using '/' to signify the end of a tree, please write the sequential representation of this tree</p>
+  <p class="question" style="top: 10px">Using a ' to signify internal nodes, please write the sequential representation of this tree</p>
   <div class="vars">
     <var id="JSAV">initJSAV()</var>
     <var id="BT">makeTree()</var>

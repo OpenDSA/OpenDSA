@@ -95,7 +95,7 @@ the tree structure.
 .. inlineav:: SequentialTreeCON ss
    :output: show
 
-.. avembed:: AV/Development/SequentialTreePRO.html ka
+.. avembed:: Exercises/Development/SequentialTreePRO.html ka
 
 .. _BinExampb:
 
@@ -166,6 +166,8 @@ implementation, and so requires less overhead.
 .. inlineav:: SequentialTreeAltCON ss
    :output: show
 
+.. avembed:: Exercises/Development/SequentialTreeAltPRO.html ka
+
 Storing :math:`n` extra bits can be a considerable savings over
 storing :math:`n` ``null`` values.
 In Example :num:`Example #Serialbintwo`, each node is shown with a
@@ -199,6 +201,8 @@ a leaf node.
 
 .. inlineav:: SequentialTreeBitVectorCON ss
    :output: show
+
+.. avembed:: Exercises/Development/SequentialTreeBitVectorPRO.html ka
 
 Storing general trees by means of a sequential implementation requires
 that more explicit structural information be included with the node
