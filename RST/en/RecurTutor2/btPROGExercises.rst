@@ -9,8 +9,6 @@
    :topic: Binary Tree Programming Exercises
 
 
-
-
 Binary Tree Programming Exercises
 =================================
 
@@ -18,14 +16,12 @@ Inorder to understand more how to apply recursion on binary trees, you should pr
 
 .. .. avembed:: Exercises/RecurTutor2/btCntPROG.html ka
 
+Local Traversal
+----------------
 
 The first type of problems is local traversal problems. In this type of problems, you go to each node and do some operation.
 
 .. avembed:: Exercises/RecurTutor2/btIncPROG.html ka
-
-.. avembed:: Exercises/RecurTutor2/btCheckValPROG.html ka
-
-.. avembed:: Exercises/RecurTutor2/btCntValPROG.html ka
 
 .. Todo::
    Duplicate
@@ -48,47 +44,35 @@ The first type of problems is local traversal problems. In this type of problems
 
 
 .. Todo::
-   CountTrees
-   Suppose you are building an N node binary search tree with the values 1..N. How many structurally different
-   binary search trees are there that store those values? Write a recursive function that, given the number of distinct
-   values, computes the number of structurally unique binary search trees that store those values. For example 
-   countTrees(4) should return 14, since there are 14 structurally unique binary search trees that store 1, 2, 3, and 4. The
-   base case is easy, and the recursion is short but dense. Your code should not construct any actual trees; it's just a
-   counting problem.
-
-   The code::
-
-	public static int countTrees(int numKeys) {
-	if (numKeys <=1) {
-	return(1);
-	}
-	else {
-	// there will be one value at the root, with whatever remains
-	// on the left and right each forming their own subtrees.
-	// Iterate through all the values that could be the root...
-	int sum = 0;
-	int left, right, root;
-	for (root=1; root<=numKeys; root++) {
-	left = countTrees(root-1);
-	right = countTrees(numKeys - root);
-	// number of possible trees with this root == left*right
-	sum += left*right;
-	}
-	return(sum);
+   Mirror
+   Change a tree so that the roles of the left and right pointers are swapped at every node.
+      
+    The code::
+    
+       private void mirror(Node node) {
+	if (node != null) {
+	// do the sub-trees
+	mirror(node.left);
+	mirror(node.right);
+	// swap the left/right pointers
+	Node temp = node.left;
+	node.left = node.right;
+	node.right = temp;
 	}
 	}
-	  
 	
 
+Guided Traversal
+----------------
 
+.. avembed:: Exercises/RecurTutor2/btCheckValPROG.html ka
 
-The second type is guided traversal problems.  In this type of problems, not all the nodes are vsisited.
+The second type is guided traversal problems. In this type of problems, not all the nodes are vsisited.
 
 .. Todo:: 
-   Minimum Value
+   Max Value
    Given a non-empty binary search tree (an ordered binary tree), return the minimum data value found in that tree.
-   Note that it is not necessary to search the entire tree. A maxValue() function is structurally very similar to this
-   function. This can be solved with recursion or with a simple while loop. 
+   Note that it is not necessary to search the entire tree. 
 
    The code::
 
@@ -119,6 +103,10 @@ The second type is guided traversal problems.  In this type of problems, not all
 	}
 
 
+
+
+Simple collect-and-return traversal
+-----------------------------------
 
 The third type is Simple collect-and-return traversal problems. This type of problems are such as sum the values of all the nodes, or count the nodes.
 
@@ -151,7 +139,7 @@ The third type is Simple collect-and-return traversal problems. This type of pro
     
     
 .. Todo::
-   Given a binary tree, print out all of its root-to-leaf paths.Note that, "path so far" needs to be communicated between the recursive calls.
+   Given a binary tree, print out all of its root-to-leaf paths. Note that, "path so far" needs to be communicated between the recursive calls.
    
    The code::
  
@@ -190,30 +178,46 @@ The third type is Simple collect-and-return traversal problems. This type of pro
 	System.out.println();
 	}
 
+.. avembed:: Exercises/RecurTutor2/btCheckValPROG.html ka
 
-The fourth type is multiple trees traversal poblems. This type of problems involves more than one tree.
-
+.. avembed:: Exercises/RecurTutor2/btCntValPROG.html ka
 
 .. Todo::
-   Mirror
-   Change a tree so that the roles of the left and right pointers are swapped at every node.
-   The solution is short, but very recursive. As it happens, this can be accomplished without changing the root node
-   pointer, so the return-the-new-root construct is not necessary. Alternately, if you do not want to change the tree
-   nodes, you may construct and return a new mirror tree based on the original tree.
-   
-   The code::
-     private void mirror(Node node) {
-	if (node != null) {
-	// do the sub-trees
-	mirror(node.left);
-	mirror(node.right);
-	// swap the left/right pointers
-	Node temp = node.left;
-	node.left = node.right;
-	node.right = temp;
-	}
-	}
+   CountTrees
+   Suppose you are building an N node binary search tree with the values 1..N. How many structurally different
+   binary search trees are there that store those values? Write a recursive function that, given the number of distinct
+   values, computes the number of structurally unique binary search trees that store those values. For example 
+   countTrees(4) should return 14, since there are 14 structurally unique binary search trees that store 1, 2, 3, and 4. The
+   base case is easy, and the recursion is short but dense. Your code should not construct any actual trees; it's just a
+   counting problem.
 
+   The code::
+
+	public static int countTrees(int numKeys) {
+	if (numKeys <=1) {
+	return(1);
+	}
+	else {
+	// there will be one value at the root, with whatever remains
+	// on the left and right each forming their own subtrees.
+	// Iterate through all the values that could be the root...
+	int sum = 0;
+	int left, right, root;
+	for (root=1; root<=numKeys; root++) {
+	left = countTrees(root-1);
+	right = countTrees(numKeys - root);
+	// number of possible trees with this root == left*right
+	sum += left*right;
+	}
+	return(sum);
+	}
+	}
+	  
+
+Multiple trees traversal
+------------------------
+
+The fourth type is multiple trees traversal poblems. This type of problems involves more than one tree.
 
 .. Todo::
    SameTree

@@ -28,7 +28,7 @@ As mentioned before, list is considred as a recursive data structure because it 
     Steps to show how the recursive call and base case are formulated as a pseudo code.
 
 .. Todo::
-   Programming exercise asks to recursively implement the deletion at the tail of a list.
+   Programming exercise asks to recursively implement the insertion at the tail of a list.
 
 .. Todo::
    Programming exercise asks to recursively implement the deletion at the tail of a list.
