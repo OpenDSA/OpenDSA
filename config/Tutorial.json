@@ -54,8 +54,11 @@
      "Tutorials/randomaccessfile": {
         "long_name": "Using the Java RandomAccessFile class",
         "exercises": {}
+      },
+      "Tutorials/junitstart": {
+        "long_name": "Junit tests and how to use them",
+        "exercises": {}
       }
-
     }
   }
 }
