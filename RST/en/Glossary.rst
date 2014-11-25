@@ -3218,7 +3218,9 @@ Glossary
 
    transitive
       In set notation, relation :math:`R` is transitive if whenever
-      :math:`aRb`, then :math:`bRa`, for all :math:`a, b \in \mathbf{S}`.
+      :math:`aRb` and :math:`bRc`, then :math:`aRc`, for all
+      :math:`a, b, c \in \mathbf{S}`.
+
 
    transpose
       In the context of linear algebra,

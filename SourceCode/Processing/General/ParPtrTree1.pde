@@ -11,14 +11,14 @@ class ParPtrTree {
 
   // Merge two subtrees if they are different
   void UNION(int a, int b) {
-    Integer root1 = FIND(a);     // Find root of node a
-    Integer root2 = FIND(b);     // Find root of node b
+    int root1 = FIND(a);     // Find root of node a
+    int root2 = FIND(b);     // Find root of node b
     if (root1 != root2)          // Merge two trees
       array[root1] = root2;
   }
 
   // Return the root of curr's tree
-  Integer FIND(Integer curr) {
+  int FIND(int curr) {
     if (array[curr] == -1) return curr; // At root
     while (array[curr] != -1) curr = array[curr];
     return curr;
