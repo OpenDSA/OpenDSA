@@ -60,6 +60,14 @@ function runit(){
 
 	ODSA.AV.reset(true);
 	jsav = new JSAV($('.avcontainer'));
+    $(".avcontainer").on("jsav-message", function() {
+      // invoke MathJax to do conversion again
+      MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }); 
+    $(".avcontainer").on("jsav-updatecounter", function(){ 
+      // invoke MathJax to do conversion again 
+      MathJax.Hub.Queue(["Typeset",MathJax.Hub]); 
+    });  
 
 	varlabel = jsav.label("Variables:",{left:10,top:-20});
 	x = 100;
@@ -178,9 +186,10 @@ function runit(){
 	hideGraph();
 //	jsav.displayInit();jsav.step();
 	
-	jsav.umsg("<b>Reduction of 3-SAT to Hamiltonian cycle problem.</b>");
-	label1 = jsav.label("For a 3-SAT expression containing n variables, there can be 2<sup>n</sup> assignments possible.",{top:0,left:20});
-	label2 = jsav.label("We model these 2<sup>n</sup> possible truth assignments to a graph with  2<sup>n</sup> different Hamiltonian cycles by the following method.",{top:50,left:20});
+	jsav.umsg("<b>Reduction of n 3-SAT to HAMILTONIAN CYCLE.</b>");
+	label1 = jsav.label("For a 3-SAT expression containing $n$ variables, there are $2^n$ possible assignments.",
+			    {top:0,left:20});
+	label2 = jsav.label("We model these $2^n$ possible truth assignments using a graph with $2^n$ different Hamiltonian cycles by the following method.",{top:50,left:20});
 
 	jsav.displayInit();
 	jsav.step();
@@ -188,13 +197,14 @@ function runit(){
 	jsav.umsg("<b>Step1: Construction of paths</b>");
 	label1.hide();
 	label2.hide();
-	label1 = jsav.label("Construct n paths P<sub>1</sub> , P<sub>2</sub> , ... P<sub>n</sub> corresponding to the n variables.",{left:10,top:0});
-	label2 = jsav.label("Each path P<sub>i</sub> should consist of 2k nodes (v<sub>i,1</sub> , v<sub>i,2</sub> ... v<sub>i,2k</sub>) where k is the number of clauses in the expression.",{left:10,top:50});
+	label1 = jsav.label("Construct $n$ paths $P_1$ , $P_2$, ..., $P_n$ corresponding to the $n$ variables.",
+			    {left:10,top:0});
+	label2 = jsav.label("Each path $P_i$ should consist of $2k$ nodes ($v_{i,1}$, $v_{i,2}, ..., $v_{i,2k}$) where $k$ is the number of clauses in the expression.",{left:10,top:50});
 
 	jsav.step();
 	
 
-	label4 = jsav.label("For example :",{left:10,top:100});
+	label4 = jsav.label("For example:",{left:10,top:100});
 	label3 = jsav.label("Let us consider the following boolean expression with 4 variables:",{left:10,top:130});
 	label6 = jsav.label("x<sub>1</sub> , x<sub>2</sub> , x<sub>3</sub> , x<sub>4</sub>",{left:10,top:160});
 	
