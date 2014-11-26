@@ -14,16 +14,16 @@ class ParPtrTree {
 
   // Determine if nodes are in different trees
   boolean differ(int a, int b) {
-    Integer root1 = FIND(a);     // Find root of node a
-    Integer root2 = FIND(b);     // Find root of node b
+    int root1 = FIND(a);     // Find root of node a
+    int root2 = FIND(b);     // Find root of node b
     return root1 != root2;       // Compare roots
   }
 
   // Merge two subtrees with weighted union
   /* *** ODSATag: UnionFind *** */
   void UNION(int a, int b) {
-    Integer root1 = FIND(a);     // Find root of node a
-    Integer root2 = FIND(b);     // Find root of node b
+    int root1 = FIND(a);     // Find root of node a
+    int root2 = FIND(b);     // Find root of node b
     if (root1 != root2)          // Merge with weighted union
       if (weights[root2] > weights[root1]) {
         array[root1] = root2;
@@ -37,7 +37,7 @@ class ParPtrTree {
 
   /* *** ODSATag: PathCompress *** */
   // Return the root of curr's tree with path compression
-  Integer FIND(Integer curr) {
+  int FIND(int curr) {
     if (array[curr] == -1) return curr; // At root
     array[curr] = FIND(array[curr]);
     return array[curr];
