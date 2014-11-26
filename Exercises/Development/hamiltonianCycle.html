@@ -36,9 +36,15 @@ function getMaxOfArray(numArray) {
     return Math.max.apply(null, numArray);
 }
 
-// Click event handler on the graph 
+// Click event handler on the graph, intended for edges
 var clickHandler = function () {
    	console.log("hello");
+	userInput = true;
+};
+
+// Click event handler on the graph, intended for nodes
+var clickHandler2 = function () {
+   	console.log("hello2");
 	userInput = true;
 };
 
@@ -75,7 +81,9 @@ var initJSAV = function (nnodes,nedges) {
   jsavGraph.layout();
 
   // Bind the clickHandler to handle click events on the array
-  jsavGraph.click(clickHandler,{edge: true});
+  console.log("Add click handler");
+  jsavGraph.click(clickHandler, {edge: true});
+  jsavGraph.click(clickHandler2);
 	
   jsav.displayInit();
   // Set up handler for reset button
