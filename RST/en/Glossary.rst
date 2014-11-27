@@ -2631,6 +2631,9 @@ Glossary
    recursive function
       A function that includes a :term:`recursive call`.
 
+   Red-Black Tree
+      A balanced variation on a :term:`BST`.
+
    reduction
       In :term:`algorithm analysis`, the process of deriving
       :term:`asymptotic bounds <asymptotic analysis>`

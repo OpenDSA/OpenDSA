@@ -22,38 +22,9 @@
   },
   "chapters": {
     "Test": {
-      "Development/TestProg": {
-        "long_name": "Test Programming Exercises",
+      "Development/BalancedTree": {
+        "long_name": "Balanced Trees",
         "exercises": {}
-      },
-      "Binary/BinaryTreeTraversal": {
-        "long_name": "Binary Tree Traversals",
-        "exercises": {
-          "BTLeafPROG": {
-            "long_name": "Node Count Programming Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1
-          },
-          "btTravInorderPRO": {
-            "long_name": "Binary Tree Inorder Traversal Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 0.90
-          },
-          "btTravPreorderPRO": {
-            "long_name": "Binary Tree Preorder Traversal Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 0.90
-          },
-          "btTravPostorderPRO": {
-            "long_name": "Binary Tree Postorder Traversal Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 0.90
-          }
-        }
       }
     },
     "Appendix": {
