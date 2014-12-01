@@ -10,3 +10,7 @@
 .jsavline{
   height: 50px;
 }
+
+.jsavgraph .jsavedge {
+  stroke-width: 1.5px;
+}

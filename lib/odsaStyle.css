@@ -197,3 +197,7 @@
 .greenbg, .greenbg.jsavvalue, .jsavarray.jsavbararray .jsavindex.greenbg .jsavvalue {
   background-color: #3f5;
 }
+
+.jsavgraph .jsavedge {
+  stroke-width: 1.5px;
+}
