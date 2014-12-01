@@ -12,7 +12,7 @@ void selectionsort(Comparable* A[], int n) {
     for (int j = 1; j < n-i; j++) // Find the max value
       if (*A[j] > *A[bigindex])   // Found something bigger
         bigindex = j;             // Remember bigger index    
-      swap(A, bigindex, n-i-1);   // Put it into place
+    swap(A, bigindex, n-i-1);     // Put it into place
   }
 }
 /* *** ODSAendTag: Selectionsort *** */
