@@ -26,6 +26,7 @@ traverse a tree structure.
 
 
 We can categorize the type of information flow in  a binary tree into the following categories:
+
  #. Collect-and-return
  #. Local
  #. Guided
@@ -37,6 +38,7 @@ Here are a few simple examples and exrecises on each category.
 
 Collect-and-return
 ------------------
+
 Collect-and-return requires that we communicate information back up the tree to the end user. For example, sum the values of all the nodes, or count the nodes of a tree.
 
 .. topic:: Example
@@ -53,45 +55,6 @@ Collect-and-return requires that we communicate information back up the tree to 
       :tag: count
 
 
-.. topic:: Example
-
-
-A difficult situation is illustrated by the following problem.
-Given an arbitrary binary tree we wish to determine if,
-for every node :math:`A`, are all nodes in :math:`A`'s left
-subtree less than the value of :math:`A`, and are all nodes in
-:math:`A`'s right subtree greater than the value of :math:`A`?
-(This happens to be the definition for a binary search tree.)
-Unfortunately, to make this decision we need to know some context
-that is not available just by looking at the node's parent or
-children.
-
-.. _BSTCheckFig:
-
-.. odsafig:: Images/BSTCheckFig.png
-   :width: 100
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Binary tree checking
-
-   To be a binary search tree, the left child of the node with value
-   40 must have a value between 20 and 40.
-
-As shown by Figure :num:`Figure #BSTCheckFig`,
-it is not enough to verify that :math:`A`'s left child has a value
-less than that of :math:`A`, and that :math:`A`'s right child
-has a greater value.
-Nor is it enough to verify that :math:`A` has a value consistent
-with that of its parent.
-In fact, we need to know information about what range of values is
-legal for a given node.
-That information might come from any of the node's ancestors.
-Thus, relevant range information must be passed down the tree.
-We can implement this function as follows.
-
-.. codeinclude:: Binary/checkBST
-   :tag: checkBST
 
 Practice the collect and retun information flow through the following programming exercises
 

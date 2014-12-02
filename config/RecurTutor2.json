@@ -97,6 +97,10 @@
           }
         }
       },
+     "RecurTutor2/BinaryTreeTrvprob": {
+        "long_name": "Binary Tree  Common Traversal Problems",
+        "exercises": {}
+      },  
      "RecurTutor2/recSorting": {
         "long_name": "Recursive Sorting",
         "exercises": {}
