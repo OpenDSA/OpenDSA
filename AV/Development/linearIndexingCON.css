@@ -2,31 +2,23 @@
   height: 30px;
 }
 
-#varindexCON .jsavnode{
+#varindexCON .jsavcanvas{
+ margin-left: auto;
+ margin-right: auto;
+ height: 150px;
+ width: 540px;
+}
+
+#linindexCON .jsavnode{
   line-height: 30px !important;
-  min-width: 30px !important;
-  max-width: 30px !important;
+  min-width: 45px !important;
+  max-width: 45px !important;
   min-height: 30px !important;
   max-height: 30px !important;
 }
 
-#varindexCON .jsavcanvas{
- margin-left: auto;
- margin-right: auto;
- height: 250px;
- width: 540px;
-
-}
-
-#varindexCON .jsavoutput {
-padding-top: 100px;
-text-align: center;
-}
-
-#linindexCON .jsavnode{
-
- min-height: 30px !important;
- max-height: 30px !important;
+#linindexCON .jsavcontainer {
+  height: 250px;
 }
 
 #linindexCON .jsavcanvas {
