@@ -23,6 +23,7 @@ Table of Contents
    Preprocessor
    Backend
    BackendSpecs
+   DatabaseSchemas
    AdminTools
    Client-sideFramework
    QBankUserManual
