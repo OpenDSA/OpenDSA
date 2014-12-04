@@ -79,7 +79,7 @@ Make sure that when you design your recursive case(s) that they are not doing re
 
 
 
-   The effecient solution should be. ::
+   The effecient solution should be ::
 
      int eff_count(BinNode rt) {
       if (rt == null) return 0;  // Nothing to count
