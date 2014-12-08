@@ -49,10 +49,26 @@ For an example of Rubber Duck Debugging read this
 Method 3: Wolf Fence Debugging
 ==============================
 Imagine there is only one wolf in Alaska. How would you find him? The most
-effective way would be to fence Alaska in half and wait for the wolf to "howl"
-again splitting the area in half. Keep repeating until you find the wolf.
+effective way would be to fence Alaska in half and wait for the wolf to "howl."
+When you know which half has the wolf split it and again wait.
+Keep repeating until you find the wolf.
 This is the basis of Wolf Fence Debugging. Work to find where the bug occurs,
 eliminating areas repeatedly until the method and then the line of code causing
 the problem has been found. The method is particularly useful when used in
 conjunction with Exceptions as the stack trace can show each line of code called
 leading to the actual Exception being thrown.
+
+Print Debugging vs Source Debugging
+===================================
+Choosing between source code debugging and print based debugging can be difficult
+at times. There are many different advantages and disadvantages to each method,
+however, in my personal experience I find it easiest to use print based
+debugging to troubleshoot quick problems (i.e. what value is this method returning)
+or to help give a more detailed context for source level debugging. For exmaple,
+in a recent project, I encountered an exception. While the exception provided
+a very detailed message and even gave the line of code that caused the error, it
+still did not provide the information needed. I made use of a print statement to
+ensure that that the data being used was as expected. When the data had been
+verified, I had to use the source level debugger to give more information. That
+being said printing the information made it easier to find the cause of the issue.
+

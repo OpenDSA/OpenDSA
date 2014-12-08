@@ -5,7 +5,7 @@ public static void beginParsingByLine(String filename){
       while(sc.hasNextLine()){//While we have text to read
          String line = sc.nextLine();//Get our next line
          scancmd = new Scanner(line);//Create a scanner from this line
-         String cmd = scancmd.next();//Get the first word on each line AKA the command
+         String cmd = scancmd.next();//Get the first word (the command) on each line
          String type;
          switch(cmd){
             case "insert"://In the case of insert change our delimiter from white space to <SEP> 
@@ -44,7 +44,7 @@ public static void beginParsingByLine(String filename){
                      System.out.println("Print block mode");
                   break;
                   default:
-                     System.out.println("Error bade print type" + type);
+                     System.out.println("Error bad print type" + type);
                   break;
                }
             break;
