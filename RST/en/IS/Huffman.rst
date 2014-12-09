@@ -243,9 +243,7 @@ by traversing the tree appropriately.
 .. inlineav:: huffmanDecodeCON ss
    :output: show
 
-.. avembed:: Exercises/Development/HuffmanDecodeExercise.html ka
-
-.. avembed:: Exercises/Development/HuffmanEncodeExercise.html ka
+.. avembed:: Exercises/Development/HuffmanCodingExercise.html ka
 
 How efficient is Huffman coding?
 --------------------------------
