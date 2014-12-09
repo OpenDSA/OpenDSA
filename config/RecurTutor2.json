@@ -15,16 +15,20 @@
   },
   "chapters": {
     "Advanced Recursion Tutorial": {
-      "RecurTutor2/recDataStr": {
-        "long_name": "Recursive Data Structures",
+      "RecurTutor2/BinaryTreeIntro": {
+        "long_name": "Binary Trees Chapter Introduction",
         "exercises": {}
       },
-      "RecurTutor2/recListOp": {
-        "long_name": "Recursive List Operations",
+      "RecurTutor2/BinaryTree": {
+        "long_name": "Binary Tree",
+        "exercises": {}
+
+      },"RecurTutor2/recDataStr": {
+        "long_name": "Binary Tree as a Recursive Data Structure",
         "exercises": {}
       },
-      "RecurTutor2/recbtOp": {
-        "long_name": "Binary Tree Operations",
+      "RecurTutor2/BinaryTreeTraversal": {
+        "long_name": "Binary Trees Traversal",
         "exercises": {
           "btTravInorderPRO": {
             "long_name": "Binary Tree Inorder Traversal Exercise",
@@ -46,8 +50,8 @@
           }
         }
       },
-      "RecurTutor2/btPROGExercises": {
-        "long_name": "Recursion Chapter Introduction",
+      "RecurTutor2/BinaryTreeInfFlw": {
+        "long_name": "Binary Tree Information Flow",
         "exercises": {
           "btLeafPROG": {
             "long_name": "Binary Tree Leaf Count Exercise",
@@ -93,6 +97,10 @@
           }
         }
       },
+     "RecurTutor2/BinaryTreeTrvprob": {
+        "long_name": "Binary Tree  Common Traversal Problems",
+        "exercises": {}
+      },  
      "RecurTutor2/recSorting": {
         "long_name": "Recursive Sorting",
         "exercises": {}

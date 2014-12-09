@@ -20,11 +20,12 @@ public class Main {
          pos = (int)raf.getFilePointer();//Get the current position in the file
          int read = raf.read(file, 0, file.length);//Use the read function. The read function requires you
          //provide a byte array, the offset from the current position you want to start and the amount of
-         //bytes you would like. This is largely based off a c function as traditionally when you pass an array
-         //you have no idea what the size of the array is. In most cases you will simply want to provide the 
-         //length of the array you are passing in. Note that this function returns an int. This int represents
-         //the bytes read from the file.
-         System.out.printf("Tried reading at position %d, read %d bytes, array was size %d\n", pos, read, file.length);
+         //bytes you would like. This is largely based off a c function as traditionally when you pass an
+         //array you have no idea what the size of the array is. In most cases you will simply want to 
+         //provide the length of the array you are passing in. Note that this function returns an int.
+         //This int represents the bytes read from the file.
+         System.out.printf("Tried reading at position %d, read %d bytes, array was size %d\n", pos, read, 
+               file.length);
          raf.close();//Close our filestream.
       } catch (Exception e) {       
          e.printStackTrace();

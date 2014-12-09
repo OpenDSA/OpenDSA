@@ -20,8 +20,8 @@ $(document).ready(function () {
   var settings = new JSAV.utils.Settings($(".jsavsettings")),
       av = new JSAV($('.avcontainer'), {settings: settings});
 
-  var freqs = [ 32,  42, 120,   7,  42,  24,  37,   2], // The frequency counts
-      chars = ["C", "D", "E", "K", "L", "M", "U", "Z"],  // The characters
+  var freqs = [ 30,  42, 90,   7,  42,  24,  37,   2], // The frequency counts
+      chars = ["X", "D", "E", "K", "L", "M", "U", "Z"],  // The characters
       trees = [];   // Pointers to all of the partial Huffman trees
 
   var codeArray = [];

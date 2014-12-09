@@ -31,3 +31,7 @@
   position: relative;
   top: 70px;
 }
+
+.jsavgraph .jsavedge {
+  stroke-width: 1.5px;
+}

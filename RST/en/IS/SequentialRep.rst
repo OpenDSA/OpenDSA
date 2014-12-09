@@ -238,6 +238,8 @@ this by two or more successive ")" symbols.
 .. inlineav:: SequentialGenTreeCON ss
    :output: show
 
+.. avembed:: Exercises/Development/SequentialTreeGenTreePRO.html ka
+
 Note that this representation for serializing general trees cannot be
 used for binary trees.
 This is because a binary tree is not merely a restricted form of

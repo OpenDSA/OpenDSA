@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <title>Hash Function Question 1</title>
+  <title>Hash System Type for Disk</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
@@ -9,17 +9,40 @@
 
 <body>
   <div class="exercise">
-    <div class="vars">
-      <var id="QCHOICE">randRange(0,2)</var>
-      <var id="TYPE">["Open", "Closed", "Bucket"]</var>
-      <var id="ANSWER">["False", "True", "True"]</var>
-    </div>
     <div class="problems">
+
       <div id="problem-type-or-description">
 	<p class="problem">Answer TRUE or FALSE.</p>
-	<p class="question"><var>TYPE[QCHOICE]</var> hashing works
-	well for disk-based hash systems.</p>
-	<div class="solution"><var>ANSWER[QCHOICE]</var></div>
+	<p class="question">Open hashing works well for disk-based hash systems.</p>
+	<div class="solution"><var>"False"</var></div>
+	<ul class="choices" data-category="true">
+	  <li><var> "True"</var></li>
+	  <li><var> "False" </var></li>
+	</ul>
+	<div class="hints">
+          <p>Managing a bunch of linked lists is not so good on disk.</p>
+          <p>Otherwise, hashing works fine on disk.</p>
+	</div>
+      </div>
+
+      <div id="problem-type-or-description">
+	<p class="problem">Answer TRUE or FALSE.</p>
+	<p class="question">Closed hashing works well for disk-based hash systems.</p>
+	<div class="solution"><var>"True"</var></div>
+	<ul class="choices" data-category="true">
+          <li><var> "True"</var></li>
+	  <li><var> "False" </var></li>
+	</ul>
+	<div class="hints">
+          <p>Managing a bunch of linked lists is not so good on disk.</p>
+          <p>Otherwise, hashing works fine on disk.</p>
+	</div>
+      </div>
+
+      <div id="problem-type-or-description">
+	<p class="problem">Answer TRUE or FALSE.</p>
+	<p class="question">Bucket hashing works well for disk-based hash systems.</p>
+	<div class="solution"><var>"True"</var></div>
 	<ul class="choices" data-category="true">
 	  <li><var> "True"</var></li>
 	  <li><var> "False" </var></li>
@@ -29,8 +52,8 @@
           <p>Otherwise, hashing works fine on disk.</p>
 	</div>
       </div> 
+
     </div>	 
   </div>
-</div>
 </body>
 </html>

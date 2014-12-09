@@ -26,3 +26,7 @@
   -webkit-border-bottom-right-radius: 0px;
   border-bottom-right-radius: 0px;
 }
+
+.jsavgraph .jsavedge {
+  stroke-width: 1.5px;
+}

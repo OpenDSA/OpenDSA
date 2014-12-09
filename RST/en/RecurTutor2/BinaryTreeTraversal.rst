@@ -5,53 +5,19 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :satisfies: binary tree operations
-   :topic: Binary Tree Operations
+   :satisfies: binary tree traversal
+   :topic: Binary Trees Traversal
 
-Binary Tree Operations
+.. odsalink:: AV/Development/BTCON.css
+
+Binary Tree Traversal
 ======================
 
-Binary tree is a recursive data structure so recursion is idealy suitted to perform certain operations on it.
-
-Handling information flow between parts of a program can
-be a significant design challenge, especially when dealing with
-recursive functions.
-In general, we can run into trouble either with passing in the correct
-information needed by the function to do its work,
-or with returning information to the recursive function's caller.
-
-Consider the simple case where a computation requires
-that we communicate information back up the tree to the end user.
-
-.. topic:: Example
-
-   We wish to count the number of nodes in a binary tree.
-   The key insight is that the total count for any (non-empty) subtree is
-   one for the root plus the counts for the left and right subtrees.
-   Where do left and right subtree counts come from?
-   Calls to function ``count`` on the subtrees will compute this for
-   us.
-   Thus, we can implement ``count`` as follows.
-
-   .. codeinclude:: Binary/Traverse
-      :tag: count
-
-
-.. topic:: Example
-
-
-   Recursively print out all the values in a binary tree in a sorted order. From our previous definition to a binary tree. A binary tree can be defined recursively as either an 
-   empty binary tree or a root node that points to a binary tree. In the simple empty tree case, there is nothing to be done. Otherwise, we have a number followed by set of 
-   numbers represented as binary trees. 
-
-.. Todo::
-    Visulization for a tracing of the print all  example on a code and a tree should be shown were the tracing is shown on.
-
-
-Traversing a binary tree
-
-.. Todo::
-   Visulization for each type of traversal
+Binary tree could be viewed as a recursive data structure so recursion
+is idealy suitted to perform certain operations on it.
+A problem that occurs when recursively processing data
+collections is controlling which members of the collection will be
+visited.
 
 Often we wish to process a binary tree by "visiting" each of its
 nodes, each time performing a specific action such as printing the
@@ -64,6 +30,16 @@ Some applications do not require that the nodes be visited in any
 particular order as long as each node is visited precisely once.
 For other applications, nodes must be visited in an order that
 preserves some relationship.
+
+For example, some tree "traversals" might in fact visit only some
+tree nodes, while avoiding processing of others.
+An example is trying to find nodes in a BST whose key value falls
+within a specified range.
+This function must visit only those children of a given node that
+might possibly fall within a given range of values.
+Fortunately, it requires only a simple local calculation to determine
+which child(ren) to visit.
+
 For example, we might wish to make sure that we visit any given node
 *before* we visit its children.
 This is called a :term:`preorder traversal`.
@@ -89,6 +65,9 @@ This is called a :term:`preorder traversal`.
    Then all nodes of the left subtree are printed (in preorder) before
    any node of the right subtree.
 
+.. inlineav:: preordertraversalCON ss
+   :output: show
+
 Alternatively, we might wish to visit each node only
 *after* we visit its children (and their subtrees).
 For example, this would be necessary if we wish to return all nodes
@@ -105,6 +84,9 @@ This is called a :term:`postorder traversal`.
    Figure :num:`Figure #BinTravExample` is
    **D B G E H I F C A**.
 
+.. inlineav:: postordertraversalCON ss
+   :output: show
+
 An :term:`inorder traversal` first visits the left child
 (including its entire subtree), then visits the node, and finally
 visits the right child (including its entire
@@ -117,6 +99,9 @@ this traversal to print all nodes in ascending order of value.
    The inorder enumeration for the tree of
    Figure :num:`Figure #BinTravExample` is
    **B D A G E C H F I**.
+
+.. inlineav:: inordertraversalCON ss
+   :output: show
 
 Now we will discuss some implementations for the traversals, but we
 need to define a node ADT to work with.
@@ -239,21 +224,36 @@ Thus, the designer of the generic traversal function must be able to
 adequately judge what parameters and return type will likely be needed
 by potential visitor functions.
 
+Handling information flow between parts of a program can
+be a significant design challenge, especially when dealing with
+recursive functions such as tree traversals.
+In general, we can run into trouble either with passing in the correct
+information needed by the function to do its work,
+or with returning information to the recursive function's caller.
+We will see many examples throughout the book that illustrate methods
+for passing information in and out of recursive functions as they
+traverse a tree structure.
+Here are a few simple examples.
+
+First we consider the simple case where a computation requires
+that we communicate information back up the tree to the end user.
+
+.. topic:: Example
+
+   We wish to count the number of nodes in a binary tree.
+   The key insight is that the total count for any (non-empty) subtree is
+   one for the root plus the counts for the left and right subtrees.
+   Where do left and right subtree counts come from?
+   Calls to function ``count`` on the subtrees will compute this for
+   us.
+   Thus, we can implement ``count`` as follows.
+
+   .. codeinclude:: Binary/Traverse
+      :tag: count
 
 
-A problem that occurs when recursively processing data
-collections is controlling which members of the collection will be
-visited.
-For example, some tree "traversals" might in fact visit only some
-tree nodes, while avoiding processing of others.
-An example is trying to find nodes in a BST whose key value falls
-within a specified range.
-This function must visit only those children of a given node that
-might possibly fall within a given range of values.
-Fortunately, it requires only a simple local calculation to determine
-which child(ren) to visit.
 
-A more difficult situation is illustrated by the following problem.
+A difficult situation is illustrated by the following problem.
 Given an arbitrary binary tree we wish to determine if,
 for every node :math:`A`, are all nodes in :math:`A`'s left
 subtree less than the value of :math:`A`, and are all nodes in
@@ -297,3 +297,9 @@ Here are some exercises to practice the traversals.
 .. avembed:: AV/Binary/btTravPostorderPRO.html pe
 
 .. avembed:: AV/Binary/btTravPreorderPRO.html pe
+
+.. odsascript:: AV/Development/inordertraversalCON.js
+
+.. odsascript:: AV/Development/preordertraversalCON.js
+
+.. odsascript:: AV/Development/postordertraversalCON.js

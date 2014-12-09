@@ -29,13 +29,13 @@
 
   var makeTree = function () {
     var bt = jsav.ds.binarytree({center: true, visible: true, nodegap: 35});
-    bt.root('n');
+    bt.root(' ');
     //generate random tree with between 4-7nodes
     var numNodes = Math.floor(Math.random() * (7-4))+4;
     var i = 1;
     while (i <= numNodes) {
       //var temp = Math.floor(Math.random() * 100)%2;
-      randomNode(bt, bt.root(), 'n');
+      randomNode(bt, bt.root(), ' ');
       i++;
     }
     bt.layout();

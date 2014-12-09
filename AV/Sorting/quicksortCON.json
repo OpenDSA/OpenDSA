@@ -3,7 +3,7 @@
     "en": {
       "av_c1": "When we start the partition function, pivot value 60 has been moved to the right most position.",
       "av_c2": "The left and right bounds are set to positions 0 and 8, respectively",
-      "av_c3": "Now move left bound rightward as long as it is at a value less than 60. Since it starts on 72 which is greater than 60, there is no movement of the left bound at this time.",
+      "av_c3": "Now move left bound rightward as long as it is at a value less than 60. Since it starts on 76 which is greater than 60, there is no movement of the left bound at this time.",
       "av_c4": "Likewise, the right bound starts at a value less than 60, so it does not move.",
       "av_c5": "Swap the values at the bounds.",
       "av_c6": "Now move the left bound to the right as long as it is at a value less than the pivot.",

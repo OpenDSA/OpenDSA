@@ -2631,6 +2631,9 @@ Glossary
    recursive function
       A function that includes a :term:`recursive call`.
 
+   Red-Black Tree
+      A balanced variation on a :term:`BST`.
+
    reduction
       In :term:`algorithm analysis`, the process of deriving
       :term:`asymptotic bounds <asymptotic analysis>`
@@ -3218,7 +3221,9 @@ Glossary
 
    transitive
       In set notation, relation :math:`R` is transitive if whenever
-      :math:`aRb`, then :math:`bRa`, for all :math:`a, b \in \mathbf{S}`.
+      :math:`aRb` and :math:`bRc`, then :math:`aRc`, for all
+      :math:`a, b, c \in \mathbf{S}`.
+
 
    transpose
       In the context of linear algebra,

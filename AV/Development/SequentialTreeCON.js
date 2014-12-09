@@ -5,7 +5,7 @@ $(document).ready(function () {
   var av_name = "SequentialTreeCON";
   var av = new JSAV(av_name);
   var temp1;
-  var arr = av.ds.array(['A','B','/','D','/','/','C','E','G','/','/','/','F','H','/','/','I','/','/']);
+  var arr = av.ds.array(['A','B','/','D','/','/','C','E','G','/','/','/','F','H','/','/','J','/','/']);
   arr.highlight(0);
   var bt = av.ds.binarytree({visible: true, nodegap: 35});
   bt.root('A');
@@ -18,7 +18,7 @@ $(document).ready(function () {
   var g = a.right().left().left('G');
   var f = a.right().right('F');
   var h = a.right().right().left('H');
-  var i = a.right().right().right('I');
+  var j = a.right().right().right('J');
 
   b.hide();
   d.hide();
@@ -27,7 +27,7 @@ $(document).ready(function () {
   g.hide({recursive:false});
   f.hide({recursive:false});
   h.hide({recursive:false});
-  i.hide({recursive:false});
+  j.hide({recursive:false});
 
   //Slide 1
   av.umsg("We begin with the first node in the string 'A' which will be the root node");
@@ -173,10 +173,10 @@ $(document).ready(function () {
   av.step();
 
   //Slide 20
-  av.umsg("I must be the right child of F");
-  i.show({recursive:false});
+  av.umsg("J must be the right child of F");
+  j.show({recursive:false});
   bt.layout();
-  ptr.target(i);
+  ptr.target(j);
   //point to I
   arr.highlight(16);
   arr.unhighlight(14);
@@ -184,7 +184,7 @@ $(document).ready(function () {
   av.step();
 
   //Slide 21
-  av.umsg("Double slashes implies I is a leaf node with no children");
+  av.umsg("Double slashes implies J is a leaf node with no children");
   arr.highlight(17);
   arr.highlight(18);
   arr.unhighlight(16);

@@ -1,12 +1,12 @@
-void TowersofHanoi(int topN, char from, char inter, char to) {
-    if (topN == 1)
+void TowersofHanoi(int disk, char source, char dest, char spare) {
+    if (disk == 0)
    {
       // Move disk from Source to Destination
    }
    else 
    {
-      TowersofHanoi(topN - 1, from, to, inter);
+      TowersofHanoi(disk - 1, source, spare, dest);
       // Move disk from Source to Destination
-      TowersofHanoi(topN - 1, inter, from, to);
+      TowersofHanoi(disk - 1, spare, dest, source);
     }
 }
