@@ -70,64 +70,74 @@
     node.addedStep = step;
     node.addClass("visited");
     if (av) {
-      av.umsg("Visit node " + node.value());
+      av.umsg(" Enqueue and visit node " + node.value(), {preserve: true});
     }
     node.highlight();
     if (av) {
-      av.step();
       if (node.prev) {
+        av.step();
         av.umsg("Add edge (" + node.prev.value() + "," + node.value() + ") to the BFS graph");
         edge = node.edgeFrom(node.prev).css({"stroke-width": "4", "stroke": "red"});
         edge.added = true;
-        av.step();
       }
-      av.stepOption('grade', true);
+      av.gradeableStep();
     }
   }
   function bfs(start, av) {
-    var adjacent = [];
-    var visitedNeighbors = 0;
-    var next;
-    if (!start.hasClass("visited")) {
-      markIt(start, av);  //Visit
-    }
-    adjacent = start.neighbors();
-    //Sort the neighbors according to their value
-    adjacent.sort(function (a, b) {
+    var queue = [start],
+        node,
+        neighbor,
+        adjacent;
+    function nodeSort(a, b) {
       return a.value().charCodeAt(0) - b.value().charCodeAt(0);
-    });
-    for (var i = 0; i < adjacent.length; i++) {
-      if (adjacent[i].hasClass("visited")) {
-        visitedNeighbors++;
-      }
     }
-    //Base Case
-    if (visitedNeighbors === adjacent.length) {
-      return;
-    }
-    else {
-      for (next = adjacent.next(); next; next = adjacent.next()) {
-        av.umsg("Process edge (" + start.value() + "," + next.value() + ")");
-        if (next.hasClass("visited")) {
-          av.umsg(" :Node " + next.value() + " already visited", {'preserve': true});
+
+    markIt(start, av);
+
+    while (queue.length) {
+      // dequeue node
+      node = queue.pop();
+      // get neighbors and sort them in alphabetical order
+      adjacent = node.neighbors();
+      adjacent.sort(nodeSort);
+      av.umsg("Dequeue " + node.value());
+      av.step();
+
+      // Check if all neighbors have already been visited
+      var visitedAll = true;
+      for (var i = 0; i < adjacent.length; i++) {
+        if (!adjacent[i].hasClass("visited")) {
+          visitedAll = false;
+          break;
         }
+      }
+
+      if (!visitedAll) {
+        // go through all neighbors
+        while (adjacent.hasNext()) {
+          neighbor = adjacent.next();
+          av.umsg("Process edge (" + node.value() + "," + neighbor.value() + ").");
+          if (!neighbor.hasClass("visited")) {
+            // enqueue and visit node
+            queue.unshift(neighbor);
+            neighbor.prev = node;
+            markIt(neighbor, av);
+          } else {
+            av.umsg(" Node " + neighbor.value() + " already visited.", {'preserve': true});
+            av.step();
+          }
+        }
+      } else {
+        av.umsg("All the neighbors of " + node.value() + " have already been visited.\n");
         av.step();
-        if (!next.hasClass("visited")) {
-          next.prev = start;
-          markIt(next, av);
-        }
       }
-      adjacent.reset();
-      for (next = adjacent.next(); next; next = adjacent.next()) {
-        bfs(next, av);
-      }
-      
+
     }
   }
   
   // Process About button: Pop up a message with an Alert
   function about() {
-    alert("Heapsort Proficiency Exercise\nWritten by Ville Karavirta\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
+    alert("BFS Proficiency Exercise\nWritten by -\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
   }
   
   exercise = jsav.exercise(model, init,
