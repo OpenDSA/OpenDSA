@@ -39,7 +39,7 @@
     var numNodes = Math.floor(Math.random() * (7-4))+4;
     var i = 1;
     while (i <= numNodes) {
-      randomNode(bt, letters.charAt(i));
+      if (randomNode(bt, letters.charAt(i)) == true)
       i++;
     }
     bt.layout();
@@ -82,14 +82,26 @@ function randomNode(bt, value)
   var newNode = bt.newNode(value);
   var randomIndex = Math.floor(Math.random() * (sizeOfArray));
 
+  var i = 0;
+  var parNode = arrayOfNodes[randomIndex].parent();
+  while (parNode != null)
+  {
+    i++;
+    parNode = parNode.parent();
+  }
+  if (i >= 3)
+  {
+    return false;
+  }
   arrayOfNodes[randomIndex].addChild(newNode);
   arrayOfNodes[sizeOfArray] = newNode;
   sizeOfArray ++;
+  return true;
 }
 </script>
 
 <div class="exercise">
-  <p class="question" style="top: 10px">Using a ) to signify the end of a subtree, please write the sequential representation of this tree</p>
+  <p class="question" style="top: 10px">Using a '0' to signify the end of a subtree, please write the sequential representation of this tree</p>
   <div class="vars">
     <var id="JSAV">initJSAV()</var>
     <var id="BT">makeTree()</var>
@@ -102,7 +114,14 @@ function randomNode(bt, value)
         <div id="jsav" class="jsavcanvas"></div>
       </p>
       <p class="solution" data-type="text"><var>ANS</var></p>
+       <div class="hints">
+  <p>Make sure to use a ')' for the end of every sub tree</p>
+  <p>The root also needs to end</p>
+  <p>There should the same amout of ')' as there are nodes.
+  </p>
+      </div>
     </div>
+         
   </div>
 </div>
 </body>
