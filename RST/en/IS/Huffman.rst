@@ -164,6 +164,10 @@ Table :num:`Table #FreqExamp`. [#]_
 .. inlineav:: huffmanBuildCON ss
    :output: show
 
+Try building a customized Huffman tree with your own characters and corresponding frequencies.  
+
+.. avembed:: AV/Binary/huffmanCustomBuildAV.html ss
+
 Here is the implementation for Huffman tree nodes.
 
 .. codeinclude:: Binary/Huffman
@@ -349,3 +353,5 @@ Notes
 .. odsascript:: AV/Binary/huffmanLabelCON.js
 .. odsascript:: AV/Binary/huffmanCodesCON.js
 .. odsascript:: AV/Binary/huffmanDecodeCON.js
+.. avembed:: AV/Development/huffmanCustomBuildCON.js ss
+.. odsascript:: AV/Development/huffmanCustomBuildCON.js
