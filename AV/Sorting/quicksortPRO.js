@@ -19,7 +19,9 @@ $(document).ready(function () {
   // Processes the reset button
   function initialize() {
     // Clear existing array
-    $("#array").html("");
+    if (userArr) {
+      userArr.clear();
+    }
 
     // Generate random numbers for the exercise
     initialArray = [];
@@ -33,12 +35,11 @@ $(document).ready(function () {
     ODSA.AV.logExerciseInit(initData);
 
     // Create the array the user will intereact with
-    userArr = av.ds.array(initialArray, {indexed: true, layout: arrayLayout.val()});
+    userArr = av.ds.array(initialArray,
+                          {indexed: true, layout: arrayLayout.val()});
 
     // Assign a click handler function to the user array
-    userArr.click(function (index) {
-      clickHandler(this, index);
-    });
+    userArr.click(function (index) {clickHandler(this, index);});
 
     resetStateVars();
 
@@ -47,7 +48,8 @@ $(document).ready(function () {
 
     av.umsg(interpret("av_c1"));
 
-    // Return the array containing the user's answer and the state variables we use to grade their solution
+    // Return the array containing the user's answer and the state
+    // variables we use to grade their solution
     return [userArr, pivotIndex, pivotMoved, partitioned, left, right];
   }
 
@@ -388,7 +390,7 @@ $(document).ready(function () {
   av.recorded();     // we are not recording an AV with an algorithm
 
   // Initialize the variables
-  var userArr = [];
+  var userArr;       // JSAV array
   var pivotIndex = av.variable(-1);
   var pivotMoved = av.variable(false);
   var partitioned = av.variable(false);

@@ -225,7 +225,8 @@ $(document).ready(function () {
       }
     }
 
-    // Determine the correct column and the relative index where the correct answer will be placed
+    // Determine the correct column and the relative index where
+    // the correct answer will be placed
     var destColumn = 1;
     var left = 0;
     var right = modelArr.size() - 1;
@@ -324,14 +325,15 @@ $(document).ready(function () {
       // Deselect the currently selected element
       resetMergeVars();
     }
-    else if (arr !== mergeValueArr) { // Decide how to handle a selected element
+    else if (arr !== mergeValueArr) { // Decide how to handle selected element
       // Don't let the user overwrite a merged element
       if (arr.value(index) !== "") { return; }
       var arrLevel = getLevel(arr);
       var mvaLevel = getLevel(mergeValueArr);
 
       // Ensure the user only merges one level up, not down or too far up
-      if (arrLevel === mvaLevel - 1 && mergeValueArr !== null && mergeValueIndex > -1) {
+      if (arrLevel === mvaLevel - 1 && mergeValueArr !== null
+	                            && mergeValueIndex > -1) {
         // Complete merge by setting the value of the current element
         // to the stored value
         arr.value(index, mergeValueArr.value(mergeValueIndex));
