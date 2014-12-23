@@ -44,6 +44,12 @@ For example, if a JSAV array is placed at a specific location that
 never changes, then this location should be defined within a CSS file
 for your AV or slideshow.
 
+While the client-side framework should automatically resize the AVs
+iFrame, developers should set the default height and width of the AV
+to accommodate the maximum size of the AV (such as an optional code
+block). If the automatic resizing should fail, the exercise should still
+be useable even if it doesn't look as nice.
+
 Some styling aspects are dynamic. For example, over the course of a
 visualization, nodes in a tree might need to change color to emphasize
 the action being visualized. Looking at the JSAV manual, you will
@@ -117,7 +123,7 @@ Their purpose is merely to keep module authors from needing to use raw
 HTML code in an RST file.
 
 When you embed multiple slideshows on the page (with ``inlineav``),
-they will naturally share the same namespace, both for code 
+they will naturally share the same namespace, both for code
 and for CSS.
 
 For code, this is not generally an issue, because it is our standard
@@ -150,7 +156,7 @@ This does the following:
 
 * Use of the container name (such as in the JSAV call) is why THIS
   code gets executed on THIS container instead of the OTHER .js files
-  that you loaded on the page. 
+  that you loaded on the page.
 
 Each ``inlineav`` might need to set some CSS styling with the same
 name as other slideshows will use.

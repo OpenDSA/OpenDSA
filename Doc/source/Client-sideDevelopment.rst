@@ -312,11 +312,6 @@ which is used by the OpenDSA framework)!
 Troubleshooting
 ---------------
 
-Verbose Logging
-===============
-
-Are you new to the client-side framework and just want to see a trace of its execution to understand what's really going on?  Do you have to debug a problem on a student's computer that doesn't have all your nifty developer tools installed?  Then DEBUG_MODE is your new best friend.  Simply run ``localStorage.DEBUG_MODE = 'true'`` from the JavaScript console and the framework will begin printing (very) verbose logs of exactly what is happening, along with state information.  The logs are grouped by function call and can be collapsed or expanded to provide more or less information as necessary.  Each time a function calls another function, the logs are indented to indicate scope.  To disable verbose logging, run: ``delete localStorage.DEBUG_MODE`` from the JavaScript console.
-
 jQuery Selectors
 ================
 

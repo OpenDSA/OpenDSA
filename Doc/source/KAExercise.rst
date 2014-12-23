@@ -19,19 +19,21 @@ When complete, your file should go in the
 
 #. Copy the file "TemplateLessonMC.html" and open it in any text editor.
 
+#. Set the height and width of the exercise by adding / updating the ``data-height`` and ``data-width`` attributes of the ``body`` element
+
 #. For each Multiple Choice question, start with a copy of the following code::
 
     <div id="problem-type-or-description">
       <p class="question"> <<QUESTION TEXT>></p>
       <div class="solution"><var>"<<QUESTION ANSWER>>"</var></div>
       <ul class="choices">
-	<li><var>"<<INCORRECT CHOICE 1>>"</var></li>     
-	<li><var>"<<INCORRECT CHOICE 2>>"</var></li>
-	<li><var>"<<INCORRECT CHOICE 3>>"</var></li>	  	 
+        <li><var>"<<INCORRECT CHOICE 1>>"</var></li>
+        <li><var>"<<INCORRECT CHOICE 2>>"</var></li>
+        <li><var>"<<INCORRECT CHOICE 3>>"</var></li>
       </ul>
-	  <div class="hints">
-	   <p><<ANY HINTS YOU HAVE>></p>
-	  </div>
+      <div class="hints">
+        <p><<ANY HINTS YOU HAVE>></p>
+      </div>
     </div>
 
 #. For each T/F question, start with a copy the following code::
@@ -40,13 +42,13 @@ When complete, your file should go in the
       <p class="question"> <<QUESTION TEXT>></p>
       <div class="solution"><var>"<<QUESTION ANSWER: TRUE/FALSE>>"</var></div>
       <ul class="choices" data-category="true">
-	<li><var>"True"</var></li>
-	<li><var>"False"</var></li>			  	  	 
+        <li><var>"True"</var></li>
+        <li><var>"False"</var></li>
       </ul>
-	  <div class="hints">
-	    <p><<ANY HINTS YOU HAVE>></p>
-	   </div>
-    </div> 
+      <div class="hints">
+        <p><<ANY HINTS YOU HAVE>></p>
+      </div>
+    </div>
 
 #. Within the template file, replace the text in brackets ``<< >>`` as follows:
 
@@ -70,13 +72,13 @@ When complete, your file should go in the
      has a mathematical formula (in latex format), put the formula
      between ``<code></code>`` tags as in these examples::
 
-        <code>\log n</code>  
+        <code>\log n</code>
         <code>n</code>
         <code>\Theta(n \sqrt{n})</code>
 
    * For T/F questions you will not need to add choices. You only
      need to add the answer (True or False) using **one** of the following
-     lines:: 
+     lines::
 
       <div class="solution"><var>"True"</var></div>
       <div class="solution"><var>"False"</var></div>
