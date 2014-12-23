@@ -145,8 +145,8 @@ This does the following:
 
 * document.ready makes it wait until everything is loaded
 
-* It is all wrapped in a function, so that it doesn't collide its
-  namespace with other slideshows.
+* It is all wrapped in a function, so that its namespace will not
+  conflict with other slideshows.
   That way, for example, the global
   variables for one slideshow (like ``av`` in this example) are
   separate from the other slideshows.

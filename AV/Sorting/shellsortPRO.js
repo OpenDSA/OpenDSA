@@ -51,7 +51,7 @@ $(document).ready(function () {
     }
   }
 
-  // generates the model answer; calls sweep above
+  // generates the model answer; calls sweep() implemented above
   function shellsort(av) {
     var modelarr = av.ds.array(initialArray,
                                {indexed: true, layout: arrayLayout.val()}),
@@ -86,28 +86,25 @@ $(document).ready(function () {
     generateIncrements();
     $('#increments').val(incrs);
     
-    var htmldata = "";
-    for (var i = ArraySize; i > 0; i--) {
-      var randomVal = Math.floor(Math.random() * 100);
-      htmldata += "<li>" + randomVal + "</li>";
-      initialArray[ArraySize - i] = randomVal;
+    if (theArray) {
+      theArray.clear();
     }
-    $theArray.html(htmldata);
-      
+    initialArray = JSAV.utils.rand.numKeys(10, 99, ArraySize);
+    theArray = av.ds.array(initialArray,
+                           {indexed: true, layout: arrayLayout.val()});
+    // register click handlers for the array indices
+    theArray.click(function (index) { clickHandler(index); });
+
     // Log the initial state of the exercise
     var initData = {};
     initData.gen_array = initialArray;
     initData.gen_incrs = incrs;
     ODSA.AV.logExerciseInit(initData);
 
-    theArray = av.ds.array($theArray, {indexed: true, layout: arrayLayout.val()});
-    // register click handlers for the array indices
-//    theArray.click(function (index) { clickHandler(index); });
-
     currIncrIndex = av.variable(0);
     currSublist = av.variable(0);
     mode = av.variable("SELECTING");
-    swapIndex = av.variable(-1);
+    swapIndex = -1;
     av.umsg(interpret("av_c5") + incrs[currIncrIndex.value()]);
     av.forward();
     av._undo = [];
@@ -209,15 +206,16 @@ $(document).ready(function () {
       }
       av.step();
     } else if (mode.value() === "SORTING") { // in sorting mode
-      var sIndex = swapIndex.value();
-      if (sIndex === -1) { // if first click
-        theArray.css(index, {"font-size": "130%"});
-        swapIndex.value(index);
+      if (swapIndex === -1) { // if first click
+        theArray.addClass(index, "enlarge");
+        swapIndex = index;
         av.forward();
       } else { // second click will swap
-        theArray.swap(sIndex, index);
-        theArray.css([sIndex, index], {"font-size": "100%"});
-        swapIndex.value(-1);
+        if (swapIndex !== index) {
+	  theArray.swap(swapIndex, index);
+	}
+        theArray.removeClass(swapIndex, "enlarge");
+        swapIndex = -1;
         av.forward();
       }
     }
@@ -233,7 +231,7 @@ $(document).ready(function () {
   //////////////////////////////////////////////////////////////////
   // Start processing here
   //////////////////////////////////////////////////////////////////
-  // Load the config object with interpreter and code created by odsaUtils.js
+  // Load config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadConfig(),
       interpret = config.interpreter;       // get the interpreter
 
@@ -251,13 +249,13 @@ $(document).ready(function () {
 
   var ArraySize = 10; // Size of the exercise array
 
-  var incrs = [], // The array of increments
-      $theArray = $("#profArray"),
-      initialArray = [], // needed for model answer
-      theArray,
+  var incrs = [],        // The array of increments
+      initialArray = [], // Needed for model answer
+      theArray,          // JSAV array
       mode,
-      currIncrIndex, // The index for the student's current increment
-      currSublist = 0; // the current sublist number
+      currIncrIndex,     // Index for the student's current increment
+      currSublist = 0,   // Current sublist number
+      swapIndex;         // Array index for last user click
       
   // Initialize the exercise
   // Defines the function to call on reset (initialize()), and the
@@ -267,11 +265,4 @@ $(document).ready(function () {
                 controls: $('.jsavexercisecontrols'), fix: fixState});
 
   exer.reset();
-
-  // I don't know why this had to get pulled out of the initialize() method
-  // But when it is here, it does not register duplicate handlers
-  // register click handlers for the array indices
-  theArray.click(function (index) { clickHandler(index); });
-
-  var swapIndex;
 });
