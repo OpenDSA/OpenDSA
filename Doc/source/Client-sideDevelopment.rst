@@ -173,12 +173,15 @@ ODSA.AV
   * The generated event uses the same channel as JSAV events and is therefore received by the existing listener.  This function is NOT dependent on the JSAV framework.
 
 * **initArraySize(min, max, selected)** - initializes the arraysize drop down list with the range of numbers from ``min`` to ``max`` with ``selected`` selected
+
 * **reset(flag)** - resets the AV to its original state
 
   * The ``reset()`` function works by saving the HTML from the ``avcontainer`` element on page load and using it to replace the HTML in the ``avcontainer`` when reset it called.  When JSAV is initialized it alters the contents of the container, after the HTML has been saved.  When JSAV is initialized on page load but never reinitialized, the first reset clears the elements JSAV  generated, breaking the AV.  Using this ``reset()`` method, JSAV must be reinitialized after each reset in order for the AV to function properly.  We recommend reinitializing JSAV after calling ``ODSA.AV.reset(true)`` in the ``runit()`` method.
   * The ``runit()`` method should call ``ODSA.AV.reset(true)`` to ensure the avcontainer is cleared and ready for the next instance.
 
 * **processArrayValues(upperLimit)** - validates the array values a user enters or generates an array of random numbers if none are provided
+
+* **sendResizeMsg()** - forces the AV to send a message to the parent page containing the height and width of the rendered AV. This function is called automatically when the AV is loaded or reset, but can be explicitly called by developers if their AV changes size during its operation.
 
 
 ODSA.MOD

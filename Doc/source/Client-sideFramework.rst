@@ -131,6 +131,8 @@ Due to the way Khan-Academy exercises can contain multiple problems of different
     <div class="exercise" data-name="ExchangeTF1"></div>
   ...
 
+These data attributes are read from the Khan-Academy exercise file by the ``avembed`` directive during the compilation process and used to set the dimensions of the exercise's iFrame.
+
 
 Dynamically Loading Exercises
 =============================
