@@ -108,8 +108,4 @@ which must fall in the range 0 to :math:`n-1`.
 * Right sibling(:math:`r`) :math:`= r + 1` if :math:`r`
   is odd and :math:`r + 1 \leq n`.
 
-.. TODO::
-   :tag: Exercise
-
-   Create a KA exercise that gives an index and asks for the index of
-   some relative (if it exists).
+.. avembed:: Exercises/Binary/CompleteFIB.html ka

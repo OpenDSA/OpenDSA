@@ -1,7 +1,7 @@
 /*global ODSA */
 "use strict";
 $(document).ready(function () {
-  var av = new JSAV("BinExamp", {"animationMode": "none"});
+  var av = new JSAV("BinExampCON", {"animationMode": "none"});
   // Setup the tree
   var btTop = 10;
   var btLeft = 305;

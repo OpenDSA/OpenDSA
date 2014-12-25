@@ -43,13 +43,6 @@
   stroke-width: 3;
 }
 
-.clearnode { /* Make a node invisible in a slideshow */
-  background-color: #eed;
-  color: #eed;
-  border-color: #eed;
-  box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.0);
-}
-
 .rednode { /* Make a node red */
   background-color: white;
   color: red;

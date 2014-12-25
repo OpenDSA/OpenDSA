@@ -156,7 +156,7 @@ $(document).ready(function () {
     }
     checkArray(tempArray);
     av.umsg(interpret("av_c9") + $("#increments").val() +
-	    interpret("av_c10") + comps + interpret("av_c6") + swaps +
+            interpret("av_c10") + comps + interpret("av_c6") + swaps +
             interpret("av_c7"));
     if ((comps < twosComps) && (swaps < twosSwaps)) { // Give user credit
       // Give user proficiency credit

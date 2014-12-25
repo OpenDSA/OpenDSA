@@ -332,8 +332,8 @@ $(document).ready(function () {
       var mvaLevel = getLevel(mergeValueArr);
 
       // Ensure the user only merges one level up, not down or too far up
-      if (arrLevel === mvaLevel - 1 && mergeValueArr !== null
-	                            && mergeValueIndex > -1) {
+      if (arrLevel === mvaLevel - 1 && mergeValueArr !== null &&
+                                       mergeValueIndex > -1) {
         // Complete merge by setting the value of the current element
         // to the stored value
         arr.value(index, mergeValueArr.value(mergeValueIndex));

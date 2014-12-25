@@ -212,8 +212,8 @@ $(document).ready(function () {
         av.forward();
       } else { // second click will swap
         if (swapIndex !== index) {
-	  theArray.swap(swapIndex, index);
-	}
+          theArray.swap(swapIndex, index);
+        }
         theArray.removeClass(swapIndex, "enlarge");
         swapIndex = -1;
         av.forward();

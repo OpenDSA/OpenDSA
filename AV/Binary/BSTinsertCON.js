@@ -21,7 +21,7 @@ $(document).ready(function () {
   rt.right().left().left(40);
   rt.right().right(120);
   var newnode = rt.left().right().left(30);
-  newnode.addClass("clearnode");
+  newnode.addClass("invisnode");
   var parent = newnode.parent();
   var newedge = parent.edgeToLeft();
   newedge.hide();
@@ -105,7 +105,7 @@ $(document).ready(function () {
   av.umsg(interpret("av_c14"));
   pseudo.setCurrentLine("checknull");
   newnode.show();
-  newnode.removeClass("clearnode");
+  newnode.removeClass("invisnode");
   newnode.addClass("rednode");
   newedge.hide();
   av.step();

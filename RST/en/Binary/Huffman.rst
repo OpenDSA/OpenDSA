@@ -243,6 +243,8 @@ by traversing the tree appropriately.
 .. inlineav:: huffmanDecodeCON ss
    :output: show
 
+.. avembed:: Exercises/Binary/HuffmanDecodeFIB.html ka
+
 How efficient is Huffman coding?
 --------------------------------
 

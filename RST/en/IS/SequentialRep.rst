@@ -9,6 +9,7 @@
    :topic: General Trees
 
 
+.. odsalink:: AV/Binary/BinExampCON.css
 .. odsalink:: AV/Development/SequentialTreeCON.css
 
 Sequential Tree Representations
@@ -99,12 +100,8 @@ the tree structure.
 
 .. _BinExampb:
 
-.. odsafig:: Images/BinExamp.png
-   :width: 200
+.. inlineav:: BinExampCON dgm
    :align: center
-   :capalign: center
-   :figwidth: 90%
-   :alt: Binary tree for sequential tree implementation examples
 
    Sample binary tree for sequential tree implementation examples.
 
@@ -251,8 +248,7 @@ cannot let us distinguish whether node :math:`D` in
 Figure :num:`Figure #BinExampb` is the left or right child of node
 :math:`B`.
 
-
-
+.. odsascript:: AV/Binary/BinExampCON.js
 .. odsascript:: AV/Development/SequentialTreeCON.js
 .. odsascript:: AV/Development/SequentialTreeAltCON.js
 .. odsascript:: AV/Development/SequentialTreeBitVectorCON.js

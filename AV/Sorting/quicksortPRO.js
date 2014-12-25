@@ -39,7 +39,7 @@ $(document).ready(function () {
                           {indexed: true, layout: arrayLayout.val()});
 
     // Assign a click handler function to the user array
-    userArr.click(function (index) {clickHandler(this, index);});
+    userArr.click(function (index) { clickHandler(this, index); });
 
     resetStateVars();
 

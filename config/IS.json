@@ -25,27 +25,6 @@
           }
         }
       },
-      "IS/BinaryTree": {
-        "long_name": "Binary Tree Terminology",
-        "exercises": {
-          "DefSumm": {
-            "long_name": "Tree Definition Summary Exercises",
-            "required": true,
-            "points": 3,
-            "threshold": 8
-          }
-        }
-      },
-      "IS/CompleteTree": {
-        "long_name": "Array Implementation for Complete Trees",
-        "exercises": {}
-        
-      },
-      "IS/BinaryTreeTraversal": {
-        "long_name": "Binary Tree Traversals",
-        "exercises": {}
-        
-      },
       "IS/BinaryTreeImpl": {
         "long_name": "Binary Tree Implementations",
         "exercises": {}
@@ -58,7 +37,38 @@
       },
       "IS/Huffman": {
         "long_name": "Huffman Trees",
-        "exercises": {}
+        "exercises": {
+          "huffmanBuildCON": {
+            "long_name": "Huffman Coding Tree Slideshow: Build",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "huffmanLabelCON": {
+            "long_name": "Huffman Coding Tree Slideshow: Label Edges",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "huffmanCodesCON": {
+            "long_name": "Huffman Coding Tree Slideshow: Setting Codes",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "huffmanDecodeCON": {
+            "long_name": "Huffman Coding Tree Slideshow: Decoding",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "HuffmanDecodeFIB": {
+            "long_name": "Huffman Decoding Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
       },
       "IS/AVL": {
         "long_name": "The AVL Tree",

@@ -112,4 +112,4 @@ $(document).ready(function () {
   // Slide 20
   av.umsg(interpret("av_c16"));
   av.recorded();
-}(jQuery));
+});

@@ -1,7 +1,7 @@
 /*global ODSA */
 "use strict";
 $(document).ready(function () {
-  var av = new JSAV("FullComp", {"animationMode": "none"});
+  var av = new JSAV("FullCompCON", {"animationMode": "none"});
   // Setup first row of trees
   var btTop = 10;
   var btLeft = 225;

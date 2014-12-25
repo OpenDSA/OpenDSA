@@ -20,9 +20,8 @@
   </style>
 </head>
 
-<body>
+<body data-width="950" data-height="800">
 <script>
-var jsav;
 var initJSAV = function() {
   var jsav = new JSAV("jsav");
   jsav.recorded();
@@ -69,27 +68,23 @@ var initJSAV = function() {
 
   t.layout();
 }
-</script>
 
-<script>
 function genIndices(type) {
   var indices = [];
   var length = 1;
-  if (type == 0) { length = Math.floor(Math.random()*3)+1; }
+  if (type === 0) { length = Math.floor(Math.random()*3)+1; }
   for (var i = 0; i < length; i++) {
     indices[i] = Math.floor(Math.random()*8);
   }
   return indices;
 }
-</script>
 
-<script>
 function genQuestionOrAnswer(indices, sequenceType, questionOrAnswer) {
   var letters = ["O", "T", "E", "H", "G", "V", "X", "J"];
   var codes = ["00", "01", "11", "101", "1000", "10011", "100100", "100101"];
   var question = "";
   var answers = "";
-  if(sequenceType == 0) {
+  if(sequenceType === 0) {
     for (var i = 0; i < indices.length; i++) {
       question += "" + letters[indices[i]];
       answers += "" + codes[indices[i]];
@@ -101,20 +96,10 @@ function genQuestionOrAnswer(indices, sequenceType, questionOrAnswer) {
     }
   }
 
-  if(questionOrAnswer == 0) {
+  if(questionOrAnswer === 0) {
     return question;
   } else {
     return answers;
-  }
-}
-</script>
-
-<script>
-function genHint(type) {
-  if(type == 0) {
-    return "To decode every individual letter, trace the path down the tree and add a 0 for left branches or 1 for right branches each time you traverse deeper until you get to the leaf you are looking for. For example, the letter Z would be 1+1+1+1+0+0 (111100). Then, to decode the rest, add that letter's code to your overall answer, and repeat for the other letters.";
-  } else {
-    return "To find the corresponding letter for the code, trace the path down according to the 0s (left) or 1s (right) until you get to a letter. For example, with 1110, you would go left (1), left (1), left (1), and then right (0) where find the letter C.";
   }
 }
 </script>
@@ -123,26 +108,33 @@ function genHint(type) {
   <div class="vars">
     <var id="JSAV">initJSAV()</var>
     <var id="type">randRange(0,1)</var>
-    <var id="sequenceNames">["sequence of bits", "letter"]</var>
+    <var id="sequenceNames">["sequence of bits", "letters"]</var>
     <var id="sequence">sequenceNames[type]</var>
-    <var id="answerNames">["1s or 0s", "letter"]</var>
+    <var id="answerNames">["1s or 0s", "letters"]</var>
     <var id="answer">answerNames[type]</var>
     <var id="indices">genIndices(type)</var>
     <var id="question">genQuestionOrAnswer(indices, type, 0)</var>
     <var id="ANS">genQuestionOrAnswer(indices, type, 1)</var>
-    <var id="HINT">genHint(type)</var>
   </div>
   <div class="problems">
     <div id="problem-type-or-description">
       <p class="question">
-        For the above Huffman tree, what is
+        For the Huffman tree shown below, what is
         the corresponding <var>sequence</var> represented by <var>question</var>? 
         Type its representation as a series of <var>answer</var>.
         <div id="jsav" class="jsavcanvas"></div>
       </p>
       <p class="solution" data-type="text"><var>ANS</var></p>
       <div class="hints">
-         <p><var>HINT</var></p>
+         <p>To decode a letter, trace the path down the
+           tree to the letter. Add a 0 for each left branch or 1 for
+           right branch, until you get to the leaf node.
+           For example, the code for Z is 1+1+1+1+0+0.</p>
+          <p>To find the corresponding letter for a code, trace a
+            path through the tree according to the 0s (left) or 1s
+            (right) until you get to a letter.
+            For example, for 1110 you would go left (1), left (1),
+            left (1), and then right (0) to find the letter C.</p>
       </div>
     </div>
   </div>

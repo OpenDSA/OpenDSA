@@ -9,6 +9,10 @@
    :satisfies: binary tree terminology
    :topic: Binary Trees
 
+.. odsalink:: AV/Binary/BinExampCON.css
+.. odsalink:: AV/Binary/BinDiffCON.css
+.. odsalink:: AV/Binary/FullCompCON.css
+
 Binary Trees
 ============
 
@@ -56,12 +60,8 @@ any node that has at least one non-empty child.
 
 .. _BinExample:
 
-.. odsafig:: Images/BinExamp.png
-   :width: 200
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: An example binary tree
+.. inlineav:: BinExampCON dgm
+   :align: justify
 
    A binary tree.
    Node :math:`A` is the root.
@@ -84,12 +84,8 @@ any node that has at least one non-empty child.
 
 .. _BinDiff:
 
-.. odsafig:: Images/BinDiff.png
-   :width: 300
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Two different binary trees
+.. inlineav:: BinDiffCON dgm
+   :align: justify
 
    Two different binary trees.
    (a) A binary tree whose root has a non-empty left child.
@@ -119,16 +115,10 @@ The bottom level has its nodes filled in from the left side.
 
 .. _FullComplete:
 
-.. odsafig:: Images/FullComp.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Full and complete binary trees
+.. inlineav:: FullCompCON dgm
+   :align: justify
 
    Examples of full and complete binary trees.
-   (a) This tree is full (but not complete).
-   (b) This tree is complete (but not full).
 
 Figure :num:`Figure #FullComplete` illustrates the differences between
 full and complete binary trees. [#]_
@@ -157,3 +147,7 @@ Notes
        "Complete" is a wider word than "full", and complete binary
        trees tend to be wider than full binary trees because each
        level of a complete binary tree is as wide as possible.
+
+.. odsascript:: AV/Binary/BinExampCON.js
+.. odsascript:: AV/Binary/BinDiffCON.js
+.. odsascript:: AV/Binary/FullCompCON.js

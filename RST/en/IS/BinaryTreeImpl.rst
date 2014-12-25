@@ -9,7 +9,7 @@
    :satisfies: binary tree node implementation; expression tree
    :topic: Binary Trees
 
-.. odsalink:: AV/Development/BTCON.css
+.. odsalink:: AV/Binary/BTCON.css
 
 Binary Tree Node Implementations
 ================================
@@ -132,7 +132,7 @@ the node's subclass.
 .. codeinclude:: Binary/ExpressionTree
    :tag: ExpressionTree
 
-.. inlineav:: pointerBasedPreorderTraversalCON ss
+.. inlineav:: expressionTraversalCON ss
    :output: show
 
 The Expression Tree implementation includes two subclasses derived
@@ -152,4 +152,4 @@ type-casting the base class pointer as appropriate, as shown in
 function ``traverse``.
 
 
-.. odsascript:: AV/Development/pointerBasedPreorderTraversalCON.js
+.. odsascript:: AV/Binary/expressionTraversalCON.js

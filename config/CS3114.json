@@ -707,6 +707,24 @@
       "Binary/BinaryTreeTraversal": {
         "long_name": "Binary Tree Traversals",
         "exercises": {
+          "preorderCON": {
+            "long_name": "Preorder Traversal Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "postorderCON": {
+            "long_name": "Postorder Traversal Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "inorderCON": {
+            "long_name": "Inorder Traversal Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "BTLeafPROG": {
             "long_name": "Node Count Programming Exercise",
             "required": true,
@@ -735,11 +753,25 @@
       },
       "Binary/BinaryTreeImpl": {
         "long_name": "Full Binary Tree Node Implementations",
-        "exercises": {}
+        "exercises": {
+          "expressionTraversalCON": {
+            "long_name": "Expression Tree Traversal Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "Binary/Composite": {
         "long_name": "Composite Design Pattern",
-        "exercises": {}
+        "exercises": {
+          "compositeTraversalCON": {
+            "long_name": "Composite Expression Tree Traversal Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "Binary/BinaryTreeNodeSpace": {
         "long_name": "Full Binary Tree Node Space Requirements",
@@ -805,7 +837,14 @@
       },
       "Binary/CompleteTree": {
         "long_name": "Array Implementation for Complete Trees",
-        "exercises": {}
+        "exercises": {
+          "CompleteFIB": {
+            "long_name": "Complete Tree Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
       },
       "Binary/Heaps": {
         "long_name": "Heaps and Priority Queues",
@@ -899,6 +938,12 @@
             "required": true,
             "points": 0.0,
             "threshold": 1.0
+          },
+          "HuffmanDecodeFIB": {
+            "long_name": "Huffman Decoding Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
           }
         }
       },

@@ -9,6 +9,9 @@
    :satisfies: binary tree traversal
    :topic: Binary Trees
 
+.. odsalink:: AV/Binary/BinExampCON.css
+.. odsalink:: AV/Binary/BTCON.css
+
 Binary Tree Traversals
 ======================
 
@@ -29,12 +32,8 @@ This is called a :term:`preorder traversal`.
 
 .. _BinTravExample:
 
-.. odsafig:: Images/BinExamp.png
-   :width: 200
+.. inlineav:: BinExampCON dgm
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: An example binary tree
 
    A binary tree for traversal examples.
 
@@ -47,6 +46,9 @@ This is called a :term:`preorder traversal`.
    The first node printed is the root.
    Then all nodes of the left subtree are printed (in preorder) before
    any node of the right subtree.
+
+.. inlineav:: preorderCON ss
+   :output: show
 
 Alternatively, we might wish to visit each node only
 *after* we visit its children (and their subtrees).
@@ -64,6 +66,9 @@ This is called a :term:`postorder traversal`.
    Figure :num:`Figure #BinTravExample` is
    **D B G E H I F C A**.
 
+.. inlineav:: postorderCON ss
+   :output: show
+
 An :term:`inorder traversal` first visits the left child
 (including its entire subtree), then visits the node, and finally
 visits the right child (including its entire
@@ -76,6 +81,9 @@ this traversal to print all nodes in ascending order of value.
    The inorder enumeration for the tree of
    Figure :num:`Figure #BinTravExample` is
    **B D A G E C H F I**.
+
+.. inlineav:: inorderCON ss
+   :output: show
 
 Now we will discuss some implementations for the traversals, but we
 need to define a node ADT to work with.
@@ -284,3 +292,8 @@ Here are some exercises to practice the traversals.
 .. avembed:: AV/Binary/btTravPostorderPRO.html pe
 
 .. avembed:: AV/Binary/btTravPreorderPRO.html pe
+
+.. odsascript:: AV/Binary/BinExampCON.js
+.. odsascript:: AV/Binary/inorderCON.js
+.. odsascript:: AV/Binary/preorderCON.js
+.. odsascript:: AV/Binary/postorderCON.js
