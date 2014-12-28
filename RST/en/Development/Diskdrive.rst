@@ -119,15 +119,12 @@ This arrangement is shown in Figure :num:`Figure #Diskfig` (b).
 
 .. _Diskfig:
 
-
 .. odsafig:: Images/Disk.png
    :width: 300
    :align: center
    :capalign: justify
    :figwidth: 90%
    :alt: The organization of a disk platter
-
-  
 
    The organization of a disk platter.
    Dots indicate density of information.

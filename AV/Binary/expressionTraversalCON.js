@@ -24,7 +24,7 @@ $(document).ready(function () {
           node.value() === "-")) {
       rt1.target(node, {anchor: "left top"});
       node.removeClass("processing");
-      node.addClass("thickblacknode");
+      node.addClass("thicknode");
       av.umsg(interpret("av_visitleaf"));
       pseudo.setCurrentLine("visitleaf");
       btLeft += 25;
@@ -34,7 +34,7 @@ $(document).ready(function () {
       //is internal...visit
       rt1.target(node, {anchor: "left top"});
       node.removeClass("processing");
-      node.addClass("thickblacknode");
+      node.addClass("thicknode");
       av.umsg(interpret("av_visitinternal"));
       pseudo.setCurrentLine("visitinternal");
       btLeft += 25;
@@ -53,7 +53,7 @@ $(document).ready(function () {
       rt1.target(node, {anchor: "left top"});
       av.umsg(interpret("av_traverseright"));
       pseudo.setCurrentLine("traverseright");
-      node.addClass("thickblacknode");
+      node.addClass("thicknode");
       av.step();
       preorder(node.right());
     }
@@ -75,20 +75,20 @@ $(document).ready(function () {
 
   var bt = av.ds.binarytree({visible: true, nodegap: 15});
   bt.root("-");
-  bt.root().addClass("squareleaf");
+  bt.root().addClass("internalnode");
   var rt = bt.root();
   rt.left("*");
-  rt.left().addClass("squareleaf");
+  rt.left().addClass("internalnode");
   rt.right("c");
   rt.left().left("*");
-  rt.left().left().addClass("squareleaf");
+  rt.left().left().addClass("internalnode");
   rt.left().left().left("4");
   rt.left().left().right("x");
   rt.left().right("+");
-  rt.left().right().addClass("squareleaf");
+  rt.left().right().addClass("internalnode");
   rt.left().right().right("a");
   rt.left().right().left("*");
-  rt.left().right().left().addClass("squareleaf");
+  rt.left().right().left().addClass("internalnode");
   rt.left().right().left().left("2");
   rt.left().right().left().right("x");
   bt.layout();

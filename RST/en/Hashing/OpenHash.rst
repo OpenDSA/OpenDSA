@@ -18,17 +18,16 @@ some collisions are unavoidable in practice.
 Thus, hashing implementations must include some form of collision
 resolution policy.
 Collision resolution techniques can be broken into two classes:
-:dfn:`open hashing` (also called :dfn:`separate chaining`) and
-:dfn:`closed hashing`
-(also called :dfn:`open addressing`).
+:term:`open hashing <open hash system>`
+(also called :term:`separate chaining`) and
+:ref:`closed hashing <closed hash system> <HashCSimple>`
+(also called :term:`open addressing`).
 (Yes, it is confusing when "open hashing" means the opposite of
 "open addressing", but unfortunately, that is the way it is.)
 The difference between the two has to do with whether
 collisions are stored outside the table (open hashing), or
 whether collisions result in storing one of the records at another
 slot in the table (closed hashing).
-Open hashing is treated in this section, and closed hashing in
-Modules :numref:`<BucketHash>` and  :numref:`<HashCSimple>`.
 
 The simplest form of open hashing defines each slot in the
 hash table to be the head of a linked list.

@@ -217,14 +217,12 @@ A sorted sublist is called a :term:`run`.
 Thus, each pass is merging pairs of runs to form longer runs.
 Each pass copies the contents of the file to
 another file.
-Here is a sketch of the algorithm, as illustrated by
-Figure :num:`Figure #ExMerge`.
+Here is a sketch of the algorithm.
 
 .. _ExMerge:
 
 .. inlineav:: ExternalMergeSort ss
    :output: show
-
 
 #. Split the original file into two equal-sized
    :term:`run files <run file>`.
@@ -254,8 +252,8 @@ Figure :num:`Figure #ExMerge`.
 #. Each pass through the run files provides larger and larger runs
    until only one run remains.
 
-This algorithm can easily take advantage of the
-double buffering techniques described in Module :numref:`BuffPool`.
+This algorithm can easily take advantage of
+:ref:`double buffering <double buffering> BuffPool`.
 Note that the various passes read the input run files
 sequentially and write the output run files sequentially.
 For sequential processing and double buffering to be effective,
@@ -407,15 +405,11 @@ run.
 Once the first run is complete (i.e., the heap becomes empty), the
 array will be filled with records ready to be processed for the second
 run.
-Figure :num:`Figure #ReplacementSelection` illustrates part of a run being created
+Here is a visualization to show a run being created
 by replacement selection.
-
-
-.. _ReplacementSelection:
 
 .. inlineav:: ExternalReplacementSelection ss
    :output: show
-
 
 It should be clear that the minimum length of a run will be :math:`M`
 records if the size of the heap is :math:`M`, because at least those

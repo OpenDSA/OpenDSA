@@ -39,14 +39,14 @@ To maintain these shape and search properties requires that special
 action be taken when nodes are inserted and deleted.
 The 2-3 tree has the advantage over the BST in that the 2-3 tree can
 be kept height balanced at relatively low cost.
-
-Figure :num:`Figure #TTexamp` illustrates the 2-3 tree.
-
+Here is an example 2-3 tree.
 
 .. _TTexamp:
 
 .. inlineav:: twoThreeTreeCON dgm
    :align: center
+
+   An example of a 2-3 tree.
 
 Nodes are shown as rectangular boxes with two key fields.
 (These nodes actually would contain complete records or pointers to
@@ -60,8 +60,8 @@ Here is an implementation for the 2-3 tree node class.
 Note that this sample declaration does not distinguish
 between leaf and internal nodes and so is space inefficient, because
 leaf nodes store three pointers each.
-The techniques of Module :numref:`<BinaryTreeImpl>` can be applied here to
-implement separate internal and leaf node types.
+We can use a :ref:`class hierarcy <class hierarchy> <BinaryTreeImpl>`
+to implement separate internal and leaf node types.
 
 From the defining rules for 2-3 trees we can derive relationships
 between the number of nodes in the tree and the depth of the tree.
@@ -102,11 +102,7 @@ The first step is to find the leaf node that would contain the record
 if it were in the tree.
 If this leaf node contains only one value, then the new record can be
 added to that node with no further modification to the tree, as
-illustrated in Figure :num:`Figure #TTEasyIn`.
-In this example, a record with key value 14 is inserted.
-Searching from the root, we come to the leaf node that stores 15.
-We add~14 as the left value (pushing the record with key 15 to the
-rightmost position).
+illustrated in the following visualization.
 
 .. _TTEasyIn:
 
@@ -132,27 +128,25 @@ If the parent currently contains only one record (and thus has only
 two children), then the promoted record and the pointer to
 :math:`L'` are simply added to the parent node.
 If the parent is full, then the split-and-promote process is repeated.
-Figure :num:`Figure #TTPromote` illustrates a simple promotion.
-Figure :num:`Figure #TTSplit` illustrates what happens when promotions
-require the root to split, adding a new level to the tree.
-In either case, all leaf nodes continue to have equal depth.
+Here is an example of a a simple promotion.
 
 .. _TTPromote:
 
 .. inlineav:: promoteCON ss
    :output: show
-   :align: justify
+
+Here is an illustration for what happens when promotions
+require the root to split, adding a new level to the tree.
+Note that all leaf nodes continue to have equal depth.
 
 .. _TTSplit:
 
 .. inlineav:: splitCON ss
    :output: show
-   :align: justify
 
 Here is an implementation for the insertion process.
 
 .. codeinclude:: Indexing/TTins
-
 
 Note that ``inserthelp`` takes three parameters.
 The first is a pointer to the root of the current subtree, named
@@ -166,7 +160,7 @@ split), then a pointer to the new subtree root is returned, with the
 key value and record value in the leftmost fields, and a pointer to
 the (single) subtree in the center pointer field.
 This revised node will then be added to the parent as illustrated by
-Figure :num:`Figure #TTSplit`.
+the splitting visualization above.
 
 When deleting a record from the 2-3 tree, there are three cases to
 consider.

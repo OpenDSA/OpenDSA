@@ -82,33 +82,33 @@ Now try for yourself to see if you understand how Selection Sort works.
    Selection Sort is more efficient than Bubble Sort (by a constant
    factor) in most other situations as well.
 
-   There is another approach to keeping the cost of swapping records low,
-   and it can be used by any sorting algorithm even when the records are
-   large.
-   This is to have each element of the array store a pointer to a record
-   rather than store the record itself.
-   In this implementation, a swap operation need only exchange the
-   pointer values.
-   The large records do not need to move.
-   This technique is illustrated by Figure :num:`Figure #PointerSwap`.
-   Additional space is needed to store the pointers, but the
-   return is a faster swap operation.
+There is another approach to keeping the cost of swapping records low,
+and it can be used by any sorting algorithm even when the records are
+large.
+This is to have each element of the array store a pointer to a record
+rather than store the record itself.
+In this implementation, a swap operation need only exchange the
+pointer values.
+The large records do not need to move.
+This technique is illustrated by Figure :num:`Figure #PointerSwap`.
+Additional space is needed to store the pointers, but the
+return is a faster swap operation.
 
-   .. _PointerSwap:
+.. _PointerSwap:
 
-   .. odsafig:: Images/PtrSwap.png
-      :width: 300
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Swapping pointers to records
+.. odsafig:: Images/PtrSwap.png
+   :width: 300
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: Swapping pointers to records
 
-      An example of swapping pointers to records.
-      (a) A series of four records.
-      The record with key value 42 comes before the record with key value 5.
-      (b) The four records after the top two pointers have been swapped.
-      Now the record with key value 5 comes before the record with key
-      value 42.
+   An example of swapping pointers to records.
+   (a) A series of four records.
+   The record with key value 42 comes before the record with key value 5.
+   (b) The four records after the top two pointers have been swapped.
+   Now the record with key value 5 comes before the record with key
+   value 42.
 
 .. TODO::
    :type: Figure

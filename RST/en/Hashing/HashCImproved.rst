@@ -95,7 +95,7 @@ Unfortunately, we cannot actually select the next position in the
 probe sequence at random, because we would not be able to duplicate
 this same probe sequence when searching for the key.
 However, we can do something similar called
-:dfn:`pseudo-random probing`.
+:term:`pseudo-random probing`.
 In pseudo-random probing, the :math:`i` th slot in the probe sequence is
 :math:`(\textbf{h}(K) + r_i) \mod M`
 where :math:`r_i` is the :math:`i` th value in a random permutation
@@ -127,7 +127,7 @@ Quadratic Probing
 
 Another probe function that eliminates
 primary clustering is called
-:dfn:`quadratic probing`.
+:term:`quadratic probing`.
 Here the probe function is some quadratic function
 :math:`\textbf{p}(K, i) = c_1 i^2 + c_{2}i + c_3`
 for some choice of constants :math:`c_1`, :math:`c_2`,
@@ -194,7 +194,7 @@ This is because function **p** ignores its input parameter
 If the hash function generates a cluster at a particular home
 position, then the cluster remains under pseudo-random and quadratic
 probing.
-This problem is called :dfn:`secondary clustering`.
+This problem is called :term:`secondary clustering`.
 
 To avoid secondary clustering, we need to have the probe sequence make
 use of the original key value in its decision-making process.
@@ -205,7 +205,7 @@ have that constant be determined by a second hash function,
 :math:`\textbf{h}_2`.
 Thus, the probe sequence would be of the form
 :math:`\textbf{p}(K, i) = i * \textbf{h}_2(K)`.
-This method is called :dfn:`double hashing`.
+This method is called :term:`double hashing`.
 
 There are important restrictions on :math:`h_2`.
 Most importantly, the value returned by :math:`h_2` must never be zero

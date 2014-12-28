@@ -105,9 +105,8 @@ Now here is a full proficiency exercise to put it all together.
 
       Mergesort example to illustrate analysis.
 
-   As we can see in Figure :num:`Figure #MergeSortFig`,
-   the list to be sorted is repeatedly split in half until sublists of
-   size 1 are reached.
+   As we can see, the list to be sorted is repeatedly split in half
+   until sublists of size 1 are reached.
    These lists of size 1 are merged to be of size 2.
    Lists of size 2 are then merged to become sublists of size 4,
    and so on.

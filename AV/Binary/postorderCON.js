@@ -39,7 +39,7 @@ $(document).ready(function () {
     node.removeClass("processing");
     av.umsg(interpret("av_visit") + node.value() + ".");
     pseudo.setCurrentLine("visit");
-    node.addClass("thickblacknode");
+    node.addClass("thicknode");
     btLeft += 35;
     av.label("" + node.value(), {left: btLeft, top: 400}).show();
     av.step();

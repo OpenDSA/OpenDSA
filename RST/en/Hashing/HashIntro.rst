@@ -29,17 +29,18 @@ it is surprisingly difficult to implement properly.
 Designers need to pay careful attention to all of the details
 involved with implementing a hash system.
 
-A hash system stores records in an array called a :dfn:`hash table`,
+A hash system stores records in an array called a :term:`hash table`,
 which we will call ``HT``.
 Hashing works by performing a computation on a search key
 ``K`` in a way that is intended to identify the position in
 ``HT`` that contains the record with key ``K``.
 The function that does this calculation is called the
-:dfn:`hash function`, and will be denoted by the letter **h**.
+:ref:`hash function <hash function> <HashFuncExamp>`,
+and will be denoted by the letter **h**.
 Since hashing schemes place records in the table in whatever order
 satisfies the needs of the address calculation, records are
 not ordered by value.
-A position in the hash table is also known as a :dfn:`slot`.
+A position in the hash table is also known as a :term:`slot`.
 The number of slots in hash table ``HT`` will be denoted by the
 variable :math:`M` with slots numbered from 0 to :math:`M-1`.
 
@@ -97,7 +98,7 @@ Given a hash function **h** and two keys :math:`k_1` and
 :math:`\mathbf{h}(k_1) = \beta = \mathbf{h}(k_2)`
 where :math:`\beta` is a slot in
 the table, then we say that :math:`k_1` and :math:`k_2` have a
-:dfn:`collision` at slot :math:`\beta` under hash function **h**.
+:term:`collision` at slot :math:`\beta` under hash function **h**.
 
 Finding a record with key value ``K`` in a database organized by hashing
 follows a two-step procedure:
@@ -106,11 +107,7 @@ follows a two-step procedure:
 
 2. Starting with slot :math:`\mathbf{h}(K)`, locate the record
    containing key ``K`` using (if necessary) a
-   :dfn:`collision resolution policy`.
-
-How to compute the table location is the subject of
-Module :numref:`<HashFunc>`, while
-collision resolution will be discussed in
-Module :numref:`<HashCSimple>`.
+   :ref:`collision resolution <collision resolution> <HashCSimple>`
+   policy .
 
 .. odsascript:: AV/Hashing/hashIntroCON.js

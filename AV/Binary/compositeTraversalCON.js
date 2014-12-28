@@ -30,7 +30,7 @@ $(document).ready(function () {
       // is leaf, so we use traverse inside leaf
       rt1.target(node, {anchor: "left top"});
       node.removeClass("processing");
-      node.addClass("thickblacknode");
+      node.addClass("thicknode");
       av.umsg(interpret("av_isleaf"));
       pseudo.setCurrentLine("leafnodetraverse");
       btLeft += 25;
@@ -39,8 +39,6 @@ $(document).ready(function () {
     } else {
       //is internal...visit
       rt1.target(node, {anchor: "left top"});
-      //node.removeClass("processing");
-      //node.addClass("thickblacknode");
       av.umsg(interpret("av_isnotleaf"));
       pseudo.setCurrentLine("internalnodetraverse");
       av.step();
@@ -48,7 +46,7 @@ $(document).ready(function () {
       av.umsg(interpret("av_visitinternal"));
       pseudo.setCurrentLine("internalnodevisit");
       node.removeClass("processing");
-      node.addClass("thickblacknode");
+      node.addClass("thicknode");
       btLeft += 25;
       av.label("" + node.value(), {left: btLeft, top: 380}).show();
       av.step();
@@ -65,7 +63,7 @@ $(document).ready(function () {
       rt1.target(node, {anchor: "left top"});
       av.umsg(interpret("av_traverseright"));
       pseudo.setCurrentLine("internalnoderighttraverse");
-      node.addClass("thickblacknode");
+      node.addClass("thicknode");
       av.step();
       preorder(node.right());
     }

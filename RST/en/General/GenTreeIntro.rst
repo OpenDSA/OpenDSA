@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: General Trees
 
-.. odsalink:: AV/Development/GenTreeCON.css
+.. odsalink:: AV/General/GenTreeCON.css
 
 General Trees
 =============
@@ -39,20 +39,6 @@ we use the term :term:`general tree`.
 In this module we will examine general tree terminology and define a
 basic ADT for general trees.
 
-Module :numref:`<UnionFind>` presents a simple
-representation for solving the important problem of processing
-equivalence classes.
-Several pointer-based implementations for general trees are covered in
-Module :numref:`<GenTreeImplement>`.
-Aside from general trees and binary trees, there are also uses for
-trees whose internal nodes have a fixed number :math:`K` of
-children where :math:`K` is something other than two.
-Such trees are known as :term:`K-ary` trees.
-Module :numref:`<Kary>` generalizes the properties of
-binary trees to :math:`K`-ary trees.
-Sequential representations, useful for applications such as storing
-trees on disk, are covered in Module :numref:`<SequentialRep>`.
-
 General Tree Definitions and Terminology
 ----------------------------------------
 
@@ -65,7 +51,7 @@ partitioned into :math:`n > 0` disjoint sets :math:`\mathbf{T}_0`,
 a tree, and whose roots :math:`R_1, R_2, ..., R_n`,
 respectively, are children of :math:`R`.
 The subsets :math:`\mathbf{T}_i (0 \leq i < n)` are said to be
-:term:`subtrees` of :math:`\mathbf{T}`.
+:term:`subtrees <subtree>` of :math:`\mathbf{T}`.
 These subtrees are ordered in that :math:`\mathbf{T}_i` is said to
 come before :math:`\mathbf{T}_j` if :math:`i < j`.
 By convention, the subtrees are arranged from left to right with
@@ -87,7 +73,7 @@ generalized from the notation for binary trees.
    of :math:`P`.
    Nodes :math:`R` and :math:`P` are ancestors of :math:`V`.
    Nodes :math:`V`, :math:`S1`, and :math:`S2` are called
-   :term:`siblings`.
+   :term:`siblings <sibling>`.
    The oval surrounds the subtree having :math:`V` as its root.
 
 Each node in a tree has precisely one parent, except for the root,
@@ -140,8 +126,12 @@ Trying to find the next sibling of the rightmost sibling would return
 General Tree Traversals
 -----------------------
 
-In Module :numref:`<BinaryTreeTraversal>`, three tree traversals were presented
-for binary trees: preorder, postorder, and inorder.
+There are three traditional
+:ref:`tree traversals <tree traversal> <BinaryTreeTraversal>`
+for :term:`binary trees <binary tree>`:
+:term:`preorder <preorder traversal>`,
+:term:`postorder <postorder traversal>`,
+and :term:`inorder <inorder traversal>`.
 For general trees, preorder and postorder traversals are defined with
 meanings similar to their binary tree
 counterparts.
@@ -188,6 +178,7 @@ to the next child until calling	``next`` returns ``null``.
 
 .. codeinclude:: General/GenTree
    :tag: GenTreePrint
-.. odsascript:: AV/Development/GenTreeCON.js
-.. odsascript:: AV/Development/GenTreePreTravCON.js
-.. odsascript:: AV/Development/GenTreePostTravCON.js
+
+.. odsascript:: AV/General/GenTreeCON.js
+.. odsascript:: AV/General/GenTreePreTravCON.js
+.. odsascript:: AV/General/GenTreePostTravCON.js

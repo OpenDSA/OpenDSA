@@ -15,7 +15,7 @@ Proof of Optimality for Huffman Coding
 ======================================
 
 Huffman tree building is an example of a
-:dfn:`greedy algorithm`.
+:term:`greedy algorithm`.
 At each step, the algorithm makes a "greedy" decision to merge
 the two subtrees with least weight.
 This makes the algorithm simple, but does it give the desired result?

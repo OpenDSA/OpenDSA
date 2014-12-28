@@ -44,7 +44,7 @@ ever further from their home positions.
 
 From this discussion, we see that the expected cost of hashing is a
 function of how full the table is.
-Define the :dfn:`load factor`
+Define the :term:`load factor`
 for the table as :math:`\alpha = N/M`,
 where :math:`N` is the number of records currently in the table.
 

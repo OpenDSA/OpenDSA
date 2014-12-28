@@ -164,8 +164,8 @@ base cases.
 
 Recurrence relations are often used to model the cost of recursive
 functions.
-For example, the number of multiplications required by function
-``fact`` of Module :numref:`<Recursion>` for an input of size
+For example, the number of multiplications required by a recursive
+version of the factorial function for an input of size
 :math:`n` will be zero when :math:`n = 0` or :math:`n = 1` (the base
 cases), and it will be one plus the cost of calling ``fact`` on a
 value of :math:`n-1`. 

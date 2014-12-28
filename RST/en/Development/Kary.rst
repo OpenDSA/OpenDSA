@@ -28,7 +28,8 @@ Thus, as :math:`K` becomes larger, the need to choose separate
 implementations for the internal and leaf nodes becomes more
 pressing.
 
-:dfn:`Full K-ary trees` and :dfn:`complete K-ary trees` are analogous
+:term:`Full K-ary trees <full K-ary tree>` and
+:term:`complete K-ary trees <complete K-ary tree>` are analogous
 to full and complete binary trees, respectively.
 
 .. TODO::

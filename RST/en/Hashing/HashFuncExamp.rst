@@ -43,14 +43,18 @@ function produces a number in the range 0 to :math:`M-1`.
 Binning
 -------
 
-Say we are given keys in the range 0 to 999, and have a hash table of size 10.
-In this case, a possible hash function might simply divide the key value by 100.
-Thus, all keys in the range 0 to 99 would hash to slot 0, keys 100 to 199 would
-hash to slot 1, and so on. In other words, this hash function "bins" the first
-100 keys to the first slot, the next 100 keys to the second slot, and so on.
+Say we are given keys in the range 0 to 999, and have a hash table of
+size 10.
+In this case, a possible hash function might simply divide the key
+value by 100.
+Thus, all keys in the range 0 to 99 would hash to slot 0, keys 100 to
+199 would hash to slot 1, and so on.
+In other words, this hash function "bins" the first 100 keys to the
+first slot, the next 100 keys to the second slot, and so on.
 
-:dfn:`Binning` in this way has the problem that it will cluster together keys
-if the distribution does not divide evenly on the high-order bits.
+:term:`Binning` in this way has the problem that it will cluster
+together keys if the distribution does not divide evenly on the
+high-order bits.
 In the above example, if more records have keys in the range 900-999
 (first digit 9) than have keys in the range 100-199
 (first digit 1),  more records will hash to slot 9 than to slot 1.
@@ -121,14 +125,14 @@ The Mid-Square Method
 ---------------------
 
 A good hash function to use with integer key values is the
-:dfn:`mid-square` method.
+:term:`mid-square method`.
 The mid-square method squares the key value, and then takes out the middle
 :math:`r` bits of the result, giving a value in the range
 0 to :math:`2^{r}-1`.
 This works well because most or all bits of the key value contribute to
 the result.
 For example, consider records whose keys are 4-digit numbers in base
-10, as shown in Figure :numref:`MidSquareFig`.
+10, as shown in Figure :num:`Figure #MidSquareFig`.
 The goal is to hash these key values to a table of size 100
 (i.e., a range of 0 to 99).
 This range is equivalent to two digits in base 10.
@@ -184,7 +188,7 @@ If the hash table size :math:`M` is small compared to the
 resulting summations, then this hash function should do a
 good job of distributing strings evenly among the hash table slots,
 because it gives equal weight to all characters in the string.
-This is an example of the :dfn:`folding` approach to designing a hash
+This is an example of the :term:`folding method` to designing a hash
 function.
 Note that the order of the characters in the string has no effect on
 the result.

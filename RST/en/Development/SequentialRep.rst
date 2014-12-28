@@ -8,6 +8,10 @@
    :prerequisites:
    :topic: General Trees
 
+
+.. odsalink:: AV/Binary/BinExampCON.css
+.. odsalink:: AV/Development/SequentialTreeCON.css
+
 Sequential Tree Representations
 ===============================
 
@@ -15,7 +19,7 @@ Next we consider a fundamentally different approach to implementing
 trees.
 The goal is to store a series of node values with the minimum
 information needed to reconstruct the tree structure.
-This approach, known as a :dfn:`sequential` tree implementation, has
+This approach, known as a :term:`sequential tree representation`, has
 the advantage of saving space because no pointers are stored.
 It has the disadvantage that accessing any node in the tree requires
 sequentially processing all nodes that appear before 
@@ -31,8 +35,8 @@ Sequential tree implementations are ideal for archiving trees on disk
 for later use because they save space, and the tree structure can
 be reconstructed as needed for later processing.
 
-Sequential tree implementations can be used to :dfn:`serialize` a 
-tree structure.
+Sequential tree implementations can be used to
+:term:`serialize <serialization>` a tree structure.
 Serialization is the process of storing an object as a series of
 bytes, typically so that the data structure can be transmitted between
 computers.
@@ -89,14 +93,15 @@ the tree structure.
    Node :math:`D` has two ``null`` children, so node :math:`C` must be
    the right child of node :math:`A`.
 
+.. inlineav:: SequentialTreeCON ss
+   :output: show
+
+.. avembed:: Exercises/Development/SequentialTreePRO.html ka
+
 .. _BinExampb:
 
-.. odsafig:: Images/BinExamp.png
-   :width: 200
+.. inlineav:: BinExampCON dgm
    :align: center
-   :capalign: center
-   :figwidth: 90%
-   :alt: Binary tree for sequential tree implementation examples
 
    Sample binary tree for sequential tree implementation examples.
 
@@ -112,8 +117,8 @@ efficient for descending through the tree along some arbitrary path.
 Assume that each node value takes a constant amount of space.
 An example would be if the node value is a positive integer and
 ``null`` is indicated by the value zero.
-From the Full Binary Tree Theorem of
-Section :numref:`<BinaryTreeFullThm>`,
+From the
+:ref:`Full Binary Tree Theorem <full binary tree theorem> <BinaryTreeFullThm>`,
 we know that the size of the node list will be about twice the number
 of nodes (i.e., the overhead fraction is 1/2).
 The extra space is required by the ``null`` pointers.
@@ -155,6 +160,11 @@ implementation, and so requires less overhead.
    Note that slashes are needed for the empty children because
    this is not a full binary tree.
 
+.. inlineav:: SequentialTreeAltCON ss
+   :output: show
+
+.. avembed:: Exercises/Development/SequentialTreeAltPRO.html ka
+
 Storing :math:`n` extra bits can be a considerable savings over
 storing :math:`n` ``null`` values.
 In Example :num:`Example #Serialbintwo`, each node is shown with a
@@ -185,6 +195,11 @@ a leaf node.
    .. math::
 
       11001100100
+
+.. inlineav:: SequentialTreeBitVectorCON ss
+   :output: show
+
+.. avembed:: Exercises/Development/SequentialTreeBitVectorPRO.html ka
 
 Storing general trees by means of a sequential implementation requires
 that more explicit structural information be included with the node
@@ -217,6 +232,11 @@ this by two or more successive ")" symbols.
    because it is a leaf, the last node of :math:`B` 's rightmost
    subtree, and the last node of :math:`R` 's rightmost subtree.
 
+.. inlineav:: SequentialGenTreeCON ss
+   :output: show
+
+.. avembed:: Exercises/Development/SequentialTreeGenTreePRO.html ka
+
 Note that this representation for serializing general trees cannot be
 used for binary trees.
 This is because a binary tree is not merely a restricted form of
@@ -227,3 +247,9 @@ For example, the representation of Example :num:`Example #Serialgen`
 cannot let us distinguish whether node :math:`D` in
 Figure :num:`Figure #BinExampb` is the left or right child of node
 :math:`B`.
+
+.. odsascript:: AV/Binary/BinExampCON.js
+.. odsascript:: AV/Development/SequentialTreeCON.js
+.. odsascript:: AV/Development/SequentialTreeAltCON.js
+.. odsascript:: AV/Development/SequentialTreeBitVectorCON.js
+.. odsascript:: AV/Development/SequentialGenTreeCON.js

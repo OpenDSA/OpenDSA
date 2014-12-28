@@ -8,7 +8,7 @@
    :prerequisites: GenTreeIntro
    :topic: Union/Find
    
-.. odsalink:: AV/Development/UFCON.css
+.. odsalink:: AV/General/UFCON.css
 
 Union/Find and the Parent Pointer Implementation
 ================================================
@@ -165,7 +165,7 @@ into disjoint sets that correspond to the connected components.
 
 Another use for UNION/FIND occurs in :term:`Kruskal's algorithm` for
 computing the
-:ref:`minimal cost spanning tree <minimal cost spanning tree> <MCST>`
+:ref:`minimal-cost spanning tree <minimal-cost spanning tree> <MCST>`
 for a :term:`graph`.
 That algorithm seeks to select the cheapest subset of the edges that
 still connects all of the nodes in the graph.
@@ -240,8 +240,8 @@ weighted union.
 
 The weighted union rule helps to minimize the depth of the tree, but
 we can do better than this.
-:dfn:`Path compression` is a method that tends to create extremely
-shallow trees.
+:term:`Path compression <path compression>` is a method that tends to
+create extremely shallow trees.
 Path compression takes place while finding the root
 for a given node :math:`X`.
 Call this root :math:`R`.
@@ -302,7 +302,10 @@ Notes
        Ackermann's function.
        For more information about Ackermann's function and the cost of path
        compression for UNION/FIND, see [Tarjan75]_.
-       The survey article by Galil & Italiano [GalilItaliano91]_ covers many aspects of the
-       equivalence class problem.
+       The survey article by Galil & Italiano [GalilItaliano91]_
+       covers many aspects of the equivalence class problem.
 
-.. odsascript:: AV/Development/UFCON.js
+.. odsascript:: AV/General/UFfigCON.js
+.. odsascript:: AV/General/UFconcomCON.js
+.. odsascript:: AV/General/ufCON.js
+.. odsascript:: AV/General/pathcompCON.js

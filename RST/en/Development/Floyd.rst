@@ -13,7 +13,7 @@ All-Pairs Shortest Paths
 
 We next consider the problem of finding the shortest distance
 between all pairs of vertices in the graph, called
-the :dfn:`all-pairs shortest-paths` problem.
+the :term:`all-pairs shortest paths problem`.
 To be precise, for every :math:`u, v \in \mathbf{V}`,
 calculate :math:`d(u, v)`.
 
@@ -41,7 +41,7 @@ It is an example of dynamic programming.
 The chief problem with solving this problem is organizing the search
 process so that we do not repeatedly solve the same subproblems.
 We will do this organization through the use of the :math:`k`-path.
-Define a :dfn:`k-path` from vertex :math:`v` to vertex
+Define a :term:`k-path` from vertex :math:`v` to vertex
 :math:`u` to be any path whose intermediate vertices (aside from
 :math:`v` and :math:`u`) all have indices less than :math:`k`.
 A 0-path is defined to be a direct edge from :math:`v` to :math:`u`.

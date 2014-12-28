@@ -27,7 +27,7 @@ considerations.
 
 Both of these problems can be resolved by placing a special mark in
 place of the deleted record, called a
-:dfn:`tombstone`.
+:term:`tombstone`.
 The tombstone indicates that a record once occupied the slot but
 does so no longer.
 If a tombstone is encountered when searching along a

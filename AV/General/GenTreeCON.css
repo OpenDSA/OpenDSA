@@ -1,7 +1,7 @@
 #GenTreeCON .jsavcanvas {
   height: 470px;
-  width: 600px;
-}
+  width: 580px;
+ }
 
 #GenTreeCON {
   height: 470px;
@@ -15,17 +15,12 @@
   height: 20px;
 }
 
-.processedNode{
-	border: 2px solid blue;
-}
-
 #GenTreePreTravCON .jsavtree {
-  position: relative;
   top: -200px;
   left: -100px;
 }
 
-#GenTreePreTravCON .jsavcode{
+#GenTreePreTravCON .jsavcode {
   margin-left: 10px;
 }
 
@@ -40,4 +35,3 @@
 #GenTreePostTravCON .jsavtree {
   top: 30px;
 }
-

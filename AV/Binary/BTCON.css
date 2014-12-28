@@ -62,19 +62,8 @@
   right: -260px;
 }
 
-.thickblacknode { /* Make a node edge to be thick and black */
-  background-color: white;
-  border-color: black;
-  border-width: 2px;
-}
-
+/* Make these internal nodes square */
 .internalnode {
-  background-color: white;
-  color: blue;
-  border-color: blue;
-}
-
-.squareleaf {
   border-radius: 1px;
   background-color: white;
   line-height: 22px;

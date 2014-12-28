@@ -10,7 +10,7 @@
 
 
 .. odsalink:: AV/Binary/BinExampCON.css
-.. odsalink:: AV/Development/SequentialTreeCON.css
+.. odsalink:: AV/General/SequentialTreeCON.css
 
 Sequential Tree Representations
 ===============================
@@ -19,7 +19,7 @@ Next we consider a fundamentally different approach to implementing
 trees.
 The goal is to store a series of node values with the minimum
 information needed to reconstruct the tree structure.
-This approach, known as a :dfn:`sequential` tree implementation, has
+This approach, known as a :term:`sequential tree representation`, has
 the advantage of saving space because no pointers are stored.
 It has the disadvantage that accessing any node in the tree requires
 sequentially processing all nodes that appear before 
@@ -35,8 +35,8 @@ Sequential tree implementations are ideal for archiving trees on disk
 for later use because they save space, and the tree structure can
 be reconstructed as needed for later processing.
 
-Sequential tree implementations can be used to :dfn:`serialize` a 
-tree structure.
+Sequential tree implementations can be used to
+:term:`serialize <serialization>` a tree structure.
 Serialization is the process of storing an object as a series of
 bytes, typically so that the data structure can be transmitted between
 computers.
@@ -73,37 +73,17 @@ listed explicitly.
 Such an augmented node list provides enough information to recover
 the tree structure.
 
-.. _Serialbinone:
-
-.. topic:: Example
-
-   For the binary tree of Figure :num:`Figure #BinExampb`,
-   the corresponding sequential representation would be as follows
-   (assuming that "/" stands for ``null``):
-
-   .. math::
-
-      AB/D//CEG///FH//I//
-
-   To reconstruct the tree structure from this node list, we begin by
-   setting node :math:`A` to be the root.
-   :math:`A`'s left child will be node :math:`B`.
-   Node :math:`B`'s left child is a ``null`` pointer, so node
-   :math:`D` must be :math:`B`'s right child.
-   Node :math:`D` has two ``null`` children, so node :math:`C` must be
-   the right child of node :math:`A`.
-
-.. inlineav:: SequentialTreeCON ss
-   :output: show
-
-.. avembed:: Exercises/Development/SequentialTreePRO.html ka
-
 .. _BinExampb:
 
 .. inlineav:: BinExampCON dgm
    :align: center
 
    Sample binary tree for sequential tree implementation examples.
+
+.. inlineav:: SequentialTreeCON ss
+   :output: show
+
+.. avembed:: Exercises/Development/SequentialTreePRO.html ka
 
 To illustrate the difficulty involved in using the sequential tree
 representation for processing, consider searching for the right child
@@ -117,8 +97,8 @@ efficient for descending through the tree along some arbitrary path.
 Assume that each node value takes a constant amount of space.
 An example would be if the node value is a positive integer and
 ``null`` is indicated by the value zero.
-From the Full Binary Tree Theorem of
-Section :numref:`<BinaryTreeFullThm>`,
+From the
+:ref:`Full Binary Tree Theorem <full binary tree theorem> <BinaryTreeFullThm>`,
 we know that the size of the node list will be about twice the number
 of nodes (i.e., the overhead fraction is 1/2).
 The extra space is required by the ``null`` pointers.
@@ -146,20 +126,6 @@ children of leaf nodes are not represented at all.
 Note that a full binary tree stores no ``null`` values with this
 implementation, and so requires less overhead.
 
-.. _Serialbintwo:
-
-.. topic:: Example
-
-   We can represent the tree of Figure :num:`Figure #BinExampb` as
-   follows:
-
-   .. math::
-
-      A'B'/DC'E'G/F'HI
-
-   Note that slashes are needed for the empty children because
-   this is not a full binary tree.
-
 .. inlineav:: SequentialTreeAltCON ss
    :output: show
 
@@ -167,7 +133,7 @@ implementation, and so requires less overhead.
 
 Storing :math:`n` extra bits can be a considerable savings over
 storing :math:`n` ``null`` values.
-In Example :num:`Example #Serialbintwo`, each node is shown with a
+In the example above, each node was shown with a
 mark if it is internal, or no mark if it is a leaf.
 This requires that each node value has space to store the mark bit.
 This might be true if, for example, the node value were stored as a
@@ -184,19 +150,7 @@ vector.
 A value of "1" could indicate an internal node, and "0" could indicate
 a leaf node.
 
-.. _Serialbitvector:
-
-.. topic:: Example
-
-   The bit vector for the tree if Figure :num:`Figure #BinExampb`
-   (including positions for the null children of nodes :math:`B` and
-   :math:`E`) would be
-
-   .. math::
-
-      11001100100
-
-.. inlineav:: SequentialTreeBitVectorCON ss
+.. inlineav:: SequentialTreeBitsCON ss
    :output: show
 
 .. avembed:: Exercises/Development/SequentialTreeBitVectorPRO.html ka
@@ -217,21 +171,6 @@ children.
 A leaf node that is also the last child for its parent would indicate
 this by two or more successive ")" symbols.
 
-.. _Serialgen:
-
-.. topic:: Example
-
-   For the general tree of Figure :num:`Figure #GenTreeFig`, we get
-   the sequential representation
-
-   .. math::
-
-      RAC)D)E))BF)))
-
-   Note that :math:`F` is followed  by three ")" marks,
-   because it is a leaf, the last node of :math:`B` 's rightmost
-   subtree, and the last node of :math:`R` 's rightmost subtree.
-
 .. inlineav:: SequentialGenTreeCON ss
    :output: show
 
@@ -249,9 +188,7 @@ Figure :num:`Figure #BinExampb` is the left or right child of node
 :math:`B`.
 
 .. odsascript:: AV/Binary/BinExampCON.js
-.. odsascript:: AV/Development/SequentialTreeCON.js
-.. odsascript:: AV/Development/SequentialTreeAltCON.js
-.. odsascript:: AV/Development/SequentialTreeBitVectorCON.js
-.. odsascript:: AV/Development/SequentialGenTreeCON.js
-
-
+.. odsascript:: AV/General/SequentialTreeCON.js
+.. odsascript:: AV/General/SequentialTreeAltCON.js
+.. odsascript:: AV/General/SequentialTreeBitsCON.js
+.. odsascript:: AV/General/SequentialGenTreeCON.js

@@ -264,9 +264,15 @@ NOTES
     with numbers and writes it into a file that is read by the ``numref``
     role.
     When referencing equation (declared with ``math`` directive), 'equation-'
-    need to be added in front of the label to work, eg to reference the equation with label 'sum2' you write
+    need to be added in front of the label to work, eg to reference
+    the equation with label 'sum2' you write
     ``:numref:`<equation-sum2>```
 
+    **WARNING: We now consider it a violation of best practice to
+    reference a module from another module.**
+    This is because OpenDSA is a collection of materials that can be
+    combined in various ways.
+    For this reason, use of ``numref`` has been phased out.
 
 .. _chap:
 

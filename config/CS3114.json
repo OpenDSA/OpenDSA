@@ -1509,6 +1509,12 @@
           }
         },
         "exercises": {
+         "buffintroCON": {
+            "long_name": "Buffer Pool Introduction Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
          "LRUCON": {
             "long_name": "LRU Replacement Slideshow",
             "required": true,
@@ -2028,8 +2034,25 @@
       }
     },
     "General Trees": {
-      "Development/UnionFind": {
-        "long_name": "UnionFind",
+      "General/GenTreeIntro": {
+        "long_name": "General Trees",
+        "exercises": {
+          "GenTreePreTravCON": {
+            "long_name": "General Tree Preorder Traversal Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "GenTreePostTravCON": {
+            "long_name": "General Tree Postorder Traversal Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      },
+      "General/UnionFind": {
+        "long_name": "Union/Find",
         "exercises": {
           "ufCON": {
             "long_name": "Union/Find Example",

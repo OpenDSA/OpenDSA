@@ -15,7 +15,7 @@ Bucket Hashing
 
 Closed hashing stores all records directly in the hash table.
 Each record :math:`R` with key value :math:`k_R` has a
-:dfn:`home position` that is 
+:term:`home position` that is 
 :math:`\textbf{h}(k_R)`, the slot computed by the hash function.
 If :math:`R` is to be inserted and another record already
 occupies :math:`R`'s home position, then :math:`R` will be stored at
@@ -27,7 +27,7 @@ insertion, so that any record not found in its home position can
 be recovered by repeating the collision resolution process.
 
 One implementation for closed hashing groups hash table slots into
-:dfn:`buckets`.
+:term:`buckets <bucket>`.
 The :math:`M` slots of the hash table are divided into
 :math:`B` buckets, with each bucket consisting of :math:`M/B` slots.
 The hash function assigns each record to the first slot
@@ -35,7 +35,7 @@ within one of the buckets.
 If this slot is already occupied, then the bucket slots are searched
 sequentially until an open slot is found.
 If a bucket is entirely full, then the record is stored in an
-:dfn:`overflow bucket` of infinite capacity at the end of the table.
+:term:`overflow bucket` of infinite capacity at the end of the table.
 All buckets share the same overflow bucket.
 A good implementation will use a hash function that distributes the
 records evenly among the buckets so that as few records as

@@ -30,7 +30,7 @@ $(document).ready(function () {
     //visit
     rt1.target(node, {anchor: "left top"});
     //node.removeClass("processing");
-    node.addClass("thickblacknode");
+    node.addClass("thicknode");
     av.umsg(interpret("av_visit") + node.value() + ".");
     pseudo.setCurrentLine("visit");
     btLeft += 35;
@@ -40,7 +40,7 @@ $(document).ready(function () {
     //right child
     av.umsg(interpret("av_rightchild"));
     pseudo.setCurrentLine("visitright");
-    node.addClass("thickblacknode");
+    node.addClass("thicknode");
     rt1.target(node.right(), {anchor: "left top"});
     av.step();
     inorder(node.right());

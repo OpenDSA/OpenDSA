@@ -65,8 +65,8 @@ Here is an implementation for the 2-3 tree node class.
 Note that this sample declaration does not distinguish
 between leaf and internal nodes and so is space inefficient, because
 leaf nodes store three pointers each.
-The techniques of Module :numref:`<BinaryTreeImpl>` can be applied here to
-implement separate internal and leaf node types.
+We can use a :ref:`class hierarcy <class hierarchy> <BinaryTreeImpl>`
+to implement separate internal and leaf node types.
 
 From the defining rules for 2-3 trees we can derive relationships
 between the number of nodes in the tree and the depth of the tree.
