@@ -30,14 +30,12 @@ $(document).ready(function () {
   var tree = av.ds.tree({left: 50, top: 235, nodegap: 20});
   var root = tree.newNode("X");
   tree.root(root);
-  root.id("root"); // Make root invisible via CSS -- This is awkward!
   for (ind = 0; ind < arr.length; ind++) {
     newNode = tree.newNode(labels.value(ind));
     newNode.size = 1;   //To maintain the size of each connected component
     root.addChild(newNode);
   }
-  // root.hide({recursive: false}); // This is what I would like to use
-                                    //   but it is broken
+  root.hide({recursive: false});
 
   var a = tree.root().child(0);
   var b = tree.root().child(1);

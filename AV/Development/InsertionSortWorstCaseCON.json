@@ -1,0 +1,19 @@
+{
+  "translations" :{
+    "en": {
+    }
+  },
+  "code" : {
+    "processing": {
+      "url": "../../../SourceCode/Processing/Sorting/Insertionsort.pde",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: Insertionsort *** */",
+      "endBefore": "/* *** ODSAendTag: Insertionsort *** */",
+      "tags": {
+        "loops": [2, 3],
+        "loop1": 2,
+        "loop2": 3
+      }
+    }
+  }
+}

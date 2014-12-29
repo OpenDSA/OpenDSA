@@ -28,12 +28,12 @@ $(document).ready(function () {
   var tree = av.ds.tree({left: 280, top: 60, nodegap: 20});
   var root = tree.newNode("X");
   tree.root(root);
-  root.id("root");
   for (ind = 0; ind < arr.length; ind++) {
     newNode = tree.newNode(labels.value(ind));
     newNode.size = 1;
     root.addChild(newNode);
   }
+  root.hide({recursive: false});
 
   var a = tree.root().child(0);
   var b = tree.root().child(1);

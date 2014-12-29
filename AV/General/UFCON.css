@@ -26,8 +26,3 @@
 .jsavline {
   height: 80px;
 }
-
-#root, path[data-endnode="root"] {
-  opacity: 0 !important;
-  pointer-events: none;
-}
