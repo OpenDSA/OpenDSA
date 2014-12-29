@@ -41,7 +41,7 @@
   av.displayInit();
  
   av.umsg("This will require moving disk 4 from A to C");
-  var labelCallStack4=  av.label("TowersofHanoi(4, A, B, C)", {left: 0, top: 260});
+  var labelCallStack4=  av.label("TowersofHanoi(4, A, C, B)", {left: 0, top: 260});
   av.step();
   
   av.umsg("This will require moving disk 3 from A to B");
@@ -49,7 +49,7 @@
   av.step();
 
   av.umsg("This will require moving disk 2 from A to C");
-  var labelCallStack2=  av.label("TowersofHanoi(2, A, B, C)", {left: 0, top: 320});
+  var labelCallStack2=  av.label("TowersofHanoi(2, A, C, B)", {left: 0, top: 320});
   av.step();
  
   av.umsg("This will require moving disk 1 from A to B");
@@ -57,7 +57,7 @@
   av.step();
   
   av.umsg("This will require moving disk 0 from A to C and that what we are going to do directly.");
-  var labelCallStack0=  av.label("TowersofHanoi(0, A, B, C)", {left: 0, top: 380});
+  var labelCallStack0=  av.label("TowersofHanoi(0, A, C, B)", {left: 0, top: 380});
   pseudo.unhighlight(1);
   pseudo.highlight(2);
   av.step();

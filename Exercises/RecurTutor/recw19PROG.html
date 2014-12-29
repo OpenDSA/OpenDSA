@@ -41,12 +41,12 @@
 
 	
 }
-public static int getLast(Stack<Integer> s){
+public static int popBottom(Stack<Integer> s){
  int a = s.pop();
  if(s.size() == 0)
   return a;
  else{ 
-  int k = getLast(s);
+  int k = popBottom(s);
   s.push(a);
   return k;}
 }

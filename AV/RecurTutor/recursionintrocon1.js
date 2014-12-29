@@ -23,8 +23,8 @@
   var Pointer1 = av.g.line(80 , 210,130, 210,{"arrow-end": "classic-wide-long", "opacity": 0, "stroke":'black',"stroke-width":5});
   Pointer1.show(); 
   
-  var label2 = av.label("x-1*y?", {left: 0, top: 170}); // create a label for the icon
-  label2.css({left: "+=120px", top: "+=0px"}); // move the icon
+  var label2 = av.label("(x-1)*y?", {left: 0, top: 170}); // create a label for the icon
+  label2.css({left: "+=117px", top: "+=0px"}); // move the icon
   av.step();
 
   pseudo.unhighlight(4);
@@ -36,8 +36,8 @@
   var Pointer2 = av.g.line(200 , 210,250, 210,{"arrow-end": "classic-wide-long", "opacity": 0, "stroke":'black',"stroke-width":5});
   Pointer2.show(); 
   
-  var label3 = av.label("x-2*y?", {left: 0, top: 170}); // create a label for the icon
-  label3.css({left: "+=240px", top: "+=0px"}); // move the icon
+  var label3 = av.label("(x-2)*y?", {left: 0, top: 170}); // create a label for the icon
+  label3.css({left: "+=237px", top: "+=0px"}); // move the icon
   av.step();
   
   pseudo.unhighlight(0);
@@ -95,8 +95,8 @@
   Pointer3.show(); 
     
   
-  label3 = av.label("x-2*y", {left: 0, top: 170}); // create a label for the icon
-  label3.css({left: "+=240px", top: "+=0px"}); // move the icon
+  label3 = av.label("(x-2)*y", {left: 0, top: 170}); // create a label for the icon
+  label3.css({left: "+=237px", top: "+=0px"}); // move the icon
  
   av.step();
   pseudo.unhighlight(4);
@@ -106,8 +106,8 @@
   Pointer2.show(); 
   
   
-  label2 = av.label("x-1*y", {left: 0, top: 170}); // create a label for the icon
-  label2.css({left: "+=120px", top: "+=0px"}); // move the icon
+  label2 = av.label("(x-1)*y", {left: 0, top: 170}); // create a label for the icon
+  label2.css({left: "+=117px", top: "+=0px"}); // move the icon
   av.step();
   pseudo.unhighlight(4);
   pseudo.highlight(4);
