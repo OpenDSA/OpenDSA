@@ -18,7 +18,7 @@
   av.umsg("Some people can write it in a different way. By breaking up the return statement as shown in the second version:");
 
   var labelb = av.label("Second Version", {left: 430, top: -25});
-  var  pseudo2 = av.code("int sum(int arr[],int size)\n{ if (size==0)\n  return 0;\n else\n  {\n  int smallResult=sum(arr,size-1);\n  result= smallResult+arr[size-1];\n  }\n  return result;\n}", {lineNumbers:false , top:0 , left:430});
+  var  pseudo2 = av.code("int sum(int arr[],int size)\n{ if (size==0)\n  result=0;\n else\n  {\n  int smallResult=sum(arr,size-1);\n  result= smallResult+arr[size-1];\n  }\n  return result;\n}", {lineNumbers:false , top:0 , left:430});
   pseudo.highlight(6);
   pseudo2.highlight(7);
   pseudo2.highlight(9);

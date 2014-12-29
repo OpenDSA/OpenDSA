@@ -26,7 +26,7 @@
   var Pointer1 = av.g.line(230 , 210,280, 210,{"arrow-end": "classic-wide-long", "opacity": 0, "stroke":'black',"stroke-width":5});
   Pointer1.show(); 
   
-  var label2 = av.label("x-1*y?", {left: 0, top: 170}); // create a label for the icon
+  var label2 = av.label("(x-1)*y?", {left: 0, top: 170}); // create a label for the icon
   label2.css({left: "+=270px", top: "+=0px"}); // move the icon
   av.step();
  
@@ -41,7 +41,7 @@
   label2.hide();
   Pointer1.hide();
   
-  label2 = av.label("x-1*y", {left: 0, top: 170}); // create a label for the icon
+  label2 = av.label("(x-1)*y", {left: 0, top: 170}); // create a label for the icon
   label2.css({left: "+=280px", top: "+=0px"}); // move the icon
   av.step();
   pseudo.unhighlight(4);

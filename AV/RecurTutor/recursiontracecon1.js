@@ -104,28 +104,28 @@
 
   pseudo7.show();
 
-  pseudo7.highlight(3);
+  pseudo7.highlight(4);
   av.step();
   
   av.umsg("The n=3 copy will multiply the return value of the n=2 by 3.");
   //pseudo7.hide();
   pseudo8.show();
 
-  pseudo8.highlight(3);
+  pseudo8.highlight(4);
   av.step();
   
   av.umsg("The n=4 copy will multiply the return value of the n=3 by 6.");
   //pseudo8.hide();
   pseudo9.show();
 
-  pseudo9.highlight(3);
+  pseudo9.highlight(4);
   av.step();
   
   av.umsg("The n=5 copy will multiply the return value of the n=4 by 24. This last copy will return the result of the required factorial.");
   //pseudo9.hide();
   
   pseudo10.show();
-  pseudo10.highlight(3);
+  pseudo10.highlight(4);
   av.step();
   
   av.recorded();
