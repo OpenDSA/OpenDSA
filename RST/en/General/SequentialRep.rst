@@ -83,7 +83,7 @@ the tree structure.
 .. inlineav:: SequentialTreeCON ss
    :output: show
 
-.. avembed:: Exercises/Development/SequentialTreePRO.html ka
+.. avembed:: Exercises/General/SequentialTreePRO.html ka
 
 To illustrate the difficulty involved in using the sequential tree
 representation for processing, consider searching for the right child
@@ -129,7 +129,7 @@ implementation, and so requires less overhead.
 .. inlineav:: SequentialTreeAltCON ss
    :output: show
 
-.. avembed:: Exercises/Development/SequentialTreeAltPRO.html ka
+.. avembed:: Exercises/General/SequentialTreeAltPRO.html ka
 
 Storing :math:`n` extra bits can be a considerable savings over
 storing :math:`n` ``null`` values.
@@ -153,7 +153,7 @@ a leaf node.
 .. inlineav:: SequentialTreeBitsCON ss
    :output: show
 
-.. avembed:: Exercises/Development/SequentialTreeBitVectorPRO.html ka
+.. avembed:: Exercises/General/SequentialTreeBitVectorPRO.html ka
 
 Storing general trees by means of a sequential implementation requires
 that more explicit structural information be included with the node
@@ -174,7 +174,7 @@ this by two or more successive ")" symbols.
 .. inlineav:: SequentialGenTreeCON ss
    :output: show
 
-.. avembed:: Exercises/Development/SequentialTreeGenTreePRO.html ka
+.. avembed:: Exercises/General/SequentialTreeGenTreePRO.html ka
 
 Note that this representation for serializing general trees cannot be
 used for binary trees.
@@ -182,10 +182,9 @@ This is because a binary tree is not merely a restricted form of
 general tree with at most two children.
 Every binary tree node has a left and a right child, though either or
 both might be empty.
-For example, the representation of Example :num:`Example #Serialgen`
-cannot let us distinguish whether node :math:`D` in
-Figure :num:`Figure #BinExampb` is the left or right child of node
-:math:`B`.
+So this representation cannot let us distinguish whether node
+:math:`D` in Figure :num:`Figure #BinExampb` is the left or right
+child of node :math:`B`.
 
 .. odsascript:: AV/Binary/BinExampCON.js
 .. odsascript:: AV/General/SequentialTreeCON.js
