@@ -12,29 +12,6 @@
   },
   "chapters": {
     "Testing": {
-      "General/UnionFind": {
-        "long_name": "Union/Find",
-        "exercises": {
-          "ufCON": {
-            "long_name": "Union/Find Example",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "pathcompCON": {
-            "long_name": "Union/Find Path Compression Example",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "UnionFindPRO": {
-            "long_name": "Union/Find Proficiency Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 0.90
-          }
-        }
-      },
       "IS/FirstFit": {
         "long_name": "First Fit",
         "exercises": {
@@ -48,7 +25,7 @@
           }
         }
       },
-      "IS/SequentialRep": {
+      "General/SequentialRep": {
         "long_name": "Sequential Tree Representations",
         "exercises": {
          "SequentialTreeCON": {
@@ -57,11 +34,23 @@
             "points": 0.0,
             "threshold": 1.0
           },
+          "SequentialTreePRO": {
+            "long_name": "First Sequential Representation Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
          "SequentialTreeAltCON": {
             "long_name": "Second sequential representation Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
+          },
+          "SequentialTreeAltPRO": {
+            "long_name": "Alternate Sequential Representation Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
           },
          "SequentialTreeBitsCON": {
             "long_name": "Bit vector sequential representation Slideshow",
@@ -69,11 +58,23 @@
             "points": 0.0,
             "threshold": 1.0
           },
+          "SequentialTreeBitVectorPRO": {
+            "long_name": "Bit Vector Sequential Representation Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
          "SequentialGenTreeCON": {
             "long_name": "General Tree sequential representation Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
+          },
+          "SequentialTreeGenTreePRO": {
+            "long_name": "General Tree Sequential Representation Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
           }
         }
       },
