@@ -1,5 +1,6 @@
 /*global ODSA */
 "use strict";
+// Written by Mohammed Farghally and Cliff Shaffer
 // Union/Find with path compression
 $(document).ready(function () {
   var av_name = "pathcompCON";

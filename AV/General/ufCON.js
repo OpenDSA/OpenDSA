@@ -1,5 +1,6 @@
 /*global ODSA */
 "use strict";
+// Written by Mohammed Farghally and Cliff Shaffer
 // Union/Find example
 $(document).ready(function () {
   var av_name = "ufCON";
@@ -35,6 +36,8 @@ $(document).ready(function () {
     newNode.size = 1;   //To maintain the size of each connected component
     root.addChild(newNode);
   }
+  // root.hide({recursive: false}); // This is what I would like to use
+                                    //   but it is broken
 
   var a = tree.root().child(0);
   var b = tree.root().child(1);

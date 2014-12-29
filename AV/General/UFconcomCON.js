@@ -1,4 +1,5 @@
 "use strict";
+// Written by Mohammed Farghally and Cliff Shaffer
 $(document).ready(function () {
   var av = new JSAV("UFconcomCON", {"animationMode": "none"});
 

@@ -1,4 +1,5 @@
 "use strict";
+// Written by Mohammed Farghally and Cliff Shaffer
 $(document).ready(function () {
   var av = new JSAV("UFfigCON", {"animationMode": "none"});
   var ind;
@@ -40,7 +41,5 @@ $(document).ready(function () {
   a.addChild(c);
   c.addChild(h);
   root.hide({recursive: false});
-  f.edgeToParent().hide();
-  j.edgeToParent().hide();
   tree.layout();
 });

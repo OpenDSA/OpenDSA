@@ -25,59 +25,6 @@
           }
         }
       },
-      "General/SequentialRep": {
-        "long_name": "Sequential Tree Representations",
-        "exercises": {
-         "SequentialTreeCON": {
-            "long_name": "First sequential representation Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "SequentialTreePRO": {
-            "long_name": "First Sequential Representation Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          },
-         "SequentialTreeAltCON": {
-            "long_name": "Second sequential representation Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "SequentialTreeAltPRO": {
-            "long_name": "Alternate Sequential Representation Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          },
-         "SequentialTreeBitsCON": {
-            "long_name": "Bit vector sequential representation Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "SequentialTreeBitVectorPRO": {
-            "long_name": "Bit Vector Sequential Representation Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          },
-         "SequentialGenTreeCON": {
-            "long_name": "General Tree sequential representation Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "SequentialTreeGenTreePRO": {
-            "long_name": "General Tree Sequential Representation Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          }
-        }
-      },
       "IS/TwoThreeTree_Test": {
         "long_name": "Two Three Tree",
         "exercises": {}
