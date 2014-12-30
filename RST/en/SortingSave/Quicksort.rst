@@ -9,13 +9,7 @@
    :satisfies: quicksort
    :topic: Sorting
 
-.. odsascript:: AV/Sorting/quicksortCODE.js
-
 .. odsalink:: AV/Sorting/quicksortCON.css
-.. odsalink:: AV/Development/QuickSortPartitionAnalysisCON.css
-.. odsalink:: AV/Development/QuickSortWorstCaseCON.css
-.. odsalink:: AV/Development/QuickSortBestCaseCON.css
-.. odsalink:: AV/Development/QuickSortAverageCaseCON.css
 
 .. index:: ! Quicksort
 
@@ -156,16 +150,23 @@ Function ``partition`` returns the first index of the right
 partition (the place where ``left`` ends at) so that the subarray
 bound for the recursive calls to ``qsort`` can be determined.
 
-.. inlineav:: QuicksortCON1 ss
+.. inlineav:: quicksortCON ss
    :output: show
 
 
 .. _PartitionFig:
 
-And here is a visualization illustrating the running time analysis of the partition function
+.. TODO::
+   :type: Slideshow
 
-.. inlineav:: QuickSortPartitionAnalysisCON ss
-   :output: show
+   Explain here why the cost of Partition is linear.
+   The basic idea is that, in the worst case, there is no inward
+   movement of the ``left`` and ``right`` indices until a swap is
+   performed, at which point each has to move inward a step. So at
+   most n/2 iterations of swap and inward movement can
+   occur. Alternatively, a given inner while loop can move its pointer
+   inward multiple steps, but then that will reduce the future
+   movement that is possible.
 
 Now for some partition practice.
 
@@ -186,9 +187,7 @@ Quicksort.
 
 .. avembed:: AV/Sorting/quicksortPRO.html pe
 
-
-.. TODO::
-   :type: Review QuickSort's Partition analysis discussion
+.. showhidecontent:: QuickSortAnalysis
 
    To analyze Quicksort, we first analyze the ``findpivot`` and
    ``partition`` functions when operating on a subarray of length
@@ -218,149 +217,177 @@ Quicksort.
    Knowing the cost of ``findpivot`` and ``partition``,
    we can determine the cost of Quicksort.
    We begin with a worst-case analysis.
-   
-Now we present a visualization illustrating the worst case running time of Quick Sort
-   
-.. inlineav:: QuickSortWorstCaseCON ss
-   :output: show
-   
-This is terrible, no better than Bubble Sort.
-When will this worst case occur?
-Only when each pivot yields a bad partitioning of the array.
-If the pivot values are selected at random, then this is extremely
-unlikely to happen.
-When selecting the middle position of the current subarray, it is
-still unlikely to happen.
-It does not take many good partitionings for Quicksort to
-work fairly well.
+   The worst case will occur when the pivot does a poor job of breaking
+   the array, that is, when there are no records in one partition, and
+   :math:`n-1` records in the other.
+   In this case, the divide and conquer
+   strategy has done a poor job of
+   dividing, so the conquer phase will work on a subproblem only one
+   less than the size of the original problem.
+   If this happens at each partition step, then the total cost of the
+   algorithm will be
 
-Here is a visualization illustrating the Best case running time of Quick Sort
+   .. math::
 
-.. inlineav:: QuickSortBestCaseCON ss
-   :output: show
+      \sum_{k=1}^n k = \Theta(n^2).
 
-Quicksort's average-case behavior falls somewhere
-between the extremes of worst and best case.
-Average-case analysis considers the cost for all possible arrangements
-of input, summing the costs and dividing by the number of cases.
-We make one reasonable simplifying assumption:
-At each partition step, the pivot is
-equally likely to end in any position in the (sorted) array.
-In other words, the pivot is equally likely to break an array into
-partitions of sizes 0 and :math:`n-1`, or 1 and :math:`n-2`, and so
-on.
+   So in the worst case, Quicksort is :math:`\Theta(n^2)`.
+   This is terrible, no better than Bubble Sort.
+   When will this worst case occur?
+   Only when each pivot yields a bad partitioning of the array.
+   If the pivot values are selected at random, then this is extremely
+   unlikely to happen.
+   When selecting the middle position of the current subarray, it is
+   still unlikely to happen.
+   It does not take many good partitionings for Quicksort to
+   work fairly well.
 
-Given this assumption, the average-case cost is computed from the
-following equation:
+   Quicksort's best case occurs when ``findpivot`` always breaks
+   the array into two equal halves.
+   Quicksort repeatedly splits the array into
+   smaller partitions, as shown in the visualization.
+   In the best case, the result will be :math:`\log n` levels of
+   partitions,
+   with the top level having one array of size :math:`n`, the second
+   level two arrays of size :math:`n/2`, the next with four arrays of
+   size :math:`n/4`,  and so on.
+   Thus, at each level, all partition steps for that level do a total of
+   :math:`n` work, for an overall cost of :math:`n \log n` work when
+   Quicksort finds perfect pivots.
 
-.. math::
+   Quicksort's average-case behavior falls somewhere
+   between the extremes of worst and best case.
+   Average-case analysis considers the cost for all possible arrangements
+   of input, summing the costs and dividing by the number of cases.
+   We make one reasonable simplifying assumption:
+   At each partition step, the pivot is
+   equally likely to end in any position in the (sorted) array.
+   In other words, the pivot is equally likely to break an array into
+   partitions of sizes 0 and :math:`n-1`, or 1 and :math:`n-2`, and so
+   on.
 
-   {\bf T}(n) = cn + \frac{1}{n}\sum_{k=0}^{n-1}[{\bf T}(k) +
-   {\bf T}(n - 1 - k)],
-   \quad {\bf T}(0) = {\bf T}(1) = c.
+   Given this assumption, the average-case cost is computed from the
+   following equation:
 
-Here is a visualization that will help you understand how this recurrence relation was formed
+   .. math::
 
-.. inlineav:: QuickSortAverageCaseCON ss
-   :output: show
+      {\bf T}(n) = cn + \frac{1}{n}\sum_{k=0}^{n-1}[{\bf T}(k) +
+      {\bf T}(n - 1 - k)],
+      \quad {\bf T}(0) = {\bf T}(1) = c.
 
-This is an unusual situation that the average case cost and the worst
-case cost have asymptotically different growth rates.
-Consider what "average case" actually means.
-We compute an average cost for inputs of size :math:`n` by summing up
-for every possible input of size :math:`n` the product of the running
-time cost of that input times the probability that that input will
-occur.
-To simplify things, we assumed that every permutation is equally
-likely to occur.
-Thus, finding the average means summing up the cost for every
-permutation and dividing by the number of permuations
-(which is :math:`n!`).
-We know that some of these :math:`n!` inputs cost :math:`O(n^2)`.
-But the sum of all the permutation costs has to be
-:math:`(n!)(O(n \log n))`. 
-Given the extremely high cost of the worst inputs, there must be
-very few of them.
-In fact, there cannot be a constant fraction of the inputs with cost
-:math:`O(n^2)`.
-If even, say, 1% of the inputs have cost :math:`O(n^2)`, this would
-lead to an average cost of :math:`O(n^2)`.
-Thus, as :math:`n` grows, the fraction of inputs with high cost must
-be going toward a limit of zero.
-We can conclude that Quicksort will run fast if
-we can avoid those very few bad input permutations.
-This is why picking a good pivot is so important.
+   This equation is in the form of a
+   :ref:`recurrence relation <recurrence relation> <Recurrence>`.
+   The equation says that there is one chance in :math:`n` that the
+   pivot breaks the array into subarrays of size 0 and :math:`n-1`,
+   one chance in :math:`n` that the pivot breaks the array into
+   subarrays of size 1 and :math:`n-2`, and so on.
+   The expression ":math:`{\bf T}(k) + {\bf T}(n - 1 - k)`" is the cost
+   for the two recursive calls to Quicksort on two arrays of size
+   :math:`k` and :math:`n-1-k`.
+   The initial :math:`cn` term is the cost of doing the
+   ``findpivot`` and ``partition`` steps, for some
+   constant :math:`c`.
+   The closed-form solution to this recurrence relation is
+   :math:`\Theta(n \log n)`.
+   Thus, Quicksort has average-case cost :math:`\Theta(n \log n)`.
 
-The running time for Quicksort can be improved (by a constant factor),
-and much study has gone into optimizing this algorithm.
-Since Quicksort's worst case behavior arises when the pivot does a
-poor job of splitting the array into equal size subarrays,
-improving ``findpivot`` seems like a good place to start.
-If we are willing to do more work searching for a better pivot, the
-effects of a bad pivot can be decreased or even eliminated.
-Hopefully this will save more time than was added by the additional
-work needed to find the pivot.
-One widely-used choice is to use the "median of three" algorithm,
-which uses as a pivot the middle of three randomly selected values.
-Using a random number generator to choose the positions is relatively
-expensive, so a common compromise is to look at the first, middle, and
-last positions of the current subarray.
-However, our simple ``findpivot`` function that takes the
-middle value as its pivot has the virtue of making it highly unlikely
-to get a bad input by chance, and it is quite cheap to implement.
-This is in sharp contrast to selecting the first or last record as
-the pivot, which would yield bad performance for many permutations
-that are nearly sorted or nearly reverse sorted.
+   This is an unusual situation that the average case cost and the worst
+   case cost have asymptotically different growth rates.
+   Consider what "average case" actually means.
+   We compute an average cost for inputs of size :math:`n` by summing up
+   for every possible input of size :math:`n` the product of the running
+   time cost of that input times the probability that that input will
+   occur.
+   To simplify things, we assumed that every permutation is equally
+   likely to occur.
+   Thus, finding the average means summing up the cost for every
+   permutation and dividing by the number of permuations
+   (which is :math:`n!`).
+   We know that some of these :math:`n!` inputs cost :math:`O(n^2)`.
+   But the sum of all the permutation costs has to be
+   :math:`(n!)(O(n \log n))`. 
+   Given the extremely high cost of the worst inputs, there must be
+   very few of them.
+   In fact, there cannot be a constant fraction of the inputs with cost
+   :math:`O(n^2)`.
+   If even, say, 1% of the inputs have cost :math:`O(n^2)`, this would
+   lead to an average cost of :math:`O(n^2)`.
+   Thus, as :math:`n` grows, the fraction of inputs with high cost must
+   be going toward a limit of zero.
+   We can conclude that Quicksort will run fast if
+   we can avoid those very few bad input permutations.
+   This is why picking a good pivot is so important.
 
-A significant improvement can be gained by recognizing that
-Quicksort is relatively slow when :math:`n` is small.
-This might not seem to be relevant if most of the time we sort
-large arrays, nor should it matter how long Quicksort takes in the
-rare instance when a small array is sorted because it will be fast
-anyway.
-But you should notice that Quicksort itself sorts many, many small
-arrays!
-This happens as a natural by-product of the divide and conquer
-approach.
+   The running time for Quicksort can be improved (by a constant factor),
+   and much study has gone into optimizing this algorithm.
+   Since Quicksort's worst case behavior arises when the pivot does a
+   poor job of splitting the array into equal size subarrays,
+   improving ``findpivot`` seems like a good place to start.
+   If we are willing to do more work searching for a better pivot, the
+   effects of a bad pivot can be decreased or even eliminated.
+   Hopefully this will save more time than was added by the additional
+   work needed to find the pivot.
+   One widely-used choice is to use the "median of three" algorithm,
+   which uses as a pivot the middle of three randomly selected values.
+   Using a random number generator to choose the positions is relatively
+   expensive, so a common compromise is to look at the first, middle, and
+   last positions of the current subarray.
+   However, our simple ``findpivot`` function that takes the
+   middle value as its pivot has the virtue of making it highly unlikely
+   to get a bad input by chance, and it is quite cheap to implement.
+   This is in sharp contrast to selecting the first or last record as
+   the pivot, which would yield bad performance for many permutations
+   that are nearly sorted or nearly reverse sorted.
 
-A simple improvement might then be to replace Quicksort with a faster
-sort for small numbers, say Insertion Sort or Selection Sort.
-However, there is an even better---and still simpler---optimization.
-When Quicksort partitions are below a certain size, do nothing!
-The values within that partition will be out of order.
-However, we do know that all values in the array to the left of the
-partition are smaller than all values in the partition.
-All values in the array to the right of the partition are greater than
-all values in the partition.
-Thus, even if Quicksort only gets the values to
-"nearly" the right locations, the array will be close to sorted.
-This is an ideal situation in which to take advantage of the best-case
-performance of Insertion Sort.
-The final step is a single call to Insertion Sort to process the
-entire array, putting the records into final sorted order.
-Empirical testing shows that the subarrays should be left unordered
-whenever they get down to nine or fewer records.
+   A significant improvement can be gained by recognizing that
+   Quicksort is relatively slow when :math:`n` is small.
+   This might not seem to be relevant if most of the time we sort
+   large arrays, nor should it matter how long Quicksort takes in the
+   rare instance when a small array is sorted because it will be fast
+   anyway.
+   But you should notice that Quicksort itself sorts many, many small
+   arrays!
+   This happens as a natural by-product of the divide and conquer
+   approach.
 
-The last speedup to be considered reduces the cost of making
-recursive calls.
-Quicksort is inherently recursive, because each Quicksort operation
-must sort two sublists.
-Thus, there is no simple way to turn Quicksort into an iterative
-algorithm.
-However, Quicksort can be implemented using a stack
-to imitate recursion, as the amount of information that must
-be stored is small.
-We need not store copies of a subarray, only the subarray bounds.
-Furthermore, the stack depth can be kept small if care is taken on
-the order in which Quicksort's recursive calls are executed.
-We can also place the code for ``findpivot`` and
-``partition`` inline to eliminate the remaining function
-calls.
-Note however that by not processing sublists of size nine or
-less as suggested above, about three quarters of the function calls
-will already have been eliminated.
-Thus, eliminating the remaining function calls will yield only a
-modest speedup.
+   A simple improvement might then be to replace Quicksort with a faster
+   sort for small numbers, say Insertion Sort or Selection Sort.
+   However, there is an even better---and still simpler---optimization.
+   When Quicksort partitions are below a certain size, do nothing!
+   The values within that partition will be out of order.
+   However, we do know that all values in the array to the left of the
+   partition are smaller than all values in the partition.
+   All values in the array to the right of the partition are greater than
+   all values in the partition.
+   Thus, even if Quicksort only gets the values to
+   "nearly" the right locations, the array will be close to sorted.
+   This is an ideal situation in which to take advantage of the best-case
+   performance of Insertion Sort.
+   The final step is a single call to Insertion Sort to process the
+   entire array, putting the records into final sorted order.
+   Empirical testing shows that the subarrays should be left unordered
+   whenever they get down to nine or fewer records.
+
+   The last speedup to be considered reduces the cost of making
+   recursive calls.
+   Quicksort is inherently recursive, because each Quicksort operation
+   must sort two sublists.
+   Thus, there is no simple way to turn Quicksort into an iterative
+   algorithm.
+   However, Quicksort can be implemented using a stack
+   to imitate recursion, as the amount of information that must
+   be stored is small.
+   We need not store copies of a subarray, only the subarray bounds.
+   Furthermore, the stack depth can be kept small if care is taken on
+   the order in which Quicksort's recursive calls are executed.
+   We can also place the code for ``findpivot`` and
+   ``partition`` inline to eliminate the remaining function
+   calls.
+   Note however that by not processing sublists of size nine or
+   less as suggested above, about three quarters of the function calls
+   will already have been eliminated.
+   Thus, eliminating the remaining function calls will yield only a
+   modest speedup.
 
 .. TODO::
    :type: Exercise
@@ -379,8 +406,5 @@ Now for review questions.
 
 .. avembed:: Exercises/Sorting/QuicksortSumm.html ka
 
+.. odsascript:: AV/Sorting/quicksortCODE.js
 .. odsascript:: AV/Sorting/quicksortCON.js
-.. odsascript:: AV/Development/QuickSortPartitionAnalysisCON.js
-.. odsascript:: AV/Development/QuickSortWorstCaseCON.js
-.. odsascript:: AV/Development/QuickSortBestCaseCON.js
-.. odsascript:: AV/Development/QuickSortAverageCaseCON.js

@@ -8,7 +8,7 @@
   var label_set = [];
     av = new JSAV("SortingLowerBoundCON");
     set = av.g.set(); //Graphical primitive set to hold the entire tree in a single JSAV object 
-    av.umsg("We will illustrate the Sorting Lower bound proof by showing the resulted decision tree that models the processing of InsertionSort on an array of 3 elements XYZ");	
+    av.umsg("We will illustrate the Sorting Lower bound proof by showing the decision tree that models the processing of InsertionSort on an array of 3 elements XYZ");	
     av.displayInit();
     av.umsg("There are $6$ possible permutations of the array values XYZ, only one of them represents the sorted array");
     label_set.push(av.label("XYZ", {"top": "-13px", "left": "395px"}).css({'font-size': '16px', "text-align": "center"}));
@@ -178,10 +178,10 @@
     av.g.rect(620, 210, 50, 20).css({"fill":"red", "opacity":"0.5"});
     av.g.rect(700, 210, 50, 20).css({"fill":"red", "opacity":"0.5"});
     av.step();
-    av.umsg("The best algorithm will be the one with the shallowest deepest node");
+    av.umsg("The best algorithm (in the worst case) will be the one with the shallowest deepest node");
     var highlighter = av.g.rect(0, 0, 350, 200).css({"fill":"lightblue", "opacity":"0.5"});
     av.step();
-    av.umsg("The depth of the shallowest deepest node depends on the number of nodes in the decision tree");
+    av.umsg("The depth of the shallowest deepest node depends in part on the number of nodes in the decision tree");
     highlighter.hide();
     n1.css({"fill":"blue", "opacity":"0.5"});
     n2.css({"fill":"blue", "opacity":"0.5"});

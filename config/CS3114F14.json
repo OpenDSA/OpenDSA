@@ -987,6 +987,12 @@
       },
       "Sorting/InsertionSort": {
         "long_name": "Insertion Sort",
+        "sections": {
+          "InsertionSortAnalysis": {
+            "long_name": "Insertion Sort Analysis Discussion",
+            "showhide": "hide"
+          }
+        },
         "exercises" : {
           "insertionsortS1CON": {
             "long_name": "Insertion Sort Slideshow 1",
@@ -1019,24 +1025,6 @@
             "points": 1.0,
             "threshold": 5
           },
-          "InsertionSortWorstCaseCON": {
-            "long_name": "Insertion Sort Worst Case Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "InsertionSortBestCaseCON": {
-            "long_name": "Insertion Sort Best Case Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "InsertionSortAverageCaseCON": {
-            "long_name": "Insertion Sort Average Case Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
           "InssortSumm": {
             "long_name": "Insertion Sort Summary Exercise",
             "required": true,
@@ -1047,6 +1035,12 @@
       },
       "Sorting/BubbleSort": {
         "long_name": "Bubble Sort",
+        "sections": {
+          "BubbleSortAnalysis": {
+            "long_name": "Bubble Sort Analysis Discussion",
+            "showhide": "hide"
+          }
+        },
         "exercises": {
           "bubblesortS1CON": {
             "long_name": "Bubble Sort Slideshow 1",
@@ -1073,12 +1067,6 @@
             "points": 2.0,
             "threshold": 5
           },
-          "BubbleSortAnalysisCON": {
-            "long_name": "Bubble Sort Analysis Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
           "BubsortSumm": {
             "long_name": "Bubble Sort Summary Exercise",
             "required": true,
@@ -1089,6 +1077,12 @@
       },
       "Sorting/SelectionSort": {
         "long_name": "Selection Sort",
+        "sections": {
+          "SelectionSortAnalysis": {
+            "long_name": "Selection Sort Analysis Discussion",
+            "showhide": "hide"
+          }
+        },
         "exercises": {
           "selectionsortS1CON": {
             "long_name": "Selection Sort Slideshow 1",
@@ -1114,12 +1108,6 @@
             "required": true,
             "points": 2.0,
             "threshold": 5
-          },
-          "SelectionSortAnalysisCON": {
-            "long_name": "Selection Sort Analysis Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
           },
           "SelsortSumm": {
             "long_name": "Selection Sort Summary Exercise",
@@ -1251,6 +1239,12 @@
       },
       "Sorting/Mergesort": {
         "long_name": "Mergesort Concepts",
+        "sections": {
+          "MergeSortAnalysis": {
+            "long_name": "Merge Sort Analysis Discussion",
+            "showhide": "hide"
+          }
+        },
         "exercises": {
           "mergesortAV": {
             "long_name": "Mergesort Visualization",
@@ -1280,12 +1274,6 @@
               "JXOP-feedback": "continuous",
               "JXOP-fixmode": "fix"
             }
-          },
-          "MergeSortAnalysisCON": {
-            "long_name": "Mergesort Analysis Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
           }
         }
       },
@@ -1314,27 +1302,15 @@
       },
       "Sorting/Quicksort": {
         "long_name": "Quicksort",
+        "sections": {
+          "QuickSortAnalysis": {
+            "long_name": "Quick Sort Analysis Discussion",
+            "showhide": "hide"
+          }
+        },
         "exercises": {
           "QuicksortPivotPRO": {
             "long_name": "Quicksort Pivot Proficiency Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5
-          },
-          "quicksortCON": {
-            "long_name": "Quicksort Partition Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "QuickSortPartitionAnalysisCON": {
-            "long_name": "Quicksort Partition Analysis Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "QuicksortPartitPRO": {
-            "long_name": "Quicksort Partition Proficiency Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 5
@@ -1346,6 +1322,18 @@
             "showhide": "none",
             "threshold": 1.0
           },
+          "quicksortCON": {
+            "long_name": "Quicksort Partition Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "QuicksortPartitPRO": {
+            "long_name": "Quicksort Partition Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          },
           "quicksortPRO": {
             "long_name": "Quicksort Proficiency Exercise",
             "required": true,
@@ -1354,25 +1342,7 @@
             "exer_options": {
               "JXOP-feedback": "continuous",
               "JXOP-fixmode": "fix"
-	    }
-          },
-          "QuickSortWorstCaseCON": {
-            "long_name": "Quicksort Worst Case Analysis Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "QuickSortBestCaseCON": {
-            "long_name": "Quicksort Best Case Analysis Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "QuickSortAverageCaseCON": {
-            "long_name": "Quicksort Average Case Analysis Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
+            }
           },
           "QuicksortSumm": {
             "long_name": "Quicksort Summary Exercise",
@@ -1384,6 +1354,12 @@
       },
       "Sorting/Heapsort": {
         "long_name": "Heapsort",
+        "sections": {
+          "HeapSortAnalysis": {
+            "long_name": "Heap Sort Analysis Discussion",
+            "showhide": "hide"
+          }
+        },
         "exercises": {
           "heapsortCON": {
             "long_name": "Heapsort Slideshow",
@@ -1407,12 +1383,6 @@
               "JXOP-fixmode": "fix"
 	    }
           },
-          "HeapSortAnalysisCON": {
-            "long_name": "Heapsort Analysis Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
           "HeapsortSumm": {
             "long_name": "Heapsort Summary Exercise",
             "required": true,
@@ -1424,6 +1394,12 @@
       "Sorting/BinSort": {
         "long_name": "Binsort",
         "dispModComp": true,
+        "sections": {
+          "BinSortAnalysis": {
+            "long_name": "Bin Sort Analysis Discussion",
+            "showhide": "hide"
+          }
+        },
         "exercises": {
           "binsortS1CON": {
             "long_name": "Binsort Slideshow 1",
@@ -1468,12 +1444,6 @@
             "showhide": "none",
             "threshold": 1.0
           },
-          "RadixSortAnalysisCON": {
-            "long_name": "Radix Sort Analysis Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
           "RadixSortSumm": {
             "long_name": "Radix Sort Summary Exercise",
             "required": true,
@@ -1496,12 +1466,6 @@
       "Sorting/SortingLowerBound": {
         "long_name": "Lower Bounds of Sorting",
         "exercises": {
-          "SortingLowerBoundCON": {
-            "long_name": "Sorting Lower Bound Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
           "SortBoundSumm": {
             "long_name": "Lower Bounds Summary Exercise",
             "required": true,
