@@ -1,5 +1,5 @@
 {
-  "title": "CS3114 Fall 2014",
+  "title": "CPSC270 Spring 2015",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
@@ -232,7 +232,7 @@
         "long_name": "Abstract Data Types",
         "exercises": {
           "ADTCON": {}
-        }
+  }
       }
     },
     "Linear Structures": {
@@ -695,7 +695,7 @@
           "DefSumm": {
             "long_name": "Tree Definition Summary Exercises",
             "required": true,
-            "points": 2,
+            "points": 3,
             "threshold": 8
           }
         }

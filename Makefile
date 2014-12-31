@@ -4,7 +4,7 @@ TARGET = build
 CSSLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 MINIMIZE = java -jar tools/yuicompressor-2.4.7.jar --nomunge
 
-.PHONY: all clean lint csslint jshint min CS2114 CS223 CS5114 CS3114 CS3114notes CS150 OpenDSA test testX IS allBooks nomin pull CS2401 COP3530 CS208 ECE252 Tutorial TDDD86_2014
+.PHONY: all clean lint csslint jshint min CS2114 CS223 CS5114 CS3114 CS3114notes CS150 OpenDSA test testX IS allBooks nomin pull CPSC270S15 CS2401 COP3530 CS208 ECE252 Tutorial TDDD86_2014
 
 all: lint
 
@@ -76,8 +76,11 @@ CSCI102: min
 CS150: min
 	python $(CONFIG_SCRIPT) config/CS150.json
 
+CPSC270: min
+	python $(CONFIG_SCRIPT) config/CPSC270S15.json
+
 CSCI204: min
-	python $(CONFIG_SCRIPT) config/CSCI204.json
+	python $(CONFIG_SCRIPT) config/CSCI204S15.json
 
 CS208: min
 	python $(CONFIG_SCRIPT) config/CS208.json
