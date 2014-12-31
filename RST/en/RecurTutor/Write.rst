@@ -9,8 +9,7 @@
    :topic: Recursion
 
 
-.. odsalink:: AV/RecurTutor/recursionWrtStepsCON.css
-.. odsalink:: AV/RecurTutor/recursionWrtSumCON.css
+.. odsalink:: AV/RecurTutor/recursionWrtCON.css
 
 
 Writing a recursive function
