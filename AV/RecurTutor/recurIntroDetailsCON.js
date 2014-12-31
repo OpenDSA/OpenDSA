@@ -46,7 +46,7 @@
   av.step();
   
   av.umsg(" The problem gets smaller as it goes from one friend to another. Eventually it reaches the <b> base case</b>, where $x$ is $1$ for some friend. This friend will find the task simple enough to be done on his own without doing any delegation.");
-
+  pseudo.highlight(2);
   var Pointer3 = av.g.line(320 , 210,370, 210,{"arrow-end": "classic-wide-long", "opacity": 0, "stroke":'black',"stroke-width":5});
   Pointer3.show(); 
   
