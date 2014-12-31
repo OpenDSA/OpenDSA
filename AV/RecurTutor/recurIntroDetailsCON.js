@@ -1,7 +1,7 @@
 "use strict";
 // Recursive multiplication visualization with Sally's point of view
 (function ($) {
-  var av = new JSAV("RecursionIntroCON1");
+  var av = new JSAV("recurIntroDetailsCON");
   var pseudo = av.code({url: "../../../SourceCode/Java/RecurTutor/Recmultiply.java",
                        lineNumbers: false});
 

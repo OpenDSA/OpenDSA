@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: Recursion
 
-.. odsalink:: AV/RecurTutor/recursionintrocon.css
+.. odsalink:: AV/RecurTutor/recurIntroCON.css
 
 Introduction
 ==========================
@@ -95,7 +95,7 @@ You don't need to think about how your friend is going to do the task.
 You only need to know how to do your own part.
 Here is a visualization that shows the :term:`delegation` process.
 
-.. inlineav:: RecursionIntroCON2 ss
+.. inlineav:: recurIntroDelegateCON ss
    :output: show  
 
 Let's look deeper into the process to see what your friend does when
@@ -104,7 +104,7 @@ you delegate the work.
 When you are writing your own recursive functions, you shouldn't worry
 about all of these details.)
 
-.. inlineav:: RecursionIntroCON1 ss
+.. inlineav:: recurIntroDetailsCON ss
    :output: show  
 
 In order to understand recursion, you need to be able to do two
@@ -114,5 +114,5 @@ Second, you have to understand how to write a recursive function.
 Both of these skills require a lot of practice.
 So we will give you a lot of exercises to do later on.
 
-.. odsascript:: AV/RecurTutor/recursionintrocon2.js
-.. odsascript:: AV/RecurTutor/recursionintrocon1.js
+.. odsascript:: AV/RecurTutor/recurIntroDelegateCON.js
+.. odsascript:: AV/RecurTutor/recurIntroDetailsCON.js
