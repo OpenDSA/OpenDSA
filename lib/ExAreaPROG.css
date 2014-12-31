@@ -4,14 +4,17 @@
 }
 
 .textAreaWithLines{
-   font-family: courier;      
+   font-family: courier; 
+   width: 500px;
+   height: 270px;     
    border: 1px solid #000;  
 }
 
 .textAreaWithLines textarea,.textAreaWithLines div{
    border: 0;
-   line-height: 120%;
-   height: 200px;
+   line-height: 100%;
+   width: 500px;
+   height: 270px;
    font-size: 12px;
 }
 

@@ -4,7 +4,7 @@
 // Visualization of the four steps to write a recursive function
 (function ($) {
 
-  var av = new JSAV("RecursionWriteCON2");
+  var av = new JSAV("recursionWrtSumCON");
   
   av.umsg("To solve the sum problem, we can use any of the following versions. The first one is:");
   av.displayInit();

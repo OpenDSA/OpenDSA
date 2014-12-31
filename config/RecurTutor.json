@@ -18,13 +18,13 @@
       "RecurTutor/Introduction": {
         "long_name": "Recursion Chapter Introduction",
         "exercises": {
-          "RecursionIntroCON1": {
+          "recurIntroDelegateCON": {
             "long_name": "Recursion Introduction Slideshow 1",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "RecursionIntroCON2": {
+          "recurIntroDetailsCON": {
             "long_name": "Recursion Introduction Slideshow 2",
             "required": true,
             "points": 0.0,
@@ -35,13 +35,13 @@
       "RecurTutor/Write": {
         "long_name": "How to write a recursive function",
         "exercises": {
-          "RecursionWriteCON1": {
+          "recursionWrtStepsCON": {
             "long_name": "Recursion Code Writing Slideshow 1",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "RecursionWriteCON2": {
+          "recursionWrtSumCON": {
             "long_name": "Recursion Code Writing Slideshow 2",
             "required": true,
             "points": 0.0,
