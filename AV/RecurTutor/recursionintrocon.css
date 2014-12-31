@@ -10,15 +10,13 @@ background-size: cover;
 background-image: url(Icons/person2.png);
 }	
 
-
-.jsavcanvas {
- margin-left: auto;
- margin-right: auto;
+#recursionintrocon1 {
  height: 200px;
- width: 540px;
 }
 
-
+#recursionintrocon2 {
+ height: 200px;
+}
 
 .svg{
   stroke-width: 1;

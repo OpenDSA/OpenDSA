@@ -8,8 +8,7 @@
    :prerequisites:
    :topic: Recursion
 
-.. odsalink:: AV/RecurTutor/recursionintrocon1.css
-.. odsalink:: AV/RecurTutor/recursionintrocon2.css
+.. odsalink:: AV/RecurTutor/recursionintrocon.css
 
 Introduction
 ==========================
@@ -41,17 +40,6 @@ In general, a recursive algorithm must have two parts:
    In every recursive call, the parameters must be in some sense "closer"
    to the base case than those of the original call.
 
-Imagine that someone in a movie theater asks you what row you're
-sitting in.
-You don't want to count, so you ask the person in front of you what
-row they are sitting in, knowing that you will respond one greater
-than their answer.
-The person in front will ask the person in front of them.
-This will keep happening until word reaches the front row and it
-is easy to respond: "I'm in row 1!"
-From there, the correct message (incremented by one each row)
-will eventually make it's way back to the person who asked.
-
 When first learning recursion, it is common for people to think a lot
 about the recursive process.
 We will spend some time in these modules going over the details for
@@ -76,33 +64,55 @@ reasonably efficient.
 If necessary, the clear, recursive solution can later be modified to
 yield a faster implementation.
 
+Imagine that someone in a movie theater asks you what row you're
+sitting in.
+You don't want to count, so you ask the person in front of you what
+row they are sitting in, knowing that you will respond one greater
+than their answer.
+The person in front will ask the person in front of them.
+This will keep happening until word reaches the front row and it
+is easy to respond: "I'm in row 1!"
+From there, the correct message (incremented by one each row)
+will eventually make it's way back to the person who asked.
+
 Here is a good way to start thinking about recursion.
 Imagine that you have a big task.
 What you could do is just a small piece of it,
 and then delegate the rest to some helper.
-An example similar to the movie theater example  mentioned
-earlier is, suppose that you have the task of multiplying two numbers
-x and y. You would like to delegate this task to some friend. You will
-ask the friend to multiply x-1 and y. You will simply add y to the
-result and you will be done with your task. You will not think about
-how your friend is going to do the task as you simply know how to do
-your own part.  When your friend send you back the result, you will
-only add y to that result. Next visualization shows that delegation
-process.
+Similar to the movie theater example,
+suppose that you have the task of multiplying two numbers x and y.
+You would like to delegate this task to some friend.
+But your friend is likely to do the same thing that you do.
+So if you just delegate the entire task to your friend, then your
+friend will do the same, and so on, and nothing will ever get done.
+So instead, you will ask your friend to do a problem that is a little
+bit easier.
+You ask the friend to multiply :math:`x-1` and :math:`y`.
+When you friend gives you back that answer, then you can
+simply add :math:`y` to the result.
+Then you will be done with your task.
+You don't need to think about how your friend is going to do the task.
+You only need to know how to do your own part.
+Here is a visualization that shows the :term:`delegation` process.
 
 .. inlineav:: RecursionIntroCON2 ss
    :output: show  
 
-
-If you are going to think how your friend is going to do the task then you will think that your friend will do exactly the same with another friend who will do exactly the same with a third one and so on. x will be decremented till eventually it will reach to one at the last friend. The last friend will send back the result of multiplying a one and y. The last friend will be returning back the result to the previous friend. This friend will add x to the result. This process will continue all the way back till the result of x-1 multiplied by y is back to you. 
-
+Let's look deeper into the process to see what your friend does when
+you delegate the work.
+(We will only do it this once.
+When you are writing your own recursive functions, you shouldn't worry
+about all of these details.)
 
 .. inlineav:: RecursionIntroCON1 ss
    :output: show  
 
-In order to understand recursion, you need to understand and practice how to write and read a recursive function.
-
-
+In order to understand recursion, you need to be able to do two
+things.
+First, you have to understand how to read a recursive function.
+Second, you have to understand how to write a recursive function.
+Both of these skills require a lot of practice.
+So we will give you a lot of exercises to do later on.
 
 .. odsascript:: AV/RecurTutor/recursionintrocon2.js
 .. odsascript:: AV/RecurTutor/recursionintrocon1.js
