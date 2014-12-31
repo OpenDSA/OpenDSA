@@ -1,5 +1,5 @@
 {
-  "title": "CS3114 Fall 2014",
+  "title": "CSCI204 Spring 2015",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
@@ -911,6 +911,10 @@
             "threshold": 3
           }
         }
+      },
+      "Development/Bintree": {
+        "long_name": "Bintrees",
+        "exercises": {}
       },
       "Binary/Huffman": {
         "long_name": "Huffman Coding Trees",
@@ -2298,3 +2302,4 @@
     }
   }
 }
+
