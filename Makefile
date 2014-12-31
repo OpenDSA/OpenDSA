@@ -157,6 +157,9 @@ testcpp: min
 uwosh: min
 	python $(CONFIG_SCRIPT) config/uwosh.json
 
+uwosh-pl: min
+	python $(CONFIG_SCRIPT) config/uwosh-pl.json
+
 List: min
 	python $(CONFIG_SCRIPT) s config/List.json
 

@@ -1,12 +1,19 @@
-(function() {
+// OLD -- (function() {
+/*global ODSA */
+"use strict";
+$(document).ready(function () {
+  var av_name = "BetaNormCON";
+  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
+  var av = new JSAV(av_name);
 	var x = 0; var y = 0;
-	var av = new JSAV("av");
+//	var av = new JSAV("av");
 	var stepOne = ["(", "&#955;x.", "(", "x", "x", ")", "(", "&#955;y.", "y", "z", ")", ")"];
 	var stepTwo = ["(", "(", "&#955;y.", "y", "z", ")", "x", ")"];
 	var stepThree = ["(", "(", "&#955;y.", "y", "z", ")", "(", "&#955;y.", "y", "z", ")", ")"];
 	var stepFour = ["(", "z", "(", "&#955;y.", "y", "z", ")", ")"];
 	var stepFive = ["(", "z", "z", ")"];
-	av.label("&#946;-Reduction Matrix");
+//	av.label("&#946;-Reduction Matrix");
+	av.label("$\\beta$-Reduction Matrix");
 	var m1 = av.ds.matrix([stepOne, stepTwo, stepThree, stepFour, stepFive], {style: "plain"});
 	x = 1;
 	for(y = 0; y < 8; y++)
@@ -158,4 +165,5 @@
 	m1.css(4, 2, {"background-color": "white", "color": "rgb(0, 0, 0)"});
 	av.umsg("And with that we have completed a full &#946;-reduction and we have a simplified expression!");
 	av.recorded();
-}());
+});
+// }());

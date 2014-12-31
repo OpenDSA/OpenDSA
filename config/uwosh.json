@@ -17,6 +17,18 @@
             "required": false,
             "points": 0.0,
             "threshold": 1.0
+          },
+          "BetaAppCON": {
+            "long_name": "Beta Reduction Applicative Order Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "BetaNormCON": {
+            "long_name": "Beta Reduction Normal Order Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
           }
         }
       },

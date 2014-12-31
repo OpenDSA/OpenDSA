@@ -45,7 +45,8 @@ In Applicative Order Reduction we  evaluate the innermost subexpressions first. 
 
 .. Slideshow for Applicative order
 
-.. avembed:: AV/Development/BetaReductionAppSlideshow.html ss
+.. inlineav:: BetaAppCON ss
+   :output: show
 
 Practice an applicative order reduction in the following exercise:
 
@@ -67,8 +68,8 @@ Normal order evaluation  reduces the leftmost redex first -- before reducing the
 
 .. Slideshow for Normal Order
 
-.. avembed:: AV/Development/BetaReductionNormSlideshow.html ss
-
+.. inlineav:: BetaNormCON ss
+   :output: show
 
 
 Practice a normal order reduction in the following exercise:
@@ -95,3 +96,7 @@ As a final test of your proficiency in doing beta reductions, try doing
 .. avembed:: AV/Development/BetaNormPro.html pe
 
 .. odsascript:: AV/Development/AlphaConversionCON.js
+
+.. odsascript:: AV/Development/BetaAppCON.js
+
+.. odsascript:: AV/Development/BetaNormCON.js
