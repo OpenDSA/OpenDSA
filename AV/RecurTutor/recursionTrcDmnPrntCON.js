@@ -1,10 +1,10 @@
 "use strict";
   
 //===============================================================================================================================
-// Visualization of the four steps to write a recursive function
+// Visualization of Domino Effect to Print a sequence of integers
 (function ($) {
 
-  var av = new JSAV("RecursionTraceCON6");
+  var av = new JSAV("recursionTrcDmnPrntCON");
   var rect = av.g.rect(100, 30, 50, 90).css({"fill": "grey"});
   var rect1 = av.g.rect(200, 30, 50, 90).css({"fill": "grey"});
   var rect2 = av.g.rect(300, 30, 50, 90).css({"fill": "grey"});

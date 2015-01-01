@@ -4,7 +4,7 @@
 // Visualization of factorial with copies model 
 (function ($) {
 
-  var av = new JSAV("RecursionTraceCON1");
+  var av = new JSAV("recursionTrcFctCON");
   var pseudo = av.code({url: "../../../SourceCode/Java/RecurTutor/Recfact.java",
                        lineNumbers: false,});
   av.umsg("Suppose we want to compute the value of factorial(5) using the following recursive factorial implementation:");

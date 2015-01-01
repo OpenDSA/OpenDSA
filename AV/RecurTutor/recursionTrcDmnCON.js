@@ -4,7 +4,7 @@
 // Visualization of the basic principle of Domino Effect 
 (function ($) {
 
-  var av = new JSAV("RecursionTraceCON5");
+  var av = new JSAV("recursionTrcDmnCON");
   // Show the Domino Effect recursively  on a figure too
   var rect = av.g.rect(100, 30, 50, 90).css({"fill": "grey"});
   var rect1 = av.g.rect(200, 30, 50, 90).css({"fill": "grey"});

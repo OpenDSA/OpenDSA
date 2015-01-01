@@ -225,50 +225,50 @@
       "RecurTutor/Trace": {
         "long_name": "How to trace a recursive function?",
         "exercises": {
-          "RecursionTraceCON1": {
-            "long_name": "Recursion Tracing Slideshow 1",
+          "recursionTrcWindCON": {
+            "long_name": "Recursion Tracing Winding and Unwinding",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "RecursionTraceCON2": {
-            "long_name": "Recursion Tracing Slideshow 2",
+          "recursionTrcSumCON": {
+            "long_name": "Recursion Tracing Sum Function",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "RecursionTraceCON4": {
-            "long_name": "Recursion Tracing Slideshow 4",
+          "recursionTrcFctCON": {
+            "long_name": "Recursion Tracing Factorial Function",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "RecursionTraceCON3": {
-            "long_name": "Recursion Tracing Slideshow 3",
+          "recursionTrcSum2CON": {
+            "long_name": "Recursion Tracing Sum Winding and Unwinding",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "RecursionTraceCON5": {
-            "long_name": "Recursion Tracing Slideshow 5",
+          "recursionTrcDmnCON": {
+            "long_name": "Recursion Tracing General Domino Effect",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "RecursionTraceCON6": {
-            "long_name": "Recursion Tracing Slideshow 6",
+          "recursionTrcDmnPrntCON": {
+            "long_name": "Recursion Tracing Domino Effect for Printing",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "RecursionTraceCON7": {
-            "long_name": "Recursion Tracing Slideshow 7",
+          "recursionTrcDmnCntCON": {
+            "long_name": "Recursion Tracing Domino Effect for Counting",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "RecursionTraceCON8": {
-            "long_name": "Recursion Tracing Slideshow 8",
+          "recursionTrcTOHCON": {
+            "long_name": "Recursion Tracing Towers of Hanoi",
             "required": true,
             "points": 0.0,
             "threshold": 1.0

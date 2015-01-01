@@ -4,7 +4,7 @@
 // Visualization of Towers of Hanoi
 (function ($) {
 
-  var av = new JSAV("RecursionTraceCON8");
+  var av = new JSAV("recursionTrcTOHCON");
   var label0 = av.label("0", {left: 165, top: 12});
   var label1 = av.label("1", {left: 180, top: 42});
   var label2 = av.label("2", {left: 195, top: 72});
