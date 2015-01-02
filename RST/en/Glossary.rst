@@ -801,6 +801,15 @@ Glossary
       In :term:`tree` terminology, the degree for a :term:`node` is
       its number of :term:`children <child>`.
 
+   delegation mental model for recursion
+      A way of thinking about the process of :term:`recursion`.
+      The recursive function "delegates" most of the work when it
+      makes the recursive call.
+      The advantage of the delegation mental model for recursion is
+      that you don't need to think about how the delegated task is
+      performed.
+      It just gets done.
+
    dense graph
       A :term:`graph` where the actual number of :term:`edges <edge>`
       is a large fraction of the possible number of edges.

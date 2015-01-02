@@ -5,7 +5,7 @@
 
 .. avmetadata:: 
    :author: Sally Hamouda
-   :prerequisites:
+   :satisfies: recursion intro
    :topic: Recursion
 
 .. odsalink:: AV/RecurTutor/recurIntroCON.css
@@ -13,7 +13,8 @@
 Introduction
 ==========================
 
-An algorithm is recursive if it calls itself to do part of its
+An :term:`algorithm` (or a function in a computer program) is
+:term:`recursive <recursion>` if it calls itself to do part of its
 work.
 Recursion makes it possible to solve complex problems using programs
 that are concise, easily understood, and algorithmically efficient.
@@ -32,14 +33,17 @@ For a recursive approach to be successful, the recursive
 attempted.
 In general, a recursive algorithm must have two parts:
 
-#. the base case, which handles a simple input that can be solved without
-   resorting to a recursive call, and
+#. the :term:`base case`, which handles a simple input that can be
+   solved without resorting to a recursive call, and
 
 #. the recursive part which contains one or more recursive calls to the
    algorithm.
    In every recursive call, the parameters must be in some sense "closer"
    to the base case than those of the original call.
 
+Recursion has no counterpart in everyday, physical-world problem solving.
+The concept can be difficult to grasp because it requires you to think
+about problems in a new way.
 When first learning recursion, it is common for people to think a lot
 about the recursive process.
 We will spend some time in these modules going over the details for
@@ -93,16 +97,18 @@ simply add :math:`y` to the result.
 Then you will be done with your task.
 You don't need to think about how your friend is going to do the task.
 You only need to know how to do your own part.
-Here is a visualization that shows the :term:`delegation` process.
+Here is a visualization that shows the
+:term:`delegation <delegation mental model for recursion>` process.
 
 .. inlineav:: recurIntroDelegateCON ss
    :output: show  
 
-Let's look deeper into the process to see what your friend does when
+Let's look deeper into the details of what your friend does when
 you delegate the work.
-(We will only do it this once.
-When you are writing your own recursive functions, you shouldn't worry
-about all of these details.)
+(Note that we show  you this process once now,
+and once again when we look at some recursive functions.
+But when you are writing your own recursive functions,
+you shouldn't worry about all of these details.)
 
 .. inlineav:: recurIntroDetailsCON ss
    :output: show  
