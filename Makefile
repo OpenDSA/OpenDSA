@@ -79,7 +79,7 @@ CS150: min
 	python $(CONFIG_SCRIPT) config/CS150.json
 
 CPSC270: min
-	python $(CONFIG_SCRIPT) config/CPSC270S15Sioci.json
+	python $(CONFIG_SCRIPT) config/CPSC270S15Siochi.json
 	python $(CONFIG_SCRIPT) config/CPSC270S15Flores.json
 
 CSCI204: min

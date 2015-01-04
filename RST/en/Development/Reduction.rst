@@ -8,6 +8,8 @@
    :prerequisites:
    :topic: Reductions
 
+.. odsalink:: AV/slideCON.css
+
 Reductions
 ==========
 
@@ -57,15 +59,29 @@ To illustrate this, let us consider another problem.
    :math:`Y`, the next least value in :math:`X` is paired with the
    next least value in :math:`Y`, and so on.
 
+.. _Pair:
+
+.. odsafig:: Images/Pairing.png
+   :width: 200
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: Illustration of PAIRING
+
+   An illustration of PAIRING.
+   The two lists of numbers are paired up so that the least values
+   from each list make a pair, the next smallest values from each list
+   make a pair, and so on.
+
+.. avembed:: AV/Development/pairToSortReduction.html ss
+
+Figure :num:`Figure #Pair` illustrates PAIRING.
 One way to solve PAIRING is to use an existing sorting
 program to sort each of the two sequences, and then pair off
 items based on their position in sorted order.
-The following slideshow illustrates this reduction process.
 Technically we say that in this solution, **PAIRING** is
 :term:`reduced <reduction>` to SORTING, because **SORTING** is used to
 solve PAIRING.
-
-.. avembed:: AV/Development/pairToSortReduction.html ss
 
 Notice that reduction is a three-step process.
 The first step is to convert an instance of
@@ -114,10 +130,9 @@ lower bound.
 Assume we can go the other way and convert **SORTING** to **PAIRING**
 "fast enough".
 What does this say about the minimum cost of **PAIRING**?
-We know from the
-:ref:`sorting lower bound <sorting lower bound> <SortingLowerBound>`
-proof that the cost of
-**SORTING** in the worst and average cases is
+We know that the
+:ref:`lower bound <sorting lower bound> <SortingLowerBound>`
+for **SORTING** in the worst and average cases is
 in :math:`\Omega(n \log n)`.
 In other words, the best possible algorithm for sorting requires at
 least :math:`n \log n` time.
@@ -149,7 +164,8 @@ Take the resulting set of pairs, and use the value from the :math:`B`
 half of the pair to tell which position in the sorted array the
 :math:`A` half should take; that is, we can now reorder the records in
 the :math:`A` array using the corresponding value in the :math:`B`
-array as the sort key and running a simple :math:`\Theta(n)`
+array as the sort key and running a simple
+:math:`\Theta(n)`
 :ref:`Binsort <Binsort> <BinSort>`.
 The conversion of **SORTING** to **PAIRING** can be done in
 :math:`O(n)` time, and likewise the conversion of the output of
@@ -195,8 +211,20 @@ We can define reduction more formally as a three-step process:
 Figure :num:`Figure #BlackBox` shows a graphical representation of the
 general reduction process, showing the role of the two problems, and
 the two transformations.
-Here is an illustration for applying a similar diagram to the
+Figure :num:`Figure #PairingBox` shows a similar diagram for the
 reduction of **SORTING** to **PAIRING**.
+
+.. _PairingBox:
+
+.. odsafig:: Images/PairingBox.png
+   :width: 200
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: Reduction of SORTING to PAIRING
+
+   A reduction of **SORTING** to **PAIRING** shown as a "blackbox"
+   diagram.
 
 .. avembed:: AV/Development/sortToPairReduction.html ss
 
@@ -269,8 +297,7 @@ This takes :math:`\Theta(n)` time.
 Each of the :math:`n^2` elements of the solution are computed in
 similar fashion, requiring a total of :math:`\Theta(n^3)` time.
 Faster algorithms are known
-(such as
-:ref:`Strassen's algorithm <Strassen's algorithm> <Strassen>`)
+(see :ref:`Strassen's algorithm <Strassen's algorithm> <Strassen>`),
 but none are so fast as to be in :math:`O(n^2)`.
 
 Now, consider the case of multiplying two
@@ -331,6 +358,8 @@ advantage of the following observation:
 
 In the above formula, :math:`AB` is the result of multiplying
 matrices :math:`A` and :math:`B` together.
+
+.. avembed:: AV/Development/matrixMulReduction.html ss
 
 Notes
 -----

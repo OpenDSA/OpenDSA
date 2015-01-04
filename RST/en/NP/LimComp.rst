@@ -5,7 +5,6 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
    :topic: Limits to Computing
 
 Limits to Computing
@@ -18,8 +17,8 @@ In general, our search algorithms strive to be at worst in
 and our sorting algorithms strive to be in :math:`O(n \log n)`.
 You might have come across a few algorithms have higher asymptotic
 complexity.
-Both Floyd's all-pairs shortest-paths algorithm 
-(Module :numref:`<DynamicProgramming>`)
+Both
+:ref:`Floyd's all-pairs shortest-paths algorithm <Floyd's algorithm> <Floyd>`
 and standard matrix multiply
 have running times of :math:`\Theta(n^3)`
 (though for both, the amount of data being processed is
@@ -37,8 +36,9 @@ provides a sorted list.
 The running time for this algorithm would be unacceptably
 high, because it is proportional to the number of permutations which
 is :math:`n!` for :math:`n` inputs.
-When solving the minimum-cost spanning tree problem
-(Module :numref:`<MCST>`), if we were to
+When solving the 
+:ref:`minimum-cost spanning tree problem <MCST> <MCST>`,
+if we were to
 test every possible subset of edges to see which forms the shortest
 minimum spanning tree, the amount of work would be proportional to
 :math:`2^{|{\rm E}|}` for a graph with :math:`|{\rm E}|` edges.
@@ -48,8 +48,8 @@ explicitly testing every possible solution.
 
 Unfortunately, there are many computing problems for which the best
 possible algorithm takes a long time to run.
-A simple example is the Towers of Hanoi problem
-(Module :numref:`<Recursion>`),
+A simple example is the
+:ref:`Towers of Hanoi problem <Towers of Hanoi problem> <Recursion>`
 which requires :math:`2^n` moves to "solve" a tower with :math:`n`
 disks.
 It is not possible for any computer program that solves the Towers of
@@ -63,26 +63,11 @@ The best algorithms that we know for such problems are very slow, but
 perhaps there are better ones waiting to be discovered.
 Of course, while having a problem with high running time is bad, it is
 even worse to have a problem that cannot be solved at all!
-Such problems do exist, and are discussed in
-Module :numref:`<Computability>`.
-
-The following series of modules presents a brief introduction to the
-theory of expensive and impossible problems.
-Module :numref:`<Reduction>` presents the concept of a reduction,
-which is the central tool used for analyzing the difficulty of a
-problem (as opposed to analyzing the cost of an algorithm).
-Reductions allow us to relate the difficulty of various problems,
-which is often much easier than doing the analysis for a problem from
-first principles.
-Module :numref:`<NPComplete>` discusses "hard" problems, by which we
-mean problems that require, or at least appear to require,
-time exponential on the input size.
-Module :numref:`<NPCoping>` talks about how to cope with such
-problems when we cannot avoid them.
-Finally, Module :numref:`<Computability>` considers various problems
-that, while often simple to define and comprehend, are in fact
-impossible to solve using a computer program.
+Such problems
+(which are called
+:ref:`unsolveable problems <unsolveable problem> <Computability>`)
+do exist.
 The classic example of such a problem is deciding whether an arbitrary 
 computer program will go into an infinite loop when processing a
 specified input.
-This is known as the halting problem.
+This is known as the :term:`halting problem`.

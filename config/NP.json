@@ -17,6 +17,10 @@
   },
   "chapters": {
     "Limits to Computing": {
+      "NP/LimComp": {
+        "long_name": "Chapter Intro: Limits to Computing",
+        "exercises": {}
+      },
       "NP/Reduction": {
         "long_name": "Reductions",
         "exercises": {
