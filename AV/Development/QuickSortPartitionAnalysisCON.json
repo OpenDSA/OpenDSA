@@ -1,0 +1,23 @@
+{
+  "translations" :{
+    "en": {
+    }
+  },
+  "code" : {
+    "processing": {
+      "url": "../../../SourceCode/Processing/Sorting/Quicksort.pde",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: partition *** */",
+      "endBefore": "/* *** ODSAendTag: partition *** */",
+	  "top": 200,
+	  "left": 120,
+      "tags": {
+	    "loops": [2, 3, 4],
+        "loop1": 2,
+        "loop2": 3,
+		"loop3": 4,
+		"if": 5		
+      }
+    }
+  }
+}

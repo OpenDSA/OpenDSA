@@ -1,0 +1,22 @@
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdftex 2013.10.3)  11 SEP 2014 21:36
+entering extended mode
+**F:/Git*Repositories/OpenDSA/Doc/OpenDSA.bib
+("F:/Git Repositories/OpenDSA/Doc/OpenDSA.bib"
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.12 ...tp://dx.doi.org/10.1007/978-3-540-69132-7_
+                                                  13},
+? 
+! Emergency stop.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.12 ...tp://dx.doi.org/10.1007/978-3-540-69132-7_
+                                                  13},
+End of file on the terminal!
+
+!  ==> Fatal error occurred, no output PDF file produced!

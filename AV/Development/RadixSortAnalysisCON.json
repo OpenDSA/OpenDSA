@@ -1,0 +1,25 @@
+{
+  "translations" :{
+    "en": {
+    }
+  },
+  "code" : {
+    "processing": {
+      "url": "../../../SourceCode/Processing/Sorting/RadixsortNoComments.pde",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: Radixsort *** */",
+      "endBefore": "/* *** ODSAendTag: Radixsort *** */",
+	  "top": -30,
+	  "left": 450,
+      "tags": {
+	    "loops": [5, 6, 8, 11, 13, 17],
+        "loop1": 5,
+        "loop2": 6,
+		"loop3": 8,
+		"loop4": 11,
+		"loop5": 13,
+		"loop6": 17
+      }
+    }
+  }
+}
