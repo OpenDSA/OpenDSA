@@ -4,6 +4,7 @@
   /* Set height, width, borders, and global font properties here */
   font-family: monospace;
   height: 300px;
+  border: 2px solid #000;
 }
 
 /* PADDING */
