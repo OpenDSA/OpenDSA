@@ -4,7 +4,7 @@ TARGET = build
 CSSLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 MINIMIZE = java -jar tools/yuicompressor-2.4.7.jar --nomunge
 
-.PHONY: all clean lint csslint jshint min CS2114 CS223 CS5114 CS3114 CS3114notes CS150 OpenDSA test testX IS allBooks nomin pull CPSC270S15 CS2401 COP3530 CS208 ECE252 Tutorial TDDD86_2014
+.PHONY: all clean lint csslint jshint min CS2114 CS223 CS5114 CS3114 CS3114notes CS150 OpenDSA test testX IS allBooks nomin pull CPSC270S15 CS2401 COP3530 CS208 ECE252 Tutorial TDDD86_2014 S15
 
 all: lint
 
@@ -55,6 +55,8 @@ jshint:
 min: nomin
 #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
+S15: CS2114 ECE252 CPSC270 CSCI204 CS3114
+
 Tutorial: min
 	python $(CONFIG_SCRIPT) config/Tutorial.json
 
@@ -77,7 +79,8 @@ CS150: min
 	python $(CONFIG_SCRIPT) config/CS150.json
 
 CPSC270: min
-	python $(CONFIG_SCRIPT) config/CPSC270S15.json
+	python $(CONFIG_SCRIPT) config/CPSC270S15Siochi.json
+	python $(CONFIG_SCRIPT) config/CPSC270S15Flores.json
 
 CSCI204: min
 	python $(CONFIG_SCRIPT) config/CSCI204S15.json
@@ -98,7 +101,7 @@ CSE-A1141eng: min
 	python $(CONFIG_SCRIPT) config/CSE-A1141eng.json
 
 CS2114: min
-	python $(CONFIG_SCRIPT) config/CS2114.json
+	python $(CONFIG_SCRIPT) config/CS2114S15.json
 
 CS2401: min
 	python $(CONFIG_SCRIPT) config/CS2401.json
@@ -122,7 +125,7 @@ CS5114: min
 	python $(CONFIG_SCRIPT) config/CS5114.json
 
 ECE252: min
-	python $(CONFIG_SCRIPT) config/ECE252.json
+	python $(CONFIG_SCRIPT) config/ECE252S15.json
 
 OpenDSA: min
 	python $(CONFIG_SCRIPT) config/OpenDSA.json

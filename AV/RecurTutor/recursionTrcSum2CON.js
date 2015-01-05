@@ -1,9 +1,9 @@
 "use strict";
 //===============================================================================================================================
-// Visualization of the four steps to write a recursive function
+// Showing how sum returns to the base case and then unwind
 (function ($) {
 
-  var av = new JSAV("RecursionTraceCON3");
+  var av = new JSAV("recursionTrcSum2CON");
   av.umsg("The tracing eventually gets down to the base case. All calls eventually reach the base case and if there is more than one base case, it reaches one of the base cases.");
  
   var pseudo = av.code({url: "../../../SourceCode/Java/RecurTutor/Recsum.java",

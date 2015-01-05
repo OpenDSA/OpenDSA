@@ -5,9 +5,8 @@
 
 .. avmetadata:: 
    :author: Sally Hamouda
-   :prerequisites:
+   :satisfies: recursion tracing
    :topic: Recursion
-
 
 Tracing Practice Exercises
 ===========================

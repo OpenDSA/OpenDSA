@@ -7,10 +7,10 @@ var setWhite = function (arr, index) {
   arr.css(index, {"background-color": "#fff" });
 };
 //===============================================================================================================================
-// Visualization of the four steps to write a recursive function
+// Tracing sum on an array
 (function ($) {
 
-  var av = new JSAV("RecursionTraceCON4");
+  var av = new JSAV("recursionTrcSumCON");
   
   av.umsg("Let's consider an easy recursive call. We want to sum the elements of an array.");
   var pseudo = av.code({url: "../../../SourceCode/Java/RecurTutor/Recsum.java",

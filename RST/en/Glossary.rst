@@ -453,7 +453,7 @@ Glossary
       :term:`overflow bucket`.
 
    bucket sort
-      A variation on the :term:`binsort`, where each bin is associated
+      A variation on the :term:`Binsort`, where each bin is associated
       with a range of :term:`key` values.
       This will require some method of
       sorting the records placed into each bin.
@@ -702,7 +702,7 @@ Glossary
       science and mathematics that focuses on classifying
       computational problems according to their inherent difficulty,
       and relating those classes to each other.
-      An example is the study of :term:`NP Complete` problems.
+      An example is the study of :term:`NP-Complete` problems.
 
    connected component
       In an :term:`undirected graph`, a :term:`subset` of the
@@ -792,6 +792,9 @@ Glossary
       such as the proof that sorting requires
       :math:`\Omega(n \log n)` comparisons in the worst case.
 
+   decision problem
+      A problem whose output is either "YES" or "NO".
+
    degree
       In :term:`graph` terminology, the degree for a :term:`vertex` is
       its number of :term:`neighbors <neighbor>`.
@@ -800,6 +803,15 @@ Glossary
       the number of edges directed out of the vertex.
       In :term:`tree` terminology, the degree for a :term:`node` is
       its number of :term:`children <child>`.
+
+   delegation mental model for recursion
+      A way of thinking about the process of :term:`recursion`.
+      The recursive function "delegates" most of the work when it
+      makes the recursive call.
+      The advantage of the delegation mental model for recursion is
+      that you don't need to think about how the delegated task is
+      performed.
+      It just gets done.
 
    dense graph
       A :term:`graph` where the actual number of :term:`edges <edge>`
@@ -1279,9 +1291,9 @@ Glossary
       :term:`all-pairs shortest paths problem`.
       It uses the :term:`dynamic programming` algorithmic technique,
       and runs in :math:`\Theta(n^3)` time.
-      As with any dynamic programming algorithm, the key issue is to
-      avoid duplicating work through proper bookkeeping on the
-      solution space.
+      As with any :term:`dynamic programming` algorithm,
+      the key issue is to avoid duplicating work by using proper
+      bookkeeping on the algorithm's progress through the solution space.
       The basic idea is to first find all the direct edge costs, then
       improving those costs by allowing paths through :term:`vertex`
       0, then the cheapest paths involving paths going through
@@ -1466,6 +1478,7 @@ Glossary
       input :math:`I`?
       This problem has been proved impossible to solve in the general
       case.
+      Thus, it is an example of an :term:`unsolveable problem`.
 
    handle
       When using a :term:`memory manager` to store data, the
@@ -1477,6 +1490,17 @@ Glossary
       client.
       This is typically the location and length of the message within
       the :term:`memory pool`.
+
+   hard algorithm
+      "Hard" is traditionally defined in relation to running time, and
+      a "hard" algorithm is defined to be an algorithm with exponential
+      running time.
+
+   hard problem
+      "Hard" is traditionally defined in relation to running time, and
+      a "hard" problem is defined to be one whose best known algorithm
+      requires exponential running time.
+
 
    harmonic series
       The sum of reciprocals from 1 to :math:`n` is called the
@@ -2276,15 +2300,42 @@ Glossary
       In set notation, a relation that is :term:`reflexive`,
       :term:`antisymmetric`, and :term:`transitive`.
 
-   NP Complete
+   NP
+      An acronym for
+      :term:`non-deterministic polynomial <non-deterministic polynomial time algorithm>`.
+
+   NP-Complete
       A class of problems that are related to each other in this way:
       If ever one such problem is proved to be solvable in
       polynomial time, or proved to require exponential time,
-      then all other NP Complete problems will cost likewise.
+      then all other NP-Complete problems will cost likewise.
       Since so many real-world problems have been proved to be
-      NP Complete, it would be extremely useful to determine if they
+      NP-Complete, it would be extremely useful to determine if they
       have polynomial or exponential cost. But so far, nobody has
       been able to determine the truth of the situation.
+      A more technical definition is that a problem is NP-Complete if
+      it is in NP and is NP-hard.
+
+   NP-hard
+      A problem that is "as hard as" any other problem in :term:`NP`.
+      That is, Problem X is NP-hard if any algorithm in NP can be
+      :term:`reduced <reduction>` to X in polynomial time.
+
+   non-deterministic algorithm
+      An algorithm that may operate using a
+      :term:`non-deterministic choice` operation.
+      
+   non-deterministic choice
+      An operation that captures the concept of nondeterminism.
+      A nondeterministic choice can be viewed as either
+      "correctly guessing" between a set of choices, or implementing
+      each of the choices in parallel.
+      In the parallel view, the nondeterminism was successful if at
+      least one of the choices leads to a correct answer.
+
+   non-deterministic polynomial time algorithm
+      An algorithm that runs in polynomial time, and which may
+      (or might not) use :term:`non-deterministic choice`.
 
    object
       An instance of a class, that is, something that is created and
@@ -2821,7 +2872,7 @@ Glossary
       must also be in :math:`O(f(n))`.
       Reductions are often used to show that certain problems are at
       least as expensive as sorting, or that certain problems are
-      :term:`NP Complete`.
+      :term:`NP-Complete`.
 
    reference
       A value that enables a program to directly access some
@@ -3423,6 +3474,20 @@ Glossary
       in the set are :term:`comparable` (that is, one can determine
       which of the pair is greater than the other).
 
+   Towers of Hanoi problem
+      A standard example of a recursive algorithm.
+      The problem starts with a stack of disks (each with unique size)
+      stacked decreasing order on the left pole, and two additional
+      poles.
+      The problem is to move the disks to the right pole, with the
+      constraints that only one disk can be moved at a time and a
+      disk may never be on top of a smaller disk.
+      For :math:`n` disks, this problem requires :math:`\Theta(2^n)`
+      moves.
+      The standard solution is to move :math:`n-1` disks to the middle
+      pole, move the bottom disk to the right pole, and then move the
+      :math:`n-1` disks on the middle pole to the right pole.
+
    track
       On a :term:`disk drive`, a concentric circle representing all of
       the :term:`sectors <sector>` that can be viewed by the
@@ -3550,6 +3615,10 @@ Glossary
       same :term:`equivalence class` under some
       :term:`equivalence relation`.
 
+   unsolveable problem
+      A problem that can proved impossible to solve on a computer.
+      The classic example is the :term:`halting problem`.
+
    unsorted list
       A :term:`list` where the records stored in the list can appear
       in any order (as opposed to a :term:`sorted list`).
@@ -3597,7 +3666,7 @@ Glossary
 
    vector
       In set notation, another term for a :term:`sequence`.
-      As a data structure, the term vector usually used as a synonym
+      As a data structure, the term vector usually used as a snyonym
       for a :term:`dynamic array`.
 
    vertex

@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: NP-completeness
 
-NP Completeness
+NP-Completeness
 ===============
 
 Hard Problems
@@ -34,8 +34,8 @@ None of these is what is commonly meant when a computer
 theoretician uses the word "hard".
 Throughout this section, "hard" means that the best-known algorithm
 for the problem is expensive in its running time.
-One example of a hard problem is Towers of
-Hanoi.
+One example of a hard problem is
+:term:`Towers of Hanoi <Towers of Hanoi problem>`.
 It is easy to understand this problem and its solution.
 It is also easy to write a program to solve this problem.
 But, it takes an extremely long time to run for any "reasonably"
@@ -50,8 +50,7 @@ It is even radically different from a problem that takes
 :math:`\Theta(n^4)` time.
 These are all examples of polynomial running time, because the
 exponents for all terms of these equations are constants.
-Recall from Module :numref:`<AnalCompvsAlg>`
-that if we buy a new computer that runs twice as fast,
+If we buy a new computer that runs twice as fast,
 the size of problem with complexity :math:`\Theta(n^4)` that we can
 solve in a certain amount of time is increased by the fourth root of
 two.
@@ -127,7 +126,7 @@ checking it, then you cannot do it in polynomial time in any other way.
 
 The idea of "guessing" the right answer to a problem |---| or checking
 all possible solutions in parallel to determine which is correct |---|
-is called :term:`non-determinism`.
+is a called a :term:`non-deterministic choice`.
 An algorithm that works in this manner is called a
 :term:`non-deterministic algorithm`,
 and any problem with an algorithm that runs on a non-deterministic
@@ -439,7 +438,7 @@ Thus, SAT is NP-hard.
 
 As explained above, to show that a decision problem :math:`X`
 is NP-complete, we prove that :math:`X` is in NP (normally easy, and
-normally done by giving a suitable polynomial-time, nondeterministic
+normally done by giving a suitable polynomial-time, non-deterministic
 algorithm) and then prove that :math:`X` is NP-hard.
 To prove that :math:`X` is NP-hard, we choose a known NP-complete
 problem, say :math:`A`. 
@@ -475,7 +474,7 @@ NP-completeness proof is done.
    **Proof:**
 
    Prove that 3 SAT is in NP:
-   Guess (nondeterministically) truth values for the variables.
+   Guess (non-deterministically) truth values for the variables.
    The correctness of the guess can be verified in polynomial time.
 
    Prove that 3 SAT is NP-hard:

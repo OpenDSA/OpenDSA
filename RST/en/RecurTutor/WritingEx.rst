@@ -5,7 +5,7 @@
 
 .. avmetadata:: 
    :author: Sally Hamouda
-   :prerequisites:
+   :satisfies: recursion writing
    :topic: Recursion
 
 

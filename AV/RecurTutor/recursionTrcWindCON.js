@@ -4,7 +4,7 @@
 // Visualization of the four steps to write a recursive function
 (function ($) {
 
-  var av = new JSAV("RecursionTraceCON2");
+  var av = new JSAV("recursionTrcWindCON");
   
   av.umsg("Suppose function a() has a call to function b().");
   var  pseudo = av.code(" a()\n{ \n  b();  \n}" , {lineNumbers:false , top:0 , left:100}); 

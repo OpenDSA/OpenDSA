@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: NP-completeness
 
-NP Completeness
+NP-Completeness
 ===============
 
 Hard Problems
@@ -34,8 +34,8 @@ None of these is what is commonly meant when a computer
 theoretician uses the word "hard".
 Throughout this section, "hard" means that the best-known algorithm
 for the problem is expensive in its running time.
-One example of a hard problem is Towers of
-Hanoi.
+One example of a hard problem is
+:term:`Towers of Hanoi <Towers of Hanoi problem>`.
 It is easy to understand this problem and its solution.
 It is also easy to write a program to solve this problem.
 But, it takes an extremely long time to run for any "reasonably"
@@ -50,8 +50,7 @@ It is even radically different from a problem that takes
 :math:`\Theta(n^4)` time.
 These are all examples of polynomial running time, because the
 exponents for all terms of these equations are constants.
-Recall from Module :numref:`<AnalCompvsAlg>`
-that if we buy a new computer that runs twice as fast,
+If we buy a new computer that runs twice as fast,
 the size of problem with complexity :math:`\Theta(n^4)` that we can
 solve in a certain amount of time is increased by the fourth root of
 two.
@@ -127,7 +126,7 @@ checking it, then you cannot do it in polynomial time in any other way.
 
 The idea of "guessing" the right answer to a problem |---| or checking
 all possible solutions in parallel to determine which is correct |---|
-is called :term:`non-determinism`.
+is a called a :term:`non-deterministic choice`.
 An algorithm that works in this manner is called a
 :term:`non-deterministic algorithm`,
 and any problem with an algorithm that runs on a non-deterministic
@@ -259,6 +258,8 @@ Another such problem is called K-CLIQUE.
 
    **Output:** YES if there is a complete subgraph of at
    least :math:`k` vertices, and NO otherwise.
+
+.. avembed:: AV/Development/clique.html ss
 
 Nobody knows whether there is a polynomial time solution for
 K-CLIQUE, but if such an algorithm is found for K-CLIQUE *or*
@@ -437,7 +438,7 @@ Thus, SAT is NP-hard.
 
 As explained above, to show that a decision problem :math:`X`
 is NP-complete, we prove that :math:`X` is in NP (normally easy, and
-normally done by giving a suitable polynomial-time, nondeterministic
+normally done by giving a suitable polynomial-time, non-deterministic
 algorithm) and then prove that :math:`X` is NP-hard.
 To prove that :math:`X` is NP-hard, we choose a known NP-complete
 problem, say :math:`A`. 
@@ -460,6 +461,8 @@ NP-completeness proof is done.
    **Output:** YES if the expression can be satisfied, NO
    otherwise.
 
+.. avembed:: AV/Development/sat.html ss
+
 .. topic:: Example
 
    3 SAT is a special case of SAT.
@@ -471,7 +474,7 @@ NP-completeness proof is done.
    **Proof:**
 
    Prove that 3 SAT is in NP:
-   Guess (nondeterministically) truth values for the variables.
+   Guess (non-deterministically) truth values for the variables.
    The correctness of the guess can be verified in polynomial time.
 
    Prove that 3 SAT is NP-hard:
@@ -562,6 +565,8 @@ Next we define the problem VERTEX COVER for use in further examples.
    vertices in :math:`G` of size :math:`k` or less such that every
    edge of :math:`G` has at least one of its endpoints in :math:`S`,
    and NO otherwise.
+
+.. avembed:: AV/Development/vertexcover.html ss
 
 .. topic:: Example
 
@@ -692,3 +697,6 @@ Next we define the problem VERTEX COVER for use in further examples.
    That truth assignment satisfies :math:`B`.
 
    We conclude that K-CLIQUE is NP-hard, therefore NP-complete.
+
+.. avembed:: AV/Development/3satToClique.html ss
+

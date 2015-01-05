@@ -80,8 +80,8 @@ One way to solve PAIRING is to use an existing sorting
 program to sort each of the two sequences, and then pair off
 items based on their position in sorted order.
 Technically we say that in this solution, **PAIRING** is
-:term:`reduced` to SORTING, because **SORTING** is used to solve
-PAIRING.
+:term:`reduced <reduction>` to SORTING, because **SORTING** is used to
+solve PAIRING.
 
 Notice that reduction is a three-step process.
 The first step is to convert an instance of
@@ -130,8 +130,9 @@ lower bound.
 Assume we can go the other way and convert **SORTING** to **PAIRING**
 "fast enough".
 What does this say about the minimum cost of **PAIRING**?
-We know from Module :numref:`<SortingLowerBound>` that the cost of
-**SORTING** in the worst and average cases is
+We know that the
+:ref:`lower bound <sorting lower bound> <SortingLowerBound>`
+for **SORTING** in the worst and average cases is
 in :math:`\Omega(n \log n)`.
 In other words, the best possible algorithm for sorting requires at
 least :math:`n \log n` time.
@@ -164,7 +165,8 @@ half of the pair to tell which position in the sorted array the
 :math:`A` half should take; that is, we can now reorder the records in
 the :math:`A` array using the corresponding value in the :math:`B`
 array as the sort key and running a simple
-:math:`\Theta(n)` Binsort (see Module :numref:`BinSort`).
+:math:`\Theta(n)`
+:ref:`Binsort <Binsort> <BinSort>`.
 The conversion of **SORTING** to **PAIRING** can be done in
 :math:`O(n)` time, and likewise the conversion of the output of
 **PAIRING** can be converted to the correct output for **SORTING** in
@@ -294,11 +296,12 @@ element of the second matrix's first column, then adding the numbers.
 This takes :math:`\Theta(n)` time.
 Each of the :math:`n^2` elements of the solution are computed in
 similar fashion, requiring a total of :math:`\Theta(n^3)` time.
-Faster algorithms are known (see the discussion of Strassen's
-Algorithm in Module :numref:`<Strassen>`,
-but none are so fast as to be in :math:`O(n^2).
+Faster algorithms are known
+(see :ref:`Strassen's algorithm <Strassen's algorithm> <Strassen>`),
+but none are so fast as to be in :math:`O(n^2)`.
 
-Now, consider the case of multiplying two :term:`symmetric matrices`.
+Now, consider the case of multiplying two
+:term:`symmetric matrices <symmetric matrix>`.
 A symmetric matrix is one in which entry :math:`ij` is equal to entry
 :math:`ji`; that is, the upper-right triangle of the matrix is a
 mirror image of the lower-left triangle.

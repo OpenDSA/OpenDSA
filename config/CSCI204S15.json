@@ -912,10 +912,6 @@
           }
         }
       },
-      "Development/Bintree": {
-        "long_name": "Bintrees",
-        "exercises": {}
-      },
       "Binary/Huffman": {
         "long_name": "Huffman Coding Trees",
         "exercises": {

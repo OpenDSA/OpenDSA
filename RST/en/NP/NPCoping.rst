@@ -28,11 +28,12 @@ However, some other problems in NP, while requiring exponential
 time, still grow slowly enough that they allow solutions for
 problems of a useful size.
 
-Consider the Knapsack problem from
-Module :numref:`<DynamicProgramming>`.
-We have a dynamic programming algorithm whose cost is
-:math:`\Theta(nK)` for :math:`n` objects being fit into a knapsack of
-size :math:`K`. 
+Consider the
+:ref:`Knapsack problem <knapsack problem> <DynamicProgramming>`.
+We have a
+:ref:`dynamic programming <dynamic programming> <DynamicProgramming>`
+algorithm whose cost is :math:`\Theta(nK)` for :math:`n` objects being
+fit into a knapsack of size :math:`K`. 
 But it turns out that Knapsack is NP-complete.
 Isn't this a contradiction?
 Not when we consider the relationship between :math:`n` and
@@ -77,10 +78,10 @@ an NP-complete problem, we potentially need to examine all of the
 However, with some organization, we might be able to either examine
 them quickly, or avoid examining a great many of the possible answers
 in some cases.
-For example, Dynamic Programming
-(Module :numref:`<DynamicProgramming>`) attempts 
-to organize the processing of all the subproblems to a problem so that
-the work is done efficiently.
+For example,
+:ref:`dynamic programming <dynamic programming> <DynamicProgramming>`
+attempts to organize the processing of all the subproblems to a
+problem so that the work is done efficiently.
 
 If we need to do a brute-force search of the entire solution space, we
 can use :term:`backtracking` to visit all of the possible solutions
@@ -196,8 +197,8 @@ This is the same as first fit, except that we keep the bins sorted
 from most full to least full.
 Then when deciding where to put the next item, we place it in the
 fullest bin that can hold it.
-This is similar to the "best fit" heuristic for memory management
-discussed in Module :numref:`<BestFit>`.
+This is similar to the :ref:`best fit <best fit> <BestFit>` heuristic
+for :ref:`memory management <dynamic memory allocation> <Dynamic>`.
 The significant thing about this heuristic is not just that it tends
 to give better performance than simple first fit.
 This decreasing first fit heuristic 
@@ -208,9 +209,6 @@ using the heuristic.
 
 The theory of NP-completeness gives a technique for separating
 tractable from (probably) intractable problems.
-Recalling the algorithm for generating algorithms in
-Module :numref:`<BoundLower>`, we can refine it for problems that
-we suspect are NP-complete.
 When faced with a new problem, we might alternate between
 checking if it is tractable (that is, we try to find a polynomial-time
 solution) and checking if it is intractable (we try to prove the

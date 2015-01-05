@@ -1,10 +1,10 @@
 "use strict";
   
 //===============================================================================================================================
-// Visualization of the four steps to write a recursive function
+// Visualization of Domino Effect to Count the number of digits in an integer
 (function ($) {
 
-  var av = new JSAV("RecursionTraceCON7");
+  var av = new JSAV("recursionTrcDmnCntCON");
   var rect = av.g.rect(150, 30, 50, 90).css({"fill": "grey"});
 
   var dot = av.g.circle(270, 75, 2);
