@@ -21,6 +21,38 @@ objects), and setting defaults for configuration parameters.
 Until we get proper documentation, see some of the ``.json`` files in
 the ``AV`` directory for examples.
 
+URL Parameters
+--------------
+
+The client-side framework provides functionality to support easy
+processing of URL paramters in any stand-alone AV or exercise.
+See ``parseURLParams()`` in the
+:ref:`Client-side Development  <Client-sideDevelopment>` section.
+
+Some URL parameters are considered a standard part of the system and
+have built-in support.
+These include the parameters to control the natural language and the
+programming language
+(see :ref:`Internationalization Support <Client-sideDevelopment>`).
+AV/exercise developers can also implement support for their own ad hoc
+URL parameters.
+
+When an AV or exercise is embedded in an OpenDSA module via the
+``avembed`` directive, the URL parameters are controlled by the
+:ref:`configuration process <Configuration>`.
+However, if a third party wishes to call the stand-alone AV or
+exercise directly (perhaps someone will want to embed calls within
+their own HTML pages), URL parameters are invoked as follows.
+
+  <URL>?JXOP-code=java
+
+This one directs the AV to display Java code.
+
+  <URL>?JOP-lang=fi
+
+This one directs the AV to use Finnish for its text.
+
+
 Equations
 ---------
 

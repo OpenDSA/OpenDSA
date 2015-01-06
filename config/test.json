@@ -17,11 +17,40 @@
   "suppress_todo": false,
   "build_cmap": true,
   "glob_exer_options": {
-    "JXOP-debug": "true",
-    "JXOP-code": "none"
+    "JXOP-debug": "true"
   },
   "chapters": {
     "Test": {
+      "AlgAnal/AnalProgram": {
+        "long_name": "Calculating the Running Time of a Program",
+        "sections": {
+          "binsearchpro": {
+            "long_name": "Binary Search Proficiency Exercise",
+            "showhide": "none",
+            "remove": false
+          }
+        },
+        "exercises": {
+          "binarySearchCON": {
+            "long_name": "Binary Search Algorithm Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "binarySearchPRO": {
+            "long_name": "Binary Search Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1.0
+          },
+          "AnalProgramSumm": {
+            "long_name": "Program Code Analysis Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
       "Development/BalancedTree": {
         "long_name": "Balanced Trees",
         "exercises": {}

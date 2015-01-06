@@ -15,12 +15,6 @@
     "Sorting": {
       "Sorting/Mergesort": {
         "long_name": "Mergesort Concepts",
-        "sections": {
-          "MergeSortAnalysis": {
-            "long_name": "Merge Sort Analysis Discussion",
-            "showhide": "none"
-          }
-        },
         "exercises": {
           "mergesortAV": {
             "long_name": "Mergesort Visualization",
