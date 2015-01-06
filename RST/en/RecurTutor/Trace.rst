@@ -10,7 +10,7 @@
    :topic: Recursion
 
 
-.. odsalink:: AV/RecurTutor/recursionTraceCON.css
+.. odsalink:: AV/RecurTutor/recursionTrcCON.css
 
 Tracing a recursive code
 ========================

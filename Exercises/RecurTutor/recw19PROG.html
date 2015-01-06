@@ -15,11 +15,14 @@
   <script src="../../lib/codemirror/lib/codemirror.js"></script>
   <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
   <script src="../../lib/codemirror/mode/clike/clike.js"></script>
+   <script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    mode:  "text/x-java"
+  });
+  </script>     
  
 
-<style>
-    #problemarea { height: 500px;}
-  </style>
 </head>
 
 <body  data-height="650" data-width="950">
@@ -40,13 +43,7 @@
 
 </h4>
  <p></p>
-  <script>
-  var editor = CodeMirror.fromTextArea(codeTextarea, {
-    lineNumbers: true,
-    mode:  "text/x-java"
-  });
-  
-  </script>
+
 <textarea  id="codeTextarea">void stackReversal(Stack s)
 {
 
@@ -65,13 +62,16 @@ public static int popBottom(Stack<Integer> s){
 }
 </textarea></p>
 
+
       <div class="question">
 	
       </div>
       <div class="solution" data-type="custom">
-       <div class="guess"> [ $('#codeTextarea').val() ] </div>
+       <div class="guess"> [ editor.getValue() ] </div>
         <div class="validator-function">
-         
+          window.codeValue = editor.getValue();
+          window.progexType= "recursion";          
+          window.summexName= "recw19PROG";
          //return "openPop";
         </div>
       </div>
@@ -80,6 +80,6 @@ public static int popBottom(Stack<Integer> s){
     </div>
   </div>
 </div>
- 
+
 </body>
 </html>

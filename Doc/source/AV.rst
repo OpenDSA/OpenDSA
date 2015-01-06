@@ -183,15 +183,15 @@ sentence, such as if one slide said "First we do this...", and then
 the following slide replaced it with
 "First we do this, then we do that."
 
-Recursion Programming Exercises
--------------------------------
-To create a recursion programming exercise, you will need to create/modify files on the front-end and others on the back-end:
+Programming Exercises
+---------------------
+To create a programming exercise, you will need to create/modify files on the front-end and others on the back-end:
 
 * Front end:
 
-   1. Go to  OpenDSA/Exercises/RecurTutor
+   1. Go to  OpenDSA/Exercises/ModuleName. ModuleName can be any of the modules in the Exercises directory (e.g. List, Binary, RecurTutor..etc )
    
-   2. Create html file exercisename.html. Note that: the exercise name has to have "rec" in its name to be identified by the back end as a recursion exercise (e.g. "recprogex1.html").
+   2. Create html file exercisename.html. 
    
    3. Open the html file and modify the text of the following tag to have the problem statement::
    
@@ -199,7 +199,7 @@ To create a recursion programming exercise, you will need to create/modify files
    
       e.g. Complete the missing recursive call so that the following function computes something.
 
-   4. Modify the text of to have the code that required to be edited by the student::
+   4. Modify the text of the codeTextarea to have the code that required to be edited by the student::
    
       <textarea  id="codeTextarea">
       
@@ -220,11 +220,16 @@ To create a recursion programming exercise, you will need to create/modify files
        }
    
        }
-   
+   5. Add a DOM variable to specify the programming exercise type (e.g. recursio, BinaryTree, List,..etc)
+      
+      Example::
+      
+      window.progexType= "recursion";    
+      
        
-   5. Open OpenDSA/config/RecurTutor.json
+   6. Open OpenDSA/config/ModuleName.json
    
-   6. Add the exercise in the exercises section as the following example::
+   7. Add the exercise in the exercises section as the following example::
    
       "recprogex1":{   
       "long_name": "Recursion Programming Exercise Number or Description",
@@ -233,22 +238,22 @@ To create a recursion programming exercise, you will need to create/modify files
       "threshold": 1.0}
    
       
-   7. Open OpenDSA/RST/en/RecuTutor/RecursionSkeleton.rst
+   8. Open OpenDSA/RST/en/ModuleName/ModuleName.rst
    
-   8. Add the following line so that the programming exercise appears in the lesson. As the following example::
+   9. Add the following line so that the programming exercise appears in the lesson. As the following example::
     
       .. avembed:: Exercises/RecurTutor/recprogex1.html ka
 
-   9. Build the book on the front end:
+   10. Build the book on the front end:
    
       a. Go to by the command CD OpenDSA/
       
-      b. Run the command: sudo make RecurTutor
+      b. Run the command: sudo make ModuleName
      
 
 * Back end (Unit tests):
 
-   1. Go to OpenDSA-server/ODSA-django/openpop/build/rectest
+   1. Go to OpenDSA-server/ODSA-django/openpop/build/ModuleName
    
    2. Create a directory with the same name as the exercise name created on the front end (e.g. recprogex1)
    

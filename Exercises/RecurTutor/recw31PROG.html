@@ -16,12 +16,15 @@
   <script src="../../lib/codemirror/lib/codemirror.js"></script>
   <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
   <script src="../../lib/codemirror/mode/clike/clike.js"></script>
-  
+  <script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    mode:  "text/x-java"
+  });
+  </script>     
+ 
 
 
-  <style>
-   #problemarea { height: 850px;}
-  </style>
 </head>
 
 
@@ -43,14 +46,9 @@ Old merchants measured many commodities using weights and a two-pan balancea pra
 Given the following recursive function signature, write the function code such that this function find out if a certain target weight can be measured or not<br />
 <p align ="center"> <img src= "../../RST/Images/oldmerch1.png" width="220" height="80"> 
 <img src= "../../RST/Images/oldmerch2.png" width="220" height="80"> </p>
+
+</h4>
 <p></p>
-<script>
-  var editor = CodeMirror.fromTextArea(codeTextarea, {
-    lineNumbers: true,
-    mode:  "text/x-java"
-  });
-  
-  </script>
 <textarea  id="codeTextarea">boolean RecIsMeasurable(int target, Vector<Integer> weights, int index)
 {
 
@@ -69,9 +67,11 @@ Given the following recursive function signature, write the function code such t
 	
       </div>
       <div class="solution" data-type="custom">
-       <div class="guess"> [ $('#codeTextarea').val() ] </div>
+       <div class="guess"> [ editor.getValue() ] </div>
         <div class="validator-function">
-         
+          window.codeValue = editor.getValue();
+          window.progexType= "recursion";
+          window.summexName= "recw31PROG";
          //return "openPop";
         </div>
       </div>
@@ -80,6 +80,6 @@ Given the following recursive function signature, write the function code such t
     </div>
   </div>
 </div>
- 
+
 </body>
 </html>

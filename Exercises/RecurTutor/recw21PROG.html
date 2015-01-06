@@ -16,6 +16,12 @@
   <script src="../../lib/codemirror/lib/codemirror.js"></script>
   <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
   <script src="../../lib/codemirror/mode/clike/clike.js"></script>
+  <script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    mode:  "text/x-java"
+  });
+  </script>     
  
  
 </head>
@@ -35,13 +41,7 @@
 Spherical objects, such as cannonballs, can be stacked to form a pyramid with one cannonball at the top, sitting on top of a square composed of	four cannonballs, sitting on top of a square composed of nine cannonballs, and so forth. Given the following recursive function signature, write the function code such that it takes as its argument the height of a pyramid	of cannonballs and returns the number of cannonballs it contains based on the height of the stack. <br />
 </h4>
 <p></p>
- <script>
-  var editor = CodeMirror.fromTextArea(codeTextarea, {
-    lineNumbers: true,
-    mode:  "text/x-java"
-  });
-  
-  </script>
+ 
 <textarea  id="codeTextarea">int Cannonball(int height){
 		
 
@@ -61,9 +61,11 @@ Spherical objects, such as cannonballs, can be stacked to form a pyramid with on
 	
       </div>
       <div class="solution" data-type="custom">
-       <div class="guess"> [ $('#codeTextarea').val() ] </div>
+       <div class="guess"> [ editor.getValue() ] </div>
         <div class="validator-function">
-         
+          window.codeValue = editor.getValue();
+          window.progexType= "recursion";
+          window.summexName= "recw21PROG";
          //return "openPop";
         </div>
       </div>
@@ -72,6 +74,6 @@ Spherical objects, such as cannonballs, can be stacked to form a pyramid with on
     </div>
   </div>
 </div>
- 
+
 </body>
 </html>

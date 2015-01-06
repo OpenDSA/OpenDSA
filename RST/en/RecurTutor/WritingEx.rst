@@ -13,39 +13,8 @@
 Writing Practice Exercises
 ===============================
 
-.. avembed:: Exercises/RecurTutor/recw19PROG.html ka
+.. avembed:: Exercises/RecurTutor/recWriteSumm1.html ka
 
-.. avembed:: Exercises/RecurTutor/recw20PROG.html ka
+.. avembed:: Exercises/RecurTutor/recWriteSumm2.html ka
 
-.. avembed:: Exercises/RecurTutor/recw21PROG.html ka
-
-
-.. avembed:: Exercises/RecurTutor/recw22PROG.html ka
-
-
-.. avembed:: Exercises/RecurTutor/recw23PROG.html ka
-	
-
-.. avembed:: Exercises/RecurTutor/recw24PROG.html ka
-
-	
-.. avembed:: Exercises/RecurTutor/recw25PROG.html ka	
-	
-		
-.. avembed:: Exercises/RecurTutor/recw26PROG.html ka
-	
-
-.. avembed:: Exercises/RecurTutor/recw27PROG.html ka
-
-
-.. avembed:: Exercises/RecurTutor/recw28PROG.html ka
-
-
-.. avembed:: Exercises/RecurTutor/recw29PROG.html ka
-
-.. avembed:: Exercises/RecurTutor/recw30PROG.html ka
-
-
-
-.. avembed:: Exercises/RecurTutor/recw31PROG.html ka
-
+.. avembed:: Exercises/RecurTutor/recWriteSumm3.html ka

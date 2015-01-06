@@ -546,12 +546,13 @@ function buildAttemptData(correct, attemptNum, attemptContent, timeTaken,
         data = Khan.getSeedInfo();
     }
 
-    var OpenPop_code = typeof $('#codeTextarea').val() !== "undefined" ? $('#codeTextarea').val(): null;
+    var OpenPop_code = typeof codeValue !== "undefined" ? codeValue: null;
     var OpenPop_genlist = typeof generatedList !== "undefined" ? generatedList : null;
     var OpenPop_summexname= typeof summexName !== "undefined" ? summexName : null;
     var OpenPop_checkdefvar= typeof checkdefvar !== "undefined" ? checkdefvar : null;
     var OpenPop_listoftypes= typeof listoftypes !== "undefined" ? listoftypes : null;
-
+    var OpenPop_progexType = typeof progexType !== "undefined" ? progexType: null;
+    
     _.extend(data, {
         key: SESSION_KEY,
         book: BOOK_ID,
@@ -613,7 +614,9 @@ function buildAttemptData(correct, attemptNum, attemptContent, timeTaken,
          
         checkdefvar : OpenPop_checkdefvar,
         
-        listoftypes : OpenPop_listoftypes
+        listoftypes : OpenPop_listoftypes,
+        
+        progexType: OpenPop_progexType
 
     });
 

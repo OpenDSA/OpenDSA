@@ -58,9 +58,11 @@
 	
       </div>
       <div class="solution" data-type="custom">
-       <div class="guess"> [ $('#codeTextarea').val() ] </div>
+      <div class="guess"> [ editor.getValue() ] </div>
         <div class="validator-function">
-            window.summexName=  "recwrc4PROG";
+          window.codeValue = editor.getValue();
+          window.progexType= "recursion";    
+          window.summexName=  "recwrc4PROG";
         </div>
       </div>
       <div class="hints">

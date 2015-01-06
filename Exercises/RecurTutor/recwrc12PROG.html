@@ -52,9 +52,11 @@ return count + //<<Missing a Recursive call>>
 	
       </div>
       <div class="solution" data-type="custom">
-       <div class="guess"> [ $('#codeTextarea').val() ] </div>
+       <div class="guess"> [ editor.getValue() ] </div>
         <div class="validator-function">
-        window.summexName= "recwrc12PROG";
+          window.codeValue = editor.getValue();
+          window.progexType= "recursion";    
+          window.summexName= "recwrc12PROG";
         </div>
       </div>
       <div class="hints">

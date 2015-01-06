@@ -15,15 +15,7 @@ Harder Code Completion Practice Exercises
 ===========================================
 
 
-.. avembed:: Exercises/RecurTutor/rechwrc14PROG.html ka
-
-.. avembed:: Exercises/RecurTutor/rechw2bc15PROG.html ka
-
-.. avembed:: Exercises/RecurTutor/rechwrcra16PROG.html ka
-
-.. avembed:: Exercises/RecurTutor/rechwrc17PROG.html ka
-
-.. avembed:: Exercises/RecurTutor/rechw2bc18PROG.html ka
+.. avembed:: Exercises/RecurTutor/recHrdCodeCompSumm.html ka
 
  
 

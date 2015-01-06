@@ -65,8 +65,9 @@ int temp;
 	
       </div>
       <div class="solution" data-type="custom">
-       <div class="guess"> [ $('#codeTextarea').val() ] </div>
+      <div class="guess"> [ editor.getValue() ] </div>
         <div class="validator-function">
+         window.codeValue = editor.getValue();
          window.checkdefvar =  "True";
          // The first one is already defined in the code so the student should not define more and the others should not be declared at all
          window.listoftypes = "int,double,float,char";

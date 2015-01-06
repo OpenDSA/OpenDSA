@@ -16,7 +16,12 @@
   <script src="../../lib/codemirror/lib/codemirror.js"></script>
   <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
   <script src="../../lib/codemirror/mode/clike/clike.js"></script>
-
+  <script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    mode:  "text/x-java"
+  });
+  </script>     
 
    
 </head>
@@ -34,13 +39,7 @@
       <p class="problem" id = "test"> Given the following recursive function signature, write the function code such that this function takes a string and returns true if it is read the same forwards or back-wards (palindrome) <br />
 </h4>
  <p></p>
-   <script>
-  var editor = CodeMirror.fromTextArea(codeTextarea, {
-    lineNumbers: true,
-    mode:  "text/x-java"
-  });
-  
-  </script>
+ 
 <textarea  id="codeTextarea"> boolean CheckPalindrome(String s)
 {
 		
@@ -51,13 +50,16 @@
 }
 </textarea></p>
 
+
       <div class="question">
 	
       </div>
       <div class="solution" data-type="custom">
-       <div class="guess"> [ $('#codeTextarea').val() ] </div>
+       <div class="guess"> [ editor.getValue() ] </div>
         <div class="validator-function">
-         
+          window.codeValue = editor.getValue();
+          window.progexType= "recursion";
+          window.summexName= "recw22PROG";
          //return "openPop";
         </div>
       </div>
@@ -66,6 +68,6 @@
     </div>
   </div>
 </div>
- 
+
 </body>
 </html>

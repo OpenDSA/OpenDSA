@@ -11,13 +11,16 @@
     window.OpenPopKa = true;
   </script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-  <script src="../../lib/odsaStyle-min.css"></script>
- 
  
   <script src="../../lib/codemirror/lib/codemirror.js"></script>
   <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
   <script src="../../lib/codemirror/mode/clike/clike.js"></script>
-  
+  <script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    mode:  "text/x-java"
+  });
+  </script> 
 
 </head>
 
@@ -43,13 +46,7 @@
     <br />
     </h4>
     <p></p>
- <script>
-  var editor = CodeMirror.fromTextArea(codeTextarea, {
-    lineNumbers: true,
-    mode:  "text/x-java"
-  });
-  
-  </script>
+ 
     <textarea  id="codeTextarea"> boolean Prime(int X,int Y)
 {
   //<<Missing base case condition 1>>
@@ -62,15 +59,16 @@
 	
 	 
 	</textarea></p>
-
+ 
       <div class="question">
 	
       </div>
       <div class="solution" data-type="custom">
-       <div class="guess"> [ $('#codeTextarea').val() ] </div>
+       <div class="guess"> [ editor.getValue() ] </div>
         <div class="validator-function">
-         
-         //return "openPop";
+          window.codeValue = editor.getValue();
+          window.progexType= "recursion";
+          window.summexName= "rechw2bc15PROG";
         </div>
       </div>
       <div class="hints">
@@ -78,6 +76,6 @@
     </div>
   </div>
 </div>
- 
+
 </body>
 </html>
