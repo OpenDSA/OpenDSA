@@ -70,7 +70,7 @@ Seuraavassa on esitetty merge-operaation pseudokoodi::
 
 Seuraavassa on merge-operaation visualisaatio.
 
-.. inlineav:: mergesortCON1 ss
+.. inlineav:: mergesortCON ss
    :output: show
 
 Kokeile seuraavaa merge-operaation lämmittelytehtävää.

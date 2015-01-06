@@ -52,7 +52,7 @@ about three things:
    For each algorithm, we examine the time required for key input
    types.
 
-#. It will each you how to measure the effectiveness of a data
+#. It will teach you how to measure the effectiveness of a data
    structure or algorithm. 
    Only through such measurement can you determine which data
    structure in your toolkit is most appropriate for a new problem.

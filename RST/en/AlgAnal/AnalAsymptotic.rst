@@ -223,7 +223,7 @@ Simplifying Rules
 
 Once you determine the running-time equation for an algorithm,
 it really is a simple matter to derive the big-Oh
-expressionsfrom the equation.
+expressions from the equation.
 You do not need to resort to the formal definitions of asymptotic
 analysis.
 Instead, you can use the following rules to
