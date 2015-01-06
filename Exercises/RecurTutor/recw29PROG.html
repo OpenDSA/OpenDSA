@@ -11,14 +11,17 @@
   </script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
   <script src="../../lib/odsaStyle-min.css"></script>
-  <script src="../../lib/ExAreaPROG.js"> </script>
-  <link rel= "stylesheet" href="../../lib/ExAreaPROG.css" type="text/css">
-  <style>
-  #problemarea { height: 700px;}
-  </style>
+ 
+ 
+  <script src="../../lib/codemirror/lib/codemirror.js"></script>
+  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
+  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
+
+
+  
 </head>
 
-<body  data-height="550" data-width="1000">
+<body  data-height="600" data-width="1000">
   
 <div class="exercise">
   <div class="vars">
@@ -34,7 +37,14 @@
      Given the following recursive function signature, write the function code such that this function takes a string and should return true if the bracketing operators in str are balanced, which means that they are correctly nested and aligned. If the string is not balanced, the method returns false.
  <br />
 </h4>
-
+<p></p>
+  <script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    mode:  "text/x-java"
+  });
+  
+  </script>
 <textarea  id="codeTextarea">boolean isBalanced(String str)
 {
 

@@ -11,12 +11,14 @@
   </script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
   <script src="../../lib/odsaStyle-min.css"></script>
-  <script src="../../lib/ExAreaPROG.js"> </script>
-  <link rel= "stylesheet" href="../../lib/ExAreaPROG.css" type="text/css">
-  
+ 
+  <script src="../../lib/codemirror/lib/codemirror.js"></script>
+  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
+  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
+ 
 </head>
 
-<body  data-height="550" data-width="950">
+<body  data-height="650" data-width="950">
 <div class="exercise">
   <div class="vars">
     <var id="listel1">randRange(0, 99)</var>
@@ -31,6 +33,15 @@
 		  
     <br />
     </h4>
+    <p></p>
+     <script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    mode:  "text/x-java"
+  });
+  
+  </script>
+
     <textarea  id="codeTextarea">int recursiveMin(int numbers[] , int startIndex)
 {
   if(startIndex+1 == numbers.length)

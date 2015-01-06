@@ -10,14 +10,17 @@
     window.OpenPopKa = true;
   </script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-  <script src="../../lib/odsaStyle-min.css"></script>
-  <script src="../../lib/ExAreaPROG.js"> </script>
-  <link rel= "stylesheet" href="../../lib/ExAreaPROG.css" type="text/css">
-   <style>
-   #problemarea { height: 500px;}
-  </style>
+    <script src="../../lib/odsaStyle-min.css"></script>
+ 
+ 
+  <script src="../../lib/codemirror/lib/codemirror.js"></script>
+  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
+  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
+
+
+   
 </head>
-<body  data-height="500" data-width="950">
+<body  data-height="600" data-width="950">
 <div class="exercise">
   <div class="vars">
     <var id="listel1">randRange(0, 99)</var>
@@ -30,7 +33,14 @@
     <div> <!-- Supresses answer box -->
       <p class="problem" id = "test"> Given the following recursive function signature, write the function code such that this function takes a string and returns true if it is read the same forwards or back-wards (palindrome) <br />
 </h4>
-
+ <p></p>
+   <script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    mode:  "text/x-java"
+  });
+  
+  </script>
 <textarea  id="codeTextarea"> boolean CheckPalindrome(String s)
 {
 		
