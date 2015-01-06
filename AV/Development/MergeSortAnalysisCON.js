@@ -40,7 +40,7 @@ $(document).ready(function () {
   };
   
   // Slide 1
-  av.umsg("The analysis of merge sort is straightforward... Consider the following array of 8 elements");
+  av.umsg(interpret("Slide 1"));
   av.displayInit();
   
   // Slide 2
@@ -51,7 +51,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 3
-  av.umsg("Splitting the array into two halves requires 8 units of work");
+  av.umsg(interpret("Slide 3"));
   arr.highlight();
   av.step();
   
@@ -66,7 +66,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 5
-  av.umsg("Splitting the selected array into two halves requires 4 units of work");
+  av.umsg(interpret("Slide 5"));
   arr11.highlight();
   arr.unhighlight();
   av.step();
@@ -81,7 +81,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 7
-  av.umsg("Splitting the selected array into two halves requires 2 units of work");
+  av.umsg(interpret("Slide 7"));
   arr21.highlight();
   arr11.unhighlight();
   av.step();
@@ -96,7 +96,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 9
-  av.umsg("Merging the green highlighted arrays requires 2 units of work");
+  av.umsg(interpret("Slide 9"));
   arr31.css(0, {"background-color": "green"});
   arr32.css(0, {"background-color": "green"});
   av.step();
@@ -116,7 +116,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 11
-  av.umsg("Splitting the selected array into two halves requires 2 units of work");
+  av.umsg(interpret("Slide 11"));
   arr22.highlight();
   av.step();
   
@@ -130,7 +130,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 13
-  av.umsg("Merging the green highlighted arrays requires 2 units of work");
+  av.umsg(interpret("Slide 13"));
   arr33.css(0, {"background-color": "green"});
   arr34.css(0, {"background-color": "green"});
   av.step();
@@ -149,7 +149,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 15
-  av.umsg("Merging the green highlighted arrays requires 4 units of work");
+  av.umsg(interpret("Slide 15"));
   arr21.css([0, 1], {"background-color": "green"});
   arr22.css([0, 1], {"background-color": "green"});
   av.step();
@@ -165,7 +165,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 17
-  av.umsg("Splitting the selected array into two halves requires 4 units of work");
+  av.umsg(interpret("Slide 17"));
   arr12.highlight();
   av.step();
   
@@ -179,7 +179,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 19
-  av.umsg("Splitting the selected array into two halves requires 2 units of work");
+  av.umsg(interpret("Slide 19"));
   arr23.highlight();
   arr12.unhighlight();
   av.step();
@@ -194,7 +194,7 @@ $(document).ready(function () {
   av.step();
   
   //Slide 21
-  av.umsg("Merging the green highlighted arrays requires 2 units of work");
+  av.umsg(interpret("Slide 21"));
   arr35.css(0, {"background-color": "green"});
   arr36.css(0, {"background-color": "green"});
   av.step();
@@ -213,7 +213,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 23
-  av.umsg("Splitting the selected array into two halves requires 2 units of work");
+  av.umsg(interpret("Slide 23"));
   arr24.highlight();
   av.step();
   
@@ -227,7 +227,7 @@ $(document).ready(function () {
   av.step();
   
   //Slide 25
-  av.umsg("Merging the green highlighted arrays requires 2 units of work");
+  av.umsg(interpret("Slide 25"));
   arr37.css(0, {"background-color": "green"});
   arr38.css(0, {"background-color": "green"});
   av.step();
@@ -246,7 +246,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 27
-  av.umsg("Merging the green highlighted arrays requires 4 units of work");
+  av.umsg(interpret("Slide 27"));
   arr23.css([0, 1], {"background-color": "green"});
   arr24.css([0, 1], {"background-color": "green"});
   av.step();
@@ -262,7 +262,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 29
-  av.umsg("Merging the green highlighted arrays requires 8 units of work");
+  av.umsg(interpret("Slide 29"));
   arr11.css([0, 1, 2, 3], {"background-color": "green"});
   arr12.css([0, 1, 2, 3], {"background-color": "green"});
   av.step();
@@ -279,15 +279,15 @@ $(document).ready(function () {
   av.step();
   
   // Slide 31
-  av.umsg("Thus, we have $\\log{n+1}$ levels each of which requires $\\theta(n)$ amount of work");
+  av.umsg(interpret("Slide 31"));
   av.label("|--------------- $\\log{n+1}$---------------|", {"top": "125px", "left": "250px"}).css({'font-size': '16px', "text-align": "center"}).addClass("rotated");
   av.step();
   
   // Slide 32
-  av.umsg("Therefore, the total running time of merge sort is $\\theta(n\\log{n})$");
+  av.umsg(interpret("Slide 32"));
   av.step();
   
   // Slide 33
-  av.umsg("This cost is unaffected by the relative order of the values being sorted, thus this analysis holds for the best, average, and worst cases.");
+  av.umsg(interpret("Slide 33"));
   av.recorded();
 });

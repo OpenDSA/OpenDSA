@@ -20,7 +20,7 @@ $(document).ready(function () {
   };
   
   // Slide 1
-  av.umsg("The first step in heapsort is to heapify the array. This will cost $\\theta(n)$ running time for an array of size $n$.<br> Consider the following structure of a Max Heap");
+  av.umsg(interpret("Slide 1"));
   for (var i = 0; i < numNodes; i++) {
     arr.push(" ");
   }
@@ -30,19 +30,19 @@ $(document).ready(function () {
   av.displayInit();
   
   // Slide 2
-  av.umsg("HeapSort swaps the root node containng the maximum key with the last node in the heap");
+  av.umsg(interpret("Slide 2"));
   bh.css([0, 30], {"background-color": "yellow"});
   av.step();
   
   // Slide 3
-  av.umsg("After swapping, the heap size is reduced by $1$ and the Max-heap property may be violated, accordingly, the array should be re-heapified");
+  av.umsg(interpret("Slide 3"));
   swap(0, 30);
   bh.css(30, {"background-color": "grey"});
   bh.css(0, {"background-color": "red"});
   av.step();
   
   // Slide 4
-  av.umsg("In the worst case, siftdown will push the root node towards the current last position in the heap");
+  av.umsg(interpret("Slide 4"));
   swap(0, 2);
   bh.css(0, {"background-color": "white"});
   bh.css(2, {"background-color": "red"});
@@ -67,24 +67,25 @@ $(document).ready(function () {
   av.step();
   
   // Slide 8
-  av.umsg("This will requires $\\lfloor\\log{i}\\rfloor$ amount of work, where $i$ is the index of the current last position in the heap");
+  av.umsg(interpret("Slide 8"));
   av.step();
   
   // Slide 9
-  av.umsg("Since this process is done till the heap is empty, the total amount of work can be modeled by the following summation");
-  av.label("$\\displaystyle\\sum_{i=1}^{n}\\lfloor\\log{i}\\rfloor$",  {"top": "-20px", "left": "10px"}).css({'font-size': '16px', "text-align": "center"});
+  av.umsg(interpret("Slide 9"));
+  var label = av.label("$\\displaystyle\\sum_{i=1}^{n}\\lfloor\\log{i}\\rfloor$",  {"top": "-20px", "left": "10px"}).css({'font-size': '16px', "text-align": "center"});
   bh.css([29, 30], {"background-color": "white"});
   av.step();
   
   // Slide 10
-  av.umsg("Since most of the heap nodes are located towards the bottom of the heap, the distance from the root to the current last position in the heap will be in most cases $\\lfloor\\log{n}\\rfloor$, thus this summation is bounded by $n\\log{n}$");
+  label.hide();
+  av.umsg(interpret("Slide 10"));
   av.step();
   
   // Slide 11
-  av.umsg("Accordingly, the total running time of heapsort is $\\theta(n+n\\log{n}) = \\theta(n\\log{n})$");
+  av.umsg(interpret("Slide 11"));
   av.step();
   
   // Slide 12
-  av.umsg("If all key values were equal, then Heapsort would cost Θ(n) in be best case because every call to removemax would result in calls to siftdown that complete in constant time because the new root value never swaps with its children.");
+  av.umsg(interpret("Slide 12"));
   av.recorded();
 });

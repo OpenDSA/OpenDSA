@@ -13,22 +13,22 @@ $(document).ready(function () {
   var arr;
   
   // Slide 1
-  av.umsg("Now, We will examine the best case cost.");
+  av.umsg(interpret("Slide 1"));
   av.displayInit();
   
   // Slide 2
-  av.umsg("The best case of insertion sort occurs when the array values are in sorted order from lowest to highest as shown");
+  av.umsg(interpret("Slide 2"));
   arr = av.ds.array([1, 2, 3, 4, 5, 6], {"left" : 10, "top" : 150, "indexed" : true});
   av.step();
   
   // Slide3
   pseudo.show();
-  av.umsg("Every test in the inner for loop will fail immediately and no values will be moved");
+  av.umsg(interpret("Slide 3"));
   pseudo.highlight("loop2");
   av.step();
 
   // Slide4
-  av.umsg("The total number of comparisons will be $n-1$ which is the number of times the outer for loop executes");
+  av.umsg(interpret("Slide 4"));
   pseudo.unhighlight("loop2");
   pseudo.highlight("loop1");
   av.g.rect(320, 230, 50, 20);
@@ -45,6 +45,6 @@ $(document).ready(function () {
   av.step();
   
   //Slide 5
-  av.umsg('And therefore, the best case running time of insertion sort is $\\theta(n)$');
+  av.umsg(interpret("Slide 5"));
   av.recorded();
 });

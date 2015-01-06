@@ -14,18 +14,18 @@ $(document).ready(function () {
   var arr_values = [];
   
   // Slide 1
-  av.umsg("Let's examine Bubble Sort analysis ");
+  av.umsg(interpret("Slide 1"));
   av.displayInit();
   
   // Slide 2
   pseudo.show();
-  av.umsg("The number of comparisons made by the inner for loop on the $i^{th}$ iteration is always $n-i$");
+  av.umsg(interpret("Slide 2"));
   pseudo.highlight("loop");
   av.step();
   
   // Slide 3
   pseudo.unhighlight("loop");
-  av.umsg("Consider the following example of an array with 6 elements");
+  av.umsg(interpret("Slide 3"));
   for (var i = 0; i < 6; i++) {
     arr_values[i] = parseInt(Math.random() * 20, 10);
   }
@@ -33,7 +33,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 4
-  av.umsg("At $i=0$ we have 5 comparisons");
+  av.umsg(interpret("Slide 4"));
   arr.css([0, 1], {"background-color": "#00FA9A"});
   if (arr.value(0) > arr.value(1)) {
     arr.swap(0, 1);
@@ -82,7 +82,7 @@ $(document).ready(function () {
   av.step();
 
   // Slide 9  
-  av.umsg("At $i=1$ we have 4 comparisons");
+  av.umsg(interpret("Slide 9"));
   arr.css([0, 1], {"background-color": "#00FA9A"});
   if (arr.value(0) > arr.value(1)) {
     arr.swap(0, 1);
@@ -122,7 +122,7 @@ $(document).ready(function () {
   av.step();
 
   // Slide 13  
-  av.umsg("At $i=2$ we have 3 comparisons");
+  av.umsg(interpret("Slide 13"));
   arr.css([0, 1], {"background-color": "#00FA9A"});
   if (arr.value(0) > arr.value(1)) {
     arr.swap(0, 1);
@@ -156,7 +156,7 @@ $(document).ready(function () {
   av.step();
 
   // Slide 17  
-  av.umsg("At $i=3$ we have 2 comparisons");
+  av.umsg(interpret("Slide 17"));
   arr.css([0, 1], {"background-color": "#00FA9A"});
   if (arr.value(0) > arr.value(1)) {
     arr.swap(0, 1);
@@ -181,7 +181,7 @@ $(document).ready(function () {
   av.step();
 
   // Slide 20  
-  av.umsg("At $i=4$ we have only 1 comparison");
+  av.umsg(interpret("Slide 20"));
   arr.css([0, 1], {"background-color": "#00FA9A"});
   if (arr.value(0) > arr.value(1)) {
     arr.swap(0, 1);
@@ -194,21 +194,21 @@ $(document).ready(function () {
   
   // Slide 21
   av.clearumsg();
-  av.umsg("The total amount of comparisons will be the surface area of this shape");
+  av.umsg(interpret("Slide 21"));
   av.label("|------------ $n-1$ --------------|",  {"top": "190px", "left": "420px"}).css({'font-size': '16px', "text-align": "center"});
   av.label("|--- $n-1$ ---|",  {"top": "90px", "left": "330px"}).css({'font-size': '16px', "text-align": "center"}).addClass("rotated");
   av.g.line(400, 70, 650, 170);
   av.step();
   
   // Slide 22
-  av.umsg("The total area will be the sum of the areas of the big traingle and the series of (n-1) small traingles");
+  av.umsg(interpret("Slide 22"));
   av.step();
   
   // Slide 23
-  av.umsg("So, the total area is $\\frac{(n-1)(n-1)}{2} + \\frac{(n-1)}{2}$ which gives $\\frac{n(n-1)}{2}$");
+  av.umsg(interpret("Slide 23"));
   av.step();
   
   // Slide 24
-  av.umsg('And therefore, the worst case running time of Bubble sort is $\\theta(n^2)$');
+  av.umsg(interpret("Slide 24"));
   av.recorded();
 });

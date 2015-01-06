@@ -19,34 +19,34 @@ $(document).ready(function () {
   };
   
   // Slide 1
-  av.umsg("Finally, we examine the average case cost.");
+  av.umsg(interpret("Slide 1"));
   av.displayInit();
 
   // Slide 2 
   pseudo.show();
-  av.umsg("When record $i$ is processed, the number of times through the inner for loop depends on how far out of order the record is");
+  av.umsg(interpret("Slide 2"));
   arr = av.ds.array(["0", "1", "...", "i-1", "i", "...", "n-1"], {"left": 300, "top": 20, "indexed": false});
   pseudo.highlight("loop2");
   arr.highlight(4);
   av.step();
   
   //Slide 3
-  av.umsg("The inner for loop is executed once for each value greater than the value of record $i$ that appears in positions $0$ to $i-1$");
+  av.umsg(interpret("Slide 3"));
   arr.css([0, 1, 2, 3], {"background-color": "#00FA9A"});
   av.step();
 
   //Slide 4  
-  av.umsg("To calculate the average cost, we want to determine what is the average number of inversions will be for the record in position $i$");
+  av.umsg(interpret("Slide 4"));
   pseudo.unhighlight("loop2");
   av.step();
 
   //Slide 5  
-  av.umsg("This can be calculated as: ");
+  av.umsg(interpret("Slide 5"));
   var eq = av.label("$\\frac{\\displaystyle\\sum_{j=1}^{i}j}{i}$",  {"top": "-30px", "left": "15px"}).css({'font-size': '16px', "text-align": "left"});
   av.step();
 
   //Slide 6  
-  av.umsg("And since this had to be done for the records from $1$ to $n-1$, then we have the total cost as:");
+  av.umsg(interpret("Slide 6"));
   eq.hide();
   eq = av.label("$\\begin{eqnarray*}\\displaystyle\\sum_{i=1}^{n-1}\\frac{\\displaystyle\\sum_{j=1}^{i}j}{i}\\end{eqnarray*}$", {"top": "-30px", "left": "15px"}).css({'font-size': '16px', "text-align": "left"});
   var label = av.label("|------- $n-1$ --------|",  {"top": "50px", "left": "320px"}).css({'font-size': '20px', "text-align": "center"});
@@ -56,7 +56,7 @@ $(document).ready(function () {
   av.step();
   
   //Slide 7
-  av.umsg("This can be solved as:");
+  av.umsg(interpret("Slide 7"));
   var current_content = eq.text();
   var added_content = "&=&\\displaystyle\\sum_{i=1}^{n-1}\\frac{i+1}{2} \\\\";
   var new_content = insert_equation(current_content, added_content);
@@ -73,7 +73,7 @@ $(document).ready(function () {
   av.step();
   
   //Slide 9
-  av.umsg("Therefore, the average case running time of insertion sort is $\\theta(n^2)$");
+  av.umsg(interpret("Slide 9"));
   pseudo.unhighlight("loop2");
   label.hide();
   av.recorded();

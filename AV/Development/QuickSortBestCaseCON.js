@@ -10,17 +10,17 @@ $(document).ready(function () {
   var av = new JSAV(av_name);
   
   // Slide 1
-  av.umsg("Quicksort's best case occurs when the selected pivot always breaks the array into two equal halves");
+  av.umsg(interpret("Slide 1"));
   av.displayInit();
   
   // Slide 2
-  av.umsg("Let's start with an array of size $n$");
+  av.umsg(interpret("Slide 2"));
   av.g.rect(100, 0, 400, 30);
   av.label("$n$",  {"top": "-18px", "left": "300px"}).css({'font-size': '18px', "text-align": "center"});
   av.step();
   
   // Slide 3
-  av.umsg("The pivot partitions the array into two halves of size $\\frac{n}{2}$ each ... This requires $\\theta(n)$ amount of work");
+  av.umsg(interpret("Slide 3"));
   av.g.rect(100, 80, 400, 30);
   av.g.rect(290, 80, 10, 30);
   av.label("|--------  $< A[pivot]$  --------|",  {"top": "35px", "left": "105px"}).css({'font-size': '1em', "text-align": "center"});
@@ -32,7 +32,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 4
-  av.umsg("For each of the $\\frac{n}{2}$ partitions, the pivot breaks it into two halves of size $\\frac{n}{4}$ each ... This requires $\\theta(n)$ amount of work");
+  av.umsg(interpret("Slide 4"));
   av.g.rect(80, 160, 200, 30);
   av.g.rect(320, 160, 200, 30);
   av.g.rect(175, 160, 10, 30);
@@ -47,7 +47,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 5
-  av.umsg("For each of the $\\frac{n}{4}$ partitions, the pivot breaks it into two halves of size $\\frac{n}{8}$ each ... This requires $\\theta(n)$ amount of work");
+  av.umsg(interpret("Slide 5"));
   av.g.rect(60, 240, 100, 30);
   av.g.rect(180, 240, 100, 30);
   av.g.rect(320, 240, 100, 30);
@@ -72,7 +72,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 6
-  av.umsg("In the last level, we reach $n$ partitions each of size 1 ... This requires $\\theta(n)$ amount of work");
+  av.umsg(interpret("Slide 6"));
   av.label("...",  {"top": "235px", "left": "105px"}).css({'font-size': '32px', "text-align": "center"}).addClass("rotated");
   av.label("...",  {"top": "235px", "left": "225px"}).css({'font-size': '32px', "text-align": "center"}).addClass("rotated");
   av.label("...",  {"top": "235px", "left": "365px"}).css({'font-size': '32px', "text-align": "center"}).addClass("rotated");
@@ -91,7 +91,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 7
-  av.umsg("Thus, at each level, all partition steps for that level do a total of $\\theta(n)$ work, for an overall cost of $\\theta(n\\log{n})$ work when Quicksort finds perfect pivots.");
+  av.umsg(interpret("Slide 7"));
   av.label("|------------------ $\\log{n}$------------------|",
   {"top": "195px", "left": "550px"}).css({'font-size': '16px', "text-align": "center"}).addClass("rotated");
   av.recorded();

@@ -19,11 +19,11 @@ $(document).ready(function () {
   };
   
   // Slide 1  
-  av.umsg("We will illustrate the Sorting Lower bound proof by showing the decision tree that models the processing of InsertionSort on an array of 3 elements XYZ");
+  av.umsg(interpret("Slide 1"));
   av.displayInit();
   
   // Slide 2
-  av.umsg("There are $6$ possible permutations of the array values XYZ, only one of them represents the sorted array");
+  av.umsg(interpret("Slide 2"));
   label_set.push(av.label("XYZ", {"top": "-13px", "left": "395px"}).css({'font-size': '16px',    "text-align": "center"}));
   set.push(av.g.rect(360, 2, 100, 20).css({"fill": "orange", "opacity": "0.5"}));
   set.push(av.g.rect(360, 22, 100, 80));
@@ -31,12 +31,12 @@ $(document).ready(function () {
   av.step();
   
   // Slide 3
-  av.umsg("The first step in insertion sort is to compare the second element Y with the first element X");
+  av.umsg(interpret("Slide 3"));
   label_set.push(av.label("$Y < X?$", {"top": "95px", "left": "390px"}).css({'font-size': '12px', "text-align": "center"}));
   av.step();
   
   // Slide 4
-  av.umsg("If Y is less than X, the two values are swapped, and then we will end up having only $3$ permutations");
+  av.umsg(interpret("Slide 4"));
   var left_branch_1 = av.g.line(360, 100, 300, 140);
   set.push(left_branch_1);
   label_set.push(av.label("Yes", {"top": "90px", "left": "310px"}).css({'font-size': '12px', "text-align": "center"}));
@@ -47,7 +47,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 5
-  av.umsg("If Y is not less than X, no swap will occur and we will end up having only $3$ permutations");
+  av.umsg(interpret("Slide 5"));
   var right_branch_1 = av.g.line(460, 100, 520, 140);
   set.push(right_branch_1);
   label_set.push(av.label("No", {"top": "90px", "left": "485px"}).css({'font-size': '12px', "text-align": "center"}));
@@ -58,17 +58,17 @@ $(document).ready(function () {
   av.step();
   
   // Slide 6
-  av.umsg("Let us assume for the moment that Y is less than X and so the left branch is taken");
+  av.umsg(interpret("Slide 6"));
   left_branch_1.css({"stroke-width": 3, "stroke": "red"});
   av.step();
   
   // Slide 7
-  av.umsg("The third element Z is compared to the second element X");
+  av.umsg(interpret("Slide 7"));
   label_set.push(av.label("$Z < X?$", {"top": "235px", "left": "275px"}).css({'font-size': '12px', "text-align": "center"}));
   av.step();
   
   // Slide 8
-  av.umsg("Again, there are two possibilities. If Z is less than X, then these items should be swapped and we will end up having $2$ permutations");
+  av.umsg(interpret("Slide 8"));
   var left_branch_2 = av.g.line(275, 240, 215, 280);
   set.push(left_branch_2);
   label_set.push(av.label("Yes", {"top": "230px", "left": "225px"}).css({'font-size': '12px', "text-align": "center"}));
@@ -79,7 +79,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 9
-  av.umsg("If Z is not less than X, no swap will occur and we will end up having only $1$ permutation and InsertionSort is complete");
+  av.umsg(interpret("Slide 9"));
   set.push(av.g.line(325, 240, 385, 280));
   label_set.push(av.label("No", {"top": "230px", "left": "350px"}).css({'font-size': '12px', "text-align": "center"}));
   var leaf1 = av.g.rect(360, 280, 50, 20).css({"fill": "green", "opacity": "0.5"});
@@ -88,7 +88,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 10
-  av.umsg("If the left branch was taken, Z is then compared to Y and InsertionSort will be completed regardless of the comparision result");
+  av.umsg(interpret("Slide 10"));
   left_branch_2.css({"stroke-width": 3, "stroke": "red"});
   label_set.push(av.label("$Z < Y?$", {"top": "335px", "left": "190px"}).css({'font-size': '12px',  "text-align": "center"}));
   set.push(av.g.line(190, 340, 130, 380));
@@ -104,7 +104,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 11
-  av.umsg("In the first comparison, if the right branch was taken, the third element Z is then compared to the second element Y");
+  av.umsg(interpret("Slide 11"));
   left_branch_1.css({"stroke-width": 1, "stroke": "black"});
   left_branch_2.css({"stroke-width": 1, "stroke": "black"});
   right_branch_1.css({"stroke-width": 3, "stroke": "red"});
@@ -112,7 +112,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 12
-  av.umsg("If Z is less than Y, the two values are swapped, and then we will end up having only $2$ permutations");
+  av.umsg(interpret("Slide 12"));
   var left_branch_3 = av.g.line(495, 240, 445, 280);
   set.push(left_branch_3);
   label_set.push(av.label("Yes", {"top": "230px", "left": "445px"}).css({'font-size': '12px',  "text-align": "center"}));
@@ -123,7 +123,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 13
-  av.umsg("If Z is not less than Y, no swap will occur and we will end up having only $1$ permutation and InsertionSort is complete");
+  av.umsg(interpret("Slide 13"));
   set.push(av.g.line(545, 240, 595, 280));
   label_set.push(av.label("No", {"top": "230px", "left": "570px"}).css({'font-size': '12px', "text-align": "center"}));
   var leaf4 = av.g.rect(570, 280, 50, 20).css({"fill": "green", "opacity": "0.5"});
@@ -132,7 +132,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 14
-  av.umsg("If the left branch was taken, Z is then compared to X and InsertionSort will be completed regardless of the comparision result");
+  av.umsg(interpret("Slide 14"));
   left_branch_3.css({"stroke-width": 3, "stroke": "red"});
   label_set.push(av.label("$Z < X?$", {"top": "335px", "left": "420px"}).css({'font-size': '12px', "text-align": "center"}));
   set.push(av.g.line(420, 340, 360, 380));
@@ -150,11 +150,11 @@ $(document).ready(function () {
   // Slide 15
   right_branch_1.css({"stroke-width": 1, "stroke": "black"});
   left_branch_3.css({"stroke-width": 1, "stroke": "black"});
-  av.umsg("The cost of the algorithm (In worst, best, and average cases) is determined by the depth of the nodes indicating the number of comparasions required to reach that node");
+  av.umsg(interpret("Slide 15"));
   av.step();
   
   // Slide 16
-  av.umsg("The worst case of the algorithm is determined by the depth of the deepest node(s)");
+  av.umsg(interpret("Slide 16"));
   leaf2.css({"fill": "red", "opacity": "0.5"});
   leaf3.css({"fill": "red", "opacity": "0.5"});
   leaf5.css({"fill": "red", "opacity": "0.5"});
@@ -163,7 +163,7 @@ $(document).ready(function () {
   
   // Slide 17
   hideTree();
-  av.umsg("Each Sorting algorithm has its own decision tree with different maximum depths");
+  av.umsg(interpret("Slide 17"));
   //First Tree
   av.g.rect(150, 10, 50, 20);
   av.g.line(150, 30, 100, 50);
@@ -223,34 +223,34 @@ $(document).ready(function () {
   av.step();
   
   // Slide 18
-  av.umsg("The best algorithm (in the worst case) will be the one with the shallowest deepest node");
+  av.umsg(interpret("Slide 18"));
   var highlighter = av.g.rect(0, 0, 350, 200).css({"fill": "lightblue", "opacity": "0.5"});
   av.step();
   
   // Slide 19
-  av.umsg("The depth of the shallowest deepest node depends in part on the number of nodes in the decision tree");
+  av.umsg(interpret("Slide 19"));
   highlighter.hide();
   n1.css({"fill": "blue", "opacity": "0.5"});
   n2.css({"fill": "blue", "opacity": "0.5"});
   av.step();
   
   // Slide 20
-  av.umsg("The minimum number of nodes that must be in the decision tree for any comparison-based sorting algorithm for $n$ values should be $n!$ since the decision tree must have at least $n!$ leaf nodes, since at least one leaf node will correspond to each input permutation");
+  av.umsg(interpret("Slide 20"));
   av.step();
   
   // Slide 21
-  av.umsg("A tree with $n$ nodes requires a minimum of $\\log n$ levels.");
+  av.umsg(interpret("Slide 21"));
   av.step();
   
   // Slide 22
-  av.umsg("Because there are at least $n!$ nodes in the tree, we know that the tree must have $\\Omega(\\log{n!})$ levels");
+  av.umsg(interpret("Slide 22"));
   av.step();
   
   // Slide 23
-  av.umsg("Accordingly, the decision tree for any comparison-based sorting algorithm must have at least one node that is $\\Omega(n\\log{n})$ levels deep. This deepest node represents the algorithm's worst case.");
+  av.umsg(interpret("Slide 23"));
   av.step();
   
   // Slide 24
-  av.umsg("So in the worst case, any such sorting algorithm must require $\\Omega(n\\log{n})$ comparisons");
+  av.umsg(interpret("Slide 24"));
   av.recorded();
 });

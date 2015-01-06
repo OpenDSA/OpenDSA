@@ -10,11 +10,11 @@ $(document).ready(function () {
   var av = new JSAV(av_name);
 
   // Slide 1
-  av.umsg("QuickSort is a recursive function, accordingly we should end up with a recursive relation to describe its average case running time");
+  av.umsg(interpret("Slide 1"));
   av.displayInit();
   
   // Slide 2
-  av.umsg("For an array of size $n$, the partition function can cause the pivot to be at any position $k$ from $0$ to $n-1$");
+  av.umsg(interpret("Slide 2"));
   av.g.rect(220, 50, 400, 30);
   av.label("|-------------------------------------  $n$  -----------------------------------|",  {"top": "80px", "left": "225px"}).css({'font-size': '14px', "text-align": "center"});
   var pivot = av.g.rect(330, 50, 30, 30);
@@ -23,14 +23,14 @@ $(document).ready(function () {
   av.step();
   
   // Slide 3
-  av.umsg("Accordingly, there will be two recursive calls for the quicksort function, one for the left $k$ elements that will take $T(k)$ time and the other for the right $n-1-k$ elements that will take $T(n-1-k)$ time");
+  av.umsg(interpret("Slide 3"));
   var right_side = av.label("|----------------  $n-1-k$  ---------------|",  {"top": "15px", "left": "370px"}).css({'font-size': '14px', "text-align": "center"});
   var left_side = av.label("|---------- $k$ ----------|", {"top": "15px", "left": "225px"}).css({'font-size': '12px', "text-align": "center"});
   av.step();
   
   // Slide 4
-  av.umsg("Consider the following cases for $k$:");
-  av.umsg("If the pivot ends in position $0$, the total running time will be $cn+T(0)+T(n-1)$, where $cn$ here stands for the cost of the partition step");
+  av.umsg(interpret("Slide 4_1"));
+  av.umsg(interpret("Slide 4_2"));
   pivot.hide();
   pivot = av.g.rect(220, 50, 30, 30);
   index.hide();
@@ -43,7 +43,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 5
-  av.umsg("If the pivot ends in position $1$, the total running time will be $cn+T(1)+T(n-2)$");
+  av.umsg(interpret("Slide 5"));
   pivot.translate(30, 0);
   piv.translate(30, 0);
   index.translate(30, 0);
@@ -54,7 +54,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 6
-  av.umsg("If the pivot ends in position $2$, the total running time will be $cn+T(2)+T(n-3)$");
+  av.umsg(interpret("Slide 6"));
   pivot.translate(30, 0);
   piv.translate(30, 0);
   index.translate(30, 0);
@@ -66,7 +66,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 7
-  av.umsg("If the pivot ends in position $3$, the total running time will be $cn+T(3)+T(n-4)$");
+  av.umsg(interpret("Slide 7"));
   pivot.translate(30, 0);
   piv.translate(30, 0);
   index.translate(30, 0);
@@ -78,7 +78,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 8
-  av.umsg("We make one reasonable simplifying assumption: At each partition step, the pivot is equally likely to end in any position in the array");
+  av.umsg(interpret("Slide 8"));
   pivot.hide();
   pivot = av.g.rect(330, 50, 30, 30);
   piv.hide();
@@ -92,21 +92,21 @@ $(document).ready(function () {
   av.step();
   
   // Slide 9
-  av.umsg("And since we have $n$ positions, therefore the average cost of the recursive calls can be modeled as:");
+  av.umsg(interpret("Slide 9"));
   var eqn = av.label("$$\\frac{1}{n}\\displaystyle\\sum_{k=0}^{n-1}[T(k)+T(n-1-k)]$$",  {"top": "-50px", "left": "0px"}).css({'font-size': '16px', "text-align": "center"});
   av.step();
   
   // Slide 10
-  av.umsg("But also we need to add the cost for the partition and findpivot functions which is $cn$ for some constant $c$");
+  av.umsg(interpret("Slide 10"));
   av.step();
   
   // Slide 11
-  av.umsg("Accordingly, quicksort's average running time can be modeled by the following recurrence:");
+  av.umsg(interpret("Slide 11"));
   eqn.hide();
   eqn = av.label("$$T(n) = cn + \\frac{1}{n}\\displaystyle\\sum_{k=0}^{n-1}[T(k)+T(n-1-k)]$$",  {"top": "-50px", "left": "0px"}).css({'font-size': '16px', "text-align": "center"});
   av.step();
   
   // Slide 12
-  av.umsg("By solving this recurrence, we will have that quicksort's average running time is $\\theta(n\\log{n})$");
+  av.umsg(interpret("Slide 12"));
   av.recorded();
 });

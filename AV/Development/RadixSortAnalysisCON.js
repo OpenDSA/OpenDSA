@@ -15,7 +15,7 @@ $(document).ready(function () {
   var arr_values = [];
   
   // Slide 1
-  av.umsg("Radixsort starts with an input array of $n$ keys with $k$ digits. Here we have $n=12$ and $k=2$");
+  av.umsg(interpret("Slide 1"));
   for (var i = 0; i < 12; i++) {
     arr_values[i] = parseInt(Math.random() * 100 + 1, 10);
   }
@@ -25,12 +25,12 @@ $(document).ready(function () {
   
   // Slide 2
   pseudo.show();
-  av.umsg("The outer loop will be executed $k$ times, one pass for each digit of key values");
+  av.umsg(interpret("Slide 2"));
   pseudo.highlight("loop1");
   av.step();
   
   // Slide 3
-  av.umsg("The first inner loop initializes the count array of size $r$, where $r$ is the base of the key values. This requires $r$ units of work");
+  av.umsg(interpret("Slide 3"));
   pseudo.unhighlight("loop1");
   pseudo.highlight("loop2");
   arr_values = [];
@@ -42,7 +42,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 4
-  av.umsg("The Second inner loop counts the number of keys to be inserted in each bin. This requires a single pass over the input array that takes $n$ units of work");
+  av.umsg(interpret("Slide 4"));
   pseudo.unhighlight("loop2");
   pseudo.highlight("loop3");
   for (i = 0; i < 12; i++) {
@@ -52,7 +52,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 5
-  av.umsg("The third inner loop sets the values in the input array to their proper indices within the output array. This requires a single pass over the count array that takes $r$ units of work");
+  av.umsg(interpret("Slide 5"));
   arr.unhighlight();
   count.highlight();
   pseudo.unhighlight("loop3");
@@ -64,7 +64,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 6
-  av.umsg("The fourth loop assigns the keys from the input array to the bins within the output array according to the indices stored in the count array. This requires $n$ units of work");
+  av.umsg(interpret("Slide 6"));
   count.unhighlight();
   pseudo.unhighlight("loop4");
   pseudo.highlight("loop5");
@@ -78,7 +78,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 7
-  av.umsg("The last inner loop simply copies the keys from the output array back to the input array to be ready for the next pass of the outer loop. This requires $n$ units of work");
+  av.umsg(interpret("Slide 7"));
   pseudo.unhighlight("loop5");
   pseudo.highlight("loop6");
   for (i = 0; i < out.size(); i++) {
@@ -88,7 +88,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 8
-  av.umsg("Since we have $k=2$, the outer loop will be executed once more and all the previous steps are repeated for the leftmost digit (Tens digit)");
+  av.umsg(interpret("Slide 8"));
   pseudo.unhighlight("loop6");
   pseudo.highlight("loop1");
   
@@ -114,16 +114,16 @@ $(document).ready(function () {
   av.step();
   
   // Slide 9
-  av.umsg("At the end, since the outer loop is executed $k$ times and some of the inner loops execute $n$ times, while others are executed $r$ times, we have the total amount of work required is $\\theta(nk + rk)$");
+  av.umsg(interpret("Slide 9"));
   pseudo.unhighlight("loop1");
   pseudo.highlight("loops");
   av.step();
   
   // Slide 10
-  av.umsg("Because $r$ is the size of the base, it might be rather small and it can be treated as a constant. Thus, the total amount of work will be $\\theta(nk)$");
+  av.umsg(interpret("Slide 10"));
   av.step();
   
   // Slide 11
-  av.umsg("In the case of unique key values, we have $k\\geq\\log_{r}{n}$, and thus the total running time of radixsort is $\\Omega(n\\log{n})$");
+  av.umsg(interpret("Slide 11"));
   av.recorded();
 });

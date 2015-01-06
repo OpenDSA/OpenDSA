@@ -17,11 +17,11 @@ $(document).ready(function () {
   var lmoves, rmoves;
   
   // Slide 1
-  av.umsg("To analyze Quicksort, we first analyze the findpivot and partition functions when operating on a subarray of length $k$");
+  av.umsg(interpret("Slide 1"));
   av.displayInit();
   
   // Slide 2
-  av.umsg("Clearly, findpivot takes constant time for any $k$. Here we have $k = 9$");
+  av.umsg(interpret("Slide 2"));
   for (var i = 0; i < 9; i++) {
     arr_values[i] = " ";
   }
@@ -41,7 +41,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 4
-  av.umsg("The total cost of the partition operation is constrained by how far left and right can move inwards");
+  av.umsg(interpret("Slide 4"));
   pointer1 = av.pointer("left", arr.index(0));
   pointer2 = av.pointer("right", arr.index(7),
                              { anchor: "center bottom",
@@ -61,25 +61,25 @@ $(document).ready(function () {
   av.step();
   
   // Slide 5
-  av.umsg("The swap operation in the body of the outer while loop guarantees the movement of left and right at least one step each");
+  av.umsg(interpret("Slide 5"));
   pseudo.unhighlight("loop2");
   pseudo.unhighlight("loop3");
   pseudo.highlight("if");
   av.step();
   
   // Slide 6
-  av.umsg("Thus, the maximum number of times swap can be executed is $\\frac{s-1}{2}$. In this case, left and right will move at most $\\frac{s-1}{2}$ steps each for a total of $s-1$ steps");
+  av.umsg(interpret("Slide 6"));
   av.step();
   
   // Slide 7
-  av.umsg("The first inner while loop can be executed at most $s-1$ times in which case left will end up at the pivot and the outer while loop will end");
+  av.umsg(interpret("Slide 7"));
   pointer1.target(arr.index(8));
   pseudo.unhighlight("if");
   pseudo.highlight("loop2");
   av.step();
   
   // Slide 8
-  av.umsg("The second inner while loop can be executed at most $s-1$ times in which case right will end up at array position $-1$ and the outer while loop will end");
+  av.umsg(interpret("Slide 8"));
   pointer1.target(arr.index(0));
   var a = av.ds.array(["-1"], {"left": 103, "top": 30, "indexed": false});
   pointer2.target(a.index(0));
@@ -88,13 +88,13 @@ $(document).ready(function () {
   av.step();
   
   // Slide 9
-  av.umsg("Accordingly, the outer while loop along with its two inner loops will move left and right a total of $s-1$ steps");
+  av.umsg(interpret("Slide 9"));
   pseudo.highlight("loop2");
   a.hide();
   pointer2.target(arr.index(7));
   av.step();
   
   // Slide 10
-  av.umsg("Thus, the running time of the partition function is $\\theta(s)$, where $s$ is the size of the subarray");
+  av.umsg(interpret("Slide 10"));
   av.recorded();
 });
