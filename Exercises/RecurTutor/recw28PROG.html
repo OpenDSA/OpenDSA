@@ -11,12 +11,16 @@
   </script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
   <script src="../../lib/odsaStyle-min.css"></script>
-  <script src="../../lib/ExAreaPROG.js"> </script>
-  <link rel= "stylesheet" href="../../lib/ExAreaPROG.css" type="text/css">
+  
+  <script src="../../lib/codemirror/lib/codemirror.js"></script>
+  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
+  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
+ 
+
   
 </head>
 
-<body  data-height="550" data-width="1000">
+<body  data-height="600" data-width="1000">
    
 <div class="exercise">
   <div class="vars">
@@ -32,7 +36,14 @@
        Given the following recursive function signature, write the function code such that this function counts the number of inversions in a list of numbers. Example: for the input list 2 9 1 8, the output will be 3 (due to the inversions 2 &gt; 1, 9 &gt; 1, and 9 &gt; 8):
  <br />
 </h4>
-
+<p></p>
+ <script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    mode:  "text/x-java"
+  });
+  
+  </script>
 <textarea  id="codeTextarea">int countInversions(int nums[]){
 
 

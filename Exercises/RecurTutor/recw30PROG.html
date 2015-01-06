@@ -11,11 +11,15 @@
   </script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
   <script src="../../lib/odsaStyle-min.css"></script>
-  <script src="../../lib/ExAreaPROG.js"> </script>
-  <link rel= "stylesheet" href="../../lib/ExAreaPROG.css" type="text/css">
+  
+  <script src="../../lib/codemirror/lib/codemirror.js"></script>
+  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
+  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
+
+
 </head>
 
-<body  data-height="550" data-width="1000">
+<body  data-height="600" data-width="1000">
 
 <div class="exercise">
   <div class="vars">
@@ -29,6 +33,14 @@
     <div> <!-- Supresses answer box -->
       <p class="problem" id = "test"> 
 Write a function that takes two stacks (A and B) as inputs, with some number of integer values in Stack A, and puts these values in sorted (ascending) order into stack B. There is one int variable named temp that you can use. You may declare no other variable. 
+<p></p>
+  <script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    mode:  "text/x-java"
+  });
+  
+  </script>
 <textarea  id="codeTextarea">void stacksort(Stack A, Stack B){
 int temp;
 // Put your code between these lines,do not declare any variables

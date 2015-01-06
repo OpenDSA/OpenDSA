@@ -11,15 +11,20 @@
   </script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
   <script src="../../lib/odsaStyle-min.css"></script>
- <script src="../../lib/ExAreaPROG.js"> </script>
- <link rel= "stylesheet" href="../../lib/ExAreaPROG.css" type="text/css">
+ 
+ 
+  <script src="../../lib/codemirror/lib/codemirror.js"></script>
+  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
+  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
+  
+
   
   <style>
-   #problemarea { height: 700px;}
+   #problemarea { height: 650px;}
   </style>
 </head>
 
-<body  data-height="700" data-width="1100">
+<body  data-height="800" data-width="1100">
    
 <div class="exercise">
   <div class="vars">
@@ -34,6 +39,14 @@
 
 <p class="problem" id = "test"> <p align ="center">
 <img src= "../../RST/Images/PascalTriangle.png" width="150" height="100"> </p>Pascal’s triangle is a useful recursive definition that tells us the coefficients in the expansion of the polynomial (x + a)^n. Each element in the triangle has a coordinate, given by the row it is on and its position in the row (which you could call a column). Every number in Pascals triangle is defined as the sum of the item above it and the item above it and to the left. If there is a position that does not have an entry, we treat it as if we had a 0 there. Given the following recursive function signature, write down the recursive function which takes a row and a column and finds the value at that position in the triangle. Consider that the triangle starts at row 0 and column 0.
+ <p></p>
+ <script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    mode:  "text/x-java"
+  });
+  
+  </script>
 <textarea  id="codeTextarea">int pascal(int row, int column){
 
 

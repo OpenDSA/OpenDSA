@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html data-require="math math-format word-problems spin">
 <head>
   <title> Recursion Programming Exercise 15</title>
@@ -10,18 +11,20 @@
     window.OpenPopKa = true;
   </script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-
   <script src="../../lib/odsaStyle-min.css"></script>
-  <script src="../../lib/ExAreaPROG.js"> </script>
-  <link rel= "stylesheet" href="../../lib/ExAreaPROG.css" type="text/css">
+ 
+ 
+  <script src="../../lib/codemirror/lib/codemirror.js"></script>
+  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
+  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
+  
 
-  <style>
-   #problemarea { height: 600px;}
-  </style>
 </head>
 
 
-<body  data-height="600" data-width="1000">
+
+
+<body  data-height="700" data-width="1000">
 <div class="exercise">
   <div class="vars">
     <var id="listel1">randRange(0, 99)</var>
@@ -39,7 +42,14 @@
       If the number does not evenly divide then we reduce the divisor by 1 and recurse a level deeper.	  
     <br />
     </h4>
-
+    <p></p>
+ <script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    mode:  "text/x-java"
+  });
+  
+  </script>
     <textarea  id="codeTextarea"> boolean Prime(int X,int Y)
 {
   //<<Missing base case condition 1>>

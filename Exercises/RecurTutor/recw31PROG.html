@@ -10,10 +10,14 @@
     window.OpenPopKa = true;
   </script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-
   <script src="../../lib/odsaStyle-min.css"></script>
-  <script src="../../lib/ExAreaPROG.js"> </script>
-  <link rel= "stylesheet" href="../../lib/ExAreaPROG.css" type="text/css">
+ 
+ 
+  <script src="../../lib/codemirror/lib/codemirror.js"></script>
+  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
+  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
+  
+
 
   <style>
    #problemarea { height: 850px;}
@@ -22,7 +26,7 @@
 
 
    
-<body  data-height="850" data-width="1000">
+<body  data-height="1000" data-width="1000">
 <div class="exercise">
   <div class="vars">
     <var id="listel1">randRange(0, 99)</var>
@@ -39,6 +43,14 @@ Old merchants measured many commodities using weights and a two-pan balancea pra
 Given the following recursive function signature, write the function code such that this function find out if a certain target weight can be measured or not<br />
 <p align ="center"> <img src= "../../RST/Images/oldmerch1.png" width="220" height="80"> 
 <img src= "../../RST/Images/oldmerch2.png" width="220" height="80"> </p>
+<p></p>
+<script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    mode:  "text/x-java"
+  });
+  
+  </script>
 <textarea  id="codeTextarea">boolean RecIsMeasurable(int target, Vector<Integer> weights, int index)
 {
 

@@ -12,32 +12,15 @@
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
 
   <script src="../../lib/odsaStyle-min.css"></script>
-  <script src="../../lib/ExAreaPROG.js"> </script>
-  <link rel= "stylesheet" href="../../lib/ExAreaPROG.css" type="text/css">
-  <style>
-#problemarea { height: 550px;}
-    #codeTextarea{
-      width:500px;
-      height:300px;
-    }
-    .textAreaWithLines{
-      font-family:courier;      
-      border:1px solid #000;
-      
-    }
-    .textAreaWithLines textarea,.textAreaWithLines div{
-      border:0px;
-      line-height:120%;
-      height:300px;
-      font-size:12px;
-    }
-    .lineObj{
-      color: #787878 ;
-      background-color: #E8E8E8;
-    }
-  </style>
+ 
+ 
+  <script src="../../lib/codemirror/lib/codemirror.js"></script>
+  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
+  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
+ 
+
 </head>
-<body  data-height="550" data-width="950">
+<body  data-height="600" data-width="950">
    
 <div class="exercise">
   <div class="vars">
@@ -51,7 +34,14 @@
     <div> <!-- Supresses answer box -->
       <p class="problem" id = "test"> Given the following recursive function signature, write the function code such that this function returns the given string in a reverse order. <br />
 </h4>
-
+ <p></p>
+  <script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    mode:  "text/x-java"
+  });
+  
+  </script>
 <textarea  id="codeTextarea"> String ReverseStringRecursive (String str)
 {
 
