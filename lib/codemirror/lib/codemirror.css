@@ -93,9 +93,9 @@ div.CodeMirror-overwrite div.CodeMirror-cursor {}
 
 /* DEFAULT THEME */
 
-.cm-s-default .cm-keyword {color: #708;}
+.cm-s-default .cm-keyword {color: #0D4CC1;}
 .cm-s-default .cm-atom {color: #219;}
-.cm-s-default .cm-number {color: #164;}
+.cm-s-default .cm-number {color: #708;}
 .cm-s-default .cm-def {color: #00f;}
 .cm-s-default .cm-variable,
 .cm-s-default .cm-punctuation,
@@ -103,7 +103,7 @@ div.CodeMirror-overwrite div.CodeMirror-cursor {}
 .cm-s-default .cm-operator {}
 .cm-s-default .cm-variable-2 {color: #05a;}
 .cm-s-default .cm-variable-3 {color: #085;}
-.cm-s-default .cm-comment {color: #a50;}
+.cm-s-default .cm-comment {color: #1A4F06;}
 .cm-s-default .cm-string {color: #a11;}
 .cm-s-default .cm-string-2 {color: #f50;}
 .cm-s-default .cm-meta {color: #555;}
