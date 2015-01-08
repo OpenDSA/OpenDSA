@@ -9,7 +9,7 @@ $(document).ready(function () {
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
-  var l = av.ds.list({nodegap: 30, center: false, left: 210, top: 25});
+  var l = av.ds.list({nodegap: 30, center: false, left: 210, top: 45});
   l.addFirst("null").addFirst(10).addFirst(35).addFirst(8).addFirst(23).addFirst("null");
   l.layout();
   var head = setPointerL("head", l.get(0));
@@ -23,9 +23,9 @@ $(document).ready(function () {
 
   var pseudo_next = av.code($.extend({left: 80, top: 150,
                                       visible: false, lineNumbers: false}, code[0]));
-  var pseudo_prev = av.code($.extend({left: 80, top: 85,
+  var pseudo_prev = av.code($.extend({left: 80, top: 100,
                                       visible: false, lineNumbers: false}, code[1]));
-  var pseudo_pos = av.code($.extend({left: 80, top: 85,
+  var pseudo_pos = av.code($.extend({left: 80, top: 100,
                                      visible: false, lineNumbers: false}, code[2]));
 
   // Slide 1

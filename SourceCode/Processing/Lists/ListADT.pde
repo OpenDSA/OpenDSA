@@ -36,7 +36,7 @@ interface List { // List class ADT
   boolean moveToPos(int pos);
 
   // Return true if current position is at end of the list
-  Boolean isAtEnd();
+  boolean isAtEnd();
 
   // Return the current element
   Object getValue();

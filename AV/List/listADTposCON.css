@@ -1,5 +1,5 @@
 #listADTposCON { 
-  height: 160px;
+  height: 175px;
 }
 
 #listADTposCON .jsavnode {
@@ -14,6 +14,6 @@
   box-shadow: 0 0 0;
 }
 
-.jsavoutput.jsavline{
-  height: 30px;
+#listADTposCON .jsavoutput.jsavline{
+  height: 45px;
 }

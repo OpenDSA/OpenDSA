@@ -55,7 +55,7 @@ jshint:
 min: nomin
 #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
-S15: CS2114 ECE252 CPSC270 CSCI204 CS3114
+S15: CS2114 ECE252 CPSC270 CSCI204 CS3114 RecurTutor
 
 Tutorial: min
 	python $(CONFIG_SCRIPT) config/Tutorial.json
