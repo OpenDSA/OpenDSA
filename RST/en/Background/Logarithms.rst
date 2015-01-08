@@ -102,7 +102,7 @@ and :math:`\log 1.74 < 1`, which is a total of 4 log operations.
 Notes
 -----
 
-.. [#] These properties are the idea behind the slide rule
+.. [#] These properties are the idea behind the slide rule.
        Adding two numbers can be viewed as joining two lengths
        together and measuring their combined length.
        Multiplication is not so easily done.
