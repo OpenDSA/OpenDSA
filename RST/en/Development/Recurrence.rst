@@ -78,9 +78,9 @@ work.
    bound in :math:`O(n^2)`.
    To be more precise, assume that
 
-   .. math:: 
+   .. math::
 
-   {\bf T}(n) \leq n^2.
+     {\bf T}(n) \leq n^2.
 
    We prove this guess is correct by induction.
    In this proof, we assume that :math:`n` is a
