@@ -5,7 +5,16 @@
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-  <script src="../../lib/odsaStyle-min.css"></script>
+  <script src="../../lib/codemirror/lib/codemirror.js"></script>
+  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
+  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
+  <script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    readOnly: true,
+    mode:  "text/x-java"
+  });
+  </script> 
  <style> 
    #problemarea { height: 590px;}
   </style>
@@ -17,17 +26,16 @@
     <div id="problem-type-or-description">
       <p class="question"> 
       Which describes what the printString method below does?
-      <pre>	
-      void printString(String s)
-      {
-	if(s.length()>0)
-	{
-	  printString(s.substring(1));
-	  System.out.print(s.substring(0,1));
-		
-	 }
-       }
-	</pre>
+      <textarea id="codeTextarea" >
+void printString(String s)
+{
+ if(s.length()>0)
+ {
+  printString(s.substring(1));
+  System.out.print(s.substring(0,1));
+  }
+}
+	</textarea>
       </p>
 
       <div class="solution"><var>"It prints s in reverse order."</var></div>

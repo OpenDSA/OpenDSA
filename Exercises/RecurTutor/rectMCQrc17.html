@@ -6,6 +6,19 @@
   <script src="../../lib/jquery-ui.min.js"></script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
   <script src="../../lib/odsaStyle-min.css"></script>
+
+  <script src="../../lib/codemirror/lib/codemirror.js"></script>
+  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
+  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
+  <script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    readOnly: true,
+    mode:  "text/x-java"
+  });
+  </script> 
+ 
+
 </head>
 
 <body  data-height="550" data-width="950">
@@ -14,7 +27,7 @@
     <div id="problem-type-or-description">
       <p class="question"> 
       Consider the following code::
-      <pre>	
+      <textarea id="codeTextarea">
      void superWriteVertical(int number)
      // Postcondition: The digits of the number have been written,
      // stacked vertically. If number is negative, then a negative sign appears on top.
@@ -31,7 +44,7 @@
         System.out.println(number % 10);
       }
      }
-	</pre>
+	</textarea>
      Which call will result in the most recursive calls?
       </p>
 

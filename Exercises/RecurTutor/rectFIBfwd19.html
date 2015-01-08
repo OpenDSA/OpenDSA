@@ -5,7 +5,17 @@
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-  <script src="../../lib/odsaStyle-min.css"></script>
+   
+  <script src="../../lib/codemirror/lib/codemirror.js"></script>
+  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
+  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
+  <script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    readOnly: true,
+    mode:  "text/x-java"
+  });
+  </script> 
   <style> 
    #problemarea { height: 750px;}
   </style>
@@ -47,18 +57,26 @@ function checkAnswer(answer, n) {
     <div id="problem-type-or-description">
       <p class="question"> 
       Consider the following code:
-      <pre>	
-       public void mystery(int n) {
-	 if (n < 0){ System.out.print("-");
-	   mystery(-n);}
-	 else if (n < 10)
-	  System.out.println(n);
-	 else
-	 {int two = n % 100;
-	   System.out.print(two / 10);
-	   System.out.print(two % 10);
-	   mystery(n / 100); } }
-	</pre>
+       <textarea id="codeTextarea">
+public void mystery(int n) {
+  if (n < 0){
+   System.out.print("-");
+   mystery(-n);
+   }
+  
+  else if (n < 10)
+    System.out.println(n);
+  
+  else
+   {
+	int two = n % 100;
+    System.out.print(two / 10);
+    System.out.print(two % 10);
+    mystery(n / 100); 
+    
+    } 
+ }
+	  </textarea>
       What will be the outputs printed when mystery(<var>n</var>)?
       </p>
       <br> <textarea rows="1" cols="20" style="resize:none"  id="answerTextarea" ></textarea></p>

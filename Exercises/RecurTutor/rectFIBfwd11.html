@@ -5,7 +5,19 @@
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-  <script src="../../lib/odsaStyle-min.css"></script>
+  
+  
+  <script src="../../lib/codemirror/lib/codemirror.js"></script>
+  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
+  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
+  <script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    readOnly: true,
+    mode:  "text/x-java"
+  });
+  </script> 
+ 
 </head>
  
 <body  data-height="550" data-width="950">
@@ -30,14 +42,14 @@ function checkAnswer(answer) {
     <div id="problem-type-or-description">
       <p class="question">     
       Consider the following function:
-      <pre> 		
-      void dosomething (int n) {	
-        if(n>0) {
-	 System.out.print(n);
-	 dosomething(n-1);
-	}
-       }
-      </pre>		
+       <textarea id="codeTextarea" >		
+void dosomething (int n) {	
+ if(n>0) {
+  System.out.print(n);
+  dosomething(n-1);
+  }
+}
+      </textarea>		
      What value does dosomething(5) return? (Either write a number, or write "infinite recursion".) </p>
       <br> <textarea rows="1" cols="20" style="resize:none"  id="answerTextarea" ></textarea></p>
       <div class="solution" data-type="custom">

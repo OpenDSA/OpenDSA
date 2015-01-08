@@ -5,7 +5,18 @@
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-  <script src="../../lib/odsaStyle-min.css"></script>
+ 
+  
+  <script src="../../lib/codemirror/lib/codemirror.js"></script>
+  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
+  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
+  <script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    readOnly: true,
+    mode:  "text/x-java"
+  });
+  </script> 
   <style> 
    #problemarea { height: 750px;}
   </style>
@@ -16,22 +27,24 @@
   <div class="problems">
     <div id="problem-type-or-description">
       <p class="question"> What does the following function do?
-      <pre>	
-      public int function(int [] x , int n)
-      { 
-       int t;	
-       if(n==1)	
-	 return x[0];	
-       else
-       {
-	t= function(x, n-1);
-	if(x[n-1] > t)
-	 return x[n-1];
-	else
-	 return t;
-	}
-       }	
-      </pre>
+      <textarea id="codeTextarea" >		
+public int function(int [] x , int n)
+{ 
+  int t;	
+  if(n==1)	
+   return x[0];	
+  else
+  {
+   t= function(x, n-1);
+   
+   if(x[n-1] > t)
+    return x[n-1];
+    
+   else
+    return t;
+  }
+}	
+      </textarea>
       </p>
 
       <div class="solution"><var>"It finds the largest value in x and leaves x unchanged."</var></div>
