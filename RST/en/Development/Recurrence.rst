@@ -80,7 +80,7 @@ work.
 
    .. math::
 
-     {\bf T}(n) \leq n^2
+     {\bf T}(n) \leq n^2.
 
    We prove this guess is correct by induction.
    In this proof, we assume that :math:`n` is a
