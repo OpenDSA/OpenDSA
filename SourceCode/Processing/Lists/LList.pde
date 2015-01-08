@@ -24,8 +24,8 @@ class LList implements List {
 /* *** ODSATag: LListInsert *** */
   // Insert "it" at current position
   boolean insert(Object it) {
-    curr.setnext(new Link(curr.element(), curr.next()));
-    curr.setelement(it);
+    curr.setNext(new Link(curr.element(), curr.next()));
+    curr.setElement(it);
     if (tail == curr) tail = curr.next();  // New tail
     listSize++;
     return true;
@@ -34,8 +34,8 @@ class LList implements List {
   
   // Append "it" to list
   boolean append(Object it) {
-    tail.setnext(new Link(null));
-    tail.setelement(it);
+    tail.setNext(new Link(null));
+    tail.setElement(it);
     tail = tail.next();
     listSize++;
     return true;
@@ -46,9 +46,9 @@ class LList implements List {
   Object remove () {
     if (curr == tail) return null;          // Nothing to remove
     Object it = curr.element();             // Remember value
-    curr.setelement(curr.next().element()); // Pull forward the next element
+    curr.setElement(curr.next().element()); // Pull forward the next element
     if (curr.next() == tail) tail = curr;   // Removed last, move tail
-    curr.setnext(curr.next().next());       // Point around unneeded link
+    curr.setNext(curr.next().next());       // Point around unneeded link
     listSize--;                             // Decrement element count
     return it;                              // Return value
   }

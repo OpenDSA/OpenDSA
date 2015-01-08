@@ -23,29 +23,31 @@ class LList implements List {
   
 /* *** ODSATag: Freelist *** */
   // Insert "it" at current position
-  void insert(Object it) {
-    curr.setnext(Link.get(curr.element(), curr.next())); // Get link
-    curr.setelement(it);
+  boolean insert(Object it) {
+    curr.setNext(Link.get(curr.element(), curr.next())); // Get link
+    curr.setElement(it);
     if (tail == curr) tail = curr.next();    // New tail
     listSize++;
+    return true;
   }
 
   // Append "it" to list
-  void append(Object it) {
-    tail.setnext(Link.get(null, null));
-    tail.setelement(it);
+  boolean append(Object it) {
+    tail.setNext(Link.get(null, null));
+    tail.setElement(it);
     tail = tail.next();
     listSize++;
+    return true;
   }
 
   // Remove and return current element
   Object remove () {
     if (curr == tail) return null;          // Nothing to remove
     Object it = curr.element();             // Remember value
-    curr.setelement(curr.next().element()); // Pull forward the next element
+    curr.setElement(curr.next().element()); // Pull forward the next element
     if (curr.next() == tail) tail = curr;   // Removed last, move tail
     Link tempptr = curr.next();             // Remember the link
-    curr.setnext(curr.next().next());       // Point around unneeded link
+    curr.setNext(curr.next().next());       // Point around unneeded link
     tempptr.release();                      // Release the link
     listSize--;                             // Decrement element count
     return it;                              // Return value
@@ -80,17 +82,15 @@ class LList implements List {
   }
   
   // Move down list to "pos" position
-  void moveToPos(int pos) {
-    if ((pos < 0) || (pos > listSize)) {
-      println("Pos out of range, current position unchanged");
-      return;
-    }
+  boolean moveToPos(int pos) {
+    if ((pos < 0) || (pos > listSize)) return false;
     curr = head.next();
     for(int i=0; i<pos; i++) curr = curr.next();
+    return true;
   }
 
   // Return true if current position is at end of the list
-  Boolean isAtEnd() { return curr == tail; }
+  boolean isAtEnd() { return curr == tail; }
 
   // Return current element value
   Object getValue() {
