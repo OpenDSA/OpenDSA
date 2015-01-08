@@ -20,45 +20,47 @@ class LList implements List {
   
 
 /* *** ODSATag: Dlist *** */
-// Insert "it" at current position
+  // Insert "it" at current position
 /* *** ODSATag: DListInsert *** */
-void insert(Object it) {
-  curr = new Link(it, curr.prev(), curr);
-  curr.prev().setNext(curr);
-  curr.next().setPrev(curr);
-  listSize++;
-}
+  boolean insert(Object it) {
+    curr = new Link(it, curr.prev(), curr);
+    curr.prev().setNext(curr);
+    curr.next().setPrev(curr);
+    listSize++;
+    return true;
+  }
 /* *** ODSAendTag: DListInsert *** */
 
 // Append "it" to list
 /* *** ODSATag: DListAppend *** */
-void append(Object it) {
-  tail.setPrev(new Link(it, tail.prev(), tail));
-  tail.prev().prev().setNext(tail.prev());
-  if (curr == tail) curr = tail.prev();
-  listSize++;
-}
+  boolean append(Object it) {
+    tail.setPrev(new Link(it, tail.prev(), tail));
+    tail.prev().prev().setNext(tail.prev());
+    if (curr == tail) curr = tail.prev();
+    listSize++;
+    return true;
+  }
 /* *** ODSAendTag: DListAppend *** */
 
-// Remove and return current element
+  // Remove and return current element
 /* *** ODSATag: DListRemove *** */
-Object remove() {
-  if (curr == tail) return null;        // Nothing to remove
-  Object it = curr.element();           // Remember value
-  curr.prev().setNext(curr.next());     // Remove from list
-  curr.next().setPrev(curr.prev());
-  curr = curr.next();
-  listSize--;                           // Decrement node count
-  return it;                            // Return value removed
-}
+  Object remove() {
+    if (curr == tail) return null;        // Nothing to remove
+    Object it = curr.element();           // Remember value
+    curr.prev().setNext(curr.next());     // Remove from list
+    curr.next().setPrev(curr.prev());
+    curr = curr.next();
+    listSize--;                           // Decrement node count
+    return it;                            // Return value removed
+  }
 /* *** ODSAendTag: DListRemove *** */
 
 // Move curr one step left; no change if at front
 /* *** ODSATag: DListPrev *** */
-void prev() {
-  if (curr.prev() != head)   // Can't back up from list head
-    curr = curr.prev();
-}
+  void prev() {
+    if (curr.prev() != head)   // Can't back up from list head
+      curr = curr.prev();
+  }
 /* *** ODSAendTag: DListPrev *** */
 
 /* *** ODSAendTag: Dlist *** */
@@ -78,17 +80,15 @@ void prev() {
   }
   
   // Move down list to "pos" position
-  void moveToPos(int pos) {
-    if ((pos < 0) || (pos > listSize)) {
-      println("Pos out of range, current position unchanged");
-      return;
-    }
+  boolean moveToPos(int pos) {
+    if ((pos < 0) || (pos > listSize)) return false;
     curr = head.next();
     for(int i=0; i<pos; i++) curr = curr.next();
+    return true;
   }
 
   // Return true if current position is at end of the list
-  Boolean isAtEnd() { return curr == tail; }
+  boolean isAtEnd() { return curr == tail; }
 
   // Return current element value
   Object getValue() {

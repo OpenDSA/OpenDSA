@@ -71,7 +71,7 @@ class AList implements List {
   }
 
   // Return true if current position is at end of the list
-  Boolean isAtEnd() { return curr == listSize; }
+  boolean isAtEnd() { return curr == listSize; }
 
   // Return the current element
   Object getValue() {

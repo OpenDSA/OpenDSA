@@ -8,9 +8,9 @@ static class Link {         // Singly linked list node with freelist support
   Link(Link inn) { e = null; n = inn; }
 
   Object element() { return e; }           // Return the value
-  void setelement(Object it) { e = it; }   // Set element value
+  Object setElement(Object it) { return e = it; } // Set element value
   Link next() { return n; }                // Return next link
-  void setnext(Link inn) { n = inn; }      // Set next link
+  Link setNext(Link inn) { return n = inn; }      // Set next link
 
   // Extensions to support freelists
   static Link freelist = null;     // Freelist for the class
@@ -21,8 +21,8 @@ static class Link {         // Singly linked list node with freelist support
       return new Link(it, inn);        // Get from "new"
     Link temp = freelist;              // Get from freelist
     freelist = freelist.next();
-    temp.setelement(it);
-    temp.setnext(inn);
+    temp.setElement(it);
+    temp.setNext(inn);
     return temp;
   }
 
