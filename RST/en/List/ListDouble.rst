@@ -72,7 +72,7 @@ The class declaration and the remaining member functions for the
 doubly linked list class are nearly identical to the singly linked
 list version.
 While the code for these methods might be a little longer than their
-singly linked list counterparts (since there is an exra pointer in
+singly linked list counterparts (since there is an extra pointer in
 each node to deal with), they tend to be simpler.
 
 .. inlineav:: dlistInsertCON ss
