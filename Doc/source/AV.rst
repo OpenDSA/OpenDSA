@@ -256,7 +256,7 @@ To create a programming exercise, you will need to create/modify files on the fr
       
       Example::
       
-      window.progexType= "recursion";    
+         window.progexType= "recursion";    
       
        
    6. Open OpenDSA/config/ModuleName.json

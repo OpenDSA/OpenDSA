@@ -21,7 +21,7 @@ that is, it allocates memory for new list elements as needed.
 The following diagram illustrates the linked list concept.
 Here there are three :term:`nodes <node>` that
 are "linked" together.
-Each node had two boxes.
+Each node has two boxes.
 The box on the right holds a link to the next node in the list.
 Notice that the rightmost node has a diagonal slash through its link
 box, signifying that there is no link coming out of this box.

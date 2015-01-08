@@ -1,7 +1,7 @@
 {
   "translations" :{
     "en": {
-      "av_c1": "Another problem is that we have no link to get us to the preceding node (shown in yellow). So we have no way to update its <code>next</code> pointer.",
+      "av_c1": "Another problem is that we have no link to get us to the preceding node (shown in yellow). So we have no easy way to update the yellow node's <code>next</code> pointer.",
       "av_c2": "Often we can get around this problem during deletion by copying the value following the current node (in this case the value 12) back into the current node. Let's look again at the example where we delete value 10.",
       "av_c3": "First we remove the value 10 from the current node.",
       "av_c4": "Now we move the value 12 to the current node.",
