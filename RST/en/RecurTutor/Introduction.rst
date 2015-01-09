@@ -14,7 +14,7 @@ Introduction
 ==========================
 
 An :term:`algorithm` (or a function in a computer program) is
-:term:`recursive <recursion>` if it calls itself to do part of its
+:term:`recursive <recursion>` if it invokes itself to do part of its
 work.
 Recursion makes it possible to solve complex problems using programs
 that are concise, easily understood, and algorithmically efficient.

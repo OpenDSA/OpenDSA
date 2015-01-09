@@ -25,12 +25,12 @@ var setWhite = function (arr, index) {
   pseudo.highlight(3);
   av.step();
   
-  av.umsg("So it goes into the 'else' and make a recursive call to sum, this time passing a value of 2 (which is n - 1, where n is 3 at the time of the call");
+  av.umsg("So it goes into the 'else' and make a recursive call to sum, this time passing a value of 2 (which is n - 1, where n is 3 at the time of the call. It will also pass a copy of the array arr.");
   pseudo.unhighlight(3);
   pseudo.highlight(5);
   av.step();
   
-  av.umsg("The original sum makes a call to sum, passing in the same arr. Notice that n has a value of 2.");
+  av.umsg("The original sum makes a call to sum, passing in a copy of arr. Notice that n has a value of 2.");
   pseudo.unhighlight(5);
   pseudo.highlight(7);
   av.step();
@@ -53,26 +53,26 @@ var setWhite = function (arr, index) {
   pseudo.highlight(4);
   av.step();
   
-  av.umsg("The result returned added to arr[ n - 1 ]. The value of n is 1 , so arr[ n - 1 ] = arr[ 1 - 1 ] = arr[ 0 ] = 2. So, add 0 + 2.");
+  av.umsg("The result returned added to arr[ n - 1 ]. The value of n is 3 , so arr[ n - 1 ] = arr[ 3- 1 ] = arr[ 2 ] = 6. So, add 0 + 6.");
   pseudo.unhighlight(4);
   pseudo.highlight(8);
-  setGreen(arr, 0);
+  setGreen(arr, 2);
   av.step();
-  av.umsg("This is why it's important to have 0 be the base case value. We add 0 to the value at array element 0. Any other value produces an incorrect answer. So, 2 is returned back to the previous call.");
+  av.umsg("This is why it's important to have 0 be the base case value. We add 0 to the value at array element 2. Any other value produces an incorrect answer. So, 6 is returned back to the previous call.");
   av.step();
  
-  av.umsg("Then 2 is added to arr[ n - 1 ] = arr[ 2 - 1 ] = arr[ 1 ] = 4. 2 + 4 is 6, and that's returned back."); 
+  av.umsg("Then 6 is added to arr[ n - 1 ] = arr[ 2 - 1 ] = arr[ 1 ] = 4. So, 6 + 4 is 10, and that's returned back."); 
   pseudo.unhighlight(8);
   pseudo.highlight(8);
-  setWhite(arr,0);
+  setWhite(arr,2);
   setGreen(arr, 1);
   av.step();
   
-  av.umsg("Finally, 6 is stored in smallResult and that will be added to arr[ n - 1 ] = arr[ 3 - 1 ] = arr[ 2 ] = 6, which is 12, and 12 is the final result of the call. That is the answer expected."); 
+  av.umsg("Finally, 10 is stored in smallResult and that will be added to arr[ n - 1 ] = arr[ 1 - 1 ] = arr[ 0 ] = 2, which is 12, and 12 is the final result of the call. That is the answer expected."); 
   pseudo.unhighlight(8);
   pseudo.highlight(8);
   setWhite(arr,1);
-  setGreen(arr, 2);
+  setGreen(arr, 0);
   av.step();
 
   av.recorded();

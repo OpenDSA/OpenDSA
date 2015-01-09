@@ -12,18 +12,11 @@
 
 .. odsalink:: AV/RecurTutor/recursionTrcCON.css
 
-Tracing a recursive code
-========================
-As we have seen in the previous section that to write a recursive code you should think in a top-down manner. The successful way is not to worry about how the recursive call solves the sub-problem. Simply accept that it will solve it correctly, and use this result to in turn correctly solve the original problem. On the other hand, if it is required to read or trace a recursive function you need to think in a bottom-up manner. That means you will need first to evaluate the base case and work backward until reaching the required function call. In this section we will illustarte how can you trace a recursive call.
+Tracing recursive code
+======================
+As we have seen in the previous section that to write a recursive code you should think in a top-down manner. The successful way is not to worry about how the recursive call solves the sub-problem. Simply accept that it will solve it correctly, and use this result to in turn correctly solve the original problem. On the other hand, if it is required to read or trace a recursive function you need to think in a bottom-up manner. That means you will need first to evaluate the base case and work backward until reaching the required function call. In this section we will illustrate how can you trace a recursive call.
 
-Tracing recursive functions is a great way to learn how it behaves. After you
-become comfortable with tracing, you rarely need to trace again. You begin to
-trust that recursion will work.
-When tracing most recursive functions, there is winding and unwinding part.
-The "winding" part occurs as the recursion heads to the base case. The "un-
-winding" part occurs when the recursion returns back to the original call. Most
-people forget there is the "unwinding" phase. The winding and unwinding is
-not really special to recursion. It occurs with any function.
+Tracing recursive functions is a great way to learn how they behave. After you become comfortable with tracing, you will rarely need to trace again. You will begin to develop confidence that recursion will work. When tracing most recursive functions, there are two parts:  winding and unwinding. The "winding" part occurs as the recursion executes towards the base case. The "un-winding" part occurs when the recursion returns back to the original call. Most people forget there is the "unwinding" phase. The winding and unwinding is not really special to recursion. It occurs with any function.
 
 .. inlineav:: recursionTrcWindCON ss
    :output: show 

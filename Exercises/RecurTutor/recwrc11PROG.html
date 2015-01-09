@@ -31,16 +31,16 @@
 
   <div class="problems">
     <div> <!-- Supresses answer box -->
-      <p class="problem" id = "test">  Given the following recursive function write down the missing recursive call such that this function counts the number of digits in an integer.
+      <p class="problem" id = "test">  Given the following recursive function write down the missing recursive call such that this function counts the number of digits in an integer. Given  that digits is initially set to 1 on invoking the recursive function.
 
       <br />
     </h4>
     <p></p>
-    <textarea  id="codeTextarea">int GetDigits(int number, int digits)
+    <textarea  id="codeTextarea">int getDigits(int number, int digits)
 {	
-if (number == 0)
+if (number < 10)
 
-return digits;
+ return digits;
 
 return //<<Missing a Recursive call>>
 }

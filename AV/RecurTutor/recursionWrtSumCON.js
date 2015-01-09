@@ -28,8 +28,8 @@
   av.step();
 
    var labelc = av.label("Third Version", {left: 145, top: 190});
-   var  pseudo3 = av.code("int sum(int arr[],int size)\n{ if ( size == 0 )\n  return 0;\n else\n{\nreturn sum( arr, size - 1 )+ arr[ size - 1 ];\n}", {lineNumbers:false , top:215 , left:150});
-  pseudo3.highlight(6);
+   var  pseudo3 = av.code("int sum(int arr[],int size)\n{ if ( size == 0 )\n  return 0;\n else\n return sum( arr, size - 1 )+ arr[ size - 1 ];\n}", {lineNumbers:false , top:215 , left:150});
+  pseudo3.highlight(5);
   av.step();
 
   av.umsg("Certainly, once you gain more experience with recursive functions, the third version is the preferable version.");

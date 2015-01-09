@@ -9,8 +9,8 @@
    :topic: Recursion
 
 
-Writing a more sophisticated recursive functions
-=====================================================
+Writing a more sophisticated recursive function
+===============================================
 
 Classic recursion involves thinking ”backwards”. Instead of building a solution from nothing, you pretend you are at the solution, and want to take a
 step back and ask how to solve the problem if you were a step back. Here’s an analogy. You are planning a trip from point A to point B. One way to start is
@@ -26,7 +26,7 @@ The following Figure shows how a general structure recursive function looks like
 
 .. codeinclude:: RecurTutor/RecMultBcRc
 
-In some problems, we need to have more than one base case and more than one recursive case. For example, the fibonacci function and the operations done on a tree structure like tree traversal.
+In some problems, we need to have more than one base case and more than one recursive case. 
 
 You need to practice harder recursive functions in order to gain more experience on recursion.
 
