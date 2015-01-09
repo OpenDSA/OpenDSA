@@ -4,10 +4,12 @@
   var pseudo = jsav.code({url: "../../../SourceCode/Processing/Lists/AQueue.pde",
                        lineNumbers: false,
                        startAfter: "/* *** ODSATag: AQueue1 *** */",
-                       endBefore: "/* *** ODSAendTag: AQueue1 *** */"});
+			  endBefore: "/* *** ODSAendTag: AQueue1 *** */"}).hide();
+
   jsav.umsg("Member <code>queueArray</code> holds the queue elements,");
   pseudo.highlight(6);
   jsav.displayInit();
+
   pseudo.unhighlight(6);
   pseudo.highlight(9);
   jsav.umsg("and as usual, the queue constructor allows an optional parameter to set the maximum size of the queue.");

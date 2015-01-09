@@ -447,6 +447,10 @@
             "threshold": 1.0
           },
           "listElementDeleteCON": {
+            "long_name": "List Element Delete",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
           },
           "LstSumm": {
             "long_name": "List Summary Questions",

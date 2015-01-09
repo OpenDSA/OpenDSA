@@ -30,7 +30,7 @@
   cir.value(11, "17");
   var frontP = cir.pointer("front", 8);
   var rearP = cir.pointer("rear", 11);
-  jsav.umsg("The queue after the initial four numbers 20, 5, 12, and 17 have been inserted.");
+  jsav.umsg("A queue with the four numbers 20, 5, 12, and 17 enqueued.");
   jsav.step();
   cir.value(8, " ");
   cir.value(9, " ");
@@ -45,7 +45,7 @@
   rearP.label.hide();
   cir.pointer("front", 10);
   cir.pointer("rear", 2);
-  jsav.umsg("The queue after elements 20 and 5 are deleted, following which 3, 30, and 4 are inserted.");
+  jsav.umsg("The queue after elements 20 and 5 are dequeued, following which 3, 30, and 4 are enqueued.");
   jsav.step();
   jsav.recorded();
 }(jQuery));

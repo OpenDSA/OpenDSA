@@ -37,11 +37,13 @@
   var tail = setPointerR('tail', l.get(1));
   // freelist poitner
   var pfreelist = setPointerL('freelist', nullLabel);
-  jsav.umsg('We will  illustrate using a freelist by performing a series of list operations. Let\'s start from an empty singly list and a \'freelist\' variable pointing to \'null\'');
+  jsav.umsg("We will  illustrate using a freelist by performing a series of list operations. Let's start from an empty singly linked list and a <code>freelist</code> variable pointing to <code>null</code>.");
   jsav.displayInit();
 
   // step 3
-  jsav.umsg('Now insert a newnode with value \'8\' to \'current\' node.');
+  jsav.umsg("Now insert a new node with value 8 to the current node.");
+  jsav.step();
+
   l.add(1, '8');
   l.layout();
   curr.target(l.get(1));
@@ -51,10 +53,10 @@
     left: 15,
     top: -20
   });
-  jsav.umsg('Since the freelist is empty, we must use the <code>new</code> operator to create a new node for insertion.');
+  jsav.umsg("Since the freelist is empty, we must use the <code>new</code> operator to create a new node for insertion.");
   jsav.step();
 
-  jsav.umsg('Here is the list after inserting \'20\', \'6\' and \'12\' into the \'current\' position. So far, we have not been able to take advantage of the freelist.');
+  jsav.umsg("Here is the list after inserting 20, 6 and 12. So far, we have not been able to take advantage of the freelist.");
   l.add(1, '12');
   l.add(2, '6');
   l.add(3, '20');
@@ -62,7 +64,7 @@
   curr.target(l.get(1));
   jsav.step();
 
-  jsav.umsg('Now remove the current node from the list. Set its value to be <code>null</code>. The deleted node is moved to the head of freelist for later reuse.');
+  jsav.umsg("Now remove the current node from the list. Set its value to be <code>null</code>. The deleted node is moved to the head of freelist for later reuse.");
   l.remove(1);
   l.layout();
   nullLabel.hide();
@@ -71,7 +73,7 @@
   pfreelist.target(freelist.get(0));
   jsav.step();
 
-  jsav.umsg('The list after another delete operation on the \'current\' node. Again put the deleted node at the head of the freelist.');
+  jsav.umsg("The list after another delete operation of the current node. Again put the deleted node at the head of the freelist.");
   l.remove(1);
   l.layout();
   freelist.addFirst('null');
@@ -79,7 +81,7 @@
   pfreelist.target(freelist.get(0));
   jsav.step();
 
-  jsav.umsg('Now let\'s insert a node with value \'6\' into \'current\' position again. This time the head node of the freelist is used.');
+  jsav.umsg("Now let's insert a node with value 6 to the current position. This time the head node of the freelist is reused.");
   l.add(1, '6');
   l.layout();
   freelist.remove(0);

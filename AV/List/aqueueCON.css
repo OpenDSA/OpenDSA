@@ -39,16 +39,14 @@
 }
 
 #aqueueVarCON {
-  height: 390px;
+  height: 490px;
 }
 
-#AQueueVarCON .jsavoutput.jsavline {
-  height: 40px;
+#aqueueVarCON .jsavoutput.jsavline {
+  height: 70px;
 }
 
 #aqueueVarCON .jsavcode{
-  border: 1px solid;
-  border-color: white; 
-  top: -10px;
-  width:700px;
+  position: relative;
+  top: 50px;
 }

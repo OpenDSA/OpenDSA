@@ -21,7 +21,7 @@ The right way to think about recursion is to just think about the
 return value that the recursive call gives back.
 Thinking about *how* that answer is computed just gets in the way of
 understanding.
-There a good reasons to understand how recursion is implemented,
+There are good reasons to understand how recursion is implemented,
 but helping you to write recursive functions is not one of them.
 
 Perhaps the most common computer application that uses
