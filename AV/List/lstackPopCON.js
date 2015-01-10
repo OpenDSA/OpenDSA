@@ -25,7 +25,7 @@
   pseudo.highlight(1);
   jsav.displayInit();
   list.get(1).highlight();
-  jsav.umsg("<code>pop</code> points to the first node. Since <code>pop</code> is not equal to <code>null</code>, we proceed.");
+  jsav.umsg("<code>top</code> points to the first node. Since <code>top</code> is not equal to <code>null</code>, we proceed.");
   var topPointer = setPointer("top", list.get(1));
   list.layout();
   pseudo.unhighlight(1);
@@ -34,14 +34,14 @@
   jsav.effects.copyValue(list.get(1), arrIt, 0);
   list.get(1).unhighlight();
   arrIt.highlight(0);
-  jsav.umsg(" Variable \"it\" stores the top nodes' value as it is removed from the stack.");
+  jsav.umsg(" Variable <code>it</code> stores the top node's value as it is removed from the stack.");
   pseudo.unhighlight(2);
   pseudo.highlight(3);
   jsav.step();
 
   arrIt.unhighlight();
   list.get(2).highlight();
-  jsav.umsg("The stack is updated by setting \"top\" to point to the next link in the stack.");
+  jsav.umsg("The stack is updated by setting <code>top</code> to point to the next link in the stack.");
 
   list.remove(1);
   topPointer.target(list.get(1));

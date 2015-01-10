@@ -231,7 +231,7 @@
             "long_name": "Recursion Summary Exercise",
             "required": true,
             "points": 0.0,
-            "threshold": 1.0,
+            "threshold": 5.0,
             "showhide": "Show"
           }
         }
