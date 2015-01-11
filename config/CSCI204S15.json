@@ -391,7 +391,7 @@
             "long_name": "Breakeven Point Exercise",
             "required": false,
             "points": 1,
-            "threshold": 3
+            "threshold": 1
           },
           "LstLnkdSumm": {
             "long_name": "Linked List Summary Exercise",
