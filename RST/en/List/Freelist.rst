@@ -65,7 +65,7 @@ methods ``get`` and ``release``. [#]_
 The ``freelist`` variable declaration uses the keyword ``static``.
 This creates a single variable shared among all instances of the
 ``Link`` nodes.
-In this way, a single freelist shared by all ``Link`` nodes.
+In this way, a single freelist is shared by all ``Link`` nodes.
 
 Note how simple they are, because they need only remove and add an
 element to the front of the freelist, respectively.

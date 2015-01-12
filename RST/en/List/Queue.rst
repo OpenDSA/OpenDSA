@@ -67,7 +67,7 @@ values for ``rear`` are needed to distinguish among the :math:`n+1`
 states.
 However, there are only :math:`n` possible values for ``rear`` unless
 we invent a special case for, say, empty queues.
-This is an example of the :term:`Pigeonhole Principle`
+This is an example of the :term:`Pigeonhole Principle`.
 The Pigeonhole Principle states that, given :math:`n` pigeonholes
 and :math:`n+1` pigeons, when all of the pigeons go into the holes we
 can be sure that at least one hole contains more than one pigeon.
