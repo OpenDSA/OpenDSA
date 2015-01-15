@@ -8,7 +8,6 @@
    :satisfies: information flow in a binary tree
    :topic: Information Flow in a Binary
 
-.. odsalink:: AV/Development/BTCON.css
 
 Binary Trees Information Flow
 =============================
@@ -64,6 +63,9 @@ Practice the collect and retun information flow through the following programmin
 .. avembed:: Exercises/RecurTutor2/btDepthPROG.html ka
  
 .. avembed:: Exercises/RecurTutor2/btSumAllPROG.html ka
+
+.. avembed:: Exercises/RecurTutor2/BinaryTreeWSumm1.html ka
+
 
 .. Todo::
    We'll define a "root-to-leaf path" to be a sequence of nodes in a tree starting with the root node and proceeding
@@ -128,10 +130,6 @@ Practice the collect and retun information flow through the following programmin
 	}
 
 
-.. avembed:: Exercises/RecurTutor2/btCheckValPROG.html ka
-
-
-.. avembed:: Exercises/RecurTutor2/btCntValPROG.html ka
 
 
 .. Todo::

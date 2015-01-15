@@ -9,9 +9,10 @@
    :satisfies: binary tree terminology
    :topic: Binary Trees
 
-.. odsalink:: AV/Development/BinExamp.css
-.. odsalink:: AV/Development/BinDiff.css
-.. odsalink:: AV/Development/FullComp.css
+.. odsalink:: AV/Binary/BinExampCON.css
+.. odsalink:: AV/Binary/BinDiffCON.css
+.. odsalink:: AV/Binary/FullCompCON.css
+
 
 Binary Trees
 ============
@@ -58,21 +59,10 @@ A :term:`leaf node` is any node that has two empty children.
 An :term:`internal node` is
 any node that has at least one non-empty child.
 
-.. _BinExample1:
-
-.. inlineav:: BinExamp dgm
-   :align: justify
-
-   An example binary tree.
-
 .. _BinExample:
 
-.. odsafig:: Images/BinExamp.png
-   :width: 200
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: An example binary tree
+.. inlineav:: BinExampCON dgm
+   :align: justify
 
    A binary tree.
    Node :math:`A` is the root.
@@ -93,21 +83,10 @@ any node that has at least one non-empty child.
    The depth of :math:`I` is 3.
    The height of this tree is 4.
 
-.. _BinDiff1:
-
-.. inlineav:: BinDiff dgm
-   :align: justify
-
-   Two different binary trees.
-
 .. _BinDiff:
 
-.. odsafig:: Images/BinDiff.png
-   :width: 300
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Two different binary trees
+.. inlineav:: BinDiffCON dgm
+   :align: justify
 
    Two different binary trees.
    (a) A binary tree whose root has a non-empty left child.
@@ -135,25 +114,12 @@ In the complete binary tree of height :math:`d`, all levels
 except possibly level :math:`d-1` are completely full.
 The bottom level has its nodes filled in from the left side.
 
-.. _FullComplete1:
-
-.. inlineav:: FullComp dgm
-   :align: justify
-
-   Full and complete binary trees.
-
 .. _FullComplete:
 
-.. odsafig:: Images/FullComp.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Full and complete binary trees
+.. inlineav:: FullCompCON dgm
+   :align: justify
 
    Examples of full and complete binary trees.
-   (a) This tree is full (but not complete).
-   (b) This tree is complete (but not full).
 
 Figure :num:`Figure #FullComplete` illustrates the differences between
 full and complete binary trees. [#]_
@@ -183,9 +149,7 @@ Notes
        trees tend to be wider than full binary trees because each
        level of a complete binary tree is as wide as possible.
 
+.. odsascript:: AV/Binary/BinExampCON.js
+.. odsascript:: AV/Binary/BinDiffCON.js
+.. odsascript:: AV/Binary/FullCompCON.js
 
-Next, we will show how we can view a binary tree as a recursive data structure and the anology between the linked lists and bianry tree in the way recursive data flow is maniplulated.
-
-.. odsascript:: AV/Development/BinExamp.js
-.. odsascript:: AV/Development/BinDiff.js
-.. odsascript:: AV/Development/FullComp.js

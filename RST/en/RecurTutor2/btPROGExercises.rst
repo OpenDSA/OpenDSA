@@ -116,6 +116,9 @@ The third type is Simple collect-and-return traversal problems. This type of pro
  
 .. avembed:: Exercises/RecurTutor2/btSumAllPROG.html ka
 
+.. avembed:: Exercises/RecurTutor2/BinaryTreeWSumm1.html ka
+
+
 .. Todo::
    We'll define a "root-to-leaf path" to be a sequence of nodes in a tree starting with the root node and proceeding
    downward to a leaf (a node with no children). We'll say that an empty tree contains no root-to-leaf paths.     
@@ -178,9 +181,7 @@ The third type is Simple collect-and-return traversal problems. This type of pro
 	System.out.println();
 	}
 
-.. avembed:: Exercises/RecurTutor2/btCheckValPROG.html ka
 
-.. avembed:: Exercises/RecurTutor2/btCntValPROG.html ka
 
 .. Todo::
    CountTrees

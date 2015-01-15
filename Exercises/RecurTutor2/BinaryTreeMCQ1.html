@@ -5,6 +5,19 @@
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  
+  
+  <script src="../../lib/codemirror/lib/codemirror.js"></script>
+  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
+  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
+  <script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    mode:  "text/x-java"
+  });
+  
+  </script>
+
 </head>
 
 <body>
@@ -13,7 +26,7 @@
     <div id="problem-type-or-description">
       <p class="question"> 
       What does the following code describes?
-      <pre>	
+      <textarea id="codeTextarea" >
       void someOrder (BinNode root)
       {
         if(root == null) return;
@@ -21,7 +34,7 @@
         root.printNodeValue();
         someOrder( root.rightNode() ); 
       }
-      </pre>
+      </textarea>
       <div class="solution"><var>"inorder"</var></div>
       <ul class="choices" >
 	<li><var>"preorder"</var></li>

@@ -67,18 +67,11 @@
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "btCheckValPROG": {
-            "long_name": "Binary Tree Check Value Exercise",
+          "BinaryTreeWSumm1": {
+            "long_name": "Binary Tree Check/Count Value Exercise",
             "required": true,
             "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "btCntValPROG": {
-            "long_name": "Binary Tree Count Value Exercise",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
+            "threshold": 2.0,
             "showhide": "Show"
           },
           "btSumAllPROG": {
