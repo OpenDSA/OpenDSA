@@ -391,7 +391,7 @@
             "long_name": "Breakeven Point Exercise",
             "required": false,
             "points": 1,
-            "threshold": 0
+            "threshold": 1
           },
           "LstLnkdSumm": {
             "long_name": "Linked List Summary Exercise",
@@ -447,6 +447,10 @@
             "threshold": 1.0
           },
           "listElementDeleteCON": {
+            "long_name": "List Element Delete",
+            "required": true,
+            "points": 0.1,
+            "threshold": 1.0
           },
           "LstSumm": {
             "long_name": "List Summary Questions",
@@ -2298,4 +2302,3 @@
     }
   }
 }
-
