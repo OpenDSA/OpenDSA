@@ -53,35 +53,28 @@
       "RecurTutor2/BinaryTreeInfFlw": {
         "long_name": "Binary Tree Information Flow",
         "exercises": {
-          "btLeafPROG": {
-            "long_name": "Binary Tree Leaf Count Exercise",
+          "BinaryTreeLDSumm": {
+            "long_name": "Binary Tree Leaf Count/Get Depth Exercise",
             "required": true,
             "points": 0.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "btDepthPROG": {
-            "long_name": "Binary Tree Depth Exercise",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "BinaryTreeWSumm1": {
+          "BinaryTreeValSumm": {
             "long_name": "Binary Tree Check/Count Value Exercise",
             "required": true,
             "points": 0.0,
-            "threshold": 2.0,
+            "threshold": 1.0,
             "showhide": "Show"
           },
-          "btSumAllPROG": {
-            "long_name": "Binary Tree Sum All Exercise",
+          "BinaryTreeSumSumm": {
+            "long_name": "Binary Tree Sum Exercise",
             "required": true,
             "points": 0.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "btIncPROG": {
+          "BinaryTreeIncSumm": {
             "long_name": "Binary Tree Increment Exercise",
             "required": true,
             "points": 0.0,
@@ -93,7 +86,19 @@
      "RecurTutor2/BinaryTreeTrvprob": {
         "long_name": "Binary Tree  Common Traversal Problems",
         "exercises": {}
-      },  
+      }, 
+     "RecurTutor2/BinaryTreeSumm": {
+        "long_name": "Binary Tree Summary Exercises",
+        "exercises": {
+          "BinaryTreeSumm": {
+            "long_name": "Binary Tree Summary Exercises",
+            "required": true,
+            "points": 0.0,
+            "threshold": 3.0,
+            "showhide": "Show"
+          }
+        }
+      },   
      "RecurTutor2/recSorting": {
         "long_name": "Recursive Sorting",
         "exercises": {}

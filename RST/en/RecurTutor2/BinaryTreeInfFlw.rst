@@ -54,17 +54,13 @@ Collect-and-return requires that we communicate information back up the tree to 
       :tag: count
 
 
-
 Practice the collect and retun information flow through the following programming exercises
-
-
-.. avembed:: Exercises/RecurTutor2/btLeafPROG.html ka
  
-.. avembed:: Exercises/RecurTutor2/btDepthPROG.html ka
- 
-.. avembed:: Exercises/RecurTutor2/btSumAllPROG.html ka
+.. avembed:: Exercises/RecurTutor2/BinaryTreeLDSumm.html ka
 
-.. avembed:: Exercises/RecurTutor2/BinaryTreeWSumm1.html ka
+.. avembed:: Exercises/RecurTutor2/BinaryTreeValSumm.html ka
+
+.. avembed:: Exercises/RecurTutor2/BinaryTreeSumSumm.html ka
 
 
 .. Todo::
@@ -170,7 +166,7 @@ Local traversal invloves going to each node in the tree and do some operation. I
 
 Practice the local information flow through the following programming exercises
 
-.. avembed:: Exercises/RecurTutor2/btIncPROG.html ka
+.. avembed:: Exercises/RecurTutor2/BinaryTreeIncSumm.html ka
 
 .. Todo::
    Duplicate
