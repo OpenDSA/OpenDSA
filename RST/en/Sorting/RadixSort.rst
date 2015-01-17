@@ -101,46 +101,48 @@ The following visualization illustrates the process.
 
 .. avembed:: AV/Sorting/radixArrayAV.html ss
 
-And the following visualization illustrates the running time of RadixSort
+.. showhidecontent:: RadixSortAnalysis   
 
-.. inlineav:: RadixSortAnalysisCON ss
-   :output: show
+   This visualization analyzes the running time of RadixSort
 
-**Is it really a reasonable assumption to treat** :math:`k` **as a
-constant?**
-Or is there some relationship between :math:`k` and :math:`n`?
-If the key range is limited and duplicate key values are common,
-there might be no relationship between :math:`k` and :math:`n`.
-To make this distinction more clear, use :math:`N` to denote the
-number of distinct key values used by the :math:`n` records.
-Thus, :math:`N \leq n`.
-Because it takes a minimum of :math:`\log_r N` base :math:`r` digits
-to represent :math:`N` distinct key values, we know that
-:math:`k \geq \log_r N`.
+   .. inlineav:: RadixSortAnalysisCON ss
+      :output: show
 
-Now, consider the situation in which no keys are duplicated.
-If there are :math:`n` unique keys then :math:`n = N`.
-It would require :math:`n` distinct values to represent them.
-So now it takes a minimum of :math:`\log_r n` base :math:`r` digits to
-represent the :math:`n` distinct key values.
-This means that :math:`k \geq \log_r n`.
-Because it requires *at least* :math:`\log n` digits
-to distinguish between the :math:`n` distinct keys
-(within a constant factor |---| meaning, the number of digits is
-:math:`\Omega(\log n)`),
-:math:`k` is in :math:`\Omega(\log n)`.
-**This means that Radix Sort requires**
-:math:`\Omega(n \log n)`  
-**time to process** :math:`n` **distinct key values.**
+   **Is it really a reasonable assumption to treat** :math:`k` **as a
+   constant?**
+   Or is there some relationship between :math:`k` and :math:`n`?
+   If the key range is limited and duplicate key values are common,
+   there might be no relationship between :math:`k` and :math:`n`.
+   To make this distinction more clear, use :math:`N` to denote the
+   number of distinct key values used by the :math:`n` records.
+   Thus, :math:`N \leq n`.
+   Because it takes a minimum of :math:`\log_r N` base :math:`r` digits
+   to represent :math:`N` distinct key values, we know that
+   :math:`k \geq \log_r N`.
 
-Of course the key range could be much bigger
-:math:`\log_r n` bits is merely the best case possible for :math:`n`
-distinct values.
-Thus, the :math:`\log_r n` estimate for :math:`k` could be overly
-optimistic.
-The bottom line of this analysis is that, for the general case of
-:math:`n` distinct key values, Radix Sort is at best a
-:math:`\Omega(n \log n)` sorting algorithm.
+   Now, consider the situation in which no keys are duplicated.
+   If there are :math:`n` unique keys then :math:`n = N`.
+   It would require :math:`n` distinct values to represent them.
+   So now it takes a minimum of :math:`\log_r n` base :math:`r` digits to
+   represent the :math:`n` distinct key values.
+   This means that :math:`k \geq \log_r n`.
+   Because it requires *at least* :math:`\log n` digits
+   to distinguish between the :math:`n` distinct keys
+   (within a constant factor |---| meaning, the number of digits is
+   :math:`\Omega(\log n)`),
+   :math:`k` is in :math:`\Omega(\log n)`.
+   **This means that Radix Sort requires**
+   :math:`\Omega(n \log n)`  
+   **time to process** :math:`n` **distinct key values.**
+
+   Of course the key range could be much bigger
+   :math:`\log_r n` bits is merely the best case possible for :math:`n`
+   distinct values.
+   Thus, the :math:`\log_r n` estimate for :math:`k` could be overly
+   optimistic.
+   The bottom line of this analysis is that, for the general case of
+   :math:`n` distinct key values, Radix Sort is at best a
+   :math:`\Omega(n \log n)` sorting algorithm.
 
 Radix Sort's running time can be much improved (by a constant factor)
 if we make base :math:`r` be as large as possible.

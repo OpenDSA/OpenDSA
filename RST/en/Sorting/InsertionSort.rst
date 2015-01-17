@@ -83,10 +83,10 @@ Now try for yourself to see if you understand how Insertion Sort works.
 
 .. avembed:: Exercises/Sorting/InssortPRO.html ka
 
-.. showhidecontent:: InsertionSortAnalysis
+Insertion Sort Analysis
+-----------------------
 
-   Insertion Sort Analysis
-   -----------------------
+.. showhidecontent:: InsertionSortAnalysis
 
    .. inlineav:: InsertionSortWorstCaseCON ss
       :output: show

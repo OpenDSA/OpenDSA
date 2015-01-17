@@ -91,11 +91,12 @@ Now here is a full proficiency exercise to put it all together.
 
 .. avembed:: AV/Sorting/mergesortPRO.html pe
 
+.. showhidecontent:: MergeSortAnalysis
 
-Here is a visualization that illustrates the running time analysis of Merge Sort.
+   This visualization provides a running time analysis for Merge Sort.
 
-.. inlineav:: MergeSortAnalysisCON ss
-   :output: show
+   .. inlineav:: MergeSortAnalysisCON ss
+      :output: show
 
 .. odsascript:: AV/Sorting/mergesortCON.js
 .. odsascript:: AV/Development/MergeSortAnalysisCON.js

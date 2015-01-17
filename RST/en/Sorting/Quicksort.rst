@@ -184,77 +184,80 @@ Quicksort.
 
 .. avembed:: AV/Sorting/quicksortPRO.html pe
 
-Now we present a visualization illustrating the worst case running time of Quick Sort
+.. showhidecontent:: QuickSortAnalysis
+
+   This visualization explains the worst-case running time of Quick Sort
    
-.. inlineav:: QuickSortWorstCaseCON ss
-   :output: show
+   .. inlineav:: QuickSortWorstCaseCON ss
+      :output: show
    
-This is terrible, no better than Bubble Sort.
-When will this worst case occur?
-Only when each pivot yields a bad partitioning of the array.
-If the pivot values are selected at random, then this is extremely
-unlikely to happen.
-When selecting the middle position of the current subarray, it is
-still unlikely to happen.
-It does not take many good partitionings for Quicksort to
-work fairly well.
+   This is terrible, no better than Bubble Sort.
+   When will this worst case occur?
+   Only when each pivot yields a bad partitioning of the array.
+   If the pivot values are selected at random, then this is extremely
+   unlikely to happen.
+   When selecting the middle position of the current subarray, it is
+   still unlikely to happen.
+   It does not take many good partitionings for Quicksort to
+   work fairly well.
 
-Here is a visualization illustrating the Best case running time of Quick Sort
+   This visualization explains the best-case running time of Quick Sort
 
-.. inlineav:: QuickSortBestCaseCON ss
-   :output: show
+   .. inlineav:: QuickSortBestCaseCON ss
+      :output: show
 
-Quicksort's average-case behavior falls somewhere
-between the extremes of worst and best case.
-Average-case analysis considers the cost for all possible arrangements
-of input, summing the costs and dividing by the number of cases.
-We make one reasonable simplifying assumption:
-At each partition step, the pivot is
-equally likely to end in any position in the (sorted) array.
-In other words, the pivot is equally likely to break an array into
-partitions of sizes 0 and :math:`n-1`, or 1 and :math:`n-2`, and so
-on.
+   Quicksort's average-case behavior falls somewhere
+   between the extremes of worst and best case.
+   Average-case analysis considers the cost for all possible arrangements
+   of input, summing the costs and dividing by the number of cases.
+   We make one reasonable simplifying assumption:
+   At each partition step, the pivot is
+   equally likely to end in any position in the (sorted) array.
+   In other words, the pivot is equally likely to break an array into
+   partitions of sizes 0 and :math:`n-1`, or 1 and :math:`n-2`, and so
+   on.
 
-Given this assumption, the average-case cost is computed from the
-following equation:
+   Given this assumption, the average-case cost is computed from the
+   following equation:
 
-.. math::
+   .. math::
 
-   {\bf T}(n) = cn + \frac{1}{n}\sum_{k=0}^{n-1}[{\bf T}(k) +
-   {\bf T}(n - 1 - k)],
-   \quad {\bf T}(0) = {\bf T}(1) = c.
+      {\bf T}(n) = cn + \frac{1}{n}\sum_{k=0}^{n-1}[{\bf T}(k) +
+      {\bf T}(n - 1 - k)],
+      \quad {\bf T}(0) = {\bf T}(1) = c.
 
-Here is a visualization that will help you understand how this recurrence relation was formed
+   This visualization will help you to understand how this recurrence
+   relation was formed.
 
-.. inlineav:: QuickSortAverageCaseCON ss
-   :output: show
+   .. inlineav:: QuickSortAverageCaseCON ss
+      :output: show
 
-This is an unusual situation that the average case cost and the worst
-case cost have asymptotically different growth rates.
-Consider what "average case" actually means.
-We compute an average cost for inputs of size :math:`n` by summing up
-for every possible input of size :math:`n` the product of the running
-time cost of that input times the probability that that input will
-occur.
-To simplify things, we assumed that every permutation is equally
-likely to occur.
-Thus, finding the average means summing up the cost for every
-permutation and dividing by the number of permuations
-(which is :math:`n!`).
-We know that some of these :math:`n!` inputs cost :math:`O(n^2)`.
-But the sum of all the permutation costs has to be
-:math:`(n!)(O(n \log n))`. 
-Given the extremely high cost of the worst inputs, there must be
-very few of them.
-In fact, there cannot be a constant fraction of the inputs with cost
-:math:`O(n^2)`.
-If even, say, 1% of the inputs have cost :math:`O(n^2)`, this would
-lead to an average cost of :math:`O(n^2)`.
-Thus, as :math:`n` grows, the fraction of inputs with high cost must
-be going toward a limit of zero.
-We can conclude that Quicksort will run fast if
-we can avoid those very few bad input permutations.
-This is why picking a good pivot is so important.
+   This is an unusual situation that the average case cost and the worst
+   case cost have asymptotically different growth rates.
+   Consider what "average case" actually means.
+   We compute an average cost for inputs of size :math:`n` by summing up
+   for every possible input of size :math:`n` the product of the running
+   time cost of that input times the probability that that input will
+   occur.
+   To simplify things, we assumed that every permutation is equally
+   likely to occur.
+   Thus, finding the average means summing up the cost for every
+   permutation and dividing by the number of permuations
+   (which is :math:`n!`).
+   We know that some of these :math:`n!` inputs cost :math:`O(n^2)`.
+   But the sum of all the permutation costs has to be
+   :math:`(n!)(O(n \log n))`. 
+   Given the extremely high cost of the worst inputs, there must be
+   very few of them.
+   In fact, there cannot be a constant fraction of the inputs with cost
+   :math:`O(n^2)`.
+   If even, say, 1% of the inputs have cost :math:`O(n^2)`, this would
+   lead to an average cost of :math:`O(n^2)`.
+   Thus, as :math:`n` grows, the fraction of inputs with high cost must
+   be going toward a limit of zero.
+   We can conclude that Quicksort will run fast if
+   we can avoid those very few bad input permutations.
+   This is why picking a good pivot is so important.
 
 The running time for Quicksort can be improved (by a constant factor),
 and much study has gone into optimizing this algorithm.
