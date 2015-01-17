@@ -991,6 +991,12 @@
       },
       "Sorting/InsertionSort": {
         "long_name": "Insertion Sort",
+        "sections": {
+          "InsertionSortAnalysis": {
+            "long_name": "Insertion Sort Analysis Discussion",
+            "showhide": "show"
+          }
+        },
         "exercises" : {
           "insertionsortS1CON": {
             "long_name": "Insertion Sort Slideshow 1",
