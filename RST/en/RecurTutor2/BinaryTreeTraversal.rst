@@ -10,7 +10,6 @@
 
 .. odsalink:: AV/Binary/BinExampCON.css
 .. odsalink:: AV/Binary/BTCON.css
-.. odsalink:: AV/Binary/BinRecDSCON.css
 
 Binary Tree Traversal
 ======================
@@ -300,4 +299,3 @@ Here are some exercises to practice the traversals.
 .. odsascript:: AV/Binary/inorderCON.js
 .. odsascript:: AV/Binary/preorderCON.js
 .. odsascript:: AV/Binary/postorderCON.js
-.. odsascript:: AV/Binary/BinRecDSCON.js

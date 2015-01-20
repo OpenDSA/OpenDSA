@@ -21,12 +21,18 @@
       },
       "RecurTutor2/BinaryTree": {
         "long_name": "Binary Tree",
-        "exercises": {}
+        "exercises": {
+          "SumBinaryTreeCON": {
+            "long_name": "Sum values in a Binary Tree Traversal Slide Show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.90
+          }
+         }
 
       },"RecurTutor2/recDataStr": {
         "long_name": "Binary Tree as a Recursive Data Structure",
-        "exercises": {
-        }
+        "exercises": {}
       },
       "RecurTutor2/BinaryTreeTraversal": {
         "long_name": "Binary Trees Traversal",

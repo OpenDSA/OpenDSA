@@ -1,0 +1,19 @@
+#BinRecDSCON .jsavcanvas {
+ height: 180px;
+}
+
+#ListRecDSCON .jsavcanvas {
+ height: 100px;
+}
+
+#SumBinaryTreeCON .jsavcanvas {
+ height: 200px;
+}
+
+#SumBinaryTreeCON .jsavlabel { 
+width: 100px;
+height: 100px;
+color: blue;
+background-image: url(Icons/person.png);
+background-size: cover;
+}
