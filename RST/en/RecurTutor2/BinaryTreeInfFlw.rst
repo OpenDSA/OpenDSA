@@ -29,7 +29,7 @@ We can categorize the type of information flow in  a binary tree into the follow
  #. Collect-and-return
  #. Local
  #. Guided
- #. Multiple
+ 
 
 Some problems might include features from multiple types of those categories.
 
@@ -251,10 +251,9 @@ Practice the guided information flow through the following programming exercises
 
 
 
-Multiple Trees
---------------
 
-This type of problems involves information flow between more than one tree. In that typr of information flow, you need more than one tree to exchange information among each others.
+
+This type of problems involves information flow between more than one tree. In that type of information flow, you need more than one tree to exchange information among each others.
 
 .. Todo::
    Swape Trees Values

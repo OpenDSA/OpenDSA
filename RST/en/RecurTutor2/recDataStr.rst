@@ -8,18 +8,39 @@
    :satisfies: binary tree as a recursive data Structures
    :topic: Binary Tree as a Recursive Data Structures
 
+.. odsalink:: AV/RecurTutor2/BinRecDSCON.css
+.. odsalink:: AV/RecurTutor2/ListRecDSCON.css
+
 Binary Tree as a Recursive Data Structure
 =========================================
 
-Recursive data structure is a data structure that is partially composed of smaller or simpler instances of the same data structure where the relationships identified by the structure provides a natural model for the recursive algorithm to work with that data. For example, lists and binary trees could be viewed as a recursive data structures. List is a recursive data structure because a list can be defined as an empty list or a node followed by a list. While, binary tree can be defined as an empty tree or a node pointing to two binary trees one on its right and the other one on its left. So, recursion is ideally suited to recursive data structures like lists and binary trees.
+Recursive data structure is a data structure that is partially composed of smaller or simpler
+instances of the same data structure where the relationships identified by the structure 
+provides a natural model for the recursive algorithm to work with that data. 
+For example, lists and binary trees could be viewed as a recursive data structures. 
+List is a recursive data structure because a list can be defined as an empty list or a node 
+followed by a list. While, binary tree can be defined as an empty tree or a node 
+pointing to two binary trees one on its right and the other one on its left. 
+So, recursion is ideally suited to recursive data structures like lists and binary trees.
 
-.. Todo::
 
-   Figure shows that list  is a node followed by a list.
+
+The following figure shows that a list  is a node followed by a list:
    
-.. Todo::
+.. _ListRecDS:
 
-   Figure shows that binary tree shows is a node pointing to two binary trees. 
+.. inlineav:: ListRecDSCON dgm
+   :align: justify
+
+
+The following figure shows that a binary tree is a node 
+pointing to two binary trees one on its right and the other one on its left:
+
+.. _BinRecDS:
+
+.. inlineav:: BinRecDSCON dgm
+   :align: justify
+   
 
 Next example will show how the flow of information in a list can be done recursively to compute the sum of the values in the list. We will then evlove the same example to compute the sum of the values stored in a binary tree.
 
@@ -89,3 +110,6 @@ Next example will show how the flow of information in a list can be done recursi
        }
       }
 
+
+.. odsascript:: AV/RecurTutor2/BinRecDSCON.js
+.. odsascript:: AV/RecurTutor2/ListRecDSCON.js

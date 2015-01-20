@@ -25,7 +25,8 @@
 
       },"RecurTutor2/recDataStr": {
         "long_name": "Binary Tree as a Recursive Data Structure",
-        "exercises": {}
+        "exercises": {
+        }
       },
       "RecurTutor2/BinaryTreeTraversal": {
         "long_name": "Binary Trees Traversal",
