@@ -135,7 +135,9 @@ Practice the collect and retun information flow through the following programmin
 
 Local
 -----
-Local traversal invloves going to each node in the tree and do some operation. In this type, there is no information flow is going between the binary tree nodes. For example, incrementing all the node values by one. 
+Local traversal invloves going to each node in the tree and do some operation. 
+In this type, there is no information flow is going between the binary tree nodes. 
+For example, incrementing all the node values in a binary tree by one. 
 
 Practice the local information flow through the following programming exercises
 
@@ -165,7 +167,8 @@ Practice the local information flow through the following programming exercises
    Mirror
    Change a tree so that the roles of the left and right pointers are swapped at every node.
    The solution is short, but very recursive. As it happens, this can be accomplished without changing the root node
-   pointer, so the return-the-new-root construct is not necessary. Alternately, if you do not want to change the tree
+   pointer, so the return-the-new-root construct is not necessary. Alternately, if you do not want 
+   to change the tree
    nodes, you may construct and return a new mirror tree based on the original tree.
    
     The code::
@@ -190,38 +193,4 @@ Guided traversal problems does not involve visiting all the nodes. So the inform
 Practice the guided information flow through the following programming exercises.
 
 .. avembed:: Exercises/RecurTutor2/BinaryTreeGuidedSumm.html ka
-
-
-
-I think  this could be another lesson with an introduction 
-This type of problems involves information flow between more than one tree. In that type of information flow, you need more than one tree to exchange information among each others.
-
-.. Todo::
-   Swape Trees Values
-   Given two binary trees, swap the values of their nodes.
-   
-
-
-.. Todo::
-   SameTree
-   Given two binary trees, return true if they are structurally identical -- they are made of nodes with the same values
-   arranged in the same way.
-   
-   The code::
-
-     boolean sameTree(Node a, Node b) {
-	// 1. both empty -> true
-	if (a==null && b==null) return(true);
-	// 2. both non-empty -> compare them
-	else if (a!=null && b!=null) {
-	return(
-	a.data == b.data &&
-	sameTree(a.left, b.left) &&
-	sameTree(a.right, b.right)
-	);
-	}
-	 // 3. one empty, one not -> false
-	else return(false);
-	}
-
 

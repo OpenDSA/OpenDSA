@@ -111,6 +111,19 @@
             "showhide": "Show"
           }
         }
+      },
+       
+     "RecurTutor2/MultipleBinaryTrees": {
+        "long_name": "Multiple Binary Trees",
+        "exercises": {
+          "MultipleBinaryTreesSumm": {
+            "long_name": "Multiple Binary Trees Exercises",
+            "required": true,
+            "points": 0.0,
+            "threshold": 3.0,
+            "showhide": "Show"
+          }
+        }
       }, 
      "RecurTutor2/BinaryTreeSumm": {
         "long_name": "Binary Tree Summary Exercises",
