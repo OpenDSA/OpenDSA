@@ -119,8 +119,8 @@
           "MultipleBinaryTreesSumm": {
             "long_name": "Multiple Binary Trees Exercises",
             "required": true,
-            "points": 0.0,
-            "threshold": 3.0,
+            "points": 1.0,
+            "threshold": 2.0,
             "showhide": "Show"
           }
         }
