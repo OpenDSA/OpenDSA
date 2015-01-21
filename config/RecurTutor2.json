@@ -22,21 +22,46 @@
       "RecurTutor2/BinaryTree": {
         "long_name": "Binary Tree",
         "exercises": {
+           "DefSumm": {
+            "long_name": "Tree Definition Summary Exercises",
+            "required": true,
+            "points": 2.0,
+            "threshold": 8
+           }
+         }
+      },
+      "RecurTutor2/recDataStr": {
+        "long_name": "Binary Tree as a Recursive Data Structure",
+        "exercises": {
           "SumBinaryTreeCON": {
-            "long_name": "Sum values in a Binary Tree Traversal Slide Show",
+            "long_name": "Sum values in a Binary Tree Slide Show",
             "required": true,
             "points": 1.0,
             "threshold": 0.90
-          }
+           }
          }
-
-      },"RecurTutor2/recDataStr": {
-        "long_name": "Binary Tree as a Recursive Data Structure",
-        "exercises": {}
       },
       "RecurTutor2/BinaryTreeTraversal": {
         "long_name": "Binary Trees Traversal",
         "exercises": {
+          "preorderCON": {
+            "long_name": "Preorder Traversal Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "postorderCON": {
+            "long_name": "Postorder Traversal Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "inorderCON": {
+            "long_name": "Inorder Traversal Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "btTravInorderPRO": {
             "long_name": "Binary Tree Inorder Traversal Exercise",
             "required": true,
@@ -56,6 +81,10 @@
             "threshold": 0.90
           }
         }
+      },
+     "RecurTutor2/BinaryTreeTrvprob": {
+        "long_name": "Binary Tree  Common Traversal Problems",
+        "exercises": {}
       },
       "RecurTutor2/BinaryTreeInfFlw": {
         "long_name": "Binary Tree Information Flow",
@@ -89,10 +118,6 @@
             "showhide": "Show"
           }
         }
-      },
-     "RecurTutor2/BinaryTreeTrvprob": {
-        "long_name": "Binary Tree  Common Traversal Problems",
-        "exercises": {}
       }, 
      "RecurTutor2/BinaryTreeSumm": {
         "long_name": "Binary Tree Summary Exercises",

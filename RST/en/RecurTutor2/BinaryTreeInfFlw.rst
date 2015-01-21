@@ -9,7 +9,7 @@
    :topic: Information Flow in a Binary
 
 
-Binary Trees Information Flow
+Binary Tree Information Flow
 =============================
 
 Handling information flow between parts of a program can

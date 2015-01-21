@@ -42,42 +42,21 @@ pointing to two binary trees, one on its right and the other one on its left:
 .. topic:: Example
 
    Suppose that we want to compute the sum of the values stored in a binary tree.
-   
+   Suppose that you are given this task. You ask two friends to help you. 
+   The first one will take the left subtree to sum it.
+   The second one will take the right sub tree to sum it 
+   then you add the root's value and  you are done with your task.
+   In order to write a recursive function that sums the values stored in a binary tree
+   you need to think the same way. You don't need to think about the details of recursion.
+   Just admit that your friends(In other words, the recursive calls) will return back to you
+   the correct answer.
+
+The following visualization shows the steps of computing
+the sum of a binary tree by asking help from two friends.
    
 .. inlineav:: SumBinaryTreeCON ss
    :output: show
-   
-.. Todo::
 
-   A visulization that shows the steps of doing so through delegation model.
-   Suppose that you are given this task. You ask two friends to help you. 
-   The first one will take the 
-   left subtree to sum it and the second one will take the right sub tree to sum it 
-   then you add the root's value and  you are done. 
-   The visulization will show the recursive code which is doning that.
-   
-   The Code::
-
-       double sum( BinNode root )
-       {
-        double mySum, leftSum, rightSum;
-        if ( root == null )
-        {
-         mySum = 0;        // Solution for the base case
-         return mySum;     // Return solution
-        }
-        else
-        {
-         leftSum  = sum( root.left );      // Solve smaller problem 1
-         rightSum = sum( root.right );     // Solve smaller problem 2
-
-	 mySum = root.value + leftSum + rightSum;
-                                             // Solve my problem using
-	                                     // solution of smaller problem   
-
-	 return mySum;     // Return solution
-       }
-      }
 
 
 .. odsascript:: AV/RecurTutor2/BinRecDSCON.js
