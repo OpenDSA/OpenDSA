@@ -55,28 +55,28 @@
           "recCodeCompSumm1": {
             "long_name": "Recursion Code Completion Exercises Set 1",
             "required": true,
-            "points": 0.0,
+            "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
           "recCodeCompSumm2": {
             "long_name": "Recursion Code Completion Exercises Set 2",
             "required": true,
-            "points": 0.0,
+            "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
           "recCodeCompSumm3": {
             "long_name": "Recursion Code Completion Exercises Set 3",
             "required": true,
-            "points": 0.0,
+            "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
           "recCodeCompSumm4": {
             "long_name": "Recursion Code Completion Exercises Set 4",
             "required": true,
-            "points": 0.0,
+            "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           }
@@ -92,7 +92,7 @@
           "recHrdCodeCompSumm": {
             "long_name": "Recursion Harder Code Completion Exercises",
             "required": true,
-            "points": 0.0,
+            "points": 1.0,
             "threshold": 3.0,
             "showhide": "Show"
           }
@@ -104,21 +104,21 @@
           "recWriteSumm1": {
             "long_name": " Recursion Code Writing Exercises Set 1",
             "required": true,
-            "points": 0.0,
+            "points": 1.0,
             "threshold": 2.0,
             "showhide": "Show"
           },
           "recWriteSumm2": {
             "long_name": "Recursion Code Writing Exercises Set 2",
             "required": true,
-            "points": 0.0,
+            "points": 1.0,
             "threshold": 2.0,
             "showhide": "Show"
           },
           "recWriteSumm3": {
             "long_name": "Recursion Code Writing Exercises Set 3",
             "required": true,
-            "points": 0.0,
+            "points": 1.0,
             "threshold": 2.0,
             "showhide": "Show"
           }
@@ -183,42 +183,42 @@
           "recTracingSumm1": {
             "long_name": "Recursion Tracing Exercises Set 1",
             "required": true,
-            "points": 0.0,
+            "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
           "recTracingSumm2": {
             "long_name": "Recursion Tracing Exercises Set 2",
             "required": true,
-            "points": 0.0,
+            "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
           "recTracingSumm3": {
             "long_name": "Recursion Tracing Exercises Set 3",
             "required": true,
-            "points": 0.0,
+            "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
           "recTracingSumm4": {
             "long_name": "Recursion Tracing Exercises Set 4",
             "required": true,
-            "points": 0.0,
+            "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           }, 
           "recTracingSumm5": {
             "long_name": "Recursion Tracing Exercises Set 5",
             "required": true,
-            "points": 0.0,
+            "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },        
           "recTracingSumm6": {
             "long_name": "Recursion Tracing Exercises Set 6",
             "required": true,
-            "points": 0.0,
+            "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           }
@@ -230,7 +230,7 @@
           "recChapterSumm": {
             "long_name": "Recursion Summary Exercise",
             "required": true,
-            "points": 0.0,
+            "points": 1.0,
             "threshold": 5.0,
             "showhide": "Show"
           }
