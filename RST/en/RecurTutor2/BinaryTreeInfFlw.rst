@@ -56,13 +56,7 @@ Collect-and-return requires that we communicate information back up the tree to 
 
 Practice the collect and retun information flow through the following programming exercises
  
-.. avembed:: Exercises/RecurTutor2/BinaryTreeLDSumm.html ka
-
-.. avembed:: Exercises/RecurTutor2/BinaryTreeValSumm.html ka
-
-.. avembed:: Exercises/RecurTutor2/BinaryTreeSumSumm.html ka
-
-
+.. avembed:: Exercises/RecurTutor2/BinaryTreeClctNrtrnSumm.html ka
    
 .. Todo::
    Given a binary tree, print out all of its root-to-leaf paths. Note that, "path so far" needs to be communicated between the recursive calls.
@@ -145,7 +139,7 @@ Local traversal invloves going to each node in the tree and do some operation. I
 
 Practice the local information flow through the following programming exercises
 
-.. avembed:: Exercises/RecurTutor2/BinaryTreeIncSumm.html ka
+.. avembed:: Exercises/RecurTutor2/BinaryTreeLocalSumm.html ka
 
 .. Todo::
    Duplicate
@@ -195,43 +189,11 @@ Guided traversal problems does not involve visiting all the nodes. So the inform
 
 Practice the guided information flow through the following programming exercises.
 
-.. Todo:: 
-   Minimum Value
-   Given a non-empty binary search tree (an ordered binary tree), return the minimum data value found in that tree.
-   Note that it is not necessary to search the entire tree. 
-
-   The code::
-
-	private int maxDepth(Node node) {
-	if (node==null) {
-	return(0);
-	}
-	else {
-	int lDepth = maxDepth(node.left);
-	int rDepth = maxDepth(node.right);
-	// use the larger + 1
-	return(Math.max(lDepth, rDepth) + 1);
-	}
-	}
-
-.. Todo:: 
-   Min Value
-    Returns the min value in a non-empty binary search tree.
-
-    The code::
-
-	private int minValue(Node node) {
-	Node current = node;
-	while (current.left != null) {
-	current = current.left;
-	}
-	return(current.data);
-	}
+.. avembed:: Exercises/RecurTutor2/BinaryTreeGuidedSumm.html ka
 
 
 
-
-
+I think  this could be another lesson with an introduction 
 This type of problems involves information flow between more than one tree. In that type of information flow, you need more than one tree to exchange information among each others.
 
 .. Todo::

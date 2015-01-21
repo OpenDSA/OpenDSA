@@ -89,29 +89,22 @@
       "RecurTutor2/BinaryTreeInfFlw": {
         "long_name": "Binary Tree Information Flow",
         "exercises": {
-          "BinaryTreeLDSumm": {
-            "long_name": "Binary Tree Leaf Count/Get Depth Exercise",
+          "BinaryTreeClctNrtrnSumm": {
+            "long_name": "Binary Tree Collect and Return Traversal Exercises",
             "required": true,
-            "points": 0.0,
-            "threshold": 2.0,
+            "points": 4.0,
+            "threshold": 4.0,
             "showhide": "Show"
           },
-          "BinaryTreeValSumm": {
-            "long_name": "Binary Tree Check/Count Value Exercise",
+          "BinaryTreeLocalSumm": {
+            "long_name": "Binary Tree Local Traversal Exercises",
             "required": true,
             "points": 0.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "BinaryTreeSumSumm": {
-            "long_name": "Binary Tree Sum Exercises",
-            "required": true,
-            "points": 0.0,
-            "threshold": 2.0,
-            "showhide": "Show"
-          },
-          "BinaryTreeIncSumm": {
-            "long_name": "Binary Tree Increment Exercise",
+          "BinaryTreeGuidedSumm": {
+            "long_name": "Binary Tree Guided Traversal Exercises",
             "required": true,
             "points": 0.0,
             "threshold": 1.0,

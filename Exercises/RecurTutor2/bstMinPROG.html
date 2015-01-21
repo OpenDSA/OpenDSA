@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math math-format word-problems spin">
 <head>
-  <title> Binary Tree Has Path Sum Exercise</title>
+  <title> Binary Search Tree Minimum Value Exercise</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
   <script> window.OpenPopKa = true; </script>
@@ -25,18 +25,15 @@
   <div class="problems">
     <div> <!-- Supresses answer box -->
       <p class="problem" id = "test">
-    We'll define a "root-to-leaf path" to be a sequence of nodes in a tree starting with the
-    root node and proceeding downward to a leaf (a node with no children). 
-    We'll assume that an empty tree contains  no root-to-leaf paths.     
-    Given a binary tree and a sum, return true if the tree has a root-to-leaf path such that 
-    adding up all the values along the path equals the given sum. 
-    Return false if no such path can be found.   
+    Given a non-empty binary search tree (an ordered binary tree), return the minimum data value 
+    found in that tree. Note that it is not necessary to search the entire tree.
 	Add appropriate lines of code to the following function skeleton so that the function will 
-	recursively check to find wether there is a "root-to-leaf path" or not 
-	in the binary tree pointed at by "root".  <br />
+	recursively  find the mimimum value 
+	in the binary search tree pointed at by "root". 
+	Assume that the given binary search tree will not be empty and has integer values.  <br />
 
     <textarea  id="codeTextarea">
-boolean bthasPathSum(BinNode root , int sum) {
+int bstMin(BinNode root) {
   // Your code goes between these lines
 
 
@@ -56,7 +53,7 @@ boolean bthasPathSum(BinNode root , int sum) {
         <div class="validator-function">
 	     window.codeValue = editor.getValue();
          window.progexType= "binarytree";
-         window.summexName= "bthasPathSumPROG";
+         window.summexName= "bstMinPROG";
         </div>
       </div>
       <div class="hints"></div>
