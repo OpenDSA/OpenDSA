@@ -93,7 +93,7 @@
             "long_name": "Binary Tree Leaf Count/Get Depth Exercise",
             "required": true,
             "points": 0.0,
-            "threshold": 1.0,
+            "threshold": 2.0,
             "showhide": "Show"
           },
           "BinaryTreeValSumm": {
@@ -104,10 +104,10 @@
             "showhide": "Show"
           },
           "BinaryTreeSumSumm": {
-            "long_name": "Binary Tree Sum Exercise",
+            "long_name": "Binary Tree Sum Exercises",
             "required": true,
             "points": 0.0,
-            "threshold": 1.0,
+            "threshold": 2.0,
             "showhide": "Show"
           },
           "BinaryTreeIncSumm": {

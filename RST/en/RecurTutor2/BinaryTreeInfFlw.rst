@@ -63,28 +63,7 @@ Practice the collect and retun information flow through the following programmin
 .. avembed:: Exercises/RecurTutor2/BinaryTreeSumSumm.html ka
 
 
-.. Todo::
-   We'll define a "root-to-leaf path" to be a sequence of nodes in a tree starting with the root node and proceeding
-   downward to a leaf (a node with no children). We'll say that an empty tree contains no root-to-leaf paths.     
-   Given a binary tree and a sum, return true if the tree has a root-to-leaf path such that adding up all the values
-   along the path equals the given sum. Return false if no such path can be found. 
-
-   The code::
-
-      boolean hasPathSum(Node node, int sum) {
-	// return true if we run out of tree and sum==0
-	if (node == null){
-	 return(sum == 0);
-	}
-	else {
-	// otherwise check both subtrees
-	int subSum = sum - node.data;
-	return(hasPathSum(node.left, subSum) || hasPathSum(node.right, subSum));
-	}
-	} 
-	    
-    
-    
+   
 .. Todo::
    Given a binary tree, print out all of its root-to-leaf paths. Note that, "path so far" needs to be communicated between the recursive calls.
    
