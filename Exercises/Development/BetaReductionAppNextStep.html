@@ -9,10 +9,10 @@
 	<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
 	<script src="../../JSAV/build/JSAV-min.js"></script>
 	<link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+	<script src="LambdaExercises.js"></script>
 </head>
 
 <body>
-<script src="LambdaExercises.js"></script>
 <div class="exercise">
 	<div class="vars">
 		<var id="JSAV">init_app()</var>
@@ -25,8 +25,14 @@
 				<div id="jsav"></div>
 			</div>
 			<div class="solution" data-type="text"><var>CorrectAnswer</var></div>
-			<div class="hints"><p><var>CorrectAnswer</var></p></div>
-		</div> 
+			<!-- Display the correct answer as a hint. Used for debugging. -->
+			<!-- <div class="hints"><p><var>CorrectAnswer</var></p></div> -->
+			<div class="hints">
+				<p>Identify the argument and lambda expression to be reduced.</p>
+				<p>Remember that with Applicative-Order, you are starting with the innermost expression.</p>
+				<p>Replace all instances of the lambda variable within the expression with the argument.</p>
+			</div>
+		</div>
 	</div>
 </div>
 </body>

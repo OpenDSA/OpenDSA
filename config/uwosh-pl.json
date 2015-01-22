@@ -12,6 +12,18 @@
       "Development/LambdaCalculus": {
         "long_name": "Current Work on Lambda Calculus",
         "exercises": {
+          "LambdaCalcFree": {
+            "long_name": "Identifying Free Variables",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "LambdaCalcBound": {
+            "long_name": "Identifying Bound Variables",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "AlphaConversionCON": {
             "long_name": "Alpha Conversion Slideshow",
             "required": false,

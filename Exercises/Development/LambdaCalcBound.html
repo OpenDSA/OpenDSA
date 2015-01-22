@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-	<title>&#945;-Conversion</title>
+	<title>Bound Variables</title>
 	<script src="../../lib/jquery.min.js"></script>
 	<script src="../../lib/jquery-ui.min.js"></script>
 	<script src="../../JSAV/lib/jquery.transit.js"></script>
@@ -16,34 +16,23 @@
 
 <div class="exercise">
 	<div class="vars">
-		<var id="JSAV">init_alpha()</var>
+		<var id="JSAV">init_bound_highlight()</var>
 		<var id="CorrectAnswer">genAnswer()</var>
-		<var id="Option1">alphaChoice()</var>
-		<var id="Option2">alphaChoice()</var>
-		<var id="Option3">alphaChoice()</var>
-		<var id="Option4">alphaChoice()</var>
 	</div>
 	<div class="problems">
 		<div>
-			<div class="question"><p>What of the following is a correct result of alpha-conversion on the following
-				lambda calculus expression?</p>
+			<div class="question"><p>This exercise will test your understanding of free and bound variables.
+				Click on all of the bound variables in this expression.</p>
 				<div id="jsav"></div>
 			</div>
-			<div class="solution"><var>CorrectAnswer</var></div>
-			<ul class="choices" data-category="true">
-				<li><var>Option1</var></li>
-				<li><var>Option2</var></li>
-				<li><var>Option3</var></li>
-				<li><var>Option4</var></li>
-			</ul>			
+			<div class="solution" data-type="custom">
+				<div class="guess">true</div>
+				<div class="validator-function">if(validate_alpha_Answer()) return true;</div></div>
 			<!-- Display the correct answer as a hint. Used for debugging. -->
 			<!-- <div class="hints"><p><var>CorrectAnswer</var></p></div> -->
 			<div class="hints">
-				<p>Which variables are bound? Which are free?</p>
-				<p>How can you modify this expression to avoid capturing free variables?</p>
-				<p>Which lambda expressions match the formal parameter?</p>
-			</div>
-		</div>
+				<p>Which variables are being captured by a lambda?</p>
+		</div> 
 	</div>
 </div>
 </body>

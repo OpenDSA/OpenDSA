@@ -9,6 +9,13 @@
 Lambda Calculus [Draft]
 ===================================
 
+For some practice in differentiating free and bound variables, try the following two exercises:
+
+.. avembed:: Exercises/Development/LambdaCalcFree.html ka
+
+.. avembed:: Exercises/Development/LambdaCalcBound.html ka
+
+
 Alpha conversion is used when substituting for a formal parameter in a lambda calculus expression will capture a free variable.  To illustrate this, consider:
 
 
