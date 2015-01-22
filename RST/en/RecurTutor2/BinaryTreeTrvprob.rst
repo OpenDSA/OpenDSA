@@ -10,23 +10,27 @@
 
 
 Binary Tree Traversal Common Problems
-===============================================
+=====================================
 
-When solving a problem that requires traversing a binary tree, we want to make sure that we are visiting "exactly" the required nodes (no more and no less).
+When writing a recursive function to solve a problem that requires traversing a binary tree,
+we want to make sure that we are visiting "exactly" the required nodes (no more and no less).
 
 
 .. topic:: Example
 
-   If it is required to count the number of leaf nodes in a given binary tree. You may write a program which is correctly counting the number of leaf nodes but do redaundant   
+   If it is required to count the number of leaf nodes in a given binary tree. 
+   You may write a program which is correctly counting the number of leaf nodes but do redundant   
    visits to the nodes.
  
 
 .. topic:: Example
 
-   Given a binary search tree, find out the minimum value. Your solution to this problem can visit every single node in the binary search tree without benefiting from the binary 
+   Given a binary search tree, find out the minimum value. Your solution to this problem 
+   can visit every single node in the binary search tree without benefiting from the binary 
    search tree proporty that can make you avoid visiting many nodes in most of the cases.
 
- You should learn two skills in order to avoid ineffecient solutions:
+
+You should learn two skills in order to avoid ineffecient solutions:
 
  #. Formulate the base case and its action to work correctly on any given binary tree.
  #. Formulate the recursive case and its action to work correctly on any give binary tree.
@@ -35,24 +39,30 @@ When solving a problem that requires traversing a binary tree, we want to make s
 Formulate the base case and its action
 --------------------------------------
 
-In binary trees, the base case is always to check if we have an empty tree. One of the common mistakes some people does is considering that the base case action will be executed only after the recursive calls are executed. This is not always the case because you may have your input as an empty tree from the very begining and in that case no recursive calls will be executed before the base case action.
+In binary trees, the base case is always to check if we have an empty tree. 
+One of the common mistakes some people does is considering that the base case 
+action will be executed only after the recursive calls are executed. 
+This is not always the case because you may have your input as an empty tree 
+from the very begining and in that case no recursive calls will be executed 
+before the base case action.
 
-The base case action formulation depends on the problem we have. For example, if it is required to count the nodes then the base case action will be returning 0. 
+The base case action formulation depends on the problem we have. 
+For example, if it is required to count the nodes then the base case action will be returning 0. 
 
 
 Formulate the recursive case and its action
 -------------------------------------------
 
-Always remember that you should not worry about the recursion details. Admit that it will do it correctly. So, when your recursive case action is to  visit recursively the right and left children this means that every node will do that. You don't need to worry about making sure that every node will do it.
-
-Make sure that when you design your recursive case(s) that they are not doing redundant nodes visit or skipping nodes. This can be done by tracing your code on a binary tree and marking the nodes that you have visited after each recursive call.
-
+Always remember that you should not worry about the recursion details. 
+Admit that it will do it correctly. So, when your recursive case action 
+is to  visit recursively the right and left children this means that every node will do that. 
+You don't need to worry about making sure that every node will do it.
 
 .. topic:: Example
 
    Recall the previous example of counting the number of nodes in a binary tree.
    
-   The following solution is correct but ineffecient as it does redaundant checks on the left and the right child of each visited node::
+   The following solution is correct but ineffecient as it does redundant checks on the left and the right child of each visited node::
    
     int ineff_count(BinNode rt) { 
     if (rt == null) {
@@ -77,8 +87,6 @@ Make sure that when you design your recursive case(s) that they are not doing re
     }
    
 
-
-
    The effecient solution should be ::
 
      int eff_count(BinNode rt) {
@@ -86,4 +94,14 @@ Make sure that when you design your recursive case(s) that they are not doing re
       return 1 + count(rt.left()) + count(rt.right());
      }
 
-Learning those skills requires a lot of practice to make sure that you are not only getting the correct answer but also doing the solution effeciently without visiting more or less nodes than required.
+
+Make sure that when you design your recursive case(s) that they are not doing redundant nodes visit or skipping nodes. This can be done by tracing your code on a binary tree and marking the nodes that you have visited after each recursive call.
+
+.. Todo:: Visulization for ineffficent code tracing that does redundant visits.
+
+.. Todo:: Visulization for ineffficent code tracing that skips necessary nodes visits.
+
+
+Learning those skills requires a lot of practice to make sure that you are not only getting
+the correct answer but also doing the solution effeciently without visiting more or less nodes
+than required.
