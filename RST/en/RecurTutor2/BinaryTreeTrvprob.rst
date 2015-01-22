@@ -97,9 +97,9 @@ You don't need to worry about making sure that every node will do it.
 
 Make sure that when you design your recursive case(s) that they are not doing redundant nodes visit or skipping nodes. This can be done by tracing your code on a binary tree and marking the nodes that you have visited after each recursive call.
 
-.. Todo:: Visulization for ineffficent code tracing that does redundant visits.
+.. Todo:: Visulization for an ineffficent code that does redundant visits.
 
-.. Todo:: Visulization for ineffficent code tracing that skips necessary nodes visits.
+.. Todo:: Visulization for a tracing of an ineffficent code that skips necessary nodes visits.
 
 
 Learning those skills requires a lot of practice to make sure that you are not only getting
