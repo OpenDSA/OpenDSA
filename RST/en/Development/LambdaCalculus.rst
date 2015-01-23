@@ -9,7 +9,7 @@
 Lambda Calculus [Draft]
 ===================================
 
-For some practice in differentiating free and bound variables, try the following two exercises:
+Before seeing how lambda calculus expressions are evaluating, we need to be sure that you can identify free and bound variable.   For some practice, try the following two exercises:
 
 .. avembed:: Exercises/Development/LambdaCalcFree.html ka
 
