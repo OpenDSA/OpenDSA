@@ -6,6 +6,13 @@
       ".instructLabel": "Instructions:",
       ".instructions": "Use the BST Remove algorithm to remove values as they are shown at the top. Click on any node in the tree to erase its value. If necessary, you can click on another node in the tree to move that value to a node whose value you previously erased. Remember that equal values go to the left, so when necessary we will replace a node with the greatest value on its left side.",
       "#about": "About"
+    },
+    "fi": {
+      ".avTitle": "Fi BST Remove Proficiency Exercise",
+      "av_Authors": "Kasper Hellström",
+      ".instructLabel": "Ohjeet:",
+      ".instructions": "Fi Use the BST Remove algorithm to remove values as they are shown at the top. Click on any node in the tree to erase its value. If necessary, you can click on another node in the tree to move that value to a node whose value you previously erased. Remember that equal values go to the left, so when necessary we will replace a node with the greatest value on its left side.",
+      "#about": "Lisätietoa"
     }
   },
   "params": {

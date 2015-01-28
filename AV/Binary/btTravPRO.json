@@ -2,7 +2,7 @@
   "translations" :{
     "en": {
       ".avTitle": "Binary Tree Traversal Proficiency Exercise",
-      "av_Authors": "Kasper Hellström",
+      "av_Authors": "Ville Karavirta",
       ".instructLabel": "Instructions:",
       "#instructionsInorder": "Reproduce the behavior of binary tree inorder traversal. Click nodes to indicate the order in which the traversal algorithm would visit them.",
       "#instructionsPostorder": "Reproduce the behavior of binary tree postorder traversal. Click nodes to indicate the order in which the traversal algorithm would visit them.",
@@ -10,6 +10,17 @@
       "#instructionsLevelorder": "Reproduce the behavior of binary tree level order traversal. Click nodes to indicate the order in which the traversal algorithm would visit them.",
       "#help": "Help",
       "#about": "About"
+    },
+    "fi": {
+      ".avTitle": "Fi Binary Tree Traversal Proficiency Exercise",
+      "av_Authors": "Ville Karavirta",
+      ".instructLabel": "Ohjeet:",
+      "#instructionsInorder": "Fi Reproduce the behavior of binary tree inorder traversal. Click nodes to indicate the order in which the traversal algorithm would visit them.",
+      "#instructionsPostorder": "Fi Reproduce the behavior of binary tree postorder traversal. Click nodes to indicate the order in which the traversal algorithm would visit them.",
+      "#instructionsPreorder": "Fi Reproduce the behavior of binary tree preorder traversal. Click nodes to indicate the order in which the traversal algorithm would visit them.",
+      "#instructionsLevelorder": "Fi Reproduce the behavior of binary tree level order traversal. Click nodes to indicate the order in which the traversal algorithm would visit them.",
+      "#help": "Ohje",
+      "#about": "Lisätietoa"
     }
   },
   "params": {

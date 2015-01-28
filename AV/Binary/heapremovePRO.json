@@ -7,6 +7,14 @@
       ".instructions": "Perform DeleteMin three times. After each deletion, restore the <b>min</b> heap property. Click the \"Decrement heap size\" button to remove the last position from the heap. You can swap records in the heap by first clicking one key and then another.",
       "#about": "About",
       "#decrement": "Decrement heapsize"
+    },
+    "fi": {
+      ".avTitle": "Fi Heap Delete Proficiency Exercise",
+      "av_Authors": "Ville Karavirta",
+      ".instructLabel": "Ohjeet:",
+      ".instructions": "Fi Perform DeleteMin three times. After each deletion, restore the <b>min</b> heap property. Click the \"Decrement heap size\" button to remove the last position from the heap. You can swap records in the heap by first clicking one key and then another.",
+      "#about": "Lisätietoa",
+      "#decrement": "Fi Decrement heapsize"
     }
   },
   "params": {
