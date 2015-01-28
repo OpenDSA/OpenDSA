@@ -4,7 +4,7 @@ TARGET = build
 CSSLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 MINIMIZE = java -jar tools/yuicompressor-2.4.7.jar --nomunge
 
-.PHONY: all clean lint csslint jshint min CS2114 CS223 CS5114 CS3114 CS3114notes CS150 OpenDSA test testX IS allBooks nomin pull CPSC270S15 CS2401 COP3530 CS208 ECE252 Tutorial TDDD86_2014 S15
+.PHONY: all clean lint csslint jshint min CS2114 CS223 CS5114 CS3114 CS3114notes CS150 OpenDSA test testX IS allBooks nomin pull CPSC270S15 CS2401 COP3530 CS208 ECE252 Tutorial TDDD86_2014 S15 CSCI115
 
 all: lint
 
@@ -55,7 +55,7 @@ jshint:
 min: nomin
 #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
-S15: CS2114 ECE252 CPSC270 CSCI204 CS3114 RecurTutor
+S15: CS2114 ECE252 CPSC270 CSCI204 CS3114 RecurTutor CSCI115
 
 Tutorial: min
 	python $(CONFIG_SCRIPT) config/Tutorial.json
@@ -74,6 +74,9 @@ RecurTutor2: min
 
 CSCI102: min
 	python $(CONFIG_SCRIPT) config/CSCI102.json
+
+CSCI115: min
+	python $(CONFIG_SCRIPT) config/CSCI115S15.json
 
 CS150: min
 	python $(CONFIG_SCRIPT) config/CS150.json

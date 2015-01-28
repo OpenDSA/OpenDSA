@@ -25,6 +25,10 @@
           }
         }
       },
+      "IS/BinaryTreeFullThm": {
+        "long_name": "Full Binary Tree Theorem",
+        "exercises": {}
+      },
       "IS/TwoThreeTree_Test": {
         "long_name": "Two Three Tree",
         "exercises": {}

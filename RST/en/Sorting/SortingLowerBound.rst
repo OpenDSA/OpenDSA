@@ -125,33 +125,8 @@ this is modeled as a left branch in the decision tree.
 In the case where the first value is greater than the second, the
 algorithm takes the right branch.
 
-Figure :num:`Figure #Dectree` shows the decision tree that models
-Sort Insertion on three input values.
-The first input value is labeled X, the second Y, and the third Z.
-They are initially stored in positions 0, 1, and 2, respectively,
-of input array ``A``.
-Consider the possible outputs.
-Initially, we know nothing about the final positions of the three
-values in the sorted output array.
-The correct output could be any permutation of the input values.
-For three values, there are :math:`n! = 6` permutations.
-Thus, the root node of the decision tree lists all six permutations
-that might be the eventual result of the algorithm.
-
-.. _Dectree:
-
-.. odsafig:: Images/DecTree.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: A decision tree for Insertion Sort
-
-   A decision tree to model Insertion Sort when processing three values
-   labeled X, Y, and Z, initially stored at positions 0, 1, and 2,
-   respectively, in input array ``A``.
-
-Here is a Visualization that illustrates the Sorting Lower Bound proof
+Here is a Visualization that illustrates decision trees and the
+sorting lower bound proof.
 
 .. inlineav:: SortingLowerBoundCON ss
    :output: show

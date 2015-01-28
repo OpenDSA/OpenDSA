@@ -21,20 +21,21 @@ $(document).ready(function () {
 
   // Slide 2
   av.umsg(interpret("av_c2"));
-  pseudo.setCurrentLine("sig");
+  pseudo.highlight("init");
   av.step();
 
   // Slide 3
   av.umsg(interpret("av_c3"));
   arr.addClass(7, "processing");
+  pseudo.unhighlight("init");
   pseudo.setCurrentLine("compute");
   av.step();
 
   // Slide 4
   av.umsg(interpret("av_c4"));
-  arr.removeClass(7, "processing").highlight(7);
+  arr.removeClass(7, "processing").highlight(8);
   arr.unhighlight(0);
-  arr.addClass([0, 1, 2, 3, 4, 5, 6], "deemph");
+  arr.addClass([0, 1, 2, 3, 4, 5, 6, 7], "deemph");
   pseudo.setCurrentLine("right");
   av.step();
 
@@ -46,9 +47,9 @@ $(document).ready(function () {
 
   // Slide 6
   av.umsg(interpret("av_c6"));
-  arr.removeClass(11, "processing").highlight(11);
+  arr.removeClass(11, "processing").highlight(10);
   arr.unhighlight(15);
-  arr.addClass([12, 13, 14, 15], "deemph");
+  arr.addClass([11, 12, 13, 14, 15], "deemph");
   pseudo.setCurrentLine("left");
   av.step();
 
@@ -60,9 +61,9 @@ $(document).ready(function () {
 
   // Slide 8
   av.umsg(interpret("av_c8"));
-  arr.removeClass(9, "processing").highlight(9);
-  arr.unhighlight(11);
-  arr.addClass([10, 11], "deemph");
+  arr.removeClass(9, "processing");
+  arr.unhighlight(10);
+  arr.addClass([9, 10, 11], "deemph");
   pseudo.setCurrentLine("left");
   av.step();
 
