@@ -7,8 +7,9 @@
 }
 
 #SumBinaryTreeCON .jsavcanvas {
- height: 250px;
+ height: 150px;
 }
+
 
 #SumBinaryTreeCON .jsavlabel { 
 width: 100px;
@@ -17,3 +18,9 @@ color: blue;
 background-image: url(Icons/person.png);
 background-size: cover;
 }
+
+#IneffBinaryTreeRangeCON .jsavcanvas {
+ height: 300px;
+}
+
+
