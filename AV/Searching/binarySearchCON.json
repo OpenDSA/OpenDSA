@@ -29,6 +29,20 @@
 	"found": 10,
         "return": 12
       }
+    },
+      "c++": {
+      "url": "../../../SourceCode/C++/Searching/bsearch.cpp",
+      "lineNumbers": false,
+      "tags": {
+        "sig": 3,
+        "init": [4, 5],
+        "while": 6,
+        "compute": 7,
+        "right": 8,
+        "left": 9,
+	"found": 10,
+        "return": 12
+      }
     }
   }
 }
