@@ -3,12 +3,10 @@
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
-    "Processing": ["pde"],
-    "Java": ["java"],
     "C++": ["cpp", "h"]
   },
   "lang": "en",
-  "module_origin": "http://algoviz.org",
+  "module_origin": "http://www.ida.liu.se",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,

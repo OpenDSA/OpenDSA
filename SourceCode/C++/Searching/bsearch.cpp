@@ -1,13 +1,13 @@
 // Return the position of an element in sorted array A
-// with value k.  If k is not in A, return size.
+// with value k.  If k is not in A, -1.
 int binary(int A[], int size, int k) {
-  int l = -1;
-  int r = size;                  // l and r are beyond array bounds
-  while (l+1 != r) {             // Stop when l and r meet
-    int mid = (l+r)/2;           // Check middle of remaining subarray
-    if (k < A[mid]) r = mid;     // In left half
-    if (k == A[mid]) return mid; // Found it
-    if (k > A[mid]) l = mid;     // In right half
+  int low = 0;
+  int high = size - 1;
+  while (low <= high) {                  // Stop when low and high meet
+    int mid = (low + high) / 2;          // Check middle of subarray
+    if (A[mid] < k) low = mid + 1;       // In right half
+    else if (A[mid] > k) high = mid + 1; // In left half
+    else return mid;                     // Found it
   }
-  return size;                   // Search value not in A
+  return -1;                             // Search value not in A
 }
