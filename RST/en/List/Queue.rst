@@ -91,7 +91,6 @@ Here is an array-based queue implementation.
    :tag: AQueue1,AQueue2
 
 .. inlineav:: aqueueVarCON ss
-   
    :output: show 
    
 In this implementation, the front of the queue is defined to be toward

@@ -78,7 +78,7 @@
   jsav.step();
 
   // Step 4
-  jsav.umsg('The new node\'s <code>next</code> field is assigned to point to what <code>tail</code> pointed to. The new node\'s <code>prev</code> field is assigned to point to what <code>tail.prev()</code> pointed to. ');
+  jsav.umsg('The new node\'s <code>next</code> field is assigned to point to what <code>tail</code> points to. The new node\'s <code>prev</code> field is assigned to point to what <code>tail.prev()</code> points to. ');
   l.get(5).edgeToNext().show();
   l.get(5).edgeToPrev().show();
   curr.target(l.get(2));

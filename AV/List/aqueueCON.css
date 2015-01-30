@@ -37,16 +37,3 @@
 #aqueueEmptyCON .jsavoutput.jsavline {
   height: 55px;
 }
-
-#aqueueVarCON {
-  height: 490px;
-}
-
-#aqueueVarCON .jsavoutput.jsavline {
-  height: 70px;
-}
-
-#aqueueVarCON .jsavcode{
-  position: relative;
-  top: 50px;
-}

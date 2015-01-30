@@ -1,29 +1,36 @@
+/*global ODSA */
+"use strict";
+$(document).ready(function () {
 // Show the AQueue code.
-(function ($) {
-  var jsav = new JSAV("aqueueVarCON");
-  var pseudo = jsav.code({url: "../../../SourceCode/Processing/Lists/AQueue.pde",
-                       lineNumbers: false,
-                       startAfter: "/* *** ODSATag: AQueue1 *** */",
-			  endBefore: "/* *** ODSAendTag: AQueue1 *** */"}).hide();
+  var av_name = "aqueueVarCON";
+  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+      interpret = config.interpreter,       // get the interpreter
+      code = config.code;                   // get the code object
+  var av = new JSAV(av_name);
+  var pseudo = av.code(code);
 
-  jsav.umsg("Member <code>queueArray</code> holds the queue elements,");
-  pseudo.highlight(6);
-  jsav.displayInit();
+  // Slide 1
+  av.umsg(interpret("av_c1"));
+  pseudo.setCurrentLine("array");
+  av.displayInit();
 
-  pseudo.unhighlight(6);
-  pseudo.highlight(9);
-  jsav.umsg("and as usual, the queue constructor allows an optional parameter to set the maximum size of the queue.");
-  jsav.step();
-  pseudo.unhighlight(9);
-  pseudo.highlight(10);
-  jsav.umsg("The array as created is actually large enough to hold one element more than the queue will allow, so that empty queues can be distinguished from full queues.");
-  jsav.step();
-  pseudo.unhighlight(10);
-  pseudo.highlight(3);
-  jsav.umsg("Member <code>maxSize</code> is used to control the circular motion of the queue (it is the base for the modulus operator).");
-  jsav.step();
-  pseudo.unhighlight(3);
-  pseudo.highlight(5);
-  jsav.umsg("Member <code>rear</code> is set to the position of the current rear element, while front is the position of the current front element.");
-  jsav.recorded();
-}(jQuery));
+  // Slide 2
+  pseudo.setCurrentLine("constructor");
+  av.umsg(interpret("av_c2"));
+  av.step();
+
+  // Slide 3
+  pseudo.setCurrentLine("setmaxsize");
+  av.umsg(interpret("av_c3"));
+  av.step();
+
+  // Slide 4
+  pseudo.setCurrentLine("varmaxsize");
+  av.umsg(interpret("av_c4"));
+  av.step();
+
+  // Slide 5
+  pseudo.setCurrentLine("varrear");
+  av.umsg(interpret("av_c5"));
+  av.recorded();
+});
