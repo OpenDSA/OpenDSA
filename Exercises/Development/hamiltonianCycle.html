@@ -1,22 +1,21 @@
 <!--
-Insertion Sort mini-proficiency exercise.
-Written by Gayathri Subramanian and Cliff Shaffer
 -->
 
 <!DOCTYPE html>
 <html data-require="math">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Minimum Vertex Cover Problem</title>
+  <title>Hamiltonian Circuit Problem</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
   <script src="../../JSAV/lib/jquery.transit.js"></script>
   <script src="../../JSAV/lib/raphael.js"></script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
   <script src="../../JSAV/build/JSAV-min.js"></script>
-  <script src="../../AV/Development/graphUtils.js"></script>
+  <script src="graphUtilsHC.js"></script>
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
   <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
+  <link rel="stylesheet" href="./hamiltonianCycle.css" type="text/css" />
 </head>
 <body>
 
@@ -24,50 +23,115 @@ Written by Gayathri Subramanian and Cliff Shaffer
 var
   jsav,           // The JSAV object
   jsavGraph,
-  adjacencyMat,
-  tmpnodes=[],
-  gnodes=[],
-  minVC=[],
-  solutionShowStat,
+  solArr,
+  Answer,
+  guessedAns,
   userInput;      // Boolean: Tells us if user ever did anything
 
 
-function getMaxOfArray(numArray) {
-    return Math.max.apply(null, numArray);
+function solution(g,node,firstCall){
+  if(node.hasClass('solTo')) 
+      return false;
+  else if(!firstCall)
+    node.addClass('solTo');
+  var nodes = g.nodes(); 
+  if(nodes[0].hasClass('solTo') && nodes[0].hasClass('solFrom') && checkHC(false))
+    return true;
+ 
+  var neighbors = node.neighbors();
+  for(var i=0;i<neighbors.length;i++){
+    node.addClass('solFrom');
+    solArr.push(g.getEdge(node,neighbors[i]));
+    if(solution(g,neighbors[i],0)==false){
+      node.removeClass('solFrom');
+      var ind = solArr.indexOf(g.getEdge(node,neighbors[i]));
+      solArr=solArr.splice(ind,1);
+    } 
+    else
+      return true;
+  }
+  node.removeClass('solTo');
+  return false;
 }
+
+function checkHC(userSol){
+  var g = jsavGraph;
+  var nodes = g.nodes();
+  for(var i=0;i<nodes.length;i++)
+    if(userSol){
+      if(!nodes[i].hasClass('from') || !nodes[i].hasClass('to'))
+        return false;
+    }
+    else{
+      if(!nodes[i].hasClass('solFrom') || !nodes[i].hasClass('solTo'))
+        return false;
+    }
+  return true;
+}
+
 
 // Click event handler on the graph, intended for edges
 var clickHandler = function () {
-   	console.log("hello");
-	userInput = true;
+  var node;
+  if(this.hasClass('selected')){
+    this.start().removeClass('from')
+    this.end().removeClass('to')
+    this.css({"stroke":"black"});
+    this.removeClass('selected');
+  }
+  else {
+    if(this.start().hasClass('from')){
+	alert("Selecting multiple edges originating from the same node violates the property of Hamiltonian cycle.");
+	return;
+    }
+    if(this.end().hasClass('to')){
+	alert("Selecting multiple edges ending at the same node violates the property of Hamiltonian cycle.");
+	return;
+    } 
+    this.start().addClass('from');
+    this.end().addClass('to');
+    this.css({"stroke":"blue"});
+    this.addClass('selected');
+  }
+
+  userInput = true;
 };
 
-// Click event handler on the graph, intended for nodes
-var clickHandler2 = function () {
-   	console.log("hello2");
-	userInput = true;
-};
 
 // reset function definition
 var f_reset = function () {
   if (jsavGraph) {
-    	var nodes = jsavGraph.nodes();
-	for(var i=0;i<nodes.length;i++){
-		nodes[i].unhighlight(); 
-		nodes[i].removeClass('selected');
-	}
-	var edges = jsavGraph.edges();
-	for(var i=0;i<edges.length;i++)
-		edges[i].css({"stroke":"black"}); 
+    var nodes = jsavGraph.nodes();
+    for(var i=0;i<nodes.length;i++){
+      nodes[i].removeClass('from'); 
+      nodes[i].removeClass('to');
+    }
+    var edges = jsavGraph.edges();
+    for(var i=0;i<edges.length;i++){
+      edges[i].removeClass('selected');      
+      edges[i].css({"stroke":"black"});
+    } 
   }
   userInput = false;
 };
 
+var f_noHC = function () {
+    var nodes = jsavGraph.nodes();
+    for(var i=0;i<nodes.length;i++){
+      nodes[i].removeClass('from'); 
+      nodes[i].removeClass('to');
+    }
+    var edges = jsavGraph.edges();
+    for(var i=0;i<edges.length;i++){
+      edges[i].removeClass('selected');      
+      edges[i].css({"stroke":"black"});
+    } 
+    guessedAns = false;
+}
 
 // Initialise the exercise
 var initJSAV = function (nnodes,nedges) {
   userInput = false;
-  solutionShowStat=0;
 
   jsav = new JSAV("jsav");
 //  jsav.recorded();
@@ -76,49 +140,81 @@ var initJSAV = function (nnodes,nedges) {
       jsavGraph.clear();
   }
 
-  jsavGraph = jsav.ds.graph({width: 400, height: 280, layout: "automatic", directed: true});
+  jsavGraph = jsav.ds.graph({width: 400, height: 280, layout: "automatic",
+  directed: true});
   graphUtils.generate(jsavGraph,{weighted:false,nodes:nnodes,edges:nedges});
+  
+  var edges = jsavGraph.edges();
+  for(i=0;i<edges.length;i++)
+    edges[i].css({"stroke-width":"1.5px","border": "5px solid transparent"});
   jsavGraph.layout();
 
   // Bind the clickHandler to handle click events on the array
-  console.log("Add click handler");
-  jsavGraph.click(clickHandler, {edge: true});
-  jsavGraph.click(clickHandler2);
-	
+  jsavGraph.click(clickHandler,{edge:true});
+  jsavGraph.mouseleave(function() { this.removeClass("over")},
+// only for edges, don't record the changes
+        {edge: true, node: false, record: false}); 
+  jsavGraph.mouseenter(function() { this.addClass("over")},
+        {edge: true, node: false, record: false});
+
+  solArr=[];
+  var nodes = jsavGraph.nodes();
+  guessedAns = true;
+  if(solution(jsavGraph,nodes[0],1)==false){
+    Answer=false;	
+    console.log("no Cyle");
+  }
+  else{
+    Answer=true;
+    str=solArr[0].start().value();
+    for(i=0;i<solArr.length;i++)
+     str=str+"->"+solArr[i].end().value();
+    console.log(str);
+  }
   jsav.displayInit();
   // Set up handler for reset button
   $("#reset").click(f_reset);
+  $("#noHC").click(f_noHC);
 };
 
 
 // Check user's answer for correctness: User's array must match answer
 var checkAnswer = function () {
-	var vcnodes=[];
-	for(var i=0;i<jsavGraph.nodeCount();i++){
-		if(gnodes[i].hasClass('selected'))
-			vcnodes.push(i);
-	}
-	var minSize = calcMinVC();	
-        if(!isVC(vcnodes) || vcnodes.length>minSize)
-		return false;
-	return true;
-	
+  if(Answer){
+    return checkHC(true);
+  }
+  else if(!guessedAns)
+    return true;
+  
 };
+
+var showSolution = function(){
+  if(Answer){
+    for(i=0;i<solArr.length;i++)
+      solArr[i].css({"stroke":"blue"});
+    return "The Hamiltonian Cycle is shown in blue on the graph.";
+  }
+  else
+    return "The graph consists of no Hamiltonian Cycle";
+    
+}
+ 
 </script>
 
 <div class="exercise">
   <div class="vars">
-    <var id="nnodes">randRange(6, 15)</var>
+    <var id="nnodes">randRange(10, 15)</var>
     <var id="nedges">nnodes+randRange(3,nnodes)</var>
     <var id="JSAV">initJSAV(nnodes,nedges)</var>
   </div>
 
   <div class="problems">
     <div> <!-- Supresses answer box -->
-      <p class="problem">Your task in this exercise is to find the minimum vertex cover.</p>
+      <p class="problem">Your task in this exercise is to find a Hamiltonian Cycle.</p>
       <div class="question">
-        <p>Select the vertices that can form a minimum vertex cover.</p>
+        <p>Select the edges that can be a part of a Hamiltonian Cycle.</p>
         <input id="reset" type="button" value="Reset" />	
+        <input id="noHC" type="button" value="No Hamiltonian Cycle" />	
         <div id="jsav" class="jsavcanvas"></div>
       </div>
       <div class="solution" data-type="custom">
@@ -132,6 +228,7 @@ var checkAnswer = function () {
           else return checkAnswer();
         </div>
       </div>
+     <div class="hints"><p> </p></div>
     </div>
   </div>
 </div>

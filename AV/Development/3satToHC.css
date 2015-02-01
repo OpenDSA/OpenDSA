@@ -22,3 +22,16 @@
 	line-height:30px;
         text-align:center;
 }
+
+ .pointing-left {
+        -webkit-transform: translateY(-5px) translateX(1px);
+        -moz-transform: translateY(-5px) translateX(1px);
+        -o-transform: translateY(5px) translateX(-1px);
+        transform: translateY(-5px) translateX(1px);
+      }
+      .pointing-right {
+        -webkit-transform: translateY(5px) translateX(-1px);
+        -moz-transform: translateY(5px) translateX(-1px);
+        -o-transform: translateY(5px) translateX(-1px);
+        transform: translateY(5px) translateX(-1px);
+      }

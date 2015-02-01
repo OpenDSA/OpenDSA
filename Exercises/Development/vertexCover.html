@@ -158,19 +158,15 @@ var clickHandler = function () {
 // reset function definition
 var f_reset = function () {
   if (jsavGraph) {
-      jsavGraph.clear();
+    	var nodes = jsavGraph.nodes();
+	for(var i=0;i<nodes.length;i++){
+		nodes[i].unhighlight(); 
+		nodes[i].removeClass('selected');
+	}
+	var edges = jsavGraph.edges();
+	for(var i=0;i<edges.length;i++)
+		edges[i].css({"stroke":"black"}); 
   }
-  var nodeno = Math.floor(Math.random()*5+6);
-  var edgeno = nodeno + Math.floor(Math.random()*nodeno+3);
-  jsavGraph = jsav.ds.graph({width: 400, height: 280, layout: "automatic", directed: false});
-  graphUtils.generate(jsavGraph,{weighted:false,nodes:nodeno,edges:edgeno});
-  
-  jsavGraph.layout();
-  jsavGraph.click(clickHandler); 
-  populateAdjacencyMatrix();
-  $("#solve").attr('value','Show Solution');
-  solutionShowStat=0;
-	
   userInput = false;
 };
 
@@ -220,12 +216,27 @@ var initJSAV = function (nnodes,nedges) {
   jsavGraph = jsav.ds.graph({width: 400, height: 280, layout: "automatic", directed: false});
   graphUtils.generate(jsavGraph,{weighted:false,nodes:nnodes,edges:nedges});
   jsavGraph.layout();
+
+  /*var solGraph = jsav.ds.graph({width: 200, height: 140,layout: "automatic", left:-10,top:200});
+  var tmpnodes = jsavGraph.nodes();
+  var tmpnodes2 = new Array(tmpnodes.length);
+  for(var i=0;i<tmpnodes.length;i++){
+	tmpnodes2[i] = solGraph.addNode(tmpnodes[i].value()).css({"font-size":"75%","width":"20px","height":"20px","min-width":"20px","min-height":"20px"});
+  }
+  for(var i=0;i<tmpnodes.length;i++)
+  	for(var j=i+1;j<tmpnodes.length;j++){
+		if(jsavGraph.hasEdge(tmpnodes[i],tmpnodes[j]))
+			solGraph.addEdge(tmpnodes2[i],tmpnodes2[j]);
+  	}
+ 	
+  solGraph.layout();*/
   // Bind the clickHandler to handle click events on the array
   jsavGraph.click(clickHandler); 
   populateAdjacencyMatrix();
   jsav.displayInit();
   // Set up handler for reset button
   $("#solve").click(f_solution);
+  $("#reset").click(f_reset);
 };
 
 
@@ -246,7 +257,7 @@ var checkAnswer = function () {
 
 <div class="exercise">
   <div class="vars">
-    <var id="nnodes">randRange(6, 15)</var>
+    <var id="nnodes">randRange(10, 20)</var>
     <var id="nedges">nnodes+randRange(3,nnodes)</var>
     <var id="JSAV">initJSAV(nnodes,nedges)</var>
   </div>
@@ -257,6 +268,7 @@ var checkAnswer = function () {
       <div class="question">
         <p>Select the vertices that can form a minimum vertex cover.</p>
         <input id="solve" type="button" value="Show solution" />	
+        <input id="reset" type="button" value="Reset" />	
         <div id="jsav" class="jsavcanvas"></div>
       </div>
       <div class="solution" data-type="custom">

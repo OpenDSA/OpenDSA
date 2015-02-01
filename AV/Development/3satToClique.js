@@ -50,33 +50,33 @@ $(document).ready(function () {
   label1 = av.label("&Phi; = ",{top:y,left:x}); 
   label1.show();
   x = x+35;
-  label2 = av.label("(x<sub>2</sub> + x<sub>1</sub> + ^x<sub>3</sub>)",{top:y,left:x}).css({"color":"red"}); 
+  label2 = av.label("(x<sub>2</sub> + x<sub>1</sub> + ^x<sub>3</sub>)",{top:y,left:x}).css({"color":"red","opacity":0.5}); 
   label2.show();
   x = x+100;
   label5 = av.label(".",{top:y,left:x-5}); 
   label5.show();
-  label3 = av.label("(^x<sub>1</sub> + ^x<sub>2</sub> + x<sub>4</sub>)",{top:y,left:x}).css({"color":"green"}); 
+  label3 = av.label("(^x<sub>1</sub> + ^x<sub>2</sub> + x<sub>4</sub>)",{top:y,left:x}).css({"color":"green","opacity":0.5}); 
   label3.show();
   x = x+110;
   label6 = av.label(".",{top:y,left:x-5}); 
   label6.show();
-  label4 = av.label("(x<sub>2</sub> + ^x<sub>4</sub> + x<sub>3</sub>)",{top:y,left:x}).css({"color":"blue"}); 
+  label4 = av.label("(x<sub>2</sub> + ^x<sub>4</sub> + x<sub>3</sub>)",{top:y,left:x}).css({"color":"blue","opacity":0.5}); 
   label4.show();
 
   var  g1 = av.ds.graph({width: 450, height: 450,layout: "manual", directed: false});
   x=0;
   y=100;
-  var x21 = g1.addNode("^x<sub>1</sub>", {"left": x+100, "top": y}).css({"background-color":"green"});
-  var x22 = g1.addNode("^x<sub>2</sub>", {"left": x+200,"top": y}).css({"background-color":"green"});
-  var x23 = g1.addNode("x<sub>4</sub>", {"left": x+300, "top": y}).css({"background-color":"green"});
+  var x21 = g1.addNode("^x<sub>1</sub>", {"left": x+100, "top": y}).css({"background-color":"green","opacity":0.5});
+  var x22 = g1.addNode("^x<sub>2</sub>", {"left": x+200,"top": y}).css({"background-color":"green","opacity":0.5});
+  var x23 = g1.addNode("x<sub>4</sub>", {"left": x+300, "top": y}).css({"background-color":"green","opacity":0.5});
    
-  var x11 = g1.addNode("x<sub>2</sub>", {"left": x+20, "top": y+90}).css({"background-color":"red"});
-  var x12 = g1.addNode("x<sub>1</sub>", {"left": x+10,"top": y+180}).css({"background-color":"red"});
-  var x13 = g1.addNode("^x<sub>3</sub>", {"left": x, "top": y+270}).css({"background-color":"red"});
+  var x11 = g1.addNode("x<sub>2</sub>", {"left": x+20, "top": y+90}).css({"background-color":"red","opacity":0.5});
+  var x12 = g1.addNode("x<sub>1</sub>", {"left": x+10,"top": y+180}).css({"background-color":"red","opacity":0.5});
+  var x13 = g1.addNode("^x<sub>3</sub>", {"left": x, "top": y+270}).css({"background-color":"red","opacity":0.5});
    
-  var x31 = g1.addNode("x<sub>2</sub>", {"left": x+400, "top": y+90}).css({"background-color":"blue"});
-  var x32 = g1.addNode("^x<sub>4</sub>", {"left": x+410,"top": y+180}).css({"background-color":"blue"});
-  var x33 = g1.addNode("x<sub>3</sub>", {"left": x+420, "top": y+270}).css({"background-color":"blue"});
+  var x31 = g1.addNode("x<sub>2</sub>", {"left": x+400, "top": y+90}).css({"background-color":"blue","opacity":0.5});
+  var x32 = g1.addNode("^x<sub>4</sub>", {"left": x+410,"top": y+180}).css({"background-color":"blue","opacity":0.5});
+  var x33 = g1.addNode("x<sub>3</sub>", {"left": x+420, "top": y+270}).css({"background-color":"blue","opacity":0.5});
    
   g1.layout();
 

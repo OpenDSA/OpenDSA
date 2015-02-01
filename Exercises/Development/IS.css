@@ -1,0 +1,14 @@
+.jsavnode.marked{
+  background-color: Teal;
+  opacity : 0.5;
+}
+
+.jsavnode.prohibited{
+  background-color: PaleVioletRed;
+  opacity : 0.5;
+}
+
+.jsavnode.inSolution{
+  background-color: Orange;
+  opacity : 0.5;
+}

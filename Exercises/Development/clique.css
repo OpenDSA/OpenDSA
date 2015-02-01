@@ -1,0 +1,14 @@
+.jsavnode.marked{
+  background-color: Teal;
+  opacity : 0.5;
+}
+
+.edgemarked{
+  stroke: Blue;
+  stroke-width: 2px;
+}
+
+.jsavnode.inSolution{
+  background-color: Orange;
+  opacity : 0.5;
+}

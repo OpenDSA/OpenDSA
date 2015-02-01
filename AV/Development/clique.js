@@ -58,9 +58,9 @@ $(document).ready(function () {
   var ne8 = g3.addEdge(n1, n3);
   var ne8 = g3.addEdge(n6, n3);
 
-  ne7.css({"stroke":"red","stroke-width":"5"});
-  ne6.css({"stroke":"red","stroke-width":"5"});
-  ne2.css({"stroke":"red","stroke-width":"5"});
+  ne7.css({"stroke":"LightCoral","stroke-width":"5"});
+  ne6.css({"stroke":"LightCoral","stroke-width":"5"});
+  ne2.css({"stroke":"LightCoral","stroke-width":"5"});
 
   g3.layout();
   g3.show();
@@ -72,9 +72,9 @@ label2.hide();
   label2 = av.label("The following graph contains a <i>4-Clique</i> i.e. a clique of size 4.",{top: y-30}).css({"text-align": "center"}); 
   label2.show();
  
-  ne1.css({"stroke":"red","stroke-width":"5"});
-  ne4.css({"stroke":"red","stroke-width":"5"});
-  ne5.css({"stroke":"red","stroke-width":"5"});
+  ne1.css({"stroke":"LightCoral","stroke-width":"5"});
+  ne4.css({"stroke":"LightCoral","stroke-width":"5"});
+  ne5.css({"stroke":"LightCoral","stroke-width":"5"});
 
   g3.layout();
   g3.show();
@@ -152,12 +152,12 @@ label2.hide();
 
   label2 = av.label("<b>Yes</b>",{top:20}).css({"text-align": "center"}); 
   label2.show();
-  e1.css({"stroke": "red","stroke-width":"7"});
-  e2.css({"stroke": "red","stroke-width":"7"});
-  e3.css({"stroke": "red","stroke-width":"7"});
-  e4.css({"stroke": "red","stroke-width":"7"});
-  e5.css({"stroke": "red","stroke-width":"7"});
-  e6.css({"stroke": "red","stroke-width":"7"});
+  e1.css({"stroke": "LightCoral","stroke-width":"7"});
+  e2.css({"stroke": "LightCoral","stroke-width":"7"});
+  e3.css({"stroke": "LightCoral","stroke-width":"7"});
+  e4.css({"stroke": "LightCoral","stroke-width":"7"});
+  e5.css({"stroke": "LightCoral","stroke-width":"7"});
+  e6.css({"stroke": "LightCoral","stroke-width":"7"});
 
   g.layout();
 
