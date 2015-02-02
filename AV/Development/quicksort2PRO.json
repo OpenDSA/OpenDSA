@@ -21,7 +21,7 @@
     "fi": {
       ".exerciseTitle": "Quicksort",
       ".instructLabel": "Ohjeet:",
-      ".instructions": "Järjestä alla oleva taulukko simuloimalla Quicksort-algoritmia. Pivot arvo on värjätty oranssiksi, ja se valitaan ja siiretään oikeaan laitaan puolsetasi. Tehtäväsi on suorittaa <strong>partitiointi, pivotin siirto partitioinnin jälkeen ja funktiokutsut</strong>.<br><br>Arvoja voi siirtää paikasta toiseen klikkaamalla. Tee funktiokutsu painamalla  <strong>call</strong>-nappia ja valitsemalla tämän jälkeen vasen ja oikea raja. Palaa funktiosta painamalla <strong>return</strong>-nappia. Taulukon alla olevasta kutsupino näyttää mille välille Quicksort-funktiota on kutsuttu.",
+      ".instructions": "Järjestä alla oleva taulukko simuloimalla Quicksort-algoritmia. Pivot arvo on värjätty oranssiksi, ja se valitaan ja siiretään oikeaan laitaan puolestasi. Tehtäväsi on suorittaa <strong>partitiointi, pivotin siirto partitioinnin jälkeen ja funktiokutsut</strong>.<br><br>Arvoja voi siirtää paikasta toiseen klikkaamalla. Tee funktiokutsu painamalla  <strong>call</strong>-nappia ja valitsemalla tämän jälkeen vasen ja oikea raja. Palaa funktiosta painamalla <strong>return</strong>-nappia. Taulukon alla oleva kutsupino näyttää mille välille Quicksort-funktiota on kutsuttu.",
       "table_to_be_sorted": "Järjestettävä taulukko",
       "call_stack": "Kutsupino",
       "call": "Call",
