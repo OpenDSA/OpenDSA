@@ -1,19 +1,26 @@
+/* global ODSA, JSAV */
 (function ($) {
   "use strict";
   var arraySize = 10,
-    initialArray,
-    barArray,
-    sorted,
-    av = new JSAV($("#jsavcontainer")),
-    code = av.code(
-      "for i = 0 to n-2 do\n" +
-      "    min = i\n" +
-      "    for j = i+1 to n-1 do\n" +
-      "        if (a[j] < a[min]) do\n" +
-      "            min = j\n" +
-      "    swap a[i] and a[min]");
+      initialArray,
+      barArray,
+      sorted,
+      pseudo,
+
+      // get the configurations from the configuration file
+      config = ODSA.UTILS.loadConfig({'av_container': 'jsavcontainer'}),
+      interpret = config.interpreter,
+      code = config.code,
+
+      // Create a JSAV instance
+      av = new JSAV($("#jsavcontainer"));
 
   av.recorded(); // we are not recording an AV with an algorithm
+
+  if (code) {
+    pseudo = av.code(code, {after: {element: $(".instructions")}});
+    pseudo.show();
+  }
 
   function initialize() {
 
@@ -36,9 +43,8 @@
     barArray.highlight(0);
     barArray.click(clickHandler);
 
-    // show the code
-    code.show();
-    code.highlight(6);
+    // highlight
+    pseudo.highlight(6);
     
     return barArray;
   }
@@ -121,7 +127,7 @@
     
   };
 
-  var exercise = av.exercise(modelSolution, initialize, {}, {});
+  var exercise = av.exercise(modelSolution, initialize, {feedback: "atend"});
   exercise.reset();
 
 }(jQuery));
