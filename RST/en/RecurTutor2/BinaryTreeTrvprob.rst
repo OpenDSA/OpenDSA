@@ -15,6 +15,8 @@ Binary Tree Traversal Common Problems
 
 When writing a recursive function to solve a problem that requires traversing a binary tree,
 we want to make sure that we are visiting "exactly" the required nodes (no more and no less).
+You should also make sure that you don't do reduandant checks on the values of the children
+or if the children are null or not.
 
 
 .. topic:: Example
@@ -36,7 +38,19 @@ You should learn two skills in order to avoid ineffecient solutions:
  #. Formulate the base case and its action to work correctly on any given binary tree.
  #. Formulate the recursive case and its action to work correctly on any give binary tree.
 
+Avoid the following common mistakes:
 
+ #. Forget to check if the root is null.
+ #. Check if one or both children are null. You SHOULD NOT do that.When you do the recursive call and pass the root.left()
+    or the root.right() as the parameter, the recursive function will call itself and treating
+    the passed child as the new root. So, you don't need to explicitly check if the children are null.
+ #. Check on the children values. You SHOULD NOT do that. The same as the previous point. The child passed to the recursive call
+    is treated as the new root. So, you don't need to explicitly check on the children values. Just
+    make sure you do that for the root.
+ #. If it is required from you to write a function that returns a value (e.g. the number of nodes in a binary tree),
+    you have to make sure that the function actually "returns". One of the common mistakes is just 
+    doing  the recursive call without writing the word "return" before it.
+ 
 Formulate the base case and its action
 --------------------------------------
 
@@ -62,7 +76,11 @@ Admit that it will do it correctly. So, when your recursive case action
 is to  visit recursively the right and left children this means that every node will do that. 
 You don't need to worry about making sure that every node will do it.
 
-Make sure that when you design your recursive case(s) that they are not doing redundant nodes visit or skipping nodes. This can be done by tracing your code on a binary tree and marking the nodes that you have visited after each recursive call.
+
+Some problems requires that you traverse the whole tree, in those 
+problems you must make sure that your function isworking for the left and right sides of the tree. 
+Some other problems requires only traversing the left or the right side
+of the tree. You have to make sure that you visit exactly the nodes that are needed by the problem.
 
 The following visulization shows an example of a code that does redundant visit to solve the problem
 of getting the number of nodes falling in a certain given range in a binary search tree (BST).
