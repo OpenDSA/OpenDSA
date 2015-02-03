@@ -58,6 +58,7 @@
     }
     jsav.stepOption("grade", true);
     jsav.step();
+    jsav.umsg(interpret("av_ms_example"));
     jsav.displayInit();
 
     return modelTree;
@@ -140,9 +141,11 @@
     return this.score;
   };
 
-  var exercise = av.exercise(modelSolution, initialize,
-                             { compare:  {css: "background-color"},
-                               feedback: "atend"});
+  var exercise = av.exercise(modelSolution, initialize, {
+    compare: { css: "background-color" },
+    modelDialog: { minWidth: "700px" },
+    feedback: "atend"
+  });
   exercise.reset();
 
 }(jQuery));
