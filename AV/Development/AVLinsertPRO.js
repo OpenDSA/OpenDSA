@@ -104,7 +104,7 @@
           node = node.right();
         }
       }
-      jsav.umsg("The value " + val + " is inserted into the tree.");
+      jsav.umsg(interpret("av_ms_insert"), { fill: { val: val } });
       node.value(val);
       node.removeClass("emptynode");
       node.highlight();
@@ -117,10 +117,10 @@
       //perform rotation
       node = modelTree.getUnbalancedNode(val);
       if (node) {
-        jsav.umsg("This node is now unbalanced.");
+        jsav.umsg(interpret("av_ms_unbalanced"));
         node.highlight();
         jsav.step();
-        jsav.umsg("The rotation is performed on the unbalanced node in order to balance the tree.");
+        jsav.umsg(interpret("av_ms_rotation"));
         node.balance();
         node.unhighlight();
         modelTree.layout();
@@ -130,23 +130,6 @@
     }
 
     return modelTree;
-  }
-
-
-  // create buttoncontainer if it doesn't exist
-  if ($("#buttoncontainer").length === 0) {
-    $("#jsavcontainer .jsavcanvas").prepend(
-      '<div id="buttoncontainer" style="margin: auto; text-align: center; padding: 15px">' +
-      '  <button id="buttonL">Single Rotation Left</button>' +
-      '  <button id="buttonLR">Double Rotation LR</button>' +
-      '  <button id="buttonRL">Double Rotation RL</button>' +
-      '  <button id="buttonR">Single Rotation Right</button>' +
-      '</div>');
-  }
-
-  // create stackcontainer if it doesn't exist
-  if ($("#stackcontainer").length === 0) {
-    $("#jsavcontainer .jsavcanvas").prepend('<div id="stackcontainer" style="margin: auto; padding: 15px"></div>');
   }
   
   //generate values without duplicates
@@ -169,11 +152,11 @@
   // function to be called when a button is clicked
   function clickAction(node, rotateFunction) {
     if (!node || node.container !== tree) {
-      window.alert("Select an unbalanced node first!");
+      window.alert(interpret("av_select_node"));
       return;
     }
     if (rotateFunction.call(node) === false) {
-      window.alert("Unable to perform this rotation on the selected node!");
+      window.alert(interpret("av_cannot_rotate"));
       return;
     }
     clickHandler.selNode = null;
