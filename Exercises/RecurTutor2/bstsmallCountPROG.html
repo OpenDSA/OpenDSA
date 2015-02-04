@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html data-require="math math-format word-problems spin">
 <head>
-  <title> Binary Tree Leaf Nodes Count Exercise</title>
+  <title> Binary Search Tree Small Count Exercise</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
   <script> window.OpenPopKa = true; </script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-     
+  
   <script src="../../lib/codemirror/lib/codemirror.js"></script>
   <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
   <script src="../../lib/codemirror/mode/clike/clike.js"></script>
@@ -15,20 +15,28 @@
     lineNumbers: true,
     mode:  "text/x-java"
   });
-  </script>
   
+  </script>
 </head>
 <body data-height="550" data-width="950">
 
 <div class="exercise">
-
+ 
   <div class="problems">
     <div> <!-- Supresses answer box -->
-      <p class="problem" id = "test">Add appropriate lines of code to the following function skeleton so that the function will recursively count the  number of leaf nodes in the binary tree pointed at by "root".  <br />
+      <p class="problem" id = "test">
+    Given a non-empty binary search tree (an ordered binary tree), 
+    write a recursive function bstsmallCount that given a root to a binary search tree (BST) and a value key, returns the number of nodes having values less than key. 
+    Your function should visit few nodes in the BST as possible. 
+	Add appropriate lines of code to the following function skeleton so that the function will 
+	recursively count the number of nodes having values less than key. 
+	in the binary search tree pointed at by "root". 
+	 <br />
 
     <textarea  id="codeTextarea">
-int btcountLeaf(BinNode root) {
+int bstsmallCount(BinNode root , int key) {
   // Your code goes between these lines
+
 
 
 
@@ -46,7 +54,7 @@ int btcountLeaf(BinNode root) {
         <div class="validator-function">
 	     window.codeValue = editor.getValue();
          window.progexType= "binarytree";
-         window.summexName= "btLeafPROG";
+         window.summexName= "bstsmallCountPROG";
         </div>
       </div>
       <div class="hints"></div>
