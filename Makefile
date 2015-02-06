@@ -1,7 +1,8 @@
 RM = rm -rf
 CONFIG_SCRIPT = tools/configure.py
 TARGET = build
-CSSLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
+CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
+CSSLINTFLAGS = --quiet --ignore=ids,adjoining-classes
 MINIMIZE = java -jar tools/yuicompressor-2.4.7.jar --nomunge
 
 .PHONY: all clean lint csslint jshint min CS2114 CS223 CS5114 CS3114 CS3114notes CS150 OpenDSA test testX IS allBooks nomin pull CPSC270S15 CS2401 COP3530 CS208 ECE252 Tutorial TDDD86_2014 S15 CSCI115
@@ -104,7 +105,7 @@ CSE-A1141eng: min
 	python $(CONFIG_SCRIPT) config/CSE-A1141eng.json
 
 CS2114: min
-	python $(CONFIG_SCRIPT) config/CS2114S15.json
+	python $(CONFIG_SCRIPT) config/CS2114.json
 
 CS2401: min
 	python $(CONFIG_SCRIPT) config/CS2401.json
