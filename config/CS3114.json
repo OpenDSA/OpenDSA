@@ -1096,7 +1096,7 @@
             "long_name": "Bubble Sort Proficiency Exercise",
             "required": true,
             "points": 2.0,
-            "threshold": 5
+            "threshold": 3
           },
           "BubbleSortAnalysisCON": {
             "long_name": "Bubble Sort Analysis Slideshow",
