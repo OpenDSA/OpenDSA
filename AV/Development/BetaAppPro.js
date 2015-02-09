@@ -9,6 +9,7 @@
 		var tell = function (msg, color) { av.umsg(msg, {color: color}); };
 		var incrs = [], $theExpression = $("#expression"), initialArray = [], theExpression, position, ansArray, arraySize, strArr, ansArr;
 		
+		// Function to generate the model solution.
 		function modelSolution(modeljsav) 
 		{
 			var modelArray = modeljsav.ds.array(ansArray);
@@ -24,6 +25,7 @@
 			return modelArray;
 		}
 
+		// Function to initialize the exercise and generate a semi-random expression.
 		function init()
 		{
 			var varArr = ["a", "b", "c", "i", "j", "k", "w", "x", "y", "z"];
@@ -50,16 +52,19 @@
 			return jsavArray;
 		}
 		
+		// Function to produce text for the "Help" button.
 		function help() 
 		{
 			alert("Help");
 		}
 
+		// Function to produce text for the "About" button.
 		function about() 
 		{
 			alert("Proficiency Exercise");
 		}
 
+		// Function to check answer once the "Submit" button is pressed.
 		function submit()
 		{
 			var temp = document.getElementById('answer').value;
@@ -84,6 +89,7 @@
 			}
 		}
 		
+		// Function to check answer once the "Done" button is pressed.
 		function done()
 		{
 			if(position < ansArray.length)
@@ -98,6 +104,7 @@
 			}
 		}
 		
+		// Function to fix exercise if an incorrect submission is entered.
 		function fixState(modeljsav)
 		{
 			if(position < ansArray.length)

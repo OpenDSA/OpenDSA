@@ -9,6 +9,14 @@
 Lambda Calculus [Draft]
 ===================================
 
+Let's begin by seeing the difference between free and bound variables.
+
+.. Slideshow for Free/Bound Vars
+
+.. inlineav:: FreeBoundCON ss
+   :output: show
+
+
 Before seeing how lambda calculus expressions are evaluating, we need to be sure that you can identify free and bound variable.   For some practice, try the following two exercises:
 
 .. avembed:: Exercises/Development/LambdaCalcFree.html ka
@@ -101,6 +109,8 @@ As a final test of your proficiency in doing beta reductions, try doing
 2. All the steps in a complete normal order reduction
 
 .. avembed:: AV/Development/BetaNormPro.html pe
+
+.. odsascript:: AV/Development/FreeBoundCON.js
 
 .. odsascript:: AV/Development/AlphaConversionCON.js
 

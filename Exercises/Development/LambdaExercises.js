@@ -78,15 +78,27 @@ init_alpha = function()
 	var2 = varArr.splice(rnd, 1);
 	rnd = Math.floor(Math.random()*8);
 	var3 = varArr.splice(rnd, 1);
-	strArr = ["(\u03BB"+var1+".\u03BB"+var2+".("+var1+" "+var2+") "+var2+")"];
-	ansArr = ["(\u03BB"+var1+".\u03BB"+var3+".("+var1+" "+var3+") "+var2+")"];
+	strArr = ["(\u03BB"+var1+".\u03BB"+var2+".("+var1+" "+var2+") "+var2+")",
+			  "(\u03BB"+var1+"."+var1+" "+var1+")",
+			  "(\u03BB"+var1+"."+var1+"(\u03BB"+var1+".("+var1+" "+var1+")))"];
+	ansArr = ["(\u03BB"+var1+".\u03BB"+var3+".("+var1+" "+var3+") "+var2+")",
+			  "(\u03BB"+var2+"."+var2+" "+var1+")",
+			  "(\u03BB"+var2+"."+var2+"(\u03BB"+var1+".("+var1+" "+var1+")))"];
 	optArr = 	[
 					["(\u03BB"+var1+".\u03BB"+var2+".("+var3+" "+var2+") "+var3+")", 
 					 "(\u03BB"+var3+".\u03BB"+var2+".("+var3+" "+var2+") "+var2+")", 
 					 "(\u03BB"+var1+".\u03BB"+var2+".("+var1+" "+var2+") "+var3+")",
-					 "(\u03BB"+var1+".\u03BB"+var3+".("+var1+" "+var3+") "+var2+")"]
+					 "(\u03BB"+var1+".\u03BB"+var3+".("+var1+" "+var3+") "+var2+")"],
+					["(\u03BB"+var1+"."+var2+" "+var1+")",
+					 "(\u03BB"+var1+"."+var1+" "+var2+")",
+					 "(\u03BB"+var2+"."+var1+" "+var1+")",
+					 "(\u03BB"+var2+"."+var2+" "+var1+")"],
+					["(\u03BB"+var1+"."+var1+"(\u03BB"+var2+".("+var2+" "+var2+")))", 
+					 "(\u03BB"+var1+"."+var1+"(\u03BB"+var1+".("+var2+" "+var2+")))", 
+					 "(\u03BB"+var1+"."+var1+"(\u03BB"+var2+".("+var1+" "+var1+")))",
+					 "(\u03BB"+var2+"."+var2+"(\u03BB"+var1+".("+var1+" "+var1+")))"]
 				];
-	rnd = Math.floor(Math.random());
+	rnd = Math.floor(Math.random()*3);
 	str = strArr[rnd];
 	ans = ansArr[rnd];
 	opt = optArr[rnd];
@@ -163,7 +175,7 @@ init_app_highlight = function()
 	ansArr = [[9,8],
 			  [6,5],
 			  [7,4,5]];
-	rnd = Math.floor(Math.random());
+	rnd = Math.floor(Math.random()*3);
 	arr = jsav.ds.array(strArr[rnd]);
 	answerArr = ansArr[rnd];
 	ans = answerArr;
@@ -193,7 +205,7 @@ init_norm_highlight = function()
 	ansArr = [[6,7,8,9,10,3,4],
 			  [3,4,5,6,7,2],
 			  [7,4,5]];
-	rnd = Math.floor(Math.random());
+	rnd = Math.floor(Math.random()*3);
 	arr = jsav.ds.array(strArr[rnd]);
 	answerArr = ansArr[rnd];
 	ans = answerArr;
@@ -218,9 +230,17 @@ init_alpha_highlight = function()
 	var2 = varArr.splice(rnd, 1);
 	rnd = Math.floor(Math.random()*8);
 	var3 = varArr.splice(rnd, 1);
-	strArr = [["(", "\u03BB"+var1+".", "\u03BB"+var2+".", "(", var1, var2, ")", var2, ")"]];
-	ansArr = [[2,5]];
-	rnd = Math.floor(Math.random());
+	strArr = [
+				["(", "\u03BB"+var1+".", "\u03BB"+var2+".", "(", var1, var2, ")", var2, ")"],
+				["(", "\u03BB"+var1+".", var1, var1, ")"],
+				["(", "\u03BB"+var1+".", var1, "(", "\u03BB"+var1+".", "(", var1, var1, ")"]
+			 ];
+	ansArr = [
+				[2,5],
+				[1,2],
+				[1,2]
+			 ];
+	rnd = Math.floor(Math.random()*3);
 	arr = jsav.ds.array(strArr[rnd]);
 	answerArr = ansArr[rnd];
 	ans = answerArr;
