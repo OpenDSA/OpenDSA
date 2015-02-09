@@ -12,13 +12,13 @@
       "#about": "About"
     },
     "fi": {
-      ".avTitle": "Fi Binary Tree Traversal Proficiency Exercise",
+      ".avTitle": "Binääripuiden läpikäynti",
       "av_Authors": "Ville Karavirta",
       ".instructLabel": "Ohjeet:",
-      "#instructionsInorder": "Fi Reproduce the behavior of binary tree inorder traversal. Click nodes to indicate the order in which the traversal algorithm would visit them.",
-      "#instructionsPostorder": "Fi Reproduce the behavior of binary tree postorder traversal. Click nodes to indicate the order in which the traversal algorithm would visit them.",
-      "#instructionsPreorder": "Fi Reproduce the behavior of binary tree preorder traversal. Click nodes to indicate the order in which the traversal algorithm would visit them.",
-      "#instructionsLevelorder": "Fi Reproduce the behavior of binary tree level order traversal. Click nodes to indicate the order in which the traversal algorithm would visit them.",
+      "#instructionsInorder": "Klikkaa alla olevan binääripuun solmuja <strong>sisäjärjestyksessä</strong>.",
+      "#instructionsPostorder": "Klikkaa alla olevan binääripuun solmuja <strong>jälkijärjestyksessä</strong>.",
+      "#instructionsPreorder": "Klikkaa alla olevan binääripuun solmuja <strong>esijärjestyksessä</strong>.",
+      "#instructionsLevelorder": "Klikkaa alla olevan binääripuun solmuja <strong>tasojärjestyksessä</strong>.",
       "#help": "Ohje",
       "#about": "Lisätietoa"
     }
