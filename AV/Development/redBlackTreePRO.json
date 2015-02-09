@@ -52,7 +52,7 @@
       "2.3.2. [rotaatio] Jos t on punainen ja v musta, tarvitaan rotaatio,",
       "       joka poistaa peräkkäiset punaiset kaaret. Rotaatio valitaan kuten",
       "       AVL-puussa. Lisäksi p ja uusi juuri (p:n uusi isä) vaihtavat väriä.",
-      "       Rotaation jälkeenpunaiset kaaret eivät ole enää peräkkäin.",
+      "       Rotaation jälkeen punaiset kaaret eivät ole enää peräkkäin.",
       "",
       "ROTAATIO:",
       "1 Rekursion palatessa (bottom-up) pidetään kirjaa",
