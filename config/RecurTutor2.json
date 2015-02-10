@@ -90,7 +90,14 @@
             "required": true,
             "points": 1.0,
             "threshold": 0.90
-           }}
+           },
+           "BinaryTreeMistakesCON": {
+            "long_name": "Binary Tree Common Mistakes",
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.90
+           }
+         }
       },
       "RecurTutor2/BinaryTreeInfFlw": {
         "long_name": "Binary Tree Information Flow",

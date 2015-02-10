@@ -20,7 +20,9 @@ background-size: cover;
 }
 
 #IneffBinaryTreeRangeCON .jsavcanvas {
- height: 300px;
+ height: 350px;
 }
 
-
+#BinaryTreeMistakesCON .jsavcanvas {
+ height: 450px;
+}
