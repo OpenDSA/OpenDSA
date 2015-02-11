@@ -9,6 +9,10 @@
    :satisfies: full binary tree theorem
    :topic: Binary Trees
 
+
+.. odsalink:: RST/en/IS/BinaryTreeFullThmCON.css
+
+
 The Full Binary Tree Theorem
 ============================
 
@@ -53,10 +57,16 @@ space from its internal nodes.
 
    A tree containing many internal nodes and a single leaf.
 
+.. inlineav:: BinaryTreeFullThmCON dgm
+	:output: show
+	
 .. TODO::
    :type: Figure
 
    Replace with proper figure (OneLeaf).
+
+
+
 
 .. _FullTree:
 
@@ -155,3 +165,5 @@ each suggests a useful way of thinking about binary trees.
    In other words, there are :math:`n-1` non-empty children.
    Because the total number of children is :math:`2n`, the remaining
    :math:`n+1` children must be empty.
+
+.. odsascript:: RST/en/IS/BinaryTreeFullThmCON.js
