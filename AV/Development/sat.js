@@ -228,6 +228,7 @@ $(document).ready(function () {
   label1.hide();
   label2.hide();
   label3.hide();
+  label4.hide();
   av.umsg("<b>Insights</b>");
   av.umsg("<br><br><br><br>Size of the truth table is 2<sup>n</sup> where n is the "
   +"number of boolean variables involved ",{preserve:true}); 
