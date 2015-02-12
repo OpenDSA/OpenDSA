@@ -3,3 +3,8 @@
 
 }
 
+.dashedEdge {  /* make node edge dashed */
+
+	stroke-dasharray: 3,3; 
+	stroke-width: 2;
+}

@@ -4,7 +4,9 @@ $(document).ready(function () {
     var btTop = 10;
     var btLeft = 350;
     var btRight = 425;
-    var bt = av.ds.binarytree({nodegap: 35, top: btTop, left: btLeft});
+    var bt = av.ds.binarytree({nodegap: 30, top: btTop, left: btLeft});
+
+
     bt.root('');
     var rt = bt.root();
     
@@ -12,14 +14,12 @@ $(document).ready(function () {
     rt.right().right('');
     rt.right().right().right('');
     
-   	//add internal nodes label
-   	rt.right().edgeToRight().label("Any number of internal nodes");
-   	
-   	
-    bt.layout();
+   	//makking internal edge infinte 
+   	rt.right().edgeToRight().addClass("dashedEdge");
 
-    //add the bottom label
-    var label = av.label("A tree containing many internal nodes and a single leaf" , {left: btLeft-50, top: 250}).show;
+
+    bt.layout();
+    var label = av.label("A tree containing many internal nodes and a single leaf" , {left: btLeft-100, top: 250}).show;
 
    
 });
