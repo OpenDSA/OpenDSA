@@ -30,6 +30,7 @@ Written by Junyang Chen and Cliff Shaffer
     .jsavpointer{
       width: 40px;
       text-align: center;
+      z-index: 120;
       cursor: pointer;
     }
     #reset { margin-right: 20px;}
@@ -167,7 +168,6 @@ var jsav,           // The JSAV object
 
 function bindPointerClick(pointer){
   console.log("Set pointer click handler");
-  pointer.label.element.css( { 'z-index': 100} );
   pointer.label.element.click(function(){pclick(pointer);});
 }
 
