@@ -4,7 +4,7 @@ $(document).ready(function () {
 	var av_name = "FreeBoundCON";
 	var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
 	var av = new JSAV(av_name);
-	int y = 0;
+	var int y = 0;
 	var expression = ["(", "&#955;x.", "(", "x", "y", ")", ")"];
 	av.label("Free and Bound Variables");
 	var screen = av.ds.matrix([expression], {style: "plain"});
