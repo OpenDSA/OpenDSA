@@ -9,22 +9,98 @@
 Lambda Calculus [Draft]
 ===================================
 
-Let's begin by seeing the difference between free and bound variables.
+.. role:: raw-html(raw)
+   :format: html
+
+The lambda calculus is a small language defined by the following BNF.
+
+ <LambdaExp> ::= <var> :raw-html:`<br />&nbsp;&nbsp;&nbsp;&nbsp;` \| :math:`\lambda` <var> . <LambdaExp> :raw-html:`<br />&nbsp;&nbsp;&nbsp;&nbsp;` \| (<LambdaExp> <LambdaExp>)          
+
+The above BNF tells us that expressions in the lambda calculus come in one of three flavors:
+
+- A *variable* (the first production).   For example :math:`x`.
+- A *function abstraction* (the second production). For example
+  :math:`\lambda x.y`.  Think of this as the "function whose formal
+  parameter is :math:`x` and whose return value is :math:`y`".
+- An *application* (the third production). For example :math:`(y \; z)`.
+  Think of this as "the application of :math:`x` to :math:`y`".  
+  In situations where the first component of the application is a
+  function abstraction, this represents a "function call" in the
+  lambda calculus.  The more formal name of an application whose first
+  component is a function abstraction is a *beta-redex*.  You will soon see why this terminology is appropriate in the context of the operations we perform to "evaluate" functions in the lambda calculus.
+
+A variable is *bound* in an expression if it refers to the formal
+parameter in the expression.  A variable is *free* in an expression if
+it is not bound.   In terms of a more precise recursive definition,
+a variable :math:`x` occurs free in expression E if:
+
+- E is a variable and E is identical to :math:`x` , or
+- E is of the form (E1 E2) and :math:`x` occurs free in E1 or E2, or
+- E is of the form :math:`\lambda y.E'` where :math:`y` is different from :math:`x` and :math:`x` occurs free in E'.
+
+
+To illustrate the difference between free and bound variables.
 
 .. Slideshow for Free/Bound Vars
 
 .. inlineav:: FreeBoundCON ss
    :output: show
 
+Note that it possible for a variable to occur both free and bound in the same expression.  Consider :math:`(\lambda x.x \; x)`.   Here the first occurrence of :math:`x` is bound and the second is free.
 
-Before seeing how lambda calculus expressions are evaluating, we need to be sure that you can identify free and bound variable.   For some practice, try the following two exercises:
+Before seeing how lambda calculus expressions are evaluated, we need
+to be sure that you can identify free and bound variables.  For some
+practice, try the following two exercises:
 
 .. avembed:: Exercises/Development/LambdaCalcFree.html ka
 
 .. avembed:: Exercises/Development/LambdaCalcBound.html ka
 
+How should one evaluate a lambda expression?  We first need to realize
+that, if by evaluate we mean to "call a function and see what it
+returns", then it only makes sense to evaluate a beta-redex, that is,
+an application in which the first expression is a function
+abstraction.  For instance :math:`(\lambda x.(x \; y) \; z)` is a
+beta-redex, but :math:`((x \; y) \; z)` is not.  In the lambda
+calculus, we evaluate a beta-redex by substituting the second
+component of the application expression for the formal parameter of
+the function abstraction in the "body" of the function, that is, in the expression following the dot that occurs in the syntax of the
+function abstraction.  For instance, carrying out this substitution in
+:math:`(\lambda x.(x \; y) \; z)` would result in :math:`(z \; y)`
 
-Alpha conversion is used when substituting for a formal parameter in a lambda calculus expression will capture a free variable.  To illustrate this, consider:
+It is important to realize this idea of substitution makes sense in terms of the way we think about calling functions in everyday programming.   For example, suppose we had the JavaScript function
+
+::
+
+ var foobar = function(x,y,z) { return  z * (x - y); }
+
+and we called it by:
+
+::
+
+ foobar(8,6,4)
+
+The a reasonable way to describe the value returned would be to say "substitute 8 for x, 6 for y, and 4 for z in the expression :math:`z * (x - y)`. 
+
+
+
+The act of doing this substitution is called *beta-reducing* the lambda expression.   Hence we now see the rationale for the term beta-redex that we introduced earlier.   A beta-redex is the one and only type of lambda expression that can be beta-reduced.
+
+What can go wrong when we do this substitution to carry out a
+beta-reduction in the lambda calculus?  By substituting one
+variable for another, a variable that was free in an expression may
+become bound.  For instance, in the expression :math:`(\lambda
+x.\lambda y.(y \; x) \; y)`, the second occurrence of y in this
+application is free.  But if we beta-reduce, the result will be
+:math:`\lambda y.(y \; y)` and the free y that was substituted for the
+formal parameter x is now bound.  This is a result we need to avoid,
+and to do so, we must *alpha-convert* the expression that would cause
+the y to become bound.  The intuitive justification of alpha-conversion
+is that we do not change the function abstraction :math:`\lambda y.(y
+\; x)` if we use a different variable, say w, to use as the formal
+parameter for the function.  That is, as a function definition
+:math:`\lambda w.(w \; x)` is equivalent to :math:`\lambda y.(y \; x)`.   To carry out alpha-conversion on a function abstraction like :math:`\lambda p.b`, we 
+simply replace each free occurrence of p (the formal parameter) in b (the "body" of the function) by a new variable symbol not occurring anywhere in the body.    To illustrate this, consider:
 
 
 .. Slideshow for Alpha Conversion
@@ -44,19 +120,35 @@ You can get some more alpha conversion practice with the following exercise:
 
 .. avembed:: Exercises/Development/AlphaConversionHighlight.html ka
 
+The  "rule" for you to remember here is that, before substituting in a lambda
+expression to carry out a beta-reduction, be sure to check whether
+that substitution will capture any free variable, making it become a
+bound variable.  If it will, alpha-convert the expression before
+beta-reducing it.
 
-A fundamental tool in evaluating expressions in the lambda calculus is
-the notion of substitution.  For the application of a function to its
-argument, we need merely substitute the argument for the formal
-parameter in the expression that defines the function, being careful
-to first alpha convert if doing this would capture a free variable.
-This is called beta conversion, and to fully evaluate a lambda
-calculus expression, we may have to perform multiple beta conversions.
-The entire process is called beta reduction.  Since it involves
-potentially multiple beta conversions, we have a choice for the order
-in which the individual beta conversions are performed.
 
-In Applicative Order Reduction we  evaluate the innermost subexpressions first. That is, we only perform an application when each of the subexpressions has been reduced and there are no redexes left except the topmost application.  Consider:
+.. A fundamental tool in evaluating expressions in the lambda calculus is
+.. the notion of substitution.  For the application of a function to its
+.. argument, we need merely substitute the argument for the formal
+.. parameter in the expression that defines the function, being careful
+.. to first alpha convert if doing this would capture a free variable.
+.. This is called beta conversion, and 
+
+To fully evaluate a lambda calculus expression, we may have to perform
+multiple beta reductions.  This must be done until there are no more
+beta-redexes left in the expression.  At that point, the expression,
+fully evaluated, is said to be in *beta-normal* form.  Since it
+involves potentially multiple beta reduction, we have a choice for
+the order in which the individual beta conversions are performed.
+
+Applicative Order Reduction
+---------------------------
+
+The strategy is characterized by first evaluating the subexpressions that are inside an application expression.
+That is, we only perform an application when each of the
+subexpressions has been beta-reduced and there are no beta-redexes left except
+the topmost application.  Consider:
+
 
 .. Slideshow for Applicative order
 
@@ -78,7 +170,15 @@ For some more practice, try:
 
 
 
-Normal order evaluation  reduces the leftmost redex first -- before reducing the subexpressions that follow it.  Another way of thinking about it is that while applicative order proceeds by evaluating the subexpressions then applying the function, normal order evaluation proceeds by applying the function and then evaluating the subexpressions.   Consider the following example:
+Normal Order Reduction
+----------------------
+
+This strategy reduces the leftmost beta-redex first before reducing
+the subexpressions inside of it and those that follow it.  While
+applicative order proceeds by evaluating the subexpressions and then
+applying the function, normal order evaluation proceeds by applying
+the function first and then evaluating the subexpressions.  Consider
+the following example:
 
 
 .. Slideshow for Normal Order
