@@ -13,6 +13,10 @@ $(document).ready(function () {
   //  av.label("&#945;-Conversion Matrix");
   av.label("$\\alpha$-Conversion Matrix");
   var m1 = av.ds.matrix([stepOne, stepTwo, stepThree, stepFour], {style: "plain"});
+  for(y = 0; y < 9; y++)
+  {
+	m1.css(x, y, {"background-color": "#eed"});
+  }
   x = 1;
   for(y = 0; y < 5; y++) {
     m1.css(x, y, {"background-color": "#eed", "color": "#eed"});
@@ -67,10 +71,10 @@ $(document).ready(function () {
   av.step();
 
   // Slide 6
-  m1.css(0, 2, {"background-color": "white", "color": "rgb(0,0,0)"});
-  m1.css(0, 5, {"background-color": "white", "color": "rgb(0,0,0)"});
-  m1.css(2, 2, {"background-color": "white", "color": "rgb(0,0,0)"});
-  m1.css(2, 5, {"background-color": "white", "color": "rgb(0,0,0)"});
+  m1.css(0, 2, {"background-color": "#eed", "color": "rgb(0,0,0)"});
+  m1.css(0, 5, {"background-color": "#eed", "color": "rgb(0,0,0)"});
+  m1.css(2, 2, {"background-color": "#eed", "color": "rgb(0,0,0)"});
+  m1.css(2, 5, {"background-color": "#eed", "color": "rgb(0,0,0)"});
   x = 3;
   for(y = 0; y < 5; y++) {
     m1.css(x, y, {"background-color": "#eed", "color": "rgb(0,0,0)"});
