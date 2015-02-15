@@ -4,11 +4,11 @@ $(document).ready(function () {
 	var av_name = "FreeBoundCON";
 	var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
 	var av = new JSAV(av_name);
-	var int y = 0;
-	var expression = ["(", "&#955;x.", "(", "x", "y", ")", ")"];
-	av.label("Free and Bound Variables");
+	var y = 0;
+    var expression = ["(", "&#955;x.", "(", "x", "y", ")", "z", ")"];
+    av.label("Free and Bound Variables");
 	var screen = av.ds.matrix([expression], {style: "plain"});
-	for(y = 0; y < 7; y++)
+	for(y = 0; y < 8; y++)
 	{
 		screen.css(0, y, {"background-color": "#eed"});
 	}
@@ -18,9 +18,11 @@ $(document).ready(function () {
 	av.umsg("Free variables are those that are not captured by a lambda variable.");
 	av.step();
 	screen.css(0, 4, {"background-color": "aqua", "color": "rgb(255, 255, 255)"});
-	av.umsg("The following variable is the free variable in this expression:");
+	screen.css(0, 6, {"background-color": "aqua", "color": "rgb(255, 255, 255)"});
+	av.umsg("The following variables are the free variables in this expression:");
 	av.step();
 	screen.css(0, 4, {"background-color": "#eed", "color": "rgb(0, 0, 0)"});
+	screen.css(0, 6, {"background-color": "#eed", "color": "rgb(0, 0, 0)"});
 	av.umsg("Bound variables are those that are captured by a lambda variable.");
 	av.step();
 	screen.css(0, 3, {"background-color": "lightgreen", "color": "rgb(255, 255, 255)"});
