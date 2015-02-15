@@ -14,15 +14,19 @@ $(document).ready(function () {
 // 	av.label("&#946;-Reduction Matrix");
         av.label("$\\beta$-Reduction Matrix");
 	var m1 = av.ds.matrix([stepOne, stepTwo, stepThree], {style: "plain"});
+	for(y = 0; y < 12; y++)
+	{
+		m1.css(x, y, {"background-color": "#eed"});
+	}
 	x = 1;
 	for(y = 0; y < 8; y++)
 	{
-		m1.css(x, y, {"background-color": "white", "color": "rgb(255, 255, 255)"});
+		m1.css(x, y, {"background-color": "#eed", "color": "#eed"});
 	}
 	x = 2;
 	for(y = 0; y < 4; y++)
 	{
-		m1.css(x, y, {"background-color": "white", "color": "rgb(255, 255, 255)"});
+		m1.css(x, y, {"background-color": "#eed", "color": "#eed"});
 	}
 	m1.css(0, 8, {"text-align": "left"});
 	m1.layout();
@@ -42,17 +46,17 @@ $(document).ready(function () {
 	x = 1;
 	for(y = 0; y < 8; y++)
 	{
-		m1.css(x, y, {"background-color": "white", "color": "rgb(0,0,0)"});
+		m1.css(x, y, {"background-color": "#eed", "color": "rgb(0,0,0)"});
 	}
 	m1.css(1, 6, {"background-color": "lightgreen", "color": "rgb(0,0,0)"});
 	av.umsg("...which we replace with the argument.");
 	av.step();
-	m1.css(1, 6, {"background-color": "white", "color": "rgb(0,0,0)"});
+	m1.css(1, 6, {"background-color": "#eed", "color": "rgb(0,0,0)"});
 	av.umsg("Since there are no more instances of the lambda variable within the body, we have completed one &#946;-reduction!");
 	av.step();
-	m1.css(0, 7, {"background-color": "white", "color": "rgb(0,0,0)"});
-	m1.css(0, 8, {"background-color": "white", "color": "rgb(0,0,0)"});
-	m1.css(0, 9, {"background-color": "white", "color": "rgb(0,0,0)"});
+	m1.css(0, 7, {"background-color": "#eed", "color": "rgb(0,0,0)"});
+	m1.css(0, 8, {"background-color": "#eed", "color": "rgb(0,0,0)"});
+	m1.css(0, 9, {"background-color": "#eed", "color": "rgb(0,0,0)"});
 	av.umsg("However, there are still more reductions to be done...");
 	av.step();
 	m1.css(1, 1, {"background-color": "aqua", "color": "rgb(0,0,0)"});
@@ -67,14 +71,14 @@ $(document).ready(function () {
 	m1.css(1, 5, {"background-color": "lightgreen", "color": "rgb(0,0,0)"});
 	av.umsg("Then we look at the body of the function...");
 	av.step();
-	m1.css(1, 2, {"background-color": "white", "color": "rgb(0,0,0)"});
-	m1.css(1, 5, {"background-color": "white", "color": "rgb(0,0,0)"});
+	m1.css(1, 2, {"background-color": "#eed", "color": "rgb(0,0,0)"});
+	m1.css(1, 5, {"background-color": "#eed", "color": "rgb(0,0,0)"});
 	av.umsg("...and we make note of each instance of the variable inside of the body of the function...");
 	av.step();
 	x = 2;
 	for(y = 0; y < 4; y++)
 	{
-		m1.css(x, y, {"background-color": "white", "color": "rgb(0,0,0)"});
+		m1.css(x, y, {"background-color": "#eed", "color": "rgb(0,0,0)"});
 	}
 	m1.css(2, 1, {"background-color": "lightgreen", "color": "rgb(0,0,0)"});
 	m1.css(2, 2, {"background-color": "lightgreen", "color": "rgb(0,0,0)"});
@@ -83,10 +87,10 @@ $(document).ready(function () {
 	x = 1;
 	for(y = 0; y < 8; y++)
 	{
-		m1.css(x, y, {"background-color": "white", "color": "rgb(255, 255, 255)"});
+		m1.css(x, y, {"background-color": "#eed", "color": "#eed"});
 	}
-	m1.css(2, 1, {"background-color": "white", "color": "rgb(0,0,0)"});
-	m1.css(2, 2, {"background-color": "white", "color": "rgb(0,0,0)"});
+	m1.css(2, 1, {"background-color": "#eed", "color": "rgb(0,0,0)"});
+	m1.css(2, 2, {"background-color": "#eed", "color": "rgb(0,0,0)"});
 	av.umsg("And with that we have completed a full &#946;-reduction and we have a simplified expression!");
 	av.recorded();
 });
