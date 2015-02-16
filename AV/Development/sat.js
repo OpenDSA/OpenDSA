@@ -79,7 +79,7 @@ $(document).ready(function () {
   label1.show();
 
 
-//slide 6 : Is the following formula satisfiable ?
+//slide 5 : Is the following formula satisfiable ?
   av.step();
   av.umsg("<b>Example of SAT</b>");
   label1.hide();
@@ -88,29 +88,30 @@ $(document).ready(function () {
   y = 0;
 
    
-  label1 = av.label("P = ($x_1$ + $x_2$).($x_2$ + ^$x_3$ + $x_4$).($x_1$ + ^$x_2$ + $x_3$ + $x_4$).(^$x_1$ + $x_3$)",{top: y-30,left:0}).css({"text-align": "center"}); 
+//  label1 = av.label("P = ($x_1$ + $x_2$).($x_2$ + ^$x_3$ + $x_4$).($x_1$ + ^$x_2$ + $x_3$ + $x_4$).(^$x_1$ + $x_3$)",{top: y-30,left:0}).css({"text-align": "center"}); 
+ av.umsg("<br><br>P = $(x_1 + x_2).(x_2 + \\overline{x_3} + x_4).(x_1 + \\overline{x_2} + x_3 + x_4).(\\overline{x_1} + x_3)$ is the expression.",{preserve:true}); 
 
-  label1.show();
+//  label1.show();
   label2 = av.label("Truth Table for P",{top: y+20,left:150}).css({"text-align": "center"}); 
   label2.show();
-  var matdata=[["x<sub>1</sub>","x<sub>2</sub>","x<sub>3</sub>","x<sub>4</sub>","P"],
-               ["0","0","0","0","0"],
-               ["0","0","0","1","0"],
-               ["0","0","1","0","0"],
-               ["0","0","1","1","0"],
-               ["0","1","0","0","0"],
-               ["0","1","0","1","1"],
-               ["0","1","1","0","1"],
-               ["0","1","1","1","1"]];
+  var matdata=[["$x_1$","$x_2$","$x_3$</sub>","$x_4$","P"],
+               ["F","F","F","F","F"],
+               ["F","F","F","T","F"],
+               ["F","F","T","F","F"],
+               ["F","F","T","T","F"],
+               ["F","T","F","F","F"],
+               ["F","T","F","T","T"],
+               ["F","T","T","F","T"],
+               ["F","T","T","T","T"]];
   var matdata1=[["x<sub>1</sub>","x<sub>2</sub>","x<sub>3</sub>","x<sub>4</sub>","P"],
-                ["1","0","0","0","0"],
-                ["1","0","0","1","0"],
-                ["1","0","1","0","0"],
-                ["1","0","1","1","1"],
-                ["1","1","0","0","0"],
-                ["1","1","0","1","0"],
-                ["1","1","1","0","1"],
-                ["1","1","1","1","1"]];
+                ["T","F","F","F","F"],
+                ["T","F","F","T","F"],
+                ["T","F","T","F","F"],
+                ["T","F","T","T","T"],
+                ["T","T","F","F","F"],
+                ["T","T","F","T","F"],
+                ["T","T","T","F","T"],
+                ["T","T","T","T","T"]];
 
   
 
@@ -124,7 +125,7 @@ $(document).ready(function () {
 
   av.step();
   for (var i=1; i< 9; i++){
-	if (matdata[i][4] == 0){
+	if (matdata[i][4] == "F"){
 		for(var j=0; j<5 ; j++)
 			mat1.css(i,j,{"background-color":"#CC3333"});
 	}
@@ -133,7 +134,7 @@ $(document).ready(function () {
 			mat1.css(i,j,{"background-color":"#669966"});
 	}
 
-	if (matdata1[i][4] == 0){
+	if (matdata1[i][4] == "F"){
 		for(var j=0; j<8 ; j++)
 			mat2.css(i,j,{"background-color":"#CC3333"});
 	}
@@ -159,7 +160,7 @@ $(document).ready(function () {
   av.step();
   mat1.hide();
   mat2.hide();
-  label1.hide();
+//  label1.hide();
   label2.hide();
   label3.hide();
   label4.hide();
@@ -176,23 +177,23 @@ $(document).ready(function () {
   label2.show();
 
    var matdata2=[["x<sub>1</sub>","x<sub>2</sub>","x<sub>3</sub>","x<sub>4</sub>","P"],
-                 ["0","0","0","0","0"],
-                 ["0","0","0","1","0"],
-                 ["0","0","1","0","0"],
-                 ["0","0","1","1","0"],
-                 ["0","1","0","0","0"],
-                 ["0","1","0","1","0"],
-                 ["0","1","1","0","0"],
-                 ["0","1","1","1","0"]];
+                 ["F","F","F","F","F"],
+                 ["F","F","F","T","F"],
+                 ["F","F","T","F","F"],
+                 ["F","F","T","T","F"],
+                 ["F","T","F","F","F"],
+                 ["F","T","F","T","F"],
+                 ["F","T","T","F","F"],
+                 ["F","T","T","T","F"]];
    var matdata3=[["x<sub>1</sub>","x<sub>2</sub>","x<sub>3</sub>","x<sub>4</sub>","P"],
-                 ["1","0","0","0","0"],
-                 ["1","0","0","1","0"],
-                 ["1","0","1","0","0"],
-                 ["1","0","1","1","0"],
-                 ["1","1","0","0","0"],
-                 ["1","1","0","1","0"],
-                 ["1","1","1","0","0"],
-                 ["1","1","1","1","0"]];
+                 ["T","F","F","F","F"],
+                 ["T","F","F","T","F"],
+                 ["T","F","T","F","F"],
+                 ["T","F","T","T","F"],
+                 ["T","T","F","F","F"],
+                 ["T","T","F","T","F"],
+                 ["T","T","T","F","F"],
+                 ["T","T","T","T","F"]];
 
 
    var mat3 = new av.ds.matrix(matdata2,{style:"table",left:50,top:y+50});
