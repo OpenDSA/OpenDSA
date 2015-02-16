@@ -9,12 +9,12 @@
       "av_c1": "Calling Min-Heapify(A, "
     },
     "fi": {
-      ".avTitle": "Fi Heap Build Proficiency Exercise",
+      ".avTitle": "BuildHeap - Keon rakentaminen",
       "av_Authors": "Ville Karavirta",
       ".instructLabel": "Ohjeet:",
-      ".instructions": "Fi In this exercise, your task is to reproduce the behavior of the buildheap algorithm to create a <b>min</b> heap from the data in initially in the array. The heap is displayed in both its logical tree and physical array forms. Clicking on an element in one will also update the other. You can swap two records in the heap by first clicking one, then the other.",
+      ".instructions": "BuildHeap-algoritmi saa syötteenään taulukon prioriteettiarvoja, joista se rakentaa <b>minimikeon</b>. Tehtävänä on simuloida BuildHeap-algoritmia annetulla taulukolla, joka on esitetty sekä taulukkomuodossa että binääripuuna. Taulukkoa voi päivittää kummassa tahansa esitysmuodossa. Kahden alkion paikkaa voi vaihtaa klikkaamalla niitä.",
       "#about": "Lisätietoa",
-      "av_c1": "Fi Calling Min-Heapify(A, "
+      "av_c1": "Kutsutaan Min-Heapify(A, "
     }
   },
   "params": {

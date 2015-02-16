@@ -27,6 +27,7 @@ Written by Junyang Chen and Cliff Shaffer
     }
     .jsavpointer{
       width: 40px;
+      z-index: 120;
       text-align: center;
       cursor: pointer;
     }
@@ -168,7 +169,6 @@ var jsav,           // The JSAV object
   selected_index;   // Position that has been selected by user for swap
 
 function bindPointerClick(pointer){
-  pointer.label.element.css( { 'z-index': 100} );
   pointer.label.element.click(function(){pclick(pointer);});
 }
 
@@ -230,10 +230,10 @@ function pclick(pointer){
 
 // JSAV Circular click handler
 function clickHandler(index) {
-  if(status == 0){
-    jsavCir.path[index].rObj.attr({"fill":"yellow", "opacity" : "0.5"});
-    selected_index = index;
-    status = 1;
+  if (status == 0) {
+    var val = jsavCir.getvalue(index);
+    arrReturn.value(0, val);
+    copyFrom = index;
   }else if(status == 1){
     if(selected_index === index){
       jsavCir.path[selected_index].rObj.attr({"fill":"none", "opacity" : "1"});

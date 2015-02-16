@@ -14,7 +14,10 @@ $(document).ready(function () {
     bh.heapsize(heapsize); // set heapsize
     // hide last item and the edge in the tree
     bh.css(heapsize, {"opacity": "0"});
-    bh._treenodes[heapsize].edgeToParent().css({stroke: "white"});
+    var edgeToParent = bh._treenodes[heapsize].edgeToParent();
+    if (edgeToParent) {
+      edgeToParent.css({"opacity": "0"});
+    }
     if (swapIndex.value() !== -1) {
       swapIndex.value(-1);
     }
@@ -79,7 +82,7 @@ $(document).ready(function () {
       modeljsav.step();
 
       modelbh.css(modelbh.heapsize(), {"opacity": "0"});
-      modelbh._treenodes[modelbh.heapsize()].edgeToParent().css("stroke", "white");
+      modelbh._treenodes[modelbh.heapsize()].edgeToParent().css({"opacity": "0"});
       modeljsav.stepOption("grade", true);
       modeljsav.step();
       modelbh.heapify(1);

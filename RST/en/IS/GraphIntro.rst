@@ -8,6 +8,10 @@
    :prerequisites:
    :topic: Graphs
 
+.. odsalink:: AV/Development/GraphIntroCON.css
+.. odsalink:: AV/Development/GraphIntro2CON.css
+.. odsalink:: AV/Development/GraphIntro3CON.css
+
 Graphs Chapter Introduction
 ===========================
 
@@ -123,6 +127,9 @@ is said to be a :term:`weighted graph`.
    their definitions, then a series of slides that illustrate each
    word.
 
+.. inlineav:: GraphIntroCON dgm
+   :output: show
+
 A sequence of vertices :math:`v_1, v_2, ..., v_n`
 forms a :term:`path` of length :math:`n-1` if there exist edges from
 :math:`v_i` to :math:`v_{i+1}` for :math:`1 \leq i < n`.
@@ -162,6 +169,9 @@ with three connected components.
    Vertices 5 and 6 form a second connected component.
    Vertex 7 by itself forms a third connected component.
 
+.. inlineav:: GraphIntro2CON dgm
+   :output: show
+
 .. TODO::
    :type: Figure
 
@@ -195,6 +205,10 @@ a free tree is connected and has :math:`|\mathbf{V}| - 1` edges.
 
    Replace image above with a JSAV-generated image. Or better, a
    slideshow to illustrate the various representation issues.
+
+.. inlineav:: GraphIntro3CON dgm
+   :output: show
+
 
 There are two commonly used methods for representing graphs.
 The :term:`adjacency matrix`
@@ -328,3 +342,7 @@ Notes
        either of these special cases.
        To simplify our graph API, we will assume that there are no
        dupicate edges, and no edges that connect a node to itself.
+
+.. odsascript:: AV/Development/GraphIntroCON.js
+.. odsascript:: AV/Development/GraphIntro2CON.js
+.. odsascript:: AV/Development/GraphIntro3CON.js
