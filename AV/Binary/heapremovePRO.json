@@ -14,7 +14,7 @@
       ".instructLabel": "Ohjeet:",
       ".instructions": "Tässä tehtävässä tulee suorittaa DeleteMin-operaatio kolmesti (3) peräkkäin. Jokaisen poiston jälkeen kekoehto tulee palauttaa voimaan. Keon viimeinen alkio voidan poistaa klikkaamalla \"Pienennä kekon kokoa\" -painiketta. Kahden avaimen paikkaa keossa voidaan vaihtaa klikkaamalla niitä peräkkäin.",
       "#about": "Lisätietoa",
-      "#decrement": "Pienennä kekon kokoa"
+      "#decrement": "Pienennä keon kokoa"
     }
   },
   "params": {
