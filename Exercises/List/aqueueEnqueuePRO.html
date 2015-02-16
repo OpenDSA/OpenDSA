@@ -30,6 +30,7 @@ Written by Junyang Chen and Cliff Shaffer
     .jsavpointer{
       width: 40px;
       text-align: center;
+      z-index: 120;
       cursor: pointer;
     }
     #reset { margin-right: 20px;}
@@ -166,7 +167,7 @@ var jsav,           // The JSAV object
   selected_index;   // Position that has been selected by user for swap
 
 function bindPointerClick(pointer){
-  pointer.label.element.css( { 'z-index': 100} );
+  console.log("Set pointer click handler");
   pointer.label.element.click(function(){pclick(pointer);});
 }
 
@@ -204,6 +205,7 @@ function resetPointer(pointer,index, type){
 
 // pointer click handler
 function pclick(pointer){
+console.log("In pointer click handler");
   if(status == 1){
     jsavCir.path[selected_index].rObj.attr({"fill":"none", "opacity" : "1"});
     pointer.label.element.toggleClass('highlight');
@@ -228,6 +230,7 @@ function pclick(pointer){
 
 // JSAV Circular click handler
 function clickHandler(index) {
+console.log("In array click handler");
   if(status == 0){
     jsavCir.path[index].rObj.attr({"fill":"yellow", "opacity" : "0.5"});
     selected_index = index;
