@@ -32,7 +32,7 @@
   if (code) {
     pseudo = av.code($.extend({after: {element: $(".instructions")}}, code));
     pseudo.show();
-    // pseudo.highlight(code.tags.highlight);
+    pseudo.highlight(code.tags.highlight);
     // toggle with double click
     pseudo.element.dblclick(function () {
       pseudo.element.toggleClass("collapsed");
@@ -43,7 +43,7 @@
   function initialize() {
     //generate random array with ascending values
     var min = 1 + Math.floor(Math.random() * 20),
-        max = 120 + Math.floor(Math.random() * 20),
+        max = 120 + Math.floor(Math.random() * 20);
     key = (min + max) / 2;
     for (var i = 0; i < arraySize; i++) {
       initialArray[i] = min + Math.floor((max - min) / (1 + Math.exp((arraySize / 2 - i) * 0.5)));
@@ -87,12 +87,10 @@
     // save the coordinate of the array
     var arrayX = array.element.offset().left - av.canvas.offset().left;
     var arrayY = array.element.offset().top - av.canvas.offset().top + 150;
-
     // draw a blue line to represent the value we are looking for
     var lineY = arrayY - 130 * key / array.value(arraySize - 1);
     var lineWidth = array.element.width();
     av.g.line(arrayX, lineY, arrayX + lineWidth, lineY, {stroke: "#00f", "stroke-width": 3, opacity: 0.2});
-
     // draw the interLine
     interLine = av.g.line(arrayX, lineY, arrayX + lineWidth, lineY, {stroke: "#f00", "stroke-width": 3, opacity: 0.2});
     drawLine(array, 0, arraySize - 1, interLine);
@@ -118,7 +116,8 @@
     pointerClickHandler(lowPointer);
     pointerClickHandler(highPointer);
 
-    av.umsg(interpret("av_select_low"));
+    // av.umsg(interpret("av_select_low"));
+    printIntersection(av, lowIndex.value(), highIndex.value());
     av.forward();
 
     return [array, lowPointer, highPointer, returnValue];
@@ -146,27 +145,14 @@
     var lineWidth = modelArray.element.width();
     jsav.g.line(arrayX, lineY, arrayX + lineWidth, lineY, {stroke: "#00f", "stroke-width": 3, opacity: 0.2});
 
-    // create a hidden interLine
-    var interLine = jsav.g.line(arrayX, lineY, arrayX + lineWidth, lineY, {stroke: "#f00", "stroke-width": 3, opacity: 0});
+    // create the interLine
+    var interLine = jsav.g.line(arrayX, lineY, arrayX + lineWidth, lineY, {stroke: "#f00", "stroke-width": 3, opacity: 0.2});
+    drawLine(modelArray, 0, arraySize - 1, interLine);
 
 
     jsav._undo = [];
 
     while (initialArray[low] < key && initialArray[high] >= key) {
-      // show arrow on low
-      modelArray.toggleArrow(low);
-      modelLow.value(low);
-      jsav.umsg(interpret("av_ms_low"), {fill: {low: low}});
-      jsav.stepOption("grade", true);
-      jsav.step();
-      // show arrow on high
-      modelArray.toggleArrow(high);
-      modelHigh.value(high);
-      jsav.umsg(interpret("av_ms_high"), {fill: {high: high}});
-      jsav.stepOption("grade", true);
-      // draw Line
-      drawLine(modelArray, low, high, interLine);
-      jsav.step();
       // highlight guesstimate
       mid = intersectionX(low, high);
       mid = Math.floor(mid * 100) / 100;
@@ -175,8 +161,7 @@
         key: key,
         newmid: Math.floor(mid)
       }});
-      refLines(jsav, code, "highlight");
-      jsav.step();
+      refLines(jsav, code, "guess_calculations");
       mid = Math.floor(mid);
       modelArray.highlight(mid);
       if (initialArray[mid] < key) {
@@ -198,10 +183,11 @@
       } else {
         jsav.umsg("<br/>" + interpret("av_ms_found"), {preserve: true, fill: {mid: mid}});
       }
-      // hide arrows and line
-      modelArray.toggleArrow(modelLow.value());
-      modelArray.toggleArrow(modelHigh.value());
-      hideLine(interLine);
+      // update low and high variables
+      modelLow.value(low);
+      modelHigh.value(high);
+      // draw Line
+      drawLine(modelArray, low, high, interLine);
       // grade step
       jsav.stepOption("grade", true);
       jsav.step();
@@ -229,10 +215,6 @@
     return [modelArray, modelLow, modelHigh, modelReturn];
   }
 
-  function hideLine(interLine) {
-    interLine.css({opacity: 0});
-  }
-
   // updates and shows the interpolation line
   function drawLine(array, low, high, line) {
     var arrayX = array.element.offset().left - array.element.parent().offset().left,
@@ -240,13 +222,8 @@
         barWidth = array.element.find(".jsavnode:eq(0)").outerWidth(true),
         dy = - (array.value(high) - array.value(low)) * 130 / array.value(arraySize - 1),
         dx = (high - low) * barWidth,
-        k;
-    if (dx === 0) {
-      k = 0;
-    } else {
-      k = dy / dx;
-    }
-    var x0 = arrayX + 2 + barWidth * low,
+        k = (dx ? dy / dx : 0),
+        x0 = arrayX + 2 + barWidth * low,
         y0 = arrayY - 130 * array.value(low) / array.value(arraySize - 1),
         b = y0 - k * x0,
         x1 = arrayX + 2,
@@ -255,7 +232,6 @@
         y2 = k * x2 + b;
 
     line.movePoints([[0, x1, y1], [1, x2, y2]]);
-    line.css({opacity: 0.2});
   }
 
   function intersectionX(low, high) {
@@ -264,7 +240,12 @@
   }
 
   function printIntersection(av, low, high) {
-    av.umsg(interpret("av_lines_intersect") + " (" + intersectionX(low, high) + ", " + key + ")");
+    var x = intersectionX(low, high);
+    if (isFinite(x)) {
+      av.umsg(interpret("av_lines_intersect") + " (" + x + ", " + key + ")");
+    } else {
+      av.umsg(interpret("av_lines_dont_intersect"));
+    }
   }
 
   function refLines(av, code, lineTag) {

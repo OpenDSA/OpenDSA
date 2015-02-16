@@ -13,6 +13,7 @@
       "av_select_high": "Select the bar at index <strong>high</strong>",
       "av_select_guess": "Select the guesstimate for the location of the key",
       "av_lines_intersect": "Lines intersect at",
+      "av_lines_dont_intersect": "The lines do not intersect.",
       "av_ms_low": "The value of low is {low}.",
       "av_ms_high": "The value of high is {high}.",
       "av_ms_intersect": "The lines intersect at ( {inter}, {key} )<br/>Therefore the estimated location for the key is {newmid}",
@@ -55,7 +56,8 @@
     "java" : {
       "url": "../../SourceCode/Java/Searching/interpolationSearch.java",
       "tags": {
-        "highlight": 9,
+        "guess_calculations": 9,
+        "highlight": [11, 13],
         "tbl_mid_lt_key": [10, 11],
         "tbl_mid_gt_key": [12, 13]
       }
