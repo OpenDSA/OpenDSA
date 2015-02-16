@@ -2,71 +2,67 @@
 (function ($) {
   "use strict";
 
-  var arraySize = 20,
-    key,
-    initialArray = [],
-    array,
-    keyholder,
-    $findLabel,
-    stateVar,
-    lowIndex,
-    highIndex,
-    returnValue,
-    interLine,
-    pseudo,
-    config = ODSA.UTILS.loadConfig({'av_container': 'jsavcontainer'}),
-    interpret = config.interpreter,
-    code = config.code,
-    av = new JSAV($("#jsavcontainer"), {autoresize: false});
+  // AV variables
+  var arraySize = 26,
+      key,
+      initialArray = [],
+      array,
+      keyholder,
+      $findLabel,
+      clickState,
+      lowIndex,
+      highIndex,
+      lowPointer,
+      highPointer,
+      returnValue,
+      interLine,
+      pseudo,
 
+      // get the configurations from the configuration file
+      config = ODSA.UTILS.loadConfig({'av_container': 'jsavcontainer'}),
+      interpret = config.interpreter,
+      code = config.code,
+
+      // create a JSAV instance
+      av = new JSAV($("#jsavcontainer"), {autoresize: false});
 
   av.recorded(); // we are not recording an AV with an algorithm
 
+  // show the code and highlight the row where mid is calculated
+  if (code) {
+    pseudo = av.code($.extend({after: {element: $(".instructions")}}, code));
+    pseudo.show();
+    // pseudo.highlight(code.tags.highlight);
+    // toggle with double click
+    pseudo.element.dblclick(function () {
+      pseudo.element.toggleClass("collapsed");
+    });
+    pseudo.element.attr("title", "Double click to toggle code");
+  }
+
   function initialize() {
-
-    // show the code and highlight the row where mid is calculated
-    if (!pseudo && code) {
-      pseudo = av.code($.extend({after: {element: $(".instructions")}}, code));
-      pseudo.show();
-      pseudo.highlight(code.tags.highlight);
-    }
-
     //generate random array with ascending values
-    var randomVal = 10;
+    var min = 1 + Math.floor(Math.random() * 20),
+        max = 120 + Math.floor(Math.random() * 20),
+    key = (min + max) / 2;
     for (var i = 0; i < arraySize; i++) {
-      randomVal += Math.floor(JSAV.utils.rand.random() * (2 + i));
-      initialArray[i] = randomVal;
+      initialArray[i] = min + Math.floor((max - min) / (1 + Math.exp((arraySize / 2 - i) * 0.5)));
     }
 
     // generate a random key, the value of which is between the min and max of the array
     if (JSAV.utils.rand.random() > 0.5) {
-      key = Math.ceil(5 * (initialArray[0] + initialArray[arraySize - 1]) / 7);
+      key = Math.ceil(5 * (min + max) / 7);
     } else {
-      key = Math.floor(2 * (initialArray[0] + initialArray[arraySize - 1]) / 7);
+      key = Math.floor(2 * (min + max) / 7);
     }
 
     // clear old elements
-    if (keyholder) {
-      keyholder.clear();
-    }
     if ($findLabel) {
       $findLabel.remove();
     }
-    if (array) {
-      array.clear();
-    }
-    if (stateVar) {
-      stateVar.clear();
-    }
-    if (lowIndex) {
-      lowIndex.clear();
-    }
-    if (highIndex) {
-      highIndex.clear();
-    }
-    if (returnValue) {
-      returnValue.clear();
-    }
+    [keyholder, array, clickState, lowIndex, highIndex, lowPointer, highPointer, returnValue]
+      .forEach(function (item) { if (item) { item.clear(); } });
+
     // hide return box
     $("form.returnbox")[0].reset();
     $("#returndone").css("visibility", "hidden");
@@ -82,7 +78,7 @@
 
     // create the array
     array = av.ds.array(initialArray, {indexed: true, layout: "bar", autoresize: false});
-    array.click(clickhandler);
+    array.click(barClickHandler);
     array.layout();
 
     // clear all the Raphael elements
@@ -97,19 +93,35 @@
     var lineWidth = array.element.width();
     av.g.line(arrayX, lineY, arrayX + lineWidth, lineY, {stroke: "#00f", "stroke-width": 3, opacity: 0.2});
 
-    // create a hidden interLine
-    interLine = av.g.line(arrayX, lineY, arrayX + lineWidth, lineY, {stroke: "#f00", "stroke-width": 3, opacity: 0});
+    // draw the interLine
+    interLine = av.g.line(arrayX, lineY, arrayX + lineWidth, lineY, {stroke: "#f00", "stroke-width": 3, opacity: 0.2});
+    drawLine(array, 0, arraySize - 1, interLine);
 
     // initialize state variable
-    stateVar = av.variable(0);
+    clickState = av.variable(-1);
+    returnValue = av.variable(-1337);
     lowIndex = av.variable(0);
     highIndex = av.variable(arraySize - 1);
-    returnValue = av.variable(-1337);
+
+    var pointerOpts = {
+      anchor: "center bottom",
+      myAnchor: "center top",
+      top: 10,
+      left: -20,
+      arrowAnchor: "center bottom",
+
+    };
+    lowPointer = av.pointer("low", array.index(0), pointerOpts);
+    pointerOpts.left = 20;
+    highPointer = av.pointer("high", array.index(arraySize - 1), pointerOpts);
+
+    pointerClickHandler(lowPointer);
+    pointerClickHandler(highPointer);
 
     av.umsg(interpret("av_select_low"));
     av.forward();
 
-    return [array, lowIndex, highIndex, returnValue];
+    return [array, lowPointer, highPointer, returnValue];
   }
 
   function modelSolution(jsav) {
@@ -223,23 +235,24 @@
 
   // updates and shows the interpolation line
   function drawLine(array, low, high, line) {
-    var arrayX = array.element.offset().left - array.element.parent().offset().left;
-    var arrayY = array.element.offset().top - array.element.parent().offset().top + 150;
-    var dy = - (array.value(high) - array.value(low)) * 130 / array.value(arraySize - 1);
-    var dx = (high - low) * 37;
-    var k;
+    var arrayX = array.element.offset().left - array.element.parent().offset().left,
+        arrayY = array.element.offset().top - array.element.parent().offset().top + 150,
+        barWidth = array.element.find(".jsavnode:eq(0)").outerWidth(true),
+        dy = - (array.value(high) - array.value(low)) * 130 / array.value(arraySize - 1),
+        dx = (high - low) * barWidth,
+        k;
     if (dx === 0) {
       k = 0;
     } else {
       k = dy / dx;
     }
-    var x0 = arrayX + 2 + 37 * low;
-    var y0 = arrayY - 130 * array.value(low) / array.value(arraySize - 1);
-    var b = y0 - k * x0;
-    var x1 = arrayX + 2;
-    var y1 = k * x1 + b;
-    var x2 = arrayX + 2 + 37 * arraySize;
-    var y2 = k * x2 + b;
+    var x0 = arrayX + 2 + barWidth * low,
+        y0 = arrayY - 130 * array.value(low) / array.value(arraySize - 1),
+        b = y0 - k * x0,
+        x1 = arrayX + 2,
+        y1 = k * x1 + b,
+        x2 = arrayX + 2 + barWidth * arraySize,
+        y2 = k * x2 + b;
 
     line.movePoints([[0, x1, y1], [1, x2, y2]]);
     line.css({opacity: 0.2});
@@ -248,6 +261,10 @@
   function intersectionX(low, high) {
     var result = low + ((key - initialArray[low]) * (high - low) / (initialArray[high] - initialArray[low]));
     return Math.floor(result * 100) / 100;
+  }
+
+  function printIntersection(av, low, high) {
+    av.umsg(interpret("av_lines_intersect") + " (" + intersectionX(low, high) + ", " + key + ")");
   }
 
   function refLines(av, code, lineTag) {
@@ -268,32 +285,48 @@
     function (element) { element.css("visibility", "hidden"); }
   );
 
-  function clickhandler(index) {
+  var pointerClickHandler = function (pointer) {
+    var pointers = [lowPointer, highPointer],
+        pointerIndex = pointers.indexOf(pointer);
+    // assign click handler
+    pointer.element.click(function () {
+      switch (clickState.value()) {
+      case -1:
+        // nothing selected -> select pointer
+        clickState.value(pointerIndex);
+        pointer.addClass("selected");
+        break;
+      case pointerIndex:
+        // this pointer was selected -> deselect
+        clickState.value(-1);
+        pointer.removeClass("selected");
+        break;
+      default:
+        // another pointer was selected -> deselect and select this one
+        pointers.forEach(function (p) { p.removeClass("selected"); });
+        clickState.value(pointerIndex);
+        pointer.addClass("selected");
+        break;
+      }
+    });
+  };
 
-    if (stateVar.value() === 0) {
-      lowIndex.value(index);
-      array.toggleArrow(index);
-      stateVar.value(1);
-      av.umsg(interpret("av_select_high"));
-      exercise.gradeableStep();
-    } else if (stateVar.value() === 1) {
-      highIndex.value(index);
-      array.toggleArrow(index);
-      drawLine(array, lowIndex.value(), highIndex.value(), interLine);
-      stateVar.value(2);
-      av.umsg(interpret("av_select_guess"));
-      refLines(av, code, "highlight");
-      av.umsg("</br>" + interpret("av_lines_intersect") + " ( " + intersectionX(lowIndex.value(), highIndex.value()) + ", " + key + " )", {preserve: true});
-      exercise.gradeableStep();
-    } else if (stateVar.value() === 2) {
-      array.highlight(index);
-      array.toggleArrow(lowIndex.value());
-      array.toggleArrow(highIndex.value());
-      hideLine(interLine);
-      stateVar.value(0);
-      av.umsg(interpret("av_select_low_if"));
-      exercise.gradeableStep();
-    }
+  function barClickHandler(index) {
+    var pointers = [lowPointer, highPointer];
+    if (clickState.value() === -1) { return; }
+    // update pointer target
+    pointers[clickState.value()].target(array.index(index));
+    // update low/high index
+    [lowIndex, highIndex][clickState.value()].value(index);
+    // update line
+    drawLine(array, lowIndex.value(), highIndex.value(), interLine);
+    // update intersection message
+    printIntersection(av, lowIndex.value(), highIndex.value());
+    // unselect pointer
+    pointers[clickState.value()].removeClass("selected");
+    clickState.value(-1);
+    // mark step
+    exercise.gradeableStep();
   }
 
   $("form.returnbox").submit(function () {
@@ -304,7 +337,7 @@
   });
 
   var exercise = av.exercise(modelSolution, initialize, {
-    compare: [{class: "jsavhighlight"}],
+    // compare: [{class: "jsavhighlight"}],
     feedback: "atend",
     modelDialog: {width: 780}
   });

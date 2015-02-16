@@ -7,11 +7,9 @@
   <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
   <link rel="stylesheet" href="proficiency.css" type="text/css" />
   <style>
+    /* jsav container and canvas */
     .jsavcontainer {
       height: auto;
-    }
-    .jsavbararray .jsavnode {
-      width: 35px;
     }
     .jsavcanvas {
       height: 250px !important;
@@ -21,10 +19,47 @@
       z-index: 101;
       height: 262px;
     }
+    /* bar array */
+    .jsavbararray .jsavnode {
+      width: 25px;
+    }
+    .jsavbararray .jsavvaluelabel {
+      font-size: 90%;
+    }
+    /* pointers */
+    .jsavpointer.selected {
+      background-color: transparent;
+    }
+    .jsavpointer.selected .jsavpointerarea {
+      background-color: #ddf;
+    }
+    .jsavpointer .jsavlabel {
+      position: relative;
+      top: 40px;
+    }
+    .jsavpointer .jsavpointerarea {
+      background-color: #fff;
+      border: 1px solid #555;
+      border-radius: 5px;
+      height: 20px;
+      width: 20px;
+    }
+    /* code */
+    .jsavcode.collapsed {
+      height: 22px;
+      background-color: #FAFAFA;
+    }
+    .jsavcode.collapsed::before {
+      content: "Double click to show code";
+    }
+    .jsavcode.collapsed .jsavcodeline {
+      display: none;
+    }
+    /* return box */
     .returnbox {
       width: 400px;
       text-align: center;
-      margin: 15px auto;
+      margin: 50px auto;
       padding: 10px;
       border: 1px solid #555;
       background-color: #ddd;
