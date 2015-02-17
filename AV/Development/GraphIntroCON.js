@@ -3,10 +3,10 @@ $(document).ready(function () {
 	var av = new JSAV("GraphIntroCON", {"animationMode" : "none"});
 	//set up first graph points 
     var gTop = 20;
-    var g1Left = 75;
+    var g1Left = 25;
     var g1Right = 175;
 
-    var graphOne = av.ds.graph({top: gTop, left: g1Left});
+    var graphOne = av.ds.graph({top: gTop, left: 25, width: 200});
 
     //add nodes to graph 1 
     var nodeOne = graphOne.addNode("", {left: g1Left, top: gTop});
@@ -28,9 +28,9 @@ $(document).ready(function () {
 
 
     //set up recond graph 
-    var gLeft = 175;
+    var gLeft = 25;
     var gRight = 300;
-    var graphTwo = av.ds.graph({left: gLeft, top: gTop, directed: true});
+    var graphTwo = av.ds.graph({left: 275, top: gTop, directed: true, width: 200});
 
     nodeOne = graphTwo.addNode(" ", {left: gLeft, top: gTop});
     nodeTwo = graphTwo.addNode(" ", {left: gLeft + 100, top: gTop});
@@ -49,9 +49,9 @@ $(document).ready(function () {
     graphTwo.layout();
 
 
-    gLeft = 275;
+    gLeft = 25;
     gRight = 475;
-    var graphThree = av.ds.graph({left: gLeft, top: gTop, directed: true});
+    var graphThree = av.ds.graph({left: 475, top: gTop, directed: true, width: 200});
 
     nodeOne = graphThree.addNode("0", {left: gLeft, top: gTop});
     nodeTwo = graphThree.addNode("2", {left: gLeft + 100, top: gTop});
