@@ -30,7 +30,7 @@ $(document).ready(function () {
     var mat = av.ds.matrix([[, 1, , ,1], [ , , , 1, ,], [ , , , , 1], [ , , , 1, ,], [, , 1, , ,]], 
     	{style: "plain", top: mTop, left: mLeft});
 
-    mat.css("matrixBorder");
+    mat.addClass("matrixBorder");
     mat.layout();
     var blabel = av.label("(b)", {left: mLeft + 75, top: 175}).show;
 
@@ -51,6 +51,7 @@ $(document).ready(function () {
     list1.add(1, "4");
     list1.layout();
 
+    
     //av.pointer("", list1, {left: 30}).show();
 
     //second linked list 
@@ -84,6 +85,12 @@ $(document).ready(function () {
     list5.add(2, "2");
     list5.layout();
 
+    //add lines connect array to list 
+    var line = av.g.line( 315, 285, 370, 270, {"stroke-width": 3});
+    line = av.g.line( 315, 310, 370, 300, {"stroke-width": 3});
+    line = av.g.line( 315, 340, 370, 335, {"stroke-width": 3});
+    line = av.g.line( 315, 370, 370, 370, {"stroke-width": 3});
+    line = av.g.line( 315, 400, 370, 410, {"stroke-width": 3});
 
     var clabel = av.label("(c)", {left: lLeft + 50, top: 425}).show;
 
