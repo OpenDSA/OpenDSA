@@ -8,11 +8,9 @@ $(document).ready(function () {
     var gatelabel = new Array(7);
 
 
-    av.umsg("<br<br><br><br><br><br> <br><br><b>&nbsp;&nbsp;&nbsp;&nbsp;"+
-"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
-"This slideshow introduces and explains the \"Circuit Satisfiability\" Problem."
-+"</b> <br><br><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We start with some definitions  and background");
+    av.umsg("<br><b>Objective </b> <br><br><br><br>This slideshow introduces"+
+" and explains the \"Circuit Satisfiability\" Problem."
++"</b> <br><br><br> We start with some definitions  and background.");
 
 
     av.displayInit(); 
