@@ -13,7 +13,8 @@ $(document).ready(function () {
     var av = new JSAV($('.avcontainer'));
   
   var label1, label2 , label3, label4, label5, label6,label7,label8,label9;
-  //slide2
+
+  // Slide 1
   var y = 0;
   av.umsg("<br><br><b>Boelan Expressions</b>");
   av.umsg("<br><br>Boolean variables : x<sub>1</sub> , x<sub>2</sub> , "
@@ -23,8 +24,8 @@ $(document).ready(function () {
   av.umsg("<br><br>Boolean expressions/Propositional logic formula :"+ 
   "x<sub>1</sub> + x<sub>2</sub> . x<sub>3</sub> ",{preserve:true});
   av.displayInit();
-//slide 3
-  av.step();
+
+  // Slide 2
   av.umsg("<b>CNF</b>");
   av.umsg("<br><br><b>A <i>literal</i> is either a boolean variable (x) or "
   +"its negation (^x) </b>",{preserve:true}); 
@@ -51,10 +52,9 @@ $(document).ready(function () {
   "(x<sub>1</sub> + x<sub>2</sub> + ^x<sub>3</sub>) . (x<sub>3</sub> + "+
   "x<sub>4</sub> + ^x<sub>2</sub>) . (^x<sub>4</sub> + ^x<sub>1</sub> + "+
   "^x<sub>5</sub>) . (x<sub>1</sub> + x<sub>3</sub> + x<sub>5</sub>)",{preserve:true}); 
-
- //slide 4 
-  
   av.step();
+
+  // Slide 3
   av.umsg("<b>Satisfiability</b>");
   y=0;
   
@@ -66,9 +66,9 @@ $(document).ready(function () {
   y = y+ 50;
   label3 = av.label("(x<sub>1</sub> . ^x<sub>1</sub>) is  always FALSE, hence not satisfiable.",{top: y,left:50}).css({"text-align": "center"});
   label3.show(); 
- 
-  // slide 4
   av.step();
+
+  // Slide 4
   av.umsg("<b>SAT</b>");
   y=0;
   label1.hide();
@@ -77,20 +77,17 @@ $(document).ready(function () {
  
   label1 = av.label("The <b>Boolean satisfiability problem (SAT)</b> is, given a formula, to check whether it is satisfiable.",{top: y,left:50}).css({"text-align": "center"}); 
   label1.show();
-
-
-//slide 5 : Is the following formula satisfiable ?
   av.step();
-  av.umsg("<b>Example of SAT</b>");
+
+  //slide 5 : Is the following formula satisfiable?
   label1.hide();
   label2.hide();
 
   y = 0;
-
    
 //  label1 = av.label("P = ($x_1$ + $x_2$).($x_2$ + ^$x_3$ + $x_4$).($x_1$ + ^$x_2$ + $x_3$ + $x_4$).(^$x_1$ + $x_3$)",{top: y-30,left:0}).css({"text-align": "center"}); 
- av.umsg("<br><br>P = $(x_1 + x_2).(x_2 + \\overline{x_3} + x_4).(x_1 + \\overline{x_2} + x_3 + x_4).(\\overline{x_1} + x_3)$ is the expression.",{preserve:true}); 
-
+ av.umsg("<b>Example of SAT</b>" +
+         "<br/><br/>P = $(x_1 + x_2).(x_2 + \\overline{x_3} + x_4).(x_1 + \\overline{x_2} + x_3 + x_4).(\\overline{x_1} + x_3)$ is the expression.");
 //  label1.show();
   label2 = av.label("Truth Table for P",{top: y+20,left:150}).css({"text-align": "center"}); 
   label2.show();
@@ -115,7 +112,7 @@ $(document).ready(function () {
 
   
 
-  var mat1 = new av.ds.matrix(matdata,{style:"table",left:50,top:y+50});
+  var mat1 = new av.ds.matrix(matdata,{autoresize:false,style:"table",left:50,top:y+50});
   var mat2= new av.ds.matrix(matdata1,{style:"table",left:250,top:y+50});
 
   for(var j=0; j<5 ; j++)
