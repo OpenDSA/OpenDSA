@@ -1,0 +1,64 @@
+{
+  "translations" :{
+    "en": {
+      ".exerciseTitle": "Interpolation Search",
+      ".instructLabel": "Instructions:",
+      ".instructions": "Simulate the interpolation search algorithm by following the instructions given below. The blue line on top of the array represents the given key value which will be searched.",
+      "#returnlabel": "Return value: ",
+      "#returnbutton": "Return",
+      "#returndone": "Value returned!",
+      "av_find_label": "Find",
+      "av_select_low": "Select the bar at index <strong>low</strong>",
+      "av_select_low_if": "<strong>If a new value is being calculated for mid</strong>, select the bar at index <strong>low</strong>.<br> Otherwise return a value",
+      "av_select_high": "Select the bar at index <strong>high</strong>",
+      "av_select_guess": "Select the guesstimate for the location of the key",
+      "av_lines_intersect": "Lines intersect at",
+      "av_ms_low": "The value of low is {low}.",
+      "av_ms_high": "The value of high is {high}.",
+      "av_ms_intersect": "The lines intersect at ( {inter}, {key} )<br/>Therefore the estimated location for the key is {newmid}",
+      "av_ms_arr_mid_lt_key": "Because {arr_at_mid} is less than {key}, the new low will be <strong>{mid_plus_1}</strong>.",
+      "av_ms_arr_mid_gt_key": "Because {arr_at_mid} is greater than {key}, the new high will be <strong>{mid_minus_1}</strong>.",
+      "av_ms_found": "The key was found at index {mid}! The function returned <strong>{mid}</strong>.",
+      "av_ms_not_found": "The key was not found in the table. The function returned <strong>-1</strong>.",
+      "av_ms_loop_stopped_1": "The execution of the loop stopped, because the value of the table at index {low} (low) is greater or equal to the key.",
+      "av_ms_loop_stopped_2": "The execution of the loop stopped, because the value of the table at index {high} (high) is less than the key.",
+      "av_line": "(line {first})",
+      "av_lines": "(lines {first} and {second})"
+    },
+    "fi": {
+      ".exerciseTitle": "Interpolaatiohaku",
+      ".instructLabel": "Ohjeet:",
+      ".instructions": "Simuloi Interpolaatiohakua seuraamalla alla annettuja ohjeita. Taulukon päällä oleva sininen suora esittää etsittävän avaimen arvoa.",
+      "#returnlabel": "Paluuarvo: ",
+      "#returnbutton": "Return",
+      "#returndone": "Palautettu!",
+      "av_find_label": "Etsi",
+      "av_select_low": "Klikkaa indeksissä <strong>low</strong> sijaitsevaa palkkia.",
+      "av_select_low_if": "<strong>Jos muuttujalle mid lasketaan uutta arvoa</strong>, niin klikkaa indeksissä <strong>low</strong> sijaitsevaa palkkia.<br>Muussa tapauksessa anna paluuarvo.",
+      "av_select_high": "Klikkaa indeksissä <strong>high</strong> sijaitsevaa palkkia.",
+      "av_select_guess": "Klikkaa palkkia, jossa avaimen oletetaan sijaitsevan.",
+      "av_lines_intersect": "Suorat leikkaavat pisteessä",
+      "av_ms_low": "Low:n arvo on {low}.",
+      "av_ms_high": "High:n arvo on {high}.",
+      "av_ms_intersect": "Suorat leikkaavat pisteessä ( {inter}, {key} ),<br/>joten estimoitu sijainti avaimelle on {newmid}.",
+      "av_ms_arr_mid_lt_key": "Koska {arr_at_mid} on pienempi kuin {key}, low:n uudeksi arvoksi tulee <strong>{mid_plus_1}</strong>.",
+      "av_ms_arr_mid_gt_key": "Koska {arr_at_mid} on suurempi kuin {key}, high:n uudeksi arvoksi tulee <strong>{mid_minus_1}</strong>.",
+      "av_ms_found": "Haettava avain löytyi kohdasta {mid}! Funktio palautti arvon <strong>{mid}</strong>.",
+      "av_ms_not_found": "Avainta ei löytynyt. Funktio palautti arvon <strong>-1</strong>.",
+      "av_ms_loop_stopped_1": "Silmukan ajo loppui, koska taulukon arvo kohdassa {low} (low) on suurempi tai yhtä suuri kuin haettava avain.",
+      "av_ms_loop_stopped_2": "Silmukan ajo loppui, koska taulukon arvo kohdassa {high} (high) on pienempi kuin haettava avain.",
+      "av_line": "(rivi {first})",
+      "av_lines": "(rivit {first} ja {second})"
+    }
+  },
+  "code" : {
+    "java" : {
+      "url": "../../SourceCode/Java/Searching/interpolationSearch.java",
+      "tags": {
+        "highlight": 9,
+        "tbl_mid_lt_key": [10, 11],
+        "tbl_mid_gt_key": [12, 13]
+      }
+    }
+  }
+}
