@@ -5,24 +5,17 @@
 
 .. avmetadata::
    :author: Sally Hamouda
-   :satisfies: binary tree common traversal problems
-   :topic: Binary Trees Common Traversal Problems
+   :satisfies: common mistakes in recursive binary tree traversal
+   :topic: Common Mistakes in Recursive Binary Trees Traversal
 
 .. odsalink:: AV/RecurTutor2/AdvancedRecurTutor.css
 
-Binary Tree Traversal Common Problems
-=====================================
+Common Mistakes in Recursive Binary Tree Traversal
+==================================================
 
 When writing a recursive function to solve a problem that requires traversing a binary tree,
 we want to make sure that we are visiting "exactly" the required nodes (no more and no less).
-You should also make sure that you don't do the common mistakes stated  below.
-
-So, you should learn two skills in order to avoid inefficient solutions:
-
- #. Formulate the base case and its action to work correctly on any given binary tree.
- #. Formulate the recursive case and its action to work correctly on any give binary tree.
-
-Avoid the following common mistakes:
+You should also make sure that you don't do the common mistakes stated  below:
 
  #. Forget to check if the root is null.
  #. Check if one or both children are null. You SHOULD NOT do that. When you do the recursive call and pass the root.left()
@@ -42,46 +35,6 @@ Avoid the following common mistakes:
     a binary search tree in the right sub-trees or searching for the maximum value of a binary search tree
     in the left sub-tree.
  
-Formulate the base case and its action
---------------------------------------
-
-In binary trees, the base case is always to check if we have an empty tree.
-One of the common mistakes some people does is considering that the base case
-action will be executed only after the recursive calls are executed.
-This is not always the case because you may have your input as an empty tree
-from the very beginning and in that case no recursive calls will be executed
-before the base case action. Make sure when you write a program that traverse a binary tree
-to check in the base case if the root of the binary is null (In that case the given tree is empty).
-
-The action that the base case will execute is dependable on the given problem.
-For example, if it is required to count the nodes then the base case action will be returning 0.
-While, if it is required to check on the existence of a value or not then the base case action 
-in this case will return false because the given binary tree is empty.
-
-
-Formulate the recursive case and its action
--------------------------------------------
-
-Always remember that you should not worry about the recursion details.
-Admit that it will do it correctly. So, when your recursive case action
-is to  visit recursively the right and left children this means that every node will do that.
-You don't need to worry about making sure that every node will do it.
-
-Some problems requires that you traverse the whole tree, in those
-problems you must make sure that your function is working for the left and right sides of the tree.
-Some other problems requires only traversing the left or the right side
-of the tree. You have to make sure that you visit exactly the nodes that are needed by the problem.
-
-The following visualization shows an example of a code that does redundant visit to solve the problem
-of getting the number of nodes falling in a certain given range in a binary search tree (BST).
-The code in the visualization works correctly but it is NOT an efficient code because
-it does redundant/unnecessary nodes visits.
-
-.. inlineav:: IneffBinaryTreeRangeCON ss
-   :output: show
-
-Avoid common mistakes
----------------------
 
 One of the most common mistakes when writing a program that traverses
 a binary tree is forgetting to check if the root is null or not.
@@ -165,7 +118,6 @@ when passed to the recursive call so you don't need to do that redundant check.
      }
     }
    }
-
   The efficient solution should not explicitly set the children values that way.
   It should just pass the root's left and right to the recursive call and then the
   recursive function will do the rest. As an exercise for you, think about how to re-write
@@ -190,6 +142,7 @@ Another common mistake is doing unneeded visits to the nodes that can be avoided
    Given that you want the minimum so why will you ever need to traverse any of the right sub-trees
    when you know that the minimum value is in a left sub-tree. 
    This was explained in the previous visulization.
+   
 
 In summary, those are the common mistakes you should avoid doing:
 
@@ -200,5 +153,4 @@ In summary, those are the common mistakes you should avoid doing:
 Learning those skills requires a lot of practice to make sure that you are not only getting
 the correct answer but also doing the solution efficiently without falling into the common mistakes.
 
-.. odsascript:: AV/RecurTutor2/IneffBinaryTreeRangeCON.js
 .. odsascript:: AV/RecurTutor2/BinaryTreeMistakesCON.js

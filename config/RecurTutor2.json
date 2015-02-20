@@ -19,7 +19,7 @@
         "long_name": "Binary Trees Chapter Introduction",
         "exercises": {}
       },
-      "RecurTutor2/BinaryTree": {
+      "Binary/BinaryTree": {
         "long_name": "Binary Tree",
         "exercises": {
            "DefSumm": {
@@ -41,7 +41,7 @@
            }
          }
       },
-      "RecurTutor2/BinaryTreeTraversal": {
+      "Binary/BinaryTreeTraversal": {
         "long_name": "Binary Trees Traversal",
         "exercises": {
           "preorderCON": {
@@ -82,15 +82,20 @@
           }
         }
       },
-     "RecurTutor2/BinaryTreeTrvprob": {
-        "long_name": "Binary Tree  Common Traversal Problems",
-        "exercises": {
+     "RecurTutor2/BinaryTreeRecTrv": {
+        "long_name": " Recursive Binary Tree Traversal",
+        "exercises": {  
           "IneffBinaryTreeRangeCON": {
             "long_name": "Inefficient Binary Tree Traversal on Range Slide Show",
             "required": true,
             "points": 1.0,
             "threshold": 0.90
-           },
+           }
+         }
+      },
+     "RecurTutor2/BinaryTreeTrvprob": {
+        "long_name": "Binary Tree  Common Traversal Problems",
+        "exercises": {        
            "BinaryTreeMistakesCON": {
             "long_name": "Binary Tree Common Mistakes",
             "required": true,
