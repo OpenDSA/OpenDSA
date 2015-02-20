@@ -106,8 +106,7 @@
       myAnchor: "center top",
       top: 10,
       left: -20,
-      arrowAnchor: "center bottom",
-
+      arrowAnchor: "center bottom"
     };
     lowPointer = av.pointer("low", array.index(0), pointerOpts);
     pointerOpts.left = 20;
@@ -120,7 +119,7 @@
     printIntersection(av, lowIndex.value(), highIndex.value());
     av.forward();
 
-    return [array, lowPointer, highPointer, returnValue];
+    return [array, lowIndex, highIndex, returnValue];
   }
 
   function modelSolution(jsav) {
@@ -131,22 +130,41 @@
       jsav.code(code).highlight(code.tags.highlight);
     }
 
-    var modelLow = jsav.variable(0);
-    var modelHigh = jsav.variable(arraySize - 1);
-    var modelReturn = jsav.variable(-1337);
-    var low = 0,
+    var modelLow = jsav.variable(0),
+        modelHigh = jsav.variable(arraySize - 1),
+        modelReturn = jsav.variable(-1337),
+        low = 0,
         high = arraySize - 1,
         mid;
 
+    var pointerOpts = {
+      anchor: "center bottom",
+      myAnchor: "center top",
+      top: 10,
+      left: -20,
+      arrowAnchor: "center bottom"
+    };
+    var lowPointer = jsav.pointer("low", modelArray.index(0), pointerOpts);
+    pointerOpts.left = 20;
+    var highPointer = jsav.pointer("high", modelArray.index(arraySize - 1), pointerOpts);
+
     // draw the blue line
-    var arrayX = modelArray.element.offset().left - jsav.canvas.offset().left;
-    var arrayY = modelArray.element.offset().top - jsav.canvas.offset().top + 150;
-    var lineY = arrayY - 130 * key / initialArray[arraySize - 1];
-    var lineWidth = modelArray.element.width();
-    jsav.g.line(arrayX, lineY, arrayX + lineWidth, lineY, {stroke: "#00f", "stroke-width": 3, opacity: 0.2});
+    var arrayX = modelArray.element.offset().left - jsav.canvas.offset().left,
+        arrayY = modelArray.element.offset().top - jsav.canvas.offset().top + 150,
+        lineY = arrayY - 130 * key / initialArray[arraySize - 1],
+        lineWidth = modelArray.element.width();
+    jsav.g.line(arrayX, lineY, arrayX + lineWidth, lineY, {
+      stroke: "#00f",
+      "stroke-width": 3,
+      opacity: 0.2
+    });
 
     // create the interLine
-    var interLine = jsav.g.line(arrayX, lineY, arrayX + lineWidth, lineY, {stroke: "#f00", "stroke-width": 3, opacity: 0.2});
+    var interLine = jsav.g.line(arrayX, lineY, arrayX + lineWidth, lineY, {
+      stroke: "#f00",
+      "stroke-width": 3,
+      opacity: 0.2
+    });
     drawLine(modelArray, 0, arraySize - 1, interLine);
 
 
@@ -162,10 +180,12 @@
         newmid: Math.floor(mid)
       }});
       refLines(jsav, code, "guess_calculations");
+      jsav.step();
       mid = Math.floor(mid);
-      modelArray.highlight(mid);
+      // modelArray.highlight(mid);
       if (initialArray[mid] < key) {
         low = mid + 1;
+        lowPointer.target(modelArray.index(low));
         jsav.umsg(interpret("av_ms_arr_mid_lt_key"), {fill: {
           arr_at_mid: initialArray[mid],
           key: key,
@@ -174,6 +194,7 @@
         refLines(jsav, code, "tbl_mid_lt_key");
       } else if (initialArray[mid] > key) {
         high = mid - 1;
+        highPointer.target(modelArray.index(high));
         jsav.umsg(interpret("av_ms_arr_mid_gt_key"), {fill: {
           arr_at_mid: initialArray[mid],
           key: key,
@@ -188,14 +209,13 @@
       modelHigh.value(high);
       // draw Line
       drawLine(modelArray, low, high, interLine);
-      // grade step
-      jsav.stepOption("grade", true);
-      jsav.step();
       if (modelArray.value(mid) === key) {
         modelReturn.value(mid);
         jsav.gradeableStep();
         return [modelArray, modelLow, modelHigh, modelReturn];
       }
+      // grade step
+      jsav.gradeableStep();
     }
     if (initialArray[low] >= key) {
       jsav.umsg(interpret("av_ms_loop_stopped_1"), {fill: { low: low }});
