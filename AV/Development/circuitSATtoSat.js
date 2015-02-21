@@ -18,7 +18,7 @@ $(document).ready(function () {
 
     av.umsg("<b>Background</b>");
 
-    label1 = av.label("'If and only if' (denoted by $\\leftrightarrow$) is a "+
+    label1 = av.label("The reduction shown in this slideshow relies heavily on the following identity:<br/> 'If and only if' (denoted by $\\leftrightarrow$) is a "+
     "boolean operator that follows the following truth table. <br><br>Let C = "
     +"A $\\leftrightarrow$ B",{left:0,top:-30});
 
@@ -35,16 +35,16 @@ $(document).ready(function () {
 
 
     label2 = av.label("A$\\leftrightarrow$B is equivalent to ($\\overline{A} + B$)."+
-    "($A + \\overline{B}$)",{left:200,top:100});
+    "($A + \\overline{B}$).<br/>Check each line of the truth table to convince yourself that this is true.",{left:200,top:100});
 
     av.displayInit();
     av.step();
 
+    av.umsg("<br/><br/>We will also use the following laws of boolean logic.", {preserve:true});
     label1.hide(); label2.hide();table1.hide();
 
-    label1 = av.label("<b> Laws of Boolean logic :</b>",{left:10,top:20});
     label2 = av.label("<b> Distributive Law</b>",{left:10,top:60});
-    label3 = av.label("$ A.(B + C) = A.B + A.C$",{left:40,top:80});
+    label3 = av.label("$A\\cdot (B + C) = A\\cdot B + A\\cdot C$",{left:40,top:80});
     label4 = av.label("$ A + B.C = (A+B).(A+C)$",{left:40,top:100});
     label5 = av.label("<b> DeMorgan's Law</b>",{left:10,top:140});
     label6 = av.label("$ \\overline{A.B} = \\overline{A} + \\overline{B}$",{left:40,top:160});
@@ -60,24 +60,19 @@ $(document).ready(function () {
     label6.hide();
     label7.hide();
 
-    av.umsg("<b>Reduction of Circuit-Satisfiability to SAT</b>"); 
-
-    av.umsg("<br><br>Steps:",{preserve:true});
-
-    av.umsg("<br><br>1. Assign a variable (say x<sub>i</sub>) for each input"+
-    "signal of a circuit.",{preserve:true}); 
-    av.umsg("<br><br>2. Assign a variable (say x<sub>o</sub>) for each output"+
-    " wire of a gate.",{preserve:true});
-    av.umsg("<br><br>3. Set up an 'if and only if' formula for each gate (See "+
-    "the following slides for example)",{preserve:true});
-    av.umsg("<br>&nbsp;&nbsp;&nbsp;&nbsp;Let F<sub>k</sub> be the formula for "+
-    "the k<sup>th</sup> gate.",{preserve:true}); 
-    av.umsg("<br><br>&nbsp;&nbsp; NOTE: An 'if and only if' formula can be "+
-    "expressed as a conjuntion of clauses.",{preserve:true}); 
-    av.umsg("<br><br>4. Let x<sub>O</sub> be the final output wire of the "+
+    av.umsg("<b>Reduction of Circuit-Satisfiability to SAT</b>" +
+            "<br><br>Our reduction takes the following steps:" +
+            "<br><br>1. Assign a variable $x_i$ for each input signal of a circuit." +
+            "<br><br>2. Assign a variable (say $x_o$) for each output wire of a gate.");
+    av.umsg("<br><br>3. Set up an 'if and only if' formula for each gate.", {preserve:true});
+    av.umsg(" (NOTE: 'If and only if' can be expressed as a conjuntion of clauses.)",{preserve:true}); 
+    av.umsg("<br>&nbsp;&nbsp;&nbsp;&nbsp;Let $F_k$ be the formula for "+
+    "the $k$<sup>th</sup> gate.",{preserve:true}); 
+    av.umsg("<br><br>4. Let $x_O$ be the final output wire of the "+
     "circuit.",{preserve:true});
-    av.umsg("<br><br>&nbsp;&nbsp;&nbsp;&nbsp;The CNF formula is x<sub>o,"+
-    "f</sub>.F<sub>1</sub>.F<sub>2</sub> ... ",{preserve:true}); av.step();
+    av.umsg("<br><br>&nbsp;&nbsp;&nbsp;&nbsp;The CNF formula is " +
+            "$x_{o,f} . F_1 . F_2$ ... ",{preserve:true});
+    av.step();
 
     av.umsg("<b>Reduction for NOT gate</b>"); 
     var notgate=board.addGate(av,"not",400,50,30); 
@@ -92,7 +87,7 @@ $(document).ready(function () {
     label4 = av.label(" = ($\\overline{x_1} + \\overline{x_2}$).($x_1 + x_2$) &nbsp;"+
     "&nbsp;&nbsp; which is a conjunction of clauses.",{left:240,top:130}); 
     av.step();
-    label5 = av.label("Note: &nbsp; Since $x_2$ is the output of NOT on $x_1$,"
+    label5 = av.label("Note: Since $x_2$ is the output of NOT on $x_1$,"
     +" $(x_2 \\leftrightarrow \\overline{x_1})$ (i.e. F) is always True.",
     {left:100,top:200});
     av.step();
@@ -350,7 +345,7 @@ $(document).ready(function () {
     av.step();
     numlabels[6].css({color:"Maroon"});
     var labels = new Array(15);
-    label1 = av.label("This circuit can be reduced to ",{left:0,top:200});
+    label1 = av.label("This circuit can be reduced to:",{left:0,top:200});
     labels[0] = av.label("$x_{10}$",{left:0,top:230}).css({color:"Maroon","font-size":"125%"});
     av.step();
     gate1.css({"fill":"Blue",opacity:0.5});
