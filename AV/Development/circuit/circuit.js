@@ -1,5 +1,5 @@
 function newCircuit(){
-  var board={"gates":[],"signals":[]};
+  var board={"gates":[],"signals":[],"branchpoints":[]};
 
   board.addGate = function addGate(av,GateType,x,y,r){
     if(["and","or","not","xor","nand","nor","nxor"].indexOf(GateType.toLowerCase())<0){
@@ -105,7 +105,13 @@ function newCircuit(){
     c.addClass("Gate");
     return c; 
   }
-  
+ 
+  board.addBranchPoint=function(av,x,y){
+    var p = av.g.circle(x,y,3,{"fill":"black"});
+    this["branchpoints"].push(p);
+    return p;
+  }
+ 
   board.getGates = function(){
 	return this["gates"];
   }
@@ -129,6 +135,8 @@ function newCircuit(){
 	    gate.output[i].hide();
     }
 
+    for( var i in this["branchpoints"])
+        this["branchpoints"][i].hide();
     for( var i in this["signals"])
     	for( var j in this["signals"][i])
            this["signals"][i][j].hide();
@@ -146,6 +154,8 @@ function newCircuit(){
 	    gate.output[i].show();
     }
 
+    for( var i in this["branchpoints"])
+        this["branchpoints"][i].show();
     for( var i in this["signals"])
     	for( var j in this["signals"][i])
            this["signals"][i][j].show();
@@ -199,6 +209,22 @@ function newCircuit(){
         return newGate;
   }
  
+  board.assignBP = function(bp,bool){
+     if(bool==1){
+       bp.css({"fill":"#33FF00"});
+       bp.css({"stroke":"#33FF00"});
+     }
+     else if(bool==0){
+       bp.css({"stroke":"red"});
+       bp.css({"fill":"red"});
+     }
+  }
+
+  board.unassignBP = function(bp){
+    bp.css({"fill":"black"});
+    bp.css({"stroke":"black"});
+  }
+
   board.assignOP = function(gate,bool){
       for(var i in gate.output){
          if(gate.output[i].hasClass("opWire")){
@@ -210,6 +236,7 @@ function newCircuit(){
          }
       }
   }
+
  
   board.unassignOP = function(gate){
       for(var i in gate.output){

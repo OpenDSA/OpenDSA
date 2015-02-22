@@ -1,18 +1,38 @@
 /*global ODSA, setPointerL */
 //"use strict";
-$(document).ready(function () {
+(function ($) {
 //  var av = new JSAV(av_name);
-  var av = new JSAV($('.avcontainer'));
+  var av;
+
+ function runit(){
+  av = new JSAV($('.avcontainer'));
   
   var label1, label2 , label3, label4, label5, label6,label7,label8,label9;
   //slide2
   var y = 0;
-  av.umsg("<b>Independent Set</b>"); 
 
-  av.umsg("<br><br><i>Independent Set</i> of a graph is a set of vertices such that no two of them are connected i.e. there exists no edge between any two vertices of an Independent Set.",{preserve:true}); 
+    av.umsg("<br><b>Objective </b> <br><br><br><br>This slideshow introduces"+
+" and explains the \"Independent Set\" Problem."
++"</b> <br><br><br> We start with some definitions  and background.");
 
-  av.displayInit();
+
+    av.displayInit();
+
+    av.step();
+
+  av.umsg("<br><b>Independent Set</b>"); 
+
+  av.umsg("<br><br><br>An Independent Set of a graph is a set of vertices such "+
+"that no two of them are connected i.e. there exists no edge between any two "+
+"vertices of an Independent Set.",{preserve:true}); 
+
   av.step();
+
+  av.umsg("<br><br><br>The largest possible Independent Set of a graph is called "+
+"the \"Maximum Independent Set\".",{preserve:true}); 
+
+  av.step();
+  
 
   var  g = av.ds.graph({width: 400, height: 450,layout: "manual", directed: false});
   x=50;
@@ -35,9 +55,9 @@ $(document).ready(function () {
   var e7 = g.addEdge(c3, c6);
   var e8 = g.addEdge(c4, c7);
 
-  c3.css({"background-color":"rgb(168,0,0)"});
-  e3.css({"stroke":"rgb(168,0,0)","stroke-width":"2"});
-  e7.css({"stroke":"rgb(168,0,0)","stroke-width":"2"});
+  c3.css({"background-color":"Brown"});
+  e3.css({"stroke":"Brown","stroke-width":"2"});
+  e7.css({"stroke":"Brown","stroke-width":"2"});
 
   c1.css({"background-color":"#669966"});
   e1.css({"stroke":"#669966","stroke-width":"2"});
@@ -52,18 +72,22 @@ $(document).ready(function () {
   e8.css({"stroke":"PaleVioletRed","stroke-width":"2"});
 
   g.layout();
-  //slide 3
+  g.show(); 
 
    av.step();
 
-   label1 = av.label("The colored vertices in this graph for an independent set.",{left:500,top: 150}); 
+   label1 = av.label("The colored vertices in this graph form an independent set."
+,{left:500,top: 150}); 
+   label2 = av.label("The Independnet set is { 1, 3, 5, 7}",{left:500,top: 200}); 
 
    av.step();
  y=0;
  g.hide(); 
  label1.hide();
-  av.umsg("<b>Example of Independent Set in graph </b>");
-  av.umsg("<br><br>The following graph contains a <i>Independent Set</i> of size 3.",{preserve:true}); 
+ label2.hide();
+  av.umsg("<br><b>Example of Independent Set in graph </b>");
+  av.umsg("<br><br><br>The following graph contains an Independent Set of size 3."+
+" (i.e. {2,4,5})",{preserve:true}); 
  
   x=50;
   y=70;
@@ -83,9 +107,9 @@ $(document).ready(function () {
   var eb5 = g2.addEdge(cb5, cb1);
   var eb6 = g2.addEdge(cb3, cb5);
 
-  cb2.css({"background-color":"rgb(168,0,0)"});
-  eb1.css({"stroke":"rgb(168,0,0)","stroke-width":"2"});
-  eb2.css({"stroke":"rgb(168,0,0)","stroke-width":"2"});
+  cb2.css({"background-color":"Brown"});
+  eb1.css({"stroke":"Brown","stroke-width":"2"});
+  eb2.css({"stroke":"Brown","stroke-width":"2"});
 
   cb4.css({"background-color":"#669966"});
   eb3.css({"stroke":"#669966","stroke-width":"2"});
@@ -96,16 +120,17 @@ $(document).ready(function () {
   eb5.css({"stroke":"#996699","stroke-width":"2"});
 
   g2.layout();
+  g2.show();
 
  av.step();
 
-   label1.hide();
 
-   av.umsg("<b>Example of Independent Set in graph </b>");
+   av.umsg("<br><b>Example of Independent Set in graph </b>");
    g2.hide();
 
   y=0; 
-  av.umsg("<br><br>The following graph contains a <i>Independent Set</i> of size 5.",{preserve:true}); 
+  av.umsg("<br><br><br>The following graph contains an Independent Set"
++" of size 5. ( i.e. {2,3,4,6,10} ) ",{preserve:true}); 
 
   x=50;
   y=100;
@@ -140,10 +165,10 @@ $(document).ready(function () {
   var ea3 = g1.addEdge(ca5, ca4);
 
 
-  ca6.css({"background-color":"rgb(168,0,0)"});
-  ea1.css({"stroke":"rgb(168,0,0)","stroke-width":"2"});
-  ea11.css({"stroke":"rgb(168,0,0)","stroke-width":"2"});
-  ea12.css({"stroke":"rgb(168,0,0)","stroke-width":"2"});
+  ca6.css({"background-color":"Brown"});
+  ea1.css({"stroke":"Brown","stroke-width":"2"});
+  ea11.css({"stroke":"Brown","stroke-width":"2"});
+  ea12.css({"stroke":"Brown","stroke-width":"2"});
 
   ca2.css({"background-color":"#669966"});
   ea4.css({"stroke":"#669966","stroke-width":"2"});
@@ -171,13 +196,22 @@ $(document).ready(function () {
 
 
   g1.layout();
+  g1.show();
 
 
  //slide 5 
-  av.step();
-  g1.hide();
-  av.umsg("<b>Independent Set Problem </b>");
-  av.umsg("<br><br><br><i>Independent Set Problem </i> is the decision problem to determine whether a graph has  an independent set greater than or equal to a given size.",{preserve:true});
+    av.step();
+    g1.hide();
+    av.umsg("<br><b>The Independent Set Problem </b>");
+    av.umsg("<br><br><br>The Independent Set Problem can be defined as either "
++"of the following: ",{preserve:true});
+    av.umsg("<br><br><br><b>Given a graph <i> G = (V , E) </i>, find the Maximum "
++"Independent Set in <i>G</i>.</b>",{preserve:true});
+    av.umsg("<br><br><br>Or",{preserve:true});
+    av.umsg("<br><br><br><b>Given a graph <i> G = (V , E) </i>, and a number "
++"<i>k</i>, does <i>G</i> contain an Independent Set of size >= <i>k</i> ?</b>",{preserve:true});
+
+    av.step();
 
 //silde 6 
   av.step();
@@ -186,9 +220,9 @@ $(document).ready(function () {
 
   label1.hide();
 
-  av.umsg("<b>Example of Independent Set Problem: </b>");  
+  av.umsg("<br><b>Example of Independent Set Problem: </b>");  
 
-  av.umsg("<br><br>Does the graph below have an independent set of size >=9 ?",{preserve:true}); 
+  av.umsg("<br><br><br>Does the graph below have an independent set of size >=9 ?",{preserve:true}); 
   x=50;
   y=100;
 
@@ -235,18 +269,12 @@ $(document).ready(function () {
 
   y=0;
 
-  av.umsg("<br><br><b>No</b>",{preserve:true}); 
-  g4.show();
+  av.umsg("<br><br><br><b>No</b>",{preserve:true}); 
 
-//slide 8
+  av.step(); 
+  av.umsg("<br><b>Example of Independent Set Problem: </b>");  
 
-  av.step();
-  av.umsg("<b>Example of Vertex Cover Problem: </b>");  
-  g4.show();
-  
-  av.umsg("<b>Example of Independent Set Problem: </b>");  
-
-  av.umsg("<br><br>Does the graph below have an independent set of size >=7 ?",{preserve:true}); 
+  av.umsg("<br><br><br>Does the graph below have an independent set of size >=7 ?",{preserve:true}); 
 
 //slide 9
 
@@ -254,13 +282,12 @@ $(document).ready(function () {
 
   y=0;
 
-  av.umsg("<br><br><b>Yes</b>",{preserve:true}); 
+  av.umsg("<br><br><br><b>Yes</b>",{preserve:true}); 
 
 
-  cc4.css({"background-color":"rgb(168,0,0)"});
-  //ec8.css({"stroke":"rgb(168,0,0)" ,"stroke-width":"2"});
-  ec2.css({"stroke":"rgb(168,0,0)" ,"stroke-width":"2"});
-  ec16.css({"stroke":"rgb(168,0,0)" ,"stroke-width":"2"});
+  cc4.css({"background-color":"Chocolate"});
+  ec2.css({"stroke":"Chocolate" ,"stroke-width":"2"});
+  ec16.css({"stroke":"Brown" ,"stroke-width":"2"});
 
   cc9.css({"background-color":"#669966"});
   ec12.css({"stroke":"#669966" ,"stroke-width":"2"});
@@ -279,10 +306,10 @@ $(document).ready(function () {
   ec8.css({"stroke":"IndianRed" ,"stroke-width":"2"});
 
 
-  cc6.css({"background-color":"Khaki"});
-  ec1.css({"stroke":"Khaki" ,"stroke-width":"2"});
-  ec11.css({"stroke":"Khaki" ,"stroke-width":"2"});
-  ec13.css({"stroke":"Khaki" ,"stroke-width":"2"});
+  cc6.css({"background-color":"Silver"});
+  ec1.css({"stroke":"Silver" ,"stroke-width":"2"});
+  ec11.css({"stroke":"Silver" ,"stroke-width":"2"});
+  ec13.css({"stroke":"Silver" ,"stroke-width":"2"});
 
   cc7.css({"background-color":"Teal"});
   ec22.css({"stroke":"Teal" ,"stroke-width":"2"});
@@ -295,4 +322,15 @@ $(document).ready(function () {
   ec14.css({"stroke":"SlateBlue" ,"stroke-width":"2"});
   g4.show();
   av.recorded();
-});
+}
+  function about() {
+    var mystring = "Introduction of Independent Set Problem\nWritten by Nabanita Maji and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during March, 2015\nJSAV library version " + JSAV.version();
+    alert(mystring);
+  }
+
+  // Connect action callbacks to the HTML entities
+  $('#about').click(about);
+  $('#runit').click(runit);
+  $('#reset').click(ODSA.AV.reset);
+}(jQuery));
+

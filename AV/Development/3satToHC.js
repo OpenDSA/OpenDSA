@@ -1,7 +1,7 @@
 "use strict";
 /*global ODSA, setPointerL */
 
-$(document).ready(function () {
+(function ($) {
 /* Description for some global variables used :
  * g: The graph that is constructed for the reduction. Any pair of
  * nodes in any path P_i in G has 2 edges (say forward for left-to-right
@@ -40,9 +40,9 @@ $(document).ready(function () {
  */
 
   var jsav;
-  var x= 200 , y = 20 , r = 15;
+  var x= 200 , y = 10 , r = 15;
 
-  var label1, label2, label3, label4, label5, label6, 
+  var label1, label2, label3, label4, label5, label6,label7,label8,label9,label10,label11, 
     g, g1, source,  target, line1, line2, 
     varlabel, exprlabel, 
     literalLabels = new Array(4),
@@ -95,7 +95,7 @@ $(document).ready(function () {
   }
 
   function runit() {
-    ODSA.AV.reset(true);
+//    ODSA.AV.reset(true);
     jsav = new JSAV($('.avcontainer'));
     $(".avcontainer").on("jsav-message" ,  function() {
       // invoke MathJax to do conversion again
@@ -112,55 +112,68 @@ $(document).ready(function () {
     g1 = jsav.ds.graph({width: 800,  height: 550,  left: 100,  top: 50,
                       layout: "manual",  directed: true});
 
-    // Slide 1 
-    jsav.umsg("<b>Reduction of 3-SAT to HAMILTONIAN CYCLE.</b><br><br><br>");
-    jsav.umsg("For a 3-SAT expression containing $n$ variables," +
-              " there are $2^n$ possible assignments.<br><br><br>",
-              {'preserve': true});
-    jsav.umsg("We model these $2^n$ possible truth assignments using a graph with" 
-              +" $2^n$ different Hamiltonian cycles by the following method." , 
-              {'preserve':true});
+    // Slide 1
+    jsav.umsg("<b>Objective</b>"); 
+    jsav.umsg("<br><br><br>This slideshow explains the reduction of 3CNF"+
+" Satisfiability to Hamiltonian Cycle in polynomial time",{preserve:true}); 
     jsav.displayInit();
- 
-    // Slide 2
-    jsav.umsg("<b>Step1: Construction of paths</b><br><br>");
-    jsav.umsg("Construct $n$ paths $P_1$, $P_2$, ..., $P_n$ corresponding to the" 
-              +" $n$ variables.<br><br>" , {'preserve':true});
-    jsav.umsg("Each path $P_i$ should consist of $2k$ nodes ($v_{i,1}$, $v_{i,2}$"
+
+    jsav.step();
+    jsav.umsg("<b>3-SAT and  HAMILTONIAN CYCLE.</b>");
+    label1=jsav.label("For a 3-SAT expression containing $n$ variables," +
+              " there are $2^n$ possible assignments.",
+              {left:0,top:-30});
+    label2=jsav.label("We model these $2^n$ possible truth assignments using a graph with" 
+              +" $2^n$ different Hamiltonian cycles <br>by the following method." , 
+              {left:0,top:0});
+    jsav.step();
+    
+    label1.hide();
+    label2.hide();
+    jsav.umsg("<b>Step1: Construction of paths</b>");
+    label1=jsav.label("Construct $n$ paths $P_1$, $P_2$, ..., $P_n$ corresponding to the" 
+              +" $n$ variables." , {left:0,top:-30});
+    label2=jsav.label("Each path $P_i$ should consist of $2k$ nodes ($v_{i,1}$, $v_{i,2}$"
               +", ..., $v_{i,2k}$) where $k$ is the number of clauses in the "+
-              "expression.<br><br>" , {'preserve':true});
+              "expression." , {left:0,top:0});
     jsav.step();
   
     // Slide 3
-    jsav.umsg("For example:<br><br>" , {'preserve':true});
-    jsav.umsg("Consider the following boolean expression with 4 variables: ",
-              {'preserve':true});
-    jsav.umsg("$x_1$, $x_2$, $x_3$, $x_4$<br><br>" , {'preserve':true});
-    jsav.umsg("Expression: $(x_1 + x_2 + \\bar{x_3}).(\\bar{x_2} + x_3 + x_4).(x_1 + \\bar{x_2} + x_4)$<br><br>",
-              {'preserve':true});
-    jsav.umsg("We construct 4 paths with 6 nodes each<br><br>" , 
-              {'preserve':true});
-    jsav.umsg("$P_1$ with nodes $v_{1,1}, v_{1,2}, v_{1,3}, v_{1,4}, v_{1,5}, v_{1,6}$<br>",
-              {'preserve':true});
-    jsav.umsg("$P_2$ with nodes $v_{2,1}, v_{2,2}, v_{2,3}, v_{2,4}, v_{2,5}, v_{2,6}$<br>",
-              {'preserve':true});
-    jsav.umsg("$P_3$ with nodes $v_{3,1}, v_{3,2}, v_{3,3}, v_{3,4}, v_{3,5}, v_{3,6}$<br>",
-              {'preserve':true});
-    jsav.umsg("$P_4$ with nodes $v_{4,1}, v_{4,2}, v_{4,3}, v_{4,4}, v_{4,5}, v_{4,6}$<br>",
-              {'preserve':true});
+    label3=jsav.label("For example:" , {left:0,top:30});
+    label4=jsav.label("Consider the following boolean expression with 4 variables: ",
+              {left:0,top:60});
+    label5=jsav.label("$x_1$, $x_2$, $x_3$, $x_4$" , {left:0,top:90});
+    label6=jsav.label("Expression: $(x_1 + x_2 + \\bar{x_3}).(\\bar{x_2} + x_3 + x_4).(x_1 + \\bar{x_2} + x_4)$",
+              {left:0,top:120});
+    label7=jsav.label("We construct 4 paths with 6 nodes each",
+              {left:0,top:150});
+    label8=jsav.label("$P_1$ with nodes $v_{1,1}, v_{1,2}, v_{1,3}, v_{1,4}, v_{1,5}, v_{1,6}$",
+              {left:0,top:180});
+    label9=jsav.label("$P_2$ with nodes $v_{2,1}, v_{2,2}, v_{2,3}, v_{2,4}, v_{2,5}, v_{2,6}$",
+              {left:0,top:210});
+    label10=jsav.label("$P_3$ with nodes $v_{3,1}, v_{3,2}, v_{3,3}, v_{3,4}, v_{3,5}, v_{3,6}$",
+              {left:0,top:240});
+    label11=jsav.label("$P_4$ with nodes $v_{4,1}, v_{4,2}, v_{4,3}, v_{4,4}, v_{4,5}, v_{4,6}$",
+              {left:0,top:270});
     jsav.step();
 
     // Slide 4, 5, 6, 7
-    // display the boolean variables 
+    // display the boolean variables
+
+    label1.hide(), label2.hide(); label3.hide(); 
+    label4.hide(), label5.hide(); label6.hide(); 
+    label7.hide(), label8.hide(); label9.hide(); 
+    label10.hide(), label11.hide(); 
+ 
     jsav.umsg("<b>Step 1a: Adding nodes for the paths</b>");
-    varlabel = jsav.label("Variables:" , {left:10 , top:-20});
-    x = 100; y=75;
+    varlabel = jsav.label("Variables:" , {left:10 , top:-30});
+    x = 100; y=65;
     for(var i=0;i<6;i=i+2) {
-      literalLabels[i]=jsav.label("$x_"+(i/2+1)+"$" , {left:x , top:-20});
-      literalLabels[i+1]=jsav.label("," , {left:x+30 , top:-20});
+      literalLabels[i]=jsav.label("$x_"+(i/2+1)+"$" , {left:x , top:-30});
+      literalLabels[i+1]=jsav.label("," , {left:x+30 , top:-30});
       x=x+45;
     }
-    literalLabels[i]=jsav.label("$x_"+(i/2+1)+"$" , {left:x , top:-20});
+    literalLabels[i]=jsav.label("$x_"+(i/2+1)+"$" , {left:x , top:-30});
 
     for(var i=0;i<4;i++) {
       x=10;
@@ -230,10 +243,10 @@ $(document).ready(function () {
       literalLabels[i].hide();
 
     //display forward edges
-    jsav.umsg("<b>Step 1b: Adding edges to the paths</b><br><br><br>");
-    jsav.umsg("Add edges from $v_{i,j-1}$ to $v_{i,j}$ (i.e. left to right) on" 
-	      +" $P_i$ to correspond to the assignment  $x_i = 1$<br>" , 
-              {'preserve':true} );
+    jsav.umsg("<b>Step 1b: Adding edges to the paths</b>");
+    label1=jsav.label("Add edges from $v_{i,j-1}$ to $v_{i,j}$ (i.e. left to right) on" 
+	      +" $P_i$ to correspond to the assignment  $x_i = 1$" , 
+              {left:0,top:-30} );
     for(var i=0;i<4;i++){
       for(var j=0;j<6;j++){
 	if(j>0)
@@ -244,10 +257,11 @@ $(document).ready(function () {
 
     // Slide 9
     // Display reverse edges
-    jsav.umsg("<b>Step 1b: Adding edges to the paths</b><br><br><br>");
-    jsav.umsg("Add edges from $v_{i,j}$ to $v_{i,j-1}$ (i.e. right to left) on"+ 
+    label1.hide();
+    jsav.umsg("<b>Step 1b: Adding edges to the paths</b>");
+    label1=jsav.label("Add edges from $v_{i,j}$ to $v_{i,j-1}$ (i.e. right to left) on"+ 
 	      " $P_i$ to correspond to the assignment $x_i = 0$" ,
-	      {'preserve':true} );
+              {left:0,top:-30} );
     for(var i=0;i<4;i++){
       for(var j=0;j<6;j++){
 	if(j>0)
@@ -258,9 +272,11 @@ $(document).ready(function () {
 
     // Slide 10
     // Display interconnecting edges
-    jsav.umsg("<b>Step 2: Inter-connecting the paths</b><br><br><br>");
-    jsav.umsg("Add edges from  $v_{i,1}$ and $v_{i,6}$  to  $v_{i+1,1}$ and " 
-	      +"$v_{i+1,6}$<br>" , {'preserve':true} );
+    label1.hide();
+    jsav.umsg("<b>Step 2: Inter-connecting the paths</b>");
+    label1=jsav.label("Add edges from  $v_{i,1}$ and $v_{i,6}$  to  $v_{i+1,1}$ and " 
+	      +"$v_{i+1,6}$" ,
+              {left:0,top:-30} );
     for(var i=1;i<4;i++){
       for(var j=0;j<4;j++)
 	PE2[i-1][j].show();
@@ -269,14 +285,14 @@ $(document).ready(function () {
  
     // Slide 11
     jsav.umsg("<b>Step 3: Adding source and target nodes</b>");
-    y = 75;
+    y = 65;
 
     //add source and target nodes to g and display.
     source  = g.addNode("<b>s</b>" , {"top":-5 , "left":220})
                .css({"background-color":"Khaki" , "width":"40px" , 
                      "height":"40px" , "min-width":"40px" , "min-height":"40px" ,
                      "opacity":0.65});
-    target  = g.addNode("<b>t</b>" , {"top":y+260 , "left":220})
+    target  = g.addNode("<b>t</b>" , {"top":y+250 , "left":220})
                .css({"background-color":"Khaki" , "width":"40px", "height":"40px" 
                      ,"min-width":"40px", "min-height":"40px" , "opacity":0.65});
     var tmpnode = g.addNode(" " , {"top":-5 , "left":-200})
@@ -298,9 +314,9 @@ $(document).ready(function () {
     for(i=0;i<5;i++)
       PE1[i].hide();
 
-    line1 = jsav.g.line(100 , 80 , 100 , 425);
+    line1 = jsav.g.line(100 , 80 , 100 , 405);
     line1.css({"stroke":"DarkViolet"});
-    line2 = jsav.g.line(100 , 425 , 320 , 425);
+    line2 = jsav.g.line(100 , 405 , 320 , 405);
     line2.css({"stroke":"DarkViolet"});
     line1.hide();
     line2.hide();
@@ -310,33 +326,37 @@ $(document).ready(function () {
  
     // Slide 12
     // display the edges connecting source and target to path nodes in g. 
+
+    label1.hide();
     jsav.umsg("<b>Step 4: Connecting  source and target nodes to the "
-              +"paths</b><br><br><br>");
-    jsav.umsg("Add edges from '$s$' to $v_{1,1}$ and $v_{1,6}$ and from "+
-              "$v_{4,1}$ and $v_{4,6}$ to '$t$'<br>" , {'preserve':true} );
+              +"paths</b>");
+    label1=jsav.label("Add edges from '$s$' to $v_{1,1}$ and $v_{1,6}$ and from "+
+              "$v_{4,1}$ and $v_{4,6}$ to '$t$'" , 
+              {left:0,top:-30} );
     for(var i=0;i<4;i++)
       PE1[i].show();
     jsav.step();
 
     // Slide 13
     //display he edge from target to source.
-    jsav.umsg("<b>Step 5: Adding a backpath from target to source"+
-              "</b><br><br><br>");
-    jsav.umsg("Being the only path from target to source, this path will " +
-              "always be present in any Hamiltonian Cycle of the graph.<br>",
-	      {'preserve':true});
+    label1.hide();
+    jsav.umsg("<b>Step 5: Adding a backpath from target to source");
+    label1=jsav.label("Being the only path from target to source, this path will " +
+              "always be present in any Hamiltonian Cycle of the graph.",
+              {left:0,top:-30} );
     line2.show();
     line1.show();
     PE1[4].show();
     jsav.step();
 
     // Slide 14
-    jsav.umsg("<b>Step 6: Adding nodes corresponding to clauses</b><br>");
+    label1.hide();
+    jsav.umsg("<b>Step 6: Adding nodes corresponding to clauses</b>");
     x=150;
-    y=0;
+    y=-10;
 
     //display the CNF expression with each clause in different color. 
-    exprlabel = jsav.label("3CNF expression: " , {"top":y , "left":10});
+    exprlabel = jsav.label("3-CNF expression: " , {"top":y , "left":10});
     for(var i=0;i<3;i++){
       clauses[i] = new Array(8);
       x=x+15;
@@ -360,10 +380,10 @@ $(document).ready(function () {
     C[0] = g.addNode("<b>C1</b>" , {"top":-15 , "left":430})
             .css({"background-color":color[0] , "width":"50px" , "height":"50px",
                   "min-width":"50px" , "min-height":"50px" , "opacity":0.65});
-    C[1] = g.addNode("<b>C2</b>" , {"top":325 , "left":370})
+    C[1] = g.addNode("<b>C2</b>" , {"top":305 , "left":400})
             .css({"background-color":color[1] , "width":"50px" , "height":"50px",
                   "min-width":"50px" , "min-height":"50px" , "opacity":0.65});
-    C[2] = g.addNode("<b>C3</b>" , {"top":315 , "left":580})
+    C[2] = g.addNode("<b>C3</b>" , {"top":300 , "left":580})
             .css({"background-color":color[2] , "width":"50px" , "height":"50px",
                   "min-width":"50px" , "min-height":"50px" , "opacity":0.65});
 
@@ -409,14 +429,14 @@ $(document).ready(function () {
   PE3[2][1][1]=g.addEdge(C[2] , P[1][5]).css({"stroke":"SlateGray" , 
 						 "stroke-width":"1.5px"});
   PE3[2][2][0]=g.addEdge(C[2] , P[3][4]).css({"stroke":"SlateGray" , 
-						 "stroke-width":"1.5x"});
+						 "stroke-width":"1.5px"});
   PE3[2][2][1]=g.addEdge(P[3][5] , C[2]).css({"stroke":"SlateGray" , 
 						 "stroke-width":"1.5px"});
 
   for(var i=0;i<3;i++){
     for(var j=0;j<3;j++){
-  PE3[i][j][0].hide();
-  PE3[i][j][1].hide();
+      PE3[i][j][0].hide();
+      PE3[i][j][1].hide();
     }
   }
   g.layout();
@@ -424,26 +444,27 @@ $(document).ready(function () {
 
   // Slide 15
   hideGraph();
-  jsav.umsg("<b>Step7: Connecting clauses to the paths</b><br><br><br>");
-  jsav.umsg("If a clause $C_j$ contains the variable $x_i$,<br><br>",
-            {'preserve':true} );
-  jsav.umsg("&nbsp;&nbsp;&nbsp;1.Connect $C_j$ to $v_{i,2j-1}$ and "+
-            "$v_{i,2j}$<br><br>" , {'preserve':true} );
-  jsav.umsg("&nbsp;&nbsp;&nbsp;2.The direction of the path connecting $C_j$"+
-            ",$v_{i,2j-1}$ and $v_{i,2j}$ should be:<br><br>" , 
-            {'preserve':true} );
+  jsav.umsg("<b>Step 7: Connecting clauses to the paths</b>");
+  label1=jsav.label("If a clause $C_j$ contains the variable $x_i$,",
+            {left:0,top:-30} );
+  label2=jsav.label("&nbsp;&nbsp;&nbsp;1.Connect $C_j$ to $v_{i,2j-1}$ and "+
+            "$v_{i,2j}$" ,
+            {left:0,top:0} );
+  label3=jsav.label("&nbsp;&nbsp;&nbsp;2.The direction of the path connecting $C_j$"+
+            ",$v_{i,2j-1}$ and $v_{i,2j}$ should be:" , 
+            {left:0,top:30} );
   jsav.step();
 
   // Slide 16
-  label1 = jsav.label("a. right to left if $C_j$ contains $x_i$" , 
-                     {"left":40 , "top":85} );
-  label2 = jsav.label("For example : $C_1$ i.e. ($x_1$ + $x_2$ + $\\bar{x_3}$)" 
+  label4 = jsav.label("a. right to left if $C_j$ contains $x_i$" , 
+                     {"left":40 , "top":75} );
+  label5 = jsav.label("For example : $C_1$ i.e. ($x_1$ + $x_2$ + $\\bar{x_3}$)" 
                       +" contains $x_1$. So $C_1$ should be connected as:" , 
-                      {"left":40 , "top":115} );
-  var g2 = jsav.ds.graph({width: 200 ,  height: 100 ,  left: 100 ,  top: 130 ,  
+                      {"left":40 , "top":105} );
+  var g2 = jsav.ds.graph({width: 200 ,  height: 100 ,  left: 100 ,  top: 120 ,  
                           layout: "manual" ,  directed: true});
   var tmpnode1, tmpnode2, tmpnode3;
-  label3 = jsav.label("$P_1$" , {"left":100 , "top":215});
+  label6 = jsav.label("$P_1$" , {"left":100 , "top":215});
   tmpnode1 = g2.addNode("1" , {"top":85 , "left":30})
                .css({"background-color":"Tan", "width":"30px", "height":"30px", 
                      "min-width":"30px", "min-height":"30px", "opacity":0.5});
@@ -459,15 +480,15 @@ $(document).ready(function () {
   jsav.step();
 
   // Slide 17
-  y=260;
-  label4 = jsav.label("b. left to right if $C_j$ contains $\\bar{x_i}$", 
+  y=250;
+  label7 = jsav.label("b. left to right if $C_j$ contains $\\bar{x_i}$", 
                       {"left":40 , "top":y} );
-  label5 = jsav.label("For example : $C_2$ i.e. ($\\bar{x_2}$ + $x_3$ + $x_4$) " 
+  label8 = jsav.label("For example : $C_2$ i.e. ($\\bar{x_2}$ + $x_3$ + $x_4$) " 
                      +"contains $\\bar{x_2}$. So $\\bar{C_2}$ should be connected"
                      +" as:" , {"left":40 , "top":y+30} );
   var g3 = jsav.ds.graph({width: 200 ,  height: 100 ,  left: 100 ,  top: y+45 ,  
                           layout: "manual" ,  directed: true});
-  label6 = jsav.label("$P_2$" , {"left":100 , "top":y+125});
+  label9 = jsav.label("$P_2$" , {"left":100 , "top":y+125});
   tmpnode1 = g3.addNode("3" , {"top":75 , "left":30})
                .css({"background-color":"Tan", "width":"30px", "height":"30px", 
                      "min-width":"30px", "min-height":"30px", "opacity":0.5});
@@ -483,7 +504,7 @@ $(document).ready(function () {
   jsav.step();
 
   // Slide 18
-  jsav.umsg("<b>Step7: Connecting clauses to the paths</b><br><br><br>");
+  jsav.umsg("<b>Step7: Connecting clauses to the paths</b>");
   //display the graph on canvas
   g2.hide();
   g3.hide();
@@ -493,6 +514,9 @@ $(document).ready(function () {
   label4.hide();
   label5.hide();
   label6.hide();
+  label7.hide();
+  label8.hide();
+  label9.hide();
   line2.show();
   line1.show();
 
@@ -536,6 +560,7 @@ $(document).ready(function () {
       clauses[i-1][5].css({"font-size":"100%"});
       PE3[i-1][2][0].css({"stroke-width":"1.5px"});
       PE3[i-1][2][1].css({"stroke-width":"1.5px"});
+     
     }
     for(var j=0;j<3;j++){
       if(j>0){
@@ -575,63 +600,60 @@ $(document).ready(function () {
 
   jsav.umsg("<b>Insights about the constructed graph</b><br><br><br>");
 
-  jsav.umsg("1. Any Hamiltonian Cycle in the constructed graph ($G$) traverses" 
-           +" $P_i$ either from right-to-left or left-to-right.<br>" , 
-           {'preserve':true} );
-  jsav.umsg("This is because any path entering a node $v_{i,j}$ has to exit "+
+  label1=jsav.label("1. Any Hamiltonian Cycle in the constructed graph ($G$) traverses" 
+           +" $P_i$ either from right-to-left or left-to-right.<br>"
+  +"This is because any path entering a node $v_{i,j}$ has to exit "+
             "from $v_{i,j+1}$ either immediately or  via one <br> clause-node"+
-            " in between, in order to maintain Hamiltonian property<br>",
-             {'preserve':true} );
-  jsav.umsg("Similarly all paths entering at $v_{i,j-1}$ has to exit from "+ 
-            "$v_{i,j}$.<br><br>" , {'preserve':true} );
-  jsav.umsg("2. Since each path $P_i$ can be traversed in $2$ possible ways "+
-            "and we have $n$ paths mapping to $n$ variables, there can be $2^n$"
+            " in between, in order to maintain Hamiltonian property<br>"+
+  "Similarly all paths entering at $v_{i,j-1}$ has to exit from "+ 
+            "$v_{i,j}$.<br><br>"+
+  "2. Since each path $P_i$ can be traversed in $2$ possible ways "+
+            "and we have $n$ paths mapping to $n$ variables, <br>there can be $2^n$"
             +" Hamiltonian cycles in the graph $G$ - {$C_1$, $C_2$ $\\cdots$ "
-            +"$C_k$}.<br>" , {'preserve':true} );
-  jsav.umsg("Each one of this $2^n$ Hamiltonian cycles corresponds to a particular"
-            +" assignment for variables $x_1$, $x_2$ $\\cdots$  $x_n$.<br>" , 
-            {'preserve':true} );
+            +"$C_k$}.<br>"+
+  "Each one of this $2^n$ Hamiltonian cycles corresponds to a particular"
+            +" assignment for variables $x_1$, $x_2$ $\\cdots$  $x_n$.<br>"
++"<br><br>3. <b>This graph can be constructed in polynomial time.</b>" 
+            ,{left:0,top:-30} );
   
   jsav.step();
 
   // Slide 30
+  label1.hide();
   jsav.umsg("<b>3-SAT and Hamiltonian Cycle</b><br><br><br>");
-  jsav.umsg("1. <b>If there exists a Hamiltonian cycle $H$ in the graph $G$," 
-            +"</b><br><br>" , {'preserve':true} );
-  jsav.umsg("If $H$ traverses $P_i$ from left to right, assign $x_i = 1$<br>", 
-             {'preserve':true} );
-  jsav.umsg("If $H$ traverses $P_i$ from right to left, assign $x_i \\geq 0$"+
-            "<br><br>" , {'preserve':true} );
-  jsav.umsg("Since H visits each clause node $C_j$, atleast one one $P_i$ was"
+  label1=jsav.label("1. <b>If there exists a Hamiltonian cycle $H$ in the graph $G$," 
+            +"</b><br><br>" +
+  "If $H$ traverses $P_i$ from left to right, assign $x_i = 1$<br>"+ 
+  "If $H$ traverses $P_i$ from right to left, assign $x_i \\geq 0$"+
+            "<br><br>"+
+  "Since H visits each clause node $C_j$, atleast one one $P_i$ was"
             +" traversed in the right direction relative to the node $C_j$"+
-            "<br><br>" , {'preserve':true} );
-  jsav.umsg("<b>The assignment obtained here satisfies the given 3 CNF.</b>"+
-            "<br><br><br>" , {'preserve':true} );
+            "<br><br>"+
+  "<b>The assignment obtained here satisfies the given 3 CNF.</b>"+
+            "<br><br><br>",{left:0,top:0});
   jsav.step();
 
   // Slide 31
-  jsav.umsg("2. <b>If there exists a satisfying assignment for the 3 CNF</b>," 
-            +"<br><br>" , {'preserve':true} );
-  jsav.umsg("Select the path that traverses $P_i$ from left-to-right if $x_i" 
-            +"\\geq 1$ or right-to-left if $x_i \\geq 0$<br>" , 
-            {'preserve':true} );
-  jsav.umsg("Include the clauses in the path wherever possible.<br>" , 
-            {'preserve':true} );
-  jsav.umsg("Connect the source to $P_1$, $P_n$ to target and $P_i$ to "+
+  label2=jsav.label("2. <b>If there exists a satisfying assignment for the 3 CNF</b>," 
+            +"<br><br>"+
+  "Select the path that traverses $P_i$ from left-to-right if $x_i" 
+            +"\\geq 1$ or right-to-left if $x_i \\geq 0$<br>"+
+  "Include the clauses in the path wherever possible.<br>"+
+  "Connect the source to $P_1$, $P_n$ to target and $P_i$ to "+
             "$P_{i+1}$ appropriately so as to maintain the continuity of "+
-            "the path <br>" , {'preserve':true} );
-  jsav.umsg("Connect the target to source to complete the cycle<br><br>" , 
-            {'preserve':true} );
-  jsav.umsg("Since the assignment is such that every clause is satisfied, all" 
-            +"the clause-nodes are included in the path.The $P_i$ nodes and "
+            "the path <br>"+
+  "Connect the target to source to complete the cycle<br><br>"
+  +"Since the assignment is such that every clause is satisfied, all " 
+            +"the clause-nodes are included in the path.<br>The $P_i$ nodes and "
             +"source and target are all included and since the path traverses "+
-            "unidirectional, no node is repeated twice <br><br>" , 
-            {'preserve':true} );
-  jsav.umsg("<b> The path obtained is a Hamiltonian Cycle</b><br><br>" , 
-            {'preserve':true} );
+            "unidirectional, <br>no node is repeated twice <br><br>"+ 
+  "<b> The path obtained is a Hamiltonian Cycle</b><br><br>",{left:0,top:180});
   jsav.step();
 
   // Slide 32
+
+  label1.hide();
+  label2.hide();
   line1.show(); line2.show();
   g.show();
   g1.show();
@@ -666,7 +688,7 @@ $(document).ready(function () {
   }
 
   jsav.umsg("<b>Hamiltonian Cycle in the constructed graph</b><br><br><br>");
-  jsav.umsg("The graph $G$ has a Hamiltonian cycle<br>" , {'preserve':true});
+  label1 = jsav.label("The graph $G$ has a Hamiltonian cycle<br>" , {left:0,top:-30});
 
   for(var i=0;i<3;i++)
     for(j=0;j<8;j++)
@@ -709,11 +731,11 @@ $(document).ready(function () {
   jsav.step();
 
   // Slide 33
+  label1.hide();
   jsav.umsg("<b>Assignment for 3-SAT</b><br><br><br>");
-  jsav.umsg("From the Hamiltonian cycle below the assignment is : <br><br>",
-            {'preserve':true});
-  jsav.umsg("<b>$x_1 = 1$  ,  $x_2 = 0$  ,  $x_3 = 1$  ,  $x_4 = 0$</b><br><br>",
-            {'preserve':true});
+  label1=jsav.label("From the Hamiltonian cycle below the assignment is : <br><br>"
+  +"<b>$x_1 = 1$  ,  $x_2 = 0$  ,  $x_3 = 1$  ,  $x_4 = 0$</b><br><br>",
+            {left:0,top:-30});
   exprlabel.hide();
   for(var i=0;i<3;i++)
     for(j=0;j<8;j++)
@@ -721,24 +743,24 @@ $(document).ready(function () {
   jsav.step();
 
   // Slide 34
+  label1.hide();
   jsav.umsg("<b>Satisfiability of 3-CNF</b><br><br><br>");
   hideGraph();
   jsav.umsg("From the Hamiltonian cycle below the assignment is : <br><br>",
             {'preserve':true});
-  jsav.umsg("<b>$x_1 = 1$, $x_2 = 0$, $x_3 = 1$, $x_4 = 0$</b><br><br>",
-            {'preserve':true});
-  jsav.umsg("The above assignment satisfies the 3CNF ($x_1$ + $x_2$ + "+ 
+  label1=jsav.label("<b>$x_1 = 1$, $x_2 = 0$, $x_3 = 1$, $x_4 = 0$</b><br><br>"+
+  "The above assignment satisfies the 3CNF ($x_1$ + $x_2$ + "+ 
             "$\\bar{x_3}$).($\\bar{x_2}$ + $x_3$ + $x_4$).($x_1$ + "
-            +"$\\bar{x_2}$ + $x_4$)<br>" , {'preserve':true});
+            +"$\\bar{x_2}$ + $x_4$)<br>" , {left:0,top:0});
   jsav.recorded();
 }
-
-function about(){
-  alert("Proof of NP Completeness for Hamiltonian Cycle Problem");
-}
+  function about() {
+    var mystring = "Reduction of 3-SAT to Hamiltonian Cycle\nWritten by Nabanita Maji and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during March, 2015\nJSAV library version " + JSAV.version();
+    alert(mystring);
+  }
 
 $('#about').click(about);
 $('#runit').click(runit);
 $('#help').click(help);
 $('#reset').click(ODSA.AV.reset);
-});
+}(jQuery));
