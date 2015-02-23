@@ -1,16 +1,32 @@
 /*global ODSA,  setPointerL */
 //"use strict";
-$(document).ready(function () {
+(function ($) {
 //  var av = new JSAV(av_name);
-  var av = new JSAV($('.avcontainer'));
-  
-  //slide1
-  var y = 0;
-  
-  av.umsg("<b>Hamiltonian Cycle </b><br><br><br>"); 
 
-  av.umsg("<i>Hamiltonian Cycle</i> is a cycle in an undirected or + directed"
-+"graph that passes through each vertex exactly once.<br><br>", {'preserve':true});
+  var av;
+
+ function runit(){
+
+  av = new JSAV($('.avcontainer'));
+  
+  var y = 0;
+    av.umsg("<br><b>Objective </b> <br><br><br><br>This slideshow introduces"+
+" and explains the \"Hamiltonian Cycle\" Problem."
++"</b> <br><br><br> We start with some definitions  and background.");
+
+    av.displayInit();
+
+    av.step();
+  
+    av.umsg("<br><b>Hamiltonian Cycle</b>"); 
+
+    av.umsg("<br><br><br>Hamiltonian Cycle is a graph cycle in an undirected or a"
++"directed graph that passes through each vertex exactly once.", {'preserve':true});
+
+    av.step();
+
+    av.umsg("<br><br><br>For example - The edges marked in red in the graph below forms"
++" a Hamiltonian Cycle",{preserve:true});
 
   var  g = av.ds.graph({width: 400,  height: 450, layout: "manual",  directed: 
 false});
@@ -36,35 +52,34 @@ false});
   var e56 = g.addEdge(c5,  c6);
 
 
-  e25.css({"stroke":"rgb(168,0,0)", "stroke-width":"3"});
-  e21.css({"stroke":"rgb(168,0,0)", "stroke-width":"3"});
-  e13.css({"stroke":"rgb(168,0,0)", "stroke-width":"3"});
-  e36.css({"stroke":"rgb(168,0,0)", "stroke-width":"3"});
-  e46.css({"stroke":"rgb(168,0,0)", "stroke-width":"3"});
-  e45.css({"stroke":"rgb(168,0,0)", "stroke-width":"3"});
+  e25.css({"stroke":"Brown", "stroke-width":"3"});
+  e21.css({"stroke":"Brown", "stroke-width":"3"});
+  e13.css({"stroke":"Brown", "stroke-width":"3"});
+  e36.css({"stroke":"Brown", "stroke-width":"3"});
+  e46.css({"stroke":"Brown", "stroke-width":"3"});
+  e45.css({"stroke":"Brown", "stroke-width":"3"});
 
 
   g.layout();
   g.show();
   
-  av.displayInit();  
   av.step();
 
 //silde 2 
 
   g.hide();
-  av.umsg("<b>Hamiltonian Cycle Problem </b><br><br><br>");
-  av.umsg("<i>Hamiltonian Cycle problem </i> is the decision problem "
-+"to determine whether a graph contains a Hamiltonian Cycle. <br><br>", 
+  av.umsg("<br><b>Hamiltonian Cycle Problem </b>");
+  av.umsg("<br><br><br><b>Given a graph <i>G = (V,E)</i>, does the graph "
++"contain a Hamiltonian Cycle? </b><br><br>", 
 {'preserve':true});
 
 //silde 3 
   av.step();
   y=0;
 
-  av.umsg("<b>Example of Hamiltonian Cycle Problem: </b><br><br><br>");  
+  av.umsg("<br><b>Example of Hamiltonian Cycle Problem </b>");  
 
-  av.umsg("In the graph below there <b>exists</b> a Hamiltonian Cycle "+
+  av.umsg("<br><br><br>Does the graph below contain a Hamiltonian Cycle ?"+
 "<br><br>", {'preserve':true}); 
 
   var  g1 = av.ds.graph({width: 500,  height: 400, layout: "manual",  directed: 
@@ -90,9 +105,9 @@ true,  left: 50, top:50});
  
   var nodes=g1.nodes();
 
+  var cycleEdges = new Array(8);
   for(i=0;i<8;i++)
-  g1.addEdge(nodes[i], nodes[(i+1)%8]).css({"stroke":"SteelBlue", 
-"stroke-width":"2.5px"});;
+      cycleEdges[i]=g1.addEdge(nodes[i], nodes[(i+1)%8]).css({"stroke-width":"1.5px"});
 
   g1.addEdge(nodes[3], nodes[6]).css({"stroke-width":"1.5px"});;
   g1.addEdge(nodes[5], nodes[1]).css({"stroke-width":"1.5px"});;
@@ -104,12 +119,19 @@ true,  left: 50, top:50});
   g1.addEdge(nodes[2], nodes[7]).css({"stroke-width":"1.5px"});;
   g1.addEdge(nodes[1], nodes[3]).css({"stroke-width":"1.5px"});;
   g1.layout();
-
+  g1.show();
 //slide 4 
   av.step();
 
+  label1=av.label("<b>Yes</b>",{left:10,top:50});
+  for(i=0;i<8;i++)
+      cycleEdges[i].css({"stroke":"SteelBlue", 
+"stroke-width":"2.5px"});;
+  g1.layout();
+  g1.show();
+  av.step();
   y=0;
-
+  label1.hide();
   g1.removeEdge(g1.getEdge(nodes[1], nodes[3]));
   g1.removeEdge(g1.getEdge(nodes[2], nodes[3]));
   g1.removeEdge(g1.getEdge(nodes[6], nodes[7]));
@@ -127,11 +149,23 @@ true,  left: 50, top:50});
   edges[i].css({"stroke":"Black", "stroke-width":"1.5px"});
 
   g1.layout();
-  av.umsg("<b>Example of Hamiltonian Cycle Problem: </b><br><br><br>");  
-  av.umsg("In the graph below  there <b>does not</b> exist a Hamiltonian Cycle"
-  +"<br><br>", {'preserve':true}); 
+  av.umsg("<b><br>Example of Hamiltonian Cycle Problem</b>");  
+  av.umsg("<br><br><br>Does the graph below contain a Hamiltonian Cycle ?"+
+"<br><br>", {'preserve':true}); 
 
-
+  av.step();
+  label1=av.label("<b>No</b>",{left:10,top:50});
   av.recorded();
-});
+}
+  function about() {
+    var mystring = "Introduction of Hamiltonian Cycle Problem\nWritten by Nabanita Maji and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during March, 2015\nJSAV library version " + JSAV.version();
+    alert(mystring);
+  }
+
+  // Connect action callbacks to the HTML entities
+  $('#about').click(about);
+  $('#runit').click(runit);
+  $('#reset').click(ODSA.AV.reset);
+}(jQuery));
+
 
