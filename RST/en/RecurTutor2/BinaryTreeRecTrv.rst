@@ -5,27 +5,27 @@
 
 .. avmetadata::
    :author: Sally Hamouda
-   :satisfies: recursive binary tree traversal
-   :topic: Recursive Binary Trees Traversal
+   :satisfies: writing a recursive method to traverse a binary tree
+   :topic: Writing a Recursive Method to Traverse a Binary Tree
 
 .. odsalink:: AV/RecurTutor2/AdvancedRecurTutor.css
 
-Recursive Binary Tree Traversal
-================================
+Writing a Recursive Method to Traverse a Binary Tree
+====================================================
 
-When writing a recursive function to solve a problem that requires traversing a binary tree,
+When writing a recursive method to solve a problem that requires traversing a binary tree,
 we want to make sure that we are visiting "exactly" the required nodes (no more and no less).
 
-So, you should learn two skills in order to avoid inefficient solutions:
+Recall that for any recursive function you should learn two skills :
 
- #. Formulate the base case and its action to work correctly on any given binary tree.
- #. Formulate the recursive case and its action to work correctly on any give binary tree.
+ #. Formulate the base case and its action.
+ #. Formulate the recursive case and its action.
 
 
 Formulate the base case and its action
 --------------------------------------
 
-In binary trees, the base case is always to check if we have an empty tree.
+In binary trees, in many binary tree types the base case is to check if we have an empty tree.
 One of the common mistakes some people does is considering that the base case
 action will be executed only after the recursive calls are executed.
 This is not always the case because you may have your input as an empty tree
