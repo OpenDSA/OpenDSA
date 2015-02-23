@@ -27,14 +27,7 @@ You should also make sure that you don't do the common mistakes stated  below:
  #. If it is required from you to write a function that returns a value (e.g. the number of nodes in a binary tree),
     you have to make sure that the function actually "returns". One of the common mistakes is just
     doing  the recursive call without writing the word "return" before it.
- #. Doing unneeded visits to the nodes that can be avoided. That more likely
-    to happen in the problems that requires traversing a binary search tree and you forget
-    to make use of the binary search tree properties which keeps the numbers
-    less than the root in the left sub-tree and the numbers larger than the root on the
-    right sub-tree. So one of the common mistakes is searching for the minimum  value in
-    a binary search tree in the right sub-trees or searching for the maximum value of a binary search tree
-    in the left sub-tree.
- 
+
 
 One of the most common mistakes when writing a program that traverses
 a binary tree is forgetting to check if the root is null or not.
@@ -130,18 +123,6 @@ This property says that for each node sum of its left and
 right children should be equal to node value.    In this specific problem you will need to
 explicitly check on the children if the children are null or not and check on their values.
 
-
-Another common mistake is doing unneeded visits to the nodes that can be avoided.
-
-.. topic:: Example
-
-   Given a binary search tree, find out the minimum value. Your solution to this problem
-   can visit every single node in the binary search tree without benefiting from the binary
-   search tree property that can make you avoid visiting many nodes in most of the cases.
-   So, you know that the values greater than the root are always on the right sub-tree.
-   Given that you want the minimum so why will you ever need to traverse any of the right sub-trees
-   when you know that the minimum value is in a left sub-tree. 
-   This was explained in the previous visulization.
    
 
 In summary, those are the common mistakes you should avoid doing:
