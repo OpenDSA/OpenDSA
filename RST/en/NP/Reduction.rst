@@ -211,20 +211,8 @@ We can define reduction more formally as a three-step process:
 Figure :num:`Figure #BlackBox` shows a graphical representation of the
 general reduction process, showing the role of the two problems, and
 the two transformations.
-Figure :num:`Figure #PairingBox` shows a similar diagram for the
-reduction of **SORTING** to **PAIRING**.
-
-.. _PairingBox:
-
-.. odsafig:: Images/PairingBox.png
-   :width: 200
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Reduction of SORTING to PAIRING
-
-   A reduction of **SORTING** to **PAIRING** shown as a "blackbox"
-   diagram.
+Next is a slideshow that shows the steps for 
+the reduction of **SORTING** to **PAIRING**.
 
 .. avembed:: AV/Development/sortToPairReduction.html ss
 
@@ -358,6 +346,8 @@ advantage of the following observation:
 
 In the above formula, :math:`AB` is the result of multiplying
 matrices :math:`A` and :math:`B` together.
+
+The following slideshow illustrates this reduction process.
 
 .. avembed:: AV/Development/matrixMulReduction.html ss
 

@@ -9,6 +9,9 @@
   },
   "lang": "en",
   "module_origin": "http://algoviz.org",
+  "exercise_server": "https://opendsa.cc.vt.edu/",
+  "logging_server": "https://opendsa.cc.vt.edu/",
+  "score_server": "https://opendsa.cc.vt.edu/",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
@@ -46,14 +49,6 @@
             "threshold": 1.0
           }
         }
-      },
-      "NP/NPComplete": {
-        "long_name": "NP-Complete Problems",
-        "exercises": {}
-      },
-      "NP/NPCoping": {
-        "long_name": "Coping with NP-complete problems",
-        "exercises": {}
       }
     },
     "Appendix": {

@@ -18,9 +18,15 @@ function runit() {
   mat1data=[[2,3],[6,7],[4,9]];
   mat2data=[[1,10,5],[12,8,11]];
   mat1 = new jsav.ds.matrix(mat1data,{style:"matrix",left:x+30,top:y+0});
+  for(var i=0;i<3;i++)
+    for(var j=0;j<2;j++)
+      mat1.css(i,j,{"background-color":"Wheat"});
   mat1.show();
   jsav.label("X",{left:x+190,top:y+10});
   mat2 = new jsav.ds.matrix(mat2data,{style:"matrix",left:x+280,top:y+0});
+  for(var i=0;i<2;i++)
+    for(var j=0;j<3;j++)
+      mat2.css(i,j,{"background-color":"PowderBlue"});
   mat2.show();
   jsav.displayInit();
   jsav.step();
@@ -43,10 +49,22 @@ function runit() {
   r3.show();
   var mat1Transformed = transform(mat1data,3,2,0); 
   var mat1TransDisp = new jsav.ds.matrix(mat1Transformed,{style:"matrix",left:x+10,top:y+200});
+  for(var i=0;i<3;i++)
+    for(var j=3;j<5;j++)
+      mat1TransDisp.css(i,j,{"background-color":"Wheat"});
+  for(var i=3;i<5;i++)
+    for(var j=0;j<3;j++)
+      mat1TransDisp.css(i,j,{"background-color":"Khaki"});
   mat1TransDisp.show();
   jsav.label("X",{left:x+210,top:y+270});
   var mat2Transformed = transform(mat2data,2,3,1); 
   var mat2TransDisp = new jsav.ds.matrix(mat2Transformed,{style:"matrix",left:x+250,top:y+200});
+  for(var i=0;i<3;i++)
+    for(var j=3;j<5;j++)
+      mat2TransDisp.css(i,j,{"background-color":"LightSteelBlue"});
+  for(var i=3;i<5;i++)
+    for(var j=0;j<3;j++)
+      mat2TransDisp.css(i,j,{"background-color":"PowderBlue"});
   mat2TransDisp.show();
   jsav.step();
   jsav.umsg("Then the two symmetric matrices are multiplied");
@@ -59,6 +77,9 @@ function runit() {
   var productDisp = new jsav.ds.matrix(product,{style:"matrix",left:x+550,top:y+200});
   productDisp.show();
   jsav.step();
+  for(var i=0;i<3;i++)
+    for(var j=0;j<3;j++)
+      productDisp.css(i,j,{"background-color":"#CCFF99"});
 
   var r32 = jsav.g.rect(560,220,95,100);
   r31.show();
@@ -73,6 +94,9 @@ function runit() {
   jsav.step();
   var verifyprod = multiply(mat1data,mat2data,3,3,2); 
   var verifyprodDisp = new jsav.ds.matrix(verifyprod,{style:"matrix",left:x+600,top:y+0});
+  for(var i=0;i<3;i++)
+    for(var j=0;j<3;j++)
+      verifyprodDisp.css(i,j,{"background-color":"#CCFF99"});
   verifyprodDisp.show();
   jsav.label("Output Array",{left:610,top:-30});
   jsav.umsg("Total cost = O(mn) + cost of smmtric multiply");
@@ -133,7 +157,9 @@ function multiply(mat1,mat2,row,col,mid){
 }
 
 function about() {
-  alert("Reduction visualization");
+    var mystring = "Example of Reduction\nWritten by Nabanita Maji and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during March, 2015\nJSAV library version " + JSAV.version();
+    alert(mystring);
+
 }
   
 

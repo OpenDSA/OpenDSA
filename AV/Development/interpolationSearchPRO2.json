@@ -45,10 +45,10 @@
     "java" : {
       "url": "../../SourceCode/Java/Searching/interpolationSearch.java",
       "tags": {
-        "guess_calculations": 9,
-        "highlight": [11, 13],
-        "tbl_mid_lt_key": [10, 11],
-        "tbl_mid_gt_key": [12, 13]
+        "guess_calculations": 7,
+        "highlight": [8, 9],
+        "tbl_mid_lt_key": 8,
+        "tbl_mid_gt_key": 9
       }
     }
   }
