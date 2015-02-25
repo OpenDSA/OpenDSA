@@ -18,3 +18,11 @@
 	line-height:30px;
         text-align:center;
 }
+.jsavnode, .jsavvalue{
+        height:25px;
+}
+.jsavindexlabel {
+        color:blue;
+}
+
+
