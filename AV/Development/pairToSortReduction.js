@@ -125,7 +125,9 @@ function runit() {
 }
 
 function about() {
-  alert("Reduction visualization");
+     var mystring = "Example of Reduction\nWritten by Nabanita Maji and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during March, 2015\nJSAV library version " + JSAV.version();
+    alert(mystring);
+
 }
   
 
