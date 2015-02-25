@@ -1,6 +1,6 @@
 #GraphIntro3CON .jsavcanvas {
     
-    height: 500px;
+    height: 400px;
     
 }
 
@@ -8,4 +8,13 @@
 	border-style: solid;
 	border-width: 5px;
 	stroke-width: 3;
+}
+
+.jsavverticalarray .jsavnode {
+	line-height: 30px !important;
+	min-width: 30px !important;
+	max-width: 30px !important;
+	min-height: 30px !important;
+	max-height: 50px !important;
+	height: 45px;
 }

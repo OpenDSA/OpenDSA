@@ -127,7 +127,7 @@ is said to be a :term:`weighted graph`.
    their definitions, then a series of slides that illustrate each
    word.
 
-.. inlineav:: GraphIntroCON dgm
+.. inlineav:: GraphIntroCON ss
    :output: show
 
 A sequence of vertices :math:`v_1, v_2, ..., v_n`
@@ -206,7 +206,7 @@ a free tree is connected and has :math:`|\mathbf{V}| - 1` edges.
    Replace image above with a JSAV-generated image. Or better, a
    slideshow to illustrate the various representation issues.
 
-.. inlineav:: GraphIntro3CON dgm
+.. inlineav:: GraphIntro3CON ss
    :output: show
 
 
