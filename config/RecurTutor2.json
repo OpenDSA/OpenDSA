@@ -84,13 +84,7 @@
       },
      "RecurTutor2/BinaryTreeRecTrv": {
         "long_name": " Recursive Binary Tree Traversal",
-        "exercises": {  
-          "IneffBinaryTreeRangeCON": {
-            "long_name": "Inefficient Binary Tree Traversal on Range Slide Show",
-            "required": true,
-            "points": 1.0,
-            "threshold": 0.90
-           }
+        "exercises": { 
          }
       },
      "RecurTutor2/BinaryTreeTrvprob": {
@@ -104,7 +98,8 @@
            }
          }
       },
-      "RecurTutor2/BinaryTreeInfFlw": {
+     
+        "RecurTutor2/BinaryTreeInfFlw": {
         "long_name": "Binary Tree Information Flow",
         "exercises": {
           "BinaryTreeClctNrtrnSumm": {
@@ -120,7 +115,18 @@
             "points": 0.0,
             "threshold": 1.0,
             "showhide": "Show"
-          },
+          }
+        }
+      },
+     "RecurTutor2/BinaryTreeGuidedInfFlw": {
+        "long_name": "Binary Tree Guided Information Flow",
+        "exercises": {
+          "IneffBinaryTreeRangeCON": {
+            "long_name": "Inefficient Binary Tree Traversal on Range Slide Show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.90
+           },
           "BinaryTreeGuidedSumm": {
             "long_name": "Binary Tree Guided Traversal Exercises",
             "required": true,
@@ -130,7 +136,6 @@
           }
         }
       },
-       
      "RecurTutor2/MultipleBinaryTrees": {
         "long_name": "Multiple Binary Trees",
         "exercises": {
