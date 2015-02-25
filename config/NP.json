@@ -37,6 +37,13 @@
             "points": 0,
             "showhide": "none",
             "threshold": 1.0
+          },
+          "matrixMulReduction": {
+            "long_name": "Matrix Multiplication",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
           }
         }
       },

@@ -2,33 +2,30 @@
 //"use strict";
 (function ($) {
  
-var av;
-Array.prototype.contains = function(k) {
-  for(var i=0; i < this.length; i++){
-    if(this[i] === k){
-      return true;
-    }
-  }
-  return false;
-}
-function runit(){
- av = new JSAV($('.avcontainer'));
+  var av;
+ 
+ function runit(){
+
+   av = new JSAV($('.avcontainer'));
 
 //slide 1
 
   var i, j;
 
+  av.umsg("<b>Objective </b><br><br><br> This slideshow presents how to reduce"+
+" a Clique problem to an Independent Set problem in polynomial time");
+  av.displayInit();
+  av.step();
   av.umsg("<b>Clique  and Independent Set problems</b><br><br><br>");
 
 
   av.umsg("For a given graph <b>G = ( V , E )</b> and integer <b>k</b>, the "
 +"Clique problem is to find whether <b>G</b> contains a clique of size "
-+"<b>k</b>.<br><br>", {'preserve':true});
++">= <b>k</b>.<br><br>", {'preserve':true});
   av.umsg("For a given graph <b>G' = ( V' , E' )</b> and integer <b>k'</b>, the "
 +"Independent Set problem is to find whether <b>G'</b> contains an Independent Set "
-+"of size <b>k'</b>.<br><br>", {'preserve':true});
++"of size >= <b>k'</b>.<br><br>", {'preserve':true});
 
- av.displayInit();
  av.step();
 
 //slide 2
@@ -42,6 +39,9 @@ function runit(){
 +"vertices as the original graph<br><br>", {'preserve':true});
   av.umsg("2.  <b>E'</b> is the compliment of <b>E</b> i.e. <b>G'</b> has all the "
 +"edges that is <b>not</b> present in <b>G</b><br><br>", {'preserve':true});
+  av.step();
+  av.umsg("Note:  Construction of the complimentary graph can be done in "
++"polynomial time", {'preserve':true});
 
   av.step();
 
@@ -103,6 +103,7 @@ directed: false});
     if(cliqueEdges.indexOf(edges[i])<0)
       isEdges.push(edges[i]);
   g.layout();
+  g.show();
 
 
   av.step();
@@ -117,8 +118,6 @@ directed: false});
     isEdges[i].show();
 
   av.step();
-
-//slide 5
 
 //display G'
   for(j=0;j<cliqueEdges.length;j++)
@@ -243,11 +242,14 @@ directed: false});
 
   av.recorded();
 }
+  function about() {
+    var mystring = "Reduction of Clique problem to Independent Set problem\nWritten by Nabanita Maji and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during March, 2015\nJSAV library version " + JSAV.version();
+    alert(mystring);
+  }
 
 
 $('#about').click(about);
 $('#runit').click(runit);
-$('#help').click(help);
 $('#reset').click(ODSA.AV.reset);
 }(jQuery));
 

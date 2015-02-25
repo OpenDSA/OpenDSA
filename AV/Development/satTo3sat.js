@@ -1,7 +1,10 @@
 /*global ODSA, setPointerL */
 //"use strict";
-$(document).ready(function () {
+(function ($) {
 
+  var av;
+
+  function runit(){
     $(".avcontainer").on("jsav-message" ,  function() {
       // invoke MathJax to do conversion again
       MathJax.Hub.Queue(["Typeset" , MathJax.Hub]); });
@@ -9,7 +12,14 @@ $(document).ready(function () {
       // invoke MathJax to do conversion again 
      MathJax.Hub.Queue(["Typeset" , MathJax.Hub]); });
 
-    var av = new JSAV($('.avcontainer')); 
+    av = new JSAV($('.avcontainer')); 
+
+    av.umsg("<b>Objective </b><br><br><br> This slideshow presents how to reduce"+
+" a Formula Satisfiability problem to an 3 CNF Satisfiability problem in polynomial time");
+    av.displayInit();
+    av.step();
+
+
     av.umsg("<br><b>Reduction of SAT to 3-SAT</b>");
 
     av.umsg("<br><br><br>There can be only four cases for a clause in a SAT "+
@@ -20,28 +30,27 @@ $(document).ready(function () {
     +" where $i$ can range from 1 to n",{preserve:true});
 
     av.umsg("<br><br>&nbsp;1. It contains three literals. &nbsp;&nbsp;"+
-    "&nbsp; For e.g. : ($x_1$ + ^$x_2$ + $x_3$)",{preserve:true}); 
+    "&nbsp; For example : ($x_1$ + ^$x_2$ + $x_3$)",{preserve:true}); 
   
     av.umsg("<br>&nbsp;&nbsp;&nbsp;&nbsp;No reduction needed for this case.",{preserve:true}); 
 
     av.umsg("<br><br>&nbsp;2. It contains only one literal. &nbsp;"+
-    "&nbsp;&nbsp; For e.g. : ($x_1$)",{preserve:true}); 
+    "&nbsp;&nbsp; For example : ($x_1$)",{preserve:true}); 
   
     av.umsg("<br><br>&nbsp;3. It contains two literals. &nbsp;"+
-    "&nbsp;&nbsp; For e.g. : ($x_1$ + ^$x_2$)",{preserve:true}); 
+    "&nbsp;&nbsp; For example : ($x_1$ + ^$x_2$)",{preserve:true}); 
   
     av.umsg("<br><br>&nbsp;4. It contains more than three literals. &nbsp;&nbsp;"+
-    "&nbsp; For e.g. : ($x_1$ + ^$x_2$ + $x_3$ + $\\cdots$ +$x_k$) where k > 3"
+    "&nbsp; For example : ($x_1$ + ^$x_2$ + $x_3$ + $\\cdots$ +$x_k$) where k > 3"
     ,{preserve:true}); 
 
-    av.displayInit(); 
 
     av.step();
 
     av.umsg("<br><br><br>Any of the above type of clause (C) can be replaced by"
     +" a conjunction of clauses (Z) such that <br><br>1. All clauses in "+
     "Z contain  exactly 3 literals. <br><br>2. C is satisfiable if and only if"+
-    " Z is satisfiable. i.e. $C \\iff Z$"
+    " Z is satisfiable. that is $C \\iff Z$"
     ,{preserve:true}); 
   
     av.step();
@@ -622,12 +631,25 @@ $(document).ready(function () {
 
     av.step();
 
-    av.umsg("<b>Reduction of SAT to 3SAT");
+    av.umsg("<b>Reduction of SAT to 3-SAT");
     av.umsg("<br><br><br>Hence any clause in a SAT expression can be replaced by a"
     +" conjunction of clauses which contains 3 literals each.",{preserve:true});
-    av.umsg("<br><br><br><b>So, a SAT problem can be reduced to an instance of 3SAT"
+    av.umsg("<br><br><br><b>So, a SAT problem can be reduced to an instance of 3-SAT"
     +" in polynomial time.</b>",{preserve:true});
 
     av.recorded(); 
 
-});
+}
+
+  function about() {
+    var mystring = "Reduction of SAT problem to 3-SAT problem\nWritten by Nabanita Maji and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during March, 2015\nJSAV library version " + JSAV.version();
+    alert(mystring);
+  }
+
+
+$('#about').click(about);
+$('#runit').click(runit);
+$('#reset').click(ODSA.AV.reset);
+}(jQuery));
+
+

@@ -1,16 +1,37 @@
 /*global ODSA, setPointerL */
 //"use strict";
-$(document).ready(function () {
+(function ($) {
 //  var av = new JSAV(av_name);
-  var av = new JSAV($('.avcontainer'));
+  var av;
+ 
+ function runit(){
+
+  av = new JSAV($('.avcontainer'));
   
   var label1, label2 , label3, label4, label5, label6,label7,label8,label9;
   //slide2
   var y = 0;
-  av.umsg("<b>Vertex Cover</b>"); 
 
-  label2 = av.label("<i>Vertex Cover</i> of a graph is a set of vertices such that any edge of the graph is incident to at least one vertex of the set.",{top: y-40}).css({"text-align": "center"}); 
-  label2.show();
+  av.umsg("<br><b>Objective </b> <br><br><br><br>This slideshow introduces"+
+" and explains the \"Vertex Cover\" Problem."
++"</b> <br><br><br> We start with some definitions  and background.");
+
+
+    av.displayInit();
+
+    av.step();
+
+  av.umsg("<br><b>Vertex Cover</b>"); 
+
+   av.umsg("<br><br><br>A Vertex Cover of a graph is a set of vertices such that "+
+"any edge of the graph is incident on at least one vertex of the set.",
+{preserve:true}); 
+  av.step();
+
+  av.umsg("<br><br><br>The smallest possible Vertex Cover of a graph is called "+
+"the \"Minimum Vertex cover\".",{preserve:true});
+
+  av.step();
 
   var  g = av.ds.graph({width: 400, height: 450,layout: "manual", directed: false});
   x=50;
@@ -33,11 +54,11 @@ $(document).ready(function () {
   var e7 = g.addEdge(c3, c6);
   var e8 = g.addEdge(c3, c7);
 
-  c3.css({"background-color":"rgb(168,0,0)"});
-  e3.css({"stroke":"rgb(168,0,0)","stroke-width":"2"});
-  e5.css({"stroke":"rgb(168,0,0)","stroke-width":"2"});
-  e7.css({"stroke":"rgb(168,0,0)","stroke-width":"2"});
-  e8.css({"stroke":"rgb(168,0,0)","stroke-width":"2"});
+  c3.css({"background-color":"Brown"});
+  e3.css({"stroke":"Brown","stroke-width":"2"});
+  e5.css({"stroke":"Brown","stroke-width":"2"});
+  e7.css({"stroke":"Brown","stroke-width":"2"});
+  e8.css({"stroke":"Brown","stroke-width":"2"});
 
   c5.css({"background-color":"#669966"});
   e4.css({"stroke":"#669966","stroke-width":"2"});
@@ -48,15 +69,23 @@ $(document).ready(function () {
   e2.css({"stroke":"#996699","stroke-width":"2"});
 
   g.layout();
+  g.show();
   //slide 3
 
    av.step();
-   av.umsg("<b>Example of Vertex Cover in graph </b>");
+   label1 = av.label("The colored vertices in this graph form a Vertex Cover."
+,{left:500,top: 150});
+   label2 = av.label("The Vertex Cover is {1, 3, 5}",{left:500,top: 200});
+  
+   av.step();
+
+   av.umsg("<br><b>Example of Vertex Cover in graph </b>");
    g.hide();
+   label1.hide();
    label2.hide();
   y=0; 
-  label2 = av.label("The following graph contains a <i>Vertex Cover</i> of size 6.",{top: y-30}).css({"text-align": "center"}); 
-  label2.show();
+  av.umsg("<br><br><br>The following graph contains a Vertex Cover  of size"+
+" 6. (i.e. {1,2,3,6,9,10})",{preserve:true}); 
 
   x=50;
   y=100;
@@ -91,20 +120,20 @@ $(document).ready(function () {
   var ea14 = g1.addEdge(ca8, ca10);
   var ea15 = g1.addEdge(ca9, ca10);
 
-  ca6.css({"background-color":"rgb(168,0,0)"});
-  ea1.css({"stroke":"rgb(168,0,0)","stroke-width":"2"});
-  ea11.css({"stroke":"rgb(168,0,0)","stroke-width":"2"});
-  ea12.css({"stroke":"rgb(168,0,0)","stroke-width":"2"});
+  ca6.css({"background-color":"Brown"});
+  ea1.css({"stroke":"Brown","stroke-width":"2"});
+  ea11.css({"stroke":"Brown","stroke-width":"2"});
+  ea12.css({"stroke":"Brown","stroke-width":"2"});
 
   ca1.css({"background-color":"#669966"});
   ea2.css({"stroke":"#669966","stroke-width":"2"});
   ea3.css({"stroke":"#669966","stroke-width":"2"});
 
 
-  ca2.css({"background-color":"#FFCC66"});
-  ea4.css({"stroke":"#FFCC66","stroke-width":"2"});
-  ea5.css({"stroke":"#FFCC66","stroke-width":"2"});
-  ea6.css({"stroke":"#FFCC66","stroke-width":"2"});
+  ca2.css({"background-color":"Silver"});
+  ea4.css({"stroke":"Silver","stroke-width":"2"});
+  ea5.css({"stroke":"Silver","stroke-width":"2"});
+  ea6.css({"stroke":"Silver","stroke-width":"2"});
 
 
 
@@ -125,14 +154,14 @@ $(document).ready(function () {
   ea13.css({"stroke":"#FF6699","stroke-width":"2"});
 
   g1.layout();
-
+  g1.show();
 //slide 4 
  av.step();
  y=0;
- g1.hide(); 
-  label2.hide();
-  label2 = av.label("The following graph contains a <i>Vertex Cover</i> of size 3.",{top: y-30}).css({"text-align": "center"}); 
-  label2.show();
+   av.umsg("<br><b>Example of Vertex Cover in graph </b>");
+   g1.hide();
+  av.umsg("<br><br><br>The following graph contains a Vertex Cover  of size"+
+" 3. (i.e. {1,2,3})",{preserve:true}); 
  
   x=50;
   y=70;
@@ -158,10 +187,10 @@ $(document).ready(function () {
   var eb9 = g2.addEdge(cb3, cb7);
   var eb10 = g2.addEdge(cb2, cb5);
 
-  cb1.css({"background-color":"rgb(168,0,0)"});
-  eb1.css({"stroke":"rgb(168,0,0)","stroke-width":"2"});
-  eb2.css({"stroke":"rgb(168,0,0)","stroke-width":"2"});
-  eb8.css({"stroke":"rgb(168,0,0)","stroke-width":"2"});
+  cb1.css({"background-color":"Brown"});
+  eb1.css({"stroke":"Brown","stroke-width":"2"});
+  eb2.css({"stroke":"Brown","stroke-width":"2"});
+  eb8.css({"stroke":"Brown","stroke-width":"2"});
 
   cb2.css({"background-color":"#669966"});
   eb3.css({"stroke":"#669966","stroke-width":"2"});
@@ -174,6 +203,7 @@ $(document).ready(function () {
   eb9.css({"stroke":"#996699","stroke-width":"2"});
 
   g2.layout();
+  g2.show();
 
 
 
@@ -181,21 +211,26 @@ $(document).ready(function () {
   av.step();
   label2.hide();
   g2.hide();
-  av.umsg("<b>Vertex Cover Problem </b>");
-  label1 = av.label("<i>Vertex Cover problem </i> is the decision problem to determine whether a graph has  a vertex cover less than or equal to a given size.",{top:20});
-  label1.show();
+    av.umsg("<br><b>The Vertex Cover Problem </b>");
+    av.umsg("<br><br><br>The Vertex Cover Problem can be defined as either "
++"of the following: ",{preserve:true});
+    av.umsg("<br><br><br><b>Given a graph <i> G = (V , E) </i>, find the Minimum "
++"Vertex Cover in <i>G</i>.</b>",{preserve:true});
+    av.umsg("<br><br><br>Or",{preserve:true});
+    av.umsg("<br><br><br><b>Given a graph <i> G = (V , E) </i>, and a number "
++"<i>k</i>, does <i>G</i> contain an Vertex Cover of size <= <i>k</i> ?</b>",{preserve:true});
 
-//silde 6 
+
   av.step();
   y=0;
 
 
-  label1.hide();
 
-  av.umsg("<b>Example of Vertex Cover Problem: </b>");  
+  av.umsg("<br><b>Example of Vertex Cover Problem: </b>");  
 
-  label1 = av.label("Does the graph below have a vertex cover of size <=3 ?",{top:-30}); 
-  label1.show();
+  av.umsg("<br><br><br>Does the graph below have a vertex cover of size "
++"<=3 ?",{preserve:true}); 
+
   x=50;
   y=100;
 
@@ -234,47 +269,38 @@ $(document).ready(function () {
   g4.layout();
   g4.show();
 
-//slide 7 
   av.step();
 
-  av.umsg("<b>Example of Vertex Cover Problem: </b>");  
-
-  y=0;
-
-  label2 = av.label("<b>No</b>",{top:20}).css({"text-align": "center"}); 
-  label2.show();
+  label2 = av.label("<b>No</b>",{top:40}).css({"text-align": "center"}); 
   g4.show();
 
-//slide 8
 
   av.step();
-  av.umsg("<b>Example of Vertex Cover Problem: </b>");  
-  label1.hide();
-  label2.hide(); 
+  label2.hide();
+  av.umsg("<br><b>Example of Vertex Cover Problem: </b>");  
   g4.show();
   
 
-  label1 = av.label("Does the graph below have a vertex cover of size <=4 ?",{top:-30}); 
-  label1.show();
-//slide 9
+  av.umsg("<br><br><br>Does the graph below have a vertex cover of size "
++"<=4 ?",{preserve:true}); 
 
   av.step();
 
   y=0;
 
-  label2 = av.label("<b>Yes</b>",{top:20}).css({"text-align": "center"}); 
+  label2 = av.label("<b>Yes</b>",{top:40}).css({"text-align": "center"}); 
   label2.show();
 
 
-  cc1.css({"background-color":"rgb(168,0,0)"});
+  cc1.css({"background-color":"Brown"});
   cc2.css({"background-color":"#669966"});
   cc3.css({"background-color":"#996699"});
   cc10.css({"background-color":"#00CCCC"});
 
 
-  ec1.css({"stroke":"rgb(168,0,0)" ,"stroke-width":"2"});
-  ec2.css({"stroke":"rgb(168,0,0)" ,"stroke-width":"2"});
-  ec3.css({"stroke":"rgb(168,0,0)" ,"stroke-width":"2"});
+  ec1.css({"stroke":"Brown" ,"stroke-width":"2"});
+  ec2.css({"stroke":"Brown" ,"stroke-width":"2"});
+  ec3.css({"stroke":"Brown" ,"stroke-width":"2"});
   ec4.css({"stroke":"#669966" ,"stroke-width":"2"});
   ec5.css({"stroke":"#669966" ,"stroke-width":"2"});
   ec6.css({"stroke":"#669966" ,"stroke-width":"2"});
@@ -287,9 +313,20 @@ $(document).ready(function () {
   ec14.css({"stroke": "#996699","stroke-width":"2"});
   ec16.css({"stroke":"#00CCCC" ,"stroke-width":"2"});
   ec17.css({"stroke":"#00CCCC" ,"stroke-width":"2"});
-  ec19.css({"stroke":"rgb(168,0,0)" ,"stroke-width":"2"});
-  ec20.css({"stroke":"rgb(168,0,0)" ,"stroke-width":"2"});
+  ec19.css({"stroke":"Brown" ,"stroke-width":"2"});
+  ec20.css({"stroke":"Brown" ,"stroke-width":"2"});
 
   g4.show();
   av.recorded();
-});
+}
+  function about() {
+    var mystring = "Introduction of Vertex Cover Problem\nWritten by Nabanita Maji and Cliff Shaffer\nCreated as part of the OpenDSA hypertextbook project.\nFor more information, see http://algoviz.org/OpenDSA\nWritten during March, 2015\nJSAV library version " + JSAV.version();
+    alert(mystring);
+  }
+
+  // Connect action callbacks to the HTML entities
+  $('#about').click(about);
+  $('#runit').click(runit);
+  $('#reset').click(ODSA.AV.reset);
+}(jQuery));
+

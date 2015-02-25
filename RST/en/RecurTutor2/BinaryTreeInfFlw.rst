@@ -69,17 +69,5 @@ Practice the local information flow through the following programming exercises
 
 .. avembed:: Exercises/RecurTutor2/BinaryTreeLocalSumm.html ka
 
-
-Guided
-------
-Guided traversal problems does not involve visiting all the nodes. 
-So the information flow is only between some nodes of the binary tree and not all the nodes 
-are invloved. For example, finding wether the minimum value in a binary search tree doesn't 
-invlove visiting all the nodes of the tree. 
-Most of the problems that requires information flow on binary search  trees are considered 
-to be guided.
-
-Practice the guided information flow through the following programming exercises.
-
-.. avembed:: Exercises/RecurTutor2/BinaryTreeGuidedSumm.html ka
-
+The guided information flow does not require visiting every node. In the next lesson, we will see more
+examples and exercises on this type of information flow.
