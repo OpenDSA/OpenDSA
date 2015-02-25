@@ -128,6 +128,9 @@ COP3530: min
 CS5114: min
 	python $(CONFIG_SCRIPT) config/CS5114.json
 
+CS5114S15: min
+	python $(CONFIG_SCRIPT) config/CS5114S15.json
+
 ECE252: min
 	python $(CONFIG_SCRIPT) config/ECE252S15.json
 
