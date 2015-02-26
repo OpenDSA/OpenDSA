@@ -1,0 +1,66 @@
+{
+  "title": "NP Completeness Draft",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+    "Processing": ["pde"],
+    "Java": ["java"],
+    "C++": ["cpp", "h"]
+  },
+  "lang": "en",
+  "module_origin": "http://algoviz.org",
+  "exercise_server": "https://opendsa.cc.vt.edu/",
+  "logging_server": "https://opendsa.cc.vt.edu/",
+  "score_server": "https://opendsa.cc.vt.edu/",
+  "build_JSAV": false,
+  "allow_anonymous_credit": true,
+  "suppress_todo": false,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "chapters": {
+    "Limits to Computing": {
+      "NP/LimComp": {
+        "long_name": "Chapter Intro: Limits to Computing",
+        "exercises": {}
+      },
+      "NP/Reduction": {
+        "long_name": "Reductions",
+        "exercises": {
+          "pairToSortReduction": {
+            "long_name": "Reduction of Pairing to Sorting",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "sortToPairReduction": {
+            "long_name": "Reduction of Sorting to Pairing",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "matrixMulReduction": {
+            "long_name": "Matrix Multiplication",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          }
+        }
+      }
+    },
+    "Appendix": {
+      "Glossary": {
+        "long_name": "Glossary",
+        "exercises": {}
+      },
+      "Bibliography": {
+        "long_name": "Bibliography",
+        "exercises": {}
+      }
+    }
+  }
+}
+

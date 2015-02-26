@@ -65,7 +65,7 @@ problem.
 A disadvantage is that the traversal operation must not be called on a
 NULL pointer, because there is no object to catch the call.
 This problem could be avoided by using a
-:ref:`Flyweight <Flyweight> <DesignPatterns>`)
+:ref:`Flyweight <Flyweight> <DesignPatterns>`
 to implement empty nodes.
 
 Typically, the non-composite version would be
