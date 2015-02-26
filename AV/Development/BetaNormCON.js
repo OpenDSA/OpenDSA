@@ -13,7 +13,7 @@ $(document).ready(function () {
 	var stepFour = ["(", "z", "(", "&#955;y.", "y", "z", ")", ")"];
 	var stepFive = ["(", "z", "z", ")"];
 //	av.label("&#946;-Reduction Matrix");
-	av.label("$\\beta$-Reduction Matrix");
+	av.label("$\\beta$-Reduction");
 	var m1 = av.ds.matrix([stepOne, stepTwo, stepThree, stepFour, stepFive], {style: "plain"});
 	for(y = 0; y < 12; y++)
 	{

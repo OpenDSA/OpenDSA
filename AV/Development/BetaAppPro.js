@@ -38,17 +38,20 @@
 			strArr = ["(\u03BB"+var1+".("+var1+" "+var1+") (\u03BB"+var2+"."+var2+" "+var3+"))", 
 					  "(\u03BB"+var1+"."+var1+" (\u03BB"+var2+"."+var2+" "+var3+"))",
 					  "\u03BB"+var1+".(\u03BB"+var1+".("+var1+" "+var1+") "+var2+")"];
-			ansArr = [["(^"+var1+".("+var1+" "+var1+") (^"+var2+"."+var2+" "+var3+"))", "(^"+var1+".("+var1+" "+var1+") "+var3+")", "("+var3+" "+var3+")"],
+			ansArr = [["(^"+var1+".("+var1+var1+")(^"+var2+"."+var2+var3+"))", "(^"+var1+".("+var1+var1+")"+var3+")", "("+var3+var3+")"],
+					  ["(^"+var1+"."+var1+"(^"+var2+"."+var2+var3+"))", "(^"+var1+"."+var1+var3+")", String(var3)],
+					  ["^"+var1+".(^"+var1+".("+var1+var1+")"+var2+")", "^"+var1+".("+var2+var2+")"]];
+			appArr = [["(^"+var1+".("+var1+" "+var1+") (^"+var2+"."+var2+" "+var3+"))", "(^"+var1+".("+var1+" "+var1+") "+var3+")", "("+var3+" "+var3+")"],
 					  ["(^"+var1+"."+var1+" (^"+var2+"."+var2+" "+var3+"))", "(^"+var1+"."+var1+" "+var3+")", String(var3)],
 					  ["^"+var1+".(^"+var1+".("+var1+" "+var1+") "+var2+")", "^"+var1+".("+var2+" "+var2+")"]];
 			rnd = Math.floor(Math.random()*3);
 			var htmldata = strArr[rnd];
 			$theExpression.html(htmldata);
-			initialArray = ansArr[rnd];
+			initialArray = appArr[rnd];
 			ansArray = ansArr[rnd];
 			arraySize = ansArray.length;
 			position = 1;
-			jsavArray = av.ds.array(initialArray, {visible: false});
+			jsavArray = av.ds.array(ansArray, {visible: false});
 			return jsavArray;
 		}
 		
@@ -68,7 +71,7 @@
 		function submit()
 		{
 			var temp = document.getElementById('answer').value;
-			//temp = temp.replace(/\s+/g, '');
+			temp = temp.replace(/\s+/g, '');
 			document.getElementById('answer').value = "";
 			if(position < ansArray.length)
 			{
@@ -77,7 +80,7 @@
 					jsavArray.highlight(position);
 					jsavArray.unhighlight(position-1);
 					exercise.gradeableStep();
-					$theExpression.html(ansArray[position]);
+					$theExpression.html(initialArray[position]);
 					position++;
 				} else
 				{
@@ -111,7 +114,7 @@
 			{
 				jsavArray.highlight(position);
 				jsavArray.unhighlight(position-1);
-				$theExpression.html(ansArray[position]);
+				$theExpression.html(initialArray[position]);
 				position++;
 			} else
 			{
