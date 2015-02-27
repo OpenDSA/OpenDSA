@@ -6,7 +6,7 @@
  var minC, minPath=[];
  var gnodes; //must be populated with the using g.nodes() befire calling getSol on g.
  var visited; //must be initialized to an array containing as many nodes as g, all setto zero, before calling getSol on g.
- var getSol= function(g,curr,start,path,cost){
+ var getSol= function(g,curr,start,path,length){
       visited[curr]=1;
       path.push(curr);
       var flag=0;
@@ -18,15 +18,15 @@
 		continue;
           }
           flag=1;
-          var newcost = cost + g.getEdge(gnodes[curr],gnodes[i]).weight();
-          if(minC >= 0 && newcost>=minC)
+          var newlength = length + g.getEdge(gnodes[curr],gnodes[i]).weight();
+          if(minC >= 0 && newlength>=minC)
                 continue;
-          getSol(g,i,start,path,newcost);
+          getSol(g,i,start,path,newlength);
       }
       if(flag==0){
-          newcost = cost + g.getEdge(gnodes[curr],gnodes[start]).weight();
-          if(minC<0 || minC > newcost){
-             minC=newcost;
+          newlength = length + g.getEdge(gnodes[curr],gnodes[start]).weight();
+          if(minC<0 || minC > newlength){
+             minC=newlength;
              minPath = path.slice(0);
              path.pop();
              visited[curr]=0;
@@ -65,10 +65,10 @@
   av.umsg("<br><br><br>This can be modelled as a complete graph where each node "
 +"represents a particular city and the weight of the edges denote the distance"+
 " between the two cities it connects. <br> The problem now can be stated as finding"+
-" the lowest-cost cycle that passes though all the nodes i.e. the minimum-cost Hamiltonian cycle. ( The cost of a cycle being"
+" the shortest simple cycle in the graph that passes through all vertices in the graph. ( The length of a cycle being"
 +" the sum of weights of all the edges included in the cycle",{preserve:true}); 
 
- av.umsg("<br><br><br>Note: A cycle in a graph that passes through all vertices exactly once is known as a <b>Hamiltonian Cycle</b>",{preserve:true});
+ av.umsg("<br><br><br>Note: A simple cycle may be defined as a closed walk with no repetitions of vertices and edges allowed, other than the repetition of the starting and ending vertex.</b>",{preserve:true});
 
 
   av.step();
@@ -103,7 +103,7 @@
   console.log(minPath);
 */
   av.step();
-  label1 = av.label("The blue edges form a minimum-cost tour with total cost being 24",{left:450,top:250});
+  label1 = av.label("The blue edges form a minimum-length tour with total length being 24",{left:450,top:250});
   g1.getEdge(nodes[0],nodes[2]).css({"stroke" : "IndianRed","stroke-width":"5px",opacity:0.75});
   g1.getEdge(nodes[3],nodes[2]).css({"stroke" : "IndianRed","stroke-width":"5px",opacity:0.75});
   g1.getEdge(nodes[3],nodes[1]).css({"stroke" : "IndianRed","stroke-width":"5px",opacity:0.75});
@@ -115,11 +115,11 @@
   label1.hide();
   g1.hide();
   av.umsg("<br><b>The Traveling Salesman Problem</b>");
-  av.umsg("<br><br><br>When modelled as a complete graph the Travelling Salesman problem can be defined as either of the following"
-+  "<br><br><br>Given a graph G=(V,E), find the Hamiltonian cycle"+
-"and incurs the lowest cost among any other Hamiltonian cycles present in the graph. The cost of the cycle is the sum of weights of its edges."
+  av.umsg("<br><br><br>When modelled as a complete graph the Traveling Salesman problem can be defined as either of the following"
++  "<br><br><br>Given a graph G=(V,E), find the shortest simple cycle that passes through all vertices of the graph."+
+"The length of the cycle is the sum of weights of its edges."
 +"<br><br>OR<br><br>"
-+"Given a graph G=(V,E) and integer k, does the graph contain a Hamiltonian cycle having cost <= k?"
++"Given a graph G=(V,E) and integer k, does the graph contain a simple cycle passing through all vertices, having length <= k?"
 ,{preserve:true});
 
 
@@ -160,14 +160,14 @@
   console.log(minPath);
   console.log(minC);
 */
-  av.umsg("<br><br> Does this graph have a Hamiltonian cycle with cost <= 50?",{preserve:true});
+  av.umsg("<br><br> Does this graph have a simple cycle with length <= 50?",{preserve:true});
   av.step();
   av.umsg("<br><br><b>No</b>",{preserve:true});
   av.step();
   av.umsg("<br><b>Example of Traveling Salesman Problem</b>");
-  av.umsg("<br><br> Does this graph have a Hamiltonian cycle with cost <= 55?",{preserve:true});
+  av.umsg("<br><br> Does this graph have a simple cycle with length <= 55?",{preserve:true});
   av.step();
-  av.umsg("<br><br><b>Yes</b> <br>[The following cycle has a cost of 51]",{preserve:true});
+  av.umsg("<br><br><b>Yes</b> <br>[The following cycle has a length of 51]",{preserve:true});
   g.getEdge(nodes[0],nodes[3]).css({"stroke" : "IndianRed","stroke-width":"8px",opacity:0.75});
   g.getEdge(nodes[4],nodes[3]).css({"stroke" : "IndianRed","stroke-width":"8px",opacity:0.75});
   g.getEdge(nodes[4],nodes[1]).css({"stroke" : "IndianRed","stroke-width":"8px",opacity:0.75});

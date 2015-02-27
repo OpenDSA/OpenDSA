@@ -35,9 +35,9 @@ init_app = function()
 	strArr = ["(\u03BB"+var1+".("+var1+" "+var1+") (\u03BB"+var2+"."+var2+" "+var3+"))", 
 			  "(\u03BB"+var1+"."+var1+" (\u03BB"+var2+"."+var2+" "+var3+"))",
 			  "\u03BB"+var1+".(\u03BB"+var1+".("+var1+" "+var1+") "+var2+")"];
-	ansArr = ["(^"+var1+".("+var1+" "+var1+") "+var3+")",
-			  "(^"+var1+"."+var1+" "+var3+")",
-			  "^"+var1+".("+var2+" "+var2+")"];
+	ansArr = ["(\s*^"+var1+".\s*(\s*"+var1+"\s*"+var1+"\s*)\s*"+var3+"\s*)",
+			  "(\s*^"+var1+".\s*"+var1+"\s*"+var3+"\s*)",
+			  "^"+var1+".\s*(\s*"+var2+"\s*"+var2+"\s*)"];
 	rnd = Math.floor(Math.random()*3);
 	str = strArr[rnd];
 	ans = ansArr[rnd];
@@ -58,9 +58,9 @@ init_norm = function()
 	strArr = ["(\u03BB"+var1+".("+var1+" "+var1+") (\u03BB"+var2+"."+var2+" "+var3+"))", 
 			  "(\u03BB"+var1+"."+var1+" (\u03BB"+var2+"."+var2+" "+var3+"))",
 			  "\u03BB"+var1+".(\u03BB"+var1+".("+var1+" "+var1+") "+var2+")"];
-	ansArr = ["((^"+var2+"."+var2+" "+var3+") (^"+var2+"."+var2+" "+var3+"))",
-			  "(^"+var2+"."+var2+" "+var3+")",
-			  "^"+var1+".("+var2+" "+var2+")"];
+	ansArr = ["(\s*(^"+var2+".\s*"+var2+"\s*"+var3+"\s*)\s*(\s*^"+var2+".\s*"+var2+"\s*"+var3+"\s*)\s*)",
+			  "(\s*^"+var2+".\s*"+var2+"\s*"+var3+"\s*)",
+			  "^"+var1+".\s*(\s*"+var2+"\s*"+var2+"\s*)"];
 	rnd = Math.floor(Math.random()*3);
 	str = strArr[rnd];
 	ans = ansArr[rnd];
@@ -68,7 +68,7 @@ init_norm = function()
 	expr1 = jsav.code(str, {lineNumbers: false});
 }
 
-// Initialize Alpha Next-Step Exercises.
+// Initialize Alpha Multiple Choice Exercises.
 init_alpha = function()
 {
 	varArr = ["a", "b", "c", "i", "j", "k", "w", "x", "y", "z"];

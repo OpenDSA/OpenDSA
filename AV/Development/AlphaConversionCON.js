@@ -11,7 +11,7 @@ $(document).ready(function () {
   var stepThree = ["(", "&#955;x.", "&#955;z.", "(", "x", "z", ")", "y", ")"];
   var stepFour = ["&#955;z.", "(", "y", "z", ")"];
   //  av.label("&#945;-Conversion Matrix");
-  av.label("$\\alpha$-Conversion Matrix");
+  av.label("$\\alpha$-Conversion");
   var m1 = av.ds.matrix([stepOne, stepTwo, stepThree, stepFour], {style: "plain"});
   for(y = 0; y < 9; y++)
   {

@@ -30,8 +30,8 @@
 +"Hamiltonian Cycle problem is to find whether <b>G</b> contains a Hamiltonian Cycle "
 +"i.e. a cycle that passes through all te vertices of the graph exactly once.<br><br>", {'preserve':true});
   av.umsg("For a given weighted graph <b>G' = ( V' , E' )</b>, with non-negative weights, and integer <b>k'</b>, the "
-+"Traveling Salesman problem is to find whether <b>G'</b> contains a Hamiltonian Cycle "
-+"of cost <= <b>k</b>. [ Cost of a cycle is the sum of weights of all the edges in the cycle].<br><br>", {'preserve':true});
++"Traveling Salesman problem is to find whether <b>G'</b> contains a simple cycle "
++"of length <= <b>k</b> that passes through all the vertices. [ Length of a cycle is the sum of weights of all the edges in the cycle].<br><br>", {'preserve':true});
 
  av.step();
 
@@ -41,7 +41,7 @@
   av.umsg("<br><b>Reduction of Hamiltonian Cycle Problem  to Traveling Salesman Problem</b><br><br><br>");
   label1=av.label("To reduce a Hamiltonian Cycle Problem to a Traveling Salesman problem for a given "
 +"graph $G = ( V , E )$, <br>complete the graph G, by adding edges between all pairs of vertices that were not connected in $G$"
-+"<br><br>Let the new graph be $G'=(V',E')$ where $V'=V'$ and E'={(u,v)} for any $u,v \\in V'$."
++"<br><br>Let the new graph be $G'=(V',E')$ where $V'=V$ and E'={(u,v)} for any $u,v \\in V'$."
 +"<br><br>For edges in $G'$ that were also present in $G$ , we assign a weight $0$.<br>For other edges we assign weight $1$"
 +"<br><br>that is , $\\forall e=(u,v) \\in E'$, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ W(e) = 0$, if $(u,v) "
 +"\\in E$ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$W(e) = 1$, if $(u,v) \\not\\in E$" 
@@ -119,13 +119,13 @@ directed: false});
 
   av.umsg("<br><b>Hamiltonian Cycle problem reduced to an instance of Traveling Salesman Problem</b><br><br><br>");
   g.hide();
-  av.umsg(" The graph G has a Hamiltonina Cycle if and only if there exists a cycle in G' passing through "+
-"all vertices exactly once, and that has a cost <= 0 (i.e. has a solution for the instance of Traveling Salesman"
+  av.umsg(" The graph G has a Hamiltonian Cycle if and only if there exists a cycle in G' passing through "+
+"all vertices exactly once, and that has a length <= 0 (i.e. has a solution for the instance of Traveling Salesman"
 +" Problem where k=0",{preserve:true});
   av.step();
-  av.umsg("<br><br>1. <b>If there is a cycle that passes through all vertice exactly once, and has cost <=0 in"
+  av.umsg("<br><br>1. <b>If there is a cycle that passes through all vertice exactly once, and has length <=0 in"
 +" graph G'</b>, the cycle contains only edges that were originally present in graph G. (The new edges "
-+"in G' have weight 1 and hence can not be part of a cycle of cost <= 0."
++"in G' have weight 1 and hence can not be part of a cycle of length <= 0."
 +"<br>Hence <b>there exist a Hamiltonian cycle in G</b><br><br>", 
 {preserve:true});  
 
@@ -134,13 +134,13 @@ directed: false});
 //slide 7
 
   av.umsg("2. <b>If there exists a Hamiltonian Cycle in the graph G</b>, it forms a cycle "
-+"in G' with cost = 0, since a weights of all the edges is 0. <br>Hence <b>"
-+"there exists a solution for Traveling Salesman Problem in G' with cost <= 0</b>", {preserve:true});  
++"in G' with length = 0, since a weights of all the edges is 0. <br>Hence <b>"
++"there exists a solution for Traveling Salesman Problem in G' with length <= 0</b>", {preserve:true});  
 
   av.step();
 
   av.umsg("<br><b>Example:</b>");
-  av.umsg("<br><br><b>G' has a cycle passing through all vertices exactly once with cost <= 0 "
+  av.umsg("<br><br><b>G' has a cycle passing through all vertices exactly once with length <= 0 "
 +"</b><br><br><br>",{preserve:true});
 
 

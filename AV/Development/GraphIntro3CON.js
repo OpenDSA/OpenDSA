@@ -43,7 +43,7 @@ $(document).ready(function () {
     av.umsg("This is the adjacency list representation of the directed graph"); 
     mat.hide();
     graph.hide();
-    graph = av.ds.graph({top: gTop, left: 275, directed: true});
+    graph = av.ds.graph({top: gTop, left: 30, directed: true});
     var nodeOne = graph.addNode("0", {left: gLeft, top: gTop});
     var nodeTwo = graph.addNode("2", {left: gLeft + 100, top: gTop});
     var nodeThree = graph.addNode("4", {left: gLeft + 50, top: gTop + 50});
@@ -60,15 +60,15 @@ $(document).ready(function () {
     graph.layout();
 
     //set up ADJEANCY LIST 
-    var aTop = 250; 
-    var aLeft = 275;
+    var aTop = 10; 
+    var aLeft = 350;
 
     var aList = av.ds.array([, , , , ,], {indexed: true, left: aLeft, top: aTop, layout: "vertical"});
     aList.layout();
 
     //set up linked list 
-    var lTop =  255; 
-    var lLeft = 375; 
+    var lTop =  15; 
+    var lLeft = 450; 
     var list1 = av.ds.list({top: lTop, left: lLeft});
 
     list1.addFirst("1");
@@ -76,11 +76,8 @@ $(document).ready(function () {
     list1.add(1, "4");
     list1.layout();
 
-
-
     //second linked list 
-
-    lTop = 300; 
+    lTop = 60; 
     var list2 = av.ds.list({top: lTop, left: lLeft});
     list2.addFirst("0");
     list2.add(1, "3");
@@ -88,21 +85,21 @@ $(document).ready(function () {
     list2.layout();
     
     //third linked list
-    lTop = 345;
+    lTop = 105;
     var list3 = av.ds.list({top: lTop, left: lLeft});
     list3.addFirst("3");
     list3.add(1, "4");
     list3.layout();
 
     //fourth linked list 
-    lTop = 390; 
+    lTop = 150; 
     var list4 = av.ds.list({top: lTop, left: lLeft});
     list4.addFirst("1");
     list4.add(1, "2");
     list4.layout();
 
     //fifth linked list 
-    lTop = 435; 
+    lTop = 195; 
     var list5 = av.ds.list({top: lTop, left: lLeft});
     list5.addFirst("0");
     list5.add(1, "1");
@@ -111,11 +108,11 @@ $(document).ready(function () {
 
     //add lines connect array to list 
     
-    var line = av.g.line( 315, 285, 370, 285, {"stroke-width": 3});
-    line = av.g.line( 315, 330, 370, 330, {"stroke-width": 3});
-    line = av.g.line( 315, 375, 370, 375, {"stroke-width": 3});
-    line = av.g.line( 315, 420, 370, 420, {"stroke-width": 3});
-    line = av.g.line( 315, 465, 370, 465, {"stroke-width": 3});
+    var line = av.g.line( 395, 45, 440, 45, {"stroke-width": 3});
+    line = av.g.line( 395, 90, 440, 90, {"stroke-width": 3});
+    line = av.g.line( 395, 135, 440, 135, {"stroke-width": 3});
+    line = av.g.line( 395, 180, 440, 180, {"stroke-width": 3});
+    line = av.g.line( 395, 225, 440, 225, {"stroke-width": 3});
     
 
     av.recorded();
