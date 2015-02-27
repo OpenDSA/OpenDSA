@@ -103,7 +103,7 @@
   console.log(minPath);
 */
   av.step();
-  label1 = av.label("The blue edges form a minimum-length tour with total length being 24",{left:450,top:250});
+  label1 = av.label("The red edges form a minimum-length tour with total length being 24",{left:450,top:250});
   g1.getEdge(nodes[0],nodes[2]).css({"stroke" : "IndianRed","stroke-width":"5px",opacity:0.75});
   g1.getEdge(nodes[3],nodes[2]).css({"stroke" : "IndianRed","stroke-width":"5px",opacity:0.75});
   g1.getEdge(nodes[3],nodes[1]).css({"stroke" : "IndianRed","stroke-width":"5px",opacity:0.75});
@@ -115,17 +115,17 @@
   label1.hide();
   g1.hide();
   av.umsg("<br><b>The Traveling Salesman Problem</b>");
-  av.umsg("<br><br><br>When modelled as a complete graph the Traveling Salesman problem can be defined as either of the following"
+  av.umsg("<br><br><br>The Traveling Salesman problem can be defined either as a decision problem or not. The decision form is know to be NP-complete."
 +  "<br><br><br>Given a graph G=(V,E), find the shortest simple cycle that passes through all vertices of the graph."+
 "The length of the cycle is the sum of weights of its edges."
 +"<br><br>OR<br><br>"
-+"Given a graph G=(V,E) and integer k, does the graph contain a simple cycle passing through all vertices, having length <= k?"
++"(Decision Problem Form:) Given a graph G=(V,E) and integer k, does the graph contain a simple cycle that passes through all vertices and has length <= k?"
 ,{preserve:true});
 
 
   av.step();
 
-  av.umsg("<br><b>Example of Traveling Salesman Problem</b>");
+  av.umsg("<br><b>Example of Traveling Salesman Problem (decision form)</b>");
   var g = av.ds.graph({width: 600,  height: 450, layout: "manual",
   directed: false,left:100,top:30});
   nodes = new Array(7);
@@ -160,12 +160,12 @@
   console.log(minPath);
   console.log(minC);
 */
-  av.umsg("<br><br> Does this graph have a simple cycle with length <= 50?",{preserve:true});
+  av.umsg("<br><br> Does this graph have a simple cycle that includes all vertices and has length <= 50?",{preserve:true});
   av.step();
   av.umsg("<br><br><b>No</b>",{preserve:true});
   av.step();
   av.umsg("<br><b>Example of Traveling Salesman Problem</b>");
-  av.umsg("<br><br> Does this graph have a simple cycle with length <= 55?",{preserve:true});
+  av.umsg("<br><br> Does this graph have a simple cycle that includes all vertices and has length <= 55?",{preserve:true});
   av.step();
   av.umsg("<br><br><b>Yes</b> <br>[The following cycle has a length of 51]",{preserve:true});
   g.getEdge(nodes[0],nodes[3]).css({"stroke" : "IndianRed","stroke-width":"8px",opacity:0.75});
