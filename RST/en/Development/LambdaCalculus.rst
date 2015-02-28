@@ -6,23 +6,27 @@
 .. avmetadata:: 
    :author: Tom Naps and Taylor Rydahl
 
-Lambda Calculus [Draft]
-===================================
+Lambda Calculus
+===============
 
-.. role:: raw-html(raw)
-   :format: html
+The lambda calculus is a small language defined by the following BNF
+grammar.
 
-The lambda calculus is a small language defined by the following BNF grammar.
+.. math::
 
- <LambdaExp> ::= <var> :raw-html:`<br />&nbsp;&nbsp;&nbsp;&nbsp;` \| :math:`\lambda` <var> . <LambdaExp> :raw-html:`<br />&nbsp;&nbsp;&nbsp;&nbsp;` \| (<LambdaExp> <LambdaExp>)          
+   \begin{eqnarray*} 
+   <\mathrm{LambdaExp}> &::=& <\mathrm{var}>\\
+                        &|& \lambda <\mathrm{var}> . <\mathrm{LambdaExp}>\\
+                        &|& (<\mathrm{LambdaExp}> <\mathrm{LambdaExp}>)\\
+   \end{eqnarray*}
 
 The above BNF grammar tells us that expressions in the lambda calculus come in one of three flavors:
 
-1. A *variable* (the first production).   For example :math:`x`.
+1. A :term:`variable` (the first production).   For example :math:`x`.
 
   Typically we will use single letters or letters followed by a digit - :math:`x, y, a_1, b, p_2` - to represent variables.
 
-2. A *function abstraction* (the second production). For example   :math:`\lambda x.y`.  Think of this as the "function whose formal   parameter is :math:`x` and whose return value is :math:`y`".   The equivalent in JavaScript would be:
+2. A :term:`function abstraction` (the second production). For example   :math:`\lambda x.y`.  Think of this as the "function whose formal   parameter is :math:`x` and whose return value is :math:`y`".   The equivalent in JavaScript would be:
 
 ::
 
@@ -30,9 +34,18 @@ The above BNF grammar tells us that expressions in the lambda calculus come in o
     return y;
   }
 
-3. An *application* (the third production). For example :math:`(y \; z)`.  Think of this as "the application of :math:`y` to :math:`z`".  This represents a "function call" in the lambda calculus.  In JavaScript, such a function call would appear as ``y(z)``.  The formal name of an application whose first component is a function abstraction is a *beta-redex*.  We will soon explain why this terminology is appropriate in the context of the operations we perform to "evaluate" expressions in the lambda calculus.
+3. An :term:`application` (the third production). For example
+:math:`(y \; z)`.  Think of this as "the application of :math:`y` to
+:math:`z`".  This represents a "function call" in the lambda calculus.
+In JavaScript, such a function call would appear as ``y(z)``.  The
+formal name of an application whose first component is a function
+abstraction is a :term:`beta-redex`.  We will soon explain why this
+terminology is appropriate in the context of the operations we perform
+to "evaluate" expressions in the lambda calculus.
 
-For example, to apply the identity function :math:`\lambda x.x` to the variable :math:`y`, we would write :math:`(\lambda x.x \; y)`.   In JavaScript, this would be:
+For example, to apply the identity function :math:`\lambda x.x` to the
+variable :math:`y`, we would write :math:`(\lambda x.x \; y)`.   In
+JavaScript, this would be:
 
 ::
 
@@ -50,9 +63,9 @@ violates the BNF grammar.
 
 
 
-A variable is *bound* in an expression if it refers to the formal
+A variable is :term:`bound` in an expression if it refers to the formal
 parameter (the variable immediately following the :math:`\lambda` symbol) in a
-function abstraction.  A variable is *free* in an expression if it is
+function abstraction.  A variable is :term:`free` in an expression if it is
 not bound.  In terms of a more precise recursive definition, a
 variable :math:`x` occurs free in expression E if:
 
@@ -109,7 +122,10 @@ A reasonable way to describe the value returned would be to say "substitute 8 fo
 
 
 
-The act of doing this substitution is called *beta-reducing* the lambda expression.   Hence we now see the rationale for the term beta-redex that we introduced earlier.   A beta-redex is the one and only type of lambda expression that can be beta-reduced.
+The act of doing this substitution is called :term:`beta-reducing` the
+lambda expression.   Hence we now see the rationale for the term
+beta-redex that we introduced earlier.   A beta-redex is the one and
+only type of lambda expression that can be beta-reduced.
 
 What can go wrong when we do this substitution to carry out a
 beta-reduction in the lambda calculus?  By substituting one
@@ -128,7 +144,7 @@ Here :math:`\lambda x.z` is the function that always returns
 substituting the last free occurrence of :math:`x` for :math:`z`, the free :math:`x` is now bound and the function becomes the identity function, which is very different from the function that always returns :math:`z`,
 
    
-To keep from capturing a free variable in this fashion, we must *alpha-convert* the expression that would cause
+To keep from capturing a free variable in this fashion, we must :term:`alpha-convert` the expression that would cause
 the :math:`y` to become bound.  The intuitive justification of alpha-conversion
 is that we do not change the function abstraction :math:`\lambda y.(y \; x)` if we choose a different variable, say :math:`w`, to use as the formal
 parameter for the function.  That is, as a function definition,
@@ -170,7 +186,7 @@ beta-reducing it.
 To fully evaluate a lambda calculus expression, we may have to perform
 multiple beta reductions.  This must be done until there are no more
 beta-redexes left in the expression.  At that point, the expression,
-fully evaluated, is said to be in *beta-normal* form.  Since this
+fully evaluated, is said to be in :term:`beta-normal` form.  Since this
 involves potentially multiple beta reductions, we have a choice for
 the order in which the individual beta conversions are performed.
 

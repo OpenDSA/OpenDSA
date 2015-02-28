@@ -28,7 +28,7 @@
 
   av.umsg("For a given graph <b>G = ( V , E )</b> , the "
 +"Hamiltonian Cycle problem is to find whether <b>G</b> contains a Hamiltonian Cycle "
-+"i.e. a cycle that passes through all te vertices of the graph exactly once.<br><br>", {'preserve':true});
++"that is, a cycle that passes through all the vertices of the graph exactly once.<br><br>", {'preserve':true});
   av.umsg("For a given weighted graph <b>G' = ( V' , E' )</b>, with non-negative weights, and integer <b>k'</b>, the "
 +"Traveling Salesman problem is to find whether <b>G'</b> contains a simple cycle "
 +"of length <= <b>k</b> that passes through all the vertices. [ Length of a cycle is the sum of weights of all the edges in the cycle].<br><br>", {'preserve':true});
@@ -39,7 +39,7 @@
 
 
   av.umsg("<br><b>Reduction of Hamiltonian Cycle Problem  to Traveling Salesman Problem</b><br><br><br>");
-  label1=av.label("To reduce a Hamiltonian Cycle Problem to a Traveling Salesman problem for a given "
+  label1=av.label("To reduce the Hamiltonian Cycle Problem to the Traveling Salesman problem for a given "
 +"graph $G = ( V , E )$, <br>complete the graph G, by adding edges between all pairs of vertices that were not connected in $G$"
 +"<br><br>Let the new graph be $G'=(V',E')$ where $V'=V$ and E'={(u,v)} for any $u,v \\in V'$."
 +"<br><br>For edges in $G'$ that were also present in $G$ , we assign a weight $0$.<br>For other edges we assign weight $1$"
