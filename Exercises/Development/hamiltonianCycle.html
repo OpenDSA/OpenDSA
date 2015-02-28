@@ -25,71 +25,60 @@ var
   jsavGraph,
   solArr,
   Answer,
+  gnodes,
   guessedAns,
+  From,
+  To,
+  Solution,
   userInput;      // Boolean: Tells us if user ever did anything
 
+var visited;
+var getSol= function(curr,path){
 
-function solution(g,node,firstCall){
-  if(node.hasClass('solTo')) 
-      return false;
-  else if(!firstCall)
-    node.addClass('solTo');
-  var nodes = g.nodes(); 
-  if(nodes[0].hasClass('solTo') && nodes[0].hasClass('solFrom') && checkHC(false))
-    return true;
- 
-  var neighbors = node.neighbors();
-  for(var i=0;i<neighbors.length;i++){
-    node.addClass('solFrom');
-    solArr.push(g.getEdge(node,neighbors[i]));
-    if(solution(g,neighbors[i],0)==false){
-      node.removeClass('solFrom');
-      var ind = solArr.indexOf(g.getEdge(node,neighbors[i]));
-      solArr=solArr.splice(ind,1);
-    } 
-    else
-      return true;
-  }
-  node.removeClass('solTo');
-  return false;
-}
+      visited[curr]=1;
+      path.push(curr);
+      for(var i=0;i<gnodes.length;i++)
+          if(visited[i]==0)
+              break;
+      if(i==gnodes.length){
+          if(jsavGraph.hasEdge(gnodes[curr],gnodes[0])){
+             path.push(0);
+             solArr=path.slice(0);
+             console.log(solArr);
+             return true;
+          }
+          else
+             path.pop();
+             visited[curr]=0;
+             return false;
+      }
+      var nextarr = gnodes[curr].neighbors();
+      for(var j=0;j<nextarr.length;j++){
+          i = gnodes.indexOf(nextarr[j]);
+          if(visited[i]==1){
+                continue;
+          }
+          if(getSol(i,path))
+               return true;
+      }
+     path.pop();
+     visited[curr]=0;
+     return false;
 
-function checkHC(userSol){
-  var g = jsavGraph;
-  var nodes = g.nodes();
-  for(var i=0;i<nodes.length;i++)
-    if(userSol){
-      if(!nodes[i].hasClass('from') || !nodes[i].hasClass('to'))
-        return false;
-    }
-    else{
-      if(!nodes[i].hasClass('solFrom') || !nodes[i].hasClass('solTo'))
-        return false;
-    }
-  return true;
-}
-
+ };
 
 // Click event handler on the graph, intended for edges
 var clickHandler = function () {
   var node;
   if(this.hasClass('selected')){
-    this.start().removeClass('from')
-    this.end().removeClass('to')
+    From[gnodes.indexOf(this.start())]-=1; 
+    To[gnodes.indexOf(this.end())]-=1; 
     this.css({"stroke":"black"});
     this.removeClass('selected');
   }
   else {
-    if(this.start().hasClass('from')){
-	alert("Selecting multiple edges originating from the same node violates the property of Hamiltonian cycle.");
-	return;
-    }
-    if(this.end().hasClass('to')){
-	alert("Selecting multiple edges ending at the same node violates the property of Hamiltonian cycle.");
-	return;
-    } 
-    this.start().addClass('from');
-    this.end().addClass('to');
+    From[gnodes.indexOf(this.start())]+=1; 
+    To[gnodes.indexOf(this.end())]+=1; 
     this.css({"stroke":"blue"});
     this.addClass('selected');
   }
@@ -103,8 +92,9 @@ var f_reset = function () {
   if (jsavGraph) {
     var nodes = jsavGraph.nodes();
     for(var i=0;i<nodes.length;i++){
-      nodes[i].removeClass('from'); 
-      nodes[i].removeClass('to');
+        From[i]=0;
+        To[i]=0;
+        visited[i]=0;
     }
     var edges = jsavGraph.edges();
     for(var i=0;i<edges.length;i++){
@@ -116,10 +106,9 @@ var f_reset = function () {
 };
 
 var f_noHC = function () {
-    var nodes = jsavGraph.nodes();
-    for(var i=0;i<nodes.length;i++){
-      nodes[i].removeClass('from'); 
-      nodes[i].removeClass('to');
+    for(var i=0;i<gnodes.length;i++){
+      From[i]=0; 
+      From[i]=1;
     }
     var edges = jsavGraph.edges();
     for(var i=0;i<edges.length;i++){
@@ -148,7 +137,15 @@ var initJSAV = function (nnodes,nedges) {
   for(i=0;i<edges.length;i++)
     edges[i].css({"stroke-width":"1.5px","border": "5px solid transparent"});
   jsavGraph.layout();
-
+  gnodes = jsavGraph.nodes();
+  From=new Array(gnodes.length);
+  To=new Array(gnodes.length);
+  visited=new Array(gnodes.length);
+  for(var i=0;i<gnodes.length;i++){
+    From[i]=0;
+    To[i]=0;
+    visited[i]=0;
+  }
   // Bind the clickHandler to handle click events on the array
   jsavGraph.click(clickHandler,{edge:true});
   jsavGraph.mouseleave(function() { this.removeClass("over")},
@@ -157,19 +154,19 @@ var initJSAV = function (nnodes,nedges) {
   jsavGraph.mouseenter(function() { this.addClass("over")},
         {edge: true, node: false, record: false});
 
-  solArr=[];
   var nodes = jsavGraph.nodes();
   guessedAns = true;
-  if(solution(jsavGraph,nodes[0],1)==false){
+  if(getSol(0,[])==false){
     Answer=false;	
-    console.log("no Cyle");
+    Solution="No Hamiltonian Cycle";
+    //console.log("no Cyccle");
   }
   else{
     Answer=true;
-    str=solArr[0].start().value();
-    for(i=0;i<solArr.length;i++)
-     str=str+"->"+solArr[i].end().value();
-    console.log(str);
+    Solution=gnodes[solArr[0]].value();
+    for(i=1;i<solArr.length;i++)
+     Solution=Solution+"->"+gnodes[solArr[i]].value();
+    //console.log(str);
   }
   jsav.displayInit();
   // Set up handler for reset button
@@ -180,11 +177,17 @@ var initJSAV = function (nnodes,nedges) {
 
 // Check user's answer for correctness: User's array must match answer
 var checkAnswer = function () {
+  
   if(Answer){
-    return checkHC(true);
+    for(var i=0;i<gnodes.length;i++)
+       if(From[i]!=1 || To[i]!=1)
+          return false;
+    return true;
   }
   else if(!guessedAns)
     return true;
+  else
+    return false;
   
 };
 
@@ -203,8 +206,8 @@ var showSolution = function(){
 
 <div class="exercise">
   <div class="vars">
-    <var id="nnodes">randRange(10, 15)</var>
-    <var id="nedges">nnodes+randRange(3,nnodes)</var>
+    <var id="nnodes">randRange(7, 9)</var>
+    <var id="nedges">nnodes+randRange(5,nnodes)</var>
     <var id="JSAV">initJSAV(nnodes,nedges)</var>
   </div>
 
@@ -228,7 +231,7 @@ var showSolution = function(){
           else return checkAnswer();
         </div>
       </div>
-     <div class="hints"><p> </p></div>
+     <div class="hints"><p><var>[Solution]</var></p></div>
     </div>
   </div>
 </div>
