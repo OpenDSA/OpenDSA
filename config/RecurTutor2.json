@@ -15,7 +15,7 @@
   },
   "chapters": {
     "Advanced Recursion Tutorial": {
-      "RecurTutor2/BinaryTreeIntro": {
+      "Binary/BinaryTreeIntro": {
         "long_name": "Binary Trees Chapter Introduction",
         "exercises": {}
       },
@@ -41,7 +41,7 @@
            }
          }
       },
-      "Binary/BinaryTreeTraversal": {
+      "RecurTutor2/BinaryTreeTraversal": {
         "long_name": "Binary Trees Traversal",
         "exercises": {
           "preorderCON": {
@@ -82,11 +82,7 @@
           }
         }
       },
-     "RecurTutor2/BinaryTreeRecTrv": {
-        "long_name": " Recursive Binary Tree Traversal",
-        "exercises": { 
-         }
-      },
+      
      "RecurTutor2/BinaryTreeTrvprob": {
         "long_name": "Binary Tree  Common Traversal Problems",
         "exercises": {        
