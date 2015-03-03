@@ -17,13 +17,14 @@
   <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
   <link rel="stylesheet" href="IS.css" type="text/css" />
 </head>
-<body>
 
-<script>
+<body data-height="750" data-width="950">
+<script >
 var
   jsav,            // The JSAV object
   jsavGraph, adjacencyMat, solutionShowStat, 
   maxIS,
+  Solution,
   userInput;      // Boolean: Tells us if user ever did anything
 
 
@@ -95,30 +96,30 @@ function populateAdjacencyMatrix(){
 var clickHandler = function () {
   var i,  edge;
    
-  if(this.hasClass('prohibited')){
+/*  if(this.hasClass('prohibited')){
     alert("Selecting two adjacent nodes violates the definition of Independent Set");
     return;
   }   
-
+*/
   if (!this.hasClass('marked')) {
     this.addClass('marked');
-    tmpnodes = this.neighbors();
-    for(i = 0 ; i< tmpnodes.length; i++){
-      tmpnodes[i].addClass('prohibited');
-    }
+   // tmpnodes = this.neighbors();
+  //  for(i = 0 ; i< tmpnodes.length; i++){
+    //  tmpnodes[i].addClass('prohibited');
+   // }
   }
   else if(this.hasClass('marked')) {
     this.removeClass('marked');
-    tmpnodes = this.neighbors();
-    for(i = 0 ; i< tmpnodes.length; i++){
-      tmpnodes[i].removeClass('prohibited');
-      var tmpnodes2 = tmpnodes[i].neighbors();
-      for(var j=0;j<tmpnodes2.length;j++) 
-        if(tmpnodes2[j].hasClass('marked')){
-          tmpnodes[i].addClass('prohibited');
-          break;
-      }      
-    }
+    //tmpnodes = this.neighbors();
+    //for(i = 0 ; i< tmpnodes.length; i++){
+     // tmpnodes[i].removeClass('prohibited');
+      //var tmpnodes2 = tmpnodes[i].neighbors();
+     // for(var j=0;j<tmpnodes2.length;j++) 
+       // if(tmpnodes2[j].hasClass('marked')){
+        //  tmpnodes[i].addClass('prohibited');
+       //   break;
+      //}      
+    //}
   }
   userInput = true;
 };
@@ -177,10 +178,10 @@ directed: false});
   maxIS=[];
   calcMaxIS(); 
   var gnodes = jsavGraph.nodes();
-  var str="";
-  for(var i=0;i<maxIS.length;i++)
-    str=str+" "+maxIS[i];
-  console.log(str);
+  Solution="A Maximum Independent Set is : { "+gnodes[maxIS[0]].value();
+  for(var i=1;i<maxIS.length;i++)
+    Solution+=" , "+gnodes[maxIS[i]].value();
+  Solution+=" }";
   jsav.displayInit();
   // Set up handler for reset button
   $("#reset").click(f_reset);
@@ -191,6 +192,10 @@ directed: false});
 var checkAnswer = function () {
   var gnodes=jsavGraph.nodes();
   var ctr=0;
+  var edges = jsavGraph.edges();
+  for(var i=0;i<edges.length;i++)
+       if(edges[i].start().hasClass('marked') && edges[i].end().hasClass('marked'))
+          return false;
   for(var i=0;i<gnodes.length;i++)
     if(gnodes[i].hasClass('marked'))
       ctr++;
@@ -228,6 +233,7 @@ class="jsavcanvas"></div>
 	  else return checkAnswer();
 	</div>
       </div>
+	<div class="hints"><p><var>Solution</var></p></div>;
     </div>
   </div>
 </div>

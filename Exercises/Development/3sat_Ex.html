@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
   <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
 </head>
-<body>
+<body data-height="750" data-width="950">
 
 <script>
 var
@@ -128,14 +128,10 @@ function generateAnswer(){
                			if(clauses[k][j]>0){
                       			if(assignment[clauses[k][j]-1]==1)
                                			break;
-                       			if(assignment[clauses[k][j]-1]==-1)
-                               			cnt++;
                			}
                			else if(clauses[k][j]<0){
                				if(assignment[Math.abs(clauses[k][j])-1]==-1)
                                			break;
-                       			if(assignment[Math.abs(clauses[k][j])-1]==1)
-                               			cnt++;
                 		}
         		}
 			if(j<3)
@@ -154,6 +150,7 @@ function generateAnswer(){
 
 	return correctanswer;
 }
+
 
 // Initialise the exercise
 var initJSAV = function (cntc,cntl) {
@@ -268,8 +265,8 @@ var ShowSolution = function(){
 
 <div class="exercise">
   <div class="vars">
-    <var id="literalcnt">randRange(4,10)</var>
-    <var id="clausecnt">randRange(6,12)</var>
+    <var id="literalcnt">randRange(4,6)</var>
+    <var id="clausecnt">randRange(8,12)</var>
     <var id="JSAV">initJSAV(clausecnt,literalcnt)</var>
   </div>
 

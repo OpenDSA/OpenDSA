@@ -5,7 +5,7 @@
 <html data-require="math">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Hamiltonian Circuit Problem</title>
+  <title>Hamiltonian Cycle Problem</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
   <script src="../../JSAV/lib/jquery.transit.js"></script>
@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
   <link rel="stylesheet" href="./hamiltonianCycle.css" type="text/css" />
 </head>
-<body>
+<body data-height="750" data-width="950">
 
 <script>
 var
@@ -79,7 +79,7 @@ var clickHandler = function () {
   else {
     From[gnodes.indexOf(this.start())]+=1; 
     To[gnodes.indexOf(this.end())]+=1; 
-    this.css({"stroke":"blue"});
+    this.css({"stroke":"red"});
     this.addClass('selected');
   }
 

@@ -7,12 +7,4 @@
   -moz-transition: stroke-width 0.1s linear;
   transition: stroke-width 0.1s linear;
 }
-.jsavnode.from, .jsavnode.to{
-  background-color: IndianRed;
-  opacity : 0.5;
-}
 
-.jsavnode.from.to{
-  background-color: IndianRed;
-  opacity : 1;
-}

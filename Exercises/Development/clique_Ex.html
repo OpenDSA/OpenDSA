@@ -17,13 +17,14 @@
   <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
   <link rel="stylesheet" href="clique.css" type="text/css" />
 </head>
-<body>
+<body data-height="750" data-width="950">
 
 <script>
 var
   jsav,            // The JSAV object
   jsavGraph, adjacencyMat, solutionShowStat, 
   maxClique,
+  Solution,
   userInput;      // Boolean: Tells us if user ever did anything
 
 function isClique(nodes){
@@ -130,7 +131,7 @@ var f_reset = function () {
   userInput = false;
 };
 
-var f_solution = function () {
+/*var f_solution = function () {
   var gnodes=jsavGraph.nodes();
   if(solutionShowStat==0){
     for(var i=0;i<gnodes.length;i++){
@@ -149,7 +150,7 @@ var f_solution = function () {
       solutionShowStat=0;
   }
 };
-
+*/
 // Initialise the exercise
 var initJSAV = function (nnodes, nedges) {
   userInput = false;
@@ -172,10 +173,10 @@ directed: false});
   maxlique=[];
   calcMaxClique(); 
   var gnodes = jsavGraph.nodes();
-  var str="";
-  for(var i=0;i<maxClique.length;i++)
-    str=str+" "+maxClique[i];
-  console.log(str);
+  Solution="The maximum clique is { "+gnodes[maxClique[0]]. value();
+  for(var i=1;i<maxClique.length;i++)
+    Solution+=" , "+gnodes[maxClique[i]].value();
+  Solution+=" }";
   jsav.displayInit();
   // Set up handler for reset button
   $("#reset").click(f_reset);
@@ -198,7 +199,7 @@ var checkAnswer = function () {
 
 <div class="exercise">
   <div class="vars">
-    <var id="nnodes">randRange(10,15)</var>
+    <var id="nnodes">randRange(10,12)</var>
     <var id="nedges">2*nnodes+randRange(3, nnodes)</var>
     <var id="JSAV">initJSAV(nnodes, nedges)</var>
   </div>
@@ -222,6 +223,7 @@ class="jsavcanvas"></div>
 	  else return checkAnswer();
 	</div>
       </div>
+	<div class="hints"><p><var>Solution</var></p></div>
     </div>
   </div>
 </div>
