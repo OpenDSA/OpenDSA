@@ -49,7 +49,7 @@
             "long_name": "Alpha Conversion Multiple Choice",
             "required": true,
             "points": 1.0,
-            "threshold": 3.0
+            "threshold": 2.0
           },
           "AlphaConversionHighlight": {
             "long_name": "Alpha Conversion Highlight Answer",
