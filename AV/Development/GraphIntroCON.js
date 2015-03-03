@@ -73,7 +73,7 @@ $(document).ready(function () {
     //slide 2 
     graphOne.hide();
     graphTwo.show();
-    av.umsg("Here is a directed graph");
+    av.umsg("Here is a directed graph. A directed graph is a graph with directed edges from one another. ");
     graphTwo.layout();
     av.step();
 
@@ -81,7 +81,7 @@ $(document).ready(function () {
     graphTwo.hide();
     graphThree.show();
     graphThree.layout();
-    av.umsg("Here is a  labeled directed graph with weighted edges");
+    av.umsg("Here is a  labeled directed graph with weighted edges.");
     av.step();
 
     //slide 4 
