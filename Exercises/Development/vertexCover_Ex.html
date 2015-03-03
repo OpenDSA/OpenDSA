@@ -18,7 +18,7 @@ Written by Gayathri Subramanian and Cliff Shaffer
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
   <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
 </head>
-<body>
+<body data-height="750" data-width="950">
 
 <script>
 var
@@ -28,6 +28,8 @@ var
   tmpnodes=[],
   gnodes=[],
   minVC=[],
+  minSize,
+  Solution,
   solutionShowStat,
   userInput;      // Boolean: Tells us if user ever did anything
 
@@ -170,7 +172,7 @@ var f_reset = function () {
   userInput = false;
 };
 
-var f_solution = function () {
+/*var f_solution = function () {
     if(solutionShowStat==0){
 	var minSize = calcMinVC();	
 	for(var i=0;i<gnodes.length;i++){
@@ -199,7 +201,7 @@ var f_solution = function () {
 	$("#solve").attr('value','Show Solution');
         solutionShowStat=0;
     }
-};
+};*/
 
 // Initialise the exercise
 var initJSAV = function (nnodes,nedges) {
@@ -217,29 +219,24 @@ var initJSAV = function (nnodes,nedges) {
   graphUtils.generate(jsavGraph,{weighted:false,nodes:nnodes,edges:nedges});
   jsavGraph.layout();
 
-  /*var solGraph = jsav.ds.graph({width: 200, height: 140,layout: "automatic", left:-10,top:200});
-  var tmpnodes = jsavGraph.nodes();
-  var tmpnodes2 = new Array(tmpnodes.length);
-  for(var i=0;i<tmpnodes.length;i++){
-	tmpnodes2[i] = solGraph.addNode(tmpnodes[i].value()).css({"font-size":"75%","width":"20px","height":"20px","min-width":"20px","min-height":"20px"});
-  }
-  for(var i=0;i<tmpnodes.length;i++)
-  	for(var j=i+1;j<tmpnodes.length;j++){
-		if(jsavGraph.hasEdge(tmpnodes[i],tmpnodes[j]))
-			solGraph.addEdge(tmpnodes2[i],tmpnodes2[j]);
-  	}
- 	
-  solGraph.layout();*/
+  
   // Bind the clickHandler to handle click events on the array
   jsavGraph.click(clickHandler); 
   populateAdjacencyMatrix();
   jsav.displayInit();
   // Set up handler for reset button
-  $("#solve").click(f_solution);
+
+  minSize=calcMinVC();
+  Solution = "Minimum Vertex cover is : { " + gnodes[minVC[0]].value();
+  for(var i=1;i<minVC.length;i++)
+       Solution += " , "+gnodes[minVC[i]].value();
+  Solution +=" }";
+           
+  //$("#solve").click(f_solution);
   $("#reset").click(f_reset);
 };
 
-
+   
 // Check user's answer for correctness: User's array must match answer
 var checkAnswer = function () {
 	var vcnodes=[];
@@ -247,7 +244,6 @@ var checkAnswer = function () {
 		if(gnodes[i].hasClass('selected'))
 			vcnodes.push(i);
 	}
-	var minSize = calcMinVC();	
         if(!isVC(vcnodes) || vcnodes.length>minSize)
 		return false;
 	return true;
@@ -267,7 +263,7 @@ var checkAnswer = function () {
       <p class="problem">Your task in this exercise is to find the minimum vertex cover.</p>
       <div class="question">
         <p>Select the vertices that can form a minimum vertex cover.</p>
-        <input id="solve" type="button" value="Show solution" />	
+        <!--input id="solve" type="button" value="Show solution" /-->	
         <input id="reset" type="button" value="Reset" />	
         <div id="jsav" class="jsavcanvas"></div>
       </div>
@@ -282,6 +278,7 @@ var checkAnswer = function () {
           else return checkAnswer();
         </div>
       </div>
+        <div class="hints"><p><var>Solution</var></p></div>
     </div>
   </div>
 </div>

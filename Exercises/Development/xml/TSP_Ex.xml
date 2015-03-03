@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<entry>
+    <id>http://algoviz.org/OpenDSA/Exercises/Development/TSP_Ex.html</id>
+    <title type='text'>Traveling Salesman Problem</title>
+    <description type='text'>Solve TSP</description>
+    <type>ka</type>
+    <width>950</width>
+    <height>750</height>
+    <author>
+        <name>OpenDSA</name>
+        <uri>http://algoviz.org/OpenDSA/</uri>
+    </author>
+    <covers>TSP</covers>
+    <streak>14</streak>
+</entry>
