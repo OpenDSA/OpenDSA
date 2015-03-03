@@ -11,6 +11,7 @@
 .. odsalink:: AV/Development/GraphIntroCON.css
 .. odsalink:: AV/Development/GraphIntro2CON.css
 .. odsalink:: AV/Development/GraphIntro3CON.css
+.. odsalink:: AV/Development/GraphIntro4CON.css
 
 Graphs Chapter Introduction
 ===========================
@@ -98,6 +99,10 @@ A graph whose edges have weights
 (as in Figure :num:`Figure #GraphTerms` (c))
 is said to be a :term:`weighted graph`.
 
+.. inlineav:: GraphIntro4CON ss
+   :output: show
+
+   
 .. _GraphTerms:
 
 .. odsafig:: Images/GraphDef.png
@@ -148,12 +153,16 @@ A :term:`subgraph` :math:`\mathbf{S}` is formed from graph
 edge :math:`e  \in \mathbf{E}_s`,
 both vertices of :math:`e` are in :math:`\mathbf{V}_s`.
 
+
+
+
 An undirected graph is a :term:`connected graph` if there is at least
 one path from any vertex to any other.
 The maximally connected subgraphs of an undirected graph are called
 :term:`connected components <connected component>`.
 For example, Figure :num:`Figure #ConCom` shows an undirected graph
 with three connected components.
+
 
 .. _ConCom:
 
@@ -346,3 +355,4 @@ Notes
 .. odsascript:: AV/Development/GraphIntroCON.js
 .. odsascript:: AV/Development/GraphIntro2CON.js
 .. odsascript:: AV/Development/GraphIntro3CON.js
+.. odsascript:: AV/Development/GraphIntro4CON.js

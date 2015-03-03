@@ -35,7 +35,7 @@ $(document).ready(function () {
     var mat = av.ds.matrix([[, 1, , ,1], [ , , , 1, ,], [ , , , , 1], [ , , , 1, ,], [, , 1, , ,]], 
     	{style: "plain", top: mTop, left: mLeft});
 
-    mat.addClass("matrixBorder");
+    mat.css("matrixBorder");
     mat.layout();
     av.step();
    
