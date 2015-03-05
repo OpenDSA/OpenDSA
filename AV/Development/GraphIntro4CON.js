@@ -27,23 +27,39 @@ $(document).ready(function () {
     graphOne.layout();
     av.displayInit();
 
-    
+    //slide 2 
     av.umsg("The same graph can be turned into a dense graph by adding edges");
     graphOne.addEdge(nodeThree, nodeFour);
     graphOne.addEdge(nodeFour, nodeSix);
     graphOne.addEdge(nodeSix, nodeFive);
+    graphOne.addEdge(nodeThree, nodeSix);
+    graphOne.addEdge(nodeOne, nodeTwo);
     graphOne.layout();
    	av.step();  
 
-   	av.umsg("This graph becomes a complete graph when we add three more edges. A graph containing all posible edges" +  
-   		"is a complete graph");
-   	graphOne.addEdge(nodeThree, nodeSix);
-   	graphOne.addEdge(nodeOne, nodeTwo);
+    //slide 3 
+   	av.umsg("This graph becomes a complete graph when we add one more edge. A graph containing all posible edges" +  
+   		" is a complete graph");
    	graphOne.addEdge(nodeThree, nodeFive);
    	graphOne.layout();
+    graphOne.getEdge(nodeThree, nodeFive).addClass("redEdge");
    	av.step();
 
-   	av.umsg("These three vertices and the edges connecting them form a clique");
+    //slide 4 
+   	graphOne.getEdge(nodeThree, nodeFive).removeClass("redEdge");
+    av.umsg("Two vertices are adjacent if there is an edge between them. These verticies are called neighbors"); 
+    nodeThree.highlight();
+    nodeSix.highlight();
+    av.step();
+
+    //slide 5 
+    av.umsg("The edge between neighbors is said to be incedent.");
+    graphOne.getEdge(nodeThree, nodeSix).addClass("redEdge");
+    av.step();
+
+    //slide  6
+    graphOne.getEdge(nodeThree, nodeSix).removeClass("redEdge");
+    av.umsg("These three vertices and the edges connecting them form a clique");
    	nodeOne.highlight();
    	nodeThree.highlight();
    	nodeFour.highlight();
@@ -52,6 +68,7 @@ $(document).ready(function () {
    	graphOne.getEdge(nodeFour, nodeThree).addClass("redEdge");
    	av.step();
 
+    //slide 7 
    	graphOne.hide(); 
    	graphOne = av.ds.graph({top: gTop, left: 250, width: 500, height: 400});
    	nodeOne = graphOne.addNode("", {left: 175, top: gTop});
