@@ -8,6 +8,8 @@
    :prerequisites:
    :topic: NP-completeness
 
+.. odsalink:: AV/Development/circuitSATCON.css
+
 NP-Completeness
 ===============
 
@@ -196,7 +198,8 @@ Examples of NP-Complete Problems
 The following slideshow explains the Circuit Satisfiability Problem.
 
 
-.. avembed:: AV/Development/circuitSAT.html ss
+.. inlineav:: circuitSATCON ss
+   :output: show
 
 In the above problem, given a particular assignment, while we can 
 quickly check whether the assignment satisfies the circuit or not,
@@ -401,4 +404,6 @@ can be reduced to an instance of Traveling Salesman problem in polynomial time.
 
 .. avembed:: AV/Development/HCtoTSP.html ss
 
+.. odsascript:: AV/Development/circuit/circuit.js
+.. odsascript:: AV/Development/circuitSATCON.js
 
