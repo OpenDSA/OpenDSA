@@ -32,7 +32,8 @@
   if (code) {
     pseudo = av.code($.extend({after: {element: $(".instructions")}}, code));
     pseudo.show();
-    pseudo.highlight(code.tags.highlight);
+    pseudo.highlight("highlight");
+    pseudo.addClass("return", "returnline");
     // toggle with double click
     pseudo.element.dblclick(function () {
       pseudo.element.toggleClass("collapsed");
@@ -69,7 +70,10 @@
 
     // insert key into the array (the blue box)
     keyholder = av.ds.array([key], {indexed: false});
-    keyholder.css(0, {"background-color": "#ddf"});
+    keyholder.css(0, {
+      "background-color": "#ddf",
+      "border": "none"
+    });
     $findLabel = $("<p>" + interpret("av_find_label") + "</p>").css({
       "text-align": "center",
       "font-weight": "bold",
@@ -123,7 +127,10 @@
   }
 
   function modelSolution(jsav) {
-    jsav.ds.array([key], {indexed: false}).css(0, {"background-color": "#ddf"});
+    jsav.ds.array([key], {indexed: false}).css(0, {
+      "background-color": "#ddf",
+      "border": "none"
+    });
     var modelArray = jsav.ds.array(initialArray, {indexed: true, layout: "bar", autoresize: false});
 
     if (code) {
@@ -289,8 +296,8 @@
   var pointerClickHandler = function (pointer) {
     var pointers = [lowPointer, highPointer],
         pointerIndex = pointers.indexOf(pointer);
-    // assign click handler
-    pointer.element.click(function () {
+    // click handler
+    function handler() {
       switch (clickState.value()) {
       case -1:
         // nothing selected -> select pointer
@@ -309,7 +316,10 @@
         pointer.addClass("selected");
         break;
       }
-    });
+    }
+    // assign click handler to pointer area and pointer arrow
+    pointer.element.click(handler);
+    pointer.arrow.click(handler);
   };
 
   function barClickHandler(index) {
@@ -340,7 +350,7 @@
   var exercise = av.exercise(modelSolution, initialize, {
     // compare: [{class: "jsavhighlight"}],
     feedback: "atend",
-    modelDialog: {width: 780}
+    modelDialog: {width: 760}
   });
   exercise.reset();
 
