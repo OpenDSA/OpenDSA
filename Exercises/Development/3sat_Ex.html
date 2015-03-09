@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
   <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
 </head>
-<body>
+<body data-height="750" data-width="950">
 
 <script>
 var
@@ -21,6 +21,7 @@ var
   userInput,      // Boolean: Tells us if user ever did anything
   assigned=[],
   correctassignment=[],
+  Solution,
   answer;
 var clauses,mapping,labels,literals,clausecnt,literalcnt;
 // Click event handler on the array
@@ -127,14 +128,10 @@ function generateAnswer(){
                			if(clauses[k][j]>0){
                       			if(assignment[clauses[k][j]-1]==1)
                                			break;
-                       			if(assignment[clauses[k][j]-1]==-1)
-                               			cnt++;
                			}
                			else if(clauses[k][j]<0){
                				if(assignment[Math.abs(clauses[k][j])-1]==-1)
                                			break;
-                       			if(assignment[Math.abs(clauses[k][j])-1]==1)
-                               			cnt++;
                 		}
         		}
 			if(j<3)
@@ -153,6 +150,7 @@ function generateAnswer(){
 
 	return correctanswer;
 }
+
 
 // Initialise the exercise
 var initJSAV = function (cntc,cntl) {
@@ -212,8 +210,7 @@ var initJSAV = function (cntc,cntl) {
 
 
   jsavArr = jsav.ds.array(literals, {indexed: false});
-
-
+  Solution=ShowSolution();
   jsavArr.click(clickHandler);
   // Set up handler for reset button
   $("#reset").click(function () { f_reset(); });
@@ -250,18 +247,17 @@ var checkAnswer = function () {
 var ShowSolution = function(){
 	if(generateAnswer()==0)
 		return "The expression is not satisfiable";
+        var str="A satisfying assignment : ";
 	for(var i=0;i<literalcnt;i++){
     		if(correctassignment[i]==1){
-        		jsavArr.css(i,{"background-color":"green"});
+        		str+="x"+(i+1)+" = T ";
     		}
     		else if(correctassignment[i]==-1){
-        		jsavArr.css(i,{"background-color":"red"});
+        		str+="x"+(i+1)+" = F ";
     		}
-    		else if(correctassignment[i]==0){
-        		jsavArr.css(i,{"background-color":"white"});
-    		}
+    	        	
 	}
-	return "The expression is satisfiable with the above assignment";
+	return str;
 }
 
 
@@ -269,8 +265,8 @@ var ShowSolution = function(){
 
 <div class="exercise">
   <div class="vars">
-    <var id="literalcnt">randRange(4,10)</var>
-    <var id="clausecnt">randRange(6,12)</var>
+    <var id="literalcnt">randRange(4,6)</var>
+    <var id="clausecnt">randRange(8,12)</var>
     <var id="JSAV">initJSAV(clausecnt,literalcnt)</var>
   </div>
 
@@ -296,7 +292,8 @@ var ShowSolution = function(){
       </div>
       <div class="hints">
         <p>Click on the variable once to assign it true , twice to assign it false.</p> 
-      </div>
+        <p><var>[Solution]</var></p> 
+     </div>
     </div>
   </div>
 </div>

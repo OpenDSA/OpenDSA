@@ -8,6 +8,8 @@
    :prerequisites:
    :topic: NP-completeness
 
+.. odsalink:: AV/Development/circuitSATCON.css
+
 NP-Completeness
 ===============
 
@@ -142,87 +144,6 @@ print out :math:`O(2^n)` moves for :math:`n` disks.
 A non-deterministic machine cannot "guess" and print the correct
 answer in less time.
 
-On the other hand, consider the TRAVELING SALESMAN problem.
-
-.. topic:: Problem
-
-   TRAVELING SALESMAN (1)
-
-   **Input:** A complete, directed graph :math:`G` with
-   positive distances assigned to each edge in the graph.
-
-   **Output:** The shortest simple cycle that includes every vertex.
-
-Figure :num:`Figure #Sales` illustrates this problem.
-Five vertices are shown, with edges and associated costs between each
-pair of edges.
-(For simplicity Figure :num:`Figure #Sales` shows an undirected graph,
-assuming that the cost is the same in both
-directions, though this need not be the case.)
-If the salesman visits the cities in the order ABCDEA, he will travel
-a total distance of 13.
-A better route would be ABDCEA, with cost 11.
-The best route for this particular graph would be ABEDCA, with cost 9.
-
-.. _Sales:
-
-.. odsafig:: Images/Sales.png
-   :width: 175
-   :alt: Illustration of the TRAVELING SALESMAN problem
-   :capalign: justify
-   :figwidth: 90%
-   :align: center
-
-   An illustration of the TRAVELING SALESMAN problem.
-   Five vertices are shown, with edges between each pair of cities.
-   The problem is to visit all of the cities exactly once,
-   returning to the start city, with the least total cost.
-
-We cannot solve this problem in polynomial time with a guess-and-test
-non-deterministic computer.
-The problem is that, given a candidate cycle, while we can quickly
-check that the answer is indeed a cycle of the appropriate form,
-and while we can quickly calculate the length of the cycle,
-we have no easy way of knowing if it is in fact the <em>shortest</em>
-such cycle.
-However, we can solve a variant of this problem cast in the form
-of a :term:`decision problem`.
-A decision problem is simply one whose answer is either YES or NO.
-The decision problem form of TRAVELING SALESMAN is as follows.
-
-.. topic:: Problem
-
-   TRAVELING SALESMAN (2)
-
-   **Input:** A complete, directed graph :math:`G` with
-   positive distances assigned to each edge in the graph, and an
-   integer :math:`k`.
-
-   **Output:** YES if there is a simple cycle with total
-   distance :math:`\leq k` containing every vertex in :math:`G`,
-   and NO otherwise.
-
-We can solve this version of the problem in polynomial time with a
-non-deterministic computer.
-The non-deterministic algorithm simply checks all of the possible
-subsets of edges in the graph, in parallel.
-If any subset of the edges is an appropriate cycle of total length
-less than or equal to :math:`k`, the answer is YES; otherwise the
-answer is NO.
-Note that it is only necessary that *some* subset meet the
-requirement; it does not matter how many subsets fail.
-Checking a particular subset is done in polynomial time by adding the
-distances of the edges and verifying that the edges form a cycle that
-visits each vertex exactly once.
-Thus, the checking algorithm runs in polynomial time.
-Unfortunately, there are :math:`2^{|{\mathrm E}|}` subsets to check,
-so this algorithm cannot be converted to a polynomial time algorithm
-on a regular computer.
-Nor does anybody in the world know of any other polynomial time
-algorithm to solve TRAVELING SALESMAN on a regular computer, despite
-the fact that the problem has been studied extensively by many
-computer scientists for many years.
-
 It turns out that there is a large collection of
 problems with this property:
 We know efficient non-deterministic algorithms, but we do not know if
@@ -244,74 +165,6 @@ A problem :math:`X` is defined to be NP-complete if
 #. :math:`X` is in NP, and
 #. :math:`X` is NP-hard.
 
-The requirement that a problem be NP-hard might seem to be impossible,
-but in fact there are hundreds of such problems,
-including TRAVELING SALESMAN. 
-Another such problem is called K-CLIQUE.
-
-.. topic:: Problem
-
-   K-CLIQUE
-
-   **Input:** An arbitrary undirected graph :math:`G` and an
-   integer :math:`k`.
-
-   **Output:** YES if there is a complete subgraph of at
-   least :math:`k` vertices, and NO otherwise.
-
-.. avembed:: AV/Development/clique.html ss
-
-Nobody knows whether there is a polynomial time solution for
-K-CLIQUE, but if such an algorithm is found for K-CLIQUE *or*
-for TRAVELING SALESMAN, then that solution can be modified to solve
-the other, or any other problem in NP, in polynomial time.
-
-The primary theoretical advantage of knowing that a problem P1 is
-NP-complete is that it can be used to show that another problem
-P2 is NP-complete.
-This is done by finding a polynomial time reduction of
-P1 to P2.
-Because we already know that all problems in NP can be reduced to P1
-in polynomial time (by the definition of NP-complete), we now know
-that all problems can be reduced to P2 as well by the simple algorithm
-of reducing to P1 and then from there reducing to P2.
-
-There is a practical advantage to knowing that a problem is
-NP-complete.
-It relates to knowing that if a polynomial time solution can be found
-for *any* problem that is NP-complete, then a polynomial
-solution can be found for *all* such problems.
-The implication is that, 
-
-#. Because no one has yet found such a solution,
-   it must be difficult or impossible to do; and
-
-#. Effort to find a polynomial time solution for one
-   NP-complete problem can be considered to have been expended for all
-   NP-complete problems.
-
-How is NP-completeness of practical significance for typical
-programmers?
-Well, if your boss demands that you provide a fast algorithm to solve
-a problem, she will not be happy if you come back saying that the
-best you could do was an exponential time algorithm.
-But, if you can prove that the problem is NP-complete, while she
-still won't be happy, at least she should not be mad at you!
-By showing that her problem is NP-complete, you are in effect saying
-that the most brilliant computer scientists for the last 50 years
-have been trying and failing to find a polynomial time algorithm for
-her problem.
-
-Problems that are solvable in polynomial time on a regular computer
-are said to be in class P.
-Clearly, all problems in P are solvable in polynomial time on a
-non-deterministic computer simply by neglecting to use the
-non-deterministic capability.
-Some problems in NP are NP-complete.
-We can consider all problems solvable in exponential time or better as
-an even bigger class of problems because all problems solvable in
-polynomial time are solvable in exponential time.
-Thus, we can view the world of exponential-time-or-better problems in
 terms of Figure :num:`Figure #Complex`.
 
 .. _Complex:
@@ -332,15 +185,117 @@ terms of Figure :num:`Figure #Complex`.
 
 The most important unanswered question in theoretical computer
 science is whether :math:`P = NP`.
-If they are equal, then there is a polynomial time
-algorithm for TRAVELING SALESMAN and all related problems.
-Because TRAVELING SALESMAN is known to be NP-complete, if a
-polynomial time algorithm were to be found for this problem, then
-*all* problems in NP would also be solvable in polynomial
-time.
-Conversely, if we were able to prove that TRAVELING SALESMAN has an
-exponential time lower bound, then we would know that
-:math:`P \neq NP`.
+
+Given below are some problems that are NP Complete.
+
+Examples of NP-Complete Problems
+--------------------------------
+
+.. topic:: Problem
+
+   Circuit Satisfiability Problem 
+
+The following slideshow explains the Circuit Satisfiability Problem.
+
+
+.. inlineav:: circuitSATCON ss
+   :output: show
+
+In the above problem, given a particular assignment, while we can 
+quickly check whether the assignment satisfies the circuit or not,
+we have no easy way of knowing whether it has any satisfying 
+assignment.
+
+
+.. topic:: Problem
+
+   Formula Satisfiability Problem (SAT) 
+
+The following slideshow explains the Formula Satisfiability Problem.
+
+
+
+.. avembed:: AV/Development/SAT.html ss
+
+
+.. topic:: Problem
+
+   3-CNF Satisfiability Problem (3-SAT)
+
+The following slideshow explains the 3-CNF Satisfiability Problem.
+
+.. avembed:: AV/Development/3sat.html ss
+
+Try out an instance of the 3-SAT problem on your own.
+
+.. avembed:: Exercises/Development/3sat_Ex.html ka
+
+
+.. topic:: Problem
+
+   The Clique Problem.
+
+The following slideshow explains the Clique Problem.
+
+.. avembed:: AV/Development/clique.html ss
+
+Try out an instance of the Clique problem on your own.
+
+.. avembed:: Exercises/Development/clique_Ex.html ka
+
+
+.. topic:: Problem
+
+   The Independent Set Problem.
+
+The following slideshow explains the Independent Set Problem.
+
+.. avembed:: AV/Development/IS.html ss
+
+Try out an instance of the Independent Set problem on your own.
+
+.. avembed:: Exercises/Development/IS_Ex.html ka
+
+
+.. topic:: Problem
+
+   The Vertex Cover Problem.
+
+The following slideshow explains the Vertex Cover Problem.
+
+.. avembed:: AV/Development/vertexcover.html ss
+
+Try out an instance of the Vertex Cover problem on your own.
+
+.. avembed:: Exercises/Development/vertexCover_Ex.html ka
+
+
+.. topic:: Problem
+
+   The Hamiltonian Cycle Problem.
+
+The following slideshow explains the Hamiltonian Cycle Problem.
+
+.. avembed:: AV/Development/hamiltonianCycle.html ss
+
+Try out an instance of the Hamiltonian Cycle problem on your own.
+
+.. avembed:: Exercises/Development/hamiltonianCycle_Ex.html ka
+
+
+.. topic:: Problem
+
+   The Traveling Salesman Problem.
+
+The following slideshow explains the Traveling Salesman Cycle Problem.
+
+.. avembed:: AV/Development/TSP.html ss
+
+Try out an instance of the Traveling Salesman problem on your own.
+
+.. avembed:: Exercises/Development/TSP_Ex.html ka
+
+
 
 NP-Completeness Proofs
 ----------------------
@@ -369,334 +324,86 @@ The first proof that a problem is NP-hard (and because it is in NP,
 therefore NP-complete) was done by Stephen Cook.
 For this feat, Cook won the first Turing award, which is the closest
 Computer Science equivalent to the Nobel Prize.
-The "grand-daddy" NP-complete problem that Cook used is call
-SATISFIABILITY (or SAT for short).
 
-A :term:`Boolean expression` includes Boolean variables combined
-using the operators AND (:math:`\cdot`), OR (:math:`+`), and NOT
-(to negate Boolean variable :math:`x` we write :math:`\overline{x}`).
-A :term:`literal` is a Boolean variable or its negation.
-A :term:`clause` is one or more literals OR'ed together.
-Let :math:`E` be a Boolean expression over variables
-:math:`x_1, x_2, ..., x_n`.
-Then we define :term:`Conjunctive Normal Form` (CNF) to be a Boolean
-expression written as a series of clauses that are AND'ed together.
-For example,
+For our proofs we will use the *Circuit Satisfiability* Problem as the
+first NP-Complete problem. We will take it for a fact that Circuit 
+Satisfiability is an NP Complete Problem.
 
-.. math::
+.. _NPCreduction:
 
-   E = (x_5 + x_7 + \overline{x_8} + x_{10}) \cdot (\overline{x_2} + x_3)
-   \cdot (x_1 + \overline{x_3} + x_6)
+.. odsafig:: Images/reduction.png
+   :width: 400
+   :alt: The Reduction of NP-Complete Problems.
+   :capalign: justify
+   :figwidth: 90%
+   :align: center
 
-is in CNF, and has three clauses.
-Now we can define the problem SAT.
+   We will use this sequence of reductions for the NP Complete Proofs.
 
-.. topic:: Problem
+.. topic:: Reduction for Proof of NP-Completness
 
-   SATISFIABILITY (SAT)
+   SAT is NP Complete. 
 
-   **Input:** A Boolean expression :math:`E` over variables
-   :math:`x_1, x_2, ...` in Conjunctive Normal Form.
+The following slideshow shows that an instance of Circuit Satisfiability 
+problem can be reduced to an instance of SAT problem in polynomial time.
+ 
+.. avembed:: AV/Development/circuitSATtoSat.html ss
 
-   **Output:** YES if there is an assignment to the
-   variables that makes :math:`E` true, NO otherwise.
+.. topic:: Reduction for Proof of NP-Completness
 
-Cook proved that SAT is NP-hard.
-Explaining Cook's proof is beyond the scope of this course.
-But we can briefly summarize it as follows.
-Any decision problem :math:`F` can be recast as some language
-acceptance problem :math:`L`:
+   3-SAT is NP Complete. 
 
-.. math::
+The following slideshow shows that an instance of SAT problem can be 
+reduced to an instance of 3-SAT problem in polynomial time.
 
-   F(I) = \mbox{YES} \Leftrightarrow L(I') = \mbox{ACCEPT}.
+.. avembed:: AV/Development/satTo3sat.html ss
 
-That is, if a decision problem :math:`F` yields YES on
-input :math:`I`, then there is a language :math:`L` containing 
-string :math:`I'` where :math:`I'` is some suitable
-transformation of input :math:`I`.
-Conversely, if :math:`F` would give answer NO for input :math:`I`,
-then :math:`I` 's transformed version :math:`I'` is not in the
-language :math:`L`.
+.. topic:: Reduction for Proof of NP-Completness
 
-Turing machines are a simple model of computation for writing
-programs that are language acceptors.
-There is a "universal" Turing machine that can take as input a
-description for a Turing machine, and an input string, and return the
-execution of that machine on that string.
-This Turing machine in turn can be cast as a Boolean expression such
-that the expression is satisfiable if and only if the Turing machine
-yields ACCEPT for that string.
-Cook used Turing machines in his proof because they are simple enough
-that he could develop this transformation of Turing machines to
-Boolean expressions, but rich enough to be able to compute any
-function that a regular computer can compute.
-The significance of this transformation is that *any* decision
-problem that is performable by the Turing machine is transformable to
-SAT.
-Thus, SAT is NP-hard.
+   Clique problem is NP Complete. 
 
-As explained above, to show that a decision problem :math:`X`
-is NP-complete, we prove that :math:`X` is in NP (normally easy, and
-normally done by giving a suitable polynomial-time, non-deterministic
-algorithm) and then prove that :math:`X` is NP-hard.
-To prove that :math:`X` is NP-hard, we choose a known NP-complete
-problem, say :math:`A`. 
-We describe a polynomial-time transformation that takes an
-*arbitrary* instance :math:`I` of :math:`A` to an instance
-:math:`I'` of :math:`X`.
-We then describe a polynomial-time transformation from
-:math:`SLN'`to :math:`SLN` such that :math:`SLN` is the solution
-for :math:`I`.
-The following example provides a model for how an
-NP-completeness proof is done.
-
-.. topic:: Problem
-
-   3-SATISFIABILITY (3 SAT)
-
-   **Input:** A Boolean expression E in CNF such that each
-   clause contains exactly 3 literals.
-
-   **Output:** YES if the expression can be satisfied, NO
-   otherwise.
-
-.. avembed:: AV/Development/sat.html ss
-
-.. topic:: Example
-
-   3 SAT is a special case of SAT.
-   Is 3 SAT easier than SAT?
-   Not if we can prove it to be NP-complete.
-
-   **Theorem:** 3 SAT is NP-complete.
-
-   **Proof:**
-
-   Prove that 3 SAT is in NP:
-   Guess (non-deterministically) truth values for the variables.
-   The correctness of the guess can be verified in polynomial time.
-
-   Prove that 3 SAT is NP-hard:
-   We need a polynomial-time reduction from SAT to 3 SAT.
-   Let :math:`E = C_1 \cdot C_2 \cdot ... \cdot C_k` be any instance
-   of SAT.
-   Our strategy is to replace any clause :math:`C_i` that does not
-   have exactly three literals with a set of clauses each having
-   exactly three literals.
-   (Recall that a literal can be a variable such as :math:`x`, or the
-   negation of a variable such as :math:`\overline{x}`.)
-   Let :math:`C_i = x_1 + x_2 + ... + x_j` where :math:`x_1, ..., x_j`
-   are literals.
-
-   #. :math:`j = 1`, so :math:`C_i = x_1`.
-      Replace :math:`C_i` with :math:`C_i'`:
-
-      .. math::
-
-         (x_1 + y + z) \cdot (x_1 + \overline{y} + z) \cdot
-         (x_1 + y + \overline{z}) \cdot (x_1 + \overline{y} +
-         \overline{z})
-
-      where :math:`y` and :math:`z` are variables not appearing
-      in :math:`E`.
-      Clearly, :math:`C_i'` is satisfiable if and only if
-      :math:`(x_1)` is satisfiable, meaning that :math:`x_1` is TRUE.
-
-   #. :math:`J = 2`, so :math:`C_i = (x_1 + x_2)`.
-      Replace :math:`C_i` with
-
-      .. math::
-
-         (x_1 + x_2 + z) \cdot (x_1 + x_2 + \overline{z})
-
-      where :math:`z` is a new variable not appearing in :math:`E`.
-      This new pair of clauses is satisfiable if and only if
-      :math:`(x_1 + x_2)` is satisfiable, that is, either :math:`x_1`
-      or :math:`x_2` must be true.
-
-   #. :math:`j > 3`.
-      Replace :math:`C_i = (x_1 + x_2 + \cdots + x_j)` with
-
-      .. math::
-
-         (x_1 + x_2 + z_1) \cdot (x_3 + \overline{z_1} + z_2) \cdot
-         (x_4 + \overline{z_2} + z_3) \cdot ...
-
-      .. math::
-
-         \cdot (x_{j-2} +
-         \overline{z_{j-4}} + z_{j-3}) \cdot (x_{j-1} + x_j +
-         \overline{z_{j-3}})
-
-      where :math:`z_1, ..., z_{j-3}` are new variables.
-
-   After appropriate replacements have been made for each :math:`C_i`,
-   a Boolean expression results that is an instance of 3 SAT.
-   Each replacement is satisfiable if and only if the original clause
-   is satisfiable.
-   The reduction is clearly polynomial time.
-
-   For the first two cases it is fairly easy to see that the original
-   clause is satisfiable if and only if the resulting clauses are
-   satisfiable.
-   For the case were we replaced a clause with more than three literals,
-   consider the following.
-
-   #. If :math:`E` is satisfiable, then :math:`E'` is satisfiable:
-      Assume :math:`x_m` is assigned TRUE.
-      Then assign :math:`z_t, t\leq m-2` as TRUE and
-      :math:`z_k, t \geq m-1` as FALSE.
-      Then all clauses in Case (3) are satisfied.
-
-   #. If :math:`x_1, x_2, ..., x_j` are all FALSE, then
-      :math:`z_1, z_2, ..., z_{j-3}` are all TRUE.
-      But then :math:`(x_{j-1} + x_{j-2} + \overline{z_{j-3}})` is FALSE.
-
-Next we define the problem VERTEX COVER for use in further examples.
-
-.. topic:: Problem
-
-   VERTEX COVER:
-
-   **Input:** A graph :math:`G` and an integer :math:`k`.
-
-   **Output:** YES if there is a subset :math:`S` of the
-   vertices in :math:`G` of size :math:`k` or less such that every
-   edge of :math:`G` has at least one of its endpoints in :math:`S`,
-   and NO otherwise.
-
-.. avembed:: AV/Development/vertexcover.html ss
-
-.. topic:: Example
-
-   In this example, we make use of a simple conversion between two graph
-   problems.
-
-   **Theorem:** VERTEX COVER is NP-complete.
-
-   **Proof:**
-
-   Prove that VERTEX COVER is in NP:
-   Simply guess a subset of the graph and determine in polynomial time
-   whether that subset is in fact a vertex cover of size :math:`k` or
-   less.
-
-   Prove that VERTEX COVER is NP-hard:
-   We will assume that K-CLIQUE is already known to be NP-complete.
-   (We will see this proof in the next example.
-   For now, just accept that it is true.)
-
-   Given that K-CLIQUE is NP-complete, we need to find a
-   polynomial-time transformation from the input to K-CLIQUE to the
-   input to VERTEX COVER,
-   and another polynomial-time transformation from the output for
-   VERTEX COVER to the output for K-CLIQUE.
-   This turns out to be a simple matter, given the following
-   observation.
-   Consider a graph :math:`G` and a vertex cover :math:`S` on
-   :math:`G`.
-   Denote by :math:`S'` the set of vertices in :math:`G` but not in
-   :math:`S`.
-   There can be no edge connecting any two vertices in :math:`S'`
-   because, if there were, then :math:`S` would not be a vertex
-   cover.
-   Denote by :math:`G'` the inverse graph for :math:`G`, that is, the
-   graph formed from the edges not in :math:`G`.
-   If :math:`S` is of size :math:`k`, then :math:`S'` forms a clique
-   of size :math:`n - k` in graph :math:`G'`.
-   Thus, we can reduce K-CLIQUE to VERTEX COVER simply by converting
-   graph :math:`G` to :math:`G'`, and asking if :math:`G'` has a
-   VERTEX COVER of size :math:`n-k` or smaller.
-   If YES, then there is a clique in :math:`G` of size :math:`k`;
-   if NO then there is not.
-
-.. topic:: Example
-
-   So far, our NP-completeness proofs have involved
-   transformations between inputs of the same "type", such as from
-   a Boolean expression to a Boolean expression or from a graph to a
-   graph.
-   Sometimes an NP-completeness proof involves a transformation between
-   types of inputs, as shown next.
-
-   **Theorem:** K-CLIQUE is NP-complete.
-
-   **Proof:** K-CLIQUE is in NP, because we can just guess a
-   collection of :math:`k` 
-   vertices and test in polynomial time if it is a clique.
-   Now we show that K-CLIQUE is NP-hard by using a reduction
-   from SAT.
-   An instance of SAT is a Boolean expression
-
-   .. math::
-
-      B = C_1 \cdot C_2 \cdot ... \cdot C_m
-
-   whose clauses we will describe by the notation
-
-   .. math::
-
-      C_i = y[i, 1] + y[i, 2] + ... + y[i, k_i]
-
-   where :math:`k_i` is the number of literals in Clause :math:`c_i`.
-   We will transform this to an instance of K-CLIQUE as follows.
-   We build a graph
-
-   .. math::
-
-       G = \{v[i, j] | 1 \leq i \leq m, 1 \leq j \leq k_i\},
-
-   that is, there is a vertex in :math:`G` corresponding to
-   every literal in Boolean expression :math:`B`.
-   We will draw an edge between each pair of vertices
-   :math:`v[i_1, j_1]` and :math:`v[i_2, j_2]` unless
-   (1) they are two literals within the same clause
-   (:math:`i_1 = i_2`) or
-   (2) they are opposite values for the same variable
-   (i.e., one is negated and the other is not). 
-   Set :math:`k = m`.
-   Figure :num:`Figure #BEgraph` shows an example of this transformation.
-
-   .. _BEgraph:
-
-   .. odsafig:: Images/BEgraph.png
-      :width: 150
-      :alt: Converting a Boolean expression to a graph
-      :capalign: justify
-      :figwidth: 90%
-      :align: center
-
-      The graph generated from Boolean expression
-      :math:`B = (x_1 + x_2) \cdot (\overline{x_1} + x_2 + x_3) \cdot
-      (\overline{x_1} + x_3)`.
-      Literals from the first clause are labeled C1, and literals from
-      the second clause are labeled C2.
-      There is an edge between every pair of vertices except when both
-      vertices represent instances of literals from the same clause,
-      or a negation of the same variable.
-      Thus, the vertex labeled :math:`C1\!:\!y_1` does not connect to
-      the vertex labeled :math:`C1\!:\!y_2` (because they are literals
-      in the same clause) or the vertex labeled
-      :math:`C2\!:\!\overline{y_1}` (because they are opposite
-      values for the same variable).
-
-   :math:`B` is satisfiable if and only if :math:`G` has a clique of
-   size :math:`k` or greater.
-   :math:`B` being satisfiable implies that there is a truth assignment
-   such that at least one literal :math:`y[i, j_i]` is true for
-   each :math:`i`.
-   If so, then these :math:`m` literals must correspond to :math:`m`
-   vertices in a clique of size :math:`k = m`.
-   Conversely, if :math:`G` has a clique of size :math:`k` or greater,
-   then the clique must have size exactly :math:`k` (because no two
-   vertices corresponding to literals in the same clause can be in the
-   clique) and there is one vertex :math:`v[i, j_i]` in the clique for
-   each :math:`i`.
-   There is a truth assignment making each :math:`y[i, j_i]` true.
-   That truth assignment satisfies :math:`B`.
-
-   We conclude that K-CLIQUE is NP-hard, therefore NP-complete.
+The following slideshow shows that an instance of 3-SAT problem can be 
+reduced to an instance of Clique problem in polynomial time.
 
 .. avembed:: AV/Development/3satToClique.html ss
+
+.. topic:: Reduction for Proof of NP-Completness
+
+   Independent Set problem is NP Complete. 
+
+The following slideshow shows that an instance of Clique problem can be 
+reduced to an instance of Independent Set problem in polynomial time.
+
+.. avembed:: AV/Development/cliqueToIS.html ss
+
+.. topic:: Reduction for Proof of NP-Completness
+
+   Vertex Cover problem is NP Complete. 
+
+The following slideshow shows that an instance of Independent Set problem can
+ be reduced to an instance of Vertex Cover problem in polynomial time.
+
+.. avembed:: AV/Development/IStoVC.html ss
+
+.. topic:: Reduction for Proof of NP-Completness
+
+   Hamiltonian Cycle problem is NP Complete. 
+
+The following slideshow shows that an instance of 3-SAT problem can
+ be reduced to an instance of Independent Set problem in polynomial time.
+
+
+.. avembed:: AV/Development/3satToHC.html ss
+
+.. topic:: Reduction for Proof of NP-Completness
+
+   Traveling Salesman problem is NP Complete. 
+
+The following slideshow shows that an instance of Hamiltonian Cycle problem 
+can be reduced to an instance of Traveling Salesman problem in polynomial time.
+
+.. avembed:: AV/Development/HCtoTSP.html ss
+
+.. odsascript:: AV/Development/circuit/circuit.js
+.. odsascript:: AV/Development/circuitSATCON.js
 

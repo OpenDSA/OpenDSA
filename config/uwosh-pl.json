@@ -1,5 +1,5 @@
 {
-  "title": "UW Oshkosh PL",
+  "title": "Programming Languages",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {"Javascript": ["js"]},
@@ -11,7 +11,13 @@
   "allow_anonymous_credit": true,
   "suppress_todo": false,
   "chapters": {
-    "UWOshkosh PL Materials": {
+    "Preface": {
+      "Intro": {
+        "long_name": "How to Use this System",
+        "exercises": {}
+      }
+    },
+    "Lambda Calculus": {
       "Development/LambdaCalculus": {
         "long_name": "Current Work on Lambda Calculus",
         "exercises": {
@@ -43,7 +49,7 @@
             "long_name": "Alpha Conversion Multiple Choice",
             "required": true,
             "points": 1.0,
-            "threshold": 3.0
+            "threshold": 2.0
           },
           "AlphaConversionHighlight": {
             "long_name": "Alpha Conversion Highlight Answer",

@@ -3,3 +3,9 @@
     height: 300px;
     
 }
+
+.redEdge{  /* make graph edge red */ 
+
+	stroke: red;
+
+}
