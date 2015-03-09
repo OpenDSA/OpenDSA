@@ -421,7 +421,8 @@ $(document).ready(function () {
   // Start processing here
   //////////////////////////////////////////////////////////////////
   // Load the interpreter created by odsaAV.js
-  var interpret = ODSA.UTILS.loadConfig().interpreter;
+  var config = ODSA.UTILS.loadConfig();
+  var interpret = config.interpreter;
 
   // Variables used by "setPosition()"
   var canvasWidth = $("#container").width();     // The width of the display
@@ -434,7 +435,7 @@ $(document).ready(function () {
   var mergeValueArr = null;
 
   // Settings for the AV
-  var settings = new JSAV.utils.Settings($(".jsavsettings"));
+  var settings = config.getSettings();
 
   var arraySize = 10,
       initialArray = [],
