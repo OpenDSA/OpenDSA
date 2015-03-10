@@ -216,6 +216,14 @@ function findLeftmostInnermostBetaRedex (e) {
 	}
     }
 }
+function alreadySeen(str,array) {
+    for(var i=0; i<array.length-1; i++) {
+	if (str === array[i][0]) {
+	    return true;
+	}
+    }
+    return false;
+}
 function reduceToNormalForm(e) {
     var output = [ ];
     var redex, redexStr, start, length, eStr, prefix, suffix, reducedStr;
@@ -228,7 +236,7 @@ function reduceToNormalForm(e) {
 	} else {
 	    numReductions += 1;
 	    if (numReductions > maxReductionSteps) {
-		output[0].push("Too many steps");
+		output[0].push("We stopped here because there were too many steps in the reduction.");
 		return output;
 	    }
 	    redexStr = printExp(redex);
@@ -237,10 +245,15 @@ function reduceToNormalForm(e) {
 	    start = eStr.indexOf(redexStr);
 	    prefix = eStr.substr(0,start);
 	    suffix = eStr.substr(start+length);
-	    reducedStr = printExp(beta(redex));
-	    output.push( [ prefix + reducedStr + suffix, 
+	    reducedStr = prefix + printExp(beta(redex)) + suffix;
+	    output.push( [ reducedStr, 
 			   myLength(eStr.substr(0,start)),
 			   myLength(eStr.substr(0,start+length-1)) ]);
+	    if (alreadySeen(reducedStr,output)) {
+		output[0].push("We stopped here because an infinite loop was detected.");
+		return output;
+	    }
+
 	    e = reduceLeftmostInnermostBetaRedex (e);
 	}
     }
@@ -370,6 +383,8 @@ function loadArray(arr,chars) {
     }
 }
 function startAV(exps) {
+  
+   
 /*
     for(var i=0; i<exps.length; i++) {
 	console.log( "'" + exps[i][0].length + "'" +
@@ -387,6 +402,7 @@ function startAV(exps) {
     var av = new JSAV("container");
     var numCols = Math.max.apply(null, exps.map(function(x) 
 						{ return myLength(x[0]); }));
+    
     var arr = av.ds.array(fillIn(1,numCols));
     loadArray(arr,mySplit(exps[0][0]));
     var oneChar = function(x) { return arr.value(x).length === 1; };
@@ -425,7 +441,7 @@ function startAV(exps) {
 	av.step();
     }
     if (exps[0].length > 1) {
-	av.label("<h2>We stop here because there were too many steps in the reduction.</h2>");
+	av.label("<h2>" + exps[0][1] + "</h2>");
     } else {
 	av.label("<h2>The \u03BB-expression above is in \u03B2-normal form.</h2>");
     }
