@@ -1,8 +1,6 @@
-/* global LAMBDA : true, parser */
-
-(function () {
-
 "use strict";
+/* global LAMBDA : true, parser */
+$(document).ready(function () {
 
     var maxReductionSteps = 15;
 
@@ -377,6 +375,28 @@ function startAV(exps) {
 		     exps[i][0]);
     }
 */
+
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [ ['$$', '$$'], ["\\[", "\\]"] ],
+          processEscapes: true
+        },
+        "HTML-CSS": {
+          scale: "80"
+        }
+      });
+      $('.avcontainer').on("jsav-message", function () {
+        // invoke MathJax to do conversion again
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+      });
+      $(".avcontainer").on("jsav-updatecounter", function () {
+        // invoke MathJax to do conversion again
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+      });
+    }
+
     var defaultCellStyle =  {"border": "none", "width" : "25px", 
 			     "min-width" : "25px", "box-shadow" : "none" };
     var oneCharWidth = 	{"width" : "8px", "min-width" : "5px" };
@@ -384,7 +404,7 @@ function startAV(exps) {
     var position = { anchor: 'left top', left: 0, top: 0 };
     var highlightCell = { "background-color" : "#89D" };
     var unhighlightCell = { "background-color" : "#FFF" };
-    var av = new JSAV("container");
+    var av = new JSAV($(".avcontainer"));
     var numCols = Math.max.apply(null, exps.map(function(x) 
 						{ return myLength(x[0]); }));
     var arr = av.ds.array(fillIn(1,numCols));
@@ -393,12 +413,12 @@ function startAV(exps) {
     var noChar = function(x) { return arr.value(x).length === 0; };
     arr.css(true, defaultCellStyle).css( oneChar, oneCharWidth)
     .css(noChar,emptyWidth);
-    av.umsg("<h2>Initial \u03BB-expression:</h2>");
+    av.umsg("<h2>Initial $\\lambda$-expression:</h2>");
     av.displayInit();
 
     for(var slide=1; slide<exps.length; slide++) {
 	// %%%%%%%%%%%%%%%% new slide %%%%%%%%%%%%%%%%%%%%%%%
-	av.umsg("<h2>[\u03B2-reduction #" + slide + 
+	av.umsg("<h2>[$\\beta$-reduction #" + slide + 
 		"] Find the leftmost innermost \u03B2-redex</h2>");
 	av.step();
 	// %%%%%%%%%%%%%%%% new slide %%%%%%%%%%%%%%%%%%%%%%%
@@ -433,5 +453,4 @@ function startAV(exps) {
 }
 
 LAMBDA.interpret = interpret; // make the interpreter public
-}());
-
+});

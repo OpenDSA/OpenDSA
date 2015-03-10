@@ -3,7 +3,7 @@ CONFIG_SCRIPT = tools/configure.py
 TARGET = build
 CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 CSSLINTFLAGS = --quiet --ignore=ids,adjoining-classes
-MINIMIZE = java -jar tools/yuicompressor-2.4.7.jar --nomunge
+MINIMIZE = uglifyjs
 
 .PHONY: all clean lint csslint jshint min CS2114 CS223 CS5114 CS3114 CS3114notes CS150 OpenDSA test testX IS allBooks nomin pull CPSC270S15 CS2401 COP3530 CS208 ECE252 Tutorial TDDD86_2014 S15 CSCI115
 
@@ -213,36 +213,36 @@ pull:
 
 lib/odsaUtils-min.js: lib/odsaUtils.js
 	@echo 'Minimizing lib/odsaUtils.js'
-	@$(MINIMIZE) lib/odsaUtils.js -o lib/odsaUtils-min.js
+	@$(MINIMIZE) lib/odsaUtils.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaUtils-min.js
 
 lib/site-min.css: lib/site.css
 	@echo 'Minimizing lib/site.css'
-	-@$(MINIMIZE) lib/site.css -o lib/site-min.css
+	-@$(MINIMIZE) lib/site.css --comments '/^!|@preserve|@license|@cc_on/i' > lib/site-min.css
 
 lib/odsaAV-min.js: lib/odsaAV.js
 	@echo 'Minimizing lib/odsaAV.js'
-	@$(MINIMIZE) lib/odsaAV.js -o lib/odsaAV-min.js
+	@$(MINIMIZE) lib/odsaAV.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaAV-min.js
 
 lib/odsaAV-min.css: lib/odsaAV.css
 	@echo 'Minimizing lib/odsaAV.css'
-	@$(MINIMIZE) lib/odsaAV.css -o lib/odsaAV-min.css
+	@$(MINIMIZE) lib/odsaAV.css --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaAV-min.css
 
 lib/odsaMOD-min.js: lib/odsaMOD.js
 	@echo 'Minimizing lib/odsaMOD.js'
-	@$(MINIMIZE) lib/odsaMOD.js -o lib/odsaMOD-min.js
+	@$(MINIMIZE) lib/odsaMOD.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaMOD-min.js
 
 lib/odsaMOD-min.css: lib/odsaMOD.css
 	@echo 'Minimizing lib/odsaMOD.css'
-	@$(MINIMIZE) lib/odsaMOD.css -o lib/odsaMOD-min.css
+	@$(MINIMIZE) lib/odsaMOD.css --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaMOD-min.css
 
 lib/gradebook-min.js: lib/gradebook.js
 	@echo 'Minimizing lib/gradebook.js'
-	@$(MINIMIZE) lib/gradebook.js -o lib/gradebook-min.js
+	@$(MINIMIZE) lib/gradebook.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/gradebook-min.js
 
 lib/gradebook-min.css: lib/gradebook.css
 	@echo 'Minimizing lib/gradebook.css'
-	@$(MINIMIZE) lib/gradebook.css -o lib/gradebook-min.css
+	@$(MINIMIZE) lib/gradebook.css --comments '/^!|@preserve|@license|@cc_on/i' > lib/gradebook-min.css
 
 lib/registerbook-min.js: lib/registerbook.js
 	@echo 'Minimizing lib/registerbook.js'
-	@$(MINIMIZE) lib/registerbook.js -o lib/registerbook-min.js
+	@$(MINIMIZE) lib/registerbook.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/registerbook-min.js
