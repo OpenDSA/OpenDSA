@@ -22,9 +22,10 @@
       config = ODSA.UTILS.loadConfig({'av_container': 'jsavcontainer'}),
       interpret = config.interpreter,
       code = config.code,
+      settings = config.getSettings(),
 
       // create a JSAV instance
-      av = new JSAV($("#jsavcontainer"), {autoresize: false});
+      av = new JSAV($("#jsavcontainer"), { autoresize: false, settings: settings });
 
   av.recorded(); // we are not recording an AV with an algorithm
 
