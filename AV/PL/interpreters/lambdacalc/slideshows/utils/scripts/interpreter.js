@@ -1,3 +1,7 @@
+"use strict";
+
+/* global require, console, exps, process */
+
 var absyn = require('./absyn');
 var interpreter = {};
 var parser = require('./grammar');
@@ -5,7 +9,7 @@ var util = require('util');
 
 (function (exports) {
 
-"use strict";
+
 
 /** takes in a VarExp and a lambda expression
  */
@@ -350,11 +354,10 @@ function loadArray(arr,chars) {
     }
 }
 function myEval(p) {
-
     if (absyn.isProgram(p)) {
 	return reduceToNormalForm( absyn.getProgramExp(p));
     } else {
-	console.log(( "The input is not a program."));
+	console.log("The input is not a program.");
     }
 }
 
@@ -425,12 +428,13 @@ function startAV(lambdaexp) {
 exports.interpret = interpret; // make the interpreter public
 }( interpreter));
 
+(function () {
 var a = interpreter.interpret( process.argv[2] );
 
 console.log( "[");
 if (a.length>0) {
-    console.log( "[ '" + a[0][0] + "' ]" 
-	       + (a.length > 1 ? "," : ""));
+    console.log( "[ '" + a[0][0] + "' ]" +
+	       (a.length > 1 ? "," : ""));
 }
 for(var i=1; i<a.length; i++) {
      var line = "[ '" + a[i][0] + "'";
@@ -444,4 +448,4 @@ for(var i=1; i<a.length; i++) {
     console.log(line);
 }
 console.log( "];\n");
-
+})();

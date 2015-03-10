@@ -4,6 +4,8 @@
 
 "use strict";
 
+    var maxReductionSteps = 15;
+
 /** takes in a VarExp and a lambda expression
  */
 function free(x,exp) {
@@ -217,12 +219,18 @@ function findLeftmostInnermostBetaRedex (e) {
 function reduceToNormalForm(e) {
     var output = [ ];
     var redex, redexStr, start, length, eStr, prefix, suffix, reducedStr;
+    var numReductions = 0;
     output.push( [ printExp(e) ] );
     while (true) {
 	redex = findLeftmostInnermostBetaRedex(e);
 	if (redex === "no beta redex") {
 	    return output;
 	} else {
+	    numReductions += 1;
+	    if (numReductions > maxReductionSteps) {
+		output[0].push("Too many steps");
+		return output;
+	    }
 	    redexStr = printExp(redex);
 	    eStr = printExp(e);
 	    length = redexStr.length;
@@ -416,8 +424,11 @@ function startAV(exps) {
 	    .css(true, unhighlightCell);
 	av.step();
     }
-    av.label("<h2>The \u03BB-expression above is in \u03B2-normal form.</h2>",
-	    { left: 230, top : 50 });
+    if (exps[0].length > 1) {
+	av.label("<h2>We stop here because there were too many steps in the reduction.</h2>");
+    } else {
+	av.label("<h2>The \u03BB-expression above is in \u03B2-normal form.</h2>");
+    }
     av.recorded();
 }
 

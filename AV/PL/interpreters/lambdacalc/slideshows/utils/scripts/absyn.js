@@ -1,8 +1,11 @@
+"use strict";
+
+/* global exports */
+
 var absyn = {};
 
-(function (exports){
 
-"use strict";
+(function (exports){
 
 function createProgram(e) {
     return ["Program", e]; 
