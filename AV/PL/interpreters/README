@@ -1,0 +1,15 @@
+SLang versions
+==============
+
+V 1.0
+===== 
+
++ applied lambda calculus with numbers and primitive operations +, *, add1
+
+Interpreter versions:
+     1.01 Initial proof of concept
+     1.02 Changes the front end: the grammar is now in a pop-up window
+                                 and button to hide/show the test cases
+     1.03 Changed internal data structures from objects to arrays 
+     1.04 removed all jshint errors by making absyn.js and env.js into
+          modules and many small adjustments
