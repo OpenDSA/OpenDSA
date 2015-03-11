@@ -1,5 +1,7 @@
 "use strict";
-/* global LAMBDA : true, parser */
+
+/* global LAMBDA : true, parser, MathJax */
+
 $(document).ready(function () {
 
     var maxReductionSteps = 15;
@@ -411,13 +413,13 @@ function startAV(exps) {
         MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
       });
     }
-
+    JSAV.ext.SPEED = 50;
     var defaultCellStyle =  {"border": "none", "width" : "25px", 
 			     "min-width" : "25px", "box-shadow" : "none" };
     var oneCharWidth = 	{"width" : "8px", "min-width" : "5px" };
     var emptyWidth = 	{"width" : "0px", "min-width" : "0px" };
     var position = { anchor: 'left top', left: 0, top: 0 };
-    var highlightCell = { "background-color" : "#89D" };
+    var highlightCell = { "background-color" : "#BCE" };
     var unhighlightCell = { "background-color" : "#FFF" };
     var av = new JSAV($(".avcontainer"));
     var numCols = Math.max.apply(null, exps.map(function(x) 
@@ -429,12 +431,12 @@ function startAV(exps) {
     var noChar = function(x) { return arr.value(x).length === 0; };
     arr.css(true, defaultCellStyle).css( oneChar, oneCharWidth)
     .css(noChar,emptyWidth);
-    av.umsg("<h2>Initial $\\lambda$-expression:</h2>");
+    av.umsg("<h2>Initial &lambda;-expression:</h2>");
     av.displayInit();
 
     for(var slide=1; slide<exps.length; slide++) {
 	// %%%%%%%%%%%%%%%% new slide %%%%%%%%%%%%%%%%%%%%%%%
-	av.umsg("<h2>[$\\beta$-reduction #" + slide + 
+	av.umsg("<h2>[&beta;-reduction #" + slide + 
 		"] Find the leftmost innermost \u03B2-redex</h2>");
 	av.step();
 	// %%%%%%%%%%%%%%%% new slide %%%%%%%%%%%%%%%%%%%%%%%
