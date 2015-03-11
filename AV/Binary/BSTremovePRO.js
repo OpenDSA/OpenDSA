@@ -92,13 +92,12 @@ $(document).ready(function () {
     function highlightPath(root, node, undo) {
       var n = node;
       var css;
-      if (undo) {
-        css = {"stroke-width": "1", "stroke": "black"};
-      } else {
-        css = {"stroke-width": "4", "stroke": "blue"};
-      }
       while (n !== root) {
-        n.edgeToParent().css(css);
+        if (undo) {
+          n.edgeToParent().removeClass("blueline");
+	} else {
+          n.edgeToParent().addClass("blueline");
+	}
         n = n.parent();
       }
     }
