@@ -197,6 +197,55 @@ function reduceLeftmostInnermostBetaRedex (e) {
 	}	    
     }
 }
+function reduceLeftmostOutermostBetaRedex (e) {
+    var param, body, fn, arg, e2;
+    if (LAMBDA.absyn.isVarExp(e)) {
+	    return e;
+    } else if (LAMBDA.absyn.isLambdaAbs(e)) {
+	param = LAMBDA.absyn.getLambdaAbsParam(e);
+	body = reduceLeftmostOutermostBetaRedex(
+	    LAMBDA.absyn.getLambdaAbsBody(e));
+	return LAMBDA.absyn.createLambdaAbs(param,body);	
+    } else if (LAMBDA.absyn.isAppExp(e)) {
+	fn = LAMBDA.absyn.getAppExpFn(e);
+	arg = LAMBDA.absyn.getAppExpArg(e);
+	if (isBetaRedex(e)) {
+	    return beta(e);
+	} else {
+	    if (containsBetaRedex(fn)) {
+		e2 = reduceLeftmostOutermostBetaRedex(fn);
+		return LAMBDA.absyn.createAppExp(e2,arg);
+	    } else if (containsBetaRedex(arg)) {
+		return LAMBDA.absyn.createAppExp(
+		    fn,reduceLeftmostOutermostBetaRedex(arg));
+	    } else {
+		return e;
+	    }	    
+	}
+    }
+}
+function findLeftmostOutermostBetaRedex (e) {
+    var fn, arg;
+    if (LAMBDA.absyn.isVarExp(e)) {
+	return "no beta redex";
+    } else if (LAMBDA.absyn.isLambdaAbs(e)) {
+	return findLeftmostOutermostBetaRedex(LAMBDA.absyn.getLambdaAbsBody(e));
+    } else if (LAMBDA.absyn.isAppExp(e)) {
+	if (isBetaRedex(e)) {
+	    return e;
+	} else {
+	    fn = LAMBDA.absyn.getAppExpFn(e);
+	    arg = LAMBDA.absyn.getAppExpArg(e);
+	    if (containsBetaRedex(fn)) {
+		return findLeftmostOutermostBetaRedex(fn);
+	    } else if (containsBetaRedex(arg)) {
+		return findLeftmostOutermostBetaRedex(arg);
+	    } else {
+		return "no beta redex";
+	    }
+	}
+    }
+}    
 function findLeftmostInnermostBetaRedex (e) {
     var fn, arg;
     if (LAMBDA.absyn.isVarExp(e)) {
@@ -225,19 +274,25 @@ function alreadySeen(str,array) {
     }
     return false;
 }
-function reduceToNormalForm(e) {
+function reduceToNormalForm(e,order) {
+    var isApplicative = order === "applicative";
     var output = [ ];
     var redex, redexStr, start, length, eStr, prefix, suffix, reducedStr;
     var numReductions = 0;
     output.push( [ printExp(e) ] );
     while (true) {
-	redex = findLeftmostInnermostBetaRedex(e);
+	if (isApplicative) {
+	    redex = findLeftmostInnermostBetaRedex(e);
+	}  else {
+	    redex = findLeftmostOutermostBetaRedex(e);
+	}
 	if (redex === "no beta redex") {
 	    return output;
 	} else {
 	    numReductions += 1;
 	    if (numReductions > maxReductionSteps) {
-		output[0].push("We stopped here because there were too many steps in the reduction.");
+		output[0].push("We stopped here because there were " +
+			       "too many steps in the reduction.");
 		return output;
 	    }
 	    redexStr = printExp(redex);
@@ -251,11 +306,16 @@ function reduceToNormalForm(e) {
 			   myLength(eStr.substr(0,start)),
 			   myLength(eStr.substr(0,start+length-1)) ]);
 	    if (alreadySeen(reducedStr,output)) {
-		output[0].push("We stopped here because an infinite loop was detected.");
+		output[0].push("We stopped here because an infinite loop " +
+			       "was detected.");
 		return output;
 	    }
 
-	    e = reduceLeftmostInnermostBetaRedex (e);
+	     if (isApplicative) {
+		 e = reduceLeftmostInnermostBetaRedex (e);
+	     } else {
+		 e = reduceLeftmostOutermostBetaRedex (e);
+	     }
 	}
     }
 }
@@ -309,14 +369,14 @@ function evalExp(exp) {
 	    ")";
     }
 }
-function myEval(p) {
+function myEval(p,order) {
     if (LAMBDA.absyn.isProgram(p)) {
-	return reduceToNormalForm( LAMBDA.absyn.getProgramExp(p));
+	return reduceToNormalForm( LAMBDA.absyn.getProgramExp(p),order);
     } else {
 	window.alert( "The input is not a program.");
     }
 }
-function interpret(source) {
+function interpret(source, order) {
     var output='';
 
     try {
@@ -324,8 +384,8 @@ function interpret(source) {
             window.alert('Nothing to interpret: you must provide some input!');
 	} else {
 	    var ast = parser.parse(source);
-	    var value = myEval( ast );
-	    startAV(value);
+	    var value = myEval( ast, order );
+	    startAV(value,order);
 	    return value.join('\n');
         }
     } catch (exception) {
@@ -411,8 +471,8 @@ var parenChar = function(x) {
 	arr.value(x) === ' '; 
 };
 
-function startAV(exps) {
-
+function startAV(exps,order) {
+    var redexType = order === "applicative" ? "innermost" : "outermost";
     if (typeof MathJax !== 'undefined') {
       MathJax.Hub.Config({
         tex2jax: {
@@ -433,6 +493,7 @@ function startAV(exps) {
         MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
       });
     }
+    JSAV.init();
     JSAV.ext.SPEED = 50;
 
     var av = new JSAV($(".avcontainer"));
@@ -440,18 +501,21 @@ function startAV(exps) {
 						{ return myLength(x[0]); }));   
     arr = av.ds.array(fillIn(1,numCols));
     loadArray(mySplit(exps[0][0]));
+    
+
     setArrayCellsWidth();
+
     av.umsg("<h2>Initial \u03BB-expression:</h2>");
     av.displayInit();
 
     for(var slide=1; slide<exps.length; slide++) {
 	// %%%%%%%%%%%%%%%% new slide %%%%%%%%%%%%%%%%%%%%%%%
 	av.umsg("<h2>[&beta;-reduction #" + slide + 
-		"] Find the leftmost innermost \u03B2-redex</h2>");
+		"] Find the leftmost " + redexType + " \u03B2-redex</h2>");
 	av.step();
 	// %%%%%%%%%%%%%%%% new slide %%%%%%%%%%%%%%%%%%%%%%%
 	av.umsg("<h2>[\u03B2-reduction #" + slide + "] The leftmost " + 
-		"innermost \u03B2-redex is highlighted below</h2>");
+		  redexType + " \u03B2-redex is highlighted below</h2>");
 	loadArray(mySplit(exps[slide-1][0]));
 	setArrayCellsWidth(true,fillIn(exps[slide][1],exps[slide][2]));
 	av.step();

@@ -1,8 +1,11 @@
-<html>
+<!doctype html>
+
+<html lang="en">
 <head>
+  <meta charset="utf-8">
     <title>Lambda Calculus interpreter</title>
 
-    <link rel="stylesheet" href="../../../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+    <link rel="stylesheet" href="../../../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" />
 
 
     <style>
@@ -144,7 +147,7 @@
 <body>
 
 <div id="header">
-<h1><span style="padding-right: 50px">Applicative Order Reduction in the Lambda Calculus</span> <input type="button" value="Show Grammar" onclick="LAMBDA.openGrammarWindow()" /></h1>
+<h1><span style="padding-right: 50px">Lambda Calculus Interpreter</span> <input type="button" value="Show Grammar" onclick="LAMBDA.openGrammarWindow()" /></h1>
 </div>
 
 <div id="main">
@@ -158,12 +161,14 @@
 
 
 
-<br/><br/>
-
+<p><strong>Reduction strategy:</strong>
+<input type="radio" id="applicative" name="order" value="applicative" checked>Applicative Order&nbsp;
+<input type="radio" id="normal" name="order" value="normal">Normal Order
+</p>
 
 <input type="button" id="interpreterbutton" 
         value="Reduce the &lambda;-expression above"
-        onclick="LAMBDA.interpret(document.getElementById('interpreterinput').value);" /> 
+        onclick="LAMBDA.interpret(document.getElementById('interpreterinput').value, document.getElementById('applicative').checked ? 'applicative' : 'normal')" /> 
 <br /><br />
 
 
@@ -185,7 +190,7 @@
 
 <div class="avcontainer">
   <div class="jsavcontrols"></div>
-  <!--a id="settings" class="jsavsettings" href="#"--></a>
+  <!--a id="settings" class="jsavsettings" href="#"></a-->
   <span class="jsavcounter"></span>
   <p class="jsavoutput jsavline"></p>
   <div class="jsavcanvas"></div>
