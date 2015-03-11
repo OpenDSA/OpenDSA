@@ -300,7 +300,7 @@ Written by Junyang Chen and Cliff Shaffer
     if($("#jsav .jsavshutter")){
       $("#jsav .jsavshutter").remove();
     }
-    jsav = new JSAV("llistInsertPRO");
+    jsav = new JSAV("jsav");
     jsav.recorded();
 
     if($("#jsav path")){
@@ -422,7 +422,7 @@ Written by Junyang Chen and Cliff Shaffer
         <input id="reset" type="button" value="Reset" />
 		    <input id="NewNode" type="button" value="NewNode" />
 		    <input id="insert" type="button" value="Insert" />
-        <div id="llistInsertPRO" class="jsavcanvas"></div>
+        <div id="jsav" class="jsavcanvas"></div>
       </div>
       <div class="solution" data-type="custom">
         <div class="guess">

@@ -158,8 +158,7 @@ $(document).ready(function () {
     window.JSAV_EXERCISE_OPTIONS.feedback = "atend";
   }
 
-  var exercise = av.exercise(modelSolution, initialize, {
-    modelDialog: {width: 700}
-  });
+  var exercise = av.exercise(modelSolution, initialize,
+                             {modelDialog: {width: 700}});
   exercise.reset();
 });

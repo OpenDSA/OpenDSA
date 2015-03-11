@@ -63,6 +63,10 @@
   l.get(2).highlight();
   pseudo.unhighlight(1);
   pseudo.highlight(2);
+  l.get(3).edgeToPrev().addClass("dashline");
+  l.get(2).edgeToPrev().addClass("dashline");
+  l.get(2).edgeToNext().addClass("dashline");
+  l.get(1).edgeToNext().addClass("dashline");
   jsav.step();
 
   // Step 3
@@ -107,6 +111,8 @@
 
   // Step 8
   jsav.umsg('The node with value 8 is removed from the list. Decrement node count by 1.');
+  l.get(2).edgeToPrev().removeClass("dashline");
+  l.get(1).edgeToNext().removeClass("dashline");
   l.remove(2);
   l.get(1).edgeToNext().show();
   l.layout();

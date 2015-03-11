@@ -59,8 +59,7 @@ function arrowAround(node, type, options) {
       ]
     ], {
       'arrow-end': 'classic-wide-long',
-      'stroke-width': 2,
-      'stroke-dasharray': '-'
+      'stroke-width': 2
     });
   } else if (type === 'down') {
     arrow = jsav.g.polyline([
@@ -90,8 +89,7 @@ function arrowAround(node, type, options) {
       ]
     ], {
       'arrow-end': 'classic-wide-long',
-      'stroke-width': 2,
-      'stroke-dasharray': '-'
+      'stroke-width': 2
     });
   }
   return arrow;

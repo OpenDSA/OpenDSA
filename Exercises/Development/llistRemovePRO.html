@@ -340,7 +340,7 @@ Written by Junyang Chen and Cliff Shaffer
       $("#jsav").empty();
     }
 
-    jsav = new JSAV("llistRemovePRO");
+    jsav = new JSAV("jsav");
     // JSAV list	
     jsavList = jsav.ds.list({"nodegap": 30, "top": topMargin, left: leftMargin});
     jsavList.addFirst("null");
@@ -494,7 +494,7 @@ Written by Junyang Chen and Cliff Shaffer
           you want it to point to.</p> 
         <input id="reset" type="button" value="Reset" />
 		<input id="makenull" type="button" value="makenull" />
-        <div id="llistRemovePRO" class="jsavcanvas"></div>
+        <div id="jsav" class="jsavcanvas"></div>
       </div>
       <div class="solution" data-type="custom">
         <div class="guess">
