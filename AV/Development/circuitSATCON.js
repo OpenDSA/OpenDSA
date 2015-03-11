@@ -3,6 +3,15 @@
 $(document).ready(function () {
   var av_name = "circuitSATCON";
   // Load the config object with interpreter and code created by odsaUtils.js
+
+    $(".avcontainer").on("jsav-message" ,  function() {
+      // invoke MathJax to do conversion again
+      MathJax.Hub.Queue(["Typeset" , MathJax.Hub]);
+    });
+    $(".avcontainer").on("jsav-updatecounter" ,  function(){
+      // invoke MathJax to do conversion again 
+     MathJax.Hub.Queue(["Typeset" , MathJax.Hub]); });
+
   var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
@@ -11,36 +20,43 @@ $(document).ready(function () {
     var x,y,r,label1,label2,label3; 
     var gatelabel = new Array(7);
 
-
-    av.umsg("<br><b>Objective </b> <br><br><br><br>This slideshow introduces"+
+    
+    av.umsg("<br><b>Objective </b> ");
+    var nl1= av.label("This slideshow introduces"+
 " and explains the \"Circuit Satisfiability\" Problem."
-+"</b> <br><br><br> We start with some definitions  and background.");
++"</b> <br><br><br> We start with some definitions  and background.",{top:0,left:0});
 
 
     av.displayInit(); 
 
     av.step();
-    av.umsg("<br><b> Background </b><br><br><br>"+
-"A boolean value is a value drawn from the set {T, F}, where 'F' represents"
-+" FALSE and 'T' represents TRUE"); 
+    nl1.hide();
+    av.umsg("<br><b> Background </b>");
+    nl1=av.label("A boolean value is a value drawn from the set {T, F}, <br>where 'F' represents"
++" FALSE and 'T' represents TRUE",{top:-10,left:0}); 
     av.step();
 
  
-    av.umsg("<br><br><br> A boolean combinational element is any circuit "+
-"element that has a constant number of boolean inputs and outputs and "+
-"that performs a well-defined function.",{preserve:true}); 
+    var nl2=av.label("A boolean combinational element is any circuit "+
+"element that has a constant number of boolean inputs <br>and outputs and "+
+"that performs a well-defined function.",{top:60,left:0}); 
     av.step(); 
 
 
-    av.umsg("<br><br><br> The boolean combinational elements used in Circuit"+
-" Satisfiability Problem are known as <b>Logic Gates<b/>.",{preserve:true});
+   var nl3=av.label("The boolean combinational elements used in Circuit"+
+" Satisfiability Problem are known as <b>Logic Gates<b/>.",{top:130,left:0});
 
     av.step(); 
 
-    av.umsg("<br><br><br> The Logic Gates used for Circuit Satisfibiality "+
-"problem are <b>AND</b> (represented by symbol '.') , <b>OR</b> (represented "+
-"by symbol '+') and <b>NOT</b> (represented by symbol '^').",{preserve:true});
+    var nl4=av.label("The Logic Gates used for Circuit Satisfibiality "+
+"problem are <b>AND</b> (represented by symbol '$.$'),<br> <b>OR</b> (represented "+
+"by symbol '$+$') and <b>NOT</b> (represented by a bar '$\\overline{\\ \\ \\ }$').",{top:180,left:0});
+
     av.step();
+    nl1.hide();
+    nl2.hide();
+    nl3.hide();
+    nl4.hide();
 
     av.umsg("<b>The Truth Table for Logic Gates</b>");
 
@@ -53,7 +69,7 @@ $(document).ready(function () {
     notgate.css({"fill":"SlateBlue","opacity":0.75});
 
     label1 = av.label("The NOT gate",{left:x-50,top:y+50}); 
-    var data1 = [[" x ","^x "],
+    var data1 = [["$x$","$\\overline{x}$ "],
                  [" T "," F "],
                  [" F "," T "]]; 
     var table1 = new av.ds.matrix(data1,{style:"table",left:x-40,top:y+100,});
@@ -64,7 +80,7 @@ $(document).ready(function () {
     x+=225;
 
     label2 = av.label("The AND gate",{left:x-50,top:y+50}); 
-    var data2 = [[" x ","y "," x.y "],
+    var data2 = [[" $x$ ","$y$ "," $x.y$ "],
                  [" T "," T "," T "], 
                  [" T "," F "," F "],
                  [" F "," T "," F "],
@@ -81,7 +97,7 @@ $(document).ready(function () {
     x+=225;
 
     label3 = av.label("The OR gate",{left:x-50,top:y+50}); 
-    var data3 = [[" x "," y"," x+y "],
+    var data3 = [[" $x$ "," $y$"," $x$+$y$ "],
                  [" T "," T "," T "],
                  [" T "," F "," T "],
                  [" F "," T "," T "],
@@ -100,24 +116,28 @@ $(document).ready(function () {
     table1.hide();table2.hide(); table3.hide(); 
     board.clearGate(orgate); board.clearGate(notgate);board.clearGate(andgate); 
 
-    av.umsg("<br><b>Boolean Combinatorial Circuits</b><br><br><br>A boolean "+
-"combinational circuit consists of one or more boolean combinational elements "
-+"interconnected by <b>wires</b>."); 
+    av.umsg("<br><b>Boolean Combinatorial Circuits</b>");
+    nl1=av.label("A boolean combinational circuit consists of one or more "+
+"boolean combinational elements <br> interconnected by <b>wires</b>."
+,{top:-10,left:0}); 
 
     av.step(); 
 
-    av.umsg("<br><br><br>A wire can connect the output of one element to the "+
-"input of another, thereby providing the output value of the first element as "
-+"an input value of the second.",{preserve:true}); 
+    nl2=av.label("A wire can connect the output of one element to the "+
+"input of another, thereby providing the output <br>value of the first element as "
++"an input value of the second.",{top:70,left:0}); 
  
     av.step(); 
 
-    av.umsg("<br><br><br>If a wire is not connected to as input to any element"+
-", it is called the <b>circuit output</b>. For defining a circuit "+
+    nl3=av.label("If a wire is not connected to as input to any element"+
+", it is called the <b>circuit output</b>. <br><br>For defining a circuit "+
 "satisfiability problem, the number of circuit outputs is limited to <b>1</b>",
-{preserve:true}); 
+{top:150,left:0}); 
 
     av.step(); 
+    nl1.hide();
+    nl2.hide();
+    nl3.hide();
 
     av.umsg("<b>Example Circuit</b>"); 
     x = 100; y = 20; r = 25;
@@ -225,7 +245,8 @@ startpt[1]],[(endpt[0] + startpt[0])/2,endpt[1]]]);
     av.step();
 
     av.umsg("<b>Tabular representation of the circuit</b>"); 
-    var cdata = [[" ","A ^","B +","C ^","D .","E +","F +","G ."], 
+    var cdata = [[" ","$A^{\\overline{\\ \\ \\ \\ }}$","$B+$",
+"$C^{\\overline{\\ \\ \\ \\ }}$","$D\\ .$","$E+$","$F+$","$G\\ .$"], 
                  ["1"," "," "," "," "," "," "," "],
                  ["2"," "," "," "," "," "," "," "], 
                  ["3"," "," "," "," "," "," "," "], 
@@ -245,7 +266,8 @@ startpt[1]],[(endpt[0] + startpt[0])/2,endpt[1]]]);
     label1= av.label("The table has a row for each input wire"
 +" and a column for each gate",{left:10,top:230});  
     label2= av.label("Each item in the column header contains the name <br>and the "
-+"type of the gate. <br><br>For example 'A ^' indicates that <br>the gate labelled as 'A' "+
++"type of the gate. <br><br>For example '$A^{\\overline{\\ \\ \\ \\ }}$' indicates "+
+"that <br>the gate labelled as 'A' "+
 "is of type 'NOT'.",{left:10,top:260}); 
 
     av.step();
@@ -530,25 +552,31 @@ startpt[1]],[(endpt[0] + startpt[0])/2,endpt[1]]]);
     ctable.hide();
     label1.hide();
 
-    av.umsg("<br><b>Satisfiability of a Circuit</b> <br><br><br> The "+
-"set of boolean input values for a boolean combinatorial circuit is called "+
-"<b>Truth Assignment</b>"); 
+    av.umsg("<br><b>Satisfiability of a Circuit</b>");
+    nl1=av.label("The set of boolean input values for a boolean "
++"combinatorial circuit is called <b>Truth Assignment</b>",
+{left:0,top:0}); 
 
     av.step();
-    av.umsg("<br><br><br> If a truth assignment causes the output of a circuit"
-+" to be True, it is called a <b>satisfying assigment</b>",{preserve:true});
+    nl2=av.label("If a truth assignment causes the output of a circuit"
++" to be True, it is called a <b>satisfying assigment</b>",
+{left:0,top:50}); 
 
     av.step();
-    av.umsg("<br><br><br>A one-output boolean combinational circuit is "+
-"<b>satisfiable</b> if it has a satisfying assignment",{preserve:true});
+    nl3=av.label("A one-output boolean combinational circuit is "+
+"<b>satisfiable</b> if it has a satisfying assignment"
+,{left:0,top:100}); 
 
     av.step();
-
+    nl1.hide();
+    nl2.hide();
+    nl3.hide();
     av.umsg("<br><b>The Circuit Satisfiability Problem</b>");
-    av.umsg("<br><br><br>Given a boolean combinatorial circuit composed of "+
-"AND , OR and NOT gates , is the Circuit Satisfiable ? ",{preserve:true});
+    nl1=av.label("Given a boolean combinatorial circuit composed of "+
+"AND , OR and NOT gates , is the Circuit Satisfiable ? ",{top:-10,left:0});
     av.step();
 
+    nl1.hide();
     av.umsg("<b>Example of Circuit Satisfiability</b>");
     board.show();
     xlabel1.show();
