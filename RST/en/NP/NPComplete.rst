@@ -191,20 +191,15 @@ Given below are some problems that are NP Complete.
 Examples of NP-Complete Problems
 --------------------------------
 
-.. topic:: Problem
+.. topic:: CIRCUIT SATISFIABILITY PROBLEM 
 
-   Circuit Satisfiability Problem 
+  .. inlineav:: circuitSATCON ss
+     :output: show
 
-The following slideshow explains the Circuit Satisfiability Problem.
-
-
-.. inlineav:: circuitSATCON ss
-   :output: show
-
-In the above problem, given a particular assignment, while we can 
-quickly check whether the assignment satisfies the circuit or not,
-we have no easy way of knowing whether it has any satisfying 
-assignment.
+  In the above problem, given a particular assignment, while we can 
+  quickly check whether the assignment satisfies the circuit or not,
+  we have no easy way of knowing whether it has any satisfying 
+  assignment.
 
 
 .. topic:: Problem
