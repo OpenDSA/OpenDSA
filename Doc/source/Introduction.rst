@@ -17,7 +17,7 @@ system.
 AVs and exercises are typically built using the JavaScript Algorithm
 Visuailzation library (JSAV).
 Complete documentation for JSAV can be found at
-`http://jsav.io <http://jsav.io/>`_.
+http://jsav.io.
 
 If you are new to OpenDSA, it will help you to keep in mind as you
 look through this manual that it targets a lot of different things,

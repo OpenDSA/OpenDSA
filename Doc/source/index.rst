@@ -11,6 +11,7 @@ Table of Contents
    :maxdepth: 3
 
    Introduction
+   GettingStarted
    InstructorTools
    Configuration
    ModAuthor
