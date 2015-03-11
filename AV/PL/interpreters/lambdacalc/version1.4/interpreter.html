@@ -96,11 +96,48 @@
 
     .jsavcontainer {
 
-         width: 900px;
-         max-width: 900px;
+    width: 900px;
+    max-width: 900px;
    }
 
-    
+    .jsavnode {
+
+    width: 6px;
+    max-width: 6px;
+   }
+
+    ol.jsavarray .defaultCellStyle {
+        border: none;
+        box-shadow : none; 
+    }
+
+    ol.jsavarray .lambdaWidth {
+        width : 25px;
+        min-width : 25px;
+    }
+
+    ol.jsavarray .oneCharWidth {
+        width : 13px;
+        min-width : 13px;
+    }
+
+    ol.jsavarray .parenWidth {
+        width : 7px;
+        min-width : 7px;
+    }
+
+    ol.jsavarray .emptyWidth {
+        width : 0px;
+        min-width : 0px;
+    }
+
+    .highlightCell { 
+        background-color : #BCE;
+    }
+
+    .unhighlightCell { 
+        background-color : #FFF;
+    }
     </style>
 
 </head>
@@ -162,7 +199,7 @@
 <script src="../../../../../JSAV/lib/jquery.transit.js"></script>
 <script src="../../../../../JSAV/lib/raphael.js"></script>
 <script src="../../../../../JSAV/build/JSAV.js"></script>
-<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<!--script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script-->
   <script src="./scripts/init.js"></script>
   <script src="./scripts/grammar.js"></script>
   <script src="./scripts/absyn.js"></script>

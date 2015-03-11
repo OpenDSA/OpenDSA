@@ -5,6 +5,7 @@
 $(document).ready(function () {
 
     var maxReductionSteps = 15;
+    var arr;
 
 /** takes in a VarExp and a lambda expression
  */
@@ -374,7 +375,7 @@ function fillIn(start,end) {
 	return a;
     }
 }
-function loadArray(arr,chars) {   
+function loadArray(chars) {   
     for(var index=0; index<chars.length; index++) {
 	arr.value(index,chars[index]);
     }
@@ -382,16 +383,35 @@ function loadArray(arr,chars) {
 	arr.value(index,"");
     }
 }
-function startAV(exps) {
-  
-   
-/*
-    for(var i=0; i<exps.length; i++) {
-	console.log( "'" + exps[i][0].length + "'" +
-		     "'" + myLength(exps[i][0]) + "'" +
-		     exps[i][0]);
+function setArrayCellsWidth (highlight,range) {
+    arr.removeClass(true,"oneCharWidth")
+	.removeClass(true,"emptyWidth")
+	.removeClass(true,"lambdaWidth")
+	.removeClass(true,"parenWidth")
+	.addClass(true, "defaultCellStyle")
+	.addClass(oneChar, "oneCharWidth")
+	.addClass(noChar,"emptyWidth")
+	.addClass(lambdaChar,"lambdaWidth")
+	.addClass(parenChar,"parenWidth");
+    if (highlight !== undefined) {
+	if (highlight) {
+	    arr.removeClass(true,"unhighlightCell")
+		.addClass(range, "highlightCell");
+	} else {
+	    arr.removeClass(true,"highlightCell")
+		.addClass(range, "unhighlightCell");
+	}
     }
-*/
+}
+var oneChar = function(x) { return arr.value(x).length === 1; };
+var noChar = function(x) { return arr.value(x).length === 0; };
+var lambdaChar = function(x) { return arr.value(x).length === 3; };
+var parenChar = function(x) { 
+    return arr.value(x) === '(' || arr.value(x) === ')' ||
+	arr.value(x) === ' '; 
+};
+
+function startAV(exps) {
 
     if (typeof MathJax !== 'undefined') {
       MathJax.Hub.Config({
@@ -414,24 +434,14 @@ function startAV(exps) {
       });
     }
     JSAV.ext.SPEED = 50;
-    var defaultCellStyle =  {"border": "none", "width" : "25px", 
-			     "min-width" : "25px", "box-shadow" : "none" };
-    var oneCharWidth = 	{"width" : "8px", "min-width" : "5px" };
-    var emptyWidth = 	{"width" : "0px", "min-width" : "0px" };
-    var position = { anchor: 'left top', left: 0, top: 0 };
-    var highlightCell = { "background-color" : "#BCE" };
-    var unhighlightCell = { "background-color" : "#FFF" };
+
     var av = new JSAV($(".avcontainer"));
     var numCols = Math.max.apply(null, exps.map(function(x) 
-						{ return myLength(x[0]); }));
-    
-    var arr = av.ds.array(fillIn(1,numCols));
-    loadArray(arr,mySplit(exps[0][0]));
-    var oneChar = function(x) { return arr.value(x).length === 1; };
-    var noChar = function(x) { return arr.value(x).length === 0; };
-    arr.css(true, defaultCellStyle).css( oneChar, oneCharWidth)
-    .css(noChar,emptyWidth);
-    av.umsg("<h2>Initial &lambda;-expression:</h2>");
+						{ return myLength(x[0]); }));   
+    arr = av.ds.array(fillIn(1,numCols));
+    loadArray(mySplit(exps[0][0]));
+    setArrayCellsWidth();
+    av.umsg("<h2>Initial \u03BB-expression:</h2>");
     av.displayInit();
 
     for(var slide=1; slide<exps.length; slide++) {
@@ -442,11 +452,8 @@ function startAV(exps) {
 	// %%%%%%%%%%%%%%%% new slide %%%%%%%%%%%%%%%%%%%%%%%
 	av.umsg("<h2>[\u03B2-reduction #" + slide + "] The leftmost " + 
 		"innermost \u03B2-redex is highlighted below</h2>");
-	loadArray(arr,mySplit(exps[slide-1][0]));
-	arr.css(true, defaultCellStyle)
-	    .css(oneChar, oneCharWidth)
-	    .css(noChar,emptyWidth)
-	    .css(fillIn(exps[slide][1],exps[slide][2]), highlightCell);
+	loadArray(mySplit(exps[slide-1][0]));
+	setArrayCellsWidth(true,fillIn(exps[slide][1],exps[slide][2]));
 	av.step();
 	// %%%%%%%%%%%%%%%% new slide %%%%%%%%%%%%%%%%%%%%%%%
 	av.clearumsg();
@@ -456,10 +463,8 @@ function startAV(exps) {
 	// %%%%%%%%%%%%%%%% new slide %%%%%%%%%%%%%%%%%%%%%%%
 	av.umsg("<h2>[\u03B2-reduction #" + slide +
 		"] Completed the \u03B2-reduction</h2>");
-	loadArray(arr,mySplit(exps[slide][0]));
-	arr.css(true, defaultCellStyle).css(oneChar, oneCharWidth)
-	    .css(noChar,emptyWidth)
-	    .css(true, unhighlightCell);
+	loadArray(mySplit(exps[slide][0]));
+	setArrayCellsWidth(false,fillIn(exps[slide][1],exps[slide][2]));
 	av.step();
     }
     if (exps[0].length > 1) {
