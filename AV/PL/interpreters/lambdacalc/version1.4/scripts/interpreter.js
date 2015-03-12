@@ -1,6 +1,6 @@
 "use strict";
 
-/* global LAMBDA : true, parser, MathJax */
+/* global LAMBDA : true, parser, MathJax, console, exp */
 
 (function () {
 
@@ -317,22 +317,6 @@ function reduceToNormalForm(e,order) {
 	}
     }
 }
-/*
-function reduceToNormalForm(e) {
-    var output = [ ];
-    output.push(printExp(e));
-    var eprime;
-    while (true) {
-	eprime = reduceLeftmostInnermostBetaRedex(e);
-	if (printExp(eprime) === printExp(e)) {
-	    return output;
-	} else {
-	    output.push(printExp(eprime));
-	    e = eprime;	    
-	}
-    }
-}
-*/
 function printExp(exp) {
     if (LAMBDA.absyn.isVarExp(exp)) {
 	return LAMBDA.absyn.getVarExpId(exp);
@@ -539,23 +523,19 @@ function startAV(exps,order) {
 
 
 // this code is only used when creating slide shows
-    function interpretForSlideShow(source) {
+// for now, only applicative order reductions is supported
+// to support normal order, put the second argument (order) back in below
+// and modify the HTML templates for slide shows
+    function interpretForSlideShow(source,order) {
 	var output='';
 	try {
-	    var ast = parser.parse(source);
-	    return  myEvalForSlideShow( ast );
+	    return  myEval( parser.parse(source), order );
 	} catch (exception) {
             return "No output [Runtime error]";
 	}
 	return output;
     }
-    function myEvalForSlideShow(p) {
-	if (LAMBDA.absyn.isProgram(p)) {
-	    return reduceToNormalForm( LAMBDA.absyn.getProgramExp(p));
-	} else {
-	    console.log("The input is not a program.");
-	}
-    }
+
 // end of code for slide shows
 
 LAMBDA.interpret = interpret; // make the interpreter public
@@ -565,11 +545,14 @@ LAMBDA.interpretForSlideShow = interpretForSlideShow; // only used for slide sho
 // the code below is only used when creating slide shows
 if (typeof running_in_node !== 'undefined') {
     (function () {
-	var a = LAMBDA.interpretForSlideShow( exp );
+	var a = LAMBDA.interpretForSlideShow(exp, order);
 	console.log( "[");
 	if (a.length>0) {
-	    console.log( "[ '" + a[0][0] + "' ]" +
-			 (a.length > 1 ? "," : ""));
+	    console.log( "[ '" + a[0][0] + "'" +
+			 (a[0].length === 2 ? 
+			  ", '" + a[0][1] + "' ]" :
+			  " ]") +
+			 (a.length > 1 ? "," : "" ));
 	}
 	for(var i=1; i<a.length; i++) {
 	    var line = "[ '" + a[i][0] + "'";
