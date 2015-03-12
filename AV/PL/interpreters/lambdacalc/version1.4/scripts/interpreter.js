@@ -1,6 +1,6 @@
 "use strict";
 
-/* global LAMBDA : true, parser, MathJax, console, exp */
+/* global LAMBDA : true, parser, MathJax, console, exp, order */
 
 (function () {
 
@@ -540,6 +540,7 @@ function startAV(exps,order) {
 
 LAMBDA.interpret = interpret; // make the interpreter public
 LAMBDA.interpretForSlideShow = interpretForSlideShow; // only used for slide shows
+LAMBDA.printExp = printExp;
 })();
 
 // the code below is only used when creating slide shows
