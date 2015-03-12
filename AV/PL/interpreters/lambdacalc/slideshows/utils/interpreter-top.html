@@ -1,18 +1,18 @@
-<html>
+<!doctype html>
+
+<html lang="en">
 <head>
+  <meta charset="utf-8">
     <title>Lambda Calculus interpreter</title>
 
-    <link rel="stylesheet" href="../../../../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
-
-
-    <script type="text/javascript"
-	    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-   </script>
+    <link rel="stylesheet" href="../../../../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" />
 
 
     <style>
     html, body {
         margin: 0px;
+        background-color: #2AF;
+
     }
     h2 {
         text-align: center;
@@ -41,7 +41,6 @@
     #main {
         padding-top:20px;
         height: 100%;
-        background-color: #2AF;
         left-margin: 0px;
         text-align: center;
     }
@@ -67,7 +66,7 @@
          margin-left: 50px;
     }
 
-    #container {
+    .avcontainer {
 
       margin: auto;
       width: 70%;
@@ -101,12 +100,48 @@
 
     .jsavcontainer {
 
-         width: 900px;
-         max-width: 900px;
+    width: 900px;
+    max-width: 900px;
    }
 
-    
+    .jsavnode {
+
+    width: 6px;
+    max-width: 6px;
+   }
+
+    ol.jsavarray .defaultCellStyle {
+        border: none;
+        box-shadow : none; 
+    }
+
+    ol.jsavarray .lambdaWidth {
+        width : 25px;
+        min-width : 25px;
+    }
+
+    ol.jsavarray .oneCharWidth {
+        width : 13px;
+        min-width : 13px;
+    }
+
+    ol.jsavarray .parenWidth {
+        width : 7px;
+        min-width : 7px;
+    }
+
+    ol.jsavarray .emptyWidth {
+        width : 0px;
+        min-width : 0px;
+    }
+
+    .highlightCell { 
+        background-color : #BCE;
+    }
+
+    .unhighlightCell { 
+        background-color : #FFF;
+    }
     </style>
 
-
-  <script>
+    <script>
