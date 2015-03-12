@@ -4,43 +4,42 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Cliff Shaffer
+   :author: Sally Hamouda and Cliff Shaffer
    :satisfies: information flow in a binary tree
-   :topic: Information Flow in a Binary
+   :topic: Advanced Recursion
 
 
 Binary Tree Information Flow
 =============================
 
-Handling information flow between parts of a program can
-be a significant design challenge, especially when dealing with
-recursive functions such as tree traversals.
-
-In general, we can run into trouble either with passing in the correct
-information needed by the function to do its work,
-or with returning information to the recursive function's caller.
-We will see many examples throughout the book that illustrate methods
-for passing information in and out of recursive functions as they
-traverse a tree structure.
-
-We can categorize the type of information flow in  a binary tree into the following categories:
+Handling information flow in a recursive function can be a challenge.
+In any given function, we might need to be concerned with either or
+both of
+(1) passing in the correct information needed by the function to do
+its work,
+or (2) returning information to the recursive function's caller.
+There is also the issue that, when recursively processing a tree, we
+might not need to visit all nodes of the tree.
+We can categorize the types of information and control flow in a
+binary tree into the following categories:
 
  #. Local
  #. Collect-and-return
  #. Guided
  
-
-Some problems might include features from multiple types of those categories.
+Some problems might include features from multiple categories.
 
 Here are a few simple examples and exrecises on each category.
 
 Local
 -----
-Local traversal invloves going to each node in the tree and do some operation. 
-In this type, there is no information flow is going between the binary tree nodes. 
-For example, incrementing all the node values in a binary tree by one. 
-
-Practice the local information flow through the following programming exercises
+Local traversal invloves going to each node in the tree to do some
+operation.
+Such functions, need no information flow between the binary tree
+nodes.
+An example would be incrementing the value for all nodes in a binary
+tree by one.
+The following exercise lets you practice local information flow.
 
 .. avembed:: Exercises/RecurTutor2/BinaryTreeLocalSumm.html ka
 
@@ -48,8 +47,10 @@ Practice the local information flow through the following programming exercises
 Collect-and-return
 ------------------
 
-Collect-and-return requires that we communicate information back up the tree to the end user. 
-Simple examples, sum the values of all the nodes, or count the nodes of a tree.
+Collect-and-return requires that we communicate information back up
+the tree to the caller.
+Simple examples are to sum the values of all the nodes, or count the
+nodes of a tree.
 
 .. topic:: Example
 

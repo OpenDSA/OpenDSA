@@ -25,18 +25,25 @@
   <div class="problems">
     <div> <!-- Supresses answer box -->
       <p class="problem" id = "test">
-Diameter of a tree is the longest path between two leaf nodes in a tree. 
-The following figures show that the diameter of the tree would be the maximum of these:
-diameter of left subtree, diameter of right subtree or path that goes through the root
-i.e. height of left subtree + height of right subtree + 1.
-The first figure shows a diameter of 6 through the root. While the second figure shows
-a diameter of 5 not through the root.
-<p align ="center"> <img src= "../../RST/Images/btdiameter1.png" width="161" height="144"> 
-<img src= "../../RST/Images/btdiameter2.png" width="184" height="144"> 
- </p>
-Add appropriate lines of code to the following function skeleton so that the function will 
-recursively find the diameter of the binary tree pointed at by "root".
-Note: you have to use the given height function without any changes.<br />
+      Diameter of a tree is the longest path between two leaf nodes in
+      a tree.
+      The following figures show that the diameter of the tree would
+      be the maximum of these:
+      diameter of left subtree, diameter of right subtree or path that
+      goes through the root, that is, the height of left subtree +
+      height of right subtree + 1. 
+      The first figure shows a diameter of 6 through the root.
+      The second figure shows a diameter of 5 not through the root.</p>
+
+      <p align ="center"> <img src= "../../RST/Images/btdiameter1.png"
+      width="161" height="144">
+      <img src= "../../RST/Images/btdiameter2.png" width="184" height="144"> 
+      </p>
+
+      <p>Write a recursive function to find the diameter of the binary
+      tree pointed at by "root". 
+      Note: you have to use the given height function without any
+      changes.</p>
 
     <textarea  id="codeTextarea">
 int btDiameter(BinNode root)

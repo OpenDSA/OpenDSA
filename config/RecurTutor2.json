@@ -83,19 +83,19 @@
         }
       },
       
-     "RecurTutor2/BinaryTreeTrvprob": {
+      "RecurTutor2/BinaryTreeTrvprob": {
         "long_name": "Binary Tree  Common Traversal Problems",
         "exercises": {        
-           "BinaryTreeMistakesCON": {
+          "BinaryTreeMistakesCON": {
             "long_name": "Binary Tree Common Mistakes",
             "required": true,
             "points": 1.0,
             "threshold": 0.90
-           }
-         }
+          }
+        }
       },
      
-        "RecurTutor2/BinaryTreeInfFlw": {
+      "RecurTutor2/BinaryTreeInfFlw": {
         "long_name": "Binary Tree Information Flow",
         "exercises": {
           "BinaryTreeClctNrtrnSumm": {
@@ -114,7 +114,7 @@
           }
         }
       },
-     "RecurTutor2/BinaryTreeGuidedInfFlw": {
+      "RecurTutor2/BinaryTreeGuidedInfFlw": {
         "long_name": "Binary Tree Guided Information Flow",
         "exercises": {
           "IneffBinaryTreeRangeCON": {
@@ -122,7 +122,7 @@
             "required": true,
             "points": 1.0,
             "threshold": 0.90
-           },
+          },
           "BinaryTreeGuidedSumm": {
             "long_name": "Binary Tree Guided Traversal Exercises",
             "required": true,
@@ -132,7 +132,7 @@
           }
         }
       },
-     "RecurTutor2/MultipleBinaryTrees": {
+      "RecurTutor2/MultipleBinaryTrees": {
         "long_name": "Multiple Binary Trees",
         "exercises": {
           "MultipleBinaryTreesSumm": {
@@ -144,7 +144,7 @@
           }
         }
       }, 
-     "RecurTutor2/BinaryTreeSumm": {
+      "RecurTutor2/BinaryTreeSumm": {
         "long_name": "Binary Tree Summary Exercises",
         "exercises": {
           "BinaryTreeSumm": {
@@ -156,11 +156,12 @@
           }
         }
       },   
-     "RecurTutor2/recSorting": {
+      "RecurTutor2/recSorting": {
         "long_name": "Recursive Sorting",
         "exercises": {}
-      },  
-     "Appendix": {
+      }
+    },
+    "Appendix": {
       "Glossary": {
         "long_name": "Glossary",
         "exercises": {}
@@ -171,6 +172,4 @@
       }
     }
   }
- }
 }
-

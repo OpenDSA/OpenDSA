@@ -188,8 +188,6 @@ This property says that for each node sum of its left and
 right children should be equal to node value.    In this specific problem you will need to
 explicitly check on the children if the children are null or not and check on their values.
 
-In summary, those are the common mistakes you should avoid doing:
-
 .. inlineav:: BinaryTreeMistakesCON ss
    :output: show
 
