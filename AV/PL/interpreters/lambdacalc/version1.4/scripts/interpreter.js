@@ -2,7 +2,7 @@
 
 /* global LAMBDA : true, parser, MathJax */
 
-$(document).ready(function () {
+(function () {
 
     var maxReductionSteps = 15;
     var arr;
@@ -55,9 +55,7 @@ function freeVars(exp) {
 	    return bodyVars.filter(function(x) { return  x !== v; });
 	}	
     } else if (LAMBDA.absyn.isAppExp(exp)) {
-	return freeVars(LAMBDA.absyn.getAppExpFn(exp))
-	    .concat(freeVars(LAMBDA.absyn.getAppExpArg(exp)))
-	    .reduce(function(a,x) { 
+	return freeVars(LAMBDA.absyn.getAppExpFn(exp)).concat(freeVars(LAMBDA.absyn.getAppExpArg(exp))).reduce(function(a,x) { 
 		if (a.indexOf(x)===-1) { 
 		    a.push(x); return a;} else { return a; } },
 		    []);
@@ -444,22 +442,22 @@ function loadArray(chars) {
     }
 }
 function setArrayCellsWidth (highlight,range) {
-    arr.removeClass(true,"oneCharWidth")
-	.removeClass(true,"emptyWidth")
-	.removeClass(true,"lambdaWidth")
-	.removeClass(true,"parenWidth")
-	.addClass(true, "defaultCellStyle")
-	.addClass(oneChar, "oneCharWidth")
-	.addClass(noChar,"emptyWidth")
-	.addClass(lambdaChar,"lambdaWidth")
-	.addClass(parenChar,"parenWidth");
+    arr.removeClass(true,"oneCharWidth");
+    arr.removeClass(true,"emptyWidth");
+    arr.removeClass(true,"lambdaWidth");
+    arr.removeClass(true,"parenWidth");
+    arr.addClass(true, "defaultCellStyle");
+    arr.addClass(oneChar, "oneCharWidth");
+    arr.addClass(noChar,"emptyWidth");
+    arr.addClass(lambdaChar,"lambdaWidth");
+    arr.addClass(parenChar,"parenWidth");
     if (highlight !== undefined) {
 	if (highlight) {
-	    arr.removeClass(true,"unhighlightCell")
-		.addClass(range, "highlightCell");
+	    arr.removeClass(true,"unhighlightCell");
+	    arr.addClass(range, "highlightCell");
 	} else {
-	    arr.removeClass(true,"highlightCell")
-		.addClass(range, "unhighlightCell");
+	    arr.removeClass(true,"highlightCell");
+	    arr.addClass(range, "unhighlightCell");
 	}
     }
 }
@@ -539,5 +537,52 @@ function startAV(exps,order) {
     av.recorded();
 }
 
+
+// this code is only used when creating slide shows
+    function interpretForSlideShow(source) {
+	var output='';
+	try {
+	    var ast = parser.parse(source);
+	    return  myEvalForSlideShow( ast );
+	} catch (exception) {
+            return "No output [Runtime error]";
+	}
+	return output;
+    }
+    function myEvalForSlideShow(p) {
+	if (LAMBDA.absyn.isProgram(p)) {
+	    return reduceToNormalForm( LAMBDA.absyn.getProgramExp(p));
+	} else {
+	    console.log("The input is not a program.");
+	}
+    }
+// end of code for slide shows
+
 LAMBDA.interpret = interpret; // make the interpreter public
-});
+LAMBDA.interpretForSlideShow = interpretForSlideShow; // only used for slide shows
+})();
+
+// the code below is only used when creating slide shows
+if (typeof running_in_node !== 'undefined') {
+    (function () {
+	var a = LAMBDA.interpretForSlideShow( exp );
+	console.log( "[");
+	if (a.length>0) {
+	    console.log( "[ '" + a[0][0] + "' ]" +
+			 (a.length > 1 ? "," : ""));
+	}
+	for(var i=1; i<a.length; i++) {
+	    var line = "[ '" + a[i][0] + "'";
+	    for (var j = 1; j<a[i].length; j++) {
+		line = line + ", " + a[i][j];
+	    }
+	    line = line + "]";
+	    if (i < a.length-1) {
+		line = line + ",";
+	    }
+	    console.log(line);
+	}
+	console.log( "];\n");
+    })();
+
+}
