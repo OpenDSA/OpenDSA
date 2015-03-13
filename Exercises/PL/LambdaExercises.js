@@ -3,6 +3,10 @@ var jsav, expr1, str, arr, ans, opt, strArr, ansArr, varArr, optArr, var1, var2,
 var question = {};
 var L = LAMBDA;
 
+function getAnswerSyntaxTF() {
+    console.log(question.answer);
+    return question.answer;
+}
 function pickRndCharacter(c,s) {
     var list = s.split("").map(function (e,i) { return (e===c ? i : -1) ; });
     list = list.filter(function (x) { return x >= 0; });
@@ -48,11 +52,13 @@ function addParens(s) {
 function getSyntaxError(minDepth,maxDepth,vs) {
     var s = L.printExp( L.getRndExp(1,minDepth,maxDepth,vs,""));
     var rnd = L.getRnd(1,2);
+    question.answer = "True";
     switch (rnd) {
     case 1: 
 	if (s.indexOf('(') !== -1) {
             console.log("removed parens");
 	    s = removeParenPair(s);
+	    question.answer = "False";
 	}
 	//  leave s unchanged if it does not contain any parens
 	break;
@@ -60,6 +66,7 @@ function getSyntaxError(minDepth,maxDepth,vs) {
 	if (s.indexOf('.') !== -1) {
             console.log("removed dot");
 	    s = removeDot(s);
+	    question.answer = "False";
 	}
 	//  leave s unchanged if it does not contain any dot
 	break;
@@ -80,6 +87,7 @@ init_alpha = function()
     if (L.getRnd(0,1) === 0) {
 	// syntactically correct lambda exp
 	exp = L.printExp( L.getRndExp(1,minDepth,maxDepth,vs,""));
+	question.answer = "True";
     } else {
 	exp = getSyntaxError(minDepth,maxDepth,vs);
     }
