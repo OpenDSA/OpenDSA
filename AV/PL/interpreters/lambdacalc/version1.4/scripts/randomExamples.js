@@ -70,6 +70,7 @@
     }
 
 LAMBDA.getRndExp = getRndExp;
+LAMBDA.getRnd = getRnd;
 })();
 
 /*
