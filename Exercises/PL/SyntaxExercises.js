@@ -5,9 +5,69 @@
 var question = {};
 var L = LAMBDA;
 
+
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                 code for SyntaxTF exercise
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+// Initialize Alpha Multiple Choice Exercises.
+function initSyntaxTF()
+{
+    var vs = "uvwxyz";
+    var maxDepth = 8;
+    var minDepth = 6;
+    var exp;
+    if (L.getRnd(0,1) === 0) {
+	// syntactically correct lambda exp
+	exp = L.printExp( L.getRndExp(1,minDepth,maxDepth,vs,""));
+	question.answer = "True";
+    } else {
+	exp = getSyntaxError(minDepth,maxDepth,vs);
+    }
+    var jsav = new JSAV("jsav", {"animationMode": "none"});
+    jsav.code(exp, {lineNumbers: false});
+
+    question.statement = exp;
+}
 function getAnswerSyntaxTF() {
     return question.answer;
 }
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                 code for SyntaxTF exercise
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+function initSyntaxMC()
+{
+    var vs = "uvwxyz";
+    var maxDepth = 8;
+    var minDepth = 6;
+    var exp;
+/*
+    if (L.getRnd(0,1) === 0) {
+	// syntactically correct lambda exp
+	exp = L.printExp( L.getRndExp(1,minDepth,maxDepth,vs,""));
+	question.answer = "True";
+    } else {
+	exp = getSyntaxError(minDepth,maxDepth,vs);
+    }
+    var jsav = new JSAV("jsav", {"animationMode": "none"});
+    jsav.code(exp, {lineNumbers: false});
+
+    question.statement = exp;
+*/
+
+    var jsav = new JSAV("jsav", {"animationMode": "none"});
+    jsav.code("hello tere\n\n\nfdsa\n\nfda\n", {lineNumbers: false});
+
+
+}
+function getAnswerSyntaxMC() {
+    return "1";
+}
+
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        common code for SyntaxTF and SyntaxMC exercises
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
 function pickRndCharacter(c,s) {
     var list = s.split("").map(function (e,i) { return (e===c ? i : -1) ; });
     list = list.filter(function (x) { return x >= 0; });
@@ -88,23 +148,3 @@ function getSyntaxError(minDepth,maxDepth,vs) {
     }    
     return s;
 }
-// Initialize Alpha Multiple Choice Exercises.
-function initSyntaxTF()
-{
-    var vs = "uvwxyz";
-    var maxDepth = 8;
-    var minDepth = 6;
-    var exp;
-    if (L.getRnd(0,1) === 0) {
-	// syntactically correct lambda exp
-	exp = L.printExp( L.getRndExp(1,minDepth,maxDepth,vs,""));
-	question.answer = "True";
-    } else {
-	exp = getSyntaxError(minDepth,maxDepth,vs);
-    }
-    var jsav = new JSAV("jsav", {"animationMode": "none"});
-    jsav.code(exp, {lineNumbers: false});
-
-    question.statement = exp;
-}
-
