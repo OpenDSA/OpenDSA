@@ -5,65 +5,6 @@
 var question = {};
 var L = LAMBDA;
 
-
-/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                 code for SyntaxTF exercise
-   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
-// Initialize Alpha Multiple Choice Exercises.
-function initSyntaxTF()
-{
-    var vs = "uvwxyz";
-    var maxDepth = 8;
-    var minDepth = 6;
-    var exp;
-    if (L.getRnd(0,1) === 0) {
-	// syntactically correct lambda exp
-	exp = L.printExp( L.getRndExp(1,minDepth,maxDepth,vs,""));
-	question.answer = "True";
-    } else {
-	exp = getSyntaxError(minDepth,maxDepth,vs);
-    }
-    var jsav = new JSAV("jsav", {"animationMode": "none"});
-    jsav.code(exp, {lineNumbers: false});
-
-    question.statement = exp;
-}
-function getAnswerSyntaxTF() {
-    return question.answer;
-}
-/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                 code for SyntaxTF exercise
-   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
-
-function initSyntaxMC()
-{
-    var vs = "uvwxyz";
-    var maxDepth = 8;
-    var minDepth = 6;
-    var exp;
-/*
-    if (L.getRnd(0,1) === 0) {
-	// syntactically correct lambda exp
-	exp = L.printExp( L.getRndExp(1,minDepth,maxDepth,vs,""));
-	question.answer = "True";
-    } else {
-	exp = getSyntaxError(minDepth,maxDepth,vs);
-    }
-    var jsav = new JSAV("jsav", {"animationMode": "none"});
-    jsav.code(exp, {lineNumbers: false});
-
-    question.statement = exp;
-*/
-
-    var jsav = new JSAV("jsav", {"animationMode": "none"});
-    jsav.code("hello tere\n\n\nfdsa\n\nfda\n", {lineNumbers: false});
-
-
-}
-function getAnswerSyntaxMC() {
-    return "1";
-}
-
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         common code for SyntaxTF and SyntaxMC exercises
    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
@@ -148,3 +89,83 @@ function getSyntaxError(minDepth,maxDepth,vs) {
     }    
     return s;
 }
+
+
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                 code for SyntaxTF exercise
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+// Initialize Alpha Multiple Choice Exercises.
+function initSyntaxTF()
+{
+    var vs = "uvwxyz";
+    var maxDepth = 8;
+    var minDepth = 6;
+    var exp;
+    if (L.getRnd(0,1) === 0) {
+	// syntactically correct lambda exp
+	exp = L.printExp( L.getRndExp(1,minDepth,maxDepth,vs,""));
+	question.answer = "True";
+    } else {
+	exp = getSyntaxError(minDepth,maxDepth,vs);
+    }
+    var jsav = new JSAV("jsav", {"animationMode": "none"});
+    jsav.code(exp, {lineNumbers: false});
+
+    question.statement = exp;
+}
+function getAnswerSyntaxTF() {
+    return question.answer;
+}
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                 code for SyntaxTF exercise
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+function isNew(arr) {
+    var exp = arr[arr.length-1];
+    for(var i=0; i<arr.length-1; i++) {
+	if (arr[i] === exp) {
+	    return false;
+	}
+    }
+    return true;
+}
+function initSyntaxMC()
+{
+    var vs = "uvwxyz";
+    var maxDepth = 8;
+    var minDepth = 6;
+    var exp;
+    var numCorrect = 0;
+    var exps = [ ];
+    var isCorrect;
+
+
+    while (exps.length < 4) {	
+	if (L.getRnd(0,1) === 0) {
+	    // syntactically correct lambda exp
+	    exps.push( L.printExp( L.getRndExp(1,minDepth,maxDepth,vs,"")) );
+	    isCorrect = true;
+	} else {
+	    exps.push( getSyntaxError(minDepth,maxDepth,vs) );
+	    isCorrect = false;
+	}
+
+	if (isNew(exps)) {
+	    numCorrect += isCorrect ? 1 : 0;
+	} else {
+	    exps.pop();
+	}
+    }
+
+    question.answer = String(numCorrect);
+
+    var jsav = new JSAV("jsav",{"animationMode": "none"});
+    jsav.code(exps.join("\n"), {lineNumbers: false});
+
+
+}
+function getAnswerSyntaxMC() {
+    console.log(question.answer);
+    return question.answer;
+}
+
