@@ -63,8 +63,23 @@ are included for credit, and various other aspects of module use are
 defined with the
 :ref:`Configuration system <Configuration>`.
 
-Style Issues
-------------
+Math and Symbol Escapes
+-----------------------
+
+All equations within a module are created using LaTeX syntax embedded
+in a ``:math:`` inline directive.
+This will be converted to appropriate math layout in the resulting
+HTML file.
+Note that due to various interactions between reStructuredText and
+MathJax (which does the LaTeX conversion within an HTML page, you have
+to use a double backslash for escaping the dollar sign symbol, such
+as::
+
+   This costs \\$5.00.
+
+
+Math and Code
+-------------
 
 One of the hardest things when writing modules is making sure
 that all of the variables and expressions are marked up correctly.
@@ -120,21 +135,6 @@ the filename.
 Note that in the ``.json`` file, a given section of the ``code`` block
 should match the subdirectory name within the ``SourceCode`` directory
 for that language.
-
-
-Math and Symbol Escapes
------------------------
-
-All equations within a module are created using LaTeX syntax embedded
-in a ``:math:`` inline directive.
-This will be converted to appropriate math layout in the resulting
-HTML file.
-Note that due to various interactions between reStructuredText and
-MathJax (which does the LaTeX conversion within an HTML page, you have
-to use a double backslash for escaping the dollar sign symbol, such
-as::
-
-   This costs \\$5.00.
 
 
 Creating Course Notes

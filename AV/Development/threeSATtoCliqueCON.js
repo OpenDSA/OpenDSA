@@ -75,7 +75,7 @@ $(document).ready(function () {
 ,{top:y,left:x}).css({"color":"SteelBlue"}); 
   label4.show();
 
-  var  g1 = av.ds.graph({width: 450, height: 450,layout: "manual", directed: false,top:50,left:200});
+  var  g1 = av.ds.graph({width: 450, height: 450, layout: "manual", directed: false, top: 50, left: 200, autoresize: false});
   x=0;
   y=0;
   var x21 = g1.addNode("$\\overline{x_1}$", {"left": x+100, "top": y}).css({"background-color":"SeaGreen"});

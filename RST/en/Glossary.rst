@@ -1043,6 +1043,14 @@ Glossary
    DSA
       Abbreviation for Data Structures and Algorithms.
 
+   dynamic
+      Something that is changes (in contrast to :term:`static`).
+      In computer programming, dynamic normally refers to something
+      that happens at run time.
+      For example, run-time analysis is analysis of the program's
+      behavior, as opposed to its (static) text or structure
+      Dynamic binding or dynamic memory allocation occurs at run time.
+
    dynamic allocation
       The act of creating an object from :term:`free store`.
       In C++, Java, and JavaScript, this is done using the ``new``
@@ -3269,9 +3277,6 @@ Glossary
    spatial
       Referring to a position in space.
 
-   spatial data
-      Any object or record that has a position (in space).
-
    spatial application
       An application what has spatial aspects.
       In particular, an application that stores records that need to
@@ -3280,12 +3285,18 @@ Glossary
    spatial attribute
       An attribute of a record that has a position in space, such as
       the coordinate.
+      This is typically in two or more dimensions.
+
+   spatial data
+      Any object or record that has a position (in space).
 
    spatial data structure
-      A data structure designed to support efficient processing when a
+      A :term:`data structure` designed to support efficient
+      processing when a 
       :term:`spatial attribute` is used as the key.
       In particular, a data structure that supports efficient search
-      by location, or finds all records within a given region.
+      by location, or finds all records within a given region in two
+      or more dimensions.
       Examples of spatial data structures to store point data include
       the :term:`bintree`, the :term:`PR quadtree` and the
       :term:`kd tree`.
@@ -3333,6 +3344,14 @@ Glossary
       Some designs make this impossible to occur.
       Other designs make it possible in an attempt to deliver greater
       performance.
+
+   static
+      Something that is not changing (in contrast to :term:`dynamic`).
+      In computer programming, static normally refers to something
+      that happens at compile time.
+      For example, static analysis is analysis of the program's text
+      or structure, as opposed to its run-time behavior.
+      Static binding or static memory allocation occurs at compile time.
 
    Strassen's algorithm
       A :term:`recursive <recursion>` algorithm for matrix

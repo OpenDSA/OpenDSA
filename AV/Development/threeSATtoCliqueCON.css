@@ -11,9 +11,11 @@
   height: 50px;
 }
 
-.jsavarray .jsavindex{
+.jsavgraphnode {
 	min-width:30px;
 	min-height:30px;
+	max-width:30px;
+	max-height:30px;
 	height:30px;
 	line-height:30px;
         text-align:center;
