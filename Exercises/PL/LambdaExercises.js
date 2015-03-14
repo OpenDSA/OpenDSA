@@ -1,10 +1,11 @@
-var jsav, expr1, str, arr, ans, opt, strArr, ansArr, varArr, optArr, var1, var2, var3, rnd, lightArr, answerArr, guessArr;
+"use strict";
+
+/* global LAMBDA, console */
 
 var question = {};
 var L = LAMBDA;
 
 function getAnswerSyntaxTF() {
-    console.log(question.answer);
     return question.answer;
 }
 function pickRndCharacter(c,s) {
@@ -14,7 +15,7 @@ function pickRndCharacter(c,s) {
 		       
 }
 function findMatchingParen(s,index) {
-    var s = s.split("");
+    s = s.split("");
     var count = 0;
     for(var i=index+1; i<s.length; i++) {
 	if (s[i] === ')') {
@@ -44,19 +45,30 @@ function removeDot(s) {
 }
 function addParens(s) {
     var n = s.length;
-    var p1 = L.getRnd(0,n-1);
-
-    var p2 = L.getRnd(0,n-1);
-    return s.substring(0,dot) + " " + s.substring(dot+1);
+    var closing = n-1;
+    while (s[closing] === ')') {
+	closing--;
+    }
+    var p1 = L.getRnd(0,closing-1);
+    var p2 = L.getRnd(closing+1,n-1);
+    // do not insert in front of a space or a dot
+    if (s[p1] === " " || s[p1] === ".") {
+	p1++;
+    }
+    // do not insert after a lambda
+    if (p1>0 && s[p1-1] === "\u03BB" ) {
+	p1 += 2;
+    }
+    return s.substring(0,p1) + "(" + 
+	s.substring(p1,p2) + ")" + s.substring(p2);
 }
 function getSyntaxError(minDepth,maxDepth,vs) {
     var s = L.printExp( L.getRndExp(1,minDepth,maxDepth,vs,""));
-    var rnd = L.getRnd(1,2);
+    var rnd = L.getRnd(1,3);
     question.answer = "True";
     switch (rnd) {
     case 1: 
 	if (s.indexOf('(') !== -1) {
-            console.log("removed parens");
 	    s = removeParenPair(s);
 	    question.answer = "False";
 	}
@@ -64,25 +76,24 @@ function getSyntaxError(minDepth,maxDepth,vs) {
 	break;
     case 2: 
 	if (s.indexOf('.') !== -1) {
-            console.log("removed dot");
 	    s = removeDot(s);
 	    question.answer = "False";
 	}
 	//  leave s unchanged if it does not contain any dot
 	break;
     case 3: 
-        console.log("added parens");
 	s = addParens(s);
+        question.answer = "False";
 	break;
     }    
     return s;
 }
 // Initialize Alpha Multiple Choice Exercises.
-init_alpha = function()
+function initSyntaxTF()
 {
     var vs = "uvwxyz";
-    var maxDepth = 10;
-    var minDepth = 7;
+    var maxDepth = 8;
+    var minDepth = 6;
     var exp;
     if (L.getRnd(0,1) === 0) {
 	// syntactically correct lambda exp
@@ -91,21 +102,9 @@ init_alpha = function()
     } else {
 	exp = getSyntaxError(minDepth,maxDepth,vs);
     }
-    jsav = new JSAV("jsav", {"animationMode": "none"});
-    expr1 = jsav.code(exp, {lineNumbers: false});
+    var jsav = new JSAV("jsav", {"animationMode": "none"});
+    jsav.code(exp, {lineNumbers: false});
 
     question.statement = exp;
 }
 
-
-// Generate incorrect answers for Alpha Choice Exercise.
-alphaChoice = function()
-{
-	return 12;
-}
-
-// Return the answer for the current exercise.
-genAnswer = function()
-{
-	return ans;
-}

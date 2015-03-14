@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math">
 <head>
+        <meta charset="utf-8">
 	<title>&lambda;-Calculus Syntax</title>
 	<script src="../../lib/jquery.min.js"></script>
 	<script src="../../lib/jquery-ui.min.js"></script>
@@ -21,7 +22,7 @@
 
 <div class="exercise">
 	<div class="vars">
-		<var id="JSAV">init_alpha()</var>
+		<var id="JSAV">initSyntaxTF()</var>
 		<var id="CorrectAnswer">getAnswerSyntaxTF()</var>
 	</div>
 	<div class="problems">
@@ -37,8 +38,8 @@
 
 			<div class="hints">
 			  <p>Remember that parentheses are not optional.</p>
-			  <p>Parentheses must surround every application expression.</p>
-			  <p>Parentheses cannot be used around a &lambda; abstraction.<p>
+			  <p>Parentheses must surround every application expression, but nothing else.</p>
+			  <p>You could try to build a parse tree for this expression.<p>
 			</div>
 		</div>
 	</div>

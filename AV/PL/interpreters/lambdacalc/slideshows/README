@@ -7,7 +7,7 @@ This command will create a slideshow for the applicative order reduction
 of the lambda expression equivalent to "3+4" and will store the slide
 show in:
 
-./AV/add3to4.html
+./AV/scripted/add3to4.html
 
 For a normal order reduction of the same lambda expression, type:
 

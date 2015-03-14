@@ -478,7 +478,6 @@ function startAV(exps,order) {
     JSAV.init();
     JSAV.ext.SPEED = 50;
 
-
     var av = new JSAV($(".avcontainer"));
     var numCols = Math.max.apply(null, exps.map(function(x) 
 						{ return myLength(x[0]); }));   
@@ -548,29 +547,26 @@ LAMBDA.printExp = printExp;
 if (typeof running_in_node !== 'undefined') {
     (function () {
 	var a = LAMBDA.interpretForSlideShow(exp, order);
-	if (a === "No output [Runtime error]") {
-	    console.log("[ ['Syntax error in the input...','... no reduction to perform.']];\n");
-	} else {
-	    console.log( "[" );
-	    if (a.length>0) {
-		console.log( "[ '" + a[0][0] + "'" +
-			     (a[0].length === 2 ? 
-			      ", '" + a[0][1] + "' ]" :
-			      " ]") +
-			     (a.length > 1 ? "," : "" ));
-	    }
-	    for(var i=1; i<a.length; i++) {
-		var line = "[ '" + a[i][0] + "'";
-		for (var j = 1; j<a[i].length; j++) {
-		    line = line + ", " + a[i][j];
-		}
-		line = line + "]";
-		if (i < a.length-1) {
-		    line = line + ",";
-		}
-		console.log(line);
-	    }
-	    console.log( "];\n");
+	console.log( "[");
+	if (a.length>0) {
+	    console.log( "[ '" + a[0][0] + "'" +
+			 (a[0].length === 2 ? 
+			  ", '" + a[0][1] + "' ]" :
+			  " ]") +
+			 (a.length > 1 ? "," : "" ));
 	}
+	for(var i=1; i<a.length; i++) {
+	    var line = "[ '" + a[i][0] + "'";
+	    for (var j = 1; j<a[i].length; j++) {
+		line = line + ", " + a[i][j];
+	    }
+	    line = line + "]";
+	    if (i < a.length-1) {
+		line = line + ",";
+	    }
+	    console.log(line);
+	}
+	console.log( "];\n");
     })();
+
 }

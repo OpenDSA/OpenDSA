@@ -4,14 +4,14 @@ display_usage() {
         echo -e "This script takes two or three arguments:"
         echo -e " First argument:  'the lambda expression to evaluate'"
         echo -e " Second argument: a or n (i.e., applicative or normal order)"
-        echo -e " Third argument:  name (i.e., output will go to AV/name.html)" 
+        echo -e " Third argument:  name (i.e., output will go to AV/scripted/name.html)" 
         echo -e "                  This argument is optional. If it is omitted, the "
         echo -e "                  first argument is used as the name of the output file."
 	echo -e "Usage:\n\t./create_slideshow <lambda exp> <a or n> <file name> \n" 
 	} 
 
 if [  $# -eq 2 ] || [  $# -eq 3 ]  ; then 
-  exp="$1"
+  exp=$1
   case "$2" in
    a) order="applicative" ;;
    *) order="normal" ;;
@@ -32,18 +32,18 @@ cat ../version1.4/scripts/grammar.js >> tmp.js
 cat ../version1.4/scripts/absyn.js >> tmp.js
 cat ../version1.4/scripts/interpreter.js >> tmp.js
 
-cat ./utils/interpreter-top.html > "./AV/${name}"
-echo "var order = '${order}';" >> "./AV/${name}"
-echo "var lambdaexp = '${exp}';" >> "./AV/${name}"
-echo "var reduction_steps = " >> "./AV/${name}"
-node tmp.js >> "./AV/${name}"
+cat ./utils/interpreter-top.html > "./AV/scripted/${name}"
+echo "var order = '${order}';" >> "./AV/scripted/${name}"
+echo "var lambdaexp = '${exp}';" >> "./AV/scripted/${name}"
+echo "var reduction_steps = " >> "./AV/scripted/${name}"
+node tmp.js >> "./AV/scripted/${name}"
 rm tmp.js
 
 if [  ${order} == "applicative" ] 
   then 
-        cat ./utils/interpreter-bottom.html >> "./AV/${name}"
+        cat ./utils/interpreter-bottom.html >> "./AV/scripted/${name}"
   else
-        sed 's/Applicative/Normal/'  ./utils/interpreter-bottom.html >> "./AV/${name}"
+        sed 's/Applicative/Normal/'  ./utils/interpreter-bottom.html >> "./AV/scripted/${name}"
 fi
   
 else

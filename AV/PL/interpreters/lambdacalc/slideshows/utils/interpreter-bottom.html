@@ -9,8 +9,8 @@
 
 <script>
 var h2 = document.createElement("h2");
-var node = document.createTextNode(
-                   "Expression to be reduced: " + lambdaexp);
+var node = document.createTextNode("Expression to be reduced: " + 
+                   lambdaexp.replace(/\^/g,"\u03BB"));
 h2.appendChild(node);
 var element = document.getElementById("header");
 var child = document.getElementById("dummy");
@@ -34,9 +34,9 @@ element.insertBefore(h2,child);
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 
-<script src="../../../../../../JSAV/lib/jquery.transit.js"></script>
-<script src="../../../../../../JSAV/lib/raphael.js"></script>
-<script src="../../../../../../JSAV/build/JSAV.js"></script>
+<script src="../../../../../../../JSAV/lib/jquery.transit.js"></script>
+<script src="../../../../../../../JSAV/lib/raphael.js"></script>
+<script src="../../../../../../../JSAV/build/JSAV.js"></script>
 <script>
 var arr;
 
