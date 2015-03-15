@@ -542,6 +542,12 @@ function startAV(exps,order) {
 LAMBDA.interpret = interpret; // make the interpreter public
 LAMBDA.interpretForSlideShow = interpretForSlideShow; // only used for slide shows
 LAMBDA.printExp = printExp;
+LAMBDA.mySplit = mySplit;
+LAMBDA.setArrayCellsWidth = setArrayCellsWidth;
+LAMBDA.oneChar = oneChar;
+LAMBDA.noChar = noChar;
+LAMBDA.lambdaChar = lambdaChar;
+LAMBDA.parenChar = parenChar;
 })();
 
 // the code below is only used when creating slide shows
