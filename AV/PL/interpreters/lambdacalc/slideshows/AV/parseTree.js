@@ -6,7 +6,7 @@
     var gt = "&gt;";
     var eNT = lt + "&lambda;exp" + gt;
     var varNT = lt + "var" + gt;
-    var lambdaexp = "((^x.^y.(^z.(y z) (y ^y.y)) z) (x y))"
+    var lambdaexp = "((z ^x.^y.z) (x y))"
     var arr, tree, label1,label2;
 
     var setArrayCellsWidth = function (highlight,range) {
@@ -45,8 +45,8 @@
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     arr = av.ds.array(LAMBDA.mySplit(lambdaexp.replace(/\^/g,"\u03BB")));
     setArrayCellsWidth();
-    label1 = av.label("<h4>The root of the parse tree for any &lambda; expression is always the non-terminal " + eNT +".</h4>");
-    label2 = av.label("&nbsp;");
+    label1 = av.label("<h4>The root node of the parse tree for any </h4>");
+    label2 = av.label("<h4>&lambda; expression  is always the non-terminal " + eNT +".</h4>");
     tree = av.ds.tree();
     tree.root( eNT);
     tree.layout();
@@ -54,7 +54,8 @@
 
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     arr.addClass([0],"highlight");
-    label1.text("<h4>Since the first character of the expression is a left parenthesis...</h4>");
+    label1.text("<h4>Since the first character of the</h4>");
+    label2.text("<h4>&lambda; expression is a left parenthesis...</h4>");
     av.step();
 
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -63,7 +64,7 @@
     label2.text("<h4>function application at the top-level of the parse tree.</h4>");
     av.step();
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    label1.text("<h4>Let us add the four nodes corresponding to this</h4>");
+    label1.text("<h4>Let's add the four nodes corresponding to this</h4>");
     label2.text("<h4>top-level function application to the parse tree.</h4>");
 
     tree.root().addChild("(").addChild(eNT).addChild(eNT).addChild(")");
@@ -86,13 +87,14 @@
     av.step();
 
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 6 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    arr.addClass([21],"highlight");
-    label1.text("<h4>... and must end with the matching right parenthesis highlighted above.</h4>");
-    label2.text("&nbsp;");
+    arr.addClass([7],"highlight");
+    label1.text("<h4>... and must end with the matching</h4>");
+    label2.text("<h4>right parenthesis highlighted above.</h4>");
     av.step();
 
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 7 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    label1.text("<h4>So we can add the corresponding nodes to the parse tree.</h4>");
+    label1.text("<h4>So we can add the corresponding</h4>");
+    label2.text("<h4>nodes to the parse tree.</h4>");
     tree.root().child(1).addChild("(").addChild(eNT).addChild(eNT).addChild(")");
     tree.root().child(1).child(0).highlight();
     tree.root().child(1).child(1).highlight();
@@ -102,13 +104,13 @@
     av.step();
 
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 8 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    label1.text("<h4>Similarly, the second &lambda; expression in the top-level application</h4>");
-    label2.text("<h4>is contained in the highlighted parentheses.</h4>");
+    label1.text("<h4>Similarly, the second &lambda; expression in the top-level</h4>");
+    label2.text("<h4>application is contained in the highlighted parentheses.</h4>");
     tree.root().child(1).child(0).unhighlight();
     tree.root().child(1).child(1).unhighlight();
     tree.root().child(1).child(2).unhighlight();
     tree.root().child(1).child(3).unhighlight();
-    arr.removeClass([1,21],"highlight");
+    arr.removeClass([1,7],"highlight");
     arr.addClass([arr.size()-6,arr.size()-2],"highlight");
     tree.layout();
 
@@ -127,8 +129,8 @@
     av.step();
 
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 10 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    label1.text("<h4>... let's add all of the nodes that make up its two sub-trees.</h4>");
-    label2.text("&nbsp;");
+    label1.text("<h4>... let's add all of the nodes that</h4>");
+    label2.text("<h4>make up its two sub-trees.</h4>");
     arr.removeClass([arr.size()-6,arr.size()-2],"highlight");
     arr.addClass([arr.size()-5,arr.size()-3],"highlight");
 
@@ -147,6 +149,26 @@
     tree.layout();
 
     av.step();
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 11 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    label1.text("<h4>Now we turn our attention back to the first</h4>");
+    label2.text("<h4>application in the top-level &lambda; expression.</h4>");
+    arr.removeClass([arr.size()-5,arr.size()-3],"highlight");
+    tree.root().child(2).child(1).child(0).unhighlight();
+    tree.root().child(2).child(2).child(0).unhighlight();    
+    tree.root().child(2).child(1).child(0).child(0).unhighlight();    
+    tree.root().child(2).child(2).child(0).child(0).unhighlight();    
+
+    arr.addClass([1,7],"highlight");
+    tree.root().child(1).child(0).highlight();
+    tree.root().child(1).child(1).highlight();
+    tree.root().child(1).child(2).highlight();
+    tree.root().child(1).child(3).highlight();
+    tree.layout();
+
+    av.step();
+
+
+
     av.recorded();
     
 })();
