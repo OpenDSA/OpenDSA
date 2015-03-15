@@ -15,10 +15,11 @@
     }
 
     .avcontainer {
-       width: 900px;
+       width: 1000px;
        margin: auto;
        height: 800px;
        text-align: center;
+       padding: 0px;
     }
 
     .jsavoutput {
@@ -35,15 +36,17 @@
     }
 
     .jsavnode {
-
-    width: 6px;
-    max-width: 6px;
+       width: 6px;
+       max-width: 6px;
    }
 
-    div.jsavcanvas {
-         max-width: 900px;
+    div.avcontainer div.jsavcanvas {
+        min-width: 1000px !important;         
     }
 
+    .jsavhighlight {
+         background-color: red !important;
+    }
     div.avcontainer  div.jsavcanvas ol.jsavarray   {
        background-color: #ddd;
        max-width: 170px;
@@ -53,6 +56,15 @@
        min-height: 30px;
     }
 
+    div.avcontainer div.jsavcanvas div.jsavtree   div.moveLeft {
+         background-color: green;
+         left: 50px !important;
+    }
+
+
+    .wider {
+      padding-right: 5px;
+   }
     div.avcontainer  div.jsavcanvas ol.jsavarray  li.jsavindex  {
        max-height: 30px;
        min-height:30px;
