@@ -1,3 +1,4 @@
+//Written by Nabanita Maji and Cliff Shaffer
 /*global ODSA, setPointerL */
  "use strict";
 $(document).ready(function () {

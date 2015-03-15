@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: NP-completeness
 
-.. odsalink:: AV/Development/TSPCON.css
+.. odsalink:: AV/Development/NP/TSPCON.css
 
 The Traveling Salesman Problem
 ==============================
@@ -22,4 +22,4 @@ Try out an instance of the Traveling Salesman problem on your own.
 
 .. avembed:: Exercises/Development/TSP_KA.html ka
 
-.. odsascript:: AV/Development/TSPCON.js
+.. odsascript:: AV/Development/NP/TSPCON.js

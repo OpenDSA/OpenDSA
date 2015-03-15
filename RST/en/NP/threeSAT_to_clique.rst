@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: NP-completeness
 
-.. odsalink:: AV/Development/threeSATtoCliqueCON.css
+.. odsalink:: AV/Development/NP/threeSATtoCliqueCON.css
 
 Reduction of 3-SAT to Clique
 ============================
@@ -24,4 +24,4 @@ polynomial time.
 This reduction can help in providing an NP Completeness proof for 
 the Clique problem.
 
-.. odsascript:: AV/Development/threeSATtoCliqueCON.js
+.. odsascript:: AV/Development/NP/threeSATtoCliqueCON.js

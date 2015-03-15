@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: NP-completeness
 
-.. odsalink:: AV/Development/threeSATCON.css
+.. odsalink:: AV/Development/NP/threeSATCON.css
 
 3-CNF Satisfiability
 ====================
@@ -22,5 +22,5 @@ Try out an instance of the 3-SAT problem on your own.
 
 .. avembed:: Exercises/Development/threeSAT_KA.html ka
 
-.. odsascript:: AV/Development/threeSATCON.js
+.. odsascript:: AV/Development/NP/threeSATCON.js
 

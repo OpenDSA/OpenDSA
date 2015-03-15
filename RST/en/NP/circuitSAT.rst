@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: NP-completeness
 
-.. odsalink:: AV/Development/circuitSATCON.css
+.. odsalink:: AV/Development/NP/circuitSATCON.css
 
 Circuit Satisfiability
 ======================
@@ -24,5 +24,5 @@ we have no easy way of knowing whether it has any satisfying
 assignment.
 
 
-.. odsascript:: AV/Development/circuit/circuit.js
-.. odsascript:: AV/Development/circuitSATCON.js
+.. odsascript:: AV/Development/NP/circuit/circuit.js
+.. odsascript:: AV/Development/NP/circuitSATCON.js

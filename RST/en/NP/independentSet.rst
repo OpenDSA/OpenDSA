@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: NP-completeness
 
-.. odsalink:: AV/Development/independentSetCON.css
+.. odsalink:: AV/Development/NP/independentSetCON.css
 
 The Independent Set Problem
 ===========================
@@ -22,5 +22,5 @@ Try out an instance of the Independent Set problem on your own.
 
 .. avembed:: Exercises/Development/independentSet_KA.html ka
 
-.. odsascript:: AV/Development/independentSetCON.js
+.. odsascript:: AV/Development/NP/independentSetCON.js
 

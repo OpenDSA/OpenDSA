@@ -42,11 +42,7 @@ Satisfiability is an NP Complete Problem.
 
 .. _NPCreduction:
 
-.. odsafig:: Images/reduction.png
-   :width: 400
-   :alt: The Reduction of NP-Complete Problems.
-   :capalign: justify
-   :figwidth: 90%
+.. inlineav:: NPCProofDiagramCON  dgm
    :align: center
 
    We will use this sequence of reductions for the NP Complete Proofs.
@@ -56,3 +52,6 @@ Examples of reductions for proof of NP Completeness
 
 The next few chapters provide examples of reductions that can be used
 to prove that a particular problem is NP Complete.
+
+
+.. odsascript:: AV/Development/NP/NPCProofDiagramCON.js

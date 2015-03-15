@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: NP-completeness
 
-.. odsalink:: AV/Development/IStoVCCON.css
+.. odsalink:: AV/Development/NP/IStoVCCON.css
 
 Reduction of Independent Set to Vertex Cover
 ============================================
@@ -24,4 +24,4 @@ in polynomial time.
 This reduction can help in providing an NP Completeness proof for 
 the Vertex Cover problem.
 
-.. odsascript:: AV/Development/IStoVCCON.js
+.. odsascript:: AV/Development/NP/IStoVCCON.js

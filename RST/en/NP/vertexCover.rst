@@ -8,16 +8,18 @@
    :prerequisites:
    :topic: NP-completeness
 
-.. odsalink:: AV/Development/independentSetCON.css
+.. odsalink:: AV/Development/NP/vertexCoverCON.css
 
 The Vertex Cover Problem
 ========================
 
 THE VERTEX COVER PROBLEM.
 
-.. avembed:: AV/Development/vertexcover.html ss
+.. inlineav:: vertexCoverCON ss
+   :output: show
 
 Try out an instance of the Vertex Cover problem on your own.
 
 .. avembed:: Exercises/Development/vertexCover_KA.html ka
 
+.. odsascript:: AV/Development/NP/vertexCoverCON.js

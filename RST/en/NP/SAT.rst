@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: NP-completeness
 
-.. odsalink:: AV/Development/SATCON.css
+.. odsalink:: AV/Development/NP/SATCON.css
 
 Formula Satisfiability
 ================================
@@ -19,5 +19,5 @@ FORMULA SATISFIABILITY PROBLEM (SAT)
    :output: show
 
 
-.. odsascript:: AV/Development/SATCON.js
+.. odsascript:: AV/Development/NP/SATCON.js
 

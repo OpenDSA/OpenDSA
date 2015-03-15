@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: NP-completeness
 
-.. odsalink:: AV/Development/SATto3SATCON.css
+.. odsalink:: AV/Development/NP/SATto3SATCON.css
 
 Reduction of SAT to 3-SAT
 =========================
@@ -23,4 +23,4 @@ polynomial time.
 
 This reduction can help in providing an NP Completeness proof for 3-SAT.
 
-.. odsascript:: AV/Development/SATto3SATCON.js
+.. odsascript:: AV/Development/NP/SATto3SATCON.js

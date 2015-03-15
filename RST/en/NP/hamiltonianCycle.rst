@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: NP-completeness
 
-.. odsalink:: AV/Development/hamiltonianCycleCON.css
+.. odsalink:: AV/Development/NP/hamiltonianCycleCON.css
 
 The Hamiltonian Cycle Problem
 =============================
@@ -22,5 +22,5 @@ Try out an instance of the Hamiltonian Cycle problem on your own.
 
 .. avembed:: Exercises/Development/hamiltonianCycle_KA.html ka
 
-.. odsascript:: AV/Development/hamiltonianCycleCON.js
+.. odsascript:: AV/Development/NP/hamiltonianCycleCON.js
 

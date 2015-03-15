@@ -8,7 +8,7 @@
    :prerequisites:
    :topic: NP-completeness
 
-.. odsalink:: AV/Development/cliqueCON.css
+.. odsalink:: AV/Development/NP/cliqueCON.css
 
 The Clique Problem
 ==================
@@ -23,5 +23,5 @@ Try out an instance of the Clique problem on your own.
 .. avembed:: Exercises/Development/clique_KA.html ka
 
 
-.. odsascript:: AV/Development/cliqueCON.js
+.. odsascript:: AV/Development/NP/cliqueCON.js
 
