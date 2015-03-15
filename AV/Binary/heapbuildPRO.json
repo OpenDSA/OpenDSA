@@ -4,7 +4,7 @@
       ".avTitle": "Heap Build Proficiency Exercise",
       "av_Authors": "Ville Karavirta",
       ".instructLabel": "Instructions:",
-      ".instructions": "In this exercise, your task is to reproduce the behavior of the buildheap algorithm to create a <b>min</b> heap from the data in initially in the array. The heap is displayed in both its logical tree and physical array forms. Clicking on an element in one will also update the other. You can swap two records in the heap by first clicking one, then the other.",
+      ".instructions": "Your task is to reproduce the behavior of the buildheap algorithm to create a <b>min</b> heap from the data initially in the array. The heap is displayed in both its logical tree and physical array forms. Clicking on an element in one will also update the other. You can swap two records in the heap by first clicking one, then the other.",
       "#about": "About",
       "av_c1": "Calling Min-Heapify(A, "
     },
