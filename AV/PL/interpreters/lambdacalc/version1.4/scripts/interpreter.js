@@ -317,6 +317,16 @@ function reduceToNormalForm(e,order) {
 	}
     }
 }
+function getNumNodes(exp) {
+    if (LAMBDA.absyn.isVarExp(exp)) {
+	return 3;
+    } else if (LAMBDA.absyn.isLambdaAbs(exp)) {
+	return 5 + getNumNodes(LAMBDA.absyn.getLambdaAbsBody(exp));
+    } else if (LAMBDA.absyn.isAppExp(exp)) {
+	return 3 + getNumNodes(LAMBDA.absyn.getAppExpFn(exp)) +
+	    getNumNodes(LAMBDA.absyn.getAppExpArg(exp));
+    }
+}
 function printExp(exp) {
     if (LAMBDA.absyn.isVarExp(exp)) {
 	return LAMBDA.absyn.getVarExpId(exp);
@@ -548,6 +558,7 @@ LAMBDA.oneChar = oneChar;
 LAMBDA.noChar = noChar;
 LAMBDA.lambdaChar = lambdaChar;
 LAMBDA.parenChar = parenChar;
+LAMBDA.getNumNodes = getNumNodes;
 })();
 
 // the code below is only used when creating slide shows
