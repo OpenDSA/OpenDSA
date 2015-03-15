@@ -73,6 +73,9 @@
     tree.root().child(1).highlight();
     tree.root().child(2).highlight();
     tree.root().child(3).highlight();
+    tree.root().child(0).addClass("moveLeft");
+    //tree.root().edgeToChild(0).g._points[1][0] = 50;
+    //tree.root().edgeToChild(0).g._points[1][1] = 50;
     tree.layout();
     av.step();
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -84,6 +87,7 @@
     tree.root().child(3).unhighlight();
     label1.text("<h4>Now, we need to identify the two &lambda; expressions that make up</h4>");
     label2.text("<h4>this application. The first one must start with this left parenthesis...</h4>");
+    tree.layout();
     av.step();
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 6 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     arr.addClass([7],"highlight");
@@ -180,11 +184,6 @@
     label2.text("<h4>add the four corresponding nodes to the parse tree.</h4>");
     arr.removeClass([2],"highlight");
     arr.addClass([4,5,6],"highlight");
-    //tree.root().child(0).addClass("moveLeft");
-
-    //tree.root().edgeToChild(0).g._points[0][0] = 50;
-    //tree.root().edgeToChild(0).g._points[0][1] = 50;
-
     tree.root().child(1).child(1).child(0).unhighlight();
     tree.root().child(1).child(1).child(0).child(0).unhighlight();
     tree.root().child(1).child(2).addChild("&lambda;");

@@ -169,3 +169,24 @@ function getAnswerSyntaxMC() {
     return question.answer;
 }
 
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                 code for SyntaxTreeMC exercise
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+function initSyntaxTreeMC()
+{
+    var vs = "uvwxyz";
+    var maxDepth = 7;
+    var minDepth = 5;
+    var exp = L.getRndExp(1,minDepth,maxDepth,vs,"");
+    var options = [ L.getNumNodes(exp),10,20,30,40 ];
+
+    question.options = options;
+
+    var jsav = new JSAV("jsav",{"animationMode": "none"});
+    jsav.code( L.printExp(exp), {lineNumbers: false});
+}
+function getOptionSyntaxTreeMC() {
+    return question.options;
+}
+

@@ -49,7 +49,6 @@
 	
 	    case 2:
 	    v = getRndVarIn(allowed);
-	    //allowed = remVarFrom(v,allowed);
 	    return LAMBDA.absyn.createLambdaAbs(LAMBDA.absyn.createVarExp(v),
 						getRndExp(depth+1,
 							  minDepth-1,
