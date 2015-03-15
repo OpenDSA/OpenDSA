@@ -98,8 +98,8 @@ function getSyntaxError(minDepth,maxDepth,vs) {
 function initSyntaxTF()
 {
     var vs = "uvwxyz";
-    var maxDepth = 8;
-    var minDepth = 6;
+    var maxDepth = 6;
+    var minDepth = 4;
     var exp;
     if (L.getRnd(0,1) === 0) {
 	// syntactically correct lambda exp
@@ -132,8 +132,8 @@ function isNew(arr) {
 function initSyntaxMC()
 {
     var vs = "uvwxyz";
-    var maxDepth = 8;
-    var minDepth = 6;
+    var maxDepth = 5;
+    var minDepth = 4;
     var exp;
     var numCorrect = 0;
     var exps = [ ];
@@ -176,8 +176,8 @@ function getAnswerSyntaxMC() {
 function initSyntaxTreeMC()
 {
     var vs = "uvwxyz";
-    var maxDepth = 7;
-    var minDepth = 5;
+    var maxDepth = 4;
+    var minDepth = 4;
     var exp = L.getRndExp(1,minDepth,maxDepth,vs,"");
     var options = [ L.getNumNodes(exp),10,20,30,40 ];
 

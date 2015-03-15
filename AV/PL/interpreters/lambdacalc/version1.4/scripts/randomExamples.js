@@ -51,16 +51,16 @@
 	    v = getRndVarIn(allowed);
 	    return LAMBDA.absyn.createLambdaAbs(LAMBDA.absyn.createVarExp(v),
 						getRndExp(depth+1,
-							  minDepth-1,
-							  maxDepth-1,
+							  minDepth,
+							  maxDepth,
 							  allowed,
 							  bound));
 	    
 
 	    case 3:
 	    return LAMBDA.absyn.createAppExp(
-		getRndExp(depth+1,minDepth-1,maxDepth-1,allowed,bound),
-		getRndExp(depth+1,minDepth-1,maxDepth-1,allowed,bound)
+		getRndExp(depth+1,minDepth,maxDepth,allowed,bound),
+		getRndExp(depth+1,minDepth,maxDepth,allowed,bound)
 		);
 	    default:
 	    throw new Error("Should have never gotten here.");

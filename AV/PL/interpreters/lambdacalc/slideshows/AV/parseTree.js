@@ -1,12 +1,14 @@
 "use strict";
 
+/* global LAMBDA */
+
 (function () {
 
     var lt = "&lt;";
     var gt = "&gt;";
     var eNT = lt + "&lambda;exp" + gt;
     var varNT = lt + "var" + gt;
-    var lambdaexp = "((z ^x.^y.z) (x y))"
+    var lambdaexp = "((z ^x.^y.z) (x y))";
     var arr, tree, label1,label2;
 
     var setArrayCellsWidth = function (highlight,range) {
@@ -28,7 +30,7 @@
 		arr.addClass(range, "unhighlightCell");
 	    }
 	}
-    }
+    };
     var oneChar = function(x) { return arr.value(x).length === 1; };
     var noChar = function(x) { return arr.value(x).length === 0; };
     var lambdaChar = function(x) { return arr.value(x).length === 3; };
