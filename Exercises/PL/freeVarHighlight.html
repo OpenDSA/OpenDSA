@@ -16,19 +16,45 @@
 
 
 <style>
+
+    div.jsavcanvas {
+         text-align: center; /* needed to center the array in the container */
+    }
+    
+    div#jsav  div.jsavcanvas ol.jsavarray   {
+       max-width: 700px;   /* needed for centering the array to work */
+       max-height: 30px;
+       min-height: 30px;
+    }
+
+    li.jsavhighlight {
+        border: 1px solid black !important;
+    }
+     ol.jsavarray  li.jsavindex  {
+       max-height: 30px;
+       min-height:30px;
+       height: 30px;
+    }
+
+      li.jsavindex span.jsavvalue {
+       max-height:30px;
+       min-height:30px;
+    }
+    
     ol.jsavarray .defaultCellStyle {
         border: none;
         box-shadow : none; 
     }
 
     ol.jsavarray .lambdaWidth {
-        width : 25px;
-        min-width : 25px;
+        width : 20px;
+        min-width : 20px;
     }
 
     ol.jsavarray .oneCharWidth {
-        width : 13px;
-        min-width : 13px;
+        width : 12px;
+        min-width : 12px;
+        text-align: center;
     }
 
     ol.jsavarray .parenWidth {
@@ -64,7 +90,8 @@
   <div class="problems">
     <div>
       <div class="question"><p>Click on all of the free variable
-	  occurrences in this expression. Then check your answer.</p>
+	  occurrences in this expression. Then click on the right to
+	  check your answer.</p>
 	<div id="jsav"></div>
       </div>
       <div class="solution" data-type="custom">

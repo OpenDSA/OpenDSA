@@ -13,8 +13,7 @@ var L = LAMBDA;
 function pickRndCharacter(c,s) {
     var list = s.split("").map(function (e,i) { return (e===c ? i : -1) ; });
     list = list.filter(function (x) { return x >= 0; });
-    return list[L.getRnd(0,list.length-1)];
-		       
+    return list[L.getRnd(0,list.length-1)];		       
 }
 function findMatchingParen(s,index) {
     s = s.split("");
@@ -98,7 +97,7 @@ function getSyntaxError(minDepth,maxDepth,vs) {
 // Initialize Alpha Multiple Choice Exercises.
 function initSyntaxTF()
 {
-    var vs = "uvwxyz";
+    var vs = "uvxyz";
     var maxDepth = 6;
     var minDepth = 4;
     var exp;
@@ -132,7 +131,7 @@ function isNew(arr) {
 }
 function initSyntaxMC()
 {
-    var vs = "uvwxyz";
+    var vs = "uvxyz";
     var maxDepth = 5;
     var minDepth = 4;
     var exp;
@@ -166,7 +165,6 @@ function initSyntaxMC()
 
 }
 function getAnswerSyntaxMC() {
-    console.log(question.answer);
     return question.answer;
 }
 
@@ -176,7 +174,7 @@ function getAnswerSyntaxMC() {
 
 function initSyntaxTreeMC()
 {
-    var vs = "uvwxyz";
+    var vs = "uvxyz";
     var maxDepth = 4;
     var minDepth = 4;
     var exp = L.getRndExp(1,minDepth,maxDepth,vs,"");
@@ -216,7 +214,7 @@ function getOptionSyntaxTreeMC() {
 	    }
 	}
     };
-    var oneChar = function(x) { return arr.value(x).length === 1; };
+    function oneChar (x) { return arr.value(x).length === 1; }
     var noChar = function(x) { return arr.value(x).length === 0; };
     var lambdaChar = function(x) { return arr.value(x).length === 3; };
     var parenChar = function(x) { 
@@ -224,13 +222,12 @@ function getOptionSyntaxTreeMC() {
 	    arr.value(x) === ' '; 
     };
 
-
 function initFreeVarHighlight () {
     var jsav = new JSAV("jsav", {"animationMode": "none"});
-    var vs = "uvwxyz";
-    var minDepth = 4;
-    var maxDepth = 5;
-    var exp = L.getRndExp(1,minDepth,maxDepth,vs,"");
+    var vs = "uvxyz";
+    var minDepth = 3;
+    var maxDepth = 4;
+    var exp = L.getRndExp2(1,minDepth,maxDepth,vs,"");
     var answer = L.mySplit(L.getFreeBoundVariables(exp));
     arr = jsav.ds.array(L.mySplit(L.printExp(exp)));
     setArrayCellsWidth();
@@ -241,7 +238,7 @@ function initFreeVarHighlight () {
     arr.click(clickHandler);
     question.answer = answer;
 }
-function clickHandler (index, e) {
+function clickHandler(index, e) {
     if(L.light[index]) {
 	arr.unhighlight(index);
 	L.light[index] = false;
@@ -251,6 +248,12 @@ function clickHandler (index, e) {
     }
 }
 function validateFreeVar() {
+    for(var i=0; i<question.answer.length; i++) {
+	if ((L.light[i] && question.answer[i] !== '?') ||
+	    (! L.light[i]  && question.answer[i] === '?')) {
+	    return false;
+	}
+    }
     return true;
 }
 

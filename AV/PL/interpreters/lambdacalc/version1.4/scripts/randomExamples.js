@@ -44,7 +44,7 @@
 	}
 	switch (type) {
 	    case 1: 
-	    if (bound !== "" && L.getRnd(0,1) === 0) {
+	    if (bound !== "" && Math.random()>0.3) {
 		v = getRndVarIn(bound);
 	    } else {
 		v = getRndVarIn(allowed);
@@ -69,16 +69,20 @@
 	    default:
 	    throw new Error("Should have never gotten here.");
 	}
-
     }
-
-LAMBDA.getRndExp = getRndExp;
-LAMBDA.getRnd = getRnd;
+    
+    // same as getRndExp but never returns an exp with only lambda abs
+    function getRndExp2(depth,minDepth,maxDepth,allowed,bound) {
+	var e = getRndExp(depth,minDepth,maxDepth,allowed,bound);
+	if (LAMBDA.absyn.doesNotContainAnApp(e)) {
+	    return LAMBDA.absyn.createAppExp( e,
+                getRndExp(depth,minDepth,maxDepth-1,allowed,bound)
+					    );
+	}
+    }
+    
+    LAMBDA.getRndExp = getRndExp;
+    LAMBDA.getRndExp2 = getRndExp2;
+    LAMBDA.getRnd = getRnd;
 })();
 
-/*
-var print = LAMBDA.printExp;
-
-for(var i=0; i<20; i++) 
-    console.log( print(LAMBDA.getRndExp(1,10,20,"xyzuvw","") ));
-*/

@@ -345,7 +345,6 @@ function printExp(exp) {
     }
 }
 function getFreeBoundVariables(exp) {
-    console.log(printExp(exp));
     function helper(e,vs) {
 	if (LAMBDA.absyn.isVarExp(e)) {
 	    if (vs.indexOf(LAMBDA.absyn.getVarExpId(e)) === -1) {
@@ -366,7 +365,6 @@ function getFreeBoundVariables(exp) {
 	}	    
     }
     var output = helper(exp,"");
-    console.log(output);
     return output;
 }
 function evalExp(exp) {

@@ -184,6 +184,12 @@ function createDisjunction(op1,op2) {
 function createConjunction(op1,op2) {
     return createAppExp( createAppExp( createAnd(), op1 ), op2 );
 }
+function doesNotContainAnApp(e) {
+    return isVarExp(e) ||
+	(isLambdaAbs(e) && doesNotContainAnApp(getLambdaAbsBody(e))) ||
+	(isAppExp(e) && doesNotContainAnApp(getAppExpFn(e)) &&
+	 doesNotContainAnApp(getAppExpArg(e)));
+}
 exports.createProgram = createProgram;
 exports.isProgram = isProgram;
 exports.getProgramExp = getProgramExp;
@@ -207,6 +213,6 @@ exports.createConjunction = createConjunction;
 exports.createDisjunction = createDisjunction;
 exports.createAddition = createAddition;
 exports.createMultiplication = createMultiplication;
-
+exports.doesNotContainAnApp = doesNotContainAnApp;
 LAMBDA.absyn = exports;
 }());
