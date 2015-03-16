@@ -146,6 +146,49 @@
     this.jsav.effects.moveValue(fromNode, fromIndex, toNode, toIndex);
   };
 
+
+  // events to register as functions on array
+  var events = ["click", "dblclick", "mousedown", "mousemove", "mouseup",
+                "mouseenter", "mouseleave"];
+  // returns a function for the passed eventType that binds a passed
+  // function to that eventType for indices in the array
+  var eventhandler = function (eventType) {
+    return function (data, handler) {
+      // store reference to this, needed when executing the handler
+      var self = this;
+      // bind a jQuery event handler, limit to .jsavindex
+      this.element.on(eventType, ".jsavindex", function (e) {
+        // get the node of the clicked element
+        var $curr = $(this),
+            elem = $curr.data("node"); // get the JSAV node object
+        while (!elem) {
+          $curr = $curr.parent();
+          elem = $curr.data("node");
+        }
+        // get the index of the clicked element
+        var index = elem.node_array.element.find(".jsavindex").index(this);
+        // log the event
+        self.jsav.logEvent({type: "jsav-arraytree-" + eventType, objid: elem.id(), index: index});
+        if ($.isFunction(data)) { // if no custom data..
+          // ..bind this to the array and call handler
+          // with params array index and the event
+          data.call(elem, index, e);
+        } else if ($.isFunction(handler)) { // if custom data is passed
+          // ..bind this to the array and call handler
+          var params = $.isArray(data) ? data.slice(0) : [data]; // get a cloned array or data as array
+          params.unshift(index); // add index to first parameter
+          params.push(e); // jQuery event as the last
+          handler.apply(self, params); // apply the function
+        }
+      });
+      return this;
+    };
+  };
+  // create the event binding functions and add to array prototype
+  for (var i = events.length; i--;) {
+    arrayTreeProto[events[i]] = eventhandler(events[i]);
+  }
+
   /*****************************************************************************
    * Implement Array Tree Node for the Array Tree data structure.
    ****************************************************************************/
@@ -193,6 +236,8 @@
     this.element.addClass("jsavnode jsavtreenode jsavarraytreenode");
     // Set ID.
     this.element.attr({"id": this.id()});
+    // Save this node in the DOM (used by the click handler)
+    this.element.data("node", this);
 
     // Get/Set parent ID
     if (parent) {

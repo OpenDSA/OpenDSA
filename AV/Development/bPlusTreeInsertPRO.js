@@ -26,7 +26,7 @@
 
 
     // generate values for the stack
-    insertValues = generateValues(insertSize, 1, 10); //No duplicates!
+    insertValues = [7, 8, 9, 10]; //No duplicates!
 
     // clear possible old stack and create a new one
     if (stack) {
@@ -48,6 +48,10 @@
     tree.root().addChild([5, 6, ""]);
 
     tree.layout();
+
+    tree.click(function (index) {
+      this.highlight(index);
+    });
 
     return tree;
   }
