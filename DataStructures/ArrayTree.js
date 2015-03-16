@@ -350,9 +350,8 @@
         eWidth = eElem.outerWidth(),
         eHeight = eElem.outerHeight(),
         size = this.end().node_array.size(),
-        pos = this.end().childnodes.indexOf(this.start());
-    window.console.log("size", size, "pos", pos);
-    var fromPoint = [end.left + pos * eWidth / size, end.top + eHeight];
+        pos = this.end().childnodes.indexOf(this.start()),
+        fromPoint = [end.left + pos * eWidth / size, end.top + eHeight];
     var opts = {
       start: end,
       end: start,
