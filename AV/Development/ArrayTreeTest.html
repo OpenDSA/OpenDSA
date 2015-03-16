@@ -32,18 +32,17 @@
 
     var child1 = tree.root().addChild([2, 2, 2]);
     var child2 = tree.root().addChild([3, 3, 3]);
-    var child3 = tree.root().addChild([4, 4, 4]);
-    var child4 = tree.root().addChild([5, 5, 5]);
+    var child3 = tree.root().addChild([4, 4,,]);
+    // var child4 = tree.root().addChild([5, 5, 5]);
 
     tree.layout();
 
     jsav.displayInit();
 
-    var $b1 = $("<input type='button' value='layout'></button>").click(function(){tree.layout();});
-    var $b2 = $("<input type='button' value='back to the beginning'></button>").click(function(){jsav.backward(); jsav.backward(); jsav._redo = [];});
+    var $b1 = $("<button>layout</button>").click(function(){tree.layout();});
+    var $b2 = $("<button>back to the beginning</button>").click(function(){jsav.backward(); jsav.backward(); jsav._redo = [];});
 
-    jsav.container.prepend($b1);
-    jsav.container.prepend($b2);
+    jsav.container.prepend($b1).prepend($b2);
   </script>
 
 </body>

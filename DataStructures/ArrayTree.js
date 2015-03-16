@@ -214,7 +214,7 @@
     // Draw edge from this Array Tree Node to parent Node.
     if (parent) {
       // Draw edge from the parent Array Tree Node to this node.
-      this._edgetoparent = new JSAV._types.ds.Edge(this.jsav, this, parent);
+      this._edgetoparent = new ArrayTreeEdge(this.jsav, this, parent);
       // Draw edge label if necessary.
       if (this.options.edgeLabel) {
         this._edgetoparent.label(this.options.edgeLabel);
@@ -329,4 +329,36 @@
   // arrayTreeNodeProto. = function() {
   //   this.node_array.();
   // };
+
+  /*****************************************************************************
+   * Implement Array Tree Node for the Array Tree data structure.
+   ****************************************************************************/
+
+  var ArrayTreeEdge = function (jsav, start, end, options) {
+    JSAV._types.ds.Edge.call(this, jsav, start, end, options);
+  };
+  JSAV.utils.extend(ArrayTreeEdge, JSAV._types.ds.Edge);
+
+  // Get Array Tree Edge prototype
+  var edgeProto = ArrayTreeEdge.prototype;
+
+  edgeProto.layout = function (options) {
+    var sElem = this.start().element,
+        eElem = this.end().element,
+        start = (options && options.start) ? options.start : this.start().position(),
+        end = (options && options.end) ? options.end : this.end().position(),
+        eWidth = eElem.outerWidth(),
+        eHeight = eElem.outerHeight(),
+        size = this.end().node_array.size(),
+        pos = this.end().childnodes.indexOf(this.start());
+    window.console.log("size", size, "pos", pos);
+    var fromPoint = [end.left + pos * eWidth / size, end.top + eHeight];
+    var opts = {
+      start: end,
+      end: start,
+      fromPoint: fromPoint
+    };
+    JSAV._types.ds.Edge.prototype.layout.call(this, opts);
+  };
+
 }(jQuery));

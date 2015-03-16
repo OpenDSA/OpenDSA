@@ -1,8 +1,12 @@
 .jsavarraytreenode {
-  border: none;
+  border: 1px solid #777;
   background-color: transparent;
   box-shadow: none;
-  border-radius: 8px;
+  -o-border-radius: 0;
+  -ms-border-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
 }
 
 .jsavarraytreenode .jsavarray {
@@ -10,5 +14,19 @@
 }
 
 .jsavarraytreenode .jsavarray {
-  min-height: 47px;
+  min-height: 45px;
+}
+
+.jsavarraytreenode .jsavhorizontalarray .jsavnode.jsavindex {
+  -o-border-radius: 0;
+  -ms-border-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+
+.jsavarraytreenode .jsavnode {
+  border: none;
+  border-left: 8px solid #aaa;
+  border-right: 8px solid #aaa;
 }
