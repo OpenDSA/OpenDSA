@@ -320,8 +320,8 @@
    */
   arrayTreeNodeProto.value = function (index, newValue) {
     if (typeof(index) === "undefined") {
-      // return all values in the array
-      return this.node_array._values;
+      // return a copy of all values in the array
+      return this.node_array._values.slice(0);
     } else if ($.isArray(index)) {
       // replace all values in the array with the new array
       // TODO: What if the new array (index) is smaller than node_array???
