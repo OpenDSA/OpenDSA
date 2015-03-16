@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+	<title>Free Variables</title>
+	<script src="../../lib/jquery.min.js"></script>
+	<script src="../../lib/jquery-ui.min.js"></script>
+	<script src="../../JSAV/lib/jquery.transit.js"></script>
+	<script src="../../JSAV/lib/raphael.js"></script>
+	<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+	<script src="../../JSAV/build/JSAV-min.js"></script>
+	<link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+	<script>var LAMBDA = {};</script>
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn.js"></script>
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter.js"></script>
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js"></script>
+
+
+<style>
+    ol.jsavarray .defaultCellStyle {
+        border: none;
+        box-shadow : none; 
+    }
+
+    ol.jsavarray .lambdaWidth {
+        width : 25px;
+        min-width : 25px;
+    }
+
+    ol.jsavarray .oneCharWidth {
+        width : 13px;
+        min-width : 13px;
+    }
+
+    ol.jsavarray .parenWidth {
+        width : 7px;
+        min-width : 7px;
+    }
+
+    ol.jsavarray .emptyWidth {
+        width : 0px;
+        min-width : 0px;
+    }
+
+    .highlight { 
+        color : red;
+        font-weight: bold;
+    }
+
+    .unhighlight { 
+        color : black;
+        font-weight: normal;
+    }
+</style>
+
+</head>
+
+<body data-height="650" data-width="950">
+<script src="SyntaxExercises.js"></script>
+
+<div class="exercise">
+  <div class="vars">
+    <var id="JSAV">initFreeVarHighlight()</var>
+  </div>
+  <div class="problems">
+    <div>
+      <div class="question"><p>Click on all of the free variable
+	  occurrences in this expression. Then check your answer.</p>
+	<div id="jsav"></div>
+      </div>
+      <div class="solution" data-type="custom">
+	<div class="guess">true</div>
+	<div class="validator-function">
+	   return validateFreeVar()</div>
+      </div>
+      <div class="hints">
+	<p>Which variables are being captured by a lambda?</p>
+      </div> 
+    </div>
+  </div>
+</body>
+</html>

@@ -5,6 +5,7 @@
 var question = {};
 var L = LAMBDA;
 
+
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         common code for SyntaxTF and SyntaxMC exercises
    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
@@ -189,4 +190,68 @@ function initSyntaxTreeMC()
 function getOptionSyntaxTreeMC() {
     return question.options;
 }
+
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                 code for freeVarHighlight exercise
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+    var arr;
+    var setArrayCellsWidth = function (highlight,range) {
+	arr.removeClass(true,"oneCharWidth");
+	arr.removeClass(true,"emptyWidth");
+	arr.removeClass(true,"lambdaWidth");
+	arr.removeClass(true,"parenWidth");
+	arr.addClass(true, "defaultCellStyle");
+	arr.addClass(oneChar, "oneCharWidth");
+	arr.addClass(noChar,"emptyWidth");
+	arr.addClass(lambdaChar,"lambdaWidth");
+	arr.addClass(parenChar,"parenWidth");
+	if (highlight !== undefined) {
+	    if (highlight) {
+		arr.removeClass(true,"unhighlightCell");
+		arr.addClass(range, "highlightCell");
+	    } else {
+		arr.removeClass(true,"highlightCell");
+		arr.addClass(range, "unhighlightCell");
+	    }
+	}
+    };
+    var oneChar = function(x) { return arr.value(x).length === 1; };
+    var noChar = function(x) { return arr.value(x).length === 0; };
+    var lambdaChar = function(x) { return arr.value(x).length === 3; };
+    var parenChar = function(x) { 
+    return arr.value(x) === '(' || arr.value(x) === ')' ||
+	    arr.value(x) === ' '; 
+    };
+
+
+function initFreeVarHighlight () {
+    var jsav = new JSAV("jsav", {"animationMode": "none"});
+    var vs = "uvwxyz";
+    var minDepth = 4;
+    var maxDepth = 5;
+    var exp = L.getRndExp(1,minDepth,maxDepth,vs,"");
+    var answer = L.mySplit(L.getFreeBoundVariables(exp));
+    arr = jsav.ds.array(L.mySplit(L.printExp(exp)));
+    setArrayCellsWidth();
+    L.light = [ ];
+    for(var i=0; i<arr.size(); i++) {
+	L.light.push(false);
+    }
+    arr.click(clickHandler);
+    question.answer = answer;
+}
+function clickHandler (index, e) {
+    if(L.light[index]) {
+	arr.unhighlight(index);
+	L.light[index] = false;
+    } else {
+	arr.highlight(index);
+	L.light[index] = true;
+    }
+}
+function validateFreeVar() {
+    return true;
+}
+
 

@@ -44,7 +44,11 @@
 	}
 	switch (type) {
 	    case 1: 
-	    v = getRndVarIn(allowed);
+	    if (bound !== "" && L.getRnd(0,1) === 0) {
+		v = getRndVarIn(bound);
+	    } else {
+		v = getRndVarIn(allowed);
+	    }
 	    return LAMBDA.absyn.createVarExp(v);
 	
 	    case 2:
@@ -54,7 +58,7 @@
 							  minDepth,
 							  maxDepth,
 							  allowed,
-							  bound));
+							  bound+v));
 	    
 
 	    case 3:

@@ -344,6 +344,31 @@ function printExp(exp) {
 	    ")";
     }
 }
+function getFreeBoundVariables(exp) {
+    console.log(printExp(exp));
+    function helper(e,vs) {
+	if (LAMBDA.absyn.isVarExp(e)) {
+	    if (vs.indexOf(LAMBDA.absyn.getVarExpId(e)) === -1) {
+		return "?";   // free or unknown
+	    } else {
+		return "+";   // bound
+	    }
+	} else if (LAMBDA.absyn.isAppExp(e)) {
+	    return "(" +
+		helper(LAMBDA.absyn.getAppExpFn(e),vs) +
+		" " +
+		helper(LAMBDA.absyn.getAppExpArg(e),vs) +
+		")";
+	} else if (LAMBDA.absyn.isLambdaAbs(e)) {
+	    var v = LAMBDA.absyn.getVarExpId(LAMBDA.absyn.getLambdaAbsParam(e));
+	    return "\u03BB" + v +"." +
+		helper(LAMBDA.absyn.getLambdaAbsBody(e),vs+v);
+	}	    
+    }
+    var output = helper(exp,"");
+    console.log(output);
+    return output;
+}
 function evalExp(exp) {
     if (LAMBDA.absyn.isVarExp(exp)) {
 	return LAMBDA.absyn.getVarExpId(exp);
@@ -559,6 +584,7 @@ LAMBDA.noChar = noChar;
 LAMBDA.lambdaChar = lambdaChar;
 LAMBDA.parenChar = parenChar;
 LAMBDA.getNumNodes = getNumNodes;
+LAMBDA.getFreeBoundVariables = getFreeBoundVariables;
 })();
 
 // the code below is only used when creating slide shows
