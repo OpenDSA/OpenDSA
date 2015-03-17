@@ -4,6 +4,8 @@
 
 (function () {
 
+    console.log("hey there");
+
     var lt = "&lt;";
     var gt = "&gt;";
     var eNT = lt + "&lambda;exp" + gt;

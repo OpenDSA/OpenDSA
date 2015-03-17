@@ -8,6 +8,8 @@
 
 
 
+.. index:: ! lambda calculus, Alonzo Church, functional programming ; lambda calculus
+
 The :term:`lambda calculus` (also written as :math:`\lambda`-calculus,
 where :term:`lambda` is the name of the Greek letter :math:`\lambda`)
 was created by Alonzo Church in the early 1930s to study which
@@ -18,7 +20,7 @@ calculus looks like a toy language, even though it is (provably!) as
 powerful as any of the programming languages being used today, such as
 JavaScript, Java, C++, etc. 
 
-
+.. index:: lambda calculus ; syntax
 
 Syntax of the Lambda Calculus
 =============================
@@ -35,6 +37,14 @@ calculus:
                         &|& \lambda <\mathrm{var}>\ .\ <\lambda exp>\\
                         &|& (\ <\lambda exp>\ <\lambda exp>\ )\\
    \end{eqnarray*}
+
+.. index:: 
+     lambda calculus; variable
+     lambda calculus; function abstraction
+     lambda calculus; lambda abstraction
+     lambda calculus; function application
+
+
 
 This BNF grammar tells us that expressions in the lambda calculus come
 in one of three flavors:
@@ -66,7 +76,12 @@ in one of three flavors:
      application of the variable :math:`f` (which must stand for a
      function, since functions are the only values in the lambda
      calculus) to the argument :math:`x` (which must also stand for a
-     function!).  Note that in the lambda calculus, the parentheses
+     function!). 
+
+     .. index::
+          lambda calculus; parentheses
+
+     Note that in the lambda calculus, the parentheses
      surround both the function and its argument, while in many modern
      programming languages (and in mathematical notation), the
      function would come first and be followed by the formal parameter
@@ -74,6 +89,7 @@ in one of three flavors:
      the parentheses are not optional around function
      calls. Furthermore, the grammar above makes it clear that they
      cannot be used anywhere else.
+
 
 The grammar above is quite concise, since it contains only two
 non-terminals. Yet it generates an infinite set of expressions that
@@ -83,13 +99,24 @@ production in the grammar above are recursive.
 
 **Questions to ponder**
 
+.. index:: 
+     BNF grammar; double recursion and ambiguity
+
+
 Q1. Why does the non-terminal :math:`<var>` not appear on the
-left-hand size of any productions in the grammar above. Is the grammar
+left-hand size of any productions in the grammar above? Is the grammar
 incomplete?
 
 Q2. How many terminals does this grammar contain? 
 
 Q3. Is this grammar ambiguous, since the third production is doubly recursive?
+
+
+.. Slideshow for Free/Bound Vars
+
+.. inlineav:: parseTree ss
+   :output: show
+
 
 Semantics of the Lambda Calculus
 ================================

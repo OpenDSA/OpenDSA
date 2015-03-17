@@ -19,10 +19,10 @@
     },
     "Lambda Calculus": {
       "Development/LambdaCalculus": {
-        "long_name": "Current Work on Lambda Calculus",
+        "long_name": "Chapter on the Lambda Calculus",
         "exercises": {
           "parseTree": {
-            "long_name": "Free and Bound Variables Slideshow",
+            "long_name": "Slideshow for how to build a parse tree",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
