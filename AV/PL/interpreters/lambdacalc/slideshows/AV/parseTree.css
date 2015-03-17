@@ -1,0 +1,102 @@
+    html, body {
+        margin: 0;
+    }
+
+    .avcontainer {
+       width: 1000;
+       margin: auto;
+       height: 800;
+       text-align: center;
+       padding: 0;
+    }
+
+    .jsavoutput {
+       height: 0;  
+    }
+
+    .centered {
+         box-shadow: none;
+    }
+
+    h4, div.jsavlabel {
+       margin-bottom: 5px;
+       margin-top: 0;
+    }
+
+    .jsavnode {
+       width: 6px;
+       max-width: 6px;
+   }
+
+    div.avcontainer div.jsavcanvas {
+        min-width: 1000 !important;         
+    }
+
+    .jsavhighlight {
+         background-color: red !important;
+    }
+    div.avcontainer  div.jsavcanvas ol.jsavarray   {
+       background-color: #ddd;
+       max-width: 170;
+       margin: auto;
+       margin-bottom: 10;
+       max-height: 30;
+       min-height: 30;
+    }
+
+    div.moveLeft {
+         left: -30 !important;
+    }
+
+
+    .wider {
+      padding-right: 5px;
+   }
+    div.avcontainer  div.jsavcanvas ol.jsavarray  li.jsavindex  {
+       max-height: 30;
+       min-height:30;
+       height: 30;
+    }
+
+
+    div.avcontainer  div.jsavcanvas ol.jsavarray  li.jsavindex span.jsavvalue {
+       max-height:30;
+       min-height:30;
+    }
+
+    ol.jsavarray .defaultCellStyle {
+        border: none;
+        box-shadow : none; 
+        background-color: #ddd;
+    }
+
+    ol.jsavarray .lambdaWidth {
+        width : 25px;
+        min-width : 25px;
+    }
+
+    ol.jsavarray .oneCharWidth {
+        width : 13px;
+        min-width : 13px;
+    }
+
+    ol.jsavarray .parenWidth {
+        width : 7px;
+        min-width : 7px;
+    }
+
+    ol.jsavarray .emptyWidth {
+        width : 0;
+        min-width : 0;
+    }
+
+    .highlight { 
+        color : red;
+        font-weight: bold;
+    }
+
+    .unhighlight { 
+        color : black;
+        font-weight: normal;
+    }
+

@@ -325,6 +325,8 @@ As a final test of your proficiency in doing beta reductions, try doing
 
 2. All the steps in a complete normal order reduction
 
+.. odsascript:: AV/PL/interpreters/lambdacalc/slideshows/AV/parseTree.js
+
 .. avembed:: AV/Development/BetaNormPro.html pe
 
 .. odsascript:: AV/Development/FreeBoundCON.js
@@ -334,3 +336,14 @@ As a final test of your proficiency in doing beta reductions, try doing
 .. odsascript:: AV/Development/BetaAppCON.js
 
 .. odsascript:: AV/Development/BetaNormCON.js
+
+.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/grammar.js
+
+.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn.js
+
+.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter.js
+
+.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js
+
+.. odsalink::  AV/PL/interpreters/lambdacalc/slideshows/AV/parseTree.css
+

@@ -2,9 +2,13 @@
 
 /* global LAMBDA */
 
-(function () {
+//(function () {
 
-    console.log("hey there");
+$(document).ready(function () {
+
+    //var av_name = "parseTree";
+    //var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
+    //var av = new JSAV(av_name);
 
     var lt = "&lt;";
     var gt = "&gt;";
@@ -44,8 +48,8 @@
     JSAV.init();
     JSAV.ext.SPEED = 500;
 
-    var av = new JSAV($(".avcontainer"));
-
+    var av = new JSAV($("#parseTree"));
+    console.log( "*******************" + av + "***********************");
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     arr = av.ds.array(LAMBDA.mySplit(lambdaexp.replace(/\^/g,"\u03BB")));
     setArrayCellsWidth();
@@ -77,7 +81,7 @@
     tree.root().child(1).highlight();
     tree.root().child(2).highlight();
     tree.root().child(3).highlight();
-    tree.root().child(0).addClass("moveLeft");
+    //tree.root().child(0).addClass("moveLeft");
     //tree.root().edgeToChild(0).g._points[1][0] = 50;
     //tree.root().edgeToChild(0).g._points[1][1] = 50;
     tree.layout();
@@ -245,4 +249,6 @@
     av.step(); 
     av.recorded();
     
-})();
+//})();
+
+});
