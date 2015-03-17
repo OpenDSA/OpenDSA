@@ -4,56 +4,95 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: Tom Naps and Taylor Rydahl
+   :author: David Furcy, Tom Naps and Taylor Rydahl
 
-Lambda Calculus
-===============
 
-The lambda calculus is a small language defined by the following BNF
-grammar.
+
+The :term:`lambda calculus` (also written as :math:`\lambda`-calculus,
+where :term:`lambda` is the name of the Greek letter :math:`\lambda`)
+was created by Alonzo Church in the early 1930s to study which
+functions are computable. In addition to being a concise yet powerful
+model in computability theory, the lambda calculus is also the
+simplest functional programming language. So much so that the lambda
+calculus looks like a toy language, even though it is (provably!) as
+powerful as any of the programming languages being used today, such as
+JavaScript, Java, C++, etc. 
+
+
+
+Syntax of the Lambda Calculus
+=============================
+
+Programs in the lambda calculus are called :term:`lambda expressions`
+(abbreviated :math:`\lambda exp`), of which there are only three
+kinds. In fact, here is a complete BNF grammar for the lambda
+calculus:
 
 .. math::
 
    \begin{eqnarray*} 
-   <\mathrm{LambdaExp}> &::=& <\mathrm{var}>\\
-                        &|& \lambda <\mathrm{var}> . <\mathrm{LambdaExp}>\\
-                        &|& (<\mathrm{LambdaExp}> <\mathrm{LambdaExp}>)\\
+   <\lambda exp> &::=& <var>\\
+                        &|& \lambda <\mathrm{var}>\ .\ <\lambda exp>\\
+                        &|& (\ <\lambda exp>\ <\lambda exp>\ )\\
    \end{eqnarray*}
 
-The above BNF grammar tells us that expressions in the lambda calculus come in one of three flavors:
+This BNF grammar tells us that expressions in the lambda calculus come
+in one of three flavors:
 
-1. A :term:`variable` (the first production).   For example :math:`x`.
+  1. A :term:`variable` (the first production above). Typically, we
+     will use a single letter, with an optional integer subscript, to
+     denote a variable. So, :math:`x, y, a_1, p_2` are examples of
+     variables.
 
-  Typically we will use single letters or letters followed by a digit - :math:`x, y, a_1, b, p_2` - to represent variables.
+  2. A :term:`function abstraction` (the second production above).
+     This type of :math:`\lambda` expressions, also called
+     :term:`lambda abstractions`, corresponds to a function
+     definition, which contains two components: the formal parameter
+     of the function (there must be exactly one parameter, namely the
+     :math:`< var >` non-terminal in the second production above) and
+     the body of the function (namely the :math:`<\lambda exp >`
+     non-terminal in the same production). So, for example,
+     :math:`\lambda x.y` is the function whose formal parameter is
+     :math:`x` and whose body is :math:`y`. Note that the non-terminal
+     :math:`<var>` after the :math:`\lambda` terminal is *not* the
+     name of the function: in fact, all functions are anonymous in the
+     lambda calculus.
 
-2. A :term:`function abstraction` (the second production). For example   :math:`\lambda x.y`.  Think of this as the "function whose formal   parameter is :math:`x` and whose return value is :math:`y`".   The equivalent in JavaScript would be:
+  3. An :term:`application` (the third production above). This type of
+     :math:`\lambda` expressions corresponds to a function call (or
+     application, or invocation), which contains two components: the
+     function being called, followed by the argument that is passed
+     into the function. So, for example, :math:`(f\ x)` is the
+     application of the variable :math:`f` (which must stand for a
+     function, since functions are the only values in the lambda
+     calculus) to the argument :math:`x` (which must also stand for a
+     function!).  Note that in the lambda calculus, the parentheses
+     surround both the function and its argument, while in many modern
+     programming languages (and in mathematical notation), the
+     function would come first and be followed by the formal parameter
+     in parentheses, like this: :math:`f(x)`. In the lambda calculus,
+     the parentheses are not optional around function
+     calls. Furthermore, the grammar above makes it clear that they
+     cannot be used anywhere else.
 
-::
+The grammar above is quite concise, since it contains only two
+non-terminals. Yet it generates an infinite set of expressions that
+represent all computable functions! Recall that the expressive power
+of BNF grammars comes from recursion. Note that the second and third
+production in the grammar above are recursive.
 
-  function(x){
-    return y;
-  }
+**Questions to ponder**
 
-3. An :term:`application` (the third production). For example
-:math:`(y \; z)`.  Think of this as "the application of :math:`y` to
-:math:`z`".  This represents a "function call" in the lambda calculus.
-In JavaScript, such a function call would appear as ``y(z)``.  The
-formal name of an application whose first component is a function
-abstraction is a :term:`beta-redex`.  We will soon explain why this
-terminology is appropriate in the context of the operations we perform
-to "evaluate" expressions in the lambda calculus.
+Q1. Why does the non-terminal :math:`<var>` not appear on the
+left-hand size of any productions in the grammar above. Is the grammar
+incomplete?
 
-For example, to apply the identity function :math:`\lambda x.x` to the
-variable :math:`y`, we would write :math:`(\lambda x.x \; y)`.   In
-JavaScript, this would be:
+Q2. How many terminals does this grammar contain? 
 
-::
+Q3. Is this grammar ambiguous, since the third production is doubly recursive?
 
-  (
-  function(x){	
-    return x;
-  }
-  )(y)
+Semantics of the Lambda Calculus
+================================
 
 The expression that would apply the identity function to the
 application of :math:`a` to :math:`b` would appear as :math:`(\lambda x.x \; (a \; b))`.  Note how essential the parentheses are in this

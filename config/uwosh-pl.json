@@ -21,6 +21,12 @@
       "Development/LambdaCalculus": {
         "long_name": "Current Work on Lambda Calculus",
         "exercises": {
+          "parseTree": {
+            "long_name": "Free and Bound Variables Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "FreeBoundCON": {
             "long_name": "Free and Bound Variables Slideshow",
             "required": false,
