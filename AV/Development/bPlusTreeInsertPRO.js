@@ -51,7 +51,7 @@
     tree.layout();
 
     tree.click(function (index) {
-      if (this.childnodes.length === 0) {
+      if (true) {
         // click on non-leaf node -> split this node
         splitNode(av, this);
       } else {
@@ -89,12 +89,19 @@
   }
 
   function splitNode(av, node) {
-    var parent = node.parent(),
+    var tree = node.container,
+        parent = node.parent(),
         arr = node.value(),
-        len = arr.length,
-        sliceInd = Math.ceil(len / 2),
+        sliceInd = Math.ceil(nodeSize / 2),
         left = arr.slice(0, sliceInd),
         right = arr.slice(sliceInd);
+    // if there is no parent we are in the root node
+    // -> create new root node and set 'node' as child of new root
+    if (!parent) {
+      parent = tree.newNode(new Array(nodeSize).join(",").split(","));
+      tree.root(parent, {hide: false});
+      parent.addChild(node);
+    }
     // fill left and right with empty strings until they are the correct size
     while (left.length < nodeSize) {
       left.push("");
@@ -102,11 +109,8 @@
     while (right.length < nodeSize) {
       right.push("");
     }
-    // give the left half of the values to node
-    node.value(left);
     // create a new node and give the right half to it
-    var tree = node.container,
-        newNode = tree.newNode(right, parent),
+    var newNode = tree.newNode(right, parent),
         parentChildIndex = parent.childnodes.indexOf(node),
         newParentValues = parent.value().slice(0, -1),
         newParentChildNodes = parent.childnodes.slice(0);
@@ -114,8 +118,28 @@
     newParentChildNodes.splice(parentChildIndex + 1, 0, newNode);
     // set the new child nodes to the parent
     parent._setchildnodes(newParentChildNodes);
+    // if the split node was a non-leaf node
+    if (node.childnodes.length) {
+      // give half of the child nodes to the new node
+      var childSliceInd = Math.ceil((nodeSize + 1) / 2),
+          leftChildren = node.childnodes.slice(0, childSliceInd),
+          rightChildren = node.childnodes.slice(childSliceInd);
+      node._setchildnodes(leftChildren);
+      rightChildren.forEach(function (node) {
+        node.parent(newNode);
+      });
+      newNode._setchildnodes(rightChildren);
+      // give new values for the parent node
+      newParentValues.splice(parentChildIndex, 0, left[sliceInd - 1]);
+      // remove the value that was given to the parent node from 'node'
+      left[sliceInd - 1] = "";
+    } else {
+      // give new values for the parent node
+      newParentValues.splice(parentChildIndex, 0, right[0]);
+    }
+    // give the left half of the values to node
+    node.value(left);
     // set new values for the parent node
-    newParentValues.splice(parentChildIndex, 0, right[0]);
     parent.value(newParentValues);
     // position the new node on top of node
     newNode.element.position({of: node.element});

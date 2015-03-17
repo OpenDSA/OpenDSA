@@ -4,7 +4,7 @@
       ".exerciseTitle": "B+ Tree Insertion",
       "av_Authors": "Kasper Hellström",
       ".instructLabel": "Instructions:",
-      ".instructions": "Insert the values in the stack into the B+ tree."
+      ".instructions": "TEMPORARY: Click on nodes to split them. Only works (correctly) on full nodes. Split is non-recursive and meant for a top-down approach."
     }
   },
   "code": {}
