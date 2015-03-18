@@ -75,8 +75,8 @@ in one of three flavors:
      into the function. So, for example, :math:`(f\ x)` is the
      application of the variable :math:`f` (which must stand for a
      function, since functions are the only values in the lambda
-     calculus) to the argument :math:`x` (which must also stand for a
-     function!). 
+     calculus) to the argument :math:`x`, which must also stand for a
+     function. 
 
      .. index::
           lambda calculus; parentheses
@@ -94,8 +94,15 @@ in one of three flavors:
 The grammar above is quite concise, since it contains only two
 non-terminals. Yet it generates an infinite set of expressions that
 represent all computable functions! Recall that the expressive power
-of BNF grammars comes from recursion. Note that the second and third
-production in the grammar above are recursive.
+of BNF grammars comes from recursion, which is present in both the
+second and third productions in the grammar above.
+
+The following slideshow demonstrates how to use the grammar above
+to build the parse tree for a given lambda expression.
+
+.. inlineav:: parseTree ss
+   :output: show
+
 
 **Questions to ponder**
 
@@ -111,15 +118,21 @@ Q2. How many terminals does this grammar contain?
 
 Q3. Is this grammar ambiguous, since the third production is doubly recursive?
 
+**Exercises**
 
-.. Slideshow for Free/Bound Vars
+Test your mastery of the syntax of the lambda calculus with these two exercises.
 
-.. inlineav:: parseTree ss
-   :output: show
+.. avembed:: Exercises/PL/SyntaxTF.html ka
+
+.. avembed:: Exercises/PL/SyntaxMC.html ka
+
 
 
 Semantics of the Lambda Calculus
 ================================
+
+Free and Bound Variables
+========================
 
 The expression that would apply the identity function to the
 application of :math:`a` to :math:`b` would appear as :math:`(\lambda x.x \; (a \; b))`.  Note how essential the parentheses are in this

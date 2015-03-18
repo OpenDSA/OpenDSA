@@ -28,11 +28,18 @@
 
     .centered {
          box-shadow: none;
+
     }
 
     h4, div.jsavlabel {
        margin-bottom: 5px;
        margin-top: 0px;
+       font-weight: bold;
+    }
+
+    .content #parseTree .jsavcanvas .labelstyle {
+        font-weight: bold !important;
+        background-color: red;
     }
 
     .jsavnode {
@@ -120,7 +127,7 @@
 
 
 
-<div class="avcontainer">
+<div id="parseTree">
   <div class="jsavcontrols"></div>
   <span class="jsavcounter"></span>
   <p class="jsavoutput jsavline"></p>
