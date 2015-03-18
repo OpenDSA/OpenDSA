@@ -4,211 +4,56 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: David Furcy, Tom Naps and Taylor Rydahl
+   :author: Tom Naps and Taylor Rydahl
 
+Lambda Calculus
+===============
 
-
-.. index:: ! lambda calculus, Alonzo Church, functional programming ; lambda calculus
-
-The :term:`lambda calculus` (also written as :math:`\lambda`-calculus,
-where :term:`lambda` is the name of the Greek letter :math:`\lambda`)
-was created by Alonzo Church in the early 1930s to study which
-functions are computable. In addition to being a concise yet powerful
-model in computability theory, the lambda calculus is also the
-simplest functional programming language. So much so that the lambda
-calculus looks like a toy language, even though it is (provably!) as
-powerful as any of the programming languages being used today, such as
-JavaScript, Java, C++, etc. 
-
-.. index:: lambda calculus ; syntax
-
-Syntax of the Lambda Calculus
-=============================
-
-Programs in the lambda calculus are called :term:`lambda expressions`
-(abbreviated :math:`\lambda exp`), of which there are only three
-kinds. In fact, here is a complete BNF grammar for the lambda
-calculus:
+The lambda calculus is a small language defined by the following BNF
+grammar.
 
 .. math::
 
    \begin{eqnarray*} 
-   <\lambda exp> &::=& <var>\\
-                        &|& \lambda <\mathrm{var}>\ .\ <\lambda exp>\\
-                        &|& (\ <\lambda exp>\ <\lambda exp>\ )\\
+   <\mathrm{LambdaExp}> &::=& <\mathrm{var}>\\
+                        &|& \lambda <\mathrm{var}> . <\mathrm{LambdaExp}>\\
+                        &|& (<\mathrm{LambdaExp}> <\mathrm{LambdaExp}>)\\
    \end{eqnarray*}
 
-.. index:: 
-     lambda calculus; variable
-     lambda calculus; function abstraction
-     lambda calculus; lambda abstraction
-     lambda calculus; function application
+The above BNF grammar tells us that expressions in the lambda calculus come in one of three flavors:
 
+1. A :term:`variable` (the first production).   For example :math:`x`.
 
+  Typically we will use single letters or letters followed by a digit - :math:`x, y, a_1, b, p_2` - to represent variables.
 
-This BNF grammar tells us that expressions in the lambda calculus come
-in one of three flavors:
+2. A :term:`function abstraction` (the second production). For example   :math:`\lambda x.y`.  Think of this as the "function whose formal   parameter is :math:`x` and whose return value is :math:`y`".   The equivalent in JavaScript would be:
 
-  1. A :term:`variable` (the first production above). Typically, we
-     will use a single letter, with an optional integer subscript, to
-     denote a variable. So, :math:`x, y, a_1, p_2` are examples of
-     variables.
+::
 
-  2. A :term:`function abstraction` (the second production above).
-     This type of :math:`\lambda` expressions, also called
-     :term:`lambda abstractions`, corresponds to a function
-     definition, which contains two components: the formal parameter
-     of the function (there must be exactly one parameter, namely the
-     :math:`< var >` non-terminal in the second production above) and
-     the body of the function (namely the :math:`<\lambda exp >`
-     non-terminal in the same production). So, for example,
-     :math:`\lambda x.y` is the function whose formal parameter is
-     :math:`x` and whose body is :math:`y`. Note that the non-terminal
-     :math:`<var>` after the :math:`\lambda` terminal is *not* the
-     name of the function: in fact, all functions are anonymous in the
-     lambda calculus.
+  function(x){
+    return y;
+  }
 
-  3. An :term:`application` (the third production above). This type of
-     :math:`\lambda` expressions corresponds to a function call (or
-     application, or invocation), which contains two components: the
-     function being called, followed by the argument that is passed
-     into the function. So, for example, :math:`(f\ x)` is the
-     application of the variable :math:`f` (which must stand for a
-     function, since functions are the only values in the lambda
-     calculus) to the argument :math:`x`, which must also stand for a
-     function. 
+3. An :term:`application` (the third production). For example
+:math:`(y \; z)`.  Think of this as "the application of :math:`y` to
+:math:`z`".  This represents a "function call" in the lambda calculus.
+In JavaScript, such a function call would appear as ``y(z)``.  The
+formal name of an application whose first component is a function
+abstraction is a :term:`beta-redex`.  We will soon explain why this
+terminology is appropriate in the context of the operations we perform
+to "evaluate" expressions in the lambda calculus.
 
-     .. index::
-          lambda calculus; parentheses
+For example, to apply the identity function :math:`\lambda x.x` to the
+variable :math:`y`, we would write :math:`(\lambda x.x \; y)`.   In
+JavaScript, this would be:
 
-     Note that in the lambda calculus, the parentheses
-     surround both the function and its argument, while in many modern
-     programming languages (and in mathematical notation), the
-     function would come first and be followed by the formal parameter
-     in parentheses, like this: :math:`f(x)`. In the lambda calculus,
-     the parentheses are not optional around function
-     calls. Furthermore, the grammar above makes it clear that they
-     cannot be used anywhere else.
+::
 
-
-The grammar above is quite concise, since it contains only two
-non-terminals. Yet it generates an infinite set of expressions that
-represent all computable functions! Recall that the expressive power
-of BNF grammars comes from recursion, which is present in both the
-second and third productions in the grammar above.
-
-The following slideshow demonstrates how to use the grammar above
-to build the parse tree for a given lambda expression.
-
-.. inlineav:: parseTree ss
-   :output: show
-
-
-**Questions to ponder**
-
-.. index:: 
-     BNF grammar; double recursion and ambiguity
-
-
-Q1. Why does the non-terminal :math:`<var>` not appear on the
-left-hand size of any productions in the grammar above? Is the grammar
-incomplete?
-
-Q2. How many terminals does this grammar contain? 
-
-Q3. Is this grammar ambiguous, since the third production is doubly recursive?
-
-**Exercises**
-
-Test your mastery of the syntax of the lambda calculus with these two exercises.
-
-.. avembed:: Exercises/PL/SyntaxTF.html ka
-
-.. avembed:: Exercises/PL/SyntaxMC.html ka
-
-
-
-Semantics of the Lambda Calculus
-================================
-
-
-.. list-table:: 
-   :widths: 1 2 10 7
-   :header-rows: 1
-
-   * -
-     - :math:`\lambda` Expression
-     - English Statement of the Semantics
-     - JavaScript Implementation
-   * - 1
-     - :math:`x`
-     - the variable named :math:`x`
-     - .. code::
-
-          x
-   * - 2
-     - :math:`\lambda x.x`
-     - the function of :math:`x` that returns :math:`x` (i.e., the identity function)
-     - .. code::
-
-          function (x) { return x; }
-   * - 3
-     - :math:`\lambda y.y`
-     - the function of :math:`y` that returns :math:`y` (i.e., the identity function)
-     - .. code::     
-
-         function (y) { return y; }
-   * - 4
-     - :math:`\lambda x.y`
-     - the constant function (of :math:`x`) that returns :math:`y`
-     - .. code::
-
-          function (x) { return y; }
-   * - 5
-     - :math:`\lambda z.y`
-     - the same function as above
-     - .. code::
-
-          function (z) { return y; }
-   * - 6
-     - :math:`\lambda y.x`
-     - the constant function (of :math:`y`) that returns :math:`x`
-     - .. code::
-
-          function (y) { return x; }
-   * - 7
-     - :math:`(\lambda x.x\ y)`
-     - the identity function applied to :math:`y`
-     - .. code::
-
-          (function (x) { return x; })(y)
-   * - 8
-     - :math:`(\lambda z.x\ y)`
-     - the constant function :math:`x` applied to :math:`y`
-     - .. code::
-
-          (function (z) { return x; })(y)
-   * - 9
-     - :math:`\lambda x.(x\ y)`
-     - the function of :math:`x` that returns the value returned when :math:`x` 
-       is called on :math:`y`
-     - .. code::
-
-          function (x) { return x(y); }
-   * - 10
-     - :math:`\lambda x.\lambda y.y`
-     - the function of :math:`x` that returns the function of :math:`y` that 
-       returns :math:`y` (in other words, the function of :math:`x` that 
-       returns the identity function)
-     - .. code::
-
-          function (x) {
-                 return function (y) { return y; };
-          }
-
-
-Free and Bound Variables
-========================
+  (
+  function(x){	
+    return x;
+  }
+  )(y)
 
 The expression that would apply the identity function to the
 application of :math:`a` to :math:`b` would appear as :math:`(\lambda x.x \; (a \; b))`.  Note how essential the parentheses are in this
@@ -414,8 +259,6 @@ As a final test of your proficiency in doing beta reductions, try doing
 
 2. All the steps in a complete normal order reduction
 
-.. odsascript:: AV/PL/interpreters/lambdacalc/slideshows/AV/parseTree.js
-
 .. avembed:: AV/Development/BetaNormPro.html pe
 
 .. odsascript:: AV/Development/FreeBoundCON.js
@@ -425,14 +268,3 @@ As a final test of your proficiency in doing beta reductions, try doing
 .. odsascript:: AV/Development/BetaAppCON.js
 
 .. odsascript:: AV/Development/BetaNormCON.js
-
-.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/grammar.js
-
-.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn.js
-
-.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter.js
-
-.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js
-
-.. odsalink::  AV/PL/interpreters/lambdacalc/slideshows/AV/parseTree.css
-

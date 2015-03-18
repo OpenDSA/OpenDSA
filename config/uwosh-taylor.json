@@ -18,7 +18,7 @@
       }
     },
     "Lambda Calculus": {
-      "PL/LambdaCalculus": {
+      "Development/LambdaCalculus": {
         "long_name": "Chapter on the Lambda Calculus",
         "exercises": {
           "parseTree": {
