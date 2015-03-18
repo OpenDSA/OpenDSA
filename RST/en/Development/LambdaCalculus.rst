@@ -131,6 +131,82 @@ Test your mastery of the syntax of the lambda calculus with these two exercises.
 Semantics of the Lambda Calculus
 ================================
 
+
+.. list-table:: 
+   :widths: 1 2 10 7
+   :header-rows: 1
+
+   * -
+     - :math:`\lambda` Expression
+     - English Statement of the Semantics
+     - JavaScript Implementation
+   * - 1
+     - :math:`x`
+     - the variable named :math:`x`
+     - .. code::
+
+          x
+   * - 2
+     - :math:`\lambda x.x`
+     - the function of :math:`x` that returns :math:`x` (i.e., the identity function)
+     - .. code::
+
+          function (x) { return x; }
+   * - 3
+     - :math:`\lambda y.y`
+     - the function of :math:`y` that returns :math:`y` (i.e., the identity function)
+     - .. code::     
+
+         function (y) { return y; }
+   * - 4
+     - :math:`\lambda x.y`
+     - the constant function (of :math:`x`) that returns :math:`y`
+     - .. code::
+
+          function (x) { return y; }
+   * - 5
+     - :math:`\lambda z.y`
+     - the same function as above
+     - .. code::
+
+          function (z) { return y; }
+   * - 6
+     - :math:`\lambda y.x`
+     - the constant function (of :math:`y`) that returns :math:`x`
+     - .. code::
+
+          function (y) { return x; }
+   * - 7
+     - :math:`(\lambda x.x\ y)`
+     - the identity function applied to :math:`y`
+     - .. code::
+
+          (function (x) { return x; })(y)
+   * - 8
+     - :math:`(\lambda z.x\ y)`
+     - the constant function :math:`x` applied to :math:`y`
+     - .. code::
+
+          (function (z) { return x; })(y)
+   * - 9
+     - :math:`\lambda x.(x\ y)`
+     - the function of :math:`x` that returns the value returned when :math:`x` 
+       is called on :math:`y`
+     - .. code::
+
+          function (x) { return x(y); }
+   * - 10
+     - :math:`\lambda x.\lambda y.y`
+     - the function of :math:`x` that returns the function of :math:`y` that 
+       returns :math:`y` (in other words, the function of :math:`x` that 
+       returns the identity function)
+     - .. code::
+
+          function (x) {
+                 return function (y) { return y; };
+          }
+
+
 Free and Bound Variables
 ========================
 
