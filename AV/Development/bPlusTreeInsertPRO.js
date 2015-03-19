@@ -27,7 +27,7 @@
 
 
     // generate values for the stack
-    insertValues = [7, 8, 9, 10]; //No duplicates!
+    insertValues = [6, 8, 11, 5, 1, 7, 14, 3, 13, 20]; //No duplicates!
 
     // clear possible old stack and create a new one
     if (stack) {
@@ -42,20 +42,27 @@
     }
     //create binary tree
     tree = new av.ds.arraytree(3);
-    tree.root([5, 8, ""]);
-
-    tree.root().addChild([1, 2, 3]);
-    tree.root().addChild([5, 6, 7]);
-    tree.root().addChild([8, 9, 10]);
+    tree.root([10, 16, ""]);
+    tree.root().addChild([2, 4, ""]);
+    tree.root().addChild([10, 12, ""]);
+    tree.root().addChild([16, 18, ""]);
 
     tree.layout();
 
     tree.click(function (index) {
-      if (true) {
+      if (isFull(this)) {
         // click on non-leaf node -> split this node
-        splitNode(av, this);
+        splitNode(this);
       } else {
-        this.highlight(index);
+        var newValues = this.value().slice(0, -1).concat(stack.first().value()).sort(function (a, b) {
+          if (a === "") { a = 1000; }
+          if (b === "") { b = 1000; }
+          return a - b;
+        });
+        this.value(newValues);
+        stack.removeFirst();
+        stack.layout();
+        av.gradeableStep();
       }
     });
 
@@ -88,8 +95,13 @@
     return arr;
   }
 
-  function splitNode(av, node) {
+  function isFull(node) {
+    return node.value().every(function (v) { return typeof v === "number"; });
+  }
+
+  function splitNode(node) {
     var tree = node.container,
+        av = tree.jsav,
         parent = node.parent(),
         arr = node.value(),
         sliceInd = Math.ceil(nodeSize / 2),
