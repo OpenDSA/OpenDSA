@@ -56,7 +56,7 @@ jshint:
 min: nomin
 #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
-S15: CS2114 ECE252 CPSC270 CSCI204 CS3114 RecurTutor CSCI115 uwosh-pl
+S15: CS2114 ECE252 CPSC270 CSCI204 CS3114 RecurTutor CSCI115 uwosh-pl uwosh-taylor
 
 Tutorial: min
 	python $(CONFIG_SCRIPT) config/Tutorial.json
@@ -169,6 +169,9 @@ testcpp: min
 
 uwosh: min
 	python $(CONFIG_SCRIPT) config/uwosh.json
+
+uwosh-taylor: min
+	python $(CONFIG_SCRIPT) config/uwosh-taylor.json
 
 uwosh-pl: min
 	python $(CONFIG_SCRIPT) config/uwosh-pl.json

@@ -1,8 +1,8 @@
-/* global LAMBDA : true */
+"use strict";
+
+var LAMBDA = {};
 
 (function (){
-
-"use strict";
 
 var exports = {};
 
@@ -216,3 +216,5 @@ exports.createMultiplication = createMultiplication;
 exports.doesNotContainAnApp = doesNotContainAnApp;
 LAMBDA.absyn = exports;
 }());
+
+console.log(" ************************    LAMBDA.absyn = " + LAMBDA.absyn);

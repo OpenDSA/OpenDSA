@@ -511,6 +511,9 @@ function startAV(exps,order) {
     JSAV.init();
     JSAV.ext.SPEED = 50;
 
+    // Make sure that we initialize everything if this is being re-created
+    $(".jsavcontrols").html("");
+    $(".jsavcanvas").empty();
 
     var av = new JSAV($(".avcontainer"));
     var numCols = Math.max.apply(null, exps.map(function(x) 
@@ -583,6 +586,7 @@ LAMBDA.lambdaChar = lambdaChar;
 LAMBDA.parenChar = parenChar;
 LAMBDA.getNumNodes = getNumNodes;
 LAMBDA.getFreeBoundVariables = getFreeBoundVariables;
+LAMBDA.reduceToNormalForm = reduceToNormalForm;
 })();
 
 // the code below is only used when creating slide shows
