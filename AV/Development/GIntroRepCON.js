@@ -30,10 +30,14 @@ $(document).ready(function () {
     //slide 2
     av.umsg("This is the adjacency marix representation of the directed graph")
     //set up matrix 
-    var mTop = 10; 
+    var mTop = 20; 
     var mLeft = 500;
     var mat = av.ds.matrix([[, 1, , ,1], [ , , , 1, ,], [ , , , , 1], [ , , , 1, ,], [, , 1, , ,]], 
-    	{style: "plain", top: mTop, left: mLeft});
+    	{style: "table", top: mTop, left: mLeft});
+
+    var col = av.label(" 0 1 2 3 4", {top: 0, left: 508}).addClass("addSpace");
+    var row = av.label(" 0 1 2 3 4", {top: 10, left: 480}).addClass("addSpace").addClass("vertical-text");
+
 
     mat.css("matrixBorder");
     mat.layout();
