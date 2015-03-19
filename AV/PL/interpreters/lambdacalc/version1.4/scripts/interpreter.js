@@ -511,6 +511,9 @@ function startAV(exps,order) {
     JSAV.init();
     JSAV.ext.SPEED = 50;
 
+    // Make sure that we initialize everything if this is being re-created
+    $(".jsavcontrols").html("");
+    $(".jsavcanvas").empty();
 
     var av = new JSAV($(".avcontainer"));
     var numCols = Math.max.apply(null, exps.map(function(x) 
