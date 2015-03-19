@@ -1,0 +1,117 @@
+    html, body {
+        margin: 0;
+    }
+
+    .avcontainer {
+       width: 1000;
+       margin: auto;
+       height: 900;
+       text-align: center;
+       padding: 0;
+    }
+
+    p.jsavoutput.jsavline {
+       height: 0;  
+    }
+
+    .centered {
+         box-shadow: none;
+    }
+
+    div.jsavlabel {
+	margin-bottom: 0;
+	margin-top: 0;
+    }
+
+
+    .labelstyle {
+	font-weight: bold;
+	text-align: center;
+        
+    }
+    .jsavnode {
+       width: 6px;
+       max-width: 6px;
+   }
+
+    div.avcontainer div.jsavcanvas {
+    }
+
+    .jsavhighlight {
+         background-color: red !important;
+    }
+    div.avcontainer  div.jsavcanvas ol.jsavarray   {
+       background-color: #ddd;
+       max-width: 170px;
+       margin: auto;
+       margin-bottom: 10;
+       max-height: 30;
+       min-height: 30;
+    }
+
+    .wide {
+      padding-right: 9px;
+   }
+
+    .wider {
+      padding-right: 20px;
+   }
+    div.avcontainer  div.jsavcanvas ol.jsavarray  li.jsavindex  {
+       max-height: 30;
+       min-height:30;
+       height: 30;
+    }
+
+
+    div.avcontainer  div.jsavcanvas ol.jsavarray  li.jsavindex span.jsavvalue {
+       max-height:30;
+       min-height:30;
+    }
+
+    ol.jsavarray .defaultCellStyle {
+        border: none;
+        box-shadow : none; 
+        background-color: #ddd;
+    }
+
+    .lambdaWidth .jsavvaluelabel {
+        width : 25px;
+        min-width : 25px;
+    }
+
+    .oneCharWidth .jsavvaluelabel {
+        width : 13px;
+        min-width : 13px;
+    }
+
+    .oneCharWidth .jsavvalue {
+        width : 13px;
+        min-width : 13px;
+    }
+
+    .parenWidth .jsavvalue {
+        width : 7px;
+        min-width : 7px;
+    }
+
+
+    .parenWidth .jsavvaluelabel {
+        width : 7px;
+        min-width : 7px;
+    }
+
+    ol.jsavarray .emptyWidth {
+        width : 0;
+        min-width : 0;
+    }
+
+    .highlight { 
+        color : red;
+        font-weight: bold;
+    }
+
+    .unhighlight { 
+        color : black;
+        font-weight: normal;
+    }
+
