@@ -343,6 +343,30 @@
     return this;
   };
 
+  arrayTreeNodeProto.parent = function (newParent, options) {
+    if (typeof newParent === "undefined") {
+      return this.parentnode;
+    } else {
+      if (!this._edgetoparent) {
+        this._setEdgeToParent(new ArrayTreeEdge(this.jsav, this, newParent, options));
+      }
+      this._setparent(newParent, options);
+
+      // if both this node and parent are visible but the edge is not, show it
+      if (this.isVisible() && newParent && newParent.isVisible() && !this._edgetoparent.isVisible()) {
+        this._edgetoparent.show();
+      } else if ((!this.isVisible() || !newParent || !newParent.isVisible()) && this._edgetoparent.isVisible()) {
+        // if either this node or new parent are invisible but the edge is not,
+        // and hide option is either not set ot it's true -> hide the edge to parent
+        if (!options || typeof options.hide === "undefined" || options.hide) {
+          this._edgetoparent.hide();
+        }
+      }
+      return this;
+    }
+  };
+
+
   // ---------------------------------------------------------------------------
   // Add interface for array methods
   // ---------------------------------------------------------------------------

@@ -14,7 +14,7 @@
 
     }
 
-    .avcontainer {
+    #parseTree {
        width: 1000px;
        margin: auto;
        height: 800px;
@@ -28,11 +28,18 @@
 
     .centered {
          box-shadow: none;
+
     }
 
     h4, div.jsavlabel {
        margin-bottom: 5px;
        margin-top: 0px;
+       font-weight: bold;
+    }
+
+    .content #parseTree .jsavcanvas .labelstyle {
+        font-weight: bold !important;
+        background-color: red;
     }
 
     .jsavnode {
@@ -40,14 +47,14 @@
        max-width: 6px;
    }
 
-    div.avcontainer div.jsavcanvas {
+    div#parseTree div.jsavcanvas {
         min-width: 1000px !important;         
     }
 
     .jsavhighlight {
          background-color: red !important;
     }
-    div.avcontainer  div.jsavcanvas ol.jsavarray   {
+    div#parseTree  div.jsavcanvas ol.jsavarray   {
        background-color: #ddd;
        max-width: 170px;
        margin: auto;
@@ -64,14 +71,14 @@
     .wider {
       padding-right: 5px;
    }
-    div.avcontainer  div.jsavcanvas ol.jsavarray  li.jsavindex  {
+    div#parseTree  div.jsavcanvas ol.jsavarray  li.jsavindex  {
        max-height: 30px;
        min-height:30px;
        height: 30px;
     }
 
 
-    div.avcontainer  div.jsavcanvas ol.jsavarray  li.jsavindex span.jsavvalue {
+    div#parseTree  div.jsavcanvas ol.jsavarray  li.jsavindex span.jsavvalue {
        max-height:30px;
        min-height:30px;
     }
@@ -120,7 +127,7 @@
 
 
 
-<div class="avcontainer">
+<div id="parseTree">
   <div class="jsavcontrols"></div>
   <span class="jsavcounter"></span>
   <p class="jsavoutput jsavline"></p>

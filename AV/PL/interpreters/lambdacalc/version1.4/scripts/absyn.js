@@ -1,8 +1,10 @@
+"use strict";
+
 /* global LAMBDA : true */
 
-(function (){
+var LAMBDA = {};
 
-"use strict";
+(function (){
 
 var exports = {};
 
