@@ -3,6 +3,7 @@
 }
 
 .jsvacanvas {
+   height:600px;
 }
 .instructLabel {
     font-weight: bold;
@@ -11,14 +12,21 @@
 div.instructions, div.instructions p {
     margin: 0;
 }
+
+div.instructions {
+    margin-bottom: 10px;
+}
 .instructions ol{
     margin-top: 0;
     margin-bottom: 0;
 }
+
 #expression {
-  margin-top: 0;
-  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 0;
   padding: 0;
+  font-weigt: bold;
+  font-size: 1.5em;
 }
 
 .jsavline {
@@ -36,12 +44,12 @@ div.instructions, div.instructions p {
 }
 
 #lefthalf {
-	float: left;
-	width: 46%;
-	padding: 10px;
-	height: 100px;
-	text-align: center;
-        border: 1px dashed black;
+    float: left;
+    width: 46%;
+    padding: 10px;
+    height: 100px;
+    text-align: center;
+    border: 1px dashed black;
 }
 
 #righthalf {
@@ -80,4 +88,10 @@ div.instructions, div.instructions p {
 p.jsavexercisecontrols {
     margin-top: 10px;
     padding-bottom: 15px;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+.small {
+    font-size: 0.8em;
 }

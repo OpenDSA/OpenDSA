@@ -586,6 +586,7 @@ LAMBDA.lambdaChar = lambdaChar;
 LAMBDA.parenChar = parenChar;
 LAMBDA.getNumNodes = getNumNodes;
 LAMBDA.getFreeBoundVariables = getFreeBoundVariables;
+LAMBDA.reduceToNormalForm = reduceToNormalForm;
 })();
 
 // the code below is only used when creating slide shows

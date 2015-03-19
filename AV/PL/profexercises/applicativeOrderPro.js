@@ -1,5 +1,6 @@
-(function ($) {
-    $(document).ready(function () {
+
+$(document).ready(function () {
+    var L = LAMBDA;
 	var settings = new JSAV.utils.Settings($(".jsavsettings"));
 	var arrayLayout = settings.add("layout", 
                           {"type": "select", 
@@ -27,23 +28,17 @@
 	}
 
 	function init() {
-	    var varArr = ["a", "b", "c", "i", "j", "k", "w", "x", "y", "z"];
-	    var rnd = Math.floor(Math.random()*10);
-	    var var1 = varArr.splice(rnd, 1);
-	    rnd = Math.floor(Math.random()*9);
-	    var var2 = varArr.splice(rnd, 1);
-	    rnd = Math.floor(Math.random()*8);
-	    var var3 = varArr.splice(rnd, 1);
-	    strArr = ["(\u03BB"+var1+".("+var1+" "+var1+") (\u03BB"+var2+"."+var2+" "+var3+"))", 
-		      "(\u03BB"+var1+"."+var1+" (\u03BB"+var2+"."+var2+" "+var3+"))",
-		      "\u03BB"+var1+".(\u03BB"+var1+".("+var1+" "+var1+") "+var2+")"];
-	    ansArr = [["(^"+var1+".("+var1+var1+")(^"+var2+"."+var2+var3+"))", "((^"+var2+"."+var2+var3+")(^"+var2+"."+var2+var3+"))", "("+var3+var3+")"],
-		      ["(^"+var1+"."+var1+"(^"+var2+"."+var2+var3+"))", "(^"+var2+"."+var2+var3+")", String(var3)],
-		      ["^"+var1+".(^"+var1+".("+var1+var1+")"+var2+")", "^"+var1+".("+var2+var2+")"]];
-	    appArr = [["(^"+var1+".("+var1+" "+var1+") (^"+var2+"."+var2+" "+var3+"))", "((^"+var2+"."+var2+" "+var3+") (^"+var2+"."+var2+" "+var3+"))", "("+var3+" "+var3+")"],
-		      ["(^"+var1+"."+var1+" (^"+var2+"."+var2+" "+var3+"))", "(^"+var2+"."+var2+" "+var3+")", String(var3)],
-		      ["^"+var1+".(^"+var1+".("+var1+" "+var1+") "+var2+")", "^"+var1+".("+var2+" "+var2+")"]];
-	    rnd = Math.floor(Math.random()*3);
+	    var vars = "uvxyz";
+	    var numSteps = 4;
+	    var e;
+	    var correct = [];
+	    while (correct.length < numSteps-1 ||
+		   correct.length > numSteps+1) {
+		e = L.getRndExp(1,2,5,vars,"");
+		correct = L.reduceToNormalForm(e,"applicative");
+		console.log(e);
+	    }
+            
 	    var htmldata = strArr[rnd];
 	    $theExpression.html(htmldata);
 	    initialArray = appArr[rnd];
@@ -119,5 +114,5 @@
 	$('#about').click(about);
 	$('#submit').click(submit);
 	$('#done').click(done);
-    });
-}(jQuery));
+});
+

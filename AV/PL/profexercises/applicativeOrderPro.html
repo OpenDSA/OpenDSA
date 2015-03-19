@@ -5,7 +5,14 @@
     <link rel="stylesheet" href="../../../lib/odsaAV-min.css" type="text/css" />
     <link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" />
     <link rel="stylesheet" href="profExercises.css" type="text/css" />
-    
+
+<!--
+    <script type="text/javascript" src="../../../AV/PL/interpreters/lambdacalc/version1.4/scripts/grammar.js"</script>
+    <script type="text/javascript" src="../../../AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn.js"</script>
+    <script type="text/javascript" src="../../../AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter.js"</script>
+    <script type="text/javascript" src="../../../AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js"</script>
+-->
+
   </head>
 
 
@@ -27,22 +34,23 @@
 	one &beta;-reduction.  Repeat this step until no more
 	reductions are possible. When entering your answer for each step:</p>
         <ol>
-	  <li>Always pick the correct &beta;-redex for the applicative-order
-	  reduction strategy.</li>
-          <li>Use ^ instead of  &lambda;.</li>
+	  <li>Always pick the correct &beta;-redex according to the
+	  applicative-order reduction strategy.</li>
+          <li>Use the character ^ instead of  &lambda;.</li>
 	  <li>Whenever you have to perform an &alpha;-conversion,
 	     always pick the (alphabetically) first lowercase letter
-	     than does not appear in the current expression.
+	     that does not appear in the current expression.
 	</ol>
-	
+      </div>
       <div id="lefthalf">
-	<p><strong>&lambda; expression that you must reduce in this step,</strong></p>	
-	<p><strong>if possible (otherwise click "Done" on the right):</strong></p>	
-	<div id="lambda"><ol id="expression"></ol></div>
+	<p><strong>&lambda; expression that you must reduce in this step:</strong></p>	
+	<p class="small"><strong>(if no reduction is possible, click
+	"Done" on the right)</strong></p>
+	<div id="expression"></div>
       </div>
       <div id="righthalf">
-	<p><strong>Your answer for this step in the reduction:</strong></p>
-	<p><input type="text" name="answer" id="answer"></p>	
+	<p><strong>Your answer for this step:</strong></p>
+	<p><input type="text" name="answer" id="answer" size="40"></p>	
 	  <p>
 	    <input type="button" id="submit" name="submit"
 		   data-desc="Indicates user is ready for next step." value="Submit" />
@@ -50,7 +58,6 @@
 		   data-desc="Indicates user is done with reductions." value="Done" />
 	  </p>
 	<p id="scoring">Current Score: <span class="jsavcurrentscore"></span> / <span class="jsavcurrentmaxscore"></span></p>
-      </div>
       </div>
       <p class="jsavoutput jsavline"></p>
     </div>

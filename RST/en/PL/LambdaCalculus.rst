@@ -10,7 +10,7 @@
 
 .. index:: ! lambda calculus, Alonzo Church, functional programming ; lambda calculus
 
-The :term:`lambda calculus` (also written as :math:`\lambda`-calculus,
+The :dfn:`lambda calculus` (also written as :math:`\lambda`-calculus,
 where :term:`lambda` is the name of the Greek letter :math:`\lambda`)
 was created by Alonzo Church in the early 1930s to study which
 functions are computable. In addition to being a concise yet powerful
@@ -26,7 +26,7 @@ JavaScript, Java, C++, etc.
  Syntax of the Lambda Calculus
 ===============================
 
-Programs in the lambda calculus are called :term:`lambda expressions`
+Programs in the lambda calculus are called :dfn:`lambda expressions`
 (abbreviated :math:`\lambda exp`), of which there are only three
 kinds. In fact, here is a complete BNF grammar for the lambda
 calculus:
@@ -52,14 +52,14 @@ calculus:
 This BNF grammar tells us that expressions in the lambda calculus come
 in one of three flavors:
 
-  1. A :term:`variable` (the first production above). Typically, we
+  1. A :dfn:`variable` (the first production above). Typically, we
      will use a single letter, with an optional integer subscript, to
      denote a variable. So, :math:`x, y, a_1, p_2` are examples of
      variables.
 
-  2. A :term:`function abstraction` (the second production above).
+  2. A :dfn:`function abstraction` (the second production above).
      This type of :math:`\lambda` expressions, also called
-     :term:`lambda abstractions`, corresponds to a function
+     :term:`lambda abstraction`s, corresponds to a function
      definition, which contains two components: the formal parameter
      of the function (there must be exactly one parameter, namely the
      :math:`< var >` non-terminal in the second production above) and
@@ -68,10 +68,10 @@ in one of three flavors:
      :math:`\lambda x.y` is the function whose formal parameter is
      :math:`x` and whose body is :math:`y`. Note that the non-terminal
      :math:`<var>` after the :math:`\lambda` terminal is *not* the
-     name of the function: in fact, all functions are anonymous in the
-     lambda calculus.
+     name of the function: in fact, all functions in the lambda calculus
+     are anonymous.
 
-  3. An :term:`application` (the third production above). This type of
+  3. An :dfn:`application` (the third production above). This type of
      :math:`\lambda` expressions corresponds to a function call (or
      application, or invocation), which contains two components: the
      function being called, followed by the argument that is passed
@@ -189,7 +189,7 @@ English statement and a JavaScript code fragment.
     in the lambda calculus, since the only values are functions, all
     variables are placeholders for function values.
 
-2.  A lambda abstraction in the lambda calculus (the second production
+2.  A :term:`lambda abstraction` in the lambda calculus (the second production
     in this grammar_) is a function definition, that is, an expression
     that defines a function, *not* a function call. Since all
     functions of the lambda calculus are anonymous and only take one
@@ -340,10 +340,7 @@ variable :math:`x` occurs free in expression E if:
 
 To illustrate the difference between free and bound variables.
 
-.. Slideshow for Free/Bound Vars
 
-.. inlineav:: FreeBoundCON ss
-   :output: show
 
 Note that it is possible for a variable to occur both free and bound
 in the same expression.  Consider :math:`(\lambda x.x \; x)`.  Here
@@ -353,10 +350,6 @@ parameter, and the third occurrence is free.
 
 Before seeing how lambda calculus expressions are evaluated, we need
 some practice in identifying free and bound variables.  Try the following two exercises:
-
-.. avembed:: Exercises/Development/LambdaCalcFree.html ka
-
-.. avembed:: Exercises/Development/LambdaCalcBound.html ka
 
 How should one evaluate a lambda expression?  We first need to realize
 that, if by evaluate we mean to "call a function and see what it
@@ -386,7 +379,7 @@ A reasonable way to describe the value returned would be to say "substitute 8 fo
 
 
 
-The act of doing this substitution is called :term:`beta-reducing` the
+The act of doing this substitution is called :dfn:`beta-reducing` the
 lambda expression.   Hence we now see the rationale for the term
 beta-redex that we introduced earlier.   A beta-redex is the one and
 only type of lambda expression that can be beta-reduced.
@@ -408,7 +401,7 @@ Here :math:`\lambda x.z` is the function that always returns
 substituting the last free occurrence of :math:`x` for :math:`z`, the free :math:`x` is now bound and the function becomes the identity function, which is very different from the function that always returns :math:`z`,
 
    
-To keep from capturing a free variable in this fashion, we must :term:`alpha-convert` the expression that would cause
+To keep from capturing a free variable in this fashion, we must :dfn:`alpha-convert` the expression that would cause
 the :math:`y` to become bound.  The intuitive justification of alpha-conversion
 is that we do not change the function abstraction :math:`\lambda y.(y \; x)` if we choose a different variable, say :math:`w`, to use as the formal
 parameter for the function.  That is, as a function definition,
@@ -416,22 +409,12 @@ parameter for the function.  That is, as a function definition,
 simply replace each free occurrence of p (the formal parameter) in b (the "body" of the function) by a new variable symbol not occurring anywhere in the body.    To illustrate this, consider:
 
 
-.. Slideshow for Alpha Conversion
-
-.. inlineav:: AlphaConversionCON ss
-   :output: show
-
 Practice alpha conversion with the following exercise:
 
-.. Exercise for AlphaConversion
 
-.. avembed:: Exercises/Development/AlphaConversionChoice.html ka
 
 You can get some more alpha conversion practice with the following exercise:
 
-.. Exercise for AlphaConversion
-
-.. avembed:: Exercises/Development/AlphaConversionHighlight.html ka
 
 The  rule to remember here is that, before substituting in a lambda
 expression to carry out a beta-reduction, be sure to check whether
@@ -450,7 +433,7 @@ beta-reducing it.
 To fully evaluate a lambda calculus expression, we may have to perform
 multiple beta reductions.  This must be done until there are no more
 beta-redexes left in the expression.  At that point, the expression,
-fully evaluated, is said to be in :term:`beta-normal` form.  Since this
+fully evaluated, is said to be in :dfn:`beta-normal` form.  Since this
 involves potentially multiple beta reductions, we have a choice for
 the order in which the individual beta conversions are performed.
 
@@ -465,24 +448,11 @@ application.  If there is more than one internal beta-redex to choose
 from, we select the leftmost innermost beta-redex first.  Consider:
 
 
-.. Slideshow for Applicative order
-
-.. inlineav:: BetaAppCON ss
-   :output: show
 
 Practice an applicative order reduction in the following exercise:
 
-.. Exercise for Applicative
-
-.. avembed:: Exercises/Development/BetaReductionAppNextStep.html ka
 
 For some more practice, try:
-
-.. Exercise for Applicative
-
-.. avembed:: Exercises/Development/BetaReductionAppHighlight.html ka
-
-
 
 
 Normal Order Reduction
@@ -496,23 +466,9 @@ the function first and then evaluating the internal beta-redexes.  Consider
 the following example:
 
 
-.. Slideshow for Normal Order
-
-.. inlineav:: BetaNormCON ss
-   :output: show
-
-
 Practice a normal order reduction in the following exercise:
 
-.. Exercise for Normal
-
-.. avembed:: Exercises/Development/BetaReductionNormNextStep.html ka
-
 For some more practice, try:
-
-.. Exercise for Applicative
-
-.. avembed:: Exercises/Development/BetaReductionNormHighlight.html ka
 
 
 As a final test of your proficiency in doing beta reductions, try doing
@@ -525,16 +481,6 @@ As a final test of your proficiency in doing beta reductions, try doing
 
 .. odsascript:: AV/PL/interpreters/lambdacalc/slideshows/AV/parseTree.js
 
-
-
-.. odsascript:: AV/Development/FreeBoundCON.js
-
-.. odsascript:: AV/Development/AlphaConversionCON.js
-
-.. odsascript:: AV/Development/BetaAppCON.js
-
-.. odsascript:: AV/Development/BetaNormCON.js
-
 .. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/grammar.js
 
 .. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn.js
@@ -544,4 +490,5 @@ As a final test of your proficiency in doing beta reductions, try doing
 .. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js
 
 .. odsalink::  AV/PL/interpreters/lambdacalc/slideshows/AV/parseTree.css
+
 

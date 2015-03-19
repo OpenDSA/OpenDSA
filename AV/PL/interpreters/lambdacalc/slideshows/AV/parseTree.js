@@ -2,8 +2,6 @@
 
 /* global LAMBDA */
 
-//(function () {
-
 $(document).ready(function () {
 
     //var av_name = "parseTree";
@@ -51,17 +49,9 @@ $(document).ready(function () {
     JSAV.ext.SPEED = 500;
 
     var av = new JSAV($("#parseTree"));
-    av.settings = null;
+    //    av.settings = null;
 
-
-    arr = av.ds.array(LAMBDA.mySplit(lambdaexp.replace(/\^/g,"\u03BB")));
-    setArrayCellsWidth();
-    label1 = av.label("The root node of the parse tree for any ");
-    label2 = av.label("&lambda; expression  is always the non-terminal " + eNT +".");
-    label1.addClass("labelstyle");
-    label2.addClass("labelstyle");
-  //  tree = av.ds.tree({nodegap: 10});
-
+/*
     graph = av.ds.graph( { layout: "manual", directed : false,
 		       width: 500, height: 500 } );
     graph.css( { color: "red"});
@@ -69,19 +59,8 @@ $(document).ready(function () {
 
     graph.layout();
     av.displayInit();
-/*
-    tree.root("1");
-    tree.layout();
-
-
-
-    graph.addNode("y",{top: 30; left: 30});
-    av.step();
-    av.recorded();
-
 */
 
-/*
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     arr = av.ds.array(LAMBDA.mySplit(lambdaexp.replace(/\^/g,"\u03BB")));
     setArrayCellsWidth();
@@ -90,11 +69,10 @@ $(document).ready(function () {
     label1.addClass("labelstyle");
     label2.addClass("labelstyle");
     tree = av.ds.tree({nodegap: 10});
-    tree.root( eNT);
+    tree.root(eNT);
     tree.root().addClass("wider");
     tree.layout();
     av.displayInit();
-    av.recorded();
 
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     arr.addClass([0],"highlight");
@@ -109,20 +87,15 @@ $(document).ready(function () {
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     label1.text("Let's add the four nodes corresponding to this");
     label2.text("top-level function application to the parse tree.");
-
     tree.root().addChild("(").addChild(eNT).addChild(eNT).addChild(")");
-    tree.root().child(0).translateY("-40px");
-    tree.root().child(0).edgeToParent().layout();
-    tree.root().edgeToChild(0).layout();
+    //tree.root().child(0).translateX("-40px");
+    //tree.root().child(0).edgeToParent().layout();
     tree.root().child(1).addClass("wider");
     tree.root().child(2).addClass("wider");
     tree.root().child(0).highlight();
     tree.root().child(1).highlight();
     tree.root().child(2).highlight();
     tree.root().child(3).highlight();
-    //tree.root().child(0).addClass("moveLeft");
-    //tree.root().edgeToChild(0).g._points[1][0] = 50;
-    //tree.root().edgeToChild(0).g._points[1][1] = 50;
     tree.layout();
 
 
@@ -302,7 +275,5 @@ $(document).ready(function () {
     tree.layout();
     av.step(); 
     av.recorded();
-*/    
-//})();
 
 });
