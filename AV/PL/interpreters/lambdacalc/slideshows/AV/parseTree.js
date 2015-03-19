@@ -17,7 +17,7 @@ $(document).ready(function () {
     var varNT = lt + "var" + gt;
     //var varNT = lt + "v" + gt;
     var lambdaexp = "((z ^x.^y.z) (x y))";
-    var arr, tree, label1,label2;
+    var arr, tree, label1,label2, graph;
 
     var setArrayCellsWidth = function (highlight,range) {
 	arr.removeClass(true,"oneCharWidth");
@@ -52,6 +52,36 @@ $(document).ready(function () {
 
     var av = new JSAV($("#parseTree"));
     av.settings = null;
+
+
+    arr = av.ds.array(LAMBDA.mySplit(lambdaexp.replace(/\^/g,"\u03BB")));
+    setArrayCellsWidth();
+    label1 = av.label("The root node of the parse tree for any ");
+    label2 = av.label("&lambda; expression  is always the non-terminal " + eNT +".");
+    label1.addClass("labelstyle");
+    label2.addClass("labelstyle");
+  //  tree = av.ds.tree({nodegap: 10});
+
+    graph = av.ds.graph( { layout: "manual", directed : false,
+		       width: 500, height: 500 } );
+    graph.css( { color: "red"});
+    graph.addNode( "x", {"left"  : 20, "top" : 50} );
+
+    graph.layout();
+    av.displayInit();
+/*
+    tree.root("1");
+    tree.layout();
+
+
+
+    graph.addNode("y",{top: 30; left: 30});
+    av.step();
+    av.recorded();
+
+*/
+
+/*
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     arr = av.ds.array(LAMBDA.mySplit(lambdaexp.replace(/\^/g,"\u03BB")));
     setArrayCellsWidth();
@@ -64,6 +94,8 @@ $(document).ready(function () {
     tree.root().addClass("wider");
     tree.layout();
     av.displayInit();
+    av.recorded();
+
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     arr.addClass([0],"highlight");
     label1.text("Since the first character of the");
@@ -79,6 +111,9 @@ $(document).ready(function () {
     label2.text("top-level function application to the parse tree.");
 
     tree.root().addChild("(").addChild(eNT).addChild(eNT).addChild(")");
+    tree.root().child(0).translateY("-40px");
+    tree.root().child(0).edgeToParent().layout();
+    tree.root().edgeToChild(0).layout();
     tree.root().child(1).addClass("wider");
     tree.root().child(2).addClass("wider");
     tree.root().child(0).highlight();
@@ -89,6 +124,9 @@ $(document).ready(function () {
     //tree.root().edgeToChild(0).g._points[1][0] = 50;
     //tree.root().edgeToChild(0).g._points[1][1] = 50;
     tree.layout();
+
+
+
     av.step();
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     arr.removeClass([0,arr.size()-1],"highlight");
@@ -264,7 +302,7 @@ $(document).ready(function () {
     tree.layout();
     av.step(); 
     av.recorded();
-    
+*/    
 //})();
 
 });

@@ -519,13 +519,13 @@ As a final test of your proficiency in doing beta reductions, try doing
 
 1. All the steps in a complete applicative order reduction:
 
-.. avembed:: AV/Development/BetaAppPro.html pe
+.. avembed:: AV/PL/profexercises/applicativeOrderPro.html pe
 
 2. All the steps in a complete normal order reduction
 
 .. odsascript:: AV/PL/interpreters/lambdacalc/slideshows/AV/parseTree.js
 
-.. avembed:: AV/Development/BetaNormPro.html pe
+
 
 .. odsascript:: AV/Development/FreeBoundCON.js
 
