@@ -18,8 +18,9 @@
 	    }
 	},
 	"Lambda Calculus": {
-	    "PL/LambdaCalculus": {
-		"long_name": "Chapter on the Lambda Calculus",
+	    "PL/LC/Syntax": {
+		"long_name": "Syntax of the Lambda Calculus",
+		"dispModComp": false,	
 		"exercises": {
 		    "parseTree": {
 			"long_name": "Slideshow for how to build a parse tree",
@@ -28,14 +29,24 @@
 			"threshold": 1.0
 		    }
 		}
-            }
+	    },
+	    "PL/LC/Semantics": {
+		"long_name": "Semantics of the Lambda Calculus",
+		"dispModComp": false,	
+		"exercises": {}
+	    },
+	    "PL/LC/ToDo": {
+		"long_name": "To do",
+		"dispModComp": false,	
+		"exercises": {}
+	    }	    
 	},
 	"Appendices": {
-	  "PL/PL_Glossary": {
-              "long_name": "Glossary",
-              "exercises": {}
-	  }
-      }	
-
+	    "PL/PL_Glossary": {
+		"long_name": "Glossary",
+		"exercises": {}
+	    }
+	}	
+	
     }
 }

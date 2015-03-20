@@ -1,0 +1,159 @@
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://algoviz.org/OpenDSA for more details.
+.. Copyright (c) 2012-13 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
+
+.. avmetadata:: 
+   :author: David Furcy, Tom Naps and Taylor Rydahl
+
+
+
+==================================
+ Semantics of the Lambda Calculus
+==================================
+
+In the previous section, we covered the entirety of the syntax of the
+lambda calculus. The rest of this chapter, including this section,
+deals with the semantics of the lambda calculus, that is, the meaning
+of lambda expressions, that is, how they are interpreted and what
+their value is. Clearly, the expressive power of the lambda calculus
+is outstanding: its tiny syntax will allow us to express a rich set of
+computations, in fact, all possible computations (for more on this,
+look up the Church-Turing thesis).
+
+Note that all programs in the lambda calculus are expressions, that
+is, programs that get evaluated for their value. The lambda calculus
+does not contain any statements, that is, commands that get executed
+for their side effects (e.g., modifying the contents of memory or
+sending a string to the standard output stream). Therefore, the lambda
+calculus is a purely functional language.
+
+Now, we will explain the meaning of the three types of lambda
+expressions whose syntax is given in the grammar_ above. For each type
+of lambda expressions, we will describe its meaning using both an
+English statement and a JavaScript code fragment.
+
+1.  A variable in the lambda calculus (the first production in this
+    grammar_) is a placeholder for another lambda expression. In other
+    words, like in all programming languages, a variable can be used
+    to refer to some value that may or may not be known yet. So
+    variables :math:`x` and :math:`p_1` in the lambda calculus can be
+    represented by the variables :code:`x` and :code:`p1`,
+    respectively, in JavaScript. 
+
+    .. list-table:: 
+       :widths: 1 2 10 7
+       :header-rows: 1
+
+       * - Example
+         - :math:`\lambda` Expression
+         - English Statement of the Semantics
+         - JavaScript Implementation
+       * - 1
+         - :math:`x`
+         - the variable named :math:`x`
+         - .. code:: javascript
+         
+            x
+
+    The main difference between lambda calculus and JavaScript is
+    that, in the lambda calculus, each variable can only get bound to
+    one value during the execution of the whole program, whereas, in
+    JavaScript, the value of a variable cen be changed multiple times
+    during execution using assignment statements. In conclusion,
+    variables in the lambda calculus are more like named constants
+    than variables in imperative programming languages. Furthermore,
+    in the lambda calculus, since the only values are functions, all
+    variables are placeholders for function values.
+
+2.  A :term:`lambda abstraction` in the lambda calculus (the second production
+    in this grammar_) is a function definition, that is, an expression
+    that defines a function, *not* a function call. Since all
+    functions of the lambda calculus are anonymous and only take one
+    parameter, all we need to define a function is the name of its
+    parameter (that is, the variable following the :math:`\lambda` in
+    the second production in this grammar_) and its body (a lambda
+    expression).
+
+    .. list-table:: 
+       :widths: 1 2 10 7
+       :header-rows: 1
+
+       * - Example
+         - :math:`\lambda` Expression
+         - English Statement of the Semantics
+         - JavaScript Implementation
+       * - 2
+         - :math:`\lambda x.x`
+         - the function of :math:`x` that returns :math:`x` (i.e., the identity function)
+         - .. code::
+
+            function (x) { return x; }
+       * - 3
+         - :math:`\lambda y.y`
+         - the function of :math:`y` that returns :math:`y` (i.e., the identity function)
+         - .. code::     
+
+            function (y) { return y; }
+       * - 4
+         - :math:`\lambda x.y`
+         - the constant function (of :math:`x`) that returns :math:`y`
+         - .. code::
+
+              function (x) { return y; }
+       * - 5
+         - :math:`\lambda z.y`
+         - the same function as above
+         - .. code::
+ 
+             function (z) { return y; }
+       * - 6
+         - :math:`\lambda y.x`
+         - the constant function (of :math:`y`) that returns :math:`x`
+         - .. code:: javascript
+
+              function (y) { return x; }
+
+3. to be completed to be completed to be completed to be completed to
+   be completed to be completed to be completed to be completed to be
+   completed to be completed to be completed to be completed to be
+   completed
+
+    .. list-table:: 
+       :widths: 1 2 10 7
+       :header-rows: 1
+
+       * - Example
+         - :math:`\lambda` Expression
+         - English Statement of the Semantics
+         - JavaScript Implementation
+       * - 7
+         - :math:`(\lambda x.x\ y)`
+         - the identity function applied to :math:`y`
+         - .. code::
+
+              (function (x) { return x; })(y)
+       * - 8
+         - :math:`(\lambda z.x\ y)`
+         - the constant function :math:`x` applied to :math:`y`
+         - .. code::
+
+              (function (z) { return x; })(y)
+       * - 9
+         - :math:`\lambda x.(x\ y)`
+         - the function of :math:`x` that returns the value returned when :math:`x` 
+           is called on :math:`y`
+         - .. code::
+  
+              function (x) { return x(y); }
+       * - 10
+         - :math:`\lambda x.\lambda y.y`
+         - the function of :math:`x` that returns the function of :math:`y` that 
+           returns :math:`y` (in other words, the function of :math:`x` that 
+           returns the identity function)
+         - .. code::
+
+              function (x) {
+                     return function (y) { return y; };
+              }
+
