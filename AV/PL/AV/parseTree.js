@@ -17,7 +17,8 @@ $(document).ready(function () {
     var lambdaexp = "((z ^x.^y.z) (x y))";
     var arr, tree, label1,label2, graph;
 
-    var oneChar = function(x) { return arr.value(x).length === 1; };
+    var oneChar = function(x) { return ! parenChar(x) &&
+				arr.value(x).length === 1; };
     var noChar = function(x) { return arr.value(x).length === 0; };
     var lambdaChar = function(x) { return arr.value(x).length === 3; };
     var parenChar = function(x) { 
@@ -46,11 +47,11 @@ $(document).ready(function () {
     arr.removeClass(true,"oneCharWidth");
     arr.removeClass(true,"emptyWidth");
     arr.removeClass(true,"lambdaWidth");
-    arr.removeClass(true,"parenWidth");
+    arr.removeClass(true,"narrow");
     arr.addClass(true, "defaultCellStyle");
-    arr.addClass(parenChar,"parenWidth");
     arr.addClass(noChar,"emptyWidth");
     arr.addClass(oneChar, "oneCharWidth");
+    arr.addClass(parenChar,"narrow");
     arr.addClass(lambdaChar,"lambdaWidth");
 
     //setArrayCellsWidth();

@@ -10,12 +10,16 @@
        padding: 0;
     }
 
-    p.jsavoutput.jsavline {
-       height: 0;  
+    .jsavhorizontalarray  {
+        min-width : 165px;
+        max-width : 165px;
+        max-height: 30px;
+        min-height: 30px;
     }
 
-    .centered {
-         box-shadow: none;
+
+    p.jsavoutput.jsavline {
+       height: 0;  
     }
 
     div.jsavlabel {
@@ -28,13 +32,6 @@
 	font-weight: bold;
 	text-align: center;
         
-    }
-    .jsavnode {
-       width: 6px;
-       max-width: 6px;
-   }
-
-    div.avcontainer div.jsavcanvas {
     }
 
     .jsavhighlight {
@@ -56,17 +53,6 @@
     .wider {
       padding-right: 20px;
    }
-    div.avcontainer  div.jsavcanvas ol.jsavarray  li.jsavindex  {
-       max-height: 30;
-       min-height:30;
-       height: 30;
-    }
-
-
-    div.avcontainer  div.jsavcanvas ol.jsavarray  li.jsavindex span.jsavvalue {
-       max-height:30;
-       min-height:30;
-    }
 
     ol.jsavarray .defaultCellStyle {
         border: none;
@@ -74,30 +60,20 @@
         background-color: #ddd;
     }
 
-    .lambdaWidth .jsavvaluelabel {
-        width : 25px;
-        min-width : 25px;
-    }
-
-    .oneCharWidth .jsavvaluelabel {
-        width : 13px;
-        min-width : 13px;
-    }
-
-    .oneCharWidth .jsavvalue {
-        width : 13px;
-        min-width : 13px;
-    }
-
-    .parenWidth .jsavvalue {
-        width : 7px;
-        min-width : 7px;
+    .jsavhorizontalarray .jsavnode.lambdaWidth {
+        min-width : 22px !important;
+        max-width : 22px !important;
     }
 
 
-    .parenWidth .jsavvaluelabel {
-        width : 7px;
-        min-width : 7px;
+    .jsavhorizontalarray .jsavnode.oneCharWidth {
+        min-width : 13px !important;
+        max-width : 13px !important;
+    }
+
+    .jsavhorizontalarray .jsavnode.narrow {
+        min-width : 7px !important;
+        max-width : 7px !important;
     }
 
     ol.jsavarray .emptyWidth {
