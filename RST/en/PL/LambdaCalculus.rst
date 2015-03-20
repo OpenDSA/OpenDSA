@@ -175,7 +175,7 @@ English statement and a JavaScript code fragment.
        * - 1
          - :math:`x`
          - the variable named :math:`x`
-         - .. code::
+         - .. code:: javascript
          
             x
 
@@ -233,7 +233,7 @@ English statement and a JavaScript code fragment.
        * - 6
          - :math:`\lambda y.x`
          - the constant function (of :math:`y`) that returns :math:`x`
-         - .. code::
+         - .. code:: javascript
 
               function (y) { return x; }
 
@@ -479,7 +479,7 @@ As a final test of your proficiency in doing beta reductions, try doing
 
 2. All the steps in a complete normal order reduction
 
-.. odsascript:: AV/PL/interpreters/lambdacalc/slideshows/AV/parseTree.js
+.. odsascript:: AV/PL/AV/parseTree.js
 
 .. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/grammar.js
 
@@ -489,6 +489,8 @@ As a final test of your proficiency in doing beta reductions, try doing
 
 .. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js
 
-.. odsalink::  AV/PL/interpreters/lambdacalc/slideshows/AV/parseTree.css
+.. odsalink::  AV/PL/AV/parseTree.css
+
+.. odsalink::  AV/PL/main.css
 
 
