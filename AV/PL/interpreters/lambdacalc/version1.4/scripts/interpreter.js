@@ -2,7 +2,7 @@
 
 /* global LAMBDA : true, parser, MathJax, console, exp, order */
 
-(function () {
+$(document).ready(function () {
 
     var maxReductionSteps = 15;
     var arr;
@@ -587,7 +587,10 @@ LAMBDA.parenChar = parenChar;
 LAMBDA.getNumNodes = getNumNodes;
 LAMBDA.getFreeBoundVariables = getFreeBoundVariables;
 LAMBDA.reduceToNormalForm = reduceToNormalForm;
-})();
+
+console.log("Done loading interpreter.js --- LAMBDA = " + LAMBDA);
+
+});
 
 // the code below is only used when creating slide shows
 if (typeof running_in_node !== 'undefined') {

@@ -1,53 +1,43 @@
 
 $(document).ready(function () {
+console.log("loading applicative order Pro --- LAMBDA = " + LAMBDA);
     var L = LAMBDA;
-	var settings = new JSAV.utils.Settings($(".jsavsettings"));
-	var arrayLayout = settings.add("layout", 
-                          {"type": "select", 
-			   "options": {"bar": "Bar", "array": "Array"}, 
-			   "label": "Array layout: ", "value": "array"});
-	var av = new JSAV($('.avcontainer'), {settings: settings});
-	av.recorded();
-	var tell = function (msg, color) { av.umsg(msg, {color: color}); };
-	var incrs = [];
-	var $theExpression = $("#expression");
-	var initialArray = [];
-	var theExpression, position, ansArray, arraySize, strArr, ansArr;
+    var settings = new JSAV.utils.Settings($(".jsavsettings"));
+    var av = new JSAV($('.avcontainer'), {settings: settings});
+    av.recorded();
+    var tell = function (msg, color) { av.umsg(msg, {color: color}); };
+    var incrs = [];
+    var $theExpression = $("#expression");
+    var initialArray = [];
+    var theExpression, position, ansArray, arraySize, strArr, ansArr;
 		
-	function modelSolution(modeljsav)  {
-	    var modelArray = modeljsav.ds.array(ansArray);
-	    modeljsav.displayInit();
-	    for(i = 1; i < arraySize; i++) {
-		modelArray.highlight(i);
-		modelArray.unhighlight(i-1);
-		modeljsav.gradeableStep();
-	    }
-	    modelArray.highlight();
+    function modelSolution(modeljsav)  {
+	var modelArray = modeljsav.ds.array(ansArray);
+	modeljsav.displayInit();
+	for(var i = 1; i < arraySize; i++) {
+	    modelArray.highlight(i);
+	    modelArray.unhighlight(i-1);
 	    modeljsav.gradeableStep();
-	    return modelArray;
 	}
-
-	function init() {
-	    var vars = "uvxyz";
-	    var numSteps = 4;
-	    var e;
-	    var correct = [];
-	    while (correct.length < numSteps-1 ||
-		   correct.length > numSteps+1) {
-		e = L.getRndExp(1,2,5,vars,"");
-		correct = L.reduceToNormalForm(e,"applicative");
-		console.log(e);
-	    }
-            
-	    var htmldata = strArr[rnd];
-	    $theExpression.html(htmldata);
-	    initialArray = appArr[rnd];
-	    ansArray = ansArr[rnd];
-	    arraySize = ansArray.length;
-	    position = 1;
-	    jsavArray = av.ds.array(ansArray, {visible: false});
-	    return jsavArray;
+	modelArray.highlight();
+	modeljsav.gradeableStep();
+	return modelArray;
+    }
+    
+    function init() {
+	var vars = "uvxyz";
+	var numSteps = 4;  // average number of reductions in this exercise
+	var e;
+	var correct = [];
+	while (correct.length < numSteps-1 ||
+	       correct.length > numSteps+1) {
+	    e = L.getRndExp(1,2,5,vars,"");
+	    correct = L.reduceToNormalForm(e,"applicative");
 	}
+	correct = correct.map(function(a) { return a[0]; });
+	jsavArray = av.ds.array( correct, {visible: false});
+	return jsavArray;
+    }
 	
 	function help() {
 	    alert("At each step of the applicative-order reduction, you must" +

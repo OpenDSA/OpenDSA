@@ -131,9 +131,9 @@ Test your mastery of the syntax of the lambda calculus with these two exercises.
 
 .. avembed:: Exercises/PL/SyntaxMC.html ka
 
+.. odsalink::  AV/PL/AV/parseTree.css
 
-
-.. odsascript:: AV/PL/AV/parseTree.js
+.. odsalink::  AV/PL/main.css
 
 .. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/grammar.js
 
@@ -143,8 +143,8 @@ Test your mastery of the syntax of the lambda calculus with these two exercises.
 
 .. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js
 
-.. odsalink::  AV/PL/AV/parseTree.css
+.. odsascript:: AV/PL/AV/parseTree.js
 
-.. odsalink::  AV/PL/main.css
+
 
 

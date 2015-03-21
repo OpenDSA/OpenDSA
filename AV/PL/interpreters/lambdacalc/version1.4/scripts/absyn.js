@@ -1,8 +1,8 @@
-"use strict";
+ "use strict";
 
 var LAMBDA = {};
 
-(function (){
+$(document).ready(function () {
 
 var exports = {};
 
@@ -215,6 +215,6 @@ exports.createAddition = createAddition;
 exports.createMultiplication = createMultiplication;
 exports.doesNotContainAnApp = doesNotContainAnApp;
 LAMBDA.absyn = exports;
-}());
 
-console.log(" ************************    LAMBDA.absyn = " + LAMBDA.absyn);
+console.log("Done loading absyn.js --- LAMBDA = " + LAMBDA);
+});

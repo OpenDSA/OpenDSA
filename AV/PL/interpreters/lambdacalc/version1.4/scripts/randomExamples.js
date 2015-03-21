@@ -2,7 +2,7 @@
 
 /* global LAMBDA : true */
 
-(function () {
+$(document).ready( function() {
 
     // types of lambda expressions:
     // 1: variable
@@ -84,5 +84,7 @@
     LAMBDA.getRndExp = getRndExp;
     LAMBDA.getRndExp2 = getRndExp2;
     LAMBDA.getRnd = getRnd;
-})();
+
+console.log("Done loading randomExamples.js --- LAMBDA = " + LAMBDA);
+});
 

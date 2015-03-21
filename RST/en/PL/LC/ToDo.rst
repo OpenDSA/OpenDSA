@@ -7,6 +7,15 @@
    :author: David Furcy, Tom Naps and Taylor Rydahl
 
 
+.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/grammar.js
+
+.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn.js
+
+.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter.js
+
+.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js
+
+
 ==========================
  Free and Bound Variables
 ==========================
@@ -197,6 +206,8 @@ Practice a normal order reduction in the following exercise:
 For some more practice, try:
 
 
+
+
 As a final test of your proficiency in doing beta reductions, try doing
 
 1. All the steps in a complete applicative order reduction:
@@ -204,18 +215,6 @@ As a final test of your proficiency in doing beta reductions, try doing
 .. avembed:: AV/PL/profexercises/applicativeOrderPro.html pe
 
 2. All the steps in a complete normal order reduction
-
-.. odsascript:: AV/PL/AV/parseTree.js
-
-.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/grammar.js
-
-.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn.js
-
-.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter.js
-
-.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js
-
-.. odsalink::  AV/PL/AV/parseTree.css
 
 .. odsalink::  AV/PL/main.css
 
