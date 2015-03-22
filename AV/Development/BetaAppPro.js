@@ -12,7 +12,7 @@
 		// Function to generate the model solution.
 		function modelSolution(modeljsav) 
 		{
-			var modelArray = modeljsav.ds.array(correct);
+			var modelArray = modeljsav.ds.array(ansArray);
 			modeljsav.displayInit();
 			for(i = 1; i < arraySize; i++)
 			{
@@ -51,7 +51,7 @@
 			ansArray = ansArr[rnd];
 			arraySize = ansArray.length;
 			position = 1;
-			jsavArray = av.ds.array(ansArray, {visible: false});
+			jsavArray = av.ds.array(ansArray, {visible: true});
 			return jsavArray;
 		}
 		

@@ -6,11 +6,9 @@ $(document).ready(function () {
     var av = new JSAV($('.avcontainer'), {settings: settings});
     av.recorded();
     var tell = function (msg, color) { av.umsg(msg, {color: color}); };
-    var incrs = [];
     var $theExpression = $("#expression");
-    var initialArray = [];
-    var theExpression, position, ansArray, arraySize, strArr, ansArr;
     var correct;  // array of lamba expressions (each one as a string)
+    var correctTrimmed;
     var step;
 
     var setArrayCellsWidth = function () {
@@ -31,7 +29,7 @@ $(document).ready(function () {
 	    arr.value(x) === ' '; 
     };
     function modelSolution(modeljsav)  {
-/*
+
 	var correct2D = [];
 	var step;
 	for(var i=0; i<correct.length; i++) {
@@ -46,6 +44,9 @@ $(document).ready(function () {
 	var matrix = [ modeljsav.ds.array(correct2D[0],{left: 20}) ];
 	arr = matrix[0];
 	setArrayCellsWidth();
+
+	// actual model answer (not shown in the model answer window)
+	var modelArray = modeljsav.ds.array(correctTrimmed, {visible: false});
 	modeljsav.displayInit();
 
 	for(var row=1; row<correct2D.length; row++) {
@@ -56,23 +57,18 @@ $(document).ready(function () {
 			  myAnchor: "left top"}));
 	    arr = matrix[row];
 	    setArrayCellsWidth();
+
+	    // invisible (used for grading)
+	    modelArray.highlight(row);
+	    modelArray.unhighlight(row-1);
 	    modeljsav.gradeableStep();
 	}
+
+	modelArray.highlight();
+	modeljsav.gradeableStep();
 
 	modeljsav.recorded();
 
-	return matrix;
-*/
-
-	var modelArray = modeljsav.ds.array(correct);
-	modeljsav.displayInit();
-	for(var i = 1; i < correct.length; i++) {
-	    modelArray.highlight(i);
-	    modelArray.unhighlight(i-1);
-	    modeljsav.gradeableStep();
-	}
-	modelArray.highlight();
-	modeljsav.gradeableStep();
 	return modelArray;
     }
     
@@ -86,13 +82,14 @@ $(document).ready(function () {
 	    e = L.getRndExp(1,2,4,vars,"");
 	    correct = L.reduceToNormalForm(e,"applicative");
 	}
+
 	correct = correct.map(function(a) { return a[0]; });
-	// jsavArray is used for grading each step
-	jsavArray = av.ds.array( 
-                correct.map(function (x) { return x.replace(/\s+/g,'');}), 
-	    {visible: true});
 	$theExpression.html(correct[0]);
+        correctTrimmed = correct.map(function (x) { return x.replace(/\s+/g,''); }); 
+        correctTrimmed = correctTrimmed.map(function (x) { return x.replace(/\u03BB/g,'^')}); 
 	step = 1;
+	// jsavArray is used for grading each step
+	jsavArray = av.ds.array( correctTrimmed, {visible: false});
 	return jsavArray;
     }
 	
@@ -102,27 +99,25 @@ $(document).ready(function () {
 	}
 
 	function about() {
-	    alert("This exercise was developed by David Furcy.\n\nIt is meant" +
-		  " to help you demonstrate that you have mastered the" +
+	    alert("This exercise was developed by David Furcy.\n\nSolve it" +
+		  " to demonstrate that you have mastered the" +
 		  " process of applicative-order reduction in the" +
 		  " \u03BB-calculus.");
 	}
 
 	function submit() {
-	    var answer = $('#answer').val();	    
-	    answer = answer.replace(/\s+/g, '');
+	    var answer = $('#answer').val().replace(/\s+/g, '');
 	    $('#answer').val("");
 	    if(step < correct.length) {
-		if(answer === 
-		   correct[step].replace(/\s+/g,'').replace(/\u03BB/g,'^')) {
+		if(answer === correctTrimmed[step]) {
 		    jsavArray.highlight(step);
 		    jsavArray.unhighlight(step-1);
 		    exercise.gradeableStep();
 		    $theExpression.html(correct[step]);
 		    step++;
-		} else{
+		} else {
 		    exercise.gradeableStep();
-		} 
+		}
 	    } else {
 		exercise.gradeableStep();
 	    }
@@ -133,14 +128,16 @@ $(document).ready(function () {
 		alert("There are still more reductions to perform.");
 		exercise.gradeableStep();
 	    } else {
+		jsavArray.highlight();
+		alert("Correct! There are no more reductions to perform.");
 		exercise.gradeableStep();
-		alert("There are no more reductions to perform.");
+
 	    }
 	}
 	
 	// Function to fix exercise if an incorrect submission is entered.
 	function fixState(modeljsav) {
-	    if(step< correct.length) {
+	    if(step < correct.length) {
 		jsavArray.highlight(step);
 		jsavArray.unhighlight(step-1);
 		$theExpression.html(correct[step]);
