@@ -10,7 +10,8 @@ $(document).ready(function () {
     var $theExpression = $("#expression");
     var initialArray = [];
     var theExpression, position, ansArray, arraySize, strArr, ansArr;
-    var correct;
+    var correct;  // array of lamba expressions (each one as a string)
+    var step;
 
     var setArrayCellsWidth = function () {
 	arr.addClass(true, "defaultCellStyle");
@@ -30,6 +31,7 @@ $(document).ready(function () {
 	    arr.value(x) === ' '; 
     };
     function modelSolution(modeljsav)  {
+/*
 	var correct2D = [];
 	var step;
 	for(var i=0; i<correct.length; i++) {
@@ -37,7 +39,7 @@ $(document).ready(function () {
 	    if (i==0) {
 		step.unshift("Initial &lambda; exp: ");
 	    } else{
-		step.unshift("Step " + i + ": ");
+		step.unshift("Step " + i + ":");
 	    }
 	    correct2D.push(step);
 	}
@@ -59,9 +61,19 @@ $(document).ready(function () {
 
 	modeljsav.recorded();
 
-
-
 	return matrix;
+*/
+
+	var modelArray = modeljsav.ds.array(correct);
+	modeljsav.displayInit();
+	for(var i = 1; i < correct.length; i++) {
+	    modelArray.highlight(i);
+	    modelArray.unhighlight(i-1);
+	    modeljsav.gradeableStep();
+	}
+	modelArray.highlight();
+	modeljsav.gradeableStep();
+	return modelArray;
     }
     
     function init() {
@@ -71,12 +83,16 @@ $(document).ready(function () {
 	correct = [];
 	while (correct.length < numSteps-1 ||
 	       correct.length > numSteps+1) {
-	    e = L.getRndExp(1,2,5,vars,"");
+	    e = L.getRndExp(1,2,4,vars,"");
 	    correct = L.reduceToNormalForm(e,"applicative");
 	}
 	correct = correct.map(function(a) { return a[0]; });
-	jsavArray = av.ds.array( correct, {visible: false});
+	// jsavArray is used for grading each step
+	jsavArray = av.ds.array( 
+                correct.map(function (x) { return x.replace(/\s+/g,'');}), 
+	    {visible: true});
 	$theExpression.html(correct[0]);
+	step = 1;
 	return jsavArray;
     }
 	
@@ -93,16 +109,17 @@ $(document).ready(function () {
 	}
 
 	function submit() {
-	    var temp = document.getElementById('answer').value;
-	    temp = temp.replace(/\s+/g, '');
-	    document.getElementById('answer').value = "";
-	    if(position < ansArray.length) {
-		if(temp == ansArray[position]) {
-		    jsavArray.highlight(position);
-		    jsavArray.unhighlight(position-1);
+	    var answer = $('#answer').val();	    
+	    answer = answer.replace(/\s+/g, '');
+	    $('#answer').val("");
+	    if(step < correct.length) {
+		if(answer === 
+		   correct[step].replace(/\s+/g,'').replace(/\u03BB/g,'^')) {
+		    jsavArray.highlight(step);
+		    jsavArray.unhighlight(step-1);
 		    exercise.gradeableStep();
-		    $theExpression.html(initialArray[position]);
-		    position++;
+		    $theExpression.html(correct[step]);
+		    step++;
 		} else{
 		    exercise.gradeableStep();
 		} 
@@ -112,31 +129,29 @@ $(document).ready(function () {
 	}
 		
 	function done() {
-	    if(position < ansArray.length) {
-		alert("There are still more reductions to be done!");
+	    if(step < correct.length) {
+		alert("There are still more reductions to perform.");
 		exercise.gradeableStep();
 	    } else {
-		jsavArray.highlight();
 		exercise.gradeableStep();
-		alert("Congratulations! You've finished!");
+		alert("There are no more reductions to perform.");
 	    }
 	}
 	
 	// Function to fix exercise if an incorrect submission is entered.
 	function fixState(modeljsav) {
-	    if(position < ansArray.length) {
-		jsavArray.highlight(position);
-		jsavArray.unhighlight(position-1);
-		$theExpression.html(initialArray[position]);
-		position++;
+	    if(step< correct.length) {
+		jsavArray.highlight(step);
+		jsavArray.unhighlight(step-1);
+		$theExpression.html(correct[step]);
+		step++;
 	    } else {
-		jsavArray.highlight();
 		alert("There are no more reductions to be done!");
 	    }
 	}
 	
 	var exercise = 	av.exercise(modelSolution, init, 
-				    { compare: {class: "jsavhighlight"}, 
+				    { compare: {class: "jsavhighlight"},
 				      controls: $('.jsavexercisecontrols'), 
 				      fix: fixState });
 	exercise.reset();
