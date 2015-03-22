@@ -588,7 +588,6 @@ LAMBDA.getNumNodes = getNumNodes;
 LAMBDA.getFreeBoundVariables = getFreeBoundVariables;
 LAMBDA.reduceToNormalForm = reduceToNormalForm;
 
-console.log("Done loading interpreter.js --- LAMBDA = " + LAMBDA);
 
 });
 

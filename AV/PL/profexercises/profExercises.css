@@ -2,9 +2,14 @@
   width: 800px;
 }
 
-.jsvacanvas {
-   height:600px;
+.jsavcontrols {
+    margin-top: 0px;
 }
+
+.jsavdialog {
+    min-height: 300px;
+}
+
 .instructLabel {
     font-weight: bold;
     margin-bottom: 0;
@@ -26,12 +31,12 @@ div.instructions {
   margin-bottom: 0;
   padding: 0;
   font-weigt: bold;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
 .jsavline {
   margin-top: 15px;
-  height: 50px;
+  height: 0;
 }
 
 #increments {
@@ -95,3 +100,52 @@ p.jsavexercisecontrols {
 .small {
     font-size: 0.8em;
 }
+
+
+
+ol.jsavarray .defaultCellStyle {
+    border: none;
+    box-shadow : none; 
+    background-color: #ddd;
+}
+
+.jsavhorizontalarray .jsavnode.lambdaWidth {
+    min-width : 22px !important;
+    max-width : 22px !important;
+}
+
+
+.jsavhorizontalarray .jsavnode.oneCharWidth {
+    min-width : 13px !important;
+    max-width : 13px !important;
+}
+
+.jsavhorizontalarray .jsavnode.narrow {
+    min-width : 7px !important;
+    max-width : 7px !important;
+}
+
+ol.jsavarray .emptyWidth {
+    width : 0;
+    min-width : 0;
+}
+
+ol.jsavarray .stepNumber {
+    width : 100px;
+    min-width : 100px;
+    font-weight: bold;
+    text-align: left;
+    background-color: #FFF;
+}
+
+/*
+    .jsavhorizontalarray  {
+        max-height: 30px;
+        min-height: 30px;
+    }
+
+    div.avcontainer  div.jsavcanvas ol.jsavarray   {
+       max-height: 30px;
+       min-height: 30px;
+    }
+*/

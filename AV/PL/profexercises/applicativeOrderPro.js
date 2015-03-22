@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-console.log("loading applicative order Pro --- LAMBDA = " + LAMBDA);
+
     var L = LAMBDA;
     var settings = new JSAV.utils.Settings($(".jsavsettings"));
     var av = new JSAV($('.avcontainer'), {settings: settings});
@@ -10,25 +10,65 @@ console.log("loading applicative order Pro --- LAMBDA = " + LAMBDA);
     var $theExpression = $("#expression");
     var initialArray = [];
     var theExpression, position, ansArray, arraySize, strArr, ansArr;
-		
+    var correct;
+
+    var setArrayCellsWidth = function () {
+	arr.addClass(true, "defaultCellStyle");
+	arr.addClass(oneChar, "oneCharWidth");
+	arr.addClass(noChar,"emptyWidth");
+	arr.addClass(lambdaChar,"lambdaWidth");
+	arr.addClass(parenChar,"narrow");
+	arr.addClass(0,"stepNumber");
+    };
+    var arr;
+    var oneChar = function(x) { return ! parenChar(x) &&
+				arr.value(x).length === 1; };
+    var noChar = function(x) { return arr.value(x).length === 0; };
+    var lambdaChar = function(x) { return arr.value(x).length === 3; };
+    var parenChar = function(x) { 
+	return arr.value(x) === '(' || arr.value(x) === ')' ||
+	    arr.value(x) === ' '; 
+    };
     function modelSolution(modeljsav)  {
-	var modelArray = modeljsav.ds.array(ansArray);
+	var correct2D = [];
+	var step;
+	for(var i=0; i<correct.length; i++) {
+	    step = LAMBDA.mySplit(correct[i]);
+	    if (i==0) {
+		step.unshift("Initial &lambda; exp: ");
+	    } else{
+		step.unshift("Step " + i + ": ");
+	    }
+	    correct2D.push(step);
+	}
+	var matrix = [ modeljsav.ds.array(correct2D[0],{left: 20}) ];
+	arr = matrix[0];
+	setArrayCellsWidth();
 	modeljsav.displayInit();
-	for(var i = 1; i < arraySize; i++) {
-	    modelArray.highlight(i);
-	    modelArray.unhighlight(i-1);
+
+	for(var row=1; row<correct2D.length; row++) {
+	    matrix.push(modeljsav.ds.array(correct2D[row],
+			{ relativeTo: matrix[matrix.length-1], 
+			  left: 0, top: 0,
+			  anchor: "left bottom",
+			  myAnchor: "left top"}));
+	    arr = matrix[row];
+	    setArrayCellsWidth();
 	    modeljsav.gradeableStep();
 	}
-	modelArray.highlight();
-	modeljsav.gradeableStep();
-	return modelArray;
+
+	modeljsav.recorded();
+
+
+
+	return matrix;
     }
     
     function init() {
 	var vars = "uvxyz";
 	var numSteps = 4;  // average number of reductions in this exercise
 	var e;
-	var correct = [];
+	correct = [];
 	while (correct.length < numSteps-1 ||
 	       correct.length > numSteps+1) {
 	    e = L.getRndExp(1,2,5,vars,"");
@@ -36,6 +76,7 @@ console.log("loading applicative order Pro --- LAMBDA = " + LAMBDA);
 	}
 	correct = correct.map(function(a) { return a[0]; });
 	jsavArray = av.ds.array( correct, {visible: false});
+	$theExpression.html(correct[0]);
 	return jsavArray;
     }
 	

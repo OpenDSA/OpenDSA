@@ -85,6 +85,6 @@ $(document).ready( function() {
     LAMBDA.getRndExp2 = getRndExp2;
     LAMBDA.getRnd = getRnd;
 
-console.log("Done loading randomExamples.js --- LAMBDA = " + LAMBDA);
+
 });
 
