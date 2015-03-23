@@ -31,7 +31,6 @@
 
     av.container.find(".jsavcanvas").css("min-height", 450);
 
-
     // generate values for the stack
     insertValues = generateValues(insertSize, 10, 100); //No duplicates!
 
@@ -57,16 +56,7 @@
         splitNode(this);
       } else {
         // insert value to node
-        if (!stack.size()) { return; } // return if stack is empty
-        var newValues = this.value().slice(0, -1).concat(stack.first().value()).sort(function (a, b) {
-          if (a === "") { a = 1000; }
-          if (b === "") { b = 1000; }
-          return a - b;
-        });
-        this.value(newValues);
-        stack.removeFirst();
-        stack.layout();
-        av.gradeableStep();
+        insertValueToNode(this, stack);
       }
     });
 
@@ -74,14 +64,40 @@
   }
 
   function modelSolution(jsav) {
+    var modelStack = jsav.ds.stack(insertValues, { center: true });
+    modelStack.layout();
     var modelTree = jsav.ds.arraytree(3);
-    modelTree.root([5, 8, ""]);
-    modelTree.root().addChild([1, 2, 3]);
-    modelTree.root().addChild([5, 6, 7]);
-    modelTree.root().addChild([8, 9, 10]);
     modelTree.layout();
 
-    jsav._undo = [];
+    jsav.displayInit();
+
+    function keyFilter(v) { return v && v <= val; }
+    function checkAndSplit(node) {
+      if (isFull(node)) {
+        splitNode(node);
+        return true;
+      }
+      return false;
+    }
+    while (modelStack.size()) {
+      // the value we are inserting
+      var val = modelStack.first().value();
+      // find the node
+      var node = modelTree.root();
+      do {
+        // split the node if it is full
+        if (checkAndSplit(node)) {
+          node = node.parent();
+        }
+        if (node.childnodes.length) {
+          // the position of the next child we want to explore
+          var pos = node.value().filter(keyFilter).length;
+          node = node.child(pos);
+        }
+      } while (node.childnodes.length || isFull(node));
+      // insert the value into the found node
+      insertValueToNode(node, modelStack);
+    }
 
     return modelTree;
   }
@@ -158,8 +174,26 @@
     av.gradeableStep();
   }
 
+  function insertValueToNode(node, stack) {
+    if (!stack.size()) { return; } // return if stack is empty
+    var newValues = node.value().slice(0, -1).concat(stack.first().value()).sort(function (a, b) {
+      if (a === "") { a = 1000; }
+      if (b === "") { b = 1000; }
+      return a - b;
+    });
+    node.value(newValues);
+    stack.removeFirst();
+    stack.layout();
+    stack.jsav.gradeableStep();
+  }
+
   // create exercise and reset it
-  var exercise = av.exercise(modelSolution, initialize, {feedback: "atend"});
+  var exercise = av.exercise(modelSolution, initialize, {
+    feedback: "atend",
+    modelDialog: {
+      width: 750
+    }
+  });
   exercise.reset();
 
 }(jQuery));
