@@ -4,6 +4,9 @@
 
 "use strict";
 
+var A = SLang.absyn;
+var E = SLang.env;
+
 function nth(n) {
     switch (n+1) {
     case 1: return "first";
@@ -19,7 +22,8 @@ function typeCheckPrimitiveOp(op,args,typeCheckerFunctions) {
     }
     for( var index = 0; index<numArgs; index++) {
 	if ( ! (typeCheckerFunctions[index])(args[index]) ) {
-	    throw "The " + nth(index) + " argument of '" + op + "' has the wrong type.";
+	    throw new Error("The " + nth(index) + " argument of '" + op + 
+			    "' has the wrong type.");
 	}
     }
 }
@@ -27,62 +31,56 @@ function typeCheckPrimitiveOp(op,args,typeCheckerFunctions) {
 function applyPrimitive(prim,args) {
     switch (prim) {
     case "+": 
-	typeCheckPrimitiveOp(prim,args,[SLang.env.isNum,SLang.env.isNum]);
-	return SLang.env.createNum( SLang.env.getNumValue(args[0]) + SLang.env.getNumValue(args[1]));
+	typeCheckPrimitiveOp(prim,args,[E.isNum,E.isNum]);
+	return E.createNum( E.getNumValue(args[0]) + E.getNumValue(args[1]));
     case "*": 
-	typeCheckPrimitiveOp(prim,args,[SLang.env.isNum,SLang.env.isNum]);
-	return SLang.env.createNum( SLang.env.getNumValue(args[0]) * SLang.env.getNumValue(args[1]));
+	typeCheckPrimitiveOp(prim,args,[E.isNum,E.isNum]);
+	return E.createNum( E.getNumValue(args[0]) * E.getNumValue(args[1]));
     case "add1": 
-	typeCheckPrimitiveOp(prim,args,[SLang.env.isNum]);
-	return SLang.env.createNum( 1 + SLang.env.getNumValue(args[0]) );
+	typeCheckPrimitiveOp(prim,args,[E.isNum]);
+	return E.createNum( 1 + E.getNumValue(args[0]) );
     }
 }
 function evalExp(exp,envir) {
-    if (SLang.absyn.isIntExp(exp)) {
-	return SLang.env.createNum(SLang.absyn.getIntExpValue(exp));
-    }
-    else if (SLang.absyn.isVarExp(exp)) {
-	return SLang.env.lookup(envir,SLang.absyn.getVarExpId(exp));
-    }
-    else if (SLang.absyn.isFnExp(exp)) {
-	return SLang.env.createClo(SLang.absyn.getFnExpParams(exp),SLang.absyn.getFnExpBody(exp),envir);
-    }
-    else if (SLang.absyn.isAppExp(exp)) {
-	var f = evalExp(SLang.absyn.getAppExpFn(exp),envir);
-	var args = SLang.absyn.getAppExpArgs(exp).map( function(arg) { return evalExp(arg,envir); } );
-	if (SLang.env.isClo(f)) {
-	    return evalExp(SLang.env.getCloBody(f),SLang.env.update(SLang.env.getCloEnv(f),SLang.env.getCloParams(f),args));
-	}
-	else {
-	    throw f + " is not a closure and thus cannot be applied.";
-	}
-    } else if (SLang.absyn.isPrimAppExp(exp)) {
-        return applyPrimitive(SLang.absyn.getPrimAppExpPrim(exp),
-			      SLang.absyn.getPrimAppExpArgs(exp).map( function(arg) { 
+    if (A.isIntExp(exp)) {
+	return E.createNum(A.getIntExpValue(exp));
+    } else if (A.isVarExp(exp)) {
+	return E.lookup(envir,A.getVarExpId(exp));
+    } else if (A.isFnExp(exp)) {
+	return E.createClo(A.getFnExpParams(exp),A.getFnExpBody(exp),envir);
+    } else if (A.isAppExp(exp)) {
+	var f = evalExp(A.getAppExpFn(exp),envir);
+	var args = A.getAppExpArgs(exp).map( 
+                              function(arg) { return evalExp(arg,envir); } );
+	if (E.isClo(f)) {
+	    return evalExp(E.getCloBody(f),
+			   E.update(E.getCloEnv(f), E.getCloParams(f),args));
+	} else { throw f + " is not a closure and thus cannot be applied."; } 
+    } else if (A.isPrimAppExp(exp)) {
+        return applyPrimitive(A.getPrimAppExpPrim(exp),
+			      A.getPrimAppExpArgs(exp).map( function(arg) { 
                                   return evalExp(arg,envir); } ));
-    } else {
-	throw "Error: Attempting to evaluate an invalid expression";
-    }
+    } else { throw "Error: Attempting to evaluate an invalid expression"; }
 }
 function myEval(p) {
-    if (SLang.absyn.isProgram(p)) {
-	return evalExp(SLang.absyn.getProgramExp(p),SLang.env.initEnv());
+    if (A.isProgram(p)) {
+	return evalExp(A.getProgramExp(p),E.initEnv());
     } else {
 	window.alert( "The input is not a program.");
     }
 }
 function expToString(exp) {
-    return "<omitted>";
+    return JSON.stringify(exp);
 }
 function valueToString(value) {
 
 function envToString(e) {
     function aux(e) {
-	if (SLang.env.isEmptyEnv(e)) {
+	if (E.isEmptyEnv(e)) {
 	    return "EmptyEnv";
 	} else {
-	    var result = "|| " + aux(SLang.env.getEnvEnv(e));
-            var bindings = SLang.env.getEnvBindings(e);
+	    var result = "|| " + aux(E.getEnvEnv(e));
+            var bindings = E.getEnvBindings(e);
 	    for(var i=0; i<bindings.length; i++) {
 		result = bindings[i][0] + " = " +valueToString(bindings[i][1]) + " " + result;
 	    }
@@ -93,12 +91,12 @@ function envToString(e) {
     return "{ " + aux(e) + " }";
 }
 
-    if (SLang.env.isNum(value)) {
-	return SLang.env.getNumValue(value)+"";
+    if (E.isNum(value)) {
+	return E.getNumValue(value)+"";
     }
-    else if (SLang.env.isClo(value)) {
-	return "Closure( params=" + SLang.env.getCloParams(value) + " , body="+ 
-	expToString(SLang.env.getCloBody(value)) + " , env=" + envToString(SLang.env.getCloEnv(value)) +" )";
+    else if (E.isClo(value)) {
+	return "Closure( params=" + E.getCloParams(value) + " , body="+ 
+	expToString(E.getCloBody(value)) + " , env=" + envToString(E.getCloEnv(value)) +" )";
     }
 }
 
@@ -123,7 +121,7 @@ function interpret(source) {
 function stringRepresentation(value) {
     switch (value[0]) {
     case "Num": 
-	return SLang.env.getNumValue(value);
+	return E.getNumValue(value);
     case "Clo":
 	return;
     }

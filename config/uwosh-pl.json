@@ -38,8 +38,39 @@
 	    "PL/LC/ToDo": {
 		"long_name": "To do",
 		"dispModComp": false,	
-		"exercises": {}
-	    }	    
+		"exercises": {
+		}
+	    },
+	    "PL/LC/ApplicativeOrder": {
+		"long_name": "Applicative-order Reduction Strategy",
+		"dispModComp": false,	
+		"exercises": {
+		    "applicativeNormalOrderPro": {
+			"long_name": "Applicative-order reduction Proficiency Exercise",
+			"required": false,
+			"points": 0.0,
+			"threshold": 1.0,
+                        "exer_options": {
+			    "strategy": "applicative"
+			}
+		    }
+		}
+	    },
+	    "PL/LC/NormalOrder": {
+		"long_name": "Normal-order Reduction Strategy",
+		"dispModComp": false,	
+		"exercises": {
+		    "applicativeNormalOrderPro": {
+			"long_name": "Normal-order reduction Proficiency Exercise",
+			"required": false,
+			"points": 0.0,
+			"threshold": 1.0,
+                        "exer_options": {
+			    "strategy": "normal"
+			}
+		    }
+		}
+	    }
 	},
 	"Appendices": {
 	    "PL/PL_Glossary": {
@@ -47,6 +78,5 @@
 		"exercises": {}
 	    }
 	}	
-	
     }
 }

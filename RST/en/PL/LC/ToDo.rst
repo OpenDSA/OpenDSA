@@ -216,6 +216,8 @@ As a final test of your proficiency in doing beta reductions, try doing
 
 2. All the steps in a complete normal order reduction
 
+.. avembed:: AV/PL/profexercises/applicativeOrderPro.html pe
+
 .. odsalink::  AV/PL/main.css
 
 

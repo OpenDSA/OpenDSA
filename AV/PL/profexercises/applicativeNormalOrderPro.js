@@ -1,6 +1,8 @@
 
 $(document).ready(function () {
 
+    var normalOrder = PARAMS["strategy"] === "normal";
+    
     var L = LAMBDA;
     var settings = new JSAV.utils.Settings($(".jsavsettings"));
     var av = new JSAV($('.avcontainer'), {settings: settings});
@@ -8,7 +10,7 @@ $(document).ready(function () {
     var tell = function (msg, color) { av.umsg(msg, {color: color}); };
     var $theExpression = $("#expression");
     var correct;  // array of lamba expressions (each one as a string)
-    var correctTrimmed;
+    var correctTrimmed; // same as above but with ^'s but no spaces
     var step;
 
     var setArrayCellsWidth = function () {
@@ -74,14 +76,24 @@ $(document).ready(function () {
     
     function init() {
 	var vars = "uvxyz";
-	var numSteps = 4;  // average number of reductions in this exercise
-	var e;
-	correct = [];
-	while (correct.length < numSteps-1 ||
-	       correct.length > numSteps+1) {
-	    e = L.getRndExp(1,2,4,vars,"");
-	    correct = L.reduceToNormalForm(e,"applicative");
+	var numSteps = 3;  // number of reductions in this exercise
+	var e, numCols;
+	if (normalOrder) {
+	    $("#strategy").html("normal-order");
 	}
+	correct = [];
+	while (correct.length-1 < numSteps ||
+	       correct.length-1 > numSteps+1) {
+	    e = L.getRndExp(1,2,5,vars,"");
+	    correct = L.reduceToNormalForm(e,
+			   normalOrder ? "normal" : "applicative");
+	    numCols = correct.map(function (x) { return x[0].length; }).reduce(function(a,b) { return Math.max(a,b);} , -1);
+	    if (correct[0].length > 1  || // eliminate infinite loops
+                numCols > 50) {           // eliminate long expressions
+		correct = [];
+	    }
+	}
+	console.log(numCols);
 
 	correct = correct.map(function(a) { return a[0]; });
 	$theExpression.html(correct[0]);
@@ -94,14 +106,18 @@ $(document).ready(function () {
     }
 	
 	function help() {
-	    alert("At each step of the applicative-order reduction, you must" +
-		  " pick the leftmost innermost \u03B2-redex and reduce it.");
+	    alert("At each step of the " +
+		  (normalOrder ? "normal" : "applicative") +
+		  "-order reduction, you must pick the leftmost " +
+		  (normalOrder ? "outermost" : "innermost") +		  
+		  " \u03B2-redex and reduce it.");
 	}
 
 	function about() {
 	    alert("This exercise was developed by David Furcy.\n\nSolve it" +
-		  " to demonstrate that you have mastered the" +
-		  " process of applicative-order reduction in the" +
+		  " to demonstrate that you have mastered the process of " +
+		  (normalOrder ? "normal" : "applicative") +
+		  "-order reduction in the" +
 		  " \u03BB-calculus.");
 	}
 

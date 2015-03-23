@@ -1,5 +1,6 @@
-#container {
-  width: 800px;
+.avcontainer, .jsavcanvas {
+  width: 900px;;
+  max-width: 900px;;
 }
 
 .jsavcontrols {
