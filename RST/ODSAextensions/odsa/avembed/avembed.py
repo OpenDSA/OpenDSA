@@ -77,6 +77,9 @@ def getDimensions(exer_path):
   # JavaScript conditionals interfered with the parsing, so I reverted
   # to reading the file line-by-line and just looking for and parsing
   # the body tag
+  if '?' in exer_path:
+    exer_path = exer_path[:exer_path.index('?')]
+
   with open(exer_path, 'r') as exer_file:
     lines = exer_file.readlines()
 
@@ -186,6 +189,10 @@ class avembed(Directive):
     self.options['content'] = ''
     self.options['exer_name'] = os.path.basename(av_path).partition('.')[0]
 
+    # Use reasonable defaults
+    self.options['width'] = 950
+    self.options['height'] = 650
+
     # Set av_address and dimensions (depends on whether it is an AV or a KA exercise)
     if self.options['type'] == 'ka':
       self.options['av_address'] = os.path.relpath(conf.exercises_dir, conf.ebook_path)
@@ -197,10 +204,6 @@ class avembed(Directive):
       else:
         print_err('WARNING: Unable to parse dimensions of %s' % av_path)
 
-        # Use reasonable defaults
-        self.options['width'] = 950
-        self.options['height'] = 650
-
         if 'err' in dimensions:
           print_err('  %s' % str(dimensions['err']))
 
@@ -211,11 +214,16 @@ class avembed(Directive):
         self.options['height'] = embed[3]
     else:
       self.options['av_address'] = os.path.relpath(conf.av_dir, conf.ebook_path).replace('\\', '/')
-      self.options['width'] = 950
-      self.options['height'] = 450
 
     # Append AV path and URL parameters to base av_address
-    self.options['av_address'] += '/%s?%s' % (av_path, urllib.urlencode(url_params).replace('&', '&amp;'))
+    self.options['av_address'] += '/%s' % av_path
+
+    if '?' in self.options['av_address']:
+      self.options['av_address'] += '&amp;'
+    else:
+      self.options['av_address'] += '?'
+
+    self.options['av_address'] += urllib.urlencode(url_params).replace('&', '&amp;')
 
     # Load translation
     langDict = loadTable()
