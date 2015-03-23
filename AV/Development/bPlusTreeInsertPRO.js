@@ -1,4 +1,4 @@
-/* global ODSA, ClickHandler */
+/* global ODSA, PARAMS, ClickHandler */
 (function ($) {
   "use strict";
   // AV variables
@@ -6,7 +6,7 @@
       tree,
       stack,
       insertSize = 5,
-      nodeSize = 3,
+      nodeSize = parseInt(PARAMS.nodesize || 3, 10),
 
       // Configurations
       config = ODSA.UTILS.loadConfig({av_container: "jsavcontainer"}),
@@ -41,7 +41,7 @@
       tree.clear();
     }
     //create binary tree
-    tree = new av.ds.arraytree({nodesize: 3});
+    tree = new av.ds.arraytree({nodesize: nodeSize});
     tree.root([10, 16]);
     tree.root().addChild([2, 4]);
     tree.root().addChild([10, 12]);
@@ -54,6 +54,8 @@
         // click on non-leaf node -> split this node
         splitNode(this);
       } else {
+        // insert value to node
+        if (!stack.size()) { return; } // return if stack is empty
         var newValues = this.value().slice(0, -1).concat(stack.first().value()).sort(function (a, b) {
           if (a === "") { a = 1000; }
           if (b === "") { b = 1000; }
@@ -102,6 +104,7 @@
   function splitNode(node) {
     var tree = node.container,
         av = tree.jsav,
+        nodeSize = tree.options.nodesize,
         parent = node.parent(),
         arr = node.value(),
         sliceInd = Math.ceil(nodeSize / 2),
@@ -126,7 +129,7 @@
     // if the split node was a non-leaf node
     if (node.childnodes.length) {
       // give half of the child nodes to the new node
-      var childSliceInd = Math.ceil((nodeSize + 1) / 2),
+      var childSliceInd = Math.floor((nodeSize + 1) / 2),
           leftChildren = node.childnodes.slice(0, childSliceInd),
           rightChildren = node.childnodes.slice(childSliceInd);
       node._setchildnodes(leftChildren);
