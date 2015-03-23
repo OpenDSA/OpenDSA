@@ -44,7 +44,7 @@
     this.jsav = jsav; // Set the JSAV object for this tree.
     // Set the options for the tree
     // Use a smaller node gap as default
-    this.options = $.extend({ nodegap: 20 },options);
+    this.options = $.extend({ nodegap: 20, nodesize: 3 }, options);
 
     /**
      * Generate the element where this tree is going to be placed. The element
@@ -89,8 +89,12 @@
     JSAV.utils._helpers.handlePosition(this);
     // Create an empty node and set it as the root
     this.rootnode = this.newNode(null, null);
-    // TODO: Why does the child role need to be declared as root?
+    // Set the role of the node to root.
+    // The roles can be used for instance to highlight the root with CSS
+    // Or in a binary tree, make the left child nodes blue, and right child nodes red
+    // Example: [data-child-role|=root] { box-shadow: 30px 30px 30px #f00; }
     this.rootnode.element.attr("data-child-role", "root");
+    // Set the root id to the tree
     // TODO: What is the purpose of the IDs?
     this.element.attr({"data-root": this.rootnode.id(), "id": this.id()});
 
@@ -220,9 +224,8 @@
     var parent_options = parent ? parent.options: {};
     this.options = $.extend(true, {visible: true}, parent_options, options);
 
-    if (value === null) { // Set default value if none was provided.
-      value = [""];
-    }
+    // Make sure the value is correct. Fix if needed.
+    value = this._fixvalue(value);
 
     // Generate element where the Array Tree Node will be placed in.
     this.element = this.options.nodeelement ||
@@ -270,6 +273,33 @@
 
     // Initialized Array Tree Node children array.
     this.childnodes = [];
+  };
+
+  /**
+    Helper function that takes a value (array) as a parameter and returnes
+    a truncated/extended version of the array. The size of the returned array
+    is the same as nodesize in the arraytrees options.
+   */
+  arrayTreeNodeProto._fixvalue = function (value) {
+    // Set default value if none was provided
+    if (!value) {
+      value = [];
+    }
+    // If value is not an array, convert it to an array
+    if (!$.isArray(value)) {
+      value = [value];
+    }
+    // Truncate value array if it's too long
+    var nodesize = this.container.options.nodesize;
+    if (value.length > nodesize) {
+      value = value.slice(0, nodesize);
+    }
+    // Extend value with empty strings if it is too short
+    if (value.length < nodesize) {
+      value = value.concat(new Array(nodesize - value.length).join(",").split(","));
+    }
+    // Returen the new value
+    return value;
   };
   
   /**
@@ -326,15 +356,11 @@
       return this.node_array._values.slice(0);
     } else if ($.isArray(index)) {
       // replace all values in the array with the new array
-      // TODO: What if the new array (index) is smaller than node_array???
-      // Looks like when the new array (index) is smaller the remaining elements
-      // are left untouched. Whereas if it is bigger, the array grows. Does it
-      // make sense to leave it as it is?
-      for (var i = 0; i < index.length; i ++) {
-        this.node_array.value(i, index[i]);
+      var value = this._fixvalue(index);
+      for (var i = 0; i < value.length; i ++) {
+        this.node_array.value(i, value[i]);
       }
       this.node_array.layout();
-      // ...
     } else {
       // call the array's value method
       var result = this.node_array.value(index, newValue);

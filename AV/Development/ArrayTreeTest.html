@@ -26,7 +26,7 @@
     var jsav = new JSAV("jsavcontainer");
     jsav.recorded();
 
-    var tree = new jsav.ds.arraytree(3);
+    var tree = new jsav.ds.arraytree({ nodesize: 3 });
 
     tree.root([1, 1, 1]);
 

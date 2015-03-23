@@ -41,11 +41,11 @@
       tree.clear();
     }
     //create binary tree
-    tree = new av.ds.arraytree(3);
-    tree.root([10, 16, ""]);
-    tree.root().addChild([2, 4, ""]);
-    tree.root().addChild([10, 12, ""]);
-    tree.root().addChild([16, 18, ""]);
+    tree = new av.ds.arraytree({nodesize: 3});
+    tree.root([10, 16]);
+    tree.root().addChild([2, 4]);
+    tree.root().addChild([10, 12]);
+    tree.root().addChild([16, 18]);
 
     tree.layout();
 
@@ -113,13 +113,6 @@
       parent = tree.newNode(new Array(nodeSize).join(",").split(","));
       tree.root(parent, {hide: false});
       parent.addChild(node);
-    }
-    // fill left and right with empty strings until they are the correct size
-    while (left.length < nodeSize) {
-      left.push("");
-    }
-    while (right.length < nodeSize) {
-      right.push("");
     }
     // create a new node and give the right half to it
     var newNode = tree.newNode(right, parent),
