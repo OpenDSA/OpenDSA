@@ -71,16 +71,14 @@ $(document).ready(function () {
 
 	modelArray.highlight();
 	modeljsav.gradeableStep();
-
 	modeljsav.recorded();
-
 	return modelArray;
     }
     
     function init() {
 	var vars = "uvxyz";
 	var numSteps = 3;  // minimum number of reductions in this exercise
-	var e, numCols;
+	var e;
 	if (normalOrder) {
 	    $("#strategy").html("normal-order");
 	}
@@ -106,14 +104,23 @@ $(document).ready(function () {
 	while (correct.length < numSteps+1 || correct.length > numSteps+2) {
 	    e = L.getRndExp(1,2,6,vars,"");
 	    normalRed = L.reduceToNormalForm(e,"normal");
-	    applicativeRed = L.reduceToNormalForm(e,"applicative");
-	    
-	    if ( infiniteLoop(normalRed) || infiniteLoop(applicativeRed) ||
-		 sameReduction(normalRed,applicativeRed) ||
-		 tooLong(normalRed) || tooLong(applicativeRed) ) {
-		correct = [];
-	    } else {
-		correct = normalOrder ? normalRed : applicativeRed;
+	    applicativeRed = L.reduceToNormalForm(e,"applicative");   
+	    if (normalOrder) {
+		if ( infiniteLoop(normalRed) ||
+		     sameReduction(normalRed,applicativeRed) ||
+		     tooLong(normalRed) ) {
+		    correct = [];
+		} else {
+		    correct = normalRed;
+		}
+	    } else { // applicative order
+		if ( infiniteLoop(applicativeRed) ||
+		     sameReduction(normalRed,applicativeRed) ||
+		     tooLong(applicativeRed) ) {
+		    correct = [];
+		} else {
+		    correct = applicativeRed;
+		}
 	    }
 	}
 	correct = correct.map(function(a) { return a[0]; });
