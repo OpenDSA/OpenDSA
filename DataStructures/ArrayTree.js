@@ -42,7 +42,9 @@
   arrayTreeProto.init = function (jsav, options) {
     this._layoutDone = false; // Set layout as done.
     this.jsav = jsav; // Set the JSAV object for this tree.
-    this.options = options; // Set the options for the tree
+    // Set the options for the tree
+    // Use a smaller node gap as default
+    this.options = $.extend({ nodegap: 20 },options);
 
     /**
      * Generate the element where this tree is going to be placed. The element
