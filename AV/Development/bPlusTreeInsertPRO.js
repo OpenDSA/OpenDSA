@@ -5,8 +5,8 @@
   var insertValues,
       tree,
       stack,
-      insertSize = 5,
       nodeSize = parseInt(PARAMS.nodesize || 3, 10),
+      insertSize = parseInt(PARAMS.insertsize || nodeSize * 4, 10),
 
       // Configurations
       config = ODSA.UTILS.loadConfig({av_container: "jsavcontainer"}),
@@ -16,6 +16,12 @@
 
       // Create a JSAV instance
       av = new JSAV($("#jsavcontainer"));
+
+  if (nodeSize < 3) {
+    window.alert("Split doesn't work correctly for internal nodes when" +
+      " nodesize is less than 3.\n Nodesize has been set to 3.");
+    nodeSize = 3;
+  }
 
   av.recorded(); // we are not recording an AV with an algorithm
 
@@ -27,7 +33,7 @@
 
 
     // generate values for the stack
-    insertValues = [6, 8, 11, 5, 1, 7, 14, 3, 13, 20]; //No duplicates!
+    insertValues = generateValues(insertSize, 10, 100); //No duplicates!
 
     // clear possible old stack and create a new one
     if (stack) {
@@ -42,10 +48,6 @@
     }
     //create binary tree
     tree = new av.ds.arraytree({nodesize: nodeSize});
-    tree.root([10, 16]);
-    tree.root().addChild([2, 4]);
-    tree.root().addChild([10, 12]);
-    tree.root().addChild([16, 18]);
 
     tree.layout();
 
