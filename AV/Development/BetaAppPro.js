@@ -51,7 +51,7 @@
 			ansArray = ansArr[rnd];
 			arraySize = ansArray.length;
 			position = 1;
-			jsavArray = av.ds.array(ansArray, {visible: true});
+			jsavArray = av.ds.array(ansArray, {visible: false});
 			return jsavArray;
 		}
 		

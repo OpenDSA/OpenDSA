@@ -24,6 +24,8 @@ JavaScript, Java, C++, etc.
 
 .. index:: lambda calculus ; syntax
 
+.. _BNF-grammar-for-LC: 
+
 ===============================
  Syntax of the Lambda Calculus
 ===============================
@@ -33,7 +35,10 @@ Programs in the lambda calculus are called :dfn:`lambda expressions`
 kinds. In fact, here is a complete BNF grammar for the lambda
 calculus:
 
-.. _grammar:
+
+.. index:: lambda calculus ; BNF grammar
+
+
 
 .. math::
 
@@ -48,20 +53,21 @@ calculus:
      lambda calculus; function abstraction
      lambda calculus; lambda abstraction
      lambda calculus; function application
-
+     lambda calculus ; anonymous function
 
 
 This BNF grammar tells us that expressions in the lambda calculus come
 in one of three flavors:
 
-  1. A :dfn:`variable` (the first production above). Typically, we
+  1. A :dfn:`variable` (the first production above): typically, we
      will use a single letter, with an optional integer subscript, to
-     denote a variable. So, :math:`x, y, a_1, p_2` are examples of
-     variables.
+     denote a variable. So, :math:`x, y, a_1`, and :math:`p_2` are
+     examples of variables.
 
-  2. A :dfn:`function abstraction` (the second production above).
-     This type of :math:`\lambda` expressions, also called
-     :term:`lambda abstraction`s, corresponds to a function
+
+  2. A :dfn:`function abstraction` (the second production above):
+     this type of :math:`\lambda` expressions, also called a
+     :term:`lambda abstraction`, corresponds to a function
      definition, which contains two components: the formal parameter
      of the function (there must be exactly one parameter, namely the
      :math:`< var >` non-terminal in the second production above) and
@@ -70,10 +76,10 @@ in one of three flavors:
      :math:`\lambda x.y` is the function whose formal parameter is
      :math:`x` and whose body is :math:`y`. Note that the non-terminal
      :math:`<var>` after the :math:`\lambda` terminal is *not* the
-     name of the function: in fact, all functions in the lambda calculus
+     name of the function. In fact, all functions in the lambda calculus
      are anonymous.
 
-  3. An :dfn:`application` (the third production above). This type of
+  3. An :dfn:`application` (the third production above): this type of
      :math:`\lambda` expressions corresponds to a function call (or
      application, or invocation), which contains two components: the
      function being called, followed by the argument that is passed
@@ -100,7 +106,7 @@ The grammar above is quite concise, since it contains only two
 non-terminals. Yet it generates an infinite set of expressions that
 represent all computable functions! Recall that the expressive power
 of BNF grammars comes from recursion, which is present in both the
-second and third productions in the grammar above.
+second and third productions in the grammar  above.
 
 The following slideshow demonstrates how to use the grammar above
 to build the parse tree for a given lambda expression.

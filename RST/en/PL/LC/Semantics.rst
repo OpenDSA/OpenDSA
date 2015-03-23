@@ -15,7 +15,7 @@
 In the previous section, we covered the entirety of the syntax of the
 lambda calculus. The rest of this chapter, including this section,
 deals with the semantics of the lambda calculus, that is, the meaning
-of lambda expressions, that is, how they are interpreted and what
+of lambda expressions, in other words, how they are interpreted and what
 their value is. Clearly, the expressive power of the lambda calculus
 is outstanding: its tiny syntax will allow us to express a rich set of
 computations, in fact, all possible computations (for more on this,
@@ -24,9 +24,10 @@ look up the Church-Turing thesis).
 Note that all programs in the lambda calculus are expressions, that
 is, programs that get evaluated for their value. The lambda calculus
 does not contain any statements, that is, commands that get executed
-for their side effects (e.g., modifying the contents of memory or
-sending a string to the standard output stream). Therefore, the lambda
-calculus is a purely functional language.
+for their side effects, for example, modifying the contents of memory
+via assignment statements or sending a string to the standard output
+stream via print statements. Therefore, the lambda calculus is a
+purely functional language.
 
 Now, we will explain the meaning of the three types of lambda
 expressions whose syntax is given in the grammar_ above. For each type

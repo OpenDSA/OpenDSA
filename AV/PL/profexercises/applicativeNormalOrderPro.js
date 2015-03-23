@@ -1,5 +1,3 @@
-"use strict";
-
 /* global PARAMS, LAMBDA, alert */
 
 $(document).ready(function () {
