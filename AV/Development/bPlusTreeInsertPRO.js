@@ -6,7 +6,7 @@
       tree,
       stack,
       nodeSize = parseInt(PARAMS.nodesize || 3, 10),
-      insertSize = parseInt(PARAMS.insertsize || nodeSize * 4, 10),
+      insertSize = Math.min(20, parseInt(PARAMS.insertsize || nodeSize * 4, 10)),
 
       // Configurations
       config = ODSA.UTILS.loadConfig({av_container: "jsavcontainer"}),
@@ -38,8 +38,10 @@
     if (stack) {
       stack.clear();
     }
-    stack = av.ds.stack(insertValues, {center: true, element: $("#stackcontainer").append("<div></div>").find("div")});
+    var $stackcontainer = $("#stackcontainer");
+    stack = av.ds.stack(insertValues, {center: true, element: $stackcontainer.append("<div></div>").find("div")});
     stack.layout();
+    $stackcontainer.css("min-height", $stackcontainer.height());
 
     //clear old binary tree
     if (tree) {
