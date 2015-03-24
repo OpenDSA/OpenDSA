@@ -12,10 +12,11 @@
       config = ODSA.UTILS.loadConfig({av_container: "jsavcontainer"}),
       interpret = config.interpreter,
       code = config.code,
+      settings = config.getSettings(),
       codeOptions = {after: {element: $(".instructions")}, visible: true},
 
       // Create a JSAV instance
-      av = new JSAV($("#jsavcontainer"));
+      av = new JSAV($("#jsavcontainer"), {settings: settings});
 
   if (nodeSize < 3) {
     window.alert("Split doesn't work correctly for internal nodes when" +
