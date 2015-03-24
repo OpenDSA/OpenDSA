@@ -371,6 +371,11 @@
     return this;
   };
 
+  /**
+   *  Gets or sets the parent of the array tree node.
+   *  - Works just like parent() for other JSAV trees, except that it creates an ArrayTreeEdge
+   *    to the parent if it is needed.
+   */
   arrayTreeNodeProto.parent = function (newParent, options) {
     if (typeof newParent === "undefined") {
       return this.parentnode;
@@ -394,6 +399,42 @@
     }
   };
 
+  /**
+   *  Used by the JSAV grader to check if two subtrees are equal (recursively).
+   *  - Works just like equals() for other JSAV trees, except that it is able to
+   *    compare array values.
+   */
+  arrayTreeNodeProto.equals = function (otherNode, options) {
+    if (!otherNode || this.value().join() !== otherNode.value().join()) {
+      return false;
+    }
+    if (options && 'css' in options) { // if comparing css properties
+      var cssEquals = JSAV.utils._helpers.cssEquals(this, otherNode, options.css);
+      if (!cssEquals) { return false; }
+    }
+    if (options && 'class' in options) { // if comparing class attributes
+      var classEquals = JSAV.utils._helpers.classEquals(this, otherNode, options["class"]);
+      if (!classEquals) { return false; }
+    }
+    // compare edge style
+    if (this.edgeToParent()) {
+      var edgeEquals = this.edgeToParent().equals(otherNode.edgeToParent(),
+                                        $.extend({}, options, {dontCheckNodes: true}));
+      if (!edgeEquals) { return false; }
+    }
+    // compare children
+    var ch = this.children(),
+        och = otherNode.children();
+    if (ch.length !== och.length) {
+      return false;
+    }
+    for (var j = 0, l = ch.length; j < l; j++) {
+      if (ch[j] && och[j] && !ch[j].equals(och[j], options)) {
+        return false;
+      }
+    }
+    return true; // values equal, nothing else to compare
+  };
 
   // ---------------------------------------------------------------------------
   // Add interface for array methods
