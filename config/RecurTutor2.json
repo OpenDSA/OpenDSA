@@ -108,7 +108,7 @@
           "BinaryTreeLocalSumm": {
             "long_name": "Binary Tree Local Traversal Exercises",
             "required": true,
-            "points": 0.0,
+            "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           }
@@ -138,8 +138,8 @@
           "MultipleBinaryTreesSumm": {
             "long_name": "Multiple Binary Trees Exercises",
             "required": true,
-            "points": 1.0,
-            "threshold": 2.0,
+            "points": 3.0,
+            "threshold": 3.0,
             "showhide": "Show"
           }
         }
@@ -150,7 +150,7 @@
           "BinaryTreeSumm": {
             "long_name": "Binary Tree Summary Exercises",
             "required": true,
-            "points": 0.0,
+            "points": 3.0,
             "threshold": 3.0,
             "showhide": "Show"
           }
