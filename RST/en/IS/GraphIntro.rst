@@ -293,6 +293,9 @@ but not when the graph is closer to full.
 
    Module summary question battery.
 
+.. avembed:: Exercises/Development/GraphIntroSumm.html ka 
+
+
 Notes
 -----
 

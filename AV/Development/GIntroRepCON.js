@@ -36,14 +36,16 @@ $(document).ready(function () {
     	{style: "table", top: mTop, left: mLeft});
 
     var col = av.label(" 0 1 2 3 4", {top: 0, left: 508}).addClass("addSpace");
-    var row = av.label(" 0 1 2 3 4", {top: 10, left: 480}).addClass("addSpace").addClass("vertical-text");
+    var row = av.label(" 0  1  2  3  4", {top: 160, left: 480}).addClass("vertical-text").addClass("addSpace");
 
 
-    mat.css("matrixBorder");
+   
     mat.layout();
     av.step();
    
     //slide 3 
+    col.hide();
+    row.hide();
     av.umsg("This is the adjacency list representation of the directed graph"); 
     mat.hide();
     graph.hide();
