@@ -4,7 +4,10 @@
       ".exerciseTitle": "B<sup>+</sup> Tree Insertion",
       "av_Authors": "Kasper Hellström",
       ".instructLabel": "Instructions:",
-      ".instructions": "In this exercise your job is to insert the values from the stack to the B<sup>+</sup> tree. <br><strong>NB:</strong> The B<sup>+</sup> tree in this exercise uses a <strong>top-down splitting approach</strong>, where a full node is split every time it is encountered by the search/insert algorithm.<br><br>To split a full node, simply click on it. If you click on a non-full node, the topmost values from the stack will be inserted to the clicked node (the value is automatically inserted to the correct index/position)."
+      ".instructions": "In this exercise your job is to insert the values from the stack to the B<sup>+</sup> tree. <br><strong>NB:</strong> The B<sup>+</sup> tree in this exercise uses a <strong>top-down splitting approach</strong>, where a full node is split every time it is encountered by the search/insert algorithm.<br><br>To split a full node, simply click on it. If you click on a non-full node, the topmost values from the stack will be inserted to the clicked node (the value is automatically inserted to the correct index/position).",
+      "av_ms_search": "Looking for a leaf node for {val}",
+      "av_ms_split": "The encountered node is full, so we split it.",
+      "av_ms_insert": "{val} is inserted to the leaf node."
     }
   },
   "code": {}

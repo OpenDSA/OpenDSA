@@ -76,6 +76,7 @@
     function keyFilter(v) { return v && v <= val; }
     function checkAndSplit(node) {
       if (isFull(node)) {
+        jsav.umsg(interpret("av_ms_split"));
         splitNode(node);
         return true;
       }
@@ -84,9 +85,14 @@
     while (modelStack.size()) {
       // the value we are inserting
       var val = modelStack.first().value();
+      jsav.umsg(interpret("av_ms_search"), {fill: {val: val}});
       // find the node
       var node = modelTree.root();
       do {
+        if (!node.hasClass("ms-highlight")) {
+          node.addClass("ms-highlight");
+        }
+        jsav.step();
         // split the node if it is full
         if (checkAndSplit(node)) {
           node = node.parent();
@@ -94,11 +100,17 @@
         if (node.childnodes.length) {
           // the position of the next child we want to explore
           var pos = node.value().filter(keyFilter).length;
+          node.removeClass("ms-highlight");
           node = node.child(pos);
+          node.addClass("ms-highlight");
         }
       } while (node.childnodes.length || isFull(node));
       // insert the value into the found node
+      jsav.umsg(interpret("av_ms_insert"), {fill: {val: val}});
       insertValueToNode(node, modelStack);
+      if (node !== tree.root()) {
+        node.removeClass("ms-highlight");
+      }
     }
 
     return modelTree;
@@ -171,6 +183,11 @@
     parent.value(newParentValues);
     // position the new node on top of node
     newNode.element.position({of: node.element});
+    // move ms-highlight class to parent node if it exists
+    if (node.hasClass("ms-highlight")) {
+      node.removeClass("ms-highlight");
+      node.parent().addClass("ms-highlight");
+    }
     // call the layout function
     tree.layout();
     av.gradeableStep();
