@@ -24,7 +24,7 @@ JavaScript, Java, C++, etc.
 
 .. index:: lambda calculus ; syntax
 
-.. _BNF-grammar-for-LC: 
+.. _BNF-grammar-for-LC:
 
 ===============================
  Syntax of the Lambda Calculus

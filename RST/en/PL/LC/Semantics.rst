@@ -30,17 +30,18 @@ stream via print statements. Therefore, the lambda calculus is a
 purely functional language.
 
 Now, we will explain the meaning of the three types of lambda
-expressions whose syntax is given in the grammar_ above. For each type
-of lambda expressions, we will describe its meaning using both an
-English statement and a JavaScript code fragment.
+expressions whose syntax is given in the lambda calculus grammar (see
+:ref:`BNF-grammar-for-LC`). For each type of lambda expressions, we will
+describe its meaning using both an English statement and a JavaScript
+code fragment.
 
-1.  A variable in the lambda calculus (the first production in this
-    grammar_) is a placeholder for another lambda expression. In other
-    words, like in all programming languages, a variable can be used
-    to refer to some value that may or may not be known yet. So
-    variables :math:`x` and :math:`p_1` in the lambda calculus can be
-    represented by the variables :code:`x` and :code:`p1`,
-    respectively, in JavaScript. 
+1.  A *variable* in the lambda calculus (the first production in the
+    Lambda Calculus grammar) is a placeholder for another lambda
+    expression. In other words, like in all programming languages, a
+    variable can be used to refer to some value that may or may not be
+    known yet. So variables :math:`x` and :math:`p_1` in the lambda
+    calculus can be represented by the variables :code:`x` and
+    :code:`p1`, respectively, in JavaScript.
 
     .. list-table:: 
        :widths: 1 2 10 7
@@ -67,13 +68,13 @@ English statement and a JavaScript code fragment.
     in the lambda calculus, since the only values are functions, all
     variables are placeholders for function values.
 
-2.  A :term:`lambda abstraction` in the lambda calculus (the second production
-    in this grammar_) is a function definition, that is, an expression
-    that defines a function, *not* a function call. Since all
-    functions of the lambda calculus are anonymous and only take one
-    parameter, all we need to define a function is the name of its
+2.  A :term:`lambda abstraction` in the lambda calculus (the second
+    production in the grammar) is a function definition, that is, an
+    expression that defines a function, *not* a function call. Since
+    all functions of the lambda calculus are anonymous and only take
+    one parameter, all we need to define a function is the name of its
     parameter (that is, the variable following the :math:`\lambda` in
-    the second production in this grammar_) and its body (a lambda
+    the second production in the grammar) and its body (a lambda
     expression).
 
     .. list-table:: 
@@ -114,40 +115,7 @@ English statement and a JavaScript code fragment.
          - .. code:: javascript
 
               function (y) { return x; }
-
-3. to be completed to be completed to be completed to be completed to
-   be completed to be completed to be completed to be completed to be
-   completed to be completed to be completed to be completed to be
-   completed
-
-    .. list-table:: 
-       :widths: 1 2 10 7
-       :header-rows: 1
-
-       * - Example
-         - :math:`\lambda` Expression
-         - English Statement of the Semantics
-         - JavaScript Implementation
        * - 7
-         - :math:`(\lambda x.x\ y)`
-         - the identity function applied to :math:`y`
-         - .. code::
-
-              (function (x) { return x; })(y)
-       * - 8
-         - :math:`(\lambda z.x\ y)`
-         - the constant function :math:`x` applied to :math:`y`
-         - .. code::
-
-              (function (z) { return x; })(y)
-       * - 9
-         - :math:`\lambda x.(x\ y)`
-         - the function of :math:`x` that returns the value returned when :math:`x` 
-           is called on :math:`y`
-         - .. code::
-  
-              function (x) { return x(y); }
-       * - 10
          - :math:`\lambda x.\lambda y.y`
          - the function of :math:`x` that returns the function of :math:`y` that 
            returns :math:`y` (in other words, the function of :math:`x` that 
@@ -158,3 +126,79 @@ English statement and a JavaScript code fragment.
                      return function (y) { return y; };
               }
 
+    Note that example 7 above is the *curried* function of two
+    arguments, namely :math:`x` and :math:`y`, that returns its second
+    argument.
+
+3.  A *function application* in the lambda calculus (the third
+    production in the grammar) is a function call, that is, an
+    expression that invokes a function on a single argument. The first
+    component in a function application is either a variable (see
+    example 8 below) or a more complex lambda expression that will
+    eventually evaluate to a function. In examples 9 and 10 below, the
+    first component of the function application is a lambda
+    abstraction, that is, a function that is being defined and called
+    right away. In JavaScript, this type of function application is a
+    common idiom sometimes referred to as an :abbr:`IIFE (Immediately
+    inviked Function Expression)`.
+
+    .. list-table:: 
+       :widths: 1 2 10 7
+       :header-rows: 1
+
+       * - Example
+         - :math:`\lambda` Expression
+         - English Statement of the Semantics
+         - JavaScript Implementation
+       * - 8
+         - :math:`(x\ y)`
+         - the invocation of function :math:`x` on argument  :math:`y`
+         - .. code::
+
+              x(y)
+       * - 9
+         - :math:`(\lambda x.x\ y)`
+         - the identity function applied to :math:`y`
+         - .. code::
+
+              (function (x) { return x; })(y)
+       * - 10
+         - :math:`(\lambda z.x\ y)`
+         - the constant function :math:`x` applied to :math:`y`
+         - .. code::
+
+              (function (z) { return x; })(y)
+       * - 11
+         - :math:`\lambda x.(x\ y)`
+         - the function of :math:`x` that returns the value returned when :math:`x` 
+           is called on :math:`y`
+         - .. code::
+  
+              function (x) { return x(y); }
+       * - 12
+         - :math:`(\lambda x.\lambda y.y\ z)`
+         - the function from example 7 above applied to
+           :math:`z`. Since the curried function of two parameters is
+           being called with a single argument, the evaluation of this
+           application will return the identity function.
+         - .. code::
+  
+              (function (x) { 
+                  return function (y) { return y; };
+               })(z)
+       * - 13
+         - :math:`( (\lambda x.\lambda y.y\ u)\ v)`
+         - the function from example 7 above applied to :math:`u` and
+           :math:`v`. Since the curried function of two parameters is
+           being called with two arguments, the evaluation of this
+           application will return the value of the second argument,
+           namely :math:`v`.
+         - .. code::
+  
+              (function (x) { 
+                  return function (y) { return y; };
+               })(u)(v)
+
+
+   Note that, in example 11 above, the top-level expression is a
+   lambda abrsaction whose body is a function application.
