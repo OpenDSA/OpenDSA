@@ -224,8 +224,6 @@ function getOptionSyntaxTreeMC() {
 
 function initFreeVarHighlight () {
 
-    $("#hintsarea").addClass("freeVarHighlightHintsArea");
-
     var jsav = new JSAV("jsav", {"animationMode": "none"});
     var vs = "uvxyz";
     var minDepth = 3;

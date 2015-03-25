@@ -98,12 +98,12 @@ expression. It is preferrable to ask this question about each
 particular *occurrence* of a variable, keeping in mind that a binding
 occurrence is never free since its role is to define a new variable.
 
-The following exercises will be good practice with identifying free
+The following exercise will be good practice for identifying free
 variables in lambda expressions.
 
 .. avembed:: Exercises/PL/freeVarHighlight.html ka
 
-Remember that, binding occurrences are (by definition) bound, each and
+Remember that, since binding occurrences are (by definition) bound, each and
 every variable occurrence is either free or bound, but not both.
 
 The following exercise will help you identify bound variables in lambda
