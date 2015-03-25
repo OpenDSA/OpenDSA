@@ -98,10 +98,16 @@ expression. It is preferrable to ask this question about each
 particular *occurrence* of a variable, keeping in mind that a binding
 occurrence is never free since its role is to define a new variable.
 
-The following exercise will help you identify free variables in lambda
+The following exercises will be good practice with identifying free
+variables in lambda expressions.
+
+.. avembed:: Exercises/PL/freeVarHighlight.html ka
+
+Remember that, binding occurrences are (by definition) bound, each and
+every variable occurrence is either free or bound, but not both.
+
+The following exercise will help you identify bound variables in lambda
 expressions.
-
-
 
 variable :math:`x` occurs free in expression E if:
 
@@ -111,11 +117,6 @@ variable :math:`x` occurs free in expression E if:
 
 
 
-
-
-
-Before seeing how lambda calculus expressions are evaluated, we need
-some practice in identifying free and bound variables.  Try the following two exercises:
-
+The reason that we devote a significant amount so this chapter to defining free and bound variables is that
 
 
