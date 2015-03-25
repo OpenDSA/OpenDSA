@@ -16,10 +16,6 @@
 .. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js
 
 
-==========================
- Free and Bound Variables
-==========================
-
 
 ==========================
  :math:`\alpha`-Conversion

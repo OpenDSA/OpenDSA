@@ -35,6 +35,12 @@
 		"dispModComp": false,	
 		"exercises": {}
 	    },
+	    "PL/LC/FreeBoundVariables": {
+		"long_name": "Free and Bound Variables",
+		"dispModComp": false,
+		"exercises": {
+		}
+	    },
 	    "PL/LC/ToDo": {
 		"long_name": "To do",
 		"dispModComp": false,	
