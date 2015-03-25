@@ -367,6 +367,42 @@ function getFreeBoundVariables(exp) {
     var output = helper(exp,"");
     return output;
 }
+function lexicalAddress (e) {
+    function helper (e,list) {
+	if (LAMBDA.absyn.isVarExp(e)) {
+	    var address = list.indexOf(LAMBDA.absyn.getVarExpId(e));
+	    return address === -1 ? "?" : String(address);
+	} else if (LAMBDA.absyn.isAppExp(e)) {
+	    return "(" + helper(LAMBDA.absyn.getAppExpFn(e),list) + " " +
+		helper(LAMBDA.absyn.getAppExpArg(e),list) + ")";
+	} else if (LAMBDA.absyn.isLambdaAbs(e)) {
+	    var v = LAMBDA.absyn.getVarExpId(
+		LAMBDA.absyn.getLambdaAbsParam(e));
+	    return "\u03BB" +  v + "." + 
+		helper(LAMBDA.absyn.getLambdaAbsBody(e),v +list);	    
+	}
+    }	   		  
+    return helper(e,"");
+}
+function listLambdas(exp) {
+    var a = [];
+    var helper = function (e) {
+	if (LAMBDA.absyn.isVarExp(e)) {
+	    /* do nothing */
+	} else if (LAMBDA.absyn.isAppExp(e)) {
+	    helper(LAMBDA.absyn.getAppExpFn(e));
+	    helper(LAMBDA.absyn.getAppExpArg(e));
+	} else {
+	    a = a.concat([e]);
+	    helper(LAMBDA.absyn.getLambdaAbsBody(e));
+	}
+    }
+    helper(exp);
+    return a;
+}
+function labelBoundVariables (e,chosenLambda) {
+
+}
 function evalExp(exp) {
     if (LAMBDA.absyn.isVarExp(exp)) {
 	return LAMBDA.absyn.getVarExpId(exp);
@@ -587,8 +623,9 @@ LAMBDA.parenChar = parenChar;
 LAMBDA.getNumNodes = getNumNodes;
 LAMBDA.getFreeBoundVariables = getFreeBoundVariables;
 LAMBDA.reduceToNormalForm = reduceToNormalForm;
-
-
+LAMBDA.lexicalAddress = lexicalAddress;
+LAMBDA.listLambdas = listLambdas;
+LAMBDA.labelBoundVariables = labelBoundVariables;
 });
 
 // the code below is only used when creating slide shows
