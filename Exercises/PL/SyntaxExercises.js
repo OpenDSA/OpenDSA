@@ -302,13 +302,13 @@ function initBoundVarHighlight () {
     arr.click(clickHandler);
 }
 function validateBoundVar() {
-
     for(var i=0; i<question.answer.length; i++) {
-	if ((L.light[i] && question.answer[i] !== '#') ||
+	if ((L.light[i] && question.answer[i] !== '#' &&
+	     question.answer[i] !== "\u03BB@.") ||
 	    (! L.light[i]  && question.answer[i] === '#')) {
 	    return false;
 	}
     }
-
+    
     return true;
 }

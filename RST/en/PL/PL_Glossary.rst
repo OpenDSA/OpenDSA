@@ -15,16 +15,24 @@ GLOSSARY
 .. glossary::
    :sorted:
 
+   binding occurrence
+
+      A binding occurrence is the place in a program where a variable is
+      bound to its name (or identifier). In modern programming languages,
+      a binding occurrence is the same as a declaration of the variable.
+      In lambda calculus, a binding occurrence for, say, the variable 
+      :math:`x`, is any sub-expression equal to :math:`\lambda x.`
+ 
    bound
 
-       In a lambda expression, a variable occurrence is bound or
-       occurs bound if it belongs to the scope of a binding occurrence
-       of that variable.
+      In a lambda expression, a variable occurrence is bound or
+      occurs bound if it belongs to the scope of a binding occurrence
+      of that variable.
 
    free
      
-       In a lambda expression, a variable occurrence is free or
-       occurs free if it is not bound in that expression.
+      In a lambda expression, a variable occurrence is free or
+      occurs free if it is not bound in that expression.
 
    function abstraction 
    lambda abstraction
@@ -38,3 +46,13 @@ GLOSSARY
 
       The name of the Greek letter :math:`\lambda` (lowercase) or
       :math:`\Lambda` (uppercase), corresponding to the letter "L".
+
+   scope
+   variable scope
+
+      The scope of a variable declaration (or binding occurrence) in a
+      program is the collection of all parts of the program (that is,
+      the lines of code) in which this variable is accessible via
+      its name or identifier.
+           
+      

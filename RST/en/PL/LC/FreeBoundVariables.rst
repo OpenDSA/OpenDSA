@@ -109,14 +109,98 @@ every variable occurrence is either free or bound, but not both.
 The following exercise will help you identify bound variables in lambda
 expressions.
 
-variable :math:`x` occurs free in expression E if:
-
-- E is a variable and E is identical to :math:`x` , or
-- E is of the form (E1 E2) and :math:`x` occurs free in E1 or E2, or
-- E is of the form :math:`\lambda y.E'` where :math:`y` is different from :math:`x` and :math:`x` occurs free in E'.
+.. avembed:: Exercises/PL/boundVarHighlight.html ka
 
 
+Throughout this section, we have attempted to be as intuitive and
+informal as possible. However, it is possible to define the notions of
+free and bound variables systematically. For any precise definition
+pertaining to  lambda calculus, we need only consider the three types of
+lambda expressions defined in the lambda calculus grammar (see
+:ref:`BNF-grammar-for-LC`). For example, we say that any variable
+:math:`x` occurs :term:`free` in any lambda expression
+:math:`E` if and only if:
 
-The reason that we devote a significant amount so this chapter to defining free and bound variables is that
+   1. :math:`E` is a variable and :math:`E` is identical to :math:`x`, or
+
+   2. :math:`E` is of the form :math:`(E_1\ E_2)` and :math:`x` occurs
+      free in either :math:`E_1` or :math:`E2` (or both), or
+
+   3. :math:`E` is of the form :math:`\lambda y.E'` where :math:`y` is
+      different from :math:`x` and :math:`x` occurs free in :math:`E'`.
+
+Notice that the recursion in cases 2 and 3 above mirrors the recursion
+in the lambda calculus grammar. The following table illustrates
+all cases of this definition.
+
+
+.. list-table:: 
+   :widths: 1 1 2 8
+   :header-rows: 1
+
+   * - :math:`E`
+     - Case
+     - Does :math:`x` occur free in :math:`E`?
+     - Explanation
+   * - :math:`x`
+     - 1
+     - yes, because ...
+     - ... :math:`x` appears in (is equal to) :math:`E` and :math:`E`
+       does not contain any binding occurrences (no :math:`lambda`).
+   * - :math:`y`
+     - 1
+     - no, because ...
+     - ... :math:`x` does not occur in :math:`E` and thus cannot occur free 
+       in it.
+   * - :math:`(x\ y)`
+     - 2
+     - yes, because ...
+     - ... :math:`x` occurs free in the first component of the function
+       application (recursive application of case 1).
+   * - :math:`(y\ x)`
+     - 2
+     - yes, because ...
+     - ... :math:`x` occurs free in the second component of the function
+       application (recursive application of case 1).
+   * - :math:`(y\ z)`
+     - 2
+     - no, because ...
+     - ... :math:`x` occurs free in neither the first nor the second component 
+       of the function application (doubly recursive application of case 1).
+   * - :math:`\lambda z.x`
+     - 3
+     - yes, because ...
+     - ... :math:`x` is different from :math:`z` (the parameter of the lambda
+       abstraction) and :math:`x` occurs free in the body of the lambda 
+       abstraction (recursive application of case 1). Note that the body is what
+       is left of the lambda abstraction after the binding occurrence (i.e.,
+       :math:`\lambda z.` is removed.
+   * - :math:`\lambda z.z`
+     - 3
+     - no, because ...
+     - ... :math:`x` is different from :math:`z` (the parameter of the lambda
+       abstraction) and :math:`x` does not occur (at all, and thus not free 
+       either) in the body of the lambda abstraction.
+   * - :math:`\lambda z.\lambda x.x`
+     - 3
+     - no, because ...
+     - ... :math:`x` is different from :math:`z` (the parameter of the lambda
+       abstraction) but :math:`x` does not occur free in the body of the lambda 
+       abstraction (recursive application of case 3). Note that the body in
+       this case is the lambda abstraction :math:`\lambda x.x`.
+   * - :math:`\lambda x.y` or :math:`\lambda x.x`
+     - 3
+     - no, because ...
+     - ... :math:`x` is identical to the parameter of the lambda
+       abstraction :math:`E`. :math:`x` cannot be free in :math:`E`
+       since any free occurrences of :math:`x` in the body of :math:`E`
+       would become bound in :math:`E` by the leading binding
+       occurrence of :math:`x`.
+
+
+In conclusion, we should emphasize that the reason we
+devoted a whole section to the notions of free and bound variables is
+because we will invoke them repeatedly throughout this chapter,
+starting in the next section.
 
 
