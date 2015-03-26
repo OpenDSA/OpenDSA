@@ -258,47 +258,57 @@ function validateFreeVar() {
     return true;
 }
 
-
-
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                 code for boundVarHighlight exercise
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
 function initBoundVarHighlight () {
-
+    var answer;
     var jsav = new JSAV("jsav", {"animationMode": "none"});
     var vs = "xyz";
     var minDepth = 4;
     var maxDepth = 6;
-    var exp, lambdas, chosenLambda;
-
+    var exp, lambdas, chosenLambda, firstLambda, numBound;
+    var attempts = 0;
     while (true) {
+	attempts++;
 	exp = L.getRndExp(1,minDepth,maxDepth,vs,"");
-	lambdas = L.listLambdas(exp) ;
+	lambdas = L.listLambdas(exp);
+
 	if ( lambdas.length > 0) {
-	    chosenLambda = lambdas[L.getRnd(0,lambdas.length-1)];
-	    answer = L.labelBoundVars(exp,choseLambda);
-	    break;
+	    //chosenLambda = lambdas[L.getRnd(0,lambdas.length-1)];
+	    firstLambda = lambdas[0];
+	    lambdas.shift();
+	    chosenLambda = lambdas.reduce(
+		function (a,x) { return L.printExp(x).length > a ? x : a; },
+		firstLambda);
+	    answer = L.labelBoundVariables(exp,chosenLambda);
+	    numBound = answer.split("#").length-1;
+	    if (numBound > 0 && answer.length < 40) {
+		break;
+	    }
 	}
     }
-    console.log(answer);
-
+    question.answer = L.mySplit(answer);    
     arr = jsav.ds.array(L.mySplit(L.printExp(exp)));
     setArrayCellsWidth();
     L.light = [ ];
     for(var i=0; i<arr.size(); i++) {
 	L.light.push(false);
+	if (question.answer[i] === "\u03BB@.") {
+	    arr.addClass([i],"bindingVar");
+	}
     }
     arr.click(clickHandler);
-    question.answer = answer;
-
 }
-
 function validateBoundVar() {
-/*
+
     for(var i=0; i<question.answer.length; i++) {
-	if ((L.light[i] && question.answer[i] !== '?') ||
-	    (! L.light[i]  && question.answer[i] === '?')) {
+	if ((L.light[i] && question.answer[i] !== '#') ||
+	    (! L.light[i]  && question.answer[i] === '#')) {
 	    return false;
 	}
     }
-*/
+
     return true;
 }

@@ -386,13 +386,11 @@ function lexicalAddress (e) {
 }
 function listLambdas(exp) {
     var a = [];
-    var helper = function (e) {
-	if (LAMBDA.absyn.isVarExp(e)) {
-	    /* do nothing */
-	} else if (LAMBDA.absyn.isAppExp(e)) {
+    function helper(e) {
+	if (LAMBDA.absyn.isAppExp(e)) {
 	    helper(LAMBDA.absyn.getAppExpFn(e));
 	    helper(LAMBDA.absyn.getAppExpArg(e));
-	} else {
+	} else if (LAMBDA.absyn.isLambdaAbs(e)) {
 	    a = a.concat([e]);
 	    helper(LAMBDA.absyn.getLambdaAbsBody(e));
 	}
@@ -401,7 +399,58 @@ function listLambdas(exp) {
     return a;
 }
 function labelBoundVariables (e,chosenLambda) {
+    function localPrintExp(exp) {
+	if (LAMBDA.absyn.isVarExp(exp)) {
+	    return LAMBDA.absyn.getVarExpId(exp);
+	} else if (LAMBDA.absyn.isLambdaAbs(exp)) {
+	    if (exp === chosenLambda) {
+		return "\u03BB@." + 
+		    helper(LAMBDA.absyn.getLambdaAbsBody(exp),
+			   LAMBDA.absyn.getVarExpId(
+			       LAMBDA.absyn.getLambdaAbsParam(exp)).toUpperCase());
+	    } else {
+		return "\u03BB" +
+		    LAMBDA.absyn.getVarExpId(
+			LAMBDA.absyn.getLambdaAbsParam(exp))  +  "." +
+		    localPrintExp(LAMBDA.absyn.getLambdaAbsBody(exp));
+	    }
+	}
+	else if (LAMBDA.absyn.isAppExp(exp)) {
+	    return "(" +
+		localPrintExp(LAMBDA.absyn.getAppExpFn(exp)) +
+		" " +
+		localPrintExp(LAMBDA.absyn.getAppExpArg(exp)) +
+	    ")";
+	}
+    }
 
+    function helper(e,vs) {
+	var v;
+	if (LAMBDA.absyn.isVarExp(e)) {
+	    v = LAMBDA.absyn.getVarExpId(e);
+	    if (vs.indexOf(v) === -1) {
+		if (vs.indexOf(v.toUpperCase())  !== -1) {
+		    return "#"; // bound to the selected lambda
+		} else {
+		    return v;   // free
+		} 
+	    } else {
+		return v;   // bound to some other lambda
+	    }
+	} else if (LAMBDA.absyn.isAppExp(e)) {
+	    return "(" +
+		helper(LAMBDA.absyn.getAppExpFn(e),vs) +
+		" " +
+		helper(LAMBDA.absyn.getAppExpArg(e),vs) +
+		")";
+	} else if (LAMBDA.absyn.isLambdaAbs(e)) {
+	    v = LAMBDA.absyn.getVarExpId(LAMBDA.absyn.getLambdaAbsParam(e));
+	    return "\u03BB" + v +"." +
+		helper(LAMBDA.absyn.getLambdaAbsBody(e),v+vs);
+	}	    
+    }
+
+    return localPrintExp(e);
 }
 function evalExp(exp) {
     if (LAMBDA.absyn.isVarExp(exp)) {

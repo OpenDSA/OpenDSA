@@ -9,6 +9,7 @@
 	<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
 	<script src="../../JSAV/build/JSAV-min.js"></script>
 	<link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+	<link rel="stylesheet" href="./exercises.css" type="text/css" />
 	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn.js"></script>
 	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter.js"></script>
 	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js"></script>
@@ -88,8 +89,9 @@
   </div>
   <div class="problems">
     <div>
-      <div class="question"><p>Click on all of the free variable
-      occurrences below and then check your answer on the right.
+      <div class="question"><p>Click on all of the variable
+	  occurrences (if any) that are bound to the underlined binding
+	  occurrence in the expression below.
 	</p>
 	<div id="jsav"></div>
       </div>
@@ -99,6 +101,14 @@
 	   return validateBoundVar()</div>
       </div>
       <div class="hints">
+	<p>The underlined binding occurrence itself is not part of the
+	solution in this exercise. Do NOT click it.</p>
+	<p>Determine the scope of the variable declaration
+	corresponding to the underlined binding occurrence. The bound
+	variables that you are looking for cannot appear outside of
+	this scope.</p>
+	<p>Remember that binding occurrences for the same
+	variable inside this scope (if any) create holes in it.</p>
       </div> 
     </div>
   </div>
