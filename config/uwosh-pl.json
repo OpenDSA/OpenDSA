@@ -41,6 +41,12 @@
 		"exercises": {
 		}
 	    },
+	    "PL/LC/AlphaConversion": {
+		"long_name": "Alphs conversion",
+		"dispModComp": false,
+		"exercises": {
+		}
+	    },
 	    "PL/LC/ToDo": {
 		"long_name": "To do",
 		"dispModComp": false,	

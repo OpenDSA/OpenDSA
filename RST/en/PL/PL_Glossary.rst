@@ -15,6 +15,12 @@ GLOSSARY
 .. glossary::
    :sorted:
 
+   alpha
+
+      The name of the Greek letter :math:`\alpha` (lowercase) or
+      :math:`\Alpha` (uppercase), corresponding to the letter "a".
+
+
    binding occurrence
 
       A binding occurrence is the place in a program where a variable is
@@ -56,3 +62,7 @@ GLOSSARY
       its name or identifier.
            
       
+   variable capture
+
+      A free variable occurrence is captured when it becomes bound following 
+      the renaming of some other variable occurrence.

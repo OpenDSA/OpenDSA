@@ -15,6 +15,7 @@
 
 .. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js
 
+.. _free_and_bound_variables:
 
 ==========================
  Free and Bound Variables
