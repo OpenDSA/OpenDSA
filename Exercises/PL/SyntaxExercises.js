@@ -312,3 +312,52 @@ function validateBoundVar() {
     
     return true;
 }
+
+
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                 code for alphaConversion  exercise
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+function initAlphaConversion () {
+
+    var answer;
+    var jsav = new JSAV("jsav", {"animationMode": "none"});
+    var vs = "xyz";
+    var minDepth = 4;
+    var maxDepth = 6;
+    var exp, lambdas, chosenLambda, firstLambda, numBound;
+    var attempts = 0;
+
+    while (true) {
+	attempts++;
+	exp = L.getRndExp(1,minDepth,maxDepth,vs,"");
+	lambdas = L.listLambdas(exp);
+
+	if ( lambdas.length > 0) {
+	    chosenLambda = lambdas[L.getRnd(0,lambdas.length)];
+	    answer = L.labelBoundVariables(exp,chosenLambda);
+	    numBound = answer.split("#").length-1;
+	    if (numBound > 0 && answer.length < 30) {
+		break;
+	    }
+	}
+    }
+
+    answer = L.mySplit(answer);    
+    arr = jsav.ds.array(L.mySplit(L.printExp(exp)));
+    setArrayCellsWidth();
+    for(var i=0; i<arr.size(); i++) {
+	if (answer[i] === "\u03BB@.") {
+	    arr.addClass([i],"bindingVar");
+	}
+    }
+    answer = answer.join("");
+    question.answer = answer.replace(/@|\#/g,"a").replace(/\s+/g,"").replace(/\u03BB/g,"^").split("");
+    question.answer = ("\\s*" + question.answer.join("\\s*") + "\\s*")
+	.replace(/\^/g,"\\^").replace(/\./g,"\\.").replace(/\(/g,"\\(")
+	.replace(/\)/g,"\\)");
+}
+
+function getAnswerAlphaConversion() {
+    return question.answer;
+}
