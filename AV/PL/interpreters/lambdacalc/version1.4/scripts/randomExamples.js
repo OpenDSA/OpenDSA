@@ -44,7 +44,7 @@ $(document).ready( function() {
 	}
 	switch (type) {
 	    case 1: 
-	    if (bound !== "" && Math.random()>0.3) {
+	    if (bound !== "" && Math.random()>0.6) {
 		v = getRndVarIn(bound);
 	    } else {
 		v = getRndVarIn(allowed);

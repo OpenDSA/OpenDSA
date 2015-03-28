@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+	<title>Identifying Bound Variables</title>
+	<script src="../../lib/jquery.min.js"></script>
+	<script src="../../lib/jquery-ui.min.js"></script>
+	<script src="../../JSAV/lib/jquery.transit.js"></script>
+	<script src="../../JSAV/lib/raphael.js"></script>
+	<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+	<script src="../../JSAV/build/JSAV-min.js"></script>
+	<link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+	<link rel="stylesheet" href="./exercises.css" type="text/css" />
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn.js"></script>
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter.js"></script>
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js"></script>
+
+
+<style>
+
+    div.jsavcanvas {
+         text-align: center; /* needed to center the array in the container */
+    }
+    
+    div#jsav  div.jsavcanvas ol.jsavarray   {
+       max-width: 700px;   /* needed for centering the array to work */
+       max-height: 30px;
+       min-height: 30px;
+    }
+
+    li.jsavhighlight {
+        border: 1px solid black !important;
+    }
+     ol.jsavarray  li.jsavindex  {
+       max-height: 30px;
+       min-height:30px;
+       height: 30px;
+    }
+
+      li.jsavindex span.jsavvalue {
+       max-height:30px;
+       min-height:30px;
+    }
+    
+    ol.jsavarray .defaultCellStyle {
+        border: none;
+        box-shadow : none; 
+    }
+
+    ol.jsavarray .lambdaWidth {
+        width : 20px;
+        min-width : 20px;
+    }
+
+    ol.jsavarray .oneCharWidth {
+        width : 12px;
+        min-width : 12px;
+        text-align: center;
+    }
+
+    ol.jsavarray .parenWidth {
+        width : 7px;
+        min-width : 7px;
+    }
+
+    ol.jsavarray .emptyWidth {
+        width : 0px;
+        min-width : 0px;
+    }
+
+    .highlight { 
+        color : red;
+        font-weight: bold;
+    }
+
+    .unhighlight { 
+        color : black;
+        font-weight: normal;
+    }
+</style>
+
+</head>
+
+<body data-height="650" data-width="950">
+<script src="SyntaxExercises.js"></script>
+
+<div class="exercise">
+  <div class="vars">
+    <var id="JSAV">initBoundVarHighlight()</var>
+  </div>
+  <div class="problems">
+    <div>
+      <div class="question"><p>Click on all of the variable
+	  occurrences (if any) that are bound to the underlined binding
+	  occurrence in the expression below.
+	</p>
+	<div id="jsav"></div>
+      </div>
+      <div class="solution" data-type="custom">
+	<div class="guess">true</div>
+	<div class="validator-function">
+	   return validateBoundVar()</div>
+      </div>
+      <div class="hints">
+	<p>Determine the scope of the variable declaration
+	corresponding to the underlined binding occurrence. The bound
+	variables that you are looking for cannot appear outside of
+	this scope.</p>
+	<p>Remember that binding occurrences for the same
+	variable inside this scope (if any) create holes in it.</p>
+      </div> 
+    </div>
+  </div>
+</body>
+</html>
