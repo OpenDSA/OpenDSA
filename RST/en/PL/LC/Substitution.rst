@@ -17,9 +17,11 @@
 
 
 
-=============
- Substitution
-=============
+=======================
+ Substitution Algorithm
+=======================
+
+.. avembed:: Exercises/PL/SubstitutionCases.html ka
 
 
 [This section still needs to be written. The text below is from Taylor/Tom' version]
