@@ -16,11 +16,6 @@
 .. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js
 
 
-
-=============
- Substitution
-=============
-
 ========================
  :math:`\beta`-Reduction
 ========================

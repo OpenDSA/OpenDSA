@@ -6,6 +6,7 @@ var question = {};
 var L = LAMBDA;
 
 
+
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         common code for SyntaxTF and SyntaxMC exercises
    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
@@ -117,7 +118,7 @@ function getAnswerSyntaxTF() {
     return question.answer;
 }
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                 code for SyntaxTF exercise
+                 code for SyntaxMC exercise
    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
 function isNew(arr) {
@@ -313,7 +314,6 @@ function validateBoundVar() {
     return true;
 }
 
-
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                  code for alphaConversion  exercise
    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
@@ -359,5 +359,101 @@ function initAlphaConversion () {
 }
 
 function getAnswerAlphaConversion() {
+    return question.answer;
+}
+
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                 code for substitutionCases exercise
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+function pickExpressionToBeSubstitutedIn(minDepth,maxDepth,vars) {
+    var substCase,a,p,B,tmp,tmp2;
+    /* subst(a,p,B) */
+    var rnd = Math.random();    
+    rnd = 0.55;
+    a = L.getRndExp(1,1,3,vars,"");
+    if (rnd<0.15) {
+	substCase = "1a";
+	p = L.absyn.createVarExp( vars.substr(L.getRnd(0,vars.length-1),1));
+	B = p;
+    } else if (rnd<0.30) {
+	substCase = "1b";
+	tmp = L.getRnd(0,vars.length-1);
+	while (true) {
+	    tmp2 = L.getRnd(0,vars.length-1);
+	    if (tmp2 !== tmp) { break; }
+	}
+	p = L.absyn.createVarExp( vars.substr(tmp,1));
+	B = L.absyn.createVarExp( vars.substr(tmp2,1));
+    } else if (rnd<0.45) {
+	substCase = "3";
+	p = L.absyn.createVarExp( vars.substr(L.getRnd(0,vars.length-1),1));
+	while (true) {
+	    B = L.getRndExp(1,2,4,vars,"");
+	    if (L.absyn.isAppExp(B)) {
+		break;
+	    }
+	}	
+    } else if (rnd<0.6) {
+	substCase = "2a";
+	while (true) {
+	    B = L.getRndExp(1,2,4,vars,"");
+	    if (L.absyn.isLambdaAbs(B)) {
+		break;
+	    }
+	}	
+	p = L.absyn.getLambdaAbsParam(B);	
+    } else if (rnd<0.8) {
+	substCase = "2b";
+
+    }
+/*
+    var exp;
+    if (rnd < 0.25) {
+	return L.absyn.createVarExp( vars.substr(L.getRnd(0,vars.length-1),1));
+    } else if (rnd < 0.5) {
+	while (true) {
+	    exp = L.getRndExp(1,2,4,vars,"");
+	    if (L.absyn.isLambdaAbs(exp)) {
+		return exp;
+	    }
+	}
+    }
+    else {
+    }
+*/
+    return [substCase,a,p,B];
+}
+function initSubstitutionCases() {
+    var answer;
+    var jsav = new JSAV("jsav", {"animationMode": "none"});
+    var vs = "xyz";
+    var minDepth = 4;
+    var maxDepth = 6;
+    var B = pickExpressionToBeSubstitutedIn(2,4,vs);
+
+    console.log(L.printExp(B[1]) + " " + L.printExp(B[2]) + " " + 
+		L.printExp(B[3]));
+/*
+    var p, a;
+    if (L.absyn.isVarExp(B) && Math.random()<0.5) {
+	p = B
+    } else if (L.absyn.isLambdaAbs(B) && Math.random() < 0.5) {
+	p = L.absyn.getLambdaAbsParam(B);
+    } else {
+	p = L.absyn.createVarExp(vs.substr(L.getRnd(0,vs.length-1),1));	
+    }
+    console.log( L.printExp(p));
+    console.log( L.printExp(B));
+*/
+    answer = "123".split("");
+    arr = jsav.ds.array(answer);
+    setArrayCellsWidth();
+    question.answer = "1";
+
+
+}
+
+function getAnswerSubstitutionCases() {
     return question.answer;
 }
