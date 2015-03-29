@@ -675,6 +675,8 @@ LAMBDA.reduceToNormalForm = reduceToNormalForm;
 LAMBDA.lexicalAddress = lexicalAddress;
 LAMBDA.listLambdas = listLambdas;
 LAMBDA.labelBoundVariables = labelBoundVariables;
+LAMBDA.free = free;
+
 });
 
 // the code below is only used when creating slide shows
