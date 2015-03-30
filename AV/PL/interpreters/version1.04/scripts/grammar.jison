@@ -31,16 +31,14 @@ LETTER		      [a-zA-Z]
 
 program
     : exp EOF
-        { //console.log("No syntax errors were detected.\n");
-          return SLang.absyn.createProgram($1);
-        }
+        { return SLang.absyn.createProgram($1); }
     ;
 
 exp
-    : var_exp  { $$ = $1; }
-    | intlit_exp  { $$ = $1; }
-    | fn_exp   { $$ = $1; }
-    | app_exp  { $$ = $1; }    
+    : var_exp       { $$ = $1; }
+    | intlit_exp    { $$ = $1; }
+    | fn_exp        { $$ = $1; }
+    | app_exp       { $$ = $1; }    
     | prim_app_exp  { $$ = $1; }
     ;
 
@@ -54,7 +52,7 @@ intlit_exp
 
 fn_exp
     : FN LPAREN formals RPAREN THATRETURNS exp
-           { $$ =SLang.absyn.createFnExp($3,$6); }
+           { $$ = SLang.absyn.createFnExp($3,$6); }
     ;
 
 formals
@@ -73,17 +71,20 @@ formals
 
 moreformals
     : /* empty */ { $$ = [ ] }
-    | VAR moreformals { $2.unshift($1); $$ = $2; }
+    | COMMA VAR moreformals 
+       { $3.unshift($2); 
+         $$ = $3; }
     ;
 
 app_exp
     : LPAREN exp args RPAREN
-       { $$ =SLang.absyn.createAppExp($2,$3); }
+       {  $3.unshift("args");
+          $$ = SLang.absyn.createAppExp($2,$3); }
     ;
 
 prim_app_exp
     : prim_op LPAREN prim_args RPAREN
-       { $$ =SLang.absyn.createPrimAppExp($1,$3); }
+       { $$ = SLang.absyn.createPrimAppExp($1,$3); }
     ;
 
 prim_op

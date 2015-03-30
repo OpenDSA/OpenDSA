@@ -86,7 +86,7 @@ function getAppExpFn(e) {
 }
 function getAppExpArgs(e) { 
     if (isAppExp(e)) {
-	return e[2];
+	return e[2].slice(1); // eliminate the first element (i.e., "args")
     } else {
 	throw new Error("Interpreter error: "  +
 			"The argument of getAppExpArgs is not an AppExp.");

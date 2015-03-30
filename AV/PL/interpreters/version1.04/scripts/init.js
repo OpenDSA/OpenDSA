@@ -18,7 +18,7 @@
     function openGrammarWindow() {
 	if (SLang.grammarWindow === null || SLang.grammarWindow.closed) {
 	    window.open('grammar.htm', 'SLang1_Grammar ',
-			'scrollbars=yes,height=600,width=600,resizable=yes').focus();
+			'scrollbars=yes,height=600,width=650,resizable=yes').focus();
 	}
     }
 
