@@ -18,7 +18,7 @@ GLOSSARY
    alpha
 
       The name of the Greek letter :math:`\alpha` (lowercase) or
-      :math:`\Alpha` (uppercase), corresponding to the letter "a".
+      :math:`A` (uppercase), corresponding to the letter "a".
 
 
    binding occurrence

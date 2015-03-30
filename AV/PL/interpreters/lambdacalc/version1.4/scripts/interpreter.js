@@ -676,6 +676,7 @@ LAMBDA.lexicalAddress = lexicalAddress;
 LAMBDA.listLambdas = listLambdas;
 LAMBDA.labelBoundVariables = labelBoundVariables;
 LAMBDA.free = free;
+LAMBDA.substitute = substitute;
 
 });
 

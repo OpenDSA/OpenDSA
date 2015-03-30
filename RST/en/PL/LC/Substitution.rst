@@ -21,7 +21,15 @@
  Substitution Algorithm
 =======================
 
+The following exercise is good practice for identifying which case applies
+at each step of the substitution algorithm.
+
 .. avembed:: Exercises/PL/SubstitutionCases.html ka
+
+The following exercise will test your ability to complete a full
+substitution by applying the algorithm scrupulously.
+
+.. avembed:: Exercises/PL/SubstitutionResult.html ka
 
 
 [This section still needs to be written. The text below is from Taylor/Tom' version]

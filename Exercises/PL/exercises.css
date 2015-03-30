@@ -17,3 +17,8 @@
     border:none;
     box-shadow: none;
 }
+
+
+#problem-and-answer span.italic {
+    font-style: italic;
+}

@@ -317,6 +317,12 @@ function validateBoundVar() {
                  code for alphaConversion  exercise
    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
+function makeRegex( lambdaexp ) {
+    lambdaexp = lambdaexp.replace(/\s+/g,"").replace(/\u03BB/g,"^").split("");
+    return ("\\s*" + lambdaexp.join("\\s*") + "\\s*")
+	.replace(/\^/g,"\\^").replace(/\./g,"\\.").replace(/\(/g,"\\(")
+	.replace(/\)/g,"\\)");
+}
 function initAlphaConversion () {
 
     var answer;
@@ -383,7 +389,7 @@ function pickExpression(minDepth,maxDepth,vars) {
 	}
 	p = L.absyn.createVarExp( vars.substr(tmp,1));
 	B = L.absyn.createVarExp( vars.substr(tmp2,1));
-    } else if (rnd<0.45) {
+    } else if (rnd<0.5) {
 	substCase = "3";
 	p = L.absyn.createVarExp( vars.substr(L.getRnd(0,vars.length-1),1));
 	while (true) {
@@ -468,5 +474,38 @@ function initSubstitutionCases() {
 }
 
 function getAnswerSubstitutionCases() {
+    return question.answer;
+}
+
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                 code for substitutionResult exercise
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+function initSubstitutionResult() {
+    var answer;
+    var jsav = new JSAV("jsav", {"animationMode": "none"});
+    var vs = "xyz";
+    var minDepth = 4;
+    var maxDepth = 6;
+    var subst = pickExpression(2,4,vs);
+    var substCase = subst[0];
+    var a = subst[1];
+    var p = subst[2];
+    var B = subst[3];
+    a = ["AppExp",["VarExp","x"], 
+	 ["VarExp","y"]];
+    p = ["VarExp","z"];
+    B = ["LambdaAbs",["VarExp","x"], ["LambdaAbs",["VarExp","y"],
+				      ["AppExp",["VarExp","x"], 
+				       ["VarExp","y"]]]];
+    subst = "subst( " + L.printExp(a) + ", " + L.printExp(p) + ", " + 
+	L.printExp(B) + " )";
+    arr = jsav.ds.array([subst]);
+    arr.addClass([0],"noBoxShadow");
+    question.answer = makeRegex(L.printExp( L.substitute(a,p,B) ));
+    console.log(L.printExp( L.substitute(a,p,B)));
+}
+
+function getAnswerSubstitutionResult() {
     return question.answer;
 }
