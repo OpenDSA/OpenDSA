@@ -2,7 +2,7 @@
 
 /* global LAMBDA : true, parser, MathJax, console, exp, order */
 
-$(document).ready(function () {
+$(function () {
 
     var maxReductionSteps = 15;
     var arr;
@@ -603,6 +603,7 @@ function startAV(exps,order) {
     var av = new JSAV($(".avcontainer"));
     var numCols = Math.max.apply(null, exps.map(function(x) 
 						{ return myLength(x[0]); }));   
+    //av.clear(); // new fiix by Ville that I need to test
     arr = av.ds.array(fillIn(1,numCols));
     loadArray(mySplit(exps[0][0]));
     

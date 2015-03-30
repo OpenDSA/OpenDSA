@@ -1,5 +1,13 @@
 #!/bin/bash
 
+########                   W A R N I N G                #################
+#
+# this script does not work any more because the version 1.4 scripts use
+# jquery; one (painful?) solution is to set up node to work with jQuery
+# another solution is to have a copy of the scripts that do not use
+# jQuery (that's easy: it's only uses in the wrapper function at the top
+# of each script). I did not yet implement either one of these solutions
+
 display_usage() { 
         echo -e "This script takes two or three arguments:"
         echo -e " First argument:  'the lambda expression to evaluate'"

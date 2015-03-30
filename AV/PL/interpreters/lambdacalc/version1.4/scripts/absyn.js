@@ -2,7 +2,7 @@
 
 var LAMBDA = {};
 
-$(document).ready(function () {
+$(function () {
 
 var exports = {};
 
