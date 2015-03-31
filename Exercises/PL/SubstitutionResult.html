@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+        <meta charset="utf-8">
+	<title>Substitution Algorithm</title>
+	<script src="../../lib/jquery.min.js"></script>
+	<script src="../../lib/jquery-ui.min.js"></script>
+	<script src="../../JSAV/lib/jquery.transit.js"></script>
+	<script src="../../JSAV/lib/raphael.js"></script>
+	<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+	<!--script src="../../ODSAkhan-exercises/utils/math.js"></script-->
+	<script src="../../JSAV/build/JSAV-min.js"></script>
+	<script>var LAMBDA = {};</script>
+	<script src="../../AV/PL/interpreter
+s/lambdacalc/version1.4/scripts/absyn.js"></script>
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter.js"></script>
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js"></script>
+	<link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+	<link rel="stylesheet" href="./exercises.css" type="text/css" />
+
+<style>
+    #answer_area input[type=text]  {
+         width:220px;
+    }
+
+</style>
+</head>
+
+<body data-height="650" data-width="950">
+<script src="SyntaxExercises.js"></script>
+
+<div class="exercise">
+	<div class="vars">
+		<var id="JSAV">initSubstitutionResult()</var>
+		<var id="CorrectAnswer">getAnswerSubstitutionResult()</var>
+	</div>
+	<div class="problems">
+		<div>
+		  <div class="question"><p>Trace the substitution
+		    algorithm to perform the following substitution
+		    and write down your final answer on the right, using ^
+		    to denote &lambda;.  For each &alpha;-conversion
+		    that the algorithm requires when computing,
+		    say, <span class="italic"> subst(e, p,
+		    &lambda;x.B)</span>, you must choose for the new
+		    variable the letter that comes first
+		    alphabetically (i.e., "a", then "b", etc.)  among
+		    those occur neither
+		    in <span class="italic">e</span> nor
+		      <span class="italic">B</span>.</p>
+				<div id="jsav"></div>
+			</div>
+			<div class="solution" data-type="regex">
+			  <var>CorrectAnswer</var></div>
+			</ul>
+
+			<div class="hints">
+			  <p>For each step in the algorithm, make sure
+			  to pick the only case that applies based on
+			  the type of the outermost expression which
+			  you are substituting into.</p>
+			  <p>Make sure to perform an
+			  &alpha;-conversion only when the algorithm
+			  requires it, that is, in case 2c.</p>
+			  <p>For each &alpha;-conversion, if any, you
+			  must choose the correct variable name
+			  (reread the instructions above) to get
+			  credit for your answer: there is only one
+			  correct answer for each substitution.</p>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

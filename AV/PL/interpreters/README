@@ -13,3 +13,7 @@ Interpreter versions:
      1.03 Changed internal data structures from objects to arrays 
      1.04 removed all jshint errors by making absyn.js and env.js into
           modules and many small adjustments
+          [Spring 2015] This is the version called SLang 1 that was 
+          described In slide sets number 17 through 20 and that was the 
+          starting point for A5.
+     1.05 version 1.04 plus changes to the language described on slide 20-1

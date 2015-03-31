@@ -6,6 +6,7 @@ var question = {};
 var L = LAMBDA;
 
 
+
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         common code for SyntaxTF and SyntaxMC exercises
    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
@@ -117,7 +118,7 @@ function getAnswerSyntaxTF() {
     return question.answer;
 }
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                 code for SyntaxTF exercise
+                 code for SyntaxMC exercise
    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
 function isNew(arr) {
@@ -218,7 +219,7 @@ function getOptionSyntaxTreeMC() {
     var noChar = function(x) { return arr.value(x).length === 0; };
     var lambdaChar = function(x) { return arr.value(x).length === 3; };
     var parenChar = function(x) { 
-    return arr.value(x) === '(' || arr.value(x) === ')' ||
+	return arr.value(x) === '(' || arr.value(x) === ')' ||
 	    arr.value(x) === ' '; 
     };
 
@@ -270,6 +271,7 @@ function initBoundVarHighlight () {
     var maxDepth = 6;
     var exp, lambdas, chosenLambda, firstLambda, numBound;
     var attempts = 0;
+    var longest = function (a,x) { return L.printExp(x).length > a ? x : a; };
     while (true) {
 	attempts++;
 	exp = L.getRndExp(1,minDepth,maxDepth,vs,"");
@@ -279,9 +281,7 @@ function initBoundVarHighlight () {
 	    //chosenLambda = lambdas[L.getRnd(0,lambdas.length-1)];
 	    firstLambda = lambdas[0];
 	    lambdas.shift();
-	    chosenLambda = lambdas.reduce(
-		function (a,x) { return L.printExp(x).length > a ? x : a; },
-		firstLambda);
+	    chosenLambda = lambdas.reduce(longest,firstLambda);
 	    answer = L.labelBoundVariables(exp,chosenLambda);
 	    numBound = answer.split("#").length-1;
 	    if (numBound > 0 && answer.length < 40) {
@@ -313,11 +313,16 @@ function validateBoundVar() {
     return true;
 }
 
-
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                  code for alphaConversion  exercise
    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
+function makeRegex( lambdaexp ) {
+    lambdaexp = lambdaexp.replace(/\s+/g,"").replace(/\u03BB/g,"^").split("");
+    return ("\\s*" + lambdaexp.join("\\s*") + "\\s*")
+	.replace(/\^/g,"\\^").replace(/\./g,"\\.").replace(/\(/g,"\\(")
+	.replace(/\)/g,"\\)");
+}
 function initAlphaConversion () {
 
     var answer;
@@ -359,5 +364,148 @@ function initAlphaConversion () {
 }
 
 function getAnswerAlphaConversion() {
+    return question.answer;
+}
+
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                 code for substitutionCases exercise
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+function pickExpression(minDepth,maxDepth,vars) {
+    /* pick a, p, abd B in subst(a,p,B) */
+    var substCase,a,p,B,tmp,tmp2, x;
+    var rnd = Math.random();    
+    a = L.getRndExp(1,1,3,vars,"");
+    if (rnd<0.15) {
+	substCase = "1a";
+	p = L.absyn.createVarExp( vars.substr(L.getRnd(0,vars.length-1),1));
+	B = p;
+    } else if (rnd<0.30) {
+	substCase = "1b";
+	tmp = L.getRnd(0,vars.length-1);
+	while (true) {
+	    tmp2 = L.getRnd(0,vars.length-1);
+	    if (tmp2 !== tmp) { break; }
+	}
+	p = L.absyn.createVarExp( vars.substr(tmp,1));
+	B = L.absyn.createVarExp( vars.substr(tmp2,1));
+    } else if (rnd<0.5) {
+	substCase = "3";
+	p = L.absyn.createVarExp( vars.substr(L.getRnd(0,vars.length-1),1));
+	while (true) {
+	    B = L.getRndExp(1,2,4,vars,"");
+	    if (L.absyn.isAppExp(B)) {
+		break;
+	    }
+	}	
+    } else {
+	// first pick the lambda abstraction
+	while (true) {
+	    B = L.getRndExp(1,2,4,vars,"");
+	    if (L.absyn.isLambdaAbs(B)) {
+		break;
+	    }
+	}
+	x = L.absyn.getLambdaAbsParam(B);
+	// now pick subcase
+	rnd = L.getRnd(1,3);
+	if (rnd === 1) {
+	    substCase = "2a";
+	    p = x;
+	} else {
+	    // pick a variable p different from x and a
+	    while (true) {
+		tmp = vars.substr( L.getRnd(0,vars.length-1), 1);		
+		if (tmp !== L.absyn.getVarExpId(x) &&
+		    tmp !== L.printExp(a)) {
+		    break; 
+		}
+	    }
+	    p = L.absyn.createVarExp(tmp);
+	    // handle the two remaining subcases
+	    if (rnd === 2) {
+		substCase = "2b";
+		if (L.free(x,a)) {
+		    while (true) {
+			a = L.getRndExp(1,1,3,vars,"");
+			if (! L.free(x,a)) {
+			    break;
+			}
+		    }
+		}
+	    }
+	    else {
+		substCase = "2c";
+		if (! L.free(x,a)) {
+		    while (true) {
+			a = L.getRndExp(1,1,3,vars,"");
+			if (L.free(x,a)) {
+			    break;
+			}
+		    }
+		}
+	    } 
+	}
+    }
+    // make sure that a and p are not identical
+    if (substCase !== '2b' && substCase !== '2c') {
+	while (L.printExp(a) === L.printExp(p)) {
+	    a = L.getRndExp(1,1,3,vars,"");
+	}
+    }
+    return [substCase,a,p,B];
+}
+function initSubstitutionCases() {
+    var answer;
+    var jsav = new JSAV("jsav", {"animationMode": "none"});
+    var vs = "xyz";
+    var minDepth = 4;
+    var maxDepth = 6;
+    var subst = pickExpression(2,4,vs);
+    var substCase = subst[0];
+    var a = subst[1];
+    var p = subst[2];
+    var B = subst[3];
+    subst = "subst( " + L.printExp(a) + ", " + L.printExp(p) + ", " + 
+	L.printExp(B) + " )";
+    arr = jsav.ds.array([subst]);
+    arr.addClass([0],"noBoxShadow");
+    question.answer = substCase;
+}
+
+function getAnswerSubstitutionCases() {
+    return question.answer;
+}
+
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                 code for substitutionResult exercise
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+function initSubstitutionResult() {
+    var answer;
+    var jsav = new JSAV("jsav", {"animationMode": "none"});
+    var vs = "xyz";
+    var minDepth = 4;
+    var maxDepth = 6;
+    var subst = pickExpression(2,4,vs);
+    var substCase = subst[0];
+    var a = subst[1];
+    var p = subst[2];
+    var B = subst[3];
+    a = ["AppExp",["VarExp","x"], 
+	 ["VarExp","y"]];
+    p = ["VarExp","z"];
+    B = ["LambdaAbs",["VarExp","x"], ["LambdaAbs",["VarExp","y"],
+				      ["AppExp",["VarExp","x"], 
+				       ["VarExp","y"]]]];
+    subst = "subst( " + L.printExp(a) + ", " + L.printExp(p) + ", " + 
+	L.printExp(B) + " )";
+    arr = jsav.ds.array([subst]);
+    arr.addClass([0],"noBoxShadow");
+    question.answer = makeRegex(L.printExp( L.substitute(a,p,B) ));
+    console.log(L.printExp( L.substitute(a,p,B)));
+}
+
+function getAnswerSubstitutionResult() {
     return question.answer;
 }

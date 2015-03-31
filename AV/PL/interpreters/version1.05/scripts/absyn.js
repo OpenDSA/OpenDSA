@@ -48,6 +48,36 @@ function getIntExpValue(e) {
 			"The argument of getIntExpValue is not an IntExp.");
     }
 }
+
+function createRealExp(n) {
+    return ["RealExp", parseFloat(n)];
+}
+function isRealExp(e) { 
+    return e[0] === "RealExp"; 
+}
+function getRealExpValue(e) { 
+    if (isRealExp(e)) {
+	return e[1];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getRealExpValue is not a RealExp.");
+    }
+}
+
+function createGt1Exp(reals) {
+    return ["Gt1Exp", reals];
+}
+function isGt1Exp(e) { 
+    return e[0] === "Gt1Exp"; 
+}
+function getGt1ExpList(e) { 
+    if (isGt1Exp(e)) {
+	return e[1];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getGt1ExpList is not a Gt1Exp.");
+    }
+}
 function createFnExp(params,body) {
     return ["FnExp",params,body];
 }
@@ -125,6 +155,12 @@ exports.getVarExpId = getVarExpId;
 exports.createIntExp = createIntExp;
 exports.isIntExp = isIntExp;
 exports.getIntExpValue = getIntExpValue;
+exports.createRealExp = createRealExp;
+exports.isRealExp = isRealExp;
+exports.getRealExpValue = getRealExpValue;
+exports.createGt1Exp = createGt1Exp;
+exports.isGt1Exp = isGt1Exp;
+exports.getGt1ExpList = getGt1ExpList;
 exports.createFnExp = createFnExp;
 exports.isFnExp = isFnExp;
 exports.getFnExpParams = getFnExpParams;

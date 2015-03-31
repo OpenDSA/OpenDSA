@@ -42,7 +42,13 @@
 		}
 	    },
 	    "PL/LC/AlphaConversion": {
-		"long_name": "Alphs conversion",
+		"long_name": "Alpha conversion",
+		"dispModComp": false,
+		"exercises": {
+		}
+	    },
+	    "PL/LC/Substitution": {
+		"long_name": "Substitution algorithm",
 		"dispModComp": false,
 		"exercises": {
 		}

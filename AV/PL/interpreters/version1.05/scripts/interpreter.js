@@ -35,11 +35,29 @@ function applyPrimitive(prim,args) {
     case "add1": 
 	typeCheckPrimitiveOp(prim,args,[SLang.env.isNum]);
 	return SLang.env.createNum( 1 + SLang.env.getNumValue(args[0]) );
+    case "-": 
+	typeCheckPrimitiveOp(prim,args,[SLang.env.isNum,SLang.env.isNum]);
+	return SLang.env.createNum( SLang.env.getNumValue(args[0]) - SLang.env.getNumValue(args[1]));
+
     }
 }
 function evalExp(exp,envir) {
     if (SLang.absyn.isIntExp(exp)) {
 	return SLang.env.createNum(SLang.absyn.getIntExpValue(exp));
+    } else if (SLang.absyn.isRealExp(exp)) {
+	return SLang.env.createNum(SLang.absyn.getRealExpValue(exp));
+    } else if (SLang.absyn.isGt1Exp(exp)) {
+	var gt1 = function (reals) {
+            if (reals.length === 0) {
+		throw new Error( "gt1: wrong argument list" );
+	    } else  if (SLang.absyn.getRealExpValue(reals[0]) > 1.0) {
+		return reals[0];
+	    } else  {
+		reals.shift();
+		return gt1(reals);
+	    }
+	};
+	return gt1( SLang.absyn.getGt1ExpList(exp) );
     }
     else if (SLang.absyn.isVarExp(exp)) {
 	return SLang.env.lookup(envir,SLang.absyn.getVarExpId(exp));

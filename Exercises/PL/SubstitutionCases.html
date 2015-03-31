@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+        <meta charset="utf-8">
+	<title>Case Determination in the Substitution Algorithm</title>
+	<script src="../../lib/jquery.min.js"></script>
+	<script src="../../lib/jquery-ui.min.js"></script>
+	<script src="../../JSAV/lib/jquery.transit.js"></script>
+	<script src="../../JSAV/lib/raphael.js"></script>
+	<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+	<!--script src="../../ODSAkhan-exercises/utils/math.js"></script-->
+	<script src="../../JSAV/build/JSAV-min.js"></script>
+	<script>var LAMBDA = {};</script>
+	<script src="../../AV/PL/interpreter
+s/lambdacalc/version1.4/scripts/absyn.js"></script>
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter.js"></script>
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js"></script>
+	<link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+	<link rel="stylesheet" href="./exercises.css" type="text/css" />
+</head>
+
+<body data-height="650" data-width="950">
+<script src="SyntaxExercises.js"></script>
+
+<div class="exercise">
+	<div class="vars">
+		<var id="JSAV">initSubstitutionCases()</var>
+		<var id="CorrectAnswer">getAnswerSubstitutionCases()</var>
+		<var id="Option0">"1a"</var>
+		<var id="Option1">"1b"</var>
+		<var id="Option2">"2a"</var>
+		<var id="Option3">"2b"</var>
+		<var id="Option4">"2c"</var>
+		<var id="Option5">"3"</var>
+	</div>
+	<div class="problems">
+		<div>
+		  <div class="question"><p>Which case of the
+		  substitution algorithm must be considered first when
+		  performing the following substitution?</p>
+				<div id="jsav"></div>
+			</div>
+			<div class="solution"><var>CorrectAnswer</var></div>
+			<ul class="choices" data-category="true">
+			  <li><var>Option0</var></li>
+			  <li><var>Option1</var></li>
+			  <li><var>Option2</var></li>
+			  <li><var>Option3</var></li>
+			  <li><var>Option4</var></li>
+			  <li><var>Option5</var></li>
+			</ul>
+
+			<div class="hints">
+			  <p>First, determine which one of case 1, case 2,
+			  or case 3 applies based on the type of
+			  lambda expression that you are substituting
+			  into.</p>
+			  <p>If case 1 is applicable, check whether
+			  the variable you are substituting for is
+			  equal to the lambda expression you are
+			  substituting into.</p>
+			  <p>If case 2 is applicable, check whether
+			  the variable you are substituting for is the
+			  same as the parameter of the lambda
+			  abstraction you are substituting into.</p>
+			  <p>If case 2 is applicable and the answer to
+			  the previous hint is "No" then check whether
+			  the parameter of the lambda abstraction you
+			  are substituting into occurs free in the
+			  expression that you are substituting in.</p>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
