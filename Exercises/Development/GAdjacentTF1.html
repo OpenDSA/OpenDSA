@@ -23,11 +23,11 @@ var initJSAV = function () {
   var jsav = new JSAV("jsav");
   jsav.recorded();
   var g = jsav.ds.graph({center: true, visible: true, height: 300, directed: true});
-  var n1 = g.addNode("1", {left: 10, top: 10});
-  var n2 = g.addNode("2", {left: 10, top: 75});
+  var n1 = g.addNode("4", {left: 10, top: 10});
+  var n2 = g.addNode("1", {left: 10, top: 75});
   var n3 = g.addNode("3", {left: 10, top: 140});
-  var n4 = g.addNode("4", {left: 100, top: 140});
-  var n5 = g.addNode("5", {left: 100, top: 75});
+  var n4 = g.addNode("5", {left: 100, top: 140});
+  var n5 = g.addNode("2", {left: 100, top: 75});
 
   g.addEdge(n1, n2);
   g.addEdge(n2,n3);
@@ -37,13 +37,28 @@ var initJSAV = function () {
   g.addEdge(n2, n4);
 
   g.layout();
-
+}
+function getAnswer(node){
+  if (node == 2){
+    return "True";
+  }
+  else if(node == 1){
+    return "True";
+  }
+  else if(node == 3){
+    return "True";
+  }
+  else{
+    return "False";
+  }
 }
 </script>
 
 <div class="exercise">
   <div class="vars">
     <var id="JSAV">initJSAV()</var>
+    <var id="node">randRange(1, 4)</var>
+    <var id="ANS">getAnswer(node)</var>
   </div>
 
   <div class="problems">
@@ -53,8 +68,8 @@ var initJSAV = function () {
         <div id="jsav" class="jsavcanvas"></div>
       </p>
       <p class="question">
-  Node one and 4 are adjacent.</p>
-      <div class="solution"><var>"False"</var></div>
+  Node <var>node</var>  and 5 are adjacent.</p>
+      <div class="solution"><var>ANS</var></div>
       <ul class="choices" data-category="true">
   <li><var>"True"</var></li>
   <li><var>"False"</var></li>              
