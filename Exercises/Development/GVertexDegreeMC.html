@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>TGraph Vertex Degree</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transit.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
+  <style>
+    .jsavcontainer {
+      height: 300px;
+    }
+  </style>
+</head>
+
+<body data-height="650" data-width="950">
+<script>
+var initJSAV = function () {
+  var jsav = new JSAV("jsav");
+  jsav.recorded();
+  var g = jsav.ds.graph({center: true, visible: true, height: 300});
+  var n1 = g.addNode("1", {top: 10, left: 100});
+  var n2 = g.addNode("2", {top: 100, left: 5});
+  var n3 = g.addNode("3", {top: 40, left: 200});
+  var n4 = g.addNode("4", {top: 150, left: 200});
+  var n5 = g.addNode("5", {top: 200, left: 100});
+
+  g.addEdge(n1, n2);
+  g.addEdge(n1, n3);
+  g.addEdge(n2, n3);
+  g.addEdge(n2, n4);
+  g.addEdge(n2, n5);
+  g.addEdge(n4, n5);
+
+  g.layout();
+}
+</script> 
+
+<div class="exercise">
+  <div class="vars">
+    <var id="JSAV">initJSAV()</var>
+  </div>
+
+  <div class="problems">
+
+    <div id="problem-type-or-description-2">
+      <p class="problem">
+        <div id="jsav" class="jsavcanvas"></div>
+      </p>
+      <p class="question">What it the degree of vertex 2?</p>
+      <p class="solution" data-type="text"><var>4</var></p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
