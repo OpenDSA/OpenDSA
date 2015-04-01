@@ -67,12 +67,6 @@ gt1_exp
     : GT1 LBRACKET args  RBRACKET { $$ = SLang.absyn.createGt1Exp( $3 ); }
     ;             
 
-REALS
-    :  /* empty */  { $$ = [ ]; }
-    |  COMMA REAL REALS   
-         { $3.unshift( SLang.absyn.createRealExp($2) ); $$ = $3; }
-    ; 
-
 sub_exp : SUB exp FROM exp  
            { $$ = SLang.absyn.createPrimAppExp("-",[$4,$2]); }}
     ;

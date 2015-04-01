@@ -52,9 +52,7 @@
     #interpreterbutton {
            font-size: 20px;
     }
-    #testsButton {
-         margin-left: 50px;
-    }
+
     </style>
     <script type="text/javascript"
 	    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
@@ -73,6 +71,8 @@
 <br />
 <input type="button" value="Show Grammar" onclick="SLang.openGrammarWindow()" />
 <input type="button" id="testsButton" value="Show Test Programs" onclick="SLang.toggleTestPrograms()" />
+
+<input type="button" id="testSuite" value="Run Test Suite" onclick="SLang.runTestSuite()" />
 </div>
 
 <div id="tests">
