@@ -1,4 +1,8 @@
+/* global SLang : true */
+
 "use strict";
+
+(function () {
 
 var samples = [
 
@@ -34,3 +38,5 @@ var samples = [
 /* 17 */  [ "Lists", "isNull( [1,2,3] )", '["Bool",false]' ]
 ];
 
+ SLang.samples = samples;
+})();

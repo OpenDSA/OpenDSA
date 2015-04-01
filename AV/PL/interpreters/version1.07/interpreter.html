@@ -58,21 +58,19 @@
     #interpreterbutton {
            font-size: 20px;
     }
-    #testsButton {
-         margin-left: 50px;
-    }
     </style>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
   <script src="./scripts/fp.js"></script>
-  <script src="./scripts/samples.js"></script>
   <script src="./scripts/init.js"></script>
   <script src="./scripts/grammar.js"></script>
   <script src="./scripts/absyn.js"></script>
   <script src="./scripts/env.js"></script>
   <script src="./scripts/interpreter.js"></script>
+  <script src="./scripts/samples.js"></script>
+
 </head>
 <body>
 
@@ -84,11 +82,11 @@
 </table>
 <script>
     var rows = "<table>";
-    for(var i=1; i<=samples.length-1; i++) {
+    for(var i=1; i<=SLang.samples.length-1; i++) {
 	rows += '<tr><td width="400px">' +
 	         '<input type="button" value="Interpret"  onclick="SLang.go(' +
                  i + ')" />&nbsp;<strong>test' + i + '.sl </strong>' + 
-		'/* '+ samples[i][0] + ' */\n</td></tr>';
+		'/* '+ SLang.samples[i][0] + ' */\n</td></tr>';
     }
     $("#testsCases").html(rows);
 </script>
@@ -103,6 +101,7 @@
 
 <input type="button" id="testsButton" value="Show Test Programs" onclick="SLang.toggleTestPrograms()" />
 
+<input type="button" id="testSuite" value="Run Test Suite" onclick="SLang.runTestSuite()" />
 </div>
 
 <div id="main">
