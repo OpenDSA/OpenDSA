@@ -87,6 +87,15 @@
 
     // Handles top, left, right, bottom options and positions the given element accordingly
     JSAV.utils._helpers.handlePosition(this);
+
+    // Set the used constructors for this data structure.
+    // If the constructors weren't set, we would need to override several
+    // functions that we are now inheriting.
+    this.constructors = $.extend({
+      Tree: ArrayTree,
+      Node: ArrayTreeNode,
+      Edge: ArrayTreeEdge
+    }, this.options.constructors);
     // Create an empty node and set it as the root
     this.rootnode = this.newNode(null, null);
     // Set the role of the node to root.
@@ -103,42 +112,7 @@
     // will be called if the tree is visible
     JSAV.utils._helpers.handleVisibility(this, this.options);
   };
-  
-  /**
-    Creates a new Array Tree Node and sets it as the root node. If the newRoot
-    parameter is not specified then, the current root node is returned.
-    */
-  arrayTreeProto.root = function (newRoot, options) {
-    var opts = $.extend({hide: true}, options);
-    if (typeof newRoot === "undefined") {
-      return this.rootnode;
-    } else if (newRoot instanceof ArrayTreeNode) {
-      var oldroot = this.rootnode;
-      this._setrootnode(newRoot, options);
-      this.rootnode.edgeToParent(null);
-      if (opts.hide && oldroot) { oldroot.hide(); }
-    } else {
-      if (this.rootnode) {
-        this.rootnode.value(newRoot, options);
-      } else {
-        this._setrootnode(this.newNode(newRoot, null, options), options);
-      }
-    }
-    return this.rootnode;
-  };
 
-
-
-  /**
-   * Creates a new node in the Array Tree.
-   * @param value     The value of Array Tree Node. Array of values.
-   * @param parent    The Array Tree Node parent of the new Array Tree Node.
-   * @param options   Options to be passed to the Array Tree Node.
-   * @returns {ArrayTreeNode} The newly create Array Tree Node object.
-   */
-  arrayTreeProto.newNode = function (value, parent, options) {
-    return new ArrayTreeNode(this, value, parent, options);
-  };
 
   arrayTreeProto.moveValue = function (fromNode, fromIndex, toNode, toIndex) {
     // Test if fromNode is of type Array Tree Node
@@ -224,6 +198,8 @@
     var parent_options = parent ? parent.options: {};
     this.options = $.extend(true, {visible: true}, parent_options, options);
 
+    this.constructors = $.extend({}, container.constructors, this.options.constructors);
+
     // Make sure the value is correct. Fix if needed.
     value = this._fixvalue(value);
 
@@ -301,47 +277,7 @@
     // Returen the new value
     return value;
   };
-  
-  /**
-    Child helper function that had to be reimplemented because it has a
-    reference to the ArrayTreeNode object.
-    */
-  var setchildhelper = function (self, pos, node, options) {
-    var oldval = self.childnodes[pos],
-      opts = $.extend({hide: true}, options);
-    if (oldval) {
-      if (opts.hide) { oldval.hide(); }
-      oldval.parent(null);
-    }
-    if (node) {
-      var newchildnodes = self.childnodes.slice(0);
-      newchildnodes[pos] = node;
-      if (node.parent() && node.parent() !== self) {
-        node.remove({hide: false});
-      }
-      node.parent(self);
-      self._setchildnodes(newchildnodes, opts);
-    } else {
-      self._setchildnodes($.map(self.childnodes, function (item, index) {
-        if (index !== pos) { return item; }
-        else { return null; }
-      }), opts);
-    }
-    return self;
-  };
 
-  // Create a new array tree node, or gets the child at position 'pos'.
-  arrayTreeNodeProto.child = function (pos, node, options) {
-    // If no node value was given return existing node.
-    if (typeof node === "undefined") {
-      return this.childnodes[pos];
-    } else {
-      if (node !== null && !(node instanceof ArrayTreeNode)) {
-        node = this.container.newNode(node, this, options);
-      }
-      return setchildhelper(this, pos, node, options);
-    }
-  };
 
   /**
    *  Gets or sets the values of the array tree node.
@@ -371,33 +307,6 @@
     return this;
   };
 
-  /**
-   *  Gets or sets the parent of the array tree node.
-   *  - Works just like parent() for other JSAV trees, except that it creates an ArrayTreeEdge
-   *    to the parent if it is needed.
-   */
-  arrayTreeNodeProto.parent = function (newParent, options) {
-    if (typeof newParent === "undefined") {
-      return this.parentnode;
-    } else {
-      if (!this._edgetoparent) {
-        this._setEdgeToParent(new ArrayTreeEdge(this.jsav, this, newParent, options));
-      }
-      this._setparent(newParent, options);
-
-      // if both this node and parent are visible but the edge is not, show it
-      if (this.isVisible() && newParent && newParent.isVisible() && !this._edgetoparent.isVisible()) {
-        this._edgetoparent.show();
-      } else if ((!this.isVisible() || !newParent || !newParent.isVisible()) && this._edgetoparent.isVisible()) {
-        // if either this node or new parent are invisible but the edge is not,
-        // and hide option is either not set ot it's true -> hide the edge to parent
-        if (!options || typeof options.hide === "undefined" || options.hide) {
-          this._edgetoparent.hide();
-        }
-      }
-      return this;
-    }
-  };
 
   /**
    *  Used by the JSAV grader to check if two subtrees are equal (recursively).
@@ -463,10 +372,6 @@
   arrayTreeNodeProto.swap = function (index1, index2, options) {
     this.node_array.swap(index1, index2, options);
   };
-
-  // arrayTreeNodeProto. = function() {
-  //   this.node_array.();
-  // };
 
   /*****************************************************************************
    * Implement Array Tree Node for the Array Tree data structure.
