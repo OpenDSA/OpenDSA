@@ -207,12 +207,6 @@
     this.element = this.options.nodeelement ||
       $("<div><ol></ol></div>");
 
-    // Create array for the Array Tree Node and added to the node element.
-    this.arrayelement = $(this.element).find("ol");
-    var array_options = $.extend(
-      {element: this.arrayelement}, this.options);
-    this.node_array = new this.jsav.ds.array(value, array_options);
-
     // Set classes for Array Tree Node element.
     this.element.addClass("jsavnode jsavtreenode jsavarraytreenode");
     // Set ID.
@@ -230,7 +224,12 @@
 
     // Add the Array Tree Node element to the Array Tree container.
     this.container.element.append(this.element);
-    this.node_array.layout();
+
+    // Create array for the Array Tree Node and added to the node element.
+    this.arrayelement = $(this.element).find("ol");
+    var array_options = $.extend(
+      {element: this.arrayelement}, this.options);
+    this.node_array = new this.jsav.ds.array(value, array_options);
 
     // Shows or hides the data structure based on options.visible
     // This is placed after the root node code, since the roots show function
