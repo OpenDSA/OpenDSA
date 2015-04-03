@@ -45,16 +45,19 @@ function evalExp(exp,envir) {
     if (SLang.absyn.isIntExp(exp)) {
 	return SLang.env.createNum(SLang.absyn.getIntExpValue(exp));
     } else if (SLang.absyn.isRealExp(exp)) {
-	return SLang.env.createNum(SLang.absyn.getRealExpValue(exp));
+	return SLang.env.createRealNum(SLang.absyn.getRealExpValue(exp));
     } else if (SLang.absyn.isGt1Exp(exp)) {
 	var gt1 = function (reals) {
             if (reals.length === 0) {
 		throw new Error( "gt1: wrong argument list" );
-	    } else  if (SLang.absyn.getRealExpValue(reals[0]) > 1.0) {
-		return reals[0];
-	    } else  {
-		reals.shift();
-		return gt1(reals);
+	    } else {
+		var firstValue = SLang.env.getRealNumValue(evalExp(reals[0]));
+		if (firstValue > 1.0) {
+		    return SLang.env.createRealNum(firstValue);
+		} else  {
+		    reals.shift();
+		    return gt1(reals);
+		}
 	    }
 	};
 	return gt1( SLang.absyn.getGt1ExpList(exp) );

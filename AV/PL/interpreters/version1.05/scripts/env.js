@@ -5,11 +5,10 @@
 "use strict";
 
 
-
 var exports = {};
 
 // denoted values in the interpreted language SLang 1
-//  Num, Clo
+//  Num, Clo, RealNum
 
 function createNum(n) {
     return ["Num",n];
@@ -23,6 +22,20 @@ function getNumValue(value) {
     } else {
 	throw new Error("Interpreter error: "  +
 			"The argument of getNumValue is not a Num value.");
+    }
+}
+function createRealNum(r) {
+    return ["RealNum",r];
+}
+function isRealNum(value) {
+    return value[0] === "RealNum";
+}
+function getRealNumValue(value) {
+    if (isRealNum(value)) {
+	return value[1];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getRealNumValue is not a RealNum value.");
     }
 }
 function createClo(params,body,env) {
@@ -120,6 +133,9 @@ function initEnv() {
 exports.createNum = createNum;
 exports.isNum = isNum;
 exports.getNumValue = getNumValue;
+exports.createRealNum = createRealNum;
+exports.isRealNum = isRealNum;
+exports.getRealNumValue = getRealNumValue;
 exports.createClo = createClo;
 exports.isClo = isClo;
 exports.getCloParams = getCloParams;

@@ -48,7 +48,6 @@ function getIntExpValue(e) {
 			"The argument of getIntExpValue is not an IntExp.");
     }
 }
-
 function createRealExp(n) {
     return ["RealExp", parseFloat(n)];
 }
