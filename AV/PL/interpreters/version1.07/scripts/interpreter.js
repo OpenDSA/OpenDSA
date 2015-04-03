@@ -92,10 +92,17 @@ function evalExp(exp,envir) {
     else if (A.isAppExp(exp)) {
 	var f = evalExp(A.getAppExpFn(exp),envir);
 	var args = A.getAppExpArgs(exp).map( function(arg) { return evalExp(arg,envir); } );
-	if (E.isClo(f)) {
-	    return evalExp(E.getCloBody(f),E.update(E.getCloEnv(f),E.getCloParams(f),args));
-	}
-	else {
+	if (SLang.env.isClo(f)) {
+	    if (SLang.env.getCloParams(f).length !== args.length) {		
+		throw new Error("Runtime error: wrong number of arguments in " +
+                        "a function call (" + SLang.env.getCloParams(f).length +
+			" expected but " + args.length + " given)");
+	    } else {
+		return evalExp(SLang.env.getCloBody(f),
+			       SLang.env.update(SLang.env.getCloEnv(f),
+						SLang.env.getCloParams(f),args));
+	    }
+	} else {
 	    throw f + " is not a closure and thus cannot be applied.";
 	}
     } else if (A.isPrim1AppExp(exp)) {
