@@ -23,7 +23,7 @@ LETTER		      [a-zA-Z]
 ","                   		      { return 'COMMA'; }
 "."                   		      { return 'THATRETURNS'; }
 <<EOF>>               		      { return 'EOF'; }
-{DIGIT}+.{DIGIT}+                     { return 'REAL'; }
+{DIGIT}+"."{DIGIT}+                   { return 'REAL'; }
 {LETTER}({LETTER}|{DIGIT}|_)*  	      { return 'VAR'; }
 {DIGIT}+                              { return 'INT'; }
 "."                                   { return 'DOT'; }
