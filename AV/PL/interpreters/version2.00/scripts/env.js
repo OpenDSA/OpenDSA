@@ -4,6 +4,8 @@
 
 "use strict";
 
+
+
 var exports = {};
 
 // denoted values in the interpreted language SLang 1
@@ -21,34 +23,6 @@ function getNumValue(value) {
     } else {
 	throw new Error("Interpreter error: "  +
 			"The argument of getNumValue is not a Num value.");
-    }
-}
-function createBool(n) {
-    return ["Bool",n];
-}
-function isBool(value) {
-    return value[0] === "Bool";
-}
-function getBoolValue(value) {
-    if (isBool(value)) {
-	return value[1];
-    } else {
-	throw new Error("Interpreter error: "  +
-			"The argument of getBoolValue is not a Bool value.");
-    }
-}
-function createList(l) {
-    return ["List",l];
-}
-function isList(value) {
-    return value[0] === "List";
-}
-function getListValue(value) {
-    if (isList(value)) {
-	return value[1];
-    } else {
-	throw new Error("Interpreter error: "  +
-			"The argument of getListValue is not a List value.");
     }
 }
 function createClo(params,body,env) {
@@ -115,7 +89,7 @@ function getEnvEnv (env) {
 }
 
 // accessor
-function getValue(v,bindings) {
+function getReference(v,bindings) {
     var value = bindings.filter(function (p) { return p[0]===v; });
     if (value.length === 0) {
 	return undefined;
@@ -123,29 +97,34 @@ function getValue(v,bindings) {
 	return value[0][1];
     }
 }
-function lookup (e,variable) {
+function lookupReference (e,variable) {
     if (isEmptyEnv(e)) {
 	throw new Error("Runtime error: No binding for " + variable);
     } else {
-	return getValue(variable,e[1]) || lookup(e[2],variable);
+	return getReference(variable,e[1]) || lookupReference(e[2],variable);
     }
 }
 
+function lookup (e,variable) {
+    return lookupReference(e,variable)[0];
+}
+
 // mutators
-function update(e,variables,values) {
+function updateWithReferences(e,variables,refs) {
     var bindings =  [];
     for(var index = 0; index < variables.length; index++) {
-	bindings.push( [ variables[index] , values[index] ]);
+	bindings.push( [ variables[index] , refs[index] ]);
     }
     return createEnv(bindings,e);
+}
+function update(e,variables,values) {
+    return updateWithReferences(e,variables,
+			       values.map(function (v) { return [v]; }));
 }
 function initEnv() {
     return update(createEmptyEnv(), ["x","y"], [ createNum(5), createNum(6)]);
 }
 
-function toString(e) {
-    return JSON.stringify(e);
-}
 exports.createNum = createNum;
 exports.isNum = isNum;
 exports.getNumValue = getNumValue;
@@ -160,18 +139,12 @@ exports.createEnv = createEnv;
 exports.isEnv = isEnv;
 exports.getEnvBindings = getEnvBindings;
 exports.getEnvEnv = getEnvEnv;
-exports.getValue = getValue;
+exports.getReference = getReference;
+exports.lookupReference = lookupReference;
 exports.lookup = lookup;
 exports.update = update;
+exports.updateWithReferences = updateWithReferences;
 exports.initEnv = initEnv;
-exports.toString = toString;
-exports.createBool = createBool;
-exports.isBool = isBool;
-exports.getBoolValue = getBoolValue;
-exports.createList = createList;
-exports.isList = isList;
-exports.getListValue = getListValue;
-
 
 SLang.env = exports;
 

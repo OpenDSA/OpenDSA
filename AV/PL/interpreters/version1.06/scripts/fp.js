@@ -18,7 +18,7 @@
  * @version 1.0
  */
 
-var fp = {};
+var fp =  {};
 
 (function(exports){
 
@@ -536,4 +536,4 @@ exports.reduceRight = reduceRight;
 exports.curry = curry;
 exports.curryFromRight = curryFromRight;
 
-})(typeof exports === 'undefined' ? absyn : exports);
+})(fp);

@@ -92,101 +92,76 @@ function getAppExpArgs(e) {
 			"The argument of getAppExpArgs is not an AppExp.");
     }
 }
-function createPrim1AppExp(prim,arg) {
-    return ["PrimApp1Exp",prim,arg];
+function createPrimAppExp(prim,args) {
+    return ["PrimAppExp",prim,args];
 }
-function isPrim1AppExp(e) { 
-    return e[0] === "PrimApp1Exp"; 
+function isPrimAppExp(e) { 
+    return e[0] === "PrimAppExp"; 
 }
-function getPrim1AppExpPrim(e) { 
-    if (isPrim1AppExp(e)) {
+function getPrimAppExpPrim(e) { 
+    if (isPrimAppExp(e)) {
 	return e[1];
     } else {
 	throw new Error("Interpreter error: "  +
-			"The argument of getPrim1AppExpPrim is not a Prim1AppExp.");
+			"The argument of getPrimAppExpPrim is not a PrimAppExp.");
     }
 }
-function getPrim1AppExpArg(e) { 
-    if (isPrim1AppExp(e)) {
+function getPrimAppExpArgs(e) { 
+    if (isPrimAppExp(e)) {
 	return e[2];
     } else {
 	throw new Error("Interpreter error: "  +
-			"The argument of getPrim1AppExpArg is not a Prim1AppExp.");
+			"The argument of getPrimAppExpArgs is not a PrimAppExp.");
     }
 }
-function createPrim2AppExp(prim,arg1,arg2) {
-    return ["Prim2AppExp",prim,arg1,arg2];
+function createPrintExp(v,e) {
+    return ["PrintExp", v, e];
 }
-function isPrim2AppExp(e) { 
-    return e[0] === "Prim2AppExp"; 
+function isPrintExp(e) { 
+    return e[0] === "PrintExp"; 
 }
-function getPrim2AppExpPrim(e) { 
-    if (isPrim2AppExp(e)) {
+function getPrintExpExp(e) { 
+    if (isPrintExp(e)) {
 	return e[1];
     } else {
 	throw new Error("Interpreter error: "  +
-			"The argument of getPrim2AppExpPrim is not a Prim2AppExp.");
+			"The argument of getPrintExpExp is not a PrintExp.");
     }
 }
-function getPrim2AppExpArg1(e) { 
-    if (isPrim2AppExp(e)) {
+function createAssignExp(v,e) {
+    return ["AssignExp", v, e];
+}
+function isAssignExp(e) { 
+    return e[0] === "AssignExp"; 
+}
+function getAssignExpVar(e) { 
+    if (isAssignExp(e)) {
+	return e[1];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getAssignExpVar is not an AssignExp.");
+    }
+}
+function getAssignExpRHS(e) { 
+    if (isAssignExp(e)) {
 	return e[2];
     } else {
 	throw new Error("Interpreter error: "  +
-			"The argument of getPrim2AppExpArg is not a Prim2AppExp.");
+			"The argument of getAssignExpRHS is not an AssignExp.");
     }
 }
-function getPrim2AppExpArg2(e) { 
-    if (isPrim2AppExp(e)) {
-	return e[3];
+function createBlock(list) {
+    return ["Block",list];
+}
+function isBlock(b) { 
+    return b[0] === "Block"; 
+}
+function getBlockList(b) { 
+    if (isBlock(b)) {
+	return b[1];
     } else {
 	throw new Error("Interpreter error: "  +
-			"The argument of getPrim2AppExpArg is not a Prim2AppExp.");
-    }
-}
-function createIfExp(condExp,thenExp,elseExp) {
-    return ["IfExp",condExp,thenExp,elseExp];
-}
-function isIfExp(e) { 
-    return e[0] === "IfExp"; 
-}
-function getIfExpCond(e) { 
-    if (isIfExp(e)) {
-	return e[1];
-    } else {
-	throw new Error("Interpreter error: "  +
-			"The argument of getIfExpCond is not an IfExp.");
-    }
-}
-function getIfExpThen(e) { 
-    if (isIfExp(e)) {
-	return e[2];
-    } else {
-	throw new Error("Interpreter error: "  +
-			"The argument of getIfExpThen is not an IfExp.");
-    }
-}
-function getIfExpElse(e) { 
-    if (isIfExp(e)) {
-	return e[3];
-    } else {
-	throw new Error("Interpreter error: "  +
-			"The argument of getIfExpElse is not an IfExp.");
-    }
-}
-
-function createListExp(list) {
-    return ["ListExp",list];
-}
-function isListExp(e) { 
-    return e[0] === "ListExp"; 
-}
-function getListExpList(e) { 
-    if (isListExp(e)) {
-	return e[1];
-    } else {
-	throw new Error("Interpreter error: "  +
-			"The argument of getListExp is not a ListExp.");
+			"The argument of getBlockList is not a Block.");
     }
 }
 
@@ -207,23 +182,20 @@ exports.createAppExp = createAppExp;
 exports.isAppExp = isAppExp;
 exports.getAppExpFn = getAppExpFn;
 exports.getAppExpArgs = getAppExpArgs;
-exports.createPrim1AppExp = createPrim1AppExp;
-exports.createPrim2AppExp = createPrim2AppExp;
-exports.isPrim1AppExp = isPrim1AppExp;
-exports.isPrim2AppExp = isPrim2AppExp;
-exports.getPrim1AppExpPrim = getPrim1AppExpPrim;
-exports.getPrim2AppExpPrim = getPrim2AppExpPrim;
-exports.getPrim1AppExpArg = getPrim1AppExpArg;
-exports.getPrim2AppExpArg1 = getPrim2AppExpArg1;
-exports.getPrim2AppExpArg2 = getPrim2AppExpArg2;
-exports.createIfExp = createIfExp;
-exports.isIfExp = isIfExp;
-exports.getIfExpCond = getIfExpCond;
-exports.getIfExpThen = getIfExpThen;
-exports.getIfExpElse = getIfExpElse;
-exports.createListExp = createListExp;
-exports.isListExp = isListExp;
-exports.getListExpList = getListExpList;
+exports.createPrimAppExp = createPrimAppExp;
+exports.isPrimAppExp = isPrimAppExp;
+exports.getPrimAppExpPrim = getPrimAppExpPrim;
+exports.getPrimAppExpArgs = getPrimAppExpArgs;
+exports.createPrintExp = createPrintExp;
+exports.isPrintExp = isPrintExp;
+exports.getPrintExpExp = getPrintExpExp;
+exports.createAssignExp = createAssignExp;
+exports.isAssignExp = isAssignExp;
+exports.getAssignExpVar = getAssignExpVar;
+exports.getAssignExpRHS = getAssignExpRHS;
+exports.createBlock = createBlock;
+exports.isBlock = isBlock;
+exports.getBlockList = getBlockList;
 
 SLang.absyn = exports;
 }());

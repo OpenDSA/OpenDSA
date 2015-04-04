@@ -1,4 +1,4 @@
-/* global SLang : true, parser */
+/* global SLang : true, parser, console  */
 
 (function () {
 
@@ -43,22 +43,31 @@ function evalExp(exp,envir) {
     }
     else if (SLang.absyn.isVarExp(exp)) {
 	return SLang.env.lookup(envir,SLang.absyn.getVarExpId(exp));
-    }
-    else if (SLang.absyn.isFnExp(exp)) {
-	return SLang.env.createClo(SLang.absyn.getFnExpParams(exp),SLang.absyn.getFnExpBody(exp),envir);
+    } else if (SLang.absyn.isPrintExp(exp)) {
+	console.log( JSON.stringify(
+	    evalExp( SLang.absyn.getPrintExpExp(exp), envir )));
+    } else if (SLang.absyn.isAssignExp(exp)) {
+	var v = evalExp(SLang.absyn.getAssignExpRHS(exp),envir);
+	SLang.env.lookupReference(
+                        envir,SLang.absyn.getAssignExpVar(exp))[0] = v;
+	return v;
+    } else if (SLang.absyn.isFnExp(exp)) {
+	return SLang.env.createClo(SLang.absyn.getFnExpParams(exp),
+				   SLang.absyn.getFnExpBody(exp),envir);
     }
     else if (SLang.absyn.isAppExp(exp)) {
 	var f = evalExp(SLang.absyn.getAppExpFn(exp),envir);
-	var args = SLang.absyn.getAppExpArgs(exp).map( function(arg) { return evalExp(arg,envir); } );
+	var args = evalExps(SLang.absyn.getAppExpArgs(exp),envir);
 	if (SLang.env.isClo(f)) {
 	    if (SLang.env.getCloParams(f).length !== args.length) {		
 		throw new Error("Runtime error: wrong number of arguments in " +
                         "a function call (" + SLang.env.getCloParams(f).length +
 			" expected but " + args.length + " given)");
 	    } else {
-		return evalExp(SLang.env.getCloBody(f),
-			       SLang.env.update(SLang.env.getCloEnv(f),
-						SLang.env.getCloParams(f),args));
+		var values = evalExps(SLang.env.getCloBody(f),
+			        SLang.env.update(SLang.env.getCloEnv(f),
+						 SLang.env.getCloParams(f),args));
+		return values[values.length-1];
 	    }
 	} else {
 	    throw f + " is not a closure and thus cannot be applied.";
@@ -70,6 +79,9 @@ function evalExp(exp,envir) {
     } else {
 	throw "Error: Attempting to evaluate an invalid expression";
     }
+}
+function evalExps(list,envir) {
+    return list.map( function(e) { return evalExp(e,envir); } );
 }
 function myEval(p) {
     if (SLang.absyn.isProgram(p)) {

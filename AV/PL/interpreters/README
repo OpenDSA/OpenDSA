@@ -17,5 +17,7 @@ Interpreter versions:
           described In slide sets number 17 through 20 and that was the 
           starting point for A5.
      1.05 version 1.04 plus changes to the language described on slide 20-2
-     1.06 version 1.04 plus let block
-     1.07 version 1.04 plus the solution to Assignment 5
+     1.06 version 1.04 plus the solution to Assignment 5
+     1.07 version 1.04 plus let block
+
+     2.00 version 1.07 plus non-functional features

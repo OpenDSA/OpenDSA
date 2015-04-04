@@ -14,28 +14,13 @@ LETTER		      [a-zA-Z]
 ")"                   		      { return 'RPAREN'; }
 "+"                   		      { return 'PLUS'; }
 "*"                   		      { return 'TIMES'; }
-"/"                   		      { return 'DIV'; }
-"%"                   		      { return 'REM'; }
-"-"                   		      { return 'MINUS'; }
-"<"                   		      { return 'LT'; }
-">"                   		      { return 'GT'; }
-"==="                  		      { return 'EQ'; }
-"~"                   		      { return 'NEG'; }
-"not"                  		      { return 'NOT'; }
 "add1"                                { return 'ADD1'; }
+"let"                                 { return 'LET'; }
+"in"                                  { return 'IN'; }
+"end"                                 { return 'END'; }
 ","                   		      { return 'COMMA'; }
 "=>"                   		      { return 'THATRETURNS'; }
-"if"                   		      { return 'IF'; }
-"then"                   	      { return 'THEN'; }
-"else"                   	      { return 'ELSE'; }
-"["                                   { return 'LBRACKET'; }
-"]"                                   { return 'RBRACKET'; }
-"hd"                                  { return 'HEAD'; }
-"tl"                                  { return 'TAIL'; }
-"::"                                  { return 'CONS'; }
-"isNull"                              { return 'ISNULL'; }
-"filter"                              { return 'FILTER'; }
-"reduce"                              { return 'REDUCE'; }
+"="                                   { return 'EQ'; }
 <<EOF>>               		      { return 'EOF'; }
 {LETTER}({LETTER}|{DIGIT}|_)*  	      { return 'VAR'; }
 {DIGIT}+                              { return 'INT'; }
@@ -58,10 +43,8 @@ exp
     | intlit_exp    { $$ = $1; }
     | fn_exp        { $$ = $1; }
     | app_exp       { $$ = $1; }    
-    | prim1_app_exp { $$ = $1; }
-    | prim2_app_exp { $$ = $1; }
-    | if_exp        { $$ = $1; }    
-    | list_exp      { $$ = $1; }
+    | prim_app_exp  { $$ = $1; }
+    | let_exp       { $$ = $1; }
     ;
 
 var_exp
@@ -69,7 +52,25 @@ var_exp
     ;
 
 intlit_exp
-    : INT  { $$ =SLang.absyn.createIntExp( $1 ); }
+    : INT  { $$ = SLang.absyn.createIntExp( $1 ); }
+    ;
+
+let_exp
+    : LET bindings IN exp END
+           { var args = $2[1]; args.unshift( "args" );
+             var fnexp = SLang.absyn.createFnExp($2[0],$4);
+             $$ = SLang.absyn.createAppExp(fnexp,args);
+           }
+    ; 
+
+bindings
+    : VAR EQ exp              
+           { $$ = [ [ $1 ], [ $3 ] ]; }  
+    | VAR EQ exp bindings
+           { var vars = $4[0];  vars.unshift($1);
+             var vals = $4[1];  vals.unshift($3);
+	     $$ = [ vars, vals ];
+           }  
     ;
 
 fn_exp
@@ -104,35 +105,15 @@ app_exp
           $$ = SLang.absyn.createAppExp($2,$3); }
     ;
 
-prim1_app_exp
-    : prim1_op LPAREN exp RPAREN
-       { $$ = SLang.absyn.createPrim1AppExp($1,$3); }
+prim_app_exp
+    : prim_op LPAREN prim_args RPAREN
+       { $$ = SLang.absyn.createPrimAppExp($1,$3); }
     ;
 
-prim2_app_exp
-    : LPAREN exp prim2_op exp RPAREN
-       { $$ = SLang.absyn.createPrim2AppExp($3,$2,$4); }
-    ;
-
-prim1_op
-    :  ADD1     { $$ = $1; }
-    |  NEG      { $$ = $1; }
-    |  NOT      { $$ = $1; }
-    |  HEAD     { $$ = $1; }
-    |  TAIL     { $$ = $1; }
-    |  ISNULL   { $$ = $1; }
-    ;
-
-prim2_op
+prim_op
     :  PLUS     { $$ = $1; }
-    |  MINUS    { $$ = $1; }
     |  TIMES    { $$ = $1; }
-    |  DIV      { $$ = $1; }
-    |  REM      { $$ = $1; }
-    |  LT       { $$ = $1; }
-    |  GT       { $$ = $1; }
-    |  EQ       { $$ = $1; }
-    |  CONS     { $$ = $1; }
+    |  ADD1     { $$ = $1; }
     ;
 
 args
@@ -159,22 +140,7 @@ more_prim_args
     | COMMA exp more_prim_args { $3.unshift($2); $$ = $3; }
     ;
 
-if_exp
-    : IF exp THEN exp ELSE exp { $$ = SLang.absyn.createIfExp($2,$4,$6); }
-    ;
 
-list_exp
-    : LBRACKET int_list RBRACKET { $$ = SLang.absyn.createListExp($2); } 
-    ;
 
-int_list
-    : /* empty */        { $$ = []; }
-    | INT more_ints      { $2.unshift(parseInt($1)); $$ = $2; }
-    ;
-
-more_ints
-    : /* empty */         { $$ = []; }
-    | COMMA INT more_ints { $3.unshift(parseInt($2)); $$ = $3;}
-    ;
 %%
 

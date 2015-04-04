@@ -28,7 +28,7 @@
                    &  |  & < app\ exp > \\
                    &  |  & < intlit\ exp > \\
                    &  |  & < papp\ exp > \\
-       < fn\  exp >  & ::= & fn\quad '('\  < var\ exp >^*\ ')'\ =>\  < exp > \\
+       < fn\  exp >  & ::= & fn\quad '('\quad  (  < var\ exp >\   (\ ','\  < var\ exp >  )^*\  )? \quad ')'\ =>\  < exp > \\
        < app\ exp >  & ::= & '('\  < exp >\   < exp >^*\ ')' \\
        < papp\ exp > & ::= & < prim\ op >\  '('\  < args >\  ')' \\
        < args >      & ::= & (  < exp >\   (\ ','\  < exp >  )^*\  )?\\
