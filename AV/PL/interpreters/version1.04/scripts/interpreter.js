@@ -60,8 +60,7 @@ function evalExp(exp,envir) {
 			       SLang.env.update(SLang.env.getCloEnv(f),
 						SLang.env.getCloParams(f),args));
 	    }
-	}
-	else {
+	} else {
 	    throw f + " is not a closure and thus cannot be applied.";
 	}
     } else if (SLang.absyn.isPrimAppExp(exp)) {

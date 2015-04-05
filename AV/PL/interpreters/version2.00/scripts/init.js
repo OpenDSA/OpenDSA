@@ -1,4 +1,4 @@
-/* global SLang : true */
+/* global SLang : true, console */
 
 (function () {
 
@@ -9,7 +9,7 @@
 
 
     function go(n) {
-	document.getElementById('interpreterinput').value=SLang.samples[n][0]; 
+	document.getElementById('interpreterinput').value=SLang.samples[n][1]; 
 	document.getElementById('interpreteroutput').value=
 	    SLang.interpret(document.getElementById('interpreterinput').value);
     }
@@ -18,7 +18,7 @@
     function openGrammarWindow() {
 	if (SLang.grammarWindow === null || SLang.grammarWindow.closed) {
 	    window.open('grammar.htm', 'SLang1_Grammar ',
-			'scrollbars=yes,height=600,width=650,resizable=yes').focus();
+			'scrollbars=yes,height=600,width=700,resizable=yes').focus();
 	}
     }
 
@@ -38,7 +38,7 @@
 
 
     function runTestSuite() {
-	var testOutput, testExpected;
+	var testValue;
 	var count = 0;
 	var samples = SLang.samples;
 	var n = samples.length-1;
@@ -46,24 +46,23 @@
 	console.log("            Running test suite");
 	console.log("==============================================");
 	for(var i=1; i<=n; i++) {
-	    testOutput = SLang.interpret(samples[i][0]);
-	    testExpected = samples[i][1];
-	    if (testOutput === testExpected) {
-		count++;
-	    } else {
-		console.log("---------------------------------------");
-		console.log("Failed test #" + i + ": " + samples[i][0]);
-		console.log("\tCorrect: " + testExpected);
-		console.log("\tOutput:  " + testOutput);
-	    }
-        }
-	if (count === n) {
-	    console.log("Passed all " + n  + " tests.")
-	} else {
-	    console.log("Failed " + (n-count) + " test(s).")
-	}
-    }
+	    console.log("=============================================");
+	    console.log("                  Test #" + i);
+	    console.log("=============================================");
+	    console.log("Program:");
+	    console.log("--------");
+	    console.log(samples[i][1]);
+	    console.log("\nPrinted output:");	    
+	    console.log("---------------");
+	    testValue = SLang.interpret(samples[i][1]);
+	    console.log("Return value:");
+	    console.log("-------------");
+	    console.log(testValue);
 
+
+        }
+    }
+    
     SLang.go = go;
     SLang.openGrammarWindow = openGrammarWindow;
     SLang.toggleTestPrograms = toggleTestPrograms;

@@ -20,4 +20,10 @@ Interpreter versions:
      1.06 version 1.04 plus the solution to Assignment 5
      1.07 version 1.04 plus let block
 
-     2.00 version 1.07 plus non-functional features
+V 2.0
+===== 
+
++ SLang 1.07 plus non-functional features
+
+     2.00 references in the environment, set expression, print expression, 
+          let exp with block expression

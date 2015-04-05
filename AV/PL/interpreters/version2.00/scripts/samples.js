@@ -7,18 +7,14 @@
 var samples = [
 
 /* 0 */   "",
-/* 1 */   ["12"],
-/* 2 */   ["x"],
-/* 3 */   ["+(1,*(2,add1(3)))"],
-/* 4 */   ["fn () => 5"],
-/* 5 */   ["fn (x) => x"],
-/* 6 */   ["fn (a,b,c) => y"],
-/* 7 */   ["(fn (x) => 5 y)"],
-/* 8 */   ["(fn (z) => z *(y, add1(x)))"],
-/* 9 */   ["(fn (a,b,c) => y 1 2 3)"],
-/* 10 */  ["(fn (x) => *(x,x) +(x,y))"],
-/* 11 */  ["(fn (f,x) => (f (f x)) fn (y) => *(2,y) +(x,y))"],
-/* 12 */  [ "let\n" +
+/* 1 */   ["print", "print +(x,*(y,2))"],
+/* 2 */   ["print", "print (fn (f,x) => (f (f x)) fn (y) => *(2,y) +(x,y))"],
+/* 3 */   ["set", "set x = 10"],
+/* 4 */   ["set","set x = add1( set y = 10 )"],
+/* 5 */   ["set + block", "let x=1 y=2 in set x = +(y,2); set y = *(x,2); add1(+(x,y)) end"],
+/* 6 */   ["set + block","let f = fn () => set x = 10 in (f); x end"],
+/* 7 */   ["print + set + block", 
+            "let\n" +
             "    x = 1\n" +
             "    y = 2\n" +
             "    sqr = fn (x) => *(x,x)\n" +
