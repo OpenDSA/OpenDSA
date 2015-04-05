@@ -16,6 +16,7 @@ LETTER		      [a-zA-Z]
 "*"                   		      { return 'TIMES'; }
 "/"                   		      { return 'DIV'; }
 "%"                   		      { return 'REM'; }
+"->"                                  { return 'MAP'; }
 "-"                   		      { return 'MINUS'; }
 "<"                   		      { return 'LT'; }
 ">"                   		      { return 'GT'; }
@@ -34,8 +35,6 @@ LETTER		      [a-zA-Z]
 "tl"                                  { return 'TAIL'; }
 "::"                                  { return 'CONS'; }
 "isNull"                              { return 'ISNULL'; }
-"filter"                              { return 'FILTER'; }
-"reduce"                              { return 'REDUCE'; }
 <<EOF>>               		      { return 'EOF'; }
 {LETTER}({LETTER}|{DIGIT}|_)*  	      { return 'VAR'; }
 {DIGIT}+                              { return 'INT'; }
@@ -133,6 +132,7 @@ prim2_op
     |  GT       { $$ = $1; }
     |  EQ       { $$ = $1; }
     |  CONS     { $$ = $1; }
+    |  MAP      { $$ = $1; }
     ;
 
 args
