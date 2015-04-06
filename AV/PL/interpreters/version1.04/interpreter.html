@@ -57,6 +57,9 @@
     <script type="text/javascript"
 	    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
    </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
   <script src="./scripts/init.js"></script>
   <script src="./scripts/grammar.js"></script>
   <script src="./scripts/absyn.js"></script>
@@ -75,54 +78,24 @@
 <input type="button" id="testSuite" value="Run Test Suite" onclick="SLang.runTestSuite()" />
 </div>
 
+
 <div id="tests">
-
 <h2>Test programs</h2>
-
-
-
 <center>
-The interpreter uses the following startup environment:<br />
-{ x: 5, y: 6 }
+<table id="testsCases">
+</table>
+<script>
+    var rows = "<table>";
+    for(var i=1; i<=SLang.samples.length-1; i++) {
+	rows += '<tr><td width="400px">' +
+	         '<input type="button" value="Interpret"  onclick="SLang.go(' +
+                 i + ')" />&nbsp;<strong>test' + i + '.sl </strong>' + 
+		'/* '+ SLang.samples[i][0] + ' */\n</td></tr>';
+    }
+    $("#testsCases").html(rows);
+</script>
 </center>
 
-<table>
-<tr><td>Sample 1:</td><td width="200px">Integer literal</td><td>
-      <input type="button" id="sample1" value="Interpret"  onclick="SLang.go(1)" /></td></tr>
-
-<tr><td>Sample 2:</td><td width="200px">Variable</td><td>
-      <input type="button" id="sample2" value="Interpret"  onclick="SLang.go(2)" /></td></tr>
-
-<tr><td>Sample 3:</td><td width="200px">Primitive applications</td><td>
-      <input type="button" id="sample3" value="Interpret"  onclick="SLang.go(3)" /></td></tr>
-
-<tr><td>Sample 4:</td><td width="200px">Closure (constant function)</td><td>
-      <input type="button" id="sample4" value="Interpret"  onclick="SLang.go(4)" /></td></tr>
-
-<tr><td>Sample 5:</td><td width="200px">Closure (ident. function)</td><td>
-      <input type="button" id="sample5" value="Interpret"  onclick="SLang.go(5)" /></td></tr>
-
-<tr><td>Sample 6:</td><td width="200px">Closure (free variable)</td><td>
-      <input type="button" id="sample6" value="Interpret"  onclick="SLang.go(6)" /></td></tr>
-
-<tr><td>Sample 7:</td><td width="200px">Apply constant function</td><td>
-      <input type="button" id="sample7" value="Interpret"  onclick="SLang.go(7)" /></td></tr>
-
-<tr><td>Sample 8:</td><td width="200px">Apply ident. function</td><td>
-      <input type="button" id="sample8" value="Interpret"  onclick="SLang.go(8)" /></td></tr>
-
-<tr><td>Sample 9:</td><td width="200px">Apply function with free var.</td><td>
-      <input type="button" id="sample9" value="Interpret"  onclick="SLang.go(9)" /></td></tr>
-
-<tr><td>Sample 10:</td><td width="200px">Apply the square function</td><td>
-      <input type="button" id="sample10" value="Interpret"  onclick="SLang.go(10)" /></td></tr>
-
-<tr><td>Sample 11:</td><td width="200px">Higher-order fn: Apply twice</td><td>
-      <input type="button" id="sample11" value="Interpret"  onclick="SLang.go(11)" /></td></tr>
-
-<tr><td>Sample 12:</td><td width="200px">Higher-order fn: Compose</td><td>
-      <input type="button" id="sample12" value="Interpret"  onclick="SLang.go(12)" /></td></tr>
-</table>
 </div>
 
 <div id="main">
