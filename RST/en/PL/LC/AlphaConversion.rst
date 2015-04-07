@@ -165,7 +165,7 @@ using the following rule:
 To practice the process of :math:`\alpha`-conversion,
 complete the following exercise.
 
-Exercise not yet implemented.
+.. avembed:: Exercises/PL/AlphaConversion.html ka
 
 In conclusion, :math:`\alpha`-conversion simply replaces the name of a
 function parameter with a completely new name in order to avoid
