@@ -22,7 +22,7 @@
   var rearP1 = cir.pointer("rear", 10);
   jsav.umsg("Thus, an empty queue would be recognized by having rear be <i>one less</i> than front (taking into account the fact that the queue is circular, so position size-1 is actually considered to be one less than position 0).");
   jsav.step();
-  jsav.umsg("But what if the queue is completely full? In other words, what is the situation when a queue with n array positions available contains n elements? In this case, if the front element is in position 0, then the rear element is in position size-1.");
+  jsav.umsg("But what if the queue is completely full? In other words, what is the situation when a queue with $n$ array positions available contains n elements? In this case, if the front element is in position 0, then the rear element is in position size-1.");
   frontP1.arrow.hide();
   frontP1.label.hide();
   rearP1.arrow.hide();
@@ -39,7 +39,7 @@
   jsav.step();
   jsav.umsg(" Unfortunately, the problem cannot be remedied by a simple change to the definition for front and rear, because of the number of conditions or states that the queue can be in. Ignoring the actual position of the first element, and ignoring the actual values of the elements stored in the queue, how many different states are there? ");
   jsav.step();
-  jsav.umsg(" There can be no elements in the queue, one element, two, and so on. At most there can be n elements in the queue if there are n array positions. This means that there are n+1 different states for the queue (0 through n elements are possible).");
+  jsav.umsg(" There can be no elements in the queue, one element, two, and so on. At most there can be $n$ elements in the queue if there are n array positions. This means that there are $n+1$ different states for the queue (0 through $n$ elements are possible).");
   jsav.step();
   jsav.recorded();
 }(jQuery));

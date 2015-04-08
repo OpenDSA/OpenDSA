@@ -72,7 +72,7 @@ follows.::
 
 
    // Search for the record with Key K
-   bool hashSearch(const Key& K, Elem&; e) const {
+   bool hashSearch(const Key& K, Elem& e) const {
      int home;              // Home position for K
      int pos = home = h(K); // Initial position is the home slot
      for (int i = 1;

@@ -56,7 +56,7 @@ jshint:
 min: nomin
 #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
-S15: CS2114 ECE252 CPSC270 CSCI204 CS3114 RecurTutor CSCI115 uwosh-pl uwosh-taylor
+S15: CS2114 ECE252 CPSC270 CSCI204 CS3114 CS4104S15 CS5114S15 RecurTutor CSCI115 uwosh-pl uwosh-taylor
 
 Tutorial: min
 	python $(CONFIG_SCRIPT) config/Tutorial.json
@@ -124,6 +124,9 @@ CS3114notes: min
 
 COP3530: min
 	python $(CONFIG_SCRIPT) config/COP3530.json
+
+CS4104S15: min
+	python $(CONFIG_SCRIPT) config/CS4104S15.json
 
 CS5114: min
 	python $(CONFIG_SCRIPT) config/CS5114.json
