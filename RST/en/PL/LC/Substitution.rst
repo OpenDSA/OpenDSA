@@ -16,10 +16,119 @@
 .. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js
 
 
-
 =======================
  Substitution Algorithm
 =======================
+
+In this section, we continue our investigation of the semantics of the
+lambda calculus. Now that we understand the meaning of each one of the
+three types of lambda expressions (see
+:ref:`semantics-of-the-lambda-calculus`), the meaning of free and
+bound variables (see :ref:`free-and-bound-variables`) and how bound
+variables can be systematically renamed (see :ref:`alpha-conversion`),
+we have all of the tools we need to explain the meaning of function
+calls in the lambda calculus. Note that, since functions are the only
+entities in the lambda calculus, interpreting a lambda calculus
+program boils down to executing function calls.
+
+
+First, consider how you would execute the following function call in
+your head:
+
+.. code::
+
+   f(8)
+
+You would first look up the definition of the function :code:`f`, say:
+
+.. code::
+
+  var f = function(x) { return  2 * x - 5; };
+
+
+Then you could compute the value of :code:`f(8)` by computing the
+value of the body of :code:`f` after substituting :code:`8` for
+:code:`x` in it, yielding :code:`2*8 - 5 = 11`. This intuitive
+approach to evaluating function calls naturally leads to a
+*substitution-based model of interpretation*. In this section, we
+discuss a well-known algorithm for performing substitutions in the
+lambda calculus. 
+
+Since both the body of a function and the argument of a function call
+can be arbitrary lambda expressions, we need an algorithm that can
+substitute any lambda expression :math:`a` (the argument) for the
+variable :math:`p` (the parameter of the function) in the lambda
+expression :math:`b` (the body of the function). In this section, we
+forget about the interpretation of :math:`a`, :math:`p` and :math:`b`
+as components of a function call. Instead, we describe the algorithm
+in general terms, that is, as an algorithm to substitute :math:`a` for
+:math:`p` in :math:`b`, which we denote by:
+
+.. math::
+
+   subst(a, p, b)
+
+where :math:`a` and :math:`b` are arbitrary lambda expressions and
+:math:`p` is any variable. 
+
+Note that :math:`subst(a, p, b)` means "substitute :math:`a` for
+:math:`p` in :math:`b`" or equivalently, "replace :math:`p` by
+:math:`a` in :math:`b`. Whichever way you choose to phrase it,
+:math:`b` is always the expression inside which we are performing the
+substitution, :math:`p` is always the expression that gets taken out
+of :math:`b` and :math:`a` is always the expression that gets
+inserted into :math:`b`.
+
+
+Now, back to the substitution algorithm. Since :math:`b` is an
+arbitrary lambda expression, looking back at the BNF grammar for the
+lambda calculus (see :ref:`BNF-grammar-for-LC`), we see that we must
+consider three cases for :math:`b`, namely a variable, a lambda
+abstraction or an application expression. Therefore, our description
+of the algorithm is broken down into three numbered cases.
+
+
+**Case 1:** If :math:`b` is a variable, say :math:`x`, then
+:math:`subst(a, p, b)` becomes :math:`subst(a, p,x)`. Recall that
+:math:`p` and :math:`x` are generic variables. So we need to
+distinguish two subcases. First, if :math:`p` and :math:`x` are two
+different variables, then :math:`subst(a,p,x)` is equal to :math:`x`,
+because the variable :math:`p` does not occur in :math:`x` and no
+substitutions are needed or possible. We call this part of the
+algorithm **Case 1a**. Second, if :math:`p` and :math:`x` *are* the
+same variable, say :math:`v`, then :math:`subst(a,p,x)` is really
+:math:`subst(a,v,v)`, whose value is :math:`a`, because that is what
+we get when we replace :math:`v` by :math:`a`. We call this part of the
+algorithm **Case 1b**.
+
+Let's look at two examples of substitutions that belong to
+Case 1. First, in :math:`subst(\lambda x.x, u, v)`, :math:`v` is a
+variable that is different from :math:`u`. Therefore, this example
+matches Case 1a, and the output of the algorithm is :math:`v`. On the
+other hand, :math:`subst(\lambda y.(y\ x), u, u)` falls into Case 1b,
+since both :math:`p` and :math:`b` are equal to the same variable
+:math:`u`. So, the algorithm returns :math:`\lambda y.(y\ x)`.
+
+
+**Case 2:** To be completed
+
+**Case 3:** If :math:`b` is an application expression, say
+:math:`(e_1\ e_2)`, where :math:`e_1` and :math:`e_2` are arbitrary
+lambda expressions, then the value of :math:`subst(a,p,b)`, really
+:math:`subst(a,p,(e_1\ e_2))`, is :math:`(subst(a,p,e_1)\
+subst(a,p,e_2))`, that is, the application expression that is obtained
+by substituting :math:`a` for :math:`p` recursively in each component
+of the original application expression.
+
+As an example, consider :math:`subst(\lambda y.(y\ x), u, (\lambda
+v.u\ u))`. Since the expression we are substituting into (i.e., the
+third one) is an application expression, the algorithm requires us to
+return the application that results from recursively substituting
+:math:`\lambda y.(y\ x)` for :math:`u` in both components of this
+application. Since we already performed these two substitutions in the
+examples listed above, the final result of the algorithm is
+:math:`(\lambda v.\lambda y.(y\ x)\ \lambda y.(y\ x))`.
+
 
 The following exercise is good practice for identifying which case applies
 at each step of the substitution algorithm.
@@ -30,67 +139,6 @@ The following exercise will test your ability to complete a full
 substitution by applying the algorithm scrupulously.
 
 .. avembed:: Exercises/PL/SubstitutionResult.html ka
-
-
-[This section still needs to be written. The text below is from Taylor/Tom' version]
-
-
-How should one evaluate a lambda expression?  We first need to realize
-that, if by evaluate we mean to "call a function and see what it
-returns", then it only makes sense to evaluate a beta-redex, that is,
-an application in which the first expression is a function
-abstraction.  For instance :math:`(\lambda x.(x \; y) \; z)` is a
-beta-redex, but :math:`((x \; y) \; z)` is not.  In the lambda
-calculus, we evaluate a beta-redex by substituting the second
-component of the application expression for the formal parameter of
-the function abstraction in the "body" of the function, that is, in the expression following the dot that occurs in the syntax of the
-function abstraction.  For instance, carrying out this substitution in
-:math:`(\lambda x.(x \; y) \; z)` would result in :math:`(z \; y)`
-
-It is important to realize this idea of substitution makes sense in terms of the way we think about calling functions in everyday programming.   For example, suppose we had the JavaScript function
-
-::
-
- var foobar = function(x,y,z) { return  z * (x - y); }
-
-and we called it by:
-
-::
-
- foobar(8,6,4)
-
-A reasonable way to describe the value returned would be to say "substitute 8 for x, 6 for y, and 4 for z in the expression :math:`z * (x - y)`. 
-
-
-
-The act of doing this substitution is called :dfn:`beta-reducing` the
-lambda expression.   Hence we now see the rationale for the term
-beta-redex that we introduced earlier.   A beta-redex is the one and
-only type of lambda expression that can be beta-reduced.
-
-What can go wrong when we do this substitution to carry out a
-beta-reduction in the lambda calculus?  By substituting one
-variable for another, a variable that was free in an expression may
-become bound.  For instance, in the expression :math:`(\lambda
-x.\lambda y.(y \; x) \; y)`, the last occurrence of y in this
-application is free.  But if we beta-reduce, the result will be
-:math:`\lambda y.(y \; y)` and the free y that was substituted for the
-formal parameter x is now bound.  This is a result we need to avoid.
-To see why consider the following simple example:
-
-:math:`(\lambda x.z \; x)`
-
-Here :math:`\lambda x.z` is the function that always returns
-:math:`z`, which here is a free variable.  If we beta-reduce by
-substituting the last free occurrence of :math:`x` for :math:`z`, the free :math:`x` is now bound and the function becomes the identity function, which is very different from the function that always returns :math:`z`,
-
-   
-To keep from capturing a free variable in this fashion, we must :dfn:`alpha-convert` the expression that would cause
-the :math:`y` to become bound.  The intuitive justification of alpha-conversion
-is that we do not change the function abstraction :math:`\lambda y.(y \; x)` if we choose a different variable, say :math:`w`, to use as the formal
-parameter for the function.  That is, as a function definition,
-:math:`\lambda w.(w \; x)` is equivalent to :math:`\lambda y.(y \; x)`.   To carry out alpha-conversion on a function abstraction like :math:`\lambda p.b`, we 
-simply replace each free occurrence of p (the formal parameter) in b (the "body" of the function) by a new variable symbol not occurring anywhere in the body.    To illustrate this, consider:
 
 
 .. odsalink::  AV/PL/main.css

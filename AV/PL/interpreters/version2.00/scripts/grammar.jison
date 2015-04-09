@@ -27,7 +27,6 @@ LETTER		      [a-zA-Z]
 <<EOF>>               		      { return 'EOF'; }
 {LETTER}({LETTER}|{DIGIT}|_)*  	      { return 'VAR'; }
 {DIGIT}+                              { return 'INT'; }
-"."                                   { return 'DOT'; }
 .                     		      { return 'INVALID'; }
 
 /lex

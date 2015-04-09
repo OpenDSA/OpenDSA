@@ -147,19 +147,26 @@ Thus, the result is not dominated by the distribution of the bottom
 digit or the top digit of the original key value.
 Of course, if the key values all tend to be small numbers,
 then their squares will only affect the low-order digits of the hash value.
-This image shows the long division process, and the relationship between
-the digits of the operator and the digits of the result.
 
 .. _MidSquareFig:
 
 .. odsafig:: Images/MidSquare.png
    :width: 70
    :align: center
-   :capalign: center
+   :capalign: justify
    :figwidth: 90%
    :alt: Mid-square method example
 
-   An example of the mid-square method.
+   An example of the mid-square method. This image shows the
+   traditional gradeschool long multiplication process. The value
+   being squared is 4567. The result of squaring is 20857489.
+   At the bottom, of the image, the value 4567 is show again, with
+   each digit at the bottom of a "V". The associated "V" is showing
+   the digits from the result that are being affected by each digit of
+   the input. That is, "4" affects the output digits 2, 0, 8, 5,
+   an 7. But it has no affect on the last 3 digits. The key point is
+   that the middle two digits of the result (5 and 7) are affected by
+   every digit of the input.
 
 Here is a little calculator for you to see how this works.
 Start with '4567' as an example.

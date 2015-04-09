@@ -80,7 +80,7 @@ Depth-First Search
 
 The first method of organized graph traversal is called
 :term:`depth-first search` (DFS).
-Whenever a :math:`v` is visited during the search,
+Whenever a vertex :math:`v` is visited during the search,
 DFS will recursively visit all of :math:`v` 's unvisited neighbors.
 Equivalently, DFS will add all edges leading out of :math:`v` to a
 stack.
