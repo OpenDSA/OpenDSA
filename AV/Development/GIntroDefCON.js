@@ -63,8 +63,12 @@ $(document).ready(function () {
   graphTwo.layout();
   av.step();
 
-  // Slide 4
+  //
   graphTwo.hide();
+  av.umsg("Add Sub graph then transiditon to clique which is type of subgraph");
+  av.step();
+
+  // Slide 5 
   graphOne.show();
   av.umsg("Any subset of $V$ where all vertices in the subset have edges to all other vertices in the subset is called a <i>clique</i>. Here, the highlighted nodes form a clique.");
   nodeOne.highlight();

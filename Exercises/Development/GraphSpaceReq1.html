@@ -9,8 +9,8 @@
 
 <script>
 function genAnswer(numV, pointBytes) {
-  space = numV * numV * pointV;
-  return space.toString()
+  space = numV*numV*pointBytes 
+  return space
 }
 </script>
 
@@ -25,10 +25,10 @@ function getV(numV){
     <var id="numV">randRange(6, 10)</var>
     <var id ="numE">randRange(getV(numV), (getV(numV)* (getV(numV) - 1))/2 )</var>
     <!--<var id="numE">randRange(numV, (numV * (numV -1))/2</var>-->
-    <var id="pointB">randRange(1,4)</var>
+    <var id="pointerB">randRange(1,4)</var>
     <var id="edgeB">randRange(1,4)</var>
     <var id="vertB">randRange(1,4)</var>
-    <var id="ANS">genAnswer(numV, pointB)</var>
+    <var id="ANS">genAnswer(numV, pointerB)</var>
   </div>
   <div class="problems">
     <div id="problem-type-or-description">
@@ -36,12 +36,13 @@ function getV(numV){
 	in this set very carefully! </p>
       <p class="question">Assume for a directed graph with <var>numV</var>
       	 verticies and <var>numE</var> edges the vertex index requires 
-      	 <var>vertB</var> bytes, the pointer requires <var>pointB</var>
+      	 <var>vertB</var> bytes, the pointer requires <var>pointerB</var>
       	 bytes, and the edge weights require <var>edgeB</var> bytes. 
-      	 Calculate the byte requirements for an adjacency matrix.
+      	 Calculate the byte requirements for an adjacency matrix. 
       </p>
       <p class="solution" data-type="text"><var>ANS</var></p>
       <div class="hints">
+         <p> V^2 * pointerBytes = <var>ANS</var></p>
          <p>ADDDDD</p>
 
       </div> 

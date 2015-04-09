@@ -9,6 +9,7 @@
    :topic: Graphs
 
 .. odsalink:: AV/Development/GIntroDefCON.css
+.. odsalink:: AV/Development/GIntroDef2CON.css
 .. odsalink:: AV/Development/GIntroPathDefCON.css
 .. odsalink:: AV/Development/connectedGraphCON.css
 .. odsalink:: AV/Development/GIntroRepCON.css
@@ -115,8 +116,10 @@ is said to be a :term:`weighted graph`.
    because Vertex 1 appears twice.
    Vertices 1, 3, 2, 4, and 1 form a simple cycle.
 
+.. inlineav:: GIntroDef2CON ss
+   :output: show
 
-.. inlineav:: GraphIntroCON ss
+.. inlineav:: GIntroPathDefCON ss
    :output: show
 
 A sequence of vertices :math:`v_1, v_2, ..., v_n`
@@ -146,7 +149,8 @@ with three connected components.
 
 .. _ConCom:
 
-.. inlineav:: GraphIntro2CON dgm
+
+.. inlineav:: connectedGraphCON dgm
    :output: show
 
 
@@ -179,7 +183,7 @@ a free tree is connected and has :math:`|\mathbf{V}| - 1` edges.
    Replace image above with a JSAV-generated image. Or better, a
    slideshow to illustrate the various representation issues.
 
-.. inlineav:: GraphIntro3CON ss
+.. inlineav:: GIntroRepCON ss
    :output: show
 
 
@@ -283,6 +287,7 @@ be more space efficient.:
    Given specs for space requirements, compute the number of bytes
    needed for one or the other representation, or determine the
    break-even point.
+.. avembed:: Exercises/Development/GraphSpaceReqSum.html ka 
 
 The adjacency matrix often requires a higher asymptotic cost for an
 algorithm than would result if the adjacency list were used.
@@ -320,6 +325,7 @@ Notes
        dupicate edges, and no edges that connect a node to itself.
 
 .. odsascript:: AV/Development/GIntroDefCON.js
+.. odsalink:: AV/Development/GIntroDef2CON.js
 .. odsascript:: AV/Development/GIntroPathDefCON.js
 .. odsascript:: AV/Development/connectedGraphCON.js
 .. odsascript:: AV/Development/GIntroRepCON.js

@@ -1,6 +1,6 @@
 "use strict";
 $(document).ready(function () {
-	var av = new JSAV("GraphIntro2CON", {"animationMode" : "none"});
+	var av = new JSAV("connectedGraphCON", {"animationMode" : "none"});
 
 	var gTop = 10; 
 	var gLeft = 150;
