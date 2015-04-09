@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>Graph Adjaceny Matrix Space Req</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+
+<script>
+function genAnswer(numV, pointBytes) {
+  space = numV * numV * pointV;
+  return space.toString()
+}
+</script>
+
+<script>
+function getV(numV){
+	return numV
+}
+</script>
+
+<div class="exercise">
+  <div class="vars">
+    <var id="numV">randRange(6, 10)</var>
+    <var id ="numE">randRange(getV(numV), (getV(numV)* (getV(numV) - 1))/2 )</var>
+    <!--<var id="numE">randRange(numV, (numV * (numV -1))/2</var>-->
+    <var id="pointB">randRange(1,4)</var>
+    <var id="edgeB">randRange(1,4)</var>
+    <var id="vertB">randRange(1,4)</var>
+    <var id="ANS">genAnswer(numV, pointB)</var>
+  </div>
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="problem">WARNING! Read the conditions for the problems
+	in this set very carefully! </p>
+      <p class="question">Assume for a directed graph with <var>numV</var>
+      	 verticies and <var>numE</var> edges the vertex index requires 
+      	 <var>vertB</var> bytes, the pointer requires <var>pointB</var>
+      	 bytes, and the edge weights require <var>edgeB</var> bytes. 
+      	 Calculate the byte requirements for an adjacency matrix.
+      </p>
+      <p class="solution" data-type="text"><var>ANS</var></p>
+      <div class="hints">
+         <p>ADDDDD</p>
+
+      </div> 
+    </div>
+  </div>
+</div>
+</body>
+</html>

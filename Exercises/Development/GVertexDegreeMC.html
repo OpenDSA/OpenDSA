@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <title>TGraph Vertex Degree</title>
+  <title>Graph Vertex Degree</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
   <script src="../../JSAV/lib/jquery.transit.js"></script>
@@ -55,7 +55,7 @@ function getAnswer(node){
   <div class="vars">
     <var id="JSAV">initJSAV()</var>
     <var id="node">randRange(1, 5)</var>
-     <var id="ANS">getAnswer(node)</var>
+    <var id="ANS">getAnswer(node)</var>
   </div>
 
   <div class="problems">
@@ -66,6 +66,11 @@ function getAnswer(node){
       </p>
       <p class="question">What it the degree of vertex <var>node</var>?</p>
       <p class="solution" data-type="text"><var>ANS</var></p>
+      
+      <div class="hints">
+        <p>The degree of a vertex is the number of edges the vertex touches .</p>
+        <p><var> node </var> has a degree of <var>ANS</var></p>
+      </div>
     </div>
   </div>
 </div>
