@@ -16,13 +16,14 @@
 .. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js
 
 
+.. _alpha-conversion:
 
 ==========================
- :math:`\alpha`-Conversion
+Alpha-Conversion
 ==========================
 
 We now turn our attention back to the semantics of the lambda calculus
-by focusing on how :ref:`free_and_bound_variables` in lambda
+by focusing on how :ref:`free-and-bound-variables` in lambda
 expressions impact their meaning. Let us first consider bound variable
 occurrences first.
 

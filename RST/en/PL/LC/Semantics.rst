@@ -6,7 +6,7 @@
 .. avmetadata:: 
    :author: David Furcy, Tom Naps and Taylor Rydahl
 
-
+.. _semantics-of-the-lambda-calculus:
 
 ==================================
  Semantics of the Lambda Calculus
