@@ -92,26 +92,56 @@ function getAppExpArgs(e) {
 			"The argument of getAppExpArgs is not an AppExp.");
     }
 }
-function createPrimAppExp(prim,args) {
-    return ["PrimAppExp",prim,args];
+function createPrim1AppExp(prim,arg) {
+    return ["PrimApp1Exp",prim,arg];
 }
-function isPrimAppExp(e) { 
-    return e[0] === "PrimAppExp"; 
+function isPrim1AppExp(e) { 
+    return e[0] === "PrimApp1Exp"; 
 }
-function getPrimAppExpPrim(e) { 
-    if (isPrimAppExp(e)) {
+function getPrim1AppExpPrim(e) { 
+    if (isPrim1AppExp(e)) {
 	return e[1];
     } else {
 	throw new Error("Interpreter error: "  +
-			"The argument of getPrimAppExpPrim is not a PrimAppExp.");
+			"The argument of getPrim1AppExpPrim is not a Prim1AppExp.");
     }
 }
-function getPrimAppExpArgs(e) { 
-    if (isPrimAppExp(e)) {
+function getPrim1AppExpArg(e) { 
+    if (isPrim1AppExp(e)) {
 	return e[2];
     } else {
 	throw new Error("Interpreter error: "  +
-			"The argument of getPrimAppExpArgs is not a PrimAppExp.");
+			"The argument of getPrim1AppExpArg is not a Prim1AppExp.");
+    }
+}
+function createPrim2AppExp(prim,arg1,arg2) {
+    return ["Prim2AppExp",prim,arg1,arg2];
+}
+function isPrim2AppExp(e) { 
+    return e[0] === "Prim2AppExp"; 
+}
+function getPrim2AppExpPrim(e) { 
+    if (isPrim2AppExp(e)) {
+	return e[1];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getPrim2AppExpPrim is not a Prim2AppExp.");
+    }
+}
+function getPrim2AppExpArg1(e) { 
+    if (isPrim2AppExp(e)) {
+	return e[2];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getPrim2AppExpArg is not a Prim2AppExp.");
+    }
+}
+function getPrim2AppExpArg2(e) { 
+    if (isPrim2AppExp(e)) {
+	return e[3];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getPrim2AppExpArg is not a Prim2AppExp.");
     }
 }
 function createPrintExp(v,e) {
@@ -164,6 +194,36 @@ function getBlockList(b) {
 			"The argument of getBlockList is not a Block.");
     }
 }
+function createIfExp(condExp,thenExp,elseExp) {
+    return ["IfExp",condExp,thenExp,elseExp];
+}
+function isIfExp(e) { 
+    return e[0] === "IfExp"; 
+}
+function getIfExpCond(e) { 
+    if (isIfExp(e)) {
+	return e[1];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getIfExpCond is not an IfExp.");
+    }
+}
+function getIfExpThen(e) { 
+    if (isIfExp(e)) {
+	return e[2];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getIfExpThen is not an IfExp.");
+    }
+}
+function getIfExpElse(e) { 
+    if (isIfExp(e)) {
+	return e[3];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getIfExpElse is not an IfExp.");
+    }
+}
 
 exports.createProgram = createProgram;
 exports.isProgram = isProgram;
@@ -182,10 +242,6 @@ exports.createAppExp = createAppExp;
 exports.isAppExp = isAppExp;
 exports.getAppExpFn = getAppExpFn;
 exports.getAppExpArgs = getAppExpArgs;
-exports.createPrimAppExp = createPrimAppExp;
-exports.isPrimAppExp = isPrimAppExp;
-exports.getPrimAppExpPrim = getPrimAppExpPrim;
-exports.getPrimAppExpArgs = getPrimAppExpArgs;
 exports.createPrintExp = createPrintExp;
 exports.isPrintExp = isPrintExp;
 exports.getPrintExpExp = getPrintExpExp;
@@ -196,6 +252,21 @@ exports.getAssignExpRHS = getAssignExpRHS;
 exports.createBlock = createBlock;
 exports.isBlock = isBlock;
 exports.getBlockList = getBlockList;
+exports.createPrim1AppExp = createPrim1AppExp;
+exports.createPrim2AppExp = createPrim2AppExp;
+exports.isPrim1AppExp = isPrim1AppExp;
+exports.isPrim2AppExp = isPrim2AppExp;
+exports.getPrim1AppExpPrim = getPrim1AppExpPrim;
+exports.getPrim2AppExpPrim = getPrim2AppExpPrim;
+exports.getPrim1AppExpArg = getPrim1AppExpArg;
+exports.getPrim2AppExpArg1 = getPrim2AppExpArg1;
+exports.getPrim2AppExpArg2 = getPrim2AppExpArg2;
+exports.createIfExp = createIfExp;
+exports.isIfExp = isIfExp;
+exports.getIfExpCond = getIfExpCond;
+exports.getIfExpThen = getIfExpThen;
+exports.getIfExpElse = getIfExpElse;
+
 
 SLang.absyn = exports;
 }());

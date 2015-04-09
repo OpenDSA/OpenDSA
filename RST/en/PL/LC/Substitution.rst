@@ -91,23 +91,28 @@ of the algorithm is broken down into three numbered cases.
 **Case 1:** If :math:`b` is a variable, say :math:`x`, then
 :math:`subst(a, p, b)` becomes :math:`subst(a, p,x)`. Recall that
 :math:`p` and :math:`x` are generic variables. So we need to
-distinguish two subcases. First, if :math:`p` and :math:`x` are two
-different variables, then :math:`subst(a,p,x)` is equal to :math:`x`,
-because the variable :math:`p` does not occur in :math:`x` and no
-substitutions are needed or possible. We call this part of the
-algorithm **Case 1a**. Second, if :math:`p` and :math:`x` *are* the
+distinguish two subcases. First, if :math:`p` and :math:`x` are the
 same variable, say :math:`v`, then :math:`subst(a,p,x)` is really
 :math:`subst(a,v,v)`, whose value is :math:`a`, because that is what
 we get when we replace :math:`v` by :math:`a`. We call this part of the
-algorithm **Case 1b**.
+algorithm **Case 1a**. Second, if :math:`p` and :math:`x` are two
+different variables, then :math:`subst(a,p,x)` is equal to :math:`x`,
+because the variable :math:`p` does not occur in :math:`x` and no
+substitutions are needed or possible. We call this part of the
+algorithm **Case 1b**
+
 
 Let's look at two examples of substitutions that belong to
 Case 1. First, in :math:`subst(\lambda x.x, u, v)`, :math:`v` is a
 variable that is different from :math:`u`. Therefore, this example
-matches Case 1a, and the output of the algorithm is :math:`v`. On the
-other hand, :math:`subst(\lambda y.(y\ x), u, u)` falls into Case 1b,
+matches Case 1b, and the output of the algorithm is :math:`v`. On the
+other hand, :math:`subst(\lambda y.(y\ x), u, u)` falls into Case 1a,
 since both :math:`p` and :math:`b` are equal to the same variable
 :math:`u`. So, the algorithm returns :math:`\lambda y.(y\ x)`.
+
+.. inlineav:: substCase1b ss
+   :output: show
+
 
 
 **Case 2:** To be completed
@@ -144,3 +149,4 @@ substitution by applying the algorithm scrupulously.
 .. odsalink::  AV/PL/main.css
 
 
+.. odsascript:: AV/PL/AV/substCase1b.js

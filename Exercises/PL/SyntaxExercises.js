@@ -389,7 +389,7 @@ function pickExpression(minDepth,maxDepth,vars) {
 	}
 	p = L.absyn.createVarExp( vars.substr(tmp,1));
 	B = L.absyn.createVarExp( vars.substr(tmp2,1));
-    } else if (rnd<0.5) {
+    } else if (rnd<0.45) {
 	substCase = "3";
 	p = L.absyn.createVarExp( vars.substr(L.getRnd(0,vars.length-1),1));
 	while (true) {

@@ -9,7 +9,7 @@
 var exports = {};
 
 // denoted values in the interpreted language SLang 1
-//  Num, Clo
+//  Num, Clo, Bool
 
 function createNum(n) {
     return ["Num",n];
@@ -53,6 +53,20 @@ function getCloEnv(value) {
     } else {
 	throw new Error("Interpreter error: "  +
 		      	"The argument of getCloEnv is not a Clo value.");
+    }
+}
+function createBool(n) {
+    return ["Bool",n];
+}
+function isBool(value) {
+    return value[0] === "Bool";
+}
+function getBoolValue(value) {
+    if (isBool(value)) {
+	return value[1];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getBoolValue is not a Bool value.");
     }
 }
 
@@ -145,6 +159,9 @@ exports.lookup = lookup;
 exports.update = update;
 exports.updateWithReferences = updateWithReferences;
 exports.initEnv = initEnv;
+exports.createBool = createBool;
+exports.isBool = isBool;
+exports.getBoolValue = getBoolValue;
 
 SLang.env = exports;
 
