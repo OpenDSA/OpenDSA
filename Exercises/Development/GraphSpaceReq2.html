@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <title>Graph Adjaceny Matrix Space Req</title>
+  <title>Graph Adjaceny List Space Req</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
 <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
 </head>
 
 <script>
-function genAnswer(numV, vertBytes) {
-  space = numV*numV*verttBytes 
+function genAnswer(numV, pointBytes, numE, edgeBytes) {
+  space = (numV * pointBytes) + (numE * edgeBytes)
   return space
 }
 </script>
@@ -28,7 +28,7 @@ function V(numV){
     <var id="pointerB">randRange(4,6)</var>
     <var id="edgeB">randRange(2,4)</var>
     <var id="vertB">randRange(2,4)</var>
-    <var id="ANS">genAnswer(numV, vertB)</var>
+    <var id="ANS">genAnswer(numV, pointerB, numE, edgeB)</var>
   </div>
   <div class="problems">
     <div id="problem-type-or-description">
@@ -38,11 +38,11 @@ function V(numV){
       	 verticies and <var>numE</var> edges the vertex index requires 
       	 <var>vertB</var> bytes, the pointer requires <var>pointerB</var>
       	 bytes, and the edge weights require <var>edgeB</var> bytes. 
-      	 Calculate the byte requirements for an adjacency matrix. 
+      	 Calculate the byte requirements for an adjacency list. 
       </p>
       <p class="solution" data-type="text"><var>ANS</var></p>
       <div class="hints">
-         <p> V^2 * vert index Bytes = <var>ANS</var></p>
+         <p> V * pointerBytes + E * edgeweight bytes  = <var>ANS</var></p>
          <p>ADDDDD</p>
 
       </div> 

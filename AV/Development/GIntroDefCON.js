@@ -7,7 +7,7 @@ $(document).ready(function () {
 
   // Graph one 
   var gTop = 0;
-  var g1Left = 25;
+  var gLeft = 25;
   var graphOne = av.ds.graph({top: gTop, left: 125, width: 500, height: 400});
 
   var nodeOne = graphOne.addNode("", {left: 175, top: gTop});
