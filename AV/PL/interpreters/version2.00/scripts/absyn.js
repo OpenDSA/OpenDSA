@@ -144,8 +144,8 @@ function getPrim2AppExpArg2(e) {
 			"The argument of getPrim2AppExpArg is not a Prim2AppExp.");
     }
 }
-function createPrintExp(v,e) {
-    return ["PrintExp", v, e];
+function createPrintExp(e) {
+    return ["PrintExp", e];
 }
 function isPrintExp(e) { 
     return e[0] === "PrintExp"; 
