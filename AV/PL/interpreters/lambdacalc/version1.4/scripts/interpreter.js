@@ -111,7 +111,7 @@ function substitute(m,x,e) {
 	    return LAMBDA.absyn.createLambdaAbs(param,substitute(m,x,body));
 	} else {
 	    var newVar = LAMBDA.absyn.createVarExp(
-		newVariable(freeVars(m).concat(freeVars(body))));
+		newVariable(freeVars(m).concat(freeVars(body)).concat(xStr)));
 	    return LAMBDA.absyn.createLambdaAbs(
 		newVar,	
 		substitute(m,x,substitute(newVar,param,body)));
