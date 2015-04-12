@@ -140,8 +140,99 @@ function callByCopyRestore(exp,envir) {
 	throw new Error(f + " is not a closure and thus cannot be applied.");
     }    
 }
+/* substitute in exp each one of exps for each corresponding one in vs */
+function substitute(exps,vs,exp) {
+    var args, appExp, index;
+    if (exps.length !== vs.length) {
+	throw new Error("Substitute says: 'This should never happen!'");
+    } else if (exps.length === 0) {  // function with 0 parameters
+	return exp;
+    }
+    if (A.isIntExp(exp)) {
+	return exp;
+    }
+    else if (A.isVarExp(exp)) {
+	index = vs.indexOf(A.getVarExpId(exp));
+	if (index >= 0) {
+	    return exps[index];
+	} else {
+	    return exp;
+	}
+    } else if (A.isPrintExp(exp)) {
+	return A.createPrintExp( substitute(exps, vs, A.getPrintExpExp(exp)) );
+    } else if (A.isPrint2Exp(exp)) {
+	if (A.getPrint2ExpExp(exp) === null) {
+	    return A.createPrint2Exp( A.getPrint2ExpString(exp), null);
+	} else {	    
+	    return A.createPrint2Exp( A.getPrint2ExpString(exp),
+				  substitute(exps, vs, A.getPrint2ExpExp(exp)));
+	}
+    } else if (A.isAssignExp(exp)) {
+	index = vs.indexOf( A.getAssignExpVar(exp) );
+	if (index >= 0) {
+	    if (A.isVarExp( exps[index] )) {
+		return 	A.createAssignExp( A.getVarExpId(exps[index]),
+			   substitute(exps,vs,A.getAssignExpRHS(exp)));
+	    } else {
+	     throw new Error("Only a variable can be " +
+			     "substituted on the LHS of an assignment.");
+	    }
+	} else {
+	    return A.createAssignExp( A.getAssignExpVar(exp),
+			      substitute(exps,vs,A.getAssignExpRHS(exp)));
+	}
+    } else if (A.isFnExp(exp)) {
+	return A.createFnExp( A.getFnExpParams(exp),
+			      A.getFnExpBody(exp).map( function(e) {
+				  return substitute(exps,vs,e); } ));
+    }
+    else if (A.isAppExp(exp)) {
+	args = A.getAppExpArgs(exp).map( 
+		function (arg) { return substitute(exps,vs,arg); });
+	args.unshift( "args" );
+	appExp =  A.createAppExp( substitute(exps,vs,A.getAppExpFn(exp)),args);
+	if (exp.comesFromLetBlock) {
+	    appExp.comesFromLetBlock = true;
+	}
+	return appExp;
+    } else if (A.isPrim1AppExp(exp)) {
+        return A.createPrim1AppExp(
+	    A.getPrim1AppExpPrim(exp),
+	    [ substitute(exps, vs, A.getPrim1AppExpArg(exp)) ]);
+    } else if (A.isPrim2AppExp(exp)) {
+        return A.createPrim2AppExp(
+	    A.getPrim2AppExpPrim(exp),
+	    substitute(exps, vs, A.getPrim2AppExpArg1(exp)),
+	      substitute(exps, vs, A.getPrim2AppExpArg2(exp)) );
+    } else if (A.isIfExp(exp)) {
+	return A.createIfExp(
+	    substitute(exps, vs, A.getIfExpCond(exp)),
+	    substitute(exps, vs, A.getIfExpThen(exp)),
+	    substitute(exps, vs, A.getIfExpElse(exp)));
+    } else {
+	throw "Error: Attempting to substitute in an invalid expression";
+    }
+}
 function callByMacro(exp,envir) {
+    var f = evalExp(A.getAppExpFn(exp),envir);
+    if (E.isClo(f)) {
+	if (E.getCloParams(f).length !== A.getAppExpArgs(exp).length) {		
+	    throw new Error("Runtime error: wrong number of arguments in " +
+                            "a function call (" + E.getCloParams(f).length +
+			    " expected but " + A.getAppExpArgs(exp).length +
+			    " given)");
+	} else {
 
+            var sBody = E.getCloBody(f).map( function (e) {
+		                       return substitute( A.getAppExpArgs(exp),
+				    			  E.getCloParams(f),
+							  e); } );
+	    var values = evalExps( sBody, envir);  /* dynamic scoping */
+	    return values[values.length-1];
+	}
+    } else {
+	throw new Error(f + " is not a closure and thus cannot be applied.");
+    }       
 }
 function evalExp(exp,envir) {
     if (A.isIntExp(exp)) {
