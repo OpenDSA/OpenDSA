@@ -108,7 +108,37 @@ function callByReference(exp,envir) {
     }    
 }
 function callByCopyRestore(exp,envir) {
-
+    var f = evalExp(A.getAppExpFn(exp),envir);
+    var args = A.getAppExpArgs(exp).map( function (arg) {
+	if (A.isVarExp(arg)) {
+	    return E.lookupReference(envir,A.getVarExpId(arg));
+	} else {
+	    throw new Error("The arguments of a function called by-ref must all be variables.");
+	}
+    } );
+    // make copies
+    var copies = args.map( function (arg) { return [ arg[0] ]; } );
+    var restore = function ( list1, list2 ) {
+	for(var i=0; i<list1.length; i++) {
+	    list1[i] = list2[i];
+	}
+    };
+    if (E.isClo(f)) {
+	if (E.getCloParams(f).length !== args.length) {		
+	    throw new Error("Runtime error: wrong number of arguments in " +
+                            "a function call (" + E.getCloParams(f).length +
+			    " expected but " + args.length + " given)");
+	} else {
+	    var values = evalExps(E.getCloBody(f),
+			          E.updateWithReferences(
+				      E.getCloEnv(f),
+				      E.getCloParams(f),copies));
+	    restore(args,copies);
+	    return values[values.length-1];
+	}
+    } else {
+	throw new Error(f + " is not a closure and thus cannot be applied.");
+    }    
 }
 function callByMacro(exp,envir) {
 
@@ -124,8 +154,8 @@ function evalExp(exp,envir) {
 	    evalExp( A.getPrintExpExp(exp), envir )));
     } else if (A.isPrint2Exp(exp)) {
 	console.log( JSON.stringify( A.getPrint2ExpString(exp) + " " + 
-				     (A.getPrint2ExpExp(exp) !== null 
-				      ? evalExp( A.getPrint2ExpExp(exp), envir )
+				     (A.getPrint2ExpExp(exp) !== null ?
+				      evalExp( A.getPrint2ExpExp(exp), envir )
 				      : "")));
     } else if (A.isAssignExp(exp)) {
 	var v = evalExp(A.getAssignExpRHS(exp),envir);

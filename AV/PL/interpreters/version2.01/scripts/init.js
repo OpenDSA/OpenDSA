@@ -8,10 +8,10 @@
     window.SLang.grammarWindow = null;
 
 
-    function go(n) {
+    function go(n,ppm) {
 	document.getElementById('interpreterinput').value=SLang.samples[n][1]; 
 	document.getElementById('interpreteroutput').value=
-	    SLang.interpret(document.getElementById('interpreterinput').value);
+	    SLang.interpret(document.getElementById('interpreterinput').value,ppm);
     }
 
 

@@ -94,8 +94,13 @@
     var rows = "<table>";
     for(var i=1; i<=SLang.samples.length-1; i++) {
 	rows += '<tr><td width="400px">' +
-	         '<input type="button" value="Interpret"  onclick="SLang.go(' +
-                 i + ')" />&nbsp;<strong>test' + i + '.sl </strong>' 
+		'<strong>test' + i + '.sl</strong>&nbsp;' +
+	        '<input type="button" value="by-val"  onclick="SLang.go(' +
+                 i + ',\'byval\')" />&nbsp;' +
+	        '<input type="button" value="by-ref"  onclick="SLang.go(' +
+                 i + ',\'byref\')" />&nbsp;' +
+	        '<input type="button" value="by-cpr"  onclick="SLang.go(' +
+                 i + ',\'bycpr\')" />&nbsp;' 
                  + '\n</td></tr>';
     }
     $("#testsCases").html(rows);
