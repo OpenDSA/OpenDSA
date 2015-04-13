@@ -4,8 +4,6 @@
 
 "use strict";
 
-
-
 var exports = {};
 
 // denoted values in the interpreted language SLang 1
