@@ -4,7 +4,7 @@
       ".exerciseTitle": "B<sup>+</sup> Tree Insertion",
       "av_Authors": "Kasper Hellström",
       ".instructLabel": "Instructions:",
-      ".instructions": "In this exercise your job is to insert the values from the stack to the B<sup>+</sup> tree.<br><strong>NB:</strong> The B<sup>+</sup> tree in this exercise uses a <strong>top-down splitting approach</strong>, where a full node is split every time it is encountered by the search/insert algorithm.<br><br>To split a full node, simply click on it. If you click on a non-full node, the topmost values from the stack will be inserted to the clicked node (the value is automatically inserted to the correct index/position).",
+      ".instructions": "In this exercise your job is to insert the values from the stack to the B<sup>+</sup> tree.<br>Search for the leaf node where the topmost value of the stack should be inserted, and click on that node. The exercise will take care of the rest. Continue this procedure until you have inserted all the values in the stack.",
       "av_ms_search": "Looking for a leaf node for {val}",
       "av_ms_split": "The encountered node is full, so we split it.",
       "av_ms_insert": "{val} is inserted to the leaf node."
@@ -13,7 +13,7 @@
       ".exerciseTitle": "Lisäys B<sup>+</sup>-puuhun",
       "av_Authors": "Kasper Hellström",
       ".instructLabel": "Ohjeet:",
-      ".instructions": "Tehtävänäsi on lisätä pinon avaimet B<sup>+</sup>-puuhun.<br><strong>HUOM!</strong> Tämän tehtävän B<sup>+</sup>-puu käyttää <strong>top-down halkaisua</strong>, eli halkaisu tapahtuu joka kerta kun haku/lisäys algoritmi kohtaa täyden solmun.<br><br>Täysi solmu halkaistaan klikkaamalla. Puolitäyttä solmua klikkaamalla pinon päällimmäinen alkio lisätään solmuun (klikatulla indeksillä ei ole väliä).",
+      ".instructions": "Tehtävänäsi on lisätä pinon avaimet B<sup>+</sup>-puuhun.<br>Etsi lehtisolmu, johon pinon päällimmäinen alkio tulisi lisätä, ja klikkaa tätä solmua. Tehtävä hoitaa loput puolestasi. Jatka tätä toimenpidettä kunnes olet lisännyt kaikki pinon arvot puuhun.",
       "av_ms_search": "Etsitään lehtisolmua arvolle {val}",
       "av_ms_split": "Kohdattu solmu on täysi, joten se halkaistaan.",
       "av_ms_insert": "Arvo {val} lisätään lehtisolmuun."
