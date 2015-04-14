@@ -8,6 +8,13 @@ var samples = [
 
 /* 0 */   "",
 /* 1 */   [ "test 1",
+	    "letrec\n" +
+	    "        fact = fn (n) => if (n === 0) then 1 else (n * (fact (n-1)))\n" +
+	    "in\n" +
+	    "   (fact 5)\n" +
+	    "end"
+          ],
+/* 2*/    [ "test 1",
             "let\n" +
 	    "    fact = fn (n) =>\n" +
 	    "               let\n" +

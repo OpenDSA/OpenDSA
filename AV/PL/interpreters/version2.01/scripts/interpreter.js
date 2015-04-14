@@ -290,6 +290,18 @@ function evalExp(exp,envir) {
 	} else {
 	    return undefined;
 	}
+    } else if (A.isLetRecExp(exp)) {
+	var dummy = [];
+	var closure = E.createClo(A.getFnExpParams(A.getLetRecExpFn(exp)),
+			  A.getFnExpBody(A.getLetRecExpFn(exp)),
+			  E.updateWithReferences(envir,
+						 [A.getLetRecExpVar(exp)],
+						 [dummy]));
+	dummy[0] = closure;
+	var values = evalExps(A.getLetRecExpBlock(exp),
+			      E.update(envir,[A.getLetRecExpVar(exp)],
+				       [closure]));
+	return values[values.length-1];
     } else {
 	throw "Error: Attempting to evaluate an invalid expression";
     }
