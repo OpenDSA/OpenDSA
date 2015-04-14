@@ -164,11 +164,9 @@ $(document).ready(function () {
   function modelWrapper(tt) {
     return function model(modelav) {
       var modelBst = modelav.ds.binarytree({center: true, nodegap: 15});
-      for (var i = 0, l = tt.initData.length; i < l; i++) {
-        modelBst.insert(tt.initData[i]);
-      }
+      modelBst.insert(tt.initData);
       modelBst.layout();
-      modelav.clear();
+      modelav.displayInit();
       tt.modelFunction.call(modelBst);
       return modelBst;
     };
@@ -231,16 +229,19 @@ $(document).ready(function () {
 
   function TreeTraversal(modelFunction) {
     // Load the configuration created by odsaAV.js
-    var config = ODSA.UTILS.loadConfig({"json_path": "btTravPRO.json"}),
-        code = config.code;
+    var config = ODSA.UTILS.loadConfig({
+      "json_path": "btTravPRO.json",
+      "default_code": "none"
+    }),
+      code = config.code;
     interpret = config.interpreter;
 
     this.modelFunction = modelFunction;
-    var settings = new JSAV.utils.Settings($(".jsavsettings"));
+    var settings = config.getSettings();
     this.jsav = new JSAV($(".avcontainer"), {settings: settings});
     this.jsav.recorded();
 
-    if (PARAMS["JXOP-code"] && code) {
+    if (code) {
       switch (modelFunction) {
       case inOrderTraversal:
         code = code.inorder;
