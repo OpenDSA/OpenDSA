@@ -9,6 +9,23 @@ var samples = [
 /* 0 */   "",
 /* 1 */   [ "test 1",
             "let\n" +
+	    "    fact = fn (n) =>\n" +
+	    "               let\n" +
+	    "                   result = 1\n" +
+	    "               in\n" +
+	    "                   while (n>1)\n" +
+	    "                   {\n" +
+	    "                      set result = (result * n);\n" +
+	    "                      set n = (n - 1)\n" +
+	    "                   };\n" +
+	    "                   result\n" +
+	    "               end\n" + 
+	    "in\n" +
+	    "     (fact 5)\n" +
+	    "end"
+          ],
+/* 1 */   [ "test 1",
+            "let\n" +
 	    "   p = 3\n" +
 	    "in\n" +
 	    "   let\n" +

@@ -28,6 +28,9 @@ LETTER		      [a-zA-Z_]
 "end"                                 { return 'END'; }
 "print"                               { return 'PRINT'; }
 "set"                                 { return 'SET'; }
+"while"                               { return 'WHILE'; }
+"{"                                   { return 'LBRACE'; }
+"}"                                   { return 'RBRACE'; }
 ";"                   		      { return 'SEMICOLON'; }
 ":"                   		      { return 'COLON'; }
 ","                   		      { return 'COMMA'; }
@@ -62,9 +65,10 @@ exp
     | prim2_app_exp { $$ = $1; }
     | if_exp        { $$ = $1; }
     | let_exp       { $$ = $1; }
-    | print _exp    { $$ = $1; }
+    | print_exp    { $$ = $1; }
     | print2_exp    { $$ = $1; }
     | assign_exp    { $$ = $1; }
+    | while_exp     { $$ = $1; }
     ;
 
 var_exp
@@ -75,6 +79,7 @@ intlit_exp
     : INT  { $$ = SLang.absyn.createIntExp( $1 ); }
     ;
 
+
 print_exp
     : PRINT exp { $$ = SLang.absyn.createPrintExp( $2 ); }
     ;
@@ -83,6 +88,8 @@ print2_exp
     : PRINT DQUOTE VAR DQUOTE optional 
            { $$ = SLang.absyn.createPrint2Exp( $3, $5 ); }
     ;
+
+
 
 optional
     : COLON        { $$ = null; }
@@ -203,6 +210,10 @@ more_prim_args
 
 if_exp
     : IF exp THEN exp ELSE exp { $$ = SLang.absyn.createIfExp($2,$4,$6); }
+    ;
+
+while_exp
+    : WHILE exp LBRACE block RBRACE { $$ = SLang.absyn.createWhileExp($2,$4); }
     ;
 
 %%

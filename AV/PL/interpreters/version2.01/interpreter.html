@@ -92,7 +92,15 @@
 </table>
 <script>
     var rows = "<table>";
-    for(var i=1; i<=SLang.samples.length-1; i++) {
+    for(var i=1; i<=1; i++) {
+	rows += '<tr><td width="400px">' +
+		'<strong>test' + i + '.sl</strong>&nbsp;' +
+	        '<input type="button" value="by-val"  onclick="SLang.go(' +
+                 i + ',\'byval\')" />&nbsp;'
+                 + '\n</td></tr>';
+    }
+
+    for(var i=2; i<=SLang.samples.length-1; i++) {
 	rows += '<tr><td width="400px">' +
 		'<strong>test' + i + '.sl</strong>&nbsp;' +
 	        '<input type="button" value="by-val"  onclick="SLang.go(' +

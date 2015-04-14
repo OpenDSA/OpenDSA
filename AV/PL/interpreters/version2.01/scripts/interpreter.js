@@ -244,10 +244,11 @@ function evalExp(exp,envir) {
 	console.log( JSON.stringify(
 	    evalExp( A.getPrintExpExp(exp), envir )));
     } else if (A.isPrint2Exp(exp)) {
-	console.log( JSON.stringify( A.getPrint2ExpString(exp) + " " + 
-				     (A.getPrint2ExpExp(exp) !== null ?
-				      evalExp( A.getPrint2ExpExp(exp), envir )
-				      : "")));
+	console.log( A.getPrint2ExpString(exp) +
+		     (A.getPrint2ExpExp(exp) !== null ?
+		      " " + JSON.stringify( evalExp( A.getPrint2ExpExp(exp), 
+						     envir ) )
+		      : ""));
     } else if (A.isAssignExp(exp)) {
 	var v = evalExp(A.getAssignExpRHS(exp),envir);
 	E.lookupReference(
@@ -280,6 +281,14 @@ function evalExp(exp,envir) {
 	    return evalExp(A.getIfExpThen(exp),envir);
 	} else {
 	    return evalExp(A.getIfExpElse(exp),envir);
+	}
+    } else if (A.isWhileExp(exp)) {
+	var condition = evalExp(A.getWhileExpCond(exp),envir);
+	if (E.getBoolValue(condition)) {
+	    evalExps(A.getWhileExpBody(exp),envir);
+	    evalExp(exp,envir);
+	} else {
+	    return undefined;
 	}
     } else {
 	throw "Error: Attempting to evaluate an invalid expression";

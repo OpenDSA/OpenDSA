@@ -247,6 +247,28 @@ function getIfExpElse(e) {
 			"The argument of getIfExpElse is not an IfExp.");
     }
 }
+function createWhileExp(cond,body) {
+    return ["WhileExp",cond,body];
+}
+function isWhileExp(e) { 
+    return e[0] === "WhileExp"; 
+}
+function getWhileExpCond(e) { 
+    if (isWhileExp(e)) {
+	return e[1];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getWhileExpCond is not a WhileExp.");
+    }
+}
+function getWhileExpBody(e) { 
+    if (isWhileExp(e)) {
+	return e[2];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getWhileExpBody is not a WhileExp.");
+    }
+}
 
 exports.createProgram = createProgram;
 exports.isProgram = isProgram;
@@ -293,7 +315,10 @@ exports.isIfExp = isIfExp;
 exports.getIfExpCond = getIfExpCond;
 exports.getIfExpThen = getIfExpThen;
 exports.getIfExpElse = getIfExpElse;
-
+exports.createWhileExp = createWhileExp;
+exports.isWhileExp = isWhileExp;
+exports.getWhileExpCond = getWhileExpCond;
+exports.getWhileExpBody = getWhileExpBody;
 
 SLang.absyn = exports;
 }());
