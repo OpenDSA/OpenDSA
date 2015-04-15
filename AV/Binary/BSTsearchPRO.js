@@ -127,13 +127,13 @@ $(document).ready(function () {
       $key = $('#keyToFind'),
 
       // Load the configurations created by odsaAV.js
-      config = ODSA.UTILS.loadConfig(),
+      config = ODSA.UTILS.loadConfig({default_code: "none"}),
       interpret = config.interpreter,
       code = config.code,
       codeOptions = {after: {element: $(".instructions")}, visible: true},
 
       // Settings for the AV
-      settings = new JSAV.utils.Settings($(".jsavsettings")),
+      settings = new config.getSettings(),
 
       // create a JSAV instance
       av = new JSAV($(".avcontainer"), {settings: settings});
@@ -142,7 +142,7 @@ $(document).ready(function () {
 
   // show a JSAV code instance only if the code is defined in the parameter
   // and the parameter value is not "none"
-  if (PARAMS["JXOP-code"] && code) {
+  if (code) {
     pseudo = av.code($.extend(codeOptions, code));
   }
 

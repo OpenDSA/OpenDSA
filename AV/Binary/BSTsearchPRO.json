@@ -8,10 +8,10 @@
       "#about": "About"
     },
     "fi": {
-      ".avTitle": "Fi BST Search Proficiency Exercise",
+      ".avTitle": "Haku binäärisestä hakupuusta",
       "av_Authors": "Kasper Hellström",
       ".instructLabel": "Ohjeet:",
-      ".instructions": "Fi Use the BST search algorithm to find the key given in the exercise. Starting with the root, click on an empty node to reveal its value and its children. Work your way down the tree as the search algorithm would.",
+      ".instructions": "Etsi annettua avainta binäärisistä hakupuusta. Haku suoritetaan klikkaamalla jokaisella askeleella sitä piilotettua alipuuta, johon haku etenee.",
       "#about": "Lisätietoa"
     }
   },
