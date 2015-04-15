@@ -10,6 +10,7 @@
 
 .. odsalink:: AV/Development/GIntroDefCON.css
 .. odsalink:: AV/Development/GIntroDef2CON.css
+.. odsalink:: AV/Development/GIntroDef2_2CON.css
 .. odsalink:: AV/Development/GIntroPathDefCON.css
 .. odsalink:: AV/Development/connectedGraphCON.css
 .. odsalink:: AV/Development/GIntroRepCON.css
@@ -73,8 +74,6 @@ of edges is written :math:`|\mathbf{E}|`.
 :math:`|\mathbf{E}|` can range from zero to a maximum of
 :math:`|\mathbf{V}|^2 - |\mathbf{V}|`.
 
-.. inlineav:: GIntroDefCON ss
-   :output: show
    
 A graph with edges directed from one vertex to another
 (as in Figure :num:`Figure #GraphTerms` (b)) is
@@ -96,6 +95,12 @@ A graph whose edges have weights
 (as in Figure :num:`Figure #GraphTerms` (c))
 is said to be a :term:`weighted graph`.
 
+.. inlineav:: GIntroDef2CON ss
+   :output: show
+
+..inlineave:: GIntroDef2_2CON dgm 
+   :output: show
+
 .. _GraphTerms:
 
 .. odsafig:: Images/GraphDef.png
@@ -116,7 +121,7 @@ is said to be a :term:`weighted graph`.
    because Vertex 1 appears twice.
    Vertices 1, 3, 2, 4, and 1 form a simple cycle.
 
-.. inlineav:: GIntroDef2CON ss
+.. inlineav:: GIntroDefCON ss
    :output: show
 
 .. inlineav:: GIntroPathDefCON ss
@@ -326,6 +331,7 @@ Notes
 
 .. odsascript:: AV/Development/GIntroDefCON.js
 .. odsalink:: AV/Development/GIntroDef2CON.js
+.. odsalink:: AV/Development/GIntroDef2_2CON.js
 .. odsascript:: AV/Development/GIntroPathDefCON.js
 .. odsascript:: AV/Development/connectedGraphCON.js
 .. odsascript:: AV/Development/GIntroRepCON.js

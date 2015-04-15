@@ -28,6 +28,7 @@ LETTER		      [a-zA-Z_]
 "end"                                 { return 'END'; }
 "print"                               { return 'PRINT'; }
 "set"                                 { return 'SET'; }
+"letrec"                              { return 'LETREC'; }
 "while"                               { return 'WHILE'; }
 "{"                                   { return 'LBRACE'; }
 "}"                                   { return 'RBRACE'; }
@@ -65,7 +66,8 @@ exp
     | prim2_app_exp { $$ = $1; }
     | if_exp        { $$ = $1; }
     | let_exp       { $$ = $1; }
-    | print_exp    { $$ = $1; }
+    | letrec_exp    { $$ = $1; }
+    | print_exp     { $$ = $1; }
     | print2_exp    { $$ = $1; }
     | assign_exp    { $$ = $1; }
     | while_exp     { $$ = $1; }
@@ -114,6 +116,12 @@ let_exp
              $$ = appExp;
            }
     ; 
+
+letrec_exp
+    : LETREC VAR EQ fn_exp IN block END
+           { $$ = SLang.absyn.createLetRecExp($2,$4,$6); }
+    ; 
+
 
 bindings
     : VAR EQ exp              

@@ -269,6 +269,36 @@ function getWhileExpBody(e) {
 			"The argument of getWhileExpBody is not a WhileExp.");
     }
 }
+function createLetRecExp(v,fn,block) {
+    return ["LetRecExp",v,fn,block];
+}
+function isLetRecExp(e) { 
+    return e[0] === "LetRecExp"; 
+}
+function getLetRecExpVar(e) { 
+    if (isLetRecExp(e)) {
+	return e[1];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getLetRecExpVar is not a LetRecExp.");
+    }
+}
+function getLetRecExpFn(e) { 
+    if (isLetRecExp(e)) {
+	return e[2];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getLetRecExpFn is not a LetRecExp.");
+    }
+}
+function getLetRecExpBlock(e) { 
+    if (isLetRecExp(e)) {
+	return e[3];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getLetRecExpBlock is not a LetRecExp.");
+    }
+}
 
 exports.createProgram = createProgram;
 exports.isProgram = isProgram;
@@ -319,6 +349,11 @@ exports.createWhileExp = createWhileExp;
 exports.isWhileExp = isWhileExp;
 exports.getWhileExpCond = getWhileExpCond;
 exports.getWhileExpBody = getWhileExpBody;
+exports.createLetRecExp = createLetRecExp;
+exports.isLetRecExp = isLetRecExp;
+exports.getLetRecExpVar = getLetRecExpVar;
+exports.getLetRecExpFn = getLetRecExpFn;
+exports.getLetRecExpBlock = getLetRecExpBlock;
 
 SLang.absyn = exports;
 }());
