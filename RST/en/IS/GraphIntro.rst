@@ -95,13 +95,16 @@ A graph whose edges have weights
 (as in Figure :num:`Figure #GraphTerms` (c))
 is said to be a :term:`weighted graph`.
 
+
+
+
+.. _GraphTerms:
+
 .. inlineav:: GIntroDef2CON ss
    :output: show
 
-..inlineave:: GIntroDef2_2CON dgm 
+.. inlineav:: GIntroDef2_2CON dgm 
    :output: show
-
-.. _GraphTerms:
 
 .. odsafig:: Images/GraphDef.png
    :width: 500
@@ -330,8 +333,8 @@ Notes
        dupicate edges, and no edges that connect a node to itself.
 
 .. odsascript:: AV/Development/GIntroDefCON.js
-.. odsalink:: AV/Development/GIntroDef2CON.js
-.. odsalink:: AV/Development/GIntroDef2_2CON.js
+.. odsascript:: AV/Development/GIntroDef2CON.js
+.. odsascript:: AV/Development/GIntroDef2_2CON.js
 .. odsascript:: AV/Development/GIntroPathDefCON.js
 .. odsascript:: AV/Development/connectedGraphCON.js
 .. odsascript:: AV/Development/GIntroRepCON.js

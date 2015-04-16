@@ -4,13 +4,14 @@ $(document).ready(function () {
 	
     //graph one 
     var gTop = 10;
+     var gLeft = 25;
     var graphOne = av.ds.graph({top: gTop, left: 350, width: 200});
 
-    var nodeOne = graphOne.addNode("", {left: g1Left, top: gTop});
-    var nodeTwo = graphOne.addNode("", {left: g1Left + 100, top: gTop});
-    var nodeThree = graphOne.addNode("", {left: g1Left + 50, top: gTop + 50});
-    var nodeFour = graphOne.addNode("", {left: g1Left,  top: gTop + 100});
-    var nodeFive =graphOne.addNode("", {left: g1Left + 100, top: gTop + 100});
+    var nodeOne = graphOne.addNode("", {left: gLeft, top: gTop});
+    var nodeTwo = graphOne.addNode("", {left: gLeft + 100, top: gTop});
+    var nodeThree = graphOne.addNode("", {left: gLeft + 50, top: gTop + 50});
+    var nodeFour = graphOne.addNode("", {left: gLeft,  top: gTop + 100});
+    var nodeFive =graphOne.addNode("", {left: gLeft + 100, top: gTop + 100});
 
     //add edges to grapph 
     graphOne.addEdge(nodeOne, nodeFour);
@@ -22,7 +23,7 @@ $(document).ready(function () {
     
     
     //set up rsecond graph 
-    var gLeft = 25;
+   
     var gRight = 300;
     var graphTwo = av.ds.graph({left: 350, top: gTop, directed: true, width: 200, visible: false});
 
@@ -88,10 +89,6 @@ $(document).ready(function () {
 
     //new slide 
     av.umsg("ADD SLIDE ABOUT ADJACENT + NEIGHBORS + INCIDENTZ");
-    
-
-
-   
     av.recorded();
 
 });
