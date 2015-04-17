@@ -30,17 +30,6 @@ $(document).ready(function () {
     JSAV.ext.SPEED = 500;
 
     var av = new JSAV($("#parseTree"));
-    //    av.settings = null;
-
-/*
-    graph = av.ds.graph( { layout: "manual", directed : false,
-		       width: 500, height: 500 } );
-    graph.css( { color: "red"});
-    graph.addNode( "x", {"left"  : 20, "top" : 50} );
-
-    graph.layout();
-    av.displayInit();
-*/
 
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     arr = av.ds.array(LAMBDA.mySplit(lambdaexp.replace(/\^/g,"\u03BB")));
