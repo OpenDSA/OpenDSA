@@ -21,7 +21,7 @@ $(document).ready(function () {
 	//graph one 
     var gTop = 100;
     var gLeft = 25;
-    var graphOne = av.ds.graph({top: gTop, left: gLeft, width: 400, height: 250});
+    var graphOne = av.ds.graph({top: gTop, left: gLeft, width: 250, height: 250});
 
     var nodeOne = graphOne.addNode("", {left: gLeft, top: gTop});
     var nodeTwo = graphOne.addNode("", {left: gLeft + 100, top: gTop});
@@ -44,14 +44,14 @@ $(document).ready(function () {
     
     //set up rsecond graph 
    
-    var g2Left = 175;
-    var graphTwo = av.ds.graph({left: g2Left, top: gTop, directed: true, width: 400, height: 300});
+    var g2Left = 300;
+    var graphTwo = av.ds.graph({left: g2Left, top: gTop, directed: true, width: 250, height: 250});
 
-    nodeOne = graphTwo.addNode(" ", {left: g2Left, top: gTop});
-    nodeTwo = graphTwo.addNode(" ", {left: g2Left + 100, top: gTop});
-    nodeThree = graphTwo.addNode(" ", {left: g2Left + 50, top: gTop + 50});
-    nodeFour = graphTwo.addNode(" ", {left: g2Left,  top: gTop + 100});
-    nodeFive =graphTwo.addNode(" ", {left: g2Left + 100, top: gTop + 100});
+    nodeOne = graphTwo.addNode(" ", {left: 0, top: gTop});
+    nodeTwo = graphTwo.addNode(" ", {left: 100, top: gTop});
+    nodeThree = graphTwo.addNode(" ", {left: 50, top: gTop + 50});
+    nodeFour = graphTwo.addNode(" ", {left: 0,  top: gTop + 100});
+    nodeFive =graphTwo.addNode(" ", {left: 100, top: gTop + 100});
 
     graphTwo.addEdge(nodeOne, nodeFour);
     graphTwo.addEdge(nodeOne, nodeThree);

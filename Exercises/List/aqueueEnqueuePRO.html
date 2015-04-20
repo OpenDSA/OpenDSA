@@ -167,7 +167,6 @@ var jsav,           // The JSAV object
   selected_index;   // Position that has been selected by user for swap
 
 function bindPointerClick(pointer){
-  console.log("Set pointer click handler");
   pointer.label.element.click(function(){pclick(pointer);});
 }
 
@@ -205,7 +204,6 @@ function resetPointer(pointer,index, type){
 
 // pointer click handler
 function pclick(pointer){
-console.log("In pointer click handler");
   if(status == 1){
     jsavCir.path[selected_index].rObj.attr({"fill":"none", "opacity" : "1"});
     pointer.label.element.toggleClass('highlight');
@@ -230,21 +228,20 @@ console.log("In pointer click handler");
 
 // JSAV Circular click handler
 function clickHandler(index) {
-console.log("In array click handler");
-  if(status == 0){
+  if (status == 0) {
     jsavCir.path[index].rObj.attr({"fill":"yellow", "opacity" : "0.5"});
     selected_index = index;
     status = 1;
-  }else if(status == 1){
-    if(selected_index === index){
+  } else if (status == 1) {
+    if (selected_index === index) {
       jsavCir.path[selected_index].rObj.attr({"fill":"none", "opacity" : "1"});
       status = 0;
-    }else{
+    } else {
       jsavCir.path[selected_index].rObj.attr({"fill":"none", "opacity" : "1"});
       jsavCir.path[index].rObj.attr({"fill":"yellow", "opacity" : "0.5"});
-	  selected_index = index;
-	}
-  }else if (status == 2){
+      selected_index = index;
+    }
+  } else if (status == 2) {
     resetPointer(selected_pointer, index, selected_pointer.label.element.html());
     selected_pointer.label.element.removeClass('highlight');
     selected_pointer = null;

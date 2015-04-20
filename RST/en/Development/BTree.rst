@@ -288,6 +288,11 @@ tree insert algorithm.
 
 .. codeinclude:: Indexing/BPinsert
 
+Here is an exercise to see if you get the basic idea of
+:math:`\mathrm{B}^+` tree insertion.
+
+.. avembed:: AV/Development/bPlusTreeInsertPRO.html pe
+
 To delete record :math:`R` from the :math:`\mathrm{B}^+` tree,
 first locate the leaf :math:`L` that contains :math:`R`.
 If :math:`L` is more than half full, then we need only remove :math:`R`,
