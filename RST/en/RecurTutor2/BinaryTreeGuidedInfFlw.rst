@@ -22,20 +22,20 @@ Many problems that require information flow on binary search
 trees are considered to be guided.
 
 
-.. topic:: Example
+.. topic:: Example:
 
-Problem: Given a BST, find out the minimum value.
-A bad solution to this problem would visit every node of the tree.
-However, we can take advantage of the BST property to
-avoid visiting most nods in the tree.
-You know that the values greater than the root are always in the right
-subtree, and those values less than the root are in the left subtree.
-Thus, at each node we need only visit the left subtree until we reach
-a leaf node.
+   Given a BST, find out the minimum value.
+   A bad solution to this problem would visit every node of the tree.
+   However, we can take advantage of the BST property to
+   avoid visiting most nods in the tree.
+   You know that the values greater than the root are always in the right
+   subtree, and those values less than the root are in the left subtree.
+   Thus, at each node we need only visit the left subtree until we reach
+   a leaf node.
 
 .. inlineav:: IneffBinaryTreeRangeCON ss
    :output: show
-
+   
 
 Practice the guided information flow through the following programming
 exercises.

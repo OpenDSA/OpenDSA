@@ -60,7 +60,7 @@ $(document).ready(function () {
   // Slide 7
   av.umsg("The code is not effecient because it does not avoid vsiting un-needed nodes. The code will visit the whole right sub-tree even though it is not needed.");
   var label3 = av.label("The range function should be written in a way that avoid traversing this side for the given range.", {left: 550, top: 420}); 
-  var el1= av.g.ellipse(442, 488, 50 , 50).css({fill: "red", opacity: 0.4});
+  var el1= av.g.ellipse(442, 408, 50 , 50).css({fill: "red", opacity: 0.4});
   av.step();
   
   // Slide 8
@@ -89,7 +89,7 @@ $(document).ready(function () {
   av.umsg("We now proceed to the recursive calls. The first recursive call counts nodes in range in the left sub-tree, and the second recursive call counts nodes in range in the right subtree.");
   pseudo.unhighlight(5);
   pseudo.highlight([7, 8]);
-  var el2= av.g.ellipse(342, 488, 50 , 50).css({fill: "red", opacity: 0.4});
+  var el2= av.g.ellipse(342, 408, 50 , 50).css({fill: "red", opacity: 0.4});
   av.step();
 
   // Slide 12

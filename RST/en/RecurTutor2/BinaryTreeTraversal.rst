@@ -141,6 +141,8 @@ Here are some exercises to practice the traversals.
 .. avembed:: AV/Binary/btTravPreorderPRO.html pe
 
 
+
+
 Writing a Recursive Method to Traverse a Binary Tree
 ----------------------------------------------------
 
@@ -157,7 +159,7 @@ Formulate the base case and its action
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In binary trees, in many binary tree types the base case is to check if we have an empty tree.
-One of the common mistakes some people does is considering that the base case
+One of the common mistakes some people do is considering that the base case
 action will be executed only after the recursive calls are executed.
 This is not always the case because you may have your input as an empty tree
 from the very beginning and in that case no recursive calls will be executed
@@ -207,3 +209,4 @@ by potential visitor functions.
 .. odsascript:: AV/Binary/inorderCON.js
 .. odsascript:: AV/Binary/preorderCON.js
 .. odsascript:: AV/Binary/postorderCON.js
+
