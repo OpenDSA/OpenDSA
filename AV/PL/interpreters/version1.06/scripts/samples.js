@@ -13,7 +13,7 @@ var samples = [
 /* 2 */   [ "Boolean ops", "(1 === ( (100 / 4) % 3))",
 	    '["Bool",true]' ],
 /* 3 */   [ "Boolean ops", "not( ((11 / 4) > (30 - (25 % 13))) )",
-	    '["Num",true]'],
+	    '["Bool",true]'],
 /* 4 */   [ "If expression" , 
 	    "(fn (n,p,q) => if n then (p + q) else (p * q) (6 < 1) 2 3)",
 	    '["Num",6]' ],
