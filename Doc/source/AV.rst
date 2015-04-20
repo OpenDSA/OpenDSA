@@ -31,9 +31,10 @@ See ``parseURLParams()`` in the
 
 Some URL parameters are considered a standard part of the system and
 have built-in support.
-These include the parameters to control the natural language and the
+These include the parameters to control the natural language, the
 programming language
-(see :ref:`Internationalization Support <Client-sideDevelopment>`).
+(see :ref:`Internationalization Support <Client-sideDevelopment>`),
+and the exercise grading options.
 AV/exercise developers can also implement support for their own ad hoc
 URL parameters.
 
@@ -52,6 +53,14 @@ This one directs the AV to display Java code.
 
 This one directs the AV to use Finnish for its text.
 
+Proficiency exercises typically support various grading modes.
+These are documented in the
+:ref:`Configuration<Configuration>` section.
+The typical options are as follows::
+
+   <URL>?JXOP-feedback=atend
+   <URL>?JXOP-feedback=continuous&JXOP-fixmode=undo
+   <URL>?JXOP-feedback=continuous&JXOP-fixmode=fix
 
 Equations
 ---------
