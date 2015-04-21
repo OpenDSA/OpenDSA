@@ -802,7 +802,11 @@
           },
           "BSTsearchPRO": {
             "long_name": "BST Search Proficiency Exercise",
-            "exer_options": { "JXOP-code": "none" },
+            "exer_options": {
+              "JXOP-code": "none",
+              "JXOP-feedback": "continuous",
+              "JXOP-fixmode": "undo"
+            },
             "required": true,
             "points": 1.0,
             "threshold": 0.90
@@ -815,7 +819,11 @@
           },
           "BSTinsertPRO": {
             "long_name": "BST Insert Proficiency Exercise",
-            "exer_options": { "JXOP-code": "none" },
+            "exer_options": {
+              "JXOP-code": "none",
+              "JXOP-feedback": "continuous",
+              "JXOP-fixmode": "undo"
+            },
             "required": true,
             "points": 1.0,
             "threshold": 0.90
@@ -834,7 +842,11 @@
           },
           "BSTremovePRO": {
             "long_name": "BST Remove Proficiency Exercise",
-            "exer_options": { "JXOP-code": "none" },
+            "exer_options": {
+              "JXOP-code": "none",
+              "JXOP-feedback": "continuous",
+              "JXOP-fixmode": "undo"
+            },
             "required": true,
             "points": 2.0,
             "threshold": 0.90

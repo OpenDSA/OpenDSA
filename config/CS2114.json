@@ -518,6 +518,7 @@
       },
       "RecurTutor/HarderWrite": {
         "long_name": "How to write a more sophisticated recursive function",
+	"dispModComp": true,
         "exercises": {}
       },
       "RecurTutor/HarderCodeCompletionEx": {
