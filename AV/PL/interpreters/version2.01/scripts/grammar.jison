@@ -4,7 +4,7 @@
 %lex
 
 DIGIT		      [0-9]
-LETTER		      [a-zA-Z_]
+LETTER		      [a-zA-Z]
 
 %%
 
@@ -90,8 +90,6 @@ print2_exp
     : PRINT DQUOTE VAR DQUOTE optional 
            { $$ = SLang.absyn.createPrint2Exp( $3, $5 ); }
     ;
-
-
 
 optional
     : COLON        { $$ = null; }

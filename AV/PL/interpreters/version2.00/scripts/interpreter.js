@@ -2,7 +2,7 @@
 
 (function () {
 
-"use strict";
+    "use strict";
 
     var A = SLang.absyn;
     var E = SLang.env;
@@ -125,38 +125,6 @@ function myEval(p) {
 	window.alert( "The input is not a program.");
     }
 }
-/*
-function expToString(exp) {
-    return "<omitted>";
-}
-function valueToString(value) {
-
-function envToString(e) {
-    function aux(e) {
-	if (E.isEmptyEnv(e)) {
-	    return "EmptyEnv";
-	} else {
-	    var result = "|| " + aux(E.getEnvEnv(e));
-            var bindings = E.getEnvBindings(e);
-	    for(var i=0; i<bindings.length; i++) {
-		result = bindings[i][0] + " = " +valueToString(bindings[i][1]) + " " + result;
-	    }
-	    return result;
-	}
-    }
-
-    return "{ " + aux(e) + " }";
-}
-
-    if (E.isNum(value)) {
-	return E.getNumValue(value)+"";
-    }
-    else if (E.isClo(value)) {
-	return "Closure( params=" + E.getCloParams(value) + " , body="+ 
-	expToString(E.getCloBody(value)) + " , env=" + envToString(E.getCloEnv(value)) +" )";
-    }
-}
-*/
 function interpret(source) {
     var output='';
 

@@ -4,6 +4,9 @@
 
 "use strict";
 
+    var A = SLang.absyn;
+    var E = SLang.env;
+
 function nth(n) {
     switch (n+1) {
     case 1: return "first";
@@ -15,11 +18,11 @@ function nth(n) {
 function typeCheckPrimitiveOp(op,args,typeCheckerFunctions) {
     var numArgs = typeCheckerFunctions.length;
     if (args.length !== numArgs) {
-	throw "Wrong number of arguments given to '" + op + "'.";
+	throw new Error("Wrong number of arguments given to '" + op + "'.");
     }
     for( var index = 0; index<numArgs; index++) {
 	if ( ! (typeCheckerFunctions[index])(args[index]) ) {
-	    throw "The " + nth(index) + " argument of '" + op + "' has the wrong type.";
+	    throw new Error("The " + nth(index) + " argument of '" + op + "' has the wrong type.");
 	}
     }
 }
@@ -27,54 +30,54 @@ function typeCheckPrimitiveOp(op,args,typeCheckerFunctions) {
 function applyPrimitive(prim,args) {
     switch (prim) {
     case "+": 
-	typeCheckPrimitiveOp(prim,args,[SLang.env.isNum,SLang.env.isNum]);
-	return SLang.env.createNum( SLang.env.getNumValue(args[0]) + SLang.env.getNumValue(args[1]));
+	typeCheckPrimitiveOp(prim,args,[E.isNum,E.isNum]);
+	return E.createNum( E.getNumValue(args[0]) + E.getNumValue(args[1]));
     case "*": 
-	typeCheckPrimitiveOp(prim,args,[SLang.env.isNum,SLang.env.isNum]);
-	return SLang.env.createNum( SLang.env.getNumValue(args[0]) * SLang.env.getNumValue(args[1]));
+	typeCheckPrimitiveOp(prim,args,[E.isNum,E.isNum]);
+	return E.createNum( E.getNumValue(args[0]) * E.getNumValue(args[1]));
     case "add1": 
-	typeCheckPrimitiveOp(prim,args,[SLang.env.isNum]);
-	return SLang.env.createNum( 1 + SLang.env.getNumValue(args[0]) );
+	typeCheckPrimitiveOp(prim,args,[E.isNum]);
+	return E.createNum( 1 + E.getNumValue(args[0]) );
     }
 }
 function evalExp(exp,envir) {
-    if (SLang.absyn.isIntExp(exp)) {
-	return SLang.env.createNum(SLang.absyn.getIntExpValue(exp));
+    if (A.isIntExp(exp)) {
+	return E.createNum(A.getIntExpValue(exp));
     }
-    else if (SLang.absyn.isVarExp(exp)) {
-	return SLang.env.lookup(envir,SLang.absyn.getVarExpId(exp));
+    else if (A.isVarExp(exp)) {
+	return E.lookup(envir,A.getVarExpId(exp));
     }
-    else if (SLang.absyn.isFnExp(exp)) {
-	return SLang.env.createClo(SLang.absyn.getFnExpParams(exp),SLang.absyn.getFnExpBody(exp),envir);
+    else if (A.isFnExp(exp)) {
+	return E.createClo(A.getFnExpParams(exp),A.getFnExpBody(exp),envir);
     }
-    else if (SLang.absyn.isAppExp(exp)) {
+    else if (A.isAppExp(exp)) {
         //console.log( JSON.stringify(envir) );
-	var f = evalExp(SLang.absyn.getAppExpFn(exp),envir);
-	var args = SLang.absyn.getAppExpArgs(exp).map( function(arg) { return evalExp(arg,envir); } );
-	if (SLang.env.isClo(f)) {
-	    if (SLang.env.getCloParams(f).length !== args.length) {		
+	var f = evalExp(A.getAppExpFn(exp),envir);
+	var args = A.getAppExpArgs(exp).map( function(arg) { return evalExp(arg,envir); } );
+	if (E.isClo(f)) {
+	    if (E.getCloParams(f).length !== args.length) {		
 		throw new Error("Runtime error: wrong number of arguments in " +
-                        "a function call (" + SLang.env.getCloParams(f).length +
+                        "a function call (" + E.getCloParams(f).length +
 			" expected but " + args.length + " given)");
 	    } else {
-		return evalExp(SLang.env.getCloBody(f),
-			       SLang.env.update(SLang.env.getCloEnv(f),
-						SLang.env.getCloParams(f),args));
+		return evalExp(E.getCloBody(f),
+			       E.update(E.getCloEnv(f),
+						E.getCloParams(f),args));
 	    }
 	} else {
-	    throw f + " is not a closure and thus cannot be applied.";
+	    throw new Error(f + " is not a closure and thus cannot be applied.");
 	}
-    } else if (SLang.absyn.isPrimAppExp(exp)) {
-        return applyPrimitive(SLang.absyn.getPrimAppExpPrim(exp),
-			      SLang.absyn.getPrimAppExpArgs(exp).map( function(arg) { 
+    } else if (A.isPrimAppExp(exp)) {
+        return applyPrimitive(A.getPrimAppExpPrim(exp),
+			      A.getPrimAppExpArgs(exp).map( function(arg) { 
                                   return evalExp(arg,envir); } ));
     } else {
-	throw "Error: Attempting to evaluate an invalid expression";
+	throw new Error("Error: Attempting to evaluate an invalid expression");
     }
 }
 function myEval(p) {
-    if (SLang.absyn.isProgram(p)) {
-	return evalExp(SLang.absyn.getProgramExp(p),SLang.env.initEnv());
+    if (A.isProgram(p)) {
+	return evalExp(A.getProgramExp(p),E.initEnv());
     } else {
 	window.alert( "The input is not a program.");
     }

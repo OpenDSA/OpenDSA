@@ -66,30 +66,32 @@ program
       LBRACE
               block
       RBRACE
-      EOF { return SLang.absyn.createProgram($1,$7); }
+      EOF { return SLang.absyn.createProgram($1,$8); }
     ;
 
 decls
-    : /* empty */
-    | class decls
+    : /* empty */           { $$ = [ ]; }
+    | class decls           { $2.unshift($1);  $$ = $2; }
     ;
 
 class
     : CLASS VAR EXTENDS VAR LBRACE ivars methods RBRACE
+          { $$ = SLang.absyn.createClass($2,$4,$6,$7); }
     ;
 
 ivars
-    : /* empty */
-    | PROTECTED VAR ivars
+    : /* empty */            { $$ = [ ]; }
+    | PROTECTED VAR ivars    { $3.unshift($2);  $$ = $3; }
     ;
 
 methods
-    : method
-    | method methods
+    : method                 { $$ = [ $1 ]; }
+    | method methods         { $2.unshift($1);  $$ = $2; }
     ;
 
 method
-    : METHOD VAR LPAREN formals RPAREN  LBRACE block RBRACE
+    : METHOD VAR LPAREN formals RPAREN LBRACE block RBRACE
+          { $$ = SLang.absyn.createMethod($2, $4, $7); }
     ;
 exp
     : var_exp       { $$ = $1; }
@@ -110,14 +112,17 @@ exp
 
 new_exp
     : NEW VAR LPAREN args RPAREN
+          { $$ = SLang.absyn.createNewExp($2,$4); }
     ;
 
 super_call
-    : SUPER DOT VAR LPAREN args RPAREN
+    : CALL SUPER DOT VAR LPAREN args RPAREN
+          { $$ = SLang.absyn.createSuperCall($4,$6); }
     ;
 
 method_call
     : CALL exp DOT VAR LPAREN args RPAREN
+          { $$ = SLang.absyn.createMethodCall($2,$4,$6); }
     ;
 
 var_exp
