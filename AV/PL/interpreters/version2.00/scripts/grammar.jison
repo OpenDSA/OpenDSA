@@ -29,15 +29,14 @@ LETTER		      [a-zA-Z]
 "print"                               { return 'PRINT'; }
 "set"                                 { return 'SET'; }
 ";"                   		      { return 'SEMICOLON'; }
+":"                   		      { return 'COLON'; }
 ","                   		      { return 'COMMA'; }
 "=>"                   		      { return 'THATRETURNS'; }
-
-
-
 "if"                   		      { return 'IF'; }
 "then"                   	      { return 'THEN'; }
 "else"                   	      { return 'ELSE'; }
 "="                                   { return 'EQ'; }
+'"'                                   { return 'DQUOTE'; }
 <<EOF>>               		      { return 'EOF'; }
 {LETTER}({LETTER}|{DIGIT}|_)*  	      { return 'VAR'; }
 {DIGIT}+                              { return 'INT'; }
@@ -64,6 +63,7 @@ exp
     | if_exp        { $$ = $1; }
     | let_exp       { $$ = $1; }
     | print_exp     { $$ = $1; }
+    | print2_exp    { $$ = $1; }
     | assign_exp    { $$ = $1; }
     ;
 
@@ -75,8 +75,19 @@ intlit_exp
     : INT  { $$ = SLang.absyn.createIntExp( $1 ); }
     ;
 
+
 print_exp
     : PRINT exp { $$ = SLang.absyn.createPrintExp( $2 ); }
+    ;
+
+print2_exp
+    : PRINT DQUOTE VAR DQUOTE optional 
+           { $$ = SLang.absyn.createPrint2Exp( $3, $5 ); }
+    ;
+
+optional
+    : COLON        { $$ = null; }
+    | exp          { $$ = $1; }
     ;
  
 assign_exp
@@ -92,7 +103,9 @@ let_exp
     : LET bindings IN block END
            { var args = $2[1]; args.unshift( "args" );
              var fnexp = SLang.absyn.createFnExp($2[0],$4);
-             $$ = SLang.absyn.createAppExp(fnexp,args);
+	     var appExp = SLang.absyn.createAppExp(fnexp,args);
+	     appExp.comesFromLetBlock = true;
+             $$ = appExp;
            }
     ; 
 

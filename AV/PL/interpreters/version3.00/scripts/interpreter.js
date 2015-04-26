@@ -6,7 +6,9 @@
 
     var A = SLang.absyn;
     var E = SLang.env;
-
+    var classEnv;
+    var defaultValue = E.createNum( -12345 );
+    
 function nth(n) {
     switch (n+1) {
     case 1: return "first";
@@ -63,7 +65,78 @@ function applyPrimitive(prim,args) {
 	return E.createBool( ! E.getBoolValue(args[0]) );
     }
 }
+/* helper functions for OOP */
+function elaborateDecls(decls) {
+    classEnv = decls;
+}
+function lookupClass(name,classes) {
+    for(var i = 0; i<classes.length; i++) {
+	if (name === classes[i][1]) { 
+	    return classes[i];
+	}
+    }
+    throw new Error("Class unknown: " + name);
+}
+function lookupMethod(name,methods) {
+    for(var i = 0; i<methods.length; i++) {
+	if (name === methods[i][1]) { 
+	    return methods[i];
+	}
+    }
+    throw new Error("Method unknown: " + name);
+}
+/* given an object and a class name cName, returns the list of parts
+   starting at cName */
+function viewObjectAs(object,cName) {
+    for(var i=0; i,object.length; i++) {
+	if (cName === object[i][0]) {
+	    return object.slice[i];  
+	}
+    }
+    throw new Error("Not an object: " + JSON.stringify(object));
+}
+function getClassName(parts) {
+    if (parts.length > 0 ) {
+	return parts[0][0];
+    } else {
+	throw new Error("Not an object: " + JSON.stringify(parts));
+    }
+}
+/* given a class definition, return the corresponding part */
+function makePart(classDef) {
+    var name = getClassName(classDef);
+    var fieldNames = A.getClassIvars(classDef);
+    return [ name,
+	     fieldNames.map( function (name) { return [ defaultValue ]; })
+	   ];
+}
+/* given a list of parts, return the environment in which each field is bound to its value */
+function buildFieldEnv(parts) {
+    var env = E.createEmptyEnv();
+    var theClass, fields, refs;
+    for(var i=0; i<parts.length; i++) {
+	theClass = lookupClass(parts[i][0],classEnv);
+	fields = A.getClassIvars(theClass);
+	refs = parts[i][1];
+	env = E.updateWithReferences(env,fields,refs);
+    }
+    return env;
+}
+/* given a class name, return an instance of the class, that is, an array
+   of parts */
+function makeNewObject(className) {
+    var theClass, result;
+    if (className === "Object") {
+	return [];
+    } else {
+	theClass = lookupClass(className,classEnv);
+	result = makeNewObject(A.getClassSuperClass(theClass));
+	result.unshift(makePart(theClass));
+	return result;
+    }
+}
 function evalExp(exp,envir) {
+    var f, v, args, values, obj;
     if (A.isIntExp(exp)) {
 	return E.createNum(A.getIntExpValue(exp));
     }
@@ -73,7 +146,7 @@ function evalExp(exp,envir) {
 	console.log( JSON.stringify(
 	    evalExp( A.getPrintExpExp(exp), envir )));
     } else if (A.isAssignExp(exp)) {
-	var v = evalExp(A.getAssignExpRHS(exp),envir);
+	v = evalExp(A.getAssignExpRHS(exp),envir);
 	E.lookupReference(
                         envir,A.getAssignExpVar(exp))[0] = v;
 	return v;
@@ -82,15 +155,15 @@ function evalExp(exp,envir) {
 				   A.getFnExpBody(exp),envir);
     }
     else if (A.isAppExp(exp)) {
-	var f = evalExp(A.getAppExpFn(exp),envir);
-	var args = evalExps(A.getAppExpArgs(exp),envir);
+	f = evalExp(A.getAppExpFn(exp),envir);
+	args = evalExps(A.getAppExpArgs(exp),envir);
 	if (E.isClo(f)) {
 	    if (E.getCloParams(f).length !== args.length) {		
 		throw new Error("Runtime error: wrong number of arguments in " +
                         "a function call (" + E.getCloParams(f).length +
 			" expected but " + args.length + " given)");
 	    } else {
-		var values = evalExps(E.getCloBody(f),
+		values = evalExps(E.getCloBody(f),
 			        E.update(E.getCloEnv(f),
 					 E.getCloParams(f),args));
 		return values[values.length-1];
@@ -111,6 +184,10 @@ function evalExp(exp,envir) {
 	} else {
 	    return evalExp(A.getIfExpElse(exp),envir);
 	}
+    } if (A.isNewExp(exp)) {
+	args = evalExps(A.getNewExpArgs(exp),envir);
+	obj = makeNewObject(A.getNewExpClass(exp),envir);
+        return obj;
     } else {
 	throw "Error: Attempting to evaluate an invalid expression";
     }
@@ -119,8 +196,11 @@ function evalExps(list,envir) {
     return list.map( function(e) { return evalExp(e,envir); } );
 }
 function myEval(p) {
+    var values;
     if (A.isProgram(p)) {
-	return evalExp(A.getProgramExp(p),E.initEnv());
+	elaborateDecls(A.getProgramDecls(p));
+	values = evalExps(A.getProgramMainBody(p),E.createEmptyEnv());
+	return values[values.length-1];
     } else {
 	window.alert( "The input is not a program.");
     }

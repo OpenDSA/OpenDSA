@@ -22,7 +22,7 @@ function getProgramDecls(p) {
 }				       
 function getProgramMainBody(p) { 
     if (isProgram(p)) {
-	return p[1];
+	return p[2];
     } else {
 	throw new Error("Interpreter error: "  +
 			"The argument of getProgramMainBody is not a program.");
@@ -167,6 +167,29 @@ function getPrintExpExp(e) {
 			"The argument of getPrintExpExp is not a PrintExp.");
     }
 }
+function createPrint2Exp(s,e) {
+    return ["Print2Exp", s, e];
+}
+function isPrint2Exp(e) { 
+    return e[0] === "Print2Exp"; 
+}
+function getPrint2ExpString(e) { 
+    if (isPrint2Exp(e)) {
+	return e[1];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getPrint2ExpString is not a Print2Exp.");
+    }
+}
+function getPrint2ExpExp(e) { 
+    if (isPrint2Exp(e)) {
+	return e[2];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getPrint2ExpExp is not a Print2Exp.");
+    }
+}
+
 function createAssignExp(v,e) {
     return ["AssignExp", v, e];
 }
@@ -397,6 +420,10 @@ exports.getAppExpArgs = getAppExpArgs;
 exports.createPrintExp = createPrintExp;
 exports.isPrintExp = isPrintExp;
 exports.getPrintExpExp = getPrintExpExp;
+exports.createPrint2Exp = createPrint2Exp;
+exports.isPrint2Exp = isPrint2Exp;
+exports.getPrint2ExpExp = getPrint2ExpExp;
+exports.getPrint2ExpString = getPrint2ExpString;
 exports.createAssignExp = createAssignExp;
 exports.isAssignExp = isAssignExp;
 exports.getAssignExpVar = getAssignExpVar;

@@ -6,6 +6,7 @@
 
     var A = SLang.absyn;
     var E = SLang.env;
+    var ppm = "byval";   
 
 function nth(n) {
     switch (n+1) {
@@ -63,6 +64,33 @@ function applyPrimitive(prim,args) {
 	return E.createBool( ! E.getBoolValue(args[0]) );
     }
 }
+function callByValue(exp,envir) {
+    var f = evalExp(A.getAppExpFn(exp),envir);
+    var args = evalExps(A.getAppExpArgs(exp),envir);
+    if (E.isClo(f)) {
+	if (E.getCloParams(f).length !== args.length) {		
+	    throw new Error("Runtime error: wrong number of arguments in " +
+                            "a function call (" + E.getCloParams(f).length +
+			    " expected but " + args.length + " given)");
+	} else {
+	    var values = evalExps(E.getCloBody(f),
+			          E.update(E.getCloEnv(f),
+					   E.getCloParams(f),args));
+	    return values[values.length-1];
+	}
+    } else {
+	throw f + " is not a closure and thus cannot be applied.";
+    }    
+}
+function callByReference(exp,envir) {
+
+    // to be completed
+}
+function callByCopyRestore(exp,envir) {
+
+    // to be completed
+}
+
 function evalExp(exp,envir) {
     if (A.isIntExp(exp)) {
 	return E.createNum(A.getIntExpValue(exp));
@@ -72,6 +100,12 @@ function evalExp(exp,envir) {
     } else if (A.isPrintExp(exp)) {
 	console.log( JSON.stringify(
 	    evalExp( A.getPrintExpExp(exp), envir )));
+    } else if (A.isPrint2Exp(exp)) {
+	console.log( A.getPrint2ExpString(exp) +
+		     (A.getPrint2ExpExp(exp) !== null ?
+		      " " + JSON.stringify( evalExp( A.getPrint2ExpExp(exp), 
+						     envir ) )
+		      : ""));
     } else if (A.isAssignExp(exp)) {
 	var v = evalExp(A.getAssignExpRHS(exp),envir);
 	E.lookupReference(
@@ -82,21 +116,14 @@ function evalExp(exp,envir) {
 				   A.getFnExpBody(exp),envir);
     }
     else if (A.isAppExp(exp)) {
-	var f = evalExp(A.getAppExpFn(exp),envir);
-	var args = evalExps(A.getAppExpArgs(exp),envir);
-	if (E.isClo(f)) {
-	    if (E.getCloParams(f).length !== args.length) {		
-		throw new Error("Runtime error: wrong number of arguments in " +
-                        "a function call (" + E.getCloParams(f).length +
-			" expected but " + args.length + " given)");
-	    } else {
-		var values = evalExps(E.getCloBody(f),
-			        E.update(E.getCloEnv(f),
-					 E.getCloParams(f),args));
-		return values[values.length-1];
-	    }
+	if (exp.comesFromLetBlock) {
+	    return callByValue(exp,envir);
 	} else {
-	    throw f + " is not a closure and thus cannot be applied.";
+	    switch (ppm) {
+	    case "byval" : return callByValue(exp,envir);
+	    case "byref" : return callByReference(exp,envir);
+	    case "bycpr" : return callByCopyRestore(exp,envir);
+	    }
 	}
     } else if (A.isPrim1AppExp(exp)) {
         return applyPrimitive(A.getPrim1AppExpPrim(exp),
@@ -125,14 +152,15 @@ function myEval(p) {
 	window.alert( "The input is not a program.");
     }
 }
-function interpret(source) {
+function interpret(source,parameter_passing_mechanism) {
     var output='';
-
+    var theParser = typeof grammar === 'undefined' ? parser : grammar;
+    ppm = parameter_passing_mechanism;
     try {
         if (source === '') {
             window.alert('Nothing to interpret: you must provide some input!');
 	} else {
-	    var ast = parser.parse(source);
+	    var ast = theParser.parse(source);
 	    var value = myEval( ast );
             return JSON.stringify(value);
         }

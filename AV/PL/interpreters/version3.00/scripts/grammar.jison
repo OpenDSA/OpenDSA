@@ -29,6 +29,8 @@ LETTER		      [a-zA-Z]
 "print"                               { return 'PRINT'; }
 "set"                                 { return 'SET'; }
 ";"                   		      { return 'SEMICOLON'; }
+':'                                   { return 'COLON'; }
+'"'                                   { return 'DQUOTE'; }
 ","                   		      { return 'COMMA'; }
 "=>"                   		      { return 'THATRETURNS'; }
 "if"                   		      { return 'IF'; }
@@ -43,7 +45,7 @@ LETTER		      [a-zA-Z]
 "method"                              { return 'METHOD'; }
 "main"                                { return 'MAIN'; }
 "protected"                           { return 'PROTECTED'; }
-"driver"                              { return 'DRIVER'; }
+"Driver"                              { return 'DRIVER'; }
 "new"                                 { return 'NEW'; }
 "."                                   { return 'DOT'; }
 "this"                                { return 'THIS'; }
@@ -64,9 +66,12 @@ program
     : decls 
       PUBLIC CLASS DRIVER EXTENDS VAR 
       LBRACE
-              block
+              METHOD MAIN LPAREN RPAREN
+              LBRACE
+                      block
+              RBRACE
       RBRACE
-      EOF { return SLang.absyn.createProgram($1,$8); }
+      EOF { return SLang.absyn.createProgram($1,$13); }
     ;
 
 decls
@@ -103,6 +108,7 @@ exp
     | if_exp        { $$ = $1; }
     | let_exp       { $$ = $1; }
     | print_exp     { $$ = $1; }
+    | print2_exp    { $$ = $1; }
     | assign_exp    { $$ = $1; }
     | new_exp       { $$ = $1; }
     | super_call    { $$ = $1; }
@@ -111,17 +117,17 @@ exp
 
 
 new_exp
-    : NEW VAR LPAREN args RPAREN
+    : NEW VAR LPAREN csargs RPAREN
           { $$ = SLang.absyn.createNewExp($2,$4); }
     ;
 
 super_call
-    : CALL SUPER DOT VAR LPAREN args RPAREN
+    : CALL SUPER DOT VAR LPAREN csargs RPAREN
           { $$ = SLang.absyn.createSuperCall($4,$6); }
     ;
 
 method_call
-    : CALL exp DOT VAR LPAREN args RPAREN
+    : CALL exp DOT VAR LPAREN csargs RPAREN
           { $$ = SLang.absyn.createMethodCall($2,$4,$6); }
     ;
 
@@ -137,6 +143,16 @@ print_exp
     : PRINT exp { $$ = SLang.absyn.createPrintExp( $2 ); }
     ;
  
+print2_exp
+    : PRINT DQUOTE VAR DQUOTE optional 
+           { $$ = SLang.absyn.createPrint2Exp( $3, $5 ); }
+    ;
+
+optional
+    : COLON        { $$ = null; }
+    | exp          { $$ = $1; }
+    ;
+
 assign_exp
     : SET VAR EQ exp  { $$ = SLang.absyn.createAssignExp( $2, $4 ); }
     ;
@@ -237,14 +253,14 @@ args
         }
     ;
 
-prim_args
+csargs
     :  /* empty */ { $$ = [ ]; }
-    |  exp more_prim_args    { $2.unshift($1); $$ = $2; }
+    |  exp more_csargs    { $2.unshift($1); $$ = $2; }
     ;
 
-more_prim_args
+more_csargs
     : /* empty */ { $$ = [ ] }
-    | COMMA exp more_prim_args { $3.unshift($2); $$ = $3; }
+    | COMMA exp more_csargs { $3.unshift($2); $$ = $3; }
     ;
 
 if_exp
