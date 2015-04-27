@@ -69,6 +69,20 @@ function getBoolValue(value) {
 			"The argument of getBoolValue is not a Bool value.");
     }
 }
+function createObject(state) {
+    return ["Obj",state];
+}
+function isObject(v) {
+    return v[0] === "Obj";
+}
+function getObjectState(obj) {
+    if (isObject(obj)) {
+	return obj[1];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getObjectState is not an Object value.");
+    }
+}
 
 // implementation of the environment
 
@@ -162,6 +176,9 @@ exports.initEnv = initEnv;
 exports.createBool = createBool;
 exports.isBool = isBool;
 exports.getBoolValue = getBoolValue;
+exports.createObject = createObject;
+exports.isObject = isObject;
+exports.getObjectState = getObjectState;
 
 SLang.env = exports;
 

@@ -97,17 +97,16 @@ function viewObjectAs(object,cName) {
 }
 function getClassName(parts) {
     if (parts.length > 0 ) {
-	return parts[0][0];
+	return parts[0][1];
     } else {
 	throw new Error("Not an object: " + JSON.stringify(parts));
     }
 }
 /* given a class definition, return the corresponding part */
 function makePart(classDef) {
-    var name = getClassName(classDef);
-    var fieldNames = A.getClassIvars(classDef);
-    return [ name,
-	     fieldNames.map( function (name) { return [ defaultValue ]; })
+    return [ classDef[1],
+	     A.getClassIvars(classDef).map( 
+		 function (ignore_name) { return [ defaultValue ]; })
 	   ];
 }
 /* given a list of parts, return the environment in which each field is bound to its value */
@@ -132,7 +131,7 @@ function makeNewObject(className) {
 	theClass = lookupClass(className,classEnv);
 	result = makeNewObject(A.getClassSuperClass(theClass));
 	result.unshift(makePart(theClass));
-	return result;
+	return E.createObject(result);
     }
 }
 function evalExp(exp,envir) {
