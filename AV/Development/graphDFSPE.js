@@ -1,22 +1,15 @@
 /* global graphUtils */
 (function ($) {
   "use strict";
-  var settings = new JSAV.utils.Settings($(".jsavsettings")),
-      jsav = new JSAV($('.avcontainer'), {settings: settings}),
-      exercise,
+  var exercise,
       graph,
-      graphNodes = [],
-      gnodes = [],
-      exerciseStep,
-      step;
+      settings = new JSAV.utils.Settings($(".jsavsettings")),
+      jsav = new JSAV($('.avcontainer'), {settings: settings});
 
   jsav.recorded();
 
   function init() {
-    exerciseStep = 0;
-    step = 0;
-    gnodes = [];
-    var i;
+    // create the graph
     if (graph) {
       graph.clear();
     }
@@ -28,29 +21,34 @@
     });
     graphUtils.generate(graph); // Randomly generate the graph without weights
     graph.layout();
-    graphNodes = graph.nodes();
+    // mark the 'A' node
+    graph.nodes()[0].addClass("marked");
+
     jsav.displayInit();
     return graph;
   }
 
-  function fixState(mGraph) {
-    var i;
-    var node;
-    var prev;
-    for (i = 0; i < gnodes.length; i++) {
-      if (gnodes[i].addedStep === exerciseStep) {
-        node = graphNodes[i];
-        prev = graphNodes[gnodes.indexOf(gnodes[i].prev)];
+  function fixState(modelGraph) {
+    var graphEdges = graph.edges(),
+        modelEdges = modelGraph.edges();
+
+    // compare the edges between exercise and model
+    for (var i = 0; i < graphEdges.length; i++) {
+      var edge = graphEdges[i],
+          modelEdge = modelEdges[i];
+      if (modelEdge.hasClass("marked") && !edge.hasClass("marked")) {
+        // mark the edge that is marked in the model, but not in the exercise
+        markEdge(edge);
+        break;
       }
-    }
-    markIt(node);
-    if (prev) {
-      node.edgeFrom(prev).css({"stroke-width": "4", "stroke": "red"});
     }
   }
 
   function model(modeljsav) {
-    var i;
+    var i,
+        graphNodes = graph.nodes(),
+        graphEdges = graph.edges();
+    // create the model
     var modelGraph = modeljsav.ds.graph({
       width: 400,
       height: 400,
@@ -58,74 +56,70 @@
       directed: false
     });
 
-    for (i = 0; i < graph.nodeCount(); i++) {
-      modelGraph.addNode(graph.nodes()[i].value());
+    // copy nodes from graph
+    for (i = 0; i < graphNodes.length; i++) {
+      modelGraph.addNode(graphNodes[i].value());
     }
 
-    for (i = 0; i < graph.edges().length; i++) {
-      var modelNodes = modelGraph.nodes(),
-          startIndex = graph.nodes().indexOf(graph.edges()[i].start()),
-          endIndex   = graph.nodes().indexOf(graph.edges()[i].end()),
+    // copy edges from graph
+    var modelNodes = modelGraph.nodes();
+    for (i = 0; i < graphEdges.length; i++) {
+      var startIndex = graphNodes.indexOf(graphEdges[i].start()),
+          endIndex   = graphNodes.indexOf(graphEdges[i].end()),
           startNode  = modelNodes[startIndex],
           endNode    = modelNodes[endIndex];
       modelGraph.addEdge(startNode, endNode);
     }
 
+    // Mark the 'A' node
+    modelNodes[0].addClass("marked");
     modelGraph.layout();
+
     modeljsav.displayInit();
-    gnodes = modelGraph.nodes();
-    dfs(gnodes[0], modeljsav);
+
+    // start the algorithm
+    dfs(modelNodes[0], modeljsav);
+
     modeljsav.umsg("Final DFS graph");
+    // hide all edges that are not part of the search tree
+    var modelEdges = modelGraph.edges();
     for (i = 0; i < modelGraph.edges().length; i++) {
-      if (!modelGraph.edges()[i].added) {
-        modelGraph.edges()[i].hide();
+      if (!modelEdges[i].hasClass("marked")) {
+        modelEdges[i].hide();
       }
     }
+    // call the layout function for the new graph
     modelGraph.layout();
     modeljsav.step();
+
     return modelGraph;
   }
 
-  // Mark a node in the graph.
-  function markIt(node, av) {
-    var edge;
-    step++;
-    node.addedStep = step;
-    node.addClass("visited");
+  function markEdge(edge, av) {
+    edge.addClass("marked");
+    edge.start().addClass("marked");
+    edge.end().addClass("marked");
     if (av) {
-      av.umsg("Visit node " + node.value());
-    }
-    node.highlight();
-    if (av) {
-      av.step();
-      if (node.prev) {
-        av.umsg("Add edge (" + node.prev.value() + "," + node.value() +
-                ") to the DFS graph");
-        edge = node.edgeFrom(node.prev).css({"stroke-width": "4", "stroke": "red"});
-        edge.added = true;
-        av.step();
-      }
-      av.stepOption('grade', true);
+      av.gradeableStep();
+    } else {
+      exercise.gradeableStep();
     }
   }
 
   function dfs(start, av) {
-    var adjacent = [];
-    var next;
-    markIt(start, av);
-    adjacent = start.neighbors();
+    var adjacent = start.neighbors();
     //Sort the neighbors according to their value
     adjacent.sort(function (a, b) {
       return a.value().charCodeAt(0) - b.value().charCodeAt(0);
     });
-    for (next = adjacent.next(); next; next = adjacent.next()) {
+    for (var next = adjacent.next(); next; next = adjacent.next()) {
       av.umsg("Process edge (" + start.value() + "," + next.value() + ")");
-      if (next.hasClass("visited")) {
+      if (next.hasClass("marked")) {
         av.umsg(" :Node " + next.value() + " already visited", {'preserve': true});
       }
       av.step();
-      if (!next.hasClass("visited")) {
-        next.prev = start;
+      if (!next.hasClass("marked")) {
+        markEdge(start.edgeTo(next), av);
         dfs(next, av);
       }
     }
@@ -138,27 +132,23 @@
   }
 
   exercise = jsav.exercise(model, init, {
-    compare: { css: "background-color" },
+    compare: { class: "marked" },
     controls: $('.jsavexercisecontrols'),
     fix: fixState
   });
   exercise.reset();
 
-  $(".jsavcontainer").on("click", ".jsavgraphnode", function () {
-    var nodeIndex = $(this).parent(".jsavgraph").find(".jsavgraphnode").index(this);
-    var node = graphNodes[nodeIndex];
-    if (!node.hasClass('visited')) {
-      markIt(node);
-      exerciseStep++;
-      if (gnodes.length) {
-        var prev = graphNodes[gnodes.indexOf(gnodes[nodeIndex].prev)];
-        if (prev) {
-          node.edgeFrom(prev).css({"stroke-width": "4", "stroke": "red"});
-        }
-      }
-      exercise.gradeableStep();
+  $(".jsavcontainer").on("click", ".jsavedge", function () {
+    var edge = $(this).data("edge");
+    if (!edge.hasClass("marked")) {
+      markEdge(edge);
     }
   });
 
+  $(".jsavcontainer").on("click", ".jsavnode", function () {
+    window.alert("Please, click on the edges, not the nodes.");
+  });
+
   $("#about").click(about);
+
 }(jQuery));
