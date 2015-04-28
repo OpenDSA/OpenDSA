@@ -110,11 +110,15 @@ exp
     | print_exp     { $$ = $1; }
     | print2_exp    { $$ = $1; }
     | assign_exp    { $$ = $1; }
+    | this_exp      { $$ = $1; }
     | new_exp       { $$ = $1; }
     | super_call    { $$ = $1; }
     | method_call   { $$ = $1; }
     ;
 
+this_exp
+    : THIS  { $$ = SLang.absyn.createThisExp(); }
+    ;
 
 new_exp
     : NEW VAR LPAREN csargs RPAREN

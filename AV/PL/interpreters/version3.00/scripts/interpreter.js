@@ -99,7 +99,7 @@ function viewObjectAs(object,cName) {
 }
 function getClassName(parts) {
     if (parts.length > 0 ) {
-	return parts[0][1];
+	return parts[0][0];
     } else {
 	throw new Error("Not an object: " + JSON.stringify(parts));
     }
@@ -224,11 +224,21 @@ function evalExp(exp,envir) {
 	} else {
 	    return evalExp(A.getIfExpElse(exp),envir);
 	}
+    } else if (A.isThisExp(exp)) {
+	return E.lookup(envir,"_this");
     } else if (A.isNewExp(exp)) {
 	args = evalExps(A.getNewExpArgs(exp),envir);
 	obj = makeNewObject(A.getNewExpClass(exp),envir);
 	findAndInvokeMethod("initialize",A.getNewExpClass(exp),obj,args);
         return obj;
+    } else if (A.isMethodCall(exp)) {
+	obj = evalExp(A.getMethodCallObject(exp),envir);
+	args = evalExps(A.getMethodCallArgs(exp),envir);
+	return findAndInvokeMethod(A.getMethodCallMethod(exp),
+				   getClassName(E.getObjectState(obj)),
+				   obj, 
+				   args
+				   );
     } else {
 	throw new Error("Error: Attempting to evaluate an invalid expression");
     }

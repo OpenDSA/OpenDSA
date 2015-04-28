@@ -256,6 +256,12 @@ function getIfExpElse(e) {
 			"The argument of getIfExpElse is not an IfExp.");
     }
 }
+function createThisExp() { 
+    return ["ThisExp"]; 
+}
+function isThisExp(e) { 
+    return e[0] === "ThisExp"; 
+}
 function createNewExp(v,args) { 
     return ["NewExp", v, args]; 
 }
@@ -445,6 +451,8 @@ exports.isIfExp = isIfExp;
 exports.getIfExpCond = getIfExpCond;
 exports.getIfExpThen = getIfExpThen;
 exports.getIfExpElse = getIfExpElse;
+exports.createThisExp = createThisExp;
+exports.isThisExp = isThisExp;
 exports.createNewExp = createNewExp;
 exports.isNewExp = isNewExp;
 exports.getNewExpClass = getNewExpClass;
