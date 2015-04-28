@@ -172,7 +172,7 @@ function findAndInvokeMethod(methodName, className, object, args) {
     }
 }
 function evalExp(exp,envir) {
-    var f, v, args, values, obj;
+    var f, v, args, values, obj, sup;
     if (A.isIntExp(exp)) {
 	return E.createNum(A.getIntExpValue(exp));
     } else if (A.isVarExp(exp)) {
@@ -236,6 +236,15 @@ function evalExp(exp,envir) {
 	args = evalExps(A.getMethodCallArgs(exp),envir);
 	return findAndInvokeMethod(A.getMethodCallMethod(exp),
 				   getClassName(E.getObjectState(obj)),
+				   obj, 
+				   args
+				   );
+    } else if (A.isSuperCall(exp)) {
+	obj = E.lookup(envir,"_this");
+	sup = E.lookup(envir,"_super");
+	args = evalExps(A.getSuperCallArgs(exp),envir);
+	return findAndInvokeMethod(A.getSuperCallMethod(exp),
+				   E.getClassNameName(sup),
 				   obj, 
 				   args
 				   );

@@ -7,7 +7,7 @@
 var samples = [
 
 /* 0 */   "",
-/* 1 */   ["Basic", 
+/* 1 */   ["basics of OOP", 
            "class Point extends Object {\n" +
 	   "   protected x\n" +
 	   "   protected y\n" +
@@ -128,9 +128,34 @@ var samples = [
 	   "      end\n" +
 	   "   }\n" +
 	   "}\n"
+	  ],
+/* 6 */   ["super", 
+	   "class C1 extends Object {\n" +
+	   "   method initialize () { 1 }\n" +
+	   "   method m1 ()         { call this.m2() }\n" +
+	   "   method m2 ()         { 13 }\n" +
+	   "}\n" +
+	   "class C2 extends C1 {\n" +
+	   "   method m1 ()         { 22 }\n" +
+	   "   method m2 ()         { 23 }\n" +
+	   "   method m3 ()         { call super.m1() }\n" +
+	   "}\n\n" +
+	   "class C3 extends C2 {\n" +
+	   "   method m1 ()         { 32 }\n" +
+	   "   method m2 ()         { 33 }\n" +
+	   "}\n\n" +
+	   "public class Driver extends Object {\n" +
+	   "   method main() {\n" +
+	   "      let\n" +
+	   "          o3 = new C3()\n" +
+	   "      in \n" +
+	   "          print call o3.m3()\n" +
+	   "      end\n" +
+	   "   }\n" +
+	   "}\n"
 	  ]
 ];
-
+	   
 SLang.samples = samples;
 
 }());
