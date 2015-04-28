@@ -9,7 +9,7 @@
 var exports = {};
 
 // denoted values in the interpreted language SLang 1
-//  Num, Clo, Bool
+//  Num, Clo, Bool, Object, ClassName
 
 function createNum(n) {
     return ["Num",n];
@@ -81,6 +81,20 @@ function getObjectState(obj) {
     } else {
 	throw new Error("Interpreter error: "  +
 			"The argument of getObjectState is not an Object value.");
+    }
+}
+function createClassName(name) {
+    return ["ClassName",name];
+}
+function isClassName(cn) {
+    return cn[0] === "ClassName";
+}
+function getClassNameName(cn) {
+    if (isClassName(cn)) {
+	return cn[1];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getClassNameName is not a ClassName value.");
     }
 }
 
@@ -179,6 +193,10 @@ exports.getBoolValue = getBoolValue;
 exports.createObject = createObject;
 exports.isObject = isObject;
 exports.getObjectState = getObjectState;
+exports.createClassName = createClassName;
+exports.isClassName = isClassName;
+exports.getClassNameName = getClassNameName;
+
 
 SLang.env = exports;
 

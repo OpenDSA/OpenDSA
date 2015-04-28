@@ -83,14 +83,16 @@ function lookupMethod(name,methods) {
 	    return methods[i];
 	}
     }
-    throw new Error("Method unknown: " + name);
+    return A.createMethod("_invalidName",null,null);
+    //throw new Error("Method unknown: " + name);
 }
 /* given an object and a class name cName, returns the list of parts
    starting at cName */
 function viewObjectAs(object,cName) {
+    object = E.getObjectState(object);
     for(var i=0; i,object.length; i++) {
 	if (cName === object[i][0]) {
-	    return object.slice[i];  
+	    return E.createObject(object.slice(i));  
 	}
     }
     throw new Error("Not an object: " + JSON.stringify(object));
@@ -124,26 +126,66 @@ function buildFieldEnv(parts) {
 /* given a class name, return an instance of the class, that is, an array
    of parts */
 function makeNewObject(className) {
-    var theClass, result;
-    if (className === "Object") {
-	return [];
+    var helper = function (name) {
+        var theClass, result;
+	if (name === "Object") {
+	    //return [ ["Object", []] ];
+	    return [ ];
+	} else {
+	    theClass = lookupClass(name,classEnv);
+	    result = helper(A.getClassSuperClass(theClass));
+	    result.unshift(makePart(theClass));
+	    return result;
+	}
+    };
+    return E.createObject(helper(className));
+}
+function applyMethod(method,className,object,args) {
+    var values, params;
+    var theClass = lookupClass(className,classEnv);
+    var obj = viewObjectAs(object,className);
+    params = A.getMethodParams(method).slice(0);
+    params.unshift("_this");
+    params.unshift("_super");
+    args.unshift(object);
+    args.unshift(E.createClassName(A.getClassSuperClass(theClass)));
+    values = evalExps(A.getMethodBody(method),
+		      E.update(buildFieldEnv(E.getObjectState(obj)),
+			       params,args));
+    return values[values.length-1];
+}
+function findAndInvokeMethod(methodName, className, object, args) {
+    var theClass, method, methods;
+    if (methodName === "Object") {
+	throw new Error("Unknown method: " + methodName);
     } else {
-	theClass = lookupClass(className,classEnv);
-	result = makeNewObject(A.getClassSuperClass(theClass));
-	result.unshift(makePart(theClass));
-	return E.createObject(result);
+	theClass = lookupClass(className, classEnv);
+	methods = A.getClassMethods(theClass);
+        method = lookupMethod(methodName, methods);
+        if (A.getMethodName(method) === "_invalidName") {
+	    return findAndInvokeMethod(methodName, 
+				       A.getClassSuperClass(theClass),
+				       object, args);
+	} else {
+	    return applyMethod(method,className,object,args);
+	}
     }
 }
 function evalExp(exp,envir) {
     var f, v, args, values, obj;
     if (A.isIntExp(exp)) {
 	return E.createNum(A.getIntExpValue(exp));
-    }
-    else if (A.isVarExp(exp)) {
+    } else if (A.isVarExp(exp)) {
 	return E.lookup(envir,A.getVarExpId(exp));
     } else if (A.isPrintExp(exp)) {
 	console.log( JSON.stringify(
 	    evalExp( A.getPrintExpExp(exp), envir )));
+    } else if (A.isPrint2Exp(exp)) {
+	console.log( A.getPrint2ExpString(exp) +
+		     (A.getPrint2ExpExp(exp) !== null ?
+		      " " + JSON.stringify( evalExp( A.getPrint2ExpExp(exp), 
+						     envir ) )
+		      : ""));
     } else if (A.isAssignExp(exp)) {
 	v = evalExp(A.getAssignExpRHS(exp),envir);
 	E.lookupReference(
@@ -152,19 +194,18 @@ function evalExp(exp,envir) {
     } else if (A.isFnExp(exp)) {
 	return E.createClo(A.getFnExpParams(exp),
 				   A.getFnExpBody(exp),envir);
-    }
-    else if (A.isAppExp(exp)) {
+    } else if (A.isAppExp(exp)) {
 	f = evalExp(A.getAppExpFn(exp),envir);
 	args = evalExps(A.getAppExpArgs(exp),envir);
 	if (E.isClo(f)) {
 	    if (E.getCloParams(f).length !== args.length) {		
 		throw new Error("Runtime error: wrong number of arguments in " +
-                        "a function call (" + E.getCloParams(f).length +
-			" expected but " + args.length + " given)");
+				"a function call (" + E.getCloParams(f).length +
+				" expected but " + args.length + " given)");
 	    } else {
 		values = evalExps(E.getCloBody(f),
-			        E.update(E.getCloEnv(f),
-					 E.getCloParams(f),args));
+			          E.update(E.getCloEnv(f),
+					   E.getCloParams(f),args));
 		return values[values.length-1];
 	    }
 	} else {
@@ -183,12 +224,13 @@ function evalExp(exp,envir) {
 	} else {
 	    return evalExp(A.getIfExpElse(exp),envir);
 	}
-    } if (A.isNewExp(exp)) {
+    } else if (A.isNewExp(exp)) {
 	args = evalExps(A.getNewExpArgs(exp),envir);
 	obj = makeNewObject(A.getNewExpClass(exp),envir);
+	findAndInvokeMethod("initialize",A.getNewExpClass(exp),obj,args);
         return obj;
     } else {
-	throw "Error: Attempting to evaluate an invalid expression";
+	throw new Error("Error: Attempting to evaluate an invalid expression");
     }
 }
 function evalExps(list,envir) {
