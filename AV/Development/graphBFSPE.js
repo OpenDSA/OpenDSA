@@ -1,88 +1,111 @@
-/*global alert: true, ODSA, graphUtils */
+/* global graphUtils */
 (function ($) {
   "use strict";
-  
-  var settings = new JSAV.utils.Settings($(".jsavsettings")),
-  jsav = new JSAV($('.avcontainer'), {settings: settings}),
-  exercise, graph, modelGraph, graphNodes = [], gnodes = [], mstnodes = [];
-  var exerciseStep, step;
-  //jsav.recorded();
-  
+  var exercise,
+      graph,
+      settings = new JSAV.utils.Settings($(".jsavsettings")),
+      jsav = new JSAV($('.avcontainer'), {settings: settings});
+
+  jsav.recorded();
+
   function init() {
-    exerciseStep = 0;
-    step = 0;
-    var i;
+    // create the graph
     if (graph) {
       graph.clear();
     }
-    graph = jsav.ds.graph({width: 400, height: 400, layout: "automatic", directed: false});
-    graphUtils.generate(graph);
-    graphNodes = graph.nodes();
-    gnodes = [];
+    graph = jsav.ds.graph({
+      width: 400,
+      height: 400,
+      layout: "automatic",
+      directed: false
+    });
+    graphUtils.generate(graph); // Randomly generate the graph without weights
     graph.layout();
+    // mark the 'A' node
+    graph.nodes()[0].addClass("marked");
+
     jsav.displayInit();
     return graph;
   }
-  function fixState(mGraph) {
-    var i;
-    var node;
-    var prev;
-    for (i = 0; i < gnodes.length; i++) {
-      if (gnodes[i].addedStep === exerciseStep) {
-        node = graphNodes[i];
-        prev = graphNodes[gnodes.indexOf(gnodes[i].prev)];
+
+  function fixState(modelGraph) {
+    var graphEdges = graph.edges(),
+        modelEdges = modelGraph.edges();
+
+    // compare the edges between exercise and model
+    for (var i = 0; i < graphEdges.length; i++) {
+      var edge = graphEdges[i],
+          modelEdge = modelEdges[i];
+      if (modelEdge.hasClass("marked") && !edge.hasClass("marked")) {
+        // mark the edge that is marked in the model, but not in the exercise
+        markEdge(edge);
+        break;
       }
-    }
-    markIt(node, null);
-    if (prev) {
-      node.edgeFrom(prev).css({"stroke-width": "4", "stroke": "red"});
     }
   }
 
   function model(modeljsav) {
-    var i;
-    modelGraph = modeljsav.ds.graph({width: 400, height: 400, layout: "automatic", directed: false});
-    for (i = 0; i < graph.nodeCount(); i++) {
-      modelGraph.addNode(graph.nodes()[i].value());
+    var i,
+        graphNodes = graph.nodes(),
+        graphEdges = graph.edges();
+    // create the model
+    var modelGraph = modeljsav.ds.graph({
+      width: 400,
+      height: 400,
+      layout: "automatic",
+      directed: false
+    });
+
+    // copy nodes from graph
+    for (i = 0; i < graphNodes.length; i++) {
+      modelGraph.addNode(graphNodes[i].value());
     }
-    for (i = 0; i < graph.edges().length; i++) {
-      modelGraph.addEdge(modelGraph.nodes()[graph.nodes().indexOf(graph.edges()[i].start())],
-                         modelGraph.nodes()[graph.nodes().indexOf(graph.edges()[i].end())]);
+
+    // copy edges from graph
+    var modelNodes = modelGraph.nodes();
+    for (i = 0; i < graphEdges.length; i++) {
+      var startIndex = graphNodes.indexOf(graphEdges[i].start()),
+          endIndex   = graphNodes.indexOf(graphEdges[i].end()),
+          startNode  = modelNodes[startIndex],
+          endNode    = modelNodes[endIndex];
+      modelGraph.addEdge(startNode, endNode);
     }
-    gnodes = modelGraph.nodes();
+
+    // Mark the 'A' node
+    modelNodes[0].addClass("marked");
     modelGraph.layout();
+
     modeljsav.displayInit();
-    bfs(gnodes[0], modeljsav);
+
+    // start the algorithm
+    bfs(modelNodes[0], modeljsav);
+
     modeljsav.umsg("Final BFS graph");
+    // hide all edges that are not part of the search tree
+    var modelEdges = modelGraph.edges();
     for (i = 0; i < modelGraph.edges().length; i++) {
-      if (!modelGraph.edges()[i].added) {
-        modelGraph.edges()[i].hide();
+      if (!modelEdges[i].hasClass("marked")) {
+        modelEdges[i].hide();
       }
     }
+    // call the layout function for the new graph
     modelGraph.layout();
     modeljsav.step();
+
     return modelGraph;
   }
-  // Mark a node in the graph.
-  function markIt(node, av) {
-    var edge;
-    step++;
-    node.addedStep = step;
-    node.addClass("visited");
+
+  function markEdge(edge, av) {
+    edge.addClass("marked");
+    edge.start().addClass("marked");
+    edge.end().addClass("marked");
     if (av) {
-      av.umsg(" Enqueue and visit node " + node.value(), {preserve: true});
-    }
-    node.highlight();
-    if (av) {
-      if (node.prev) {
-        av.step();
-        av.umsg("Add edge (" + node.prev.value() + "," + node.value() + ") to the BFS graph");
-        edge = node.edgeFrom(node.prev).css({"stroke-width": "4", "stroke": "red"});
-        edge.added = true;
-      }
       av.gradeableStep();
+    } else {
+      exercise.gradeableStep();
     }
   }
+
   function bfs(start, av) {
     var queue = [start],
         node,
@@ -91,8 +114,6 @@
     function nodeSort(a, b) {
       return a.value().charCodeAt(0) - b.value().charCodeAt(0);
     }
-
-    markIt(start, av);
 
     while (queue.length) {
       // dequeue node
@@ -104,24 +125,17 @@
       av.step();
 
       // Check if all neighbors have already been visited
-      var visitedAll = true;
-      for (var i = 0; i < adjacent.length; i++) {
-        if (!adjacent[i].hasClass("visited")) {
-          visitedAll = false;
-          break;
-        }
-      }
+      var visitedAll = adjacent.every(function (node) { return node.hasClass("marked"); });
 
       if (!visitedAll) {
         // go through all neighbors
         while (adjacent.hasNext()) {
           neighbor = adjacent.next();
           av.umsg("Process edge (" + node.value() + "," + neighbor.value() + ").");
-          if (!neighbor.hasClass("visited")) {
+          if (!neighbor.hasClass("marked")) {
             // enqueue and visit node
             queue.unshift(neighbor);
-            neighbor.prev = node;
-            markIt(neighbor, av);
+            markEdge(node.edgeTo(neighbor), av);
           } else {
             av.umsg(" Node " + neighbor.value() + " already visited.", {'preserve': true});
             av.step();
@@ -134,34 +148,31 @@
 
     }
   }
-  
+
+
   // Process About button: Pop up a message with an Alert
   function about() {
-    alert("BFS Proficiency Exercise\nWritten by -\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
+    window.alert("Breadth-First Search Proficiency Exercise\nWritten by --\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
   }
-  
-  exercise = jsav.exercise(model, init,
-                           { compare:  { css: "background-color" },
-                             controls: $('.jsavexercisecontrols'),
-                             fix: fixState });
+
+  exercise = jsav.exercise(model, init, {
+    compare: { class: "marked" },
+    controls: $('.jsavexercisecontrols'),
+    fix: fixState
+  });
   exercise.reset();
-  
-  $(".jsavcontainer").on("click", ".jsavgraphnode", function () {
-    var nodeIndex = $(this).parent(".jsavgraph").find(".jsavgraphnode").index(this);
-    var node = graphNodes[nodeIndex];
-    var prev;
-    if (!node.hasClass('visited')) {
-      markIt(node, null);
-      exerciseStep++;
-      if (gnodes.length) {
-        prev = graphNodes[gnodes.indexOf(gnodes[nodeIndex].prev)];
-        if (prev) {
-          node.edgeFrom(prev).css({"stroke-width": "4", "stroke": "red"});
-        }
-      }
-      exercise.gradeableStep();
+
+  $(".jsavcontainer").on("click", ".jsavedge", function () {
+    var edge = $(this).data("edge");
+    if (!edge.hasClass("marked")) {
+      markEdge(edge);
     }
   });
+
+  $(".jsavcontainer").on("click", ".jsavnode", function () {
+    window.alert("Please, click on the edges, not the nodes.");
+  });
+
   $("#about").click(about);
 
 }(jQuery));

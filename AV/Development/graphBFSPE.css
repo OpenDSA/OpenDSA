@@ -10,3 +10,18 @@
 #procontrols {
   text-align: center;
 }
+
+.jsavgraph svg {
+  z-index: 0;
+}
+
+.jsavnode.marked {
+  background-color: #FFF050;
+}
+.jsavedge {
+  stroke-width: 8;
+  stroke: #7D8879;
+}
+.jsavedge.marked {
+  stroke: #F6B611;
+}
