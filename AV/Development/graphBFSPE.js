@@ -1,9 +1,11 @@
-/* global graphUtils */
+/* global ODSA, graphUtils */
 (function ($) {
   "use strict";
   var exercise,
       graph,
-      settings = new JSAV.utils.Settings($(".jsavsettings")),
+      config = ODSA.UTILS.loadConfig(),
+      interpret = config.interpreter,
+      settings = config.getSettings(),
       jsav = new JSAV($('.avcontainer'), {settings: settings});
 
   jsav.recorded();
@@ -80,7 +82,7 @@
     // start the algorithm
     bfs(modelNodes[0], modeljsav);
 
-    modeljsav.umsg("Final BFS graph");
+    modeljsav.umsg(interpret("av_ms_final"));
     // hide all edges that are not part of the search tree
     var modelEdges = modelGraph.edges();
     for (i = 0; i < modelGraph.edges().length; i++) {
@@ -121,7 +123,7 @@
       // get neighbors and sort them in alphabetical order
       adjacent = node.neighbors();
       adjacent.sort(nodeSort);
-      av.umsg("Dequeue " + node.value());
+      av.umsg(interpret("av_ms_dequeue"), {fill: {node: node.value()}});
       av.step();
 
       // Check if all neighbors have already been visited
@@ -131,18 +133,23 @@
         // go through all neighbors
         while (adjacent.hasNext()) {
           neighbor = adjacent.next();
-          av.umsg("Process edge (" + node.value() + "," + neighbor.value() + ").");
+          av.umsg(interpret("av_ms_process_edge"), {fill: {from: node.value(), to: neighbor.value()}});
           if (!neighbor.hasClass("marked")) {
             // enqueue and visit node
             queue.unshift(neighbor);
             markEdge(node.edgeTo(neighbor), av);
           } else {
-            av.umsg(" Node " + neighbor.value() + " already visited.", {'preserve': true});
+            av.umsg(interpret("av_ms_already_visited"), {
+              preserve: true,
+              fill: {
+                node: node.value()
+              }
+            });
             av.step();
           }
         }
       } else {
-        av.umsg("All the neighbors of " + node.value() + " have already been visited.\n");
+        av.umsg(interpret("av_ms_all_neighbors_visited"), {fill: {node: node.value()}});
         av.step();
       }
 
@@ -152,7 +159,7 @@
 
   // Process About button: Pop up a message with an Alert
   function about() {
-    window.alert("Breadth-First Search Proficiency Exercise\nWritten by --\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
+    window.alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
   }
 
   exercise = jsav.exercise(model, init, {
