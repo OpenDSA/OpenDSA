@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
     <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
     <link rel="stylesheet" href="DijkstraPE.css" />
   </head>
   <body>
@@ -27,8 +28,9 @@
         <div class="jsavcanvas">
           <p class="instructLabel">Instructions:</p>
           <p class="instructions">
-            Reproduce the behavior of Dijstra's Algorithm for the given graph below. Just Click on the appropriate Graph Nodes to add in order. 
-			Start with Node A. In case of similar costs add nodes alphabetically.
+            Reproduce the behavior of Dijstra's Algorithm for the given graph below.
+            Click on the <strong>edges</strong> in the order they are traversed by the algorithm. 
+            Start with Node A. In case of similar costs, add nodes alphabetically.
           </p>
           <p id="procontrols">
             <span class="jsavscore"></span>
@@ -44,6 +46,7 @@
     <script src="../../DataStructures/binaryheap.js"></script>
     <script src="../../lib/odsaUtils-min.js"></script>
     <script src="../../lib/odsaAV-min.js"></script>
+    <script src="graphUtils.js"></script>
     <script src="DijkstraPE.js"></script>
   </body>
 </html>
