@@ -95,7 +95,7 @@
     modeljsav.displayInit();
 
     // start the algorithm
-    prim(modelNodes, distances, modeljsav);
+    dijkstra(modelNodes, distances, modeljsav);
 
     modeljsav.umsg("Shortest paths from A.");
     // hide all edges that are not part of the spanning tree
@@ -123,7 +123,7 @@
     }
   }
 
-  function prim(nodes, distances, av) {
+  function dijkstra(nodes, distances, av) {
     // returns the distance given a node index
     function getDistance(index) {
       var dist = parseInt(distances.value(index, 1), 10);
