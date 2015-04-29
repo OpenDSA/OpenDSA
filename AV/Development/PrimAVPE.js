@@ -1,9 +1,11 @@
-/* global graphUtils */
+/* global ODSA, graphUtils */
 (function ($) {
   "use strict";
   var exercise,
       graph,
-      settings = new JSAV.utils.Settings($(".jsavsettings")),
+      config = ODSA.UTILS.loadConfig(),
+      interpret = config.interpreter,
+      settings = config.getSettings(),
       jsav = new JSAV($('.avcontainer'), {settings: settings});
 
   jsav.recorded();
@@ -97,7 +99,7 @@
     // start the algorithm
     prim(modelNodes, distances, modeljsav);
 
-    modeljsav.umsg("Complete minimum spanning tree");
+    modeljsav.umsg(interpret("av_ms_mst"));
     // hide all edges that are not part of the spanning tree
     var modelEdges = modelGraph.edges();
     for (i = 0; i < modelGraph.edges().length; i++) {
@@ -157,16 +159,16 @@
       if (!node) { break; }
       distances.addClass(nodeIndex, true, "unused");
       if (nodeIndex === 0) {
-        av.umsg("Start by selecting node A");
+        av.umsg(interpret("av_ms_select_a"));
       } else {
-        av.umsg("Select " + node.value() + ", since it's closest to the MCST.");
+        av.umsg(interpret("av_ms_select_node"), {fill: {node: node.value()}});
       }
       av.step();
 
       // get previous node if any
       prev = nodes[getIndex(distances.value(nodeIndex, 2))];
       if (prev) {
-        av.umsg("Add edge (" + prev.value() + ", " + node.value() + ") to the MSCT.");
+        av.umsg(interpret("av_ms_add_edge"), {fill: {from: prev.value(), to: node.value()}});
         markEdge(prev.edgeTo(node), av);
       }
 
@@ -182,10 +184,7 @@
           distances.value(neighborIndex, 2, node.value());
         }
       }
-      av.umsg(
-        "Update the distances to " + node.value() + "'s neighbors. " +
-        "For updated nodes, set the closest node to " + node.value()
-      );
+      av.umsg(interpret("av_ms_update_distances"), {fill: {node: node.value()}});
       av.step();
 
     }
@@ -194,7 +193,7 @@
 
   // Process About button: Pop up a message with an Alert
   function about() {
-    window.alert("Prim's Algorithm Proficiency Exercise\nWritten by --\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
+    window.alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
   }
 
   exercise = jsav.exercise(model, init, {
