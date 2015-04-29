@@ -115,7 +115,7 @@ function makePart(classDef) {
 function buildFieldEnv(parts) {
     var env = E.createEmptyEnv();
     var theClass, fields, refs;
-    for(var i=0; i<parts.length; i++) {
+    for(var i=parts.length-1; i>=0; i--) {
 	theClass = lookupClass(parts[i][0],classEnv);
 	fields = A.getClassIvars(theClass);
 	refs = parts[i][1];
