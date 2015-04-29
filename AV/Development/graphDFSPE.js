@@ -1,9 +1,11 @@
-/* global graphUtils */
+/* global ODSA, graphUtils */
 (function ($) {
   "use strict";
   var exercise,
       graph,
-      settings = new JSAV.utils.Settings($(".jsavsettings")),
+      config = ODSA.UTILS.loadConfig(),
+      interpret = config.interpreter,
+      settings = config.getSettings(),
       jsav = new JSAV($('.avcontainer'), {settings: settings});
 
   jsav.recorded();
@@ -80,7 +82,7 @@
     // start the algorithm
     dfs(modelNodes[0], modeljsav);
 
-    modeljsav.umsg("Final DFS graph");
+    modeljsav.umsg(interpret("av_ms_final"));
     // hide all edges that are not part of the search tree
     var modelEdges = modelGraph.edges();
     for (i = 0; i < modelGraph.edges().length; i++) {
@@ -113,9 +115,14 @@
       return a.value().charCodeAt(0) - b.value().charCodeAt(0);
     });
     for (var next = adjacent.next(); next; next = adjacent.next()) {
-      av.umsg("Process edge (" + start.value() + "," + next.value() + ")");
+      av.umsg(interpret("av_ms_process_edge"), {fill: {from: start.value(), to: next.value()}});
       if (next.hasClass("marked")) {
-        av.umsg(" :Node " + next.value() + " already visited", {'preserve': true});
+        av.umsg(interpret("av_ms_already_visited"), {
+          preserve: true,
+          fill: {
+            node: next.value()
+          }
+        });
       }
       av.step();
       if (!next.hasClass("marked")) {
@@ -128,7 +135,7 @@
 
   // Process About button: Pop up a message with an Alert
   function about() {
-    window.alert("Depth First Search Proficiency Exercise\nWritten by --\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
+    window.alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
   }
 
   exercise = jsav.exercise(model, init, {
