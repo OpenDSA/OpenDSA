@@ -68,6 +68,7 @@ function applyPrimitive(prim,args) {
 /* helper functions for OOP */
 function elaborateDecls(decls) {
     classEnv = decls;
+    //classEnv.unshift(A.createClass("Object",null,[],[]));
 }
 function lookupClass(name,classes) {
     for(var i = 0; i<classes.length; i++) {
@@ -86,7 +87,7 @@ function lookupMethod(name,methods) {
     return A.createMethod("_invalidName",null,null);
     //throw new Error("Method unknown: " + name);
 }
-/* given an object and a class name cName, returns the list of parts
+/* given an object and a class name cName, returns the list of slices
    starting at cName */
 function viewObjectAs(object,cName) {
     object = E.getObjectState(object);
@@ -97,44 +98,43 @@ function viewObjectAs(object,cName) {
     }
     throw new Error("Not an object: " + JSON.stringify(object));
 }
-function getClassName(parts) {
-    if (parts.length > 0 ) {
-	return parts[0][0];
+function getClassName(state) {
+    if (state.length > 0 ) {
+	return state[0][0];
     } else {
-	throw new Error("Not an object: " + JSON.stringify(parts));
+	throw new Error("Not an object: " + JSON.stringify(state));
     }
 }
-/* given a class definition, return the corresponding part */
-function makePart(classDef) {
+/* given a class definition, return the corresponding slice */
+function makeSlice(classDef) {
     return [ classDef[1],
 	     A.getClassIvars(classDef).map( 
 		 function (ignore_name) { return [ defaultValue ]; })
 	   ];
 }
-/* given a list of parts, return the environment in which each field is bound to its value */
-function buildFieldEnv(parts) {
+/* given a list of slices, return the environment in which each field is bound to its value */
+function buildFieldEnv(slices) {
     var env = E.createEmptyEnv();
     var theClass, fields, refs;
-    for(var i=parts.length-1; i>=0; i--) {
-	theClass = lookupClass(parts[i][0],classEnv);
+    for(var i=slices.length-1; i>=0; i--) {
+	theClass = lookupClass(slices[i][0],classEnv);
 	fields = A.getClassIvars(theClass);
-	refs = parts[i][1];
+	refs = slices[i][1];
 	env = E.updateWithReferences(env,fields,refs);
     }
     return env;
 }
 /* given a class name, return an instance of the class, that is, an array
-   of parts */
+   of slices */
 function makeNewObject(className) {
     var helper = function (name) {
         var theClass, result;
 	if (name === "Object") {
-	    //return [ ["Object", []] ];
 	    return [ ];
 	} else {
 	    theClass = lookupClass(name,classEnv);
 	    result = helper(A.getClassSuperClass(theClass));
-	    result.unshift(makePart(theClass));
+	    result.unshift(makeSlice(theClass));
 	    return result;
 	}
     };
@@ -156,7 +156,7 @@ function applyMethod(method,className,object,args) {
 }
 function findAndInvokeMethod(methodName, className, object, args) {
     var theClass, method, methods;
-    if (methodName === "Object") {
+    if (className === "Object") {
 	throw new Error("Unknown method: " + methodName);
     } else {
 	theClass = lookupClass(className, classEnv);

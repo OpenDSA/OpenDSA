@@ -336,7 +336,7 @@ function getSuperCallArgs(e) {
 			"The argument of getSuperCallArgs is not a SuperCall.");
     }
 }
-function createClass(name,superClass,ivars,methods) { 
+    function createClass(name,superClass,ivars,methods) { 
     return ["Class", name, superClass, ivars, methods]; 
 }
 function isClass(c) { 

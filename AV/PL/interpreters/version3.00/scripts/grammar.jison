@@ -90,7 +90,7 @@ ivars
     ;
 
 methods
-    : method                 { $$ = [ $1 ]; }
+    : /* empty */            { $$ = [ ]; }
     | method methods         { $2.unshift($1);  $$ = $2; }
     ;
 
@@ -258,12 +258,12 @@ args
     ;
 
 csargs
-    :  /* empty */ { $$ = [ ]; }
+    : /* empty */ { $$ = [ ]; }
     |  exp more_csargs    { $2.unshift($1); $$ = $2; }
     ;
 
 more_csargs
-    : /* empty */ { $$ = [ ] }
+    : /* empty */ { $$ = [ ]; }
     | COMMA exp more_csargs { $3.unshift($2); $$ = $3; }
     ;
 
