@@ -314,6 +314,28 @@ function getMethodCallArgs(e) {
 			"The argument of getMethodCallArgs is not a MethodCall.");
     }
 }
+function createSuperCall(method,args) { 
+    return ["SuperCall", method, args]; 
+}
+function isSuperCall(e) { 
+    return e[0] === "SuperCall"; 
+}
+function getSuperCallMethod(e) { 
+    if (isSuperCall(e)) {
+	return e[1];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getSuperCallMethod is not a SuperCall.");
+    }
+}
+function getSuperCallArgs(e) { 
+    if (isSuperCall(e)) {
+	return e[2];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getSuperCallArgs is not a SuperCall.");
+    }
+}
 function createClass(name,superClass,ivars,methods) { 
     return ["Class", name, superClass, ivars, methods]; 
 }
@@ -440,6 +462,10 @@ exports.isMethodCall = isMethodCall;
 exports.getMethodCallObject = getMethodCallObject;
 exports.getMethodCallMethod = getMethodCallMethod;
 exports.getMethodCallArgs = getMethodCallArgs;
+exports.createSuperCall = createSuperCall;
+exports.isSuperCall = isSuperCall;
+exports.getSuperCallMethod = getSuperCallMethod;
+exports.getSuperCallArgs = getSuperCallArgs;
 exports.createClass = createClass;
 exports.isClass = isClass;
 exports.getClassName = getClassName;

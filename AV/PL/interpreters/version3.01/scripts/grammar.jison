@@ -49,6 +49,7 @@ LETTER		      [a-zA-Z]
 "new"                                 { return 'NEW'; }
 "."                                   { return 'DOT'; }
 "this"                                { return 'THIS'; }
+"super"                               { return 'SUPER'; }
 "call"                                { return 'CALL'; }
 <<EOF>>               		      { return 'EOF'; }
 {LETTER}({LETTER}|{DIGIT}|_)*  	      { return 'VAR'; }
@@ -111,6 +112,7 @@ exp
     | assign_exp    { $$ = $1; }
     | this_exp      { $$ = $1; }
     | new_exp       { $$ = $1; }
+    | super_call    { $$ = $1; }
     | method_call   { $$ = $1; }
     ;
 
@@ -121,6 +123,11 @@ this_exp
 new_exp
     : NEW VAR LPAREN csargs RPAREN
           { $$ = SLang.absyn.createNewExp($2,$4); }
+    ;
+
+super_call
+    : CALL SUPER DOT VAR LPAREN csargs RPAREN
+          { $$ = SLang.absyn.createSuperCall($4,$6); }
     ;
 
 method_call

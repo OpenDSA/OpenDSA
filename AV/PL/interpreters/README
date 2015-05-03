@@ -32,4 +32,9 @@ V 2.0
 V 3.0
 ===== 
 
-+ SLang 2.00 plus objects
++ SLang 2.00 plus OO features
+
+     3.00 classes, objects, new, method calls, this
+          as described in class
+     3.01 add super calls (for assignment 7)
+     

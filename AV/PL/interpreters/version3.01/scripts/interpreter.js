@@ -239,6 +239,15 @@ function evalExp(exp,envir) {
 				   obj, 
 				   args
 				   );
+    } else if (A.isSuperCall(exp)) {
+	obj = E.lookup(envir,"_this");
+	sup = E.lookup(envir,"_super");
+	args = evalExps(A.getSuperCallArgs(exp),envir);
+	return findAndInvokeMethod(A.getSuperCallMethod(exp),
+				   E.getClassNameName(sup),
+				   obj, 
+				   args
+				   );
     } else {
 	throw new Error("Error: Attempting to evaluate an invalid expression");
     }
