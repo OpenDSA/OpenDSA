@@ -7,6 +7,17 @@
 .borderEdge{  /* make graph edge red */ 
 
 	stroke: #CCCCCC;
-	stroke-width: 1;
+	stroke-width: .5;
 
+}
+
+.smallNode{
+	height: 2;
+	width: 2;
+}
+
+.node{
+  border-radius: 4 !important;
+ 	width: 10px !important;
+ 	height: 10px !important;
 }

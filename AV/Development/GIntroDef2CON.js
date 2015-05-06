@@ -85,10 +85,7 @@ $(document).ready(function () {
     graphThree.layout();
     av.umsg("A graph with labels associated with its vertices is called a <i>labeled graph<i>. A graph whose edges" + 
         " have weights is said to be a <i> weighted graph<i/>. Here is a labeled directed graph with weighted edges.");
-    av.step();
-
-    //new slide 
-    av.umsg("ADD SLIDE ABOUT ADJACENT + NEIGHBORS + INCIDENTZ");
+    
     av.recorded();
 
 });

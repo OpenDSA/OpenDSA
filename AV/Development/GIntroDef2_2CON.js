@@ -2,16 +2,15 @@
 $(document).ready(function () {
 	var av = new JSAV("GIntroDef2_2CON", {"animationMode" : "none"});
 
-	av.umsg("A graph G=(V,E) consists of a set of vertices V and a set of edges E, such that each edge " + 
+	av.label("A graph G=(V,E) consists of a set of vertices V and a set of edges E, such that each edge " + 
         "in E is a connection between a pair of vertices in V. A graph with edges directed from one vertex " + 
         "to another (as in Figure (b)) is called a <i>directed graph</i> or <i>digraph</i>. A graph whose edges are not " + 
         "directed is called an <i>undirected graph</i> (as illustrated by Figure (a)). A graph with labels associated " + 
         "with its vertices (as in Figure (c)) is called a <i>labeled graph</i>.  A graph whose edges have weights" + 
-        " (as in Figure (c)) is said to be a <i>weighted graph</i>.");
+        " (as in Figure (c)) is said to be a <i>weighted graph</i>.").show();
 
 	//creating lines for visual break up 
-	//how to get length and height of window 
-	var line = av.g.line( 0, 100, 850, 100).addClass("borderEdge");
+	var line = av.g.line( 0, 120, 850, 120).addClass("borderEdge");
 	line = av.g.line(285, 120, 285, 500).addClass("borderEdge");
 	line = av.g.line(570, 120, 570, 500).addClass("borderEdge");
 
@@ -24,6 +23,7 @@ $(document).ready(function () {
     var graphOne = av.ds.graph({top: gTop, left: gLeft, width: 250, height: 250});
 
     var nodeOne = graphOne.addNode("", {left: gLeft, top: gTop});
+    nodeOne.addClass("node");
     var nodeTwo = graphOne.addNode("", {left: gLeft + 100, top: gTop});
     var nodeThree = graphOne.addNode("", {left: gLeft + 50, top: gTop + 50});
     var nodeFour = graphOne.addNode("", {left: gLeft,  top: gTop + 100});
@@ -44,7 +44,7 @@ $(document).ready(function () {
     
     //set up rsecond graph 
    
-    var g2Left = 300;
+    var g2Left = 350;
     var graphTwo = av.ds.graph({left: g2Left, top: gTop, directed: true, width: 250, height: 250});
 
     nodeOne = graphTwo.addNode(" ", {left: 0, top: gTop});
@@ -65,15 +65,14 @@ $(document).ready(function () {
 
    
     //set up graph three 
-    /*
-    gLeft = 850;
+        gLeft = 650;
     var graphThree = av.ds.graph({left: gLeft, top: gTop, directed: true, width: 150, height: 300});
 
-    nodeOne = graphThree.addNode("0", {left: gLeft, top: gTop});
-    nodeTwo = graphThree.addNode("2", {left: gLeft + 100, top: gTop});
-    nodeThree = graphThree.addNode("4", {left: gLeft + 50, top: gTop + 50});
-    nodeFour = graphThree.addNode("1", {left: gLeft,  top: gTop + 100});
-    nodeFive =graphThree.addNode("3", {left: gLeft + 100, top: gTop + 100});
+    nodeOne = graphThree.addNode("0", {left: 0, top: gTop});
+    nodeTwo = graphThree.addNode("2", {left: 100, top: gTop});
+    nodeThree = graphThree.addNode("4", {left:50, top: gTop + 50});
+    nodeFour = graphThree.addNode("1", {left: 0,  top: gTop + 100});
+    nodeFive =graphThree.addNode("3", {left: 100, top: gTop + 100});
 
     graphThree.addEdge(nodeOne, nodeFour, {weight: 3});
     graphThree.addEdge(nodeOne, nodeThree, {weight: 4});
@@ -83,7 +82,6 @@ $(document).ready(function () {
     graphThree.addEdge(nodeThree, nodeFour, {weight: 1});
 
     graphThree.layout();
-    */
 
     av.label("(c)", {top: 400, left: 700}).show();
 	
