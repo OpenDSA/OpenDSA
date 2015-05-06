@@ -75,7 +75,6 @@ $(document).ready(function () {
     graphThree.addEdge(nodeFour, nodeFive, {weight: 3});
     graphThree.addEdge(nodeThree, nodeFour, {weight: 1});
     graphThree.layout();
-    av.step();
 
     //add red egdes 
     graphThree.getEdge(nodeOne, nodeFour).addClass("redEdge");

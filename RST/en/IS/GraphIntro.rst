@@ -8,11 +8,9 @@
    :prerequisites:
    :topic: Graphs
 
-.. odsalink:: AV/Development/GIntroDef2CON.css
 .. odsalink:: AV/Development/GIntroDef2_2CON.css
 .. odsalink:: AV/Development/GIntroPathDefCON.css
 .. odsalink:: AV/Development/connectedGraphCON.css
-.. odsalink:: AV/Development/GIntroRepCON.css
 .. odsalink:: AV/Development/GIntroRepCON2_2.css
 .. odsalink:: AV/Development/GIntroRepCON2_3.css
 .. odsalink:: AV/Development/GraphIntroTermsCON.css
@@ -103,14 +101,14 @@ is said to be a :term:`weighted graph`.
 
 .. _GraphTerms:
 
-.. inlineav:: GIntroDef2CON ss
-   :output: show
+
 
 
 .. inlineav:: GIntroDef2_2CON dgm 
    :output: show
 
-
+.. inlineav:: GraphIntroTermsCON dgm
+   :output: show
 
 .. odsafig:: Images/GraphDef.png
    :width: 500
@@ -196,8 +194,6 @@ a free tree is connected and has :math:`|\mathbf{V}| - 1` edges.
    Replace image above with a JSAV-generated image. Or better, a
    slideshow to illustrate the various representation issues.
 
-.. inlineav:: GIntroRepCON ss
-   :output: show
 
 .. inlineav:: GIntroRepCON2_2 dgm 
    :output: show
@@ -324,8 +320,7 @@ time when the algorithm might otherwise require only
 This is a considerable disadvantage when the graph is sparse,
 but not when the graph is closer to full.
 
-.. inlineav:: GraphIntroTermsCON dgm
-   :output: show
+
 
 .. TODO::
    :type: Exercise
@@ -346,11 +341,10 @@ Notes
        To simplify our graph API, we will assume that there are no
        dupicate edges, and no edges that connect a node to itself.
 
-.. odsascript:: AV/Development/GIntroDef2CON.js
+
 .. odsascript:: AV/Development/GIntroDef2_2CON.js
 .. odsascript:: AV/Development/GIntroPathDefCON.js
 .. odsascript:: AV/Development/connectedGraphCON.js
-.. odsascript:: AV/Development/GIntroRepCON.js
 .. odsascript:: AV/Development/GIntroRepCON2_2.js
 .. odsascript:: AV/Development/GIntroRepCON2_3.js
 .. odsascript:: AV/Development/GraphIntroTermsCON.js
