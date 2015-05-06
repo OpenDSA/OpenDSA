@@ -6,20 +6,29 @@
 
 var exports = {};
 
-function createProgram(e) {
-    return ["Program", e]; 
+function createProgram(decls,mainBlock) {
+    return ["Program", decls, mainBlock]; 
 }
-function isProgram(e) { 
-    return e[0] === "Program"; 
+function isProgram(p) { 
+    return p[0] === "Program"; 
 }
-function getProgramExp(e) { 
-    if (isProgram(e)) {
-	return e[1];
+function getProgramDecls(p) { 
+    if (isProgram(p)) {
+	return p[1];
     } else {
 	throw new Error("Interpreter error: "  +
-			"The argument of getProgramExp is not a program.");
+			"The argument of getProgramDecls is not a program.");
     }
 }				       
+function getProgramMainBody(p) { 
+    if (isProgram(p)) {
+	return p[2];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getProgramMainBody is not a program.");
+    }
+}				       
+
 function createVarExp(v) { 
     return ["VarExp", v]; 
 }
@@ -247,10 +256,137 @@ function getIfExpElse(e) {
 			"The argument of getIfExpElse is not an IfExp.");
     }
 }
+function createThisExp() { 
+    return ["ThisExp"]; 
+}
+function isThisExp(e) { 
+    return e[0] === "ThisExp"; 
+}
+function createNewExp(v,args) { 
+    return ["NewExp", v, args]; 
+}
+function isNewExp(e) { 
+    return e[0] === "NewExp"; 
+}
+function getNewExpClass(e) { 
+    if (isNewExp(e)) {
+	return e[1];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getNewExpClass is not a NewExp.");
+    }
+}
+function getNewExpArgs(e) { 
+    if (isNewExp(e)) {
+	return e[2];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getNewExpArgs is not a NewExp.");
+    }
+}
+function createMethodCall(obj,method,args) { 
+    return ["MethodCall", obj, method, args]; 
+}
+function isMethodCall(e) { 
+    return e[0] === "MethodCall"; 
+}
+function getMethodCallObject(e) { 
+    if (isMethodCall(e)) {
+	return e[1];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getMethodCallObject is not a MethodCall.");
+    }
+}
+function getMethodCallMethod(e) { 
+    if (isMethodCall(e)) {
+	return e[2];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getMethodCallMethod is not a MethodCall.");
+    }
+}
+function getMethodCallArgs(e) { 
+    if (isMethodCall(e)) {
+	return e[3];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getMethodCallArgs is not a MethodCall.");
+    }
+}
+function createClass(name,superClass,ivars,methods) { 
+    return ["Class", name, superClass, ivars, methods]; 
+}
+function isClass(c) { 
+    return c[0] === "Class"; 
+}
+function getClassName(c) { 
+    if (isClass(c)) {
+	return c[1];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getClassName is not a Class.");
+    }
+}
+function getClassSuperClass(c) { 
+    if (isClass(c)) {
+	return c[2];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getClassSuperClass is not a Class.");
+    }
+}
+function getClassIvars(c) { 
+    if (isClass(c)) {
+	return c[3];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getClassIvars is not a Class.");
+    }
+}
+function getClassMethods(c) { 
+    if (isClass(c)) {
+	return c[4];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getClassMethods is not a Class.");
+    }
+}
+function createMethod(name,params,body) {
+    return ["Method", name, params, body]; 
+}
+function isMethod(m) { 
+    return m[0] === "Method"; 
+}
+function getMethodName(m) { 
+    if (isMethod(m)) {
+	return m[1];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getMethodName is not a Method.");
+    }
+}				      
+function getMethodParams(m) { 
+    if (isMethod(m)) {
+	return m[2];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getMethodParams is not a Method.");
+    }
+}				      
+function getMethodBody(m) { 
+    if (isMethod(m)) {
+	return m[3];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getMethodBody is not a Method.");
+    }
+}				      
 
 exports.createProgram = createProgram;
 exports.isProgram = isProgram;
-exports.getProgramExp = getProgramExp;
+exports.getProgramDecls = getProgramDecls;
+exports.getProgramMainBody = getProgramMainBody;
 exports.createVarExp = createVarExp;
 exports.isVarExp = isVarExp;
 exports.getVarExpId = getVarExpId;
@@ -293,6 +429,28 @@ exports.isIfExp = isIfExp;
 exports.getIfExpCond = getIfExpCond;
 exports.getIfExpThen = getIfExpThen;
 exports.getIfExpElse = getIfExpElse;
+exports.createThisExp = createThisExp;
+exports.isThisExp = isThisExp;
+exports.createNewExp = createNewExp;
+exports.isNewExp = isNewExp;
+exports.getNewExpClass = getNewExpClass;
+exports.getNewExpArgs = getNewExpArgs;
+exports.createMethodCall = createMethodCall;
+exports.isMethodCall = isMethodCall;
+exports.getMethodCallObject = getMethodCallObject;
+exports.getMethodCallMethod = getMethodCallMethod;
+exports.getMethodCallArgs = getMethodCallArgs;
+exports.createClass = createClass;
+exports.isClass = isClass;
+exports.getClassName = getClassName;
+exports.getClassSuperClass = getClassSuperClass;
+exports.getClassIvars = getClassIvars;
+exports.getClassMethods = getClassMethods;
+exports.createMethod = createMethod;
+exports.isMethod = isMethod;
+exports.getMethodName = getMethodName;
+exports.getMethodParams = getMethodParams;
+exports.getMethodBody = getMethodBody;
 
 SLang.absyn = exports;
 }());

@@ -209,7 +209,10 @@ All are required unless otherwise specified.
 
   * **Note**: When changing from ``false`` to ``true``, you must run ``make clean`` to completely remove any references to ``ToDo``
 
-* **assumes** - (optional) a string containing a semi-colon delimited list of topics with which the book assumes students are familiar
+* **assumes** - (optional) a string containing a semi-colon delimited
+    list of topics with which the book assumes students are familiar.
+    This allows for control over warnings about missing prerequisite
+    modules during the build process.
 
 * **chapters** - this object contains a hierarchy of chapters, sections, subsections, modules and exercises
 

@@ -103,18 +103,18 @@ function evalExp(exp,envir) {
     else if (A.isAppExp(exp)) {
 	var f = evalExp(A.getAppExpFn(exp),envir);
 	var args = A.getAppExpArgs(exp).map( function(arg) { return evalExp(arg,envir); } );
-	if (SLang.env.isClo(f)) {
-	    if (SLang.env.getCloParams(f).length !== args.length) {		
+	if (E.isClo(f)) {
+	    if (E.getCloParams(f).length !== args.length) {		
 		throw new Error("Runtime error: wrong number of arguments in " +
-                        "a function call (" + SLang.env.getCloParams(f).length +
+                        "a function call (" + E.getCloParams(f).length +
 			" expected but " + args.length + " given)");
 	    } else {
-		return evalExp(SLang.env.getCloBody(f),
-			       SLang.env.update(SLang.env.getCloEnv(f),
-						SLang.env.getCloParams(f),args));
+		return evalExp(E.getCloBody(f),
+			       E.update(E.getCloEnv(f),
+						E.getCloParams(f),args));
 	    }
 	} else {
-	    throw f + " is not a closure and thus cannot be applied.";
+	    throw new Error(f + " is not a closure and thus cannot be applied.");
 	}
     } else if (A.isPrim1AppExp(exp)) {
         return applyPrimitive(A.getPrim1AppExpPrim(exp),
@@ -130,7 +130,7 @@ function evalExp(exp,envir) {
 	    return evalExp(A.getIfExpElse(exp),envir);
 	}
     } else {
-	throw "Error: Attempting to evaluate an invalid expression";
+	throw new Error("Error: Attempting to evaluate an invalid expression");
     }
 }
 function myEval(p) {

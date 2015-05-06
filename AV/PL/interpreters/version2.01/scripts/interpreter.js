@@ -2,7 +2,7 @@
 
 (function () {
 
-"use strict";
+    "use strict";
 
     var A = SLang.absyn;
     var E = SLang.env;
@@ -120,7 +120,7 @@ function callByCopyRestore(exp,envir) {
     var copies = args.map( function (arg) { return [ arg[0] ]; } );
     var restore = function ( list1, list2 ) {
 	for(var i=0; i<list1.length; i++) {
-	    list1[i][0] = list2[i];
+	    list1[i][0] = list2[i][0];
 	}
     };
     if (E.isClo(f)) {

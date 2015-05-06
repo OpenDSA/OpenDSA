@@ -1,4 +1,4 @@
-/* description: Grammar for Slang 1 */
+/* description: Grammar for Slang 3 */
 
 /* lexical grammar */
 %lex
@@ -28,19 +28,28 @@ LETTER		      [a-zA-Z]
 "end"                                 { return 'END'; }
 "print"                               { return 'PRINT'; }
 "set"                                 { return 'SET'; }
-"letrec"                              { return 'LETREC'; }
-"while"                               { return 'WHILE'; }
-"{"                                   { return 'LBRACE'; }
-"}"                                   { return 'RBRACE'; }
 ";"                   		      { return 'SEMICOLON'; }
-":"                   		      { return 'COLON'; }
+':'                                   { return 'COLON'; }
+'"'                                   { return 'DQUOTE'; }
 ","                   		      { return 'COMMA'; }
 "=>"                   		      { return 'THATRETURNS'; }
 "if"                   		      { return 'IF'; }
 "then"                   	      { return 'THEN'; }
 "else"                   	      { return 'ELSE'; }
 "="                                   { return 'EQ'; }
-'"'                                   { return 'DQUOTE'; }
+"{"                                   { return 'LBRACE'; }
+"}"                                   { return 'RBRACE'; }
+"public"                              { return 'PUBLIC'; }
+"class"                               { return 'CLASS'; }
+"extends"                             { return 'EXTENDS'; }
+"method"                              { return 'METHOD'; }
+"main"                                { return 'MAIN'; }
+"protected"                           { return 'PROTECTED'; }
+"Driver"                              { return 'DRIVER'; }
+"new"                                 { return 'NEW'; }
+"."                                   { return 'DOT'; }
+"this"                                { return 'THIS'; }
+"call"                                { return 'CALL'; }
 <<EOF>>               		      { return 'EOF'; }
 {LETTER}({LETTER}|{DIGIT}|_)*  	      { return 'VAR'; }
 {DIGIT}+                              { return 'INT'; }
@@ -53,10 +62,41 @@ LETTER		      [a-zA-Z]
 %% /* language grammar */
 
 program
-    : exp EOF
-        { return SLang.absyn.createProgram($1); }
+    : decls 
+      PUBLIC CLASS DRIVER EXTENDS VAR 
+      LBRACE
+              METHOD MAIN LPAREN RPAREN
+              LBRACE
+                      block
+              RBRACE
+      RBRACE
+      EOF { return SLang.absyn.createProgram($1,$13); }
     ;
 
+decls
+    : /* empty */           { $$ = [ ]; }
+    | class decls           { $2.unshift($1);  $$ = $2; }
+    ;
+
+class
+    : CLASS VAR EXTENDS VAR LBRACE ivars methods RBRACE
+          { $$ = SLang.absyn.createClass($2,$4,$6,$7); }
+    ;
+
+ivars
+    : /* empty */            { $$ = [ ]; }
+    | PROTECTED VAR ivars    { $3.unshift($2);  $$ = $3; }
+    ;
+
+methods
+    : /* empty */            { $$ = [ ]; }
+    | method methods         { $2.unshift($1);  $$ = $2; }
+    ;
+
+method
+    : METHOD VAR LPAREN formals RPAREN LBRACE block RBRACE
+          { $$ = SLang.absyn.createMethod($2, $4, $7); }
+    ;
 exp
     : var_exp       { $$ = $1; }
     | intlit_exp    { $$ = $1; }
@@ -66,11 +106,26 @@ exp
     | prim2_app_exp { $$ = $1; }
     | if_exp        { $$ = $1; }
     | let_exp       { $$ = $1; }
-    | letrec_exp    { $$ = $1; }
     | print_exp     { $$ = $1; }
     | print2_exp    { $$ = $1; }
     | assign_exp    { $$ = $1; }
-    | while_exp     { $$ = $1; }
+    | this_exp      { $$ = $1; }
+    | new_exp       { $$ = $1; }
+    | method_call   { $$ = $1; }
+    ;
+
+this_exp
+    : THIS  { $$ = SLang.absyn.createThisExp(); }
+    ;
+
+new_exp
+    : NEW VAR LPAREN csargs RPAREN
+          { $$ = SLang.absyn.createNewExp($2,$4); }
+    ;
+
+method_call
+    : CALL exp DOT VAR LPAREN csargs RPAREN
+          { $$ = SLang.absyn.createMethodCall($2,$4,$6); }
     ;
 
 var_exp
@@ -81,11 +136,10 @@ intlit_exp
     : INT  { $$ = SLang.absyn.createIntExp( $1 ); }
     ;
 
-
 print_exp
     : PRINT exp { $$ = SLang.absyn.createPrintExp( $2 ); }
     ;
-
+ 
 print2_exp
     : PRINT DQUOTE VAR DQUOTE optional 
            { $$ = SLang.absyn.createPrint2Exp( $3, $5 ); }
@@ -95,7 +149,7 @@ optional
     : COLON        { $$ = null; }
     | exp          { $$ = $1; }
     ;
- 
+
 assign_exp
     : SET VAR EQ exp  { $$ = SLang.absyn.createAssignExp( $2, $4 ); }
     ;
@@ -109,17 +163,9 @@ let_exp
     : LET bindings IN block END
            { var args = $2[1]; args.unshift( "args" );
              var fnexp = SLang.absyn.createFnExp($2[0],$4);
-	     var appExp = SLang.absyn.createAppExp(fnexp,args);
-	     appExp.comesFromLetBlock = true;
-             $$ = appExp;
+             $$ = SLang.absyn.createAppExp(fnexp,args);
            }
     ; 
-
-letrec_exp
-    : LETREC VAR EQ fn_exp IN block END
-           { $$ = SLang.absyn.createLetRecExp($2,$4,$6); }
-    ; 
-
 
 bindings
     : VAR EQ exp              
@@ -204,22 +250,18 @@ args
         }
     ;
 
-prim_args
-    :  /* empty */ { $$ = [ ]; }
-    |  exp more_prim_args    { $2.unshift($1); $$ = $2; }
+csargs
+    : /* empty */ { $$ = [ ]; }
+    |  exp more_csargs    { $2.unshift($1); $$ = $2; }
     ;
 
-more_prim_args
-    : /* empty */ { $$ = [ ] }
-    | COMMA exp more_prim_args { $3.unshift($2); $$ = $3; }
+more_csargs
+    : /* empty */ { $$ = [ ]; }
+    | COMMA exp more_csargs { $3.unshift($2); $$ = $3; }
     ;
 
 if_exp
     : IF exp THEN exp ELSE exp { $$ = SLang.absyn.createIfExp($2,$4,$6); }
-    ;
-
-while_exp
-    : WHILE exp LBRACE block RBRACE { $$ = SLang.absyn.createWhileExp($2,$4); }
     ;
 
 %%

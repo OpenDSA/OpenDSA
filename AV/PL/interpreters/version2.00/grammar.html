@@ -23,17 +23,19 @@
 \(
     \begin{array}{lcl}
        < program > & ::= & < exp > \\
-       < exp >     & ::= &  < var\ exp > | < fn\ exp > | < app\ exp > | < intlit\ exp > | < papp\ exp > \\
-                   &  |  & < let\ exp > \\
-                   &  |  & < print\ exp > \\
-                   &  |  & < assign\ exp > \\
+       < exp >     & ::= &  < var\ exp > | < fn\ exp > | < app\ exp > | < intlit\ exp >  \\
+                   &  |  & < papp1\ exp > | < papp2\ exp > | < if\ exp>  |  < let\ exp > \\
+                   &  |  & < print\ exp > | < print2\ exp > |  < assign\ exp > \\
    < fn\  exp >    & ::= & fn\quad '('\  < var\ exp >^*\ ')'\ =>\  < exp > \\
    < app\ exp >    & ::= & '('\  < exp >\   < exp >^*\ ')' \\
-   < papp\ exp >   & ::= & < prim\ op >\  '('\  < args >\  ')' \\
+   < papp1\ exp >   & ::= & < prim1\ op >\  '('\  < exp >\  ')' \\
+   < papp2\ exp >   & ::= & '('\  < exp >\ < prim2\ op >\   < exp >\  ')' \\
    < args >        & ::= & (  < exp >\   (\ ','\  < exp >  )^*\  )?\\
    < let\ exp >    & ::= & let\ (< var\ exp >\ =\ < exp >)^+\ in\ < exp > (\ ';'\ < exp >)^*\ end\\
    < print\ exp >  & ::= & print  < exp > \\
+   < print2\ exp >  & ::= & print\  " < var exp > " ( ':'\ |\ < exp >) \\
    < assign\ exp > & ::= & set\ < var\ exp >\ =\ < exp > \\
+   < if\ exp > & ::= & if < exp >\ then\ < exp >\ else\ < exp > \\
 
 
     \end{array}
@@ -54,7 +56,9 @@
 
  < letter >      & ::=  & a\ |\ b\ |\ ...\ |\ z\ |\ A\ |\ B\ |\ ...\ |\ Z\\
 
- < prim\ op >    & ::=  & +\ |\ *\ |\ add1\\
+ < prim1\ op >    & ::=  & not\  |\ \sim\ |\ add1\\
+
+ < prim2\ op >    & ::=  & +\ |\ -\ |\ *\ |\ /\ |\ \%\ |\ \lt\ |\ \gt\ |\ === \\
 \end{array}
 \)
 </body>
