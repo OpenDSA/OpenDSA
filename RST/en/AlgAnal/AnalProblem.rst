@@ -33,9 +33,9 @@ The worst case lower bound is the *least* of all the
 *highest* points on all the graphs.
 
 .. TODO::
-   :tag: Visualization
+   :tag: Slideshow
 
-   Present a visualization of this previous paragraph
+   Present a visualization of the previous paragraph
 
 It is much easier to show that an algorithm (or program) is in
 :math:`\Omega(f(n))` than it is to show that a problem is in
