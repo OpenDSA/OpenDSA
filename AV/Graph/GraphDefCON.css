@@ -1,0 +1,27 @@
+#GdefundefCON .jsavcanvas {
+  height: 170px;
+}
+
+#GneighborCON .jsavcanvas {
+    height: 180px;
+}
+
+#GconcomCON .jsavcanvas {
+    height: 160px;
+}
+
+.jsavautoresize .jsavnode {
+  min-width: 25px;
+  min-height: 25px;
+  max-width: 25px;
+  max-height: 25px;
+}
+
+.borderEdge{ /* Used to separate parts of a figure */
+  stroke: #CCCCCC;
+  stroke-width: .5;
+}
+
+.redEdge { /* Make graph edge red */
+  stroke: red;
+}

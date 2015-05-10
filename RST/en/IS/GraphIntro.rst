@@ -8,12 +8,11 @@
    :prerequisites:
    :topic: Graphs
 
-.. odsalink:: AV/Development/GIntroDef2_2CON.css
+.. odsalink:: AV/Graph/GraphDefCON.css
+.. odsalink:: AV/Development/GraphDefCON.css
 .. odsalink:: AV/Development/GIntroPathDefCON.css
-.. odsalink:: AV/Development/connectedGraphCON.css
 .. odsalink:: AV/Development/GIntroRepCON2_2.css
 .. odsalink:: AV/Development/GIntroRepCON2_3.css
-.. odsalink:: AV/Development/GraphIntroTermsCON.css
 
 Graphs Chapter Introduction
 ===========================
@@ -74,40 +73,32 @@ of edges is written :math:`|\mathbf{E}|`.
 :math:`|\mathbf{E}|` can range from zero to a maximum of
 :math:`|\mathbf{V}|^2 - |\mathbf{V}|`.
 
-
-   
-A graph with edges directed from one vertex to another
-(as in Figure :num:`Figure #GraphTerms` (b)) is
-called a :term:`directed graph` or :term:`digraph`.
 A graph whose edges are not directed is called an
-:term:`undirected graph`
-(as illustrated by Figure :num:`Figure #GraphTerms` (a)).
+:term:`undirected graph`, as shown in part (a) of the following
+figure.
+A graph with edges directed from one vertex to another
+(as in (b)) is called a :term:`directed graph` or :term:`digraph`.
 A graph with labels associated with its vertices
-(as in Figure :num:`Figure #GraphTerms` (c)) is called a
-:term:`labeled graph`.
-Two vertices are :term:`adjacent` if they are joined by an edge.
-Such vertices are also called :term:`neighbors <neighbor>`.
-An edge connecting Vertices :math:`u` and :math:`v` is written
-:math:`(u, v)`.
-Such an edge is said to be :term:`incident` on Vertices :math:`u`
-and :math:`v`.
+(as in (c)) is called a :term:`labeled graph`.
 Associated with each edge may be a cost or :term:`weight`.
 A graph whose edges have weights
-(as in Figure :num:`Figure #GraphTerms` (c))
-is said to be a :term:`weighted graph`.
-
-
-
+(as in (c)) is said to be a :term:`weighted graph`.
 
 .. _GraphTerms:
 
-
-
-
-.. inlineav:: GIntroDef2_2CON dgm 
+.. inlineav:: GdefundefCON dgm 
    :output: show
 
-.. inlineav:: GraphIntroTermsCON dgm
+
+Two vertices are :term:`adjacent` if they are joined by an edge, such
+as Vertices :math:`a` and :math:`b` in the part (a) of the following
+figure.
+An edge connecting Vertices :math:`a` and :math:`b` is written
+:math:`(a, b)`.
+Such an edge is said to be :term:`incident` on Vertices :math:`a`
+and :math:`b`.
+
+.. inlineav:: GneighborCON dgm
    :output: show
 
 .. odsafig:: Images/GraphDef.png
@@ -129,9 +120,20 @@ is said to be a :term:`weighted graph`.
    Vertices 1, 3, 2, 4, and 1 form a simple cycle.
 
 
+.. inlineav:: GIntroDefCON ss
+   :output: show
+
+|
 
 .. inlineav:: GIntroPathDefCON ss
    :output: show
+
+A graph with relatively few edges is called a :term:`sparse graph`,
+while a graph with many edges is called a :term:`dense graph`.
+A graph containing all possible edges is said to be a
+:term:`complete graph`.
+Any subset of :math:`V` where all vertices in the subset connect to
+all other vertices in the subset is called a :term:`clique`.
 
 A sequence of vertices :math:`v_1, v_2, ..., v_n`
 forms a :term:`path` of length :math:`n-1` if there exist edges from
@@ -155,15 +157,13 @@ An undirected graph is a :term:`connected graph` if there is at least
 one path from any vertex to any other.
 The maximally connected subgraphs of an undirected graph are called
 :term:`connected components <connected component>`.
-For example, Figure :num:`Figure #ConCom` shows an undirected graph
+For example, this figure shows an undirected graph
 with three connected components.
 
 .. _ConCom:
 
-
-.. inlineav:: connectedGraphCON dgm
+.. inlineav:: GconcomCON dgm
    :output: show
-
 
 A graph without cycles is called an :term:`acyclic graph`.
 Thus, a directed graph without cycles is called a
@@ -342,9 +342,10 @@ Notes
        dupicate edges, and no edges that connect a node to itself.
 
 
-.. odsascript:: AV/Development/GIntroDef2_2CON.js
+.. odsascript:: AV/Graph/GdefundefCON.js
+.. odsascript:: AV/Graph/GneighborCON.js
+.. odsascript:: AV/Development/GIntroDefCON.js
 .. odsascript:: AV/Development/GIntroPathDefCON.js
-.. odsascript:: AV/Development/connectedGraphCON.js
+.. odsascript:: AV/Graph/GconcomCON.js
 .. odsascript:: AV/Development/GIntroRepCON2_2.js
 .. odsascript:: AV/Development/GIntroRepCON2_3.js
-.. odsascript:: AV/Development/GraphIntroTermsCON.js
