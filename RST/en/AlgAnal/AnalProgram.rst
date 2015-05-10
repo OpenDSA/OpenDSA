@@ -160,6 +160,12 @@ We will make use of the algorithm analysis simplifying rules:
    where :math:`n` is assumed to be a power of two and again
    :math:`k = 2^i`.
 
+.. todo::
+   :type: Slideshow
+
+   We need to think about a technique for visualizing the running time of some loop constructs. This can be very similar to how we visualize reaching the closed form solution of summations.
+
+
 What about other control statements?
 ``While`` loops are analyzed in a manner similar to ``for``
 loops.

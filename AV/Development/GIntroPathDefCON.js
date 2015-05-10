@@ -39,18 +39,22 @@ $(document).ready(function () {
     
     
     //slide 1
+    av.umsg("The following slideshow contains examples for paths in a graph");
+    graph.layout();
+    av.displayInit();
+
     av.umsg("A sequence of vertices v1,v2,...,vn forms a path of length n−1 if there" + 
         " exist edges from vi to vi+1 for 1 <i>n</i> A path is a simple path if all vertices on the path are distinct. On our " +
         "directed graph we have a simple path from Vertex 0 to vertex 3");
 
-    graph.layout();
+    
     nodeOne.highlight();
     nodeFive.highlight(); 
 
     //add red edge for path    
     graph.getEdge(nodeOne, nodeFour).addClass("redEdge");
     graph.getEdge(nodeFour, nodeFive).addClass("redEdge");
-    av.displayInit();
+    av.step();
     
     //slide 2   
     graph.hide();
@@ -58,11 +62,11 @@ $(document).ready(function () {
     
     graphThree = av.ds.graph({left: 350, top: gTop, directed: true, width: 200, });
 
-    nodeOne = graphThree.addNode("0", {left: gLeft, top: gTop});
-    nodeTwo = graphThree.addNode("2", {left: gLeft + 100, top: gTop});
-    nodeThree = graphThree.addNode("4", {left: gLeft + 50, top: gTop + 50});
-    nodeFour = graphThree.addNode("1", {left: gLeft,  top: gTop + 100});
-    nodeFive =graphThree.addNode("3", {left: gLeft + 100, top: gTop + 100});
+    nodeOne = graphThree.addNode("0", {left: 0, top: 0});
+    nodeTwo = graphThree.addNode("2", {left: 100, top: gTop});
+    nodeThree = graphThree.addNode("4", {left: 50, top: 50});
+    nodeFour = graphThree.addNode("1", {left: 0,  top:  100});
+    nodeFive =graphThree.addNode("3", {left: 100, top: 100});
 
     graphThree.addEdge(nodeOne, nodeFour, {weight: 3});
     graphThree.addEdge(nodeOne, nodeThree, {weight: 4});
@@ -71,7 +75,6 @@ $(document).ready(function () {
     graphThree.addEdge(nodeFour, nodeFive, {weight: 3});
     graphThree.addEdge(nodeThree, nodeFour, {weight: 1});
     graphThree.layout();
-    av.step();
 
     //add red egdes 
     graphThree.getEdge(nodeOne, nodeFour).addClass("redEdge");
@@ -101,17 +104,7 @@ $(document).ready(function () {
     graphThree.getEdge(nodeThree, nodeFour).addClass("redEdge");
     av.step();
 
-    //slide4
-    graphThree.hide();
-    av.umsg("AD acyclic graph");
-    av.step();
-
-    //slide 5
-    av.umsg("add DAG");
-    av.step();
-
-    //slide 6
-    av.umsg("add free tree");
+  
 
     av.recorded();
 

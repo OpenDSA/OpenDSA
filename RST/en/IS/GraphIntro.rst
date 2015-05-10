@@ -8,12 +8,12 @@
    :prerequisites:
    :topic: Graphs
 
-.. odsalink:: AV/Development/GIntroDefCON.css
-.. odsalink:: AV/Development/GIntroDef2CON.css
 .. odsalink:: AV/Development/GIntroDef2_2CON.css
 .. odsalink:: AV/Development/GIntroPathDefCON.css
 .. odsalink:: AV/Development/connectedGraphCON.css
-.. odsalink:: AV/Development/GIntroRepCON.css
+.. odsalink:: AV/Development/GIntroRepCON2_2.css
+.. odsalink:: AV/Development/GIntroRepCON2_3.css
+.. odsalink:: AV/Development/GraphIntroTermsCON.css
 
 Graphs Chapter Introduction
 ===========================
@@ -74,6 +74,7 @@ of edges is written :math:`|\mathbf{E}|`.
 :math:`|\mathbf{E}|` can range from zero to a maximum of
 :math:`|\mathbf{V}|^2 - |\mathbf{V}|`.
 
+
    
 A graph with edges directed from one vertex to another
 (as in Figure :num:`Figure #GraphTerms` (b)) is
@@ -100,10 +101,13 @@ is said to be a :term:`weighted graph`.
 
 .. _GraphTerms:
 
-.. inlineav:: GIntroDef2CON ss
-   :output: show
+
+
 
 .. inlineav:: GIntroDef2_2CON dgm 
+   :output: show
+
+.. inlineav:: GraphIntroTermsCON dgm
    :output: show
 
 .. odsafig:: Images/GraphDef.png
@@ -124,8 +128,7 @@ is said to be a :term:`weighted graph`.
    because Vertex 1 appears twice.
    Vertices 1, 3, 2, 4, and 1 form a simple cycle.
 
-.. inlineav:: GIntroDefCON ss
-   :output: show
+
 
 .. inlineav:: GIntroPathDefCON ss
    :output: show
@@ -191,9 +194,14 @@ a free tree is connected and has :math:`|\mathbf{V}| - 1` edges.
    Replace image above with a JSAV-generated image. Or better, a
    slideshow to illustrate the various representation issues.
 
-.. inlineav:: GIntroRepCON ss
+
+.. inlineav:: GIntroRepCON2_2 dgm 
    :output: show
 
+
+
+.. inlineav:: GIntroRepCON2_3 dgm 
+   :output: show 
 
 There are two commonly used methods for representing graphs.
 The :term:`adjacency matrix`
@@ -313,6 +321,7 @@ This is a considerable disadvantage when the graph is sparse,
 but not when the graph is closer to full.
 
 
+
 .. TODO::
    :type: Exercise
 
@@ -332,9 +341,10 @@ Notes
        To simplify our graph API, we will assume that there are no
        dupicate edges, and no edges that connect a node to itself.
 
-.. odsascript:: AV/Development/GIntroDefCON.js
-.. odsascript:: AV/Development/GIntroDef2CON.js
+
 .. odsascript:: AV/Development/GIntroDef2_2CON.js
 .. odsascript:: AV/Development/GIntroPathDefCON.js
 .. odsascript:: AV/Development/connectedGraphCON.js
-.. odsascript:: AV/Development/GIntroRepCON.js
+.. odsascript:: AV/Development/GIntroRepCON2_2.js
+.. odsascript:: AV/Development/GIntroRepCON2_3.js
+.. odsascript:: AV/Development/GraphIntroTermsCON.js

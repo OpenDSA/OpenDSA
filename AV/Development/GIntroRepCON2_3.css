@@ -1,6 +1,6 @@
-#GIntroRepCON .jsavcanvas {
+#GIntroRepCON2_3 .jsavcanvas {
     
-    height: 400px;
+    height: 500px;
     
 }
 
@@ -23,8 +23,3 @@
 	/*transform-origin: left bottom;*/
 	transform-origin: left top;
 }
-
-
-
-
-
