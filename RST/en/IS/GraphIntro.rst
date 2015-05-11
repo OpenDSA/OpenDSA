@@ -199,6 +199,13 @@ storing a pointer to the linked list of edges for Vertex :math:`v_i`.
 This linked list represents the edges by the vertices that are
 adjacent to Vertex :math:`v_i`.
 
+.. TODO::
+   type: Figure
+
+   Refactor these figures to be one for adjacency matrix and the other
+   for adjacency list, rather than one for directed graph and the other
+   for undirected graph.
+
 In this figure, we see the representations for a directed graph.
 
 .. inlineav:: GIntroRepCON2_2 dgm 
@@ -282,7 +289,6 @@ but not when the graph is closer to full.
 
 .. avembed:: Exercises/Development/GraphIntroSumm.html ka 
 
-
 Notes
 -----
 
@@ -293,7 +299,6 @@ Notes
        either of these special cases.
        To simplify our graph API, we will assume that there are no
        dupicate edges, and no edges that connect a node to itself.
-
 
 .. odsascript:: AV/Graph/GdefundefCON.js
 .. odsascript:: AV/Graph/GneighborCON.js

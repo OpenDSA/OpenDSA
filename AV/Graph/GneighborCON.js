@@ -12,7 +12,7 @@ $(document).ready(function () {
   // Lines for visual break up
   av.g.line(425, gTop, 425, gHeight).addClass("borderEdge");
 	
-  var graphA = av.ds.graph({left: gLeft, top: gTop, directed: true,
+  var graphA = av.ds.graph({left: gLeft, top: gTop, directed: false,
                             width: gWidth, height: gHeight});
 
   var nodea = graphA.addNode("a", {left: 0,   top: 0});
@@ -35,7 +35,7 @@ $(document).ready(function () {
            {top: lHeight, left: 100}).show();
 
   gLeft = 570;
-  var graphB = av.ds.graph({left: gLeft, top: gTop, directed: true,
+  var graphB = av.ds.graph({left: gLeft, top: gTop, directed: false,
                             width: gWidth, height: gHeight});
 
   nodea = graphB.addNode("a", {left: 0,   top: 0});
