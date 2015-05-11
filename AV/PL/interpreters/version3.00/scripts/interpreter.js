@@ -228,7 +228,7 @@ function evalExp(exp,envir) {
 	return E.lookup(envir,"_this");
     } else if (A.isNewExp(exp)) {
 	args = evalExps(A.getNewExpArgs(exp),envir);
-	obj = makeNewObject(A.getNewExpClass(exp),envir);
+	obj = makeNewObject(A.getNewExpClass(exp));
 	findAndInvokeMethod("initialize",A.getNewExpClass(exp),obj,args);
         return obj;
     } else if (A.isMethodCall(exp)) {
