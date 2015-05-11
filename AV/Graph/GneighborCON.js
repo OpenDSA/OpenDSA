@@ -15,11 +15,11 @@ $(document).ready(function () {
   var graphA = av.ds.graph({left: gLeft, top: gTop, directed: false,
                             width: gWidth, height: gHeight});
 
-  var nodea = graphA.addNode("a", {left: 0,   top: 0});
-  var nodeb = graphA.addNode("b", {left: 0,   top: 100});
+  var nodea = graphA.addNode("a", {left:   0, top: 0});
+  var nodeb = graphA.addNode("b", {left:   0, top: 100});
   var nodec = graphA.addNode("c", {left: 100, top: 0});
   var noded = graphA.addNode("d", {left: 100, top: 100});
-  var nodee = graphA.addNode("e", {left: 50,  top: 50});
+  var nodee = graphA.addNode("e", {left:  50, top: 50});
 
   graphA.addEdge(nodea, nodeb);
   graphA.addEdge(nodea, nodee);
@@ -38,11 +38,11 @@ $(document).ready(function () {
   var graphB = av.ds.graph({left: gLeft, top: gTop, directed: false,
                             width: gWidth, height: gHeight});
 
-  var nodea = graphB.addNode("a", {left: 0,   top: 0});
-  var nodeb = graphB.addNode("b", {left: 0,   top: 100});
-  var nodec = graphB.addNode("c", {left: 100, top: 0});
+  var nodea = graphB.addNode("a", {left:   0, top:   0});
+  var nodeb = graphB.addNode("b", {left:   0, top: 100});
+  var nodec = graphB.addNode("c", {left: 100, top:   0});
   var noded = graphB.addNode("d", {left: 100, top: 100});
-  var nodee = graphB.addNode("e", {left: 50,  top: 50});
+  var nodee = graphB.addNode("e", {left:  50, top:  50});
 
   graphB.addEdge(nodea, nodeb).addClass("redEdge");
   graphB.addEdge(nodea, nodee);
