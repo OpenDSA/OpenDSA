@@ -120,21 +120,6 @@ and :math:`b`.
    Vertices 1, 3, 2, 4, and 1 form a simple cycle.
 
 
-.. inlineav:: GIntroDefCON ss
-   :output: show
-
-|
-
-.. inlineav:: GIntroPathDefCON ss
-   :output: show
-
-A graph with relatively few edges is called a :term:`sparse graph`,
-while a graph with many edges is called a :term:`dense graph`.
-A graph containing all possible edges is said to be a
-:term:`complete graph`.
-Any subset of :math:`V` where all vertices in the subset connect to
-all other vertices in the subset is called a :term:`clique`.
-
 A sequence of vertices :math:`v_1, v_2, ..., v_n`
 forms a :term:`path` of length :math:`n-1` if there exist edges from
 :math:`v_i` to :math:`v_{i+1}` for :math:`1 \leq i < n`.
@@ -146,12 +131,24 @@ some vertex :math:`v_1` to itself.
 A cycle is a :term:`simple cycle` if the path is simple, except for
 the first and last vertices being the same.
 
+.. inlineav:: GIntroPathDefCON ss
+   :output: show
+
+A graph with relatively few edges is called a :term:`sparse graph`,
+while a graph with many edges is called a :term:`dense graph`.
+A graph containing all possible edges is said to be a
+:term:`complete graph`.
 A :term:`subgraph` :math:`\mathbf{S}` is formed from graph
 :math:`\mathbf{G}` by selecting a subset :math:`\mathbf{V}_s` of
 :math:`\mathbf{G}`'s vertices and a subset 
 :math:`\mathbf{E}_s` of :math:`\mathbf{G}` 's edges such that for every
 edge :math:`e  \in \mathbf{E}_s`,
 both vertices of :math:`e` are in :math:`\mathbf{V}_s`.
+Any subgraph of :math:`V` where all vertices in the graph connect to
+all other vertices in the subgraph is called a :term:`clique`.
+
+.. inlineav:: GIntroDefCON ss
+   :output: show
 
 An undirected graph is a :term:`connected graph` if there is at least
 one path from any vertex to any other.
@@ -174,35 +171,6 @@ cycles.
 An equivalent definition is that
 a free tree is connected and has :math:`|\mathbf{V}| - 1` edges.
 
-.. _GraphRep:
-
-.. odsafig:: Images/GraphRep.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Graph Representations
-
-   Two graph representations.
-   (a) A directed graph.
-   (b) The adjacency matrix for the graph of (a).
-   (c) The adjacency list for the graph of (a).
-
-.. TODO::
-   :type: Figure
-
-   Replace image above with a JSAV-generated image. Or better, a
-   slideshow to illustrate the various representation issues.
-
-
-.. inlineav:: GIntroRepCON2_2 dgm 
-   :output: show
-
-
-
-.. inlineav:: GIntroRepCON2_3 dgm 
-   :output: show 
-
 There are two commonly used methods for representing graphs.
 The :term:`adjacency matrix`
 is illustrated by Figure :num:`Figure #GraphRep` (b).
@@ -222,20 +190,6 @@ then each matrix position must store that number.
 In either case, the space requirements for the adjacency matrix are
 :math:`\Theta(|\mathbf{V}|^2)`.
 
-.. _Undirected:
-
-.. odsafig:: Images/GraphUD.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Using the graph representations for undirected graphs
-
-   Using the graph representations for undirected graphs.
-   (a) An undirected graph.
-   (b) The adjacency matrix for the graph of (a).
-   (c) The adjacency list for the graph of (a).
-
 The second common representation for graphs is the
 :term:`adjacency list`,
 illustrated by Figure :num:`Figure #GraphRep` (c).
@@ -244,6 +198,18 @@ The array is :math:`|\mathbf{V}|` items long, with position :math:`i`
 storing a pointer to the linked list of edges for Vertex :math:`v_i`.
 This linked list represents the edges by the vertices that are
 adjacent to Vertex :math:`v_i`.
+
+In this figure, we see the representations for a directed graph.
+
+.. inlineav:: GIntroRepCON2_2 dgm 
+   :output: show
+
+In this figure, we see the representations for an undirected graph.
+
+.. _Undirected:
+
+.. inlineav:: GIntroRepCON2_3 dgm 
+   :output: show 
 
 .. topic:: Example
 
@@ -297,12 +263,6 @@ be more space efficient.:
    requires :math:`4 |\mathbf{V}| + 6 |\mathbf{E}| = 92` bytes
    (because there are now 12 edges instead of 6).
 
-.. TODO::
-   :type: Exercise
-
-   Given specs for space requirements, compute the number of bytes
-   needed for one or the other representation, or determine the
-   break-even point.
 .. avembed:: Exercises/Development/GraphSpaceReqSum.html ka 
 
 The adjacency matrix often requires a higher asymptotic cost for an
@@ -319,13 +279,6 @@ time when the algorithm might otherwise require only
 :math:`\Theta(|\mathbf{V}| + |\mathbf{E}|)` time.
 This is a considerable disadvantage when the graph is sparse,
 but not when the graph is closer to full.
-
-
-
-.. TODO::
-   :type: Exercise
-
-   Module summary question battery.
 
 .. avembed:: Exercises/Development/GraphIntroSumm.html ka 
 
