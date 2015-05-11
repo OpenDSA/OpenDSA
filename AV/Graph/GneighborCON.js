@@ -16,21 +16,21 @@ $(document).ready(function () {
                             width: gWidth, height: gHeight});
 
   var nodea = graphA.addNode("a", {left: 0,   top: 0});
-  var nodeb = graphA.addNode("c", {left: 100, top: 0});
-  var nodec = graphA.addNode("e", {left: 50,  top: 50});
-  var noded = graphA.addNode("b", {left: 0,   top: 100});
-  var nodee = graphA.addNode("d", {left: 100, top: 100});
+  var nodeb = graphA.addNode("b", {left: 0,   top: 100});
+  var nodec = graphA.addNode("c", {left: 100, top: 0});
+  var noded = graphA.addNode("d", {left: 100, top: 100});
+  var nodee = graphA.addNode("e", {left: 50,  top: 50});
 
-  graphA.addEdge(nodea, noded);
-  graphA.addEdge(nodea, nodec);
-  graphA.addEdge(nodeb, nodec);
-  graphA.addEdge(nodee, nodeb);
-  graphA.addEdge(noded, nodee);
+  graphA.addEdge(nodea, nodeb);
+  graphA.addEdge(nodea, nodee);
+  graphA.addEdge(nodeb, noded);
+  graphA.addEdge(nodeb, nodee);
   graphA.addEdge(nodec, noded);
+  graphA.addEdge(nodec, nodee);
   graphA.layout();
 
   nodea.highlight();
-  noded.highlight();
+  nodeb.highlight();
   av.label("(a) Vertices $a$ and $b$ are neighbors",
            {top: lHeight, left: 100}).show();
 
@@ -38,20 +38,20 @@ $(document).ready(function () {
   var graphB = av.ds.graph({left: gLeft, top: gTop, directed: false,
                             width: gWidth, height: gHeight});
 
-  nodea = graphB.addNode("a", {left: 0,   top: 0});
-  nodeb = graphB.addNode("c", {left: 100, top: 0});
-  nodec = graphB.addNode("e", {left: 50,  top: 50});
-  noded = graphB.addNode("b", {left: 0,   top: 100});
-  nodee = graphB.addNode("d", {left: 100, top: 100});
+  var nodea = graphB.addNode("a", {left: 0,   top: 0});
+  var nodeb = graphB.addNode("b", {left: 0,   top: 100});
+  var nodec = graphB.addNode("c", {left: 100, top: 0});
+  var noded = graphB.addNode("d", {left: 100, top: 100});
+  var nodee = graphB.addNode("e", {left: 50,  top: 50});
 
-  graphB.addEdge(nodea, noded).addClass("redEdge");
-  graphB.addEdge(nodea, nodec);
-  graphB.addEdge(nodeb, nodec);
-  graphB.addEdge(nodee, nodeb);
-  graphB.addEdge(noded, nodee);
+  graphB.addEdge(nodea, nodeb).addClass("redEdge");
+  graphB.addEdge(nodea, nodee);
+  graphB.addEdge(nodeb, noded);
+  graphB.addEdge(nodeb, nodee);
   graphB.addEdge(nodec, noded);
+  graphB.addEdge(nodec, nodee);
 
-  av.label("(b) The red edge $(a, b)$ is incident on vertices $a$ and $b$",
+  av.label("(b) Red edge $(a, b)$ is incident on vertices $a$ and $b$",
            {top: lHeight, left: 470}).show();
   graphB.layout();
 });
