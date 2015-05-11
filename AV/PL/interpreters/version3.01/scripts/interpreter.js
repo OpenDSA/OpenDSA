@@ -91,7 +91,7 @@ function lookupMethod(name,methods) {
    starting at cName */
 function viewObjectAs(object,cName) {
     object = E.getObjectState(object);
-    for(var i=0; i,object.length; i++) {
+    for(var i=0; i<object.length; i++) {
 	if (cName === object[i][0]) {
 	    return E.createObject(object.slice(i));  
 	}

@@ -4,7 +4,6 @@
 
 $(document).ready(function () {
 
-    var lambdaexp = "((z ^x.^y.z) (x y))";
     var arr, tree, label1,label2, graph;
 
     var oneChar = function(x) { return ! parenChar(x) &&
@@ -23,8 +22,8 @@ $(document).ready(function () {
 
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    arr = av.ds.array(LAMBDA.mySplit(lambdaexp.replace(/\^/g,"\u03BB")));
-    arr.removeClass(true,"oneCharWidth");
+    arr = av.ds.array(["subst(","\u03BBy.(y x)",",","u",",","v",")"]);
+/*    arr.removeClass(true,"oneCharWidth");
     arr.removeClass(true,"emptyWidth");
     arr.removeClass(true,"lambdaWidth");
     arr.removeClass(true,"narrow");
@@ -33,7 +32,7 @@ $(document).ready(function () {
     arr.addClass(oneChar, "oneCharWidth");
     arr.addClass(parenChar,"narrow");
     arr.addClass(lambdaChar,"lambdaWidth");
-
+*/
 
     //setArrayCellsWidth();
     label1 = av.label("The root node of the parse tree for any ");

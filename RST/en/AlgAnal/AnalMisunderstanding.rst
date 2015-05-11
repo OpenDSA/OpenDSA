@@ -142,3 +142,8 @@ worst, and average cases as the input size grows.
    :math:`O(g(n))` in the best, average, or worst case!
    If we leave off which class of inputs we are discussing, we cannot
    know which cost measure we are referring to for most algorithms.
+
+.. todo::
+   :type: Slideshow
+
+   We need to draw the graphs for the previous example and make the discussion as a series of slides.
