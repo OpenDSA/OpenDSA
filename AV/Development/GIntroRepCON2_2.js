@@ -2,7 +2,7 @@
 $(document).ready(function () {
 	var av = new JSAV("GIntroRepCON2_2", {"animationMode" : "none"});
 
-	av.label("The following are the two respresentations for the directed graph below.").show();
+	//av.label("The following are the two respresentations for the directed graph below.").show();
 
 	//i think this should be left in the content and then show the different just the imagees in the av 
 

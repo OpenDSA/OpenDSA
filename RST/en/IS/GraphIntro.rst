@@ -8,11 +8,12 @@
    :prerequisites:
    :topic: Graphs
 
+
 .. odsalink:: AV/Graph/GraphDefCON.css
-.. odsalink:: AV/Development/GraphDefCON.css
-.. odsalink:: AV/Development/GIntroPathDefCON.css
+.. odsalink:: AV/Development/GIntroDefCON.css
 .. odsalink:: AV/Development/GIntroRepCON2_2.css
 .. odsalink:: AV/Development/GIntroRepCON2_3.css
+.. odsalink:: AV/Development/GIntroPathCON.css
 
 Graphs Chapter Introduction
 ===========================
@@ -131,8 +132,8 @@ some vertex :math:`v_1` to itself.
 A cycle is a :term:`simple cycle` if the path is simple, except for
 the first and last vertices being the same.
 
-.. inlineav:: GIntroPathDefCON ss
-   :output: show
+.. inlineav:: GIntroPathCON dgm 
+   :output: show 
 
 A graph with relatively few edges is called a :term:`sparse graph`,
 while a graph with many edges is called a :term:`dense graph`.
@@ -147,7 +148,7 @@ both vertices of :math:`e` are in :math:`\mathbf{V}_s`.
 Any subgraph of :math:`V` where all vertices in the graph connect to
 all other vertices in the subgraph is called a :term:`clique`.
 
-.. inlineav:: GIntroDefCON ss
+.. inlineav:: GIntroDefCON dgm
    :output: show
 
 An undirected graph is a :term:`connected graph` if there is at least
@@ -303,7 +304,7 @@ Notes
 .. odsascript:: AV/Graph/GdefundefCON.js
 .. odsascript:: AV/Graph/GneighborCON.js
 .. odsascript:: AV/Development/GIntroDefCON.js
-.. odsascript:: AV/Development/GIntroPathDefCON.js
 .. odsascript:: AV/Graph/GconcomCON.js
 .. odsascript:: AV/Development/GIntroRepCON2_2.js
 .. odsascript:: AV/Development/GIntroRepCON2_3.js
+.. odsascript:: AV/Development/GIntroPathCON.js

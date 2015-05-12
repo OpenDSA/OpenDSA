@@ -1,88 +1,126 @@
 /*global ODSA */
 "use strict";
 $(document).ready(function () {
-  var av_name = "GIntroDefCON";
-  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
-  var av = new JSAV(av_name);
+  var av = new JSAV("GIntroDefCON", {"animationMode" : "none"});
+
+  //creating lines for visual break up 
+  var line = av.g.line( 0, 200, 850, 200).addClass("borderEdge");
+  line = av.g.line(425, 0, 425, 400).addClass("borderEdge");
 
   // Graph one 
-  var gTop = 0;
-  var gLeft = 25;
-  var graphOne = av.ds.graph({top: gTop, left: 125, width: 500, height: 400});
+  var graphOne = av.ds.graph({top: 10, left: 135, width: 200, height: 200});
 
-  var nodeOne = graphOne.addNode("", {left: 175, top: gTop});
-  var nodeTwo = graphOne.addNode("", {left:  400 , top: gTop + 30});
-  var nodeThree = graphOne.addNode("", {left: 300, top: gTop + 110});
-  var nodeFour = graphOne.addNode("", {left: 175,  top: gTop + 180});
-  var nodeFive =graphOne.addNode("", {left: 425, top: gTop + 150});
-  var nodeSix = graphOne.addNode("", {left: 350, top: gTop + 250});
+  var nodeOne = graphOne.addNode("1", {left: 0, top: 10});
+  var nodeTwo = graphOne.addNode("2", {left:  150 , top: 0});
+  var nodeThree = graphOne.addNode("3", {left: 75, top: 60});
+  var nodeFour = graphOne.addNode("4", {left: 0,  top: 80});
+  var nodeFive =graphOne.addNode("5", {left: 125, top: 100});
+  var nodeSix = graphOne.addNode("6", {left: 200, top: 110});
 
   // Add edges to graph 
+  
   graphOne.addEdge(nodeOne, nodeFour);
   graphOne.addEdge(nodeOne, nodeThree);
   graphOne.addEdge(nodeThree, nodeTwo);
   graphOne.addEdge(nodeTwo, nodeFive);
+  graphOne.addEdge(nodeFive, nodeSix);
 
-  // Slide 1 
-  av.umsg("A graph with relatively few edges is called a <i>sparse graph</i>.");
   graphOne.layout();
-  av.displayInit();
 
-  // Slide 2 
-  av.umsg("A graph with many edges is called a <i>dense graph</i>.");
-  graphOne.addEdge(nodeThree, nodeFour);
-  graphOne.addEdge(nodeFour, nodeSix);
-  graphOne.addEdge(nodeSix, nodeFive);
-  graphOne.addEdge(nodeThree, nodeSix);
-  graphOne.addEdge(nodeOne, nodeTwo);
-  graphOne.layout();
-  av.step();  
+  av.label("(a) A graph with relatively few edges is called a <i>sparse graph</i>.", 
+    {top: 160, left: 10, width: 5}).show();
 
-  // Slide 3 
-  av.umsg("A graph with edges connecting every pair of nodes is called a <i>complete graph</i>");
-  graphOne.hide();
-    
-  // Create a complete graph 
-  var graphTwo = av.ds.graph({top: gTop, left: 175, width: 500, height: 400});
-  var n1 = graphTwo.addNode("", {left: 100, top: gTop + 100});
-  var n2 = graphTwo.addNode("", {left: 400, top: gTop + 100});
-  var n3 = graphTwo.addNode("", {left: 250, top: gTop});
-  var n4 = graphTwo.addNode("", {left: 175, top: gTop + 300});
-  var n5 = graphTwo.addNode("", {left: 325, top: gTop + 300});
 
-  graphTwo.addEdge(n1, n2);
-  graphTwo.addEdge(n1, n3);
-  graphTwo.addEdge(n1, n4);
-  graphTwo.addEdge(n1, n5);
-  graphTwo.addEdge(n2, n3);
-  graphTwo.addEdge(n2, n4);
-  graphTwo.addEdge(n2, n5);
-  graphTwo.addEdge(n3, n4);
-  graphTwo.addEdge(n3, n5)
-  graphTwo.addEdge(n4, n5);
+  //second graph 
+  var graphTwo = av.ds.graph({top: 10, left: 560, width: 250, height: 250});
+
+   nodeOne = graphTwo.addNode("1", {left: 0, top: 10});
+   nodeTwo = graphTwo.addNode("2", {left:  150 , top: 0});
+   nodeThree = graphTwo.addNode("3", {left: 75, top: 60});
+   nodeFour = graphTwo.addNode("4", {left: 0,  top: 80});
+   nodeFive =graphTwo.addNode("5", {left: 175, top: 65});
+   nodeSix = graphTwo.addNode("6", {left: 200, top: 110});
+
+  graphTwo.addEdge(nodeOne, nodeFour);
+  graphTwo.addEdge(nodeOne, nodeThree);
+  graphTwo.addEdge(nodeThree, nodeTwo);
+  graphTwo.addEdge(nodeTwo, nodeFive);
+  graphTwo.addEdge(nodeFive, nodeSix);
+  graphTwo.addEdge(nodeThree, nodeFour);
+  graphTwo.addEdge(nodeFour, nodeSix);
+  graphTwo.addEdge(nodeSix, nodeFive);
+  graphTwo.addEdge(nodeThree, nodeSix);
+  graphTwo.addEdge(nodeOne, nodeTwo);
+
   graphTwo.layout();
-  av.step();
 
-  //
-  graphTwo.hide();
-  av.umsg("Add Sub graph then transiditon to clique which is type of subgraph");
-  av.step();
+  av.label("(b) A graph with many edges is called a <i>dense graph</i>.", 
+    {top: 160, left: 450, width: 5}).show();
 
-  // Slide 5 
-  graphOne.show();
-  av.umsg("Any subset of $V$ where all vertices in the subset have edges to all other vertices in the subset is called a <i>clique</i>. Here, the highlighted nodes form a clique.");
+
+  //third graph
+  // Create a complete graph 
+  var graphThree = av.ds.graph({top: 210, left: 210, width: 250, height: 250});
+  var n1 = graphThree.addNode("1", {left: -75, top: 50});
+  var n2 = graphThree.addNode("2", {left: 75, top: 50});
+  var n3 = graphThree.addNode("3", {left: 0, top: 0});
+  var n4 = graphThree.addNode("4", {left: -50, top: 110});
+  var n5 = graphThree.addNode("5", {left: 50, top: 110});
+
+  graphThree.addEdge(n1, n2);
+  graphThree.addEdge(n1, n3);
+  graphThree.addEdge(n1, n4);
+  graphThree.addEdge(n1, n5);
+  graphThree.addEdge(n2, n3);
+  graphThree.addEdge(n2, n4);
+  graphThree.addEdge(n2, n5);
+  graphThree.addEdge(n3, n4);
+  graphThree.addEdge(n3, n5)
+  graphThree.addEdge(n4, n5);
+  graphThree.layout();
+
+  av.label("(c) A graph with edges connecting every pair of nodes is called a <i>complete graph</i>.", 
+    {top: 365, left: 10, width: 5}).show();
+
+  //last graph 
+  var graphTwo = av.ds.graph({top: 210, left: 560, width: 250, height: 250});
+
+   nodeOne = graphTwo.addNode("1", {left: 0, top: 10});
+   nodeTwo = graphTwo.addNode("2", {left:  150 , top: 0});
+   nodeThree = graphTwo.addNode("3", {left: 75, top: 70});
+   nodeFour = graphTwo.addNode("4", {left: 0,  top: 95});
+   nodeFive =graphTwo.addNode("5", {left: 175, top: 65});
+   nodeSix = graphTwo.addNode("6", {left: 200, top: 110});
+
+  graphTwo.addEdge(nodeOne, nodeFour);
+  graphTwo.addEdge(nodeOne, nodeThree);
+  graphTwo.addEdge(nodeTwo, nodeFive);
+  graphTwo.addEdge(nodeFive, nodeSix);
+  graphTwo.addEdge(nodeThree, nodeFour);
+  graphTwo.addEdge(nodeFour, nodeSix);
+  graphTwo.addEdge(nodeSix, nodeFive);
+  graphTwo.addEdge(nodeThree, nodeSix);
+  graphTwo.addEdge(nodeOne, nodeTwo);
+
+  graphTwo.addEdge(nodeOne, nodeSix).addClass("redEdge");
+  graphTwo.getEdge(nodeOne, nodeThree).addClass("redEdge");
+  graphTwo.getEdge(nodeOne, nodeFour).addClass("redEdge");
+  graphTwo.getEdge(nodeFour, nodeThree).addClass("redEdge");
+  graphTwo.getEdge(nodeThree, nodeSix).addClass("redEdge");
+  graphTwo.getEdge(nodeFour, nodeSix).addClass("redEdge");
+
   nodeOne.highlight();
   nodeThree.highlight();
   nodeFour.highlight();
   nodeSix.highlight();
-  graphOne.addEdge(nodeOne, nodeSix).addClass("redEdge");
-  graphOne.getEdge(nodeOne, nodeThree).addClass("redEdge");
-  graphOne.getEdge(nodeOne, nodeFour).addClass("redEdge");
-  graphOne.getEdge(nodeFour, nodeThree).addClass("redEdge");
-  graphOne.getEdge(nodeThree, nodeSix).addClass("redEdge");
-  graphOne.getEdge(nodeFour, nodeSix).addClass("redEdge");
-  graphOne.layout();
-  av.step();
 
-  av.recorded();
+  graphTwo.layout();
+
+  av.label("(d) Any subset of $V$ where all vertices in the subset have edges to all other vertices in the subset is called a <i>clique</i>. Here, the highlighted nodes form a clique.",
+    {top: 350, left: 450, width: 5}).show();
+
+
+
+
+
 });
