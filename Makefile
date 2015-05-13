@@ -188,6 +188,9 @@ Dev: min
 Everything: min
 	python $(CONFIG_SCRIPT) config/Everything.json
 
+AlgAnalTest: min
+	python $(CONFIG_SCRIPT) config/AlgAnalTest.json	
+
 invalid: min
 	python $(CONFIG_SCRIPT) config/invalid.json
 
