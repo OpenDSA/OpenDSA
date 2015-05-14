@@ -1,8 +1,12 @@
-#GdefundefCON .jsavcanvas {
+#GdirundirCON .jsavcanvas {
   height: 170px;
 }
 
 #GneighborCON .jsavcanvas {
+    height: 180px;
+}
+
+#GpathDefCON .jsavcanvas {
     height: 180px;
 }
 

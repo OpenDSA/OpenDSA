@@ -13,7 +13,6 @@
 .. odsalink:: AV/Development/GIntroDefCON.css
 .. odsalink:: AV/Development/GIntroRepCON2_2.css
 .. odsalink:: AV/Development/GIntroRepCON2_3.css
-.. odsalink:: AV/Development/GIntroPathCON.css
 
 Graphs Chapter Introduction
 ===========================
@@ -87,7 +86,7 @@ A graph whose edges have weights
 
 .. _GraphTerms:
 
-.. inlineav:: GdefundefCON dgm 
+.. inlineav:: GdirundirCON dgm 
    :output: show
 
 
@@ -102,25 +101,6 @@ and :math:`b`.
 .. inlineav:: GneighborCON dgm
    :output: show
 
-.. odsafig:: Images/GraphDef.png
-   :width: 500
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Examples of graphs and graph terminology
-
-   Examples of graphs and terminology.
-   (a) A graph.
-   (b) A directed graph (digraph).
-   (c) A labeled (directed) graph with weights associated with the
-   edges.
-   In this example, there is a simple path from Vertex 0 to Vertex 3
-   containing Vertices 0, 1, and 3.
-   Vertices 0, 1, 3, 2, 4, and 1 also form a path, but not a simple path
-   because Vertex 1 appears twice.
-   Vertices 1, 3, 2, 4, and 1 form a simple cycle.
-
-
 A sequence of vertices :math:`v_1, v_2, ..., v_n`
 forms a :term:`path` of length :math:`n-1` if there exist edges from
 :math:`v_i` to :math:`v_{i+1}` for :math:`1 \leq i < n`.
@@ -132,7 +112,7 @@ some vertex :math:`v_1` to itself.
 A cycle is a :term:`simple cycle` if the path is simple, except for
 the first and last vertices being the same.
 
-.. inlineav:: GIntroPathCON dgm 
+.. inlineav:: GpathDefCON dgm 
    :output: show 
 
 A graph with relatively few edges is called a :term:`sparse graph`,
@@ -301,10 +281,10 @@ Notes
        To simplify our graph API, we will assume that there are no
        dupicate edges, and no edges that connect a node to itself.
 
-.. odsascript:: AV/Graph/GdefundefCON.js
+.. odsascript:: AV/Graph/GdirundirCON.js
 .. odsascript:: AV/Graph/GneighborCON.js
-.. odsascript:: AV/Development/GIntroDefCON.js
+.. odsascript:: AV/Graph/GpathDefCON.js
 .. odsascript:: AV/Graph/GconcomCON.js
 .. odsascript:: AV/Development/GIntroRepCON2_2.js
 .. odsascript:: AV/Development/GIntroRepCON2_3.js
-.. odsascript:: AV/Development/GIntroPathCON.js
+.. odsascript:: AV/Development/GIntroDefCON.js
