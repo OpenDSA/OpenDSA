@@ -10,7 +10,6 @@
 
 
 .. odsalink:: AV/Graph/GraphDefCON.css
-.. odsalink:: AV/Development/GIntroDefCON.css
 .. odsalink:: AV/Development/GIntroRepCON2_2.css
 .. odsalink:: AV/Development/GIntroRepCON2_3.css
 
@@ -115,6 +114,18 @@ the first and last vertices being the same.
 .. inlineav:: GpathDefCON dgm 
    :output: show 
 
+An undirected graph is a :term:`connected graph` if there is at least
+one path from any vertex to any other.
+The maximally connected subgraphs of an undirected graph are called
+:term:`connected components <connected component>`.
+For example, this figure shows an undirected graph
+with three connected components.
+
+.. _ConCom:
+
+.. inlineav:: GconcomCON dgm
+   :output: show
+
 A graph with relatively few edges is called a :term:`sparse graph`,
 while a graph with many edges is called a :term:`dense graph`.
 A graph containing all possible edges is said to be a
@@ -128,19 +139,7 @@ both vertices of :math:`e` are in :math:`\mathbf{V}_s`.
 Any subgraph of :math:`V` where all vertices in the graph connect to
 all other vertices in the subgraph is called a :term:`clique`.
 
-.. inlineav:: GIntroDefCON dgm
-   :output: show
-
-An undirected graph is a :term:`connected graph` if there is at least
-one path from any vertex to any other.
-The maximally connected subgraphs of an undirected graph are called
-:term:`connected components <connected component>`.
-For example, this figure shows an undirected graph
-with three connected components.
-
-.. _ConCom:
-
-.. inlineav:: GconcomCON dgm
+.. inlineav:: GsparseDefCON dgm
    :output: show
 
 A graph without cycles is called an :term:`acyclic graph`.
@@ -285,6 +284,6 @@ Notes
 .. odsascript:: AV/Graph/GneighborCON.js
 .. odsascript:: AV/Graph/GpathDefCON.js
 .. odsascript:: AV/Graph/GconcomCON.js
+.. odsascript:: AV/Graph/GsparseDefCON.js
 .. odsascript:: AV/Development/GIntroRepCON2_2.js
 .. odsascript:: AV/Development/GIntroRepCON2_3.js
-.. odsascript:: AV/Development/GIntroDefCON.js

@@ -7,11 +7,15 @@
 }
 
 #GpathDefCON .jsavcanvas {
-    height: 180px;
+    height: 185px;
 }
 
 #GconcomCON .jsavcanvas {
     height: 160px;
+}
+
+#GsparseDefCON .jsavcanvas {
+    height: 450px;
 }
 
 .jsavautoresize .jsavnode {
