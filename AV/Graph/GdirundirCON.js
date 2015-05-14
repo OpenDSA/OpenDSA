@@ -1,7 +1,8 @@
 /*global ODSA */
 "use strict";
 $(document).ready(function () {
-  var av = new JSAV("GdefundefCON", {"animationMode" : "none"});
+  var av_name = "GdirundirCON";
+  var av = new JSAV(av_name, {"animationMode" : "none"});
 
   var gTop = -5;
   var gLeft = 70;

@@ -1,0 +1,11 @@
+{
+  "translations" :{
+    "en": {
+      "av_l1": "(a) Vertices $a$ and $b$ are neighbors",
+      "av_l2": "(b) Red edge $(a, b)$ is incident on vertices $a$ and $b$",
+      "av_l3": "(a) A simple path from 0 to 3.",
+      "av_l4": "(b) Path 0, 1, 3, 2, 4, 1 is not simple",
+      "av_l5": "(c) Simple cycle 1, 3, 2, 4, 1"
+    }
+  }
+}

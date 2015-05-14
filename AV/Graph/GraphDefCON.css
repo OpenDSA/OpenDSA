@@ -1,4 +1,4 @@
-#GdefundefCON .jsavcanvas {
+#GdirundirCON .jsavcanvas {
   height: 170px;
 }
 
@@ -6,8 +6,16 @@
     height: 180px;
 }
 
+#GpathDefCON .jsavcanvas {
+    height: 185px;
+}
+
 #GconcomCON .jsavcanvas {
     height: 160px;
+}
+
+#GsparseDefCON .jsavcanvas {
+    height: 450px;
 }
 
 .jsavautoresize .jsavnode {

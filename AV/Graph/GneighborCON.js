@@ -1,7 +1,10 @@
 /*global ODSA */
 "use strict";
 $(document).ready(function () {
-  var av = new JSAV("GneighborCON", {"animationMode" : "none"});
+  var av_name = "GneighborCON";
+  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name,
+                         "json_path": "AV/Graph/GraphDefCON.json"}).interpreter;
+  var av = new JSAV(av_name, {"animationMode" : "none"});
 
   var gTop = -5;
   var gLeft = 150;
@@ -31,18 +34,17 @@ $(document).ready(function () {
 
   nodea.highlight();
   nodeb.highlight();
-  av.label("(a) Vertices $a$ and $b$ are neighbors",
-           {top: lHeight, left: 100}).show();
+  av.label(interpret("av_l1"), {top: lHeight, left: 100}).show();
 
   gLeft = 570;
   var graphB = av.ds.graph({left: gLeft, top: gTop, directed: false,
                             width: gWidth, height: gHeight});
 
-  var nodea = graphB.addNode("a", {left:   0, top:   0});
-  var nodeb = graphB.addNode("b", {left:   0, top: 100});
-  var nodec = graphB.addNode("c", {left: 100, top:   0});
-  var noded = graphB.addNode("d", {left: 100, top: 100});
-  var nodee = graphB.addNode("e", {left:  50, top:  50});
+  nodea = graphB.addNode("a", {left:   0, top:   0});
+  nodeb = graphB.addNode("b", {left:   0, top: 100});
+  nodec = graphB.addNode("c", {left: 100, top:   0});
+  noded = graphB.addNode("d", {left: 100, top: 100});
+  nodee = graphB.addNode("e", {left:  50, top:  50});
 
   graphB.addEdge(nodea, nodeb).addClass("redEdge");
   graphB.addEdge(nodea, nodee);
@@ -51,7 +53,7 @@ $(document).ready(function () {
   graphB.addEdge(nodec, noded);
   graphB.addEdge(nodec, nodee);
 
-  av.label("(b) Red edge $(a, b)$ is incident on vertices $a$ and $b$",
-           {top: lHeight, left: 470}).show();
+  av.label(interpret("av_l1"), {top: lHeight, left: 100}).show();
+  av.label(interpret("av_l2"), {top: lHeight, left: 470}).show();
   graphB.layout();
 });
