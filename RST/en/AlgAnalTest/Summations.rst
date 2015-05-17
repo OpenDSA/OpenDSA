@@ -7,6 +7,11 @@
    :author: Cliff Shaffer
    :satisfies: summation; recurrence
    :topic: Math Background
+   
+.. odsalink:: AV/Development/AlgAnal/DivideAndConquerRecurrencesCON.css
+.. odsalink:: AV/Development/AlgAnal/LinearRecurrencesCON.css
+.. odsalink:: AV/Development/AlgAnal/SummationOneToNCON.css
+.. odsalink:: AV/Development/AlgAnal/SummationTwoPowerICON.css
 
 Summations and Recurrence Relations
 ===================================
@@ -120,12 +125,13 @@ the summation grows closer to
 
 where :math:`\gamma` is Euler's constant and has the value 0.5772...
 
+.. showhidecontent:: Summations
 
-.. todo::
-   :type: SlideShow
-
-   Provide a slideshow for some of the previous summations to present how we reached the closed form of the summation visually. For example, finding the closed form of :math:`\sum_{i=1}^{n} i` can be easily presented visually using a set of rectangles stacked vetrically for each value of $i$, and then the closed form would be the total surface area of the final shape. 
-
+   .. inlineav:: SummationOneToNCON ss
+      :output: show
+	  
+   .. inlineav:: SummationTwoPowerICON ss
+      :output: show
 
 Most of these equalities can be proved easily by a
 :ref:`proof by induction <Proofs>`.
@@ -270,7 +276,18 @@ There are
 :ref:`many more techniques <closed-form solution> <Recurrence>`
 to find closed-form solutions for recurrence relations.
 
-.. todo::
-   :type: SlideShow
+.. showhidecontent:: LinearRecurrences
 
-   Provide a slideshow to present how we can guess the closed form of some recurrence relations using the unrolling method (using a tree). We can start with only two recurrences $T(n) = T(n-1) + 1$ and $T(n) = T(n-1) + n$   
+   .. inlineav:: LinearRecurrencesCON ss
+      :output: show
+
+.. showhidecontent:: DivideAndConquerRecurrences
+
+   .. inlineav:: DivideAndConquerRecurrencesCON ss
+      :output: show  
+	  
+   
+.. odsascript:: AV/Development/AlgAnal/DivideAndConquerRecurrencesCON.js
+.. odsascript:: AV/Development/AlgAnal/LinearRecurrencesCON.js
+.. odsascript:: AV/Development/AlgAnal/SummationOneToNCON.js
+.. odsascript:: AV/Development/AlgAnal/SummationTwoPowerICON.js
