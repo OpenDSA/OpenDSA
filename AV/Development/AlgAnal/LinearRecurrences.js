@@ -26,7 +26,7 @@
 	av.displayInit();
 
 	//Slide 2
-	av.umsg("At the value of $n$, we have $1$ unit of work plus the amount of work required for $n-1$");
+	av.umsg("For a problem of size $n$, we have $1$ unit of work plus the amount of work required for one subproblem of size $n-1$");
 	av.umsg("<br> $T(n) = 1 + T(n-1)$", {"preserve": true});
 	labelSet.push(av.label("<b><u>Amount of Work<b><u>", {"top": topAlign - 10 , "left": leftAlign + 200}));
 	labelSet.push(av.label("----------------------------------", {"top": topAlign + 0.5 * nodeHeight, "left": leftAlign + nodeWidth + labelShift}));
@@ -34,45 +34,48 @@
 	tree = av.ds.tree({left: leftAlign, top: topAlign, nodegap: nodeGap});
 	var root = tree.newNode("$n$");
     tree.root(root);
-	av.step();
-
-	//Slide 3
-	av.umsg("At the value of $n-1$, we have $1$ unit of work plus the amount of work required for $n-2$");
-	av.umsg("<br> $T(n) = 1 + (1 + T(n-2))$", {"preserve": true});
-	labelSet.push(av.label("----------------------------------", {"top": topAlign + 2 * nodeHeight + nodeGap , "left": leftAlign + nodeWidth + labelShift}));
-	labelSet.push(av.label("1", {"top": topAlign + 2 * nodeHeight + nodeGap , "left": leftAlign + nodeWidth + labelShift * 20}));
 	var nMinusOne = tree.newNode("$n-1$");
 	root.addChild(nMinusOne);
 	tree.layout();
 	av.step();
 
-	//Slide 4
-	av.umsg("At the value of $n-2$, we have $1$ unit of work plus the amount of work required for $n-3$");
-	av.umsg("<br> $T(n) = 1 + (1 + (1 + T(n-3)))$", {"preserve": true});
-	labelSet.push(av.label("----------------------------------", {"top": topAlign + 3.5 * nodeHeight + 2 * nodeGap , "left": leftAlign + nodeWidth + labelShift}));
-	labelSet.push(av.label("1", {"top": topAlign + 3.5 * nodeHeight + 2 * nodeGap , "left": leftAlign + nodeWidth + labelShift * 20}));
+	//Slide 3
+	av.umsg("For a problem of size $n-1$, we have $1$ unit of work plus the amount of work required for one subproblem of size $n-2$");
+	av.umsg("<br> $T(n) = 1 + (1 + T(n-2))$", {"preserve": true});
+	labelSet.push(av.label("----------------------------------", {"top": topAlign + 2 * nodeHeight + nodeGap , "left": leftAlign + nodeWidth + labelShift}));
+	labelSet.push(av.label("1", {"top": topAlign + 2 * nodeHeight + nodeGap , "left": leftAlign + nodeWidth + labelShift * 20}));
 	var nMinusTwo = tree.newNode("$n-2$");
 	nMinusOne.addChild(nMinusTwo);
 	tree.layout();
 	av.step();
 
-	//Slide 5
-	av.umsg("At the value of $n-3$, we have $1$ unit of work plus the amount of work required for $n-4$");
-	av.umsg("<br> $T(n) = 1 + (1 + (1 + (1 + T(n-4)))$", {"preserve": true});
-	labelSet.push(av.label("----------------------------------", {"top": topAlign + 5 * nodeHeight + 3 * nodeGap , "left": leftAlign + nodeWidth + labelShift}));
-	labelSet.push(av.label("1", {"top": topAlign + 5 * nodeHeight + 3 * nodeGap , "left": leftAlign + nodeWidth + labelShift * 20}));
+	//Slide 4
+	av.umsg("For a problem of size $n-2$, we have $1$ unit of work plus the amount of work required for one subproblem of size $n-3$");
+	av.umsg("<br> $T(n) = 1 + (1 + (1 + T(n-3)))$", {"preserve": true});
+	labelSet.push(av.label("----------------------------------", {"top": topAlign + 3.5 * nodeHeight + 2 * nodeGap , "left": leftAlign + nodeWidth + labelShift}));
+	labelSet.push(av.label("1", {"top": topAlign + 3.5 * nodeHeight + 2 * nodeGap , "left": leftAlign + nodeWidth + labelShift * 20}));
 	var nMinusThree = tree.newNode("$n-3$");
 	nMinusTwo.addChild(nMinusThree);
 	tree.layout();
 	av.step();
 
+	//Slide 5
+	av.umsg("For a problem of size $n-3$, we have $1$ unit of work plus the amount of work required for one subproblem of size $n-4$");
+	av.umsg("<br> $T(n) = 1 + (1 + (1 + (1 + T(n-4)))$", {"preserve": true});
+	labelSet.push(av.label("----------------------------------", {"top": topAlign + 5 * nodeHeight + 3 * nodeGap , "left": leftAlign + nodeWidth + labelShift}));
+	labelSet.push(av.label("1", {"top": topAlign + 5 * nodeHeight + 3 * nodeGap , "left": leftAlign + nodeWidth + labelShift * 20}));
+	var nMinusFour = tree.newNode("$n-4$");
+	nMinusThree.addChild(nMinusFour);
+	tree.layout();
+	av.step();
+
 	//Slide 6
-	av.umsg("This pattern will continue till we reach the value of $1$");
+	av.umsg("This pattern will continue till we reach a subproblem of size $1$");
 	av.umsg("<br> $T(n) = 1 + (1 + (1 + (1 + (1 + (...))))$", {"preserve": true});
-	labelSet.push(av.label("----------------------------------", {"top": topAlign + 6.5 * nodeHeight + 4 * nodeGap , "left": leftAlign + nodeWidth + labelShift}));
-	labelSet.push(av.label("1", {"top": topAlign + 6.5 * nodeHeight + 4 * nodeGap , "left": leftAlign + nodeWidth + labelShift * 20}));
+	labelSet.push(av.label("----------------------------------", {"top": topAlign + 8.5 * nodeHeight + 4 * nodeGap , "left": leftAlign + nodeWidth + labelShift}));
+	labelSet.push(av.label("1", {"top": topAlign + 8.5 * nodeHeight + 4 * nodeGap , "left": leftAlign + nodeWidth + labelShift * 20}));
 	var one = tree.newNode("$1$");
-	nMinusThree.addChild(one);
+	nMinusFour.addChild(one);
 	var edge = one.edgeToParent();
 	edge.addClass("dashed");
 	tree.layout();
@@ -96,7 +99,7 @@
 	
 	//Slide 10
 	labelSet = new Array();
-	av.umsg("At the value of $n$, we have $n$ units of work plus the amount of work required for $n-1$");
+	av.umsg("For a problem of size $n$, we have $n$ units of work plus the amount of work required for one subproblem of size $n-1$");
 	av.umsg("<br> $T(n) = n + T(n-1)$", {"preserve": true});
 	labelSet.push(av.label("<b><u>Amount of Work<b><u>", {"top": topAlign - 10 , "left": leftAlign + 200}));
 	labelSet.push(av.label("----------------------------------", {"top": topAlign + 0.5 * nodeHeight, "left": leftAlign + nodeWidth + labelShift}));
@@ -104,45 +107,48 @@
 	tree = av.ds.tree({left: leftAlign, top: topAlign, nodegap: nodeGap});
 	var root = tree.newNode("$n$");
     tree.root(root);
-	av.step();
-
-	//Slide 11
-	av.umsg("At the value of $n-1$, we have $n-1$ units of work plus the amount of work required for $n-2$");
-	av.umsg("<br> $T(n) = n + (n-1 + T(n-2))$", {"preserve": true});
-	labelSet.push(av.label("----------------------------------", {"top": topAlign + 2 * nodeHeight + nodeGap , "left": leftAlign + nodeWidth + labelShift}));
-	labelSet.push(av.label("$n-1$", {"top": topAlign + 2 * nodeHeight + nodeGap , "left": leftAlign + nodeWidth + labelShift * 20}));
 	var nMinusOne = tree.newNode("$n-1$");
 	root.addChild(nMinusOne);
 	tree.layout();
 	av.step();
 
-	//Slide 12
-	av.umsg("At the value of $n-2$, we have $n-2$ units of work plus the amount of work required for $n-3$");
-	av.umsg("<br> $T(n) = n + (n-1 + (n-2 + T(n-3)))$", {"preserve": true});
-	labelSet.push(av.label("----------------------------------", {"top": topAlign + 3.5 * nodeHeight + 2 * nodeGap , "left": leftAlign + nodeWidth + labelShift}));
-	labelSet.push(av.label("$n-2$", {"top": topAlign + 3.5 * nodeHeight + 2 * nodeGap , "left": leftAlign + nodeWidth + labelShift * 20}));
+	//Slide 11
+	av.umsg("For a problem of size $n-1$, we have $n-1$ units of work plus the amount of work required for one subproblem of size $n-2$");
+	av.umsg("<br> $T(n) = n + (n-1 + T(n-2))$", {"preserve": true});
+	labelSet.push(av.label("----------------------------------", {"top": topAlign + 2 * nodeHeight + nodeGap , "left": leftAlign + nodeWidth + labelShift}));
+	labelSet.push(av.label("$n-1$", {"top": topAlign + 2 * nodeHeight + nodeGap , "left": leftAlign + nodeWidth + labelShift * 20}));
 	var nMinusTwo = tree.newNode("$n-2$");
 	nMinusOne.addChild(nMinusTwo);
 	tree.layout();
 	av.step();
 
-	//Slide 13
-	av.umsg("At the value of $n-3$, we have $n-3$ units of work plus the amount of work required for $n-4$");
-	av.umsg("<br> $T(n) = n + (n-1 + (n-2 + (n-3 + T(n-4)))$", {"preserve": true});
-	labelSet.push(av.label("----------------------------------", {"top": topAlign + 5 * nodeHeight + 3 * nodeGap , "left": leftAlign + nodeWidth + labelShift}));
-	labelSet.push(av.label("$n-3$", {"top": topAlign + 5 * nodeHeight + 3 * nodeGap , "left": leftAlign + nodeWidth + labelShift * 20}));
+	//Slide 12
+	av.umsg("For each problem of size $n-2$, we have $n-2$ units of work plus the amount of work required for one subproblem of size $n-3$");
+	av.umsg("<br> $T(n) = n + (n-1 + (n-2 + T(n-3)))$", {"preserve": true});
+	labelSet.push(av.label("----------------------------------", {"top": topAlign + 3.5 * nodeHeight + 2 * nodeGap , "left": leftAlign + nodeWidth + labelShift}));
+	labelSet.push(av.label("$n-2$", {"top": topAlign + 3.5 * nodeHeight + 2 * nodeGap , "left": leftAlign + nodeWidth + labelShift * 20}));
 	var nMinusThree = tree.newNode("$n-3$");
 	nMinusTwo.addChild(nMinusThree);
 	tree.layout();
 	av.step();
 
+	//Slide 13
+	av.umsg("For a problem of size $n-3$, we have $n-3$ units of work plus the amount of work required for one subproblem of size $n-4$");
+	av.umsg("<br> $T(n) = n + (n-1 + (n-2 + (n-3 + T(n-4)))$", {"preserve": true});
+	labelSet.push(av.label("----------------------------------", {"top": topAlign + 5 * nodeHeight + 3 * nodeGap , "left": leftAlign + nodeWidth + labelShift}));
+	labelSet.push(av.label("$n-3$", {"top": topAlign + 5 * nodeHeight + 3 * nodeGap , "left": leftAlign + nodeWidth + labelShift * 20}));
+	var nMinusFour = tree.newNode("$n-4$");
+	nMinusThree.addChild(nMinusFour);
+	tree.layout();
+	av.step();
+
 	//Slide 14
-	av.umsg("This pattern will continue till we reach the value of $1$");
+	av.umsg("This pattern will continue till we reach a subproblem of size $1$");
 	av.umsg("<br> $T(n) = n + (n-1 + (n-2 + (n-3 + (n-4 + (...))))$", {"preserve": true});
-	labelSet.push(av.label("----------------------------------", {"top": topAlign + 6.5 * nodeHeight + 4 * nodeGap , "left": leftAlign + nodeWidth + labelShift}));
-	labelSet.push(av.label("$1$", {"top": topAlign + 6.5 * nodeHeight + 4 * nodeGap , "left": leftAlign + nodeWidth + labelShift * 20}));
+	labelSet.push(av.label("----------------------------------", {"top": topAlign + 8.5 * nodeHeight + 4 * nodeGap , "left": leftAlign + nodeWidth + labelShift}));
+	labelSet.push(av.label("$1$", {"top": topAlign + 8.5 * nodeHeight + 4 * nodeGap , "left": leftAlign + nodeWidth + labelShift * 20}));
 	var one = tree.newNode("$1$");
-	nMinusThree.addChild(one);
+	nMinusFour.addChild(one);
 	var edge = one.edgeToParent();
 	edge.addClass("dashed");
 	tree.layout();
@@ -153,7 +159,7 @@
 	av.step();
 
 	//Slide 16
-	av.umsg("Finally, we have the closed form solution of $T(n) = T(n-1) + n$ evaluates to $\\frac{n(n+1)}{2}$");
+	av.umsg("Since we already now that $\\displaystyle\\sum_{i=1}^{n}i = \\frac{n(n+1)}{2}$, we have the closed form solution of $T(n) = T(n-1) + n$ evaluates to $ \\frac{n(n+1)}{2} $");
 	av.step();
 	
 	av.recorded();
