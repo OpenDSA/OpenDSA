@@ -29,10 +29,6 @@
 		  "LinearRecurrences": {
             "long_name": "Linear Recurrences Visualization",
             "showhide": "show"
-          },
-		  "Summations": {
-            "long_name": "Summations Visualization",
-            "showhide": "show"
           }
         },
         "exercises": {
@@ -61,6 +57,24 @@
             "threshold": 1.0
           }
 		}
+      },
+      "AlgAnalTest/Proofs": {
+       "long_name": "Proofs",
+       "sections": {
+		  "SummationOneToN": {
+            "long_name": "Summation of the first N integers Visualization",
+            "showhide": "show"
+          }
+        },
+        "exercises": {
+          "twoColorCON": {},
+          "SummationOneToNCON": {
+            "long_name": "Summation of the first N integers Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       }
     },
     "Algorithm Analysis": {

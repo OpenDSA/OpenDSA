@@ -10,7 +10,6 @@
    
 .. odsalink:: AV/Development/AlgAnal/DivideAndConquerRecurrencesCON.css
 .. odsalink:: AV/Development/AlgAnal/LinearRecurrencesCON.css
-.. odsalink:: AV/Development/AlgAnal/SummationOneToNCON.css
 .. odsalink:: AV/Development/AlgAnal/SummationTwoPowerICON.css
 
 Summations and Recurrence Relations
@@ -289,5 +288,4 @@ to find closed-form solutions for recurrence relations.
    
 .. odsascript:: AV/Development/AlgAnal/DivideAndConquerRecurrencesCON.js
 .. odsascript:: AV/Development/AlgAnal/LinearRecurrencesCON.js
-.. odsascript:: AV/Development/AlgAnal/SummationOneToNCON.js
 .. odsascript:: AV/Development/AlgAnal/SummationTwoPowerICON.js
