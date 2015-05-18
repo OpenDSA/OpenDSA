@@ -1,26 +1,120 @@
 .. _AV:
 
+====================================
 Notes for AV and Exercise Developers
 ====================================
 
-Configuration
--------------
+--------------------------------------------------
+Configuration: Code lines and Internationalization
+--------------------------------------------------
 
-Any JSAV-based AV (both standalone and in-lined slideshows) and
-exercises can be associated with a configuration file.
+Any JSAV-based exercise or AV (either standalone or an in-lined
+slideshow) can be associated with a configuration file.
 This is a ``.json`` file whose default name is the same as the name of
 the container for an inlined slideshow, or the same as the standalone
-AV or exercise (that is, ``myAV.html``, ``myAV.js``, and
-``myAV.json``).
-
+AV or exercise.
 Configuration files support sections for defining all strings (used
 for internationalziation support), mapping logical names to code lines
 (to support alternate programming language examples in JSAV code
 objects), and setting defaults for configuration parameters.
 
-Until we get proper documentation, see some of the ``.json`` files in
-the ``AV`` directory for examples.
+File Format
+===========
 
+The file format needs to be documented.
+In the meantime, a good example is ``AV/Sorting/insertionsortAV.json``.
+
+
+Use Case: Standalone AV or Proficiency Exercise
+===============================================
+
+Given a standalone AV with HTML file ``foo.html`` that contains a
+``div`` with classnam ``avcontainer`` and
+JavaScript file ``foo.js``, the configuration file would normally be
+named ``foo.json``.
+After creating a configuration object, the string interpreter and code
+interpreters will typically be created as follows::
+
+   av = new JSAV($(".avcontainer"));
+   // Load the config object with interpreter and code created by odsaUtils.js
+   var config = ODSA.UTILS.loadConfig(),
+       interpret = config.interpreter,       // get the interpreter
+       code = config.code;                   // get the code object
+   var pseudo = av.code(code);
+
+Use Case: Inline Slideshow
+==========================
+
+The RST file will reference a given slideshow with a specified ``div``
+name as::
+
+   .. inlineav:: fooCON ss
+
+The corresponding JavaScript file that implements the slideshow will
+create the JSAV, config, interpreter, and code objects with code
+like::
+
+   var av_name = "fooCON";
+   // Load the config object with interpreter and code created by odsaUtils.js
+   var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+       interpret = config.interpreter,       // get the interpreter
+       code = config.code;                   // get the code object
+   var av = new JSAV(av_name);
+   var pseudo = av.code(code);
+
+
+Use Case: No pseudocode object
+==============================
+
+Creating the ``code`` object is not necessary if no pseudocode object
+is used in the visualization.
+A shortened version is therefore as follows::
+
+   var av_name = "fooCON";
+   var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
+   var av = new JSAV(av_name);
+ 
+
+Use Case: Shared JSON file
+==========================
+
+Occasionally you might have multiple slideshows that share code or
+strings, such that it makes sense for them to share a configuration
+file.
+In this example, consider a JavaScript file ``fooCON.js`` that
+contains the code for one or more slideshows, with shared
+configuration file ``fooConfCON.json``.
+The associated RST file would contain a line for each slideshow, such
+as::
+
+   .. inlineav:: fooS1CON ss
+
+Each slideshow implemented in ``fooCON.js`` would contain code similar
+to::
+
+   var av_name = "fooS1CON";
+   // Load the config object with interpreter and code created by odsaUtils.js
+   var config = ODSA.UTILS.loadConfig(
+                  {"av_name": av_name, "json_path": "AV/Topic/fooConfCON.json"}),
+      interpret = config.interpreter,       // get the interpreter
+      code = config.code;                   // get the code object
+   var av = new JSAV(av_name);
+   var pseudo = av.code(code);
+
+
+Using the configuration
+=======================
+
+After creating the interpreter and code objects, they can be used to
+replace text strings and line numbers as follows::
+
+   // If the .json file has definitions for av_c2 and av_c3 in various languages:
+   av.umsg(interpret("av_c2"));
+   av.label(interpret("av_c3", {top: 10, left: 10}).show();
+   // If the .json file has definitions for codelines with the tag ``loop``:
+   pseudo.setCurrentLine("loop");
+
+--------------
 URL Parameters
 --------------
 
@@ -62,6 +156,7 @@ The typical options are as follows::
    <URL>?JXOP-feedback=continuous&JXOP-fixmode=undo
    <URL>?JXOP-feedback=continuous&JXOP-fixmode=fix
 
+---------
 Equations
 ---------
 
@@ -76,6 +171,7 @@ So a typical math markup within an AV or slideshow might look like::
 
    jsav.umsg("This takes $\\Theta(n)$ time.");
 
+---
 CSS
 ---
 
@@ -115,6 +211,7 @@ node object named ``mynode``, or using ``myarray.(index,
 "processing")`` for array position ``index`` in JSAV array ``myarray``.
 
 
+--------------------------------------------
 "Stand-alone" vs. "Inline" AVs and Exercises
 --------------------------------------------
 
@@ -213,6 +310,7 @@ Notice lines that look like::
 This will make your styling changes on the tree nodes only affect that
 particular slideshow.
 
+----------
 Slideshows
 ----------
 
@@ -224,9 +322,12 @@ sentence, such as if one slide said "First we do this...", and then
 the following slide replaced it with
 "First we do this, then we do that."
 
+---------------------
 Programming Exercises
 ---------------------
-To create a programming exercise, you will need to create/modify files on the front-end and others on the back-end:
+
+To create a programming exercise, you will need to create/modify files
+on the front-end and others on the back-end:
 
 * Front end:
 
@@ -347,5 +448,3 @@ To create a programming exercise, you will need to create/modify files on the fr
 
    10. Note that: you should do the necessary logic to make sure that all the unit tests are correct. 
        Also, you will not need to modify any of the Python files on the back end.
-
-
