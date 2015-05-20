@@ -38,20 +38,8 @@
       },
       "AlgAnalTest/Proofs": {
        "long_name": "Proofs",
-       "sections": {
-		  "SummationOneToN": {
-            "long_name": "Summation of the first N integers Visualization",
-            "showhide": "show"
-          }
-        },
         "exercises": {
-          "twoColorCON": {},
-          "SummationOneToNCON": {
-            "long_name": "Summation of the first N integers Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          }
+          "twoColorCON": {}
         }
       }
     },
@@ -208,15 +196,28 @@
       }
     },
 	"Advanced Analysis": {
-      "Development/AdvSumm": {
+      "AlgAnalTest/AdvSumm": {
         "long_name": "Summation Techniques",
-        "exercises": {}
+		"sections": {
+		  "SummationOneToN": {
+            "long_name": "Summation of the first N integers Visualization",
+            "showhide": "show"
+          }
+        },
+        "exercises": {
+		  "SummationOneToNCON": {
+            "long_name": "Summation One To N Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+		}
       },
-      "Development/Recurrence": {
+      "AlgAnalTest/Recurrence": {
         "long_name": "Solving Recurrence Relations",
         "exercises": {}
       },
-      "Development/AmortAnal": {
+      "AlgAnalTest/AmortAnal": {
         "long_name": "Amortized Analysis",
         "exercises": {}
       }

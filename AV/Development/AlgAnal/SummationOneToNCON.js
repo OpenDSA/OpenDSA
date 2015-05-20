@@ -11,7 +11,7 @@ $(document).ready(function () {
   var av;
   var rectHeight = 25;
   var rectWidth = 50;
-  var leftAlign = 50;
+  var leftAlign = 250;
   var topAlign = 175;
   var set;
   

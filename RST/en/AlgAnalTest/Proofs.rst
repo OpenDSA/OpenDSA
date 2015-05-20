@@ -291,11 +291,6 @@ other, but certainly the writer of the direct proof version had
 to discover an insight unique to that problem that might
 not be helpful or relevant when proving other summations.
 
-.. showhidecontent:: SummationOneToN
-
-   .. inlineav:: SummationOneToNCON ss
-      :output: show
-
 .. _nOdds:
 
 .. topic:: Example
