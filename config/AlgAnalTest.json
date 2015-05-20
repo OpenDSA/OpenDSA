@@ -22,36 +22,14 @@
       "AlgAnalTest/Summations": {
         "long_name": "Summations and Recurrence Relations",
 		"sections": {
-          "DivideAndConquerRecurrences": {
-            "long_name": "Divide And Conquer Recurrences Visualization",
-            "showhide": "show"
-          },
 		  "LinearRecurrences": {
             "long_name": "Linear Recurrences Visualization",
             "showhide": "show"
           }
         },
         "exercises": {
-		  "DivideAndConquerRecurrencesCON": {
-            "long_name": "Linear Recurrences Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
 		  "LinearRecurrencesCON": {
             "long_name": "Linear Recurrences Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-		  "SummationOneToNCON": {
-            "long_name": "Summation One To N Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-		  "SummationTwoPowerICON": {
-            "long_name": "Summation Two Power I Slideshow",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
@@ -197,6 +175,50 @@
             "threshold": 5
           }
         }
+      }
+    },
+	  "Lower Bounds": {
+      "Development/BoundLower": {
+        "long_name": "Introduction to Lower Bounds",
+        "exercises": {}
+      },
+      "Development/BoundSearch": {
+        "long_name": "Lower Bounds on Search",
+        "exercises": {}
+      },
+      "Development/BoundMax": {
+        "long_name": "Lower Bounds on Search",
+        "exercises": {}
+      },
+      "Development/BoundAdversary": {
+        "long_name": "Adversary Lower Bounds",
+        "exercises": {}
+      },
+      "Development/BoundState": {
+        "long_name": "State Space Lower Bounds",
+        "exercises": {}
+      },
+      "Development/BoundiBest": {
+        "long_name": "Finding ith Best Element",
+        "exercises": {}
+      },
+      "Development/SortingOptimal": {
+        "long_name": "Optimal Sorting",
+        "exercises": {}
+      }
+    },
+	"Advanced Analysis": {
+      "Development/AdvSumm": {
+        "long_name": "Summation Techniques",
+        "exercises": {}
+      },
+      "Development/Recurrence": {
+        "long_name": "Solving Recurrence Relations",
+        "exercises": {}
+      },
+      "Development/AmortAnal": {
+        "long_name": "Amortized Analysis",
+        "exercises": {}
       }
     }
   }

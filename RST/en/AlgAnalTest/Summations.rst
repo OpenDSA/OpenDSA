@@ -8,9 +8,7 @@
    :satisfies: summation; recurrence
    :topic: Math Background
    
-.. odsalink:: AV/Development/AlgAnal/DivideAndConquerRecurrencesCON.css
 .. odsalink:: AV/Development/AlgAnal/LinearRecurrencesCON.css
-.. odsalink:: AV/Development/AlgAnal/SummationTwoPowerICON.css
 
 Summations and Recurrence Relations
 ===================================
@@ -123,14 +121,6 @@ the summation grows closer to
    {\cal H}_n \approx \log_e n + \gamma + \frac{1}{2n},
 
 where :math:`\gamma` is Euler's constant and has the value 0.5772...
-
-.. showhidecontent:: Summations
-
-   .. inlineav:: SummationOneToNCON ss
-      :output: show
-	  
-   .. inlineav:: SummationTwoPowerICON ss
-      :output: show
 
 Most of these equalities can be proved easily by a
 :ref:`proof by induction <Proofs>`.
@@ -279,13 +269,5 @@ to find closed-form solutions for recurrence relations.
 
    .. inlineav:: LinearRecurrencesCON ss
       :output: show
-
-.. showhidecontent:: DivideAndConquerRecurrences
-
-   .. inlineav:: DivideAndConquerRecurrencesCON ss
-      :output: show  
 	  
-   
-.. odsascript:: AV/Development/AlgAnal/DivideAndConquerRecurrencesCON.js
 .. odsascript:: AV/Development/AlgAnal/LinearRecurrencesCON.js
-.. odsascript:: AV/Development/AlgAnal/SummationTwoPowerICON.js
