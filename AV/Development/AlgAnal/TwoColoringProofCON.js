@@ -65,8 +65,12 @@ $(document).ready(function () {
   av.step();
 
   //Slide 7
-  av.umsg("Now, put the n'th line back. This splits the plane into two half-planes, each of which (independently) has a valid two-coloring inherited from the two-coloring of the plane with $n−1$ lines.");
+  av.umsg("Now, put the n'th line back.");
   av.g.line(leftAlign + 0, topAlign + 165, leftAlign + 350, topAlign + 165, {"stroke-width": 3});
+  av.step();
+
+  //Slide 8
+  av.umsg("<br><br>This splits the plane into two half-planes, each of which (independently) has a valid two-coloring inherited from the two-coloring of the plane with $n−1$ lines", {"preserve": true});
   var plane1 = av.label("Half Plane 1",  {"top": topAlign + 75, "left": leftAlign + 400}).css
   ({'font-size': '16px', "text-align": "center"});
   var plane2 = av.label("Half Plane 2",  {"top": topAlign + 175, "left": leftAlign + 400}).css
@@ -75,14 +79,26 @@ $(document).ready(function () {
   var planeRect2 = av.g.rect(leftAlign + 0, topAlign + 20, 350, 145).css({"fill": "blue", "opacity": 0.1});
   av.step();
 
-  //Slide 8
+  //Slide 9
   av.umsg("The regions newly split by the n'th line violate the rule for a two-coloring");
   planeRect1.hide();
   planeRect2.hide();
   av.step();
 
-  //Slide 9
+  //Slide 10
+  av.umsg("If we take all regions on one side of the n'th line (say half plane 2) and reverse their coloring, we will end up having all the regions splitted by the n'th line properly two colored.")
   p4.hide();
+  planeRect1.show();
+  planeRect1.css({"fill": "green", "opacity": 0.1});
+  var p5 = av.g.polyline([[leftAlign + 175, topAlign + 145], [leftAlign + 195, topAlign + 165], [leftAlign + 155, topAlign + 165]]).css({"fill": "gray"});
+  var p6;
+  var p7;
   av.step();
+
+  //Slide 11
+  av.umsg("<br><br> Thus, the entire plan now is two colored.", {"preserve": true});
+  plane1.hide();
+  plane2.hide();
+  planeRect1.hide();
   av.recorded();
 });
