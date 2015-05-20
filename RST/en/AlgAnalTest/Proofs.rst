@@ -9,7 +9,7 @@
    :topic: Math Background
 
 .. odsalink:: AV/Background/twoColorCON.css
-.. odsalink:: AV/Development/AlgAnal/SummationOneToNCON.css
+.. odsalink:: AV/Development/AlgAnal/TwoColoringProofCON.css
 
 .. index:: !proof
 
@@ -478,6 +478,11 @@ induction hypothesis.
    Thus, by mathematical induction, the entire plane is
    two-colored.
 
+.. showhidecontent:: TwoColoringProof
+
+   .. inlineav:: TwoColoringProofCON ss
+      :output: show
+
 Compare the proof in Example :num:`Example #ThmRegion` with that in
 Example :num:`Example #ThmStamps`.
 For Example :num:`Example #ThmStamps`, we took a collection of stamps of
@@ -561,4 +566,4 @@ Prior to this, we must prove that the function always terminates,
 which might also be done using an induction proof.
 
 .. odsascript:: AV/Background/twoColorCON.js
-.. odsascript:: AV/Development/AlgAnal/SummationOneToNCON.js
+.. odsascript:: AV/Development/AlgAnal/TwoColoringProofCON.js
