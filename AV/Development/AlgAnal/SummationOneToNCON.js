@@ -80,23 +80,32 @@ $(document).ready(function () {
 
 	//Slide 8
 	av.umsg(interpret("Slide 8"));
-    //set.css({"fill": "green", "opacity":"0.5"});
-    av.step();
-
-	//Slide 9
-	av.umsg(interpret("Slide 9"));
-	av.label("|---------------- $n$ ------------------|",  {"top": topAlign + 25, "left": leftAlign + 20}).css
+    av.label("|---------------- $n$ ------------------|",  {"top": topAlign + 25, "left": leftAlign + 20}).css
 	({'font-size': '16px', "text-align": "center"});
 	av.label("|------- $n$ -------|",  {"top": topAlign - 60, "left": leftAlign + 5 * rectWidth - 35}).css
 	({'font-size': '16px', "text-align": "center"}).addClass("rotated");
 	av.g.line(leftAlign, topAlign + rectHeight, leftAlign + 5 * rectWidth, topAlign - 4 * rectHeight);
+    av.step();
+
+	//Slide 9
+	av.umsg(interpret("Slide 9"));
+	var bigTriangle = av.g.polyline([[leftAlign, topAlign + rectHeight], [leftAlign + 5 * rectWidth, topAlign - 4 * rectHeight], [leftAlign + 5 * rectWidth, topAlign + rectHeight]]).css({"fill": "blue", "opacity": 0.2});
 	av.step();
 
 	//Slide 10
-	av.umsg(interpret("Slide 10"));
+	av.umsg(interpret("Slide 10"), {"preserve": true});
+	var smallTriangle1 = av.g.polyline([[leftAlign, topAlign + rectHeight], [leftAlign, topAlign], [leftAlign + rectWidth, topAlign]]).css({"fill": "green", "opacity": 0.2});
+	var smallTriangle2 = av.g.polyline([[leftAlign + rectWidth, topAlign], [leftAlign + rectWidth, topAlign - rectHeight], [leftAlign + 2 * rectWidth, topAlign - rectHeight]]).css({"fill": "green", "opacity": 0.2});
+	var smallTriangle3 = av.g.polyline([[leftAlign + 2 * rectWidth, topAlign - rectHeight], [leftAlign + 2 * rectWidth, topAlign - 2 * rectHeight], [leftAlign + 3 * rectWidth, topAlign - 2 * rectHeight]]).css({"fill": "green", "opacity": 0.2});
+	var smallTriangle4 = av.g.polyline([[leftAlign + 3 * rectWidth, topAlign - 2 * rectHeight], [leftAlign + 3 * rectWidth, topAlign - 3 * rectHeight], [leftAlign + 4 * rectWidth, topAlign - 3 * rectHeight]]).css({"fill": "green", "opacity": 0.2});
+	var smallTriangle5 = av.g.polyline([[leftAlign + 4 * rectWidth, topAlign - 3 * rectHeight], [leftAlign + 4 * rectWidth, topAlign - 4 * rectHeight], [leftAlign + 5 * rectWidth, topAlign - 4 * rectHeight]]).css({"fill": "green", "opacity": 0.2});
 	av.step();
 
 	//Slide 11
 	av.umsg(interpret("Slide 11"));
+	av.step();
+
+	//Slide 12
+	av.umsg(interpret("Slide 12"));
 	av.recorded();
 });

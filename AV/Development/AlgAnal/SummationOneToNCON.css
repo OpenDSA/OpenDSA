@@ -2,9 +2,9 @@
   width: 850px;
   height: 600px;
 }
-.jsavline {
+#SummationOneToNCON .jsavline {
   width:800px;
-  height:50px;
+  height:100px;
 }
 .rotated {
   -webkit-transform: rotate(90deg);
