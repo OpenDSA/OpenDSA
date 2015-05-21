@@ -21,14 +21,14 @@
     "Mathematical Background": {
       "AlgAnalTest/Summations": {
         "long_name": "Summations and Recurrence Relations",
-		"sections": {
-		  "LinearRecurrences": {
+		    "sections": {
+		      "LinearRecurrences": {
             "long_name": "Linear Recurrences Visualization",
             "showhide": "show"
           }
         },
         "exercises": {
-		  "LinearRecurrencesCON": {
+		      "LinearRecurrencesCON": {
             "long_name": "Linear Recurrences Slideshow",
             "required": false,
             "points": 0.0,
@@ -38,8 +38,20 @@
       },
       "AlgAnalTest/Proofs": {
        "long_name": "Proofs",
+       "sections": {
+          "TwoColoringProof": {
+            "long_name": "Two coloring proof Visualization",
+            "showhide": "show"
+          }
+        },
         "exercises": {
-          "twoColorCON": {}
+          "twoColorCON": {},
+          "TwoColoringProofCON": {
+            "long_name": "Two Coloring Proof Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
         }
       }
     },
