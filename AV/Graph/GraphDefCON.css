@@ -7,7 +7,7 @@
 }
 
 #GpathDefCON .jsavcanvas {
-    height: 185px;
+    height: 190px;
 }
 
 #GconcomCON .jsavcanvas {
@@ -15,7 +15,15 @@
 }
 
 #GsparseDefCON .jsavcanvas {
-    height: 450px;
+    height: 420px;
+}
+
+#GamatrixCON .jsavcanvas {
+    height: 230px;
+}
+
+#GalistCON .jsavcanvas {
+    height: 230px;
 }
 
 .jsavautoresize .jsavnode {
@@ -32,4 +40,33 @@
 
 .redEdge { /* Make graph edge red */
   stroke: red;
+}
+
+.jsavverticalarray .jsavnode {
+  line-height: 30px !important;
+  min-width: 30px !important;
+  max-width: 30px !important;
+  min-height: 30px !important;
+  max-height: 40px !important;
+  height: 35px;
+}
+
+.jsavhorizontallist.jsavautoresize .jsavnode {
+  min-width: 20px !important;
+  max-width: 20px !important;
+  min-height: 20px !important;
+  max-height: 20px !important;
+}
+
+.jsavhorizontallist.jsavautoresize .jsavvalue {
+  height: 10px;
+  line-height: 10px;
+}
+
+.addSpace{
+    letter-spacing: 8.5px;
+}
+
+.vertical-text {
+	transform: rotate(90deg);
 }

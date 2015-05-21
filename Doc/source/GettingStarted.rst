@@ -57,6 +57,14 @@ http://algoviz.org/OpenDSA/dev/OpenDSA and
 http://algoviz.org/OpenDSA/dev/OpenDSA/JSAV, respectively.
 
 
+----
+JSAV
+----
+
+Visualizations are developed using the JSAV (JavaScript Algorithm
+Visualization) library.
+Documentation for the JSAV API can be found at: http://jsav.io/
+
 
 ------------------------------------------
 File Structure and File Naming Conventions
@@ -386,3 +394,8 @@ Read the text in the script for details.
 Generally, when the script is running, you will just use a URL like
 ``http://127.0.0.1:8000/<filename>``.
 
+To see the effect of changes that you make to .js or .css files, all
+that you should need to do is reload the relevant HTML page in your
+browser.
+If you modify a .rst file, then you will need to recompile your book
+instance.

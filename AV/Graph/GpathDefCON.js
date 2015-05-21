@@ -7,7 +7,7 @@ $(document).ready(function () {
   var av = new JSAV(av_name, {"animationMode" : "none"});
 
   var gTop = -5;
-  var gLeft = 70;
+  var gLeft = 75;
   var gWidth = 150;
   var gHeight = 140;
   var lHeight = 130; // For the graph labels
@@ -35,7 +35,7 @@ $(document).ready(function () {
   node3.highlight();
   graphA.layout();
 
-  av.label(interpret("av_l3"), {top: lHeight, left: 40, width: 20}).show();
+  av.label(interpret("av_l3"), {top: lHeight, left: 45, width: 20}).show();
 
   //set up second graph
   var graphB = av.ds.graph({left: 360, top: gTop, directed: true,
@@ -59,7 +59,7 @@ $(document).ready(function () {
 
   //set up graph three
   //set up second graph
-  var graphC = av.ds.graph({left: 650, top: gTop, directed: true,
+  var graphC = av.ds.graph({left: 645, top: gTop, directed: true,
                             width: 200, height: gHeight});
 
   node0 = graphC.addNode("0", {left:   0, top:   0});
@@ -76,5 +76,5 @@ $(document).ready(function () {
   graphC.addEdge(node4, node1, {weight: 1}).addClass("redEdge");
   graphC.layout();
 
-  av.label(interpret("av_l5"), {top: lHeight, left: 625}).show();
+  av.label(interpret("av_l5"), {top: lHeight, left: 620}).show();
 });

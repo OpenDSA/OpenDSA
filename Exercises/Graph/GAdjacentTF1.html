@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <title>Predecessor TF 1</title>
+  <title>Adjacent TF 1 </title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
   <script src="../../JSAV/lib/jquery.transit.js"></script>
@@ -12,45 +12,70 @@
   <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
   <style>
     .jsavcontainer {
-      height: 300px;
+      height: 200px;
     }
   </style>
 </head>
 
-<body data-height="650" data-width="950">
+<body data-height="450" data-width="950">
 <script>
 var initJSAV = function () {
   var jsav = new JSAV("jsav");
   jsav.recorded();
-  var g = jsav.ds.graph({center: true, visible: true, height: 300, directed: true});
+  var g = jsav.ds.graph({center: true, visible: true, height: 200, directed: true});
+  var n1 = g.addNode("4", {left: 10, top: 0});
+  var n2 = g.addNode("1", {left: 10, top: 65});
+  var n3 = g.addNode("3", {left: 10, top: 130});
+  var n4 = g.addNode("5", {left: 100, top: 130});
+  var n5 = g.addNode("2", {left: 100, top: 65});
 
-  var n1 = g.addNode("1", {top: 100, left: 50});
-  var n2 = g.addNode("2", {top: 100, left: 150});
   g.addEdge(n1, n2);
+  g.addEdge(n2,n3);
+  g.addEdge(n3, n4);
+  g.addEdge(n4, n5);
+  g.addEdge(n5, n1);
+  g.addEdge(n2, n4);
+
   g.layout();
 }
-</script> 
+function getAnswer(node){
+  if (node == 2){
+    return "True";
+  }
+  else if(node == 1){
+    return "True";
+  }
+  else if(node == 3){
+    return "True";
+  }
+  else{
+    return "False";
+  }
+}
+</script>
 
 <div class="exercise">
   <div class="vars">
     <var id="JSAV">initJSAV()</var>
+    <var id="node">randRange(1, 4)</var>
+    <var id="ANS">getAnswer(node)</var>
   </div>
 
   <div class="problems">
-
     <div id="problem-type-or-description-1">
       <p class="problem"> ANSWER TRUE OR FALSE
         <div id="jsav" class="jsavcanvas"></div>
       </p>
       <p class="question">
-  Node two is the predecessor of node one.</p>
-      <div class="solution"><var>"False"</var></div>
+        Nodes <var>node</var> and 5 are adjacent.
+      </p> 
+      <div class="solution"><var>ANS</var></div>
       <ul class="choices" data-category="true">
-  <li><var>"True"</var></li>
-  <li><var>"False"</var></li>              
+        <li><var>"True"</var></li>
+        <li><var>"False"</var></li>              
       </ul>
       <div class="hints">
-        <p>Add hint.</p>
+        <p>Two vertices are adjacent if there exists and edge between them.</p>
       </div>
     </div>
   </div>
