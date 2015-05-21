@@ -6,6 +6,10 @@
   width:800px;
   height:100px;
 }
+#TwoColoringProofCON .jsavcanvas {
+  width:800px;
+  height:600px;
+}
 .rotated {
   -webkit-transform: rotate(90deg);
   -moz-transform: rotate(90deg);

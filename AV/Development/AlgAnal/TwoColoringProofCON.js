@@ -23,11 +23,11 @@ $(document).ready(function () {
   });
 	
   //Slide 1
-  av.umsg("Let's see how we can get a visual intuition about the previous proof");
+  av.umsg(interpret("Slide 1"));
   av.displayInit();
   
   //Slide 2   
-  av.umsg("<b><u>For the base case: </u></b> We have only a single infinite line. This line splits the plane into two regions.");   
+  av.umsg(interpret("Slide 2"));   
   var baseCaseLine = av.g.line(leftAlign, topAlign, leftAlign + 350, topAlign,{"stroke-width": 3});  
   var baseCaseLabel1 = av.label("Region 1",  {"top": topAlign - 75, "left": leftAlign + 400}).css
   ({'font-size': '16px', "text-align": "center"});
@@ -36,7 +36,7 @@ $(document).ready(function () {
   av.step();
 
   //Slide 3
-  av.umsg("<br><br>One region can be colored black and the other white to get a valid two-coloring", {"preserve": true});
+  av.umsg(interpret("Slide 3"), {"preserve": true});
   var baseCaseRect = av.g.rect(leftAlign, topAlign, 350, 50).css({"fill": "gray"});
   av.step();
 
@@ -46,18 +46,18 @@ $(document).ready(function () {
   baseCaseLine.hide();
   baseCaseLabel1.hide();
   baseCaseLabel2.hide();
-  av.umsg("<b><u>For the inductive hypothesis:</u></b> We have that the set of regions formed by $n−1$ infinite lines can be two-colored.");
+  av.umsg(interpret("Slide 4"));
   av.step();
 
   //Slide 5
-  av.umsg("<br><br> <b><u>To prove the theorem for $\\textbf{n}$</u></b>, consider the set of regions formed by the $n−1$ lines remaining when any one of the $n$ lines is removed. Here we assume $n = 4$. So we have $3$ infinite lines", {"preserve": true});
+  av.umsg(interpret("Slide 5"), {"preserve": true});
   av.g.line(leftAlign + 50, topAlign + 20, leftAlign + 250, topAlign + 220, {"stroke-width": 3});
   av.g.line(leftAlign + 0, topAlign + 80, leftAlign + 350, topAlign + 80, {"stroke-width": 3});
   av.g.line(leftAlign + 300, topAlign + 20, leftAlign + 100, topAlign + 220, {"stroke-width": 3});
   av.step();
 
   //Slide 6
-  av.umsg("By the induction hypothesis, this set of regions can be two-colored");
+  av.umsg(interpret("Slide 6"));
   var p1 = av.g.polyline([[leftAlign + 60, topAlign + 30], [leftAlign + 110, topAlign + 80], [leftAlign + 30, topAlign + 80]]).css({"fill": "gray"});
   var p2 = av.g.polyline([[leftAlign + 110, topAlign + 80], [leftAlign + 240, topAlign + 80], [leftAlign + 175, topAlign + 145]]).css({"fill": "gray"});
   var p3 = av.g.polyline([[leftAlign + 240, topAlign + 80], [leftAlign + 330, topAlign + 80], [leftAlign + 290, topAlign + 30]]).css({"fill": "gray"});
@@ -65,12 +65,14 @@ $(document).ready(function () {
   av.step();
 
   //Slide 7
-  av.umsg("Now, put the n'th line back.");
+  av.umsg(interpret("Slide 7"));
+  var nLine = av.label("$n^{th}$ line",  {"top": topAlign + 135, "left": leftAlign + 400}).css
+  ({'font-size': '16px', "text-align": "center"});
   av.g.line(leftAlign + 0, topAlign + 165, leftAlign + 350, topAlign + 165, {"stroke-width": 3});
   av.step();
 
   //Slide 8
-  av.umsg("<br><br>This splits the plane into two half-planes, each of which (independently) has a valid two-coloring inherited from the two-coloring of the plane with $n−1$ lines", {"preserve": true});
+  av.umsg(interpret("Slide 8"), {"preserve": true});
   var plane1 = av.label("Half Plane 1",  {"top": topAlign + 75, "left": leftAlign + 400}).css
   ({'font-size': '16px', "text-align": "center"});
   var plane2 = av.label("Half Plane 2",  {"top": topAlign + 175, "left": leftAlign + 400}).css
@@ -80,25 +82,34 @@ $(document).ready(function () {
   av.step();
 
   //Slide 9
-  av.umsg("The regions newly split by the n'th line violate the rule for a two-coloring");
+  av.umsg(interpret("Slide 9"));
   planeRect1.hide();
   planeRect2.hide();
+  plane1.hide();
+  plane2.hide();
   av.step();
 
   //Slide 10
-  av.umsg("If we take all regions on one side of the n'th line (say half plane 2) and reverse their coloring, we will end up having all the regions splitted by the n'th line properly two colored.")
-  p4.hide();
+  av.umsg(interpret("Slide 10"));
+  plane1.show();
+  plane2.show();
   planeRect1.show();
   planeRect1.css({"fill": "green", "opacity": 0.1});
+  av.step();
+  
+  //Slide 11
+  av.umsg(interpret("Slide 11"), {"preserve": true});
+  p4.hide();
   var p5 = av.g.polyline([[leftAlign + 175, topAlign + 145], [leftAlign + 195, topAlign + 165], [leftAlign + 155, topAlign + 165]]).css({"fill": "gray"});
-  var p6;
-  var p7;
+  var p6 = av.g.polyline([[leftAlign + 155, topAlign + 165], [leftAlign + 85, topAlign + 165], [leftAlign + 105, topAlign + 212.5]]).css({"fill": "gray"});
+  var p7 = av.g.polyline([[leftAlign + 195, topAlign + 165], [leftAlign + 275, topAlign + 165], [leftAlign + 240, topAlign + 210]]).css({"fill": "gray"});
   av.step();
 
-  //Slide 11
-  av.umsg("<br><br> Thus, the entire plan now is two colored.", {"preserve": true});
+  //Slide 12
+  av.umsg(interpret("Slide 12"), {"preserve": true});
   plane1.hide();
   plane2.hide();
+  nLine.hide();
   planeRect1.hide();
   av.recorded();
 });
