@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :prerequisites:
+   
+.. odsalink:: AV/Development/AlgAnal/DivideAndConquerRecurrencesCON.css
 
 Solving Recurrence Relations
 ============================
@@ -360,6 +362,11 @@ A more complex example is given below.
    a power of two.
    At this point, we should use a simple induction proof to verify
    that our solution is indeed correct.
+   
+.. showhidecontent:: DivideAndConquerRecurrences
+
+   .. inlineav:: DivideAndConquerRecurrencesCON ss
+      :output: show
 
 .. topic:: Example
 
@@ -624,3 +631,5 @@ for :math:`{\cal H}_{n+1}`, the Harmonic Series.
 From Equation (10) of Module :numref:`<Summations>`,
 :math:`{\cal H}_{n+1} = \Theta(\log n)`,
 so the final solution is :math:`\Theta(n \log n)`.
+
+.. odsascript:: AV/Development/AlgAnal/DivideAndConquerRecurrencesCON.js

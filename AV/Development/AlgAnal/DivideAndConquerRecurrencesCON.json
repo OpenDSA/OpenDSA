@@ -1,28 +1,18 @@
 {
   "translations" :{
     "en": {
-	  "Slide 1": "Let's see how we can guess the closed form solution of the recurrence $T(n) = 2T(n/2) + 1$",
-	  "Slide 2.1": "For a problem of size $n$, we have $1$ unit of work plus the amount of work required for two subproblems of size $n/2$ each",
-	  "Slide 2.2": "<br> $T(n) = 1 + 2T(n/2)$",
-	  "Slide 3.1": "For each problem of size $n/2$, we have $1$ unit of work plus the amount of work required for two subproblems of size $n/4$ each",
-	  "Slide 3.2": "<br> $T(n) = 1 + 2(1 + 2T(n/4))$",
-	  "Slide 4.1": "For each problem of size $n/4$, we have $1$ unit of work plus the amount of work required for two subproblems of size $n/8$",
-	  "Slide 4.2": "<br> $T(n) = 1 + 2(1 + 2(1 + 2T(n/8)))$",
-	  "Slide 5.1": "This pattern will continue till we reach a problem of size $1$ in which we will have $n$ subproblems each of which requires $1$ unit of work",
-	  "Slide 5.2": "<br> $T(n) = 1 + 2(1 + 2(1 + 2(1 + 2((...))))$",
-	  "Slide 6": "Since we have $\\log{n + 1}$ levels and the amount of work at each level is a base $2$ exponent, the closed form solution of $T(n) = 2T(n/2) + 1$ can be modeled by the summation $\\displaystyle\\sum_{i=0}^{\\log{n}}2^i$",
-	  "Slide 7": "Since we already know that $\\displaystyle\\sum_{i=0}^{\\log{n}}2^i = 2n - 1$. Then, we have the closed form solution of $T(n) = 2T(n/2) + 1$ evaluates to $2n - 1$",  
-	  "Slide 8": "Similarily, we can guess the closed form solution of the recurrence $T(n) = 2T(n/2) + n$",
-	  "Slide 9.1": "For a problem of size $n$, we have $n$ units of work plus the amount of work required for two subproblems of size $n/2$ each",
-	  "Slide 9.2": "<br> $T(n) = n + 2T(n/2)$",
-	  "Slide 10.1": "For each problem of size $n/2$, we have $n/2$ units of work plus the amount of work required for two subproblems of size $n/4$ each",
-	  "Slide 10.2": "<br> $T(n) = n + 2(n/2 + 2T(n/4))$",
-	  "Slide 11.1": "For each problem of size $n/4$, we have $n/4$ units of work plus the amount of work required for two subproblems of size $n/8$",
-	  "Slide 11.2": "<br> $T(n) = 1 + 2(n/2 + 2(n/4 + 2T(n/8)))$",
-	  "Slide 12.1": "This pattern will continue till we reach a problem of size $1$ in which we will have $n$ subproblems each of which requires $1$ unit of work",
-	  "Slide 12.2": "<br> $T(n) = n + 2(n/2 + 2(n/4 + 2(n/8 + 2((...))))$",
-	  "Slide 13": "Since we have $\\log{n + 1}$ levels and the amount of work at each level is $n$, the closed form solution of $T(n) = 2T(n/2) + n$ can be modeled by the summation $\\displaystyle\\sum_{i=0}^{\\log{n}}n$",
-	  "Slide 14": "Simply, $\\displaystyle\\sum_{i=0}^{\\log{n}}n = n(\\log{n} + 1)$. Then, we have the closed form solution of $T(n) = 2T(n/2) + n$ evaluates to $n + n\\log{n}$" 
+	  "Slide 1": "Let's see how we can guess the closed form solution of $T(n) = 2T(n/2) + 5n^2, T(1) = 7$ by expanding the recurrence.",
+	  "Slide 2.1": "For a problem of size $n$, we have $5n^2$ units of work plus the amount of work required for two subproblems of size $n/2$ each.",
+	  "Slide 2.2": "<br> $T(n) = 5n^2 + 2T(n/2)$",
+	  "Slide 3.1": "For each problem of size $n/2$, we have $5(\\frac{n}{2})^2$ units of work for a total of $\\frac{5n^2}{2}$ units plus the amount of work required for two subproblems of size $n/4$ each.",
+	  "Slide 3.2": "<br> $T(n) = 5n^2 + 2(5(\\frac{n}{2})^2 + 2T(n/4))$",
+	  "Slide 4.1": "For each problem of size $n/4$, we have $5(\\frac{n}{4})^2$ units of work for a total of $\\frac{5n^2}{4}$ units plus the amount of work required for two subproblems of size $n/8$",
+	  "Slide 4.2": "<br> $T(n) = 5n^2 + 2(5(\\frac{n}{2})^2 + 2(5(\\frac{n}{4})^2 + 2T(n/8)))$",
+	  "Slide 5.1": "This pattern will continue till we reach a problem of size $1$ in which we will have $n$ subproblems each of which requires $7$ units of work for a total of $7n$ units.",
+	  "Slide 5.2": "<br> $T(n) = 5n^2 + 2(5(\\frac{n}{2})^2 + 2(5(\\frac{n}{4})^2 + 2(5(\\frac{n}{8})^2 + 2((...))))$",
+	  "Slide 6": "We end up having $\\log{n} + 1$ levels with the amount of work at the last level is  $7n$. The amount of work at the rest of the levels is modelled by the summation $\\displaystyle\\sum_{i=0}^{\\log{n}-1}\\frac{5n^2}{2^i}$",
+	  "Slide 7": "Accordingly, the total amount of work is $5n^2\\displaystyle\\sum_{i=0}^{\\log{n}-1}\\frac{1}{2^i} + 7n$",  
+	  "Slide 8": "By substituting the summation $\\displaystyle\\sum_{i=0}^{\\log{n}-1}\\frac{1}{2^i}$ with its closed form $2-\\frac{2}{n}$, we will end up having a final closed form of $T(n) = 2T(n/2) + 5n^2, T(1) = 7$ as $10n^2 - 3n$" 
     }
   }
 }

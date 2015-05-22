@@ -227,7 +227,20 @@
       },
       "AlgAnalTest/Recurrence": {
         "long_name": "Solving Recurrence Relations",
-        "exercises": {}
+		"sections": {
+		  "DivideAndConquerRecurrences": {
+            "long_name": "Divide And Conquer Guessing Visualization",
+            "showhide": "show"
+          }
+		},
+        "exercises": {
+		  "DivideAndConquerRecurrencesCON": {
+            "long_name": "Divide And Conquer Guessing Visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+		}
       },
       "AlgAnalTest/AmortAnal": {
         "long_name": "Amortized Analysis",
