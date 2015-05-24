@@ -1,0 +1,8 @@
+exp       ::= int_exp 
+           |  list_exp
+int_exp   ::= int 
+           |  hd list_exp
+list_exp  ::= cons int_exp list_exp
+           |  tl list_exp
+           |  predefinedList1
+           |  predefinedList2

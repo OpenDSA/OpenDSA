@@ -17,6 +17,13 @@
 		"exercises": {}
 	    }
 	},
+	"Functional Programming": {
+	    "PL/FP/ListDataStructure": {
+		"long_name": "The List data structure",
+		"dispModComp": false,
+		"exercises": {}
+		}
+        },
 	"Lambda Calculus": {
 	    "PL/LC/Syntax": {
 		"long_name": "Syntax of the Lambda Calculus",
