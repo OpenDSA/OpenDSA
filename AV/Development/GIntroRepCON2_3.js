@@ -3,13 +3,13 @@ $(document).ready(function () {
     var av = new JSAV("GIntroRepCON2_3", {"animationMode" : "none"});
 
 
-    av.label("The following are the two respresentations for the directed graph below.").show();
+   // av.label("The following are the two respresentations for the directed graph below.").show();
 
     //i think this should be left in the content and then show the different just the imagees in the av 
 
     //set up graph 
-    var gTop = 25; 
-    var gLeft = 350;
+    var gTop = 120; 
+    var gLeft = 0;
     var graph = av.ds.graph({top: gTop, left: gLeft, directed: false});
 
     var nodeOne = graph.addNode("0", {left: 0, top: 0});
@@ -28,28 +28,28 @@ $(document).ready(function () {
     graph.layout();
 
 
-    var a = av.label("(a) \n Adajceny Matrix Representation ", {top: 450, left: 100}).show();
+    var a = av.label("(a) \n Adajceny Matrix Representation ", {top: 300, left: 195, width: 50}).show();
 
-    var mTop = 250; 
-    var mLeft = 150;
+    var mTop = 115; 
+    var mLeft = 250;
     var mat = av.ds.matrix([[ , 1, , ,1], [1 , , , 1 , 1], [ , , , 1 , 1], [ , 1,1 , , ,], [1, 1, 1, , ,]], 
         {style: "table", top: mTop, left: mLeft});
 
-    var col = av.label(" 0 1 2 3 4", {top: 233, left: 157}).addClass("addSpace");
-    var row = av.label(" 0  1  2  3  4", {top: 385, left: 130}).addClass("vertical-text").addClass("addSpace");
+    var row = av.label(" 0 1 2 3 4", {top: 90, left: 257}).addClass("addSpace");
+    var col = av.label(" 0  1  2  3  4", {top: 130, left: 240}).addClass("vertical-text").addClass("addSpace");
 
 
-    av.label("(b) \n Adajceny List Representation ", {top: 450, left: 485}).show();
+    av.label("(b) \n Adajceny List Representation ", {top: 350, left: 515}).show();
 
     //list representation 
-    var aTop = 200; 
+    var aTop = 100; 
     var aLeft = 500;
 
     var aList = av.ds.array([, , , , ,], {indexed: true, left: aLeft, top: aTop, layout: "vertical"});
     aList.layout();
 
     //set up linked list 
-    var lTop =  205; 
+    var lTop =  100; 
     var lLeft = 575; 
     var list1= av.ds.list({top: lTop, left: lLeft});
 
@@ -59,7 +59,7 @@ $(document).ready(function () {
     list1.layout();
 
     //second linked list 
-    lTop = 250; 
+    lTop = 150; 
     var list2 = av.ds.list({top: lTop, left: lLeft});
     list2.addFirst("0");
     list2.add(1, "3");
@@ -67,21 +67,21 @@ $(document).ready(function () {
     list2.layout();
     
     //third linked list
-    lTop = 295;
+    lTop = 195;
     var list3 = av.ds.list({top: lTop, left: lLeft});
     list3.addFirst("3");
     list3.add(1, "4");
     list3.layout();
 
     //fourth linked list 
-    lTop = 340; 
+    lTop = 240; 
     var list4 = av.ds.list({top: lTop, left: lLeft});
     list4.addFirst("1");
     list4.add(1, "2");
     list4.layout();
 
     //fifth linked list 
-    lTop = 385; 
+    lTop = 285; 
     var list5 = av.ds.list({top: lTop, left: lLeft});
     list5.addFirst("0");
     list5.add(1, "1");
@@ -91,10 +91,10 @@ $(document).ready(function () {
     //add lines connect array to list 
 
     //should these lines overlap like they do in the linked list? 
-    var line = av.g.line( 530, 235, 575, 235, {'arrow-end': 'classic-wide-long', 'stroke-width': 2}); 
-    var line2 = av.g.line( 530, 275, 575, 275, {'arrow-end': 'classic-wide-long', 'stroke-width': 2});
-    var line3 = av.g.line( 530, 320, 575, 320, {'arrow-end': 'classic-wide-long', 'stroke-width': 2});
-    var line4 = av.g.line( 530, 365, 575, 365, {'arrow-end': 'classic-wide-long', 'stroke-width': 2});
-    var line5 = av.g.line( 530, 410, 575, 410, {'arrow-end': 'classic-wide-long', 'stroke-width': 2});
+    var line = av.g.line( 530, 135, 575, 135, {'arrow-end': 'classic-wide-long', 'stroke-width': 2}); 
+    var line2 = av.g.line( 530, 175, 575, 175, {'arrow-end': 'classic-wide-long', 'stroke-width': 2});
+    var line3 = av.g.line( 530, 220, 575, 220, {'arrow-end': 'classic-wide-long', 'stroke-width': 2});
+    var line4 = av.g.line( 530, 265, 575, 265, {'arrow-end': 'classic-wide-long', 'stroke-width': 2});
+    var line5 = av.g.line( 530, 310, 575, 310, {'arrow-end': 'classic-wide-long', 'stroke-width': 2});
 
     });

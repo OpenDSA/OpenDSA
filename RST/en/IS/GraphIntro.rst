@@ -8,11 +8,8 @@
    :prerequisites:
    :topic: Graphs
 
+
 .. odsalink:: AV/Graph/GraphDefCON.css
-.. odsalink:: AV/Development/GraphDefCON.css
-.. odsalink:: AV/Development/GIntroPathDefCON.css
-.. odsalink:: AV/Development/GIntroRepCON2_2.css
-.. odsalink:: AV/Development/GIntroRepCON2_3.css
 
 Graphs Chapter Introduction
 ===========================
@@ -74,8 +71,7 @@ of edges is written :math:`|\mathbf{E}|`.
 :math:`|\mathbf{V}|^2 - |\mathbf{V}|`.
 
 A graph whose edges are not directed is called an
-:term:`undirected graph`, as shown in part (a) of the following
-figure.
+:term:`undirected graph`, as shown in part (a) of the following figure.
 A graph with edges directed from one vertex to another
 (as in (b)) is called a :term:`directed graph` or :term:`digraph`.
 A graph with labels associated with its vertices
@@ -86,9 +82,8 @@ A graph whose edges have weights
 
 .. _GraphTerms:
 
-.. inlineav:: GdefundefCON dgm 
+.. inlineav:: GdirundirCON dgm 
    :output: show
-
 
 Two vertices are :term:`adjacent` if they are joined by an edge, such
 as Vertices :math:`a` and :math:`b` in the part (a) of the following
@@ -101,25 +96,6 @@ and :math:`b`.
 .. inlineav:: GneighborCON dgm
    :output: show
 
-.. odsafig:: Images/GraphDef.png
-   :width: 500
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Examples of graphs and graph terminology
-
-   Examples of graphs and terminology.
-   (a) A graph.
-   (b) A directed graph (digraph).
-   (c) A labeled (directed) graph with weights associated with the
-   edges.
-   In this example, there is a simple path from Vertex 0 to Vertex 3
-   containing Vertices 0, 1, and 3.
-   Vertices 0, 1, 3, 2, 4, and 1 also form a path, but not a simple path
-   because Vertex 1 appears twice.
-   Vertices 1, 3, 2, 4, and 1 form a simple cycle.
-
-
 A sequence of vertices :math:`v_1, v_2, ..., v_n`
 forms a :term:`path` of length :math:`n-1` if there exist edges from
 :math:`v_i` to :math:`v_{i+1}` for :math:`1 \leq i < n`.
@@ -131,7 +107,19 @@ some vertex :math:`v_1` to itself.
 A cycle is a :term:`simple cycle` if the path is simple, except for
 the first and last vertices being the same.
 
-.. inlineav:: GIntroPathDefCON ss
+.. inlineav:: GpathDefCON dgm 
+   :output: show 
+
+An undirected graph is a :term:`connected graph` if there is at least
+one path from any vertex to any other.
+The maximally connected subgraphs of an undirected graph are called
+:term:`connected components <connected component>`.
+For example, this figure shows an undirected graph
+with three connected components.
+
+.. _ConCom:
+
+.. inlineav:: GconcomCON dgm
    :output: show
 
 A graph with relatively few edges is called a :term:`sparse graph`,
@@ -147,20 +135,13 @@ both vertices of :math:`e` are in :math:`\mathbf{V}_s`.
 Any subgraph of :math:`V` where all vertices in the graph connect to
 all other vertices in the subgraph is called a :term:`clique`.
 
-.. inlineav:: GIntroDefCON ss
+.. inlineav:: GsparseDefCON dgm
    :output: show
 
-An undirected graph is a :term:`connected graph` if there is at least
-one path from any vertex to any other.
-The maximally connected subgraphs of an undirected graph are called
-:term:`connected components <connected component>`.
-For example, this figure shows an undirected graph
-with three connected components.
+.. TODO::
+   :type: Diagram
 
-.. _ConCom:
-
-.. inlineav:: GconcomCON dgm
-   :output: show
+   Make a diagram for the following terms.
 
 A graph without cycles is called an :term:`acyclic graph`.
 Thus, a directed graph without cycles is called a
@@ -173,7 +154,7 @@ a free tree is connected and has :math:`|\mathbf{V}| - 1` edges.
 
 There are two commonly used methods for representing graphs.
 The :term:`adjacency matrix`
-is illustrated by Figure :num:`Figure #GraphRep` (b).
+is illustrated by (b) in the figures below.
 The adjacency matrix for a graph is a
 :math:`|\mathbf{V}| \times |\mathbf{V}|` array.
 Assume that :math:`|\mathbf{V}| = n` and that
@@ -192,41 +173,34 @@ In either case, the space requirements for the adjacency matrix are
 
 The second common representation for graphs is the
 :term:`adjacency list`,
-illustrated by Figure :num:`Figure #GraphRep` (c).
+illustrated by (c) in these figures.
 The adjacency list is an array of linked lists.
 The array is :math:`|\mathbf{V}|` items long, with position :math:`i`
 storing a pointer to the linked list of edges for Vertex :math:`v_i`.
 This linked list represents the edges by the vertices that are
 adjacent to Vertex :math:`v_i`.
 
-.. TODO::
-   type: Figure
+Here is an example of the two representations on a directed graph.
 
-   Refactor these figures to be one for adjacency matrix and the other
-   for adjacency list, rather than one for directed graph and the other
-   for undirected graph.
-
-In this figure, we see the representations for a directed graph.
-
-.. inlineav:: GIntroRepCON2_2 dgm 
+.. inlineav:: GamatrixCON dgm 
    :output: show
-
-In this figure, we see the representations for an undirected graph.
-
-.. _Undirected:
-
-.. inlineav:: GIntroRepCON2_3 dgm 
-   :output: show 
 
 .. topic:: Example
 
-   The entry for Vertex 0 in Figure :num:`Figure #GraphRep` (c)
+   The entry for Vertex 0 in (c)
    stores 1 and 4 because there are two edges in the
    graph leaving Vertex 0, with one going to Vertex 1 and one going to
    Vertex 4.
    The list for Vertex 2 stores an entry for Vertex 4 because there is
    an edge from Vertex 2 to Vertex 4, but no entry for Vertex 3
    because this edge comes into Vertex 2 rather than going out.
+
+Here is an example of the two representations on an undirected graph.
+
+.. _Undirected:
+
+.. inlineav:: GalistCON dgm 
+   :output: show 
 
 The storage requirements for the adjacency list depend on both the
 number of edges and the number of vertices in the graph.
@@ -241,8 +215,6 @@ graphs.
 Each edge of an undirected graph connecting Vertices :math:`u`
 and :math:`v` is represented by two directed edges: one from
 :math:`u` to :math:`v` and one from :math:`v` to :math:`u`.
-Figure :num:`Figure #Undirected` illustrates the use of the adjacency
-matrix and the adjacency list for undirected graphs.
 
 Which graph representation is more space efficient depends on the
 number of edges in the graph.
@@ -261,11 +233,10 @@ be more space efficient.:
 
    Assume that a vertex index requires two bytes, a pointer requires
    four bytes, and an edge weight requires two bytes.
-   Then the adjacency matrix for the graph of
-   Figure :num:`Figure #GraphRep` 
+   Then the adjacency matrix for the directed graph above
    requires :math:`2 |\mathbf{V}^2| = 50` bytes while the adjacency list
    requires :math:`4 |\mathbf{V}| + 6 |\mathbf{E}| = 56` bytes.
-   For the graph of Figure :num:`Figure #Undirected`, the adjacency
+   For the undirected version of the graph above, the adjacency
    matrix requires the same space as before, while the adjacency list
    requires :math:`4 |\mathbf{V}| + 6 |\mathbf{E}| = 92` bytes
    (because there are now 12 edges instead of 6).
@@ -287,7 +258,7 @@ time when the algorithm might otherwise require only
 This is a considerable disadvantage when the graph is sparse,
 but not when the graph is closer to full.
 
-.. avembed:: Exercises/Development/GraphIntroSumm.html ka 
+.. avembed:: Exercises/Graph/GraphIntroSumm.html ka 
 
 Notes
 -----
@@ -300,10 +271,10 @@ Notes
        To simplify our graph API, we will assume that there are no
        dupicate edges, and no edges that connect a node to itself.
 
-.. odsascript:: AV/Graph/GdefundefCON.js
+.. odsascript:: AV/Graph/GdirundirCON.js
 .. odsascript:: AV/Graph/GneighborCON.js
-.. odsascript:: AV/Development/GIntroDefCON.js
-.. odsascript:: AV/Development/GIntroPathDefCON.js
+.. odsascript:: AV/Graph/GpathDefCON.js
 .. odsascript:: AV/Graph/GconcomCON.js
-.. odsascript:: AV/Development/GIntroRepCON2_2.js
-.. odsascript:: AV/Development/GIntroRepCON2_3.js
+.. odsascript:: AV/Graph/GsparseDefCON.js
+.. odsascript:: AV/Graph/GamatrixCON.js
+.. odsascript:: AV/Graph/GalistCON.js

@@ -1,6 +1,6 @@
 #GIntroRepCON2_2 .jsavcanvas {
     
-    height: 500px;
+    height: 400px;
     
 }
 
@@ -19,7 +19,5 @@
 }
 
 .vertical-text {
-	transform: rotate(270deg);
-	/*transform-origin: left bottom;*/
-	transform-origin: left top;
+	transform: rotate(180deg);
 }

@@ -1,27 +1,14 @@
 "use strict";
 $(document).ready(function () {
 	var av = new JSAV("GIntroRepCON2_2", {"animationMode" : "none"});
-/*
-	av.label("There are two commonly used methods for representing graphs. " + 
-		"The adjacency matrix is illustrated by Figure 1.1.4 (b). The adjacency " +
-		" matrix for a graph is a |V|×|V| array. Assume that |V|=n and that the" + 
-		" vertices are labeled from v0 through vn−1. Row i of the adjacency matrix "+ 
-		"contains entries for Vertex vi. Column j in row i is marked if there is an "+ 
-		"edge from vi to vj and is not marked otherwise. Thus, the adjacency matrix " + 
-		"requires one bit at each position. Alternatively, if we wish to associate a " 
-		+ "number with each edge, such as the weight or distance between two vertices, "+ 
-		"then each matrix position must store that number. In either case, the space "
-		+" requirements for the adjacency matrix are Θ(|V|2)..").show(); 
 
-*/ 
-
-	av.label("The following are the two respresentations for the directed graph below.").show();
+	//av.label("The following are the two respresentations for the directed graph below.").show();
 
 	//i think this should be left in the content and then show the different just the imagees in the av 
 
 	//set up graph 
-	var gTop = 25; 
-	var gLeft = 350;
+	var gTop = 120; 
+	var gLeft = 0;
 	var graph = av.ds.graph({top: gTop, left: gLeft, directed: true});
 
 	var nodeOne = graph.addNode("0", {left: 0, top: 0});
@@ -41,20 +28,20 @@ $(document).ready(function () {
 
 
     //set up adjancey matrix 
-    var a = av.label("(a) \n Adajceny Matrix Representation ", {top: 450, left: 100}).show();
-    var mTop = 250; 
-    var mLeft = 150;
+    var a = av.label("(a) \n Adajceny Matrix Representation ", {top: 300, left: 195, width: 50}).show();
+    var mTop = 115; 
+    var mLeft = 250;
     var mat = av.ds.matrix([[, 1, , ,1], [ , , , 1, ,], [ , , , , 1], [ , , , 1, ,], [, , 1, , ,]], 
     	{style: "table", top: mTop, left: mLeft});
 
-    var row = av.label(" 0 1 2 3 4", {top: 233, left: 157}).addClass("addSpace");
-    var col = av.label(" 0  1  2  3  4", {top: 385, left: 130}).addClass("vertical-text").addClass("addSpace");
+    var row = av.label(" 0 1 2 3 4", {top: 90, left: 257}).addClass("addSpace");
+    var col = av.label(" 0  1  2  3  4", {top: 130, left: 240}).addClass("vertical-text").addClass("addSpace");
    
     mat.layout();
 
     //set up list reprseentation 
 
-    var aTop = 200; 
+    var aTop = 100; 
     var aLeft = 500;
 
     var aList = av.ds.array([, , , , ,], {indexed: true, left: aLeft, top: aTop, layout: "vertical"});
@@ -63,7 +50,7 @@ $(document).ready(function () {
 
     //top 10  left 365 
     //set up linked list 
-    var lTop =  205; 
+    var lTop =  100; 
     var lLeft = 575; 
     var list1 = av.ds.list({top: lTop, left: lLeft});
 
@@ -73,25 +60,25 @@ $(document).ready(function () {
     list1.layout();
 
     //second linked list 
-    lTop = 250; 
+    lTop = 150; 
     var list2 = av.ds.list({top: lTop, left: lLeft});
     list2.addFirst("3");
     list2.layout();
     
     //third linked list
-    lTop = 295;
+    lTop = 195;
     var list3 = av.ds.list({top: lTop, left: lLeft});
     list3.addFirst("4");
     list3.layout();
 
     //fourth linked list 
-    lTop = 340; 
+    lTop = 240; 
     var list4 = av.ds.list({top: lTop, left: lLeft});
     list4.addFirst("2");
     list4.layout();
 
     //fifth linked list 
-    lTop = 385; 
+    lTop = 285; 
     var list5 = av.ds.list({top: lTop, left: lLeft});
     list5.addFirst("1");
   
@@ -99,14 +86,13 @@ $(document).ready(function () {
 
     //add lines connect array to list 
 
-    //should these lines overlap like they do in the linked list? 
-    var line = av.g.line( 530, 235, 575, 235, {'arrow-end': 'classic-wide-long', 'stroke-width': 2}); 
-    var line2 = av.g.line( 530, 275, 575, 275, {'arrow-end': 'classic-wide-long', 'stroke-width': 2});
-    var line3 = av.g.line( 530, 320, 575, 320, {'arrow-end': 'classic-wide-long', 'stroke-width': 2});
-    var line4 = av.g.line( 530, 365, 575, 365, {'arrow-end': 'classic-wide-long', 'stroke-width': 2});
-    var line5 = av.g.line( 530, 410, 575, 410, {'arrow-end': 'classic-wide-long', 'stroke-width': 2});
+    var line = av.g.line( 530, 135, 575, 135, {'arrow-end': 'classic-wide-long', 'stroke-width': 2}); 
+    var line2 = av.g.line( 530, 175, 575, 175, {'arrow-end': 'classic-wide-long', 'stroke-width': 2});
+    var line3 = av.g.line( 530, 220, 575, 220, {'arrow-end': 'classic-wide-long', 'stroke-width': 2});
+    var line4 = av.g.line( 530, 265, 575, 265, {'arrow-end': 'classic-wide-long', 'stroke-width': 2});
+    var line5 = av.g.line( 530, 310, 575, 310, {'arrow-end': 'classic-wide-long', 'stroke-width': 2});
 
-    av.label("(b) \n Adajceny List Representation ", {top: 450, left: 475}).show();
+   av.label("(b) \n Adajceny List Representation ", {top: 350, left: 515}).show();
     
 
 	});
