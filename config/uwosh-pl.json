@@ -21,8 +21,15 @@
 	    "PL/FP/ListDataStructure": {
 		"long_name": "The List data structure",
 		"dispModComp": false,
-		"exercises": {}
+		"exercises": {
+		    "ListExerciseOpen": {
+			"long_name": "What is the value of this expression?",
+			"required": false,
+			"points": 0.0,
+			"threshold": 1.0
+		    }
 		}
+	    }
         },
 	"Lambda Calculus": {
 	    "PL/LC/Syntax": {
