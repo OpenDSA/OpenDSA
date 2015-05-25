@@ -18,11 +18,15 @@
     height: 420px;
 }
 
-#GamatrixCON .jsavcanvas {
+#GdirRepCON .jsavcanvas {
     height: 230px;
 }
 
-#GalistCON .jsavcanvas {
+#GundirRepCON .jsavcanvas {
+    height: 230px;
+}
+
+#GweightedCON .jsavcanvas {
     height: 230px;
 }
 
@@ -70,3 +74,11 @@
 .vertical-text {
 	transform: rotate(90deg);
 }
+
+#GweightedCON .jsavhorizontallist.jsavautoresize .jsavnode {
+  min-width: 30px !important;
+  max-width: 30px !important;
+  min-height: 20px !important;
+  max-height: 20px !important;
+}
+

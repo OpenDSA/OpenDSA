@@ -85,6 +85,8 @@ A graph whose edges have weights
 .. inlineav:: GdirundirCON dgm 
    :output: show
 
+   Some types of graphs.
+
 Two vertices are :term:`adjacent` if they are joined by an edge, such
 as Vertices :math:`a` and :math:`b` in the part (a) of the following
 figure.
@@ -161,11 +163,7 @@ Row :math:`i` of the adjacency matrix contains entries for
 Vertex :math:`v_i`.
 Column :math:`j` in row :math:`i` is marked if there is an edge
 from :math:`v_i` to :math:`v_j` and is not marked otherwise.
-Thus, the adjacency matrix requires one bit at each position.
-Alternatively, if we wish to associate a number with each edge,
-such as the weight or distance between two vertices,
-then each matrix position must store that number.
-In either case, the space requirements for the adjacency matrix are
+The space requirements for the adjacency matrix are
 :math:`\Theta(|\mathbf{V}|^2)`.
 
 The second common representation for graphs is the
@@ -184,9 +182,12 @@ The list for Vertex 2 stores an entry for Vertex 4 because there is
 an edge from Vertex 2 to Vertex 4, but no entry for Vertex 3
 because this edge comes into Vertex 2 rather than going out.
 
-.. inlineav:: GamatrixCON dgm 
+.. _Directed:
+
+.. inlineav:: GdirRepCON dgm 
    :output: show
 
+   Representing a directed graph.
 
 Both the adjacency matrix and the adjacency list can be used to store
 directed or undirected graphs.
@@ -201,13 +202,10 @@ entry for both Vertex 3 and Vertex 4.
 
 .. _Undirected:
 
-.. inlineav:: GalistCON dgm 
+.. inlineav:: GundirRepCON dgm 
    :output: show 
 
-.. TODO::
-   :type: Diagram
-
-   Show a weighted directed graph
+   Representing an undirected graph.
 
 The storage requirements for the adjacency list depend on both the
 number of edges and the number of vertices in the graph.
@@ -215,6 +213,33 @@ There must be an array entry for each vertex (even if the vertex is
 not adjacent to any other vertex and thus has no elements on its
 linked list), and each edge must appear on one of the lists.
 Thus, the cost is :math:`\Theta(|\mathbf{V}| + |\mathbf{E}|)`.
+
+Sometimes we want to store weights or distances with each each edge,
+such as in Figure :num:`Figure #GraphTerms` (c).
+This is easy with the adjacency matrix, where we will just store
+values for the weights in the matrix.
+In Figures :num:`Figure #Directed` and :num:`Figure #Undirected` we
+store a value of "1" at each position just to show that the edge
+exists.
+That could have been done using a single bit, but since bit
+manipulation is typically complicated in most programming languages,
+an implementation might store a byte or an integer at each matrix
+position.
+For a weighted graph, we would need to store at each position in the
+matrix enough space to represent the weight, which might typically be
+an integer.
+
+The adjacency list needs to explicitly store a weight with each edge.
+In the adjacency list shown below, each linked list node is shown
+storing two values.
+The first is the index for the neighbor at the end of the associated
+edge.
+The second is the value for the weight.
+As with the adjacency matrix, this value requires space to represent,
+typically an integer.
+
+.. inlineav:: GweightedCON dgm 
+   :output: show
 
 Which graph representation is more space efficient depends on the
 number of edges in the graph.
@@ -241,7 +266,7 @@ be more space efficient.
    requires :math:`4 |\mathbf{V}| + 6 |\mathbf{E}| = 92` bytes
    (because there are now 12 edges represented instead of 6).
 
-.. avembed:: Exercises/Development/GraphSpaceReqSum.html ka 
+.. avembed:: Exercises/Graph/GspaceCalcSumm.html ka 
 
 The adjacency matrix often requires a higher asymptotic cost for an
 algorithm than would result if the adjacency list were used.
@@ -276,5 +301,6 @@ Notes
 .. odsascript:: AV/Graph/GpathDefCON.js
 .. odsascript:: AV/Graph/GconcomCON.js
 .. odsascript:: AV/Graph/GsparseDefCON.js
-.. odsascript:: AV/Graph/GamatrixCON.js
-.. odsascript:: AV/Graph/GalistCON.js
+.. odsascript:: AV/Graph/GdirRepCON.js
+.. odsascript:: AV/Graph/GundirRepCON.js
+.. odsascript:: AV/Graph/GweightedCON.js

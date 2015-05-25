@@ -1,6 +1,6 @@
 "use strict";
 $(document).ready(function () {
-  var av_name = "GamatrixCON";
+  var av_name = "GweightedCON";
   var interpret = ODSA.UTILS.loadConfig({"av_name": av_name,
                          "json_path": "AV/Graph/GraphDefCON.json"}).interpreter;
   var av = new JSAV(av_name, {"animationMode" : "none"});
@@ -18,26 +18,26 @@ $(document).ready(function () {
   var node3 = graph.addNode("3", {left: 100, top: 100});
   var node4 = graph.addNode("4", {left:  50, top:  50});
 
-  graph.addEdge(node0, node1);
-  graph.addEdge(node0, node4);
-  graph.addEdge(node1, node3);
-  graph.addEdge(node2, node4);
-  graph.addEdge(node3, node2);
-  graph.addEdge(node4, node1);
+  graph.addEdge(node0, node1, {weight: 3});
+  graph.addEdge(node0, node4, {weight: 4});
+  graph.addEdge(node1, node3, {weight: 3});
+  graph.addEdge(node2, node4, {weight: 1});
+  graph.addEdge(node3, node2, {weight: 7});
+  graph.addEdge(node4, node1, {weight: 1});
   graph.layout();
 
   //set up adjancey matrix 
-  var a = av.label("Adajceny Matrix", {top: lTop, left: 355}).show();
+  var a = av.label("Adajceny Matrix: Weights", {top: lTop, left: 310}).show();
 
-  var mat = av.ds.matrix([[, 1, , , 1], [ , , , 1, ,], [ , , , , 1],
-                          [ , , , 1, ,], [, , 1, , ,]], 
+  var mat = av.ds.matrix([[ , 3, , , 4], [ , , , 3, ,], [ , , , , 4],
+                          [ , , , 7, ,], [ , , 1, , ,]], 
                          {style: "table", top: gTop + 20, left: gLeft + 250});
 
   var row = av.label(" 0 1 2 3 4", {top: gTop, left: gLeft + 265}).addClass("addSpace");
   var col = av.label(" 0  1  2  3  4", {top: gTop + 90, left: gLeft + 170}).addClass("vertical-text").addClass("addSpace");
   mat.layout();
 
-  //set up list reprseentation 
+  // Set up list representation 
   var aTop = 0; 
   var aLeft = gLeft + 500;
 
@@ -45,38 +45,38 @@ $(document).ready(function () {
                     {indexed: true, left: aLeft, top: aTop, layout: "vertical"});
   aList.layout();
 
-  //set up linked list 
+  // Adjacency lists layout constants
   var listTop =  7;
   var listLeft = gLeft + 570;
   var listGap = 34;
   var arrowTop = 32;
   var arrowLeft = listLeft - 45;
 
-  var list1 = av.ds.list({top: listTop, left: listLeft});
-  list1.addFirst("1");
-  list1.layout();
-  list1.add(1, "4");
-  list1.layout();
+  // set up Vertex 0 linked list
+  var list0 = av.ds.list({top: listTop, left: listLeft});
+  list0.addFirst("1|3");
+  list0.add(1, "4|4");
+  list0.layout();
 
-  //second linked list 
-  var list2 = av.ds.list({top: listTop + listGap * 1, left: listLeft});
-  list2.addFirst("3");
-  list2.layout();
+  // set up Vertex 1 linked list
+  var list1 = av.ds.list({top: listTop + listGap * 1, left: listLeft});
+  list1.addFirst("3|3");
+  list1.layout();
     
-  //third linked list
-  var list3 = av.ds.list({top: listTop + listGap * 2, left: listLeft});
-  list3.addFirst("4");
+  // set up Vertex 2 linked list
+  var list2 = av.ds.list({top: listTop + listGap * 2, left: listLeft});
+  list2.addFirst("4|1");
+  list2.layout();
+
+  // set up Vertex 3 linked list 
+  var list3 = av.ds.list({top: listTop + listGap * 3, left: listLeft});
+  list3.addFirst("2|7");
   list3.layout();
 
-  //fourth linked list 
-  var list4 = av.ds.list({top: listTop + listGap * 3, left: listLeft});
-  list4.addFirst("2");
+  // set up Vertex 4 linked list 
+  var list4 = av.ds.list({top: listTop + listGap * 4, left: listLeft});
+  list4.addFirst("1|1");
   list4.layout();
-
-  //fifth linked list 
-  var list5 = av.ds.list({top: listTop + listGap * 4, left: listLeft});
-  list5.addFirst("1");
-  list5.layout();
 
   //add lines connect array to list 
   av.g.line(arrowLeft, arrowTop, arrowLeft + 45, arrowTop,
@@ -90,5 +90,5 @@ $(document).ready(function () {
   av.g.line(arrowLeft, arrowTop + listGap * 4, arrowLeft + 45, arrowTop + listGap * 4,
             {'arrow-end': 'classic-wide-long', 'stroke-width': 2});
 
-  av.label("Adajceny List", {top: lTop, left: 600}).show();
+  av.label("Adjaceny List: Weights", {top: lTop, left: 590}).show();
 });
