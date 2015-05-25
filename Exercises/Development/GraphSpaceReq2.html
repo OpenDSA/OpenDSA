@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <title>Graph Adjaceny List Space Req</title>
+  <title>Adjaceny List Space Calculation</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
-<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
 </head>
 
 <script>
@@ -33,18 +33,17 @@ function V(numV){
   <div class="problems">
     <div id="problem-type-or-description">
       <p class="problem">WARNING! Read the conditions for the problems
-	in this set very carefully! </p>
+	in this set very carefully!
+      </p>
       <p class="question">Assume for a directed graph with <var>numV</var>
-      	 verticies and <var>numE</var> edges the vertex index requires 
-      	 <var>vertB</var> bytes, the pointer requires <var>pointerB</var>
-      	 bytes, and the edge weights require <var>edgeB</var> bytes. 
-      	 Calculate the byte requirements for an adjacency list. 
+         verticies and <var>numE</var> edges that a vertex index requires
+         <var>vertB</var> bytes, a pointer requires <var>pointerB</var>
+         bytes, and that edge weights require <var>edgeB</var> bytes. 
+         Calculate the byte requirements for an adjacency matrix. 
       </p>
       <p class="solution" data-type="text"><var>ANS</var></p>
       <div class="hints">
-         <p> V * pointerBytes + E * edgeweight bytes  = <var>ANS</var></p>
-         <p>ADDDDD</p>
-
+         <p> V * pointer + E * (vertex_index + edge_weight bytes + pointer) = <var>ANS</var></p>
       </div> 
     </div>
   </div>

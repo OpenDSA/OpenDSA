@@ -153,13 +153,10 @@ An equivalent definition is that
 a free tree is connected and has :math:`|\mathbf{V}| - 1` edges.
 
 There are two commonly used methods for representing graphs.
-The :term:`adjacency matrix`
-is illustrated by (b) in the figures below.
-The adjacency matrix for a graph is a
+The :term:`adjacency matrix` for a graph is a
 :math:`|\mathbf{V}| \times |\mathbf{V}|` array.
-Assume that :math:`|\mathbf{V}| = n` and that
-the vertices are labeled from :math:`v_0` through
-:math:`v_{n-1}`.
+We typically label the vertices from :math:`v_0` through
+:math:`v_{|\mathbf{V}|-1}`.
 Row :math:`i` of the adjacency matrix contains entries for
 Vertex :math:`v_i`.
 Column :math:`j` in row :math:`i` is marked if there is an edge
@@ -172,8 +169,7 @@ In either case, the space requirements for the adjacency matrix are
 :math:`\Theta(|\mathbf{V}|^2)`.
 
 The second common representation for graphs is the
-:term:`adjacency list`,
-illustrated by (c) in these figures.
+:term:`adjacency list`.
 The adjacency list is an array of linked lists.
 The array is :math:`|\mathbf{V}|` items long, with position :math:`i`
 storing a pointer to the linked list of edges for Vertex :math:`v_i`.
@@ -181,26 +177,37 @@ This linked list represents the edges by the vertices that are
 adjacent to Vertex :math:`v_i`.
 
 Here is an example of the two representations on a directed graph.
+The entry for Vertex 0 stores 1 and 4 because there are two edges
+in the graph leaving Vertex 0, with one going to Vertex 1 and one
+going to Vertex 4.
+The list for Vertex 2 stores an entry for Vertex 4 because there is
+an edge from Vertex 2 to Vertex 4, but no entry for Vertex 3
+because this edge comes into Vertex 2 rather than going out.
 
 .. inlineav:: GamatrixCON dgm 
    :output: show
 
-.. topic:: Example
 
-   The entry for Vertex 0 in (c)
-   stores 1 and 4 because there are two edges in the
-   graph leaving Vertex 0, with one going to Vertex 1 and one going to
-   Vertex 4.
-   The list for Vertex 2 stores an entry for Vertex 4 because there is
-   an edge from Vertex 2 to Vertex 4, but no entry for Vertex 3
-   because this edge comes into Vertex 2 rather than going out.
-
+Both the adjacency matrix and the adjacency list can be used to store
+directed or undirected graphs.
+Each edge of an undirected graph connecting Vertices :math:`u`
+and :math:`v` is represented by two directed edges: one from
+:math:`u` to :math:`v` and one from :math:`v` to :math:`u`.
 Here is an example of the two representations on an undirected graph.
+We see that there are twice as many edge entries in both the adjacency
+matrix and the adjacency list.
+For example, for the undirected graph, the list for Vertex 2 stores an
+entry for both Vertex 3 and Vertex 4.
 
 .. _Undirected:
 
 .. inlineav:: GalistCON dgm 
    :output: show 
+
+.. TODO::
+   :type: Diagram
+
+   Show a weighted directed graph
 
 The storage requirements for the adjacency list depend on both the
 number of edges and the number of vertices in the graph.
@@ -208,13 +215,6 @@ There must be an array entry for each vertex (even if the vertex is
 not adjacent to any other vertex and thus has no elements on its
 linked list), and each edge must appear on one of the lists.
 Thus, the cost is :math:`\Theta(|\mathbf{V}| + |\mathbf{E}|)`.
-
-Both the adjacency matrix and the adjacency list can be used to store
-directed or undirected
-graphs.
-Each edge of an undirected graph connecting Vertices :math:`u`
-and :math:`v` is represented by two directed edges: one from
-:math:`u` to :math:`v` and one from :math:`v` to :math:`u`.
 
 Which graph representation is more space efficient depends on the
 number of edges in the graph.
@@ -227,7 +227,7 @@ stored for an edge is one bit to indicate its existence.
 As the graph becomes denser, the adjacency matrix becomes
 relatively more space efficient.
 Sparse graphs are likely to have their adjacency list representation
-be more space efficient.:
+be more space efficient.
 
 .. topic:: Example
 
@@ -239,7 +239,7 @@ be more space efficient.:
    For the undirected version of the graph above, the adjacency
    matrix requires the same space as before, while the adjacency list
    requires :math:`4 |\mathbf{V}| + 6 |\mathbf{E}| = 92` bytes
-   (because there are now 12 edges instead of 6).
+   (because there are now 12 edges represented instead of 6).
 
 .. avembed:: Exercises/Development/GraphSpaceReqSum.html ka 
 
