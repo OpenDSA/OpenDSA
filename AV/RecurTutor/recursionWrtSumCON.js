@@ -40,7 +40,7 @@
 
   av.step();
   
-  av.umsg("You can even have the recursive call in the if condition insted of the base case as long as you have the right condition to stop th erecursice function.");
+  av.umsg("You can even have the recursive call in the if condition insted of the base case as long as you have the right condition to stop the recursice function.");
   
   var labeld = av.label("Fourth Version", {left: 430, top: 190});
   var  pseudo4 = av.code("int sum(int arr[],int size){\n if ( size > 0 )\n  return sum( arr, size - 1 ) +\n  arr[ size - 1 ];;\n return 0; \n}", {lineNumbers:false , top:215 , left:430});

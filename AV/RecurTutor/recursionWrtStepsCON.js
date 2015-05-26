@@ -88,10 +88,19 @@
    av.umsg(" Putting it All Together. So, writing a recursive function requires putting the base case and the recursive case together. Here is the usual format:");
    av.step();
 
-   var peseudo7 = av.code("if ( base case )\n // return some simple expression\n else\n // recursive case\n   {\n     // some work before \n     // recursive call \n      // some work after \n    }" , {lineNumbers:false});
+   var peseudo7 = av.code("if ( base case )\n // return some simple expression\nelse {\n // recursive case\n // some work before \n // recursive call \n // some work after \n}" , {lineNumbers:false , top:0 , left:70});
    peseudo7.highlight(1);
-   peseudo7.highlight(4);
+   peseudo7.highlight(3);
    av.step();
+   
+   av.umsg(" You can also put it all together in an alternative format:");
+   var labela = av.label("Usual Format:", {left: 70, top: -23});
+   var labela = av.label("Alternative Format:", {left: 430, top: -23});
+   var peseudo7 = av.code("if ( recursive case ){\n // some work before \n // recursive call \n // some work after \n}\nelse{\n //base case // return some simple expression }" , {lineNumbers:false , top:0 , left:430});
+   peseudo7.highlight(1);
+   peseudo7.highlight(6);
+   av.step();
+   
    av.recorded();
   
 }(jQuery));
