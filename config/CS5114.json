@@ -1125,10 +1125,25 @@
       }
     },
     "Graphs": {
-      "Development/GraphIntro": {
-        "long_name": "Introduction and Terminology",
-        "exercises": {}
-      },
+       "Development/GraphTraversal": {
+	 "long_name": "Graph Traversal",
+	 "exercises": {
+	   "graphDFS": {
+	     "long_name": "Depth First Search Visualization",
+	     "required": false,
+	     "points": 0,
+	     "showhide": "show",
+	     "threshold": 1.0
+	   },
+	   "graphBFS": {
+	     "long_name": "Breadth First Search Visualization",
+	     "required": false,
+	     "points": 0,
+	     "showhide": "show",
+	     "threshold": 1.0
+	   }
+	 }
+       },
       "Development/GraphImpl": {
         "long_name": "Graph Implementation",
         "exercises": {}

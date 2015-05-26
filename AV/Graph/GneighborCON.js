@@ -3,7 +3,7 @@
 $(document).ready(function () {
   var av_name = "GneighborCON";
   var interpret = ODSA.UTILS.loadConfig({"av_name": av_name,
-                         "json_path": "AV/Graph/GraphDefCON.json"}).interpreter;
+                    "json_path": "AV/Graph/GraphDefCON.json"}).interpreter;
   var av = new JSAV(av_name, {"animationMode" : "none"});
 
   var gTop = -5;
@@ -54,6 +54,6 @@ $(document).ready(function () {
   graphB.addEdge(nodec, nodee);
 
   av.label(interpret("av_l1"), {top: lHeight, left: 100}).show();
-  av.label(interpret("av_l2"), {top: lHeight, left: 470}).show();
+  av.label(interpret("av_l2"), {top: lHeight, left: 460}).show();
   graphB.layout();
 });
