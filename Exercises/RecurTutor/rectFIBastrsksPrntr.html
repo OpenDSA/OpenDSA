@@ -47,16 +47,13 @@ function checkAnswer(answer ,i) {
     <div id="problem-type-or-description">
       <p class="question"> 
       Consider the following code::
-     <textarea id="codeTextarea" >	
-void asterisksPrinter(int i) {	
-  if (i > 1)
-  {
-   asterisksPrinter(i / 2);	
-   asterisksPrinter(i / 2);	
+     <textarea id="codeTextarea" >void asterisksPrinter(int i) {	
+  if (i > 1) {
+    asterisksPrinter(i / 2);	
+    asterisksPrinter(i / 2);	
   }	
   System.out.print( "*" );
-}
-	</textarea>
+}</textarea>
       How many asterisks are printed by the method call asterisksPrinter(<var>i</var>)?(Either write the number of asterisks , or write “infinite recursion”.)
       </p>
       <br> <textarea rows="1" cols="20" style="resize:none"  id="answerTextarea" ></textarea></p>

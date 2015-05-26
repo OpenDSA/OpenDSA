@@ -34,15 +34,12 @@ function checkAnswer(answer) {
     <div id="problem-type-or-description">
       <p class="question">     
       Consider the following function:
-      <textarea id="codeTextarea" >
-public void dosomething (int n) {
- if(n>0) 
- {
-  dosomething(n-1);
-  System.out.print(n);
- }		
-}
-      </textarea>		
+      <textarea id="codeTextarea" >public void dosomething (int n) {
+  if(n > 0) {
+   dosomething(n-1);
+   System.out.print(n);
+  }		
+}</textarea>		
       What will be printed when "dosomething(5)" is called? (Either write a sequence of numbers, or write "infinite recursion".)</p>
       <br> <textarea rows="1" cols="20" style="resize:none"  id="answerTextarea" ></textarea></p>
       <div class="solution" data-type="custom">

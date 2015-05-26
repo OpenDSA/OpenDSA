@@ -26,16 +26,12 @@
     <div id="problem-type-or-description">
       <p class="question"> 
       Which describes what the printString method below does?
-      <textarea id="codeTextarea" >
-void printString(String s)
-{
- if(s.length()>0)
- {
-  printString(s.substring(1));
-  System.out.print(s.substring(0,1));
+      <textarea id="codeTextarea" >void printString(String s) {
+  if(s.length() > 0) {
+   printString(s.substring(1));
+   System.out.print(s.substring(0,1));
   }
-}
-	</textarea>
+}</textarea>
       </p>
 
       <div class="solution"><var>"It prints s in reverse order."</var></div>

@@ -57,26 +57,20 @@ function checkAnswer(answer, n) {
     <div id="problem-type-or-description">
       <p class="question"> 
       Consider the following code:
-       <textarea id="codeTextarea">
-public void mystery(int n) {
+       <textarea id="codeTextarea">public void mystery(int n) {
   if (n < 0){
-   System.out.print("-");
-   mystery(-n);
-   }
-  
+    System.out.print("-");
+    mystery(-n);
+  }
   else if (n < 10)
     System.out.println(n);
-  
-  else
-   {
-	int two = n % 100;
+  else {
+    int two = n % 100;
     System.out.print(two / 10);
     System.out.print(two % 10);
     mystery(n / 100); 
-    
-    } 
- }
-	  </textarea>
+  } 
+}</textarea>
       What will be the outputs printed when mystery(<var>n</var>)?
       </p>
       <br> <textarea rows="1" cols="20" style="resize:none"  id="answerTextarea" ></textarea></p>

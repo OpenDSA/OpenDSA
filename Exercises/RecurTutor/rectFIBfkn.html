@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <title> Recursion Tracing Exercise: Another Mystrey return</title>
+  <title> Recursion Tracing Exercise: Two Recursive Calls</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
@@ -16,20 +16,24 @@
     mode:  "text/x-java"
   });
   </script> 
+  <style> 
+   #problemarea { height: 800px;}
+  </style>
 </head>
  
-<body  data-height="550" data-width="950">
+<body  data-height="800" data-width="950">
 <script>
-function mystery( n,  a , d)
-{
-	if(n==1)
-	 return a;
-	else
-	 return d + mystery(n-1,a,d);
+function f(k , n){
+ if(n == k)
+   return k;
+ else if(n > k)
+     return f(k, n-k);
+ else
+     return f(k-n, n);
 }
 
-function checkAnswer(answer , n, a , d) {
-  if ( answer == mystery(n, a , d)) {
+function checkAnswer(answer , k , n) {
+  if ( answer == f(k , n)) {
     return true;
   } else {
     return false;
@@ -38,35 +42,36 @@ function checkAnswer(answer , n, a , d) {
 </script>
   
 <div class="exercise">
-<div class="vars">
-    <var id="n">randRange(2, 6)</var>
-    <var id="a">randRange(0, 5)</var>
-    <var id="d">randRange(0, 5)</var>
+<div class="vars" data-ensure="k != n">
+    <var id="k">randRange(1, 10)</var>
+    <var id="n">randRange(1, 10)</var>
   </div>
   <div class="problems">
     <div id="problem-type-or-description">
       <p class="question">     
       Consider the following function:
-      <textarea id="codeTextarea" > 	
-public int mystery(int n, int a , int d)
-{
- if(n==1)
-  return a;
- else
-  return d + mystery(n-1,a,d);
-}
-      </textarea>		
-     What value is returned by the call mystery(<var>n</var>,<var>a</var>,<var>d</var>)? (Either write a number, or write "infinite recursion".)</p>
+      <textarea id="codeTextarea" >public int f(int k , int n) {
+  if(n==k)
+    return k;
+  else if(n > k)
+    return f(k, n-k);
+  else
+    return f(k-n, n);
+}</textarea>		
+     What value is returned by the call f(<var>k</var>,<var>n</var>)? (Either write a number, or write “infinite recursion”.)</p>
       <br> <textarea rows="1" cols="20" style="resize:none"  id="answerTextarea" ></textarea></p>
       <div class="solution" data-type="custom">
         <div class="guess"> [ "list" ] </div>
         <div class="validator-function">
          answer = parseInt($('#answerTextarea').val());
-         return checkAnswer(answer, n, a, d);
+         return checkAnswer(answer, k, n );
         </div>
       </div>
       <div class="hints">
-      <p> If you trace this function, you will find that d is added to it self n-1 times and in the nth time a is added to the sum.</p>
+      <p> The answer depends on the relationship between k and n.</p>
+      <p> if n is greater than k then the first recursive call will execute. Otherwise, the second one will excuse.</p>
+      <p> In any of the cases, n or k is decremented till it becomes equal to the other one.</p>
+      <p> k is returned in both cases. </p>
       </div> 
   </div>
 </div>

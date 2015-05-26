@@ -42,13 +42,11 @@ function checkAnswer(answer , a) {
     <div id="problem-type-or-description">
       <p class="question">     
       Consider the following function:
-      <textarea id="codeTextarea" >
-int mystery(int a, int b) 
-{
- if (b==1)	  
-  return a;	
- else
-  return a + mystery(a, b-1);	
+      <textarea id="codeTextarea" >int mystery(int a, int b) {
+  if (b == 1)	  
+   return a;	
+  else
+   return a + mystery(a, b-1);	
 }</textarea>		
       What is the return of calling mystery(<var>a</var>, 1)?</p>
       <br> <textarea rows="1" cols="9" style="resize:none"  id="answerTextarea" ></textarea></p>

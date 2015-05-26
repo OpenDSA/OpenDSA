@@ -28,25 +28,22 @@
       <p class="question"> 
       The writeWithCommas function is supposed to print its nonnegative int argument with commas properly inserted (every three digits, starting at the right).
       The problem is that writeWithCommas doesn’t always work as intended. Which of the following integer arguments will not be printed correctly:
-      <textarea id="codeTextarea" >
-public class Intformatter{		
- public static void writeThreeDigits(int n){
-	System.out.print(n/100);	
+      <textarea id="codeTextarea" >public class Intformatter {		
+  public static void writeThreeDigits(int n) {
+    System.out.print(n/100);	
     System.out.print((n/10)%10);		
     System.out.print(n%10);
-   }
-   
-  public static void writeWithCommas(int n){	
-    if(n<1000)
+  } 
+  public static void writeWithCommas(int n) {	
+    if(n < 1000)
 	  System.out.print(n);			
 	else { 
 	  writeThreeDigits(n%1000);
       System.out.print(",");	
 	  writeWithCommas(n/1000);
-	  }
-	}
-}
-	</textarea>
+	 }
+  }
+}</textarea>
       </p>
 
       <div class="solution"><var><code>365051</code></var></div>

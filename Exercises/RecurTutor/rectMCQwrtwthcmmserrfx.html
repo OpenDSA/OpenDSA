@@ -24,26 +24,22 @@
     <div id="problem-type-or-description">
       <p class="question"> 
      Which of the described code changes at the right will result in the given functions below working properly:
-       <textarea id="codeTextarea" >
-public class Intformatter{		
-  public static void writeThreeDigits(int n){
-	System.out.print(n/100);	
+       <textarea id="codeTextarea" >public class Intformatter {		
+  public static void writeThreeDigits(int n) {
+    System.out.print(n/100);	
     System.out.print((n/10)%10);		
     System.out.print(n%10);
-   }
-   
-   public static void writeWithCommas(int n){	
-    if(n<1000)
-	System.out.print(n);			
-	else
-	{ 
-	 writeThreeDigits(n%1000);
-     System.out.print(",");	
-	 writeWithCommas(n/1000);
-	 }
+  }   
+  public static void writeWithCommas(int n) {	
+    if(n < 1000)
+	  System.out.print(n);			
+	else { 
+	  writeThreeDigits(n%1000);
+      System.out.print(",");	
+	  writeWithCommas(n/1000);
 	}
-}
-	</textarea>
+  }
+}</textarea>
       </p>
 
       <div class="solution"><var>Interchange the line: <pre>writeThreeDigits(n%1000);</pre> With the line:<pre>writeWithCommas(n/1000);</pre>in the writeWithCommas function.</var></div>

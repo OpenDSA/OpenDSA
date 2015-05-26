@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <title> Recursion Tracing Exercise: Recursive calls</title>
+  <title> Recursion Tracing Exercise: Recursive function nested calls</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
@@ -24,24 +24,27 @@
     <div id="problem-type-or-description">
       <p class="question"> 
       Consider the following code::
-       <textarea id="codeTextarea" >public int result(int n){
-  if(n == 1)	
-    return 2;
-  else		
-    return 2 * result(n-1);	
+     <textarea id="codeTextarea" >public long foo(long x) { 
+  if(x == 1 || x == 3)
+    return x;
+  else
+    return x * foo(x-1);
 }</textarea>
-	If n &gt; 0, how many times will result be called to evaluate result(n)( including the initial call)?
+      Assuming no possibility of integer overflow, what will be the value of z after execution of the following statement:
+      <pre>
+      long z = foo(foo(3)+foo(4));
+      </pre>
       </p>
 
-      <div class="solution"><var><code>n</code></var></div>
+      <div class="solution"><var><code>(15!)/(2!)</code></var></div>
       <ul class="choices" >
-	<li><var> 2 </var></li>	  	 
-	<li><var><code>2^n</code></var></li>
-        <li><var><code>2*n</code></var></li>
-        <li><var><code>n^2</code></var></li>
+	<li><var> <code>3!+4!</code> </var></li>	  	 
+	<li><var><code>(7!)!</code></var></li>
+        <li><var><code>(3!+4!)!</code></var></li>
+        <li><var><code>15</code></var></li>
       </ul>
       <div class="hints">
-      <p> n is decrementing until it reaches to 1, where the recursive function hits the base case.</p>
+
       </div>
     </div>
   </div>
