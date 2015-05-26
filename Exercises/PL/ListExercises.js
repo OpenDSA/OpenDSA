@@ -2,6 +2,8 @@
 
 /* global console */
 
+var question = {};
+
 var hdFunc="fp.hd";
 var tlFunc="fp.tl";
 var consFunc="fp.cons";
@@ -114,11 +116,11 @@ function getSetupText() {
 	containsL2 = true;
     }
     if (containsL1 && containsL2) {
-	return "Given that L1 = [" + l1 + "] and L2 = [" + l2 + "], what ";
+	return "Given that L1 = [" + L1 + "] and L2 = [" + L2 + "], what ";
     } else if (containsL1) {
-	return "Given that L1 = [" + l1 + "], what ";
+	return "Given that L1 = [" + L1 + "], what ";
     } else if (containsL2) {
-	return "Given that L2 = [" + l2 + "], what ";
+	return "Given that L2 = [" + L2 + "], what ";
     } else {
 	return "What ";
     }
@@ -126,7 +128,6 @@ function getSetupText() {
 
 function initListExerciseOpen() {
 
-    var answer;
     var jsav = new JSAV("jsav", {"animationMode": "none"});
     var maxLength = 5 + Math.floor(Math.random()*6);
     L1 = genRndListOfNumbers(maxLength);
@@ -135,21 +136,27 @@ function initListExerciseOpen() {
 
     while (true) {
 	exp = genRndList().toString();
-	if ( exp.length > 15 && exp.length < 45 ) {
+	if ( exp.length > 20 && exp.length < 55 ) {
+	    console.log(exp.length);
 	    break;
 	}
     }
-    answer = eval(exp);
+    try {
+	question.answer = "[" + eval(exp) + "]";
+        alert(question.answer);
+	question.answer = question.answer.replace(/\s+/g,"").split("");
+	question.answer = ("\\s*" + question.answer.join("\\s*") + "\\s*");
+        alert(question.answer);
+    } catch (e) {
+	question.answer="\\s*error\\s*";
+    }
+    jsav.code(exp, {lineNumbers: false});
 
-/*    question.answer = answer.replace(/@|\#/g,"a").replace(/\s+/g,"").replace(/\u03BB/g,"^").split("");
-    question.answer = ("\\s*" + question.answer.join("\\s*") + "\\s*")
-	.replace(/\^/g,"\\^").replace(/\./g,"\\.").replace(/\(/g,"\\(")
-	.replace(/\)/g,"\\)");
-*/
 }
 
 function getAnswerListExerciseOpen() {
-    //return question.answer;
+    alert(question.answer);
+    return question.answer;
 }
 
 
