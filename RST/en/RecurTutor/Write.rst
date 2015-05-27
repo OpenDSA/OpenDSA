@@ -35,6 +35,14 @@ The following visualization shows four different versions of the Sum recursive f
 .. inlineav:: recursionWrtSumCON ss
    :output: show  
 
+
+.. topic:: Example
+
+   The following code shows an example of a recursive function that computes the Fibonacci of a given number.
+   Fibonacci Sequence is the series of numbers: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ... Where the next number is found by adding up the two numbers before it:
+   
+   .. codeinclude:: RecurTutor/Fibonacci
+
 You will never understand recursion well without doing a lot of practice on it. Here are set of practice exercises on recursion, try to practice them all to master recursion.
 
 .. odsascript:: AV/RecurTutor/recursionWrtStepsCON.js

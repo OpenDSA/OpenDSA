@@ -2,12 +2,16 @@
 
 /* global console */
 
+var question = {};
+
 var hdFunc="fp.hd";
 var tlFunc="fp.tl";
 var consFunc="fp.cons";
 var maxInt=10;  // all list elements will be non-negative integers less than this value
 var maxLength;  // all list constants will have a length less than this value
-var L1, L2;
+var L, L1, L2;
+var exp;        // an expression to evaluate
+var setupText;  // initial part of the question text describing list constants
 
 /*  data structures for list expressions */
 function Num(n) {
@@ -91,21 +95,7 @@ function genRndCstList() {
     }
 }
 
-
-
-/*
-maxLength = 5 + Math.floor(Math.random()*6);
-var l1 = genRndListOfNumbers(maxLength);
-maxLength = 5 + Math.floor(Math.random()*6);
-var l2 = genRndListOfNumbers(maxLength);
-console.log( l1 );
-console.log( l2 );
-console.log( genRndList().toString() );
-*/
-
-var exp;
-
-function getSetupText() {
+function renameListConstants() {
     var containsL1, containsL2;
     if (exp.indexOf("L1") > -1) {
 	containsL1 = true;
@@ -114,42 +104,48 @@ function getSetupText() {
 	containsL2 = true;
     }
     if (containsL1 && containsL2) {
-	return "Given that L1 = [" + l1 + "] and L2 = [" + l2 + "], what ";
-    } else if (containsL1) {
-	return "Given that L1 = [" + l1 + "], what ";
-    } else if (containsL2) {
-	return "Given that L2 = [" + l2 + "], what ";
+	setupText = "Given that L1 = [" + L1 + "] and L2 = [" + L2 + "], what ";
+    } else if (containsL1 || containsL2) {
+	if (containsL1) {
+	    exp = exp.replace(/L1/g,"L");
+	    L = L1;
+	} else {
+	    exp = exp.replace(/L2/g,"L");
+	    L = L2;
+	}
+	setupText = "Given that L = [" + L + "], what ";
     } else {
-	return "What ";
+	setupText = "What ";
     }
 }
 
 function initListExerciseOpen() {
-
-    var answer;
     var jsav = new JSAV("jsav", {"animationMode": "none"});
-    var maxLength = 5 + Math.floor(Math.random()*6);
+    var maxLength = 3 + Math.floor(Math.random()*6);
     L1 = genRndListOfNumbers(maxLength);
-    maxLength = 5 + Math.floor(Math.random()*6);
+    maxLength = 3 + Math.floor(Math.random()*6);
     L2 = genRndListOfNumbers(maxLength);
 
     while (true) {
 	exp = genRndList().toString();
-	if ( exp.length > 15 && exp.length < 45 ) {
+	if ( exp.length > 20 && exp.length < 55 ) {
 	    break;
 	}
     }
-    answer = eval(exp);
-
-/*    question.answer = answer.replace(/@|\#/g,"a").replace(/\s+/g,"").replace(/\u03BB/g,"^").split("");
-    question.answer = ("\\s*" + question.answer.join("\\s*") + "\\s*")
-	.replace(/\^/g,"\\^").replace(/\./g,"\\.").replace(/\(/g,"\\(")
-	.replace(/\)/g,"\\)");
-*/
+    renameListConstants();    
+    try {
+	question.answer = String(eval(exp)).replace(/\s+/g,"").split("");
+	question.answer = "\\s*\\[\\s*" + question.answer.join("\\s*") + "\\s*\\]\\s*";
+    } catch (e) {       
+	question.answer="\\s*error\\s*";
+    }
+    jsav.code(exp, {lineNumbers: false});
 }
-
+function getSetupText() {
+    return setupText;
+}
 function getAnswerListExerciseOpen() {
-    //return question.answer;
+    return question.answer;
 }
 
 

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>Adjaceny List Space Calculation: Directed, Weighted</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+
+<script>
+function genAnswer(numV, numE, pointerB, vertB, edgeB) {
+  var space = numV * pointerB + numE * (vertB + edgeB);
+  return space
+}
+</script>
+
+<div class="exercise">
+  <div class="vars">
+    <var id="numV">randRange(6, 10)</var>
+    <var id ="numE">randRange(numV, (numV * (numV - 1))/2)</var>
+    <var id="pointerB">randRange(4,6)</var>
+    <var id="edgeB">randRange(2,4)</var>
+    <var id="vertB">randRange(2,4)</var>
+    <var id="ANS">genAnswer(numV, numE, pointerB, vertB, edgeB)</var>
+  </div>
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="problem">WARNING! Read the conditions for the problems
+        in this set very carefully!
+      </p>
+      <p class="question">Assume for a directed graph with <var>numV</var>
+         vertices and <var>numE</var> edges that a vertex index requires
+         <var>vertB</var> bytes, a pointer requires <var>pointerB</var>
+         bytes, and that edge weights require <var>edgeB</var> bytes. 
+         Calculate the byte requirements for an adjacency list. 
+      </p>
+      <p class="solution" data-type="text"><var>ANS</var></p>
+      <div class="hints">
+        <p> V * pointer + E * (vertex_index + edge_weight) bytes = <var>ANS</var></p>
+      </div> 
+    </div>
+  </div>
+</div>
+</body>
+</html>

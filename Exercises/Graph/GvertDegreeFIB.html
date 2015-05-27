@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>Graph Vertex Degree</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transit.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
+  <style>
+    .jsavcontainer {
+      height: 250px;
+    }
+  </style>
+</head>
+
+<body data-height="650" data-width="950">
+<script>
+var initJSAV = function () {
+  var jsav = new JSAV("jsav");
+  jsav.recorded();
+  var g = jsav.ds.graph({center: true, visible: true, height: 250});
+  var n0 = g.addNode("0", {top: 0, left: 100});
+  var n1 = g.addNode("1", {top: 90, left: 5});
+  var n2 = g.addNode("2", {top: 30, left: 200});
+  var n3 = g.addNode("3", {top: 140, left: 200});
+  var n4 = g.addNode("4", {top: 190, left: 100});
+
+  g.addEdge(n0, n1);
+  g.addEdge(n0, n2);
+  g.addEdge(n1, n2);
+  g.addEdge(n1, n3);
+  g.addEdge(n1, n4);
+  g.addEdge(n2, n4);
+  g.addEdge(n3, n4);
+  g.layout();
+}
+
+function getAnswer(node){
+  var a = [2, 4, 3, 2, 3];
+  return a[node];
+}
+</script> 
+
+<div class="exercise">
+  <div class="vars">
+    <var id="JSAV">initJSAV()</var>
+    <var id="node">randRange(0, 4)</var>
+    <var id="ANS">getAnswer(node)</var>
+  </div>
+  <div class="problems">
+    <div id="problem-type-or-description-2">
+      <p class="problem">
+        <div id="jsav" class="jsavcanvas"></div>
+      </p>
+      <p class="question">What is the degree of Vertex <var>node</var>?</p>
+      <p class="solution" data-type="text"><var>ANS</var></p>
+      <div class="hints">
+        <p>The degree of a vertex is the number of edges that the vertex touches.</p>
+        <p>Vertex <var>node</var> has a degree of <var>ANS</var>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

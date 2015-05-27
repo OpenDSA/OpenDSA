@@ -52,6 +52,9 @@ Glossary
       Two :term:`nodes <node>` of a :term:`tree` or two
       :term:`vertices <vertex>` of a :term:`graph` are said to be
       adjacent if they have an :term:`edge` connecting them.
+      If the edge is :term:`directed` from :math:`a` to :math:`b`,
+      then we say that :math:`a` is adjacent to :math:`b`,
+      and :math:`b` is adjacent from :math:`a`. 
 
    adjacency list
       An implementation for a :term:`graph` that uses an (array-based)
@@ -1665,7 +1668,10 @@ Glossary
       :term:`object space decomposition`.
 
    incident
-      In :term:`graph` terminology, a synonym for :term:`adjacent`.
+      In :term:`graph` terminology,
+      an edge connecting two vertices is said to be incident with
+      those vertices.
+      The two vertices are said to be :term:`adjacent`.
 
    index file
       A file whose records consist of
