@@ -35,38 +35,20 @@
       }
     },
     "Graphs": {
-      "IS/GraphIntro": {
+      "Graph/GraphIntro": {
         "long_name": "Introduction and Terminology",
-        "exercises": {}
-      },
-      "Development/GraphTraversal": {
-        "long_name": "Graph Traversal",
         "exercises": {
-          "graphDFS": {
-            "long_name": "Depth First Search Visualization",
-            "required": false,
-            "points": 0,
-            "showhide": "none",
-            "threshold": 1.0
-          },
-          "graphDFSPE": {
-            "long_name": "DFS Proficiency Exercise",
+          "GraphCalcSumm": {
+            "long_name": "Graph Space Requirements Exercise",
             "required": true,
             "points": 2.0,
-            "threshold": 0.90
+            "threshold": 5
           },
-          "graphBFS": {
-            "long_name": "Breadth First Search Visualization",
-            "required": false,
-            "points": 0,
-            "showhide": "none",
-            "threshold": 1.0
-          },
-          "graphBFSPE": {
-            "long_name": "BFS Proficiency Exercise",
+          "GraphIntroSumm": {
+            "long_name": "Graph Terminology Summary Exercise",
             "required": true,
             "points": 2.0,
-            "threshold": 0.90
+            "threshold": 5
           }
         }
       }

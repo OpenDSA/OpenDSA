@@ -8,11 +8,14 @@
    :prerequisites:
    :topic: Graphs
 
+
+.. odsalink:: AV/Graph/GraphDefCON.css
+
 Graphs Chapter Introduction
 ===========================
 
 Graphs provide the ultimate in data structure flexibility.
-Each graph consists of a set of nodes, and a set of edges where an
+A graph consists of a set of nodes, and a set of edges where an
 edge connects two nodes.
 Trees and lists can be viewed as special cases of graphs.
 
@@ -62,66 +65,49 @@ of a set of :term:`vertices <vertex>` :math:`\mathbf{V}` and a set of
 :term:`edges <edge>` :math:`\mathbf{E}`,
 such that each edge in :math:`\mathbf{E}` is a connection between a
 pair of vertices in :math:`\mathbf{V}`. [#]_
-
 The number of vertices is written :math:`|\mathbf{V}|`, and the number
 of edges is written :math:`|\mathbf{E}|`.
 :math:`|\mathbf{E}|` can range from zero to a maximum of
 :math:`|\mathbf{V}|^2 - |\mathbf{V}|`.
-A graph with relatively few edges is called a :term:`sparse graph`,
-while a graph with many edges is called a :term:`dense graph`.
-A graph containing all possible edges is said to be a
-:term:`complete graph`.
-Any subset of :math:`V` where all vertices in the subset connect to
-all other vertices in the subset is called a :term:`clique`.
 
-A graph with edges directed from one vertex to another
-(as in Figure :num:`Figure #GraphTerms` (b)) is
-called a :term:`directed graph` or :term:`digraph`.
 A graph whose edges are not directed is called an
-:term:`undirected graph`
-(as illustrated by Figure :num:`Figure #GraphTerms` (a)).
+:term:`undirected graph`, as shown in part (a) of the following figure.
+A graph with edges directed from one vertex to another
+(as in (b)) is called a :term:`directed graph` or :term:`digraph`.
 A graph with labels associated with its vertices
-(as in Figure :num:`Figure #GraphTerms` (c)) is called a
-:term:`labeled graph`.
-Two vertices are :term:`adjacent` if they are joined by an edge.
-Such vertices are also called :term:`neighbors <neighbor>`.
-An edge connecting Vertices :math:`u` and :math:`v` is written
-:math:`(u, v)`.
-Such an edge is said to be :term:`incident` on Vertices :math:`u`
-and :math:`v`.
+(as in (c)) is called a :term:`labeled graph`.
 Associated with each edge may be a cost or :term:`weight`.
 A graph whose edges have weights
-(as in Figure :num:`Figure #GraphTerms` (c))
-is said to be a :term:`weighted graph`.
+(as in (c)) is said to be a :term:`weighted graph`.
 
 .. _GraphTerms:
 
-.. odsafig:: Images/GraphDef.png
-   :width: 500
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Examples of graphs and graph terminology
+.. inlineav:: GdirundirCON dgm 
+   :output: show
 
-   Examples of graphs and terminology.
-   (a) A graph.
-   (b) A directed graph (digraph).
-   (c) A labeled (directed) graph with weights associated with the
-   edges.
-   In this example, there is a simple path from Vertex 0 to Vertex 3
-   containing Vertices 0, 1, and 3.
-   Vertices 0, 1, 3, 2, 4, and 1 also form a path, but not a simple path
-   because Vertex 1 appears twice.
-   Vertices 1, 3, 2, 4, and 1 form a simple cycle.
+   Some types of graphs.
 
-.. TODO::
-   :type: Figure
+An edge connecting Vertices :math:`a` and :math:`b` is written
+:math:`(a, b)`.
+Such an edge is said to be :term:`incident` with Vertices :math:`a`
+and :math:`b`.
+The two vertices are said to be :term:`adjacent`.
+If the edge is directed from :math:`a` to :math:`b`,
+then we say that :math:`a` is adjacent to :math:`b`,
+and :math:`b` is adjacent from :math:`a`. 
+The :term:`degree` of a vertex is the number of edges it is incident
+with.
+For example, Vertex :math:`e` below has a degree of three.
 
-   Replace the image above with a JSAV-generated diagram. Possibly
-   could use a slideshow to walk through the various
-   definitions. Could start with a slide that lists the words and
-   their definitions, then a series of slides that illustrate each
-   word.
+In a directed graph, the :term:`out degree` for a vertex is the number
+of neighbors adjacent from it (or the number of edges going out from
+it), while the :term:`in degree` is the number of neighbors adjacent
+to it (or the number of edges coming in to it).
+In (c) above, the in degree of Vertex 1 is two,
+and its out degree is one.
+
+.. inlineav:: GneighborCON dgm
+   :output: show
 
 A sequence of vertices :math:`v_1, v_2, ..., v_n`
 forms a :term:`path` of length :math:`n-1` if there exist edges from
@@ -134,38 +120,41 @@ some vertex :math:`v_1` to itself.
 A cycle is a :term:`simple cycle` if the path is simple, except for
 the first and last vertices being the same.
 
+.. inlineav:: GpathDefCON dgm 
+   :output: show 
+
+An undirected graph is a :term:`connected graph` if there is at least
+one path from any vertex to any other.
+The maximally connected subgraphs of an undirected graph are called
+:term:`connected components <connected component>`.
+For example, this figure shows an undirected graph
+with three connected components.
+
+.. _ConCom:
+
+.. inlineav:: GconcomCON dgm
+   :output: show
+
+A graph with relatively few edges is called a :term:`sparse graph`,
+while a graph with many edges is called a :term:`dense graph`.
+A graph containing all possible edges is said to be a
+:term:`complete graph`.
 A :term:`subgraph` :math:`\mathbf{S}` is formed from graph
 :math:`\mathbf{G}` by selecting a subset :math:`\mathbf{V}_s` of
 :math:`\mathbf{G}`'s vertices and a subset 
 :math:`\mathbf{E}_s` of :math:`\mathbf{G}` 's edges such that for every
 edge :math:`e  \in \mathbf{E}_s`,
 both vertices of :math:`e` are in :math:`\mathbf{V}_s`.
+Any subgraph of :math:`V` where all vertices in the graph connect to
+all other vertices in the subgraph is called a :term:`clique`.
 
-An undirected graph is a :term:`connected graph` if there is at least
-one path from any vertex to any other.
-The maximally connected subgraphs of an undirected graph are called
-:term:`connected components <connected component>`.
-For example, Figure :num:`Figure #ConCom` shows an undirected graph
-with three connected components.
-
-.. _ConCom:
-
-.. odsafig:: Images/ConCom.png
-   :width: 300
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Illustration of connected components
-
-   An undirected graph with three connected components.
-   Vertices 0, 1, 2, 3, and 4 form one connected component.
-   Vertices 5 and 6 form a second connected component.
-   Vertex 7 by itself forms a third connected component.
+.. inlineav:: GsparseDefCON dgm
+   :output: show
 
 .. TODO::
-   :type: Figure
+   :type: Diagram
 
-   Replace image above with a JSAV diagram
+   Make a diagram for the following terms.
 
 A graph without cycles is called an :term:`acyclic graph`.
 Thus, a directed graph without cycles is called a
@@ -176,77 +165,58 @@ cycles.
 An equivalent definition is that
 a free tree is connected and has :math:`|\mathbf{V}| - 1` edges.
 
-.. _GraphRep:
-
-.. odsafig:: Images/GraphRep.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Graph Representations
-
-   Two graph representations.
-   (a) A directed graph.
-   (b) The adjacency matrix for the graph of (a).
-   (c) The adjacency list for the graph of (a).
-
-.. TODO::
-   :type: Figure
-
-   Replace image above with a JSAV-generated image. Or better, a
-   slideshow to illustrate the various representation issues.
-
 There are two commonly used methods for representing graphs.
-The :term:`adjacency matrix`
-is illustrated by Figure :num:`Figure #GraphRep` (b).
-The adjacency matrix for a graph is a
+The :term:`adjacency matrix` for a graph is a
 :math:`|\mathbf{V}| \times |\mathbf{V}|` array.
-Assume that :math:`|\mathbf{V}| = n` and that
-the vertices are labeled from :math:`v_0` through
-:math:`v_{n-1}`.
+We typically label the vertices from :math:`v_0` through
+:math:`v_{|\mathbf{V}|-1}`.
 Row :math:`i` of the adjacency matrix contains entries for
 Vertex :math:`v_i`.
 Column :math:`j` in row :math:`i` is marked if there is an edge
 from :math:`v_i` to :math:`v_j` and is not marked otherwise.
-Thus, the adjacency matrix requires one bit at each position.
-Alternatively, if we wish to associate a number with each edge,
-such as the weight or distance between two vertices,
-then each matrix position must store that number.
-In either case, the space requirements for the adjacency matrix are
+The space requirements for the adjacency matrix are
 :math:`\Theta(|\mathbf{V}|^2)`.
 
-.. _Undirected:
-
-.. odsafig:: Images/GraphUD.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Using the graph representations for undirected graphs
-
-   Using the graph representations for undirected graphs.
-   (a) An undirected graph.
-   (b) The adjacency matrix for the graph of (a).
-   (c) The adjacency list for the graph of (a).
-
 The second common representation for graphs is the
-:term:`adjacency list`,
-illustrated by Figure :num:`Figure #GraphRep` (c).
+:term:`adjacency list`.
 The adjacency list is an array of linked lists.
 The array is :math:`|\mathbf{V}|` items long, with position :math:`i`
 storing a pointer to the linked list of edges for Vertex :math:`v_i`.
 This linked list represents the edges by the vertices that are
 adjacent to Vertex :math:`v_i`.
 
-.. topic:: Example
+Here is an example of the two representations on a directed graph.
+The entry for Vertex 0 stores 1 and 4 because there are two edges
+in the graph leaving Vertex 0, with one going to Vertex 1 and one
+going to Vertex 4.
+The list for Vertex 2 stores an entry for Vertex 4 because there is
+an edge from Vertex 2 to Vertex 4, but no entry for Vertex 3
+because this edge comes into Vertex 2 rather than going out.
 
-   The entry for Vertex 0 in Figure :num:`Figure #GraphRep` (c)
-   stores 1 and 4 because there are two edges in the
-   graph leaving Vertex 0, with one going to Vertex 1 and one going to
-   Vertex 4.
-   The list for Vertex 2 stores an entry for Vertex 4 because there is
-   an edge from Vertex 2 to Vertex 4, but no entry for Vertex 3
-   because this edge comes into Vertex 2 rather than going out.
+.. _Directed:
+
+.. inlineav:: GdirRepCON dgm 
+   :output: show
+
+   Representing a directed graph.
+
+Both the adjacency matrix and the adjacency list can be used to store
+directed or undirected graphs.
+Each edge of an undirected graph connecting Vertices :math:`u`
+and :math:`v` is represented by two directed edges: one from
+:math:`u` to :math:`v` and one from :math:`v` to :math:`u`.
+Here is an example of the two representations on an undirected graph.
+We see that there are twice as many edge entries in both the adjacency
+matrix and the adjacency list.
+For example, for the undirected graph, the list for Vertex 2 stores an
+entry for both Vertex 3 and Vertex 4.
+
+.. _Undirected:
+
+.. inlineav:: GundirRepCON dgm 
+   :output: show 
+
+   Representing an undirected graph.
 
 The storage requirements for the adjacency list depend on both the
 number of edges and the number of vertices in the graph.
@@ -255,14 +225,32 @@ not adjacent to any other vertex and thus has no elements on its
 linked list), and each edge must appear on one of the lists.
 Thus, the cost is :math:`\Theta(|\mathbf{V}| + |\mathbf{E}|)`.
 
-Both the adjacency matrix and the adjacency list can be used to store
-directed or undirected
-graphs.
-Each edge of an undirected graph connecting Vertices :math:`u`
-and :math:`v` is represented by two directed edges: one from
-:math:`u` to :math:`v` and one from :math:`v` to :math:`u`.
-Figure :num:`Figure #Undirected` illustrates the use of the adjacency
-matrix and the adjacency list for undirected graphs.
+Sometimes we want to store weights or distances with each each edge,
+such as in Figure :num:`Figure #GraphTerms` (c).
+This is easy with the adjacency matrix, where we will just store
+values for the weights in the matrix.
+In Figures :num:`Figure #Directed` and :num:`Figure #Undirected` we
+store a value of "1" at each position just to show that the edge
+exists.
+That could have been done using a single bit, but since bit
+manipulation is typically complicated in most programming languages,
+an implementation might store a byte or an integer at each matrix
+position.
+For a weighted graph, we would need to store at each position in the
+matrix enough space to represent the weight, which might typically be
+an integer.
+
+The adjacency list needs to explicitly store a weight with each edge.
+In the adjacency list shown below, each linked list node is shown
+storing two values.
+The first is the index for the neighbor at the end of the associated
+edge.
+The second is the value for the weight.
+As with the adjacency matrix, this value requires space to represent,
+typically an integer.
+
+.. inlineav:: GweightedCON dgm 
+   :output: show
 
 Which graph representation is more space efficient depends on the
 number of edges in the graph.
@@ -275,27 +263,21 @@ stored for an edge is one bit to indicate its existence.
 As the graph becomes denser, the adjacency matrix becomes
 relatively more space efficient.
 Sparse graphs are likely to have their adjacency list representation
-be more space efficient.:
+be more space efficient.
 
 .. topic:: Example
 
    Assume that a vertex index requires two bytes, a pointer requires
    four bytes, and an edge weight requires two bytes.
-   Then the adjacency matrix for the graph of
-   Figure :num:`Figure #GraphRep` 
+   Then the adjacency matrix for the directed graph above
    requires :math:`2 |\mathbf{V}^2| = 50` bytes while the adjacency list
    requires :math:`4 |\mathbf{V}| + 6 |\mathbf{E}| = 56` bytes.
-   For the graph of Figure :num:`Figure #Undirected`, the adjacency
+   For the undirected version of the graph above, the adjacency
    matrix requires the same space as before, while the adjacency list
    requires :math:`4 |\mathbf{V}| + 6 |\mathbf{E}| = 92` bytes
-   (because there are now 12 edges instead of 6).
+   (because there are now 12 edges represented instead of 6).
 
-.. TODO::
-   :type: Exercise
-
-   Given specs for space requirements, compute the number of bytes
-   needed for one or the other representation, or determine the
-   break-even point.
+.. avembed:: Exercises/Graph/GspaceCalcSumm.html ka 
 
 The adjacency matrix often requires a higher asymptotic cost for an
 algorithm than would result if the adjacency list were used.
@@ -312,11 +294,7 @@ time when the algorithm might otherwise require only
 This is a considerable disadvantage when the graph is sparse,
 but not when the graph is closer to full.
 
-
-.. TODO::
-   :type: Exercise
-
-   Module summary question battery.
+.. avembed:: Exercises/Graph/GraphIntroSumm.html ka 
 
 Notes
 -----
@@ -328,3 +306,12 @@ Notes
        either of these special cases.
        To simplify our graph API, we will assume that there are no
        dupicate edges, and no edges that connect a node to itself.
+
+.. odsascript:: AV/Graph/GdirundirCON.js
+.. odsascript:: AV/Graph/GneighborCON.js
+.. odsascript:: AV/Graph/GpathDefCON.js
+.. odsascript:: AV/Graph/GconcomCON.js
+.. odsascript:: AV/Graph/GsparseDefCON.js
+.. odsascript:: AV/Graph/GdirRepCON.js
+.. odsascript:: AV/Graph/GundirRepCON.js
+.. odsascript:: AV/Graph/GweightedCON.js

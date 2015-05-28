@@ -1,6 +1,11 @@
 /*global ODSA */
 "use strict";
 // Heapbuild analysis proof slideshow
+// Written by Mohammed Farghally and Cliff Shaffer
+// Inspired by Hussein Thompson and Pranay CHaudhuri,
+// "An Alternative Visual Analysis of the Build Heap Algorithm",
+// ACM Inroads 2, 3(September), 2011.
+
 $(document).ready(function () {
   var av_name = "heapbuildProofCON";
   var config = ODSA.UTILS.loadConfig({"av_name": av_name}),

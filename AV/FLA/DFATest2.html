@@ -2,7 +2,7 @@
 <!--Version 5: Add State Labels -->
 <html>
 <head>
-  <title>DFA Test #1</title>
+  <title>DFA Test #2</title>
   <link rel="stylesheet" href="css/JSAV.css" type="text/css" />
   <style>
     #av {
@@ -14,9 +14,10 @@
       top: 15px;
     }
     .jsavlabel {
-      font-size: 150%;
+      font-size: 80%;
       text-align: center;
-      margin: 30px 0 10px 0;
+      margin: -6px 0 -10px 0;
+      z-index: 150;
     }
   </style>
 </head>
@@ -35,8 +36,8 @@
 <script src="../../lib/jquery-ui.min.js"></script>
 <script src="../../JSAV/lib/jquery.transit.js"></script>
 <script src="../../JSAV/lib/raphael.js"></script>
-<script src="JSAV.js"></script>
-<script src="dfa.js" type="text/javascript" ></script>
+<script src="../../JSAV/build/JSAV-min.js"></script>
+<script src="dfa2.js" type="text/javascript" ></script>
 
 <script>
 
@@ -62,7 +63,7 @@ state4.addNextState(state1, ["0"]);
 state4.addNextState(state4, ["1"]);
 
 // dfa.draw(jsav);
-jsav.label("DFA Test");
+jsav.label("DFA Test", {top: 10, left: 620}).css({"font-size": "150%"});
 jsav.displayInit();
 
 function testString() {

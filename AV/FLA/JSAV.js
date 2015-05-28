@@ -1,6 +1,6 @@
 /*!
  * JSAV - JavaScript Algorithm Visualization Library
- * Version v0.7.0-273-g64441af
+ * Version v1.0.1-1-g99fdf56
  * Copyright (c) 2011-2015 by Ville Karavirta and Cliff Shaffer
  * Released under the MIT license.
  */
@@ -39,6 +39,11 @@
     }
     return id;
   };
+  jsavproto.clear = function() {
+    // clear the container and find the new ref to canvas
+    this.container.html(this._initialHTML);
+    this.canvas = this.container.find(".jsavcanvas");
+  };
   JSAV._types = {}; // for exposing types of JSAV for customization
   JSAV.ext = {}; // for extensions
   JSAV.init = function(f) { // for initialization functions
@@ -56,16 +61,23 @@
       this.container = arguments[0];
     }
 
+    var defaultOptions = $.extend({
+      autoresize: true,
+      scroll: true
+    }, window.JSAV_OPTIONS);
     // if the container was set based on the first argument, options are the second arg
     if (this.container) {
-      this.options = $.extend({autoresize: true}, window.JSAV_OPTIONS, arguments[1]);
+      this.options = $.extend(defaultOptions, arguments[1]);
     } else { // otherwise assume the first argument is options (if exists)
-      this.options = $.extend({autoresize: true}, window.JSAV_OPTIONS, arguments[0]);
+      this.options = $.extend(defaultOptions, arguments[0]);
       // set the element option as the container
       this.container = $(this.options.element);
     }
 
+    // initialHTML will be logged as jsav-init, this._initialHTML used in clear
     var initialHTML = this.container.clone().wrap("<p/>").parent().html();
+    this._initialHTML = this.container.html();
+
     this.container.addClass("jsavcontainer");
     this.canvas = this.container.find(".jsavcanvas");
     if (this.canvas.size() === 0) {
@@ -96,18 +108,18 @@
     for (var prop in add) {
       if (add.hasOwnProperty(prop) && !(prop in con)) {
         switch (typeof add[prop]) {
-          case "function":
-            (function (f) {
-              con[prop] = con === jsav ? f : function () { return f.apply(jsav, arguments); };
-            }(add[prop]));
-            break;
-          case "object":
-            con[prop] = con[prop] || {};
-            extensions(jsav, con[prop], add[prop]);
-            break;
-          default:
-            con[prop] = add[prop];
-            break;
+        case "function":
+          (function (f) {
+            con[prop] = con === jsav ? f : function () { return f.apply(jsav, arguments); };
+          }(add[prop]));
+          break;
+        case "object":
+          con[prop] = con[prop] || {};
+          extensions(jsav, con[prop], add[prop]);
+          break;
+        default:
+          con[prop] = add[prop];
+          break;
         }
       }
     }
@@ -130,8 +142,8 @@
               itemPos = $item.position();
           // ignore SVG, since it will be handled differently since it's sized 100%x100%
           if (item.nodeName.toLowerCase() !== "svg") {
-            maxTop = Math.max(maxTop, itemPos.top + $item.innerHeight());
-            maxLeft = Math.max(maxLeft, itemPos.left + $item.innerWidth());
+            maxTop = Math.max(maxTop, itemPos.top + $item.outerHeight(true));
+            maxLeft = Math.max(maxLeft, itemPos.left + $item.outerWidth(true));
           }
         });
         if (that.svg) { // handling of SVG
@@ -144,6 +156,11 @@
             maxLeft = Math.max(maxLeft, bbox.x2 + strokeWidth);
             curr = curr.next;
           }
+        }
+        // limit minWidth to parent width if scroll is set to true
+        if (that.options.scroll) {
+          var parentWidth = that.canvas.parent().width();
+          maxLeft = Math.min(maxLeft, parentWidth);
         }
         // set minheight and minwidth on the jsavcanvas element
         that.canvas.css({"minHeight": maxTop, "minWidth": maxLeft});
@@ -546,17 +563,13 @@
     };
     if ($controls.size() !== 0) {
       var tmpTranslation = this._translate("beginButtonTitle");
-      $("<span class='jsavbegin' title='" + tmpTranslation + "'>" + tmpTranslation +
-                    "</span>").click(beginHandler).appendTo($controls);
+      $("<span class='jsavbegin' title='" + tmpTranslation + "'>&lt;&lt;</span>").click(beginHandler).appendTo($controls);
       tmpTranslation = this._translate("backwardButtonTitle");
-      $("<span class='jsavbackward' title='" + tmpTranslation + "'>" + tmpTranslation +
-                    "</span>").click(backwardHandler).appendTo($controls);
+      $("<span class='jsavbackward' title='" + tmpTranslation + "'>&lt;</span>").click(backwardHandler).appendTo($controls);
       tmpTranslation = this._translate("forwardButtonTitle");
-      $("<span class='jsavforward' title='" + tmpTranslation + "'>" + tmpTranslation +
-                    "</span>").click(forwardHandler).appendTo($controls);
+      $("<span class='jsavforward' title='" + tmpTranslation + "'>&gt;</span>").click(forwardHandler).appendTo($controls);
       tmpTranslation = this._translate("endButtonTitle");
-      $("<span class='jsavend' title='" + tmpTranslation + "'>" + tmpTranslation +
-                    "</span>").click(endHandler).appendTo($controls);
+      $("<span class='jsavend' title='" + tmpTranslation + "'>&gt;&gt;</span>").click(endHandler).appendTo($controls);
       this._controlsContainer = $controls;
     }
     // bind the handlers to events to enable control by triggering events
@@ -688,7 +701,8 @@
     return info;
   };
   JSAV.ext.step = function(options) {
-    this.container.trigger("jsav-updaterelative");
+    var updateRelative = (options && options.updateRelative === false ? false : true);
+    if (updateRelative) { this.container.trigger("jsav-updaterelative"); }
     if (this.options.animationMode !== "none") {
       this._undo.push(new AnimStep(options)); // add new empty step to oper. stack
       if (options && this.message && options.message) {
@@ -697,7 +711,7 @@
     }
     return this;
   };
-  JSAV.ext.clear = function(options) {
+  JSAV.ext.clearAnimation = function(options) {
     var opts = $.extend({undo: true, redo: true}, options);
     if (opts.undo) {
       this._undo = [];
@@ -708,7 +722,7 @@
   };
   JSAV.ext.displayInit = function() {
     this.container.trigger("jsav-updaterelative");
-    this.clear({redo: false});
+    this.clearAnimation({redo: false});
     return this;
   };
   /** Jumps to step number step. */
@@ -989,12 +1003,11 @@ jQuery.cssHooks.borderWidth = {
     //  - dialogBase
     //  - dialogRootElement
     options = $.extend({}, {modal: true, closeOnClick: true}, options);
-    var d = {
-      },
-      modal = options.modal,
-      $dialog = $(options.dialogBase || dialogBase),
-      i, l, attr,
-      attrOptions = ["width", "height", "minWidth", "minHeight", "maxWidth", "maxHeight"];
+    var d = {},
+        modal = options.modal,
+        $dialog = $(options.dialogBase || dialogBase),
+        i, l, attr,
+        attrOptions = ["width", "height", "minWidth", "minHeight", "maxWidth", "maxHeight"];
     if (typeof html === "string") {
       $dialog.html(html);
     } else if ($.isFunction(html)) {
@@ -1003,7 +1016,7 @@ jQuery.cssHooks.borderWidth = {
       $dialog.append(html); // jquery or dom element
     }
     if ("title" in options) {
-      $dialog.prepend("<h2>" + options.title + "<a href='#' class='jsavdialogclose'>X</a></h2>");
+      $dialog.prepend("<h2>" + options.title + "<a href='#' class='jsavdialogclose'>&times;</a></h2>");
     }
     if ("dialogClass" in options) {
       $dialog.addClass(options.dialogClass);
@@ -1039,7 +1052,6 @@ jQuery.cssHooks.borderWidth = {
     };
     if (modal) {
       $modalElem = $modalElem || $('<div class="jsavmodal" />');
-      $modalElem.css({width: docWidth, height: docHeight});
       $modalElem.appendTo($("body"));
       if (options.closeOnClick) {
         $modalElem.click(close);
@@ -1052,7 +1064,7 @@ jQuery.cssHooks.borderWidth = {
       $dialog.append(closeButton);
     }
 
-    var $dial = $dialog.appendTo(options.dialogRootElement || $("body")).add($modalElem);
+    var $dial = $dialog.appendTo(options.dialogRootElement || $("body"));
     $dial.draggable();
     var center = function() {
       $dialog.css({
@@ -1496,25 +1508,57 @@ mixkey(math.random(), pool);
                           "jsavvariable", "jsavedge"];
   _helpers.setElementClasses = function(element, cls) {
     var elem = element[0],
-        clsList = elem.classList;
-    var curCls = Array.prototype.slice.call(element[0].classList, 0);
-    for (var i = curCls.length; i--; ) {
-      var c = curCls[i];
-      if (JSAV_CLASS_NAMES.indexOf(c) === -1 && cls.indexOf(c) === -1) {
-        clsList.remove(c);
+        clsList,
+        curCls,
+        c, i;
+    if (elem instanceof SVGElement && typeof elem.classList === "object") {
+      clsList = elem.classList;
+      curCls = Array.prototype.slice.call(elem.classList, 0);
+      for (i = curCls.length; i--; ) {
+        c = curCls[i];
+        if (JSAV_CLASS_NAMES.indexOf(c) === -1 && cls.indexOf(c) === -1) {
+          clsList.remove(c);
+        }
       }
-    }
-    for (i = cls.length; i--; ) {
-      c = cls[i];
-      if (!clsList.contains(c)) {
-        clsList.add(c);
+      for (i = cls.length; i--; ) {
+        c = cls[i];
+        if (!clsList.contains(c)) {
+          clsList.add(c);
+        }
       }
+    } else {
+      // Fallback for SVG elements in PhantomJS
+      // PhantomJS does not use classList for SVG elements
+      clsList = element.first().attr("class").split(" ");
+      curCls = clsList.slice(0);
+      for (i = curCls.length; i--; ) {
+        c = curCls[i];
+        if (JSAV_CLASS_NAMES.indexOf(c) === -1 && cls.indexOf(c) === -1) {
+          clsList.splice(clsList.indexOf(c), 1); // remote c from clsList
+        }
+      }
+      for (i = cls.length; i--; ) {
+        c = cls[i];
+        if (clsList.indexOf(c) === -1) {
+          clsList.push(c); // add c to clsList
+        }
+      }
+      element.first().attr("class", clsList.join(" "));
     }
   };
   _helpers.elementClasses = function(element) {
-    var cls = Array.prototype.slice.call(element[0].classList, 0),
-        customCls = [];
-    for (var i = cls.length; i--; ) {
+    var elem = element[0],
+        cls,
+        customCls = [],
+        i;
+    if (elem instanceof SVGElement && typeof elem.classList === "object") {
+      cls = Array.prototype.slice.call(element[0].classList, 0);
+    } else {
+      // Fallback for SVG elements in PhantomJS
+      // PhantomJS does not use classList for SVG elements
+      cls = element.first().attr("class").split(" ");
+    }
+    for (i = cls.length; i--; ) {
       if (JSAV_CLASS_NAMES.indexOf(cls[i]) === -1) {
         customCls.push(cls[i]);
       }
@@ -2507,39 +2551,44 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
     var movePoints  = function(points, options) {
       var currPath = this.rObj.attrs.path,
           newPath = currPath.slice(),
+          newPoints = this.points(),
           pathElem, i, l;
       for (i = 0, l = points.length; i < l; i++) {
         var p = points[i];
         pathElem = currPath[p[0]];
         newPath[p[0]] = [pathElem[0], p[1], p[2]];
+        newPoints[p[0]] = p.slice(1);
       }
       var np = "";
       for (i = 0, l = newPath.length; i < l; i++) {
         pathElem = newPath[i];
         np += pathElem.join(' ');
       }
+      this._setpoints(newPoints);
       this._setattrs({"path": np}, $.extend({dontAnimate: ("" + currPath) === "M-1,-1L-1,-1"}, options));
       return this;
     };
+    var _setpoints = JSAV.anim(function (newPoints) {
+      var oldPoints = $.extend(true, [], this._points);
+      this._points = newPoints;
+      return [oldPoints];
+    });
     // A function for getting the points of a path such as a line or polyline
     var points = function() {
-      return this._points.slice(0);
+      return $.extend(true, [], this._points); // deep copy of points
     };
 
     var Text = function(jsav, raphael, x, y, r, props) {
       this.rObj = raphael.text(x, y, r);
-      // init(this, jsav, props);
       return this;
     }
     JSAV.utils.extend(Text, JSAVGraphical);
-
 
     var Circle = function(jsav, raphael, x, y, r, props) {
       this.rObj = raphael.circle(x, y, r);
       init(this, jsav, props);
       return this;
     };
-
     JSAV.utils.extend(Circle, JSAVGraphical);
     var cproto = Circle.prototype;
     cproto.center = function(x, y, options) {
@@ -2607,6 +2656,7 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
       }
     };
     Line.prototype.points = points;
+    Line.prototype._setpoints = _setpoints;
 
     var Ellipse = function(jsav, raphael, x, y, rx, ry, props) {
       this.rObj = raphael.ellipse(x, y, rx, ry);
@@ -2649,6 +2699,7 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
     Polyline.prototype.translatePoint = translatePoint;
     Polyline.prototype.movePoints = movePoints;
     Polyline.prototype.points = points;
+    Polyline.prototype._setpoints = _setpoints;
 
     var Path = function(jsav, raphael, path, props) {
       this.rObj = raphael.path(path);
@@ -2689,7 +2740,7 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
       },
       text : function(x, y, text, props) {
         var svgCanvas = getSvgCanvas(this, props);
-        return new Text(this, svgCanvas, x, y, text, props);        
+        return new Text(this, svgCanvas, x, y, text, props);
       },
       rect: function(x, y, w, h, r, props) {
         // if border-radius not given, assume r is options and radius is 0
@@ -2898,10 +2949,6 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
     JSAV.utils._helpers.handlePosition(this);
     JSAV.utils._helpers.handleVisibility(this, this.options);
   };
-
-
-
-
   JSAV.utils.extend(Label, JSAV._types.JSAVObject);
   var labelproto = Label.prototype;
   labelproto._toggleVisible = JSAV.anim(JSAV.ext.effects._toggleVisible);
@@ -4190,6 +4237,11 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
       this.element.addClass("jsavautoresize");
     }
     JSAV.utils._helpers.handlePosition(this);
+    this.constructors = $.extend({
+      Tree: Tree,
+      Node: TreeNode,
+      Edge: Edge
+    }, this.options.constructors);
     this.rootnode = this.newNode("", null);
     this.element.attr({"data-root": this.rootnode.id(), "id": this.id()});
     this.rootnode.element.attr("data-child-role", "root");
@@ -4208,7 +4260,7 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
     var opts = $.extend({hide: true}, options);
     if (typeof newRoot === "undefined") {
       return this.rootnode;
-    } else if (newRoot instanceof TreeNode) {
+    } else if (newRoot instanceof this.constructors.Node) {
       var oldroot = this.rootnode;
       this._setrootnode(newRoot, options);
       this.rootnode.edgeToParent(null);
@@ -4227,7 +4279,7 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
     this.element.remove();
   };
   treeproto.newNode = function(value, parent, options) {
-    return new TreeNode(this, value, parent, options);
+    return new this.constructors.Node(this, value, parent, options);
   };
   treeproto.height = function() {
     return this.rootnode.height();
@@ -4237,7 +4289,7 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
     return this.jsav.ds.layout.tree[layoutAlg](this, options);
   };
   treeproto.equals = function(otherTree, options) {
-    if (!otherTree instanceof Tree) {
+    if (!otherTree instanceof this.constructors.Tree) {
       return false;
     }
     return this.root().equals(otherTree.root(), options);
@@ -4329,6 +4381,7 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
     this.container = container;
     this.parentnode = parent;
     this.options = $.extend(true, {visible: true}, parent?parent.options:{}, options);
+    this.constructors = $.extend({}, container.constructors, this.options.constructors);
     var el = this.options.nodeelement || $("<div><span class='jsavvalue'>" + this._valstring(value) + "</span></div>"),
       valtype = typeof(value);
     if (valtype === "object") { valtype = "string"; }
@@ -4346,7 +4399,7 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
 
     JSAV.utils._helpers.handleVisibility(this, this.options);
     if (parent) {
-      this._edgetoparent = new Edge(this.jsav, this, parent);
+      this._edgetoparent = new this.constructors.Edge(this.jsav, this, parent);
       if (this.options.edgeLabel) {
         this._edgetoparent.label(this.options.edgeLabel);
       }
@@ -4375,7 +4428,7 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
       return this.parentnode;
     } else {
       if (!this._edgetoparent) {
-        this._setEdgeToParent(new Edge(this.jsav, this, newParent, options));
+        this._setEdgeToParent(new this.constructors.Edge(this.jsav, this, newParent, options));
       }
       this._setparent(newParent, options);
 
@@ -4465,7 +4518,7 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
     if (typeof node === "undefined") {
       return this.childnodes[pos];
     } else {
-      if (node !== null && !(node instanceof TreeNode)) {
+      if (node !== null && !(node instanceof this.constructors.Node)) {
         node = this.container.newNode(node, this, options);
       }
       return setchildhelper(this, pos, node, options);
@@ -4578,14 +4631,16 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
   
   /// Binary Tree implementation
   var BinaryTree = function(jsav, options) {
-    this.init(jsav, options);
+    var opts = $.extend({constructors: {
+      Tree: BinaryTree,
+      Node: BinaryTreeNode,
+      Edge: Edge
+    }}, options);
+    this.init(jsav, opts);
     this.element.addClass("jsavbinarytree");
   };
   JSAV.utils.extend(BinaryTree, Tree);
   var bintreeproto = BinaryTree.prototype;
-  bintreeproto.newNode = function(value, parent, options) {
-    return new BinaryTreeNode(this, value, parent, options);
-  };
   bintreeproto.state = function(newState) {
     if (typeof newState !== "undefined") {
       var tree = this;
@@ -4622,7 +4677,7 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
           state.right = nodeState(node.right());
         }
         return state;
-      }
+      };
       return nodeState(this.root());
     }
   };
@@ -4673,7 +4728,7 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
           }
         }
       } else { // create a new node and set the child
-        if (!(node instanceof BinaryTreeNode)) {
+        if (!(node instanceof self.constructors.Node)) {
           // if there is a child node and value is number or string, just change the value of the node
           if (child && (typeof node === "number" || typeof node === "string")) {
             return child.value(node, opts);
@@ -4921,8 +4976,9 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
       if (opts.hasOwnProperty("center") && !opts.center) {
         return 0;
       }
-      var containerWidth = $(tree.jsav.canvas).width();
-      return (containerWidth - width)/2 - tree.position().left;
+      var containerWidth = $(tree.jsav.canvas).width(),
+          treeLeft = parseInt(tree.element.css("left"), 10) || 0;
+      return Math.max(0, (containerWidth - width)/2) - treeLeft;
     };
 
     var treeDims = { width: maxX - minX, height: maxY - minY },
@@ -4957,13 +5013,13 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
     // return the dimensions of the tree
     return $.extend({ top: tree.position().top }, treeDims);
   }
-  
+
   var layouts = JSAV.ext.ds.layout;
   layouts.tree = {
     "_default": treeLayout
   };
 
-var TreeContours = function(left, right, height, data) {
+  var TreeContours = function(left, right, height, data) {
     this.cHeight = height;
     this.leftCDims = [];
     this.leftCDims[this.leftCDims.length] = {width: -left, height: height};
@@ -4972,152 +5028,152 @@ var TreeContours = function(left, right, height, data) {
     this.rightCDims[this.rightCDims.length] = {width: -right, height: height};
     this.cRightExtent = right;
   };
-TreeContours.prototype = {
-  addOnTop: function(left, right, height, addHeight, originTrans) {
-    var lCD = this.leftCDims,
-        rCD = this.rightCDims;
-    lCD[lCD.length-1].height += addHeight;
-    lCD[lCD.length-1].width += originTrans + left;
-    rCD[rCD.length-1].height += addHeight;
-    rCD[rCD.length-1].width += originTrans + right;
+  TreeContours.prototype = {
+    addOnTop: function(left, right, height, addHeight, originTrans) {
+      var lCD = this.leftCDims,
+          rCD = this.rightCDims;
+      lCD[lCD.length-1].height += addHeight;
+      lCD[lCD.length-1].width += originTrans + left;
+      rCD[rCD.length-1].height += addHeight;
+      rCD[rCD.length-1].width += originTrans + right;
 
-    lCD.push({width: -left, height: height});
-    rCD.push({width: -right, height: height});
-    this.cHeight += height + addHeight;
-    this.cLeftExtent -= originTrans;
-    this.cRightExtent -= originTrans;
-    if (left < this.cLeftExtent) {
-      this.cLeftExtent = left;
-    }
-    if (right > this.cRightExtent) {
-      this.cRightExtent = right;
-    }
-  },
-  joinWith: function(other, hDist) {
-    var thisCDisp, otherCDisp, middle;
-    if (other.cHeight > this.cHeight) {
-      var newLeftC = [];
-      var otherLeft = other.cHeight - this.cHeight;
-      thisCDisp = 0;
-      otherCDisp = 0;
-      $.each(other.leftCDims, function (index, item) {
-        if (otherLeft > 0 ) {
-          var dim = {width: item.width, height: item.height};
-          otherLeft -= item.height;
-          if (otherLeft < 0) {
-            dim.height += otherLeft;
+      lCD.push({width: -left, height: height});
+      rCD.push({width: -right, height: height});
+      this.cHeight += height + addHeight;
+      this.cLeftExtent -= originTrans;
+      this.cRightExtent -= originTrans;
+      if (left < this.cLeftExtent) {
+        this.cLeftExtent = left;
+      }
+      if (right > this.cRightExtent) {
+        this.cRightExtent = right;
+      }
+    },
+    joinWith: function(other, hDist) {
+      var thisCDisp, otherCDisp, middle;
+      if (other.cHeight > this.cHeight) {
+        var newLeftC = [];
+        var otherLeft = other.cHeight - this.cHeight;
+        thisCDisp = 0;
+        otherCDisp = 0;
+        $.each(other.leftCDims, function (index, item) {
+          if (otherLeft > 0 ) {
+            var dim = {width: item.width, height: item.height};
+            otherLeft -= item.height;
+            if (otherLeft < 0) {
+              dim.height += otherLeft;
+            }
+            newLeftC[newLeftC.length] = dim;
+          } else {
+            otherCDisp += item.width;
           }
-          newLeftC[newLeftC.length] = dim;
-        } else {
-          otherCDisp += item.width;
-        }
-      });
-      middle = newLeftC[newLeftC.length - 1];
+        });
+        middle = newLeftC[newLeftC.length - 1];
 
-      $.each(this.leftCDims, function(index, item) {
-        thisCDisp += item.width;
-        newLeftC[newLeftC.length] = {width: item.width, height: item.height};
-      });
-               
-      middle.width -= thisCDisp - otherCDisp;
-      middle.width -= hDist;
-      this.leftCDims = newLeftC;
-    }
-    if (other.cHeight >= this.cHeight) {
-      this.rightCDims = other.rightCDims.slice();
-    } else {
-      var thisLeft = this.cHeight - other.cHeight;
-      var nextIndex = 0;
-
-      thisCDisp = 0;
-      otherCDisp = 0;
-      $.each(this.rightCDims, function (index, item) {
-        if (thisLeft > 0 ) {
-          nextIndex++;
-          thisLeft -= item.height;
-          if (thisLeft < 0) {
-            item.height += thisLeft;
-          }
-        } else {
+        $.each(this.leftCDims, function(index, item) {
           thisCDisp += item.width;
-        }
-      });
-      for (var i = nextIndex + 1, l=this.rightCDims.length; i < l; i++) {
-        this.rightCDims[i] = null;
+          newLeftC[newLeftC.length] = {width: item.width, height: item.height};
+        });
+
+        middle.width -= thisCDisp - otherCDisp;
+        middle.width -= hDist;
+        this.leftCDims = newLeftC;
       }
-      this.rightCDims = $.map(this.rightCDims, function(item) {return item;});
-      middle = this.rightCDims[nextIndex];
-
-      for (i = 0, l=other.rightCDims.length; i < l; i++) {
-        var item = other.rightCDims[i];
-        otherCDisp += item.width;
-        this.rightCDims[this.rightCDims.length] = {width: item.width, height: item.height};
-      }
-      middle.width += thisCDisp - otherCDisp;
-      middle.width += hDist;
-    }
-    this.rightCDims[this.rightCDims.length-1].width -= hDist;
-
-    if (other.cHeight > this.cHeight) {
-      this.cHeight = other.cHeight;
-    }
-    if (other.cLeftExtent + hDist < this.cLeftExtent) {
-      this.cLeftExtent = other.cLeftExtent + hDist;
-    }
-    if (other.cRightExtent + hDist > this.cRightExtent) {
-      this.cRightExtent = other.cRightExtent + hDist;
-    }
-  },
-  calcTranslation: function(other, wantedDist) {
-    var lc = this.rightCDims,
-        rc = other.leftCDims,
-        li = lc.length - 1,
-        ri = rc.length - 1,
-        lCumD = {width: 0, height: 0},
-        rCumD = {width: 0, height: 0},
-        displacement = wantedDist,
-        ld, rd;
-
-    while (true) {
-      if (li < 0) {
-        if (ri < 0 || rCumD.height >= lCumD.height) {
-          break;
-        }
-        rd = rc[ri];
-        rCumD.height += rd.height;
-        rCumD.width += rd.width;
-        ri--;
-      } else if (ri < 0) {
-        if (lCumD.height >= rCumD.height) {
-          break;
-        }
-        ld = lc[li];
-        lCumD.height += ld.height;
-        lCumD.width += ld.width;
-        li--;
+      if (other.cHeight >= this.cHeight) {
+        this.rightCDims = other.rightCDims.slice();
       } else {
-        ld = lc[li];
-        rd = rc[ri];
-        var leftNewHeight = lCumD.height,
-            rightNewHeight = rCumD.height;
-        if (leftNewHeight <= rightNewHeight) {
-          lCumD.height += ld.height;
-          lCumD.width += ld.width;
-          li--;
+        var thisLeft = this.cHeight - other.cHeight;
+        var nextIndex = 0;
+
+        thisCDisp = 0;
+        otherCDisp = 0;
+        $.each(this.rightCDims, function (index, item) {
+          if (thisLeft > 0 ) {
+            nextIndex++;
+            thisLeft -= item.height;
+            if (thisLeft < 0) {
+              item.height += thisLeft;
+            }
+          } else {
+            thisCDisp += item.width;
+          }
+        });
+        for (var i = nextIndex + 1, l=this.rightCDims.length; i < l; i++) {
+          this.rightCDims[i] = null;
         }
-        if (rightNewHeight <= leftNewHeight) {
+        this.rightCDims = $.map(this.rightCDims, function(item) {return item;});
+        middle = this.rightCDims[nextIndex];
+
+        for (i = 0, l=other.rightCDims.length; i < l; i++) {
+          var item = other.rightCDims[i];
+          otherCDisp += item.width;
+          this.rightCDims[this.rightCDims.length] = {width: item.width, height: item.height};
+        }
+        middle.width += thisCDisp - otherCDisp;
+        middle.width += hDist;
+      }
+      this.rightCDims[this.rightCDims.length-1].width -= hDist;
+
+      if (other.cHeight > this.cHeight) {
+        this.cHeight = other.cHeight;
+      }
+      if (other.cLeftExtent + hDist < this.cLeftExtent) {
+        this.cLeftExtent = other.cLeftExtent + hDist;
+      }
+      if (other.cRightExtent + hDist > this.cRightExtent) {
+        this.cRightExtent = other.cRightExtent + hDist;
+      }
+    },
+    calcTranslation: function(other, wantedDist) {
+      var lc = this.rightCDims,
+          rc = other.leftCDims,
+          li = lc.length - 1,
+          ri = rc.length - 1,
+          lCumD = {width: 0, height: 0},
+          rCumD = {width: 0, height: 0},
+          displacement = wantedDist,
+          ld, rd;
+
+      while (true) {
+        if (li < 0) {
+          if (ri < 0 || rCumD.height >= lCumD.height) {
+            break;
+          }
+          rd = rc[ri];
           rCumD.height += rd.height;
           rCumD.width += rd.width;
           ri--;
+        } else if (ri < 0) {
+          if (lCumD.height >= rCumD.height) {
+            break;
+          }
+          ld = lc[li];
+          lCumD.height += ld.height;
+          lCumD.width += ld.width;
+          li--;
+        } else {
+          ld = lc[li];
+          rd = rc[ri];
+          var leftNewHeight = lCumD.height,
+              rightNewHeight = rCumD.height;
+          if (leftNewHeight <= rightNewHeight) {
+            lCumD.height += ld.height;
+            lCumD.width += ld.width;
+            li--;
+          }
+          if (rightNewHeight <= leftNewHeight) {
+            rCumD.height += rd.height;
+            rCumD.width += rd.width;
+            ri--;
+          }
+        }
+        if (displacement < rCumD.width - lCumD.width + wantedDist) {
+          displacement = rCumD.width - lCumD.width + wantedDist;
         }
       }
-      if (displacement < rCumD.width - lCumD.width + wantedDist) {
-        displacement = rCumD.width - lCumD.width + wantedDist;
-      }
+      return displacement;
     }
-    return displacement;
-  }
-};
+  };
 }(jQuery));/**
 * Module that contains the linked list data structure implementations.
 * Depends on core.js, datastructures.js, anim.js, utils.js
@@ -7288,6 +7344,8 @@ TreeContours.prototype = {
     for (var i = 0; i < this.components.length; i++) {
       $cont.append(this.components[i]);
     }
+    // append the JSAV version to the settings dialog
+    $cont.append("<span class='jsavversion'>" + JSAV.version() + "</span>");
     
     var translate;
     if (this.jsav) {
@@ -8077,7 +8135,7 @@ TreeContours.prototype = {
     this.modelDialog.show();
   };
   exerproto.reset = function() {
-    this.jsav.clear();
+    this.jsav.clearAnimation();
     this.score = {total: 0, correct: 0, undo: 0, fix: 0, student: 0};
     this._undoneSteps = [];
     this.jsav.RECORD = true;
@@ -8106,7 +8164,7 @@ TreeContours.prototype = {
     if ((undoGraders.indexOf(this.options.grader) !== -1 ) && this.jsav.backward(gradeStepFilterFunction)) {
       // if such step was found, redo it
       this.jsav.forward();
-      this.jsav.step();
+      this.jsav.step({updateRelative: false});
     } else {
       // ..if not, the first student step was incorrent and we can rewind to beginning
       this.jsav.begin();
@@ -8258,7 +8316,7 @@ TreeContours.prototype = {
 */
 (function() {
   if (typeof JSAV === "undefined") { return; }
-  var theVERSION = "v0.7.0-273-g64441af";
+  var theVERSION = "v1.0.1-1-g99fdf56";
 
   JSAV.version = function() {
     return theVERSION;
