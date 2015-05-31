@@ -58,6 +58,9 @@ min: nomin
 
 S15: CS2114 ECE252 CPSC270 CSCI204 CS3114 CS4104S15 CS5114S15 RecurTutor CSCI115 uwosh-pl uwosh-taylor
 
+Pointers: min
+	python $(CONFIG_SCRIPT) config/Pointers.json
+	
 Tutorial: min
 	python $(CONFIG_SCRIPT) config/Tutorial.json
 
