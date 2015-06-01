@@ -1,0 +1,126 @@
+{
+  "title": "C2GEN: OpenDSA, Summer 2015",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+    "Processing": ["pde"],
+    "C++": ["cpp", "h"]
+  },
+  "lang": "en",
+  "module_origin": "http://algoviz.org",
+  "exercise_server": "https://opendsa.cc.vt.edu/",
+  "logging_server": "https://opendsa.cc.vt.edu/",
+  "score_server": "https://opendsa.cc.vt.edu/",
+  "build_JSAV": false,
+  "allow_anonymous_credit": true,
+  "suppress_todo": true,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "chapters": {
+    "Preface": {
+      "Intro": {
+        "long_name": "How to Use this System",
+        "exercises": {}
+      }
+    },
+    "Class 1: June 8": {
+      "C2GEN/Class1_Intro": {
+        "long_name": "Introduction",
+        "exercises": {}
+      },
+      "C2GEN/Class1_Tour": {
+        "long_name": "OpenDSA Guided Tour",
+        "exercises": {}
+      },
+      "C2GEN/Class1_Starting": {
+        "long_name": "Getting Started: Compiling a Book Instance",
+        "exercises": {}
+      },
+      "C2GEN/Class1_Discuss": {
+        "long_name": "Today's Discussion",
+        "exercises": {}
+      },
+      "C2GEN/Class1_Assignment": {
+        "long_name": "Class 1: Assignment",
+        "exercises": {}
+      }
+    },
+    "Class 2: June 10": {
+      "C2GEN/Class2_Intro": {
+        "long_name": "Introduction",
+        "exercises": {}
+      },
+      "C2GEN/Class2_Discuss": {
+        "long_name": "Today's Discussion",
+        "exercises": {}
+      },
+      "C2GEN/Class2_Assignment": {
+        "long_name": "Class 2: Assignment",
+        "exercises": {}
+      }
+    },
+    "Class 3: June 12": {
+      "C2GEN/Class3_Intro": {
+        "long_name": "Introduction",
+        "exercises": {}
+      },
+      "C2GEN/Class3_Discuss": {
+        "long_name": "Today's Discussion",
+        "exercises": {}
+      },
+      "C2GEN/Class3_Assignment": {
+        "long_name": "Class 3: Assignment",
+        "exercises": {}
+      }
+    },
+    "Class 4: June 15": {
+      "C2GEN/Class4_Intro": {
+        "long_name": "Introduction",
+        "exercises": {}
+      },
+      "C2GEN/Class4_Discuss": {
+        "long_name": "Today's Discussion",
+        "exercises": {}
+      },
+      "C2GEN/Class4_Assignment": {
+        "long_name": "Class 4: Assignment",
+        "exercises": {}
+      }
+    },
+    "Class 5: June 17": {
+      "C2GEN/Class5_Intro": {
+        "long_name": "Introduction",
+        "exercises": {}
+      },
+      "C2GEN/Class5_Discuss": {
+        "long_name": "Today's Discussion",
+        "exercises": {}
+      },
+      "C2GEN/Class5_Assignment": {
+        "long_name": "Class 5: Assignment",
+        "exercises": {}
+      }
+    },
+    "Class 6: June 19": {
+      "C2GEN/Class6_Intro": {
+        "long_name": "Introduction",
+        "exercises": {}
+      },
+      "C2GEN/Class6_Discuss": {
+        "long_name": "Today's Discussion",
+        "exercises": {}
+      },
+      "C2GEN/Class6_Assignment": {
+        "long_name": "Class 6: Assignment",
+        "exercises": {}
+      }
+    },
+    "Appendix": {
+      "Glossary": {
+        "long_name": "Glossary",
+        "exercises": {}
+      }
+    }
+  }
+}

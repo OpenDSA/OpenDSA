@@ -1,0 +1,20 @@
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://algoviz.org/OpenDSA for more details.
+.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
+
+.. avmetadata::
+   :author: Cliff Shaffer
+   :satisfies: OpenDSA Introduction
+   :topic: Introduction
+
+Class 3: Do On Your Own
+=======================
+
+*  Create a configuration file for your proposed course
+
+   *  Copy one of the existing configurations
+   *  Modify it to make use of any existing materials that you want
+   *  Create placeholder files for missing sections
+   *  Modify the Makefile
+   *  Compile

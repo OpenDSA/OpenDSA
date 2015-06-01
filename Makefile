@@ -58,6 +58,9 @@ min: nomin
 
 S15: CS2114 ECE252 CPSC270 CSCI204 CS3114 CS4104S15 CS5114S15 RecurTutor CSCI115 uwosh-pl uwosh-taylor
 
+Pointers: min
+	python $(CONFIG_SCRIPT) config/Pointers.json
+
 Tutorial: min
 	python $(CONFIG_SCRIPT) config/Tutorial.json
 
@@ -193,6 +196,9 @@ AlgAnalTest: min
 
 invalid: min
 	python $(CONFIG_SCRIPT) config/invalid.json
+
+C2GEN: min
+	python $(CONFIG_SCRIPT) config/C2GEN.json
 
 slides: min
 	python $(CONFIG_SCRIPT) -s config/slides.json
