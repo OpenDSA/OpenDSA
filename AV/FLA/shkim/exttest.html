@@ -18,15 +18,11 @@
 				border: 3px double;
 			}
 			p.jsavoutput.jsavline {
-				height: 40px;
+				height: 10px;
 			}
 			.jsavlabel {
       			font-size: 2em;
       			text-align: center;
-    		}
-    		.jsavcounter {
-      			position: absolute;
-      			top: 15px;
     		}
     		.jsavcanvas { height: 500px;}
     		.jsavgraph {
@@ -34,24 +30,35 @@
     			border: 10px transparent solid;
     		}
     		.jsavnode { cursor: pointer;}
+    		.jsavedge { 
+    			cursor: pointer;
+    			stroke-width: 1;	/*can change to make edges easier to click */
+    		}
 		</style>
 	</head>
 	<body>
 		
-		<h1>DFA test</h1>
 		<div id="av">
-			<a class="jsavsettings" href="#">Settings</a>
-			<p align="center" class="jsavexercisecontrols"></p>
-			<div class="jsavcontrols"></div><span class="jsavcounter"></span>
+			<h1>DFA test</h1>
+			<span class="jsavcounter"></span>
+			<div class="jsavcontrols">
+				<a class="jsavsettings" href="#">Settings</a>
+			</div>
       		<p class="jsavoutput jsavline"></p>
       		<p align="center" class="arrayPlace"></p>
 		</div>
 		<button onclick="play()" id="begin">Traverse</button>
+		<button onclick="minimize()">Minimize</button>
 		<button onclick="g.layout()">Layout</button>
 		<button onclick="save()" id="saveButton">Save</button>
-		<button onclick="load()">Load</button>
+		<!-- <button onclick="load()">Load</button> -->
+		<button type="submit" onclick="load()">Load</button>
+		<input type="file" accept=".json" id="loadFile" onchange="setSaved()">
 		<button onclick="edit()" id="editButton">Change Editing Mode</button>
 		<span id='mode'></span>
+		<div>&Sigma;: <span id='alphabet'></span></div>
+		<!-- <div id="nodeTitle"></div> -->
+		<div id='download'></div>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
@@ -62,11 +69,11 @@
 		<script src="serializableGraph.js"></script>
 		<script>
 			var jsav = new JSAV("av"),
-				textArray = [],
 				saved = false,
-				startState,
-				selectedNode = null;
-
+				//startState,
+				selectedNode = null,
+				arr,
+				g;
 			/*
 			graph:
 			initial state is filled green
@@ -76,10 +83,10 @@
 			if a character is not accepted, it is filled red
 			if the inputted string passes, the final character is filled green
 			*/
-
+			
 			var initGraph = function(opts) {
 				if (!saved) {
-					var g = jsav.ds.fa($.extend({width: '90%', height: 500}, opts));
+					g = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
 		      		var a = g.addNode("q0"),		
 		          		b = g.addNode("q1"),
 		          		c = g.addNode("q2"),
@@ -87,8 +94,7 @@
 		          		e = g.addNode("q4"),
 		          		f = g.addNode("q5");
 
-		          	a.addClass("start");
-		          	startState = a;
+		          	g.makeInitial(a);
 		          	f.addClass("final");
 
 				    g.addEdge(a, b, {weight: 'a'});
@@ -98,12 +104,21 @@
 				    g.addEdge(e, a, {weight: 'a'});
 				    g.addEdge(d, e, {weight: 'b'});
 				    g.addEdge(d, f, {weight: 'a'});
+				
+					addHandlers();
 				}
 				else {
-					var g = localStorage['graph'],
+					var x = document.getElementById("loadFile").files[0];
+					var reader = new FileReader();
+					reader.onload = loadComplete;
+					reader.readAsText(x);
+				}
+				function loadComplete() {
+						g = reader.result,
+					//var g = localStorage['graph'],
 						gg = jQuery.parseJSON(g),
 					//BUG: if height is set to a %, loading a graph causes the height of the jsavgraph element to increase by a few pixels every time
-						graph = jsav.ds.fa($.extend({width: '90%', height: 500}, opts));
+						graph = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
 					for (var i = 0; i < gg.nodes.length; i++) {
 						//the 'left' and 'top' options arent working for some reason
 			    		//var node = graph.addNode("q" + i, {'left': parseInt(gg.nodes[i].left), 'top': parseInt(gg.nodes[i].top)});
@@ -112,8 +127,7 @@
 			    			offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
 			    		$(node.element).offset({top : parseInt(gg.nodes[i].top) + offset.top + offset2, left: parseInt(gg.nodes[i].left) + offset.left + offset2});
 			    		if (gg.nodes[i].i) {
-			    			node.addClass("start");
-			    			startState = node;
+			    			graph.makeInitial(node);
 			    		}
 			    		if (gg.nodes[i].f) {
 			    			node.addClass("final");
@@ -129,8 +143,12 @@
 			    		edge.layout();
 			    	}
 			    	g = graph;
-			    }
-			    $(".jsavgraph").click(function(e) {
+			    	addHandlers();
+				}
+				return g;
+		    };
+		    function addHandlers() {
+		    	$(".jsavgraph").click(function(e) {
 					if ($(".jsavgraph").hasClass("addNodes")) {
 						var newNode = g.addNode(),
 						    nodeX = newNode.element.width()/2.0,
@@ -153,10 +171,11 @@
 						jsav.umsg("Click a node");
 					}
 				});
+				//add eventhandlers to nodes
 				g.click(function(e) {	
 					if ($(".jsavgraph").hasClass("editNodes")) {
 						this.highlight();
-						var input = prompt("Delete state, make state initial, or make state final? D, I, or F");
+						var input = prompt("Delete state, make state initial, make state final, or give state a label? d, i, f, or l");
 						if (input === null) {
 							this.unhighlight();
 							return;
@@ -164,16 +183,23 @@
 						input = input.toUpperCase();
 						if (input == 'D') {
 							g.removeNode(this);
+							updateAlphabet();
 						}
 						else if (input == 'I') {
 							for (var i = 0; i < g.nodeCount(); i++) {
 								g.nodes()[i].removeClass('start');
 							}
-							this.addClass("start");
-							startState = this;
+							g.makeInitial(this);
 						} else if (input == 'F') {
 							this.toggleClass('final');
 						} 
+						//adds hovertext to nodes. leaving input empty removes the existing title
+						else if (input == 'L') {
+							var input2 = prompt("Label?");
+							if (input2 !== null) {
+								this.element.attr('title', input2);
+							}
+						}
 			   			this.unhighlight();
 	   				} else if ($(".jsavgraph").hasClass("addEdges")) {
 	   					this.highlight();
@@ -195,6 +221,7 @@
 							$('.jsavgraph').removeClass("working");
 							first.unhighlight();
 							this.unhighlight();
+							updateAlphabet();
 							jsav.umsg("Click a node");
 			   			}
 	   				} else if ($('.jsavgraph').hasClass('moveNodes')) {
@@ -204,15 +231,51 @@
 	   					e.stopPropagation();
 	   				}
  				});
-
-				return g;
-		    };
+				// g.mouseenter(function() {
+				// 	var title = this.element.attr('title');
+				// 	$('#nodeTitle').html(title);
+				// }).mouseleave(function() {
+				// 	$('#nodeTitle').html('');
+				// });
+				//add eventhandlers to edges
+				g.click(function(e) {
+					if ($('.jsavgraph').hasClass('editNodes')) {
+						this.highlight();
+						var input = prompt("Delete edge, or change value? d or c");
+						if (input === null) {
+							this.unhighlight();
+							return;
+						}
+						input = input.toUpperCase();
+						if (input == 'D') {
+							g.removeEdge(this);
+						}
+						else if (input == 'C') {
+							var input2 = prompt("Accepted character?");
+							if (input2 === "") {
+								this.weight("\&lambda;");
+							} else if (input2 != null) {
+								this.weight(input2);
+							} 
+						}
+						updateAlphabet();
+						this.unhighlight();
+					}
+				}, {edge: true});
+			};
 
 		    var g = initGraph({layout: "automatic"});
-   			jsav.displayInit();
    			g.layout();
-   			
-
+   			//===============================
+   			var updateAlphabet = function() {
+	   			g.updateAlphabet();
+				$("#alphabet").html("" + Object.keys(g.alphabet).sort());
+			};
+			updateAlphabet();
+   		
+   			var minimize = function() {
+   				g.minimize();
+   			}
    			//================================
    			var edit = function() {
 				if ($(".jsavgraph").hasClass("addNodes")) {
@@ -228,8 +291,8 @@
    				} else if ($(".jsavgraph").hasClass("moveNodes")) {
    					$(".jsavgraph").removeClass("moveNodes");
    					$('.jsavgraph').addClass('editNodes');
-   					$("#mode").html('Editing nodes');
-   					jsav.umsg("Click a node");
+   					$("#mode").html('Editing nodes and edges');
+   					jsav.umsg("Click a node or edge");
    				} else if ($('.jsavgraph').hasClass("editNodes")) {
    					$(".jsavgraph").removeClass("editNodes");
    					$("#mode").html('');
@@ -246,19 +309,28 @@
 			//temp:
 
 			var play = function() {
-				jsav.displayInit();
+				jsav.umsg("");
+				var textArray = [];
+				$("button").hide();			//disable buttons
+				$("#mode").html('');
+				if (arr) {
+        			arr.clear();
+      			}
+
 				var inputString = prompt("Input string?", "aaa");
 				if (inputString == null) {
-					jsav.recorded();
+					return;
 				}
-				$("button").hide();			//disable buttons
-				var currentState = startState,
+
+				var currentState = g.initial,
 					cur;
 				currentState.addClass('current');
 				for (var i = 0; i < inputString.length; i++) {
     				textArray.push(inputString[i]);
   				}
-  				var arr = jsav.ds.array(textArray, {element: $('.arrayPlace')});
+  				arr = jsav.ds.array(textArray, {element: $('.arrayPlace')});
+
+  				jsav.displayInit();
 
 				for (var i = 0; i < inputString.length; i++) {
 				   	cur = traverse(currentState, inputString[i]);
@@ -297,10 +369,12 @@
 			};
 
 			//======================
-			//more like a manual 'undo' button:
 			var save = function () {
-				localStorage['graph'] = serialize(g);	//I changed serializableGraph.js
-				saved = true;
+				//localStorage['graph'] = serialize(g);	//I changed serializableGraph.js
+				//saved = true;
+				var downloadData = "text/json;charset=utf-8," + encodeURIComponent(localStorage['graph']);
+				$('#download').html('<a href="data:' + downloadData + '" download="data.json">download JSON</a>');
+				//$('<a href="data:' + downloadData + '" download="data.json">download JSON</a>').trigger('click');
 				jsav.umsg("Saved");
 			};
 			var load = function () {
@@ -311,11 +385,15 @@
 					g = initGraph({layout: "automatic"});
 					jsav.displayInit();
 					jsav.umsg("Loaded");
+					updateAlphabet();
 				} else{
 					jsav.umsg("There is nothing to load");
 				}
 			};
-
+			var setSaved = function () {
+				saved = true;
+			};
+			
    		</script>
    	</body>
   </html>
