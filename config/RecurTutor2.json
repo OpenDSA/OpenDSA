@@ -3,7 +3,7 @@
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {"Processing": ["pde"]},
-  "module_origin": "http://algoviz.org",
+  "module_origin": "http://algoviz-beta6.cc.vt.edu",
   "exercise_server": "http://opendsa.cc.vt.edu:8090",
   "logging_server": "http://opendsa.cc.vt.edu:8090",
   "score_server": "http://opendsa.cc.vt.edu:8090",
@@ -94,7 +94,18 @@
           }
         }
       },
-     
+      
+      "Binary/BinaryTreeImpl": {
+        "long_name": "Full Binary Tree Node Implementations",
+        "exercises": {
+          "expressionTraversalCON": {
+            "long_name": "Expression Tree Traversal Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      },
       "RecurTutor2/BinaryTreeInfFlw": {
         "long_name": "Binary Tree Information Flow",
         "exercises": {
