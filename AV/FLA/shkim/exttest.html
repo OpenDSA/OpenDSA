@@ -55,6 +55,7 @@
 		<button type="submit" onclick="load()">Load</button>
 		<input type="file" accept=".json" id="loadFile" onchange="setSaved()">
 		<button onclick="edit()" id="editButton">Change Editing Mode</button>
+		<button onclick="lambdaClosure(['q0'], g)">lambda</button>
 		<span id='mode'></span>
 		<div>&Sigma;: <span id='alphabet'></span></div>
 		<!-- <div id="nodeTitle"></div> -->
@@ -67,6 +68,8 @@
 		<script src="./lib/jquery.transit.js"></script>
 		<script src="./JSAVedit.js"></script>
 		<script src="serializableGraph.js"></script>
+		<script src="./underscore-min.js"></script>
+		<script src="FA.js"></script>
 		<script>
 			var jsav = new JSAV("av"),
 				saved = false,
