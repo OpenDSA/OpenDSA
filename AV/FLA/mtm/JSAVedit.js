@@ -5758,7 +5758,6 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
 
     // finally hide the node
     node.hide(options);
-
     // return this for chaining
     return this;
   };
@@ -8343,8 +8342,10 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
     this._nodes = [];
     this._edges = [];
     this._alledges = null;
+    this.alphabet = {};
     this.jsav = jsav;
     this.stateCount = 0;
+    this.initial;
     this.options = $.extend({visible: true, nodegap: 40, autoresize: true, width: 400, height: 200,
                               directed: true, center: true, arcoffset: 50}, options);
     //this.options = $.extend({directed: true}, options);
@@ -8382,9 +8383,46 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
   JSAV.utils._events._addEventSupport(faproto);
 
   faproto.addNode = function(options) {
-    var value = "q" + this.stateCount;
-    this.stateCount++;
+    var value;
+    if (!options.value) {
+      value = "q" + this._nodes.length;
+    }
+    else{
+      value = options.value;
+    }
     return this.newNode(value, options);
+  };
+
+
+  faproto.removeNode = function(node, options) {
+    var nodeIndex = this._nodes.indexOf(node);
+    if (nodeIndex === -1) { return; } // no such node
+
+    // remove all edges connected to this node
+    var allEdges = this.edges();
+    for (var i = allEdges.length; i--; ) {
+      var edge = allEdges[i];
+      if (edge.start().id() === node.id() || edge.end().id() === node.id()) {
+        this.removeEdge(edge, options);
+      }
+    }
+
+    // update the adjacency lists
+    var firstAdjs = this._edges.slice(0, nodeIndex),
+        newAdjs = firstAdjs.concat(this._edges.slice(nodeIndex + 1));
+    this._setadjs(newAdjs, options);
+
+    // create a new array of nodes without the removed node
+    var firstNodes = this._nodes.slice(0, nodeIndex),
+        newNodes = firstNodes.concat(this._nodes.slice(nodeIndex + 1));
+    // set the nodes (makes the operation animated)
+    this._setnodes(newNodes, options);
+
+    // finally hide the node
+    node.hide(options);
+    this.updateNodes();
+    // return this for chaining
+    return this;
   };
 
   faproto.newNode = function(value, options) {
@@ -8470,6 +8508,113 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
       oppEdge.layout();
     }
     edge.hide();
+  };
+
+  faproto.makeInitial = function(node, options) {
+    node.addClass("start");   //change this later
+    this.initial = node;
+    node.initialState(true);     //
+  };
+
+  faproto.updateAlphabet = function () {
+    var alphabet = {};
+    var edges = this.edges();
+    var w;
+    for (var next = edges.next(); next; next = edges.next()) {
+      w = next.weight();
+      w = w.split(',');
+      for (var i = 0; i < w.length; i++) {
+        if (w[i] !== "\&lambda;") {
+          if (!(w[i] in alphabet)) {
+            alphabet[w[i]] = 0;
+          }
+          alphabet[w[i]]++;
+        }
+      }
+    }
+    this.alphabet = alphabet;
+    return alphabet;
+  };
+
+  faproto.minimize = function () {
+    // this assumes all of the edges are in the alphabet
+    var reachable = [this.initial],
+        nodes = this.nodes();
+    dfs(reachable, this.initial);
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      if ($.inArray(next, reachable) < 0) {
+        this.removeNode(next);
+      }
+    }
+    //todo: nondistinguishable states
+    //
+    // var waiting = [],
+    //     finals = [],
+    //     other = [],
+    //     partitions = [],
+    //     nodes = this.nodes(),
+    //     alphabet = this.alphabet.keys();
+    // for (var next = nodes.next(); next; next = nodes.next()) {
+    //   if (next.hasClass("final")) {
+    //     finals.push(next);
+    //   }
+    //   else {
+    //     other.push(next);
+    //   }
+    // }
+    // waiting = [finals.slice(0)];
+    // partitions.push(finals, other);
+    // while (waiting.length > 0) {
+    //   var cur = waiting.pop();
+    //   for (var i = 0; i < alphabet.length; i++) {
+    //     nodes = this.nodes();
+    //     var x = {};
+    //     for (var next = nodes.next(); next = nodes.next()) {
+    //       for (var j = 0; j < cur.length; j++) {
+    //         if (next.edgeTo(cur[j]) && next.edgeTo(cur[j]).weight() === alphabet[i]){
+    //           x[]
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
+
+
+  };
+  //helper depth-first search to find connected component
+  var dfs = function (visited, node, options) {
+    var successors = node.neighbors();
+    for (var next = successors.next(); next; next = successors.next()) {
+      if ($.inArray(next, visited) < 0) {
+        visited.push(next);
+        dfs(visited, next);
+      }
+    }
+  };
+
+  faproto.updateNodes = function() {
+    for (var i = 0; i < this._nodes.length; i++) {
+      this._nodes[i].value('q'+i);
+    }
+  }
+  faproto.getNodeWithValue = function(value) {
+    return this._nodes[parseInt(value.substring(1))];
+  };
+
+  faproto.transitionFunction = function(nodeFrom, letter, options) {
+    //returns an array of values
+    var edges = nodeFrom.getOutgoing(),
+        ret = [];
+    for (var i = 0; i < edges.length; i++) {
+      var edge = edges[i];
+      if (edge.weight().split(',').indexOf(letter) !== -1) {
+        ret.push(edge.end().value());
+      }
+    }
+    if (ret.length > 0) {
+      return ret;
+    }
+    return undefined;
   };
 
   faproto.traverse = function (state, letter, options) {
@@ -8834,6 +8979,11 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
     else if (typeof newBool === 'boolean') {
       this.isFinal = newBool;
     }
+  };
+
+  fastateproto.getOutgoing = function() {
+    var edges = this.container._edges[this.container._nodes.indexOf(this)];
+    return edges; //should probably change this to return an iterable object
   };
 
   
