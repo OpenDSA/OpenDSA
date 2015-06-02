@@ -12,7 +12,8 @@
 				background-color: yellow;
 			}
 			.start{	
-				background-color: green;
+				font-style: italic;
+				font-weight: bold;
 			}
 			.final{
 				border: 3px double;
@@ -48,14 +49,14 @@
       		<p align="center" class="arrayPlace"></p>
 		</div>
 		<button onclick="play()" id="begin">Traverse</button>
-		<button onclick="minimize()">Minimize</button>
+		<button onclick="convertToDFA(g)">Convert NFA to DFA</button>
+		<button onclick="minimize(g)">Minimize</button>
 		<button onclick="g.layout()">Layout</button>
 		<button onclick="save()" id="saveButton">Save</button>
 		<!-- <button onclick="load()">Load</button> -->
 		<button type="submit" onclick="load()">Load</button>
 		<input type="file" accept=".json" id="loadFile" onchange="setSaved()">
 		<button onclick="edit()" id="editButton">Change Editing Mode</button>
-		<button onclick="lambdaClosure(['q0'], g)">lambda</button>
 		<span id='mode'></span>
 		<div>&Sigma;: <span id='alphabet'></span></div>
 		<!-- <div id="nodeTitle"></div> -->
@@ -85,28 +86,29 @@
 			characters already traversed are highlighted yellow
 			if a character is not accepted, it is filled red
 			if the inputted string passes, the final character is filled green
+
+			The values of the FA nodes should never be changed manually (for now)
 			*/
 			
 			var initGraph = function(opts) {
 				if (!saved) {
 					g = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
-		      		var a = g.addNode("q0"),		
-		          		b = g.addNode("q1"),
-		          		c = g.addNode("q2"),
-		          		d = g.addNode("q3"),
-		          		e = g.addNode("q4"),
-		          		f = g.addNode("q5");
-
+		      		var a = g.addNode(),		
+		          		b = g.addNode(),
+		          		c = g.addNode(),
+		          		d = g.addNode();
 		          	g.makeInitial(a);
-		          	f.addClass("final");
+		          	c.addClass("final");
+		          	d.addClass('final');
 
-				    g.addEdge(a, b, {weight: 'a'});
+				    g.addEdge(a, a, {weight: 'a'});
 				    //g.addEdge(b, a, {weight: 'c'}).highlight(); //does edge.highlight() do anything?	
-				    g.addEdge(a, c, {weight: 'b'});
-				    g.addEdge(b, d, {weight: 'a'});
-				    g.addEdge(e, a, {weight: 'a'});
-				    g.addEdge(d, e, {weight: 'b'});
-				    g.addEdge(d, f, {weight: 'a'});
+				    g.addEdge(a, b, {weight: 'a'});
+				    g.addEdge(b, b, {weight: 'b'});
+				    g.addEdge(b, c, {weight: 'b'});
+				    g.addEdge(c, d, {weight: 'a'});
+				    g.addEdge(d, b, {weight: 'b'});
+				    g.addEdge(d, c, {weight: '\&lambda;'});
 				
 					addHandlers();
 				}
@@ -276,9 +278,6 @@
 			};
 			updateAlphabet();
    		
-   			var minimize = function() {
-   				g.minimize();
-   			}
    			//================================
    			var edit = function() {
 				if ($(".jsavgraph").hasClass("addNodes")) {
