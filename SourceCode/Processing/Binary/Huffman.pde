@@ -8,15 +8,15 @@ interface HuffBaseNode {
 
 /** Huffman tree node: Leaf class */
 class HuffLeafNode implements HuffBaseNode {
-  private E element;         // Element for this node
+  private char element;      // Element for this node
   private int weight;        // Weight for this node
 
   /** Constructor */
-  HuffLeafNode(E el, int wt)
+  HuffLeafNode(char el, int wt)
     { element = el; weight = wt; }
 
   /** @return The element value */
-  E element() { return element; }
+  char element() { return element; }
 
   /** @return The weight */
   int weight() { return weight; }
@@ -53,20 +53,20 @@ class HuffInternalNode implements HuffBaseNode {
 
 /* *** ODSATag: HuffmanTree *** */
 /** A Huffman coding tree */
-class HuffTree implements Comparable>{
+class HuffTree implements Comparable {
   private HuffBaseNode root;  
 
   /** Constructors */
-  HuffTree(E el, int wt)
+  HuffTree(char el, int wt)
     { root = new HuffLeafNode(el, wt); }
-  HuffTree(HuffBaseNode l,
-                  HuffBaseNode r, int wt)
+  HuffTree(HuffBaseNode l, HuffBaseNode r, int wt)
     { root = new HuffInternalNode(l, r, wt); }
 
   HuffBaseNode root() { return root; }
   int weight() // Weight of tree is weight of root
     { return root.weight(); }
-  int compareTo(HuffTree that) {
+  int compareTo(Object t) {
+    HuffTree that = (HuffTree)t;
     if (root.weight() < that.weight()) return -1;
     else if (root.weight() == that.weight()) return 0;
     else return 1;

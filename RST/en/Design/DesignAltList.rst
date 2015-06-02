@@ -29,7 +29,7 @@ list.
 
 .. codeinclude:: ListAlt/ListIndex
 
-.. codeinclude:: ListAlt/ListADT
+.. codeinclude:: ListAlt/List
 
 There is the issue in an implementation of how the two classes will
 communicate.

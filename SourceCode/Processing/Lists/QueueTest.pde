@@ -19,12 +19,12 @@ void test(Queue Q, Queue Q1) {
 }
 
 void setup() {
-//  AQueue AQ = new AQueue();
-//  AQueue AQ1 = new AQueue();
+  AQueue AQ = new AQueue();
+  AQueue AQ1 = new AQueue();
   LQueue LQ = new LQueue();
   LQueue LQ1 = new LQueue();
 
-//  test(AQ, AQ1);
+  test(AQ, AQ1);
   test(LQ, LQ1);
   if (SUCCESS) {
     PrintWriter output = createWriter("success");

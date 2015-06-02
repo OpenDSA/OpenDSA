@@ -118,7 +118,7 @@ concept of a current position.
 The current position is where any action such as insertion or deletion
 will take place.
 
-.. codeinclude:: Lists/ListADT
+.. codeinclude:: Lists/List
    :tag: ListADT
 
 .. inlineav:: listADTposCON ss

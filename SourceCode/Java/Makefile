@@ -3,7 +3,7 @@ JAVA= java
 CFLAGS= -Xlint
 RFLAGS= 
 
-all: Sorting
+all: Demo Lists Sorting
 
 clean:
 	-rm -rf build
@@ -19,6 +19,54 @@ UpDown: Demo/UpDown.1 Demo/UpDown.2 Utils/Processing.java
 	cd build/UpDown; \
 	javac $(CFLAGS) UpDown.java; \
 	$(JAVA) $(RFLAGS) UpDown
+
+Lists: ListTest StackTest QueueTest
+
+ListTest: build/ListTest/success
+
+build/ListTest/success: Lists/ListTest.java Lists/List.java Lists/AList.java Lists/LList.java Lists/Link.java
+	@echo "Array-based and Linked List Test"
+	-@rm -rf build/ListTest
+	@mkdir build/ListTest
+	cp Lists/ListTest.java build/ListTest
+	cp Lists/List.java build/ListTest
+	cp Lists/AList.java build/ListTest
+	cp Lists/LList.java build/ListTest
+	cp Lists/Link.java build/ListTest
+	cd build/ListTest; \
+	javac $(CFLAGS) ListTest.java; \
+	$(JAVA) $(RFLAGS) ListTest
+
+StackTest: build/StackTest/success
+
+build/StackTest/success: Lists/Stack.java Lists/AStack.java Lists/Link.java Lists/LStack.java Lists/StackTest.java
+	@echo "Array-based and Linked Stack Test"
+	-@rm -rf build/StackTest
+	@mkdir build/StackTest
+	@cp Lists/Stack.java build/StackTest
+	@cp Lists/AStack.java build/StackTest
+	@cp Lists/LStack.java build/StackTest
+	@cp Lists/Link.java build/StackTest
+	@cp Lists/StackTest.java build/StackTest
+	cd build/StackTest; \
+	javac $(CFLAGS) StackTest.java; \
+	$(JAVA) $(RFLAGS) StackTest
+
+QueueTest: build/QueueTest/success
+
+build/QueueTest/success: Lists/Queue.java Lists/AQueue.java Lists/Link.java Lists/LQueue.java Lists/QueueTest.java
+	@echo "Array-based and Linked Queue Test"
+	-@rm -rf build/QueueTest
+	@mkdir build/QueueTest
+	@cp Lists/Queue.java build/QueueTest
+	@cp Lists/AQueue.java build/QueueTest
+	@cp Lists/LQueue.java build/QueueTest
+	@cp Lists/Link.java build/QueueTest
+	@cp Lists/QueueTest.java build/QueueTest
+	cd build/QueueTest; \
+	javac $(CFLAGS) QueueTest.java; \
+	$(JAVA) $(RFLAGS) QueueTest
+
 
 Sorting: Inssort Bubblesort Selsort
 

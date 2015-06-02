@@ -3,7 +3,8 @@ final int OFFSET = 10000000;
 boolean SUCCESS = true;
 long time1, time2, totaltime;   // These get set by the testing routine
 
-void visit(BinNode rt) { }
+void visit(BinNode rt) {
+}
 
 void setup() {
   Integer[] A = new Integer[testsize];

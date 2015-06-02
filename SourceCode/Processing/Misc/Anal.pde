@@ -92,7 +92,7 @@ void setup() {
 
   int temp = largest(myarray);
   if (temp != 1) SUCCESS = false;
-  temp = binary(myarray, 20);
+  temp = binarySearch(myarray, 20);
   if (temp != 1) SUCCESS = false;
   temp = sequential(myarray, 3);
   if (temp != 2) SUCCESS = false;

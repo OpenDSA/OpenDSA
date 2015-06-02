@@ -16,7 +16,7 @@ class AQueue implements Queue {
   AQueue() { this(defaultSize); }
 /* *** ODSAendTag: AQueue1 *** */
 
-  String toString() {
+  public String toString() {
     StringBuffer out = new StringBuffer(length() * 4);
     for (int i=front; i != (rear+1)%maxSize; i++) {
       i = i % maxSize;                 // Adjust for wrap-around
@@ -28,10 +28,10 @@ class AQueue implements Queue {
 /* *** ODSATag: AQueue2 *** */
 
   // Reinitialize
-  void clear() { rear = 0; front = 1; }
+  public void clear() { rear = 0; front = 1; }
 
   // Put "it" in queue
-  boolean enqueue(Object it) {
+  public boolean enqueue(Object it) {
     if (((rear+2) % maxSize) == front) return false;  // Full
     rear = (rear+1) % maxSize; // Circular increment
     queueArray[rear] = it;
@@ -39,7 +39,7 @@ class AQueue implements Queue {
   }
 
   // Remove and return front value
-  Object dequeue() {
+  public Object dequeue() {
     if(length() == 0) return null;
     Object it = queueArray[front];
     front = (front+1) % maxSize; // Circular increment
@@ -47,12 +47,12 @@ class AQueue implements Queue {
   }
 
   // Return front value
-  Object frontValue() {
+  public Object frontValue() {
     if (length() == 0) return null;
     return queueArray[front];
   }
 
   // Return queue size
-  int length() { return ((rear+maxSize) - front + 1) % maxSize; }
+  public int length() { return ((rear+maxSize) - front + 1) % maxSize; }
 }
 /* *** ODSAendTag: AQueue2 *** */
