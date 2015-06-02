@@ -10,8 +10,21 @@
     }
   },
   "code" : {
-    "processing": {
+    "Processing": {
       "url": "../../../SourceCode/Processing/Lists/AList.pde",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: AListInsert *** */",
+      "endBefore": "/* *** ODSAendTag: AListInsert *** */",
+      "tags": {
+        "sig": 2,
+        "for": 4,
+        "forbody": 5,
+        "insert": 6,
+        "incr": 7
+      }
+    },
+    "java": {
+      "url": "../../../SourceCode/Java/Lists/AList.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: AListInsert *** */",
       "endBefore": "/* *** ODSAendTag: AListInsert *** */",

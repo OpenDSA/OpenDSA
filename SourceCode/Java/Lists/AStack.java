@@ -25,7 +25,7 @@ class AStack implements Stack {
   }
 /* *** ODSATag: AStack2 *** */
 
-  public void clear() { top = 0; }       // Reinitialize stack
+  public void clear() { top = 0; }    // Reinitialize stack
 
 // Push "it" onto stack
 /* *** ODSATag: AStackPush *** */
@@ -44,11 +44,11 @@ class AStack implements Stack {
   }
 /* *** ODSAendTag: AStackPop *** */
 
-  public Object topValue() {             // Return top element
+  public Object topValue() {          // Return top element
     if (top == 0) return null;
     return stackArray[top-1];
   }
 
-  public int length() { return top; }    // Return stack size
+  public int length() { return top; } // Return stack size
 }
 /* *** ODSAendTag: AStack2 *** */

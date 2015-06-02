@@ -19,6 +19,17 @@
         "check": 3,
         "assign": 4
       }
+    },
+    "java": {
+      "url": "../../../SourceCode/Java/Lists/AList.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: AListAppend *** */",
+      "endBefore": "/* *** ODSAendTag: AListAppend *** */",
+      "tags": {
+        "sig": 2,
+        "check": 3,
+        "assign": 4
+      }
     }
   }
 }

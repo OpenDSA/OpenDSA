@@ -7,9 +7,9 @@ class Link {         // Singly linked list node class
   Link(Object it, Link inn) { e = it; n = inn; }
   Link(Link inn) { e = null; n = inn; }
 
-  Object element() { return e; }                  // Return the value
-  Object setElement(Object it) { return e = it; } // Set element value
-  Link next() { return n; }                       // Return next link
-  Link setNext(Link inn) { return n = inn; }      // Set next link
+  public Object element() { return e; }                  // Return the value
+  public Object setElement(Object it) { return e = it; } // Set element value
+  public Link next() { return n; }                       // Return next link
+  public Link setNext(Link inn) { return n = inn; }      // Set next link
 }
 /* *** ODSAendTag: Link *** */

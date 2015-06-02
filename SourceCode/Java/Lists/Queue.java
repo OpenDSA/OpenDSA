@@ -1,3 +1,4 @@
+/* *** ODSATag: Queue *** */
 public interface Queue { // Queue class ADT
   // Reinitialize queue
   public void clear();
