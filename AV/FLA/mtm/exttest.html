@@ -40,9 +40,14 @@
 		</style>
 	</head>
 	<body>
-		
+		<h1>DFA test</h1>
 		<div id="av">
-			<h1>DFA test</h1>
+			<button onclick="addNodes()" id="editButton">Add Nodes</button>
+			<button onclick="addEdges()" id="editButton">Add Edges</button>
+			<button onclick="moveNodes()" id="editButton">Move Nodes</button>
+			<button onclick="edit()" id="editButton">Edit Nodes/Edges</button>
+			<span id='mode'>
+			</span><br><br><br>
 			<span class="jsavcounter"></span>
 			<div class="jsavcontrols">
 				<a class="jsavsettings" href="#">Settings</a>
@@ -57,9 +62,7 @@
 		<!-- <button onclick="load()">Load</button> -->
 		<button type="submit" onclick="load()">Load</button>
 		<input type="file" accept=".json" id="loadFile" onchange="setSaved()">
-		<button onclick="edit()" id="editButton">Change Editing Mode</button>
 		<button onclick="lambdaClosure(['q0'], g)">lambda</button>
-		<span id='mode'></span>
 		<div>&Sigma;: <span id='alphabet'></span></div>
 		<!-- <div id="nodeTitle"></div> -->
 		<div id='download'></div>
@@ -292,32 +295,35 @@
    				g.minimize();
    			}
    			//================================
+   			var addNodes = function() {
+   				removeModeClasses();
+   				$('.jsavgraph').addClass("addNodes");
+   				$("#mode").html('Adding nodes');
+   				jsav.umsg("Click to add nodes");
+   			};
+   			var addEdges = function() {
+   				removeModeClasses();
+   				$(".jsavgraph").addClass("addEdges");
+   				$("#mode").html('Adding edges');
+   				jsav.umsg("Click a node");
+   			};
+   			var moveNodes = function() {
+   				removeModeClasses();
+   				$('.jsavgraph').addClass('moveNodes');
+   				$("#mode").html('Moving nodes');
+   				jsav.umsg("Click a node");
+   			};
    			var edit = function() {
-				if ($(".jsavgraph").hasClass("addNodes")) {
-   					$(".jsavgraph").removeClass("addNodes");
-   					$(".jsavgraph").addClass("addEdges");
-   					$("#mode").html('Adding edges');
-   					jsav.umsg("Click a node");
-   				} else if ($(".jsavgraph").hasClass("addEdges")) {
-   					$(".jsavgraph").removeClass("addEdges");
-   					$('.jsavgraph').addClass('moveNodes');
-   					$("#mode").html('Moving nodes');
-   					jsav.umsg("Click a node");
-   				} else if ($(".jsavgraph").hasClass("moveNodes")) {
-   					$(".jsavgraph").removeClass("moveNodes");
-   					$('.jsavgraph').addClass('editNodes');
-   					$("#mode").html('Editing nodes and edges');
-   					jsav.umsg("Click a node or edge");
-   				} else if ($('.jsavgraph').hasClass("editNodes")) {
-   					$(".jsavgraph").removeClass("editNodes");
-   					$("#mode").html('');
-   					jsav.umsg("");
-   				} else {
-   					$('.jsavgraph').addClass("addNodes");
-   					$("#mode").html('Adding nodes');
-   					//jsav.displayInit();
-   					jsav.umsg("Click to add nodes");
-   				}
+				removeModeClasses();
+   				$('.jsavgraph').addClass('editNodes');
+   				$("#mode").html('Editing nodes and edges');
+   				jsav.umsg("Click a node or edge");
+   			};
+   			var removeModeClasses = function() {
+   				$(".jsavgraph").removeClass("addNodes");
+   				$(".jsavgraph").removeClass("addEdges");
+   				$(".jsavgraph").removeClass("moveNodes");
+   				$(".jsavgraph").removeClass("editNodes");
    			};
 
 			//====================
