@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>DFA test</title>
-    	<link rel="stylesheet" href="./JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+    	<link rel="stylesheet" href="../css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 		<style>
 			#av {
 				width: 98%;
@@ -69,13 +69,13 @@
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-		<script src="./lib/raphael.js"></script>
-   		<script src="./lib/dagre.min.js"></script>
-		<script src="./lib/jquery.transit.js"></script>
-		<script src="./JSAVedit.js"></script>
-		<script src="serializableGraph.js"></script>
-		<script src="./underscore-min.js"></script>
-		<script src="FA.js"></script>
+		<script src="../lib/raphael.js"></script>
+   		<script src="../lib/dagre.min.js"></script>
+		<script src="../lib/jquery.transit.js"></script>
+		<script src="../build/JSAVedit.js"></script>
+		<script src="../resources/serializableGraph.js"></script>
+		<script src="../resources/underscore-min.js"></script>
+		<script src="../resources/FA.js"></script>
 		<script>
 			var jsav = new JSAV("av"),
 				saved = false,
@@ -372,7 +372,7 @@
 
 				var rejected = true;
 				for (var k = 0; k < currentStates.length; k++) {
-					if (currentStates[k].hasClass('final')) {
+					if (currentStates[k].hasClass('final') && cur.length > 0) {
 						currentStates[k].addClass('accepted');
       					arr.css(inputString.length - 1, {"background-color": "green"});
       					jsav.umsg("Accepted");
