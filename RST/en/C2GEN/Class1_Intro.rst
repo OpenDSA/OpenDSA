@@ -8,7 +8,7 @@
    :satisfies: OpenDSA Introduction
    :topic: Introduction
 
-CLass 1: Introduction
+Class 1: Introduction
 =====================
 
 Here I will talk about what OpenDSA is:
