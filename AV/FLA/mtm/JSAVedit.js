@@ -8384,7 +8384,7 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
 
   faproto.addNode = function(options) {
     var value;
-    if (!options.value) {
+    if (!options || !options.value) {
       value = "q" + this._nodes.length;
     }
     else{
@@ -8536,69 +8536,18 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
     return alphabet;
   };
 
-  faproto.minimize = function () {
-    // this assumes all of the edges are in the alphabet
-    var reachable = [this.initial],
-        nodes = this.nodes();
-    dfs(reachable, this.initial);
-    for (var next = nodes.next(); next; next = nodes.next()) {
-      if ($.inArray(next, reachable) < 0) {
-        this.removeNode(next);
-      }
-    }
-    //todo: nondistinguishable states
-    //
-    // var waiting = [],
-    //     finals = [],
-    //     other = [],
-    //     partitions = [],
-    //     nodes = this.nodes(),
-    //     alphabet = this.alphabet.keys();
-    // for (var next = nodes.next(); next; next = nodes.next()) {
-    //   if (next.hasClass("final")) {
-    //     finals.push(next);
-    //   }
-    //   else {
-    //     other.push(next);
-    //   }
-    // }
-    // waiting = [finals.slice(0)];
-    // partitions.push(finals, other);
-    // while (waiting.length > 0) {
-    //   var cur = waiting.pop();
-    //   for (var i = 0; i < alphabet.length; i++) {
-    //     nodes = this.nodes();
-    //     var x = {};
-    //     for (var next = nodes.next(); next = nodes.next()) {
-    //       for (var j = 0; j < cur.length; j++) {
-    //         if (next.edgeTo(cur[j]) && next.edgeTo(cur[j]).weight() === alphabet[i]){
-    //           x[]
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
-
-
-  };
-  //helper depth-first search to find connected component
-  var dfs = function (visited, node, options) {
-    var successors = node.neighbors();
-    for (var next = successors.next(); next; next = successors.next()) {
-      if ($.inArray(next, visited) < 0) {
-        visited.push(next);
-        dfs(visited, next);
-      }
-    }
-  };
-
   faproto.updateNodes = function() {
     for (var i = 0; i < this._nodes.length; i++) {
       this._nodes[i].value('q'+i);
     }
   }
   faproto.getNodeWithValue = function(value) {
-    return this._nodes[parseInt(value.substring(1))];
+    var nodes = this.nodes();
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      if (next.value() === value) {
+        return next;
+      }
+    }
   };
 
   faproto.transitionFunction = function(nodeFrom, letter, options) {
@@ -8611,10 +8560,7 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
         ret.push(edge.end().value());
       }
     }
-    if (ret.length > 0) {
-      return ret;
-    }
-    return undefined;
+    return ret;
   };
 
   faproto.traverse = function (state, letter, options) {
@@ -8964,6 +8910,8 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
     JSAV.utils._helpers.handlePosition(this);
     JSAV.utils._helpers.handleVisibility(this, this.options);
   };
+
+  //not used:
   fastateproto.initialState = function(newBool) {
     if (typeof newBool === "undefined") {
       return this.isInitial;

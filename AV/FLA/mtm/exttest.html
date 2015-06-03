@@ -8,10 +8,13 @@
 				width: 98%;
       			position: relative;
 			}
+			.start{	
+				background-color: blue;
+			}
 			.current{
 				background-color: yellow;
 			}
-			.start{	
+			.accepted{
 				background-color: green;
 			}
 			.final{
@@ -334,9 +337,11 @@
 					return;
 				}
 
-				var currentState = g.initial,
-					cur;
-				currentState.addClass('current');
+				g.initial.addClass('current');
+				var currentStates = [g.initial];
+				currentStates = addLambdaClosure(currentStates);
+				var cur;
+				
 				for (var i = 0; i < inputString.length; i++) {
     				textArray.push(inputString[i]);
   				}
@@ -345,39 +350,74 @@
   				jsav.displayInit();
 
 				for (var i = 0; i < inputString.length; i++) {
-				   	cur = traverse(currentState, inputString[i]);
-				   	if (cur == null) {
+					for (var j = 0; j < currentStates.length; j++) {
+				   		currentStates[j].removeClass('current');
+				   	}
+				   	cur = traverse(currentStates, inputString[i]);
+				   	if (cur.length == 0) {
 				   		arr.css(i, {"background-color": "red"});
 				   		jsav.step();
 				   		break;
 				   	}
-				   	currentState.removeClass('current');
-					currentState = cur;
-					currentState.addClass('current');
+					currentStates = cur;
 					arr.css(i, {"background-color": "yellow"});
 					jsav.step();
 				}
-				if (currentState.hasClass('final') && cur != null) {
-      				arr.css(inputString.length - 1, {"background-color": "green"});
-      				jsav.umsg("Accepted");
-				} else {
+
+				var rejected = true;
+				for (var k = 0; k < currentStates.length; k++) {
+					if (currentStates[k].hasClass('final')) {
+						currentStates[k].addClass('accepted');
+      					arr.css(inputString.length - 1, {"background-color": "green"});
+      					jsav.umsg("Accepted");
+						rejected = false;
+					}
+				}
+				if (rejected) {
 					arr.css(inputString.length - 1, {"background-color": "red"});
 					jsav.umsg("Rejected");
 				}
 				jsav.step();
-				jsav.recorded();	
+				jsav.recorded();
 			};
-			var traverse = function(currentState, letter) {
-				var successors = currentState.neighbors();
-				for (var next = successors.next(); next; next = successors.next()) {
-					var weight = g.getEdge(currentState, next).weight().split(',');
-					for (var i = 0; i < weight.length; i++) {
-						if (letter == weight[i]) {
-							return next;
+			var traverse = function(currentStates, letter) {
+				var nextStates = [];
+				for (var i = 0; i < currentStates.length; i++) {
+					var successors = currentStates[i].neighbors();
+					for (var next = successors.next(); next; next = successors.next()) {
+						var weight = g.getEdge(currentStates[i], next).weight().split(',');
+						for (var j = 0; j < weight.length; j++) {
+							if (letter == weight[j] && !next.hasClass('current')) {
+								next.addClass('current');
+								nextStates.push(next);
+							}
 						}
 					}
-				} 
-				return null;
+				}
+				nextStates = addLambdaClosure(nextStates);
+				return nextStates;
+			};
+			var addLambdaClosure = function(nextStates) {
+				lambdaStates = [];
+				for (var i = 0; i < nextStates.length; i++) {
+					var successors = nextStates[i].neighbors();
+					for (var next = successors.next(); next; next = successors.next()) {
+						var weight = g.getEdge(nextStates[i], next).weight().split(',');
+						for (var j = 0; j < weight.length; j++) {
+							if (weight[j] == "&lambda;" && !next.hasClass('current')) {
+								next.addClass('current');
+								lambdaStates.push(next);
+							}
+						}
+					}
+				}
+				if(lambdaStates.length > 0) {
+					lambdaStates = addLambdaClosure(lambdaStates);
+				}
+				for (var k = 0; k < lambdaStates.length; k++) {
+					nextStates.push(lambdaStates[k]);
+				}
+				return nextStates;
 			};
 
 			//======================
