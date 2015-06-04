@@ -13,32 +13,33 @@ $(document).ready(function () {
   var av = new JSAV(av_name);
   var leftMargin = 5,
       nodeWidth = 30,
-      arrow1_x = 25 + nodeWidth;
+      theTop = 35,
+      arrow1_x = 22 + nodeWidth;
 
   var arr = av.ds.array(arrValues, {indexed: true, layout: "array",
-                                    left: leftMargin, top: 20});
+                                    left: leftMargin, top: theTop});
   var pseudo = av.code(code);
 
   //vertical arrow pointing to current position
-  var arrow1 = av.g.line(arrow1_x, 10, arrow1_x, 35,
+  var arrow1 = av.g.line(arrow1_x, theTop - 5, arrow1_x, theTop + 15,
                          {"arrow-end": "classic-wide-long",
                           "opacity": 0, "stroke-width": 2});
 
   //horizontal arrow in step 4
-  var arrow2 = av.g.line(arrow1_x + 100, 20, arrow1_x + 20, 20,
+  var arrow2 = av.g.line(arrow1_x + 100, theTop, arrow1_x + 20, theTop,
                          {"arrow-end": "classic-wide-long",
                           "opacity": 0, "stroke-width": 2});
 
   //label for current position in step 1
-  var label = av.label("curr", {before: arr, left: arrow1_x - 10, top: -25});
+  var label = av.label("curr", {before: arr, left: arrow1_x - 10, top: theTop-40});
   label.hide();
 
   //array "it" for holding the deleted record
   var arrItValues = [""];
   var arrIt = av.ds.array(arrItValues,
                           {indexed: false, layout: "array",
-                           left: leftMargin + (nodeWidth + 2) * 3, top: 90});
-  var labelIt = av.label("it", { before: arrIt, left: 85, top: 95 });
+                           left: leftMargin + (nodeWidth + 2) * 3, top: theTop + 70});
+  var labelIt = av.label("it", { before: arrIt, left: 85, top: theTop + 75 });
   arrIt.hide();
   labelIt.hide();
 

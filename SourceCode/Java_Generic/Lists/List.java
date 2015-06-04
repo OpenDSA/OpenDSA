@@ -1,18 +1,18 @@
 /* *** ODSATag: ListADT *** */
-public interface List { // List class ADT
+public interface List<E> { // List class ADT
   // Remove all contents from the list, so it is once again empty
   public void clear();
 
   // Insert "it" at the current location
   // The client must ensure that the list's capacity is not exceeded
-  public boolean insert(Object it);
+  public boolean insert(E it);
 
   // Append "it" at the end of the list
   // The client must ensure that the list's capacity is not exceeded
-  public boolean append(Object it);
+  public boolean append(E it);
 
   // Remove and return the current element
-  public Object remove();
+  public E remove();
 
   // Set the current position to the start of the list
   public void moveToStart();
@@ -39,6 +39,6 @@ public interface List { // List class ADT
   public boolean isAtEnd();
 
   // Return the current element
-  public Object getValue();
+  public E getValue();
 }
 /* *** ODSAendTag: ListADT *** */

@@ -21,6 +21,8 @@ and so must implement all of the member functions of ``List``.
 .. codeinclude:: Lists/AList
    :tag: AList
 
+|
+
 .. inlineav:: alistVarsCON ss
    :output: show
 

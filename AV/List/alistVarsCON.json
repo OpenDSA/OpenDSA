@@ -40,6 +40,20 @@
         "curr": 6
       }
     },
+    "java_generic": {
+      "url": "../../../SourceCode/Java_Generic/Lists/AList.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: AListVars *** */",
+      "endBefore": "/* *** ODSAendTag: AListVars *** */",
+      "tags": {
+        "sig": 1,
+        "listArray": 2,
+        "default": 3,
+        "maxSize": 4,
+        "listSize": 5,
+        "curr": 6
+      }
+    },
     "c++": {
       "url": "../../../SourceCode/C++/Lists/AList.h",
       "lineNumbers": false,
