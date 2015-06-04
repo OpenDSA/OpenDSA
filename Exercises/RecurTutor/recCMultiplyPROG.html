@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html data-require="math math-format word-problems spin">
 <head>
-  <title> Recursion Programming Exercise 1</title>
- <script src="../../lib/jquery.min.js"></script>
+  <title> Recursion Programming Exercise: Multiply</title>
+  <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
   <script> window.OpenPopKa = true; </script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
   <script src="../../lib/odsaStyle-min.css"></script>
- 
- 
+  
+  
   <script src="../../lib/codemirror/lib/codemirror.js"></script>
   <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
   <script src="../../lib/codemirror/mode/clike/clike.js"></script>
@@ -17,51 +17,44 @@
     lineNumbers: true,
     mode:  "text/x-java"
   });
-  
   </script>
-
-  
 
 
 </head>
 <body  >
    
 <div class="exercise">
-  <div class="vars">
-    <var id="listel1">randRange(0, 99)</var>
-    <var id="listel2">randRange(0, 99)</var>
-    <var id="listel3">randRange(0, 99)</var>
-    <var id="listel4">randRange(0, 99)</var>
-  </div>
-
   <div class="problems">
     <div> <!-- Supresses answer box -->
-      <p class="problem" id = "test"> Write down the missing base case for the following recursive function such that this function finds the largest number in the array named numbers:
-      <br />
+     <p class="problem" id = "test">Given the following recursive function write 
+     down the missing base case condition and the action that should be done 
+     at the base case such that this function multiply two numbers x and y. 
+     (Assume both values given are positive.)
+  <br />
     </h4>
-    <p></p>
-    <textarea  id="codeTextarea">
-int largest(int[] numbers, int index) {
- // <<Missing base case>> 
-   {
-    return numbers[index];
-   }
- else if(numbers[index] > numbers[index+1]) {
-    numbers[index+1] = numbers[index];
-   }
- return largest(numbers,index+1);
+<p></p>
+<textarea  id="codeTextarea">int multiply(int x, int y) {
+
+//<<Missing base case condition>>
+
+//<<Missing base case action>>
+
+else
+
+return multiply(x-1, y) + y;
 }
+
 </textarea></p>
 
       <div class="question">
 	
       </div>
       <div class="solution" data-type="custom">
-      <div class="guess"> [ editor.getValue()  ] </div>
+        <div class="guess"> [  editor.getValue()   ] </div>
         <div class="validator-function">
 	     window.codeValue = editor.getValue();
          window.progexType= "recursion";
-         window.summexName= "recwbc1PROG";
+         window.summexName=  "recCMultiplyPROG";
         </div>
       </div>
       <div class="hints">

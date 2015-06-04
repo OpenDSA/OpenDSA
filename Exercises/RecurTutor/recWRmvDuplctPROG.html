@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math math-format word-problems spin">
 <head>
-  <title> Recursion Programming Exercise 29</title>
+  <title> Recursion Programming Exercise: Remove Duplicates</title>
   <script src="../../lib/jquery.min.js">
   </script>
   <script src="../../lib/jquery-ui.min.js">
@@ -10,7 +10,7 @@
     window.OpenPopKa = true;
   </script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-
+  <script src="../../lib/odsaStyle-min.css"></script> 
  
   <script src="../../lib/codemirror/lib/codemirror.js"></script>
   <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
@@ -20,45 +20,38 @@
     lineNumbers: true,
     mode:  "text/x-java"
   });
-  </script>  
+  </script>     
 
   
 </head>
-
-<body  data-height="600" data-width="1000">
-  
+<body  data-height="650" data-width="950">
+   
 <div class="exercise">
-  <div class="vars">
-    <var id="listel1">randRange(0, 99)</var>
-    <var id="listel2">randRange(0, 99)</var>
-    <var id="listel3">randRange(0, 99)</var>
-    <var id="listel4">randRange(0, 99)</var>
-  </div>
 
   <div class="problems">
     <div> <!-- Supresses answer box -->
       <p class="problem" id = "test">
-     Given the following recursive function signature, write the function code such that this function takes a string and should return true if the bracketing operators in str are balanced, which means that they are correctly nested and aligned. If the string is not balanced, the method returns false. Assume that the brackets are { and }. For example, a string "{{}}" considered balance while "{{{}" considered not balanced.
+        Given the following recursive function signature, write the function code such that this function modifies an array of Strings to remove duplicates. For example, if the list has 
+        the values {"recursion", "recursion", "is","is", "cool", "cool"} before the method is called, it should have the values {"recursion", "is", "cool"}. You may not create any new arrays.
  <br />
 </h4>
 <p></p>
  
-<textarea  id="codeTextarea">boolean isBalanced(String str)
+<textarea  id="codeTextarea"> void removeDuplicates(ArrayList<String> list, int counter)
 {
 
 
 
+		
 
 
 
-
-
-
-
-}
+	
+}	
 </textarea></p>
 
-     <div class="question">
+
+      <div class="question">
 	
       </div>
       <div class="solution" data-type="custom">
@@ -66,7 +59,7 @@
         <div class="validator-function">
           window.codeValue = editor.getValue();
           window.progexType= "recursion";
-          window.summexName= "recw29PROG";
+          window.summexName= "recWRmvDuplctPROG";
          //return "openPop";
         </div>
       </div>

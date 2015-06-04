@@ -1,50 +1,46 @@
 <!DOCTYPE html>
-<html data-require="math math-format word-problems spin">
+<html data-require="math">
 <head>
-  <title> Recursion Programming Exercise 9</title>
+  <title> Recursion Programming Exercise: Count Characters</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
   <script> window.OpenPopKa = true; </script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
   <script src="../../lib/odsaStyle-min.css"></script>
-  
-
+ 
   <script src="../../lib/codemirror/lib/codemirror.js"></script>
   <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
   <script src="../../lib/codemirror/mode/clike/clike.js"></script>
   <script>
-  var editor = CodeMirror.fromTextArea(codeTextarea, {
-	mode:  "text/x-java",
-    lineNumbers: true
-  });
+   var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    mode:  "text/x-java"
+   });
   </script>
-
-</head>
-<body  >
   
+</head>
+<body  data-height="550" data-width="950">
+   
 <div class="exercise">
-  <div class="vars">
-    <var id="listel1">randRange(0, 99)</var>
-    <var id="listel2">randRange(0, 99)</var>
-    <var id="listel3">randRange(0, 99)</var>
-    <var id="listel4">randRange(0, 99)</var>
-  </div>
 
   <div class="problems">
     <div> <!-- Supresses answer box -->
-      <p class="problem" id = "test"> Given the following recursive function write down the missing base case condition and the action that should be done at the base case this function computes the greatest common divisor of x and y.
-	
+      <p class="problem" id = "test">  Given the following recursive function 
+      write down the missing recursive call such that this function counts 
+      the number of A characters in a given string.
+
       <br />
     </h4>
     <p></p>
-    <textarea   id="codeTextarea">int GCD(int x, int y)
-{
- //<<Missing base case condition>>
-  //<<Missing base case action>>
- else
- {
-   return GCD (y, x % y);
- }
+    <textarea  id="codeTextarea">int countChr(String str ) {	
+if (str.length() == 0) {
+  return 0;
+}
+int count = 0;
+if (str.substring(0, 1).equals("A")) {
+  count = 1;
+}
+return count + //<<Missing a Recursive call>>
 }
 </textarea></p>
 
@@ -55,8 +51,8 @@
        <div class="guess"> [ editor.getValue() ] </div>
         <div class="validator-function">
           window.codeValue = editor.getValue();
-          window.progexType= "recursion";
-          window.summexName=  "recwbcba9PROG";
+          window.progexType= "recursion";    
+          window.summexName= "recCCountChrPROG";
         </div>
       </div>
       <div class="hints">

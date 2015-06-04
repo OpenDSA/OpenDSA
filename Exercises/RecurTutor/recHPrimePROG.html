@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html data-require="math math-format word-problems spin">
 <head>
-  <title> Recursion Programming Exercise 15</title>
+  <title> Recursion Programming Exercise: Is Prime</title>
   <script src="../../lib/jquery.min.js">
   </script>
   <script src="../../lib/jquery-ui.min.js">
@@ -29,20 +29,19 @@
 
 <body  data-height="700" data-width="1000">
 <div class="exercise">
-  <div class="vars">
-    <var id="listel1">randRange(0, 99)</var>
-    <var id="listel2">randRange(0, 99)</var>
-    <var id="listel3">randRange(0, 99)</var>
-    <var id="listel4">randRange(0, 99)</var>
-  </div>
-
-  <div class="problems">
+   <div class="problems">
     <div> <!-- Supresses answer box -->
-      <p class="problem" id = "test"> Given the following recursive function write down the base case conditions such that this function determines if an integer X is prime or not. 
-      Where X is the number to check whether it is prime or not. Y is a divisor which is a number below X, when calling the function initially Y equals X-1.
-      A prime number is divisible evenly only by itself and 1. The recursive function takes a number and a divisor. 
-      We check to see if the number is prime by dividing it by the divisor. If it evenly divides then the number is not prime, and we return false. 
-      If the number does not evenly divide then we reduce the divisor by 1 and recurse a level deeper.	  
+      <p class="problem" id = "test"> Given the following recursive function write
+       down the base case conditions such that this function determines if 
+       an integer X is prime or not. 
+      Where X is the number to check whether it is prime or not. Y is a divisor 
+      which is a number below X, when calling the function initially Y equals X-1.
+      A prime number is divisible evenly only by itself and 1. The recursive 
+      function takes a number and a divisor. 
+      We check to see if the number is prime by dividing it by the divisor. 
+      If it evenly divides then the number is not prime, and we return false. 
+      If the number does not evenly divide then we reduce the divisor by 1 
+      and recurse a level deeper.	  
     <br />
     </h4>
     <p></p>
@@ -56,9 +55,7 @@
    else
     return Prime(X,Y-1);
 }
-	
-	 
-	</textarea></p>
+</textarea></p>
  
       <div class="question">
 	
@@ -68,7 +65,7 @@
         <div class="validator-function">
           window.codeValue = editor.getValue();
           window.progexType= "recursion";
-          window.summexName= "rechw2bc15PROG";
+          window.summexName= "recHPrimePROG";
         </div>
       </div>
       <div class="hints">

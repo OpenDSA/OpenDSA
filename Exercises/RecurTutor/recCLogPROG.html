@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html data-require="math math-format word-problems spin">
 <head>
-  <title> Recursion Programming Exercise 3</title>
- <script src="../../lib/jquery.min.js"></script>
+  <title> Recursion Programming Exercise: log</title>
+  <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
   <script> window.OpenPopKa = true; </script>
   <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-  <script src="../../lib/odsaStyle-min.css"></script>
   <script src="../../lib/odsaStyle-min.css"></script>
  
  
@@ -20,25 +19,21 @@
   });
   
   </script>
-
 </head>
-
-<body  data-height="550" data-width="950">
+<body >
    
 <div class="exercise">
-  <div class="vars">
-    <var id="listel1">randRange(0, 99)</var>
-    <var id="listel2">randRange(0, 99)</var>
-    <var id="listel3">randRange(0, 99)</var>
-    <var id="listel4">randRange(0, 99)</var>
-  </div>
-
-  <div class="problems">
+   <div class="problems">
     <div> <!-- Supresses answer box -->
-   <p class="problem" id = "test"> Given the following recursive function write down the missing base case condition and recursive call such that this function computes logb n.
+     <p class="problem" id = "test"> Given the following recursive function write 
+     down the missing base case condition and recursive call such that this 
+     function computes log n to the base b.
+     Hint: as an example to clarify the idea: log 8 to the base 2 equals 3. 
+     Since 8 = 2*2*2 so we keep dividing 8 by 2 till we get 1 and we count the 
+     number of divisions we made.
   <br />
     </h4>
-    <p></p>
+   <p></p>
     <textarea  id="codeTextarea">int log(int b, int n )
 {
    // <<Missing base case condition>>
@@ -52,11 +47,11 @@
 	
       </div>
       <div class="solution" data-type="custom">
-       <div class="guess"> [ editor.getValue()  ] </div>
+       <div class="guess"> [ editor.getValue() ] </div>
         <div class="validator-function">
-	     window.codeValue = editor.getValue();
-         window.progexType= "recursion";
-         window.summexName= "recwrc8PROG";
+          window.codeValue = editor.getValue();
+          window.progexType= "recursion";    
+          window.summexName=  "recCLogPROG";
         </div>
       </div>
       <div class="hints">
