@@ -8,15 +8,15 @@
 				width: 98%;
       			position: relative;
 			}
-			.current{
-				background-color: yellow;
-			}
 			.start{	
 				font-style: italic;
 				font-weight: bold;
 			}
 			.final{
 				border: 3px double;
+			}
+			.current{
+				background-color: yellow;
 			}
 			p.jsavoutput.jsavline {
 				height: 10px;
@@ -40,39 +40,58 @@
     		.jsavnode { cursor: pointer;}
     		.jsavedge { 
     			cursor: pointer;
+    			stroke: black;
     			stroke-width: 1;	/*can change to make edges easier to click */
     		}
+    		.jsavcontrols {
+    			display: none;
+    		}
+    		.testingND {
+				background-color: blue;
+			}
+			.testingLambda {
+				stroke-width: 3;
+				stroke: red;
+			}
 		</style>
 	</head>
 	<body>
 		
 		<div id="av">
 			<h1>DFA test</h1>
-			<span class="jsavcounter"></span>
-			<div class="jsavcontrols">
-				<a class="jsavsettings" href="#">Settings</a>
+			<span class="jsavcounter"></span><a class="jsavsettings" href="#">Settings</a>
+			<div class="jsavcontrols">	
 			</div>
       		<p class="jsavoutput jsavline"></p>
+			<div align="center" style="font-size: 30px">&Sigma;: <span id='alphabet'></span></div>
+      		<p align="center" class="arrayPlace"></p>
+
+		</div>
+		<div class='notEditing'>
+			<button onclick="play()" id="begin">Traverse</button>
+			<!--<button onclick="convertToDFA(g)">Convert NFA to DFA</button>
+			<button onclick="minimize(g)">Minimize</button>-->
+			<button onclick="g.layout()">Layout</button>
+			<button onclick="testND()">Highlight Nondeterminism</button>
+			<button onclick="testLambda()">Highlight &lambda;-Transitions</button>
+			<button onclick="save()" id="saveButton">Save</button>
+			<!--
+			<button onclick="load()">Load</button>
+			<button type="submit" onclick="load()">Load</button>
+			<input type="file" accept=".json" id="loadFile" onchange="setSaved()"> -->
+		</div>
+		<div class='editing' style="display: none">
 			<button onclick="addNodesMode()">Add nodes</button>
 			<button onclick="addEdgesMode()">Add edges</button>
 			<button onclick="moveNodesMode()">Move nodes</button>
 			<button onclick="editNodesMode()">Edit nodes and edges</button>
 			<span id='mode'></span>
-			<div align="center" style="font-size: 30px">&Sigma;: <span id='alphabet'></span></div>
-      		<p align="center" class="arrayPlace"></p>
-
 		</div>
-		<button onclick="play()" id="begin">Traverse</button>
-		<button onclick="convertToDFA(g)">Convert NFA to DFA</button>
-		<button onclick="minimize(g)">Minimize</button>
-		<button onclick="g.layout()">Layout</button>
-		<button onclick="save()" id="saveButton">Save</button>
-		<!-- <button onclick="load()">Load</button> -->
-		<button type="submit" onclick="load()">Load</button>
-		<input type="file" accept=".json" id="loadFile" onchange="setSaved()">
-		
-		<!-- <div id="nodeTitle"></div> -->
-		<div id='download'></div>
+		<div>
+			<button onclick="changeEditingMode()" id="changeButton">Edit</button>
+		</div>
+		<!-- <div id="nodeTitle"></div> 
+		<div id='download'></div> -->
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
@@ -94,7 +113,8 @@
 			//e.g. initGraph({layout: "automatic", emptystring: epsilon})
 			//By default it is set to lambda.
 			var lambda = "\&lambda;",
-				epsilon = "\&epsilon;";
+				epsilon = "\&epsilon;",
+				emptystring = lambda;
 			/*
 			graph:
 			initial state is filled green
@@ -286,10 +306,12 @@
 					}
 				}, {edge: true});
 			};
-
+			
+			localStorage.clear();
 		    var g = initGraph({layout: "automatic"});
 		    //var g = initGraph({layout: "automatic", emptystring: epsilon});
    			g.layout();
+   			jsav.displayInit();
    			//===============================
    			var updateAlphabet = function() {
 	   			g.updateAlphabet();
@@ -329,12 +351,63 @@
 
    			var editNodesMode = function() {
    				$(".jsavgraph").removeClass("addNodes");
-   				$(".jsavgraph").removeClass("moveNodes");
+   				$(".jsavgraph").removeClass("addEdges");
    				$(".jsavgraph").removeClass("moveNodes");
    				$(".jsavgraph").addClass("editNodes");
    				$("#mode").html('Editing nodes and edges');
    				jsav.umsg("Click a node or edge");
    			};
+
+   			var changeEditingMode = function() {
+   				$(".jsavgraph").removeClass("addNodes");
+   				$(".jsavgraph").removeClass("addEdges");
+   				$(".jsavgraph").removeClass("moveNodes");
+   				$('.jsavgraph').removeClass('editNodes');
+   				$("#mode").html('Editing');
+   				if ($(".notEditing").is(":visible")) {
+   					$('#changeButton').html('Done editing');
+   				} else {
+   					$('#changeButton').html('Edit');
+   				}
+   				$('.notEditing').toggle();
+   				$('.editing').toggle();
+   			}
+
+   			//====================
+   			//tests
+
+   			var testND = function() {
+   				$('#changeButton').toggleClass("highlightingND");
+   				if ($('#changeButton').hasClass("highlightingND") || $('#changeButton').hasClass("highlightingL")) {
+   					$('#changeButton').hide();
+   				} else{
+   					$('#changeButton').show();
+   				}
+   				var nodes = g.nodes();
+   				for(var next = nodes.next(); next; next = nodes.next()) {
+   					var edges = next.getOutgoing();
+   					var weights = _.map(edges, function(e) {return e.weight()});
+   					if (_.contains(weights, emptystring) || _.uniq(weights).length < weights.length) {
+   						next.toggleClass("testingND");
+   					}
+   				}
+   			};
+
+   			var testLambda = function() {
+   				$('#changeButton').toggleClass("highlightingL");
+   				if ($('#changeButton').hasClass("highlightingND") || $('#changeButton').hasClass("highlightingL")) {
+   					$('#changeButton').hide();
+   				} else{
+   					$('#changeButton').show();
+   				}
+   				var edges = g.edges();
+   				for (var next = edges.next(); next; next = edges.next()) {
+   					if (next.weight().indexOf(emptystring) !== -1) {
+   						next.g.element.toggleClass('testingLambda');
+   					}
+   				}
+   			};
+
 
 			//====================
 			//temp:
@@ -347,7 +420,7 @@
 				if (arr) {
         			arr.clear();
       			}
-
+      			$('.jsavcontrols').show();
 				var inputString = prompt("Input string?", "aaa");
 				if (inputString == null) {
 					return;
@@ -402,28 +475,33 @@
 			//======================
 			var save = function () {
 				localStorage['graph'] = serialize(g);	//I changed serializableGraph.js
-				//saved = true;
-				var downloadData = "text/json;charset=utf-8," + encodeURIComponent(localStorage['graph']);
-				$('#download').html('<a href="data:' + downloadData + '" download="data.json">download JSON</a>');
-				//$('<a href="data:' + downloadData + '" download="data.json">download JSON</a>').trigger('click');
 				jsav.umsg("Saved");
 			};
-			var load = function () {
-				if (saved) {
-					//g.hide();		//g.clear() didn't seem to do anything
-									//would like a reset button - should look at openDSA reset
-					$('.jsavgraph').remove(); 
-					g = initGraph({layout: "automatic"});
-					jsav.displayInit();
-					jsav.umsg("Loaded");
-					updateAlphabet();
-				} else{
-					jsav.umsg("There is nothing to load");
-				}
-			};
-			var setSaved = function () {
-				saved = true;
-			};
+
+			// var save = function () {
+			// 	localStorage['graph'] = serialize(g);	//I changed serializableGraph.js
+			// 	//saved = true;
+			// 	var downloadData = "text/json;charset=utf-8," + encodeURIComponent(localStorage['graph']);
+			// 	$('#download').html('<a href="data:' + downloadData + '" download="data.json">download JSON</a>');
+			// 	//$('<a href="data:' + downloadData + '" download="data.json">download JSON</a>').trigger('click');
+			// 	jsav.umsg("Saved");
+			// };
+			// var load = function () {
+			// 	if (saved) {
+			// 		//g.hide();		//g.clear() didn't seem to do anything
+			// 						//would like a reset button - should look at openDSA reset
+			// 		$('.jsavgraph').remove(); 
+			// 		g = initGraph({layout: "automatic"});
+			// 		jsav.displayInit();
+			// 		jsav.umsg("Loaded");
+			// 		updateAlphabet();
+			// 	} else{
+			// 		jsav.umsg("There is nothing to load");
+			// 	}
+			// };
+			// var setSaved = function () {
+			// 	saved = true;
+			// };
 			
    		</script>
    	</body>
