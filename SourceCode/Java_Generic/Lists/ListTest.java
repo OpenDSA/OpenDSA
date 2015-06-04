@@ -9,7 +9,7 @@ static boolean SUCCESS = true;
 
 static void doSomething(Object it) { }
 
-static String toString(List L) {
+static String toString(List<Integer> L) {
   // Save the current position of the list
   int oldPos = L.currPos();
   StringBuffer out = new StringBuffer((L.length() + 1) * 4);
@@ -34,14 +34,14 @@ static String toString(List L) {
 
 /* *** ODSATag: listfind *** */
 // Return true if k is in list L, false otherwise
-static boolean find(List L, int k) {
+static boolean find(List<Integer> L, int k) {
   for (L.moveToStart(); !L.isAtEnd(); L.next())
-    if (k == (Integer)L.getValue()) return true; // Found k
+    if (k == L.getValue()) return true; // Found k
   return false;                                  // k not found
 }
 /* *** ODSAendTag: listfind *** */
 
-static void testAppend(List L2) {
+static void testAppend(List<Integer> L2) {
   L2.append(10);
   String temp = toString(L2);
   if (!temp.equals("< | 10 >")) {
@@ -57,7 +57,7 @@ static void testAppend(List L2) {
   }
 }
 
-static void test(List L) {
+static void test(List<Integer> L) {
   L.moveToStart();
   L.insert(5);
   L.insert(7);
@@ -92,8 +92,8 @@ for (L.moveToStart(); !L.isAtEnd(); L.next()) {
 }
 
 public static void main(String args[]) throws IOException {
-  AList AL = new AList();
-  LList LL = new LList();
+  AList<Integer> AL = new AList<Integer>();
+  LList<Integer> LL = new LList<Integer>();
 
   test(AL);
   test(LL);
@@ -115,7 +115,7 @@ public static void main(String args[]) throws IOException {
     return;
   }
   System.out.println("Do the timing test");
-  LList LT = new LList();
+  LList<Integer> LT = new LList<Integer>();
   time1 = System.currentTimeMillis();
   for (int i = 0; i < testsize; i++) {
     LL.insert(10);
@@ -130,11 +130,11 @@ public static void main(String args[]) throws IOException {
 
   time1 = System.currentTimeMillis();
   for (int i = 0; i < testsize; i++) {
-    Link temp = new Link(null, null);
-    temp = new Link(null, null);
-    temp = new Link(null, null);
-    temp = new Link(null, null);
-    temp = new Link(null, null);
+    Link<Integer> temp = new Link<Integer>(null, null);
+    temp = new Link<Integer>(null, null);
+    temp = new Link<Integer>(null, null);
+    temp = new Link<Integer>(null, null);
+    temp = new Link<Integer>(null, null);
   }
   time2 = System.currentTimeMillis();
   totaltime = (time2-time1);

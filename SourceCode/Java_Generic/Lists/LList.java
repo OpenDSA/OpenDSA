@@ -1,10 +1,10 @@
 /* *** ODSATag: LList *** */
 // Linked list implementation
 /* *** ODSATag: LListVars *** */
-class LList implements List {
-  private Link head;         // Pointer to list header
-  private Link tail;         // Pointer to last element
-  private Link curr;         // Access to current element
+class LList<E> implements List<E> {
+  private Link<E> head;      // Pointer to list header
+  private Link<E> tail;      // Pointer to last element
+  private Link<E> curr;      // Access to current element
   private int listSize;      // Size of list
 /* *** ODSAendTag: LListVars *** */
 
@@ -15,16 +15,16 @@ class LList implements List {
 
   // Remove all elements
   public void clear() {
-    curr = tail = new Link(null); // Create trailer
-    head = new Link(tail);        // Create header
+    curr = tail = new Link<E>(null); // Create trailer
+    head = new Link<E>(tail);        // Create header
     listSize = 0;
   }
 /* *** ODSAendTag: LListCons *** */
   
 /* *** ODSATag: LListInsert *** */
   // Insert "it" at current position
-  public boolean insert(Object it) {
-    curr.setNext(new Link(curr.element(), curr.next()));
+  public boolean insert(E it) {
+    curr.setNext(new Link<E>(curr.element(), curr.next()));
     curr.setElement(it);
     if (tail == curr) tail = curr.next();  // New tail
     listSize++;
@@ -33,8 +33,8 @@ class LList implements List {
 /* *** ODSAendTag: LListInsert *** */
   
   // Append "it" to list
-  public boolean append(Object it) {
-    tail.setNext(new Link(null));
+  public boolean append(E it) {
+    tail.setNext(new Link<E>(null));
     tail.setElement(it);
     tail = tail.next();
     listSize++;
@@ -43,9 +43,9 @@ class LList implements List {
 
 /* *** ODSATag: LListRemove *** */
   // Remove and return current element
-  public Object remove () {
+  public E remove () {
     if (curr == tail) return null;          // Nothing to remove
-    Object it = curr.element();             // Remember value
+    E it = curr.element();                  // Remember value
     curr.setElement(curr.next().element()); // Pull forward the next element
     if (curr.next() == tail) tail = curr;   // Removed last, move tail
     curr.setNext(curr.next().next());       // Point around unneeded link
@@ -61,7 +61,7 @@ class LList implements List {
   // Move curr one step left; no change if now at front
   public void prev() {
     if (head.next() == curr) return; // No previous element
-    Link temp = head;
+    Link<E> temp = head;
     // March down list until we find the previous element
     while (temp.next() != curr) temp = temp.next();
     curr = temp;
@@ -78,7 +78,7 @@ class LList implements List {
 
   // Return the position of the current element
   public int currPos() {
-    Link temp = head.next();
+    Link<E> temp = head.next();
     int i;
     for (i=0; curr != temp; i++)
       temp = temp.next();
@@ -99,7 +99,7 @@ class LList implements List {
   public boolean isAtEnd() { return curr == tail; }
 
   // Return current element value. Note that null gets returned if curr is at the tail
-  public Object getValue() {
+  public E getValue() {
     return curr.element();
   }
 }

@@ -3,11 +3,15 @@
 }
 
 #alistVarsCON .jsavoutput.jsavline {
-  height: 70px;
+  height: 50px;
 }
 
 #alistIntroCON {
   height: 190px;
+}
+
+#alistIntroCON .jsavoutput.jsavline {
+  height: 40px;
 }
 
 #alistInsertCON {
@@ -23,8 +27,12 @@
   margin-bottom: 0;
 }
 
+#alistInsertCON .jsavoutput.jsavline {
+  height: 40px;
+}
+
 #alistAppendCON {
-  height: 280px;
+  height: 270px;
 }
 
 #alistAppendCON .jsavcode {
@@ -32,11 +40,20 @@
   width: 400px;
 }
 
+#alistAppendCON .jsavoutput.jsavline {
+  height: 40px;
+}
+
 #alistRemoveCON {
-  height: 350px;
+  height: 340px;
 }
 
 #alistRemoveCON .jsavcode {
   margin-left: 285px;
-  width: 560px;
+  width: 564px;
 }
+
+#alistRemoveCON .jsavoutput.jsavline {
+  height: 40px;
+}
+
