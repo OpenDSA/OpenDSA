@@ -1,11 +1,13 @@
 //g.transitionFunction takes a single node and returns an array of node values
-//assumes all nodes have unique values!
+//assumes all nodes have unique values! 
 //uses underscore.js
 
 //inefficient: should create a new state object to put in the arrays, or use css classes
 
-//for now: the resulting graph should not be edited! (see: faproto.updateNodes)
   var convertToDFA = function(graph) {
+    $('button').hide();
+    $('input').hide();
+    jsav.label("Converted:");
     var g = jsav.ds.fa($.extend({width: '90%', height: 440}, {layout: 'automatic'})),
         alphabet = Object.keys(graph.alphabet),
         startState = graph.initial,
@@ -14,8 +16,12 @@
     newStates.push(first);
     var temp = newStates.slice(0);
 
-    first = g.addNode({value: val});
-    first.addClass("start");
+    //jsav.displayInit();
+    first = g.addNode({value: val}); 
+    g.makeInitial(first);
+    //first.addClass("start");
+    g.layout();
+    //jsav.step();
     while (temp.length > 0) {
       var val = temp.pop(),
           valArr = val.split(',');
@@ -36,11 +42,54 @@
             node = g.getNodeWithValue(node);
           }
           var edge = g.addEdge(prev, node, {weight: letter});
+
+          //g.layout();
+          //jsav.step();
         }
       }
     }
     addFinals(g, graph);
     g.layout();
+    var nodes = g.nodes();
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      next.stateLabel(next.value());
+      next.stateLabelPositionUpdate();
+      next.hide();
+      next._stateLabel.hide();
+    }
+    g.updateNodes();
+    var edges = g.edges();
+    for (next = edges.next(); next; next = edges.next()) {
+      next.hide();
+    }
+    graph.hide();
+
+    jsav.displayInit();
+    var bfs = [],
+        visited = [];
+    bfs.push(g.initial);
+    visited.push(g.initial);
+    while (bfs.length > 0) {
+      var cur = bfs.shift();
+      cur.show();
+      cur._stateLabel.show();
+      var successors = cur.neighbors();
+      for (var next = successors.next(); next; next = successors.next()) {
+        if (!_.contains(visited, next)) {
+          bfs.push(next);
+          visited.push(next);
+        }
+      }
+      jsav.step();
+    }
+    for (var i = 0; i < visited.length; i++) {
+      var outgoing = visited[i].getOutgoing();
+      for (var j = 0; j < outgoing.length; j++) {
+        outgoing[j].show();
+      }
+      jsav.step();
+    }
+    jsav.recorded();
     //could move the values into mouseover and rename all of the nodes
 
   };

@@ -25,6 +25,13 @@
       			font-size: 2em;
       			text-align: center;
     		}
+    		.jsavstatelabel {
+    			font-size: 1em;
+    			z-index: 700;
+    			position: absolute;
+    			display: inline-block;
+    			margin: 0;
+    		}
     		.jsavcanvas { height: 500px;}
     		.jsavgraph {
     			outline: 1px black solid;
@@ -46,7 +53,14 @@
 				<a class="jsavsettings" href="#">Settings</a>
 			</div>
       		<p class="jsavoutput jsavline"></p>
+			<button onclick="addNodesMode()">Add nodes</button>
+			<button onclick="addEdgesMode()">Add edges</button>
+			<button onclick="moveNodesMode()">Move nodes</button>
+			<button onclick="editNodesMode()">Edit nodes and edges</button>
+			<span id='mode'></span>
+			<div align="center" style="font-size: 30px">&Sigma;: <span id='alphabet'></span></div>
       		<p align="center" class="arrayPlace"></p>
+
 		</div>
 		<button onclick="play()" id="begin">Traverse</button>
 		<button onclick="convertToDFA(g)">Convert NFA to DFA</button>
@@ -56,9 +70,7 @@
 		<!-- <button onclick="load()">Load</button> -->
 		<button type="submit" onclick="load()">Load</button>
 		<input type="file" accept=".json" id="loadFile" onchange="setSaved()">
-		<button onclick="edit()" id="editButton">Change Editing Mode</button>
-		<span id='mode'></span>
-		<div>&Sigma;: <span id='alphabet'></span></div>
+		
 		<!-- <div id="nodeTitle"></div> -->
 		<div id='download'></div>
 		
@@ -78,6 +90,11 @@
 				selectedNode = null,
 				arr,
 				g;
+			//Empty string can be set to anything when initializing the graph:
+			//e.g. initGraph({layout: "automatic", emptystring: epsilon})
+			//By default it is set to lambda.
+			var lambda = "\&lambda;",
+				epsilon = "\&epsilon;";
 			/*
 			graph:
 			initial state is filled green
@@ -87,6 +104,8 @@
 			if a character is not accepted, it is filled red
 			if the inputted string passes, the final character is filled green
 
+			Add lambda transitions by setting weight to empty string.
+			
 			The values of the FA nodes should never be changed manually (for now)
 			*/
 			
@@ -108,7 +127,7 @@
 				    g.addEdge(b, c, {weight: 'b'});
 				    g.addEdge(c, d, {weight: 'a'});
 				    g.addEdge(d, b, {weight: 'b'});
-				    g.addEdge(d, c, {weight: '\&lambda;'});
+				    g.addEdge(d, c, {weight: ''});	//lambda
 				
 					addHandlers();
 				}
@@ -165,6 +184,7 @@
 							nodeY = selectedNode.element.height()/2.0,
 							edges = g.edges();
 						$(selectedNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
+						selectedNode.stateLabelPositionUpdate();
 						for (var next = edges.next(); next; next = edges.next()) {
 							if (next.start().equals(selectedNode) || next.end().equals(selectedNode)) {
 								next.layout();
@@ -198,11 +218,13 @@
 						} else if (input == 'F') {
 							this.toggleClass('final');
 						} 
-						//adds hovertext to nodes. leaving input empty removes the existing title
+						//adds labels to states
 						else if (input == 'L') {
 							var input2 = prompt("Label?");
 							if (input2 !== null) {
-								this.element.attr('title', input2);
+								//this.element.attr('title', input2);
+								this.stateLabel(input2);
+								this.stateLabelPositionUpdate();
 							}
 						}
 			   			this.unhighlight();
@@ -215,9 +237,10 @@
 			   			} else {
 			   				var input2 = prompt("Accepted character?");
 			   				var newEdge;
-							if (input2 === "") {
-								newEdge = g.addEdge(first, this, {weight: "\&lambda;"});
-							} else if (input2 != null) {
+							// if (input2 === "") {
+							// 	newEdge = g.addEdge(first, this, {weight: "\&lambda;"});
+							// } else 
+							if (input2 != null) {
 								newEdge = g.addEdge(first, this, {weight: input2});
 							} 
 							if (!(typeof newEdge === 'undefined')) {
@@ -236,12 +259,6 @@
 	   					e.stopPropagation();
 	   				}
  				});
-				// g.mouseenter(function() {
-				// 	var title = this.element.attr('title');
-				// 	$('#nodeTitle').html(title);
-				// }).mouseleave(function() {
-				// 	$('#nodeTitle').html('');
-				// });
 				//add eventhandlers to edges
 				g.click(function(e) {
 					if ($('.jsavgraph').hasClass('editNodes')) {
@@ -257,9 +274,10 @@
 						}
 						else if (input == 'C') {
 							var input2 = prompt("Accepted character?");
-							if (input2 === "") {
-								this.weight("\&lambda;");
-							} else if (input2 != null) {
+							// if (input2 === "") {
+							// 	this.weight("\&lambda;");
+							// } else 
+							if (input2 != null) {
 								this.weight(input2);
 							} 
 						}
@@ -270,6 +288,7 @@
 			};
 
 		    var g = initGraph({layout: "automatic"});
+		    //var g = initGraph({layout: "automatic", emptystring: epsilon});
    			g.layout();
    			//===============================
    			var updateAlphabet = function() {
@@ -279,32 +298,42 @@
 			updateAlphabet();
    		
    			//================================
-   			var edit = function() {
-				if ($(".jsavgraph").hasClass("addNodes")) {
-   					$(".jsavgraph").removeClass("addNodes");
-   					$(".jsavgraph").addClass("addEdges");
-   					$("#mode").html('Adding edges');
-   					jsav.umsg("Click a node");
-   				} else if ($(".jsavgraph").hasClass("addEdges")) {
-   					$(".jsavgraph").removeClass("addEdges");
-   					$('.jsavgraph').addClass('moveNodes');
-   					$("#mode").html('Moving nodes');
-   					jsav.umsg("Click a node");
-   				} else if ($(".jsavgraph").hasClass("moveNodes")) {
-   					$(".jsavgraph").removeClass("moveNodes");
-   					$('.jsavgraph').addClass('editNodes');
-   					$("#mode").html('Editing nodes and edges');
-   					jsav.umsg("Click a node or edge");
-   				} else if ($('.jsavgraph').hasClass("editNodes")) {
-   					$(".jsavgraph").removeClass("editNodes");
-   					$("#mode").html('');
-   					jsav.umsg("");
-   				} else {
-   					$('.jsavgraph').addClass("addNodes");
-   					$("#mode").html('Adding nodes');
-   					//jsav.displayInit();
-   					jsav.umsg("Click to add nodes");
-   				}
+   			//editing modes
+
+   			var addNodesMode = function() {
+   				$(".jsavgraph").removeClass("addEdges");
+   				$(".jsavgraph").removeClass("moveNodes");
+   				$(".jsavgraph").removeClass("editNodes");
+   				$(".jsavgraph").addClass("addNodes");
+   				$("#mode").html('Adding nodes');
+   				jsav.umsg("Click to add nodes");
+   			};
+
+   			var addEdgesMode = function() {
+   				$(".jsavgraph").removeClass("addNodes");
+   				$(".jsavgraph").removeClass("moveNodes");
+   				$(".jsavgraph").removeClass("editNodes");
+   				$(".jsavgraph").addClass("addEdges");
+   				$("#mode").html('Adding edges');
+   				jsav.umsg("Click a node");
+   			};
+
+   			var moveNodesMode = function() {
+   				$(".jsavgraph").removeClass("addNodes");
+   				$(".jsavgraph").removeClass("addEdges");
+   				$(".jsavgraph").removeClass("editNodes");
+   				$(".jsavgraph").addClass("moveNodes");
+   				$("#mode").html('Moving nodes');
+   				jsav.umsg("Click a node");
+   			};
+
+   			var editNodesMode = function() {
+   				$(".jsavgraph").removeClass("addNodes");
+   				$(".jsavgraph").removeClass("moveNodes");
+   				$(".jsavgraph").removeClass("moveNodes");
+   				$(".jsavgraph").addClass("editNodes");
+   				$("#mode").html('Editing nodes and edges');
+   				jsav.umsg("Click a node or edge");
    			};
 
 			//====================
@@ -372,7 +401,7 @@
 
 			//======================
 			var save = function () {
-				//localStorage['graph'] = serialize(g);	//I changed serializableGraph.js
+				localStorage['graph'] = serialize(g);	//I changed serializableGraph.js
 				//saved = true;
 				var downloadData = "text/json;charset=utf-8," + encodeURIComponent(localStorage['graph']);
 				$('#download').html('<a href="data:' + downloadData + '" download="data.json">download JSON</a>');
