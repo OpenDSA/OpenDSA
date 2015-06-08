@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>DFA test</title>
+    	<link rel="stylesheet" href="../css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+		<base href="./editor.html" target="iframe">
+	</head>
+	<body>
+		<h1>DFA test</h1>
+		<p align="center" id="multipleTraversals" class="arrayPlace"></p>
+		<iframe height="680px" width="100%" id="if" name="iframe" onload="onLoadHandler()"></iframe>
+		<div id="av" style="display:none"></div>
+		<button onclick="displayEditor()" id="edit">Edit</button>
+		<button onclick="displayTraversals()" id="begin">Traverse</button>
+		<button onclick="save()" id="saveButton">Save</button>
+		<button type="submit" onclick="loadNewFile()">Load</button>
+		<input type="file" accept=".json" id="loadFile" onchange="setSaved()">
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+		<script src="../lib/raphael.js"></script>
+   		<script src="../lib/dagre.min.js"></script>
+		<script src="../lib/jquery.transit.js"></script>
+		<script src="../build/JSAVedit.js"></script>
+		<script src="../resources/serializableGraph.js"></script>
+		<script src="../resources/underscore-min.js"></script>
+		<script src="../resources/FA.js"></script>
+		<script>
+			var jsav = new JSAV("av"),
+				jsavArray,
+				saved = false,
+				serialization,
+				traversal = "",
+				editing = true;
+
+			/*
+			graph:
+			initial state is filled green
+			current states (during slideshow) are filled blue
+			array:
+			characters already traversed are highlighted yellow
+			if a character is not accepted, it is filled red
+			if the inputted string passes, the final character is filled green
+			*/
+			
+			var initGraph = function(opts) {
+				if (!saved) {
+					g = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
+		      		var a = g.addNode("q0");
+		          	g.makeInitial(a);
+		          	serialization = serialize(g);
+				}
+				else {
+					var x = document.getElementById("loadFile").files[0];
+					var reader = new FileReader();
+					reader.onload = loadComplete;
+					reader.readAsText(x);
+				}
+				function loadComplete() {
+					g = reader.result;
+					var gg;
+					try {
+						gg = jQuery.parseJSON(g);
+					}
+					catch(err) {
+						jsav.umsg("Error: Tried to load invalid file.");
+						g = localStorage['backup'];
+						gg = jQuery.parseJSON(g);
+					}
+					finally {
+						graph = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
+						for (var i = 0; i < gg.nodes.length; i++) {
+			    			var node = graph.addNode('q' + i),
+			    				offset = $('.jsavgraph').offset(),
+			    				offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
+			    			$(node.element).offset({top : parseInt(gg.nodes[i].top) + offset.top + offset2, left: parseInt(gg.nodes[i].left) + offset.left + offset2});
+			    			if (gg.nodes[i].i) {
+			    				graph.makeInitial(node);
+			    			}
+			    			if (gg.nodes[i].f) {
+			    				node.addClass("final");
+			    			}
+			  			}
+			  			for (var i = 0; i < gg.edges.length; i++) {
+			    			if (gg.edges[i].weight !== undefined) {
+			      				var edge = graph.addEdge(graph.nodes()[gg.edges[i].start], graph.nodes()[gg.edges[i].end], {weight: (gg.edges[i].weight)});
+		        			}
+			    			else {
+			      				var edge = graph.addEdge(graph.nodes()[gg.edges[i].start], graph.nodes()[gg.edges[i].end]);
+			    			}
+			    			edge.layout();
+			    		}
+			    		g = graph;
+			    		serialization = serialize(g);
+			    		document.getElementById("if").src = "./editor.html";
+			    	}
+				}
+				return g;
+		    };
+
+		    var g = initGraph({layout: "automatic"});
+			initialize();
+		    
+		    var displayEditor = function () {
+		    	jsavArray.hide();
+		    	if(editing) {
+		    		return;
+		    	}
+		    	editing = true;
+		    	g = document.getElementById("if").contentWindow.getGraph();
+		    	document.getElementById("if").src = "./editor.html";
+		    };
+			var displayTraversals = function () {
+				var inputString = prompt("Input string?", "aaa");
+				if (!inputString) {
+					return;
+				}
+				g = document.getElementById("if").contentWindow.getGraph();
+				var travArray = [];
+				var inputs = inputString.split(',');
+				jsav.umsg("");
+				$("#mode").html('');
+				for (var i = 0; i < inputs.length; i++) {
+    				travArray.push(inputs[i]);
+  				}
+  				document.getElementById("multipleTraversals").innerHTML = "";
+  				jsavArray = jsav.ds.array(travArray, {element: $('.arrayPlace')});
+  				for (var j = 0; j < travArray.length; j++) {
+  					if(willReject(travArray[j])){
+  						jsavArray.css(j, {"background-color": "red"});
+  					}
+  					else {
+  						jsavArray.css(j, {"background-color": "green"});
+  					}
+  				}
+  				jsavArray.click(arrayClickHandler);
+  				jsavArray.show();
+  				jsav.displayInit();
+  			};
+  			function arrayClickHandler(index) {
+  				play(this.value(index));
+  			};
+			var play = function (inputString) {
+				g = document.getElementById("if").contentWindow.getGraph();
+				serialization = serialize(g);
+				traversal = inputString;
+				editing = false;
+				document.getElementById("if").src = "./traversal.html";
+			};
+			var willReject = function (inputString) {
+				var currentStates = [g.initial];
+				currentStates = addLambdaClosure(currentStates);
+				var cur;
+				for (var i = 0; i < inputString.length; i++) {
+					for (var j = 0; j < currentStates.length; j++) {
+				   		currentStates[j].removeClass('current');
+				   	}
+				   	cur = traverse(currentStates, inputString[i]);
+				   	if (cur.length == 0) {
+				   		break;
+				   	}
+					currentStates = cur;
+				}
+				var rejected = true;
+				for (var k = 0; k < currentStates.length; k++) {
+					currentStates[k].removeClass('current');
+					if (currentStates[k].hasClass('final') && cur.length > 0) {
+						rejected = false;
+					}
+				}
+				return rejected;
+  			};
+			var traverse = function(currentStates, letter) {
+				var nextStates = [];
+				for (var i = 0; i < currentStates.length; i++) {
+					var successors = currentStates[i].neighbors();
+					for (var next = successors.next(); next; next = successors.next()) {
+						var weight = g.getEdge(currentStates[i], next).weight().split(',');
+						for (var j = 0; j < weight.length; j++) {
+							if (letter == weight[j] && !next.hasClass('current')) {
+								next.addClass('current');
+								nextStates.push(next);
+							}
+						}
+					}
+				}
+				nextStates = addLambdaClosure(nextStates);
+				return nextStates;
+			};
+			var addLambdaClosure = function(nextStates) {
+				lambdaStates = [];
+				for (var i = 0; i < nextStates.length; i++) {
+					var successors = nextStates[i].neighbors();
+					for (var next = successors.next(); next; next = successors.next()) {
+						var weight = g.getEdge(nextStates[i], next).weight().split(',');
+						for (var j = 0; j < weight.length; j++) {
+							if (weight[j] == "&lambda;" && !next.hasClass('current')) {
+								next.addClass('current');
+								lambdaStates.push(next);
+							}
+						}
+					}
+				}
+				if(lambdaStates.length > 0) {
+					lambdaStates = addLambdaClosure(lambdaStates);
+				}
+				for (var k = 0; k < lambdaStates.length; k++) {
+					nextStates.push(lambdaStates[k]);
+				}
+				return nextStates;
+			};
+			
+			var save = function () {
+				document.getElementById("if").contentWindow.save();
+			};
+			var loadNewFile = function () {
+				if (!saved) {
+					return;
+				}
+				editing = true;
+				document.getElementById("if").contentWindow.backup();
+				$('.jsavgraph').remove(); 
+				g = initGraph({layout: "automatic"});
+			};
+			var setSaved = function () {
+				saved = true;
+			};
+			function onLoadHandler() {
+				document.getElementById("if").contentWindow.initialize(serialization, traversal);
+			};
+			function initialize() {
+				editing = true;
+				document.getElementById("if").src = "./editor.html";
+			};
+   		</script>
+   	</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>DFA test</title>
+    	<link rel="stylesheet" href="../css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+		<style>
+			#av {
+				width: 98%;
+      			position: relative;
+			}
+			.start{	
+				background-color: whitesmoke;
+				font-style: italic;
+				font-weight: bold;
+			}
+			.current{
+				background-color: yellow;
+			}
+			.accepted{
+				background-color: green;
+			}
+			.final{
+				border: 3px double;
+			}
+			p.jsavoutput.jsavline {
+				height: 10px;
+			}
+			.jsavlabel {
+      			font-size: 2em;
+      			text-align: center;
+    		}
+    		.jsavcanvas { height: 500px;}
+    		.jsavgraph {
+    			outline: 1px black solid;
+    			border: 10px transparent solid;
+    		}
+    		.jsavnode { cursor: pointer;}
+    		.jsavedge { 
+    			cursor: pointer;
+    			stroke-width: 1;
+    		}
+		</style>
+	</head>
+	<body>
+		<div id="av" style="border:none">
+			<!-- <button onclick="undo()" id="undoButton">Undo</button>
+			<button onclick="redo()" id="redoButton">Redo</button> -->
+			<button onclick="addNodes()" id="editButton">Add Nodes</button>
+			<button onclick="addEdges()" id="editButton">Add Edges</button>
+			<button onclick="moveNodes()" id="editButton">Move Nodes</button>
+			<button onclick="editNodes()" id="editButton">Edit Nodes/Edges</button>
+			<span id='mode'>
+      		<p class="jsavoutput jsavline"></p>
+      		<p align="center" class="arrayPlace"></p>
+		</div>
+		<button onclick="minimize()">Minimize</button>
+		<button onclick="g.layout()">Layout</button>
+		<button onclick="lambdaClosure(['q0'], g)">lambda</button>
+		<div>&Sigma;: <span id='alphabet'></span></div>
+		<div id='download'></div>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+		<script src="../lib/raphael.js"></script>
+   		<script src="../lib/dagre.min.js"></script>
+		<script src="../lib/jquery.transit.js"></script>
+		<script src="../build/JSAVedit.js"></script>
+		<script src="../resources/serializableGraph.js"></script>
+		<script src="../resources/underscore-min.js"></script>
+		<script src="../resources/FA.js"></script>
+		<script>
+			var jsav = new JSAV("av"),
+				selectedNode = null,
+				g;
+			/*
+			graph:
+			initial state is filled green
+			current states (during slideshow) are filled blue
+			array:
+			characters already traversed are highlighted yellow
+			if a character is not accepted, it is filled red
+			if the inputted string passes, the final character is filled green
+			*/
+			
+			var initialize = function(graph, traversal) {
+				g = graph;
+				g = initGraph({layout: "automatic"});
+			};
+
+			var initGraph = function(opts) {
+				var gg = jQuery.parseJSON(g);
+				graph = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
+				for (var i = 0; i < gg.nodes.length; i++) {
+			    	var node = graph.addNode('q' + i),
+			    		offset = $('.jsavgraph').offset(),
+			    		offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
+			    	$(node.element).offset({top : parseInt(gg.nodes[i].top) + offset.top + offset2, left: parseInt(gg.nodes[i].left) + offset.left + offset2});
+			    	if (gg.nodes[i].i) {
+			    		graph.makeInitial(node);
+			    	}
+			    	if (gg.nodes[i].f) {
+			    		node.addClass("final");
+			    	}
+			  	}
+			  	for (var i = 0; i < gg.edges.length; i++) {
+			    	if (gg.edges[i].weight !== undefined) {
+			    		var edge = graph.addEdge(graph.nodes()[gg.edges[i].start], graph.nodes()[gg.edges[i].end], {weight: (gg.edges[i].weight)});
+		        	}
+			    	else {
+			    		var edge = graph.addEdge(graph.nodes()[gg.edges[i].start], graph.nodes()[gg.edges[i].end]);
+			    	}
+			    	edge.layout();
+			    }
+			    g = graph;
+			    g.layout();
+				updateAlphabet();
+			    addHandlers();
+				return g;
+		    };
+
+		    function addHandlers() {
+		    	$(".jsavgraph").click(function(e) {
+					if ($(".jsavgraph").hasClass("addNodes")) {
+						var newNode = g.addNode(),
+						    nodeX = newNode.element.width()/2.0,
+							nodeY = newNode.element.height()/2.0;
+						$(newNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
+					} 
+					else if ($('.jsavgraph').hasClass('moveNodes') && selectedNode != null) {
+						var nodeX = selectedNode.element.width()/2.0,
+							nodeY = selectedNode.element.height()/2.0,
+							edges = g.edges();
+						$(selectedNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
+						for (var next = edges.next(); next; next = edges.next()) {
+							if (next.start().equals(selectedNode) || next.end().equals(selectedNode)) {
+								next.layout();
+							}
+						}
+						selectedNode.unhighlight();
+						selectedNode = null;
+						e.stopPropagation();
+						jsav.umsg("Click a node");
+					}
+				});
+				g.click(function(e) {	
+					if ($(".jsavgraph").hasClass("editNodes")) {
+						this.highlight();
+						var input = prompt("Delete state, make state initial, make state final, or give state a label? d, i, f, or l");
+						if (input === null) {
+							this.unhighlight();
+							return;
+						}
+						input = input.toUpperCase();
+						if (input == 'D') {
+							g.removeNode(this);
+							updateAlphabet();
+						}
+						else if (input == 'I') {
+							for (var i = 0; i < g.nodeCount(); i++) {
+								g.nodes()[i].removeClass('start');
+							}
+							g.makeInitial(this);
+						} else if (input == 'F') {
+							this.toggleClass('final');
+						}
+						else if (input == 'L') {
+							var input2 = prompt("Label?");
+							if (input2 !== null) {
+								this.element.attr('title', input2);
+							}
+						}
+			   			this.unhighlight();
+	   				} else if ($(".jsavgraph").hasClass("addEdges")) {
+	   					this.highlight();
+	   					if (!$(".jsavgraph").hasClass("working")) {
+							first = this;
+							$('.jsavgraph').addClass("working");
+							jsav.umsg("Select a node to make an edge to");
+			   			} else {
+			   				var input2 = prompt("Accepted character?");
+			   				var newEdge;
+							if (input2 === "") {
+								newEdge = g.addEdge(first, this, {weight: "\&lambda;"});
+							} else if (input2 != null) {
+								newEdge = g.addEdge(first, this, {weight: input2});
+							} 
+							if (!(typeof newEdge === 'undefined')) {
+								newEdge.layout();
+							}
+							$('.jsavgraph').removeClass("working");
+							first.unhighlight();
+							this.unhighlight();
+							updateAlphabet();
+							jsav.umsg("Click a node");
+			   			}
+	   				} else if ($('.jsavgraph').hasClass('moveNodes')) {
+	   					this.highlight();
+	   					selectedNode = this;
+	   					jsav.umsg("Click to place node");
+	   					e.stopPropagation();
+	   				}
+ 				});
+				g.click(function(e) {
+					if ($('.jsavgraph').hasClass('editNodes')) {
+						this.highlight();
+						var input = prompt("Delete edge, or change value? d or c");
+						if (input === null) {
+							this.unhighlight();
+							return;
+						}
+						input = input.toUpperCase();
+						if (input == 'D') {
+							g.removeEdge(this);
+						}
+						else if (input == 'C') {
+							var input2 = prompt("Accepted character?");
+							if (input2 === "") {
+								this.weight("\&lambda;");
+							} else if (input2 != null) {
+								this.weight(input2);
+							} 
+						}
+						updateAlphabet();
+						this.unhighlight();
+					}
+				}, {edge: true});
+			};
+   			var updateAlphabet = function() {
+	   			g.updateAlphabet();
+				$("#alphabet").html("" + Object.keys(g.alphabet).sort());
+			};
+			var minimize = function() {
+   				g.minimize();
+   			}
+
+   			var addNodes = function() {
+   				removeModeClasses();
+   				$('.jsavgraph').addClass("addNodes");
+   				$("#mode").html('Adding nodes');
+   				jsav.umsg("Click to add nodes");
+   			};
+   			var addEdges = function() {
+   				removeModeClasses();
+   				$(".jsavgraph").addClass("addEdges");
+   				$("#mode").html('Adding edges');
+   				jsav.umsg("Click a node");
+   			};
+   			var moveNodes = function() {
+   				removeModeClasses();
+   				$('.jsavgraph').addClass('moveNodes');
+   				$("#mode").html('Moving nodes');
+   				jsav.umsg("Click a node");
+   			};
+   			var editNodes = function() {
+				removeModeClasses();
+   				$('.jsavgraph').addClass('editNodes');
+   				$("#mode").html('Editing nodes and edges');
+   				jsav.umsg("Click a node or edge");
+   			};
+   			var removeModeClasses = function() {
+   				$(".jsavgraph").removeClass("addNodes");
+   				$(".jsavgraph").removeClass("addEdges");
+   				$(".jsavgraph").removeClass("moveNodes");
+   				$(".jsavgraph").removeClass("editNodes");
+   			};
+   			var backup = function () {
+   				localStorage['backup'] = serialize(g);
+   			};
+			var save = function () {
+				var downloadData = "text/json;charset=utf-8," + encodeURIComponent(serialize(g));
+				$('#download').html('<a href="data:' + downloadData + '" target="_blank" download="data.json">download JSON</a>');
+				jsav.umsg("Saved");
+			};
+			var getGraph = function() {
+				return g;
+			};
+			/*
+			var undo = function () {
+			};
+			var redo = function () {
+			};
+			*/
+   		</script>
+   	</body>
+</html>
