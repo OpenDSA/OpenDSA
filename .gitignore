@@ -10,6 +10,7 @@ Doc/manual
 # Sourcecode testing
 SourceCode/Processing/build
 SourceCode/Java/build
+SourceCode/Java_Generic/build
 SourceCode/JavaScript/build
 SourceCode/Python/build
 SourceCode/JavaScript/node_modules
@@ -18,14 +19,17 @@ SourceCode/C++/build
 #Books directory (these are build targets)
 Books
 
-#Ignore the copy we make of khan-site.html
+# Ignore the copy we make of khan-site.html
 lib/khan-exercises/exercises/khan-site.html
 
-#ignore compiled Python files
+# Ignore compiled Python files
 *pyc
 
-# Minified JS and CSS files
+# Ignore Java .class files
+*.class
+
+# Ignore Minified JS and CSS files
 lib/*-min.*
 
-# File used by JetBrains IDE's to store project settings.
+# Ignore files used by JetBrains IDE's to store project settings.
 .idea

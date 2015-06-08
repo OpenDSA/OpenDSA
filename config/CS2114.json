@@ -4,8 +4,8 @@
   "code_dir": "SourceCode/",
   "lang": "en",
   "code_lang": {
-    "Java": ["java"],
-    "Processing": ["pde"]
+    "Processing": ["pde"],
+    "Java": ["java"]
   },
   "module_origin": "http://algoviz.org",
   "exercise_server": "https://opendsa.cc.vt.edu/",

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html data-require="math math-format word-problems spin">
+<head>
+  <title> Recursion Programming Exercise: Is Prime</title>
+  <script src="../../lib/jquery.min.js">
+  </script>
+  <script src="../../lib/jquery-ui.min.js">
+  </script>
+  <script>
+    window.OpenPopKa = true;
+  </script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+ 
+  <script src="../../lib/codemirror/lib/codemirror.js"></script>
+  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
+  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
+  <script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    mode:  "text/x-java"
+  });
+  </script> 
+
+</head>
+
+
+
+
+<body  data-height="700" data-width="1000">
+<div class="exercise">
+   <div class="problems">
+    <div> <!-- Supresses answer box -->
+      <p class="problem" id = "test"> Given the following recursive function write
+       down the base case conditions such that this function determines if 
+       an integer X is prime or not. 
+      Where X is the number to check whether it is prime or not. Y is a divisor 
+      which is a number below X, when calling the function initially Y equals X-1.
+      A prime number is divisible evenly only by itself and 1. The recursive 
+      function takes a number and a divisor. 
+      We check to see if the number is prime by dividing it by the divisor. 
+      If it evenly divides then the number is not prime, and we return false. 
+      If the number does not evenly divide then we reduce the divisor by 1 
+      and recurse a level deeper.	  
+    <br />
+    </h4>
+    <p></p>
+ 
+    <textarea  id="codeTextarea"> boolean Prime(int X,int Y)
+{
+  //<<Missing base case condition 1>>
+    return true;
+  else //<<Missing base case condition 2>>
+    return false;	
+   else
+    return Prime(X,Y-1);
+}
+</textarea></p>
+ 
+      <div class="question">
+	
+      </div>
+      <div class="solution" data-type="custom">
+       <div class="guess"> [ editor.getValue() ] </div>
+        <div class="validator-function">
+          window.codeValue = editor.getValue();
+          window.progexType= "recursion";
+          window.summexName= "recHPrimePROG";
+        </div>
+      </div>
+      <div class="hints">
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

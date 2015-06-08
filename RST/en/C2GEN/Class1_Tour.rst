@@ -11,9 +11,10 @@
 OpenDSA: A Guided Tour
 ======================
 
-Here I will talk about what OpenDSA provides from a user's
+This page gives a tour of the major features of OpenDSA from a user's
 perspective.
 
+* Table of Contents
 * Textual content
 * Including math, tables
 * Visualizations: inline slides
@@ -22,3 +23,5 @@ perspective.
 * KA Exercises: MCQ battery
 * KA Exercises: Proficiency
 * KA Exercises: Programming
+* Glossary
+* Student Gradebook

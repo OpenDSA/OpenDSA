@@ -8347,36 +8347,36 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
     this.stateCount = 0;
     this.initial;
     this.options = $.extend({visible: true, nodegap: 40, autoresize: true, width: 400, height: 200,
-                              directed: true, center: true, arcoffset: 50}, options);
+                              directed: true, center: true, arcoffset: 50, emptystring: "\&lambda;"}, options);
     //this.options = $.extend({directed: true}, options);
     var el = this.options.element || $("<div/>");
-      el.addClass("jsavgraph jsavfiniteautomaton");
-      for (var key in this.options) {
-        var val = this.options[key];
-        if (this.options.hasOwnProperty(key) && typeof(val) === "string" || typeof(val) === "number" || typeof(val) === "boolean") {
-          el.attr("data-" + key, val);
-        }
+    el.addClass("jsavgraph jsavfiniteautomaton");
+    for (var key in this.options) {
+      var val = this.options[key];
+      if (this.options.hasOwnProperty(key) && typeof(val) === "string" || typeof(val) === "number" || typeof(val) === "boolean") {
+        el.attr("data-" + key, val);
       }
-      if (!this.options.element) {
-        $(jsav.canvas).append(el);
-      }
-      this.element = el;
-      el.attr({"id": this.id()}).width(this.options.width).height(this.options.height);
-      if (this.options.autoresize) {
-        el.addClass("jsavautoresize");
-      }
-      if (this.options.center) {
-        el.addClass("jsavcenter");
-      }
-      this.constructors = $.extend({
-        Graph: FiniteAutomaton,
-        Node: faState,
-        Edge: faTransition
-      }, this.options.constructors);
-      //this.initialState = this.newNode('q0');
-      
-      JSAV.utils._helpers.handlePosition(this);
-      JSAV.utils._helpers.handleVisibility(this, this.options); 
+    }
+    if (!this.options.element) {
+      $(jsav.canvas).append(el);
+    }
+    this.element = el;
+    el.attr({"id": this.id()}).width(this.options.width).height(this.options.height);
+    if (this.options.autoresize) {
+      el.addClass("jsavautoresize");
+    }
+    if (this.options.center) {
+      el.addClass("jsavcenter");
+    }
+    this.constructors = $.extend({
+      Graph: FiniteAutomaton,
+      Node: faState,
+      Edge: faTransition
+    }, this.options.constructors);
+    //this.initialState = this.newNode('q0');
+    
+    JSAV.utils._helpers.handlePosition(this);
+    JSAV.utils._helpers.handleVisibility(this, this.options); 
   };
 
   //var events = ["click", "dblclick", "mousedown", "mousemove", "mouseup", "mouseenter", "mouseleave"]; //contextmenu?
@@ -8419,6 +8419,7 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
     this._setnodes(newNodes, options);
 
     // finally hide the node
+    if (node._stateLabel) { node._stateLabel.hide(options);}
     node.hide(options);
     this.updateNodes();
     // return this for chaining
@@ -8440,6 +8441,9 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
   }; 
 
   faproto.addEdge = function(fromNode, toNode, options) {
+    if (options.weight === "") {
+      options.weight = this.options.emptystring;
+    }
     if (this.hasEdge(fromNode, toNode)) { 
       var prevEdge = this.getEdge(fromNode, toNode);
       var prevWeight = prevEdge.weight();
@@ -8524,7 +8528,7 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
       w = next.weight();
       w = w.split(',');
       for (var i = 0; i < w.length; i++) {
-        if (w[i] !== "\&lambda;") {
+        if (w[i] !== this.options.emptystring) {
           if (!(w[i] in alphabet)) {
             alphabet[w[i]] = 0;
           }
@@ -8579,7 +8583,15 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
     } else { return null };
   };
 
-
+  faproto.layout = function(options) {
+    var layoutAlg = this.options.layout || "_default";
+    var ret = this.jsav.ds.layout.graph[layoutAlg](this, options);
+    var nodes = this.nodes();
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      next.stateLabelPositionUpdate();
+    }
+    return ret;
+  };
 
 
 
@@ -8633,6 +8645,15 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
   JSAV.utils.extend(faTransition, JSAV._types.ds.Edge);
 
   var fatransitionproto = faTransition.prototype;
+  fatransitionproto.weight = function(newWeight) {
+    if (typeof newWeight === "undefined") {
+      return this._weight;
+    } else if (newWeight === "") {
+      newWeight = this.container.options.emptystring;
+    } 
+    this._setweight(newWeight);
+    this.label(newWeight);
+  };
 
   fatransitionproto.layout = function(options) {
     var controlPointX, controlPointY, midX, midY,
@@ -8933,6 +8954,37 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
     var edges = this.container._edges[this.container._nodes.indexOf(this)];
     return edges; //should probably change this to return an iterable object
   };
+
+  fastateproto.stateLabel = function(newLabel, options) {
+    if (typeof newLabel === "undefined") {
+      if (this._stateLabel && this._stateLabel.element.filter(":visible").size() > 0) {
+        return this._stateLabel.text();
+      } else {
+        return undefined;
+      }
+    } else {
+      if (!this._stateLabel) {
+        this._stateLabel = this.jsav.label(newLabel, {container: this.container.element});
+        this._stateLabel.element.addClass("jsavstatelabel");
+      } else {
+        this._stateLabel.text(newLabel, options);
+      }
+    }
+  };
+
+  fastateproto.stateLabelPositionUpdate = function(options) {   //make this run whenever nodes are moved
+    if(!this._stateLabel) { return; }
+    var bbox = this.position(),
+        lbbox = this._stateLabel.bounds(),
+        nWidth = this.element.outerWidth(),
+        nHeight = this.element.outerHeight(),
+        newTop = bbox.top + nHeight,
+        newLeft = bbox.left;
+    if (newTop !== lbbox.top || newLeft || lbbox.left) {
+      this._stateLabel.css({top: newTop, left: newLeft, width: nWidth}, options);
+    }
+  };
+
 
   
   var dstypes = JSAV._types.ds;
