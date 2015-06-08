@@ -62,7 +62,20 @@
       },
       "AlgAnalTest/AnalPrelim": {
         "long_name": "Problems, Algorithms, and Programs",
-        "exercises": {}
+        "sections": {
+          "ProblemAlgorithm": {
+            "long_name": "Problem, Algorithm, and Program definitions Visualization",
+            "showhide": "show"
+          }
+        },
+        "exercises": {
+          "ProblemAlgorithmCON": {
+            "long_name": "Problem, Algorithm, and Program definitions Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "AlgAnalTest/AnalIntro": {
         "long_name": "Comparing Algorithms",
