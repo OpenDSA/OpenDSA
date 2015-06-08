@@ -14,12 +14,13 @@ Class 1: Introduction
 Administrivia
 -------------
 
-* The C2GEN folks would like for you to fill out the pre-survey
-* C2GEN course page: http://www.c2gen.org/namaste-course/integrating-the-etextbook-truly-interactive-textbooks-for-computer-science-education/
-* The class will be conducted using Adobe Connect.
+*  The C2GEN folks would like for you to fill out the pre-survey:
+   `https://www.surveymonkey.com/s/SJVM82H <https://www.surveymonkey.com/s/SJVM82H>`_
+*  C2GEN course page: http://www.c2gen.org/namaste-course/integrating-the-etextbook-truly-interactive-textbooks-for-computer-science-education/
+*  The class will be conducted using Adobe Connect.
 
-  * Log in at: https://connect.unl.edu/active-ebook/
-  * Be sure to test this before the first class
+   *  Log in at: https://connect.unl.edu/active-ebook/
+   *  Be sure to test this before the first class
 
 Overview
 --------

@@ -3,6 +3,8 @@
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
+    "Java": ["java"],
+    "Java_Generic": ["java"],
     "Processing": ["pde"],
     "C++": ["cpp", "h"]
   },
@@ -31,7 +33,56 @@
       },
       "C2GEN/Class1_Tour": {
         "long_name": "OpenDSA Guided Tour",
-        "exercises": {}
+        "exercises": {
+          "insertionsortS1CON": {
+            "long_name": "Insertion Sort Slideshow 1",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "insertionsortAV": {
+            "long_name": "Insertion Sort Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "mergesortAV": {
+            "long_name": "Merge Sort Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0,
+            "exer_options": {
+              "JOP-lang": "fi"
+            }
+          },
+          "DefSumm": {
+            "long_name": "Tree Definition Summary Exercises",
+            "required": true,
+            "points": 2,
+            "threshold": 8
+          },
+          "InssortPRO": {
+            "long_name": "Insertion Sort Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          },
+          "btTravInorderPRO": {
+            "long_name": "Binary Tree Inorder Traversal Exercise",
+            "exer_options": { "JXOP-code": "none" },
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.90
+          },
+          "BTLeafPROG": {
+            "long_name": "Node Count Programming Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1
+          }
+        }
       },
       "C2GEN/Class1_Starting": {
         "long_name": "Getting Started: Compiling a Book Instance",
