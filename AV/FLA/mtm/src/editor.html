@@ -4,6 +4,7 @@
 	<head>
 		<title>DFA test</title>
     	<link rel="stylesheet" href="../css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+    	<link rel="stylesheet" href="../resources/customPrompt.css" type="text/css" />
 		<style>
 			#av {
 				width: 98%;
@@ -43,6 +44,14 @@
 		</style>
 	</head>
 	<body>
+		<div id="dialogueoverlay"></div>
+  		<div id="dialoguebox">
+  		 	<div>
+    			<div id="dialogueboxhead"></div>
+      			<div id="dialogueboxbody"></div>
+      			<div id="dialogueboxfoot"></div>
+    		</div>
+  		</div>
 		<div id="av" style="border:none">
 			<!-- <button onclick="undo()" id="undoButton">Undo</button>
 			<button onclick="redo()" id="redoButton">Redo</button> -->
@@ -50,6 +59,7 @@
 			<button onclick="addEdges()" id="editButton">Add Edges</button>
 			<button onclick="moveNodes()" id="editButton">Move Nodes</button>
 			<button onclick="editNodes()" id="editButton">Edit Nodes/Edges</button>
+			<button onclick="deleteNodes()" id="deleteButton">Delete Nodes/Edges</button>
 			<span id='mode'>
       		<p class="jsavoutput jsavline"></p>
       		<p align="center" class="arrayPlace"></p>
@@ -69,6 +79,7 @@
 		<script src="../resources/serializableGraph.js"></script>
 		<script src="../resources/underscore-min.js"></script>
 		<script src="../resources/FA.js"></script>
+		<script src="../resources/customPrompt.js"></script>
 		<script>
 			var jsav = new JSAV("av"),
 				selectedNode = null,
@@ -146,31 +157,10 @@
 				g.click(function(e) {	
 					if ($(".jsavgraph").hasClass("editNodes")) {
 						this.highlight();
-						var input = prompt("Delete state, make state initial, make state final, or give state a label? d, i, f, or l");
-						if (input === null) {
-							this.unhighlight();
-							return;
-						}
-						input = input.toUpperCase();
-						if (input == 'D') {
-							g.removeNode(this);
-							updateAlphabet();
-						}
-						else if (input == 'I') {
-							for (var i = 0; i < g.nodeCount(); i++) {
-								g.nodes()[i].removeClass('start');
-							}
-							g.makeInitial(this);
-						} else if (input == 'F') {
-							this.toggleClass('final');
-						}
-						else if (input == 'L') {
-							var input2 = prompt("Label?");
-							if (input2 !== null) {
-								this.element.attr('title', input2);
-							}
-						}
-			   			this.unhighlight();
+						selectedNode = this;
+						var Prompt = new CustomPrompt();
+						Prompt.render(this.value(), this.hasClass('start'), this.hasClass('final'), this.element.attr('title'));
+						this.unhighlight();
 	   				} else if ($(".jsavgraph").hasClass("addEdges")) {
 	   					this.highlight();
 	   					if (!$(".jsavgraph").hasClass("working")) {
@@ -199,32 +189,44 @@
 	   					selectedNode = this;
 	   					jsav.umsg("Click to place node");
 	   					e.stopPropagation();
+	   				} else if ($('.jsavgraph').hasClass('deleteNodes')) {
+	   					g.removeNode(this);
+						updateAlphabet();
 	   				}
  				});
 				g.click(function(e) {
 					if ($('.jsavgraph').hasClass('editNodes')) {
 						this.highlight();
-						var input = prompt("Delete edge, or change value? d or c");
-						if (input === null) {
-							this.unhighlight();
-							return;
-						}
-						input = input.toUpperCase();
-						if (input == 'D') {
-							g.removeEdge(this);
-						}
-						else if (input == 'C') {
-							var input2 = prompt("Accepted character?");
-							if (input2 === "") {
-								this.weight("\&lambda;");
-							} else if (input2 != null) {
-								this.weight(input2);
-							} 
+						var input = prompt("Accepted character?");
+						if (input === "") {
+							this.weight("\&lambda;");
+						} else if (input != null) {
+							this.weight(input);
 						}
 						updateAlphabet();
 						this.unhighlight();
 					}
+					else if ($('.jsavgraph').hasClass('deleteNodes')) {
+	   					g.removeEdge(this);
+						updateAlphabet();
+	   				}
 				}, {edge: true});
+			};
+			function updateNode(initial_state, final_state, node_label) {
+				if (initial_state) {
+					for (var i = 0; i < g.nodeCount(); i++) {
+						g.nodes()[i].removeClass('start');
+					}
+					g.makeInitial(selectedNode);
+				} else {
+					selectedNode.removeClass('start');
+				}
+				if (final_state) {
+					selectedNode.addClass('final');
+				} else {
+					selectedNode.removeClass('final');
+				}
+				selectedNode.element.attr('title', node_label);
 			};
    			var updateAlphabet = function() {
 	   			g.updateAlphabet();
@@ -258,11 +260,19 @@
    				$("#mode").html('Editing nodes and edges');
    				jsav.umsg("Click a node or edge");
    			};
+   			var deleteNodes = function() {
+   				removeModeClasses();
+   				$('.jsavgraph').addClass('deleteNodes');
+   				$("#mode").html('Deleting nodes and edges');
+   				jsav.umsg("Click a node or edge to delete it");
+   			};
    			var removeModeClasses = function() {
+   				selectedNode = null;
    				$(".jsavgraph").removeClass("addNodes");
    				$(".jsavgraph").removeClass("addEdges");
    				$(".jsavgraph").removeClass("moveNodes");
    				$(".jsavgraph").removeClass("editNodes");
+   				$(".jsavgraph").removeClass("deleteNodes");
    			};
    			var backup = function () {
    				localStorage['backup'] = serialize(g);

@@ -51,6 +51,7 @@
       		<p class="jsavoutput jsavline"></p>
       		<p align="center" class="arrayPlace"></p>
 		</div>
+		<button onclick="g.layout()">Layout</button>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
@@ -67,7 +68,6 @@
 				g;
 
 			var initialize = function(graph, traversal) {
-				// Note: Graph layout, for whatever reason, is not being serialized.
 				g = graph;
 				g = initGraph({layout: "automatic"});
 				run(traversal);
@@ -99,6 +99,7 @@
 			    	edge.layout();
 			    }
 			    g = graph;
+			    g.layout();
 				return g;
 		    };
    			var run = function(inputString) {

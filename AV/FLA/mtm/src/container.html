@@ -49,7 +49,6 @@
 					g = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
 		      		var a = g.addNode("q0");
 		          	g.makeInitial(a);
-		          	serialization = serialize(g);
 				}
 				else {
 					var x = document.getElementById("loadFile").files[0];
@@ -93,13 +92,15 @@
 			    		}
 			    		g = graph;
 			    		serialization = serialize(g);
-			    		document.getElementById("if").src = "./editor.html";
+						document.getElementById("if").src = "./editor.html";
 			    	}
 				}
 				return g;
 		    };
 
 		    var g = initGraph({layout: "automatic"});
+		    g.layout();
+		    serialization = serialize(g);
 			initialize();
 		    
 		    var displayEditor = function () {
@@ -109,6 +110,7 @@
 		    	}
 		    	editing = true;
 		    	g = document.getElementById("if").contentWindow.getGraph();
+		    	serialization = serialize(g);
 		    	document.getElementById("if").src = "./editor.html";
 		    };
 			var displayTraversals = function () {
@@ -117,6 +119,7 @@
 					return;
 				}
 				g = document.getElementById("if").contentWindow.getGraph();
+				serialization = serialize(g);
 				var travArray = [];
 				var inputs = inputString.split(',');
 				jsav.umsg("");
@@ -222,6 +225,7 @@
 				document.getElementById("if").contentWindow.backup();
 				$('.jsavgraph').remove(); 
 				g = initGraph({layout: "automatic"});
+				jsav.displayInit();
 			};
 			var setSaved = function () {
 				saved = true;
