@@ -52,7 +52,7 @@ Glossary
       Two :term:`nodes <node>` of a :term:`tree` or two
       :term:`vertices <vertex>` of a :term:`graph` are said to be
       adjacent if they have an :term:`edge` connecting them.
-      If the edge is :term:`directed` from :math:`a` to :math:`b`,
+      If the edge is directed from :math:`a` to :math:`b`,
       then we say that :math:`a` is adjacent to :math:`b`,
       and :math:`b` is adjacent from :math:`a`. 
 
@@ -912,6 +912,11 @@ Glossary
       Note that a DAG is not necessarily a :term:`tree` since a given
       :term:`node` might have multiple :term:`parents <parent>`.
 
+   directed edge
+      An :term:`edge` that goes from :term:`vertex` to another.
+      In contrast, an :term:`undirected edge` simply links to vertices
+      without a direction.
+
    directed graph
       :to-term: directed acyclic graph :label: types
       :to-term: digraph :label: abbreviation
@@ -1388,7 +1393,7 @@ Glossary
       :term:`free store`.
 
    free tree
-      A connected, undirected graph with no simple cycles.
+      A connected, :term:`undirected graph` with no simple cycles.
       An equivalent definition is that a free tree is connected and
       has :math:`|\mathbf{V}| - 1` edges.
 
@@ -3622,7 +3627,13 @@ Glossary
       done to correct this.
 
    undirected graph
-      A graph whose edges do not have a direction.
+      A :term:`graph` whose :term:`edges <edge>` do not have a direction.
+
+   undirected edge
+      An :term:`edge` that connects two :term:`vertices <vertex>` with
+      no direction between them.
+      Many graph representations will represent such an edge
+      with two :term:`directed edges <directed edge>`.
 
    UNION
       One half of the :term:`UNION/FIND` algorithm for managing

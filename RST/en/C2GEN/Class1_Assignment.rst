@@ -13,8 +13,30 @@ Class 1: Do On Your Own
 
 *  Go through at least one of the following OpenDSA modules:
 
-   *  Insertion Sort
-   *  Binary Search
-   *  BST
+   *  :ref:`Binary Search <binary search> <BinarySearch>`
+   *  :ref:`Insertion Sort <insertion sort> <InsertionSort>`
+   *  :ref:`BST <BST> <BST>`
 
-* Install the toolchain and compile the CS3114 book.
+*  Install the toolchain and compile your own copy of the C2GEN "book".
+
+   *  OpenDSA documentation URL:
+      `http://opendsa.readthedocs.org/ <http://opendsa.readthedocs.org/>`_
+   *  See the "getting started" guide in Section 2.
+   *  To do anything, you need to install the toolchain
+
+      * Git
+      * make
+      * Python
+      * Sphinx
+
+   *  Viewing a web page: Use
+      `OpenDSA/WebServer
+      <https://github.com/OpenDSA/OpenDSA/blob/master/WebServer>`_
+
+      * From a command prompt, when in the OpenDSA top-level directory,
+        just type ``WebServer`` to start it.
+
+   *  Ideally you would install the toolchain and compile an (existing)
+      book instance.
+
+      * From the OpenDSA top level, type: ``make C2GEN``

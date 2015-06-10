@@ -16,4 +16,3 @@ Class 2: Do On Your Own
    *  List in detail the content to cover
    *  For each subtopic, indicate where the content will come from
    *  List what visualizations and exercises will need to be developed
-

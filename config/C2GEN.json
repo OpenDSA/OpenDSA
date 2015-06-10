@@ -84,10 +84,6 @@
           }
         }
       },
-      "C2GEN/Class1_Starting": {
-        "long_name": "Getting Started: Compiling a Book Instance",
-        "exercises": {}
-      },
       "C2GEN/Class1_Discuss": {
         "long_name": "Today's Discussion",
         "exercises": {}
@@ -95,11 +91,160 @@
       "C2GEN/Class1_Assignment": {
         "long_name": "Class 1: Assignment",
         "exercises": {}
+      },
+      "Searching/BinarySearch": {
+        "long_name": "Binary Search",
+        "exercises": {
+          "binarySearchCON": {
+            "long_name": "Binary Search Algorithm Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "binarySearchPRO": {
+            "long_name": "Binary Search Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.9
+          }
+        }
+      },
+      "Sorting/InsertionSort": {
+        "long_name": "Insertion Sort",
+        "sections": {
+          "InsertionSortAnalysis": {
+            "long_name": "Insertion Sort Analysis Discussion",
+            "showhide": "show"
+          }
+        },
+        "exercises" : {
+          "insertionsortS1CON": {
+            "long_name": "Insertion Sort Slideshow 1",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "insertionsortS2CON": {
+            "long_name": "Insertion Sort Slideshow 2",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "insertionsortS3CON": {
+            "long_name": "Insertion Sort Slideshow 3",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "insertionsortAV": {
+            "long_name": "Insertion Sort Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "InssortPRO": {
+            "long_name": "Insertion Sort Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          },
+          "InsertionSortWorstCaseCON": {
+            "long_name": "Insertion Sort Worst Case Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "InsertionSortBestCaseCON": {
+            "long_name": "Insertion Sort Best Case Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "InsertionSortAverageCaseCON": {
+            "long_name": "Insertion Sort Average Case Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "InssortSumm": {
+            "long_name": "Insertion Sort Summary Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "Binary/BST": {
+        "long_name": "Binary Search Trees",
+        "exercises": {
+          "BSTsearchCON": {
+            "long_name": "BST Search Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "BSTsearchPRO": {
+            "long_name": "BST Search Proficiency Exercise",
+            "exer_options": {
+              "JXOP-code": "none",
+              "JXOP-feedback": "continuous",
+              "JXOP-fixmode": "undo"
+            },
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.90
+          },
+          "BSTinsertCON": {
+            "long_name": "BST Insert Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "BSTinsertPRO": {
+            "long_name": "BST Insert Proficiency Exercise",
+            "exer_options": {
+              "JXOP-code": "none",
+              "JXOP-feedback": "continuous",
+              "JXOP-fixmode": "undo"
+            },
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.90
+          },
+          "BSTdeletemaxCON": {
+            "long_name": "BST deletemax Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "BSTremoveCON": {
+            "long_name": "BST remove Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "BSTremovePRO": {
+            "long_name": "BST Remove Proficiency Exercise",
+            "exer_options": {
+              "JXOP-code": "none",
+              "JXOP-feedback": "continuous",
+              "JXOP-fixmode": "undo"
+            },
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90
+          }
+        }
       }
     },
     "Class 2: June 10": {
       "C2GEN/Class2_Intro": {
         "long_name": "Introduction",
+        "exercises": {}
+      },
+      "C2GEN/Class2_Present": {
+        "long_name": "Presentation",
         "exercises": {}
       },
       "C2GEN/Class2_Discuss": {

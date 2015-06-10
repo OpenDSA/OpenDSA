@@ -259,6 +259,12 @@
         "long_name": "Amortized Analysis",
         "exercises": {}
       }
+    },
+    "Appendix": {
+      "Glossary": {
+        "long_name": "Glossary",
+        "exercises": {}
+      }
     }
   }
 }
