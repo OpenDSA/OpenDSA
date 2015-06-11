@@ -11,7 +11,7 @@ $(document).ready(function () {
   var av = new JSAV(av_name);
   var pseudo = av.code(code);
   var arr = av.ds.array([12, 45, 5, 81, "", "", "", ""],
-                        {indexed: true, top: 25, left: 20});
+                        {indexed: true, top: 35, left: 20});
   var topPointer = av.pointer("top", arr, {targetIndex : 4});
   topPointer.hide();
 

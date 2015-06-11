@@ -1,16 +1,16 @@
 /* *** ODSATag: Queue *** */
-public interface Queue { // Queue class ADT
+public interface Queue<E> { // Queue class ADT
   // Reinitialize queue
   public void clear();
 
   // Put element on rear
-  public boolean enqueue(Object it);
+  public boolean enqueue(E it);
 
   // Remove and return element from front
-  public Object dequeue();
+  public E dequeue();
 
   // Return front element
-  public Object frontValue();
+  public E frontValue();
 
   // Return queue size
   public int length();

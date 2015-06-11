@@ -4,7 +4,7 @@ public class QueueTest {
 
 static boolean SUCCESS = true;
 
-static void test(Queue Q, Queue Q1) {
+static void test(Queue<Integer> Q, Queue<Integer> Q1) {
   String temp;
   Q.enqueue(10);
   Q.enqueue(20);
@@ -23,10 +23,10 @@ static void test(Queue Q, Queue Q1) {
 }
 
 public static void main(String args[]) throws IOException {
-  AQueue AQ = new AQueue();
-  AQueue AQ1 = new AQueue();
-  LQueue LQ = new LQueue();
-  LQueue LQ1 = new LQueue();
+  AQueue<Integer> AQ = new AQueue<Integer>();
+  AQueue<Integer> AQ1 = new AQueue<Integer>();
+  LQueue<Integer> LQ = new LQueue<Integer>();
+  LQueue<Integer> LQ1 = new LQueue<Integer>();
 
   test(AQ, AQ1);
   test(LQ, LQ1);

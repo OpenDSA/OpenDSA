@@ -62,11 +62,11 @@ function initJSAV(arr_size, insertPos, insertValue) {
   av.SPEED = 120; // Set the speed of the animation
   jsavArr = av.ds.array(answerArr, {indexed: true, center: false});
   jsavArr.css({top: 50});
-  var arrowCurr = av.g.line(18 + inPosition * 31, 30, 18 + inPosition * 31, 52,
+  var arrowCurr = av.g.line(16 + inPosition * 31, 40, 16 + inPosition * 31, 62,
                     { "arrow-end": "classic-wide-long",
                       "opacity": 100, "stroke-width": 2});
   var label = av.label("Curr", { before: jsavArr,
-                                 left: 4 + inPosition * 31, top: -5});
+                                 left: inPosition * 31, top: 0});
 	
   // correct answer
   answerArr.splice(inPosition, 0, inValue);

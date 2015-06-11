@@ -13,14 +13,14 @@ $(document).ready(function () {
 
   // Relative offsets
   var leftMargin = 20;
-  var topMargin = 20;
+  var topMargin = 35;
   var arr = av.ds.array([12, 45, 5, 81, "", "", "", ""],
                         {indexed: true, top: topMargin, left: leftMargin});
   var topPointer = av.pointer("top", arr, {targetIndex : 4});
-  var arrReturn = av.ds.array([""], {top : topMargin + 70,
+  var arrReturn = av.ds.array([""], {top : topMargin + 60,
                                      left: leftMargin + 100});
   arrReturn.hide();
-  var labelReturn = av.label("return", {top : topMargin + 75,
+  var labelReturn = av.label("return", {top : topMargin + 65,
                                         left: leftMargin + 50});
   labelReturn.hide();
 

@@ -45,9 +45,9 @@ class LQueue implements Queue {
     if (size == 0) return null;
     Object it = front.next().element(); // Store the value
     front.setNext(front.next().next()); // Advance front
-    if (front.next() == null) rear = front; // Last Object
+    if (front.next() == null) rear = front; // Last element
     size--;
-    return it; // Return Object
+    return it; // Return element
   }
 /* *** ODSAendTag: LQueueDequeue *** */
 

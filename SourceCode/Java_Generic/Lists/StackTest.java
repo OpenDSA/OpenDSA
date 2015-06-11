@@ -4,7 +4,7 @@ public class StackTest {
 
 static boolean SUCCESS = true;
 
-static void test(Stack S, Stack S1) {
+static void test(Stack<Integer> S, Stack<Integer> S1) {
     String temp;
     S.push(10);
     S.push(20);
@@ -23,10 +23,10 @@ static void test(Stack S, Stack S1) {
 }
 
 public static void main(String args[]) throws IOException {
-  AStack AS = new AStack();
-  AStack AS1 = new AStack();
-  LStack LS = new LStack();
-  LStack LS1 = new LStack();
+  AStack<Integer> AS = new AStack<Integer>();
+  AStack<Integer> AS1 = new AStack<Integer>();
+  LStack<Integer> LS = new LStack<Integer>();
+  LStack<Integer> LS1 = new LStack<Integer>();
 
   test(AS, AS1);
   test(LS, LS1);

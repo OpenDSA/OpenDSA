@@ -1,16 +1,17 @@
 // Array-based stack implementation
 /* *** ODSATag: AStack1 *** */
-class AStack implements Stack {
+class AStack<E> implements Stack<E> {
+  private E stackArray[];         // Array holding stack
   private static final int defaultSize = 10;
   private int maxSize;            // Maximum size of stack
   private int top;                // Index for top Object
-  private Object stackArray[];    // Array holding stack
 
   // Constructors
+  @SuppressWarnings("unchecked") // Generic array allocation
   AStack(int size) {
     maxSize = size;
     top = 0; 
-    stackArray = new Object[size]; // Create stackArray
+    stackArray = (E[])new Object[size]; // Create stackArray
   }
   AStack() { this(defaultSize); }
 /* *** ODSAendTag: AStack1 *** */
@@ -29,7 +30,7 @@ class AStack implements Stack {
 
 // Push "it" onto stack
 /* *** ODSATag: AStackPush *** */
-  public boolean push(Object it) {
+  public boolean push(E it) {
     if (top >= maxSize) return false;
     stackArray[top++] = it;
     return true;
@@ -38,13 +39,13 @@ class AStack implements Stack {
 
 // Remove and return top element
 /* *** ODSATag: AStackPop *** */
-  public Object pop() {               
+  public E pop() {               
     if (top == 0) return null;
     return stackArray[--top];
   }
 /* *** ODSAendTag: AStackPop *** */
 
-  public Object topValue() {          // Return top element
+  public E topValue() {          // Return top element
     if (top == 0) return null;
     return stackArray[top-1];
   }

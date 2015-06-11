@@ -8,7 +8,7 @@ $(document).ready(function () {
   var av = new JSAV(av_name);
 
   // Linked list
-  var l = av.ds.list({nodegap: 30, top: 30, left: 257});
+  var l = av.ds.list({nodegap: 30, top: 40, left: 257});
   l.addFirst(15).addFirst(12).addFirst(10).addFirst(23).addFirst(20);
   l.get(1).highlight();
   l.layout();

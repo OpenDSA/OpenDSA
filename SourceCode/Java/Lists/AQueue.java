@@ -1,11 +1,11 @@
 // Array-based queue implementation
 /* *** ODSATag: AQueue1 *** */
 class AQueue implements Queue {
+  private Object queueArray[]; // Array holding queue elements
   private static final int defaultSize = 10;
   private int maxSize;         // Maximum size of queue
   private int front;           // Index of front element
   private int rear;            // Index of rear element
-  private Object queueArray[]; // Array holding queue elements
 
   // Constructors
   AQueue(int size) {

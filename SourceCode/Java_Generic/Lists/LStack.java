@@ -1,7 +1,7 @@
 /* *** ODSATag: LStack1 *** */
 // Linked stack implementation
-class LStack implements Stack {
-  private Link top;               // Pointer to first element
+class LStack<E> implements Stack<E> {
+  private Link<E> top;            // Pointer to first element
   private int size;               // Number of elements
 
   // Constructors
@@ -11,7 +11,7 @@ class LStack implements Stack {
 
   public String toString() {
     StringBuffer out = new StringBuffer(size * 4);
-    for (Link temp = top; temp != null;  temp = temp.next()) {
+    for (Link<E> temp = top; temp != null;  temp = temp.next()) {
       out.append(temp.element());
       out.append(" ");
     }
@@ -24,8 +24,8 @@ class LStack implements Stack {
 
 // Put "it" on stack
 /* *** ODSATag: LStackPush *** */  
-  public boolean push(Object it) {  
-    top = new Link(it, top);
+  public boolean push(E it) {  
+    top = new Link<E>(it, top);
     size++;
     return true;
   }
@@ -33,16 +33,16 @@ class LStack implements Stack {
 
 // Remove "it" from stack
 /* *** ODSATag: LStackPop *** */    
-  public Object pop() {           
+  public E pop() {           
     if (top == null) return null;
-    Object it = top.element();
+    E it = top.element();
     top = top.next();
     size--;
     return it;
   }
 /* *** ODSAendTag: LStackPop *** */
 
-  public Object topValue() {      // Return top value
+  public E topValue() {      // Return top value
     if (top == null) return null;
     return top.element();
   }

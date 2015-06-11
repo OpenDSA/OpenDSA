@@ -11,11 +11,11 @@ clean:
 
 Demo: UpDown
 
-UpDown: Demo/UpDown.1 Demo/UpDown.2 Utils/Processing.java
+UpDown: Demo/UpDown.java
 	@echo "UpDown Test"
 	-@rm -rf build/UpDown
 	@mkdir build/UpDown
-	cat Demo/UpDown.1 Utils/Processing.java Demo/UpDown.2 > build/UpDown/UpDown.java
+	cp Demo/UpDown.java build/UpDown
 	cd build/UpDown; \
 	javac $(CFLAGS) UpDown.java; \
 	$(JAVA) $(RFLAGS) UpDown

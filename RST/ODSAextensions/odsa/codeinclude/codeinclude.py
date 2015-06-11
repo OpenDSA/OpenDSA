@@ -294,7 +294,8 @@ class codeinclude(Directive):
     # Set the highlighting language based on the language of the file that was actually loaded
     lang = lang.lower()
     # Pygments doesn't understand 'processing' so set the highlight language to 'java'
-    lang = 'java' if lang == 'processing' else lang
+    # Likewise for "Java_Generic" -- this is meant to be a temporary hack
+    lang = 'java' if ((lang == 'processing') or (lang == 'java_generic')) else lang
     retnode['language'] = lang #self.options['language']
 
     if 'linenos' in self.options:

@@ -20,9 +20,9 @@ $(document).ready(function () {
   var topMargin = 80;
 
   // Box "it"
-  var itLabel = av.label("it", {left: 20, top: -15});
+  var itLabel = av.label("it", {left: 20, top: -10});
   var itBox = av.ds.array(["15"], {indexed: false, layout: "array",
-                                   top: -20, left: 40});
+                                   top: -15, left: 40});
   var l = av.ds.list({nodegap: 30, top: topMargin, left: leftMargin});
   l.addFirst("null").addFirst(20).addFirst("null");
   l.layout();

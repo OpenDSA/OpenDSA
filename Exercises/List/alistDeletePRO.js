@@ -78,9 +78,9 @@ function initJSAV(arr_size, deletePos) {
   av.SPEED = 120; // Set the speed of animation.
   jsavArr = av.ds.array(cloneArr, {indexed: true, center: false});
   jsavArr.css({top: 50});
-  returnArr = av.ds.array(["null"], {left: delPosition * 31 + 35, top: 120});
-  returnLabel = av.label("return", {left: delPosition * 31 - 8, top: 125});
-  var arrowCurr = av.g.line(18 + delPosition * 31, 30, 18 + delPosition * 31, 52,
+  returnArr = av.ds.array(["null"], {left: 40, top: 120});
+  returnLabel = av.label("return", {left: 0, top: 125});
+  var arrowCurr = av.g.line(16 + delPosition * 31, 30, 16 + delPosition * 31, 52,
                     { "arrow-end": "classic-wide-long",
                       "opacity": 100, "stroke-width": 2});
   var label = av.label("Curr", { before: jsavArr,

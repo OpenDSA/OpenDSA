@@ -1,13 +1,9 @@
-.jsavcontainer {
-  height: 125px;
-}
-
 #reset { margin-right: 20px;}
 
-#alistInsertPRO.jsavcanvas {
-  height: 125px;
+#alistInsertPRO .jsavcanvas {
+  height: 150px;
 }
 
-#alistDeletePRO.jsavcanvas{
-  height: 185px;
+#alistDeletePRO .jsavcanvas{
+  height: 200px;
 }

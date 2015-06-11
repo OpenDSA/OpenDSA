@@ -1,6 +1,5 @@
 /* *** ODSATag: Stack *** */
 interface Stack { // Stack class ADT
-
   // Reinitialize the stack.
   void clear();
 

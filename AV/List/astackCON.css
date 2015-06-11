@@ -16,7 +16,8 @@
 
 #astackPushCON .jsavcode{
   position: relative;
-  left: 170px;
+  top: -5px;
+  left: 175px;
   width: 500px;
 }
 
@@ -25,12 +26,12 @@
 }
 
 #astackPopCON .jsavoutput.jsavline {
-  height: 30px;
+  height: 15px;
 }
 
 #astackPopCON .jsavcode{
   position: relative;
-  top: 30px;
-  left: 170px;
+  top: 40px;
+  left: 175px;
   width: 500px;
 }

@@ -26,9 +26,9 @@ $(document).ready(function () {
   var bar = l.get(2).addVLine();
 
   // Box "it"
-  var itLabel = av.label("it", {before: l, left: 20, top: -15});
+  var itLabel = av.label("it", {before: l, left: 20, top: -10});
   var itBox = av.ds.array(["15"], {indexed: false, layout: "array",
-                                   top: -20, left: 40});
+                                   top: -15, left: 40});
 
   // Create pieces for later steps
   var arr = av.ds.array([""], {indexed: true, layout: "array"});
