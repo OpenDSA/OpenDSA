@@ -59,7 +59,7 @@
 		
 		<div id="av">
 			<h1>DFA test</h1>
-			<span class="jsavcounter"></span><a class="jsavsettings" href="#">Settings</a>
+			<!--<span class="jsavcounter">--></span><a class="jsavsettings" href="#">Settings</a>
 			<div class="jsavcontrols">	
 			</div>
       		<p class="jsavoutput jsavline"></p>
@@ -231,9 +231,14 @@
 							updateAlphabet();
 						}
 						else if (input == 'I') {
-							for (var i = 0; i < g.nodeCount(); i++) {
-								g.nodes()[i].removeClass('start');
+							var nodes = g.nodes();
+							for (var next = nodes.next(); next; next = nodes.next()) {
+								g.removeInitial(next);
 							}
+							// for (var i = 0; i < g.nodeCount(); i++) {
+							// 	g.nodes()[i].removeClass('start');
+							// 	g.removeInitial(g.nodes()[i]);
+							// }
 							g.makeInitial(this);
 						} else if (input == 'F') {
 							this.toggleClass('final');

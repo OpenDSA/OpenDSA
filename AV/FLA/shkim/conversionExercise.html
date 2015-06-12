@@ -127,8 +127,8 @@
 
 			function initialize() {
 				if (g) {
-					g.clear();
-					//$('.jsavgraph').remove();
+					//g.clear();		this doesn't seem to work
+					$('#editable').empty();
 				}
 				jsav.umsg("Choose a state to expand:");
 				g = jsav.ds.fa($.extend({width: '45%', height: 440, element: $('#editable')}));
@@ -143,6 +143,8 @@
 			};
 			
 			function modelAnswer(modeljsav) {
+				// manual creation of the default DFA:
+
 				// var graph = modeljsav.ds.fa($.extend({width: '90%', height: 440, layout: 'automatic', element: $('.jsavmodelanswer .jsavcanvas')}));
 				// var a = graph.addNode(),
 				// 	b = graph.addNode(),
@@ -171,7 +173,9 @@
 				// graph.addEdge(d, d, {weight: "a"});
 				// graph.addEdge(d, e, {weight: "b"});
 				// graph.addEdge(e, c, {weight: "b"});
+
 				var graph = convertToDFA(modeljsav, g1, $.extend({width: '90%', height: 440, layout: 'automatic', element: $('.jsavmodelanswer .jsavcanvas')}))
+
 				graph.layout();
 				if (graph.equals(g)) {
 					jsav.umsg("YOU GOT IT");

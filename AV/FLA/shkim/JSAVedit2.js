@@ -8447,10 +8447,10 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
     if (this.hasEdge(fromNode, toNode)) { 
       var prevEdge = this.getEdge(fromNode, toNode);
       var prevWeight = prevEdge.weight();
-      if (prevWeight.split(',').indexOf(options.weight) !== -1) { return; }
+      if (prevWeight.split('<br>').indexOf(options.weight) !== -1) { return; }
 
-        prevEdge.weight(prevWeight.split(',').concat([options.weight]).sort().join());
-        return prevEdge;
+      prevEdge.weight(prevWeight.split('<br>').concat([options.weight]).join('<br>'));
+      return prevEdge;
     }
     var opts = $.extend({}, this.options, options);
     if (opts.directed && !opts["arrow-end"]) {
@@ -8536,7 +8536,7 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
     var w;
     for (var next = edges.next(); next; next = edges.next()) {
       w = next.weight();
-      w = w.split(',');
+      w = w.split('<br>');
       for (var i = 0; i < w.length; i++) {
         if (w[i] !== this.options.emptystring) {
           var letter = w[i].split(':')[0];
@@ -8570,8 +8570,7 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
 
     for (var i = 0; i < edges.length; i++) {
       var edge = edges[i],
-          w = edge.weight().split(',');
-          
+          w = edge.weight().split('<br>');
       for (var j = 0; j < w.length; j++) {
         var t = w[j].split(':');
         if (t[0] !== letter) {continue;}
@@ -8595,7 +8594,7 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
             return edge.end();
           } else {
             l.reverse();
-            this.stack.concat(l);
+            this.stack = this.stack.concat(l);
           }
         } else {
           if (this.stack.length === 0) {
@@ -8617,7 +8616,7 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
         ret = [];
     for (var i = 0; i < edges.length; i++) {
       var edge = edges[i];
-      if (edge.weight().split(',').indexOf(letter) !== -1) {
+      if (edge.weight().split('<br>').indexOf(letter) !== -1) {
         ret.push(edge.end().value());
       }
     }
@@ -8628,7 +8627,7 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
     var successors = state.neighbors(),
         traversed = [];
     for (var next = successors.next(); next; next = successors.next()) {
-      var weight = this.getEdge(currentState, next).weight().split(',');
+      var weight = this.getEdge(currentState, next).weight().split('<br>');
       for (var i = 0; i < weight.length; i++) {
         if (letter == weight[i]) {
           traversed.push(next);
@@ -8641,11 +8640,21 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
   };
 
   faproto.layout = function(options) {
-    var layoutAlg = this.options.layout || "_default";
+    if (options && options.layout) {
+      var layoutAlg = options.layout;
+    } else{
+      var layoutAlg = this.options.layout || "_default";
+    }
     var ret = this.jsav.ds.layout.graph[layoutAlg](this, options);
     var nodes = this.nodes();
     for (var next = nodes.next(); next; next = nodes.next()) {
       next.stateLabelPositionUpdate();
+    }
+    var edges = this.edges();
+    for (next = edges.next(); next; next = edges.next()) {
+      if (!next.weight()) {
+        this.removeEdge(next);
+      }
     }
     return ret;
   };
@@ -8713,6 +8722,11 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
   };
 
   fatransitionproto.layout = function(options) {
+    if (!this._label.text()) {
+      this.container.removeEdge(this);
+      return;
+    } 
+    this.weight(this._label.element.innerHTML);
     var controlPointX, controlPointY, midX, midY,
         sElem = this.start().element,
         eElem = this.end().element,
@@ -8776,12 +8790,12 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
           bbleft = Math.min(fromPoint[0], toPoint[0]),
           bbwidth = Math.abs(fromPoint[0] - toPoint[0]),
           bbheight = Math.abs(fromPoint[1] - toPoint[1]);
-      if (this.options.arc) {
-        bbtop = bbtop + (this.options.arcoffset / 2.0) * (controlPointY - midY) / Math.abs(controlPointY - midY);
-        bbleft = bbleft + (this.options.arcoffset / 2.0) * (controlPointX - midX) / Math.abs(controlPointX - midX);
-      } 
-      else if (this.start().equals(this.end())) {
-        bbtop = Math.round(start.top - 1.2 * sHeight);
+      // if (this.options.arc) {
+      //   bbtop = bbtop + (this.options.arcoffset / 2.0) * (controlPointY - midY) / Math.abs(controlPointY - midY);
+      //   bbleft = bbleft + (this.options.arcoffset / 2.0) * (controlPointX - midX) / Math.abs(controlPointX - midX);
+      // } else
+      if (this.start().equals(this.end())) {
+        bbtop = Math.round(start.top - 1.1 * sHeight);
         bbleft = Math.round(start.left);
         bbwidth = Math.round(2 * sWidth);
         bbheight = Math.round(0.5 * sHeight);
@@ -8796,8 +8810,16 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
       } else {
         rotateAngle = normalizeAngle((2*Math.PI) - fromAngle);
       }
-      this._label.css("transform", "rotate(" + rotateAngle + "rad)");
-
+      if (this.options.arc) {
+        if ((controlPointY - midY) / Math.abs(controlPointY - midY) > 0) {
+          this._label.css("transform", "rotate(" + rotateAngle + "rad)" + " translate(0," + (this._label.element.height() / 2.0 + strokeWidth + 1 + this.options.arcoffset/2.0) + ')');
+        } else {
+          this._label.css("transform", "rotate(" + rotateAngle + "rad)" + " translate(0,-" + (this._label.element.height() / 2.0 + strokeWidth + 1 + this.options.arcoffset/2.0) + ')');
+        }
+      }
+      else {
+        this._label.css("transform", "rotate(" + rotateAngle + "rad)" + " translate(0,-" + (this._label.element.height() / 2.0 + strokeWidth + 1) + ')');
+      }
     }
 
     if (this.start().value() === "jsavnull" || this.end().value() === "jsavnull") {
