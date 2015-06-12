@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-		<title>DFA test</title>
+		<title>FA Editor</title>
     	<link rel="stylesheet" href="../css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
     	<link rel="stylesheet" href="../resources/customPrompt.css" type="text/css" />
 		<style>
@@ -53,8 +53,8 @@
     		</div>
   		</div>
 		<div id="av" style="border:none">
-			<!-- <button onclick="undo()" id="undoButton">Undo</button>
-			<button onclick="redo()" id="redoButton">Redo</button> -->
+			<button onclick="undo()" id="undoButton">Undo</button>
+			<button onclick="redo()" id="redoButton">Redo</button>
 			<button onclick="addNodes()" id="editButton">Add Nodes</button>
 			<button onclick="addEdges()" id="editButton">Add Edges</button>
 			<button onclick="moveNodes()" id="editButton">Move Nodes</button>
@@ -80,76 +80,76 @@
 		<script src="../resources/underscore-min.js"></script>
 		<script src="../resources/FA.js"></script>
 		<script src="../resources/customPrompt.js"></script>
+		<script src="../resources/commandUndoRedo.js"></script>
 		<script>
 			var jsav = new JSAV("av"),
-				selectedNode = null,
+				first = null,
+				selected = null,
+				undoStack = [],
+				redoStack = [],
+				data,
 				g;
-			/*
-			graph:
-			initial state is filled green
-			current states (during slideshow) are filled blue
-			array:
-			characters already traversed are highlighted yellow
-			if a character is not accepted, it is filled red
-			if the inputted string passes, the final character is filled green
-			*/
 			
 			var initialize = function(graph, traversal) {
-				g = graph;
-				g = initGraph({layout: "automatic"});
+				if (g) {
+					localStorage['backup'] = serialize(g);
+				}
+				data = graph;
+				initGraph({layout: "automatic"});
+				undoStack = [];
+				redoStack = [];
 			};
-
 			var initGraph = function(opts) {
-				var gg = jQuery.parseJSON(g);
-				graph = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
-				for (var i = 0; i < gg.nodes.length; i++) {
-			    	var node = graph.addNode('q' + i),
-			    		offset = $('.jsavgraph').offset(),
-			    		offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
-			    	$(node.element).offset({top : parseInt(gg.nodes[i].top) + offset.top + offset2, left: parseInt(gg.nodes[i].left) + offset.left + offset2});
-			    	if (gg.nodes[i].i) {
-			    		graph.makeInitial(node);
+				$('.jsavgraph').remove(); 
+				var gg;
+				try {
+					gg = jQuery.parseJSON(data);
+				}
+				catch(err) {
+					jsav.umsg("Error: Tried to load invalid file.");
+					g = localStorage['backup'];
+					gg = jQuery.parseJSON(g);
+				}
+				finally {
+					g = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
+					for (var i = 0; i < gg.nodes.length; i++) {
+			    		var node = g.addNode('q' + i),
+			    			offset = $('.jsavgraph').offset(),
+			    			offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
+			    		$(node.element).offset({top : parseInt(gg.nodes[i].top) + offset.top + offset2, left: parseInt(gg.nodes[i].left) + offset.left + offset2});
+			    		if (gg.nodes[i].i) {
+			    			g.makeInitial(node);
+			    		}
+			    		if (gg.nodes[i].f) {
+			    			node.addClass("final");
+			    		}
+			  		}
+			  		for (var i = 0; i < gg.edges.length; i++) {
+			    		if (gg.edges[i].weight !== undefined) {
+			    			var edge = g.addEdge(g.nodes()[gg.edges[i].start], g.nodes()[gg.edges[i].end], {weight: (gg.edges[i].weight)});
+		        		}
+			    		else {
+			    			var edge = g.addEdge(g.nodes()[gg.edges[i].start], g.nodes()[gg.edges[i].end]);
+			    		}
+			    		edge.layout();
 			    	}
-			    	if (gg.nodes[i].f) {
-			    		node.addClass("final");
-			    	}
-			  	}
-			  	for (var i = 0; i < gg.edges.length; i++) {
-			    	if (gg.edges[i].weight !== undefined) {
-			    		var edge = graph.addEdge(graph.nodes()[gg.edges[i].start], graph.nodes()[gg.edges[i].end], {weight: (gg.edges[i].weight)});
-		        	}
-			    	else {
-			    		var edge = graph.addEdge(graph.nodes()[gg.edges[i].start], graph.nodes()[gg.edges[i].end]);
-			    	}
-			    	edge.layout();
 			    }
-			    g = graph;
-			    g.layout();
-				updateAlphabet();
+			    updateAlphabet();
 			    addHandlers();
-				return g;
+			    jsav.displayInit();
 		    };
-
 		    function addHandlers() {
 		    	$(".jsavgraph").click(function(e) {
 					if ($(".jsavgraph").hasClass("addNodes")) {
-						var newNode = g.addNode(),
-						    nodeX = newNode.element.width()/2.0,
-							nodeY = newNode.element.height()/2.0;
-						$(newNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
+						saveFAState();
+						executeAddNode(e.pageY, e.pageX);
 					} 
-					else if ($('.jsavgraph').hasClass('moveNodes') && selectedNode != null) {
-						var nodeX = selectedNode.element.width()/2.0,
-							nodeY = selectedNode.element.height()/2.0,
-							edges = g.edges();
-						$(selectedNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
-						for (var next = edges.next(); next; next = edges.next()) {
-							if (next.start().equals(selectedNode) || next.end().equals(selectedNode)) {
-								next.layout();
-							}
-						}
-						selectedNode.unhighlight();
-						selectedNode = null;
+					else if ($('.jsavgraph').hasClass('moveNodes') && selected != null) {
+						saveFAState();
+						executeMoveNode(selected, e.pageY, e.pageX);
+						
+						selected.unhighlight();
+						selected = null;
 						e.stopPropagation();
 						jsav.umsg("Click a node");
 					}
@@ -157,76 +157,65 @@
 				g.click(function(e) {	
 					if ($(".jsavgraph").hasClass("editNodes")) {
 						this.highlight();
-						selectedNode = this;
-						var Prompt = new CustomPrompt();
+						selected = this;
+						var Prompt = new NodePrompt();
 						Prompt.render(this.value(), this.hasClass('start'), this.hasClass('final'), this.element.attr('title'));
 						this.unhighlight();
-	   				} else if ($(".jsavgraph").hasClass("addEdges")) {
+	   				}
+	   				else if ($(".jsavgraph").hasClass("addEdges")) {
 	   					this.highlight();
 	   					if (!$(".jsavgraph").hasClass("working")) {
 							first = this;
 							$('.jsavgraph').addClass("working");
 							jsav.umsg("Select a node to make an edge to");
-			   			} else {
-			   				var input2 = prompt("Accepted character?");
-			   				var newEdge;
-							if (input2 === "") {
-								newEdge = g.addEdge(first, this, {weight: "\&lambda;"});
-							} else if (input2 != null) {
-								newEdge = g.addEdge(first, this, {weight: input2});
-							} 
-							if (!(typeof newEdge === 'undefined')) {
-								newEdge.layout();
-							}
+			   			}
+			   			else {
+			   				this.highlight();
+			   				selected = this;
+			   				var Prompt = new EdgePrompt();
+			   				Prompt.render("");
 							$('.jsavgraph').removeClass("working");
 							first.unhighlight();
 							this.unhighlight();
-							updateAlphabet();
 							jsav.umsg("Click a node");
 			   			}
-	   				} else if ($('.jsavgraph').hasClass('moveNodes')) {
+	   				}
+	   				else if ($('.jsavgraph').hasClass('moveNodes')) {
 	   					this.highlight();
-	   					selectedNode = this;
+	   					selected = this;
 	   					jsav.umsg("Click to place node");
 	   					e.stopPropagation();
-	   				} else if ($('.jsavgraph').hasClass('deleteNodes')) {
-	   					g.removeNode(this);
-						updateAlphabet();
+	   				}
+	   				else if ($('.jsavgraph').hasClass('deleteNodes')) {
+	   					saveFAState();
+	   					executeDeleteNode(this);
 	   				}
  				});
 				g.click(function(e) {
 					if ($('.jsavgraph').hasClass('editNodes')) {
 						this.highlight();
-						var input = prompt("Accepted character?");
-						if (input === "") {
-							this.weight("\&lambda;");
-						} else if (input != null) {
-							this.weight(input);
-						}
-						updateAlphabet();
+						selected = this;
+						var Prompt = new EdgePrompt();
+			   			Prompt.render(selected.weight());
 						this.unhighlight();
 					}
 					else if ($('.jsavgraph').hasClass('deleteNodes')) {
-	   					g.removeEdge(this);
-						updateAlphabet();
+						saveFAState();
+						executeDeleteEdge(this);
 	   				}
 				}, {edge: true});
 			};
 			function updateNode(initial_state, final_state, node_label) {
-				if (initial_state) {
-					for (var i = 0; i < g.nodeCount(); i++) {
-						g.nodes()[i].removeClass('start');
-					}
-					g.makeInitial(selectedNode);
-				} else {
-					selectedNode.removeClass('start');
-				}
-				if (final_state) {
-					selectedNode.addClass('final');
-				} else {
-					selectedNode.removeClass('final');
-				}
-				selectedNode.element.attr('title', node_label);
+				saveFAState();
+				executeEditNode(selected, initial_state, final_state, node_label);
+			};
+			function createEdge(edge_label) {
+				saveFAState();
+				executeAddEdge(first, selected, edge_label);
+			};
+			function updateEdge(edge_label) {
+				saveFAState();
+				executeEditEdge(selected, edge_label);
 			};
    			var updateAlphabet = function() {
 	   			g.updateAlphabet();
@@ -267,15 +256,12 @@
    				jsav.umsg("Click a node or edge to delete it");
    			};
    			var removeModeClasses = function() {
-   				selectedNode = null;
+   				selected = null;
    				$(".jsavgraph").removeClass("addNodes");
    				$(".jsavgraph").removeClass("addEdges");
    				$(".jsavgraph").removeClass("moveNodes");
    				$(".jsavgraph").removeClass("editNodes");
    				$(".jsavgraph").removeClass("deleteNodes");
-   			};
-   			var backup = function () {
-   				localStorage['backup'] = serialize(g);
    			};
 			var save = function () {
 				var downloadData = "text/json;charset=utf-8," + encodeURIComponent(serialize(g));
@@ -285,12 +271,30 @@
 			var getGraph = function() {
 				return g;
 			};
-			/*
-			var undo = function () {
+			var getSerial = function() {
+				var serial = serialize(g);
+				return serial;
 			};
-			var redo = function () {
+			function saveFAState () {
+				data = serialize(g);
+				undoStack.push(data);
 			};
-			*/
+			function undo () {
+				if(undoStack.length == 0) {
+					return;
+				}
+				data = undoStack.pop();
+				initGraph({layout: "automatic"});
+				redoStack.push(data);
+			};
+			function redo () {
+				if(redoStack.length == 0) {
+					return;
+				}
+				data = redoStack.pop();
+				initGraph({layout: "automatic"});
+				undoStack.push(data);
+			};
    		</script>
    	</body>
 </html>

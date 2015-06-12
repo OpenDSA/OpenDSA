@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-		<title>DFA test</title>
+		<title>FA Traversal</title>
     	<link rel="stylesheet" href="../css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 		<style>
 			#av {
@@ -69,7 +69,7 @@
 
 			var initialize = function(graph, traversal) {
 				g = graph;
-				g = initGraph({layout: "automatic"});
+				initGraph({layout: "automatic"});
 				run(traversal);
 			};
 			var initGraph = function(opts) {
@@ -99,8 +99,6 @@
 			    	edge.layout();
 			    }
 			    g = graph;
-			    g.layout();
-				return g;
 		    };
    			var run = function(inputString) {
 				jsav.umsg("");
@@ -197,6 +195,10 @@
 			var getGraph = function() {
 				return g;
 			};
+			var getSerial = function() {
+				var serial = serialize(g);
+				return serial;
+			}
    		</script>
    	</body>
 </html>

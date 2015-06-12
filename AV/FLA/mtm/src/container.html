@@ -2,12 +2,12 @@
 
 <html>
 	<head>
-		<title>DFA test</title>
+		<title>FA Container</title>
     	<link rel="stylesheet" href="../css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 		<base href="./editor.html" target="iframe">
 	</head>
-	<body>
-		<h1>DFA test</h1>
+	<body onload="init()">
+		<h1>FA Editor</h1>
 		<p align="center" id="multipleTraversals" class="arrayPlace"></p>
 		<iframe height="680px" width="100%" id="if" name="iframe" onload="onLoadHandler()"></iframe>
 		<div id="av" style="display:none"></div>
@@ -30,78 +30,10 @@
 			var jsav = new JSAV("av"),
 				jsavArray,
 				saved = false,
-				serialization,
 				traversal = "",
-				editing = true;
-
-			/*
-			graph:
-			initial state is filled green
-			current states (during slideshow) are filled blue
-			array:
-			characters already traversed are highlighted yellow
-			if a character is not accepted, it is filled red
-			if the inputted string passes, the final character is filled green
-			*/
-			
-			var initGraph = function(opts) {
-				if (!saved) {
-					g = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
-		      		var a = g.addNode("q0");
-		          	g.makeInitial(a);
-				}
-				else {
-					var x = document.getElementById("loadFile").files[0];
-					var reader = new FileReader();
-					reader.onload = loadComplete;
-					reader.readAsText(x);
-				}
-				function loadComplete() {
-					g = reader.result;
-					var gg;
-					try {
-						gg = jQuery.parseJSON(g);
-					}
-					catch(err) {
-						jsav.umsg("Error: Tried to load invalid file.");
-						g = localStorage['backup'];
-						gg = jQuery.parseJSON(g);
-					}
-					finally {
-						graph = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
-						for (var i = 0; i < gg.nodes.length; i++) {
-			    			var node = graph.addNode('q' + i),
-			    				offset = $('.jsavgraph').offset(),
-			    				offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
-			    			$(node.element).offset({top : parseInt(gg.nodes[i].top) + offset.top + offset2, left: parseInt(gg.nodes[i].left) + offset.left + offset2});
-			    			if (gg.nodes[i].i) {
-			    				graph.makeInitial(node);
-			    			}
-			    			if (gg.nodes[i].f) {
-			    				node.addClass("final");
-			    			}
-			  			}
-			  			for (var i = 0; i < gg.edges.length; i++) {
-			    			if (gg.edges[i].weight !== undefined) {
-			      				var edge = graph.addEdge(graph.nodes()[gg.edges[i].start], graph.nodes()[gg.edges[i].end], {weight: (gg.edges[i].weight)});
-		        			}
-			    			else {
-			      				var edge = graph.addEdge(graph.nodes()[gg.edges[i].start], graph.nodes()[gg.edges[i].end]);
-			    			}
-			    			edge.layout();
-			    		}
-			    		g = graph;
-			    		serialization = serialize(g);
-						document.getElementById("if").src = "./editor.html";
-			    	}
-				}
-				return g;
-		    };
-
-		    var g = initGraph({layout: "automatic"});
-		    g.layout();
-		    serialization = serialize(g);
-			initialize();
+				serialization,
+				editing,
+				data;
 		    
 		    var displayEditor = function () {
 		    	jsavArray.hide();
@@ -109,17 +41,16 @@
 		    		return;
 		    	}
 		    	editing = true;
-		    	g = document.getElementById("if").contentWindow.getGraph();
-		    	serialization = serialize(g);
+		    	serialization = document.getElementById("if").contentWindow.getSerial();
 		    	document.getElementById("if").src = "./editor.html";
 		    };
 			var displayTraversals = function () {
-				var inputString = prompt("Input string?", "aaa");
+				var inputString = prompt("Input string?");
 				if (!inputString) {
 					return;
 				}
-				g = document.getElementById("if").contentWindow.getGraph();
-				serialization = serialize(g);
+				var graph = document.getElementById("if").contentWindow.getGraph();
+				serialization = document.getElementById("if").contentWindow.getSerial();
 				var travArray = [];
 				var inputs = inputString.split(',');
 				jsav.umsg("");
@@ -130,7 +61,7 @@
   				document.getElementById("multipleTraversals").innerHTML = "";
   				jsavArray = jsav.ds.array(travArray, {element: $('.arrayPlace')});
   				for (var j = 0; j < travArray.length; j++) {
-  					if(willReject(travArray[j])){
+  					if(willReject(graph, travArray[j])){
   						jsavArray.css(j, {"background-color": "red"});
   					}
   					else {
@@ -145,21 +76,19 @@
   				play(this.value(index));
   			};
 			var play = function (inputString) {
-				g = document.getElementById("if").contentWindow.getGraph();
-				serialization = serialize(g);
 				traversal = inputString;
 				editing = false;
 				document.getElementById("if").src = "./traversal.html";
 			};
-			var willReject = function (inputString) {
-				var currentStates = [g.initial];
-				currentStates = addLambdaClosure(currentStates);
+			var willReject = function (graph, inputString) {
+				var currentStates = [graph.initial];
+				currentStates = addLambdaClosure(graph, currentStates);
 				var cur;
 				for (var i = 0; i < inputString.length; i++) {
 					for (var j = 0; j < currentStates.length; j++) {
 				   		currentStates[j].removeClass('current');
 				   	}
-				   	cur = traverse(currentStates, inputString[i]);
+				   	cur = traverse(graph, currentStates, inputString[i]);
 				   	if (cur.length == 0) {
 				   		break;
 				   	}
@@ -174,12 +103,12 @@
 				}
 				return rejected;
   			};
-			var traverse = function(currentStates, letter) {
+			var traverse = function(graph, currentStates, letter) {
 				var nextStates = [];
 				for (var i = 0; i < currentStates.length; i++) {
 					var successors = currentStates[i].neighbors();
 					for (var next = successors.next(); next; next = successors.next()) {
-						var weight = g.getEdge(currentStates[i], next).weight().split(',');
+						var weight = graph.getEdge(currentStates[i], next).weight().split(',');
 						for (var j = 0; j < weight.length; j++) {
 							if (letter == weight[j] && !next.hasClass('current')) {
 								next.addClass('current');
@@ -188,15 +117,15 @@
 						}
 					}
 				}
-				nextStates = addLambdaClosure(nextStates);
+				nextStates = addLambdaClosure(graph, nextStates);
 				return nextStates;
 			};
-			var addLambdaClosure = function(nextStates) {
+			var addLambdaClosure = function(graph, nextStates) {
 				lambdaStates = [];
 				for (var i = 0; i < nextStates.length; i++) {
 					var successors = nextStates[i].neighbors();
 					for (var next = successors.next(); next; next = successors.next()) {
-						var weight = g.getEdge(nextStates[i], next).weight().split(',');
+						var weight = graph.getEdge(nextStates[i], next).weight().split(',');
 						for (var j = 0; j < weight.length; j++) {
 							if (weight[j] == "&lambda;" && !next.hasClass('current')) {
 								next.addClass('current');
@@ -206,14 +135,16 @@
 					}
 				}
 				if(lambdaStates.length > 0) {
-					lambdaStates = addLambdaClosure(lambdaStates);
+					lambdaStates = addLambdaClosure(graph, lambdaStates);
 				}
 				for (var k = 0; k < lambdaStates.length; k++) {
 					nextStates.push(lambdaStates[k]);
 				}
 				return nextStates;
 			};
-			
+			var setSaved = function () {
+				saved = true;
+			};
 			var save = function () {
 				document.getElementById("if").contentWindow.save();
 			};
@@ -221,19 +152,34 @@
 				if (!saved) {
 					return;
 				}
+				if (jsavArray) {
+					jsavArray.hide();
+				}
 				editing = true;
-				document.getElementById("if").contentWindow.backup();
-				$('.jsavgraph').remove(); 
-				g = initGraph({layout: "automatic"});
+				data = document.getElementById("loadFile").files[0];
+				document.getElementById("if").src = "./editor.html";
 				jsav.displayInit();
 			};
-			var setSaved = function () {
-				saved = true;
-			};
 			function onLoadHandler() {
-				document.getElementById("if").contentWindow.initialize(serialization, traversal);
+				if (!saved) {
+					var defaultData = '{"nodes":[{"left":818.15625,"top":138.03125,"i":true,"f":false},{"left":511.34375,"top":342,"i":false,"f":false},{"left":1055,"top":340.359375,"i":false,"f":false},{"left":480.8125,"top":144.4375,"i":false,"f":false},{"left":336.09375,"top":0,"i":false,"f":false},{"left":0,"top":183.3125,"i":false,"f":true}],"edges":[{"start":0,"end":1,"weight":"a"},{"start":0,"end":2,"weight":"b,a"},{"start":0,"end":3,"weight":"&lambda;"},{"start":1,"end":3,"weight":"a"},{"start":1,"end":2,"weight":"b"},{"start":2,"end":0,"weight":"a"},{"start":3,"end":4,"weight":"b"},{"start":3,"end":5,"weight":"a"},{"start":3,"end":3,"weight":"a"},{"start":4,"end":0,"weight":"a"},{"start":4,"end":5,"weight":"&lambda;"},{"start":5,"end":1,"weight":"&lambda;"}]}';
+					document.getElementById("if").contentWindow.initialize(defaultData, traversal);
+				}
+				else if (data) {
+					var reader = new FileReader();
+					reader.onload = loadComplete;
+					reader.readAsText(data);
+					function loadComplete() {
+						var readerData = reader.result;
+						document.getElementById("if").contentWindow.initialize(readerData, traversal);
+					}
+					data = null;
+				}
+				else {
+					document.getElementById("if").contentWindow.initialize(serialization, traversal);
+				}
 			};
-			function initialize() {
+			function init() {
 				editing = true;
 				document.getElementById("if").src = "./editor.html";
 			};

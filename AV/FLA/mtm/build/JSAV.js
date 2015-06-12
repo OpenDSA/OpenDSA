@@ -1,6 +1,6 @@
 /*!
  * JSAV - JavaScript Algorithm Visualization Library
- * Version v1.0.1-1-g99fdf56
+ * Version v1.0.1-6-gea2e525
  * Copyright (c) 2011-2015 by Ville Karavirta and Cliff Shaffer
  * Released under the MIT license.
  */
@@ -2578,12 +2578,6 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
       return $.extend(true, [], this._points); // deep copy of points
     };
 
-    var Text = function(jsav, raphael, x, y, r, props) {
-      this.rObj = raphael.text(x, y, r);
-      return this;
-    }
-    JSAV.utils.extend(Text, JSAVGraphical);
-
     var Circle = function(jsav, raphael, x, y, r, props) {
       this.rObj = raphael.circle(x, y, r);
       init(this, jsav, props);
@@ -2737,10 +2731,6 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
       circle: function(x, y, r, props) {
         var svgCanvas = getSvgCanvas(this, props);
         return new Circle(this, svgCanvas, x, y, r, props);
-      },
-      text : function(x, y, text, props) {
-        var svgCanvas = getSvgCanvas(this, props);
-        return new Text(this, svgCanvas, x, y, text, props);
       },
       rect: function(x, y, w, h, r, props) {
         // if border-radius not given, assume r is options and radius is 0
@@ -5685,7 +5675,7 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
   };
   // a helper function to sort an array of nodes based on the node value
   Graph._nodeSortFunction = function(a, b) {
-    return a.value() < b.value();
+    return a.value() - b.value();
   };
 
   JSAV.utils.extend(Graph, JSAV._types.ds.JSAVDataStructure);
@@ -8316,7 +8306,7 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
 */
 (function() {
   if (typeof JSAV === "undefined") { return; }
-  var theVERSION = "v1.0.1-1-g99fdf56";
+  var theVERSION = "v1.0.1-6-gea2e525";
 
   JSAV.version = function() {
     return theVERSION;
