@@ -8812,12 +8812,15 @@ if (typeof Raphael !== "undefined") { // only execute if Raphael is loaded
       }
       if (this.options.arc) {
         if ((controlPointY - midY) / Math.abs(controlPointY - midY) > 0) {
+          this._label.css("-webkit-transform", "rotate(" + rotateAngle + "rad)" + " translate(0," + (this._label.element.height() / 2.0 + strokeWidth + 1 + this.options.arcoffset/2.0) + ')');
           this._label.css("transform", "rotate(" + rotateAngle + "rad)" + " translate(0," + (this._label.element.height() / 2.0 + strokeWidth + 1 + this.options.arcoffset/2.0) + ')');
         } else {
+          this._label.css("-webkit-transform", "rotate(" + rotateAngle + "rad)" + " translate(0," + (this._label.element.height() / 2.0 + strokeWidth + 1 + this.options.arcoffset/2.0) + ')');
           this._label.css("transform", "rotate(" + rotateAngle + "rad)" + " translate(0,-" + (this._label.element.height() / 2.0 + strokeWidth + 1 + this.options.arcoffset/2.0) + ')');
         }
       }
       else {
+        this._label.css("-webkit-transform", "rotate(" + rotateAngle + "rad)" + " translate(0," + (this._label.element.height() / 2.0 + strokeWidth + 1 + this.options.arcoffset/2.0) + ')');
         this._label.css("transform", "rotate(" + rotateAngle + "rad)" + " translate(0,-" + (this._label.element.height() / 2.0 + strokeWidth + 1) + ')');
       }
     }
