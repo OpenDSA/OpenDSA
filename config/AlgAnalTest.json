@@ -83,7 +83,21 @@
       },
       "AlgAnalTest/AnalCases": {
         "long_name": "Best, Average, and Worst Cases",
-        "exercises": {}
+		"sections": {
+          "BestWorstAverage": {
+            "long_name": "Best, Worst, and Average cases visualization",
+            "showhide": "show"
+          }
+        },
+        "exercises": {
+		  "BestWorstAverageCON": {
+            "long_name": "Best, Worst, and Average cases visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+		
+		}
       },
       "AlgAnalTest/AnalCompvsAlg": {
         "long_name": "A Faster Computer, or a Faster Algorithm?",
