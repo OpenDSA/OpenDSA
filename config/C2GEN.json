@@ -3,10 +3,10 @@
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
-    "Java": ["java"],
-    "Java_Generic": ["java"],
-    "Processing": ["pde"],
-    "C++": ["cpp", "h"]
+    "Java": { "ext":["java"], "label":"Java", "lang":"java"},
+    "Java_Generic": { "ext":["java"], "label":"Java (Generic)","lang":"java"},
+    "Processing": { "ext":["pde"], "label":"Processing","lang":"java"},
+    "C++":{ "ext": ["cpp", "h"],"label":"C++","lang":"C++"}
   },
   "lang": "en",
   "module_origin": "http://algoviz.org",

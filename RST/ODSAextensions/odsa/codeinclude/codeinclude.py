@@ -99,14 +99,29 @@ class codeinclude(Directive):
         if 'lang' in self.options:
           lang = self.options['lang']
 
-        for ext in code_lang[lang]:
+        if 'lang' in code_lang[lang]:
+          code_color = code_lang[lang]['lang'] 
+        else:
+          print_err('Failed to find language name in configuration file ("lang" option)')
+          return [document.reporter.warning('Missing "lang" option in code_lang configuration',
+                        line=self.lineno)]
+
+        if 'ext' not in code_lang[lang]:
+          print_err('Failed to find language extentions in configuration file ("ext" option)')
+          return [document.reporter.warning('Missing "ext" option in code_lang configuration',
+                        line=self.lineno)]
+
+        for ext in code_lang[lang]['ext']:
           # Craft the filename given the code_dir, code_lang, rel_path (with any existing extension stripped), and a file extension
           filename = '%s%s/%s.%s' % (conf.sourcecode_path, lang, rel_path, ext)
 
           if os.path.isfile(filename):
             # Append a list element with a link which will allow switching between the tabs
             block_id = '_'.join([tab_id, lang.replace('+', 'p')])
-            tab_header += '<li><a href="#%s">%s</a></li>' % (block_id, lang.title())
+            tab_label = lang
+            if 'label' in code_lang[lang]:
+              tab_label = code_lang[lang]['label']
+            tab_header += '<li><a href="#%s">%s</a></li>' % (block_id, tab_label.title())
 
             if len(html_strs) == 0:
               html_strs.append('<div id="%s">' % block_id)
@@ -115,7 +130,7 @@ class codeinclude(Directive):
 
             html_strs.append('</div>')
 
-            new_node = self.create_node(filename, rel_filename, lang)
+            new_node = self.create_node(filename, rel_filename, code_color)
 
             # If the new_node returned is a list, an error occurred in create_node
             # Return the list containing the error info
@@ -295,7 +310,7 @@ class codeinclude(Directive):
     lang = lang.lower()
     # Pygments doesn't understand 'processing' so set the highlight language to 'java'
     # Likewise for "Java_Generic" -- this is meant to be a temporary hack
-    lang = 'java' if ((lang == 'processing') or (lang == 'java_generic')) else lang
+    #lang = 'java' if ((lang == 'processing') or (lang == 'java_generic')) else lang
     retnode['language'] = lang #self.options['language']
 
     if 'linenos' in self.options:
