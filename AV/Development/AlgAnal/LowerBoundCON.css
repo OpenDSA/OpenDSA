@@ -1,7 +1,7 @@
-#UpperBoundCON {
+#LowerBoundCON {
   height: 600px;
 }
-#UpperBoundCON .jsavline{
+#LowerBoundCON .jsavline{
   height: 150px;
 }
 .rotated {
@@ -11,7 +11,7 @@
   -o-transform: rotate(90deg);
   transform: rotate(90deg);
 }
-#UpperBoundCON .jsavhorizontalarray .jsavnode{
+#LowerBoundCON .jsavhorizontalarray .jsavnode{
   min-width: 50px !important;
   max-width: 200px !important;
   min-height: 35px !important;

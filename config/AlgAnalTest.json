@@ -127,12 +127,24 @@
       },
       "AlgAnalTest/AnalLower": {
         "long_name": "Lower Bounds and Theta Notation",
+        "sections": {
+          "LowerBound":{
+            "long_name": "Lower Bounds visualization",
+            "showhide": "show"
+          }
+        },
         "exercises": {
           "AnalPairSumm": {
             "long_name": "Function Pairs Exercise",
             "required": true,
             "points": 2.0,
             "threshold": 5
+          },
+          "LowerBoundCON": {
+            "long_name": "Lower Bounds visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
           }
         }
       },
