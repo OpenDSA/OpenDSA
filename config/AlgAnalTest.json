@@ -110,9 +110,20 @@
             "long_name": "theta disclaimer",
             "showhide": "none",
             "remove": true
-          }
+          },
+		  "UpperBound":{
+		    "long_name": "Upper Bounds visualization",
+            "showhide": "show"
+		  }
         },
-        "exercises": {}
+        "exercises": {
+		  "UpperBoundCON": {
+            "long_name": "Upper Bounds visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+		}
       },
       "AlgAnalTest/AnalLower": {
         "long_name": "Lower Bounds and Theta Notation",
