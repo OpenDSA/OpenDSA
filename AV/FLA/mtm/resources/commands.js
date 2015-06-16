@@ -26,6 +26,7 @@ var executeMoveNode = function(node, top, left){
 	var offsetLeft = left - node.element.width()/2.0;
 	var edges = g.edges();
 	$(node.element).offset({top: offsetTop, left: offsetLeft});
+	node.stateLabelPositionUpdate();
 	for (var next = edges.next(); next; next = edges.next()) {
 		if (next.start().equals(node) || next.end().equals(node)) {
 			next.layout();
@@ -50,11 +51,12 @@ var executeEditNode = function(node, initialState, finalState, nodeLabel){
 		node.removeClass('final');
 	}
 	if(nodeLabel){
-		node.element.attr('title', nodeLabel);
+		node.stateLabel(nodeLabel);
 	}
 	else{
-		node.element.attr('title', "");
+		node.stateLabel("");
 	}
+	node.stateLabelPositionUpdate();
 };
 
 var executeEditEdge = function(edge, weight){

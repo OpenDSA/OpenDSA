@@ -33,7 +33,8 @@ function NodePrompt() {
         var final_state = document.getElementById('final_state').checked;
         var node_label = document.getElementById('label').value;
         window["updateNode"](initial_state, final_state, node_label);
-        this.terminate();
+        document.getElementById('dialoguebox').style.display = "none";
+        document.getElementById('dialogueoverlay').style.display = "none";
     }
 }
 
@@ -57,7 +58,9 @@ function EdgePrompt() {
             document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="changeEdge()">OK</button> <button onclick="end()">Cancel</button>';
         }
         document.getElementById('dialogueboxbody').innerHTML = 'Accepted Character: <input id="transition">';
-        document.getElementById('transition').value = value;
+        if (value != emptystring) {
+            document.getElementById('transition').value = value;
+        }
     }
     end = function() {
         document.getElementById('dialoguebox').style.display = "none";
@@ -66,7 +69,7 @@ function EdgePrompt() {
     addEdge = function() {
         var edge_label = document.getElementById('transition').value;
         if (edge_label === "") {
-            edge_label = "\&lambda;";
+            edge_label = emptystring;
         }
         window["createEdge"](edge_label);
         this.end();
@@ -74,9 +77,10 @@ function EdgePrompt() {
     changeEdge = function() {
         var edge_label = document.getElementById('transition').value;
         if (edge_label === "") {
-            edge_label = "\&lambda;";
+            edge_label = emptystring;
         }
         window["updateEdge"](edge_label);
-        this.end();
+        document.getElementById('dialoguebox').style.display = "none";
+        document.getElementById('dialogueoverlay').style.display = "none";
     }
 }
