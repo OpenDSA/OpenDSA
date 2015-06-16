@@ -85,12 +85,13 @@
 			<button onclick="moveNodes()" id="editButton">Move Nodes</button>
 			<button onclick="editNodes()" id="editButton">Edit Nodes/Edges</button>
 			<button onclick="deleteNodes()" id="deleteButton">Delete Nodes/Edges</button>
-			<span id='mode'>
+			<span id='mode'></span>
       		<p class="jsavoutput jsavline"></p>
-      		<p align="center" class="arrayPlace"></p>
 		</div>
 		<button onclick="g.layout()">Layout</button>
-		<button onclick="emptyString()" id="lambdaButton">Epsilon</button>
+		<button onclick="testND()">Highlight Nondeterminism</button>
+		<button onclick="testLambda()" id="lambdaButton">Highlight &lambda;-Transitions</button>
+		<button onclick="emptyString()" id="epsilonButton">Epsilon Mode</button>
 		<div>&Sigma;: <span id='alphabet'></span></div>
 		<div id='download'></div>
 		
@@ -134,7 +135,7 @@
 					gg = jQuery.parseJSON(data);
 				}
 				catch(err) {
-					jsav.umsg("Error: Tried to load invalid file.");
+					jsav.umsg('Error: Tried to load invalid file.');
 					g = localStorage['backup'];
 					gg = jQuery.parseJSON(g);
 				}
@@ -179,7 +180,7 @@
 						selected.unhighlight();
 						selected = null;
 						e.stopPropagation();
-						jsav.umsg("Click a node");
+						jsav.umsg('Click a node.');
 					}
 				});
 				g.click(function(e) {	
@@ -195,7 +196,7 @@
 							first = this;
 							first.highlight();
 							$('.jsavgraph').addClass("working");
-							jsav.umsg("Select a node to make an edge to");
+							jsav.umsg('Select a node to make an edge to.');
 			   			}
 			   			else {
 			   				selected = this;
@@ -205,7 +206,7 @@
 							$('.jsavgraph').removeClass("working");
 							first.unhighlight();
 							selected.unhighlight();
-							jsav.umsg("Click a node");
+							jsav.umsg('Click a node.');
 			   			}
 	   				}
 	   				else if ($('.jsavgraph').hasClass('moveNodes')) {
@@ -214,7 +215,7 @@
 	   					}
 	   					selected = this;
 	   					selected.highlight();
-	   					jsav.umsg("Click to place node");
+	   					jsav.umsg('Click to place node.');
 	   					e.stopPropagation();
 	   				}
 	   				else if ($('.jsavgraph').hasClass('deleteNodes')) {
@@ -256,37 +257,40 @@
    				removeModeClasses();
    				$('.jsavgraph').addClass("addNodes");
    				$("#mode").html('Adding nodes');
-   				jsav.umsg("Click to add nodes");
+   				jsav.umsg('Click to add nodes.');
    			};
    			var addEdges = function() {
    				removeModeClasses();
+   				removeND();
    				$(".jsavgraph").addClass("addEdges");
    				$("#mode").html('Adding edges');
-   				jsav.umsg("Click a node");
+   				jsav.umsg('Click a node.');
    			};
    			var moveNodes = function() {
    				removeModeClasses();
    				$('.jsavgraph').addClass('moveNodes');
    				$("#mode").html('Moving nodes');
-   				jsav.umsg("Click a node");
+   				jsav.umsg('Click a node.');
    			};
    			var editNodes = function() {
 				removeModeClasses();
+				removeND();
    				$('.jsavgraph').addClass('editNodes');
    				$("#mode").html('Editing nodes and edges');
-   				jsav.umsg("Click a node or edge");
+   				jsav.umsg('Click a node or edge.');
    				expandEdges();
    			};
    			var deleteNodes = function() {
    				removeModeClasses();
+   				removeND();
    				$('.jsavgraph').addClass('deleteNodes');
    				$("#mode").html('Deleting nodes and edges');
-   				jsav.umsg("Click a node or edge to delete it");
+   				jsav.umsg('Click a node or edge to delete it.');
    				expandEdges();
    			};
    			var removeModeClasses = function() {
    				$("#mode").html('');
-   				jsav.umsg("");
+   				jsav.umsg('');
    				if (first) {
    					first.unhighlight();
    					first = null;
@@ -321,12 +325,14 @@
    			};
    			var emptyString = function() {
    				if (emptystring === lambda) {
-   					document.getElementById("lambdaButton").innerHTML = "Lambda";
+   					document.getElementById("lambdaButton").innerHTML = "Highlight &epsilon;-Transitions";
+   					document.getElementById("epsilonButton").innerHTML = "Lambda Mode";
    					updateTransitions(epsilon);
    					emptystring = epsilon;
    				}
    				else {
-   					document.getElementById("lambdaButton").innerHTML = "Epsilon";
+   					document.getElementById("lambdaButton").innerHTML = "Highlight &lambda;-Transitions";
+   					document.getElementById("epsilonButton").innerHTML = "Epsilon Mode";
    					updateTransitions(lambda);
    					emptystring = lambda;
    				}
@@ -339,7 +345,37 @@
 					}
 				}
    			};
-			var save = function () {
+   			var testND = function() {
+   				removeModeClasses();
+   				var nodes = g.nodes();
+   				for(var next = nodes.next(); next; next = nodes.next()) {
+   					var edges = next.getOutgoing();
+   					var weights = _.map(edges, function(e) {return e.weight()});
+   					if (_.contains(weights, emptystring) || _.uniq(weights).length < weights.length) {
+   						next.toggleClass("testingND");
+   					}
+   				}
+   			};
+   			var testLambda = function() {
+   				removeModeClasses();
+   				var edges = g.edges();
+   				for (var next = edges.next(); next; next = edges.next()) {
+   					if (next.weight().indexOf(emptystring) !== -1) {
+   						next.g.element.toggleClass('testingLambda');
+   					}
+   				}
+   			};
+   			var removeND = function() {
+   				var nodes = g.nodes();
+   				for(var next = nodes.next(); next; next = nodes.next()) {
+   					next.removeClass("testingND");
+   				}
+   				var edges = g.edges();
+   				for (var next = edges.next(); next; next = edges.next()) {
+   					next.g.element.removeClass('testingLambda');
+   				}
+   			};
+			var save = function() {
 				var downloadData = "text/json;charset=utf-8," + encodeURIComponent(serialize(g));
 				$('#download').html('<a href="data:' + downloadData + '" target="_blank" download="data.json">download JSON</a>');
 				jsav.umsg("Saved");
@@ -350,6 +386,10 @@
 			var getSerial = function() {
 				var serial = serialize(g);
 				return serial;
+			};
+			var readyTraversal = function() {
+				removeModeClasses();
+				jsav.umsg('Click on an input to trace its traversal.');
 			};
 			function saveFAState () {
 				data = serialize(g);

@@ -23,6 +23,7 @@ function NodePrompt() {
         if (lab) {
             document.getElementById('label').value = lab;
         }
+        document.getElementById('label').focus();
     }
     terminate = function() {
         document.getElementById('dialoguebox').style.display = "none";
@@ -61,6 +62,7 @@ function EdgePrompt() {
         if (value != emptystring) {
             document.getElementById('transition').value = value;
         }
+        document.getElementById('transition').focus();
     }
     end = function() {
         document.getElementById('dialoguebox').style.display = "none";

@@ -63,7 +63,6 @@
       		<p class="jsavoutput jsavline"></p>
       		<p align="center" class="arrayPlace"></p>
 		</div>
-		<button onclick="g.layout()">Layout</button>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
@@ -88,8 +87,6 @@
 				var gg = jQuery.parseJSON(g);
 				var graph = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
 				for (var i = 0; i < gg.nodes.length; i++) {
-					//the 'left' and 'top' options arent working for some reason
-			    	//var node = graph.addNode("q" + i, {'left': parseInt(gg.nodes[i].left), 'top': parseInt(gg.nodes[i].top)});
 			    	var node = graph.addNode('q' + i),
 			    		offset = $('.jsavgraph').offset(),
 			    		offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
@@ -113,8 +110,6 @@
 			    g = graph;
 		    };
    			var run = function(inputString) {
-				jsav.umsg("");
-				$("#mode").html('');
 				var textArray = [];
 				g.initial.addClass('current');
 				var currentStates = [g.initial];
@@ -197,6 +192,9 @@
 					nextStates.push(lambdaStates[k]);
 				}
 				return nextStates;
+			};
+			var readyTraversal = function() {
+				return;
 			};
 			var backup = function() {
 				return false;
