@@ -30,7 +30,7 @@ $(document).ready(function () {
   
   //Slide 3
   av.umsg(interpret("Slide 3"), {preserve:true});
-  av.label("|-------------------------- $n$ --------------------------|", {left : leftAlign + 25, top : topAlign + 60});
+  var nlabel = av.label("|-------------------------- $n$ --------------------------|", {left : leftAlign + 25, top : topAlign + 60});
   var count = 0;
   while(count < arraySize){
     var value = Math.round(Math.random() * 10) + 1;
@@ -66,11 +66,12 @@ $(document).ready(function () {
   
   //Slide 8
   av.umsg(interpret("Slide 8"));
-  arr.highlight(0);
+  arr.css([0], {"background-color":"green"});
   av.step();
   
   //Slide 9
   av.umsg(interpret("Slide 9"));
+  arr.css([0], {"background-color":"white"});
   pointer.target(arr.index(arraySize - 1));
   arr.unhighlight(0);
   rect1.hide();
@@ -91,11 +92,16 @@ $(document).ready(function () {
   
   //Slide 12
   av.umsg(interpret("Slide 12"));
-  arr.highlight();
+  var indices = [];
+  for(var i = 0; i < arr_values.length; i++){
+    indices[i] = i;
+  }
+  arr.css(indices, {"background-color":"red"});
   av.step();
   
   //Slide 13
   av.umsg(interpret("Slide 13"));
+  arr.css(indices, {"background-color":"white"});
   pointer.target(arr.index(parseInt(arraySize/2)));
   arr.unhighlight();
   rect1.hide();
@@ -120,6 +126,36 @@ $(document).ready(function () {
     arr.highlight(i);
   }
   av.step();
+
+  //Slide 17
+  av.umsg("Putting things all together...");
+  rect.hide();
+  arr.hide();
+  nlabel.hide();
+  pointer.hide();
+  label.hide();
+  algLabel.hide();
+  rect1.hide();
+  labelOutput.hide();
+  $("#BestWorstAverageCON .jsavline").css({"height":"30px"});
+  topAlign = 20;
+ 
+  var arr1 = av.ds.array(arr_values, {"left": leftAlign, "top": topAlign + 20, "indexed": true});
+  var pointer1 = av.pointer("$k$", arr1.index(0));
+  arr1.css([0], {"background-color":"green"});
+  var label1 = av.label("<b><u>Best Case.</u></b> Only single comparison is performed",  {"top": topAlign + 25, "left": leftAlign + 395});
+ 
+  var arr2 = av.ds.array(arr_values, {"left": leftAlign, "top": topAlign + 170, "indexed": true});
+  var pointer2 = av.pointer("$k$", arr2.index(arraySize - 1));
+  arr2.css(indices, {"background-color":"red"});
+  var label2 = av.label("<b><u>Worst Case</u></b>. $n$ comparisons are performed",  {"top": topAlign + 175, "left": leftAlign + 395});
+
+  var arr3 = av.ds.array(arr_values, {"left": leftAlign, "top": topAlign + 320, "indexed": true});
+  var pointer3 = av.pointer("$k$", arr3.index(parseInt(arraySize/2)));
+  for(var i = 0; i <= parseInt(arraySize/2); i++){
+    arr3.highlight(i);
+  }
+  var label3 = av.label("<b><u>Average Case</u></b>. $\\lceil\\frac{n}{2}\\rceil$ comparisons are performed",  {"top": topAlign + 325, "left": leftAlign + 395});
   
   av.recorded();
 });
