@@ -1,4 +1,6 @@
 /* *** ODSATag: ListADT *** */
+// List class ADT. Generalize by using "Object" for the element type.
+// An alternative would be to use Java Generics.
 public interface List { // List class ADT
   // Remove all contents from the list, so it is once again empty
   public void clear();

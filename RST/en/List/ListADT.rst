@@ -96,10 +96,13 @@ But they are  considerably different in approaches and in their
 space/time tradeoffs.
 
 The code below presents our list ADT.
-The data values stored are assumed to be of type ``Object``.
-Languages that support templates (C++) or generics (Java) could put
-more control on the element types, but we will keep this ADT
-simple by just using the ``Object`` type.
+Any implementation for a :term:`container class` such as a list should
+be able to support different data types for the elements.
+One way to do this in Java is to store data values of type
+``Object``.
+Languages that support generics (Java) or templates (C++) give more
+control over the element types.
+
 The comments given with each member function describe what it is
 intended to do.
 However, an explanation of the basic design should help make this
@@ -117,6 +120,8 @@ The intention is that any implementation for this ADT support the
 concept of a current position.
 The current position is where any action such as insertion or deletion
 will take place.
+An alternative design is to factor out position as a separate position
+object, sometimes referred to as an :term:`iterator`.
 
 .. codeinclude:: Lists/List
    :tag: ListADT

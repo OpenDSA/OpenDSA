@@ -15,5 +15,5 @@ Today we are going to introduce more about content development:
 
 * Easy contributions
 * Editing RST
-* Making MCQs, etc (KA)
 * Translation support
+* Making MCQs, etc (KA)

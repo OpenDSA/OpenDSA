@@ -261,6 +261,10 @@
         "long_name": "Introduction",
         "exercises": {}
       },
+      "C2GEN/Class3_Present": {
+        "long_name": "Presentation",
+        "exercises": {}
+      },
       "C2GEN/Class3_Discuss": {
         "long_name": "Today's Discussion",
         "exercises": {}
@@ -273,6 +277,10 @@
     "Class 4: June 15": {
       "C2GEN/Class4_Intro": {
         "long_name": "Introduction",
+        "exercises": {}
+      },
+      "C2GEN/Class4_Present": {
+        "long_name": "Presentation",
         "exercises": {}
       },
       "C2GEN/Class4_Discuss": {
