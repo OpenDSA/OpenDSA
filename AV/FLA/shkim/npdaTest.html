@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Label test</title>
+		<title>NPDA test</title>
     	<link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 		<style>
 			#av {
 				width: 98%;
       			position: relative;
 			}
-			.start{	
+			.start {	
 				font-style: italic;
 				font-weight: bold;
 			}
-			.final{
+			.final {
 				border: 3px double;
 			}
-			.current{
+			.current {
 				background-color: yellow;
+			}
+			.accepted {
+				background-color: green;
 			}
 			p.jsavoutput.jsavline {
 				height: 10px;
@@ -74,12 +77,12 @@
 	<body>
 		
 		<div id="av">
-			<h1>Label test</h1>
+			<h1>NPDA test</h1>
 			</span><a class="jsavsettings" href="#">Settings</a>
 			<div class="jsavcontrols">	
 			</div>
       		<p class="jsavoutput jsavline"></p>
-			<div align="center" style="font-size: 30px">&Sigma;: <span id='alphabet'></span></div>
+			<div align="center" style="font-size: 30px">&Sigma;: <span id='alphabet'></span><br>&Gamma;: <span id='stackalphabet'></span></div>
       		<p align="center" class="arrayPlace"></p>
 
 		</div>
@@ -113,7 +116,6 @@
 		(function ($) {
 			var jsav = new JSAV("av"),
 				saved = false,
-				//startState,
 				selectedNode = null,
 				arr,
 				g;
@@ -128,30 +130,30 @@
 				g = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
 				var gWidth = g.element.width(),
 					gHeight = g.element.height();
-	      		var a = g.addNode({left: 0.10 * gWidth, top: 0.5 * gHeight}),		
-	          		b = g.addNode({left: 0.35 * gWidth, top: 0.5 * gHeight}),
-	          		c = g.addNode({left: 0.60 * gWidth, top: 0.5 * gHeight}),
-	          		d = g.addNode({left: 0.85 * gWidth, top: 0.5 * gHeight});
+	      		var a = g.addNode({left: 0.10 * gWidth, top: 0.3 * gHeight}),		
+	          		b = g.addNode({left: 0.35 * gWidth, top: 0.3 * gHeight}),
+	          		c = g.addNode({left: 0.60 * gWidth, top: 0.3 * gHeight}),
+	          		d = g.addNode({left: 0.25 * gWidth, top: 0.7 * gHeight}),
+	          		e = g.addNode({left: 0.50 * gWidth, top: 0.7 * gHeight}),
+	          		f = g.addNode({left: 0.85 * gWidth, top: 0.3 * gHeight});
 	          	g.makeInitial(a);
-	          	d.addClass('final');
+	          	f.addClass('final');
 
 			    g.addEdge(a, b, {weight: 'a:' + emptystring + ":a"});
-			    g.addEdge(a, b, {weight: 'a:' + "a" + ":a"});
-			    g.addEdge(a, b, {weight: 'a:' + "b" + ":a"});
-			    g.addEdge(a, b, {weight: 'a:' + "c" + ":a"});
-			    g.addEdge(a, b, {weight: 'a:' + "d" + ":a"});
 			    //g.addEdge(a, d); 		it's a FA, need to always provide a weight
 
 			    g.addEdge(b, b, {weight: 'a:a:aa'});
 			    g.addEdge(b, c, {weight: 'b:a:' + emptystring});
-
-			    g.addEdge(c, b, {weight: 'a:a:a'});
-			    g.addEdge(c, b, {weight: 'a:b:a'});
-			    g.addEdge(c, b, {weight: 'a:c:a'});
+			    g.addEdge(b, d, {weight: 'b:a:a'});
 
 			    g.addEdge(c, c, {weight: 'b:a:' + emptystring});
-			    g.addEdge(c, d, {weight: 'b:' + emptystring + ':' + emptystring});
-			    g.addEdge(d, d, {weight: 'b:' + emptystring + ':' + emptystring});	
+			    g.addEdge(c, d, {weight: 'b:a:a'});
+			    g.addEdge(c, f, {weight: emptystring + ':' + emptystring + ':' + emptystring});
+
+			    g.addEdge(d, c, {weight: 'b:a:' + emptystring});
+			    g.addEdge(d, e, {weight: 'b:a:a'});
+
+			    g.addEdge(e, c, {weight: 'b:a:' + emptystring});
 			
 		    	$(".jsavgraph").click(graphClickHandler);
 		    	g.click(nodeClickHandler);
@@ -353,6 +355,8 @@
    			var updateAlphabet = function() {
 	   			g.updateAlphabet();
 				$("#alphabet").html("" + Object.keys(g.alphabet).sort());
+				var sa = g.getStackAlphabet();
+				$('#stackalphabet').html("Z," + sa.sort());
 			};
 			updateAlphabet();
    			//===============================
@@ -486,9 +490,17 @@
 
 
 			//====================
-			//temp:
+			//traversal
 
 			var play = function() {
+				if (!g.initial) {
+					alert('Please define an initial state');
+					return;
+				}
+				var inputString = prompt("Input string?", "abb");
+				if (inputString == null) {
+					return;
+				}
 				jsav.umsg("");
 				var textArray = [];
 				$("button").hide();			//disable buttons
@@ -497,14 +509,16 @@
         			arr.clear();
       			}
       			$('.jsavcontrols').show();
-				var inputString = prompt("Input string?", "abb");
-				if (inputString == null) {
-					return;
-				}
-
-				var currentState = g.initial,
-					cur;
-				currentState.addClass('current');
+				g.initial.addClass('current');
+				var currentStates = [new configuration(g.initial, ['Z'])];
+				currentStates = addLambdaClosure(currentStates);
+				var configView = "";
+			   	for (var j = 0; j < currentStates.length; j++) {
+			   		configView += currentStates[j].toString() + ' | ';
+			   	}
+			    jsav.umsg(configView);
+				var cur;
+				
 				for (var i = 0; i < inputString.length; i++) {
     				textArray.push(inputString[i]);
   				}
@@ -513,28 +527,128 @@
   				jsav.displayInit();
 
 				for (var i = 0; i < inputString.length; i++) {
-				   	cur = g.takePushdownTransition(currentState, inputString[i]);
-				   	if (cur == null) {
+					for (var j = 0; j < currentStates.length; j++) {
+				   		currentStates[j].state.removeClass('current');
+				   	}
+				   	cur = traverse(currentStates, inputString[i]);
+				   	if (cur.length === 0) {
 				   		arr.css(i, {"background-color": "red"});
 				   		jsav.step();
 				   		break;
 				   	}
-				   	currentState.removeClass('current');
-					currentState = cur;
-					currentState.addClass('current');
+				   	configView = "";
+				   	for (var j = 0; j < cur.length; j++) {
+				   		configView += cur[j].toString() + ' | ';
+				   	}
+				    jsav.umsg(configView);
+					currentStates = cur;
 					arr.css(i, {"background-color": "yellow"});
 					jsav.step();
 				}
-				if (currentState.hasClass('final') && cur != null) {
-      				arr.css(inputString.length - 1, {"background-color": "green"});
-      				jsav.umsg("Accepted");
-				} else {
-					//arr.css(inputString.length - 1, {"background-color": "red"});
+
+				var rejected = true;
+				for (var k = 0; k < currentStates.length; k++) {
+					if (currentStates[k].state.hasClass('final') && cur.length > 0) {
+						currentStates[k].state.addClass('accepted');
+      					arr.css(inputString.length - 1, {"background-color": "green"});
+      					jsav.umsg("Accepted");
+						rejected = false;
+					}
+				}
+				if (rejected) {
+					arr.css(inputString.length - 1, {"background-color": "red"});
 					jsav.umsg("Rejected");
 				}
-				jsav.step();
-				jsav.recorded();	
+				jsav.recorded();
 			};
+
+			var traverse = function(currentStates, letter) {
+				// currentStates is an array of configurations
+				var nextStates = [];
+				for (var i = 0; i < currentStates.length; i++) {
+					var successors = currentStates[i].state.neighbors(),
+						curStack = currentStates[i].stack;
+					for (var next = successors.next(); next; next = successors.next()) {
+						var w = g.getEdge(currentStates[i].state, next).weight().split('<br>');
+						for (var j = 0; j < w.length; j++) {
+							var t = w[j].split(':');
+					        if (t[0] !== letter) {continue;}
+					        if (t[1] !== emptystring) {
+					          var l = [],
+					              cur;
+					          for (var k = 0; k < t[1].length; k++) {
+					            cur = curStack.pop();
+					            if (cur) {
+					              l.push(cur);
+					            } else {
+					              break;
+					            }
+					          }
+					          if (t[1] === l.join('')) {
+					          	var nextConfig = new configuration(next, curStack);
+					          	if (t[2] !== emptystring){
+					              for (var h = t[2].length - 1; h >= 0; h--) {
+					                nextConfig.stack.push(t[2].charAt(h));
+					              }
+					            }
+					            next.addClass('current');
+								nextStates.push(nextConfig);
+					          } 
+					          l.reverse();
+					          curStack = curStack.concat(l);
+					        } else {
+					          	var nextConfig = new configuration(next, curStack);
+					          	if (t[2] !== emptystring){
+					              for (var h = t[2].length - 1; h >= 0; h--) {
+					                nextConfig.stack.push(t[2].charAt(h));
+					              }
+					            }
+					            next.addClass('current');
+								nextStates.push(nextConfig);
+					           	break;
+					        }
+						}
+					}
+				}
+				nextStates = _.uniq(nextStates, function(x) {return x.toString();});
+				nextStates = addLambdaClosure(nextStates);
+				return nextStates;
+			};
+
+			var addLambdaClosure = function(nextStates) {
+				lambdaStates = [];
+				for (var i = 0; i < nextStates.length; i++) {
+					var successors = nextStates[i].state.neighbors();
+					for (var next = successors.next(); next; next = successors.next()) {
+						var weight = g.getEdge(nextStates[i].state, next).weight().split('<br>');
+						for (var j = 0; j < weight.length; j++) {
+							if (!next.hasClass('current') && _.every(weight[j].split(':'), function(x) {return x === emptystring})) {
+		   						next.addClass('current');
+		   						var nextConfig = new configuration(next, nextStates[i].stack)
+								lambdaStates.push(nextConfig);
+		   					}
+						}
+					}
+				}
+				if(lambdaStates.length > 0) {
+					lambdaStates = addLambdaClosure(lambdaStates);
+				}
+				for (var k = 0; k < lambdaStates.length; k++) {
+					nextStates.push(lambdaStates[k]);
+				}
+				nextStates = _.uniq(nextStates, function(x) {return x.toString();});
+				return nextStates;
+			};
+
+			// configuration object
+			var configuration = function(state, stack) {
+				this.state = state;
+				this.stack = stack.slice(0);
+				this.toString = function() {
+					return this.state.value() + ' ' + this.stack.join();
+				}
+			};
+			
 
 			//======================
 			$('#playbutton').click(play);

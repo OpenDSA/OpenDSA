@@ -9,6 +9,8 @@
    :requires: growth rate; best and worst case
    :topic: Algorithm Analysis
 
+.. odsalink:: AV/Development/AlgAnal/LowerBoundCON.css
+
 Lower Bounds and :math:`\Theta` Notation
 ========================================
 
@@ -173,6 +175,13 @@ If the limit goes to some constant other than zero, then
 
    A visualization that illustrates the meaning of lower bounds, and tight bounds and the difference between them and best, and average cases respectiely. This visualization here should be similar to the one for upper bounds. We may also think of presenting this as function plots in which the running time of the algorithm is plotted against its upper and lower bounds.
 
+
+.. showhidecontent:: LowerBound
+
+   .. inlineav:: LowerBoundCON ss
+      :output: show
+
+
 .. avembed:: Exercises/AlgAnal/AnalPairSumm.html ka
 
 Notes
@@ -238,5 +247,8 @@ Notes
        is not a law of nature.
        It is merely a powerful modeling tool used to describe the
        behavior of algorithms.
+
+
+.. odsascript:: AV/Development/AlgAnal/LowerBoundCON.js
 
 

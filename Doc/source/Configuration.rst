@@ -133,9 +133,9 @@ All are required unless otherwise specified.
 
 * **lang** (optional) - specifies the native language of the book using the official ISO 639-1 or 639-2 standard abbreviation, defaults to ``en`` if omitted
 
-* **code_lang** - a dictionary where each key is the name of a programming language (supported by Pygments and matching a directory name in ``code_dir``) and each value is a list of file extensions.  The order in which the languages and extensions are provided determines their precedence.
+* **code_lang** - a dictionary where each key is the name of a programming language (supported by Pygments and matching a directory name in ``code_dir``) and each value is a dictionary of language options. Language options are: ``ext`` for a list of file extensions. ``label`` for the text that will be displayed at the header of the code snippet tab and ``lang`` for the name of the programming language (supported by Pygments). The order in which the languages and extensions are provided determines their precedence.
 
-  * Ex: ``"code_lang": {"C++": ["cpp", "h"], "Java": ["java"], "Processing": ["pde"]}``
+  * Ex: ``"code_lang": {"C++": "ext": ["cpp", "h"],"label":"C++","lang":"C++", "Java": "ext":["java"], "label":"Java", "lang":"java", "Processing": "ext":["pde"], "label":"Processing","lang":"java"}``
   * In this example, the system would search for ``.cpp`` files, followed by ``.h`` files, ``.java`` files, and finally ``.pde`` files
 
 * **tabbed_codeinc** (optional) - a boolean that controls whether or not code is displayed in a tabbed interface.  If true, it will display the specified code in each of the languages specified in ``code_lang`` (if the code exists) in a tabbed container.  If false, it will display the code in a single language (the first language for which the code exists with the order of precedence determined by the order specified in ``code_lang``).  Defaults to true if omitted
