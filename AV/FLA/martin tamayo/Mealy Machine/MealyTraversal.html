@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Mealy Traversal</title>
+    	<link rel="stylesheet" href="../../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+		<style>
+			#av {
+				width: 98%;
+      			position: relative;
+			}
+			.start{	
+				background-color: whitesmoke;
+				font-style: italic;
+				font-weight: bold;
+			}
+			.current{
+				background-color: yellow;
+			}
+			.accepted{
+				background-color: green;
+			}
+			.final{
+				border: 3px double;
+			}
+			p.jsavoutput.jsavline {
+				height: 10px;
+			}
+			.jsavlabel {
+      			font-size: 2em;
+      			text-align: center;
+    		}
+    		.jsavstatelabel {
+    			font-size: 1em;
+    			z-index: 700;
+    			position: absolute;
+    			display: inline-block;
+    			margin: 0;
+    		}
+    		.jsavcanvas {
+    			height: 500px;
+    		}
+    		.jsavgraph {
+    			outline: 1px black solid;
+    			border: 10px transparent solid;
+    		}
+    		.jsavnode {
+    			cursor: pointer;
+    		}
+    		.jsavedge { 
+    			cursor: pointer;
+    			stroke: black;
+    			stroke-width: 1;
+    		}
+		</style>
+	</head>
+	<body onload="run()">
+		<div id="av" style="border:none">
+			<span class="jsavcounter"></span>
+			<div class="jsavcontrols">
+				<a class="jsavsettings" href="#">Settings</a>
+			</div>
+      		<p class="jsavoutput jsavline"></p>
+      		<p align="center" class="arrayPlace"></p>
+		</div>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+		<script src="../../../../JSAV/lib/raphael.js"></script>
+   		<script src="../../../../JSAV/lib/dagre.min.js"></script>
+		<script src="../../../../JSAV/lib/jquery.transit.js"></script>
+		<script src="../../../../JSAV/build/JSAV.js"></script>
+		<script src="../resources/serializableGraph.js"></script>
+		<script src="../resources/underscore-min.js"></script>
+		<script src="../resources/FA.js"></script>
+		<script>
+			var jsav = new JSAV("av"),
+				arr,
+				g;
+
+			var initialize = function(graph, traversal) {
+				g = graph;
+				initGraph({layout: "automatic"});
+				run(traversal);
+			};
+			var initGraph = function(opts) {
+				var gg = jQuery.parseJSON(g);
+				var graph = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
+				for (var i = 0; i < gg.nodes.length; i++) {
+			    	var node = graph.addNode('q' + i),
+			    		offset = $('.jsavgraph').offset(),
+			    		offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
+			    	$(node.element).offset({top : parseInt(gg.nodes[i].top) + offset.top + offset2, left: parseInt(gg.nodes[i].left) + offset.left + offset2});
+			    	if (gg.nodes[i].i) {
+			    		graph.makeInitial(node);
+			    	}
+			  	}
+			  	for (var i = 0; i < gg.edges.length; i++) {
+			    	if (gg.edges[i].weight !== undefined) {
+			    		var edge = graph.addEdge(graph.nodes()[gg.edges[i].start], graph.nodes()[gg.edges[i].end], {weight: (gg.edges[i].weight)});
+		        	}
+			    	else {
+			    		var edge = graph.addEdge(graph.nodes()[gg.edges[i].start], graph.nodes()[gg.edges[i].end]);
+			    	}
+			    	edge.layout();
+			    }
+			    g = graph;
+		    };
+   			var run = function(inputString) {
+				var textArray = [];
+				g.initial.addClass('current');
+				var accepted = true;
+				var outputString = "";
+				var currentState = g.initial;
+				var cur;
+				
+				for (var i = 0; i < inputString.length; i++) {
+    				textArray.push(inputString[i]);
+  				}
+  				arr = jsav.ds.array(textArray, {element: $('.arrayPlace')});
+
+  				jsav.displayInit();
+
+				for (var i = 0; i < inputString.length; i++) {
+					currentState.removeClass('current');
+				   	cur = traverse(currentState, inputString[i]);
+				   	if (cur[0] == null) {
+				   		accepted = false;
+				   		arr.css(i, {"background-color": "red"});
+				   		jsav.step();
+				   		break;
+				   	}
+					currentState = cur[0];
+					outputString += cur[1];
+					currentState.addClass('current');
+					arr.css(i, {"background-color": "yellow"});
+					jsav.umsg(outputString);
+					jsav.step();
+				}
+
+				if (accepted) {
+					currentState.addClass('accepted');
+      				arr.css(inputString.length - 1, {"background-color": "green"});
+				}
+				else {
+					arr.css(inputString.length - 1, {"background-color": "red"});
+					jsav.umsg("Rejected");
+				}
+				jsav.step();
+				jsav.recorded();
+			};
+			var traverse = function(currentState, letter) {
+				var nextState = null;
+				var outputChar = "";
+				var successors = currentState.neighbors();
+				for (var next = successors.next(); next; next = successors.next()) {
+					var weights = g.getEdge(currentState, next).weight().split('<br>');
+					for (var j = 0; j < weights.length; j++) {
+						var weight = weights[j].split(":");
+						var inputChar = weight[0];
+						if (letter == inputChar) {
+							nextState = next;
+							if (weight[1] != "&lambda;" && weight[1] != "&epsilon;") {
+								outputChar = weight[1];
+							}
+						}
+					}
+				}
+				return [nextState, outputChar];
+			};
+			var testND = function() {
+				return false;
+			};
+			var readyTraversal = function() {
+				return;
+			};
+			var backup = function() {
+				return false;
+			};
+			var save = function() {
+				return false;
+			};
+			var getGraph = function() {
+				return g;
+			};
+			var getSerial = function() {
+				var serial = serialize(g);
+				return serial;
+			}
+   		</script>
+   	</body>
+</html>
