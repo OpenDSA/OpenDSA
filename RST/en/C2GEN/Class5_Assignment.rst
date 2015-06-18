@@ -11,4 +11,9 @@
 Class 5: Do On Your Own
 =======================
 
-*  Create a simple JSAV diagram or slideshow
+*  For those who want to continue working with OpenDSA, work out
+   an action plan 
+
+   * This might involve partners from the class
+   * You might work with current OpenDSA project members
+   * Send me some sort of proposal for what you would like to do

@@ -9,8 +9,7 @@
    :satisfies: list ADT
    :topic: Lists
 
-.. odsalink:: AV/List/listADTposCON.css
-.. odsalink:: AV/List/listADTnoteCON.css
+.. odsalink:: AV/List/listADTCON.css
 
 The List ADT
 ============

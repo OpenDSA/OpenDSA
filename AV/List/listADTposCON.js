@@ -20,6 +20,8 @@ $(document).ready(function () {
   // Slide 1
   jsav.umsg(interpret("av_c1"));
   jsav.displayInit();
+
+  // Slide 2
   arr.show();
   for (i = 0; i < 5; i++) {
     arrowArray[i] = jsav.g.line(leftMargin3 + 77 + 60 * i, 0,
@@ -29,10 +31,11 @@ $(document).ready(function () {
   }
   jsav.umsg(interpret("av_c2"));
   jsav.step();
+
+  // Slide 3
   for (i = 0; i < 5; i++) {
     arrowArray[i].show();
   }
   jsav.umsg(interpret("av_c3"));
-  jsav.step();
   jsav.recorded();
 });

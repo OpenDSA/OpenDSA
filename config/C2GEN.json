@@ -297,26 +297,16 @@
         "long_name": "Introduction",
         "exercises": {}
       },
+      "C2GEN/Class5_Present": {
+        "long_name": "Presentation",
+        "exercises": {}
+      },
       "C2GEN/Class5_Discuss": {
         "long_name": "Today's Discussion",
         "exercises": {}
       },
       "C2GEN/Class5_Assignment": {
         "long_name": "Class 5: Assignment",
-        "exercises": {}
-      }
-    },
-    "Class 6: June 19": {
-      "C2GEN/Class6_Intro": {
-        "long_name": "Introduction",
-        "exercises": {}
-      },
-      "C2GEN/Class6_Discuss": {
-        "long_name": "Today's Discussion",
-        "exercises": {}
-      },
-      "C2GEN/Class6_Assignment": {
-        "long_name": "Class 6: Assignment",
         "exercises": {}
       }
     },

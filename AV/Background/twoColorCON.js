@@ -3,12 +3,13 @@
 $(document).ready(function () {
   var av = new JSAV("twoColorCON", {animationMode: "none"});
 
-  av.g.polyline([[60, 30], [110, 80], [30, 80]], {fill: "gray"});
-  av.g.polyline([[110, 80], [240, 80], [175, 145]], {fill: "gray"});
-  av.g.polyline([[240, 80], [330, 80], [290, 30]], {fill: "gray"});
-  av.g.polyline([[175, 145], [230, 200], [120, 200]], {fill: "gray"});
+  var left = 250;
+  av.g.polyline([[left +  60,  20], [left + 110,  70], [left +  30,  70]], {fill: "gray"});
+  av.g.polyline([[left + 110,  70], [left + 240,  70], [left + 175, 135]], {fill: "gray"});
+  av.g.polyline([[left + 240,  70], [left + 330,  70], [left + 290,  20]], {fill: "gray"});
+  av.g.polyline([[left + 175, 135], [left + 230, 190], [left + 120, 190]], {fill: "gray"});
 
-  av.g.line(50, 20, 250, 220, {"stroke-width": 2});
-  av.g.line(0, 80, 350, 80, {"stroke-width": 2});
-  av.g.line(300, 20, 100, 220, {"stroke-width": 2});
+  av.g.line(left +  50, 10, left + 250, 210, {"stroke-width": 2});
+  av.g.line(left +   0, 70, left + 350,  70, {"stroke-width": 2});
+  av.g.line(left + 300, 10, left + 100, 210, {"stroke-width": 2});
 });

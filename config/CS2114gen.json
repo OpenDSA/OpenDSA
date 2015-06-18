@@ -4,9 +4,9 @@
   "code_dir": "SourceCode/",
   "lang": "en",
   "code_lang": {
-    "Java_Generic": ["java"],
-    "Java": ["java"],
-    "Processing": ["pde"]
+    "Java_Generic": { "ext":["java"], "label":"Java (Generic)","lang":"java"},
+    "Java": { "ext":["java"], "label":"Java", "lang":"java"},
+    "Processing": { "ext":["pde"], "label":"Processing","lang":"java"}
   },
   "module_origin": "http://algoviz.org",
   "exercise_server": "https://opendsa.cc.vt.edu/",
