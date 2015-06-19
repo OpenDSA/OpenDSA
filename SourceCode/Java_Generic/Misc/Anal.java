@@ -1,12 +1,20 @@
-boolean SUCCESS = true;
+import java.io.*;
 
-int value(int i) {
-  return i;
+// Tester for analysis code
+public class Anal {
+
+static boolean SUCCESS = true;
+static final int C = 10;
+
+static void sort(int[] A) {
 }
 
-void dum() {
+static int value(int i) {
+  return i % C;
+}
+
+static void dum() {
   int a, b = 10, sum, sum1, sum2;
-  int C = 10;
   int P = 20;
   int count[] = new int[C];
   int i, j, k;
@@ -73,11 +81,11 @@ for (k=1; k<=n; k*=2)    // Do log n times
 }
 
 // return TRUE iff the value n is odd
-boolean ODD(int n) {
+static boolean ODD(int n) {
   return (n % 2) == 1;
 }
 
-void collatz(int n) {
+static void collatz(int n) {
 /* *** ODSATag: Collatz *** */
 while (n > 1)
   if (ODD(n))
@@ -87,25 +95,23 @@ while (n > 1)
 /* *** ODSAendTag: Collatz *** */
 }
 
-void setup() {
+public static void main(String args[]) throws IOException {
   int myarray[] = {5, 20, 3, 11};
 
-  int temp = binarySearch(myarray, 20);
-  if (temp != 1) SUCCESS = false;
-  temp = sequential(myarray, 3);
-  if (temp != 2) SUCCESS = false;
+  dum();
 
   if (SUCCESS) {
-    PrintWriter output = createWriter("success");
+    PrintWriter output = new PrintWriter("success");
     output.println("Success");
     output.flush();
     output.close();
+    System.out.println("Success!");
   } else {
-    println("Testing failed");
+    System.out.println("Analysis code testing failed");
   }
 
   collatz(5);
   collatz(15);
+}
 
-  exit();
 }

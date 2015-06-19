@@ -1,0 +1,32 @@
+{
+  "translations" :{
+    "en": {
+    }
+  },
+  "code" : {
+    "processing": {
+      "url": "../../../SourceCode/Processing/Lists/DList.pde",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: DListInsert *** */",
+      "endBefore": "/* *** ODSAendTag: DListInsert *** */",
+      "tags": {
+      }
+    },
+    "java": {
+      "url": "../../../SourceCode/Java/Lists/DList.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: DListInsert *** */",
+      "endBefore": "/* *** ODSAendTag: DListInsert *** */",
+      "tags": {
+      }
+    },
+    "java_generic": {
+      "url": "../../../SourceCode/Java_Generic/Lists/DList.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: DListInsert *** */",
+      "endBefore": "/* *** ODSAendTag: DListInsert *** */",
+      "tags": {
+      }
+    }
+  }
+}

@@ -187,7 +187,7 @@ function on the concept of a key, and on
    :tag: Exercise
 
    This exercise ought to get expanded to a much richer set of
-   variantions on the question.
+   variations on the question.
 
 Implementing Lists
 ------------------

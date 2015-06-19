@@ -14,7 +14,7 @@ $(document).ready(function () {
   var arr = av.ds.array(arrValues, { indexed: true, layout: "array",
                                      top: 12, left: 10 });
 
-  var arrow1 = av.g.line(180, 3, 180, 28,
+  var arrow1 = av.g.line(176, 3, 176, 28,
                          {"arrow-end": "classic-wide-long",
                           "opacity": 100, "stroke-width": 2});
   arrow1.hide();
@@ -37,13 +37,11 @@ $(document).ready(function () {
   av.displayInit();
 
   // Slide 2
-  arrow1.show();
   label.show();
   pseudo.setCurrentLine("sig");
   av.umsg(interpret("av_c2"));
-  arr.highlight(5);
-  arrMS.show();
   labelMaxSize.show();
+  arrMS.show();
   arrLS.show();
   labelListSize.show();
   av.step();
@@ -51,6 +49,8 @@ $(document).ready(function () {
   // Slide 3
   pseudo.setCurrentLine("check");
   av.umsg(interpret("av_c3"));
+  arrow1.show();
+  arr.highlight(5);
   arrMS.highlight(0);
   arrLS.highlight(0);
   av.step();

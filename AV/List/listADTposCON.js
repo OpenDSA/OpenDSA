@@ -24,8 +24,8 @@ $(document).ready(function () {
   // Slide 2
   arr.show();
   for (i = 0; i < 5; i++) {
-    arrowArray[i] = jsav.g.line(leftMargin3 + 77 + 60 * i, 0,
-                                leftMargin3 + 77 + 60 * i, 25,
+    arrowArray[i] = jsav.g.line(leftMargin3 + 75 + 60 * i, 0,
+                                leftMargin3 + 75 + 60 * i, 25,
                                 {"arrow-end": "classic-wide-long",
                                  "opacity": 0, "stroke-width": 2});
   }

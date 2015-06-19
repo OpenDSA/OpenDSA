@@ -44,6 +44,11 @@ $(document).ready(function () {
   var labelListSize = av.label("listSize",
                                {before: arrLS, left: 42, top: 109 });
   labelListSize.hide();
+  var arrCurr = av.ds.array([0], {indexed: false, layout: "array",
+                                left: 100, top: 140});
+  arrCurr.hide();
+  var labelCurr = av.label("curr", {before: arrLS, left: 63, top: 144 });
+  labelCurr.hide();
 
   // Slide 1: set the background of empty elements to gray
   arr.addClass([5, 6, 7], "unused");
@@ -60,6 +65,8 @@ $(document).ready(function () {
   labelMaxSize.show();
   arrLS.show();
   labelListSize.show();
+  arrCurr.show();
+  labelCurr.show();
   av.step();
 
   // Slide 3

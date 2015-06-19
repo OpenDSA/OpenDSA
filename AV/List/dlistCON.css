@@ -1,23 +1,19 @@
-.jsavcanvas{
-	height: 200px;
-}
-
-#dlistDiagramCON {
+#dlistDiagramCON .jsavcanvas {
   height: 100px;
-}
-
-#dlistDiagramCON .jsavoutput.jsavline {
-  height: 75px;
 }
 
 #dlistInsertCON {
   height: 400px;
 }
 
+#dlistInsertCON .jsavoutput.jsavline {
+  height: 20px;
+}
+
 #dlistInsertCON .jsavcode{
   width: 510px;
   position: relative;
-  top: 115px;
+  top: 125px;
 }
 
 #dlistAppendCON {

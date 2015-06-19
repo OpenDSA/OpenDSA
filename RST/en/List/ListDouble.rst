@@ -73,7 +73,7 @@ doubly linked list class are nearly identical to the singly linked
 list version.
 While the code for these methods might be a little longer than their
 singly linked list counterparts (since there is an extra pointer in
-each node to deal with), they tend to be simpler.
+each node to deal with), they tend to be easier to understand.
 
 .. inlineav:: dlistInsertCON ss
    :output: show   
@@ -120,7 +120,6 @@ of the following node's ``prev`` pointer, as well as the previous
 node's ``next`` pointer.
 It is possible to move down the list breaking apart the
 summed link fields as though you were opening a zipper.
-Details for implementing this variation are left as an exercise.
 
 The principle behind this technique is worth remembering, as it
 has many applications.
@@ -128,8 +127,8 @@ The following code fragment will
 swap the contents of two variables without using a temporary variable
 (at the cost of three arithmetic operations).
 
-.. codeinclude:: Lists/DoubleTest
-   :tag: ch4p1
+.. codeinclude:: Lists/DList
+   :tag: XOR
 
 A similar effect can be had by using the exclusive-or operator.
 This fact is widely used in computer graphics.

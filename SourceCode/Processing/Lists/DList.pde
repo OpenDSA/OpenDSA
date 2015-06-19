@@ -16,8 +16,6 @@ class LList implements List {
     tail.setPrev(head);                 // Set prev link for trailer
     listSize = 0;
   }
-/* *** ODSAendTag: LListCons *** */
-  
 
 /* *** ODSATag: Dlist *** */
   // Insert "it" at current position
@@ -94,5 +92,14 @@ class LList implements List {
   Object getValue() {
     if(curr == tail) return null;
     return curr.element();
+  }
+
+  // Test for XOR concept
+  void XOR() {
+/* *** ODSATag: XOR *** */
+a = a + b;
+b = a - b; // Now b contains original value of a
+a = a - b; // Now a contains original value of b
+/* *** ODSAendTag: XOR *** */
   }
 }

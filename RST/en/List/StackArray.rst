@@ -61,6 +61,8 @@ the array-based stack class.
 .. codeinclude:: Lists/AStack
    :tag: AStack1,AStack2
 
+|
+
 .. inlineav:: astackVarCON ss
    :output: show
    

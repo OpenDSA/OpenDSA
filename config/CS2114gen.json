@@ -35,6 +35,12 @@
             "threshold": 5
           }
         }
+      },
+      "Design/ADT": {
+        "long_name": "Abstract Data Types",
+        "exercises": {
+          "ADTCON": {}
+        }
       }
     },
     "List Interface & Array-based Lists": {

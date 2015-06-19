@@ -18,6 +18,28 @@
         "empty": 2,
         "return": 3
       }
+    },
+    "java": {
+      "url": "../../../SourceCode/Java/Lists/AStack.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: AStackPop *** */",
+      "endBefore": "/* *** ODSAendTag: AStackPop *** */",
+      "tags": {
+        "sig": 1,
+        "empty": 2,
+        "return": 3
+      }
+    },
+    "java_generic": {
+      "url": "../../../SourceCode/Java_Generic/Lists/AStack.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: AStackPop *** */",
+      "endBefore": "/* *** ODSAendTag: AStackPop *** */",
+      "tags": {
+        "sig": 1,
+        "empty": 2,
+        "return": 3
+      }
     }
   }
 }
