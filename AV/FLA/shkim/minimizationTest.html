@@ -125,8 +125,8 @@
 				checkNodeArr = [],
 				minimizedEdges = {};	//adjlist of minimized DFA
 			
-			var lambda = "\&lambda;",
-				epsilon = "\&epsilon;";
+			var lambda = String.fromCharCode(955),
+				epsilon = String.fromCharCode(949);
 
 			function initGraph() {
 				var graph = jsav.ds.fa({width: '45%', height: 440, layout: 'manual', element: $('#reference')});

@@ -120,12 +120,14 @@
 			//Empty string can be set to anything when initializing the graph:
 			//e.g. initGraph({layout: "automatic", emptystring: epsilon})
 			//By default it is set to lambda.
-			var lambda = "\&lambda;",
-				epsilon = "\&epsilon;",
-				emptystring = lambda;
+			var lambda = String.fromCharCode(955),
+				epsilon = String.fromCharCode(949),
+				square = String.fromCharCode(9633),
+				emptystring;
 			
 			var initGraph = function(opts) {
 				g = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
+				emptystring = g.emptystring;
 				var gWidth = g.element.width(),
 					gHeight = g.element.height();
 	      		var a = g.addNode({left: 0.10 * gWidth, top: 0.5 * gHeight}),		

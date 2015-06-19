@@ -9,7 +9,6 @@
     return new FiniteAutomaton(this, opts);
   };
 
-
   var FiniteAutomaton = function (jsav, options) {
     this.init(jsav, options);
   };
@@ -20,13 +19,14 @@
     this._nodes = [];
     this._edges = [];
     this._alledges = null;
-    this.stack = ['Z'];          //for PDA
+    this.stack = ['Z'];          // for PDA
     this.alphabet = {};
     this.jsav = jsav;
-    this.initial;
+    this.initial;               // initial state
     this.options = $.extend({visible: true, nodegap: 40, autoresize: true, width: 400, height: 200,
-                              directed: true, center: true, arcoffset: 50, emptystring: "\&lambda;"}, options);
+                              directed: true, center: true, arcoffset: 50, emptystring: String.fromCharCode(955)}, options);
     //this.options = $.extend({directed: true}, options);
+    this.emptystring = this.options.emptystring;
     var el = this.options.element || $("<div/>");
     el.addClass("jsavgraph jsavfiniteautomaton");
     for (var key in this.options) {
@@ -76,7 +76,7 @@
     var nodeIndex = this._nodes.indexOf(node);
     if (nodeIndex === -1) { return; } // no such node
     
-    this.removeInitial(node);
+    this.removeInitial(node);         // remove initial marker if necessary
 
     // remove all edges connected to this node
     var allEdges = this.edges();
@@ -99,8 +99,10 @@
     this._setnodes(newNodes, options);
 
     // finally hide the node
+    // hide labels
     if (node._stateLabel) { node._stateLabel.hide(options);}
     node.hide(options);
+    // renumber nodes
     this.updateNodes();
     // return this for chaining
     return this;
@@ -121,10 +123,11 @@
   }; 
 
   faproto.addEdge = function(fromNode, toNode, options) {
+    // assumes a weight is always given
     if (options.weight === "") {
-      options.weight = this.options.emptystring;
+      options.weight = this.emptystring;
     }
-    if (this.hasEdge(fromNode, toNode)) { 
+    if (this.hasEdge(fromNode, toNode)) {     // if an edge already exists update it
       var prevEdge = this.getEdge(fromNode, toNode);
       var prevWeight = prevEdge.weight();
       if (prevWeight.split('<br>').indexOf(options.weight) !== -1) { return; }
@@ -150,6 +153,7 @@
     // set the adjlist (makes the operation animated)
     this._setadjlist(adjlist, fromIndex, opts);
 
+    // make a pair of arcs if necessary
     if (this.hasEdge(toNode, fromNode) && !toNode.equals(fromNode)) {
       var prevEdge = this.getEdge(toNode, fromNode);
       prevEdge.dfaArc(true);
@@ -186,6 +190,7 @@
     this._setadjlist(newAdjlist, fromIndex, options);
     // we "remove" the edge by hiding it
       
+    // remove arcs
     if (edge.dfaArc()) {
       var oppEdge = this.getEdge(toNode, fromNode);
       oppEdge.dfaArc(false);
@@ -195,7 +200,7 @@
   };
 
   faproto.makeInitial = function(node, options) {
-    node.addClass("start");   //change this later
+    node.addClass("start");
     this.initial = node;
     node.addInitialMarker($.extend({container: this}, this.options));
   };
@@ -213,6 +218,7 @@
   }
 
   faproto.updateAlphabet = function () {
+    // updates input alphabet
     var alphabet = {};
     var edges = this.edges();
     var w;
@@ -220,12 +226,15 @@
       w = next.weight();
       w = w.split('<br>');
       for (var i = 0; i < w.length; i++) {
-        var letter = w[i].split(':')[0];
-        if (letter !== this.options.emptystring) {
-          if (!(letter in alphabet)) {
-            alphabet[letter] = 0;
+        var t = w[i].split('|');
+        for (var j = 0; j < t.length; j++) {
+          var letter = t[j].split(':')[0];
+          if (letter !== this.emptystring) {
+            if (!(letter in alphabet)) {
+              alphabet[letter] = 0;
+            }
+            alphabet[letter]++;
           }
-          alphabet[letter]++;
         }
       }
     }
@@ -234,6 +243,7 @@
   };
 
   faproto.getStackAlphabet = function () {
+    // get stack alphabet for PDAs
     var alphabet = [];
     var edges = this.edges();
     var w;
@@ -244,17 +254,17 @@
         var letter1 = w[i].split(':')[1],
             letter2 = w[i].split(':')[2],
             letters;
-        if (letter1 !== this.options.emptystring && letter2 !== this.options.emptystring) {
+        if (letter1 !== this.emptystring && letter2 !== this.emptystring) {
           letters = letter1.split('').concat(letter2.split(''));
-        } else if (letter1 !== this.options.emptystring) {
+        } else if (letter1 !== this.emptystring) {
           letters = letter1.split('');
-        } else if (letter2 !== this.options.emptystring) {
+        } else if (letter2 !== this.emptystring) {
           letters = letter2.split('');
         } else {
           break;
         }
         for (var j = 0; j < letters.length; j++) {
-          if (letters[j] !== this.options.emptystring && alphabet.indexOf(letters[j]) === -1){
+          if (letters[j] !== this.emptystring && alphabet.indexOf(letters[j]) === -1){
             alphabet.push(letters[j]);
           }
         }
@@ -264,6 +274,7 @@
   };
 
   faproto.updateNodes = function() {
+    // renumber nodes
     for (var i = 0; i < this._nodes.length; i++) {
       this._nodes[i].value('q'+i);
     }
@@ -287,7 +298,7 @@
       for (var j = 0; j < w.length; j++) {
         var t = w[j].split(':');
         if (t[0] !== letter) {continue;}
-        if (t[1] !== this.options.emptystring) {
+        if (t[1] !== this.emptystring) {
           var l = [],
               cur;
           for (var k = 0; k < t[1].length; k++) {
@@ -299,7 +310,7 @@
             }
           }
           if (t[1] === l.join('')) {
-            if (t[2] !== this.options.emptystring){
+            if (t[2] !== this.emptystring){
               for (var h = t[2].length - 1; h >= 0; h--) {
                 this.stack.push(t[2].charAt(h));
               }
@@ -310,7 +321,7 @@
             this.stack = this.stack.concat(l);
           }
         } else {
-          if (t[2] !== this.options.emptystring){
+          if (t[2] !== this.emptystring){
             for (var h = t[2].length - 1; h >= 0; h--) {
               this.stack.push(t[2].charAt(h));
             }
@@ -322,7 +333,7 @@
   };
 
   faproto.transitionFunction = function (nodeFrom, letter, options) {
-    //returns an array of values
+    // returns an array of values, does not work for PDAs or TMs
     var edges = nodeFrom.getOutgoing(),
         ret = [];
     for (var i = 0; i < edges.length; i++) {
@@ -427,18 +438,19 @@
     if (typeof newWeight === "undefined") {
       return this._weight;
     } else if (newWeight === "") {
-      newWeight = this.container.options.emptystring;
+      newWeight = this.container.emptystring;
     } 
     this._setweight(newWeight);
     this.label(newWeight);
   };
 
   fatransitionproto.layout = function(options) {
+    // delete edges without weights
     if (!this._label.text()) {
       this.container.removeEdge(this);
       return;
     } 
-    this.weight(this._label.element.innerHTML);
+    this.weight(this._label.element[0].innerHTML);
     var controlPointX, controlPointY, midX, midY,
         sElem = this.start().element,
         eElem = this.end().element,
@@ -472,7 +484,8 @@
     // getNodeBorderAtAngle returns an array [x, y], and movePoints wants the point position
     // in the (poly)line as first item in the array, so we'll create arrays like [0, x, y] and
     // [1, x, y]
-      
+    
+    // loop
     if (this.start().equals(this.end())) {
       var adjust = Math.sqrt(2) / 2.0;
       fromY = Math.round(fromY - adjust * sHeight);
@@ -692,9 +705,6 @@
   }
 
 
-
-
-
   fatransitionproto.dfaArc = function(newBool) {
     if (typeof newBool === "undefined") {
       return this.options.arc;
@@ -715,8 +725,6 @@
   fastateproto.init = function (container, value, options) {
     this.jsav = container.jsav;
     this.container = container;
-    this.isInitial = false;
-    this.isFinal = false;
     this.options = $.extend(true, {visible: true, left: 0, top: 0}, options);
     this.constructors = $.extend({}, container.constructors, this.options.constructors);
     var el = this.options.nodeelement || $("<div><span class='jsavvalue'>" + this._valstring(value) + "</span></div>"),
@@ -735,31 +743,13 @@
     JSAV.utils._helpers.handleVisibility(this, this.options);
   };
 
-  //not used:
-  // fastateproto.initialState = function(newBool) {
-  //   if (typeof newBool === "undefined") {
-  //     return this.isInitial;
-  //   } 
-  //   else if (typeof newBool === 'boolean') {
-  //     this.isInitial = newBool;
-  //   }
-  // };
-  // fastateproto.finalState = function(newBool) {
-  //   if (typeof newBool === "undefined") {
-  //     return this.isFinal;
-  //   } 
-  //   else if (typeof newBool === 'boolean') {
-  //     this.isFinal = newBool;
-  //   }
-  // };
-
-
   fastateproto.getOutgoing = function() {
     var edges = this.container._edges[this.container._nodes.indexOf(this)];
-    return edges; //should probably change this to return an iterable object
+    return edges; 
   };
 
   fastateproto.stateLabel = function(newLabel, options) {
+    // the editable labels that go underneath the states
     if (typeof newLabel === "undefined") {
       if (this._stateLabel && this._stateLabel.element.filter(":visible").size() > 0) {
         return this._stateLabel.text();
@@ -776,8 +766,8 @@
     }
   };
 
-  fastateproto.stateLabelPositionUpdate = function(options) {   //make this run whenever nodes are moved
-    //update initial arrow while we're at it
+  fastateproto.stateLabelPositionUpdate = function(options) {   // make this run whenever nodes are moved
+    // update initial arrow while we're at it
     if (this._initialMarker) {
       var fromPoint = [this.position().left - 10, this.position().top + this.element.outerHeight()/2.0],
           toPoint = [this.position().left, this.position().top + this.element.outerHeight()/2.0];
@@ -810,6 +800,7 @@
 }(jQuery));
 
 
+//NFA to DFA conversion code:
 
 //g.transitionFunction takes a single node and returns an array of node values
 //assumes all nodes have unique values! 
@@ -918,8 +909,8 @@ var addFinals = function(g1, g2) {
   }
 };
 
-var lambdaClosure = function(input, graph) {
-  //input as an array of values, returns an array
+var lambdaClosure = function(input, graph) {    // only used in conversion
+  // input as an array of values, returns an array
   var l = "\&lambda;",
       arr = [];
   for (var i = 0; i < input.length; i++) {
@@ -939,7 +930,7 @@ var lambdaClosure = function(input, graph) {
   return arr;
 };
 
-
+// unused
 var minimize = function (graph) {
   // this assumes all of the edges are in the alphabet
   //remove all unreachable states
@@ -951,9 +942,7 @@ var minimize = function (graph) {
       graph.removeNode(next);
     }
   }
-
-  //todo: nondistinguishable states
-  
+  // incomplete: see minimizationTest.html
 };
 //helper depth-first search to find connected component
 var dfs = function (visited, node, options) {
@@ -965,3 +954,220 @@ var dfs = function (visited, node, options) {
     }
   }
 };
+
+
+//Turing machine:
+//tape as a linked list
+var Tape = function (str) {
+  if (typeof str === 'string') {
+    this.head = makeTape(str);
+    this.current = this.head.right()[0];
+  } else { // assume tape
+    var copy = copyTape(str);
+    this.head = copy[0];
+    this.current = copy[1];
+  }
+  //this._size = str.length;
+  this.toString = function() {
+    var temp = this.head,
+        ret = "";
+    while (temp) {
+      ret += temp.value();
+      temp = temp._right;
+    }
+    return ret;
+  };
+  this.left = function() {
+    var next = this.current.left();
+    this.current = next[0];
+    if (next[1]) {
+      this.head = next[1];
+    }
+    return this.current;
+  };
+  this.right = function() {
+    var next = this.current.right();
+    this.current = next[0];
+    return this.current;
+  };
+  this.value = function (newVal) {
+    return this.current.value(newVal);
+  };
+  this.move = function (str) {
+    if (str === "L") {
+      return this.left();
+    } else if (str === "R") {
+      return this.right();
+    } else if (str === "S") {
+      return this.current;
+    }
+  };
+};
+
+var TapeNode = function (left, right, val) {
+  this._left = left;
+  this._right = right;
+  if (typeof val === "undefined") {
+    //this._value = "";
+    this._value = String.fromCharCode(9633);
+  } else {
+    this._value = val;
+  }
+  this.value = function (newVal) {
+    if (typeof newVal === "undefined") {
+      return this._value;
+    } else {
+      this._value = newVal;
+      return this._value;
+    }
+  };
+  this.left = function (n) {
+    if (this._left) {
+      return [this._left];
+    } else {
+      if (!n) { n = 10; }
+      return extendTape("left", this, n);
+    }
+  }
+  this.right = function (n) {
+    if (this._right) {
+      return [this._right];
+    } else {
+      if (!n) { n = 10; }
+      return extendTape("right", this, n);
+    }
+  }
+};
+
+var makeTape = function (str) {   // initializes tape
+  var prev = new TapeNode(null, null);
+  var head = prev;
+  for (var i = 0; i < str.length; i++) {
+    var temp = new TapeNode(prev, null, str.charAt(i));
+    prev._right = temp;
+    prev = temp;
+  }
+  return head;
+};
+var copyTape = function (t) {
+  var prev = new TapeNode(null, null, t.current.value());
+  var cur = prev;
+  var temp = t.current._right;
+  while (temp) {
+    var next = new TapeNode(prev, null, temp.value());
+    prev._right = next;
+    prev = next;
+    temp = temp._right;
+  }
+  prev = cur;
+  temp = t.current;
+  while (temp._left) {
+    var next = new TapeNode(null, prev, temp._left.value());
+    prev._left = next;
+    prev = next;
+    temp = temp._left;
+  }
+  return [temp, cur];
+};
+
+var extendTape = function (dir, node, n) {  // adds n nodes to tape at beginning or end
+  if (dir === 'left') {
+    var next = new TapeNode(null, node),
+        prev = next;
+    node._left = next;
+    for (var i = 0; i < n - 1; i++) {
+      var temp = new TapeNode(null, prev);
+      prev._left = temp;
+      prev = temp;
+    }
+    return [next, prev];
+  }
+  if (dir === 'right') {
+    var next = new TapeNode(node, null),
+        prev = next;
+    node._right = next;
+    for (var i = 0; i < n - 1; i++) {
+      var temp = new TapeNode(prev, null);
+      prev._right = temp;
+      prev = temp;
+    }
+    return [next, prev];
+  }
+};
+
+var getTapeAlphabet = function (graph) {
+  var alphabet = [];
+  var edges = graph.edges();
+  var w;
+  for (var next = edges.next(); next; next = edges.next()) {
+    w = next.weight();
+    w = w.split('<br>');
+    for (var i = 0; i < w.length; i++) {
+      var t = w[i].split('|');
+      for (var k = 0; k < t.length; k++) {
+        var letter1 = t[k].split(':')[0],
+            letter2 = t[k].split(':')[1],
+            letters;
+        if (letter1 !== graph.emptystring && letter2 !== graph.emptystring) {
+          letters = letter1.split('').concat(letter2.split(''));
+        } else if (letter1 !== graph.emptystring) {
+          letters = letter1.split('');
+        } else if (letter2 !== graph.emptystring) {
+          letters = letter2.split('');
+        } else {
+          break;
+        }
+        for (var j = 0; j < letters.length; j++) {
+          if (letters[j] !== graph.emptystring && alphabet.indexOf(letters[j]) === -1){
+            alphabet.push(letters[j]);
+          }
+        }
+      }
+    }
+  }
+  return alphabet;
+};
+
+var viewTape = function (t) {   // tape viewport
+  var arr = new Array(15);
+  for (var i = 0; i < 15; i++) {
+    arr[i] = String.fromCharCode(9633);;
+  }
+  i = 7;
+  var temp = t.current;
+  while (temp) {
+    if (i < 0) {break;}
+    arr[i] = temp.value();
+    i--;
+    temp = temp._left;
+  }
+  i = 7;
+  temp = t.current;
+  while (temp) {
+    if (i >= arr.length) {break;}
+    arr[i] = temp.value();
+    i++;
+    temp = temp._right;
+  }
+  var view = "|";
+  for (var i = 0; i < arr.length; i++) {
+    if (i === 7) {
+      view+="<mark>" + arr[i] + "</mark>";
+    } else {
+      view+=arr[i];
+    }
+  }
+  view+="|";
+  return view;
+};
+
+var produceOutput = function (t) {
+  var temp = t.current,
+      output = "";
+  while (temp && temp.value() !== String.fromCharCode(9633)) {
+    output += temp.value();
+    temp = temp._right;
+  }
+  return output;
+};
+

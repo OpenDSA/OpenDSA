@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>NPDA test</title>
+		<title>TM test</title>
     	<link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 		<style>
 			#av {
@@ -20,6 +20,9 @@
 			}
 			.accepted {
 				background-color: green;
+			}
+			.rejected {
+				background-color: red;
 			}
 			p.jsavoutput.jsavline {
 				height: 10px;
@@ -73,24 +76,26 @@
 				width: inherit;
 			}
 		</style>
+		<script>
+			localStorage["jsav-speed"] = 0; // set default animation speed to max
+		</script>
 	</head>
 	<body>
 		
 		<div id="av">
-			<h1>NPDA test</h1>
+			<h1>TM test</h1>
 			</span><a class="jsavsettings" href="#">Settings</a>
 			<div class="jsavcontrols">	
 			</div>
       		<p class="jsavoutput jsavline"></p>
-			<div align="center" style="font-size: 30px">&Sigma;: <span id='alphabet'></span><br>&Gamma;: <span id='stackalphabet'></span></div>
+			<div id="alphabets" align="center" style="font-size: 30px">&Sigma;: <span id='alphabet'></span><br>&Gamma;: <span id='stackalphabet'></span></div>
       		<p align="center" class="arrayPlace"></p>
 
 		</div>
 		<div class='notEditing'>
 			<button type='button' id="playbutton">Traverse</button>
+			<button type='button' id="multiplebutton">Multiple traverse</button>
 			<button type='button' id="layoutbutton">Layout</button>
-			<button type="button" id='testNDbutton'>Highlight Nondeterminism</button>
-			<button type='button' id='testlambdabutton'>Highlight &lambda;-Transitions</button>
 		</div>
 		<div class='editing' style="display: none">
 			<button type='button' id='addnodesbutton'>Add nodes</button>
@@ -117,45 +122,106 @@
 			var jsav = new JSAV("av"),
 				saved = false,
 				selectedNode = null,
-				arr,
 				g;
-			//Empty string can be set to anything when initializing the graph:
-			//e.g. initGraph({layout: "automatic", emptystring: epsilon})
-			//By default it is set to lambda.
+
 			var lambda = String.fromCharCode(955),
 				epsilon = String.fromCharCode(949),
+				square = String.fromCharCode(9633),
 				emptystring;
 			
 			var initGraph = function(opts) {
-				g = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
+				g = jsav.ds.fa($.extend({width: '90%', height: 440, emptystring: square}, opts));
 				emptystring = g.emptystring;
 				var gWidth = g.element.width(),
 					gHeight = g.element.height();
-	      		var a = g.addNode({left: 0.10 * gWidth, top: 0.3 * gHeight}),		
-	          		b = g.addNode({left: 0.35 * gWidth, top: 0.3 * gHeight}),
-	          		c = g.addNode({left: 0.60 * gWidth, top: 0.3 * gHeight}),
-	          		d = g.addNode({left: 0.25 * gWidth, top: 0.7 * gHeight}),
-	          		e = g.addNode({left: 0.50 * gWidth, top: 0.7 * gHeight}),
-	          		f = g.addNode({left: 0.85 * gWidth, top: 0.3 * gHeight});
-	          	g.makeInitial(a);
-	          	f.addClass('final');
+	      		var q0 = g.addNode({left: 0.25 * gWidth, top: 0.23 * gHeight}),
+	      			q1 = g.addNode({left: 0.1 * gWidth, top: 0.7 * gHeight}),
+	      			q2 = g.addNode({left: 0.01 * gWidth, top: 0.3 * gHeight}),
+	      			q3 = g.addNode({left: 0.1 * gWidth, top: 0.02 * gHeight}),
+	      			q4 = g.addNode({left: 0.4 * gWidth, top: 0.2 * gHeight}),
+	      			q5 = g.addNode({left: 0.25 * gWidth, top: 0.65 * gHeight}),
+	      			q6 = g.addNode({left: 0.55 * gWidth, top: 0.2 * gHeight}),
+	      			q7 = g.addNode({left: 0.47 * gWidth, top: 0.5 * gHeight}),
+	      			q8 = g.addNode({left: 0.7 * gWidth, top: 0.2 * gHeight}),
+	      			q9 = g.addNode({left: 0.6 * gWidth, top: 0.5 * gHeight}),
+	      			q10 = g.addNode({left: 0.85 * gWidth, top: 0.17 * gHeight}),
+	      			q11 = g.addNode({left: 0.95 * gWidth, top: 0.4 * gHeight}),
+	      			q12 = g.addNode({left: 0.55 * gWidth, top: 0.9 * gHeight}),
+	      			q13 = g.addNode({left: 0.75 * gWidth, top: 0.8 * gHeight});
+	          	g.makeInitial(q0);
+	          	q3.addClass('final');
 
-			    g.addEdge(a, b, {weight: 'a:' + emptystring + ":a"});
-			    //g.addEdge(a, d); 		it's a FA, need to always provide a weight
+			    g.addEdge(q0, q0, {weight: '0:0:R'});
+			    g.addEdge(q0, q0, {weight: '#:#:R'});
+			    g.addEdge(q0, q0, {weight: 'a:0:R'});
+			    g.addEdge(q0, q1, {weight: '1:1:R'});
+			    g.addEdge(q0, q1, {weight: 'b:1:R'});
+			    g.addEdge(q0, q2, {weight: emptystring+':'+emptystring+':L'});
+			    g.addEdge(q0, q4, {weight: '+:+:R'});
 
-			    g.addEdge(b, b, {weight: 'a:a:aa'});
-			    g.addEdge(b, c, {weight: 'b:a:' + emptystring});
-			    g.addEdge(b, d, {weight: 'b:a:a'});
+			    g.addEdge(q1, q1, {weight: 'b:1:R'});
+			    g.addEdge(q1, q1, {weight: '1:1:R'});
+			    g.addEdge(q1, q1, {weight: '#:#:R'});
+			    g.addEdge(q1, q0, {weight: 'a:0:R'});
+			    g.addEdge(q1, q0, {weight: '0:0:R'});
+			    g.addEdge(q1, q2, {weight: emptystring+':'+emptystring+':L'});
+			    g.addEdge(q1, q5, {weight: '+:+:R'});
 
-			    g.addEdge(c, c, {weight: 'b:a:' + emptystring});
-			    g.addEdge(c, d, {weight: 'b:a:a'});
-			    g.addEdge(c, f, {weight: emptystring + ':' + emptystring + ':' + emptystring});
+			    g.addEdge(q2, q2, {weight: '1:1:L'});
+			    g.addEdge(q2, q2, {weight: '0:0:L'});
+			    g.addEdge(q2, q3, {weight: emptystring+':'+emptystring+':R'});
 
-			    g.addEdge(d, c, {weight: 'b:a:' + emptystring});
-			    g.addEdge(d, e, {weight: 'b:a:a'});
+			    g.addEdge(q4, q4, {weight: '1:1:R'});
+			    g.addEdge(q4, q4, {weight: '0:0:R'});
+			    g.addEdge(q4, q6, {weight: emptystring+':'+emptystring+':L'});
+			    g.addEdge(q4, q6, {weight: '+:+:R'});
+			    g.addEdge(q4, q6, {weight: 'a:a:L'});
+			    g.addEdge(q4, q6, {weight: 'b:b:L'});
 
-			    g.addEdge(e, c, {weight: 'b:a:' + emptystring});
-			
+			    g.addEdge(q5, q5, {weight: '1:1:R'});
+			    g.addEdge(q5, q5, {weight: '0:0:R'});
+			    g.addEdge(q5, q7, {weight: emptystring+':'+emptystring+':L'});
+			    g.addEdge(q5, q7, {weight: '+:+:L'});
+			    g.addEdge(q5, q7, {weight: 'a:a:L'});
+			    g.addEdge(q5, q7, {weight: 'b:b:L'});
+
+			    g.addEdge(q6, q8, {weight: '0:a:L'});
+			    g.addEdge(q6, q8, {weight: '1:b:L'});
+			    g.addEdge(q6, q13, {weight: '+:a:L'});
+
+			    g.addEdge(q7, q8, {weight: '0:b:L'});
+			    g.addEdge(q7, q9, {weight: '1:0:L'});
+			    g.addEdge(q7, q13, {weight: '+:b:L'});
+
+			    g.addEdge(q8, q8, {weight: '0:0:L'});
+			    g.addEdge(q8, q8, {weight: '1:1:L'});
+			    g.addEdge(q8, q10, {weight: '+:+:L'});
+
+			    g.addEdge(q9, q9, {weight: '1:0:L'});
+			    g.addEdge(q9, q8, {weight: '0:1:L'});
+			    g.addEdge(q9, q10, {weight: '#:1:L'});
+			    g.addEdge(q9, q13, {weight: '+:1:L'});
+
+			    g.addEdge(q10, q10, {weight: '#:#:L'});
+			    g.addEdge(q10, q11, {weight: '1:#:L'});
+			    g.addEdge(q10, q11, {weight: '0:#:L'});
+			    g.addEdge(q10, q12, {weight: emptystring+':'+emptystring+':R'});
+
+			    g.addEdge(q11, q11, {weight: '0:0:L'});
+			    g.addEdge(q11, q11, {weight: '1:1:L'});
+			    g.addEdge(q11, q12, {weight: emptystring+':'+emptystring+':R'});
+
+			    g.addEdge(q12, q12, {weight: '#:'+emptystring+':R'});
+			    g.addEdge(q12, q12, {weight: '+:'+emptystring+':R'});
+			    g.addEdge(q12, q0, {weight: 'a:0:R'});
+			    g.addEdge(q12, q0, {weight: '0:0:R'});
+			    g.addEdge(q12, q1, {weight: '1:1:R'});
+			    g.addEdge(q12, q1, {weight: 'b:1:R'});
+
+			    g.addEdge(q13, q10, {weight: '#:+:L'});
+			    g.addEdge(q13, q11, {weight: '0:+:L'});
+			    g.addEdge(q13, q11, {weight: '1:+:L'});
+			   	
 		    	$(".jsavgraph").click(graphClickHandler);
 		    	g.click(nodeClickHandler);
 				g.click(edgeClickHandler, {edge: true});
@@ -290,11 +356,14 @@
    					if (!$(".jsavgraph").hasClass("working")) {
 						first = this;
 						$('.jsavgraph').addClass("working");
-						jsav.umsg("Select a node to make an edge to");
+						jsav.umsg("Select a state to make a transition to");
 		   			} else {
-		   				var input2 = prompt("Accepted character?");
-		   				var input3 = prompt('Stack symbol(s) to pop?');
-		   				var input4 = prompt('Stack symbol(s) to push?');
+		   				var input2 = prompt("Character to read?");
+		   				var input3 = prompt('Character to write?');
+		   				var input4 = prompt('Direction to move the tape head: left, right, or stay? L, R, S?');
+		   				if (input4) {
+		   					input4 = input4.toUpperCase();
+		   				}
 		   				var newEdge;
 		   				if (!input2) {
 		   					input2 = emptystring;
@@ -302,8 +371,8 @@
 		   				if (!input3) {
 		   					input3 = emptystring;
 		   				}
-		   				if (!input4) {
-		   					input4 = emptystring;
+		   				if (!input4 || (input4 !== 'L' && input4 !== 'R' && input4 !== 'S')) {
+		   					input4 = 'S';
 		   				}
 		   				var w = input2 + ':' + input3 + ':' + input4;
 						if (input2 != null) {
@@ -347,7 +416,6 @@
 				}
 			};
 			
-			localStorage.clear();
 		    var g = initGraph({layout: "manual"});
    			g.layout();
    			jsav.displayInit();
@@ -356,8 +424,8 @@
    			var updateAlphabet = function() {
 	   			g.updateAlphabet();
 				$("#alphabet").html("" + Object.keys(g.alphabet).sort());
-				var sa = g.getStackAlphabet();
-				$('#stackalphabet').html("Z," + sa.sort());
+				var sa = getTapeAlphabet(g);
+				$('#stackalphabet').html(emptystring + "," + sa.sort());
 			};
 			updateAlphabet();
    			//===============================
@@ -446,216 +514,130 @@
    				}
    			};
 
-   			//====================
-   			//tests
-
-   			var testND = function() {
-   				$('#changeButton').toggleClass("highlightingND");
-   				if ($('#changeButton').hasClass("highlightingND") || $('#changeButton').hasClass("highlightingL")) {
-   					$('#changeButton').hide();
-   				} else{
-   					$('#changeButton').show();
-   				}
-   				var nodes = g.nodes();
-   				for(var next = nodes.next(); next; next = nodes.next()) {
-   					var edges = next.getOutgoing();
-   					var weights = _.map(edges, function(e) {return e.weight().split('<br>')});
-   					for (var i = 0; i < weights.length; i++) {
-   						var findLambda = _.find(weights[i], function(e) {return e.split(':')[0] === emptystring});
-   						if (findLambda) { break; }
-   					}
-   					var dup = _.map(_.flatten(weights), function(e) {return _.initial(e.split(':')).join()})
-					if (findLambda || _.uniq(dup).length < dup.length) {
-						next.toggleClass('testingND');
-					}
-   				}
-   			};
-   			var testLambda = function() {
-   				$('#changeButton').toggleClass("highlightingL");
-   				if ($('#changeButton').hasClass("highlightingND") || $('#changeButton').hasClass("highlightingL")) {
-   					$('#changeButton').hide();
-   				} else{
-   					$('#changeButton').show();
-   				}
-   				var edges = g.edges();
-   				for (var next = edges.next(); next; next = edges.next()) {
-   					wSplit = next.weight().split('<br>');
-   					for (var i = 0; i < wSplit.length; i++) {
-   						if (_.every(wSplit[i].split(':'), function(x) {return x === emptystring})) {
-	   						next.g.element.toggleClass('testingLambda');
-	   						break;
-	   					}
-   					}
-   				}
-   			};
-
-
 			//====================
 			//traversal
 
-			var play = function() {
+			var play = function(str) {
 				if (!g.initial) {
 					alert('Please define an initial state');
 					return;
 				}
-				var inputString = prompt("Input string?", "abb");
-				if (inputString == null) {
-					return;
+				var inputString;
+				if (str) {
+					inputString = str;
+				} else {
+					inputString = prompt("Input string?", "1+1");
+					if (inputString == null) {
+						return;
+					}
 				}
 				jsav.umsg("");
-				var textArray = [];
 				$("button").hide();			//disable buttons
+				$('#alphabets').hide();
 				$("#mode").html('');
-				if (arr) {
-        			arr.clear();
-      			}
       			$('.jsavcontrols').show();
-				g.initial.addClass('current');
-				var currentStates = [new configuration(g.initial, ['Z'])];
-				currentStates = addLambdaClosure(currentStates);
-				var configView = "";
-			   	for (var j = 0; j < currentStates.length; j++) {
-			   		configView += currentStates[j].toString() + ' | ';
-			   	}
-			    jsav.umsg(configView);
-				var cur;
+      			$('.jsavoutput').css({"text-align": "center", 'font-size': '2em', 'font-family': 'monospace'});
 				
-				for (var i = 0; i < inputString.length; i++) {
-    				textArray.push(inputString[i]);
-  				}
-  				arr = jsav.ds.array(textArray, {element: $('.arrayPlace')});
-
+				var currentState = g.initial,
+					next;
+				var tape = new Tape(inputString);
+				jsav.umsg(viewTape(tape));
+				currentState.addClass('current');
   				jsav.displayInit();
-
-				for (var i = 0; i < inputString.length; i++) {
-					for (var j = 0; j < currentStates.length; j++) {
-				   		currentStates[j].state.removeClass('current');
-				   	}
-				   	cur = traverse(currentStates, inputString[i]);
-				   	if (cur.length === 0) {
-				   		arr.css(i, {"background-color": "red"});
-				   		jsav.step();
-				   		break;
-				   	}
-				   	configView = "";
-				   	for (var j = 0; j < cur.length; j++) {
-				   		configView += cur[j].toString() + ' | ';
-				   	}
-				    jsav.umsg(configView);
-					currentStates = cur;
-					arr.css(i, {"background-color": "yellow"});
+				
+				while (true) {
+					next = traverse(currentState, tape.value());
+					var cur;
+					if (!next) {
+						break;
+					}
+					var weight = next[1];
+					tape.value(weight[1]);
+					tape.move(weight[2]);
+					jsav.umsg(viewTape(tape));
+					cur = next[0];
+					currentState.removeClass('current');
+					currentState = cur;
+					currentState.addClass('current');
 					jsav.step();
 				}
-
-				var rejected = true;
-				for (var k = 0; k < currentStates.length; k++) {
-					if (currentStates[k].state.hasClass('final') && cur.length > 0) {
-						currentStates[k].state.addClass('accepted');
-      					arr.css(inputString.length - 1, {"background-color": "green"});
-      					jsav.umsg("Accepted");
-						rejected = false;
-					}
+				if (currentState.hasClass('final')) {
+					currentState.addClass('accepted');
+				} else {
+					currentState.addClass('rejected');
 				}
-				if (rejected) {
-					arr.css(inputString.length - 1, {"background-color": "red"});
-					jsav.umsg("Rejected");
-				}
+				jsav.umsg(produceOutput(tape));
+				jsav.step();
 				jsav.recorded();
 			};
-
-			var traverse = function(currentStates, letter) {
-				// currentStates is an array of configurations
-				var nextStates = [];
-				for (var i = 0; i < currentStates.length; i++) {
-					var successors = currentStates[i].state.neighbors(),
-						curStack = currentStates[i].stack;
-					for (var next = successors.next(); next; next = successors.next()) {
-						var w = g.getEdge(currentStates[i].state, next).weight().split('<br>');
-						for (var j = 0; j < w.length; j++) {
-							var t = w[j].split(':');
-					        if (t[0] !== letter) {continue;}
-					        if (t[1] !== emptystring) {
-					          var l = [],
-					              cur;
-					          for (var k = 0; k < t[1].length; k++) {
-					            cur = curStack.pop();
-					            if (cur) {
-					              l.push(cur);
-					            } else {
-					              break;
-					            }
-					          }
-					          if (t[1] === l.join('')) {
-					          	var nextConfig = new configuration(next, curStack);
-					          	if (t[2] !== emptystring){
-					              for (var h = t[2].length - 1; h >= 0; h--) {
-					                nextConfig.stack.push(t[2].charAt(h));
-					              }
-					            }
-					            next.addClass('current');
-								nextStates.push(nextConfig);
-					          } 
-					          l.reverse();
-					          curStack = curStack.concat(l);
-					        } else {
-					          	var nextConfig = new configuration(next, curStack);
-					          	if (t[2] !== emptystring){
-					              for (var h = t[2].length - 1; h >= 0; h--) {
-					                nextConfig.stack.push(t[2].charAt(h));
-					              }
-					            }
-					            next.addClass('current');
-								nextStates.push(nextConfig);
-					           	break;
-					        }
+			var traverse = function(currentState, letter) {
+				var successors = currentState.neighbors();
+				for (var next = successors.next(); next; next = successors.next()) {
+					var edge = g.getEdge(currentState, next),
+						weight = edge.weight().split('<br>');
+					for (var i = 0; i < weight.length; i++) {
+						var w = weight[i].split(':');
+						if (letter === w[0]) {
+							return [next, w];
 						}
 					}
-				}
-				nextStates = _.uniq(nextStates, function(x) {return x.toString();});
-				nextStates = addLambdaClosure(nextStates);
-				return nextStates;
+				} 
+				return null;
 			};
 
-			var addLambdaClosure = function(nextStates) {
-				lambdaStates = [];
-				for (var i = 0; i < nextStates.length; i++) {
-					var successors = nextStates[i].state.neighbors();
-					for (var next = successors.next(); next; next = successors.next()) {
-						var weight = g.getEdge(nextStates[i].state, next).weight().split('<br>');
-						for (var j = 0; j < weight.length; j++) {
-							if (!next.hasClass('current') && _.every(weight[j].split(':'), function(x) {return x === emptystring})) {
-		   						next.addClass('current');
-		   						var nextConfig = new configuration(next, nextStates[i].stack)
-								lambdaStates.push(nextConfig);
-		   					}
-						}
+			// multiple traversal
+			var runInput = function(inputString) {
+				var currentState = g.initial,
+					next;
+				var tape = new Tape(inputString);
+				while (true) {
+					next = traverse(currentState, tape.value());
+					var cur;
+					if (!next) {
+						break;
 					}
+					var weight = next[1];
+					tape.value(weight[1]);
+					tape.move(weight[2]);
+					cur = next[0];
+					currentState = cur;
 				}
-				if(lambdaStates.length > 0) {
-					lambdaStates = addLambdaClosure(lambdaStates);
-				}
-				for (var k = 0; k < lambdaStates.length; k++) {
-					nextStates.push(lambdaStates[k]);
-				}
-				nextStates = _.uniq(nextStates, function(x) {return x.toString();});
-				return nextStates;
-			};
-
-			// configuration object
-			var configuration = function(state, stack) {
-				this.state = state;
-				this.stack = stack.slice(0);
-				this.toString = function() {
-					return this.state.value() + ' ' + this.stack.join();
+				if (currentState.hasClass('final')) {
+					return inputString + '<br>Output:<br>' + produceOutput(tape);
+				} else {
+					return inputString + '<br>Rejected<br><br>';
 				}
 			};
-			
+			var displayTraversals = function () {
+				var inputString = prompt("Input string?", "1+1,10+1,101+10+100");
+				if (!inputString) {
+					return;
+				}
+				var travArray = [];
+				var inputs = inputString.split(',');
+				jsav.umsg("Click to trace");
+				$("#mode").html('');
+				$("button").hide();			//disable buttons
+				$('#alphabets').hide();
+				for (var i = 0; i < inputs.length; i++) {
+    				travArray.push(runInput(inputs[i]));
+  				}
+  				var jsavArray = jsav.ds.array(travArray, {element: $('.arrayPlace')});
+  				jsavArray.mouseenter(jsavArray.highlight).mouseleave(jsavArray.unhighlight);
+  				jsavArray.click(arrayClickHandler);
+  				jsavArray.show();
+  				jsav.displayInit();
+  			};
+  			var arrayClickHandler = function (index) {
+  				var input = this.value(index).split('<br>')[0];
+  				this.hide();
+  				play(input);
+  			};
 
 			//======================
-			$('#playbutton').click(play);
+			$('#playbutton').click(function() {play()});
+			$('#multiplebutton').click(displayTraversals);
 			$('#layoutbutton').click(function() {g.layout()});
-			$('#testNDbutton').click(testND);
-			$('#testlambdabutton').click(testLambda);
 			$('#addnodesbutton').click(addNodesMode);
 			$('#changeButton').click(changeEditingMode);
 			$('#addedgesbutton').click(addEdgesMode);

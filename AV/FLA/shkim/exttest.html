@@ -112,9 +112,8 @@
 			//Empty string can be set to anything when initializing the graph:
 			//e.g. initGraph({layout: "automatic", emptystring: epsilon})
 			//By default it is set to lambda.
-			var lambda = "\&lambda;",
-				epsilon = "\&epsilon;",
-				emptystring = lambda;
+			var lambda = String.fromCharCode(955),
+				epsilon = String.fromCharCode(949);
 			/*
 			graph:
 			initial state is filled green
@@ -392,7 +391,7 @@
    				for(var next = nodes.next(); next; next = nodes.next()) {
    					var edges = next.getOutgoing();
    					var weights = _.map(edges, function(e) {return e.weight()});
-   					if (_.contains(weights, emptystring) || _.uniq(weights).length < weights.length) {
+   					if (_.contains(weights, g.emptystring) || _.uniq(weights).length < weights.length) {
    						next.toggleClass("testingND");
    					}
    				}
@@ -407,7 +406,7 @@
    				}
    				var edges = g.edges();
    				for (var next = edges.next(); next; next = edges.next()) {
-   					if (next.weight().indexOf(emptystring) !== -1) {
+   					if (next.weight().indexOf(g.emptystring) !== -1) {
    						next.g.element.toggleClass('testingLambda');
    					}
    				}
