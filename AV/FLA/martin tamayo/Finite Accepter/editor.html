@@ -91,7 +91,7 @@
 		<button onclick="g.layout()">Layout</button>
 		<button onclick="testND()">Highlight Nondeterminism</button>
 		<button onclick="testLambda()" id="lambdaButton">Highlight &lambda;-Transitions</button>
-		<button onclick="emptyString()" id="epsilonButton">Epsilon Mode</button>
+		<button onclick="emptyString()" id="epsilonButton">&epsilon; Mode</button>
 		<div>&Sigma;: <span id='alphabet'></span></div>
 		<div id='download'></div>
 		
@@ -152,6 +152,8 @@
 			    		if (gg.nodes[i].f) {
 			    			node.addClass("final");
 			    		}
+			    		node.stateLabel(gg.nodes[i].stateLabel);
+			    		node.stateLabelPositionUpdate();
 			  		}
 			  		for (var i = 0; i < gg.edges.length; i++) {
 			    		if (gg.edges[i].weight !== undefined) {
@@ -188,7 +190,7 @@
 						selected = this;
 						selected.highlight();
 						var Prompt = new NodePrompt();
-						Prompt.render(this.value(), this.hasClass('start'), this.hasClass('final'), this.element.attr('title'));
+						Prompt.render(selected.value(), selected.hasClass('start'), selected.hasClass('final'), selected.stateLabel());
 						selected.unhighlight();
 	   				}
 	   				else if ($(".jsavgraph").hasClass("addEdges")) {
@@ -324,44 +326,57 @@
 				}
    			};
    			var emptyString = function() {
+   				document.getElementById("epsilonButton").innerHTML = emptystring + " Mode";
    				if (emptystring === lambda) {
-   					document.getElementById("lambdaButton").innerHTML = "Highlight &epsilon;-Transitions";
-   					document.getElementById("epsilonButton").innerHTML = "Lambda Mode";
    					updateTransitions(epsilon);
    					emptystring = epsilon;
    				}
    				else {
-   					document.getElementById("lambdaButton").innerHTML = "Highlight &lambda;-Transitions";
-   					document.getElementById("epsilonButton").innerHTML = "Epsilon Mode";
    					updateTransitions(lambda);
    					emptystring = lambda;
    				}
+   				document.getElementById("lambdaButton").innerHTML = "Highlight " + emptystring + "-Transitions";
    			};
    			var updateTransitions = function(greekLetter) {
    				var edges = g.edges();
 				for (var next = edges.next(); next; next = edges.next()) {
-					if (next.weight() === emptystring) {
-						next.weight(greekLetter);
+					var weights = next.weight().split("<br>");
+					for (var i = 0; i < weights.length; i++) {
+						if (weights[i] === emptystring) {
+							weights[i] = greekLetter;
+						}
 					}
+					next.weight(weights.join("<br>"));
 				}
    			};
    			var testND = function() {
-   				removeModeClasses();
+   				// THIS FUNCTION IS MALFUNCTIONING!
    				var nodes = g.nodes();
    				for(var next = nodes.next(); next; next = nodes.next()) {
    					var edges = next.getOutgoing();
-   					var weights = _.map(edges, function(e) {return e.weight()});
-   					if (_.contains(weights, emptystring) || _.uniq(weights).length < weights.length) {
-   						next.toggleClass("testingND");
+   					var weights = _.map(edges, function(e) { return e.weight().split('<br>') });
+   					var unique = [];
+   					for (var i = 0; i < weights.length; i++) {
+   						var findLambda = _.find(weights[i], function(e) {return e.split(':')[0] === emptystring});
+   						if (findLambda) {
+   							break;
+   						}
+   					}
+   					var dup = _.map(_.flatten(weights), function(e) { return _.initial(e.split(':')).join() });
+					if (findLambda || _.uniq(dup).length < dup.length) {
+						next.toggleClass('testingND');
    					}
    				}
    			};
    			var testLambda = function() {
-   				removeModeClasses();
    				var edges = g.edges();
    				for (var next = edges.next(); next; next = edges.next()) {
-   					if (next.weight().indexOf(emptystring) !== -1) {
-   						next.g.element.toggleClass('testingLambda');
+   					wSplit = next.weight().split('<br>');
+   					for (var i = 0; i < wSplit.length; i++) {
+   						if (_.every(wSplit[i].split(':'), function(x) {return x === emptystring})) {
+	   						next.g.element.toggleClass('testingLambda');
+	   						break;
+	   					}
    					}
    				}
    			};
@@ -372,7 +387,7 @@
    				}
    				var edges = g.edges();
    				for (var next = edges.next(); next; next = edges.next()) {
-   					next.g.element.removeClass('testingLambda');
+   					next.g.element.removeClass("testingLambda");
    				}
    			};
 			var save = function() {

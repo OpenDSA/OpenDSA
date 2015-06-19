@@ -97,6 +97,8 @@
 			    	if (gg.nodes[i].f) {
 			    		node.addClass("final");
 			    	}
+			    	node.stateLabel(gg.nodes[i].stateLabel);
+			    	node.stateLabelPositionUpdate();
 			  	}
 			  	for (var i = 0; i < gg.edges.length; i++) {
 			    	if (gg.edges[i].weight !== undefined) {
@@ -159,7 +161,7 @@
 				for (var i = 0; i < currentStates.length; i++) {
 					var successors = currentStates[i].neighbors();
 					for (var next = successors.next(); next; next = successors.next()) {
-						var weight = g.getEdge(currentStates[i], next).weight().split(',');
+						var weight = g.getEdge(currentStates[i], next).weight().split('<br>');
 						for (var j = 0; j < weight.length; j++) {
 							if (letter == weight[j] && !next.hasClass('current')) {
 								next.addClass('current');
@@ -176,9 +178,9 @@
 				for (var i = 0; i < nextStates.length; i++) {
 					var successors = nextStates[i].neighbors();
 					for (var next = successors.next(); next; next = successors.next()) {
-						var weight = g.getEdge(nextStates[i], next).weight().split(',');
+						var weight = g.getEdge(nextStates[i], next).weight().split('<br>');
 						for (var j = 0; j < weight.length; j++) {
-							if (weight[j] == "&lambda;" && !next.hasClass('current')) {
+							if ((weight[j] == "&lambda;" || weight[j] == "&epsilon;") && !next.hasClass('current')) {
 								next.addClass('current');
 								lambdaStates.push(next);
 							}

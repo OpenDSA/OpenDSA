@@ -149,6 +149,8 @@
 			    		if (gg.nodes[i].i) {
 			    			g.makeInitial(node);
 			    		}
+			    		node.stateLabel(gg.nodes[i].stateLabel);
+			    		node.stateLabelPositionUpdate();
 			  		}
 			  		for (var i = 0; i < gg.edges.length; i++) {
 			    		if (gg.edges[i].weight !== undefined) {
@@ -342,14 +344,17 @@
    			};
    			var testND = function() {
    				removeModeClasses();
+   				var nd = false;
    				var nodes = g.nodes();
    				for(var next = nodes.next(); next; next = nodes.next()) {
    					var edges = next.getOutgoing();
    					var weights = _.map(edges, function(e) {return e.weight()});
    					if (_.contains(weights, emptystring) || _.uniq(weights).length < weights.length) {
    						next.toggleClass("testingND");
+   						nd = true;
    					}
    				}
+   				return nd;
    			};
    			var testLambda = function() {
    				removeModeClasses();

@@ -94,6 +94,8 @@
 			    	if (gg.nodes[i].i) {
 			    		graph.makeInitial(node);
 			    	}
+			    	node.stateLabel(gg.nodes[i].stateLabel);
+			    	node.stateLabelPositionUpdate();
 			  	}
 			  	for (var i = 0; i < gg.edges.length; i++) {
 			    	if (gg.edges[i].weight !== undefined) {
@@ -109,8 +111,9 @@
    			var run = function(inputString) {
 				var textArray = [];
 				g.initial.addClass('current');
-				var currentStates = [g.initial];
-				currentStates = addLambdaClosure(currentStates);
+				var accepted = true;
+				var outputString = "";
+				var currentState = g.initial;
 				var cur;
 				
 				for (var i = 0; i < inputString.length; i++) {
@@ -121,74 +124,50 @@
   				jsav.displayInit();
 
 				for (var i = 0; i < inputString.length; i++) {
-					for (var j = 0; j < currentStates.length; j++) {
-				   		currentStates[j].removeClass('current');
-				   	}
-				   	cur = traverse(currentStates, inputString[i]);
-				   	if (cur.length == 0) {
+					currentState.removeClass('current');
+				   	cur = traverse(currentState, inputString[i]);
+				   	if (cur[0] == null) {
+				   		accepted = false;
 				   		arr.css(i, {"background-color": "red"});
 				   		jsav.step();
 				   		break;
 				   	}
-					currentStates = cur;
+					currentState = cur[0];
+					outputString += cur[1];
+					currentState.addClass('current');
 					arr.css(i, {"background-color": "yellow"});
+					jsav.umsg(outputString);
 					jsav.step();
 				}
 
-				var rejected = true;
-				for (var k = 0; k < currentStates.length; k++) {
-					if (currentStates[k].hasClass('final') && cur.length > 0) {
-						currentStates[k].addClass('accepted');
-      					arr.css(inputString.length - 1, {"background-color": "green"});
-      					jsav.umsg("Accepted");
-						rejected = false;
-					}
+				if (accepted) {
+					currentState.addClass('accepted');
+      				arr.css(inputString.length - 1, {"background-color": "green"});
 				}
-				if (rejected) {
+				else {
 					arr.css(inputString.length - 1, {"background-color": "red"});
 					jsav.umsg("Rejected");
 				}
 				jsav.step();
 				jsav.recorded();
 			};
-			var traverse = function(currentStates, letter) {
-				var nextStates = [];
-				for (var i = 0; i < currentStates.length; i++) {
-					var successors = currentStates[i].neighbors();
-					for (var next = successors.next(); next; next = successors.next()) {
-						var weight = g.getEdge(currentStates[i], next).weight().split('<br>');
-						for (var j = 0; j < weight.length; j++) {
-							if (letter == weight[j] && !next.hasClass('current')) {
-								next.addClass('current');
-								nextStates.push(next);
-							}
+			var traverse = function(currentState, letter) {
+				var nextState = null;
+				var outputChar = "";
+				var successors = currentState.neighbors();
+				for (var next = successors.next(); next; next = successors.next()) {
+					var weights = g.getEdge(currentState, next).weight().split('<br>');
+					for (var j = 0; j < weights.length; j++) {
+						if (letter == weights[j]) {
+							nextState = next;
+							outputChar = next.stateLabel();
 						}
 					}
 				}
-				nextStates = addLambdaClosure(nextStates);
-				return nextStates;
+				return [nextState, outputChar];
 			};
-			var addLambdaClosure = function(nextStates) {
-				lambdaStates = [];
-				for (var i = 0; i < nextStates.length; i++) {
-					var successors = nextStates[i].neighbors();
-					for (var next = successors.next(); next; next = successors.next()) {
-						var weight = g.getEdge(nextStates[i], next).weight().split('<br>');
-						for (var j = 0; j < weight.length; j++) {
-							if (weight[j] == "&lambda;" && !next.hasClass('current')) {
-								next.addClass('current');
-								lambdaStates.push(next);
-							}
-						}
-					}
-				}
-				if(lambdaStates.length > 0) {
-					lambdaStates = addLambdaClosure(lambdaStates);
-				}
-				for (var k = 0; k < lambdaStates.length; k++) {
-					nextStates.push(lambdaStates[k]);
-				}
-				return nextStates;
+			var testND = function() {
+				return false;
 			};
 			var readyTraversal = function() {
 				return;

@@ -42,7 +42,7 @@ var executeEditNode = function(node, initialState, nodeLabel){
 		g.makeInitial(node);
 	}
 	else {
-		g.removeInitial(g.nodes()[i]);
+		g.removeInitial(node);
 	}
 	if(nodeLabel){
 		node.stateLabel(nodeLabel);

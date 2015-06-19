@@ -1,8 +1,9 @@
-function Node (l, t, i, f) {
+function Node (l, t, i, f, label) {
   this.left = l;
   this.top = t;
   this.i = i;
   this.f = f;
+  this.stateLabel = label;
 }
 function Edge (s, e, w) {
   this.start = s;
@@ -23,7 +24,8 @@ function serialize(g) {
     var top = next.position().top;
     var i = next.hasClass("start");
     var f = next.hasClass("final");
-    var node = new Node(left, top, i, f);
+    var label = next.stateLabel();
+    var node = new Node(left, top, i, f, label);
     nodes[ind] = node;
     ind++;
   }

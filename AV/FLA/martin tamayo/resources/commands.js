@@ -37,12 +37,12 @@ var executeMoveNode = function(node, top, left){
 var executeEditNode = function(node, initialState, finalState, nodeLabel){
 	if (initialState) {
 		for (var i = 0; i < g.nodeCount(); i++) {
-			g.nodes()[i].removeClass('start');
+			g.removeInitial(g.nodes()[i]);
 		}
 		g.makeInitial(node);
 	}
 	else {
-		node.removeClass('start');
+		g.removeInitial(node);
 	}
 	if (finalState) {
 		node.addClass('final');

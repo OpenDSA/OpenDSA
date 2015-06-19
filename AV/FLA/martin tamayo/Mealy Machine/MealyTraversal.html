@@ -94,6 +94,8 @@
 			    	if (gg.nodes[i].i) {
 			    		graph.makeInitial(node);
 			    	}
+			    	node.stateLabel(gg.nodes[i].stateLabel);
+			    	node.stateLabelPositionUpdate();
 			  	}
 			  	for (var i = 0; i < gg.edges.length; i++) {
 			    	if (gg.edges[i].weight !== undefined) {

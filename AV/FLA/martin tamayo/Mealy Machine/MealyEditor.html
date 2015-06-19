@@ -149,6 +149,8 @@
 			    		if (gg.nodes[i].i) {
 			    			g.makeInitial(node);
 			    		}
+			    		node.stateLabel(gg.nodes[i].stateLabel);
+			    		node.stateLabelPositionUpdate();
 			  		}
 			  		for (var i = 0; i < gg.edges.length; i++) {
 			    		if (gg.edges[i].weight !== undefined) {
@@ -349,6 +351,7 @@
 				}
    			};
    			var testND = function() {
+   				removeModeClasses();
    				var nd = false;
    				var nodes = g.nodes();
    				for(var next = nodes.next(); next; next = nodes.next()) {
@@ -369,6 +372,7 @@
    				return nd;
    			};
    			var testLambda = function() {
+   				removeModeClasses();
    				var edges = g.edges();
    				for (var next = edges.next(); next; next = edges.next()) {
    					wSplit = next.weight().split('<br>');
