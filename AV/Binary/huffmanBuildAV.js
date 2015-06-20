@@ -14,11 +14,11 @@ $(document).ready(function () {
   //////////////////////////////////////////////////////////////////
   // Load the config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadConfig({"json_path": "huffman.json"}),
-      interpret = config.interpreter;       // get the interpreter
+      interpret = config.interpreter,       // get the interpreter
+      settings = config.getSettings();      // Settings for the AV
 
-  // create a new settings panel and specify the link to show it
-  var settings = new JSAV.utils.Settings($(".jsavsettings")),
-      av = new JSAV($('.avcontainer'), {settings: settings});
+  // Create a JSAV instance
+  var av = new JSAV($('.avcontainer'), {settings: settings});
 
   var freqs = [ 30,  42, 90,   7,  42,  24,  37,   2], // The frequency counts
       chars = ["X", "D", "E", "K", "L", "M", "U", "Z"],  // The characters

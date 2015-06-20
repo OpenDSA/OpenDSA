@@ -233,10 +233,8 @@ $(document).ready(function () {
   //////////////////////////////////////////////////////////////////
   // Load config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadConfig(),
-      interpret = config.interpreter;       // get the interpreter
-
-  // settings for the AV
-  var settings = new JSAV.utils.Settings($(".jsavsettings"));
+      interpret = config.interpreter,       // get the interpreter
+      settings = config.getSettings();      // Settings for the AV
 
   // add the layout setting preference
   var arrayLayout = settings.add("layout", {"type": "select",

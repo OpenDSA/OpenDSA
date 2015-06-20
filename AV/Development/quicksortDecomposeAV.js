@@ -22,7 +22,7 @@
     // If arrValues is null, the user gave us junk which they need to fix
     if (arrValues) {
       ODSA.AV.reset(true);
-      jsav = new JSAV($('.avcontainer'));
+      jsav = new JSAV($(".avcontainer"), {settings: settings});
 
       // Initialize the original array
       var arr = jsav.ds.array(arrValues, {indexed: true});

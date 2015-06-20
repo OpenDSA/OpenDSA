@@ -50,7 +50,7 @@ $(document).ready(function () {
     // If arrValues is null, the user gave us junk which they need to fix
     if (arrValues) {
       ODSA.AV.reset(true);
-      av = new JSAV($(".avcontainer"));
+      av = new JSAV($('.avcontainer'), {settings: settings});
 
       // Create a new array using the layout the user has selected
       arr = av.ds.array(arrValues, {indexed: true, layout: arrayLayout.val()});
@@ -88,14 +88,13 @@ $(document).ready(function () {
   // Load the config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadConfig(),
       interpret = config.interpreter,       // get the interpreter
-      code = config.code;                   // get the code object
+      code = config.code,                   // get the code object
+      settings = config.getSettings();      // Settings for the AV
   console.log("Code object: " + JSON.stringify(code));
 
   // Placeholder text translation needs to be set explicitly
   $("#arrayValues").attr("placeholder", interpret("av_arrValsPlaceholder"));
 
-  // create a new settings panel and specify the link to show it
-  var settings = new JSAV.utils.Settings($(".jsavsettings"));
   // add the layout setting preference
   var arrayLayout = settings.add("layout",
           {"type": "select", "options": {"bar": "Bar", "array": "Array"},

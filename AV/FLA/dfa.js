@@ -92,7 +92,8 @@
 
     // If same circle
     if (currentState.getUniqueID() == nextState.getUniqueID()) {
-      this.jsav.g.text(x1 - 20, y1 - radius - 10, allChars);
+//      this.jsav.g.text(x1 - 20, y1 - radius - 10, allChars);
+      this.jsav.label(allChars, {left: x1 - 20, top: y1 - radius - 10});
       return;
     }
 
@@ -127,7 +128,8 @@
       // Remove original edge pointing from next state to current state
       nextState.edges[""+currentState.getUniqueID()].g.clear();
       this.g = this.jsav.g.ellipse(midPX, midPY, getDistance(p1X, p1Y, p2X, p2Y) / 2, 6);
-      this.jsav.g.text(midPX, midPY + 12, allChars);
+//      this.jsav.g.text(midPX, midPY + 12, allChars);
+      this.jsav.label(allChars, {left: midPX, top: midPY + 12});
 
         // Simplify this section (repeated later)
         if (Math.sign(dX) == Math.sign(dY)) {
@@ -138,7 +140,8 @@
 
     } else {
       this.g = this.jsav.g.line(p1X, p1Y, p2X, p2Y, {stroke: "black", "stroke-width": 1});      
-      this.jsav.g.text(midPX, midPY - 12, allChars);
+//      this.jsav.g.text(midPX, midPY - 12, allChars);
+      this.jsav.label(allChars, {left: midPX, top: midPY - 12});
     }
 
 //    this.gElements.push(jsav.g.circle(p2X, p2Y, 5, {"fill": "black"}));
@@ -216,10 +219,7 @@
        this.jsav.g.circle(this.myXPos * 120 + 70, this.myYPos * 120 + 70, 45);    
     }
 
-    jsav.g.text(this.myXPos * 120 + 70, this.myYPos * 120 + 70, "q" + this.getUniqueID(), {fill: color});
-
-//    Uses Label API
-    this.jsav.label("q" + this.getUniqueID(), {left:this.myXPos * 120 + 70, top:this.myYPos * 120, fill:"black"});
+    this.jsav.label("q" + this.getUniqueID(), {left:this.myXPos * 120 + 63, top:this.myYPos * 120 + 67, fill:"black"});
   };
 
   var stateproto = State.prototype;
