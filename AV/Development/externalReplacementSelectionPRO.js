@@ -250,10 +250,11 @@ $(document).ready(function () {
   // Start processing here
   //////////////////////////////////////////////////////////////////
   // Load the interpreter created by odsaAV.js
-  var interpret = ODSA.UTILS.loadConfig().interpreter;
+  var config = ODSA.UTILS.loadConfig({"json_path": "huffman.json"}),
+      interpret = config.interpreter,       // get the interpreter
+      settings = config.getSettings();      // Settings for the AV
 
-  var settings = new JSAV.utils.Settings($(".jsavsettings")),
-    jsav = new JSAV($('.avcontainer'), {settings: settings}),
+  var jsav = new JSAV($('.avcontainer'), {settings: settings}),
     exercise,
     swapIndex;
 

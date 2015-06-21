@@ -150,12 +150,10 @@ $(document).ready(function () {
       interpret = config.interpreter,
       code = config.code,
       codeOptions = {after: {element: $(".instructions")}, visible: true},
-
-      // Settings for the AV
-      settings = new JSAV.utils.Settings($(".jsavsettings")),
+      settings = config.getSettings();     // Settings for the AV
 
       // Create a JSAV instance
-      av = new JSAV($('.avcontainer'), {settings: settings});
+  var av = new JSAV($('.avcontainer'), {settings: settings});
 
   av.recorded();
 

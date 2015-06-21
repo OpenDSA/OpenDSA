@@ -225,11 +225,12 @@ $(document).ready(function () {
       arr;    // for the JSAV array
 
   // Load the interpreter created by odsaAV.js
-  var interpret = ODSA.UTILS.loadConfig().interpreter;
+  var config = ODSA.UTILS.loadConfig(),
+      interpret = config.interpreter,
+      settings = config.getSettings();      // Settings for the AV
+
   $('#arrayValues').attr('placeholder', interpret("av_arrValsPlaceholder"));
 
-  // create a new settings panel and specify the link to show it
-  var settings = new JSAV.utils.Settings($(".jsavsettings"));
   // Note that unlike many sorting AVs, we are not going to let the user
   // select "bar" display for the array because there is not enough room
 
