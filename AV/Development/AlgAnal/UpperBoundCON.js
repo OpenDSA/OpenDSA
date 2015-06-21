@@ -109,14 +109,14 @@ $(document).ready(function () {
   av.step();
 
   //Slide 16
-  av.umsg("Accordingly, the correct way to ask the question should be : <br><br>What is the upper bound of sequencial search in the best/average/worst case?");
+  av.umsg(interpret("Slide "+slideNumber++));
   arr.hide();
   nLabel.hide();
   pointer.hide();
   av.step();
 
   //Slide 17
-  av.umsg("<br><br>And the answer should be...", {preserve: true});
+  av.umsg(interpret("Slide "+slideNumber++), {preserve: true});
   topAlign = 15;
   var arr1 = av.ds.array(arr_values, {"left": leftAlign, "top": topAlign + 20, "indexed": true});
   var pointer1 = av.pointer("$k$", arr1.index(0));
