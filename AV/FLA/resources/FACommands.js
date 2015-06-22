@@ -50,16 +50,12 @@ var executeEditNode = function(node, initialState, finalState, nodeLabel){
 	else {
 		node.removeClass('final');
 	}
-	if(nodeLabel){
-		node.stateLabel(nodeLabel);
-	}
-	else{
-		node.stateLabel("");
-	}
+	node.stateLabel(nodeLabel);
 	node.stateLabelPositionUpdate();
 };
 
 var executeEditEdge = function(edge, weight){
 	edge.weight(weight);
+	edge.layout();
 	updateAlphabet();
 };

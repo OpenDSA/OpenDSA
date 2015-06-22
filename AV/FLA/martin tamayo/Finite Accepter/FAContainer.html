@@ -48,8 +48,12 @@
 		    	document.getElementById("if").src = "./FAEditor.html";
 		    };
 			var displayTraversals = function () {
-				var inputString = prompt("Input string?");
 				var graph = document.getElementById("if").contentWindow.getGraph();
+				if (graph.initial == null) {
+					window.alert("FA traversal requires an initial state.");
+					return;
+				}
+				var inputString = prompt("Input string?");
 				serialization = document.getElementById("if").contentWindow.getSerial();
 				var travArray = [];
 				var inputs = inputString.split(',');

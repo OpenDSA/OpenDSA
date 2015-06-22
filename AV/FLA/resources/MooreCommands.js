@@ -8,7 +8,7 @@ var executeAddNode = function(top, left){
 		newNode.stateLabel(outputChar);
 	}
 	else {
-		newNode.stateLabel("");
+		newNode.stateLabel(emptystring);
 	}
 	newNode.stateLabelPositionUpdate();
 };
@@ -52,12 +52,7 @@ var executeEditNode = function(node, initialState, nodeLabel){
 	else {
 		g.removeInitial(node);
 	}
-	if(nodeLabel){
-		node.stateLabel(nodeLabel);
-	}
-	else{
-		node.stateLabel("");
-	}
+	node.stateLabel(nodeLabel);
 	node.stateLabelPositionUpdate();
 };
 

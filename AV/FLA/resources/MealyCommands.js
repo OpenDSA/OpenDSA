@@ -44,12 +44,7 @@ var executeEditNode = function(node, initialState, nodeLabel){
 	else {
 		g.removeInitial(node);
 	}
-	if(nodeLabel){
-		node.stateLabel(nodeLabel);
-	}
-	else{
-		node.stateLabel("");
-	}
+	node.stateLabel(nodeLabel);
 	node.stateLabelPositionUpdate();
 };
 

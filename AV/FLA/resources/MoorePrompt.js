@@ -16,7 +16,9 @@ function NodePrompt() {
         if (is) {
             document.getElementById('initial_state').checked = true;
         }
-        document.getElementById('label').value = lab;
+        if (lab != lambda && lab != epsilon) {
+            document.getElementById('label').value = lab;
+        }
         document.getElementById('label').focus();
     }
     terminate = function() {
@@ -26,6 +28,9 @@ function NodePrompt() {
     ok = function() {
         var initial_state = document.getElementById('initial_state').checked;
         var node_label = document.getElementById('label').value;
+        if (node_label === "") {
+            node_label = emptystring;
+        }
         window["updateNode"](initial_state, node_label);
         this.terminate();
     }
@@ -52,7 +57,7 @@ function EdgePrompt() {
             document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="changeEdge()">OK</button> <button onclick="end()">Cancel</button>';
             var values = value.split("<br>");
             for (var i = 0; i < values.length; i++) {
-                if (values[i] == "&lambda;" || values[i] == "&epsilon;") {
+                if (values[i] == lambda || values[i] == epsilon) {
                     values[i] = "";
                 }
             }

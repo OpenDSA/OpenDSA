@@ -54,8 +54,8 @@
 				data,
 				g;
 
-			var lambda = "\&lambda;",
-				epsilon = "\&epsilon;",
+			var lambda = String.fromCharCode(955),
+				epsilon = String.fromCharCode(949),
 				emptystring = lambda;
 			
 			var initialize = function(graph, traversal) {
@@ -252,13 +252,13 @@
    			var expandEdges = function() {
    				var edges = g.edges();
 				for (var next = edges.next(); next; next = edges.next()) {
-					next.g.element.toggleClass('editing');
+					next.g.element.addClass('edgeSelect');
 				}
    			};
    			var collapseEdges = function() {
    				var edges = g.edges();
 				for (var next = edges.next(); next; next = edges.next()) {
-					next.g.element.toggleClass('editing');
+					next.g.element.removeClass('edgeSelect');
 				}
    			};
    			var emptyString = function() {

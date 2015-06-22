@@ -30,6 +30,9 @@
 				arr,
 				g;
 
+			var lambda = String.fromCharCode(955),
+				epsilon = String.fromCharCode(949);
+
 			var initialize = function(graph, traversal) {
 				g = graph;
 				initGraph({layout: "automatic"});
@@ -76,12 +79,14 @@
 
   				jsav.displayInit();
 
+  				var failingIndex = inputString.length - 1;
 				for (var i = 0; i < inputString.length; i++) {
 					currentState.removeClass('current');
 				   	cur = traverse(currentState, inputString[i]);
 				   	if (cur[0] == null) {
 				   		accepted = false;
 				   		arr.css(i, {"background-color": "red"});
+				   		failingIndex = i;
 				   		jsav.step();
 				   		break;
 				   	}
@@ -98,7 +103,9 @@
       				arr.css(inputString.length - 1, {"background-color": "green"});
 				}
 				else {
-					arr.css(inputString.length - 1, {"background-color": "red"});
+					for (var l = failingIndex; l < inputString.length; l++) {
+						arr.css(l, {"background-color": "red"});
+					}
 					jsav.umsg("Rejected");
 				}
 				jsav.step();
@@ -115,7 +122,7 @@
 						var inputChar = weight[0];
 						if (letter == inputChar) {
 							nextState = next;
-							if (weight[1] != "&lambda;" && weight[1] != "&epsilon;") {
+							if (weight[1] != lambda && weight[1] != epsilon) {
 								outputChar = weight[1];
 							}
 						}
