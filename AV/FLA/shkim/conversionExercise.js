@@ -258,4 +258,8 @@
 		jsav.umsg("Choose a state to expand");
 		$('#conversionButton').hide();
 	};
+
+  	$('#conversionButton').click(conversionMode);
+  	$('#movenodesbutton').click(moveNodesMode);
+  	$('#removenodesbutton').click(removeNodesMode);
 }(jQuery));

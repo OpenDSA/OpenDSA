@@ -3,6 +3,7 @@
 	<head>
 		<title>DFA test</title>
     	<link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+  		<link rel="stylesheet" href="../../../lib/odsaAV.css" type="text/css" />
     	<link rel="stylesheet" href="FA.css" type="text/css" />
 		<style>
 			p.jsavoutput.jsavline {
@@ -12,7 +13,7 @@
 	</head>
 	<body>
 		
-		<div id="av">
+		<div id="av" class="avcontainer">
 			<h1>DFA test</h1>
 			<!--<span class="jsavcounter">--></span><a class="jsavsettings" href="#">Settings</a>
 			<div class="jsavcontrols">	
@@ -23,27 +24,26 @@
 
 		</div>
 		<div class='notEditing'>
-			<button onclick="play()" id="begin">Traverse</button>
-			<!--<button onclick="convertToDFA(g)">Convert NFA to DFA</button>
-			<button onclick="minimize(g)">Minimize</button>-->
-			<button onclick="g.layout()">Layout</button>
-			<button onclick="testND()">Highlight Nondeterminism</button>
-			<button onclick="testLambda()">Highlight &lambda;-Transitions</button>
-			<button onclick="save()" id="saveButton">Save</button>
+			<button type="button" id="playbutton">Traverse</button>
+			<button type="button" id="layoutbutton">Layout</button>
+			<button type="button" id="testndbutton">Highlight Nondeterminism</button>
+			<button type="button" id="testlambdabutton">Highlight &lambda;-Transitions</button>
+			<button type="button" id="saveButton">Save</button>
 			<!--
 			<button onclick="load()">Load</button>
 			<button type="submit" onclick="load()">Load</button>
 			<input type="file" accept=".json" id="loadFile" onchange="setSaved()"> -->
 		</div>
 		<div class='editing' style="display: none">
-			<button onclick="addNodesMode()">Add nodes</button>
-			<button onclick="addEdgesMode()">Add edges</button>
-			<button onclick="moveNodesMode()">Move nodes</button>
-			<button onclick="editNodesMode()">Edit nodes and edges</button>
+			<button type='button' id='addnodesbutton'>Add nodes</button>
+			<button type='button' id='addedgesbutton'>Add edges</button>
+			<button type='button' id='movenodesbutton'>Move nodes</button>
+			<button type='button' id='editnodesbutton'>Edit nodes/edges</button>
 			<span id='mode'></span>
 		</div>
 		<div>
-			<button onclick="changeEditingMode()" id="changeButton">Edit</button>
+			<button type='button' id="changeButton">Edit</button>
+			<button type="button" id="reset">Reset</button>
 		</div>
 		<!-- <div id="nodeTitle"></div> 
 		<div id='download'></div> -->
@@ -54,6 +54,8 @@
    		<script src="../../../JSAV/lib/dagre.min.js"></script>
 		<script src="../../../JSAV/lib/jquery.transit.js"></script>
 		<script src="../../../JSAV/build/JSAV.js"></script>
+		<script src="../../../lib/odsaUtils.js"></script>
+		<script src="../../../lib/odsaAV.js"></script>
 		<script src="serializableGraph.js"></script>
 		<script src="./underscore-min.js"></script>
 		<script src="FA.js"></script>

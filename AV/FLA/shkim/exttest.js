@@ -1,3 +1,6 @@
+"use strict";
+/*global alert: true, ODSA */
+
 (function ($) {
 	var jsav = new JSAV("av"),
 		saved = false,
@@ -210,121 +213,123 @@
 	localStorage.clear();
 	var g = initGraph({layout: "automatic"});
 	//var g = initGraph({layout: "automatic", emptystring: epsilon});
-		g.layout();
-		jsav.displayInit();
-		//===============================
-		var updateAlphabet = function() {
-			g.updateAlphabet();
+	g.layout();
+	jsav.displayInit();
+	//===============================
+	var updateAlphabet = function() {
+		g.updateAlphabet();
 		$("#alphabet").html("" + Object.keys(g.alphabet).sort());
 	};
 	updateAlphabet();
 
-		//================================
-		//editing modes
+	//================================
+	//editing modes
 
-		var addNodesMode = function() {
-			$(".jsavgraph").removeClass("addEdges");
-			$(".jsavgraph").removeClass("moveNodes");
-			$(".jsavgraph").removeClass("editNodes");
-			$(".jsavgraph").addClass("addNodes");
-			$("#mode").html('Adding nodes');
-			jsav.umsg("Click to add nodes");
-		};
+	var addNodesMode = function() {
+		$(".jsavgraph").removeClass("addEdges");
+		$(".jsavgraph").removeClass("moveNodes");
+		$(".jsavgraph").removeClass("editNodes");
+		$(".jsavgraph").addClass("addNodes");
+		$("#mode").html('Adding nodes');
+		jsav.umsg("Click to add nodes");
+	};
 
-		var addEdgesMode = function() {
-			$(".jsavgraph").removeClass("addNodes");
-			$(".jsavgraph").removeClass("moveNodes");
-			$(".jsavgraph").removeClass("editNodes");
-			$(".jsavgraph").addClass("addEdges");
-			$("#mode").html('Adding edges');
-			jsav.umsg("Click a node");
-		};
+	var addEdgesMode = function() {
+		$(".jsavgraph").removeClass("addNodes");
+		$(".jsavgraph").removeClass("moveNodes");
+		$(".jsavgraph").removeClass("editNodes");
+		$(".jsavgraph").addClass("addEdges");
+		$("#mode").html('Adding edges');
+		jsav.umsg("Click a node");
+	};
 
-		var moveNodesMode = function() {
-			$(".jsavgraph").removeClass("addNodes");
-			$(".jsavgraph").removeClass("addEdges");
-			$(".jsavgraph").removeClass("editNodes");
-			$(".jsavgraph").addClass("moveNodes");
-			$("#mode").html('Moving nodes');
-			jsav.umsg("Click a node");
-		};
+	var moveNodesMode = function() {
+		$(".jsavgraph").removeClass("addNodes");
+		$(".jsavgraph").removeClass("addEdges");
+		$(".jsavgraph").removeClass("editNodes");
+		$(".jsavgraph").addClass("moveNodes");
+		$("#mode").html('Moving nodes');
+		jsav.umsg("Click a node");
+	};
 
-		var editNodesMode = function() {
-			$(".jsavgraph").removeClass("addNodes");
-			$(".jsavgraph").removeClass("addEdges");
-			$(".jsavgraph").removeClass("moveNodes");
-			$(".jsavgraph").addClass("editNodes");
-			$("#mode").html('Editing nodes and edges');
-			jsav.umsg("Click a node or edge");
-		};
+	var editNodesMode = function() {
+		$(".jsavgraph").removeClass("addNodes");
+		$(".jsavgraph").removeClass("addEdges");
+		$(".jsavgraph").removeClass("moveNodes");
+		$(".jsavgraph").addClass("editNodes");
+		$("#mode").html('Editing nodes and edges');
+		jsav.umsg("Click a node or edge");
+	};
 
-		var changeEditingMode = function() {
-			$(".jsavgraph").removeClass("addNodes");
-			$(".jsavgraph").removeClass("addEdges");
-			$(".jsavgraph").removeClass("moveNodes");
-			$('.jsavgraph').removeClass('editNodes');
-			$("#mode").html('Editing');
-			if ($(".notEditing").is(":visible")) {
-				$('#changeButton').html('Done editing');
-			} else {
-				$('#changeButton').html('Edit');
-			}
-			$('.notEditing').toggle();
-			$('.editing').toggle();
+	var changeEditingMode = function() {
+		$(".jsavgraph").removeClass("addNodes");
+		$(".jsavgraph").removeClass("addEdges");
+		$(".jsavgraph").removeClass("moveNodes");
+		$('.jsavgraph').removeClass('editNodes');
+		$("#mode").html('Editing');
+		if ($(".notEditing").is(":visible")) {
+			$('#changeButton').html('Done editing');
+		} else {
+			$('#changeButton').html('Edit');
 		}
+		$('.notEditing').toggle();
+		$('.editing').toggle();
+	}
 
-		//====================
-		//tests
+	//====================
+	//tests
 
-		var testND = function() {
-			$('#changeButton').toggleClass("highlightingND");
-			if ($('#changeButton').hasClass("highlightingND") || $('#changeButton').hasClass("highlightingL")) {
-				$('#changeButton').hide();
-			} else{
-				$('#changeButton').show();
+	var testND = function() {
+		$('#changeButton').toggleClass("highlightingND");
+		if ($('#changeButton').hasClass("highlightingND") || $('#changeButton').hasClass("highlightingL")) {
+			$('#changeButton').hide();
+		} else{
+			$('#changeButton').show();
+		}
+		var nodes = g.nodes();
+		for(var next = nodes.next(); next; next = nodes.next()) {
+			var edges = next.getOutgoing();
+			var weights = _.map(edges, function(e) {return e.weight()});
+			if (_.contains(weights, g.emptystring) || _.uniq(weights).length < weights.length) {
+				next.toggleClass("testingND");
 			}
-			var nodes = g.nodes();
-			for(var next = nodes.next(); next; next = nodes.next()) {
-				var edges = next.getOutgoing();
-				var weights = _.map(edges, function(e) {return e.weight()});
-				if (_.contains(weights, g.emptystring) || _.uniq(weights).length < weights.length) {
-					next.toggleClass("testingND");
-				}
-			}
-		};
+		}
+	};
 
-		var testLambda = function() {
-			$('#changeButton').toggleClass("highlightingL");
-			if ($('#changeButton').hasClass("highlightingND") || $('#changeButton').hasClass("highlightingL")) {
-				$('#changeButton').hide();
-			} else{
-				$('#changeButton').show();
+	var testLambda = function() {
+		$('#changeButton').toggleClass("highlightingL");
+		if ($('#changeButton').hasClass("highlightingND") || $('#changeButton').hasClass("highlightingL")) {
+			$('#changeButton').hide();
+		} else{
+			$('#changeButton').show();
+		}
+		var edges = g.edges();
+		for (var next = edges.next(); next; next = edges.next()) {
+			if (next.weight().indexOf(g.emptystring) !== -1) {
+				next.g.element.toggleClass('testingLambda');
 			}
-			var edges = g.edges();
-			for (var next = edges.next(); next; next = edges.next()) {
-				if (next.weight().indexOf(g.emptystring) !== -1) {
-					next.g.element.toggleClass('testingLambda');
-				}
-			}
-		};
+		}
+	};
 
 
 	//====================
 	//temp:
 
 	var play = function() {
+		var inputString = prompt("Input string?", "aaa");
+		if (inputString === null) {
+			return;
+		}
 		jsav.umsg("");
 		var textArray = [];
 		$("button").hide();			//disable buttons
+		$('#reset').show();
 		$("#mode").html('');
 		if (arr) {
 			arr.clear();
-			}
-			$('.jsavcontrols').show();
-		var inputString = prompt("Input string?", "aaa");
-		if (inputString == null) {
-			return;
 		}
+		$('.jsavcontrols').show();
+		
 
 		var currentState = g.initial,
 			cur;
@@ -402,4 +407,19 @@
 	// var setSaved = function () {
 	// 	saved = true;
 	// };
+
+  	$('#reset').click(function() {
+  		ODSA.AV.reset();
+  		$("button").show();
+  	});
+  	$('#playbutton').click(play);
+	$('#layoutbutton').click(function() {g.layout()});
+  	$('#testndbutton').click(testND);
+  	$('#testlambdabutton').click(testLambda);
+  	$('#saveButton').click(save);
+  	$('#addnodesbutton').click(addNodesMode);
+	$('#changeButton').click(changeEditingMode);
+	$('#addedgesbutton').click(addEdgesMode);
+	$('#movenodesbutton').click(moveNodesMode);
+	$('#editnodesbutton').click(editNodesMode);
 }(jQuery));	
