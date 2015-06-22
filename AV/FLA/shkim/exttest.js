@@ -2,6 +2,8 @@
 /*global alert: true, ODSA */
 
 (function ($) {
+	ODSA.SETTINGS.MODULE_ORIGIN = '*';
+	
 	var jsav = new JSAV("av"),
 		saved = false,
 		//startState,
@@ -38,27 +40,20 @@
 	      	c.addClass("final");
 	      	d.addClass('final');
 
-		    g.addEdge(a, a, {weight: 'a'});
+		    //g.addEdge(a, a, {weight: 'a'});
 		    //g.addEdge(b, a, {weight: 'c'}).highlight(); //does edge.highlight() do anything?	
 		    g.addEdge(a, b, {weight: 'a'});
-		    g.addEdge(b, b, {weight: 'b'});
+		    //g.addEdge(b, b, {weight: 'b'});
 		    g.addEdge(b, c, {weight: 'b'});
 		    g.addEdge(c, d, {weight: 'a'});
 		    g.addEdge(d, b, {weight: 'b'});
-		    g.addEdge(d, c, {weight: ''});	//lambda
+		    //g.addEdge(d, c, {weight: ''});	//lambda
 		
 			addHandlers();
 		}
 		else {
-			var x = document.getElementById("loadFile").files[0];
-			var reader = new FileReader();
-			reader.onload = loadComplete;
-			reader.readAsText(x);
-		}
-		function loadComplete() {
-				g = reader.result,
-			//var g = localStorage['graph'],
-				gg = jQuery.parseJSON(g),
+				var ggg = localStorage['graph'],
+				gg = jQuery.parseJSON(ggg),
 			//BUG: if height is set to a %, loading a graph causes the height of the jsavgraph element to increase by a few pixels every time
 				graph = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
 			for (var i = 0; i < gg.nodes.length; i++) {
@@ -316,7 +311,7 @@
 	//temp:
 
 	var play = function() {
-		var inputString = prompt("Input string?", "aaa");
+		var inputString = prompt("Input string?", "aba");
 		if (inputString === null) {
 			return;
 		}
@@ -381,6 +376,7 @@
 	var save = function () {
 		localStorage['graph'] = serialize(g);	//I changed serializableGraph.js
 		jsav.umsg("Saved");
+		saved = true;
 	};
 
 	// var save = function () {
@@ -409,8 +405,17 @@
 	// };
 
   	$('#reset').click(function() {
+  		save();
   		ODSA.AV.reset();
+  		if (jsav) {
+  			jsav.clear();
+  		}
+  		jsav = new JSAV($('.avcontainer'));
   		$("button").show();
+  		var g = initGraph({layout: "automatic"});
+		g.layout();
+		jsav.displayInit();
+		updateAlphabet();
   	});
   	$('#playbutton').click(play);
 	$('#layoutbutton').click(function() {g.layout()});
