@@ -15,8 +15,7 @@ $(document).ready(function () {
   var leftMargin3 = (canvasWidth - arrWidth3) / 2;
   var i;
   var arrowArray = [];
-  var arr = av.ds.array(arrPositions,
-                          {indexed: false, layout: 'array'}).hide();
+  var arr = av.ds.array(arrPositions, {indexed: false}).hide();
 
   // Slide 1
   av.umsg(interpret("av_c1"));

@@ -21,8 +21,7 @@ $(document).ready(function () {
 
   // Box "it"
   var itLabel = av.label("it", {left: 20, top: -10});
-  var itBox = av.ds.array(["15"], {indexed: false, layout: "array",
-                                   top: -15, left: 40});
+  var itBox = av.ds.array(["15"], {indexed: false, top: -15, left: 40});
   var l = av.ds.list({nodegap: 30, top: topMargin, left: leftMargin});
   l.addFirst("null").addFirst(20).addFirst("null");
   l.layout();
@@ -34,16 +33,16 @@ $(document).ready(function () {
   var slash = l.get(2).addTail();
 
   //Diagonal slash for new node
-  var newNodeSlash = av.g.line(leftMargin + 256, topMargin + 105,
-                               leftMargin + 266, topMargin + 76,
+  var newNodeSlash = av.g.line(leftMargin + 256, topMargin + 100,
+                               leftMargin + 266, topMargin + 71,
                                {"opacity": 0, "stroke-width": 1});
 
   //Diagonal slash for new tail
   var newTailSlash = l.get(2).addTail({left: 74, visible: 0});
 
   //Diagonal slash for second new node
-  var newNodeSlash2 = av.g.line(leftMargin + 182, topMargin + 107,
-                                leftMargin + 192, topMargin + 76,
+  var newNodeSlash2 = av.g.line(leftMargin + 182, topMargin + 100,
+                                leftMargin + 192, topMargin + 71,
                                 {"opacity": 0, "stroke-width": 1});
 
   var slash2 = l.get(0).addTail({left: 74});
@@ -58,7 +57,7 @@ $(document).ready(function () {
   // Slide 2
   var newNode = l.newNode("");
   // Set the position for the new node
-  newNode.css({top: 60, left: 222});
+  newNode.css({top: 55, left: 222});
   newNode.highlight();
   av.umsg(interpret("av_c2"));
   pseudo.setCurrentLine("setnext");
@@ -136,7 +135,7 @@ $(document).ready(function () {
   // Slide 10
   var newNode2 = l.newNode("");
   // Set the position for the new node
-  newNode2.css({top: 60, left: 148});
+  newNode2.css({top: 55, left: 148});
   newNode2.highlight();
   av.umsg(interpret("av_c10"));
   pseudo.setCurrentLine("setnext");
@@ -173,8 +172,8 @@ $(document).ready(function () {
 
   // Slide 15
   //Diagonal slash for new tail
-  var newTailSlash2 = av.g.line(leftMargin + 181, topMargin + 46,
-                                leftMargin + 191, topMargin + 15,
+  var newTailSlash2 = av.g.line(leftMargin + 182, topMargin + 46,
+                                leftMargin + 192, topMargin + 15,
                                 {"opacity": 0, "stroke-width": 1});
   l.layout();
   newNodeSlash2.hide();

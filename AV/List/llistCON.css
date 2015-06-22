@@ -1,17 +1,13 @@
-.jsavpointer .jsavlabel { 
-  margin-bottom: 2px;
-}
-
 #llistRepCON {
   height: 60px;
 }
 
 #llistBadCON {
-  height: 240px;
+  height: 225px;
 }
 
 #llistBadCON .jsavoutput.jsavline {
-  height: 75px;
+  height: 55px;
 }
 
 #llistBadDelCON {
@@ -23,27 +19,27 @@
 }
 
 #llistInitCON {
-  height: 110px;
+  height: 100px;
 }
 
 #llistHeaderCON {
-  height: 110px;
+  height: 100px;
 }
 
 #llistVarsCON {
-  height: 255px;
+  height: 250px;
 }
 
 #llistVarsCON .jsavoutput.jsavline {
-  height: 63px;
+  height: 50px;
 }
 
 #llistConsCON {
-  height: 355px;
+  height: 350px;
 }
 
 #llistConsCON .jsavoutput.jsavline {
-  height: 75px;
+  height: 50px;
 }
 
 #llistInsertCON {
@@ -61,7 +57,7 @@
 }
 
 #llistSpecialCON {
-  height: 300px;
+  height: 290px;
 }
 
 #llistSpecialCON .jsavoutput.jsavline {
@@ -74,7 +70,7 @@
 }
 
 #llistRemoveCON {
-  height: 480px;
+  height: 465px;
 }
 
 #llistRemoveCON .jsavcode{
@@ -84,7 +80,7 @@
 }
 
 #llistRemoveCON .jsavoutput.jsavline{
-  height: 40px;
+  height: 20px;
 }
 
 #llistOtherCON {
@@ -98,24 +94,4 @@
 
 #llistOtherCON .jsavoutput.jsavline{
   height: 55px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.jsavpointer{
-  width: 35px;
-  text-align: center;
 }

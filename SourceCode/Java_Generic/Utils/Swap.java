@@ -6,8 +6,8 @@ static void swap(int[] A, int i, int j) {
 }
 
 // Swap for int arrays
-static void swap(Object[] A, int i, int j) {
-  Object temp = A[i];
+static <T> void swap(T[] A, int i, int j) {
+  T temp = A[i];
   A[i] = A[j];
   A[j] = temp;
 }

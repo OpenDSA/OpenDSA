@@ -13,7 +13,7 @@ $(document).ready(function () {
 
   // Relative offsets
   var leftMargin = 250;
-  var topMargin = 25;
+  var topMargin = 35;
 
   var l = av.ds.list({nodegap: 30, center: false,
                       left: leftMargin, top: topMargin});
@@ -39,16 +39,10 @@ $(document).ready(function () {
                                 "stroke-dasharray": "-"});
 
   // Create hidden array for holding the removed value
-  var arr = av.ds.array(["10"], {indexed: false, layout: "array",
-                                 left: leftMargin + 140,
-                                 top: topMargin + 50}).hide();
+  var arr = av.ds.array([10], {indexed: false, left: leftMargin + 140,
+                               top: topMargin + 50}).hide();
 
-  var labelIt = av.label("it", {before: arr, left: leftMargin + 73,
-                                top: topMargin + 58});
-  var arrowIt = av.g.line(leftMargin + 89, topMargin + 85,
-                          leftMargin + 129, topMargin + 85,
-                          {"arrow-end": "classic-wide-long",
-                           "opacity": 0, "stroke-width": 2});
+  var labelIt = av.label("it", {left: leftMargin + 125, top: topMargin + 54});
   labelIt.hide();
 
   // Slide 1
@@ -66,7 +60,6 @@ $(document).ready(function () {
   arr.show();
   av.effects.copyValue(l.get(2), arr, 0);
   labelIt.show();
-  arrowIt.show();
   l.get(2).unhighlight();
   arr.highlight(0);
   av.umsg(interpret("av_c3"));

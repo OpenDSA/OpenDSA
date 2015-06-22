@@ -32,6 +32,32 @@
         "tail": 5,
         "listSize": 6
       }
+    },
+    "java": {
+      "url": "../../../SourceCode/Java/Lists/LList.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: LListInsert *** */",
+      "endBefore": "/* *** ODSAendTag: LListInsert *** */",
+      "tags": {
+        "sig": 2,
+        "setnext": 3,
+        "setelem": 4,
+        "tail": 5,
+        "listSize": 6
+      }
+    },
+    "java_generic": {
+      "url": "../../../SourceCode/Java_Generic/Lists/LList.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: LListInsert *** */",
+      "endBefore": "/* *** ODSAendTag: LListInsert *** */",
+      "tags": {
+        "sig": 2,
+        "setnext": 3,
+        "setelem": 4,
+        "tail": 5,
+        "listSize": 6
+      }
     }
   }
 }

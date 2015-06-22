@@ -60,10 +60,9 @@ some of that space is wasted whenever the stack is not full.
 The linked stack can shrink and grow but requires the overhead of a
 link field for every element.
 
-When multiple stacks are to be
-implemented, it is possible to take advantage of the one-way growth of
-the array-based stack.
-This can be done by using a single array to store two stacks.
+When implementing multiple stacks, sometimes you can take advantage of
+the one-way growth of the array-based stack
+by using a single array to store two stacks.
 One stack grows inward from each end as illustrated by the figure
 below, hopefully leading to less wasted space.
 However, this only works well when the space requirements of the two
@@ -72,15 +71,14 @@ In other words, ideally when one stack grows, the other will shrink.
 This is particularly effective when elements are taken from
 one stack and given to the other.
 If instead both stacks grow at the same time, then the free space
-in the middle of the array will be exhausted
-quickly.
+in the middle of the array will be exhausted quickly.
 
 .. _TwoArrayStacks:
 
 .. inlineav:: lstackTwostackCON dgm
    :align: center     
 
-.. odsascript:: AV/List/lstackCON.js
+.. odsascript:: AV/List/llistCON.js
 .. odsascript:: AV/List/lstackDiagramCON.js
 .. odsascript:: AV/List/lstackPushCON.js
 .. odsascript:: AV/List/lstackPopCON.js

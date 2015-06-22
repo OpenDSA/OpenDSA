@@ -27,6 +27,9 @@ $(document).ready(function () {
                                       visible: false, lineNumbers: false}, code[1]));
   var pseudo_pos = av.code($.extend({left: 80, top: 100,
                                      visible: false, lineNumbers: false}, code[2]));
+  var bar1 = l.get(3).addVLine();
+  var bar2 = l.get(4).addVLine();
+  bar2.hide();
 
   // Slide 1
   av.umsg(interpret("av_c1"));
@@ -42,6 +45,8 @@ $(document).ready(function () {
   l.get(4).highlight();
   curr.hide();
   nextCurr.show();
+  bar1.hide();
+  bar2.show();
   av.umsg(interpret("av_c3"));
   av.step();
 
@@ -76,6 +81,8 @@ $(document).ready(function () {
   temp.hide();
   curr.show();
   nextCurr.hide();
+  bar1.show();
+  bar2.hide();
   pseudo_prev.setCurrentLine("curr");
   av.umsg(interpret("av_c7"));
   av.step();
@@ -94,6 +101,8 @@ $(document).ready(function () {
   l.get(3).highlight();
   l.get(4).highlight();
   curr.hide();
+  bar1.hide();
+  bar2.show();
   nextCurr.show();
   pseudo_pos.setCurrentLine("for");
   av.umsg(interpret("av_c9"));

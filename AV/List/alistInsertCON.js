@@ -11,8 +11,7 @@ $(document).ready(function () {
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
   var leftMargin = 10;
-  var arr = av.ds.array(arrValues, {indexed: true, layout: "array",
-                                    left: leftMargin}).hide();
+  var arr = av.ds.array(arrValues, {indexed: true, left: leftMargin}).hide();
   var pseudo = av.code(code);
 
   // Vertical arrow in step 1
@@ -33,19 +32,16 @@ $(document).ready(function () {
   arrow2.hide();
 
   // Create the graphics for maxSize and listSize variables
-  var arrMS = av.ds.array([8], {indexed: false, layout: "array",
-                                left: 100, top: 70});
+  var arrMS = av.ds.array([8], {indexed: false, left: 100, top: 70});
   arrMS.hide();
   var labelMaxSize = av.label("maxSize", {before: arrMS, left: 33, top: 74});
   labelMaxSize.hide();
-  var arrLS = av.ds.array([5], {indexed: false, layout: "array",
-                                left: 100, top: 105});
+  var arrLS = av.ds.array([5], {indexed: false, left: 100, top: 105});
   arrLS.hide();
   var labelListSize = av.label("listSize",
                                {before: arrLS, left: 42, top: 109 });
   labelListSize.hide();
-  var arrCurr = av.ds.array([0], {indexed: false, layout: "array",
-                                left: 100, top: 140});
+  var arrCurr = av.ds.array([0], {indexed: false, left: 100, top: 140});
   arrCurr.hide();
   var labelCurr = av.label("curr", {before: arrLS, left: 63, top: 144 });
   labelCurr.hide();

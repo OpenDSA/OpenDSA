@@ -26,12 +26,11 @@ $(document).ready(function () {
   var bar = l.get(2).addVLine();
 
   // Box "it"
-  var itLabel = av.label("it", {before: l, left: 20, top: -10});
-  var itBox = av.ds.array(["15"], {indexed: false, layout: "array",
-                                   top: -15, left: 40});
+  var itLabel = av.label("it", {left: 20, top: -10});
+  var itBox = av.ds.array([15], {indexed: false, top: -15, left: 40});
 
   // Create pieces for later steps
-  var arr = av.ds.array([""], {indexed: true, layout: "array"});
+  var arr = av.ds.array([""], {indexed: true});
   arr.hide();
   var newSlash = l.get(4).addTail({left: 74, top: 0, visible: 0});
   //Horizontal arrow in step 4 pointing to item 12
