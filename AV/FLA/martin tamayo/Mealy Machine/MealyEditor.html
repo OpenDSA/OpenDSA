@@ -4,69 +4,8 @@
 	<head>
 		<title>Mealy Editor</title>
     	<link rel="stylesheet" href="../../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
-    	<link rel="stylesheet" href="../resources/customPrompt.css" type="text/css" />
-		<style>
-			#av {
-				width: 98%;
-      			position: relative;
-			}
-			.start{	
-				background-color: whitesmoke;
-				font-style: italic;
-				font-weight: bold;
-			}
-			.current{
-				background-color: yellow;
-			}
-			.accepted{
-				background-color: green;
-			}
-			.final{
-				border: 3px double;
-			}
-			p.jsavoutput.jsavline {
-				height: 10px;
-			}
-			.jsavlabel {
-      			font-size: 2em;
-      			text-align: center;
-    		}
-    		.jsavstatelabel {
-    			font-size: 1em;
-    			z-index: 700;
-    			position: absolute;
-    			display: inline-block;
-    			margin: 0;
-    		}
-    		.jsavcanvas {
-    			height: 500px;
-    		}
-    		.jsavgraph {
-    			outline: 1px black solid;
-    			border: 10px transparent solid;
-    		}
-    		.jsavnode {
-    			cursor: pointer;
-    		}
-    		.jsavedge { 
-    			cursor: pointer;
-    			stroke: black;
-    			stroke-width: 1;
-    		}
-    		.jsavcontrols {
-    			display: none;
-    		}
-    		.editing {
-    			stroke-width: 3;
-    		}
-    		.testingND {
-				background-color: blue;
-			}
-			.testingLambda {
-				stroke-width: 3;
-				stroke: red;
-			}
-		</style>
+    	<link rel="stylesheet" href="../../resources/customPrompt.css" type="text/css" />
+    	<link rel="stylesheet" href="../../resources/FA.css" type="text/css" />
 	</head>
 	<body>
 		<div id="dialogueoverlay"></div>
@@ -101,11 +40,11 @@
    		<script src="../../../../JSAV/lib/dagre.min.js"></script>
 		<script src="../../../../JSAV/lib/jquery.transit.js"></script>
 		<script src="../../../../JSAV/build/JSAV.js"></script>
-		<script src="../resources/serializableGraph.js"></script>
-		<script src="../resources/underscore-min.js"></script>
-		<script src="../resources/FA.js"></script>
-		<script src="../resources/MealyPrompt.js"></script>
-		<script src="../resources/MealyCommands.js"></script>
+		<script src="../../resources/serializableGraph.js"></script>
+		<script src="../../resources/underscore-min.js"></script>
+		<script src="../../resources/FA.js"></script>
+		<script src="../../resources/MealyPrompt.js"></script>
+		<script src="../../resources/MealyCommands.js"></script>
 		<script>
 			var jsav = new JSAV("av"),
 				first = null,

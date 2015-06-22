@@ -4,7 +4,7 @@
 	<head>
 		<title>FA Container</title>
     	<link rel="stylesheet" href="../../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
-		<base href="./editor.html" target="iframe">
+		<base href="./FAEditor.html" target="iframe">
 	</head>
 	<body onload="init()">
 		<h1>FA Editor</h1>
@@ -23,9 +23,9 @@
    		<script src="../../../../JSAV/lib/dagre.min.js"></script>
 		<script src="../../../../JSAV/lib/jquery.transit.js"></script>
 		<script src="../../../../JSAV/build/JSAV.js"></script>
-		<script src="../resources/serializableGraph.js"></script>
-		<script src="../resources/underscore-min.js"></script>
-		<script src="../resources/FA.js"></script>
+		<script src="../../resources/serializableGraph.js"></script>
+		<script src="../../resources/underscore-min.js"></script>
+		<script src="../../resources/FA.js"></script>
 		<script>
 			var jsav = new JSAV("av"),
 				jsavArray,
@@ -34,6 +34,9 @@
 				serialization,
 				editing,
 				data;
+
+			var lambda = String.fromCharCode(955),
+				epsilon = String.fromCharCode(949);
 		    
 		    var displayEditor = function () {
 		    	jsavArray.hide();
@@ -42,7 +45,7 @@
 		    	}
 		    	editing = true;
 		    	serialization = document.getElementById("if").contentWindow.getSerial();
-		    	document.getElementById("if").src = "./editor.html";
+		    	document.getElementById("if").src = "./FAEditor.html";
 		    };
 			var displayTraversals = function () {
 				var inputString = prompt("Input string?");
@@ -73,7 +76,7 @@
 			var play = function (inputString) {
 				traversal = inputString;
 				editing = false;
-				document.getElementById("if").src = "./traversal.html";
+				document.getElementById("if").src = "./FATraversal.html";
 			};
 			var willReject = function (graph, inputString) {
 				var currentStates = [graph.initial];
@@ -122,7 +125,7 @@
 					for (var next = successors.next(); next; next = successors.next()) {
 						var weight = graph.getEdge(nextStates[i], next).weight().split('<br>');
 						for (var j = 0; j < weight.length; j++) {
-							if ((weight[j] == "&lambda;" || weight[j] == "&epsilon;") && !next.hasClass('current')) {
+							if ((weight[j] == lambda || weight[j] == epsilon) && !next.hasClass('current')) {
 								next.addClass('current');
 								lambdaStates.push(next);
 							}
@@ -152,7 +155,7 @@
 				}
 				editing = true;
 				data = document.getElementById("loadFile").files[0];
-				document.getElementById("if").src = "./editor.html";
+				document.getElementById("if").src = "./FAEditor.html";
 			};
 			function onLoadHandler() {
 				if (data) {
@@ -175,7 +178,7 @@
 			};
 			function init() {
 				editing = true;
-				document.getElementById("if").src = "./editor.html";
+				document.getElementById("if").src = "./FAEditor.html";
 			};
    		</script>
    	</body>
