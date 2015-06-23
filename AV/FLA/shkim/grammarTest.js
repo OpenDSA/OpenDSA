@@ -1,4 +1,5 @@
 (function ($) {
+  var variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var jsav = new JSAV("av");
   var arrow = "&rarr;",
       lastRow = 8,          // index of the last visible row
@@ -48,7 +49,7 @@
       }
       m.on('click', matrixClickHandler);
       m.layout();
-      m.addClass('deleteMode');
+      $('.jsavmatrix').addClass('deleteMode');
     } else if ($('.jsavmatrix').hasClass('editMode')) {
       this.highlight(index);
       var input1 = prompt('Left-hand side?', this.value(index, 0));
@@ -87,6 +88,7 @@
             self._arrays[i].hide();
           }
           m.on('click', matrixClickHandler);
+          $('.jsavmatrix').addClass('editMode');
         } 
         self._arrays[lastRow + 1].show();
         lastRow++;
@@ -153,7 +155,7 @@
       var c = null;
       for (var i = 0; i < next.length; i++) {
         c = next[i];
-        if (c.toUpperCase() === c) {
+        if (variables.indexOf(c) !== -1) {
           _.map(productions, function(x, k) { 
             if (x[0] === c) {
               var r = x[2];
@@ -167,7 +169,6 @@
               }
             }
           });
-          break;
         }
       }
     }
@@ -196,7 +197,7 @@
         var p = results[i][0];
         var n;
         for (var j = 7; j < p.length; j++) {
-          if (p[j] === p[j].toUpperCase()) {
+          if (variables.indexOf(p[j]) !== -1) {
             n = temp.child(j - 7, p[j]).child(j-7);
           } else {
             temp.child(j - 7, p[j])
