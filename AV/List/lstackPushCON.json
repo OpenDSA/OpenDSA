@@ -1,0 +1,47 @@
+{
+  "translations": {
+    "en": {
+      "av_c1": "Here is the <code>push</code> operation. First we see the linked stack before <code>push</code>",
+      "av_c2": "Create a new node.",
+      "av_c3": "Set the value of the new node.",
+      "av_c4": "Modify the <code>next</code> field of the newly created link node to point to the top of the stack",
+      "av_c5": "Then set top to point to the new link node.",
+      "av_c6": "Increase stack size by 1."
+    }
+  },
+  "code": {
+    "processing": {
+      "url": "../../../SourceCode/Processing/Lists/LStack.pde",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: LStackPush *** */",
+      "endBefore": "/* *** ODSAendTag: LStackPush *** */",
+      "tags": {
+        "sig": 1,
+        "new": 2,
+        "size": 3
+      }
+    },
+    "java": {
+      "url": "../../../SourceCode/Java/Lists/LStack.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: LStackPush *** */",
+      "endBefore": "/* *** ODSAendTag: LStackPush *** */",
+      "tags": {
+        "sig": 1,
+        "new": 2,
+        "size": 3
+      }
+    },
+    "java_generic": {
+      "url": "../../../SourceCode/Java_Generic/Lists/LStack.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: LStackPush *** */",
+      "endBefore": "/* *** ODSAendTag: LStackPush *** */",
+      "tags": {
+        "sig": 1,
+        "new": 2,
+        "size": 3
+      }
+    }
+  }
+}

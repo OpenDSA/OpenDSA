@@ -21,7 +21,7 @@ $(document).ready(function () {
     // If arrValues is null, the user gave us junk which they need to fix
     if (arrValues) {
       ODSA.AV.reset(true);
-      av = new JSAV($(".avcontainer"));
+      av = new JSAV($('.avcontainer'), {settings: settings});
 
       // Set the digit size to the length of the largest number in the array
       var max = Math.max.apply(Math, arrValues);
@@ -141,7 +141,8 @@ $(document).ready(function () {
   //////////////////////////////////////////////////////////////////
   // Load the config object with interpreter
   var config = ODSA.UTILS.loadConfig(),
-      interpret = config.interpreter;       // get the interpreter
+      interpret = config.interpreter,       // get the interpreter
+      settings = config.getSettings();      // Settings for the AV
 
   var av,   // for JSAV library object
       arr,    // for the JSAV array
@@ -157,9 +158,6 @@ $(document).ready(function () {
 
   // Placeholder text translation needs to be set explicitly
   $("#arrayValues").attr("placeholder", interpret("av_arrValsPlaceholder"));
-
-  // create a new settings panel and specify the link to show it
-  var settings = new JSAV.utils.Settings($(".jsavsettings"));
 
   // Initialize the arraysize dropdown list
   ODSA.AV.initArraySize(5, 10, 8);

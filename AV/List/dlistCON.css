@@ -1,37 +1,41 @@
-.jsavcanvas{
-	height: 200px;
-}
-
-#dlistDiagramCON {
-  height: 100px;
-}
-
-#dlistDiagramCON .jsavoutput.jsavline {
-  height: 75px;
+#dlistDiagramCON .jsavcanvas {
+  height: 95px;
 }
 
 #dlistInsertCON {
-  height: 400px;
+  height: 390px;
+}
+
+#dlistInsertCON .jsavoutput.jsavline {
+  height: 20px;
 }
 
 #dlistInsertCON .jsavcode{
   width: 510px;
   position: relative;
-  top: 115px;
+  top: 125px;
 }
 
 #dlistAppendCON {
   height: 410px;
 }
 
+#dlistAppendCON .jsavoutput.jsavline {
+  height: 30px;
+}
+
 #dlistAppendCON .jsavcode{
   width: 510px;
   position: relative;
-  top: 115px;
+  top: 135px;
 }
 
 #dlistRemoveCON {
-  height: 495px;
+  height: 435px;
+}
+
+#dlistRemoveCON .jsavoutput.jsavline {
+  height: 20px;
 }
 
 #dlistRemoveCON .jsavcode{
@@ -41,7 +45,11 @@
 }
 
 #dlistPrevCON {
-  height: 320px;
+  height: 280px;
+}
+
+#dlistPrevCON .jsavoutput.jsavline {
+  height: 20px;
 }
 
 #dlistPrevCON .jsavcode{

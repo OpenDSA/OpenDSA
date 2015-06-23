@@ -153,14 +153,13 @@ $(document).ready(function () {
 
   // Load the config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadConfig(),
-      interpret = config.interpreter;       // get the interpreter
+      interpret = config.interpreter,       // get the interpreter
+      settings = config.getSettings();      // Settings for the AV
 
   // Placeholder text translation needs to be set explicitly
   $("#arrayValues").attr("placeholder", interpret("av_arrValsPlaceholder"));
 
-  // create a new settings panel and specify the link to show it
-  var settings = new JSAV.utils.Settings($(".jsavsettings"));
-  // add the layout setting preference
+  // add the array layout setting preference
   var arrayLayout = settings.add("layout", {"type": "select",
     "options": {"bar": "Bar", "array": "Array"},
     "label": "Array layout: ", "value": "array"});

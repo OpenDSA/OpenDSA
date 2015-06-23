@@ -1,10 +1,10 @@
 // Array-based stack implementation
 /* *** ODSATag: AStack1 *** */
 class AStack implements Stack {
+  private Object stackArray[];    // Array holding stack
   private static final int defaultSize = 10;
   private int maxSize;            // Maximum size of stack
   private int top;                // Index for top Object
-  private Object stackArray[];    // Array holding stack
 
   // Constructors
   AStack(int size) {

@@ -138,9 +138,11 @@ A simple class for representing key-value pairs is shown here.
 The main places where we will need to be concerned with comparing
 records and extracting keys is for various :term:`dictionary`
 implementations and sorting algorithms.
-To keep them clear and simple, OpenDSA will usually show sorting
-algorithms as operating on integer values stored in an array.
-But to be generally useful, a real sorting algorithm typically has to
+To keep them clear and simple, visualizations for sorting algorithms
+will usually show them as operating on integer values stored in an
+array.
+But almost never do people really want to sort an array of integers.
+But to be useful, a real sorting algorithm typically has to
 deal with the fact that it is sorting a collection of records.
 A general-purpose sorting routine meant to operate on multiple record
 types would have to be written in a way to deal with the generic

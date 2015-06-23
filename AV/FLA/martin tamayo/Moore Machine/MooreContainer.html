@@ -23,9 +23,9 @@
    		<script src="../../../../JSAV/lib/dagre.min.js"></script>
 		<script src="../../../../JSAV/lib/jquery.transit.js"></script>
 		<script src="../../../../JSAV/build/JSAV.js"></script>
-		<script src="../resources/serializableGraph.js"></script>
-		<script src="../resources/underscore-min.js"></script>
-		<script src="../resources/FA.js"></script>
+		<script src="../../resources/serializableGraph.js"></script>
+		<script src="../../resources/underscore-min.js"></script>
+		<script src="../../resources/FA.js"></script>
 		<script>
 			var jsav = new JSAV("av"),
 				jsavArray,
@@ -34,6 +34,9 @@
 				serialization,
 				editing,
 				data;
+
+			var lambda = String.fromCharCode(955),
+				epsilon = String.fromCharCode(949);
 		    
 		    var displayEditor = function () {
 		    	jsavArray.hide();
@@ -45,97 +48,89 @@
 		    	document.getElementById("if").src = "./MooreEditor.html";
 		    };
 			var displayTraversals = function () {
-				var inputString = prompt("Input string?");
 				var graph = document.getElementById("if").contentWindow.getGraph();
+				if (graph.initial == null) {
+					window.alert("Moore traversal requires an initial state.");
+					return;
+				}
+				if (document.getElementById("if").contentWindow.testND()) {
+					document.getElementById("if").contentWindow.testLambda();
+					window.alert("This Moore Machine is nondeterministic.\nYou cannot run input on it.");
+					return;
+				};
 				serialization = document.getElementById("if").contentWindow.getSerial();
-				var travArray = [];
-				var inputs = inputString.split(',');
+				var inputString = prompt("Input string?");
+				var inputArray = inputString.split(',');
+				var outputArray = [];
+				var acceptArray = [];
 				document.getElementById("if").contentWindow.readyTraversal();
-				for (var i = 0; i < inputs.length; i++) {
-    				travArray.push(inputs[i]);
+				for (var i = 0; i < inputArray.length; i++) {
+					var outputData = pretraverse(graph, inputArray[i]);
+					acceptArray.push(outputData[0]);
+					if (outputData[0]) {
+    					outputArray.push(outputData[1]);
+    				}
+    				else {
+    					outputArray.push("Rejected");
+    				}
+  				}
+  				var travArray = [];
+  				for (var j = 0; j < inputArray.length; j++) {
+  					travArray.push(inputArray[j] + "<br><b>" + outputArray[j] +"</b>");
   				}
   				document.getElementById("multipleTraversals").innerHTML = "";
   				jsavArray = jsav.ds.array(travArray, {element: $('.arrayPlace')});
-  				for (var j = 0; j < travArray.length; j++) {
-  					if(willReject(graph, travArray[j])){
-  						jsavArray.css(j, {"background-color": "red"});
+  				for (var k = 0; k < travArray.length; k++) {
+  					if(acceptArray[k]){
+  						jsavArray.css(k, {"background-color": "green"});
   					}
   					else {
-  						jsavArray.css(j, {"background-color": "green"});
+  						jsavArray.css(k, {"background-color": "red"});
   					}
   				}
   				jsavArray.click(arrayClickHandler);
   				jsavArray.show();
   			};
   			function arrayClickHandler(index) {
-  				play(this.value(index));
+  				play(this.value(index).split("<br>")[0]);
   			};
 			var play = function (inputString) {
 				traversal = inputString;
 				editing = false;
 				document.getElementById("if").src = "./MooreTraversal.html";
 			};
-			var willReject = function (graph, inputString) {
-				var currentStates = [graph.initial];
-				currentStates = addLambdaClosure(graph, currentStates);
+			var pretraverse = function (graph, inputString) {
+				var accepted = true;
+				var outputString = "";
+				var currentState = graph.initial;
 				var cur;
 				for (var i = 0; i < inputString.length; i++) {
-					for (var j = 0; j < currentStates.length; j++) {
-				   		currentStates[j].removeClass('current');
-				   	}
-				   	cur = traverse(graph, currentStates, inputString[i]);
-				   	if (cur.length == 0) {
+				   	cur = traverse(graph, currentState, inputString[i]);
+				   	if (cur[0] == null) {
+				   		accepted = false;
 				   		break;
 				   	}
-					currentStates = cur;
+					currentState = cur[0];
+					outputString += cur[1];
 				}
-				var rejected = true;
-				for (var k = 0; k < currentStates.length; k++) {
-					currentStates[k].removeClass('current');
-					if (currentStates[k].hasClass('final') && cur.length > 0) {
-						rejected = false;
-					}
-				}
-				return rejected;
+				return [accepted, outputString];
   			};
-			var traverse = function(graph, currentStates, letter) {
-				var nextStates = [];
-				for (var i = 0; i < currentStates.length; i++) {
-					var successors = currentStates[i].neighbors();
-					for (var next = successors.next(); next; next = successors.next()) {
-						var weight = graph.getEdge(currentStates[i], next).weight().split('<br>');
-						for (var j = 0; j < weight.length; j++) {
-							if (letter == weight[j] && !next.hasClass('current')) {
-								next.addClass('current');
-								nextStates.push(next);
+			var traverse = function(graph, currentState, letter) {
+				var nextState = null;
+				var outputChar = "";
+				var successors = currentState.neighbors();
+				for (var next = successors.next(); next; next = successors.next()) {
+					var weights = graph.getEdge(currentState, next).weight().split('<br>');
+					for (var j = 0; j < weights.length; j++) {
+						if (letter == weights[j]) {
+							nextState = next;
+							if (next.stateLabel() != lambda && next.stateLabel() != epsilon) {
+								outputChar = next.stateLabel();
 							}
 						}
 					}
 				}
-				nextStates = addLambdaClosure(graph, nextStates);
-				return nextStates;
-			};
-			var addLambdaClosure = function(graph, nextStates) {
-				lambdaStates = [];
-				for (var i = 0; i < nextStates.length; i++) {
-					var successors = nextStates[i].neighbors();
-					for (var next = successors.next(); next; next = successors.next()) {
-						var weight = graph.getEdge(nextStates[i], next).weight().split('<br>');
-						for (var j = 0; j < weight.length; j++) {
-							if (weight[j] == "&lambda;" && !next.hasClass('current')) {
-								next.addClass('current');
-								lambdaStates.push(next);
-							}
-						}
-					}
-				}
-				if(lambdaStates.length > 0) {
-					lambdaStates = addLambdaClosure(graph, lambdaStates);
-				}
-				for (var k = 0; k < lambdaStates.length; k++) {
-					nextStates.push(lambdaStates[k]);
-				}
-				return nextStates;
+				return [nextState, outputChar];
 			};
 			var setSaved = function () {
 				saved = true
@@ -169,7 +164,7 @@
 					document.getElementById("if").contentWindow.initialize(serialization, traversal);
 				}
 				else {
-					var defaultData = '{"nodes":[{"left":753.90625,"top":171.109375,"i":true,"f":false},{"left":505.890625,"top":342,"i":false,"f":false},{"left":1042,"top":199.40625,"i":false,"f":false},{"left":287.90625,"top":123.625,"i":false,"f":false},{"left":535.921875,"top":0,"i":false,"f":false},{"left":0,"top":89.234375,"i":false,"f":true}],"edges":[{"start":0,"end":1,"weight":"a"},{"start":0,"end":2,"weight":"b"},{"start":1,"end":3,"weight":"a"},{"start":3,"end":4,"weight":"b"},{"start":3,"end":5,"weight":"a"},{"start":4,"end":0,"weight":"a"},{"start":5,"end":3,"weight":"g"}]}';
+					var defaultData = '{"nodes":[{"left":508,"top":201,"i":true,"f":false,"stateLabel":"l"},{"left":345,"top":43,"i":false,"f":false,"stateLabel":"a"},{"left":184,"top":357,"i":false,"f":false,"stateLabel":"p"},{"left":815,"top":42,"i":false,"f":false,"stateLabel":"j"},{"left":660,"top":366,"i":false,"f":false,"stateLabel":"f"}],"edges":[{"start":0,"end":3,"weight":"a"},{"start":0,"end":1,"weight":"d"},{"start":1,"end":2,"weight":"e"},{"start":2,"end":0,"weight":"f"},{"start":3,"end":4,"weight":"b"},{"start":4,"end":0,"weight":"c"}]}';
 					document.getElementById("if").contentWindow.initialize(defaultData, traversal);
 				}
 			};

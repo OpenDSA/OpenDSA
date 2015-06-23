@@ -5,7 +5,7 @@ $(document).ready(function () {
   var av = new JSAV("lstackTwostackCON", {animationMode: "none"});
   // Relative offsets
   var leftMarg = 180;
-  var topMarg = 50;
+  var topMarg = 40;
   var rect = av.g.rect(leftMarg, topMarg, 500, 31);
   var line1 = av.g.line(leftMarg + 31, topMarg, leftMarg + 31, topMarg + 31);
   var line2 = av.g.line(leftMarg + 31 * 2, topMarg,

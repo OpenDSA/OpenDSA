@@ -246,7 +246,7 @@ $(document).ready(function () {
   function runIt() {
     ODSA.AV.reset(true);
 
-    var jsav = new JSAV($('.avcontainer'));
+    var jsav = new JSAV($('.avcontainer'), {settings: settings});
 
     jsav.umsg("Let's get started");
     console.log("Setup the Bintree");
@@ -305,12 +305,9 @@ $(document).ready(function () {
   // Start processing here
   //////////////////////////////////////////////////////////////////
   // Load the config object with interpreter and code created by odsaUtils.js
-  // Load the config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadConfig(),
-      interpret = config.interpreter;       // get the interpreter
+      interpret = config.interpreter,       // get the interpreter
+      settings = config.getSettings();      // Settings for the AV
 
   var theString;
-
-  // create a new settings panel and specify the link to show it
-  var settings = new JSAV.utils.Settings($(".jsavsettings"));
 });

@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :requires: sorting introduction; comparison
+   :requires: sorting introduction
    :satisfies: sorting terminology
    :topic: Sorting
 

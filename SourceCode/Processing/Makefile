@@ -35,7 +35,16 @@ build/UpDown/success:
 	@cp Demo/UpDown.pde build/UpDown
 	@$(PROCESS) --run --sketch="$(BUILD)/UpDown" --output="build/build" --force
 
-Misc: Fact TOH Fibonnaci Anal
+Misc: Largest Fact TOH Fibonnaci Anal
+
+Largest: build/LargestTest/success
+
+build/LargestTest/success: Misc/LargestTest.pde
+	@echo "Largest Test"
+	-@rm -rf build/LargestTest
+	@mkdir build/LargestTest
+	@cp Misc/LargestTest.pde build/LargestTest
+	@$(PROCESS) --run --sketch="$(BUILD)/LargestTest" --output="build/build" --force
 
 Fact: build/Fact/success
 
@@ -70,7 +79,7 @@ build/Fibonnaci/success: Misc/Fibonnaci.pde
 
 Anal:  build/Anal/success
 
-build/Anal/success: Misc/Anal.pde Searching/bsearch.pde Searching/Sequential.pde Misc/Largest.pde
+build/Anal/success: Misc/Anal.pde Searching/Bsearch.pde Searching/Sequential.pde Misc/Largest.pde
 	@echo "Analysis Chapter Test"
 	-@rm -rf build/Anal
 	@mkdir build/Anal

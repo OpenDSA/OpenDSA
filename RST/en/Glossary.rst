@@ -178,6 +178,10 @@ Glossary
       We frequently use the term :term:`algorithm analysis` to mean
       the same thing.
 
+   attribute
+      In :term:`object-oriented programming <object-oriented programming paradigm>`,
+      a synonym for :term:`data member`.
+
    average case
       In algorithm analysis, the average of the costs for all problem
       instances of a given input size :math:`n`. If not all problem
@@ -274,8 +278,8 @@ Glossary
       data structure, and finding a specified data item.
 
    best case
-      In algorithm analysis, the problem instance from among all
-      problem instances for a given input size :math:`n` that has
+      In algorithm analysis, the :term:`problem instance` from among
+      all problem instances for a given input size :math:`n` that has
       least cost. Note that the best case is **not** when :math:`n` is
       small, since we are referring to the best from a class of inputs
       (i.e, those inputs of size :math:`n`).
@@ -545,7 +549,9 @@ Glossary
 
    class
       In the :term:`object-oriented programming paradigm`
-      an ADT and its implementation together make up a class. 
+      an ADT and its implementation together make up a class.
+      An instantiation of a class within a program is termed an
+      :term:`object`.
 
    class hierarchy
       In :term:`object-oriented programming <object-oriented programming paradigm>`,
@@ -771,12 +777,18 @@ Glossary
    DAG
       Abbreviation for :term:`directed acyclic graph`.
 
+   data field
+      In :term:`object-oriented programming <object-oriented programming paradigm>`,
+      a synonym for :term:`data member`.
+
    data item
       A piece of information or a record whose value is drawn from a type.
 
    data member
       The variables that together define the space required by a data
       item are referred to as data members.
+      Some of the commonly used synonyms include :term:`data field`,
+      :term:`attribute`, and :term:`instance variable`.
 
    data structure
       The implementation for an :term:`ADT`.
@@ -1737,10 +1749,9 @@ Glossary
       This best-case cost makes it useful when we have reason to
       expect the input to be nearly sorted.
 
-   instance
-      A specific selection of values for the parameters to a problem.
-      In other words, a specific set of inputs to a problem.
-
+   instance variable
+      In :term:`object-oriented programming <object-oriented programming paradigm>`,
+      a synonym for :term:`data member`.
 
    internal fragmentation
       A condition that occurs when more than :math:`m` bytes
@@ -2361,8 +2372,9 @@ Glossary
       takes up storage during the execution of a computer program.
       In the :term:`object-oriented programming paradigm`, objects
       are the basic units of operation.
-      Not only do they have state (variables), but they
-      know how to perform certain actions (:term:`methods <method>`).
+      Objects have state in the form of :term:`data members <data member>`,
+      and they know how to perform certain actions
+      (:term:`methods <method>`).
 
    object-oriented programming paradigm
       An approach to problem-solving where all computations are
@@ -2690,6 +2702,10 @@ Glossary
       A task to be performed.
       It is best thought of as a :term:`function` or a mapping of
       inputs to outputs.
+
+   problem instance
+      A specific selection of values for the parameters to a problem.
+      In other words, a specific set of inputs to a problem.
 
    procedural
       Typically referring to the
@@ -3777,8 +3793,8 @@ Glossary
       that can hold some subset of the total data being processed.
 
    worst case
-      In algorithm analysis, the problem instance from among all
-      problem instances for a given input size :math:`n` that has
+      In algorithm analysis, the :term:`problem instance` from among
+      all problem instances for a given input size :math:`n` that has
       the greatest cost. Note that the worst case is **not** when
       :math:`n` is big, since we are referring to the wost from a
       class of inputs (i.e, those inputs of size :math:`n`).

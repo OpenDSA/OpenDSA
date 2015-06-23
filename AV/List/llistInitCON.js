@@ -4,7 +4,7 @@
 // Initial state of a linked list when using a header node
 $(document).ready(function () {
   var av = new JSAV("llistInitCON", {animationMode: 'none'});
-  var l = av.ds.list({nodegap: 30, top: 50, left: 367});
+  var l = av.ds.list({nodegap: 30, top: 45, left: 367});
   l.addFirst("null").addFirst("null");
   l.layout();
   setPointerL("head", l.get(0));

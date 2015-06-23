@@ -10,10 +10,15 @@ $(document).ready(function () {
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
   var pseudo = av.code(code);
+  var topMargin = 0;
+  var leftMargin = 30;
+
   var arr = av.ds.array([12, 45, 5, 81, "", "", "", ""],
-                        {indexed: true, top: 35, left: 20});
-  var topPointer = av.pointer("top", arr, {targetIndex : 4});
-  topPointer.hide();
+                        {indexed: true, top: topMargin, left: 20});
+  var topArr = av.ds.array([4], {left: leftMargin + 50, top: topMargin + 60});
+  var topLabel = av.label("top", {left: leftMargin + 20, top: topMargin + 60});
+
+  arr.addClass([4, 5, 6, 7], "unused");
 
   // The purpose of this "array" is only to hold a value,
   // it will always remain hidden.
@@ -29,7 +34,6 @@ $(document).ready(function () {
 
   // Slide 2
   av.umsg(interpret("av_c2"));
-  topPointer.show();
   arr.highlight(4);
   pseudo.setCurrentLine("full");
   av.step();
@@ -38,11 +42,13 @@ $(document).ready(function () {
   pseudo.setCurrentLine("copy");
   av.umsg(interpret("av_c3"));
   av.effects.copyValue(arrCopy, 0, arr, 4);
+  arr.removeClass(4, "unused");
   av.step();
 
   // Slide 4
   av.umsg(interpret("av_c4"));
-  topPointer.target(arr, {targetIndex : 5});
+  topArr.value(0, 5);
+  topArr.highlight(0);
   arr.unhighlight(4);
   arr.highlight(5);
   av.recorded();

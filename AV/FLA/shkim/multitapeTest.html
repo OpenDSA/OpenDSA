@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MultiTape TM test</title>
+    	<link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+  		<link rel="stylesheet" href="../resources/FA.css" type="text/css" />
+		<style>
+			#asktapes {
+				top: 45%;
+				left: 40%;
+				width: 20%;
+				display: block;
+				position: fixed;
+				background: lightgrey;
+				border-radius: 5px;
+				z-index: 750;
+				padding: 11px;
+			}
+			#asktapesinput {
+				width: 100px;
+			}
+			#dialogueoverlay {
+			    display: block;
+			    opacity: 0.8;
+			    position: fixed;
+			    top: 0px;
+			    left: 0px;
+			    background: #FFF;
+			    width: 100%;
+			    height: 100%;
+			    z-index: 750;
+			}
+			#dialoguebox {
+				text-align: center;
+			    display: none;
+			    background: lightgrey;
+			    position: fixed;
+			    border-radius: 5px;
+			    width: 300px;
+			    z-index: 750;
+			}
+			#dialoguebox > div {
+			    margin: 8px;
+			}
+			#dialoguebox > div > #dialogueboxhead {
+			    font-size: 20px;
+			    padding: 10px;
+			}
+			#dialoguebox > div > #dialogueboxbody {
+			    padding: 20px;
+			}
+			#dialoguebox > div > #dialogueboxfoot {
+			    padding: 10px;
+			    text-align: right;
+			}
+			.transitionInput {
+				width: 20px;
+			}
+			.transitionSelect {
+				width: 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="dialogueoverlay"></div>
+  		<div id="dialoguebox">
+  		 	<div>
+    			<div id="dialogueboxhead"></div>
+      			<div id="dialogueboxbody"></div>
+      			<div id="dialogueboxfoot"></div>
+    		</div>
+  		</div>
+  		<div id="asktapes" align="center">
+  			<span>How many tapes?<br><br></span>
+  			<input id="asktapesinput">
+  			<button type='button' id="asktapesbutton">OK</button>
+  		</div>
+		<div id="av">
+			<h1>MultiTape TM test</h1>
+			</span><a class="jsavsettings" href="#">Settings</a>
+			<div class="jsavcontrols">	
+			</div>
+      		<p class="jsavoutput jsavline"></p>
+			<div id="alphabets" align="center" style="font-size: 30px">&Sigma;: <span id='alphabet'></span><br>&Gamma;: <span id='stackalphabet'></span></div>
+      		<p align="center" class="arrayPlace"></p>
+
+		</div>
+		<div class='notEditing'>
+			<button type='button' id="playbutton">Traverse</button>
+			<button type='button' id="multiplebutton">Multiple traverse</button>
+			<button type='button' id="layoutbutton">Layout</button>
+		</div>
+		<div class='editing' style="display: none">
+			<button type='button' id='addnodesbutton'>Add nodes</button>
+			<button type='button' id='addedgesbutton'>Add edges</button>
+			<button type='button' id='movenodesbutton'>Move nodes</button>
+			<button type='button' id='editnodesbutton'>Edit nodes/edges</button>
+			<button type='button' id='deletenodesbutton'>Delete nodes/edges</button>
+			<span id='mode'></span>
+		</div>
+		<div>
+			<button type='button' id="changeButton">Edit</button>
+		</div>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+		<script src="../../../JSAV/lib/raphael.js"></script>
+   		<script src="../../../JSAV/lib/dagre.min.js"></script>
+		<script src="../../../JSAV/lib/jquery.transit.js"></script>
+		<script src="../../../JSAV/build/JSAV.js"></script>
+		<script src="../resources/serializableGraph.js"></script>
+		<script src="../resources/underscore-min.js"></script>
+		<script src="../resources/FA.js"></script>
+		<script src="multitapeTest.js"></script>
+   	</body>
+</html>

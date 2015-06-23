@@ -4,8 +4,9 @@
 //Possible positions for Array-Based list
 $(document).ready(function () {
   var av_name = "listADTposCON";
-  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
-  var jsav = new JSAV(av_name);
+  var config = ODSA.UTILS.loadConfig({"av_name": av_name});
+  var interpret = config.interpreter;
+  var av = new JSAV(av_name);
   var arrPositions = [" ", 5, 7, 3, 9, " "];
 
   //calculate left margin for the JSAV array object
@@ -14,28 +15,27 @@ $(document).ready(function () {
   var leftMargin3 = (canvasWidth - arrWidth3) / 2;
   var i;
   var arrowArray = [];
-  var arr = jsav.ds.array(arrPositions,
-                          {indexed: false, layout: 'array'}).hide();
+  var arr = av.ds.array(arrPositions, {indexed: false}).hide();
 
   // Slide 1
-  jsav.umsg(interpret("av_c1"));
-  jsav.displayInit();
+  av.umsg(interpret("av_c1"));
+  av.displayInit();
 
   // Slide 2
   arr.show();
   for (i = 0; i < 5; i++) {
-    arrowArray[i] = jsav.g.line(leftMargin3 + 77 + 60 * i, 0,
-                                leftMargin3 + 77 + 60 * i, 25,
-                                {"arrow-end": "classic-wide-long",
-                                 "opacity": 0, "stroke-width": 2});
+    arrowArray[i] = av.g.line(leftMargin3 + 75 + 60 * i, 0,
+                              leftMargin3 + 75 + 60 * i, 25,
+                              {"arrow-end": "classic-wide-long",
+                               "opacity": 0, "stroke-width": 2});
   }
-  jsav.umsg(interpret("av_c2"));
-  jsav.step();
+  av.umsg(interpret("av_c2"));
+  av.step();
 
   // Slide 3
   for (i = 0; i < 5; i++) {
     arrowArray[i].show();
   }
-  jsav.umsg(interpret("av_c3"));
-  jsav.recorded();
+  av.umsg(interpret("av_c3"));
+  av.recorded();
 });

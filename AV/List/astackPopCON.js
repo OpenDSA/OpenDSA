@@ -13,15 +13,20 @@ $(document).ready(function () {
 
   // Relative offsets
   var leftMargin = 20;
-  var topMargin = 35;
+  var topMargin = 0;
   var arr = av.ds.array([12, 45, 5, 81, "", "", "", ""],
-                        {indexed: true, top: topMargin, left: leftMargin});
-  var topPointer = av.pointer("top", arr, {targetIndex : 4});
-  var arrReturn = av.ds.array([""], {top : topMargin + 60,
-                                     left: leftMargin + 100});
+                        {indexed: true, left: leftMargin, top: topMargin});
+  arr.addClass([4, 5, 6, 7], "unused");
+
+  var topArr = av.ds.array([4], {left: leftMargin + 100, top: topMargin + 55});
+  var topLabel = av.label("top", {left: leftMargin + 73, top: topMargin + 58});
+  var arrReturn = av.ds.array([""], {left: leftMargin + 100,
+                                     top : topMargin + 90});
+
   arrReturn.hide();
-  var labelReturn = av.label("return", {top : topMargin + 65,
-                                        left: leftMargin + 50});
+  var labelReturn = av.label("return", {left: leftMargin + 55,
+                                        top : topMargin + 93});
+                                        
   labelReturn.hide();
 
   // Slide 1
@@ -39,7 +44,8 @@ $(document).ready(function () {
   av.umsg(interpret("av_c3"));
   arr.unhighlight(4);
   arr.highlight(3);
-  topPointer.target(arr, {targetIndex : 3});
+  topArr.value(0, 3);
+  topArr.highlight(0);
   pseudo.setCurrentLine("return");
   av.step();
 
@@ -48,6 +54,7 @@ $(document).ready(function () {
   labelReturn.show();
   av.effects.copyValue(arr, 3, arrReturn, 0);
   arrReturn.highlight();
+  topArr.unhighlight(0);
   av.umsg(interpret("av_c4"));
   arr.value(3, "");
   av.recorded();

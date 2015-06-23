@@ -16,11 +16,13 @@ $(document).ready(function () {
   // Slide 1
   av.umsg(interpret("av_c1"));
   arr.toggleArrow(8);
+  pseudo.highlight("sig");
   av.displayInit();
-  arr.highlight([0, 15]);
 
   // Slide 2
+  arr.highlight([0, 15]);
   av.umsg(interpret("av_c2"));
+  pseudo.unhighlight("sig");
   pseudo.highlight("init");
   av.step();
 
@@ -82,7 +84,7 @@ $(document).ready(function () {
 
   // Slide 11
   av.umsg(interpret("av_c11"));
-  pseudo.setCurrentLine(0);
+  pseudo.setCurrentLine(0); // Clears both "previous" and "current" line highlight
   pseudo.highlight("while");
   pseudo.highlight("return");
   av.step();

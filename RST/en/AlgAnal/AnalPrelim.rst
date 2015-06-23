@@ -42,7 +42,7 @@ collection of information.
 The values making up an input are called the
 :term:`parameters` of the function.
 A specific selection of values for the parameters is called an
-:term:`instance` of the problem.
+:term:`instance <problem instance>` of the problem.
 For example, the input parameter to a sorting function might be an
 array of integers.
 A particular array of integers, with a given size and specific values

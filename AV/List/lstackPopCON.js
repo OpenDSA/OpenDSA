@@ -1,74 +1,74 @@
-// LStack method pop
-(function ($) {
-  var jsav = new JSAV("lstackPopCON");
-  var pseudo = jsav.code({url: "../../../SourceCode/Processing/Lists/LStack.pde",
-                       lineNumbers: false,
-                       startAfter: "/* *** ODSATag: LStackPop *** */",
-                       endBefore: "/* *** ODSAendTag: LStackPop *** */"});
+"use strict";
+// Written by Jun Yang and Cliff Shaffer
+// LStack pop slideshow
+$(document).ready(function () {
+  var av_name = "lstackPopCON";
+  var config = ODSA.UTILS.loadConfig({'av_name': av_name}),
+      interpret = config.interpreter,       // get the interpreter
+      code = config.code;                   // get the code object
+  var av = new JSAV(av_name);
+  var pseudo = av.code(code);
+
   // Relative offsets
   var leftMargin = 10;
   var topMargin = 35;
-  var list = jsav.ds.list({"nodegap": 30, left : leftMargin, top : topMargin});
+  var list = av.ds.list({"nodegap": 30, left: leftMargin + 60, top: topMargin});
   list.addFirst(15)
       .addFirst(12)
       .addFirst(8)
-      .addFirst(23)
-      .addFirst(20);
+      .addFirst(23);
+
+  list.get(3).addTail({left: 222});
   list.layout();
-  var arr = jsav.ds.array([10]);
-  arr.hide();
-  var arrIt = jsav.ds.array([""], {left : leftMargin + 110, top: topMargin + 50});
-  var labelIt = jsav.label("it", {left : leftMargin + 90, top: topMargin + 55});
+  var firstnode = list.get(0);
+
+  var arrIt = av.ds.array([""], {left: leftMargin + 110, top: topMargin + 50});
+  var labelIt = av.label("it", {left: leftMargin + 90, top: topMargin + 55});
 
   // Slide 1
-  list.get(0).edgeToNext().hide();
-  list.get(0).hide();
-  jsav.umsg("Method <code>pop</code> is also quite simple.");
-  pseudo.highlight(1);
-  jsav.displayInit();
+  av.umsg(interpret("av_c1"));
+  pseudo.setCurrentLine("sig");
+  av.displayInit();
 
   // Slide 2
-  list.get(1).highlight();
-  jsav.umsg("<code>top</code> points to the first node. Since <code>top</code> is not equal to <code>null</code>, we proceed.");
-  var topPointer = setPointer("top", list.get(1));
+  firstnode.highlight();
+  av.umsg(interpret("av_c2"));
+  var topPointer = av.pointer("top", firstnode);
   list.layout();
-  pseudo.unhighlight(1);
-  pseudo.highlight(2);
-  jsav.step();
+  pseudo.setCurrentLine("null");
+  av.step();
 
   // Slide 3
-  jsav.effects.copyValue(list.get(1), arrIt, 0);
-  list.get(1).unhighlight();
+  av.effects.copyValue(firstnode, arrIt, 0);
+  firstnode.unhighlight();
   arrIt.highlight(0);
-  jsav.umsg(" Variable <code>it</code> stores the top node's value as it is removed from the stack.");
-  pseudo.unhighlight(2);
-  pseudo.highlight(3);
-  jsav.step();
+  av.umsg(interpret("av_c3"));
+  pseudo.setCurrentLine("it");
+  av.step();
 
   // Slide 4
   arrIt.unhighlight();
-  list.get(2).highlight();
-  jsav.umsg("The stack is updated by setting <code>top</code> to point to the next link in the stack.");
-  list.remove(1);
+  list.get(1).highlight();
+  av.umsg(interpret("av_c4"));
   topPointer.target(list.get(1));
+  firstnode.addClass("unused");
   list.layout();
-  pseudo.unhighlight(3);
-  pseudo.highlight(4);
-  list.get(0).edgeToNext().hide();
-  jsav.step();
+  pseudo.setCurrentLine("top");
+  av.step();
 
   // Slide 5
-  jsav.umsg("Decrease the stack size by 1");
-  pseudo.unhighlight(4);
-  pseudo.highlight(5);
-  jsav.step();
+  av.umsg(interpret("av_c5"));
+  firstnode.hide();
+  firstnode.edgeToNext().hide();
+  list.layout();
+  pseudo.setCurrentLine("size");
+  av.step();
 
   // Slide 6
-  list.get(2).unhighlight();
   arrIt.highlight();
-  jsav.umsg("The element value is returned.");
-  pseudo.unhighlight(5);
-  pseudo.highlight(6);
-  jsav.step();
-  jsav.recorded();
-}(jQuery));
+  av.umsg(interpret("av_c6"));
+  list.get(1).unhighlight();
+  pseudo.setCurrentLine("return");
+  av.step();
+  av.recorded();
+});

@@ -7,7 +7,7 @@ $(document).ready(function () {
   var av_name = "alistIntroCON";
   var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
   var av = new JSAV(av_name);
-  var arr = av.ds.array(arrValues, {indexed: true, layout: "array"});
+  var arr = av.ds.array(arrValues, {indexed: true});
 
   // Slide 1
   arr.addClass([5, 6, 7], "unused");

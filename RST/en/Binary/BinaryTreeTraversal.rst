@@ -233,7 +233,7 @@ that we communicate information back up the tree to the end user.
    .. codeinclude:: Binary/Traverse
       :tag: count
 
-.. avembed:: Exercises/Development/BTLeafPROG.html ka
+.. avembed:: Exercises/RecurTutor2/btLeafPROG.html ka
 
 
 Another problem that occurs when recursively processing data

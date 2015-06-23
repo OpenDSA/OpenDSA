@@ -1,5 +1,7 @@
+// Tested from "Misc/Anal.pde"
 /* *** ODSATag: Sequential *** */
-// Find the position in A that holds value K, if any does
+// Return the position of an element in array A with value K.
+// If K is not in A, return A.length.
 int sequential(int[] A, int K) {
   for (int i=1; i<A.length; i++) // For each element
     if (A[i] == K)               // if we found it

@@ -90,9 +90,7 @@ while (n > 1)
 void setup() {
   int myarray[] = {5, 20, 3, 11};
 
-  int temp = largest(myarray);
-  if (temp != 1) SUCCESS = false;
-  temp = binarySearch(myarray, 20);
+  int temp = binarySearch(myarray, 20);
   if (temp != 1) SUCCESS = false;
   temp = sequential(myarray, 3);
   if (temp != 2) SUCCESS = false;
