@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Grammars</title>
+  <link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+  <link rel="stylesheet" href="../resources/FA.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+  <style>
+    #container {
+      width: 1000px;
+    }
+    .jsavmatrix .jsavnode {
+      cursor: pointer;
+    }
+    .jsavmatrix .jsavvalue {
+      width: 100px;
+    }
+    .jsavtree {
+      position: relative;
+    }
+    p.jsavoutput.jsavline {
+      height: 10px;
+    }
+  </style>
+</head>
+<body>
+<div id="container">
+<h1>right-linear grammar test</h1>
+<div align="center">
+  <button type="button" id="editbutton">Edit</button>
+  <button type="button" id="deletebutton">Delete</button>
+  <button type="button" id="bfpbutton">Brute Force Parse</button>
+  <span id='mode'></span>
+</div>
+<div id="av">
+  <div class="jsavcontrols">  
+  </div>
+  <p align="center" class="jsavoutput jsavline"></p>
+</div>
+</div>
+
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<script src="../../../JSAV/lib/raphael.js"></script>
+<script src="../../../JSAV/lib/jquery.transit.js"></script>
+<script src="../../../JSAV/build/JSAV.js"></script>
+<script src="../resources/underscore-min.js"></script>
+<script src="grammarTest.js"></script>
+</body>
+</html>
