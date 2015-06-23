@@ -4,11 +4,11 @@ var executeAddNode = function(top, left){
 		offsetLeft = left - newNode.element.width()/2.0;
 	$(newNode.element).offset({top: offsetTop, left: offsetLeft});
 	var outputChar = window.prompt("Output character?");
-	if(outputChar){
-		newNode.stateLabel(outputChar);
+	if (outputChar) {
+		newNode.mooreOutput(outputChar);
 	}
 	else {
-		newNode.stateLabel(emptystring);
+		newNode.mooreOutput(emptystring);
 	}
 	newNode.stateLabelPositionUpdate();
 };
@@ -42,7 +42,7 @@ var executeMoveNode = function(node, top, left){
 	}
 };
 
-var executeEditNode = function(node, initialState, nodeLabel){
+var executeEditNode = function(node, initialState, nodeLabel, nodeOutput){
 	if (initialState) {
 		for (var i = 0; i < g.nodeCount(); i++) {
 			g.removeInitial(g.nodes()[i]);
@@ -51,6 +51,12 @@ var executeEditNode = function(node, initialState, nodeLabel){
 	}
 	else {
 		g.removeInitial(node);
+	}
+	if (nodeOutput) {
+		node.mooreOutput(nodeOutput);
+	}
+	else {
+		node.mooreOutput(emptystring);
 	}
 	node.stateLabel(nodeLabel);
 	node.stateLabelPositionUpdate();

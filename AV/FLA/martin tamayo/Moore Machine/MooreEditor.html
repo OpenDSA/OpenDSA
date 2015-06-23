@@ -88,6 +88,8 @@
 			    		if (gg.nodes[i].i) {
 			    			g.makeInitial(node);
 			    		}
+			    		var outputChar = delambdafyMoore(gg.nodes[i].mooreOutput);
+			    		node.mooreOutput(outputChar);
 			    		node.stateLabel(gg.nodes[i].stateLabel);
 			    		node.stateLabelPositionUpdate();
 			  		}
@@ -128,6 +130,24 @@
   				}
   				return weights.join("<br>");
 		    };
+		    function delambdafyMoore(outputChar) {
+		    	if (!outputChar) {
+		    		return emptystring;
+		    	}
+		    	if (outputChar == "&lambda;") {
+        			outputChar = lambda;
+        			if (lambda != emptystring) {
+        				$("#epsilonButton").click();
+        			}
+      			}
+   				else if (outputChar == "&epsilon;") {
+   					outputChar = epsilon;
+   					if (epsilon != emptystring) {
+   						$("#epsilonButton").click();
+   					}
+   				}
+   				return outputChar;
+		    };
 		    function addHandlers() {
 		    	$(".jsavgraph").click(function(e) {
 					if ($(".jsavgraph").hasClass("addNodes")) {
@@ -149,7 +169,7 @@
 						selected = this;
 						selected.highlight();
 						var Prompt = new NodePrompt();
-						Prompt.render(selected.value(), selected.hasClass('start'), selected.stateLabel());
+						Prompt.render(selected.value(), selected.hasClass('start'), selected.stateLabel(), selected.mooreOutput());
 						selected.unhighlight();
 	   				}
 	   				else if ($(".jsavgraph").hasClass("addEdges")) {
@@ -198,9 +218,9 @@
 	   				}
 				}, {edge: true});
 			};
-			function updateNode(initial_state, node_label) {
+			function updateNode(initial_state, node_label, output_char) {
 				saveFAState();
-				executeEditNode(selected, initial_state, node_label);
+				executeEditNode(selected, initial_state, node_label, output_char);
 			};
 			function createEdge(edge_label) {
 				saveFAState();
@@ -299,8 +319,8 @@
    			var updateTransitions = function(greekLetter) {
    				var nodes = g.nodes();
    				for (var next = nodes.next(); next; next = nodes.next()) {
-   					if (next.stateLabel() === emptystring) {
-   						next.stateLabel(greekLetter);
+   					if (next.mooreOutput() === emptystring) {
+   						next.mooreOutput(greekLetter);
    					}
    				}
    				var edges = g.edges();

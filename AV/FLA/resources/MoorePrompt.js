@@ -1,5 +1,5 @@
 function NodePrompt() {
-    this.render = function(value, is, lab) {
+    this.render = function(value, is, lab, outputChar) {
         var winW = window.innerWidth;
         var winH = window.innerHeight;
         var dialogueoverlay = document.getElementById('dialogueoverlay');
@@ -11,15 +11,19 @@ function NodePrompt() {
         dialoguebox.style.display = "block";
         document.getElementById('dialogueboxhead').innerHTML = "Edit Node <b>" + value + ":</b>";
         document.getElementById('dialogueboxbody').innerHTML = 'Initial State:<input type="checkbox" id="initial_state">';
-        document.getElementById('dialogueboxbody').innerHTML += '<br>Output Character: <input id="label">';
+        document.getElementById('dialogueboxbody').innerHTML += '<br>Output Character: <input id="moore">';
+        document.getElementById('dialogueboxbody').innerHTML += '<br>State Label: <input id="label">';
         document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="ok()">OK</button> <button onclick="terminate()">Cancel</button>';
         if (is) {
             document.getElementById('initial_state').checked = true;
         }
-        if (lab != lambda && lab != epsilon) {
+        if (lab) {
             document.getElementById('label').value = lab;
         }
-        document.getElementById('label').focus();
+        if (outputChar != lambda && outputChar != epsilon) {
+            document.getElementById('moore').value = outputChar;
+        }
+        document.getElementById('moore').focus();
     }
     terminate = function() {
         document.getElementById('dialoguebox').style.display = "none";
@@ -28,10 +32,11 @@ function NodePrompt() {
     ok = function() {
         var initial_state = document.getElementById('initial_state').checked;
         var node_label = document.getElementById('label').value;
-        if (node_label === "") {
-            node_label = emptystring;
+        var output_char = document.getElementById('moore').value;
+        if (output_char === "") {
+            output_char = emptystring;
         }
-        window["updateNode"](initial_state, node_label);
+        window["updateNode"](initial_state, node_label, output_char);
         this.terminate();
     }
 }

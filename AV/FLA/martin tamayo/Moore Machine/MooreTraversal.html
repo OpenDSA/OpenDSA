@@ -51,6 +51,8 @@
 			    	if (gg.nodes[i].i) {
 			    		graph.makeInitial(node);
 			    	}
+			    	var outputChar = delambdafyMoore(gg.nodes[i].mooreOutput);
+			    	node.mooreOutput(outputChar);
 			    	node.stateLabel(gg.nodes[i].stateLabel);
 			    	node.stateLabelPositionUpdate();
 			  	}
@@ -81,6 +83,15 @@
     				weights[i] = symbols.join(":");
   				}
   				return weights.join("<br>");
+		    };
+		    function delambdafyMoore(outputChar) {
+		    	if (outputChar == "&lambda;") {
+        			outputChar = lambda;
+      			}
+   				else if (outputChar == "&epsilon;") {
+   					outputChar = epsilon;
+   				}
+   				return outputChar;
 		    };
    			var run = function(inputString) {
 				var textArray = [];
@@ -144,8 +155,8 @@
 					for (var j = 0; j < weights.length; j++) {
 						if (letter == weights[j]) {
 							nextState = next;
-							if (next.stateLabel() != lambda && next.stateLabel() != epsilon) {
-								outputChar = next.stateLabel();
+							if (next.mooreOutput() != lambda && next.mooreOutput() != epsilon) {
+								outputChar = next.mooreOutput();
 							}
 						}
 					}

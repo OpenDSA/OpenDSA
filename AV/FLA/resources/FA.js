@@ -766,6 +766,24 @@
     }
   };
 
+  fastateproto.mooreOutput = function(newOutput, options) {
+    // the editable labels that go underneath the states
+    if (typeof newOutput === "undefined") {
+      if (this._mooreOutput && this._mooreOutput.element.filter(":visible").size() > 0) {
+        return this._mooreOutput.text();
+      } else {
+        return undefined;
+      }
+    } else {
+      if (!this._mooreOutput) {
+        this._mooreOutput = this.jsav.label(newOutput, {container: this.container.element});
+        this._mooreOutput.element.addClass("jsavmooreoutput");
+      } else {
+        this._mooreOutput.text(newOutput, options);
+      }
+    }
+  };
+
   fastateproto.stateLabelPositionUpdate = function(options) {   // make this run whenever nodes are moved
     // update initial arrow while we're at it
     if (this._initialMarker) {
@@ -773,15 +791,27 @@
           toPoint = [this.position().left, this.position().top + this.element.outerHeight()/2.0];
       this._initialMarker.movePoints([[0].concat(fromPoint), [1].concat(toPoint)], options);
     }
-    if(!this._stateLabel) { return; }
-    var bbox = this.position(),
-        lbbox = this._stateLabel.bounds(),
-        nWidth = this.element.outerWidth(),
-        nHeight = this.element.outerHeight(),
-        newTop = bbox.top + nHeight,
-        newLeft = bbox.left;
-    if (newTop !== lbbox.top || newLeft || lbbox.left) {
-      this._stateLabel.css({top: newTop, left: newLeft, width: nWidth}, options);
+    if(this._stateLabel) {
+      var bbox = this.position(),
+          lbbox = this._stateLabel.bounds(),
+          nWidth = this.element.outerWidth(),
+          nHeight = this.element.outerHeight(),
+          newTop = bbox.top + nHeight,
+          newLeft = bbox.left;
+      if (newTop !== lbbox.top || newLeft || lbbox.left) {
+        this._stateLabel.css({top: newTop, left: newLeft, width: nWidth}, options);
+      }
+    }
+    if(this._mooreOutput) {
+      var bbox = this.position(),
+          lbbox = this._mooreOutput.bounds(),
+          nWidth = this.element.outerWidth(),
+          nHeight = this.element.outerHeight(),
+          newTop = bbox.top - 10,
+          newLeft = bbox.left + nWidth - 20;
+      if (newTop !== lbbox.top || newLeft || lbbox.left) {
+        this._mooreOutput.css({top: newTop, left: newLeft, width: nWidth}, options);
+      }
     }
   };
 

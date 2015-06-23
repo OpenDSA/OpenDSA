@@ -1,9 +1,10 @@
-function Node (l, t, i, f, label) {
+function Node (l, t, i, f, label, moutput) {
   this.left = l;
   this.top = t;
   this.i = i;
   this.f = f;
   this.stateLabel = label;
+  this.mooreOutput = moutput;
 }
 function Edge (s, e, w) {
   this.start = s;
@@ -25,7 +26,8 @@ function serialize(g) {
     var i = next.hasClass("start");
     var f = next.hasClass("final");
     var label = next.stateLabel();
-    var node = new Node(left, top, i, f, label);
+    var moutput = lambdafyMoore(next.mooreOutput());
+    var node = new Node(left, top, i, f, label, moutput);
     nodes[ind] = node;
     ind++;
   }
@@ -56,4 +58,13 @@ function lambdafy(weight) {
     weights[i] = symbols.join(":");
   }
   return weights.join("<br>");
+}
+function lambdafyMoore(mooreOutput) {
+  if (mooreOutput == String.fromCharCode(955)) {
+    mooreOutput = "&lambda;";
+  }
+  else if (mooreOutput == String.fromCharCode(949)) {
+    mooreOutput = "&epsilon;";
+  }
+  return mooreOutput;
 }

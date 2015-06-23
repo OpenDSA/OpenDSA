@@ -32,12 +32,23 @@
 	display: inline-block;
 	margin: 0;
 }
-.jsavcanvas { height: 500px;}
+.jsavmooreoutput {
+	font-size: 1em;
+	z-index: 700;
+	position: absolute;
+	display: inline-block;
+	margin: 0;
+}
+.jsavcanvas {
+	height: 500px;
+}
 .jsavgraph {
 	outline: 1px black solid;
 	border: 10px transparent solid;
 }
-.jsavnode { cursor: pointer;}
+.jsavnode {
+	cursor: pointer;
+}
 .jsavedge { 
 	cursor: pointer;
 	stroke: black;

@@ -12,7 +12,7 @@ function NodePrompt() {
         document.getElementById('dialogueboxhead').innerHTML = "Edit Node <b>" + value + ":</b>";
         document.getElementById('dialogueboxbody').innerHTML = 'Initial State:<input type="checkbox" id="initial_state">';
         document.getElementById('dialogueboxbody').innerHTML += '<br>Final State:<input type="checkbox" id="final_state">';
-        document.getElementById('dialogueboxbody').innerHTML += '<br>Label: <input id="label">';
+        document.getElementById('dialogueboxbody').innerHTML += '<br>State Label: <input id="label">';
         document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="ok()">OK</button> <button onclick="terminate()">Cancel</button>';
         if (is) {
             document.getElementById('initial_state').checked = true;
