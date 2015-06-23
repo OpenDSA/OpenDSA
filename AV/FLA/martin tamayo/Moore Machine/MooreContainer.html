@@ -23,9 +23,9 @@
    		<script src="../../../../JSAV/lib/dagre.min.js"></script>
 		<script src="../../../../JSAV/lib/jquery.transit.js"></script>
 		<script src="../../../../JSAV/build/JSAV.js"></script>
-		<script src="../resources/serializableGraph.js"></script>
-		<script src="../resources/underscore-min.js"></script>
-		<script src="../resources/FA.js"></script>
+		<script src="../../resources/serializableGraph.js"></script>
+		<script src="../../resources/underscore-min.js"></script>
+		<script src="../../resources/FA.js"></script>
 		<script>
 			var jsav = new JSAV("av"),
 				jsavArray,
@@ -34,6 +34,9 @@
 				serialization,
 				editing,
 				data;
+
+			var lambda = String.fromCharCode(955),
+				epsilon = String.fromCharCode(949);
 		    
 		    var displayEditor = function () {
 		    	jsavArray.hide();
@@ -45,12 +48,16 @@
 		    	document.getElementById("if").src = "./MooreEditor.html";
 		    };
 			var displayTraversals = function () {
+				var graph = document.getElementById("if").contentWindow.getGraph();
+				if (graph.initial == null) {
+					window.alert("Moore traversal requires an initial state.");
+					return;
+				}
 				if (document.getElementById("if").contentWindow.testND()) {
 					document.getElementById("if").contentWindow.testLambda();
 					window.alert("This Moore Machine is nondeterministic.\nYou cannot run input on it.");
 					return;
 				};
-				var graph = document.getElementById("if").contentWindow.getGraph();
 				serialization = document.getElementById("if").contentWindow.getSerial();
 				var inputString = prompt("Input string?");
 				var inputArray = inputString.split(',');
@@ -117,7 +124,9 @@
 					for (var j = 0; j < weights.length; j++) {
 						if (letter == weights[j]) {
 							nextState = next;
-							outputChar = next.stateLabel();
+							if (next.stateLabel() != lambda && next.stateLabel() != epsilon) {
+								outputChar = next.stateLabel();
+							}
 						}
 					}
 				}
@@ -155,7 +164,7 @@
 					document.getElementById("if").contentWindow.initialize(serialization, traversal);
 				}
 				else {
-					var defaultData = '{"nodes":[{"left":508.59375,"top":201.3125,"i":true,"f":false,"stateLabel":"l"},{"left":345.59375,"top":43.3125,"i":false,"f":false,"stateLabel":"a"},{"left":184.59375,"top":357.3125,"i":false,"f":false,"stateLabel":"p"},{"left":815.59375,"top":42.3125,"i":false,"f":false,"stateLabel":"j"},{"left":660.59375,"top":366.3125,"i":false,"f":false,"stateLabel":"f"}],"edges":[{"start":0,"end":3,"weight":"a"},{"start":0,"end":1,"weight":"d"},{"start":1,"end":2,"weight":"e"},{"start":2,"end":0,"weight":"&lambda;"},{"start":3,"end":4,"weight":"b"},{"start":4,"end":0,"weight":"c"}]}';
+					var defaultData = '{"nodes":[{"left":508,"top":201,"i":true,"f":false,"stateLabel":"l"},{"left":345,"top":43,"i":false,"f":false,"stateLabel":"a"},{"left":184,"top":357,"i":false,"f":false,"stateLabel":"p"},{"left":815,"top":42,"i":false,"f":false,"stateLabel":"j"},{"left":660,"top":366,"i":false,"f":false,"stateLabel":"f"}],"edges":[{"start":0,"end":3,"weight":"a"},{"start":0,"end":1,"weight":"d"},{"start":1,"end":2,"weight":"e"},{"start":2,"end":0,"weight":"f"},{"start":3,"end":4,"weight":"b"},{"start":4,"end":0,"weight":"c"}]}';
 					document.getElementById("if").contentWindow.initialize(defaultData, traversal);
 				}
 			};

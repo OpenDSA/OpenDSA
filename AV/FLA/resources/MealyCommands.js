@@ -3,14 +3,6 @@ var executeAddNode = function(top, left){
 	var offsetTop = top - newNode.element.height()/2.0,
 		offsetLeft = left - newNode.element.width()/2.0;
 	$(newNode.element).offset({top: offsetTop, left: offsetLeft});
-	var outputChar = window.prompt("Output character?");
-	if(outputChar){
-		newNode.stateLabel(outputChar);
-	}
-	else {
-		newNode.stateLabel("");
-	}
-	newNode.stateLabelPositionUpdate();
 };
 
 var executeDeleteNode = function(node){
@@ -52,12 +44,7 @@ var executeEditNode = function(node, initialState, nodeLabel){
 	else {
 		g.removeInitial(node);
 	}
-	if(nodeLabel){
-		node.stateLabel(nodeLabel);
-	}
-	else{
-		node.stateLabel("");
-	}
+	node.stateLabel(nodeLabel);
 	node.stateLabelPositionUpdate();
 };
 

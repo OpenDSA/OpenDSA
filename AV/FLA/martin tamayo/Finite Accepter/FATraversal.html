@@ -4,55 +4,7 @@
 	<head>
 		<title>FA Traversal</title>
     	<link rel="stylesheet" href="../../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
-		<style>
-			#av {
-				width: 98%;
-      			position: relative;
-			}
-			.start{	
-				background-color: whitesmoke;
-				font-style: italic;
-				font-weight: bold;
-			}
-			.current{
-				background-color: yellow;
-			}
-			.accepted{
-				background-color: green;
-			}
-			.final{
-				border: 3px double;
-			}
-			p.jsavoutput.jsavline {
-				height: 10px;
-			}
-			.jsavlabel {
-      			font-size: 2em;
-      			text-align: center;
-    		}
-    		.jsavstatelabel {
-    			font-size: 1em;
-    			z-index: 700;
-    			position: absolute;
-    			display: inline-block;
-    			margin: 0;
-    		}
-    		.jsavcanvas {
-    			height: 500px;
-    		}
-    		.jsavgraph {
-    			outline: 1px black solid;
-    			border: 10px transparent solid;
-    		}
-    		.jsavnode {
-    			cursor: pointer;
-    		}
-    		.jsavedge { 
-    			cursor: pointer;
-    			stroke: black;
-    			stroke-width: 1;
-    		}
-		</style>
+		<link rel="stylesheet" href="../../resources/FA.css" type="text/css" />
 	</head>
 	<body onload="run()">
 		<div id="av" style="border:none">
@@ -70,17 +22,21 @@
    		<script src="../../../../JSAV/lib/dagre.min.js"></script>
 		<script src="../../../../JSAV/lib/jquery.transit.js"></script>
 		<script src="../../../../JSAV/build/JSAV.js"></script>
-		<script src="../resources/serializableGraph.js"></script>
-		<script src="../resources/underscore-min.js"></script>
-		<script src="../resources/FA.js"></script>
+		<script src="../../resources/serializableGraph.js"></script>
+		<script src="../../resources/underscore-min.js"></script>
+		<script src="../../resources/FA.js"></script>
 		<script>
 			var jsav = new JSAV("av"),
 				arr,
 				g;
 
+			var lambda = String.fromCharCode(955),
+				epsilon = String.fromCharCode(949);
+
 			var initialize = function(graph, traversal) {
 				g = graph;
 				initGraph({layout: "automatic"});
+				$('.jsavcontrols').show();
 				run(traversal);
 			};
 			var initGraph = function(opts) {
@@ -125,6 +81,7 @@
 
   				jsav.displayInit();
 
+  				var failingIndex = inputString.length - 1;
 				for (var i = 0; i < inputString.length; i++) {
 					for (var j = 0; j < currentStates.length; j++) {
 				   		currentStates[j].removeClass('current');
@@ -132,6 +89,7 @@
 				   	cur = traverse(currentStates, inputString[i]);
 				   	if (cur.length == 0) {
 				   		arr.css(i, {"background-color": "red"});
+				   		failingIndex = i;
 				   		jsav.step();
 				   		break;
 				   	}
@@ -150,7 +108,9 @@
 					}
 				}
 				if (rejected) {
-					arr.css(inputString.length - 1, {"background-color": "red"});
+					for (var l = failingIndex; l < inputString.length; l++) {
+						arr.css(l, {"background-color": "red"});
+					}
 					jsav.umsg("Rejected");
 				}
 				jsav.step();
@@ -180,7 +140,7 @@
 					for (var next = successors.next(); next; next = successors.next()) {
 						var weight = g.getEdge(nextStates[i], next).weight().split('<br>');
 						for (var j = 0; j < weight.length; j++) {
-							if ((weight[j] == "&lambda;" || weight[j] == "&epsilon;") && !next.hasClass('current')) {
+							if ((weight[j] == lambda || weight[j] == epsilon) && !next.hasClass('current')) {
 								next.addClass('current');
 								lambdaStates.push(next);
 							}
