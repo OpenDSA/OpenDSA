@@ -56,7 +56,8 @@
 			  	}
 			  	for (var i = 0; i < gg.edges.length; i++) {
 			    	if (gg.edges[i].weight !== undefined) {
-			    		var edge = graph.addEdge(graph.nodes()[gg.edges[i].start], graph.nodes()[gg.edges[i].end], {weight: (gg.edges[i].weight)});
+			    		var w = delambdafy(gg.edges[i].weight);
+			    		var edge = graph.addEdge(graph.nodes()[gg.edges[i].start], graph.nodes()[gg.edges[i].end], {weight: w});
 		        	}
 			    	else {
 			    		var edge = graph.addEdge(graph.nodes()[gg.edges[i].start], graph.nodes()[gg.edges[i].end]);
@@ -64,6 +65,22 @@
 			    	edge.layout();
 			    }
 			    g = graph;
+		    };
+		    function delambdafy(weight) {
+		    	var weights = weight.split("<br>");
+  				for (var i = 0; i < weights.length; i++) {
+    				var symbols = weights[i].split(":");
+    				for (var j = 0; j < symbols.length; j++) {
+      					if (symbols[j] == "&lambda;") {
+        					symbols[j] = lambda;
+      					}
+      					else if (symbols[j] == "&epsilon;") {
+      						symbols[j] = epsilon;
+      					}
+    				}
+    				weights[i] = symbols.join(":");
+  				}
+  				return weights.join("<br>");
 		    };
    			var run = function(inputString) {
 				var textArray = [];
@@ -81,6 +98,11 @@
   				jsav.displayInit();
 
   				var failingIndex = inputString.length - 1;
+  				var finalIndex = inputString.length - 1;
+  				if (!inputString) {
+  					finalIndex = 0;
+  				}
+
 				for (var i = 0; i < inputString.length; i++) {
 					currentState.removeClass('current');
 				   	cur = traverse(currentState, inputString[i]);
@@ -101,12 +123,13 @@
 
 				if (accepted) {
 					currentState.addClass('accepted');
-      				arr.css(inputString.length - 1, {"background-color": "green"});
+      				arr.css(finalIndex, {"background-color": "green"});
 				}
 				else {
-					for (var l = failingIndex; l < inputString.length; l++) {
+					for (var l = failingIndex; l < inputString.length - 1; l++) {
 						arr.css(l, {"background-color": "red"});
 					}
+					arr.css(finalIndex, {"background-color": "red"});
 					jsav.umsg("Rejected");
 				}
 				jsav.step();

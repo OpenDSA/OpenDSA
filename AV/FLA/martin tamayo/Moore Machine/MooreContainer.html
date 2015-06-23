@@ -58,9 +58,13 @@
 					window.alert("This Moore Machine is nondeterministic.\nYou cannot run input on it.");
 					return;
 				};
-				serialization = document.getElementById("if").contentWindow.getSerial();
 				var inputString = prompt("Input string?");
 				var inputArray = inputString.split(',');
+				var nodes = graph.nodes();
+				for (var next = nodes.next(); next; next = nodes.next()) {
+					next.removeClass('current');
+				}
+				serialization = document.getElementById("if").contentWindow.getSerial();
 				var outputArray = [];
 				var acceptArray = [];
 				document.getElementById("if").contentWindow.readyTraversal();

@@ -33,10 +33,27 @@ function serialize(g) {
     var start = g.nodes().indexOf(g.edges()[i].start());
     var end = g.nodes().indexOf(g.edges()[i].end());
     var weight = g.edges()[i].weight();
+    weight = lambdafy(weight);
     var edge = new Edge(start, end, weight);
     edges[i] = edge;
   }
   var gg = new Graph(nodes, edges);
   jsonGraph = JSON.stringify(gg);
   return jsonGraph
+}
+function lambdafy(weight) {
+  var weights = weight.split("<br>");
+  for (var i = 0; i < weights.length; i++) {
+    var symbols = weights[i].split(":");
+    for (var j = 0; j < symbols.length; j++) {
+      if (symbols[j] == String.fromCharCode(955)) {
+        symbols[j] = "&lambda;";
+      }
+      else if (symbols[j] == String.fromCharCode(949)) {
+        symbols[j] = "&epsilon;";
+      }
+    }
+    weights[i] = symbols.join(":");
+  }
+  return weights.join("<br>");
 }

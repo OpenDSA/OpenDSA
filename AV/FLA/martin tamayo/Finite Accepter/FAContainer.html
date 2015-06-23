@@ -54,9 +54,13 @@
 					return;
 				}
 				var inputString = prompt("Input string?");
+				var inputs = inputString.split(',');
+				var nodes = graph.nodes();
+				for (var next = nodes.next(); next; next = nodes.next()) {
+					next.removeClass('current');
+				}
 				serialization = document.getElementById("if").contentWindow.getSerial();
 				var travArray = [];
-				var inputs = inputString.split(',');
 				document.getElementById("if").contentWindow.readyTraversal();
 				for (var i = 0; i < inputs.length; i++) {
     				travArray.push(inputs[i]);
@@ -85,7 +89,7 @@
 			var willReject = function (graph, inputString) {
 				var currentStates = [graph.initial];
 				currentStates = addLambdaClosure(graph, currentStates);
-				var cur;
+				var cur = currentStates;
 				for (var i = 0; i < inputString.length; i++) {
 					for (var j = 0; j < currentStates.length; j++) {
 				   		currentStates[j].removeClass('current');

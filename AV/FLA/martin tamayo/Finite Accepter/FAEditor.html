@@ -96,17 +96,40 @@
 			  		}
 			  		for (var i = 0; i < gg.edges.length; i++) {
 			    		if (gg.edges[i].weight !== undefined) {
-			    			var edge = g.addEdge(g.nodes()[gg.edges[i].start], g.nodes()[gg.edges[i].end], {weight: (gg.edges[i].weight)});
+			    			var w = delambdafy(gg.edges[i].weight);
+			    			var edge = g.addEdge(g.nodes()[gg.edges[i].start], g.nodes()[gg.edges[i].end], {weight: w});
 		        		}
 			    		else {
 			    			var edge = g.addEdge(g.nodes()[gg.edges[i].start], g.nodes()[gg.edges[i].end]);
 			    		}
 			    		edge.layout();
 			    	}
+			    	updateAlphabet();
+			    	addHandlers();
+			    	jsav.displayInit();
 			    }
-			    updateAlphabet();
-			    addHandlers();
-			    jsav.displayInit();
+		    };
+		    function delambdafy(weight) {
+		    	var weights = weight.split("<br>");
+  				for (var i = 0; i < weights.length; i++) {
+    				var symbols = weights[i].split(":");
+    				for (var j = 0; j < symbols.length; j++) {
+      					if (symbols[j] == "&lambda;") {
+        					symbols[j] = lambda;
+        					if (lambda != emptystring) {
+        						$("#epsilonButton").click();
+        					}
+      					}
+      					else if (symbols[j] == "&epsilon;") {
+      						symbols[j] = epsilon;
+      						if (epsilon != emptystring) {
+      							$("#epsilonButton").click();
+      						}
+      					}
+    				}
+    				weights[i] = symbols.join(":");
+  				}
+  				return weights.join("<br>");
 		    };
 		    function addHandlers() {
 		    	$(".jsavgraph").click(function(e) {

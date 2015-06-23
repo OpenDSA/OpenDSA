@@ -59,10 +59,10 @@ function EdgePrompt() {
             var values = edgeWeight.split(":");
             inputValue = values[0];
             outputValue = values[1];
-            if (inputValue != lambda && inputValue[i] != epsilon) {
+            if (inputValue != lambda && inputValue != epsilon) {
                 document.getElementById('inputChar').value = inputValue;
             }
-            if (outputValue != lambda && outputValue[i] != epsilon) {
+            if (outputValue && outputValue != lambda && outputValue != epsilon) {
                 document.getElementById('outputChar').value = outputValue;
             }
         }
