@@ -92,7 +92,7 @@ friend will do the same, and so on, and nothing will ever get done.
 So instead, you will ask your friend to do a problem that is a little
 bit easier.
 You ask the friend to multiply :math:`x-1` and :math:`y`.
-When you friend gives you back that answer, then you can
+When your friend gives you back that answer, then you can
 simply add :math:`y` to the result.
 Then you will be done with your task.
 You don't need to think about how your friend is going to do the task.

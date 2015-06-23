@@ -1,4 +1,4 @@
-/*global ODSA, setPointerL */
+/*global ODSA */
 "use strict";
 // Written by Jun Yang and Cliff Shaffer
 //Linked list insertion
