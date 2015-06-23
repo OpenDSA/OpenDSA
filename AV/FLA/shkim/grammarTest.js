@@ -11,7 +11,7 @@
       epsilon = String.fromCharCode(949),
       square = String.fromCharCode(9633),
       emptystring = lambda;
-  for (var i = 0; i < 20; i++) {
+  for (var i = 0; i < arr.length; i++) {
     arr[i] = ["", arrow, ""];
   }
   arr[0] = ['S', arrow, 'aA'];
@@ -129,7 +129,7 @@
     }
 
     for (var i = 0; i < productions.length; i++) {
-      if (productions[i][0] === 'S') {
+      if (productions[i][0] === productions[0][0]) {
         sententials.push(productions[i][2]);
         table[productions[i][2]] = [i, ''];
       }
@@ -138,7 +138,13 @@
       alert('There is no start variable');
       return;
     }
+    var counter = 0;
     while (true) {
+      counter++;
+      if (counter > 500) {
+        console.warn("infinite loop (probably)");
+        break;
+      }
       next = sententials.pop();
       if (next === inputString) {
         break;
@@ -155,8 +161,10 @@
                 r = "";
               }
               var s = next.replace(c, r);
-              sententials.push(s);
-              table[s] = [k, next];
+              sententials.unshift(s);
+              if (!(s in table)) {
+                table[s] = [k, next];
+              }
             }
           });
           break;
@@ -167,7 +175,13 @@
       jsav.umsg("String accepted");
       var temp = next;
       var results = [];
+      counter = 0;
       while (table[temp]) {
+        counter++;
+        if (counter > 500) {
+          console.warn("infinite loop (probably)");
+          break;
+        }
         var rp = productions[table[temp][0]].join("");
         results.push([rp, temp]);
         temp = table[temp][1];
@@ -177,7 +191,7 @@
       parseTable = new jsav.ds.matrix(results, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
       //jsav.label('Tree');
       parseTree = new jsav.ds.tree({left: "30px", relativeTo: parseTable, anchor: "right top"});
-      temp = parseTree.root("S");
+      temp = parseTree.root(productions[0][0]);
       for (var i = 0; i < results.length; i++) {
         var p = results[i][0];
         var n;
