@@ -2294,7 +2294,7 @@ Glossary
       conjunction with a :term:`multi-dimensional search structure`.
       Most typically, a :term:`spatial` search key representing a
       position in multi-dimensional (2 or 3 dimensions) space.
-      But a multidimensional key could be used to organize data within
+      But a multi-dimensional key could be used to organize data within
       non-spatial dimensions, such as temperature and time.
 
    multi-dimensional search structure
@@ -2565,6 +2565,16 @@ Glossary
       comprise the storage space for the drive.
       Typically, each surface (top and bottom) of each platter stores
       data, and each surface has its own :term:`I/O head`.
+
+   point quadtree
+      A `term:`spatial data structure` for storing point data.
+      It is similar to a :term:`PR quadtree` in that it (in two
+      dimensions) splits the world into four parts.
+      However, it splits using an :term:`object space decomposition`.
+      That is, quadrant containing the point is split into four parts
+      at the point.
+      It is similar to the :term:`kd tree` which splits alternately in
+      each dimension, except that it splits in all dimensions at once.
 
    pop
       A specialized term used to indicate removing an :term:`element`
