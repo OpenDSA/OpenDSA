@@ -1,15 +1,13 @@
-"use strict";
-/*global alert: true, ODSA */
-
 (function ($) {
-	ODSA.SETTINGS.MODULE_ORIGIN = '*';
-	
 	var jsav = new JSAV("av"),
 		saved = false,
 		//startState,
 		selectedNode = null,
 		arr,
-		g;
+		g,
+		grammar;
+
+  	var variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	//Empty string can be set to anything when initializing the graph:
 	//e.g. initGraph({layout: "automatic", emptystring: epsilon})
 	//By default it is set to lambda.
@@ -30,58 +28,42 @@
 	*/
 
 	var initGraph = function(opts) {
-		if (!saved) {
-			g = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
-	  		var a = g.addNode(),		
-	      		b = g.addNode(),
-	      		c = g.addNode(),
-	      		d = g.addNode();
-	      	g.makeInitial(a);
-	      	c.addClass("final");
-	      	d.addClass('final');
-
-		    //g.addEdge(a, a, {weight: 'a'});
-		    //g.addEdge(b, a, {weight: 'c'}).highlight(); //does edge.highlight() do anything?	
-		    g.addEdge(a, b, {weight: 'a'});
-		    //g.addEdge(b, b, {weight: 'b'});
-		    g.addEdge(b, c, {weight: 'b'});
-		    g.addEdge(c, d, {weight: 'a'});
-		    g.addEdge(d, b, {weight: 'b'});
-		    //g.addEdge(d, c, {weight: ''});	//lambda
-		
-			addHandlers();
+		g = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
+		var newStates = _.uniq(_.map(grammar, function(x) { return x[0];}));
+		for (var i = 0; i < newStates.length; i++) {
+			var n = g.addNode();
+			if (i === 0) {
+				g.makeInitial(n);
+			}
+			n.stateLabel(newStates[i]);
 		}
-		else {
-				var ggg = localStorage['graph'],
-				gg = jQuery.parseJSON(ggg),
-			//BUG: if height is set to a %, loading a graph causes the height of the jsavgraph element to increase by a few pixels every time
-				graph = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
-			for (var i = 0; i < gg.nodes.length; i++) {
-				//the 'left' and 'top' options arent working for some reason
-	    		//var node = graph.addNode("q" + i, {'left': parseInt(gg.nodes[i].left), 'top': parseInt(gg.nodes[i].top)});
-	    		var node = graph.addNode('q' + i),
-	    			offset = $('.jsavgraph').offset(),
-	    			offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
-	    		$(node.element).offset({top : parseInt(gg.nodes[i].top) + offset.top + offset2, left: parseInt(gg.nodes[i].left) + offset.left + offset2});
-	    		if (gg.nodes[i].i) {
-	    			graph.makeInitial(node);
-	    		}
-	    		if (gg.nodes[i].f) {
-	    			node.addClass("final");
-	    		}
-	  		}
-	  		for (var i = 0; i < gg.edges.length; i++) {
-	    		if (gg.edges[i].weight !== undefined) {
-	      			var edge = graph.addEdge(graph.nodes()[gg.edges[i].start], graph.nodes()[gg.edges[i].end], {weight: (gg.edges[i].weight)});
-	    		}
-	    		else {
-	      			var edge = graph.addEdge(graph.nodes()[gg.edges[i].start], graph.nodes()[gg.edges[i].end]);
-	    		}
-	    		edge.layout();
-	    	}
-	    	g = graph;
-	    	addHandlers();
+		var f = g.addNode();
+		f.addClass("final");
+		for (var i = 0; i < grammar.length; i++) {
+			var p = grammar[i],
+				r = p[1],
+				fromNode = g.getNodeWithValue("q" + newStates.indexOf(p[0])),
+				toVar = "",
+				toNode,
+				w;
+			for (var j = 0; j < r.length; j++) {
+				if (variables.indexOf(r[j]) !== -1) {
+					toVar = r[j];
+					w = r.substring(0, j)
+					break;
+				}
+			}
+			if (toVar) {
+				toVar = "q" + newStates.indexOf(toVar);
+				toNode = g.getNodeWithValue(toVar);
+			} else {
+				toNode = f;
+				w = r;
+			}
+			g.addEdge(fromNode, toNode, {weight: w});
 		}
+	   	g.layout();
+		addHandlers();
 		return g;
 	};
 	function addHandlers() {
@@ -204,8 +186,10 @@
 			}
 		}, {edge: true});
 	};
-
-	localStorage.clear();
+	if (!localStorage['grammar']) {
+		window.close();
+	}
+	grammar = _.map(localStorage['grammar'].split(','), function(x) {return x.split("&rarr;");});
 	var g = initGraph({layout: "automatic"});
 	//var g = initGraph({layout: "automatic", emptystring: epsilon});
 	g.layout();
@@ -308,10 +292,10 @@
 
 
 	//====================
-	//temp:
+	//temp: TODO
 
 	var play = function() {
-		var inputString = prompt("Input string?", "aba");
+		var inputString = prompt("Input string?", "aqvx");
 		if (inputString === null) {
 			return;
 		}
@@ -337,11 +321,15 @@
 			jsav.displayInit();
 
 		for (var i = 0; i < inputString.length; i++) {
-		   	cur = traverse(currentState, inputString[i]);
-		   	if (cur == null) {
+			console.log(i);
+		   	cur = traverse(currentState, inputString, i);
+		   	if (!cur) {
 		   		arr.css(i, {"background-color": "red"});
 		   		jsav.step();
 		   		break;
+		   	} else {
+		   		cur = cur[0];
+		   		i = cur[1];
 		   	}
 		   	currentState.removeClass('current');
 			currentState = cur;
@@ -359,69 +347,27 @@
 		jsav.step();
 		jsav.recorded();	
 	};
-	var traverse = function(currentState, letter) {
+	var traverse = function(currentState, str, pos) {
 		var successors = currentState.neighbors();
 		for (var next = successors.next(); next; next = successors.next()) {
 			var weight = g.getEdge(currentState, next).weight().split('<br>');
 			for (var i = 0; i < weight.length; i++) {
-				if (letter == weight[i]) {
-					return next;
+				console.log(str.substr(pos, weight[i].length))
+				console.log(weight[i])
+				if (str.substr(pos, weight[i].length) === weight[i]) {
+					return [next, pos - 1 + weight[i].length];
 				}
 			}
 		} 
 		return null;
 	};
 
-	//======================
-	var save = function () {
-		localStorage['graph'] = serialize(g);	//I changed serializableGraph.js
-		jsav.umsg("Saved");
-		saved = true;
-	};
 
-	// var save = function () {
-	// 	localStorage['graph'] = serialize(g);	//I changed serializableGraph.js
-	// 	//saved = true;
-	// 	var downloadData = "text/json;charset=utf-8," + encodeURIComponent(localStorage['graph']);
-	// 	$('#download').html('<a href="data:' + downloadData + '" download="data.json">download JSON</a>');
-	// 	//$('<a href="data:' + downloadData + '" download="data.json">download JSON</a>').trigger('click');
-	// 	jsav.umsg("Saved");
-	// };
-	// var load = function () {
-	// 	if (saved) {
-	// 		//g.hide();		//g.clear() didn't seem to do anything
-	// 						//would like a reset button - should look at openDSA reset
-	// 		$('.jsavgraph').remove(); 
-	// 		g = initGraph({layout: "automatic"});
-	// 		jsav.displayInit();
-	// 		jsav.umsg("Loaded");
-	// 		updateAlphabet();
-	// 	} else{
-	// 		jsav.umsg("There is nothing to load");
-	// 	}
-	// };
-	// var setSaved = function () {
-	// 	saved = true;
-	// };
-
-  	$('#reset').click(function() {
-  		save();
-  		ODSA.AV.reset();
-  		if (jsav) {
-  			jsav.clear();
-  		}
-  		jsav = new JSAV($('.avcontainer'));
-  		$("button").show();
-  		var g = initGraph({layout: "automatic"});
-		g.layout();
-		jsav.displayInit();
-		updateAlphabet();
-  	});
   	$('#playbutton').click(play);
 	$('#layoutbutton').click(function() {g.layout()});
   	$('#testndbutton').click(testND);
   	$('#testlambdabutton').click(testLambda);
-  	$('#saveButton').click(save);
+  	//$('#saveButton').click(save);
   	$('#addnodesbutton').click(addNodesMode);
 	$('#changeButton').click(changeEditingMode);
 	$('#addedgesbutton').click(addEdgesMode);
