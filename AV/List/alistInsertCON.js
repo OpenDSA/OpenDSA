@@ -6,7 +6,7 @@ $(document).ready(function () {
   var av_name = "alistInsertCON";
   var arrValues = [13, 12, 20, 8, 3, "", "", ""];
   // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig({'av_name': av_name}),
+  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
@@ -46,7 +46,7 @@ $(document).ready(function () {
   var labelCurr = av.label("curr", {before: arrLS, left: 63, top: 144 });
   labelCurr.hide();
 
-  // Slide 1: set the background of empty elements to gray
+  // Slide 1
   arr.addClass([5, 6, 7], "unused");
   av.umsg(interpret("av_c1"));
   av.displayInit();
