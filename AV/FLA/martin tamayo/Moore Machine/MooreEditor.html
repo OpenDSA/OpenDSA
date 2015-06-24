@@ -31,7 +31,7 @@
 		<button onclick="testND()">Highlight Nondeterminism</button>
 		<button onclick="testLambda()" id="lambdaButton">Highlight &lambda;-Transitions</button>
 		<button onclick="emptyString()" id="epsilonButton">&epsilon; Mode</button>
-		<div>&Sigma;: <span id='alphabet'></span></div>
+		<div>&Sigma;: <span id='alphabet'></span><br>&Lambda;:<span id='mooreOutput'></span></div>
 		<div id='download'></div>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -104,6 +104,7 @@
 			    		edge.layout();
 			    	}
 			    	updateAlphabet();
+			    	updateMooreOutput();
 			    	addHandlers();
 			    	jsav.displayInit();
 			    }
@@ -233,6 +234,21 @@
    			var updateAlphabet = function() {
 	   			g.updateAlphabet();
 				$("#alphabet").html("" + Object.keys(g.alphabet).sort());
+			};
+			var updateMooreOutput = function() {
+    			var alphabet = {};
+    			var nodes = g.nodes();
+    			var w;
+    			for (var next = nodes.next(); next; next = nodes.next()) {
+          			var letter = next.mooreOutput();
+          			if (letter !== emptystring) {
+            			if (!(letter in alphabet)) {
+              				alphabet[letter] = 0;
+            			}
+           				alphabet[letter]++;
+     				}
+    			}
+    			$("#mooreOutput").html("" + Object.keys(alphabet).sort());
 			};
    			var addNodes = function() {
    				removeModeClasses();

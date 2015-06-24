@@ -101,6 +101,7 @@
     // finally hide the node
     // hide labels
     if (node._stateLabel) { node._stateLabel.hide(options);}
+    if (node._mooreOutput) { node._mooreOutput.hide(options);}
     node.hide(options);
     // renumber nodes
     this.updateNodes();

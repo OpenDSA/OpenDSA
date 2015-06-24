@@ -11,11 +11,13 @@ var executeAddNode = function(top, left){
 		newNode.mooreOutput(emptystring);
 	}
 	newNode.stateLabelPositionUpdate();
+	updateMooreOutput();
 };
 
 var executeDeleteNode = function(node){
 	g.removeNode(node);
 	updateAlphabet();
+	updateMooreOutput();
 };
 
 var executeAddEdge = function(toNode, fromNode, weight){
@@ -60,6 +62,7 @@ var executeEditNode = function(node, initialState, nodeLabel, nodeOutput){
 	}
 	node.stateLabel(nodeLabel);
 	node.stateLabelPositionUpdate();
+	updateMooreOutput();
 };
 
 var executeEditEdge = function(edge, weight){
