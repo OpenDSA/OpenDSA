@@ -118,6 +118,7 @@
     $('#convertRLGbutton').hide();
     $('#convertCFGbutton').hide();
     $('.jsavcontrols').show();
+    $('#backbutton').show();
     $(m.element).css("margin-left", "50px");
 
     var productions = _.filter(arr, function(x) { return x[0]});
@@ -142,10 +143,10 @@
     var counter = 0;
     while (true) {
       counter++;
-      // if (counter > 500) {
-      //   console.warn("infinite loop (probably)");
-      //   break;
-      // }
+      if (counter > 5000) {
+        console.warn("infinite loop (probably)");
+        break;
+      }
       next = sententials.pop();
       if (next === inputString) {
         break;
@@ -257,6 +258,7 @@
       jsav.umsg('"' + inputString + '" rejected');
       $('button').show();
       $('.jsavcontrols').hide();
+      $('#backbutton').hide();
       $(m.element).css("margin-left", "auto");
     }
 
@@ -306,6 +308,20 @@
     var productions=_.filter(arr, function(x) { return x[0]});
     localStorage['grammar'] = _.map(productions, function(x) {return x.join('');});
     window.open('CFGtoNPDA.html', '', 'width = 800, height = 600, screenX = 300, screenY = 50');
+  });
+  $('#backbutton').click(function () {
+    if (parseTree) {
+      parseTree.clear();
+      jsav.clear();
+      jsav = new JSAV("av");
+      m = init();
+    }
+    if (parseTable) { parseTable.clear();}
+    jsav.umsg('');
+    $('button').show();
+    $('.jsavcontrols').hide();
+    $('#backbutton').hide();
+    $(m.element).css("margin-left", "auto");
   });
 
 }(jQuery));
