@@ -55,7 +55,7 @@ class LList implements List {
 /* *** ODSAendTag: LListRemove *** */
 
   public void moveToStart() { curr = head.next(); } // Set curr at list start
-  public void moveToEnd() { curr = tail; }     // Set curr at list end
+  public void moveToEnd() { curr = tail; }          // Set curr at list end
 
 /* *** ODSATag: LListPrev *** */
   // Move curr one step left; no change if now at front

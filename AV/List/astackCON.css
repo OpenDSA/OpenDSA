@@ -2,8 +2,16 @@
   height: 425px;
 }
 
+#astackVarCON .jsavoutput.jsavline {
+  height: 35px;
+}
+
 #astackTopCON {
-  height: 240px;
+  height: 200px;
+}
+
+#astackTopCON .jsavoutput.jsavline {
+  height: 30px;
 }
 
 #astackPushCON {
@@ -22,7 +30,7 @@
 }
 
 #astackPopCON {
-  height: 230px;
+  height: 225px;
 }
 
 #astackPopCON .jsavoutput.jsavline {
@@ -31,7 +39,7 @@
 
 #astackPopCON .jsavcode{
   position: relative;
-  top: 40px;
+  top: 35px;
   left: 175px;
   width: 500px;
 }

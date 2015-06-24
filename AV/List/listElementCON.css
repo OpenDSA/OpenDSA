@@ -1,23 +1,15 @@
-.jsavcanvas{
-	height: 500px;
-}
-
-.jsavpointer{
-  border:1px solid #eee;
-}
-
 .jsavverticalarray .jsavnode.widerecord {
-  max-width: 150px !important;
-  min-width: 150px !important;
+  max-width: 170px !important;
+  min-width: 170px !important;
 }
 
 .jsavhorizontalarray .jsavnode.widerecord {
-  max-width: 150px !important;
-  min-width: 150px !important;
+  max-width: 170px !important;
+  min-width: 170px !important;
 }
 
 #listElementDataCON {
-  height: 500px;
+  height: 465px;
 }
 
 #listElementDataCON .jsavoutput.jsavline {
@@ -25,17 +17,17 @@
 }
 
 #listElementTypeCON {
-  height: 500px;
+  height: 420px;
 }
 
 #listElementTypeCON .jsavoutput.jsavline {
-  height: 75px;
+  height: 50px;
 }
 
 #listElementDeleteCON {
-  height: 500px;
+  height: 450px;
 }
 
 #listElementDeleteCON .jsavoutput.jsavline {
-  height: 75px;
+  height: 65px;
 }

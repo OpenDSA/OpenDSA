@@ -994,6 +994,10 @@
         "long_name": "Spatial Data Structures",
         "exercises": {}
       },
+      "Development/KDtree": {
+        "long_name": "k-d Trees",
+        "exercises": {}
+      },
       "Development/Bintree": {
         "long_name": "Bintrees",
         "exercises": {}
@@ -2658,6 +2662,10 @@
       },
       "Development/NPCoping": {
         "long_name": "Coping with NP-complete problems",
+        "exercises": {}
+      },
+      "Development/Impossible": {
+        "long_name": "Unsolveable Problems",
         "exercises": {}
       }
     },

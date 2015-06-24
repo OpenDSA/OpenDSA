@@ -4,55 +4,7 @@
 	<head>
 		<title>Mealy Traversal</title>
     	<link rel="stylesheet" href="../../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
-		<style>
-			#av {
-				width: 98%;
-      			position: relative;
-			}
-			.start{	
-				background-color: whitesmoke;
-				font-style: italic;
-				font-weight: bold;
-			}
-			.current{
-				background-color: yellow;
-			}
-			.accepted{
-				background-color: green;
-			}
-			.final{
-				border: 3px double;
-			}
-			p.jsavoutput.jsavline {
-				height: 10px;
-			}
-			.jsavlabel {
-      			font-size: 2em;
-      			text-align: center;
-    		}
-    		.jsavstatelabel {
-    			font-size: 1em;
-    			z-index: 700;
-    			position: absolute;
-    			display: inline-block;
-    			margin: 0;
-    		}
-    		.jsavcanvas {
-    			height: 500px;
-    		}
-    		.jsavgraph {
-    			outline: 1px black solid;
-    			border: 10px transparent solid;
-    		}
-    		.jsavnode {
-    			cursor: pointer;
-    		}
-    		.jsavedge { 
-    			cursor: pointer;
-    			stroke: black;
-    			stroke-width: 1;
-    		}
-		</style>
+		<link rel="stylesheet" href="../../resources/FA.css" type="text/css" />
 	</head>
 	<body onload="run()">
 		<div id="av" style="border:none">
@@ -70,17 +22,21 @@
    		<script src="../../../../JSAV/lib/dagre.min.js"></script>
 		<script src="../../../../JSAV/lib/jquery.transit.js"></script>
 		<script src="../../../../JSAV/build/JSAV.js"></script>
-		<script src="../resources/serializableGraph.js"></script>
-		<script src="../resources/underscore-min.js"></script>
-		<script src="../resources/FA.js"></script>
+		<script src="../../resources/serializableGraph.js"></script>
+		<script src="../../resources/underscore-min.js"></script>
+		<script src="../../resources/FA.js"></script>
 		<script>
 			var jsav = new JSAV("av"),
 				arr,
 				g;
 
+			var lambda = String.fromCharCode(955),
+				epsilon = String.fromCharCode(949);
+
 			var initialize = function(graph, traversal) {
 				g = graph;
 				initGraph({layout: "automatic"});
+				$('.jsavcontrols').show();
 				run(traversal);
 			};
 			var initGraph = function(opts) {
@@ -99,7 +55,8 @@
 			  	}
 			  	for (var i = 0; i < gg.edges.length; i++) {
 			    	if (gg.edges[i].weight !== undefined) {
-			    		var edge = graph.addEdge(graph.nodes()[gg.edges[i].start], graph.nodes()[gg.edges[i].end], {weight: (gg.edges[i].weight)});
+			    		var w = delambdafy(gg.edges[i].weight);
+			    		var edge = graph.addEdge(graph.nodes()[gg.edges[i].start], graph.nodes()[gg.edges[i].end], {weight: w});
 		        	}
 			    	else {
 			    		var edge = graph.addEdge(graph.nodes()[gg.edges[i].start], graph.nodes()[gg.edges[i].end]);
@@ -108,13 +65,29 @@
 			    }
 			    g = graph;
 		    };
+		    function delambdafy(weight) {
+		    	var weights = weight.split("<br>");
+  				for (var i = 0; i < weights.length; i++) {
+    				var symbols = weights[i].split(":");
+    				for (var j = 0; j < symbols.length; j++) {
+      					if (symbols[j] == "&lambda;") {
+        					symbols[j] = lambda;
+      					}
+      					else if (symbols[j] == "&epsilon;") {
+      						symbols[j] = epsilon;
+      					}
+    				}
+    				weights[i] = symbols.join(":");
+  				}
+  				return weights.join("<br>");
+		    };
    			var run = function(inputString) {
 				var textArray = [];
 				g.initial.addClass('current');
 				var accepted = true;
 				var outputString = "";
 				var currentState = g.initial;
-				var cur;
+				var cur = currentState;
 				
 				for (var i = 0; i < inputString.length; i++) {
     				textArray.push(inputString[i]);
@@ -123,12 +96,19 @@
 
   				jsav.displayInit();
 
+  				var failingIndex = inputString.length - 1;
+  				var finalIndex = inputString.length - 1;
+  				if (!inputString) {
+  					finalIndex = 0;
+  				}
+
 				for (var i = 0; i < inputString.length; i++) {
 					currentState.removeClass('current');
 				   	cur = traverse(currentState, inputString[i]);
 				   	if (cur[0] == null) {
 				   		accepted = false;
 				   		arr.css(i, {"background-color": "red"});
+				   		failingIndex = i;
 				   		jsav.step();
 				   		break;
 				   	}
@@ -142,10 +122,13 @@
 
 				if (accepted) {
 					currentState.addClass('accepted');
-      				arr.css(inputString.length - 1, {"background-color": "green"});
+      				arr.css(finalIndex, {"background-color": "green"});
 				}
 				else {
-					arr.css(inputString.length - 1, {"background-color": "red"});
+					for (var l = failingIndex; l < inputString.length - 1; l++) {
+						arr.css(l, {"background-color": "red"});
+					}
+					arr.css(finalIndex, {"background-color": "red"});
 					jsav.umsg("Rejected");
 				}
 				jsav.step();
@@ -162,7 +145,7 @@
 						var inputChar = weight[0];
 						if (letter == inputChar) {
 							nextState = next;
-							if (weight[1] != "&lambda;" && weight[1] != "&epsilon;") {
+							if (weight[1] != lambda && weight[1] != epsilon) {
 								outputChar = weight[1];
 							}
 						}

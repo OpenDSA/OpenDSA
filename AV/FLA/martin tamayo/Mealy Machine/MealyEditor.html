@@ -4,69 +4,8 @@
 	<head>
 		<title>Mealy Editor</title>
     	<link rel="stylesheet" href="../../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
-    	<link rel="stylesheet" href="../resources/customPrompt.css" type="text/css" />
-		<style>
-			#av {
-				width: 98%;
-      			position: relative;
-			}
-			.start{	
-				background-color: whitesmoke;
-				font-style: italic;
-				font-weight: bold;
-			}
-			.current{
-				background-color: yellow;
-			}
-			.accepted{
-				background-color: green;
-			}
-			.final{
-				border: 3px double;
-			}
-			p.jsavoutput.jsavline {
-				height: 10px;
-			}
-			.jsavlabel {
-      			font-size: 2em;
-      			text-align: center;
-    		}
-    		.jsavstatelabel {
-    			font-size: 1em;
-    			z-index: 700;
-    			position: absolute;
-    			display: inline-block;
-    			margin: 0;
-    		}
-    		.jsavcanvas {
-    			height: 500px;
-    		}
-    		.jsavgraph {
-    			outline: 1px black solid;
-    			border: 10px transparent solid;
-    		}
-    		.jsavnode {
-    			cursor: pointer;
-    		}
-    		.jsavedge { 
-    			cursor: pointer;
-    			stroke: black;
-    			stroke-width: 1;
-    		}
-    		.jsavcontrols {
-    			display: none;
-    		}
-    		.editing {
-    			stroke-width: 3;
-    		}
-    		.testingND {
-				background-color: blue;
-			}
-			.testingLambda {
-				stroke-width: 3;
-				stroke: red;
-			}
-		</style>
+    	<link rel="stylesheet" href="../../resources/customPrompt.css" type="text/css" />
+    	<link rel="stylesheet" href="../../resources/FA.css" type="text/css" />
 	</head>
 	<body>
 		<div id="dialogueoverlay"></div>
@@ -92,7 +31,7 @@
 		<button onclick="testND()">Highlight Nondeterminism</button>
 		<button onclick="testLambda()" id="lambdaButton">Highlight &lambda;-Transitions</button>
 		<button onclick="emptyString()" id="epsilonButton">&epsilon; Mode</button>
-		<div>&Sigma;: <span id='alphabet'></span></div>
+		<div>&Sigma;: <span id='alphabet'></span><br>&Lambda;:<span id='mealyOutput'></span></div>
 		<div id='download'></div>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -101,11 +40,11 @@
    		<script src="../../../../JSAV/lib/dagre.min.js"></script>
 		<script src="../../../../JSAV/lib/jquery.transit.js"></script>
 		<script src="../../../../JSAV/build/JSAV.js"></script>
-		<script src="../resources/serializableGraph.js"></script>
-		<script src="../resources/underscore-min.js"></script>
-		<script src="../resources/FA.js"></script>
-		<script src="../resources/MealyPrompt.js"></script>
-		<script src="../resources/MealyCommands.js"></script>
+		<script src="../../resources/serializableGraph.js"></script>
+		<script src="../../resources/underscore-min.js"></script>
+		<script src="../../resources/FA.js"></script>
+		<script src="../../resources/MealyPrompt.js"></script>
+		<script src="../../resources/MealyCommands.js"></script>
 		<script>
 			var jsav = new JSAV("av"),
 				first = null,
@@ -115,8 +54,8 @@
 				data,
 				g;
 
-			var lambda = "\&lambda;",
-				epsilon = "\&epsilon;",
+			var lambda = String.fromCharCode(955),
+				epsilon = String.fromCharCode(949),
 				emptystring = lambda;
 			
 			var initialize = function(graph, traversal) {
@@ -154,17 +93,40 @@
 			  		}
 			  		for (var i = 0; i < gg.edges.length; i++) {
 			    		if (gg.edges[i].weight !== undefined) {
-			    			var edge = g.addEdge(g.nodes()[gg.edges[i].start], g.nodes()[gg.edges[i].end], {weight: (gg.edges[i].weight)});
+			    			var w = delambdafy(gg.edges[i].weight);
+			    			var edge = g.addEdge(g.nodes()[gg.edges[i].start], g.nodes()[gg.edges[i].end], {weight: w});
 		        		}
 			    		else {
 			    			var edge = g.addEdge(g.nodes()[gg.edges[i].start], g.nodes()[gg.edges[i].end]);
 			    		}
 			    		edge.layout();
 			    	}
+			    	updateAlphabet();
+			    	addHandlers();
+			    	jsav.displayInit();
 			    }
-			    updateAlphabet();
-			    addHandlers();
-			    jsav.displayInit();
+		    };
+		    function delambdafy(weight) {
+		    	var weights = weight.split("<br>");
+  				for (var i = 0; i < weights.length; i++) {
+    				var symbols = weights[i].split(":");
+    				for (var j = 0; j < symbols.length; j++) {
+      					if (symbols[j] == "&lambda;") {
+        					symbols[j] = lambda;
+        					if (lambda != emptystring) {
+        						$("#epsilonButton").click();
+        					}
+      					}
+      					else if (symbols[j] == "&epsilon;") {
+      						symbols[j] = epsilon;
+      						if (epsilon != emptystring) {
+      							$("#epsilonButton").click();
+      						}
+      					}
+    				}
+    				weights[i] = symbols.join(":");
+  				}
+  				return weights.join("<br>");
 		    };
 		    function addHandlers() {
 		    	$(".jsavgraph").click(function(e) {
@@ -251,6 +213,29 @@
    			var updateAlphabet = function() {
 	   			g.updateAlphabet();
 				$("#alphabet").html("" + Object.keys(g.alphabet).sort());
+				updateMealyOutput();
+			};
+			var updateMealyOutput = function() {
+    			var alphabet = {};
+    			var edges = g.edges();
+    			var w;
+    			for (var next = edges.next(); next; next = edges.next()) {
+      				w = next.weight();
+      				w = w.split('<br>');
+      				for (var i = 0; i < w.length; i++) {
+        				var t = w[i].split('|');
+        				for (var j = 0; j < t.length; j++) {
+          					var letter = t[j].split(':')[1];
+          					if (letter !== emptystring) {
+            					if (!(letter in alphabet)) {
+              						alphabet[letter] = 0;
+            					}
+           			 			alphabet[letter]++;
+          					}
+        				}
+     				}
+    			}
+    			$("#mealyOutput").html("" + Object.keys(alphabet).sort());
 			};
    			var addNodes = function() {
    				removeModeClasses();
@@ -313,13 +298,13 @@
    			var expandEdges = function() {
    				var edges = g.edges();
 				for (var next = edges.next(); next; next = edges.next()) {
-					next.g.element.toggleClass('editing');
+					next.g.element.addClass('edgeSelect');
 				}
    			};
    			var collapseEdges = function() {
    				var edges = g.edges();
 				for (var next = edges.next(); next; next = edges.next()) {
-					next.g.element.toggleClass('editing');
+					next.g.element.removeClass('edgeSelect');
 				}
    			};
    			var emptyString = function() {

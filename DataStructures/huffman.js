@@ -84,7 +84,7 @@ $(document).ready(function () {
   var layAll = function (trees) {
     var leftSoFar = 30;
     for (var i = 0; i < trees.length; i++) {
-      trees[i].css({"left": leftSoFar, "top": "-40px"});
+      trees[i].css({"left": leftSoFar});
       traverse_color(trees[i].root());
       trees[i].layout();
       leftSoFar += trees[i].element.width() + 50;

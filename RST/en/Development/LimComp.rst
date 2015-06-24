@@ -5,6 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
+   :satisfies: Limits to Computing
    :topic: Limits to Computing
 
 Limits to Computing

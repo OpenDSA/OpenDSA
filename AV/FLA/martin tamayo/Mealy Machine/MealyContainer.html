@@ -23,9 +23,9 @@
    		<script src="../../../../JSAV/lib/dagre.min.js"></script>
 		<script src="../../../../JSAV/lib/jquery.transit.js"></script>
 		<script src="../../../../JSAV/build/JSAV.js"></script>
-		<script src="../resources/serializableGraph.js"></script>
-		<script src="../resources/underscore-min.js"></script>
-		<script src="../resources/FA.js"></script>
+		<script src="../../resources/serializableGraph.js"></script>
+		<script src="../../resources/underscore-min.js"></script>
+		<script src="../../resources/FA.js"></script>
 		<script>
 			var jsav = new JSAV("av"),
 				jsavArray,
@@ -34,6 +34,9 @@
 				serialization,
 				editing,
 				data;
+
+			var lambda = String.fromCharCode(955),
+				epsilon = String.fromCharCode(949);
 		    
 		    var displayEditor = function () {
 		    	jsavArray.hide();
@@ -46,6 +49,10 @@
 		    };
 			var displayTraversals = function () {
 				var graph = document.getElementById("if").contentWindow.getGraph();
+				if (graph.initial == null) {
+					window.alert("Mealy traversal requires an initial state.");
+					return;
+				}
 				var edges = graph.edges();
 				for (var next = edges.next(); next; next = edges.next()) {
    					if (!testMealy(next.weight())) {
@@ -58,9 +65,13 @@
 					window.alert("This Mealy Machine is nondeterministic.\nYou cannot run input on it.");
 					return;
 				};
-				serialization = document.getElementById("if").contentWindow.getSerial();
 				var inputString = prompt("Input string?");
 				var inputArray = inputString.split(',');
+				var nodes = graph.nodes();
+				for (var next = nodes.next(); next; next = nodes.next()) {
+					next.removeClass('current');
+				}
+				serialization = document.getElementById("if").contentWindow.getSerial();
 				var outputArray = [];
 				var acceptArray = [];
 				document.getElementById("if").contentWindow.readyTraversal();
@@ -126,7 +137,7 @@
 						var inputChar = weight[0];
 						if (letter == inputChar) {
 							nextState = next;
-							if (weight[1] != "&lambda;" && weight[1] != "&epsilon;") {
+							if (weight[1] != lambda && weight[1] != epsilon) {
 								outputChar = weight[1];
 							}
 						}

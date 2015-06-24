@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "av_c1": "The linked list before insertion. 15 is the value to be inserted.",
       "av_c2": "Create a new link node.",
@@ -12,9 +12,35 @@
       "av_c9": "Since a linked list has no size limit, insert always returns <code>true</code>"
     }
   },
-  "code" : {
+  "code": {
     "processing": {
       "url": "../../../SourceCode/Processing/Lists/LList.pde",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: LListInsert *** */",
+      "endBefore": "/* *** ODSAendTag: LListInsert *** */",
+      "tags": {
+        "sig": 2,
+        "setnext": 3,
+        "setelem": 4,
+        "listSize": 6,
+        "return": 7
+      }
+    },
+    "java": {
+      "url": "../../../SourceCode/Java/Lists/LList.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: LListInsert *** */",
+      "endBefore": "/* *** ODSAendTag: LListInsert *** */",
+      "tags": {
+        "sig": 2,
+        "setnext": 3,
+        "setelem": 4,
+        "listSize": 6,
+        "return": 7
+      }
+    },
+    "java_generic": {
+      "url": "../../../SourceCode/Java_Generic/Lists/LList.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: LListInsert *** */",
       "endBefore": "/* *** ODSAendTag: LListInsert *** */",

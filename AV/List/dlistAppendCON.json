@@ -1,0 +1,52 @@
+{
+  "translations" :{
+    "en": {
+      "av_c1": "The append method works almost the same as insertion. We will insert the value 15.",
+      "av_c2": "Create a new link node.",
+      "av_c3": "Copy 15 to the new node.",
+      "av_c4": "The new node's <code>next</code> field is assigned to point to what <code>tail</code> points to. The new node's <code>prev</code> field is assigned to point to what <code>tail.prev()</code> points to.",
+      "av_c5": "<code>tail</code> node's <code>prev</code> field is assigned to point to the new link node.",
+      "av_c6": "The <code>tail.prev().prev()</code>'s <code>next</code> field is assigned to point to the new link node.",
+      "av_c7": "The new link node is in its correct position in the list.",
+      "av_c8": "Increase the list size by 1."
+    }
+  },
+  "code" : {
+    "processing": {
+      "url": "../../../SourceCode/Processing/Lists/DList.pde",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: DListAppend *** */",
+      "endBefore": "/* *** ODSAendTag: DListAppend *** */",
+      "tags": {
+        "sig": 1,
+        "setPrev": 2,
+        "setNext": 3,
+        "size": 5
+      }
+    },
+    "java": {
+      "url": "../../../SourceCode/Java/Lists/DList.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: DListAppend *** */",
+      "endBefore": "/* *** ODSAendTag: DListAppend *** */",
+      "tags": {
+        "sig": 1,
+        "setPrev": 2,
+        "setNext": 3,
+        "size": 5
+      }
+    },
+    "java_generic": {
+      "url": "../../../SourceCode/Java_Generic/Lists/DList.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: DListAppend *** */",
+      "endBefore": "/* *** ODSAendTag: DListAppend *** */",
+      "tags": {
+        "sig": 1,
+        "setPrev": 2,
+        "setNext": 3,
+        "size": 5
+      }
+    }
+  }
+}

@@ -4,69 +4,8 @@
 	<head>
 		<title>Moore Editor</title>
     	<link rel="stylesheet" href="../../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
-    	<link rel="stylesheet" href="../resources/customPrompt.css" type="text/css" />
-		<style>
-			#av {
-				width: 98%;
-      			position: relative;
-			}
-			.start{	
-				background-color: whitesmoke;
-				font-style: italic;
-				font-weight: bold;
-			}
-			.current{
-				background-color: yellow;
-			}
-			.accepted{
-				background-color: green;
-			}
-			.final{
-				border: 3px double;
-			}
-			p.jsavoutput.jsavline {
-				height: 10px;
-			}
-			.jsavlabel {
-      			font-size: 2em;
-      			text-align: center;
-    		}
-    		.jsavstatelabel {
-    			font-size: 1em;
-    			z-index: 700;
-    			position: absolute;
-    			display: inline-block;
-    			margin: 0;
-    		}
-    		.jsavcanvas {
-    			height: 500px;
-    		}
-    		.jsavgraph {
-    			outline: 1px black solid;
-    			border: 10px transparent solid;
-    		}
-    		.jsavnode {
-    			cursor: pointer;
-    		}
-    		.jsavedge { 
-    			cursor: pointer;
-    			stroke: black;
-    			stroke-width: 1;
-    		}
-    		.jsavcontrols {
-    			display: none;
-    		}
-    		.editing {
-    			stroke-width: 3;
-    		}
-    		.testingND {
-				background-color: blue;
-			}
-			.testingLambda {
-				stroke-width: 3;
-				stroke: red;
-			}
-		</style>
+    	<link rel="stylesheet" href="../../resources/customPrompt.css" type="text/css" />
+    	<link rel="stylesheet" href="../../resources/FA.css" type="text/css" />
 	</head>
 	<body>
 		<div id="dialogueoverlay"></div>
@@ -92,7 +31,7 @@
 		<button onclick="testND()">Highlight Nondeterminism</button>
 		<button onclick="testLambda()" id="lambdaButton">Highlight &lambda;-Transitions</button>
 		<button onclick="emptyString()" id="epsilonButton">&epsilon; Mode</button>
-		<div>&Sigma;: <span id='alphabet'></span></div>
+		<div>&Sigma;: <span id='alphabet'></span><br>&Lambda;:<span id='mooreOutput'></span></div>
 		<div id='download'></div>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -101,11 +40,11 @@
    		<script src="../../../../JSAV/lib/dagre.min.js"></script>
 		<script src="../../../../JSAV/lib/jquery.transit.js"></script>
 		<script src="../../../../JSAV/build/JSAV.js"></script>
-		<script src="../resources/serializableGraph.js"></script>
-		<script src="../resources/underscore-min.js"></script>
-		<script src="../resources/FA.js"></script>
-		<script src="../resources/MoorePrompt.js"></script>
-		<script src="../resources/MooreCommands.js"></script>
+		<script src="../../resources/serializableGraph.js"></script>
+		<script src="../../resources/underscore-min.js"></script>
+		<script src="../../resources/FA.js"></script>
+		<script src="../../resources/MoorePrompt.js"></script>
+		<script src="../../resources/MooreCommands.js"></script>
 		<script>
 			var jsav = new JSAV("av"),
 				first = null,
@@ -115,8 +54,8 @@
 				data,
 				g;
 
-			var lambda = "\&lambda;",
-				epsilon = "\&epsilon;",
+			var lambda = String.fromCharCode(955),
+				epsilon = String.fromCharCode(949),
 				emptystring = lambda;
 			
 			var initialize = function(graph, traversal) {
@@ -149,22 +88,66 @@
 			    		if (gg.nodes[i].i) {
 			    			g.makeInitial(node);
 			    		}
+			    		var outputChar = delambdafyMoore(gg.nodes[i].mooreOutput);
+			    		node.mooreOutput(outputChar);
 			    		node.stateLabel(gg.nodes[i].stateLabel);
 			    		node.stateLabelPositionUpdate();
 			  		}
 			  		for (var i = 0; i < gg.edges.length; i++) {
 			    		if (gg.edges[i].weight !== undefined) {
-			    			var edge = g.addEdge(g.nodes()[gg.edges[i].start], g.nodes()[gg.edges[i].end], {weight: (gg.edges[i].weight)});
+			    			var w = delambdafy(gg.edges[i].weight);
+			    			var edge = g.addEdge(g.nodes()[gg.edges[i].start], g.nodes()[gg.edges[i].end], {weight: w});
 		        		}
 			    		else {
 			    			var edge = g.addEdge(g.nodes()[gg.edges[i].start], g.nodes()[gg.edges[i].end]);
 			    		}
 			    		edge.layout();
 			    	}
+			    	updateAlphabet();
+			    	updateMooreOutput();
+			    	addHandlers();
+			    	jsav.displayInit();
 			    }
-			    updateAlphabet();
-			    addHandlers();
-			    jsav.displayInit();
+		    };
+		    function delambdafy(weight) {
+		    	var weights = weight.split("<br>");
+  				for (var i = 0; i < weights.length; i++) {
+    				var symbols = weights[i].split(":");
+    				for (var j = 0; j < symbols.length; j++) {
+      					if (symbols[j] == "&lambda;") {
+        					symbols[j] = lambda;
+        					if (lambda != emptystring) {
+        						$("#epsilonButton").click();
+        					}
+      					}
+      					else if (symbols[j] == "&epsilon;") {
+      						symbols[j] = epsilon;
+      						if (epsilon != emptystring) {
+      							$("#epsilonButton").click();
+      						}
+      					}
+    				}
+    				weights[i] = symbols.join(":");
+  				}
+  				return weights.join("<br>");
+		    };
+		    function delambdafyMoore(outputChar) {
+		    	if (!outputChar) {
+		    		return emptystring;
+		    	}
+		    	if (outputChar == "&lambda;") {
+        			outputChar = lambda;
+        			if (lambda != emptystring) {
+        				$("#epsilonButton").click();
+        			}
+      			}
+   				else if (outputChar == "&epsilon;") {
+   					outputChar = epsilon;
+   					if (epsilon != emptystring) {
+   						$("#epsilonButton").click();
+   					}
+   				}
+   				return outputChar;
 		    };
 		    function addHandlers() {
 		    	$(".jsavgraph").click(function(e) {
@@ -187,7 +170,7 @@
 						selected = this;
 						selected.highlight();
 						var Prompt = new NodePrompt();
-						Prompt.render(selected.value(), selected.hasClass('start'), selected.stateLabel());
+						Prompt.render(selected.value(), selected.hasClass('start'), selected.stateLabel(), selected.mooreOutput());
 						selected.unhighlight();
 	   				}
 	   				else if ($(".jsavgraph").hasClass("addEdges")) {
@@ -236,9 +219,9 @@
 	   				}
 				}, {edge: true});
 			};
-			function updateNode(initial_state, node_label) {
+			function updateNode(initial_state, node_label, output_char) {
 				saveFAState();
-				executeEditNode(selected, initial_state, node_label);
+				executeEditNode(selected, initial_state, node_label, output_char);
 			};
 			function createEdge(edge_label) {
 				saveFAState();
@@ -251,6 +234,21 @@
    			var updateAlphabet = function() {
 	   			g.updateAlphabet();
 				$("#alphabet").html("" + Object.keys(g.alphabet).sort());
+			};
+			var updateMooreOutput = function() {
+    			var alphabet = {};
+    			var nodes = g.nodes();
+    			var w;
+    			for (var next = nodes.next(); next; next = nodes.next()) {
+          			var letter = next.mooreOutput();
+          			if (letter !== emptystring) {
+            			if (!(letter in alphabet)) {
+              				alphabet[letter] = 0;
+            			}
+           				alphabet[letter]++;
+     				}
+    			}
+    			$("#mooreOutput").html("" + Object.keys(alphabet).sort());
 			};
    			var addNodes = function() {
    				removeModeClasses();
@@ -313,13 +311,13 @@
    			var expandEdges = function() {
    				var edges = g.edges();
 				for (var next = edges.next(); next; next = edges.next()) {
-					next.g.element.toggleClass('editing');
+					next.g.element.addClass('edgeSelect');
 				}
    			};
    			var collapseEdges = function() {
    				var edges = g.edges();
 				for (var next = edges.next(); next; next = edges.next()) {
-					next.g.element.toggleClass('editing');
+					next.g.element.removeClass('edgeSelect');
 				}
    			};
    			var emptyString = function() {
@@ -335,6 +333,12 @@
    				document.getElementById("lambdaButton").innerHTML = "Highlight " + emptystring + "-Transitions";
    			};
    			var updateTransitions = function(greekLetter) {
+   				var nodes = g.nodes();
+   				for (var next = nodes.next(); next; next = nodes.next()) {
+   					if (next.mooreOutput() === emptystring) {
+   						next.mooreOutput(greekLetter);
+   					}
+   				}
    				var edges = g.edges();
 				for (var next = edges.next(); next; next = edges.next()) {
 					if (next.weight() === emptystring) {

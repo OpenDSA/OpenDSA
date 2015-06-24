@@ -12,10 +12,10 @@ $(document).ready(function () {
 
   //Hidden jsav array for copyValue animation
   var temp = [ "10", "|", "17" ];
-  var arr1 = jsav.ds.array(temp, {indexed: false, layout: "array"}).hide();
+  var arr1 = jsav.ds.array(temp, {indexed: false}).hide();
 
   //jsav array object of the sildeshow
-  var arr = jsav.ds.array(arrPositions, {indexed: false, layout: 'array'});
+  var arr = jsav.ds.array(arrPositions, {indexed: false});
   arr.css({ top: 10 });
 
   // Slide 1

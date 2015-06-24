@@ -373,11 +373,11 @@ $(document).ready(function () {
   //////////////////////////////////////////////////////////////////
   // Start processing here
   //////////////////////////////////////////////////////////////////
-  // Load the interpreter created by odsaAV.js
-  var interpret = ODSA.UTILS.loadConfig().interpreter;
+  // Load the config object with interpreter created by odsaUtils.js
+  var config = ODSA.UTILS.loadConfig(),
+      interpret = config.interpreter,       // get the interpreter
+      settings = config.getSettings();      // Settings for the AV
 
-  // settings for the AV
-  var settings = new JSAV.utils.Settings($(".jsavsettings"));
   // add the layout setting preference
   var arrayLayout = settings.add("layout", {"type": "select",
         "options": {"bar": "Bar", "array": "Array"},

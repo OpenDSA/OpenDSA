@@ -1,62 +1,58 @@
+/*global ODSA */
+"use strict";
+// Written by Jun Yang and Cliff Shaffer
 // Dlist prev method
-(function ($) {
-  var jsav = new JSAV('dlistPrevCON');
-  var pseudo = jsav.code({
-      url: '../../../SourceCode/Processing/Lists/DList.pde',
-      lineNumbers: false,
-      startAfter: '/* *** ODSATag: DListPrev *** */',
-      endBefore: '/* *** ODSAendTag: DListPrev *** */'
-    });
+$(document).ready(function () {
+  var av_name = "dlistPrevCON";
+  // Load the config object with interpreter and code created by odsaUtils.js
+  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+      interpret = config.interpreter,       // get the interpreter
+      code = config.code;                   // get the code object
+  var av = new JSAV(av_name);
+  var pseudo = av.code(code);
+
   // Relative offsets
-  var leftMargin = 150;
-  var topMargin = 10;
+  var leftMargin = 190;
+  var topMargin = 35;
 
   // JSAV list
-  var l = jsav.ds.dlist({
-      'nodegap': 30,
-      'center': false,
-      'left': leftMargin,
-      'top': topMargin
-    });
-  l.addFirst('null').addFirst(10).addFirst(35).addFirst(8).addFirst(23).addFirst('null');
+  var l = av.ds.dlist({nodegap: 30, center: false, left: leftMargin, top: topMargin});
+  l.addFirst("null").addFirst(10).addFirst(35).addFirst(8).addFirst(23).addFirst("null");
   l.layout();
-  l.get(0).odsa_addSlash('left');
-  var tailSlash = l.get(5).odsa_addSlash();
-  var Vline = l.get(3).odsa_addVLine();
-  var Vline1 = l.get(2).odsa_addVLine();
+  l.get(0).addSlash("left");
+  var tailSlash = l.get(5).addSlash();
+  var Vline = l.get(3).addVLine();
+  var Vline1 = l.get(2).addVLine();
   Vline1.hide();
-  setPointer('head', l.get(0));
-  var curr = setPointer('curr', l.get(3));
-  setPointer('tail', l.get(5));
-  jsav.umsg('The prev method is easy.');
-  pseudo.highlight(1);
-  jsav.displayInit();
+  setPointer("head", l.get(0));
+  var curr = setPointer("curr", l.get(3));
+  setPointer("tail", l.get(5));
+  av.umsg(interpret("av_c1"));
+  pseudo.setCurrentLine("sig");
+  av.displayInit();
 
   // Step 2
-  jsav.umsg('The node with value 35 is the current node');
+  av.umsg(interpret("av_c2"));
   l.get(3).highlight();
-  jsav.step();
+  av.step();
 
   // Step 3
-  jsav.umsg('Since the node <code>curr.prev()</code> is not <code>head</code> node, we can proceed.');
+  av.umsg(interpret("av_c3"));
   l.get(3).unhighlight();
   l.get(2).highlight();
-  pseudo.unhighlight(1);
-  pseudo.highlight(2);
-  jsav.step();
+  pseudo.setCurrentLine("headcheck");
+  av.step();
 
   // Step 4
-  jsav.umsg('The variable <code>curr</code> is set to point to  <code>curr.prev()</code>.');
+  av.umsg(interpret("av_c4"));
   curr.target(l.get(2));
   Vline.hide();
   Vline1.show();
-  pseudo.unhighlight(2);
-  pseudo.highlight(3);
-  jsav.step();
+  pseudo.setCurrentLine("curr");
+  av.step();
 
   // Step 5
-  jsav.umsg('This takes &Theta;(1) time.');
-  pseudo.unhighlight(3);
-  jsav.step();
-  jsav.recorded();
-}(jQuery));
+  av.umsg(interpret("av_c5"));
+  pseudo.setCurrentLine(0);
+  av.recorded();
+});

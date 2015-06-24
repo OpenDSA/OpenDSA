@@ -1,116 +1,92 @@
+/*global ODSA */
+"use strict";
+// Written by Jun Yang and Cliff Shaffer
 // Dlist Remove method
-(function ($) {
-  var jsav = new JSAV('dlistRemoveCON');
-  var pseudo = jsav.code({
-      url: '../../../SourceCode/Processing/Lists/Dlist.pde',
-      lineNumbers: false,
-      startAfter: '/* *** ODSATag: DListRemove *** */',
-      endBefore: '/* *** ODSAendTag: DListRemove *** */'
-    });
+$(document).ready(function () {
+  var av_name = "dlistRemoveCON";
+  // Load the config object with interpreter and code created by odsaUtils.js
+  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+      interpret = config.interpreter,       // get the interpreter
+      code = config.code;                   // get the code object
+  var av = new JSAV(av_name);
+  var pseudo = av.code(code);
+
   // Relative offsets
-  var leftMargin = 200;
-  var topMargin = 15;
-  // Create a the hidden array
-  var itBox = jsav.ds.array([''], {
-      indexed: false,
-      layout: 'array',
-      left: leftMargin + 70,
-      top: topMargin + 50
-    }).hide();
+  var leftMargin = 225;
+  var topMargin = 35;
+
+  // "it" box and label
+  var itBox = av.ds.array([""], {indexed: false, left: leftMargin + 70,
+                                                 top: topMargin + 50}).hide();
   itBox.highlight();
+  var itLabel = av.label("it", {left: leftMargin + 50, top: topMargin + 53}).hide();
 
-  // "It"
-  var itLabel = jsav.label('it', {
-      left: leftMargin + 3,
-      top: topMargin + 53,
-      'font-size': '20px'
-    }).hide();
-  var arrowIt = jsav.g.line(leftMargin + 19, topMargin + 80, leftMargin + 59, topMargin + 80, {
-      'arrow-end': 'classic-wide-long',
-      'opacity': 0,
-      'stroke-width': 2
-    });
-  //itLabel.hide();
-
-  // JSAV list
-  var l = jsav.ds.dlist({
-      'nodegap': 30,
-      'center': false,
-      'left': leftMargin,
-      'top': topMargin
-    });
-  l.addFirst('null').addFirst(35).addFirst(8).addFirst(23).addFirst('null');
+  var l = av.ds.dlist({nodegap: 30, center: false, left: leftMargin, top: topMargin});
+  l.addFirst("null").addFirst(35).addFirst(8).addFirst(23).addFirst("null");
   l.layout();
-  l.get(0).odsa_addSlash('left');
-  var tailSlash = l.get(4).odsa_addSlash();
-  var Vline = l.get(2).odsa_addVLine();
-  var Vline1 = l.get(2).odsa_addVLine({
-      left: l.get(2).element.outerWidth() / 2 + 15,
-      top: -35
-    });
-  var Vline2 = l.get(2).odsa_addVLine({ top: 25 });
+  l.get(0).addSlash("left");
+  var tailSlash = l.get(4).addSlash();
+  var Vline = l.get(2).addVLine();
+  var Vline1 = l.get(2).addVLine({left: l.get(2).element.outerWidth() / 2 + 15, top: -35});
+  var Vline2 = l.get(2).addVLine({ top: 25 });
   Vline1.hide();
   Vline2.hide();
-  setPointer('head', l.get(0));
-  var curr = setPointer('curr', l.get(2));
-  setPointer('tail', l.get(4));
-  jsav.umsg('Now we will look at the remove method. Here is the linked list before we remove the node with value 8.');
-  pseudo.highlight(1);
-  jsav.displayInit();
+  setPointer("head", l.get(0));
+  var curr = setPointer("curr", l.get(2));
+  setPointer("tail", l.get(4));
 
-  // Step 2
-  jsav.umsg('Since curr is not at the tail position, we can proceed');
+  // Slide 1
+  av.umsg(interpret("av_c1"));
+  pseudo.setCurrentLine("sig");
+  av.displayInit();
+
+  // Slide 2
+  av.umsg(interpret("av_c2"));
   l.get(2).highlight();
-  pseudo.unhighlight(1);
-  pseudo.highlight(2);
+  pseudo.setCurrentLine("tailcheck");
   l.get(3).edgeToPrev().addClass("dashline");
   l.get(2).edgeToPrev().addClass("dashline");
   l.get(2).edgeToNext().addClass("dashline");
   l.get(1).edgeToNext().addClass("dashline");
-  jsav.step();
+  av.step();
 
-  // Step 3
-  jsav.umsg('Remember the value of the current node.');
+  // Slide 3
+  av.umsg(interpret("av_c3"));
   itBox.show();
-  arrowIt.show();
   itLabel.show();
-  jsav.effects.copyValue(l.get(2), itBox, 0);
+  av.effects.copyValue(l.get(2), itBox, 0);
   l.get(2).unhighlight();
-  pseudo.unhighlight(2);
-  pseudo.highlight(3);
-  jsav.step();
+  pseudo.setCurrentLine("elem");
+  av.step();
 
-  // Step 4
-  jsav.umsg('<code>curr.prev()</code>\'s next field is set to point to <code>curr.next()</code>.');
-  var dashLineTop = arrowAround(l.get(2), 'top');
+  // Slide 4
+  av.umsg(interpret("av_c4"));
+  var dashLineTop = arrowAround(l.get(2), "top");
   l.get(1).edgeToNext().hide();
   Vline.hide();
   itBox.unhighlight(0);
-  pseudo.unhighlight(3);
-  pseudo.highlight(4);
-  jsav.step();
+  pseudo.setCurrentLine("setNext");
+  av.step();
 
-  // Step 5
-  jsav.umsg('<code>curr.next()</code>\'s prev field is set to point to <code>curr.prev()</code>.');
-  var dashLineDown = arrowAround(l.get(2), 'down');
+  // Slide 5
+  av.umsg(interpret("av_c5"));
+  var dashLineDown = arrowAround(l.get(2), "down");
   l.get(3).edgeToPrev().hide();
-  pseudo.unhighlight(4);
-  pseudo.highlight(5);
-  jsav.step();
+  pseudo.setCurrentLine("setPrev");
+  av.step();
 
-  // Step 6
-  jsav.umsg('Change <code>curr</code> to point to the next node.');
+  // Slide 6
+  av.umsg(interpret("av_c6"));
   curr.target(l.get(3));
-  pseudo.unhighlight(5);
-  pseudo.highlight(6);
-  jsav.step();
+  pseudo.setCurrentLine("curr");
+  av.step();
 
-  // Step 7
-  jsav.umsg('The node with value 8 is not pointed by any node from the list, so it is safe to remove the node from the list.');
-  jsav.step();
+  // Slide 7
+  av.umsg(interpret("av_c7"));
+  av.step();
 
-  // Step 8
-  jsav.umsg('The node with value 8 is removed from the list. Decrement node count by 1.');
+  // Slide 8
+  av.umsg(interpret("av_c8"));
   l.get(2).edgeToPrev().removeClass("dashline");
   l.get(1).edgeToNext().removeClass("dashline");
   l.remove(2);
@@ -119,17 +95,14 @@
   dashLineTop.hide();
   dashLineDown.hide();
   tailSlash.hide();
-  var newTailSlash = l.get(3).odsa_addSlash();
+  var newTailSlash = l.get(3).addSlash();
   Vline.show();
-  pseudo.unhighlight(6);
-  pseudo.highlight(7);
-  jsav.step();
+  pseudo.setCurrentLine("size");
+  av.step();
 
-  // Step 9
-  jsav.umsg(' Return value removed.');
+  // Slide 9
+  av.umsg(interpret("av_c9"));
   itBox.highlight(0);
-  pseudo.unhighlight(7);
-  pseudo.highlight(8);
-  jsav.step();
-  jsav.recorded();
-}(jQuery));
+  pseudo.setCurrentLine("return");
+  av.recorded();
+});

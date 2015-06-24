@@ -25,6 +25,40 @@
         "c5": 10,
         "clear": [6, 7, 8, 9, 10]
       }
+    },
+    "java": {
+      "url": "../../../SourceCode/Java/Lists/LList.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: LListCons *** */",
+      "endBefore": "/* *** ODSAendTag: LListCons *** */",
+      "tags": {
+        "comment": 1,
+        "optsize": 2,
+        "default": 3,
+        "c1": 6,
+        "c2": 7,
+        "c3": 8,
+        "c4": 9,
+        "c5": 10,
+        "clear": [6, 7, 8, 9, 10]
+      }
+    },
+    "java_generic": {
+      "url": "../../../SourceCode/Java_Generic/Lists/LList.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: LListCons *** */",
+      "endBefore": "/* *** ODSAendTag: LListCons *** */",
+      "tags": {
+        "comment": 1,
+        "optsize": 2,
+        "default": 3,
+        "c1": 6,
+        "c2": 7,
+        "c3": 8,
+        "c4": 9,
+        "c5": 10,
+        "clear": [6, 7, 8, 9, 10]
+      }
     }
   }
 }

@@ -63,7 +63,7 @@ $(document).ready(function () {
   // initalize the visualization
   function initialize() {
     //console.log("initialize");
-    jsav = new JSAV($('.avcontainer'));
+    jsav = new JSAV($('.avcontainer'), {settings: settings});
     jsav.recorded();
     jsav.displayInit();
     var empty = [];
@@ -1139,11 +1139,9 @@ $(document).ready(function () {
   // Load the config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadConfig(),
       interpret = config.interpreter,       // get the interpreter
-      code = config.code;                   // get the code object
+      code = config.code                    // get the code object
+      settings = config.getSettings();      // Settings for the AV
+
   console.log("Code object: " + JSON.stringify(code));
-
-  // create a new settings panel and specify the link to show it
-  var settings = new JSAV.utils.Settings($(".jsavsettings"));
-
   initialize()
 });

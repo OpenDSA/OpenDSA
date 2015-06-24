@@ -4,6 +4,7 @@
   "code_dir": "SourceCode/",
   "code_lang": {
     "Processing": { "ext":["pde"], "label":"Processing","lang":"java"},
+    "Java_Generic": { "ext":["java"], "label":"Java (Generic)","lang":"java"},
     "C++":{ "ext": ["cpp", "h"],"label":"C++","lang":"C++"}
   },
   "lang": "en",
@@ -21,6 +22,7 @@
     "Preface": {
       "Intro": {
         "long_name": "How to Use this System",
+	"dispModComp": true,
         "exercises": {}
       }
     },
@@ -40,6 +42,7 @@
     "Mathematical Background": {
       "Background/MathpreIntro": {
         "long_name": "Chapter Introduction",
+	"dispModComp": true,
         "exercises": {}
       },
       "Background/SetDef": {
@@ -67,30 +70,36 @@
       },
       "Background/MiscMath": {
         "long_name": "Miscellaneous Notation",
+	"dispModComp": true,
         "exercises": {}
       },
       "Background/Logarithms": {
         "long_name": "Logarithms",
+	"dispModComp": true,
         "exercises": {}
       },
       "Background/Summations": {
         "long_name": "Summations and Recurrence Relations",
+	"dispModComp": true,
         "exercises": {}
       },
       "Background/Recursion": {
         "long_name": "Recursion",
+	"dispModComp": true,
         "exercises": {
           "TOHfigCON": {}
         }
       },
       "Background/Proofs": {
         "long_name": "Proofs",
+	"dispModComp": true,
         "exercises": {
           "twoColorCON": {}
         }
       },
       "Background/Estimation": {
         "long_name": "Estimation",
+	"dispModComp": true,
         "exercises": {}
       },
       "Background/MathpreSumm": {
@@ -108,22 +117,27 @@
     "Algorithm Analysis": {
       "AlgAnal/AnalChap": {
         "long_name": "Chapter Intro: Algorithm Analysis",
+	"dispModComp": true,
         "exercises": {}
       },
       "AlgAnal/AnalPrelim": {
         "long_name": "Problems, Algorithms, and Programs",
+	"dispModComp": true,
         "exercises": {}
       },
       "AlgAnal/AnalIntro": {
         "long_name": "Comparing Algorithms",
+	"dispModComp": true,
         "exercises": {}
       },
       "AlgAnal/AnalCases": {
         "long_name": "Best, Average, and Worst Cases",
+	"dispModComp": true,
         "exercises": {}
       },
       "AlgAnal/AnalCompvsAlg": {
         "long_name": "A Faster Computer, or a Faster Algorithm?",
+	"dispModComp": true,
         "exercises": {}
       },
       "AlgAnal/AnalAsymptotic": {
@@ -135,6 +149,7 @@
             "remove": true
           }
         },
+	"dispModComp": true,
         "exercises": {}
       },
       "AlgAnal/AnalLower": {
@@ -181,22 +196,27 @@
       },
       "AlgAnal/AnalProblem": {
         "long_name": "Analyzing Problems",
+	"dispModComp": true,
         "exercises": {}
       },
       "AlgAnal/AnalMisunderstanding": {
         "long_name": "Common Misunderstandings",
+	"dispModComp": true,
         "exercises": {}
       },
       "AlgAnal/AnalMultiple": {
         "long_name": "Multiple Parameters",
+	"dispModComp": true,
         "exercises": {}
       },
       "AlgAnal/AnalSpace": {
         "long_name": "Space Bounds",
+	"dispModComp": true,
         "exercises": {}
       },
       "AlgAnal/AnalTuning": {
         "long_name": "Speeding Up Your Programs",
+	"dispModComp": true,
         "exercises": {}
       },
       "AlgAnal/AlgAnalSumm": {
@@ -238,6 +258,7 @@
     "Linear Structures": {
       "List/ListIntro": {
         "long_name": "Chapter Introduction: Linear Structures",
+	"dispModComp": true,
         "exercises": {}
       },
       "List/ListADT": {
@@ -544,6 +565,7 @@
       },
       "List/StackRecur": {
         "long_name": "Implementing Recursion",
+	"dispModComp": true,
         "exercises": {}
       },
       "List/Queue": {
@@ -655,10 +677,12 @@
     "Design 2": {
       "Design/DesignPatterns": {
         "long_name": "Design Patterns",
+	"dispModComp": true,
         "exercises": {}
       },
       "Design/DesignAltList": {
         "long_name": "Alternate List ADT Design",
+	"dispModComp": true,
         "exercises": {}
       },
       "Design/Comparison": {
@@ -674,6 +698,7 @@
       },
       "Design/Dictionary": {
         "long_name": "The Dictionary ADT",
+	"dispModComp": true,
         "exercises": {}
       },
       "Design/DesignSumm": {
@@ -691,6 +716,7 @@
     "Binary Trees": {
       "Binary/BinaryTreeIntro": {
         "long_name": "Binary Trees Chapter Introduction",
+	"dispModComp": true,
         "exercises": {}
       },
       "Binary/BinaryTree": {
@@ -706,6 +732,7 @@
       },
       "Binary/BinaryTreeFullThm": {
         "long_name": "Full Binary Tree Theorem",
+	"dispModComp": true,
         "exercises": {}
       },
       "Binary/BinaryTreeTraversal": {
@@ -729,7 +756,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "BTLeafPROG": {
+          "btLeafPROG": {
             "long_name": "Node Count Programming Exercise",
             "required": true,
             "points": 1.0,
@@ -855,6 +882,7 @@
       },
       "Binary/BSTDict": {
         "long_name": "Dictionary Implementation with BST",
+	"dispModComp": true,
         "exercises": {}
       },
       "Binary/CompleteTree": {
@@ -991,12 +1019,14 @@
       },
       "Development/HuffProof": {
         "long_name": "Proof for Huffman Coding",
+	"dispModComp": true,
         "exercises": {}
       }
     },
     "Sorting": {
       "Sorting/InSort": {
         "long_name": "Chapter Introduction: Sorting",
+	"dispModComp": true,
         "exercises": {}
       },
       "Sorting/SortNotation": {
@@ -1594,18 +1624,22 @@
     "File Processing": {
       "Development/FileProc": {
         "long_name": "File Processing Chapter Introduction",
+	"dispModComp": true,
         "exercises": {}
       },
       "Development/Secondary": {
         "long_name": "Primary versus Secondary Storage",
+	"dispModComp": true,
         "exercises": {}
       },
       "Development/Diskdrive": {
         "long_name": "Disk Drives",
+	"dispModComp": true,
         "exercises": {}
       },
       "Development/BuffPool": {
         "long_name": "Buffer Pools",
+	"dispModComp": true,
         "sections": {
           "BPextra": {
             "long_name": "Buffer Pool Extra Material",
@@ -1649,6 +1683,7 @@
       },
       "Development/FileProg": {
         "long_name": "Programmer's View of Files",
+	"dispModComp": true,
         "exercises": {}
       },
       "Development/ExternalSort": {
@@ -1965,14 +2000,17 @@
     "Memory Management": {
       "Development/MemmanIntro": {
         "long_name": "Chapter Introduction: Memory Management",
+	"dispModComp": true,
         "exercises": {}
       },
       "Development/Dynamic": {
         "long_name": "Dynamic Memory Allocation",
+	"dispModComp": true,
         "exercises": {}
       },
       "Development/SequentialFit": {
         "long_name": "Sequential-Fit Methods",
+	"dispModComp": true,
         "exercises": {}
       },
       "Development/FirstFit": {
@@ -2047,16 +2085,19 @@
       },
       "Development/Buddy": {
         "long_name": "Other Memory Allocation Methods",
+	"dispModComp": true,
         "exercises": {}
       },
       "Development/Garbage": {
         "long_name": "Failure Policies and Garbage Collection",
+	"dispModComp": true,
         "exercises": {}
       }
     },
     "Indexing": {
       "Development/IndexIntro": {
         "long_name": "Indexing Chapter Introduction",
+	"dispModComp": true,
         "exercises": {}
       },
       "Development/LinearIndexing.rst": {
@@ -2084,6 +2125,7 @@
       },
       "Development/ISAM": {
         "long_name": "ISAM",
+	"dispModComp": true,
         "exercises": {}
       },
       "Development/TreeIndexing": {
@@ -2135,6 +2177,7 @@
       },
       "Development/BTree": {
         "long_name": "B-Trees",
+	"dispModComp": true,
         "exercises": {}
       }
     },
@@ -2253,6 +2296,7 @@
       },
       "Development/GraphImpl": {
         "long_name": "Graph Implementation",
+	"dispModComp": true,
         "exercises": {}
       },
       "Development/GraphTraversal": {
@@ -2371,16 +2415,19 @@
       },
       "Development/Floyd": {
         "long_name": "All-Pairs Shortest Paths",
+	"dispModComp": true,
         "exercises": {}
       }
     },
     "Appendix": {
       "Glossary": {
         "long_name": "Glossary",
+	"dispModComp": true,
         "exercises": {}
       },
       "Bibliography": {
         "long_name": "Bibliography",
+	"dispModComp": true,
         "exercises": {}
       }
     }

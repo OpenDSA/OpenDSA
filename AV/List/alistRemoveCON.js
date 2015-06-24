@@ -16,8 +16,7 @@ $(document).ready(function () {
       theTop = 35,
       arrow1_x = 22 + nodeWidth;
 
-  var arr = av.ds.array(arrValues, {indexed: true, layout: "array",
-                                    left: leftMargin, top: theTop});
+  var arr = av.ds.array(arrValues, {indexed: true, left: leftMargin, top: theTop});
   var pseudo = av.code(code);
 
   //vertical arrow pointing to current position
@@ -31,17 +30,17 @@ $(document).ready(function () {
                           "opacity": 0, "stroke-width": 2});
 
   //arrays "it", "curr", and "listSize" for holding data fields
-  var arrIt = av.ds.array([""], {indexed: false, layout: "array",
+  var arrIt = av.ds.array([""], {indexed: false,
                                  left: leftMargin + (nodeWidth + 2) * 3, top: theTop + 70});
   var labelIt = av.label("it", { before: arrIt, left: 85, top: theTop + 75});
   arrIt.hide();
   labelIt.hide();
 
-  var arrCurr = av.ds.array([1], {indexed: false, layout: "array",
-                                 left: leftMargin + (nodeWidth + 2) * 3, top: theTop + 105});
+  var arrCurr = av.ds.array([1], {indexed: false,
+                                  left: leftMargin + (nodeWidth + 2) * 3, top: theTop + 105});
   var labelCurr = av.label("curr", { before: arrCurr, left: 68, top: theTop + 110});
 
-  var arrSize = av.ds.array([5], {indexed: false, layout: "array",
+  var arrSize = av.ds.array([5], {indexed: false,
                                  left: leftMargin + (nodeWidth + 2) * 3, top: theTop + 140});
   var labelCurr = av.label("listSize", { before: arrCurr, left: 46, top: theTop + 145});
 

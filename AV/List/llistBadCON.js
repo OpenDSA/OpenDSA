@@ -8,7 +8,7 @@ $(document).ready(function () {
   var av = new JSAV(av_name);
 
   // Set up the list
-  var l = av.ds.list({nodegap: 30, top: 40, left: 257});
+  var l = av.ds.list({nodegap: 30, top: 35, left: 257});
   l.addFirst(15).addFirst(12).addFirst(10).addFirst(23).addFirst(20);
   l.layout();
   var bar = l.get(2).addVLine();
@@ -16,11 +16,11 @@ $(document).ready(function () {
   var slash3 = l.get(3).addTail({visible: 0}); //Diagonal slash in step 3, hide for now
 
   // Set up the various pointers
-  var head = setPointerL("head", l.get(0));
+  var head = av.pointer("head", l.get(0));
   head.hide();
-  var curr = setPointerL("curr", l.get(2));
+  var curr = av.pointer("curr", l.get(2));
   curr.hide();
-  var tail = setPointerL("tail", l.get(4));
+  var tail = av.pointer("tail", l.get(4));
   tail.hide();
 
   // Slide 1

@@ -1,0 +1,52 @@
+{
+  "translations" :{
+    "en": {
+      "av_c1": "The prev method is easy.",
+      "av_c2": "The node with value 35 is the current node",
+      "av_c3": "Since the node <code>curr.prev()</code> is not <code>head</code> node, we can proceed.",
+      "av_c4": "The variable <code>curr</code> is set to point to  <code>curr.prev()</code>.",
+      "av_c5": "This takes $\\Theta(1)$ time."
+    }
+  },
+  "code" : {
+    "processing": {
+      "url": "../../../SourceCode/Processing/Lists/DList.pde",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: DListPrev *** */",
+      "endBefore": "/* *** ODSAendTag: DListPrev *** */",
+      "tags": {
+        "sig": 1,
+        "new": 2,
+        "setNext": 3,
+        "setElem": 4,
+        "size": 5,
+        "return": 6
+      }
+    },
+    "java": {
+      "url": "../../../SourceCode/Java/Lists/DList.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: DListPrev *** */",
+      "endBefore": "/* *** ODSAendTag: DListPrev *** */",
+      "tags": {
+        "sig": 1,
+        "new": 2,
+        "setNext": 3,
+        "setElem": 4,
+        "size": 5,
+        "return": 6
+      }
+    },
+    "java_generic": {
+      "url": "../../../SourceCode/Java_Generic/Lists/DList.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: DListPrev *** */",
+      "endBefore": "/* *** ODSAendTag: DListPrev *** */",
+      "tags": {
+        "sig": 1,
+        "headcheck": 2,
+        "curr": 3
+      }
+    }
+  }
+}

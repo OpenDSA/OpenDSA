@@ -30,7 +30,7 @@ $(document).ready(function () {
   
   //Slide 3
   av.umsg(interpret("Slide 3"), {preserve:true});
-  var nlabel = av.label("|-------------------------- $n$ --------------------------|", {left : leftAlign + 25, top : topAlign + 60});
+  var nlabel = av.label("|---------------------------- $n$ ----------------------------|", {left : leftAlign + 25, top : topAlign + 60});
   var count = 0;
   while(count < arraySize){
     var value = Math.round(Math.random() * 10) + 1;
@@ -114,7 +114,7 @@ $(document).ready(function () {
   av.step();
   
   //Slide 15
-  av.umsg("<br><br>After that the algorithm will terminate returning" + parseInt(arraySize/2) + "as the target's index.", {preserve: true});
+  av.umsg("<br><br>After that the algorithm will terminate returning " + parseInt(arraySize/2) + " as the target's index.", {preserve: true});
   rect1.translate(0, 20);
   var labelOutput = 
   av.label("index  = " + parseInt(arraySize/2),  {"top": topAlign + 15, "left": leftAlign + 395 + rectWidth});
@@ -137,8 +137,8 @@ $(document).ready(function () {
   algLabel.hide();
   rect1.hide();
   labelOutput.hide();
-  $("#BestWorstAverageCON .jsavline").css({"height":"30px"});
-  topAlign = 20;
+  //$("#BestWorstAverageCON .jsavline").css({"height":"30px"});
+  topAlign = 15;
  
   var arr1 = av.ds.array(arr_values, {"left": leftAlign, "top": topAlign + 20, "indexed": true});
   var pointer1 = av.pointer("$k$", arr1.index(0));

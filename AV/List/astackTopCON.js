@@ -11,31 +11,31 @@ $(document).ready(function () {
 
   // Relative offsets
   var leftMargin = 300;
-  var topMargin = 35;
+  var topMargin = 25;
 
   var arr = av.ds.array([12, 45, 5, 81, "", "", "", ""],
-                        {indexed: true, top: topMargin, left: leftMargin});
+                        {indexed: true, left: leftMargin, top: topMargin});
 
   // Vertical arrows
   var arrow1_x = leftMargin + 17;
-  var arrow1 = av.g.line(arrow1_x, 30, arrow1_x, 50,
+  var arrow1 = av.g.line(arrow1_x, topMargin - 5, arrow1_x, topMargin + 15,
                          {"arrow-end": "classic-wide-long",
                           "opacity": 100, "stroke-width": 2 });
 
   var arrow2_x = leftMargin + 107;
-  var arrow2 = av.g.line(arrow2_x, 30, arrow2_x, 50,
+  var arrow2 = av.g.line(arrow2_x, topMargin - 5, arrow2_x, topMargin + 15,
                          {"arrow-end": "classic-wide-long",
                           "opacity": 100, "stroke-width": 2 });
   arrow2.hide();
 
   var arrow3_x = leftMargin + 77;
-  var arrow3 = av.g.line(arrow3_x, 30, arrow3_x, 50,
+  var arrow3 = av.g.line(arrow3_x, topMargin - 5, arrow3_x, topMargin + 15,
                          {"arrow-end": "classic-wide-long",
                           "opacity": 100, "stroke-width": 2 });
   arrow3.hide();
 
-  // Interface for the alternative "top" representation
-  var topArr = av.ds.array([0], {top: topMargin, left: leftMargin - 100});
+  // Array and label for "top" variable
+  var topArr = av.ds.array([0], {left: leftMargin - 100, top: topMargin});
   var topLabel = av.label("top", {left: leftMargin - 130, top: topMargin + 5});
 
   // Slide 1

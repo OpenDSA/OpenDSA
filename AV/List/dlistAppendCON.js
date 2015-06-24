@@ -1,54 +1,46 @@
+/*global ODSA */
+"use strict";
+// Written by Jun Yang and Cliff Shaffer
 // Dlist Append method
-(function ($) {
-  var jsav = new JSAV('dlistAppendCON');
-  var pseudo = jsav.code({
-      url: '../../../SourceCode/Processing/Lists/DList.pde',
-      lineNumbers: false,
-      startAfter: '/* *** ODSATag: DListAppend *** */',
-      endBefore: '/* *** ODSAendTag: DListAppend *** */'
-    });
+$(document).ready(function () {
+  var av_name = "dlistAppendCON";
+  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+      interpret = config.interpreter,       // get the interpreter
+      code = config.code;                   // get the code object
+  var av = new JSAV(av_name);
+  var pseudo = av.code(code);
+
   // Relative offsets
   var leftMargin = 150;
-  var topMargin = 10;
+  var topMargin = 35;
+
   // Box "it"
-  var itLabel = jsav.label('it', {
-      left: 20,
-      top: -15,
-      'font-size': '20px'
-    });
-  var itBox = jsav.ds.array(['15'], {
-      indexed: false,
-      layout: 'array',
-      top: -20,
-      left: 40
-    });
+  var itBox = av.ds.array([15], {indexed: false, left: 40, top: topMargin});
+  var itLabel = av.label("it", {left: 20, top: topMargin + 2});
   itBox.highlight();
-  // JSAV list
-  var l = jsav.ds.dlist({
-      'nodegap': 30,
-      'center': false,
-      'left': leftMargin,
-      'top': topMargin
-    });
-  l.addFirst('null').addFirst(10).addFirst(35).addFirst(8).addFirst(23).addFirst('null');
+
+  var l = av.ds.dlist({nodegap: 30, center: false, left: leftMargin, top: topMargin});
+  l.addFirst("null").addFirst(10).addFirst(35).addFirst(8).addFirst(23).addFirst("null");
   l.layout();
-  l.get(0).odsa_addSlash('left');
-  var tailSlash = l.get(5).odsa_addSlash();
-  var Vline = l.get(5).odsa_addVLine();
-  var Vline1 = l.get(5).odsa_addVLine({ left: l.get(2).element.outerWidth() / 2 + 15 });
-  var Vline2 = l.get(5).odsa_addVLine({ top: 25 });
+  l.get(0).addSlash("left");
+  var tailSlash = l.get(5).addSlash();
+  var Vline = l.get(5).addVLine();
+  var Vline1 = l.get(5).addVLine({ left: l.get(2).element.outerWidth() / 2 + 15 });
+  var Vline2 = l.get(5).addVLine({ top: 25 });
   Vline1.hide();
   Vline2.hide();
-  setPointer('head', l.get(0));
-  var curr = setPointer('curr', l.get(2));
-  setPointer('tail', l.get(5));
-  jsav.umsg('The append method works almost the same as insertion. We will insert the value 15.');
-  pseudo.highlight(1);
-  jsav.displayInit();
+  setPointer("head", l.get(0));
+  var curr = setPointer("curr", l.get(2));
+  setPointer("tail", l.get(5));
 
-  // Step 2
-  jsav.umsg('Create a new link node.');
-  var node = l.newNode('');
+  // Slide 1
+  av.umsg(interpret("av_c1"));
+  pseudo.setCurrentLine("sig");
+  av.displayInit();
+
+  // Slide 2
+  av.umsg(interpret("av_c2"));
+  var node = l.newNode("");
   node.css({
     top: 50,
     left: 410
@@ -67,57 +59,53 @@
   tailSlash.hide();
   Vline.hide();
   Vline1.show();
-  var newTailSlash = l.get(6).odsa_addSlash();
-  pseudo.unhighlight(1);
-  pseudo.highlight(2);
-  jsav.step();
+  var newTailSlash = l.get(6).addSlash();
+  pseudo.setCurrentLine("setPrev");
+  av.step();
 
-  // Step 3
-  jsav.umsg('Copy 15 to the new node.');
-  jsav.effects.copyValue(itBox, 0, node);
-  jsav.step();
+  // Slide 3
+  av.umsg(interpret("av_c3"));
+  av.effects.copyValue(itBox, 0, node);
+  av.step();
 
-  // Step 4
-  jsav.umsg('The new node\'s <code>next</code> field is assigned to point to what <code>tail</code> points to. The new node\'s <code>prev</code> field is assigned to point to what <code>tail.prev()</code> points to. ');
+  // Slide 4
+  av.umsg(interpret("av_c4"));
   l.get(5).edgeToNext().show();
   l.get(5).edgeToPrev().show();
   curr.target(l.get(2));
-  jsav.step();
+  av.step();
 
-  // Step 5
-  jsav.umsg('<code>tail</code> node\'s <code>prev</code> field is assigned to point to the new link node.');
+  // Slide 5
+  av.umsg(interpret("av_c5"));
   longEdge.bottomEdge.hide();
   l.get(6).edgeToPrev().show();
   l.get(5).unhighlight();
   l.get(6).highlight();
-  jsav.step();
+  av.step();
 
-  // Step 6
-  jsav.umsg('The <code>tail.prev().prev()</code>\'s <code>next</code> field is assigned to point to the new link node.');
+  // Slide 6
+  av.umsg(interpret("av_c6"));
   Vline1.hide();
   Vline2.show();
   l.get(4).highlight();
   l.get(6).unhighlight();
   l.get(4).edgeToNext().show();
   longEdge.topEdge.hide();
-  pseudo.unhighlight(2);
-  pseudo.highlight(3);
-  jsav.step();
+  pseudo.setCurrentLine("setNext");
+  av.step();
 
-  // Step 7
-  jsav.umsg('The new link node is in its correct position in the list.');
+  // Slide 7
+  av.umsg(interpret("av_c7"));
   l.layout();
   l.get(4).unhighlight();
   l.get(5).highlight();
   Vline.show();
   Vline2.hide();
-  jsav.step();
+  av.step();
 
-  // Step 8
-  jsav.umsg('Increase the list size by 1.');
+  // Slide 8
+  av.umsg(interpret("av_c8"));
   l.get(5).unhighlight();
-  pseudo.unhighlight(3);
-  pseudo.highlight(5);
-  jsav.step();
-  jsav.recorded();
-}(jQuery));
+  pseudo.setCurrentLine("size");
+  av.recorded();
+});
