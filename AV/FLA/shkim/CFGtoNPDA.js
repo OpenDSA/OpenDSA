@@ -3,48 +3,46 @@
 		saved = false,
 		selectedNode = null,
 		arr,
-		g;
+		g,
+		grammar;
+
+  	var variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	//Empty string can be set to anything when initializing the graph:
 	//e.g. initGraph({layout: "automatic", emptystring: epsilon})
 	//By default it is set to lambda.
 	var lambda = String.fromCharCode(955),
 		epsilon = String.fromCharCode(949),
-		emptystring;
+		emptystring = lambda;
 	
 	var initGraph = function(opts) {
 		g = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
-		emptystring = g.emptystring;
 		var gWidth = g.element.width(),
 			gHeight = g.element.height();
-  		var a = g.addNode({left: 0.10 * gWidth, top: 0.3 * gHeight}),		
-      		b = g.addNode({left: 0.35 * gWidth, top: 0.3 * gHeight}),
-      		c = g.addNode({left: 0.60 * gWidth, top: 0.3 * gHeight}),
-      		d = g.addNode({left: 0.25 * gWidth, top: 0.7 * gHeight}),
-      		e = g.addNode({left: 0.50 * gWidth, top: 0.7 * gHeight}),
-      		f = g.addNode({left: 0.85 * gWidth, top: 0.3 * gHeight});
+  		var a = g.addNode({left: 0.15 * gWidth, top: 0.87 * gHeight}),		
+      		b = g.addNode({left: 0.45 * gWidth, top: 0.87 * gHeight}),
+      		c = g.addNode({left: 0.75 * gWidth, top: 0.87 * gHeight});
       	g.makeInitial(a);
-      	f.addClass('final');
+      	c.addClass('final');
+      	var startVar = grammar[0][0];
+      	g.addEdge(a, b, {weight: emptystring + ':Z:' + startVar + 'Z'});
+      	g.addEdge(b, c, {weight: emptystring + ':Z:' + emptystring});
 
-	    g.addEdge(a, b, {weight: 'a:' + emptystring + ":a"});
-	    //g.addEdge(a, d); 		it's a FA, need to always provide a weight
-
-	    g.addEdge(b, b, {weight: 'a:a:aa'});
-	    g.addEdge(b, c, {weight: 'b:a:' + emptystring});
-	    g.addEdge(b, d, {weight: 'b:a:a'});
-
-	    g.addEdge(c, c, {weight: 'b:a:' + emptystring});
-	    g.addEdge(c, d, {weight: 'b:a:a'});
-	    g.addEdge(c, f, {weight: emptystring + ':' + emptystring + ':' + emptystring});
-
-	    g.addEdge(d, c, {weight: 'b:a:' + emptystring});
-	    g.addEdge(d, e, {weight: 'b:a:a'});
-
-	    g.addEdge(e, c, {weight: 'b:a:' + emptystring});
+      	for (var i = 0; i < grammar.length; i++) {
+      		g.addEdge(b, b, {weight: emptystring + ':' + grammar[i][0] + ':' + grammar[i][1]})
+      	}
+      	for (var i = 0; i < grammar.length; i++) {
+      		var t = grammar[i][1].split("");
+      		for (var j = 0; j < t.length; j++) {
+      			if (variables.indexOf(t[j]) === -1 && t[j] !== emptystring) {
+      				g.addEdge(b, b, {weight: t[j] + ':' + t[j] + ':' + emptystring});
+      			}
+      		}
+      	}
 	
-    	$(".jsavgraph").click(graphClickHandler);
-    	g.click(nodeClickHandler);
-		g.click(edgeClickHandler, {edge: true});
-		$('.jsavedgelabel').click(labelClickHandler);
+  //   	$(".jsavgraph").click(graphClickHandler);
+  //   	g.click(nodeClickHandler);
+		// g.click(edgeClickHandler, {edge: true});
+		// $('.jsavedgelabel').click(labelClickHandler);
 		return g;
     };
 
@@ -232,7 +230,10 @@
 		}
 	};
 	
-	localStorage.clear();
+	if (!localStorage['grammar']) {
+		window.close();
+	}
+	grammar = _.map(localStorage['grammar'].split(','), function(x) {return x.split("&rarr;");});
     var g = initGraph({layout: "manual"});
 		g.layout();
 		jsav.displayInit();
@@ -459,7 +460,7 @@
 				var w = g.getEdge(currentStates[i].state, next).weight().split('<br>');
 				for (var j = 0; j < w.length; j++) {
 					var t = w[j].split(':');
-			        if (t[0] !== letter) {continue;}
+			        if (t[0] !== letter && t[0] !== emptystring) {continue;}
 			        if (t[1] !== emptystring) {
 			          var l = [],
 			              cur;
