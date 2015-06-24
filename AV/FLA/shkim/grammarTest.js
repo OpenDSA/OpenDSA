@@ -165,7 +165,11 @@
                 r = "";
               }
               var s = replaceCharAt(next, i, r);
-              if (sententials.indexOf(s) === -1) {
+              if (sententials.indexOf(s) === -1 && _.map(s, function(x) {
+                if (variables.indexOf(x) === -1) {
+                  return s;
+                }
+              }).length <= inputString.length) {
                 sententials.unshift(s);
               }
               if (!(s in table)) {
@@ -176,6 +180,7 @@
         }
       }
     }
+    console.log(counter);
     if (next === inputString) {
       jsav.umsg('"' + inputString + '" accepted');
       var temp = next;

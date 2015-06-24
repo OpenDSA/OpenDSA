@@ -344,16 +344,16 @@
 		var nodes = g.nodes();
 		for(var next = nodes.next(); next; next = nodes.next()) {
 			var edges = next.getOutgoing();
-			if (edges.length === 0) {return;}
+			if (edges.length === 0) {continue;}
 			var weights = _.map(edges, function(e) {return e.weight().split('<br>')});
 			for (var i = 0; i < weights.length; i++) {
 				var findLambda = _.find(weights[i], function(e) {return e.split(':')[0] === emptystring});
 				if (findLambda) { break; }
 			}
 			var dup = _.map(_.flatten(weights), function(e) {return _.initial(e.split(':')).join()})
-		if (findLambda || _.uniq(dup).length < dup.length) {
-			next.toggleClass('testingND');
-		}
+			if (findLambda || _.uniq(dup).length < dup.length) {
+				next.toggleClass('testingND');
+			}
 		}
 	};
 	var testLambda = function() {
