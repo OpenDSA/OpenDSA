@@ -12,8 +12,8 @@
 Spatial Data Structures:
 ========================
 
-Most search trees such as the BST are designed for searching on a
-one-dimensional key.
+Search trees such as BSTs, AVL trees, splay trees, 2-3 Trees, B-trees,
+and tries are designed for searching on a one-dimensional key.
 A typical example is an integer key, whose one-dimensional range
 can be visualized as a number line.
 These various tree structures can be viewed as dividing this
@@ -61,3 +61,25 @@ are an important class of data structures used in geographic
 information systems, computer graphics, robotics, and many other
 fields.
 
+A number of spatial data structures are used for storing
+point data in two or more dimensions.
+The :term:`k-d tree` is a natural extension
+of the BST to multiple dimensions.
+It is a binary tree whose splitting decisions alternate among the
+key dimensions.
+Like the BST, the k-d tree uses object space decomposition.
+The :term:`PR quadtree` uses
+:term:`key space decomposition` and so is a form
+of :term:`trie`.
+It is a binary tree only for one-dimensional keys (in which case it
+is a trie with a binary alphabet).
+For :math:`d` dimensions it has :math:`2^d` branches.
+Thus, in two dimensions, the PR quadtree
+has four branches (hence the name "quadtree"), splitting space into
+four equal-sized quadrants at each branch.
+Two other variations on these data structures are the
+:ref:`bintree <bintree> <Bintree>` and the
+:term:`point quadtree`.
+These four structures cover all four combinations of object versus key
+space decomposition on the one hand, and multi-level binary versus
+:math:`2^d`-way branching on the other.

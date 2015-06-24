@@ -1,12 +1,20 @@
-<div id="content">
-<ODSAtitle>Impossible Problems</ODSAtitle>
-<ODSAauthor>Clifford A. Shaffer</ODSAauthor>
-<ODSAyear>2012</ODSAyear>
-<ODSAprereq "LimComp" />
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://algoviz.org/OpenDSA for more details.
+.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
 
-<h2>Introduction</h2>
+.. avmetadata::
+   :author: Cliff Shaffer
+   :requires: Limits to Computing
+   :satisfies: uncomputable problems
+   :topic: Limits to Computing
 
-<p>
+Unsolveable Problems
+====================
+
+Introduction
+------------
+
 Even the best programmer sometimes writes a program that goes into an
 infinite loop.
 Of course, when you run a program that has not stopped, you do not
@@ -18,84 +26,71 @@ tell you before you run it that it will get into an infinite loop?
 To be more specific, given a program and a particular input, it would
 be useful to know if executing the program on that input will result
 in an infinite loop without actually running the program.
-</p>
 
-<p>
-Unfortunately, the <dfn>Halting Problem</dfn>, as this is called, cannot
+Unfortunately, the :term:`Halting Problem`, as this is called, cannot
 be solved.
 There will never be a computer program that can positively determine,
-for an arbitrary program <i>P</i>, if <i>P</i>
+for an arbitrary program :math:`P`, if :math:`P`
 will halt for all input.
 Nor will there even be a computer program that can positively
-determine if arbitrary program <i>P</i> will halt for a specified
-input <i>I</i>.
+determine if arbitrary program :math:`P` will halt for a specified
+input :math:`I`.
 How can this be?
 Programmers look at programs regularly to determine if they will
 halt.
 Surely this can be automated.
 As a warning to those who believe any program can be analyzed in this
 way, carefully examine the following code fragment before reading on.
-</p>
 
-<pre>
-while (n > 1)
-  if (ODD(n))
-    n = 3 * n + 1;
-   else
-     n = n / 2;
-</pre>
+.. codeinclude:: Misc/Collatz
+   :tag: Collatz
 
-<p>
 This is a famous piece of code.
-The sequence of values that is assigned to \(n\) by this code is
-sometimes called the <dfn>Collatz sequence</dfn> for input value \(n\).
-Does this code fragment halt for all values of \(n\)?
+The sequence of values that is assigned to :math:`n` by this code is
+sometimes called the :term:`Collatz sequence` for input value
+:term:`n`.
+Does this code fragment halt for all values of :math:`n`?
 Nobody knows the answer.
 Every input that has been tried halts.
 But does it always halt?
 Note that for this code fragment, because we do not know if it halts,
 we also do not know an upper bound for its running time.
 As for the lower bound, we can easily show
-\(\Omega(\log n)\).
+:math:`\Omega(\log n)`.
 
-<p class="TODO">
-Need an exercise to study lower bound on Colletz function
-</p>
+.. TODO::
+   :type: Exercise
 
-<p>
+   Need an exercise to study lower bound on Colletz function
+
 Personally, I have faith that someday some smart person will
 completely analyze the Collatz function, proving once and for all
-that the code fragment halts for all values of \(n\).
+that the code fragment halts for all values of :math:`n`.
 Doing so may well give us techniques that advance our ability to do
 algorithm analysis in general.
-Unfortunately, proofs from <dfn>computability</dfn> &mdash; the branch of
+Unfortunately, proofs from :term:`computability` |---| the branch of
 computer science that studies what is impossible to do with a computer
 &mdash; compel us to believe that there will always be another
 bit of program code that we cannot analyze.
 This comes as a result of the fact that the Halting Problem is
 unsolvable.
-</p>
 
-<h2>Uncountability</h2>
+Uncountability
+--------------
 
-<p>
 Before proving that the Halting Problem is unsolvable, we first prove
 that not all functions can be implemented as a computer program.
 This must be so because the number of programs is much smaller than
 the number of possible functions.
-</p>
 
-<p>
-A set is said to be <dfn>countable</dfn> (or  <dfn>countably infinite</dfn>
+A set is said to be :term:`countable` (or :term:`countably infinite`
 if it is a set with an infinite number of members)
 if every member of the set can be uniquely assigned to a positive
 integer.
-A set is said to be <dfn>uncountable</dfn>
-(or <dfn>uncountably infinite</dfn>) if it is not possible to 
+A set is said to be :term:`uncountable`
+(or :term:`uncountably infinite`) if it is not possible to 
 assign every member of the set to its own positive integer.
-</p>
 
-<p>
 To understand what is meant when we say "assigned to a positive
 integer", imagine that there is an infinite row of bins, labeled 1,
 2, 3, and so on.
@@ -105,8 +100,9 @@ If we can find a way to assign all of the set members to bins, then the
 set is countable.
 For example, consider the set of positive even integers 2, 4, and so
 on.
-We can assign an integer \(i\) to bin \(i/2\) (or, if we don't mind
-skipping some bins, then we can assign even number \(i\) to bin~\(i\)).
+We can assign an integer :math:`i` to bin :math:`i/2`
+(or, if we don't mind skipping some bins, then we can assign even
+number :math:`i` to bin :math:`i`). 
 Thus, the set of even integers is countable.
 This should be no surprise, because intuitively there are "fewer"
 positive even integers than there are positive integers,
@@ -114,48 +110,44 @@ even though both are infinite sets.
 But there are not really any more positive integers than
 there are positive even integers, because we can uniquely assign every
 positive integer to some positive even integer by simply assigning
-positive integer \(i\) to positive even integer \(2i\).
-</p>
+positive integer :math:`i` to positive even integer :math:`2i`.
 
-<p>
 On the other hand, the set of all integers is also countable, even
 though this set appears to be bigger than the set of positive
 integers.
 This is true because we can assign 0 to positive integer 1, 1 to
 positive integer 2, -1 to positive integer 3, 2 to positive integer 4,
 -2 to positive integer 5, and so on.
-In general, assign positive integer value \(i\) to positive integer
-value \(2i\), and assign negative integer value \(-i\) to positive
-integer value \(2i+1\).
+In general, assign positive integer value :math:`i` to positive
+integer 
+value :math:`2i`, and assign negative integer value :math:`-i` to
+positive integer value :math:`2i+1`.
 We will never run out of positive integers to assign, and we know
 exactly which positive integer every integer is assigned to.
 Because every integer gets an assignment, the set of integers is
 countably infinite.
-</p>
 
-<p>
 Are the number of programs countable or uncountable?
 A program can be viewed as simply a string of characters (including
 special punctuation, spaces, and line breaks).
 Let us assume that the number of different characters that can appear
-in a program is \(P\).
-(Using the ASCII character set, \(P\) must be less than 128, but the
-actual number does not matter).
+in a program is :math:`P`.
+(Using the ASCII character set, :math:`P` must be less than 128,
+but the actual number does not matter).
 If the number of strings is countable, then surely the number of
 programs is also countable.
 We can assign strings to the bins as follows.
 Assign the null string to the first bin.
 Now, take all strings of one character, and assign them to the next
-\(P\) bins in "alphabetic" or ASCII code order.
+:math:`P` bins in "alphabetic" or ASCII code order.
 Next, take all strings of two characters, and assign them to the next
-\(P^2\) bins, again in ASCII code order working from left to right.
+:math:`P^2` bins, again in ASCII code order working from left to
+right.
 Strings of three characters are likewise assigned to bins, then
 strings of length four, and so on.
 In this way, a string of any given length can be assigned
 to some bin.
-</p>
 
-<p>
 By this process, any string of finite length is assigned
 to some bin.
 So any program, which is merely a string of finite length, is
@@ -164,16 +156,14 @@ Because all programs are assigned to some bin, the set of all programs
 is countable.
 Naturally most of the strings in the bins are not legal programs, but
 this is irrelevant.
-All that matters is that the strings that <em>do,</em> correspond to
+All that matters is that the strings that **do**, correspond to
 programs are also in the bins.
-</p>
 
-<p>
 Now we consider the number of possible functions.
 To keep things simple, assume that all functions take a single
 positive integer as input and yield a single positive integer as
 output.
-We will call such functions <dfninteger functions</dfn>.
+We will call such functions :term:`integer functions`.
 A function is simply a mapping from input values to output values.
 Of course, not all computer programs literally take integers as input
 and yield integers as output.
@@ -183,18 +173,14 @@ or something else.
 Any useful computer program's input and output can be coded as integer
 values, so our simple model of computer input and output is
 sufficiently general to cover all possible computer programs.
-</p>
 
-<p>
 We now wish to see if it is possible to assign all of the integer
 functions to the infinite set of bins.
 If so, then the number of functions is countable, and it might then be
 possible to assign every integer function to a program.
 If the set of integer functions cannot be assigned to bins, then
 there will be integer functions that must have no corresponding program.
-</p>
 
-<p>
 Imagine each integer function as a table with two columns and an
 infinite number of rows.
 The first column lists the positive integers starting at 1.
@@ -202,10 +188,8 @@ The second column lists the output of the function when given the value
 in the first column as input.
 Thus, the table explicitly describes the mapping from input to output
 for each function.
-Call this a <dfn>function table</dfn>.
-</p>
+Call this a :term:`function table`.
 
-<p>
 Next we will try to assign function tables to bins.
 To do so we must order the functions, but it does not matter what
 order we choose.
@@ -214,22 +198,21 @@ regardless of the input value.
 Bin 2 could store the function that returns its input.
 Bin 3 could store the function that doubles its input and adds 5.
 Bin 4 could store a function for which we can see no simple
-relationship between input and output. <sup><a href="#fn1" id="r1">[1]</a></sup>
+relationship between input and output. [#]_
 These four functions as assigned to the first four bins are shown in
-Figure <ODSAref "FuncAssign" />.
+Figure :num:`Figure #FuncAssign`.
 
-<figure>
-<center>
-<img src="Images/FuncBin.png" height="400" alt="An illustration of assigning functions to bins" />
-</center>
+.. _FuncAssign:
 
-<figcaption>
-<ODSAfig "FuncAssign" />
-An illustration of assigning functions to bins.
-</figcaption>
-</figure>
+.. odsafig:: Images/FuncBin.png
+   :width: 300
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: An illustration of assigning functions to bins
 
-<p>
+   An illustration of assigning functions to bins.
+
 Can we assign every function to a bin?
 The answer is no, because there is always a way to create a new
 function that is not in any of the bins.
@@ -237,212 +220,205 @@ Suppose that somebody presents a way of assigning functions to bins
 that they claim includes all of the functions.
 We can build a new function that has not been assigned to any bin, as
 follows.
-Take the output value for input~1 from the function in the first bin.
-Call this value \(F_1(1)\).
+Take the output value for input 1 from the function in the first bin.
+Call this value :math:`F_1(1)`.
 Add 1 to it, and assign the result as the output of a new
 function for input value 1.
 Regardless of the remaining values assigned to our new function, it
 must be different from the first function in the table, because the
 two give different outputs for input 1.
 Now take the output value for 2 from the second function in the table
-(known as \(F_2(2)\)).
+(known as :math:`F_2(2)`).
 Add 1 to this value and assign it as the output for 2 in our new
 function.
 Thus, our new function must be different from the function of Bin 2,
 because they will differ at least at the second value.
-Continue in this manner, assigning \(F_{new}(i) = F_i(i) + 1\) for all
-values \(i\).
-Thus, the new function must be different from any function \(F_i\) at
-least at position \(i\).
+Continue in this manner, assigning :math:`F_{new}(i) = F_i(i) + 1` for
+all values :math:`i`.
+Thus, the new function must be different from any function :math:`F_i`
+at least at position :math:`i`.
 This procedure for constructing a new function not already in the
-table is called <dfn>diagonalization</dfn>.
+table is called :term:`diagonalization`.
 Because the new function is different from every other function, it
 must not be in the table.
 This is true no matter how we try to assign functions to
 bins, and so the number of integer functions is uncountable.
 The significance of this is that not all functions can possibly be
-assigned to programs, so there <em>must</em> be functions with no
+assigned to programs, so there **must** be functions with no
 corresponding program.
-Figure <ODSAref "Diag" /> illustrates this argument.
-</p>
+Figure :num:`Figure #Diag` illustrates this argument.
 
-<figure>
-<center>
-<img src="Images/FuncDiag.png" height="400" alt="Illustration for function uncountability" />
-</center>
+.. _Diag:
 
-<figcaption>
-<ODSAfig "Diag" />
-Illustration for the argument that the number of integer functions
-is uncountable.
-</figcaption>
-</figure>
+.. odsafig:: Images/FuncDiag.png
+   :width: 300
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: Illustration for function uncountability
 
-<h2>The Halting Problem Is Unsolvable</h2>
+   Illustration for the argument that the number of integer functions
+   is uncountable.
 
-<p>
-While there might be intellectual appeal to knowing
-that there exists <em>some</em> function that cannot be computed by a
-computer program, does this mean that there is any such <em>useful</em>
-function? 
-After all, does it really matter if no program can compute a
-"nonsense" function such as shown in Bin 4 of
-Figure <ODSAref "FuncAssign" />?
+The Halting Problem Is Unsolvable
+---------------------------------
+
+There might be intellectual appeal to knowing
+that there exists **some** function that cannot be computed by a
+computer program
+But does it really matter if no program can compute a
+"nonsense" function such as the one shown in Bin 4 of
+Figure :num:`Figure #FuncAssign`?
+That alone doesn't have to mean that there is a **useful** function
+that cannot be computed.
+After all, the universe should not be this perverse, should it?
+Perhaps the very fact that we can easily specify the function that we
+want to compute implies that there must be an algorithm to compute
+it.
+
+Unfortunately, not so.
 Now we will prove that the Halting Problem cannot be computed by any
 computer program.
 The proof is by contradiction.
-</p>
 
-<p>
-We begin by assuming that there is a function named <code>halt</code> that
+We begin by assuming that there is a function named ``halt`` that
 can solve the Halting Problem.
 Obviously, it is not possible to write out something that does not
 exist, but here is a plausible sketch of what a function to solve the
 Halting Problem might look like if it did exist.
-Function <code>halt</code> takes two inputs: a string representing the
+Function ``halt`` takes two inputs: a string representing the
 source code for a program or function, and another string
 representing the input that we wish to determine if the input program
 or function halts on.
-Function <code>halt</code> does some work to make a decision (which is
-encapsulated into some fictitious function named <code>PROGRAM_HALTS</code>).
-Function <code>halt</code> then returns TRUE if the input program or
+Function ``halt`` does some work to make a decision (which is
+encapsulated into some fictitious function named ``PROGRAM_HALTS``).
+Function ``halt`` then returns TRUE if the input program or
 function does halt on the given input, and FALSE otherwise.
-</p>
 
-<pre>
-bool halt(String prog, String input) {
-  if (PROGRAM_HALTS(prog, input))
-    return true;
-  else
-    return false;
-}
-</pre>
+::
 
-<p>
+   bool halt(String prog, String input) {
+     if (PROGRAM_HALTS(prog, input))
+       return true;
+     else
+       return false;
+   }
+
 We now will examine two simple functions that clearly can exist
 because the complete code for them is presented here.
-</p>
 
-<pre>
-// Return true if "prog" halts when given itself as input
-bool selfhalt(String prog) {
-  if (halt(prog, prog))
-    return true;
-  else
-    return false;
-}
+::
 
-// Return the reverse of what selfhalt returns on "prog"
-void contrary(String prog) {
-  if (selfhalt(prog))
-    while (true); // Go into an infinite loop
-}
-</pre>
+   // Return true if "prog" halts when given itself as input
+   bool selfhalt(String prog) {
+     if (halt(prog, prog))
+       return true;
+     else
+       return false;
+   }
 
-<p>
+   // Return the reverse of what selfhalt returns on "prog"
+   void contrary(String prog) {
+     if (selfhalt(prog))
+       while (true); // Go into an infinite loop
+   }
+
 What happens if we make a program whose sole purpose is to execute
-the function <code>contrary</code> and run that program with itself as
+the function ``contrary`` and run that program with itself as
 input?
-One possibility is that the call to <code>selfhalt</code> returns
-TRUE;
-that is, <code>selfhalt</code> claims that <code>contrary</code> will
-halt when run on itself.
-In that case, <code>contrary</code> goes into an infinite loop
+One possibility is that the call to ``selfhalt`` returns ``TRUE``;
+that is, ``selfhalt`` claims that ``contrary`` will halt when run on
+itself.
+In that case, ``contrary`` goes into an infinite loop
 (and thus does not halt).
-On the other hand, if <code>selfhalt</code> returns FALSE, then
-<code>halt</code> is proclaiming that <code>contrary</code> does not
-halt on itself, and <code>contrary</code> then returns, that is, it
-halts.
-Thus, <code>contrary</code> does the contrary of what
-<code>halt</code> says that it will do.
-</p>
+On the other hand, if ``selfhalt`` returns FALSE, then
+``halt`` is proclaiming that ``contrary`` does not halt on itself,
+and  ``contrary`` then returns, that is, it halts.
+Thus, ``contrary`` does the contrary of what
+``halt`` says that it will do.
 
-<p>
-The action of <code>contrary</code> is logically inconsistent with the
-assumption that <code>halt</code> solves the Halting Problem correctly.
+The action of ``contrary`` is logically inconsistent with the
+assumption that ``halt`` solves the Halting Problem correctly.
 There are no other assumptions we made that might cause this
 inconsistency.
-Thus, by contradiction, we have proved that <code>halt</code> cannot
+Thus, by contradiction, we have proved that ``halt`` cannot
 solve the Halting Problem correctly, and thus there is no program that
 can solve the Halting Problem.
-</p>
 
-<p>
 Now that we have proved that the Halting Problem is unsolvable, we
 can use reduction arguments to prove that other problems are also
 unsolvable.
 The strategy is to assume the existence of a computer program that
 solves the problem in question and use that program to solve another
 problem that is already known to be unsolvable.
-</p>
 
-<p class="example">
-Consider the following variation on the Halting Problem.
-Given a computer program, will it halt when its input is the
-empty string?
-That is, will it halt when it is given no input?
-To prove that this problem is unsolvable, we will employ a standard
-technique for computability proofs:
-Use a computer program to modify another computer program.
-</p>
+.. topic:: Example
 
-<p class="proof">
-Assume that there is a function <code>Ehalt</code> that determines
-whether a given program halts when given no input.
-Recall that our proof for the Halting Problem involved functions that
-took as parameters a string representing a program and another string
-representing an input.
-Consider another function <code>combine</code> that takes a program
-<i>P</i> and an input string <i>I</i> as parameters.
-Function <code>combine</code> modifies <i>P</i> to store <i>I</i>
-as a static variable <i>S</i> and further modifies all calls
-to input functions within <i>P</i> to instead get their input from
-<i>S</i>.
-Call the resulting program <i>P'</i>.
-It should take no stretch of the imagination to believe that any
-decent compiler could be modified to take computer programs and input
-strings and produce a new computer program that has been modified in
-this way.
-Now, take <i>P'</i> and feed it to <code>Ehalt</code>.
-If <code>Ehalt</code> says that <i>P'</i> will halt, then we know that
-<i>P</i> would halt on input <i>I</i>.
-In other words, we now have a procedure for solving the original
-Halting Problem.
-The only assumption that we made was the existence of <code>Ehalt</code>.
-Thus, the problem of determining if a program will halt on no input
-must be unsolvable.
-</p>
+   Consider the following variation on the Halting Problem.
+   Given a computer program, will it halt when its input is the
+   empty string?
+   That is, will it halt when it is given no input?
+   To prove that this problem is unsolvable, we will employ a standard
+   technique for computability proofs:
+   Use a computer program to modify another computer program.
 
-<p class="example">
-For arbitrary program <i>P</i>, does there exist <em>any</em> input for
-which <i>P</i> halts?
-</p>
+   **Proof by contradiction:**
 
-<p class="proof">
-This problem is also uncomputable.
-Assume that we had a function <code>Ahalt</code> that, when given program
-<i>P</i> as input would determine if there is some input for which
-<i>P</i> halts.
-We could modify our compiler (or write a function as part of a
-program) to take <i>P</i> and some input string <i>w</i>, and modify
-it so that <i>w</i> is hardcoded inside <i>P</i>, with <i>P</i>
-reading no input.
-Call this modified program <i>P'</i>.
-Now, <i>P'</i> always behaves the same way regardless of its
-input, because it ignores all input.
-However, because <i>w</i> is now hardwired inside of <i>P'</i>,
-the behavior we get is that of <i>P</i> when given <i>w</i> as input.
-So, <i>P'</i> will halt on any arbitrary input if and only if
-<i>P</i> would halt on input <i>w</i>.
-We now feed <i>P'</i> to function <code>Ahalt</code>.
-If <code>Ahalt</code> could determine that <i>P'</i> halts on some
-input, then that is the same as determining that <i>P</i> halts on
-input <i>w</i>.
-But we know that that is impossible.
-Therefore, <code>Ahalt</code> cannot exist.
-</p>
+   Assume that there is a function ``Ehalt`` that determines
+   whether a given program halts when given no input.
+   Recall that our proof for the Halting Problem involved functions
+   that took as parameters a string representing a program and another
+   string representing an input.
+   Consider another function ``combine`` that takes a program
+   :math:`P` and an input string :math:`I` as parameters.
+   Function ``combine`` modifies :math:`P` to store :math:`I`
+   as a static variable :math:`S` and further modifies all calls
+   to input functions within :math:`P` to instead get their input from
+   :math:`S`.
+   Call the resulting program :math:`P'`.
+   It should take no stretch of the imagination to believe that any
+   decent compiler could be modified to take computer programs and
+   input strings and produce a new computer program that has been
+   modified in this way.
+   Now, take :math:`P'` and feed it to ``Ehalt``.
+   If ``Ehalt`` says that :math:`P'` will halt, then we know that
+   :math:`P` would halt on input :math:`I`.
+   In other words, we now have a procedure for solving the original
+   Halting Problem.
+   The only assumption that we made was the existence of ``Ehalt``.
+   Thus, the problem of determining if a program will halt on no input
+   must be unsolvable.
 
-<p>
+.. topic:: Example
+
+   For arbitrary program :math:`P`, does there exist **any** input for
+   which :math:`P` halts?
+
+   **Proof by contradiction:**
+
+   This problem is also uncomputable.
+   Assume that we had a function ``Ahalt`` that, when given program 
+   :math:`P` as input would determine if there is some input for which
+   :math:`P` halts.
+   We could modify our compiler (or write a function as part of a
+   program) to take :math:`P` and some input string :math:`w`, and
+   modify it so that :math:`w` is hardcoded inside :math:`P`,
+   with :math:`P` reading no input.
+   Call this modified program :math:`P'`.
+   Now, :math:`P'` always behaves the same way regardless of its
+   input, because it ignores all input.
+   However, because :math:`w` is now hardwired inside of :math:`P'`,
+   the behavior we get is that of :math:`P` when given :math:`w` as
+   input.
+   So, :math:`P'` will halt on any arbitrary input if and only if
+   :math:`P` would halt on input :math:`w`.
+   We now feed :math:`P'` to function ``Ahalt``.
+   If ``Ahalt`` could determine that :math:`P'` halts on some
+   input, then that is the same as determining that :math:`P` halts on
+   input :math:`w`.
+   But we know that that is impossible.
+   Therefore, ``Ahalt`` cannot exist.
+
 There are many things that we would like to have a computer do
 that are unsolvable.
 Many of these have to do with program behavior.
@@ -451,30 +427,29 @@ is, proving that a program computes a particular function, is a proof
 regarding program behavior.
 As such, what can be accomplished is severely limited.
 Some other unsolvable problems include:
-<ul>
-<li>Does a program halt on every input?</li>
-<li>Does a program compute a particular function?</li>
-<li>Do two programs compute the same function?</li>
-<li>Does a particular line in a program get executed?</li>
-</ul>
 
-<p>
-This does <em>not</em> mean that a computer program cannot be written
+*  Does a program halt on every input?
+
+*  Does a program compute a particular function?
+
+*  Do two programs compute the same function?
+
+*  Does a particular line in a program get executed?
+
+This does **not** mean that a computer program cannot be written
 that works on special cases, possibly even on most programs that we
 would be interested in checking.
 For example, some C compilers will check if the control expression
-for a <code>while</code> loop is a constant expression that evaluates to
-FALSE.
-If it is, the compiler will issue a warning that the <code>while</code>
+for a ``while`` loop is a constant expression that evaluates to
+``FALSE``.
+If it is, the compiler will issue a warning that the ``while``
 loop code will never be executed.
 Programmers find this special case useful enough to make it worth
 including in the compiler.
 However, it is not possible to write a computer program that can
 check for <em>all</em> input programs whether a specified line of code
 will be executed when the program is given some specified input.
-</p>
 
-<p>
 Another unsolvable problem is whether a program contains a computer
 virus.
 The property "contains a computer virus" is a matter of behavior.
@@ -487,16 +462,10 @@ ones that are now known.
 Real virus checkers do a pretty good job,
 but, it will always be possible for malicious people to invent new
 viruses that no existing virus checker can recognize.
-</p>
 
-<section>
-<p id="fn1"><a href="#r1">[1]</a>
-There is no
-requirement for a function to have any discernible relationship
-between input and output.
-A function is simply a mapping of inputs to outputs, with no
-constraint on how the mapping is determined.
-</p>
-</section>
-
-</div>
+Notes
+-----
+.. [#] There is no requirement for a function to have any discernible
+       relationship between input and output.
+       A function is simply a mapping of inputs to outputs, with no
+       constraint on how the mapping is determined.
