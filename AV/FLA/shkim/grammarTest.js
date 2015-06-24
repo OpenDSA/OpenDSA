@@ -30,8 +30,6 @@
       }
       m2.addClass(lastRow, 0, "next");
       m2.addClass(lastRow, 2, "next");
-      //m2.value(0, 2, "hahahahahahahahhaah")
-      //m2.css(0, 0, {"background-color": "aqua", "color": "rgb(150, 55, 50)"});
       m2.layout();
       m2.on('click', matrixClickHandler);
       return m2;
@@ -94,8 +92,7 @@
         lastRow++;
         self.layout();
       }
-      console.log(arr.length);
-
+      //console.log(arr.length);
     }
   };
   m = init();
@@ -118,7 +115,10 @@
     $("#mode").html('');
     $('#editbutton').hide();
     $('#deletebutton').hide();
+    $('#convertRLGbutton').hide();
+    $('#convertCFGbutton').hide();
     $('.jsavcontrols').show();
+    $('#backbutton').show();
     $(m.element).css("margin-left", "50px");
 
     var productions = _.filter(arr, function(x) { return x[0]});
@@ -143,7 +143,7 @@
     var counter = 0;
     while (true) {
       counter++;
-      if (counter > 500) {
+      if (counter > 5000) {
         console.warn("infinite loop (probably)");
         break;
       }
@@ -151,7 +151,9 @@
       if (next === inputString) {
         break;
       }
-      if (!next) { break;}
+      if (!next) { 
+        break;
+      }
       var c = null;
       for (var i = 0; i < next.length; i++) {
         c = next[i];
@@ -162,8 +164,14 @@
               if (r === emptystring) {
                 r = "";
               }
-              var s = next.replace(c, r);
-              sententials.unshift(s);
+              var s = replaceCharAt(next, i, r);
+              if (sententials.indexOf(s) === -1 && _.map(s, function(x) {
+                if (variables.indexOf(x) === -1) {
+                  return s;
+                }
+              }).length <= inputString.length) {
+                sententials.unshift(s);
+              }
               if (!(s in table)) {
                 table[s] = [k, next];
               }
@@ -172,8 +180,9 @@
         }
       }
     }
+    console.log(counter);
     if (next === inputString) {
-      jsav.umsg("String accepted");
+      jsav.umsg('"' + inputString + '" accepted');
       var temp = next;
       var results = [];
       counter = 0;
@@ -192,26 +201,37 @@
       parseTable = new jsav.ds.matrix(results, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
       //jsav.label('Tree');
       parseTree = new jsav.ds.tree({left: "30px", relativeTo: parseTable, anchor: "right top"});
-      temp = parseTree.root(productions[0][0]);
+      temp = [parseTree.root(productions[0][0])];
+
+      var displayOrder = [];
       for (var i = 0; i < results.length; i++) {
         var p = results[i][0];
         var n;
-        for (var j = 7; j < p.length; j++) {
-          if (variables.indexOf(p[j]) !== -1) {
-            n = temp.child(j - 7, p[j]).child(j-7);
-          } else {
-            temp.child(j - 7, p[j])
+        var temp2;
+        var rem;
+        var d = [];
+        for (var j = temp.length - 1; j >= 0; j--) {
+          //console.log(temp[j].value());
+          if (temp[j].value() === p[0].charAt(0)) {
+            temp2 = temp[j];
+            rem = j;
+            break;
           }
         }
-        if (n) {
-          temp = n;
+        temp.splice(rem, 1);
+        for (var j = 7; j < p.length; j++) {
+          var par = temp2.child(j - 7, p[j]).child(j-7)
+          if (variables.indexOf(p[j]) !== -1) {
+            temp.push(par);
+          } 
+          d.push(par);
         }
+        displayOrder.push(d);
       }
 
       parseTree.layout();
       parseTree.root().hide();
       parseTree.root().show({recursive: false});
-      temp = parseTree.root().children();
       for (var i = 0; i < results.length; i++) {
         parseTable._arrays[i].hide();
       }
@@ -224,12 +244,10 @@
         var val = parseTable.value(i, 1);
         m._arrays[table[val][0]].highlight();
         parseTable._arrays[i].show();
-        var temp2 = [];
-        for (var j = 0; j < temp.length; j++) {
-          temp[j].show({recursive: false});
-          temp2 = temp2.concat(temp[j].children());
+        var temp2 = displayOrder.shift();
+        for (var j = 0; j < temp2.length; j++) {
+          temp2[j].show({recursive: false});
         }
-        temp = temp2;
       }
       jsav.step();
       var leaves = getLeaves(parseTree.root());
@@ -242,13 +260,23 @@
       jsav.recorded();
 
     } else {
-      jsav.umsg("String rejected");
+      jsav.umsg('"' + inputString + '" rejected');
       $('button').show();
       $('.jsavcontrols').hide();
+      $('#backbutton').hide();
       $(m.element).css("margin-left", "auto");
     }
 
   }; 
+
+  var replaceCharAt = function (str, index, ch) {
+    if (index < 0 || index > str.length-1) {
+      return str;
+    } else {
+      return str.substring(0, index) + ch + str.substring(index + 1);
+    }
+  };
+
 
   var editMode = function() {
     $('.jsavmatrix').addClass("editMode");
@@ -276,5 +304,29 @@
   $('#editbutton').click(editMode);
   $('#deletebutton').click(deleteMode);
   $('#bfpbutton').click(bfParse);
+  $('#convertRLGbutton').click(function () {
+    var productions=_.filter(arr, function(x) { return x[0]});
+    localStorage['grammar'] = _.map(productions, function(x) {return x.join('');});
+    window.open('RLGtoFA.html', '', 'width = 800, height = 600, screenX = 300, screenY = 50');
+  });
+  $('#convertCFGbutton').click(function () {
+    var productions=_.filter(arr, function(x) { return x[0]});
+    localStorage['grammar'] = _.map(productions, function(x) {return x.join('');});
+    window.open('CFGtoNPDA.html', '', 'width = 800, height = 600, screenX = 300, screenY = 50');
+  });
+  $('#backbutton').click(function () {
+    if (parseTree) {
+      parseTree.clear();
+      jsav.clear();
+      jsav = new JSAV("av");
+      m = init();
+    }
+    if (parseTable) { parseTable.clear();}
+    jsav.umsg('');
+    $('button').show();
+    $('.jsavcontrols').hide();
+    $('#backbutton').hide();
+    $(m.element).css("margin-left", "auto");
+  });
 
 }(jQuery));

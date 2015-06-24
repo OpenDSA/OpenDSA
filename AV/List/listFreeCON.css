@@ -1,7 +1,8 @@
 #listFreeCON {
-  height: 350px;
-}
-
-#listFreeCON {
   height: 300px;
 }
+
+#listFreeCON .jsavoutput.jsavline {
+  height: 40px;
+}
+
