@@ -82,6 +82,7 @@
   				return weights.join("<br>");
 		    };
    			var run = function(inputString) {
+   				$('.jsavoutput').css({"text-align": "center", 'font-size': '2em'});
 				var textArray = [];
 				g.initial.addClass('current');
 				var accepted = true;
@@ -129,7 +130,7 @@
 						arr.css(l, {"background-color": "red"});
 					}
 					arr.css(finalIndex, {"background-color": "red"});
-					jsav.umsg("Rejected");
+					jsav.umsg("<b>Rejected</b>");
 				}
 				jsav.step();
 				jsav.recorded();

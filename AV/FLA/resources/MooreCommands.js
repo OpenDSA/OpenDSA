@@ -3,15 +3,7 @@ var executeAddNode = function(top, left){
 	var offsetTop = top - newNode.element.height()/2.0,
 		offsetLeft = left - newNode.element.width()/2.0;
 	$(newNode.element).offset({top: offsetTop, left: offsetLeft});
-	var outputChar = window.prompt("Output character?");
-	if (outputChar) {
-		newNode.mooreOutput(outputChar);
-	}
-	else {
-		newNode.mooreOutput(emptystring);
-	}
-	newNode.stateLabelPositionUpdate();
-	updateMooreOutput();
+	return newNode;
 };
 
 var executeDeleteNode = function(node){

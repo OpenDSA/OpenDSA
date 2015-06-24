@@ -4,10 +4,19 @@
 	<head>
 		<title>Mealy Container</title>
     	<link rel="stylesheet" href="../../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+    	<link rel="stylesheet" href="../../resources/customPrompt.css" type="text/css" />
 		<base href="./MealyEditor.html" target="iframe">
 	</head>
 	<body onload="init()">
 		<h1>Mealy Machine</h1>
+		<div id="dialogueoverlay"></div>
+  		<div id="dialoguebox">
+  		 	<div>
+    			<div id="dialogueboxhead"></div>
+      			<div id="dialogueboxbody"></div>
+      			<div id="dialogueboxfoot"></div>
+    		</div>
+  		</div>
 		<p align="center" id="multipleTraversals" class="arrayPlace"></p>
 		<button onclick="displayEditor()" id="edit">Edit</button>
 		<button onclick="displayTraversals()" id="begin">Traverse</button>
@@ -26,6 +35,7 @@
 		<script src="../../resources/serializableGraph.js"></script>
 		<script src="../../resources/underscore-min.js"></script>
 		<script src="../../resources/FA.js"></script>
+		<script src="../../resources/MealyPrompt.js"></script>
 		<script>
 			var jsav = new JSAV("av"),
 				jsavArray,
@@ -64,9 +74,12 @@
 					document.getElementById("if").contentWindow.testLambda();
 					window.alert("This Mealy Machine is nondeterministic.\nYou cannot run input on it.");
 					return;
-				};
-				var inputString = prompt("Input string?");
-				var inputArray = inputString.split(',');
+				}
+				var Prompt = new TraversePrompt();
+				Prompt.render();
+			};
+			var traverseInputs = function(inputArray) {
+				var graph = document.getElementById("if").contentWindow.getGraph();
 				var nodes = graph.nodes();
 				for (var next = nodes.next(); next; next = nodes.next()) {
 					next.removeClass('current');

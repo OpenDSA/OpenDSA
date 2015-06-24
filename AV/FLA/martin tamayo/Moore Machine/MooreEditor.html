@@ -153,7 +153,11 @@
 		    	$(".jsavgraph").click(function(e) {
 					if ($(".jsavgraph").hasClass("addNodes")) {
 						saveFAState();
-						executeAddNode(e.pageY, e.pageX);
+						selected = executeAddNode(e.pageY, e.pageX);
+						selected.highlight();
+						var Prompt = new NodePrompt();
+						Prompt.render(selected.value(), selected.hasClass('start'), selected.stateLabel(), selected.mooreOutput());
+						selected.unhighlight();
 					} 
 					else if ($('.jsavgraph').hasClass('moveNodes') && selected != null) {
 						saveFAState();
@@ -218,6 +222,16 @@
 						executeDeleteEdge(this);
 	   				}
 				}, {edge: true});
+			};
+			function cancelNode() {
+				g.removeNode(selected);
+				undoStack.pop();
+				if(undoStack.length == 0) {
+					document.getElementById("undoButton").disabled = true;
+				}
+			};
+			function createNode(initial_state, node_label, output_char) {
+				executeEditNode(selected, initial_state, node_label, output_char);
 			};
 			function updateNode(initial_state, node_label, output_char) {
 				saveFAState();
