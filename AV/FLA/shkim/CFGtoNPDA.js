@@ -2,7 +2,6 @@
 	var jsav = new JSAV("av"),
 		saved = false,
 		selectedNode = null,
-		arr,
 		g,
 		grammar;
 
@@ -107,6 +106,7 @@
 				$('#editedgelabel').remove();
 				g.layout({layout: "manual"});
 				$('.jsavgraph').removeClass("working");
+				updateAlphabet();
 			};
 			$('#changetransitionbutton').click(changeTransition);
 			$('#deletetransitionbutton').click(deleteTransition);
@@ -366,7 +366,7 @@
 		}
 		var edges = g.edges();
 		for (var next = edges.next(); next; next = edges.next()) {
-			wSplit = next.weight().split('<br>');
+			var wSplit = next.weight().split('<br>');
 			for (var i = 0; i < wSplit.length; i++) {
 				if (_.every(wSplit[i].split(':'), function(x) {return x === emptystring})) {
 					next.g.element.toggleClass('testingLambda');
@@ -385,20 +385,17 @@
 			alert('Please define an initial state');
 			return;
 		}
-		var inputString = prompt("Input string?", "abb");
-		if (inputString == null) {
+		var inputString = prompt("Input string?", "aqvx");
+		if (inputString === null) {
 			return;
 		}
 		jsav.umsg("");
 		var textArray = [];
 		$("button").hide();			//disable buttons
 		$("#mode").html('');
-		if (arr) {
-			arr.clear();
-			}
-			$('.jsavcontrols').show();
+		$('.jsavcontrols').show();
 		g.initial.addClass('current');
-		var currentStates = [new configuration(g.initial, ['Z'])];
+		var currentStates = [new Configuration(g.initial, ['Z'], inputString, 0)];
 		currentStates = addLambdaClosure(currentStates);
 		var configView = "";
 	   	for (var j = 0; j < currentStates.length; j++) {
@@ -407,60 +404,67 @@
 	    jsav.umsg(configView);
 		var cur;
 		
-		for (var i = 0; i < inputString.length; i++) {
-			textArray.push(inputString[i]);
+		jsav.displayInit();
+		var counter = 0;
+		var stringAccepted = false;
+		while (true) {
+			jsav.step();
+			counter++;
+			if (counter > 500) {
+				break;
 			}
-			arr = jsav.ds.array(textArray, {element: $('.arrayPlace')});
-
-			jsav.displayInit();
-
-		for (var i = 0; i < inputString.length; i++) {
 			for (var j = 0; j < currentStates.length; j++) {
 		   		currentStates[j].state.removeClass('current');
+		   		currentStates[j].state.removeClass('accepted');
+		   		currentStates[j].state.removeClass('rejected');
 		   	}
 		   	cur = traverse(currentStates, inputString[i]);
 		   	if (cur.length === 0) {
-		   		arr.css(i, {"background-color": "red"});
-		   		jsav.step();
 		   		break;
 		   	}
+			currentStates = cur;
 		   	configView = "";
-		   	for (var j = 0; j < cur.length; j++) {
+		   	for (var j = 0; j < currentStates.length; j++) {
+		   		if (currentStates[j].curIndex === inputString.length) {
+					if (currentStates[j].state.hasClass('final')) {
+						currentStates[j].state.addClass('accepted');
+						stringAccepted = true;
+					} else {
+						currentStates[j].state.addClass('rejected');
+					}
+				}
 		   		configView += cur[j].toString() + ' | ';
 		   	}
 		    jsav.umsg(configView);
-			currentStates = cur;
-			arr.css(i, {"background-color": "yellow"});
-			jsav.step();
+		    if (stringAccepted) {
+		   		break;
+		   	}
 		}
 
-		var rejected = true;
-		for (var k = 0; k < currentStates.length; k++) {
-			if (currentStates[k].state.hasClass('final') && cur.length > 0) {
-				currentStates[k].state.addClass('accepted');
-					arr.css(inputString.length - 1, {"background-color": "green"});
-					jsav.umsg("Accepted");
-				rejected = false;
-			}
-		}
-		if (rejected) {
-			arr.css(inputString.length - 1, {"background-color": "red"});
+		if (stringAccepted) {
+			//jsav.umsg("Accepted");
+		} else {
 			jsav.umsg("Rejected");
 		}
 		jsav.recorded();
 	};
 
-	var traverse = function(currentStates, letter) {
+	var traverse = function(currentStates) {
 		// currentStates is an array of configurations
 		var nextStates = [];
 		for (var i = 0; i < currentStates.length; i++) {
 			var successors = currentStates[i].state.neighbors(),
-				curStack = currentStates[i].stack;
+				curStack = currentStates[i].stack,
+				curIndex = currentStates[i].curIndex,
+				s = currentStates[i].inputString,
+				letter = s[curIndex];
 			for (var next = successors.next(); next; next = successors.next()) {
 				var w = g.getEdge(currentStates[i].state, next).weight().split('<br>');
 				for (var j = 0; j < w.length; j++) {
+					var nextIndex = curIndex + 1;
 					var t = w[j].split(':');
 			        if (t[0] !== letter && t[0] !== emptystring) {continue;}
+			        if (t[0] === emptystring) {nextIndex = curIndex;}
 			        if (t[1] !== emptystring) {
 			          var l = [],
 			              cur;
@@ -473,7 +477,7 @@
 			            }
 			          }
 			          if (t[1] === l.join('')) {
-			          	var nextConfig = new configuration(next, curStack);
+			          	var nextConfig = new Configuration(next, curStack, s, nextIndex);
 			          	if (t[2] !== emptystring){
 			              for (var h = t[2].length - 1; h >= 0; h--) {
 			                nextConfig.stack.push(t[2].charAt(h));
@@ -485,7 +489,7 @@
 			          l.reverse();
 			          curStack = curStack.concat(l);
 			        } else {
-			          	var nextConfig = new configuration(next, curStack);
+			          	var nextConfig = new Configuration(next, curStack, s, nextIndex);
 			          	if (t[2] !== emptystring){
 			              for (var h = t[2].length - 1; h >= 0; h--) {
 			                nextConfig.stack.push(t[2].charAt(h));
@@ -512,7 +516,7 @@
 				for (var j = 0; j < weight.length; j++) {
 					if (!next.hasClass('current') && _.every(weight[j].split(':'), function(x) {return x === emptystring})) {
    						next.addClass('current');
-   						var nextConfig = new configuration(next, nextStates[i].stack)
+   						var nextConfig = new Configuration(next, nextStates[i].stack, nextStates[i].inputString, nextStates[i].curIndex)
 						lambdaStates.push(nextConfig);
    					}
 				}
@@ -524,16 +528,23 @@
 		for (var k = 0; k < lambdaStates.length; k++) {
 			nextStates.push(lambdaStates[k]);
 		}
+		nextStates = _.filter(nextStates, function (x) {
+			if (x.stack.length > 50) {
+				console.warn("large stack");
+				return false;
+			} return true;});
 		nextStates = _.uniq(nextStates, function(x) {return x.toString();});
 		return nextStates;
 	};
 
-	// configuration object
-	var configuration = function(state, stack) {
+	// Configuration object
+	var Configuration = function(state, stack, str, index) {
 		this.state = state;
+		this.inputString = str;
+		this.curIndex = index;
 		this.stack = stack.slice(0);
 		this.toString = function() {
-			return this.state.value() + ' ' + this.stack.join();
+			return this.state.value() + ' ' + this.inputString.substring(0, this.curIndex) + ' ' + this.stack.join();
 		}
 	};
 	

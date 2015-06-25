@@ -26,7 +26,7 @@
 		    "sections": {
 		      "LinearRecurrences": {
             "long_name": "Linear Recurrences Visualization",
-            "showhide": "show"
+            "showhide": "hide"
           }
         },
         "exercises": {
@@ -43,7 +43,7 @@
        "sections": {
           "TwoColoringProof": {
             "long_name": "Two coloring proof Visualization",
-            "showhide": "show"
+            "showhide": "hide"
           }
         },
         "exercises": {
@@ -67,7 +67,7 @@
         "sections": {
           "ProblemAlgorithm": {
             "long_name": "Problem, Algorithm, and Program definitions Visualization",
-            "showhide": "show"
+            "showhide": "hide"
           }
         },
         "exercises": {
@@ -88,7 +88,7 @@
 		"sections": {
           "BestWorstAverage": {
             "long_name": "Best, Worst, and Average cases visualization",
-            "showhide": "show"
+            "showhide": "hide"
           }
         },
         "exercises": {
@@ -115,7 +115,7 @@
           },
 		  "UpperBound":{
 		    "long_name": "Upper Bounds visualization",
-            "showhide": "show"
+            "showhide": "hide"
 		  }
         },
         "exercises": {
@@ -132,7 +132,7 @@
         "sections": {
           "LowerBound":{
             "long_name": "Lower Bounds visualization",
-            "showhide": "show"
+            "showhide": "hide"
           }
         },
         "exercises": {
@@ -265,7 +265,7 @@
 		"sections": {
 		  "SummationOneToN": {
             "long_name": "Summation of the first N integers Visualization",
-            "showhide": "show"
+            "showhide": "hide"
           }
         },
         "exercises": {
@@ -282,7 +282,7 @@
 		"sections": {
 		  "DivideAndConquerRecurrences": {
             "long_name": "Divide And Conquer Guessing Visualization",
-            "showhide": "show"
+            "showhide": "hide"
           }
 		},
         "exercises": {

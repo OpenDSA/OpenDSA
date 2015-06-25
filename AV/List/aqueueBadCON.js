@@ -1,73 +1,82 @@
+/*global ODSA */
+"use strict";
+// Written by Jun Yang and Cliff Shaffer
 // A problem that queue runs out of space..
 $(document).ready(function () {
-  var jsav = new JSAV("aqueueBadCON");
+  var av_name = "aqueueBadCON";
+  // Load the config object with interpreter and code created by odsaUtils.js
+  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+      interpret = config.interpreter;       // get the interpreter
+  var av = new JSAV(av_name);
 
   // Relative offsets
-  var leftMargin = 250;
-  var topMargin = 25;
-  var arr = jsav.ds.array([20, 5, 12, 17, "", "", "", "", "", "", "", ""],
-                          {left: leftMargin, top: topMargin});
-  var rearPointer =  setPointer("rear", arr, 3);
-  var frontPointer =  setPointer("front", arr, 0);
-  jsav.umsg("This implementation raises a new problem. Assume that the front element of the queue is initially at position 0, and that elements are added to successively higher-numbered positions in the array.");
-  jsav.displayInit();
-  frontPointer.target(arr.index(1));
-  arr.value(0, "");
-  arr.highlight(0);
-  jsav.umsg(" When elements are removed from the queue, the front index increases. ");
-  jsav.step();
-  arr.value(1, "");
-  arr.unhighlight(0);
-  arr.highlight(1);
-  jsav.umsg("<code>dequeue</code> operation");
-  frontPointer.target(arr.index(2));
-  jsav.step();
-  arr.value(4, "3");
-  arr.unhighlight(1);
-  arr.highlight(4);
-  jsav.umsg("<code>dequeue</code> operation");
-  rearPointer.target(arr.index(4));
-  jsav.umsg("<code>enqueue(3)</code>");
-  jsav.step();
-  arr.value(5, "30");
-  arr.unhighlight(4);
-  arr.highlight(5);
-  jsav.umsg("<code>dequeue</code> operation");
-  rearPointer.target(arr.index(5));
-  jsav.umsg("<code>enqueue(30)</code>");
-  jsav.step();
-  jsav.umsg("Over time, the entire queue will drift toward the higher-numbered positions in the array.");
-  jsav.step();
-  arr.value(2, "");
-  arr.value(6, "4");
-  arr.value(7, "55");
-  arr.value(8, "37");
-  arr.value(9, "11");
-  arr.value(10, "26");
-  arr.value(11, "32");
-  arr.unhighlight(5);
-  arr.unhighlight(2);
-  arr.highlight(6);
+  var leftMargin = 280;
+  var topMargin = 0;
+
+  var arr = av.ds.array(["", "", "", 17, 3, 30, 4, "", "", ""],
+                        {indexed: true, left: leftMargin, top: topMargin});
+  arr.addClass([0, 1, 2, 7, 8, 9], "unused");
+  // Create the graphics for front and rear boxes
+  var arrFront = av.ds.array([3], {indexed: false, left: 200, top: topMargin});
+  var labelFront = av.label("front", {left: 163, top: topMargin + 4});
+  var arrRear = av.ds.array([6], {indexed: false, left: 200, top: topMargin + 35});
+  var labelRear = av.label("rear", {left: 168, top: topMargin + 39});
+  var arrSize = av.ds.array([4], {indexed: false, left: 200, top: topMargin + 70});
+  var labelSize = av.label("listSize", {left: 147, top: topMargin + 74});
+
+  // Slide 1
+  av.umsg(interpret("av_c1"));
+  av.displayInit();
+
+  // Slide 2
+  arr.value(3, "");
+  arr.highlight(3);
+  arr.addClass(3, "unused");
+  arrSize.value(0, 3);
+  av.umsg(interpret("av_c2"));
+  arrFront.value(0, 4);
+  arrFront.highlight(0);
+  av.step();
+
+  // Slide 3
+  arr.removeClass(7, "unused");
+  arr.value(7, "3");
+  arrSize.value(0, 4);
+  av.umsg(interpret("av_c3"));
+  arrRear.value(0, 7);
+  arr.unhighlight(3);
   arr.highlight(7);
-  arr.highlight(8);
-  arr.highlight(9);
-  arr.highlight(10);
-  arr.highlight(11);
-  frontPointer.target(arr.index(3));
-  rearPointer.target(arr.index(11));
-  jsav.umsg("<code>enqueue(4)</code>, <code>enqueue(55)</code>, <code>enqueue(37)</code>, <code>enqueue(11)</code>, <code>enqueue(26)</code>, <code>enqueue(32)</code>");
-  jsav.step();
-  arr.unhighlight(6);
+  arrFront.unhighlight(0);
+  arrRear.highlight(0);
+  av.step();
+
+  // Slide 4
+  arr.removeClass(8, "unused");
+  arr.value(8, "40");
+  arrSize.value(0, 5);
+  av.umsg(interpret("av_c4"));
+  arrRear.value(0, 8);
   arr.unhighlight(7);
+  arr.highlight(8);
+  av.step();
+
+  // Slide 5
+  arr.removeClass(9, "unused");
+  arr.value(9, "42");
+  arrSize.value(0, 6);
+  av.umsg(interpret("av_c5"));
+  arrRear.value(0, 9);
   arr.unhighlight(8);
+  arr.highlight(9);
+  av.step();
+
+  // Slide 6
   arr.unhighlight(9);
-  arr.unhighlight(10);
-  arr.unhighlight(11);
-  jsav.umsg("Once an element is inserted into the highest-numbered position in the array, the queue has run out of space.");
-  jsav.step();
-  jsav.umsg("This happens despite the fact that there might be free positions at the low end of the array where elements have previously been removed from the queue.");
-  arr.highlight(0);
-  arr.highlight(1);
-  arr.highlight(2);
-  jsav.recorded();
+  arrRear.unhighlight(0);
+  av.umsg(interpret("av_c6"));
+  av.step();
+
+  // Slide 7
+  av.umsg(interpret("av_c7"));
+  av.recorded();
 }(jQuery));

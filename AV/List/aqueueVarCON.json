@@ -21,6 +21,32 @@
 	 "varmaxsize": 3,
          "varrear": 5
       }
+    },
+    "java": {
+      "url": "../../../SourceCode/Java/Lists/AQueue.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: AQueue1 *** */",
+      "endBefore": "/* *** ODSAendTag: AQueue1 *** */",
+      "tags": {
+         "array": 6,
+         "constructor": 9,
+         "setmaxsize": 10,
+	 "varmaxsize": 3,
+         "varrear": 5
+      }
+    },
+    "java_generic": {
+      "url": "../../../SourceCode/Java_Generic/Lists/AQueue.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: AQueue1 *** */",
+      "endBefore": "/* *** ODSAendTag: AQueue1 *** */",
+      "tags": {
+         "array": 6,
+         "constructor": 9,
+         "setmaxsize": 10,
+	 "varmaxsize": 3,
+         "varrear": 5
+      }
     }
   }
 }

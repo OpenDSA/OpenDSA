@@ -1,32 +1,58 @@
-// Elements of the queue are stored in the first n positions of the array..
-(function ($) {
-  var jsav = new JSAV("aqueueFirstCON");
+/*global ODSA */
+"use strict";
+// Written by Jun Yang and Cliff Shaffer
+// Elements of the queue are stored in the first n positions of the array
+$(document).ready(function () {
+  var av_name = "aqueueFirstCON";
+  // Load the config object with interpreter and code created by odsaUtils.js
+  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+      interpret = config.interpreter;       // get the interpreter
+  var av = new JSAV(av_name);
+
   // Relative offsets
   var leftMargin = 300;
-  var topMargin = 35;
-  var minusOne = jsav.ds.array(["-1"], {top: topMargin + 70, left: leftMargin + 30});
-  minusOne.hide();
-  var arr = jsav.ds.array([12, 45, 5, 81, "", "", "", ""],
-                          {indexed: true, top: topMargin, left: leftMargin});
-  jsav.umsg("Assume that there are <i>n</i> elements in the queue. By analogy to the array-based list implementation, we could require that all elements of the queue be stored in the first <i>n</i> positions of the array.");
-  jsav.displayInit();
+  var topMargin = 0;
 
-  var rearPointer = setPointer("rear", arr, 0);
-  var frontPointer = setPointer("front", arr, 3);
-  arr.highlight(3);
-  jsav.umsg(" If we choose the rear element of the queue to be in position 0, then dequeue operations require only &theta;(1) time because the front element of the queue (the one being removed) is the last element in the array.");
-  jsav.step();
+  // Create the graphics for front and rear boxes
+  var arrFront = av.ds.array([3], {indexed: false, left: 200, top: topMargin});
+  var labelFront = av.label("front", {left: 163, top: topMargin + 4});
+  var arrRear = av.ds.array([0], {indexed: false, left: 200, top: topMargin + 35});
+  var labelRear = av.label("rear", {left: 168, top: topMargin + 39});
+  var arrlistSize = av.ds.array([4], {indexed: false, left: 200, top: topMargin + 70});
+  var labellistSize = av.label("listSize", {left: 147, top: topMargin + 74});
+
+  var arr = av.ds.array([12, 45, 5, 81, "", "", "", ""],
+                          {indexed: true, top: topMargin, left: leftMargin});
+  arr.addClass([4, 5, 6, 7], "unused");
+
+  // Slide 1
+  av.umsg(interpret("av_c1"));
+  av.displayInit();
+
+  // Slide 2
+  arr.highlight(0);
+  arrRear.highlight(0);
+  av.umsg(interpret("av_c2"));
+  av.step();
+
+  // Slide 3
+  arrRear.unhighlight(0);
   arr.highlight(0);
   arr.highlight(1);
   arr.highlight(2);
-  jsav.umsg("However, enqueue operations will require &theta;(<i>n</i>) time, because the n elements currently in the queue must each be shifted one position in the array.");
-  jsav.step();
-  arr.unhighlight();
-  rearPointer.target(arr.index(3));
-  frontPointer.target(arr.index(0));
-  jsav.umsg("If instead we chose the rear element of the queue to be in position n-1, then an enqueue operation is equivalent to an append operation on a list. This requires only &theta;(1) time.");
-  jsav.step();
-  jsav.umsg("But now, a dequeue operation requires &theta;(<i>n</i>) time, because all of the elements must be shifted down by one position to retain the property that the remaining <i>n</i>-1 queue elements reside in the first <i>n</i>-1 positions of the array.");
-  jsav.step();
-  jsav.recorded();
-}(jQuery));
+  av.umsg(interpret("av_c3"));
+  av.step();
+
+  // Slide 4
+  arr.unhighlight([0, 1, 2]);
+  arrRear.value(0, 3);
+  arrFront.value(0, 0);
+  arr.highlight(3);
+  arrRear.highlight(0);
+  av.umsg(interpret("av_c4"));
+  av.step();
+
+  // Slide 5
+  av.umsg(interpret("av_c5"));
+  av.recorded();
+});

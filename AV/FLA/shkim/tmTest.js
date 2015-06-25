@@ -112,6 +112,7 @@
 				g.layout({layout: "manual"});
 				console.log(_.map(g._alledges, function(x){return x.weight()}))
 				$('.jsavgraph').removeClass("working");
+				updateAlphabet();
 			};
 			$('#changetransitionbutton').click(changeTransition);
 			$('#deletetransitionbutton').click(deleteTransition);

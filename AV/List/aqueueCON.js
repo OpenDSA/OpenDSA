@@ -1,18 +1,7 @@
 "use strict";
-// Helper function for creating a pointer
-function setPointer(name, obj, index) {
-  return obj.jsav.pointer(name, obj, {
-    targetIndex : index,
-    visible: true,
-    anchor: "left top",
-    myAnchor: "right bottom",
-    left: 15,
-    top: -20
-  });
-}
-
+// Written by Jun Yang
 // JSAV extension for circular queue.
-(function ($) {
+$(document).ready(function () {
   function sin(x) {
     return Math.sin(x * Math.PI / 180);
   }
@@ -112,4 +101,4 @@ function setPointer(name, obj, index) {
   JSAV.ext.circular = function (cx, cy, r1, r2, options) {
     return new Circular(this, cx, cy, r1, r2, $.extend({}, options));
   };
-}(jQuery));
+});
