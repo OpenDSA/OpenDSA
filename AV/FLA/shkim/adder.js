@@ -171,6 +171,7 @@
 				$('#editedgelabel').remove();
 				g.layout({layout: "manual"});
 				$('.jsavgraph').removeClass("working");
+				updateAlphabet();
 			};
 			$('#changetransitionbutton').click(changeTransition);
 			$('#deletetransitionbutton').click(deleteTransition);

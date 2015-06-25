@@ -130,6 +130,7 @@
     $('.jsavcontrols').show();
     $('#backbutton').show();
     $(m.element).css("margin-left", "50px");
+    m._arrays[lastRow].hide();
 
     var productions = _.filter(arr, function(x) { return x[0]});
     var table = {};
@@ -273,6 +274,7 @@
       $('.jsavcontrols').hide();
       $('#backbutton').hide();
       $(m.element).css("margin-left", "auto");
+      m._arrays[lastRow].show();
     }
 
   }; 

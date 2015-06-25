@@ -16,22 +16,13 @@
 		epsilon = String.fromCharCode(949),
 		emptystring = lambda;
 	/*
-	graph:
-	initial state is filled green
-	current states (during slideshow) are filled blue
-	array:
-	characters already traversed are highlighted yellow
-	if a character is not accepted, it is filled red
-	if the inputted string passes, the final character is filled green
-
 	Add lambda transitions by setting weight to empty string.
-
-	The values of the FA nodes should never be changed manually (for now)
 	*/
 
 	var initGraph = function(opts) {
 		if (!saved) {
 			g = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
+			emptystring = g.emptystring;
 	  		var a = g.addNode(),		
 	      		b = g.addNode(),
 	      		c = g.addNode(),
@@ -39,9 +30,7 @@
 	      		e = g.addNode();
 	      	g.makeInitial(b);
 	      	e.addClass('final');
-
-		    //g.addEdge(a, a, {weight: 'a'});
-		    //g.addEdge(b, a, {weight: 'c'}).highlight(); //does edge.highlight() do anything?	
+	
 		    g.addEdge(a, d, {weight: ''});
 		    g.addEdge(a, e, {weight: ''});
 
@@ -133,10 +122,6 @@
 					for (var next = nodes.next(); next; next = nodes.next()) {
 						g.removeInitial(next);
 					}
-					// for (var i = 0; i < g.nodeCount(); i++) {
-					// 	g.nodes()[i].removeClass('start');
-					// 	g.removeInitial(g.nodes()[i]);
-					// }
 					g.makeInitial(this);
 				} else if (input == 'F') {
 					this.toggleClass('final');
@@ -145,7 +130,6 @@
 				else if (input == 'L') {
 					var input2 = prompt("Label?");
 					if (input2 !== null) {
-						//this.element.attr('title', input2);
 						this.stateLabel(input2);
 						this.stateLabelPositionUpdate();
 					}
@@ -160,9 +144,6 @@
 	   			} else {
 	   				var input2 = prompt("Accepted character?");
 	   				var newEdge;
-					// if (input2 === "") {
-					// 	newEdge = g.addEdge(first, this, {weight: "\&lambda;"});
-					// } else 
 					if (input2 != null) {
 						newEdge = g.addEdge(first, this, {weight: input2});
 					} 
@@ -197,9 +178,6 @@
 				}
 				else if (input == 'C') {
 					var input2 = prompt("Accepted character?");
-					// if (input2 === "") {
-					// 	this.weight("\&lambda;");
-					// } else 
 					if (input2 != null) {
 						this.weight(input2);
 					} 
@@ -210,7 +188,7 @@
 		}, {edge: true});
 	};
 
-	localStorage.clear();
+	//localStorage.clear();
 	var g = initGraph({layout: "automatic"});
 	//var g = initGraph({layout: "automatic", emptystring: epsilon});
 	g.layout();
@@ -458,6 +436,10 @@
 		var nodes = g.nodes();
 		var arrow = "&rarr;";
 		var converted = [];
+		if (g.nodeCount() > 26) {
+			alert('The FA must have at most 26 states to convert it into a grammar!');
+			return;
+		}
 		for (var next = nodes.next(); next; next = nodes.next()) {
 			if (!next.equals(s)) {
 				newVariables.push(next);

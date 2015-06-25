@@ -269,6 +269,7 @@
 	        $('.transitionInput').first().focus();
 	    }
 	    end = function() {
+	    	updateAlphabet();
 	        document.getElementById('dialoguebox').style.display = "none";
 	        document.getElementById('dialogueoverlay').style.display = "none";
 	    }
@@ -295,7 +296,6 @@
 			}
 			if (!(typeof newEdge === 'undefined')) {
 				newEdge.layout();
-				updateAlphabet();
 			}
 	        this.end();
 	    }
