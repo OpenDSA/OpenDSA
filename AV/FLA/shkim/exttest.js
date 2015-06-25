@@ -3,7 +3,6 @@
 
 (function ($) {
 	ODSA.SETTINGS.MODULE_ORIGIN = '*';
-	
 	var jsav = new JSAV("av"),
 		saved = false,
 		//startState,
@@ -14,7 +13,8 @@
 	//e.g. initGraph({layout: "automatic", emptystring: epsilon})
 	//By default it is set to lambda.
 	var lambda = String.fromCharCode(955),
-		epsilon = String.fromCharCode(949);
+		epsilon = String.fromCharCode(949),
+		emptystring = lambda;
 	/*
 	graph:
 	initial state is filled green
@@ -35,19 +35,24 @@
 	  		var a = g.addNode(),		
 	      		b = g.addNode(),
 	      		c = g.addNode(),
-	      		d = g.addNode();
-	      	g.makeInitial(a);
-	      	c.addClass("final");
-	      	d.addClass('final');
+	      		d = g.addNode(),
+	      		e = g.addNode();
+	      	g.makeInitial(b);
+	      	e.addClass('final');
 
 		    //g.addEdge(a, a, {weight: 'a'});
 		    //g.addEdge(b, a, {weight: 'c'}).highlight(); //does edge.highlight() do anything?	
-		    g.addEdge(a, b, {weight: 'a'});
-		    //g.addEdge(b, b, {weight: 'b'});
-		    g.addEdge(b, c, {weight: 'b'});
-		    g.addEdge(c, d, {weight: 'a'});
-		    g.addEdge(d, b, {weight: 'b'});
-		    //g.addEdge(d, c, {weight: ''});	//lambda
+		    g.addEdge(a, d, {weight: ''});
+		    g.addEdge(a, e, {weight: ''});
+
+		    g.addEdge(b, a, {weight: 'b'});
+		    g.addEdge(b, a, {weight: 'a'});
+		    g.addEdge(b, c, {weight: 'a'});
+
+		    g.addEdge(c, e, {weight: 'x'});
+
+		    g.addEdge(d, c, {weight: 'qv'});
+			g.addEdge(d, e, {weight: 'y'});	
 		
 			addHandlers();
 		}
@@ -274,6 +279,38 @@
 	//====================
 	//tests
 
+	// var testND = function() {
+	// 	$('#changeButton').toggleClass("highlightingND");
+	// 	if ($('#changeButton').hasClass("highlightingND") || $('#changeButton').hasClass("highlightingL")) {
+	// 		$('#changeButton').hide();
+	// 	} else{
+	// 		$('#changeButton').show();
+	// 	}
+	// 	var nodes = g.nodes();
+	// 	for(var next = nodes.next(); next; next = nodes.next()) {
+	// 		var edges = next.getOutgoing();
+	// 		var weights = _.map(edges, function(e) {return e.weight()});
+	// 		if (_.contains(weights, g.emptystring) || _.uniq(weights).length < weights.length) {
+	// 			next.toggleClass("testingND");
+	// 		}
+	// 	}
+	// };
+
+	// var testLambda = function() {
+	// 	$('#changeButton').toggleClass("highlightingL");
+	// 	if ($('#changeButton').hasClass("highlightingND") || $('#changeButton').hasClass("highlightingL")) {
+	// 		$('#changeButton').hide();
+	// 	} else{
+	// 		$('#changeButton').show();
+	// 	}
+	// 	var edges = g.edges();
+	// 	for (var next = edges.next(); next; next = edges.next()) {
+	// 		if (next.weight().indexOf(g.emptystring) !== -1) {
+	// 			next.g.element.toggleClass('testingLambda');
+	// 		}
+	// 	}
+	// };
+
 	var testND = function() {
 		$('#changeButton').toggleClass("highlightingND");
 		if ($('#changeButton').hasClass("highlightingND") || $('#changeButton').hasClass("highlightingL")) {
@@ -284,13 +321,18 @@
 		var nodes = g.nodes();
 		for(var next = nodes.next(); next; next = nodes.next()) {
 			var edges = next.getOutgoing();
-			var weights = _.map(edges, function(e) {return e.weight()});
-			if (_.contains(weights, g.emptystring) || _.uniq(weights).length < weights.length) {
-				next.toggleClass("testingND");
+			if (edges.length === 0) {continue;}
+			var weights = _.map(edges, function(e) {return e.weight().split('<br>')});
+			for (var i = 0; i < weights.length; i++) {
+				var findLambda = _.find(weights[i], function(e) {return e.split(':')[0] === emptystring});
+				if (findLambda) { break; }
+			}
+			var dup = _.map(_.flatten(weights), function(e) {return _.initial(e.split(':')).join()})
+			if (findLambda || _.uniq(dup).length < dup.length) {
+				next.toggleClass('testingND');
 			}
 		}
 	};
-
 	var testLambda = function() {
 		$('#changeButton').toggleClass("highlightingL");
 		if ($('#changeButton').hasClass("highlightingND") || $('#changeButton').hasClass("highlightingL")) {
@@ -300,8 +342,12 @@
 		}
 		var edges = g.edges();
 		for (var next = edges.next(); next; next = edges.next()) {
-			if (next.weight().indexOf(g.emptystring) !== -1) {
-				next.g.element.toggleClass('testingLambda');
+			var wSplit = next.weight().split('<br>');
+			for (var i = 0; i < wSplit.length; i++) {
+				if (_.every(wSplit[i].split(':'), function(x) {return x === emptystring})) {
+					next.g.element.toggleClass('testingLambda');
+					break;
+				}
 			}
 		}
 	};
@@ -309,6 +355,7 @@
 
 	//====================
 	//temp:
+	//DFA ONLY
 
 	var play = function() {
 		var inputString = prompt("Input string?", "aba");
@@ -404,6 +451,42 @@
 	// 	saved = true;
 	// };
 
+	var convertToGrammar = function () {
+		var variables = "SABCDEFGHIJKLMNOPQRTUVWXYZ";
+		var s = g.initial;
+		var newVariables = [s];
+		var nodes = g.nodes();
+		var arrow = "&rarr;";
+		var converted = [];
+		for (var next = nodes.next(); next; next = nodes.next()) {
+			if (!next.equals(s)) {
+				newVariables.push(next);
+			}
+		}
+		var finals = [];
+		for (var i = 0; i < newVariables.length; i++) {
+			var edges = newVariables[i].getOutgoing();
+			for (var j = 0; j < edges.length; j++) {
+				var toVar = variables[newVariables.indexOf(edges[j].end())];
+				var weight = edges[j].weight().split("<br>");
+				for (var k = 0; k < weight.length; k++) {
+					var terminal = weight[k];
+					if (weight[k] === emptystring) {
+						terminal = "";
+					}
+					converted.push(variables[i] + arrow + terminal + toVar);
+				}
+			}
+			if (newVariables[i].hasClass('final')) {
+				finals.push(variables[i] + arrow + emptystring);
+			}
+		}
+		converted = converted.concat(finals);
+		localStorage['grammar'] = converted;
+		window.open("grammarTest.html", "_self");
+	};
+
+
   	$('#reset').click(function() {
   		save();
   		ODSA.AV.reset();
@@ -427,4 +510,5 @@
 	$('#addedgesbutton').click(addEdgesMode);
 	$('#movenodesbutton').click(moveNodesMode);
 	$('#editnodesbutton').click(editNodesMode);
+	$('#togrammarbutton').click(convertToGrammar);
 }(jQuery));	

@@ -365,7 +365,7 @@
 		}
 		var edges = g.edges();
 		for (var next = edges.next(); next; next = edges.next()) {
-			wSplit = next.weight().split('<br>');
+			var wSplit = next.weight().split('<br>');
 			for (var i = 0; i < wSplit.length; i++) {
 				if (_.every(wSplit[i].split(':'), function(x) {return x === emptystring})) {
 					next.g.element.toggleClass('testingLambda');

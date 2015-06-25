@@ -12,17 +12,27 @@
       epsilon = String.fromCharCode(949),
       square = String.fromCharCode(9633),
       emptystring = lambda;
-  for (var i = 0; i < arr.length; i++) {
-    arr[i] = ["", arrow, ""];
+  if (localStorage["grammar"]) {
+    arr = _.map(localStorage['grammar'].split(','), function(x) { 
+      var d = x.split("&rarr;")
+      d.splice(1, 0, arrow);
+      return d;
+    });
+    lastRow = arr.length;
+    arr.push(["", arrow, ""]);
+  } else {
+    for (var i = 0; i < arr.length; i++) {
+      arr[i] = ["", arrow, ""];
+    }
+    arr[0] = ['S', arrow, 'aA'];
+    arr[1] = ['S', arrow, 'bA'];
+    arr[2] = ['S', arrow, 'aC'];
+    arr[3] = ['A', arrow, 'B'];
+    arr[4] = ['B', arrow, 'qvC'];
+    arr[5] = ['C', arrow, 'x'];
+    arr[6] = ['B', arrow, 'y'];
+    arr[7] = ['A', arrow, emptystring];
   }
-  arr[0] = ['S', arrow, 'aA'];
-  arr[1] = ['S', arrow, 'bA'];
-  arr[2] = ['S', arrow, 'aC'];
-  arr[3] = ['A', arrow, 'B'];
-  arr[4] = ['B', arrow, 'qvC'];
-  arr[5] = ['C', arrow, 'x'];
-  arr[6] = ['B', arrow, 'y'];
-  arr[7] = ['A', arrow, emptystring];
   var init = function () {
       var m2 = jsav.ds.matrix(arr, {style: "table"});
       for (var i = lastRow + 1; i < arr.length; i++) {
@@ -165,10 +175,8 @@
                 r = "";
               }
               var s = replaceCharAt(next, i, r);
-              if (sententials.indexOf(s) === -1 && _.map(s, function(x) {
-                if (variables.indexOf(x) === -1) {
-                  return s;
-                }
+              if (sententials.indexOf(s) === -1 && _.filter(s, function(x) {
+                return variables.indexOf(x) === -1;
               }).length <= inputString.length) {
                 sententials.unshift(s);
               }
@@ -307,12 +315,12 @@
   $('#convertRLGbutton').click(function () {
     var productions=_.filter(arr, function(x) { return x[0]});
     localStorage['grammar'] = _.map(productions, function(x) {return x.join('');});
-    window.open('RLGtoFA.html', '', 'width = 800, height = 600, screenX = 300, screenY = 50');
+    window.open('RLGtoFA.html', '', 'width = 800, height = 750, screenX = 300, screenY = 25');
   });
   $('#convertCFGbutton').click(function () {
     var productions=_.filter(arr, function(x) { return x[0]});
     localStorage['grammar'] = _.map(productions, function(x) {return x.join('');});
-    window.open('CFGtoNPDA.html', '', 'width = 800, height = 600, screenX = 300, screenY = 50');
+    window.open('CFGtoNPDA.html', '', 'width = 800, height = 750, screenX = 300, screenY = 25');
   });
   $('#backbutton').click(function () {
     if (parseTree) {
