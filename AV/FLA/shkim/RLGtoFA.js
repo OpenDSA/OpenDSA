@@ -3,7 +3,6 @@
 		saved = false,
 		//startState,
 		selectedNode = null,
-		arr,
 		g,
 		grammar;
 
@@ -12,7 +11,8 @@
 	//e.g. initGraph({layout: "automatic", emptystring: epsilon})
 	//By default it is set to lambda.
 	var lambda = String.fromCharCode(955),
-		epsilon = String.fromCharCode(949);
+		epsilon = String.fromCharCode(949),
+		emptystring = lambda;
 	/*
 	graph:
 	initial state is filled green
@@ -304,62 +304,156 @@
 		$("button").hide();			//disable buttons
 		$('#reset').show();
 		$("#mode").html('');
-		if (arr) {
-			arr.clear();
-		}
 		$('.jsavcontrols').show();
 		
-
-		var currentState = g.initial,
+		var currentStates = [new Configuration(g.initial, inputString, 0)],
 			cur;
-		currentState.addClass('current');
-		for (var i = 0; i < inputString.length; i++) {
-			textArray.push(inputString[i]);
-			}
-			arr = jsav.ds.array(textArray, {element: $('.arrayPlace')});
+		currentStates = addLambdaClosure(currentStates);
+		var configView = [];
+		for (var j = 0; j < currentStates.length; j++) {
+			currentStates[j].state.addClass('current');
+	   		configView.push(currentStates[j].toString());
+	   	}
+		jsav.umsg(configView.join(' | '));
+		jsav.displayInit();
 
-			jsav.displayInit();
-
-		for (var i = 0; i < inputString.length; i++) {
-			console.log(i);
-		   	cur = traverse(currentState, inputString, i);
-		   	if (!cur) {
-		   		arr.css(i, {"background-color": "red"});
-		   		jsav.step();
-		   		break;
-		   	} else {
-		   		cur = cur[0];
-		   		i = cur[1];
-		   	}
-		   	currentState.removeClass('current');
-			currentState = cur;
-			currentState.addClass('current');
-			arr.css(i, {"background-color": "yellow"});
+		// for (var i = 0; i < inputString.length; i++) {
+		// 	console.log(i);
+		//    	cur = traverse(currentState, inputString, i);
+		//    	if (!cur) {
+		//    		jsav.step();
+		//    		break;
+		//    	} else {
+		//    		cur = cur[0];
+		//    		i = cur[1];
+		//    	}
+		//    	currentState.removeClass('current');
+		// 	currentState = cur;
+		// 	currentState.addClass('current');
+		// 	jsav.step();
+		// }
+		// if (currentState.hasClass('final') && cur != null) {
+		// 		jsav.umsg("Accepted");
+		// } else {
+		// 	jsav.umsg("Rejected");
+		// }
+		var counter = 0;
+		var stringAccepted = false;
+		while (true) {
 			jsav.step();
+			counter++;
+			if (counter > 500) {
+				break;
+			}
+			cur = traverse(currentStates);
+			if (cur.length === 0) {
+				break;
+			}
+			for (var j = 0; j < currentStates.length; j++) {
+		   		currentStates[j].state.removeClass('current');
+		   		currentStates[j].state.removeClass('accepted');
+		   		currentStates[j].state.removeClass('rejected');
+		   	}
+			currentStates = cur;
+			configView = [];
+			for (var j = 0; j < currentStates.length; j++) {
+				currentStates[j].state.addClass('current');
+				if (currentStates[j].curIndex === inputString.length) {
+					if (currentStates[j].state.hasClass('final')) {
+						currentStates[j].state.addClass('accepted');
+						stringAccepted = true;
+					} else {
+						currentStates[j].state.addClass('rejected');
+					}
+				}
+		   		configView.push(currentStates[j].toString());
+		   	}
+		    jsav.umsg(configView.join(' | '));
 		}
-		if (currentState.hasClass('final') && cur != null) {
-				arr.css(inputString.length - 1, {"background-color": "green"});
-				jsav.umsg("Accepted");
+		//jsav.step();
+		// for (var k = 0; k < currentStates.length; k++) {
+		// 	if (currentStates[k].state.hasClass('final') && currentStates[k].curIndex === inputString.length) {
+		// 		stringAccepted = true;
+		// 		currentStates[k].state.addClass('accepted');
+		// 	} else {
+		// 		currentStates[k].state.addClass('rejected');
+		// 	}
+		// }
+		if (stringAccepted) {
+			jsav.umsg("Accepted");
 		} else {
-			arr.css(inputString.length - 1, {"background-color": "red"});
 			jsav.umsg("Rejected");
 		}
-		jsav.step();
 		jsav.recorded();	
 	};
-	var traverse = function(currentState, str, pos) {
-		var successors = currentState.neighbors();
-		for (var next = successors.next(); next; next = successors.next()) {
-			var weight = g.getEdge(currentState, next).weight().split('<br>');
-			for (var i = 0; i < weight.length; i++) {
-				console.log(str.substr(pos, weight[i].length))
-				console.log(weight[i])
-				if (str.substr(pos, weight[i].length) === weight[i]) {
-					return [next, pos - 1 + weight[i].length];
+
+	// var traverse = function(currentState, str, pos) {
+	// 	var successors = currentState.neighbors();
+	// 	for (var next = successors.next(); next; next = successors.next()) {
+	// 		var weight = g.getEdge(currentState, next).weight().split('<br>');
+	// 		for (var i = 0; i < weight.length; i++) {
+	// 			console.log(str.substr(pos, weight[i].length))
+	// 			console.log(weight[i])
+	// 			if (str.substr(pos, weight[i].length) === weight[i]) {
+	// 				return [next, pos - 1 + weight[i].length];
+	// 			}
+	// 		}
+	// 	} 
+	// 	return null;
+	// };
+
+	var traverse = function(currentStates) {
+		var nextStates = [];
+		for (var i = 0; i < currentStates.length; i++) {
+			var s = currentStates[i].inputString;
+			var c = currentStates[i].curIndex;
+			var successors = currentStates[i].state.neighbors();
+			for (var next = successors.next(); next; next = successors.next()) {
+				var weight = g.getEdge(currentStates[i].state, next).weight().split('<br>');
+				for (var j = 0; j < weight.length; j++) {
+					if (s.substr(c, weight[j].length) === weight[j]) {
+						nextStates.push(new Configuration(next, s, c + weight[j].length));
+					}
 				}
 			}
-		} 
-		return null;
+		}
+		nextStates = _.uniq(nextStates, function(x) {return x.toString();});
+		nextStates = addLambdaClosure(nextStates);
+		return nextStates;
+	};
+
+	var addLambdaClosure = function(nextStates) {
+		lambdaStates = [];
+		for (var i = 0; i < nextStates.length; i++) {
+			var successors = nextStates[i].state.neighbors();
+			for (var next = successors.next(); next; next = successors.next()) {
+				var weight = g.getEdge(nextStates[i].state, next).weight().split('<br>');
+				for (var j = 0; j < weight.length; j++) {
+					if (!next.hasClass('current') && _.every(weight[j].split(':'), function(x) {return x === emptystring})) {
+   						//next.addClass('current');
+   						var nextConfig = new Configuration(next, nextStates[i].inputString, nextStates[i].curIndex);
+						lambdaStates.push(nextConfig);
+   					}
+				}
+			}
+		}
+		if(lambdaStates.length > 0) {
+			lambdaStates = addLambdaClosure(lambdaStates);
+		}
+		for (var k = 0; k < lambdaStates.length; k++) {
+			nextStates.push(lambdaStates[k]);
+		}
+		nextStates = _.uniq(nextStates, function(x) {return x.toString();});
+		return nextStates;
+	};
+
+	var Configuration = function(state, str, index) {
+		this.state = state;
+		this.inputString = str;
+		this.curIndex = index;
+		this.toString = function() {
+			return this.state.value() + ' ' + this.inputString.substring(0, index);
+		}
 	};
 
 
