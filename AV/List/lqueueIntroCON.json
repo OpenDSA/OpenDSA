@@ -1,0 +1,42 @@
+{
+  "translations": {
+    "en": {
+      "av_c1": "Members <code>front</code> and <code>rear</code> are pointers to the front and rear queue elements, respectively.",
+      "av_c2": "We will use a header link node, which allows for a simpler implementation of the enqueue operation by avoiding any special cases when the queue is empty.",
+      "av_c3": "On initialization, the front and rear pointers will point to the header node.",
+      "av_c4": "<code>front</code> will always point to the header node while rear points to the true last link node in the queue."
+    }
+  },
+  "code": {
+    "processing": {
+      "url": "../../../SourceCode/Processing/Lists/LQueue.pde",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: LQueue1 *** */",
+      "endBefore": "/* *** ODSAendTag: LQueue1 *** */",
+      "tags": {
+        "vars": [3, 4],
+        "init": [9, 10, 11, 12, 13]
+      }
+    },
+    "java": {
+      "url": "../../../SourceCode/Java/Lists/LQueue.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: LQueue1 *** */",
+      "endBefore": "/* *** ODSAendTag: LQueue1 *** */",
+      "tags": {
+        "vars": [3, 4],
+        "init": [9, 10, 11, 12, 13]
+      }
+    },
+    "java_generic": {
+      "url": "../../../SourceCode/Java_Generic/Lists/LQueue.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: LQueue1 *** */",
+      "endBefore": "/* *** ODSAendTag: LQueue1 *** */",
+      "tags": {
+        "vars": [3, 4],
+        "init": [9, 10, 11, 12, 13]
+      }
+    }
+  }
+}

@@ -19,8 +19,9 @@ $(document).ready(function () {
       .addFirst(23);
 
   list.get(3).addTail({left: 222});
-  list.layout();
   var firstnode = list.get(0);
+  var topPointer = av.pointer("top", firstnode);
+  list.layout();
 
   var arrIt = av.ds.array([""], {left: leftMargin + 110, top: topMargin + 50});
   var labelIt = av.label("it", {left: leftMargin + 90, top: topMargin + 55});
@@ -33,9 +34,7 @@ $(document).ready(function () {
   // Slide 2
   firstnode.highlight();
   av.umsg(interpret("av_c2"));
-  var topPointer = av.pointer("top", firstnode);
-  list.layout();
-  pseudo.setCurrentLine("null");
+  pseudo.setCurrentLine(0);
   av.step();
 
   // Slide 3

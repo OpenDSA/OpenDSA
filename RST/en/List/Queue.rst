@@ -105,7 +105,7 @@ Implementation of all member functions is straightforward.
 
 :: .. avembed:: Exercises/List/aqueueDequeuePRO.html ka
 
-.. odsascript:: AV/List/aqueueCON.js
+.. odsascript:: DataStructures/CircularQueue.js
 .. odsascript:: AV/List/aqueueFirstCON.js
 .. odsascript:: AV/List/aqueueDriftCON.js
 .. odsascript:: AV/List/aqueueBadCON.js

@@ -21,6 +21,8 @@ Here is the linked queue class declaration.
 .. codeinclude:: Lists/LQueue
    :tag: LQueue1,LQueue2
 
+|
+
 .. inlineav:: lqueueIntroCON ss
    :output: show    
    
@@ -49,7 +51,6 @@ way to store two queues in the same array,
 unless items are always transferred directly from one queue to the other.
 
 .. odsascript:: AV/List/llistCON.js
-.. odsascript:: AV/List/lqueueCON.js
 .. odsascript:: AV/List/lqueueIntroCON.js
 .. odsascript:: AV/List/lqueueEnqueueCON.js
 .. odsascript:: AV/List/lqueueDequeueCON.js

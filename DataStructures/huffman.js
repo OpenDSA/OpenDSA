@@ -1,4 +1,3 @@
-/*global ODSA */
 "use strict";
 // Huffman coding tree shared functions
 // Written by Maoyuan Sun, Rich Episcopo, and Cliff Shaffer
