@@ -268,13 +268,18 @@
 		var nodes = g.nodes();
 		for(var next = nodes.next(); next; next = nodes.next()) {
 			var edges = next.getOutgoing();
-			var weights = _.map(edges, function(e) {return e.weight()});
-			if (_.contains(weights, g.emptystring) || _.uniq(weights).length < weights.length) {
-				next.toggleClass("testingND");
+			if (edges.length === 0) {continue;}
+			var weights = _.map(edges, function(e) {return e.weight().split('<br>')});
+			for (var i = 0; i < weights.length; i++) {
+				var findLambda = _.find(weights[i], function(e) {return e.split(':')[0] === emptystring});
+				if (findLambda) { break; }
+			}
+			var dup = _.map(_.flatten(weights), function(e) {return _.initial(e.split(':')).join()})
+			if (findLambda || _.uniq(dup).length < dup.length) {
+				next.toggleClass('testingND');
 			}
 		}
 	};
-
 	var testLambda = function() {
 		$('#changeButton').toggleClass("highlightingL");
 		if ($('#changeButton').hasClass("highlightingND") || $('#changeButton').hasClass("highlightingL")) {
@@ -284,12 +289,15 @@
 		}
 		var edges = g.edges();
 		for (var next = edges.next(); next; next = edges.next()) {
-			if (next.weight().indexOf(g.emptystring) !== -1) {
-				next.g.element.toggleClass('testingLambda');
+			var wSplit = next.weight().split('<br>');
+			for (var i = 0; i < wSplit.length; i++) {
+				if (_.every(wSplit[i].split(':'), function(x) {return x === emptystring})) {
+					next.g.element.toggleClass('testingLambda');
+					break;
+				}
 			}
 		}
 	};
-
 
 	//====================
 	//temp: TODO
@@ -369,6 +377,9 @@
 		   		configView.push(currentStates[j].toString());
 		   	}
 		    jsav.umsg(configView.join(' | '));
+		    if (stringAccepted) {
+		   		break;
+		   	}
 		}
 		//jsav.step();
 		// for (var k = 0; k < currentStates.length; k++) {
@@ -380,7 +391,7 @@
 		// 	}
 		// }
 		if (stringAccepted) {
-			jsav.umsg("Accepted");
+			//jsav.umsg("Accepted");
 		} else {
 			jsav.umsg("Rejected");
 		}
@@ -430,7 +441,7 @@
 				var weight = g.getEdge(nextStates[i].state, next).weight().split('<br>');
 				for (var j = 0; j < weight.length; j++) {
 					if (!next.hasClass('current') && _.every(weight[j].split(':'), function(x) {return x === emptystring})) {
-   						//next.addClass('current');
+   						next.addClass('current');
    						var nextConfig = new Configuration(next, nextStates[i].inputString, nextStates[i].curIndex);
 						lambdaStates.push(nextConfig);
    					}

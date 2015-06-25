@@ -106,6 +106,7 @@
 				$('#editedgelabel').remove();
 				g.layout({layout: "manual"});
 				$('.jsavgraph').removeClass("working");
+				updateAlphabet();
 			};
 			$('#changetransitionbutton').click(changeTransition);
 			$('#deletetransitionbutton').click(deleteTransition);
@@ -365,7 +366,7 @@
 		}
 		var edges = g.edges();
 		for (var next = edges.next(); next; next = edges.next()) {
-			wSplit = next.weight().split('<br>');
+			var wSplit = next.weight().split('<br>');
 			for (var i = 0; i < wSplit.length; i++) {
 				if (_.every(wSplit[i].split(':'), function(x) {return x === emptystring})) {
 					next.g.element.toggleClass('testingLambda');
@@ -435,10 +436,13 @@
 		   		configView += cur[j].toString() + ' | ';
 		   	}
 		    jsav.umsg(configView);
+		    if (stringAccepted) {
+		   		break;
+		   	}
 		}
 
 		if (stringAccepted) {
-			jsav.umsg("Accepted");
+			//jsav.umsg("Accepted");
 		} else {
 			jsav.umsg("Rejected");
 		}
@@ -524,6 +528,11 @@
 		for (var k = 0; k < lambdaStates.length; k++) {
 			nextStates.push(lambdaStates[k]);
 		}
+		nextStates = _.filter(nextStates, function (x) {
+			if (x.stack.length > 50) {
+				console.warn("large stack");
+				return false;
+			} return true;});
 		nextStates = _.uniq(nextStates, function(x) {return x.toString();});
 		return nextStates;
 	};
