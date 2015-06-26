@@ -1,11 +1,10 @@
-/*global ODSA */
 "use strict";
 $(document).ready(function () {
   var av = new JSAV("BinExampCON", {"animationMode": "none"});
   // Setup the tree
-  var btTop = 10;
+  var btTop = -5;
   var btLeft = 305;
-  var bt = av.ds.binarytree({nodegap: 15, top: btTop, left: btLeft});
+  var bt = av.ds.binarytree({nodegap: 15, left: btLeft, top: btTop});
   bt.root('A');
   var rt = bt.root();
   rt.left('B');
