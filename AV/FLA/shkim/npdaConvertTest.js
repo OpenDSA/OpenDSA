@@ -230,7 +230,7 @@
 		}
 	};
 	
-	localStorage.clear();
+	//localStorage.clear();
     var g = initGraph({layout: "manual"});
 	g.layout();
 	jsav.displayInit();
@@ -592,8 +592,10 @@
 		// 	console.log(""+converted[i]);
 		// }
 		// console.log(converted.length);
-		if (m) { m.clear();}
-		m = jsav.ds.matrix(converted, {style: "table"});
+		// if (m) { m.clear();}
+		// m = jsav.ds.matrix(converted, {style: "table"});
+		localStorage['grammar'] = _.map(converted, function(x) {return x.join("")});
+		var toExport = true;
 		for (var i = 0; i < converted.length; i++) {
 			var left = converted[i][0];
 			var right = converted[i][2].split(' ');
@@ -603,7 +605,8 @@
 					i3 = newVariables.indexOf(right[2]);
 				if (i1 > 25 || i2 > 25 || i3 > 25) {
 					alert('Too large to export!');
-					return;
+					toExport = false;
+					break;
 					// i1 = i1 % 26;
 					// i2 = i2 % 26; 
 					// i3 = i3 % 26;
@@ -617,7 +620,8 @@
 				var i1 = newVariables.indexOf(left);
 				if (i1 > 25) {
 					alert('Too large to export!');
-					return;
+					toExport = false;
+					break;
 				}
 				converted[i] = variables[i1] + arrow + right[0];
 			} 
@@ -628,8 +632,12 @@
 		// for (var i = 0; i < converted.length; i++) {
 		// 	console.log(""+converted[i]);
 		// }
-		localStorage['grammar'] = converted;
-		window.open("grammarTest.html", "_self");
+		if (toExport) {
+			localStorage['grammar'] = converted;
+			window.open("grammarTest.html", "_self");
+		} else {
+			window.open('npdaTable.html', '', 'width = 600, height = 625, screenX = 500, screenY = 25')
+		}
 	};
 
 	var checkFormat = function () {
