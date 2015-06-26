@@ -1,4 +1,4 @@
-/*global ODSA, setPointerL */
+/*global ODSA, setPointer */
 "use strict";
 // Written by Jun Yang and Cliff Shaffer
 // Diagram showing the doubly linked list

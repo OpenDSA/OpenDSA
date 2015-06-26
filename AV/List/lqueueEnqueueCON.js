@@ -23,7 +23,7 @@ $(document).ready(function () {
   newNode.css({top: topMargin + 20});
   list.layout();
   var slash2 = newNode.addTail({left: 295});
-  var slash3 = list.get(0).addTail({left:295});
+  var slash3 = list.get(0).addTail({left: 295});
   newNode.hide();
   slash2.hide();
   slash3.hide();

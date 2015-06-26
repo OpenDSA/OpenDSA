@@ -347,74 +347,38 @@
     }
     var edge = prevNode ? prevNode._edgetonext : undefined;
     if (edge && opts.updateEdges) {
-      var start = [
-          0,
-          prevPos.left + prevNode.element.outerWidth() - 5,
-          prevPos.top + Math.round(prevNode.element.outerHeight() / 3)
-        ], end = [
-          1,
-          newPos.left - 3,
-          newPos.top + Math.round(node.element.outerHeight() / 3)
-        ], start1 = [
-          1,
-          prevPos.left + prevNode.element.outerWidth() + 3,
-          prevPos.top + Math.round(prevNode.element.outerHeight() / 3 * 2)
-        ], end1 = [
-          0,
-          newPos.left + 5,
-          newPos.top + Math.round(node.element.outerHeight() / 3 * 2)
-        ];
+      var start =  [0, prevPos.left + prevNode.element.outerWidth() - 5,
+                    prevPos.top + Math.round(prevNode.element.outerHeight() / 3)],
+          end =    [1, newPos.left - 3,
+                    newPos.top + Math.round(node.element.outerHeight() / 3)],
+          start1 = [1, prevPos.left + prevNode.element.outerWidth() + 3,
+                    prevPos.top + Math.round(prevNode.element.outerHeight() / 3 * 2)],
+          end1 =   [0, newPos.left + 5,
+                    newPos.top + Math.round(node.element.outerHeight() / 3 * 2)];
       if (newPos.left > prevPos.left && newPos.top > prevPos.top) {
-        start = [
-          0,
-          prevPos.left + prevNode.element.outerWidth() - 5,
-          prevPos.top + Math.round(prevNode.element.outerHeight() / 3)
-        ], end = [
-          1,
-          newPos.left - 3,
-          newPos.top + Math.round(node.element.outerHeight() / 12)
-        ], start1 = [
-          1,
-          prevPos.left + prevNode.element.outerWidth() + 3,
-          prevPos.top + Math.round(prevNode.element.outerHeight() / 12 * 11)
-        ], end1 = [
-          0,
-          newPos.left + 5,
-          newPos.top + Math.round(node.element.outerHeight() / 3 * 2)
-        ];
+        start =  [0, prevPos.left + prevNode.element.outerWidth() - 5,
+                  prevPos.top + Math.round(prevNode.element.outerHeight() / 3)],
+        end =    [1, newPos.left - 3,
+                  newPos.top + Math.round(node.element.outerHeight() / 12)],
+        start1 = [1, prevPos.left + prevNode.element.outerWidth() + 3,
+                  prevPos.top + Math.round(prevNode.element.outerHeight() / 12 * 11)],
+        end1 =   [0, newPos.left + 5,
+                  newPos.top + Math.round(node.element.outerHeight() / 3 * 2)];
       } else if (newPos.left > prevPos.left && newPos.top < prevPos.top) {
-        start = [
-          0,
-          prevPos.left + prevNode.element.outerWidth() - 5,
-          prevPos.top + Math.round(prevNode.element.outerHeight() / 5 * 3)
-        ], end = [
-          1,
-          newPos.left - 3,
-          newPos.top + Math.round(node.element.outerHeight() / 3)
-        ], start1 = [
-          1,
-          prevPos.left + prevNode.element.outerWidth() + 3,
-          prevPos.top + Math.round(prevNode.element.outerHeight() / 3 * 2)
-        ], end1 = [
-          0,
-          newPos.left + 5,
-          newPos.top + Math.round(node.element.outerHeight() / 5 * 2)
-        ];
+        start =  [0, prevPos.left + prevNode.element.outerWidth() - 5,
+                  prevPos.top + Math.round(prevNode.element.outerHeight() / 5 * 3)],
+        end =    [1, newPos.left - 3,
+                  newPos.top + Math.round(node.element.outerHeight() / 3)],
+        start1 = [1, prevPos.left + prevNode.element.outerWidth() + 3,
+                  prevPos.top + Math.round(prevNode.element.outerHeight() / 3 * 2)],
+        end1 =   [0, newPos.left + 5,
+                  newPos.top + Math.round(node.element.outerHeight() / 5 * 2)];
       }
-      return [
-        newPos,
-        [
-          start,
-          end
-        ],
-        [
-          start1,
-          end1
-        ]
-      ];
+      return [newPos, [start, end], [start1, end1]];
     }
     return [newPos];
   };
+
   var verticalNodePosUpdate = function (node, prevNode, prevPos, opts) {
     // function for calculating node positions in vertical list
     var nodePos = node.element.position(), newPos = {

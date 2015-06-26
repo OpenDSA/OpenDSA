@@ -79,4 +79,4 @@ $(document).ready(function () {
   // Slide 7
   av.umsg(interpret("av_c7"));
   av.recorded();
-}(jQuery));
+});
