@@ -55,7 +55,7 @@ var executeEditNode = function(node, initialState, finalState, nodeLabel){
 };
 
 var executeEditEdge = function(edge, weight){
-	edge.weight(weight);
-	edge.layout();
+	$(edge).html(weight);
+	g.layout({layout: "manual"});
 	updateAlphabet();
 };

@@ -105,7 +105,10 @@
 			    		edge.layout();
 			    	}
 			    	updateAlphabet();
-			    	addHandlers();
+			    	g.click(nodeClickHandler);
+					g.click(edgeClickHandler, {edge: true});
+			    	$('.jsavgraph').click(graphClickHandler);
+					$('.jsavedgelabel').click(labelClickHandler);
 			    	jsav.displayInit();
 			    }
 		    };
@@ -131,75 +134,74 @@
   				}
   				return weights.join("<br>");
 		    };
-		    function addHandlers() {
-		    	$(".jsavgraph").click(function(e) {
-					if ($(".jsavgraph").hasClass("addNodes")) {
-						saveFAState();
-						executeAddNode(e.pageY, e.pageX);
-					} 
-					else if ($('.jsavgraph').hasClass('moveNodes') && selected != null) {
-						saveFAState();
-						executeMoveNode(selected, e.pageY, e.pageX);
-						
+			var graphClickHandler = function(e) {
+				if ($(".jsavgraph").hasClass("addNodes")) {
+					saveFAState();
+					executeAddNode(e.pageY, e.pageX);
+				} 
+				else if ($('.jsavgraph').hasClass('moveNodes') && selected != null) {
+					saveFAState();
+					executeMoveNode(selected, e.pageY, e.pageX);
+					
+					selected.unhighlight();
+					selected = null;
+					e.stopPropagation();
+					jsav.umsg('Click a node.');
+				}
+			};
+			var nodeClickHandler = function(e) {	
+				if ($(".jsavgraph").hasClass("editNodes")) {
+					selected = this;
+					selected.highlight();
+					var Prompt = new NodePrompt();
+					Prompt.render(selected.value(), selected.hasClass('start'), selected.hasClass('final'), selected.stateLabel());
+					selected.unhighlight();
+   				}
+   				else if ($(".jsavgraph").hasClass("addEdges")) {
+   					if (!$(".jsavgraph").hasClass("working")) {
+						first = this;
+						first.highlight();
+						$('.jsavgraph').addClass("working");
+						jsav.umsg('Select a node to make an edge to.');
+		   			}
+		   			else {
+		   				selected = this;
+		   				selected.highlight();
+		   				var Prompt = new EdgePrompt();
+		   				Prompt.render("");
+						$('.jsavgraph').removeClass("working");
+						first.unhighlight();
 						selected.unhighlight();
-						selected = null;
-						e.stopPropagation();
 						jsav.umsg('Click a node.');
-					}
-				});
-				g.click(function(e) {	
-					if ($(".jsavgraph").hasClass("editNodes")) {
-						selected = this;
-						selected.highlight();
-						var Prompt = new NodePrompt();
-						Prompt.render(selected.value(), selected.hasClass('start'), selected.hasClass('final'), selected.stateLabel());
-						selected.unhighlight();
-	   				}
-	   				else if ($(".jsavgraph").hasClass("addEdges")) {
-	   					if (!$(".jsavgraph").hasClass("working")) {
-							first = this;
-							first.highlight();
-							$('.jsavgraph').addClass("working");
-							jsav.umsg('Select a node to make an edge to.');
-			   			}
-			   			else {
-			   				selected = this;
-			   				selected.highlight();
-			   				var Prompt = new EdgePrompt();
-			   				Prompt.render("");
-							$('.jsavgraph').removeClass("working");
-							first.unhighlight();
-							selected.unhighlight();
-							jsav.umsg('Click a node.');
-			   			}
-	   				}
-	   				else if ($('.jsavgraph').hasClass('moveNodes')) {
-	   					if (selected) {
-	   						selected.unhighlight();
-	   					}
-	   					selected = this;
-	   					selected.highlight();
-	   					jsav.umsg('Click to place node.');
-	   					e.stopPropagation();
-	   				}
-	   				else if ($('.jsavgraph').hasClass('deleteNodes')) {
-	   					saveFAState();
-	   					executeDeleteNode(this);
-	   				}
- 				});
-				g.click(function(e) {
-					if ($('.jsavgraph').hasClass('editNodes')) {
-						selected = this;
-						selected.highlight();
-						var Prompt = new EdgePrompt();
-			   			Prompt.render(selected.weight());
-						selected.unhighlight();
-					}
-					else if ($('.jsavgraph').hasClass('deleteNodes')) {
-						saveFAState();
-						executeDeleteEdge(this);
-	   				}
-				}, {edge: true});
+		   			}
+   				}
+   				else if ($('.jsavgraph').hasClass('moveNodes')) {
+   					if (selected) {
+   						selected.unhighlight();
+   					}
+   					selected = this;
+   					selected.highlight();
+   					jsav.umsg('Click to place node.');
+   					e.stopPropagation();
+   				}
+   				else if ($('.jsavgraph').hasClass('deleteNodes')) {
+   					saveFAState();
+   					executeDeleteNode(this);
+   				}
+			};
+			var edgeClickHandler = function(e) {
+				if ($('.jsavgraph').hasClass('deleteNodes')) {
+					saveFAState();
+					executeDeleteEdge(this);
+   				}
+			};
+			var labelClickHandler = function(e) {
+				if ($(".jsavgraph").hasClass("editNodes")) {
+					selected = this;
+					var values = $(selected).html().split('<br>');
+					var Prompt = new EdgePrompt();
+		   			Prompt.render(values);
+				}
 			};
 			function updateNode(initial_state, final_state, node_label) {
 				saveFAState();
@@ -242,7 +244,6 @@
    				$('.jsavgraph').addClass('editNodes');
    				$("#mode").html('Editing nodes and edges');
    				jsav.umsg('Click a node or edge.');
-   				expandEdges();
    			};
    			var deleteNodes = function() {
    				removeModeClasses();
@@ -263,14 +264,14 @@
    					selected.unhighlight();
    					selected = null;
    				}
-   				if($(".jsavgraph").hasClass("editNodes") || $(".jsavgraph").hasClass("deleteNodes")) {
-   					$(".jsavgraph").removeClass("editNodes");
+   				if ($(".jsavgraph").hasClass("deleteNodes")) {
    					$(".jsavgraph").removeClass("deleteNodes");
    					collapseEdges();
    				}
    				else {
    					$(".jsavgraph").removeClass("addNodes");
    					$(".jsavgraph").removeClass("addEdges");
+   					$(".jsavgraph").removeClass("editNodes");
    					$(".jsavgraph").removeClass("moveNodes");
    					$(".jsavgraph").removeClass("working");
    				}
