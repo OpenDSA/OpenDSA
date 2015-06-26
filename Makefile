@@ -18,7 +18,7 @@ clean:
 	- $(RM) Scripts/*~
 	- $(RM) config/*~
 
-lint: csslint jshint
+lint: csslint jshint jshintlib
 
 csslint:
 	@echo 'running csslint'
@@ -35,17 +35,24 @@ csslint:
 jshint:
 	@echo 'running jshint'
 	-@jshint AV/Background/*.js
+	-@jshint AV/Binary/*.js
+	-@jshint AV/Binary/*.json
 	-@jshint AV/Design/*.js
 	-@jshint AV/Design/*.json
+	-@jshint AV/General/*.js
+	-@jshint AV/General/*.json
 	-@jshint AV/List/*.js
 	-@jshint AV/List/*.json
 	-@jshint AV/Sorting/*.js
 	-@jshint AV/Sorting/*.json
 	-@jshint AV/Hashing/*.js
-	-@jshint AV/Hashing/*.json
 	-@jshint AV/Searching/*.js
 	-@jshint AV/Searching/*.json
+	-@jshint AV/Sorting/*.js
+	-@jshint AV/Sorting/*.json
 	-@jshint Exercises/Hashing/*.js
+
+jshintlib:
 	-@jshint lib/odsaUtils.js
 	-@jshint lib/odsaAV.js
 	-@jshint lib/odsaMOD.js
