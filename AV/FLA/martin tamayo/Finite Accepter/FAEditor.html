@@ -49,6 +49,7 @@
 			var jsav = new JSAV("av"),
 				first = null,
 				selected = null,
+				label = null,
 				undoStack,
 				redoStack,
 				data,
@@ -107,7 +108,7 @@
 			    	updateAlphabet();
 			    	g.click(nodeClickHandler);
 					g.click(edgeClickHandler, {edge: true});
-			    	$('.jsavgraph').click(graphClickHandler);
+					$('.jsavgraph').click(graphClickHandler);
 					$('.jsavedgelabel').click(labelClickHandler);
 			    	jsav.displayInit();
 			    }
@@ -197,8 +198,8 @@
 			};
 			var labelClickHandler = function(e) {
 				if ($(".jsavgraph").hasClass("editNodes")) {
-					selected = this;
-					var values = $(selected).html().split('<br>');
+					label = this;
+					var values = $(label).html().split('<br>');
 					var Prompt = new EdgePrompt();
 		   			Prompt.render(values);
 				}
@@ -213,7 +214,7 @@
 			};
 			function updateEdge(edge_label) {
 				saveFAState();
-				executeEditEdge(selected, edge_label);
+				executeEditEdge(label, edge_label);
 			};
    			var updateAlphabet = function() {
 	   			g.updateAlphabet();
