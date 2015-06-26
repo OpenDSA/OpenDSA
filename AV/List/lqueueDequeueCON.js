@@ -6,7 +6,7 @@ $(document).ready(function () {
 
   // Helper function for drawing arrow around the node
   function arrowAround(node, options) {
-    var jsav = node.jsav;
+    var av = node.jsav;
     var arrow;
     var nodeWidth = node.element.outerWidth();
     var nodeHeight = node.element.outerHeight();
@@ -15,20 +15,20 @@ $(document).ready(function () {
     if (nextnode) {
       nodegap = nextnode.element.offset().left - node.element.offset().left - nodeWidth;
     }
-    var left = node.element.offset().left - jsav.container.find(".jsavcanvas:first").offset().left;
-    var top = node.element.offset().top - jsav.container.find(".jsavcanvas:first").offset().top;
+    var left = node.element.offset().left - av.container.find(".jsavcanvas:first").offset().left;
+    var top = node.element.offset().top - av.container.find(".jsavcanvas:first").offset().top;
     var opts = $.extend({leftOffset: nodegap / 2,
                        rightOffset: nodegap / 2, topOffset: 15,
                        nodeGap: nodegap, nodeWidth: nodeWidth,
                        nodeHeight: nodeHeight}, options);
 
-    arrow = jsav.g.polyline([[left - opts.nodeGap - 6, top + opts.nodeHeight / 2],
-                            [left - opts.leftOffset, top + opts.nodeHeight / 2],
-                            [left - opts.leftOffset, top - opts.topOffset],
-                            [left + opts.nodeWidth + opts.rightOffset, top - opts.topOffset],
-                            [left + opts.nodeWidth + opts.rightOffset, top + opts.nodeHeight / 2],
-                            [left + opts.nodeWidth + opts.nodeGap + 1, top + opts.nodeHeight / 2]],
-                            {"arrow-end": "classic-wide-long", "stroke-width": 2, "stroke-dasharray": "-"});
+    arrow = av.g.polyline([[left - opts.nodeGap - 6, top + opts.nodeHeight / 2],
+                           [left - opts.leftOffset, top + opts.nodeHeight / 2],
+                           [left - opts.leftOffset, top - opts.topOffset],
+                           [left + opts.nodeWidth + opts.rightOffset, top - opts.topOffset],
+                           [left + opts.nodeWidth + opts.rightOffset, top + opts.nodeHeight / 2],
+                           [left + opts.nodeWidth + opts.nodeGap + 1, top + opts.nodeHeight / 2]],
+                          {"arrow-end": "classic-wide-long", "stroke-width": 2, "stroke-dasharray": "-"});
     return arrow;
   }
 
@@ -37,65 +37,74 @@ $(document).ready(function () {
   var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
-  var jsav = new JSAV(av_name);
-  var pseudo = jsav.code(code);
+  var av = new JSAV(av_name);
+  var pseudo = av.code(code);
 
   var leftMargin = 10;
   var topMargin = 50;
-  var labelIt = jsav.label("it", {left: leftMargin - 5, top: topMargin + 55}).hide();
-  var arrIt = jsav.ds.array([" "], {left: leftMargin + 30, top: topMargin + 50}).hide();
-  var list = jsav.ds.list({nodegap: 30, left: leftMargin, top: topMargin});
-  list.addFirst(30)
-      .addFirst(21)
-      .addFirst(3)
-      .addFirst("null");
+  var labelIt = av.label("it", {left: leftMargin + 20, top: topMargin + 55});
+  var arrIt = av.ds.array([" "], {left: leftMargin + 30, top: topMargin + 50});
+  var list = av.ds.list({nodegap: 30, left: leftMargin, top: topMargin});
+  list.addFirst(30).addFirst(21).addFirst(3).addFirst("null");
   list.layout();
+  var slash1 = list.get(3).addTail();
+  var slash2 = list.get(2).addTail();
+  slash2.hide();
 
-  var frontP = jsav.pointer("front", list.get(0));
-  var rearP = jsav.pointer("rear", list.get(3));
-  pseudo.highlight(3);
-  jsav.umsg("First check that the Queue is not empty.");
-  jsav.displayInit();
+  var frontP = av.pointer("front", list.get(0));
+  var rearP = av.pointer("rear", list.get(3));
 
-  jsav.umsg("Store dequeued value.");
-  labelIt.show();
-  arrIt.show();
-  jsav.effects.copyValue(list.get(1), arrIt, 0);
+  // Slide 1
+  pseudo.setCurrentLine("sig");
+  av.umsg(interpret("av_c1"));
+  av.displayInit();
+
+  // Slide 2
+  av.umsg(interpret("av_c2"));
+  pseudo.setCurrentLine("empty");
+  av.step();
+
+  // Slide 3
+  av.umsg(interpret("av_c3"));
+  var node1 = list.get(1).highlight();
+  av.effects.copyValue(node1, arrIt, 0);
   arrIt.highlight();
-  pseudo.unhighlight(3);
-  pseudo.highlight(4);
-  jsav.step();
+  pseudo.setCurrentLine("copy");
+  av.step();
 
-  jsav.umsg("Advance front to point to the new link node.");
+  // Slide 4
+  node1.unhighlight();
+  av.umsg(interpret("av_c4"));
   arrIt.unhighlight();
   var dashLine = arrowAround(list.get(1));
-  pseudo.unhighlight(4);
-  pseudo.highlight(5);
+  pseudo.setCurrentLine("setNext");
   list.get(0).edgeToNext().hide();
-  jsav.step();
+  av.step();
 
+  // Slide 5
   list.remove(1);
   list.get(0).edgeToNext().show();
   dashLine.hide();
+  slash1.hide();
+  slash2.show();
   list.layout();
-  jsav.step();
+  av.step();
 
-  jsav.umsg("Check that the next node of <code>front</code> is not empty.");
+  // Slide 6
+  av.umsg(interpret("av_c6"));
   list.get(1).highlight();
-  pseudo.unhighlight(5);
-  pseudo.highlight(6);
-  jsav.step();
+  pseudo.setCurrentLine("endcheck");
+  av.step();
 
-  jsav.umsg("Decrease the size by 1.");
+  // Slide 7
+  av.umsg(interpret("av_c7"));
   list.get(1).unhighlight();
-  pseudo.unhighlight(6);
-  pseudo.highlight(7);
-  jsav.step();
+  pseudo.setCurrentLine("size");
+  av.step();
 
-  jsav.umsg("Return the dequeued value.");
+  // Slide 8
+  av.umsg(interpret("av_c8"));
   arrIt.highlight();
-  pseudo.unhighlight(7);
-  pseudo.highlight(8);
-  jsav.step();
-  jsav.recorded();
+  pseudo.setCurrentLine("return");
+  av.recorded();
 });

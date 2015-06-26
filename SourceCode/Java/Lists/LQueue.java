@@ -14,10 +14,10 @@ class LQueue implements Queue {
     front = rear = new Link(null);
     size = 0;
   }
+/* *** ODSAendTag: LQueue1 *** */
 
   // Reinitialize queue
   public void clear() { init(); }
-/* *** ODSAendTag: LQueue1 *** */
 
   public String toString() {
     StringBuffer out = new StringBuffer(size * 4);

@@ -14,11 +14,11 @@
 }
 
 #lqueueEnqueueCON {
-  height: 280px;
+  height: 255px;
 }
 
 #lqueueEnqueueCON .jsavoutput.jsavline {
-  height: 40px;
+  height: 20px;
 }
 
 #lqueueEnqueueCON .jsavcode{
@@ -29,16 +29,16 @@
 }
 
 #lqueueDequeueCON {
-  height: 310px;
+  height: 300px;
 }
 
 #lqueueDequeueCON .jsavoutput.jsavline {
-  height: 40px;
+  height: 20px;
 }
 
 #lqueueDequeueCON .jsavcode{
   position: relative;
   left: 150px;
   top: -10px;
-  width:570px;
+  width:550px;
 }
