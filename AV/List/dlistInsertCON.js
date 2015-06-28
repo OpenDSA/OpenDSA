@@ -1,4 +1,4 @@
-/*global ODSA */
+/*global ODSA, setPointer, addEdge */
 "use strict";
 // Written by Jun Yang and Cliff Shaffer
 // Dlist Insertion

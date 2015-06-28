@@ -76,7 +76,7 @@
             "points": 1.0,
             "threshold": 0.90
           },
-          "BTLeafPROG": {
+          "btLeafPROG": {
             "long_name": "Node Count Programming Exercise",
             "required": true,
             "points": 1.0,

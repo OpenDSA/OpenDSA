@@ -206,10 +206,12 @@
         temp = table[temp][1];
       }
       results.reverse();
-      //jsav.label('Derivation Table');
+      jsav.label('Grammar', {relativeTo: m, anchor: "center top", myAnchor: "center bottom"});
       parseTable = new jsav.ds.matrix(results, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
-      //jsav.label('Tree');
+      jsav.label('Derivation Table', {relativeTo: parseTable, anchor: "center top", myAnchor: "center bottom"});
       parseTree = new jsav.ds.tree({left: "30px", relativeTo: parseTable, anchor: "right top"});
+      //console.log($('.jsavtree').width())
+      jsav.label('Parse Tree', {left: "" + $('.jsavtree').width() / 2.0 + "px", relativeTo: parseTree, anchor: "center top", myAnchor: "left bottom"});
       temp = [parseTree.root(productions[0][0])];
 
       var displayOrder = [];

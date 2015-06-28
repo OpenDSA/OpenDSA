@@ -650,7 +650,7 @@
       "Binary/BinaryTreeTraversal": {
         "long_name": "Binary Tree Traversals",
         "exercises": {
-          "BTLeafPROG": {
+          "btLeafPROG": {
             "long_name": "Node Count Programming Exercise",
 	    "remove": true,
             "required": false,

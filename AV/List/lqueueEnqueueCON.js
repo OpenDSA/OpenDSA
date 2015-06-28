@@ -1,46 +1,73 @@
+/*global ODSA */
+"use strict";
+// Written by Jun Yang and Cliff Shaffer
 // List Queue enqueue method.
-(function ($) {
-  var jsav = new JSAV("lqueueEnqueueCON");
-  var pseudo = jsav.code({url: "../../../SourceCode/Processing/Lists/LQueue.pde",
-                       lineNumbers: false,
-                       startAfter: "/* *** ODSATag: LQueueEnqueue *** */",
-                       endBefore: "/* *** ODSAendTag: LQueueEnqueue *** */"});
+$(document).ready(function () {
+  var av_name = "lqueueEnqueueCON";
+  // Load the config object with interpreter and code created by odsaUtils.js
+  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+      interpret = config.interpreter,       // get the interpreter
+      code = config.code;                   // get the code object
+  var av = new JSAV(av_name);
+  var pseudo = av.code(code);
+
   var leftMargin = 10;
   var topMargin = 40;
-  var list = jsav.ds.list({nodegap: 30, left: leftMargin, top: topMargin});
+  var list = av.ds.list({nodegap: 30, left: leftMargin, top: topMargin});
   list.addFirst(30)
       .addFirst(21)
       .addFirst(3)
       .addFirst("null");
-  list.layout();
-  var frontP = jsav.pointer("front", list.get(0));
-  var rearP = jsav.pointer("rear", list.get(3));
-  pseudo.highlight(2);
-  jsav.displayInit();
-
-  jsav.umsg("Create a new node with value \"it\", which is 10 here.");
+  var slash1 = list.get(3).addTail({left: 221});
   var newNode = list.newNode("10");
-  newNode.css({left: leftMargin + 73 * 4, top: topMargin + 30});
-  pseudo.unhighlight(2);
-  pseudo.highlight(3);
-  jsav.step();
+  newNode.css({top: topMargin + 20});
+  list.layout();
+  var slash2 = newNode.addTail({left: 295});
+  var slash3 = list.get(0).addTail({left: 295});
+  newNode.hide();
+  slash2.hide();
+  slash3.hide();
 
-  jsav.umsg("The next field of the <code>rear</code> node is assigned to point to the new node.");
-  list.get(3).next(newNode);
-  list.layout({updateTop: false});
-  jsav.step();
+  var frontP = av.pointer("front", list.get(0));
+  var rearP = av.pointer("rear", list.get(3));
 
-  jsav.umsg("Advances <code>rear</code> to point to the new link node.");
+  // Slide 1
+  av.umsg("Let's look at how the <code>enqueue</code> operation works.");
+  pseudo.setCurrentLine("sig");
+  av.displayInit();
+
+  // Slide 2
+  av.umsg("We will enqueue the the value 10. Create a new node with this value.");
+  list.layout();
+  pseudo.setCurrentLine("setNext");
+  newNode.show();
   newNode.highlight();
+  slash2.show();
+  var endNode = list.get(3);
+  endNode.next(newNode);
+  endNode.edgeToNext().hide();
+  list.layout({updateTop: false});
+  av.step();
+
+  // Slide 3
+  av.umsg("The <code>next</code> field of the <code>rear</code> node is assigned to point to the new node.");
+  slash1.hide();
+  newNode.unhighlight();
+  endNode.edgeToNext().show();
+  list.layout({updateTop: false});
+  av.step();
+
+  // Slide 4
+  av.umsg("Advance <code>rear</code> to point to the new link node.");
+  slash2.hide();
+  slash3.show();
   list.layout();
   rearP.target(list.get(4));
-  pseudo.unhighlight(3);
-  pseudo.highlight(4);
-  jsav.step();
+  pseudo.setCurrentLine("rear");
+  av.step();
 
-  jsav.umsg("Increase <code>size</code> by 1.");
-  pseudo.unhighlight(4);
-  pseudo.highlight(5);
-  jsav.step();
-  jsav.recorded();
-}(jQuery));
+  // Slide 5
+  av.umsg("Increase <code>size</code> by 1.");
+  pseudo.setCurrentLine("size");
+  av.recorded();
+});

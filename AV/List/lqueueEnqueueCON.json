@@ -10,6 +10,10 @@
       "startAfter": "/* *** ODSATag: LQueueEnqueue *** */",
       "endBefore": "/* *** ODSAendTag: LQueueEnqueue *** */",
       "tags": {
+        "sig": 2,
+        "setNext": 3,
+        "rear": 4,
+        "size": 5
       }
     },
     "java": {
@@ -18,6 +22,10 @@
       "startAfter": "/* *** ODSATag: LQueueEnqueue *** */",
       "endBefore": "/* *** ODSAendTag: LQueueEnqueue *** */",
       "tags": {
+        "sig": 2,
+        "setNext": 3,
+        "rear": 4,
+        "size": 5
       }
     },
     "java_generic": {
@@ -26,6 +34,10 @@
       "startAfter": "/* *** ODSATag: LQueueEnqueue *** */",
       "endBefore": "/* *** ODSAendTag: LQueueEnqueue *** */",
       "tags": {
+        "sig": 2,
+        "setNext": 3,
+        "rear": 4,
+        "size": 5
       }
     }
   }

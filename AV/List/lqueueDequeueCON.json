@@ -1,6 +1,13 @@
 {
   "translations": {
     "en": {
+      "av_c1": "Now for the <code>dequeue</code> operation.",
+      "av_c2": "First check that the Queue is not empty.",
+      "av_c3": "Store dequeued value.",
+      "av_c4": "Advance front to point to the new link node.",
+      "av_c6": "Check that the next node of <code>front</code> is not empty. If it were, this would be a special case requiring <code>rear</code> to be adjusted.",
+      "av_c7": "Decrease the size by 1.",
+      "av_c8": "Return the dequeued value."
     }
   },
   "code": {
@@ -10,6 +17,12 @@
       "startAfter": "/* *** ODSATag: LQueueDequeue *** */",
       "endBefore": "/* *** ODSAendTag: LQueueDequeue *** */",
       "tags": {
+        "sig": 2,
+        "empty": 3,
+        "copy": 4,
+        "setNext": 5,
+        "endcheck": 6,
+        "return": 7
       }
     },
     "java": {
@@ -18,6 +31,12 @@
       "startAfter": "/* *** ODSATag: LQueueDequeue *** */",
       "endBefore": "/* *** ODSAendTag: LQueueDequeue *** */",
       "tags": {
+        "sig": 2,
+        "empty": 3,
+        "copy": 4,
+        "setNext": 5,
+        "endcheck": 6,
+        "return": 7
       }
     },
     "java_generic": {
@@ -26,6 +45,12 @@
       "startAfter": "/* *** ODSATag: LQueueDequeue *** */",
       "endBefore": "/* *** ODSAendTag: LQueueDequeue *** */",
       "tags": {
+        "sig": 2,
+        "empty": 3,
+        "copy": 4,
+        "setNext": 5,
+        "endcheck": 6,
+        "return": 7
       }
     }
   }

@@ -1,4 +1,4 @@
-/*global ODSA */
+/*global ODSA, setPointer, arrowAround */
 "use strict";
 // Written by Jun Yang and Cliff Shaffer
 // Dlist prev method

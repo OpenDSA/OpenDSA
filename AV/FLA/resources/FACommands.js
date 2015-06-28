@@ -10,8 +10,16 @@ var executeDeleteNode = function(node){
 	updateAlphabet();
 };
 
-var executeAddEdge = function(toNode, fromNode, weight){
-	var newEdge = g.addEdge(toNode, fromNode, {weight: weight});
+var executeAddEdge = function(fromNode, toNode, weight){
+	var newEdge = g.addEdge(fromNode, toNode, {weight: weight});
+	var weight = newEdge.weight().split('<br>');
+	var transitions = [];
+	for (var i = 0; i < weight.length; i++) {
+		if (transitions.indexOf(weight[i]) == -1) {
+			transitions.push(weight[i]);
+		}
+	}
+	newEdge.weight(transitions.join("<br>"));
 	newEdge.layout();
 	updateAlphabet();
 };
@@ -55,7 +63,7 @@ var executeEditNode = function(node, initialState, finalState, nodeLabel){
 };
 
 var executeEditEdge = function(edge, weight){
-	edge.weight(weight);
-	edge.layout();
+	$(edge).html(weight);
+	g.layout({layout: "manual"});
 	updateAlphabet();
 };

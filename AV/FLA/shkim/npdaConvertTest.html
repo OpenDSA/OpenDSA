@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>NPDA to CFG test</title>
+    	<link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+  		<link rel="stylesheet" href="../resources/FA.css" type="text/css" />
+		<style>
+			p.jsavoutput.jsavline {
+				height: 10px;
+			}
+			#editedgelabel {
+				z-index:1000;
+				background-color: #efe;
+				border: black solid 1px;
+				width: 150px;
+			}
+			.labelmenu {
+				width: inherit;
+			}
+			.jsavmatrix .jsavvalue {
+		     	width: 100px;
+		    }
+		</style>
+	</head>
+	<body>
+		
+		<div id="av">
+			<h1>NPDA to CFG test</h1>
+			</span><a class="jsavsettings" href="#">Settings</a>
+			<div class="jsavcontrols">	
+			</div>
+      		<p class="jsavoutput jsavline"></p>
+			<div align="center" style="font-size: 30px">&Sigma;: <span id='alphabet'></span><br>&Gamma;: <span id='stackalphabet'></span></div>
+      		<p align="center" class="arrayPlace"></p>
+
+		</div>
+		<div class='notEditing'>
+			<button type='button' id="playbutton">Traverse</button>
+			<button type='button' id="layoutbutton">Layout</button>
+			<button type="button" id='testNDbutton'>Highlight Nondeterminism</button>
+			<button type='button' id='testlambdabutton'>Highlight &lambda;-Transitions</button>
+			<button type="button" id="togrammarbutton">Convert to Context-Free Grammar</button>
+		</div>
+		<div class='editing' style="display: none">
+			<button type='button' id='addnodesbutton'>Add nodes</button>
+			<button type='button' id='addedgesbutton'>Add edges</button>
+			<button type='button' id='movenodesbutton'>Move nodes</button>
+			<button type='button' id='editnodesbutton'>Edit nodes and edges</button>
+			<span id='mode'></span>
+		</div>
+		<div>
+			<button type='button' id="changeButton">Edit</button>
+		</div>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+		<script src="../../../JSAV/lib/raphael.js"></script>
+   		<script src="../../../JSAV/lib/dagre.min.js"></script>
+		<script src="../../../JSAV/lib/jquery.transit.js"></script>
+		<script src="../../../JSAV/build/JSAV.js"></script>
+		<script src="../resources/serializableGraph.js"></script>
+		<script src="../resources/underscore-min.js"></script>
+		<script src="../resources/FA.js"></script>
+		<script src="npdaConvertTest.js"></script>
+   	</body>
+  </html>

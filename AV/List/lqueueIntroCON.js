@@ -1,4 +1,4 @@
-/*global ODSA */
+/*global ODSA, setPointerL, setPointerR */
 "use strict";
 // Written by Jun Yang and Cliff Shaffer
 // List-based Queue Introduction.
@@ -25,7 +25,7 @@ $(document).ready(function () {
 
   // Would like to put this in Slide 2, but the slash doesn't hide correctly
   var listInit = av.ds.list({nodegap: 30, left: leftMargin, top: topMargin});
-  listInit.addFirst("null")
+  listInit.addFirst("null");
   var slashI = listInit.get(0).addTail();
   listInit.layout();
   var frontIP = setPointerL("front", listInit.get(0));

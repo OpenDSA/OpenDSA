@@ -1,4 +1,4 @@
-/*global ODSA */
+/*global ODSA, setPointerL, setPointerR */
 "use strict";
 // Freelist example
 $(document).ready(function () {

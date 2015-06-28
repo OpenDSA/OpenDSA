@@ -42,7 +42,7 @@ $(document).ready(function () {
 
   var arrSize = av.ds.array([5], {indexed: false,
                                  left: leftMargin + (nodeWidth + 2) * 3, top: theTop + 140});
-  var labelCurr = av.label("listSize", { before: arrCurr, left: 46, top: theTop + 145});
+  var labelSize = av.label("listSize", { before: arrCurr, left: 46, top: theTop + 145});
 
   // Slide 1
   arr.addClass([5, 6, 7], "unused");
