@@ -257,9 +257,9 @@ computing a :ref:`minimal cost spanning tree <MCST> <MCST>`.
       :math:`y \bmod m = z \bmod m`, then
       :math:`x \bmod m = z \bmod m`.
 
-.. avembed:: Exercises/Background/StTFreltn.html ka
+.. avembed:: Exercises/Background/SetTFrelation.html ka
 
-.. avembed:: Exercises/Background/StTFeqvlnc.html ka
+.. avembed:: Exercises/Background/SetTFequivrel.html ka
 
 A binary relation is called a
 :term:`partial order` if it is antisymmetric and transitive.
@@ -296,7 +296,7 @@ then the order is called a :term:`total order` or :term:`linear order`.
    Therefore, the subset operator does not define a total order on the
    powerset of the integers.
 
-.. avembed:: Exercises/Background/StTFprtlordr.html ka
+.. avembed:: Exercises/Background/SetTFpartialorder.html ka
 
 Notes
 -----

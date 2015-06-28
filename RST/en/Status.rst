@@ -34,15 +34,27 @@ If you are looking at the "Dev" book, then you are seeing everything
 (We maintain this version to speed up compilation a bit for the
 developers.)
 If you are looking at the "OpenDSA" book, you are seeing the modules
-that we consider "ready for use", perhaps with some stub modules to
-make the cross-referencing work.
+that we consider "ready for use".
 
 There are also many chapters that partially complete. These include
 materials related to design, general trees, memory management, file
 processing, indexing, searching, graphs, and NP-completeness. These
 all have text, but not as many visualizations and exercises as we
 plan. A lot of progress is being made on fleshing these out. They
-should be reasonably complete by the end of 2014.
+should be reasonably complete by the end of 2015.
+
+There are also ongoing major efforts to create materials for
+Programming languages (translators and compilers), and Finite
+Languages and Automata.
+
+We are also in the midst of a major effort to re-engineer our
+communications layer between content server and scoring server.
+We hope to have completed a prototype by the end of Summer 2015, and
+have it ready for production use by the beginning of 2016.
+This new system will provide integration with at least the Canvas LMS,
+and hopefully will make it easy for us to provide integration with
+other LMS such as Moodle.
+
 
 Configuring Your Own Book
 -------------------------
@@ -58,6 +70,8 @@ new configuration file.
 
 At some point in the future, we will make a more user friendly way to
 create OpenDSA books.
+This might come as part of our second-generation infrastructure effort
+mentioned above.
 For now, if you are an instructor who would like to have a custom book
 set up for use with your class, feel free to contact the OpenDSA
-project team for help.
+project team for help (see the "contact us" link below).

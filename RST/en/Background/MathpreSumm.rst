@@ -13,4 +13,4 @@ Math Background Summary Exercises
 
 Here are some practice questions for the modules in this chapter.
 
-.. avembed:: Exercises/Background/MthBgSumm.html ka
+.. avembed:: Exercises/Background/MathBgSumm.html ka

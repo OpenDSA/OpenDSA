@@ -3,6 +3,8 @@ var av,           // The JSAV object
   answerArr = [],   // The (internal) array that stores the correct answer
   cloneArr = [],    // Copy of (internal) array at start of exercise for reset
   jsavArr,          // The array that the user manipulates (JSAV object)
+  currArr,          // curr box
+  currLabel,        // curr label
   inPosition,       // insertion location
   inValue,          // insertion value
   userInput,        // Boolean: Tells us if user ever did anything
@@ -31,8 +33,7 @@ function clickHandler(index, e) {
 function f_reset() {
   jsavArr.clear();
   // Re-initialize the displayed array object
-  jsavArr = av.ds.array(cloneArr, {indexed: true, center: false});
-  jsavArr.css({top: 50});
+  jsavArr = av.ds.array(cloneArr, {indexed: true, center: false, top: 20});
   jsavArr.click(clickHandler); // Rebind click handler after reset
   userInput = false;
   selected_index = -1;
@@ -60,13 +61,9 @@ function initJSAV(arr_size, insertPos, insertValue) {
   av = new JSAV("alistInsertPRO");
   av.recorded();
   av.SPEED = 120; // Set the speed of the animation
-  jsavArr = av.ds.array(answerArr, {indexed: true, center: false});
-  jsavArr.css({top: 50});
-  var arrowCurr = av.g.line(16 + inPosition * 31, 40, 16 + inPosition * 31, 62,
-                    { "arrow-end": "classic-wide-long",
-                      "opacity": 100, "stroke-width": 2});
-  var label = av.label("Curr", { before: jsavArr,
-                                 left: inPosition * 31, top: 0});
+  jsavArr = av.ds.array(answerArr, {indexed: true, center: false, top: 20});
+  currArr = av.ds.array([inPosition], {left: 45, top: 85});
+  currLabel = av.label("curr", {left: 10, top: 90});
 	
   // correct answer
   answerArr.splice(inPosition, 0, inValue);

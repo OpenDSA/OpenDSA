@@ -22,8 +22,8 @@ Written by Junyang Chen and Cliff Shaffer
 <body data-height="740" data-width="950">
 <div class="exercise">
   <div class="vars">
-    <var id="arr_size">randRange(1, 6)</var>
-    <var id="delete_pos">randRange(0, arr_size-1)</var>
+    <var id="arr_size">getSize(1, 6)</var>
+    <var id="delete_pos">getPos()</var>
     <var id="JSAV">initJSAV(arr_size, delete_pos)</var>
   </div>
 
@@ -36,7 +36,7 @@ Written by Junyang Chen and Cliff Shaffer
       <div class="question">
         <p>Click on a value to highlight it, then click on the return
           box to remember the highlighted element.
-          Swap elements in the array as appropriate by first clicking
+          Move elements in the array as appropriate by first clicking
           on the element that you want to move (to highlight it), then
           click on where it goes.</p>
         <input id="reset" type="button" value="Reset" />
