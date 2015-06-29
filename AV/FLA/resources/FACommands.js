@@ -12,16 +12,22 @@ var executeDeleteNode = function(node){
 
 var executeAddEdge = function(fromNode, toNode, weight){
 	var newEdge = g.addEdge(fromNode, toNode, {weight: weight});
-	var weight = newEdge.weight().split('<br>');
-	var transitions = [];
-	for (var i = 0; i < weight.length; i++) {
-		if (transitions.indexOf(weight[i]) == -1) {
-			transitions.push(weight[i]);
+	if (newEdge) {
+		var weight = newEdge.weight().split('<br>');
+		var transitions = [];
+		for (var i = 0; i < weight.length; i++) {
+			if (transitions.indexOf(weight[i]) == -1) {
+				transitions.push(weight[i]);
+			}
 		}
+		newEdge.weight(transitions.join("<br>"));
+		newEdge.layout();
+		updateAlphabet();
+		return newEdge;
 	}
-	newEdge.weight(transitions.join("<br>"));
-	newEdge.layout();
-	updateAlphabet();
+	else {
+		return g.getEdge(fromNode, toNode);
+	}
 };
 
 var executeDeleteEdge = function(edge){

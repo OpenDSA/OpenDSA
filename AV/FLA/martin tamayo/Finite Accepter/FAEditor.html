@@ -210,7 +210,8 @@
 			};
 			function createEdge(edge_label) {
 				saveFAState();
-				executeAddEdge(first, selected, edge_label);
+				var edge = executeAddEdge(first, selected, edge_label);
+				$(edge._label.element).click(labelClickHandler);
 			};
 			function updateEdge(edge_label) {
 				saveFAState();
@@ -222,6 +223,7 @@
 			};
    			var addNodes = function() {
    				removeModeClasses();
+   				removeND();
    				$('.jsavgraph').addClass("addNodes");
    				$("#mode").html('Adding nodes');
    				jsav.umsg('Click to add nodes.');
@@ -235,6 +237,7 @@
    			};
    			var moveNodes = function() {
    				removeModeClasses();
+   				removeND();
    				$('.jsavgraph').addClass('moveNodes');
    				$("#mode").html('Moving nodes');
    				jsav.umsg('Click a node.');
@@ -244,7 +247,7 @@
 				removeND();
    				$('.jsavgraph').addClass('editNodes');
    				$("#mode").html('Editing nodes and edges');
-   				jsav.umsg('Click a node or edge.');
+   				jsav.umsg('Click a node or edge label.');
    			};
    			var deleteNodes = function() {
    				removeModeClasses();
@@ -314,30 +317,34 @@
 				}
    			};
    			var testND = function() {
-   				// THIS FUNCTION IS MALFUNCTIONING!
+   				removeModeClasses();
    				var nodes = g.nodes();
    				for(var next = nodes.next(); next; next = nodes.next()) {
-   					var edges = next.getOutgoing();
-   					var weights = _.map(edges, function(e) { return e.weight().split('<br>') });
-   					var unique = [];
-   					for (var i = 0; i < weights.length; i++) {
-   						var findLambda = _.find(weights[i], function(e) {return e.split(':')[0] === emptystring});
-   						if (findLambda) {
-   							break;
-   						}
+   					var findLambda = false;
+   					var findMultiple = false;
+   					var transition = g.transitionFunction(next, emptystring);
+   					if (transition.length > 0) {
+   						findLambda = true;
    					}
-   					var dup = _.map(_.flatten(weights), function(e) { return _.initial(e.split(':')).join() });
-					if (findLambda || _.uniq(dup).length < dup.length) {
+   					for (var key in g.alphabet) {
+   						transition = g.transitionFunction(next, key);
+  						if (transition.length > 1) {
+  							findMultiple = true;
+  							break;
+  						}
+					}
+					if (findLambda || findMultiple) {
 						next.toggleClass('testingND');
-   					}
-   				}
+					}
+				}
    			};
    			var testLambda = function() {
+   				removeModeClasses();
    				var edges = g.edges();
    				for (var next = edges.next(); next; next = edges.next()) {
    					wSplit = next.weight().split('<br>');
    					for (var i = 0; i < wSplit.length; i++) {
-   						if (_.every(wSplit[i].split(':'), function(x) {return x === emptystring})) {
+   						if (wSplit[i] == emptystring) {
 	   						next.g.element.toggleClass('testingLambda');
 	   						break;
 	   					}

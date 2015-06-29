@@ -333,6 +333,7 @@
     }
   };
 
+  // Used for testingND for FAs and Moore Machines.
   faproto.transitionFunction = function (nodeFrom, letter, options) {
     // returns an array of values, does not work for PDAs or TMs
     var edges = nodeFrom.getOutgoing(),
@@ -340,6 +341,27 @@
     for (var i = 0; i < edges.length; i++) {
       var edge = edges[i];
       if (edge.weight().split('<br>').indexOf(letter) !== -1) {
+        ret.push(edge.end().value());
+      }
+    }
+    return ret;
+  };
+  
+  // Hacky function, but it's used for testingND for Mealy Machines.
+  faproto.inputTransitionFunction = function (nodeFrom, letter, options) {
+    var edges = nodeFrom.getOutgoing(),
+        ret = [];
+    for (var i = 0; i < edges.length; i++) {
+      var edge = edges[i];
+      var weights = edge.weight().split('<br>');
+      var inputs = [];
+      for (var j = 0; j < weights.length; j++) {
+        inputs.push(weights[j].split(":")[0]);
+      }
+      if (inputs.indexOf(letter) !== -1) {
+        ret.push(edge.end().value());
+      }
+      if (inputs.indexOf(letter) != inputs.lastIndexOf(letter)) {
         ret.push(edge.end().value());
       }
     }

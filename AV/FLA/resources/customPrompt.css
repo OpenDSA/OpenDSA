@@ -18,6 +18,8 @@
 }
 #dialoguebox > div {
     margin: 8px;
+    max-height: 400px;
+    overflow: scroll;
 }
 #dialoguebox > div > #dialogueboxhead {
     font-size: 20px;

@@ -70,6 +70,7 @@
    						return;
    					}
    				}
+   				document.getElementById("if").contentWindow.removeND();
 				if (document.getElementById("if").contentWindow.testND()) {
 					document.getElementById("if").contentWindow.testLambda();
 					window.alert("This Moore Machine is nondeterministic.\nYou cannot run input on it.");
