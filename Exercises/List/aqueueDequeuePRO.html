@@ -17,20 +17,8 @@ Written by Junyang Chen and Cliff Shaffer
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
   <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
   <style>
-    .jsavcontainer {
-      height: 350px;
-    }
-    .jsavcontainer svg{
-      pointer-events: all;
-    }
     .jsavcanvas{
       height: 350px;
-    }
-    .jsavpointer{
-      width: 40px;
-      z-index: 120;
-      text-align: center;
-      cursor: pointer;
     }
     #reset { margin-right: 20px;}
     .highlight{
@@ -48,7 +36,7 @@ var jsav,           // The JSAV object
   copyFrom,
   arrReturn,
   labelReturn,
-  cloneArr = [],    // A copy of the (internal) array at the start of the exercise for reset
+  cloneArr = [],    // Copy of (internal) array at start of the exercise for reset
   jsavCir,          // The array that the user manipulates (JSAV object)
   selected_pointer,
   front_pointer,
@@ -98,21 +86,21 @@ function resetPointer(pointer,index, type){
 
 // pointer click handler
 function pclick(pointer){
-  if(status == 1){
+  if (status === 1) { // Highlight the queue cell
     jsavCir.path[selected_index].rObj.attr({"fill":"none", "opacity" : "1"});
     pointer.label.element.toggleClass('highlight');
     selected_pointer = pointer;
     status = 2;
-  }else if (status == 2){
-    if(selected_pointer !== pointer){
+  } else if (status === 2) {
+    if (selected_pointer !== pointer) {
       selected_pointer.label.element.removeClass('highlight');
       pointer.label.element.addClass('highlight');
       selected_pointer = pointer;
-    }else {
+    } else { // Reclicked cell, so unhighlight
       pointer.label.element.removeClass('highlight');
       status = 0;
     }
-  }else if(status == 0){
+  } else if (status === 0) {
     pointer.label.element.addClass('highlight');
     selected_pointer = pointer;
     status = 2;
@@ -225,10 +213,11 @@ function initJSAV(maxSize, front, rear) {
   }
   var frontIndex = front;
   var rearIndex = rear;
-  if( ( (rear+maxSize) - front + 1) % maxSize !== 0){
-    while( frontIndex !== rear + 1){
+  // Copy in data, but only if the queue is not empty
+  if (((rear + 1) % maxSize) !== front) {
+    while (frontIndex !== ((rear + 1) % maxSize)) {
       cloneArr[frontIndex] = Math.floor(Math.random() * 1000);
-      frontIndex =(frontIndex + 1)%maxSize;
+      frontIndex = (frontIndex + 1) % maxSize;
     }
   }
 

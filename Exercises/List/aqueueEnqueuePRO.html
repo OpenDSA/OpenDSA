@@ -18,15 +18,7 @@ Written by Junyang Chen and Cliff Shaffer
   <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
   <style>
     .jsavcanvas{
-      -moz-user-select: none;
-      -webkit-user-select: none;
        height: 350px;
-    }
-    .jsavpointer{
-      width: 40px;
-      text-align: center;
-      z-index: 120;
-      cursor: pointer;
     }
     #reset { margin-right: 20px;}
     .highlight{
@@ -42,7 +34,7 @@ var jsav,           // The JSAV object
   answerArr = [],   // The (internal) array that stores the correct answer
   answFrontPos,
   answRearPos,
-  cloneArr = [],    // A copy of the (internal) array at the start of the exercise for reset
+  cloneArr = [],    // Copy of (internal) array at start of the exercise for reset
   jsavCir,          // The array that the user manipulates (JSAV object)
   selected_pointer,
   front_pointer,
@@ -193,11 +185,6 @@ function f_reset(maxSize, front, rear) {
 // Initialise the exercise
 function initJSAV(maxSize, front, rear, insertValue) {
   console.log("Init: " +  maxSize + ", " + front + ", " + rear);
-  // Cannot allow an overfull array
-  while (((rear + 1) % maxSize) === front) {
-    rear = Math.floor(Math.random() * maxSize);
-    console.log("New rear: " + rear);
-  }
   var i, j;
   userInput = false;
   selected_index = -1;
@@ -211,8 +198,9 @@ function initJSAV(maxSize, front, rear, insertValue) {
   }
   var frontIndex = front;
   var rearIndex = rear;
-  if (((rear + maxSize) - front + 1) % maxSize !== 0) {
-    while (frontIndex !== rear + 1) {
+  // Copy in data, but only if the queue is not empty
+  if (((rear + 1) % maxSize) !== front) {
+    while (frontIndex !== ((rear + 1) % maxSize)) {
       answerArr[frontIndex] = Math.floor(Math.random() * 1000);
       frontIndex = (frontIndex + 1) % maxSize;
     }
