@@ -32,13 +32,19 @@
 <div id="container">
 <h1>Grammar test</h1>
 <div align="center">
+  <span id='mode'></span><br>
   <button type="button" id="editbutton">Edit</button>
   <button type="button" id="deletebutton">Delete</button>
   <button type="button" id="bfpbutton">Brute Force Parse</button>
   <button type="button" id="convertRLGbutton">Convert RLG to FA</button>
   <button type="button" id="convertCFGbutton">Convert CFG to NPDA</button>
   <button type="button" id="backbutton">Back</button>
-  <span id='mode'></span>
+  
+  <div id="transformations">
+    <button type="button" id="lambdabutton">Remove &lambda;-Productions</button>
+    <button type="button" id="unitbutton">Remove Unit-Productions</button>
+    <button type="button" id="uselessbutton">Remove Useless Productions</button>
+  </div>
 </div>
 <div id="av">
   <div class="jsavcontrols">  
