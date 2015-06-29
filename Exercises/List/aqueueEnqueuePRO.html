@@ -79,6 +79,8 @@ function pclick(pointer) {
   userInput = true;
 }
 
+
+// Convenience function: Set the click handler on a pointer
 function bindPointerClick(pointer) {
   pointer.label.element.click(function () {pclick(pointer); });
 }
@@ -158,6 +160,7 @@ function f_reset(maxSize, front, rear) {
     $("#jsav").empty();
   }
   jsav = new JSAV("jsav");
+  console.log("Create a circular queue with this many slots: " + maxSize);
   jsavCir = jsav.circular(cx, cy, 50, 100, maxSize, {"stroke-width": 2});
   if (front === rear) {
     front_pointer = jsavCir.pointer("front", front, 0.3);
@@ -190,6 +193,11 @@ function f_reset(maxSize, front, rear) {
 // Initialise the exercise
 function initJSAV(maxSize, front, rear, insertValue) {
   console.log("Init: " +  maxSize + ", " + front + ", " + rear);
+  // Cannot allow an overfull array
+  while (((rear + 1) % maxSize) === front) {
+    rear = Math.floor(Math.random() * maxSize);
+    console.log("New rear: " + rear);
+  }
   var i, j;
   userInput = false;
   selected_index = -1;
@@ -214,14 +222,15 @@ function initJSAV(maxSize, front, rear, insertValue) {
 
   f_reset(maxSize, front, rear);
 
-  // correct answer
+  // Define the correct answer
   answFrontPos = front;
   answRearPos = rear;
   if (((rear + 2) % maxSize) !== front) {
     rearIndex = (rearIndex + 1) % maxSize; // Circular increment
     answerArr[rearIndex] = inValue;
     answRearPos = rearIndex;
-  }
+  } // else we don't actually insert because queue is full
+
   // Set up button click handlers
   $("#insert").click(function () { f_insert(); });
   $("#reset").click(function () { f_reset(maxSize, front, rear); });

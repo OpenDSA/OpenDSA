@@ -10,16 +10,19 @@ $(document).ready(function () {
     return Math.cos(x * Math.PI / 180);
   }
 
-  var Circular = function (jsav, cx, cy, r1, r2, options) {
+  var Circular = function (jsav, cx, cy, r1, r2, size, options) {
+    this.front = null;
+    this.rear = null;
     this.jsav = jsav;
     this.cx = cx;
     this.cy = cy;
     this.r1 = r1;
     this.r2 = r2;
+    this.step = 360/size;
     var defaultOptions = {};
     this.options = $.extend(defaultOptions, options);
     var x1, y1, x2, y2, x3, y3, x4, y4, label,
-        i = 0, theta = 0, step = 30, pathString;
+        i = 0, theta = 0, pathString;
     this.path = [];
     this.labels = [];
     while (theta < 360) {
@@ -27,12 +30,12 @@ $(document).ready(function () {
       y1 = cy + r1 * sin(theta);
       x2 = cx + r2 * cos(theta);
       y2 = cy + r2 * sin(theta);
-      theta += 30;
+      theta += this.step;
       x3 = cx + r2 * cos(theta);
       y3 = cy + r2 * sin(theta);
       x4 = cx + r1 * cos(theta);
       y4 = cy + r1 * sin(theta);
-      theta -= 30;
+      theta -= this.step;
       pathString = "M" + x2 + "," + y2;
       pathString += " A" + r2 + "," + r2 + " 1 0,1 " + x3 + "," + y3;
       pathString += " L" + x4 + "," + y4;
@@ -40,18 +43,18 @@ $(document).ready(function () {
       this.path[i] = this.jsav.g.path(pathString, this.options);
       label = this.jsav.label(" ");
       label.css({'position' : 'absolute',
-                 left: cx + (r1 + r2) / 2 * cos(theta + 15) - 20 + 'px',
-                 top: cy + (r1 + r2) / 2 * sin(theta + 15) - 25 + 'px',
+                 left: cx + (r1 + r2) / 2 * cos(theta + this.step/2) - 20 + 'px',
+                 top: cy + (r1 + r2) / 2 * sin(theta + this.step/2) - 25 + 'px',
                  width: '40px', height: '20px', 'text-align': 'center'});
       this.labels[i] = label;
       var test = this.jsav.label(i);
       test.css({'position' : 'absolute',
-                 left: cx + (r1) / 100 * 78 * cos(theta + 15) - 20 + 'px',
-                 top: cy + (r1) / 100 * 78 * sin(theta + 15) - 25 + 'px',
+                 left: cx + (r1) / 100 * 78 * cos(theta + this.step/2) - 20 + 'px',
+                 top: cy + (r1) / 100 * 78 * sin(theta + this.step/2) - 25 + 'px',
                  width: '40px', height: '20px', 'text-align': 'center'});
   
       i++;
-      theta += 30;
+      theta += this.step;
     }
   };
 
@@ -98,7 +101,7 @@ $(document).ready(function () {
     return pointer;
   };
 
-  JSAV.ext.circular = function (cx, cy, r1, r2, options) {
-    return new Circular(this, cx, cy, r1, r2, $.extend({}, options));
+  JSAV.ext.circular = function (cx, cy, r1, r2, size, options) {
+    return new Circular(this, cx, cy, r1, r2, size, $.extend({}, options));
   };
 });

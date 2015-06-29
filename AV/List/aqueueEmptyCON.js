@@ -13,7 +13,7 @@ $(document).ready(function () {
   var cx = 400, cy = 120;
   // radius
   var r1 = 50, r2 = 100;
-  var cir = av.circular(cx, cy, r1, r2, {"stroke-width" : 2});
+  var cir = av.circular(cx, cy, r1, r2, 12, {"stroke-width" : 2});
 
   // Slide 1
   av.umsg("There remains one more serious, though subtle, problem to the array-based queue implementation. How can we recognize when the queue is empty or full?");
