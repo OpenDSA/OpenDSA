@@ -22,7 +22,7 @@ $(document).ready(function () {
   path += " " + tx + "," + ty2;
   path += " " + tx + "," + ty;
   var curve = av.g.path(path, {"stroke-width" : 2, "arrow-end" : "classic-wide-long"});
-  var cir = av.circular(cx, cy, r1, r2, {"stroke-width" : 2});
+  var cir = av.circular(cx, cy, r1, r2, 12, {"stroke-width" : 2});
   curve.hide();
 
   // Slide 1

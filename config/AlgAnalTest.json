@@ -58,7 +58,7 @@
       }
     },
     "Algorithm Analysis": {
-      "AlgAnalTest/AnalChap": {
+      "AlgAnal/AnalChap": {
         "long_name": "Chapter Intro: Algorithm Analysis",
         "exercises": {}
       },
@@ -79,7 +79,7 @@
           }
         }
       },
-      "AlgAnalTest/AnalIntro": {
+      "AlgAnal/AnalIntro": {
         "long_name": "Comparing Algorithms",
         "exercises": {}
       },
@@ -101,7 +101,7 @@
 		
 		}
       },
-      "AlgAnalTest/AnalCompvsAlg": {
+      "AlgAnal/AnalCompvsAlg": {
         "long_name": "A Faster Computer, or a Faster Algorithm?",
         "exercises": {}
       },
@@ -150,7 +150,7 @@
           }
         }
       },
-      "AlgAnalTest/AnalProgram": {
+      "AlgAnal/AnalProgram": {
         "long_name": "Calculating the Running Time of a Program",
         "sections": {
           "binsearchpro": {
@@ -181,27 +181,27 @@
           }
         }
       },
-      "AlgAnalTest/AnalProblem": {
+      "AlgAnal/AnalProblem": {
         "long_name": "Analyzing Problems",
         "exercises": {}
       },
-      "AlgAnalTest/AnalMisunderstanding": {
+      "AlgAnal/AnalMisunderstanding": {
         "long_name": "Common Misunderstandings",
         "exercises": {}
       },
-      "AlgAnalTest/AnalMultiple": {
+      "AlgAnal/AnalMultiple": {
         "long_name": "Multiple Parameters",
         "exercises": {}
       },
-      "AlgAnalTest/AnalSpace": {
+      "AlgAnal/AnalSpace": {
         "long_name": "Space Bounds",
         "exercises": {}
       },
-      "AlgAnalTest/AnalTuning": {
+      "AlgAnal/AnalTuning": {
         "long_name": "Speeding Up Your Programs",
         "exercises": {}
       },
-      "AlgAnalTest/AlgAnalSumm": {
+      "AlgAnal/AlgAnalSumm": {
         "long_name": "Algorithm Analysis Summary Exercises",
         "sections": {
           "upperbound": {
@@ -294,14 +294,8 @@
           }
 		}
       },
-      "AlgAnalTest/AmortAnal": {
+      "Development/AmortAnal": {
         "long_name": "Amortized Analysis",
-        "exercises": {}
-      }
-    },
-    "Appendix": {
-      "Glossary": {
-        "long_name": "Glossary",
         "exercises": {}
       }
     }

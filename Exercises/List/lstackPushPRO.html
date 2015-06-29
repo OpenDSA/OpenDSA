@@ -16,31 +16,12 @@ Written by Junyang Chen and Cliff Shaffer
   <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
   <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
   <style>
-    .jsavcontainer {
-      height: 150px;
-      margin-top: 30px;
-    }
     .jsavcanvas{
       height: 150px;
-    }
-    .jsavhorizontallist.jsavautoresize .jsavnode {
-      min-width: 30px;
-      max-width: 30px;
-      min-height: 30px;
-      max-height: 30px;
-      line-height: 30px;
-      padding-right: 12px;
     }
     .bgColor{
       font-size: 130%;
       background-color: yellow;
-    }
-    .jsavlist.jsavautoresize.jsavhorizontallist{
-      height: 150px;
-    }
-    .jsavcanvas svg{
-      height: 150px;
-      overflow: show;
     }
     .jsavpointer{
       width: 40px;
@@ -328,8 +309,8 @@ function f_reset() {
   ptop = jsav.pointer("top", jsavList.get(0),{fixed: "true",});
   ptop.click(pclick);
 
-  // Hidden JSAV array for insert animation
-  jsavArr = jsav.ds.array([insertValue], {indexed: false, center: false,left: 650, top: -70});
+  // Hidden JSAV array for insert animation effect
+  jsavArr = jsav.ds.array([insertValue], {indexed: false, center: false,left: 550, top: -70});
 
   jsavList.click(clickHandler);
   userInput = false;

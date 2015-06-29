@@ -48,19 +48,19 @@
       "Background/SetDef": {
         "long_name": "Set Definitions",
         "exercises": {
-          "StTFreltn": {
+          "SetTFrelation": {
             "long_name": "Relations Exercise",
             "required": true,
             "points": 2.0,
             "threshold": 5
           },
-          "StTFeqvlnc": {
+          "SetTFequivrel": {
             "long_name": "Equivalence Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 3
           },
-          "StTFprtlordr": {
+          "SetTFpartialorder": {
             "long_name": "PartialOrder Exercise",
             "required": true,
             "points": 1.0,
@@ -105,7 +105,7 @@
       "Background/MathpreSumm": {
         "long_name": "Chapter Summary",
         "exercises": {
-          "MthBgSumm": {
+          "MathBgSumm": {
             "long_name": "Math Background Summary Questions",
             "required": true,
             "points": 1.0,

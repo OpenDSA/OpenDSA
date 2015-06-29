@@ -101,9 +101,9 @@ Thus, ``enqueue`` increments the rear pointer (modulus ``maxSize``),
 and ``dequeue`` increments the front pointer.
 Implementation of all member functions is straightforward.
 
-:: .. avembed:: Exercises/List/aqueueEnqueuePRO.html ka
+.. avembed:: Exercises/List/aqueueEnqueuePRO.html ka
 
-:: .. avembed:: Exercises/List/aqueueDequeuePRO.html ka
+.. avembed:: Exercises/List/aqueueDequeuePRO.html ka
 
 .. odsascript:: DataStructures/CircularQueue.js
 .. odsascript:: AV/List/aqueueFirstCON.js

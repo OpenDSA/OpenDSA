@@ -1,14 +1,18 @@
+/*global KhanUtil */
 "use strict";
 var av,              // The JSAV object
     answerArr = [],  // The (internal) array that stores the correct answer
     cloneArr = [],   // Copy of (internal) array at start of exercise for reset
     jsavArr,         // The array that the user manipulates (JSAV object)
-    returnArr,       // Return 'box'
-    returnLabel,     // Label 'return'
+    currArr,         // curr box
+    currLabel,       // curr label
+    returnArr,       // return box
+    returnLabel,     // return label
     delPosition,     // deletion location
     delValue,        // deletion value
     userInput,       // Boolean: Tells us if user ever did anything
-    selected_index;  // Position that has been selected by user.
+    selected_index,  // Position that has been selected by user
+    aSize;           // Number of values in array
 
 // Click event handler for return 'box'
 function copyHandler() {
@@ -43,11 +47,27 @@ function clickHandler(index, e) {
 function f_reset() {
   jsavArr.clear();
   // Re-initialize the displayed array object
-  jsavArr = av.ds.array(cloneArr, {indexed: true, center: false});
-  jsavArr.css({top: 50});
+  jsavArr = av.ds.array(cloneArr, {indexed: true, center: false, top: 20});
   jsavArr.click(clickHandler); // Rebind click handler after reset
   userInput = false;
   selected_index = -1;
+}
+
+function getSize(low, high) {
+  var range = KhanUtil.randRange(1, 6);
+  if (range === 1) { // Lower the odds on size of 1
+    range = KhanUtil.randRange(1, 6);
+  }
+  aSize = range;
+  return range;
+}
+
+function getPos() {
+  var range = KhanUtil.randRange(0, aSize - 1);
+  if (range === (aSize - 1)) { // Lower the odds on being at end
+    range = KhanUtil.randRange(0, aSize - 1);
+  }
+  return range;
 }
 
 // Initialise the exercise
@@ -76,15 +96,11 @@ function initJSAV(arr_size, deletePos) {
   av = new JSAV("alistDeletePRO");
   av.recorded();
   av.SPEED = 120; // Set the speed of animation.
-  jsavArr = av.ds.array(cloneArr, {indexed: true, center: false});
-  jsavArr.css({top: 50});
-  returnArr = av.ds.array(["null"], {left: 40, top: 120});
-  returnLabel = av.label("return", {left: 0, top: 125});
-  var arrowCurr = av.g.line(16 + delPosition * 31, 30, 16 + delPosition * 31, 52,
-                    { "arrow-end": "classic-wide-long",
-                      "opacity": 100, "stroke-width": 2});
-  var label = av.label("Curr", { before: jsavArr,
-                                 left: 4 + delPosition * 31, top: -5});
+  jsavArr = av.ds.array(cloneArr, {indexed: true, center: false, top: 20});
+  currArr = av.ds.array([delPosition], {left: 45, top: 90});
+  currLabel = av.label("curr", {left: 10, top: 95});
+  returnArr = av.ds.array(["null"], {left: 45, top: 125});
+  returnLabel = av.label("return", {left: 0, top: 130});
 
   // Bind the clickHandler to handle click events on the array
   jsavArr.click(clickHandler);

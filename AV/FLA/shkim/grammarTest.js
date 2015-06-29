@@ -20,26 +20,60 @@
     });
     lastRow = arr.length;
     arr.push(["", arrow, ""]);
+    localStorage.removeItem('grammar');
   } else {
     for (var i = 0; i < arr.length; i++) {
       arr[i] = ["", arrow, ""];
     }
-    arr[0] = ['S', arrow, 'aA'];
-    arr[1] = ['S', arrow, 'bA'];
-    arr[2] = ['S', arrow, 'aC'];
-    arr[3] = ['A', arrow, 'B'];
-    arr[4] = ['B', arrow, 'qvC'];
-    arr[5] = ['C', arrow, 'x'];
-    arr[6] = ['B', arrow, 'y'];
-    arr[7] = ['A', arrow, emptystring];
+    // arr[0] = ['S', arrow, 'aA'];
+    // arr[1] = ['S', arrow, 'bA'];
+    // arr[2] = ['S', arrow, 'aC'];
+    // arr[3] = ['A', arrow, 'B'];
+    // arr[4] = ['B', arrow, 'qvC'];
+    // arr[5] = ['C', arrow, 'x'];
+    // arr[6] = ['B', arrow, 'y'];
+    // arr[7] = ['A', arrow, emptystring];
+
+    // remove lambda productions example:
+    arr[0] = ['S', arrow, 'EBCA'];
+    arr[1] = ['A', arrow, 'aAa'];
+    arr[2] = ['A', arrow, emptystring];
+    arr[3] = ['B', arrow, 'bB'];
+    arr[4] = ['B', arrow, emptystring];
+    arr[5] = ['C', arrow, 'B'];
+    arr[6] = ['D', arrow, 'AB']; 
+    arr[7] = ['E', arrow, 'a'];
+
+    // remove unit productions example:
+    // arr[0] = ['S', arrow, 'Aa'];
+    // arr[1] = ['S', arrow, 'A'];
+    // arr[2] = ['A', arrow, 'C'];
+    // arr[3] = ['B', arrow, 'b'];
+    // arr[4] = ['C', arrow, 'B'];
+    // arr[5] = ['C', arrow, 'cCc'];
+    //lastRow = 6;
+
+    // remove useless productions example:
+    // arr[0] = ['S', arrow, 'AaB'];
+    // arr[1] = ['S', arrow, 'Aa'];
+    // arr[2] = ['S', arrow, 'dDc'];
+    // arr[3] = ['A', arrow, 'AAa'];
+    // arr[4] = ['A', arrow, 'a'];
+    // arr[5] = ['B', arrow, 'bB'];
+    // arr[6] = ['B', arrow, 'bBb']; 
+    // arr[7] = ['C', arrow, 'cD'];
+    // arr[8] = ['D', arrow, 'aAb'];
+    // lastRow = 9;
+
   }
   var init = function () {
+      if (m) {
+        m.clear();
+      }
       var m2 = jsav.ds.matrix(arr, {style: "table"});
       for (var i = lastRow + 1; i < arr.length; i++) {
         m2._arrays[i].hide();
       }
-      m2.addClass(lastRow, 0, "next");
-      m2.addClass(lastRow, 2, "next");
       m2.layout();
       m2.on('click', matrixClickHandler);
       return m2;
@@ -50,13 +84,7 @@
       // recreates the matrix when deleting a row...
       arr.splice(index, 1);
       lastRow--;
-      m.clear();
-      m = jsav.ds.matrix(arr, {style: "table"});
-      for (var i = lastRow + 1; i < arr.length; i++) {
-        m._arrays[i].hide();
-      }
-      m.on('click', matrixClickHandler);
-      m.layout();
+      m = init();
       $('.jsavmatrix').addClass('deleteMode');
     } else if ($('.jsavmatrix').hasClass('editMode')) {
       this.highlight(index);
@@ -83,24 +111,17 @@
       this.unhighlight(index);
       if (index === lastRow) {
         // if array out of bounds, double the array size and recreate the matrix
-        var self = this;
-        if (lastRow === arr.length - 1) {
+        if (lastRow === arr.length - 1 || lastRow === arr.length) {
           var l = arr.length;
           for (var i = 0; i < l; i++) {
             arr.push(['', arrow, '']);
           }
-          m.clear();
-          m = jsav.ds.matrix(arr, {style: "table"});
-          self = m;
-          for (var i = lastRow + 1; i < arr.length; i++) {
-            self._arrays[i].hide();
-          }
-          m.on('click', matrixClickHandler);
+          m = init();
           $('.jsavmatrix').addClass('editMode');
         } 
-        self._arrays[lastRow + 1].show();
+        m._arrays[lastRow + 1].show();
         lastRow++;
-        self.layout();
+        m.layout();
       }
       //console.log(arr.length);
     }
@@ -127,6 +148,7 @@
     $('#deletebutton').hide();
     $('#convertRLGbutton').hide();
     $('#convertCFGbutton').hide();
+    $('#transformations').hide();
     $('.jsavcontrols').show();
     $('#backbutton').show();
     $(m.element).css("margin-left", "50px");
@@ -140,7 +162,6 @@
     for (var i = 0; i < productions.length; i++) {
       m._arrays[i].unhighlight();
     }
-
     for (var i = 0; i < productions.length; i++) {
       if (productions[i][0] === productions[0][0]) {
         sententials.push(productions[i][2]);
@@ -169,7 +190,7 @@
       for (var i = 0; i < next.length; i++) {
         c = next[i];
         if (variables.indexOf(c) !== -1) {
-          _.map(productions, function(x, k) { 
+          _.each(productions, function(x, k) { 
             if (x[0] === c) {
               var r = x[2];
               if (r === emptystring) {
@@ -223,20 +244,23 @@
         var d = [];
         for (var j = temp.length - 1; j >= 0; j--) {
           //console.log(temp[j].value());
-          if (temp[j].value() === p[0].charAt(0)) {
+          if (temp[j].value() === p.split(arrow)[0]) {
             temp2 = temp[j];
             rem = j;
             break;
           }
         }
         temp.splice(rem, 1);
-        for (var j = 7; j < p.length; j++) {
-          var par = temp2.child(j - 7, p[j]).child(j-7)
+        p = p.split(arrow)[1];
+        var temp3 = [];
+        for (var j = 0; j < p.length; j++) {
+          var par = temp2.child(j, p[j]).child(j)
           if (variables.indexOf(p[j]) !== -1) {
-            temp.push(par);
+            temp3.unshift(par);
           } 
           d.push(par);
         }
+        temp = temp.concat(temp3);
         displayOrder.push(d);
       }
 
@@ -269,16 +293,16 @@
         leaves[i].highlight();
       }
       jsav.recorded();
-
     } else {
+      // if string is rejected, automatically return to the editor
       jsav.umsg('"' + inputString + '" rejected');
       $('button').show();
+      $('#transformations').show();
       $('.jsavcontrols').hide();
       $('#backbutton').hide();
       $(m.element).css("margin-left", "auto");
       m._arrays[lastRow].show();
     }
-
   }; 
 
   var replaceCharAt = function (str, index, ch) {
@@ -286,6 +310,18 @@
       return str;
     } else {
       return str.substring(0, index) + ch + str.substring(index + 1);
+    }
+  };
+
+  var getLeaves = function(node) {
+    var arr = [];
+    if (node.childnodes == false) {
+      return arr.concat(node);
+    } else { 
+      for (var i = 0; i < node.childnodes.length; i++) {
+        arr = arr.concat(getLeaves(node.child(i)));
+      }
+      return arr;
     }
   };
 
@@ -301,18 +337,201 @@
     $("#mode").html('Deleting');
   };
 
-  var getLeaves = function(node) {
-    var arr = [];
-    if (node.childnodes == false) {
-      return arr.concat(node);
-    } else { 
-      for (var i = 0; i < node.childnodes.length; i++) {
-        arr = arr.concat(getLeaves(node.child(i)));
+  //=================================
+  // transformations
+
+  // remove lambda productions
+  var removeLambda = function () {
+    var derivers = {};  // variables that derive lambda
+    var productions = _.filter(arr, function(x) { return x[0]});
+    var counter = 0;
+    while (removeLambdaHelper(derivers, productions)) {
+      counter++;
+      if (counter > 500) {
+        console.log(counter);
+        break;
       }
-      return arr;
+    };
+    if (productions[0][0] in derivers) {
+      alert('The start variable derives lambda');
+    }
+    var transformed = [];
+    productions = _.filter(productions, function(x) { return x[2] !== emptystring});
+    transformed = transformed.concat(productions);
+    for (var i = 0; i < productions.length; i++) {
+      var p = productions[i];
+      var v = _.uniq(_.filter(p[2], function(x) { return x in derivers}));  // remove lambda productions
+      v = v.join('');
+      if (v.length > 0) {
+        for (var j = v.length - 1; j >= 0; j--) {
+          // remove all combinations of lambda-deriving variables
+          var n = getCombinations(v, j + 1);
+          for (var next = n.next(); next.value; next = n.next()) {
+            var regex = new RegExp('[' + next.value.join('') + ']','g');
+            var replaced = p[2].replace(regex, "");
+            if (replaced) {
+              transformed.push([p[0], arrow, replaced]);
+            }
+          }
+        }
+      }
+    }
+    // for (var i = 0; i < transformed.length; i++) {
+    //   console.log("" + transformed[i]);
+    // }
+    // arr = transformed;
+    // lastRow = arr.length;
+    // arr.push(["", arrow, ""]);
+    // m = init();
+    // $('.jsavmatrix').addClass('editMode');
+    localStorage['grammar'] = _.map(transformed, function(x) {return x.join('');});
+    window.open('grammarTest.html', '');
+  };
+  var removeLambdaHelper = function (set, productions) {
+    // a variable derives lambda if it directly produces lambda or if its right side is
+    // composed only of lambda-deriving variables
+    for (var i = 0; i < productions.length; i++) {
+      if (productions[i][2] === emptystring || _.every(productions[i][2], function(x) { return x in set})) {
+        if(!(productions[i][0] in set)) {
+          set[productions[i][0]] = true;
+          return true;
+        } 
+      }
+    }
+    return false;
+  };
+  var getCombinations = function* (str, l) {
+    // creates a generator for the combinations of variables to remove
+    for (var i = 0; i < str.length; i++) {
+      if (l === 1) {
+        yield [str[i]];
+      } else {
+        var n = getCombinations(str.substring(i+1), l-1);
+        for (var next = n.next(); next.value; next = n.next()) {
+          yield [str[i]].concat(next.value);
+        }
+      }
     }
   };
 
+  // remove unit productions
+  var removeUnit = function () {
+    var productions = _.filter(arr, function(x) { return x[0]});
+    var pDict = {};
+    // a dictionary mapping left sides to right sides
+    for (var i = 0; i < productions.length; i++) {
+      if (!(productions[i][0] in pDict)) {
+        pDict[productions[i][0]] = [];
+      }
+      pDict[productions[i][0]].push(productions[i][2]);
+    }
+    var counter = 0;
+    while (removeUnitHelper(productions, pDict)) {
+      counter++;
+      if (counter > 500) {
+        console.log(counter);
+        break;
+      }
+    };
+    // remove original unit productions
+    productions = _.filter(productions, function(x) {
+      return !(x[2].length === 1 && variables.indexOf(x[2]) !== -1);
+    })
+    // for (var i = 0; i < productions.length; i++) {
+    //   console.log(""+productions[i]);
+    // }
+    // console.log(productions.length);
+    localStorage['grammar'] = _.map(productions, function(x) {return x.join('');});
+    window.open('grammarTest.html', '');
+  };
+  var removeUnitHelper = function (productions, pDict) {
+    // finds a unit production and adds one of the replacement productions
+    for (var i = 0; i < productions.length; i++) {
+      if (productions[i][2].length === 1 && variables.indexOf(productions[i][2]) !== -1) {
+        var p = pDict[productions[i][2]];
+        var n;
+        for (var j = 0; j < p.length; j++) {
+          if (p[j].length === 1 && variables.indexOf(p[j]) !== -1) {
+            continue;
+          } else if (!_.find(productions, function(x){ return x[0] === productions[i][0] && x[2] === p[j]})) {
+            n = p[j];
+            break;
+          }
+        }
+        if (n) {
+          productions.push([productions[i][0], arrow, n]);
+          pDict[productions[i][0]].push(n);
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+
+  // remove useless productions
+  var removeUseless = function () {
+    var derivers = {};  // variables that derive a string of terminals
+    var productions = _.filter(arr, function(x) { return x[0]});
+    var counter = 0;
+    while (findUnderivable(derivers, productions)) {
+      counter++;
+      if (counter > 500) {
+        console.log(counter);
+        break;
+      }
+    };
+    var transformed = [];
+    // remove productions which do not derive a string of terminals
+    for (var i = 0; i < productions.length; i++) {
+      if (_.every(productions[i][2], function(x) { return x in derivers || variables.indexOf(x) === -1})) {
+        transformed.push(productions[i]);
+      }
+    }
+    var pDict = {};   // dictionary to hold reachable variables
+    var start = transformed[0][0];
+    for (var i = 0; i < transformed.length; i++) {
+      if (!(transformed[i][0] in pDict)) {
+        pDict[transformed[i][0]] = [];
+      }
+      // map left hand side to the variables in the right hand side
+      var r = _.uniq(_.filter(transformed[i][2], function(x) {return variables.indexOf(x) !== -1}));
+      pDict[transformed[i][0]] = pDict[transformed[i][0]].concat(r);
+    }
+    var visited = {};
+    visited[start] = true;
+    findUnreachable(start, pDict, visited);
+    transformed = _.filter(transformed, function(x) { return x[0] === start || pDict[start].indexOf(x[0]) !== -1});
+    // for (var i = 0; i < transformed.length; i++) {
+    //   console.log(""+transformed[i]);
+    // }
+    // console.log(transformed.length);
+    localStorage['grammar'] = _.map(transformed, function(x) {return x.join('');});
+    window.open('grammarTest.html', '');
+  };
+  var findUnderivable = function (set, productions) {
+    // finds a deriver
+    for (var i = 0; i < productions.length; i++) {
+      if (_.every(productions[i][2], function(x) { return x in set || variables.indexOf(x) === -1})) {
+        if(!(productions[i][0] in set)) {
+          set[productions[i][0]] = true;
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+  var findUnreachable = function (start, pDict, visited) {
+    // dfs on the dictionary
+    for (var i = 0; i < pDict[start].length; i++) {
+      if (!(pDict[start][i] in visited)) {
+        visited[pDict[start][i]] = true;
+        findUnreachable(pDict[start][i], pDict, visited);
+        pDict[start] = _.union(pDict[start], pDict[pDict[start][i]]);
+      }
+    }
+  };
+
+  //=================================
   $('#editbutton').click(editMode);
   $('#deletebutton').click(deleteMode);
   $('#bfpbutton').click(bfParse);
@@ -336,9 +555,12 @@
     if (parseTable) { parseTable.clear();}
     jsav.umsg('');
     $('button').show();
+    $('#transformations').show();
     $('.jsavcontrols').hide();
     $('#backbutton').hide();
     $(m.element).css("margin-left", "auto");
   });
-
+  $('#lambdabutton').click(removeLambda);
+  $('#unitbutton').click(removeUnit);
+  $('#uselessbutton').click(removeUseless);
 }(jQuery));
