@@ -1,13 +1,18 @@
 # OpenDSA (Development Channel)
 
-This is the development repository for the OpenDSA project. Note that the stable
-release version is maintained at:
+This is the development repository for the OpenDSA project. Note that
+the stable release version is maintained at:
 https://github.com/cashaffer/OpenDSA-stable.
 
 The goal of the OpenDSA project is to create open-source courseware for use in
 Data Structures and Algorithms courses, that deeply integrates textbook-quality
 content with algorithm visualizations and interactive, automatically assessed
 exercises.
+
+## Documentation
+
+System documentation can be found at http://opendsa.readthedocs.org/.
+
 
 ## Setup
 
@@ -33,14 +38,15 @@ In order to pull a more recent copy of JSAV than what is in the submodule:
 
 A similar command will let you pull the up-to-date version of QBank.
 
-The OpenDSA Wiki has a "Getting Started" page
-(http://algoviz.org/algoviz-wiki/index.php/The_OpenDSA_Developer%27s_Getting_Started_Guide)
-that contains useful information for new developers, including what tools are
-necessary and how to install them.
 
-System documentation is found in the "Doc" directory. One consequence of running
-"make pull" is to compile this documentation. You can also view it at our mirror
-site: http://algoviz.org/OpenDSA/Doc/manual/
+The source files for the documentation can be found in the "Doc"
+directory.
+Changes to the documentation source, once pushed back to the
+repository, will automatically revise the public version at
+readthedocs.org.
+You can also re-compile the documentation by going to the "Doc"
+directory and typing "make".
+The result will then be in "Doc/manual".
 
 
 ## Directory Structure
@@ -56,9 +62,10 @@ Books: Created by the build process, this contains compiled versions of
 config: This holds configuration files for specific books (whose output will go
 to the "Books" directory).
 
-Doc: Documentation. Currently includes a template for Khan Academy multiple
-choice questions, and documentation for using the various Sphinx directives that
-we have created.
+Doc: Documentation.
+Currently includes a template for Khan Academy multiple
+choice questions, and documentation for using the various Sphinx
+directives that we have created.
 
 Exercises: Our Khan Academy Infrastructure-based exercises. Subdirectories
 divide the content by topic.
