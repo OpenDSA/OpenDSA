@@ -12,10 +12,24 @@ var executeDeleteNode = function(node){
 	updateMooreOutput();
 };
 
-var executeAddEdge = function(toNode, fromNode, weight){
-	var newEdge = g.addEdge(toNode, fromNode, {weight: weight});
-	newEdge.layout();
-	updateAlphabet();
+var executeAddEdge = function(fromNode, toNode, weight){
+	var newEdge = g.addEdge(fromNode, toNode, {weight: weight});
+	if (newEdge) {
+		var weight = newEdge.weight().split('<br>');
+		var transitions = [];
+		for (var i = 0; i < weight.length; i++) {
+			if (transitions.indexOf(weight[i]) == -1) {
+				transitions.push(weight[i]);
+			}
+		}
+		newEdge.weight(transitions.join("<br>"));
+		newEdge.layout();
+		updateAlphabet();
+		return newEdge;
+	}
+	else {
+		return g.getEdge(fromNode, toNode);
+	}
 };
 
 var executeDeleteEdge = function(edge){
@@ -58,7 +72,7 @@ var executeEditNode = function(node, initialState, nodeLabel, nodeOutput){
 };
 
 var executeEditEdge = function(edge, weight){
-	edge.weight(weight);
-	edge.layout();
+	$(edge).html(weight);
+	g.layout({layout: "manual"});
 	updateAlphabet();
 };

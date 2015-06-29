@@ -10,7 +10,7 @@ function TraversePrompt() {
         dialoguebox.style.top = "100px";
         dialoguebox.style.display = "block";
         document.getElementById('dialogueboxhead').innerHTML = "Traverse:";
-        document.getElementById('dialogueboxbody').innerHTML = 'Input String: <input class="newinput" id="first">';
+        document.getElementById('dialogueboxbody').innerHTML = 'Input String: <input class="newinput" id="first"> <button onclick="deleteInput(0)">Delete Input</button>';
         document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="addNewInput()">Add New Input</button> <button onclick="traverseInput()">Traverse</button> <button onclick="goback()">Cancel</button>';
         document.getElementById('first').focus();
     }
@@ -33,7 +33,25 @@ function TraversePrompt() {
         for (var j = 0; j < x.length; j++) {
             values.push(x[j].value);
         }
-        document.getElementById('dialogueboxbody').innerHTML += '<br>Input String: <input class="newinput">';
+        document.getElementById('dialogueboxbody').innerHTML += '<br>Input String: <input class="newinput"> <button onclick="deleteInput(' + values.length + ')">Delete Input</button>';
+        x = document.getElementById('dialogueboxbody').getElementsByClassName('newinput');
+        for (var k = 0; k < values.length; k++) {
+            x[k].value = values[k];
+        }
+        x[x.length - 1].focus();
+    }
+    deleteInput = function(input) {
+        var values = [];
+        var x = document.getElementById('dialogueboxbody').getElementsByClassName('newinput');
+        for (var i = 0; i < x.length; i++) {
+            if (i != input) {
+                values.push(x[i].value);
+            }
+        }
+        document.getElementById('dialogueboxbody').innerHTML = 'Input String: <input class="newinput" id="first"> <button onclick="deleteInput(0)">Delete Input</button>';
+        for (var j = 1; j < values.length; j++) {
+            document.getElementById('dialogueboxbody').innerHTML += '<br>Input String: <input class="newinput"> <button onclick="deleteInput(' + j + ')">Delete Input</button>';
+        }
         x = document.getElementById('dialogueboxbody').getElementsByClassName('newinput');
         for (var k = 0; k < values.length; k++) {
             x[k].value = values[k];
@@ -78,7 +96,7 @@ function NodePrompt() {
 }
 
 function EdgePrompt() {
-    this.render = function(edgeWeight) {
+    this.render = function(values) {
         var winW = window.innerWidth;
         var winH = window.innerHeight;
         var dialogueoverlay = document.getElementById('dialogueoverlay');
@@ -88,58 +106,136 @@ function EdgePrompt() {
         dialoguebox.style.left = (winW/2) - (550/2)+"px";
         dialoguebox.style.top = "100px";
         dialoguebox.style.display = "block";
-        document.getElementById('dialogueboxbody').innerHTML = 'Input Character: <input id="inputChar">';
-        document.getElementById('dialogueboxbody').innerHTML += '<br>Output Character: <input id="outputChar">';
-        var inputValue, outputValue;
-        if(edgeWeight === ""){
-            inputValue = "";
-            outputValue = "";
+        document.getElementById('dialogueboxbody').innerHTML = 'Input Character: <input class="newedgein" id="transition"> <br>Output Character: <input class="newedgeout"> <br><button onclick="deleteEdge(0)">Delete Transition</button>';
+        if (!values) {
             document.getElementById('dialogueboxhead').innerHTML = "Create Edge:";
-            document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="addEdge()">OK</button> <button onclick="end()">Cancel</button>';
+            document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="addNewWeight()">Add New Transition</button> <button onclick="addEdge()">Done</button> <button onclick="end()">Cancel</button>';
         }
         else {
             document.getElementById('dialogueboxhead').innerHTML = "Edit Edge:";
-            document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="changeEdge()">OK</button> <button onclick="end()">Cancel</button>';
-            var values = edgeWeight.split(":");
-            inputValue = values[0];
-            outputValue = values[1];
-            if (inputValue != lambda && inputValue != epsilon) {
-                document.getElementById('inputChar').value = inputValue;
+            document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="addNewWeight()">Add New Transition</button> <button onclick="changeEdge()">Done</button> <button onclick="end()">Cancel</button>';
+            for (var i = 1; i < values.length; i++) {
+                document.getElementById('dialogueboxbody').innerHTML += '<br><br>Input Character: <input class="newedgein"> <br>Output Character: <input class="newedgeout"> <br><button onclick="deleteEdge(' + i + ')">Delete Transition</button>';
             }
-            if (outputValue && outputValue != lambda && outputValue != epsilon) {
-                document.getElementById('outputChar').value = outputValue;
+            var x = document.getElementById('dialogueboxbody').getElementsByClassName('newedgein');
+            var y = document.getElementById('dialogueboxbody').getElementsByClassName('newedgeout');
+            for (var j = 0; j < values.length; j++) {
+                symbols = values[j].split(":");
+                if (symbols[0] != lambda && symbols[0] != epsilon) {
+                    x[j].value = symbols[0];
+                }
+                if (symbols[1] != lambda && symbols[1] != epsilon) {
+                    y[j].value = symbols[1];
+                }
             }
         }
-        document.getElementById('inputChar').focus();
+        document.getElementById('transition').focus();
     }
     end = function() {
         document.getElementById('dialoguebox').style.display = "none";
         document.getElementById('dialogueoverlay').style.display = "none";
     }
     addEdge = function() {
-        var edge_input = document.getElementById('inputChar').value;
-        if (edge_input === "") {
-            edge_input = emptystring;
+        var joinedValues = [];
+        var noDuplicates = [];
+        var x = document.getElementById('dialogueboxbody').getElementsByClassName('newedgein');
+        var y = document.getElementById('dialogueboxbody').getElementsByClassName('newedgeout');
+        for (var j = 0; j < x.length; j++) {
+            var inValue;
+            var outValue;
+            if (x[j].value === "") {
+                inValue = emptystring;
+            }
+            else {
+                inValue = x[j].value;
+            }
+            if (y[j].value === "") {
+                outValue = emptystring;
+            }
+            else {
+                outValue = y[j].value;
+            }
+            joinedValues.push(inValue + ":" + outValue);
         }
-        var edge_output = document.getElementById('outputChar').value;
-        if (edge_output === "") {
-            edge_output = emptystring;
+        for (var k = 0; k < joinedValues.length; k++) {
+            if (noDuplicates.indexOf(joinedValues[k]) == -1) {
+                noDuplicates.push(joinedValues[k]);
+            }
         }
-        var edge_label = edge_input + ":" + edge_output;
+        var edge_label = noDuplicates.join("<br>");
         window["createEdge"](edge_label);
         this.end();
     }
     changeEdge = function() {
-        var edge_input = document.getElementById('inputChar').value;
-        if (edge_input === "") {
-            edge_input = emptystring;
+        var joinedValues = [];
+        var noDuplicates = [];
+        var x = document.getElementById('dialogueboxbody').getElementsByClassName('newedgein');
+        var y = document.getElementById('dialogueboxbody').getElementsByClassName('newedgeout');
+        for (var j = 0; j < x.length; j++) {
+            var inValue;
+            var outValue;
+            if (x[j].value === "") {
+                inValue = emptystring;
+            }
+            else {
+                inValue = x[j].value;
+            }
+            if (y[j].value === "") {
+                outValue = emptystring;
+            }
+            else {
+                outValue = y[j].value;
+            }
+            joinedValues.push(inValue + ":" + outValue);
         }
-        var edge_output = document.getElementById('outputChar').value;
-        if (edge_output === "") {
-            edge_output = emptystring;
+        for (var k = 0; k < joinedValues.length; k++) {
+            if (noDuplicates.indexOf(joinedValues[k]) == -1) {
+                noDuplicates.push(joinedValues[k]);
+            }
         }
-        var edge_label = edge_input + ":" + edge_output;
+        var edge_label = noDuplicates.join("<br>");
         window["updateEdge"](edge_label);
         this.end();
+    }
+    addNewWeight = function() {
+        var inValues = [];
+        var outValues = [];
+        var x = document.getElementById('dialogueboxbody').getElementsByClassName('newedgein');
+        var y = document.getElementById('dialogueboxbody').getElementsByClassName('newedgeout');
+        for (var j = 0; j < x.length; j++) {
+            inValues.push(x[j].value);
+            outValues.push(y[j].value);
+        }
+        document.getElementById('dialogueboxbody').innerHTML += '<br><br>Input Character: <input class="newedgein"> <br>Output Character: <input class="newedgeout"> <br><button onclick="deleteEdge(' + inValues.length + ')">Delete Transition</button>';
+        x = document.getElementById('dialogueboxbody').getElementsByClassName('newedgein');
+        y = document.getElementById('dialogueboxbody').getElementsByClassName('newedgeout');
+        for (var k = 0; k < inValues.length; k++) {
+            x[k].value = inValues[k];
+            y[k].value = outValues[k];
+        }
+        x[x.length - 1].focus();
+    }
+    deleteEdge = function(edge) {
+        var inValues = [];
+        var outValues = [];
+        var x = document.getElementById('dialogueboxbody').getElementsByClassName('newedgein');
+        var y = document.getElementById('dialogueboxbody').getElementsByClassName('newedgeout');
+        for (var i = 0; i < x.length; i++) {
+            if (i != edge) {
+                inValues.push(x[i].value);
+                outValues.push(y[i].value);
+            }
+        }
+        document.getElementById('dialogueboxbody').innerHTML = 'Input Character: <input class="newedgein" id="transition"> <br>Output Character: <input class="newedgeout"> <br><button onclick="deleteEdge(0)">Delete Transition</button>';
+        for (var j = 1; j < inValues.length; j++) {
+            document.getElementById('dialogueboxbody').innerHTML += '<br><br>Input Character: <input class="newedgein"> <br>Output Character: <input class="newedgeout"> <br><button onclick="deleteEdge(' + j + ')">Delete Transition</button>';
+        }
+        x = document.getElementById('dialogueboxbody').getElementsByClassName('newedgein');
+        y = document.getElementById('dialogueboxbody').getElementsByClassName('newedgeout');
+        for (var k = 0; k < inValues.length; k++) {
+            x[k].value = inValues[k];
+            y[k].value = outValues[k];
+        }
+        x[x.length - 1].focus();
     }
 }

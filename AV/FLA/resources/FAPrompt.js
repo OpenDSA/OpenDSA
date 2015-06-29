@@ -124,10 +124,7 @@ function EdgePrompt() {
             }
             var x = document.getElementById('dialogueboxbody').getElementsByClassName('newedge');
             for (var j = 0; j < values.length; j++) {
-                if (values[j] == lambda || values[j] == epsilon) {
-                    x[j].value = "";
-                }
-                else {
+                if (values[j] != lambda && values[j] != epsilon) {
                     x[j].value = values[j];
                 }
             }
