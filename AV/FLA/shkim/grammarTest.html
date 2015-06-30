@@ -26,41 +26,43 @@
     #backbutton {
       display: none;
     }
+    .terminal {
+      background-color: lightgreen;
+    }
   </style>
 </head>
 <body>
-<div id="container">
-<h1>Grammar test</h1>
-<div align="center">
-  <span id='mode'></span><br>
-  <button type="button" id="editbutton">Edit</button>
-  <button type="button" id="deletebutton">Delete</button>
-  <button type="button" id="bfpbutton">Brute Force Parse</button>
-  <button type="button" id="convertRLGbutton">Convert RLG to FA</button>
-  <button type="button" id="convertCFGbutton">Convert CFG to NPDA</button>
-  <button type="button" id="backbutton">Back</button>
-  
-  <div id="transformations">
-    <button type="button" id="lambdabutton">Remove &lambda;-Productions</button>
-    <button type="button" id="unitbutton">Remove Unit-Productions</button>
-    <button type="button" id="uselessbutton">Remove Useless Productions</button>
+  <div id="container">
+    <h1>Grammar test</h1>
+    <div align="center">
+      <span id='mode'></span><br>
+      <button type="button" id="editbutton">Edit</button>
+      <button type="button" id="deletebutton">Delete</button>
+      <button type="button" id="bfpbutton">Brute Force Parse</button>
+      <button type="button" id="convertRLGbutton">Convert RLG to FA</button>
+      <button type="button" id="convertCFGbutton">Convert CFG to NPDA</button>
+      <button type="button" id="backbutton">Back</button>
+      
+      <div id="transformations">
+        <button type="button" id="lambdabutton">Remove &lambda;-Productions</button>
+        <button type="button" id="unitbutton">Remove Unit-Productions</button>
+        <button type="button" id="uselessbutton">Remove Useless Productions</button><br>
+        <button type="button" id="chomskybutton">Convert CFG to Chomsky Normal Form</button>
+      </div>
+    </div>
+    <div id="av">
+      <div class="jsavcontrols">  
+      </div>
+      <p align="center" class="jsavoutput jsavline"></p>
+    </div>
   </div>
-</div>
-<div id="av">
-  <div class="jsavcontrols">  
-  </div>
-  <p align="center" class="jsavoutput jsavline"></p>
-</div>
-</div>
 
-<script
-        src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
-</script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-<script src="../../../JSAV/lib/raphael.js"></script>
-<script src="../../../JSAV/lib/jquery.transit.js"></script>
-<script src="../../../JSAV/build/JSAV.js"></script>
-<script src="../resources/underscore-min.js"></script>
-<script src="grammarTest.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+  <script src="../../../JSAV/lib/raphael.js"></script>
+  <script src="../../../JSAV/lib/jquery.transit.js"></script>
+  <script src="../../../JSAV/build/JSAV.js"></script>
+  <script src="../resources/underscore-min.js"></script>
+  <script src="grammarTest.js"></script>
 </body>
 </html>
