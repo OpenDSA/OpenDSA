@@ -1,33 +1,37 @@
+#preorderCON {
+  height: 500px;
+}
+
+#preorderCON .jsavoutput.jsavline {
+  height: 15px;
+}
+
+#preorderCON .jsavtree { 
+  top: 35px;
+}
+
 #inorderCON {
   height: 500px;
 }
 
-#inorderCON .jsavcode{
-  margin-top: -25px;
+#inorderCON .jsavoutput.jsavline {
+  height: 15px;
 }
 
 #inorderCON .jsavtree { 
   top: 40px;
 }
 
-#preorderCON {
-  height: 500px;
-}
-
-#preorderCON .jsavcode{
-  margin-top: -25px;
-}
-
-#preorderCON .jsavtree { 
-  top: 40px;
+#inorderCON .jsavoutput.jsavline {
+  height: 15px;
 }
 
 #postorderCON {
   height: 500px;
 }
 
-#postorderCON .jsavcode{
-  margin-top: -25px;
+#postorderCON .jsavoutput.jsavline {
+  height: 15px;
 }
 
 #postorderCON .jsavtree { 

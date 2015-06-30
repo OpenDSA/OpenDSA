@@ -26,7 +26,7 @@ $(document).ready(function () {
     av.umsg(interpret("av_visit") + node.value() + ".");
     pseudo.setCurrentLine("visit");
     btLeft += 35;
-    av.label("" + node.value(), {left: btLeft, top: 400}).show();
+    av.label("" + node.value(), {left: btLeft, top: labelTop}).show();
     av.step();
 
     //left
@@ -59,6 +59,7 @@ $(document).ready(function () {
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
   var pseudo = av.code(code);
+  var labelTop = 360;
 
   var bt = av.ds.binarytree({visible: true, nodegap: 15});
   bt.root("A");

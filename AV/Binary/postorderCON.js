@@ -41,7 +41,7 @@ $(document).ready(function () {
     pseudo.setCurrentLine("visit");
     node.addClass("thicknode");
     btLeft += 35;
-    av.label("" + node.value(), {left: btLeft, top: 400}).show();
+    av.label("" + node.value(), {left: btLeft, top: labelTop}).show();
     av.step();
 
     //finish
@@ -58,6 +58,7 @@ $(document).ready(function () {
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
   var pseudo = av.code(code);
+  var labelTop = 370;
 
   var bt = av.ds.binarytree({visible: true, nodegap: 15});
   bt.root("A");
