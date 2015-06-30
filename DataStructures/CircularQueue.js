@@ -58,11 +58,20 @@ $(document).ready(function () {
     }
   };
 
-  Circular.prototype.getvalue = function(index){
-    return this.labels[index].element.html();
-  };
+  // Return or set the value.
+  // Since setting a value must be animated, we use a helper
+  // method (_setvalue) to deal with the difference in return types
+  Circular.prototype.value = function(index, newValue) {
+    if (typeof newValue === "undefined") {
+      return this.labels[index].element.html();
+    } else {
+      this._setvalue(index, newValue);
+      return newValue;
+    }
+  }
 
-  Circular.prototype.value = JSAV.anim(function(index, newValue) {
+  // Animate setting a value
+  Circular.prototype._setvalue = JSAV.anim(function(index, newValue) {
     var oldval = this.labels[index].element.html();
     this.labels[index].element.html(newValue);
     return [index, oldval];
