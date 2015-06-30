@@ -28,7 +28,7 @@ $(document).ready(function () {
       av.umsg(interpret("av_visitleaf"));
       pseudo.setCurrentLine("visitleaf");
       btLeft += 25;
-      av.label("" + node.value(), {left: btLeft, top: 250}).show();
+      av.label("" + node.value(), {left: btLeft, top: labelTop}).show();
       av.step();
     } else {
       //is internal...visit
@@ -38,7 +38,7 @@ $(document).ready(function () {
       av.umsg(interpret("av_visitinternal"));
       pseudo.setCurrentLine("visitinternal");
       btLeft += 25;
-      av.label("" + node.value(), {left: btLeft, top: 250}).show();
+      av.label("" + node.value(), {left: btLeft, top: labelTop}).show();
       av.step();
 
       //left
@@ -72,6 +72,7 @@ $(document).ready(function () {
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
   var pseudo = av.code(code);
+  var labelTop = 260;
 
   var bt = av.ds.binarytree({visible: true, nodegap: 15});
   bt.root("-");

@@ -42,6 +42,10 @@
   height: 430px;
 }
 
+#expressionTraversalCON .jsavoutput.jsavline {
+  height: 25px;
+}
+
 #expressionTraversalCON .jsavcode {
   margin-top: 20px;
   margin-left: 350px;
@@ -49,7 +53,7 @@
 
 #expressionTraversalCON .jsavtree {
   top: -200px;
-  right: -260px;
+  left: 250px;
 }
 
 #compositeTraversalCON {

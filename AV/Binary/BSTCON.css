@@ -26,8 +26,8 @@
   height: 700px;
 }
 
-#BSTremoveCON .jsavcode{
-  margin-top: -10px;
+#BSTremoveCON .jsavoutput.jsavline {
+  height: 30px;
 }
 
 #BSTremoveCON .jsavtree { 

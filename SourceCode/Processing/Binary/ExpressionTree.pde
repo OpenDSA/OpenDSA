@@ -28,6 +28,7 @@ class VarIntlNode implements VarBinNode {
 }
 
 /** Preorder traversal */
+/* *** ODSATag: pointer based preorder *** */
 static void traverse(VarBinNode rt) {
   if (rt == null) return;          // Nothing to visit
   if (rt.isLeaf())                 // Process leaf node
@@ -38,4 +39,5 @@ static void traverse(VarBinNode rt) {
     traverse(((VarIntlNode)rt).rightchild());
   }
 }
+/* *** ODSAendTag: pointer based preorder *** */
 /* *** ODSAendTag: ExpressionTree *** */
