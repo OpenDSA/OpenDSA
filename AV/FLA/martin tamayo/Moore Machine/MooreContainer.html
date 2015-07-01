@@ -7,7 +7,7 @@
     	<link rel="stylesheet" href="../../resources/customPrompt.css" type="text/css" />
 		<base href="./MooreEditor.html" target="iframe">
 	</head>
-	<body onload="init()">
+	<body>
 		<h1>Moore Machine</h1>
 		<div id="dialogueoverlay"></div>
   		<div id="dialoguebox">
@@ -18,12 +18,12 @@
     		</div>
   		</div>
 		<p align="center" id="multipleTraversals" class="arrayPlace"></p>
-		<button onclick="displayEditor()" id="edit">Edit</button>
-		<button onclick="displayTraversals()" id="begin">Traverse</button>
-		<button onclick="save()" id="saveButton">Save</button>
-		<button type="submit" onclick="loadNewFile()">Load</button>
-		<input type="file" id="loadFile" onchange="setSaved()">
-		<iframe height="650px" width="100%" id="if" name="iframe" onload="onLoadHandler()"></iframe>
+		<button id="edit">Edit</button>
+		<button id="begin">Traverse</button>
+		<button id="saveButton">Save</button>
+		<button type="submit" id="submitButton">Load</button>
+		<input type="file" id="loadFile">
+		<iframe height="650px" width="100%" id="if" name="iframe"></iframe>
 		<div id="av" style="display:none"></div>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -47,6 +47,8 @@
 
 			var lambda = String.fromCharCode(955),
 				epsilon = String.fromCharCode(949);
+
+			init();
 		    
 		    var displayEditor = function () {
 		    	jsavArray.hide();
@@ -197,6 +199,12 @@
 				editing = true;
 				document.getElementById("if").src = "./MooreEditor.html";
 			};
+			$('#edit').click(displayEditor);
+			$('#begin').click(displayTraversals);
+			$('#saveButton').click(save);
+			$('#submitButton').click(loadNewFile);
+			$('#loadFile').change(setSaved);
+			$('#if').load(onLoadHandler);
    		</script>
    	</body>
 </html>

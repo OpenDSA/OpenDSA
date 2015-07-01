@@ -17,21 +17,21 @@
     		</div>
   		</div>
 		<div id="av" style="border:none">
-			<button onclick="undo()" id="undoButton" disabled="true">Undo</button>
-			<button onclick="redo()" id="redoButton" disabled="true">Redo</button>
-			<button onclick="addNodes()" id="editButton">Add Nodes</button>
-			<button onclick="addEdges()" id="editButton">Add Edges</button>
-			<button onclick="moveNodes()" id="editButton">Move Nodes</button>
-			<button onclick="editNodes()" id="editButton">Edit Nodes/Edges</button>
-			<button onclick="deleteNodes()" id="deleteButton">Delete Nodes/Edges</button>
+			<button id="undoButton" disabled="true">Undo</button>
+			<button id="redoButton" disabled="true">Redo</button>
+			<button id="nodeButton">Add Nodes</button>
+			<button id="edgeButton">Add Edges</button>
+			<button id="moveButton">Move Nodes</button>
+			<button id="editButton">Edit Nodes/Edges</button>
+			<button id="deleteButton">Delete Nodes/Edges</button>
 			<span id='mode'></span>
       		<p class="jsavoutput jsavline"></p>
 		</div>
-		<button onclick="g.layout()">Layout</button>
-		<button onclick="testND()">Highlight Nondeterminism</button>
-		<button onclick="testLambda()" id="lambdaButton">Highlight &lambda;-Transitions</button>
-		<button onclick="emptyString()" id="epsilonButton">&epsilon; Mode</button>
-		<div>&Sigma;: <span id='alphabet'></span><br>&Lambda;:<span id='mealyOutput'></span></div>
+		<button id="layoutButton">Layout</button>
+		<button id="ndButton">Highlight Nondeterminism</button>
+		<button id="lambdaButton">Highlight &lambda;-Transitions</button>
+		<button id="epsilonButton">&epsilon; Mode</button>
+		<div>&Sigma;: <span id='alphabet'></span><br>&Lambda;: <span id='mealyOutput'></span></div>
 		<div id='download'></div>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -118,13 +118,13 @@
       					if (symbols[j] == "&lambda;") {
         					symbols[j] = lambda;
         					if (lambda != emptystring) {
-        						$("#epsilonButton").click();
+        						emptyString();
         					}
       					}
       					else if (symbols[j] == "&epsilon;") {
       						symbols[j] = epsilon;
       						if (epsilon != emptystring) {
-      							$("#epsilonButton").click();
+      							emptyString();
       						}
       					}
     				}
@@ -137,11 +137,11 @@
 		    };
 			var graphClickHandler = function(e) {
 				if ($(".jsavgraph").hasClass("addNodes")) {
-					saveFAState();
+					saveMealyState();
 					executeAddNode(e.pageY, e.pageX);
 				} 
 				else if ($('.jsavgraph').hasClass('moveNodes') && selected != null) {
-					saveFAState();
+					saveMealyState();
 					executeMoveNode(selected, e.pageY, e.pageX);
 					
 					selected.unhighlight();
@@ -186,13 +186,13 @@
    					e.stopPropagation();
    				}
    				else if ($('.jsavgraph').hasClass('deleteNodes')) {
-   					saveFAState();
+   					saveMealyState();
    					executeDeleteNode(this);
    				}
 			};
 			var edgeClickHandler = function(e) {
 				if ($('.jsavgraph').hasClass('deleteNodes')) {
-					saveFAState();
+					saveMealyState();
 					executeDeleteEdge(this);
    				}
 			};
@@ -205,16 +205,16 @@
 				}
 			};
 			function updateNode(initial_state, node_label) {
-				saveFAState();
+				saveMealyState();
 				executeEditNode(selected, initial_state, node_label);
 			};
 			function createEdge(edge_label) {
-				saveFAState();
+				saveMealyState();
 				var edge = executeAddEdge(first, selected, edge_label);
 				$(edge._label.element).click(labelClickHandler);
 			};
 			function updateEdge(edge_label) {
-				saveFAState();
+				saveMealyState();
 				executeEditEdge(label, edge_label);
 			};
    			var updateAlphabet = function() {
@@ -315,19 +315,31 @@
 					next.g.element.removeClass('edgeSelect');
 				}
    			};
+   			var switchEmptyString = function() {
+   				saveMealyState();
+   				if(!emptyString()) {
+   					undoStack.pop();
+					if(undoStack.length == 0) {
+						document.getElementById("undoButton").disabled = true;
+					}
+   				}
+   			}
    			var emptyString = function() {
    				document.getElementById("epsilonButton").innerHTML = emptystring + " Mode";
+   				var graphChanged = false;
    				if (emptystring === lambda) {
-   					updateTransitions(epsilon);
+   					graphChanged = updateTransitions(epsilon);
    					emptystring = epsilon;
    				}
    				else {
-   					updateTransitions(lambda);
+   					graphChanged = updateTransitions(lambda);
    					emptystring = lambda;
    				}
    				document.getElementById("lambdaButton").innerHTML = "Highlight " + emptystring + "-Transitions";
+   				return graphChanged;
    			};
    			var updateTransitions = function(greekLetter) {
+   				var graphChanged = false;
    				var edges = g.edges();
 				for (var next = edges.next(); next; next = edges.next()) {
 					var weights = next.weight().split("<br>");
@@ -336,12 +348,14 @@
 						for (var j = 0; j < inputOutput.length; j++) {
 							if (inputOutput[j] === emptystring) {
 								inputOutput[j] = greekLetter;
+								graphChanged = true;
 							}
 						}
 						weights[i] = inputOutput.join(":");
 					}
 					next.weight(weights.join("<br>"));
 				}
+				return graphChanged;
    			};
    			var testND = function() {
    				removeModeClasses();
@@ -391,6 +405,10 @@
    					next.g.element.removeClass('testingLambda');
    				}
    			};
+   			var layoutGraph = function() {
+   				saveMealyState();
+   				g.layout();
+   			};
 			var save = function() {
 				var downloadData = "text/json;charset=utf-8," + encodeURIComponent(serialize(g));
 				$('#download').html('<a href="data:' + downloadData + '" target="_blank" download="data.json">download JSON</a>');
@@ -407,7 +425,7 @@
 				removeModeClasses();
 				jsav.umsg('Click on an input to trace its traversal.');
 			};
-			function saveFAState () {
+			function saveMealyState () {
 				data = serialize(g);
 				undoStack.push(data);
 				redoStack = [];
@@ -439,6 +457,17 @@
 					document.getElementById("redoButton").disabled = true;
 				}
 			};
+			$('#undoButton').click(undo);
+			$('#redoButton').click(redo);
+			$('#nodeButton').click(addNodes);
+			$('#edgeButton').click(addEdges);
+			$('#moveButton').click(moveNodes);
+			$('#editButton').click(editNodes);
+			$('#deleteButton').click(deleteNodes);
+			$('#layoutButton').click(layoutGraph);
+			$('#ndButton').click(testND);
+			$('#lambdaButton').click(testLambda);
+			$('#epsilonButton').click(switchEmptyString);
    		</script>
    	</body>
 </html>
