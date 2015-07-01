@@ -5,7 +5,8 @@
       lastRow = 8,          // index of the last visible row
       arr = new Array(20),
       m,
-      parseTable,
+      derivationTable,
+      parseTableDisplay,
       parseTree;
 
   var lambda = String.fromCharCode(955),
@@ -66,11 +67,28 @@
     // lastRow = 9;
 
     // chomsky example:
-    arr[0] = ['S', arrow, 'ABAB'];
-    arr[1] = ['A', arrow, 'Aa'];
-    arr[2] = ['A', arrow, 'a'];
-    arr[3] = ['B', arrow, 'bb'];
-    lastRow = 4;
+    // arr[0] = ['S', arrow, 'ABAB'];
+    // arr[1] = ['A', arrow, 'Aa'];
+    // arr[2] = ['A', arrow, 'a'];
+    // arr[3] = ['B', arrow, 'bb'];
+    // lastRow = 4;
+
+    // FIRST examples:
+    // arr[0] = ['S', arrow, 'BAc'];
+    // arr[1] = ['A', arrow, 'Aa'];
+    // arr[2] = ['A', arrow, 'a'];
+    // arr[3] = ['B', arrow, 'AB'];
+    // arr[4] = ['B', arrow, 'bB'];
+    // arr[5] = ['B', arrow, 'd'];
+    // lastRow = 6;
+
+    arr[0] = ['S', arrow, 'ABcC'];
+    arr[1] = ['A', arrow, 'aA'];
+    arr[2] = ['A', arrow, emptystring];
+    arr[3] = ['B', arrow, 'bbB'];
+    arr[4] = ['B', arrow, emptystring];
+    arr[5] = ['C', arrow, 'BA'];
+    lastRow = 6;
 
   }
   var init = function () {
@@ -136,31 +154,16 @@
   m = init();
   $('.jsavmatrix').addClass("editMode");
 
-  var bfParse = function() {
-    var inputString = prompt('Input string', 'aqvx');
+  // parsing
+  var bfParse = function () {
+    jsav.umsg('Parsing');
+    var inputString = prompt('Input string');
     if (inputString === null) {
       return;
     }
-    if (parseTree) {
-      parseTree.clear();
-      jsav.clear();
-      jsav = new JSAV("av");
-      m = init();
-    }
-    if (parseTable) { parseTable.clear();}
-    $(".jsavmatrix").removeClass('editMode');
-    $(".jsavmatrix").removeClass('deleteMode');
-    $("#mode").html('');
-    $('#editbutton').hide();
-    $('#deletebutton').hide();
-    $('#convertRLGbutton').hide();
-    $('#convertCFGbutton').hide();
-    $('#transformations').hide();
-    $('.jsavcontrols').show();
-    $('#backbutton').show();
-    $(m.element).css("margin-left", "50px");
-    m._arrays[lastRow].hide();
-
+    startParse();
+    $('#llbutton').hide();
+    $('#slrbutton').hide();
     var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
     var table = {};   // maps each sentential form to the rule that produces it
     var sententials = [];
@@ -190,9 +193,14 @@
     counter = 0;
     while (true) {
       counter++;
-      if (counter > 10000) {
+      if (counter > 5000) {
         console.warn(counter);
-        break;
+        var confirmed = confirm('This is taking a while. Continue?');
+        if (confirmed) {
+          counter = 0;
+        } else {
+          break;
+        }
       }
       next = sententials.pop();
       if (next === inputString) {
@@ -277,9 +285,9 @@
       }
       results.reverse();
       jsav.label('Grammar', {relativeTo: m, anchor: "center top", myAnchor: "center bottom"});
-      parseTable = new jsav.ds.matrix(results, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
-      jsav.label('Derivation Table', {relativeTo: parseTable, anchor: "center top", myAnchor: "center bottom"});
-      parseTree = new jsav.ds.tree({left: "30px", relativeTo: parseTable, anchor: "right top"});
+      derivationTable = new jsav.ds.matrix(results, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
+      jsav.label('Derivation Table', {relativeTo: derivationTable, anchor: "center top", myAnchor: "center bottom"});
+      parseTree = new jsav.ds.tree({left: "30px", relativeTo: derivationTable, anchor: "right top"});
       //console.log($('.jsavtree').width())
       jsav.label('Parse Tree', {left: "" + $('.jsavtree').width() / 2.0 + "px", relativeTo: parseTree, anchor: "center top", myAnchor: "left bottom"});
       temp = [parseTree.root(productions[0][0])];
@@ -305,7 +313,7 @@
         var temp3 = [];
         // add children
         for (var j = 0; j < p.length; j++) {
-          var par = temp2.child(j, p[j]).child(j)
+          var par = temp2.child(j, p[j]).child(j);
           if (variables.indexOf(p[j]) !== -1) {
             temp3.unshift(par);
           } else {
@@ -321,7 +329,7 @@
       parseTree.root().hide();
       parseTree.root().show({recursive: false});
       for (var i = 0; i < results.length; i++) {
-        parseTable._arrays[i].hide();
+        derivationTable._arrays[i].hide();
       }
       jsav.displayInit();
       for (var i = 0; i < results.length; i++) {
@@ -329,9 +337,9 @@
         for (var j = 0; j < m._arrays.length; j++) {
           m._arrays[j].unhighlight();
         }
-        var val = parseTable.value(i, 1);
+        var val = derivationTable.value(i, 1);
         m._arrays[table[val][0]].highlight();
-        parseTable._arrays[i].show();
+        derivationTable._arrays[i].show();
         var temp2 = displayOrder.shift();
         for (var j = 0; j < temp2.length; j++) {
           temp2[j].show({recursive: false});
@@ -349,14 +357,218 @@
     } else {
       // if string is rejected, automatically return to the editor
       jsav.umsg('"' + inputString + '" rejected');
-      $('button').show();
-      $('#transformations').show();
-      $('.jsavcontrols').hide();
-      $('#backbutton').hide();
-      $(m.element).css("margin-left", "auto");
-      m._arrays[lastRow].show();
+      endParse();
     }
   }; 
+
+  // LL(1)
+  var llParse = function () {
+    var firsts = {};
+    var follows = {};
+    var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
+    var pDict = {};
+    // a dictionary mapping left sides to right sides
+    for (var i = 0; i < productions.length; i++) {
+      if (!(productions[i][0] in pDict)) {
+        pDict[productions[i][0]] = [];
+      }
+      pDict[productions[i][0]].push(productions[i][2]);
+    }
+    var derivers = {};  // variables that derive lambda
+    var counter = 0;
+    while (removeLambdaHelper(derivers, productions)) {
+      counter++;
+      if (counter > 500) {
+        console.log(counter);
+        break;
+      }
+    };
+    var v = {};
+    var t = {};
+    for (var i = 0; i < productions.length; i++) {
+      var x = productions[i];
+      v[x[0]] = true;
+      for (var j = 0; j < x[2].length; j++) {
+        if (variables.indexOf(x[2][j]) !== -1) {
+          v[x[2][j]] = true;
+        } else if (x[2][j] !== emptystring) {
+          t[x[2][j]] = true;
+        }
+      }
+    }
+    v = Object.keys(v);
+    v.sort();
+    t = Object.keys(t);
+    t.sort();
+    t.push('$');
+
+    findFirstsAndFollows(productions, firsts, follows, v, pDict, derivers);
+    
+    var parseTable = [];
+    for (var i = 0; i < v.length; i++) {
+      var a = [];
+      for (var j = 0; j < t.length; j++) {
+        a.push("");
+      }
+      parseTable.push(a);
+    }
+    for (var i = 0; i < productions.length; i++) {
+      var pFirst = first(productions[i][2], pDict, derivers);
+      var vi = v.indexOf(productions[i][0]);
+      for (var j = 0; j < pFirst.length; j++) {
+        var ti = t.indexOf(pFirst[j]);
+        if (pFirst[j] !== emptystring && ti !== -1) {
+          if (parseTable[vi][ti] && parseTable[vi][ti] !== productions[i][2]) {
+            alert('This grammar is not LL(1)!');
+            return;
+          }
+          parseTable[vi][ti] = productions[i][2];
+        } 
+      }
+      if (pFirst.indexOf(emptystring) !== -1) {
+        //var pFollow = follow(productions[i][0]);
+        var pFollow = follows[productions[i][0]];
+        for (var j = 0; j < pFollow.length; j++) {
+          var ti = t.indexOf(pFollow[j]);
+          if (pFollow[j] !== emptystring && ti !== -1) {
+            if (parseTable[vi][ti] && parseTable[vi][ti] !== productions[i][2]) {
+              alert('This grammar is not LL(1)!');
+              return;
+            }
+            parseTable[vi][ti] = productions[i][2];
+          }
+        }
+      }
+    }
+    // for (var i = 0; i < parseTable.length; i++) {
+    //   console.log(""+parseTable[i])
+    // }
+    var pTableDisplay = [];
+    pTableDisplay.push([""].concat(t));
+    for (var i = 0; i < v.length; i++) {
+      pTableDisplay.push([v[i]].concat(parseTable[i]));
+    }
+    
+    var inputString = prompt('Input string');
+    if (inputString === null) {
+      return;
+    }
+    startParse();
+    $('#bfpbutton').hide();
+    $('#slrbutton').hide();
+    //jsav.label('Grammar', {relativeTo: m, anchor: "center top", myAnchor: "center bottom"});
+    parseTableDisplay = new jsav.ds.matrix(pTableDisplay, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
+    //jsav.label('Derivation Table', {relativeTo: derivationTable, anchor: "center top", myAnchor: "center bottom"});
+    
+    var remainingInput = inputString + '$';
+    jsav.umsg('<mark>' + remainingInput[0] + '</mark>' + remainingInput.substring(1) + ' | <mark>' + productions[0][0] + '</mark>');
+    jsav.displayInit();
+    parseTree = new jsav.ds.tree();
+    //parseTree = new jsav.ds.tree({left: "30px", relativeTo: derivationTable, anchor: "right top"});
+
+    var next;
+    var parseStack = [parseTree.root(productions[0][0])];
+
+    jsav.umsg('<mark>' + remainingInput[0] + '</mark>' + remainingInput.substring(1) + ' | ');
+    var accept = true;
+    
+    parseTree.layout();
+    counter = 0;
+    while (true) {
+      counter++;
+      if (counter > 500) {
+        console.warn(counter);
+        break;
+      }
+      next = parseStack.pop();
+      if (!next) {
+        break;
+      }
+      var vi = v.indexOf(next.value());
+      var ti = t.indexOf(remainingInput[0])
+      if (vi === -1 && next.value() !== remainingInput[0]) {
+        accept = false;
+        break;
+      }
+      jsav.step();
+      if (vi !== -1) {
+        var toAdd = parseTable[vi][ti];
+        if (!toAdd) {
+          accept = false;
+          break;
+        }
+        for (var j = 0; j < parseTableDisplay._arrays.length; j++) {
+          parseTableDisplay._arrays[j].unhighlight();
+        }
+        parseTableDisplay.highlight(vi + 1, ti + 1);
+        var temp = [];
+        for (var i = 0 ; i < toAdd.length; i++) {
+          var n = next.child(i, toAdd[i]).child(i);
+          if (v.indexOf(toAdd[i]) === -1) {
+            n.addClass('terminal');
+          }
+          if (toAdd[i] !== emptystring) {
+            temp.unshift(n);
+          }
+        }
+        parseStack = parseStack.concat(temp);
+        parseTree.layout();
+      } else if (next.value() === remainingInput[0]) {
+          remainingInput = remainingInput.substring(1);
+      } 
+      jsav.umsg('<mark>' + remainingInput[0] + '</mark>' + remainingInput.substring(1) + ' | '
+       + _.map(parseStack, function(x, k) {
+        if (k === parseStack.length - 1) {return '<mark>'+x.value()+'</mark>';} return x.value();}));
+    }
+    jsav.step();
+    if (accept && remainingInput[0] === '$' && !next) {
+      jsav.umsg('"' + inputString + '" accepted');
+    } else {
+      jsav.umsg('"' + inputString + '" rejected');
+    }
+    for (var j = 0; j < parseTableDisplay._arrays.length; j++) {
+      parseTableDisplay._arrays[j].unhighlight();
+    }
+    jsav.recorded();
+  };
+
+  var slrParse = function () {
+    alert('coming soon');
+  };
+
+  var startParse = function () {
+    if (parseTree) {
+      parseTree.clear();
+      jsav.clear();
+      jsav = new JSAV("av");
+      m = init();
+    }
+    if (derivationTable) { derivationTable.clear();}
+    if (parseTableDisplay) { parseTableDisplay.clear();}
+    $(".jsavmatrix").removeClass('editMode');
+    $(".jsavmatrix").removeClass('deleteMode');
+    $("#mode").html('');
+    $('#editbutton').hide();
+    $('#deletebutton').hide();
+    $('#convertRLGbutton').hide();
+    $('#convertCFGbutton').hide();
+    $('#transformations').hide();
+    $('.jsavcontrols').show();
+    $('#backbutton').show();
+    $(m.element).css("margin-left", "50px");
+    m._arrays[lastRow].hide();
+  };
+  var endParse = function () {
+    if (parseTree) {parseTree.clear();}
+    if (derivationTable) { derivationTable.clear();}
+    if (parseTableDisplay) { parseTableDisplay.clear();}
+    $('button').show();
+    $('#transformations').show();
+    $('.jsavcontrols').hide();
+    $('#backbutton').hide();
+    $(m.element).css("margin-left", "auto");
+    m._arrays[lastRow].show();
+  };
 
   var replaceCharAt = function (str, index, ch) {
     if (index < 0 || index > str.length - 1) {
@@ -364,6 +576,69 @@
     } else {
       return str.substring(0, index) + ch + str.substring(index + 1);
     }
+  };
+
+  var findFirstsAndFollows = function (productions, firsts, follows, v, pDict, lambdaVars) {
+    //console.log(v);
+    for (var i = 0; i < v.length; i++) {
+      firsts[v[i]] = first(v[i], pDict, lambdaVars).sort();
+    }
+    // for (var i in firsts) {
+    //   console.log(i + ":" + firsts[i]);
+    // }
+    for (var i = 0; i < v.length; i++) {
+      follows[v[i]] = follow(v[i], productions, pDict, lambdaVars).sort();
+    }
+    // console.log('follow');
+    // for (var i in follows) {
+    //   console.log(i + ":" + follows[i]);
+    // }
+  };
+  var first = function (str, pDict, lambdaVars) {
+    if (str === emptystring) {
+      return [emptystring];
+    } if (str.length === 1){
+      if (variables.indexOf(str) === -1) {
+        return [str];
+      } else {
+        var ret = [];
+        var strings = pDict[str];
+        for (var i = 0; i < strings.length; i++) {
+          if (strings[i][0] !== str) {
+            ret = _.union(ret, first(strings[i], pDict, lambdaVars));
+          }
+        }
+        return ret;
+      }
+    } else if (str.length > 1) {
+      if (!(str[0] in lambdaVars)) {
+        return first(str[0], pDict, lambdaVars);
+      } else {
+        return _.union(_.without(first(str[0], pDict, lambdaVars), emptystring), first(str.substring(1), pDict, lambdaVars));
+      }
+    }
+  };
+
+  var follow = function (str, productions, pDict, lambdaVars) {
+    var ret = [];
+    if (str === productions[0][0]) {
+      ret.push('$');
+    }
+    for (var i = 0; i < productions.length; i++) {
+      var p = productions[i][2] + ['$'];
+      for (var j = 0; j < p.length - 1; j++) {
+        if (p[j] === str) {
+          var nextSymbol = first(p.substring(j + 1), pDict, lambdaVars);
+          ret = _.union(ret, _.without(nextSymbol, emptystring));
+          if (j === p.length - 2 || nextSymbol.indexOf(emptystring) !== -1) {
+            if (productions[i][0] !== str) {
+              ret = _.union(ret, follow(productions[i][0], productions, pDict, lambdaVars));
+            }
+          }
+        }
+      }
+    }
+    return ret;
   };
 
   var getLeaves = function(node) {
@@ -596,6 +871,11 @@
       var x = productions[i];
       x[2] = x[2].split("");
       v[x[0]] = true;
+      for (var j = 0; j < x[2].length; j++) {
+        if (variables.indexOf(x[2][j]) !== -1) {
+          v[x[2][j]] = true;
+        }
+      }
     }
     var tempVars = [];
     var varCounter = 1;
@@ -718,7 +998,8 @@
       jsav = new JSAV("av");
       m = init();
     }
-    if (parseTable) { parseTable.clear();}
+    if (derivationTable) { derivationTable.clear();}
+    if (parseTableDisplay) { parseTableDisplay.clear();}
     jsav.umsg('');
     $('button').show();
     $('#transformations').show();
@@ -729,6 +1010,8 @@
   $('#editbutton').click(editMode);
   $('#deletebutton').click(deleteMode);
   $('#bfpbutton').click(bfParse);
+  $('#llbutton').click(llParse);
+  $('#slrbutton').click(slrParse);
   $('#lambdabutton').click(removeLambda);
   $('#unitbutton').click(removeUnit);
   $('#uselessbutton').click(removeUseless);
