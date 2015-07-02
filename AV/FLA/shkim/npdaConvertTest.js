@@ -546,7 +546,7 @@
 		var newVariables = [];
 		var nodes = g.nodes();
 		var edges = g.edges();
-		var arrow = "&rarr;";
+		var arrow = String.fromCharCode(8594);
 		var converted = [];
 		var finalState;
 		var allTransitions = checkFormat();

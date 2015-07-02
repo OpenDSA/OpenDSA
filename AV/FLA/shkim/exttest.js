@@ -434,7 +434,7 @@
 		var s = g.initial;
 		var newVariables = [s];
 		var nodes = g.nodes();
-		var arrow = "&rarr;";
+		var arrow = String.fromCharCode(8594);
 		var converted = [];
 		if (g.nodeCount() > 26) {
 			alert('The FA must have at most 26 states to convert it into a grammar!');

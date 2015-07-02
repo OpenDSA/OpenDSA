@@ -32,10 +32,10 @@
 				window.close();
 			}
 			var arr = localStorage['grammar'].split(',');
-			var arrow = "&rarr;";
+			var arrow = String.fromCharCode(8594);
 			var jsav = new JSAV("av");
 			var converted = _.map(localStorage['grammar'].split(','), function(x) { 
-		    	var d = x.split("&rarr;")
+		    	var d = x.split(arrow);
 		    	d.splice(1, 0, arrow);
 		    	return d;
 		    });

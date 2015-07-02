@@ -189,7 +189,7 @@
 	if (!localStorage['grammar']) {
 		window.close();
 	}
-	grammar = _.map(localStorage['grammar'].split(','), function(x) {return x.split("&rarr;");});
+	grammar = _.map(localStorage['grammar'].split(','), function(x) {return x.split(String.fromCharCode(8594));});
 	var g = initGraph({layout: "automatic"});
 	//var g = initGraph({layout: "automatic", emptystring: epsilon});
 	g.layout();
