@@ -9,7 +9,7 @@
    :satisfies: doubly linked list
    :topic: Lists
 
-.. odsalink:: AV/List/dlist.css
+.. odsalink:: DataStructures/DoubleLinkList.css
 .. odsalink:: AV/List/dlistCON.css
 
 
@@ -137,7 +137,7 @@ XORing the outline of a box around it.
 XORing the box outline a second time restores the original
 contents of the screen.
 
-.. odsascript:: AV/List/dlist.js
+.. odsascript:: DataStructures/DoubleLinkList.js
 .. odsascript:: AV/List/dlistCON.js
 .. odsascript:: AV/List/dlistDiagramCON.js
 .. odsascript:: AV/List/dlistInsertCON.js

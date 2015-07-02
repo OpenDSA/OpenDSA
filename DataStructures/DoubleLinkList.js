@@ -1,6 +1,7 @@
-'use strict';
-// The code below comes from JSAV
-(function ($) {
+"use strict";
+// Doubly linked list support
+// Written by Jun Yang
+$(document).ready(function () {
   if (typeof JSAV === 'undefined') {
     return;
   }
@@ -495,4 +496,4 @@
   JSAV.ext.ds.dlist = function (options) {
     return new DList(this, options);
   };
-}(jQuery));
+});
