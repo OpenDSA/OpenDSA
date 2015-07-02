@@ -1,21 +1,23 @@
 (function ($) {
   var variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var jsav = new JSAV("av");
-  var arrow = "&rarr;",
+  var arrow = String.fromCharCode(8594),
       lastRow = 8,          // index of the last visible row
       arr = new Array(20),
       m,
       derivationTable,
       parseTableDisplay,
-      parseTree;
+      parseTree,
+      modelDFA;
 
   var lambda = String.fromCharCode(955),
       epsilon = String.fromCharCode(949),
       square = String.fromCharCode(9633),
+      dot = String.fromCharCode(183),
       emptystring = lambda;
   if (localStorage["grammar"]) {
     arr = _.map(localStorage['grammar'].split(','), function(x) { 
-      var d = x.split("&rarr;");
+      var d = x.split(String.fromCharCode(8594));
       d.splice(1, 0, arrow);
       return d;
     });
@@ -73,7 +75,7 @@
     // arr[3] = ['B', arrow, 'bb'];
     // lastRow = 4;
 
-    // FIRST examples:
+    // FIRST example:
     // arr[0] = ['S', arrow, 'BAc'];
     // arr[1] = ['A', arrow, 'Aa'];
     // arr[2] = ['A', arrow, 'a'];
@@ -82,14 +84,27 @@
     // arr[5] = ['B', arrow, 'd'];
     // lastRow = 6;
 
-    arr[0] = ['S', arrow, 'ABcC'];
-    arr[1] = ['A', arrow, 'aA'];
-    arr[2] = ['A', arrow, emptystring];
-    arr[3] = ['B', arrow, 'bbB'];
-    arr[4] = ['B', arrow, emptystring];
-    arr[5] = ['C', arrow, 'BA'];
-    lastRow = 6;
+    // LL(1) example:
+    // arr[0] = ['S', arrow, 'ABcC'];
+    // arr[1] = ['A', arrow, 'aA'];
+    // arr[2] = ['A', arrow, emptystring];
+    // arr[3] = ['B', arrow, 'bbB'];
+    // arr[4] = ['B', arrow, emptystring];
+    // arr[5] = ['C', arrow, 'BA'];
+    // lastRow = 6;
 
+    // SLR(1) examples:
+    // arr[0] = ['S', arrow, 'A'];
+    // arr[1] = ['A', arrow, 'aaA'];
+    // arr[2] = ['A', arrow, 'b'];
+    // lastRow = 3;
+
+    arr[0] = ['S', arrow, 'ABc'];
+    arr[1] = ['A', arrow, 'Aa'];
+    arr[2] = ['A', arrow, emptystring];
+    arr[3] = ['B', arrow, 'BS'];
+    arr[4] = ['B', arrow, 'b'];
+    lastRow = 5;
   }
   var init = function () {
       if (m) {
@@ -532,8 +547,313 @@
     jsav.recorded();
   };
 
+  // SLR(1)
   var slrParse = function () {
-    alert('coming soon');
+    var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
+    var v = {};
+    var t = {};
+    for (var i = 0; i < productions.length; i++) {
+      var x = productions[i];
+      v[x[0]] = true;
+      for (var j = 0; j < x[2].length; j++) {
+        if (variables.indexOf(x[2][j]) !== -1) {
+          v[x[2][j]] = true;
+        } else if (x[2][j] !== emptystring) {
+          t[x[2][j]] = true;
+        }
+      }
+    }
+    v = Object.keys(v);
+    v.sort();
+    t = Object.keys(t);
+    t.sort();
+    t.push('$');
+    var tv = t.concat(v);
+    var vt = v.concat(t);
+    var parseTable = [];
+    for (var i = 0; i < productions.length; i++) {
+      var a = [];
+      for (var j = 0; j < tv.length; j++) {
+        a.push("");
+      }
+      parseTable.push(a);
+    }
+    var inputString = prompt('Input string');
+    if (inputString === null) {
+      return;
+    }
+    startParse();
+    $("#llbutton").hide();
+    $("#bfpbutton").hide();
+
+    // build DFA to model the parsing stack
+    modelDFA = jsav.ds.fa({width: '45%', height: 440, layout: 'automatic'});
+    var sNode = modelDFA.addNode();
+    modelDFA.makeInitial(sNode);
+    sNode.stateLabel("S'"+arrow+dot+productions[0][0]);
+    var nodeStack = [sNode];
+    while (nodeStack.length > 0) {
+      var nextNode = nodeStack.pop();
+      nextNode.addClass('slrvisited');
+      var items = addClosure(nextNode.stateLabel().split('<br>'), productions);
+      nextNode.stateLabel(items.join('<br>'));
+      for (var i = 0; i < vt.length; i++) {
+        var symbol = vt[i];
+        var nextItems = addClosure(goTo(items, symbol), productions);
+        //console.log(""+nextItems);
+        if (nextItems.length > 0) {
+          var nodes = modelDFA.nodes();
+          var toNode = null;
+          for (var next = nodes.next(); next; next = nodes.next()) {
+            var curItems = next.stateLabel().split('<br>');
+            var inter = _.intersection(curItems, nextItems);
+            if (inter.length === curItems.length && inter.length === nextItems.length) {
+              toNode = next;
+            } 
+          }
+          if (!toNode) {
+            toNode = modelDFA.addNode();
+            toNode.stateLabel(nextItems.join('<br>'));
+          }
+          modelDFA.addEdge(nextNode, toNode, {weight: symbol});
+          if (!toNode.hasClass('slrvisited')) {
+            nodeStack.push(toNode);
+          }
+        }
+      }
+    }
+    var nodes = modelDFA.nodes();
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      var items = next.stateLabel().split('<br>');
+      for (var i = 0; i < items.length; i++) {
+        var r = items[i];
+        if (r[r.length - 1] === dot) {
+          next.addClass('final');
+          break;
+        }
+      }
+    }
+    modelDFA.layout();
+
+    // use DFA to generate the parse table
+    var pDict = {};
+    // a dictionary mapping left sides to right sides
+    for (var i = 0; i < productions.length; i++) {
+      if (!(productions[i][0] in pDict)) {
+        pDict[productions[i][0]] = [];
+      }
+      pDict[productions[i][0]].push(productions[i][2]);
+    }
+    var derivers = {};  // variables that derive lambda
+    var counter = 0;
+    while (removeLambdaHelper(derivers, productions)) {
+      counter++;
+      if (counter > 500) {
+        console.log(counter);
+        break;
+      }
+    };
+    // var firsts = {};
+    // for (var i = 0; i < v.length; i++) {
+    //   firsts[v[i]] = first(v[i], pDict, derivers).sort();
+    // }
+    // for (key in firsts) {
+    //   console.log(key+":"+firsts[key]);
+    // }
+    var follows = {};
+    for (var i = 0; i < v.length; i++) {
+      follows[v[i]] = follow(v[i], productions, pDict, derivers).sort();
+    }
+    // for (key in follows) {
+    //   console.log(key +":" + follows[key])
+    // }
+    pDict["S'"] = productions[0][0];
+    if (productions[0][0] in derivers) {
+      derivers["S'"] = true;
+    }
+    productions.unshift(["S'", arrow, productions[0][0]]);
+
+    nodes.reset();
+    var index = 0;
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      var row = [];
+      for (var j = 0; j < tv.length; j++) {
+        row.push("");
+      }
+      parseTable.push(row);
+      var edges = next.getOutgoing();
+      for (var i = 0; i < edges.length; i++) {
+        var w = edges[i].weight().split('<br>');
+        for (var j = 0; j < w.length; j++) {
+          var ti = t.indexOf(w[j]);
+          if (ti !== -1) {
+            parseTable[index][ti] = 's' + edges[i].end().value().substring(1);
+          } else {
+            var vi = tv.indexOf(w[j]);
+            parseTable[index][vi] = edges[i].end().value().substring(1);
+          }
+        }
+      }
+      if (next.hasClass('final')) {
+        var l = next.stateLabel().split('<br>');
+        var rItem = null;
+        var rk = null;
+        for (var i = 0; i < l.length; i++){
+          if (l[i].indexOf(dot) === l[i].length - 1) {
+            rItem = l[i].substring(0, l[i].length-1);
+            if (!rItem.split(arrow)[1]) {
+              rItem = rItem + emptystring;
+            }
+            break;
+          }
+        }
+        if (rItem.substr(0, 2) === "S'") {
+          var ti = tv.indexOf('$');
+          parseTable[index][ti] = 'acc';
+        } else {
+          for (var i = 0; i < productions.length; i++) {
+            if (productions[i].join('') === rItem) {
+              rk = i;
+              break;
+            }
+          }
+          var followSet = follows[productions[rk][0]];
+          for (var i = 0; i < followSet.length; i++) {
+            var ti = tv.indexOf(followSet[i]);
+            parseTable[index][ti] = 'r' + rk;
+          }
+        }
+      }
+      index++;
+    }
+    var pTableDisplay = [];
+    pTableDisplay.push([""].concat(tv));
+    for (var i = 0; i < modelDFA.nodeCount(); i++) {
+      pTableDisplay.push([i].concat(parseTable[i]));
+    }
+    //parseTableDisplay = new jsav.ds.matrix(pTableDisplay, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
+    parseTableDisplay = new jsav.ds.matrix(pTableDisplay);
+    parseTree = new jsav.ds.graph({layout: "layered", directed: true});
+    parseTree.element.addClass('parsetree');
+    jsav.displayInit();
+    modelDFA.hide();
+    m.hide();
+    parseTableDisplay.hide();
+    var remainingInput = inputString + '$';
+    var parseStack = [0];
+    var currentRow = 0;
+    var accept = false;
+    var displayOrder = [];
+    counter = 0;
+    while (true) {
+      counter++;
+      if (counter > 500) {
+        console.warn(counter);
+        break;
+      }
+      var lookAhead = tv.indexOf(remainingInput[0]);
+      var entry = parseTable[currentRow][lookAhead];
+      if (!entry) {
+        break;
+      } 
+      if (entry === 'acc') {
+        accept = true;
+        break;
+      }
+      if (entry[0] === 's') {
+        var term = parseTree.addNode(remainingInput[0]);
+        term.addClass('terminal');
+        parseStack.push(term);
+        displayOrder.push(term);
+        currentRow = Number(entry.substring(1));
+        parseStack.push(currentRow);
+        remainingInput = remainingInput.substring(1);
+        parseTree.layout();
+      } else if (entry[0] === 'r') {
+        var pIndex = Number(entry.substring(1));
+        var p = productions[pIndex];
+        if (p[2] === emptystring) {
+          var lNode = parseTree.addNode(emptystring);
+          lNode.addClass('terminal');
+          parseTree.layout();
+          jsav.step();
+          var par = parseTree.addNode(p[0]);
+          parseTree.addEdge(par, lNode);
+          var n = currentRow;
+        } else {
+          var par = parseTree.addNode(p[0]);
+          var childs = [];
+          for (var i = p[2].length - 1; i >= 0; i--) {
+            parseStack.pop();
+            childs.unshift(parseStack.pop());
+          }
+          for (var i = 0; i < childs.length; i++) {
+            parseTree.addEdge(par, childs[i]);
+          }
+          var n = parseStack[parseStack.length - 1];
+        }
+        //console.log(n)
+        parseStack.push(par);
+        displayOrder.push(par);
+        currentRow = parseTable[n][tv.indexOf(p[0])];
+        parseStack.push(currentRow);
+        parseTree.layout();
+      }
+      jsav.step();
+    }
+    if (accept) {
+      jsav.umsg('"' + inputString + '" accepted');
+    } else {
+      jsav.umsg('"' + inputString + '" rejected');
+    }
+    jsav.recorded();
+  };
+  var addClosure = function (items, productions) {
+    var itemsStack = [];
+    for (var i = items.length - 1; i >= 0; i--) {
+      itemsStack.push(items[i]);
+    }
+    var next = itemsStack.pop();
+    var counter = 0;
+    while (next) {
+      counter++;
+      if(counter>500) {
+        console.warn(counter);
+        break;
+      }
+      var di = next.indexOf(dot);
+      if (di !== next.length - 1 && variables.indexOf(next[di + 1]) !== -1) {
+        for (var j = 0; j < productions.length; j++) {
+          if (productions[j][0] === next[di + 1]) {
+            var r = productions[j][2];
+            if (r === emptystring) {
+              r = "";
+            }
+            var newItem = productions[j][0] + productions[j][1] + dot + r;
+            // console.log(newItem);
+            // console.log(""+itemsStack);
+            if (items.indexOf(newItem) === -1) {
+              itemsStack.unshift(newItem);
+              items.push(newItem);
+            }
+          }
+        }
+      }
+      next = itemsStack.pop();
+    }
+    return items;
+  };
+  var goTo = function (items, symbol) {
+    var newItems = [];
+    for (var i = 0; i < items.length; i++) {
+      var r = items[i];
+      for (var j = r.indexOf(arrow); j < r.length; j++) {
+        if (r[j] === symbol && r[j - 1] === dot) {
+          newItems = _.union(newItems, [r.substring(0, j - 1) + symbol + dot + r.substring(j + 1)]);
+        }
+      }
+    }
+    return newItems;
   };
 
   var startParse = function () {
@@ -545,6 +865,7 @@
     }
     if (derivationTable) { derivationTable.clear();}
     if (parseTableDisplay) { parseTableDisplay.clear();}
+    if (modelDFA) { modelDFA.clear();}
     $(".jsavmatrix").removeClass('editMode');
     $(".jsavmatrix").removeClass('deleteMode');
     $("#mode").html('');
@@ -562,6 +883,7 @@
     if (parseTree) {parseTree.clear();}
     if (derivationTable) { derivationTable.clear();}
     if (parseTableDisplay) { parseTableDisplay.clear();}
+    if (modelDFA) { modelDFA.clear();}
     $('button').show();
     $('#transformations').show();
     $('.jsavcontrols').hide();
@@ -579,7 +901,6 @@
   };
 
   var findFirstsAndFollows = function (productions, firsts, follows, v, pDict, lambdaVars) {
-    //console.log(v);
     for (var i = 0; i < v.length; i++) {
       firsts[v[i]] = first(v[i], pDict, lambdaVars).sort();
     }
@@ -595,6 +916,9 @@
     // }
   };
   var first = function (str, pDict, lambdaVars) {
+    if (!str) {
+      return [];
+    }
     if (str === emptystring) {
       return [emptystring];
     } if (str.length === 1){
@@ -606,6 +930,8 @@
         for (var i = 0; i < strings.length; i++) {
           if (strings[i][0] !== str) {
             ret = _.union(ret, first(strings[i], pDict, lambdaVars));
+          } else if (str in lambdaVars) {
+            ret = _.union(ret, first(strings[i].substring(1), pDict, lambdaVars));
           }
         }
         return ret;
@@ -618,21 +944,27 @@
       }
     }
   };
-
   var follow = function (str, productions, pDict, lambdaVars) {
     var ret = [];
     if (str === productions[0][0]) {
       ret.push('$');
     }
     for (var i = 0; i < productions.length; i++) {
-      var p = productions[i][2] + ['$'];
+      var p = productions[i][2] + '$';
       for (var j = 0; j < p.length - 1; j++) {
         if (p[j] === str) {
-          var nextSymbol = first(p.substring(j + 1), pDict, lambdaVars);
-          ret = _.union(ret, _.without(nextSymbol, emptystring));
-          if (j === p.length - 2 || nextSymbol.indexOf(emptystring) !== -1) {
+          if (j === p.length - 2) {
             if (productions[i][0] !== str) {
               ret = _.union(ret, follow(productions[i][0], productions, pDict, lambdaVars));
+            }
+          } else {
+            var nextSymbol = first(p.substring(j + 1), pDict, lambdaVars);
+            //console.log(nextSymbol);
+            ret = _.union(ret, _.without(nextSymbol, emptystring));
+            if (nextSymbol.indexOf(emptystring) !== -1) {
+              if (productions[i][0] !== str) {
+                ret = _.union(ret, follow(productions[i][0], productions, pDict, lambdaVars));
+              }
             }
           }
         }
@@ -1000,6 +1332,7 @@
     }
     if (derivationTable) { derivationTable.clear();}
     if (parseTableDisplay) { parseTableDisplay.clear();}
+    if (modelDFA) { modelDFA.clear();}
     jsav.umsg('');
     $('button').show();
     $('#transformations').show();
