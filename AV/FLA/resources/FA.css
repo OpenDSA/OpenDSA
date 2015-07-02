@@ -9,6 +9,16 @@
 .final {
 	border: 3px double;
 }
+.testingND {
+	background-color: blue;
+}
+.testingLambda {
+	stroke-width: 3;
+	stroke: red;
+}
+.edgeSelect {
+	stroke-width: 3;
+}
 .current {
 	background-color: yellow;
 }
@@ -57,14 +67,4 @@
 .jsavedgelabel {
 	cursor: pointer;
 	font-size: 1.5em;
-}
-.testingND {
-	background-color: blue;
-}
-.testingLambda {
-	stroke-width: 3;
-	stroke: red;
-}
-.edgeSelect {
-	stroke-width: 3;
 }
