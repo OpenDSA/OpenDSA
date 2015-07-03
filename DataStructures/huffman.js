@@ -267,10 +267,10 @@ $(document).ready(function () {
     var temp;
     // Looking for (only) a leaf node that matches
     if (!node.left() && !node.right()) { // Got a leaf node
-      if (rawval[rawval.length-1] === anValue) {
+      if (rawval[rawval.length - 1] === anValue) {
         return node; // Match
       } else {
-	return null; // Wrong leaf node
+        return null; // Wrong leaf node
       }
     }
     temp = findNode(node.left(), anValue);
