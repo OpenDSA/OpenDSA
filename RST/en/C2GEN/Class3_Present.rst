@@ -6,43 +6,136 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :satisfies: OpenDSA Introduction
-   :topic: Presentation
-
-Class 3: Presentation
-=====================
-
-Instructor's tools
-------------------
-
-OpenDSA has basic support to let instructors:
-
-*  create assignments
-*  track student progress (gradebook)
-
-**Caveat:** All of this is going to change by Spring 2016
-(possibly by Fall 2015).
-
-*  By then we will be implementing using LTI with integration into
-   various standard LMS sytems (first target is Canvas).
-
-For details on the current system, see:
-
-*  `Examples <http://algoviz.org/OpenDSA/instructors.html>`_
-*  `Documentation <http://opendsa.readthedocs.org/en/latest/InstructorTools.html>`_
+   :topic: Introduction
 
 
-Configuring a book instance
----------------------------
+Contributing to OpenDSA
+=======================
 
-OpenDSA textbook instances are compiled from configuration files.
+OpenDSA is an Open Source project. Many people have contributed over
+the years.
 
-*  Select written and programming language(s)
-*  Select modules
-*  Configure exercises
-*  There are some controls over whether given sections are included or
-   not.
+Fundamentally, OpenDSA has two parts: Intrastructure and Content.
 
-Look at the
-`configuration file <https://github.com/OpenDSA/OpenDSA/blob/master/config/C2GEN.json>`_
-for the book instance that you are
-looking at right now.
+*  Most contributors contribute content. Many types of content are
+   easy.
+*  Many students like to learn learn HTML5/CSS/JavaScript, and
+   contributing to OpenDSA is a good vehicle to motivate learning
+   these things.
+
+
+Editing RST
+-----------
+
+The "textual" content is written using ReStructuredText (RST).
+This is a so-called "simple markup" language, similar to what most
+wikis use.
+It is pretty easy to look at an example source file, and quickly see
+how to modify or write new content.
+
+*  `Homepage <http://docutils.sourceforge.net/rst.html>`_
+*  `Quick reference <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`_
+
+See `example <https://raw.githubusercontent.com/OpenDSA/OpenDSA/master/RST/en/C2GEN/Class1_Tour.rst>`_.
+
+Translation support
+-------------------
+
+OpenDSA provides support for generating book instances in other
+written languages, if the translations are available.
+
+*  See OpenDSA's RST file `directory structure
+   <https://github.com/OpenDSA/OpenDSA/tree/master/RST>`_
+*  Each written language gets its own directory. The subdirectory
+   structure and file names must match.
+*  `Example
+   <https://raw.githubusercontent.com/OpenDSA/OpenDSA/master/RST/fi/Sorting/Mergesort.rst>`_
+
+AVs and exercises also have a mechanism to support translation (as
+well as alternate code languages.
+This is done using a JSON file to specify the alternatives.
+
+* `Example
+  <https://github.com/OpenDSA/OpenDSA/blob/master/AV/Sorting/insertionsortAV.json>`_
+
+
+Exercises with the KA framework
+-------------------------------
+
+The Khan Academy exercise framework provides a rich mechanism for
+creating almost any exercise that you can imagine an algorithm to:
+
+*  Generate the problem instance statement
+*  Generate the model answer
+*  Provide a user interface to specify the student answer
+*  Compare the student answer to the model answer to determine if it
+   is correct.
+
+Exercises are specified with a specialized HTML markup, with
+JavaScript available for computation.
+
+A variety of simple "static" exercises, or exercises with "simple"
+forms of parameterization do not require programming expertise.
+
+Examples:
+
+*  Multiple choice question (with math), hints
+
+   `Question
+   <http://algoviz.org/OpenDSA/dev/OpenDSA/Exercises/Sorting/BinsortMCQ2.html>`_
+
+   `Source
+   <https://github.com/OpenDSA/OpenDSA/blob/master/Exercises/Sorting/BinsortMCQ2.html>`_
+
+*  Simple (text-only) "spin"
+
+   `Question
+   <http://algoviz.org/OpenDSA/dev/OpenDSA/Exercises/Sorting/MergesortMCQcost.html>`_
+
+   `Source
+   <https://github.com/OpenDSA/OpenDSA/blob/master/Exercises/Sorting/MergesortMCQcost.html>`_
+
+*  None-of-the-above distractor, simple computation
+
+   `Question
+   <http://algoviz.org/OpenDSA/dev/OpenDSA/Exercises/Sorting/ShellsortMCQ3.html>`_
+
+   `Source
+   <https://github.com/OpenDSA/OpenDSA/blob/master/Exercises/Sorting/ShellsortMCQ3.html>`_
+
+
+
+*  Summary question
+
+   `Question
+   <http://algoviz.org/OpenDSA/dev/OpenDSA/Exercises/Sorting/InssortSumm.html>`_
+
+   `Source
+   <https://github.com/OpenDSA/OpenDSA/blob/master/Exercises/Sorting/InssortSumm.html>`_
+
+
+*  More complicated computation/selection
+
+   `Question
+   <http://algoviz.org/OpenDSA/dev/OpenDSA/Exercises/Development/ODSAindex.html>`_
+
+   `Source
+   <https://github.com/OpenDSA/OpenDSA/blob/master/Exercises/Development/ODSAindex.html>`_
+
+
+*  Generating a problem instance and answer
+
+   `Question
+   <http://algoviz.org/OpenDSA/dev/OpenDSA/Exercises/Binary/TreeOverhead1.html>`_
+
+   `Source
+   <https://github.com/OpenDSA/OpenDSA/blob/master/Exercises/Binary/TreeOverhead1.html>`_
+
+
+*  Simple JSAV integration
+
+   `Question
+   <http://algoviz.org/OpenDSA/dev/OpenDSA/Exercises/Binary/Dprobs.html>`_
+
+   `Source
+   <https://github.com/OpenDSA/OpenDSA/blob/master/Exercises/Binary/Dprobs.html>`_

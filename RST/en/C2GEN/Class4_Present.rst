@@ -8,136 +8,94 @@
    :satisfies: OpenDSA Introduction
    :topic: Introduction
 
-Class 4: Presentation
-=====================
+Creating JSAV-based Visualizations and Exercises
+================================================
 
-Contributing to OpenDSA
------------------------
+JSAV
+----
 
-OpenDSA is an Open Source project. Many people have contributed over
-the years.
+*  OpenDSA visualizations and exercises written with
+   HTML5/CSS/JavaScript.
 
-Fundamentally, OpenDSA has two parts: Intrastructure and Content.
+*  To support the process, we use the JavaScript Algorithm
+   Visualization library (JSAV).
 
-*  Most contributors contribute content. Many types of content are
-   easy.
-*  Many students like to learn learn HTML5/CSS/JavaScript, and
-   contributing to OpenDSA is a good vehicle to motivate learning
-   these things.
+*  Documentation: `http://jsav.io <http://jsav.io>`_
 
+*  The library supports AV developers by providing automated layout
+   for many key data structures
 
-Editing RST
------------
+   *  Arrays (1D and 2D)
+   *  Linked Lists
+   *  Trees (General and Binary)
+   *  Graphs
+   *  Pointer objects to parts of the data structures
+   *  Code displays
+   *  Graphical primitives (based on SVG)
+   *  Simple pop-up MCQs
+   *  Proficiency exercises
 
-The "textual" content is written using ReStructuredText (RST).
-This is a so-called "simple markup" language, similar to what most
-wikis use.
-It is pretty easy to look at an example source file, and quickly see
-how to modify or write new content.
+*  Makes use of JavaScript flexibility to be extensible beyond the JSAV core
 
-*  `Homepage <http://docutils.sourceforge.net/rst.html>`_
-*  `Quick reference <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`_
+   *  BST, Red-Black Trees, Huffman Trees
+   *  Heaps: slave together an array and a tree
+   *  2-3 trees: tree nodes that are arrays
 
-See `example <https://raw.githubusercontent.com/OpenDSA/OpenDSA/master/RST/en/C2GEN/Class1_Tour.rst>`_.
+Examples
+--------
 
-Translation support
--------------------
+This section shows a series of examples to illustrate various aspects
+of AV development.
 
-OpenDSA provides support for generating book instances in other
-written languages, if the translations are available.
+A simple diagram
 
-*  See OpenDSA's RST file `directory structure
-   <https://github.com/OpenDSA/OpenDSA/tree/master/RST>`_
-*  Each written language gets its own directory. The subdirectory
-   structure and file names must match.
-*  `Example
-   <https://raw.githubusercontent.com/OpenDSA/OpenDSA/master/RST/fi/Sorting/Mergesort.rst>`_
+.. inlineav:: TOHfigCON dgm
+   :align: justify
 
-AVs and exercises also have a mechanism to support translation (as
-well as alternate code languages.
-This is done using a JSON file to specify the alternatives.
+`Source <https://github.com/OpenDSA/OpenDSA/blob/master/AV/Background/TOHfigCON.js>`_
 
-* `Example
-  <https://github.com/OpenDSA/OpenDSA/blob/master/AV/Sorting/insertionsortAV.json>`_
+A simple slideshow
 
+.. inlineav:: listADTposCON ss
+   :output: show  
 
-Exercises with the KA framework
--------------------------------
+`Source <https://github.com/OpenDSA/OpenDSA/blob/master/AV/List/listADTposCON.js>`_
 
-The Khan Academy exercise framework provides a rich mechanism for
-creating almost any exercise that you can imagine an algorithm to:
+A simple slideshow that manipulates an array
 
-*  Generate the problem instance statement
-*  Generate the model answer
-*  Provide a user interface to specify the student answer
-*  Compare the student answer to the model answer to determine if it
-   is correct.
+.. inlineav:: insertionsortS1CON ss
+   :output: show
 
-Exercises are specified with a specialized HTML markup, with
-JavaScript available for computation.
-
-A variety of simple "static" exercises, or exercises with "simple"
-forms of parameterization do not require programming expertise.
-
-Examples:
-
-*  Multiple choice question (with math), hints
-
-   `Question
-   <http://algoviz.org/OpenDSA/dev/OpenDSA/Exercises/Sorting/BinsortMCQ2.html>`_
-
-   `Source
-   <https://github.com/OpenDSA/OpenDSA/blob/master/Exercises/Sorting/BinsortMCQ2.html>`_
-
-*  Simple (text-only) "spin"
-
-   `Question
-   <http://algoviz.org/OpenDSA/dev/OpenDSA/Exercises/Sorting/MergesortMCQcost.html>`_
-
-   `Source
-   <https://github.com/OpenDSA/OpenDSA/blob/master/Exercises/Sorting/MergesortMCQcost.html>`_
-
-*  None-of-the-above distractor, simple computation
-
-   `Question
-   <http://algoviz.org/OpenDSA/dev/OpenDSA/Exercises/Sorting/ShellsortMCQ3.html>`_
-
-   `Source
-   <https://github.com/OpenDSA/OpenDSA/blob/master/Exercises/Sorting/ShellsortMCQ3.html>`_
+`Source <https://github.com/OpenDSA/OpenDSA/blob/master/AV/Sorting/insertionsortS1CON.js>`_
 
 
+A "full AV" that instruments an algorithm, code display
 
-*  Summary question
+.. avembed:: AV/Sorting/insertionsortAV.html ss
+   :showhide: none
 
-   `Question
-   <http://algoviz.org/OpenDSA/dev/OpenDSA/Exercises/Sorting/InssortSumm.html>`_
+`Source HTML <https://github.com/OpenDSA/OpenDSA/blob/master/AV/Sorting/insertionsortAV.html>`_
 
-   `Source
-   <https://github.com/OpenDSA/OpenDSA/blob/master/Exercises/Sorting/InssortSumm.html>`_
+`Source JavaScript <https://github.com/OpenDSA/OpenDSA/blob/master/AV/Sorting/insertionsortAV.js>`_
 
+A proficiency exercise
 
-*  More complicated computation/selection
+.. avembed:: AV/Binary/BSTsearchPRO.html ss
+   :showhide: none
 
-   `Question
-   <http://algoviz.org/OpenDSA/dev/OpenDSA/Exercises/Development/ODSAindex.html>`_
+`Source HTML <https://github.com/OpenDSA/OpenDSA/blob/master/AV/Binary/BSTsearchPRO.html>`_
 
-   `Source
-   <https://github.com/OpenDSA/OpenDSA/blob/master/Exercises/Development/ODSAindex.html>`_
+`Source JavaScript <https://github.com/OpenDSA/OpenDSA/blob/master/AV/Binary/BSTsearchPRO.js>`_
 
+More complicated proficiency exercise
 
-*  Generating a problem instance and answer
+.. avembed:: AV/Sorting/shellsortPRO.html ss
+   :showhide: none
 
-   `Question
-   <http://algoviz.org/OpenDSA/dev/OpenDSA/Exercises/Binary/TreeOverhead1.html>`_
+`Source HTML <https://github.com/OpenDSA/OpenDSA/blob/master/AV/Sorting/shellsortPRO.html>`_
 
-   `Source
-   <https://github.com/OpenDSA/OpenDSA/blob/master/Exercises/Binary/TreeOverhead1.html>`_
+`Source JavaScript <https://github.com/OpenDSA/OpenDSA/blob/master/AV/Sorting/shellsortPRO.js>`_
 
-
-*  Simple JSAV integration
-
-   `Question
-   <http://algoviz.org/OpenDSA/dev/OpenDSA/Exercises/Binary/Dprobs.html>`_
-
-   `Source
-   <https://github.com/OpenDSA/OpenDSA/blob/master/Exercises/Binary/Dprobs.html>`_
+.. odsascript:: AV/Background/TOHfigCON.js
+.. odsascript:: AV/List/listADTposCON.js
+.. odsascript:: AV/Sorting/insertionsortS1CON.js

@@ -8,28 +8,14 @@
    :satisfies: OpenDSA Introduction
    :topic: Introduction
 
-Class 1: Introduction
-=====================
+Introduction
+============
 
-Administrivia
--------------
+Our first presentation is meant to introduce OpenDSA to those who are
+not familiar with its features.
+The presentation can be found at
+`http://screencast-o-matic.com/watch/co1uY4f31u <http://screencast-o-matic.com/watch/co1uY4f31u>`_
 
-*  The C2GEN folks would like for you to fill out the pre-survey:
-   `https://www.surveymonkey.com/s/SJVM82H <https://www.surveymonkey.com/s/SJVM82H>`_
-*  C2GEN course page: http://www.c2gen.org/namaste-course/integrating-the-etextbook-truly-interactive-textbooks-for-computer-science-education/
-*  The class will be conducted using Adobe Connect.
-
-   *  Log in at: https://connect.unl.edu/active-ebook/
-   *  Be sure to test this before the first class
-
-Overview
---------
-
-Today I will talk about what OpenDSA is:
-
-* A collection of materials
-* That can be compiled into book instances
-* Visualization + Exercises (automatically assessed)
-* This is ideal for Data Structures and Algorithms (DSA)
-* Works for other areas of CS (FLA, PL materials in development)
-* Potentially useful in other domains (most obviously math & stat)
+Once you have played through the presentation (or at least reviewed
+the material on the following page), we encourage you to work through
+the assignment that follows.

@@ -8,10 +8,18 @@
    :satisfies: OpenDSA Introduction
    :topic: Introduction
 
-Class 3: Introduction
-=====================
+Introduction
+============
 
-Today we are going to talk about two things:
+This presentation introduces easy ways that you can contribute to OpenDSA.
 
-* Instructor's tools
-* Configuring a book instance (from existing materials)
+* Editing RST
+* Translation support
+* Making simple questions with the Khan Academy Framework
+
+The presentation can be found at
+`http://screencast-o-matic.com/watch/co1uY4f31u <http://screencast-o-matic.com/watch/co1uY4f31u>`_
+
+Once you have played through the presentation (or at least reviewed
+the material on the following page), we encourage you to work through
+the assignment that follows.

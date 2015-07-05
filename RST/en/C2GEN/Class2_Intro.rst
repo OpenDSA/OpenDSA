@@ -8,12 +8,22 @@
    :satisfies: OpenDSA Introduction
    :topic: Introduction
 
-Class 2: Introduction
-=====================
+Introduction
+============
 
-Today we are going to talk about how OpenDSA has been used in classes.
+Our second presentation is aimed at instructors who want to use
+OpenDSA for their class.
+The presentation can be found at
+`http://screencast-o-matic.com/watch/co1uY4f31u <http://screencast-o-matic.com/watch/co1uY4f31u>`_
 
-* Where it has been used
-* Support for various pedagogical models
-* Log analysis
-* Some things that we have learned from our log analysis
+Once you have played through the presentation (or at least reviewed
+the material on the following page), we encourage you to work through
+the assignment that follows.
+
+Today we are going to talk about the following:
+
+* Instructor's tools
+* Configuring a book instance (from existing materials)
+* Some examples of where OpenDSA has been used in classes
+* Log analysis and examples of things that we have learned from our
+  log analysis

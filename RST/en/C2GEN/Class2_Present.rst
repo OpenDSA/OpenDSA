@@ -11,6 +11,42 @@
 Class 2: Presentation
 =====================
 
+Instructor's tools
+------------------
+
+OpenDSA has basic support to let instructors:
+
+*  create assignments
+*  track student progress (gradebook)
+
+**Caveat:** All of this is going to change by Spring 2016
+(possibly by Fall 2015).
+
+*  By then we will be implementing using LTI with integration into
+   various standard LMS sytems (first target is Canvas).
+
+For details on the current system, see:
+
+*  `Examples <http://algoviz.org/OpenDSA/instructors.html>`_
+*  `Documentation <http://opendsa.readthedocs.org/en/latest/InstructorTools.html>`_
+
+
+Configuring a book instance
+---------------------------
+
+OpenDSA textbook instances are compiled from configuration files.
+
+*  Select written and programming language(s)
+*  Select modules
+*  Configure exercises
+*  There are some controls over whether given sections are included or
+   not.
+
+Look at the
+`configuration file <https://github.com/OpenDSA/OpenDSA/blob/master/config/C2GEN.json>`_
+for the book instance that you are
+looking at right now.
+
 OpenDSA Classroom Use
 ---------------------
 
@@ -33,41 +69,16 @@ OpenDSA Classroom Use
 
    * Spring 2015, 60 students (NP Completeness)
 
-*  University of Alexandria, Egypt CS3:
-
-   * Spring 2013, 25 students
-
-*  Beloit College CS3:
-
-   *  Spring 2014, Spring 2015: 30 students
-
-*  New York University CS2:
-
-   *  Spring 2014: 80 students
-
-*  Aalto University, Finland CS3:
-
-   *  Spring 2013, Fall 2014
-
-*  UTEP CS3
-
-   *  Fall 2014, 50 students
-
-*  Linkoping, Sweden CS3:
-
-   *  Fall 2014, 130 students
-
-*  Florida International University CS2/3
-
-   *  Fall 2014, 80 students
-
-*  Valparaiso U CS3
-
-   *  Spring 2015, 30 students
-
-*  Christopher Newport U CS3
-
-   *  Spring 2015, 70 students
+*  Other schools where OpenDSA has been used in 2014 and 2015:
+   University of Alexandria, Egypt, 
+   Beloit College,
+   New York University,
+   Aalto University, Finland,
+   University of Texas, El Paso,
+   Linkoping, Sweden,
+   Florida International University,
+   Valparaiso University,
+   Christopher Newport University.
 
 
 Log Data Collection and Results

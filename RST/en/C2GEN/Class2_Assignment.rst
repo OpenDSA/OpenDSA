@@ -8,11 +8,19 @@
    :satisfies: OpenDSA Introduction
    :topic: Introduction
 
-Class 2: Do On Your Own
-=======================
+To Do On Your Own
+=================
 
 *  Create a "syllabus" for a course that you might teach using OpenDSA
 
    *  List in detail the content to cover
    *  For each subtopic, indicate where the content will come from
    *  List what visualizations and exercises will need to be developed
+
+*  Create a configuration file for your proposed course
+
+   *  Copy one of the existing configurations
+   *  Modify it to make use of any existing materials that you want
+   *  Create placeholder files for missing sections
+   *  Modify the Makefile
+   *  Compile

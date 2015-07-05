@@ -8,12 +8,14 @@
    :satisfies: OpenDSA Introduction
    :topic: Introduction
 
-Class 4: Introduction
-=====================
+Introduction
+============
 
-Today we are going to introduce more about content development:
+Our fourth and final presentation is about creating JSAV-based visualizations.
 
-* Easy contributions
-* Editing RST
-* Translation support
-* Making MCQs, etc (KA)
+The presentation can be found at
+`http://screencast-o-matic.com/watch/co1uY4f31u <http://screencast-o-matic.com/watch/co1uY4f31u>`_
+
+Once you have played through the presentation (or at least reviewed
+the material on the following page), we encourage you to work through
+the assignment that follows.

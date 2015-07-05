@@ -1,5 +1,5 @@
 {
-  "title": "C2GEN: OpenDSA, Summer 2015",
+  "title": "Integrating the eTextbook: Truly Interactive Textbooks for Computer Science Education",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
@@ -20,13 +20,13 @@
     "JXOP-debug": "true"
   },
   "chapters": {
-    "Preface": {
-      "Intro": {
-        "long_name": "How to Use this System",
+    "Introduction": {
+      "C2GEN/IntroC2GEN": {
+        "long_name": "Course Introduction",
         "exercises": {}
       }
     },
-    "Class 1: June 8": {
+    "A Guided Tour of OpenDSA": {
       "C2GEN/Class1_Intro": {
         "long_name": "Introduction",
         "exercises": {}
@@ -83,10 +83,6 @@
             "threshold": 1
           }
         }
-      },
-      "C2GEN/Class1_Discuss": {
-        "long_name": "Today's Discussion",
-        "exercises": {}
       },
       "C2GEN/Class1_Assignment": {
         "long_name": "Class 1: Assignment",
@@ -238,7 +234,7 @@
         }
       }
     },
-    "Class 2: June 10": {
+    "Instructor's Tools and Classroom Use": {
       "C2GEN/Class2_Intro": {
         "long_name": "Introduction",
         "exercises": {}
@@ -247,16 +243,12 @@
         "long_name": "Presentation",
         "exercises": {}
       },
-      "C2GEN/Class2_Discuss": {
-        "long_name": "Today's Discussion",
-        "exercises": {}
-      },
       "C2GEN/Class2_Assignment": {
-        "long_name": "Class 2: Assignment",
+        "long_name": "Assignment",
         "exercises": {}
       }
     },
-    "Class 3: June 12": {
+    "Introduction to Contributing to OpenDSA": {
       "C2GEN/Class3_Intro": {
         "long_name": "Introduction",
         "exercises": {}
@@ -265,16 +257,16 @@
         "long_name": "Presentation",
         "exercises": {}
       },
-      "C2GEN/Class3_Discuss": {
-        "long_name": "Today's Discussion",
+      "C2GEN/Class3_Starting": {
+        "long_name": "Getting Started",
         "exercises": {}
       },
       "C2GEN/Class3_Assignment": {
-        "long_name": "Class 3: Assignment",
+        "long_name": "Assignment",
         "exercises": {}
       }
     },
-    "Class 4: June 15": {
+    "Creating OpenDSA Visualizations": {
       "C2GEN/Class4_Intro": {
         "long_name": "Introduction",
         "exercises": {}
@@ -283,30 +275,8 @@
         "long_name": "Presentation",
         "exercises": {}
       },
-      "C2GEN/Class4_Discuss": {
-        "long_name": "Today's Discussion",
-        "exercises": {}
-      },
       "C2GEN/Class4_Assignment": {
-        "long_name": "Class 4: Assignment",
-        "exercises": {}
-      }
-    },
-    "Class 5: June 17": {
-      "C2GEN/Class5_Intro": {
-        "long_name": "Introduction",
-        "exercises": {}
-      },
-      "C2GEN/Class5_Present": {
-        "long_name": "Presentation",
-        "exercises": {}
-      },
-      "C2GEN/Class5_Discuss": {
-        "long_name": "Today's Discussion",
-        "exercises": {}
-      },
-      "C2GEN/Class5_Assignment": {
-        "long_name": "Class 5: Assignment",
+        "long_name": "Assignment",
         "exercises": {}
       }
     },

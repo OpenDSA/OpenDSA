@@ -8,8 +8,8 @@
    :satisfies: OpenDSA Introduction
    :topic: Introduction
 
-Class 1: Do On Your Own
-=======================
+To Do On Your Own
+=================
 
 *  Go through at least one of the following OpenDSA modules:
 

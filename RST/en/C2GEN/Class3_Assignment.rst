@@ -8,13 +8,15 @@
    :satisfies: OpenDSA Introduction
    :topic: Introduction
 
-Class 3: Do On Your Own
-=======================
+To Do On Your Own
+=================
 
-*  Create a configuration file for your proposed course
-
-   *  Copy one of the existing configurations
-   *  Modify it to make use of any existing materials that you want
-   *  Create placeholder files for missing sections
-   *  Modify the Makefile
-   *  Compile
+*  Wrap up any remaining installation issues that you might have
+*  Pick an existing RST file, and work on editing it to make
+   changes that will make it a better fit for your class
+*  Create some simple questions using the Khan Academy Framework, and
+   add them to your edited RST file.
+*  Compile and view your results. Remember: You have to view it
+   through a web server, not just looking at the files locally on your
+   browser. So look at and run the "WebServer" script in the OpenDSA
+   repository.
