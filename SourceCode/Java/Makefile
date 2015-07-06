@@ -3,7 +3,7 @@ JAVA= java
 CFLAGS= -Xlint
 RFLAGS= 
 
-all: Demo Misc Lists Sorting Searching
+all: Demo Misc Lists Binary Sorting Searching
 
 clean:
 	-rm -rf build
@@ -120,6 +120,37 @@ build/QueueTest/success: Lists/Queue.java Lists/AQueue.java Lists/Link.java List
 	cd build/QueueTest; \
 	javac $(CFLAGS) QueueTest.java; \
 	$(JAVA) $(RFLAGS) QueueTest
+
+Binary: Traverse BST
+
+Traverse: build/Traverse/success
+
+build/Traverse/success: Binary/BinNode.java Binary/BSTNode.java Binary/Traverse1.java Binary/checkBST.java Binary/Preorder.java Binary/Traverse.java Utils/KVPair.java
+	@echo "Traversal Test"
+	-@rm -rf build/Traverse
+	@mkdir build/Traverse
+	@cp Binary/BinNode.java build/Traverse
+	@cp Binary/BSTNode.java build/Traverse
+	@cp Utils/KVPair.java build/Traverse
+	@cat Binary/Traverse1.java Binary/checkBST.java Binary/Preorder.java Binary/Traverse.java > build/Traverse/Traverse.java
+	cd build/Traverse; \
+	javac $(CFLAGS) Traverse.java; \
+	$(JAVA) $(RFLAGS) Traverse
+
+BST: build/BSTTest/success
+
+build/BSTTest/success: Binary/BST.java Binary/BSTTest1.java Binary/checkBST.java Binary/Preorder.java Binary/BSTTest.java Binary/BSTNode.java Binary/BinNode.java Utils/Permute.java Utils/Swap.java Binary/Traverse.java Utils/KVPair.java
+	@echo "BST Test"
+	-@rm -rf build/BSTTest
+	@mkdir build/BSTTest
+	@cp Binary/BST.java build/BSTTest
+	@cp Binary/BSTNode.java build/BSTTest
+	@cp Binary/BinNode.java build/BSTTest
+	@cat Binary/BSTTest1.java Utils/Permute.java Utils/Swap.java Binary/checkBST.java Binary/Preorder.java Binary/BSTTest.java > build/BSTTest/BSTTest.java
+	@cp Utils/KVPair.java build/BSTTest
+	cd build/BSTTest; \
+	javac $(CFLAGS) BSTTest.java; \
+	$(JAVA) $(RFLAGS) BSTTest
 
 
 Sorting: Inssort Bubblesort Selsort

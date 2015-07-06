@@ -764,10 +764,6 @@
             "threshold": 5
           }
         }
-      },
-      "Design/Dictionary": {
-        "long_name": "The Dictionary ADT",
-        "exercises": {}
       }
     },
     "Binary Trees": {
@@ -833,17 +829,6 @@
           }
         }
       },
-      "Binary/BinaryTreeImpl": {
-        "long_name": "Full Binary Tree Node Implementations",
-        "exercises": {
-          "expressionTraversalCON": {
-            "long_name": "Expression Tree Traversal Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          }
-        }
-      },
       "Binary/BST": {
         "long_name": "Binary Search Trees",
         "exercises": {
@@ -893,10 +878,6 @@
             "threshold": 0.90
           }
         }
-      },
-      "Binary/BSTDict": {
-        "long_name": "Dictionary Implementation with BST",
-        "exercises": {}
       }
     },
     "Sorting": {

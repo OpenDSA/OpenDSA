@@ -25,6 +25,34 @@
          "visit": 5,
          "end": 6
       }
+    },
+    "java": {
+      "url": "../../../SourceCode/Java/Binary/Traverse.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: postorder *** */",
+      "endBefore": "/* *** ODSAendTag: postorder *** */",
+      "tags": {
+         "sig": 1,
+         "checknull": 2,
+         "visitleft": 3,
+         "visitright": 4,
+         "visit": 5,
+         "end": 6
+      }
+    },
+    "java_generic": {
+      "url": "../../../SourceCode/Java_Generic/Binary/Traverse.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: postorder *** */",
+      "endBefore": "/* *** ODSAendTag: postorder *** */",
+      "tags": {
+         "sig": 1,
+         "checknull": 2,
+         "visitleft": 3,
+         "visitright": 4,
+         "visit": 5,
+         "end": 6
+      }
     }
   }
 }

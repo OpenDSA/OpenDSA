@@ -4,9 +4,7 @@
   "code_dir": "SourceCode/",
   "lang": "en",
   "code_lang": {
-    "Java_Generic": { "ext":["java"], "label":"Java (Generic)","lang":"java"},
-    "Java": { "ext":["java"], "label":"Java", "lang":"java"},
-    "Processing": { "ext":["pde"], "label":"Processing","lang":"java"}
+    "Java_Generic": { "ext":["java"], "label":"Java (Generic)","lang":"java"}
   },
   "module_origin": "http://algoviz.org",
   "exercise_server": "https://opendsa.cc.vt.edu/",
@@ -995,21 +993,6 @@
           }
         }
       },
-      "Binary/BinaryTreeImpl": {
-        "long_name": "Full Binary Tree Node Implementations",
-        "exercises": {
-          "expressionTraversalCON": {
-            "long_name": "Expression Tree Traversal Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          }
-        }
-      },
-      "Design/Dictionary": {
-        "long_name": "The Dictionary ADT",
-        "exercises": {}
-      },
       "Binary/BST": {
         "long_name": "Binary Search Trees",
         "exercises": {
@@ -1059,10 +1042,6 @@
             "threshold": 0.90
           }
         }
-      },
-      "Binary/BSTDict": {
-        "long_name": "Dictionary Implementation with BST",
-        "exercises": {}
       }
     },
     "Appendix": {

@@ -53,6 +53,58 @@
         "endBefore": "/* *** ODSAendTag: levelorder *** */",
         "tags": {}
       }
+    },
+    "java": {
+      "inorder": {
+        "url": "../../SourceCode/Java/Binary/Traverse.java",
+        "startAfter": "/* *** ODSATag: inorder *** */",
+        "endBefore": "/* *** ODSAendTag: inorder *** */",
+        "tags": {}
+      },
+      "preorder": {
+        "url": "../../SourceCode/Java/Binary/Preorder.java",
+        "startAfter": "/* *** ODSATag: preorder *** */",
+        "endBefore": "/* *** ODSAendTag: preorder *** */",
+        "tags": {}
+      },
+      "postorder": {
+        "url": "../../SourceCode/Java/Binary/Traverse.java",
+        "startAfter": "/* *** ODSATag: postorder *** */",
+        "endBefore": "/* *** ODSAendTag: postorder *** */",
+        "tags": {}
+      },
+      "levelorder": {
+        "url": "../../SourceCode/Java/Binary/Traverse.java",
+        "startAfter": "/* *** ODSATag: levelorder *** */",
+        "endBefore": "/* *** ODSAendTag: levelorder *** */",
+        "tags": {}
+      }
+    },
+    "java_generic": {
+      "inorder": {
+        "url": "../../SourceCode/Java_Generic/Binary/Traverse.java",
+        "startAfter": "/* *** ODSATag: inorder *** */",
+        "endBefore": "/* *** ODSAendTag: inorder *** */",
+        "tags": {}
+      },
+      "preorder": {
+        "url": "../../SourceCode/Java_Generic/Binary/Traverse.java",
+        "startAfter": "/* *** ODSATag: preorder *** */",
+        "endBefore": "/* *** ODSAendTag: preorder *** */",
+        "tags": {}
+      },
+      "postorder": {
+        "url": "../../SourceCode/Java_Generic/Binary/Traverse.java",
+        "startAfter": "/* *** ODSATag: postorder *** */",
+        "endBefore": "/* *** ODSAendTag: postorder *** */",
+        "tags": {}
+      },
+      "levelorder": {
+        "url": "../../SourceCode/Java_Generic/Binary/Traverse.java",
+        "startAfter": "/* *** ODSATag: levelorder *** */",
+        "endBefore": "/* *** ODSAendTag: levelorder *** */",
+        "tags": {}
+      }
     }
   }
 }

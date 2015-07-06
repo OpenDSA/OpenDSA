@@ -10,9 +10,9 @@
 PROCESS = ~/processing-2.0b9/processing-java
 
 # Use this one on Linux
-BUILD = build
+#BUILD = build
 # On Windows, I can't make it work without an absolute path
-# BUILD = /c/Cliff/OpenDSA/SourceCode/Processing/build
+BUILD = /c/Cliff/OpenDSA/SourceCode/Processing/build
 
 # Run this to test the code for errors
 all: Demo Misc Lists Design Binary General Sorting Graphs
@@ -189,7 +189,7 @@ Binary: Traverse ExpTree ExpTreeC BST BSTDict Minheap Maxheap Huffman
 
 Traverse: build/Traverse/success
 
-build/Traverse/success: Binary/BinNode.pde Binary/BSTNode.pde Binary/Traverse.pde Binary/Preorder.pde Utils/KVPair.pde Binary/checkBST.pde
+build/Traverse/success: Binary/BinNode.pde Binary/BSTNode.pde Binary/Traverse.pde Utils/KVPair.pde
 	@echo "Traversal Test"
 	-@rm -rf build/Traverse
 	@mkdir build/Traverse
@@ -197,8 +197,6 @@ build/Traverse/success: Binary/BinNode.pde Binary/BSTNode.pde Binary/Traverse.pd
 	@cp Binary/BSTNode.pde build/Traverse
 	@cp Utils/KVPair.pde build/Traverse
 	@cp Binary/Traverse.pde build/Traverse
-	@cp Binary/Preorder.pde build/Traverse
-	@cp Binary/checkBST.pde build/Traverse
 	@$(PROCESS) --run --sketch="$(BUILD)/Traverse" --output="$(BUILD)/build" --force
 
 ExpTree: build/ExpTree/success
