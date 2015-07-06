@@ -1,4 +1,6 @@
-function TraversePrompt() {
+function TraversePrompt(func) {
+    var traverseFunction = func;
+
     this.render = function() {
         var winW = window.innerWidth;
         var winH = window.innerHeight;
@@ -24,7 +26,7 @@ function TraversePrompt() {
         for (var i = 0; i < x.length; i++) {
             values.push(x[i].value);
         }
-        window["traverseInputs"](values);
+        traverseFunction(values);
         this.goback();
     }
     addNewInput = function() {
@@ -60,7 +62,9 @@ function TraversePrompt() {
     }
 }
 
-function NodePrompt() {
+function NodePrompt(func) {
+    var nodeFunction = func;
+
     this.render = function(value, is, fs, lab) {
         var winW = window.innerWidth;
         var winH = window.innerHeight;
@@ -95,12 +99,15 @@ function NodePrompt() {
         var initial_state = document.getElementById('initial_state').checked;
         var final_state = document.getElementById('final_state').checked;
         var node_label = document.getElementById('label').value;
-        window["updateNode"](initial_state, final_state, node_label);
+        nodeFunction(initial_state, final_state, node_label);
         this.terminate();
     }
 }
 
-function EdgePrompt() {
+function EdgePrompt(func, nostr) {
+    var edgeFunction = func;
+    var emptystr = nostr;
+
     this.render = function(values) {
         var winW = window.innerWidth;
         var winH = window.innerHeight;
@@ -112,19 +119,18 @@ function EdgePrompt() {
         dialoguebox.style.top = "100px";
         dialoguebox.style.display = "block";
         document.getElementById('dialogueboxbody').innerHTML = 'Transition: <input class="newedge" id="transition"> <button onclick="deleteEdge(0)">Delete Transition</button>';
+        document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="addNewWeight()">Add New Transition</button> <button onclick="addEdge()">Done</button> <button onclick="end()">Cancel</button>';
         if (!values) {
             document.getElementById('dialogueboxhead').innerHTML = "Create Edge:";
-            document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="addNewWeight()">Add New Transition</button> <button onclick="addEdge()">Done</button> <button onclick="end()">Cancel</button>';
         }
         else {
             document.getElementById('dialogueboxhead').innerHTML = "Edit Edge:";
-            document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="addNewWeight()">Add New Transition</button> <button onclick="changeEdge()">Done</button> <button onclick="end()">Cancel</button>';
             for (var i = 1; i < values.length; i++) {
                 document.getElementById('dialogueboxbody').innerHTML += '<br>Transition: <input class="newedge"> <button onclick="deleteEdge(' + i + ')">Delete Transition</button>';
             }
             var x = document.getElementById('dialogueboxbody').getElementsByClassName('newedge');
             for (var j = 0; j < values.length; j++) {
-                if (values[j] != lambda && values[j] != epsilon) {
+                if (values[j] != emptystr) {
                     x[j].value = values[j];
                 }
             }
@@ -140,8 +146,8 @@ function EdgePrompt() {
         var x = document.getElementById('dialogueboxbody').getElementsByClassName('newedge');
         for (var j = 0; j < x.length; j++) {
             if (x[j].value === "") {
-                if (values.indexOf(emptystring) == -1) {
-                    values.push(emptystring);
+                if (values.indexOf(emptystr) == -1) {
+                    values.push(emptystr);
                 }
             }
             else if (values.indexOf(x[j].value) == -1) {
@@ -149,24 +155,7 @@ function EdgePrompt() {
             }
         }
         var edge_label = values.join("<br>");
-        window["createEdge"](edge_label);
-        this.end();
-    }
-    changeEdge = function() {
-        var values = [];
-        var x = document.getElementById('dialogueboxbody').getElementsByClassName('newedge');
-        for (var j = 0; j < x.length; j++) {
-            if (x[j].value === "") {
-                if (values.indexOf(emptystring) == -1) {
-                    values.push(emptystring);
-                }
-            }
-            else if (values.indexOf(x[j].value) == -1) {
-                values.push(x[j].value);
-            }
-        }
-        var edge_label = values.join("<br>");
-        window["updateEdge"](edge_label);
+        edgeFunction(edge_label);
         this.end();
     }
     addNewWeight = function() {

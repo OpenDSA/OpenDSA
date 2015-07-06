@@ -1,4 +1,6 @@
-function TraversePrompt() {
+function TraversePrompt(func) {
+    var traverseFunction = func;
+
     this.render = function() {
         var winW = window.innerWidth;
         var winH = window.innerHeight;
@@ -24,7 +26,7 @@ function TraversePrompt() {
         for (var i = 0; i < x.length; i++) {
             values.push(x[i].value);
         }
-        window["traverseInputs"](values);
+        traverseFunction(values);
         this.goback();
     }
     addNewInput = function() {
@@ -60,7 +62,11 @@ function TraversePrompt() {
     }
 }
 
-function NodePrompt() {
+function NodePrompt(func, cancelFunc, nostr) {
+    var nodeFunction = func;
+    var cancelFunction = cancelFunc;
+    var emptystr = nostr;
+
     this.render = function(value, is, lab, outputChar) {
         var winW = window.innerWidth;
         var winH = window.innerHeight;
@@ -74,20 +80,19 @@ function NodePrompt() {
         document.getElementById('dialogueboxbody').innerHTML = 'Initial State:<input type="checkbox" id="initial_state">';
         document.getElementById('dialogueboxbody').innerHTML += '<br>Output Character: <input id="moore">';
         document.getElementById('dialogueboxbody').innerHTML += '<br>State Label: <input id="label">';
+        document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="addNode()">OK</button> <button onclick="cancel()">Cancel</button>';
         if(!outputChar){
             document.getElementById('dialogueboxhead').innerHTML = "Create Node <b>" + value + ":</b>";
-            document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="addNode()">OK</button> <button onclick="cancel()">Cancel</button>';
         }
         else {
             document.getElementById('dialogueboxhead').innerHTML = "Edit Node <b>" + value + ":</b>";
-            document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="changeNode()">OK</button> <button onclick="terminate()">Cancel</button>';
             if (is) {
                 document.getElementById('initial_state').checked = true;
             }
             if (lab) {
                 document.getElementById('label').value = lab;
             }
-            if (outputChar != lambda && outputChar != epsilon) {
+            if (outputChar != emptystr) {
                 document.getElementById('moore').value = outputChar;
             }
         }
@@ -98,7 +103,7 @@ function NodePrompt() {
         document.getElementById('dialogueoverlay').style.display = "none";
     }
     cancel = function() {
-        window["cancelNode"]();
+        cancelFunction();
         this.terminate();
     }
     addNode = function() {
@@ -106,24 +111,17 @@ function NodePrompt() {
         var node_label = document.getElementById('label').value;
         var output_char = document.getElementById('moore').value;
         if (output_char === "") {
-            output_char = emptystring;
+            output_char = emptystr;
         }
-        window["createNode"](initial_state, node_label, output_char);
-        this.terminate();
-    }
-    changeNode = function() {
-        var initial_state = document.getElementById('initial_state').checked;
-        var node_label = document.getElementById('label').value;
-        var output_char = document.getElementById('moore').value;
-        if (output_char === "") {
-            output_char = emptystring;
-        }
-        window["updateNode"](initial_state, node_label, output_char);
+        nodeFunction(initial_state, node_label, output_char);
         this.terminate();
     }
 }
 
-function EdgePrompt() {
+function EdgePrompt(func, nostr) {
+    var edgeFunction = func;
+    var emptystr = nostr;
+
     this.render = function(values) {
         var winW = window.innerWidth;
         var winH = window.innerHeight;
@@ -135,19 +133,18 @@ function EdgePrompt() {
         dialoguebox.style.top = "100px";
         dialoguebox.style.display = "block";
         document.getElementById('dialogueboxbody').innerHTML = 'Transition: <input class="newedge" id="transition"> <button onclick="deleteEdge(0)">Delete Transition</button>';
+        document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="addNewWeight()">Add New Transition</button> <button onclick="addEdge()">Done</button> <button onclick="end()">Cancel</button>';
         if (!values) {
             document.getElementById('dialogueboxhead').innerHTML = "Create Edge:";
-            document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="addNewWeight()">Add New Transition</button> <button onclick="addEdge()">Done</button> <button onclick="end()">Cancel</button>';
         }
         else {
             document.getElementById('dialogueboxhead').innerHTML = "Edit Edge:";
-            document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="addNewWeight()">Add New Transition</button> <button onclick="changeEdge()">Done</button> <button onclick="end()">Cancel</button>';
             for (var i = 1; i < values.length; i++) {
                 document.getElementById('dialogueboxbody').innerHTML += '<br>Transition: <input class="newedge"> <button onclick="deleteEdge(' + i + ')">Delete Transition</button>';
             }
             var x = document.getElementById('dialogueboxbody').getElementsByClassName('newedge');
             for (var j = 0; j < values.length; j++) {
-                if (values[j] != lambda && values[j] != epsilon) {
+                if (values[j] != emptystr) {
                     x[j].value = values[j];
                 }
             }
@@ -163,8 +160,8 @@ function EdgePrompt() {
         var x = document.getElementById('dialogueboxbody').getElementsByClassName('newedge');
         for (var j = 0; j < x.length; j++) {
             if (x[j].value === "") {
-                if (values.indexOf(emptystring) == -1) {
-                    values.push(emptystring);
+                if (values.indexOf(emptystr) == -1) {
+                    values.push(emptystr);
                 }
             }
             else if (values.indexOf(x[j].value) == -1) {
@@ -172,24 +169,7 @@ function EdgePrompt() {
             }
         }
         var edge_label = values.join("<br>");
-        window["createEdge"](edge_label);
-        this.end();
-    }
-    changeEdge = function() {
-        var values = [];
-        var x = document.getElementById('dialogueboxbody').getElementsByClassName('newedge');
-        for (var j = 0; j < x.length; j++) {
-            if (x[j].value === "") {
-                if (values.indexOf(emptystring) == -1) {
-                    values.push(emptystring);
-                }
-            }
-            else if (values.indexOf(x[j].value) == -1) {
-                values.push(x[j].value);
-            }
-        }
-        var edge_label = values.join("<br>");
-        window["updateEdge"](edge_label);
+        edgeFunction(edge_label);
         this.end();
     }
     addNewWeight = function() {

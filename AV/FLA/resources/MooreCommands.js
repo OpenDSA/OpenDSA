@@ -1,19 +1,17 @@
-var executeAddNode = function(top, left){
-	var newNode = g.addNode();
+var executeAddNode = function(graph, top, left){
+	var newNode = graph.addNode();
 	var offsetTop = top - newNode.element.height()/2.0,
 		offsetLeft = left - newNode.element.width()/2.0;
 	$(newNode.element).offset({top: offsetTop, left: offsetLeft});
 	return newNode;
 };
 
-var executeDeleteNode = function(node){
-	g.removeNode(node);
-	updateAlphabet();
-	updateMooreOutput();
+var executeDeleteNode = function(graph, node){
+	graph.removeNode(node);
 };
 
-var executeAddEdge = function(fromNode, toNode, weight){
-	var newEdge = g.addEdge(fromNode, toNode, {weight: weight});
+var executeAddEdge = function(graph, fromNode, toNode, weight){
+	var newEdge = graph.addEdge(fromNode, toNode, {weight: weight});
 	if (newEdge) {
 		var weight = newEdge.weight().split('<br>');
 		var transitions = [];
@@ -24,23 +22,21 @@ var executeAddEdge = function(fromNode, toNode, weight){
 		}
 		newEdge.weight(transitions.join("<br>"));
 		newEdge.layout();
-		updateAlphabet();
 		return newEdge;
 	}
 	else {
-		return g.getEdge(fromNode, toNode);
+		return graph.getEdge(fromNode, toNode);
 	}
 };
 
-var executeDeleteEdge = function(edge){
-	g.removeEdge(edge);
-	updateAlphabet();
+var executeDeleteEdge = function(graph, edge){
+	graph.removeEdge(edge);
 };
 
-var executeMoveNode = function(node, top, left){
+var executeMoveNode = function(graph, node, top, left){
 	var offsetTop = top - node.element.height()/2.0;
 	var offsetLeft = left - node.element.width()/2.0;
-	var edges = g.edges();
+	var edges = graph.edges();
 	$(node.element).offset({top: offsetTop, left: offsetLeft});
 	node.stateLabelPositionUpdate();
 	for (var next = edges.next(); next; next = edges.next()) {
@@ -50,15 +46,15 @@ var executeMoveNode = function(node, top, left){
 	}
 };
 
-var executeEditNode = function(node, initialState, nodeLabel, nodeOutput){
+var executeEditNode = function(graph, node, initialState, nodeLabel, nodeOutput){
 	if (initialState) {
-		for (var i = 0; i < g.nodeCount(); i++) {
-			g.removeInitial(g.nodes()[i]);
+		for (var i = 0; i < graph.nodeCount(); i++) {
+			graph.removeInitial(graph.nodes()[i]);
 		}
-		g.makeInitial(node);
+		graph.makeInitial(node);
 	}
 	else {
-		g.removeInitial(node);
+		graph.removeInitial(node);
 	}
 	if (nodeOutput) {
 		node.mooreOutput(nodeOutput);
@@ -68,11 +64,9 @@ var executeEditNode = function(node, initialState, nodeLabel, nodeOutput){
 	}
 	node.stateLabel(nodeLabel);
 	node.stateLabelPositionUpdate();
-	updateMooreOutput();
 };
 
-var executeEditEdge = function(edge, weight){
+var executeEditEdge = function(graph, edge, weight){
 	$(edge).html(weight);
-	g.layout({layout: "manual"});
-	updateAlphabet();
+	graph.layout({layout: "manual"});
 };
