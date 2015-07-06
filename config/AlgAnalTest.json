@@ -76,6 +76,12 @@
             "required": false,
             "points": 0.0,
             "threshold": 1.0
+          },
+          "ProblemAlgorithmProgram": {
+            "long_name": "Problems, Algorithms, and programs Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
           }
         }
       },

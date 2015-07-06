@@ -205,4 +205,6 @@ in a programming language.
       :output: show
 
 
+.. avembed:: Exercises/AlgAnalTest/ProblemAlgorithmProgram.html ka 
+
 .. odsascript:: AV/Development/AlgAnal/ProblemAlgorithmCON.js
