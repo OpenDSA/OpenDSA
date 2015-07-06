@@ -30,7 +30,6 @@ public class KVPair<K extends Comparable<K>, E>
 
 
   public String toString() {
-    System.out.println("In KVPair toString()"); 
     return theKey.toString() + ", " + theVal.toString();
   }
 }

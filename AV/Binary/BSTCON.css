@@ -1,5 +1,9 @@
 #BSTsearchCON {
-  height: 340px;
+  height: 360px;
+}
+
+#BSTsearchCON .jsavoutput.jsavline {
+  height: 30px;
 }
 
 #BSTsearchCON .jsavcode{
@@ -7,7 +11,7 @@
 }
 
 #BSTinsertCON {
-  height: 530px;
+  height: 540px;
 }
 
 #BSTinsertCON .jsavtree { 
@@ -18,12 +22,16 @@
   height: 340px;
 }
 
+#BSTdeletemaxCON .jsavoutput.jsavline {
+  height: 30px;
+}
+
 #BSTdeletemaxCON .jsavcode{
   margin-left: 320px;
 }
 
 #BSTremoveCON {
-  height: 700px;
+  height: 710px;
 }
 
 #BSTremoveCON .jsavoutput.jsavline {

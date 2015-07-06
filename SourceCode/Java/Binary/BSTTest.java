@@ -40,8 +40,8 @@ public static void main(String args[]) throws IOException {
       System.out.println("Oops! Wrong size. Should be " + (testsize - i - 1) + " and it is " + b.size());
       SUCCESS = false;
     }
-    if ((Integer)k.key() != A[i]) {
-      System.out.println("Oops! Wrong key value. Should be " + i + " and it is " + (Integer)k.key());
+    if (k.key() != A[i]) {
+      System.out.println("Oops! Wrong key value. Should be " + A[i] + " and it is " + (Integer)k.key());
        SUCCESS = false;
     }
   }

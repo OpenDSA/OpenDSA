@@ -9,7 +9,9 @@ $(document).ready(function () {
   var av = new JSAV(av_name);
   var pseudo = av.code(code);
 
-  var bt = av.ds.binarytree({top: 10, left: 40, visible: true, nodegap: 15});
+  var bstTop = 40;
+
+  var bt = av.ds.binarytree({top: bstTop, left: 40, visible: true, nodegap: 15});
 
   bt.root(10);
   var rt = bt.root();
@@ -19,7 +21,7 @@ $(document).ready(function () {
   rt.right().left().right(15);
   bt.layout();
 
-  var rt1 = av.pointer("rt", bt.root(), {anchor: "left top", top: -10});
+  var rt1 = av.pointer("rt", bt.root(), {anchor: "left top"});
 
   // Slide 1
   av.umsg(interpret("av_c1"));

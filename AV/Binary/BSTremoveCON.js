@@ -10,7 +10,8 @@ $(document).ready(function () {
   var pseudo = av.code(code);
   var temp1;
 
-  var bt = av.ds.binarytree({visible: true, nodegap: 15});
+  var bstTop = 410;
+  var bt = av.ds.binarytree({visible: true, nodegap: 15, top: bstTop, left: 275});
   bt.root(37);
   var rt = bt.root();
   rt.left(24);
@@ -25,7 +26,7 @@ $(document).ready(function () {
 
   bt.layout();
 
-  var rt1 = av.pointer("rt", bt.root(), {anchor: "left top", top: -10});
+  var rt1 = av.pointer("rt", bt.root(), {anchor: "left top"});
 
   // Slide 1
   av.umsg("Let's look a few examples for removehelp. We will start with an easy case. Let's see what happens when we delete 30 from this tree.");
