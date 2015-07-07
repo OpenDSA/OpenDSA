@@ -2,6 +2,10 @@
 	width: 98%;
 	position: relative;
 }
+.arrayPlace {
+	max-width: 100%;
+    overflow: scroll;
+}
 .start {	
 	font-style: italic;
 	font-weight: bold;
