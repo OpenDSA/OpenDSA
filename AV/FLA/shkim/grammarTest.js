@@ -8,7 +8,11 @@
       derivationTable,
       parseTableDisplay,
       parseTree,
-      modelDFA;
+      ffTable,
+      arrayStep,
+      selectedNode,
+      modelDFA,
+      builtDFA;
 
   var lambda = String.fromCharCode(955),
       epsilon = String.fromCharCode(949),
@@ -94,17 +98,17 @@
     // lastRow = 6;
 
     // SLR(1) examples:
-    // arr[0] = ['S', arrow, 'A'];
-    // arr[1] = ['A', arrow, 'aaA'];
-    // arr[2] = ['A', arrow, 'b'];
-    // lastRow = 3;
+    arr[0] = ['S', arrow, 'A'];
+    arr[1] = ['A', arrow, 'aaA'];
+    arr[2] = ['A', arrow, 'b'];
+    lastRow = 3;
 
-    arr[0] = ['S', arrow, 'ABc'];
-    arr[1] = ['A', arrow, 'Aa'];
-    arr[2] = ['A', arrow, emptystring];
-    arr[3] = ['B', arrow, 'BS'];
-    arr[4] = ['B', arrow, 'b'];
-    lastRow = 5;
+    // arr[0] = ['S', arrow, 'ABc'];
+    // arr[1] = ['A', arrow, 'Aa'];
+    // arr[2] = ['A', arrow, emptystring];
+    // arr[3] = ['B', arrow, 'BS'];
+    // arr[4] = ['B', arrow, 'b'];
+    // lastRow = 5;
   }
   var init = function () {
       if (m) {
@@ -177,8 +181,7 @@
       return;
     }
     startParse();
-    $('#llbutton').hide();
-    $('#slrbutton').hide();
+    $('#bfpbutton').show();
     var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
     var table = {};   // maps each sentential form to the rule that produces it
     var sententials = [];
@@ -376,6 +379,137 @@
     }
   }; 
 
+
+  var checkTable = function (firsts, follows) {
+    var checker;
+    if (arrayStep === 1) {
+      checker = firsts;
+    } else {
+      checker = follows;
+    }
+    var incorrect = [];
+    for (var i = 1; i < ffTable._arrays.length; i++) {
+      var a = ffTable._arrays[i];
+      var fvar = a.value(0);
+      var fset = a.value(arrayStep);
+      var check1 = checker[fvar];
+      var check2 = fset.split(',');
+      var inter = _.intersection(check1, check2);
+      if (inter.length !== check1.length || inter.length !== check2.length) {
+        incorrect.push(fvar);
+      } 
+    } 
+    return incorrect
+  };
+  var firstFollowHandler = function (index) {
+    if (index === 0) { return; }
+    var prev = this.value(index, arrayStep);
+    prev = prev.replace(/,/g, "");
+    //console.log(prev)
+    $('#firstinput').remove();
+    var createInput = "<input type='text' id='firstinput' value="+prev+">";
+    $('body').append(createInput);
+    var offset = this._arrays[index].element.offset();
+    var topOffset = offset.top;
+    var leftOffset = offset.left;
+    var w = $('.jsavvalue').width();
+    $('#firstinput').offset({top: topOffset, left: leftOffset + arrayStep*w});
+    $('#firstinput').outerHeight($('.jsavvalue').height());
+    $('#firstinput').width(w);
+    $('#firstinput').focus();
+    $('#firstinput').keyup(function(event){
+      if(event.keyCode == 13){
+        var firstInput = $(this).val();
+        firstInput = firstInput.split("");
+        for (var i = 0; i < firstInput.length; i++) {
+          if (firstInput[i] === '!') {
+            firstInput[i] = emptystring;
+          }
+        }
+        firstInput = _.uniq(firstInput).join(',');
+        ffTable.value(index, arrayStep, firstInput);
+        $('#firstinput').remove();
+      }
+    });
+  };
+  var continueToFollow = function (firsts, follows) {
+    $('#firstinput').remove();
+    var incorrect = checkTable(firsts, follows);
+    if (incorrect.length > 0) {
+      var confirmed = confirm('The following sets are incorrect: ' + incorrect + '.\nFix automatically?');
+      if (confirmed) {
+        for (var i = 1; i < ffTable._arrays.length; i++) {
+          var a = ffTable._arrays[i].value(0);
+          ffTable.value(i, 1, firsts[a]);
+        }
+      } else {
+        return false;
+      }
+    }
+    $(ffTable.element).off();
+    $('#followbutton').hide();
+    jsav.umsg('Define FOLLOW sets. $ is the end of string character.');
+    arrayStep = 2;
+    ffTable.click(firstFollowHandler);
+    return true;
+  };
+  var parseTableHandler = function (index) {
+    // attach to arrays
+    if (index === 0) { return; }
+    var self = this;
+    var prev = this.value(index);
+    $('#firstinput').remove();
+    var createInput = "<input type='text' id='firstinput' value="+prev+">";
+    $('body').append(createInput);
+    var offset = this._indices[index].element.offset();
+    var topOffset = offset.top;
+    var leftOffset = offset.left;
+    $('#firstinput').offset({top: topOffset, left: leftOffset});
+    $('#firstinput').outerHeight($('.jsavvalue').height());
+    $('#firstinput').width($('.jsavvalue').width());
+    $('#firstinput').focus();
+    $('#firstinput').keyup(function(event){
+      if(event.keyCode == 13){
+        var firstInput = $(this).val();
+        firstInput = firstInput.replace(/!/g, emptystring);
+        self.value(index, firstInput);
+        $('#firstinput').remove();
+      }
+    });
+  };
+  var checkParseTable = function (parseTableDisplay, parseTable) {
+    $('#firstinput').remove();
+    var incorrect = false;
+    for (var i = 1; i < parseTableDisplay._arrays.length; i++) {
+      var ptr = parseTableDisplay._arrays[i];
+      ptr.unhighlight();
+      for (var j = 1; j < ptr._indices.length; j++) {
+        if (parseTable[i-1][j-1] !== parseTableDisplay.value(i, j)) {
+          parseTableDisplay.highlight(i, j);
+          incorrect = true;
+        }
+      }
+    }
+    if (incorrect) {
+      var confirmed = confirm('Highlighted cells are incorrect.\nFix automatically?');
+      if (confirmed) {
+        for (var i = 1; i < parseTableDisplay._arrays.length; i++) {
+          var ptr = parseTableDisplay._arrays[i];
+          ptr.unhighlight();
+          for (var j = 1; j < ptr._indices.length; j++) {
+            parseTableDisplay.value(i, j, parseTable[i-1][j-1]);
+          }
+        }
+      } else {
+        return;
+      }
+    }
+    $('#parsereadybutton').hide();
+    $('#parsebutton').show();
+    jsav.umsg("");
+    $('.jsavarray').off();
+  };
+
   // LL(1)
   var llParse = function () {
     var firsts = {};
@@ -458,93 +592,263 @@
     // for (var i = 0; i < parseTable.length; i++) {
     //   console.log(""+parseTable[i])
     // }
-    var pTableDisplay = [];
-    pTableDisplay.push([""].concat(t));
-    for (var i = 0; i < v.length; i++) {
-      pTableDisplay.push([v[i]].concat(parseTable[i]));
-    }
-    
-    var inputString = prompt('Input string');
-    if (inputString === null) {
-      return;
-    }
+
     startParse();
-    $('#bfpbutton').hide();
-    $('#slrbutton').hide();
-    //jsav.label('Grammar', {relativeTo: m, anchor: "center top", myAnchor: "center bottom"});
-    parseTableDisplay = new jsav.ds.matrix(pTableDisplay, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
-    //jsav.label('Derivation Table', {relativeTo: derivationTable, anchor: "center top", myAnchor: "center bottom"});
+    $('#followbutton').show();
+    $('.jsavcontrols').hide();
+    ffDisplay = [];
+    ffDisplay.push(["", "FIRST", "FOLLOW"]);
+    for (var i = 0; i < v.length; i++) {
+      var vv = v[i];
+      ffDisplay.push([vv, "", ""]);
+    }
+    jsav.umsg('Define FIRST sets. ! is the lambda character.');
+    ffTable = new jsav.ds.matrix(ffDisplay, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
+    arrayStep = 1;
     
-    var remainingInput = inputString + '$';
-    jsav.umsg('<mark>' + remainingInput[0] + '</mark>' + remainingInput.substring(1) + ' | <mark>' + productions[0][0] + '</mark>');
-    jsav.displayInit();
-    parseTree = new jsav.ds.tree();
-    //parseTree = new jsav.ds.tree({left: "30px", relativeTo: derivationTable, anchor: "right top"});
+    ffTable.click(firstFollowHandler);
+    $('#followbutton').click(function () {
+      var check = continueToFollow(firsts, follows); 
+      if (check) {
+        $('#parsetablebutton').show();
+      }
+    });
 
-    var next;
-    var parseStack = [parseTree.root(productions[0][0])];
+    var continueToParseTable = function () {
+      $('#firstinput').remove();
+      var incorrect = checkTable(firsts, follows);
+      if (incorrect.length > 0) {
+        var confirmed = confirm('The following sets are incorrect: ' + incorrect + '.\nFix automatically?');
+        if (confirmed) {
+          for (var i = 1; i < ffTable._arrays.length; i++) {
+            var a = ffTable._arrays[i].value(0);
+            ffTable.value(i, 2, follows[a]);
+          }
+        } else {
+          return;
+        }
+      } 
+      $(ffTable.element).off();
+      $('#parsetablebutton').hide();
+      $('#parsereadybutton').show();
+      jsav.umsg('Fill entries in parse table. ! is the lambda character.');
+      var pTableDisplay = [];
+      pTableDisplay.push([""].concat(t));
+      for (var i = 0; i < v.length; i++) {
+        var toPush = [v[i]];
+        for (var j = 0; j < parseTable[i].length; j++) {
+          toPush.push('');
+        }
+        pTableDisplay.push(toPush);
+        //pTableDisplay.push([v[i]].concat(parseTable[i]));
+      }
+      //jsav.label('Grammar', {relativeTo: m, anchor: "center top", myAnchor: "center bottom"});
+      parseTableDisplay = new jsav.ds.matrix(pTableDisplay);
+      for (var i = 1; i < parseTableDisplay._arrays.length; i++) {
+        parseTableDisplay._arrays[i].click(parseTableHandler);
+      }
+    };
+    $('#parsetablebutton').click(continueToParseTable);
+    $('#parsereadybutton').click(function() {
+      checkParseTable(parseTableDisplay, parseTable);
+    });
 
-    jsav.umsg('<mark>' + remainingInput[0] + '</mark>' + remainingInput.substring(1) + ' | ');
-    var accept = true;
-    
-    parseTree.layout();
-    counter = 0;
-    while (true) {
-      counter++;
-      if (counter > 500) {
-        console.warn(counter);
-        break;
+    var continueParse = function () {
+      var inputString = prompt('Input string');
+      if (inputString === null) {
+        return;
       }
-      next = parseStack.pop();
-      if (!next) {
-        break;
+      startParse();
+      var pTableDisplay = [];
+      pTableDisplay.push([""].concat(t));
+      for (var i = 0; i < v.length; i++) {
+        pTableDisplay.push([v[i]].concat(parseTable[i]));
       }
-      var vi = v.indexOf(next.value());
-      var ti = t.indexOf(remainingInput[0])
-      if (vi === -1 && next.value() !== remainingInput[0]) {
-        accept = false;
-        break;
-      }
-      jsav.step();
-      if (vi !== -1) {
-        var toAdd = parseTable[vi][ti];
-        if (!toAdd) {
+      //jsav.label('Grammar', {relativeTo: m, anchor: "center top", myAnchor: "center bottom"});
+      parseTableDisplay = new jsav.ds.matrix(pTableDisplay, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
+      var remainingInput = inputString + '$';
+      jsav.umsg('<mark>' + remainingInput[0] + '</mark>' + remainingInput.substring(1) + ' | <mark>' + productions[0][0] + '</mark>');
+      jsav.displayInit();
+      parseTree = new jsav.ds.tree();
+
+      var next;
+      var parseStack = [parseTree.root(productions[0][0])];
+
+      jsav.umsg('<mark>' + remainingInput[0] + '</mark>' + remainingInput.substring(1) + ' | ');
+      var accept = true;
+      
+      parseTree.layout();
+      counter = 0;
+      while (true) {
+        counter++;
+        if (counter > 500) {
+          console.warn(counter);
+          break;
+        }
+        next = parseStack.pop();
+        if (!next) {
+          break;
+        }
+        var vi = v.indexOf(next.value());
+        var ti = t.indexOf(remainingInput[0])
+        if (vi === -1 && next.value() !== remainingInput[0]) {
           accept = false;
           break;
         }
-        for (var j = 0; j < parseTableDisplay._arrays.length; j++) {
-          parseTableDisplay._arrays[j].unhighlight();
-        }
-        parseTableDisplay.highlight(vi + 1, ti + 1);
-        var temp = [];
-        for (var i = 0 ; i < toAdd.length; i++) {
-          var n = next.child(i, toAdd[i]).child(i);
-          if (v.indexOf(toAdd[i]) === -1) {
-            n.addClass('terminal');
+        jsav.step();
+        if (vi !== -1) {
+          var toAdd = parseTable[vi][ti];
+          if (!toAdd) {
+            accept = false;
+            break;
           }
-          if (toAdd[i] !== emptystring) {
-            temp.unshift(n);
+          for (var j = 0; j < parseTableDisplay._arrays.length; j++) {
+            parseTableDisplay._arrays[j].unhighlight();
           }
-        }
-        parseStack = parseStack.concat(temp);
-        parseTree.layout();
-      } else if (next.value() === remainingInput[0]) {
-          remainingInput = remainingInput.substring(1);
-      } 
-      jsav.umsg('<mark>' + remainingInput[0] + '</mark>' + remainingInput.substring(1) + ' | '
-       + _.map(parseStack, function(x, k) {
-        if (k === parseStack.length - 1) {return '<mark>'+x.value()+'</mark>';} return x.value();}));
+          parseTableDisplay.highlight(vi + 1, ti + 1);
+          var temp = [];
+          for (var i = 0 ; i < toAdd.length; i++) {
+            var n = next.child(i, toAdd[i]).child(i);
+            if (v.indexOf(toAdd[i]) === -1) {
+              n.addClass('terminal');
+            }
+            if (toAdd[i] !== emptystring) {
+              temp.unshift(n);
+            }
+          }
+          parseStack = parseStack.concat(temp);
+          parseTree.layout();
+        } else if (next.value() === remainingInput[0]) {
+            remainingInput = remainingInput.substring(1);
+        } 
+        jsav.umsg('<mark>' + remainingInput[0] + '</mark>' + remainingInput.substring(1) + ' | '
+         + _.map(parseStack, function(x, k) {
+          if (k === parseStack.length - 1) {return '<mark>'+x.value()+'</mark>';} return x.value();}));
+      }
+      jsav.step();
+      if (accept && remainingInput[0] === '$' && !next) {
+        jsav.umsg('"' + inputString + '" accepted');
+      } else {
+        jsav.umsg('"' + inputString + '" rejected');
+      }
+      for (var j = 0; j < parseTableDisplay._arrays.length; j++) {
+        parseTableDisplay._arrays[j].unhighlight();
+      }
+      jsav.recorded();
+    };
+    $('#parsebutton').click(continueParse);
+  };
+
+  var dfaClickHandler = function (e) {
+    if (selectedNode) {
+      selectedNode.unhighlight();
     }
-    jsav.step();
-    if (accept && remainingInput[0] === '$' && !next) {
-      jsav.umsg('"' + inputString + '" accepted');
+    if ($('.jsavgraph').hasClass('addfinals')) {
+      this.toggleClass('final');
+    } else if ($('.jsavgraph').hasClass('movenodes')) {
+      this.highlight();
+      selectedNode = this;
+      jsav.umsg("Click to place node");
+      e.stopPropagation();
     } else {
-      jsav.umsg('"' + inputString + '" rejected');
+      this.highlight();
+
+      if(selectedNode && localStorage['slrdfareturn']) {
+        var newItemSet = localStorage['slrdfareturn'].replace(/,/g, '<br>');
+        if (this.stateLabel() === newItemSet) {
+          builtDFA.addEdge(selectedNode, this, {weight: localStorage['slrdfasymbol']});
+          builtDFA.layout();
+          jsav.umsg("Build the DFA.");
+          selectedNode.unhighlight();
+          this.unhighlight();
+          selectedNode = null;
+          return;
+        } else {
+          alert('Incorrect.');
+          this.unhighlight();
+          return;
+        }
+      }
+
+      var pr = prompt('Grammar symbol for the transition?');
+      if (!pr) {
+        this.unhighlight();
+        return;
+      }
+      var bEdges = this.getOutgoing();
+      for (var i = 0; i < bEdges.length; i++) {
+        if (bEdges[i].weight().split('<br>').indexOf(pr) !== -1) {
+          alert('Transition already created.');
+          this.unhighlight();
+          return;
+        }
+      }
+      selectedNode = this;
+      var nodes = modelDFA.nodes();
+      var checkNode;
+      for (var next = nodes.next(); next; next = nodes.next()) {
+        console.log(next);
+        console.log(next._stateLabel);
+        var modelItems = next._stateLabel.element[0].innerHTML.split('<br>');
+        var builtItems = this.stateLabel().split('<br>');
+        var inter = _.intersection(modelItems, builtItems);
+        if (inter.length === modelItems.length && inter.length === builtItems.length) {
+          checkNode = next;
+          break;
+        } 
+      }
+      var edges = checkNode.getOutgoing();
+      for (var i = 0; i < edges.length; i++) {
+        var w = edges[i].weight().split('<br>');
+        if (w.indexOf(pr) !== -1) {
+          var productions = _.filter(arr, function(x) {return x[0];});
+          localStorage['slrdfaproductions'] = ["S'" + arrow + productions[0][0]].concat(_.map(productions, function(x) {return x.join('');}));
+          localStorage['slrdfaitemset'] = this.stateLabel().split('<br>');
+          localStorage['slrdfasymbol'] = pr;
+          window.open('slrGoTo.html', '', 'width = 800, height = 750, screenX = 300, screenY = 25');
+          jsav.umsg('Place the new node.');
+          break;
+        }
+      }
+      e.stopPropagation();
     }
-    for (var j = 0; j < parseTableDisplay._arrays.length; j++) {
-      parseTableDisplay._arrays[j].unhighlight();
+      
+  };
+  var graphHandler = function (e) {
+    if ($('.jsavgraph').hasClass('movenodes')) {
+      var nodeX = selectedNode.element.width()/2.0,
+          nodeY = selectedNode.element.height()/2.0;
+      $(selectedNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
+      builtDFA.layout();
+      selectedNode.unhighlight();
+      selectedNode = null;
+      e.stopPropagation();
+      jsav.umsg("Click a node.");
+    } else {
+      if(selectedNode && localStorage['slrdfareturn']) {
+        var newItemSet = localStorage['slrdfareturn'].replace(/,/g, '<br>');
+        var newItemSetArr = newItemSet.split('<br>');
+        var nodes = builtDFA.nodes();
+        for (var next = nodes.next(); next; next = nodes.next()) {
+          var sla = next.stateLabel().split('<br>');
+          var inter = _.intersection(sla, newItemSetArr);
+          if (inter.length === sla.length && inter.length === newItemSetArr.length) {
+            alert('The node already exists!');
+            return;
+          }
+        }
+        var newNode = builtDFA.addNode(),
+            nodeX = newNode.element.width()/2.0,
+            nodeY = newNode.element.height()/2.0;
+        $(newNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
+        newNode.stateLabel(newItemSet);
+        builtDFA.addEdge(selectedNode, newNode, {weight: localStorage['slrdfasymbol']});
+        builtDFA.layout();
+        jsav.umsg("Build the DFA.");
+        selectedNode.unhighlight();
+        selectedNode = null;
+      }
     }
-    jsav.recorded();
   };
 
   // SLR(1)
@@ -578,16 +882,11 @@
       }
       parseTable.push(a);
     }
-    var inputString = prompt('Input string');
-    if (inputString === null) {
-      return;
-    }
+    
     startParse();
-    $("#llbutton").hide();
-    $("#bfpbutton").hide();
 
     // build DFA to model the parsing stack
-    modelDFA = jsav.ds.fa({width: '45%', height: 440, layout: 'automatic'});
+    modelDFA = jsav.ds.fa({width: '90%', height: 440, layout: 'automatic'});
     var sNode = modelDFA.addNode();
     modelDFA.makeInitial(sNode);
     sNode.stateLabel("S'"+arrow+dot+productions[0][0]);
@@ -653,10 +952,10 @@
         break;
       }
     };
-    // var firsts = {};
-    // for (var i = 0; i < v.length; i++) {
-    //   firsts[v[i]] = first(v[i], pDict, derivers).sort();
-    // }
+    var firsts = {};
+    for (var i = 0; i < v.length; i++) {
+      firsts[v[i]] = first(v[i], pDict, derivers).sort();
+    }
     // for (key in firsts) {
     //   console.log(key+":"+firsts[key]);
     // }
@@ -726,87 +1025,259 @@
       }
       index++;
     }
-    var pTableDisplay = [];
-    pTableDisplay.push([""].concat(tv));
-    for (var i = 0; i < modelDFA.nodeCount(); i++) {
-      pTableDisplay.push([i].concat(parseTable[i]));
-    }
-    //parseTableDisplay = new jsav.ds.matrix(pTableDisplay, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
-    parseTableDisplay = new jsav.ds.matrix(pTableDisplay);
-    parseTree = new jsav.ds.graph({layout: "layered", directed: true});
-    parseTree.element.addClass('parsetree');
-    jsav.displayInit();
     modelDFA.hide();
-    m.hide();
-    parseTableDisplay.hide();
-    var remainingInput = inputString + '$';
-    var parseStack = [0];
-    var currentRow = 0;
-    var accept = false;
-    var displayOrder = [];
-    counter = 0;
-    while (true) {
-      counter++;
-      if (counter > 500) {
-        console.warn(counter);
-        break;
+    $('#followbutton').show();
+    $('.jsavcontrols').hide();
+    ffDisplay = [];
+    ffDisplay.push(["", "FIRST", "FOLLOW"]);
+    for (var i = 0; i < v.length; i++) {
+      var vv = v[i];
+      ffDisplay.push([vv, "", ""]);
+    }
+    jsav.umsg('Define FIRST sets. ! is the lambda character.');
+    ffTable = new jsav.ds.matrix(ffDisplay, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
+    arrayStep = 1;
+    
+    ffTable.click(firstFollowHandler);
+    $('#followbutton').click(function () {
+      var check = continueToFollow(firsts, follows);
+      if (check) {
+        $('#slrdfabutton').show();
       }
-      var lookAhead = tv.indexOf(remainingInput[0]);
-      var entry = parseTable[currentRow][lookAhead];
-      if (!entry) {
-        break;
-      } 
-      if (entry === 'acc') {
-        accept = true;
-        break;
-      }
-      if (entry[0] === 's') {
-        var term = parseTree.addNode(remainingInput[0]);
-        term.addClass('terminal');
-        parseStack.push(term);
-        displayOrder.push(term);
-        currentRow = Number(entry.substring(1));
-        parseStack.push(currentRow);
-        remainingInput = remainingInput.substring(1);
-        parseTree.layout();
-      } else if (entry[0] === 'r') {
-        var pIndex = Number(entry.substring(1));
-        var p = productions[pIndex];
-        if (p[2] === emptystring) {
-          var lNode = parseTree.addNode(emptystring);
-          lNode.addClass('terminal');
-          parseTree.layout();
-          jsav.step();
-          var par = parseTree.addNode(p[0]);
-          parseTree.addEdge(par, lNode);
-          var n = currentRow;
+    });
+    var continueToDFA = function () {
+      $('#firstinput').remove();
+      var incorrect = checkTable(firsts, follows);
+      if (incorrect.length > 0) {
+        var confirmed = confirm('The following sets are incorrect: ' + incorrect + '.\nFix automatically?');
+        if (confirmed) {
+          for (var i = 1; i < ffTable._arrays.length; i++) {
+            var a = ffTable._arrays[i].value(0);
+            ffTable.value(i, 2, follows[a]);
+          }
         } else {
-          var par = parseTree.addNode(p[0]);
-          var childs = [];
-          for (var i = p[2].length - 1; i >= 0; i--) {
-            parseStack.pop();
-            childs.unshift(parseStack.pop());
-          }
-          for (var i = 0; i < childs.length; i++) {
-            parseTree.addEdge(par, childs[i]);
-          }
-          var n = parseStack[parseStack.length - 1];
+          return;
         }
-        //console.log(n)
-        parseStack.push(par);
-        displayOrder.push(par);
-        currentRow = parseTable[n][tv.indexOf(p[0])];
-        parseStack.push(currentRow);
-        parseTree.layout();
       }
-      jsav.step();
-    }
-    if (accept) {
-      jsav.umsg('"' + inputString + '" accepted');
-    } else {
-      jsav.umsg('"' + inputString + '" rejected');
-    }
-    jsav.recorded();
+      $(ffTable.element).off();
+      $('#slrdfabutton').hide();
+      $('#parsetablebutton').show();
+      jsav.umsg('Build the DFA.');
+      //modelDFA.hide();
+      builtDFA = jsav.ds.fa({width: '90%', height: 440});
+      builtDFA.click(dfaClickHandler);
+      $('.jsavgraph').click(graphHandler);
+      $('#av').append($('#dfabuttons'));
+      $('#dfabuttons').show();
+      var pr = confirm("Would you like to define the initial set yourself?");
+      if (pr) {
+        localStorage['slrdfaproductions'] = _.map(productions, function(x) {return x.join('');});
+        localStorage['slrdfasymbol'] = 'initial';
+        window.open('slrGoTo.html', '', 'width = 800, height = 750, screenX = 300, screenY = 25');
+        $('#dfabuttons').append("<input type='button' id='addinitialbutton' value='Add Initial'>");
+        jsav.umsg("Add the initial node.");
+        $('#addinitialbutton').click(function() {
+          if (localStorage['slrdfareturn']) {
+            var builtInitial = builtDFA.addNode({left: 50, top: 50});
+            builtDFA.makeInitial(builtInitial);
+            builtInitial.stateLabel(localStorage['slrdfareturn'].replace(/,/g, '<br>'));
+            builtDFA.layout();
+            $('#addinitialbutton').remove();
+            localStorage.removeItem('slrdfareturn');
+            jsav.umsg('Build the DFA.');
+          }
+        });
+      } else {
+        var builtInitial = builtDFA.addNode({left: 50, top: 50});
+        builtDFA.makeInitial(builtInitial);
+        builtInitial.stateLabel(modelDFA.initial._stateLabel.element[0].innerHTML);
+        builtDFA.layout();
+      }
+    };
+    $('#slrdfabutton').click(continueToDFA);
+    var continueToParseTable = function () {
+      var edges1 = modelDFA.edges();
+      var edges2 = builtDFA.edges();
+      var tCount1 = 0,
+          tCount2 = 0,
+          correctFinals = true;
+      for (var next = edges1.next(); next; next = edges1.next()) {
+        tCount1 = tCount1 + next.weight().split('<br>').length;
+      }
+      for (var next = edges2.next(); next; next = edges2.next()) {
+        tCount2 = tCount2 + next.weight().split('<br>').length;
+      }
+      var bNodes = builtDFA.nodes();
+      for (var next = bNodes.next(); next; next = bNodes.next()) {
+        var nis = next.stateLabel().split('<br>');
+        var ff = _.find(nis, function(x) {return x[x.length - 1] === dot; });
+        if (ff && !next.hasClass('final')) {
+          correctFinals = false;
+          break;
+        }
+        if (!ff && next.hasClass('final')) {
+          correctFinals = false;
+          break;
+        }
+      }
+
+      if (tCount1 !== tCount2 || modelDFA.nodeCount() !== builtDFA.nodeCount() || !correctFinals) {
+        var confirmed = confirm('Not finished!\nFinish automatically?');
+        if (confirmed) {
+          builtDFA.clear();
+          modelDFA.show();
+        } else {
+          return;
+        }
+      } 
+      $('#dfabuttons').hide();
+      $('#movedfabutton').remove();
+      $('#parsetablebutton').hide();
+      $('#parsereadybutton').show();
+      jsav.umsg('Fill entries in parse table. ! is the lambda character.');
+      var pTableDisplay = [];
+      pTableDisplay.push([""].concat(tv));
+      for (var i = 0; i < modelDFA.nodeCount(); i++) {
+        var toPush = [i];
+        for (var j = 0; j < parseTable[i].length; j++) {
+          toPush.push('');
+        }
+        pTableDisplay.push(toPush);
+        //pTableDisplay.push([v[i]].concat(parseTable[i]));
+      }
+      //jsav.label('Grammar', {relativeTo: m, anchor: "center top", myAnchor: "center bottom"});
+      parseTableDisplay = new jsav.ds.matrix(pTableDisplay);
+      for (var i = 1; i < parseTableDisplay._arrays.length; i++) {
+        parseTableDisplay._arrays[i].click(parseTableHandler);
+      }
+    };
+    $('#parsetablebutton').click(continueToParseTable);
+    $('#parsereadybutton').click(function() {
+      checkParseTable(parseTableDisplay, parseTable);
+    });
+
+    var continueParse = function () {
+      var inputString = prompt('Input string');
+      if (inputString === null) {
+        return;
+      }
+      startParse();
+      var pTableDisplay = [];
+      pTableDisplay.push([""].concat(tv));
+      for (var i = 0; i < modelDFA.nodeCount(); i++) {
+        pTableDisplay.push([i].concat(parseTable[i]));
+      }
+      //parseTableDisplay = new jsav.ds.matrix(pTableDisplay, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
+      $(m.element).css("margin-left", "auto");
+      $(m.element).css("margin-top", "0px");
+      parseTableDisplay = new jsav.ds.matrix(pTableDisplay);
+      parseTree = new jsav.ds.graph({layout: "layered", directed: true});
+      parseTree.element.addClass('parsetree');
+      var remainingInput = inputString + '$';
+      var parseStack = [0];
+      var currentRow = 0;
+      var accept = false;
+      var displayOrder = [];
+      jsav.umsg(remainingInput + ' | ' + productions[1][0]);
+      
+      jsav.displayInit();
+      // modelDFA.hide();
+      // m.hide();
+      // parseTableDisplay.hide();
+      jsav.umsg(remainingInput + ' | ');
+      
+      counter = 0;
+      while (true) {
+        counter++;
+        if (counter > 500) {
+          console.warn(counter);
+          break;
+        }
+        var lookAhead = tv.indexOf(remainingInput[0]);
+        var entry = parseTable[currentRow][lookAhead];
+        for (var j = 0; j < m._arrays.length; j++) {
+          m.unhighlight(j);
+        }
+        for (var j = 0; j < parseTableDisplay._arrays.length; j++) {
+          parseTableDisplay.unhighlight(j);
+        }
+        parseTableDisplay.highlight(currentRow+1, lookAhead+1);
+        if (!entry) {
+          break;
+        } 
+        if (entry === 'acc') {
+          accept = true;
+          jsav.step();
+          break;
+        }
+        if (entry[0] === 's') {
+          var term = parseTree.addNode(remainingInput[0]);
+          term.addClass('terminal');
+          parseStack.push(term);
+          displayOrder.push(term);
+          currentRow = Number(entry.substring(1));
+          parseStack.push(currentRow);
+          remainingInput = remainingInput.substring(1);
+          parseTree.layout();
+        } else if (entry[0] === 'r') {
+          var pIndex = Number(entry.substring(1));
+          var p = productions[pIndex];
+          m.highlight(pIndex - 1);
+          if (p[2] === emptystring) {
+            var lNode = parseTree.addNode(emptystring);
+            lNode.addClass('terminal');
+            parseTree.layout();
+            jsav.step();
+            var par = parseTree.addNode(p[0]);
+            parseTree.addEdge(par, lNode);
+            var n = currentRow;
+          } else {
+            var par = parseTree.addNode(p[0]);
+            var childs = [];
+            for (var i = p[2].length - 1; i >= 0; i--) {
+              parseStack.pop();
+              childs.unshift(parseStack.pop());
+            }
+            for (var i = 0; i < childs.length; i++) {
+              parseTree.addEdge(par, childs[i]);
+            }
+            var n = parseStack[parseStack.length - 1];
+          }
+          //console.log(n)
+          parseTree.layout();
+          jsav.umsg(remainingInput + ' | '
+           + _.map(parseStack, function(x, k) {
+            if (typeof x === 'number' || typeof x === 'string') {
+              return x;
+            }
+            return x.value();}));
+          jsav.step();
+          parseStack.push(par);
+          displayOrder.push(par);
+          currentRow = Number(parseTable[n][tv.indexOf(p[0])]);
+          for (var j = 0; j < parseTableDisplay._arrays.length; j++) {
+            parseTableDisplay.unhighlight(j);
+          }
+          parseTableDisplay.highlight(n+1, tv.indexOf(p[0]) + 1);
+          parseStack.push(currentRow);
+          parseTree.layout();
+        }
+        jsav.umsg(remainingInput + ' | '
+         + _.map(parseStack, function(x, k) {
+          if (typeof x === 'number' || typeof x === 'string') {
+            return x;
+          }
+          return x.value();}));
+        jsav.step();
+      }
+      if (accept) {
+        jsav.umsg('"' + inputString + '" accepted');
+      } else {
+        jsav.umsg('"' + inputString + '" rejected');
+      }
+      jsav.recorded();
+    };
+    $('#parsebutton').click(continueParse);
   };
   var addClosure = function (items, productions) {
     var itemsStack = [];
@@ -864,8 +1335,10 @@
       m = init();
     }
     if (derivationTable) { derivationTable.clear();}
+    if (ffTable) { ffTable.clear();}
     if (parseTableDisplay) { parseTableDisplay.clear();}
     if (modelDFA) { modelDFA.clear();}
+    if (builtDFA) { builtDFA.clear();}
     $(".jsavmatrix").removeClass('editMode');
     $(".jsavmatrix").removeClass('deleteMode');
     $("#mode").html('');
@@ -876,18 +1349,24 @@
     $('#transformations').hide();
     $('.jsavcontrols').show();
     $('#backbutton').show();
+    $('#bfpbutton').hide();
+    $('#llbutton').hide();
+    $('#slrbutton').hide();
     $(m.element).css("margin-left", "50px");
     m._arrays[lastRow].hide();
   };
   var endParse = function () {
     if (parseTree) {parseTree.clear();}
     if (derivationTable) { derivationTable.clear();}
+    if (ffTable) { ffTable.clear();}
     if (parseTableDisplay) { parseTableDisplay.clear();}
     if (modelDFA) { modelDFA.clear();}
+    if (builtDFA) { builtDFA.clear();}
     $('button').show();
     $('#transformations').show();
     $('.jsavcontrols').hide();
     $('#backbutton').hide();
+    $('.parsingbutton').hide();
     $(m.element).css("margin-left", "auto");
     m._arrays[lastRow].show();
   };
@@ -1323,6 +1802,25 @@
     window.open('CFGtoNPDA.html', '', 'width = 800, height = 750, screenX = 300, screenY = 25');
   });
   //=================================
+  $('#movebutton').click(function() {
+    $('.jsavgraph').removeClass('addfinals');
+    $('.jsavgraph').removeClass('builddfa');
+    $('.jsavgraph').addClass('movenodes');
+    jsav.umsg('Click a node.');
+  });
+  $('#finalbutton').click(function() {
+    $('.jsavgraph').removeClass('movenodes');
+    $('.jsavgraph').removeClass('builddfa');
+    $('.jsavgraph').addClass('addfinals');
+    jsav.umsg('Click a node to toggle final state.');
+  });
+  $('#gotobutton').click(function() {
+    $('.jsavgraph').removeClass('addfinals');
+    $('.jsavgraph').removeClass('movenodes');
+    $('.jsavgraph').addClass('builddfa');
+    jsav.umsg('Build the DFA.');
+  });
+  //=================================
   $('#backbutton').click(function () {
     if (parseTree) {
       parseTree.clear();
@@ -1331,13 +1829,18 @@
       m = init();
     }
     if (derivationTable) { derivationTable.clear();}
+    if (ffTable) { ffTable.clear();}
     if (parseTableDisplay) { parseTableDisplay.clear();}
     if (modelDFA) { modelDFA.clear();}
+    if (builtDFA) { builtDFA.clear();}
+    $('#firstinput').remove();
     jsav.umsg('');
     $('button').show();
     $('#transformations').show();
     $('.jsavcontrols').hide();
     $('#backbutton').hide();
+    $('.parsingbutton').off();
+    $('.parsingbutton').hide();
     $(m.element).css("margin-left", "auto");
   });
   $('#editbutton').click(editMode);

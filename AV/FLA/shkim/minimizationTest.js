@@ -341,7 +341,7 @@
 			currentCount = 0,
 			minimizedCount = 0;
 		for (var next = edges.next(); next; next = edges.next()) {
-			currentCount += next.weight().split(',').length;
+			currentCount += next.weight().split('<br>').length;
 		}
 		for (var i in minimizedEdges) {
 			minimizedCount += minimizedEdges[i].length;

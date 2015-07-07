@@ -26,6 +26,24 @@
     #backbutton {
       display: none;
     }
+    #followbutton {
+      display: none;
+    }
+    #slrdfabutton {
+      display: none;
+    }
+    #parsetablebutton {
+      display: none;
+    }
+    #parsereadybutton {
+      display: none;
+    }
+    #parsebutton {
+      display: none;
+    }
+    #dfabuttons {
+      display: none;
+    }
     .terminal {
       background-color: lightgreen;
     }
@@ -44,6 +62,11 @@
       <button type="button" id="bfpbutton">Brute Force Parse</button>
       <button type="button" id="llbutton">LL(1) Parse</button>
       <button type="button" id="slrbutton">SLR(1) Parse</button>
+      <button type="button" class="parsingbutton" id="followbutton">Next</button>
+      <button type="button" class="parsingbutton" id="slrdfabutton">Next</button>
+      <button type="button" class="parsingbutton" id="parsetablebutton">Next</button>
+      <button type="button" class="parsingbutton" id="parsereadybutton">Next</button>
+      <button type="button" class="parsingbutton" id="parsebutton">Parse</button>
       <button type="button" id="backbutton">Back</button>
       <button type="button" id="convertRLGbutton">Convert RLG to FA</button>
       <button type="button" id="convertCFGbutton">Convert CFG to NPDA</button>
@@ -53,6 +76,11 @@
         <button type="button" id="unitbutton">Remove Unit-Productions</button>
         <button type="button" id="uselessbutton">Remove Useless Productions</button>
         <button type="button" id="chomskybutton">Convert CFG to Chomsky Normal Form</button>
+      </div>
+      <div id="dfabuttons">
+        <button type="button" id="movebutton">Move</button>
+        <button type="button" id="finalbutton">Make final</button>
+        <button type="button" id="gotobutton">Continue DFA</button>
       </div>
     </div>
     <div id="av">
