@@ -39,7 +39,7 @@ public static void main(String args[]) throws IOException {
   preorder(rt1);
   System.out.println();
   rt1.setLeft(new BSTNode<Integer>(new Integer(3)));
-  rt1.setRight(new BSTNode<Integer>(6));
+  rt1.setRight(new BSTNode<Integer>(new Integer(6)));
   preorder(rt1);
   System.out.println();
   preorder2(rt1);
@@ -50,14 +50,14 @@ public static void main(String args[]) throws IOException {
   System.out.println();
 
   BSTNode<KVPair<Integer,String>> rt2 =
-    new BSTNode<KVPair<Integer,String>>(new KVPair<Integer,String>(5, "John"));
+    new BSTNode<KVPair<Integer,String>>(new KVPair<Integer,String>(new Integer(5), "John"));
 
-  if (!checkBST(rt2, new KVPair<Integer,String>(-1, ""),
-		new KVPair<Integer,String>(999999, "")))
+  if (!checkBST(rt2, new KVPair<Integer,String>(new Integer(-1), ""),
+		new KVPair<Integer,String>(new Integer(999999), "")))
     SUCCESS = false;
-  rt2.setLeft(new BSTNode<KVPair<Integer,String>>(new KVPair<Integer,String>(10, "Jack")));
-  if (checkBST(rt2, new KVPair<Integer,String>(-1, ""),
-	       new KVPair<Integer,String>(999999, "")))
+  rt2.setLeft(new BSTNode<KVPair<Integer,String>>(new KVPair<Integer,String>(new Integer(10), "Jack")));
+  if (checkBST(rt2, new KVPair<Integer,String>(new Integer(-1), ""),
+	       new KVPair<Integer,String>(new Integer(999999), "")))
     SUCCESS = false;
 
   Integer myi = new Integer(10);

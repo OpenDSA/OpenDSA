@@ -19,34 +19,34 @@ class BST {
   }
 
   // Remove a record from the tree
-  // k: The key value of record to remove
+  // key: The key value of record to remove
   // Returns the record removed, null if there is none.
-  public Comparable remove(Comparable k) {
-    Comparable temp = findhelp(root, k); // First find it
+  public Comparable remove(Comparable key) {
+    Comparable temp = findhelp(root, key); // First find it
     if (temp != null) {
-      root = removehelp(root, k); // Now remove it
+      root = removehelp(root, key); // Now remove it
       nodecount--;
     }
     return temp;
   }
 
   // Return the record with key value k, null if none exists
-  // k: The key value to find
-  public Comparable find(Comparable k) { return findhelp(root, k); }
+  // key: The key value to find
+  public Comparable find(Comparable key) { return findhelp(root, key); }
 
   // Return the number of records in the dictionary
   public int size() { return nodecount; }
 /* *** ODSAendTag: BST *** */
 
-  // Return a record that matches key value k
+  // Return a record that matches the key value
 /* *** ODSATag: findhelp *** */
-  private Comparable findhelp(BSTNode rt, Comparable k) {
+  private Comparable findhelp(BSTNode rt, Comparable key) {
     if (rt == null) return null;
-    if (rt.element().compareTo(k) > 0)
-      return findhelp(rt.left(), k);
-    else if (rt.element().compareTo(k) == 0)
+    if (rt.element().compareTo(key) > 0)
+      return findhelp(rt.left(), key);
+    else if (rt.element().compareTo(key) == 0)
       return rt.element();
-    else return findhelp(rt.right(), k);
+    else return findhelp(rt.right(), key);
   }
 /* *** ODSAendTag: findhelp *** */
 
@@ -81,15 +81,15 @@ class BST {
   }
 /* *** ODSAendTag: getmax *** */
 
-  // Remove a node with key value k
+  // Remove a node with the key value
   // Return the tree with the node removed
 /* *** ODSATag: removehelp *** */
-  private BSTNode removehelp(BSTNode rt, Comparable k) {
+  private BSTNode removehelp(BSTNode rt, Comparable key) {
     if (rt == null) return null;
-    if (rt.element().compareTo(k) > 0)
-      rt.setLeft(removehelp(rt.left(), k));
-    else if (rt.element().compareTo(k) < 0)
-      rt.setRight(removehelp(rt.right(), k));
+    if (rt.element().compareTo(key) > 0)
+      rt.setLeft(removehelp(rt.left(), key));
+    else if (rt.element().compareTo(key) < 0)
+      rt.setRight(removehelp(rt.right(), key));
     else { // Found it
       if (rt.left() == null) return rt.right();
       else if (rt.right() == null) return rt.left();
@@ -113,7 +113,7 @@ class BST {
 /* *** ODSAendTag: printhelp *** */
 
 // Used for testing
-private void printVisit(Object e) { }
+  private void printVisit(Comparable e) { System.out.print(e + " "); }
 
 // Used for testing
 public BSTNode root() {

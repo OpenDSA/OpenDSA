@@ -6,7 +6,7 @@ interface BinNode { // Binary tree node ADT
 
   // return the children
   public BinNode left();
-  pubilc BinNode right();
+  public BinNode right();
 
   // return TRUE if a leaf node, FALSE otherwise
   public boolean isLeaf();

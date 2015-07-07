@@ -33,16 +33,13 @@ static int count(BinNode rt) {
 
 public static void main(String args[]) throws IOException {
   BSTNode rt1 = null;
-  BSTNode rt2 = new BSTNode(new KVPair(5, "John"));
-
   int temp = count(rt1);
-  if(!checkBST(rt2, -1, 999999)) SUCCESS = false;
-  rt2.setLeft(new BSTNode(new KVPair(10, "Jack")));
-  if(checkBST(rt2, -1, 999999)) SUCCESS = false;
 
-  rt1 = new BSTNode(5);
-  rt1.setLeft(new BSTNode(3));
-  rt1.setRight(new BSTNode(6));
+  rt1 = new BSTNode(new Integer(5));
+  preorder(rt1);
+  System.out.println();
+  rt1.setLeft(new BSTNode(new Integer(3)));
+  rt1.setRight(new BSTNode(new Integer(6)));
   preorder(rt1);
   System.out.println();
   preorder2(rt1);
@@ -51,6 +48,25 @@ public static void main(String args[]) throws IOException {
   System.out.println();
   postorder(rt1);
   System.out.println();
+
+  BSTNode rt2 = new BSTNode(new KVPair(new Integer(5), "John"));
+
+  if (!checkBST(rt2, new KVPair(new Integer(-1), ""),
+		new KVPair(new Integer(999999), "")))
+    SUCCESS = false;
+  rt2.setLeft(new BSTNode(new KVPair(new Integer(10), "Jack")));
+  if (checkBST(rt2, new KVPair(new Integer(-1), ""),
+	       new KVPair(new Integer(999999), "")))
+    SUCCESS = false;
+
+  Integer myi = new Integer(10);
+  Integer myj = new Integer(12);
+  KVPair kv = new KVPair(myi, "John");
+
+  if (kv.compareTo(myi) != 0)
+    SUCCESS = false;
+  if (kv.compareTo(myj) == 0)
+    SUCCESS = false;
 
   if (SUCCESS) {
     PrintWriter output = new PrintWriter("success");
