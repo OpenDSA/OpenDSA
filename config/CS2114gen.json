@@ -7,9 +7,9 @@
     "Java_Generic": { "ext":["java"], "label":"Java (Generic)","lang":"java"}
   },
   "module_origin": "http://algoviz.org",
-  "exercise_server": "https://opendsa.cc.vt.edu/",
-  "logging_server": "https://opendsa.cc.vt.edu/",
-  "score_server": "https://opendsa.cc.vt.edu/",
+  "exercise_server": "https://opendsa.cs.vt.edu/",
+  "logging_server": "https://opendsa.cs.vt.edu/",
+  "score_server": "https://opendsa.cs.vt.edu/",
   "build_JSAV": false,
   "build_cmap": false,
   "allow_anonymous_credit": true,
