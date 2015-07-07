@@ -1,9 +1,8 @@
 (function ($) {
 	var jsav = new JSAV("av"),
 		arr,
-		g;
-
-	var lambda = String.fromCharCode(955),
+		g,
+		lambda = String.fromCharCode(955),
 		epsilon = String.fromCharCode(949);
 
 	var initialize = function() {
@@ -17,6 +16,7 @@
 		$('.jsavcontrols').show();
 		run(traversal);
 	};
+	
 	var initGraph = function(opts) {
 		var gg = jQuery.parseJSON(g);
 		var graph = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
@@ -46,13 +46,14 @@
 	    }
 	    g = graph;
     };
+
     function delambdafy(weight) {
     	var weights = weight.split("<br>");
 		for (var i = 0; i < weights.length; i++) {
 			var symbols = weights[i].split(":");
 			for (var j = 0; j < symbols.length; j++) {
 				if (symbols[j] == "&lambda;") {
-				symbols[j] = lambda;
+					symbols[j] = lambda;
 				}
 				else if (symbols[j] == "&epsilon;") {
 					symbols[j] = epsilon;
@@ -62,6 +63,7 @@
 		}
 		return weights.join("<br>");
     };
+
 	var run = function(inputString) {
 		var textArray = [];
 		g.initial.addClass('current');
@@ -116,6 +118,24 @@
 		}
 		jsav.step();
 		jsav.recorded();
+
+		arr.click(arrayClickHandler);
+	};
+
+	function arrayClickHandler(index) {
+		var oldFx = $.fx.off || false;
+    	$.fx.off = true;
+    	if (index > jsav.currentStep() - 1) {
+    		while (index > jsav.currentStep() - 1 && jsav._redo.length) {
+				jsav.forward();
+			}
+    	}
+    	if (index < jsav.currentStep() - 1) {
+    		while (index < jsav.currentStep() - 1 && jsav._undo.length) {
+				jsav.backward();
+			}
+    	}
+		$.fx.off = oldFx;
 	};
 
 	initialize();

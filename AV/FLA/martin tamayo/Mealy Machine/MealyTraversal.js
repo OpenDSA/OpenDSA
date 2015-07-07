@@ -1,9 +1,8 @@
 (function ($) {
 	var jsav = new JSAV("av"),
 		arr,
-		g;
-
-	var lambda = String.fromCharCode(955),
+		g,
+		lambda = String.fromCharCode(955),
 		epsilon = String.fromCharCode(949);
 
 	var initialize = function() {
@@ -114,6 +113,24 @@
 		}
 		jsav.step();
 		jsav.recorded();
+
+		arr.click(arrayClickHandler);
+	};
+
+	function arrayClickHandler(index) {
+		var oldFx = $.fx.off || false;
+    	$.fx.off = true;
+    	if (index > jsav.currentStep() - 1) {
+    		while (index > jsav.currentStep() - 1 && jsav._redo.length) {
+				jsav.forward();
+			}
+    	}
+    	if (index < jsav.currentStep() - 1) {
+    		while (index < jsav.currentStep() - 1 && jsav._undo.length) {
+				jsav.backward();
+			}
+    	}
+		$.fx.off = oldFx;
 	};
 
 	initialize();

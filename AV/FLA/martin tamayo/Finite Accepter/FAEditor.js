@@ -72,18 +72,18 @@
 			for (var i = 0; i < weights.length; i++) {
 			var symbols = weights[i].split(":");
 			for (var j = 0; j < symbols.length; j++) {
-					if (symbols[j] == "&lambda;") {
+				if (symbols[j] == "&lambda;") {
 					symbols[j] = lambda;
 					if (lambda != emptystring) {
 						emptyString();
 					}
+				}
+				else if (symbols[j] == "&epsilon;") {
+					symbols[j] = epsilon;
+					if (epsilon != emptystring) {
+						emptyString();
 					}
-					else if (symbols[j] == "&epsilon;") {
-						symbols[j] = epsilon;
-						if (epsilon != emptystring) {
-							emptyString();
-						}
-					}
+				}
 			}
 			weights[i] = symbols.join(":");
 		}

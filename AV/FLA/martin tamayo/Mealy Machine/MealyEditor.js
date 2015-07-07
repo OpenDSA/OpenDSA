@@ -82,6 +82,9 @@
 					}
 				}
 			}
+			while (symbols.length > 2) {
+				symbols.pop();
+			}
 			if (symbols.length < 2) {
 				symbols.push(emptystring);
 			}
