@@ -2,12 +2,11 @@
 	var jsav = new JSAV("av"),
 		jsavArray,
 		saved = false,
-		serialization,
 		first = null,
 		selected = null,
 		label = null,
-		undoStack = [],
-		redoStack = [],
+		undoStack,
+		redoStack,
 		data,
 		g,
 		lambda = String.fromCharCode(955),
@@ -15,15 +14,13 @@
 		emptystring = lambda;
     
     var initialize = function(graph) {
-		if (g) {
-			localStorage['backup'] = serialize(g);
-		}
 		data = graph;
-		initGraph({layout: "automatic"});
+		return initGraph({layout: "automatic"});
 	};
 
 	var initGraph = function(opts) {
 		$('.jsavgraph').remove();
+		var success = true;
 		var gg;
 		try {
 			gg = jQuery.parseJSON(data);
@@ -32,6 +29,7 @@
 			jsav.umsg('Error: Tried to load invalid file.');
 			g = localStorage['backup'];
 			gg = jQuery.parseJSON(g);
+			success = false;
 		}
 		finally {
 			g = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
@@ -65,6 +63,7 @@
 			$('.jsavgraph').click(graphClickHandler);
 			$('.jsavedgelabel').click(labelClickHandler);
 	    	jsav.displayInit();
+	    	return success;
 	    }
     };
 
@@ -289,7 +288,7 @@
 	};
 
 	var removeModeClasses = function() {
-		$('#multipleTraversals').hide();
+		$('.arrayPlace').empty();
 		$("#mode").html('');
 		jsav.umsg('');
 		if (first) {
@@ -328,6 +327,8 @@
 	};
 
 	var switchEmptyString = function() {
+		removeModeClasses();
+		removeND();
 		saveMooreState();
 		if(!emptyString()) {
 			undoStack.pop();
@@ -427,6 +428,8 @@
 	};
 
 	var layoutGraph = function() {
+		removeModeClasses();
+		removeND();
 		saveMooreState();
 		g.layout();
 	};
@@ -463,7 +466,6 @@
 		for (var next = nodes.next(); next; next = nodes.next()) {
 			next.removeClass('current');
 		}
-		serialization = serialize(g);
 		var outputArray = [];
 		var acceptArray = [];
 		readyTraversal();
@@ -481,8 +483,7 @@
 		for (var j = 0; j < inputArray.length; j++) {
 			travArray.push(inputArray[j] + "<br><b>" + outputArray[j] +"</b>");
 		}
-		document.getElementById("multipleTraversals").innerHTML = "";
-		jsavArray = jsav.ds.array(travArray, {element: $('.traversalPlace')});
+		jsavArray = jsav.ds.array(travArray, {element: $('.arrayPlace')});
 		for (var k = 0; k < travArray.length; k++) {
 			if(acceptArray[k]){
 				jsavArray.css(k, {"background-color": "green"});
@@ -491,8 +492,7 @@
 				jsavArray.css(k, {"background-color": "red"});
 			}
 		}
-		$('#multipleTraversals').off("click");
-		$('#multipleTraversals').show();
+		$('.arrayPlace').off("click");
 		jsavArray.click(arrayClickHandler);
 		jsavArray.show();
 	};
@@ -502,9 +502,16 @@
 	};
 
 	var play = function (inputString) {
-		localStorage['graph'] = serialization;
+		localStorage['graph'] = serialize(g);
 		localStorage['traversal'] = inputString;
 		window.open("./MooreTraversal.html");
+	};
+
+	function resetUndoButtons () {
+		document.getElementById("undoButton").disabled = true;
+		document.getElementById("redoButton").disabled = true;
+		undoStack = [];
+		redoStack = [];
 	};
 
 	function saveMooreState () {
@@ -556,34 +563,30 @@
 		if (!saved) {
 			return;
 		}
-		if (jsavArray) {
-			jsavArray.hide();
-		}
-		undoStack = [];
-		redoStack = [];
-		document.getElementById("undoButton").disabled = true;
-		document.getElementById("redoButton").disabled = true;
 		data = document.getElementById("loadFile").files[0];
 		onLoadHandler();
 	};
 
 	function onLoadHandler() {
 		if (data) {
+			localStorage['backup'] = serialize(g);
 			var reader = new FileReader();
 			reader.onload = loadComplete;
 			reader.readAsText(data);
 			function loadComplete() {
 				var readerData = reader.result;
-				initialize(readerData);
+				if (initialize(readerData)) {
+					jsav.umsg('File loaded.');
+					$('.arrayPlace').empty();
+					resetUndoButtons();
+				}
 			}
 			data = null;
-		}
-		else if (serialization) {
-			initialize(serialization);
 		}
 		else {
 			var defaultData = '{"nodes":[{"left":508,"top":201,"i":true,"f":false,"stateLabel":"","mooreOutput":"l"},{"left":345,"top":43,"i":false,"f":false,"stateLabel":"","mooreOutput":"a"},{"left":184,"top":357,"i":false,"f":false,"stateLabel":"","mooreOutput":"p"},{"left":815,"top":42,"i":false,"f":false,"stateLabel":"","mooreOutput":"j"},{"left":660,"top":366,"i":false,"f":false,"stateLabel":"","mooreOutput":"f"}],"edges":[{"start":0,"end":3,"weight":"a"},{"start":0,"end":1,"weight":"d"},{"start":1,"end":2,"weight":"e"},{"start":2,"end":0,"weight":"f"},{"start":3,"end":4,"weight":"b"},{"start":4,"end":0,"weight":"c"}]}';
 			initialize(defaultData);
+			resetUndoButtons();
 		}
 	};
 
