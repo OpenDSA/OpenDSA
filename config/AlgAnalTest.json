@@ -85,27 +85,39 @@
           }
         }
       },
-      "AlgAnal/AnalIntro": {
+      "AlgAnalTest/AnalIntro": {
         "long_name": "Comparing Algorithms",
-        "exercises": {}
+        "exercises": {
+           "ComparingAlgorithms": {
+            "long_name": "Comparing Growth Rates Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+           }
+        }
       },
       "AlgAnalTest/AnalCases": {
         "long_name": "Best, Average, and Worst Cases",
-		"sections": {
+		    "sections": {
           "BestWorstAverage": {
             "long_name": "Best, Worst, and Average cases visualization",
             "showhide": "hide"
           }
         },
         "exercises": {
-		  "BestWorstAverageCON": {
+		      "BestWorstAverageCON": {
             "long_name": "Best, Worst, and Average cases visualization",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
-          }
-		
-		}
+          },
+          "BestWorstAverageCases": {
+            "long_name": "Best, Worst, and Average cases Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+           }
+		    }
       },
       "AlgAnal/AnalCompvsAlg": {
         "long_name": "A Faster Computer, or a Faster Algorithm?",
