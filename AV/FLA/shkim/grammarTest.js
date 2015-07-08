@@ -5,6 +5,7 @@
       lastRow = 8,          // index of the last visible row
       arr = new Array(20),
       m,
+      tGrammar,     // transformed grammar
       derivationTable,
       parseTableDisplay,
       parseTree,
@@ -43,15 +44,15 @@
     // arr[8] = ['', arrow, ''];
 
     // remove lambda productions example:
-    // arr[0] = ['S', arrow, 'EBCA'];
-    // arr[1] = ['A', arrow, 'aAa'];
-    // arr[2] = ['A', arrow, emptystring];
-    // arr[3] = ['B', arrow, 'bB'];
-    // arr[4] = ['B', arrow, emptystring];
-    // arr[5] = ['C', arrow, 'B'];
-    // arr[6] = ['D', arrow, 'AB']; 
-    // arr[7] = ['E', arrow, 'a'];
-    // arr[8] = ['', arrow, ''];
+    arr[0] = ['S', arrow, 'EBCA'];
+    arr[1] = ['A', arrow, 'aAa'];
+    arr[2] = ['A', arrow, emptystring];
+    arr[3] = ['B', arrow, 'bB'];
+    arr[4] = ['B', arrow, emptystring];
+    arr[5] = ['C', arrow, 'B'];
+    arr[6] = ['D', arrow, 'AB']; 
+    arr[7] = ['E', arrow, 'a'];
+    arr[8] = ['', arrow, ''];
 
     // remove unit productions example:
     // arr[0] = ['S', arrow, 'Aa'];
@@ -105,11 +106,11 @@
     // lastRow = 6;
 
     // SLR(1) examples:
-    arr[0] = ['S', arrow, 'A'];
-    arr[1] = ['A', arrow, 'aaA'];
-    arr[2] = ['A', arrow, 'b'];
-    arr[3] = ['', arrow, ''];
-    lastRow = 3;
+    // arr[0] = ['S', arrow, 'A'];
+    // arr[1] = ['A', arrow, 'aaA'];
+    // arr[2] = ['A', arrow, 'b'];
+    // arr[3] = ['', arrow, ''];
+    // lastRow = 3;
 
     // arr[0] = ['S', arrow, 'ABc'];
     // arr[1] = ['A', arrow, 'Aa'];
@@ -1367,6 +1368,7 @@
     if (parseTableDisplay) { parseTableDisplay.clear();}
     if (modelDFA) { modelDFA.clear();}
     if (builtDFA) { builtDFA.clear();}
+    if (tGrammar) { tGrammar.clear();}
     $("#firstinput").remove();
     $(".jsavmatrix").removeClass('editMode');
     $(".jsavmatrix").removeClass('deleteMode');
@@ -1391,6 +1393,7 @@
     if (parseTableDisplay) { parseTableDisplay.clear();}
     if (modelDFA) { modelDFA.clear();}
     if (builtDFA) { builtDFA.clear();}
+    if (tGrammar) { tGrammar.clear();}
     $('button').show();
     $('#transformations').show();
     $('.jsavcontrols').hide();
@@ -1557,13 +1560,15 @@
     // arr.push(["", arrow, ""]);
     // m = init();
     // $('.jsavmatrix').addClass('editMode');
-    localStorage['grammar'] = _.map(transformed, function(x) {return x.join('');});
-    window.open('grammarTest.html', '');
+    var ret = _.map(transformed, function(x) {return x.join('');});
+    // localStorage['grammar'] = ret;
+    // window.open('grammarTest.html', '');
+    return ret;
   };
   var removeLambdaHelper = function (set, productions) {
     // a variable derives lambda if it directly produces lambda or if its right side is
     // composed only of lambda-deriving variables
-    // NOTE: this function is used during brute force parsing as well
+    // NOTE: this function is used during parsing as well
     for (var i = 0; i < productions.length; i++) {
       if (productions[i][2] === emptystring || _.every(productions[i][2], function(x) { return x in set;})) {
         if (!(productions[i][0] in set)) {
@@ -1615,8 +1620,10 @@
     //   console.log(""+productions[i]);
     // }
     // console.log(productions.length);
-    localStorage['grammar'] = _.map(productions, function(x) {return x.join('');});
-    window.open('grammarTest.html', '');
+    var ret = _.map(productions, function(x) {return x.join('');});
+    // localStorage['grammar'] = ret;
+    // window.open('grammarTest.html', '');
+    return ret;
   };
   var removeUnitHelper = function (productions, pDict) {
     // finds a unit production and adds one of the replacement productions
@@ -1681,8 +1688,10 @@
     //   console.log(""+transformed[i]);
     // }
     // console.log(transformed.length);
-    localStorage['grammar'] = _.map(transformed, function(x) {return x.join('');});
-    window.open('grammarTest.html', '');
+    var ret = _.map(transformed, function(x) {return x.join('');});
+    // localStorage['grammar'] = ret;
+    // window.open('grammarTest.html', '');
+    return ret;
   };
   var findDerivable = function (set, productions) {
     // finds a deriver
@@ -1778,7 +1787,8 @@
       //console.log(""+x);
     }
     var toExport = true;
-    localStorage['grammar'] = _.map(productions, function(x) {return x.join('');});
+    var ret =  _.map(productions, function(x) {return x.join('');});
+    // localStorage['grammar'] = ret;
     //console.log(productions.length);
 
     // translate temporary variables for export
@@ -1796,12 +1806,139 @@
       }
     }
     if (toExport) {
-      localStorage['grammar'] = _.map(productions, function(x) {return x.join('');});
-      window.open('grammarTest.html', '');
+      // localStorage['grammar'] = _.map(productions, function(x) {return x.join('');});
+      // window.open('grammarTest.html', '');
     } else {
       // if there are too many variables to export, instead creates a table with the temporary variables
-      window.open('npdaTable.html', '', 'width = 600, height = 625, screenX = 500, screenY = 25');
+      // window.open('npdaTable.html', '', 'width = 600, height = 625, screenX = 500, screenY = 25');
     }
+    return ret;
+  };
+
+  var transformGrammar = function () {
+    var noLambda = removeLambda();
+    var noUnit = removeUnit();
+    var noUseless = removeUseless();
+    var fullChomsky = convertToChomsky();
+    startParse();
+    $('.jsavcontrols').hide();
+    $(m.element).css("margin-left", "auto");
+    var derivers = {};  // variables that derive lambda
+    var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
+    var counter = 0;
+    // find lambda-deriving variables
+    while (removeLambdaHelper(derivers, productions)) {
+      counter++;
+      if (counter > 500) {
+        console.log(counter);
+        break;
+      }
+    };
+    if (productions[0][0] in derivers) {
+      alert('The start variable derives lambda');
+    }
+    var transformed = [];
+    noLambda = _.filter(productions, function(x) { return x[2] !== emptystring;});
+    transformed = transformed.concat(noLambda);
+    for (var i = 0; i < noLambda.length; i++) {
+      var p = noLambda[i];
+      var v = _.uniq(_.filter(p[2], function(x) { return x in derivers;}));  // remove lambda productions
+      if (v.length > 0) {
+        v = v.join('');
+        for (var j = v.length - 1; j >= 0; j--) {
+          // remove all combinations of lambda-deriving variables
+          var n = getCombinations(v, j + 1);
+          for (var next = n.next(); next.value; next = n.next()) {
+            var regex = new RegExp('[' + next.value.join('') + ']','g');
+            var replaced = p[2].replace(regex, "");
+            if (replaced) {
+              transformed.push([p[0], arrow, replaced]);
+            }
+          }
+        }
+      }
+    }
+    transformed = _.map(transformed, function(x) {return x.join('');});
+    var tArr = [].concat(productions);
+    tArr.push(["", arrow, ""]);
+    var builtLambdaSet = [];
+    var findLambdaHandler = function (index) {
+      var vv = this.value(index, 0);
+      var found = builtLambdaSet.indexOf(vv);
+      if ((vv in derivers) && found === -1) {
+        builtLambdaSet.push(vv);
+        jsav.umsg(vv + ' added! Set that derives lambda: [' + builtLambdaSet + ']');
+        if (builtLambdaSet.length === Object.keys(derivers).length) {
+          m.element.off();
+          continueLambda();
+        }
+      } else if (!(vv in derivers)) {
+        jsav.umsg(vv + ' does not derive lambda. Set that derives lambda: [' + builtLambdaSet + ']');
+      } else if (found !== -1) {
+        jsav.umsg(vv + ' already selected! Set that derives lambda: [' + builtLambdaSet + ']');
+      }
+    };
+    var removeLambdaHandler = function (index, index2) {
+      if (this.value(index, 0)) {
+        if (this.value(index, 2) === emptystring) {
+          tArr.splice(index, 1);
+          if (tGrammar) { tGrammar.clear();}
+          tGrammar = jsav.ds.matrix(tArr, {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
+          tGrammar.click(removeLambdaHandler);
+        } else {
+          alert('This production should not be deleted.');
+          return;
+        }
+      } else {
+        var input1 = prompt('Left side?');
+        if (!input1) {
+          return;
+        }
+        var input2 = prompt('Right side?');
+        if (!input2) {
+          return;
+        }
+        var toAdd = input1 + arrow + input2;
+        if (transformed.indexOf(toAdd) === -1) {
+          alert('This production is not part of the reformed grammar.');
+          return;
+        } if (_.map(tArr, function(x) {return x.join('');}).indexOf(toAdd) !== -1) {
+          alert('This production is already in the grammar.');
+          return;
+        }
+        tArr[index] = [input1, arrow, input2];
+        tArr.push(["", arrow, ""]);
+        if (tGrammar) { tGrammar.clear();}
+        tGrammar = jsav.ds.matrix(tArr, {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
+        tGrammar.click(removeLambdaHandler);
+      }
+      if (tArr.length - 1 === transformed.length && !_.find(tArr, function(x){return x[2]===emptystring})) {
+        var confirmed = confirm('Grammar completed; export?');
+        if (confirmed) {
+          localStorage['grammar'] = transformed;
+          window.open('grammarTest.html', '');
+        }
+      }
+    };
+    var continueLambda = function () {
+      jsav.umsg("Modify the grammar to remove lambdas. Set that derives lambda: [" + builtLambdaSet + ']');
+      $(m.element).css("margin-left", "50px");
+      tGrammar = jsav.ds.matrix(tArr, {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
+      tGrammar.click(removeLambdaHandler);
+    };
+    m.click(findLambdaHandler);
+    jsav.umsg("Select variables that derive lambda.");
+
+    // for (var i = 0; i < transformed.length; i++) {
+    //   console.log("" + transformed[i]);
+    // }
+    // arr = transformed;
+    // lastRow = arr.length;
+    // arr.push(["", arrow, ""]);
+    // m = init();
+    // $('.jsavmatrix').addClass('editMode');
+    // localStorage['grammar'] = _.map(transformed, function(x) {return x.join('');});
+    // window.open('grammarTest.html', '');
   };
 
   //=================================
@@ -1866,6 +2003,7 @@
     if (parseTableDisplay) { parseTableDisplay.clear();}
     if (modelDFA) { modelDFA.clear();}
     if (builtDFA) { builtDFA.clear();}
+    if (tGrammar) { tGrammar.clear();}
     $('#firstinput').remove();
     jsav.umsg('');
     $('button').show();
@@ -1886,4 +2024,5 @@
   $('#unitbutton').click(removeUnit);
   $('#uselessbutton').click(removeUseless);
   $('#chomskybutton').click(convertToChomsky);
+  $('#transformbutton').click(transformGrammar);
 }(jQuery));

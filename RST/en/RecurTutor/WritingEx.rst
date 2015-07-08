@@ -11,10 +11,20 @@
 
 
 Writing Practice Exercises
-===============================
+==========================
 
-.. avembed:: Exercises/RecurTutor/recWriteSumm1.html ka
+.. avembed:: Exercises/RecurTutor/recWIsbalancPROGSumm.html ka
 
-.. avembed:: Exercises/RecurTutor/recWriteSumm2.html ka
+.. avembed:: Exercises/RecurTutor/recWChckPlndrmPROGSumm.html ka
 
-.. avembed:: Exercises/RecurTutor/recWriteSumm3.html ka
+.. avembed:: Exercises/RecurTutor/recWRvrsStrngPROGSumm.html ka
+
+.. avembed:: Exercises/RecurTutor/recWRmvDuplctPROGSumm.html ka
+
+.. avembed:: Exercises/RecurTutor/recWPascalPROGSumm.html ka
+
+.. avembed:: Exercises/RecurTutor/recWCnonballPROGSumm.html ka
+
+.. avembed:: Exercises/RecurTutor/recWIsMeasurblPROGSumm.html ka
+
+.. avembed:: Exercises/RecurTutor/recWStckRevrsPROGSumm.html ka
