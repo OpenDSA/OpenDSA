@@ -8,11 +8,11 @@
       derivationTable,
       parseTableDisplay,
       parseTree,
-      ffTable,
+      ffTable,      // table for FIRST and FOLLOW sets
       arrayStep,
       selectedNode,
-      modelDFA,
-      builtDFA;
+      modelDFA,     // DFA used to build SLR parse table
+      builtDFA;     // DFA created by the user to try to build the modelDFA
 
   var lambda = String.fromCharCode(955),
       epsilon = String.fromCharCode(949),
@@ -40,6 +40,7 @@
     // arr[5] = ['C', arrow, 'x'];
     // arr[6] = ['B', arrow, 'y'];
     // arr[7] = ['A', arrow, emptystring];
+    // arr[8] = ['', arrow, ''];
 
     // remove lambda productions example:
     // arr[0] = ['S', arrow, 'EBCA'];
@@ -50,6 +51,7 @@
     // arr[5] = ['C', arrow, 'B'];
     // arr[6] = ['D', arrow, 'AB']; 
     // arr[7] = ['E', arrow, 'a'];
+    // arr[8] = ['', arrow, ''];
 
     // remove unit productions example:
     // arr[0] = ['S', arrow, 'Aa'];
@@ -58,6 +60,7 @@
     // arr[3] = ['B', arrow, 'b'];
     // arr[4] = ['C', arrow, 'B'];
     // arr[5] = ['C', arrow, 'cCc'];
+    // arr[6] = ['', arrow, ''];
     //lastRow = 6;
 
     // remove useless productions example:
@@ -70,6 +73,7 @@
     // arr[6] = ['B', arrow, 'bBb']; 
     // arr[7] = ['C', arrow, 'cD'];
     // arr[8] = ['D', arrow, 'aAb'];
+    // arr[9] = ['', arrow, ''];
     // lastRow = 9;
 
     // chomsky example:
@@ -77,6 +81,7 @@
     // arr[1] = ['A', arrow, 'Aa'];
     // arr[2] = ['A', arrow, 'a'];
     // arr[3] = ['B', arrow, 'bb'];
+    // arr[4] = ['', arrow, ''];
     // lastRow = 4;
 
     // FIRST example:
@@ -86,6 +91,7 @@
     // arr[3] = ['B', arrow, 'AB'];
     // arr[4] = ['B', arrow, 'bB'];
     // arr[5] = ['B', arrow, 'd'];
+    // arr[6] = ['', arrow, ''];
     // lastRow = 6;
 
     // LL(1) example:
@@ -95,12 +101,14 @@
     // arr[3] = ['B', arrow, 'bbB'];
     // arr[4] = ['B', arrow, emptystring];
     // arr[5] = ['C', arrow, 'BA'];
+    // arr[6] = ['', arrow, ''];
     // lastRow = 6;
 
     // SLR(1) examples:
     arr[0] = ['S', arrow, 'A'];
     arr[1] = ['A', arrow, 'aaA'];
     arr[2] = ['A', arrow, 'b'];
+    arr[3] = ['', arrow, ''];
     lastRow = 3;
 
     // arr[0] = ['S', arrow, 'ABc'];
@@ -108,6 +116,7 @@
     // arr[2] = ['A', arrow, emptystring];
     // arr[3] = ['B', arrow, 'BS'];
     // arr[4] = ['B', arrow, 'b'];
+    // arr[5] = ['', arrow, ''];
     // lastRow = 5;
   }
   var init = function () {
@@ -123,7 +132,7 @@
       return m2;
   };
   
-  var matrixClickHandler = function(index) {
+  var matrixClickHandler = function(index, index2) {
     if ($('.jsavmatrix').hasClass('deleteMode') && index !== lastRow) {
       // recreates the matrix when deleting a row...
       arr.splice(index, 1);
@@ -131,48 +140,55 @@
       m = init();
       $('.jsavmatrix').addClass('deleteMode');
     } else if ($('.jsavmatrix').hasClass('editMode')) {
-      this.highlight(index);
-      var input1 = prompt('Left-hand side?', this.value(index, 0));
-      if (input1 === null) {
-        this.unhighlight(index);
+      if (index2 === 1) {
         return;
       }
-      var input2 = prompt('Right-hand side?', this.value(index, 2));
-      if (input2 === null) {
-        this.unhighlight(index);
-        return;
-      }
-      if (input1 === "") {
-        input1 = emptystring;
-      }
-      if (input2 === "") {
-        input2 = emptystring;
-      }
-      this.value(index, 0, input1);
-      arr[index][0] = input1;
-      this.value(index, 2, input2);
-      arr[index][2] = input2;
-      this.unhighlight(index);
-      if (index === lastRow) {
-        // if array out of bounds, double the array size and recreate the matrix
-        if (lastRow === arr.length - 1 || lastRow === arr.length) {
-          var l = arr.length;
-          for (var i = 0; i < l; i++) {
-            arr.push(['', arrow, '']);
+      var prev = this.value(index, index2);
+      $('#firstinput').remove();
+      var createInput = "<input type='text' id='firstinput' value="+prev+">";
+      $('body').append(createInput);
+      var offset = this._arrays[index]._indices[index2].element.offset();
+      var topOffset = offset.top;
+      var leftOffset = offset.left;
+      $('#firstinput').offset({top: topOffset, left: leftOffset});
+      $('#firstinput').outerHeight($('.jsavvalue').height());
+      $('#firstinput').width($('.jsavvalue').width());
+      $('#firstinput').focus();
+      $('#firstinput').keyup(function(event){
+        if(event.keyCode == 13){
+          var input = $(this).val();
+          if (input === "" && index2 === 2) {
+            input = emptystring;
           }
-          m = init();
-          $('.jsavmatrix').addClass('editMode');
-        } 
-        m._arrays[lastRow + 1].show();
-        lastRow++;
-        m.layout();
-      }
-      //console.log(arr.length);
+          m.value(index, index2, input);
+          arr[index][index2] = input;
+          expandArray(index);
+          $('#firstinput').remove();
+        }
+      });
     }
   };
+  var expandArray = function (index) {
+    if (m.value(index, 0) && index === lastRow) {
+      // if array out of bounds, double the array size and recreate the matrix
+      if (lastRow === arr.length - 1 || lastRow === arr.length) {
+        var l = arr.length;
+        for (var i = 0; i < l; i++) {
+          arr.push(['', arrow, '']);
+        }
+        m = init();
+        $('.jsavmatrix').addClass('editMode');
+      } 
+      m._arrays[lastRow + 1].show();
+      lastRow++;
+      m.layout();
+    }
+  };
+
   m = init();
   $('.jsavmatrix').addClass("editMode");
 
+  //==============================
   // parsing
   var bfParse = function () {
     jsav.umsg('Parsing');
@@ -381,6 +397,7 @@
 
 
   var checkTable = function (firsts, follows) {
+    // checks if FIRST / FOLLOW sets are correct (either FIRST sets or FOLLOW sets)
     var checker;
     if (arrayStep === 1) {
       checker = firsts;
@@ -401,83 +418,8 @@
     } 
     return incorrect
   };
-  var firstFollowHandler = function (index) {
-    if (index === 0) { return; }
-    var prev = this.value(index, arrayStep);
-    prev = prev.replace(/,/g, "");
-    //console.log(prev)
-    $('#firstinput').remove();
-    var createInput = "<input type='text' id='firstinput' value="+prev+">";
-    $('body').append(createInput);
-    var offset = this._arrays[index].element.offset();
-    var topOffset = offset.top;
-    var leftOffset = offset.left;
-    var w = $('.jsavvalue').width();
-    $('#firstinput').offset({top: topOffset, left: leftOffset + arrayStep*w});
-    $('#firstinput').outerHeight($('.jsavvalue').height());
-    $('#firstinput').width(w);
-    $('#firstinput').focus();
-    $('#firstinput').keyup(function(event){
-      if(event.keyCode == 13){
-        var firstInput = $(this).val();
-        firstInput = firstInput.split("");
-        for (var i = 0; i < firstInput.length; i++) {
-          if (firstInput[i] === '!') {
-            firstInput[i] = emptystring;
-          }
-        }
-        firstInput = _.uniq(firstInput).join(',');
-        ffTable.value(index, arrayStep, firstInput);
-        $('#firstinput').remove();
-      }
-    });
-  };
-  var continueToFollow = function (firsts, follows) {
-    $('#firstinput').remove();
-    var incorrect = checkTable(firsts, follows);
-    if (incorrect.length > 0) {
-      var confirmed = confirm('The following sets are incorrect: ' + incorrect + '.\nFix automatically?');
-      if (confirmed) {
-        for (var i = 1; i < ffTable._arrays.length; i++) {
-          var a = ffTable._arrays[i].value(0);
-          ffTable.value(i, 1, firsts[a]);
-        }
-      } else {
-        return false;
-      }
-    }
-    $(ffTable.element).off();
-    $('#followbutton').hide();
-    jsav.umsg('Define FOLLOW sets. $ is the end of string character.');
-    arrayStep = 2;
-    ffTable.click(firstFollowHandler);
-    return true;
-  };
-  var parseTableHandler = function (index) {
-    // attach to arrays
-    if (index === 0) { return; }
-    var self = this;
-    var prev = this.value(index);
-    $('#firstinput').remove();
-    var createInput = "<input type='text' id='firstinput' value="+prev+">";
-    $('body').append(createInput);
-    var offset = this._indices[index].element.offset();
-    var topOffset = offset.top;
-    var leftOffset = offset.left;
-    $('#firstinput').offset({top: topOffset, left: leftOffset});
-    $('#firstinput').outerHeight($('.jsavvalue').height());
-    $('#firstinput').width($('.jsavvalue').width());
-    $('#firstinput').focus();
-    $('#firstinput').keyup(function(event){
-      if(event.keyCode == 13){
-        var firstInput = $(this).val();
-        firstInput = firstInput.replace(/!/g, emptystring);
-        self.value(index, firstInput);
-        $('#firstinput').remove();
-      }
-    });
-  };
   var checkParseTable = function (parseTableDisplay, parseTable) {
+    // checks if the parse table is correct
     $('#firstinput').remove();
     var incorrect = false;
     for (var i = 1; i < parseTableDisplay._arrays.length; i++) {
@@ -508,6 +450,85 @@
     $('#parsebutton').show();
     jsav.umsg("");
     $('.jsavarray').off();
+  };
+  var firstFollowHandler = function (index) {
+    // click handler for the FIRST/FOLLOW table
+    if (index === 0) { return; }
+    var prev = this.value(index, arrayStep);
+    prev = prev.replace(/,/g, "");
+    //console.log(prev)
+    $('#firstinput').remove();
+    var createInput = "<input type='text' id='firstinput' value="+prev+">";
+    $('body').append(createInput);
+    var offset = this._arrays[index].element.offset();
+    var topOffset = offset.top;
+    var leftOffset = offset.left;
+    var w = $('.jsavvalue').width();
+    $('#firstinput').offset({top: topOffset, left: leftOffset + arrayStep*w});
+    $('#firstinput').outerHeight($('.jsavvalue').height());
+    $('#firstinput').width(w);
+    $('#firstinput').focus();
+    $('#firstinput').keyup(function(event){
+      if(event.keyCode == 13){
+        var firstInput = $(this).val();
+        firstInput = firstInput.split("");
+        for (var i = 0; i < firstInput.length; i++) {
+          if (firstInput[i] === '!') {
+            firstInput[i] = emptystring;
+          }
+        }
+        firstInput = _.uniq(firstInput).join(',');
+        ffTable.value(index, arrayStep, firstInput);
+        $('#firstinput').remove();
+      }
+    });
+  };
+  var parseTableHandler = function (index) {
+    // click handler for the parse table
+    // note: attach to each array of the table
+    if (index === 0) { return; }
+    var self = this;
+    var prev = this.value(index);
+    $('#firstinput').remove();
+    var createInput = "<input type='text' id='firstinput' value="+prev+">";
+    $('body').append(createInput);
+    var offset = this._indices[index].element.offset();
+    var topOffset = offset.top;
+    var leftOffset = offset.left;
+    $('#firstinput').offset({top: topOffset, left: leftOffset});
+    $('#firstinput').outerHeight($('.jsavvalue').height());
+    $('#firstinput').width($('.jsavvalue').width());
+    $('#firstinput').focus();
+    $('#firstinput').keyup(function(event){
+      if(event.keyCode == 13){
+        var firstInput = $(this).val();
+        firstInput = firstInput.replace(/!/g, emptystring);
+        self.value(index, firstInput);
+        $('#firstinput').remove();
+      }
+    });
+  };
+  var continueToFollow = function (firsts, follows) {
+    // transition from editing FIRST sets to editing FOLLOW sets
+    $('#firstinput').remove();
+    var incorrect = checkTable(firsts, follows);
+    if (incorrect.length > 0) {
+      var confirmed = confirm('The following sets are incorrect: ' + incorrect + '.\nFix automatically?');
+      if (confirmed) {
+        for (var i = 1; i < ffTable._arrays.length; i++) {
+          var a = ffTable._arrays[i].value(0);
+          ffTable.value(i, 1, firsts[a]);
+        }
+      } else {
+        return false;
+      }
+    }
+    $(ffTable.element).off();
+    $('#followbutton').hide();
+    jsav.umsg('Define FOLLOW sets. $ is the end of string character.');
+    arrayStep = 2;
+    ffTable.click(firstFollowHandler);
+    return true;
   };
 
   // LL(1)
@@ -739,7 +760,8 @@
     $('#parsebutton').click(continueParse);
   };
 
-  var dfaClickHandler = function (e) {
+  var dfaHandler = function (e) {
+    // click handler for the nodes of the DFA being built
     if (selectedNode) {
       selectedNode.unhighlight();
     }
@@ -815,6 +837,7 @@
       
   };
   var graphHandler = function (e) {
+    // click handler for the DFA graph window
     if ($('.jsavgraph').hasClass('movenodes')) {
       var nodeX = selectedNode.element.width()/2.0,
           nodeY = selectedNode.element.height()/2.0;
@@ -1046,6 +1069,7 @@
       }
     });
     var continueToDFA = function () {
+      // check FOLLOW sets and initialize the DFA
       $('#firstinput').remove();
       var incorrect = checkTable(firsts, follows);
       if (incorrect.length > 0) {
@@ -1065,7 +1089,7 @@
       jsav.umsg('Build the DFA.');
       //modelDFA.hide();
       builtDFA = jsav.ds.fa({width: '90%', height: 440});
-      builtDFA.click(dfaClickHandler);
+      builtDFA.click(dfaHandler);
       $('.jsavgraph').click(graphHandler);
       $('#av').append($('#dfabuttons'));
       $('#dfabuttons').show();
@@ -1096,6 +1120,7 @@
     };
     $('#slrdfabutton').click(continueToDFA);
     var continueToParseTable = function () {
+      // check DFA and transition to the parse table
       var edges1 = modelDFA.edges();
       var edges2 = builtDFA.edges();
       var tCount1 = 0,
@@ -1280,6 +1305,7 @@
     $('#parsebutton').click(continueParse);
   };
   var addClosure = function (items, productions) {
+    // takes an array of strings
     var itemsStack = [];
     for (var i = items.length - 1; i >= 0; i--) {
       itemsStack.push(items[i]);
@@ -1315,6 +1341,7 @@
     return items;
   };
   var goTo = function (items, symbol) {
+    // takes an array of strings
     var newItems = [];
     for (var i = 0; i < items.length; i++) {
       var r = items[i];
@@ -1328,6 +1355,7 @@
   };
 
   var startParse = function () {
+    // set up window for parsing
     if (parseTree) {
       parseTree.clear();
       jsav.clear();
@@ -1339,6 +1367,7 @@
     if (parseTableDisplay) { parseTableDisplay.clear();}
     if (modelDFA) { modelDFA.clear();}
     if (builtDFA) { builtDFA.clear();}
+    $("#firstinput").remove();
     $(".jsavmatrix").removeClass('editMode');
     $(".jsavmatrix").removeClass('deleteMode');
     $("#mode").html('');
@@ -1369,6 +1398,7 @@
     $('.parsingbutton').hide();
     $(m.element).css("margin-left", "auto");
     m._arrays[lastRow].show();
+    $('.jsavmatrix').addClass("editMode");
   };
 
   var replaceCharAt = function (str, index, ch) {
@@ -1395,6 +1425,7 @@
     // }
   };
   var first = function (str, pDict, lambdaVars) {
+    // get FIRST set
     if (!str) {
       return [];
     }
@@ -1424,6 +1455,7 @@
     }
   };
   var follow = function (str, productions, pDict, lambdaVars) {
+    // get FOLLOW set
     var ret = [];
     if (str === productions[0][0]) {
       ret.push('$');
@@ -1471,6 +1503,7 @@
     $("#mode").html('Editing');
   };
   var deleteMode = function() {
+    $('#firstinput').remove();
     $('.jsavmatrix').addClass("deleteMode");
     $('.jsavmatrix').removeClass("editMode");
     $("#mode").html('Deleting');
@@ -1842,6 +1875,7 @@
     $('.parsingbutton').off();
     $('.parsingbutton').hide();
     $(m.element).css("margin-left", "auto");
+    $('.jsavmatrix').addClass("editMode");
   });
   $('#editbutton').click(editMode);
   $('#deletebutton').click(deleteMode);
