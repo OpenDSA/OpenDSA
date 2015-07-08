@@ -212,9 +212,16 @@
           }
         }
       },
-      "AlgAnal/AnalProblem": {
+      "AlgAnalTest/AnalProblem": {
         "long_name": "Analyzing Problems",
-        "exercises": {}
+        "exercises": {
+          "AnalProblem": {
+            "long_name": "Problem Analysis Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
       },
       "AlgAnal/AnalMisunderstanding": {
         "long_name": "Common Misunderstandings",
