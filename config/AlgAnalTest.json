@@ -223,9 +223,16 @@
           }
         }
       },
-      "AlgAnal/AnalMisunderstanding": {
+      "AlgAnalTest/AnalMisunderstanding": {
         "long_name": "Common Misunderstandings",
-        "exercises": {}
+        "exercises": {
+          "Misunderstandings": {
+            "long_name": "Common Misconceptions Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
       },
       "AlgAnal/AnalMultiple": {
         "long_name": "Multiple Parameters",
