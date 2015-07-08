@@ -229,12 +229,15 @@
       for (var i = 0; i < w.length; i++) {
         var t = w[i].split('|');
         for (var j = 0; j < t.length; j++) {
-          var letter = t[j].split(':')[0];
-          if (letter !== String.fromCharCode(955) && letter !== String.fromCharCode(949)) {
-            if (!(letter in alphabet)) {
-              alphabet[letter] = 0;
+          var letters = t[j].split(':')[0];
+          if (letters !== String.fromCharCode(955) && letters !== String.fromCharCode(949)) {
+            for (var k = 0; k < letters.length; k++) {
+              var letter = letters[k];
+              if (!(letter in alphabet)) {
+                alphabet[letter] = 0;
+              }
+              alphabet[letter]++;
             }
-            alphabet[letter]++;
           }
         }
       }
