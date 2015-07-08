@@ -188,7 +188,7 @@ If the limit goes to some constant other than zero, then
       :output: show
 
 
-.. avembed:: Exercises/AlgAnal/AnalPairSumm.html ka
+.. avembed:: Exercises/AlgAnalTest/LowerBoundsTheta.html ka
 
 Notes
 -----

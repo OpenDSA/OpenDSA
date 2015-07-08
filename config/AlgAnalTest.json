@@ -119,9 +119,16 @@
            }
 		    }
       },
-      "AlgAnal/AnalCompvsAlg": {
+      "AlgAnalTest/AnalCompvsAlg": {
         "long_name": "A Faster Computer, or a Faster Algorithm?",
-        "exercises": {}
+        "exercises": {
+           "FasterCompOrAlg": {
+            "long_name": "Faster Computer or Faster Algorithm Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+           }
+        }
       },
       "AlgAnalTest/AnalAsymptotic": {
         "long_name": "Asymptotic Analysis and Upper Bounds",
@@ -137,13 +144,19 @@
 		  }
         },
         "exercises": {
-		  "UpperBoundCON": {
+		        "UpperBoundCON": {
             "long_name": "Upper Bounds visualization",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
-          }
-		}
+          },
+          "UpperBounds": {
+            "long_name": "Asymptotic Analysis and Upper Bounds Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+           }
+		    }
       },
       "AlgAnalTest/AnalLower": {
         "long_name": "Lower Bounds and Theta Notation",
@@ -154,8 +167,8 @@
           }
         },
         "exercises": {
-          "AnalPairSumm": {
-            "long_name": "Function Pairs Exercise",
+          "LowerBoundsTheta": {
+            "long_name": "Lower Bounds and Theta Notation Exercise",
             "required": true,
             "points": 2.0,
             "threshold": 5

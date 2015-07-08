@@ -288,6 +288,8 @@ rules when discussing the cost for a program or algorithm.
 
    .. inlineav:: UpperBoundCON ss
       :output: show
+
+.. avembed:: Exercises/AlgAnalTest/UpperBounds.html ka
    
 .. odsascript:: AV/Development/AlgAnal/UpperBoundCON.js
 
