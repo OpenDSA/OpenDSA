@@ -20,6 +20,9 @@
       square = String.fromCharCode(9633),
       dot = String.fromCharCode(183),
       emptystring = lambda;
+  if (localStorage["backup"]) {
+    localStorage.removeItem('backup');
+  }
   if (localStorage["grammar"]) {
     arr = _.map(localStorage['grammar'].split(','), function(x) { 
       var d = x.split(String.fromCharCode(8594));
@@ -44,25 +47,45 @@
     // arr[8] = ['', arrow, ''];
 
     // remove lambda productions example:
-    arr[0] = ['S', arrow, 'EBCA'];
-    arr[1] = ['A', arrow, 'aAa'];
-    arr[2] = ['A', arrow, emptystring];
-    arr[3] = ['B', arrow, 'bB'];
-    arr[4] = ['B', arrow, emptystring];
-    arr[5] = ['C', arrow, 'B'];
-    arr[6] = ['D', arrow, 'AB']; 
-    arr[7] = ['E', arrow, 'a'];
-    arr[8] = ['', arrow, ''];
+    // arr[0] = ['S', arrow, 'EBCA'];
+    // arr[1] = ['A', arrow, 'aAa'];
+    // arr[2] = ['A', arrow, emptystring];
+    // arr[3] = ['B', arrow, 'bB'];
+    // arr[4] = ['B', arrow, emptystring];
+    // arr[5] = ['C', arrow, 'B'];
+    // arr[6] = ['D', arrow, 'AB']; 
+    // arr[7] = ['E', arrow, 'a'];
+    // arr[8] = ['', arrow, ''];
+
+    // arr[0] = ['S', arrow, 'EBCA'];
+    // arr[1] = ['A', arrow, 'aAa'];
+    // arr[2] = ['B', arrow, 'bB'];
+    // arr[3] = ['C', arrow, 'B'];
+    // arr[4] = ['D', arrow, 'AB']; 
+    // arr[5] = ['E', arrow, 'a'];
+    // arr[6] = ['S', arrow, 'E'];
+    // arr[7] = ['S', arrow, 'EA'];
+    // arr[8] = ['S', arrow, 'EB'];
+    // arr[9] = ['S', arrow, 'EC'];
+    // arr[10] = ['S', arrow, 'ECA'];
+    // arr[11] = ['S', arrow, 'EBA'];
+    // arr[12] = ['S', arrow, 'EBC'];
+    // arr[13] = ['A', arrow, 'aa'];
+    // arr[14] = ['B', arrow, 'b'];
+    // arr[15] = ['D', arrow, 'A'];
+    // arr[16] = ['D', arrow, 'B'];
+    // arr[17] = ['', arrow, ''];
+    // lastRow = 17;
 
     // remove unit productions example:
-    // arr[0] = ['S', arrow, 'Aa'];
-    // arr[1] = ['S', arrow, 'A'];
-    // arr[2] = ['A', arrow, 'C'];
-    // arr[3] = ['B', arrow, 'b'];
-    // arr[4] = ['C', arrow, 'B'];
-    // arr[5] = ['C', arrow, 'cCc'];
-    // arr[6] = ['', arrow, ''];
-    //lastRow = 6;
+    arr[0] = ['S', arrow, 'Aa'];
+    arr[1] = ['S', arrow, 'A'];
+    arr[2] = ['A', arrow, 'C'];
+    arr[3] = ['B', arrow, 'b'];
+    arr[4] = ['C', arrow, 'B'];
+    arr[5] = ['C', arrow, 'cCc'];
+    arr[6] = ['', arrow, ''];
+    lastRow = 6;
 
     // remove useless productions example:
     // arr[0] = ['S', arrow, 'AaB'];
@@ -1805,26 +1828,52 @@
         productions[j][2] = productions[j][2].replace(regex, newVariables[i]);
       }
     }
-    if (toExport) {
-      // localStorage['grammar'] = _.map(productions, function(x) {return x.join('');});
-      // window.open('grammarTest.html', '');
-    } else {
-      // if there are too many variables to export, instead creates a table with the temporary variables
-      // window.open('npdaTable.html', '', 'width = 600, height = 625, screenX = 500, screenY = 25');
-    }
+    // if (toExport) {
+    //   localStorage['grammar'] = _.map(productions, function(x) {return x.join('');});
+    //   window.open('grammarTest.html', '');
+    // } else {
+    //   // if there are too many variables to export, instead creates a table with the temporary variables
+    //   window.open('npdaTable.html', '', 'width = 600, height = 625, screenX = 500, screenY = 25');
+    // }
     return ret;
+  };
+  var checkTransform = function (strP, g) {
+    var inter = _.intersection(strP, g);
+    if (inter.length === strP.length && inter.length === g.length) {
+      return true;
+    }
+    return false;
   };
 
   var transformGrammar = function () {
+    var tStep = 'lambda';
     var noLambda = removeLambda();
     var noUnit = removeUnit();
     var noUseless = removeUseless();
     var fullChomsky = convertToChomsky();
+
+    var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
+    var strP = _.map(productions, function(x) {return x.join('');});
+    localStorage['backup'] = strP;
+
+    if (!checkTransform(strP, noLambda)) {
+      interactableLambdaTransform(noLambda);
+    } else if (!checkTransform(strP, noUnit)) {
+      interactableUnitTransform(noUnit);
+    } else if (!checkTransform(strP, noUseless)) {
+      interactableUselessTransform(noUseless);
+    } else {
+      interactableChomsky(fullChomsky);
+    }
+  };
+
+  var interactableLambdaTransform = function (noLambda) {
+    var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
+    m = init();
     startParse();
     $('.jsavcontrols').hide();
     $(m.element).css("margin-left", "auto");
     var derivers = {};  // variables that derive lambda
-    var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
     var counter = 0;
     // find lambda-deriving variables
     while (removeLambdaHelper(derivers, productions)) {
@@ -1834,31 +1883,7 @@
         break;
       }
     };
-    if (productions[0][0] in derivers) {
-      alert('The start variable derives lambda');
-    }
-    var transformed = [];
-    noLambda = _.filter(productions, function(x) { return x[2] !== emptystring;});
-    transformed = transformed.concat(noLambda);
-    for (var i = 0; i < noLambda.length; i++) {
-      var p = noLambda[i];
-      var v = _.uniq(_.filter(p[2], function(x) { return x in derivers;}));  // remove lambda productions
-      if (v.length > 0) {
-        v = v.join('');
-        for (var j = v.length - 1; j >= 0; j--) {
-          // remove all combinations of lambda-deriving variables
-          var n = getCombinations(v, j + 1);
-          for (var next = n.next(); next.value; next = n.next()) {
-            var regex = new RegExp('[' + next.value.join('') + ']','g');
-            var replaced = p[2].replace(regex, "");
-            if (replaced) {
-              transformed.push([p[0], arrow, replaced]);
-            }
-          }
-        }
-      }
-    }
-    transformed = _.map(transformed, function(x) {return x.join('');});
+    var transformed = noLambda;
     var tArr = [].concat(productions);
     tArr.push(["", arrow, ""]);
     var builtLambdaSet = [];
@@ -1918,6 +1943,24 @@
           localStorage['grammar'] = transformed;
           window.open('grammarTest.html', '');
         }
+        arr = tArr;
+        lastRow = arr.length - 1;
+        var strT = _.map(tArr, function(x) {return x.join('')});
+        var noUnit = removeUnit();
+        if (!checkTransform(strT, noUnit)) {
+          interactableUnitTransform(noUnit);
+          return;
+        }
+        var noUseless = removeUseless();
+        if (!checkTransform(strT, noUseless)) {
+          interactableUselessTransform(noUseless);
+          return;
+        }
+        var fullChomsky = convertToChomsky();
+        if (!checkTransform(strT, fullChomsky)) {
+          interactableChomsky(fullChomsky);
+          return;
+        }
       }
     };
     var continueLambda = function () {
@@ -1928,17 +1971,139 @@
     };
     m.click(findLambdaHandler);
     jsav.umsg("Select variables that derive lambda.");
+  };
 
-    // for (var i = 0; i < transformed.length; i++) {
-    //   console.log("" + transformed[i]);
-    // }
-    // arr = transformed;
-    // lastRow = arr.length;
-    // arr.push(["", arrow, ""]);
-    // m = init();
-    // $('.jsavmatrix').addClass('editMode');
-    // localStorage['grammar'] = _.map(transformed, function(x) {return x.join('');});
-    // window.open('grammarTest.html', '');
+  var interactableUnitTransform = function (noUnit) {
+    var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
+    m = init();
+    startParse();
+    $('.jsavcontrols').hide();
+    var v = [];
+    for (var i = 0; i < productions.length; i++) {
+      if (v.indexOf(productions[i][0]) === -1) {
+        v.push(productions[i][0]);
+      }
+    }
+    modelDFA = jsav.ds.graph({left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top", layout: "automatic", directed: true});
+    for (var i = 0; i < v.length; i++) {
+      modelDFA.addNode(v[i]);
+    }
+    modelDFA.layout();
+    var unitProductions = _.filter(productions, function(x) { 
+      return x[2].length === 1 && variables.indexOf(x[2]) !== -1;
+    });
+    selectedNode = null;
+    var vdgHandler = function () {
+      this.highlight();
+      if (selectedNode) {
+        var self = this;
+        if (_.find(unitProductions, function(x) {return x[0] === selectedNode.value() && x[2] === self.value();})) {
+          var newEdge = modelDFA.addEdge(selectedNode, self);
+          if (newEdge) { newEdge.layout();}
+          jsav.umsg('Transition added.');
+          if (modelDFA.edgeCount() === unitProductions.length) {
+            modelDFA.element.off();
+            selectedNode.unhighlight();
+            self.unhighlight();
+            selectedNode = null;
+            continueUnit();
+            return;
+          }
+        } else {
+          jsav.umsg('Transition is not part of VDG.');
+        }
+        selectedNode.unhighlight();
+        self.unhighlight();
+        selectedNode = null;
+      } else {
+        selectedNode = this;
+      }
+    };
+    var tArr = [].concat(productions);
+    tArr.push(["", arrow, ""]);
+    var removeUnitHandler = function (index, index2, e) {
+      if (this.value(index, 0)) {
+        if (this.value(index, 2).length === 1 && variables.indexOf(this.value(index, 2)) !== -1) {
+          tArr.splice(index, 1);
+          if (tGrammar) { tGrammar.clear();}
+          tGrammar = jsav.ds.matrix(tArr);
+          tGrammar.click(removeUnitHandler);
+        } else {
+          alert('This production should not be deleted.');
+          return;
+        }
+      } else {
+        var input1 = prompt('Left side?');
+        if (!input1) {
+          return;
+        }
+        var input2 = prompt('Right side?');
+        if (!input2) {
+          return;
+        }
+        var toAdd = input1 + arrow + input2;
+        if (noUnit.indexOf(toAdd) === -1) {
+          alert('This production is not part of the reformed grammar.');
+          return;
+        } if (_.map(tArr, function(x) {return x.join('');}).indexOf(toAdd) !== -1) {
+          alert('This production is already in the grammar.');
+          return;
+        }
+        tArr[index] = [input1, arrow, input2];
+        tArr.push(["", arrow, ""]);
+        if (tGrammar) { tGrammar.clear();}
+        tGrammar = jsav.ds.matrix(tArr);
+        tGrammar.click(removeUnitHandler);
+      }
+      if (tArr.length - 1 === noUnit.length && !_.find(tArr, function(x){return x[2].length === 1 && variables.indexOf(x[2]) !== -1})) {
+        var confirmed = confirm('Grammar completed; export?');
+        if (confirmed) {
+          localStorage['grammar'] = noUnit;
+          window.open('grammarTest.html', '');
+        }
+        arr = tArr;
+        lastRow = arr.length - 1;
+        var strT = _.map(tArr, function(x) {return x.join('')});
+        var noUseless = removeUseless();
+        if (!checkTransform(strT, noUseless)) {
+          interactableUselessTransform(noUseless);
+          return;
+        }
+        var fullChomsky = convertToChomsky();
+        if (!checkTransform(strT, fullChomsky)) {
+          interactableChomsky(fullChomsky);
+          return;
+        }
+      }
+    };
+    var continueUnit = function () {
+      jsav.umsg('Modify the grammar to remove unit productions.');
+      tGrammar = jsav.ds.matrix(tArr);
+      tGrammar.click(removeUnitHandler);
+    };
+    jsav.umsg('Complete unit production visualization.');
+    modelDFA.click(vdgHandler);
+    
+  };
+
+  var interactableUselessTransform = function (noUseless) {
+    var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
+    m = init();
+    startParse();
+    $('.jsavcontrols').hide();
+    $(m.element).css("margin-left", "auto");
+
+    jsav.umsg('');
+  };
+
+  var interactableChomsky = function (fullChomsky) {
+    var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
+    m = init();
+    startParse();
+    $('.jsavcontrols').hide();
+    $(m.element).css("margin-left", "auto");
+    
+    jsav.umsg('');
   };
 
   //=================================
@@ -1996,7 +2161,6 @@
       parseTree.clear();
       jsav.clear();
       jsav = new JSAV("av");
-      m = init();
     }
     if (derivationTable) { derivationTable.clear();}
     if (ffTable) { ffTable.clear();}
@@ -2004,6 +2168,17 @@
     if (modelDFA) { modelDFA.clear();}
     if (builtDFA) { builtDFA.clear();}
     if (tGrammar) { tGrammar.clear();}
+    if (localStorage['backup']) {
+      arr = _.map(localStorage['backup'].split(','), function(x) { 
+        var d = x.split(String.fromCharCode(8594));
+        d.splice(1, 0, arrow);
+        return d;
+      });
+      lastRow = arr.length;
+      arr.push(["", arrow, ""]);
+      localStorage.removeItem('backup');
+    }
+    m = init();
     $('#firstinput').remove();
     jsav.umsg('');
     $('button').show();
