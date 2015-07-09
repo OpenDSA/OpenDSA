@@ -391,7 +391,8 @@
 		}
 		jsavArray = jsav.ds.array(travArray, {element: $('.arrayPlace')});
 		for (var j = 0; j < travArray.length; j++) {
-			if(willReject(g, travArray[j])){
+			// if (willReject(g, travArray[j])) {
+			if (willRejectMultiple(g, travArray[j])) {
 				jsavArray.css(j, {"background-color": "red"});
 			}
 			else {
