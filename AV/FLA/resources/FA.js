@@ -218,6 +218,7 @@
     }
   }
 
+  // Currently assumes every character is a unique input symbol.
   faproto.updateAlphabet = function () {
     // updates input alphabet
     var alphabet = {};
@@ -350,6 +351,22 @@
     return ret;
   };
   
+  // Function to test ND in automata with multiple input symbols on one edge.
+  faproto.transitionFunctionMultiple = function (nodeFrom, letter, options) {
+    var edges = nodeFrom.getOutgoing(),
+        ret = [];
+    for (var i = 0; i < edges.length; i++) {
+      var edge = edges[i];
+      var w = edge.weight().split('<br>');
+      for (var j = 0; j < w.length; j++) {
+        if (w[j][0] === letter) {
+          ret.push(edge.end().value());
+        }
+      }
+    }
+    return ret;
+  };
+
   // Hacky function, but it's used for testingND for Mealy Machines.
   faproto.inputTransitionFunction = function (nodeFrom, letter, options) {
     var edges = nodeFrom.getOutgoing(),
@@ -361,11 +378,36 @@
       for (var j = 0; j < weights.length; j++) {
         inputs.push(weights[j].split(":")[0]);
       }
-      if (inputs.indexOf(letter) !== -1) {
-        ret.push(edge.end().value());
+      for (var k = 0; k < inputs.length; k++) {
+        if (inputs[k] === letter) {
+          ret.push(edge.end().value());
+        }
       }
-      if (inputs.indexOf(letter) != inputs.lastIndexOf(letter)) {
-        ret.push(edge.end().value());
+      // if (inputs.indexOf(letter) !== -1) {
+      //   ret.push(edge.end().value());
+      // }
+      // if (inputs.indexOf(letter) != inputs.lastIndexOf(letter)) {
+      //   ret.push(edge.end().value());
+      // }
+    }
+    return ret;
+  };
+
+  // TestingND for Mealy Machines with multiple input symbols on one edge.
+  faproto.inputTransitionFunctionMultiple = function (nodeFrom, letter, options) {
+    var edges = nodeFrom.getOutgoing(),
+        ret = [];
+    for (var i = 0; i < edges.length; i++) {
+      var edge = edges[i];
+      var weights = edge.weight().split('<br>');
+      var inputs = [];
+      for (var j = 0; j < weights.length; j++) {
+        inputs.push(weights[j].split(":")[0]);
+      }
+      for (var k = 0; k < inputs.length; k++) {
+        if (inputs[k][0] === letter) {
+          ret.push(edge.end().value());
+        }
       }
     }
     return ret;

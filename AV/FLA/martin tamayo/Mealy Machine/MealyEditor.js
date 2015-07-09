@@ -201,12 +201,15 @@
 			for (var i = 0; i < w.length; i++) {
 				var t = w[i].split('|');
 				for (var j = 0; j < t.length; j++) {
-  					var letter = t[j].split(':')[1];
-  					if (letter !== emptystring) {
-    					if (!(letter in alphabet)) {
-      						alphabet[letter] = 0;
-    					}
-   			 			alphabet[letter]++;
+  					var letters = t[j].split(':')[1];
+  					if (letters !== emptystring) {
+  						for (var k = 0; k < letters.length; k++) {
+  							var letter = letters[k];
+  							if (!(letter in alphabet)) {
+      							alphabet[letter] = 0;
+    						}
+   			 				alphabet[letter]++;
+  						}
   					}
 				}
 			}
@@ -353,7 +356,8 @@
 				findLambda = true;
 			}
 			for (var key in g.alphabet) {
-				transition = g.inputTransitionFunction(next, key);
+				// transition = g.inputTransitionFunction(next, key);
+				transition = g.inputTransitionFunctionMultiple(next, key);
 				if (transition.length > 1) {
 					findMultiple = true;
 					break;

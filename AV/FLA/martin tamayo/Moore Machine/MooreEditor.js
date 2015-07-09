@@ -235,12 +235,15 @@
 		var nodes = g.nodes();
 		var w;
 		for (var next = nodes.next(); next; next = nodes.next()) {
-  			var letter = next.mooreOutput();
-  			if (letter !== emptystring) {
-    			if (!(letter in alphabet)) {
-      				alphabet[letter] = 0;
-    			}
-   				alphabet[letter]++;
+  			var letters = next.mooreOutput();
+  			if (letters !== emptystring) {
+  				for (var i = 0; i < letters.length; i++) {
+  					letter = letters[i];
+  					if (!(letter in alphabet)) {
+ 	     				alphabet[letter] = 0;
+    				}
+   					alphabet[letter]++;
+  				}
 			}
 		}
 		$("#mooreOutput").html("" + Object.keys(alphabet).sort());
@@ -388,7 +391,8 @@
 				findLambda = true;
 			}
 			for (var key in g.alphabet) {
-				transition = g.transitionFunction(next, key);
+				// transition = g.transitionFunction(next, key);
+				transition = g.transitionFunctionMultiple(next, key);
 				if (transition.length > 1) {
 					findMultiple = true;
 					break;
