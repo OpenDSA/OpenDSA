@@ -230,6 +230,7 @@
 
 	var removeModeClasses = function() {
 		$('.arrayPlace').empty();
+		$('#download').html('');
 		$("#mode").html('');
 		jsav.umsg('');
 		if (first) {
@@ -388,12 +389,17 @@
 		var travArray = [];
 		readyTraversal();
 		for (var i = 0; i < inputs.length; i++) {
-			travArray.push(inputs[i]);
+			if (inputs[i]) {
+				travArray.push(inputs[i]);
+			}
+			else {
+				travArray.push(emptystring);
+			}
 		}
 		jsavArray = jsav.ds.array(travArray, {element: $('.arrayPlace')});
-		for (var j = 0; j < travArray.length; j++) {
-			// if (willReject(g, travArray[j])) {
-			if (willRejectMultiple(g, travArray[j])) {
+		for (var j = 0; j < inputs.length; j++) {
+			// if (willReject(g, inputs[j])) {
+			if (willRejectMultiple(g, inputs[j])) {
 				jsavArray.css(j, {"background-color": "red"});
 			}
 			else {
@@ -462,6 +468,7 @@
 	};
 
 	var save = function() {
+		removeModeClasses();
 		var downloadData = "text/json;charset=utf-8," + encodeURIComponent(serialize(g));
 		$('#download').html('<a href="data:' + downloadData + '" target="_blank" download="data.json">Download JSON</a>');
 		jsav.umsg("Saved");
@@ -471,6 +478,7 @@
 		if (!saved) {
 			return;
 		}
+		removeModeClasses();
 		data = document.getElementById("loadFile").files[0];
 		onLoadHandler();
 	};

@@ -14,7 +14,14 @@
 		var traversal = localStorage['traversal'];
 		initGraph({layout: "automatic"});
 		$('.jsavcontrols').show();
-		run(traversal);
+		if (traversal != lambda && traversal != epsilon) {
+			// run(traversal);
+			runMultiple(traversal);
+		}
+		else {
+			// run("");
+			runMultiple("")
+		}
 	};
 
 	var initGraph = function(opts) {
@@ -68,7 +75,7 @@
 		var accepted = true;
 		var outputString = "";
 		var currentState = g.initial;
-		var cur = currentState;
+		var cur;
 		
 		for (var i = 0; i < inputString.length; i++) {
 			textArray.push(inputString[i]);
@@ -87,6 +94,7 @@
 			currentState.removeClass('current');
 		   	cur = traverse(g, currentState, inputString[i]);
 		   	if (cur[0] == null) {
+		   		currentState.addClass('rejected');
 		   		accepted = false;
 		   		arr.css(i, {"background-color": "red"});
 		   		failingIndex = i;
@@ -103,6 +111,90 @@
 		if (accepted) {
 			currentState.addClass('accepted');
 			arr.css(finalIndex, {"background-color": "green"});
+			if (!outputString) {
+				jsav.umsg("<b>Accepted</b>");
+			}
+		}
+		else {
+			for (var l = failingIndex; l < inputString.length - 1; l++) {
+				arr.css(l, {"background-color": "red"});
+			}
+			arr.css(finalIndex, {"background-color": "red"});
+			jsav.umsg("<b>Rejected</b>");
+		}
+		jsav.step();
+		jsav.recorded();
+
+		arr.click(arrayClickHandler);
+	};
+
+	var runMultiple = function (inputString) {
+		$('.jsavoutput').css({"text-align": "center", 'font-size': '2em'});
+		var textArray = [];
+		g.initial.addClass('current');
+
+		var accepted = true,
+			outputString = "",
+			currentState = g.initial,
+			currentEdge = null;
+			edgeWeight = null,
+			edgeProgress = null;
+
+		for (var i = 0; i < inputString.length; i++) {
+			textArray.push(inputString[i]);
+		}
+		arr = jsav.ds.array(textArray, {element: $('.arrayPlace')});
+
+		jsav.displayInit();
+
+		var failingIndex = inputString.length - 1;
+		var finalIndex = inputString.length - 1;
+		if (!inputString) {
+			finalIndex = 0;
+		}
+
+		for (var i = 0; i < inputString.length; i++) {
+			if (currentState) {
+				currentState.removeClass('current');
+			}
+		   	var traverseStep = traverseMultiple(g, currentState, currentEdge, edgeWeight, edgeProgress, inputString[i]);
+		   	var curS = traverseStep[0];
+		   	var curE = traverseStep[1];
+		   	if (curS == null) {
+		   		if (curE == null) {
+		   			if (currentState) {
+		   				currentState.addClass('rejected');
+		   			}
+		   			accepted = false;
+		   			arr.css(i, {"background-color": "red"});
+		   			failingIndex = i;
+		   			jsav.step();
+		   			break;
+		   		}
+		   		else {
+		   			edgeWeight = traverseStep[2];
+		   			edgeProgress = traverseStep[3];
+		   		}
+		   	}
+			currentState = curS;
+			currentEdge = curE;
+			outputString += traverseStep[4];
+			if (currentState) {
+				currentState.addClass('current');
+			}
+			arr.css(i, {"background-color": "yellow"});
+			jsav.umsg(outputString);
+			jsav.step();
+		}
+		
+		if (accepted) {
+			if (currentState) {
+				currentState.addClass('accepted');
+			}
+			arr.css(finalIndex, {"background-color": "green"});
+			if (!outputString) {
+				jsav.umsg("<b>Accepted</b>");
+			}
 		}
 		else {
 			for (var l = failingIndex; l < inputString.length - 1; l++) {

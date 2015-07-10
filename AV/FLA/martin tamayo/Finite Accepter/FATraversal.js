@@ -14,8 +14,14 @@
 		var traversal = localStorage['traversal'];
 		initGraph({layout: "automatic"});
 		$('.jsavcontrols').show();
-		// run(traversal);
-		runMultiple(traversal);
+		if (traversal != lambda && traversal != epsilon) {
+			// run(traversal);
+			runMultiple(traversal);
+		}
+		else {
+			// run("");
+			runMultiple("")
+		}
 	};
 	
 	var initGraph = function(opts) {
@@ -91,6 +97,9 @@
 		   	}
 		   	cur = traverse(g, currentStates, inputString[i]);
 		   	if (cur.length == 0) {
+		   		for (var k = 0; k < currentStates.length; k++) {
+		   			currentStates[k].addClass('rejected');
+		   		}
 		   		arr.css(i, {"background-color": "red"});
 		   		failingIndex = i;
 		   		jsav.step();
@@ -116,6 +125,13 @@
 			}
 			arr.css(finalIndex, {"background-color": "red"});
 			jsav.umsg("Rejected");
+		}
+		var nodes = g.nodes();
+		for (var next = nodes.next(); next; next = nodes.next()) {
+			if (next.hasClass('current') && rejected) {
+				next.addClass('rejected');
+			}
+			next.removeClass('current');
 		}
 		jsav.step();
 		jsav.recorded();
@@ -155,6 +171,9 @@
 	   		curS = traverseStep[0];
 	   		curE = traverseStep[1];
 		   	if (curS.length == 0 && curE.length == 0) {
+		   		for (var k = 0; k < currentStates.length; k++) {
+		   			currentStates[k].addClass('rejected');
+		   		}
 		   		arr.css(i, {"background-color": "red"});
 		   		failingIndex = i;
 		   		jsav.step();
@@ -184,7 +203,22 @@
 			arr.css(finalIndex, {"background-color": "red"});
 			jsav.umsg("Rejected");
 		}
-
+		var nodes = g.nodes();
+		for (var next = nodes.next(); next; next = nodes.next()) {
+			if (next.hasClass('current') && rejected) {
+				next.addClass('rejected');
+			}
+			next.removeClass('current');
+		}
+		var edges = g.edges();
+		for (var next = edges.next(); next; next = edges.next()) {
+			next.removeClass('edgeSelect');
+		   	var w = next.weight().split("<b>");
+		   	var unbold = w.join("");
+		   	w = unbold.split("</b>");
+		   	unbold = w.join("");
+		   	next.weight(unbold);
+		}
 		jsav.step();
 		jsav.recorded();
 

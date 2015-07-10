@@ -292,6 +292,7 @@
 
 	var removeModeClasses = function() {
 		$('.arrayPlace').empty();
+		$('#download').html('');
 		$("#mode").html('');
 		jsav.umsg('');
 		if (first) {
@@ -474,7 +475,8 @@
 		var acceptArray = [];
 		readyTraversal();
 		for (var i = 0; i < inputArray.length; i++) {
-			var outputData = pretraverse(g, inputArray[i]);
+			// var outputData = pretraverse(g, inputArray[i]);
+			var outputData = pretraverseMultiple(g, inputArray[i]);
 			acceptArray.push(outputData[0]);
 			if (outputData[0]) {
 				outputArray.push(outputData[1]);
@@ -485,6 +487,12 @@
 		}
 		var travArray = [];
 		for (var j = 0; j < inputArray.length; j++) {
+			if (!inputArray[j]) {
+				inputArray[j] = emptystring;
+			}
+			if (!outputArray[j]) {
+				outputArray[j] = emptystring;
+			}
 			travArray.push(inputArray[j] + "<br><b>" + outputArray[j] +"</b>");
 		}
 		jsavArray = jsav.ds.array(travArray, {element: $('.arrayPlace')});
@@ -558,6 +566,7 @@
 	};
 
 	var save = function() {
+		removeModeClasses();
 		var downloadData = "text/json;charset=utf-8," + encodeURIComponent(serialize(g));
 		$('#download').html('<a href="data:' + downloadData + '" target="_blank" download="data.json">Download JSON</a>');
 		jsav.umsg("Saved");
@@ -567,6 +576,7 @@
 		if (!saved) {
 			return;
 		}
+		removeModeClasses();
 		data = document.getElementById("loadFile").files[0];
 		onLoadHandler();
 	};
