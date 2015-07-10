@@ -48,16 +48,16 @@
     // lastRow = 8;
 
     // remove lambda productions example:
-    arr[0] = ['S', arrow, 'EBCA'];
-    arr[1] = ['A', arrow, 'aAa'];
-    arr[2] = ['A', arrow, emptystring];
-    arr[3] = ['B', arrow, 'bB'];
-    arr[4] = ['B', arrow, emptystring];
-    arr[5] = ['C', arrow, 'B'];
-    arr[6] = ['D', arrow, 'AB']; 
-    arr[7] = ['E', arrow, 'a'];
-    arr[8] = ['', arrow, ''];
-    lastRow = 8;
+    // arr[0] = ['S', arrow, 'EBCA'];
+    // arr[1] = ['A', arrow, 'aAa'];
+    // arr[2] = ['A', arrow, emptystring];
+    // arr[3] = ['B', arrow, 'bB'];
+    // arr[4] = ['B', arrow, emptystring];
+    // arr[5] = ['C', arrow, 'B'];
+    // arr[6] = ['D', arrow, 'AB']; 
+    // arr[7] = ['E', arrow, 'a'];
+    // arr[8] = ['', arrow, ''];
+    // lastRow = 8;
 
     // remove unit productions example:
     // arr[0] = ['S', arrow, 'Aa'];
@@ -70,17 +70,17 @@
     // lastRow = 6;
 
     // remove useless productions example:
-    // arr[0] = ['S', arrow, 'AaB'];
-    // arr[1] = ['S', arrow, 'Aa'];
-    // arr[2] = ['S', arrow, 'dDc'];
-    // arr[3] = ['A', arrow, 'AAa'];
-    // arr[4] = ['A', arrow, 'a'];
-    // arr[5] = ['B', arrow, 'bB'];
-    // arr[6] = ['B', arrow, 'bBb']; 
-    // arr[7] = ['C', arrow, 'cD'];
-    // arr[8] = ['D', arrow, 'aAb'];
-    // arr[9] = ['', arrow, ''];
-    // lastRow = 9;
+    arr[0] = ['S', arrow, 'AaB'];
+    arr[1] = ['S', arrow, 'Aa'];
+    arr[2] = ['S', arrow, 'dDc'];
+    arr[3] = ['A', arrow, 'AAa'];
+    arr[4] = ['A', arrow, 'a'];
+    arr[5] = ['B', arrow, 'bB'];
+    arr[6] = ['B', arrow, 'bBb']; 
+    arr[7] = ['C', arrow, 'cD'];
+    arr[8] = ['D', arrow, 'aAb'];
+    arr[9] = ['', arrow, ''];
+    lastRow = 9;
 
     // chomsky example:
     // arr[0] = ['S', arrow, 'ABAB'];
@@ -2267,6 +2267,7 @@
   };
 
   var interactableChomsky = function (fullChomsky) {
+    //_.each(fullChomsky, function(x){console.log(x)});
     var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
     m = init();
     startParse();
@@ -2297,7 +2298,7 @@
       }
       var sliceIn = [];
       for (var i = 0; i < r.length; i++) {
-        if (variables.indexOf(r[i]) === -1) {
+        if (r[i].length === 1 && variables.indexOf(r[i]) === -1) {
           var tempB = "B(" + r[i] + ")";
           if (!_.find(tArr.concat(sliceIn), function(x) {return x[0] === tempB;})) {
             sliceIn.push([tempB, arrow, [r[i]]]);
