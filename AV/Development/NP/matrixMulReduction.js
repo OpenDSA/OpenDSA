@@ -14,7 +14,7 @@
 function runit() {
   ODSA.AV.reset(true);
   jsav = new JSAV($('.avcontainer'));
-  jsav.umsg("The following two matrices need to be multiplied");
+  jsav.umsg("The following two matrices need to be multiplied.");
   x = 0; y = 0;
   mat1data=[[2,3],[6,7],[4,9]];
   mat2data=[[1,10,5],[12,8,11]];
@@ -34,13 +34,13 @@ function runit() {
   jsav.umsg ("Each of the two matrices are transformed into corresponding symmeric matrices by using its transpose as shown.");
   var r21 = jsav.g.rect(0,200,435,220);
   r21.show();
-  var l11 = jsav.g.line(70,130,70,150);
+  var l11 = jsav.g.line(70,130,70,150, {"stroke-width": 3});
   l11.show();
-  var l12 = jsav.g.line(70,170,70,200);
+  var l12 = jsav.g.line(70,170,70,200, {"stroke-width": 3, "arrow-end": "classic-wide-long"});
   l12.show();
-  var l21 = jsav.g.line(350,110,350,150);
+  var l21 = jsav.g.line(350,110,350,150, {"stroke-width": 3});
   l21.show();
-  var l22 = jsav.g.line(350,170,350,200);
+  var l22 = jsav.g.line(350,170,350,200, {"stroke-width": 3, "arrow-end": "classic-wide-long"});
   l22.show();
   var r2 = jsav.g.rect(0,150,200,20);
   jsav.label("Transformation (Cost:O(mn))",{left:5,top:135});
@@ -68,10 +68,10 @@ function runit() {
       mat2TransDisp.css(i,j,{"background-color":"PowderBlue"});
   mat2TransDisp.show();
   jsav.step();
-  jsav.umsg("Then the two symmetric matrices are multiplied");
+  jsav.umsg("Then the two symmetric matrices are multiplied.");
   var r31 = jsav.g.rect(535,200,200,220);
   r31.show();
-  var l31 = jsav.g.line(450,300,520,300);
+  var l31 = jsav.g.line(450,300,520,300, {"stroke-width": 3, "arrow-end": "classic-wide-long"});
   l31.show();
   jsav.label("Multiply",{left:450,top:300}); 
   var product = multiply(mat1Transformed,mat2Transformed,5,5,5); 
@@ -87,11 +87,11 @@ function runit() {
   var r4 = jsav.g.rect(550,150,200,20);
   jsav.label("Reverse Transform (O(mn))",{left:555,top:135});
   r4.show();
-  var l31 = jsav.g.line(640,120,640,150);
+  var l31 = jsav.g.line(640,150,640,120, {"stroke-width": 3, "arrow-end": "classic-wide-long"});
   l31.show();
-  var l32 = jsav.g.line(640,170,640,200);
+  var l32 = jsav.g.line(640,170,640,200, {"stroke-width": 3});
   l32.show();
-  jsav.umsg("The 3*3 matrix in the upper left corner gives the output array");
+  jsav.umsg("The 3*3 matrix in the upper left corner gives the output array.");
   jsav.step();
   var verifyprod = multiply(mat1data,mat2data,3,3,2); 
   var verifyprodDisp = new jsav.ds.matrix(verifyprod,{style:"matrix",left:x+600,top:y+0});
@@ -99,8 +99,8 @@ function runit() {
     for(var j=0;j<3;j++)
       verifyprodDisp.css(i,j,{"background-color":"#CCFF99"});
   verifyprodDisp.show();
-  jsav.label("Output Array",{left:610,top:-30});
-  jsav.umsg("Total cost = O(mn) + cost of smmtric multiply");
+  jsav.label("Output Array", {left: 610, top: -15});
+  jsav.umsg("Total cost = O(mn) + cost of symmetric multiply.");
    
   jsav.recorded();
 }

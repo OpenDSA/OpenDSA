@@ -2838,7 +2838,7 @@ Glossary
       file.
 
    random access memory
-      Abbreviated ;term:`RAM`, this is the principle example of
+      Abbreviated :term:`RAM`, this is the principle example of
       :term:`primary storage` in a modern computer.
       Data access times are typically measured in billionths of a
       second (microseconds), which is roughly a million times faster
