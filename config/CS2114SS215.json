@@ -694,7 +694,7 @@
             "long_name": "Recursion Tracing Exercises Set 1",
             "required": true,
             "points": 1.0,
-            "threshold": 7.0,
+            "threshold": 4.0,
             "showhide": "Show"
           },
           "recTracingSumm2": {
