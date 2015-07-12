@@ -175,7 +175,7 @@
             "long_name": "Recursion Code Writing Exercise Pascal",
             "required": true,
             "points": 1.0,
-            "threshold": 2.0,
+            "threshold": 1.0,
             "showhide": "Show"
           },
           "recWCnonballPROGSumm": {
