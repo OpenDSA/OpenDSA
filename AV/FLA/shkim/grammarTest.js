@@ -1474,6 +1474,7 @@
     $('#bfpbutton').hide();
     $('#llbutton').hide();
     $('#slrbutton').hide();
+    $('#files').hide();
     $(m.element).css("margin-left", "50px");
     m._arrays[lastRow].hide();
   };
@@ -1491,6 +1492,7 @@
     $('.jsavcontrols').hide();
     $('#backbutton').hide();
     $('.parsingbutton').hide();
+    $('#files').show();
     $(m.element).css("margin-left", "auto");
     m._arrays[lastRow].show();
     $('.jsavmatrix').addClass("editMode");
@@ -2531,6 +2533,76 @@
     window.open('CFGtoNPDA.html', '', 'width = 800, height = 750, screenX = 300, screenY = 25');
   });
   //=================================
+  // files
+  // save
+  function serializeGrammar (g) {
+    var text = '<?xml version="1.0" encoding="UTF-8"?>';
+    text = text + "<structure>";
+    text = text + "<type>grammar</type>"
+    for (var i = 0; i < g.length; i++) {
+      text = text + "<production>";
+      text = text + "<left>" + g[i][0] + "</left>";
+      text = text + "<right>" + g[i][2] + "</right>";
+      text = text + "</production>";
+    }
+    text = text + "</structure>"
+    return text;
+  };
+  var saveFile = function () {
+    var productions = _.filter(arr, function(x) { return x[0]});
+    var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(serializeGrammar(productions));
+    $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="grammar.xml">Download Grammar</a>');
+  };
+
+  // load
+  var parseFile = function (text) {
+    var parser,
+        xmlDom;
+    if (window.DOMParser) {
+      parser=new DOMParser();
+      xmlDoc=parser.parseFromString(text,"text/xml");
+    } else {
+      xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+      xmlDoc.async=false;
+      xmlDoc.loadXML(txt);
+    }
+    if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue !== 'grammar') {
+      alert('File does not contain a grammar.');
+      return;
+    } else {
+      arr = [];
+      var xmlElem = xmlDoc.getElementsByTagName("production");
+      for (var i = 0; i < xmlElem.length; i++) {
+        var l = xmlElem[i].getElementsByTagName("left")[0].childNodes[0].nodeValue;
+        var r = xmlElem[i].getElementsByTagName("right")[0].childNodes[0].nodeValue;
+        // console.log(l);
+        // console.log(r);
+        var row = [l, arrow, r];
+        arr.push(row);
+      }
+      lastRow = arr.length;
+      // add an empty row for editing purposes (clicking the empty row allows the user to add productions)
+      arr.push(["", arrow, ""]);
+      m = init();
+      $('.jsavmatrix').addClass("editMode");
+    }
+  };
+  var waitForReading = function (reader) {
+    reader.onloadend = function(event) {
+        var text = event.target.result;
+        parseFile(text);
+    }
+  };
+  var loadFile = function () {
+    var loaded = document.getElementById('loadfile');
+    var file = loaded.files[0],
+        reader = new FileReader();
+    waitForReading(reader);
+    reader.readAsText(file);
+  };
+
+
+  //=================================
   $('#movebutton').click(function() {
     $('.jsavgraph').removeClass('addfinals');
     $('.jsavgraph').removeClass('builddfa');
@@ -2584,6 +2656,7 @@
     $('#backbutton').hide();
     $('.parsingbutton').off();
     $('.parsingbutton').hide();
+    $('#files').show();
     $(m.element).css("margin-left", "auto");
     $('.jsavmatrix').addClass("editMode");
   });
@@ -2597,4 +2670,6 @@
   // $('#uselessbutton').click(removeUseless);
   // $('#chomskybutton').click(convertToChomsky);
   $('#transformbutton').click(transformGrammar);
+  $('#loadfile').on('change', loadFile);
+  $('#savefile').click(saveFile);
 }(jQuery));
