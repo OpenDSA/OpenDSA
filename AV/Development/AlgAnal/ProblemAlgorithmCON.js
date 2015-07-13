@@ -9,7 +9,8 @@ $(document).ready(function () {
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
-  var pseudo = av.code(code).hide();
+  var javaCode = av.code(code[0]).hide();
+  var pseudo = av.code(code[1]).hide();
   var arr;
   var arr_values = [];
   var topAlign = 120;
@@ -120,7 +121,12 @@ $(document).ready(function () {
 
   //Slide 13
   av.umsg(interpret("Slide 13"), {preserve:true});
-  var algLabel = av.label("foreach key in array<br>&nbsp;&nbsp;if key == target<br>&nbsp;&nbsp;&nbsp;&nbsp;return keyIndex<br> return -1",  {"top": topAlign + 25, "left": leftAlign + 395}).css({"font-size":12});
+  pseudo.show();
+  rect.css({width: rectWidth + 65});
+  labelProblem.css({left:"+=25"})
+  labelOutput1.css({left:"+=65"});
+  labelOutput3.css({left:"+=65"});
+  lineOutput1 = av.g.line(leftAlign + 445 + rectWidth, topAlign + 50, leftAlign + 545 + rectWidth, topAlign + 50);
   labelOutput1.show();
   labelOutput3.show();
   lineOutput1.show();
@@ -136,7 +142,7 @@ $(document).ready(function () {
   line1.hide();
   line2.hide();
   labelInput.hide();
-  algLabel.hide();
+  pseudo.hide();
   av.step();
 
   //Slide 15
@@ -153,13 +159,12 @@ $(document).ready(function () {
 
   //Slide 17
   av.umsg(interpret("Slide 17"));
-  pseudo.show();
+  javaCode.show();
   rect.css({width: rectWidth + 95});
-  labelProblem.css({left:"+=50"});
+  labelProblem.css({left:"+=30"});
   lineOutput1.hide();
   lineOutput1 = av.g.line(leftAlign + 475 + rectWidth, topAlign + 50, leftAlign + 545 + rectWidth, topAlign + 50);
-  labelOutput1.css({left:"+=95"});
-  labelOutput3.css({left:"+=75"});
+  labelOutput1.css({left:"+=35"});
   lineOutput1.show();
   labelOutput1.show();
   labelOutput3.show();

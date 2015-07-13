@@ -21,7 +21,7 @@
     }
   },
   "code" : {
-    "processing": {
+    "java": [{
       "url": "../../../SourceCode/Java/Searching/SequentialNoComments.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: Sequential *** */",
@@ -31,6 +31,17 @@
       "tags": {
         
       }
-    }
+    },
+    {
+      "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: Sequential *** */",
+      "endBefore": "/* *** ODSAendTag: Sequential *** */",
+	  "top": 150,
+	  "left": 385,
+      "tags": {
+        
+      }
+    }]
   }
 }

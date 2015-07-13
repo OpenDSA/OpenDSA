@@ -1,0 +1,7 @@
+/* *** ODSATag: Sequential *** */
+Sequential(A: array, k: integer)
+  for i = 1 to arraySize(A) do
+    if A[i] == k
+      return i
+  return arraySize(A)
+/* *** ODSAendTag: Sequential *** */
