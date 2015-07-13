@@ -2,7 +2,7 @@
   var variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var jsav = new JSAV("av");
   var arrow = String.fromCharCode(8594),
-      lastRow,          // index of the last visible row
+      lastRow,          // index of the last visible row (the empty row)
       arr,              // the grammar
       backup = null,    // a copy of the original grammar (as a string) before it is transformed
       m,
@@ -22,14 +22,20 @@
       dot = String.fromCharCode(183),
       emptystring = lambda;
 
+  // if there is a grammar in local storage, load that grammar (used to export/import grammars)
   if (localStorage["grammar"]) {
+    // the grammar is saved as a string of a list of strings:
+    // turn each production into an array containing the left side, arrow, and right side
     arr = _.map(localStorage['grammar'].split(','), function(x) { 
       var d = x.split(String.fromCharCode(8594));
       d.splice(1, 0, arrow);
       return d;
     });
     lastRow = arr.length;
+    // add an empty row for editing purposes (clicking the empty row allows the user to add productions)
     arr.push(["", arrow, ""]);
+    // clear the grammar from local storage to prevent it from being loaded by other grammar tests
+    // (like the original grammar before exporting)
     localStorage.removeItem('grammar');
   } else {
     arr = new Array(20);    // arbitrary array size
@@ -149,10 +155,12 @@
       m = init();
       $('.jsavmatrix').addClass('deleteMode');
     } else if ($('.jsavmatrix').hasClass('editMode')) {
+      // ignore if the user clicked an arrow
       if (index2 === 1) {
         return;
       }
       var prev = this.value(index, index2);
+      // create an input box for editing the cell
       $('#firstinput').remove();
       var createInput = "<input type='text' id='firstinput' value="+prev+">";
       $('body').append(createInput);
@@ -171,15 +179,17 @@
           }
           m.value(index, index2, input);
           arr[index][index2] = input;
-          expandArray(index);
+          // adding a new production
+          addProduction(index);
           $('#firstinput').remove();
         }
       });
     }
   };
-  // if array out of bounds, double the array size and recreate the matrix
-  var expandArray = function (index) {
+  // check to see if a new row should be added
+  var addProduction = function (index) {
     if (m.value(index, 0) && index === lastRow) {
+      // if array out of bounds, double the array size and recreate the matrix
       if (lastRow === arr.length - 1 || lastRow === arr.length) {
         var l = arr.length;
         for (var i = 0; i < l; i++) {
@@ -209,6 +219,7 @@
     }
     startParse();
     $('#bfpbutton').show();
+    // get productions (gets a clone of the grammar with the empty rows removed)
     var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
     var table = {};   // maps each sentential form to the rule that produces it
     var sententials = [];
@@ -226,6 +237,7 @@
     }
     var derivers = {};  // variables that derive lambda
     var counter = 0;
+    // find lambda deriving variables
     while (removeLambdaHelper(derivers, productions)) {
       counter++;
       if (counter > 500) {
@@ -235,6 +247,7 @@
     };
     derivers = Object.keys(derivers);
 
+    // parse
     counter = 0;
     while (true) {
       counter++;
@@ -255,15 +268,19 @@
         break;
       }
       var c = null;
+      // go through the sentential form
       for (var i = 0; i < next.length; i++) {
         c = next[i];
+        // when a variable has been found, add its derivable sentential forms to be parsed
         if (variables.indexOf(c) !== -1) {
+          // find productions for the variable
           _.each(productions, function(x, k) { 
             if (x[0] === c) {
               var r = x[2];
               if (r === emptystring) {
                 r = "";
               }
+              // new sentential form
               var s = replaceCharAt(next, i, r);
               // pruning
               var keep = true;
@@ -304,6 +321,7 @@
               if (keep) {
                 sententials.unshift(s);
               }
+              // keep track of which production a sentential form is coming from
               if (!(s in table)) {
                 table[s] = [k, next];
               }
@@ -318,6 +336,7 @@
       var temp = next;
       var results = [];   // derivation table
       counter = 0;
+      // go through the table of sentential forms to productions in order to get the trace
       while (table[temp]) {
         counter++;
         if (counter > 500) {
@@ -329,6 +348,7 @@
         temp = table[temp][1];
       }
       results.reverse();
+      // set up display
       jsav.label('Grammar', {relativeTo: m, anchor: "center top", myAnchor: "center bottom"});
       derivationTable = new jsav.ds.matrix(results, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
       jsav.label('Derivation Table', {relativeTo: derivationTable, anchor: "center top", myAnchor: "center bottom"});
@@ -338,6 +358,7 @@
       temp = [parseTree.root(productions[0][0])];
 
       var displayOrder = [];  // order in which to display the nodes of the parse tree
+      // create the parse tree using the derivation table
       for (var i = 0; i < results.length; i++) {
         var p = results[i][0];
         var n;
@@ -371,11 +392,13 @@
       }
 
       parseTree.layout();
+      // hide the whole tree except for the start node and hide the derivation table
       parseTree.root().hide();
       parseTree.root().show({recursive: false});
       for (var i = 0; i < results.length; i++) {
         derivationTable._arrays[i].hide();
       }
+      // create slideshow stepping through derivation table and parse tree
       jsav.displayInit();
       for (var i = 0; i < results.length; i++) {
         jsav.step();
@@ -383,6 +406,7 @@
           m._arrays[j].unhighlight();
         }
         var val = derivationTable.value(i, 1);
+        // highlight productions in the grammar while tracing
         m._arrays[table[val][0]].highlight();
         derivationTable._arrays[i].show();
         var temp2 = displayOrder.shift();
@@ -407,6 +431,7 @@
   }; 
 
   // checks if FIRST / FOLLOW sets are correct (either FIRST sets or FOLLOW sets)
+  // returns a list of the incorrect variables
   var checkTable = function (firsts, follows) {
     var checker;
     if (arrayStep === 1) {
@@ -429,7 +454,7 @@
     return incorrect
   };
 
-  // checks if the parse table is correct
+  // checks if the parse table is correct and transition
   var checkParseTable = function (parseTableDisplay, parseTable) {
     $('#firstinput').remove();
     var incorrect = false;
@@ -465,10 +490,12 @@
 
   // click handler for the FIRST/FOLLOW table
   var firstFollowHandler = function (index) {
+    // ignore if first row (headers)
     if (index === 0) { return; }
     var prev = this.value(index, arrayStep);
     prev = prev.replace(/,/g, "");
     //console.log(prev)
+    // create input box
     $('#firstinput').remove();
     var createInput = "<input type='text' id='firstinput' value="+prev+">";
     $('body').append(createInput);
@@ -484,6 +511,7 @@
       if(event.keyCode == 13){
         var firstInput = $(this).val();
         firstInput = firstInput.split("");
+        // read ! as lambda
         for (var i = 0; i < firstInput.length; i++) {
           if (firstInput[i] === '!') {
             firstInput[i] = emptystring;
@@ -567,7 +595,9 @@
         break;
       }
     };
+    // variables
     var v = {};
+    // terminals
     var t = {};
     for (var i = 0; i < productions.length; i++) {
       var x = productions[i];
@@ -586,8 +616,11 @@
     t.sort();
     t.push('$');
 
+    // populate firsts and follows sets
     findFirstsAndFollows(productions, firsts, follows, v, pDict, derivers);
     
+    // parseTable is the parse table, while parseTableDisplay is the matrix displayed to the user.
+    // (parseTableDisplay includes the row/column headers)
     var parseTable = [];
     for (var i = 0; i < v.length; i++) {
       var a = [];
@@ -631,7 +664,9 @@
     startParse();
     $('#followbutton').show();
     $('.jsavcontrols').hide();
-    ffDisplay = [];
+
+    // create the table for FIRST and FOLLOW sets
+    var ffDisplay = [];
     ffDisplay.push(["", "FIRST", "FOLLOW"]);
     for (var i = 0; i < v.length; i++) {
       var vv = v[i];
@@ -640,8 +675,8 @@
     jsav.umsg('Define FIRST sets. ! is the lambda character.');
     ffTable = new jsav.ds.matrix(ffDisplay, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
     arrayStep = 1;
-    
     ffTable.click(firstFollowHandler);
+
     $('#followbutton').click(function () {
       var check = continueToFollow(firsts, follows); 
       if (check) {
@@ -649,6 +684,7 @@
       }
     });
 
+    // check FOLLOW set and transition to parse table editing
     var continueToParseTable = function () {
       $('#firstinput').remove();
       var incorrect = checkTable(firsts, follows);
@@ -688,6 +724,7 @@
       checkParseTable(parseTableDisplay, parseTable);
     });
 
+    // do the parsing
     var continueParse = function () {
       var inputString = prompt('Input string');
       if (inputString === null) {
@@ -702,6 +739,7 @@
       //jsav.label('Grammar', {relativeTo: m, anchor: "center top", myAnchor: "center bottom"});
       parseTableDisplay = new jsav.ds.matrix(pTableDisplay, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
       var remainingInput = inputString + '$';
+      // display remaining input and the parse stack
       jsav.umsg('<mark>' + remainingInput[0] + '</mark>' + remainingInput.substring(1) + ' | <mark>' + productions[0][0] + '</mark>');
       jsav.displayInit();
       parseTree = new jsav.ds.tree();
@@ -726,11 +764,13 @@
         }
         var vi = v.indexOf(next.value());
         var ti = t.indexOf(remainingInput[0])
+        // if the terminal on the stack and the next terminal in the input do not match, the string is rejected
         if (vi === -1 && next.value() !== remainingInput[0]) {
           accept = false;
           break;
         }
         jsav.step();
+        // if terminal:
         if (vi !== -1) {
           var toAdd = parseTable[vi][ti];
           if (!toAdd) {
@@ -740,9 +780,12 @@
           for (var j = 0; j < parseTableDisplay._arrays.length; j++) {
             parseTableDisplay._arrays[j].unhighlight();
           }
+          // highlight the relevant cell in the parse table (offset by 1 due to row/column headers)
           parseTableDisplay.highlight(vi + 1, ti + 1);
           var temp = [];
+          // create parse tree nodes
           for (var i = 0 ; i < toAdd.length; i++) {
+            // note: .child(x, y) creates a child node but returns the parent
             var n = next.child(i, toAdd[i]).child(i);
             if (v.indexOf(toAdd[i]) === -1) {
               n.addClass('terminal');
@@ -771,9 +814,11 @@
       }
       jsav.recorded();
     };
+    // allow user to parse repeatedly with different inputs
     $('#parsebutton').click(continueParse);
   };
 
+  // SLR(1) parsing helpers:
   // click handler for the nodes of the DFA being built
   var dfaHandler = function (e) {
     if (selectedNode) {
@@ -788,7 +833,8 @@
       e.stopPropagation();
     } else {
       this.highlight();
-
+      // if node clicked is the toNode for the new edge
+      // check for goto set
       if(selectedNode && localStorage['slrdfareturn']) {
         var newItemSet = localStorage['slrdfareturn'].replace(/,/g, '<br>');
         if (this.stateLabel() === newItemSet) {
@@ -805,7 +851,7 @@
           return;
         }
       }
-
+      // if node clicked is fromNode
       var pr = prompt('Grammar symbol for the transition?');
       if (!pr) {
         this.unhighlight();
@@ -823,20 +869,25 @@
       var nodes = modelDFA.nodes();
       var checkNode;
       for (var next = nodes.next(); next; next = nodes.next()) {
-        console.log(next);
-        console.log(next._stateLabel);
+        // console.log(next);
+        // console.log(next._stateLabel);
+        // get state label of the hidden node:
         var modelItems = next._stateLabel.element[0].innerHTML.split('<br>');
+        // get state label of the visible node:
         var builtItems = this.stateLabel().split('<br>');
+        // find the model node corresponding to the selected node:
         var inter = _.intersection(modelItems, builtItems);
         if (inter.length === modelItems.length && inter.length === builtItems.length) {
           checkNode = next;
           break;
         } 
       }
+      // find model edge corresponding to transition to be built
       var edges = checkNode.getOutgoing();
       for (var i = 0; i < edges.length; i++) {
         var w = edges[i].weight().split('<br>');
         if (w.indexOf(pr) !== -1) {
+          // open goto window for user to fill out the item set
           var productions = _.filter(arr, function(x) {return x[0];});
           localStorage['slrdfaproductions'] = ["S'" + arrow + productions[0][0]].concat(_.map(productions, function(x) {return x.join('');}));
           localStorage['slrdfaitemset'] = this.stateLabel().split('<br>');
@@ -863,9 +914,25 @@
       e.stopPropagation();
       jsav.umsg("Click a node.");
     } else {
+      // if adding initial node
+      if (localStorage['slrdfareturn'] && localStorage['slrdfasymbol'] === 'initial') {
+        var builtInitial = builtDFA.addNode({left: 50, top: 50}),
+            nodeX = builtInitial.element.width()/2.0,
+            nodeY = builtInitial.element.height()/2.0;
+        $(builtInitial.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
+        builtDFA.makeInitial(builtInitial);
+        builtInitial.stateLabel(localStorage['slrdfareturn'].replace(/,/g, '<br>'));
+        builtDFA.layout();
+        localStorage.removeItem('slrdfareturn');
+        localStorage.removeItem('slrdfasymbol');
+        jsav.umsg('Build the DFA.');
+        return;
+      }
+      // if user has determined the next item set and is ready to place the new DFA node
       if(selectedNode && localStorage['slrdfareturn']) {
         var newItemSet = localStorage['slrdfareturn'].replace(/,/g, '<br>');
         var newItemSetArr = newItemSet.split('<br>');
+        // check to see if the toNode has already been created
         var nodes = builtDFA.nodes();
         for (var next = nodes.next(); next; next = nodes.next()) {
           var sla = next.stateLabel().split('<br>');
@@ -875,6 +942,7 @@
             return;
           }
         }
+        // add new node
         var newNode = builtDFA.addNode(),
             nodeX = newNode.element.width()/2.0,
             nodeY = newNode.element.height()/2.0;
@@ -892,7 +960,9 @@
   // SLR(1) parsing
   var slrParse = function () {
     var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
+    // variables:
     var v = {};
+    // terminals:
     var t = {};
     for (var i = 0; i < productions.length; i++) {
       var x = productions[i];
@@ -910,7 +980,9 @@
     t = Object.keys(t);
     t.sort();
     t.push('$');
+    // terminals + variables:
     var tv = t.concat(v);
+    // variables + terminals:
     var vt = v.concat(t);
     var parseTable = [];
     for (var i = 0; i < productions.length; i++) {
@@ -941,6 +1013,7 @@
         if (nextItems.length > 0) {
           var nodes = modelDFA.nodes();
           var toNode = null;
+          // check if node has already been created
           for (var next = nodes.next(); next; next = nodes.next()) {
             var curItems = next.stateLabel().split('<br>');
             var inter = _.intersection(curItems, nextItems);
@@ -959,6 +1032,7 @@
         }
       }
     }
+    // add final states
     var nodes = modelDFA.nodes();
     for (var next = nodes.next(); next; next = nodes.next()) {
       var items = next.stateLabel().split('<br>');
@@ -973,8 +1047,7 @@
     modelDFA.layout();
 
     // use DFA to generate the parse table
-    var pDict = {};
-    // a dictionary mapping left sides to right sides
+    var pDict = {};     // a dictionary mapping left sides to right sides
     for (var i = 0; i < productions.length; i++) {
       if (!(productions[i][0] in pDict)) {
         pDict[productions[i][0]] = [];
@@ -1004,12 +1077,15 @@
     // for (key in follows) {
     //   console.log(key +":" + follows[key])
     // }
+
+    // add the S' -> S production
     pDict["S'"] = productions[0][0];
     if (productions[0][0] in derivers) {
       derivers["S'"] = true;
     }
     productions.unshift(["S'", arrow, productions[0][0]]);
 
+    // create parse table using the DFA
     nodes.reset();
     var index = 0;
     for (var next = nodes.next(); next; next = nodes.next()) {
@@ -1066,7 +1142,9 @@
     modelDFA.hide();
     $('#followbutton').show();
     $('.jsavcontrols').hide();
-    ffDisplay = [];
+
+    // interactable FIRST/FOLLOW, same as LL parsing
+    var ffDisplay = [];
     ffDisplay.push(["", "FIRST", "FOLLOW"]);
     for (var i = 0; i < v.length; i++) {
       var vv = v[i];
@@ -1110,22 +1188,11 @@
       $('#dfabuttons').show();
       var pr = confirm("Would you like to define the initial set yourself?");
       if (pr) {
+        // user fills out the initial set in the goTo window and adds the initial node to the graph manually
         localStorage['slrdfaproductions'] = _.map(productions, function(x) {return x.join('');});
         localStorage['slrdfasymbol'] = 'initial';
         window.open('slrGoTo.html', '', 'width = 800, height = 750, screenX = 300, screenY = 25');
-        $('#dfabuttons').append("<input type='button' id='addinitialbutton' value='Add Initial'>");
         jsav.umsg("Add the initial node.");
-        $('#addinitialbutton').click(function() {
-          if (localStorage['slrdfareturn']) {
-            var builtInitial = builtDFA.addNode({left: 50, top: 50});
-            builtDFA.makeInitial(builtInitial);
-            builtInitial.stateLabel(localStorage['slrdfareturn'].replace(/,/g, '<br>'));
-            builtDFA.layout();
-            $('#addinitialbutton').remove();
-            localStorage.removeItem('slrdfareturn');
-            jsav.umsg('Build the DFA.');
-          }
-        });
       } else {
         var builtInitial = builtDFA.addNode({left: 50, top: 50});
         builtDFA.makeInitial(builtInitial);
@@ -1161,8 +1228,10 @@
           break;
         }
       }
+      // if the number of transitions and number of nodes match, and final nodes are correct
       if (tCount1 !== tCount2 || modelDFA.nodeCount() !== builtDFA.nodeCount() || !correctFinals) {
         var confirmed = confirm('Not finished!\nFinish automatically?');
+        // "finish automatically" is just displaying the model DFA. This changes the layout
         if (confirmed) {
           builtDFA.clear();
           modelDFA.show();
@@ -1211,6 +1280,7 @@
       $(m.element).css("margin-left", "auto");
       $(m.element).css("margin-top", "0px");
       parseTableDisplay = new jsav.ds.matrix(pTableDisplay);
+      // The parse 'tree' is a directed graph with layered output. This allows the tree to be built bottom up
       parseTree = new jsav.ds.graph({layout: "layered", directed: true});
       parseTree.element.addClass('parsetree');
       var remainingInput = inputString + '$';
@@ -1233,7 +1303,9 @@
           console.warn(counter);
           break;
         }
+        // index of the lookahead
         var lookAhead = tv.indexOf(remainingInput[0]);
+        // parse table entry to be processed
         var entry = parseTable[currentRow][lookAhead];
         for (var j = 0; j < m._arrays.length; j++) {
           m.unhighlight(j);
@@ -1250,7 +1322,8 @@
           jsav.step();
           break;
         }
-        if (entry[0] === 's') {
+        if (entry[0] === 's') {             // shift
+          // add parse tree node, and add items to the stack
           var term = parseTree.addNode(remainingInput[0]);
           term.addClass('terminal');
           parseStack.push(term);
@@ -1259,9 +1332,10 @@
           parseStack.push(currentRow);
           remainingInput = remainingInput.substring(1);
           parseTree.layout();
-        } else if (entry[0] === 'r') {
+        } else if (entry[0] === 'r') {      // reduce
           var pIndex = Number(entry.substring(1));
           var p = productions[pIndex];
+          // m is the original grammar; productions contains the extra S' -> S production
           m.highlight(pIndex - 1);
           if (p[2] === emptystring) {
             var lNode = parseTree.addNode(emptystring);
@@ -1319,6 +1393,7 @@
     };
     $('#parsebutton').click(continueParse);
   };
+  // adds closure to an item set
   var addClosure = function (items, productions) {
     // takes an array of strings
     var itemsStack = [];
@@ -1355,6 +1430,7 @@
     }
     return items;
   };
+  // gets productions with the dot shifted over
   var goTo = function (items, symbol) {
     // takes an array of strings
     var newItems = [];
@@ -1548,20 +1624,25 @@
       alert('The start variable derives lambda');
     }
     var transformed = [];
+    // remove lambda productions
     productions = _.filter(productions, function(x) { return x[2] !== emptystring;});
     transformed = transformed.concat(productions);
     for (var i = 0; i < productions.length; i++) {
       var p = productions[i];
-      var v = _.uniq(_.filter(p[2], function(x) { return x in derivers;}));  // remove lambda productions
+      // find lambda deriving variables in right hand side
+      var v = _.filter(p[2], function(x) { return x in derivers;});
       if (v.length > 0) {
         v = v.join('');
         for (var j = v.length - 1; j >= 0; j--) {
           // remove all combinations of lambda-deriving variables
           var n = getCombinations(v, j + 1);
           for (var next = n.next(); next.value; next = n.next()) {
-            var regex = new RegExp('[' + next.value.join('') + ']','g');
-            var replaced = p[2].replace(regex, "");
-            if (replaced) {
+            var replaced = p[2];
+            for (var k = 0; k < next.value.length; k++) {
+              replaced = replaced.replace(next.value[k], "");
+            }
+            // if not a lambda production
+            if (replaced && !_.find(transformed, function(x) {return x[0] === p[0] && x[2] === replaced})) {
               transformed.push([p[0], arrow, replaced]);
             }
           }
@@ -1571,11 +1652,6 @@
     // for (var i = 0; i < transformed.length; i++) {
     //   console.log("" + transformed[i]);
     // }
-    // arr = transformed;
-    // lastRow = arr.length;
-    // arr.push(["", arrow, ""]);
-    // m = init();
-    // $('.jsavmatrix').addClass('editMode');
     var ret = _.map(transformed, function(x) {return x.join('');});
     // localStorage['grammar'] = ret;
     // window.open('grammarTest.html', '');
@@ -1695,7 +1771,7 @@
       }
       // map left hand side to the variables in the right hand side
       var r = _.uniq(_.filter(transformed[i][2], function(x) {return variables.indexOf(x) !== -1;}));
-      pDict[transformed[i][0]] = pDict[transformed[i][0]].concat(r);
+      pDict[transformed[i][0]] = _.union(pDict[transformed[i][0]], r);
     }
     var visited = {};
     visited[start] = true;
@@ -1735,12 +1811,14 @@
     }
   };
 
+  // convert to Chomsky Normal Form
   var convertToChomsky = function () {
     var v = {};
     // find all the variables in the grammar
     var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
     for (var i = 0; i < productions.length; i++) {
       var x = productions[i];
+      // change RHS to an array
       x[2] = x[2].split("");
       v[x[0]] = true;
       for (var j = 0; j < x[2].length; j++) {
@@ -1749,7 +1827,9 @@
         }
       }
     }
+    // an array of all the temporary variables
     var tempVars = [];
+    // counter for D(n) variables
     var varCounter = 1;
     // replace terminals with equivalent variables where necessary
     for (var i = 0; i < productions.length; i++) {
@@ -1799,13 +1879,13 @@
         break;
       }
     }
-    var newVariables = _.difference(variables.split(""), Object.keys(v));
+    // var newVariables = _.difference(variables.split(""), Object.keys(v));
     for (var i = 0; i < productions.length; i++) {
       var x = productions[i];
       x[2] = x[2].join(""); 
       //console.log(""+x);
     }
-    var toExport = true;
+    // var toExport = true;
     var ret =  _.map(productions, function(x) {return x.join('');});
     // localStorage['grammar'] = ret;
     //console.log(productions.length);
@@ -1857,6 +1937,7 @@
 
     var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
     var strP = _.map(productions, function(x) {return x.join('');});
+    // store original grammar for reloading later
     backup = ""+strP;
 
     if (!checkTransform(strP, noLambda)) {
@@ -1889,17 +1970,25 @@
         break;
       }
     };
-    var transformed = noLambda;
-    var tArr = [].concat(productions);
+    var transformed = noLambda;           // the finished transformation, as a reference
+    var tArr = [].concat(productions);    // the transformed grammar, for the user to finish
     tArr.push(["", arrow, ""]);
-    var builtLambdaSet = [];
+    var builtLambdaSet = [];              // the set of lambda-deriving variables, for the user to create
+    // handler for the table for finding the lambda-deriving variables
     var findLambdaHandler = function (index) {
+      for (var i = 0; i < this._arrays.length; i++) {
+        this.unhighlight(i);
+      }
+      this.highlight(index);
       var vv = this.value(index, 0);
       var found = builtLambdaSet.indexOf(vv);
       if ((vv in derivers) && found === -1) {
         builtLambdaSet.push(vv);
         jsav.umsg(vv + ' added! Set that derives lambda: [' + builtLambdaSet + ']');
         if (builtLambdaSet.length === Object.keys(derivers).length) {
+          for (var i = 0; i < m._arrays.length; i++) {
+            m.unhighlight(i);
+          }
           m.element.off();
           continueLambda();
         }
@@ -1909,10 +1998,12 @@
         jsav.umsg(vv + ' already selected! Set that derives lambda: [' + builtLambdaSet + ']');
       }
     };
+    // handler for the table for removing lambda-productions and adding equivalent productions
     var removeLambdaHandler = function (index, index2) {
       if (this.value(index, 0)) {
         if (this.value(index, 2) === emptystring) {
           tArr.splice(index, 1);
+          // creating the new table before deleting the previous one keeps the window in the same position
           var tempG = jsav.ds.matrix(tArr);
           tGrammar.clear();
           tGrammar = tempG;
@@ -1949,12 +2040,14 @@
       }
       if (tArr.length - 1 === transformed.length && !_.find(tArr, function(x){return x[2]===emptystring})) {
         var confirmed = confirm('Grammar completed; export?');
+        // if export, open the completed grammar in a new tab
         if (confirmed) {
           localStorage['grammar'] = transformed;
           window.open('grammarTest.html', '');
         }
         arr = tArr;
         lastRow = arr.length - 1;
+        // check which step to proceed to
         var strT = _.map(tArr, function(x) {return x.join('')});
         var noUnit = removeUnit();
         if (!checkTransform(strT, noUnit)) {
@@ -1975,6 +2068,7 @@
         }
       }
     };
+    // transition from finding lambda-deriving variables to modifying the grammar
     var continueLambda = function () {
       jsav.umsg("Modify the grammar to remove lambdas. Set that derives lambda: [" + builtLambdaSet + ']');
       //$(m.element).css("margin-left", "50px");
@@ -1998,7 +2092,7 @@
       }
     }
     $(m.element).css("margin-left", "auto");
-    modelDFA = jsav.ds.graph({layout: "layered", directed: true});
+    modelDFA = jsav.ds.graph({layout: "layered", directed: true});    //VDG
     // modelDFA.css('display', 'inline-block')
     // m.element.css('display', 'inline-block')
     //$('#av').css('text-align', 'center')
@@ -2011,6 +2105,7 @@
       return x[2].length === 1 && variables.indexOf(x[2]) !== -1;
     });
     selectedNode = null;
+    // handler for the VDG for adding transitions
     var unitVdgHandler = function () {
       this.highlight();
       if (selectedNode) {
@@ -2045,8 +2140,10 @@
     };
     var tArr = [].concat(productions);
     tArr.push(["", arrow, ""]);
+    // handler for the table for removing unit productions and adding equivalent productions
     var removeUnitHandler = function (index, index2, e) {
       if (this.value(index, 0)) {
+        // delete production
         if (this.value(index, 2).length === 1 && variables.indexOf(this.value(index, 2)) !== -1) {
           tArr.splice(index, 1);
           var tempG = jsav.ds.matrix(tArr);
@@ -2106,6 +2203,7 @@
         }
       }
     };
+    // transition from creating VDG to modifying the grammar
     var continueUnit = function () {
       jsav.umsg('Modify the grammar to remove unit productions.');
       tGrammar = jsav.ds.matrix(tArr);
@@ -2133,14 +2231,22 @@
         break;
       }
     };
-    var builtDeriveSet = [];
+    var builtDeriveSet = [];      // set of terminal-deriving variables, for the user to create
+    // handler for the table for finding terminal-deriving variables
     var findDeriveHandler = function (index) {
+      for (var i = 0; i < this._arrays.length; i++) {
+        this.unhighlight(i);
+      }
+      this.highlight(index);
       var vv = this.value(index, 0);
       var found = builtDeriveSet.indexOf(vv);
       if ((vv in derivers) && found === -1) {
         builtDeriveSet.push(vv);
         jsav.umsg(vv + ' added! Variables that predicate terminals: [' + builtDeriveSet + ']');
         if (builtDeriveSet.length === Object.keys(derivers).length) {
+          for (var i = 0; i < m._arrays.length; i++) {
+            m.unhighlight(i);
+          }
           m.element.off();
           continueUseless();
         }
@@ -2150,6 +2256,7 @@
         jsav.umsg(vv + ' already selected! Variables that predicate terminals: [' + builtDeriveSet + ']');
       }
     };
+    // handler for the table for removing unreachable productions
     var removeUselessHandler = function (index, index2, e) {
       if (this.value(index, 0)) {
         if (noUseless.indexOf(this.value(index,0) + arrow + this.value(index,2)) === -1) {
@@ -2188,7 +2295,8 @@
       return x[0] in derivers && _.every(x[2], function(y) {return variables.indexOf(y) === -1 || y in derivers});
     });
     tArr.push(["", arrow, ""]);
-    var tProductions = {};
+    // find transitions of the VDG
+    var tProductions = {}; 
     for (var i = 0; i < productions.length; i++) {
       var vv = productions[i][0];
       var r = productions[i][2];
@@ -2211,6 +2319,7 @@
     } 
     //console.log(tCount);
     selectedNode = null;
+    // handler for the VDG for adding transitions
     var uselessVdgHandler = function () {
       this.highlight();
       if (selectedNode) {
@@ -2243,7 +2352,7 @@
         selectedNode = this;
       }
     };
-
+    // transition from finding terminal-deriving variables to creating the VDG
     var continueUseless = function () {
       //$(m.element).css("margin-left", "50px");
       modelDFA = jsav.ds.graph({layout: "layered", directed: true});
@@ -2256,6 +2365,7 @@
       modelDFA.click(uselessVdgHandler);
       jsav.umsg('Complete dependency graph. Variables that predicate terminals: [' + builtDeriveSet + ']')
     };
+    // transition from VDG to removing useless productions
     var continueUselessSecond = function () {
       jsav.umsg('Modify the grammar to remove useless productions.');
       tGrammar = jsav.ds.matrix(tArr);
@@ -2277,11 +2387,13 @@
     //$(m.element).css("margin-left", "15%");
     $(m.element).css('position', 'absolute');
 
+    // array holding the productions
     var tArr = [].concat(productions);
-    // Right sides are arrays
+    // Right sides are arrays (unlike the matrix, where RHS is a string)
     _.each(tArr, function(x) { x[2] = x[2].split('');});
     var varCounter = 1;
 
+    // handler for the table for converting productions
     var chomskyHandler = function (index) {
       for (var i = 0; i < this._arrays.length; i++) {
         this.unhighlight(i);
@@ -2297,6 +2409,7 @@
         return;
       }
       var sliceIn = [];
+      // replace terminals
       for (var i = 0; i < r.length; i++) {
         if (r[i].length === 1 && variables.indexOf(r[i]) === -1) {
           var tempB = "B(" + r[i] + ")";
@@ -2317,6 +2430,7 @@
           tGrammar.highlight(index + i);
         }
       } else {
+        // replace variables
         var tempD = "D(" + varCounter + ")";
         var temp2 = r.splice(1, r.length - 1, tempD);
         var present = _.find(tArr, function(x) { return x[0].length > 1 && x[2].join('') === temp2.join('');});
@@ -2347,6 +2461,7 @@
         }
       }
     };
+    // attempts to convert and export the completed CNF grammar
     var attemptExport = function () {
       var tempVars = [];
       for (var i = 0; i < tArr.length; i++) {
@@ -2387,6 +2502,7 @@
   //=================================
   // conversions
 
+  // check if the grammar is right-linear
   var checkRightLinear = function () {
     var productions = _.filter(arr, function(x) { return x[0]});
     for (var i = 0; i < productions.length; i++) {
@@ -2434,6 +2550,7 @@
     jsav.umsg('Build the DFA.');
   });
   //=================================
+  // button for exiting a proof (parsing or transformation)
   $('#backbutton').click(function () {
     if (parseTree) {
       parseTree.clear();
