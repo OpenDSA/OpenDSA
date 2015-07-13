@@ -12,15 +12,13 @@
 			return;
 		}
 		var traversal = localStorage['traversal'];
-		initGraph({layout: "automatic"});
+		var runFunction = initGraph({layout: "automatic"});
 		$('.jsavcontrols').show();
 		if (traversal != lambda && traversal != epsilon) {
-			// run(traversal);
-			runMultiple(traversal);
+			runFunction(traversal);
 		}
 		else {
-			// run("");
-			runMultiple("")
+			runFunction("")
 		}
 	};
 	
@@ -52,6 +50,10 @@
 	    	edge.layout();
 	    }
 	    g = graph;
+	    if (gg.shorthand) {
+	    	return runMultiple;
+	    }
+	    return run;
     };
 
     function delambdafy(weight) {

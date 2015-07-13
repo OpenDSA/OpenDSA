@@ -11,13 +11,15 @@ function Edge (s, e, w) {
   this.end = e;
   this.weight = w;
 }
-function Graph (ns, es) {
+function Graph (ns, es, sh) {
   this.nodes = ns;
   this.edges = es;
+  this.shorthand = sh;
 }
 function serialize(g) {
   var nodes = [];
   var edges = [];
+  var shorthand = g.shorthand;
   var gNodes = g.nodes();
   var ind = 0;
   for (var next = gNodes.next(); next; next = gNodes.next()) {
@@ -39,7 +41,7 @@ function serialize(g) {
     var edge = new Edge(start, end, weight);
     edges[i] = edge;
   }
-  var gg = new Graph(nodes, edges);
+  var gg = new Graph(nodes, edges, shorthand);
   jsonGraph = JSON.stringify(gg);
   return jsonGraph
 }

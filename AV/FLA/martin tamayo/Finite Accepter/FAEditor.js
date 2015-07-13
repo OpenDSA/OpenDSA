@@ -11,7 +11,8 @@
 		g,
 		lambda = String.fromCharCode(955),
 		epsilon = String.fromCharCode(949),
-		emptystring = lambda;
+		emptystring = lambda,
+		willRejectFunction = willReject;
 
 	var initialize = function(graph) {
 		data = graph;
@@ -56,6 +57,9 @@
 	    			var edge = g.addEdge(g.nodes()[gg.edges[i].start], g.nodes()[gg.edges[i].end]);
 	    		}
 	    		edge.layout();
+	    	}
+	    	if (gg.shorthand) {
+	    		setShorthand(true);
 	    	}
 	    	updateAlphabet();
 	    	jsav.displayInit();
@@ -322,7 +326,6 @@
 				findLambda = true;
 			}
 			for (var key in g.alphabet) {
-				// transition = g.transitionFunction(next, key);
 				transition = g.transitionFunctionMultiple(next, key);
 				if (transition.length > 1) {
 					findMultiple = true;
@@ -398,8 +401,7 @@
 		}
 		jsavArray = jsav.ds.array(travArray, {element: $('.arrayPlace')});
 		for (var j = 0; j < inputs.length; j++) {
-			// if (willReject(g, inputs[j])) {
-			if (willRejectMultiple(g, inputs[j])) {
+			if (willRejectFunction(g, inputs[j])) {
 				jsavArray.css(j, {"background-color": "red"});
 			}
 			else {
@@ -419,6 +421,25 @@
 		localStorage['graph'] = serialize(g);
 		localStorage['traversal'] = inputString;
 		window.open("./FATraversal.html");
+	};
+
+	function switchShorthand() {
+		removeModeClasses();
+		removeND();
+		saveFAState();
+		setShorthand(!g.shorthand);
+	};
+
+	function setShorthand (setBoolean) {
+		g.setShorthand(setBoolean);
+		if (g.shorthand) {
+			document.getElementById("shorthandButton").innerHTML = "Disable Shorthand";
+			willRejectFunction = willRejectMultiple;
+		}
+		else {
+			document.getElementById("shorthandButton").innerHTML = "Enable Shorthand";
+			willRejectFunction = willReject;
+		}
 	};
 
 	function resetUndoButtons () {
@@ -523,4 +544,5 @@
 	$('#ndButton').click(testND);
 	$('#lambdaButton').click(testLambda);
 	$('#epsilonButton').click(switchEmptyString);
+	$('#shorthandButton').click(switchShorthand);
 }(jQuery));

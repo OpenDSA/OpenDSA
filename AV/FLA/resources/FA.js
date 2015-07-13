@@ -27,6 +27,7 @@
                               directed: true, center: true, arcoffset: 50, emptystring: String.fromCharCode(955)}, options);
     //this.options = $.extend({directed: true}, options);
     this.emptystring = this.options.emptystring;
+    this.shorthand = false;
     var el = this.options.element || $("<div/>");
     el.addClass("jsavgraph jsavfiniteautomaton");
     for (var key in this.options) {
@@ -216,6 +217,10 @@
         node._initialMarker = undefined;
       }
     }
+  }
+
+  faproto.setShorthand = function (setBoolean) {
+    this.shorthand = setBoolean;
   }
 
   // Currently assumes every character is a unique input symbol.

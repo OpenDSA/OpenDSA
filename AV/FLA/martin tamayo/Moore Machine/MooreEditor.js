@@ -11,7 +11,8 @@
 		g,
 		lambda = String.fromCharCode(955),
 		epsilon = String.fromCharCode(949),
-		emptystring = lambda;
+		emptystring = lambda,
+		pretraverseFunction = pretraverse;
     
     var initialize = function(graph) {
 		data = graph;
@@ -55,6 +56,9 @@
 	    			var edge = g.addEdge(g.nodes()[gg.edges[i].start], g.nodes()[gg.edges[i].end]);
 	    		}
 	    		edge.layout();
+	    	}
+	    	if (gg.shorthand) {
+	    		setShorthand(true);
 	    	}
 	    	updateAlphabet();
 	    	updateMooreOutput();
@@ -235,15 +239,12 @@
 		var nodes = g.nodes();
 		var w;
 		for (var next = nodes.next(); next; next = nodes.next()) {
-  			var letters = next.mooreOutput();
-  			if (letters !== emptystring) {
-  				for (var i = 0; i < letters.length; i++) {
-  					letter = letters[i];
-  					if (!(letter in alphabet)) {
- 	     				alphabet[letter] = 0;
-    				}
-   					alphabet[letter]++;
-  				}
+  			var letter = next.mooreOutput();
+  			if (letter !== emptystring) {
+  				if (!(letter in alphabet)) {
+ 	     			alphabet[letter] = 0;
+    			}
+   				alphabet[letter]++;
 			}
 		}
 		$("#mooreOutput").html("" + Object.keys(alphabet).sort());
@@ -392,7 +393,6 @@
 				findLambda = true;
 			}
 			for (var key in g.alphabet) {
-				// transition = g.transitionFunction(next, key);
 				transition = g.transitionFunctionMultiple(next, key);
 				if (transition.length > 1) {
 					findMultiple = true;
@@ -475,8 +475,7 @@
 		var acceptArray = [];
 		readyTraversal();
 		for (var i = 0; i < inputArray.length; i++) {
-			// var outputData = pretraverse(g, inputArray[i]);
-			var outputData = pretraverseMultiple(g, inputArray[i]);
+			var outputData = pretraverseFunction(g, inputArray[i]);
 			acceptArray.push(outputData[0]);
 			if (outputData[0]) {
 				outputArray.push(outputData[1]);
@@ -517,6 +516,25 @@
 		localStorage['graph'] = serialize(g);
 		localStorage['traversal'] = inputString;
 		window.open("./MooreTraversal.html");
+	};
+
+	function switchShorthand() {
+		removeModeClasses();
+		removeND();
+		saveMooreState();
+		setShorthand(!g.shorthand);
+	};
+
+	function setShorthand (setBoolean) {
+		g.setShorthand(setBoolean);
+		if (g.shorthand) {
+			document.getElementById("shorthandButton").innerHTML = "Disable Shorthand";
+			pretraverseFunction = pretraverseMultiple;
+		}
+		else {
+			document.getElementById("shorthandButton").innerHTML = "Enable Shorthand";
+			pretraverseFunction = pretraverse;
+		}
 	};
 
 	function resetUndoButtons () {
@@ -621,4 +639,5 @@
 	$('#ndButton').click(testND);
 	$('#lambdaButton').click(testLambda);
 	$('#epsilonButton').click(switchEmptyString);
+	$('#shorthandButton').click(switchShorthand);
 }(jQuery));
