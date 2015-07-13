@@ -18,22 +18,21 @@ $(document).ready(function () {
   var rectHeight = 225;
   
   // Slide 1
-  av.umsg("Let's see how we can differentiate between a problem, problem instance, algorithm, and a program.");
+  av.umsg(interpret("Slide 1"));
   av.displayInit();
   
   //Slide 2
-  av.umsg("A problem is a task that matches input to output.");
+  av.umsg(interpret("Slide 2"));
   av.step();
 
   //Slide 3
-  av.umsg("<br><br> Consider the problem of searching for an element in an array.", {preserve:true});
+  av.umsg(interpret("Slide 3"), {preserve:true});
   var rect = av.g.rect(leftAlign + 380, topAlign - 25, rectWidth, rectHeight);
   var labelProblem = av.label("Searching Problem",  {"top": topAlign + 25, "left": leftAlign + 385});
   av.step();
 
   //Slide 4
-  av.umsg
-  ("Here, we have: <br><b><u> Input: </u></b> An array, and the target key.");
+  av.umsg(interpret("Slide 4"));
   for(var i = 0; i < 6; i++){
   	arr_values.push("Key " + (i+1));
   }
@@ -45,7 +44,7 @@ $(document).ready(function () {
   av.step();
 
   //Slide 5
-  av.umsg("<br><b><u> Output: </u></b> The index of the target element if it is found or -1 if not found.", {preserve:true});
+  av.umsg(interpret("Slide 5"), {preserve:true});
   var lineOutput1 = av.g.line(leftAlign + 380 + rectWidth, topAlign + 50, leftAlign + 475 + rectWidth, topAlign + 50);
   var lineOutput2 = av.g.line(leftAlign + 380 + rectWidth, topAlign + 115, leftAlign + 475 + rectWidth, topAlign + 115);
   var labelOutput1 = 
@@ -55,22 +54,22 @@ $(document).ready(function () {
   var labelOutput3 = 
   av.label("Index of the target key",  {"top": topAlign + 15, "left": leftAlign + 490 + rectWidth});
   var labelOutput4 = 
-  av.label("-1",  {"top": topAlign + 105, "left": leftAlign + 490 + rectWidth});
+  av.label("$n$",  {"top": topAlign + 95, "left": leftAlign + 490 + rectWidth});
   av.step();
 
   //Slide 6
-  av.umsg("<br><br>Note here that we have the searching problem as a black box. We don't know how the searching is performed.", {"preserve":true});
+  av.umsg(interpret("Slide 6"), {"preserve":true});
   rect.css({"opacity":0.2, "fill":"blue"});
   av.step();
 
   //Slide 7
-  av.umsg("A problem instance is a specific selection of values for the problem input");
+  av.umsg(interpret("Slide 7"));
   rect.hide();
   rect = av.g.rect(leftAlign + 380, topAlign - 25, rectWidth, rectHeight);
   av.step();
 
   //Slide 8
-  av.umsg("<br><br> Here we see an example of a searching problem instance in which we have initialized the array and we have a value for the target key", {preserve:true});
+  av.umsg(interpret("Slide 8"), {preserve:true});
   var count = 0;
   while(count < 6){
     var value = Math.round(Math.random() * 10);
@@ -91,7 +90,7 @@ $(document).ready(function () {
   av.step();
 
   //Slide 9
-  av.umsg("An algorithm is a receipe or a specific way of mapping problem input to output");
+  av.umsg(interpret("Slide 9"));
   labelProblem.text("Algorithm");
   labelProblem.css({"top":"-=50", "left":"+=20"});
   labelOutput1.hide();
@@ -104,7 +103,7 @@ $(document).ready(function () {
   av.step();
 
   //Slide 10
-  av.umsg("<br><br> An algorithm takes a problem instance as its input", {preserve: true});
+  av.umsg(interpret("Slide 10"), {preserve: true});
   arr.show();
   line1.show();
   line2.show();
@@ -112,15 +111,15 @@ $(document).ready(function () {
   av.step();
 
   //Slide 11
-  av.umsg("<br><br>Then a series of steps is performed to generate the output.", {preserve:true});  
+  av.umsg(interpret("Slide 11"), {preserve:true});  
   av.step();
 
   //Slide 12
-  av.umsg("There are several different algorithms that can solve a particular problem. For the searching problem, here we present the sequencial search algorithm.");
+  av.umsg(interpret("Slide 12"));
   av.step();
 
   //Slide 13
-  av.umsg("<br><br> The sequencial search algorithm simply loops through all the keys in the array until the target key is found in which the index is returned. Otherwise -1 is returned.", {preserve:true});
+  av.umsg(interpret("Slide 13"), {preserve:true});
   var algLabel = av.label("foreach key in array<br>&nbsp;&nbsp;if key == target<br>&nbsp;&nbsp;&nbsp;&nbsp;return keyIndex<br> return -1",  {"top": topAlign + 25, "left": leftAlign + 395}).css({"font-size":12});
   labelOutput1.show();
   labelOutput3.show();
@@ -128,7 +127,7 @@ $(document).ready(function () {
   av.step();
 
   //Slide 14
-  av.umsg("A program is an instance of a particular algorithm that solves a particular problem implemented in some programming language");
+  av.umsg(interpret("Slide 14"));
   labelProblem.text("Program");
   labelOutput1.hide();
   labelOutput3.hide();
@@ -141,7 +140,7 @@ $(document).ready(function () {
   av.step();
 
   //Slide 15
-  av.umsg("<br><br>A program accepts a problem instance as an input", {preserve:true});
+  av.umsg(interpret("Slide 15"), {preserve:true});
   labelInput.show();
   line1.show();
   line2.show();
@@ -149,18 +148,18 @@ $(document).ready(function () {
   av.step();
 
   //Slide 16
-  av.umsg("<br><br>Then the program is executed to generate the output", {preserve:true});
+  av.umsg(interpret("Slide 16"), {preserve:true});
   av.step(); 
 
   //Slide 17
-  av.umsg("Here we present the sequencial search algorithm. implemented as a Java function.");
-  rect.css({width: rectWidth + 70});
+  av.umsg(interpret("Slide 17"));
+  pseudo.show();
+  rect.css({width: rectWidth + 95});
   labelProblem.css({left:"+=50"});
-  var ProgLabel = av.label("int seqSearch(int [] A, int target){<br>&nbsp;&nbsp;for(int i = 0;i < A.length;i++){<br>&nbsp;&nbsp;&nbsp;&nbsp;if(A[i] == target){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return i;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;return -1;<br>}",  {"top": topAlign + 25, "left": leftAlign + 385}).css({"font-size":12});
   lineOutput1.hide();
-  lineOutput1 = av.g.line(leftAlign + 450 + rectWidth, topAlign + 50, leftAlign + 545 + rectWidth, topAlign + 50);
-  labelOutput1.css({left:"+=70"});
-  labelOutput3.css({left:"+=70"});
+  lineOutput1 = av.g.line(leftAlign + 475 + rectWidth, topAlign + 50, leftAlign + 545 + rectWidth, topAlign + 50);
+  labelOutput1.css({left:"+=95"});
+  labelOutput3.css({left:"+=75"});
   lineOutput1.show();
   labelOutput1.show();
   labelOutput3.show();

@@ -17,3 +17,7 @@
   min-height: 35px !important;
   max-height: 35px !important;
 }
+.jsavcodeline{
+  background-color: transparent;
+  font-size: 10px;
+}
