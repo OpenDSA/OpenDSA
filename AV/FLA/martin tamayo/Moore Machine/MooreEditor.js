@@ -175,6 +175,7 @@
 			executeDeleteNode(g, this);
 			updateAlphabet();
 			updateMooreOutput();
+			checkAllEdges(true);
 		}
 	};
 
@@ -183,6 +184,7 @@
 			saveMooreState();
 			executeDeleteEdge(g, this);
 			updateAlphabet();
+			checkAllEdges(true);
 		}
 	};
 
@@ -231,7 +233,7 @@
 		saveMooreState();
 		executeEditEdge(g, label, edge_label);
 		updateAlphabet();
-		checkAllEdges();
+		checkAllEdges(false);
 	};
 
 	function checkEdge(edge) {
@@ -248,13 +250,14 @@
 		}
 	};
 
-	function checkAllEdges() {
+	function checkAllEdges(alerted) {
 		if (g.shorthand) {
 			return;
 		}
-		var alerted = false;
+		document.getElementById("begin").disabled = false;
 		var edges = g.edges();
 		for (var next = edges.next(); next; next = edges.next()) {
+			next.removeClass('testingMultiple');
 			var weights = next.weight().split("<br>");
 			for (var i = 0; i < weights.length; i++) {
 				if (weights[i].length > 1) {
@@ -579,7 +582,7 @@
 		else {
 			document.getElementById("shorthandButton").innerHTML = "Enable Shorthand";
 			pretraverseFunction = pretraverse;
-			checkAllEdges();
+			checkAllEdges(false);
 		}
 	};
 

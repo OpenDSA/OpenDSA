@@ -151,6 +151,7 @@
 			saveFAState();
 			executeDeleteNode(g, this);
 			updateAlphabet();
+			checkAllEdges(true);
 		}
 	};
 
@@ -159,6 +160,7 @@
 			saveFAState();
 			executeDeleteEdge(g, this);
 			updateAlphabet();
+			checkAllEdges(true);
 		}
 	};
 
@@ -188,7 +190,7 @@
 		saveFAState();
 		executeEditEdge(g, label, edge_label);
 		updateAlphabet();
-		checkAllEdges();
+		checkAllEdges(false);
 	};
 
 	function checkEdge(edge) {
@@ -205,13 +207,14 @@
 		}
 	};
 
-	function checkAllEdges() {
+	function checkAllEdges(alerted) {
 		if (g.shorthand) {
 			return;
 		}
-		var alerted = false;
+		document.getElementById("begin").disabled = false;
 		var edges = g.edges();
 		for (var next = edges.next(); next; next = edges.next()) {
+			next.removeClass('testingMultiple');
 			var weights = next.weight().split("<br>");
 			for (var i = 0; i < weights.length; i++) {
 				if (weights[i].length > 1) {
@@ -484,7 +487,7 @@
 		else {
 			document.getElementById("shorthandButton").innerHTML = "Enable Shorthand";
 			willRejectFunction = willReject;
-			checkAllEdges();
+			checkAllEdges(false);
 		}
 	};
 
