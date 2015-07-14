@@ -3,6 +3,7 @@ var executeAddNode = function(graph, top, left){
 	var offsetTop = top - newNode.element.height()/2.0,
 		offsetLeft = left - newNode.element.width()/2.0;
 	$(newNode.element).offset({top: offsetTop, left: offsetLeft});
+	return newNode;
 };
 
 var executeDeleteNode = function(graph, node){
@@ -35,9 +36,9 @@ var executeDeleteEdge = function(graph, edge){
 var executeMoveNode = function(graph, node, top, left){
 	var offsetTop = top - node.element.height()/2.0;
 	var offsetLeft = left - node.element.width()/2.0;
-	var edges = graph.edges();
 	$(node.element).offset({top: offsetTop, left: offsetLeft});
 	node.stateLabelPositionUpdate();
+	var edges = graph.edges();
 	for (var next = edges.next(); next; next = edges.next()) {
 		if (next.start().equals(node) || next.end().equals(node)) {
 			next.layout();
@@ -45,7 +46,27 @@ var executeMoveNode = function(graph, node, top, left){
 	}
 };
 
-var executeEditNode = function(graph, node, initialState, nodeLabel){
+var executeEditNode = function(graph, node, initialState, finalState, nodeLabel){
+	if (initialState) {
+		for (var i = 0; i < graph.nodeCount(); i++) {
+			graph.removeInitial(graph.nodes()[i]);
+		}
+		graph.makeInitial(node);
+	}
+	else {
+		graph.removeInitial(node);
+	}
+	if (finalState) {
+		node.addClass('final');
+	}
+	else {
+		node.removeClass('final');
+	}
+	node.stateLabel(nodeLabel);
+	node.stateLabelPositionUpdate();
+};
+
+var executeEditMealyNode = function(graph, node, initialState, nodeLabel){
 	if (initialState) {
 		for (var i = 0; i < graph.nodeCount(); i++) {
 			graph.removeInitial(graph.nodes()[i]);
@@ -59,7 +80,22 @@ var executeEditNode = function(graph, node, initialState, nodeLabel){
 	node.stateLabelPositionUpdate();
 };
 
-var executeEditEdge = function(graph, edge, weight){
-	$(edge).html(weight);
+var executeEditMooreNode = function(graph, node, initialState, nodeLabel, nodeOutput){
+	if (initialState) {
+		for (var i = 0; i < graph.nodeCount(); i++) {
+			graph.removeInitial(graph.nodes()[i]);
+		}
+		graph.makeInitial(node);
+	}
+	else {
+		graph.removeInitial(node);
+	}
+	node.mooreOutput(nodeOutput);
+	node.stateLabel(nodeLabel);
+	node.stateLabelPositionUpdate();
+};
+
+var executeEditEdge = function(graph, edge_label, weight){
+	$(edge_label).html(weight);
 	graph.layout({layout: "manual"});
 };

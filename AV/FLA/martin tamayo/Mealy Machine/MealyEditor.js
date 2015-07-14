@@ -119,7 +119,7 @@
 		if ($(".jsavgraph").hasClass("editNodes")) {
 			selected = this;
 			selected.highlight();
-			var Prompt = new NodePrompt(updateNode);
+			var Prompt = new MealyNodePrompt(updateNode);
 			Prompt.render(selected.value(), selected.hasClass('start'), selected.stateLabel());
 			selected.unhighlight();
 		}
@@ -133,7 +133,7 @@
    			else {
    				selected = this;
    				selected.highlight();
-   				var Prompt = new EdgePrompt(createEdge, emptystring);
+   				var Prompt = new MealyEdgePrompt(createEdge, emptystring);
    				Prompt.render("");
 				$('.jsavgraph').removeClass("working");
 				first.unhighlight();
@@ -154,7 +154,7 @@
 			saveMealyState();
 			executeDeleteNode(g, this);
 			updateAlphabet();
-			checkAllEdges(true);
+			checkAllEdges();
 		}
 	};
 
@@ -163,7 +163,7 @@
 			saveMealyState();
 			executeDeleteEdge(g, this);
 			updateAlphabet();
-			checkAllEdges(true);
+			checkAllEdges();
 		}
 	};
 
@@ -171,14 +171,14 @@
 		if ($(".jsavgraph").hasClass("editNodes")) {
 			label = this;
 			var values = $(label).html().split('<br>');
-			var Prompt = new EdgePrompt(updateEdge, emptystring);
+			var Prompt = new MealyEdgePrompt(updateEdge, emptystring);
    			Prompt.render(values);
 		}
 	};
 
 	function updateNode(initial_state, node_label) {
 		saveMealyState();
-		executeEditNode(g, selected, initial_state, node_label);
+		executeEditMealyNode(g, selected, initial_state, node_label);
 	};
 
 	function createEdge(edge_label) {
@@ -193,7 +193,16 @@
 		saveMealyState();
 		executeEditEdge(g, label, edge_label);
 		updateAlphabet();
-		checkAllEdges(false);
+		checkAllEdges();
+		if (!g.shorthand) {
+			var weights = edge_label.split("<br>");
+			for (var i = 0; i < weights.length; i++) {
+				if (weights[i].split(":")[0].length > 1) {
+					window.alert("Shorthand notation is disabled for this automaton.\n\nTo traverse, please enter only single character transition labels.");
+					break;
+				}
+			}	
+		}
 	};
 
 	function checkEdge(edge) {
@@ -206,11 +215,12 @@
 				window.alert("Shorthand notation is disabled for this automaton.\n\nTo traverse, please enter only single character transition labels.");
 				edge.addClass('testingMultiple');
 				document.getElementById("begin").disabled = true;
+				break;
 			}
 		}
 	};
 
-	function checkAllEdges(alerted) {
+	function checkAllEdges() {
 		if (g.shorthand) {
 			return;
 		}
@@ -221,10 +231,6 @@
 			var weights = next.weight().split("<br>");
 			for (var i = 0; i < weights.length; i++) {
 				if (weights[i].split(":")[0].length > 1) {
-					if (!alerted) {
-						alerted = true;
-						window.alert("Shorthand notation is disabled for this automaton.\n\nTo traverse, please enter only single character transition labels.");
-					}
 					next.addClass('testingMultiple');
 					document.getElementById("begin").disabled = true;
 				}
@@ -557,7 +563,7 @@
 		else {
 			document.getElementById("shorthandButton").innerHTML = "Enable Shorthand";
 			pretraverseFunction = pretraverse;
-			checkAllEdges(false);
+			checkAllEdges();
 		}
 	};
 

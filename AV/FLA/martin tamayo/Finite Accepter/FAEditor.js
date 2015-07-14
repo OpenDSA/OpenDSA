@@ -151,7 +151,7 @@
 			saveFAState();
 			executeDeleteNode(g, this);
 			updateAlphabet();
-			checkAllEdges(true);
+			checkAllEdges();
 		}
 	};
 
@@ -160,7 +160,7 @@
 			saveFAState();
 			executeDeleteEdge(g, this);
 			updateAlphabet();
-			checkAllEdges(true);
+			checkAllEdges();
 		}
 	};
 
@@ -190,7 +190,16 @@
 		saveFAState();
 		executeEditEdge(g, label, edge_label);
 		updateAlphabet();
-		checkAllEdges(false);
+		checkAllEdges();
+		if (!g.shorthand) {
+			var weights = edge_label.split("<br>");
+			for (var i = 0; i < weights.length; i++) {
+				if (weights[i].length > 1) {
+					window.alert("Shorthand notation is disabled for this automaton.\n\nTo traverse, please enter only single character transition labels.");
+					break;
+				}
+			}	
+		}
 	};
 
 	function checkEdge(edge) {
@@ -203,11 +212,12 @@
 				window.alert("Shorthand notation is disabled for this automaton.\n\nTo traverse, please enter only single character transition labels.");
 				edge.addClass('testingMultiple');
 				document.getElementById("begin").disabled = true;
+				break;
 			}
 		}
 	};
 
-	function checkAllEdges(alerted) {
+	function checkAllEdges() {
 		if (g.shorthand) {
 			return;
 		}
@@ -218,10 +228,6 @@
 			var weights = next.weight().split("<br>");
 			for (var i = 0; i < weights.length; i++) {
 				if (weights[i].length > 1) {
-					if (!alerted) {
-						alerted = true;
-						window.alert("Shorthand notation is disabled for this automaton.\n\nTo traverse, please enter only single character transition labels.");
-					}
 					next.addClass('testingMultiple');
 					document.getElementById("begin").disabled = true;
 				}
@@ -487,7 +493,7 @@
 		else {
 			document.getElementById("shorthandButton").innerHTML = "Enable Shorthand";
 			willRejectFunction = willReject;
-			checkAllEdges(false);
+			checkAllEdges();
 		}
 	};
 
