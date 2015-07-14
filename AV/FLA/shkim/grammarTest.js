@@ -42,94 +42,7 @@
     for (var i = 0; i < arr.length; i++) {
       arr[i] = ["", arrow, ""];
     }
-    // arr[0] = ['S', arrow, 'aA'];
-    // arr[1] = ['S', arrow, 'bA'];
-    // arr[2] = ['S', arrow, 'aC'];
-    // arr[3] = ['A', arrow, 'B'];
-    // arr[4] = ['B', arrow, 'qvC'];
-    // arr[5] = ['C', arrow, 'x'];
-    // arr[6] = ['B', arrow, 'y'];
-    // arr[7] = ['A', arrow, emptystring];
-    // arr[8] = ['', arrow, ''];
-    // lastRow = 8;
-
-    // remove lambda productions example:
-    // arr[0] = ['S', arrow, 'EBCA'];
-    // arr[1] = ['A', arrow, 'aAa'];
-    // arr[2] = ['A', arrow, emptystring];
-    // arr[3] = ['B', arrow, 'bB'];
-    // arr[4] = ['B', arrow, emptystring];
-    // arr[5] = ['C', arrow, 'B'];
-    // arr[6] = ['D', arrow, 'AB']; 
-    // arr[7] = ['E', arrow, 'a'];
-    // arr[8] = ['', arrow, ''];
-    // lastRow = 8;
-
-    // remove unit productions example:
-    // arr[0] = ['S', arrow, 'Aa'];
-    // arr[1] = ['S', arrow, 'A'];
-    // arr[2] = ['A', arrow, 'C'];
-    // arr[3] = ['B', arrow, 'b'];
-    // arr[4] = ['C', arrow, 'B'];
-    // arr[5] = ['C', arrow, 'cCc'];
-    // arr[6] = ['', arrow, ''];
-    // lastRow = 6;
-
-    // remove useless productions example:
-    arr[0] = ['S', arrow, 'AaB'];
-    arr[1] = ['S', arrow, 'Aa'];
-    arr[2] = ['S', arrow, 'dDc'];
-    arr[3] = ['A', arrow, 'AAa'];
-    arr[4] = ['A', arrow, 'a'];
-    arr[5] = ['B', arrow, 'bB'];
-    arr[6] = ['B', arrow, 'bBb']; 
-    arr[7] = ['C', arrow, 'cD'];
-    arr[8] = ['D', arrow, 'aAb'];
-    arr[9] = ['', arrow, ''];
-    lastRow = 9;
-
-    // chomsky example:
-    // arr[0] = ['S', arrow, 'ABAB'];
-    // arr[1] = ['A', arrow, 'Aa'];
-    // arr[2] = ['A', arrow, 'a'];
-    // arr[3] = ['B', arrow, 'bb'];
-    // arr[4] = ['', arrow, ''];
-    // lastRow = 4;
-
-    // FIRST example:
-    // arr[0] = ['S', arrow, 'BAc'];
-    // arr[1] = ['A', arrow, 'Aa'];
-    // arr[2] = ['A', arrow, 'a'];
-    // arr[3] = ['B', arrow, 'AB'];
-    // arr[4] = ['B', arrow, 'bB'];
-    // arr[5] = ['B', arrow, 'd'];
-    // arr[6] = ['', arrow, ''];
-    // lastRow = 6;
-
-    // LL(1) example:
-    // arr[0] = ['S', arrow, 'ABcC'];
-    // arr[1] = ['A', arrow, 'aA'];
-    // arr[2] = ['A', arrow, emptystring];
-    // arr[3] = ['B', arrow, 'bbB'];
-    // arr[4] = ['B', arrow, emptystring];
-    // arr[5] = ['C', arrow, 'BA'];
-    // arr[6] = ['', arrow, ''];
-    // lastRow = 6;
-
-    // SLR(1) examples:
-    // arr[0] = ['S', arrow, 'A'];
-    // arr[1] = ['A', arrow, 'aaA'];
-    // arr[2] = ['A', arrow, 'b'];
-    // arr[3] = ['', arrow, ''];
-    // lastRow = 3;
-
-    // arr[0] = ['S', arrow, 'ABc'];
-    // arr[1] = ['A', arrow, 'Aa'];
-    // arr[2] = ['A', arrow, emptystring];
-    // arr[3] = ['B', arrow, 'BS'];
-    // arr[4] = ['B', arrow, 'b'];
-    // arr[5] = ['', arrow, ''];
-    // lastRow = 5;
+    lastRow = 0;
   }
   
   // initializes/reinitializes the grammar display
@@ -167,11 +80,12 @@
       var offset = this._arrays[index]._indices[index2].element.offset();
       var topOffset = offset.top;
       var leftOffset = offset.left;
-      $('#firstinput').offset({top: topOffset, left: leftOffset});
-      $('#firstinput').outerHeight($('.jsavvalue').height());
-      $('#firstinput').width($('.jsavvalue').width());
-      $('#firstinput').focus();
-      $('#firstinput').keyup(function(event){
+      var fi = $('#firstinput');
+      fi.offset({top: topOffset, left: leftOffset});
+      fi.outerHeight($('.jsavvalue').height());
+      fi.width($('.jsavvalue').width());
+      fi.focus();
+      fi.keyup(function(event){
         if(event.keyCode == 13){
           var input = $(this).val();
           if (input === "" && index2 === 2) {
@@ -181,7 +95,7 @@
           arr[index][index2] = input;
           // adding a new production
           addProduction(index);
-          $('#firstinput').remove();
+          fi.remove();
         }
       });
     }
@@ -503,11 +417,12 @@
     var topOffset = offset.top;
     var leftOffset = offset.left;
     var w = $('.jsavvalue').width();
-    $('#firstinput').offset({top: topOffset, left: leftOffset + arrayStep*w});
-    $('#firstinput').outerHeight($('.jsavvalue').height());
-    $('#firstinput').width(w);
-    $('#firstinput').focus();
-    $('#firstinput').keyup(function(event){
+    var fi = $('#firstinput');
+    fi.offset({top: topOffset, left: leftOffset + arrayStep*w});
+    fi.outerHeight($('.jsavvalue').height());
+    fi.width(w);
+    fi.focus();
+    fi.keyup(function(event){
       if(event.keyCode == 13){
         var firstInput = $(this).val();
         firstInput = firstInput.split("");
@@ -519,7 +434,7 @@
         }
         firstInput = _.uniq(firstInput).join(',');
         ffTable.value(index, arrayStep, firstInput);
-        $('#firstinput').remove();
+        fi.remove();
       }
     });
   };
@@ -536,16 +451,17 @@
     var offset = this._indices[index].element.offset();
     var topOffset = offset.top;
     var leftOffset = offset.left;
-    $('#firstinput').offset({top: topOffset, left: leftOffset});
-    $('#firstinput').outerHeight($('.jsavvalue').height());
-    $('#firstinput').width($('.jsavvalue').width());
-    $('#firstinput').focus();
-    $('#firstinput').keyup(function(event){
+    var fi = $('#firstinput');
+    fi.offset({top: topOffset, left: leftOffset});
+    fi.outerHeight($('.jsavvalue').height());
+    fi.width($('.jsavvalue').width());
+    fi.focus();
+    fi.keyup(function(event){
       if(event.keyCode == 13){
         var firstInput = $(this).val();
         firstInput = firstInput.replace(/!/g, emptystring);
         self.value(index, firstInput);
-        $('#firstinput').remove();
+        fi.remove();
       }
     });
   };
@@ -2552,6 +2468,7 @@
     var productions = _.filter(arr, function(x) { return x[0]});
     var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(serializeGrammar(productions));
     $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="grammar.xml">Download Grammar</a>');
+    $('#download a')[0].click();
   };
 
   // load
@@ -2568,6 +2485,10 @@
     }
     if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue !== 'grammar') {
       alert('File does not contain a grammar.');
+      // clear input
+      var loaded = $('#loadfile');
+      loaded.wrap('<form>').closest('form').get(0).reset();
+      loaded.unwrap();
       return;
     } else {
       arr = [];
