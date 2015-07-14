@@ -1,3 +1,5 @@
+// The binary adder from the JFLAP book, for fun
+// Based on an older version of tmTest.js (buggy nondeterministic traversal)
 (function ($) {
 	localStorage["jsav-speed"] = 0; // set default animation speed to max
 	var jsav = new JSAV("av"),
@@ -177,8 +179,8 @@
 			$('#deletetransitionbutton').click(deleteTransition);
 			$('#donelabelbutton').click(finishEdgeLabel);
 		}
-		};
-		var graphClickHandler = function(e) {
+	};
+	var graphClickHandler = function(e) {
 		if ($(".jsavgraph").hasClass("addNodes")) {
 			var newNode = g.addNode(),
 			    nodeX = newNode.element.width()/2.0,
@@ -272,15 +274,15 @@
 				updateAlphabet();
 				jsav.umsg("Click a node");
    			}
-			} else if ($('.jsavgraph').hasClass('moveNodes')) {
-				if (selectedNode) {
-					selectedNode.unhighlight();
-				}
-				this.highlight();
-				selectedNode = this;
-				jsav.umsg("Click to place node");
-				e.stopPropagation();
+		} else if ($('.jsavgraph').hasClass('moveNodes')) {
+			if (selectedNode) {
+				selectedNode.unhighlight();
 			}
+			this.highlight();
+			selectedNode = this;
+			jsav.umsg("Click to place node");
+			e.stopPropagation();
+		}
 	};
 	var edgeClickHandler = function(e) {
 		if ($('.jsavgraph').hasClass('editNodes')) {
@@ -302,99 +304,99 @@
 		g.layout();
 		jsav.displayInit();
 
-		//===============================
-		var updateAlphabet = function() {
-			g.updateAlphabet();
+	//===============================
+	var updateAlphabet = function() {
+		g.updateAlphabet();
 		$("#alphabet").html("" + Object.keys(g.alphabet).sort());
 		var sa = getTapeAlphabet(g);
 		$('#stackalphabet').html(emptystring + "," + sa.sort());
 	};
 	updateAlphabet();
-		//===============================
-		//editing modes
+	//===============================
+	//editing modes
 
-		var addNodesMode = function() {
-			removeEdgeSelect();
-			removeLabelMenu();
-			$(".jsavgraph").removeClass("working");
-			$(".jsavgraph").removeClass("addEdges");
-			$(".jsavgraph").removeClass("moveNodes");
-			$(".jsavgraph").removeClass("editNodes");
-			$(".jsavgraph").addClass("addNodes");
-			$("#mode").html('Adding nodes');
-			jsav.umsg("Click to add nodes");
-		};
-		var addEdgesMode = function() {
-			removeEdgeSelect();
-			removeLabelMenu();
-			$(".jsavgraph").removeClass("working");
-			$(".jsavgraph").removeClass("addNodes");
-			$(".jsavgraph").removeClass("moveNodes");
-			$(".jsavgraph").removeClass("editNodes");
-			$(".jsavgraph").addClass("addEdges");
-			$("#mode").html('Adding edges');
-			jsav.umsg("Click a node");
-		};
-		var moveNodesMode = function() {
-			removeEdgeSelect();
-			removeLabelMenu();
-			$(".jsavgraph").removeClass("working");
-			$(".jsavgraph").removeClass("addNodes");
-			$(".jsavgraph").removeClass("addEdges");
-			$(".jsavgraph").removeClass("editNodes");
-			$(".jsavgraph").addClass("moveNodes");
-			$("#mode").html('Moving nodes');
-			jsav.umsg("Click a node");
-		};
-		var editNodesMode = function() {
-			$(".jsavgraph").removeClass("working");
-			$(".jsavgraph").removeClass("addNodes");
-			$(".jsavgraph").removeClass("addEdges");
-			$(".jsavgraph").removeClass("moveNodes");
-			$(".jsavgraph").addClass("editNodes");
-			$("#mode").html('Editing nodes and edges');
-			addEdgeSelect();
-			jsav.umsg("Click a node or edge");
-		};
-		var changeEditingMode = function() {
-			removeLabelMenu();
-			$(".jsavgraph").removeClass("working");
-			$(".jsavgraph").removeClass("addNodes");
-			$(".jsavgraph").removeClass("addEdges");
-			$(".jsavgraph").removeClass("moveNodes");
-			$('.jsavgraph').removeClass('editNodes');
-			removeEdgeSelect();
-			$("#mode").html('Editing');
-			if ($(".notEditing").is(":visible")) {
-				$('#changeButton').html('Done editing');
-			} else {
-				$('#changeButton').html('Edit');
-			}
-			$('.notEditing').toggle();
-			$('.editing').toggle();
-		};
+	var addNodesMode = function() {
+		removeEdgeSelect();
+		removeLabelMenu();
+		$(".jsavgraph").removeClass("working");
+		$(".jsavgraph").removeClass("addEdges");
+		$(".jsavgraph").removeClass("moveNodes");
+		$(".jsavgraph").removeClass("editNodes");
+		$(".jsavgraph").addClass("addNodes");
+		$("#mode").html('Adding nodes');
+		jsav.umsg("Click to add nodes");
+	};
+	var addEdgesMode = function() {
+		removeEdgeSelect();
+		removeLabelMenu();
+		$(".jsavgraph").removeClass("working");
+		$(".jsavgraph").removeClass("addNodes");
+		$(".jsavgraph").removeClass("moveNodes");
+		$(".jsavgraph").removeClass("editNodes");
+		$(".jsavgraph").addClass("addEdges");
+		$("#mode").html('Adding edges');
+		jsav.umsg("Click a node");
+	};
+	var moveNodesMode = function() {
+		removeEdgeSelect();
+		removeLabelMenu();
+		$(".jsavgraph").removeClass("working");
+		$(".jsavgraph").removeClass("addNodes");
+		$(".jsavgraph").removeClass("addEdges");
+		$(".jsavgraph").removeClass("editNodes");
+		$(".jsavgraph").addClass("moveNodes");
+		$("#mode").html('Moving nodes');
+		jsav.umsg("Click a node");
+	};
+	var editNodesMode = function() {
+		$(".jsavgraph").removeClass("working");
+		$(".jsavgraph").removeClass("addNodes");
+		$(".jsavgraph").removeClass("addEdges");
+		$(".jsavgraph").removeClass("moveNodes");
+		$(".jsavgraph").addClass("editNodes");
+		$("#mode").html('Editing nodes and edges');
+		addEdgeSelect();
+		jsav.umsg("Click a node or edge");
+	};
+	var changeEditingMode = function() {
+		removeLabelMenu();
+		$(".jsavgraph").removeClass("working");
+		$(".jsavgraph").removeClass("addNodes");
+		$(".jsavgraph").removeClass("addEdges");
+		$(".jsavgraph").removeClass("moveNodes");
+		$('.jsavgraph').removeClass('editNodes');
+		removeEdgeSelect();
+		$("#mode").html('Editing');
+		if ($(".notEditing").is(":visible")) {
+			$('#changeButton').html('Done editing');
+		} else {
+			$('#changeButton').html('Edit');
+		}
+		$('.notEditing').toggle();
+		$('.editing').toggle();
+	};
 
-		var addEdgeSelect = function () {
-			var edges = g.edges();
-			for (var next = edges.next(); next; next= edges.next()) {
-				next.addClass('edgeSelect');
+	var addEdgeSelect = function () {
+		var edges = g.edges();
+		for (var next = edges.next(); next; next= edges.next()) {
+			next.addClass('edgeSelect');
+			next.layout();
+		}
+	};
+	var removeEdgeSelect = function () {
+		var edges = g.edges();
+		for (var next = edges.next(); next; next = edges.next()) {
+			if (next.hasClass('edgeSelect')) {
+				next.removeClass('edgeSelect');
 				next.layout();
 			}
-		};
-		var removeEdgeSelect = function () {
-			var edges = g.edges();
-			for (var next = edges.next(); next; next = edges.next()) {
-				if (next.hasClass('edgeSelect')) {
-					next.removeClass('edgeSelect');
-					next.layout();
-				}
-			}
-		};
-		var removeLabelMenu = function() {
-			if ($('#editedgelabel')) {
-				$('#editedgelabel').remove();
-			}
-		};
+		}
+	};
+	var removeLabelMenu = function() {
+		if ($('#editedgelabel')) {
+			$('#editedgelabel').remove();
+		}
+	};
 
 	//====================
 	//traversal
@@ -503,18 +505,18 @@
 		$('#alphabets').hide();
 		for (var i = 0; i < inputs.length; i++) {
 			travArray.push(runInput(inputs[i]));
-			}
-			var jsavArray = jsav.ds.array(travArray, {element: $('.arrayPlace')});
-			jsavArray.mouseenter(jsavArray.highlight).mouseleave(jsavArray.unhighlight);
-			jsavArray.click(arrayClickHandler);
-			jsavArray.show();
-			jsav.displayInit();
-		};
-		var arrayClickHandler = function (index) {
-			var input = this.value(index).split('<br>')[0];
-			this.hide();
-			play(input);
-		};
+		}
+		var jsavArray = jsav.ds.array(travArray, {element: $('.arrayPlace')});
+		jsavArray.mouseenter(jsavArray.highlight).mouseleave(jsavArray.unhighlight);
+		jsavArray.click(arrayClickHandler);
+		jsavArray.show();
+		jsav.displayInit();
+	};
+	var arrayClickHandler = function (index) {
+		var input = this.value(index).split('<br>')[0];
+		this.hide();
+		play(input);
+	};
 
 	//======================
 	$('#playbutton').click(function() {play()});

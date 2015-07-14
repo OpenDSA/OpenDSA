@@ -1062,10 +1062,12 @@ var Tape = function (str) {
   if (typeof str === 'string') {
     this.head = makeTape(str);
     this.current = this.head.right()[0];
+    this.currentIndex = 0;
   } else { // assume tape
     var copy = copyTape(str);
     this.head = copy[0];
     this.current = copy[1];
+    this.currentIndex = str.currentIndex;
   }
   //this._size = str.length;
   this.toString = function() {
@@ -1080,6 +1082,7 @@ var Tape = function (str) {
   this.left = function() {
     var next = this.current.left();
     this.current = next[0];
+    this.currentIndex--;
     if (next[1]) {
       this.head = next[1];
     }
@@ -1088,6 +1091,7 @@ var Tape = function (str) {
   this.right = function() {
     var next = this.current.right();
     this.current = next[0];
+    this.currentIndex++;
     return this.current;
   };
   this.value = function (newVal) {
