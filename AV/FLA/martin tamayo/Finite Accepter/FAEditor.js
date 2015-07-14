@@ -61,6 +61,9 @@
 	    	if (gg.shorthand) {
 	    		setShorthand(true);
 	    	}
+	    	else {
+	    		setShorthand(false);
+	    	}
 	    	updateAlphabet();
 	    	jsav.displayInit();
 	    	g.click(nodeClickHandler);
@@ -178,12 +181,49 @@
 		var edge = executeAddEdge(g, first, selected, edge_label);
 		$(edge._label.element).click(labelClickHandler);
 		updateAlphabet();
+		checkEdge(edge);
 	};
 
 	function updateEdge(edge_label) {
 		saveFAState();
 		executeEditEdge(g, label, edge_label);
 		updateAlphabet();
+		checkAllEdges();
+	};
+
+	function checkEdge(edge) {
+		if (g.shorthand) {
+			return;
+		}
+		var weights = edge.weight().split("<br>");
+		for (var i = 0; i < weights.length; i++) {
+			if (weights[i].length > 1) {
+				window.alert("Shorthand notation is disabled for this automaton.\n\nTo traverse, please enter only single character transition labels.");
+				edge.addClass('testingMultiple');
+				document.getElementById("begin").disabled = true;
+			}
+		}
+	};
+
+	function checkAllEdges() {
+		if (g.shorthand) {
+			return;
+		}
+		var alerted = false;
+		var edges = g.edges();
+		for (var next = edges.next(); next; next = edges.next()) {
+			var weights = next.weight().split("<br>");
+			for (var i = 0; i < weights.length; i++) {
+				if (weights[i].length > 1) {
+					if (!alerted) {
+						alerted = true;
+						window.alert("Shorthand notation is disabled for this automaton.\n\nTo traverse, please enter only single character transition labels.");
+					}
+					next.addClass('testingMultiple');
+					document.getElementById("begin").disabled = true;
+				}
+			}
+		}
 	};
 
 	var updateAlphabet = function() {
@@ -433,12 +473,18 @@
 	function setShorthand (setBoolean) {
 		g.setShorthand(setBoolean);
 		if (g.shorthand) {
+			document.getElementById("begin").disabled = false;
 			document.getElementById("shorthandButton").innerHTML = "Disable Shorthand";
 			willRejectFunction = willRejectMultiple;
+			var edges = g.edges();
+			for (var next = edges.next(); next; next = edges.next()) {
+				next.removeClass('testingMultiple');
+			}
 		}
 		else {
 			document.getElementById("shorthandButton").innerHTML = "Enable Shorthand";
 			willRejectFunction = willReject;
+			checkAllEdges();
 		}
 	};
 

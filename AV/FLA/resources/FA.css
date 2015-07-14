@@ -65,6 +65,10 @@
 	stroke-width: 3;
 	stroke: red;
 }
+.testingMultiple {
+	stroke-width: 3;
+	stroke: orange;
+}
 .edgeSelect {
 	stroke-width: 3;
 }
