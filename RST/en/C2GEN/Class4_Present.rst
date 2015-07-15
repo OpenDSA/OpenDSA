@@ -8,6 +8,10 @@
    :satisfies: OpenDSA Introduction
    :topic: Introduction
 
+.. odsalink:: AV/Background/TOHfigCON.css
+.. odsalink:: AV/List/listADTCON.css
+.. odsalink:: AV/Sorting/listADTCON.css
+
 Creating JSAV-based Visualizations and Exercises
 ================================================
 
