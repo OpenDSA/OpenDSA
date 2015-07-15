@@ -1,3 +1,6 @@
+// old DFA editor test
+// Has the option to convert to RL grammar. Otherwise, see Martin's FA editor for the latest FA editor
+
 "use strict";
 /*global alert: true, ODSA */
 
@@ -5,18 +8,18 @@
 	ODSA.SETTINGS.MODULE_ORIGIN = '*';
 	var jsav = new JSAV("av"),
 		saved = false,
-		//startState,
+		// startState,
 		selectedNode = null,
 		arr,
 		g;
-	//Empty string can be set to anything when initializing the graph:
-	//e.g. initGraph({layout: "automatic", emptystring: epsilon})
-	//By default it is set to lambda.
+	// Empty string can be set to anything when initializing the graph:
+	// e.g. initGraph({layout: "automatic", emptystring: epsilon})
+	// By default it is set to lambda.
 	var lambda = String.fromCharCode(955),
 		epsilon = String.fromCharCode(949),
 		emptystring = lambda;
 	/*
-	Add lambda transitions by setting weight to empty string.
+	Add lambda transitions by setting weight to empty string or by making it emptystring.
 	*/
 
 	var initGraph = function(opts) {
@@ -31,8 +34,9 @@
 	      	g.makeInitial(b);
 	      	e.addClass('final');
 	
+			// can add emptystring in two ways:
 		    g.addEdge(a, d, {weight: ''});
-		    g.addEdge(a, e, {weight: ''});
+		    g.addEdge(a, e, {weight: emptystring});
 
 		    g.addEdge(b, a, {weight: 'b'});
 		    g.addEdge(b, a, {weight: 'a'});
@@ -46,7 +50,7 @@
 			addHandlers();
 		}
 		else {
-				var ggg = localStorage['graph'],
+			var ggg = localStorage['graph'],
 				gg = jQuery.parseJSON(ggg),
 			//BUG: if height is set to a %, loading a graph causes the height of the jsavgraph element to increase by a few pixels every time
 				graph = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
@@ -78,7 +82,9 @@
 		}
 		return g;
 	};
+	// add click handlers to the graph (outdated interface for editing the FA)
 	function addHandlers() {
+		// handler for the graph window
 		$(".jsavgraph").click(function(e) {
 			if ($(".jsavgraph").hasClass("addNodes")) {
 				var newNode = g.addNode(),
@@ -103,7 +109,7 @@
 				jsav.umsg("Click a node");
 			}
 		});
-		//add eventhandlers to nodes
+		// add eventhandlers to nodes
 		g.click(function(e) {	
 			if ($(".jsavgraph").hasClass("editNodes")) {
 				this.highlight();
@@ -126,7 +132,7 @@
 				} else if (input == 'F') {
 					this.toggleClass('final');
 				} 
-				//adds labels to states
+				// adds labels to states
 				else if (input == 'L') {
 					var input2 = prompt("Label?");
 					if (input2 !== null) {
@@ -163,7 +169,7 @@
 					e.stopPropagation();
 				}
 			});
-		//add eventhandlers to edges
+		// add eventhandlers to edges
 		g.click(function(e) {
 			if ($('.jsavgraph').hasClass('editNodes')) {
 				this.highlight();
@@ -204,46 +210,48 @@
 	//editing modes
 
 	var addNodesMode = function() {
-		$(".jsavgraph").removeClass("addEdges");
-		$(".jsavgraph").removeClass("moveNodes");
-		$(".jsavgraph").removeClass("editNodes");
-		$(".jsavgraph").addClass("addNodes");
+		var jg = $(".jsavgraph");
+		jg.removeClass("addEdges");
+		jg.removeClass("moveNodes");
+		jg.removeClass("editNodes");
+		jg.addClass("addNodes");
 		$("#mode").html('Adding nodes');
 		jsav.umsg("Click to add nodes");
 	};
-
 	var addEdgesMode = function() {
-		$(".jsavgraph").removeClass("addNodes");
-		$(".jsavgraph").removeClass("moveNodes");
-		$(".jsavgraph").removeClass("editNodes");
-		$(".jsavgraph").addClass("addEdges");
+		var jg = $(".jsavgraph");
+		jg.removeClass("addNodes");
+		jg.removeClass("moveNodes");
+		jg.removeClass("editNodes");
+		jg.addClass("addEdges");
 		$("#mode").html('Adding edges');
 		jsav.umsg("Click a node");
 	};
-
 	var moveNodesMode = function() {
-		$(".jsavgraph").removeClass("addNodes");
-		$(".jsavgraph").removeClass("addEdges");
-		$(".jsavgraph").removeClass("editNodes");
-		$(".jsavgraph").addClass("moveNodes");
+		var jg = $(".jsavgraph");
+		jg.removeClass("addNodes");
+		jg.removeClass("addEdges");
+		jg.removeClass("editNodes");
+		jg.addClass("moveNodes");
 		$("#mode").html('Moving nodes');
 		jsav.umsg("Click a node");
 	};
-
 	var editNodesMode = function() {
-		$(".jsavgraph").removeClass("addNodes");
-		$(".jsavgraph").removeClass("addEdges");
-		$(".jsavgraph").removeClass("moveNodes");
-		$(".jsavgraph").addClass("editNodes");
+		var jg = $(".jsavgraph");
+		jg.removeClass("addNodes");
+		jg.removeClass("addEdges");
+		jg.removeClass("moveNodes");
+		jg.addClass("editNodes");
 		$("#mode").html('Editing nodes and edges');
 		jsav.umsg("Click a node or edge");
 	};
-
+	// change between editing and non-editing (highlight ND, convert to grammar)
 	var changeEditingMode = function() {
-		$(".jsavgraph").removeClass("addNodes");
-		$(".jsavgraph").removeClass("addEdges");
-		$(".jsavgraph").removeClass("moveNodes");
-		$('.jsavgraph').removeClass('editNodes');
+		var jg = $(".jsavgraph");
+		jg.removeClass("addNodes");
+		jg.removeClass("addEdges");
+		jg.removeClass("moveNodes");
+		jg.removeClass('editNodes');
 		$("#mode").html('Editing');
 		if ($(".notEditing").is(":visible")) {
 			$('#changeButton').html('Done editing');
@@ -289,6 +297,7 @@
 	// 	}
 	// };
 
+	// toggle highlighting nondeterministic nodes
 	var testND = function() {
 		$('#changeButton').toggleClass("highlightingND");
 		if ($('#changeButton').hasClass("highlightingND") || $('#changeButton').hasClass("highlightingL")) {
@@ -311,6 +320,7 @@
 			}
 		}
 	};
+	// toggle highlighting lambda transitions
 	var testLambda = function() {
 		$('#changeButton').toggleClass("highlightingL");
 		if ($('#changeButton').hasClass("highlightingND") || $('#changeButton').hasClass("highlightingL")) {
@@ -332,9 +342,11 @@
 
 
 	//====================
-	//temp:
-	//DFA ONLY
+	// traversal
+	// DFA ONLY
+	// outdated, see Martin's FA editor for latest FA traversal (with ND traversal and multiple-character transitions)
 
+	// will not work with the default DFA
 	var play = function() {
 		var inputString = prompt("Input string?", "aba");
 		if (inputString === null) {
@@ -349,7 +361,6 @@
 			arr.clear();
 		}
 		$('.jsavcontrols').show();
-		
 
 		var currentState = g.initial,
 			cur;
@@ -398,10 +409,60 @@
 	};
 
 	//======================
+	var serializeGraphToXML = function (graph) {
+		var text = '<?xml version="1.0" encoding="UTF-8"?>';
+	    text = text + "<structure>";
+	    text = text + "<type>fa</type>"
+	    text = text + "<automaton>"
+	    var nodes = graph.nodes();
+	    for (var next = nodes.next(); next; next = nodes.next()) {
+	    	var left = next.position().left;
+		    var top = next.position().top;
+		    var i = next.hasClass("start");
+		    var f = next.hasClass("final");
+		    var label = next.stateLabel();
+		    text = text + '<state id="' + next.value().substring(1) + '" name="' + next.value() + '">';
+		    text = text + '<x>' + left + '</x>';
+		    text = text + '<y>' + top + '</y>';
+		    if (label) {
+		    	text = text + '<label>' + label + '</label>';
+		    }
+		    if (i) {
+		    	text = text + '<initial/>';
+		    }
+		    if (f) {
+		    	text = text + '<final/>';
+		    }
+	    	text = text + '</state>';
+	    }
+	    var edges = graph.edges();
+	    for (var next = edges.next(); next; next = edges.next()) {
+	    	var fromNode = next.start().value().substring(1);
+	    	var toNode = next.end().value().substring(1);
+	    	var w = next.weight().split('<br>');
+	    	for (var i = 0; i < w.length; i++) {
+	    		text = text + '<transition>';
+	    		text = text + '<from>' + fromNode + '</from>';
+	    		text = text + '<to>' + toNode + '</to>';
+	    		if (w[i] === emptystring) {
+	    			text = text + '<read/>';
+	    		} else {
+	    			text = text + '<read>' + w[i] + '</read>';
+	    		}
+	    		text = text + '</transition>';
+	    	}
+	    }
+	    text = text + "</automaton></structure>"
+	    return text;
+	};
+
 	var save = function () {
-		localStorage['graph'] = serialize(g);	//I changed serializableGraph.js
-		jsav.umsg("Saved");
-		saved = true;
+		// localStorage['graph'] = serialize(g);	// save to local storage as JSON encoded string
+		// jsav.umsg("Saved");
+		// saved = true;
+		var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(serializeGraphToXML(g));
+    	$('#download').html('<a href="data:' + downloadData + '" target="_blank" download="fa.xml">Download FA</a>');
+    	$('#download a')[0].click();
 	};
 
 	// var save = function () {
@@ -429,13 +490,16 @@
 	// 	saved = true;
 	// };
 
+	// automatically convert FA to right-linear grammar
 	var convertToGrammar = function () {
+		// by default sets S to be the start variable
 		var variables = "SABCDEFGHIJKLMNOPQRTUVWXYZ";
 		var s = g.initial;
 		var newVariables = [s];
 		var nodes = g.nodes();
 		var arrow = String.fromCharCode(8594);
 		var converted = [];
+		// quit if the FA is too large for conversion
 		if (g.nodeCount() > 26) {
 			alert('The FA must have at most 26 states to convert it into a grammar!');
 			return;
@@ -464,11 +528,14 @@
 			}
 		}
 		converted = converted.concat(finals);
+		// save resulting grammar as an array of strings 
+		// (same format as how the grammar test exports grammars to local storage)
 		localStorage['grammar'] = converted;
+		// open grammar
 		window.open("grammarTest.html", "_self");
 	};
 
-
+	// testing OpenDSA's reset (use to return from traversal)
   	$('#reset').click(function() {
   		save();
   		ODSA.AV.reset();
@@ -477,6 +544,7 @@
   		}
   		jsav = new JSAV($('.avcontainer'));
   		$("button").show();
+  		// always resets to the default graph (doesn't save any edits made by the user)
   		var g = initGraph({layout: "automatic"});
 		g.layout();
 		jsav.displayInit();
