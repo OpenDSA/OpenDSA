@@ -1,54 +1,54 @@
 var willReject = function (graph, inputString) {
 	var currentStates = [graph.initial];
 	currentStates = addLambdaClosure(graph, currentStates);
-	var cur = currentStates;
+	var nextStates = currentStates;
 	for (var i = 0; i < inputString.length; i++) {
 		for (var j = 0; j < currentStates.length; j++) {
 	   		currentStates[j].removeClass('current');
 	   	}
-	   	cur = traverse(graph, currentStates, inputString[i]);
-	   	if (cur.length == 0) {
+	   	nextStates = traverse(graph, currentStates, inputString[i]);
+	   	if (nextStates.length == 0) {
 	   		break;
 	   	}
-		currentStates = cur;
+		currentStates = nextStates;
 	}
 	var rejected = true;
 	for (var k = 0; k < currentStates.length; k++) {
 		currentStates[k].removeClass('current');
-		if (currentStates[k].hasClass('final') && cur.length > 0) {
+		if (currentStates[k].hasClass('final') && nextStates.length > 0) {
 			rejected = false;
 		}
 	}
 	return rejected;
 };
 
-var willRejectMultiple = function (graph, inputString) {
+var willRejectShorthand = function (graph, inputString) {
 	var currentStates = [graph.initial];
 	currentStates = addLambdaClosure(graph, currentStates);
 	var currentEdges = [];
 	var edgeWeight = [];
 	var edgeProgress = [];
-	var curS = currentStates;
-	var curE = currentEdges;
+	var nextStates = currentStates;
+	var nextEdges = currentEdges;
 	for (var i = 0; i < inputString.length; i++) {
 		for (var j = 0; j < currentStates.length; j++) {
 	   		currentStates[j].removeClass('current');
 	   	}
-	   	var traverseStep = pretraverseMultiple(graph, currentStates, currentEdges, edgeWeight, edgeProgress, inputString[i]);
-	   	curS = traverseStep[0];
-	   	curE = traverseStep[1];
-	   	if (curS.length == 0 && curE.length == 0) {
+	   	var traverseStep = pretraverseShorthand(graph, currentStates, currentEdges, edgeWeight, edgeProgress, inputString[i]);
+	   	nextStates = traverseStep[0];
+	   	nextEdges = traverseStep[1];
+	   	if (nextStates.length == 0 && nextEdges.length == 0) {
 	   		break;
 	   	}
-		currentStates = curS;
-		currentEdges = curE;
+		currentStates = nextStates;
+		currentEdges = nextEdges;
 		edgeWeight = traverseStep[2];
 		edgeProgress = traverseStep[3];
 	}
 	var rejected = true;
 	for (var k = 0; k < currentStates.length; k++) {
 		currentStates[k].removeClass('current');
-		if (currentStates[k].hasClass('final') && curS.length > 0) {
+		if (currentStates[k].hasClass('final') && nextStates.length > 0) {
 			rejected = false;
 		}
 	}
@@ -73,7 +73,7 @@ var traverse = function(graph, currentStates, letter) {
 	return nextStates;
 };
 
-var pretraverseMultiple = function(graph, currentStates, currentEdges, edgeWeight, edgeProgress, letter) {
+var pretraverseShorthand = function(graph, currentStates, currentEdges, edgeWeight, edgeProgress, letter) {
 	var nextStates = [];
 	var nextEdges = [];
 	var eWeight = [];
@@ -95,7 +95,6 @@ var pretraverseMultiple = function(graph, currentStates, currentEdges, edgeWeigh
 				nextEdges.push(curEdge);
 				eWeight.push(edgeWeight[g]);
 				eProgress.push(pos);
-				wArray[edgeWeight[g]] = w;
 			}
 		}
 	}
@@ -125,7 +124,7 @@ var pretraverseMultiple = function(graph, currentStates, currentEdges, edgeWeigh
 	return [nextStates, nextEdges, eWeight, eProgress];
 };
 
-var traverseMultiple = function(graph, currentStates, currentEdges, edgeWeight, edgeProgress, letter) {
+var traverseShorthand = function(graph, currentStates, currentEdges, edgeWeight, edgeProgress, letter) {
 	var nextStates = [];
 	var nextEdges = [];
 	var eWeight = [];
@@ -168,12 +167,12 @@ var traverseMultiple = function(graph, currentStates, currentEdges, edgeWeight, 
 			for (var j = 0; j < weight.length; j++) {
 				if (weight[j].length > 1) {
 					if (letter == weight[j][0]) {
+						edge.addClass('edgeSelect');
 						for (var k = 0; k < nextEdges.length; k++) {
 							if (edge == nextEdges[k] && j == eWeight[k]) {
 								eProgress[k] = eProgress[k] + 7;
 							}
 						}
-						edge.addClass('edgeSelect');
 						var bold = "<b>" + letter + "</b>" + weight[j].substr(1);
 						weight[j] = bold;
 						edge.weight(weight.join("<br>"));

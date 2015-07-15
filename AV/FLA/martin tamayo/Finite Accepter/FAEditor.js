@@ -210,7 +210,7 @@
 		for (var i = 0; i < weights.length; i++) {
 			if (weights[i].length > 1) {
 				window.alert("Shorthand notation is disabled for this automaton.\n\nTo traverse, please enter only single character transition labels.");
-				edge.addClass('testingMultiple');
+				edge.addClass('testingShorthand');
 				document.getElementById("begin").disabled = true;
 				break;
 			}
@@ -224,11 +224,11 @@
 		document.getElementById("begin").disabled = false;
 		var edges = g.edges();
 		for (var next = edges.next(); next; next = edges.next()) {
-			next.removeClass('testingMultiple');
+			next.removeClass('testingShorthand');
 			var weights = next.weight().split("<br>");
 			for (var i = 0; i < weights.length; i++) {
 				if (weights[i].length > 1) {
-					next.addClass('testingMultiple');
+					next.addClass('testingShorthand');
 					document.getElementById("begin").disabled = true;
 				}
 			}
@@ -484,10 +484,10 @@
 		if (g.shorthand) {
 			document.getElementById("begin").disabled = false;
 			document.getElementById("shorthandButton").innerHTML = "Disable Shorthand";
-			willRejectFunction = willRejectMultiple;
+			willRejectFunction = willRejectShorthand;
 			var edges = g.edges();
 			for (var next = edges.next(); next; next = edges.next()) {
-				next.removeClass('testingMultiple');
+				next.removeClass('testingShorthand');
 			}
 		}
 		else {

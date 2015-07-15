@@ -48,7 +48,7 @@
 	    }
 	    g = graph;
 	    if (gg.shorthand) {
-	    	return runMultiple;
+	    	return runShorthand;
 	    }
 	    return run;
     };
@@ -77,7 +77,6 @@
 		var accepted = true;
 		var outputString = "";
 		var currentState = g.initial;
-		var cur;
 		
 		for (var i = 0; i < inputString.length; i++) {
 			textArray.push(inputString[i]);
@@ -94,8 +93,8 @@
 
 		for (var i = 0; i < inputString.length; i++) {
 			currentState.removeClass('current');
-		   	cur = traverse(g, currentState, inputString[i]);
-		   	if (cur[0] == null) {
+		   	var traverseStep = traverseMealy(g, currentState, inputString[i]);
+		   	if (traverseStep[0] == null) {
 		   		currentState.addClass('rejected');
 		   		accepted = false;
 		   		arr.css(i, {"background-color": "red"});
@@ -103,8 +102,8 @@
 		   		jsav.step();
 		   		break;
 		   	}
-			currentState = cur[0];
-			outputString += cur[1];
+			currentState = traverseStep[0];
+			outputString += traverseStep[1];
 			currentState.addClass('current');
 			arr.css(i, {"background-color": "yellow"});
 			jsav.umsg(outputString);
@@ -130,7 +129,7 @@
 		arr.click(arrayClickHandler);
 	};
 
-	var runMultiple = function (inputString) {
+	var runShorthand = function (inputString) {
 		$('.jsavoutput').css({"text-align": "center", 'font-size': '2em'});
 		var textArray = [];
 		g.initial.addClass('current');
@@ -159,11 +158,11 @@
 			if (currentState) {
 				currentState.removeClass('current');
 			}
-		   	var traverseStep = traverseMultiple(g, currentState, currentEdge, edgeWeight, edgeProgress, inputString[i]);
-		   	var curS = traverseStep[0];
-		   	var curE = traverseStep[1];
-		   	if (curS == null) {
-		   		if (curE == null) {
+		   	var traverseStep = traverseMealyShorthand(g, currentState, currentEdge, edgeWeight, edgeProgress, inputString[i]);
+		   	var nextState = traverseStep[0];
+		   	var nextEdge = traverseStep[1];
+		   	if (nextState == null) {
+		   		if (nextEdge == null) {
 		   			if (currentState) {
 		   				currentState.addClass('rejected');
 		   			}
@@ -178,8 +177,8 @@
 		   			edgeProgress = traverseStep[3];
 		   		}
 		   	}
-			currentState = curS;
-			currentEdge = curE;
+			currentState = nextState;
+			currentEdge = nextEdge;
 			outputString += traverseStep[4];
 			if (currentState) {
 				currentState.addClass('current');
