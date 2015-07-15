@@ -2458,6 +2458,14 @@
     return true;
   };
 
+  // download finished FA/PDA
+  var exportConvertedFA = function () {
+    var downloadData = "text/json;charset=utf-8," + encodeURIComponent(serialize(builtDFA));
+    $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="data.json">Download JSON</a>');
+    $('#download a')[0].click();
+    $('#download').html('');
+  };
+
   // interactive converting right-linear grammar to FA
   var convertToFA = function () {
     if (!checkRightLinear()) {
@@ -2468,6 +2476,7 @@
     startParse();
     $('.jsavcontrols').hide();
     $(m.element).css("margin-left", "auto");
+    jsav.umsg('Complete the FA.');
     // keep a map of variables to FA states
     var nodeMap = {};
     builtDFA = jsav.ds.fa({width: '90%', height: 440, layout: "automatic"});
@@ -2492,13 +2501,7 @@
     f.addClass("final");
     builtDFA.layout();
     selectedNode = null;
-    // download finished FA
-    var exportConvertedFA = function () {
-      var downloadData = "text/json;charset=utf-8," + encodeURIComponent(serialize(builtDFA));
-      $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="data.json">Download JSON</a>');
-      $('#download a')[0].click();
-      $('#download').html('');
-    };
+    
     // check if FA is finished; if it is, ask if the user wants to export the FA
     var checkDone = function () {
       var edges = builtDFA.edges();
@@ -2621,17 +2624,56 @@
 
   // interactive converting context-free grammar to NPDA
   var convertToPDA = function () {
-
-  };
-  $('#convertCFGbutton').click(function () {
-    var productions=_.filter(arr, function(x) { return x[0];});
-    if (productions.length === 0) {
-      alert('No grammar.');
-      return;
+    var productions = _.filter(arr, function(x) { return x[0];});
+    startParse();
+    $('.jsavcontrols').hide();
+    $(m.element).css("margin-left", "auto");
+    jsav.umsg('Complete the NPDA.');
+    builtDFA = jsav.ds.fa({width: '90%', height: 440});
+    var gWidth = builtDFA.element.width(),
+        gHeight = builtDFA.element.height();
+    var a = builtDFA.addNode({left: 0.17 * gWidth, top: 0.87 * gHeight}),    
+        b = builtDFA.addNode({left: 0.47 * gWidth, top: 0.87 * gHeight}),
+        c = builtDFA.addNode({left: 0.77 * gWidth, top: 0.87 * gHeight});
+    builtDFA.makeInitial(a);
+    c.addClass('final');
+    var startVar = productions[0][0];
+    builtDFA.addEdge(a, b, {weight: emptystring + ':Z:' + startVar + 'Z'});
+    builtDFA.addEdge(b, c, {weight: emptystring + ':Z:' + emptystring});
+    // add a transition for each terminal
+    for (var i = 0; i < productions.length; i++) {
+      var t = productions[i][2].split("");
+      for (var j = 0; j < t.length; j++) {
+        if (variables.indexOf(t[j]) === -1 && t[j] !== emptystring) {
+          builtDFA.addEdge(b, b, {weight: t[j] + ':' + t[j] + ':' + emptystring});
+        }
+      }
     }
-    localStorage['grammar'] = _.map(productions, function(x) {return x.join('');});
-    window.open('CFGtoNPDA.html', '', 'width = 800, height = 750, screenX = 300, screenY = 25');
-  });
+    var bEdge = builtDFA.getEdge(b, b);
+    $(bEdge._label.element[0]).css('font-size', '1.25em');
+    builtDFA.layout();
+
+    var pCount = 0;
+    // handler for the grammar table
+    var convertGrammarHandler = function (index) {
+      this.highlight(index);
+      var l = this.value(index, 0);
+      var r = this.value(index, 2);
+      var newEdge = builtDFA.addEdge(b, b, {weight: emptystring + ':' + this.value(index, 0) + ':' + this.value(index, 2)});
+      if (newEdge) {
+        newEdge.layout();
+        pCount++;
+        if (pCount === productions.length) {
+          var confirmed = confirm('Finished! Export?');
+          if (confirmed) {
+            exportConvertedFA();
+          }
+        }
+      }
+    };
+    m.click(convertGrammarHandler);
+  };
+
   //=================================
   // files
   // save
@@ -2782,4 +2824,5 @@
   $('#loadfile').on('change', loadFile);
   $('#savefile').click(saveFile);
   $('#convertRLGbutton').click(convertToFA);
+  $('#convertCFGbutton').click(convertToPDA);
 }(jQuery));
