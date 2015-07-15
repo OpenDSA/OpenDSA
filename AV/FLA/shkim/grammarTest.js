@@ -14,7 +14,7 @@
       arrayStep,  
       selectedNode,     // used for FA/graph editing
       modelDFA,         // DFA used to build SLR parse table
-      builtDFA;         // DFA created by the user to try to build the modelDFA
+      builtDFA;         // DFA created by the user
 
   var lambda = String.fromCharCode(955),
       epsilon = String.fromCharCode(949),
@@ -88,11 +88,21 @@
       fi.keyup(function(event){
         if(event.keyCode == 13){
           var input = $(this).val();
+          var regex = new RegExp(emptystring, g);
+          input = input.replace(regex, "");
           if (input === "" && index2 === 2) {
             input = emptystring;
           }
           if (index2 === 0 && (input.length !== 1 || variables.indexOf(input) === -1)) {
             alert('Invalid left-hand side.');
+            return;
+          }
+          if (index2 === 0 && _.find(arr, function(x) { return x[0] === input && x[2] === arr[index][2];})) {
+            alert('This production already exists.');
+            return;
+          }
+          if (index2 === 2 && _.find(arr, function(x) { return x[0] === arr[index][0] && x[2] === input;})) {
+            alert('This production already exists.');
             return;
           }
           if (index2 === 0 && !arr[index][2]) {
@@ -603,7 +613,7 @@
     $('#followbutton').show();
     $('.jsavcontrols').hide();
     $(m.element).css("margin-left", "auto");
-    $(m.element).css('position', 'absolute');
+    // $(m.element).css('position', 'absolute');
 
     // create the table for FIRST and FOLLOW sets
     var ffDisplay = [];
@@ -673,7 +683,7 @@
       }
       startParse();
       $(m.element).css("margin-left", "auto");
-      $(m.element).css('position', 'absolute');
+      // $(m.element).css('position', 'absolute');
       var pTableDisplay = [];
       pTableDisplay.push([""].concat(t));
       for (var i = 0; i < v.length; i++) {
@@ -943,7 +953,7 @@
     
     startParse();
     $(m.element).css("margin-left", "auto");
-    $(m.element).css('position', 'absolute');
+    // $(m.element).css('position', 'absolute');
 
     var ffDisplay = [];
     ffDisplay.push(["", "FIRST", "FOLLOW"]);
@@ -1419,7 +1429,6 @@
     $('#deletebutton').hide();
     $('#convertRLGbutton').hide();
     $('#convertCFGbutton').hide();
-    //$('#transformations').hide();
     $('#transformbutton').hide();
     $('.jsavcontrols').show();
     $('#backbutton').show();
@@ -1430,6 +1439,7 @@
     $(m.element).css("margin-left", "50px");
     m._arrays[lastRow].hide();
   };
+  // stops parsing (only used in BFP)
   var endParse = function () {
     if (parseTree) {parseTree.clear();}
     if (derivationTable) { derivationTable.clear();}
@@ -1439,7 +1449,6 @@
     if (builtDFA) { builtDFA.clear();}
     if (tGrammar) { tGrammar.clear();}
     $('button').show();
-    //$('#transformations').show();
     $('#transformbutton').show();
     $('.jsavcontrols').hide();
     $('#backbutton').hide();
@@ -1607,8 +1616,6 @@
     //   console.log("" + transformed[i]);
     // }
     var ret = _.map(transformed, function(x) {return x.join('');});
-    // localStorage['grammar'] = ret;
-    // window.open('grammarTest.html', '');
     return ret;
   };
 
@@ -1669,8 +1676,6 @@
     // }
     // console.log(productions.length);
     var ret = _.map(productions, function(x) {return x.join('');});
-    // localStorage['grammar'] = ret;
-    // window.open('grammarTest.html', '');
     return ret;
   };
 
@@ -1738,8 +1743,6 @@
     // }
     // console.log(transformed.length);
     var ret = _.map(transformed, function(x) {return x.join('');});
-    // localStorage['grammar'] = ret;
-    // window.open('grammarTest.html', '');
     return ret;
   };
   // finds a deriver
@@ -1833,41 +1836,11 @@
         break;
       }
     }
-    // var newVariables = _.difference(variables.split(""), Object.keys(v));
     for (var i = 0; i < productions.length; i++) {
       var x = productions[i];
       x[2] = x[2].join(""); 
-      //console.log(""+x);
     }
-    // var toExport = true;
     var ret =  _.map(productions, function(x) {return x.join('');});
-    // localStorage['grammar'] = ret;
-    //console.log(productions.length);
-
-    // translate temporary variables for export
-    // for (var i = 0; i < tempVars.length; i++) {
-    //   if (i >= newVariables.length) {
-    //     // alert('Too large to export!');
-    //     toExport = false;
-    //     break;
-    //   } 
-    //   var re = tempVars[i].replace(/[\(\)]/g, "\\$&");
-    //   var regex = new RegExp(re, 'g');
-    //   for (var j = 0; j < productions.length; j++) {
-    //     productions[j][0] = productions[j][0].replace(regex, newVariables[i]);
-    //     productions[j][2] = productions[j][2].replace(regex, newVariables[i]);
-    //   }
-    // }
-    // var ret2;
-    // if (toExport) {
-      // ret2 = _.map(productions, function(x) { return x.join('');});
-      // localStorage['grammar'] = _.map(productions, function(x) {return x.join('');});
-      // window.open('grammarTest.html', '');
-    // } 
-    // else {
-    //   // if there are too many variables to export, instead creates a table with the temporary variables
-    //   window.open('npdaTable.html', '', 'width = 600, height = 625, screenX = 500, screenY = 25');
-    // }
     return ret;
   };
 
@@ -2031,10 +2004,10 @@
     };
     // transition from finding lambda-deriving variables to modifying the grammar
     var continueLambda = function () {
-      jsav.umsg("Modify the grammar to remove lambdas. Set that derives "+emptystring+": [" + builtLambdaSet + ']');
-      //$(m.element).css("margin-left", "50px");
+      jsav.umsg("Modify the grammar to remove "+emptystring+". Set that derives "+emptystring+": [" + builtLambdaSet + ']');
+      // $(m.element).css("margin-left", "50px");
       tGrammar = jsav.ds.matrix(tArr);
-      //tGrammar = jsav.ds.matrix(tArr, {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
+      // tGrammar = jsav.ds.matrix(tArr, {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
       tGrammar.click(removeLambdaHandler);
     };
     m.click(findLambdaHandler);
@@ -2056,8 +2029,8 @@
     modelDFA = jsav.ds.graph({layout: "layered", directed: true});    //VDG
     // modelDFA.css('display', 'inline-block')
     // m.element.css('display', 'inline-block')
-    //$('#av').css('text-align', 'center')
-    //modelDFA = jsav.ds.graph({left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top", layout: "layered", directed: true});
+    // $('#av').css('text-align', 'center')
+    // modelDFA = jsav.ds.graph({left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top", layout: "layered", directed: true});
     for (var i = 0; i < v.length; i++) {
       modelDFA.addNode(v[i]);
     }
@@ -2485,19 +2458,171 @@
     return true;
   };
 
-  $('#convertRLGbutton').click(function () {
+  // interactive converting right-linear grammar to FA
+  var convertToFA = function () {
     if (!checkRightLinear()) {
       alert('The grammar is not right-linear!');
       return;
     }
-    var productions=_.filter(arr, function(x) { return x[0];});
-    if (productions.length === 0) {
-      alert('No grammar.');
-      return;
+    var productions = _.filter(arr, function(x) { return x[0];});
+    startParse();
+    $('.jsavcontrols').hide();
+    $(m.element).css("margin-left", "auto");
+    // keep a map of variables to FA states
+    var nodeMap = {};
+    builtDFA = jsav.ds.fa({width: '90%', height: 440, layout: "automatic"});
+    var newStates = [];     // variables
+    for (var i = 0; i < productions.length; i++) {
+      newStates.push(productions[i][0]);
+      newStates = newStates.concat(_.filter(productions[i][2], function(x) {return variables.indexOf(x) !== -1;}));
     }
-    localStorage['grammar'] = _.map(productions, function(x) {return x.join('');});
-    window.open('RLGtoFA.html', '', 'width = 800, height = 750, screenX = 300, screenY = 25');
-  });
+    newStates = _.uniq(newStates);
+    // create FA states
+    for (var i = 0; i < newStates.length; i++) {
+      var n = builtDFA.addNode();
+      nodeMap[newStates[i]] = n;
+      if (i === 0) {
+        builtDFA.makeInitial(n);
+      }
+      n.stateLabel(newStates[i]);
+    }
+    // add final state
+    var f = builtDFA.addNode();
+    // nodeMap[emptystring] = f;
+    f.addClass("final");
+    builtDFA.layout();
+    selectedNode = null;
+    // download finished FA
+    var exportConvertedFA = function () {
+      var downloadData = "text/json;charset=utf-8," + encodeURIComponent(serialize(builtDFA));
+      $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="data.json">Download JSON</a>');
+      $('#download a')[0].click();
+      $('#download').html('');
+    };
+    // check if FA is finished; if it is, ask if the user wants to export the FA
+    var checkDone = function () {
+      var edges = builtDFA.edges();
+      var tCount = 0;
+      for (var next = edges.next(); next; next = edges.next()) {
+        var w = next.weight().split('<br>');
+        tCount = tCount + w.length;
+      }
+      if (tCount === productions.length) {
+        var confirmed = confirm('Finished! Export?');
+        if (confirmed) {
+          exportConvertedFA();
+        }
+      }
+    };
+    // handler for the nodes of the FA
+    var convertDfaHandler = function (e) {
+      // adding transitions
+      if (!$('.jsavgraph').hasClass('movenodes')) {
+        this.highlight();
+        if (selectedNode) {
+          var t = prompt('Terminal to transition on?');
+          if (t === null) {
+            selectedNode.unhighlight();
+            selectedNode = null;
+            this.unhighlight();
+            return;
+          }
+          var lv = selectedNode.stateLabel();
+          var rv = this.stateLabel();
+          // check if valid transition
+          for (var i = 0; i < productions.length; i++) {
+            var r = productions[i][2];
+            var add = false;
+            if (rv && productions[i][0] === lv && r[r.length - 1] === rv && r.substring(0, r.length - 1) === t) {
+              add = true;
+            }
+            if (productions[i][0] === lv && this.hasClass('final') && (r === t || (r === emptystring && t === ""))) {
+              add = true;
+            }
+            if (add) {
+              m.highlight(i);
+              var newEdge = builtDFA.addEdge(selectedNode, this, {weight: t});
+              selectedNode.unhighlight();
+              selectedNode = null;
+              this.unhighlight();
+              if (newEdge) { 
+                newEdge.layout();
+                checkDone();
+              }
+              return;
+            }
+          }
+          alert('That transition is not correct.');
+          selectedNode.unhighlight();
+          selectedNode = null;
+          this.unhighlight();
+        } else {
+          selectedNode = this;
+        }
+      } else {      // selecting node to move
+        if (selectedNode) {
+          selectedNode.unhighlight();
+        }
+        this.highlight();
+        selectedNode = this;
+      }
+      e.stopPropagation();
+    };
+    // handler for the graph window, for moving nodes
+    var convertGraphHandler = function (e) {
+      if (selectedNode && $('.jsavgraph').hasClass('movenodes')) {
+        var nodeX = selectedNode.element.width()/2.0,
+            nodeY = selectedNode.element.height()/2.0;
+        $(selectedNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
+        selectedNode.stateLabelPositionUpdate();
+        var edges = builtDFA.edges();
+        for (var next = edges.next(); next; next = edges.next()) {
+          if (next.start().equals(selectedNode) || next.end().equals(selectedNode)) {
+            next.layout();
+          }
+        }
+        selectedNode.unhighlight();
+        selectedNode = null;
+        e.stopPropagation();
+      }
+    };
+    // handler for the grammar table: clicking a production will create the appropriate transition
+    var convertGrammarHandler = function (index) {
+      this.highlight(index);
+      var l = this.value(index, 0);
+      var r = this.value(index, 2);
+      var nodes = builtDFA.nodes();
+      if (variables.indexOf(r[r.length - 1]) === -1) {
+        var newEdge = builtDFA.addEdge(nodeMap[l], f, {weight: r});
+      } else {
+        var newEdge = builtDFA.addEdge(nodeMap[l], nodeMap[r[r.length - 1]], {weight: r.substring(0, r.length - 1)});
+      }
+      if (newEdge) {
+        newEdge.layout();
+        checkDone();
+      }
+    };
+    var toggleMove = function () {
+      if ($('.jsavgraph').hasClass('movenodes')) {
+        $('.jsavgraph').removeClass('movenodes');
+        this.value = 'Move states';
+      } else {
+        $('.jsavgraph').addClass('movenodes');
+        this.value = 'Add transitions';
+      }
+    };
+    builtDFA.click(convertDfaHandler);
+    $('.jsavgraph').click(convertGraphHandler);
+    m.click(convertGrammarHandler);
+    $('#av').append($('#convertmovebutton'));
+    $('#convertmovebutton').click(toggleMove);
+    $('#convertmovebutton').show();
+  };
+
+  // interactive converting context-free grammar to NPDA
+  var convertToPDA = function () {
+
+  };
   $('#convertCFGbutton').click(function () {
     var productions=_.filter(arr, function(x) { return x[0];});
     if (productions.length === 0) {
@@ -2585,7 +2710,6 @@
     reader.readAsText(file);
   };
 
-
   //=================================
   $('#movebutton').click(function() {
     $('.jsavgraph').removeClass('addfinals');
@@ -2629,12 +2753,17 @@
       arr.push(["", arrow, ""]);
       backup = null;
     }
+    $('#movebutton').off();
+    $('#finalbutton').off();
+    $('#gotobutton').off();
+    $('#dfabuttons').hide();
+    $('#convertmovebutton').off();
+    $('#convertmovebutton').hide();
     m = init();
     $('#firstinput').remove();
     $('#temp').remove();
     jsav.umsg('');
     $('button').show();
-    //$('#transformations').show();
     $('#transformbutton').show();
     $('.jsavcontrols').hide();
     $('#backbutton').hide();
@@ -2649,11 +2778,8 @@
   $('#bfpbutton').click(bfParse);
   $('#llbutton').click(llParse);
   $('#slrbutton').click(slrParse);
-  // $('#lambdabutton').click(removeLambda);
-  // $('#unitbutton').click(removeUnit);
-  // $('#uselessbutton').click(removeUseless);
-  // $('#chomskybutton').click(convertToChomsky);
   $('#transformbutton').click(transformGrammar);
   $('#loadfile').on('change', loadFile);
   $('#savefile').click(saveFile);
+  $('#convertRLGbutton').click(convertToFA);
 }(jQuery));
