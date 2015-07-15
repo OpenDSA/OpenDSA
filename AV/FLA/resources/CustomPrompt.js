@@ -1,25 +1,31 @@
+function renderBox() {
+    var winW = window.innerWidth;
+    var winH = window.innerHeight;
+    var dialogueoverlay = document.getElementById('dialogueoverlay');
+    var dialoguebox = document.getElementById('dialoguebox');
+    dialogueoverlay.style.display = "block";
+    dialogueoverlay.style.height = winH+"px";
+    dialoguebox.style.left = (winW/2) - (550/2)+"px";
+    dialoguebox.style.top = "100px";
+    dialoguebox.style.display = "block";
+}
+
+function terminate() {
+    document.getElementById('dialoguebox').style.display = "none";
+    document.getElementById('dialogueoverlay').style.display = "none";
+}
+
 function TraversePrompt(func) {
     var traverseFunction = func;
 
     this.render = function() {
-        var winW = window.innerWidth;
-        var winH = window.innerHeight;
-        var dialogueoverlay = document.getElementById('dialogueoverlay');
-        var dialoguebox = document.getElementById('dialoguebox');
-        dialogueoverlay.style.display = "block";
-        dialogueoverlay.style.height = winH+"px";
-        dialoguebox.style.left = (winW/2) - (550/2)+"px";
-        dialoguebox.style.top = "100px";
-        dialoguebox.style.display = "block";
+        renderBox();
         document.getElementById('dialogueboxhead').innerHTML = "Traverse:";
         document.getElementById('dialogueboxbody').innerHTML = 'Input String: <input class="newinput" id="first"> <button onclick="deleteInput(0)">Delete Input</button>';
         document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="addNewInput()">Add New Input</button> <button onclick="traverseInput()">Traverse</button> <button onclick="terminate()">Cancel</button>';
         document.getElementById('first').focus();
     }
-    terminate = function() {
-        document.getElementById('dialoguebox').style.display = "none";
-        document.getElementById('dialogueoverlay').style.display = "none";
-    }
+
     traverseInput = function() {
         var values = [];
         var x = document.getElementById('dialogueboxbody').getElementsByClassName('newinput');
@@ -27,8 +33,9 @@ function TraversePrompt(func) {
             values.push(x[i].value);
         }
         traverseFunction(values);
-        this.terminate();
+        terminate();
     }
+
     addNewInput = function() {
         var values = [];
         var x = document.getElementById('dialogueboxbody').getElementsByClassName('newinput');
@@ -42,6 +49,7 @@ function TraversePrompt(func) {
         }
         x[x.length - 1].focus();
     }
+
     deleteInput = function(input) {
         var values = [];
         var x = document.getElementById('dialogueboxbody').getElementsByClassName('newinput');
@@ -62,19 +70,11 @@ function TraversePrompt(func) {
     }
 }
 
-function NodePrompt(func) {
+function FANodePrompt(func) {
     var nodeFunction = func;
 
     this.render = function(value, is, fs, lab) {
-        var winW = window.innerWidth;
-        var winH = window.innerHeight;
-        var dialogueoverlay = document.getElementById('dialogueoverlay');
-        var dialoguebox = document.getElementById('dialoguebox');
-        dialogueoverlay.style.display = "block";
-        dialogueoverlay.style.height = winH+"px";
-        dialoguebox.style.left = (winW/2) - (550/2)+"px";
-        dialoguebox.style.top = "100px";
-        dialoguebox.style.display = "block";
+        renderBox();
         document.getElementById('dialogueboxhead').innerHTML = "Edit Node <b>" + value + ":</b>";
         document.getElementById('dialogueboxbody').innerHTML = 'Initial State:<input type="checkbox" id="initial_state">';
         document.getElementById('dialogueboxbody').innerHTML += '<br>Final State:<input type="checkbox" id="final_state">';
@@ -91,16 +91,13 @@ function NodePrompt(func) {
         }
         document.getElementById('label').focus();
     }
-    terminate = function() {
-        document.getElementById('dialoguebox').style.display = "none";
-        document.getElementById('dialogueoverlay').style.display = "none";
-    }
+
     ok = function() {
         var initial_state = document.getElementById('initial_state').checked;
         var final_state = document.getElementById('final_state').checked;
         var node_label = document.getElementById('label').value;
         nodeFunction(initial_state, final_state, node_label);
-        this.terminate();
+        terminate();
     }
 }
 
@@ -108,15 +105,7 @@ function MealyNodePrompt(func) {
     var nodeFunction = func;
 
     this.render = function(value, is, lab) {
-        var winW = window.innerWidth;
-        var winH = window.innerHeight;
-        var dialogueoverlay = document.getElementById('dialogueoverlay');
-        var dialoguebox = document.getElementById('dialoguebox');
-        dialogueoverlay.style.display = "block";
-        dialogueoverlay.style.height = winH+"px";
-        dialoguebox.style.left = (winW/2) - (550/2)+"px";
-        dialoguebox.style.top = "100px";
-        dialoguebox.style.display = "block";
+        renderBox();
         document.getElementById('dialogueboxhead').innerHTML = "Edit Node <b>" + value + ":</b>";
         document.getElementById('dialogueboxbody').innerHTML = 'Initial State:<input type="checkbox" id="initial_state">';
         document.getElementById('dialogueboxbody').innerHTML += '<br>State Label: <input id="label">';
@@ -129,15 +118,12 @@ function MealyNodePrompt(func) {
         }
         document.getElementById('label').focus();
     }
-    terminate = function() {
-        document.getElementById('dialoguebox').style.display = "none";
-        document.getElementById('dialogueoverlay').style.display = "none";
-    }
+    
     ok = function() {
         var initial_state = document.getElementById('initial_state').checked;
         var node_label = document.getElementById('label').value;
         nodeFunction(initial_state, node_label);
-        this.terminate();
+        terminate();
     }
 }
 
@@ -147,15 +133,7 @@ function MooreNodePrompt(func, cancelFunc, nostr) {
     var emptystr = nostr;
 
     this.render = function(value, is, lab, outputChar) {
-        var winW = window.innerWidth;
-        var winH = window.innerHeight;
-        var dialogueoverlay = document.getElementById('dialogueoverlay');
-        var dialoguebox = document.getElementById('dialoguebox');
-        dialogueoverlay.style.display = "block";
-        dialogueoverlay.style.height = winH+"px";
-        dialoguebox.style.left = (winW/2) - (550/2)+"px";
-        dialoguebox.style.top = "100px";
-        dialoguebox.style.display = "block";
+        renderBox();
         document.getElementById('dialogueboxbody').innerHTML = 'Initial State:<input type="checkbox" id="initial_state">';
         document.getElementById('dialogueboxbody').innerHTML += '<br>Output Character: <input id="moore">';
         document.getElementById('dialogueboxbody').innerHTML += '<br>State Label: <input id="label">';
@@ -177,14 +155,12 @@ function MooreNodePrompt(func, cancelFunc, nostr) {
         }
         document.getElementById('moore').focus();
     }
-    terminate = function() {
-        document.getElementById('dialoguebox').style.display = "none";
-        document.getElementById('dialogueoverlay').style.display = "none";
-    }
+
     cancel = function() {
         cancelFunction();
-        this.terminate();
+        terminate();
     }
+
     ok = function() {
         var initial_state = document.getElementById('initial_state').checked;
         var node_label = document.getElementById('label').value;
@@ -193,7 +169,7 @@ function MooreNodePrompt(func, cancelFunc, nostr) {
             output_char = emptystr;
         }
         nodeFunction(initial_state, node_label, output_char);
-        this.terminate();
+        terminate();
     }
 }
 
@@ -202,16 +178,8 @@ function EdgePrompt(func, nostr) {
     var emptystr = nostr;
 
     this.render = function(values) {
-        var winW = window.innerWidth;
-        var winH = window.innerHeight;
-        var dialogueoverlay = document.getElementById('dialogueoverlay');
-        var dialoguebox = document.getElementById('dialoguebox');
-        dialogueoverlay.style.display = "block";
-        dialogueoverlay.style.height = winH+"px";
-        dialoguebox.style.left = (winW/2) - (550/2)+"px";
-        dialoguebox.style.top = "100px";
-        dialoguebox.style.display = "block";
-        document.getElementById('dialogueboxbody').innerHTML = 'Transition: <input class="newedge" id="transition"> <button onclick="deleteEdge(0)">Delete Transition</button>';
+        renderBox();
+        document.getElementById('dialogueboxbody').innerHTML = 'Transition: <input class="newedge" id="transition"> <button onclick="deleteWeight(0)">Delete Transition</button>';
         document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="addNewWeight()">Add New Transition</button> <button onclick="addEdge()">Done</button> <button onclick="terminate()">Cancel</button>';
         if (!values) {
             document.getElementById('dialogueboxhead').innerHTML = "Create Edge:";
@@ -219,7 +187,7 @@ function EdgePrompt(func, nostr) {
         else {
             document.getElementById('dialogueboxhead').innerHTML = "Edit Edge:";
             for (var i = 1; i < values.length; i++) {
-                document.getElementById('dialogueboxbody').innerHTML += '<br>Transition: <input class="newedge"> <button onclick="deleteEdge(' + i + ')">Delete Transition</button>';
+                document.getElementById('dialogueboxbody').innerHTML += '<br>Transition: <input class="newedge"> <button onclick="deleteWeight(' + i + ')">Delete Transition</button>';
             }
             var x = document.getElementById('dialogueboxbody').getElementsByClassName('newedge');
             for (var j = 0; j < values.length; j++) {
@@ -230,10 +198,7 @@ function EdgePrompt(func, nostr) {
         }
         document.getElementById('transition').focus();
     }
-    terminate = function() {
-        document.getElementById('dialoguebox').style.display = "none";
-        document.getElementById('dialogueoverlay').style.display = "none";
-    }
+    
     addEdge = function() {
         var values = [];
         var x = document.getElementById('dialogueboxbody').getElementsByClassName('newedge');
@@ -249,22 +214,24 @@ function EdgePrompt(func, nostr) {
         }
         var edge_label = values.join("<br>");
         edgeFunction(edge_label);
-        this.terminate();
+        terminate();
     }
+
     addNewWeight = function() {
         var values = [];
         var x = document.getElementById('dialogueboxbody').getElementsByClassName('newedge');
         for (var j = 0; j < x.length; j++) {
             values.push(x[j].value);
         }
-        document.getElementById('dialogueboxbody').innerHTML += '<br>Transition: <input class="newedge"> <button onclick="deleteEdge(' + values.length + ')">Delete Transition</button>';
+        document.getElementById('dialogueboxbody').innerHTML += '<br>Transition: <input class="newedge"> <button onclick="deleteWeight(' + values.length + ')">Delete Transition</button>';
         x = document.getElementById('dialogueboxbody').getElementsByClassName('newedge');
         for (var k = 0; k < values.length; k++) {
             x[k].value = values[k];
         }
         x[x.length - 1].focus();
     }
-    deleteEdge = function(edge) {
+
+    deleteWeight = function(edge) {
         var values = [];
         var x = document.getElementById('dialogueboxbody').getElementsByClassName('newedge');
         for (var i = 0; i < x.length; i++) {
@@ -272,9 +239,9 @@ function EdgePrompt(func, nostr) {
                 values.push(x[i].value);
             }
         }
-        document.getElementById('dialogueboxbody').innerHTML = 'Transition: <input class="newedge" id="transition"> <button onclick="deleteEdge(0)">Delete Transition</button>';
+        document.getElementById('dialogueboxbody').innerHTML = 'Transition: <input class="newedge" id="transition"> <button onclick="deleteWeight(0)">Delete Transition</button>';
         for (var j = 1; j < values.length; j++) {
-            document.getElementById('dialogueboxbody').innerHTML += '<br>Transition: <input class="newedge"> <button onclick="deleteEdge(' + j + ')">Delete Transition</button>';
+            document.getElementById('dialogueboxbody').innerHTML += '<br>Transition: <input class="newedge"> <button onclick="deleteWeight(' + j + ')">Delete Transition</button>';
         }
         x = document.getElementById('dialogueboxbody').getElementsByClassName('newedge');
         for (var k = 0; k < values.length; k++) {
@@ -289,16 +256,8 @@ function MealyEdgePrompt(func, nostr) {
     var emptystr = nostr;
 
     this.render = function(values) {
-        var winW = window.innerWidth;
-        var winH = window.innerHeight;
-        var dialogueoverlay = document.getElementById('dialogueoverlay');
-        var dialoguebox = document.getElementById('dialoguebox');
-        dialogueoverlay.style.display = "block";
-        dialogueoverlay.style.height = winH+"px";
-        dialoguebox.style.left = (winW/2) - (550/2)+"px";
-        dialoguebox.style.top = "100px";
-        dialoguebox.style.display = "block";
-        document.getElementById('dialogueboxbody').innerHTML = 'Input Character: <input class="newedgein" id="transition"> <br>Output Character: <input class="newedgeout"> <br><button onclick="deleteEdge(0)">Delete Transition</button>';
+        renderBox();
+        document.getElementById('dialogueboxbody').innerHTML = 'Input Character: <input class="newedgein" id="transition"> <br>Output Character: <input class="newedgeout"> <br><button onclick="deleteWeight(0)">Delete Transition</button>';
         document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="addNewWeight()">Add New Transition</button> <button onclick="addEdge()">Done</button> <button onclick="terminate()">Cancel</button>';
         if (!values) {
             document.getElementById('dialogueboxhead').innerHTML = "Create Edge:";
@@ -306,7 +265,7 @@ function MealyEdgePrompt(func, nostr) {
         else {
             document.getElementById('dialogueboxhead').innerHTML = "Edit Edge:";
             for (var i = 1; i < values.length; i++) {
-                document.getElementById('dialogueboxbody').innerHTML += '<br><br>Input Character: <input class="newedgein"> <br>Output Character: <input class="newedgeout"> <br><button onclick="deleteEdge(' + i + ')">Delete Transition</button>';
+                document.getElementById('dialogueboxbody').innerHTML += '<br><br>Input Character: <input class="newedgein"> <br>Output Character: <input class="newedgeout"> <br><button onclick="deleteWeight(' + i + ')">Delete Transition</button>';
             }
             var x = document.getElementById('dialogueboxbody').getElementsByClassName('newedgein');
             var y = document.getElementById('dialogueboxbody').getElementsByClassName('newedgeout');
@@ -322,10 +281,7 @@ function MealyEdgePrompt(func, nostr) {
         }
         document.getElementById('transition').focus();
     }
-    terminate = function() {
-        document.getElementById('dialoguebox').style.display = "none";
-        document.getElementById('dialogueoverlay').style.display = "none";
-    }
+    
     addEdge = function() {
         var joinedValues = [];
         var noDuplicates = [];
@@ -355,8 +311,9 @@ function MealyEdgePrompt(func, nostr) {
         }
         var edge_label = noDuplicates.join("<br>");
         edgeFunction(edge_label);
-        this.terminate();
+        terminate();
     }
+
     addNewWeight = function() {
         var inValues = [];
         var outValues = [];
@@ -366,7 +323,7 @@ function MealyEdgePrompt(func, nostr) {
             inValues.push(x[j].value);
             outValues.push(y[j].value);
         }
-        document.getElementById('dialogueboxbody').innerHTML += '<br><br>Input Character: <input class="newedgein"> <br>Output Character: <input class="newedgeout"> <br><button onclick="deleteEdge(' + inValues.length + ')">Delete Transition</button>';
+        document.getElementById('dialogueboxbody').innerHTML += '<br><br>Input Character: <input class="newedgein"> <br>Output Character: <input class="newedgeout"> <br><button onclick="deleteWeight(' + inValues.length + ')">Delete Transition</button>';
         x = document.getElementById('dialogueboxbody').getElementsByClassName('newedgein');
         y = document.getElementById('dialogueboxbody').getElementsByClassName('newedgeout');
         for (var k = 0; k < inValues.length; k++) {
@@ -375,7 +332,8 @@ function MealyEdgePrompt(func, nostr) {
         }
         x[x.length - 1].focus();
     }
-    deleteEdge = function(edge) {
+    
+    deleteWeight = function(edge) {
         var inValues = [];
         var outValues = [];
         var x = document.getElementById('dialogueboxbody').getElementsByClassName('newedgein');
@@ -386,9 +344,9 @@ function MealyEdgePrompt(func, nostr) {
                 outValues.push(y[i].value);
             }
         }
-        document.getElementById('dialogueboxbody').innerHTML = 'Input Character: <input class="newedgein" id="transition"> <br>Output Character: <input class="newedgeout"> <br><button onclick="deleteEdge(0)">Delete Transition</button>';
+        document.getElementById('dialogueboxbody').innerHTML = 'Input Character: <input class="newedgein" id="transition"> <br>Output Character: <input class="newedgeout"> <br><button onclick="deleteWeight(0)">Delete Transition</button>';
         for (var j = 1; j < inValues.length; j++) {
-            document.getElementById('dialogueboxbody').innerHTML += '<br><br>Input Character: <input class="newedgein"> <br>Output Character: <input class="newedgeout"> <br><button onclick="deleteEdge(' + j + ')">Delete Transition</button>';
+            document.getElementById('dialogueboxbody').innerHTML += '<br><br>Input Character: <input class="newedgein"> <br>Output Character: <input class="newedgeout"> <br><button onclick="deleteWeight(' + j + ')">Delete Transition</button>';
         }
         x = document.getElementById('dialogueboxbody').getElementsByClassName('newedgein');
         y = document.getElementById('dialogueboxbody').getElementsByClassName('newedgeout');

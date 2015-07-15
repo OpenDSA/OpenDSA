@@ -59,7 +59,7 @@ var executeMoveNode = function(graph, node, top, left){
 };
 
 // Changes properties of the specified node on the specified graph. Used only by Finite Automaton Editor.
-var executeEditNode = function(graph, node, initialState, finalState, nodeLabel){
+var executeEditFANode = function(graph, node, initialState, finalState, nodeLabel){
 	if (initialState) {
 		// If this node is the initial state, no other node may be the initial state.
 		for (var i = 0; i < graph.nodeCount(); i++) {

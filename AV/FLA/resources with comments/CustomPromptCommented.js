@@ -1,3 +1,23 @@
+// Render function used to initialize the prompt box in the view. Called by all other render functions.
+function renderBox() {
+    // Configure aesthetics of the prompt box and overlay.
+    var winW = window.innerWidth;
+    var winH = window.innerHeight;
+    var dialogueoverlay = document.getElementById('dialogueoverlay');
+    var dialoguebox = document.getElementById('dialoguebox');
+    dialogueoverlay.style.display = "block";
+    dialogueoverlay.style.height = winH+"px";
+    dialoguebox.style.left = (winW/2) - (550/2)+"px";
+    dialoguebox.style.top = "100px";
+    dialoguebox.style.display = "block";
+}
+
+// Exit out of the prompt box.
+function terminate() {
+    document.getElementById('dialoguebox').style.display = "none";
+    document.getElementById('dialogueoverlay').style.display = "none";
+}
+
 // Custom prompt box for input strings to traverse over.
 // Used by the Finite Automaton Editor, Mealy Machine Editor, and Moore Machine Editor.
 function TraversePrompt(func) {
@@ -6,28 +26,13 @@ function TraversePrompt(func) {
 
     // Render function is used to initialize the prompt box in the view.
     this.render = function() {
-        // Configure aesthetics of the prompt box and overlay.
-        var winW = window.innerWidth;
-        var winH = window.innerHeight;
-        var dialogueoverlay = document.getElementById('dialogueoverlay');
-        var dialoguebox = document.getElementById('dialoguebox');
-        dialogueoverlay.style.display = "block";
-        dialogueoverlay.style.height = winH+"px";
-        dialoguebox.style.left = (winW/2) - (550/2)+"px";
-        dialoguebox.style.top = "100px";
-        dialoguebox.style.display = "block";
+        renderBox();
         // Add content to the prompt box, with references to the functions to run within the buttons.
         document.getElementById('dialogueboxhead').innerHTML = "Traverse:";
         document.getElementById('dialogueboxbody').innerHTML = 'Input String: <input class="newinput" id="first"> <button onclick="deleteInput(0)">Delete Input</button>';
         document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="addNewInput()">Add New Input</button> <button onclick="traverseInput()">Traverse</button> <button onclick="terminate()">Cancel</button>';
         document.getElementById('first').focus();
         // The focus function places the cursor in the specified text box.
-    }
-
-    // Exit out of the prompt box. Called upon clicking either "Traverse" or "Cancel".
-    terminate = function() {
-        document.getElementById('dialoguebox').style.display = "none";
-        document.getElementById('dialogueoverlay').style.display = "none";
     }
 
     // Traverse over input strings. Called upon clicking "Traverse".
@@ -40,7 +45,7 @@ function TraversePrompt(func) {
         }
         // Call the traverse function on the array, then exit out of the prompt box.
         traverseFunction(values);
-        this.terminate();
+        terminate();
     }
 
     // Add a new text field for another input string. Called upon clicking "Add New Input".
@@ -91,22 +96,13 @@ function TraversePrompt(func) {
 
 // Custom prompt box for editing nodes in the Finite Automaton Editor.
 // Supports editing of initial states, final states, and state labels.
-function NodePrompt(func) {
+function FANodePrompt(func) {
     var nodeFunction = func;
     // Prompt box needs a reference to the function to run upon clicking "OK".
 
     // Render function is used to initialize the prompt box in the view.
     this.render = function(value, is, fs, lab) {
-        // Configure aesthetics of the prompt box and overlay.
-        var winW = window.innerWidth;
-        var winH = window.innerHeight;
-        var dialogueoverlay = document.getElementById('dialogueoverlay');
-        var dialoguebox = document.getElementById('dialoguebox');
-        dialogueoverlay.style.display = "block";
-        dialogueoverlay.style.height = winH+"px";
-        dialoguebox.style.left = (winW/2) - (550/2)+"px";
-        dialoguebox.style.top = "100px";
-        dialoguebox.style.display = "block";
+        renderBox();
         // Add content to the prompt box, with references to the functions to run within the buttons.
         document.getElementById('dialogueboxhead').innerHTML = "Edit Node <b>" + value + ":</b>";
         document.getElementById('dialogueboxbody').innerHTML = 'Initial State:<input type="checkbox" id="initial_state">';
@@ -129,12 +125,6 @@ function NodePrompt(func) {
         document.getElementById('label').focus();
     }
 
-    // Exit out of the prompt box. Called upon clicking either "OK" or "Cancel".
-    terminate = function() {
-        document.getElementById('dialoguebox').style.display = "none";
-        document.getElementById('dialogueoverlay').style.display = "none";
-    }
-
     // Update node on the graph. Called upon clicking "OK".
     ok = function() {
         // Check every field in the prompt box and update the node accordingly.
@@ -143,7 +133,7 @@ function NodePrompt(func) {
         var node_label = document.getElementById('label').value;
         // Call the node function on these values, then exit out of the prompt box.
         nodeFunction(initial_state, final_state, node_label);
-        this.terminate();
+        terminate();
     }
 }
 
@@ -155,16 +145,7 @@ function MealyNodePrompt(func) {
 
     // Render function is used to initialize the prompt box in the view.
     this.render = function(value, is, lab) {
-        // Configure aesthetics of the prompt box and overlay.
-        var winW = window.innerWidth;
-        var winH = window.innerHeight;
-        var dialogueoverlay = document.getElementById('dialogueoverlay');
-        var dialoguebox = document.getElementById('dialoguebox');
-        dialogueoverlay.style.display = "block";
-        dialogueoverlay.style.height = winH+"px";
-        dialoguebox.style.left = (winW/2) - (550/2)+"px";
-        dialoguebox.style.top = "100px";
-        dialoguebox.style.display = "block";
+        renderBox();
         // Add content to the prompt box, with references to the functions to run within the buttons.
         document.getElementById('dialogueboxhead').innerHTML = "Edit Node <b>" + value + ":</b>";
         document.getElementById('dialogueboxbody').innerHTML = 'Initial State:<input type="checkbox" id="initial_state">';
@@ -183,12 +164,6 @@ function MealyNodePrompt(func) {
         document.getElementById('label').focus();
     }
 
-    // Exit out of the prompt box. Called upon clicking either "OK" or "Cancel".
-    terminate = function() {
-        document.getElementById('dialoguebox').style.display = "none";
-        document.getElementById('dialogueoverlay').style.display = "none";
-    }
-
     // Update node on the graph. Called upon clicking "OK".
     ok = function() {
         // Check every field in the prompt box and update the node accordingly.
@@ -196,7 +171,7 @@ function MealyNodePrompt(func) {
         var node_label = document.getElementById('label').value;
         // Call the node function on these values, then exit out of the prompt box.
         nodeFunction(initial_state, node_label);
-        this.terminate();
+        terminate();
     }
 }
 
@@ -212,16 +187,7 @@ function MooreNodePrompt(func, cancelFunc, nostr) {
 
     // Render function is used to initialize the prompt box in the view.
     this.render = function(value, is, lab, outputChar) {
-        // Configure aesthetics of the prompt box and overlay.
-        var winW = window.innerWidth;
-        var winH = window.innerHeight;
-        var dialogueoverlay = document.getElementById('dialogueoverlay');
-        var dialoguebox = document.getElementById('dialoguebox');
-        dialogueoverlay.style.display = "block";
-        dialogueoverlay.style.height = winH+"px";
-        dialoguebox.style.left = (winW/2) - (550/2)+"px";
-        dialoguebox.style.top = "100px";
-        dialoguebox.style.display = "block";
+        renderBox();
         // Add content to the prompt box, with references to the functions to run within the buttons.
         document.getElementById('dialogueboxbody').innerHTML = 'Initial State:<input type="checkbox" id="initial_state">';
         document.getElementById('dialogueboxbody').innerHTML += '<br>Output Character: <input id="moore">';
@@ -254,17 +220,11 @@ function MooreNodePrompt(func, cancelFunc, nostr) {
         document.getElementById('moore').focus();
     }
 
-    // Exit out of the prompt box. Called upon clicking either "OK" or "Cancel".
-    terminate = function() {
-        document.getElementById('dialoguebox').style.display = "none";
-        document.getElementById('dialogueoverlay').style.display = "none";
-    }
-
     // Cancel changes, then exit out of the prompt box. Called upon clicking "Cancel".
     // If creating a new node, this cancel function removes the node from the graph.
     cancel = function() {
         cancelFunction();
-        this.terminate();
+        terminate();
     }
 
     // Update node on the graph. Called upon clicking "OK".
@@ -279,7 +239,7 @@ function MooreNodePrompt(func, cancelFunc, nostr) {
         }
         // Call the node function on these values, then exit out of the prompt box.
         nodeFunction(initial_state, node_label, output_char);
-        this.terminate();
+        terminate();
     }
 }
 
@@ -292,18 +252,9 @@ function EdgePrompt(func, nostr) {
 
     // Render function is used to initialize the prompt box in the view.
     this.render = function(values) {
-        // Configure aesthetics of the prompt box and overlay.
-        var winW = window.innerWidth;
-        var winH = window.innerHeight;
-        var dialogueoverlay = document.getElementById('dialogueoverlay');
-        var dialoguebox = document.getElementById('dialoguebox');
-        dialogueoverlay.style.display = "block";
-        dialogueoverlay.style.height = winH+"px";
-        dialoguebox.style.left = (winW/2) - (550/2)+"px";
-        dialoguebox.style.top = "100px";
-        dialoguebox.style.display = "block";
+        renderBox();
         // Add content to the prompt box, with references to the functions to run within the buttons.
-        document.getElementById('dialogueboxbody').innerHTML = 'Transition: <input class="newedge" id="transition"> <button onclick="deleteEdge(0)">Delete Transition</button>';
+        document.getElementById('dialogueboxbody').innerHTML = 'Transition: <input class="newedge" id="transition"> <button onclick="deleteWeight(0)">Delete Transition</button>';
         document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="addNewWeight()">Add New Transition</button> <button onclick="addEdge()">Done</button> <button onclick="terminate()">Cancel</button>';
         // If render function was passed an empty string, it means this prompt is creating a new edge.
         if (!values) {
@@ -315,7 +266,7 @@ function EdgePrompt(func, nostr) {
             document.getElementById('dialogueboxhead').innerHTML = "Edit Edge:";
             // Add text fields for each transition on the edge weight.
             for (var i = 1; i < values.length; i++) {
-                document.getElementById('dialogueboxbody').innerHTML += '<br>Transition: <input class="newedge"> <button onclick="deleteEdge(' + i + ')">Delete Transition</button>';
+                document.getElementById('dialogueboxbody').innerHTML += '<br>Transition: <input class="newedge"> <button onclick="deleteWeight(' + i + ')">Delete Transition</button>';
             }
             // Get a reference to each of these text fields (in the form of an array).
             var x = document.getElementById('dialogueboxbody').getElementsByClassName('newedge');
@@ -328,12 +279,6 @@ function EdgePrompt(func, nostr) {
         }
         document.getElementById('transition').focus();
         // The focus function places the cursor in the specified text box.
-    }
-
-    // Exit out of the prompt box. Called upon clicking either "Done" or "Cancel".
-    terminate = function() {
-        document.getElementById('dialoguebox').style.display = "none";
-        document.getElementById('dialogueoverlay').style.display = "none";
     }
 
     // Add (or update) the edge on the graph. Called upon clicking "Done".
@@ -357,7 +302,7 @@ function EdgePrompt(func, nostr) {
         // Call the edge function (either create edge or update edge) on the edge label, then exit out of the prompt box.
         var edge_label = values.join("<br>");
         edgeFunction(edge_label);
-        this.terminate();
+        terminate();
     }
 
     // Add a new text field for another edge transition. Called upon clicking "Add New Transition".
@@ -369,7 +314,7 @@ function EdgePrompt(func, nostr) {
             values.push(x[j].value);
         }
         // Add another text field to the prompt box. Note that this clears all text in any existing text fields (hence why that text was backed up to an array).
-        document.getElementById('dialogueboxbody').innerHTML += '<br>Transition: <input class="newedge"> <button onclick="deleteEdge(' + values.length + ')">Delete Transition</button>';
+        document.getElementById('dialogueboxbody').innerHTML += '<br>Transition: <input class="newedge"> <button onclick="deleteWeight(' + values.length + ')">Delete Transition</button>';
         // Get another reference to the text fields and add the strings in the backup array.
         x = document.getElementById('dialogueboxbody').getElementsByClassName('newedge');
         for (var k = 0; k < values.length; k++) {
@@ -380,7 +325,7 @@ function EdgePrompt(func, nostr) {
     }
 
     // Delete an existing text field. Called upon clicking the "Delete Transition" button next to the text field the user wishes to delete.
-    deleteEdge = function(edge) {
+    deleteWeight = function(edge) {
         // Back up all of the text already in text fields to an array, EXCEPT the text the user wishes to delete.
         var values = [];
         var x = document.getElementById('dialogueboxbody').getElementsByClassName('newedge');
@@ -391,10 +336,10 @@ function EdgePrompt(func, nostr) {
         }
         // Completely rewrite all of the text fields in the prompt box (thus clearing the text data within).
         // There must always be at least one text field in the prompt box, so add this first.
-        document.getElementById('dialogueboxbody').innerHTML = 'Transition: <input class="newedge" id="transition"> <button onclick="deleteEdge(0)">Delete Transition</button>';
+        document.getElementById('dialogueboxbody').innerHTML = 'Transition: <input class="newedge" id="transition"> <button onclick="deleteWeight(0)">Delete Transition</button>';
         // For every remaining, undeleted text field, add it to the prompt box.
         for (var j = 1; j < values.length; j++) {
-            document.getElementById('dialogueboxbody').innerHTML += '<br>Transition: <input class="newedge"> <button onclick="deleteEdge(' + j + ')">Delete Transition</button>';
+            document.getElementById('dialogueboxbody').innerHTML += '<br>Transition: <input class="newedge"> <button onclick="deleteWeight(' + j + ')">Delete Transition</button>';
         }
         // Get another reference to the text fields and add the strings in the backup array.
         x = document.getElementById('dialogueboxbody').getElementsByClassName('newedge');
@@ -415,18 +360,9 @@ function MealyEdgePrompt(func, nostr) {
 
     // Render function is used to initialize the prompt box in the view.
     this.render = function(values) {
-        // Configure aesthetics of the prompt box and overlay.
-        var winW = window.innerWidth;
-        var winH = window.innerHeight;
-        var dialogueoverlay = document.getElementById('dialogueoverlay');
-        var dialoguebox = document.getElementById('dialoguebox');
-        dialogueoverlay.style.display = "block";
-        dialogueoverlay.style.height = winH+"px";
-        dialoguebox.style.left = (winW/2) - (550/2)+"px";
-        dialoguebox.style.top = "100px";
-        dialoguebox.style.display = "block";
+        renderBox();
         // Add content to the prompt box, with references to the functions to run within the buttons.
-        document.getElementById('dialogueboxbody').innerHTML = 'Input Character: <input class="newedgein" id="transition"> <br>Output Character: <input class="newedgeout"> <br><button onclick="deleteEdge(0)">Delete Transition</button>';
+        document.getElementById('dialogueboxbody').innerHTML = 'Input Character: <input class="newedgein" id="transition"> <br>Output Character: <input class="newedgeout"> <br><button onclick="deleteWeight(0)">Delete Transition</button>';
         document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="addNewWeight()">Add New Transition</button> <button onclick="addEdge()">Done</button> <button onclick="terminate()">Cancel</button>';
         // If render function was passed an empty string, it means this prompt is creating a new edge.
         if (!values) {
@@ -438,7 +374,7 @@ function MealyEdgePrompt(func, nostr) {
             document.getElementById('dialogueboxhead').innerHTML = "Edit Edge:";
             // Add text fields for each transition on the edge weight.
             for (var i = 1; i < values.length; i++) {
-                document.getElementById('dialogueboxbody').innerHTML += '<br><br>Input Character: <input class="newedgein"> <br>Output Character: <input class="newedgeout"> <br><button onclick="deleteEdge(' + i + ')">Delete Transition</button>';
+                document.getElementById('dialogueboxbody').innerHTML += '<br><br>Input Character: <input class="newedgein"> <br>Output Character: <input class="newedgeout"> <br><button onclick="deleteWeight(' + i + ')">Delete Transition</button>';
             }
             // Get a reference to each of these text fields (in the form of two arrays - one for input character text fields, one for output character text fields).
             var x = document.getElementById('dialogueboxbody').getElementsByClassName('newedgein');
@@ -457,12 +393,6 @@ function MealyEdgePrompt(func, nostr) {
         }
         document.getElementById('transition').focus();
         // The focus function places the cursor in the specified text box (the first input character field, in this case).
-    }
-
-    // Exit out of the prompt box. Called upon clicking either "Done" or "Cancel".
-    terminate = function() {
-        document.getElementById('dialoguebox').style.display = "none";
-        document.getElementById('dialogueoverlay').style.display = "none";
     }
 
     // Add (or update) the edge on the graph. Called upon clicking "Done".
@@ -505,7 +435,7 @@ function MealyEdgePrompt(func, nostr) {
         // Call the edge function (either create edge or update edge) on the edge label, then exit out of the prompt box.
         var edge_label = noDuplicates.join("<br>");
         edgeFunction(edge_label);
-        this.terminate();
+        terminate();
     }
 
     // Add a new pair of text fields for another edge transition. Called upon clicking "Add New Transition".
@@ -520,7 +450,7 @@ function MealyEdgePrompt(func, nostr) {
             outValues.push(y[j].value);
         }
         // Add another pair of text fields to the prompt box. Note that this clears all text in any existing text fields (hence why that text was backed up).
-        document.getElementById('dialogueboxbody').innerHTML += '<br><br>Input Character: <input class="newedgein"> <br>Output Character: <input class="newedgeout"> <br><button onclick="deleteEdge(' + inValues.length + ')">Delete Transition</button>';
+        document.getElementById('dialogueboxbody').innerHTML += '<br><br>Input Character: <input class="newedgein"> <br>Output Character: <input class="newedgeout"> <br><button onclick="deleteWeight(' + inValues.length + ')">Delete Transition</button>';
         // Get new references to the text fields and add the strings in the backup arrays.
         x = document.getElementById('dialogueboxbody').getElementsByClassName('newedgein');
         y = document.getElementById('dialogueboxbody').getElementsByClassName('newedgeout');
@@ -533,7 +463,7 @@ function MealyEdgePrompt(func, nostr) {
     }
 
     // Delete an existing pair of text fields. Called upon clicking the "Delete Transition" button below the text fields the user wishes to delete.
-    deleteEdge = function(edge) {
+    deleteWeight = function(edge) {
         // Back up all of the text already in text fields to two arrays, EXCEPT the text the user wishes to delete.
         var inValues = [];
         var outValues = [];
@@ -547,10 +477,10 @@ function MealyEdgePrompt(func, nostr) {
         }
         // Completely rewrite all of the text fields in the prompt box (thus clearing the text data within).
         // There must always be at least one pair text fields in the prompt box, so add this first.
-        document.getElementById('dialogueboxbody').innerHTML = 'Input Character: <input class="newedgein" id="transition"> <br>Output Character: <input class="newedgeout"> <br><button onclick="deleteEdge(0)">Delete Transition</button>';
+        document.getElementById('dialogueboxbody').innerHTML = 'Input Character: <input class="newedgein" id="transition"> <br>Output Character: <input class="newedgeout"> <br><button onclick="deleteWeight(0)">Delete Transition</button>';
         // For every remaining, undeleted pair of text fields, add them to the prompt box.
         for (var j = 1; j < inValues.length; j++) {
-            document.getElementById('dialogueboxbody').innerHTML += '<br><br>Input Character: <input class="newedgein"> <br>Output Character: <input class="newedgeout"> <br><button onclick="deleteEdge(' + j + ')">Delete Transition</button>';
+            document.getElementById('dialogueboxbody').innerHTML += '<br><br>Input Character: <input class="newedgein"> <br>Output Character: <input class="newedgeout"> <br><button onclick="deleteWeight(' + j + ')">Delete Transition</button>';
         }
         // Get new references to the text fields and add the strings in the backup arrays.
         x = document.getElementById('dialogueboxbody').getElementsByClassName('newedgein');

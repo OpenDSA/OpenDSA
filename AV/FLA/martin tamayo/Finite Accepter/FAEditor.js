@@ -116,7 +116,7 @@
 		if ($(".jsavgraph").hasClass("editNodes")) {
 			selected = this;
 			selected.highlight();
-			var Prompt = new NodePrompt(updateNode);
+			var Prompt = new FANodePrompt(updateNode);
 			Prompt.render(selected.value(), selected.hasClass('start'), selected.hasClass('final'), selected.stateLabel());
 			selected.unhighlight();
 		}
@@ -175,7 +175,7 @@
 
 	function updateNode(initial_state, final_state, node_label) {
 		saveFAState();
-		executeEditNode(g, selected, initial_state, final_state, node_label);
+		executeEditFANode(g, selected, initial_state, final_state, node_label);
 	};
 
 	function createEdge(edge_label) {

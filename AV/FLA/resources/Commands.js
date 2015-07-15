@@ -46,7 +46,7 @@ var executeMoveNode = function(graph, node, top, left){
 	}
 };
 
-var executeEditNode = function(graph, node, initialState, finalState, nodeLabel){
+var executeEditFANode = function(graph, node, initialState, finalState, nodeLabel){
 	if (initialState) {
 		for (var i = 0; i < graph.nodeCount(); i++) {
 			graph.removeInitial(graph.nodes()[i]);
