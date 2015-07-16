@@ -1,5 +1,6 @@
 // old DFA editor test
-// Has the option to convert to RL grammar. Otherwise, see Martin's FA editor for the latest FA editor
+// Has the option to convert to RL grammar and can save/load JFLAP files.
+// Otherwise, see Martin's FA editor for the latest FA editor
 
 "use strict";
 /*global alert: true, ODSA */
@@ -194,9 +195,8 @@
 		}, {edge: true});
 	};
 
-	//localStorage.clear();
 	var g = initGraph({layout: "automatic"});
-	//var g = initGraph({layout: "automatic", emptystring: epsilon});
+	// var g = initGraph({layout: "automatic", emptystring: epsilon});
 	g.layout();
 	jsav.displayInit();
 	//===============================
@@ -207,7 +207,7 @@
 	updateAlphabet();
 
 	//================================
-	//editing modes
+	// editing modes
 
 	var addNodesMode = function() {
 		var jg = $(".jsavgraph");
@@ -263,40 +263,7 @@
 	}
 
 	//====================
-	//tests
-
-	// var testND = function() {
-	// 	$('#changeButton').toggleClass("highlightingND");
-	// 	if ($('#changeButton').hasClass("highlightingND") || $('#changeButton').hasClass("highlightingL")) {
-	// 		$('#changeButton').hide();
-	// 	} else{
-	// 		$('#changeButton').show();
-	// 	}
-	// 	var nodes = g.nodes();
-	// 	for(var next = nodes.next(); next; next = nodes.next()) {
-	// 		var edges = next.getOutgoing();
-	// 		var weights = _.map(edges, function(e) {return e.weight()});
-	// 		if (_.contains(weights, g.emptystring) || _.uniq(weights).length < weights.length) {
-	// 			next.toggleClass("testingND");
-	// 		}
-	// 	}
-	// };
-
-	// var testLambda = function() {
-	// 	$('#changeButton').toggleClass("highlightingL");
-	// 	if ($('#changeButton').hasClass("highlightingND") || $('#changeButton').hasClass("highlightingL")) {
-	// 		$('#changeButton').hide();
-	// 	} else{
-	// 		$('#changeButton').show();
-	// 	}
-	// 	var edges = g.edges();
-	// 	for (var next = edges.next(); next; next = edges.next()) {
-	// 		if (next.weight().indexOf(g.emptystring) !== -1) {
-	// 			next.g.element.toggleClass('testingLambda');
-	// 		}
-	// 	}
-	// };
-
+	// tests
 	// toggle highlighting nondeterministic nodes
 	var testND = function() {
 		$('#changeButton').toggleClass("highlightingND");
@@ -339,7 +306,6 @@
 			}
 		}
 	};
-
 
 	//====================
 	// traversal
@@ -409,6 +375,7 @@
 	};
 
 	//======================
+	// save as a XML file readable by JFLAP
 	var serializeGraphToXML = function (graph) {
 		var text = '<?xml version="1.0" encoding="UTF-8"?>';
 	    text = text + "<structure>";
@@ -455,40 +422,86 @@
 	    text = text + "</automaton></structure>"
 	    return text;
 	};
-
 	var save = function () {
-		// localStorage['graph'] = serialize(g);	// save to local storage as JSON encoded string
-		// jsav.umsg("Saved");
-		// saved = true;
 		var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(serializeGraphToXML(g));
     	$('#download').html('<a href="data:' + downloadData + '" target="_blank" download="fa.xml">Download FA</a>');
     	$('#download a')[0].click();
 	};
 
-	// var save = function () {
-	// 	localStorage['graph'] = serialize(g);	//I changed serializableGraph.js
-	// 	//saved = true;
-	// 	var downloadData = "text/json;charset=utf-8," + encodeURIComponent(localStorage['graph']);
-	// 	$('#download').html('<a href="data:' + downloadData + '" download="data.json">download JSON</a>');
-	// 	//$('<a href="data:' + downloadData + '" download="data.json">download JSON</a>').trigger('click');
-	// 	jsav.umsg("Saved");
-	// };
-	// var load = function () {
-	// 	if (saved) {
-	// 		//g.hide();		//g.clear() didn't seem to do anything
-	// 						//would like a reset button - should look at openDSA reset
-	// 		$('.jsavgraph').remove(); 
-	// 		g = initGraph({layout: "automatic"});
-	// 		jsav.displayInit();
-	// 		jsav.umsg("Loaded");
-	// 		updateAlphabet();
-	// 	} else{
-	// 		jsav.umsg("There is nothing to load");
-	// 	}
-	// };
-	// var setSaved = function () {
-	// 	saved = true;
-	// };
+	// load a FA from a XML file
+  	var parseFile = function (text) {
+	    var parser,
+	        xmlDoc;
+	    if (window.DOMParser) {
+	      	parser=new DOMParser();
+	      	xmlDoc=parser.parseFromString(text,"text/xml");
+	    } else {
+	      	xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+	      	xmlDoc.async=false;
+	      	xmlDoc.loadXML(txt);
+	    }
+	    if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue !== 'fa') {
+	      	alert('File does not contain a finite automaton.');
+	      	// clear input
+	      	var loaded = $('#loadbutton');
+	      	loaded.wrap('<form>').closest('form').get(0).reset();
+	      	loaded.unwrap();
+	      	return;
+	    } else {
+	    	if (g) {
+				g.clear();
+			}
+			g = new jsav.ds.fa({width: '90%', height: 440, layout: "manual"});
+			var nodeMap = {};			// map node IDs to nodes
+	      	var xmlStates = xmlDoc.getElementsByTagName("state");
+	      	xmlStates = _.sortBy(xmlStates, function(x) {return x.id;})
+	      	var xmlTrans = xmlDoc.getElementsByTagName("transition");
+	      	for (var i = 0; i < xmlStates.length; i++) {
+	        	var x = Number(xmlStates[i].getElementsByTagName("x")[0].childNodes[0].nodeValue);
+	        	var y = Number(xmlStates[i].getElementsByTagName("y")[0].childNodes[0].nodeValue);
+	        	var newNode = g.addNode({left: x, top: y});
+	        	var isInitial = xmlStates[i].getElementsByTagName("initial")[0];
+	        	var isFinal = xmlStates[i].getElementsByTagName("final")[0];
+	        	var isLabel = xmlStates[i].getElementsByTagName("label")[0];
+	        	if (isInitial) {
+	        		g.makeInitial(newNode);
+	        	}
+	        	if (isFinal) {
+	        		newNode.addClass('final');
+	        	}
+	        	if (isLabel) {
+	        		newNode.stateLabel(isLabel.childNodes[0].nodeValue);
+	        	}
+	        	nodeMap[xmlStates[i].id] = newNode;
+	      	}
+	      	for (var i = 0; i < xmlTrans.length; i++) {
+	      		var from = xmlTrans[i].getElementsByTagName("from")[0].childNodes[0].nodeValue;
+	      		var to = xmlTrans[i].getElementsByTagName("to")[0].childNodes[0].nodeValue;
+	      		var read = xmlTrans[i].getElementsByTagName("read")[0].childNodes[0];
+	      		if (!read) {
+	      			read = "";
+	      		} else {
+	      			read = read.nodeValue;
+	      		}
+	      		g.addEdge(nodeMap[from], nodeMap[to], {weight: read});
+	      	}
+	      	g.layout();
+			addHandlers();
+	    }
+	};
+  	var waitForReading = function (reader) {
+    	reader.onloadend = function(event) {
+        	var text = event.target.result;
+        	parseFile(text);
+    	}
+  	};
+  	var load = function () {
+    	var loaded = document.getElementById('loadbutton');
+    	var file = loaded.files[0],
+        	reader = new FileReader();
+    	waitForReading(reader);
+    	reader.readAsText(file);
+  	};
 
 	// automatically convert FA to right-linear grammar
 	var convertToGrammar = function () {
@@ -554,7 +567,8 @@
 	$('#layoutbutton').click(function() {g.layout()});
   	$('#testndbutton').click(testND);
   	$('#testlambdabutton').click(testLambda);
-  	$('#saveButton').click(save);
+  	$('#savebutton').click(save);
+  	$('#loadbutton').on('change', load);
   	$('#addnodesbutton').click(addNodesMode);
 	$('#changeButton').click(changeEditingMode);
 	$('#addedgesbutton').click(addEdgesMode);

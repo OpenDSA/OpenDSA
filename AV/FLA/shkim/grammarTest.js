@@ -295,7 +295,6 @@
       derivationTable = new jsav.ds.matrix(results, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
       jsav.label('Derivation Table', {relativeTo: derivationTable, anchor: "center top", myAnchor: "center bottom"});
       parseTree = new jsav.ds.tree({left: "30px", relativeTo: derivationTable, anchor: "right top"});
-      //console.log($('.jsavtree').width())
       jsav.label('Parse Tree', {left: "" + $('.jsavtree').width() / 2.0 + "px", relativeTo: parseTree, anchor: "center top", myAnchor: "left bottom"});
       temp = [parseTree.root(productions[0][0])];
 
@@ -309,7 +308,6 @@
         var d = [];
         // find parent node
         for (var j = temp.length - 1; j >= 0; j--) {
-          //console.log(temp[j].value());
           if (temp[j].value() === p.split(arrow)[0]) {
             temp2 = temp[j];
             rem = j;
@@ -436,7 +434,6 @@
     if (index === 0) { return; }
     var prev = this.value(index, arrayStep);
     prev = prev.replace(/,/g, "");
-    //console.log(prev)
     // create input box
     $('#firstinput').remove();
     var createInput = "<input type='text' id='firstinput' value="+prev+">";
@@ -565,8 +562,12 @@
     t.push('$');
 
     // populate firsts and follows sets
-    findFirstsAndFollows(productions, firsts, follows, v, pDict, derivers);
-    
+    for (var i = 0; i < v.length; i++) {
+      firsts[v[i]] = first(v[i], pDict, derivers).sort();
+    }
+    for (var i = 0; i < v.length; i++) {
+      follows[v[i]] = follow(v[i], productions, pDict, derivers).sort();
+    }
     // parseTable is the parse table, while parseTableDisplay is the matrix displayed to the user.
     // (parseTableDisplay includes the row/column headers)
     var parseTable = [];
@@ -605,10 +606,6 @@
         }
       }
     }
-    // for (var i = 0; i < parseTable.length; i++) {
-    //   console.log(""+parseTable[i])
-    // }
-
     startParse();
     $('#followbutton').show();
     $('.jsavcontrols').hide();
@@ -823,8 +820,6 @@
       var nodes = modelDFA.nodes();
       var checkNode;
       for (var next = nodes.next(); next; next = nodes.next()) {
-        // console.log(next);
-        // console.log(next._stateLabel);
         // get state label of the hidden node:
         var modelItems = next._stateLabel.element[0].innerHTML.split('<br>');
         // get state label of the visible node:
@@ -980,7 +975,6 @@
       for (var i = 0; i < vt.length; i++) {
         var symbol = vt[i];
         var nextItems = addClosure(goTo(items, symbol), productions);
-        //console.log(""+nextItems);
         if (nextItems.length > 0) {
           var nodes = modelDFA.nodes();
           var toNode = null;
@@ -1038,16 +1032,10 @@
     for (var i = 0; i < v.length; i++) {
       firsts[v[i]] = first(v[i], pDict, derivers).sort();
     }
-    // for (key in firsts) {
-    //   console.log(key+":"+firsts[key]);
-    // }
     var follows = {};
     for (var i = 0; i < v.length; i++) {
       follows[v[i]] = follow(v[i], productions, pDict, derivers).sort();
     }
-    // for (key in follows) {
-    //   console.log(key +":" + follows[key])
-    // }
 
     // add the S' -> S production
     pDict["S'"] = productions[0][0];
@@ -1319,7 +1307,6 @@
             }
             var n = parseStack[parseStack.length - 1];
           }
-          //console.log(n)
           parseTree.layout();
           jsav.umsg(remainingInput + ' | '
            + _.map(parseStack, function(x, k) {
@@ -1379,8 +1366,6 @@
               r = "";
             }
             var newItem = productions[j][0] + productions[j][1] + dot + r;
-            // console.log(newItem);
-            // console.log(""+itemsStack);
             if (items.indexOf(newItem) === -1) {
               itemsStack.unshift(newItem);
               items.push(newItem);
@@ -1467,21 +1452,6 @@
     }
   };
 
-  var findFirstsAndFollows = function (productions, firsts, follows, v, pDict, lambdaVars) {
-    for (var i = 0; i < v.length; i++) {
-      firsts[v[i]] = first(v[i], pDict, lambdaVars).sort();
-    }
-    // for (var i in firsts) {
-    //   console.log(i + ":" + firsts[i]);
-    // }
-    for (var i = 0; i < v.length; i++) {
-      follows[v[i]] = follow(v[i], productions, pDict, lambdaVars).sort();
-    }
-    // console.log('follow');
-    // for (var i in follows) {
-    //   console.log(i + ":" + follows[i]);
-    // }
-  };
   // gets FIRST set
   var first = function (str, pDict, lambdaVars) {
     if (!str) {
@@ -1528,7 +1498,6 @@
             }
           } else {
             var nextSymbol = first(p.substring(j + 1), pDict, lambdaVars);
-            //console.log(nextSymbol);
             ret = _.union(ret, _.without(nextSymbol, emptystring));
             if (nextSymbol.indexOf(emptystring) !== -1) {
               if (productions[i][0] !== str) {
@@ -1612,9 +1581,6 @@
         }
       }
     }
-    // for (var i = 0; i < transformed.length; i++) {
-    //   console.log("" + transformed[i]);
-    // }
     var ret = _.map(transformed, function(x) {return x.join('');});
     return ret;
   };
@@ -1670,11 +1636,7 @@
     // remove original unit productions
     productions = _.filter(productions, function(x) {
       return !(x[2].length === 1 && variables.indexOf(x[2]) !== -1);
-    })
-    // for (var i = 0; i < productions.length; i++) {
-    //   console.log(""+productions[i]);
-    // }
-    // console.log(productions.length);
+    });
     var ret = _.map(productions, function(x) {return x.join('');});
     return ret;
   };
@@ -1738,10 +1700,6 @@
     findReachable(start, pDict, visited);
     // remove unreachable productions
     transformed = _.filter(transformed, function(x) { return x[0] === start || pDict[start].indexOf(x[0]) !== -1;});
-    // for (var i = 0; i < transformed.length; i++) {
-    //   console.log(""+transformed[i]);
-    // }
-    // console.log(transformed.length);
     var ret = _.map(transformed, function(x) {return x.join('');});
     return ret;
   };
@@ -2259,7 +2217,6 @@
     for (var i in tProductions) {
       tCount = tCount + tProductions[i].length;
     } 
-    //console.log(tCount);
     selectedNode = null;
     // handler for the VDG for adding transitions
     var uselessVdgHandler = function () {
@@ -2319,7 +2276,6 @@
   };
 
   var interactableChomsky = function (fullChomsky) {
-    //_.each(fullChomsky, function(x){console.log(x)});
     var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
     m = init();
     startParse();
@@ -2704,7 +2660,7 @@
   // load
   var parseFile = function (text) {
     var parser,
-        xmlDom;
+        xmlDoc;
     if (window.DOMParser) {
       parser=new DOMParser();
       xmlDoc=parser.parseFromString(text,"text/xml");
@@ -2726,8 +2682,6 @@
       for (var i = 0; i < xmlElem.length; i++) {
         var l = xmlElem[i].getElementsByTagName("left")[0].childNodes[0].nodeValue;
         var r = xmlElem[i].getElementsByTagName("right")[0].childNodes[0].nodeValue;
-        // console.log(l);
-        // console.log(r);
         var row = [l, arrow, r];
         arr.push(row);
       }
@@ -2753,6 +2707,7 @@
   };
 
   //=================================
+  // buttons for editing the SLR DFA
   $('#movebutton').click(function() {
     $('.jsavgraph').removeClass('addfinals');
     $('.jsavgraph').removeClass('builddfa');
