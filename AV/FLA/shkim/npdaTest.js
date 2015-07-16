@@ -4,13 +4,13 @@
 		selectedNode = null,
 		arr,
 		g;
-	//Empty string can be set to anything when initializing the graph:
-	//e.g. initGraph({layout: "automatic", emptystring: epsilon})
-	//By default it is set to lambda.
+	// Empty string can be set to anything when initializing the graph:
+	// e.g. initGraph({layout: "automatic", emptystring: epsilon})
+	// By default it is set to lambda.
 	var lambda = String.fromCharCode(955),
 		epsilon = String.fromCharCode(949),
 		emptystring;
-	
+	// initialize PDA
 	var initGraph = function(opts) {
 		g = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
 		emptystring = g.emptystring;
@@ -48,6 +48,8 @@
 		return g;
     };
 
+    // handler for editing transitions 
+    // (outdated, should be changed to be more like multitapeTest.js or Martin's FA editor)
     var labelClickHandler = function(e) {
 		if ($(".jsavgraph").hasClass("editNodes") && !$(".jsavgraph").hasClass("working")) {
 				$(".jsavgraph").addClass("working");
@@ -115,8 +117,8 @@
 			$('#deletetransitionbutton').click(deleteTransition);
 			$('#donelabelbutton').click(finishEdgeLabel);
 		}
-		};
-		var graphClickHandler = function(e) {
+	};
+	var graphClickHandler = function(e) {
 		if ($(".jsavgraph").hasClass("addNodes")) {
 			var newNode = g.addNode(),
 			    nodeX = newNode.element.width()/2.0,
@@ -233,14 +235,13 @@
 		}
 	};
 	
-	localStorage.clear();
     var g = initGraph({layout: "manual"});
-		g.layout();
-		jsav.displayInit();
+	g.layout();
+	jsav.displayInit();
 
-		//===============================
-		var updateAlphabet = function() {
-			g.updateAlphabet();
+	//===============================
+	var updateAlphabet = function() {
+		g.updateAlphabet();
 		$("#alphabet").html("" + Object.keys(g.alphabet).sort());
 		var sa = g.getStackAlphabet();
 		$('#stackalphabet').html("Z," + _.without(sa.sort(), 'Z'));
@@ -252,53 +253,58 @@
 	var addNodesMode = function() {
 		removeEdgeSelect();
 		removeLabelMenu();
-		$(".jsavgraph").removeClass("working");
-		$(".jsavgraph").removeClass("addEdges");
-		$(".jsavgraph").removeClass("moveNodes");
-		$(".jsavgraph").removeClass("editNodes");
-		$(".jsavgraph").addClass("addNodes");
+		var jg = $(".jsavgraph");
+		jg.removeClass("working");
+		jg.removeClass("addEdges");
+		jg.removeClass("moveNodes");
+		jg.removeClass("editNodes");
+		jg.addClass("addNodes");
 		$("#mode").html('Adding nodes');
 		jsav.umsg("Click to add nodes");
 	};
 	var addEdgesMode = function() {
 		removeEdgeSelect();
 		removeLabelMenu();
-		$(".jsavgraph").removeClass("working");
-		$(".jsavgraph").removeClass("addNodes");
-		$(".jsavgraph").removeClass("moveNodes");
-		$(".jsavgraph").removeClass("editNodes");
-		$(".jsavgraph").addClass("addEdges");
+		var jg = $(".jsavgraph");
+		jg.removeClass("working");
+		jg.removeClass("addNodes");
+		jg.removeClass("moveNodes");
+		jg.removeClass("editNodes");
+		jg.addClass("addEdges");
 		$("#mode").html('Adding edges');
 		jsav.umsg("Click a node");
 	};
 	var moveNodesMode = function() {
 		removeEdgeSelect();
 		removeLabelMenu();
-		$(".jsavgraph").removeClass("working");
-		$(".jsavgraph").removeClass("addNodes");
-		$(".jsavgraph").removeClass("addEdges");
-		$(".jsavgraph").removeClass("editNodes");
-		$(".jsavgraph").addClass("moveNodes");
+		var jg = $(".jsavgraph");
+		jg.removeClass("working");
+		jg.removeClass("addNodes");
+		jg.removeClass("addEdges");
+		jg.removeClass("editNodes");
+		jg.addClass("moveNodes");
 		$("#mode").html('Moving nodes');
 		jsav.umsg("Click a node");
 	};
 	var editNodesMode = function() {
-		$(".jsavgraph").removeClass("working");
-		$(".jsavgraph").removeClass("addNodes");
-		$(".jsavgraph").removeClass("addEdges");
-		$(".jsavgraph").removeClass("moveNodes");
-		$(".jsavgraph").addClass("editNodes");
+		var jg = $(".jsavgraph");
+		jg.removeClass("working");
+		jg.removeClass("addNodes");
+		jg.removeClass("addEdges");
+		jg.removeClass("moveNodes");
+		jg.addClass("editNodes");
 		$("#mode").html('Editing nodes and edges');
 		addEdgeSelect();
 		jsav.umsg("Click a node or edge");
 	};
 	var changeEditingMode = function() {
 		removeLabelMenu();
-		$(".jsavgraph").removeClass("working");
-		$(".jsavgraph").removeClass("addNodes");
-		$(".jsavgraph").removeClass("addEdges");
-		$(".jsavgraph").removeClass("moveNodes");
-		$('.jsavgraph').removeClass('editNodes');
+		var jg = $(".jsavgraph");
+		jg.removeClass("working");
+		jg.removeClass("addNodes");
+		jg.removeClass("addEdges");
+		jg.removeClass("moveNodes");
+		jg.removeClass('editNodes');
 		removeEdgeSelect();
 		$("#mode").html('Editing');
 		if ($(".notEditing").is(":visible")) {
@@ -309,7 +315,7 @@
 		$('.notEditing').toggle();
 		$('.editing').toggle();
 	};
-
+	// make edges easier to click/see
 	var addEdgeSelect = function () {
 		var edges = g.edges();
 		for (var next = edges.next(); next; next= edges.next()) {
@@ -333,8 +339,9 @@
 	};
 
 	//====================
-	//tests
+	// tests
 
+	// toggles highlighting nondeterministic nodes
 	var testND = function() {
 		$('#changeButton').toggleClass("highlightingND");
 		if ($('#changeButton').hasClass("highlightingND") || $('#changeButton').hasClass("highlightingL")) {
@@ -357,6 +364,7 @@
 			}
 		}
 	};
+	// toggles highlighting lambda transitions
 	var testLambda = function() {
 		$('#changeButton').toggleClass("highlightingL");
 		if ($('#changeButton').hasClass("highlightingND") || $('#changeButton').hasClass("highlightingL")) {
@@ -376,167 +384,8 @@
 		}
 	};
 
-
 	//====================
 	//traversal
-
-	// var play = function() {
-	// 	if (!g.initial) {
-	// 		alert('Please define an initial state');
-	// 		return;
-	// 	}
-	// 	var inputString = prompt("Input string?", "abb");
-	// 	if (inputString == null) {
-	// 		return;
-	// 	}
-	// 	jsav.umsg("");
-	// 	var textArray = [];
-	// 	$("button").hide();			//disable buttons
-	// 	$("#mode").html('');
-	// 	if (arr) {
-	// 		arr.clear();
-	// 		}
-	// 		$('.jsavcontrols').show();
-	// 	g.initial.addClass('current');
-	// 	var currentStates = [new Configuration(g.initial, ['Z'])];
-	// 	currentStates = addLambdaClosure(currentStates);
-	// 	var configView = "";
-	//    	for (var j = 0; j < currentStates.length; j++) {
-	//    		configView += currentStates[j].toString() + ' | ';
-	//    	}
-	//     jsav.umsg(configView);
-	// 	var cur;
-		
-	// 	for (var i = 0; i < inputString.length; i++) {
-	// 		textArray.push(inputString[i]);
-	// 		}
-	// 		arr = jsav.ds.array(textArray, {element: $('.arrayPlace')});
-
-	// 		jsav.displayInit();
-
-	// 	for (var i = 0; i < inputString.length; i++) {
-	// 		for (var j = 0; j < currentStates.length; j++) {
-	// 	   		currentStates[j].state.removeClass('current');
-	// 	   	}
-	// 	   	cur = traverse(currentStates, inputString[i]);
-	// 	   	if (cur.length === 0) {
-	// 	   		arr.css(i, {"background-color": "red"});
-	// 	   		jsav.step();
-	// 	   		break;
-	// 	   	}
-	// 	   	configView = "";
-	// 	   	for (var j = 0; j < cur.length; j++) {
-	// 	   		configView += cur[j].toString() + ' | ';
-	// 	   	}
-	// 	    jsav.umsg(configView);
-	// 		currentStates = cur;
-	// 		arr.css(i, {"background-color": "yellow"});
-	// 		jsav.step();
-	// 	}
-
-	// 	var rejected = true;
-	// 	for (var k = 0; k < currentStates.length; k++) {
-	// 		if (currentStates[k].state.hasClass('final') && cur.length > 0) {
-	// 			currentStates[k].state.addClass('accepted');
-	// 				arr.css(inputString.length - 1, {"background-color": "green"});
-	// 				jsav.umsg("Accepted");
-	// 			rejected = false;
-	// 		}
-	// 	}
-	// 	if (rejected) {
-	// 		arr.css(inputString.length - 1, {"background-color": "red"});
-	// 		jsav.umsg("Rejected");
-	// 	}
-	// 	jsav.recorded();
-	// };
-
-	// var traverse = function(currentStates, letter) {
-	// 	// currentStates is an array of configurations
-	// 	var nextStates = [];
-	// 	for (var i = 0; i < currentStates.length; i++) {
-	// 		var successors = currentStates[i].state.neighbors(),
-	// 			curStack = currentStates[i].stack;
-	// 		for (var next = successors.next(); next; next = successors.next()) {
-	// 			var w = g.getEdge(currentStates[i].state, next).weight().split('<br>');
-	// 			for (var j = 0; j < w.length; j++) {
-	// 				var t = w[j].split(':');
-	// 		        if (t[0] !== letter) {continue;}
-	// 		        if (t[1] !== emptystring) {
-	// 		          var l = [],
-	// 		              cur;
-	// 		          for (var k = 0; k < t[1].length; k++) {
-	// 		            cur = curStack.pop();
-	// 		            if (cur) {
-	// 		              l.push(cur);
-	// 		            } else {
-	// 		              break;
-	// 		            }
-	// 		          }
-	// 		          if (t[1] === l.join('')) {
-	// 		          	var nextConfig = new Configuration(next, curStack);
-	// 		          	if (t[2] !== emptystring){
-	// 		              for (var h = t[2].length - 1; h >= 0; h--) {
-	// 		                nextConfig.stack.push(t[2].charAt(h));
-	// 		              }
-	// 		            }
-	// 		            next.addClass('current');
-	// 					nextStates.push(nextConfig);
-	// 		          } 
-	// 		          l.reverse();
-	// 		          curStack = curStack.concat(l);
-	// 		        } else {
-	// 		          	var nextConfig = new Configuration(next, curStack);
-	// 		          	if (t[2] !== emptystring){
-	// 		              for (var h = t[2].length - 1; h >= 0; h--) {
-	// 		                nextConfig.stack.push(t[2].charAt(h));
-	// 		              }
-	// 		            }
-	// 		            next.addClass('current');
-	// 					nextStates.push(nextConfig);
-	// 		           	break;
-	// 		        }
-	// 			}
-	// 		}
-	// 	}
-	// 	nextStates = _.uniq(nextStates, function(x) {return x.toString();});
-	// 	nextStates = addLambdaClosure(nextStates);
-	// 	return nextStates;
-	// };
-
-	// var addLambdaClosure = function(nextStates) {
-	// 	lambdaStates = [];
-	// 	for (var i = 0; i < nextStates.length; i++) {
-	// 		var successors = nextStates[i].state.neighbors();
-	// 		for (var next = successors.next(); next; next = successors.next()) {
-	// 			var weight = g.getEdge(nextStates[i].state, next).weight().split('<br>');
-	// 			for (var j = 0; j < weight.length; j++) {
-	// 				if (!next.hasClass('current') && _.every(weight[j].split(':'), function(x) {return x === emptystring})) {
- //   						next.addClass('current');
- //   						var nextConfig = new Configuration(next, nextStates[i].stack)
-	// 					lambdaStates.push(nextConfig);
- //   					}
-	// 			}
-	// 		}
-	// 	}
-	// 	if(lambdaStates.length > 0) {
-	// 		lambdaStates = addLambdaClosure(lambdaStates);
-	// 	}
-	// 	for (var k = 0; k < lambdaStates.length; k++) {
-	// 		nextStates.push(lambdaStates[k]);
-	// 	}
-	// 	nextStates = _.uniq(nextStates, function(x) {return x.toString();});
-	// 	return nextStates;
-	// };
-
-	// // Configuration object
-	// var Configuration = function(state, stack) {
-	// 	this.state = state;
-	// 	this.stack = stack.slice(0);
-	// 	this.toString = function() {
-	// 		return this.state.value() + ' ' + this.stack.join();
-	// 	}
-	// };
-	
 
 	var play = function() {
 		if (!g.initial) {

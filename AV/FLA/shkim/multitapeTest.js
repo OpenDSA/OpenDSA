@@ -1,17 +1,19 @@
 (function ($) {
-	localStorage["jsav-speed"] = 0;
+	localStorage["jsav-speed"] = 0;		// set default animation speed to max
 	var jsav = new JSAV("av"),
 		saved = false,
 		selectedNode = null,
-		tapeNumber = 2,
-		first, 
-		second,
+		tapeNumber = 2,					// default number of tapes
+		first, 							// keeps track of the selected node for the editing prompt
+		second,							// keeps track of the second node in an edge for the editing prompt
 		g;
 
 	var lambda = String.fromCharCode(955),
 		epsilon = String.fromCharCode(949),
 		square = String.fromCharCode(9633),
 		emptystring;
+	// initialize TM
+	// The default TM has two tapes and is hardcoded (will be the default no matter how many tapes the user selects)
 	var initGraph = function(opts) {
 		g = jsav.ds.fa($.extend({width: '90%', height: 440, emptystring: square}, opts));
 		emptystring = g.emptystring;
@@ -46,6 +48,8 @@
 		return g;
     };
 
+    // handler for editing edges/transitions
+    // opens a separate interface
     var labelClickHandler = function(e) {
 		if ($(".jsavgraph").hasClass("editNodes")) {
 			first = this;
@@ -56,8 +60,9 @@
 			var prompter = new EdgePrompt();
 			prompter.render("delete");
 		}
-		};
-		var graphClickHandler = function(e) {
+	};
+	// handler for the graph window
+	var graphClickHandler = function(e) {
 		if ($(".jsavgraph").hasClass("addNodes")) {
 			var newNode = g.addNode(),
 			    nodeX = newNode.element.width()/2.0,
@@ -81,20 +86,23 @@
 			jsav.umsg("Click a node");
 		}
 	};
-	var nodeClickHandler = function(e) {	
+	// handler for the nodes of the graph
+	var nodeClickHandler = function(e) {
+		// editing nodes opens a separate interface, similar to editing edges	
 		if ($(".jsavgraph").hasClass("editNodes")) {
 			first = this;
 			first.highlight();
 			var Prompt = new NodePrompt();
 			Prompt.render(this.value(), this.hasClass('start'), this.hasClass('final'), this.element.attr('title'));
 			first.unhighlight();
-			} else if ($(".jsavgraph").hasClass("addEdges")) {
-				this.highlight();
-				if (!$(".jsavgraph").hasClass("working")) {
+		} else if ($(".jsavgraph").hasClass("addEdges")) {
+			this.highlight();
+			if (!$(".jsavgraph").hasClass("working")) {
 				first = this;
 				$('.jsavgraph').addClass("working");
 				jsav.umsg("Select a state to make a transition to");
    			} else {
+   				// adding an edge is also handled by the interface
    				second = this;
    				var prompter = new EdgePrompt();
    				prompter.render("add");
@@ -104,19 +112,20 @@
 				updateAlphabet();
 				jsav.umsg("Click a node");
    			}
-			} else if ($('.jsavgraph').hasClass('moveNodes')) {
-				if (selectedNode) {
-					selectedNode.unhighlight();
-				}
-				this.highlight();
-				selectedNode = this;
-				jsav.umsg("Click to place node");
-				e.stopPropagation();
-			} else if ($('.jsavgraph').hasClass('deleteNodes')) {
+		} else if ($('.jsavgraph').hasClass('moveNodes')) {
+			if (selectedNode) {
+				selectedNode.unhighlight();
+			}
+			this.highlight();
+			selectedNode = this;
+			jsav.umsg("Click to place node");
+			e.stopPropagation();
+		} else if ($('.jsavgraph').hasClass('deleteNodes')) {
 			g.removeNode(this);
 			updateAlphabet();
-			}
+		}
 	};
+	// handler for the edges of the graph (used only for directly deleting entire edges)
 	var edgeClickHandler = function(e) {
 		if ($('.jsavgraph').hasClass('deleteNodes')) {
 			g.removeEdge(this);
@@ -125,13 +134,12 @@
 		}
 	};
     var g = initGraph({layout: "manual"});
-		g.layout();
-		jsav.displayInit();
+	g.layout();
+	jsav.displayInit();
 
-
-		//===============================
-		var updateAlphabet = function() {
-			g.updateAlphabet();
+	//===============================
+	var updateAlphabet = function() {
+		g.updateAlphabet();
 		$("#alphabet").html("" + Object.keys(g.alphabet).sort());
 		var sa = getTapeAlphabet(g);
 		$('#stackalphabet').html(emptystring + "," + sa.sort());
@@ -141,8 +149,10 @@
 	$('#asktapesinput').focus();
 
 	//===============================
-	//prompts
+	// prompts (based on Martin's FA editor code)
+	// Interface for editing a node
 	function NodePrompt() {
+		// create interface and obscure everything else
 	    this.render = function(value, is, fs, lab) {
 	        var winW = window.innerWidth;
 	        var winH = window.innerHeight;
@@ -168,11 +178,13 @@
 	            document.getElementById('label').value = lab;
 	        }
 	        document.getElementById('label').focus();
-	    }
+	    };
+	    // close the prompt (by hiding it)
 	    terminate = function() {
 	        document.getElementById('dialoguebox').style.display = "none";
 	        document.getElementById('dialogueoverlay').style.display = "none";
-	    }
+	    };
+	    // make the appropriate changes to the TM node
 	    ok = function() {
 	        var initial_state = document.getElementById('initial_state').checked;
 	        var final_state = document.getElementById('final_state').checked;
@@ -198,10 +210,11 @@
 			}
 	        document.getElementById('dialoguebox').style.display = "none";
 	        document.getElementById('dialogueoverlay').style.display = "none";
-	    }
-	}
-
+	    };
+	};
+	// Interface for editing an edge/adding a new edge
 	var EdgePrompt = function() {
+		// create prompt elements
 	    this.render = function(value) {
 	        var winW = window.innerWidth;
 	        var winH = window.innerHeight;
@@ -213,6 +226,7 @@
 	        dialoguebox.style.top = '30%';
 	        dialoguebox.style.display = "block";
 	        if(value === "add"){
+	        	// create input boxes for the transition values
 	            document.getElementById('dialogueboxhead').innerHTML = "Create Edge:";
 	            document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="addEdge()">OK</button> <button onclick="end()">Cancel</button>';
 	            var ih = 'Read : Write : Move<br>';
@@ -221,6 +235,7 @@
 		        }
 		        document.getElementById('dialogueboxbody').innerHTML = ih;
 	        } else if (value === "delete") {
+	        	// creates a button for each transition
 	        	document.getElementById('dialogueboxhead').innerHTML = "Delete Transitions:";
 	            document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="finishDeletion()">Done</button>';
 	            var self = first;
@@ -234,6 +249,7 @@
 		        $('.transitiondelete').click(deleteEdge);
 	        }
 	        else if (value === "edit") {
+	        	// create an input box for each field in each tape of each transition
 	            document.getElementById('dialogueboxhead').innerHTML = "Edit Edge:";
 	            document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="changeEdge()">OK</button> <button onclick="end()">Cancel</button>';
 
@@ -267,12 +283,14 @@
 		        document.getElementById('dialogueboxbody').innerHTML = createForm;
 	        }
 	        $('.transitionInput').first().focus();
-	    }
+	    };
+	    // close the prompt (by hiding it)
 	    end = function() {
 	    	updateAlphabet();
 	        document.getElementById('dialoguebox').style.display = "none";
 	        document.getElementById('dialogueoverlay').style.display = "none";
-	    }
+	    };
+	    // create the new edge in the TM
 	    addEdge = function() {
 	    	var w = [];
 	    	var s = "";
@@ -289,7 +307,7 @@
 	    			s = "";
 	    		}
 	    	});
-				w = w.join('|');
+			w = w.join('|');
 			var newEdge = g.addEdge(first, second, {weight: w});
 			if (newEdge) {
 				$(newEdge._label.element).click(labelClickHandler);
@@ -298,7 +316,8 @@
 				newEdge.layout();
 			}
 	        this.end();
-	    }
+	    };
+	    // make edits to the TM edge
 	    changeEdge = function() {
 	    	var w = [];
 	    	var s = "";
@@ -322,10 +341,11 @@
 			$(first).html(w);
 			g.layout({layout: "manual"});
 	        this.end();
-	    }
+	    };
 	    deleteEdge = function() {
 	    	$(this).remove();
-	    }
+	    };
+	    // take out deleted transitions
 	    finishDeletion = function() {
 			var w = [];
 	    	$('.transitiondelete').each(function(index){
@@ -335,156 +355,161 @@
 			$(first).html(w);
 			g.layout({layout: "manual"});
 	        this.end();
-	    }
-	}
+	    };
+	};
 
 
-		//===============================
-		//editing modes
+	//===============================
+	// editing modes
 
-		var addNodesMode = function() {
-			removeEdgeSelect();
-			removeLabelMenu();
-			$(".jsavgraph").removeClass("working");
-			$(".jsavgraph").removeClass("addEdges");
-			$(".jsavgraph").removeClass("moveNodes");
-			$(".jsavgraph").removeClass("editNodes");
-			$(".jsavgraph").removeClass("deleteNodes");
-			$(".jsavgraph").addClass("addNodes");
-			$("#mode").html('Adding nodes');
-			jsav.umsg("Click to add nodes");
-		};
-		var addEdgesMode = function() {
-			removeEdgeSelect();
-			removeLabelMenu();
-			$(".jsavgraph").removeClass("working");
-			$(".jsavgraph").removeClass("addNodes");
-			$(".jsavgraph").removeClass("moveNodes");
-			$(".jsavgraph").removeClass("editNodes");
-			$(".jsavgraph").removeClass("deleteNodes");
-			$(".jsavgraph").addClass("addEdges");
-			$("#mode").html('Adding edges');
-			jsav.umsg("Click a node");
-		};
-		var moveNodesMode = function() {
-			removeEdgeSelect();
-			removeLabelMenu();
-			$(".jsavgraph").removeClass("working");
-			$(".jsavgraph").removeClass("addNodes");
-			$(".jsavgraph").removeClass("addEdges");
-			$(".jsavgraph").removeClass("editNodes");
-			$(".jsavgraph").removeClass("deleteNodes");
-			$(".jsavgraph").addClass("moveNodes");
-			$("#mode").html('Moving nodes');
-			jsav.umsg("Click a node");
-		};
-		var editNodesMode = function() {
-			$(".jsavgraph").removeClass("working");
-			$(".jsavgraph").removeClass("addNodes");
-			$(".jsavgraph").removeClass("addEdges");
-			$(".jsavgraph").removeClass("moveNodes");
-			$(".jsavgraph").removeClass("deleteNodes");
-			$(".jsavgraph").addClass("editNodes");
-			$("#mode").html('Editing nodes and edges');
-			addEdgeSelect();
-			jsav.umsg("Click a node or edge");
-		};
-		var deleteNodesMode = function() {
-			$(".jsavgraph").removeClass("working");
-			$(".jsavgraph").removeClass("addNodes");
-			$(".jsavgraph").removeClass("addEdges");
-			$(".jsavgraph").removeClass("moveNodes");
-			$(".jsavgraph").removeClass("editNodes");
-			$(".jsavgraph").addClass("deleteNodes");
-			$("#mode").html('Deleting nodes and edges');
-			addEdgeSelect();
-			jsav.umsg("Click a node or edge");
-		};
-		var changeEditingMode = function() {
-			removeLabelMenu();
-			$(".jsavgraph").removeClass("working");
-			$(".jsavgraph").removeClass("addNodes");
-			$(".jsavgraph").removeClass("addEdges");
-			$(".jsavgraph").removeClass("moveNodes");
-			$('.jsavgraph').removeClass('editNodes');
-			$(".jsavgraph").removeClass("deleteNodes");
-			removeEdgeSelect();
-			$("#mode").html('Editing');
-			if ($(".notEditing").is(":visible")) {
-				$('#changeButton').html('Done editing');
-			} else {
-				$('#changeButton').html('Edit');
-			}
-			$('.notEditing').toggle();
-			$('.editing').toggle();
-		};
-
-		var addEdgeSelect = function () {
-			var edges = g.edges();
-			for (var next = edges.next(); next; next= edges.next()) {
-				next.addClass('edgeSelect');
+	var addNodesMode = function() {
+		removeEdgeSelect();
+		removeLabelMenu();
+		var jg = $(".jsavgraph");
+		jg.removeClass("working");
+		jg.removeClass("addEdges");
+		jg.removeClass("moveNodes");
+		jg.removeClass("editNodes");
+		jg.removeClass("deleteNodes");
+		jg.addClass("addNodes");
+		$("#mode").html('Adding nodes');
+		jsav.umsg("Click to add nodes");
+	};
+	var addEdgesMode = function() {
+		removeEdgeSelect();
+		removeLabelMenu();
+		var jg = $(".jsavgraph");
+		jg.removeClass("working");
+		jg.removeClass("addNodes");
+		jg.removeClass("moveNodes");
+		jg.removeClass("editNodes");
+		jg.removeClass("deleteNodes");
+		jg.addClass("addEdges");
+		$("#mode").html('Adding edges');
+		jsav.umsg("Click a node");
+	};
+	var moveNodesMode = function() {
+		removeEdgeSelect();
+		removeLabelMenu();
+		var jg = $(".jsavgraph");
+		jg.removeClass("working");
+		jg.removeClass("addNodes");
+		jg.removeClass("addEdges");
+		jg.removeClass("editNodes");
+		jg.removeClass("deleteNodes");
+		jg.addClass("moveNodes");
+		$("#mode").html('Moving nodes');
+		jsav.umsg("Click a node");
+	};
+	var editNodesMode = function() {
+		var jg = $(".jsavgraph");
+		jg.removeClass("working");
+		jg.removeClass("addNodes");
+		jg.removeClass("addEdges");
+		jg.removeClass("moveNodes");
+		jg.removeClass("deleteNodes");
+		jg.addClass("editNodes");
+		$("#mode").html('Editing nodes and edges');
+		addEdgeSelect();
+		jsav.umsg("Click a node or edge");
+	};
+	var deleteNodesMode = function() {
+		var jg = $(".jsavgraph");
+		jg.removeClass("working");
+		jg.removeClass("addNodes");
+		jg.removeClass("addEdges");
+		jg.removeClass("moveNodes");
+		jg.removeClass("editNodes");
+		jg.addClass("deleteNodes");
+		$("#mode").html('Deleting nodes and edges');
+		addEdgeSelect();
+		jsav.umsg("Click a node or edge");
+	};
+	// change between editing and non-editing (traversal)
+	var changeEditingMode = function() {
+		removeLabelMenu();
+		var jg = $(".jsavgraph");
+		jg.removeClass("working");
+		jg.removeClass("addNodes");
+		jg.removeClass("addEdges");
+		jg.removeClass("moveNodes");
+		jg.removeClass('editNodes');
+		jg.removeClass("deleteNodes");
+		removeEdgeSelect();
+		$("#mode").html('Editing');
+		if ($(".notEditing").is(":visible")) {
+			$('#changeButton').html('Done editing');
+		} else {
+			$('#changeButton').html('Edit');
+		}
+		$('.notEditing').toggle();
+		$('.editing').toggle();
+	};
+	// make edges easier to click
+	var addEdgeSelect = function () {
+		var edges = g.edges();
+		for (var next = edges.next(); next; next= edges.next()) {
+			next.addClass('edgeSelect');
+			next.layout();
+		}
+	};
+	var removeEdgeSelect = function () {
+		var edges = g.edges();
+		for (var next = edges.next(); next; next = edges.next()) {
+			if (next.hasClass('edgeSelect')) {
+				next.removeClass('edgeSelect');
 				next.layout();
 			}
-		};
-		var removeEdgeSelect = function () {
-			var edges = g.edges();
-			for (var next = edges.next(); next; next = edges.next()) {
-				if (next.hasClass('edgeSelect')) {
-					next.removeClass('edgeSelect');
-					next.layout();
-				}
-			}
-		};
-		var removeLabelMenu = function() {
-			if ($('#editedgelabel')) {
-				$('#editedgelabel').remove();
-			}
-		};
+		}
+	};
+	var removeLabelMenu = function() {
+		if ($('#editedgelabel')) {
+			$('#editedgelabel').remove();
+		}
+	};
 
 	//====================
 	//traversal
 
-		// ND
-		var play = function(str) {
-			if (!g.initial) {
+	// traverse on given input string
+	var play = function(str) {
+		if (!g.initial) {
 			alert('Please define an initial state');
 			return;
 		}
-			// var n = prompt('How many tapes?');
-			// n = Number(n);
-			var n = tapeNumber;
-			if (!n || n < 1) {
-				return;
-			}
-			var inputs = [];
-			if (str) {
+		var n = tapeNumber;
+		if (!n || n < 1) {
+			return;
+		}
+		var inputs = [];
+		if (str) {
 			inputs = str.split('|');
 		} else {
-				for (var i = 0; i < n; i++) {
-					var singleInput = prompt('Input ' + (i + 1));
-					if (singleInput === null) {
-						return;
-					}
-					inputs.push(singleInput);
+			for (var i = 0; i < n; i++) {
+				var singleInput = prompt('Input ' + (i + 1));
+				if (singleInput === null) {
+					return;
 				}
+				inputs.push(singleInput);
 			}
+		}
 		jsav.umsg("");
-		$("button").hide();			//disable buttons
+		$("button").hide();			// disable buttons
 		$('#alphabets').hide();
 		$("#mode").html('');
-			$('.jsavcontrols').show();
-			$('.jsavoutput').css({"text-align": "center", 'font-size': '1.5em', 'font-family': 'monospace'});
+		$('.jsavcontrols').show();
+		$('.jsavoutput').css({"text-align": "center", 'font-size': '1.5em', 'font-family': 'monospace'});
 		
 		var currentStates = [new Configuration(g.initial, inputs)],
 			cur,
 			counter = 0,
-			configView = [];
+			configView = [];		// configurations to display in the message box
 		for (var j = 0; j < currentStates.length; j++) {
 	   		configView.push(currentStates[j].toString());
 	   	}
 	    jsav.umsg(configView.join('<br>'));
 		g.initial.addClass('current');
-			jsav.displayInit();
+		jsav.displayInit();
 		
 		while (true) {
 			if (counter === 500) {
@@ -496,12 +521,14 @@
 		   		currentStates[j].state.removeClass('current');
 		   		currentStates[j].state.removeClass('accepted');
 		   	}
+		   	// get next states
 			cur = traverse(currentStates);
 			if (!cur || cur.length === 0) {
 				break;
 			}
 			currentStates = cur;
 			configView = [];
+			// add highlighting and display
 			for (var j = 0; j < currentStates.length; j++) {
 				currentStates[j].state.addClass('current');
 				if (currentStates[j].state.hasClass('final')) {
@@ -522,6 +549,7 @@
 		jsav.step();
 		jsav.recorded();
 	};
+	// given a list of configurations, returns the set of next configurations
 	var traverse = function(currentStates) {
 		var nextStates = [];
 		for (var j = 0; j < currentStates.length; j++) {
@@ -551,15 +579,18 @@
 				}
 			}
 		}
-		//nextStates = _.uniq(nextStates, function(x) {return x.toID();});
+		// remove duplicate configurations
+		nextStates = _.uniq(nextStates, function(x) {return x.toID();});
 		return nextStates;
 	};
-		var Configuration = function(state, tapes) {
-			this.state = state;
-			this.tapes = [];
-			for (var i = 0; i < tapes.length; i++) {
-				this.tapes.push(new Tape(tapes[i]));
-			}
+	// configuration object: contains the current state and the current tapes for that state
+	var Configuration = function(state, tapes) {
+		this.state = state;
+		this.tapes = [];		// list of tapes
+		for (var i = 0; i < tapes.length; i++) {
+			this.tapes.push(new Tape(tapes[i]));
+		}
+		// turn configuration into a string to display to the user
 		this.toString = function() {
 			var ret = this.state.value();
 			for (var i = 0; i < this.tapes.length; i++) {
@@ -567,17 +598,17 @@
 			}
 			return ret;
 		}
+		// get an ID for the configuration to allow removing duplicates
 		this.toID = function() {
 			var ret = this.state.value();
 			for (var i = 0; i < this.tapes.length; i++) {
-				ret+= " " + this.tapes[i] + viewTape(this.tapes[i]);
+				ret+= " " + this.tapes[i] + this.tapes[i].currentIndex;
 			}
 			return ret;
 		}
 	};
 
-
-	// multiple traversal
+	// runs traversal on a single input, with no display
 	var runInput = function(inputString) {
 		inputString = inputString.split('|');
 		var currentStates = [new Configuration(g.initial, inputString)],
@@ -601,9 +632,9 @@
 			}
 			currentStates = cur;
 		}
-		
 		return inputString.join("|") + '<br>Rejected<br>';
 	};
+	// traverse on multiple inputs, place traversal results in an array
 	var displayTraversals = function () {
 		if (!g.initial) {
 			alert('Please define an initial state');
@@ -621,27 +652,29 @@
 		$('#alphabets').hide();
 		for (var i = 0; i < inputs.length; i++) {
 			travArray.push(runInput(inputs[i]));
-			}
-			var jsavArray = jsav.ds.array(travArray, {element: $('.arrayPlace')});
-			jsavArray.mouseenter(jsavArray.highlight).mouseleave(jsavArray.unhighlight);
-			jsavArray.click(arrayClickHandler);
-			jsavArray.show();
-			jsav.displayInit();
-		};
-		var arrayClickHandler = function (index) {
-			var input = this.value(index).split('<br>')[0];
-			this.hide();
-			play(input);
-		};
+		}
+		var jsavArray = jsav.ds.array(travArray, {element: $('.arrayPlace')});
+		jsavArray.mouseenter(jsavArray.highlight).mouseleave(jsavArray.unhighlight);
+		jsavArray.click(arrayClickHandler);
+		jsavArray.show();
+		jsav.displayInit();
+	};
+	// handler for the array of multiple inputs; clicking on an index provides the trace for that input
+	var arrayClickHandler = function (index) {
+		var input = this.value(index).split('<br>')[0];
+		this.hide();
+		play(input);
+	};
 
-		var askForTapes = function () {
-			var asked = Number(document.getElementById("asktapesinput").value);
-			if (asked) {
-				tapeNumber = asked;
-			}
-			$("#asktapes").hide();
-			document.getElementById('dialogueoverlay').style.display = 'none';
-		};
+	// ask user for the number of tapes per state (if the input is invalid, defaults to 2)
+	var askForTapes = function () {
+		var asked = Number(document.getElementById("asktapesinput").value);
+		if (asked) {
+			tapeNumber = asked;
+		}
+		$("#asktapes").hide();
+		document.getElementById('dialogueoverlay').style.display = 'none';
+	};
 
 	//======================
 	$('#playbutton').click(function() {play()});
@@ -654,6 +687,7 @@
 	$('#editnodesbutton').click(editNodesMode);
 	$('#deletenodesbutton').click(deleteNodesMode);
 	$('#asktapesbutton').click(askForTapes);
+	// allow the input for tape number to be entered by pressing the 'enter' key
 	$("#asktapesinput").keyup(function(event){
 	    if(event.keyCode == 13){
 	        $("#asktapesbutton").click();

@@ -1,24 +1,19 @@
 (function ($) {	
-	var settings = new JSAV.utils.Settings($('.jsavsettings'));
-	    // settings.add("speed", {"type": "range",
-	//                  "value": "10",
-	//                  "min": 1,
-	//                  "max": 10,
-	//                  "step": 1});
-	var jsav = new JSAV("av", {"settings": settings}),
-		input,
+	localStorage["jsav-speed"] = 0; // set default animation speed to max
+	var jsav = new JSAV("av"),
+		input,						// terminal to expand on
 		selectedNode = null,
-		expanded,
-		g1,		//reference (original NFA)
-		g,		//working conversion
+		expanded,					// string containing the names of the next states
+		g1,							// reference (original NFA)
+		g,							// working conversion
 		alphabet;
 
 	var lambda = String.fromCharCode(955),
 		epsilon = String.fromCharCode(949);
 
-	function initGraph() {
-		//bug(?): it looks like using the 'element' option when initializing a graph rewrites its default value
-		var graph = jsav.ds.fa($.extend({width: '45%', height: 440, layout: 'automatic', element: $('#reference')}));
+	// initializes the reference/original NFA
+	function initGraph () {
+		var graph = jsav.ds.fa({width: '45%', height: 440, layout: 'automatic', element: $('#reference')});
 		var a = graph.addNode(),		
 	  		b = graph.addNode(),
 	  		c = graph.addNode(),
@@ -36,18 +31,18 @@
 	    graph.addEdge(d, c, {weight: ''});	//lambda
 		graph.layout();
 		graph.updateAlphabet();
-			alphabet = Object.keys(graph.alphabet).sort();
+		alphabet = Object.keys(graph.alphabet).sort();
 		$("#alphabet").html("" + alphabet);
 		return graph;
 	};
-
-	function initialize() {
+	// initializes the DFA to be created by the user
+	function initialize () {
 		if (g) {
-			//g.clear();		this doesn't seem to work
+			//g.clear();
 			$('#editable').empty();
 		}
 		jsav.umsg("Choose a state to expand:");
-		g = jsav.ds.fa($.extend({width: '45%', height: 440, element: $('#editable')}));
+		g = jsav.ds.fa({width: '45%', height: 440, element: $('#editable')});
 		var a = g.addNode();
 		a.stateLabel(lambdaClosure([g1.initial.value()], g1).sort().join());
 		a.stateLabelPositionUpdate();
@@ -57,42 +52,12 @@
 		g.click(nodeClickHandlers);
 		return g;
 	};
-
-	function modelAnswer(modeljsav) {
-		// manual creation of the default DFA:
-
-		// var graph = modeljsav.ds.fa($.extend({width: '90%', height: 440, layout: 'automatic', element: $('.jsavmodelanswer .jsavcanvas')}));
-		// var a = graph.addNode(),
-		// 	b = graph.addNode(),
-		// 	c = graph.addNode(),
-		// 	d = graph.addNode(),
-		// 	e = graph.addNode();
-		// graph.makeInitial(a);
-		// c.addClass('final');
-		// d.addClass('final');
-		// a.stateLabel("q0");
-		// b.stateLabel("q0,q1");
-		// c.stateLabel("q1,q2");
-		// d.stateLabel("q2,q3");
-		// e.stateLabel("q1");
-		// a.stateLabelPositionUpdate();
-		// b.stateLabelPositionUpdate();
-		// c.stateLabelPositionUpdate();
-		// d.stateLabelPositionUpdate();
-		// e.stateLabelPositionUpdate();
-
-		// graph.addEdge(a, b, {weight: "a"});
-		// graph.addEdge(b, b, {weight: "a"});
-		// graph.addEdge(b, c, {weight: "b"});
-		// graph.addEdge(c, c, {weight: "b"});
-		// graph.addEdge(c, d, {weight: "a"});
-		// graph.addEdge(d, d, {weight: "a"});
-		// graph.addEdge(d, e, {weight: "b"});
-		// graph.addEdge(e, c, {weight: "b"});
-
-		var graph = convertToDFA(modeljsav, g1, $.extend({width: '90%', height: 440, layout: 'automatic', element: $('.jsavmodelanswer .jsavcanvas')}))
-
+	// shows the answer and checks the user's DFA (buggy)
+	function modelAnswer (modeljsav) {
+		// bug: all of the edges seem to be shifted a screen to the right
+		var graph = convertToDFA(modeljsav, g1, {width: '90%', height: 440, layout: 'automatic', element: $('.jsavmodelanswer .jsavcanvas')});
 		graph.layout();
+		// temp (should check FA equivalence)
 		if (graph.equals(g)) {
 			jsav.umsg("YOU GOT IT");
 		}
@@ -100,9 +65,9 @@
 		modeljsav.recorded();
 		return graph;
 	};
-
-
-	var graphClickHandlers = function(e) {
+	// handler for the graph window
+	var graphClickHandlers = function (e) {
+		// place selected node
 		if ($('.jsavgraph').hasClass('moveNodes') && selectedNode != null) {
 			var nodeX = selectedNode.element.width()/2.0,
 				nodeY = selectedNode.element.height()/2.0,
@@ -121,8 +86,11 @@
 		}
 		else { 
 			if ($(".jsavgraph").hasClass("working")) {
+				// user is allowed to omit 'q' and separate state names with empty space or commas
 				var input2 = prompt("Which group of NFA states will that go to on " + input + "?");
-				// input2 processing
+				if (!input2) {
+					return;
+				}
 				var inputArr = input2.trim().split(/\s*[,\s]\s*/);
 				for (var i = 0; i < inputArr.length; i++) {
 					if (inputArr[i].indexOf("q") === -1) {
@@ -138,12 +106,14 @@
 					jsav.umsg("Choose a state to expand:");
 					return;
 				}
+				// create the new state
 				var newNode = g.addNode(),
 				    nodeX = newNode.element.width()/2.0,
 					nodeY = newNode.element.height()/2.0;
 				$(newNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
 				var check = expanded.split(',');
-				for (var i = 0; i< check.length; i++) {
+				// make the new state final if any of the original states were final
+				for (var i = 0; i < check.length; i++) {
 					if (g1.getNodeWithValue(check[i]).hasClass('final')) {
 						newNode.addClass('final');
 						break;
@@ -161,21 +131,22 @@
 			} 
 		}
 	};
-
-	var nodeClickHandlers = function(e) {	
+	// handler for the nodes of the DFA
+	var nodeClickHandlers = function (e) {	
 		this.highlight();
 		if ($('.jsavgraph').hasClass('moveNodes')) {
-				selectedNode = this;
-				jsav.umsg("Click to place state");
-				e.stopPropagation();
-			} 
-			else if ($(".jsavgraph").hasClass("removeNodes")) {
-				if (!this.equals(g.initial)) {		//dont remove if its an initial state
+			selectedNode = this;
+			jsav.umsg("Click to place state");
+			e.stopPropagation();
+		} 
+		// allow user to remove nodes since there is no check to see if a new node already exists
+		else if ($(".jsavgraph").hasClass("removeNodes")) {
+			if (!this.equals(g.initial)) {		//dont remove if it's an initial state
 				g.removeNode(this);
 			}
-				this.unhighlight();
-			}
-			else {
+			this.unhighlight();
+		}
+		else {
 			if (!$(".jsavgraph").hasClass("working")) {
 				selectedNode = this;
 				input = prompt("Expand on what terminal?");
@@ -186,7 +157,7 @@
 					alert("That terminal is not in the alphabet!");
 					this.unhighlight();
 					return;
-				} else{
+				} else {
 					var next = [],
 						valArr = this.stateLabel().split(','),
 						finality = false;
@@ -200,58 +171,49 @@
 			        	this.unhighlight();
 			        	return;
 			        } 
-			        // else if (node === this.stateLabel()) {
-			        // 	var newEdge = g.addEdge(this, this, {weight: input})
-			        // 	if (newEdge) {newEdge.layout();}
-			        // 	this.unhighlight();
-			        // 	return;
-			        // }
 			        expanded = node;
 			        $('.editButton').hide();
 			        $('.jsavgraph').addClass("working");
 					jsav.umsg("Click to place new state");
 					e.stopPropagation();
+				}	
+			} else {
+				// add transition if this is the toNode
+				if (this.stateLabel() === expanded) {
+					var newEdge = g.addEdge(selectedNode, this, {weight: input});
+					if (newEdge) { newEdge.layout();}
 				}
-				
-				} else {
-					if (this.stateLabel() === expanded) {
-						var newEdge = g.addEdge(selectedNode, this, {weight: input});
-						if (newEdge) { newEdge.layout();}
-
-					}
-					$('.editButton').show();
-					$('.jsavgraph').removeClass("working");
+				$('.editButton').show();
+				$('.jsavgraph').removeClass("working");
 				selectedNode.unhighlight();
 				this.unhighlight();
 				jsav.umsg("Choose a state to expand:");
 				e.stopPropagation();
-				}
 			}
+		}
 	};
 	g1 = initGraph();
 	var exercise = jsav.exercise(modelAnswer, initialize, {compare: {class: "final"}});
 	exercise.reset();
 
 	//================================
-		//editing modes
+	//editing modes
 
-	var moveNodesMode = function() {
+	var moveNodesMode = function () {
 		$(".jsavgraph").removeClass("removeNodes");
 		$(".jsavgraph").addClass("moveNodes");
 		$("#mode").html('Moving states');
 		jsav.umsg("Click a state");
 		$('#conversionButton').show();
 	};
-
-	var removeNodesMode = function() {
+	var removeNodesMode = function () {
 		$(".jsavgraph").removeClass("moveNodes");
 		$(".jsavgraph").addClass("removeNodes");
 		$("#mode").html('Removing states');
 		jsav.umsg("Click a state");
 		$('#conversionButton').show();
 	};
-
-	var conversionMode = function() {
+	var conversionMode = function () {
 		$(".jsavgraph").removeClass("moveNodes");
 		$('.jsavgraph').removeClass("removeNodes");
 		$("#mode").html('');
