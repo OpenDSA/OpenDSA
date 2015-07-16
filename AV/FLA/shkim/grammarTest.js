@@ -2606,10 +2606,11 @@
       }
     }
     var bEdge = builtDFA.getEdge(b, b);
-    $(bEdge._label.element[0]).css('font-size', '1.25em');
+    $(bEdge._label.element[0]).css('font-size', '1.4em');
     builtDFA.layout();
 
     var pCount = 0;
+    var labelHeight = $(bEdge._label.element[0]).height();
     // handler for the grammar table
     var convertGrammarHandler = function (index) {
       this.highlight(index);
@@ -2619,6 +2620,18 @@
       if (newEdge) {
         newEdge.layout();
         pCount++;
+        // scale graph window
+        if ($(newEdge._label.element[0]).offset().top < $('.jsavgraph').offset().top) {
+          var h = $(".jsavgraph").height();
+          var newLabelHeight = $(newEdge._label.element[0]).height();
+          var graphOffset = (newLabelHeight - labelHeight) / pCount;
+          $(".jsavgraph").height(h + graphOffset);
+          var nodeY = $(b.element).offset().top;
+          $(a.element).offset({top: nodeY + graphOffset});
+          $(b.element).offset({top: nodeY + graphOffset});
+          $(c.element).offset({top: nodeY + graphOffset});
+          builtDFA.layout();
+        }
         if (pCount === productions.length) {
           var confirmed = confirm('Finished! Export?');
           if (confirmed) {
