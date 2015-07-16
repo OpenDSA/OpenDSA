@@ -43,6 +43,12 @@
 	    			g.makeInitial(node);
 	    		}
 	    		var outputChar = delambdafyMoore(gg.nodes[i].mooreOutput);
+	    		if (!outputChar) {
+	    			outputChar = emptystring;
+	    		}
+	    		else if ((outputChar == lambda || outputChar == epsilon) && outputChar != emptystring) {
+	    			emptyString();
+	    		}
 	    		node.mooreOutput(outputChar);
 	    		node.stateLabel(gg.nodes[i].stateLabel);
 	    		node.stateLabelPositionUpdate();
@@ -50,6 +56,7 @@
 	  		for (var i = 0; i < gg.edges.length; i++) {
 	    		if (gg.edges[i].weight !== undefined) {
 	    			var w = delambdafy(gg.edges[i].weight);
+	    			w = checkEmptyString(w);
 	    			var edge = g.addEdge(g.nodes()[gg.edges[i].start], g.nodes()[gg.edges[i].end], {weight: w});
         		}
 	    		else {
@@ -74,46 +81,15 @@
 	    }
     };
 
-    function delambdafy(weight) {
-    	var weights = weight.split("<br>");
-		for (var i = 0; i < weights.length; i++) {
-			var symbols = weights[i].split(":");
-			for (var j = 0; j < symbols.length; j++) {
-				if (symbols[j] == "&lambda;") {
-					symbols[j] = lambda;
-					if (lambda != emptystring) {
-						emptyString();
-					}
-				}
-				else if (symbols[j] == "&epsilon;") {
-					symbols[j] = epsilon;
-					if (epsilon != emptystring) {
-						emptyString();
-					}
-				}
-			}
-			weights[i] = symbols.join(":");
-		}
-		return weights.join("<br>");
-    };
-
-    function delambdafyMoore(outputChar) {
-    	if (!outputChar) {
-    		return emptystring;
+    var checkEmptyString = function(w) {
+    	var wArray = w.split("<br>");
+    	for (var i = 0; i < wArray.length; i++) {
+    		wArray[i] = wArray[i].split(":")[0];
+    		if ((wArray[i] == lambda || wArray[i] == epsilon) && wArray[i] != emptystring) {
+    			emptyString();
+    		}
     	}
-    	if (outputChar == "&lambda;") {
-			outputChar = lambda;
-			if (lambda != emptystring) {
-				emptyString();
-			}
-		}
-		else if (outputChar == "&epsilon;") {
-			outputChar = epsilon;
-			if (epsilon != emptystring) {
-				emptyString();
-			}
-		}
-		return outputChar;
+    	return wArray.join("<br>");
     };
 
 	var graphClickHandler = function(e) {

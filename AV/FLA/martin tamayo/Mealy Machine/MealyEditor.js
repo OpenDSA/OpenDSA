@@ -47,7 +47,8 @@
 	  		}
 	  		for (var i = 0; i < gg.edges.length; i++) {
 	    		if (gg.edges[i].weight !== undefined) {
-	    			var w = delambdafyMealy(gg.edges[i].weight);
+	    			var w = delambdafy(gg.edges[i].weight);
+	    			w = checkEmptyString(w);
 	    			var edge = g.addEdge(g.nodes()[gg.edges[i].start], g.nodes()[gg.edges[i].end], {weight: w});
         		}
 	    		else {
@@ -71,33 +72,27 @@
 	    }
     };
 
-    function delambdafyMealy(weight) {
-    	var weights = weight.split("<br>");
-			for (var i = 0; i < weights.length; i++) {
-			var symbols = weights[i].split(":");
-			for (var j = 0; j < symbols.length; j++) {
-				if (symbols[j] == "&lambda;") {
-					symbols[j] = lambda;
-					if (lambda != emptystring) {
-						emptyString();
-					}
-				}
-				else if (symbols[j] == "&epsilon;") {
-					symbols[j] = epsilon;
-					if (epsilon != emptystring) {
-						emptyString();
-					}
-				}
-			}
-			while (symbols.length > 2) {
-				symbols.pop();
-			}
-			if (symbols.length < 2) {
-				symbols.push(emptystring);
-			}
-			weights[i] = symbols.join(":");
-		}
-		return weights.join("<br>");
+    var checkEmptyString = function(w) {
+    	var wArray = w.split("<br>");
+    	for (var i = 0; i < wArray.length; i++) {
+    		wArray[i] = wArray[i].split(":");
+    		var inputChar = wArray[i][0];
+    		if ((inputChar == lambda || inputChar == epsilon) && inputChar != emptystring) {
+    			emptyString();
+    		}
+    		var outputChar;
+    		if (wArray[i].length < 2) {
+    			outputChar = emptystring;
+    		}
+    		else {
+    			outputChar = wArray[i][1];
+    			if ((outputChar == lambda || outputChar == epsilon) && outputChar != emptystring) {
+    				emptyString();
+    			}
+    		}
+    		wArray[i] = inputChar + ":" + outputChar;
+    	}
+    	return wArray.join("<br>");
     };
 
 	var graphClickHandler = function(e) {

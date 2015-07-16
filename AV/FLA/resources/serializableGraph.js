@@ -70,3 +70,28 @@ function lambdafyMoore(mooreOutput) {
   }
   return mooreOutput;
 }
+function delambdafy(weight) {
+  var weights = weight.split("<br>");
+  for (var i = 0; i < weights.length; i++) {
+    var symbols = weights[i].split(":");
+    for (var j = 0; j < symbols.length; j++) {
+      if (symbols[j] == "&lambda;") {
+        symbols[j] = String.fromCharCode(955);
+      }
+      else if (symbols[j] == "&epsilon;") {
+        symbols[j] = String.fromCharCode(949);
+      }
+    }
+    weights[i] = symbols.join(":");
+  }
+  return weights.join("<br>");
+};
+function delambdafyMoore(outputChar) {
+  if (outputChar == "&lambda;") {
+    outputChar = String.fromCharCode(955);
+  }
+  else if (outputChar == "&epsilon;") {
+    outputChar = String.fromCharCode(949);
+  }
+  return outputChar;
+};

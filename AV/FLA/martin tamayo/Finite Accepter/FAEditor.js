@@ -51,6 +51,7 @@
 	  		for (var i = 0; i < gg.edges.length; i++) {
 	    		if (gg.edges[i].weight !== undefined) {
 	    			var w = delambdafy(gg.edges[i].weight);
+	    			w = checkEmptyString(w);
 	    			var edge = g.addEdge(g.nodes()[gg.edges[i].start], g.nodes()[gg.edges[i].end], {weight: w});
         		}
 	    		else {
@@ -74,27 +75,15 @@
 	    }
     };
 
-    function delambdafy(weight) {
-    	var weights = weight.split("<br>");
-			for (var i = 0; i < weights.length; i++) {
-			var symbols = weights[i].split(":");
-			for (var j = 0; j < symbols.length; j++) {
-				if (symbols[j] == "&lambda;") {
-					symbols[j] = lambda;
-					if (lambda != emptystring) {
-						emptyString();
-					}
-				}
-				else if (symbols[j] == "&epsilon;") {
-					symbols[j] = epsilon;
-					if (epsilon != emptystring) {
-						emptyString();
-					}
-				}
-			}
-			weights[i] = symbols.join(":");
-		}
-		return weights.join("<br>");
+    var checkEmptyString = function(w) {
+    	var wArray = w.split("<br>");
+    	for (var i = 0; i < wArray.length; i++) {
+    		wArray[i] = wArray[i].split(":")[0];
+    		if ((wArray[i] == lambda || wArray[i] == epsilon) && wArray[i] != emptystring) {
+    			emptyString();
+    		}
+    	}
+    	return wArray.join("<br>");
     };
 
 	var graphClickHandler = function(e) {
