@@ -45,6 +45,35 @@
     lastRow = 0;
   }
   
+  // fix a single column width
+  var layoutColumn = function (mat, index) {
+    var maxWidth = 100;     // default cell size
+    for (var i = 0; i < mat._arrays.length; i++) {
+      var cell = mat._arrays[i]._indices[index].element;
+      if ($(cell).width() > maxWidth) {
+        maxWidth = $(cell).width();
+      }
+    }
+    if (maxWidth > 100) {
+      for (var i = 0; i < mat._arrays.length; i++) {
+        var cell = mat._arrays[i]._indices[index].element;
+        $(cell).find('.jsavvalue').width(maxWidth);
+      }
+    }
+  };
+  // fix table column widths
+  var layoutTable = function (mat, index) {
+    // if column index is given, does layout for that column, otherwise lays out all columns
+    if (typeof index === 'undefined') {
+      for (var i = 0; i < mat._arrays[0]._indices.length; i++) {
+        layoutColumn(mat, i);
+      }
+    } else {
+      layoutColumn(mat, index);
+    }
+    mat.layout();
+  };
+
   // initializes/reinitializes the grammar display
   var init = function () { 
     if (m) {
@@ -54,7 +83,8 @@
     for (var i = lastRow + 1; i < arr.length; i++) {
       m2._arrays[i].hide();
     }
-    m2.layout();
+    layoutTable(m2, 2);
+    //m2.layout();
     m2.on('click', matrixClickHandler);
     return m2;
   };
@@ -83,7 +113,7 @@
       var fi = $('#firstinput');
       fi.offset({top: topOffset, left: leftOffset});
       fi.outerHeight($('.jsavvalue').height());
-      fi.width($('.jsavvalue').width());
+      fi.width($(this._arrays[index]._indices[index2].element).width());
       fi.focus();
       fi.keyup(function(event){
         if(event.keyCode == 13){
@@ -113,6 +143,7 @@
           arr[index][index2] = input;
           // adding a new production
           addProduction(index);
+          layoutTable(m, 2);
           fi.remove();
         }
       });
@@ -132,7 +163,7 @@
       } 
       m._arrays[lastRow + 1].show();
       lastRow++;
-      m.layout();
+      //m.layout();
     }
   };
 
@@ -331,6 +362,7 @@
         displayOrder.push(d);
       }
 
+      layoutTable(derivationTable);
       parseTree.layout();
       // hide the whole tree except for the start node and hide the derivation table
       parseTree.root().hide();
@@ -354,14 +386,6 @@
           temp2[j].show({recursive: false});
         }
       }
-      // jsav.step();
-      // var leaves = getLeaves(parseTree.root());
-      // for (var j = 0; j < m._arrays.length; j++) {
-      //     m._arrays[j].unhighlight();
-      //   }
-      // for (var i = 0; i < leaves.length; i++) {
-      //   leaves[i].highlight();
-      // }
       jsav.recorded();
     } else {
       // if string is rejected, automatically return to the editor
@@ -418,6 +442,7 @@
             parseTableDisplay.value(i, j, parseTable[i-1][j-1]);
           }
         }
+        layoutTable(parseTableDisplay);
       } else {
         return;
       }
@@ -438,12 +463,12 @@
     $('#firstinput').remove();
     var createInput = "<input type='text' id='firstinput' value="+prev+">";
     $('body').append(createInput);
-    var offset = this._arrays[index].element.offset();
+    var offset = this._arrays[index]._indices[arrayStep].element.offset();
     var topOffset = offset.top;
     var leftOffset = offset.left;
-    var w = $('.jsavvalue').width();
+    var w = $(this._arrays[index]._indices[arrayStep].element).width();
     var fi = $('#firstinput');
-    fi.offset({top: topOffset, left: leftOffset + arrayStep*w});
+    fi.offset({top: topOffset, left: leftOffset});
     fi.outerHeight($('.jsavvalue').height());
     fi.width(w);
     fi.focus();
@@ -459,33 +484,34 @@
         }
         firstInput = _.uniq(firstInput).join(',');
         ffTable.value(index, arrayStep, firstInput);
+        layoutTable(ffTable, arrayStep);
         fi.remove();
       }
     });
   };
 
   // click handler for the parse table
-  // note: attach to each array of the table
-  var parseTableHandler = function (index) {    
-    if (index === 0) { return; }
+  var parseTableHandler = function (index, index2, e) {    
+    if (index === 0 || index2 === 0) { return; }
     var self = this;
-    var prev = this.value(index);
+    var prev = this.value(index, index2);
     $('#firstinput').remove();
     var createInput = "<input type='text' id='firstinput' value="+prev+">";
     $('body').append(createInput);
-    var offset = this._indices[index].element.offset();
+    var offset = this._arrays[index]._indices[index2].element.offset();
     var topOffset = offset.top;
     var leftOffset = offset.left;
     var fi = $('#firstinput');
     fi.offset({top: topOffset, left: leftOffset});
     fi.outerHeight($('.jsavvalue').height());
-    fi.width($('.jsavvalue').width());
+    fi.width($(this._arrays[index]._indices[index2].element).width());
     fi.focus();
     fi.keyup(function(event){
       if(event.keyCode == 13){
         var firstInput = $(this).val();
         firstInput = firstInput.replace(/!/g, emptystring);
-        self.value(index, firstInput);
+        self.value(index, index2, firstInput);
+        layoutTable(self, index2);
         fi.remove();
       }
     });
@@ -502,6 +528,7 @@
           var a = ffTable._arrays[i].value(0);
           ffTable.value(i, 1, firsts[a]);
         }
+        layoutTable(ffTable);
       } else {
         return false;
       }
@@ -643,6 +670,7 @@
             var a = ffTable._arrays[i].value(0);
             ffTable.value(i, 2, follows[a]);
           }
+          layoutTable(ffTable);
         } else {
           return;
         }
@@ -659,13 +687,9 @@
           toPush.push('');
         }
         pTableDisplay.push(toPush);
-        //pTableDisplay.push([v[i]].concat(parseTable[i]));
       }
-      //jsav.label('Grammar', {relativeTo: m, anchor: "center top", myAnchor: "center bottom"});
       parseTableDisplay = new jsav.ds.matrix(pTableDisplay);
-      for (var i = 1; i < parseTableDisplay._arrays.length; i++) {
-        parseTableDisplay._arrays[i].click(parseTableHandler);
-      }
+      parseTableDisplay.click(parseTableHandler);
     };
     $('#parsetablebutton').click(continueToParseTable);
     $('#parsereadybutton').click(function() {
@@ -688,6 +712,7 @@
       }
       //jsav.label('Grammar', {relativeTo: m, anchor: "center top", myAnchor: "center bottom"});
       parseTableDisplay = new jsav.ds.matrix(pTableDisplay);
+      layoutTable(parseTableDisplay);
       // parseTableDisplay = new jsav.ds.matrix(pTableDisplay, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
       var remainingInput = inputString + '$';
       // display remaining input and the parse stack
@@ -1122,6 +1147,7 @@
             var a = ffTable._arrays[i].value(0);
             ffTable.value(i, 2, follows[a]);
           }
+          layoutTable(ffTable);
         } else {
           return;
         }
@@ -1206,9 +1232,7 @@
       }
       //jsav.label('Grammar', {relativeTo: m, anchor: "center top", myAnchor: "center bottom"});
       parseTableDisplay = new jsav.ds.matrix(pTableDisplay);
-      for (var i = 1; i < parseTableDisplay._arrays.length; i++) {
-        parseTableDisplay._arrays[i].click(parseTableHandler);
-      }
+      parseTableDisplay.click(parseTableHandler);
     };
     $('#parsetablebutton').click(continueToParseTable);
     $('#parsereadybutton').click(function() {
@@ -1230,6 +1254,7 @@
       $(m.element).css("margin-left", "auto");
       $(m.element).css("margin-top", "0px");
       parseTableDisplay = new jsav.ds.matrix(pTableDisplay);
+      layoutTable(parseTableDisplay);
       // The parse 'tree' is a directed graph with layered output. This allows the tree to be built bottom up
       parseTree = new jsav.ds.graph({layout: "layered", directed: true});
       parseTree.element.addClass('parsetree');
@@ -1599,20 +1624,32 @@
     }
     return false;
   };
-
+  // check if browser supports generators
+  var isGeneratorSupported = function () {
+    try {
+      eval("(function*(){})()");
+      return true;
+    } catch(err){
+      console.log(err);
+      console.log("No generator support.");
+      return false;
+    }
+  }
   // creates a generator for the combinations of variables to remove
-  var getCombinations = function* (str, l) {
-    for (var i = 0; i < str.length; i++) {
-      if (l === 1) {
-        yield [str[i]];
-      } else {
-        var n = getCombinations(str.substring(i + 1), l - 1);
-        for (var next = n.next(); next.value; next = n.next()) {
-          yield [str[i]].concat(next.value);
+  if (isGeneratorSupported()) {
+    var getCombinations = function* (str, l) {
+      for (var i = 0; i < str.length; i++) {
+        if (l === 1) {
+          yield [str[i]];
+        } else {
+          var n = getCombinations(str.substring(i + 1), l - 1);
+          for (var next = n.next(); next.value; next = n.next()) {
+            yield [str[i]].concat(next.value);
+          }
         }
       }
-    }
-  };
+    };
+  }
 
   // remove unit productions
   var removeUnit = function () {
@@ -1895,6 +1932,7 @@
           var tempG = jsav.ds.matrix(tArr);
           tGrammar.clear();
           tGrammar = tempG;
+          layoutTable(tGrammar, 2);
           //tGrammar = jsav.ds.matrix(tArr, {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
           tGrammar.click(removeLambdaHandler);
         } else {
@@ -1923,6 +1961,7 @@
         var tempG = jsav.ds.matrix(tArr);
         tGrammar.clear();
         tGrammar = tempG;
+        layoutTable(tGrammar, 2);
         //tGrammar = jsav.ds.matrix(tArr, {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
         tGrammar.click(removeLambdaHandler);
       }
@@ -1965,6 +2004,7 @@
       jsav.umsg("Modify the grammar to remove "+emptystring+". Set that derives "+emptystring+": [" + builtLambdaSet + ']');
       // $(m.element).css("margin-left", "50px");
       tGrammar = jsav.ds.matrix(tArr);
+      layoutTable(tGrammar, 2);
       // tGrammar = jsav.ds.matrix(tArr, {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
       tGrammar.click(removeLambdaHandler);
     };
@@ -2041,6 +2081,7 @@
           var tempG = jsav.ds.matrix(tArr);
           tGrammar.clear();
           tGrammar = tempG;
+          layoutTable(tGrammar, 2);
           //tGrammar = jsav.ds.matrix(tArr, {top: "50px", relativeTo: modelDFA, anchor: "left bottom", myAnchor: "left top"});
           tGrammar.click(removeUnitHandler);
         } else {
@@ -2069,6 +2110,7 @@
         var tempG = jsav.ds.matrix(tArr);
         tGrammar.clear();
         tGrammar = tempG;
+        layoutTable(tGrammar, 2);
         //tGrammar = jsav.ds.matrix(tArr, {top: "50px", relativeTo: modelDFA, anchor: "left bottom", myAnchor: "left top"});
         tGrammar.click(removeUnitHandler);
       }
@@ -2103,6 +2145,7 @@
     var continueUnit = function () {
       jsav.umsg('Modify the grammar to remove unit productions.');
       tGrammar = jsav.ds.matrix(tArr);
+      layoutTable(tGrammar, 2);
       //tGrammar = jsav.ds.matrix(tArr, {top: "50px", relativeTo: modelDFA, anchor: "left bottom", myAnchor: "left top"});
       tGrammar.click(removeUnitHandler);
       //$('.jsavcanvas').height(modelDFA.element.height() + 150 + tGrammar.element.height());
@@ -2160,6 +2203,7 @@
           var tempG = jsav.ds.matrix(tArr);
           tGrammar.clear();
           tGrammar = tempG;
+          layoutTable(tGrammar, 2);
           //tGrammar = jsav.ds.matrix(tArr, {top: "50px", relativeTo: modelDFA, anchor: "left bottom", myAnchor: "left top"});
           tGrammar.click(removeUselessHandler);
         } else {
@@ -2268,6 +2312,7 @@
     var continueUselessSecond = function () {
       jsav.umsg('Modify the grammar to remove useless productions.');
       tGrammar = jsav.ds.matrix(tArr);
+      layoutTable(tGrammar, 2);
       //tGrammar = jsav.ds.matrix(tArr, {top: "50px", relativeTo: modelDFA, anchor: "left bottom", myAnchor: "left top"});
       tGrammar.click(removeUselessHandler);
     };
@@ -2322,6 +2367,7 @@
         var tempG = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}));
         tGrammar.clear();
         tGrammar = tempG;
+        layoutTable(tGrammar, 2);
         //tGrammar = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}), {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
         tGrammar.click(chomskyHandler);
         for (var i = 0; i < sliceIn.length + 1; i++) {
@@ -2340,6 +2386,7 @@
           var tempG = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}));
           tGrammar.clear();
           tGrammar = tempG;
+          layoutTable(tGrammar, 2);
           //tGrammar = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}), {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
           tGrammar.click(chomskyHandler);
           tGrammar.highlight(index);
@@ -2391,6 +2438,7 @@
     };
 
     tGrammar = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}));
+    layoutTable(tGrammar, 2);
     //tGrammar = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}), {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
     tGrammar.click(chomskyHandler);
 
