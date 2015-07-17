@@ -1,5 +1,6 @@
 (function ($) {
 	var jsav = new JSAV("av"),
+		m,
 		g;
 	// Empty string can be set to anything when initializing the graph:
 	// e.g. initGraph({layout: "automatic", emptystring: epsilon})
@@ -10,7 +11,7 @@
 
 	// initialize PDA
 	var initGraph = function(opts) {
-		g = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
+		g = jsav.ds.fa($.extend({width: '45%', height: 440, element: $('#reference')}, opts));
 		emptystring = g.emptystring;
 		var gWidth = g.element.width(),
 			gHeight = g.element.height();
@@ -37,23 +38,20 @@
 	
 		return g;
     };
-
-    var g = initGraph({layout: "manual"});
-	g.layout();
-	jsav.displayInit();
-
-	//===============================
 	var updateAlphabet = function() {
 		g.updateAlphabet();
 		$("#alphabet").html("" + Object.keys(g.alphabet).sort());
 		var sa = g.getStackAlphabet();
 		$('#stackalphabet').html("Z," + _.without(sa.sort(), 'Z'));
 	};
+	
+	var g = initGraph({layout: "manual"});
+	g.layout();
+	jsav.displayInit();
 	updateAlphabet();
 
-	//======================
+	//=================================
 	// convert to CFG
-
 	var convertToGrammar = function () {
 		// start variable is 'S'
 		var variables = "SABCDEFGHIJKLMNOPQRTUVWXYZ";
@@ -75,20 +73,115 @@
 			}
 		}
 		newVariables.push(s.value() + 'Z' + finalState.value());
-		// create the grammar productions
-		for (var next = edges.next(); next; next = edges.next()) {
-			var weight = next.weight().split("<br>");
+
+		// create the grammar productions automatically
+
+		// for (var next = edges.next(); next; next = edges.next()) {
+		// 	var weight = next.weight().split("<br>");
+		// 	for (var i = 0; i < weight.length; i++) {
+		// 		var weight2 = weight[i].split(':');
+		// 		if (weight2[2] === emptystring) {
+		// 			converted.push([next.start().value() + weight2[1] + next.end().value(), arrow, weight2[0]]);
+		// 		} else {
+		// 			nodes = g.nodes();
+		// 			for (var next2 = nodes.next(); next2; next2 = nodes.next()) {
+		// 				var nodes2 = g.nodes();
+		// 				for (var next3 = nodes2.next(); next3; next3 = nodes2.next()) {
+		// 					var var1 = next.start().value() + weight2[1] + next2.value(),
+		// 						var2 = next.end().value() + weight2[2][0] + next3.value(),
+		// 						var3 = next3.value() + weight2[2][1] + next2.value();
+		// 					converted.push([var1, arrow, weight2[0] + " " + var2 + " " + var3]);
+		// 					if (newVariables.indexOf(var1) === -1) {
+		// 						newVariables.push(var1);
+		// 					} if (newVariables.indexOf(var2) === -1) {
+		// 						newVariables.push(var2);
+		// 					} if (newVariables.indexOf(var3) === -1) {
+		// 						newVariables.push(var3);
+		// 					}
+		// 				}
+		// 			}
+		// 		}
+		// 	}
+		// }
+
+		// attempts export
+		var exportConverted = function () {
+			// attempt to export
+			localStorage['grammar'] = _.map(converted, function(x) {return x.join("")});
+			var toExport = true;
+			// attempt to convert temporary variables into grammar variables
+			for (var i = 0; i < converted.length; i++) {
+				var left = converted[i][0];
+				var right = converted[i][2].split(' ');
+				if (right.length > 1) {
+					var i1 = newVariables.indexOf(left),
+						i2 = newVariables.indexOf(right[1]),
+						i3 = newVariables.indexOf(right[2]);
+					if (i1 > 25 || i2 > 25 || i3 > 25) {
+						alert('Too large to export!');
+						toExport = false;
+						break;
+						// i1 = i1 % 26;
+						// i2 = i2 % 26; 
+						// i3 = i3 % 26;
+					}
+					left = variables[i1];
+					var r1 = variables[i2];
+					var r2 = variables[i3];
+					if (!r1) {console.log(right[1])}
+					converted[i] = left + arrow + right[0] + r1 + r2;
+				} else {
+					var i1 = newVariables.indexOf(left);
+					if (i1 > 25) {
+						alert('Too large to export!');
+						toExport = false;
+						break;
+					}
+					converted[i] = variables[i1] + arrow + right[0];
+				} 
+			}
+			var sorting = _.partition(converted, function(x) {return x[0] === 'S'});
+			converted = sorting[0].concat(sorting[1].sort());
+			// if the resulting grammar is small enough, open it in a new tab
+			// otherwise, open a new window with the temporary variables
+			if (toExport) {
+				localStorage['grammar'] = converted;
+				window.open("grammarTest.html", "_self");
+			} else {
+				// window.open('npdaTable.html', '', 'width = 600, height = 625, screenX = 500, screenY = 25')
+			}
+		};
+
+		// create the grammar productions interactively
+
+		// checks if grammar is complete
+		var checkConversion = function () {
+			var edges = g.edges();
+			for (var next = edges.next(); next; next = edges.next()) {
+				if (!next.hasClass('convertadded')) {
+					return false;
+				}
+			}
+			return true;
+		}
+		// handler for edges during conversion
+		var convertEdgeHandler = function () {
+			if (this.hasClass('convertadded')) {
+				return;
+			}
+			var weight = this.weight().split("<br>");
+			this.addClass('convertadded');
 			for (var i = 0; i < weight.length; i++) {
 				var weight2 = weight[i].split(':');
 				if (weight2[2] === emptystring) {
-					converted.push([next.start().value() + weight2[1] + next.end().value(), arrow, weight2[0]]);
+					converted.push([this.start().value() + weight2[1] + this.end().value(), arrow, weight2[0]]);
 				} else {
 					nodes = g.nodes();
 					for (var next2 = nodes.next(); next2; next2 = nodes.next()) {
 						var nodes2 = g.nodes();
 						for (var next3 = nodes2.next(); next3; next3 = nodes2.next()) {
-							var var1 = next.start().value() + weight2[1] + next2.value(),
-								var2 = next.end().value() + weight2[2][0] + next3.value(),
+							var var1 = this.start().value() + weight2[1] + next2.value(),
+								var2 = this.end().value() + weight2[2][0] + next3.value(),
 								var3 = next3.value() + weight2[2][1] + next2.value();
 							converted.push([var1, arrow, weight2[0] + " " + var2 + " " + var3]);
 							if (newVariables.indexOf(var1) === -1) {
@@ -102,51 +195,18 @@
 					}
 				}
 			}
-		}
-		// attempt to export
-		localStorage['grammar'] = _.map(converted, function(x) {return x.join("")});
-		var toExport = true;
-		// attempt to convert temporary variables into grammar variables
-		for (var i = 0; i < converted.length; i++) {
-			var left = converted[i][0];
-			var right = converted[i][2].split(' ');
-			if (right.length > 1) {
-				var i1 = newVariables.indexOf(left),
-					i2 = newVariables.indexOf(right[1]),
-					i3 = newVariables.indexOf(right[2]);
-				if (i1 > 25 || i2 > 25 || i3 > 25) {
-					alert('Too large to export!');
-					toExport = false;
-					break;
-					// i1 = i1 % 26;
-					// i2 = i2 % 26; 
-					// i3 = i3 % 26;
+			if (m) { m.clear();}
+			m = new jsav.ds.matrix(converted, {container: $('#editable')});
+			if (checkConversion()) {
+				var confirmed = confirm("Grammar completed! Export?");
+				if (confirmed) {
+					exportConverted();
 				}
-				left = variables[i1];
-				var r1 = variables[i2];
-				var r2 = variables[i3];
-				if (!r1) {console.log(right[1])}
-				converted[i] = left + arrow + right[0] + r1 + r2;
-			} else {
-				var i1 = newVariables.indexOf(left);
-				if (i1 > 25) {
-					alert('Too large to export!');
-					toExport = false;
-					break;
-				}
-				converted[i] = variables[i1] + arrow + right[0];
-			} 
-		}
-		var sorting = _.partition(converted, function(x) {return x[0] === 'S'});
-		converted = sorting[0].concat(sorting[1].sort());
-		// if the resulting grammar is small enough, open it in a new tab
-		// otherwise, open a new window with the temporary variables
-		if (toExport) {
-			localStorage['grammar'] = converted;
-			window.open("grammarTest.html", "_self");
-		} else {
-			window.open('npdaTable.html', '', 'width = 600, height = 625, screenX = 500, screenY = 25')
-		}
+			}
+		};
+		m = new jsav.ds.matrix([["","",""]], {container: $('#editable')});
+		jsav.umsg('Click transitions to add productions.');
+		g.click(convertEdgeHandler, {edge: true});
 	};
 	// checks the transitions of the PDA: 
 	// All transitions must pop exactly one symbol and push exactly zero or two symbols
@@ -187,7 +247,5 @@
 		if (fCounter !== 1 || !popZ) { return false;}
 		return transitions;
 	};
-
-	//======================
-	$('#togrammarbutton').click(convertToGrammar);
+	convertToGrammar();
 }(jQuery));
