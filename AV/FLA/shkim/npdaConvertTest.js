@@ -44,7 +44,7 @@
 		var sa = g.getStackAlphabet();
 		$('#stackalphabet').html("Z," + _.without(sa.sort(), 'Z'));
 	};
-	
+
 	var g = initGraph({layout: "manual"});
 	g.layout();
 	jsav.displayInit();
@@ -107,7 +107,7 @@
 		// attempts export
 		var exportConverted = function () {
 			// attempt to export
-			localStorage['grammar'] = _.map(converted, function(x) {return x.join("")});
+			// localStorage['grammar'] = _.map(converted, function(x) {return x.join("")});
 			var toExport = true;
 			// attempt to convert temporary variables into grammar variables
 			for (var i = 0; i < converted.length; i++) {

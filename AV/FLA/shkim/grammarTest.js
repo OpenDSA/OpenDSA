@@ -2467,9 +2467,55 @@
   };
 
   // download finished FA/PDA
+  var serializeGraphToXML = function (graph) {
+    var text = '<?xml version="1.0" encoding="UTF-8"?>';
+      text = text + "<structure>";
+      text = text + "<type>fa</type>"
+      text = text + "<automaton>"
+      var nodes = graph.nodes();
+      for (var next = nodes.next(); next; next = nodes.next()) {
+        var left = next.position().left;
+        var top = next.position().top;
+        var i = next.hasClass("start");
+        var f = next.hasClass("final");
+        var label = next.stateLabel();
+        text = text + '<state id="' + next.value().substring(1) + '" name="' + next.value() + '">';
+        text = text + '<x>' + left + '</x>';
+        text = text + '<y>' + top + '</y>';
+        if (label) {
+          text = text + '<label>' + label + '</label>';
+        }
+        if (i) {
+          text = text + '<initial/>';
+        }
+        if (f) {
+          text = text + '<final/>';
+        }
+        text = text + '</state>';
+      }
+      var edges = graph.edges();
+      for (var next = edges.next(); next; next = edges.next()) {
+        var fromNode = next.start().value().substring(1);
+        var toNode = next.end().value().substring(1);
+        var w = next.weight().split('<br>');
+        for (var i = 0; i < w.length; i++) {
+          text = text + '<transition>';
+          text = text + '<from>' + fromNode + '</from>';
+          text = text + '<to>' + toNode + '</to>';
+          if (w[i] === emptystring) {
+            text = text + '<read/>';
+          } else {
+            text = text + '<read>' + w[i] + '</read>';
+          }
+          text = text + '</transition>';
+        }
+      }
+      text = text + "</automaton></structure>"
+      return text;
+  };
   var exportConvertedFA = function () {
-    var downloadData = "text/json;charset=utf-8," + encodeURIComponent(serialize(builtDFA));
-    $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="data.json">Download JSON</a>');
+    var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(serializeGraphToXML(builtDFA));
+    $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="fa.xml">Download FA</a>');
     $('#download a')[0].click();
     $('#download').html('');
   };
@@ -2687,7 +2733,7 @@
         if (pCount === productions.length) {
           var confirmed = confirm('Finished! Export?');
           if (confirmed) {
-            exportConvertedFA();
+            // TODO: serialize and export PDA as XML
           }
         }
       }
