@@ -1852,6 +1852,10 @@
   };
 
   var transformGrammar = function () {
+    if (typeof getCombinations === "undefined") {
+      console.error("No generator support.");
+      return;
+    }
     var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
     if (productions.length === 0) {
       alert('No grammar.');
