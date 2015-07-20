@@ -247,5 +247,93 @@
 		if (fCounter !== 1 || !popZ) { return false;}
 		return transitions;
 	};
-	convertToGrammar();
+
+	// load a PDA from a XML file
+  	var parseFile = function (text) {
+	    var parser,
+	        xmlDoc;
+	    if (window.DOMParser) {
+	      	parser=new DOMParser();
+	      	xmlDoc=parser.parseFromString(text,"text/xml");
+	    } else {
+	      	xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+	      	xmlDoc.async=false;
+	      	xmlDoc.loadXML(txt);
+	    }
+	    if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue !== 'pda') {
+	      	alert('File does not contain a pushdown automaton.');
+	      	// clear input
+	      	var loaded = $('#loadbutton');
+	      	loaded.wrap('<form>').closest('form').get(0).reset();
+	      	loaded.unwrap();
+	      	return;
+	    } else {
+	    	if (g) {
+				$('#reference').empty();
+			}
+			g = new jsav.ds.fa({width: '45%', height: 440, layout: "manual", element: $('#reference')});
+			var nodeMap = {};			// map node IDs to nodes
+	      	var xmlStates = xmlDoc.getElementsByTagName("state");
+	      	xmlStates = _.sortBy(xmlStates, function(x) {return x.id;})
+	      	var xmlTrans = xmlDoc.getElementsByTagName("transition");
+	      	for (var i = 0; i < xmlStates.length; i++) {
+	        	var x = Number(xmlStates[i].getElementsByTagName("x")[0].childNodes[0].nodeValue);
+	        	var y = Number(xmlStates[i].getElementsByTagName("y")[0].childNodes[0].nodeValue);
+	        	var newNode = g.addNode({left: x, top: y});
+	        	var isInitial = xmlStates[i].getElementsByTagName("initial")[0];
+	        	var isFinal = xmlStates[i].getElementsByTagName("final")[0];
+	        	var isLabel = xmlStates[i].getElementsByTagName("label")[0];
+	        	if (isInitial) {
+	        		g.makeInitial(newNode);
+	        	}
+	        	if (isFinal) {
+	        		newNode.addClass('final');
+	        	}
+	        	if (isLabel) {
+	        		newNode.stateLabel(isLabel.childNodes[0].nodeValue);
+	        	}
+	        	nodeMap[xmlStates[i].id] = newNode;
+	      	}
+	      	for (var i = 0; i < xmlTrans.length; i++) {
+	      		var from = xmlTrans[i].getElementsByTagName("from")[0].childNodes[0].nodeValue;
+	      		var to = xmlTrans[i].getElementsByTagName("to")[0].childNodes[0].nodeValue;
+	      		var read = xmlTrans[i].getElementsByTagName("read")[0].childNodes[0];
+	      		var pop = xmlTrans[i].getElementsByTagName("pop")[0].childNodes[0];
+	      		var push = xmlTrans[i].getElementsByTagName("push")[0].childNodes[0];
+	      		if (!read) {
+	      			read = emptystring;
+	      		} else {
+	      			read = read.nodeValue;
+	      		}
+	      		if (!pop) {
+	      			pop = emptystring;
+	      		} else {
+	      			pop = pop.nodeValue;
+	      		}
+	      		if (!push) {
+	      			push = emptystring;
+	      		} else {
+	      			push = push.nodeValue;
+	      		}
+	      		g.addEdge(nodeMap[from], nodeMap[to], {weight: read + ":" + pop + ":" + push});
+	      	}
+	      	g.layout();
+	    }
+	};
+  	var waitForReading = function (reader) {
+    	reader.onloadend = function(event) {
+        	var text = event.target.result;
+        	parseFile(text);
+    	}
+  	};
+  	var load = function () {
+    	var loaded = document.getElementById('loadbutton');
+    	var file = loaded.files[0],
+        	reader = new FileReader();
+    	waitForReading(reader);
+    	reader.readAsText(file);
+  	};
+
+	$('#togrammarbutton').click(convertToGrammar);
+	$('#loadbutton').on('change', load);
 }(jQuery));

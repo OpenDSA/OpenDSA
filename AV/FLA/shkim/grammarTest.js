@@ -2519,6 +2519,68 @@
     $('#download a')[0].click();
     $('#download').html('');
   };
+  var serializePDAToXML = function (graph) {
+    var text = '<?xml version="1.0" encoding="UTF-8"?>';
+      text = text + "<structure>";
+      text = text + "<type>pda</type>"
+      text = text + "<automaton>"
+      var nodes = graph.nodes();
+      for (var next = nodes.next(); next; next = nodes.next()) {
+        var left = next.position().left;
+        var top = next.position().top;
+        var i = next.hasClass("start");
+        var f = next.hasClass("final");
+        var label = next.stateLabel();
+        text = text + '<state id="' + next.value().substring(1) + '" name="' + next.value() + '">';
+        text = text + '<x>' + left + '</x>';
+        text = text + '<y>' + top + '</y>';
+        if (label) {
+          text = text + '<label>' + label + '</label>';
+        }
+        if (i) {
+          text = text + '<initial/>';
+        }
+        if (f) {
+          text = text + '<final/>';
+        }
+        text = text + '</state>';
+      }
+      var edges = graph.edges();
+      for (var next = edges.next(); next; next = edges.next()) {
+        var fromNode = next.start().value().substring(1);
+        var toNode = next.end().value().substring(1);
+        var w = next.weight().split('<br>');
+        for (var i = 0; i < w.length; i++) {
+          text = text + '<transition>';
+          text = text + '<from>' + fromNode + '</from>';
+          text = text + '<to>' + toNode + '</to>';
+          var wSplit = w[i].split(":");
+          if (wSplit[0] === emptystring) {
+            text = text + '<read/>';
+          } else {
+            text = text + '<read>' + wSplit[0] + '</read>';
+          }
+          if (wSplit[1] === emptystring) {
+            text = text + '<pop/>';
+          } else {
+            text = text + '<pop>' + wSplit[1] + '</pop>';
+          }
+          if (wSplit[2] === emptystring) {
+            text = text + '<push/>';
+          } else {
+            text = text + '<push>' + wSplit[2] + '</push>';
+          }
+          text = text + '</transition>';
+        }
+      }
+      text = text + "</automaton></structure>"
+      return text;
+  };
+  var exportConvertedPDA = function () {
+    var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(serializePDAToXML(builtDFA));
+      $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="pda.xml">Download PDA</a>');
+      $('#download a')[0].click();
+  };
 
   // interactive converting right-linear grammar to FA
   var convertToFA = function () {
@@ -2733,7 +2795,7 @@
         if (pCount === productions.length) {
           var confirmed = confirm('Finished! Export?');
           if (confirmed) {
-            // TODO: serialize and export PDA as XML
+            exportConvertedPDA();
           }
         }
       }

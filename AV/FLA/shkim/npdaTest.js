@@ -548,6 +548,163 @@
 	};
 
 	//======================
+	// Save/Load
+	// save PDA as XML
+	var serializePDAToXML = function (graph) {
+		var text = '<?xml version="1.0" encoding="UTF-8"?>';
+	    text = text + "<structure>";
+	    text = text + "<type>pda</type>"
+	    text = text + "<automaton>"
+	    var nodes = graph.nodes();
+	    for (var next = nodes.next(); next; next = nodes.next()) {
+	    	var left = next.position().left;
+		    var top = next.position().top;
+		    var i = next.hasClass("start");
+		    var f = next.hasClass("final");
+		    var label = next.stateLabel();
+		    text = text + '<state id="' + next.value().substring(1) + '" name="' + next.value() + '">';
+		    text = text + '<x>' + left + '</x>';
+		    text = text + '<y>' + top + '</y>';
+		    if (label) {
+		    	text = text + '<label>' + label + '</label>';
+		    }
+		    if (i) {
+		    	text = text + '<initial/>';
+		    }
+		    if (f) {
+		    	text = text + '<final/>';
+		    }
+	    	text = text + '</state>';
+	    }
+	    var edges = graph.edges();
+	    for (var next = edges.next(); next; next = edges.next()) {
+	    	var fromNode = next.start().value().substring(1);
+	    	var toNode = next.end().value().substring(1);
+	    	var w = next.weight().split('<br>');
+	    	for (var i = 0; i < w.length; i++) {
+	    		text = text + '<transition>';
+	    		text = text + '<from>' + fromNode + '</from>';
+	    		text = text + '<to>' + toNode + '</to>';
+	    		var wSplit = w[i].split(":");
+	    		if (wSplit[0] === emptystring) {
+	    			text = text + '<read/>';
+	    		} else {
+	    			text = text + '<read>' + wSplit[0] + '</read>';
+	    		}
+	    		if (wSplit[1] === emptystring) {
+	    			text = text + '<pop/>';
+	    		} else {
+	    			text = text + '<pop>' + wSplit[1] + '</pop>';
+	    		}
+	    		if (wSplit[2] === emptystring) {
+	    			text = text + '<push/>';
+	    		} else {
+	    			text = text + '<push>' + wSplit[2] + '</push>';
+	    		}
+	    		text = text + '</transition>';
+	    	}
+	    }
+	    text = text + "</automaton></structure>"
+	    return text;
+	};
+	var save = function () {
+		var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(serializePDAToXML(g));
+    	$('#download').html('<a href="data:' + downloadData + '" target="_blank" download="pda.xml">Download PDA</a>');
+    	$('#download a')[0].click();
+	};
+
+	// load a PDA from a XML file
+  	var parseFile = function (text) {
+	    var parser,
+	        xmlDoc;
+	    if (window.DOMParser) {
+	      	parser=new DOMParser();
+	      	xmlDoc=parser.parseFromString(text,"text/xml");
+	    } else {
+	      	xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+	      	xmlDoc.async=false;
+	      	xmlDoc.loadXML(txt);
+	    }
+	    if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue !== 'pda') {
+	      	alert('File does not contain a pushdown automaton.');
+	      	// clear input
+	      	var loaded = $('#loadbutton');
+	      	loaded.wrap('<form>').closest('form').get(0).reset();
+	      	loaded.unwrap();
+	      	return;
+	    } else {
+	    	if (g) {
+				g.clear();
+				$('.jsavgraph').off();
+			}
+			g = new jsav.ds.fa({width: '90%', height: 440, layout: "manual"});
+			var nodeMap = {};			// map node IDs to nodes
+	      	var xmlStates = xmlDoc.getElementsByTagName("state");
+	      	xmlStates = _.sortBy(xmlStates, function(x) {return x.id;})
+	      	var xmlTrans = xmlDoc.getElementsByTagName("transition");
+	      	for (var i = 0; i < xmlStates.length; i++) {
+	        	var x = Number(xmlStates[i].getElementsByTagName("x")[0].childNodes[0].nodeValue);
+	        	var y = Number(xmlStates[i].getElementsByTagName("y")[0].childNodes[0].nodeValue);
+	        	var newNode = g.addNode({left: x, top: y});
+	        	var isInitial = xmlStates[i].getElementsByTagName("initial")[0];
+	        	var isFinal = xmlStates[i].getElementsByTagName("final")[0];
+	        	var isLabel = xmlStates[i].getElementsByTagName("label")[0];
+	        	if (isInitial) {
+	        		g.makeInitial(newNode);
+	        	}
+	        	if (isFinal) {
+	        		newNode.addClass('final');
+	        	}
+	        	if (isLabel) {
+	        		newNode.stateLabel(isLabel.childNodes[0].nodeValue);
+	        	}
+	        	nodeMap[xmlStates[i].id] = newNode;
+	      	}
+	      	for (var i = 0; i < xmlTrans.length; i++) {
+	      		var from = xmlTrans[i].getElementsByTagName("from")[0].childNodes[0].nodeValue;
+	      		var to = xmlTrans[i].getElementsByTagName("to")[0].childNodes[0].nodeValue;
+	      		var read = xmlTrans[i].getElementsByTagName("read")[0].childNodes[0];
+	      		var pop = xmlTrans[i].getElementsByTagName("pop")[0].childNodes[0];
+	      		var push = xmlTrans[i].getElementsByTagName("push")[0].childNodes[0];
+	      		if (!read) {
+	      			read = emptystring;
+	      		} else {
+	      			read = read.nodeValue;
+	      		}
+	      		if (!pop) {
+	      			pop = emptystring;
+	      		} else {
+	      			pop = pop.nodeValue;
+	      		}
+	      		if (!push) {
+	      			push = emptystring;
+	      		} else {
+	      			push = push.nodeValue;
+	      		}
+	      		g.addEdge(nodeMap[from], nodeMap[to], {weight: read + ":" + pop + ":" + push});
+	      	}
+	      	g.layout();
+			$(".jsavgraph").click(graphClickHandler);
+    		g.click(nodeClickHandler);
+			g.click(edgeClickHandler, {edge: true});
+			$('.jsavedgelabel').click(labelClickHandler);
+	    }
+	};
+  	var waitForReading = function (reader) {
+    	reader.onloadend = function(event) {
+        	var text = event.target.result;
+        	parseFile(text);
+    	}
+  	};
+  	var load = function () {
+    	var loaded = document.getElementById('loadbutton');
+    	var file = loaded.files[0],
+        	reader = new FileReader();
+    	waitForReading(reader);
+    	reader.readAsText(file);
+  	};
+
+	//======================
 	$('#playbutton').click(play);
 	$('#layoutbutton').click(function() {g.layout()});
 	$('#testNDbutton').click(testND);
@@ -557,4 +714,6 @@
 	$('#addedgesbutton').click(addEdgesMode);
 	$('#movenodesbutton').click(moveNodesMode);
 	$('#editnodesbutton').click(editNodesMode);
+	$('#savebutton').click(save);
+  	$('#loadbutton').on('change', load);
 }(jQuery));	
