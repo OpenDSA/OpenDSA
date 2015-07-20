@@ -13,6 +13,11 @@
 
 	// initializes the reference/original NFA
 	function initGraph () {
+		if (localStorage['convertNFA'] === "true") {
+			localStorage['convertNFA'] = false;
+			var data = localStorage['toConvert'];
+			return deserialize(data);
+		}
 		var graph = jsav.ds.fa({width: '45%', height: 440, layout: 'automatic', element: $('#reference')});
 		var a = graph.addNode(),		
 	  		b = graph.addNode(),
@@ -35,6 +40,41 @@
 		$("#alphabet").html("" + alphabet);
 		return graph;
 	};
+
+	function deserialize (data) {
+		var gg = jQuery.parseJSON(data);
+		var graph = jsav.ds.fa({width: '45%', height: 440, layout: 'automatic', element: $('#reference')});
+		for (var i = 0; i < gg.nodes.length; i++) {
+	    	var node = graph.addNode('q' + i),
+	    		offset = $('.jsavgraph').offset(),
+	    		offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
+	    	$(node.element).offset({top : parseInt(gg.nodes[i].top) + offset.top + offset2, left: (parseInt(gg.nodes[i].left) / 2) + offset.left + offset2});
+	    	if (gg.nodes[i].i) {
+	    		graph.makeInitial(node);
+	    	}
+	    	if (gg.nodes[i].f) {
+	    		node.addClass("final");
+	   		}
+	   		node.stateLabel(gg.nodes[i].stateLabel);
+	   		node.stateLabelPositionUpdate();
+	  	}
+	  	for (var i = 0; i < gg.edges.length; i++) {
+	   		if (gg.edges[i].weight !== undefined) {
+	   			var w = delambdafy(gg.edges[i].weight);
+	   			var edge = graph.addEdge(graph.nodes()[gg.edges[i].start], graph.nodes()[gg.edges[i].end], {weight: w});
+       		}
+	   		else {
+	   			var edge = graph.addEdge(graph.nodes()[gg.edges[i].start], graph.nodes()[gg.edges[i].end]);
+	   		}
+	   		edge.layout();
+	   	}
+	   	graph.layout();
+		graph.updateAlphabet();
+		alphabet = Object.keys(graph.alphabet).sort();
+		$("#alphabet").html("" + alphabet);
+	   	return graph;
+	};
+
 	// initializes the DFA to be created by the user
 	function initialize () {
 		if (g) {
@@ -59,7 +99,11 @@
 		graph.layout();
 		// temp (should check FA equivalence)
 		if (graph.equals(g)) {
-			jsav.umsg("YOU GOT IT");
+			jsav.umsg("You got it!");
+			alert("Congratulations!");
+			localStorage['toConvert'] = true;
+			localStorage['converted'] = serialize(g);
+			window.open('../martin tamayo/Finite Accepter/FAEditor.html');
 		}
 		modeljsav.displayInit();
 		modeljsav.recorded();

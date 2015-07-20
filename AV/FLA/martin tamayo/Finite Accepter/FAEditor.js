@@ -25,7 +25,12 @@
 	    	var node = g.addNode('q' + i),
 	    		offset = $('.jsavgraph').offset(),
 	    		offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
-	    	$(node.element).offset({top : parseInt(gg.nodes[i].top) + offset.top + offset2, left: parseInt(gg.nodes[i].left) + offset.left + offset2});
+	    	if (localStorage['toConvert'] === "true" || localStorage['toMinimize'] === "true") {
+	    		$(node.element).offset({top : parseInt(gg.nodes[i].top) + offset.top + offset2, left: (parseInt(gg.nodes[i].left) * 2) + offset.left + offset2});
+	    	}
+	    	else {
+	    		$(node.element).offset({top : parseInt(gg.nodes[i].top) + offset.top + offset2, left: parseInt(gg.nodes[i].left) + offset.left + offset2});
+	    	}
 	    	if (gg.nodes[i].i) {
 	    		g.makeInitial(node);
 	    	}
@@ -52,6 +57,8 @@
 	    else {
 	    	setShorthand(false);
 	    }
+	    localStorage['toConvert'] == false;
+	    localStorage['toMinimize'] == false;
 	    finalize();
     };
 
@@ -343,6 +350,7 @@
 
 	var testND = function() {
 		removeModeClasses();
+		var nd = false;
 		var nodes = g.nodes();
 		for(var next = nodes.next(); next; next = nodes.next()) {
 			var findLambda = false;
@@ -360,8 +368,10 @@
 			}
 			if (findLambda || findMultiple) {
 				next.toggleClass('testingND');
+				nd = true;
 			}
 		}
+		return nd;
 	};
 
 	var testLambda = function() {
@@ -517,8 +527,17 @@
 	};
 
 	function onLoadHandler() {
-		var defaultData = '{"nodes":[{"left":753.90625,"top":171.109375,"i":true,"f":false},{"left":505.890625,"top":342,"i":false,"f":false},{"left":1042,"top":199.40625,"i":false,"f":false},{"left":287.90625,"top":123.625,"i":false,"f":false},{"left":535.921875,"top":0,"i":false,"f":false},{"left":0,"top":89.234375,"i":false,"f":true}],"edges":[{"start":0,"end":1,"weight":"a"},{"start":0,"end":2,"weight":"b"},{"start":1,"end":3,"weight":"a"},{"start":3,"end":4,"weight":"b"},{"start":3,"end":5,"weight":"a"},{"start":4,"end":0,"weight":"a"},{"start":5,"end":3,"weight":"g"}]}';
-		initialize(defaultData);
+		var data;
+		if (localStorage['toConvert'] === "true") {
+			data = localStorage['converted'];
+		}
+		else if (localStorage['toMinimize'] === "true") {
+			data = localStorage['minimized'];
+		}
+		else {
+			data = '{"nodes":[{"left":753.90625,"top":171.109375,"i":true,"f":false},{"left":505.890625,"top":342,"i":false,"f":false},{"left":1042,"top":199.40625,"i":false,"f":false},{"left":287.90625,"top":123.625,"i":false,"f":false},{"left":535.921875,"top":0,"i":false,"f":false},{"left":0,"top":89.234375,"i":false,"f":true}],"edges":[{"start":0,"end":1,"weight":"a"},{"start":0,"end":2,"weight":"b"},{"start":1,"end":3,"weight":"a"},{"start":3,"end":4,"weight":"b"},{"start":3,"end":5,"weight":"a"},{"start":4,"end":0,"weight":"a"},{"start":5,"end":3,"weight":"g"}]}';
+		}
+		initialize(data);
 		resetUndoButtons();
 	};
 
@@ -703,6 +722,26 @@
 		window.open("../../shkim/grammarTest.html");
 	};
 
+	var convertToDFA = function() {
+		localStorage['convertNFA'] = true;
+		localStorage['toConvert'] = serialize(g);
+		window.open("../../shkim/conversionExercise.html");
+	};
+
+	var minimizeDFA = function() {
+		removeND();
+		if (testND()) {
+			testLambda();
+			window.alert("This Finite Automaton is nondeterministic.\nPlease convert to DFA before minimizing.");
+			return;
+		}
+		window.alert("Beware that the minimization algorithm will fail on an incomplete DFA.");
+		localStorage['minimizeDFA'] = true;
+		localStorage['toMinimize'] = serialize(g);
+		window.alert(localStorage['toMinimize']);
+		window.open("../../shkim/minimizationTest.html");
+	}
+
 	onLoadHandler();
 
 	$('#begin').click(displayTraversals);
@@ -720,5 +759,7 @@
 	$('#lambdaButton').click(testLambda);
 	$('#epsilonButton').click(switchEmptyString);
 	$('#shorthandButton').click(switchShorthand);
-	$('#togrammarbutton').click(convertToGrammar);
+	$('#toDFAButton').click(convertToDFA);
+	$('#minimizeButton').click(minimizeDFA);
+	$('#toGrammarButton').click(convertToGrammar);
 }(jQuery));
