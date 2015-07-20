@@ -15,12 +15,6 @@ $(document).ready(function () {
   
   av = new JSAV(av_name);
   set = av.g.set();
-
-  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
-  $(".avcontainer").on("jsav-message", function() {
-    // invoke MathJax to do conversion again
-    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-  });
 	
   //Slide 1
   av.umsg(interpret("Slide 1"));
