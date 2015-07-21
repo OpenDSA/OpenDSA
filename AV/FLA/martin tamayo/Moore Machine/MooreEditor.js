@@ -1,13 +1,11 @@
 (function ($) {
 	var jsav = new JSAV("av"),
 		jsavArray,
-		saved = false,
 		first = null,
 		selected = null,
 		label = null,
 		undoStack,
 		redoStack,
-		data,
 		g,
 		lambda = String.fromCharCode(955),
 		epsilon = String.fromCharCode(949),
@@ -15,70 +13,61 @@
 		pretraverseFunction = pretraverse;
     
     var initialize = function(graph) {
-		data = graph;
-		return initGraph({layout: "automatic"});
+		g = graph;
+		initGraph({layout: "automatic"});
 	};
 
 	var initGraph = function(opts) {
 		$('.jsavgraph').remove();
-		var success = true;
-		var gg;
-		try {
-			gg = jQuery.parseJSON(data);
-		}
-		catch(err) {
-			jsav.umsg('Error: Tried to load invalid file.');
-			g = localStorage['backup'];
-			gg = jQuery.parseJSON(g);
-			success = false;
-		}
-		finally {
-			g = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
-			for (var i = 0; i < gg.nodes.length; i++) {
-	    		var node = g.addNode('q' + i),
-	    			offset = $('.jsavgraph').offset(),
-	    			offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
-	    		$(node.element).offset({top : parseInt(gg.nodes[i].top) + offset.top + offset2, left: parseInt(gg.nodes[i].left) + offset.left + offset2});
-	    		if (gg.nodes[i].i) {
-	    			g.makeInitial(node);
-	    		}
-	    		var outputChar = delambdafyMoore(gg.nodes[i].mooreOutput);
-	    		if (!outputChar) {
-	    			outputChar = emptystring;
-	    		}
-	    		else if ((outputChar == lambda || outputChar == epsilon) && outputChar != emptystring) {
-	    			emptyString();
-	    		}
-	    		node.mooreOutput(outputChar);
-	    		node.stateLabel(gg.nodes[i].stateLabel);
-	    		node.stateLabelPositionUpdate();
-	  		}
-	  		for (var i = 0; i < gg.edges.length; i++) {
-	    		if (gg.edges[i].weight !== undefined) {
-	    			var w = delambdafy(gg.edges[i].weight);
-	    			w = checkEmptyString(w);
-	    			var edge = g.addEdge(g.nodes()[gg.edges[i].start], g.nodes()[gg.edges[i].end], {weight: w});
-        		}
-	    		else {
-	    			var edge = g.addEdge(g.nodes()[gg.edges[i].start], g.nodes()[gg.edges[i].end]);
-	    		}
-	    		edge.layout();
+		var gg = jQuery.parseJSON(g);
+		g = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
+		for (var i = 0; i < gg.nodes.length; i++) {
+	    	var node = g.addNode('q' + i),
+	    		offset = $('.jsavgraph').offset(),
+	    		offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
+	    	$(node.element).offset({top : parseInt(gg.nodes[i].top) + offset.top + offset2, left: parseInt(gg.nodes[i].left) + offset.left + offset2});
+	    	if (gg.nodes[i].i) {
+	    		g.makeInitial(node);
 	    	}
-	    	if (gg.shorthand) {
-	    		setShorthand(true);
+	    	var outputChar = delambdafyMoore(gg.nodes[i].mooreOutput);
+	    	if (!outputChar) {
+	    		outputChar = emptystring;
 	    	}
+	    	else if ((outputChar == lambda || outputChar == epsilon) && outputChar != emptystring) {
+	    		emptyString();
+	    	}
+	    	node.mooreOutput(outputChar);
+	    	node.stateLabel(gg.nodes[i].stateLabel);
+	    	node.stateLabelPositionUpdate();
+	  	}
+	  	for (var i = 0; i < gg.edges.length; i++) {
+	    	if (gg.edges[i].weight !== undefined) {
+	    		var w = delambdafy(gg.edges[i].weight);
+	    		w = checkEmptyString(w);
+	    		var edge = g.addEdge(g.nodes()[gg.edges[i].start], g.nodes()[gg.edges[i].end], {weight: w});
+        	}
 	    	else {
-	    		setShorthand(false);
+	    		var edge = g.addEdge(g.nodes()[gg.edges[i].start], g.nodes()[gg.edges[i].end]);
 	    	}
-	    	updateAlphabet();
-	    	updateMooreOutput();
-	    	g.click(nodeClickHandler);
-			g.click(edgeClickHandler, {edge: true});
-			$('.jsavgraph').click(graphClickHandler);
-			$('.jsavedgelabel').click(labelClickHandler);
-	    	jsav.displayInit();
-	    	return success;
+	    	edge.layout();
 	    }
+	    if (gg.shorthand) {
+	    	setShorthand(true);
+	    }
+	    else {
+	    	setShorthand(false);
+	    }
+	    finalize();
+    };
+
+    var finalize = function() {
+    	updateAlphabet();
+	    updateMooreOutput();
+	    jsav.displayInit();
+	    g.click(nodeClickHandler);
+		g.click(edgeClickHandler, {edge: true});
+		$('.jsavgraph').click(graphClickHandler);
+		$('.jsavedgelabel').click(labelClickHandler);
     };
 
     var checkEmptyString = function(w) {
@@ -576,7 +565,7 @@
 	};
 
 	function saveMooreState () {
-		data = serialize(g);
+		var data = serialize(g);
 		undoStack.push(data);
 		redoStack = [];
 		document.getElementById("undoButton").disabled = false;
@@ -588,10 +577,10 @@
 
 	function undo () {
 		removeModeClasses();
-		data = serialize(g);
+		var data = serialize(g);
 		redoStack.push(data);
 		data = undoStack.pop();
-		initGraph({layout: "automatic"});
+		initialize(data);
 		document.getElementById("redoButton").disabled = false;
 		if(undoStack.length == 0) {
 			document.getElementById("undoButton").disabled = true;
@@ -600,65 +589,176 @@
 
 	function redo () {
 		removeModeClasses();
-		data = serialize(g);
+		var data = serialize(g);
 		undoStack.push(data);
 		data = redoStack.pop();
-		initGraph({layout: "automatic"});
+		initialize(data);
 		document.getElementById("undoButton").disabled = false;
 		if(redoStack.length == 0) {
 			document.getElementById("redoButton").disabled = true;
 		}
 	};
 
-	var setSaved = function () {
-		saved = true
-	};
-
-	var save = function() {
-		removeModeClasses();
-		var downloadData = "text/json;charset=utf-8," + encodeURIComponent(serialize(g));
-		$('#download').html('<a href="data:' + downloadData + '" target="_blank" download="data.json">Download JSON</a>');
-		jsav.umsg("Saved");
-	};
-
-	var loadNewFile = function () {
-		if (!saved) {
-			return;
-		}
-		removeModeClasses();
-		data = document.getElementById("loadFile").files[0];
-		onLoadHandler();
-	};
-
 	function onLoadHandler() {
-		if (data) {
-			localStorage['backup'] = serialize(g);
-			var reader = new FileReader();
-			reader.onload = loadComplete;
-			reader.readAsText(data);
-			function loadComplete() {
-				var readerData = reader.result;
-				if (initialize(readerData)) {
-					jsav.umsg('File loaded.');
-					$('.arrayPlace').empty();
-					resetUndoButtons();
-				}
-			}
-			data = null;
-		}
-		else {
-			var defaultData = '{"nodes":[{"left":508,"top":201,"i":true,"f":false,"stateLabel":"","mooreOutput":"l"},{"left":345,"top":43,"i":false,"f":false,"stateLabel":"","mooreOutput":"a"},{"left":184,"top":357,"i":false,"f":false,"stateLabel":"","mooreOutput":"p"},{"left":815,"top":42,"i":false,"f":false,"stateLabel":"","mooreOutput":"j"},{"left":660,"top":366,"i":false,"f":false,"stateLabel":"","mooreOutput":"f"}],"edges":[{"start":0,"end":3,"weight":"a"},{"start":0,"end":1,"weight":"d"},{"start":1,"end":2,"weight":"e"},{"start":2,"end":0,"weight":"f"},{"start":3,"end":4,"weight":"b"},{"start":4,"end":0,"weight":"c"}]}';
-			initialize(defaultData);
-			resetUndoButtons();
-		}
+		var data = '{"nodes":[{"left":508,"top":201,"i":true,"f":false,"stateLabel":"","mooreOutput":"l"},{"left":345,"top":43,"i":false,"f":false,"stateLabel":"","mooreOutput":"a"},{"left":184,"top":357,"i":false,"f":false,"stateLabel":"","mooreOutput":"p"},{"left":815,"top":42,"i":false,"f":false,"stateLabel":"","mooreOutput":"j"},{"left":660,"top":366,"i":false,"f":false,"stateLabel":"","mooreOutput":"f"}],"edges":[{"start":0,"end":3,"weight":"a"},{"start":0,"end":1,"weight":"d"},{"start":1,"end":2,"weight":"e"},{"start":2,"end":0,"weight":"f"},{"start":3,"end":4,"weight":"b"},{"start":4,"end":0,"weight":"c"}]}';
+		initialize(data);
+		resetUndoButtons();
 	};
+
+	var serializeGraphToXML = function (graph) {
+		var text = '<?xml version="1.0" encoding="UTF-8"?>';
+	    text = text + "<structure>";
+	    text = text + "<type>moore</type>"
+	    text = text + "<automaton>"
+	    var nodes = graph.nodes();
+	    for (var next = nodes.next(); next; next = nodes.next()) {
+	    	var left = next.position().left;
+		    var top = next.position().top;
+		    var i = next.hasClass("start");
+		    var label = next.stateLabel();
+		    var output = next.mooreOutput();
+		    text = text + '<state id="' + next.value().substring(1) + '" name="' + next.value() + '">';
+		    text = text + '<x>' + left + '</x>';
+		    text = text + '<y>' + top + '</y>';
+		    if (label) {
+		    	text = text + '<label>' + label + '</label>';
+		    }
+		    if (i) {
+		    	text = text + '<initial/>';
+		    }
+		    if (output === emptystring) {
+		    	text = text + '<output/>';
+		    }
+		    else {
+		    	text = text + '<output>' + output + '</output>';
+		    }
+	    	text = text + '</state>';
+	    }
+	    var edges = graph.edges();
+	    for (var next = edges.next(); next; next = edges.next()) {
+	    	var fromNode = next.start().value().substring(1);
+	    	var toNode = next.end().value().substring(1);
+	    	var w = next.weight().split('<br>');
+	    	var wout = next.end().mooreOutput();
+	    	for (var i = 0; i < w.length; i++) {
+	    		text = text + '<transition>';
+	    		text = text + '<from>' + fromNode + '</from>';
+	    		text = text + '<to>' + toNode + '</to>';
+	    		if (w[i] === emptystring) {
+	    			text = text + '<read/>';
+	    		}
+	    		else {
+	    			text = text + '<read>' + w[i] + '</read>';
+	    		}
+	    		if (wout === emptystring) {
+	    			text = text + '<transout/>';
+	    		}
+	    		else {
+	    			text = text + '<transout>' + wout + '</transout>';
+	    		}
+	    		text = text + '</transition>';
+	    	}
+	    }
+	    text = text + "</automaton></structure>"
+	    return text;
+	};
+
+	var saveXML = function () {
+		removeModeClasses();
+		var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(serializeGraphToXML(g));
+    	$('#download').html('<a href="data:' + downloadData + '" target="_blank" download="fa.xml">Download Moore</a>');
+    	jsav.umsg("Saved");
+	};
+
+	// load a FA from a XML file
+  	var parseFile = function (text) {
+	    var parser,
+	        xmlDoc;
+	    if (window.DOMParser) {
+	      	parser = new DOMParser();
+	      	xmlDoc = parser.parseFromString(text,"text/xml");
+	    }
+	    else {
+	      	xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+	      	xmlDoc.async = false;
+	      	xmlDoc.loadXML(txt);
+	    }
+	    if (!xmlDoc.getElementsByTagName("type")[0]) {
+	      	window.alert('File does not contain an automaton.');
+	      	return;
+	    }
+	    if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue !== 'moore') {
+	    	window.alert('File does not contain a Moore Machine.');
+	      	return;
+	    }
+	    else {
+	    	if (g) {
+				g.clear();
+			}
+			g = new jsav.ds.fa({width: '90%', height: 440, layout: "automatic"});
+			var nodeMap = {};			// map node IDs to nodes
+	      	var xmlStates = xmlDoc.getElementsByTagName("state");
+	      	xmlStates = _.sortBy(xmlStates, function(x) { return x.id; })
+	      	var xmlTrans = xmlDoc.getElementsByTagName("transition");
+	      	for (var i = 0; i < xmlStates.length; i++) {
+	        	var x = Number(xmlStates[i].getElementsByTagName("x")[0].childNodes[0].nodeValue);
+	        	var y = Number(xmlStates[i].getElementsByTagName("y")[0].childNodes[0].nodeValue);
+	        	var newNode = g.addNode({left: x, top: y});
+	        	var isInitial = xmlStates[i].getElementsByTagName("initial")[0];
+	        	var isLabel = xmlStates[i].getElementsByTagName("label")[0];
+	        	var isOutput = xmlStates[i].getElementsByTagName("output")[0].childNodes[0];
+	        	if (isInitial) {
+	        		g.makeInitial(newNode);
+	        	}
+	        	if (isLabel) {
+	        		newNode.stateLabel(isLabel.childNodes[0].nodeValue);
+	        	}
+	        	if (!isOutput) {
+	        		newNode.mooreOutput(emptystring);
+	        	}
+	        	else {
+	        		newNode.mooreOutput(isOutput.nodeValue);
+	        	}
+	        	nodeMap[xmlStates[i].id] = newNode;
+	        	newNode.stateLabelPositionUpdate();
+	      	}
+	      	for (var i = 0; i < xmlTrans.length; i++) {
+	      		var from = xmlTrans[i].getElementsByTagName("from")[0].childNodes[0].nodeValue;
+	      		var to = xmlTrans[i].getElementsByTagName("to")[0].childNodes[0].nodeValue;
+	      		var read = xmlTrans[i].getElementsByTagName("read")[0].childNodes[0];
+	      		if (!read) {
+	      			read = emptystring;
+	      		}
+	      		else {
+	      			read = read.nodeValue;
+	      		}
+	      		var edge = g.addEdge(nodeMap[from], nodeMap[to], {weight: read});
+	      		edge.layout();
+	      	}
+			finalize();
+	    }
+	};
+
+  	var waitForReading = function (reader) {
+    	reader.onloadend = function(event) {
+        	var text = event.target.result;
+        	parseFile(text);
+    	}
+  	};
+
+  	var loadXML = function () {
+    	var loaded = document.getElementById('loadFile');
+    	var file = loaded.files[0],
+        	reader = new FileReader();
+    	waitForReading(reader);
+    	reader.readAsText(file);
+  	};
 
 	onLoadHandler();
 
 	$('#begin').click(displayTraversals);
-	$('#saveButton').click(save);
-	$('#submitButton').click(loadNewFile);
-	$('#loadFile').change(setSaved);
+	$('#saveButton').click(saveXML);
+	$('#loadFile').change(loadXML);
 	$('#undoButton').click(undo);
 	$('#redoButton').click(redo);
 	$('#nodeButton').click(addNodes);

@@ -57,8 +57,8 @@
 	    else {
 	    	setShorthand(false);
 	    }
-	    localStorage['toConvert'] == false;
-	    localStorage['toMinimize'] == false;
+	    localStorage['toConvert'] = false;
+	    localStorage['toMinimize'] = false;
 	    finalize();
     };
 
@@ -580,7 +580,8 @@
 	    		text = text + '<to>' + toNode + '</to>';
 	    		if (w[i] === emptystring) {
 	    			text = text + '<read/>';
-	    		} else {
+	    		}
+	    		else {
 	    			text = text + '<read>' + w[i] + '</read>';
 	    		}
 	    		text = text + '</transition>';
@@ -622,7 +623,7 @@
 	    	if (g) {
 				g.clear();
 			}
-			g = new jsav.ds.fa({width: '90%', height: 440, layout: "manual"});
+			g = new jsav.ds.fa({width: '90%', height: 440, layout: "automatic"});
 			var nodeMap = {};			// map node IDs to nodes
 	      	var xmlStates = xmlDoc.getElementsByTagName("state");
 	      	xmlStates = _.sortBy(xmlStates, function(x) { return x.id; })
@@ -644,13 +645,14 @@
 	        		newNode.stateLabel(isLabel.childNodes[0].nodeValue);
 	        	}
 	        	nodeMap[xmlStates[i].id] = newNode;
+	        	newNode.stateLabelPositionUpdate();
 	      	}
 	      	for (var i = 0; i < xmlTrans.length; i++) {
 	      		var from = xmlTrans[i].getElementsByTagName("from")[0].childNodes[0].nodeValue;
 	      		var to = xmlTrans[i].getElementsByTagName("to")[0].childNodes[0].nodeValue;
 	      		var read = xmlTrans[i].getElementsByTagName("read")[0].childNodes[0];
 	      		if (!read) {
-	      			read = "";
+	      			read = emptystring;
 	      		}
 	      		else {
 	      			read = read.nodeValue;
