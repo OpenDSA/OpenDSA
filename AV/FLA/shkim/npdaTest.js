@@ -399,6 +399,7 @@
 		jsav.umsg("");
 		var textArray = [];
 		$("button").hide();			//disable buttons
+		$('#loadbutton').hide();
 		$("#mode").html('');
 		$('.jsavcontrols').show();
 		g.initial.addClass('current');

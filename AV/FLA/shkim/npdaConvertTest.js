@@ -147,8 +147,6 @@
 			if (toExport) {
 				localStorage['grammar'] = converted;
 				window.open("grammarTest.html", "_self");
-			} else {
-				// window.open('npdaTable.html', '', 'width = 600, height = 625, screenX = 500, screenY = 25')
 			}
 		};
 
