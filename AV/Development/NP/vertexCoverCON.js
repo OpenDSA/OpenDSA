@@ -61,19 +61,19 @@ $(document).ready(function () {
   var e7 = g.addEdge(c3, c6);
   var e8 = g.addEdge(c3, c7);
 
-  c3.css({"background-color":"Brown"});
-  e3.css({"stroke":"Brown","stroke-width":"2"});
-  e5.css({"stroke":"Brown","stroke-width":"2"});
-  e7.css({"stroke":"Brown","stroke-width":"2"});
-  e8.css({"stroke":"Brown","stroke-width":"2"});
+  c3.addClass("nodecolor1");
+  e3.addClass("edgecolor1");
+  e5.addClass("edgecolor1");
+  e7.addClass("edgecolor1");
+  e8.addClass("edgecolor1");
 
-  c5.css({"background-color":"#669966"});
-  e4.css({"stroke":"#669966","stroke-width":"2"});
-  e6.css({"stroke":"#669966","stroke-width":"2"});
+  c5.addClass("nodecolor2");
+  e4.addClass("edgecolor2");
+  e6.addClass("edgecolor2");
 
-  c1.css({"background-color":"#996699"});
-  e1.css({"stroke":"#996699","stroke-width":"2"});
-  e2.css({"stroke":"#996699","stroke-width":"2"});
+  c1.addClass("nodecolor4");
+  e1.addClass("edgecolor4");
+  e2.addClass("edgecolor4");
 
   g.layout();
   g.show();
@@ -126,38 +126,38 @@ $(document).ready(function () {
   var ea14 = g1.addEdge(ca8, ca10);
   var ea15 = g1.addEdge(ca9, ca10);
 
-  ca6.css({"background-color":"Brown"});
-  ea1.css({"stroke":"Brown","stroke-width":"2"});
-  ea11.css({"stroke":"Brown","stroke-width":"2"});
-  ea12.css({"stroke":"Brown","stroke-width":"2"});
+  ca6.addClass("nodecolor1");
+  ea1.addClass("edgecolor1");
+  ea11.addClass("edgecolor1");
+  ea12.addClass("edgecolor1");
 
-  ca1.css({"background-color":"#669966"});
-  ea2.css({"stroke":"#669966","stroke-width":"2"});
-  ea3.css({"stroke":"#669966","stroke-width":"2"});
-
-
-  ca2.css({"background-color":"Silver"});
-  ea4.css({"stroke":"Silver","stroke-width":"2"});
-  ea5.css({"stroke":"Silver","stroke-width":"2"});
-  ea6.css({"stroke":"Silver","stroke-width":"2"});
+  ca1.addClass("nodecolor2");
+  ea2.addClass("edgecolor2");
+  ea3.addClass("edgecolor2");
 
 
-
-  ca3.css({"background-color":"#996699"});
-  ea7.css({"stroke":"#996699","stroke-width":"2"});
-  ea8.css({"stroke":"#996699","stroke-width":"2"});
+  ca2.addClass("nodecolor9");
+  ea4.addClass("edgecolor9");
+  ea5.addClass("edgecolor9");
+  ea6.addClass("edgecolor9");
 
 
 
-  ca10.css({"background-color":"#00CCCC"});
-  ea10.css({"stroke":"#00CCCC","stroke-width":"2"});
-  ea14.css({"stroke":"#00CCCC","stroke-width":"2"});
-  ea15.css({"stroke":"#00CCCC","stroke-width":"2"});
+  ca3.addClass("nodecolor4");
+  ea7.addClass("edgecolor4");
+  ea8.addClass("edgecolor4");
 
 
-  ca9.css({"background-color":"#FF6699"});
-  ea9.css({"stroke":"#FF6699","stroke-width":"2"});
-  ea13.css({"stroke":"#FF6699","stroke-width":"2"});
+
+  ca10.addClass("nodecolor5");
+  ea10.addClass("edgecolor5");
+  ea14.addClass("edgecolor5");
+  ea15.addClass("edgecolor5");
+
+
+  ca9.addClass("nodecolor7");
+  ea9.addClass("edgecolor7");
+  ea13.addClass("edgecolor7");
 
   g1.layout();
   g1.show();
@@ -194,20 +194,20 @@ nl1.hide();
   var eb9 = g2.addEdge(cb3, cb7);
   var eb10 = g2.addEdge(cb2, cb5);
 
-  cb1.css({"background-color":"Brown"});
-  eb1.css({"stroke":"Brown","stroke-width":"2"});
-  eb2.css({"stroke":"Brown","stroke-width":"2"});
-  eb8.css({"stroke":"Brown","stroke-width":"2"});
+  cb1.addClass("nodecolor1");
+  eb1.addClass("edgecolor1");
+  eb2.addClass("edgecolor1");
+  eb8.addClass("edgecolor1");
 
-  cb2.css({"background-color":"#669966"});
-  eb3.css({"stroke":"#669966","stroke-width":"2"});
-  eb4.css({"stroke":"#669966","stroke-width":"2"});
-  eb5.css({"stroke":"#669966","stroke-width":"2"});
+  cb2.addClass("nodecolor2");
+  eb3.addClass("edgecolor2");
+  eb4.addClass("edgecolor2");
+  eb5.addClass("edgecolor2");
 
-  cb3.css({"background-color":"#996699"});
-  eb6.css({"stroke":"#996699","stroke-width":"2"});
-  eb7.css({"stroke":"#996699","stroke-width":"2"});
-  eb9.css({"stroke":"#996699","stroke-width":"2"});
+  cb3.addClass("nodecolor4");
+  eb6.addClass("edgecolor4");
+  eb7.addClass("edgecolor4");
+  eb9.addClass("edgecolor4");
 
   g2.layout();
   g2.show();
@@ -298,29 +298,29 @@ nl1.hide();
   label2.show();
 
 
-  cc1.css({"background-color":"Brown"});
-  cc2.css({"background-color":"#669966"});
-  cc3.css({"background-color":"#996699"});
-  cc10.css({"background-color":"#00CCCC"});
+  cc1.addClass("nodecolor1");
+  cc2.addClass("nodecolor2");
+  cc3.addClass("nodecolor4");
+  cc10.addClass("nodecolor5");
 
 
-  ec1.css({"stroke":"Brown" ,"stroke-width":"2"});
-  ec2.css({"stroke":"Brown" ,"stroke-width":"2"});
-  ec3.css({"stroke":"Brown" ,"stroke-width":"2"});
-  ec4.css({"stroke":"#669966" ,"stroke-width":"2"});
-  ec5.css({"stroke":"#669966" ,"stroke-width":"2"});
-  ec6.css({"stroke":"#669966" ,"stroke-width":"2"});
-  ec7.css({"stroke":"#996699" ,"stroke-width":"2"});
-  ec8.css({"stroke":"#996699" ,"stroke-width":"2"});
-  ec10.css({"stroke":"#00CCCC" ,"stroke-width":"2"});
-  ec11.css({"stroke":"#669966" ,"stroke-width":"2"});
-  ec12.css({"stroke":"#669966" ,"stroke-width":"2"});
-  ec13.css({"stroke":"#996699" ,"stroke-width":"2"});
-  ec14.css({"stroke": "#996699","stroke-width":"2"});
-  ec16.css({"stroke":"#00CCCC" ,"stroke-width":"2"});
-  ec17.css({"stroke":"#00CCCC" ,"stroke-width":"2"});
-  ec19.css({"stroke":"Brown" ,"stroke-width":"2"});
-  ec20.css({"stroke":"Brown" ,"stroke-width":"2"});
+  ec1.addClass("edgecolor1");
+  ec2.addClass("edgecolor1");
+  ec3.addClass("edgecolor1");
+  ec4.addClass("edgecolor2");
+  ec5.addClass("edgecolor2");
+  ec6.addClass("edgecolor2");
+  ec7.addClass("edgecolor4");
+  ec8.addClass("edgecolor4");
+  ec10.addClass("edgecolor5");
+  ec11.addClass("edgecolor2");
+  ec12.addClass("edgecolor2");
+  ec13.addClass("edgecolor4");
+  ec14.addClass("edgecolor4");
+  ec16.addClass("edgecolor5");
+  ec17.addClass("edgecolor5");
+  ec19.addClass("edgecolor1");
+  ec20.addClass("edgecolor1");
 
   g4.show();
   av.recorded();

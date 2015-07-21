@@ -90,9 +90,9 @@ $(document).ready(function () {
     var ne8 = g3.addEdge(n1, n3);
     var ne8 = g3.addEdge(n6, n3);
 
-    ne7.css({"stroke":"LightCoral","stroke-width":"5"});
-    ne6.css({"stroke":"LightCoral","stroke-width":"5"});
-    ne2.css({"stroke":"LightCoral","stroke-width":"5"});
+    ne7.addClass("edgehighlight");
+    ne6.addClass("edgehighlight");
+    ne2.addClass("edgehighlight");
 
     g3.layout();
     g3.show();
@@ -108,9 +108,9 @@ $(document).ready(function () {
     label1 = av.label("For example: Maximum Clique in the "+
 "graph is a $4$-clique",{top:40,left:0}); 
     g3.show();
-    ne1.css({"stroke":"LightCoral","stroke-width":"5"});
-    ne4.css({"stroke":"LightCoral","stroke-width":"5"});
-    ne5.css({"stroke":"LightCoral","stroke-width":"5"});
+    ne1.addClass("edgehighlight");
+    ne4.addClass("edgehighlight");
+    ne5.addClass("edgehighlight");
 
 
     g3.layout();
@@ -194,12 +194,12 @@ $(document).ready(function () {
     av.step(); 
 
     label1 = av.label("<b>Yes</b>",{top:20}).css({"text-align": "center"}); 
-    e1.css({"stroke": "LightCoral","stroke-width":"7"});
-    e2.css({"stroke": "LightCoral","stroke-width":"7"});
-    e3.css({"stroke": "LightCoral","stroke-width":"7"});
-    e4.css({"stroke": "LightCoral","stroke-width":"7"});
-    e5.css({"stroke": "LightCoral","stroke-width":"7"});
-    e6.css({"stroke": "LightCoral","stroke-width":"7"});
+    e1.addClass("edgehighlightbold");
+    e2.addClass("edgehighlightbold");
+    e3.addClass("edgehighlightbold");
+    e4.addClass("edgehighlightbold");
+    e5.addClass("edgehighlightbold");
+    e6.addClass("edgehighlightbold");
 
     g1.layout();
   av.recorded();

@@ -10,11 +10,46 @@
 .jsavline{
   height: 50px;
 }
-
 .jsavarray .jsavindex{
 	min-width:30px;
 	min-height:30px;
 	height:30px;
 	line-height:30px;
         text-align:center;
+}
+
+.headerrow{
+	background-color:Silver !important;
+}
+
+.labeltrue{
+	color: Green;
+}
+.labelfalse{
+	color: Red;
+}
+.celltrue{
+	background-color: #93C572 !important;
+}
+.cellfalse{
+	background-color: #CB6D51 !important;
+}
+.numlabel{
+       color:Blue;
+}
+.gatefocus{
+       fill: #6A5ACD;
+       opacity:0.5;
+       fill-opacity:0.5;
+}
+.cellfocus{
+       background-color: SlateBlue !important;
+       opacity:0.5;
+}
+.cellfill{
+       background-color: Tan !important;
+       opacity:0.5;
+}
+.truthtablefalse{
+       background-color: #FFB6C1 !important;
 }

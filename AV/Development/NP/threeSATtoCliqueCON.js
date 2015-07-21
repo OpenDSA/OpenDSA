@@ -54,42 +54,42 @@ $(document).ready(function () {
   nl2.hide();
 
   av.umsg("<br><b>Example of 3-SAT to k-Clique Reduction</b>");
-  nl1=av.label("Construction of cluster of nodes corresponding to clauses in 3 CNF",{top:-20});
+  nl1=av.label("Construction of cluster of nodes corresponding to clauses in 3 CNF",{top:-10});
   y=10;
   var x=0;
-  label1 = av.label("$\\Phi = $",{top:y,left:x}); 
+  label1 = av.label("$\\Phi = $",{top:y+10,left:x}); 
   label1.show();
   x = x+35;
   label2 = av.label("$(x_2 + x_1 + \\overline{x_3})$"
-,{top:y,left:x}).css({"color":"IndianRed"}); 
+,{top:y+10,left:x}).addClass("labelcolor1"); 
   label2.show();
   x = x+100;
-  label5 = av.label(".",{top:y,left:x-5}); 
+  label5 = av.label(".",{top:y+10,left:x-5}); 
   label5.show();
   label3 = av.label("$(\\overline{x_1} + \\overline{x_2} + x_4)$"
-,{top:y,left:x}).css({"color":"SeaGreen"}); 
+,{top:y+10,left:x}).addClass("labelcolor2"); 
   label3.show();
   x = x+110;
-  label6 = av.label("$\\cdot$",{top:y,left:x-5}); 
+  label6 = av.label("$\\cdot$",{top:y+10,left:x-5}); 
   label6.show();
   label4 = av.label("$(x_2 + \\overline{x_4} + x_3)$"
-,{top:y,left:x}).css({"color":"SteelBlue"}); 
+,{top:y+10,left:x}).addClass("labelcolor3"); 
   label4.show();
 
   var  g1 = av.ds.graph({width: 450, height: 450, layout: "manual", directed: false, top: 50, left: 200, autoresize: false});
   x=0;
   y=0;
-  var x21 = g1.addNode("$\\overline{x_1}$", {"left": x+100, "top": y}).css({"background-color":"SeaGreen"});
-  var x22 = g1.addNode("$\\overline{x_2}$", {"left": x+200,"top": y}).css({"background-color":"SeaGreen"});
-  var x23 = g1.addNode("$x_4$", {"left": x+300, "top": y}).css({"background-color":"SeaGreen"});
+  var x21 = g1.addNode("$\\overline{x_1}$", {"left": x+100, "top": y}).addClass("nodecolor2");
+  var x22 = g1.addNode("$\\overline{x_2}$", {"left": x+200,"top": y}).addClass("nodecolor2");
+  var x23 = g1.addNode("$x_4$", {"left": x+300, "top": y}).addClass("nodecolor2");
    
-  var x11 = g1.addNode("$x_2$", {"left": x+20, "top": y+90}).css({"background-color":"IndianRed"});
-  var x12 = g1.addNode("$x_1$", {"left": x+10,"top": y+180}).css({"background-color":"IndianRed"});
-  var x13 = g1.addNode("$\\overline{x_3}$", {"left": x, "top": y+270}).css({"background-color":"IndianRed"});
+  var x11 = g1.addNode("$x_2$", {"left": x+20, "top": y+90}).addClass("nodecolor1");
+  var x12 = g1.addNode("$x_1$", {"left": x+10,"top": y+180}).addClass("nodecolor1");
+  var x13 = g1.addNode("$\\overline{x_3}$", {"left": x, "top": y+270}).addClass("nodecolor1");
    
-  var x31 = g1.addNode("$x_2$", {"left": x+400, "top": y+90}).css({"background-color":"SteelBlue"});
-  var x32 = g1.addNode("$\\overline{x_4}$", {"left": x+410,"top": y+180}).css({"background-color":"SteelBlue"});
-  var x33 = g1.addNode("$x_3$", {"left": x+420, "top": y+270}).css({"background-color":"SteelBlue"});
+  var x31 = g1.addNode("$x_2$", {"left": x+400, "top": y+90}).addClass("nodecolor3");
+  var x32 = g1.addNode("$\\overline{x_4}$", {"left": x+410,"top": y+180}).addClass("nodecolor3");
+  var x33 = g1.addNode("$x_3$", {"left": x+420, "top": y+270}).addClass("nodecolor3");
    
   g1.layout();
 
@@ -97,110 +97,110 @@ $(document).ready(function () {
   av.step();
   av.umsg("<br><b>Example of 3-SAT to k-Clique Reduction</b>");
   nl1.hide();
-  nl1=av.label("Connecting the nodes in the graph",{top:-30});
+  nl1=av.label("Connecting the nodes in the graph",{top:-10});
   var e1=g1.addEdge(x11,x31);
-  e1.css({"stroke":"orange"});
+  e1.addClass("edgefocus");
   var e2=g1.addEdge(x11,x32);
-  e2.css({"stroke":"orange"});
+  e2.addClass("edgefocus");
   var ec3=g1.addEdge(x11,x33);
-  ec3.css({"stroke":"orange"});
+  ec3.addClass("edgefocus");
   var e4=g1.addEdge(x11,x21);
-  e4.css({"stroke":"orange"});
+  e4.addClass("edgefocus");
   var ec1=g1.addEdge(x11,x23);
-  ec1.css({"stroke":"orange"});
+  ec1.addClass("edgefocus");
   g1.layout();
 
 
 //slide 16
   av.step();
 
-  e1.css({"stroke":"black"});
-  e2.css({"stroke":"black"});
-  ec3.css({"stroke":"black"});
-  e4.css({"stroke":"black"});
-  ec1.css({"stroke":"black"});
+  e1.removeClass("edgefocus");
+  e2.removeClass("edgefocus");
+  ec3.removeClass("edgefocus");
+  e4.removeClass("edgefocus");
+  ec1.removeClass("edgefocus");
 
   e1=g1.addEdge(x12,x31);
-  e1.css({"stroke":"orange"});
+  e1.addClass("edgefocus");
   e2=g1.addEdge(x12,x32);
-  e2.css({"stroke":"orange"});
+  e2.addClass("edgefocus");
   var e3=g1.addEdge(x12,x33);
-  e3.css({"stroke":"orange"});
+  e3.addClass("edgefocus");
   var e4=g1.addEdge(x12,x22);
-  e4.css({"stroke":"orange"});
+  e4.addClass("edgefocus");
   var e5=g1.addEdge(x12,x23);
-  e5.css({"stroke":"orange"});
+  e5.addClass("edgefocus");
   g1.layout();
 
 //slide 17
   av.step();
 
-  e1.css({"stroke":"black"});
-  e2.css({"stroke":"black"});
-  e3.css({"stroke":"black"});
-  e4.css({"stroke":"black"});
-  e5.css({"stroke":"black"});
+  e1.removeClass("edgefocus");
+  e2.removeClass("edgefocus");
+  e3.removeClass("edgefocus");
+  e4.removeClass("edgefocus");
+  e5.removeClass("edgefocus");
 
   e1=g1.addEdge(x13,x31);
-  e1.css({"stroke":"orange"});
+  e1.addClass("edgefocus");
   e2=g1.addEdge(x13,x32);
-  e2.css({"stroke":"orange"});
+  e2.addClass("edgefocus");
   e3=g1.addEdge(x13,x21);
-  e3.css({"stroke":"orange"});
+  e3.addClass("edgefocus");
   e4=g1.addEdge(x13,x22);
-  e4.css({"stroke":"orange"});
+  e4.addClass("edgefocus");
   e5=g1.addEdge(x13,x23);
-  e5.css({"stroke":"orange"});
+  e5.addClass("edgefocus");
   g1.layout();
 
 
 //slide 18
   av.step();
 
-  e1.css({"stroke":"black"});
-  e2.css({"stroke":"black"});
-  e3.css({"stroke":"black"});
-  e4.css({"stroke":"black"});
-  e5.css({"stroke":"black"});
+  e1.removeClass("edgefocus");
+  e2.removeClass("edgefocus");
+  e3.removeClass("edgefocus");
+  e4.removeClass("edgefocus");
+  e5.removeClass("edgefocus");
 
   e1=g1.addEdge(x21,x31);
-  e1.css({"stroke":"orange"});
+  e1.addClass("edgefocus");
   e2=g1.addEdge(x21,x32);
-  e2.css({"stroke":"orange"});
+  e2.addClass("edgefocus");
   e3=g1.addEdge(x21,x33);
-  e3.css({"stroke":"orange"});
+  e3.addClass("edgefocus");
   g1.layout();
 
 //slide 19
   av.step();
 
-  e1.css({"stroke":"black"});
-  e2.css({"stroke":"black"});
-  e3.css({"stroke":"black"});
+  e1.removeClass("edgefocus");
+  e2.removeClass("edgefocus");
+  e3.removeClass("edgefocus");
 
   e2=g1.addEdge(x22,x32);
-  e2.css({"stroke":"orange"});
+  e2.addClass("edgefocus");
   e3=g1.addEdge(x22,x33);
-  e3.css({"stroke":"orange"});
+  e3.addClass("edgefocus");
   g1.layout();
 
 //slide 20
   av.step();
 
-  e2.css({"stroke":"black"});
-  e3.css({"stroke":"black"});
+  e2.removeClass("edgefocus");
+  e3.removeClass("edgefocus");
 
   e2=g1.addEdge(x23,x31);
-  e2.css({"stroke":"orange"});
+  e2.addClass("edgefocus");
   var ec2=g1.addEdge(x23,x33);
-  ec2.css({"stroke":"orange"});
+  ec2.addClass("edgefocus");
   g1.layout();
 
 //slide 21 
   av.step();
 
-  e2.css({"stroke":"black"});
-  ec2.css({"stroke":"black"});
+  e2.removeClass("edgefocus");
+  ec2.removeClass("edgefocus");
   g1.layout();
 
 
@@ -240,7 +240,7 @@ $(document).ready(function () {
   av.step();   
   var nl3=av.label("<b>2. If $\\Phi$ is satisfiable,</b> let A be a satisfying assignment. "
 +"Select from each clause a literal that is $True$ in A to construct a set S. $||S|| = k$."
-+"Since no two literals in A are from the same clause and all of them are simulatneously $True$, all"
++"Since no two literals in A are from the same clause and all of them are simultaneously $True$, all"
 +" the corresponding nodes in the graph are connected to each other, forming a k-clique."
 +"Hence <b> the graph has a $k$-clique",{top:200}); 
 
@@ -251,9 +251,9 @@ $(document).ready(function () {
   av.umsg("<br><b>Example of 3-SAT to k-Clique Reduction</b>");
   g1.show();
   av.umsg("<br><br>The following graph hase a 3-clique.",{preserve:true}); 
-  ec1.css({"stroke":"#CC0099","stroke-width":"6"});
-  ec2.css({"stroke":"#CC0099","stroke-width":"6"});
-  ec3.css({"stroke":"#CC0099","stroke-width":"6"});
+  ec1.addClass("edgehighlight");
+  ec2.addClass("edgehighlight");
+  ec3.addClass("edgehighlight");
 
   av.step();
   av.umsg("<br><b>Example of 3-SAT to k-Clique Reduction</b>");
@@ -265,9 +265,9 @@ $(document).ready(function () {
   av.umsg("<br><b>Example of 3-SAT to k-Clique Reduction</b>");
   nl1=av.label("$\\Phi$ is $True$ for the corresponding assignment: $x_2 = True , x_3= True , x_4 = True$",{top:50}); 
   label1.show();
-  label2.css({"color":"Black"}).show();
-  label3.css({"color":"Black"}).show();
-  label4.css({"color":"Black"}).show();
+  label2.removeClass("labelcolor1").show();
+  label3.removeClass("labelcolor2").show();
+  label4.removeClass("labelcolor3").show();
   label5.show();
   label6.show();
   av.recorded();

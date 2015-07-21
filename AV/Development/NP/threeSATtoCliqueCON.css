@@ -20,3 +20,28 @@
 	line-height:30px;
         text-align:center;
 }
+.labelcolor1{
+	color:IndianRed;
+}
+.nodecolor1{
+	background-color:IndianRed;
+}
+.labelcolor2{
+	color:SeaGreen;
+}
+.nodecolor2{
+	background-color:SeaGreen;
+}
+.labelcolor3{
+	color:SteelBlue;
+}
+.nodecolor3{
+	background-color:SteelBlue;
+}
+.edgefocus{
+	stroke: Orange;
+}
+.edgehighlight{
+	stroke:#CC0099;
+	stroke-width:6;
+}

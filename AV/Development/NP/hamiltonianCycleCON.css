@@ -18,3 +18,14 @@
 	line-height:30px;
         text-align:center;
 }
+
+.edgehighlight1{
+        stroke:Brown;
+        stroke-width: 3;
+}
+
+.edgehighlight2{
+        stroke: SteelBlue;
+        stroke-width: 2.5px;
+}
+

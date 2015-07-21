@@ -23,15 +23,93 @@
         text-align:center;
 }
 
- .pointing-left {
+.pointing-left {
         -webkit-transform: translateY(-5px) translateX(1px);
         -moz-transform: translateY(-5px) translateX(1px);
         -o-transform: translateY(5px) translateX(-1px);
         transform: translateY(-5px) translateX(1px);
-      }
-      .pointing-right {
+}
+.pointing-right {
         -webkit-transform: translateY(5px) translateX(-1px);
         -moz-transform: translateY(5px) translateX(-1px);
         -o-transform: translateY(5px) translateX(-1px);
         transform: translateY(5px) translateX(-1px);
-      }
+}
+
+.blur{
+	opacity:0.5;
+}
+
+.variablenode{
+	background-color:Tan;
+	width:30px;
+	height:30px;
+        min-width:30px;
+	min-height:30px;
+}
+
+.invisible{
+	opacity:0;
+}
+
+
+.jsavgraphedge{
+	stroke-width:1.5px;
+}
+
+.edgetrue{
+	stroke:DarkGreen;
+}
+
+.edgefalse{
+	stroke:FireBrick;
+}
+
+.edgeconnect{
+	stroke:DarkViolet;
+}
+
+.zoomlabel{
+	font-size: 125%;
+}
+
+.extranode{
+	width:40px !important;
+        height:40px !important;
+	min-width:40px !important;
+	min-height:40px !important;
+        opacity:0.65;
+	background-color:Khaki;
+}
+
+.democlausenode{
+	width:50px !important;
+        height:50px !important;
+	min-width:50px !important;
+	min-height:50px !important;
+        opacity:0.65;
+	background-color:Teal;
+}
+
+
+.clausenode{
+	width:50px !important;
+        height:50px !important;
+	min-width:50px !important;
+	min-height:50px !important;
+        opacity:0.65;
+}
+
+.clauseedge{
+	stroke: SlateGray;
+}
+
+.boldedge{
+	stroke-width:3.5px !important;
+}
+
+.highlightedge{
+	stroke:Blue;
+	stroke-width:3px !important; 
+	opacity:1;
+}

@@ -63,13 +63,12 @@ directed: false});
   var nodes = new Array(10);;
 
   for(i=0;i<10;i++){
-    nodes[i] = g.addNode(""+(i+1)).css({"width":"35px", "height":"35px", 
-"min-width":"35px", "min-height":"35px", "background-color":"AntiqueWhite"});
+    nodes[i] = g.addNode(""+(i+1)); 
   }
 
   for(i=0;i<nodes.length;i++)
     for(j=i+1;j<nodes.length;j++)
-      g.addEdge(nodes[i], nodes[j]).css({"stroke-width":"1.5px"}).hide();
+      g.addEdge(nodes[i], nodes[j]).hide();
 
   var cliqueEdges = [];
   var isEdges = [];
@@ -119,7 +118,7 @@ directed: false});
 //fade away G and display G'
   av.umsg("<br><b>The Complement graph</b>");
   for(j=0;j<cliqueEdges.length;j++)
-    cliqueEdges[j].css({"opacity":0.1});
+    cliqueEdges[j].addClass("bluredge");
   for(i=0;i<isEdges.length;i++)
     isEdges[i].show();
 
@@ -173,9 +172,9 @@ directed: false});
   nl1.hide();
   av.umsg("<br><b>Does G below have a clique of size 8? </b><br><br><br>");
   for(j=0;j<cliqueEdges.length;j++)
-    cliqueEdges[j].css({"opacity":1}).show();
+    cliqueEdges[j].removeClass("bluredge").show();
   for(i=0;i<isEdges.length;i++)
-    isEdges[i].css({"opacity":0.1}).show();
+    isEdges[i].addClass("bluredge").show();
 
   av.step();
 
@@ -197,7 +196,7 @@ directed: false});
   for(j=0;j<cliqueEdges.length;j++)
     cliqueEdges[j].hide();
   for(i=0;i<isEdges.length;i++)
-    isEdges[i].css({"opacity":1}).show();
+    isEdges[i].removeClass("bluredge").show();
 
   av.step();
 
@@ -209,7 +208,7 @@ directed: false});
 
   var sol = new Array(2, 3, 5, 6, 7);
   for(i=0;i<5;i++)
-    nodes[sol[i]].css({"background-color":"Teal"});
+    nodes[sol[i]].addClass("highlightnode");
   av.step();
   nl1.hide();
 //slide 14
@@ -217,16 +216,16 @@ directed: false});
 // superimpose the nodes of Independent Set on G.
   av.umsg("<br><b>The independent set of G' on G </b>");
   for(j=0;j<cliqueEdges.length;j++)
-    cliqueEdges[j].css({"opacity":0.1}).show();
+    cliqueEdges[j].addClass("bluredge").show();
   av.step();
 
 //slide 15
 
 // superimpose the nodes of Independent Set on G.
   for(i=0;i<isEdges.length;i++)
-    isEdges[i].css({"opacity":0.1});
+    isEdges[i].addClass("bluredge");
   for(j=0;j<cliqueEdges.length;j++)
-    cliqueEdges[j].css({"opacity":1});
+    cliqueEdges[j].removeClass("bluredge");
 
   av.step();
 
@@ -235,13 +234,12 @@ directed: false});
 //highlight the edges of the clique to show its pesence in G.
 
   for(i=0;i<edges.length;i++)
-    edges[i].css({"opacity":0.5});
+    edges[i].addClass("semibluredge");
   for(i=0;i<isEdges.length;i++)
     isEdges[i].hide();
   for(i=0;i<5;i++)
     for(j=i+1;j<5;j++)
-      g.getEdge(nodes[(sol[i])], nodes[(sol[j])]).css({"stroke":"SlateBlue", 
-"stroke-width":"3.5px", "opacity":1});
+      g.getEdge(nodes[(sol[i])], nodes[(sol[j])]).addClass("highlightedge"); 
   av.umsg("<br><b>It forms a clique of size 5 in G</b>");
 
 

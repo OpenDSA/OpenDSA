@@ -64,12 +64,12 @@ false,left:200,top:100});
   var e56 = g.addEdge(c5,  c6);
 
 
-  e25.css({"stroke":"Brown", "stroke-width":"3"});
-  e21.css({"stroke":"Brown", "stroke-width":"3"});
-  e13.css({"stroke":"Brown", "stroke-width":"3"});
-  e36.css({"stroke":"Brown", "stroke-width":"3"});
-  e46.css({"stroke":"Brown", "stroke-width":"3"});
-  e45.css({"stroke":"Brown", "stroke-width":"3"});
+  e25.addClass("edgehighlight1");
+  e21.addClass("edgehighlight1");
+  e13.addClass("edgehighlight1");
+  e36.addClass("edgehighlight1");
+  e46.addClass("edgehighlight1");
+  e45.addClass("edgehighlight1");
 
 
   g.layout();
@@ -138,8 +138,7 @@ true,  left: 150, top:50});
   av.step();
   var label1=av.label("<b>Yes</b>",{left:10,top:40});
   for(i=0;i<8;i++)
-      cycleEdges[i].css({"stroke":"SteelBlue", 
-"stroke-width":"2.5px"});;
+      cycleEdges[i].addClass("edgehighlight2");;
   g1.layout();
   g1.show();
   av.step();
@@ -160,7 +159,7 @@ true,  left: 150, top:50});
   var edges = g1.edges();
 
   for(i=0;i<edges.length;i++)
-  edges[i].css({"stroke":"Black", "stroke-width":"1.5px"});
+  edges[i].removeClass("edgehighlight2");
 
   g1.layout();
   av.umsg("<b><br>Example of Hamiltonian Cycle Problem</b>");  
