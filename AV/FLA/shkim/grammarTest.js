@@ -389,8 +389,8 @@
       jsav.recorded();
     } else {
       // if string is rejected, automatically return to the editor
+      $('#backbutton').click();
       jsav.umsg('"' + inputString + '" rejected');
-      endParse();
     }
   }; 
 
@@ -1448,25 +1448,6 @@
     $('#files').hide();
     $(m.element).css("margin-left", "50px");
     m._arrays[lastRow].hide();
-  };
-  // stops parsing (only used in BFP)
-  var endParse = function () {
-    if (parseTree) {parseTree.clear();}
-    if (derivationTable) { derivationTable.clear();}
-    if (ffTable) { ffTable.clear();}
-    if (parseTableDisplay) { parseTableDisplay.clear();}
-    if (modelDFA) { modelDFA.clear();}
-    if (builtDFA) { builtDFA.clear();}
-    if (tGrammar) { tGrammar.clear();}
-    $('button').show();
-    $('#transformbutton').show();
-    $('.jsavcontrols').hide();
-    $('#backbutton').hide();
-    $('.parsingbutton').hide();
-    $('#files').show();
-    $(m.element).css("margin-left", "auto");
-    m._arrays[lastRow].show();
-    $('.jsavmatrix').addClass("editMode");
   };
 
   var replaceCharAt = function (str, index, ch) {
@@ -2923,6 +2904,7 @@
       arr.push(["", arrow, ""]);
       backup = null;
     }
+    $('.jsavcanvas').height("auto");
     $('#movebutton').off();
     $('#finalbutton').off();
     $('#gotobutton').off();
