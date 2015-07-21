@@ -677,6 +677,175 @@
 	};
 
 	//======================
+	// Save/Load
+	// save TM as XML
+	var serializeTMToXML = function (graph) {
+		var text = '<?xml version="1.0" encoding="UTF-8"?>';
+	    text = text + "<structure>";
+	    text = text + "<type>turing</type>";
+	    text = text + "<tapes>" + tapeNumber + "</tapes>";
+	    text = text + "<automaton>";
+	    var nodes = graph.nodes();
+	    for (var next = nodes.next(); next; next = nodes.next()) {
+	    	var left = next.position().left;
+		    var top = next.position().top;
+		    var i = next.hasClass("start");
+		    var f = next.hasClass("final");
+		    var label = next.stateLabel();
+		    text = text + '<state id="' + next.value().substring(1) + '" name="' + next.value() + '">';
+		    text = text + '<x>' + left + '</x>';
+		    text = text + '<y>' + top + '</y>';
+		    if (label) {
+		    	text = text + '<label>' + label + '</label>';
+		    }
+		    if (i) {
+		    	text = text + '<initial/>';
+		    }
+		    if (f) {
+		    	text = text + '<final/>';
+		    }
+	    	text = text + '</state>';
+	    }
+	    var edges = graph.edges();
+	    for (var next = edges.next(); next; next = edges.next()) {
+	    	var fromNode = next.start().value().substring(1);
+	    	var toNode = next.end().value().substring(1);
+	    	var w = next.weight().split('<br>');
+	    	for (var i = 0; i < w.length; i++) {
+	    		text = text + '<transition>';
+	    		text = text + '<from>' + fromNode + '</from>';
+	    		text = text + '<to>' + toNode + '</to>';
+	    		var wSplit = w[i].split("|");
+	    		for (var j = 0; j < tapeNumber; j++) {
+	    			var singleTape = wSplit[j].split(':');
+	    			if (singleTape[0] === emptystring) {
+	    				text = text + '<read tape="'+(j+1)+'"/>';
+		    		} else {
+		    			text = text + '<read tape="'+(j+1)+'">' + singleTape[0] + '</read>';
+		    		}
+		    		if (singleTape[1] === emptystring) {
+		    			text = text + '<write tape="'+(j+1)+'"/>';
+		    		} else {
+		    			text = text + '<write tape="'+(j+1)+'">' + singleTape[1] + '</write>';
+		    		}
+		    		text = text + '<move tape="'+(j+1)+'">' + singleTape[2] + '</move>';
+	    		}
+	    		text = text + '</transition>';
+	    	}
+	    }
+	    text = text + "</automaton></structure>"
+	    return text;
+	};
+	var save = function () {
+		var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(serializeTMToXML(g));
+    	$('#download').html('<a href="data:' + downloadData + '" target="_blank" download="tm.xml">Download TM</a>');
+    	$('#download a')[0].click();
+	};
+
+	// load a TM from a XML file
+  	var parseFile = function (text) {
+	    var parser,
+	        xmlDoc;
+	    if (window.DOMParser) {
+	      	parser=new DOMParser();
+	      	xmlDoc=parser.parseFromString(text,"text/xml");
+	    } else {
+	      	xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+	      	xmlDoc.async=false;
+	      	xmlDoc.loadXML(txt);
+	    }
+	    if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue !== 'turing') {
+	      	alert('File does not contain a Turing machine.');
+	      	// clear input
+	      	var loaded = $('#loadbutton');
+	      	loaded.wrap('<form>').closest('form').get(0).reset();
+	      	loaded.unwrap();
+	      	return;
+	    } else {
+	    	if (g) {
+				g.clear();
+				$('.jsavgraph').off();
+			}
+			g = new jsav.ds.fa({width: '90%', height: 440, emptystring: square, layout: "manual"});
+			if (xmlDoc.getElementsByTagName("tapes")[0]) {
+				tapeNumber = Number(xmlDoc.getElementsByTagName("tapes")[0].childNodes[0].nodeValue);
+			} else {
+				tapeNumber = 1;
+			}
+			var nodeMap = {};			// map node IDs to nodes
+	      	var xmlStates = xmlDoc.getElementsByTagName("state");
+	      	xmlStates = _.sortBy(xmlStates, function(x) {return x.id;})
+	      	var xmlTrans = xmlDoc.getElementsByTagName("transition");
+	      	for (var i = 0; i < xmlStates.length; i++) {
+	        	var x = Number(xmlStates[i].getElementsByTagName("x")[0].childNodes[0].nodeValue);
+	        	var y = Number(xmlStates[i].getElementsByTagName("y")[0].childNodes[0].nodeValue);
+	        	var newNode = g.addNode({left: x, top: y});
+	        	var isInitial = xmlStates[i].getElementsByTagName("initial")[0];
+	        	var isFinal = xmlStates[i].getElementsByTagName("final")[0];
+	        	var isLabel = xmlStates[i].getElementsByTagName("label")[0];
+	        	if (isInitial) {
+	        		g.makeInitial(newNode);
+	        	}
+	        	if (isFinal) {
+	        		newNode.addClass('final');
+	        	}
+	        	if (isLabel) {
+	        		newNode.stateLabel(isLabel.childNodes[0].nodeValue);
+	        	}
+	        	nodeMap[xmlStates[i].id] = newNode;
+	      	}
+	      	for (var i = 0; i < xmlTrans.length; i++) {
+	      		var from = xmlTrans[i].getElementsByTagName("from")[0].childNodes[0].nodeValue;
+	      		var to = xmlTrans[i].getElementsByTagName("to")[0].childNodes[0].nodeValue;
+	      		var read = _.sortBy(xmlTrans[i].getElementsByTagName("read"), function(x) {return x.tape;});
+	      		var write = _.sortBy(xmlTrans[i].getElementsByTagName("write"), function(x) {return x.tape;});
+	      		var move = _.sortBy(xmlTrans[i].getElementsByTagName("move"), function(x) {return x.tape;});
+	      		var newWeight = [];
+	      		for (var j = 0; j < read.length; j++) {
+	      			var singleRead = read[j].childNodes[0];
+	      			var singleWrite = write[j].childNodes[0];
+	      			var singleMove = move[j].childNodes[0].nodeValue;
+	      			if (!singleRead) {
+	      				singleRead = square;
+	      			} else {
+	      				singleRead = singleRead.nodeValue;
+	      			}
+	      			if (!singleWrite) {
+	      				singleWrite = square;
+	      			} else {
+	      				singleWrite = singleWrite.nodeValue;
+	      			}
+	      			newWeight.push(singleRead + ":" + singleWrite + ":" + singleMove);
+	      		}
+	      		g.addEdge(nodeMap[from], nodeMap[to], {weight: newWeight.join("|")});
+	      	}
+	      	g.layout();
+	      	updateAlphabet();
+			$(".jsavgraph").click(graphClickHandler);
+	    	g.click(nodeClickHandler);
+			g.click(edgeClickHandler, {edge: true});
+			$('.jsavedgelabel').click(labelClickHandler);
+			var loaded = $('#loadbutton');
+	      	loaded.wrap('<form>').closest('form').get(0).reset();
+	      	loaded.unwrap();
+	      	return;
+	    }
+	};
+  	var waitForReading = function (reader) {
+    	reader.onloadend = function(event) {
+        	var text = event.target.result;
+        	parseFile(text);
+    	}
+  	};
+  	var load = function () {
+    	var loaded = document.getElementById('loadbutton');
+    	var file = loaded.files[0],
+        	reader = new FileReader();
+    	waitForReading(reader);
+    	reader.readAsText(file);
+  	};
+
+	//======================
 	$('#playbutton').click(function() {play()});
 	$('#multiplebutton').click(displayTraversals);
 	$('#layoutbutton').click(function() {g.layout()});
@@ -693,4 +862,6 @@
 	        $("#asktapesbutton").click();
 	    }
 	});
+	$('#savebutton').click(save);
+  	$('#loadbutton').on('change', load);
 }(jQuery));	

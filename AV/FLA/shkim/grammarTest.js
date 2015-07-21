@@ -2844,11 +2844,6 @@
     }
     if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue !== 'grammar') {
       alert('File does not contain a grammar.');
-      // clear input
-      var loaded = $('#loadfile');
-      loaded.wrap('<form>').closest('form').get(0).reset();
-      loaded.unwrap();
-      return;
     } else {
       arr = [];
       var xmlElem = xmlDoc.getElementsByTagName("production");
@@ -2864,6 +2859,11 @@
       m = init();
       $('.jsavmatrix').addClass("editMode");
     }
+    // clear input
+    var loaded = $('#loadfile');
+    loaded.wrap('<form>').closest('form').get(0).reset();
+    loaded.unwrap();
+    return;
   };
   var waitForReading = function (reader) {
     reader.onloadend = function(event) {

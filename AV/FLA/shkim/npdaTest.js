@@ -684,10 +684,15 @@
 	      		g.addEdge(nodeMap[from], nodeMap[to], {weight: read + ":" + pop + ":" + push});
 	      	}
 	      	g.layout();
+	      	updateAlphabet();
 			$(".jsavgraph").click(graphClickHandler);
     		g.click(nodeClickHandler);
 			g.click(edgeClickHandler, {edge: true});
 			$('.jsavedgelabel').click(labelClickHandler);
+			var loaded = $('#loadbutton');
+	      	loaded.wrap('<form>').closest('form').get(0).reset();
+	      	loaded.unwrap();
+	      	return;
 	    }
 	};
   	var waitForReading = function (reader) {
