@@ -58,8 +58,8 @@ $(document).ready(function () {
   // Slide 4
   arr11 = av.ds.array([arr_values[0], arr_values[1], arr_values[2], arr_values[3]], {"left": 40, "top":  75, "indexed": false});
   arr12 = av.ds.array([arr_values[4], arr_values[5], arr_values[6], arr_values[7]], {"left": 200, "top": 75, "indexed": false});
-  av.label("<b><u>Splitting Work</u></b>",  {"top": "-30px", "left": "430px"}).css({'font-size': '16px', "text-align": "center"});
-  av.label("|----------- $n$ -----------|",  {"top": "-10px", "left": "405px"});
+  av.label("<b><u>Splitting Work</u></b>",  {"top": "-20px", "left": "430px"}).css({'font-size': '15px', "text-align": "center"});
+  av.label("|----------- $n$ -----------|",  {"top": "-8px", "left": "405px"});
   for (i = 0; i < 8; i++) {
     av.g.rect(400 + (i * 20), 30, 20, 20);
   }
@@ -105,7 +105,7 @@ $(document).ready(function () {
   merge(arr31, arr32, arr21);
   arr31.hide();
   arr32.hide();
-  av.label("<b><u>Merging Work</u></b>",  {"top": "-30px", "left": "640px"}).css({'font-size': '16px', "text-align": "center"});
+  av.label("<b><u>Merging Work</u></b>",  {"top": "-20px", "left": "640px"}).css({'font-size': '15px', "text-align": "center"});
   av.label("$\\frac{n}{8}$ ",  {"top": "215px", "left": "562px"});
   av.label("$\\frac{n}{8}$ ",  {"top": "215px", "left": "592px"});
   for (i = 0; i < 2; i++) {
