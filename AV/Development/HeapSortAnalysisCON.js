@@ -72,7 +72,7 @@ $(document).ready(function () {
   
   // Slide 9
   av.umsg(interpret("Slide 9"));
-  var label = av.label("$\\displaystyle\\sum_{i=1}^{n}\\lfloor\\log{i}\\rfloor$",  {"top": "-20px", "left": "10px"}).css({'font-size': '16px', "text-align": "center"});
+  var label = av.label("$\\displaystyle\\sum_{i=1}^{n}\\lfloor\\log{i}\\rfloor$",  {"top": "-10px", "left": "10px"}).css({'font-size': '16px', "text-align": "center"});
   bh.css([29, 30], {"background-color": "white"});
   av.step();
   
