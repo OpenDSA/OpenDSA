@@ -15,7 +15,7 @@ $(document).ready(function () {
   
   // Slide 2
   av.umsg(interpret("Slide 2"));
-  av.g.rect(100, 0, 400, 30);
+  av.g.rect(100, 5, 400, 30);
   av.label("$n$",  {"top": "-18px", "left": "300px"}).css({'font-size': '18px', "text-align": "center"});
   av.step();
   
