@@ -25,7 +25,7 @@ $(document).ready(function () {
   for (var i = 0; i < 9; i++) {
     arr_values[i] = " ";
   }
-  arr = av.ds.array(arr_values, {"left": 150, "top": 30, "indexed": true});
+  arr = av.ds.array(arr_values, {"left": 150, "top": 40, "indexed": true});
   pointer1 = av.pointer("i", arr.index(0));
   pointer2 = av.pointer("j", arr.index(8));
   pointer3 = av.pointer("pivot", arr.index(4));
