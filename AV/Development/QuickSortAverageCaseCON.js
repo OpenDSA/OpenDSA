@@ -93,7 +93,7 @@ $(document).ready(function () {
   
   // Slide 9
   av.umsg(interpret("Slide 9"));
-  var eqn = av.label("$$\\frac{1}{n}\\displaystyle\\sum_{k=0}^{n-1}[T(k)+T(n-1-k)]$$",  {"top": "-50px", "left": "0px"}).css({'font-size': '16px', "text-align": "center"});
+  var eqn = av.label("$$\\frac{1}{n}\\displaystyle\\sum_{k=0}^{n-1}[T(k)+T(n-1-k)]$$",  {"top": "-36px", "left": "0px"}).css({'font-size': '16px', "text-align": "center"});
   av.step();
   
   // Slide 10
@@ -103,7 +103,7 @@ $(document).ready(function () {
   // Slide 11
   av.umsg(interpret("Slide 11"));
   eqn.hide();
-  eqn = av.label("$$T(n) = cn + \\frac{1}{n}\\displaystyle\\sum_{k=0}^{n-1}[T(k)+T(n-1-k)]$$",  {"top": "-50px", "left": "0px"}).css({'font-size': '16px', "text-align": "center"});
+  eqn = av.label("$$T(n) = cn + \\frac{1}{n}\\displaystyle\\sum_{k=0}^{n-1}[T(k)+T(n-1-k)]$$",  {"top": "-36px", "left": "0px"}).css({'font-size': '16px', "text-align": "center"});
   av.step();
   
   // Slide 12
