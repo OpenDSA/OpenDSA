@@ -495,6 +495,7 @@
 		}
 		jsav.umsg("");
 		$("button").hide();			// disable buttons
+		$("#loadbutton").hide();
 		$('#alphabets').hide();
 		$("#mode").html('');
 		$('.jsavcontrols').show();
@@ -649,6 +650,7 @@
 		jsav.umsg("Click to trace");
 		$("#mode").html('');
 		$("button").hide();			//disable buttons
+		$("#loadbutton").hide();
 		$('#alphabets').hide();
 		for (var i = 0; i < inputs.length; i++) {
 			travArray.push(runInput(inputs[i]));
