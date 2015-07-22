@@ -1,0 +1,127 @@
+<!--
+Bubble Sort mini-proficiency exercise.
+Written by Gayathri Subramanian and Cliff Shaffer
+-->
+
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Growth Rates Ordering Exercise</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transit.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
+  <link rel="stylesheet" href="GrowthRates.css" type="text/css" />
+</head>
+
+<body data-height="550" data-width="950">
+<script>
+
+// Initialise the exercise
+var functions = ["<code>\\log{\\log{n}}</code>", 
+                 "<code>\\sqrt{\\log{n}}</code>",
+                 "<code>\\log{n}</code>",
+                 "<code>\\log^2{n}</code>",
+                 "<code>n\\log{n}</code>",
+                 "<code>n\\log^2{n}</code>",
+                 "<code>n^{\\log{n}}</code>",
+                 "<code>n^{4/3}</code>",
+                 "<code>n^2</code>",
+                 "<code>2^\\sqrt{n}</code>",
+                 "<code>2^n</code>",
+                 "<code>2^{n^2}</code>"
+                 ];
+var av, 
+    arr, 
+    selectedFunctions = [], 
+    empty = [], 
+    answer,
+    userSelect = false,
+    prevSelected;
+
+var initJSAV = function (arr_size) {
+  av = new JSAV("jsav");
+  arr = av.ds.array([], {indexed: false});
+  randomize(arr_size);
+  for (var i = 0; i < arr_size; i++){
+    arr.value(i, selectedFunctions[i]);
+  }
+  arr.click(clickHandler);
+  for (var i = 0; i < arr_size; i++){
+    empty.push("");
+  }
+  answer = av.ds.array(empty, {indexed: false});
+  $("#reset").click(function(){
+    selectedFunctions = [];
+    randomize(arr_size);
+    for(var i = 0; i < arr_size; i++){
+      arr.value(i, selectedFunctions[i]);
+      answer.value(i, "");
+    }
+    arr.click(clickHandler);
+  });
+}
+
+var randomize = function (arr_size){
+  var count = 0;
+  var randomIndex;
+  while(count < arr_size){
+    randomIndex = Math.floor((Math.random() * 10) + 2);
+    if(selectedFunctions.indexOf(randomIndex) == -1){
+      selectedFunctions.push(randomIndex);
+      count++;
+    }
+  }
+};
+
+var clickHandler = function(index, e){
+  if(!userSelect){
+    arr.css(index, {"font-size": "130%"});
+    userSelect = true;
+    prevSelected = index;
+  }
+  else{
+    if(index == prevSelected){
+      arr.css(index, {"font-size": "100%"}); 
+      userSelect = false;
+    }
+  }
+}; 
+</script>
+
+<div class="exercise">
+  <div class="vars">
+    <var id="arr_size">6</var>
+    <var id="JSAV">initJSAV(arr_size)</var>
+  </div>
+
+  <div class="problems">
+    <div> <!-- Supresses answer box -->
+      <div class="question">
+        <p>Your task in this exercise is to put the functions from the first list into
+           their appropriate positions in the empty list so that finally the empty list will 
+           contain all the functions in order of their growth rates.</p>
+        <input id="reset" type="button" value="Reset" />
+        <div id="jsav" class="jsavcanvas"></div>
+      </div>
+      <div class="solution" data-type="custom">
+        <div class="validator-function">
+        
+        </div>
+      </div>
+      <div class="hints">
+        <p>What does Bubble Sort do?</p>
+        <p>Move from left to right through the array.</p>
+        <p>At each position, if the value is greater than the value to
+           its right, then swap them.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -93,6 +93,12 @@
             "required": true,
             "points": 2.0,
             "threshold": 5
+           },
+           "GrowthRates": {
+            "long_name": "Growth Rates Ordering Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
            }
         }
       },
