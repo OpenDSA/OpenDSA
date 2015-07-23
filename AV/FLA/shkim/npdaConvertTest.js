@@ -13,26 +13,39 @@
 		emptystring = g.emptystring;
 		var gWidth = g.element.width(),
 			gHeight = g.element.height();
-  		var a = g.addNode({left: 0.10 * gWidth, top: 0.3 * gHeight}),		
-      		b = g.addNode({left: 0.35 * gWidth, top: 0.3 * gHeight}),
-      		c = g.addNode({left: 0.60 * gWidth, top: 0.3 * gHeight}),
-      		d = g.addNode({left: 0.25 * gWidth, top: 0.7 * gHeight}),
-      		e = g.addNode({left: 0.50 * gWidth, top: 0.7 * gHeight}),
-      		f = g.addNode({left: 0.85 * gWidth, top: 0.3 * gHeight});
+  		// var a = g.addNode({left: 0.10 * gWidth, top: 0.3 * gHeight}),		
+    //   		b = g.addNode({left: 0.35 * gWidth, top: 0.3 * gHeight}),
+    //   		c = g.addNode({left: 0.60 * gWidth, top: 0.3 * gHeight}),
+    //   		d = g.addNode({left: 0.25 * gWidth, top: 0.7 * gHeight}),
+    //   		e = g.addNode({left: 0.50 * gWidth, top: 0.7 * gHeight}),
+    //   		f = g.addNode({left: 0.85 * gWidth, top: 0.3 * gHeight});
+    //   	g.makeInitial(a);
+    //   	f.addClass('final');
+
+	   //  g.addEdge(a, b, {weight: 'a:Z:aZ'});
+
+	   //  g.addEdge(b, c, {weight: 'b:a:xb'});
+
+	   //  g.addEdge(c, d, {weight: emptystring + ':x:' + emptystring});
+
+	   //  //g.addEdge(b, d, {weight: 'b:a:b'});
+
+	   //  g.addEdge(d, e, {weight: 'c:b:' + emptystring});
+
+	   //  g.addEdge(e, f, {weight: 'd:Z:' + emptystring});
+		
+		var a = g.addNode({left: 0.10 * gWidth, top: 0.3 * gHeight}),
+      		b = g.addNode({left: 0.60 * gWidth, top: 0.3 * gHeight}),
+      		c = g.addNode({left: 0.25 * gWidth, top: 0.7 * gHeight}),
+      		d = g.addNode({left: 0.85 * gWidth, top: 0.7 * gHeight});
       	g.makeInitial(a);
-      	f.addClass('final');
+      	d.addClass('final');
 
 	    g.addEdge(a, b, {weight: 'a:Z:aZ'});
 
-	    g.addEdge(b, c, {weight: 'b:a:xb'});
+	    g.addEdge(b, c, {weight: 'b:a:'+emptystring});
 
-	    g.addEdge(c, d, {weight: emptystring + ':x:' + emptystring});
-
-	    //g.addEdge(b, d, {weight: 'b:a:b'});
-
-	    g.addEdge(d, e, {weight: 'c:b:' + emptystring});
-
-	    g.addEdge(e, f, {weight: 'd:Z:' + emptystring});
+	    g.addEdge(c, d, {weight: 'd:Z:' + emptystring});
 	
 		return g;
     };
@@ -192,7 +205,7 @@
 			if (m) { m.clear();}
 			m = new jsav.ds.matrix(converted, {container: $('#editable')});
 			if (checkConversion()) {
-				var confirmed = confirm("Grammar completed! Export?");
+				var confirmed = confirm("Grammar completed! Export?\nExporting will replace the temporary variables.");
 				if (confirmed) {
 					exportConverted();
 				}
