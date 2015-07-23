@@ -624,7 +624,7 @@
 	    } else {
 	      	xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
 	      	xmlDoc.async=false;
-	      	xmlDoc.loadXML(txt);
+	      	xmlDoc.loadXML(text);
 	    }
 	    if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue !== 'pda') {
 	      	alert('File does not contain a pushdown automaton.');

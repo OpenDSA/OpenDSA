@@ -2868,7 +2868,7 @@ It may even be better to move the proofs into separate demos.
     } else {
       xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
       xmlDoc.async=false;
-      xmlDoc.loadXML(txt);
+      xmlDoc.loadXML(text);
     }
     if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue !== 'grammar') {
       alert('File does not contain a grammar.');
