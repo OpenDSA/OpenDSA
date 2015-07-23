@@ -740,7 +740,6 @@
 		window.alert("Beware that the minimization algorithm will fail on an incomplete DFA.");
 		localStorage['minimizeDFA'] = true;
 		localStorage['toMinimize'] = serialize(g);
-		window.alert(localStorage['toMinimize']);
 		window.open("../../shkim/minimizationTest.html");
 	}
 

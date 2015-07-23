@@ -69,12 +69,6 @@
 		arr = jsav.ds.array(textArray, {element: $('.arrayPlace')});
 		jsav.displayInit();
 
-		var failingIndex = inputString.length - 1;
-		var finalIndex = inputString.length - 1;
-		if (!inputString) {
-			finalIndex = 0;
-		}
-
 		for (var i = 0; i < inputString.length; i++) {
 			for (var j = 0; j < currentStates.length; j++) {
 		   		currentStates[j].removeClass('current');
@@ -85,7 +79,6 @@
 		   			currentStates[k].addClass('rejected');
 		   		}
 		   		arr.css(i, {"background-color": "red"});
-		   		failingIndex = i;
 		   		jsav.step();
 		   		break;
 		   	}
@@ -98,18 +91,24 @@
 		for (var k = 0; k < currentStates.length; k++) {
 			if (currentStates[k].hasClass('final') && nextStates.length > 0) {
 				currentStates[k].addClass('accepted');
-				arr.css(finalIndex, {"background-color": "green"});
-				jsav.umsg("Accepted");
 				rejected = false;
 			}
 		}
+
 		if (rejected) {
-			for (var l = failingIndex; l < inputString.length - 1; l++) {
+			for (var l = 0; l < inputString.length; l++) {
 				arr.css(l, {"background-color": "red"});
 			}
-			arr.css(finalIndex, {"background-color": "red"});
 			jsav.umsg("Rejected");
 		}
+
+		else {
+			for (var l = 0; l < inputString.length; l++) {
+				arr.css(l, {"background-color": "green"});
+			}
+			jsav.umsg("Accepted");
+		}
+
 		var nodes = g.nodes();
 		for (var next = nodes.next(); next; next = nodes.next()) {
 			if (next.hasClass('current') && rejected) {
@@ -117,6 +116,7 @@
 			}
 			next.removeClass('current');
 		}
+		
 		jsav.step();
 		jsav.recorded();
 		arr.click(arrayClickHandler);
@@ -139,12 +139,6 @@
 		arr = jsav.ds.array(textArray, {element: $('.arrayPlace')});
 		jsav.displayInit();
 
-		var failingIndex = inputString.length - 1;
-		var finalIndex = inputString.length - 1;
-		if (!inputString) {
-			finalIndex = 0;
-		}
-
 		for (var i = 0; i < inputString.length; i++) {
 			for (var j = 0; j < currentStates.length; j++) {
 		   		currentStates[j].removeClass('current');
@@ -157,7 +151,6 @@
 		   			currentStates[k].addClass('rejected');
 		   		}
 		   		arr.css(i, {"background-color": "red"});
-		   		failingIndex = i;
 		   		jsav.step();
 		   		break;
 		   	}
@@ -173,18 +166,24 @@
 		for (var k = 0; k < currentStates.length; k++) {
 			if (currentStates[k].hasClass('final') && nextStates.length > 0) {
 				currentStates[k].addClass('accepted');
-				arr.css(finalIndex, {"background-color": "green"});
-				jsav.umsg("Accepted");
 				rejected = false;
 			}
 		}
+		
 		if (rejected) {
-			for (var l = failingIndex; l < inputString.length - 1; l++) {
+			for (var l = 0; l < inputString.length; l++) {
 				arr.css(l, {"background-color": "red"});
 			}
-			arr.css(finalIndex, {"background-color": "red"});
 			jsav.umsg("Rejected");
 		}
+
+		else {
+			for (var l = 0; l < inputString.length; l++) {
+				arr.css(l, {"background-color": "green"});
+			}
+			jsav.umsg("Accepted");
+		}
+
 		var nodes = g.nodes();
 		for (var next = nodes.next(); next; next = nodes.next()) {
 			if (next.hasClass('current') && rejected) {
@@ -192,6 +191,7 @@
 			}
 			next.removeClass('current');
 		}
+
 		var edges = g.edges();
 		for (var next = edges.next(); next; next = edges.next()) {
 			next.removeClass('edgeSelect');
@@ -201,6 +201,7 @@
 		   	unbold = w.join("");
 		   	next.weight(unbold);
 		}
+
 		jsav.step();
 		jsav.recorded();
 		arr.click(arrayClickHandler);

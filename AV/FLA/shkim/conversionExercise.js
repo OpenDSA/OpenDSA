@@ -68,7 +68,6 @@
 	   		}
 	   		edge.layout();
 	   	}
-	   	graph.layout();
 		graph.updateAlphabet();
 		alphabet = Object.keys(graph.alphabet).sort();
 		$("#alphabet").html("" + alphabet);

@@ -81,13 +81,6 @@
 		arr = jsav.ds.array(textArray, {element: $('.arrayPlace')});
 		jsav.displayInit();
 
-		// Used to track which index in the input string the traversal fails on (if it does), and therefore which indices in the JSAV array to color red.
-		var failingIndex = inputString.length - 1;
-		var finalIndex = inputString.length - 1;
-		if (!inputString) {
-			finalIndex = 0;
-		}
-
 		// Iterate over each character in the input string.
 		for (var i = 0; i < inputString.length; i++) {
 			// "Current" is used to mark states as visited, so start by removing "Current" from every node.
@@ -102,8 +95,7 @@
 		   			currentStates[k].addClass('rejected');
 		   		}
 		   		arr.css(i, {"background-color": "red"});
-		   		// Note where the traversal failed in the input string, add a step to the slideshow, and break out of the loop.
-		   		failingIndex = i;
+		   		// Add a step to the slideshow and break out of the loop.
 		   		jsav.step();
 		   		break;
 		   	}
@@ -119,19 +111,26 @@
 			if (currentStates[k].hasClass('final') && nextStates.length > 0) {
 				// If there are no next states, it means the break statement in line 128 was triggered. Otherwise, we know we made it to the end of the input string.
 				currentStates[k].addClass('accepted');
-				arr.css(finalIndex, {"background-color": "green"});
-				jsav.umsg("Accepted");
 				rejected = false;
 			}
 		}
+
 		if (rejected) {
-			// If the input string was rejected, color red every character in the JSAV array we could not traverse on (or just the final character, if we simply did not finish on a final state).
-			for (var l = failingIndex; l < inputString.length - 1; l++) {
+			// If the input string was rejected, color every character in the JSAV array red.
+			for (var l = 0; l < inputString.length; l++) {
 				arr.css(l, {"background-color": "red"});
 			}
-			arr.css(finalIndex, {"background-color": "red"});
 			jsav.umsg("Rejected");
 		}
+
+		else {
+			// If the input string was accepted, color every character in the JSAV array green.
+			for (var l = 0; l < inputString.length; l++) {
+				arr.css(l, {"background-color": "green"});
+			}
+			jsav.umsg("Accepted");
+		}
+
 		// If the input string was rejected, label every current node as rejected.
 		var nodes = g.nodes();
 		for (var next = nodes.next(); next; next = nodes.next()) {
@@ -140,6 +139,7 @@
 			}
 			next.removeClass('current');
 		}
+
 		// Add the last step to the slideshow, stop recording the slideshow, and add the click handler to the JSAV array.
 		jsav.step();
 		jsav.recorded();
@@ -168,13 +168,6 @@
 		arr = jsav.ds.array(textArray, {element: $('.arrayPlace')});
 		jsav.displayInit();
 
-		// Used to track which index in the input string the traversal fails on (if it does), and therefore which indices in the JSAV array to color red.
-		var failingIndex = inputString.length - 1;
-		var finalIndex = inputString.length - 1;
-		if (!inputString) {
-			finalIndex = 0;
-		}
-
 		// Iterate over each character in the input string.
 		for (var i = 0; i < inputString.length; i++) {
 			// "Current" is used to mark states as visited, so start by removing "Current" from every node.
@@ -191,8 +184,7 @@
 		   			currentStates[k].addClass('rejected');
 		   		}
 		   		arr.css(i, {"background-color": "red"});
-		   		// Note where the traversal failed in the input string, add a step to the slideshow, and break out of the loop.
-		   		failingIndex = i;
+		   		// Add a step to the slideshow and break out of the loop.
 		   		jsav.step();
 		   		break;
 		   	}
@@ -211,19 +203,26 @@
 			if (currentStates[k].hasClass('final') && nextStates.length > 0) {
 				// If there are no next states, either we finished in the middle of edges, or the break statement in line 217 was triggered.
 				currentStates[k].addClass('accepted');
-				arr.css(finalIndex, {"background-color": "green"});
-				jsav.umsg("Accepted");
 				rejected = false;
 			}
 		}
+		
 		if (rejected) {
-			// If the input string was rejected, color red every character in the JSAV array we could not traverse on (or just the final character, if we simply did not finish on a final state).
-			for (var l = failingIndex; l < inputString.length - 1; l++) {
+			// If the input string was rejected, color every character in the JSAV array red.
+			for (var l = 0; l < inputString.length; l++) {
 				arr.css(l, {"background-color": "red"});
 			}
-			arr.css(finalIndex, {"background-color": "red"});
 			jsav.umsg("Rejected");
 		}
+
+		else {
+			// If the input string was accepted, color every character in the JSAV array green.
+			for (var l = 0; l < inputString.length; l++) {
+				arr.css(l, {"background-color": "green"});
+			}
+			jsav.umsg("Accepted");
+		}
+
 		// If the input string was rejected, label every current node as rejected.
 		var nodes = g.nodes();
 		for (var next = nodes.next(); next; next = nodes.next()) {
@@ -232,6 +231,7 @@
 			}
 			next.removeClass('current');
 		}
+
 		// Un-bold all of the edges and edge transitions.
 		var edges = g.edges();
 		for (var next = edges.next(); next; next = edges.next()) {
@@ -242,6 +242,7 @@
 		   	unbold = w.join("");
 		   	next.weight(unbold);
 		}
+
 		// Add the last step to the slideshow, stop recording the slideshow, and add the click handler to the JSAV array.
 		jsav.step();
 		jsav.recorded();
