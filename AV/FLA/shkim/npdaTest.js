@@ -1,12 +1,12 @@
 (function ($) {
 	var jsav = new JSAV("av"),
-		saved = false,
 		selectedNode = null,
-		arr,
-		g;
-	// Empty string can be set to anything when initializing the graph:
-	// e.g. initGraph({layout: "automatic", emptystring: epsilon})
-	// By default it is set to lambda.
+		g;				// the PDA
+	/*
+	Empty string can be set to anything when initializing the graph:
+	e.g. initGraph({layout: "automatic", emptystring: epsilon});
+	By default it is set to lambda.
+	*/
 	var lambda = String.fromCharCode(955),
 		epsilon = String.fromCharCode(949),
 		emptystring;

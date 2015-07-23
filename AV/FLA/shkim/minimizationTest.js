@@ -1,3 +1,10 @@
+/*
+Demo for interactive DFA minimization.
+While it has the option to split a minimization tree node automatically,
+it lacks the option to do the entire minimization automatically.
+Furthermore, the current implementation of the algorithm is inefficient;
+if computational complexity is a concern, should be changed to use a union-find structure.
+*/
 (function ($) {
 	// gets the leaf values of a tree
 	var getLeaves = function(node) {
@@ -515,7 +522,7 @@
 			return;
 		}
 	};
-	// make the partitions automatically
+	// Split a node automatically
 	// ignores the terminal that the user inputted (should be changed)
 	var autoPartition = function() {
 		// if the user was making the partitions, delete them

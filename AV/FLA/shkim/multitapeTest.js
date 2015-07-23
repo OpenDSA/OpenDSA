@@ -1,12 +1,11 @@
 (function ($) {
 	localStorage["jsav-speed"] = 0;		// set default animation speed to max
 	var jsav = new JSAV("av"),
-		saved = false,
 		selectedNode = null,
 		tapeNumber = 2,					// default number of tapes
 		first, 							// keeps track of the selected node for the editing prompt
 		second,							// keeps track of the second node in an edge for the editing prompt
-		g;
+		g;								// the TM
 
 	var lambda = String.fromCharCode(955),
 		epsilon = String.fromCharCode(949),
