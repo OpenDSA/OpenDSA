@@ -43,7 +43,7 @@
 
 	function deserialize (data) {
 		var gg = jQuery.parseJSON(data);
-		var graph = jsav.ds.fa({width: '45%', height: 440, layout: 'automatic', element: $('#reference')});
+		var graph = jsav.ds.fa({width: '45%', height: 440, layout: 'manual', element: $('#reference')});
 		for (var i = 0; i < gg.nodes.length; i++) {
 	    	var node = graph.addNode('q' + i),
 	    		offset = $('.jsavgraph').offset(),
@@ -68,6 +68,7 @@
 	   		}
 	   		edge.layout();
 	   	}
+	   	graph.layout();
 		graph.updateAlphabet();
 		alphabet = Object.keys(graph.alphabet).sort();
 		$("#alphabet").html("" + alphabet);
