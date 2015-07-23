@@ -1,28 +1,35 @@
+/*
+Grammar demo.
+This is a large file - should be split up into multiple files.
+It may even be better to move the proofs into separate demos.
+*/
 (function ($) {
   var variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var jsav = new JSAV("av");
   var arrow = String.fromCharCode(8594),
-      lastRow,          // index of the last visible row (the empty row)
-      arr,              // the grammar
-      backup = null,    // a copy of the original grammar (as a string) before it is transformed
-      m,
-      tGrammar,         // transformed grammar
-      derivationTable,
-      parseTableDisplay,
-      parseTree,
-      ffTable,          // table for FIRST and FOLLOW sets
-      arrayStep,  
-      selectedNode,     // used for FA/graph editing
-      modelDFA,         // DFA used to build SLR parse table
-      builtDFA;         // DFA created by the user
+      lastRow,            // index of the last visible row (the empty row)
+      arr,                // the grammar
+      backup = null,      // a copy of the original grammar (as a string) before it is transformed
+      m,                  // the grammar table
+      tGrammar,           // transformed grammar
+      derivationTable,    // the derivation table shown during brute-force parsing
+      parseTableDisplay,  // the parse table
+      parseTree,          // parse tree shown during parsing slideshows
+      ffTable,            // table for FIRST and FOLLOW sets
+      arrayStep,          // the position of FIRST or FOLLOW cells
+      selectedNode,       // used for FA/graph editing
+      modelDFA,           // DFA used to build SLR parse table
+      builtDFA;           // DFA created by the user
 
   var lambda = String.fromCharCode(955),
       epsilon = String.fromCharCode(949),
       square = String.fromCharCode(9633),
       dot = String.fromCharCode(183),
       emptystring = lambda;
-
-  // if there is a grammar in local storage, load that grammar (used to export/import grammars)
+  /*
+  If there is a grammar in local storage, load that grammar.
+  This is used to import grammars from certain proofs.
+  */
   if (localStorage["grammar"]) {
     // the grammar is saved as a string of a list of strings:
     // turn each production into an array containing the left side, arrow, and right side
@@ -35,7 +42,6 @@
     // add an empty row for editing purposes (clicking the empty row allows the user to add productions)
     arr.push(["", arrow, ""]);
     // clear the grammar from local storage to prevent it from being loaded by other grammar tests
-    // (like the original grammar before exporting)
     localStorage.removeItem('grammar');
   } else {
     arr = new Array(20);    // arbitrary array size
@@ -45,7 +51,7 @@
     lastRow = 0;
   }
   
-  // fix a single column width
+  // Function to lay out a single column width
   var layoutColumn = function (mat, index) {
     var maxWidth = 100;     // default cell size
     for (var i = 0; i < mat._arrays.length; i++) {
@@ -61,7 +67,7 @@
       }
     }
   };
-  // fix table column widths
+  // Function to fix all table column widths
   var layoutTable = function (mat, index) {
     // if column index is given, does layout for that column, otherwise lays out all columns
     if (typeof index === 'undefined') {
@@ -74,17 +80,17 @@
     mat.layout();
   };
 
-  // initializes/reinitializes the grammar display
+  // Function to initialize/reinitialize the grammar display
   var init = function () { 
     if (m) {
       m.clear();
     }
     var m2 = jsav.ds.matrix(arr, {style: "table"});
+    // hide all of the empty rows
     for (var i = lastRow + 1; i < arr.length; i++) {
       m2._arrays[i].hide();
     }
     layoutTable(m2, 2);
-    //m2.layout();
     m2.on('click', matrixClickHandler);
     return m2;
   };
@@ -115,6 +121,7 @@
       fi.outerHeight($('.jsavvalue').height());
       fi.width($(this._arrays[index]._indices[index2].element).width());
       fi.focus();
+      // finalize the changes to the grammar when the enter key is pressed
       fi.keyup(function(event){
         if(event.keyCode == 13){
           var input = $(this).val();
@@ -149,7 +156,7 @@
       });
     }
   };
-  // check to see if a new row should be added
+  // Function to check to see if a new row should be added and lengthen the array
   var addProduction = function (index) {
     if (m.value(index, 0) && index === lastRow) {
       // if array out of bounds, double the array size and recreate the matrix
@@ -163,7 +170,6 @@
       } 
       m._arrays[lastRow + 1].show();
       lastRow++;
-      //m.layout();
     }
   };
 
@@ -171,10 +177,11 @@
   $('.jsavmatrix').addClass("editMode");
 
   //=================================
-  // parsing
+  // Parsing
 
   // brute force parsing
   var bfParse = function () {
+    // get productions (gets a clone of the grammar with the empty rows removed)
     var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
     if (productions.length === 0) {
       alert('No grammar.');
@@ -187,8 +194,11 @@
     }
     startParse();
     $('#bfpbutton').show();
+    /*
+    Set the height of the canvas manually:
+    Auto height does not factor in the heights of JSAV elements created with "relativeTo" turned on
+    */
     $('.jsavcanvas').height(450);
-    // get productions (gets a clone of the grammar with the empty rows removed)
     var table = {};   // maps each sentential form to the rule that produces it
     var sententials = [];
     var next;
@@ -224,6 +234,7 @@
     counter = 0;
     while (true) {
       counter++;
+      // ask the user to continue if parsing is taking a long time
       if (counter > 5000) {
         console.warn(counter);
         var confirmed = confirm('This is taking a while. Continue?');
@@ -234,6 +245,7 @@
         }
       }
       next = sententials.pop();
+      // stop parsing if the input string has been derived or if there are no more derivations
       if (next === inputString) {
         break;
       }
@@ -284,8 +296,10 @@
               else if (sententials.indexOf(s) !== -1) {
                 keep = false;
               }
-              // prune if the number of terminals and non-lambda deriving variables is
-              // greater than the length of the input string
+              /*
+              prune if the number of terminals and non-lambda deriving variables is
+              greater than the length of the input string
+              */
               else if (_.filter(s, function(x) {
                   return variables.indexOf(x) === -1 || derivers.indexOf(x) === -1;
                 }).length > inputString.length) {
@@ -309,7 +323,7 @@
       var temp = next;
       var results = [];   // derivation table
       counter = 0;
-      // go through the table of sentential forms to productions in order to get the trace
+      // go through the map of sentential forms to productions in order to get the trace
       do {                // handles the case where inputstring is the emptystring
         counter++;
         if (counter > 500) {
@@ -393,11 +407,13 @@
       jsav.umsg('"' + inputString + '" rejected');
     }
   }; 
-
-  // checks if FIRST / FOLLOW sets are correct (either FIRST sets or FOLLOW sets)
-  // returns a list of the incorrect variables
+  /*
+  Function to check if FIRST / FOLLOW sets are correct (either FIRST sets or FOLLOW sets).
+  Returns a list of the incorrect variables.
+  */
   var checkTable = function (firsts, follows) {
     var checker;
+    // arrayStep can be 1 or 2
     if (arrayStep === 1) {
       checker = firsts;
     } else {
@@ -418,7 +434,7 @@
     return incorrect
   };
 
-  // checks if the parse table is correct and transition
+  // Function to check if the parse table is correct and transition
   var checkParseTable = function (parseTableDisplay, parseTable) {
     $('#firstinput').remove();
     var incorrect = false;
@@ -432,6 +448,7 @@
         }
       }
     }
+    // provide option to automatically complete the parse table
     if (incorrect) {
       var confirmed = confirm('Highlighted cells are incorrect.\nFix automatically?');
       if (confirmed) {
@@ -472,6 +489,7 @@
     fi.outerHeight($('.jsavvalue').height());
     fi.width(w);
     fi.focus();
+    // finalize changes when enter key is pressed
     fi.keyup(function(event){
       if(event.keyCode == 13){
         var firstInput = $(this).val();
@@ -491,10 +509,12 @@
   };
 
   // click handler for the parse table
-  var parseTableHandler = function (index, index2, e) {    
+  var parseTableHandler = function (index, index2, e) { 
+    // ignore if first row or column   
     if (index === 0 || index2 === 0) { return; }
     var self = this;
     var prev = this.value(index, index2);
+    // create input box
     $('#firstinput').remove();
     var createInput = "<input type='text' id='firstinput' value="+prev+">";
     $('body').append(createInput);
@@ -506,6 +526,7 @@
     fi.outerHeight($('.jsavvalue').height());
     fi.width($(this._arrays[index]._indices[index2].element).width());
     fi.focus();
+    // finalize changes when enter key is pressed
     fi.keyup(function(event){
       if(event.keyCode == 13){
         var firstInput = $(this).val();
@@ -517,10 +538,11 @@
     });
   };
 
-  // transitions from editing FIRST sets to editing FOLLOW sets
+  // Function to transition from editing FIRST sets to editing FOLLOW sets
   var continueToFollow = function (firsts, follows) {
     $('#firstinput').remove();
     var incorrect = checkTable(firsts, follows);
+    // provide option to complete the FIRST sets automatically
     if (incorrect.length > 0) {
       var confirmed = confirm('The following sets are incorrect: ' + incorrect + '.\nFix automatically?');
       if (confirmed) {
@@ -550,8 +572,7 @@
       alert('No grammar.');
       return;
     }
-    var pDict = {};
-    // a dictionary mapping left sides to right sides
+    var pDict = {};     // a dictionary mapping left sides to right sides
     for (var i = 0; i < productions.length; i++) {
       if (!(productions[i][0] in pDict)) {
         pDict[productions[i][0]] = [];
@@ -595,8 +616,10 @@
     for (var i = 0; i < v.length; i++) {
       follows[v[i]] = follow(v[i], productions, pDict, derivers).sort();
     }
-    // parseTable is the parse table, while parseTableDisplay is the matrix displayed to the user.
-    // (parseTableDisplay includes the row/column headers)
+    /*
+    parseTable is the parse table, while parseTableDisplay is the matrix displayed to the user.
+    parseTableDisplay includes the row/column headers (which are ignored by the click handler).
+    */
     var parseTable = [];
     for (var i = 0; i < v.length; i++) {
       var a = [];
@@ -605,12 +628,14 @@
       }
       parseTable.push(a);
     }
+    // fill in parseTable
     for (var i = 0; i < productions.length; i++) {
       var pFirst = first(productions[i][2], pDict, derivers);
       var vi = v.indexOf(productions[i][0]);
       for (var j = 0; j < pFirst.length; j++) {
         var ti = t.indexOf(pFirst[j]);
         if (pFirst[j] !== emptystring && ti !== -1) {
+          // exit parsing if a parse table conflict is found
           if (parseTable[vi][ti] && parseTable[vi][ti] !== productions[i][2]) {
             alert('This grammar is not LL(1)!');
             return;
@@ -619,11 +644,11 @@
         } 
       }
       if (pFirst.indexOf(emptystring) !== -1) {
-        //var pFollow = follow(productions[i][0]);
         var pFollow = follows[productions[i][0]];
         for (var j = 0; j < pFollow.length; j++) {
           var ti = t.indexOf(pFollow[j]);
           if (pFollow[j] !== emptystring && ti !== -1) {
+            // exit parsing if a parse table conflict is found
             if (parseTable[vi][ti] && parseTable[vi][ti] !== productions[i][2]) {
               alert('This grammar is not LL(1)!');
               return;
@@ -659,10 +684,11 @@
       }
     });
 
-    // check FOLLOW set and transition to parse table editing
+    // Function to check FOLLOW set and transition to parse table editing
     var continueToParseTable = function () {
       $('#firstinput').remove();
       var incorrect = checkTable(firsts, follows);
+      // provide option to complete FOLLOW sets automatically
       if (incorrect.length > 0) {
         var confirmed = confirm('The following sets are incorrect: ' + incorrect + '.\nFix automatically?');
         if (confirmed) {
@@ -704,7 +730,7 @@
       }
       startParse();
       $(m.element).css("margin-left", "auto");
-      // $(m.element).css('position', 'absolute');
+      //$(m.element).css('position', 'absolute');
       var pTableDisplay = [];
       pTableDisplay.push([""].concat(t));
       for (var i = 0; i < v.length; i++) {
@@ -713,7 +739,7 @@
       //jsav.label('Grammar', {relativeTo: m, anchor: "center top", myAnchor: "center bottom"});
       parseTableDisplay = new jsav.ds.matrix(pTableDisplay);
       layoutTable(parseTableDisplay);
-      // parseTableDisplay = new jsav.ds.matrix(pTableDisplay, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
+      //parseTableDisplay = new jsav.ds.matrix(pTableDisplay, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
       var remainingInput = inputString + '$';
       // display remaining input and the parse stack
       jsav.umsg('<mark>' + remainingInput[0] + '</mark>' + remainingInput.substring(1) + ' | <mark>' + productions[0][0] + '</mark>');
@@ -876,8 +902,9 @@
       
   };
 
-  // click handler for the DFA graph window
+  // click handler for the DFA graph window/canvas
   var graphHandler = function (e) {
+    // if moving nodes
     if ($('.jsavgraph').hasClass('movenodes')) {
       var nodeX = selectedNode.element.width()/2.0,
           nodeY = selectedNode.element.height()/2.0;
@@ -931,7 +958,12 @@
     }
   };
 
-  // SLR(1) parsing
+  /*
+  SLR(1) parsing
+  Does not check to see if the grammar is correct format.
+  Does not check for parse table conflicts!
+  JFLAP allows users to choose which to use during conflicts.
+  */
   var slrParse = function () {
     var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
     if (productions.length === 0) {
@@ -1053,6 +1085,7 @@
         break;
       }
     };
+    // get FIRSTs and FOLLOWs
     var firsts = {};
     for (var i = 0; i < v.length; i++) {
       firsts[v[i]] = first(v[i], pDict, derivers).sort();
@@ -1062,14 +1095,15 @@
       follows[v[i]] = follow(v[i], productions, pDict, derivers).sort();
     }
 
-    // add the S' -> S production
+    // add the extra S' -> S production
     pDict["S'"] = productions[0][0];
     if (productions[0][0] in derivers) {
       derivers["S'"] = true;
     }
     productions.unshift(["S'", arrow, productions[0][0]]);
 
-    // create parse table using the DFA
+    // Create parse table using the DFA
+    // Does not check for conflicts!
     nodes.reset();
     var index = 0;
     for (var next = nodes.next(); next; next = nodes.next()) {
@@ -1128,7 +1162,6 @@
     $('.jsavcontrols').hide();
 
     // interactable FIRST/FOLLOW, same as LL parsing
-    
     ffTable.click(firstFollowHandler);
     $('#followbutton').click(function () {
       var check = continueToFollow(firsts, follows);
@@ -1136,10 +1169,11 @@
         $('#slrdfabutton').show();
       }
     });
-    // check FOLLOW sets and initialize the DFA
+    // Function to check FOLLOW sets and initialize the DFA
     var continueToDFA = function () {
       $('#firstinput').remove();
       var incorrect = checkTable(firsts, follows);
+      // provide option to complete the FOLLOW sets automatically
       if (incorrect.length > 0) {
         var confirmed = confirm('The following sets are incorrect: ' + incorrect + '.\nFix automatically?');
         if (confirmed) {
@@ -1156,7 +1190,7 @@
       $('#slrdfabutton').hide();
       $('#parsetablebutton').show();
       jsav.umsg('Build the DFA.');
-      //modelDFA.hide();
+      // create the DFA
       builtDFA = jsav.ds.fa({width: '90%', height: 440});
       builtDFA.click(dfaHandler);
       $('.jsavgraph').click(graphHandler);
@@ -1170,6 +1204,7 @@
         window.open('slrGoTo.html', '', 'width = 800, height = 750, screenX = 300, screenY = 25');
         jsav.umsg("Add the initial node.");
       } else {
+        // initial state is added automatically
         var builtInitial = builtDFA.addNode({left: 50, top: 50});
         builtDFA.makeInitial(builtInitial);
         builtInitial.stateLabel(modelDFA.initial._stateLabel.element[0].innerHTML);
@@ -1178,7 +1213,7 @@
     };
     $('#slrdfabutton').click(continueToDFA);
 
-    // check DFA and transition to the parse table
+    // Function to check the DFA and transition to the parse table
     var continueToParseTable = function () {
       var edges1 = modelDFA.edges();
       var edges2 = builtDFA.edges();
@@ -1207,7 +1242,7 @@
       // if the number of transitions and number of nodes match, and final nodes are correct
       if (tCount1 !== tCount2 || modelDFA.nodeCount() !== builtDFA.nodeCount() || !correctFinals) {
         var confirmed = confirm('Not finished!\nFinish automatically?');
-        // "finish automatically" is just displaying the model DFA. This changes the layout
+        // "finish automatically" = displaying the model DFA. This changes the layout.
         if (confirmed) {
           builtDFA.clear();
           modelDFA.show();
@@ -1220,6 +1255,7 @@
       $('#parsetablebutton').hide();
       $('#parsereadybutton').show();
       jsav.umsg('Fill entries in parse table. ! is '+emptystring+'.');
+      // initialize parse table display
       var pTableDisplay = [];
       pTableDisplay.push([""].concat(tv));
       for (var i = 0; i < modelDFA.nodeCount(); i++) {
@@ -1228,7 +1264,6 @@
           toPush.push('');
         }
         pTableDisplay.push(toPush);
-        //pTableDisplay.push([v[i]].concat(parseTable[i]));
       }
       //jsav.label('Grammar', {relativeTo: m, anchor: "center top", myAnchor: "center bottom"});
       parseTableDisplay = new jsav.ds.matrix(pTableDisplay);
@@ -1239,6 +1274,7 @@
       checkParseTable(parseTableDisplay, parseTable);
     });
 
+    // do the parsing
     var continueParse = function () {
       var inputString = prompt('Input string');
       if (inputString === null) {
@@ -1266,7 +1302,6 @@
       jsav.umsg(remainingInput + ' | ' + productions[1][0]);
       
       jsav.displayInit();
-      // modelDFA.hide();
       // m.hide();
       // parseTableDisplay.hide();
       jsav.umsg(remainingInput + ' | ');
@@ -1367,7 +1402,7 @@
     };
     $('#parsebutton').click(continueParse);
   };
-  // adds closure to an item set
+  // Function to add closure to an item set
   var addClosure = function (items, productions) {
     // takes an array of strings
     var itemsStack = [];
@@ -1529,7 +1564,7 @@
     }
   };
 
-
+  // change editing modes
   var editMode = function() {
     $('.jsavmatrix').addClass("editMode");
     $('.jsavmatrix').removeClass("deleteMode");
@@ -1543,7 +1578,7 @@
   };
 
   //=================================
-  // transformations (automatic)
+  // Transformations (automatic)
 
   // remove lambda productions
   var removeLambda = function () {
@@ -1591,10 +1626,13 @@
     return ret;
   };
 
-  // NOTE: this function is used during parsing as well
+  /*
+  Function to find lambda-deriving variables.
+  A variable derives lambda if it directly produces lambda or if its right side is
+  composed only of lambda-deriving variables.
+  Used during parsing as well.
+  */
   var removeLambdaHelper = function (set, productions) {
-    // a variable derives lambda if it directly produces lambda or if its right side is
-    // composed only of lambda-deriving variables
     for (var i = 0; i < productions.length; i++) {
       if (productions[i][2] === emptystring || _.every(productions[i][2], function(x) { return x in set;})) {
         if (!(productions[i][0] in set)) {
@@ -1618,6 +1656,10 @@
   }
   // creates a generator for the combinations of variables to remove
   if (isGeneratorSupported()) {
+    /*
+    Generator function. 
+    Getting combinations should be reimplemented since generators do no have universal browser support.
+    */
     var getCombinations = function* (str, l) {
       for (var i = 0; i < str.length; i++) {
         if (l === 1) {
@@ -1659,7 +1701,7 @@
     return ret;
   };
 
-  // finds a unit production and adds one of the replacement productions
+  // Function to find a unit production and add one of the replacement productions
   var removeUnitHelper = function (productions, pDict) {
     for (var i = 0; i < productions.length; i++) {
       if (productions[i][2].length === 1 && variables.indexOf(productions[i][2]) !== -1) {
@@ -1721,7 +1763,7 @@
     var ret = _.map(transformed, function(x) {return x.join('');});
     return ret;
   };
-  // finds a deriver
+  // Function to get variables which can derive a string of terminals
   var findDerivable = function (set, productions) {
     for (var i = 0; i < productions.length; i++) {
       if (_.every(productions[i][2], function(x) { return x in set || variables.indexOf(x) === -1;})) {
@@ -1782,7 +1824,7 @@
         }
       }
     }
-    // break productions down into pairs of variables
+    // Function to break productions down into pairs of variables
     var chomskyHelper = function () {
       for (var i = 0; i < productions.length; i++) {
         var r = productions[i][2];
@@ -1821,9 +1863,9 @@
   };
 
   //=================================
-  // transformations (interactive)
+  // Transformations (interactive)
 
-  // checks to see if a step should be skipped
+  // Function to check to see if a step should be skipped
   var checkTransform = function (strP, g) {
     var inter = _.intersection(strP, g);
     if (inter.length === strP.length && inter.length === g.length) {
@@ -1831,7 +1873,7 @@
     }
     return false;
   };
-
+  // Function to start grammar transformation
   var transformGrammar = function () {
     if (typeof getCombinations === "undefined") {
       console.error("No generator support.");
@@ -1842,6 +1884,7 @@
       alert('No grammar.');
       return;
     }
+    // apply each transformation to the original grammar to find which step to start with
     var noLambda = removeLambda();
     var noUnit = removeUnit();
     var noUseless = removeUseless();
@@ -1987,10 +2030,10 @@
     // transition from finding lambda-deriving variables to modifying the grammar
     var continueLambda = function () {
       jsav.umsg("Modify the grammar to remove "+emptystring+". Set that derives "+emptystring+": [" + builtLambdaSet + ']');
-      // $(m.element).css("margin-left", "50px");
+      //$(m.element).css("margin-left", "50px");
       tGrammar = jsav.ds.matrix(tArr);
       layoutTable(tGrammar, 2);
-      // tGrammar = jsav.ds.matrix(tArr, {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
+      //tGrammar = jsav.ds.matrix(tArr, {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
       tGrammar.click(removeLambdaHandler);
     };
     m.click(findLambdaHandler);
@@ -2010,10 +2053,10 @@
     }
     $(m.element).css("margin-left", "auto");
     modelDFA = jsav.ds.graph({layout: "layered", directed: true});    //VDG
-    // modelDFA.css('display', 'inline-block')
-    // m.element.css('display', 'inline-block')
-    // $('#av').css('text-align', 'center')
-    // modelDFA = jsav.ds.graph({left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top", layout: "layered", directed: true});
+    //modelDFA.css('display', 'inline-block')
+    //m.element.css('display', 'inline-block')
+    //$('#av').css('text-align', 'center')
+    //modelDFA = jsav.ds.graph({left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top", layout: "layered", directed: true});
     for (var i = 0; i < v.length; i++) {
       modelDFA.addNode(v[i]);
     }
@@ -2431,9 +2474,9 @@
   };
 
   //=================================
-  // conversions
+  // Conversions
 
-  // check if the grammar is right-linear
+  // Function to check if the grammar is right-linear
   var checkRightLinear = function () {
     var productions = _.filter(arr, function(x) { return x[0]});
     for (var i = 0; i < productions.length; i++) {
@@ -2785,8 +2828,10 @@
   };
 
   //=================================
-  // files
-  // save
+  // Files
+
+  // Saving:
+  // Function to encode grammar to XML
   function serializeGrammar (g) {
     var text = '<?xml version="1.0" encoding="UTF-8"?>';
     text = text + "<structure>";
@@ -2800,6 +2845,7 @@
     text = text + "</structure>"
     return text;
   };
+  // Function to save and download the grammar
   var saveFile = function () {
     var productions = _.filter(arr, function(x) { return x[0]});
     if (productions.length === 0) {
@@ -2811,7 +2857,8 @@
     $('#download a')[0].click();
   };
 
-  // load
+  // Loading:
+  // Function to read the loaded XML file and create the grammar
   var parseFile = function (text) {
     var parser,
         xmlDoc;
@@ -2821,7 +2868,7 @@
     } else {
       xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
       xmlDoc.async=false;
-      xmlDoc.loadXML(txt);
+      xmlDoc.loadXML(text);
     }
     if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue !== 'grammar') {
       alert('File does not contain a grammar.');
@@ -2846,12 +2893,14 @@
     loaded.unwrap();
     return;
   };
+  // Function for reading the XML file
   var waitForReading = function (reader) {
     reader.onloadend = function(event) {
         var text = event.target.result;
         parseFile(text);
     }
   };
+  // Function to load in an XML file
   var loadFile = function () {
     var loaded = document.getElementById('loadfile');
     var file = loaded.files[0],
@@ -2861,7 +2910,7 @@
   };
 
   //=================================
-  // buttons for editing the SLR DFA
+  // Buttons for editing the SLR DFA
   $('#movebutton').click(function() {
     $('.jsavgraph').removeClass('addfinals');
     $('.jsavgraph').removeClass('builddfa');
@@ -2881,7 +2930,7 @@
     jsav.umsg('Build the DFA.');
   });
   //=================================
-  // button for exiting a proof (parsing or transformation)
+  // Button for exiting a proof (parsing or transformation)
   $('#backbutton').click(function () {
     if (parseTree) {
       parseTree.clear();

@@ -67,12 +67,6 @@
 		arr = jsav.ds.array(textArray, {element: $('.arrayPlace')});
 		jsav.displayInit();
 
-		var failingIndex = inputString.length - 1;
-		var finalIndex = inputString.length - 1;
-		if (!inputString) {
-			finalIndex = 0;
-		}
-
 		for (var i = 0; i < inputString.length; i++) {
 			currentState.removeClass('current');
 		   	var traverseStep = traverseMealy(g, currentState, inputString[i]);
@@ -80,7 +74,6 @@
 		   		currentState.addClass('rejected');
 		   		accepted = false;
 		   		arr.css(i, {"background-color": "red"});
-		   		failingIndex = i;
 		   		jsav.step();
 		   		break;
 		   	}
@@ -93,19 +86,22 @@
 		}
 		
 		if (accepted) {
+			for (var l = 0; l < inputString.length; l++) {
+				arr.css(l, {"background-color": "green"});
+			}
 			currentState.addClass('accepted');
-			arr.css(finalIndex, {"background-color": "green"});
 			if (!outputString) {
 				jsav.umsg("<b>Accepted</b>");
 			}
 		}
+
 		else {
-			for (var l = failingIndex; l < inputString.length - 1; l++) {
+			for (var l = 0; l < inputString.length; l++) {
 				arr.css(l, {"background-color": "red"});
 			}
-			arr.css(finalIndex, {"background-color": "red"});
 			jsav.umsg("<b>Rejected</b>");
 		}
+
 		jsav.step();
 		jsav.recorded();
 		arr.click(arrayClickHandler);
@@ -128,12 +124,6 @@
 		arr = jsav.ds.array(textArray, {element: $('.arrayPlace')});
 		jsav.displayInit();
 
-		var failingIndex = inputString.length - 1;
-		var finalIndex = inputString.length - 1;
-		if (!inputString) {
-			finalIndex = 0;
-		}
-
 		for (var i = 0; i < inputString.length; i++) {
 			if (currentState) {
 				currentState.removeClass('current');
@@ -148,7 +138,6 @@
 		   			}
 		   			accepted = false;
 		   			arr.css(i, {"background-color": "red"});
-		   			failingIndex = i;
 		   			jsav.step();
 		   			break;
 		   		}
@@ -169,21 +158,24 @@
 		}
 		
 		if (accepted) {
+			for (var l = 0; l < inputString.length; l++) {
+				arr.css(l, {"background-color": "green"});
+			}
 			if (currentState) {
 				currentState.addClass('accepted');
 			}
-			arr.css(finalIndex, {"background-color": "green"});
 			if (!outputString) {
 				jsav.umsg("<b>Accepted</b>");
 			}
 		}
+
 		else {
-			for (var l = failingIndex; l < inputString.length - 1; l++) {
+			for (var l = 0; l < inputString.length; l++) {
 				arr.css(l, {"background-color": "red"});
 			}
-			arr.css(finalIndex, {"background-color": "red"});
 			jsav.umsg("<b>Rejected</b>");
 		}
+
 		jsav.step();
 		jsav.recorded();
 		arr.click(arrayClickHandler);

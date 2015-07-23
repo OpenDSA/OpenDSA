@@ -59,7 +59,7 @@
 .jsavedge {
 	cursor: pointer;
 	stroke: black;
-	stroke-width: 1;
+	stroke-width: 2;
 }
 .testingLambda {
 	stroke-width: 3;
@@ -70,7 +70,7 @@
 	stroke: orange;
 }
 .edgeSelect {
-	stroke-width: 3;
+	stroke-width: 4;
 }
 .jsavedgelabel {
 	cursor: pointer;

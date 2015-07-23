@@ -2,9 +2,7 @@
 	var jsav = new JSAV("av"),
 		m,
 		g;
-	// Empty string can be set to anything when initializing the graph:
-	// e.g. initGraph({layout: "automatic", emptystring: epsilon})
-	// By default it is set to lambda.
+	
 	var lambda = String.fromCharCode(955),
 		epsilon = String.fromCharCode(949),
 		emptystring;
@@ -107,7 +105,6 @@
 		// attempts export
 		var exportConverted = function () {
 			// attempt to export
-			// localStorage['grammar'] = _.map(converted, function(x) {return x.join("")});
 			var toExport = true;
 			// attempt to convert temporary variables into grammar variables
 			for (var i = 0; i < converted.length; i++) {
@@ -143,7 +140,6 @@
 			var sorting = _.partition(converted, function(x) {return x[0] === 'S'});
 			converted = sorting[0].concat(sorting[1].sort());
 			// if the resulting grammar is small enough, open it in a new tab
-			// otherwise, open a new window with the temporary variables
 			if (toExport) {
 				localStorage['grammar'] = converted;
 				window.open("grammarTest.html", "_self");
@@ -202,14 +198,17 @@
 				}
 			}
 		};
+		//m = new jsav.ds.matrix(converted, {container: $('#editable')});
 		m = new jsav.ds.matrix([["","",""]], {container: $('#editable')});
 		jsav.umsg('Click transitions to add productions.');
 		g.click(convertEdgeHandler, {edge: true});
 	};
-	// checks the transitions of the PDA: 
-	// All transitions must pop exactly one symbol and push exactly zero or two symbols
-	// There must also be a single final state and at least one transition into the final 
-	// state that pops Z off the stack
+	/*
+	Function to check the transitions of the PDA for proper format: 
+	All transitions must pop exactly one symbol and push exactly zero or two symbols.
+	There must also be a single final state and at least one transition into the final 
+	state that pops Z off the stack.
+	*/
 	var checkFormat = function () {
 		var transitions = [];
 		var popZ = false;
@@ -256,7 +255,7 @@
 	    } else {
 	      	xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
 	      	xmlDoc.async=false;
-	      	xmlDoc.loadXML(txt);
+	      	xmlDoc.loadXML(text);
 	    }
 	    if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue !== 'pda') {
 	      	alert('File does not contain a pushdown automaton.');

@@ -1,12 +1,12 @@
 (function ($) {
 	var jsav = new JSAV("av"),
-		saved = false,
 		selectedNode = null,
-		arr,
-		g;
-	// Empty string can be set to anything when initializing the graph:
-	// e.g. initGraph({layout: "automatic", emptystring: epsilon})
-	// By default it is set to lambda.
+		g;				// the PDA
+	/*
+	Empty string can be set to anything when initializing the graph:
+	e.g. initGraph({layout: "automatic", emptystring: epsilon});
+	By default it is set to lambda.
+	*/
 	var lambda = String.fromCharCode(955),
 		epsilon = String.fromCharCode(949),
 		emptystring;
@@ -624,7 +624,7 @@
 	    } else {
 	      	xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
 	      	xmlDoc.async=false;
-	      	xmlDoc.loadXML(txt);
+	      	xmlDoc.loadXML(text);
 	    }
 	    if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue !== 'pda') {
 	      	alert('File does not contain a pushdown automaton.');
