@@ -405,7 +405,7 @@
 		g.initial.addClass('current');
 		var currentStates = [new Configuration(g.initial, ['Z'], inputString, 0)];
 		currentStates = addLambdaClosure(currentStates);
-		var configView = "";
+		var configView = "Configurations: ";
 	   	for (var j = 0; j < currentStates.length; j++) {
 	   		configView += currentStates[j].toString() + ' | ';
 	   	}
@@ -431,7 +431,7 @@
 		   		break;
 		   	}
 			currentStates = cur;
-		   	configView = "";
+		   	configView = "Configurations: ";
 		   	for (var j = 0; j < currentStates.length; j++) {
 		   		if (currentStates[j].curIndex === inputString.length) {
 					if (currentStates[j].state.hasClass('final')) {
