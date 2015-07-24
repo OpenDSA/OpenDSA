@@ -2191,7 +2191,7 @@ It may even be better to move the proofs into separate demos.
     };
     // transition from creating VDG to modifying the grammar
     var continueUnit = function () {
-      jsav.umsg('Modify the grammar to remove unit productions.');
+      jsav.umsg('Modify the grammar to remove unit productions. Click on unit productions to remove them and click on the empty row to add new productions.');
       tGrammar = jsav.ds.matrix(tArr);
       layoutTable(tGrammar, 2);
       //tGrammar = jsav.ds.matrix(tArr, {top: "50px", relativeTo: modelDFA, anchor: "left bottom", myAnchor: "left top"});
@@ -2354,11 +2354,11 @@ It may even be better to move the proofs into separate demos.
       }
       modelDFA.layout();
       modelDFA.click(uselessVdgHandler);
-      jsav.umsg('Complete dependency graph. Variables that predicate terminals: [' + builtDeriveSet + ']')
+      jsav.umsg('Complete dependency graph by adding edges between variables. Variables that predicate terminals: [' + builtDeriveSet + ']')
     };
     // transition from VDG to removing useless productions
     var continueUselessSecond = function () {
-      jsav.umsg('Modify the grammar to remove useless productions.');
+      jsav.umsg('Modify the grammar to remove useless productions. Click on unreachable productions to remove them.');
       tGrammar = jsav.ds.matrix(tArr);
       layoutTable(tGrammar, 2);
       //tGrammar = jsav.ds.matrix(tArr, {top: "50px", relativeTo: modelDFA, anchor: "left bottom", myAnchor: "left top"});
@@ -2490,7 +2490,7 @@ It may even be better to move the proofs into separate demos.
     //tGrammar = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}), {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
     tGrammar.click(chomskyHandler);
 
-    jsav.umsg('Converting to Chomsky Normal Form: convert productions of the grammar on the right.');
+    jsav.umsg('Converting to Chomsky Normal Form: convert productions of the grammar on the right by clicking on them.');
   };
 
   //=================================
