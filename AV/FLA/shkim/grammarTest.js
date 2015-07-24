@@ -842,7 +842,7 @@ It may even be better to move the proofs into separate demos.
         if (this.stateLabel() === newItemSet) {
           builtDFA.addEdge(selectedNode, this, {weight: localStorage['slrdfasymbol']});
           builtDFA.layout();
-          jsav.umsg("Build the DFA.");
+          jsav.umsg("Build the DFA: Click a state.");
           selectedNode.unhighlight();
           this.unhighlight();
           selectedNode = null;
@@ -926,7 +926,7 @@ It may even be better to move the proofs into separate demos.
         builtDFA.layout();
         localStorage.removeItem('slrdfareturn');
         localStorage.removeItem('slrdfasymbol');
-        jsav.umsg('Build the DFA.');
+        jsav.umsg('Build the DFA: Click a state.');
         return;
       }
       // if user has determined the next item set and is ready to place the new DFA node
@@ -951,7 +951,7 @@ It may even be better to move the proofs into separate demos.
         newNode.stateLabel(newItemSet);
         builtDFA.addEdge(selectedNode, newNode, {weight: localStorage['slrdfasymbol']});
         builtDFA.layout();
-        jsav.umsg("Build the DFA.");
+        jsav.umsg("Build the DFA: Click a state.");
         selectedNode.unhighlight();
         selectedNode = null;
       }
@@ -1006,6 +1006,17 @@ It may even be better to move the proofs into separate demos.
     startParse();
     $(m.element).css("margin-left", "auto");
     // $(m.element).css('position', 'absolute');
+
+    var slrM = [[0, "S'", arrow, productions[0][0]]];
+    for (var i = 0; i < productions.length; i++) {
+      var prod = productions[i];
+      slrM.push([i+1, prod[0], prod[1], prod[2]]);
+    }
+    if (m) {
+      m.clear();
+    }
+    m = jsav.ds.matrix(slrM, {style: "table"});
+    layoutTable(m);
 
     var ffDisplay = [];
     ffDisplay.push(["", "FIRST", "FOLLOW"]);
@@ -1189,7 +1200,7 @@ It may even be better to move the proofs into separate demos.
       $(ffTable.element).off();
       $('#slrdfabutton').hide();
       $('#parsetablebutton').show();
-      jsav.umsg('Build the DFA.');
+      jsav.umsg('Build the DFA: Click a state.');
       // create the DFA
       builtDFA = jsav.ds.fa({width: '90%', height: 440});
       builtDFA.click(dfaHandler);
@@ -1281,6 +1292,16 @@ It may even be better to move the proofs into separate demos.
         return;
       }
       startParse();
+      var slrM = [];
+      for (var i = 0; i < productions.length; i++) {
+        var prod = productions[i];
+        slrM.push([i, prod[0], prod[1], prod[2]]);
+      }
+      if (m) {
+        m.clear();
+      }
+      m = jsav.ds.matrix(slrM, {style: "table"});
+      layoutTable(m);
       var pTableDisplay = [];
       pTableDisplay.push([""].concat(tv));
       for (var i = 0; i < modelDFA.nodeCount(); i++) {
@@ -1345,8 +1366,7 @@ It may even be better to move the proofs into separate demos.
         } else if (entry[0] === 'r') {      // reduce
           var pIndex = Number(entry.substring(1));
           var p = productions[pIndex];
-          // m is the original grammar; productions contains the extra S' -> S production
-          m.highlight(pIndex - 1);
+          m.highlight(pIndex);
           if (p[2] === emptystring) {
             var lNode = parseTree.addNode(emptystring);
             lNode.addClass('terminal');
@@ -2178,7 +2198,7 @@ It may even be better to move the proofs into separate demos.
       tGrammar.click(removeUnitHandler);
       //$('.jsavcanvas').height(modelDFA.element.height() + 150 + tGrammar.element.height());
     };
-    jsav.umsg('Removing unit productions: Complete unit production visualization.');
+    jsav.umsg('Removing unit productions: Complete unit production visualization by adding edges to indicate rules between variables.');
     modelDFA.click(unitVdgHandler);
   };
 
@@ -2425,7 +2445,7 @@ It may even be better to move the proofs into separate demos.
       if (tArr.length === fullChomsky.length) {
         jsav.umsg('All productions completed.');
         tGrammar.element.off();
-        var c = confirm('All productions completed.\nExport?');
+        var c = confirm('All productions completed.\nExport? Exporting will rename the variables.');
         if (c) {
           attemptExport();
         }
@@ -2927,7 +2947,7 @@ It may even be better to move the proofs into separate demos.
     $('.jsavgraph').removeClass('addfinals');
     $('.jsavgraph').removeClass('movenodes');
     $('.jsavgraph').addClass('builddfa');
-    jsav.umsg('Build the DFA.');
+    jsav.umsg('Build the DFA: Click a state.');
   });
   //=================================
   // Button for exiting a proof (parsing or transformation)
