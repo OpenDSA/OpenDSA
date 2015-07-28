@@ -187,13 +187,21 @@
           }
         }
       },
-      "AlgAnal/AnalProgram": {
+      "AlgAnalTest/AnalProgram": {
         "long_name": "Calculating the Running Time of a Program",
         "sections": {
           "binsearchpro": {
             "long_name": "Binary Search Proficiency Exercise",
             "showhide": "none",
             "remove": false
+          },
+          "SummationOneToN": {
+            "long_name": "Summation of the first N Integers visualization",
+            "showhide": "hide"
+          },
+          "SummationTwoPowerI": {
+            "long_name": "Summation Two power I visualization",
+            "showhide": "hide"
           }
         },
         "exercises": {
@@ -215,6 +223,18 @@
             "required": true,
             "points": 1.0,
             "threshold": 5
+          },
+          "SummationOneToNCON": {
+            "long_name": "Summation of the first N Integers visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "SummationTwoPowerICON": {
+            "long_name": "Summation Two Power I visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
           }
         }
       },
