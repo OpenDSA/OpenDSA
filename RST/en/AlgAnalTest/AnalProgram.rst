@@ -12,6 +12,9 @@
 .. odsalink:: AV/Searching/binarySearchCON.css
 .. odsalink:: AV/Development/AlgAnal/SummationOneToNCON.css
 .. odsalink:: AV/Development/AlgAnal/SummationTwoPowerICON.css
+.. odsalink:: AV/Development/AlgAnal/LinearRecurrenceSimpleCON.css
+.. odsalink:: AV/Development/AlgAnal/DivideAndConquerRecurrenceSimpleCON.css
+
 
 Calculating Program Running Time
 ================================
@@ -226,6 +229,11 @@ Thus, the running time for this function can be expressed as
 The closed-form solution for this
 recurrence relation is :math:`\Theta(n)`.
 
+.. showhidecontent:: LinearRecurrenceSimple
+
+   .. inlineav:: LinearRecurrenceSimpleCON ss
+      :output: show
+
 The final example of algorithm analysis for this section will compare
 two algorithms for performing search in an array.
 Earlier, we determined that the running time for sequential search on
@@ -284,6 +292,11 @@ adds one to the cost.
 Thus, the closed-form solution for the recurrence is
 :math:`\mathbf{T}(n) = \log n`.
 
+.. showhidecontent:: DivideAndConquerRecurrenceSimple
+
+   .. inlineav:: DivideAndConquerRecurrenceSimpleCON ss
+      :output: show
+
 Function ``binary`` is designed to find the (single) occurrence of
 :math:`K` and return its position. 
 A special value is returned if :math:`K` does not appear in the array.
@@ -325,3 +338,5 @@ whether the advantage outweighs the disadvantage.
 .. odsascript:: AV/Searching/binarySearchCON.js
 .. odsascript:: AV/Development/AlgAnal/SummationOneToNCON.js
 .. odsascript:: AV/Development/AlgAnal/SummationTwoPowerICON.js
+.. odsascript:: AV/Development/AlgAnal/LinearRecurrenceSimpleCON.js
+.. odsascript:: AV/Development/AlgAnal/DivideAndConquerRecurrenceSimpleCON.js

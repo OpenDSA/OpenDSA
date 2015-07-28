@@ -16,7 +16,7 @@
 	  "Slide 8.1": "The closed form solution of this summation can be found by calculating the total surface area of the resulted shape.",
 	  "Slide 8.2": "<br> Let's first make some reoderings ...",
 	  "Slide 12": "Now it is very easy to calculate the surface area of this shape which is $2n - 1$",
-	  "Slide 13": "Finally, we have $\\displaystyle\\sum_{i=0}^{\\log{n}}2^i = 2n - 1$" 
+	  "Slide 13": "Finally, we have $\\displaystyle\\sum_{i=0}^{\\log{n}}2^i = 2n - 1 = \\Theta(n)$" 
     }
   }
 }

@@ -202,6 +202,14 @@
           "SummationTwoPowerI": {
             "long_name": "Summation Two power I visualization",
             "showhide": "hide"
+          },
+          "LinearRecurrenceSimple": {
+            "long_name": "Linear Recurrence visualization",
+            "showhide": "hide"
+          },
+          "DivideAndConquerRecurrenceSimple": {
+            "long_name": "Divide And Conquer Recurrence visualization",
+            "showhide": "hide"
           }
         },
         "exercises": {
@@ -232,6 +240,18 @@
           },
           "SummationTwoPowerICON": {
             "long_name": "Summation Two Power I visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "LinearRecurrenceSimpleCON": {
+            "long_name": "Linear Recurrence visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "DivideAndConquerRecurrenceSimpleCON": {
+            "long_name": "Linear Recurrence visualization",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
