@@ -58,6 +58,7 @@ jshintlib:
 	-@jshint lib/odsaMOD.js
 	-@jshint lib/gradebook.js
 	-@jshint lib/registerbook.js
+	-@jshint lib/createcourse.js
 	-@jshint lib/conceptMap.js
 
 min: nomin
@@ -223,6 +224,7 @@ nomin:
 	@cp lib/gradebook.js lib/gradebook-min.js
 	@cp ODSAkhan-exercises/khan-exercise.js lib/khan-exercise-min.js
 	@cp lib/registerbook.js lib/registerbook-min.js
+	# @cp lib/createcourse.js lib/createcourse-min.js
 	@cp lib/site.css lib/site-min.css
 	@cat lib/normalize.css lib/odsaAV.css > lib/odsaAV-min.css
 	@cp lib/odsaMOD.css lib/odsaMOD-min.css
@@ -271,3 +273,7 @@ lib/gradebook-min.css: lib/gradebook.css
 lib/registerbook-min.js: lib/registerbook.js
 	@echo 'Minimizing lib/registerbook.js'
 	@$(MINIMIZE) lib/registerbook.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/registerbook-min.js
+
+lib/createcourse-min.js: lib/createcourse.js
+	@echo 'Minimizing lib/createcourse.js'
+	@$(MINIMIZE) lib/createcourse.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/createcourse-min.js
