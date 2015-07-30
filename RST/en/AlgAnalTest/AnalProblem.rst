@@ -9,6 +9,8 @@
    :satisfies: analyzing problems
    :topic: Algorithm Analysis
 
+.. odsalink:: AV/Development/AlgAnal/AnalyzingProblemsCON.css
+
 Analyzing Problems
 ==================
 
@@ -36,6 +38,11 @@ The worst case lower bound is the *least* of all the
    :tag: Slideshow
 
    Present a visualization of the previous paragraph
+
+.. showhidecontent:: AnalyzingProblems
+
+   .. inlineav:: AnalyzingProblemsCON ss
+      :output: show
 
 It is much easier to show that an algorithm (or program) is in
 :math:`\Omega(f(n))` than it is to show that a problem is in
@@ -112,3 +119,6 @@ Notes
 
 .. [#] While it is fortunate to know the truth, it is unfortunate that
        sorting is :math:`\Theta(n \log n)` rather than :math:`\Theta(n)`!
+
+
+.. odsascript:: AV/Development/AlgAnal/AnalyzingProblemsCON.js

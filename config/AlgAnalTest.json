@@ -260,12 +260,24 @@
       },
       "AlgAnalTest/AnalProblem": {
         "long_name": "Analyzing Problems",
+        "sections": {
+          "AnalyzingProblems": {
+            "long_name": "Worst Case Lower Bound Visualization",
+            "showhide": "hide"
+          }
+        },
         "exercises": {
           "AnalProblem": {
             "long_name": "Problem Analysis Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 5
+          },
+          "AnalyzingProblemsCON": {
+            "long_name": "Worst Case Lower Bound Visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
           }
         }
       },
