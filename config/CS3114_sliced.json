@@ -1,0 +1,152 @@
+{
+  "title": "CS3114 Fall 2014",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+    "Processing": {
+      "ext": ["pde"],
+      "label": "Processing",
+      "lang": "java"
+    },
+    "Java_Generic": {
+      "ext": ["java"],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": ["cpp", "h"],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "lang": "en",
+  "module_origin": "https://ltitest.cs.vt.edu:9292",
+  "exercise_server": "https://ltitest.cs.vt.edu:8443",
+  "logging_server": "https://ltitest.cs.vt.edu:8443",
+  "score_server": "https://ltitest.cs.vt.edu:8443",
+  "build_JSAV": false,
+  "allow_anonymous_credit": true,
+  "suppress_todo": true,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "chapters": {
+    "Sorting": {
+      "Sorting/Quicksort-01": {
+        "long_name": "Quicksort",
+        "exercises": {
+          "QuicksortPivotPRO": {
+            "long_name": "Quicksort Pivot Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "Sorting/Quicksort-02": {
+        "long_name": "Quicksort",
+        "exercises": {
+          "quicksortCON": {
+            "long_name": "Quicksort Partition Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      },
+      "Sorting/Quicksort-03": {
+        "long_name": "Quicksort",
+        "exercises": {
+          "QuickSortPartitionAnalysisCON": {
+            "long_name": "Quicksort Partition Analysis Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      },
+      "Sorting/Quicksort-04": {
+        "long_name": "Quicksort",
+        "exercises": {
+          "QuicksortPartitPRO": {
+            "long_name": "Quicksort Partition Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "Sorting/Quicksort-05": {
+        "long_name": "Quicksort",
+        "exercises": {
+          "quicksortAV": {
+            "long_name": "Quicksort Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          }
+        }
+      },
+      "Sorting/Quicksort-06": {
+        "long_name": "Quicksort",
+        "exercises": {
+          "quicksortPRO": {
+            "long_name": "Quicksort Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90,
+            "exer_options": {
+              "JXOP-feedback": "continuous",
+              "JXOP-fixmode": "fix"
+            }
+          }
+        }
+      },
+      "Sorting/Quicksort-07": {
+        "long_name": "Quicksort",
+        "exercises": {
+          "QuickSortWorstCaseCON": {
+            "long_name": "Quicksort Worst Case Analysis Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      },
+      "Sorting/Quicksort-08": {
+        "long_name": "Quicksort",
+        "exercises": {
+          "QuickSortBestCaseCON": {
+            "long_name": "Quicksort Best Case Analysis Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      },
+      "Sorting/Quicksort-09": {
+        "long_name": "Quicksort",
+        "exercises": {
+          "QuickSortAverageCaseCON": {
+            "long_name": "Quicksort Average Case Analysis Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      },
+      "Sorting/Quicksort-10": {
+        "long_name": "Quicksort",
+        "exercises": {
+          "QuicksortSumm": {
+            "long_name": "Quicksort Summary Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      }
+    }
+  }
+}
