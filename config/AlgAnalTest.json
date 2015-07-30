@@ -283,12 +283,24 @@
       },
       "AlgAnalTest/AnalMisunderstanding": {
         "long_name": "Common Misunderstandings",
+        "sections": {
+          "MisunderstandingsGraph": {
+            "long_name": "Example's graph Visualization",
+            "showhide": "hide"
+          }
+        },
         "exercises": {
           "Misunderstandings": {
             "long_name": "Common Misconceptions Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 5
+          },
+          "MisunderstandingsGraphCON": {
+            "long_name": "Example's graph Visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
           }
         }
       },

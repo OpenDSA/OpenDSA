@@ -9,6 +9,8 @@
    :satisfies: analysis misunderstandings
    :topic: Algorithm Analysis
 
+.. odsalink:: AV/Development/AlgAnal/MisunderstandingsGraphCON.css
+
 Common Misunderstandings
 ========================
 
@@ -144,9 +146,16 @@ worst, and average cases as the input size grows.
    know which cost measure we are referring to for most algorithms.
 
 
+.. showhidecontent:: MisunderstandingsGraph
+
+   .. inlineav:: MisunderstandingsGraphCON ss
+      :output: show
+
 .. avembed:: Exercises/AlgAnalTest/Misunderstandings.html ka
 
 .. todo::
    :type: Slideshow
 
    We need to draw the graphs for the previous example and make the discussion as a series of slides.
+
+.. odsascript:: AV/Development/AlgAnal/MisunderstandingsGraphCON.js
