@@ -52,6 +52,9 @@ def update_index_html(dest_dir, sectnum):
     elif 'RegisterBook' in line:
       #remove registerbook page from TOC
       index_html[line_num] = ''
+    elif 'CreateCourse' in line:
+      #remove createcourse page from TOC
+      index_html[line_num] = ''
     elif 'hide-from-toc' in line:
       #remove stub chapter title 
       if '<h1>' in index_html[line_num-1]:
@@ -74,7 +77,7 @@ def update_mod_html(file_path, data, prefix):
 
   mod_name = os.path.splitext(os.path.basename(file_path))[0]
 
-  ignore_mods = ['index', 'Gradebook', 'search', 'RegisterBook']
+  ignore_mods = ['index', 'Gradebook', 'search', 'RegisterBook', 'CreateCourse']
 
   link_pattern = re.compile('<a.+href="(?P<href>.*).html">(?P<text>.*)</a>')
   title_pattern = re.compile('<title>(?P<title>.*)</title>')
@@ -87,11 +90,14 @@ def update_mod_html(file_path, data, prefix):
       link_text = m.group('text')
       link_mod = m.group('href')
 
-      if link_mod in data and link_mod not in ['index', 'Gradebook', 'ToDo', 'RegisterBook']:
+      if link_mod in data and link_mod not in ['index', 'Gradebook', 'ToDo', 'RegisterBook', 'CreateCourse']:
         new_link_text = '%s.' % data[link_mod][1] + link_text
         html[line_num] = line.replace(link_text, new_link_text)
 
       if link_mod in ['RegisterBook']:
+        html[line_num] = line.replace(link_text, "")
+
+      if link_mod in ['CreateCourse']:
         html[line_num] = line.replace(link_text, "")
 
 
