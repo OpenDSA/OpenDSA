@@ -41,20 +41,14 @@
         numHints,
         hintsUsed,
         lastAttemptOrHint,
-        firstProblem = true;
+        firstProblem = true,
+        toolProviderData = {};
 
-
-
-    var server = SCORE_SERVER ? SCORE_SERVER : typeof OpenPopKa !== "undefined" ? "https://opendsa.cc.vt.edu" : null;
+    var server = SCORE_SERVER ? SCORE_SERVER : (typeof OpenPopKa !== "undefined" ? "https://opendsa.cc.vt.edu" : null);
     BOOK_ID = BOOK_ID ? BOOK_ID : typeof OpenPopKa !== "undefined" ? "CS3114" : null;
     var SESSION_KEY = 'phantom-key';
 
     var exerciseName = Khan.getSeedInfo().sha1;
-
-    // Whether student got the proficiency for the exercise or not.
-    var proficiency = false;
-
-
 
     $(Exercises)
         .bind("problemTemplateRendered", problemTemplateRendered)
@@ -374,13 +368,18 @@
             $.blockUI({
                 message: "Waiting for the server to evaluate your code ..."
             });
-
+        }
+        if (!(toolProviderData.outcomeService && attemptData.complete)) {
+            return;
         }
 
         var respondpromise = request(requestUrl, attemptData);
 
+
         respondpromise.done(function(data) {
             data = jQuery.parseJSON(data);
+            // console.log("respondpromise.done Data");
+            // console.log(data);
             var progress = 0;
             var streakNum = 0;
 
@@ -418,6 +417,16 @@
                 total = streakNum;
                 proficiency = true;
                 parent.postMessage('{"exercise":"' + exerciseName + '","proficient":' + true + ',"error":' + false + '}', MODULE_ORIGIN);
+
+                toolProviderData.toParams.score = 1;
+                jQuery.ajax({
+                    url: "/assessment",
+                    type: "POST",
+                    dataType: 'json',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(toolProviderData.toParams),
+                    datatype: "json"
+                });
             }
 
             total = parseInt(total, 10);
@@ -669,35 +678,28 @@
 
         var deferred = $.Deferred();
 
-        attemptHintQueue.queue(
-            function(next) {
-                $.ajax(params).then(
-                    function(data, textStatus, jqXHR) {
-                        deferred.resolve(data, textStatus, jqXHR);
-                        // Tell any listeners that we now have new userExercise data
-                        $(Exercises).trigger("updateUserExercise", {
-                            userExercise: data,
-                            source: "serverResponse"
-                        });
-                    },
-                    function(jqXHR, textStatus, errorThrown) {
-                        // Execute passed error function first in case it wants different
-                        // behavior depending upon the length of the request queue
-                        // TODO(alpert): Huh? Don't think this matters.
-                        deferred.reject(jqXHR, textStatus, errorThrown);
+        attemptHintQueue.queue(function(next) {
+            $.ajax(params).then(function(data, textStatus, jqXHR) {
+                deferred.resolve(data, textStatus, jqXHR);
+                // Tell any listeners that we now have new userExercise data
+                $(Exercises).trigger("updateUserExercise", {
+                    userExercise: data,
+                    source: "serverResponse"
+                });
+            }, function(jqXHR, textStatus, errorThrown) {
+                // Execute passed error function first in case it wants different
+                // behavior depending upon the length of the request queue
+                // TODO(alpert): Huh? Don't think this matters.
+                deferred.reject(jqXHR, textStatus, errorThrown);
 
-                        // Clear the queue so we don't spit out a bunch of queued up
-                        // requests after the error
-                        attemptHintQueue.clearQueue();
-                    }
-                ).always(
-                    function() {
-                        $(Exercises).trigger("apiRequestEnded");
-                        next();
-                    }
-                );
-            }
-        );
+                // Clear the queue so we don't spit out a bunch of queued up
+                // requests after the error
+                attemptHintQueue.clearQueue();
+            }).always(function() {
+                $(Exercises).trigger("apiRequestEnded");
+                next();
+            });
+        });
 
         // Trigger an apiRequestStarted event here, and not in the queued function
         // because listeners should know an API request is waiting as soon as it
@@ -706,7 +708,6 @@
 
         return deferred.promise();
     }
-
 
     function readyForNextProblem(e, data) {
         if (!firstProblem) {
@@ -759,7 +760,6 @@
         }
     }
 
-
     function gotoNextProblem() {
         var framework = Exercises.getCurrentFramework();
         if (framework === "perseus") {
@@ -777,7 +777,6 @@
             $(Khan).trigger("updateUserExercise", data);
         }
     }
-
 
     function enableCheckAnswer() {
         $("#check-answer-button")
@@ -872,23 +871,18 @@
                     withCredentials: true
                 },
                 success: function(data) {
+                    console.dir(data);
                     var streakval = data.objects[0] && data.objects[0].streak ? data.objects[0].streak : 0;
-                    var streakval = parseInt(streakval);
                     var progress = data.objects[0] && data.objects[0].progress_streak ? data.objects[0].progress_streak : 0;
-                    var progressval = Math.min(parseInt(progress), streakval);
-                    proficiency = (progressval >= streakval) ? true : false;
-
-
                     testdeffer.done(function() {
                         var points_progress_text = $("<span style = 'font-size:60%'>Current score:  </span>");
-                        var points_progress = $("<span id = 'points-progress' style = 'font-size : 65%; font-weight : bold;'></span>").text(progressval);
+                        var points_progress = $("<span id = 'points-progress' style = 'font-size : 65%; font-weight : bold;'></span>").text(Math.min(parseInt(progress), parseInt(streakval)));
                         var points_total_text = $("<span style = 'font-size:60%'> out of  </span>");
-                        var points_total = $("<span id = 'points-total' style = 'font-size : 65%; font-weight : bold;'></span>").text(streakval);
+                        var points_total = $("<span id = 'points-total' style = 'font-size : 65%; font-weight : bold;'></span>").text(parseInt(streakval));
                         $('#points-area').append(points_progress_text);
                         $('#points-area').append(points_progress);
                         $('#points-area').append(points_total_text);
                         $('#points-area').append(points_total);
-
                     });
                 },
                 error: function() {
@@ -914,15 +908,16 @@
             if (e.origin !== MODULE_ORIGIN) {
                 return;
             }
-
             var data = JSON.parse(e.data);
 
             // Update session information based on message from parent page
             if (data.hasOwnProperty('session_key')) {
                 SESSION_KEY = data.session_key;
                 updatePoints();
+            } else if (data.hasOwnProperty('outcomeService')) {
+                // console.dir(data);
+                toolProviderData = data;
             }
         });
     });
-
 })();

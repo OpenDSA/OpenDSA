@@ -60,11 +60,11 @@
 /**
  * Extracts, decodes and returns the given parameter from the URL
  *   - Based on http://stackoverflow.com/questions/1403888/get-url-parameter-with-jquery
-**/
+ **/
 function getURLParam(name) {
-  var param = new RegExp('[?|&]' + name + '=' + '([^&]+)(&|$)').exec(location.href);
+    var param = new RegExp('[?|&]' + name + '=' + '([^&]+)(&|$)').exec(location.href);
 
-  return (param) ? decodeURIComponent(param[1]) : "";
+    return (param) ? decodeURIComponent(param[1]) : "";
 }
 
 // The path of khan-exercise.js. By Junyang Chen
@@ -76,7 +76,8 @@ var SCORE_SERVER = getURLParam('scoreServer');
 // The domain where the OpenDSA modules are hosted, used by postMessage to send data to the parent module page
 // IMPORTANT: Uses parent.location so that the MODULE_ORIGIN doesn't have to be 
 // specified in the config file in order for postMessage to work
-var MODULE_ORIGIN = parent.location.protocol + '//' + parent.location.host; //getURLParam('moduleOrigin');
+// var MODULE_ORIGIN = parent.location.protocol + '//' + parent.location.host; //getURLParam('moduleOrigin');
+var MODULE_ORIGIN = getURLParam('moduleOrigin');
 
 // The name of the module in which the KA exercises is embedded
 var MODULE_NAME = getURLParam('module');
@@ -90,180 +91,181 @@ var Khan = (function() {
     // import fractions
     // fractions.gcd( 197, 200)
     var primes = [197, 3, 193, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43,
-    47, 53, 59, 61, 67, 71, 73, 79, 83],
+            47, 53, 59, 61, 67, 71, 73, 79, 83
+        ],
 
-    /*
-    ===============================================================================
-    Crc32 is a JavaScript function for computing the CRC32 of a string
-    ...............................................................................
+        /*
+        ===============================================================================
+        Crc32 is a JavaScript function for computing the CRC32 of a string
+        ...............................................................................
 
-    Version: 1.2 - 2006/11 - http://noteslog.com/category/javascript/
+        Version: 1.2 - 2006/11 - http://noteslog.com/category/javascript/
 
-    -------------------------------------------------------------------------------
-    Copyright (c) 2006 Andrea Ercolino
-    http://www.opensource.org/licenses/mit-license.php
-    ===============================================================================
-    */
+        -------------------------------------------------------------------------------
+        Copyright (c) 2006 Andrea Ercolino
+        http://www.opensource.org/licenses/mit-license.php
+        ===============================================================================
+        */
 
-    // CRC32 Lookup Table
-    table = "00000000 77073096 EE0E612C 990951BA 076DC419 706AF48F E963A535 " +
-            "9E6495A3 0EDB8832 79DCB8A4 E0D5E91E 97D2D988 09B64C2B 7EB17CBD " +
-            "E7B82D07 90BF1D91 1DB71064 6AB020F2 F3B97148 84BE41DE 1ADAD47D " +
-            "6DDDE4EB F4D4B551 83D385C7 136C9856 646BA8C0 FD62F97A 8A65C9EC " +
-            "14015C4F 63066CD9 FA0F3D63 8D080DF5 3B6E20C8 4C69105E D56041E4 " +
-            "A2677172 3C03E4D1 4B04D447 D20D85FD A50AB56B 35B5A8FA 42B2986C " +
-            "DBBBC9D6 ACBCF940 32D86CE3 45DF5C75 DCD60DCF ABD13D59 26D930AC " +
-            "51DE003A C8D75180 BFD06116 21B4F4B5 56B3C423 CFBA9599 B8BDA50F " +
-            "2802B89E 5F058808 C60CD9B2 B10BE924 2F6F7C87 58684C11 C1611DAB " +
-            "B6662D3D 76DC4190 01DB7106 98D220BC EFD5102A 71B18589 06B6B51F " +
-            "9FBFE4A5 E8B8D433 7807C9A2 0F00F934 9609A88E E10E9818 7F6A0DBB " +
-            "086D3D2D 91646C97 E6635C01 6B6B51F4 1C6C6162 856530D8 F262004E " +
-            "6C0695ED 1B01A57B 8208F4C1 F50FC457 65B0D9C6 12B7E950 8BBEB8EA " +
-            "FCB9887C 62DD1DDF 15DA2D49 8CD37CF3 FBD44C65 4DB26158 3AB551CE " +
-            "A3BC0074 D4BB30E2 4ADFA541 3DD895D7 A4D1C46D D3D6F4FB 4369E96A " +
-            "346ED9FC AD678846 DA60B8D0 44042D73 33031DE5 AA0A4C5F DD0D7CC9 " +
-            "5005713C 270241AA BE0B1010 C90C2086 5768B525 206F85B3 B966D409 " +
-            "CE61E49F 5EDEF90E 29D9C998 B0D09822 C7D7A8B4 59B33D17 2EB40D81 " +
-            "B7BD5C3B C0BA6CAD EDB88320 9ABFB3B6 03B6E20C 74B1D29A EAD54739 " +
-            "9DD277AF 04DB2615 73DC1683 E3630B12 94643B84 0D6D6A3E 7A6A5AA8 " +
-            "E40ECF0B 9309FF9D 0A00AE27 7D079EB1 F00F9344 8708A3D2 1E01F268 " +
-            "6906C2FE F762575D 806567CB 196C3671 6E6B06E7 FED41B76 89D32BE0 " +
-            "10DA7A5A 67DD4ACC F9B9DF6F 8EBEEFF9 17B7BE43 60B08ED5 D6D6A3E8 " +
-            "A1D1937E 38D8C2C4 4FDFF252 D1BB67F1 A6BC5767 3FB506DD 48B2364B " +
-            "D80D2BDA AF0A1B4C 36034AF6 41047A60 DF60EFC3 A867DF55 316E8EEF " +
-            "4669BE79 CB61B38C BC66831A 256FD2A0 5268E236 CC0C7795 BB0B4703 " +
-            "220216B9 5505262F C5BA3BBE B2BD0B28 2BB45A92 5CB36A04 C2D7FFA7 " +
-            "B5D0CF31 2CD99E8B 5BDEAE1D 9B64C2B0 EC63F226 756AA39C 026D930A " +
-            "9C0906A9 EB0E363F 72076785 05005713 95BF4A82 E2B87A14 7BB12BAE " +
-            "0CB61B38 92D28E9B E5D5BE0D 7CDCEFB7 0BDBDF21 86D3D2D4 F1D4E242 " +
-            "68DDB3F8 1FDA836E 81BE16CD F6B9265B 6FB077E1 18B74777 88085AE6 " +
-            "FF0F6A70 66063BCA 11010B5C 8F659EFF F862AE69 616BFFD3 166CCF45 " +
-            "A00AE278 D70DD2EE 4E048354 3903B3C2 A7672661 D06016F7 4969474D " +
-            "3E6E77DB AED16A4A D9D65ADC 40DF0B66 37D83BF0 A9BCAE53 DEBB9EC5 " +
-            "47B2CF7F 30B5FFE9 BDBDF21C CABAC28A 53B39330 24B4A3A6 BAD03605 " +
-            "CDD70693 54DE5729 23D967BF B3667A2E C4614AB8 5D681B02 2A6F2B94 " +
-            "B40BBE37 C30C8EA1 5A05DF1B 2D02EF8D",
+        // CRC32 Lookup Table
+        table = "00000000 77073096 EE0E612C 990951BA 076DC419 706AF48F E963A535 " +
+        "9E6495A3 0EDB8832 79DCB8A4 E0D5E91E 97D2D988 09B64C2B 7EB17CBD " +
+        "E7B82D07 90BF1D91 1DB71064 6AB020F2 F3B97148 84BE41DE 1ADAD47D " +
+        "6DDDE4EB F4D4B551 83D385C7 136C9856 646BA8C0 FD62F97A 8A65C9EC " +
+        "14015C4F 63066CD9 FA0F3D63 8D080DF5 3B6E20C8 4C69105E D56041E4 " +
+        "A2677172 3C03E4D1 4B04D447 D20D85FD A50AB56B 35B5A8FA 42B2986C " +
+        "DBBBC9D6 ACBCF940 32D86CE3 45DF5C75 DCD60DCF ABD13D59 26D930AC " +
+        "51DE003A C8D75180 BFD06116 21B4F4B5 56B3C423 CFBA9599 B8BDA50F " +
+        "2802B89E 5F058808 C60CD9B2 B10BE924 2F6F7C87 58684C11 C1611DAB " +
+        "B6662D3D 76DC4190 01DB7106 98D220BC EFD5102A 71B18589 06B6B51F " +
+        "9FBFE4A5 E8B8D433 7807C9A2 0F00F934 9609A88E E10E9818 7F6A0DBB " +
+        "086D3D2D 91646C97 E6635C01 6B6B51F4 1C6C6162 856530D8 F262004E " +
+        "6C0695ED 1B01A57B 8208F4C1 F50FC457 65B0D9C6 12B7E950 8BBEB8EA " +
+        "FCB9887C 62DD1DDF 15DA2D49 8CD37CF3 FBD44C65 4DB26158 3AB551CE " +
+        "A3BC0074 D4BB30E2 4ADFA541 3DD895D7 A4D1C46D D3D6F4FB 4369E96A " +
+        "346ED9FC AD678846 DA60B8D0 44042D73 33031DE5 AA0A4C5F DD0D7CC9 " +
+        "5005713C 270241AA BE0B1010 C90C2086 5768B525 206F85B3 B966D409 " +
+        "CE61E49F 5EDEF90E 29D9C998 B0D09822 C7D7A8B4 59B33D17 2EB40D81 " +
+        "B7BD5C3B C0BA6CAD EDB88320 9ABFB3B6 03B6E20C 74B1D29A EAD54739 " +
+        "9DD277AF 04DB2615 73DC1683 E3630B12 94643B84 0D6D6A3E 7A6A5AA8 " +
+        "E40ECF0B 9309FF9D 0A00AE27 7D079EB1 F00F9344 8708A3D2 1E01F268 " +
+        "6906C2FE F762575D 806567CB 196C3671 6E6B06E7 FED41B76 89D32BE0 " +
+        "10DA7A5A 67DD4ACC F9B9DF6F 8EBEEFF9 17B7BE43 60B08ED5 D6D6A3E8 " +
+        "A1D1937E 38D8C2C4 4FDFF252 D1BB67F1 A6BC5767 3FB506DD 48B2364B " +
+        "D80D2BDA AF0A1B4C 36034AF6 41047A60 DF60EFC3 A867DF55 316E8EEF " +
+        "4669BE79 CB61B38C BC66831A 256FD2A0 5268E236 CC0C7795 BB0B4703 " +
+        "220216B9 5505262F C5BA3BBE B2BD0B28 2BB45A92 5CB36A04 C2D7FFA7 " +
+        "B5D0CF31 2CD99E8B 5BDEAE1D 9B64C2B0 EC63F226 756AA39C 026D930A " +
+        "9C0906A9 EB0E363F 72076785 05005713 95BF4A82 E2B87A14 7BB12BAE " +
+        "0CB61B38 92D28E9B E5D5BE0D 7CDCEFB7 0BDBDF21 86D3D2D4 F1D4E242 " +
+        "68DDB3F8 1FDA836E 81BE16CD F6B9265B 6FB077E1 18B74777 88085AE6 " +
+        "FF0F6A70 66063BCA 11010B5C 8F659EFF F862AE69 616BFFD3 166CCF45 " +
+        "A00AE278 D70DD2EE 4E048354 3903B3C2 A7672661 D06016F7 4969474D " +
+        "3E6E77DB AED16A4A D9D65ADC 40DF0B66 37D83BF0 A9BCAE53 DEBB9EC5 " +
+        "47B2CF7F 30B5FFE9 BDBDF21C CABAC28A 53B39330 24B4A3A6 BAD03605 " +
+        "CDD70693 54DE5729 23D967BF B3667A2E C4614AB8 5D681B02 2A6F2B94 " +
+        "B40BBE37 C30C8EA1 5A05DF1B 2D02EF8D",
 
-    /* Number */
-    crc32 = function(str, crc) {
-        if (crc == window.undefined) {
-            crc = 0;
-        }
-        var n = 0; //a number between 0 and 255
-        var x = 0; //a hex number
+        /* Number */
+        crc32 = function(str, crc) {
+            if (crc == window.undefined) {
+                crc = 0;
+            }
+            var n = 0; //a number between 0 and 255
+            var x = 0; //a hex number
 
-        crc = crc ^ (-1);
-        for (var i = 0, iTop = str.length; i < iTop; i++) {
-            n = (crc ^ str.charCodeAt(i)) & 0xFF;
-            x = "0x" + table.substr(n * 9, 8);
-            crc = (crc >>> 8) ^ x;
-        }
-        return Math.abs(crc ^ (-1));
-    },
+            crc = crc ^ (-1);
+            for (var i = 0, iTop = str.length; i < iTop; i++) {
+                n = (crc ^ str.charCodeAt(i)) & 0xFF;
+                x = "0x" + table.substr(n * 9, 8);
+                crc = (crc >>> 8) ^ x;
+            }
+            return Math.abs(crc ^ (-1));
+        },
 
-    userExercise,
+        userExercise,
 
-    // Check to see if we're in local mode
-    localMode = typeof Exercises === "undefined",
+        // Check to see if we're in local mode
+        localMode = typeof Exercises === "undefined",
 
-    // Set in prepareSite when Exercises.init() has already been called
-    assessmentMode,
+        // Set in prepareSite when Exercises.init() has already been called
+        assessmentMode,
 
-    // The ID, filename, and name of the exercise -- these will only be set here in localMode
-    exerciseId = ((/([^\/.]+)(?:\.html)?$/.exec(window.location.pathname) || [])[1]) || "",
-    exerciseFile = exerciseId + ".html",
-    exerciseName = deslugify(exerciseId),
+        // The ID, filename, and name of the exercise -- these will only be set here in localMode
+        exerciseId = ((/([^\/.]+)(?:\.html)?$/.exec(window.location.pathname) || [])[1]) || "",
+        exerciseFile = exerciseId + ".html",
+        exerciseName = deslugify(exerciseId),
 
-    // Bin users into a certain number of realms so that
-    // there is some level of reproducability in their questions.
-    // If you change this, make sure all entries in the array "primes"
-    // set above are coprime to the new value.
-    bins = 200,
+        // Bin users into a certain number of realms so that
+        // there is some level of reproducability in their questions.
+        // If you change this, make sure all entries in the array "primes"
+        // set above are coprime to the new value.
+        bins = 200,
 
-    // Number of past problems to consider when avoiding duplicates
-    dupWindowSize = 5,
+        // Number of past problems to consider when avoiding duplicates
+        dupWindowSize = 5,
 
-    // The seed information
-    randomSeed,
+        // The seed information
+        randomSeed,
 
-    // Holds the current username
-    user = null,
-    userCRC32,
+        // Holds the current username
+        user = null,
+        userCRC32,
 
-    // The current problem and its corresponding exercise
-    problem,
-    exercise,
+        // The current problem and its corresponding exercise
+        problem,
+        exercise,
 
-    // The number of the current problem that we're on
-    problemNum = 1,
+        // The number of the current problem that we're on
+        problemNum = 1,
 
-    // Info for constructing the seed
-    seedOffset = 0,
-    jumpNum = 1,
-    problemSeed = 0,
-    seedsSkipped = 0,
-    consecutiveSkips = 0,
+        // Info for constructing the seed
+        seedOffset = 0,
+        jumpNum = 1,
+        problemSeed = 0,
+        seedsSkipped = 0,
+        consecutiveSkips = 0,
 
-    problemID,
+        problemID,
 
-    // The current validator function
-    answerData,
-    validator,
-    getAnswer,
+        // The current validator function
+        answerData,
+        validator,
+        getAnswer,
 
-    hints,
+        hints,
 
-    // The exercise elements
-    exercises,
+        // The exercise elements
+        exercises,
 
-    // Where we are in the shuffled list of problem types
-    problemBag,
-    // Size of the bag. By Junyang Chen.
-    problemBagSize = 0,
-    problemBagIndex = 0,
+        // Where we are in the shuffled list of problem types
+        problemBag,
+        // Size of the bag. By Junyang Chen.
+        problemBagSize = 0,
+        problemBagIndex = 0,
 
-    // How many problems are we doing? (For the fair shuffle bag.)
-    // Change the number from 10 to 0. By Junyang Chen.
-    problemCount = 0,
+        // How many problems are we doing? (For the fair shuffle bag.)
+        // Change the number from 10 to 0. By Junyang Chen.
+        problemCount = 0,
 
-    hintsUsed,
+        hintsUsed,
 
-    // Bug-hunting "undefined" attempt content
-    debugLogLog = ["start of log"],
-    debugLog = function(l) {
-        debugLogLog.push(l);
-    },
+        // Bug-hunting "undefined" attempt content
+        debugLogLog = ["start of log"],
+        debugLog = function(l) {
+            debugLogLog.push(l);
+        },
 
-    // Dictionary of loading and loaded exercises; keys are exercise IDs,
-    // values are promises that are resolved when the exercise is loaded
-    exerciseFilePromises = {},
+        // Dictionary of loading and loaded exercises; keys are exercise IDs,
+        // values are promises that are resolved when the exercise is loaded
+        exerciseFilePromises = {},
 
-    // A promise for each loaded or loading module, keyed by module filename
-    // (module.src) -- will be resolved when the module is loaded (on the live
-    // site, immediately)
-    modulePromises = {},
+        // A promise for each loaded or loading module, keyed by module filename
+        // (module.src) -- will be resolved when the module is loaded (on the live
+        // site, immediately)
+        modulePromises = {},
 
-    // Promise that gets resolved when MathJax is loaded
-    mathJaxLoaded,
+        // Promise that gets resolved when MathJax is loaded
+        mathJaxLoaded,
 
-    // Modified by Junyang Chen.
-    urlBase = typeof urlBaseOverride !== "undefined" ? urlBaseOverride : localMode ? "../" : "/khan-exercises/",
+        // Modified by Junyang Chen.
+        urlBase = typeof urlBaseOverride !== "undefined" ? urlBaseOverride : localMode ? "../" : "/khan-exercises/",
 
-    // In local mode, we use khan-exercises local copy of the /images
-    // directory.  But in production (on www.khanacademy.org), we use
-    // the canonical location of images, which is under '/'.
-    imageBase = localMode ? urlBase + "images/" : "/images/",
+        // In local mode, we use khan-exercises local copy of the /images
+        // directory.  But in production (on www.khanacademy.org), we use
+        // the canonical location of images, which is under '/'.
+        imageBase = localMode ? urlBase + "images/" : "/images/",
 
-    lastFocusedSolutionInput = null,
+        lastFocusedSolutionInput = null,
 
-    gae_bingo = window.gae_bingo || {
-        ab_test: function() {},
-        bingo: function() {},
-        tests: {}
-    },
+        gae_bingo = window.gae_bingo || {
+            ab_test: function() {},
+            bingo: function() {},
+            tests: {}
+        },
 
-    // The ul#examples (keep in a global because we need to modify it even when it's out of the DOM)
-    examples = null;
+        // The ul#examples (keep in a global because we need to modify it even when it's out of the DOM)
+        examples = null;
     // Add in the site stylesheets
     if (localMode) {
         (function() {
@@ -333,7 +335,8 @@ var Khan = (function() {
             $(Exercises).trigger("warning", [$._("Your internet might be too " +
                     "slow to see an exercise. Refresh the page or " +
                     "<a href='' id='warn-report'>report a problem</a>."),
-                    false]);
+                false
+            ]);
             // TODO(alpert): This event binding is kind of gross
             $("#warn-report").click(function(e) {
                 e.preventDefault();
@@ -366,8 +369,7 @@ var Khan = (function() {
             // we load a khan-exercises problem that needs it. Previously it
             // was a dependency of 'math' so this isn't really any different.
             mods.push(
-                "answer-types", "tmpl", "tex", "jquery.adhesion",
-                {
+                "answer-types", "tmpl", "tex", "jquery.adhesion", {
                     src: urlBase + "utils/MathJax/2.1/MathJax.js?config=KAthJax-da9a7f53e588f3837b045a600e1dc439"
                 });
 
@@ -376,7 +378,7 @@ var Khan = (function() {
 
         resetModules: function(exerciseId) {
             var modules = Khan.getBaseModules().concat(
-                    Khan.exerciseModulesMap[exerciseId]);
+                Khan.exerciseModulesMap[exerciseId]);
             var moduleSet = {};
 
             $.each(modules, function(i, mod) {
@@ -426,7 +428,7 @@ var Khan = (function() {
             var isMathJax = url.indexOf("/MathJax/") !== -1;
 
             if (!localMode && url.indexOf("/khan-exercises/") === 0 &&
-                    (!isMathJax || window.MathJax)) {
+                (!isMathJax || window.MathJax)) {
                 // Don't bother loading khan-exercises content in non-local
                 // mode; this content is already packaged up and available
                 // (*unless* it's MathJax, which is silly and still needs
@@ -450,7 +452,7 @@ var Khan = (function() {
 
             script.onload = script.onreadystatechange = function() {
                 if (!script.readyState ||
-                        (/loaded|complete/).test(script.readyState)) {
+                    (/loaded|complete/).test(script.readyState)) {
                     // Handle memory leak in IE
                     script.onload = script.onreadystatechange = null;
 
@@ -483,9 +485,11 @@ var Khan = (function() {
         queryString: function() {
             var urlParams = {},
                 e,
-                a = /\+/g,  // Regex for replacing addition symbol with a space
+                a = /\+/g, // Regex for replacing addition symbol with a space
                 r = /([^&=]+)=?([^&]*)/g,
-                d = function(s) { return decodeURIComponent(s.replace(a, " ")); },
+                d = function(s) {
+                    return decodeURIComponent(s.replace(a, " "));
+                },
                 q = window.location.search.substring(1);
 
             while ((e = r.exec(q))) {
@@ -505,7 +509,8 @@ var Khan = (function() {
         },
 
         scratchpad: (function() {
-            var disabled = false, wasVisible, pad;
+            var disabled = false,
+                wasVisible, pad;
 
             var actions = {
                 disable: function() {
@@ -587,7 +592,7 @@ var Khan = (function() {
             return {
                 // A hash representing the exercise version
                 sha1: typeof userExercise !== "undefined" ?
-                        userExercise.exerciseModel.sha1 : exerciseId,
+                    userExercise.exerciseModel.sha1 : exerciseId,
                 seed: problemSeed,
                 problem_type: problemID
             };
@@ -595,14 +600,17 @@ var Khan = (function() {
 
         getIssueInfo: function() {
             var path = exerciseFile + "?seed=" + problemSeed + "&problem=" +
-                        problemID,
+                problemID,
                 pathlink = "[" + path + (exercise.data("name") !== exerciseId ? " (" + exercise.data("name") + ")" : "") + "](http://sandcastle.khanacademy.org/media/castles/Khan:master/exercises/" + path + "&debug)",
                 historyLink = "[Answer timeline](" + "http://sandcastle.khanacademy.org/media/castles/Khan:master/exercises/" + path + "&debug&activity=" + encodeURIComponent(JSON.stringify(Exercises.userActivityLog)).replace(/\)/g, "\\)") + ")",
                 userHash = "User hash: " + crc32(user),
 
                 parts = [pathlink, historyLink,
-                        "    " + JSON.stringify(Exercises.guessLog), userHash],
-                body = $.grep(parts, function(e) { return e != null; }).join("\n\n");
+                    "    " + JSON.stringify(Exercises.guessLog), userHash
+                ],
+                body = $.grep(parts, function(e) {
+                    return e != null;
+                }).join("\n\n");
 
             return {
                 pretitle: exerciseName,
@@ -632,8 +640,8 @@ var Khan = (function() {
             selector = selector || "#report";
             $(selector).click(function(e) {
                 var issueIntro = $._("Remember to check the hints and " +
-                        "double check your math. All provided information will " +
-                        "be public. Thanks for your help!");
+                    "double check your math. All provided information will " +
+                    "be public. Thanks for your help!");
 
                 e.preventDefault();
 
@@ -670,8 +678,8 @@ var Khan = (function() {
 
                 var framework = Exercises.getCurrentFramework(),
                     issueInfo = framework === "khan-exercises" ?
-                            Khan.getIssueInfo() :
-                            Exercises.PerseusBridge.getIssueInfo(),
+                    Khan.getIssueInfo() :
+                    Exercises.PerseusBridge.getIssueInfo(),
 
                     type = $("input[name=issue-type]:checked").prop("id"),
                     title = $("#issue-title").val(),
@@ -683,19 +691,26 @@ var Khan = (function() {
                     warningInfo = $("#warning-bar-content").text(),
 
                     parts = [$("#issue-body").val() || null, issueInfo.bodyInfo, agent, sessionStorageInfo, mathjaxInfo, warningInfo],
-                    body = $.grep(parts, function(e) { return e != null; }).join("\n\n"),
+                    body = $.grep(parts, function(e) {
+                        return e != null;
+                    }).join("\n\n"),
 
                     issueError = $._("Communication with GitHub isn't working. " +
                         "Please file the issue manually at " +
                         "<a href=\"http://github.com/Khan/khan-exercises/issues/new\">GitHub</a>. " +
-                        "Please reference exercise: %(exerciseId)s.", {exerciseId: exerciseId}),
+                        "Please reference exercise: %(exerciseId)s.", {
+                            exerciseId: exerciseId
+                        }),
                     issueSuccess = function(url, title, suggestion) {
                         return $._("Thank you for your feedback! " +
                             "Your issue has been created and can be " +
                             "found at the following link:" +
                             "<p><a id=\"issue-link\" href=\"%(issueUrl)s\">%(issueTitle)s</a>" +
-                            "<p>%(suggestion)s</p>",
-                            {issueUrl: url, issueTitle: title, suggestion: suggestion}
+                            "<p>%(suggestion)s</p>", {
+                                issueUrl: url,
+                                issueTitle: title,
+                                suggestion: suggestion
+                            }
                         );
                     };
 
@@ -834,41 +849,41 @@ var Khan = (function() {
 
     // Seed the random number generator with the user's hash
     randomSeed = localMode && parseFloat(Khan.query.seed) || userCRC32 ||
-            (new Date().getTime() & 0xffffffff);
+        (new Date().getTime() & 0xffffffff);
 
     if (localMode) {
         // Load in jQuery and underscore, as well as the interface glue code
         // TODO(cbhl): Don't load history.js if we aren't in readOnly mode.
         var initScripts = [
-                // Modified by Junyang Chen
-                //urlBase + "local-only/jquery.js",
-                //urlBase + "local-only/jquery-migrate-1.1.1.js",
-                //urlBase + "local-only/jquery.ui.core.js",
-                //urlBase + "local-only/jquery.ui.widget.js",
-                //urlBase + "local-only/jquery.ui.mouse.js",
-                //urlBase + "local-only/jquery.ui.position.js",
-                //urlBase + "local-only/jquery.ui.effect.js",
-                //urlBase + "local-only/jquery.ui.effect-shake.js",
-                //urlBase + "local-only/jquery.ui.button.js",
-                //urlBase + "local-only/jquery.ui.draggable.js",
-                //urlBase + "local-only/jquery.ui.resizable.js",
-                //urlBase + "local-only/jquery.ui.dialog.js",
-                //urlBase + "local-only/jquery.qtip.js",
+            // Modified by Junyang Chen
+            //urlBase + "local-only/jquery.js",
+            //urlBase + "local-only/jquery-migrate-1.1.1.js",
+            //urlBase + "local-only/jquery.ui.core.js",
+            //urlBase + "local-only/jquery.ui.widget.js",
+            //urlBase + "local-only/jquery.ui.mouse.js",
+            //urlBase + "local-only/jquery.ui.position.js",
+            //urlBase + "local-only/jquery.ui.effect.js",
+            //urlBase + "local-only/jquery.ui.effect-shake.js",
+            //urlBase + "local-only/jquery.ui.button.js",
+            //urlBase + "local-only/jquery.ui.draggable.js",
+            //urlBase + "local-only/jquery.ui.resizable.js",
+            //urlBase + "local-only/jquery.ui.dialog.js",
+            //urlBase + "local-only/jquery.qtip.js",
 
-                // Add blockUI for OpenPop KA exercises. By Junyang Chen.
-                urlBase + "local-only/jquery.blockUI.js",
-                urlBase + "local-only/underscore.js",
-                urlBase + "local-only/kas.js",
-                urlBase + "local-only/jed.js",
-                urlBase + "local-only/i18n.js",
-                // TODO(csilvers): I18N: pick the file based on lang=XX param
-                urlBase + "local-only/localeplanet/icu.en-US.js",
-                urlBase + "local-only/i18n.js",
-                urlBase + "exercises-stub.js",
-                //urlBase + "history.js",
-                urlBase + "interface.js"
-                //urlBase + "related-videos.js"
-            ];
+            // Add blockUI for OpenPop KA exercises. By Junyang Chen.
+            urlBase + "local-only/jquery.blockUI.js",
+            urlBase + "local-only/underscore.js",
+            urlBase + "local-only/kas.js",
+            urlBase + "local-only/jed.js",
+            urlBase + "local-only/i18n.js",
+            // TODO(csilvers): I18N: pick the file based on lang=XX param
+            urlBase + "local-only/localeplanet/icu.en-US.js",
+            urlBase + "local-only/i18n.js",
+            urlBase + "exercises-stub.js",
+            //urlBase + "history.js",
+            urlBase + "interface.js"
+            //urlBase + "related-videos.js"
+        ];
 
         (function loadInitScripts() {
             if (initScripts.length) {
@@ -900,7 +915,7 @@ var Khan = (function() {
             var mods = Khan.getBaseModules();
             if (localMode) {
                 var modString = document.documentElement.getAttribute(
-                        "data-require") || "";
+                    "data-require") || "";
                 var exMods = modString.length ? modString.split(" ") : [];
 
                 Khan.exerciseModulesMap[exerciseId] = exMods;
@@ -924,10 +939,12 @@ var Khan = (function() {
             // All remote exercises (if any) have now been loaded
             $.when.apply($, promises).then(function() {
                 // Enable to redefine the MathJax font size for exercises.
-                Khan.mathJaxLoaded.then(function(){
-                   if(typeof MathJaxFontSize !== "undefined"){
+                Khan.mathJaxLoaded.then(function() {
+                    if (typeof MathJaxFontSize !== "undefined") {
                         MathJax.Hub.Config({
-                            "HTML-CSS": { scale: MathJaxFontSize}
+                            "HTML-CSS": {
+                                scale: MathJaxFontSize
+                            }
                         });
                     }
                 });
@@ -999,7 +1016,8 @@ var Khan = (function() {
     // (still usually a little bit random).
     // There has got to be a better way to do this.
     function makeProblemBag(problems, n) {
-        var bag = [], totalWeight = 0;
+        var bag = [],
+            totalWeight = 0;
 
         if (problems.length > 0) {
             // Collect the weights for the problems and find the total weight
@@ -1170,36 +1188,36 @@ var Khan = (function() {
         // If multiple-answer, join all responses and check if that's empty
         // Remove commas left by joining nested arrays in case multiple-answer is nested
         return $.trim(guess) === "" || (guess instanceof Array &&
-                 $.trim(guess.join("").replace(/,/g, "")) === "");
+            $.trim(guess.join("").replace(/,/g, "")) === "");
     }
 
     //+ Jonas Raoni Soares Silva
     //@ http://jsfromhell.com/array/shuffle [v1.0]
     // Added by Junyang Chen
-    function shuffle(o){ //v1.0
-        for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-            return o;
+    function shuffle(o) { //v1.0
+        for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+        return o;
     };
 
     // TODO Should not fix the array size to 10. Should make it more flexible.
     // Added by Junyang Chen
-    function reMakeProblemBag(problems, n){
+    function reMakeProblemBag(problems, n) {
         var i,
             arrSize = problems.length,
             arr = [],
             problembag = [];
 
-        for(i = 0; i < arrSize; i ++){
-            arr.push((function(){
+        for (i = 0; i < arrSize; i++) {
+            arr.push((function() {
                 return i;
             })());
         }
 
         arr = shuffle(arr);
 
-        for(var i = 0; i < n; i ++){
-            problembag.push((function(){
-             return problems[arr[i]];
+        for (var i = 0; i < n; i++) {
+            problembag.push((function() {
+                return problems[arr[i]];
             })());
         }
 
@@ -1216,7 +1234,7 @@ var Khan = (function() {
         if (typeof seed !== "undefined") {
             problemSeed = seed;
 
-        // If no user, just pick a random seed
+            // If no user, just pick a random seed
         } else if (user == null) {
             problemSeed = Math.abs(randomSeed % bins);
         }
@@ -1240,16 +1258,16 @@ var Khan = (function() {
                 // Or by its ID
                 problems.filter("#" + id);
 
-        // Otherwise we grab a problem at random from the bag of problems
-        // we made earlier to ensure that every problem gets shown the
-        // appropriate number of times
+            // Otherwise we grab a problem at random from the bag of problems
+            // we made earlier to ensure that every problem gets shown the
+            // appropriate number of times
         } else if (problemBag.length > 0) {
             // Modified by Junyang Chen
             //
             problem = problemBag[problemBagIndex];
             //console.log(problemBagIndex);
             id = problem.data("id");
-            if(problemBagIndex > 0 && problemBagIndex % (problemBagSize-1)  === 0){
+            if (problemBagIndex > 0 && problemBagIndex % (problemBagSize - 1) === 0) {
                 problemBag = reMakeProblemBag(problemBag, problemBagSize);
 
                 /*for(var i= 0; i< problemBag.length; i++) {
@@ -1262,7 +1280,7 @@ var Khan = (function() {
             }
 
 
-        // No valid problem was found, bail out
+            // No valid problem was found, bail out
         } else {
             return;
         }
@@ -1296,7 +1314,7 @@ var Khan = (function() {
 
         // prepend any motivational text for the growth mindset A/B test
         var growthHeader = (!localMode && !assessmentMode &&
-                Exercises.currentCard.attributes.growthHeader);
+            Exercises.currentCard.attributes.growthHeader);
         $("#workarea").prepend(growthHeader);
 
         // Add any global exercise defined elements
@@ -1307,14 +1325,19 @@ var Khan = (function() {
         // Apply templating
         var children = problem
             // var blocks append their contents to the parent
-            .find(".vars").tmplApply({attribute: "class", defaultApply: "appendVars"}).end()
+            .find(".vars").tmplApply({
+                attribute: "class",
+                defaultApply: "appendVars"
+            }).end()
 
-            // Individual variables override other variables with the same name
-            .find(".vars [id]").tmplApply().end()
+        // Individual variables override other variables with the same name
+        .find(".vars [id]").tmplApply().end()
 
-            // We also look at the main blocks within the problem itself to override,
-            // ignoring graphie and spin blocks
-            .children("[class][class!='graphie'][class!='spin']").tmplApply({attribute: "class"});
+        // We also look at the main blocks within the problem itself to override,
+        // ignoring graphie and spin blocks
+        .children("[class][class!='graphie'][class!='spin']").tmplApply({
+            attribute: "class"
+        });
 
         debugLog("ran tmplApply to vars and main elements");
 
@@ -1419,7 +1442,7 @@ var Khan = (function() {
             if (choices.length) {
                 answerType = "radio";
 
-            // Otherwise we assume the smart number type
+                // Otherwise we assume the smart number type
             } else {
                 answerType = "number";
             }
@@ -1440,7 +1463,8 @@ var Khan = (function() {
             // Have MathJax redo the font metrics for the solution area
             // (ugh, this is gross)
             MathJax.Hub.Queue(["Reprocess", MathJax.Hub,
-                    $("#solutionarea")[0]]);
+                $("#solutionarea")[0]
+            ]);
 
             // Focus the first input
             // Use .select() and on a delay to make IE happy
@@ -1508,7 +1532,9 @@ var Khan = (function() {
                     text: examples.remove(),
                     prerender: true
                 },
-                style: {classes: "qtip-light leaf-tooltip"},
+                style: {
+                    classes: "qtip-light leaf-tooltip"
+                },
                 position: {
                     my: "bottom center",
                     at: "top center"
@@ -1519,7 +1545,9 @@ var Khan = (function() {
                         length: 0
                     }
                 },
-                hide: {delay: 0}
+                hide: {
+                    delay: 0
+                }
             });
         } else {
             $("#examples-show").hide();
@@ -1528,9 +1556,9 @@ var Khan = (function() {
         hints = hints.tmpl().children().get();
 
         // Hook out for exercise test runner
-        if (localMode && parent !== window && typeof parent.jQuery !== "undefined") {
-            parent.jQuery(parent.document).trigger("problemLoaded", [makeProblem, answerData.solution]);
-        }
+        // if (localMode && parent !== window && typeof parent.jQuery !== "undefined") {
+        // parent.jQuery(parent.document).trigger("problemLoaded", [makeProblem, answerData.solution]);
+        // }
 
         $("#hint").val($._("I'd like a hint"));
 
@@ -1617,8 +1645,8 @@ var Khan = (function() {
 
         if (userExercise == null || Khan.query.debug != null) {
             $("#problem-permalink").text("Permalink: " +
-                                         problemID + " #" +
-                                         problemSeed)
+                    problemID + " #" +
+                    problemSeed)
                 .attr("href", window.location.protocol + "//" + window.location.host + window.location.pathname + "?debug&problem=" + problemID + "&seed=" + problemSeed);
         }
 
@@ -1629,7 +1657,9 @@ var Khan = (function() {
                     $("#hint").click();
                 }
             });
-            var debugWrap = $("#debug").css({"margin-right": "15px"}).empty();
+            var debugWrap = $("#debug").css({
+                "margin-right": "15px"
+            }).empty();
             var debugURL = window.location.protocol + "//" + window.location.host + window.location.pathname +
                 "?debug&problem=" + problemID;
 
@@ -1652,13 +1682,13 @@ var Khan = (function() {
                 var historyURL = debugURL + "&seed=" + problemSeed + "&activity=";
                 $("<a>Problem history</a>").attr("href", "javascript:").click(function() {
                     window.location.href = historyURL + encodeURIComponent(
-                            JSON.stringify(Exercises.userActivityLog));
+                        JSON.stringify(Exercises.userActivityLog));
                 }).appendTo(links);
             } else {
                 $("<a>Random problem</a>")
                     .attr("href", window.location.protocol + "//" +
-                            window.location.host + window.location.pathname +
-                            "?debug")
+                        window.location.host + window.location.pathname +
+                        "?debug")
                     .appendTo(links);
             }
 
@@ -1669,8 +1699,7 @@ var Khan = (function() {
                 links.append($("<div>")
                     .css({
                         "padding-left": "20px",
-                        "outline":
-                            (problemID === probID || problemID === "" + n) ?
+                        "outline": (problemID === probID || problemID === "" + n) ?
                             "1px dashed gray" : ""
                     })
                     .append($("<span>").text(n + ": "))
@@ -1940,9 +1969,9 @@ var Khan = (function() {
             .bind("upcomingExercise", function(ev, data) {
                 var userExercise = data.userExercise;
                 startLoadingExercise(
-                        userExercise.exercise,
-                        userExercise.exerciseModel.displayName,
-                        userExercise.exerciseModel.fileName);
+                    userExercise.exercise,
+                    userExercise.exerciseModel.displayName,
+                    userExercise.exerciseModel.fileName);
             })
             .bind("showHint", function() {
                 showHint();
@@ -2065,7 +2094,7 @@ var Khan = (function() {
             if (!(/success|notmodified/).test(status)) {
                 // Maybe loading from a file:// URL?
                 Khan.error("Error loading exercise from file " + fileName +
-                        xhr.status + " " + xhr.statusText);
+                    xhr.status + " " + xhr.statusText);
                 return;
             }
 
@@ -2102,7 +2131,7 @@ var Khan = (function() {
 
             // Extract data-require
             var match = data.match(
-                    /<html(?:[^>]+)data-require=(['"])((?:(?!\1).)*)\1/);
+                /<html(?:[^>]+)data-require=(['"])((?:(?!\1).)*)\1/);
             var requires;
             if (match != null) {
                 requires = match[2].length ? match[2].split(" ") : [];
@@ -2157,10 +2186,10 @@ var Khan = (function() {
         var src, deps = [];
         // Modified by Junyang Chen
         if (typeof modNameOrObject === "string") {
-            if(/\([a-zA-Z0-9\.\/\_]*\)/.test(modNameOrObject)){
+            if (/\([a-zA-Z0-9\.\/\_]*\)/.test(modNameOrObject)) {
                 modNameOrObject = modNameOrObject.replace(/\(|\)/g, "");
                 src = modNameOrObject;
-            }else{
+            } else {
                 src = urlBase + "utils/" + modNameOrObject + ".js";
             }
 
@@ -2196,6 +2225,7 @@ var Khan = (function() {
     }
     var tempdeff = $.Deferred();
     window.testdeffer = tempdeff.promise();
+
     function loadTestModeSite() {
         // TODO(alpert): Is the DOM really not yet ready?
         $(function() {
@@ -2215,7 +2245,7 @@ var Khan = (function() {
         $("body").prepend(html);
         $("#container .exercises-header span").eq(1).append(document.title);
         $("#container .exercises-body .current-card-contents").html(
-                htmlExercise);
+            htmlExercise);
 
         if (Khan.query.layout === "lite") {
             $("html").addClass("lite");

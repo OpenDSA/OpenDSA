@@ -431,7 +431,7 @@ config_js_template = '''\
   settings.REQ_FULL_SS = %(req_full_ss)s;
   settings.BUILD_TO_ODSA = "%(rel_build_to_odsa_path)s";
 
-  window.ODSA = {};
+  window.ODSA = window.ODSA || {};
   window.ODSA.SETTINGS = settings;
 }());
 '''
