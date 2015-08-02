@@ -369,12 +369,8 @@
                 message: "Waiting for the server to evaluate your code ..."
             });
         }
-        if (!(toolProviderData.outcomeService && attemptData.complete)) {
-            return;
-        }
 
         var respondpromise = request(requestUrl, attemptData);
-
 
         respondpromise.done(function(data) {
             data = jQuery.parseJSON(data);
@@ -417,16 +413,17 @@
                 total = streakNum;
                 proficiency = true;
                 parent.postMessage('{"exercise":"' + exerciseName + '","proficient":' + true + ',"error":' + false + '}', MODULE_ORIGIN);
-
-                toolProviderData.toParams.score = 1;
-                jQuery.ajax({
-                    url: "/assessment",
-                    type: "POST",
-                    dataType: 'json',
-                    contentType: "application/json; charset=utf-8",
-                    data: JSON.stringify(toolProviderData.toParams),
-                    datatype: "json"
-                });
+                if (toolProviderData.outcomeService) {
+                    toolProviderData.toParams.score = 1;
+                    jQuery.ajax({
+                        url: "/assessment",
+                        type: "POST",
+                        dataType: 'json',
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify(toolProviderData.toParams),
+                        datatype: "json"
+                    });
+                }
             }
 
             total = parseInt(total, 10);
@@ -871,7 +868,6 @@
                     withCredentials: true
                 },
                 success: function(data) {
-                    console.dir(data);
                     var streakval = data.objects[0] && data.objects[0].streak ? data.objects[0].streak : 0;
                     var progress = data.objects[0] && data.objects[0].progress_streak ? data.objects[0].progress_streak : 0;
                     testdeffer.done(function() {
