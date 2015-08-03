@@ -207,15 +207,15 @@ $(document).ready(function () {
   ({'font-size': '16px', "text-align": "center"});
   yLabel = av.label("Cost",  {"top": top - 20, "left": left + leftSpace - 50}).css
   ({'font-size': '16px', "text-align": "center"});
-  var iPosition = av.label("*",  {"top": top + yLength - 25, "left": left + leftSpace + 50}).css
+  iPosition = av.label("*",  {"top": top + yLength - 25, "left": left + leftSpace + 50}).css
   ({'font-size': '16px', "text-align": "center"});
-  var iLabel = av.label("$i$",  {"top": top + yLength - 10, "left": left + leftSpace + 50}).css
+  iLabel = av.label("$i$",  {"top": top + yLength - 10, "left": left + leftSpace + 50}).css
   ({'font-size': '16px', "text-align": "center"});
-  var iCostLabel = av.label("$i/2$",  {"top": top + 85, "left": left + leftSpace - 35}).css
+  iCostLabel = av.label("$i/2$",  {"top": top + 85, "left": left + leftSpace - 35}).css
   ({'font-size': '16px', "text-align": "center"});
-  var iCostMark = av.label("_",  {"top": top + 83, "left": left + leftSpace - 5}).css
+  iCostMark = av.label("_",  {"top": top + 83, "left": left + leftSpace - 5}).css
   ({'font-size': '16px', "text-align": "center"});
-  var iCost = av.label("$*$",  {"top": top + 85, "left": left + leftSpace + 50}).css
+  iCost = av.label("$*$",  {"top": top + 85, "left": left + leftSpace + 50}).css
   ({'font-size': '16px', "text-align": "center", "color": "red"});
   diagonal = av.g.line(left + leftSpace, top + yLength, left + leftSpace + 130, top + yLength - 85);
   av.step();

@@ -84,31 +84,30 @@ $(document).ready(function () {
   
   var leftSpace = 0;
   var topSpace = 0;
-  var axis = [];
-  var worstInputLine = [];
-  var worstCostLine = [];
-  var worstInput = [];
-  var worstCost = [];
-  var xLabel = [];
-  var yLabel = [];
-  var origin = [];
-  var points = [[]];
-  var i;
-  var yLength = 150;
-  var xLength = 200;
-  var numPoints = 5;
+  axis = [];
+  worstInputLine = [];
+  worstCostLine = [];
+  worstInput = [];
+  worstCost = [];
+  xLabel = [];
+  yLabel = [];
+  origin = [];
+  points = [[]];
+  yLength = 150;
+  xLength = 200;
+  numPoints = 5;
   var highestPoints = [];
   
 
   for(i = 0; i < 4; i++){
-    if(i == 1){
+    if(i === 1){
       leftSpace += 350;
     }
-    if(i == 2){
+    if(i === 2){
       leftSpace -= 350;
       topSpace += 250;
     }
-    if(i == 3){
+    if(i === 3){
       leftSpace += 350;
     }
     points[i] = [];
@@ -130,7 +129,7 @@ $(document).ready(function () {
     }
  
     //Getting the highest point
-    var maxIndex = 0;
+    maxIndex = 0;
     for(var j = 1; j < numPoints; j++){
       if(points[i][j].options.top < points[i][maxIndex].options.top){
         maxIndex = j;
