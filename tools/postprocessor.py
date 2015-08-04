@@ -185,8 +185,12 @@ def update_TermDef(glossary_file, terms_dict):
 triple_up = re.compile(r'^\.\.[\/\\]\.\.[\/\\]\.\.[\/\\]')
 def break_up_fragments(path, exercises, modules, url_index, book_name):
   # Read contents of module HTML file
-  with codecs.open(path, 'r', 'utf-8') as html_file:
-    html = html_file.read()
+  try:
+    with codecs.open(path, 'r', 'utf-8') as html_file:
+      html = html_file.read()
+  except IOError:
+    print "Error: Could not find HTML file for", path
+    return {}
   
   # Get the module name and create its subfolder
   mod_name = os.path.splitext(os.path.basename(path))[0]
@@ -369,7 +373,8 @@ def make_lti(config):
   
   exercises = {}
   url_index = {
-    section_data['long_name'] : '{}/{}'.format(chapter_name, section_name.replace('/', '_'))
+    (section_name.split('/')[1] if '/' in section_name else section_name)
+        : '{}/{}'.format(chapter_name, section_name.replace('/', '_'))
     for chapter_name, sections in config.chapters.items()
     for section_name, section_data in sections.items()
   }
@@ -377,7 +382,8 @@ def make_lti(config):
   url_index['search'] = 'Table_of_Contents/Table_of_Contents'
   for chapter_name, sections in config.chapters.items():
     for section_name, section_data in sections.items():
-      path = os.path.join(dest_dir, section_data['long_name']+".html")
+      name = section_name.split('/')[1] if '/' in section_name else section_name
+      path = os.path.join(dest_dir, name+".html")
       exercises[path] = break_up_fragments(path, section_data['exercises'], tuple(html_files)+ignore_files, url_index, config.book_name)
 
 def main(argv):
