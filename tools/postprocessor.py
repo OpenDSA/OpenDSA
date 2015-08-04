@@ -283,9 +283,16 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
         
       # Do something with the actual href
   
+  # Move header scripts out of header, kill header
+  header_tag = soup.find('div', class_='header')
+  for bit in header_tag.contents:
+    print type(bit), bit
+    if bit.name in ('script', 'link'):
+      header_tag.next_sibling.insert_after(bit.extract())
+  header_tag.extract()
+  
   # Breaking file into components
   soup_content = soup.find('div', class_='section')
-  soup.find('div', class_='header').extract()
   section_divs = soup_content.contents
   found_counter = 0
   exercise_data = {}
