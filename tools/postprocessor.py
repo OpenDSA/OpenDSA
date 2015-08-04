@@ -332,8 +332,9 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
               sss_div.insert(0, a_script)
         with codecs.open(path_html, 'w', 'utf-8') as o:
           o.write(unicode(soup))
-        for bit in soup_content:
-          bit.extract()
+        soup_content.clear()
+        #for bit in soup_content:
+          #bit.extract()
         sss_div.extract()
         found_counter += 1
   else:
