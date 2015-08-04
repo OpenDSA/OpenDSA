@@ -429,7 +429,7 @@ config_js_template = '''\
   // Flag controlling whether or not the system will assign credit (scores) obtained by anonymous users to the next user to log in
   settings.ALLOW_ANON_CREDIT = %(allow_anonymous_credit)s;
   settings.REQ_FULL_SS = %(req_full_ss)s;
-  settings.BUILD_TO_ODSA = "%(rel_build_to_odsa_path)s";
+  settings.BUILD_TO_ODSA = "OpenDSA/";
 
   window.ODSA = window.ODSA || {};
   window.ODSA.SETTINGS = settings;

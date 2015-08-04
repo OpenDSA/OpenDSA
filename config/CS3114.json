@@ -101,14 +101,14 @@
       "lang": "java"
     }
   },
-  "exercise_server": "https://opendsa.cs.vt.edu:8081/",
+  "exercise_server": "https://ltitest.cs.vt.edu:8443",
   "glob_exer_options": {
     "JXOP-debug": "true"
   },
   "lang": "en",
-  "logging_server": "https://opendsa.cs.vt.edu:8081/",
-  "module_origin": "http://algoviz.org",
-  "score_server": "https://opendsa.cs.vt.edu:8081/",
+  "logging_server": "https://ltitest.cs.vt.edu:8443",
+  "module_origin": "https://ltitest.cs.vt.edu:9292",
+  "score_server": "https://ltitest.cs.vt.edu:8443",
   "suppress_todo": true,
   "title": "CS3114 Fall 2014",
   "LTI": {
