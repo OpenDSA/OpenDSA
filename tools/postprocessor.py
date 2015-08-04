@@ -182,6 +182,7 @@ def update_TermDef(glossary_file, terms_dict):
         i-= 1
     i += 1
     
+triple_up = re.compile(r'^\.\.[\/\\]\.\.[\/\\]\.\.[\/\\]')
 def break_up_fragments(path, exercises, modules, url_index, book_name):
   # Read contents of module HTML file
   with codecs.open(path, 'r', 'utf-8') as html_file:
@@ -205,10 +206,10 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
       #  if name.endswith('CODE'):
       #    name = name.replace('CODE', 'CON')
       #  scripts[name].append(url)
-      if script['src'].startswith('../../../'):
+      if triple_up.match(script['src']):
         script['src'] = 'OpenDSA/' + script['src'][len('../../../'):]
       elif script['src'].startswith('_static/'):
-        script['src'] = 'OpenDSA/Books'+book_name+'/html/'+script['src'][len('_static/'):]
+        script['src'] = 'OpenDSA/Books'+book_name+'/html/'+script['src']
   # And any css files that we might want
   styles = defaultdict(list)
   for style in soup('link'):
@@ -219,10 +220,10 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
       #  if name.endswith('CODE'):
       #    name = name.replace('CODE', 'CON')
       #  scripts[name].append(url)
-      if style['href'].startswith('../../../'):
+      if triple_up.match(style['href']):
         style['href'] = 'OpenDSA/' + style['href'][len('../../../'):]
       elif style['href'].startswith('_static/'):
-        style['href'] = 'OpenDSA/Books/'+book_name+'/html/'+style['href'][len('_static/'):]
+        style['href'] = 'OpenDSA/Books/'+book_name+'/html/'+style['href']
   # Strip out Script, Style, and Link tags
       
       
