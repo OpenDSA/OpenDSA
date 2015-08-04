@@ -194,7 +194,6 @@ def break_up_fragments(path, exercises, modules, url_index):
   # Strip out the script, style, link, and meta tags
   
   soup = BeautifulSoup(html, "lxml")
-  soup_wrapper = BeautifulSoup(html, "lxml")
   
   # Find all of the scripts that we might need
   scripts = defaultdict(list)
@@ -272,8 +271,8 @@ def break_up_fragments(path, exercises, modules, url_index):
       # Do something with the actual href
   
   # Breaking file into components
-  soup_wrapper.find('div', class_='section').clear()
   soup_content = soup.find('div', class_='section')
+  soup.find('div', class_='header').extract()
   section_divs = soup_content.contents
   found_counter = 0
   exercise_data = {}
