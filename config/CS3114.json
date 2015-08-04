@@ -107,7 +107,7 @@
   },
   "lang": "en",
   "logging_server": "https://ltitest.cs.vt.edu:8443",
-  "module_origin": "http://ltitest.cs.vt.edu:9292",
+  "module_origin": "https://ltitest.cs.vt.edu:9292",
   "score_server": "https://ltitest.cs.vt.edu:8443",
   "suppress_todo": true,
   "title": "CS3114 Fall 2014",
