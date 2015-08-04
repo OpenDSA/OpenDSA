@@ -182,7 +182,7 @@ def update_TermDef(glossary_file, terms_dict):
         i-= 1
     i += 1
     
-def break_up_fragments(path, exercises, modules, url_index):
+def break_up_fragments(path, exercises, modules, url_index, book_name):
   # Read contents of module HTML file
   with codecs.open(path, 'r', 'utf-8') as html_file:
     html = html_file.read()
@@ -198,21 +198,31 @@ def break_up_fragments(path, exercises, modules, url_index):
   # Find all of the scripts that we might need
   scripts = defaultdict(list)
   for script in soup('script'):
-    if script.has_attr('src') and script['src'].startswith('../../../AV/'):
-        url = script['src'].replace('../../../', 'OpenDSA/')
-        name = os.path.splitext(os.path.basename(url))[0]
-        if name.endswith('CODE'):
-            name = name.replace('CODE', 'CON')
-        scripts[name].append(url)
+    if script.has_attr('src'):
+      #if script['src'].startswith('../../../AV/'):
+      #  url = script['src'].replace('../../../', 'OpenDSA/')
+      #  name = os.path.splitext(os.path.basename(url))[0]
+      #  if name.endswith('CODE'):
+      #    name = name.replace('CODE', 'CON')
+      #  scripts[name].append(url)
+      if script['src'].startswith('../../../'):
+        script['src'] = 'OpenDSA/' + script['src'][len('../../../'):]
+      elif script['src'].startswith('_static/'):
+        script['src'] = 'OpenDSA/Books'+book_name+'/html/'+script['src'][len('_static/'):]
   # And any css files that we might want
   styles = defaultdict(list)
   for style in soup('link'):
-    if style.has_attr('href') and style['href'].startswith('../../../AV/'):
-        url = style['href'].replace('../../../', 'OpenDSA/')
-        name = os.path.splitext(os.path.basename(url))[0]
-        if name.endswith('CODE'):
-            name = name.replace('CODE', 'CON')
-        scripts[name].append(url)
+    if style.has_attr('href'):
+      #if style['href'].startswith('../../../AV/'):
+      #  url = style['href'].replace('../../../', 'OpenDSA/')
+      #  name = os.path.splitext(os.path.basename(url))[0]
+      #  if name.endswith('CODE'):
+      #    name = name.replace('CODE', 'CON')
+      #  scripts[name].append(url)
+      if style['href'].startswith('../../../'):
+        style['href'] = 'OpenDSA/' + style['href'][len('../../../'):]
+      elif style['href'].startswith('_static/'):
+        style['href'] = 'OpenDSA/Books/'+book_name+'/html/'+style['href'][len('_static/'):]
   # Strip out Script, Style, and Link tags
       
       
@@ -362,7 +372,7 @@ def make_lti(config):
   for chapter_name, sections in config.chapters.items():
     for section_name, section_data in sections.items():
       path = os.path.join(dest_dir, section_data['long_name']+".html")
-      exercises[path] = break_up_fragments(path, section_data['exercises'], tuple(html_files)+ignore_files, url_index)
+      exercises[path] = break_up_fragments(path, section_data['exercises'], tuple(html_files)+ignore_files, url_index, config.book_name)
 
 def main(argv):
   if len(argv) != 3:
