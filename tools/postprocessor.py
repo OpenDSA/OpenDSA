@@ -317,6 +317,8 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
         fragment_components = []
         exercise_data[name] = {key: section[key] for key in section.attrs}
         total += 1
+    if not fragments:
+      fragments.append(("", fragment_components))
         
     # Then we write out each grouping with the proper name and JS/CSS
     for section_id, fragment in fragments:
