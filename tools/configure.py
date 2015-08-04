@@ -44,7 +44,7 @@ from optparse import OptionParser
 from config_templates import *
 from ODSA_RST_Module import ODSA_RST_Module
 from ODSA_Config import ODSA_Config
-from postprocessor import update_TOC, update_TermDef
+from postprocessor import update_TOC, update_TermDef, make_lti
 
 # List of exercises encountered in RST files that do not appear in the
 # configuration file
@@ -469,6 +469,7 @@ def configure(config_file_path, options):
         # Create the concept map definition file in _static html directory
         with codecs.open(config.book_dir + 'html/_static/GraphDefs.json', 'w', 'utf-8') as graph_defs_file:
             json.dump(cmap_map, graph_defs_file)
+    make_lti(config)
 
 # Code to execute when run as a standalone program
 if __name__ == "__main__":

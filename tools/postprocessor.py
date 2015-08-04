@@ -8,6 +8,15 @@ import os
 import re
 import codecs
 import json
+import xml.dom.minidom as minidom
+from pprint import pprint
+from xml.etree.ElementTree import ElementTree, SubElement, Element
+from bs4 import BeautifulSoup
+from bs4.element import NavigableString
+from collections import defaultdict
+import tarfile
+import shutil
+import urlparse
 
 __author__ = 'breakid'
 
@@ -172,6 +181,182 @@ def update_TermDef(glossary_file, terms_dict):
         terms_dict[term] = str(term_def)
         i-= 1
     i += 1
+    
+def break_up_fragments(path, exercises, modules, url_index):
+  # Read contents of module HTML file
+  with codecs.open(path, 'r', 'utf-8') as html_file:
+    html = html_file.read()
+  
+  # Get the module name and create its subfolder
+  mod_name = os.path.splitext(os.path.basename(path))[0]
+  print "Found HTML file:", mod_name
+  
+  # Strip out the script, style, link, and meta tags
+  
+  soup = BeautifulSoup(html, "lxml")
+  soup_wrapper = BeautifulSoup(html, "lxml")
+  
+  # Find all of the scripts that we might need
+  scripts = defaultdict(list)
+  for script in soup('script'):
+    if script.has_attr('src') and script['src'].startswith('../../../AV/'):
+        url = script['src'].replace('../../../', 'OpenDSA/')
+        name = os.path.splitext(os.path.basename(url))[0]
+        if name.endswith('CODE'):
+            name = name.replace('CODE', 'CON')
+        scripts[name].append(url)
+  # And any css files that we might want
+  styles = defaultdict(list)
+  for style in soup('link'):
+    if style.has_attr('href') and style['href'].startswith('../../../AV/'):
+        url = style['href'].replace('../../../', 'OpenDSA/')
+        name = os.path.splitext(os.path.basename(url))[0]
+        if name.endswith('CODE'):
+            name = name.replace('CODE', 'CON')
+        scripts[name].append(url)
+  # Strip out Script, Style, and Link tags
+      
+      
+  '''
+  Keep actual <head>
+  Strip out <div class='header'> content
+  
+  Strip out any JS/CSS that's related to the slideshow
+  
+  
+  Break it up according to the exercises
+  
+    Text
+    Question
+    
+    Text
+    Question
+    
+    Text
+  
+  '''
+  
+  # Redirect href urls
+  for link in soup.find_all('a'):
+    if 'href' not in link.attrs:
+        # Really? No href? Is that even valid HTML?
+        continue
+    href = link['href']
+    # Skip dummy urls redirecting to itself
+    if href == '#':
+      continue
+    elif href.startswith('#'):
+      # Do something with an internal page link
+      continue
+    elif href.startswith('mailto:'):
+      continue
+    elif href.startswith('http://'):
+      continue
+    elif href.startswith('../'):
+      continue
+    elif href.endswith('.rst'):
+      continue
+    else:
+      if '#' in href:
+        external, internal = href.split('#', 1)
+      else:
+        external, internal = href, ''
+      if external.endswith('.html'):
+        # Snip off the ".html"
+        external = external[:-5]
+        # Map it to the proper folder in OpenEdX
+        external = url_index.get(external, external)
+        # Force it to approach it from the top
+        link['href'] = '../../'+'#'.join((external,internal))
+        
+      # Do something with the actual href
+  
+  # Breaking file into components
+  soup_wrapper.find('div', class_='section').clear()
+  soup_content = soup.find('div', class_='section')
+  section_divs = soup_content.contents
+  found_counter = 0
+  exercise_data = {}
+  all_divs = []
+  if section_divs:
+    # Process the fragments in two passes
+    fragments = []
+    fragment_components = []
+    total = 0
+    
+    extractions = []
+    while section_divs:
+      extractions.append(section_divs[0].extract())
+    # In the first pass, we find all of the problems and group them into fragments
+      # If we find a slideshow or practice exercise, then start a new fragment
+    for section in extractions:
+      # If we find a slideshow or practice exercise, then start a new fragment
+      #section = section.extract()
+      fragment_components.append(section)
+      all_divs.append(section)
+      try:
+          if section.has_attr('id') and section['id'] in exercises:
+            name = section['id']
+            print "Found:", name
+            fragments.append((name, fragment_components))
+            fragment_components = []
+            exercise_data[name] = {key: section[key] for key in section.attrs}
+            total += 1
+      except:
+        pass
+        
+    # Then we write out each grouping with the proper name and JS/CSS
+    for section_id, fragment in fragments:
+        seq = '-{0:02d}'.format(1+found_counter) if total > 0 else ''
+        print seq
+        filename = '{}{}.html'.format(mod_name, seq)
+        path_html = os.path.join(os.path.dirname(path), filename)
+        # Write it out, preserving unicode
+        for i, bit in enumerate(fragment):
+          print "\t", str(bit)[:40]
+          soup_content.insert(i,bit)
+        with codecs.open(path_html, 'w', 'utf-8') as o:
+          o.write(unicode(soup))
+        for bit in soup_content:
+          bit.extract()
+        found_counter += 1
+  else:
+    print "Failed to find any 'div' tags with a 'section' class."
+    path_html = os.path.join(os.path.dirname(path), '{}-{}.html'.format(mod_name, found_counter))
+    with codecs.open(path_html, 'w', 'utf-8') as o:
+      o.writelines(html)
+  print "\t Had ", 1+found_counter, "parts"
+  
+  # Delete the file on the way out
+  #os.remove(path)
+  return exercise_data
+    
+def pretty_print_xml(data, file_path):
+    ElementTree(data).write(file_path)
+    xml = minidom.parse(file_path)
+    with open(file_path, 'w') as resaved_file:
+        # [23:] omits the stupid xml header
+        resaved_file.write(xml.toprettyxml()[23:])
+    
+def make_lti(config):
+  dest_dir = config.book_dir + config.rel_book_output_path
+  # Iterate through all of the existing files
+  ignore_files = ('Gradebook.html', 'search.html', 'conceptMap.html',
+                  'genindex.html', 'RegisterBook.html', 'index.html')
+  html_files = [path for path in os.listdir(dest_dir)
+                if path.endswith('.html') and path not in ignore_files]
+  exercises = {}
+  url_index = {
+    section_data['long_name'] : '{}/{}'.format(chapter_name, section_name.replace('/', '_'))
+    for chapter_name, sections in config.chapters.items()
+    for section_name, section_data in sections.items()
+  }
+  url_index['genindex'] = 'Table_of_Contents/Table_of_Contents'
+  url_index['search'] = 'Table_of_Contents/Table_of_Contents'
+  for chapter_name, sections in config.chapters.items():
+    for section_name, section_data in sections.items():
+      path = os.path.join(dest_dir, section_data['long_name']+".html")
+      exercises[path] = break_up_fragments(path, section_data['exercises'], tuple(html_files)+ignore_files, url_index)
 
 def main(argv):
   if len(argv) != 3:
