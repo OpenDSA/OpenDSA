@@ -210,13 +210,11 @@ There is no strict equality to the use of big-Oh notation.
 :math:`O(n)` is in :math:`O(n^2)`, but :math:`O(n^2)` is not in
 :math:`O(n)`.
 
-.. showhidecontent:: thetadisc
-
-   In some of the following material, you will see use of the symbol
-   :math:`\Theta`, such as :math:`\Theta(n)`.
-   While they are technically somewhat different, you may interpret use
-   of :math:`\Theta` in :math:`\Theta(n)` to have the same meaning as
-   :math:`O(n)`.
+In some of the following material, you will see use of the symbol
+:math:`\Theta`, such as :math:`\Theta(n)`.
+While they are technically somewhat different, you may interpret use
+of :math:`\Theta` in :math:`\Theta(n)` to have the same meaning as
+:math:`O(n)`.
 
 Simplifying Rules
 -----------------
