@@ -11,7 +11,7 @@ import json
 import xml.dom.minidom as minidom
 from pprint import pprint
 from xml.etree.ElementTree import ElementTree, SubElement, Element
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, element
 from bs4.element import NavigableString
 from collections import defaultdict
 import tarfile
@@ -232,6 +232,8 @@ def break_up_fragments(path, exercises, modules, url_index):
     Question
     
     Text
+    
+  Different folder
   
   '''
   
@@ -293,22 +295,19 @@ def break_up_fragments(path, exercises, modules, url_index):
       #section = section.extract()
       fragment_components.append(section)
       all_divs.append(section)
-      try:
-          if section.has_attr('id') and section['id'] in exercises:
-            name = section['id']
-            print "Found:", name
-            fragments.append((name, fragment_components))
-            fragment_components = []
-            exercise_data[name] = {key: section[key] for key in section.attrs}
-            total += 1
-      except:
-        pass
+      if isinstance(section, element.Tag) and section.has_attr('id') and section['id'] in exercises:
+        name = section['id']
+        print "Found:", name
+        fragments.append((name, fragment_components))
+        fragment_components = []
+        exercise_data[name] = {key: section[key] for key in section.attrs}
+        total += 1
         
     # Then we write out each grouping with the proper name and JS/CSS
     for section_id, fragment in fragments:
         seq = '-{0:02d}'.format(1+found_counter) if total > 0 else ''
         filename = '{}{}.html'.format(mod_name, seq)
-        path_html = os.path.join(os.path.dirname(path), filename)
+        path_html = os.path.join(os.path.dirname(path), '..', 'lti_html', filename)
         # Write it out, preserving unicode
         for i, bit in enumerate(fragment):
           soup_content.insert(i,bit)
@@ -347,6 +346,11 @@ def make_lti(config):
                   'genindex.html', 'RegisterBook.html', 'index.html')
   html_files = [path for path in os.listdir(dest_dir)
                 if path.endswith('.html') and path not in ignore_files]
+  
+  lti_folder = os.path.join(dest_dir, '..', 'lti_html')
+  shutil.rmtree(lti_folder, ignore_errors=True)
+  os.makedirs(lti_folder)
+  
   exercises = {}
   url_index = {
     section_data['long_name'] : '{}/{}'.format(chapter_name, section_name.replace('/', '_'))
