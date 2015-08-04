@@ -202,7 +202,7 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
       if triple_up.match(script['src']):
         script['src'] = 'OpenDSA/' + script['src'][len('../../../'):]
       elif script['src'].startswith('_static/'):
-        script['src'] = 'OpenDSA/Books'+book_name+'/html/'+script['src']
+        script['src'] = 'OpenDSA/Books/'+book_name+'/html/'+script['src']
   # And any css files that we might want
   for style in soup('link'):
     if style.has_attr('href'):
@@ -271,9 +271,9 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   
   # Move header scripts out of header, kill header
   header_tag = soup.find('div', class_='header')
-  for bit in header_tag.contents:
+  for bit in reversed(header_tag.contents):
     if bit.name in ('script', 'link'):
-      header_tag.next_sibling.insert_after(bit.extract())
+      header_tag.next_sibling.insert_before(bit.extract())
   header_tag.extract()
   
   # Remove unnecessary parts of the HTML
