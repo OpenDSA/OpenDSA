@@ -4,12 +4,16 @@
   "code_dir": "SourceCode/",
   "lang": "en",
   "code_lang": {
-    "Java": { "ext":["java"], "label":"Java", "lang":"java"}
+    "Java": {
+      "ext": ["java"],
+      "label": "Java",
+      "lang": "java"
+    }
   },
-  "module_origin": "http://algoviz.org",
-  "exercise_server": "https://opendsa.cs.vt.edu/",
-  "logging_server": "https://opendsa.cs.vt.edu/",
-  "score_server": "https://opendsa.cs.vt.edu/",
+  "module_origin": "http://localhost:8000",
+  "exercise_server": "https://ltitest.cs..vt.edu:8443",
+  "logging_server": "https://ltitest.cs..vt.edu:8443",
+  "score_server": "https://ltitest.cs..vt.edu:8443",
   "build_JSAV": false,
   "build_cmap": false,
   "allow_anonymous_credit": true,
@@ -74,7 +78,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-         "alistInsertCON": {
+          "alistInsertCON": {
             "long_name": "Array-based List Insertion Slideshow",
             "required": true,
             "points": 0.0,
@@ -116,7 +120,7 @@
     "Array-based Stacks": {
       "List/StackArray": {
         "long_name": "Array-based Stacks",
-          "exercises": {
+        "exercises": {
           "astackVarCON": {
             "long_name": "Array stack variables slideshow",
             "required": true,
@@ -160,7 +164,7 @@
       "List/ListLinked": {
         "long_name": "Linked Lists",
         "exercises": {
-          "llistRepCON": { },
+          "llistRepCON": {},
           "llistBadCON": {
             "long_name": "Linked List Slideshow 1",
             "required": true,
@@ -173,8 +177,8 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "llistInitCON": { },
-          "llistHeaderCON": { },
+          "llistInitCON": {},
+          "llistHeaderCON": {},
           "llistVarsCON": {
             "long_name": "Linked List Variables Slideshow",
             "required": true,
@@ -287,8 +291,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "listElementDeleteCON": {
-          },
+          "listElementDeleteCON": {},
           "LstSumm": {
             "long_name": "List Summary Questions",
             "required": true,
@@ -302,7 +305,7 @@
       "List/StackLinked": {
         "long_name": "Linked Stacks",
         "exercises": {
-          "lstackDiagramCON": { },
+          "lstackDiagramCON": {},
           "lstackPushCON": {
             "long_name": "Linked stack push",
             "required": true,
@@ -447,7 +450,7 @@
         }
       }
     },
-     "Recursion": {
+    "Recursion": {
       "RecurTutor/Introduction": {
         "long_name": "Recursion Chapter Introduction",
         "exercises": {
@@ -517,7 +520,7 @@
       },
       "RecurTutor/HarderWrite": {
         "long_name": "How to write a more sophisticated recursive function",
-	"dispModComp": true,
+        "dispModComp": true,
         "exercises": {}
       },
       "RecurTutor/HarderCodeCompletionEx": {
@@ -641,14 +644,14 @@
             "points": 1.0,
             "threshold": 2.0,
             "showhide": "Show"
-          }, 
+          },
           "recTracingSumm5": {
             "long_name": "Recursion Tracing Exercises Set 5",
             "required": true,
             "points": 1.0,
             "threshold": 2.0,
             "showhide": "Show"
-          },        
+          },
           "recTracingSumm6": {
             "long_name": "Recursion Tracing Exercises Set 6",
             "required": true,
@@ -711,7 +714,9 @@
           },
           "binarySearchPRO": {
             "long_name": "Binary Search Proficiency Exercise",
-            "exer_options": { "JXOP-code": "none" },
+            "exer_options": {
+              "JXOP-code": "none"
+            },
             "required": true,
             "points": 1.0,
             "threshold": 1.0
@@ -839,7 +844,9 @@
           },
           "BSTsearchPRO": {
             "long_name": "BST Search Proficiency Exercise",
-            "exer_options": { "JXOP-code": "none" },
+            "exer_options": {
+              "JXOP-code": "none"
+            },
             "required": true,
             "points": 1.0,
             "threshold": 0.90
@@ -852,7 +859,9 @@
           },
           "BSTinsertPRO": {
             "long_name": "BST Insert Proficiency Exercise",
-            "exer_options": { "JXOP-code": "none" },
+            "exer_options": {
+              "JXOP-code": "none"
+            },
             "required": true,
             "points": 1.0,
             "threshold": 0.90
@@ -871,7 +880,9 @@
           },
           "BSTremovePRO": {
             "long_name": "BST Remove Proficiency Exercise",
-            "exer_options": { "JXOP-code": "none" },
+            "exer_options": {
+              "JXOP-code": "none"
+            },
             "required": true,
             "points": 2.0,
             "threshold": 0.90
@@ -897,7 +908,7 @@
       },
       "Sorting/InsertionSort": {
         "long_name": "Insertion Sort",
-        "exercises" : {
+        "exercises": {
           "insertionsortS1CON": {
             "long_name": "Insertion Sort Slideshow 1",
             "required": false,

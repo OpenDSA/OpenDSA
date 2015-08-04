@@ -43,10 +43,8 @@ Having this estimate in hand helps us when trying to determine an
 exact closed-form solution, because we will hopefully recognize if our
 proposed solution is badly wrong.
 
-.. showhidecontent:: SummationOneToN
-
-   .. inlineav:: SummationOneToNCON ss
-      :output: show
+.. inlineav:: SummationOneToNCON ss
+   :output: show
 
 Let us now consider some ways that we might hit upon an exact equation
 for the closed form solution to this summation.
