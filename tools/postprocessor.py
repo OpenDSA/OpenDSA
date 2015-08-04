@@ -291,6 +291,10 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
       header_tag.next_sibling.insert_after(bit.extract())
   header_tag.extract()
   
+  # Remove unnecessary parts of the HTML
+  for class_name in ('topnav', 'bottomnav'):
+    soup.find('div', class_=class_name).extract()
+  
   # Breaking file into components
   soup_content = soup.find('div', class_='section')
   section_divs = soup_content.contents
