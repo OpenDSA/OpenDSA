@@ -197,29 +197,15 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   soup = BeautifulSoup(html, "lxml")
   
   # Find all of the scripts that we might need
-  scripts = defaultdict(list)
   for script in soup('script'):
     if script.has_attr('src'):
-      #if script['src'].startswith('../../../AV/'):
-      #  url = script['src'].replace('../../../', 'OpenDSA/')
-      #  name = os.path.splitext(os.path.basename(url))[0]
-      #  if name.endswith('CODE'):
-      #    name = name.replace('CODE', 'CON')
-      #  scripts[name].append(url)
       if triple_up.match(script['src']):
         script['src'] = 'OpenDSA/' + script['src'][len('../../../'):]
       elif script['src'].startswith('_static/'):
         script['src'] = 'OpenDSA/Books'+book_name+'/html/'+script['src']
   # And any css files that we might want
-  styles = defaultdict(list)
   for style in soup('link'):
     if style.has_attr('href'):
-      #if style['href'].startswith('../../../AV/'):
-      #  url = style['href'].replace('../../../', 'OpenDSA/')
-      #  name = os.path.splitext(os.path.basename(url))[0]
-      #  if name.endswith('CODE'):
-      #    name = name.replace('CODE', 'CON')
-      #  scripts[name].append(url)
       if triple_up.match(style['href']):
         style['href'] = 'OpenDSA/' + style['href'][len('../../../'):]
       elif style['href'].startswith('_static/'):
@@ -286,7 +272,6 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   # Move header scripts out of header, kill header
   header_tag = soup.find('div', class_='header')
   for bit in header_tag.contents:
-    print type(bit), bit
     if bit.name in ('script', 'link'):
       header_tag.next_sibling.insert_after(bit.extract())
   header_tag.extract()
@@ -295,6 +280,15 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   for class_name in ('topnav', 'bottomnav', 'footer'):
     soup.find('div', class_=class_name).extract()
   soup.find('img', alt='nsf').extract()
+  
+  # Collect out the slide-specific JS/CSS
+  TAGS = [ ('script', 'src'), ('link', 'href') ]
+  slide_scripts = defaultdict(list)
+  for tag_name, tag_url in TAGS:
+    for a_tag in soup.find_all(tag_name):
+      if a_tag.has_attr(tag_url) and a_tag[tag_url].startswith('OpenDSA/AV/'):
+        name = os.path.splitext(os.path.basename(a_tag[tag_url]))[0]
+        slide_scripts[name].append(a_tag.extract())
   
   # Breaking file into components
   soup_content = soup.find('div', class_='section')
@@ -334,10 +328,13 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
         # Write it out, preserving unicode
         for i, bit in enumerate(fragment):
           soup_content.insert(i,bit)
-        if section_id in scripts:
-          for a_script in scripts[section_id]:
-            new = soup.new_tag("script", src=a_script)
-            soup_content.insert_after(new)
+        if section_id in slide_scripts:
+          if section_id in ('quicksortCON', 'bubblesortCON'):
+            for a_script in slide_scripts[section_id.replace('CON', 'CODE')]:
+              soup_content.insert_before(a_script)
+              print "Added", a_script, "to", filename
+          for a_script in slide_scripts[section_id]:
+            soup_content.insert_before(a_script)
             print "Added", a_script, "to", filename
         with codecs.open(path_html, 'w', 'utf-8') as o:
           o.write(unicode(soup))
