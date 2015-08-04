@@ -308,13 +308,16 @@ def break_up_fragments(path, exercises, modules, url_index):
     # Then we write out each grouping with the proper name and JS/CSS
     for section_id, fragment in fragments:
         seq = '-{0:02d}'.format(1+found_counter) if total > 0 else ''
-        print seq
         filename = '{}{}.html'.format(mod_name, seq)
         path_html = os.path.join(os.path.dirname(path), filename)
         # Write it out, preserving unicode
         for i, bit in enumerate(fragment):
-          print "\t", str(bit)[:40]
           soup_content.insert(i,bit)
+        if section_id in scripts:
+          for a_script in scripts[section_id]:
+            new = soup.new_tag("script", src=a_script)
+            soup_content.insert_after(new)
+            print "Added", a_script, "to", filename
         with codecs.open(path_html, 'w', 'utf-8') as o:
           o.write(unicode(soup))
         for bit in soup_content:
