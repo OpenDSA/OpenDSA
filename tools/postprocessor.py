@@ -322,18 +322,21 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
         # Write it out, preserving unicode
         for i, bit in enumerate(fragment):
           soup_content.insert(i,bit)
+        sss_div = soup.new_tag('div', id='SLIDE-SPECIFIC-SCRIPTS')
+        soup_content.insert_before(sss_div)
         if section_id in slide_scripts:
           if section_id in ('quicksortCON', 'bubblesortCON'):
             for a_script in slide_scripts[section_id.replace('CON', 'CODE')]:
-              soup_content.insert_before(a_script)
+              sss_div.insert(0, a_script)
               print "Added", a_script, "to", filename
           for a_script in slide_scripts[section_id]:
-            soup_content.insert_before(a_script)
+            sss_div.insert(0, a_script)
             print "Added", a_script, "to", filename
         with codecs.open(path_html, 'w', 'utf-8') as o:
           o.write(unicode(soup))
         for bit in soup_content:
           bit.extract()
+        sss_div.extract()
         found_counter += 1
   else:
     print "Failed to find any 'div' tags with a 'section' class."
