@@ -196,21 +196,16 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   
   soup = BeautifulSoup(html, "lxml")
   
-  # Find all of the scripts that we might need
-  for script in soup('script'):
-    if script.has_attr('src'):
-      if triple_up.match(script['src']):
-        script['src'] = 'OpenDSA/' + script['src'][len('../../../'):]
-      elif script['src'].startswith('_static/'):
-        script['src'] = 'OpenDSA/Books/'+book_name+'/html/'+script['src']
-  # And any css files that we might want
-  for style in soup('link'):
-    if style.has_attr('href'):
-      if triple_up.match(style['href']):
-        style['href'] = 'OpenDSA/' + style['href'][len('../../../'):]
-      elif style['href'].startswith('_static/'):
-        style['href'] = 'OpenDSA/Books/'+book_name+'/html/'+style['href']
-  # Strip out Script, Style, and Link tags
+  TAGS = [ ('script', 'src'), ('link', 'href'), ('img', 'src') ]
+  
+  # Find all of the scripts, links, images, etc. that we might need
+  for tag_name, tag_url in TAGS+[('div', 'data-frame-src')]:
+    for a_tag in soup(tag_name):
+      if a_tag.has_attr(tag_url):
+        if triple_up.match(a_tag[tag_url]):
+          a_tag[tag_url] = 'OpenDSA/' + a_tag[tag_url][len('../../../'):]
+        elif a_tag[tag_url].startswith('_static/'):
+          a_tag[tag_url] = 'OpenDSA/Books/'+book_name+'/html/'+a_tag[tag_url]
       
       
   '''
@@ -282,7 +277,6 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   soup.find('img', alt='nsf').extract()
   
   # Collect out the slide-specific JS/CSS
-  TAGS = [ ('script', 'src'), ('link', 'href') ]
   slide_scripts = defaultdict(list)
   for tag_name, tag_url in TAGS:
     for a_tag in soup.find_all(tag_name):
