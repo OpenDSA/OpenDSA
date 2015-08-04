@@ -11,7 +11,7 @@ import json
 import xml.dom.minidom as minidom
 from pprint import pprint
 from xml.etree.ElementTree import ElementTree, SubElement, Element
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, element
 from bs4.element import NavigableString
 from collections import defaultdict
 import tarfile
@@ -295,16 +295,13 @@ def break_up_fragments(path, exercises, modules, url_index):
       #section = section.extract()
       fragment_components.append(section)
       all_divs.append(section)
-      try:
-          if section.has_attr('id') and section['id'] in exercises:
-            name = section['id']
-            print "Found:", name
-            fragments.append((name, fragment_components))
-            fragment_components = []
-            exercise_data[name] = {key: section[key] for key in section.attrs}
-            total += 1
-      except:
-        pass
+      if isinstance(section, element.Tag) and section.has_attr('id') and section['id'] in exercises:
+        name = section['id']
+        print "Found:", name
+        fragments.append((name, fragment_components))
+        fragment_components = []
+        exercise_data[name] = {key: section[key] for key in section.attrs}
+        total += 1
         
     # Then we write out each grouping with the proper name and JS/CSS
     for section_id, fragment in fragments:
