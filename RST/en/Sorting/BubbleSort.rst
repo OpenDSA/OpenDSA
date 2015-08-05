@@ -73,25 +73,23 @@ Now try for yourself to see if you understand how Bubble Sort works.
 
 .. avembed:: Exercises/Sorting/BubsortPRO.html ka
 
-.. showhidecontent:: BubbleSortAnalysis
+The following visualization illustrates the running time analysis of
+Bubble Sort.
 
-   The following visualization illustrates the running time analysis of
-   Bubble Sort.
+.. inlineav:: BubbleSortAnalysisCON ss
+   :output: show
 
-   .. inlineav:: BubbleSortAnalysisCON ss
-      :output: show
+Thus, Bubble Sort's running time is roughly the same
+in the best, average, and worst cases.
 
-   Thus, Bubble Sort's running time is roughly the same
-   in the best, average, and worst cases.
-
-   The number of swaps required depends on how often a
-   record's value is less than that of the record immediately preceding
-   it in the array.
-   We can expect this to occur for about half the comparisons in the
-   average case, leading to :math:`\Theta(n^2)` for the
-   expected number of swaps.
-   The actual number of swaps performed by Bubble Sort will be identical
-   to that performed by Insertion Sort.
+The number of swaps required depends on how often a
+record's value is less than that of the record immediately preceding
+it in the array.
+We can expect this to occur for about half the comparisons in the
+average case, leading to :math:`\Theta(n^2)` for the
+expected number of swaps.
+The actual number of swaps performed by Bubble Sort will be identical
+to that performed by Insertion Sort.
 
 Here are some review questions to check your understanding of
 Insertion Sort. 

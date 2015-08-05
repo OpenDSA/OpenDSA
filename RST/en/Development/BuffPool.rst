@@ -220,16 +220,14 @@ The advantage is reduced programmer effort because a good virtual memory
 system provides the appearance of larger main memory without
 modifying the program.
 
-.. showhidecontent:: BPextra
+Here is a visualization to let you experiment with the various buffer
+pool replacement strategies.
 
-   Here is a visualization to let you experiment with the various buffer
-   pool replacement strategies.
+.. avembed:: AV/Development/BufferPoolAV.html ss
 
-   .. avembed:: AV/Development/BufferPoolAV.html ss
+Here is an exercise to help you practice.
 
-   Here is an exercise to help you practice.
-
-   .. avembed:: AV/Development/bufferpoolPRO.html pe
+.. avembed:: AV/Development/bufferpoolPRO.html pe
 
 When implementing buffer pools, there are two basic approaches that can 
 be taken regarding the transfer of information between the user of the 

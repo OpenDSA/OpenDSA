@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "av_c1": "Method <code>push</code> is easy.",
       "av_c2": "<code>top</code> is at the first free position, which is at position 4. Since this is less than <code>maxSize</code> (which is 7), we can proceed.",
@@ -7,9 +7,9 @@
       "av_c4": "Then Increment top by one position."
     }
   },
-  "code" : {
+  "code": {
     "processing": {
-      "url": "../../../SourceCode/Processing/Lists/AStack.pde",
+      "url": "OpenDSA/SourceCode/Processing/Lists/AStack.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: AStackPush *** */",
       "endBefore": "/* *** ODSAendTag: AStackPush *** */",
@@ -20,7 +20,7 @@
       }
     },
     "java": {
-      "url": "../../../SourceCode/Java/Lists/AStack.java",
+      "url": "OpenDSA/SourceCode/Java/Lists/AStack.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: AStackPush *** */",
       "endBefore": "/* *** ODSAendTag: AStackPush *** */",
@@ -31,7 +31,7 @@
       }
     },
     "java_generic": {
-      "url": "../../../SourceCode/Java_Generic/Lists/AStack.java",
+      "url": "OpenDSA/SourceCode/Java_Generic/Lists/AStack.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: AStackPush *** */",
       "endBefore": "/* *** ODSAendTag: AStackPush *** */",

@@ -212,13 +212,11 @@ There is no strict equality to the use of big-Oh notation.
 :math:`O(n)` is in :math:`O(n^2)`, but :math:`O(n^2)` is not in
 :math:`O(n)`.
 
-.. showhidecontent:: thetadisc
-
-   In some of the following material, you will see use of the symbol
-   :math:`\Theta`, such as :math:`\Theta(n)`.
-   While they are technically somewhat different, you may interpret use
-   of :math:`\Theta` in :math:`\Theta(n)` to have the same meaning as
-   :math:`O(n)`.
+In some of the following material, you will see use of the symbol
+:math:`\Theta`, such as :math:`\Theta(n)`.
+While they are technically somewhat different, you may interpret use
+of :math:`\Theta` in :math:`\Theta(n)` to have the same meaning as
+:math:`O(n)`.
 
 Simplifying Rules
 -----------------
@@ -284,10 +282,8 @@ rules when discussing the cost for a program or algorithm.
 
    A visualization that illustrates the meaning of upper bounds and the difference between it and worst cases. We need to emphasize that there is an upper bound to an algorithm in its best, average, and worst cases. We can use the example of sequencial search to illustrate this.
    
-.. showhidecontent:: UpperBound
-
-   .. inlineav:: UpperBoundCON ss
-      :output: show
+.. inlineav:: UpperBoundCON ss
+   :output: show
 
 .. avembed:: Exercises/AlgAnalTest/UpperBounds.html ka
    

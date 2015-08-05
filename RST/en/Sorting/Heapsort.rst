@@ -72,12 +72,10 @@ Can you reproduce its behavior?
 
 .. avembed:: AV/Sorting/heapsortPRO.html pe
 
-.. showhidecontent:: HeapSortAnalysis   
+This visualization presents the running time analysis of Heap Sort       
 
-   This visualization presents the running time analysis of Heap Sort       
-
-   .. inlineav:: HeapSortAnalysisCON ss
-      :output: show
+.. inlineav:: HeapSortAnalysisCON ss
+   :output: show
 
 While typically slower than Quicksort by a constant factor
 (because unloading the heap using ``removemax`` is somewhat slower

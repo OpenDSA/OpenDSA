@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "av_c1": "Now we will look at the remove method. Here is the linked list before we remove the node with value 8.",
       "av_c2": "Since curr is not at the tail position, we can proceed",
@@ -12,9 +12,9 @@
       "av_c9": "Return value removed."
     }
   },
-  "code" : {
+  "code": {
     "processing": {
-      "url": "../../../SourceCode/Processing/Lists/DList.pde",
+      "url": "OpenDSA/SourceCode/Processing/Lists/DList.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: DListRemove *** */",
       "endBefore": "/* *** ODSAendTag: DListRemove *** */",
@@ -30,7 +30,7 @@
       }
     },
     "java": {
-      "url": "../../../SourceCode/Java/Lists/DList.java",
+      "url": "OpenDSA/SourceCode/Java/Lists/DList.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: DListRemove *** */",
       "endBefore": "/* *** ODSAendTag: DListRemove *** */",
@@ -46,7 +46,7 @@
       }
     },
     "java_generic": {
-      "url": "../../../SourceCode/Java_Generic/Lists/DList.java",
+      "url": "OpenDSA/SourceCode/Java_Generic/Lists/DList.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: DListRemove *** */",
       "endBefore": "/* *** ODSAendTag: DListRemove *** */",

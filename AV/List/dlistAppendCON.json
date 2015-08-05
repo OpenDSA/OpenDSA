@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "av_c1": "The append method works almost the same as insertion. We will insert the value 15.",
       "av_c2": "Create a new link node.",
@@ -11,9 +11,9 @@
       "av_c8": "Increase the list size by 1."
     }
   },
-  "code" : {
+  "code": {
     "processing": {
-      "url": "../../../SourceCode/Processing/Lists/DList.pde",
+      "url": "OpenDSA/SourceCode/Processing/Lists/DList.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: DListAppend *** */",
       "endBefore": "/* *** ODSAendTag: DListAppend *** */",
@@ -25,7 +25,7 @@
       }
     },
     "java": {
-      "url": "../../../SourceCode/Java/Lists/DList.java",
+      "url": "OpenDSA/SourceCode/Java/Lists/DList.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: DListAppend *** */",
       "endBefore": "/* *** ODSAendTag: DListAppend *** */",
@@ -37,7 +37,7 @@
       }
     },
     "java_generic": {
-      "url": "../../../SourceCode/Java_Generic/Lists/DList.java",
+      "url": "OpenDSA/SourceCode/Java_Generic/Lists/DList.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: DListAppend *** */",
       "endBefore": "/* *** ODSAendTag: DListAppend *** */",

@@ -363,10 +363,8 @@ A more complex example is given below.
    At this point, we should use a simple induction proof to verify
    that our solution is indeed correct.
    
-.. showhidecontent:: DivideAndConquerRecurrences
-
-   .. inlineav:: DivideAndConquerRecurrencesCON ss
-      :output: show
+.. inlineav:: DivideAndConquerRecurrencesCON ss
+   :output: show
 
 .. topic:: Example
 

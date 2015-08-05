@@ -265,9 +265,7 @@ There are
 :ref:`many more techniques <closed-form solution> <Recurrence>`
 to find closed-form solutions for recurrence relations.
 
-.. showhidecontent:: LinearRecurrences
-
-   .. inlineav:: LinearRecurrencesCON ss
-      :output: show
+.. inlineav:: LinearRecurrencesCON ss
+   :output: show
 	  
 .. odsascript:: AV/Development/AlgAnal/LinearRecurrencesCON.js

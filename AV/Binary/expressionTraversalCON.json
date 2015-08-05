@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "av_preorder": "Preorder traversal begins on pointer-based binary tree.",
       "av_nullcheck": "Check to see if node is null.",
@@ -13,23 +13,23 @@
       "av_done": "Finished the preorder traversal on "
     }
   },
-  "code" : {
+  "code": {
     "processing": {
-      "url": "../../../SourceCode/Processing/Binary/ExpressionTree.pde",
+      "url": "OpenDSA/SourceCode/Processing/Binary/ExpressionTree.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: pointer based preorder *** */",
       "endBefore": "/* *** ODSAendTag: pointer based preorder *** */",
       "tags": {
-         "sig": 1,
-         "checknull": 2,
-         "isleaf": 3,
-         "visitleaf": 4,
-         "isnotleaf": 5,
-         "visitinternal": 6,
-         "traverseleft": 7,
-         "traverseright": 8,
-         "endnotleaf": 9,
-         "end": 10
+        "sig": 1,
+        "checknull": 2,
+        "isleaf": 3,
+        "visitleaf": 4,
+        "isnotleaf": 5,
+        "visitinternal": 6,
+        "traverseleft": 7,
+        "traverseright": 8,
+        "endnotleaf": 9,
+        "end": 10
       }
     }
   }

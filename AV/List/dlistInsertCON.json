@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "av_c1": "The linked list before insertion. 15 is the value to be inserted.",
       "av_c2": "Create a new link node.",
@@ -13,9 +13,9 @@
       "av_c10": "Increase the list size by 1."
     }
   },
-  "code" : {
+  "code": {
     "processing": {
-      "url": "../../../SourceCode/Processing/Lists/DList.pde",
+      "url": "OpenDSA/SourceCode/Processing/Lists/DList.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: DListInsert *** */",
       "endBefore": "/* *** ODSAendTag: DListInsert *** */",
@@ -29,7 +29,7 @@
       }
     },
     "java": {
-      "url": "../../../SourceCode/Java/Lists/DList.java",
+      "url": "OpenDSA/SourceCode/Java/Lists/DList.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: DListInsert *** */",
       "endBefore": "/* *** ODSAendTag: DListInsert *** */",
@@ -43,7 +43,7 @@
       }
     },
     "java_generic": {
-      "url": "../../../SourceCode/Java_Generic/Lists/DList.java",
+      "url": "OpenDSA/SourceCode/Java_Generic/Lists/DList.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: DListInsert *** */",
       "endBefore": "/* *** ODSAendTag: DListInsert *** */",

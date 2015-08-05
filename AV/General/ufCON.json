@@ -1,11 +1,10 @@
 {
-  "translations" :{
-    "en": {
-    }
+  "translations": {
+    "en": {}
   },
-  "code" : {
+  "code": {
     "processing": {
-      "url": "../../../SourceCode/Processing/General/ParPtrTree2.pde",
+      "url": "OpenDSA/SourceCode/Processing/General/ParPtrTree2.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: UnionFind *** */",
       "endBefore": "/* *** ODSAendTag: UnionFind *** */",
@@ -16,7 +15,7 @@
         "weight1": 7,
         "setroot2": 9,
         "weight2": 10
-     }
+      }
     }
   }
 }

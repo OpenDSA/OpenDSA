@@ -1,14 +1,12 @@
 {
-  "translations" :{
-    "en": {
-    }
+  "translations": {
+    "en": {}
   },
-  "code" : {
+  "code": {
     "processing": {
-      "url": "../../../SourceCode/Java/RecurTutor/Recmultiply.java",
+      "url": "OpenDSA/SourceCode/Java/RecurTutor/Recmultiply.java",
       "lineNumbers": false,
-      "tags": {
-      }
+      "tags": {}
     }
   }
 }

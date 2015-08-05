@@ -478,10 +478,8 @@ induction hypothesis.
    Thus, by mathematical induction, the entire plane is
    two-colored.
 
-.. showhidecontent:: TwoColoringProof
-
-   .. inlineav:: TwoColoringProofCON ss
-      :output: show
+.. inlineav:: TwoColoringProofCON ss
+   :output: show
 
 Compare the proof in Example :num:`Example #ThmRegion` with that in
 Example :num:`Example #ThmStamps`.

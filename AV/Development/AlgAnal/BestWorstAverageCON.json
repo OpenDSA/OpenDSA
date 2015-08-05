@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "Slide 1": "Let's see how we can differentiate between the best, worst, and average cases of an algorithm.",
       "Slide 2": "Let's consider the searching problem and the sequencial search algorithm.",
@@ -18,14 +18,14 @@
 
     }
   },
-  "code" : {
+  "code": {
     "processing": {
-      "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
+      "url": "OpenDSA/SourceCode/Pseudo/Searching/Sequential.txt",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: Sequential *** */",
       "endBefore": "/* *** ODSAendTag: Sequential *** */",
-	  "top": 110,
-	  "left": 395,
+      "top": 110,
+      "left": 395,
       "tags": {
         "comparison": 3,
         "return": 4
