@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "av_c1": "Here is a list containing five elements. We will remove the value 12 in position 1 of the array, which is the current position.",
       "av_c2": "Copy  the  element to be deleted.",
@@ -9,9 +9,9 @@
       "av_c6": "Since we might have to shift all of the remaining elements, deletion from an array-based list is $\\Theta(n)$ in the worst case if there are $n$ elements in the list."
     }
   },
-  "code" : {
+  "code": {
     "processing": {
-      "url": "../../../SourceCode/Processing/Lists/AList.pde",
+      "url": "OpenDSA/SourceCode/Processing/Lists/AList.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: AListRemove *** */",
       "endBefore": "/* *** ODSAendTag: AListRemove *** */",
@@ -25,7 +25,7 @@
       }
     },
     "java": {
-      "url": "../../../SourceCode/Java/Lists/AList.java",
+      "url": "OpenDSA/SourceCode/Java/Lists/AList.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: AListRemove *** */",
       "endBefore": "/* *** ODSAendTag: AListRemove *** */",
@@ -39,7 +39,7 @@
       }
     },
     "java_generic": {
-      "url": "../../../SourceCode/Java_Generic/Lists/AList.java",
+      "url": "OpenDSA/SourceCode/Java_Generic/Lists/AList.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: AListRemove *** */",
       "endBefore": "/* *** ODSAendTag: AListRemove *** */",

@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "av_preorder": "Preorder traversal begins.",
       "av_nullcheck": "Check to see if node is null.",
@@ -11,47 +11,47 @@
       "av_done": "Finished the preorder traversal on "
     }
   },
-  "code" : {
+  "code": {
     "processing": {
-      "url": "../../../SourceCode/Processing/Binary/Traverse.pde",
+      "url": "OpenDSA/SourceCode/Processing/Binary/Traverse.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: preorder *** */",
       "endBefore": "/* *** ODSAendTag: preorder *** */",
       "tags": {
-         "sig": 1,
-         "checknull": 2,
-         "visit": 3,
-         "visitleft": 4,
-         "visitright": 5,
-         "end": 6
+        "sig": 1,
+        "checknull": 2,
+        "visit": 3,
+        "visitleft": 4,
+        "visitright": 5,
+        "end": 6
       }
     },
     "java": {
-      "url": "../../../SourceCode/Java/Binary/Preorder.java",
+      "url": "OpenDSA/SourceCode/Java/Binary/Preorder.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: preorder *** */",
       "endBefore": "/* *** ODSAendTag: preorder *** */",
       "tags": {
-         "sig": 1,
-         "checknull": 2,
-         "visit": 3,
-         "visitleft": 4,
-         "visitright": 5,
-         "end": 6
+        "sig": 1,
+        "checknull": 2,
+        "visit": 3,
+        "visitleft": 4,
+        "visitright": 5,
+        "end": 6
       }
     },
     "java_generic": {
-      "url": "../../../SourceCode/Java_Generic/Binary/Preorder.java",
+      "url": "OpenDSA/SourceCode/Java_Generic/Binary/Preorder.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: preorder *** */",
       "endBefore": "/* *** ODSAendTag: preorder *** */",
       "tags": {
-         "sig": 1,
-         "checknull": 2,
-         "visit": 3,
-         "visitleft": 4,
-         "visitright": 5,
-         "end": 6
+        "sig": 1,
+        "checknull": 2,
+        "visit": 3,
+        "visitleft": 4,
+        "visitright": 5,
+        "end": 6
       }
     }
   }

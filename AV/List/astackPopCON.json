@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "av_c1": "Now, for the implementation of <code>pop</code>. <code>top</code> is at the first free position, which is index 4 on the array.",
       "av_c2": "Since <code>top</code> is not 0 (which would indicate an empty stack), we proceed.",
@@ -7,9 +7,9 @@
       "av_c4": "Then it removes and returns the <code>top</code> element."
     }
   },
-  "code" : {
+  "code": {
     "processing": {
-      "url": "../../../SourceCode/Processing/Lists/AStack.pde",
+      "url": "OpenDSA/SourceCode/Processing/Lists/AStack.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: AStackPop *** */",
       "endBefore": "/* *** ODSAendTag: AStackPop *** */",
@@ -20,7 +20,7 @@
       }
     },
     "java": {
-      "url": "../../../SourceCode/Java/Lists/AStack.java",
+      "url": "OpenDSA/SourceCode/Java/Lists/AStack.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: AStackPop *** */",
       "endBefore": "/* *** ODSAendTag: AStackPop *** */",
@@ -31,7 +31,7 @@
       }
     },
     "java_generic": {
-      "url": "../../../SourceCode/Java_Generic/Lists/AStack.java",
+      "url": "OpenDSA/SourceCode/Java_Generic/Lists/AStack.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: AStackPop *** */",
       "endBefore": "/* *** ODSAendTag: AStackPop *** */",

@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "av_c1": "Let's look at the data members for class <code>LList</code>.",
       "av_c2": "First, notice that class <code>LList</code> implements the <code>List</code> interface. This means that <code>LList</code> is required to give implementations for all of the methods listed as part of the <code>List</code> interface.",
@@ -10,9 +10,9 @@
       "av_c7": "Because <code>head</code>, <code>tail</code>, <code>curr</code>, and <code>listSize</code> are all declared to be <code>private</code>, they may only be accessed by methods of Class <code>LList</code>."
     }
   },
-  "code" : {
+  "code": {
     "processing": {
-      "url": "../../../SourceCode/Processing/Lists/LList.pde",
+      "url": "OpenDSA/SourceCode/Processing/Lists/LList.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: LListVars *** */",
       "endBefore": "/* *** ODSAendTag: LListVars *** */",
@@ -25,7 +25,7 @@
       }
     },
     "java": {
-      "url": "../../../SourceCode/Java/Lists/LList.java",
+      "url": "OpenDSA/SourceCode/Java/Lists/LList.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: LListVars *** */",
       "endBefore": "/* *** ODSAendTag: LListVars *** */",
@@ -38,7 +38,7 @@
       }
     },
     "java_generic": {
-      "url": "../../../SourceCode/Java_Generic/Lists/LList.java",
+      "url": "OpenDSA/SourceCode/Java_Generic/Lists/LList.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: LListVars *** */",
       "endBefore": "/* *** ODSAendTag: LListVars *** */",

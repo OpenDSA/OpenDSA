@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "av_c1": "The prev method is easy.",
       "av_c2": "The node with value 35 is the current node",
@@ -8,9 +8,9 @@
       "av_c5": "This takes $\\Theta(1)$ time."
     }
   },
-  "code" : {
+  "code": {
     "processing": {
-      "url": "../../../SourceCode/Processing/Lists/DList.pde",
+      "url": "OpenDSA/SourceCode/Processing/Lists/DList.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: DListPrev *** */",
       "endBefore": "/* *** ODSAendTag: DListPrev *** */",
@@ -24,7 +24,7 @@
       }
     },
     "java": {
-      "url": "../../../SourceCode/Java/Lists/DList.java",
+      "url": "OpenDSA/SourceCode/Java/Lists/DList.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: DListPrev *** */",
       "endBefore": "/* *** ODSAendTag: DListPrev *** */",
@@ -38,7 +38,7 @@
       }
     },
     "java_generic": {
-      "url": "../../../SourceCode/Java_Generic/Lists/DList.java",
+      "url": "OpenDSA/SourceCode/Java_Generic/Lists/DList.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: DListPrev *** */",
       "endBefore": "/* *** ODSAendTag: DListPrev *** */",

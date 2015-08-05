@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "Slide 1": "Let's see how we can differentiate between a problem, problem instance, algorithm, and a program.",
       "Slide 2": "A problem is a task that matches input to output.",
@@ -20,27 +20,26 @@
       "Slide 17": "Here we present the sequencial search algorithm implemented as a Java function."
     }
   },
-  "code" : {
+  "code": {
     "java": [{
-      "url": "../../../SourceCode/Java/Searching/SequentialNoComments.java",
+      "url": "OpenDSA/SourceCode/Java/Searching/SequentialNoComments.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: Sequential *** */",
       "endBefore": "/* *** ODSAendTag: Sequential *** */",
-	  "top": 150,
-	  "left": 385,
+      "top": 150,
+      "left": 385,
       "tags": {
-        
+
       }
-    },
-    {
-      "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
+    }, {
+      "url": "OpenDSA/SourceCode/Pseudo/Searching/Sequential.txt",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: Sequential *** */",
       "endBefore": "/* *** ODSAendTag: Sequential *** */",
-	  "top": 150,
-	  "left": 385,
+      "top": 150,
+      "left": 385,
       "tags": {
-        
+
       }
     }]
   }

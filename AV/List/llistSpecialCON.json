@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "av_c1": "Here is an example showing insertion at the end of the list. 15 is the value to be inserted.",
       "av_c2": "Create a new link node.",
@@ -19,9 +19,9 @@
       "av_c16": "Increase the list size by 1."
     }
   },
-  "code" : {
+  "code": {
     "processing": {
-      "url": "../../../SourceCode/Processing/Lists/LList.pde",
+      "url": "OpenDSA/SourceCode/Processing/Lists/LList.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: LListInsert *** */",
       "endBefore": "/* *** ODSAendTag: LListInsert *** */",
@@ -34,7 +34,7 @@
       }
     },
     "java": {
-      "url": "../../../SourceCode/Java/Lists/LList.java",
+      "url": "OpenDSA/SourceCode/Java/Lists/LList.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: LListInsert *** */",
       "endBefore": "/* *** ODSAendTag: LListInsert *** */",
@@ -47,7 +47,7 @@
       }
     },
     "java_generic": {
-      "url": "../../../SourceCode/Java_Generic/Lists/LList.java",
+      "url": "OpenDSA/SourceCode/Java_Generic/Lists/LList.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: LListInsert *** */",
       "endBefore": "/* *** ODSAendTag: LListInsert *** */",
