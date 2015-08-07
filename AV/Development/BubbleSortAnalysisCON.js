@@ -202,6 +202,12 @@ $(document).ready(function () {
   
   // Slide 22
   av.umsg(interpret("Slide 22"));
+  var bigTriangle = av.g.polyline([[650, 170], [400, 170], [400, 70]]).css({"fill": "blue", "opacity": 0.2});
+  var smallTriangle1 = av.g.polyline([[650, 170], [650, 150], [600, 150]]).css({"fill": "green", "opacity": 0.2});
+  var smallTriangle2 = av.g.polyline([[600, 150], [600, 130], [550, 130]]).css({"fill": "green", "opacity": 0.2});
+  var smallTriangle3 = av.g.polyline([[550, 130], [550, 110], [500, 110]]).css({"fill": "green", "opacity": 0.2});
+  var smallTriangle4 = av.g.polyline([[500, 110], [500, 90], [450, 90]]).css({"fill": "green", "opacity": 0.2});
+  var smallTriangle5 = av.g.polyline([[450, 90], [450, 70], [400, 70]]).css({"fill": "green", "opacity": 0.2});
   av.step();
   
   // Slide 23

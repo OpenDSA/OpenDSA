@@ -75,15 +75,15 @@ $(document).ready(function () {
  
     av.step();
 
-    label1.css({"color":"red"});
-    label2.css({"color":"green"});
-    label3.css({"color":"blue"});
-    label4.css({"color":"Chocolate"});
+    label1.addClass("falsecolor");
+    label2.addClass("truecolor");
+    label3.addClass("color1");
+    label4.addClass("color2");
 
-    label5 = av.label("I",{left:60,top:90}).css({"color":"red"});
-    label6 = av.label("II",{left:190,top:90}).css({"color":"green"});;
-    label7 = av.label("III",{left:305,top:90}).css({"color":"blue"});
-    label8 = av.label("IV",{left:430,top:90}).css({"color":"Chocolate"});
+    label5 = av.label("I",{left:60,top:90}).addClass("falsecolor");
+    label6 = av.label("II",{left:190,top:90}).addClass("truecolor");;
+    label7 = av.label("III",{left:305,top:90}).addClass("color1");
+    label8 = av.label("IV",{left:430,top:90}).addClass("color2");
 
     av.step();
     label9 = av.label("<b>Truth Table :</b>",{left:20,top:110});
@@ -104,40 +104,40 @@ $(document).ready(function () {
 
     for(var i=0;i<9;i++)
          for(var j=3;j<8;j++)
-             table1.css(i,j,{opacity:"0"});
+             table1.addClass(i,j,"invisible");
 
     av.step();
 
-    label1.css({"font-weight":"bold"});
+    label1.addClass("fontbold");
     for(var i=0;i<9;i++)
-         table1.css(i,3,{opacity:"1"});
+         table1.removeClass(i,3,"invisible");
 
     av.step();
 
-    label1.css({"font-weight":"normal"});
-    label2.css({"font-weight":"bold"});
+    label1.removeClass("fontbold");
+    label2.addClass("fontbold");
     for(var i=0;i<9;i++)
-         table1.css(i,4,{opacity:"1"});
+         table1.removeClass(i,4,"invisible");
 
     av.step();
 
-    label2.css({"font-weight":"normal"});
-    label3.css({"font-weight":"bold"});
+    label2.removeClass("fontbold");
+    label3.addClass("fontbold");
     for(var i=0;i<9;i++)
-         table1.css(i,5,{opacity:"1"});
+         table1.removeClass(i,5,"invisible");
 
     av.step();
 
-    label3.css({"font-weight":"normal"});
-    label4.css({"font-weight":"bold"});
+    label3.removeClass("fontbold");
+    label4.addClass("fontbold");
     for(var i=0;i<9;i++)
-         table1.css(i,6,{opacity:"1"});
+         table1.removeClass(i,6,"invisible");
 
     av.step();
 
-    label4.css({"font-weight":"normal"});
+    label4.removeClass("fontbold");
     for(var i=0;i<9;i++)
-         table1.css(i,7,{opacity:"1"});
+         table1.removeClass(i,7,"invisible");
 
 
     av.step();
@@ -146,8 +146,8 @@ $(document).ready(function () {
     + " $Z_i$ is true. ",{left:350,top:200});
 
     for(var i=1;i<5;i++){
-	 table1.css(i,0,{"background-color":"Aquamarine"});
-         table1.css(i,7,{"background-color":"Aquamarine"});
+	 table1.addClass(i,0,"cellhighlight");
+         table1.addClass(i,7,"cellhighlight");
     }
 
 
@@ -157,24 +157,24 @@ $(document).ready(function () {
     + " $Z_i$ is false. ",{left:350,top:230});
 
     for(var i=1;i<5;i++){
-	 table1.css(i,0,{"background-color":"White"});
-         table1.css(i,7,{"background-color":"White"});
+	 table1.removeClass(i,0,"cellhighlight");
+         table1.removeClass(i,7,"cellhighlight");
     }
     for(var i=5;i<9;i++){
-	 table1.css(i,0,{"background-color":"Aquamarine"});
-         table1.css(i,7,{"background-color":"Aquamarine"});
+	 table1.addClass(i,0,"cellhighlight");
+         table1.addClass(i,7,"cellhighlight");
     }
 
     av.step();
 
     for(var i=5;i<9;i++){
-	 table1.css(i,0,{"background-color":"White"});
-         table1.css(i,7,{"background-color":"White"});
+	 table1.removeClass(i,0,"cellhighlight");
+         table1.removeClass(i,7,"cellhighlight");
     }
 
     label12 = av.label("Hence $C_i$ can be reduced to $Z_i$ "+
     "where each clause in $Z_i$ contains exactly 3 literals and "
-    +"$C_i \\iff Z_i$.",{left:350,top:270}).css({"color":"blue"});
+    +"$C_i \\iff Z_i$.",{left:350,top:270}).addClass("color1");
 
     av.step();
 
@@ -216,11 +216,11 @@ $(document).ready(function () {
 
     av.step();
 
-    label1.css({"color":"blue"});
-    label2.css({"color":"Chocolate"});
+    label1.addClass("color1");
+    label2.addClass("color2");
 
-    label3 = av.label("I",{left:70,top:90}).css({"color":"blue"});
-    label4 = av.label("II",{left:175,top:90}).css({"color":"chocolate"});;
+    label3 = av.label("I",{left:70,top:90}).addClass("color1");
+    label4 = av.label("II",{left:175,top:90}).addClass("color2");;
 
     av.step();
 
@@ -242,34 +242,34 @@ $(document).ready(function () {
 
     for(var i=0;i<9;i++)
          for(var j=3;j<7;j++)
-             table2.css(i,j,{opacity:"0"});
+             table2.addClass(i,j,"invisible");
 
     av.step();
 
     for(var i=0;i<9;i++)
-         table2.css(i,3,{opacity:"1"});
+         table2.removeClass(i,3,"invisible");
 
     av.step();
 
     for(var i=0;i<9;i++)
-         table2.css(i,4,{opacity:"1"});
+         table2.removeClass(i,4,"invisible");
 
-    label1.css({"font-weight":"bold"});
-
-    av.step();
-
-    label1.css({"font-weight":"normal"});
-    label2.css({"font-weight":"bold"});
-
-    for(var i=0;i<9;i++)
-         table2.css(i,5,{opacity:"1"});
+    label1.addClass("fontbold");
 
     av.step();
 
-    label2.css({"font-weight":"normal"});
+    label1.removeClass("fontbold");
+    label2.addClass("fontbold");
 
     for(var i=0;i<9;i++)
-         table2.css(i,6,{opacity:"1"});
+         table2.removeClass(i,5,"invisible");
+
+    av.step();
+
+    label2.removeClass("fontbold");
+
+    for(var i=0;i<9;i++)
+         table2.removeClass(i,6,"invisible");
 
     av.step();
 
@@ -277,8 +277,8 @@ $(document).ready(function () {
     + " $Z_i$ is true. ",{left:350,top:200});
 
     for(var i=1;i<7;i++){
-	 table2.css(i,3,{"background-color":"Aquamarine"});
-         table2.css(i,6,{"background-color":"Aquamarine"});
+	 table2.addClass(i,3,"cellhighlight");
+         table2.addClass(i,6,"cellhighlight");
     }
 
 
@@ -288,24 +288,24 @@ $(document).ready(function () {
     + " $Z_i$ is false. ",{left:350,top:230});
 
     for(var i=1;i<7;i++){
-	 table2.css(i,3,{"background-color":"White"});
-         table2.css(i,6,{"background-color":"White"});
+	 table2.removeClass(i,3,"cellhighlight");
+         table2.removeClass(i,6,"cellhighlight");
     }
     for(var i=7;i<9;i++){
-	 table2.css(i,3,{"background-color":"Aquamarine"});
-         table2.css(i,6,{"background-color":"Aquamarine"});
+	 table2.addClass(i,3,"cellhighlight");
+         table2.addClass(i,6,"cellhighlight");
     }
 
     av.step();
 
     for(var i=7;i<9;i++){
-	 table2.css(i,3,{"background-color":"White"});
-         table2.css(i,6,{"background-color":"White"});
+	 table2.removeClass(i,3,"cellhighlight");
+         table2.removeClass(i,6,"cellhighlight");
     }
 
     label8 = av.label("Hence $C_i$ can be reduced to $Z_i$ "+
     "where each clause in $Z_i$ contains exactly 3 literals and "
-    +"$C_i \\iff Z_i$.",{left:350,top:270}).css({"color":"blue"});
+    +"$C_i \\iff Z_i$.",{left:350,top:270}).addClass("color1");
 
     av.step();
 
@@ -416,9 +416,7 @@ $(document).ready(function () {
     +"set all the additional variables $y_1 ,"+
     "y_2 \\cdots y_{k-3}$ to $False$.",{left:0,top:100});
 
-    zlabels[1].css({color:"green"});
-
-    av.step();
+    zlabels[1].addClass("truecolor");
 
 
     av.step();
@@ -427,18 +425,18 @@ $(document).ready(function () {
     "other than the first has a literal $\\overline{y_n}$ which evaluates to $True$"
     ,{left:0,top:130});
 
-    zlabels[5].css({color:"green"});
-    zlabels[3].css({color:"red"});
-    zlabels[11].css({color:"green"});
-    zlabels[9].css({color:"red"});
-    zlabels[17].css({color:"green"});
-    zlabels[15].css({color:"red"});
-    zlabels[23].css({color:"green"});
-    zlabels[21].css({color:"red"});
-    zlabels[29].css({color:"green"});
-    zlabels[27].css({color:"red"});
-    zlabels[36].css({color:"green"});
-    zlabels[33].css({color:"red"});
+    zlabels[5].addClass("truecolor");
+    zlabels[3].addClass("falsecolor");
+    zlabels[11].addClass("truecolor");
+    zlabels[9].addClass("falsecolor");
+    zlabels[17].addClass("truecolor");
+    zlabels[15].addClass("falsecolor");
+    zlabels[23].addClass("truecolor");
+    zlabels[21].addClass("falsecolor");
+    zlabels[29].addClass("truecolor");
+    zlabels[27].addClass("falsecolor");
+    zlabels[36].addClass("truecolor");
+    zlabels[33].addClass("falsecolor");
 
     label4=av.label("<b>$Z_i$ has a satisfying assignment</b>"
     ,{left:0,top:160});
@@ -446,7 +444,8 @@ $(document).ready(function () {
     av.step();
 
     for(var i in zlabels){
-        zlabels[i].css({color:"Black"});
+        zlabels[i].removeClass("truecolor");
+        zlabels[i].removeClass("falsecolor");
     }
 
     label1.hide();
@@ -457,7 +456,7 @@ $(document).ready(function () {
     +"set all the additional variables $y_1 ,"+
     "y_2 \\cdots y_{k-3}$ to $True$.",{left:0,top:100});
 
-    zlabels[38].css({color:"green"});
+    zlabels[38].addClass("truecolor");
 
     av.step();
 
@@ -465,25 +464,26 @@ $(document).ready(function () {
     "other than the last has a literal $y_n$ which evaluates to $True$"
     ,{left:0,top:130});
 
-    zlabels[3].css({color:"green"});
-    zlabels[5].css({color:"red"});
-    zlabels[9].css({color:"green"});
-    zlabels[11].css({color:"red"});
-    zlabels[15].css({color:"green"});
-    zlabels[17].css({color:"red"});
-    zlabels[21].css({color:"green"});
-    zlabels[23].css({color:"red"});
-    zlabels[27].css({color:"green"});
-    zlabels[29].css({color:"red"});
-    zlabels[33].css({color:"green"});
-    zlabels[36].css({color:"red"});
+    zlabels[3].addClass("truecolor");
+    zlabels[5].addClass("falsecolor");
+    zlabels[9].addClass("truecolor");
+    zlabels[11].addClass("falsecolor");
+    zlabels[15].addClass("truecolor");
+    zlabels[17].addClass("falsecolor");
+    zlabels[21].addClass("truecolor");
+    zlabels[23].addClass("falsecolor");
+    zlabels[27].addClass("truecolor");
+    zlabels[29].addClass("falsecolor");
+    zlabels[33].addClass("truecolor");
+    zlabels[36].addClass("falsecolor");
 
     label4.show();
 
     av.step();
 
     for(var i in zlabels){
-        zlabels[i].css({color:"Black"});
+        zlabels[i].removeClass("truecolor");
+        zlabels[i].removeClass("falsecolor");
     }
 
     label1.hide();
@@ -494,15 +494,15 @@ $(document).ready(function () {
     +"set $y_1 \\cdots y_{j-2}$ to $True$ and $y_{j-1} \\cdots y_{k-3}$ to $False$."
     ,{left:0,top:100});
 
-    zlabels[19].css({color:"green"});
+    zlabels[19].addClass("truecolor");
 
     av.step ();
 
     label3=av.label("Let us call the clause in $Z_i$ containing "+
     "$l_{i,j}$ in as $C$'",{left:0,top:130});
 
-    label6 = av.label("--------------------",{left:340,top:20});
-    label7 = av.label("$C'$",{left:380,top:35});
+    label6 = av.label("--------------------",{left:380,top:20});
+    label7 = av.label("$C'$",{left:430,top:35});
 
     av.step();
 
@@ -510,12 +510,12 @@ $(document).ready(function () {
     "left to $C'$ has a literal $y_n$ ($where \\ n \\in \\{1..j-2\\}$) "
     +"which evaluates to $True$",{left:0,top:160});
 
-    zlabels[3].css({color:"green"});
-    zlabels[5].css({color:"red"});
-    zlabels[9].css({color:"green"});
-    zlabels[11].css({color:"red"});
-    zlabels[15].css({color:"green"});
-    zlabels[17].css({color:"red"});
+    zlabels[3].addClass("truecolor");
+    zlabels[5].addClass("falsecolor");
+    zlabels[9].addClass("truecolor");
+    zlabels[11].addClass("falsecolor");
+    zlabels[15].addClass("truecolor");
+    zlabels[17].addClass("falsecolor");
 
     av.step();
 
@@ -523,12 +523,12 @@ $(document).ready(function () {
     "right to $C'$ has a literal $\\overline{y_n}$ ($where \\ n \\in \\{j-1..k-3\\}$) "
     +" which evaluates to $True$",{left:0,top:210});
 
-    zlabels[23].css({color:"green"});
-    zlabels[21].css({color:"red"});
-    zlabels[29].css({color:"green"});
-    zlabels[27].css({color:"red"});
-    zlabels[36].css({color:"green"});
-    zlabels[33].css({color:"red"});
+    zlabels[23].addClass("truecolor");
+    zlabels[21].addClass("falsecolor");
+    zlabels[29].addClass("truecolor");
+    zlabels[27].addClass("falsecolor");
+    zlabels[36].addClass("truecolor");
+    zlabels[33].addClass("falsecolor");
 
     av.step();
 
@@ -538,7 +538,8 @@ $(document).ready(function () {
     av.step();
 
     for(var i in zlabels){
-        zlabels[i].css({color:"Black"});
+        zlabels[i].removeClass("truecolor");
+        zlabels[i].removeClass("falsecolor");
         zlabels[i].hide();
     }
 
@@ -571,13 +572,13 @@ $(document).ready(function () {
     nl3=av.label("When $C_i$ is not satisfiable NO literal in { "+
     "$l_i,1 \\cdots l_i,k$ } is $True$.",{top:70});
  
-    zlabels[1].css({color:"Red"});
-    zlabels[7].css({color:"Red"});
-    zlabels[13].css({color:"Red"});
-    zlabels[19].css({color:"Red"});
-    zlabels[25].css({color:"Red"});
-    zlabels[31].css({color:"Red"});
-    zlabels[38].css({color:"Red"});
+    zlabels[1].addClass("falsecolor");
+    zlabels[7].addClass("falsecolor");
+    zlabels[13].addClass("falsecolor");
+    zlabels[19].addClass("falsecolor");
+    zlabels[25].addClass("falsecolor");
+    zlabels[31].addClass("falsecolor");
+    zlabels[38].addClass("falsecolor");
 
     av.step();
 
@@ -589,15 +590,15 @@ $(document).ready(function () {
     var nl5=av.label("For the first clause to be $True$, $y_1 = True$"
     ,{top:150});
     
-    zlabels[3].css({color:"Green"});
-    zlabels[5].css({color:"Red"});
+    zlabels[3].addClass("truecolor");
+    zlabels[5].addClass("falsecolor");
     
     av.step();
 
     var nl6=av.label("Now for the second clause to be $True$, $y_2 = True$"
     ,{top:190});
     
-    zlabels[9].css({color:"Green"});
+    zlabels[9].addClass("truecolor");
 
     av.step();
     
@@ -610,15 +611,15 @@ $(document).ready(function () {
     +" = True \\Rightarrow y_{j-1} = True \\Rightarrow y_j = True \\cdots \\Rightarrow y_{k-4} "
     +"= True \\Rightarrow y_{k-3} = True$",{top:270});
    
-    zlabels[11].css({color:"Red"});
-    zlabels[15].css({color:"Green"});
-    zlabels[17].css({color:"Red"});
-    zlabels[21].css({color:"Green"});
-    zlabels[23].css({color:"Red"});
-    zlabels[27].css({color:"Green"});
-    zlabels[29].css({color:"Red"});
-    zlabels[33].css({color:"Green"});
-    zlabels[36].css({color:"Red"});
+    zlabels[11].addClass("falsecolor");
+    zlabels[15].addClass("truecolor");
+    zlabels[17].addClass("falsecolor");
+    zlabels[21].addClass("truecolor");
+    zlabels[23].addClass("falsecolor");
+    zlabels[27].addClass("truecolor");
+    zlabels[29].addClass("falsecolor");
+    zlabels[33].addClass("truecolor");
+    zlabels[36].addClass("falsecolor");
 
     av.step();
 

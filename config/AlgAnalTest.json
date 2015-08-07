@@ -93,6 +93,12 @@
             "required": true,
             "points": 2.0,
             "threshold": 5
+           },
+           "GrowthRates": {
+            "long_name": "Growth Rates Ordering Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
            }
         }
       },
@@ -181,13 +187,29 @@
           }
         }
       },
-      "AlgAnal/AnalProgram": {
+      "AlgAnalTest/AnalProgram": {
         "long_name": "Calculating the Running Time of a Program",
         "sections": {
           "binsearchpro": {
             "long_name": "Binary Search Proficiency Exercise",
             "showhide": "none",
             "remove": false
+          },
+          "SummationOneToN": {
+            "long_name": "Summation of the first N Integers visualization",
+            "showhide": "hide"
+          },
+          "SummationTwoPowerI": {
+            "long_name": "Summation Two power I visualization",
+            "showhide": "hide"
+          },
+          "LinearRecurrenceSimple": {
+            "long_name": "Linear Recurrence visualization",
+            "showhide": "hide"
+          },
+          "DivideAndConquerRecurrenceSimple": {
+            "long_name": "Divide And Conquer Recurrence visualization",
+            "showhide": "hide"
           }
         },
         "exercises": {
@@ -209,28 +231,76 @@
             "required": true,
             "points": 1.0,
             "threshold": 5
+          },
+          "SummationOneToNCON": {
+            "long_name": "Summation of the first N Integers visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "SummationTwoPowerICON": {
+            "long_name": "Summation Two Power I visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "LinearRecurrenceSimpleCON": {
+            "long_name": "Linear Recurrence visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "DivideAndConquerRecurrenceSimpleCON": {
+            "long_name": "Linear Recurrence visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
           }
         }
       },
       "AlgAnalTest/AnalProblem": {
         "long_name": "Analyzing Problems",
+        "sections": {
+          "AnalyzingProblems": {
+            "long_name": "Worst Case Lower Bound Visualization",
+            "showhide": "hide"
+          }
+        },
         "exercises": {
           "AnalProblem": {
             "long_name": "Problem Analysis Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 5
+          },
+          "AnalyzingProblemsCON": {
+            "long_name": "Worst Case Lower Bound Visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
           }
         }
       },
       "AlgAnalTest/AnalMisunderstanding": {
         "long_name": "Common Misunderstandings",
+        "sections": {
+          "MisunderstandingsGraph": {
+            "long_name": "Example's graph Visualization",
+            "showhide": "hide"
+          }
+        },
         "exercises": {
           "Misunderstandings": {
             "long_name": "Common Misconceptions Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 5
+          },
+          "MisunderstandingsGraphCON": {
+            "long_name": "Example's graph Visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
           }
         }
       },

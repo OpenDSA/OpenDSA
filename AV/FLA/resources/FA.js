@@ -1,3 +1,7 @@
+/*
+Finite Automaton module.
+An extension to the JFLAP library.
+*/
 (function ($) {
   "use strict";
   if (typeof JSAV === "undefined") {
@@ -9,6 +13,10 @@
     return new FiniteAutomaton(this, opts);
   };
 
+  /*
+  Finite automaton class, used for DFAs/NFAs, PDAs, Mealy/Moore machines, and Turing Machines.
+  Extended from the JSAV graph class.
+  */
   var FiniteAutomaton = function (jsav, options) {
     this.init(jsav, options);
   };
@@ -19,10 +27,10 @@
     this._nodes = [];
     this._edges = [];
     this._alledges = null;
-    this.stack = ['Z'];          // for PDA
-    this.alphabet = {};
+    this.stack = ['Z'];           // for PDA
+    this.alphabet = {};           // input alphabet
     this.jsav = jsav;
-    this.initial;               // initial state
+    this.initial;                 // initial state
     this.options = $.extend({visible: true, nodegap: 40, autoresize: true, width: 400, height: 200,
                               directed: true, center: true, arcoffset: 50, emptystring: String.fromCharCode(955)}, options);
     //this.options = $.extend({directed: true}, options);
@@ -52,15 +60,17 @@
       Node: faState,
       Edge: faTransition
     }, this.options.constructors);
-    //this.initialState = this.newNode('q0');
-    
     JSAV.utils._helpers.handlePosition(this);
     JSAV.utils._helpers.handleVisibility(this, this.options); 
   };
 
-  //var events = ["click", "dblclick", "mousedown", "mousemove", "mouseup", "mouseenter", "mouseleave"]; //contextmenu?
   JSAV.utils._events._addEventSupport(faproto);
 
+  /*
+  Method used to add a new node to the FA.
+  Unlike a graph, you cannot define the node's name yourself.
+  Do not change the name manually! It is used as an ID.
+  */
   faproto.addNode = function(options) {
     var value;
     if (!options || !options.value) {
@@ -72,7 +82,7 @@
     return this.newNode(value, options);
   };
 
-
+  // Method to remove the given node
   faproto.removeNode = function(node, options) {
     var nodeIndex = this._nodes.indexOf(node);
     if (nodeIndex === -1) { return; } // no such node
@@ -110,6 +120,7 @@
     return this;
   };
 
+  // Method to create a new node (.addNode calls this)
   faproto.newNode = function(value, options) {
     var newNode = new this.constructors.Node(this, value, options), // create new node
         newNodes = this._nodes.slice(0);
@@ -124,6 +135,10 @@
     return newNode;
   }; 
 
+  /*
+  Function to add an edge to the FA.
+  Should always provide an edge weight, or there will be errors.
+  */
   faproto.addEdge = function(fromNode, toNode, options) {
     // assumes a weight is always given
     if (options.weight === "") {
@@ -165,12 +180,13 @@
     }
     return edge;
   };
+  // Function to delete the given edge. Can pass in an edge or two nodes.
   faproto.removeEdge = function(fNode, tNode, options) {
     var edge,
         fromNode,
         toNode,
         opts;
-    // first argument is an edge object
+    // if first argument is an edge object
     if (fNode.constructor === JSAV._types.ds.faTransition) {
       edge = fNode;
       fromNode = edge.start();
@@ -190,24 +206,23 @@
         edgeIndex = adjlist.indexOf(edge),
         newAdjlist = adjlist.slice(0, edgeIndex).concat(adjlist.slice(edgeIndex + 1));
     this._setadjlist(newAdjlist, fromIndex, options);
-    // we "remove" the edge by hiding it
-      
     // remove arcs
     if (edge.dfaArc()) {
       var oppEdge = this.getEdge(toNode, fromNode);
       oppEdge.dfaArc(false);
       oppEdge.layout();
     }
+    // we "remove" the edge by hiding it
     edge.hide();
   };
-
+  // Function to make a state initial.
   faproto.makeInitial = function(node, options) {
     node.addClass("start");
     this.initial = node;
     node.addInitialMarker($.extend({container: this}, this.options));
   };
 
-  //
+  // Function to find and remove the initial state marker.
   faproto.removeInitial = function(node, options) {
     if (node.equals(this.initial)) {
       node.removeClass('start');
@@ -217,15 +232,18 @@
         node._initialMarker = undefined;
       }
     }
-  }
+  };
 
   faproto.setShorthand = function (setBoolean) {
     this.shorthand = setBoolean;
   }
 
-  // Currently assumes every character is a unique input symbol.
+  /*
+  Function to update the input alphabet.
+  Returns an object.
+  Currently assumes every character is a unique input symbol.
+  */
   faproto.updateAlphabet = function () {
-    // updates input alphabet
     var alphabet = {};
     var edges = this.edges();
     var w;
@@ -252,8 +270,11 @@
     return alphabet;
   };
 
+  /*
+  Function to get the stack alphabet for a PDA
+  Returns an array.
+  */
   faproto.getStackAlphabet = function () {
-    // get stack alphabet for PDAs
     var alphabet = [];
     var edges = this.edges();
     var w;
@@ -283,12 +304,16 @@
     return alphabet;
   };
 
+  /*
+  Function to update the names of the nodes.
+  Used to renumber nodes when one is deleted.
+  */
   faproto.updateNodes = function() {
-    // renumber nodes
     for (var i = 0; i < this._nodes.length; i++) {
       this._nodes[i].value('q'+i);
     }
-  }
+  };
+  // Function to find a node using its name.
   faproto.getNodeWithValue = function(value) {
     var nodes = this.nodes();
     for (var next = nodes.next(); next; next = nodes.next()) {
@@ -298,7 +323,7 @@
     }
   };
 
-  //unused, only deterministic
+  // unused, only deterministic
   faproto.takePushdownTransition = function (nodeFrom, letter, options) {
     var edges = nodeFrom.getOutgoing();
 
@@ -418,7 +443,7 @@
     return ret;
   };
 
-  //unused
+  // unused; see traversal functions in individual tests
   faproto.traverse = function (state, letter, options) {
     var successors = state.neighbors(),
         traversed = [];
@@ -435,6 +460,10 @@
     } else { return null };
   };
 
+  /*
+  Function to lay out the FA. 
+  Uses JFLAP's graph layout algorithms; an FA layout algorithm needs to be written.
+  */
   faproto.layout = function(options) {
     if (options && options.layout) {
       var layoutAlg = options.layout;
@@ -443,10 +472,12 @@
     }
     var ret = this.jsav.ds.layout.graph[layoutAlg](this, options);
     var nodes = this.nodes();
+    // Update the position of the state label for each node
     for (var next = nodes.next(); next; next = nodes.next()) {
       next.stateLabelPositionUpdate();
     }
     var edges = this.edges();
+    // Remove edges without a weight
     for (next = edges.next(); next; next = edges.next()) {
       if (!next.weight()) {
         this.removeEdge(next);
@@ -456,9 +487,13 @@
   };
 
 
-
+  /*
+  FA edge/transition class.
+  Extended from JSAV graph edge class.
+  Unlike the graph, the displayed edge is a SVG path, not a line.
+  This allows the edge to be arced or made into a loop.
+  */
   var faTransition = function (jsav, start, end, options) {
-    //edge
     this.options = $.extend({arc: false}, options);
     this.jsav = jsav;
     this.startnode = start;
@@ -507,6 +542,7 @@
   JSAV.utils.extend(faTransition, JSAV._types.ds.Edge);
 
   var fatransitionproto = faTransition.prototype;
+  // Function to set the weight of the edge or return the current weight of the edge
   fatransitionproto.weight = function(newWeight) {
     if (typeof newWeight === "undefined") {
       return this._weight;
@@ -517,6 +553,11 @@
     this.label(newWeight);
   };
 
+  /*
+  Function to layout an edge.
+  Mostly the same as graphproto.layout, but JSAV graphs lack arcs and loops.
+  Labels are also handled differently.
+  */
   fatransitionproto.layout = function(options) {
     // delete edges without weights
     if (!this._label.text()) {
@@ -558,7 +599,7 @@
     // in the (poly)line as first item in the array, so we'll create arrays like [0, x, y] and
     // [1, x, y]
     
-    // loop
+    // If the edge is a loop:
     if (this.start().equals(this.end())) {
       var adjust = Math.sqrt(2) / 2.0;
       fromY = Math.round(fromY - adjust * sHeight);
@@ -566,9 +607,9 @@
       var loopR = Math.round(0.8 * sWidth);
       this.g.path("M" + fromX + ',' + fromY + ' a' + loopR + ',' + loopR + ' -45 1,1 ' 
                   + (Math.round(2 * sWidth * adjust) + 2) + ',' + 0, options);
-      //this.g.element.css("z-index", -1);
     }
-    else if (this.options.arc) { //arc (quadratic bezier curve)
+    // If the edge should be an arc (implemented as a quadratic bezier curve)
+    else if (this.options.arc) {
       var midX = ((fromPoint[0] + toPoint[0]) / 2.0),
           midY = ((fromPoint[1] + toPoint[1]) / 2.0),
           vectorX = fromPoint[1] - toPoint[1],
@@ -582,16 +623,12 @@
         this.g.path(("M" + fromPoint[0] + " " + fromPoint[1] + "L" + toPoint[0] + " " + toPoint[1]), options);
     }
       
-
+    // update the edge label position
     if ($.isFunction(this._labelPositionUpdate)) {
       var bbtop = Math.min(fromPoint[1], toPoint[1]),
           bbleft = Math.min(fromPoint[0], toPoint[0]),
           bbwidth = Math.abs(fromPoint[0] - toPoint[0]),
           bbheight = Math.abs(fromPoint[1] - toPoint[1]);
-      // if (this.options.arc) {
-      //   bbtop = bbtop + (this.options.arcoffset / 2.0) * (controlPointY - midY) / Math.abs(controlPointY - midY);
-      //   bbleft = bbleft + (this.options.arcoffset / 2.0) * (controlPointX - midX) / Math.abs(controlPointX - midX);
-      // } else
       if (this.start().equals(this.end())) {
         bbtop = Math.round(start.top - 1.1 * sHeight);
         bbleft = Math.round(start.left);
@@ -601,7 +638,7 @@
       var bbox = {top: bbtop, left: bbleft, width: bbwidth, height: bbheight};
       this._labelPositionUpdate($.extend({bbox: bbox}, options));
 
-      // rotate label:
+      // rotate label to fit along the edge:
       var rotateAngle;
       if ((Math.PI / 2.0) < fromAngle && fromAngle < (3 * Math.PI / 2.0)) {
         rotateAngle = normalizeAngle(Math.PI - fromAngle);
@@ -774,7 +811,7 @@
     return [Math.round(x), Math.round(y)];
   }
 
-
+  // Function to set whether an edge should be an arc or not
   fatransitionproto.dfaArc = function(newBool) {
     if (typeof newBool === "undefined") {
       return this.options.arc;
@@ -784,7 +821,11 @@
     }
   };
 
-
+  /*
+  FA state class.
+  Extended from JSAV graph node class.
+  Main difference is the addition of labels and markers.
+  */
   var faState = function (container, value, options) {
     this.init(container, value, options);
   };
@@ -812,12 +853,19 @@
     JSAV.utils._helpers.handlePosition(this);
     JSAV.utils._helpers.handleVisibility(this, this.options);
   };
-
+  /*
+  Function to get all outgoing edges of a node.
+  Returns a normal array, not an iterable array like .getNodes does.
+  */
   fastateproto.getOutgoing = function() {
     var edges = this.container._edges[this.container._nodes.indexOf(this)];
     return edges; 
   };
-
+  /*
+  Function to set the state label or get the current value of the state label.
+  "node.stateLabel()" does not return the state label if the node is hidden!
+  "node._stateLabel.element[0].innerHTML" will return the state label regardless of visibility
+  */
   fastateproto.stateLabel = function(newLabel, options) {
     // the editable labels that go underneath the states
     if (typeof newLabel === "undefined") {
@@ -854,8 +902,12 @@
     }
   };
 
-  fastateproto.stateLabelPositionUpdate = function(options) {   // make this run whenever nodes are moved
-    // update initial arrow while we're at it
+  /*
+  Function to update the position of the state label. 
+  Must be run whenever nodes are moved.
+  */
+  fastateproto.stateLabelPositionUpdate = function(options) {
+    // update initial arrow position while we're at it
     if (this._initialMarker) {
       var fromPoint = [this.position().left - 10, this.position().top + this.element.outerHeight()/2.0],
           toPoint = [this.position().left, this.position().top + this.element.outerHeight()/2.0];
@@ -884,7 +936,7 @@
       }
     }
   };
-
+  // Function to add the initial state arrow to this state
   fastateproto.addInitialMarker = function(options) {
     var t = this.position().top + this.element.outerHeight()/2.0,
         l2 = this.position().left,
@@ -900,12 +952,12 @@
 }(jQuery));
 
 
-//NFA to DFA conversion code:
-
-//g.transitionFunction takes a single node and returns an array of node values
-//assumes all nodes have unique values! 
-//uses underscore.js
-
+/*
+NFA to DFA conversion
+Note: g.transitionFunction takes a single node and returns an array of node values
+Requires underscore.js
+The commented code creates a slideshow of the conversion (buggy).
+*/
 var convertToDFA = function(jsav, graph, opts) {
   // $('button').hide();
   // $('input').hide();
@@ -914,6 +966,7 @@ var convertToDFA = function(jsav, graph, opts) {
       alphabet = Object.keys(graph.alphabet),
       startState = graph.initial,
       newStates = [];
+  // Get the first converted state
   var first = lambdaClosure([startState.value()], graph).sort().join();
   newStates.push(first);
   var temp = newStates.slice(0);
@@ -924,6 +977,8 @@ var convertToDFA = function(jsav, graph, opts) {
   //first.addClass("start");
   g.layout();
   //jsav.step();
+
+  // Repeatedly get next states and apply lambda closure
   while (temp.length > 0) {
     var val = temp.pop(),
         valArr = val.split(',');
@@ -950,6 +1005,7 @@ var convertToDFA = function(jsav, graph, opts) {
       }
     }
   }
+  // add the final markers
   addFinals(g, graph);
   g.layout();
   var nodes = g.nodes();
@@ -993,9 +1049,8 @@ var convertToDFA = function(jsav, graph, opts) {
   //   jsav.step();
   // }
   // jsav.recorded();
-  //could move the values into mouseover and rename all of the nodes
-
 };
+// Function to add final markers to the resulting DFA
 var addFinals = function(g1, g2) {
   var nodes = g1.nodes();
   for (var next = nodes.next(); next; next = nodes.next()) {
@@ -1008,9 +1063,13 @@ var addFinals = function(g1, g2) {
     }
   }
 };
-
-var lambdaClosure = function(input, graph) {    // only used in conversion
-  // input as an array of values, returns an array
+/*
+Function to apply lambda closure.
+Takes in an array of values (state names), returns an array of values
+Only used in NFA to DFA conversion.
+There's a different lambda closure function used for nondeterministic traversal in certain tests.
+*/
+var lambdaClosure = function(input, graph) {
   var l = "\&lambda;",
       arr = [];
   for (var i = 0; i < input.length; i++) {
@@ -1030,10 +1089,16 @@ var lambdaClosure = function(input, graph) {    // only used in conversion
   return arr;
 };
 
-// unused
+/*
+DFA minimization.
+UNUSED AND INCOMPLETE.
+See minimizationTest.html for interactive DFA minimization, which features an
+algorithm for automatic splitting of minimization tree nodes.
+However, automatic minimization of the whole DFA is not yet implemented.
+*/
 var minimize = function (graph) {
   // this assumes all of the edges are in the alphabet
-  //remove all unreachable states
+  // remove all unreachable states
   var reachable = [graph.initial],
       nodes = graph.nodes();
   dfs(reachable, graph.initial);
@@ -1042,9 +1107,9 @@ var minimize = function (graph) {
       graph.removeNode(next);
     }
   }
-  // incomplete: see minimizationTest.html
+  // incomplete
 };
-//helper depth-first search to find connected component
+// helper depth-first search to find connected component
 var dfs = function (visited, node, options) {
   var successors = node.neighbors();
   for (var next = successors.next(); next; next = successors.next()) {
@@ -1055,21 +1120,27 @@ var dfs = function (visited, node, options) {
   }
 };
 
-
-//Turing machine:
-//tape as a linked list
+//===========================================
+/*
+Turing Machine class
+Holds the tape as a linked list and keeps track of the current position
+as well as the beginning of the string.
+*/
 var Tape = function (str) {
+  // if the tape is initialized using a string, writes the string to the new tape
   if (typeof str === 'string') {
     this.head = makeTape(str);
-    this.current = this.head.right()[0];
-    this.currentIndex = 0;
-  } else { // assume tape
+    this.current = this.head.right()[0];  // the current symbol
+    this.currentIndex = 0;                // the current position
+  } 
+  // else, assume that a Tape object was passed in, and create a copy of it
+  else {
     var copy = copyTape(str);
     this.head = copy[0];
     this.current = copy[1];
     this.currentIndex = str.currentIndex;
   }
-  //this._size = str.length;
+  // Returns the string written on the tape starting from the head of the string, including empty squares
   this.toString = function() {
     var temp = this.head,
         ret = "";
@@ -1079,6 +1150,7 @@ var Tape = function (str) {
     }
     return ret;
   };
+  // Move the tape left and set the new head of the string
   this.left = function() {
     var next = this.current.left();
     this.current = next[0];
@@ -1088,15 +1160,18 @@ var Tape = function (str) {
     }
     return this.current;
   };
+  // Move the tape right
   this.right = function() {
     var next = this.current.right();
     this.current = next[0];
     this.currentIndex++;
     return this.current;
   };
+  // Write to the current position
   this.value = function (newVal) {
     return this.current.value(newVal);
   };
+  // Move the tape and read the symbol
   this.move = function (str) {
     if (str === "L") {
       return this.left();
@@ -1107,7 +1182,7 @@ var Tape = function (str) {
     }
   };
 };
-
+// Tape linked list node
 var TapeNode = function (left, right, val) {
   this._left = left;
   this._right = right;
@@ -1117,6 +1192,7 @@ var TapeNode = function (left, right, val) {
   } else {
     this._value = val;
   }
+  // Return the value written at this position or write a symbol to this position
   this.value = function (newVal) {
     if (typeof newVal === "undefined") {
       return this._value;
@@ -1125,6 +1201,11 @@ var TapeNode = function (left, right, val) {
       return this._value;
     }
   };
+  /*
+  Traverse left or right and read. 
+  If can't, create empty tape nodes. 
+  Returns an array containing the read symbol and the new head of the string
+  */
   this.left = function (n) {
     if (this._left) {
       return [this._left];
@@ -1142,8 +1223,8 @@ var TapeNode = function (left, right, val) {
     }
   }
 };
-
-var makeTape = function (str) {   // initializes tape
+// Function to initialize the linked list from an inputted string
+var makeTape = function (str) {
   var prev = new TapeNode(null, null);
   var head = prev;
   for (var i = 0; i < str.length; i++) {
@@ -1153,6 +1234,7 @@ var makeTape = function (str) {   // initializes tape
   }
   return head;
 };
+// Function to initialize the linked list by copying the inputted tape
 var copyTape = function (t) {
   var prev = new TapeNode(null, null, t.current.value());
   var cur = prev;
@@ -1173,8 +1255,11 @@ var copyTape = function (t) {
   }
   return [temp, cur];
 };
-
-var extendTape = function (dir, node, n) {  // adds n nodes to tape at beginning or end
+/*
+Creates n empty tape nodes to the beginning or end of the tape 
+and returns the read symbol and the leftmost/rightmost new node
+*/
+var extendTape = function (dir, node, n) {
   if (dir === 'left') {
     var next = new TapeNode(null, node),
         prev = next;
@@ -1198,7 +1283,10 @@ var extendTape = function (dir, node, n) {  // adds n nodes to tape at beginning
     return [next, prev];
   }
 };
-
+/*
+Function to get the tape alphabet.
+Should maybe be added as a FA method.
+*/
 var getTapeAlphabet = function (graph) {
   var alphabet = [];
   var edges = graph.edges();
@@ -1231,9 +1319,14 @@ var getTapeAlphabet = function (graph) {
   }
   return alphabet;
 };
-
-var viewTape = function (t) {   // tape viewport
-  var arr = new Array(15);
+/*
+Function to get the tape "viewport".
+This returns a string showing the current position and the seven
+symbols to the left and right of the current position.
+The current position is highlighted as well.
+*/
+var viewTape = function (t) {
+  var arr = new Array(15);    // arbitrary size
   for (var i = 0; i < 15; i++) {
     arr[i] = String.fromCharCode(9633);;
   }
@@ -1264,7 +1357,10 @@ var viewTape = function (t) {   // tape viewport
   view+="|";
   return view;
 };
-
+/*
+Function to get the tape output, the string made from the current position up to,
+but not including, the first empty square found.
+*/
 var produceOutput = function (t) {
   var temp = t.current,
       output = "";

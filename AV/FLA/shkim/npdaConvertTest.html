@@ -5,20 +5,36 @@
     	<link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
   		<link rel="stylesheet" href="../resources/FA.css" type="text/css" />
 		<style>
+			#av {
+				text-align: center;
+			}
 			p.jsavoutput.jsavline {
 				height: 10px;
 			}
-			#editedgelabel {
-				z-index:1000;
-				background-color: #efe;
-				border: black solid 1px;
-				width: 150px;
+			.jsavgraph {
+				display: inline-block;
 			}
-			.labelmenu {
-				width: inherit;
+			.jsavgraph .jsavedge {
+				stroke-width: 5;
 			}
+    		#editable {
+    			margin-top: 16px;
+    			margin-bottom: 16px;
+    			width: 45%;
+    			height: 440px;
+    			
+    			outline: 1px black solid;
+    			border: 10px transparent solid;
+    			display: inline-block;
+    		}
 			.jsavmatrix .jsavvalue {
 		     	width: 100px;
+		    }
+		    .jsavcanvas {
+		    	height: auto;
+		    }
+		    .convertadded {
+		    	stroke: red;
 		    }
 		</style>
 	</head>
@@ -32,26 +48,12 @@
       		<p class="jsavoutput jsavline"></p>
 			<div align="center" style="font-size: 30px">&Sigma;: <span id='alphabet'></span><br>&Gamma;: <span id='stackalphabet'></span></div>
       		<p align="center" class="arrayPlace"></p>
+      		<div id="reference" class="jsavcanvas"></div>
+			<div id="editable" class="jsavcanvas"></div>
+		</div>
+		<input id="loadbutton" type="file"><br>
+		<button type="button" id="togrammarbutton">Convert to Context-Free Grammar</button>
 
-		</div>
-		<div class='notEditing'>
-			<button type='button' id="playbutton">Traverse</button>
-			<button type='button' id="layoutbutton">Layout</button>
-			<button type="button" id='testNDbutton'>Highlight Nondeterminism</button>
-			<button type='button' id='testlambdabutton'>Highlight &lambda;-Transitions</button>
-			<button type="button" id="togrammarbutton">Convert to Context-Free Grammar</button>
-		</div>
-		<div class='editing' style="display: none">
-			<button type='button' id='addnodesbutton'>Add nodes</button>
-			<button type='button' id='addedgesbutton'>Add edges</button>
-			<button type='button' id='movenodesbutton'>Move nodes</button>
-			<button type='button' id='editnodesbutton'>Edit nodes and edges</button>
-			<span id='mode'></span>
-		</div>
-		<div>
-			<button type='button' id="changeButton">Edit</button>
-		</div>
-		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 		<script src="../../../JSAV/lib/raphael.js"></script>

@@ -127,18 +127,29 @@ $(document).ready(function () {
 
   // Slide 21
   av.umsg(interpret("Slide 21"));
+  var rect5 = av.g.rect(310, 290, 268, 1);
+  rect5.rotate(-22);
+  av.label("|--- $n-1$ ---|",  {"top": 262, "left": 540}).css({'font-size': '16px', "text-align": "center"}).addClass("rotated");
+  av.label("|------------ $n-1$ ------------|",  {"top": 342, "left": 348}).css({'font-size': '16px', "text-align": "center"});
   av.step();
 
   // Slide 22
   av.umsg(interpret("Slide 22_1"));
-  var rect5 = av.g.rect(310, 290, 268, 1);
-  rect5.rotate(-22);
-  av.label("}",  {"top": "147px", "left": "560px"}).css({'font-size': '80px', "text-align": "center"});
-  av.label("$n-1$",  {"top": "270px", "left": "600px"}).css({'font-size': '20px', "text-align": "center"});
-  av.umsg(interpret("Slide 22_2"));
+  var bigTriangle = av.g.polyline([[320, 340], [570, 340], [570, 240]]).css({"fill": "blue", "opacity": 0.2});
+  av.step();
+  av.umsg(interpret("Slide 22_2"), {preserve: true});
+  var smallTriangle1 = av.g.polyline([[320, 340], [320, 320], [370, 320]]).css({"fill": "green", "opacity": 0.2});
+  var smallTriangle2 = av.g.polyline([[370, 320], [370, 300], [420, 300]]).css({"fill": "green", "opacity": 0.2});
+  var smallTriangle3 = av.g.polyline([[420, 300], [420, 280], [470, 280]]).css({"fill": "green", "opacity": 0.2});
+  var smallTriangle4 = av.g.polyline([[470, 280], [470, 260], [520, 260]]).css({"fill": "green", "opacity": 0.2});
+  var smallTriangle5 = av.g.polyline([[520, 260], [520, 240], [570, 240]]).css({"fill": "green", "opacity": 0.2});
+  av.step();
+  
+  //Slide 23
+  av.umsg(interpret("Slide 23"));
   av.step();
 
-  // Slide 23
-  av.umsg(interpret("Slide 23"));
+  // Slide 24
+  av.umsg(interpret("Slide 24"));
   av.recorded();
 });

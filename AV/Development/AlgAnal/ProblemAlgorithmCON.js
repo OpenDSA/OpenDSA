@@ -60,7 +60,7 @@ $(document).ready(function () {
 
   //Slide 6
   av.umsg(interpret("Slide 6"), {"preserve":true});
-  rect.css({"opacity":0.2, "fill":"blue"});
+  rect.css({"opacity":0.2, "fill":"green"});
   av.step();
 
   //Slide 7
@@ -73,14 +73,14 @@ $(document).ready(function () {
   av.umsg(interpret("Slide 8"), {preserve:true});
   var count = 0;
   while(count < 6){
-    var value = Math.round(Math.random() * 10);
-    if(arr_values.indexOf(value) == -1){
+    var value = Math.round(Math.random() * 10 + 1);
+    if(arr_values.indexOf(value) === -1){
       arr_values[count] = value;  
       count++;
     }
   }
   arr.hide();
-  var arr = av.ds.array(arr_values, {"left": leftAlign, "top": topAlign, "indexed": true});  
+  arr = av.ds.array(arr_values, {"left": leftAlign, "top": topAlign, "indexed": true});  
   labelInput.text("");
   labelInput = 
   av.label("Target key =" + arr_values[3],  {"top": topAlign + 85, "left": leftAlign + 180}).css({'font-size': '18px', "text-align": "center", 'font-style':"bold"});
@@ -123,7 +123,7 @@ $(document).ready(function () {
   av.umsg(interpret("Slide 13"), {preserve:true});
   pseudo.show();
   rect.css({width: rectWidth + 65});
-  labelProblem.css({left:"+=25"})
+  labelProblem.css({left:"+=25"});
   labelOutput1.css({left:"+=65"});
   labelOutput3.css({left:"+=65"});
   lineOutput1 = av.g.line(leftAlign + 445 + rectWidth, topAlign + 50, leftAlign + 545 + rectWidth, topAlign + 50);
@@ -169,7 +169,6 @@ $(document).ready(function () {
   labelOutput1.show();
   labelOutput3.show();
   av.step();
-
 
   av.recorded();
 });

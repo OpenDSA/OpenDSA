@@ -18,3 +18,13 @@
 	line-height:30px;
         text-align:center;
 }
+
+.edgehighlight{
+	stroke:LightCoral;
+	stroke-width: 5;
+}
+
+.edgehighlightbold{
+	stroke:LightCoral;
+	stroke-width: 7;
+}

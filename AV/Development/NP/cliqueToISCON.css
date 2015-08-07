@@ -18,3 +18,33 @@
 	line-height:30px;
         text-align:center;
 }
+
+.jsavnode{
+	width:35px;
+	height:35px;
+	min-width:35px;
+	min-height:35px;
+	background-color:AntiqueWhite;
+}
+
+.jsavedge{
+	stroke-width:1.5px;
+}
+
+.bluredge{
+       stroke-opacity:0.1;
+}
+
+.semibluredge{
+       stroke-opacity:0.5;
+}
+
+.highlightedge{
+	stroke:SlateBlue;
+	stroke-width:3.5px;
+	stroke-opacity:1;
+}
+
+.highlightnode{
+	background-color:Teal;
+}

@@ -20,7 +20,7 @@ $(document).ready(function () {
     arr_values[i] = parseInt(Math.random() * 100 + 1, 10);
   }
   arr = av.ds.array(arr_values, {"left": 10, "top": 0, "indexed": true});
-  av.label("|-------------------------------- $n$ ---------------------------------|", {"top": "-20px", "left": "20px"}).css({'font-size': '14px', "text-align": "center"});
+  av.label("|------------------------------ $n$ -------------------------------|", {"top": "-20px", "left": "20px"}).css({'font-size': '14px', "text-align": "center"});
   av.displayInit();
   
   // Slide 2

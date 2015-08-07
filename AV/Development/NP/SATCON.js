@@ -52,7 +52,7 @@ $(document).ready(function () {
     var table1 = new av.ds.matrix(data1,{style:"table",left:x-40,top:y+75,});
 
     for(var i=0;i<3;i++)
-        table1.css(0,i,{"background-color":"Silver"});
+        table1.addClass(0,i,"headerrow");
 
     x+=225;
 
@@ -65,7 +65,7 @@ $(document).ready(function () {
     var table2 = new av.ds.matrix(data2,{style:"table",left:x-50,top:y+75});
 
     for(var i=0;i<3;i++)
-        table2.css(0,i,{"background-color":"Silver"});
+        table2.addClass(0,i,"headerrow");
 
     x+=225;
 
@@ -79,7 +79,7 @@ $(document).ready(function () {
     var table3 = new av.ds.matrix(data3,{style:"table",left:x-50,top:y+75});
 
     for(var i=0;i<3;i++)
-        table3.css(0,i,{"background-color":"Silver"});
+        table3.addClass(0,i,"headerrow");
 
     av.step();
 
@@ -170,7 +170,7 @@ $(document).ready(function () {
    
     label1 = av.label("P = ($x_1$ + $x_2$).($x_2$ + $\\overline{x_3}$ + $x_4$).($x_1$ + "+
 "$\\overline{x_2}$ + $x_3$ + $x_4$).($\\overline{x_1}$ + $x_3$)"
-,{top: y-30,left:0}).css({"text-align": "center"}); 
+,{top: y-15,left:0}).css({"text-align": "center"}); 
 
     label2 = av.label("Truth Table for P",{top: y+20,left:150})
 .css({"text-align": "center"}); 
@@ -200,28 +200,28 @@ $(document).ready(function () {
     var mat2= new av.ds.matrix(matdata1,{style:"table",left:250,top:y+50});
 
     for(var j=0; j<5 ; j++)
-        mat1.css(0,j,{"background-color":"Silver"});
+        mat1.addClass(0,j,"headerrow");
     for(var j=0; j<5 ; j++)
-        mat2.css(0,j,{"background-color":"Silver"});
+        mat2.addClass(0,j,"headerrow");
 
     av.step();
     for (var i=1; i< 9; i++){
        if (matdata[i][4] == "F"){
             for(var j=0; j<5 ; j++)
-                mat1.css(i,j,{"background-color":"#CB6D51"});
+                mat1.addClass(i,j,"cellfalse");
 	}
 	else{
 	    for(var j=0; j<5 ; j++)
-	        mat1.css(i,j,{"background-color":"#93C572"});
+	        mat1.addClass(i,j,"celltrue");
 	}
 
 	if (matdata1[i][4] == "F"){
 	    for(var j=0; j<8 ; j++)
-	        mat2.css(i,j,{"background-color":"#CB6D51"});
+	        mat2.addClass(i,j,"cellfalse");
 	}
 	else{
 	    for(var j=0; j<8 ; j++)
-	       mat2.css(i,j,{"background-color":"#93C572"});
+	       mat2.addClass(i,j,"celltrue");
 	}
 	
     }
@@ -250,7 +250,7 @@ $(document).ready(function () {
 
    
     label1 = av.label("P = ($x_1$ + $x_2$).($x_2$ + $\\overline{x_3}$ + $x_4$).($x_3$ + "+
-"$\\overline{x_4}$).($x_1$ + $\\overline{x_1}$).($x_1$ + $\\overline{x_2}$ + $x_3$ + $x_4$)",{top: y-30,left:0})
+"$\\overline{x_4}$).($x_1$ + $\\overline{x_1}$).($x_1$ + $\\overline{x_2}$ + $x_3$ + $x_4$)",{top: y-15,left:0})
 .css({"text-align": "center"}); 
 
     label2 = av.label("Truth Table for P",{top: y+20,left:150})
@@ -279,15 +279,15 @@ $(document).ready(function () {
     var mat3 = new av.ds.matrix(matdata2,{style:"table",left:50,top:y+50});
     var mat4= new av.ds.matrix(matdata3,{style:"table",left:250,top:y+50});
     for(var j=0; j<5 ; j++)
-        mat3.css(0,j,{"background-color":"Silver"});
+        mat3.addClass(0,j,"headerrow");
     for(var j=0; j<5 ; j++)
-        mat4.css(0,j,{"background-color":"Silver"});
+        mat4.addClass(0,j,"headerrow");
 
     av.step();
     for ( var k=1; k< 9; k++){
         for(var l=0; l<5 ; l++){
-            mat3.css(k,l,{"background-color":"#CB6D51"});
-            mat4.css(k,l,{"background-color":"#CB6D51"});
+            mat3.addClass(k,l,"cellfalse");
+            mat4.addClass(k,l,"cellfalse");
 	}
 
     }

@@ -19,6 +19,28 @@
         text-align:center;
 }
 
+.jsavgraphnode{
+	width:35px !important;
+	height:35px !important; 
+	min-width:35px !important;
+ 	min-height:35px !important;
+	background-color:AntiqueWhite;
+}
+
 .jsavedgelabel{
        background-color:AliceBlue;
+}
+
+.jsavgraphedge{
+	stroke-width:1.5px;
+}
+
+.extraedge{
+	stroke:Teal;
+}
+
+.hcedge{
+	stroke:IndianRed;
+	stroke-width:8px !important;
+	opacity:0.75;
 }

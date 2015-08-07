@@ -18,3 +18,94 @@
 	line-height:30px;
         text-align:center;
 }
+
+.nodecolor1{
+	background-color:Brown;
+}
+.edgecolor1{
+        stroke: Brown;
+        stroke-width: 2;
+}
+
+.nodecolor2{
+	background-color:#669966;
+}
+.edgecolor2{
+        stroke: #669966;
+        stroke-width: 2;
+}
+
+.nodecolor3{
+	background-color:#FFCC66;
+}
+.edgecolor3{
+        stroke: #FFCC66;
+        stroke-width: 2;
+}
+
+.nodecolor4{
+	background-color:#996699;
+}
+.edgecolor4{
+        stroke: #996699;
+        stroke-width: 2;
+}
+
+.nodecolor5{
+	background-color:#00CCCC;
+}
+.edgecolor5{
+        stroke: #00CCCC;
+        stroke-width: 2;
+}
+
+.nodecolor6{
+	background-color:PaleVioletRed;
+}
+.edgecolor6{
+        stroke: PaleVioletRed;
+        stroke-width: 2;
+}
+
+.nodecolor7{
+	background-color:Chocolate;
+}
+.edgecolor7{
+        stroke: Chocolate;
+        stroke-width: 2;
+}
+
+.nodecolor8{
+	background-color:IndianRed;
+}
+.edgecolor8{
+        stroke: IndianRed;
+        stroke-width: 2;
+}
+
+.nodecolor9{
+	background-color:Silver;
+}
+.edgecolor9{
+        stroke: Silver;
+        stroke-width: 2;
+}
+
+.nodecolor10{
+	background-color:SlateBlue;
+}
+.edgecolor10{
+        stroke: SlateBlue;
+        stroke-width: 2;
+}
+
+.nodecolor11{
+	background-color:Teal;
+}
+.edgecolor11{
+        stroke: Teal;
+        stroke-width: 2;
+}
+
+
+

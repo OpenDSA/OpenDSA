@@ -38,6 +38,9 @@
     .parsetree {
       outline: transparent;
     }
+    .jsavedge {
+      stroke-width: 2;
+    }
     .jsavcanvas {
       height: auto;
     }
@@ -63,22 +66,14 @@
       <button type="button" class="parsingbutton" id="parsebutton">Parse</button>
       <button type="button" id="backbutton">Back</button><br>
       <button type="button" id="convertRLGbutton">Convert RLG to FA</button>
-      <button type="button" id="convertCFGbutton">Convert CFG to NPDA</button>
+      <button type="button" id="convertCFGbutton">Convert CFG to PDA (LL)</button>
       <button type="button" id="transformbutton">Transform Grammar</button>
-      <!--
-      <div id="transformations">
-        <button type="button" id="lambdabutton">Remove &lambda;-Productions</button>
-        <button type="button" id="unitbutton">Remove Unit-Productions</button>
-        <button type="button" id="uselessbutton">Remove Useless Productions</button>
-        <button type="button" id="chomskybutton">Convert CFG to Chomsky Normal Form</button>
-        <button type="button" id="transformbutton">Transform Grammar</button>
-      </div>
-      -->
       <div id="dfabuttons">
         <button type="button" id="movebutton">Move</button>
         <button type="button" id="finalbutton">Make final</button>
         <button type="button" id="gotobutton">Continue DFA</button>
       </div>
+      <input style="display: none;" type="button" id="convertmovebutton" value="Move states">
     </div>
     <div id="av">
       <div class="jsavcontrols">  

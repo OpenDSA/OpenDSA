@@ -1,0 +1,11 @@
+{
+  "translations" :{
+    "en": {
+      "Slide 1": "Consider a graph of cost over all inputs of a given size $n$ for some algorithm for a given problem.",
+      "Slide 2": "<br><br>The worst case for this algorithm is represented by this red point.",
+      "Slide 3": "Define $A$ to be the collection of all algorithms that solve the problem (theoretically, there are an infinite number of such algorithms.)",
+      "Slide 4": "<br>The graphs of the cost over all inputs of a given size $n$ will look like the following(We are only showing the graphs of 4 algorithms here.)",
+      "Slide 5": "The worst case lower bound is the least of all the highest points on all the graphs. (The circled point)"
+    }
+  }
+}

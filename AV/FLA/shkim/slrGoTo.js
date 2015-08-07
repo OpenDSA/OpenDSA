@@ -4,8 +4,8 @@
   }
   var variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var jsav = new JSAV("av");
-  var prodTable,
-      itemTable;
+  var prodTable,              // grammar table
+      itemTable;              // table of next item set
   var lambda = String.fromCharCode(955),
       epsilon = String.fromCharCode(949),
       arrow = String.fromCharCode(8594),
@@ -13,6 +13,7 @@
       selectedItem = null,
       emptystring = lambda;
 
+  // get possible derivations of a production (returns a list of lists with the dot moved around)
   var getPossibleDerived = function (item) {
     var r = item[2];
     var d = [];
@@ -25,9 +26,9 @@
     }
     return d;
   };
-
+  // adds closure to an item set (can add closure to a single item by passing in an array of one item)
   var addClosure = function (items, productions) {
-    // takes a list
+    // takes an array of strings
     var itemsStack = [];
     for (var i = items.length - 1; i >= 0; i--) {
       itemsStack.push(items[i]);
@@ -62,7 +63,9 @@
     }
     return items;
   };
+  // gets items with the dot shifted over one position
   var goTo = function (items, symbol) {
+    // takes an array of strings
     var newItems = [];
     for (var i = 0; i < items.length; i++) {
       var r = items[i];
@@ -74,6 +77,7 @@
     }
     return newItems;
   };
+
   localStorage.removeItem('slrdfareturn');
   var productions = _.map(localStorage['slrdfaproductions'].split(','), function(x) { 
     var d = x.split(String.fromCharCode(8594));
@@ -82,16 +86,18 @@
   });
   var goToSymbol = localStorage['slrdfasymbol'];
   var prevItemSet = localStorage['slrdfaitemset'];
+  // if creating the initial set:
   if (goToSymbol === 'initial') {
     var nextItemSet = addClosure(["S'"+arrow+dot+productions[0][2]], productions);
   } else {
     var nextItemSet = addClosure(goTo(prevItemSet.split(','), goToSymbol), productions);
   }
-  var itemArr = [];
+  var itemArr = [];       // array holding the new item set
   for (var i = 0; i < productions.length; i++) {
     itemArr.push(["","",""]);
   }
 
+  // initialize matrices
   var init = function () {
     prodTable = jsav.ds.matrix(productions, {style: "table"});
     prodTable.element.addClass('prodTable');
@@ -104,12 +110,14 @@
     jsav.label('Items', {relativeTo: itemTable, anchor: "center top", myAnchor: "center bottom"});
     return prodTable;
   };
-
+  // adds an item to the next item set
   var addToItemTable = function (toAdd) {
+    // check if item should be added
     if (nextItemSet.indexOf(toAdd) === -1) {
       alert(toAdd + ' is not part of the set.');
       return;
     }
+    // check if item is already in the set
     var check = _.map(itemArr, function(x) {return x.join('');});
     if (check.indexOf(toAdd) === -1) {
       for (var i = 0; i < itemArr.length; i++) {
@@ -122,6 +130,7 @@
           break;
         }
       }
+      // if no more room, double the array
       if (i === itemArr.length) {
         var l = itemArr.length;
         for (var j = 0; j < l; j++) {
@@ -136,19 +145,19 @@
       }
     } 
   };
-
+  // handler for individual items in the item menu
   var menuItemHandler = function (e) {
     addToItemTable($(this).val());
   };
-
+  // handler for the grammar
   var prodHandler = function (index, index2, e) {
     for (var i = 0; i < prodTable._arrays.length; i++) {
       prodTable.unhighlight(i);
     }
     this.highlight(index);
+    // create a menu with the possible items for the selected production
     var p = [this.value(index, 0), this.value(index, 1), this.value(index, 2)];
     var d = getPossibleDerived(p);
-    //console.log(""+d);
     $('#prodMenu').empty();
     for (var i = 0; i < d.length; i++) {
       $('#prodMenu').append('<input type="button" class="menuItem" value="'+d[i].join('')+'"><br>');
@@ -156,12 +165,11 @@
     var xOffset = e.pageX,
         yOffset = e.pageY;
         w = $('.jsavvalue').width();
-    //console.log(xOffset + " " + yOffset)
     $('#prodMenu').offset({left: xOffset, top: yOffset});
     $('#prodMenu').show();
     $('.menuItem').click(menuItemHandler);
   };
-
+  // handler for the next item set table
   var itemHandler = function (index, index2, e) {
     if (!this.value(index, 0)) {
       return;
@@ -176,7 +184,7 @@
   prodTable = init();
 
   //========================
-
+  // button to automatically add the closure of the selected item
   $('#closurebutton').click(function () {
     if (selectedItem === null) {
       alert('Select an item.');
@@ -187,11 +195,13 @@
       addToItemTable(c[i]);
     }
   });
+  // button to automatically complete the entire item set
   $('#finishbutton').click(function () {
     for (var i = 0; i < nextItemSet.length; i++) {
       addToItemTable(nextItemSet[i]);
     }
   });
+  // button to check if complete, store the item set for use in the SLR proof, and close the window
   $('#okbutton').click(function () {
     var c = _.map(_.filter(itemArr, function(x) {return x[0];}), function(x) {return x.join('');});
     var inter = _.intersection(c, nextItemSet);
@@ -203,7 +213,10 @@
       return;
     }
   });
+  // button to cancel creating the item set
   $('#cancelbutton').click(function() {
+    // cannot cancel if creating the initial set
+    // you can still just close the window, which results in being unable to proceed with the SLR proof
     if (goToSymbol === "initial") {
       alert('You must make the initial set.');
       return;

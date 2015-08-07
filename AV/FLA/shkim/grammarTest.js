@@ -1,28 +1,35 @@
+/*
+Grammar demo.
+This is a large file - should be split up into multiple files.
+It may even be better to move the proofs into separate demos.
+*/
 (function ($) {
   var variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var jsav = new JSAV("av");
   var arrow = String.fromCharCode(8594),
-      lastRow,          // index of the last visible row (the empty row)
-      arr,              // the grammar
-      backup = null,    // a copy of the original grammar (as a string) before it is transformed
-      m,
-      tGrammar,         // transformed grammar
-      derivationTable,
-      parseTableDisplay,
-      parseTree,
-      ffTable,          // table for FIRST and FOLLOW sets
-      arrayStep,  
-      selectedNode,     // used for FA/graph editing
-      modelDFA,         // DFA used to build SLR parse table
-      builtDFA;         // DFA created by the user to try to build the modelDFA
+      lastRow,            // index of the last visible row (the empty row)
+      arr,                // the grammar
+      backup = null,      // a copy of the original grammar (as a string) before it is transformed
+      m,                  // the grammar table
+      tGrammar,           // transformed grammar
+      derivationTable,    // the derivation table shown during brute-force parsing
+      parseTableDisplay,  // the parse table
+      parseTree,          // parse tree shown during parsing slideshows
+      ffTable,            // table for FIRST and FOLLOW sets
+      arrayStep,          // the position of FIRST or FOLLOW cells
+      selectedNode,       // used for FA/graph editing
+      modelDFA,           // DFA used to build SLR parse table
+      builtDFA;           // DFA created by the user
 
   var lambda = String.fromCharCode(955),
       epsilon = String.fromCharCode(949),
       square = String.fromCharCode(9633),
       dot = String.fromCharCode(183),
       emptystring = lambda;
-
-  // if there is a grammar in local storage, load that grammar (used to export/import grammars)
+  /*
+  If there is a grammar in local storage, load that grammar.
+  This is used to import grammars from certain proofs.
+  */
   if (localStorage["grammar"]) {
     // the grammar is saved as a string of a list of strings:
     // turn each production into an array containing the left side, arrow, and right side
@@ -35,7 +42,6 @@
     // add an empty row for editing purposes (clicking the empty row allows the user to add productions)
     arr.push(["", arrow, ""]);
     // clear the grammar from local storage to prevent it from being loaded by other grammar tests
-    // (like the original grammar before exporting)
     localStorage.removeItem('grammar');
   } else {
     arr = new Array(20);    // arbitrary array size
@@ -45,16 +51,46 @@
     lastRow = 0;
   }
   
-  // initializes/reinitializes the grammar display
+  // Function to lay out a single column width
+  var layoutColumn = function (mat, index) {
+    var maxWidth = 100;     // default cell size
+    for (var i = 0; i < mat._arrays.length; i++) {
+      var cell = mat._arrays[i]._indices[index].element;
+      if ($(cell).width() > maxWidth) {
+        maxWidth = $(cell).width();
+      }
+    }
+    if (maxWidth > 100) {
+      for (var i = 0; i < mat._arrays.length; i++) {
+        var cell = mat._arrays[i]._indices[index].element;
+        $(cell).find('.jsavvalue').width(maxWidth);
+      }
+    }
+  };
+  // Function to fix all table column widths
+  var layoutTable = function (mat, index) {
+    // if column index is given, does layout for that column, otherwise lays out all columns
+    if (typeof index === 'undefined') {
+      for (var i = 0; i < mat._arrays[0]._indices.length; i++) {
+        layoutColumn(mat, i);
+      }
+    } else {
+      layoutColumn(mat, index);
+    }
+    mat.layout();
+  };
+
+  // Function to initialize/reinitialize the grammar display
   var init = function () { 
     if (m) {
       m.clear();
     }
     var m2 = jsav.ds.matrix(arr, {style: "table"});
+    // hide all of the empty rows
     for (var i = lastRow + 1; i < arr.length; i++) {
       m2._arrays[i].hide();
     }
-    m2.layout();
+    layoutTable(m2, 2);
     m2.on('click', matrixClickHandler);
     return m2;
   };
@@ -83,16 +119,27 @@
       var fi = $('#firstinput');
       fi.offset({top: topOffset, left: leftOffset});
       fi.outerHeight($('.jsavvalue').height());
-      fi.width($('.jsavvalue').width());
+      fi.width($(this._arrays[index]._indices[index2].element).width());
       fi.focus();
+      // finalize the changes to the grammar when the enter key is pressed
       fi.keyup(function(event){
         if(event.keyCode == 13){
           var input = $(this).val();
+          var regex = new RegExp(emptystring, g);
+          input = input.replace(regex, "");
           if (input === "" && index2 === 2) {
             input = emptystring;
           }
           if (index2 === 0 && (input.length !== 1 || variables.indexOf(input) === -1)) {
             alert('Invalid left-hand side.');
+            return;
+          }
+          if (index2 === 0 && _.find(arr, function(x) { return x[0] === input && x[2] === arr[index][2];})) {
+            alert('This production already exists.');
+            return;
+          }
+          if (index2 === 2 && _.find(arr, function(x) { return x[0] === arr[index][0] && x[2] === input;})) {
+            alert('This production already exists.');
             return;
           }
           if (index2 === 0 && !arr[index][2]) {
@@ -103,12 +150,13 @@
           arr[index][index2] = input;
           // adding a new production
           addProduction(index);
+          layoutTable(m, 2);
           fi.remove();
         }
       });
     }
   };
-  // check to see if a new row should be added
+  // Function to check to see if a new row should be added and lengthen the array
   var addProduction = function (index) {
     if (m.value(index, 0) && index === lastRow) {
       // if array out of bounds, double the array size and recreate the matrix
@@ -122,7 +170,6 @@
       } 
       m._arrays[lastRow + 1].show();
       lastRow++;
-      m.layout();
     }
   };
 
@@ -130,10 +177,11 @@
   $('.jsavmatrix').addClass("editMode");
 
   //=================================
-  // parsing
+  // Parsing
 
   // brute force parsing
   var bfParse = function () {
+    // get productions (gets a clone of the grammar with the empty rows removed)
     var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
     if (productions.length === 0) {
       alert('No grammar.');
@@ -146,8 +194,11 @@
     }
     startParse();
     $('#bfpbutton').show();
+    /*
+    Set the height of the canvas manually:
+    Auto height does not factor in the heights of JSAV elements created with "relativeTo" turned on
+    */
     $('.jsavcanvas').height(450);
-    // get productions (gets a clone of the grammar with the empty rows removed)
     var table = {};   // maps each sentential form to the rule that produces it
     var sententials = [];
     var next;
@@ -183,6 +234,7 @@
     counter = 0;
     while (true) {
       counter++;
+      // ask the user to continue if parsing is taking a long time
       if (counter > 5000) {
         console.warn(counter);
         var confirmed = confirm('This is taking a while. Continue?');
@@ -193,6 +245,7 @@
         }
       }
       next = sententials.pop();
+      // stop parsing if the input string has been derived or if there are no more derivations
       if (next === inputString) {
         break;
       }
@@ -243,8 +296,10 @@
               else if (sententials.indexOf(s) !== -1) {
                 keep = false;
               }
-              // prune if the number of terminals and non-lambda deriving variables is
-              // greater than the length of the input string
+              /*
+              prune if the number of terminals and non-lambda deriving variables is
+              greater than the length of the input string
+              */
               else if (_.filter(s, function(x) {
                   return variables.indexOf(x) === -1 || derivers.indexOf(x) === -1;
                 }).length > inputString.length) {
@@ -268,7 +323,7 @@
       var temp = next;
       var results = [];   // derivation table
       counter = 0;
-      // go through the table of sentential forms to productions in order to get the trace
+      // go through the map of sentential forms to productions in order to get the trace
       do {                // handles the case where inputstring is the emptystring
         counter++;
         if (counter > 500) {
@@ -285,7 +340,6 @@
       derivationTable = new jsav.ds.matrix(results, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
       jsav.label('Derivation Table', {relativeTo: derivationTable, anchor: "center top", myAnchor: "center bottom"});
       parseTree = new jsav.ds.tree({left: "30px", relativeTo: derivationTable, anchor: "right top"});
-      //console.log($('.jsavtree').width())
       jsav.label('Parse Tree', {left: "" + $('.jsavtree').width() / 2.0 + "px", relativeTo: parseTree, anchor: "center top", myAnchor: "left bottom"});
       temp = [parseTree.root(productions[0][0])];
 
@@ -299,7 +353,6 @@
         var d = [];
         // find parent node
         for (var j = temp.length - 1; j >= 0; j--) {
-          //console.log(temp[j].value());
           if (temp[j].value() === p.split(arrow)[0]) {
             temp2 = temp[j];
             rem = j;
@@ -323,6 +376,7 @@
         displayOrder.push(d);
       }
 
+      layoutTable(derivationTable);
       parseTree.layout();
       // hide the whole tree except for the start node and hide the derivation table
       parseTree.root().hide();
@@ -346,26 +400,20 @@
           temp2[j].show({recursive: false});
         }
       }
-      // jsav.step();
-      // var leaves = getLeaves(parseTree.root());
-      // for (var j = 0; j < m._arrays.length; j++) {
-      //     m._arrays[j].unhighlight();
-      //   }
-      // for (var i = 0; i < leaves.length; i++) {
-      //   leaves[i].highlight();
-      // }
       jsav.recorded();
     } else {
       // if string is rejected, automatically return to the editor
+      $('#backbutton').click();
       jsav.umsg('"' + inputString + '" rejected');
-      endParse();
     }
   }; 
-
-  // checks if FIRST / FOLLOW sets are correct (either FIRST sets or FOLLOW sets)
-  // returns a list of the incorrect variables
+  /*
+  Function to check if FIRST / FOLLOW sets are correct (either FIRST sets or FOLLOW sets).
+  Returns a list of the incorrect variables.
+  */
   var checkTable = function (firsts, follows) {
     var checker;
+    // arrayStep can be 1 or 2
     if (arrayStep === 1) {
       checker = firsts;
     } else {
@@ -386,7 +434,7 @@
     return incorrect
   };
 
-  // checks if the parse table is correct and transition
+  // Function to check if the parse table is correct and transition
   var checkParseTable = function (parseTableDisplay, parseTable) {
     $('#firstinput').remove();
     var incorrect = false;
@@ -400,6 +448,7 @@
         }
       }
     }
+    // provide option to automatically complete the parse table
     if (incorrect) {
       var confirmed = confirm('Highlighted cells are incorrect.\nFix automatically?');
       if (confirmed) {
@@ -410,6 +459,7 @@
             parseTableDisplay.value(i, j, parseTable[i-1][j-1]);
           }
         }
+        layoutTable(parseTableDisplay);
       } else {
         return;
       }
@@ -426,20 +476,20 @@
     if (index === 0) { return; }
     var prev = this.value(index, arrayStep);
     prev = prev.replace(/,/g, "");
-    //console.log(prev)
     // create input box
     $('#firstinput').remove();
     var createInput = "<input type='text' id='firstinput' value="+prev+">";
     $('body').append(createInput);
-    var offset = this._arrays[index].element.offset();
+    var offset = this._arrays[index]._indices[arrayStep].element.offset();
     var topOffset = offset.top;
     var leftOffset = offset.left;
-    var w = $('.jsavvalue').width();
+    var w = $(this._arrays[index]._indices[arrayStep].element).width();
     var fi = $('#firstinput');
-    fi.offset({top: topOffset, left: leftOffset + arrayStep*w});
+    fi.offset({top: topOffset, left: leftOffset});
     fi.outerHeight($('.jsavvalue').height());
     fi.width(w);
     fi.focus();
+    // finalize changes when enter key is pressed
     fi.keyup(function(event){
       if(event.keyCode == 13){
         var firstInput = $(this).val();
@@ -452,42 +502,47 @@
         }
         firstInput = _.uniq(firstInput).join(',');
         ffTable.value(index, arrayStep, firstInput);
+        layoutTable(ffTable, arrayStep);
         fi.remove();
       }
     });
   };
 
   // click handler for the parse table
-  // note: attach to each array of the table
-  var parseTableHandler = function (index) {    
-    if (index === 0) { return; }
+  var parseTableHandler = function (index, index2, e) { 
+    // ignore if first row or column   
+    if (index === 0 || index2 === 0) { return; }
     var self = this;
-    var prev = this.value(index);
+    var prev = this.value(index, index2);
+    // create input box
     $('#firstinput').remove();
     var createInput = "<input type='text' id='firstinput' value="+prev+">";
     $('body').append(createInput);
-    var offset = this._indices[index].element.offset();
+    var offset = this._arrays[index]._indices[index2].element.offset();
     var topOffset = offset.top;
     var leftOffset = offset.left;
     var fi = $('#firstinput');
     fi.offset({top: topOffset, left: leftOffset});
     fi.outerHeight($('.jsavvalue').height());
-    fi.width($('.jsavvalue').width());
+    fi.width($(this._arrays[index]._indices[index2].element).width());
     fi.focus();
+    // finalize changes when enter key is pressed
     fi.keyup(function(event){
       if(event.keyCode == 13){
         var firstInput = $(this).val();
         firstInput = firstInput.replace(/!/g, emptystring);
-        self.value(index, firstInput);
+        self.value(index, index2, firstInput);
+        layoutTable(self, index2);
         fi.remove();
       }
     });
   };
 
-  // transitions from editing FIRST sets to editing FOLLOW sets
+  // Function to transition from editing FIRST sets to editing FOLLOW sets
   var continueToFollow = function (firsts, follows) {
     $('#firstinput').remove();
     var incorrect = checkTable(firsts, follows);
+    // provide option to complete the FIRST sets automatically
     if (incorrect.length > 0) {
       var confirmed = confirm('The following sets are incorrect: ' + incorrect + '.\nFix automatically?');
       if (confirmed) {
@@ -495,6 +550,7 @@
           var a = ffTable._arrays[i].value(0);
           ffTable.value(i, 1, firsts[a]);
         }
+        layoutTable(ffTable);
       } else {
         return false;
       }
@@ -516,8 +572,7 @@
       alert('No grammar.');
       return;
     }
-    var pDict = {};
-    // a dictionary mapping left sides to right sides
+    var pDict = {};     // a dictionary mapping left sides to right sides
     for (var i = 0; i < productions.length; i++) {
       if (!(productions[i][0] in pDict)) {
         pDict[productions[i][0]] = [];
@@ -555,10 +610,16 @@
     t.push('$');
 
     // populate firsts and follows sets
-    findFirstsAndFollows(productions, firsts, follows, v, pDict, derivers);
-    
-    // parseTable is the parse table, while parseTableDisplay is the matrix displayed to the user.
-    // (parseTableDisplay includes the row/column headers)
+    for (var i = 0; i < v.length; i++) {
+      firsts[v[i]] = first(v[i], pDict, derivers).sort();
+    }
+    for (var i = 0; i < v.length; i++) {
+      follows[v[i]] = follow(v[i], productions, pDict, derivers).sort();
+    }
+    /*
+    parseTable is the parse table, while parseTableDisplay is the matrix displayed to the user.
+    parseTableDisplay includes the row/column headers (which are ignored by the click handler).
+    */
     var parseTable = [];
     for (var i = 0; i < v.length; i++) {
       var a = [];
@@ -567,12 +628,14 @@
       }
       parseTable.push(a);
     }
+    // fill in parseTable
     for (var i = 0; i < productions.length; i++) {
       var pFirst = first(productions[i][2], pDict, derivers);
       var vi = v.indexOf(productions[i][0]);
       for (var j = 0; j < pFirst.length; j++) {
         var ti = t.indexOf(pFirst[j]);
         if (pFirst[j] !== emptystring && ti !== -1) {
+          // exit parsing if a parse table conflict is found
           if (parseTable[vi][ti] && parseTable[vi][ti] !== productions[i][2]) {
             alert('This grammar is not LL(1)!');
             return;
@@ -581,11 +644,11 @@
         } 
       }
       if (pFirst.indexOf(emptystring) !== -1) {
-        //var pFollow = follow(productions[i][0]);
         var pFollow = follows[productions[i][0]];
         for (var j = 0; j < pFollow.length; j++) {
           var ti = t.indexOf(pFollow[j]);
           if (pFollow[j] !== emptystring && ti !== -1) {
+            // exit parsing if a parse table conflict is found
             if (parseTable[vi][ti] && parseTable[vi][ti] !== productions[i][2]) {
               alert('This grammar is not LL(1)!');
               return;
@@ -595,15 +658,11 @@
         }
       }
     }
-    // for (var i = 0; i < parseTable.length; i++) {
-    //   console.log(""+parseTable[i])
-    // }
-
     startParse();
     $('#followbutton').show();
     $('.jsavcontrols').hide();
     $(m.element).css("margin-left", "auto");
-    $(m.element).css('position', 'absolute');
+    // $(m.element).css('position', 'absolute');
 
     // create the table for FIRST and FOLLOW sets
     var ffDisplay = [];
@@ -625,10 +684,11 @@
       }
     });
 
-    // check FOLLOW set and transition to parse table editing
+    // Function to check FOLLOW set and transition to parse table editing
     var continueToParseTable = function () {
       $('#firstinput').remove();
       var incorrect = checkTable(firsts, follows);
+      // provide option to complete FOLLOW sets automatically
       if (incorrect.length > 0) {
         var confirmed = confirm('The following sets are incorrect: ' + incorrect + '.\nFix automatically?');
         if (confirmed) {
@@ -636,6 +696,7 @@
             var a = ffTable._arrays[i].value(0);
             ffTable.value(i, 2, follows[a]);
           }
+          layoutTable(ffTable);
         } else {
           return;
         }
@@ -652,13 +713,9 @@
           toPush.push('');
         }
         pTableDisplay.push(toPush);
-        //pTableDisplay.push([v[i]].concat(parseTable[i]));
       }
-      //jsav.label('Grammar', {relativeTo: m, anchor: "center top", myAnchor: "center bottom"});
       parseTableDisplay = new jsav.ds.matrix(pTableDisplay);
-      for (var i = 1; i < parseTableDisplay._arrays.length; i++) {
-        parseTableDisplay._arrays[i].click(parseTableHandler);
-      }
+      parseTableDisplay.click(parseTableHandler);
     };
     $('#parsetablebutton').click(continueToParseTable);
     $('#parsereadybutton').click(function() {
@@ -673,7 +730,7 @@
       }
       startParse();
       $(m.element).css("margin-left", "auto");
-      $(m.element).css('position', 'absolute');
+      //$(m.element).css('position', 'absolute');
       var pTableDisplay = [];
       pTableDisplay.push([""].concat(t));
       for (var i = 0; i < v.length; i++) {
@@ -681,7 +738,8 @@
       }
       //jsav.label('Grammar', {relativeTo: m, anchor: "center top", myAnchor: "center bottom"});
       parseTableDisplay = new jsav.ds.matrix(pTableDisplay);
-      // parseTableDisplay = new jsav.ds.matrix(pTableDisplay, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
+      layoutTable(parseTableDisplay);
+      //parseTableDisplay = new jsav.ds.matrix(pTableDisplay, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
       var remainingInput = inputString + '$';
       // display remaining input and the parse stack
       jsav.umsg('<mark>' + remainingInput[0] + '</mark>' + remainingInput.substring(1) + ' | <mark>' + productions[0][0] + '</mark>');
@@ -784,7 +842,7 @@
         if (this.stateLabel() === newItemSet) {
           builtDFA.addEdge(selectedNode, this, {weight: localStorage['slrdfasymbol']});
           builtDFA.layout();
-          jsav.umsg("Build the DFA.");
+          jsav.umsg("Build the DFA: Click a state.");
           selectedNode.unhighlight();
           this.unhighlight();
           selectedNode = null;
@@ -813,8 +871,6 @@
       var nodes = modelDFA.nodes();
       var checkNode;
       for (var next = nodes.next(); next; next = nodes.next()) {
-        // console.log(next);
-        // console.log(next._stateLabel);
         // get state label of the hidden node:
         var modelItems = next._stateLabel.element[0].innerHTML.split('<br>');
         // get state label of the visible node:
@@ -846,8 +902,9 @@
       
   };
 
-  // click handler for the DFA graph window
+  // click handler for the DFA graph window/canvas
   var graphHandler = function (e) {
+    // if moving nodes
     if ($('.jsavgraph').hasClass('movenodes')) {
       var nodeX = selectedNode.element.width()/2.0,
           nodeY = selectedNode.element.height()/2.0;
@@ -869,7 +926,7 @@
         builtDFA.layout();
         localStorage.removeItem('slrdfareturn');
         localStorage.removeItem('slrdfasymbol');
-        jsav.umsg('Build the DFA.');
+        jsav.umsg('Build the DFA: Click a state.');
         return;
       }
       // if user has determined the next item set and is ready to place the new DFA node
@@ -894,14 +951,19 @@
         newNode.stateLabel(newItemSet);
         builtDFA.addEdge(selectedNode, newNode, {weight: localStorage['slrdfasymbol']});
         builtDFA.layout();
-        jsav.umsg("Build the DFA.");
+        jsav.umsg("Build the DFA: Click a state.");
         selectedNode.unhighlight();
         selectedNode = null;
       }
     }
   };
 
-  // SLR(1) parsing
+  /*
+  SLR(1) parsing
+  Does not check to see if the grammar is correct format.
+  Does not check for parse table conflicts!
+  JFLAP allows users to choose which to use during conflicts.
+  */
   var slrParse = function () {
     var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
     if (productions.length === 0) {
@@ -943,7 +1005,18 @@
     
     startParse();
     $(m.element).css("margin-left", "auto");
-    $(m.element).css('position', 'absolute');
+    // $(m.element).css('position', 'absolute');
+
+    var slrM = [[0, "S'", arrow, productions[0][0]]];
+    for (var i = 0; i < productions.length; i++) {
+      var prod = productions[i];
+      slrM.push([i+1, prod[0], prod[1], prod[2]]);
+    }
+    if (m) {
+      m.clear();
+    }
+    m = jsav.ds.matrix(slrM, {style: "table"});
+    layoutTable(m);
 
     var ffDisplay = [];
     ffDisplay.push(["", "FIRST", "FOLLOW"]);
@@ -970,7 +1043,6 @@
       for (var i = 0; i < vt.length; i++) {
         var symbol = vt[i];
         var nextItems = addClosure(goTo(items, symbol), productions);
-        //console.log(""+nextItems);
         if (nextItems.length > 0) {
           var nodes = modelDFA.nodes();
           var toNode = null;
@@ -1024,29 +1096,25 @@
         break;
       }
     };
+    // get FIRSTs and FOLLOWs
     var firsts = {};
     for (var i = 0; i < v.length; i++) {
       firsts[v[i]] = first(v[i], pDict, derivers).sort();
     }
-    // for (key in firsts) {
-    //   console.log(key+":"+firsts[key]);
-    // }
     var follows = {};
     for (var i = 0; i < v.length; i++) {
       follows[v[i]] = follow(v[i], productions, pDict, derivers).sort();
     }
-    // for (key in follows) {
-    //   console.log(key +":" + follows[key])
-    // }
 
-    // add the S' -> S production
+    // add the extra S' -> S production
     pDict["S'"] = productions[0][0];
     if (productions[0][0] in derivers) {
       derivers["S'"] = true;
     }
     productions.unshift(["S'", arrow, productions[0][0]]);
 
-    // create parse table using the DFA
+    // Create parse table using the DFA
+    // Does not check for conflicts!
     nodes.reset();
     var index = 0;
     for (var next = nodes.next(); next; next = nodes.next()) {
@@ -1105,7 +1173,6 @@
     $('.jsavcontrols').hide();
 
     // interactable FIRST/FOLLOW, same as LL parsing
-    
     ffTable.click(firstFollowHandler);
     $('#followbutton').click(function () {
       var check = continueToFollow(firsts, follows);
@@ -1113,10 +1180,11 @@
         $('#slrdfabutton').show();
       }
     });
-    // check FOLLOW sets and initialize the DFA
+    // Function to check FOLLOW sets and initialize the DFA
     var continueToDFA = function () {
       $('#firstinput').remove();
       var incorrect = checkTable(firsts, follows);
+      // provide option to complete the FOLLOW sets automatically
       if (incorrect.length > 0) {
         var confirmed = confirm('The following sets are incorrect: ' + incorrect + '.\nFix automatically?');
         if (confirmed) {
@@ -1124,6 +1192,7 @@
             var a = ffTable._arrays[i].value(0);
             ffTable.value(i, 2, follows[a]);
           }
+          layoutTable(ffTable);
         } else {
           return;
         }
@@ -1131,8 +1200,8 @@
       $(ffTable.element).off();
       $('#slrdfabutton').hide();
       $('#parsetablebutton').show();
-      jsav.umsg('Build the DFA.');
-      //modelDFA.hide();
+      jsav.umsg('Build the DFA: Click a state.');
+      // create the DFA
       builtDFA = jsav.ds.fa({width: '90%', height: 440});
       builtDFA.click(dfaHandler);
       $('.jsavgraph').click(graphHandler);
@@ -1146,6 +1215,7 @@
         window.open('slrGoTo.html', '', 'width = 800, height = 750, screenX = 300, screenY = 25');
         jsav.umsg("Add the initial node.");
       } else {
+        // initial state is added automatically
         var builtInitial = builtDFA.addNode({left: 50, top: 50});
         builtDFA.makeInitial(builtInitial);
         builtInitial.stateLabel(modelDFA.initial._stateLabel.element[0].innerHTML);
@@ -1154,7 +1224,7 @@
     };
     $('#slrdfabutton').click(continueToDFA);
 
-    // check DFA and transition to the parse table
+    // Function to check the DFA and transition to the parse table
     var continueToParseTable = function () {
       var edges1 = modelDFA.edges();
       var edges2 = builtDFA.edges();
@@ -1183,7 +1253,7 @@
       // if the number of transitions and number of nodes match, and final nodes are correct
       if (tCount1 !== tCount2 || modelDFA.nodeCount() !== builtDFA.nodeCount() || !correctFinals) {
         var confirmed = confirm('Not finished!\nFinish automatically?');
-        // "finish automatically" is just displaying the model DFA. This changes the layout
+        // "finish automatically" = displaying the model DFA. This changes the layout.
         if (confirmed) {
           builtDFA.clear();
           modelDFA.show();
@@ -1196,6 +1266,7 @@
       $('#parsetablebutton').hide();
       $('#parsereadybutton').show();
       jsav.umsg('Fill entries in parse table. ! is '+emptystring+'.');
+      // initialize parse table display
       var pTableDisplay = [];
       pTableDisplay.push([""].concat(tv));
       for (var i = 0; i < modelDFA.nodeCount(); i++) {
@@ -1204,25 +1275,33 @@
           toPush.push('');
         }
         pTableDisplay.push(toPush);
-        //pTableDisplay.push([v[i]].concat(parseTable[i]));
       }
       //jsav.label('Grammar', {relativeTo: m, anchor: "center top", myAnchor: "center bottom"});
       parseTableDisplay = new jsav.ds.matrix(pTableDisplay);
-      for (var i = 1; i < parseTableDisplay._arrays.length; i++) {
-        parseTableDisplay._arrays[i].click(parseTableHandler);
-      }
+      parseTableDisplay.click(parseTableHandler);
     };
     $('#parsetablebutton').click(continueToParseTable);
     $('#parsereadybutton').click(function() {
       checkParseTable(parseTableDisplay, parseTable);
     });
 
+    // do the parsing
     var continueParse = function () {
       var inputString = prompt('Input string');
       if (inputString === null) {
         return;
       }
       startParse();
+      var slrM = [];
+      for (var i = 0; i < productions.length; i++) {
+        var prod = productions[i];
+        slrM.push([i, prod[0], prod[1], prod[2]]);
+      }
+      if (m) {
+        m.clear();
+      }
+      m = jsav.ds.matrix(slrM, {style: "table"});
+      layoutTable(m);
       var pTableDisplay = [];
       pTableDisplay.push([""].concat(tv));
       for (var i = 0; i < modelDFA.nodeCount(); i++) {
@@ -1232,6 +1311,7 @@
       $(m.element).css("margin-left", "auto");
       $(m.element).css("margin-top", "0px");
       parseTableDisplay = new jsav.ds.matrix(pTableDisplay);
+      layoutTable(parseTableDisplay);
       // The parse 'tree' is a directed graph with layered output. This allows the tree to be built bottom up
       parseTree = new jsav.ds.graph({layout: "layered", directed: true});
       parseTree.element.addClass('parsetree');
@@ -1243,7 +1323,6 @@
       jsav.umsg(remainingInput + ' | ' + productions[1][0]);
       
       jsav.displayInit();
-      // modelDFA.hide();
       // m.hide();
       // parseTableDisplay.hide();
       jsav.umsg(remainingInput + ' | ');
@@ -1287,8 +1366,7 @@
         } else if (entry[0] === 'r') {      // reduce
           var pIndex = Number(entry.substring(1));
           var p = productions[pIndex];
-          // m is the original grammar; productions contains the extra S' -> S production
-          m.highlight(pIndex - 1);
+          m.highlight(pIndex);
           if (p[2] === emptystring) {
             var lNode = parseTree.addNode(emptystring);
             lNode.addClass('terminal');
@@ -1309,7 +1387,6 @@
             }
             var n = parseStack[parseStack.length - 1];
           }
-          //console.log(n)
           parseTree.layout();
           jsav.umsg(remainingInput + ' | '
            + _.map(parseStack, function(x, k) {
@@ -1345,7 +1422,7 @@
     };
     $('#parsebutton').click(continueParse);
   };
-  // adds closure to an item set
+  // Function to add closure to an item set
   var addClosure = function (items, productions) {
     // takes an array of strings
     var itemsStack = [];
@@ -1369,8 +1446,6 @@
               r = "";
             }
             var newItem = productions[j][0] + productions[j][1] + dot + r;
-            // console.log(newItem);
-            // console.log(""+itemsStack);
             if (items.indexOf(newItem) === -1) {
               itemsStack.unshift(newItem);
               items.push(newItem);
@@ -1419,7 +1494,6 @@
     $('#deletebutton').hide();
     $('#convertRLGbutton').hide();
     $('#convertCFGbutton').hide();
-    //$('#transformations').hide();
     $('#transformbutton').hide();
     $('.jsavcontrols').show();
     $('#backbutton').show();
@@ -1430,25 +1504,6 @@
     $(m.element).css("margin-left", "50px");
     m._arrays[lastRow].hide();
   };
-  var endParse = function () {
-    if (parseTree) {parseTree.clear();}
-    if (derivationTable) { derivationTable.clear();}
-    if (ffTable) { ffTable.clear();}
-    if (parseTableDisplay) { parseTableDisplay.clear();}
-    if (modelDFA) { modelDFA.clear();}
-    if (builtDFA) { builtDFA.clear();}
-    if (tGrammar) { tGrammar.clear();}
-    $('button').show();
-    //$('#transformations').show();
-    $('#transformbutton').show();
-    $('.jsavcontrols').hide();
-    $('#backbutton').hide();
-    $('.parsingbutton').hide();
-    $('#files').show();
-    $(m.element).css("margin-left", "auto");
-    m._arrays[lastRow].show();
-    $('.jsavmatrix').addClass("editMode");
-  };
 
   var replaceCharAt = function (str, index, ch) {
     if (index < 0 || index > str.length - 1) {
@@ -1458,21 +1513,6 @@
     }
   };
 
-  var findFirstsAndFollows = function (productions, firsts, follows, v, pDict, lambdaVars) {
-    for (var i = 0; i < v.length; i++) {
-      firsts[v[i]] = first(v[i], pDict, lambdaVars).sort();
-    }
-    // for (var i in firsts) {
-    //   console.log(i + ":" + firsts[i]);
-    // }
-    for (var i = 0; i < v.length; i++) {
-      follows[v[i]] = follow(v[i], productions, pDict, lambdaVars).sort();
-    }
-    // console.log('follow');
-    // for (var i in follows) {
-    //   console.log(i + ":" + follows[i]);
-    // }
-  };
   // gets FIRST set
   var first = function (str, pDict, lambdaVars) {
     if (!str) {
@@ -1519,7 +1559,6 @@
             }
           } else {
             var nextSymbol = first(p.substring(j + 1), pDict, lambdaVars);
-            //console.log(nextSymbol);
             ret = _.union(ret, _.without(nextSymbol, emptystring));
             if (nextSymbol.indexOf(emptystring) !== -1) {
               if (productions[i][0] !== str) {
@@ -1545,7 +1584,7 @@
     }
   };
 
-
+  // change editing modes
   var editMode = function() {
     $('.jsavmatrix').addClass("editMode");
     $('.jsavmatrix').removeClass("deleteMode");
@@ -1559,7 +1598,7 @@
   };
 
   //=================================
-  // transformations (automatic)
+  // Transformations (automatic)
 
   // remove lambda productions
   var removeLambda = function () {
@@ -1603,19 +1642,17 @@
         }
       }
     }
-    // for (var i = 0; i < transformed.length; i++) {
-    //   console.log("" + transformed[i]);
-    // }
     var ret = _.map(transformed, function(x) {return x.join('');});
-    // localStorage['grammar'] = ret;
-    // window.open('grammarTest.html', '');
     return ret;
   };
 
-  // NOTE: this function is used during parsing as well
+  /*
+  Function to find lambda-deriving variables.
+  A variable derives lambda if it directly produces lambda or if its right side is
+  composed only of lambda-deriving variables.
+  Used during parsing as well.
+  */
   var removeLambdaHelper = function (set, productions) {
-    // a variable derives lambda if it directly produces lambda or if its right side is
-    // composed only of lambda-deriving variables
     for (var i = 0; i < productions.length; i++) {
       if (productions[i][2] === emptystring || _.every(productions[i][2], function(x) { return x in set;})) {
         if (!(productions[i][0] in set)) {
@@ -1626,20 +1663,36 @@
     }
     return false;
   };
-
+  // check if browser supports generators
+  var isGeneratorSupported = function () {
+    try {
+      eval("(function*(){})()");
+      return true;
+    } catch(err){
+      console.log(err);
+      console.log("No generator support.");
+      return false;
+    }
+  }
   // creates a generator for the combinations of variables to remove
-  var getCombinations = function* (str, l) {
-    for (var i = 0; i < str.length; i++) {
-      if (l === 1) {
-        yield [str[i]];
-      } else {
-        var n = getCombinations(str.substring(i + 1), l - 1);
-        for (var next = n.next(); next.value; next = n.next()) {
-          yield [str[i]].concat(next.value);
+  if (isGeneratorSupported()) {
+    /*
+    Generator function. 
+    Getting combinations should be reimplemented since generators do no have universal browser support.
+    */
+    var getCombinations = function* (str, l) {
+      for (var i = 0; i < str.length; i++) {
+        if (l === 1) {
+          yield [str[i]];
+        } else {
+          var n = getCombinations(str.substring(i + 1), l - 1);
+          for (var next = n.next(); next.value; next = n.next()) {
+            yield [str[i]].concat(next.value);
+          }
         }
       }
-    }
-  };
+    };
+  }
 
   // remove unit productions
   var removeUnit = function () {
@@ -1663,18 +1716,12 @@
     // remove original unit productions
     productions = _.filter(productions, function(x) {
       return !(x[2].length === 1 && variables.indexOf(x[2]) !== -1);
-    })
-    // for (var i = 0; i < productions.length; i++) {
-    //   console.log(""+productions[i]);
-    // }
-    // console.log(productions.length);
+    });
     var ret = _.map(productions, function(x) {return x.join('');});
-    // localStorage['grammar'] = ret;
-    // window.open('grammarTest.html', '');
     return ret;
   };
 
-  // finds a unit production and adds one of the replacement productions
+  // Function to find a unit production and add one of the replacement productions
   var removeUnitHelper = function (productions, pDict) {
     for (var i = 0; i < productions.length; i++) {
       if (productions[i][2].length === 1 && variables.indexOf(productions[i][2]) !== -1) {
@@ -1733,16 +1780,10 @@
     findReachable(start, pDict, visited);
     // remove unreachable productions
     transformed = _.filter(transformed, function(x) { return x[0] === start || pDict[start].indexOf(x[0]) !== -1;});
-    // for (var i = 0; i < transformed.length; i++) {
-    //   console.log(""+transformed[i]);
-    // }
-    // console.log(transformed.length);
     var ret = _.map(transformed, function(x) {return x.join('');});
-    // localStorage['grammar'] = ret;
-    // window.open('grammarTest.html', '');
     return ret;
   };
-  // finds a deriver
+  // Function to get variables which can derive a string of terminals
   var findDerivable = function (set, productions) {
     for (var i = 0; i < productions.length; i++) {
       if (_.every(productions[i][2], function(x) { return x in set || variables.indexOf(x) === -1;})) {
@@ -1803,7 +1844,7 @@
         }
       }
     }
-    // break productions down into pairs of variables
+    // Function to break productions down into pairs of variables
     var chomskyHelper = function () {
       for (var i = 0; i < productions.length; i++) {
         var r = productions[i][2];
@@ -1833,48 +1874,18 @@
         break;
       }
     }
-    // var newVariables = _.difference(variables.split(""), Object.keys(v));
     for (var i = 0; i < productions.length; i++) {
       var x = productions[i];
       x[2] = x[2].join(""); 
-      //console.log(""+x);
     }
-    // var toExport = true;
     var ret =  _.map(productions, function(x) {return x.join('');});
-    // localStorage['grammar'] = ret;
-    //console.log(productions.length);
-
-    // translate temporary variables for export
-    // for (var i = 0; i < tempVars.length; i++) {
-    //   if (i >= newVariables.length) {
-    //     // alert('Too large to export!');
-    //     toExport = false;
-    //     break;
-    //   } 
-    //   var re = tempVars[i].replace(/[\(\)]/g, "\\$&");
-    //   var regex = new RegExp(re, 'g');
-    //   for (var j = 0; j < productions.length; j++) {
-    //     productions[j][0] = productions[j][0].replace(regex, newVariables[i]);
-    //     productions[j][2] = productions[j][2].replace(regex, newVariables[i]);
-    //   }
-    // }
-    // var ret2;
-    // if (toExport) {
-      // ret2 = _.map(productions, function(x) { return x.join('');});
-      // localStorage['grammar'] = _.map(productions, function(x) {return x.join('');});
-      // window.open('grammarTest.html', '');
-    // } 
-    // else {
-    //   // if there are too many variables to export, instead creates a table with the temporary variables
-    //   window.open('npdaTable.html', '', 'width = 600, height = 625, screenX = 500, screenY = 25');
-    // }
     return ret;
   };
 
   //=================================
-  // transformations (interactive)
+  // Transformations (interactive)
 
-  // checks to see if a step should be skipped
+  // Function to check to see if a step should be skipped
   var checkTransform = function (strP, g) {
     var inter = _.intersection(strP, g);
     if (inter.length === strP.length && inter.length === g.length) {
@@ -1882,13 +1893,18 @@
     }
     return false;
   };
-
+  // Function to start grammar transformation
   var transformGrammar = function () {
+    if (typeof getCombinations === "undefined") {
+      console.error("No generator support.");
+      return;
+    }
     var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
     if (productions.length === 0) {
       alert('No grammar.');
       return;
     }
+    // apply each transformation to the original grammar to find which step to start with
     var noLambda = removeLambda();
     var noUnit = removeUnit();
     var noUseless = removeUseless();
@@ -1964,6 +1980,7 @@
           var tempG = jsav.ds.matrix(tArr);
           tGrammar.clear();
           tGrammar = tempG;
+          layoutTable(tGrammar, 2);
           //tGrammar = jsav.ds.matrix(tArr, {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
           tGrammar.click(removeLambdaHandler);
         } else {
@@ -1992,6 +2009,7 @@
         var tempG = jsav.ds.matrix(tArr);
         tGrammar.clear();
         tGrammar = tempG;
+        layoutTable(tGrammar, 2);
         //tGrammar = jsav.ds.matrix(tArr, {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
         tGrammar.click(removeLambdaHandler);
       }
@@ -2031,9 +2049,10 @@
     };
     // transition from finding lambda-deriving variables to modifying the grammar
     var continueLambda = function () {
-      jsav.umsg("Modify the grammar to remove lambdas. Set that derives "+emptystring+": [" + builtLambdaSet + ']');
+      jsav.umsg("Modify the grammar to remove "+emptystring+". Set that derives "+emptystring+": [" + builtLambdaSet + ']');
       //$(m.element).css("margin-left", "50px");
       tGrammar = jsav.ds.matrix(tArr);
+      layoutTable(tGrammar, 2);
       //tGrammar = jsav.ds.matrix(tArr, {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
       tGrammar.click(removeLambdaHandler);
     };
@@ -2054,8 +2073,8 @@
     }
     $(m.element).css("margin-left", "auto");
     modelDFA = jsav.ds.graph({layout: "layered", directed: true});    //VDG
-    // modelDFA.css('display', 'inline-block')
-    // m.element.css('display', 'inline-block')
+    //modelDFA.css('display', 'inline-block')
+    //m.element.css('display', 'inline-block')
     //$('#av').css('text-align', 'center')
     //modelDFA = jsav.ds.graph({left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top", layout: "layered", directed: true});
     for (var i = 0; i < v.length; i++) {
@@ -2110,6 +2129,7 @@
           var tempG = jsav.ds.matrix(tArr);
           tGrammar.clear();
           tGrammar = tempG;
+          layoutTable(tGrammar, 2);
           //tGrammar = jsav.ds.matrix(tArr, {top: "50px", relativeTo: modelDFA, anchor: "left bottom", myAnchor: "left top"});
           tGrammar.click(removeUnitHandler);
         } else {
@@ -2138,6 +2158,7 @@
         var tempG = jsav.ds.matrix(tArr);
         tGrammar.clear();
         tGrammar = tempG;
+        layoutTable(tGrammar, 2);
         //tGrammar = jsav.ds.matrix(tArr, {top: "50px", relativeTo: modelDFA, anchor: "left bottom", myAnchor: "left top"});
         tGrammar.click(removeUnitHandler);
       }
@@ -2170,13 +2191,14 @@
     };
     // transition from creating VDG to modifying the grammar
     var continueUnit = function () {
-      jsav.umsg('Modify the grammar to remove unit productions.');
+      jsav.umsg('Modify the grammar to remove unit productions. Click on unit productions to remove them and click on the empty row to add new productions.');
       tGrammar = jsav.ds.matrix(tArr);
+      layoutTable(tGrammar, 2);
       //tGrammar = jsav.ds.matrix(tArr, {top: "50px", relativeTo: modelDFA, anchor: "left bottom", myAnchor: "left top"});
       tGrammar.click(removeUnitHandler);
       //$('.jsavcanvas').height(modelDFA.element.height() + 150 + tGrammar.element.height());
     };
-    jsav.umsg('Removing unit productions: Complete unit production visualization.');
+    jsav.umsg('Removing unit productions: Complete unit production visualization by adding edges to indicate rules between variables.');
     modelDFA.click(unitVdgHandler);
   };
 
@@ -2229,6 +2251,7 @@
           var tempG = jsav.ds.matrix(tArr);
           tGrammar.clear();
           tGrammar = tempG;
+          layoutTable(tGrammar, 2);
           //tGrammar = jsav.ds.matrix(tArr, {top: "50px", relativeTo: modelDFA, anchor: "left bottom", myAnchor: "left top"});
           tGrammar.click(removeUselessHandler);
         } else {
@@ -2286,7 +2309,6 @@
     for (var i in tProductions) {
       tCount = tCount + tProductions[i].length;
     } 
-    //console.log(tCount);
     selectedNode = null;
     // handler for the VDG for adding transitions
     var uselessVdgHandler = function () {
@@ -2332,12 +2354,13 @@
       }
       modelDFA.layout();
       modelDFA.click(uselessVdgHandler);
-      jsav.umsg('Complete dependency graph. Variables that predicate terminals: [' + builtDeriveSet + ']')
+      jsav.umsg('Complete dependency graph by adding edges between variables. Variables that predicate terminals: [' + builtDeriveSet + ']')
     };
     // transition from VDG to removing useless productions
     var continueUselessSecond = function () {
-      jsav.umsg('Modify the grammar to remove useless productions.');
+      jsav.umsg('Modify the grammar to remove useless productions. Click on unreachable productions to remove them.');
       tGrammar = jsav.ds.matrix(tArr);
+      layoutTable(tGrammar, 2);
       //tGrammar = jsav.ds.matrix(tArr, {top: "50px", relativeTo: modelDFA, anchor: "left bottom", myAnchor: "left top"});
       tGrammar.click(removeUselessHandler);
     };
@@ -2346,7 +2369,6 @@
   };
 
   var interactableChomsky = function (fullChomsky) {
-    //_.each(fullChomsky, function(x){console.log(x)});
     var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
     m = init();
     startParse();
@@ -2393,6 +2415,7 @@
         var tempG = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}));
         tGrammar.clear();
         tGrammar = tempG;
+        layoutTable(tGrammar, 2);
         //tGrammar = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}), {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
         tGrammar.click(chomskyHandler);
         for (var i = 0; i < sliceIn.length + 1; i++) {
@@ -2411,6 +2434,7 @@
           var tempG = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}));
           tGrammar.clear();
           tGrammar = tempG;
+          layoutTable(tGrammar, 2);
           //tGrammar = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}), {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
           tGrammar.click(chomskyHandler);
           tGrammar.highlight(index);
@@ -2421,7 +2445,7 @@
       if (tArr.length === fullChomsky.length) {
         jsav.umsg('All productions completed.');
         tGrammar.element.off();
-        var c = confirm('All productions completed.\nExport?');
+        var c = confirm('All productions completed.\nExport? Exporting will rename the variables.');
         if (c) {
           attemptExport();
         }
@@ -2462,16 +2486,17 @@
     };
 
     tGrammar = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}));
+    layoutTable(tGrammar, 2);
     //tGrammar = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}), {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
     tGrammar.click(chomskyHandler);
 
-    jsav.umsg('Converting to Chomsky Normal Form: convert productions of the grammar on the right.');
+    jsav.umsg('Converting to Chomsky Normal Form: convert productions of the grammar on the right by clicking on them.');
   };
 
   //=================================
-  // conversions
+  // Conversions
 
-  // check if the grammar is right-linear
+  // Function to check if the grammar is right-linear
   var checkRightLinear = function () {
     var productions = _.filter(arr, function(x) { return x[0]});
     for (var i = 0; i < productions.length; i++) {
@@ -2485,31 +2510,348 @@
     return true;
   };
 
-  $('#convertRLGbutton').click(function () {
+  // download finished FA/PDA
+  var serializeGraphToXML = function (graph) {
+    var text = '<?xml version="1.0" encoding="UTF-8"?>';
+      text = text + "<structure>";
+      text = text + "<type>fa</type>"
+      text = text + "<automaton>"
+      var nodes = graph.nodes();
+      for (var next = nodes.next(); next; next = nodes.next()) {
+        var left = next.position().left;
+        var top = next.position().top;
+        var i = next.hasClass("start");
+        var f = next.hasClass("final");
+        var label = next.stateLabel();
+        text = text + '<state id="' + next.value().substring(1) + '" name="' + next.value() + '">';
+        text = text + '<x>' + left + '</x>';
+        text = text + '<y>' + top + '</y>';
+        if (label) {
+          text = text + '<label>' + label + '</label>';
+        }
+        if (i) {
+          text = text + '<initial/>';
+        }
+        if (f) {
+          text = text + '<final/>';
+        }
+        text = text + '</state>';
+      }
+      var edges = graph.edges();
+      for (var next = edges.next(); next; next = edges.next()) {
+        var fromNode = next.start().value().substring(1);
+        var toNode = next.end().value().substring(1);
+        var w = next.weight().split('<br>');
+        for (var i = 0; i < w.length; i++) {
+          text = text + '<transition>';
+          text = text + '<from>' + fromNode + '</from>';
+          text = text + '<to>' + toNode + '</to>';
+          if (w[i] === emptystring) {
+            text = text + '<read/>';
+          } else {
+            text = text + '<read>' + w[i] + '</read>';
+          }
+          text = text + '</transition>';
+        }
+      }
+      text = text + "</automaton></structure>"
+      return text;
+  };
+  var exportConvertedFA = function () {
+    var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(serializeGraphToXML(builtDFA));
+    $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="fa.xml">Download FA</a>');
+    $('#download a')[0].click();
+    $('#download').html('');
+  };
+  var serializePDAToXML = function (graph) {
+    var text = '<?xml version="1.0" encoding="UTF-8"?>';
+      text = text + "<structure>";
+      text = text + "<type>pda</type>"
+      text = text + "<automaton>"
+      var nodes = graph.nodes();
+      for (var next = nodes.next(); next; next = nodes.next()) {
+        var left = next.position().left;
+        var top = next.position().top;
+        var i = next.hasClass("start");
+        var f = next.hasClass("final");
+        var label = next.stateLabel();
+        text = text + '<state id="' + next.value().substring(1) + '" name="' + next.value() + '">';
+        text = text + '<x>' + left + '</x>';
+        text = text + '<y>' + top + '</y>';
+        if (label) {
+          text = text + '<label>' + label + '</label>';
+        }
+        if (i) {
+          text = text + '<initial/>';
+        }
+        if (f) {
+          text = text + '<final/>';
+        }
+        text = text + '</state>';
+      }
+      var edges = graph.edges();
+      for (var next = edges.next(); next; next = edges.next()) {
+        var fromNode = next.start().value().substring(1);
+        var toNode = next.end().value().substring(1);
+        var w = next.weight().split('<br>');
+        for (var i = 0; i < w.length; i++) {
+          text = text + '<transition>';
+          text = text + '<from>' + fromNode + '</from>';
+          text = text + '<to>' + toNode + '</to>';
+          var wSplit = w[i].split(":");
+          if (wSplit[0] === emptystring) {
+            text = text + '<read/>';
+          } else {
+            text = text + '<read>' + wSplit[0] + '</read>';
+          }
+          if (wSplit[1] === emptystring) {
+            text = text + '<pop/>';
+          } else {
+            text = text + '<pop>' + wSplit[1] + '</pop>';
+          }
+          if (wSplit[2] === emptystring) {
+            text = text + '<push/>';
+          } else {
+            text = text + '<push>' + wSplit[2] + '</push>';
+          }
+          text = text + '</transition>';
+        }
+      }
+      text = text + "</automaton></structure>"
+      return text;
+  };
+  var exportConvertedPDA = function () {
+    var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(serializePDAToXML(builtDFA));
+      $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="pda.xml">Download PDA</a>');
+      $('#download a')[0].click();
+  };
+
+  // interactive converting right-linear grammar to FA
+  var convertToFA = function () {
     if (!checkRightLinear()) {
       alert('The grammar is not right-linear!');
       return;
     }
-    var productions=_.filter(arr, function(x) { return x[0];});
-    if (productions.length === 0) {
-      alert('No grammar.');
-      return;
+    var productions = _.filter(arr, function(x) { return x[0];});
+    startParse();
+    $('.jsavcontrols').hide();
+    $(m.element).css("margin-left", "auto");
+    jsav.umsg('Complete the FA.');
+    // keep a map of variables to FA states
+    var nodeMap = {};
+    builtDFA = jsav.ds.fa({width: '90%', height: 440, layout: "automatic"});
+    var newStates = [];     // variables
+    for (var i = 0; i < productions.length; i++) {
+      newStates.push(productions[i][0]);
+      newStates = newStates.concat(_.filter(productions[i][2], function(x) {return variables.indexOf(x) !== -1;}));
     }
-    localStorage['grammar'] = _.map(productions, function(x) {return x.join('');});
-    window.open('RLGtoFA.html', '', 'width = 800, height = 750, screenX = 300, screenY = 25');
-  });
-  $('#convertCFGbutton').click(function () {
-    var productions=_.filter(arr, function(x) { return x[0];});
-    if (productions.length === 0) {
-      alert('No grammar.');
-      return;
+    newStates = _.uniq(newStates);
+    // create FA states
+    for (var i = 0; i < newStates.length; i++) {
+      var n = builtDFA.addNode();
+      nodeMap[newStates[i]] = n;
+      if (i === 0) {
+        builtDFA.makeInitial(n);
+      }
+      n.stateLabel(newStates[i]);
     }
-    localStorage['grammar'] = _.map(productions, function(x) {return x.join('');});
-    window.open('CFGtoNPDA.html', '', 'width = 800, height = 750, screenX = 300, screenY = 25');
-  });
+    // add final state
+    var f = builtDFA.addNode();
+    // nodeMap[emptystring] = f;
+    f.addClass("final");
+    builtDFA.layout();
+    selectedNode = null;
+    
+    // check if FA is finished; if it is, ask if the user wants to export the FA
+    var checkDone = function () {
+      var edges = builtDFA.edges();
+      var tCount = 0;
+      for (var next = edges.next(); next; next = edges.next()) {
+        var w = next.weight().split('<br>');
+        tCount = tCount + w.length;
+      }
+      if (tCount === productions.length) {
+        var confirmed = confirm('Finished! Export?');
+        if (confirmed) {
+          exportConvertedFA();
+        }
+      }
+    };
+    // handler for the nodes of the FA
+    var convertDfaHandler = function (e) {
+      // adding transitions
+      if (!$('.jsavgraph').hasClass('movenodes')) {
+        this.highlight();
+        if (selectedNode) {
+          var t = prompt('Terminal to transition on?');
+          if (t === null) {
+            selectedNode.unhighlight();
+            selectedNode = null;
+            this.unhighlight();
+            return;
+          }
+          var lv = selectedNode.stateLabel();
+          var rv = this.stateLabel();
+          // check if valid transition
+          for (var i = 0; i < productions.length; i++) {
+            var r = productions[i][2];
+            var add = false;
+            if (rv && productions[i][0] === lv && r[r.length - 1] === rv && r.substring(0, r.length - 1) === t) {
+              add = true;
+            }
+            if (productions[i][0] === lv && this.hasClass('final') && (r === t || (r === emptystring && t === ""))) {
+              add = true;
+            }
+            if (add) {
+              m.highlight(i);
+              var newEdge = builtDFA.addEdge(selectedNode, this, {weight: t});
+              selectedNode.unhighlight();
+              selectedNode = null;
+              this.unhighlight();
+              if (newEdge) { 
+                newEdge.layout();
+                checkDone();
+              }
+              return;
+            }
+          }
+          alert('That transition is not correct.');
+          selectedNode.unhighlight();
+          selectedNode = null;
+          this.unhighlight();
+        } else {
+          selectedNode = this;
+        }
+      } else {      // selecting node to move
+        if (selectedNode) {
+          selectedNode.unhighlight();
+        }
+        this.highlight();
+        selectedNode = this;
+      }
+      e.stopPropagation();
+    };
+    // handler for the graph window, for moving nodes
+    var convertGraphHandler = function (e) {
+      if (selectedNode && $('.jsavgraph').hasClass('movenodes')) {
+        var nodeX = selectedNode.element.width()/2.0,
+            nodeY = selectedNode.element.height()/2.0;
+        $(selectedNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
+        selectedNode.stateLabelPositionUpdate();
+        var edges = builtDFA.edges();
+        for (var next = edges.next(); next; next = edges.next()) {
+          if (next.start().equals(selectedNode) || next.end().equals(selectedNode)) {
+            next.layout();
+          }
+        }
+        selectedNode.unhighlight();
+        selectedNode = null;
+        e.stopPropagation();
+      }
+    };
+    // handler for the grammar table: clicking a production will create the appropriate transition
+    var convertGrammarHandler = function (index) {
+      this.highlight(index);
+      var l = this.value(index, 0);
+      var r = this.value(index, 2);
+      var nodes = builtDFA.nodes();
+      if (variables.indexOf(r[r.length - 1]) === -1) {
+        var newEdge = builtDFA.addEdge(nodeMap[l], f, {weight: r});
+      } else {
+        var newEdge = builtDFA.addEdge(nodeMap[l], nodeMap[r[r.length - 1]], {weight: r.substring(0, r.length - 1)});
+      }
+      if (newEdge) {
+        newEdge.layout();
+        checkDone();
+      }
+    };
+    var toggleMove = function () {
+      if ($('.jsavgraph').hasClass('movenodes')) {
+        $('.jsavgraph').removeClass('movenodes');
+        this.value = 'Move states';
+      } else {
+        $('.jsavgraph').addClass('movenodes');
+        this.value = 'Add transitions';
+      }
+    };
+    builtDFA.click(convertDfaHandler);
+    $('.jsavgraph').click(convertGraphHandler);
+    m.click(convertGrammarHandler);
+    $('#av').append($('#convertmovebutton'));
+    $('#convertmovebutton').click(toggleMove);
+    $('#convertmovebutton').show();
+  };
+
+  // interactive converting context-free grammar to NPDA
+  var convertToPDA = function () {
+    var productions = _.filter(arr, function(x) { return x[0];});
+    startParse();
+    $('.jsavcontrols').hide();
+    $(m.element).css("margin-left", "auto");
+    jsav.umsg('Complete the NPDA.');
+    builtDFA = jsav.ds.fa({width: '90%', height: 440});
+    var gWidth = builtDFA.element.width(),
+        gHeight = builtDFA.element.height();
+    var a = builtDFA.addNode({left: 0.17 * gWidth, top: 0.87 * gHeight}),    
+        b = builtDFA.addNode({left: 0.47 * gWidth, top: 0.87 * gHeight}),
+        c = builtDFA.addNode({left: 0.77 * gWidth, top: 0.87 * gHeight});
+    builtDFA.makeInitial(a);
+    c.addClass('final');
+    var startVar = productions[0][0];
+    builtDFA.addEdge(a, b, {weight: emptystring + ':Z:' + startVar + 'Z'});
+    builtDFA.addEdge(b, c, {weight: emptystring + ':Z:' + emptystring});
+    // add a transition for each terminal
+    for (var i = 0; i < productions.length; i++) {
+      var t = productions[i][2].split("");
+      for (var j = 0; j < t.length; j++) {
+        if (variables.indexOf(t[j]) === -1 && t[j] !== emptystring) {
+          builtDFA.addEdge(b, b, {weight: t[j] + ':' + t[j] + ':' + emptystring});
+        }
+      }
+    }
+    var bEdge = builtDFA.getEdge(b, b);
+    $(bEdge._label.element[0]).css('font-size', '1.4em');
+    builtDFA.layout();
+
+    var pCount = 0;
+    var labelHeight = $(bEdge._label.element[0]).height();
+    // handler for the grammar table
+    var convertGrammarHandler = function (index) {
+      this.highlight(index);
+      var l = this.value(index, 0);
+      var r = this.value(index, 2);
+      var newEdge = builtDFA.addEdge(b, b, {weight: emptystring + ':' + this.value(index, 0) + ':' + this.value(index, 2)});
+      if (newEdge) {
+        newEdge.layout();
+        pCount++;
+        // scale graph window
+        if ($(newEdge._label.element[0]).offset().top < $('.jsavgraph').offset().top) {
+          var h = $(".jsavgraph").height();
+          var newLabelHeight = $(newEdge._label.element[0]).height();
+          var graphOffset = (newLabelHeight - labelHeight) / pCount;
+          $(".jsavgraph").height(h + graphOffset);
+          var nodeY = $(b.element).offset().top;
+          $(a.element).offset({top: nodeY + graphOffset});
+          $(b.element).offset({top: nodeY + graphOffset});
+          $(c.element).offset({top: nodeY + graphOffset});
+          builtDFA.layout();
+        }
+        if (pCount === productions.length) {
+          var confirmed = confirm('Finished! Export?');
+          if (confirmed) {
+            exportConvertedPDA();
+          }
+        }
+      }
+    };
+    m.click(convertGrammarHandler);
+  };
+
   //=================================
-  // files
-  // save
+  // Files
+
+  // Saving:
+  // Function to encode grammar to XML
   function serializeGrammar (g) {
     var text = '<?xml version="1.0" encoding="UTF-8"?>';
     text = text + "<structure>";
@@ -2523,6 +2865,7 @@
     text = text + "</structure>"
     return text;
   };
+  // Function to save and download the grammar
   var saveFile = function () {
     var productions = _.filter(arr, function(x) { return x[0]});
     if (productions.length === 0) {
@@ -2534,33 +2877,27 @@
     $('#download a')[0].click();
   };
 
-  // load
+  // Loading:
+  // Function to read the loaded XML file and create the grammar
   var parseFile = function (text) {
     var parser,
-        xmlDom;
+        xmlDoc;
     if (window.DOMParser) {
       parser=new DOMParser();
       xmlDoc=parser.parseFromString(text,"text/xml");
     } else {
       xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
       xmlDoc.async=false;
-      xmlDoc.loadXML(txt);
+      xmlDoc.loadXML(text);
     }
     if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue !== 'grammar') {
       alert('File does not contain a grammar.');
-      // clear input
-      var loaded = $('#loadfile');
-      loaded.wrap('<form>').closest('form').get(0).reset();
-      loaded.unwrap();
-      return;
     } else {
       arr = [];
       var xmlElem = xmlDoc.getElementsByTagName("production");
       for (var i = 0; i < xmlElem.length; i++) {
         var l = xmlElem[i].getElementsByTagName("left")[0].childNodes[0].nodeValue;
         var r = xmlElem[i].getElementsByTagName("right")[0].childNodes[0].nodeValue;
-        // console.log(l);
-        // console.log(r);
         var row = [l, arrow, r];
         arr.push(row);
       }
@@ -2570,13 +2907,20 @@
       m = init();
       $('.jsavmatrix').addClass("editMode");
     }
+    // clear input
+    var loaded = $('#loadfile');
+    loaded.wrap('<form>').closest('form').get(0).reset();
+    loaded.unwrap();
+    return;
   };
+  // Function for reading the XML file
   var waitForReading = function (reader) {
     reader.onloadend = function(event) {
         var text = event.target.result;
         parseFile(text);
     }
   };
+  // Function to load in an XML file
   var loadFile = function () {
     var loaded = document.getElementById('loadfile');
     var file = loaded.files[0],
@@ -2585,8 +2929,8 @@
     reader.readAsText(file);
   };
 
-
   //=================================
+  // Buttons for editing the SLR DFA
   $('#movebutton').click(function() {
     $('.jsavgraph').removeClass('addfinals');
     $('.jsavgraph').removeClass('builddfa');
@@ -2603,10 +2947,10 @@
     $('.jsavgraph').removeClass('addfinals');
     $('.jsavgraph').removeClass('movenodes');
     $('.jsavgraph').addClass('builddfa');
-    jsav.umsg('Build the DFA.');
+    jsav.umsg('Build the DFA: Click a state.');
   });
   //=================================
-  // button for exiting a proof (parsing or transformation)
+  // Button for exiting a proof (parsing or transformation)
   $('#backbutton').click(function () {
     if (parseTree) {
       parseTree.clear();
@@ -2629,12 +2973,18 @@
       arr.push(["", arrow, ""]);
       backup = null;
     }
+    $('.jsavcanvas').height("auto");
+    $('#movebutton').off();
+    $('#finalbutton').off();
+    $('#gotobutton').off();
+    $('#dfabuttons').hide();
+    $('#convertmovebutton').off();
+    $('#convertmovebutton').hide();
     m = init();
     $('#firstinput').remove();
     $('#temp').remove();
     jsav.umsg('');
     $('button').show();
-    //$('#transformations').show();
     $('#transformbutton').show();
     $('.jsavcontrols').hide();
     $('#backbutton').hide();
@@ -2649,11 +2999,9 @@
   $('#bfpbutton').click(bfParse);
   $('#llbutton').click(llParse);
   $('#slrbutton').click(slrParse);
-  // $('#lambdabutton').click(removeLambda);
-  // $('#unitbutton').click(removeUnit);
-  // $('#uselessbutton').click(removeUseless);
-  // $('#chomskybutton').click(convertToChomsky);
   $('#transformbutton').click(transformGrammar);
   $('#loadfile').on('change', loadFile);
   $('#savefile').click(saveFile);
+  $('#convertRLGbutton').click(convertToFA);
+  $('#convertCFGbutton').click(convertToPDA);
 }(jQuery));

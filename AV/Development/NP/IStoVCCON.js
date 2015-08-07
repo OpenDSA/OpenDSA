@@ -100,10 +100,8 @@ directed: false});
   nodes[10]=g.addNode("11",{left:x-440,top:80});
   nodes[6]=g.addNode("7",{left:x-480,top:y-80});
   nodes[9]=g.addNode("10",{left:x-500,top:y/2-10});
-  for(i=0;i<12;i++){
-    nodes[i].css({"width":"35px", "height":"35px", 
-"min-width":"35px", "min-height":"35px", "background-color":"AntiqueWhite"});
-  }
+
+
   var ISnodes = [];
   var VCnodes = [];
   ISnodes.push(nodes[7]);
@@ -120,7 +118,7 @@ directed: false});
   VCnodes.push(nodes[11]);
   for(var i=0;i<nodes.length;i++)
      for(var j=i+1;j<nodes.length;j++)
-         g.addEdge(nodes[i],nodes[j]).css({"stroke-width":"1.5px"}).hide();
+         g.addEdge(nodes[i],nodes[j]).hide();
 
   g.layout();
   g.getEdge(nodes[7],nodes[1]).show();
@@ -164,7 +162,7 @@ directed: false});
    av.step();
    nl1=av.label("<b>Yes</b>",{top:-10});
    for (var i in ISnodes){
-	ISnodes[i].css({"background-color":"Silver"});
+	ISnodes[i].addClass("highlightnode");
    }
    av.step();
    nl1.hide();

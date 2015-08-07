@@ -18,3 +18,14 @@
 	line-height:30px;
         text-align:center;
 }
+.headerrow{
+        background-color:Silver !important;
+}
+
+.celltrue{
+        background-color: #93C572 !important;
+}
+.cellfalse{
+        background-color: #CB6D51 !important;
+}
+

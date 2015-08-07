@@ -327,6 +327,8 @@ resources consumed by an algorithm.
 
 .. avembed:: Exercises/AlgAnalTest/ComparingAlgorithms.html ka 
 
+.. avembed:: Exercises/AlgAnalTest/GrowthRates.html ka 
+
 
 .. todo::
    :type: Exercise

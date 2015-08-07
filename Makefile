@@ -5,7 +5,7 @@ CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicat
 CSSLINTFLAGS = --quiet --ignore=ids,adjoining-classes
 MINIMIZE = uglifyjs
 
-.PHONY: all clean lint csslint jshint min CS2114 CS223 CS5114 CS3114 CS3114notes CS150 OpenDSA test testX IS allBooks nomin pull CPSC270S15 CS2401 COP3530 CS208 ECE252 Tutorial TDDD86_2014 S15 CSCI115
+.PHONY: all clean lint csslint jshint min CS2114 CS2114F15 CS223 CS5114 CS3114 CS3114notes CS150 OpenDSA test testX IS allBooks nomin pull CPSC270S15 CS2401 COP3530 CS208 ECE252 Tutorial TDDD86_2014 S15 CSCI115
 
 all: lint
 
@@ -58,12 +58,13 @@ jshintlib:
 	-@jshint lib/odsaMOD.js
 	-@jshint lib/gradebook.js
 	-@jshint lib/registerbook.js
+	-@jshint lib/createcourse.js
 	-@jshint lib/conceptMap.js
 
 min: nomin
 #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
-S15: CS2114 ECE252 CPSC270 CSCI204 CS3114 CS4104S15 CS5114S15 RecurTutor CSCI115 uwosh-pl uwosh-taylor
+F15: CS2114F15 CS3114
 
 Pointers: min
 	python $(CONFIG_SCRIPT) config/Pointers.json
@@ -120,8 +121,8 @@ CSE-A1141eng: min
 CS2114: min
 	python $(CONFIG_SCRIPT) config/CS2114SS215.json
 
-CS2114gen: min
-	python $(CONFIG_SCRIPT) config/CS2114gen.json
+CS2114F15: min
+	python $(CONFIG_SCRIPT) config/CS2114F15.json
 
 CS2401: min
 	python $(CONFIG_SCRIPT) config/CS2401.json
@@ -226,6 +227,7 @@ nomin:
 	@cp lib/gradebook.js lib/gradebook-min.js
 	@cp ODSAkhan-exercises/khan-exercise.js lib/khan-exercise-min.js
 	@cp lib/registerbook.js lib/registerbook-min.js
+	@cp lib/createcourse.js lib/createcourse-min.js
 	@cp lib/site.css lib/site-min.css
 	@cat lib/normalize.css lib/odsaAV.css > lib/odsaAV-min.css
 	@cp lib/odsaMOD.css lib/odsaMOD-min.css
@@ -274,3 +276,7 @@ lib/gradebook-min.css: lib/gradebook.css
 lib/registerbook-min.js: lib/registerbook.js
 	@echo 'Minimizing lib/registerbook.js'
 	@$(MINIMIZE) lib/registerbook.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/registerbook-min.js
+
+lib/createcourse-min.js: lib/createcourse.js
+	@echo 'Minimizing lib/createcourse.js'
+	@$(MINIMIZE) lib/createcourse.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/createcourse-min.js

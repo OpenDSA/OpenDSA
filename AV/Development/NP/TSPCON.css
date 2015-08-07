@@ -21,3 +21,22 @@
 .jsavedgelabel{
         background-color:AliceBlue;
 }
+
+.jsavnode{
+	width:30px;
+	height:30px;
+	min-width:30px;
+	min-height:30px;
+	font-size:75%; 
+	background-color:AntiqueWhite;
+}
+.edgehighlight{
+	stroke : IndianRed;
+	stroke-width:5px;
+	opacity:0.75;
+}
+.edgehighlightbold{
+	stroke : IndianRed;
+	stroke-width:8px;
+	opacity:0.75;
+}

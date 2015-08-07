@@ -95,16 +95,15 @@ $(document).ready(function () {
   var nodes = new Array(5);
   var x = 50;
   var y = 0;
-  nodes[0] = g1.addNode("A",{left:x+50,top:y}).css({"width":"30px", "height":"30px",
-"min-width":"30px", "min-height":"30px","font-size":"75%", "background-color":"AntiqueWhite"});;
-  nodes[1] = g1.addNode("B",{left:x+200,top:y}).css({"width":"30px", "height":"30px",
-"min-width":"30px", "min-height":"30px","font-size":"75%", "background-color":"AntiqueWhite"});;
-  nodes[2] = g1.addNode("C",{left:x,top:y+75}).css({"width":"30px", "height":"30px",
-"min-width":"30px", "min-height":"30px" ,"font-size":"75%","background-color":"AntiqueWhite"});;
-  nodes[3] = g1.addNode("D",{left:x+280,top:y+100}).css({"width":"30px", "height":"30px",
-"min-width":"30px", "min-height":"30px" ,"font-size":"75%","background-color":"AntiqueWhite"});;
-  nodes[4] = g1.addNode("E",{left:x+150,top:y+150}).css({"width":"30px", "height":"30px",
-"min-width":"30px", "min-height":"30px" ,"font-size":"75%","background-color":"AntiqueWhite"});;
+  nodes[0] = g1.addNode("A",{left:x+50,top:y});
+  nodes[1] = g1.addNode("B",{left:x+200,top:y});
+
+  nodes[2] = g1.addNode("C",{left:x,top:y+75});
+
+  nodes[3] = g1.addNode("D",{left:x+280,top:y+100});
+
+  nodes[4] = g1.addNode("E",{left:x+150,top:y+150});
+
   for(var i=0;i<4;i++)
       for(var j=i+1;j<5;j++)
         g1.addEdge(nodes[j],nodes[i]).weight(2*i+j);
@@ -119,11 +118,11 @@ $(document).ready(function () {
 */
   av.step();
   label1 = av.label("The red edges form a minimum-length tour with total length being 24",{left:450,top:270});
-  g1.getEdge(nodes[0],nodes[2]).css({"stroke" : "IndianRed","stroke-width":"5px",opacity:0.75});
-  g1.getEdge(nodes[3],nodes[2]).css({"stroke" : "IndianRed","stroke-width":"5px",opacity:0.75});
-  g1.getEdge(nodes[3],nodes[1]).css({"stroke" : "IndianRed","stroke-width":"5px",opacity:0.75});
-  g1.getEdge(nodes[4],nodes[1]).css({"stroke" : "IndianRed","stroke-width":"5px",opacity:0.75});
-  g1.getEdge(nodes[4],nodes[0]).css({"stroke" : "IndianRed","stroke-width":"5px",opacity:0.75});
+  g1.getEdge(nodes[0],nodes[2]).addClass("edgehighlight");
+  g1.getEdge(nodes[3],nodes[2]).addClass("edgehighlight");
+  g1.getEdge(nodes[3],nodes[1]).addClass("edgehighlight");
+  g1.getEdge(nodes[4],nodes[1]).addClass("edgehighlight");
+  g1.getEdge(nodes[4],nodes[0]).addClass("edgehighlight");
  
   av.step();
 
@@ -151,20 +150,20 @@ $(document).ready(function () {
   nodes = new Array(7);
   var x = 0;
   var y = 0;
-  nodes[0] = g.addNode("A",{left:x+200,top:y}).css({"width":"30px", "height":"30px",
-"min-width":"30px", "min-height":"30px","font-size":"75%", "background-color":"AntiqueWhite"});;
-  nodes[1] = g.addNode("B",{left:x+440,top:y}).css({"width":"30px", "height":"30px",
-"min-width":"30px", "min-height":"30px","font-size":"75%", "background-color":"AntiqueWhite"});;
-  nodes[2] = g.addNode("C",{left:x-5,top:y+130}).css({"width":"30px", "height":"30px",
-"min-width":"30px", "min-height":"30px" ,"font-size":"75%","background-color":"AntiqueWhite"});;
-  nodes[3] = g.addNode("D",{left:x+550,top:y+140}).css({"width":"30px", "height":"30px",
-"min-width":"30px", "min-height":"30px" ,"font-size":"75%","background-color":"AntiqueWhite"});;
-  nodes[4] = g.addNode("E",{left:x+5,top:y+250}).css({"width":"30px", "height":"30px",
-"min-width":"30px", "min-height":"30px" ,"font-size":"75%","background-color":"AntiqueWhite"});;
-  nodes[5] = g.addNode("F",{left:x+540,top:y+300}).css({"width":"30px", "height":"30px",
-"min-width":"30px", "min-height":"30px" ,"font-size":"75%","background-color":"AntiqueWhite"});;
-  nodes[6] = g.addNode("G",{left:x+175,top:y+360}).css({"width":"30px", "height":"30px",
-"min-width":"30px", "min-height":"30px" ,"font-size":"75%","background-color":"AntiqueWhite"});;
+  nodes[0] = g.addNode("A",{left:x+200,top:y});
+
+  nodes[1] = g.addNode("B",{left:x+440,top:y});
+
+  nodes[2] = g.addNode("C",{left:x-5,top:y+130});
+
+  nodes[3] = g.addNode("D",{left:x+550,top:y+140});
+
+  nodes[4] = g.addNode("E",{left:x+5,top:y+250});
+
+  nodes[5] = g.addNode("F",{left:x+540,top:y+300});
+
+  nodes[6] = g.addNode("G",{left:x+175,top:y+360});
+
 
   for(i=0;i<6;i++)
       for(j=i+1;j<7;j++)
@@ -192,13 +191,13 @@ $(document).ready(function () {
 " length <= $55$?",{top:-10});
   av.step();
   nl2=av.label("<b>Yes</b> <br>[The cycle has a length of 51]",{top:40});
-  g.getEdge(nodes[0],nodes[3]).css({"stroke" : "IndianRed","stroke-width":"8px",opacity:0.75});
-  g.getEdge(nodes[4],nodes[3]).css({"stroke" : "IndianRed","stroke-width":"8px",opacity:0.75});
-  g.getEdge(nodes[4],nodes[1]).css({"stroke" : "IndianRed","stroke-width":"8px",opacity:0.75});
-  g.getEdge(nodes[5],nodes[1]).css({"stroke" : "IndianRed","stroke-width":"8px",opacity:0.75});
-  g.getEdge(nodes[5],nodes[2]).css({"stroke" : "IndianRed","stroke-width":"8px",opacity:0.75});
-  g.getEdge(nodes[6],nodes[2]).css({"stroke" : "IndianRed","stroke-width":"8px",opacity:0.75});
-  g.getEdge(nodes[6],nodes[0]).css({"stroke" : "IndianRed","stroke-width":"8px",opacity:0.75});
+  g.getEdge(nodes[0],nodes[3]).addClass("edgehighlightbold");
+  g.getEdge(nodes[4],nodes[3]).addClass("edgehighlightbold");
+  g.getEdge(nodes[4],nodes[1]).addClass("edgehighlightbold");
+  g.getEdge(nodes[5],nodes[1]).addClass("edgehighlightbold");
+  g.getEdge(nodes[5],nodes[2]).addClass("edgehighlightbold");
+  g.getEdge(nodes[6],nodes[2]).addClass("edgehighlightbold");
+  g.getEdge(nodes[6],nodes[0]).addClass("edgehighlightbold");
 
 
  

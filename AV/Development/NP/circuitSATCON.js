@@ -61,7 +61,6 @@ $(document).ready(function () {
 
     var notgate = board.addGate(av,"not",x,y+20,r);
 
-  //  notgate.css({"fill":"SlateBlue","opacity":0.75});
 
     label1 = av.label("The NOT gate",{left:x-50,top:y+50}); 
     var data1 = [["$x$","$\\overline{x}$ "],
@@ -70,7 +69,7 @@ $(document).ready(function () {
     var table1 = new av.ds.matrix(data1,{style:"table",left:x-40,top:y+100,});
 
     for(var i=0;i<3;i++)
-        table1.css(0,i,{"background-color":"Silver"});
+        table1.addClass(0,i,"headerrow");
 
     x+=225;
 
@@ -83,11 +82,10 @@ $(document).ready(function () {
     var table2 = new av.ds.matrix(data2,{style:"table",left:x-50,top:y+100});
 
     for(var i=0;i<3;i++)
-        table2.css(0,i,{"background-color":"Silver"});
+        table2.addClass(0,i,"headerrow");
 
 
     var andgate = board.addGate(av,"and",x,y+20,r);
-//    andgate.css({"fill":"SlateBlue","opacity":0.75});
 
     x+=225;
 
@@ -100,10 +98,9 @@ $(document).ready(function () {
     var table3 = new av.ds.matrix(data3,{style:"table",left:x-50,top:y+100});
 
     for(var i=0;i<3;i++)
-        table3.css(0,i,{"background-color":"Silver"});
+        table3.addClass(0,i,"headerrow");
 
     var orgate = board.addGate(av,"or",x,y+20,r);
-    //orgate.css({"fill":"SlateBlue","opacity":0.75});
 
     av.step(); 
 
@@ -135,15 +132,15 @@ $(document).ready(function () {
     nl3.hide();
 
     av.umsg("<br><b>Example Circuit</b>"); 
-    x = 100; y = 20; r = 25;
+    x = 100; y = 30; r = 25;
 
     var x1pos = [x-50,y-0.4*r]; 
     var x2pos = [x-50,y+0.4*r]; 
     var x3pos = [x-50,y+150];
 
     board.addSignals(["x1","x2","x3"]); 
-    var xlabel1 = av.label("x1",{left:20,top:-15}); 
-    var xlabel2 = av.label("x2",{left:20,top:5});
+    var xlabel1 = av.label("x1",{left:20,top:y-35}); 
+    var xlabel2 = av.label("x2",{left:20,top:y-15});
     var xlabel3 = av.label("x3",{left:20,top:y+125}); 
 
     var gate1=board.addGate(av,"not",x,y+150,r); 
@@ -228,16 +225,16 @@ startpt[1]],[(endpt[0] + startpt[0])/2,endpt[1]]]);
 +" in the later slides.",{top:250});
     var numlabels =new Array(10);
 
-    numlabels[0] = av.label("1",{left:75,top:-25}).css({color:"blue"});
-    numlabels[1] = av.label("2",{left:100,top:-5}).css({color:"blue"}); 
-    numlabels[2] = av.label("3",{left:50,top:135}).css({color:"blue"}); 
-    numlabels[3] = av.label("4",{left:135,top:135}).css({color:"blue"}); 
-    numlabels[4] = av.label("5",{left:235,top:-15}).css({color:"blue"}); 
-    numlabels[5] = av.label("6",{left:283,top:60}).css({color:"blue"}); 
-    numlabels[6] = av.label("7",{left:275,top:135}).css({color:"blue"}); 
-    numlabels[7] = av.label("8",{left:385,top:22}).css({color:"blue"}); 
-    numlabels[8] = av.label("9",{left:385,top:95}).css({color:"blue"}); 
-    numlabels[9] = av.label("10",{left:490,top:70}).css({color:"blue"});
+    numlabels[0] = av.label("1",{left:75,top:y-45}).addClass("numlabel");
+    numlabels[1] = av.label("2",{left:100,top:y-25}).addClass("numlabel"); 
+    numlabels[2] = av.label("3",{left:50,top:y+115}).addClass("numlabel"); 
+    numlabels[3] = av.label("4",{left:135,top:y+115}).addClass("numlabel"); 
+    numlabels[4] = av.label("5",{left:235,top:y-35}).addClass("numlabel"); 
+    numlabels[5] = av.label("6",{left:283,top:y+40}).addClass("numlabel"); 
+    numlabels[6] = av.label("7",{left:275,top:y+115}).addClass("numlabel"); 
+    numlabels[7] = av.label("8",{left:385,top:y+2}).addClass("numlabel"); 
+    numlabels[8] = av.label("9",{left:385,top:y+75}).addClass("numlabel"); 
+    numlabels[9] = av.label("10",{left:490,top:y+50}).addClass("numlabel");
 
     av.step();
     nl1.hide();
@@ -259,7 +256,7 @@ startpt[1]],[(endpt[0] + startpt[0])/2,endpt[1]]]);
     var ctable = new av.ds.matrix(cdata,{style:"table",left:x+80,top:y+80,});    
 
     for(var i=0;i<8;i++)
-        ctable.css(0,i,{"background-color":"Silver"});
+        ctable.addClass(0,i,"headerrow");
 
     av.step(); 
     nl1.hide();
@@ -279,10 +276,10 @@ startpt[1]],[(endpt[0] + startpt[0])/2,endpt[1]]]);
 +"the output. <br>Hence the cell under input wire 3 and gate A is "
 +"assigned the value 4",{left:10,top:260});  
 
-    gate1.css({fill:"SlateBlue",opacity:"0.5"});
-    ctable.css(0,1,{"background-color":"SlateBlue",opacity:"0.5"});
-    ctable.css(3,0,{"background-color":"SlateBlue",opacity:"0.5"});
-    ctable.css(3,1,{"background-color":"Tan",opacity:"0.5"}); 
+    gate1.addClass("gatefocus");
+    ctable.addClass(0,1,"cellfocus");
+    ctable.addClass(3,0,"cellfocus");
+    ctable.addClass(3,1,"cellfill"); 
     ctable.value(3,1,"4");
 
     av.step();
@@ -290,17 +287,17 @@ startpt[1]],[(endpt[0] + startpt[0])/2,endpt[1]]]);
     label1.hide(); label2.hide();
     label1= av.label("Populating the table for Gate B",{left:10,top:250});  
 
-    gate1.css({fill:"none",opacity:"1"});
-    ctable.css(0,1,{"background-color":"Silver",opacity:"1"});
-    ctable.css(3,0,{"background-color":"White",opacity:"1"});
-    ctable.css(3,1,{"background-color":"White",opacity:"1"});
+    gate1.removeClass("gatefocus");
+    ctable.removeClass(0,1,"cellfocus");
+    ctable.removeClass(3,0,"cellfocus");
+    ctable.removeClass(3,1,"cellfill"); 
 
-    gate2.css({fill:"SlateBlue",opacity:"0.5"});
-    ctable.css(0,2,{"background-color":"SlateBlue",opacity:"0.5"});
-    ctable.css(1,0,{"background-color":"SlateBlue",opacity:"0.5"});
-    ctable.css(2,0,{"background-color":"SlateBlue",opacity:"0.5"});
-    ctable.css(1,2,{"background-color":"Tan",opacity:"0.5"});
-    ctable.css(2,2,{"background-color":"Tan",opacity:"0.5"}); 
+    gate2.addClass("gatefocus");
+    ctable.addClass(0,2,"cellfocus");
+    ctable.addClass(1,0,"cellfocus");
+    ctable.addClass(2,0,"cellfocus");
+    ctable.addClass(1,2,"cellfill");
+    ctable.addClass(2,2,"cellfill"); 
     ctable.value(1,2,"5");
     ctable.value(2,2,"5");
 
@@ -309,17 +306,17 @@ startpt[1]],[(endpt[0] + startpt[0])/2,endpt[1]]]);
     label1.hide(); 
     label1= av.label("Populating the table for Gate C",{left:10,top:250});  
 
-    gate2.css({fill:"none",opacity:"1"});
-    ctable.css(0,2,{"background-color":"Silver",opacity:"1"});
-    ctable.css(1,0,{"background-color":"White",opacity:"1"});
-    ctable.css(2,0,{"background-color":"White",opacity:"1"});
-    ctable.css(1,2,{"background-color":"White",opacity:"1"});
-    ctable.css(2,2,{"background-color":"White",opacity:"1"});
+    gate2.removeClass("gatefocus");
+    ctable.removeClass(0,2,"cellfocus");
+    ctable.removeClass(1,0,"cellfocus");
+    ctable.removeClass(2,0,"cellfocus");
+    ctable.removeClass(1,2,"cellfill");
+    ctable.removeClass(2,2,"cellfill"); 
 
-    gate3.css({fill:"SlateBlue",opacity:"0.5"});
-    ctable.css(0,3,{"background-color":"SlateBlue",opacity:"0.5"});
-    ctable.css(4,0,{"background-color":"SlateBlue",opacity:"0.5"});
-    ctable.css(4,3,{"background-color":"Tan",opacity:"0.5"});
+    gate3.addClass("gatefocus");
+    ctable.addClass(0,3,"cellfocus");
+    ctable.addClass(4,0,"cellfocus");
+    ctable.addClass(4,3,"cellfill");
     ctable.value(4,3,"6");
 
     av.step();
@@ -327,20 +324,20 @@ startpt[1]],[(endpt[0] + startpt[0])/2,endpt[1]]]);
     label1.hide(); 
     label1= av.label("Populating the table for Gate D",{left:10,top:250});  
 
-    gate3.css({fill:"none",opacity:"1"});
-    ctable.css(0,3,{"background-color":"Silver",opacity:"1"});
-    ctable.css(4,0,{"background-color":"White",opacity:"1"});
-    ctable.css(4,3,{"background-color":"White",opacity:"1"});
+    gate3.removeClass("gatefocus");
+    ctable.removeClass(0,3,"cellfocus");
+    ctable.removeClass(4,0,"cellfocus");
+    ctable.removeClass(4,3,"cellfill");
 
 
-    gate4.css({fill:"SlateBlue",opacity:"0.5"});
-    ctable.css(0,4,{"background-color":"SlateBlue",opacity:"0.5"});
-    ctable.css(1,0,{"background-color":"SlateBlue",opacity:"0.5"});
-    ctable.css(2,0,{"background-color":"SlateBlue",opacity:"0.5"});
-    ctable.css(4,0,{"background-color":"SlateBlue",opacity:"0.5"});
-    ctable.css(1,4,{"background-color":"Tan",opacity:"0.5"});
-    ctable.css(2,4,{"background-color":"Tan",opacity:"0.5"});
-    ctable.css(4,4,{"background-color":"Tan",opacity:"0.5"}); 
+    gate4.addClass("gatefocus");
+    ctable.addClass(0,4,"cellfocus");
+    ctable.addClass(1,0,"cellfocus");
+    ctable.addClass(2,0,"cellfocus");
+    ctable.addClass(4,0,"cellfocus");
+    ctable.addClass(1,4,"cellfill");
+    ctable.addClass(2,4,"cellfill");
+    ctable.addClass(4,4,"cellfill"); 
     ctable.value(1,4,"7");
     ctable.value(2,4,"7");
     ctable.value(4,4,"7");
@@ -350,21 +347,21 @@ startpt[1]],[(endpt[0] + startpt[0])/2,endpt[1]]]);
     label1.hide(); 
     label1= av.label("Populating the table for Gate E",{left:10,top:250});  
 
-    gate4.css({fill:"none",opacity:"1"});
-    ctable.css(0,4,{"background-color":"Silver",opacity:"1"});
-    ctable.css(1,0,{"background-color":"White",opacity:"1"});
-    ctable.css(2,0,{"background-color":"White",opacity:"1"});
-    ctable.css(4,0,{"background-color":"White",opacity:"1"});
-    ctable.css(1,4,{"background-color":"White",opacity:"1"});
-    ctable.css(2,4,{"background-color":"White",opacity:"1"});
-    ctable.css(4,4,{"background-color":"White",opacity:"1"});
+    gate4.removeClass("gatefocus");
+    ctable.removeClass(0,4,"cellfocus");
+    ctable.removeClass(1,0,"cellfocus");
+    ctable.removeClass(2,0,"cellfocus");
+    ctable.removeClass(4,0,"cellfocus");
+    ctable.removeClass(1,4,"cellfill");
+    ctable.removeClass(2,4,"cellfill");
+    ctable.removeClass(4,4,"cellfill"); 
 
-    gate5.css({fill:"SlateBlue",opacity:"0.5"});
-    ctable.css(0,5,{"background-color":"SlateBlue",opacity:"0.5"});
-    ctable.css(5,0,{"background-color":"SlateBlue",opacity:"0.5"});
-    ctable.css(6,0,{"background-color":"SlateBlue",opacity:"0.5"});
-    ctable.css(5,5,{"background-color":"Tan",opacity:"0.5"});
-    ctable.css(6,5,{"background-color":"Tan",opacity:"0.5"});
+    gate5.addClass("gatefocus");
+    ctable.addClass(0,5,"cellfocus");
+    ctable.addClass(5,0,"cellfocus");
+    ctable.addClass(6,0,"cellfocus");
+    ctable.addClass(5,5,"cellfill");
+    ctable.addClass(6,5,"cellfill");
     ctable.value(5,5,"8");
     ctable.value(6,5,"8");
  
@@ -373,19 +370,19 @@ startpt[1]],[(endpt[0] + startpt[0])/2,endpt[1]]]);
     label1.hide();
     label1= av.label("Populating the table for Gate F",{left:10,top:250});  
  
-    gate5.css({fill:"none",opacity:"1"});
-    ctable.css(0,5,{"background-color":"Silver",opacity:"1"});
-    ctable.css(5,0,{"background-color":"White",opacity:"1"});
-    ctable.css(6,0,{"background-color":"White",opacity:"1"});
-    ctable.css(5,5,{"background-color":"White",opacity:"1"});
-    ctable.css(6,5,{"background-color":"White",opacity:"1"});
+    gate5.removeClass("gatefocus");
+    ctable.removeClass(0,5,"cellfocus");
+    ctable.removeClass(5,0,"cellfocus");
+    ctable.removeClass(6,0,"cellfocus");
+    ctable.removeClass(5,5,"cellfill");
+    ctable.removeClass(6,5,"cellfill");
 
-    gate6.css({fill:"SlateBlue",opacity:"0.5"});
-    ctable.css(0,6,{"background-color":"SlateBlue",opacity:"0.5"});
-    ctable.css(6,0,{"background-color":"SlateBlue",opacity:"0.5"});
-    ctable.css(7,0,{"background-color":"SlateBlue",opacity:"0.5"});
-    ctable.css(6,6,{"background-color":"Tan",opacity:"0.5"});
-    ctable.css(7,6,{"background-color":"Tan",opacity:"0.5"});
+    gate6.addClass("gatefocus");
+    ctable.addClass(0,6,"cellfocus");
+    ctable.addClass(6,0,"cellfocus");
+    ctable.addClass(7,0,"cellfocus");
+    ctable.addClass(6,6,"cellfill");
+    ctable.addClass(7,6,"cellfill");
     ctable.value(6,6,"9");
     ctable.value(7,6,"9");
  
@@ -394,38 +391,38 @@ startpt[1]],[(endpt[0] + startpt[0])/2,endpt[1]]]);
     label1.hide(); 
     label1= av.label("Populating the table for Gate G",{left:10,top:250});  
  
-    gate6.css({fill:"none",opacity:"1"});
-    ctable.css(0,6,{"background-color":"Silver",opacity:"1"});
-    ctable.css(6,0,{"background-color":"White",opacity:"1"});
-    ctable.css(7,0,{"background-color":"White",opacity:"1"});
-    ctable.css(6,6,{"background-color":"White",opacity:"1"});
-    ctable.css(7,6,{"background-color":"White",opacity:"1"});
+    gate6.removeClass("gatefocus");
+    ctable.removeClass(0,6,"cellfocus");
+    ctable.removeClass(6,0,"cellfocus");
+    ctable.removeClass(7,0,"cellfocus");
+    ctable.removeClass(6,6,"cellfill");
+    ctable.removeClass(7,6,"cellfill");
 
-    gate7.css({fill:"SlateBlue",opacity:"0.5"});
-    ctable.css(0,7,{"background-color":"SlateBlue",opacity:"0.5"});
-    ctable.css(8,0,{"background-color":"SlateBlue",opacity:"0.5"});
-    ctable.css(9,0,{"background-color":"SlateBlue",opacity:"0.5"});
-    ctable.css(8,7,{"background-color":"Tan",opacity:"0.5"});
-    ctable.css(9,7,{"background-color":"Tan",opacity:"0.5"});
+    gate7.addClass("gatefocus");
+    ctable.addClass(0,7,"cellfocus");
+    ctable.addClass(8,0,"cellfocus");
+    ctable.addClass(9,0,"cellfocus");
+    ctable.addClass(8,7,"cellfill");
+    ctable.addClass(9,7,"cellfill");
     ctable.value(8,7,"10");
     ctable.value(9,7,"10");
 
     av.step();
   
     label1.hide();
-    gate7.css({fill:"none",opacity:"1"});
-    ctable.css(0,7,{"background-color":"Silver",opacity:"1"});
-    ctable.css(8,0,{"background-color":"White",opacity:"1"});
-    ctable.css(9,0,{"background-color":"White",opacity:"1"});
-    ctable.css(8,7,{"background-color":"White",opacity:"1"});
-    ctable.css(9,7,{"background-color":"White",opacity:"1"});
+    gate7.removeClass("gatefocus");
+    ctable.removeClass(0,7,"cellfocus");
+    ctable.removeClass(8,0,"cellfocus");
+    ctable.removeClass(9,0,"cellfocus");
+    ctable.removeClass(8,7,"cellfill");
+    ctable.removeClass(9,7,"cellfill");
     nl1 = av.label("This is the complete tabular representation of the circuit"
 ,{top:250}); 
     av.step();
   
     nl1.hide();
     av.umsg("<br><b>Propagation of signals</b>");
-    nl1 = av.label("We show the propagation of signals by assuming a paticular"+
+    nl1 = av.label("We show the propagation of signals by assuming a particular"+
 " <br>assignment of input signals to the circuit"
 ,{top:220}); 
     label1= av.label("Let the assignment be { $x1 = T , x2 = F , x3 = F $ } "
@@ -433,9 +430,9 @@ startpt[1]],[(endpt[0] + startpt[0])/2,endpt[1]]]);
 
     av.step();
     nl1.hide();
-    xlabel1.css({color:"green"});
-    xlabel2.css({color:"red"});
-    xlabel3.css({color:"green"});
+    xlabel1.addClass("labeltrue");
+    xlabel2.addClass("labelfalse");
+    xlabel3.addClass("labeltrue");
  
     board.assignSignal("x1",1); 
     board.assignSignal("x2",0);
@@ -450,18 +447,18 @@ startpt[1]],[(endpt[0] + startpt[0])/2,endpt[1]]]);
     board.assignBP(bp1,1);
     board.assignBP(bp2,0);
    
-    ctable.css(1,0,{"background-color":"#93C572"});
-    ctable.css(2,0,{"background-color":"#CB6D51"});
-    ctable.css(3,0,{"background-color":"#93C572"});
+    ctable.addClass(1,0,"celltrue");
+    ctable.addClass(2,0,"cellfalse");
+    ctable.addClass(3,0,"celltrue");
  
     av.step();
 
     label1.hide();
     label1= av.label("As signal x3 passes through Gate A, wire 4 gets value $F$."
 ,{left:10,top:250});
-    gate1.css({fill:"SlateBlue",opacity:"0.5"});
-    ctable.css(3,1,{"background-color":"#CB6D51"});
-    ctable.css(4,0,{"background-color":"#CB6D51"});
+    gate1.addClass("gatefocus");
+    ctable.addClass(3,1,"cellfalse");
+    ctable.addClass(4,0,"cellfalse");
     board.assignOP(gate1,0); 
     board.assignIP(gate3,0,0);
     board.assignIP(gate4,1,0);
@@ -471,11 +468,11 @@ startpt[1]],[(endpt[0] + startpt[0])/2,endpt[1]]]);
     label1.hide();
     label1= av.label("As signals x1 and x2 pass through Gate B, wire 5 gets"+
 "value $T$.",{left:10,top:250});
-    gate1.css({fill:"none",opacity:"1"});
-    gate2.css({fill:"SlateBlue",opacity:"0.5"});
-    ctable.css(1,2,{"background-color":"#93C572"});
-    ctable.css(2,2,{"background-color":"#93C572"});
-    ctable.css(5,0,{"background-color":"#93C572"});
+    gate1.removeClass("gatefocus");
+    gate2.addClass("gatefocus");
+    ctable.addClass(1,2,"celltrue");
+    ctable.addClass(2,2,"celltrue");
+    ctable.addClass(5,0,"celltrue");
     board.assignOP(gate2,1); 
     board.assignIP(gate5,0,1);
 
@@ -483,10 +480,10 @@ startpt[1]],[(endpt[0] + startpt[0])/2,endpt[1]]]);
     label1.hide();
     label1= av.label("As signal 4 passes through Gate C, wire 6 gets value $T$."
 ,{left:10,top:250});
-    gate2.css({fill:"none",opacity:"1"});
-    gate3.css({fill:"SlateBlue",opacity:"0.5"});
-    ctable.css(4,3,{"background-color":"#93C572"});
-    ctable.css(6,0,{"background-color":"#93C572"});
+    gate2.removeClass("gatefocus");
+    gate3.addClass("gatefocus");
+    ctable.addClass(4,3,"celltrue");
+    ctable.addClass(6,0,"celltrue");
     board.assignOP(gate3,1);
     board.assignIP(gate5,2,1);
     board.assignIP(gate6,0,1);
@@ -495,12 +492,12 @@ startpt[1]],[(endpt[0] + startpt[0])/2,endpt[1]]]);
     label1.hide();
     label1= av.label("As signals x1, x2 and 4 passes through Gate D, wire 7"+
 " gets value $F$.",{left:10,top:250});
-    gate3.css({fill:"none",opacity:"1"});
-    gate4.css({fill:"SlateBlue",opacity:"0.5"});
-    ctable.css(1,4,{"background-color":"#CB6D51"});
-    ctable.css(2,4,{"background-color":"#CB6D51"});
-    ctable.css(4,4,{"background-color":"#CB6D51"});
-    ctable.css(7,0,{"background-color":"#CB6D51"});
+    gate3.removeClass("gatefocus");
+    gate4.addClass("gatefocus");
+    ctable.addClass(1,4,"cellfalse");
+    ctable.addClass(2,4,"cellfalse");
+    ctable.addClass(4,4,"cellfalse");
+    ctable.addClass(7,0,"cellfalse");
     board.assignOP(gate4,0);
     board.assignIP(gate6,2,0);
 
@@ -508,11 +505,11 @@ startpt[1]],[(endpt[0] + startpt[0])/2,endpt[1]]]);
     label1.hide();
     label1= av.label("As signals 5 and 6 pass through Gate E, wire 8 gets "
 +"value $T$.",{left:10,top:250});
-    gate4.css({fill:"none",opacity:"1"});
-    gate5.css({fill:"SlateBlue",opacity:"0.5"});
-    ctable.css(5,5,{"background-color":"#93C572"});
-    ctable.css(6,5,{"background-color":"#93C572"});
-    ctable.css(8,0,{"background-color":"#93C572"});
+    gate4.removeClass("gatefocus");
+    gate5.addClass("gatefocus");
+    ctable.addClass(5,5,"celltrue");
+    ctable.addClass(6,5,"celltrue");
+    ctable.addClass(8,0,"celltrue");
     board.assignOP(gate5,1);
     board.assignIP(gate7,0,1);
 
@@ -520,11 +517,11 @@ startpt[1]],[(endpt[0] + startpt[0])/2,endpt[1]]]);
     label1.hide();
     label1= av.label("As signals 6 and 7 pass through Gate F, wire 9 gets"
 +" value $T$.",{left:10,top:250});
-    gate5.css({fill:"none",opacity:"1"});
-    gate6.css({fill:"SlateBlue",opacity:"0.5"});
-    ctable.css(6,6,{"background-color":"#93C572"});
-    ctable.css(7,6,{"background-color":"#93C572"});
-    ctable.css(9,0,{"background-color":"#93C572"});
+    gate5.removeClass("gatefocus");
+    gate6.addClass("gatefocus");
+    ctable.addClass(6,6,"celltrue");
+    ctable.addClass(7,6,"celltrue");
+    ctable.addClass(9,0,"celltrue");
     board.assignOP(gate6,1);
     board.assignIP(gate7,2,1);
 
@@ -532,17 +529,17 @@ startpt[1]],[(endpt[0] + startpt[0])/2,endpt[1]]]);
     label1.hide();
     label1= av.label("As signals 8 and 9 pass through Gate G, wire 10 gets "
 +"value $T$.",{left:10,top:250});
-    gate6.css({fill:"none",opacity:"1"});
-    gate7.css({fill:"SlateBlue",opacity:"0.5"});
-    ctable.css(8,7,{"background-color":"#93C572"});
-    ctable.css(9,7,{"background-color":"#93C572"});
+    gate6.removeClass("gatefocus");
+    gate7.addClass("gatefocus");
+    ctable.addClass(8,7,"celltrue");
+    ctable.addClass(9,7,"celltrue");
     board.assignOP(gate7,1);
 
     av.step();
     label1.hide();
     label1= av.label("The above circuit yields a value $T$ for the assignment<br>"
 +"{ $x1 = T, x2 = F, x3 = T $}",{left:10,top:250});
-    gate7.css({fill:"none",opacity:"1"});
+    gate7.removeClass("gatefocus");
 
     av.step();
     board.hide();
@@ -596,9 +593,9 @@ startpt[1]],[(endpt[0] + startpt[0])/2,endpt[1]]]);
     av.step();
   
     av.umsg("<br><b>Example of Circuit Satisfiability</b>");
-    xlabel1.css({color:"black"});
-    xlabel2.css({color:"black"});
-    xlabel3.css({color:"black"});
+    xlabel1.removeClass("labeltrue");
+    xlabel2.removeClass("labelfalse");
+    xlabel3.removeClass("labeltrue");
     label1.hide();
     label1= av.label("As seen form the table above, possible assigment for x1, x2"
 +" and x3 satisfies the "+
@@ -639,25 +636,14 @@ startpt[1]],[(endpt[0] + startpt[0])/2,endpt[1]]]);
                ["F","F","T","F"],
                ["F","F","F","F"]];
 
-     var table = av.ds.matrix(data,{top:-20,left:600});
+     var table = av.ds.matrix(data,{top:y-40,left:600});
      for(var i=0;i<9;i++)
        for(var j=0;j<4;j++){
          if(i!=0)
-          table.css(i,j,{"background-color":"#FFB6C1"});
+          table.addClass(i,j,"truthtablefalse");
          else
-          table.css(i,j,{"background-color":"Silver"});
+          table.addClass(i,j,"headerrow");
       }
-/*    board.hide();
-    xlabel1.hide();
-    xlabel2.hide();
-    xlabel3.hide();
-
-    for(var i=0;i<numlabels.length;i++) 
-        numlabels[i].hide();
-     for(var i=0;i<gatelabel.length;i++)
-        gatelabel[i].hide();
-     label1.hide();
-*/
  av.recorded();
 
 });

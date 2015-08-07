@@ -7,8 +7,8 @@
       "Slide 4": "<br><br> So what is the upper bound of the sequencial search algorithm?",
       "Slide 5": "<br>Do you think this is the correct way to ask this question?",
       "Slide 6": "Remember that there are three input cases that affect the running time of sequencial search.",
-      "Slide 7": "<br><br>1- When the target ket $k$ is located at the first position in the input array.",
-      "Slide 8": "<br><br>2- When the target ket $k$ is located at the last position in the input array.",
+      "Slide 7": "<br><br>1- When the target key $k$ is located at the first position in the input array.",
+      "Slide 8": "<br><br>2- When the target key $k$ is located at the last position in the input array.",
       "Slide 9": "<br><br>3- When the target key $k$ is located at the middle position in the input array.",
       "Slide 10": "The first case is the best case of the algorithm, since only a single element is investigated. $T(n) = 1$",
       "Slide 11": "<br><br>Accordingly, the highest growth rate (upper bound) of the algorithm in the best case is $O(1)$.",
@@ -18,19 +18,6 @@
       "Slide 15": "<br><br>Accordingly, the highest growth rate (upper bound) of the algorithm in the average case is also $O(n)$ since we ignore constant terms.",
       "Slide 16": "Accordingly, the correct way to ask the question should be : <br><br>What is the upper bound of sequencial search in the best/average/worst case?",
       "Slide 17": "<br><br>And the answer should be..."
-    }
-  },
-  "code" : {
-    "processing": {
-      "url": "../../../SourceCode/Processing/Sorting/Bubblesort.pde",
-      "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: Bubblesort *** */",
-      "endBefore": "/* *** ODSAendTag: Bubblesort *** */",
-	  "top": 250,
-	  "left": 200,
-      "tags": {
-        "loop": 3
-      }
     }
   }
 }

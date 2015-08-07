@@ -18,3 +18,75 @@
 	line-height:30px;
         text-align:center;
 }
+
+.headerrow{
+	background-color:Tan;
+	opacity:0.5;
+}
+.gatefocus{
+	fill:Tan;
+}
+.font125{
+	font-size:125%;
+}
+.outputcolor{
+	color:OrangeRed;
+}
+.gatecolor1{
+	fill:Blue;
+	fill-opacity:0.5;
+}
+.labelcolor1{
+	color:Blue;
+	opacity:0.75;
+}
+.gatecolor2{
+	fill:DarkCyan;
+	fill-opacity:0.5;
+}
+.labelcolor2{
+	color:DarkCyan;
+	opacity:0.75;
+}
+.gatecolor3{
+	fill:BlueViolet;
+	fill-opacity:0.5;
+}
+.labelcolor3{
+	color:BlueViolet;
+	opacity:0.75;
+}
+.gatecolor4{
+	fill:DarkRed;
+	fill-opacity:0.5;
+}
+.labelcolor4{
+	color:DarkRed;
+	opacity:0.75;
+}
+.gatecolor5{
+	fill:MediumVioletRed;
+	fill-opacity:0.5;
+}
+.labelcolor5{
+	color:MediumVioletRed;
+	opacity:0.75;
+}
+.gatecolor6{
+	fill:DarkGoldenRod;
+	fill-opacity:0.5;
+}
+.labelcolor6{
+	color:DarkGoldenRod;
+	opacity:0.75;
+}
+.gatecolor7{
+	fill:DarkSlateGray;
+	fill-opacity:0.5;
+}
+.labelcolor7{
+	color:DarkSlateGray;
+	opacity:0.75;
+}
+
+

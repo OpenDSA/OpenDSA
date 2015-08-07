@@ -8,26 +8,27 @@
       "Slide 5": "Suppose that $k$ is located at the beginning of the array.",
       "Slide 6": "<br><br>In this case the sequencial search algorithm will find $k$ at the first comparison.",
       "Slide 7": "<br><br>After that the algorithm will terminate returning $0$ as the target's index.",
-      "Slide 8": "This is the best case of the algorithm since the number of keys examined determine the running time of the algorithm and here we have only <b><u>one</u></b> key examined",
+      "Slide 8": "This is the best case of the algorithm since the number of keys examined determine the running time of the algorithm and here we have only <b><u>one</u></b> key examined.",
       "Slide 9": "Now suppose that $k$ is located at the end of the array.",
       "Slide 10": "<br><br>In this case the sequencial search algorithm will find $k$ at the final comparison.",
-      "Slide 12": "This is the worst case of the algorithm since the number of keys examined determine the running time of the algorithm and here we have <b><u>$n$</u></b> keys examined",
+      "Slide 12": "This is the worst case of the algorithm since the number of keys examined determine the running time of the algorithm and here we have $n$ keys examined.",
       "Slide 13": "Now suppose that $k$ is located in the middle of the array.",
       "Slide 14": "<br><br>In this case the sequencial search algorithm will find $k$ after $\\lceil\\frac{n}{2}\\rceil$ comparisons.",
-      "Slide 16": "This is the average case of the algorithm since the number of keys examined determine the running time of the algorithm and here we have <b><u>$\\lceil\\frac{n}{2}\\rceil$</u></b> keys examined"
+      "Slide 16": "This is the average case of the algorithm since the number of keys examined determine the running time of the algorithm and here we have <b><u>$\\lceil\\frac{n}{2}\\rceil$</u></b> keys examined."
 
     }
   },
   "code" : {
     "processing": {
-      "url": "../../../SourceCode/Processing/Sorting/Bubblesort.pde",
+      "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
       "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: Bubblesort *** */",
-      "endBefore": "/* *** ODSAendTag: Bubblesort *** */",
-	  "top": 250,
-	  "left": 200,
+      "startAfter": "/* *** ODSATag: Sequential *** */",
+      "endBefore": "/* *** ODSAendTag: Sequential *** */",
+	  "top": 110,
+	  "left": 395,
       "tags": {
-        "loop": 3
+        "comparison": 3,
+        "return": 4
       }
     }
   }

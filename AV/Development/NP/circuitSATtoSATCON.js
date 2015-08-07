@@ -47,7 +47,7 @@ $(document).ready(function () {
     var table1 = new av.ds.matrix(data,{style:"table",left:20,top:130});
   
     for(var i=0;i<3;i++) 
-        table1.css(0,i,{"background-color":"Tan",opacity:0.5});
+        table1.addClass(0,i,"headerrow");
 
 
     label2 = av.label("A$\\leftrightarrow$B is equivalent to $(\\overline{A} + B)\\cdot"+
@@ -92,7 +92,7 @@ $(document).ready(function () {
     label1.hide();
     av.umsg("<br><b>Reduction for NOT gate</b>"); 
     var notgate=board.addGate(av,"not",400,50,30); 
-    notgate.css({"fill":"Tan"});
+    notgate.addClass("gatefocus");
 
     label1 = av.label("x1",{left:350,top:10}); 
     label2 = av.label("x2",{left:450,top:10});
@@ -119,7 +119,7 @@ $(document).ready(function () {
     label6.hide();label7.hide();
     av.umsg("<br><b>Reduction for AND gate</b>"); 
     var andgate=board.addGate(av,"and",400,50,30); 
-    andgate.css({"fill":"Tan"});
+    andgate.addClass("gatefocus");
 
     label1 = av.label("x1",{left:335,top:7}); 
     label2 = av.label("x2",{left:335,top:38}); 
@@ -185,7 +185,7 @@ $(document).ready(function () {
 
     av.umsg("<br><b>Reduction for OR gate.</b>");
     var orgate=board.addGate(av,"or",400,50,30); 
-    orgate.css({"fill":"Tan"});
+    orgate.addClass("gatefocus");
     label1 = av.label("x1",{left:320,top:7}); 
     label2 = av.label("x2",{left:320,top:38}); 
     label3 = av.label("x3",{left:450,top:22});
@@ -371,62 +371,62 @@ $(document).ready(function () {
     numlabels[6] = av.label("x10",{left:490,top:130});
 
     av.step();
-    numlabels[6].css({color:"OrangeRed"});
+    numlabels[6].addClass("outputcolor");
     var labels = new Array(15);
     label1 = av.label("This circuit can be reduced to ",{left:0,top:200});
-    labels[0] = av.label("<b>$x_{10}$</b>",{left:0,top:230}).css({color:"OrangeRed","font-size":"125%"});
+    labels[0] = av.label("<b>$x_{10}$</b>",{left:0,top:230}).addClass("outputcolor").addClass("font125");
     av.step();
-    gate1.css({"fill":"Blue",opacity:0.5});
-    labels[1] = av.label("$\\cdot$",{left:25,top:230}).css({"font-size":"125%"});
-    labels[2] = av.label("($x_4 \\leftrightarrow \\overline{x_3}$)",{left:30,top:230}).css({color:"Blue",opacity:0.75,"font-size":"125%"});
+    gate1.addClass("gatecolor1");
+    labels[1] = av.label("$\\cdot$",{left:25,top:230}).addClass("font125");
+    labels[2] = av.label("($x_4 \\leftrightarrow \\overline{x_3}$)",{left:30,top:230}).addClass("labelcolor1").addClass("font125");
     av.step();
-    gate2.css({"fill":"DarkCyan",opacity:0.5});
-    labels[3] = av.label("$\\cdot$",{left:115,top:230}).css({"font-size":"125%"});
-    labels[4] = av.label("($x_5 \\leftrightarrow (x_1 + x_2)$)",{left:120,top:230}).css({color:"DarkCyan",opacity:0.75,"font-size":"125%"});
+    gate2.addClass("gatecolor2");
+    labels[3] = av.label("$\\cdot$",{left:115,top:230}).addClass("font125");
+    labels[4] = av.label("($x_5 \\leftrightarrow (x_1 + x_2)$)",{left:120,top:230}).addClass("labelcolor2").addClass("font125");
     av.step();
-    gate3.css({"fill":"BlueViolet",opacity:0.5});
-    labels[5] = av.label("$\\cdot$",{left:265,top:230}).css({"font-size":"125%"});
-    labels[6] = av.label("($x_6 \\leftrightarrow \\overline{x_4}$)",{left:270,top:230}).css({color:"BlueViolet",opacity:0.75,"font-size":"125%"});
+    gate3.addClass("gatecolor3");
+    labels[5] = av.label("$\\cdot$",{left:265,top:230}).addClass("font125");
+    labels[6] = av.label("($x_6 \\leftrightarrow \\overline{x_4}$)",{left:270,top:230}).addClass("labelcolor3").addClass("font125");
     av.step();
-    gate4.css({"fill":"DarkRed",opacity:0.5});
-    labels[7] = av.label("$\\cdot$",{left:355,top:230}).css({"font-size":"125%"});
-    labels[8] = av.label("($x_7 \\leftrightarrow (x_1.x_2.x_4)$)",{left:360,top:230}).css({color:"DarkRed",opacity:0.75,"font-size":"125%"});
+    gate4.addClass("gatecolor4");
+    labels[7] = av.label("$\\cdot$",{left:355,top:230}).addClass("font125");
+    labels[8] = av.label("($x_7 \\leftrightarrow (x_1.x_2.x_4)$)",{left:360,top:230}).addClass("labelcolor4").addClass("font125");
     av.step();
-    gate5.css({"fill":"MediumVioletRed",opacity:0.5});
-    labels[9] = av.label("$\\cdot$",{left:520,top:230}).css({"font-size":"125%"});
-    labels[10] = av.label("($x_8 \\leftrightarrow (x_5+x_6)$)",{left:525,top:230}).css({color:"MediumVioletRed",opacity:0.75,"font-size":"125%"});
+    gate5.addClass("gatecolor5");
+    labels[9] = av.label("$\\cdot$",{left:520,top:230}).addClass("font125");
+    labels[10] = av.label("($x_8 \\leftrightarrow (x_5+x_6)$)",{left:525,top:230}).addClass("labelcolor5").addClass("font125");
     av.step();
-    gate6.css({"fill":"DarkGoldenRod",opacity:0.5});
-    labels[11] = av.label("$\\cdot$",{left:675,top:230}).css({"font-size":"125%"});
-    labels[12] = av.label("($x_9 \\leftrightarrow (x_7+x_6)$)",{left:0,top:250}).css({color:"DarkGoldenRod",opacity:0.75,"font-size":"125%"});
+    gate6.addClass("gatecolor6");
+    labels[11] = av.label("$\\cdot$",{left:675,top:230}).addClass("font125");
+    labels[12] = av.label("($x_9 \\leftrightarrow (x_7+x_6)$)",{left:0,top:250}).addClass("labelcolor6").addClass("font125");
     av.step();
-    gate7.css({"fill":"DarkSlateGray",opacity:0.5});
-    labels[13] = av.label("$\\cdot$",{left:148,top:250}).css({"font-size":"125%"});
-    labels[14] = av.label("($x_{10} \\leftrightarrow (x_7.x_8.x_9)$)",{left:155,top:250}).css({color:"DarkSlateGray",opacity:0.75,"font-size":"125%"});
+    gate7.addClass("gatecolor7");
+    labels[13] = av.label("$\\cdot$",{left:148,top:250}).addClass("font125");
+    labels[14] = av.label("($x_{10} \\leftrightarrow (x_7.x_8.x_9)$)",{left:155,top:250}).addClass("labelcolor7").addClass("font125");
 
     av.step();
     var labels2 = new Array(15);
     label2 = av.label("=",{left:-5,top:285});
     var x=10;
-    labels2[0] = av.label("<b>$x_{10}$</b>",{left:x+0,top:280}).css({color:"OrangeRed","font-size":"125%"});
-    labels2[1] = av.label("$\\cdot$",{left:x+25,top:280}).css({"font-size":"125%"});
-    labels2[2] = av.label("$(\\overline{x_3} + \\overline{x_4})\\cdot(x_3+x_4)$",{left:x+30,top:280}).css({color:"Blue",opacity:0.75,"font-size":"125%"});
-    labels2[3] = av.label("$\\cdot$",{left:x+200,top:280}).css({"font-size":"125%"});
-    labels2[4] = av.label("$(x_5 + \\overline{x_1})\\cdot(x_5 + \\overline{x_2})\\cdot(\\overline{x_5} + x_1 + x_2)$",{left:x+205,top:280}).css({color:"DarkCyan",opacity:0.75,"font-size":"125%"});
-    labels2[5] = av.label("$\\cdot$",{left:x+510,top:280}).css({"font-size":"125%"});
-    labels2[6] = av.label("$(\\overline{x_4} + \\overline{x_6})\\cdot(x_4+x_6)$",{left:x+515,top:280}).css({color:"BlueViolet",opacity:0.75,"font-size":"125%"});
-    labels2[7] = av.label("$\\cdot$",{left:x+690,top:280}).css({"font-size":"125%"});
+    labels2[0] = av.label("<b>$x_{10}$</b>",{left:x+0,top:280}).addClass("outputcolor").addClass("font125");
+    labels2[1] = av.label("$\\cdot$",{left:x+25,top:280}).addClass("font125");
+    labels2[2] = av.label("$(\\overline{x_3} + \\overline{x_4})\\cdot(x_3+x_4)$",{left:x+30,top:280}).addClass("labelcolor1").addClass("font125");
+    labels2[3] = av.label("$\\cdot$",{left:x+200,top:280}).addClass("font125");
+    labels2[4] = av.label("$(x_5 + \\overline{x_1})\\cdot(x_5 + \\overline{x_2})\\cdot(\\overline{x_5} + x_1 + x_2)$",{left:x+205,top:280}).addClass("labelcolor2").addClass("font125");
+    labels2[5] = av.label("$\\cdot$",{left:x+510,top:280}).addClass("font125");
+    labels2[6] = av.label("$(\\overline{x_4} + \\overline{x_6})\\cdot(x_4+x_6)$",{left:x+515,top:280}).addClass("labelcolor3").addClass("font125");
+    labels2[7] = av.label("$\\cdot$",{left:x+690,top:280}).addClass("font125");
     labels2[8] = av.label("<br>$(x_7 + \\overline{x_1} + \\overline{x_2}+ "+
 "\\overline{x_4})\\cdot(\\overline{x_7} + x_1)\\cdot(\\overline{x_7} + x_2)\\cdot("+
-"\\overline{x_7} +x_4)$",{left:x+0,top:280}).css({color:"DarkRed",opacity:0.75,"font-size":"125%"});
-    labels2[9] = av.label("<br>$\\cdot$",{left:x+440,top:280}).css({"font-size":"125%"});
-    labels2[10] = av.label("<br>$(x_8 + \\overline{x_5})\\cdot(x_8 + \\overline{x_6})\\cdot(\\overline{x_8} + x_5 + x_6)$",{left:x+445,top:280}).css({color:"MediumVioletRed",opacity:0.75,"font-size":"125%"});
-    labels2[11] = av.label("<br>$\\cdot$",{left:x+755,top:280}).css({"font-size":"125%"});
-    labels2[12] = av.label("<br><br>$(x_9 + \\overline{x_7})\\cdot(x_9 + \\overline{x_6})\\cdot(\\overline{x_9} + x_7 + x_6)$",{left:x+0,top:280}).css({color:"DarkGoldenRod",opacity:0.75,"font-size":"125%"});
-    labels2[13] = av.label("<br><br>$\\cdot$",{left:x+310,top:280}).css({"font-size":"125%"});
+"\\overline{x_7} +x_4)$",{left:x+0,top:280}).addClass("labelcolor4").addClass("font125");
+    labels2[9] = av.label("<br>$\\cdot$",{left:x+440,top:280}).addClass("font125");
+    labels2[10] = av.label("<br>$(x_8 + \\overline{x_5})\\cdot(x_8 + \\overline{x_6})\\cdot(\\overline{x_8} + x_5 + x_6)$",{left:x+445,top:280}).addClass("labelcolor5").addClass("font125");
+    labels2[11] = av.label("<br>$\\cdot$",{left:x+755,top:280}).addClass("font125");
+    labels2[12] = av.label("<br><br>$(x_9 + \\overline{x_7})\\cdot(x_9 + \\overline{x_6})\\cdot(\\overline{x_9} + x_7 + x_6)$",{left:x+0,top:280}).addClass("labelcolor6").addClass("font125");
+    labels2[13] = av.label("<br><br>$\\cdot$",{left:x+310,top:280}).addClass("font125");
     labels2[14] = av.label("<br><br>$(x_{10} + \\overline{x_7} + \\overline{x_8}+ "+
 "\\overline{x_9})\\cdot(\\overline{x_{10}} + x_7)\\cdot(\\overline{x_{10}} + x_8)\\cdot("+
-"\\overline{x_{10}} +x_9)$",{left:x+315,top:280}).css({color:"DarkSlateGray",opacity:0.75,"font-size":"125%"});
+"\\overline{x_{10}} +x_9)$",{left:x+315,top:280}).addClass("labelcolor7").addClass("font125");
 
    label3 = av.label("<b> Note : This CNF expression can be constructed in polynomial time</b>",{left:0,top:375});
     av.step();
