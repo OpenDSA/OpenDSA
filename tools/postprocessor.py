@@ -200,7 +200,16 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   
   soup = BeautifulSoup(html, "lxml")
   
-  TAGS = [ ('script', 'src'), ('link', 'href'), ('img', 'src') ]
+  verbose = False
+  
+  TAGS = [ ('script', 'src'), ('link', 'href'), ('img', 'src'), ('a', 'href') ]
+  
+  # KILL MATHJAX
+  ''' Helpful for debugging
+  for possible_math_jax in soup.find_all('script'):
+    if possible_math_jax.has_attr('src') and possible_math_jax['src'].startswith('//cdn.mathjax.org/mathjax'):
+      possible_math_jax.extract()
+  '''
   
   # Find all of the scripts, links, images, etc. that we might need
   for tag_name, tag_url in TAGS+[('div', 'data-frame-src')]:
@@ -213,23 +222,7 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
       
       
   '''
-  Keep actual <head>
-  Strip out <div class='header'> content
-  
-  Strip out any JS/CSS that's related to the slideshow
-  
-  
-  Break it up according to the exercises
-  
-    Text
-    Question
-    
-    Text
-    Question
-    
-    Text
-    
-  Different folder
+  Skip any exercises that don't have points
   
   '''
   
@@ -289,70 +282,102 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
         slide_scripts[name].append(a_tag.extract())
   
   # Breaking file into components
-  soup_content = soup.find('div', class_='section')
-  section_divs = soup_content.contents
-  found_counter = 0
-  exercise_data = {}
-  all_divs = []
-  if section_divs:
-    # Process the fragments in two passes
-    fragments = []
-    fragment_components = []
-    total = 0
-    
-    extractions = []
-    while section_divs:
-      extractions.append(section_divs[0].extract())
-    # In the first pass, we find all of the problems and group them into fragments
-      # If we find a slideshow or practice exercise, then start a new fragment
-    for section in extractions:
-      # If we find a slideshow or practice exercise, then start a new fragment
-      #section = section.extract()
-      fragment_components.append(section)
-      all_divs.append(section)
-      if isinstance(section, element.Tag) and section.has_attr('id') and section['id'] in exercises:
-        name = section['id']
-        print "Found:", name
-        fragments.append((name, fragment_components))
-        fragment_components = []
-        exercise_data[name] = {key: section[key] for key in section.attrs}
-        total += 1
-    if not fragments:
-      fragments.append(("", fragment_components))
-        
-    # Then we write out each grouping with the proper name and JS/CSS
-    for section_id, fragment in fragments:
-        seq = '-{0:02d}'.format(1+found_counter) if total > 0 else ''
-        filename = '{}{}.html'.format(mod_name, seq)
-        path_html = os.path.join(os.path.dirname(path), '..', 'lti_html', filename)
-        # Write it out, preserving unicode
-        for i, bit in enumerate(fragment):
-          soup_content.insert(i,bit)
-        sss_div = soup.new_tag('div', id='SLIDE-SPECIFIC-SCRIPTS')
-        soup_content.insert_before(sss_div)
-        if section_id in slide_scripts:
-          for a_script in slide_scripts[section_id]:
-            sss_div.insert(0, a_script)
-          if section_id in ('quicksortCON', 'bubblesortCON'):
-            for a_script in slide_scripts[section_id.replace('CON', 'CODE')]:
-              sss_div.insert(0, a_script)
-        with codecs.open(path_html, 'w', 'utf-8') as o:
-          o.write(unicode(soup))
-        soup_content.clear()
-        #for bit in soup_content:
-          #bit.extract()
-        sss_div.extract()
-        found_counter += 1
-  else:
-    print "Failed to find any 'div' tags with a 'section' class."
-    path_html = os.path.join(os.path.dirname(path), '{}-{}.html'.format(mod_name, found_counter))
-    with codecs.open(path_html, 'w', 'utf-8') as o:
-      o.writelines(html)
-  print "\t Had ", 1+found_counter, "parts"
   
-  # Delete the file on the way out
-  #os.remove(path)
-  return exercise_data
+  # First pass: grab out all of the HTML fragments
+  content_div_soup = soup.find('div', class_='content')
+  section_divs_soup = content_div_soup.find_all('div', class_='section', recursive=False)
+  content_div = []
+  total_bodies = 0
+  has_subsections = False
+  has_sections = False
+  for section_div_soup in section_divs_soup:
+    section_div = []
+    section_starting_content = []
+    for subsection_div_soup in list(section_div_soup.contents):
+      subsection_div = []
+      if (subsection_div_soup.name == 'div'
+          and subsection_div_soup.has_attr('class') 
+          and 'section' in subsection_div_soup['class']):
+        # This is a subsection, grab its children
+        for body_soup in list(subsection_div_soup.contents):
+          subsection_div.append( ( body_soup.parent, body_soup.extract() ) )
+          total_bodies += 1
+        has_subsections = True
+      else:
+        # This is section starter content.
+        body_soup = subsection_div_soup
+        subsection_div.append( ( body_soup.parent, body_soup.extract() ) )
+        total_bodies += 1
+        has_sections = True
+      section_div.append(subsection_div)
+    content_div.append(section_div)
+  if verbose:
+    print "\tPhase 1: Found {} pieces of body content".format(total_bodies)
+    
+  # Second pass: cluster body fragments by exercises into "slides"
+  total_exercises = 0
+  slides = []
+  new_slide = []
+  found = []
+  previous_parent = None
+  for section_div in content_div:
+    #print "\tNew Section"
+    for subsection_div in section_div:
+      #print "\t\tNew Subsection"
+      for parent, body in subsection_div:
+        #print "\t\t\tBody:", type(body)
+        new_slide.append( (parent, body) )
+        # If we find a slideshow or practice exercise, then start a new fragment
+        if isinstance(body, element.Tag) and body.has_attr('id'):
+          name = body['id']
+          if body['id'] in exercises and 'points' in exercises[body['id']]:
+            #print "\t\t\t\tFound exercise:", name
+            slides.append((name, new_slide))
+            new_slide = []
+            total_exercises += 1
+            found.append(name)
+      # Anything after that exercise gets placed in a trailing slide
+      #     before we move onto the next subsection
+      if new_slide and parent != previous_parent:
+        if ''.join([str(s[1]) for s in new_slide]).strip():
+          if has_sections and previous_parent == None:
+            previous_parent = parent
+            continue
+          slides.append(("", new_slide))
+          new_slide = []
+          previous_parent = parent
+  if verbose:
+    print "\tPhase 2: Clustered into {} slides. Found {} exercises, expected {}.".format(len(slides), total_exercises, len(exercises))
+  
+  # third pass: render them out with the relevant scripts
+  for index, (exercise_name, slide) in enumerate(slides):
+    #print "\tSlide", index, exercise_name, len(slide)
+    # Identify the new filename
+    if total_exercises > 0:
+      slide_filename = '{0}-{1:02d}.html'.format(mod_name, 1+index)
+    else:
+      slide_filename = '{}.html'.format(mod_name)
+    slide_filepath = os.path.join(os.path.dirname(path), '..', 'lti_html', slide_filename)
+    # Add the relevant content back in
+    for body_index, (parent, body) in enumerate(slide):
+      parent.insert(body_index, body)
+    # Add back in slide specific scripts
+    sss_div = soup.new_tag('div', id='SLIDE-SPECIFIC-SCRIPTS')
+    content_div_soup.insert_before(sss_div)
+    if exercise_name in slide_scripts:
+      for a_script in slide_scripts[exercise_name]:
+        sss_div.insert(0, a_script)
+    if exercise_name in ('quicksortCON', 'bubblesortCON'):
+      for a_script in slide_scripts[exercise_name.replace('CON', 'CODE')]:
+        sss_div.insert(0, a_script)  
+    # Write out the file with what we have so far
+    with codecs.open(slide_filepath, 'w', 'utf-8') as o:
+      o.write(unicode(soup))
+    sss_div.clear()
+    for parent, body in slide:
+      body.extract()
+  if verbose:
+    print "\tPhase 3: complete"
     
 def pretty_print_xml(data, file_path):
     ElementTree(data).write(file_path)
@@ -373,7 +398,6 @@ def make_lti(config):
   shutil.rmtree(lti_folder, ignore_errors=True)
   os.makedirs(lti_folder)
   
-  exercises = {}
   url_index = {
     (section_name.split('/')[1] if '/' in section_name else section_name)
         : '{}/{}'.format(chapter_name, section_name.replace('/', '_'))
@@ -386,7 +410,7 @@ def make_lti(config):
     for section_name, section_data in sections.items():
       name = section_name.split('/')[1] if '/' in section_name else section_name
       path = os.path.join(dest_dir, name+".html")
-      exercises[path] = break_up_fragments(path, section_data['exercises'], tuple(html_files)+ignore_files, url_index, config.book_name)
+      break_up_fragments(path, section_data['exercises'], tuple(html_files)+ignore_files, url_index, config.book_name)
 
 def main(argv):
   if len(argv) != 3:
