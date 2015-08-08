@@ -94,7 +94,7 @@ Now try for yourself to see if you understand how Bubble Sort works.
    to that performed by Insertion Sort.
 
 Here are some review questions to check your understanding of
-Insertion Sort. 
+Bubble Sort. 
  
 .. avembed:: Exercises/Sorting/BubsortSumm.html ka
 
