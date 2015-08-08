@@ -81,6 +81,9 @@ good: min
 RecurTutor: min
 	python $(CONFIG_SCRIPT) config/RecurTutor.json
 
+TestRecur: min
+	python $(CONFIG_SCRIPT) config/TestRecur.json
+
 RecurTutor2: min
 	python $(CONFIG_SCRIPT) config/RecurTutor2.json
 
