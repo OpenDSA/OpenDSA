@@ -988,6 +988,29 @@
       }
     },
 
+    "Dictionary ADT and Maps": {
+      "Design/DesignAltList": {
+        "long_name": "Alternate List ADT Design",
+        "exercises": {}
+      },
+      "Design/Dictionary": {
+        "long_name": "The Dictionary ADT",
+        "exercises": {}
+      },
+      "Design/DesignSumm": {
+        "long_name": "Design Chapter Summary",
+        "exercises": {
+          "DesignSumm": {
+            "long_name": "Design Summary Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
+      }
+    },
+
+
 
     "Binary Trees": {
       "Binary/BinaryTreeIntro": {
@@ -1824,29 +1847,6 @@
     },
 
 
-    "Dictionary ADT and Maps": {
-      "Design/DesignAltList": {
-        "long_name": "Alternate List ADT Design",
-        "exercises": {}
-      },
-      "Design/Dictionary": {
-        "long_name": "The Dictionary ADT",
-        "exercises": {}
-      },
-      "Design/DesignSumm": {
-        "long_name": "Design Chapter Summary",
-        "exercises": {
-          "DesignSumm": {
-            "long_name": "Design Summary Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          }
-        }
-      }
-    },
-
-
     "Hashing": {
       "Hashing/HashIntro": {
         "long_name": "Chapter Introduction: Hashing",
@@ -2112,102 +2112,6 @@
         }
       }
     },
-
-
-
-    "Memory Management": {
-      "Development/MemmanIntro": {
-        "long_name": "Chapter Introduction: Memory Management",
-        "exercises": {}
-      },
-      "Development/Dynamic": {
-        "long_name": "Dynamic Memory Allocation",
-        "exercises": {}
-      },
-      "Development/SequentialFit": {
-        "long_name": "Sequential-Fit Methods",
-        "exercises": {}
-      },
-      "Development/FirstFit": {
-        "long_name": "First Fit",
-        "exercises": {
-          "firstFit": {
-            "long_name": "First Fit Visualization",
-            "required": false,
-            "points": 0,
-            "showhide": "none",
-            "threshold": 1.0,
-            "exer_options": { "fitAlgorithm": "1" }
-          },
-          "firstFitPRO": {
-            "long_name": "First Fit Proficiency Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 0.90
-          }
-        }
-      },
-      "Development/CircularFit": {
-        "long_name": "Circular First Fit",
-        "exercises": {
-          "firstFit": {
-            "long_name": "Circular First Fit Visualization",
-            "required": false,
-            "points": 0,
-            "showhide": "none",
-            "threshold": 1.0,
-            "exer_options": { "fitAlgorithm": "2" }
-          }
-        }
-      },
-      "Development/BestFit": {
-        "long_name": "Best Fit",
-        "exercises": {
-          "firstFit": {
-            "long_name": "Best Fit Visualization",
-            "required": false,
-            "points": 0,
-            "showhide": "none",
-            "threshold": 1.0,
-            "exer_options": { "fitAlgorithm": "3" }
-          }
-        }
-      },
-      "Development/WorstFit": {
-        "long_name": "Worst Fit",
-        "exercises": {
-          "firstFit": {
-            "long_name": "Worst Fit Visualization",
-            "required": false,
-            "points": 0,
-            "showhide": "none",
-            "threshold": 1.0,
-            "exer_options": { "fitAlgorithm": "4" }
-          }
-        }
-      },
-      "Development/MMPerformance": {
-        "long_name": "Sequential-Fit Performance",
-        "exercises": {
-          "firstFit": {
-            "long_name": "Sequential Fit Visualization",
-            "required": false,
-            "points": 0,
-            "showhide": "none",
-            "threshold": 1.0
-          }
-        }
-      },
-      "Development/Buddy": {
-        "long_name": "Other Memory Allocation Methods",
-        "exercises": {}
-      },
-      "Development/Garbage": {
-        "long_name": "Failure Policies and Garbage Collection",
-        "exercises": {}
-      }
-    },
-
 
 
 
