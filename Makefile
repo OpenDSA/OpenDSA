@@ -5,7 +5,7 @@ CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicat
 CSSLINTFLAGS = --quiet --ignore=ids,adjoining-classes
 MINIMIZE = uglifyjs
 
-.PHONY: all clean lint csslint jshint min CS2114 CS2114F15 CS223 CS5114 CS3114 CS3114notes CS150 OpenDSA test testX IS allBooks nomin pull CPSC270S15 CS2401 COP3530 CS208 ECE252 Tutorial TDDD86_2014 S15 CSCI115
+.PHONY: all clean lint csslint jshint min CS2114 CS2114F15 CS223 CS5114 CS3114 CS3114notes CS150 OpenDSA test testX IS allBooks nomin pull CPSC270S15 CS2401 COP3530 CS208 ECE252 Tutorial TDDD86_2014 S15 CSCI115 CS316
 
 all: lint
 
@@ -64,7 +64,7 @@ jshintlib:
 min: nomin
 #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
-F15: CS2114F15 CS3114
+F15: CS2114F15 CS3114 CS316
 
 Pointers: min
 	python $(CONFIG_SCRIPT) config/Pointers.json
@@ -141,6 +141,9 @@ CS3114PM: min
 
 CS3114notes: min
 	python $(CONFIG_SCRIPT) s config/CS3114notes.json
+
+CS316: min
+	python $(CONFIG_SCRIPT) config/CS316.json
 
 COP3530: min
 	python $(CONFIG_SCRIPT) config/COP3530.json
