@@ -61,8 +61,8 @@ value stored in the tree is actually the number of the block
 containing the child node (usually interpreted as an offset from the
 beginning of the corresponding disk file).
 In a typical application, the B-tree's access to the disk file will be
-managed using a buffer pool and a block-replacement scheme such as LRU
-(see Module :numref:`BuffPool`).
+managed using a :ref:`buffer pool <buffer pool> <BuffPool>`
+and a block-replacement scheme such as :term:`LRU`.
 
 Figure :num:`Figure #BTexamp` shows a B-tree of order four.
 Each node contains up to three keys, and

@@ -29,9 +29,27 @@
     "Introduction": {
       "Background/IntroDSA.rst": {
         "long_name": "Introduction to Data Structures and Algorithms",
+        "sections": {
+          "se": {
+            "long_name": "software engineering topics",
+            "showhide": "none",
+            "remove": true
+          }
+        },
         "exercises": {
           "IntroSumm": {
             "long_name": "Introduction Summary Questions",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "Design/ADT": {
+        "long_name": "Abstract Data Types",
+        "exercises": {
+          "IntroADT": {
+            "long_name": "ADT Summary Questions",
             "required": true,
             "points": 1.0,
             "threshold": 5
@@ -120,27 +138,27 @@
 	"dispModComp": true,
         "exercises": {}
       },
-      "AlgAnal/AnalPrelim": {
+      "AlgAnalTest/AnalPrelim": {
         "long_name": "Problems, Algorithms, and Programs",
 	"dispModComp": true,
         "exercises": {}
       },
-      "AlgAnal/AnalIntro": {
+      "AlgAnalTest/AnalIntro": {
         "long_name": "Comparing Algorithms",
 	"dispModComp": true,
         "exercises": {}
       },
-      "AlgAnal/AnalCases": {
+      "AlgAnalTest/AnalCases": {
         "long_name": "Best, Average, and Worst Cases",
 	"dispModComp": true,
         "exercises": {}
       },
-      "AlgAnal/AnalCompvsAlg": {
+      "AlgAnalTest/AnalCompvsAlg": {
         "long_name": "A Faster Computer, or a Faster Algorithm?",
 	"dispModComp": true,
         "exercises": {}
       },
-      "AlgAnal/AnalAsymptotic": {
+      "AlgAnalTest/AnalAsymptotic": {
         "long_name": "Asymptotic Analysis and Upper Bounds",
         "sections": {
           "thetadisc": {
@@ -152,7 +170,7 @@
 	"dispModComp": true,
         "exercises": {}
       },
-      "AlgAnal/AnalLower": {
+      "AlgAnalTest/AnalLower": {
         "long_name": "Lower Bounds and Theta Notation",
         "exercises": {
           "AnalPairSumm": {
@@ -163,7 +181,7 @@
           }
         }
       },
-      "AlgAnal/AnalProgram": {
+      "AlgAnalTest/AnalProgram": {
         "long_name": "Calculating the Running Time of a Program",
         "sections": {
           "binsearchpro": {
@@ -194,12 +212,12 @@
           }
         }
       },
-      "AlgAnal/AnalProblem": {
+      "AlgAnalTest/AnalProblem": {
         "long_name": "Analyzing Problems",
 	"dispModComp": true,
         "exercises": {}
       },
-      "AlgAnal/AnalMisunderstanding": {
+      "AlgAnalTest/AnalMisunderstanding": {
         "long_name": "Common Misunderstandings",
 	"dispModComp": true,
         "exercises": {}
@@ -244,14 +262,6 @@
             "points": 1.0,
             "threshold": 5
           }
-        }
-      }
-    },
-    "Design 1": {
-      "Design/ADT": {
-        "long_name": "Abstract Data Types",
-        "exercises": {
-          "ADTCON": {}
         }
       }
     },
@@ -674,7 +684,7 @@
         }
       }
     },
-    "Design 2": {
+    "Design": {
       "Design/DesignPatterns": {
         "long_name": "Design Patterns",
 	"dispModComp": true,
@@ -2178,7 +2188,17 @@
       "Development/BTree": {
         "long_name": "B-Trees",
 	"dispModComp": true,
-        "exercises": {}
+        "exercises": {
+          "bPlusTreeInsertPRO": {
+            "long_name": "B+ Tree Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90,
+            "exer_options": {
+              "JXOP-feedback": "continuous"
+            }
+          }
+        }
       }
     },
     "General Trees": {
@@ -2280,7 +2300,7 @@
       "Graph/GraphIntro": {
         "long_name": "Introduction and Terminology",
         "exercises": {
-          "GraphCalcSumm": {
+          "GspaceCalcSumm": {
             "long_name": "Graph Space Requirements Exercise",
             "required": true,
             "points": 2.0,

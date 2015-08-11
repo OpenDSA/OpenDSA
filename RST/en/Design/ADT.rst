@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2015 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -249,7 +249,8 @@ Data types have both a :term:`logical form` and a :term:`physical form`.
 The definition of the data type in terms of an ADT is its logical
 form.
 The implementation of the data type as a data structure
-is its physical form.
+is its physical form. Sometimes you may see the term *concrete implementation*,
+but the word concrete is redundant.
 The figure below illustrates this relationship between logical
 and physical forms for data types.
 When you implement an ADT, you are dealing with the physical form of
@@ -268,9 +269,16 @@ context of a higher-level task.
 
    The relationship between data items, abstract data types, and data
    structures.
-   The ADT defines the logical form of the data type.
-   The data structure implements the physical form of the data type.
-   Test some :math:`n`.
+
+The ADT defines the logical form of the data type.
+The data structure implements the physical form of the data type.
+Users of an ADT are typically programmers working in the same language
+as the implementer of the ADT.
+Typically, these programmers want to use the ADT as a component
+in another application.
+The interface to an ADT is also commonly referred to as the 
+Application Programmer Interface, or API, for the ADT.
+The interface becomes a form of communication between the two programmers.
 
 .. topic:: Example
 
@@ -283,4 +291,12 @@ context of a higher-level task.
    Within the class, a variety of physical implementations for lists
    is possible.
 
+.. todo:: fix ADTCON   - no code to make it work
+
 .. odsascript:: AV/Design/ADTCON.js
+
+
+.. avembed:: Exercises/Development/IntroADT.html ka
+
+
+

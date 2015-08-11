@@ -19,10 +19,9 @@ Solving Recurrence Relations
 
 Recurrence relations are often used to model the cost of recursive
 functions.
-For example, the standard Mergesort
-(Module :numref:`<Mergesort>`) takes a
-list of size :math:`n`, splits it in half, performs Mergesort on each
-half, and finally merges the two sublists in :math:`n` steps.
+For example, the standard :ref:`Mergesort <Mergesort> <Mergesort>`
+takes a list of size :math:`n`, splits it in half, performs Mergesort
+on each half, and finally merges the two sublists in :math:`n` steps.
 The cost for this can be modeled as
 
 .. math::
@@ -43,7 +42,7 @@ The second approach is to expand the recurrence to convert it to a
 summation and then use summation techniques.
 The third approach is to take advantage of already proven theorems
 when the recurrence is of a suitable form.
-In particular, typical divide and conquer algorithms such as
+In particular, typical divide-and-conquer algorithms such as
 Mergesort yield recurrences of a form that fits a pattern for which
 we have a ready solution.
 
@@ -306,11 +305,9 @@ are in turn replaced by their definition.
 This is the expanding step.
 These terms are again expanded, and so on, until a full series
 with no recurrence results.
-This yields a summation, and techniques for solving summations can
-then be used.
-A couple of simple expansions were shown in
-Module :numref:`<Summations>`. 
-A more complex example is given below.
+This yields a :ref`summation <summation> <Summation>`,
+and techniques for solving summations can then be used.
+A more complex example is given next.
 
 .. topic:: Example
 
@@ -345,7 +342,8 @@ A more complex example is given below.
       & = & 7n + 5n^2\sum_{i=0}^{k-1} 1/2^i.\\
       \end{eqnarray*}
 
-   From Equation (6) of Module :numref:`<Summations>`, we have:
+   From Equation (6) of Module :ref:`Summation <Summation> <Summation>`,
+   we have:
 
    .. math::
 
@@ -397,13 +395,13 @@ A more complex example is given below.
       &=& 4n - 2 \log n - 4.
       \end{eqnarray*}
 
-Divide and Conquer Recurrences
+Divide-and-Conquer Recurrences
 ------------------------------
 
 The third approach to solving recurrences is to take advantage of
 known theorems that provide the solution for classes of recurrences.
 Of particular practical use is a theorem that gives the
-answer for a class known as :term:`divide and conquer recurrences`.
+answer for a class known as :term:`divide-and-conquer recurrences`.
 These have the form
 
 .. math::
@@ -448,7 +446,7 @@ The summation is a geometric series whose sum depends on the ratio
 There are three cases.
 
 (#) :math:`r<1`.
-    From Equation (4) of Module :numref:`<Summations>`,
+    From Equation (4) of Module :ref`summation <summation> <Summation>`,
 
     .. math::
 
@@ -478,7 +476,7 @@ There are three cases.
        {\bf T}(n) = \Theta(n^{\log_ba}\log n) = \Theta(n^k\log n).
 
 (#) :math:`r>1`.
-    From Equation (5) of Module :numref:`<Summations>`,
+    From Equation (5) of Module :ref`summation <summation> <Summation>`,
 
     .. math::
 
@@ -546,7 +544,7 @@ Average-Case Analysis of Quicksort
 ----------------------------------
 
 
-In Module :numref:`<QuickSort>`, we determined that the average-case
+In Module :ref:`Quicksort <Quicksort> <Quicksort>`, we determined that the average-case
 analysis of Quicksort had the following recurrence:
 
 .. math::
@@ -621,6 +619,6 @@ Expanding the recurrence, we get
    \end{eqnarray*}
 
 for :math:`{\cal H}_{n+1}`, the Harmonic Series.
-From Equation (10) of Module :numref:`<Summations>`,
+From Equation (10) of Module :ref`summation <summation> <Summation>`,
 :math:`{\cal H}_{n+1} = \Theta(\log n)`,
 so the final solution is :math:`\Theta(n \log n)`.

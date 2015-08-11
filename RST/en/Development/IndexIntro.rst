@@ -54,8 +54,8 @@ the records.
 
 :term:`Indexing` is the process of associating a key with the location
 of a corresponding data record.
-Module :numref:`<ExternalSort>` discussed the concept of a key sort, in
-which an :term:`index file` is created whose
+An :ref:`external sort <external sort> <ExternalSort>` typically uses
+the concept of a key sort, in which an :term:`index file` is created whose
 records consist of key/pointer pairs.
 Here, each key is associated with a pointer to a complete record in
 the main database file.
@@ -110,15 +110,15 @@ A third approach to indexing is the tree index.
 Trees are typically used to organize large databases that must support
 record insertion, deletion, and
 key range searches.
-Module :numref:`<ISAM>` briefly describes :term:`ISAM`
+:ref:`ISAM <ISAM> <ISAM>` was a
 a tentative step toward solving the problem of storing a large
 database that must support insertion and deletion of records.
 Its shortcomings help to illustrate the value of tree indexing
 techniques.
-Module :numref:`<TreeIndexing>` introduces the basic issues related to tree
-indexing.
-Module :numref:`<TwoThreeTree>` introduces the 2-3 tree, a
-balanced tree structure that is a simple form of the
-B-tree covered in Module :numref:`<BTree>`.
+Module :ref:`TreeIndexing <TreeIndexing> <TreeIndexing>`
+introduces the basic issues related to tree indexing.
+Module :ref:`2-3 tree <2-3 tree> <TwoThreeTree>` introduces the 2-3
+tree, a balanced tree structure that is a simple form of the
+:ref:`B-tree <B-tree> <BTree>`.
 B-trees are the most widely used indexing method for large disk-based
 databases, and for implementing file systems.

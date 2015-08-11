@@ -17,9 +17,8 @@ accuracy.
 But often we can reduce the possibility for error to be as low as we
 like, while still speeding up the algorithm.
 
-In Module :numref:`<BoundLower>` we determined that the lower bound
-cost of finding the maximum value in an unsorted list is
-:math:`\Omega(n)`.
+The :ref:`lower bound for maximum finding <maximum lower bound> <LowerBound>`
+in an unsorted list is :math:`\Omega(n)`.
 This is the least time needed to be certain that we have found the
 maximum value.
 But what if we are willing to relax our requirement for certainty?
@@ -61,8 +60,8 @@ These types of algorithms also have names.
 Here is an example of an algorithm for finding a large value that
 gives up its guarantee of getting the best value in exchange for an
 improved running time.
-This is an example of a :term:`probabilistic` algorithm, since it
-includes steps that are affected by :term:`random` events.
+This is an example of a :term:`probabilistic algorithm`, since it
+includes steps that are affected by random events.
 Choose :math:`m` elements at random, and pick the best one of those as
 the answer.
 For large :math:`n`, if :math:`m \approx \log n`, the answer is pretty
