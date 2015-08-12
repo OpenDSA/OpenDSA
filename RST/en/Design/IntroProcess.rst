@@ -152,15 +152,17 @@ software development project has to make on their own.
 Waterfall Method
 ----------------
 
-.. sidebar:: Waterfall model [#]_
-
-   .. odsafig:: Images/BackWaterfall.png
-      
-   
 Initially described in 1970, the Waterfall process was another early 
 software development process adapted from manufacturing and construction processes.
 The waterfall model is a sequential design process, in which progress is seen as 
 flowing steadily downwards (like a waterfall) through several distinct phases.
+
+.. odsafig:: Images/BackWaterfall.png
+   
+   Waterfall model [#]_
+
+      
+   
 While many variations exist, most waterfall processes in use go through at least
 the following phases:
 
@@ -207,14 +209,16 @@ The main building blocks, or content elements, are the following:
    A task describes a unit of work assigned to a Role that provides a meaningful result.
 
 
-.. sidebar:: RUP disciplines and iterations
+.. odsafig:: Images/BackRUPIterations.png
 
-   .. odsafig:: Images/BackRUPIterations.png
+   RUP disciplines and iterations
    
 
+The RUP defines a project as a series of *iterations*.
+An iteration is a period of time in which project tasks are performed.
 Within each iteration, the tasks are categorized into nine disciplines:
 
-- Six "engineering disciplines"
+- Six "engineering" disciplines
 
    - Business modelling
    - Requirements
@@ -223,7 +227,7 @@ Within each iteration, the tasks are categorized into nine disciplines:
    - Test
    - Deployment
 
-- And three supporting disciplines
+- And three "supporting" disciplines
 
    - Configuration and change management
    - Project management
@@ -299,10 +303,6 @@ Personal Software Process (PSP)/Team Software Process (TSP) (Watts Humphrey, SEI
 eXtreme Programming (XP)
 ------------------------
 
-.. sidebar:: Planning and feedback loops in extreme programming. [#]_
-
-   .. odsafig:: Images/Extreme_Programming.png
-
 Established in the late 1990's by Kent Beck, XP is 
 regarded as perhaps the most famous agile method.
 XP was certainly among the first to gain attention from mainstream
@@ -313,7 +313,6 @@ As agile practices go, it is quite proscriptive, fairly rigorous and
 initially expects all practices to be followed.
 Kent Beck has been quoted as saying
 
-..
    If you're not performing all 12 practices, then you're not doing XP.
 
 
@@ -326,6 +325,11 @@ Rather than a burden, changes are considered a natural, inescapable and desirabl
 software projects, and should be planned for, instead of attempting 
 to define a stable set of requirements.
   
+.. odsafig:: Images/Extreme_Programming.png
+
+    Planning and feedback loops in extreme programming. [#]_
+
+
 XP is characterised by several core practices including 
 stories, pair programming, simple design, 
 test first, unit tests, and continuous integration.
