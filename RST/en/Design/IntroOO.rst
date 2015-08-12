@@ -8,11 +8,12 @@
    :satisfies: OO Intro
    :topic: Introduction
 
-Introduction to Object Orientation
-==================================
+Introduction to Object Orientated Programming
+=============================================
 
 Object-oriented programming (OOP) is a programming paradigm based on the 
-concept of :term:`objects <object>`, which are :term:`data structures <data structure>` that contain data, 
+concept of :term:`objects <object>`, which are :term:`data structures
+<data structure>` that contain data,
 in the form of fields (or attributes) 
 and code, in the form of procedures, (or methods). 
 A distinguishing feature of objects is that an object's procedures 
@@ -47,10 +48,11 @@ to operate on data structures, object-oriented programming bundles the two toget
 so an **object**, which is an **instance of a class**, operates on its "own" data structure.
 
 
-Principles of Object Orientation
---------------------------------
+Principles of Object Orientated Programming
+-------------------------------------------
 
-There are many views on the main features and motivations for object oriented programming [#]_ [#]_.
+There are many views on the main features and motivations for object
+oriented programming [#]_ [#]_.
 There are 4 principles that apply to most:
 
 :Encapsulation:
