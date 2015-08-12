@@ -291,8 +291,6 @@ The interface becomes a form of communication between the two programmers.
    Within the class, a variety of physical implementations for lists
    is possible.
 
-.. todo:: fix ADTCON   - no code to make it work
-
 .. odsascript:: AV/Design/ADTCON.js
 
 

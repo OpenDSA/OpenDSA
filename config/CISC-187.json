@@ -1,5 +1,5 @@
 {
-  "title": "CISC-187: Data Structures and Object Orientation in Java",
+  "title": "CISC-187",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "lang": "en",
@@ -61,6 +61,10 @@
       },
       "Design/IntroUML": {
         "long_name": "The Unified Modeling Language",
+        "exercises": {}
+      },
+      "Design/DesignPatterns": {
+        "long_name": "Design Patterns",
         "exercises": {}
       },
       "Design/IntroProcess": {
@@ -688,9 +692,41 @@
 
 
 
+    "Dictionary ADT and Maps": {
+      "Design/DesignAltList": {
+        "long_name": "Alternate List ADT Design",
+        "exercises": {}
+      },
+      "Design/Comparison": {
+        "long_name": "Comparing Records",
+        "exercises": {
+          "CompareSumm": {
+            "long_name": "Record Comparison Summary",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
+      },
 
+      "Design/Dictionary": {
+        "long_name": "The Dictionary ADT",
+        "exercises": {}
+      },
+      "Design/DesignSumm": {
+        "long_name": "Design Chapter Summary",
+        "exercises": {
+          "DesignSumm": {
+            "long_name": "Design Summary Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
+      }
+    },
 
-
+    
 
 
 
@@ -1302,17 +1338,6 @@
           }
         }
       },
-      "Design/Comparison": {
-        "long_name": "Comparing Records",
-        "exercises": {
-          "CompareSumm": {
-            "long_name": "Record Comparison Summary",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          }
-        }
-      },
       "Sorting/InsertionSort": {
         "long_name": "Insertion Sort",
         "exercises" : {
@@ -1833,29 +1858,6 @@
       }
     },
 
-    "Dictionary ADT and Maps": {
-      "Design/DesignAltList": {
-        "long_name": "Alternate List ADT Design",
-        "exercises": {}
-      },
-      "Design/Dictionary": {
-        "long_name": "The Dictionary ADT",
-        "exercises": {}
-      },
-      "Design/DesignSumm": {
-        "long_name": "Design Chapter Summary",
-        "exercises": {
-          "DesignSumm": {
-            "long_name": "Design Summary Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          }
-        }
-      }
-    },
-
-    
 
     "Hashing": {
       "Hashing/HashIntro": {
