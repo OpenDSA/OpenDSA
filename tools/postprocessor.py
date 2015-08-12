@@ -205,11 +205,11 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   TAGS = [ ('script', 'src'), ('link', 'href'), ('img', 'src'), ('a', 'href') ]
   
   # KILL MATHJAX
-  ''' Helpful for debugging
+  '''Helpful for debugging'''
   for possible_math_jax in soup.find_all('script'):
     if possible_math_jax.has_attr('src') and possible_math_jax['src'].startswith('//cdn.mathjax.org/mathjax'):
       possible_math_jax.extract()
-  '''
+  
   
   # Find all of the scripts, links, images, etc. that we might need
   for tag_name, tag_url in TAGS+[('div', 'data-frame-src')]:
@@ -272,6 +272,16 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   for class_name in ('topnav', 'bottomnav', 'footer'):
     soup.find('div', class_=class_name).extract()
   soup.find('img', alt='nsf').extract()
+  
+  total_real_exercises = 0
+  for exercise in exercises:
+    if 'points' in exercise:
+      total_real_exercises += 1
+  if total_real_exercises <= 1:
+    single_file_path = os.path.join(os.path.dirname(path), '..', 'lti_html', mod_name+'.html')
+    with codecs.open(single_file_path, 'w', 'utf-8') as o:
+      o.write(unicode(soup))
+    return None
   
   # Collect out the slide-specific JS/CSS
   slide_scripts = defaultdict(list)
