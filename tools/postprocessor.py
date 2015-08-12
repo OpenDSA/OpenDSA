@@ -219,6 +219,8 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
           a_tag[tag_url] = 'OpenDSA/' + a_tag[tag_url][len('../../../'):]
         elif a_tag[tag_url].startswith('_static/'):
           a_tag[tag_url] = 'OpenDSA/Books/'+book_name+'/html/'+a_tag[tag_url]
+        elif a_tag[tag_url].startswith('_images/'):
+          a_tag[tag_url] = 'OpenDSA/Books/'+book_name+'/html/'+a_tag[tag_url]
       
       
   '''
