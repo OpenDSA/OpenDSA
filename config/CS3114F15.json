@@ -44,6 +44,19 @@
             "threshold": 5
           }
         }
+      },
+      "Design/ADT": {
+        "long_name": "Abstract Data Types",
+        "exercises": {
+        "exercises": {
+          "ADTCON": {},
+          "IntroADTSumm": {
+            "long_name": "ADT Summary Questions",
+            "required": true,
+            "points": 1.0,
+            "threshold": 4
+          }
+        }
       }
     },
     "Mathematical Background": {
@@ -251,14 +264,6 @@
             "points": 1.0,
             "threshold": 5
           }
-        }
-      }
-    },
-    "Design 1": {
-      "Design/ADT": {
-        "long_name": "Abstract Data Types",
-        "exercises": {
-          "ADTCON": {}
         }
       }
     },
@@ -681,7 +686,7 @@
         }
       }
     },
-    "Design 2": {
+    "Design": {
       "Design/DesignPatterns": {
         "long_name": "Design Patterns",
 	"dispModComp": true,

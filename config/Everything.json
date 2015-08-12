@@ -50,7 +50,8 @@
       "Design/ADT": {
         "long_name": "Abstract Data Types",
         "exercises": {
-          "IntroADT": {
+          "ADTCON": {},
+          "IntroADTSumm": {
             "long_name": "ADT Summary Questions",
             "required": true,
             "points": 1.0,
