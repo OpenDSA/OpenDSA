@@ -274,11 +274,15 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   soup.find('img', alt='nsf').extract()
   
   total_real_exercises = 0
-  for exercise in exercises:
-    if 'points' in exercise:
+  for exercise, properties in exercises.items():
+    if 'points' in properties:
       total_real_exercises += 1
   if total_real_exercises <= 1:
-    single_file_path = os.path.join(os.path.dirname(path), '..', 'lti_html', mod_name+'.html')
+    if total_real_exercises == 0:
+      filename = mod_name+'.html'
+    else:
+      filename = mod_name+'-01.html'
+    single_file_path = os.path.join(os.path.dirname(path), '..', 'lti_html', filename)
     with codecs.open(single_file_path, 'w', 'utf-8') as o:
       o.write(unicode(soup))
     return None
