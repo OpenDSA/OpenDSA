@@ -1190,7 +1190,7 @@
       }
     },
     "Introduction": {
-      "Background/IntroDSA.rst": {
+      "Background/IntroDSA": {
         "exercises": {
           "IntroSumm": {
             "long_name": "Introduction Summary Questions",
