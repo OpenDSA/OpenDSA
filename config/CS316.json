@@ -258,7 +258,13 @@
       "Design/ADT": {
         "long_name": "Abstract Data Types",
         "exercises": {
-          "ADTCON": {}
+          "ADTCON": {},
+          "IntroADTSumm": {
+            "long_name": "ADT Summary Questions",
+            "required": true,
+            "points": 1.0,
+            "threshold": 4
+          }
         }
       }
     },
@@ -2185,7 +2191,17 @@
       "Development/BTree": {
         "long_name": "B-Trees",
 	"dispModComp": true,
-        "exercises": {}
+        "exercises": {
+          "bPlusTreeInsertPRO": {
+            "long_name": "B+ Tree Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90,
+            "exer_options": {
+              "JXOP-feedback": "continuous"
+            }
+          }
+        }
       }
     },
     "General Trees": {
@@ -2287,7 +2303,7 @@
       "Graph/GraphIntro": {
         "long_name": "Introduction and Terminology",
         "exercises": {
-          "GraphCalcSumm": {
+          "GspaceCalcSumm": {
             "long_name": "Graph Space Requirements Exercise",
             "required": true,
             "points": 2.0,

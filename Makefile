@@ -64,7 +64,7 @@ jshintlib:
 min: nomin
 #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
-F15: CS2114F15 CS3114F15 CS316 TDDD86F15 TDDC91F15 TDDI16F15 CSE017F15
+F15: CS2114F15 CS3114F15 CS316 TDDD86F15 TDDC91F15 TDDI16F15 CSE017F15 CPSC270 COP3530
 
 Pointers: min
 	python $(CONFIG_SCRIPT) config/Pointers.json
@@ -109,8 +109,7 @@ CSE017F15: min
 	python $(CONFIG_SCRIPT) config/CSE017F15.json
 
 CPSC270: min
-	python $(CONFIG_SCRIPT) config/CPSC270S15Siochi.json
-	python $(CONFIG_SCRIPT) config/CPSC270S15Flores.json
+	python $(CONFIG_SCRIPT) config/CPSC270F15.json
 
 CSCI204: min
 	python $(CONFIG_SCRIPT) config/CSCI204S15.json
@@ -152,7 +151,7 @@ CS316: min
 	python $(CONFIG_SCRIPT) config/CS316.json
 
 COP3530: min
-	python $(CONFIG_SCRIPT) config/COP3530.json
+	python $(CONFIG_SCRIPT) config/COP3530F15.json
 
 CS4104S15: min
 	python $(CONFIG_SCRIPT) config/CS4104S15.json

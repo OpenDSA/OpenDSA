@@ -4,8 +4,11 @@
   "code_dir": "SourceCode/",
   "lang": "en",
   "code_lang": {
-    "Java_Generic": { "ext":["java"], "label":"Java (Generic)","lang":"java"}
+    "Java_Generic": { "ext":["java"], "label":"Java (Generic)","lang":"java"},
+    "Java": { "ext":["java"], "label":"Java", "lang":"java"},
+    "Processing": { "ext":["pde"], "label":"Processing","lang":"java"}
   },
+  "tabbed_codeinc": false,
   "module_origin": "http://algoviz.org",
   "exercise_server": "https://opendsa.cs.vt.edu/",
   "logging_server": "https://opendsa.cs.vt.edu/",
@@ -14,7 +17,7 @@
   "build_cmap": false,
   "allow_anonymous_credit": true,
   "suppress_todo": true,
-  "assumes": "ADT; relations",
+  "assumes": "relations",
   "chapters": {
     "Preface": {
       "Intro": {
@@ -44,11 +47,17 @@
       "Design/ADT": {
         "long_name": "Abstract Data Types",
         "exercises": {
-          "ADTCON": {}
+          "ADTCON": {},
+          "IntroADTSumm": {
+            "long_name": "ADT Summary Questions",
+            "required": true,
+            "points": 1.0,
+            "threshold": 4
+          }
         }
       }
     },
-	"Recursion": {
+    "Recursion": {
       "RecurTutor/Introduction": {
         "long_name": "Recursion Chapter Introduction",
         "exercises": {
