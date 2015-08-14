@@ -64,12 +64,6 @@
       },
       "AlgAnalTest/AnalPrelim": {
         "long_name": "Problems, Algorithms, and Programs",
-        "sections": {
-          "ProblemAlgorithm": {
-            "long_name": "Problem, Algorithm, and Program definitions Visualization",
-            "showhide": "hide"
-          }
-        },
         "exercises": {
           "ProblemAlgorithmCON": {
             "long_name": "Problem, Algorithm, and Program definitions Slideshow",
@@ -77,41 +71,18 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "ProblemAlgorithmProgram": {
-            "long_name": "Problems, Algorithms, and programs Exercise",
+          "AnalPrelimSumm": {
+            "long_name": "Problems, Algorithms, Programs Exercise",
             "required": true,
             "points": 2.0,
-            "threshold": 5
+            "threshold": 7
           }
-        }
-      },
-      "AlgAnalTest/AnalIntro": {
-        "long_name": "Comparing Algorithms",
-        "exercises": {
-           "ComparingAlgorithms": {
-            "long_name": "Comparing Growth Rates Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 5
-           },
-           "GrowthRates": {
-            "long_name": "Growth Rates Ordering Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 5
-           }
         }
       },
       "AlgAnalTest/AnalCases": {
         "long_name": "Best, Average, and Worst Cases",
-		    "sections": {
-          "BestWorstAverage": {
-            "long_name": "Best, Worst, and Average cases visualization",
-            "showhide": "hide"
-          }
-        },
         "exercises": {
-		      "BestWorstAverageCON": {
+          "BestWorstAverageCON": {
             "long_name": "Best, Worst, and Average cases visualization",
             "required": false,
             "points": 0.0,
@@ -122,18 +93,7 @@
             "required": true,
             "points": 2.0,
             "threshold": 5
-           }
-		    }
-      },
-      "AlgAnalTest/AnalCompvsAlg": {
-        "long_name": "A Faster Computer, or a Faster Algorithm?",
-        "exercises": {
-           "FasterCompOrAlg": {
-            "long_name": "Faster Computer or Faster Algorithm Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 5
-           }
+          }
         }
       },
       "AlgAnalTest/AnalAsymptotic": {
@@ -143,37 +103,27 @@
             "long_name": "theta disclaimer",
             "showhide": "none",
             "remove": true
-          },
-		  "UpperBound":{
-		    "long_name": "Upper Bounds visualization",
-            "showhide": "hide"
-		  }
+          }
         },
         "exercises": {
-		        "UpperBoundCON": {
+            "UpperBoundCON": {
             "long_name": "Upper Bounds visualization",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "UpperBounds": {
+          "UpperBoundsSumm": {
             "long_name": "Asymptotic Analysis and Upper Bounds Exercise",
             "required": true,
             "points": 2.0,
             "threshold": 5
-           }
-		    }
+          }
+        }
       },
       "AlgAnalTest/AnalLower": {
         "long_name": "Lower Bounds and Theta Notation",
-        "sections": {
-          "LowerBound":{
-            "long_name": "Lower Bounds visualization",
-            "showhide": "hide"
-          }
-        },
         "exercises": {
-          "LowerBoundsTheta": {
+          "LowerThetaSumm": {
             "long_name": "Lower Bounds and Theta Notation Exercise",
             "required": true,
             "points": 2.0,
@@ -194,22 +144,6 @@
             "long_name": "Binary Search Proficiency Exercise",
             "showhide": "none",
             "remove": false
-          },
-          "SummationOneToN": {
-            "long_name": "Summation of the first N Integers visualization",
-            "showhide": "hide"
-          },
-          "SummationTwoPowerI": {
-            "long_name": "Summation Two power I visualization",
-            "showhide": "hide"
-          },
-          "LinearRecurrenceSimple": {
-            "long_name": "Linear Recurrence visualization",
-            "showhide": "hide"
-          },
-          "DivideAndConquerRecurrenceSimple": {
-            "long_name": "Divide And Conquer Recurrence visualization",
-            "showhide": "hide"
           }
         },
         "exercises": {
@@ -260,14 +194,8 @@
       },
       "AlgAnalTest/AnalProblem": {
         "long_name": "Analyzing Problems",
-        "sections": {
-          "AnalyzingProblems": {
-            "long_name": "Worst Case Lower Bound Visualization",
-            "showhide": "hide"
-          }
-        },
         "exercises": {
-          "AnalProblem": {
+          "AnalProblemSumm": {
             "long_name": "Problem Analysis Exercise",
             "required": true,
             "points": 1.0,
@@ -283,14 +211,8 @@
       },
       "AlgAnalTest/AnalMisunderstanding": {
         "long_name": "Common Misunderstandings",
-        "sections": {
-          "MisunderstandingsGraph": {
-            "long_name": "Example's graph Visualization",
-            "showhide": "hide"
-          }
-        },
         "exercises": {
-          "Misunderstandings": {
+          "MisSumm": {
             "long_name": "Common Misconceptions Exercise",
             "required": true,
             "points": 1.0,
@@ -344,7 +266,7 @@
         }
       }
     },
-	  "Lower Bounds": {
+    "Lower Bounds": {
       "Development/BoundLower": {
         "long_name": "Introduction to Lower Bounds",
         "exercises": {}
@@ -374,7 +296,7 @@
         "exercises": {}
       }
     },
-	"Advanced Analysis": {
+    "Advanced Analysis": {
       "AlgAnalTest/AdvSumm": {
         "long_name": "Summation Techniques",
 		"sections": {

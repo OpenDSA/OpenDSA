@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>Algorithm Analysis Exercise: Big Theta</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+
+<body>
+<div class="exercise">
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="problem">Answer TRUE or FALSE.</p>
+      <p class="question">The lower bound in the worst case for the
+        problem of searching an unsorted array is <code>\Omega(n)</code> 
+        because this is the worst case cost of the sequential search
+        algorithm.
+      </p> 
+      <div class="solution"><var>"False"</var></div>
+      <ul class="choices" data-category="true">
+	<li><var>"True"</var></li>
+	<li><var>"False"</var></li>			  	  	 
+      </ul>
+      <div class="hints">
+        <p>While it is true that sequential search
+          is <code>\Omega(n)</code> in the worst case, this is not the
+          whole story.</p>
+        <p>Just because the best algorithm that we happen to know has
+          a certain cost, that does not mean that there is no better
+          algorithm.</p>
+        <p>The reason that search in an unsorted array has a lower
+          bound of <code>\Omega(n)</code> is because we can prove that
+          any algorithm MUST look at every element (in some
+          order) in the worst case.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
