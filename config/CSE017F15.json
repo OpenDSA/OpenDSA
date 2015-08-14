@@ -938,6 +938,11 @@
           }
         }
       },
+      "Binary/BinaryTreeFullThm": {
+        "long_name": "Full Binary Tree Theorem",
+        "dispModComp": true,
+        "exercises": {}
+      },
       "Binary/BinaryTreeTraversal": {
         "long_name": "Binary Tree Traversals",
         "exercises": {
@@ -1032,6 +1037,17 @@
             "required": true,
             "points": 2.0,
             "threshold": 0.90
+          }
+        }
+      },
+      "Binary/CompleteTree": {
+        "long_name": "Array Implementation for Complete Trees",
+        "exercises": {
+          "CompleteFIB": {
+            "long_name": "Complete Tree Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
           }
         }
       },
@@ -1276,6 +1292,25 @@
           }
         }
       },
+      "Sorting/SortOpt": {
+        "long_name": "Optimizing Sorts with Code Tuning",
+        "sections": {
+          "inssortnoswapex": {
+            "long_name": "Insertion Sort Exercise",
+            "showhide": "none",
+            "remove": true
+          }
+        },
+        "exercises": {
+          "insertionSortWithoutSwapPRO": {
+            "long_name": "Insertion Sort Without Swap Proficiency Exercise",
+            "exer_options": { "JXOP-code": "none" },
+            "required": false,
+            "points": 0.0,
+            "threshold": 0.9
+          }
+        }
+      }, 
 	  "Sorting/Mergesort": {
         "long_name": "Mergesort Concepts",
         "sections": {
