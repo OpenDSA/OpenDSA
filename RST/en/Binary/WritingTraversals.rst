@@ -10,18 +10,87 @@
 
 .. odsalink:: AV/RecurTutor2/AdvancedRecurTutor.css
 
-Common Mistakes in Recursive Binary Tree Traversal
-==================================================
+Implementing Tree Traversals
+============================
 
-When writing a recursive function to solve a problem that requires traversing a binary tree,
-we want to make sure that we are visiting "exactly" the required nodes (no more and no less).
-You should also make sure that you don't do the common mistakes stated  below:
+Writing a Recursive Method to Traverse a Binary Tree
+----------------------------------------------------
 
- #. Forget to check if the root is null.
- #. Check if one or both children are null. You SHOULD NOT do that. When you do the recursive call and pass the root.left()
+When writing a recursive method to solve a problem that requires
+traversing a binary tree, we want to make sure that we are visiting
+the required nodes (no more and no less).
+
+Recall that for any recursive function you should learn two skills:
+
+ #. Formulate the base case and its action.
+ #. Formulate the recursive case and its action.
+
+
+Formulate the base case and its action
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In binary trees, in many binary tree types the base case is to check if we have an empty tree.
+One of the common mistakes some people do is considering that the base case
+action will be executed only after the recursive calls are executed.
+This is not always the case because you may have your input as an empty tree
+from the very beginning and in that case no recursive calls will be executed
+before the base case action. Make sure when you write a program that traverse a binary tree
+to check in the base case if the root of the binary is null (In that case the given tree is empty).
+
+The action that the base case will execute is dependable on the given problem.
+For example, if it is required to count the nodes then the base case action will be returning 0.
+While, if it is required to check on the existence of a value or not then the base case action 
+in this case will return false because the given binary tree is empty.
+
+
+Formulate the recursive case and its action
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Always remember that you should not worry about the recursion details.
+Admit that it will do it correctly. So, when your recursive case action
+is to  visit recursively the right and left children this means that every node will do that.
+You don't need to worry about making sure that every node will do it.
+
+Some problems requires that you traverse the whole tree, in those
+problems you must make sure that your function is working for the left and right sides of the tree.
+Some other problems requires only traversing the left or the right side
+of the tree. You have to make sure that you visit exactly the nodes that are needed by the problem.
+
+An issue to consider when designing a traversal is how to
+define the visitor function that is to be executed on every node.
+One approach is simply to write a new version of the traversal for
+each such visitor function as needed.
+The disadvantage to this is that whatever function does the traversal
+must have access to the ``BinNode`` class.
+It is probably better design to permit only the tree class to have
+access to the ``BinNode`` class.
+
+Another approach is for the tree class to supply a generic traversal
+function that takes the visitor as a function parameter.
+This is known as the
+:term:`visitor design pattern`.
+A major constraint on this approach is that the
+:term:`signature` for all visitor functions, that is,
+their return type and parameters, must be fixed in advance.
+Thus, the designer of the generic traversal function must be able to
+adequately judge what parameters and return type will likely be needed
+by potential visitor functions.
+
+
+Common Mistakes in Recursive Binary Tree Traversals
+---------------------------------------------------
+
+When writing a recursive function to solve a problem that requires
+traversing a binary tree,
+we want to make sure that we are visiting the required nodes (no more
+and no less).
+Here are a number of mistakes to avoid.
+
+ #. Forgetting to check if the root is null.
+ #. Checking if one or both children are null. You SHOULD NOT do that. When you do the recursive call and pass the root.left()
     or the root.right() as the parameter, the recursive function will call itself and treating
     the passed child as the new root. So, you don't need to explicitly check if the children are null.
- #. Access the children values. You SHOULD NOT do that. The same as the previous point. The child passed to the recursive call
+ #. Accessing the children values. You SHOULD NOT do that. The same as the previous point. The child passed to the recursive call
     is treated as the new root. So, you don't need to explicitly access the children values. Just
     make sure you do that for the root.
  #. If it is required from you to write a function that returns a value (e.g. the number of nodes in a binary tree),
@@ -29,8 +98,8 @@ You should also make sure that you don't do the common mistakes stated  below:
     writing the recursive call without writing the word "return" before it.
 
 
-Forget to check if the root is null
-------------------------------------
+Forgetting to check if the root is null
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 One of the most common mistakes when writing a program that traverses
 a binary tree is forgetting to check if the root is null or not.
@@ -40,8 +109,9 @@ a crucial check. So, make sure if the tree will allow the root to be null to alw
 The following mistakes will not affect your code execution or results.
 Your solution will execute correctly but not efficiently.
 
-Check if Children are null
---------------------------
+Checking if Children are null
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 One of the common mistakes is checking explicitly if the children are 
 null or not when it is not needed in most cases.
 
@@ -143,8 +213,8 @@ empty subtrees, the problem is avoided.
       return 1 + count(root.left()) + count(root.right());
      }
 
-Access Children Values
-----------------------
+Accessing Child Values Unnecessarily
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Another common mistake is accessing the children values while not needed. Again, don't explicitly access
 the children values if it is not needed. Your solution may execute correctly but not efficiently.
@@ -196,3 +266,7 @@ Learning those skills requires a lot of practice to make sure that you are not o
 the correct answer but also doing the solution efficiently without falling into the common mistakes.
 
 .. odsascript:: AV/RecurTutor2/BinaryTreeMistakesCON.js
+
+Now, here is a practice coding exercise.
+
+.. avembed:: Exercises/RecurTutor2/btLeafPROG.html ka

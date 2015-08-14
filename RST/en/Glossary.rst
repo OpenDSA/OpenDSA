@@ -1540,6 +1540,11 @@ Glossary
       The rate at which the cost
       of the algorithm grows as the size of its input grows.
 
+   guided traversal
+      A :term:`tree traversal` that does not need to visit every node
+      in the tree.
+      An example would be a :term:`range query` in a :term:`BST`.
+
    halting problem
       The halting problem is to answer this question:
       Given a computer program :math:`P` and an 
