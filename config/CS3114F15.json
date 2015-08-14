@@ -141,13 +141,32 @@
       },
       "AlgAnal/AnalPrelim": {
         "long_name": "Problems, Algorithms, and Programs",
-	"dispModComp": true,
-        "exercises": {}
+        "exercises": {
+          "AnalPrelimSumm": {
+            "long_name": "Problems, Algorithms, Programs Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 7
+          }
+        }
       },
       "AlgAnal/AnalIntro": {
         "long_name": "Comparing Algorithms",
 	"dispModComp": true,
-        "exercises": {}
+        "exercises": {
+          "CompareAlgSumm": {
+            "long_name": "Comparing Growth Rates Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          },
+          "GrowthRates": {
+            "long_name": "Growth Rates Ordering Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          }
+        }
       },
       "AlgAnal/AnalCases": {
         "long_name": "Best, Average, and Worst Cases",
@@ -156,8 +175,14 @@
       },
       "AlgAnal/AnalCompvsAlg": {
         "long_name": "A Faster Computer, or a Faster Algorithm?",
-	"dispModComp": true,
-        "exercises": {}
+        "exercises": {
+          "FasterCorASumm": {
+            "long_name": "Faster Computer or Faster Algorithm Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          }
+        }
       },
       "AlgAnal/AnalAsymptotic": {
         "long_name": "Asymptotic Analysis and Upper Bounds",
@@ -168,17 +193,23 @@
             "remove": true
           }
         },
-	"dispModComp": true,
-        "exercises": {}
+        "exercises": {
+          "UpperBoundsSumm": {
+            "long_name": "Asymptotic Analysis and Upper Bounds Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          }
+        }
       },
       "AlgAnal/AnalLower": {
         "long_name": "Lower Bounds and Theta Notation",
         "exercises": {
-          "AnalPairSumm": {
-            "long_name": "Function Pairs Exercise",
+          "LowerThetaSumm": {
+            "long_name": "Lower Bounds and Theta Notation Exercise",
             "required": true,
-            "points": 2.0,
-            "threshold": 5
+            "points": 3.0,
+            "threshold": 10
           }
         }
       },
@@ -215,13 +246,25 @@
       },
       "AlgAnal/AnalProblem": {
         "long_name": "Analyzing Problems",
-	"dispModComp": true,
-        "exercises": {}
+        "exercises": {
+          "AnalProblemSumm": {
+            "long_name": "Problem Analysis Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
       },
       "AlgAnal/AnalMisunderstanding": {
         "long_name": "Common Misunderstandings",
-	"dispModComp": true,
-        "exercises": {}
+        "exercises": {
+          "MisSumm": {
+            "long_name": "Common Misconceptions Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
       },
       "AlgAnal/AnalMultiple": {
         "long_name": "Multiple Parameters",

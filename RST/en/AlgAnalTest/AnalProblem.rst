@@ -39,10 +39,8 @@ The worst case lower bound is the *least* of all the
 
    Present a visualization of the previous paragraph
 
-.. showhidecontent:: AnalyzingProblems
-
-   .. inlineav:: AnalyzingProblemsCON ss
-      :output: show
+.. inlineav:: AnalyzingProblemsCON ss
+   :output: show
 
 It is much easier to show that an algorithm (or program) is in
 :math:`\Omega(f(n))` than it is to show that a problem is in
@@ -112,7 +110,7 @@ algorithm (within a constant factor), then we know that we can find an
 algorithm that is better only by a constant factor.
 
 
-.. avembed:: Exercises/AlgAnalTest/AnalProblemSumm.html ka
+.. avembed:: Exercises/AlgAnal/AnalProblemSumm.html ka
 
 Notes
 -----

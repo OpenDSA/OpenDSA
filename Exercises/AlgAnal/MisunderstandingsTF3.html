@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math">
 <head>
-  <title>Algorithm Analysis Exercise: Big Theta</title>
+  <title>Algorithm Analysis Exercise: Bounds</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
 <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
@@ -12,18 +12,20 @@
   <div class="problems">
     <div id="problem-type-or-description">
       <p class="problem">Answer TRUE or FALSE.</p>
-      <p class="question">
-        It is correct to say that, the upper bound and lower bounds of the sequencial search algorithm is in 
-        <code>O(n)</code> and <code>\Theta(n)</code> respectively.
-      </p> 
-      <div class="solution"><var>"False"</var></div>
+      <p class="question">The worst case for sequential search occurs
+        when the last element of the array is the value being
+        searched for.</p>
+      <div class="solution"><var>"True"</var></div>
       <ul class="choices" data-category="true">
 	<li><var>"True"</var></li>
 	<li><var>"False"</var></li>			  	  	 
       </ul>
       <div class="hints">
-        <p>Is this statement complete?</p>
-        <p>To make this statement correct, you need to add in which case you are measuring the lower and upper bounds</p>
+        <p>Worst case cost refers to the most expensive problem instance AS THE INPUT GETS
+          BIG.</p>
+        <p>Since, for any given array (regardless of size), the most
+          expensive problem instance occurs when the search value is in
+          the last position of the array, this is indeed the worst case.</p>
       </div>
     </div>
   </div>

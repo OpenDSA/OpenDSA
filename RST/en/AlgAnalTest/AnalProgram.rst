@@ -110,10 +110,8 @@ We will make use of the algorithm analysis simplifying rules:
    By simplifying rule (3), :math:`\Theta(c_1 + c_2 n + c_3 n^2)` is
    simply :math:`\Theta(n^2)`.
 
-.. showhidecontent:: SummationOneToN
-
-   .. inlineav:: SummationOneToNCON ss
-      :output: show
+.. inlineav:: SummationOneToNCON ss
+   :output: show
 
 .. topic:: Example
 
@@ -170,16 +168,15 @@ We will make use of the algorithm analysis simplifying rules:
    where :math:`n` is assumed to be a power of two and again
    :math:`k = 2^i`.
 
-.. showhidecontent:: SummationTwoPowerI
-
-   .. inlineav:: SummationTwoPowerICON ss
-      :output: show
+.. inlineav:: SummationTwoPowerICON ss
+   :output: show
 
 .. todo::
    :type: Slideshow
 
-   We need to think about a technique for visualizing the running time of some loop constructs. This can be very similar to how we visualize reaching the closed form solution of summations.
-
+   We need to think about a technique for visualizing the running time
+   of some loop constructs. This can be very similar to how we
+   visualize reaching the closed form solution of summations.
 
 What about other control statements?
 ``While`` loops are analyzed in a manner similar to ``for``
@@ -229,10 +226,8 @@ Thus, the running time for this function can be expressed as
 The closed-form solution for this
 recurrence relation is :math:`\Theta(n)`.
 
-.. showhidecontent:: LinearRecurrenceSimple
-
-   .. inlineav:: LinearRecurrenceSimpleCON ss
-      :output: show
+.. inlineav:: LinearRecurrenceSimpleCON ss
+   :output: show
 
 The final example of algorithm analysis for this section will compare
 two algorithms for performing search in an array.
@@ -292,10 +287,8 @@ adds one to the cost.
 Thus, the closed-form solution for the recurrence is
 :math:`\mathbf{T}(n) = \log n`.
 
-.. showhidecontent:: DivideAndConquerRecurrenceSimple
-
-   .. inlineav:: DivideAndConquerRecurrenceSimpleCON ss
-      :output: show
+.. inlineav:: DivideAndConquerRecurrenceSimpleCON ss
+   :output: show
 
 Function ``binary`` is designed to find the (single) occurrence of
 :math:`K` and return its position. 

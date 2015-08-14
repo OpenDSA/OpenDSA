@@ -282,3 +282,4 @@ rules when discussing the cost for a program or algorithm.
 
    A visualization that illustrates the meaning of upper bounds and the difference between it and worst cases. We need to emphasize that there is an upper bound to an algorithm in its best, average, and worst cases. We can use the example of sequencial search to illustrate this.
 
+.. avembed:: Exercises/AlgAnal/UpperBoundsSumm.html ka

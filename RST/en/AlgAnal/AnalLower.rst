@@ -171,9 +171,14 @@ If the limit goes to some constant other than zero, then
 .. todo::
    :type: Slideshow
 
-   A visualization that illustrates the meaning of lower bounds, and tight bounds and the difference between them and best, and average cases respectiely. This visualization here should be similar to the one for upper bounds. We may also think of presenting this as function plots in which the running time of the algorithm is plotted against its upper and lower bounds.
+   A visualization that illustrates the meaning of lower bounds, and
+   tight bounds and the difference between them and best, and average
+   cases respectiely. This visualization here should be similar to the
+   one for upper bounds. We may also think of presenting this as
+   function plots in which the running time of the algorithm is
+   plotted against its upper and lower bounds.
 
-.. avembed:: Exercises/AlgAnal/AnalPairSumm.html ka
+.. avembed:: Exercises/AlgAnal/LowerThetaSumm.html ka
 
 Notes
 -----
@@ -238,5 +243,3 @@ Notes
        is not a law of nature.
        It is merely a powerful modeling tool used to describe the
        behavior of algorithms.
-
-

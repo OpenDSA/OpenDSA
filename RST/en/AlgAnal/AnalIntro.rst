@@ -323,18 +323,17 @@ resources consumed by an algorithm.
       \mathsf{2^{60}} & \mathsf{2^{90}} & \mathsf{2^{1 {\rm G}}}\\
       \end{array}
 
-.. todo::
-   :type: Exercise
+.. avembed:: Exercises/AlgAnal/CompareAlgSumm.html ka 
 
-   From a large list of growth rate functions, select six and provide
-   these to the student in random order. The student will then put these
-   in order of growth rate. There should be KA exercises (NOT OpenDSA
-   exercises) already that do "put in order", with librarary support.
-   Alternative implementation: Use an invisible JSAV array to store the
-   strings.
+.. avembed:: Exercises/AlgAnal/GrowthRates.html ka 
 
 .. todo::
    :type: AV
 
-   To make students more engaged in the previous exercise, we may need a tool that allow students to input two growth rate functions, and then the tool should plot the graph of both functions and mark their crossing point. The student also should be allowed to play with the constant values for both functions and see that this only changes the crossing point but doesn't change which function grows faster than the other. 
-
+   To make students more engaged in the GrowthRates exercise, we may
+   need a tool that allow students to input two growth rate functions,
+   and then the tool should plot the graph of both functions and mark
+   their crossing point. The student also should be allowed to play
+   with the constant values for both functions and see that this only
+   changes the crossing point but doesn't change which function grows
+   faster than the other.
