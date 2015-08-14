@@ -66,19 +66,19 @@ var initJSAV = function (arr_size) {
   var i, j, value;
   userInput = false;
   selected_index = -1;
-  functions = ["<code>\\log{\\log{n}}</code>", 
-                 "<code>\\sqrt{\\log{n}}</code>",
-                 "<code>\\log{n}</code>",
-                 "<code>\\log^2{n}</code>",
-                 "<code>n\\log{n}</code>",
-                 "<code>n\\log^2{n}</code>",
-                 "<code>n^{4/3}</code>",
-                 "<code>n^2</code>",
-				         "<code>n^{\\log{n}}</code>",
-                 "<code>2^\\sqrt{n}</code>",
-                 "<code>2^n</code>",
-                 "<code>2^{n^2}</code>"
-                 ];
+  functions = ["<code>\\log \\log n</code>", 
+               "<code>\\log n</code>",
+               "<code>\\log^{2} n</code>",
+               "<code>\\sqrt{n}</code>",
+               "<code>n \\log n</code>",
+               "<code>n \\log^{2} n</code>",
+               "<code>n^{4/3}</code>",
+               "<code>n^2</code>",
+               "<code>n^{\\log n}</code>",
+               "<code>2^\\sqrt{n}</code>",
+               "<code>2^n</code>",
+               "<code>2^{n^2}</code>"
+              ];
   answerArr.length = 0; // Out with the old
 
   jsav = new JSAV("jsav");

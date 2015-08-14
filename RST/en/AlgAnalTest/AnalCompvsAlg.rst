@@ -173,4 +173,4 @@ Furthermore, when you do buy a faster computer, an algorithm with a
 slower growth rate provides a greater benefit in terms of larger
 problem size that can run in a certain time on the new computer.
 
-.. avembed:: Exercises/AlgAnalTest/FasterCompOrAlg.html ka
+.. avembed:: Exercises/AlgAnalTest/FasterCorASumm.html ka

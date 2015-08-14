@@ -112,7 +112,7 @@ algorithm (within a constant factor), then we know that we can find an
 algorithm that is better only by a constant factor.
 
 
-.. avembed:: Exercises/AlgAnalTest/AnalProblem.html ka
+.. avembed:: Exercises/AlgAnalTest/AnalProblemSumm.html ka
 
 Notes
 -----
