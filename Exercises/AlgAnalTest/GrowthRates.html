@@ -86,13 +86,7 @@ var initJSAV = function (arr_size) {
   randomize(arr_size);
   jsavArr = jsav.ds.array([], {indexed: false, center: false});
   for(i = 0; i < arr_size; i++){
-    if(i < arr_size - 1){
-      value = answerArr[i] + " , ";
-    }
-    else{
-      value = answerArr[i];
-    }
-    jsavArr.value(i, value);
+    jsavArr.value(i, answerArr[i]);
   }
   // Now make a copy
   cloneArr = answerArr.slice(0);
@@ -113,6 +107,7 @@ var initJSAV = function (arr_size) {
 
 // Check student's answer for correctness: User's array must match answer
 var checkAnswer = function (arr_size) {
+  console.log(answerArr);
   var i;
   for (i = 0; i < arr_size; i++) {
     if (jsavArr.value(i) !== answerArr[i]) {
