@@ -821,6 +821,17 @@
           }
         }
       },
+      "Binary/RecursiveDS": {
+        "long_name": "Binary Tree as a Recursive Data Structure",
+        "exercises": {
+          "SumBinaryTreeCON": {
+            "long_name": "Sum values in a Binary Tree Slide Show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.90
+           }
+         }
+      },
       "Binary/BinaryTreeFullThm": {
         "long_name": "Full Binary Tree Theorem",
         "dispModComp": true,			
@@ -876,6 +887,53 @@
           }
         }
       },
+      "Binary/WritingTraversals": {
+        "long_name": "Writing Tree Traversals",
+        "exercises": {        
+          "BinaryTreeMistakesCON": {
+            "long_name": "Binary Tree Common Mistakes",
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.90
+          },
+          "btLeafPROG": {
+            "long_name": "Node Count Programming Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1
+          }
+        }
+      },
+      "RecurTutor2/BinaryTreeGuidedInfFlw": {
+        "long_name": "Binary Tree Guided Information Flow",
+        "exercises": {
+          "IneffBinaryTreeRangeCON": {
+            "long_name": "Inefficient Binary Tree Traversal on Range Slide Show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.90
+          },
+          "BinaryTreeGuidedSumm": {
+            "long_name": "Binary Tree Guided Traversal Exercises",
+            "required": true,
+            "points": 2.0,
+            "threshold": 2.0,
+            "showhide": "Show"
+          }
+        }
+      },
+      "RecurTutor2/MultipleBinaryTrees": {
+        "long_name": "Multiple Binary Trees",
+        "exercises": {
+          "MultipleBinaryTreesSumm": {
+            "long_name": "Multiple Binary Trees Exercises",
+            "required": true,
+            "points": 3.0,
+            "threshold": 3.0,
+            "showhide": "Show"
+          }
+        }
+      }, 
       "Binary/BinaryTreeImpl": {
         "long_name": "Full Binary Tree Node Implementations",
         "dispModComp": true,			

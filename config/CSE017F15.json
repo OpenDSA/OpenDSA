@@ -990,6 +990,23 @@
           }
         }
       },
+      "Binary/WritingTraversals": {
+        "long_name": "Writing Tree Traversals",
+        "exercises": {        
+          "BinaryTreeMistakesCON": {
+            "long_name": "Binary Tree Common Mistakes",
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.90
+          },
+          "btLeafPROG": {
+            "long_name": "Node Count Programming Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1
+          }
+        }
+      },
       "Binary/BST": {
         "long_name": "Binary Search Trees",
         "exercises": {

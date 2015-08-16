@@ -1424,10 +1424,6 @@
       }
     },
 
-
-
-
-
     "Binary Trees": {
       "Binary/BinaryTreeIntro": {
         "long_name": "Chapter Introduction: Binary Trees",
@@ -1443,6 +1439,17 @@
             "threshold": 8
           }
         }
+      },
+      "Binary/RecursiveDS": {
+        "long_name": "Binary Tree as a Recursive Data Structure",
+        "exercises": {
+          "SumBinaryTreeCON": {
+            "long_name": "Sum values in a Binary Tree Slide Show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.90
+           }
+         }
       },
       "Binary/BinaryTreeTraversal": {
         "long_name": "Binary Tree Traversals",
@@ -1488,6 +1495,23 @@
             "required": true,
             "points": 1.0,
             "threshold": 0.90
+          }
+        }
+      },
+      "Binary/WritingTraversals": {
+        "long_name": "Writing Tree Traversals",
+        "exercises": {        
+          "BinaryTreeMistakesCON": {
+            "long_name": "Binary Tree Common Mistakes",
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.90
+          },
+          "btLeafPROG": {
+            "long_name": "Node Count Programming Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1
           }
         }
       },
