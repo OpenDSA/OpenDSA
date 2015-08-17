@@ -267,6 +267,8 @@ the correct answer but also doing the solution efficiently without falling into 
 
 .. odsascript:: AV/RecurTutor2/BinaryTreeMistakesCON.js
 
-Now, here is a practice coding exercise.
+Here are practice coding exercises.
 
-.. avembed:: Exercises/RecurTutor2/btLeafPROG.html ka
+.. avembed:: Exercises/RecurTutor2/BinaryTreeLocalSumm.html ka
+
+.. avembed:: Exercises/RecurTutor2/BinaryTreeCntValSumm.html ka
