@@ -45,4 +45,4 @@ implementations for algorithms on those data structures.
 
 .. odsascript:: AV/Binary/ListRecDSCON.js
 .. odsascript:: AV/Binary/BinRecDSCON.js
-.. odsascript:: AV/RecurTutor2/SumBinaryTreeCON.js
+.. odsascript:: AV/Binary/SumBinaryTreeCON.js

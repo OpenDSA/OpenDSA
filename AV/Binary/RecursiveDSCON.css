@@ -9,3 +9,11 @@
 #SumBinaryTreeCON {
   height: 400px;
 }
+
+#SumBinaryTreeCON .jsavlabel { 
+width: 100px;
+height: 100px;
+color: blue;
+background-image: url(../Icons/person.png);
+background-size: cover;
+}
