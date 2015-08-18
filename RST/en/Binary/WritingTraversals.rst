@@ -179,77 +179,40 @@ empty subtrees, the problem is avoided.
 
    Recall the problem of counting the number of nodes in a binary tree. 
    The following solution is correct but inefficient as it does redundant
-   checks on the left and the right child of each visited node::
-
+   checks on the left and the right child of each visited node
 	    
-     int ineff_count(BinNode root) {
-      if (root == null) {
-       return 0;
-      }
-      int count = 0;
-      if (root.left() != null) {
-       count = 1+ ineff_count(root.left());
-      }
-      if (root.right() != null) {
-       count = 1 + ineff_count(root.right());
-      }  
-      if (root.left() == null && root.right() == null) {
-       return 1;
-      }
-      return 1 + count;
-      }   
-      }
-  
-  
-   So, don't explicitly check if the children are null or not. Your solution
-   may execute correctly but not efficiently. Remember that the root's left or right children
-   is treated as the new root when passed to the recursive call so you don't need to do that
-   redundant check.
-  
-   The efficient solution should be ::
+   .. codeinclude:: Binary/RecIneffCnt
+      :tag: IneffCnt
 
-     int eff_count(BinNode root) {
-      if (root == null) return 0;  // Nothing to count
-      return 1 + count(root.left()) + count(root.right());
-     }
+
+   So, don't explicitly check if the children are null or not. Your solution may execute   correctly but not efficiently. Remember that the root's left or right children is treated as the new root when passed to the recursive call so you don't need to do that redundant check.
+  
+   The efficient solution should be:
+
+   .. codeinclude:: Binary/RecEffCnt
+      :tag: EffCnt
 
 Accessing Child Values Unnecessarily
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Another common mistake is accessing the children values while not needed. Again, don't explicitly access
-the children values if it is not needed. Your solution may execute correctly but not efficiently.
-Remember that the root's left or right children is treated as the new root
-when passed to the recursive call so you don't need to do that redundant check.
+Another common mistake is accessing the children values while not needed. Again, don't explicitly access the children values if it is not needed. Your solution may execute correctly but not efficiently. Remember that the root's left or right children is treated as the new root when passed to the recursive call so you don't need to do that redundant check.
 
 .. topic:: Example
 
-	If the problem is incrementing each node in a binary tree
-	by a certain given value.
+   If the problem is incrementing each node in a binary tree
+   by a certain given value.
 	
-	The following solution is correct but inefficient as it does redundant
-	manipulation to left and the right children of each visited node::
+   The following solution is correct but inefficient as it does redundant
+   manipulation to left and the right children of each visited node
   
-		void ineff_btInc(BinNode root , int value) {
-		if (root != null)
-		{
-		 root.setElement(((Integer)root.element()) + value);
-		 if(root.left()!= null)
-		 {
-		   root.left().setElement(((Integer)root.left().element()) + value);
-		   ineff_btInc(root.left().left() , value);
-		 }
-		 if(root.right()!= null)
-		 {
-		   root.right().setElement(((Integer)root.right().element()) + value);
-		   ineff_btInc(root.right().right() , value);
-		 }
-		}
-		}
+   .. codeinclude:: Binary/RecIneffbtInc
+      :tag: IneffbtInc
+		
 	
-	The efficient solution should not explicitly set the children values that way.
-	It should just pass the root's left and right to the recursive call and then the
-	recursive function will do the rest. As an exercise for you, think about how to re-write
-	this code efficiently.
+   The efficient solution should not explicitly set the children values that way.
+   It should just pass the root's left and right to the recursive call and then the
+   recursive function will do the rest. As an exercise for you, think about how to rewrite 
+   this code efficiently.
 
   
 In rare problems, you may need to explicitly check if the children are null or access
