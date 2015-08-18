@@ -8,7 +8,7 @@
    :satisfies: binary tree as a recursive data Structures
    :topic: Binary Tree as a Recursive Data Structures
 
-.. odsalink:: AV/RecurTutor2/AdvancedRecurTutor.css
+.. odsalink:: AV/Binary/RecursiveDSCON.css
 
 Binary Tree as a Recursive Data Structure
 =========================================
@@ -40,24 +40,9 @@ Here are examples of a recursive view of data structures.
 Recursive definitions for data structures naturally lead to recursive
 implementations for algorithms on those data structures.
 
-.. topic:: Example
-
-   Suppose that we want to compute the sum of the values for all nodes
-   in a binary tree. 
-   You could ask two friends to help you. 
-   The first one will take the left subtree and sum its nodes' values.
-   The second one will take the right sub tree and sum its nodes' values.
-   Then you add the root's value to those two sums, and you are done
-   with your task.
-   A recursive function to sum the values for all nodes in a binary
-   tree works in exactly this way.
-   You don't need to think about the details of recursion.
-   Just accept that your friends (the recursive calls) will return
-   back to you the correct answer for what they do.
-
 .. inlineav:: SumBinaryTreeCON ss
    :output: show
 
-.. odsascript:: AV/RecurTutor2/BinRecDSCON.js
-.. odsascript:: AV/RecurTutor2/ListRecDSCON.js
+.. odsascript:: AV/Binary/ListRecDSCON.js
+.. odsascript:: AV/Binary/BinRecDSCON.js
 .. odsascript:: AV/RecurTutor2/SumBinaryTreeCON.js

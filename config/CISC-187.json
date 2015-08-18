@@ -1507,8 +1507,14 @@
             "points": 1.0,
             "threshold": 0.90
           },
-          "btLeafPROG": {
-            "long_name": "Node Count Programming Exercise",
+          "BinaryTreeLocalSumm": {
+            "long_name": "Node Update Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1
+          },
+          "BinaryTreeCntValSumm": {
+            "long_name": "Node Count Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 1

@@ -53,8 +53,12 @@ $(document).ready(function () {
   av.step();
   label1.hide();
   av.umsg("You will simply sum the root value to the sums received from your friends.");
-  
+
   var label1 = av.label("Sum= 20 + 50 + 75", {left: 345, top: 0}); // create a label for the icon
+  
+  av.step();
+
+  av.umsg("You don't need to think about the details of recursion. Just accept that your friends (the recursive calls) will return back to you the correct answer for what they do.");
   
   av.recorded();
 });

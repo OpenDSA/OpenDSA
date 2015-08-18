@@ -1,16 +1,3 @@
-#BinRecDSCON .jsavcanvas {
- height: 180px;
-}
-
-#ListRecDSCON .jsavcanvas {
- height: 100px;
-}
-
-#SumBinaryTreeCON {
-  height: 400px;
-}
-
-
 #SumBinaryTreeCON .jsavlabel { 
 width: 100px;
 height: 100px;
