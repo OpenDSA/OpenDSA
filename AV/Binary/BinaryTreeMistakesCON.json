@@ -1,0 +1,21 @@
+{
+  "translations": {
+    "en": {
+      "av_c1": "When you write a recursive method that traverses a binary tree, you should avoid the following common mistakes",
+      "av_c2": "Do not forget to check if the root is null",
+      "av_c3": "Do not check if the children are null when your solution doesn't require that you explicitly do that",
+      "av_c4": "Do not access the children's values when your solution doesn't require that you explicitly do that"
+    }
+  },
+  "code": {
+    "java": {
+      "url": "../../../SourceCode/Java/RecurTutor2/RecBTMistakes.java",
+      "lineNumbers": false,
+      "tags": {
+        "treenull": 2,
+        "childnull": [5, 10],
+        "childval": [6, 11]
+      }
+    }
+  }
+}

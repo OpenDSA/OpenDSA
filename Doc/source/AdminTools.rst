@@ -51,3 +51,12 @@ For example,
 ``http://algoviz.org/OpenDSA/Books/OpenDSA/html/RegisterBook.html``.
 This presumes that the book instance has already been configured by a
 Django administrator.
+
+Managing the Front Page
+-----------------------
+
+The "front page" for the instructor's view will list a separate button
+for each "active" course.
+An "active" course is any course who's end date is past the current
+moment in time.
+All courses will be listed on the "course archive" page.

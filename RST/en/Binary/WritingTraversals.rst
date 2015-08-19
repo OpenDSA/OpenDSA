@@ -8,7 +8,7 @@
    :satisfies: common mistakes in recursive binary tree traversal
    :topic: Common Mistakes in Recursive Binary Trees Traversal
 
-.. odsalink:: AV/RecurTutor2/AdvancedRecurTutor.css
+.. odsalink:: AV/Binary/WriteTrav.css
 
 Implementing Tree Traversals
 ============================
@@ -225,13 +225,15 @@ explicitly check on the children if the children are null or not and check on th
    :output: show
 
 
-Learning those skills requires a lot of practice to make sure that you are not only getting
-the correct answer but also doing the solution efficiently without falling into the common mistakes.
-
-.. odsascript:: AV/RecurTutor2/BinaryTreeMistakesCON.js
+Learning those skills requires some practice to make sure that you are
+not only getting the correct answer but also doing the solution
+efficiently without falling into the common mistakes.
 
 Here are practice coding exercises.
 
 .. avembed:: Exercises/RecurTutor2/BinaryTreeLocalSumm.html ka
 
 .. avembed:: Exercises/RecurTutor2/BinaryTreeCntValSumm.html ka
+
+.. odsascript:: AV/Binary/BinaryTreeMistakesCON.js
+
