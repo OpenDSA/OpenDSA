@@ -1,3 +1,6 @@
+ifeq ($(OS),Windows_NT)
+	SHELL=C:/Windows/System32/cmd.exe
+endif
 RM = rm -rf
 CONFIG_SCRIPT = tools/configure.py
 TARGET = build
