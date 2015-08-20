@@ -7,7 +7,7 @@
 # (Bash) export DISPLAY=:0.0
 # (csh/tcsh) setenv DISPLAY :0.0
 
-PROCESS = ~/processing-2.0b9/processing-java
+PROCESS = ~/processing-2.2.1/processing-java
 
 # On Windows, I can't make it work without an absolute path
 ifeq ($(OS),Windows_NT)
