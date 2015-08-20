@@ -9,10 +9,13 @@
 
 PROCESS = ~/processing-2.0b9/processing-java
 
-# Use this one on Linux
-#BUILD = build
 # On Windows, I can't make it work without an absolute path
-BUILD = /c/Cliff/OpenDSA/SourceCode/Processing/build
+ifeq ($(OS),Windows_NT)
+	BUILD = /c/Cliff/OpenDSA/SourceCode/Processing/build
+else
+	# Use this one on Linux
+	BUILD = build
+endif
 
 # Run this to test the code for errors
 all: Demo Misc Lists Design Binary General Sorting Graphs
