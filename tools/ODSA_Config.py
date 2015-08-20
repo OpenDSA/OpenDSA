@@ -463,7 +463,7 @@ class ODSA_Config:
     def __setitem__(self, key, value):
         self.__dict__[key] = value
 
-    def __init__(self, config_file_path):
+    def __init__(self, config_file_path, output_directory=None):
         """Initializes an ODSA_Config object by reading in the JSON config file, setting default values, and validating the configuration"""
         # Throw an error if the specified config files doesn't exist
         if not os.path.exists(config_file_path):
@@ -533,7 +533,10 @@ class ODSA_Config:
         self.config_file_path = config_file_path
 
         # Parse the name of the config file to use as the book name
-        self.book_name = os.path.basename(config_file_path).replace('.json', '')
+        if output_directory is None:
+            self.book_name = os.path.basename(config_file_path).replace('.json', '')
+        else:
+            self.book_name = output_directory
 
         self.odsa_dir = get_odsa_dir()
 
