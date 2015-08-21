@@ -181,7 +181,7 @@ empty subtrees, the problem is avoided.
    The following solution is correct but inefficient as it does redundant
    checks on the left and the right child of each visited node
 	    
-   .. codeinclude:: Binary/RecIneffCnt
+   .. codeinclude:: Binary/RecExCode
       :tag: IneffCnt
 
 
@@ -189,7 +189,7 @@ empty subtrees, the problem is avoided.
   
    The efficient solution should be:
 
-   .. codeinclude:: Binary/RecEffCnt
+   .. codeinclude:: Binary/RecExCode
       :tag: EffCnt
 
 Accessing Child Values Unnecessarily
@@ -205,7 +205,7 @@ Another common mistake is accessing the children values while not needed. Again,
    The following solution is correct but inefficient as it does redundant
    manipulation to left and the right children of each visited node
   
-   .. codeinclude:: Binary/RecIneffbtInc
+   .. codeinclude:: Binary/RecExCode
       :tag: IneffbtInc
 		
 	
