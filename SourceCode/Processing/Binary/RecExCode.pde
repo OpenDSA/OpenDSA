@@ -3,7 +3,7 @@ boolean SUCCESS = true;
 /* *** ODSATag: EffCnt *** */
 static int eff_count(BinNode root) {
   if (root == null) return 0;  // Nothing to count
-    return 1 + eff_count(root.left()) + count(root.right());
+    return 1 + eff_count(root.left()) + eff_count(root.right());
 }
 /* *** ODSAendTag: EffCnt *** */
 
@@ -24,7 +24,6 @@ static int ineff_count(BinNode root) {
     return 1;
   }
   return 1 + count;
-  }   
 }
 /* *** ODSAendTag: IneffCnt *** */ 
 
@@ -48,10 +47,7 @@ static void ineff_btInc(BinNode root , int value) {
 void setup() {
  
    BSTNode root = null;
- 
    root = new BSTNode(10);
-  
-
    BSTNode leftChild = new BSTNode(15);
    BSTNode rightChild = new BSTNode(20);
    root.setLeft(leftChild); 
@@ -61,7 +57,7 @@ void setup() {
 
   x = ineff_count(root);
 
-  ineff_btInc(root);
+  ineff_btInc(root, 15);
 
   if (SUCCESS) {
     PrintWriter output = createWriter("success");
@@ -71,7 +67,4 @@ void setup() {
     println("Success!");
   }
   exit();
-  
-  
-  
 }

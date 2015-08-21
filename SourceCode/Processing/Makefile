@@ -293,14 +293,15 @@ build/Huffman/success: Binary/Huffman.pde
 	@cp Binary/Huffman.pde build/Huffman
 	@$(PROCESS) --run --sketch="$(BUILD)/Huffman" --output="$(BUILD)/build" --force
 
-build/RecExCode/success: Binary/BST.pde Binary/BSTTest.pde Binary/BSTNode.pde Binary/BinNode.pde
+RecTutor: build/RecExCode/success
+
+build/RecExCode/success: Binary/BST.pde Binary/BSTTest.pde Binary/BSTNode.pde Binary/BinNode.pde Binary/RecExCode.pde
 	@echo "RecExCode Test"
 	-@rm -rf build/RecExCode
 	@mkdir build/RecExCode
-	@cp Binary/BST.pde build/BSTTest
-	@cp Binary/BSTNode.pde build/BSTTest
-	@cp Binary/BinNode.pde build/BSTTest
-	@cp Binary/BSTTest.pde build/BSTTest
+	@cp Binary/RecExCode.pde build/RecExCode
+	@cp Binary/BSTNode.pde build/RecExCode
+	@cp Binary/BinNode.pde build/RecExCode
 	@$(PROCESS) --run --sketch="$(BUILD)/RecExCode" --output="$(BUILD)/build" --force
 
 General: GenTree UFTest1 UFTest2
