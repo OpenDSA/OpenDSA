@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html data-require="math spin">
+<head>
+  <title>Quicksort Multiple Choice Question: Cost</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+
+<body>
+<div class="exercise">
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <div class="spin">
+	<p class="question">What is the {best|average}-case cost for Quicksort
+	  to sort an array of n elements?</p> 
+      </div>
+      <div class="solution"><var><code>\Theta(n \log n)</code></var></div>
+      <ul class="choices">
+	<li><var><code>\Theta(n)</code></var></li>
+	<li><var><code>\Theta(\log n)</code></var></li>
+	<li><var><code>\Theta(n^2)</code></var></li>	  	 
+      </ul>
+      <div class="hints">
+	<p>While there are a few bad inputs, they are so few as to not
+	affect the average or best cases.</p>
+	<p>The best thing that can happen is that every pivot split
+	its partition in half. Something close to this happens in the
+	average case.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

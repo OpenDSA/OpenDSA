@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html data-require="math spin">
+<head>
+  <title>Exchange Sort Question: Swaps</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+
+<body>
+<div class="exercise">
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <div class="spin">
+	<p class="question">If I is the number of
+	  inversions in an input array of n records,
+	  then {Insertion|Bubble} Sort will require how many swaps?</p>
+      </div>
+      <div class="solution"><var><code>I</code></var></div>
+      <ul class="choices" data-show="4">
+	<li><var><code>n - I</code></var></li>
+	<li><var><code>I - n</code></var></li>
+	<li><var><code>n</code></var></li>
+	<li><var><code>n^2/2</code></var></li>
+	<li><var><code>I + n</code></var></li>
+	<li><var><code>I - 1</code></var></li>
+	<li><var><code>n - 1</code></var></li>
+      </ul>
+      <div class="hints">
+        <p>An inversion requires a swap to undo it.</p>
+	<p>The number of comparisons done by an algorithm is generally
+	different from the number of swaps.</p>
+      </div>
+    </div> 
+  </div>
+</div>
+</body>
+</html>

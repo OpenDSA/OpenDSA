@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>Exchange Sort Question: Permutations</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+
+<body>
+<div class="exercise">
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="question">How many ways can <code>n</code> distinct
+	values be arranged?</p>
+      <div class="solution"><var><code>n!</code></var></div>
+      <ul class="choices" >
+	<li><var><code>n^2</code></var></li>
+	<li><var><code>2^n</code></var></li>
+	<li><var><code>n</code></var></li>
+	<li><var><code>n(n+1)/2</code></var></li>
+      </ul>
+      <div class="hints">
+        <p>There are <code>n</code> ways to pick the first record.</p>
+	<p>That leaves <code>n-1</code> ways to pick the second	record.</p>
+	<p>This means that there are <code>n * (n-1)</code> ways to
+	pick the first two records.</p>
+	<p>And so on.</p>
+      </div>
+    </div> 
+  </div>
+</div>
+</body>
+</html>

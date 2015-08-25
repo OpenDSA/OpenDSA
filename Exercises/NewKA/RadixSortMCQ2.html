@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>Radix Sort Question 2</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+
+<body>
+<div class="exercise">
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="question">A disadvantage of Radix Sort is:</p>
+      <div class="solution"><var>"It needs auxilliary storage beyond the input array"</var></div>
+      <ul class="choices">
+	<li><var>"It is not stable(i.e. records with equal-valued keys might not be in the same order in the output as they were in the input)"
+	<li><var>"It is a quadratic time sort"</var></li>
+	<li><var>"None of these answers"</var></li>	  	 
+      </ul>
+      <div class="hints">
+	<p>Radix Sort is stable (otherwise, each digit's sort would mess
+	up the previous digits).</p>
+	<p>Radix Sort's time requirements depend on the number of
+	records and the number of digits. When implemented properly,
+	the number of digits is no worse than the log of the number of
+	records.</p>
+	<p>Radix Sort does need auxilliary storage.</p>
+      </div>
+    </div> 
+  </div>
+</div>
+</body>
+</html>

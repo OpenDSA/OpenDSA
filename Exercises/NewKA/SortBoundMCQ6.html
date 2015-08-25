@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>Sorting Lower Bounds Question 6</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+<body>
+
+<div class="exercise">
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="question"><code>\log n!</code> is:</p>
+      <div class="solution">
+         <var><code>\Omega(n \log n)</code></var>
+      </div>
+        <ul class="choices">
+          <li><var><code>\Omega(n^2)</code></var></li>
+          <li><var><code>\Omega(n)</code></var></li>
+          <li><var><code>\Omega(\log n)</code></var></li>
+          <li><var><code>\Omega(n^n)</code></var></li>
+        </ul>
+	<div class="hints">
+	  <p>It should be obvious that <code>\log n! < \log n^n = n
+	  \log n</code>. So that eliminates anything bigger
+	  than <code>n \log n</code>.</p>
+          <p>There are <code>n</code> terms in <code>n!</code>, and
+          you need to take the log of each of them. Since they have
+          some size, it has to be much more than
+          <code>\log n</code>.</p>
+	  <p>It turns out to be worse than just <code>n</code>.</p>
+	</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

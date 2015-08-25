@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>OpenDSA Insertion Sort Exercise: Multiple Choice Question 4</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+<body>
+
+<div class="exercise">
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="question">When implementing Insertion Sort, a binary
+	search could be used to locate the position within the first <code>i-1</code>
+	records of the array into which record <code>i</code> should be inserted.
+	Using binary search will:</p>
+      <!-- The spacing is really picky because we are mixing equations
+	   and text in the answers. -->
+      <div class="solution">
+        <var>Not speed up the asymptotic running time
+because shifting the records to make room
+for the insert will require <code>\Theta(i)</code> time</var></div>
+      <ul class="choices">
+	<li><var>Speed up the asymptotic running time
+because the position to insert will be found
+in <code>\Theta(\log i)</code> time</var></li>
+	<li><var>Speed up the asymptotic running time
+because shifting the records to make room
+for the insert will require <code>\Theta(i)</code> time</var></li>
+	<li><var> "None of these answers is correct"</var></li>	  	 
+      </ul>
+	  <div class="hints">
+	   <p>The position at which to insert could be found in
+	     <code>\Theta(\log(i))</code> steps, but shifting the records to make
+	     room for the this record will require <code>\Theta(i)</code> time.</p> 
+	  </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,200 @@
+{
+  "title": "Testing new khan-exercises Framework",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+    "Processing": {
+      "ext": ["pde"],
+      "label": "Processing",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": ["cpp", "h"],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "lang": "en",
+  "module_origin": "http://ltitest.cs.vt.edu:9000",
+  "exercise_server": "",
+  "logging_server": "",
+  "score_server": "",
+  "build_JSAV": false,
+  "allow_anonymous_credit": true,
+  "suppress_todo": true,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "chapters": {
+    "NewKA": {
+      "NewKA/BinsortMCQ2": {
+        "long_name": "BinsortMCQ2",
+        "exercises": {
+          "BinsortMCQ2": {
+            "long_name": "BinsortMCQ2",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/BinsortTF1": {
+        "long_name": "BinsortTF1",
+        "exercises": {
+          "BinsortTF1": {
+            "long_name": "BinsortTF1",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/ShellsortMCQ4": {
+        "long_name": "ShellsortMCQ4",
+        "exercises": {
+          "ShellsortMCQ4": {
+            "long_name": "ShellsortMCQ4",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/ShellsortMCQ5": {
+        "long_name": "ShellsortMCQ5",
+        "exercises": {
+          "ShellsortMCQ5": {
+            "long_name": "ShellsortMCQ5",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/SelsortFIB2": {
+        "long_name": "SelsortFIB2",
+        "exercises": {
+          "SelsortFIB2": {
+            "long_name": "SelsortFIB2",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/Dprobs": {
+        "long_name": "Dprobs",
+        "exercises": {
+          "Dprobs": {
+            "long_name": "Dprobs",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/BubsortPRO": {
+        "long_name": "BubsortPRO",
+        "exercises": {
+          "BubsortPRO": {
+            "long_name": "BubsortPRO",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/SortSumm": {
+        "long_name": "SortSumm",
+        "exercises": {
+          "SortSumm": {
+            "long_name": "SortSumm",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/ListADTPROGSumm": {
+        "long_name": "ListADTPROGSumm",
+        "exercises": {
+          "ListADTPROGSumm": {
+            "long_name": "ListADTPROGSumm",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/ListADTPROGQ1": {
+        "long_name": "ListADTPROGQ1",
+        "exercises": {
+          "ListADTPROGQ1": {
+            "long_name": "ListADTPROGQ1",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/BubsortSumm": {
+        "long_name": "BubsortSumm",
+        "exercises": {
+          "BubsortSumm": {
+            "long_name": "BubsortSumm",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/recCMultiplyPROGSumm": {
+        "long_name": "recCMultiplyPROGSumm",
+        "exercises": {
+          "recCMultiplyPROGSumm": {
+            "long_name": "recCMultiplyPROGSumm",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/recTracingSumm1": {
+        "long_name": "recTracingSumm1",
+        "exercises": {
+          "recTracingSumm1": {
+            "long_name": "recTracingSumm1",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/recTracingSumm5": {
+        "long_name": "recTracingSumm5",
+        "exercises": {
+          "recTracingSumm5": {
+            "long_name": "recTracingSumm5",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 5
+          }
+        }
+      }
+    }
+  }
+}

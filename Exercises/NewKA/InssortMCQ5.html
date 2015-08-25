@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>Insertion Sort Question 5</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+
+<body>
+<div class="exercise">
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="question"> When implementing Insertion Sort, a binary
+	search could be used to locate the position within the first <code>i-1</code>
+	records of the array into which record <code>i</code> should be
+	inserted. In this implementation, the worst case time will be:</p> 
+      <div class="solution"><var><code>\Theta(n^2)</code></var></div>
+      <ul class="choices">
+	<li><var><code>\Theta(n \log n)</code></var></li>
+	<li><var><code>\Theta(n)</code></var></li>
+	<li><var><code>\Theta(\log n)</code></var></li>
+      </ul>
+      <div class="hints">
+        <p>The position to insert could be found in
+          <code>\Theta (\log i)</code>, but shifting the records to
+          makeroom for the insert will still require
+          <code>\Theta(i)</code> time</p>
+      </div>
+    </div> 
+
+  
+  </div>
+</div>
+</body>
+</html>

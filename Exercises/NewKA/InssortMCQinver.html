@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>Insertion Sort Question: Inversions</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+
+<body>
+<div class="exercise">
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="question"> If <code>I</code> is the number of
+	inversions in an input array of <code>n</code> records,
+	then Insertion Sort will run in what time?
+      <div class="solution"><var><code>\Theta(n+I)</code></var></div>
+      <ul class="choices" data-show="4">
+	<li><var><code>\Theta(n - I)</code></var></li>
+	<li><var><code>\Theta(I - n)</code></var></li>
+	<li><var><code>\Theta(n)</code></var></li>
+	<li><var><code>\Theta(n^2)</code></var></li>
+	<li><var><code>\Theta(I)</code></var></li>
+      </ul>
+      <div class="hints">
+	<p>Insertion sort has to do <code>n</code> passes where it
+	compares at least once.</p>
+	<p>If the record for this pass has no remaining
+	inversions, then it requires no work.</p>
+	<p>But if it does have inversions, it will need a swap for
+	each such inversion.</p>
+      </div>
+    </div> 
+  </div>
+</div>
+</body>
+</html>
