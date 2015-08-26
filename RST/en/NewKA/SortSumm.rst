@@ -5,15 +5,13 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: Sorting
+   :requires: sorting terminology; sort code tuning; insertion sort
+   :satisfies: quicksort
    :topic: Sorting
 
-Sorting Summary Exercises
-=========================
+.. index:: ! ChapterSumm
 
-Here is a complete set of review questions, taken from all of the
-questions in the modules of this chapter.
-If anything goes wrong with one of the questions, or if you think that
-you are in a series of repeating questions, then just reload the page.
+ChapterSumm
+=============
 
 .. avembed:: Exercises/NewKA/ChapterSumm.html ka
