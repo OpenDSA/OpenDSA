@@ -898,14 +898,16 @@
           },
           "BinaryTreeLocalSumm": {
             "long_name": "Node Update Exercise",
-            "required": true,
-            "points": 1.0,
+            "required": false,
+	    "remove": true,
+            "points": 0.0,
             "threshold": 1
           },
           "BinaryTreeCntValSumm": {
             "long_name": "Node Count Exercise",
-            "required": true,
-            "points": 1.0,
+            "required": false,
+	    "remove": true,
+            "points": 0.0,
             "threshold": 1
           }
         }
@@ -921,25 +923,14 @@
           },
           "BinaryTreeGuidedSumm": {
             "long_name": "Binary Tree Guided Traversal Exercises",
-            "required": true,
-            "points": 2.0,
+            "required": false,
+	    "remove"; true,
+            "points": 0.0,
             "threshold": 2.0,
             "showhide": "Show"
           }
         }
       },
-      "RecurTutor2/MultipleBinaryTrees": {
-        "long_name": "Multiple Binary Trees",
-        "exercises": {
-          "MultipleBinaryTreesSumm": {
-            "long_name": "Multiple Binary Trees Exercises",
-            "required": true,
-            "points": 3.0,
-            "threshold": 3.0,
-            "showhide": "Show"
-          }
-        }
-      }, 
       "Binary/BinaryTreeImpl": {
         "long_name": "Full Binary Tree Node Implementations",
         "dispModComp": true,			

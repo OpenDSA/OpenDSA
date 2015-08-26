@@ -911,14 +911,16 @@
           },
           "BinaryTreeLocalSumm": {
             "long_name": "Node Update Exercise",
-            "required": true,
-            "points": 1.0,
+            "required": false,
+	    "remove": true,
+            "points": 0.0,
             "threshold": 1
           },
           "BinaryTreeCntValSumm": {
             "long_name": "Node Count Exercise",
-            "required": true,
-            "points": 1.0,
+            "required": false,
+	    "remove": true,
+            "points": 0.0,
             "threshold": 1
           }
         }
@@ -934,25 +936,14 @@
           },
           "BinaryTreeGuidedSumm": {
             "long_name": "Binary Tree Guided Traversal Exercises",
-            "required": true,
-            "points": 2.0,
+            "required": false,
+	    "remove": true,
+            "points": 0.0,
             "threshold": 2.0,
             "showhide": "Show"
           }
         }
       },
-      "RecurTutor2/MultipleBinaryTrees": {
-        "long_name": "Multiple Binary Trees",
-        "exercises": {
-          "MultipleBinaryTreesSumm": {
-            "long_name": "Multiple Binary Trees Exercises",
-            "required": true,
-            "points": 3.0,
-            "threshold": 3.0,
-            "showhide": "Show"
-          }
-        }
-      }, 
       "Binary/BinaryTreeImpl": {
         "long_name": "Full Binary Tree Node Implementations",
         "dispModComp": true,			
@@ -1102,58 +1093,6 @@
             "required": true,
             "points": 1,
             "threshold": 3
-          }
-        }
-      },
-      "Binary/Huffman": {
-        "long_name": "Huffman Coding Trees",
-        "exercises": {
-          "huffmanBuildCON": {
-            "long_name": "Huffman Coding Tree Slideshow: Build",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "huffmanLabelCON": {
-            "long_name": "Huffman Coding Tree Slideshow: Label Edges",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "huffmanCodesCON": {
-            "long_name": "Huffman Coding Tree Slideshow: Setting Codes",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "huffmanDecodeCON": {
-            "long_name": "Huffman Coding Tree Slideshow: Decoding",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "HuffmanDecodeFIB": {
-            "long_name": "Huffman Decoding Proficiency Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5
-          }
-        }
-      },
-      "Binary/TreeTrie": {
-        "long_name": "Trees versus Tries",
-        "exercises": {
-          "TreeTimeline": {
-            "long_name": "Tree timeline Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "TrieTimeline": {
-            "long_name": "Trie timeline Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
           }
         }
       }
