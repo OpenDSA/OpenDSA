@@ -254,6 +254,7 @@ nomin:
 
 pull:
 	git pull
+	git submodule init
 	git submodule update
 	make -s -C JSAV
 	make -s min
