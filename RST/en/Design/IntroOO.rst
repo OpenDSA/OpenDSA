@@ -8,7 +8,7 @@
    :satisfies: OO Intro
    :topic: Introduction
 
-Introduction to Object Orientated Programming
+Introduction to Object Oriented Programming
 =============================================
 
 Object-oriented programming (OOP) is a programming paradigm based on the 
@@ -48,7 +48,7 @@ to operate on data structures, object-oriented programming bundles the two toget
 so an **object**, which is an **instance of a class**, operates on its "own" data structure.
 
 
-Principles of Object Orientated Programming
+Principles of Object Oriented Programming
 -------------------------------------------
 
 There are many views on the main features and motivations for object

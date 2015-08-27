@@ -917,6 +917,13 @@
       },
       "Binary/WritingTraversals": {
         "long_name": "Writing Tree Traversals",
+        "sections": {
+          "RecurTreePROG": {
+            "long_name": "Recursive Tree Programming Exercises",
+            "showhide": "none",
+            "remove": false
+          }
+        },
         "exercises": {        
           "BinaryTreeMistakesCON": {
             "long_name": "Binary Tree Common Mistakes",

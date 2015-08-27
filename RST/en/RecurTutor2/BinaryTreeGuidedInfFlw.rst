@@ -36,11 +36,11 @@ trees are considered to be guided.
 .. inlineav:: IneffBinaryTreeRangeCON ss
    :output: show
    
+.. showhidecontent:: BTguidedPROG
 
-Practice the guided information flow through the following programming
-exercises.
+   Practice the guided information flow through the following programming
+   exercises.
 
-.. avembed:: Exercises/RecurTutor2/BinaryTreeGuidedSumm.html ka
-
+   .. avembed:: Exercises/RecurTutor2/BinaryTreeGuidedSumm.html ka
 
 .. odsascript:: AV/RecurTutor2/IneffBinaryTreeRangeCON.js

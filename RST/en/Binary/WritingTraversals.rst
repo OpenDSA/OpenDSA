@@ -229,11 +229,13 @@ Learning those skills requires some practice to make sure that you are
 not only getting the correct answer but also doing the solution
 efficiently without falling into the common mistakes.
 
-Here are practice coding exercises.
+.. showhidecontent:: RecurTreePROG
 
-.. avembed:: Exercises/RecurTutor2/BinaryTreeLocalSumm.html ka
+   Here are practice coding exercises.
 
-.. avembed:: Exercises/RecurTutor2/BinaryTreeCntValSumm.html ka
+   .. avembed:: Exercises/RecurTutor2/BinaryTreeLocalSumm.html ka
+
+   .. avembed:: Exercises/RecurTutor2/BinaryTreeCntValSumm.html ka
 
 .. odsascript:: AV/Binary/BinaryTreeMistakesCON.js
 
