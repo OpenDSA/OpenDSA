@@ -126,4 +126,3 @@ If not, then we must resort to worst-case analysis.
    :output: show
 
 .. odsascript:: AV/Development/AlgAnal/BestWorstAverageCON.js	  
-

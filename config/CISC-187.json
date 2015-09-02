@@ -196,12 +196,6 @@
             "required": false,
             "points": 0.0,
             "threshold": 1.0
-          },
-          "BestWorstAverageCases": {
-            "long_name": "Best, Worst, and Average cases Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 5
           }
         }
       },

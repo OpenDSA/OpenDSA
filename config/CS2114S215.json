@@ -454,7 +454,7 @@
         }
       }
     },
-     "Recursion": {
+    "Recursion": {
       "RecurTutor/Introduction": {
         "long_name": "Recursion Chapter Introduction",
         "exercises": {
@@ -681,7 +681,20 @@
     "Algorithm Analysis": {
       "AlgAnal/AnalIntro": {
         "long_name": "Comparing Algorithms",
-        "exercises": {}
+        "exercises": {
+          "CompareAlgSumm": {
+            "long_name": "Comparing Growth Rates Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          },
+          "GrowthRates": {
+            "long_name": "Growth Rates Ordering Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          }
+        }
       },
       "AlgAnal/AnalCases": {
         "long_name": "Best, Average, and Worst Cases",
@@ -689,7 +702,13 @@
       },
       "AlgAnal/AnalCompvsAlg": {
         "long_name": "A Faster Computer, or a Faster Algorithm?",
-        "exercises": {}
+        "exercises": {
+          "FasterCorASumm": {
+            "long_name": "Faster Computer or Faster Algorithm Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          }
       },
       "AlgAnal/AnalAsymptotic": {
         "long_name": "Asymptotic Analysis and Upper Bounds",
@@ -699,7 +718,14 @@
             "showhide": "none"
           }
         },
-        "exercises": {}
+        "exercises": {
+          "UpperBoundsSumm": {
+            "long_name": "Asymptotic Analysis and Upper Bounds Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          }
+        }
       },
       "AlgAnal/AnalProgram": {
         "long_name": "Calculating the Running Time of a Program",
