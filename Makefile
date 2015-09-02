@@ -148,8 +148,8 @@ NewKA: min
 	python $(CONFIG_SCRIPT) config/NewKA.json
 
 CS3114F15: min
-	python $(CONFIG_SCRIPT) config/CS3114F15.json -o CS3114F15Cao
-	python $(CONFIG_SCRIPT) config/CS3114F15.json -o CS3114F15Barnette
+	python $(CONFIG_SCRIPT) config/CS3114F15Cao.json
+	python $(CONFIG_SCRIPT) config/CS3114F15Barnette.json
 
 CS3114notes: min
 	python $(CONFIG_SCRIPT) s config/CS3114notes.json
