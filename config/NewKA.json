@@ -27,6 +27,18 @@
   },
   "chapters": {
     "NewKA": {
+      "NewKA/AlgAnal": {
+        "long_name": "Algorithm Analysis",
+        "exercises": {
+          "CompareAlgSumm": {
+            "long_name": "Comparing function growth rates summary",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 5
+          }
+        }
+      },
       "NewKA/BinsortMCQ2": {
         "long_name": "BinsortMCQ2",
         "exercises": {

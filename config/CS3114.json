@@ -1100,7 +1100,9 @@
           },
           "heapremovePRO": {
             "long_name": "Heap Remove Exercise",
-            "exer_options": { "JXOP-code": "none" },
+            "exer_options": {
+              "JXOP-code": "none",
+            },
             "required": true,
             "points": 2.0,
             "threshold": 0.90
