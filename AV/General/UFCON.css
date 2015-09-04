@@ -6,23 +6,24 @@
   height: 250px;
 }
 
-#ufCON {
-  height: 635px;
+#ufCON .jsavcanvas{
+  height: 550px;
+}
+
+#ufCON .jsavverticalarray {
+  width: 40px;
 }
 
 #ufCON .jsavcode{
   margin-top: 20px;
   margin-left: 50px;
+  width: 520px;
 }
 
 #pathcompCON {
-  height: 405px;
+  height: 455px;
 }
 
-.jsavvalue {
-  height:0;
-}
-
-.jsavline {
-  height: 80px;
+#pathcompCON .jsavoutput.jsavline {
+  height: 60px;
 }

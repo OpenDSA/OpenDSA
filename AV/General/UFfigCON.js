@@ -5,7 +5,7 @@ $(document).ready(function () {
   var ind;
 
   var arr1 = [5, 0, 0, 5, 3, "/", 5, 2, 5, "/"];
-  var parents = av.ds.array(arr1, {top: -10});
+  var parents = av.ds.array(arr1, {top: 0});
 
   var arr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
   var labels = av.ds.array(arr, {top: 25, indexed: true, center: true});

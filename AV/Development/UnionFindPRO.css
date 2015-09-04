@@ -1,11 +1,17 @@
 #container {
   width: 800px;
-  height: 595px;
+  height: 600px;
 }
+
 .avcontainer {
   width: 800px;
   height: 600px;
 }
+
+.jsavcanvas {
+  min-height: 600px;
+}
+
 .jsavoutput .jsavline {
   height: 200px;
   margin: 0 0 0 20px;
