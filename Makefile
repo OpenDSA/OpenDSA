@@ -243,7 +243,7 @@ nomin:
 	@cp lib/odsaMOD.js lib/odsaMOD-min.js
 	@cp lib/odsaAV.js lib/odsaAV-min.js
 	@cp lib/gradebook.js lib/gradebook-min.js
-	@cp ODSAkhan-exercises/khan-exercise.js lib/khan-exercise-min.js
+	@cp khan-exercises/khan-exercise.js lib/khan-exercise-min.js
 	@cp lib/registerbook.js lib/registerbook-min.js
 	@cp lib/createcourse.js lib/createcourse-min.js
 	@cp lib/site.css lib/site-min.css
