@@ -87,7 +87,7 @@ an assignment is made after each comparison with a probability of one
 half.
 But this is clearly wrong.
 In fact, ``largest`` does an assignment on the :math:`i` th iteration
-if and only if ``A``[:math:`i`] is the biggest of the the first
+if and only if ``A`` [:math:`i` ] is the biggest of the the first
 :math:`i` elements.
 Assuming all permutations are equally likely, the probability of this
 being true is :math:`1/i`.

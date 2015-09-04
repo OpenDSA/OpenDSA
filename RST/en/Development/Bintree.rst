@@ -5,26 +5,28 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :requires: Spatial data structures
+   :requires: BST; Spatial data structures
    :satisfies: Bintree
    :topic: Spatial Data Structures
+
+.. odsalink:: AV/Development/bintreeCON.css
 
 The Bintree
 ===========
 
-We now present a spatial data structure for storing
+This module presents a spatial data structure for storing
 point data in two or more dimensions, called the Bintree.
 The Bintree is a natural extension of the BST to
 multiple dimensions.
 The Bintree differs from the BST in two important ways.
-First, being a data structure for multiple dimensions,
-at each level of the tree the Bintree makes branching decisions based
-on a particular search key associated with that level,
-called the :term:`discriminator`.
+First, being a data structure for multiple dimensions, at each level
+of the tree the Bintree
+makes branching decisions based on a particular search key associated
+with that level, called the :term:`discriminator`.
 Its splitting decisions alternate among the key dimensions.
 Another difference from the BST is that the Bintree uses what is known
 as :term:`key space decomposition`, and so is a form of :term:`trie`.
-A key-space decomposition splits the key space into equal halves,
+A key space decomposition splits the key space into equal halves,
 rather than splitting at the key value of the object being stored.
 
 In theory, the Bintree could be used to unify search across any
@@ -34,12 +36,8 @@ multidimensional coordinates, such as locations in 2D or 3D space.
 
 .. _BintreeFig:
 
-.. odsafig:: Images/Bintree.png
-   :width: 500
+.. inlineav:: bintreeCONBTEX dgm
    :align: center
-   :capalign: center
-   :figwidth: 90%
-   :alt: Example of a Bintree.
 
    Example of a Bintree.
 
@@ -225,9 +223,16 @@ used to represent empty leaf nodes.
 It turns out that the Bintree insert and delete methods are easier to
 implement when using the composite design.
 
-Below is a visualization of the Bintree. Be careful when using this.
+Below is a visualization of the Bintree. Use this visualization to
+help understand how the Bintree data structure works.
+
+.. avembed:: AV/Development/bintreeAV.html ss
+
+Below is another visualization of the Bintree. Be careful when using this.
 You must set "Bucket Capacity" to be 1, otherwise you will not see the
 Bintree as described in this section.
+Note that this is a Java applet, so you might need to give permission
+to your browser to run it.
 
 .. raw:: html
 
@@ -246,3 +251,5 @@ Notes
 .. [#] A more efficient computation is
        :math:`(P_x - N_x)^2 + (P_y - N_y)^2 \leq d^2`.
        This avoids performing a square root function.
+
+.. odsascript:: AV/Development/bintreeCON.js

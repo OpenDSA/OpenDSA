@@ -9,7 +9,10 @@
     "C++":{ "ext": ["cpp", "h"],"label":"C++","lang":"C++"}
   },
   "lang": "en",
-  "module_origin": "http://www.ida.liu.se",
+  "module_origin": "http://algoviz.org",
+  "exercise_server": "https://opendsa.cs.vt.edu/",
+  "logging_server": "https://opendsa.cs.vt.edu/",
+  "score_server": "https://opendsa.cs.vt.edu/",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
@@ -448,25 +451,66 @@
     "Algorithm Analysis": {
       "AlgAnal/AnalChap": {
         "long_name": "Chapter Intro: Algorithm Analysis",
+	"dispModComp": true,
         "exercises": {}
       },
-      "AlgAnal/AnalPrelim": {
+      "AlgAnalTest/AnalPrelim": {
         "long_name": "Problems, Algorithms, and Programs",
-        "exercises": {}
+        "exercises": {
+          "ProblemAlgorithmCON": {
+            "long_name": "Problem, Algorithm, and Program definitions Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "AnalPrelimSumm": {
+            "long_name": "Problems, Algorithms, Programs Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 7
+          }
+        }
       },
       "AlgAnal/AnalIntro": {
         "long_name": "Comparing Algorithms",
-        "exercises": {}
+        "exercises": {
+          "CompareAlgSumm": {
+            "long_name": "Comparing Growth Rates Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          },
+          "GrowthRates": {
+            "long_name": "Growth Rates Ordering Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          }
+        }
       },
-      "AlgAnal/AnalCases": {
+      "AlgAnalTest/AnalCases": {
         "long_name": "Best, Average, and Worst Cases",
-        "exercises": {}
+        "exercises": {
+          "BestWorstAverageCON": {
+            "long_name": "Best, Worst, and Average cases visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "AlgAnal/AnalCompvsAlg": {
         "long_name": "A Faster Computer, or a Faster Algorithm?",
-        "exercises": {}
+        "exercises": {
+          "FasterCorASumm": {
+            "long_name": "Faster Computer or Faster Algorithm Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          }
+        }
       },
-      "AlgAnal/AnalAsymptotic": {
+      "AlgAnalTest/AnalAsymptotic": {
         "long_name": "Asymptotic Analysis and Upper Bounds",
         "sections": {
           "thetadisc": {
@@ -475,20 +519,39 @@
             "remove": true
           }
         },
-        "exercises": {}
-      },
-      "AlgAnal/AnalLower": {
-        "long_name": "Lower Bounds and Theta Notation",
         "exercises": {
-          "AnalPairSumm": {
-            "long_name": "Function Pairs Exercise",
+            "UpperBoundCON": {
+            "long_name": "Upper Bounds visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "UpperBoundsSumm": {
+            "long_name": "Asymptotic Analysis and Upper Bounds Exercise",
             "required": true,
             "points": 2.0,
             "threshold": 5
           }
         }
       },
-      "AlgAnal/AnalProgram": {
+      "AlgAnalTest/AnalLower": {
+        "long_name": "Lower Bounds and Theta Notation",
+        "exercises": {
+          "LowerThetaSumm": {
+            "long_name": "Lower Bounds and Theta Notation Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          },
+          "LowerBoundCON": {
+            "long_name": "Lower Bounds visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      },
+      "AlgAnalTest/AnalProgram": {
         "long_name": "Calculating the Running Time of a Program",
         "sections": {
           "binsearchpro": {
@@ -506,6 +569,7 @@
           },
           "binarySearchPRO": {
             "long_name": "Binary Search Proficiency Exercise",
+            "exer_options": { "JXOP-code": "none" },
             "required": true,
             "points": 1.0,
             "threshold": 1.0
@@ -515,27 +579,80 @@
             "required": true,
             "points": 1.0,
             "threshold": 5
+          },
+          "SummationOneToNCON": {
+            "long_name": "Summation of the first N Integers visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "SummationTwoPowerICON": {
+            "long_name": "Summation Two Power I visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "LinearRecurrenceSimpleCON": {
+            "long_name": "Linear Recurrence visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "DivideAndConquerRecurrenceSimpleCON": {
+            "long_name": "Linear Recurrence visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
           }
         }
       },
-      "AlgAnal/AnalProblem": {
+      "AlgAnalTest/AnalProblem": {
         "long_name": "Analyzing Problems",
-        "exercises": {}
+        "exercises": {
+          "AnalProblemSumm": {
+            "long_name": "Problem Analysis Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          },
+          "AnalyzingProblemsCON": {
+            "long_name": "Worst Case Lower Bound Visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
-      "AlgAnal/AnalMisunderstanding": {
+      "AlgAnalTest/AnalMisunderstanding": {
         "long_name": "Common Misunderstandings",
-        "exercises": {}
+        "exercises": {
+          "MisSumm": {
+            "long_name": "Common Misconceptions Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          },
+          "MisunderstandingsGraphCON": {
+            "long_name": "Example's graph Visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "AlgAnal/AnalMultiple": {
         "long_name": "Multiple Parameters",
+	"dispModComp": true,
         "exercises": {}
       },
       "AlgAnal/AnalSpace": {
         "long_name": "Space Bounds",
+	"dispModComp": true,
         "exercises": {}
       },
       "AlgAnal/AnalTuning": {
         "long_name": "Speeding Up Your Programs",
+	"dispModComp": true,
         "exercises": {}
       },
       "AlgAnal/AlgAnalSumm": {
@@ -1372,11 +1489,11 @@
         "long_name": "k-d Trees",
         "exercises": {}
       },
-      "Development/Bintree": {
-        "long_name": "Bintrees",
+      "Development/PRquadtree": {
+        "long_name": "PR Quadtrees",
         "exercises": {}
       },
-      "Development/BintreeNew": {
+      "Development/Bintree": {
         "long_name": "Bintrees",
         "exercises": {
           "bintreeCONBTEX": {},
@@ -1388,6 +1505,10 @@
             "threshold": 1.0
           }
         }
+      },
+      "Development/OtherSpatial": {
+        "long_name": "Other Spatial Data Structures",
+        "exercises": {}
       }
     },
     "GeneralTrees": {
@@ -2690,7 +2811,18 @@
       },
       "Development/BTree": {
         "long_name": "B-Trees",
-        "exercises": {}
+	"dispModComp": true,
+        "exercises": {
+          "bPlusTreeInsertPRO": {
+            "long_name": "B+ Tree Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90,
+            "exer_options": {
+              "JXOP-feedback": "continuous"
+            }
+          }
+        }
       }
     },
     "Graphs": {
@@ -3043,15 +3175,35 @@
       },
       "NP/circuitSAT": {
         "long_name": "The Circuit Satisfiability problem",
-        "exercises": {}
+        "exercises": {
+          "circuitSATCON": {
+            "long_name": "Circuit Satisfiability Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/SAT": {
         "long_name": "The Formula Satisfiability problem",
-        "exercises": {}
+        "exercises": {
+          "SATCON": {
+            "long_name": "Satisfiability Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/threeSAT": {
         "long_name": "The 3-CNF Satisfiability problem",
         "exercises": {
+          "threeSATCON": {
+            "long_name": "3-CNF Satisfiability Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "threeSAT_KA":{
             "long_name": "Practice Exercise for 3-SAT",
             "required": false,
@@ -3063,6 +3215,12 @@
       "NP/clique": {
         "long_name": "The Clique problem",
         "exercises": {
+          "cliqueCON": {
+            "long_name": "Clique Problem Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "clique_KA":{
             "long_name": "Practice Exercise for Clique",
             "required": false,
@@ -3074,6 +3232,12 @@
       "NP/independentSet": {
         "long_name": "The Independent Set problem",
         "exercises": {
+          "independentSetCON": {
+            "long_name": "Independent Set Problem Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "independentSet_KA":{
             "long_name": "Practice Exercise for Independent Set",
             "required": false,
@@ -3085,6 +3249,12 @@
       "NP/vertexCover": {
         "long_name": "The Independent Set problem",
         "exercises": {
+          "vertexCoverCON": {
+            "long_name": "Vertex Cover Problem Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "vertexCover_KA":{
             "long_name": "Practice Exercise for Vertex Cover",
             "required": false,
@@ -3096,6 +3266,12 @@
       "NP/hamiltonianCycle": {
         "long_name": "The Hamiltonian Cycle problem",
         "exercises": {
+          "hamiltonianCycleCON": {
+            "long_name": "Hamiltonian Cycle Problem Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "hamiltonianCycle_KA":{
             "long_name": "Practice Exercise for Hamiltonian Cycle",
             "required": false,
@@ -3107,6 +3283,12 @@
       "NP/TSP": {
         "long_name": "The Traveling Salesman problem",
         "exercises": {
+          "TSPCON": {
+            "long_name": "Traveling Salesman Problem Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "TSP_KA":{
             "long_name": "Practice Exercise for Traveling Salesman Problem",
             "required": false,
@@ -3121,31 +3303,80 @@
       },
       "NP/circuitSAT_to_SAT": {
         "long_name": "Reduction of circuit SAT to SAT.",
-        "exercises": {}
+        "exercises": {
+          "circuitSATtoSATCON": {
+            "long_name": "Circuit SAT to SAT Reduction Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/SAT_to_threeSAT": {
         "long_name": "Reduction of SAT to 3-SAT.",
-        "exercises": {}
+        "exercises": {
+          "SATto3SATCON": {
+            "long_name": "SAT to 3-SAT Reduction Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/threeSAT_to_clique": {
         "long_name": "Reduction of 3-SAT to Clique problem.",
-        "exercises": {}
+        "exercises": {
+          "threeSATtoCliqueCON": {
+            "long_name": "3-SAT to Clique Reduction Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/clique_to_independentSet": {
         "long_name": "Reduction of Clique problem to Independent Set problem.",
-        "exercises": {}
+        "exercises": {
+          "cliqueToISCON": {
+            "long_name": "Clique to Independent Set Reduction Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/independentSet_to_vertexCover": {
         "long_name": "Reduction of Independent Set problem to Vertex Cover problem.",
-        "exercises": {}
+        "exercises": {
+          "IStoVCCON": {
+            "long_name": "Independent Set to Vertex Cover Reduction Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/threeSAT_to_hamiltonianCycle": {
         "long_name": "Reduction of 3-SAT to Hamiltonian Cycle Problem.",
-        "exercises": {}
+        "exercises": {
+          "threeSATtoHCCON": {
+            "long_name": "3-SAT to Hamiltonian Cycle Reduction Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/hamiltonianCycle_to_TSP": {
         "long_name": "Reduction of Hamiltonian Cycle Problem to TSP.",
-        "exercises": {}
+        "exercises": {
+          "HCtoTSPCON": {
+            "long_name": "Hamiltonian Cycle to TSP Reduction Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/NPCoping": {
         "long_name": "Coping with NP-complete problems",

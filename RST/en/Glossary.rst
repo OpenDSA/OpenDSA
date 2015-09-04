@@ -1712,6 +1712,19 @@ Glossary
       In :term:`graph` terminology, the in degree for a :term:`vertex` is
       the number of edges directed into the vertex.
 
+   information theoretic lower bound
+      A :term:`lower bound` on the amount of resources needed to solve
+      a problem based on the number of bits of information needed to
+      uniquely specify the answer.
+      Sometimes referred to as a "Shannon theoretic lower bound" due
+      to Shannon's work on information theory and entropy.
+      An example is that sorting has a lower bound of
+      :math:`\Omega(\log_2 n!)` because there are :math:`n!` possible
+      orderings for :math:`n` values.
+      This observation alone does not make the lower bound tight,
+      because it is possible that no algorithm could actually reach
+      the information theory lower limit.
+
    inode
       Short for "index node".
       In UNIX-style file systems, specific disk :term:`sectors <sector>`
