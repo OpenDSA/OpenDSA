@@ -9,7 +9,7 @@
 
 .. index:: ! BinsortTF1
 
-BinsortTF1
-==========
+Binsort Summary
+===============
 
-.. avembed:: Exercises/NewKA/BinsortTF1.html ka
+.. avembed:: Exercises/NewKA/BinsortSumm.html ka

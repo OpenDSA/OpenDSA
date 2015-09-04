@@ -21,11 +21,63 @@
   "score_server": "",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
-  "suppress_todo": true,
+  "suppress_todo": false,
   "glob_exer_options": {
     "JXOP-debug": "true"
   },
   "chapters": {
+    "Background": {
+      "NewKA/IntroDSA": {
+        "long_name": "Introduction to Data Structures and Algorithms",
+        "exercises": {
+          "IntroSumm": {
+            "long_name": "Introduction Summary Questions",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/SetDef": {
+        "long_name": "Set Definitions",
+        "exercises": {
+          "SetTFrelation": {
+            "long_name": "Relations Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          },
+          "SetTFequivrel": {
+            "long_name": "Equivalence Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 3
+          },
+          "SetTFpartialorder": {
+            "long_name": "PartialOrder Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 3
+          }
+        }
+      },
+      "NewKA/MathpreSumm": {
+        "long_name": "Chapter Summary",
+        "exercises": {
+          "MathBgSumm": {
+            "long_name": "Math Background Summary Questions",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      }
+    },
     "NewKA": {
       "NewKA/AlgAnal": {
         "long_name": "Algorithm Analysis",
@@ -47,7 +99,7 @@
             "required": true,
             "points": 1.0,
             "showhide": "show",
-            "threshold": 5
+            "threshold": 2
           }
         }
       },
@@ -59,7 +111,19 @@
             "required": true,
             "points": 1.0,
             "showhide": "show",
-            "threshold": 5
+            "threshold": 2
+          }
+        }
+      },
+      "NewKA/BinsortSumm": {
+        "long_name": "Binsort Module Summary",
+        "exercises": {
+          "BinsortSumm": {
+            "long_name": "Binsort Summary Exercise",
+            "required": true,
+            "points": 2.0,
+            "showhide": "show",
+            "threshold": 4
           }
         }
       },

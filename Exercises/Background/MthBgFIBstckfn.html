@@ -5,22 +5,16 @@
 
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
-  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-
+  <script data-main="../../khan-exercises/local-only/main.js" src="../../khan-exercises/local-only/require.js"></script>
 <script>
-var answer=0;
+var answer = 0;
 function checkAnswer(answer, M , N) {
-  var firstPart= M/N ;
-  var modelAnswer= Math.exp(Math.log(firstPart)/10).toFixed(2);
+  var firstPart = M / N ;
+  var modelAnswer= Math.exp(Math.log(firstPart) / 10).toFixed(2);
   // Convert to integer growth rate
   modelAnswer = Math.round((modelAnswer - 1.0) * 100.0);
   console.log(modelAnswer);
-
-  if ( answer== modelAnswer) {
-    return true;
-  } else {
-      return false;
-  }
+  return (answer === modelAnswer);
 }
 </script>
 </head>
@@ -54,13 +48,14 @@ function checkAnswer(answer, M , N) {
 	<p> You will need to use logs/antilogs. Fortunately, you can
 	  use whatever base you want for the logarithm. Since many
 	  scientific calculators will calculate the natural log
-	  (base <code>e</code>) and will also give
+	  (base <code>e</code>, called <code>\ln</code>) and will also give
 	  you <code>e^x</code>, this might be the easiest base to work
 	  with.
 	</p>
 	<p> Solving for <code>X</code> gives us:<br/>
-	  <code>10 ln X = \ln M/N</code> <br/>
-	  <code>ln X = (\ln M/N)/10</code><br/>
+          <code>X^{10} = M/N</code><br/>
+	  <code>10 \ln X = \ln M/N</code><br/>
+	  <code>\ln X = (\ln M/N)/10</code><br/>
           <code>X = e^{(\ln M/N)/10}</code><br/>
 	  Find a calculator that can solve this for you.
 	</p>
