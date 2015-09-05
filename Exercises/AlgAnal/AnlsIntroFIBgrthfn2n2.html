@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-require="math AnlsIntroFIBgrthfn2n2">
+<html data-require="math">
 <head>
   <title> Analysis Introduction Exercise: Growth Function</title>
   <script src="../../lib/jquery.min.js"></script>
@@ -8,18 +8,6 @@
 </head>
  
 <body>
-<!-- 
-<script>
-function checkAnswer(answer) {
-  if (answer.trim() === "none") {
-    return true;
-  } else {
-    return false;
-  }
-}
-</script>
- -->
-  
 <div class="exercise">
   <div class="problems">
     <div id="problem-type-or-description">
@@ -29,14 +17,7 @@ function checkAnswer(answer) {
 	(a positive integer) for which this function is the most efficient of the
       six. If there is no integer value for which it is most
       efficent, type "none".</p>
-      <br> <textarea rows="1" cols="9" style="resize:none"  id="answerTextarea" ></textarea></p>
-      <div class="solution" data-type="custom">
-        <div class="guess"> [ "list" ] </div>
-        <div class="validator-function">
-         answer = $('#answerTextarea').val();
-         return checkAnswer(answer );
-        </div>
-      </div>
+      <div class="solution" data-type="text">none</div>
       <div class="hints">
         <p>Since <code>2n^2</code> is a relatively fast growing
           function, it would only be fastest for relatively small

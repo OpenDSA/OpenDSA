@@ -8,18 +8,6 @@
 </head>
  
 <body>
-<!-- 
-<script>
-function checkAnswer(answer) {
-  if ((answer === 2) || (answer === 3)) {
-    return true;
-  } else {
-    return false;
-  }
-}
-</script>
- -->
-  
 <div class="exercise">
   <div class="problems">
     <div id="problem-type-or-description">
@@ -29,21 +17,10 @@ function checkAnswer(answer) {
 	(a positive integer) for which this function is the most efficient of the
       six. If there is no integer value for which it is most
       efficent, type "none".</p>
-      <br> <textarea rows="1" cols="9" style="resize:none"  id="answerTextarea" ></textarea></p>
-      <div class="solution" data-type="custom">
-        <div class="guess"> [ "list" ] </div>
-        <div class="validator-function">
-        function checkAnswer(answer) {
-          if ((answer === 2) || (answer === 3)) {
-            return true;
-          } else {
-            return false;
-          }
-        }
-
-         answer = parseInt($('#answerTextarea').val());
-         return checkAnswer(answer);
-        </div>
+      <div class="solution" data-type="set">
+        <div class="set-sol">2</div>
+        <div class="set-sol">3</div>
+        <div class="input-format"><span class="entry"></span></p></div>
       </div>
       <div class="hints">
         <p><code>n!</code> is an extremely fast growing function.</p>
@@ -52,6 +29,7 @@ function checkAnswer(answer) {
         <p>So for very small values of <code>n</code>, it can be
           fastest.</p>
       </div> 
+    </div>
   </div>
 </div>
 </body>

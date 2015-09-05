@@ -8,18 +8,6 @@
 </head>
  
 <body>
-<!-- 
-<script>
-function checkAnswer(answer) {
-  if (answer.trim() === "none") {
-    return true;
-  } else {
-    return false;
-  }
-}
-</script>
- -->
-  
 <div class="exercise">
   <div class="problems">
     <div id="problem-type-or-description">
@@ -29,26 +17,12 @@ function checkAnswer(answer) {
 	(a positive integer) for which this function is the most efficient of the
         six. If there is no integer value for which it is most
         efficent, type "none".</p>
-      <br> <textarea rows="1" cols="9" style="resize:none"  id="answerTextarea" ></textarea></p>
-      <div class="solution" data-type="custom">
-        <div class="guess"> [ "list" ] </div>
-        <div class="validator-function">
-          function checkAnswer(answer) {
-            if (answer.trim() === "none") {
-              return true;
-            } else {
-              return false;
-            }
-          }
-
-          answer = $('#answerTextarea').val();
-          return checkAnswer(answer);
-        </div>
-      </div>
+      <div class="solution" data-type="text">none</div>
       <div class="hints">
         <p>Consider that <code>20n</code> always takes longer than
           <code>10n</code>.</p>
       </div> 
+    </div>
   </div>
 </div>
 </body>
