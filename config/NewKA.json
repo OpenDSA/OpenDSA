@@ -78,19 +78,120 @@
         }
       }
     },
-    "NewKA": {
-      "NewKA/AlgAnal": {
-        "long_name": "Algorithm Analysis",
+    "Algorithm Analysis": {
+      "NewKA/AnalPrelim": {
+        "long_name": "Problems, Algorithms, and Programs",
+        "exercises": {
+          "AnalPrelimSumm": {
+            "long_name": "Problems, Algorithms, Programs Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 7
+          }
+        }
+      },
+      "NewKA/AnalIntro": {
+        "long_name": "Comparing Algorithms",
         "exercises": {
           "CompareAlgSumm": {
-            "long_name": "Comparing function growth rates summary",
+            "long_name": "Comparing Growth Rates Exercise",
             "required": true,
-            "points": 1.0,
-            "showhide": "show",
+            "points": 2.0,
+            "threshold": 5
+          },
+          "GrowthRates": {
+            "long_name": "Growth Rates Ordering Exercise",
+            "required": true,
+            "points": 2.0,
             "threshold": 5
           }
         }
       },
+      "NewKA/AnalCompvsAlg": {
+        "long_name": "A Faster Computer, or a Faster Algorithm?",
+        "exercises": {
+          "FasterCorASumm": {
+            "long_name": "Faster Computer or Faster Algorithm Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/AnalAsymptotic": {
+        "long_name": "Asymptotic Analysis and Upper Bounds",
+        "exercises": {
+          "UpperBoundsSumm": {
+            "long_name": "Asymptotic Analysis and Upper Bounds Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/AnalLower": {
+        "long_name": "Lower Bounds and Theta Notation",
+        "exercises": {
+          "LowerThetaSumm": {
+            "long_name": "Lower Bounds and Theta Notation Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/AnalProgram": {
+        "long_name": "Calculating the Running Time of a Program",
+        "exercises": {
+          "AnalProgramSumm": {
+            "long_name": "Program Code Analysis Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/AnalProblem": {
+        "long_name": "Analyzing Problems",
+        "exercises": {
+          "AnalProblemSumm": {
+            "long_name": "Problem Analysis Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/AnalMisunderstanding": {
+        "long_name": "Common Misunderstandings",
+        "exercises": {
+          "MisSumm": {
+            "long_name": "Common Misconceptions Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/AlgAnalSumm": {
+        "long_name": "Algorithm Analysis Summary Exercises",
+        "exercises": {
+          "AlgAnalCS2114Summ": {
+            "long_name": "Algorithm Analysis Summary Questions",
+            "required": false,
+            "points": 0.0,
+            "threshold": 5
+          },
+          "AlgAnalSumm": {
+            "long_name": "Algorithm Analysis Summary Questions",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      }
+    },
+    "NewKA": {
       "NewKA/BinsortMCQ2": {
         "long_name": "BinsortMCQ2",
         "exercises": {

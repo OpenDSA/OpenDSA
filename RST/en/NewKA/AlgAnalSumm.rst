@@ -5,13 +5,11 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :requires: sorting terminology; sort code tuning; insertion sort
-   :satisfies: quicksort
-   :topic: Sorting
+   :topic: Algorithm Analysis
 
-.. index:: ! ChapterSumm
+Algorithm Analysis Summary Exercises
+====================================
 
-Algorithm Analysis: Comparison
-==============================
+.. avembed:: Exercises/AlgAnal/AlgAnalCS2114Summ.html ka
 
-.. avembed:: Exercises/NewKA/CompareAlgSumm.html ka
+.. avembed:: Exercises/AlgAnal/AlgAnalSumm.html ka

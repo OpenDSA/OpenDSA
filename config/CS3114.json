@@ -205,7 +205,7 @@
           }
         },
         "exercises": {
-            "UpperBoundCON": {
+          "UpperBoundCON": {
             "long_name": "Upper Bounds visualization",
             "required": false,
             "points": 0.0,
