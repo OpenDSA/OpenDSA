@@ -8,6 +8,7 @@
 </head>
  
 <body>
+<!-- 
 <script>
 function checkAnswer(answer) {
   if ((answer === 2) || (answer === 3)) {
@@ -17,6 +18,7 @@ function checkAnswer(answer) {
   }
 }
 </script>
+ -->
   
 <div class="exercise">
   <div class="problems">
@@ -31,6 +33,14 @@ function checkAnswer(answer) {
       <div class="solution" data-type="custom">
         <div class="guess"> [ "list" ] </div>
         <div class="validator-function">
+        function checkAnswer(answer) {
+          if ((answer === 2) || (answer === 3)) {
+            return true;
+          } else {
+            return false;
+          }
+        }
+
          answer = parseInt($('#answerTextarea').val());
          return checkAnswer(answer);
         </div>
