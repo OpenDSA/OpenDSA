@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-require="math">
+<html data-require="math AnlsIntroFIBgrthfn2n2">
 <head>
   <title> Analysis Introduction Exercise: Growth Function</title>
   <script src="../../lib/jquery.min.js"></script>
@@ -33,14 +33,6 @@ function checkAnswer(answer) {
       <div class="solution" data-type="custom">
         <div class="guess"> [ "list" ] </div>
         <div class="validator-function">
-          function checkAnswer(answer) {
-            if (answer.trim() === "none") {
-              return true;
-            } else {
-              return false;
-            }
-          }
-
          answer = $('#answerTextarea').val();
          return checkAnswer(answer );
         </div>
