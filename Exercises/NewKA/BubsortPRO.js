@@ -3,11 +3,11 @@
         answerArr = [], // The (internal) array that stores the correct answer
         cloneArr = [], // A copy of the (internal) array at the start of the exercise for reset
         jsavArr, // The array that the user manipulates (JSAV object)
-        userInput, // Boolean: Tells us if user ever did anything
         isSelected, // Boolean: True iff user has already clicked an array element
         selected_index, // Position that has been selected by user for swap
 
         bubSortPRO = {
+            userInput: null, // Boolean: Tells us if user ever did anything
             // Click event handler on the array
             clickHandler: function(index, e) {
                 if (selected_index === -1) { // if nothing currently selected
