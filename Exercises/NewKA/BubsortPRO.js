@@ -80,7 +80,7 @@
                 jsavArr.click(bubSortPRO.clickHandler);
                 // Set up handler for reset button
                 $("#reset").click(function() {
-                    f_reset();
+                bubSortPRO.f_reset();
                 });
             },
 
