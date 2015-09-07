@@ -5,13 +5,12 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :requires: sorting terminology; sort code tuning; insertion sort
-   :satisfies: ListADTPROGQ1
+   :satisfies: ListADTPROGSumm
    :topic: Sorting
 
-.. index:: ! ListADTPROGQ1
+.. index:: ! ListADTPROGSumm
 
-ListADTPROGQ1
-=============
+The List ADT
+============
 
-.. avembed:: Exercises/NewKA/ListADTPROGQ1.html ka
+.. avembed:: Exercises/List/ListADTPROG.html ka

@@ -5,7 +5,6 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :requires: sorting terminology; sort code tuning; insertion sort
    :satisfies: ListADTPROGSumm
    :topic: Sorting
 

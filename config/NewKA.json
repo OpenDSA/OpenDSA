@@ -254,6 +254,32 @@
         }
       }
     },
+    "Linear Structures": {
+      "NewKA/ListADT": {
+        "long_name": "List ADT",
+        "exercises": {
+          "ListADTPROG": {
+            "long_name": "List ADT Programming Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 3
+          }
+        }
+      },
+      "NewKA/ListADTPROGSumm": {
+        "long_name": "List ADT Summary",
+        "exercises": {
+          "ListADTPROGSumm": {
+            "long_name": "List ADT Summary Version",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 3
+          }
+        }
+      }
+    },
     "NewKA": {
       "NewKA/BinsortMCQ2": {
         "long_name": "BinsortMCQ2",
@@ -359,30 +385,6 @@
             "required": true,
             "points": 2,
             "threshold": 10
-          }
-        }
-      },
-      "NewKA/ListADTPROGSumm": {
-        "long_name": "ListADTPROGSumm",
-        "exercises": {
-          "ListADTPROGSumm": {
-            "long_name": "ListADTPROGSumm",
-            "required": true,
-            "points": 1.0,
-            "showhide": "show",
-            "threshold": 5
-          }
-        }
-      },
-      "NewKA/ListADTPROGQ1": {
-        "long_name": "ListADTPROGQ1",
-        "exercises": {
-          "ListADTPROGQ1": {
-            "long_name": "ListADTPROGQ1",
-            "required": true,
-            "points": 1.0,
-            "showhide": "show",
-            "threshold": 5
           }
         }
       },
