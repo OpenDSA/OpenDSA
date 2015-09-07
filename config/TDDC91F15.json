@@ -867,8 +867,9 @@
           },
           "btLeafPROG": {
             "long_name": "Node Count Programming Exercise",
-            "required": true,
-            "points": 1.0,
+            "required": false,
+	    "remove": true,
+            "points": 0.0,
             "threshold": 1
           },
           "btTravInorderPRO": {
