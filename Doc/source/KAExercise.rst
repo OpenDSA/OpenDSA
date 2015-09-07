@@ -104,3 +104,9 @@ Using JSAV within the Khan Academy Framework
   that you want to include in summary exercises. This breaks for some
   reason.
 
+Notes
+-----
+
+* If you want to use LaTeX within a multiple choice distractor (but as
+  only part of the text, math being not the entire text), then be sure
+  NOT to use <var></var> tags, and do not use quote marks.
