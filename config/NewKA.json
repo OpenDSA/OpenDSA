@@ -84,9 +84,10 @@
         "exercises": {
           "AnalPrelimSumm": {
             "long_name": "Problems, Algorithms, Programs Exercise",
+            "showhide": "show",
             "required": true,
-            "points": 2.0,
-            "threshold": 7
+            "points": 1.0,
+            "threshold": 4
           }
         }
       },
@@ -95,15 +96,17 @@
         "exercises": {
           "CompareAlgSumm": {
             "long_name": "Comparing Growth Rates Exercise",
+            "showhide": "show",
             "required": true,
             "points": 2.0,
-            "threshold": 5
+            "threshold": 4
           },
           "GrowthRates": {
             "long_name": "Growth Rates Ordering Exercise",
+            "showhide": "show",
             "required": true,
-            "points": 2.0,
-            "threshold": 5
+            "points": 1.0,
+            "threshold": 3
           }
         }
       },
@@ -111,10 +114,11 @@
         "long_name": "A Faster Computer, or a Faster Algorithm?",
         "exercises": {
           "FasterCorASumm": {
-            "long_name": "Faster Computer or Faster Algorithm Exercise",
+            "long_name": "Faster Computer vs. Algorithm Exercise",
+            "showhide": "show",
             "required": true,
-            "points": 2.0,
-            "threshold": 5
+            "points": 1.0,
+            "threshold": 2
           }
         }
       },
@@ -123,9 +127,10 @@
         "exercises": {
           "UpperBoundsSumm": {
             "long_name": "Asymptotic Analysis and Upper Bounds Exercise",
+            "showhide": "show",
             "required": true,
-            "points": 2.0,
-            "threshold": 5
+            "points": 1.0,
+            "threshold": 4
           }
         }
       },
@@ -134,6 +139,7 @@
         "exercises": {
           "LowerThetaSumm": {
             "long_name": "Lower Bounds and Theta Notation Exercise",
+            "showhide": "show",
             "required": true,
             "points": 2.0,
             "threshold": 5
@@ -145,6 +151,7 @@
         "exercises": {
           "AnalProgramSumm": {
             "long_name": "Program Code Analysis Exercise",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 5
@@ -156,6 +163,7 @@
         "exercises": {
           "AnalProblemSumm": {
             "long_name": "Problem Analysis Exercise",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 5
@@ -167,9 +175,10 @@
         "exercises": {
           "MisSumm": {
             "long_name": "Common Misconceptions Exercise",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
-            "threshold": 5
+            "threshold": 4
           }
         }
       },
@@ -178,15 +187,69 @@
         "exercises": {
           "AlgAnalCS2114Summ": {
             "long_name": "Algorithm Analysis Summary Questions",
+            "showhide": "show",
             "required": false,
             "points": 0.0,
             "threshold": 5
           },
           "AlgAnalSumm": {
             "long_name": "Algorithm Analysis Summary Questions",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 5
+          }
+        }
+      }
+    },
+    "Design": {
+      "NewKA/ADT": {
+        "long_name": "Abstract Data Types",
+        "exercises": {
+          "IntroADTSumm": {
+            "long_name": "ADT Summary Questions",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 4
+          }
+        }
+      },
+      "NewKA/DesignPatterns": {
+        "long_name": "Design Patterns",
+	"dispModComp": true,
+        "exercises": {
+          "DesignPatternSumm": {
+            "long_name": "Design Patterns Summary Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 4
+          }
+        }
+      },
+      "NewKA/Comparison": {
+        "long_name": "Comparing Records",
+        "exercises": {
+          "CompareSumm": {
+            "long_name": "Record Comparison Summary Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/Dictionary": {
+        "long_name": "The Dictionary ADT",
+	"dispModComp": true,
+        "exercises": {
+          "DesignDictionarySumm": {
+            "long_name": "Dictionary Summary Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 3
           }
         }
       }

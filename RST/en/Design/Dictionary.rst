@@ -196,3 +196,5 @@ remaining records in the list to fill the gap left by the
 :ref:`Search trees <search tree> <BST>` are search
 structures that can perform all three key operations of insert,
 search, and delete in :math:`\Theta(\log n)` time.
+
+.. avembed:: Exercises/Design/DesignDictionarySumm.html ka

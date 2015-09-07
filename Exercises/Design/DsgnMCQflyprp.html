@@ -4,7 +4,7 @@
   <title>Design Exercise: Flyweight Property </title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
-  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script data-main="../../khan-exercises/local-only/main.js" src="../../khan-exercises/local-only/require.js"></script>
 </head>
 
 <body>
@@ -20,6 +20,11 @@
         <li><var>"It is reused"</var></li>
       </ul>
       <div class="hints">
+        <p>There is only one copy of the flyweight (that is shared).</p>
+        <p>Since a flyweight is reused, the implementor cannot count
+          on its ability to store state (since all occurrances are the
+          same.</p>
+        <p>It doesn't matter how big the flyweight is.</p>
       </div>
     </div> 
   </div>

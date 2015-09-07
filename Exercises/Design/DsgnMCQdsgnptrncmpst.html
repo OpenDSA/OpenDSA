@@ -4,7 +4,7 @@
   <title>Design Exercise:  Composite Design Pattern</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
-  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script data-main="../../khan-exercises/local-only/main.js" src="../../khan-exercises/local-only/require.js"></script>
 </head>
 
 <body>
@@ -19,6 +19,11 @@
 	<li><var>"We need to encapulate and make interchangeable a set of alternative actions that might be performed as part of some larger activity."</var></li>
       </ul>
       <div class="hints">
+        <p>The standard "tree in control" design is good when we need
+          to add operations to an unchanging class hierarchy.</p>
+        <p>Composite is not about interchangeable actions.</p>
+        <p>In contrast to "tree in control", composite is good when
+          the class hierarchy is likely to change.</p>
       </div>
     </div> 
   </div>

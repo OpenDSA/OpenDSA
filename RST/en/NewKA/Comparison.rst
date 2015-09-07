@@ -5,12 +5,14 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :topic: Design
+   :satisfies: comparison
+   :topic: Sorting
 
-Design Summary Exercises
-========================
+.. index::
+   pair: sorting; record comparison
+   pair: searching; record comparison
 
-Here are some practice questions for this chapter.
+Comparing Records
+==================
 
-.. avembed:: Exercises/Design/DesignSumm.html ka
-
+.. avembed:: Exercises/Design/CompareSumm.html ka
