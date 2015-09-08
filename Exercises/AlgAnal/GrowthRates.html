@@ -73,7 +73,7 @@ var initJSAV = function (arr_size) {
                "\\sqrt{n}",
                "n \\log n",
                "n \\log^2 n",
-               "n^4/3",
+               "n^{4/3}",
                "n^2",
                "n^{\\log n}",
                "2^\\sqrt{n}",
@@ -85,15 +85,17 @@ var initJSAV = function (arr_size) {
   jsav = new JSAV("jsav");
   jsav.recorded();  
   
-  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true}});
   
   randomize(arr_size);
   jsavArr = jsav.ds.array([], {indexed: false, center: false});
   for(i = 0; i < arr_size; i++){
-    jsavArr.value(i,  "$" +answerArr[i]+ "$");
-	MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    jsavArr.value(i, "$" +answerArr[i]+ "$");
 	console.log(answerArr[i]);
   }
+  MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+  MathJax.Hub.Queue(["Reprocess", MathJax.Hub]);
+  
   // Now make a copy
   cloneArr = answerArr.slice(0);
 
