@@ -217,7 +217,7 @@
       },
       "NewKA/DesignPatterns": {
         "long_name": "Design Patterns",
-	"dispModComp": true,
+        "dispModComp": true,
         "exercises": {
           "DesignPatternSumm": {
             "long_name": "Design Patterns Summary Exercise",
@@ -242,7 +242,7 @@
       },
       "NewKA/Dictionary": {
         "long_name": "The Dictionary ADT",
-	"dispModComp": true,
+        "dispModComp": true,
         "exercises": {
           "DesignDictionarySumm": {
             "long_name": "Dictionary Summary Exercise",
@@ -312,6 +312,18 @@
         "exercises": {
           "BinsortMCQ2": {
             "long_name": "BinsortMCQ2",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 2
+          }
+        }
+      },
+      "NewKA/RadixsortPRO": {
+        "long_name": "RadixsortPRO",
+        "exercises": {
+          "RadixsortPRO": {
+            "long_name": "RadixsortPRO",
             "required": true,
             "points": 1.0,
             "showhide": "show",
