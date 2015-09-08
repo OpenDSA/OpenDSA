@@ -67,18 +67,18 @@ var initJSAV = function (arr_size) {
   var i, j, value;
   userInput = false;
   selected_index = -1;
-  functions = ["\\log \\log n", 
-               "\\log n",
-               "\\log^2 n",
-               "\\sqrt{n}",
-               "n \\log n",
-               "n \\log^2 n",
-               "n^{4/3}",
-               "n^2",
-               "n^{\\log n}",
-               "2^\\sqrt{n}",
-               "2^n",
-               "2^{n^2}"
+  functions = ["$\\log \\log n$", 
+               "$\\log n$",
+               "$\\log^2 n$",
+               "$\\sqrt{n}$",
+               "$n \\log n$",
+               "$n \\log^2 n$",
+               "$n^{4/3}$",
+               "$n^2$",
+               "$n^{\\log n}$",
+               "$2^\\sqrt{n}$",
+               "$2^n$",
+               "$2^{n^2}$"
               ];
   answerArr.length = 0; // Out with the old
 
@@ -90,11 +90,10 @@ var initJSAV = function (arr_size) {
   randomize(arr_size);
   jsavArr = jsav.ds.array([], {indexed: false, center: false});
   for(i = 0; i < arr_size; i++){
-    jsavArr.value(i, "$" +answerArr[i]+ "$");
+    jsavArr.value(i, answerArr[i]);
 	console.log(answerArr[i]);
   }
   MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-  MathJax.Hub.Queue(["Reprocess", MathJax.Hub]);
   
   // Now make a copy
   cloneArr = answerArr.slice(0);
@@ -110,7 +109,7 @@ var initJSAV = function (arr_size) {
   // Bind the clickHandler to handle click events on the array
   jsavArr.click(clickHandler);
   // Set up handler for reset button
-  $("#reset").click(function () { f_reset(); });
+  $("#reset").click(function () { f_reset(); MathJax.Hub.Queue(["Typeset", MathJax.Hub]);});
 };
 
 // Check student's answer for correctness: User's array must match answer
@@ -150,7 +149,7 @@ var randomize = function (arr_size){
         <p>Your task in this exercise is to put the following functions into
            their appropriate positions in the list so that finally the list will 
            contain all the functions in ascending order of their growth rates. You can swap two functions by clicking on them.</p>
-        <!-- <input id="reset" type="button" value="Reset" /> -->
+        <input id="reset" type="button" value="Reset" />
         <div id="jsav" class="jsavcanvas"></div>
       </div>
       <div class="solution" data-type="custom">
