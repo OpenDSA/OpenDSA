@@ -280,6 +280,18 @@
         }
       }
     },
+    "Advanced Analysis": {
+      "Development/Recurrence": {
+        "long_name": "Solving Recurrence Relations",
+	"dispModComp": true,				
+        "exercises": {}
+      },
+      "Development/AmortAnal": {
+        "long_name": "Amortized Analysis",
+	"dispModComp": true,				
+        "exercises": {}
+      }
+    },
     "Linear Structures": {
       "List/ListIntro": {
         "long_name": "Chapter Introduction: Linear Structures",
