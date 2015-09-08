@@ -1,4 +1,3 @@
-"use strict";
 $(document).ready(function () {
   var jsav, // The JSAV object
       answerArr = [], // The (internal) array that stores the correct answer
@@ -31,6 +30,7 @@ $(document).ready(function () {
 
     // reset function definition
     f_reset: function() {
+console.log("reset");
       jsavArr.clear(); // Re-initialize the displayed array object
       jsavArr = jsav.ds.array(cloneArr, {
         indexed: true,
@@ -63,7 +63,7 @@ $(document).ready(function () {
       // Now make a copy
       cloneArr = answerArr.slice(0);
 
-      jsav = new JSAV("jsav");
+      jsav = new JSAV("BubsortPRO");
       jsav.recorded();
       jsavArr = jsav.ds.array(answerArr, {
         indexed: true,

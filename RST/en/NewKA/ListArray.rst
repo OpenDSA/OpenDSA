@@ -15,4 +15,6 @@ Array-Based List Implementation
 
 .. avembed:: Exercises/List/alistInsertPRO.html ka
   
+.. avembed:: Exercises/List/alistDeletePRO.html ka
+  
 .. avembed:: Exercises/List/ArryLstSumm.html ka
