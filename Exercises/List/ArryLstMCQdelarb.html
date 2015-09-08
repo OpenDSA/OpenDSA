@@ -4,7 +4,7 @@
   <title>OpenDSA Array List Exercise: Delete Arabitary</title>
   <script src="../../lib/jquery.min.js"></script>
   <script src="../../lib/jquery-ui.min.js"></script>
-  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script data-main="../../khan-exercises/local-only/main.js" src="../../khan-exercises/local-only/require.js"></script>
 </head>
 
 <body>
@@ -21,7 +21,8 @@
 	<li><var><code>\Theta(n \log n)</code> time</var> </li>	  	 
       </ul>
       <div class="hints">
-        <p>Position <code>i</code> could be anywhere in the list.</p>
+        <p>Position <code>i</code> could be anywhere in the list
+          (of <code>n</code> values).</p>
 	<p>We will need to shift values from position <code>i</code> to
           the list end back by one position.</p>
         <p>How many we shift depends on the value of <code>i</code>.</p>

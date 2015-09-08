@@ -278,6 +278,32 @@
             "threshold": 3
           }
         }
+      },
+      "NewKA/ListArray": {
+        "long_name": "Array-based Lists",
+        "exercises": {
+          "alistInsertPRO": {
+            "long_name": "Array-based List Insert Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "alistDeletePRO": {
+            "long_name": "Array-based List Delete Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "ArryLstSumm": {
+            "long_name": "Array-based List Summary",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 3
+          }
+        }
       }
     },
     "NewKA": {

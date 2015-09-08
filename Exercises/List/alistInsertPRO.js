@@ -1,4 +1,5 @@
 "use strict";
+$(document).ready(function () {
 var av,           // The JSAV object
   answerArr = [],   // The (internal) array that stores the correct answer
   cloneArr = [],    // Copy of (internal) array at start of exercise for reset
@@ -7,11 +8,13 @@ var av,           // The JSAV object
   currLabel,        // curr label
   inPosition,       // insertion location
   inValue,          // insertion value
-  userInput,        // Boolean: Tells us if user ever did anything
-  selected_index;   // Position that has been selected by user for swap
+  selected_index,   // Position that has been selected by user for swap
+
+AlistInsertPRO = {
+  userInput: null,        // Boolean: Tells us if user ever did anything
 
 // Click event handler on the array
-function clickHandler(index, e) {
+clickHandler: function(index, e) {
   if (selected_index === -1) { // if nothing currently selected
     jsavArr.css(index, {"font-size": "110%"});
     selected_index = index;
@@ -27,20 +30,20 @@ function clickHandler(index, e) {
     selected_index = -1;  // Reset to nothing selected
   }
   userInput = true;
-}
+},
 
 // reset function definition
-function f_reset() {
+f_reset: function() {
   jsavArr.clear();
   // Re-initialize the displayed array object
   jsavArr = av.ds.array(cloneArr, {indexed: true, center: false, top: 20});
-  jsavArr.click(clickHandler); // Rebind click handler after reset
+  jsavArr.click(AlistInsertPRO.clickHandler); // Rebind click handler after reset
   userInput = false;
   selected_index = -1;
-}
+},
 
 // Initialise the exercise
-function initJSAV(arr_size, insertPos, insertValue) {
+initJSAV: function(arr_size, insertPos, insertValue) {
   var i, j;
 
   userInput = false;
@@ -58,7 +61,7 @@ function initJSAV(arr_size, insertPos, insertValue) {
   // Now make a copy
   cloneArr = answerArr.slice(0);
 
-  av = new JSAV("alistInsertPRO");
+  av = new JSAV("jsav");
   av.recorded();
   av.SPEED = 120; // Set the speed of the animation
   jsavArr = av.ds.array(answerArr, {indexed: true, center: false, top: 20});
@@ -69,7 +72,7 @@ function initJSAV(arr_size, insertPos, insertValue) {
   answerArr.splice(inPosition, 0, inValue);
 	
   // Bind the clickHandler to handle click events on the array
-  jsavArr.click(clickHandler);
+  jsavArr.click(AlistInsertPRO.clickHandler);
 
   // Set up handler for insert button
   $("#insert").click(function () {
@@ -85,10 +88,10 @@ function initJSAV(arr_size, insertPos, insertValue) {
 
   // Set up handler for reset button
   $("#reset").click(function () { f_reset(); });
-}
+},
 
 // Check user's answer for correctness: User's array must match answer
-function checkAnswer(arr_size) {
+checkAnswer: function(arr_size) {
   var i;
   for (i = 0; i < jsavArr.size(); i++) {
     if (jsavArr.value(i) !== answerArr[i]) {
@@ -97,3 +100,8 @@ function checkAnswer(arr_size) {
   }
   return true;
 }
+};
+
+  window.AlistInsertPRO = window.AlistInsertPRO || AlistInsertPRO;
+
+});

@@ -4,18 +4,10 @@ Written by Junyang Chen and Cliff Shaffer
 -->
 
 <!DOCTYPE html>
-<html data-require="math">
+<html data-require="jsav math alistInsertPRO">
 <head>
   <title>Array-Based List Insertion Proficiency Exercise</title>
-  <script src="../../lib/jquery.min.js"></script>
-  <script src="../../lib/jquery-ui.min.js"></script>
-  <script src="../../JSAV/lib/jquery.transit.js"></script>
-  <script src="../../JSAV/lib/raphael.js"></script>
-  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-  <script src="../../JSAV/build/JSAV-min.js"></script>
-  <script src="alistInsertPRO.js"></script>
-  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
+  <script data-main="../../khan-exercises/local-only/main.js" src="../../khan-exercises/local-only/require.js"></script>
   <link rel="stylesheet" href="alistPRO.css" type="text/css" />
 </head>
 
@@ -25,11 +17,11 @@ Written by Junyang Chen and Cliff Shaffer
     <var id="arr_size">randRange(4, 6)</var>
     <var id="insert_value">randRange(0, 999)</var>
     <var id="insert_pos">randRange(0, arr_size-1)</var>
-    <var id="JSAV">initJSAV(arr_size, insert_pos,insert_value)</var>
+    <var id="JSAV">AlistInsertPRO.initJSAV(arr_size, insert_pos,insert_value)</var>
   </div>
 
   <div class="problems">
-    <div> <!-- Supresses answer box -->
+    <div id="alistInsertPRO"> <!-- Supresses answer box -->
       <p class="problem">Your task in this exercise is to show the
         behavior for array-based list insertion.
         In the array displayed below, the "current" position is
@@ -43,18 +35,18 @@ Written by Junyang Chen and Cliff Shaffer
           array position by clicking the "Insert" button.</p>
         <input id="reset" type="button" value="Reset" />
         <input id="insert" type="button" value="Insert" />
-        <div id="alistInsertPRO" class="jsavcanvas"></div>
+        <div id="jsav" class="jsavcanvas"></div>
       </div>
       <div class="solution" data-type="custom">
         <div class="guess">
-          [userInput]
+          [AlistInsertPRO.userInput]
         </div>
         <div class="validator-function">
-          if (!checkAnswer(arr_size) && !guess[0]) {
+          if (!AlistInsertPRO.checkAnswer(arr_size) && !guess[0]) {
             return ""; // User did not click, and correct answer is not
 	               // initial array state
           } else {
-            return checkAnswer(arr_size);
+            return AlistInsertPRO.checkAnswer(arr_size);
           }
         </div>
       </div>
