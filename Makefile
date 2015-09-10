@@ -3,7 +3,8 @@ CONFIG_SCRIPT = tools/configure.py
 TARGET = build
 CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 CSSLINTFLAGS = --quiet --ignore=ids,adjoining-classes
-MINIMIZE = uglifyjs
+MINIMIZE-JS = uglifyjs
+MINIMIZE-CSS = uglifycss
 
 .PHONY: all clean lint csslint jshint min CS2114S215 CS2114F15 CS223 CS5114 CS3114 NewKA CS3114F15 CS3114notes CS150 OpenDSA test testX IS allBooks nomin pull CPSC270S15 CS2401 COP3530 CS208 ECE252 Tutorial TDDD86F15 TDDC91F15 S15 CSCI115 CS316 CSE017F15 CS226JHU CS340
 
@@ -61,8 +62,7 @@ jshintlib:
 	-@jshint lib/createcourse.js
 	-@jshint lib/conceptMap.js
 
-min: nomin
-#lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
+min: nomin #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
 F15: CS2114 CS3114F15 CS316 TDDD86F15 TDDC91F15 TDDI16F15 CSE017F15 CPSC270 COP3530 CISC-187 CS4104F15 CS226JHU CS340
 
@@ -194,7 +194,7 @@ testcmap: min
 	python $(CONFIG_SCRIPT) config/testcmap.json
 
 testanal: min
-	python $(CONFIG_SCRIPT) config/testanal.json	
+	python $(CONFIG_SCRIPT) config/testanal.json
 
 testfi: min
 	python $(CONFIG_SCRIPT) config/testfi.json
@@ -227,7 +227,7 @@ Everything: min
 	python $(CONFIG_SCRIPT) config/Everything.json
 
 AlgAnalTest: min
-	python $(CONFIG_SCRIPT) config/AlgAnalTest.json	
+	python $(CONFIG_SCRIPT) config/AlgAnalTest.json
 
 invalid: min
 	python $(CONFIG_SCRIPT) config/invalid.json
@@ -265,40 +265,40 @@ pull:
 
 lib/odsaUtils-min.js: lib/odsaUtils.js
 	@echo 'Minimizing lib/odsaUtils.js'
-	@$(MINIMIZE) lib/odsaUtils.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaUtils-min.js
+	@$(MINIMIZE-JS) lib/odsaUtils.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaUtils-min.js
 
 lib/site-min.css: lib/site.css
 	@echo 'Minimizing lib/site.css'
-	-@$(MINIMIZE) lib/site.css --comments '/^!|@preserve|@license|@cc_on/i' > lib/site-min.css
+	-@$(MINIMIZE-CSS) lib/site.css > lib/site-min.css
 
 lib/odsaAV-min.js: lib/odsaAV.js
 	@echo 'Minimizing lib/odsaAV.js'
-	@$(MINIMIZE) lib/odsaAV.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaAV-min.js
+	@$(MINIMIZE-JS) lib/odsaAV.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaAV-min.js
 
 lib/odsaAV-min.css: lib/odsaAV.css
 	@echo 'Minimizing lib/odsaAV.css'
-	@$(MINIMIZE) lib/odsaAV.css --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaAV-min.css
+	@$(MINIMIZE-CSS) lib/odsaAV.css > lib/odsaAV-min.css
 
 lib/odsaMOD-min.js: lib/odsaMOD.js
 	@echo 'Minimizing lib/odsaMOD.js'
-	@$(MINIMIZE) lib/odsaMOD.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaMOD-min.js
+	@$(MINIMIZE-JS) lib/odsaMOD.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaMOD-min.js
 
 lib/odsaMOD-min.css: lib/odsaMOD.css
 	@echo 'Minimizing lib/odsaMOD.css'
-	@$(MINIMIZE) lib/odsaMOD.css --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaMOD-min.css
+	@$(MINIMIZE-CSS) lib/odsaMOD.css > lib/odsaMOD-min.css
 
 lib/gradebook-min.js: lib/gradebook.js
 	@echo 'Minimizing lib/gradebook.js'
-	@$(MINIMIZE) lib/gradebook.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/gradebook-min.js
+	@$(MINIMIZE-JS) lib/gradebook.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/gradebook-min.js
 
 lib/gradebook-min.css: lib/gradebook.css
 	@echo 'Minimizing lib/gradebook.css'
-	@$(MINIMIZE) lib/gradebook.css --comments '/^!|@preserve|@license|@cc_on/i' > lib/gradebook-min.css
+	@$(MINIMIZE-CSS) lib/gradebook.css > lib/gradebook-min.css
 
 lib/registerbook-min.js: lib/registerbook.js
 	@echo 'Minimizing lib/registerbook.js'
-	@$(MINIMIZE) lib/registerbook.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/registerbook-min.js
+	@$(MINIMIZE-JS) lib/registerbook.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/registerbook-min.js
 
 lib/createcourse-min.js: lib/createcourse.js
 	@echo 'Minimizing lib/createcourse.js'
-	@$(MINIMIZE) lib/createcourse.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/createcourse-min.js
+	@$(MINIMIZE-JS) lib/createcourse.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/createcourse-min.js
