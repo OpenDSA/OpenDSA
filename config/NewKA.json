@@ -307,11 +307,11 @@
       }
     },
     "NewKA": {
-      "NewKA/BinsortMCQ2": {
-        "long_name": "BinsortMCQ2",
+      "NewKA/RadixsortPRO": {
+        "long_name": "RadixsortPRO",
         "exercises": {
-          "BinsortMCQ2": {
-            "long_name": "BinsortMCQ2",
+          "RadixsortPRO": {
+            "long_name": "RadixsortPRO",
             "required": true,
             "points": 1.0,
             "showhide": "show",
@@ -319,11 +319,23 @@
           }
         }
       },
-      "NewKA/RadixsortPRO": {
-        "long_name": "RadixsortPRO",
+      "NewKA/RadixsortPROSumm": {
+        "long_name": "RadixsortPROSumm",
         "exercises": {
-          "RadixsortPRO": {
-            "long_name": "RadixsortPRO",
+          "RadixsortPROSumm": {
+            "long_name": "RadixsortPROSumm",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 2
+          }
+        }
+      },
+      "NewKA/BinsortMCQ2": {
+        "long_name": "BinsortMCQ2",
+        "exercises": {
+          "BinsortMCQ2": {
+            "long_name": "BinsortMCQ2",
             "required": true,
             "points": 1.0,
             "showhide": "show",
