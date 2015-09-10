@@ -163,7 +163,7 @@
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/466/"
+            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/466/"
           },
           "AnalProgramSumm": {
             "long_name": "Program Code Analysis",
@@ -686,7 +686,7 @@
             "required": true,
             "points": 1,
             "threshold": 5,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/484/"
+            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/484/"
           },
           "InssortSumm": {
             "long_name": "Insertion Sort Summary",
@@ -759,7 +759,7 @@
             "required": true,
             "points": 1,
             "threshold": 5,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/485/"
+            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/485/"
           },
           "SelsortSumm": {
             "long_name": "Selection Sort Summary",
@@ -796,7 +796,7 @@
             "points": 1.0,
             "remove": false,
             "threshold": 5,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/484/"
+            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/484/"
           }
         }
       },
@@ -908,7 +908,7 @@
             "required": true,
             "points": 1,
             "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/486/"
+            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/486/"
           }
         }
       },
@@ -968,7 +968,7 @@
             "required": true,
             "points": 1,
             "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/487/"
+            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/487/"
           },
           "QuicksortSumm": {
             "long_name": "Quicksort Summary",
@@ -998,7 +998,7 @@
             "required": true,
             "points": 1,
             "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/513/"
+            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/513/"
           },
           "HeapsortSumm": {
             "long_name": "Heapsort Summary Exercise",
@@ -1124,21 +1124,21 @@
             "required": true,
             "points": 1.0,
             "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/499/"
+            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/499/"
           },
           "btTravPreorderPRO": {
             "long_name": "Binary Tree Preorder Traversal Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/496/"
+            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/496/"
           },
           "btTravPostorderPRO": {
             "long_name": "Binary Tree Postorder Traversal Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/497/"
+            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/497/"
           }
         }
       },
@@ -1175,7 +1175,7 @@
             "required": true,
             "points": 1.0,
             "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/500/"
+            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/500/"
           },
           "BSTinsertCON": {
             "long_name": "BST Insert Slideshow",
@@ -1188,7 +1188,7 @@
             "required": true,
             "points": 1.0,
             "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/501/"
+            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/501/"
           },
           "BSTdeletemaxCON": {
             "long_name": "BST deletemax Slideshow",
@@ -1207,7 +1207,7 @@
             "required": true,
             "points": 2.0,
             "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/502/"
+            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/502/"
           }
         }
       },
@@ -1233,7 +1233,7 @@
             "required": true,
             "points": 2.0,
             "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/490/"
+            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/490/"
           },
           "heapbuildCON": {
             "long_name": "Heapbuild Slideshow",
@@ -1246,7 +1246,7 @@
             "required": true,
             "points": 1.0,
             "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/489/"
+            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/489/"
           },
           "heapbuildProofCON": {
             "long_name": "Heap build analysis proof Slideshow",
@@ -1272,7 +1272,7 @@
             "required": true,
             "points": 2.0,
             "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/491/"
+            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/491/"
           },
           "heapremoveCON": {
             "long_name": "Remove Any Slideshow",
@@ -1373,11 +1373,11 @@
         "exercises": {
           "redBlackTreePRO": {
             "long_name": "Red-Black Tree Proficiency",
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/517/"
+            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/517/"
           },
           "redBlackTreeColoring": {
             "long_name": "Red-Black Tree Coloring Exercises",
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/516/"
+            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/516/"
           }
         }
       },
