@@ -1,3 +1,4 @@
+/*global console,  MathJax */
 (function() {
   "use strict";
   var jsav,           // The JSAV object

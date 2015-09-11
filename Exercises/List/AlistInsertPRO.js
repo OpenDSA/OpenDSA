@@ -10,7 +10,7 @@
       inValue,          // insertion value
       selected_index,   // Position that has been selected by user for swap
 
-  AlistInsertPRO = {
+  alistInsertPRO = {
     userInput: null,        // Boolean: Tells us if user ever did anything
 
     // Click event handler on the array
@@ -29,7 +29,7 @@
 	jsavArr.unhighlight(index);
 	selected_index = -1;  // Reset to nothing selected
       }
-      AlistInsertPRO.userInput = true;
+      alistInsertPRO.userInput = true;
     },
 
     // reset function definition
@@ -37,8 +37,8 @@
       jsavArr.clear();
       // Re-initialize the displayed array object
       jsavArr = av.ds.array(cloneArr, {indexed: true, center: false, top: 20});
-      jsavArr.click(AlistInsertPRO.clickHandler); // Rebind click handler after reset
-      AlistInsertPRO.userInput = false;
+      jsavArr.click(alistInsertPRO.clickHandler); // Rebind click handler after reset
+      alistInsertPRO.userInput = false;
       selected_index = -1;
     },
 
@@ -46,7 +46,7 @@
     initJSAV: function(arr_size, insertPos, insertValue) {
       var i, j;
 
-      AlistInsertPRO.userInput = false;
+      alistInsertPRO.userInput = false;
       selected_index = -1;
       inPosition = insertPos;
       inValue = insertValue;
@@ -61,10 +61,10 @@
       // Now make a copy
       cloneArr = answerArr.slice(0);
 
-      av = new JSAV("jsav");
+      av = new JSAV("AlistInsertPRO");
       av.recorded();
       av.SPEED = 120; // Set the speed of the animation
-      jsavArr = av.ds.array(answerArr, {indexed: true, center: false, top: 20});
+      jsavArr = av.ds.array(answerArr, {indexed: true, center: false, top: 20, left: 5});
       currArr = av.ds.array([inPosition], {left: 45, top: 85});
       currLabel = av.label("curr", {left: 10, top: 90});
 	
@@ -72,7 +72,7 @@
       answerArr.splice(inPosition, 0, inValue);
 
       // Bind the clickHandler to handle click events on the array
-      jsavArr.click(AlistInsertPRO.clickHandler);
+      jsavArr.click(alistInsertPRO.clickHandler);
 
       // Set up handler for insert button
       $("#insert").click(function () {
@@ -82,12 +82,12 @@
 	  jsavArr.css(selected_index, {"font-size": "100%"});
 	  jsavArr.unhighlight(selected_index);
 	  selected_index = -1;
-	  AlistInsertPRO.userInput = true;
+	  alistInsertPRO.userInput = true;
 	}
       });
 
       // Set up handler for reset button
-      $("#reset").click(function () { AlistInsertPRO.f_reset(); });
+      $("#reset").click(function () { alistInsertPRO.f_reset(); });
     },
 
     // Check user's answer for correctness: User's array must match answer
@@ -102,5 +102,5 @@
     }
   };
 
-  window.AlistInsertPRO = window.AlistInsertPRO || AlistInsertPRO;
+  window.alistInsertPRO = window.alistInsertPRO || alistInsertPRO;
 }());
