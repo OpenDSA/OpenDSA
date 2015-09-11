@@ -1,4 +1,5 @@
 (function() {
+  "use strict";
   var jsav,           // The JSAV object
   answerArr = [], // The (internal) array that stores the correct answer
   cloneArr = [],  // A copy of the (internal) array at the start of the exercise for reset
@@ -21,7 +22,7 @@
         jsavArr.css(selected_index, {"font-size": "100%"});
         selected_index = -1;  // Reset to nothing selected
       }
-      userInput = true;
+      growthRates.userInput = true;
     },
 
     // reset function definition
@@ -29,7 +30,7 @@
       jsavArr.clear();             // Re-initialize the displayed array object
       jsavArr = jsav.ds.array(cloneArr, {indexed: false, center: false});
       jsavArr.click(growthRates.clickHandler); // Rebind click handler after reset
-      userInput = false;
+      growthRates.userInput = false;
       selected_index = -1;         // Reset to nothing selected
     },
 
@@ -42,9 +43,8 @@
 
     // Initialise the exercise
     initJSAV: function (arr_size) {
-console.log("Hello, world");
       var i, j, value;
-      userInput = false;
+      growthRates.userInput = false;
       selected_index = -1;
       functions = ["$\\log \\log n$",
                    "$\\log n$",
@@ -61,11 +61,9 @@ console.log("Hello, world");
                   ];
       answerArr.length = 0; // Out with the old
 
-console.log("Hello, world 1");
       jsav = new JSAV("GrowthRates");
       jsav.recorded();
 
-console.log("Hello, world 2");
       MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true}});
 
       growthRates.randomize(arr_size);
@@ -81,10 +79,11 @@ console.log("Hello, world 2");
 
       // Compute the correct Answer
       for (i = 0; i < arr_size - 1; i++) {
-        for(j = 1; j < arr_size - i; j++)
+        for(j = 1; j < arr_size - i; j++) {
           if (functions.indexOf(answerArr[j-1]) > functions.indexOf(answerArr[j])) {
             growthRates.swap(answerArr, j-1, j);
           }
+        }
       }
 
       // Bind the clickHandler to handle click events on the array
@@ -112,7 +111,7 @@ console.log("Hello, world 2");
       var randomIndex;
       while(count < arr_size){
         randomIndex = Math.floor((Math.random() * 10) + 2);
-        if(answerArr.indexOf(functions[randomIndex]) == -1) {
+        if(answerArr.indexOf(functions[randomIndex]) === -1) {
           answerArr.push(functions[randomIndex]);
           count++;
         }
@@ -121,4 +120,4 @@ console.log("Hello, world 2");
   };
 
   window.growthRates = window.growthRates || growthRates;
-}())
+}());

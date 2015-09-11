@@ -1,4 +1,5 @@
-$(document).ready(function () {
+(function() {
+  "use strict";
   var av,           // The JSAV object
       answerArr = [],   // The (internal) array that stores the correct answer
       cloneArr = [],    // Copy of (internal) array at start of exercise for reset
@@ -28,7 +29,7 @@ $(document).ready(function () {
 	jsavArr.unhighlight(index);
 	selected_index = -1;  // Reset to nothing selected
       }
-      userInput = true;
+      AlistInsertPRO.userInput = true;
     },
 
     // reset function definition
@@ -37,7 +38,7 @@ $(document).ready(function () {
       // Re-initialize the displayed array object
       jsavArr = av.ds.array(cloneArr, {indexed: true, center: false, top: 20});
       jsavArr.click(AlistInsertPRO.clickHandler); // Rebind click handler after reset
-      userInput = false;
+      AlistInsertPRO.userInput = false;
       selected_index = -1;
     },
 
@@ -45,7 +46,7 @@ $(document).ready(function () {
     initJSAV: function(arr_size, insertPos, insertValue) {
       var i, j;
 
-      userInput = false;
+      AlistInsertPRO.userInput = false;
       selected_index = -1;
       inPosition = insertPos;
       inValue = insertValue;
@@ -81,12 +82,12 @@ $(document).ready(function () {
 	  jsavArr.css(selected_index, {"font-size": "100%"});
 	  jsavArr.unhighlight(selected_index);
 	  selected_index = -1;
-	  userInput = true;
+	  AlistInsertPRO.userInput = true;
 	}
       });
 
       // Set up handler for reset button
-      $("#reset").click(function () { f_reset(); });
+      $("#reset").click(function () { AlistInsertPRO.f_reset(); });
     },
 
     // Check user's answer for correctness: User's array must match answer
@@ -102,4 +103,4 @@ $(document).ready(function () {
   };
 
   window.AlistInsertPRO = window.AlistInsertPRO || AlistInsertPRO;
-});
+}());
