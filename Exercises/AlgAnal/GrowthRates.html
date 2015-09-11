@@ -1,7 +1,7 @@
 <!--
-    Ordering Growth Rates
-    Written by Mohammed Farghally and Cliff Shaffer
-  -->
+Ordering Growth Rates
+Written by Mohammed Farghally and Cliff Shaffer
+-->
 
 <!DOCTYPE html>
 <html data-require="jsav math GrowthRates">
@@ -18,11 +18,15 @@
       }
 
       .jsavcanvas.jsavcontainer {
-        height: 100px;
+        height: 110px;
       }
 
       .jsavcanvas {
-        height: 100px;
+        height: 110px;
+      }
+
+      .jsavarray * {
+        -webkit-transform-style: flat !important;
       }
 
       .jsavnode {
@@ -33,7 +37,7 @@
     </style>
   </head>
 
-  <body data-height="550" data-width="950">
+  <body data-height="600" data-width="950">
     <div class="exercise">
       <div class="vars">
         <var id="arr_size">6</var>
@@ -63,8 +67,12 @@
             </div>
           </div>
           <div class="hints">
-            <p>Which function has the least growth rate?</p>
-            <p>Which function has the highest growth rate</p>
+            <p>Focus on the exponent.</p>
+            <p>Generally, things that are only logs go first.</p>
+            <p>Generally, constant powers of <code>n</code> come after
+              things with only log factors.</p>
+            <p>Generally, things with some function of <code>n</code>
+              in the exponent go last</p>
           </div>
         </div>
       </div>
