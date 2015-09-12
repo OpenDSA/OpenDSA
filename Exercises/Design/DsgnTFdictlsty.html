@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html data-require="math">
-<head>
-  <title>Design Exercise: List </title>
-  <script src="../../lib/jquery.min.js"></script>
-  <script src="../../lib/jquery-ui.min.js"></script>
-  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-</head>
+  <head>
+    <title>Design Exercise: List </title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
 
-<body>
-<div class="exercise">
-  <div class="problems">
-    <div id="problem-type-or-description">
-      <p class="problem">Answer TRUE or FALSE.
-      <p class="question">The list is an efficient data structure to
-	use to implement a dictionary because we can make both of the
-	key operations (insert and search) efficient.</p>
-      <div class="solution"><var>"False"</var></div>
-      <ul class="choices" data-category="true">
-	<li><var>"True"</var></li>
-	<li><var>"False"</var></li>			  	  	 
-      </ul>
-      <div class="hints">
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="problem">Answer TRUE or FALSE.
+          <p class="question">The list is an efficient data structure to
+            use to implement a dictionary because we can make both of the
+            key operations (insert and search) efficient.</p>
+          <div class="solution"><var>"False"</var></div>
+          <ul class="choices" data-category="true">
+            <li><var>"True"</var></li>
+            <li><var>"False"</var></li>
+          </ul>
+          <div class="hints">
+            <p>A sorted, array-based list allows for fast search.</p>
+            <p>An unsorted list allows for fast insert.</p>
+            <p>But you can't do both at once.</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</body>
+  </body>
 </html>

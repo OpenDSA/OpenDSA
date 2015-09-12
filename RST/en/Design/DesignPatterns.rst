@@ -237,3 +237,5 @@ The visitor design pattern is focused on encapsulating an activity that
 will be performed on all members of a collection so that completely
 different activities can be substituted within a generic method that
 accesses all of the collection members.
+
+.. avembed:: Exercises/Design/DesignPatternSumm.html ka

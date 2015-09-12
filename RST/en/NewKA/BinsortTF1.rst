@@ -5,8 +5,6 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :requires: sorting terminology; sort code tuning; insertion sort
-   :satisfies: quicksort
    :topic: Sorting
 
 .. index:: ! BinsortTF1

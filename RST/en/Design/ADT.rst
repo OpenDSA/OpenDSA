@@ -293,8 +293,4 @@ The interface becomes a form of communication between the two programmers.
 
 .. odsascript:: AV/Design/ADTCON.js
 
-
 .. avembed:: Exercises/Design/IntroADTSumm.html ka
-
-
-

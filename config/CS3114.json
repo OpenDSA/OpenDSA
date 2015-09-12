@@ -52,8 +52,8 @@
           "IntroADTSumm": {
             "long_name": "ADT Summary Questions",
             "required": true,
-            "points": 1.0,
-            "threshold": 4
+            "points": 2.0,
+            "threshold": 5
           }
         }
       }
@@ -205,7 +205,7 @@
           }
         },
         "exercises": {
-            "UpperBoundCON": {
+          "UpperBoundCON": {
             "long_name": "Upper Bounds visualization",
             "required": false,
             "points": 0.0,
@@ -390,7 +390,7 @@
             "threshold": 1.0
           },
           "ListADTPROG": {
-            "long_name": "List ADT Exercise",
+            "long_name": "List ADT Programming Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 3
@@ -791,7 +791,14 @@
       "Design/DesignPatterns": {
         "long_name": "Design Patterns",
 	"dispModComp": true,
-        "exercises": {}
+        "exercises": {
+          "DesignPatternSumm": {
+            "long_name": "Design Patterns Summary Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 4
+          }
+        }
       },
       "Design/DesignAltList": {
         "long_name": "Alternate List ADT Design",
@@ -812,16 +819,12 @@
       "Design/Dictionary": {
         "long_name": "The Dictionary ADT",
 	"dispModComp": true,
-        "exercises": {}
-      },
-      "Design/DesignSumm": {
-        "long_name": "Design Chapter Summary",
         "exercises": {
-          "DesignSumm": {
-            "long_name": "Design Summary Exercise",
+          "DesignDictionarySumm": {
+            "long_name": "Dictionary Summary Exercise",
             "required": true,
             "points": 1,
-            "threshold": 5
+            "threshold": 3
           }
         }
       }
@@ -1101,7 +1104,7 @@
           "heapremovePRO": {
             "long_name": "Heap Remove Exercise",
             "exer_options": {
-              "JXOP-code": "none",
+              "JXOP-code": "none"
             },
             "required": true,
             "points": 2.0,

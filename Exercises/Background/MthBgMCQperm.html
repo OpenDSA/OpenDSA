@@ -1,40 +1,39 @@
 <!DOCTYPE html>
 <html data-require="math">
-<head>
-  <title>Math Background Chapter Summary: permutation</title>
-  <script src="../../lib/jquery.min.js"></script>
-  <script src="../../lib/jquery-ui.min.js"></script>
-<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-</head>
+  <head>
+    <title>Math Background Chapter Summary: permutation</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
 
-<body>
-<div class="exercise">
-  <div class="problems">
-    <div id="problem-type-or-description">
-      <p class="question">The number of different permuations
-      for <code>n</code> numbers is:</p>
-      <div class="solution"><var><code>n!</code> </var></div>
-      <ul class="choices">
-	<li><var><code>n^2</code> </var> </li>
-	<li><var><code>2^n</code> </var> </li>
-	<li><var><code>n^n</code> </var> </li>
-	<li><var><code>n \log n</code> </var></li>	  	 
-      </ul>
-      <div class="hints">
-        <p>How many ways can you pick the first value in the
-          permutation?</p>
-        <p>There are <code>n</code> ways to pick the first value. That
-          will leave <code>n-1</code> values left.</p>
-        <p>This means there are <code>n-1</code> ways to pick the
-          second value, which means that there were <code>n(n-1)</code>
-          ways to pick the first two values.</p>
-        <p>Keep picking remaining values in this way. Each time that
-          you pick a value from <code>i</code> choices, you are
-          multiplying the total number of ways to do things
-          by <code>i</code>.</p>
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="question">The number of different permuations
+            for <code>n</code> numbers is:</p>
+          <div class="solution"><var><code>n!</code> </var></div>
+          <ul class="choices">
+            <li><var><code>n^2</code></var></li>
+            <li><var><code>2^n</code></var></li>
+            <li><var><code>n^n</code></var></li>
+            <li><var><code>n \log n</code></var></li>
+          </ul>
+          <div class="hints">
+            <p>How many ways can you pick the first value in the
+              permutation?</p>
+            <p>There are <code>n</code> ways to pick the first value. That
+              will leave <code>n-1</code> values left.</p>
+            <p>This means there are <code>n-1</code> ways to pick the
+              second value, which means that there were <code>n(n-1)</code>
+              ways to pick the first two values.</p>
+            <p>Keep picking remaining values in this way. Each time that
+              you pick a value from <code>i</code> choices, you are
+              multiplying the total number of ways to do things
+              by <code>i</code>.</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</body>
+  </body>
 </html>
