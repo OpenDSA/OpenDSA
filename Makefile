@@ -254,7 +254,7 @@ nomin:
 pull:
 	git pull
 	git submodule init
-	git submodule update --recursive --remote
+	git submodule update
 	make -s -C JSAV
 	make -s min
 	cd Doc; make
