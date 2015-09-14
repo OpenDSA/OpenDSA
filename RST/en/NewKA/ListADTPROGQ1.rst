@@ -3,14 +3,14 @@
 .. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
    :author: Cliff Shaffer
-   :satisfies: linked list
-   :topic: Lists
-   
-Linked Lists
-============
-   
-.. avembed:: Exercises/Development/LlistInsertPRO.html ka
+   :satisfies: ListADTPROGQ1
+   :topic: Sorting
 
-.. avembed:: Exercises/Development/llistRemovePRO.html ka
+.. index:: ! ListADTPROGQ1
+
+ListADTPROGQ1
+===============
+
+.. avembed:: Exercises/NewKA/ListADTPROGQ1.html ka

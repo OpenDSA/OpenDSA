@@ -16,9 +16,9 @@
   },
   "lang": "en",
   "module_origin": "http://algoviz.org",
-  "exercise_server": "",
-  "logging_server": "",
-  "score_server": "",
+  "exercise_server": "https://ltitest.cs.vt.edu:8443",
+  "logging_server": "https://ltitest.cs.vt.edu:8443",
+  "score_server": "https://ltitest.cs.vt.edu:8443",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
@@ -315,7 +315,7 @@
             "points": 1,
             "threshold": 5
           },
-          "LlistRemovePRO": {
+          "llistRemovePRO": {
             "long_name": "Linked List Remove Exercise",
             "showhide": "show",
             "required": true,
@@ -447,48 +447,6 @@
             "required": true,
             "points": 2,
             "threshold": 5
-          }
-        }
-      }
-    },
-    "Design": {
-      "Design/DesignPatterns": {
-        "long_name": "Design Patterns",
-	"dispModComp": true,
-        "exercises": {
-          "DesignPatternSumm": {
-            "long_name": "Design Patterns Summary Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 4
-          }
-        }
-      },
-      "Design/DesignAltList": {
-        "long_name": "Alternate List ADT Design",
-	"dispModComp": true,
-        "exercises": {}
-      },
-      "Design/Comparison": {
-        "long_name": "Comparing Records",
-        "exercises": {
-          "CompareSumm": {
-            "long_name": "Record Comparison Summary Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          }
-        }
-      },
-      "Design/Dictionary": {
-        "long_name": "The Dictionary ADT",
-	"dispModComp": true,
-        "exercises": {
-          "DesignDictionarySumm": {
-            "long_name": "Dictionary Summary Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 3
           }
         }
       }

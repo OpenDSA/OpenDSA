@@ -2,17 +2,17 @@
 (function() {
   "use strict";
   var av,              // The JSAV object
-      answerArr = [],  // The (internal) array that stores the correct answer
-      cloneArr = [],   // Copy of (internal) array at start of exercise for reset
-      jsavArr,         // The array that the user manipulates (JSAV object)
-      currArr,         // curr box
-      currLabel,       // curr label
-      returnArr,       // return box
-      returnLabel,     // return label
-      delPosition,     // deletion location
-      delValue,        // deletion value
-      selected_index,  // Position that has been selected by user
-      aSize,           // Number of values in array
+    answerArr = [],  // The (internal) array that stores the correct answer
+    cloneArr = [],   // Copy of (internal) array at start of exercise for reset
+    jsavArr,         // The array that the user manipulates (JSAV object)
+    currArr,         // curr box
+    currLabel,       // curr label
+    returnArr,       // return box
+    returnLabel,     // return label
+    delPosition,     // deletion location
+    delValue,        // deletion value
+    selected_index,  // Position that has been selected by user
+    aSize,           // Number of values in array
 
   alistDeletePRO = {
     userInput: null,       // Boolean: Tells us if user ever did anything
