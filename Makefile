@@ -191,7 +191,7 @@ testcmap: min
 	python $(CONFIG_SCRIPT) config/testcmap.json
 
 testanal: min
-	python $(CONFIG_SCRIPT) config/testanal.json	
+	python $(CONFIG_SCRIPT) config/testanal.json
 
 testfi: min
 	python $(CONFIG_SCRIPT) config/testfi.json
@@ -224,7 +224,7 @@ Everything: min
 	python $(CONFIG_SCRIPT) config/Everything.json
 
 AlgAnalTest: min
-	python $(CONFIG_SCRIPT) config/AlgAnalTest.json	
+	python $(CONFIG_SCRIPT) config/AlgAnalTest.json
 
 invalid: min
 	python $(CONFIG_SCRIPT) config/invalid.json
@@ -254,7 +254,7 @@ nomin:
 pull:
 	git pull
 	git submodule init
-	git submodule update
+	git submodule update --recursive --remote
 	make -s -C JSAV
 	make -s min
 	cd Doc; make
