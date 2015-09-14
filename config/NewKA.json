@@ -334,7 +334,7 @@
             "points": 2,
             "threshold": 5
           }
-	}
+        }
       },
       "NewKA/ListAnalysis": {
         "long_name": "Comparison of List Implementations",
@@ -464,6 +464,18 @@
       }
     },
     "NewKA": {
+      "NewKA/HeapsortStepPRO": {
+        "long_name": "HeapsortStepPRO",
+        "exercises": {
+          "HeapsortStepPRO": {
+            "long_name": "HeapsortStepPRO",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 2
+          }
+        }
+      },
       "NewKA/RadixsortPRO": {
         "long_name": "RadixsortPRO",
         "exercises": {
