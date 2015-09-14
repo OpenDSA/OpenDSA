@@ -1,3 +1,4 @@
+/*global JSAV, document */
 "use strict";
 // Written by Cliff Shaffer
 $(document).ready(function () {

@@ -1,14 +1,15 @@
 RM = rm -rf
 CONFIG_SCRIPT = tools/configure.py
 TARGET = build
+LINT = eslint
 CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 CSSLINTFLAGS = --quiet --ignore=ids,adjoining-classes
 MINIMIZE-JS = uglifyjs
 MINIMIZE-CSS = uglifycss
 
-.PHONY: all clean lint csslint jshint min CS2114S215 CS2114F15 CS223 CS5114 CS3114 NewKA CS3114F15 CS3114notes CS150 OpenDSA test testX IS allBooks nomin pull CPSC270S15 CS2401 COP3530 CS208 ECE252 Tutorial TDDD86F15 TDDC91F15 S15 CSCI115 CS316 CSE017F15 CS226JHU CS340
+.PHONY: all clean lint csslint lint min CS2114S215 CS2114F15 CS223 CS5114 CS3114 NewKA CS3114F15 CS3114notes CS150 OpenDSA test testX IS allBooks nomin pull CPSC270S15 CS2401 COP3530 CS208 ECE252 Tutorial TDDD86F15 TDDC91F15 S15 CSCI115 CS316 CSE017F15 CS226JHU CS340 CS260F15
 
-all: lint
+all: alllint
 
 clean:
 	- $(RM) *~
@@ -19,7 +20,7 @@ clean:
 	- $(RM) Scripts/*~
 	- $(RM) config/*~
 
-lint: csslint jshint jshintlib
+alllint: csslint lint lintlib
 
 csslint:
 	@echo 'running csslint'
@@ -33,38 +34,38 @@ csslint:
 	@csslint $(CSSLINTFLAGS) Doc/*.css
 	@csslint $(CSSLINTFLAGS) lib/*.css
 
-jshint:
-	@echo 'running jshint'
-	-@jshint AV/Background/*.js
-	-@jshint AV/Binary/*.js
-	-@jshint AV/Binary/*.json
-	-@jshint AV/Design/*.js
-	-@jshint AV/Design/*.json
-	-@jshint AV/General/*.js
-	-@jshint AV/General/*.json
-	-@jshint AV/List/*.js
-	-@jshint AV/List/*.json
-	-@jshint AV/Sorting/*.js
-	-@jshint AV/Sorting/*.json
-	-@jshint AV/Hashing/*.js
-	-@jshint AV/Searching/*.js
-	-@jshint AV/Searching/*.json
-	-@jshint AV/Sorting/*.js
-	-@jshint AV/Sorting/*.json
-	-@jshint Exercises/Hashing/*.js
+lint:
+	@echo 'running $(LINT)'
+	-@$(LINT) AV/Background/*.js
+	-@$(LINT) AV/Binary/*.js
+	-@$(LINT) AV/Binary/*.json
+	-@$(LINT) AV/Design/*.js
+	-@$(LINT) AV/Design/*.json
+	-@$(LINT) AV/General/*.js
+	-@$(LINT) AV/General/*.json
+	-@$(LINT) AV/List/*.js
+	-@$(LINT) AV/List/*.json
+	-@$(LINT) AV/Sorting/*.js
+	-@$(LINT) AV/Sorting/*.json
+	-@$(LINT) AV/Hashing/*.js
+	-@$(LINT) AV/Searching/*.js
+	-@$(LINT) AV/Searching/*.json
+	-@$(LINT) AV/Sorting/*.js
+	-@$(LINT) AV/Sorting/*.json
+	-@$(LINT) Exercises/Hashing/*.js
 
-jshintlib:
-	-@jshint lib/odsaUtils.js
-	-@jshint lib/odsaAV.js
-	-@jshint lib/odsaMOD.js
-	-@jshint lib/gradebook.js
-	-@jshint lib/registerbook.js
-	-@jshint lib/createcourse.js
-	-@jshint lib/conceptMap.js
+lintlib:
+	-@$(LINT) lib/odsaUtils.js
+	-@$(LINT) lib/odsaAV.js
+	-@$(LINT) lib/odsaMOD.js
+	-@$(LINT) lib/gradebook.js
+	-@$(LINT) lib/registerbook.js
+	-@$(LINT) lib/createcourse.js
+	-@$(LINT) lib/conceptMap.js
 
 min: nomin #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
-F15: CS2114 CS3114F15 CS316 TDDD86F15 TDDC91F15 TDDI16F15 CSE017F15 CPSC270 COP3530 CISC-187 CS4104F15 CS226JHU CS340
+F15: CS2114 CS3114F15 CS316 TDDD86F15 TDDC91F15 TDDI16F15 CSE017F15 CPSC270 COP3530 CISC-187 CS4104F15 CS226JHU CS340 CS260F15
 
 Pointers: min
 	python $(CONFIG_SCRIPT) config/Pointers.json
@@ -140,6 +141,9 @@ CS2114: min
 
 CS2401: min
 	python $(CONFIG_SCRIPT) config/CS2401.json
+
+CS260F15: min
+	python $(CONFIG_SCRIPT) config/CS260F15.json
 
 CS3114: min
 	python $(CONFIG_SCRIPT) config/CS3114.json
