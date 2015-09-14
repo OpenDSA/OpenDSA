@@ -39,7 +39,7 @@ and ``remove`` methods must maintain this property.
 .. inlineav:: alistAppendCON ss
    :output: show
 
-.. avembed:: Exercises/List/alistInsertPRO.html ka
+.. avembed:: Exercises/List/AlistInsertPRO.html ka
   
 Removing an element from the head of the list is
 similar to insert in that all remaining elements  must shift toward
@@ -54,7 +54,7 @@ following slideshow.
 In the average case, insertion or removal each requires moving half
 of the elements, which is :math:`\Theta(n)`.
 
-.. avembed:: Exercises/List/alistDeletePRO.html ka
+.. avembed:: Exercises/List/AlistDeletePRO.html ka
 
 Aside from ``insert`` and ``remove``, the only other operations that
 might require more than constant time are the constructor and

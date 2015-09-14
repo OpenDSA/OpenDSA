@@ -5,16 +5,14 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :satisfies: array-based list
+   :satisfies: queue
    :topic: Lists
+
+.. odsalink:: AV/List/aqueueCON.css   
    
-.. odsalink:: AV/List/alistCON.css
+Queues
+======
 
-Array-Based List Implementation
-===============================
+.. avembed:: Exercises/List/aqueueEnqueuePRO.html ka
 
-.. avembed:: Exercises/List/AlistInsertPRO.html ka
-  
-.. avembed:: Exercises/List/AlistDeletePRO.html ka
-  
-.. avembed:: Exercises/List/ArryLstSumm.html ka
+.. avembed:: Exercises/List/aqueueDequeuePRO.html ka

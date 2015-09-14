@@ -16,18 +16,18 @@
     // Click event handler on the array
     clickHandler: function(index, e) {
       if (selected_index === -1) { // if nothing currently selected
-	jsavArr.css(index, {"font-size": "110%"});
-	selected_index = index;
-	jsavArr.highlight(index);
+        jsavArr.css(index, {"font-size": "110%"});
+        selected_index = index;
+        jsavArr.highlight(index);
       } else { // an array element is selected
-	// Do not swap for the same index.
-	if (selected_index !== index) {
-	  jsavArr.swap(selected_index, index);
-	  jsavArr.unhighlight(selected_index);
-	}
-	jsavArr.css(index, {"font-size": "100%"});
-	jsavArr.unhighlight(index);
-	selected_index = -1;  // Reset to nothing selected
+        // Do not swap for the same index.
+        if (selected_index !== index) {
+          jsavArr.swap(selected_index, index);
+          jsavArr.unhighlight(selected_index);
+        }
+        jsavArr.css(index, {"font-size": "100%"});
+        jsavArr.unhighlight(index);
+        selected_index = -1;  // Reset to nothing selected
       }
       alistInsertPRO.userInput = true;
     },
@@ -54,7 +54,7 @@
 
       // Give random numbers in range 0..999
       for (i = 0; i < arr_size; i++) {
-	answerArr[i] = Math.floor(Math.random() * 1000);
+        answerArr[i] = Math.floor(Math.random() * 1000);
       }
 
       answerArr.push.apply(answerArr, ["", "", "", ""]); // Put blanks on end
@@ -67,7 +67,7 @@
       jsavArr = av.ds.array(answerArr, {indexed: true, center: false, top: 20, left: 5});
       currArr = av.ds.array([inPosition], {left: 45, top: 85});
       currLabel = av.label("curr", {left: 10, top: 90});
-	
+
       // correct answer
       answerArr.splice(inPosition, 0, inValue);
 
@@ -76,14 +76,14 @@
 
       // Set up handler for insert button
       $("#insert").click(function () {
-	if (selected_index !== -1) {
-	  jsavArr.value(selected_index, inValue);
-	  jsavArr.css(selected_index, { "background-color": "#ddd" });
-	  jsavArr.css(selected_index, {"font-size": "100%"});
-	  jsavArr.unhighlight(selected_index);
-	  selected_index = -1;
-	  alistInsertPRO.userInput = true;
-	}
+        if (selected_index !== -1) {
+          jsavArr.value(selected_index, inValue);
+          jsavArr.css(selected_index, { "background-color": "#ddd" });
+          jsavArr.css(selected_index, {"font-size": "100%"});
+          jsavArr.unhighlight(selected_index);
+          selected_index = -1;
+          alistInsertPRO.userInput = true;
+        }
       });
 
       // Set up handler for reset button
@@ -94,9 +94,9 @@
     checkAnswer: function(arr_size) {
       var i;
       for (i = 0; i < jsavArr.size(); i++) {
-	if (jsavArr.value(i) !== answerArr[i]) {
-	  return false;
-	}
+        if (jsavArr.value(i) !== answerArr[i]) {
+          return false;
+        }
       }
       return true;
     }

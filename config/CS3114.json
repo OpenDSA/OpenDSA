@@ -52,8 +52,8 @@
           "IntroADTSumm": {
             "long_name": "ADT Summary Questions",
             "required": true,
-            "points": 2.0,
-            "threshold": 5
+            "points": 1.0,
+            "threshold": 4
           }
         }
       }
@@ -151,8 +151,8 @@
           "AnalPrelimSumm": {
             "long_name": "Problems, Algorithms, Programs Exercise",
             "required": true,
-            "points": 2.0,
-            "threshold": 7
+            "points": 1.0,
+            "threshold": 4
           }
         }
       },
@@ -163,13 +163,13 @@
             "long_name": "Comparing Growth Rates Exercise",
             "required": true,
             "points": 2.0,
-            "threshold": 5
+            "threshold": 4
           },
           "GrowthRates": {
             "long_name": "Growth Rates Ordering Exercise",
             "required": true,
-            "points": 2.0,
-            "threshold": 5
+            "points": 1.0,
+            "threshold": 3
           }
         }
       },
@@ -190,8 +190,8 @@
           "FasterCorASumm": {
             "long_name": "Faster Computer or Faster Algorithm Exercise",
             "required": true,
-            "points": 2.0,
-            "threshold": 5
+            "points": 1.0,
+            "threshold": 2
           }
         }
       },
@@ -214,8 +214,8 @@
           "UpperBoundsSumm": {
             "long_name": "Asymptotic Analysis and Upper Bounds Exercise",
             "required": true,
-            "points": 2.0,
-            "threshold": 5
+            "points": 1.0,
+            "threshold": 4
           }
         }
       },
@@ -315,7 +315,7 @@
             "long_name": "Common Misconceptions Exercise",
             "required": true,
             "points": 1.0,
-            "threshold": 5
+            "threshold": 4
           },
           "MisunderstandingsGraphCON": {
             "long_name": "Example's graph Visualization",
@@ -356,7 +356,7 @@
           "AlgAnalCS2114Summ": {
             "long_name": "Algorithm Analysis Summary Questions",
             "required": false,
-            "points": 0.0,
+            "points": 1.0,
             "threshold": 5
           },
           "AlgAnalSumm": {
@@ -424,7 +424,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "alistInsertPRO": {
+          "AlistInsertPRO": {
             "long_name": "Array-based List Insert Exercise",
             "required": true,
             "points": 1,
@@ -436,7 +436,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "alistDeletePRO": {
+          "AlistDeletePRO": {
             "long_name": "Array-based List Delete Exercise",
             "required": true,
             "points": 1,
@@ -596,7 +596,7 @@
       },
       "List/StackArray": {
         "long_name": "Array-based Stacks",
-          "exercises": {
+        "exercises": {
           "astackVarCON": {
             "long_name": "Array stack variables slideshow",
             "required": true,

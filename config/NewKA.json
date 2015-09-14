@@ -1,491 +1,678 @@
 {
-    "title": "Testing new khan-exercises Framework",
-    "build_dir": "Books",
-    "code_dir": "SourceCode/",
-    "code_lang": {
-        "Processing": {
-            "ext": ["pde"],
-            "label": "Processing",
-            "lang": "java"
-        },
-        "C++": {
-            "ext": ["cpp", "h"],
-            "label": "C++",
-            "lang": "C++"
-        }
+  "title": "Testing new khan-exercises Framework",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+    "Processing": {
+      "ext": ["pde"],
+      "label": "Processing",
+      "lang": "java"
     },
-    "lang": "en",
-    "module_origin": "http://algoviz.org",
-    "exercise_server": "",
-    "logging_server": "",
-    "score_server": "",
-    "build_JSAV": false,
-    "allow_anonymous_credit": true,
-    "suppress_todo": false,
-    "glob_exer_options": {
-        "JXOP-debug": "true"
-    },
-    "chapters": {
-        "Background": {
-            "NewKA/IntroDSA": {
-                "long_name": "Introduction to Data Structures and Algorithms",
-                "exercises": {
-                    "IntroSumm": {
-                        "long_name": "Introduction Summary Questions",
-                        "showhide": "show",
-                        "required": true,
-                        "points": 1.0,
-                        "threshold": 5
-                    }
-                }
-            },
-            "NewKA/SetDef": {
-                "long_name": "Set Definitions",
-                "exercises": {
-                    "SetTFrelation": {
-                        "long_name": "Relations Exercise",
-                        "showhide": "show",
-                        "required": true,
-                        "points": 2.0,
-                        "threshold": 5
-                    },
-                    "SetTFequivrel": {
-                        "long_name": "Equivalence Exercise",
-                        "showhide": "show",
-                        "required": true,
-                        "points": 1.0,
-                        "threshold": 3
-                    },
-                    "SetTFpartialorder": {
-                        "long_name": "PartialOrder Exercise",
-                        "showhide": "show",
-                        "required": true,
-                        "points": 1.0,
-                        "threshold": 3
-                    }
-                }
-            },
-            "NewKA/MathpreSumm": {
-                "long_name": "Chapter Summary",
-                "exercises": {
-                    "MathBgSumm": {
-                        "long_name": "Math Background Summary Questions",
-                        "showhide": "show",
-                        "required": true,
-                        "points": 1.0,
-                        "threshold": 5
-                    }
-                }
-            }
-        },
-        "Algorithm Analysis": {
-            "NewKA/AnalPrelim": {
-                "long_name": "Problems, Algorithms, and Programs",
-                "exercises": {
-                    "AnalPrelimSumm": {
-                        "long_name": "Problems, Algorithms, Programs Exercise",
-                        "showhide": "show",
-                        "required": true,
-                        "points": 1.0,
-                        "threshold": 4
-                    }
-                }
-            },
-            "NewKA/AnalIntro": {
-                "long_name": "Comparing Algorithms",
-                "exercises": {
-                    "CompareAlgSumm": {
-                        "long_name": "Comparing Growth Rates Exercise",
-                        "showhide": "show",
-                        "required": true,
-                        "points": 2.0,
-                        "threshold": 4
-                    },
-                    "GrowthRates": {
-                        "long_name": "Growth Rates Ordering Exercise",
-                        "showhide": "show",
-                        "required": true,
-                        "points": 1.0,
-                        "threshold": 3
-                    }
-                }
-            },
-            "NewKA/AnalCompvsAlg": {
-                "long_name": "A Faster Computer, or a Faster Algorithm?",
-                "exercises": {
-                    "FasterCorASumm": {
-                        "long_name": "Faster Computer vs. Algorithm Exercise",
-                        "showhide": "show",
-                        "required": true,
-                        "points": 1.0,
-                        "threshold": 2
-                    }
-                }
-            },
-            "NewKA/AnalAsymptotic": {
-                "long_name": "Asymptotic Analysis and Upper Bounds",
-                "exercises": {
-                    "UpperBoundsSumm": {
-                        "long_name": "Asymptotic Analysis and Upper Bounds Exercise",
-                        "showhide": "show",
-                        "required": true,
-                        "points": 1.0,
-                        "threshold": 4
-                    }
-                }
-            },
-            "NewKA/AnalLower": {
-                "long_name": "Lower Bounds and Theta Notation",
-                "exercises": {
-                    "LowerThetaSumm": {
-                        "long_name": "Lower Bounds and Theta Notation Exercise",
-                        "showhide": "show",
-                        "required": true,
-                        "points": 2.0,
-                        "threshold": 5
-                    }
-                }
-            },
-            "NewKA/AnalProgram": {
-                "long_name": "Calculating the Running Time of a Program",
-                "exercises": {
-                    "AnalProgramSumm": {
-                        "long_name": "Program Code Analysis Exercise",
-                        "showhide": "show",
-                        "required": true,
-                        "points": 1.0,
-                        "threshold": 5
-                    }
-                }
-            },
-            "NewKA/AnalProblem": {
-                "long_name": "Analyzing Problems",
-                "exercises": {
-                    "AnalProblemSumm": {
-                        "long_name": "Problem Analysis Exercise",
-                        "showhide": "show",
-                        "required": true,
-                        "points": 1.0,
-                        "threshold": 5
-                    }
-                }
-            },
-            "NewKA/AnalMisunderstanding": {
-                "long_name": "Common Misunderstandings",
-                "exercises": {
-                    "MisSumm": {
-                        "long_name": "Common Misconceptions Exercise",
-                        "showhide": "show",
-                        "required": true,
-                        "points": 1.0,
-                        "threshold": 4
-                    }
-                }
-            },
-            "NewKA/AlgAnalSumm": {
-                "long_name": "Algorithm Analysis Summary Exercises",
-                "exercises": {
-                    "AlgAnalCS2114Summ": {
-                        "long_name": "Algorithm Analysis Summary Questions",
-                        "showhide": "show",
-                        "required": false,
-                        "points": 0.0,
-                        "threshold": 5
-                    },
-                    "AlgAnalSumm": {
-                        "long_name": "Algorithm Analysis Summary Questions",
-                        "showhide": "show",
-                        "required": true,
-                        "points": 1.0,
-                        "threshold": 5
-                    }
-                }
-            }
-        },
-        "Design": {
-            "NewKA/ADT": {
-                "long_name": "Abstract Data Types",
-                "exercises": {
-                    "IntroADTSumm": {
-                        "long_name": "ADT Summary Questions",
-                        "showhide": "show",
-                        "required": true,
-                        "points": 1.0,
-                        "threshold": 4
-                    }
-                }
-            },
-            "NewKA/DesignPatterns": {
-                "long_name": "Design Patterns",
-                "dispModComp": true,
-                "exercises": {
-                    "DesignPatternSumm": {
-                        "long_name": "Design Patterns Summary Exercise",
-                        "showhide": "show",
-                        "required": true,
-                        "points": 1,
-                        "threshold": 4
-                    }
-                }
-            },
-            "NewKA/Comparison": {
-                "long_name": "Comparing Records",
-                "exercises": {
-                    "CompareSumm": {
-                        "long_name": "Record Comparison Summary Exercise",
-                        "showhide": "show",
-                        "required": true,
-                        "points": 1,
-                        "threshold": 5
-                    }
-                }
-            },
-            "NewKA/Dictionary": {
-                "long_name": "The Dictionary ADT",
-                "dispModComp": true,
-                "exercises": {
-                    "DesignDictionarySumm": {
-                        "long_name": "Dictionary Summary Exercise",
-                        "showhide": "show",
-                        "required": true,
-                        "points": 1,
-                        "threshold": 3
-                    }
-                }
-            }
-        },
-        "Linear Structures": {
-            "NewKA/ListADT": {
-                "long_name": "List ADT",
-                "exercises": {
-                    "ListADTPROG": {
-                        "long_name": "List ADT Programming Exercise",
-                        "showhide": "show",
-                        "required": true,
-                        "points": 1.0,
-                        "threshold": 3
-                    }
-                }
-            },
-            "NewKA/ListADTPROGSumm": {
-                "long_name": "List ADT Summary",
-                "exercises": {
-                    "ListADTPROGSumm": {
-                        "long_name": "List ADT Summary Version",
-                        "showhide": "show",
-                        "required": true,
-                        "points": 1.0,
-                        "threshold": 3
-                    }
-                }
-            },
-            "NewKA/ListArray": {
-                "long_name": "Array-based Lists",
-                "exercises": {
-                    "alistInsertPRO": {
-                        "long_name": "Array-based List Insert Exercise",
-                        "showhide": "show",
-                        "required": true,
-                        "points": 1,
-                        "threshold": 5
-                    },
-                    "alistDeletePRO": {
-                        "long_name": "Array-based List Delete Exercise",
-                        "showhide": "show",
-                        "required": true,
-                        "points": 1,
-                        "threshold": 5
-                    },
-                    "ArryLstSumm": {
-                        "long_name": "Array-based List Summary",
-                        "showhide": "show",
-                        "required": true,
-                        "points": 1,
-                        "threshold": 3
-                    }
-                }
-            }
-        },
-        "NewKA": {
-            "NewKA/RadixsortPRO": {
-                "long_name": "RadixsortPRO",
-                "exercises": {
-                    "RadixsortPRO": {
-                        "long_name": "RadixsortPRO",
-                        "required": true,
-                        "points": 1.0,
-                        "showhide": "show",
-                        "threshold": 2
-                    }
-                }
-            },
-            "NewKA/RadixMergesortSumm": {
-                "long_name": "RadixMergesortSumm",
-                "exercises": {
-                    "RadixMergesortSumm": {
-                        "long_name": "RadixMergesortSumm",
-                        "required": true,
-                        "points": 1.0,
-                        "showhide": "show",
-                        "threshold": 2
-                    }
-                }
-            },
-            "NewKA/BinsortMCQ2": {
-                "long_name": "BinsortMCQ2",
-                "exercises": {
-                    "BinsortMCQ2": {
-                        "long_name": "BinsortMCQ2",
-                        "required": true,
-                        "points": 1.0,
-                        "showhide": "show",
-                        "threshold": 2
-                    }
-                }
-            },
-            "NewKA/BinsortTF1": {
-                "long_name": "BinsortTF1",
-                "exercises": {
-                    "BinsortTF1": {
-                        "long_name": "BinsortTF1",
-                        "required": true,
-                        "points": 1.0,
-                        "showhide": "show",
-                        "threshold": 2
-                    }
-                }
-            },
-            "NewKA/BinsortSumm": {
-                "long_name": "Binsort Module Summary",
-                "exercises": {
-                    "BinsortSumm": {
-                        "long_name": "Binsort Summary Exercise",
-                        "required": true,
-                        "points": 2.0,
-                        "showhide": "show",
-                        "threshold": 4
-                    }
-                }
-            },
-            "NewKA/ShellsortMCQ4": {
-                "long_name": "ShellsortMCQ4",
-                "exercises": {
-                    "ShellsortMCQ4": {
-                        "long_name": "ShellsortMCQ4",
-                        "required": true,
-                        "points": 1.0,
-                        "showhide": "show",
-                        "threshold": 5
-                    }
-                }
-            },
-            "NewKA/ShellsortMCQ5": {
-                "long_name": "ShellsortMCQ5",
-                "exercises": {
-                    "ShellsortMCQ5": {
-                        "long_name": "ShellsortMCQ5",
-                        "required": true,
-                        "points": 1.0,
-                        "showhide": "show",
-                        "threshold": 5
-                    }
-                }
-            },
-            "NewKA/SelsortFIB2": {
-                "long_name": "SelsortFIB2",
-                "exercises": {
-                    "SelsortFIB2": {
-                        "long_name": "SelsortFIB2",
-                        "required": true,
-                        "points": 1.0,
-                        "showhide": "show",
-                        "threshold": 5
-                    }
-                }
-            },
-            "NewKA/Dprobs": {
-                "long_name": "Dprobs",
-                "exercises": {
-                    "Dprobs": {
-                        "long_name": "Dprobs",
-                        "required": true,
-                        "points": 1.0,
-                        "showhide": "show",
-                        "threshold": 5
-                    }
-                }
-            },
-            "NewKA/BubsortPRO": {
-                "long_name": "BubsortPRO",
-                "exercises": {
-                    "BubsortPRO": {
-                        "long_name": "BubsortPRO",
-                        "required": true,
-                        "points": 1.0,
-                        "showhide": "show",
-                        "threshold": 5
-                    }
-                }
-            },
-            "NewKA/SortSumm": {
-                "long_name": "Sorting Chapter Summary Exercises",
-                "exercises": {
-                    "ChapterSumm": {
-                        "long_name": "Sorting Chapter Summary Exercise",
-                        "required": true,
-                        "points": 2,
-                        "threshold": 10
-                    }
-                }
-            },
-            "NewKA/BubsortSumm": {
-                "long_name": "BubsortSumm",
-                "exercises": {
-                    "BubsortSumm": {
-                        "long_name": "BubsortSumm",
-                        "required": true,
-                        "points": 1.0,
-                        "showhide": "show",
-                        "threshold": 5
-                    }
-                }
-            },
-            "NewKA/recCMultiplyPROGSumm": {
-                "long_name": "recCMultiplyPROGSumm",
-                "exercises": {
-                    "recCMultiplyPROGSumm": {
-                        "long_name": "recCMultiplyPROGSumm",
-                        "required": true,
-                        "points": 1.0,
-                        "showhide": "show",
-                        "threshold": 5
-                    }
-                }
-            },
-            "NewKA/recTracingSumm1": {
-                "long_name": "recTracingSumm1",
-                "exercises": {
-                    "recTracingSumm1": {
-                        "long_name": "recTracingSumm1",
-                        "required": true,
-                        "points": 1.0,
-                        "showhide": "show",
-                        "threshold": 5
-                    }
-                }
-            },
-            "NewKA/recTracingSumm5": {
-                "long_name": "recTracingSumm5",
-                "exercises": {
-                    "recTracingSumm5": {
-                        "long_name": "recTracingSumm5",
-                        "required": true,
-                        "points": 1.0,
-                        "showhide": "show",
-                        "threshold": 5
-                    }
-                }
-            }
-        }
+    "C++": {
+      "ext": ["cpp", "h"],
+      "label": "C++",
+      "lang": "C++"
     }
+  },
+  "lang": "en",
+  "module_origin": "http://algoviz.org",
+  "exercise_server": "",
+  "logging_server": "",
+  "score_server": "",
+  "build_JSAV": false,
+  "allow_anonymous_credit": true,
+  "suppress_todo": false,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "chapters": {
+    "Background": {
+      "NewKA/IntroDSA": {
+        "long_name": "Introduction to Data Structures and Algorithms",
+        "exercises": {
+          "IntroSumm": {
+            "long_name": "Introduction Summary Questions",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/SetDef": {
+        "long_name": "Set Definitions",
+        "exercises": {
+          "SetTFrelation": {
+            "long_name": "Relations Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          },
+          "SetTFequivrel": {
+            "long_name": "Equivalence Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 3
+          },
+          "SetTFpartialorder": {
+            "long_name": "PartialOrder Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 3
+          }
+        }
+      },
+      "NewKA/MathpreSumm": {
+        "long_name": "Chapter Summary",
+        "exercises": {
+          "MathBgSumm": {
+            "long_name": "Math Background Summary Questions",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      }
+    },
+    "Algorithm Analysis": {
+      "NewKA/AnalPrelim": {
+        "long_name": "Problems, Algorithms, and Programs",
+        "exercises": {
+          "AnalPrelimSumm": {
+            "long_name": "Problems, Algorithms, Programs Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 4
+          }
+        }
+      },
+      "NewKA/AnalIntro": {
+        "long_name": "Comparing Algorithms",
+        "exercises": {
+          "CompareAlgSumm": {
+            "long_name": "Comparing Growth Rates Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 2.0,
+            "threshold": 4
+          },
+          "GrowthRates": {
+            "long_name": "Growth Rates Ordering Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 3
+          }
+        }
+      },
+      "NewKA/AnalCompvsAlg": {
+        "long_name": "A Faster Computer, or a Faster Algorithm?",
+        "exercises": {
+          "FasterCorASumm": {
+            "long_name": "Faster Computer vs. Algorithm Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 2
+          }
+        }
+      },
+      "NewKA/AnalAsymptotic": {
+        "long_name": "Asymptotic Analysis and Upper Bounds",
+        "exercises": {
+          "UpperBoundsSumm": {
+            "long_name": "Asymptotic Analysis and Upper Bounds Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 4
+          }
+        }
+      },
+      "NewKA/AnalLower": {
+        "long_name": "Lower Bounds and Theta Notation",
+        "exercises": {
+          "LowerThetaSumm": {
+            "long_name": "Lower Bounds and Theta Notation Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/AnalProgram": {
+        "long_name": "Calculating the Running Time of a Program",
+        "exercises": {
+          "AnalProgramSumm": {
+            "long_name": "Program Code Analysis Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/AnalProblem": {
+        "long_name": "Analyzing Problems",
+        "exercises": {
+          "AnalProblemSumm": {
+            "long_name": "Problem Analysis Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/AnalMisunderstanding": {
+        "long_name": "Common Misunderstandings",
+        "exercises": {
+          "MisSumm": {
+            "long_name": "Common Misconceptions Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 4
+          }
+        }
+      },
+      "NewKA/AlgAnalSumm": {
+        "long_name": "Algorithm Analysis Summary Exercises",
+        "exercises": {
+          "AlgAnalCS2114Summ": {
+            "long_name": "Algorithm Analysis Summary Questions",
+            "showhide": "show",
+            "required": false,
+            "points": 0.0,
+            "threshold": 5
+          },
+          "AlgAnalSumm": {
+            "long_name": "Algorithm Analysis Summary Questions",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      }
+    },
+    "Design": {
+      "NewKA/ADT": {
+        "long_name": "Abstract Data Types",
+        "exercises": {
+          "IntroADTSumm": {
+            "long_name": "ADT Summary Questions",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 4
+          }
+        }
+      },
+      "NewKA/DesignPatterns": {
+        "long_name": "Design Patterns",
+        "dispModComp": true,
+        "exercises": {
+          "DesignPatternSumm": {
+            "long_name": "Design Patterns Summary Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 4
+          }
+        }
+      },
+      "NewKA/Comparison": {
+        "long_name": "Comparing Records",
+        "exercises": {
+          "CompareSumm": {
+            "long_name": "Record Comparison Summary Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/Dictionary": {
+        "long_name": "The Dictionary ADT",
+        "dispModComp": true,
+        "exercises": {
+          "DesignDictionarySumm": {
+            "long_name": "Dictionary Summary Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 3
+          }
+        }
+      }
+    },
+    "Linear Structures": {
+      "NewKA/ListADT": {
+        "long_name": "List ADT",
+        "exercises": {
+          "ListADTPROG": {
+            "long_name": "List ADT Programming Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 3
+          }
+        }
+      },
+      "NewKA/ListADTPROGSumm": {
+        "long_name": "List ADT Summary",
+        "exercises": {
+          "ListADTPROGSumm": {
+            "long_name": "List ADT Summary Version",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 3
+          }
+        }
+      },
+      "NewKA/ListArray": {
+        "long_name": "Array-based Lists",
+        "exercises": {
+          "AlistInsertPRO": {
+            "long_name": "Array-based List Insert Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "AlistDeletePRO": {
+            "long_name": "Array-based List Delete Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "ArryLstSumm": {
+            "long_name": "Array-based List Summary",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 3
+          }
+        }
+      },
+      "NewKA/ListLinked": {
+        "long_name": "Linked Lists",
+        "exercises": {
+          "LlistInsertPRO": {
+            "long_name": "Linked List Insert Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "LlistRemovePRO": {
+            "long_name": "Linked List Remove Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 2,
+            "threshold": 5
+          }
+	}
+      },
+      "NewKA/ListAnalysis": {
+        "long_name": "Comparison of List Implementations",
+        "exercises": {
+          "ListOverhead": {
+            "long_name": "Breakeven Point Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 3
+          },
+          "LstLnkdSumm": {
+            "long_name": "Linked List Summary Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 2,
+            "threshold": 6
+          }
+        }
+      },
+      "NewKA/ListElement": {
+        "long_name": "List Element Implementations",
+        "exercises": {
+          "LstSumm": {
+            "long_name": "List Summary Questions",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 3
+          }
+        }
+      },
+      "NewKA/StackArray": {
+        "long_name": "Array-based Stacks",
+        "exercises": {
+          "AstackPushPRO": {
+            "long_name": "Array-based Stack Push Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "AstackPopPRO": {
+            "long_name": "Array-based Stack Pop Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/StackLinked": {
+        "long_name": "Linked Stacks",
+        "exercises": {
+          "LstackPushPRO": {
+            "long_name": "Linked Stack Push Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "LstackPopPRO": {
+            "long_name": "Linked Stack Pop Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/Queue": {
+        "long_name": "Queues",
+        "exercises": {
+          "AqueueEnqueuePRO": {
+            "long_name": "Array-based Queue Enqueue Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "AqueueDequeuePRO": {
+            "long_name": "Array-based Queue Dequeue Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/QueueLinked": {
+        "long_name": "Linked Queues",
+        "exercises": {
+          "LqueueEnqueuePRO": {
+            "long_name": "Linked Queue Enqueue Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "LqueueDequeuePRO": {
+            "long_name": "Linked Queue Dequeue Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "StckQSumm": {
+            "long_name": "Stack/Queue Summary Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/ListSumm": {
+        "long_name": "List Chapter Summary",
+        "exercises": {
+          "LstChptrSumm": {
+            "long_name": "List Chapter Summary Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 2,
+            "threshold": 5
+          }
+        }
+      }
+    },
+    "Design": {
+      "Design/DesignPatterns": {
+        "long_name": "Design Patterns",
+	"dispModComp": true,
+        "exercises": {
+          "DesignPatternSumm": {
+            "long_name": "Design Patterns Summary Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 4
+          }
+        }
+      },
+      "Design/DesignAltList": {
+        "long_name": "Alternate List ADT Design",
+	"dispModComp": true,
+        "exercises": {}
+      },
+      "Design/Comparison": {
+        "long_name": "Comparing Records",
+        "exercises": {
+          "CompareSumm": {
+            "long_name": "Record Comparison Summary Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
+      },
+      "Design/Dictionary": {
+        "long_name": "The Dictionary ADT",
+	"dispModComp": true,
+        "exercises": {
+          "DesignDictionarySumm": {
+            "long_name": "Dictionary Summary Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 3
+          }
+        }
+      }
+    },
+    "NewKA": {
+      "NewKA/RadixsortPRO": {
+        "long_name": "RadixsortPRO",
+        "exercises": {
+          "RadixsortPRO": {
+            "long_name": "RadixsortPRO",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 2
+          }
+        }
+      },
+      "NewKA/RadixMergesortSumm": {
+        "long_name": "RadixMergesortSumm",
+        "exercises": {
+          "RadixMergesortSumm": {
+            "long_name": "RadixMergesortSumm",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 2
+          }
+        }
+      },
+      "NewKA/BinsortMCQ2": {
+        "long_name": "BinsortMCQ2",
+        "exercises": {
+          "BinsortMCQ2": {
+            "long_name": "BinsortMCQ2",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 2
+          }
+        }
+      },
+      "NewKA/BinsortTF1": {
+        "long_name": "BinsortTF1",
+        "exercises": {
+          "BinsortTF1": {
+            "long_name": "BinsortTF1",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 2
+          }
+        }
+      },
+      "NewKA/BinsortSumm": {
+        "long_name": "Binsort Module Summary",
+        "exercises": {
+          "BinsortSumm": {
+            "long_name": "Binsort Summary Exercise",
+            "required": true,
+            "points": 2.0,
+            "showhide": "show",
+            "threshold": 4
+          }
+        }
+      },
+      "NewKA/ShellsortMCQ4": {
+        "long_name": "ShellsortMCQ4",
+        "exercises": {
+          "ShellsortMCQ4": {
+            "long_name": "ShellsortMCQ4",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/ShellsortMCQ5": {
+        "long_name": "ShellsortMCQ5",
+        "exercises": {
+          "ShellsortMCQ5": {
+            "long_name": "ShellsortMCQ5",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/SelsortFIB2": {
+        "long_name": "SelsortFIB2",
+        "exercises": {
+          "SelsortFIB2": {
+            "long_name": "SelsortFIB2",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/Dprobs": {
+        "long_name": "Dprobs",
+        "exercises": {
+          "Dprobs": {
+            "long_name": "Dprobs",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/BubsortPRO": {
+        "long_name": "BubsortPRO",
+        "exercises": {
+          "BubsortPRO": {
+            "long_name": "BubsortPRO",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/SortSumm": {
+        "long_name": "Sorting Chapter Summary Exercises",
+        "exercises": {
+          "ChapterSumm": {
+            "long_name": "Sorting Chapter Summary Exercise",
+            "required": true,
+            "points": 2,
+            "threshold": 10
+          }
+        }
+      },
+      "NewKA/BubsortSumm": {
+        "long_name": "BubsortSumm",
+        "exercises": {
+          "BubsortSumm": {
+            "long_name": "BubsortSumm",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/recCMultiplyPROGSumm": {
+        "long_name": "recCMultiplyPROGSumm",
+        "exercises": {
+          "recCMultiplyPROGSumm": {
+            "long_name": "recCMultiplyPROGSumm",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/recTracingSumm1": {
+        "long_name": "recTracingSumm1",
+        "exercises": {
+          "recTracingSumm1": {
+            "long_name": "recTracingSumm1",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/recTracingSumm5": {
+        "long_name": "recTracingSumm5",
+        "exercises": {
+          "recTracingSumm5": {
+            "long_name": "recTracingSumm5",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 5
+          }
+        }
+      }
+    }
+  }
 }

@@ -5,16 +5,12 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :satisfies: array-based list
+   :satisfies: linked list
    :topic: Lists
    
-.. odsalink:: AV/List/alistCON.css
+Linked Lists
+============
+   
+.. avembed:: Exercises/Development/LlistInsertPRO.html ka
 
-Array-Based List Implementation
-===============================
-
-.. avembed:: Exercises/List/AlistInsertPRO.html ka
-  
-.. avembed:: Exercises/List/AlistDeletePRO.html ka
-  
-.. avembed:: Exercises/List/ArryLstSumm.html ka
+.. avembed:: Exercises/Development/LlistRemovePRO.html ka
