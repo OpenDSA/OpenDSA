@@ -45,7 +45,7 @@
 
 
 
-    var server = SCORE_SERVER ? SCORE_SERVER : typeof OpenPopKa !== "undefined" ? "https://opendsa.cc.vt.edu" : null;
+    var server = SCORE_SERVER ? SCORE_SERVER : typeof OpenPopKa !== "undefined" ? "https://opendsa.cs.vt.edu" : null;
     BOOK_ID = BOOK_ID ? BOOK_ID : typeof OpenPopKa !== "undefined" ? "CS3114" : null;
     var SESSION_KEY = 'phantom-key';
 
