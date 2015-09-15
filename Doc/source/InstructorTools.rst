@@ -9,7 +9,7 @@ Instructor's Tools Page
 Instructor's tools are available from an OpenDSA scoring server
 installation.
 For example, the main Virginia Tech scoring server supplies its
-instructor tools page from ``http://opendsa.cc.vt.edu/``.
+instructor tools page from ``http://opendsa.cs.vt.edu/``.
 You will have to log in with an account that has instructor
 permissions for the course that you wish to work on.
 
@@ -68,7 +68,7 @@ assignments, exercises, and summed scores.
 Be aware that this table is driven by the assignments that you have
 created, **not** by what work the students have done.
 
-So if you want to see who has done a given exercise, and the exercise is 
+So if you want to see who has done a given exercise, and the exercise is
 not part of an assignment, use the ``Class activity`` button instead.
 
 The "Toggle exercises columns" controls whether you just see
@@ -84,24 +84,24 @@ You can download the spreadsheet as a CSV file.
 Students activity
 -----------------
 
-The ``Students activity`` buttons allows instructors to access detailed information 
+The ``Students activity`` buttons allows instructors to access detailed information
 about each student activity within OpenDSA.
 
 It shows the list of students enrolled in the classroom. Clicking on a student's name
-will load a page containing information about the number of time each book instance page 
+will load a page containing information about the number of time each book instance page
 was loaded and a timeline showing when the student earned proficiency.
 
-#. The "Module loading Statistics" table contains a list of modules in the book instance along 
-   with a green bar showing how much time the module had been loaded by the student. Clicking on a 
-   module's name in the table will take you to the "Module activity" page showing the starting time and proficiency time 
+#. The "Module loading Statistics" table contains a list of modules in the book instance along
+   with a green bar showing how much time the module had been loaded by the student. Clicking on a
+   module's name in the table will take you to the "Module activity" page showing the starting time and proficiency time
    for each interactive element in the module.
 
 #. The "Proficiency Dates for Exercises" timeline displays for each day, the student proficiency activity.
-   Each day in the timeline is associated with a list of all exercices that the student correctly completed for 
+   Each day in the timeline is associated with a list of all exercices that the student correctly completed for
    the first time (that day).
 
-Furthermore, clicking on a slideshow (from the timeline or the module activity table)  will display a digram showing how much time the 
-student spent on each slide and how the student navigate (forward/backward steps) the 
+Furthermore, clicking on a slideshow (from the timeline or the module activity table)  will display a digram showing how much time the
+student spent on each slide and how the student navigate (forward/backward steps) the
 mini slideshow.
 
 
