@@ -3,14 +3,14 @@
 .. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
    :author: Cliff Shaffer
    :requires: list ADT
    :satisfies: queue
    :topic: Lists
 
-.. odsalink:: AV/List/aqueueCON.css   
-   
+.. odsalink:: AV/List/aqueueCON.css
+
 Queues
 ======
 
@@ -52,16 +52,16 @@ efficient.
 
 .. inlineav:: aqueueDriftCON ss
    :output: show
-   
+
 .. inlineav:: aqueueBadCON ss
-   :output: show 
-   
+   :output: show
+
 .. inlineav:: aqueueCircularCON ss
-   :output: show 
-   
+   :output: show
+
 .. inlineav:: aqueueEmptyCON ss
-   :output: show 
-   
+   :output: show
+
 If the value of ``front`` is fixed, then :math:`n+1` different
 values for ``rear`` are needed to distinguish among the :math:`n+1`
 states.
@@ -91,8 +91,8 @@ Here is an array-based queue implementation.
    :tag: AQueue1,AQueue2
 
 .. inlineav:: aqueueVarCON ss
-   :output: show 
-   
+   :output: show
+
 In this implementation, the front of the queue is defined to be toward
 the lower numbered positions in the array (in the counter-clockwise
 direction in the circular array), and the rear is
@@ -103,7 +103,7 @@ Implementation of all member functions is straightforward.
 
 .. avembed:: Exercises/List/aqueueEnqueuePRO.html ka
 
-.. avembed:: Exercises/List/aqueueDequeuePRO.html ka
+.. avembed:: Exercises/List/AqueueDequeuePRO.html ka
 
 .. odsascript:: DataStructures/CircularQueue.js
 .. odsascript:: AV/List/aqueueFirstCON.js

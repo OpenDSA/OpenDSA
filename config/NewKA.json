@@ -15,6 +15,7 @@
     }
   },
   "lang": "en",
+  // "module_origin": "http://localhost:8000",
   "module_origin": "http://algoviz.org",
   "exercise_server": "https://ltitest.cs.vt.edu:8443",
   "logging_server": "https://ltitest.cs.vt.edu:8443",
@@ -464,6 +465,18 @@
       }
     },
     "NewKA": {
+      "NewKA/AqueueDequeuePRO": {
+        "long_name": "AqueueDequeuePRO",
+        "exercises": {
+          "AqueueDequeuePRO": {
+            "long_name": "AqueueDequeuePRO",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 2
+          }
+        }
+      },
       "NewKA/HeapsortStepPRO": {
         "long_name": "HeapsortStepPRO",
         "exercises": {

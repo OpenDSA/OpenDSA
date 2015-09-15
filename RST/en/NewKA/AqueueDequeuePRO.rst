@@ -9,9 +9,9 @@
    :satisfies: quicksort
    :topic: Sorting
 
-.. index:: ! HeapsortStepPRO
+.. index:: ! AqueueDequeuePRO
 
-HeapsortStepPRO
-===============
+AqueueDequeuePRO
+================
 
-.. avembed:: Exercises/NewKA/HeapsortStepPRO.html ka
+.. avembed:: Exercises/NewKA/AqueueDequeuePRO.html ka
