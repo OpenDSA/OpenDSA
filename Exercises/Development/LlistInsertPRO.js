@@ -1,96 +1,29 @@
+/*global window, JSAV */
 (function() {
   "use strict";
-
-  var jsav, // The JSAV object
-    answerArr = [], // The (internal) array that stores the correct answer
-    answerOrderArr = [], // The (internal) array that stores the correct order of nodes
-    orderArr = [], //
-    listArr = [], //
-    jsavArr, // Hidden JSAV array used for animation effects
-    status = 0, // Nothing is currently selected, status = 0;
-    // Data area of the node is selected, status = 1;
-    // pointer area is selected, status = 2.
-    newNodeGen, //
-    newLinkNode, // New node
-    llist_head, // head of the list
-    connections = [], //
-    fromNode, //
-    toNode, //
-    jsavList, // JSAV list
-    listSize, // JSAV list size
-    insertPosition, // Position to be inserted
-    insertValue, // Value to be inserted
-    selected_node; // Position that has been selected by user for swap
+  var av, // The JSAV object
+      answerArr = [], // The (internal) array that stores the correct answer
+      answerOrderArr = [], // The (internal) array that stores the correct order of nodes
+      orderArr = [], //
+      listArr = [], //
+      hiddenArr, // Hidden JSAV array used for animation effects
+      newLinkNode, // The new node
+      llist_head, // head of the list
+      connections = [], //
+      fromNode, // Remember clicked pointer selected by user for connection
+      jsavList, // JSAV list
+      listSize, // JSAV list size
+      insertPosition, // Position to be inserted
+      insertValue, // Value to be inserted
+      selected_node; // Remember node that has been selected by user for swap
 
   var llistInsertPRO = {
-    userInput: null, // Boolean: Tells us if user ever did anything
+    userInput: null, // Boolean: True iff user ever did anything
 
-    // Add an edge from obj1 to obj2
-    connection: function(obj1, obj2) {
-      if (obj1 === obj2) {
-        return;
-      }
-      var fx = $('#' + obj1.id()).position().left + 37 + 2;
-      var tx = $('#' + obj2.id()).position().left + 2;
-      var fy = $('#' + obj1.id()).position().top + 15 + 16 + 40;
-      var ty = $('#' + obj2.id()).position().top + 15 + 16 + 40;
-      var fx1 = fx,
-        fy1 = fy,
-        tx1 = tx,
-        ty1 = ty;
-
-      var disx = (fx - tx - 22) > 0 ? 1 : (fx - tx - 22) === 0 ? 0 : -1;
-      var disy = (fy - ty) > 0 ? 1 : (fy - ty) === 0 ? 0 : -1;
-
-      var dx = Math.max(Math.abs(fx - tx) / 2, 35);
-      var dy = Math.max(Math.abs(fy - ty) / 2, 35);
-
-      if (fy - ty > -25 && fy - ty < 25 && (tx - fx < 36 || tx - fx > 38)) {
-        dx = Math.min(Math.abs(fx - tx), 20);
-        dy = Math.min(Math.abs(fx - tx) / 3, 50);
-        tx += 22;
-        ty -= 15;
-        fx1 = fx;
-        fy1 = fy - dy;
-        tx1 = tx - dx;
-        ty1 = ty - dy;
-      } else {
-        if (disx === 1) {
-          tx += 22;
-          ty += 15 * disy;
-          fx1 = fx + dx;
-          fy1 = fy - dy * disy;
-          tx1 = tx;
-          ty1 = ty + dy * disy;
-        } else if (disx === -1) {
-          fx1 = fx + dx;
-          fy1 = fy;
-          tx1 = tx - dx;
-          ty1 = ty;
-        }
-      }
-
-      var edge = jsav.g.path(["M", fx, fy, "C", fx1, fy1, tx1, ty1, tx, ty].join(","), {
-        "arrow-end": "classic-wide-long",
-        "opacity": 100,
-        "stroke-width": 2
-      });
-      if (obj1.llist_next) {
-        obj1.llist_edgeToNext.element.remove();
-      } else {
-        obj1.llist_tail.element.remove();
-        obj1.llist_tail = null;
-      }
-
-      obj1.llist_edgeToNext = edge;
-    },
-
-    // Function for connecting to nodes when click them
-    Connect: function(obj1, obj2) {
-      if (obj1 === obj2) {
-        return;
-      }
-      llistInsertPRO.connection(obj1, obj2);
+    // Draw a link onnecting two nodes in "jsav" pane
+    connect: function(obj1, obj2, jsav) {
+      if (obj1 === obj2) { return; }
+      llistInsertPRO.connection(obj1, obj2, jsav);
       obj1.llist_next = obj2;
       obj1._next = obj2;
       for (var i = 0; i < connections.length; i++) {
@@ -105,190 +38,198 @@
       });
     },
 
-    // Click event handler on the list
-    clickHandler: function(e) {
-      var x = parseInt(e.pageX - $('#' + this.id()).offset().left);
-      var y = parseInt(e.pageY - $('#' + this.id()).offset().top);
-      if (x > 31 && x < 42 && y > 0 && y < 31) {
-        if (status === 1) {
-          selected_node.removeClass('bgColor');
-          selected_node = null;
-        } else if (status === 2) {
-          $('#' + fromNode.id() + " .jsavpointerarea:first").removeClass('bgColor');
-        }
-
-        if ((status === 0) || (status === 1)) {
-          $('#' + this.id() + " .jsavpointerarea:first").addClass('bgColor');
-          fromNode = this;
-          status = 2;
-        } else if (status === 2) {
-          if (this.id() === fromNode.id()) {
-            $('#' + this.id() + " .jsavpointerarea:first").removeClass('bgColor');
-            fromNode = null;
-            status = 0;
-          } else {
-            $('#' + this.id() + " .jsavpointerarea:first").addClass('bgColor');
-            fromNode = this;
-            status = 2;
-          }
-        }
-      } else {
-        if (status === 0) {
-          this.addClass('bgColor');
-          selected_node = this;
-          status = 1;
-        } else if (status === 1) {
-          this.value(selected_node.value());
-
-          selected_node.removeClass('bgColor');
-          jsav.effects.copyValue(selected_node, this);
-          selected_node = null;
-          status = 0;
-        } else if (status === 2) {
-          toNode = this;
-          llistInsertPRO.Connect(fromNode, toNode);
-          $('#' + fromNode.id() + " .jsavpointerarea:first").removeClass('bgColor');
-          $('#' + toNode.id()).removeClass('bgColor');
-          fromNode = null;
-          toNode = null;
-          status = 0;
-        }
-        llistInsertPRO.userInput = true;
+    // TODO: Move this to DataSructures/LinkedList.js
+    // Add an edge from obj1 to obj2 in "jsav" pane
+    connection: function(obj1, obj2, jsav) {
+      if (obj1 === obj2) {
+        return;
       }
+      var fx = $("#" + obj1.id()).position().left + 37 + 2;
+      var tx = $("#" + obj2.id()).position().left + 2;
+      var fy = $("#" + obj1.id()).position().top + 15 + 16 + 40;
+      var ty = $("#" + obj2.id()).position().top + 15 + 16 + 40;
+      var fx1 = fx,
+          fy1 = fy,
+          tx1 = tx,
+          ty1 = ty;
+
+      var disx = ((fx - tx - 22) > 0) ? 1 : ((fx - tx - 22) === 0) ? 0 : -1;
+      var disy = ((fy - ty) > 0) ? 1 : ((fy - ty) === 0) ? 0 : -1;
+
+      var dx = Math.max(Math.abs(fx - tx) / 2, 35);
+      var dy = Math.max(Math.abs(fy - ty) / 2, 35);
+
+      if ((fy - ty > -25) && (fy - ty < 25) && ((tx - fx < 36) || (tx - fx > 38))) {
+        dx = Math.min(Math.abs(fx - tx), 20);
+        dy = Math.min(Math.abs(fx - tx) / 3, 50);
+        tx += 22;
+        ty -= 15;
+        fx1 = fx;
+        fy1 = fy - dy;
+        tx1 = tx - dx;
+        ty1 = ty - dy;
+      } else if (disx === 1) {
+        tx += 22;
+        ty += 15 * disy;
+        fx1 = fx + dx;
+        fy1 = fy - dy * disy;
+        tx1 = tx;
+        ty1 = ty + dy * disy;
+      } else if (disx === -1) {
+        fx1 = fx + dx;
+        fy1 = fy;
+        tx1 = tx - dx;
+        ty1 = ty;
+      }
+
+      var edge = jsav.g.path(["M", fx, fy, "C", fx1, fy1, tx1, ty1, tx, ty].join(","),
+                             {"arrow-end": "classic-wide-long", opacity: 100,
+                              "stroke-width": 2});
+      if (obj1.llist_next) {
+        obj1.llist_edgeToNext.element.remove();
+      } else {
+        obj1.llist_tail.element.remove();
+        obj1.llist_tail = null;
+      }
+
+      obj1.llist_edgeToNext = edge;
     },
 
+    // TODO: Simplify relationship to drag, use DataStructures/LinkedList addTail
     addTail: function(node) {
       if (node.llist_tail) {
         node.llist_tail.element.remove();
+        var pos = $("#" + node.id()).position();
 
-        var fx = $('#' + node.id()).position().left + 34;
-        var tx = $('#' + node.id()).position().left + 44;
-        var fy = $('#' + node.id()).position().top + 47 + 40;
-        var ty = $('#' + node.id()).position().top + 16 + 40;
-        node.llist_tail = jsav.g.line(fx, fy, tx, ty, {
-          "opacity": 100,
-          "stroke-width": 1
-        });
+        var fx = pos.left + 34;
+        var tx = pos.left + 44;
+        var fy = pos.top + 47 + 40;
+        var ty = pos.top + 16 + 40;
+        node.llist_tail = av.g.line(fx, fy, tx, ty,
+                                    {opacity: 100, "stroke-width": 1});
       }
     },
 
-    f_newnode: function() {
-      if (newNodeGen === false) {
-        if (status === 2) {
-          $('#' + fromNode.id() + " .jsavpointerarea:first").removeClass('bgColor');
-          fromNode = null;
-        } else if (status === 1) {
-          selected_node.removeClass('bgColor');
+    // Click event handler on a list node
+    clickHandler: function(e) {
+      var x = parseInt(e.pageX - $("#" + this.id()).offset().left, 10);
+      var y = parseInt(e.pageY - $("#" + this.id()).offset().top, 10);
+      if (x > 31 && x < 42 && y > 0 && y < 31) { // We are in the pointer part
+        if (selected_node !== null) { // Clear prior node value selection
+          selected_node.removeClass("bgColor");
           selected_node = null;
         }
-        status = 0;
+        if (fromNode === null) {
+          $("#" + this.id() + " .jsavpointerarea:first").addClass("bgColor");
+          fromNode = this;
+        } else if (this.id() === fromNode.id()) { // re-clicked pointer
+          $("#" + this.id() + " .jsavpointerarea:first").removeClass("bgColor");
+          fromNode = null;
+        } else { // Clicked a second pointer, so replace
+          $("#" + fromNode.id() + " .jsavpointerarea:first").removeClass("bgColor");
+          $("#" + this.id() + " .jsavpointerarea:first").addClass("bgColor");
+          fromNode = this;
+        }
+      } else // We are in the value part of the node
+        if (fromNode !== null) { // We are connecting a pointer to this node
+          if (fromNode === this) { // Double clicked the pointer, unhighlight
+            $("#" + fromNode.id() + " .jsavpointerarea:first").removeClass("bgColor");
+            fromNode = null;
+          } else {
+            llistInsertPRO.connect(fromNode, this, av);
+            $("#" + fromNode.id() + " .jsavpointerarea:first").removeClass("bgColor");
+            $("#" + this.id()).removeClass("bgColor");
+            fromNode = null;
+          }
+        } else if (selected_node === null) { // Hightlight it for next action
+          this.addClass("bgColor");
+          selected_node = this;
+        } else { // Second value clicked, so will swap values
+          this.value(selected_node.value());
+          selected_node.removeClass("bgColor");
+          av.effects.copyValue(selected_node, this);
+          selected_node = null;
+        }
+      llistInsertPRO.userInput = true;
+    },
+
+    // Handle "Insert" button click
+    f_insert: function() {
+      if (selected_node !== null) { // Only do something if value field selected
+        av.effects.copyValue(hiddenArr, 0, selected_node);
+        selected_node.removeClass("bgColor");
+        selected_node = null;
+      }
+    },
+
+    // Handle "NewNode" button click
+    f_newnode: function() {
+      if (newLinkNode === null) { // Do nothing if new node already exists
         newLinkNode = jsavList.newNode("null");
-        // Calculate the position for the new node
+        // Calculate and seet position for the new node
         var left = (listSize - 1) * 73 / 2;
         var top = 60;
-        // Set the position for the new node
-        newLinkNode.css({
-          "top": top,
-          "left": left
-        });
-
+        newLinkNode.css({top: top, left: left});
+        // Set its values
         newLinkNode.llist_next = null;
         newLinkNode.llist_edgeToNext = null;
         answerOrderArr = orderArr.slice(0);
         answerOrderArr.splice(insertPosition + 2, 0, newLinkNode.id());
 
-        var x1 = left + 34;
-        var y1 = top + 46 + 40;
-        var x2 = left + 44;
-        var y2 = top + 15 + 40;
-
-        newLinkNode.llist_tail = jsav.g.line(x1, y1,
-          x2, y2, {
-            "opacity": 100,
-            "stroke-width": 1
-          });
+        newLinkNode.llist_tail = av.g.line(left + 34, top + 86,
+                                             left + 44, top + 55,
+                                             {opacity: 100, "stroke-width": 1});
 
         $("#" + newLinkNode.id()).draggable({
           start: function() {
-            $("#" + newLinkNode.id()).css('cursor', 'pointer');
-            if (status === 2) {
-              $('#' + fromNode.id() + " .jsavpointerarea:first").removeClass('bgColor');
-              fromNode = null;
-            } else if (status === 1) {
-              selected_node.removeClass('bgColor');
-              selected_node = null;
-            }
-            status = 0;
+            $("#" + newLinkNode.id()).css("cursor", "pointer");
           },
           drag: function() {
-            var offset = $(this).position();
-            var xPos = parseInt(offset.left);
-            var yPos = parseInt(offset.top);
-            var nodeNum = Math.floor(xPos / 73);
-            for (var i = connections.length; i--;) {
-              llistInsertPRO.connection(connections[i].from, connections[i].to);
+            var i;
+            for (i = connections.length - 1; i >= 0; i--) {
+              llistInsertPRO.connection(connections[i].from, connections[i].to, av);
             }
             llistInsertPRO.addTail(newLinkNode);
           },
           stop: function() {
-            var offset = $(this).position();
-            var xPos = parseInt(offset.left);
-            var yPos = parseInt(offset.top);
-            var nodeNum = Math.floor(xPos / 73);
-            for (var i = connections.length; i--;) {
-              llistInsertPRO.connection(connections[i].from, connections[i].to);
+            var i;
+            for (i = connections.length - 1; i >= 0; i--) {
+              llistInsertPRO.connection(connections[i].from, connections[i].to, av);
             }
             llistInsertPRO.addTail(newLinkNode);
           }
         });
         $("#NewNode").disabled = true;
-        newNodeGen = true;
-
-      } else {
-        return;
       }
       llistInsertPRO.userInput = true;
     },
 
-    f_insert: function() {
-      if (selected_node !== null) {
-        jsav.effects.copyValue(jsavArr, 0, selected_node);
-        selected_node.removeClass('bgColor');
-        selected_node = null;
-        status = 0;
-      }
-    },
-
     // reset function definition
     f_reset: function() {
+      var i;
+
       llistInsertPRO.userInput = false;
-      newNodeGen = false;
+      newLinkNode = null;
       connections = [];
       selected_node = null;
-      status = 0;
+      fromNode = null;
       if ($("#LlistInsertPRO .jsavcanvas")) {
         $("#LlistInsertPRO .jsavcanvas").remove();
       }
       if ($("#LlistInsertPRO .jsavshutter")) {
         $("#LlistInsertPRO .jsavshutter").remove();
       }
-      jsav = new JSAV("LlistInsertPRO");
-      jsav.recorded();
+      av = new JSAV("LlistInsertPRO");
+      av.recorded();
 
       if ($("#LlistInsertPRO path")) {
         $("#LlistInsertPRO path").remove();
       }
-      if (jsavList) {
-        jsavList.clear();
-      }
+      if (jsavList) { jsavList.clear(); }
 
-      jsavList = jsav.ds.list({
-        "nodegap": 30,
-        "top": 40,
-        left: 1
-      });
+      jsavList = av.ds.list({nodegap: 30, top: 40, left: 1});
       jsavList.addFirst("null");
-      for (var i = listSize - 2; i > 0; i--) {
+      for (i = listSize - 2; i > 0; i--) {
         jsavList.addFirst(listArr[i]);
       }
       jsavList.addFirst("null");
@@ -300,32 +241,24 @@
         jsavList.get(i).llist_next = jsavList.get(i).next();
         jsavList.get(i).llist_edgeToNext = jsavList.get(i).edgeToNext();
       }
-      jsavList.get(listSize - 1).llist_tail = jsav.g.line(34 + (listSize - 1) * 74, 47 + 40,
-        44 + (listSize - 1) * 74, 16 + 40, {
-          "opacity": 100,
-          "stroke-width": 1
-        });
+      jsavList.get(listSize - 1).llist_tail =
+        av.g.line(34 + (listSize - 1) * 74, 47 + 40,
+                    44 + (listSize - 1) * 74, 16 + 40,
+                    {opacity: 100, "stroke-width": 1});
 
-      //Curr Label
-      var currLabel = jsav.label("curr", {
-        left: 60 + insertPosition * 74,
-        top: 0,
-        "font-size": "20px"
-      });
-      var currArrow = jsav.g.line(70 + insertPosition * 74, 35,
-        90 + insertPosition * 74, 55, {
-          "arrow-end": "classic-wide-long",
-          "opacity": 100,
-          "stroke-width": 2
-        });
+      // TODO: This should be done with a JSAV pointer object
+      // Curr Label
+      av.label("curr", {left: 60 + insertPosition * 74,
+                        top: 0, "font-size": "20px"});
+      // Curr arrow
+      av.g.line(70 + insertPosition * 74, 35,
+                90 + insertPosition * 74, 55,
+		{"arrow-end": "classic-wide-long",
+                 opacity: 100, "stroke-width": 2});
 
       //Hidden JSAV array for insert animation effect
-      jsavArr = jsav.ds.array([insertValue], {
-        indexed: false,
-        center: false,
-        left: 350,
-        top: -70
-      });
+      hiddenArr = av.ds.array([insertValue],
+                              {indexed: false, center: false, left: 350, top: -70});
 
       jsavList.click(llistInsertPRO.clickHandler); // Rebind click handler after reset
       llistInsertPRO.userInput = false;
@@ -368,7 +301,7 @@
     },
 
     // Check user's answer for correctness: User's array must match answer
-    checkAnswer: function(arr_size) {
+    checkAnswer: function() {
       var i = 0;
       var curr = llist_head;
 

@@ -25,9 +25,12 @@
     selected_pointer, // Pointer that has been selected by user.
     selected_node, // Node that has been selected by user.
     status = 0; // status = 0 : nothing is currently selected;
-  // status = 1 : data area of the node is selected;
-  // status = 2 : pointer area of the node is selected.
-  // status = 3 : Label area of the pointer is clicked.
+                // status = 1 : data area of the node has been selected;
+                //              selected_node !== null
+                // status = 2 : pointer area of the node has been selected.
+                //              fromNode !== null
+                // status = 3 : Label area of the pointer has been selected.
+                //              selected_pointer !== null
 
   var llistRemovePRO = {
     userInput: null, // Boolean: Tells us if user ever did anything
@@ -51,7 +54,7 @@
       status = 3;
     },
 
-    // Helper function for seting pointer
+    // Helper function for setting pointer
     setPointer: function(name, newnode, oldpointer, opt) {
       if (oldpointer) {
         if (newnode === oldpointer.target()) {

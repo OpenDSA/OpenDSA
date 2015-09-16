@@ -15,6 +15,4 @@
   JSAV._types.ds.ListNode.prototype.llist_pleft = null;
   JSAV._types.ds.ListNode.prototype.llist_pright = null;
 
-
-
 }(jQuery));
