@@ -9,7 +9,7 @@
     answerTail, // Correct answer of 'tail' node.
     answerCopyFrom, // Correct answer of node from which the return 'box' copies value.
     answerCopyVal, // Correct value of the return 'box'.
-    odsa_head, // Stores the head node of the list
+    llist_head, // Stores the head node of the list
     orderArr = [], // Initial node ids of the JSAV list.
     listSize, // JSAV list size
     listArr = [], // Initial node elements' values for the JSAV list.
@@ -28,21 +28,6 @@
   // status = 1 : data area of the node is selected;
   // status = 2 : pointer area of the node is selected.
   // status = 3 : Label area of the pointer is clicked.
-
-  // JSAV extensions
-  //  JSAV._types.ds.ListNode.prototype.odsa_next = {};
-  //  JSAV._types.ds.ListNode.prototype.odsa_tail = {};
-  //  JSAV._types.ds.ListNode.prototype.odsa_edgeToNext = {};
-  //  JSAV._types.ds.ListNode.prototype.odsa_pleft = null;
-  //  JSAV._types.ds.ListNode.prototype.odsa_pright = null;
-
-  // Click handler for pointer
-  // JSAV._types.Pointer.prototype.click = function(fn) {
-  //   var pointer = this;
-  //   this.element.click(function() {
-  //     fn(pointer)
-  //   });
-  // };
 
   var llistRemovePRO = {
     userInput: null, // Boolean: Tells us if user ever did anything
@@ -73,7 +58,7 @@
           return;
         }
       }
-      if (newnode.odsa_pleft && newnode.odsa_pright) {
+      if (newnode.llist_pleft && newnode.llist_pright) {
         return;
       }
       var pointerRight = {
@@ -92,24 +77,24 @@
       };
 
       if (oldpointer) {
-        if (oldpointer.target().odsa_pleft === oldpointer) {
-          oldpointer.target().odsa_pleft = null;
-        } else if (oldpointer.target().odsa_pright === oldpointer) {
-          oldpointer.target().odsa_pright = null;
+        if (oldpointer.target().llist_pleft === oldpointer) {
+          oldpointer.target().llist_pleft = null;
+        } else if (oldpointer.target().llist_pright === oldpointer) {
+          oldpointer.target().llist_pright = null;
         }
         // Remove the old pointer
         oldpointer.element.remove();
         oldpointer.arrow.element.remove();
       }
 
-      if (!newnode.odsa_pleft) {
-        newnode.odsa_pleft = newnode.jsav.pointer(name, newnode, pointerLeft);
-        newnode.odsa_pleft.click(llistRemovePRO.pclick);
-        return newnode.odsa_pleft;
-      } else if (!newnode.odsa_pright) {
-        newnode.odsa_pright = newnode.jsav.pointer(name, newnode, pointerRight);
-        newnode.odsa_pright.click(llistRemovePRO.pclick);
-        return newnode.odsa_pright;
+      if (!newnode.llist_pleft) {
+        newnode.llist_pleft = newnode.jsav.pointer(name, newnode, pointerLeft);
+        newnode.llist_pleft.click(llistRemovePRO.pclick);
+        return newnode.llist_pleft;
+      } else if (!newnode.llist_pright) {
+        newnode.llist_pright = newnode.jsav.pointer(name, newnode, pointerRight);
+        newnode.llist_pright.click(llistRemovePRO.pclick);
+        return newnode.llist_pright;
       }
     },
 
@@ -150,15 +135,15 @@
         "stroke-width": 2,
       });
 
-      if (obj1.odsa_next) {
-        obj1.odsa_edgeToNext.element.remove();
+      if (obj1.llist_next) {
+        obj1.llist_edgeToNext.element.remove();
       } else {
-        obj1.odsa_tail.element.remove();
-        obj1.odsa_tail = null;
+        obj1.llist_tail.element.remove();
+        obj1.llist_tail = null;
       }
 
-      obj1.odsa_edgeToNext = edge;
-      obj1.odsa_next = obj2;
+      obj1.llist_edgeToNext = edge;
+      obj1.llist_next = obj2;
     },
 
     // Function for connecting two nodes
@@ -166,8 +151,8 @@
       if (obj1 === obj2) {
         return;
       }
-      connection(obj1, obj2);
-      obj1.odsa_next = obj2;
+      llistRemovePRO.connection(obj1, obj2);
+      obj1.llist_next = obj2;
       obj1._next = obj2;
       for (var i = 0; i < connections.length; i++) {
         if ((connections[i].from === obj1) && (connections[i].to !== obj2)) {
@@ -263,19 +248,19 @@
       var fy = top + 32;
       var ty = top + 1;
 
-      if (node.odsa_tail) {
-        node.odsa_tail.element.remove();
-        node.odsa_tail = jsav.g.line(fx, fy, tx, ty, {
+      if (node.llist_tail) {
+        node.llist_tail.element.remove();
+        node.llist_tail = jsav.g.line(fx, fy, tx, ty, {
           "opacity": 100,
           "stroke-width": 1
         });
       } else {
-        node.odsa_tail = jsav.g.line(fx, fy, tx, ty, {
+        node.llist_tail = jsav.g.line(fx, fy, tx, ty, {
           "opacity": 100,
           "stroke-width": 1
         });
       }
-      node.odsa_next = null;
+      node.llist_next = null;
     },
 
     // Click event handler of 'makenull' button.
@@ -283,9 +268,9 @@
       if (status == 2) {
         $('#' + fromNode.id() + " .jsavpointerarea:first").removeClass('bgColor');
         llistRemovePRO.addTail(fromNode);
-        if (fromNode.odsa_edgeToNext) {
-          fromNode.odsa_edgeToNext.element.remove();
-          fromNode.odsa_next = null;
+        if (fromNode.llist_edgeToNext) {
+          fromNode.llist_edgeToNext.element.remove();
+          fromNode.llist_next = null;
         }
         status = 0;
       }
@@ -342,16 +327,16 @@
 
       for (var i = 0; i < listSize; i++) {
         orderArr[i] = jsavList.get(i).id();
-        jsavList.get(i).odsa_next = jsavList.get(i).next();
-        jsavList.get(i).odsa_edgeToNext = jsavList.get(i).edgeToNext();
-        jsavList.get(i).odsa_tail = null;
+        jsavList.get(i).llist_next = jsavList.get(i).next();
+        jsavList.get(i).llist_edgeToNext = jsavList.get(i).edgeToNext();
+        jsavList.get(i).llist_tail = null;
       }
       // Add tail for the last node.
-      jsavList.get(listSize - 1).odsa_tail = llistRemovePRO.addTail(jsavList.get(listSize - 1));
+      jsavList.get(listSize - 1).llist_tail = llistRemovePRO.addTail(jsavList.get(listSize - 1));
       jsav.recorded();
       jsav.forward();
 
-      odsa_head = jsavList.get(0);
+      llist_head = jsavList.get(0);
       headNode = jsavList.get(0);
       currNode = jsavList.get(currPosition + 1);
       tailNode = jsavList.get(listSize - 1);
@@ -422,7 +407,7 @@
     // Check user's answer for correctness: User's array must match answer
     checkAnswer: function(arr_size, curr_pos) {
       var i = 1,
-        curr = odsa_head;
+        curr = llist_head;
       // Check the 'return' array
       if ((copyFrom !== answerCopyFrom) || (answerCopyVal !== jsavCopyArr.value(0))) {
         return false;
@@ -435,8 +420,8 @@
       if ((curr.value() !== answerArr[0]) || (curr.id() !== answerOrderArr[0])) {
         return false;
       }
-      while (curr.odsa_next) {
-        curr = curr.odsa_next;
+      while (curr.llist_next) {
+        curr = curr.llist_next;
         if ((curr.value() === answerArr[i]) && (curr.id() === answerOrderArr[i])) {
           i++;
         } else {

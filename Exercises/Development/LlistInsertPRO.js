@@ -1,9 +1,5 @@
 (function() {
   "use strict";
-  // JSAV extensions
-  //  JSAV._types.ds.ListNode.prototype.exe_next = {};
-  //  JSAV._types.ds.ListNode.prototype.exe_tail = {};
-  //  JSAV._types.ds.ListNode.prototype.exe_edgeToNext = {};
 
   var jsav, // The JSAV object
     answerArr = [], // The (internal) array that stores the correct answer
@@ -16,7 +12,7 @@
     // pointer area is selected, status = 2.
     newNodeGen, //
     newLinkNode, // New node
-    exe_head, // head of the list
+    llist_head, // head of the list
     connections = [], //
     fromNode, //
     toNode, //
@@ -79,14 +75,14 @@
         "opacity": 100,
         "stroke-width": 2
       });
-      if (obj1.exe_next) {
-        obj1.exe_edgeToNext.element.remove();
+      if (obj1.llist_next) {
+        obj1.llist_edgeToNext.element.remove();
       } else {
-        obj1.exe_tail.element.remove();
-        obj1.exe_tail = null;
+        obj1.llist_tail.element.remove();
+        obj1.llist_tail = null;
       }
 
-      obj1.exe_edgeToNext = edge;
+      obj1.llist_edgeToNext = edge;
     },
 
     // Function for connecting to nodes when click them
@@ -95,7 +91,7 @@
         return;
       }
       llistInsertPRO.connection(obj1, obj2);
-      obj1.exe_next = obj2;
+      obj1.llist_next = obj2;
       obj1._next = obj2;
       for (var i = 0; i < connections.length; i++) {
         if ((connections[i].from === obj1) && (connections[i].to !== obj2)) {
@@ -162,14 +158,14 @@
     },
 
     addTail: function(node) {
-      if (node.exe_tail) {
-        node.exe_tail.element.remove();
+      if (node.llist_tail) {
+        node.llist_tail.element.remove();
 
         var fx = $('#' + node.id()).position().left + 34;
         var tx = $('#' + node.id()).position().left + 44;
         var fy = $('#' + node.id()).position().top + 47 + 40;
         var ty = $('#' + node.id()).position().top + 16 + 40;
-        node.exe_tail = jsav.g.line(fx, fy, tx, ty, {
+        node.llist_tail = jsav.g.line(fx, fy, tx, ty, {
           "opacity": 100,
           "stroke-width": 1
         });
@@ -196,8 +192,8 @@
           "left": left
         });
 
-        newLinkNode.exe_next = null;
-        newLinkNode.exe_edgeToNext = null;
+        newLinkNode.llist_next = null;
+        newLinkNode.llist_edgeToNext = null;
         answerOrderArr = orderArr.slice(0);
         answerOrderArr.splice(insertPosition + 2, 0, newLinkNode.id());
 
@@ -206,7 +202,7 @@
         var x2 = left + 44;
         var y2 = top + 15 + 40;
 
-        newLinkNode.exe_tail = jsav.g.line(x1, y1,
+        newLinkNode.llist_tail = jsav.g.line(x1, y1,
           x2, y2, {
             "opacity": 100,
             "stroke-width": 1
@@ -298,13 +294,13 @@
       jsavList.addFirst("null");
       jsavList.layout();
 
-      exe_head = jsavList.get(0);
+      llist_head = jsavList.get(0);
       for (i = 0; i < listSize; i++) {
         orderArr[i] = jsavList.get(i).id();
-        jsavList.get(i).exe_next = jsavList.get(i).next();
-        jsavList.get(i).exe_edgeToNext = jsavList.get(i).edgeToNext();
+        jsavList.get(i).llist_next = jsavList.get(i).next();
+        jsavList.get(i).llist_edgeToNext = jsavList.get(i).edgeToNext();
       }
-      jsavList.get(listSize - 1).exe_tail = jsav.g.line(34 + (listSize - 1) * 74, 47 + 40,
+      jsavList.get(listSize - 1).llist_tail = jsav.g.line(34 + (listSize - 1) * 74, 47 + 40,
         44 + (listSize - 1) * 74, 16 + 40, {
           "opacity": 100,
           "stroke-width": 1
@@ -374,11 +370,11 @@
     // Check user's answer for correctness: User's array must match answer
     checkAnswer: function(arr_size) {
       var i = 0;
-      var curr = exe_head;
+      var curr = llist_head;
 
-      while (curr.exe_next) {
+      while (curr.llist_next) {
         if ((curr.value() === answerArr[i]) && (curr.id() === answerOrderArr[i])) {
-          curr = curr.exe_next;
+          curr = curr.llist_next;
           i++;
         } else {
           return false;
