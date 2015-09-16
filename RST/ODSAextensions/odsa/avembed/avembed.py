@@ -255,20 +255,13 @@ class avembed(Directive):
     if 'external_url' not in self.options:
       # Exercise does not use external source
       self.options['external'] = 'false'
-
-      if self.options['showhide'] != "none":
-        self.options['content'] = BUTTON_HTML % (self.options)
     else:
       # Exercise uses external source
       self.options['external'] = 'true'
       self.options['av_address'] = self.options['external_url']
 
-      if self.options['showhide'] == "show":
-        self.options['show_hide_text'] = langDict["hide"]
-        self.options['content'] = BUTTON_HTML % (self.options)
-      elif self.options['showhide'] == "hide":
-        self.options['show_hide_text'] = langDict["show"]
-        self.options['content'] = BUTTON_HTML % (self.options)
+    if self.options['showhide'] != "none":
+      self.options['content'] = BUTTON_HTML % (self.options)
 
     res = CONTAINER_HTML % (self.options)
 
