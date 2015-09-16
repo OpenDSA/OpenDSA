@@ -6,25 +6,25 @@
 //  JSAV._types.ds.ListNode.prototype.exe_edgeToNext = {};
 
   var jsav,                // The JSAV object
-    answerArr = [],        // The (internal) array that stores the correct answer
-    answerOrderArr = [],   // The (internal) array that stores the correct order of nodes
-    orderArr = [],         //
-    listArr = [],          //
-    jsavArr,               // Hidden JSAV array used for animation effects
-    status = 0,            // Nothing is currently selected, status = 0;
-    // Data area of the node is selected, status = 1;
-    // pointer area is selected, status = 2.
-    newNodeGen,            //
-    newLinkNode,           // New node
-    exe_head,              // head of the list
-    connections = [],      //
-    fromNode,              //
-    toNode,                //
-    jsavList,              // JSAV list
-    listSize,              // JSAV list size
-    insertPosition,        // Position to be inserted
-    insertValue,           // Value to be inserted
-    selected_node;         // Position that has been selected by user for swap
+      answerArr = [],        // The (internal) array that stores the correct answer
+      answerOrderArr = [],   // The (internal) array that stores the correct order of nodes
+      orderArr = [],         //
+      listArr = [],          //
+      jsavArr,               // Hidden JSAV array used for animation effects
+      status = 0,            // Nothing is currently selected, status = 0;
+                             // Data area of the node is selected, status = 1;
+                             // pointer area is selected, status = 2.
+      newNodeGen,            //
+      newLinkNode,           // New node
+      exe_head,              // head of the list
+      connections = [],      //
+      fromNode,              //
+      toNode,                //
+      jsavList,              // JSAV list
+      listSize,              // JSAV list size
+      insertPosition,        // Position to be inserted
+      insertValue,           // Value to be inserted
+      selected_node;         // Position that has been selected by user for swap
 
   var llistInsertPRO = {
     userInput: null,        // Boolean: Tells us if user ever did anything
