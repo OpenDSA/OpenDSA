@@ -133,7 +133,7 @@ var randomize = function (arr_size){
   var count = 0;
   var randomIndex;
   while(count < arr_size){
-    randomIndex = Math.floor((Math.random() * 10) + 2);
+    randomIndex = Math.floor(Math.random() * arr_size);
     if(answerArr.indexOf(functions[randomIndex]) == -1){
       answerArr.push(functions[randomIndex]);
       count++;
