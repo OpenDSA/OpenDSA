@@ -15,7 +15,6 @@
     ]
   },
   "module_origin": "https://trak.cs.hut.fi",
-  "score_server": "https://opendsa.cs.vt.edu/",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": true,
