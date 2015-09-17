@@ -160,7 +160,7 @@
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
-            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/450/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/874/plain/"
           },
           "AnalProgramSumm": {
             "long_name": "Program Code Analysis",
