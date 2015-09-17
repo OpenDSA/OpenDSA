@@ -15,7 +15,6 @@
     }
   },
   "lang": "en",
-  // "module_origin": "http://localhost:8000",
   "module_origin": "http://algoviz.org",
   "exercise_server": "https://ltitest.cs.vt.edu:8443",
   "logging_server": "https://ltitest.cs.vt.edu:8443",
@@ -328,7 +327,7 @@
             "points": 1,
             "threshold": 5
           },
-          "llistRemovePRO": {
+          "LlistRemovePRO": {
             "long_name": "Linked List Remove Exercise",
             "showhide": "show",
             "required": true,

@@ -67,7 +67,7 @@
     "wrap-iife": [2, "any"],
     "yoda": 2,
 
-    "strict": [1, "global"],
+    "strict": [1, "global"], // KA exercises don't properly handle globlal "use strict"
 
     "no-delete-var": 2,
     "no-label-var": 2,

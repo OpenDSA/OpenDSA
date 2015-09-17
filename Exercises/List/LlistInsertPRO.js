@@ -41,13 +41,13 @@
     // TODO: Move this to DataSructures/LinkedList.js
     // Add an edge from obj1 to obj2 in "jsav" pane
     connection: function(obj1, obj2, jsav) {
-      if (obj1 === obj2) {
-        return;
-      }
-      var fx = $("#" + obj1.id()).position().left + 37 + 2;
-      var tx = $("#" + obj2.id()).position().left + 2;
-      var fy = $("#" + obj1.id()).position().top + 15 + 16 + 40;
-      var ty = $("#" + obj2.id()).position().top + 15 + 16 + 40;
+      if (obj1 === obj2) { return; }
+      var pos1 = $("#" + obj1.id()).position();
+      var pos2 = $("#" + obj2.id()).position();
+      var fx = pos1.left + 39;
+      var tx = pos2.left + 2;
+      var fy = pos1.top + 71;
+      var ty = pos2.top + 71;
       var fx1 = fx,
           fy1 = fy,
           tx1 = tx,
@@ -119,7 +119,7 @@
           selected_node.removeClass("bgColor");
           selected_node = null;
         }
-        if (fromNode === null) {
+        if (fromNode === null) { // Newly selecting a node pointer field
           $("#" + this.id() + " .jsavpointerarea:first").addClass("bgColor");
           fromNode = this;
         } else if (this.id() === fromNode.id()) { // re-clicked pointer
@@ -132,15 +132,11 @@
         }
       } else // We are in the value part of the node
         if (fromNode !== null) { // We are connecting a pointer to this node
-          if (fromNode === this) { // Double clicked the pointer, unhighlight
-            $("#" + fromNode.id() + " .jsavpointerarea:first").removeClass("bgColor");
-            fromNode = null;
-          } else {
-            llistInsertPRO.connect(fromNode, this, av);
-            $("#" + fromNode.id() + " .jsavpointerarea:first").removeClass("bgColor");
-            $("#" + this.id()).removeClass("bgColor");
-            fromNode = null;
-          }
+          // Note that this allows a node to point to itself
+          llistInsertPRO.connect(fromNode, this, av);
+          $("#" + fromNode.id() + " .jsavpointerarea:first").removeClass("bgColor");
+          $("#" + this.id()).removeClass("bgColor");
+          fromNode = null;
         } else if (selected_node === null) { // Hightlight it for next action
           this.addClass("bgColor");
           selected_node = this;
@@ -166,7 +162,7 @@
     f_newnode: function() {
       if (newLinkNode === null) { // Do nothing if new node already exists
         newLinkNode = jsavList.newNode("null");
-        // Calculate and seet position for the new node
+        // Calculate and set position for the new node
         var left = (listSize - 1) * 73 / 2;
         var top = 60;
         newLinkNode.css({top: top, left: left});

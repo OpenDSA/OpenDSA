@@ -11,6 +11,6 @@
 Linked Lists
 ============
 
-.. avembed:: Exercises/Development/LlistInsertPRO.html ka
+.. avembed:: Exercises/List/LlistInsertPRO.html ka
 
-.. avembed:: Exercises/Development/LlistRemovePRO.html ka
+.. avembed:: Exercises/List/LlistRemovePRO.html ka
