@@ -11,9 +11,4 @@
 Math Background Summary Exercises
 =================================
 
-.. TODO::
-   :type: Exercise Fix
-
-   The summary should include the three relation exercises from SetDef
-
 .. avembed:: Exercises/Background/MathBgSumm.html ka
