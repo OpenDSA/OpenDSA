@@ -13,4 +13,4 @@ Comparison of List Implementations
 
 .. avembed:: Exercises/List/ListOverhead.html ka
 
-.. avembed:: Exercises/List/LstLnkdSumm.html ka
+.. avembed:: Exercises/List/LLSumm.html ka

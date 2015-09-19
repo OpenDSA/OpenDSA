@@ -165,7 +165,7 @@
             "points": 2.0,
             "threshold": 4
           },
-          "GrowthRates": {
+          "GrowthRatesPRO": {
             "long_name": "Growth Rates Ordering Exercise",
             "required": true,
             "points": 1.0,
@@ -442,7 +442,7 @@
             "points": 1,
             "threshold": 5
           },
-          "ArryLstSumm": {
+          "ALSumm": {
             "long_name": "Array-based List Summary",
             "required": true,
             "points": 1,
@@ -492,7 +492,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "llistInsertPRO": {
+          "LlistInsertPRO": {
             "long_name": "Linked List Insert Exercise",
             "required": true,
             "points": 1,
@@ -504,7 +504,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "llistRemovePRO": {
+          "LlistRemovePRO": {
             "long_name": "Linked List Remove Exercise",
             "required": true,
             "points": 2,
@@ -527,7 +527,7 @@
             "points": 1,
             "threshold": 3
           },
-          "LstLnkdSumm": {
+          "LLSumm": {
             "long_name": "Linked List Summary Exercise",
             "required": true,
             "points": 2,

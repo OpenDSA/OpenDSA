@@ -13,4 +13,4 @@ Comparing Algorithms
 
 .. avembed:: Exercises/AlgAnal/CompareAlgSumm.html ka 
 
-.. avembed:: Exercises/AlgAnal/GrowthRates.html ka 
+.. avembed:: Exercises/AlgAnal/GrowthRatesPRO.html ka 

@@ -66,7 +66,7 @@ They all require :math:`\Theta(1)` time.
 Now try for yourself to see if you understand how Array-Based
 Insertion and Deletion work.
  
-.. avembed:: Exercises/List/ArryLstSumm.html ka
+.. avembed:: Exercises/List/ALSumm.html ka
 
 .. odsascript:: AV/List/alistVarsCON.js
 .. odsascript:: AV/List/alistIntroCON.js

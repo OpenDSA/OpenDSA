@@ -101,7 +101,7 @@
             "points": 2.0,
             "threshold": 4
           },
-          "GrowthRates": {
+          "GrowthRatesPRO": {
             "long_name": "Growth Rates Ordering Exercise",
             "showhide": "show",
             "required": true,
@@ -308,12 +308,29 @@
             "points": 1,
             "threshold": 5
           },
-          "ArryLstSumm": {
+          "ALSumm": {
             "long_name": "Array-based List Summary",
             "showhide": "show",
             "required": true,
             "points": 1,
             "threshold": 3
+          }
+        }
+      },
+      "NewKA/ListAnalysis": {
+        "long_name": "Comparison of List Implementations",
+        "exercises": {
+          "ListOverhead": {
+            "long_name": "Break-even Point Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 3
+          },
+          "LLSumm": {
+            "long_name": "Linked List Summary Exercise",
+            "required": true,
+            "points": 2,
+            "threshold": 6
           }
         }
       },
@@ -333,25 +350,6 @@
             "required": true,
             "points": 2,
             "threshold": 5
-          }
-        }
-      },
-      "NewKA/ListAnalysis": {
-        "long_name": "Comparison of List Implementations",
-        "exercises": {
-          "ListOverhead": {
-            "long_name": "Breakeven Point Exercise",
-            "showhide": "show",
-            "required": true,
-            "points": 1,
-            "threshold": 3
-          },
-          "LstLnkdSumm": {
-            "long_name": "Linked List Summary Exercise",
-            "showhide": "show",
-            "required": true,
-            "points": 2,
-            "threshold": 6
           }
         }
       },
