@@ -159,11 +159,11 @@
       "AlgAnal/AnalIntro": {
         "long_name": "Comparing Algorithms",
         "exercises": {
-          "CompareAlgSumm": {
+          "CompareGrowth": {
             "long_name": "Comparing Growth Rates Exercise",
             "required": true,
             "points": 2.0,
-            "threshold": 4
+            "threshold": 3
           },
           "GrowthRatesPRO": {
             "long_name": "Growth Rates Ordering Exercise",
