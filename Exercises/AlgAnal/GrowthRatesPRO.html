@@ -58,26 +58,26 @@ Written by Mohammed Farghally and Cliff Shaffer
             <div class="validator-function">
               if (!growthRatesPRO.checkAnswer(arr_size) && !guess[0])
               return ""; // User did not click, and correct answer is not
-              // initial array state
+                         // the initial array state
               else return growthRatesPRO.checkAnswer(arr_size);
             </div>
           </div>
           <div class="hints">
-            <p>Focus on the exponent.</p>
             <p>Constant terms never matter, so ignore something like multiplying by 9.</p>
-            <p>Generally, things that are only logs go first.</p>
-	    <p>Note that <code>\log \log n</code> (taking the log of
+            <p>Focus on the exponent.</p>
+            <p>Generally, things that are only logs go first.
+	     Note that <code>\log \log n</code> (taking the log of
 	     <code>\log n</code>) grows slower than
 	     <code>\log^2 n</code> (multiplying <code>\log n</code> by itself).</p>
             <p>Generally, constant powers of <code>n</code> come after
-              things with only log factors.</p>
-	    <p>Even a small constant power of <code>n</code> grows
+              things with only log factors.
+	      Even a small constant power of <code>n</code> grows
               faster than things with only
               logs. So <code>\sqrt{n}</code> grows faster
               than <code>\log^3 n</code>.</p>
             <p>Generally, things with some function of <code>n</code>
-              in the exponent go last. These are called "exponentials".</p>
-            <p> Of the exponentials, just see what has the biggest
+              in the exponent go last. These are called "exponentials".
+              Of the exponentials, just see what has the biggest
               function in the exponent. For example,
               since <code>\sqrt{n}</code> grows faster than
               <code>\log n</code>, then <code>2^\sqrt{n}</code> grows faster
