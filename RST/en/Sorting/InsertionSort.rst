@@ -36,8 +36,12 @@ already processed.
 Here is an implementation.
 The input is an array named ``A`` that stores :math:`n` records.
 
+.. _introduction:
+
 .. codeinclude:: Sorting/Insertionsort
    :tag: Insertionsort
+   
+.. _practice:
 
 (Note that to make the explanation for these sorting algorithms as
 simple as possible, our visualizations will show the array as though
@@ -51,16 +55,22 @@ associate a key value with a record.
 The sorting algorithms will simply assume that the records are
 :term:`comparable`.)
 
+.. _explanation:
+
 Here is the start to the Insertion Sort process.
 
 .. inlineav:: insertionsortS1CON ss
    :output: show
+   
+.. _banana:
 
 Next, process the record in position 2.
 Swap it to the left until it reaches a value smaller than it is.
 
 .. inlineav:: insertionsortS2CON ss
    :output: show
+   
+.. _foo:
 
 And now the record in position 3.
 

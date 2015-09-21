@@ -129,6 +129,9 @@ CS2401: min
 
 CS3114: min
 	python $(CONFIG_SCRIPT) config/CS3114.json
+    
+CS3114_rev: min
+	python $(CONFIG_SCRIPT) config/CS3114_rev.json
 
 CS3114AM: min
 	python $(CONFIG_SCRIPT) config/CS3114AM.json

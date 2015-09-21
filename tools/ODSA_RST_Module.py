@@ -297,6 +297,8 @@ class ODSA_RST_Module:
              break
 
         line = mod_data[i].strip()
+        next_line =  mod_data[i+1].strip() if i+1 < len(mod_data) else ''
+        is_chapter = next_line == "="*len(line) or next_line == "-"*len(line)
 
         # Determine the type of directive
         dir_type = get_directive_type(line)

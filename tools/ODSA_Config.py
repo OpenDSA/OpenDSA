@@ -150,8 +150,8 @@ def validate_module(mod_name, module, conf_data):
     """Validate a module object"""
     global error_count
 
-    required_fields = ['exercises']
-    optional_fields = ['codeinclude', 'dispModComp', 'long_name', 'mod_options', 'sections']
+    required_fields = []
+    optional_fields = ['codeinclude', 'dispModComp', 'long_name', 'mod_options', 'sections', 'exercises']
 
     # Get module name
     get_mod_name(mod_name)

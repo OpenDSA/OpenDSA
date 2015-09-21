@@ -398,6 +398,9 @@ def configure(config_file_path, options):
     # modules
     initialize_output_directory(config)
     generate_index_rst(config, slides)
+    
+    
+    sys.exit()
 
     # Print out a list of any exercises found in RST files that do not appear
     # in the config file

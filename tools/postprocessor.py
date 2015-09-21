@@ -205,11 +205,11 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   TAGS = [ ('script', 'src'), ('link', 'href'), ('img', 'src'), ('a', 'href') ]
   
   # KILL MATHJAX
-  '''Helpful for debugging, because MathJax takes forever to load
+  '''Helpful for debugging, because MathJax takes forever to load'''
   for possible_math_jax in soup.find_all('script'):
     if possible_math_jax.has_attr('src') and possible_math_jax['src'].startswith('//cdn.mathjax.org/mathjax'):
       possible_math_jax.extract()
-  '''
+  
   
   # Find all of the scripts, links, images, etc. that we might need
   for tag_name, tag_url in TAGS+[('div', 'data-frame-src')]:
@@ -342,16 +342,22 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
       #print "\t\tNew Subsection"
       for parent, body in subsection_div:
         #print "\t\t\tBody:", type(body)
-        new_slide.append( (parent, body) )
-        # If we find a slideshow or practice exercise, then start a new fragment
+        # If we find a slideshow or practice exercise, then make it its own fragment
         if isinstance(body, element.Tag) and body.has_attr('id'):
           name = body['id']
           if body['id'] in exercises and 'points' in exercises[body['id']]:
             #print "\t\t\t\tFound exercise:", name
+            # Finish off this slide
             slides.append((name, new_slide))
+            # Make a new slide, append in the content
+            new_slide = [(parent, body)]
+            slides.append((name, new_slide))
+            # And now start a new slide
             new_slide = []
             total_exercises += 1
             found.append(name)
+        else:
+          new_slide.append( (parent, body) )
       # Anything after that exercise gets placed in a trailing slide
       #     before we move onto the next subsection
       if new_slide and parent != previous_parent:
