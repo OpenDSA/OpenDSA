@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html data-require="math">
-<head>
-  <title>OpenDSA  List Linked Exercise: Same Nodes</title>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
-  <script src="../../khan-exercises/local-only/main.js" ></script>
+  <head>
+    <title>OpenDSA  List Linked Exercise: Same Nodes</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
 
-</head>
-
-<body>
-<div class="exercise">
-  <div class="problems">
-    <div id="problem-type-or-description">
-      <p class="question">Which boolean expression indicates whether
-      the values for nodes p and q are the same? Assume that neither p
-      nor q is null.</p>
-      <div class="solution"><var>"p.element == q.element"</var></div>
-      <ul class="choices">
-	<li><var>"p == q"</var></li>
-	<li><var>"p.next == q.next"</var></li>
-	<li><var>"None of the above."</var></li>
-      </ul>
-      <div class="hints">
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="question">Which boolean expression indicates whether
+            the values for the nodes pointed to by p and q are the
+            same? Assume that neither p nor q is null.</p>
+          <div class="solution">p.element() == q.element()</div>
+          <ul class="choices">
+            <li>p.element == q.element</li>
+            <li>p.e == q.e</li>
+            <li>p == q</li>
+            <li>p.next == q.next</li>
+            <li>None of these</li>
+          </ul>
+          <div class="hints">
+            <p>It does us no good to compare pointers.</p>
+            <p>We have to compare the field in each node that contains
+              the value.</p>
+            <p>But remember that we get to a field of a node by
+              calling a method to return that field's value</p>
+          </div>
+        </div>
       </div>
-    </div> 
-  </div>
-</div>
-</body>
+    </div>
+  </body>
 </html>

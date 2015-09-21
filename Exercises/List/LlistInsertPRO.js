@@ -201,7 +201,7 @@
     },
 
     // reset function definition
-    f_reset: function() {
+    reset: function() {
       var i;
 
       llistInsertPRO.userInput = false;
@@ -276,7 +276,7 @@
       answerArr[size - 1] = "null";
       listArr = answerArr.slice(0);
 
-      llistInsertPRO.f_reset();
+      llistInsertPRO.reset();
 
       // correct answer
       answerArr.splice(insertPosition + 1, 0, insertValue);
@@ -292,7 +292,7 @@
 
       // Set up handler for reset button
       $("#reset").click(function() {
-        llistInsertPRO.f_reset();
+        llistInsertPRO.reset();
       });
     },
 

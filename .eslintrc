@@ -58,7 +58,7 @@
     "no-sequences": 2,
     "no-throw-literal": 2,
     "no-unused-expressions": [2, { "allowShortCircuit": true, "allowTernary": true }],
-    "no-useless-call": 2,
+    "no-useless-call": 1,
     "no-useless-concat": 2,
     "no-void": 2,
     "no-warning-comments": [0, { "location": "anywhere" }],

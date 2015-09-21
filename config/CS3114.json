@@ -586,7 +586,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "LstSumm": {
+          "ListSumm": {
             "long_name": "List Summary Questions",
             "required": true,
             "points": 1,

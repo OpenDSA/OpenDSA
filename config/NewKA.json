@@ -279,18 +279,6 @@
           }
         }
       },
-      "NewKA/ListADTPROGQ1": {
-        "long_name": "ListADTPROGQ1",
-        "exercises": {
-          "ListADTPROGQ1": {
-            "long_name": "ListADTPROGQ1",
-            "required": true,
-            "points": 1.0,
-            "showhide": "show",
-            "threshold": 5
-          }
-        }
-      },
       "NewKA/ListArray": {
         "long_name": "Array-based Lists",
         "exercises": {
@@ -356,7 +344,7 @@
       "NewKA/ListElement": {
         "long_name": "List Element Implementations",
         "exercises": {
-          "LstSumm": {
+          "ListSumm": {
             "long_name": "List Summary Questions",
             "showhide": "show",
             "required": true,

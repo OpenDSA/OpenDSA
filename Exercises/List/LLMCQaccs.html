@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html data-require="math">
-<head>
-  <title>OpenDSA  List Linked Exercise: Access Node i </title>
+  <head>
+    <title>OpenDSA  List Linked Exercise: Access Node i </title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
 
-  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-</head>
-
-<body>
-<div class="exercise">
-  <div class="problems">
-    <div id="problem-type-or-description">
-      <p class="question">To access the node at
-      position <code>i</code> in a singly-linked list</p>
-      <div class="solution"><var>"requires that all its predecessors be visited"</var></div>
-      <ul class="choices">
-	<li><var>"takes one  step"</var> </li>
-        <li><var>"takes two steps"</var> </li>
-	<li><var>"requires that all its successors be visited"</var></li>
-      </ul>
-      <div class="hints">
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="question">To access the node at
+            position <code>i</code> in a singly-linked list</p>
+          <div class="solution">requires that all its predecessors be visited</div>
+          <ul class="choices">
+            <li>takes one step</li>
+            <li>takes two steps</li>
+            <li>requires that all its successors be visited</li>
+          </ul>
+          <div class="hints">
+            <p>How can we reach the <code>i</code>th position?</p>
+            <p>We have to work from the front.</p>
+          </div>
+        </div>
       </div>
-    </div> 
-  </div>
-</div>
-</body>
+    </div>
+  </body>
 </html>

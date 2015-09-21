@@ -13,6 +13,6 @@
 Stacks
 ======
 
-.. avembed:: Exercises/List/astackPushPRO.html ka
+.. avembed:: Exercises/List/AstackPushPRO.html ka
 
-.. avembed:: Exercises/List/astackPopPRO.html ka
+.. avembed:: Exercises/List/AstackPopPRO.html ka

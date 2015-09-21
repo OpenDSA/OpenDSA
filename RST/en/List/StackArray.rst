@@ -80,9 +80,9 @@ array should represent the top of the stack.
 .. inlineav:: astackPopCON ss
    :output: show
    
-.. avembed:: Exercises/List/astackPushPRO.html ka
+.. avembed:: Exercises/List/AstackPushPRO.html ka
 
-.. avembed:: Exercises/List/astackPopPRO.html ka
+.. avembed:: Exercises/List/AstackPopPRO.html ka
 
 .. odsascript:: AV/List/astackVarCON.js
 .. odsascript:: AV/List/astackTopCON.js

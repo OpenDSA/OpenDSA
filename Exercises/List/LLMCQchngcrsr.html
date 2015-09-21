@@ -4,9 +4,7 @@
   <title>OpenDSA List Linked Exercise: Cursor Change </title>
   <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
   <script src="../../khan-exercises/local-only/main.js" ></script>
-
 </head>
-
 
 <body>
 <div class="exercise">
@@ -15,13 +13,15 @@
       <p class="question">Suppose cursor points to a node in a linked
       list. Which statement changes cursor so that it points to the
       next node? </p>
-      <div class="solution"><var>"cursor = cursor.next;"</var></div>
+      <div class="solution">cursor = cursor.next();</div>
       <ul class="choices">
-        <li><var>"cursor++;"</var></li>
-        <li><var>"cursor = next;"</var></li>
-        <li><var>"cursor += next;"</var></li>
+        <li>cursor++;</li>
+        <li>cursor = next();</li>
+        <li>cursor += next;</li>
       </ul>
       <div class="hints">
+        <p>We have to access a field of the node being pointed to.</p>
+        <p>Only one of these statements does that.</p>
       </div>
     </div> 
   </div>

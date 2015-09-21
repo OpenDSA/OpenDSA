@@ -1,0 +1,66 @@
+<!--
+    Array-Based Stacks Push Proficiency Exercise.
+    Written by Junyang Chen and Cliff Shaffer
+  -->
+
+<!DOCTYPE html>
+<html data-require="jsav math AstackPushPRO">
+  <head>
+    <title>Array-Based Stack Push Proficiency Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #AstackPushPRO .jsavcanvas {
+        height: 115px;
+      }
+    </style>
+  </head>
+
+  <body data-height="780" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="max_size">randRange(6, 8)</var>
+        <var id="arr_size">randRange(0, max_size - 2)</var>
+        <var id="insert_value">randRange(0, 999)</var>
+        <var id="JSAV">astackPushPRO.initJSAV(max_size, arr_size, insert_value)</var>
+      </div>
+      <div class="problems">
+        <div id="AstackPushPROp"> <!-- Supresses answer box -->
+          <p class = "problem">Your task in this exercise is to show the
+            behavior for the array-based stack's push operation.
+            In the array displayed below, the "top" position
+            is <b><var>arr_size</var></b>.</p>
+          <div class="question">
+            <p>Push <b><var>insert_value</var></b> onto the stack.</p>
+            <p>Click on a value of the stack to highlight it, then click
+              on the "Insert" button to insert
+              <b><var>insert_value</var></b> to the highlighted position.</p>
+            <p>To change the value of "top", click on a cell in the
+              array to highlight it, then click "Set Top".</p>
+            <input id="reset" type="button" value="Reset" />
+            <input id="insert" type="button" value="Insert" />
+            <input id="top" type="button" value="Set Top" />
+            <div id="AstackPushPRO" class="jsavcanvas"></div>
+          </div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [astackPushPRO.userInput] </div>
+            <div class="validator-function">
+              if (!astackPushPRO.checkAnswer(max_size, arr_size) && !guess[0]) {
+                return "";  // User did not click, and correct answer is not
+                            // initial array state
+              } else { return astackPushPRO.checkAnswer(max_size, arr_size); }
+            </div>
+          </div>
+          <div class="hints">
+            <p>If the index of "top" is greater than or equal to array
+              size, then the stack is full and nothing can be added. In
+              this case, just click "check answer".</p>
+            <p>Otherwise, the first step would be to insert a value into the
+              "top" position of the stack.</p>
+            <p>Finally, increase the "top" index by 1.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

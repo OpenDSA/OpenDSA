@@ -35,7 +35,7 @@
     },
 
     // reset function definition
-    f_reset: function() {
+    reset: function() {
       if (jsavArr) { jsavArr.clear(); }
       jsavArr = av.ds.array(cloneArr, {indexed: false, center: false, left: -5});
       // Bind the clickHandler to handle click events on the array
@@ -74,13 +74,10 @@
       av.recorded();
 
       growthRatesPRO.randomize(arr_size, functions.length);
-
-      growthRatesPRO.f_reset();
+      growthRatesPRO.reset();
 
       // Set up handler for reset button
-      $("#reset").click(function() {
-        growthRatesPRO.f_reset();
-      });
+      $("#reset").click(function() { growthRatesPRO.reset(); });
     },
 
     // Check student's answer for correctness: User's array must match answer

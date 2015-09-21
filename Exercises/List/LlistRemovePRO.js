@@ -239,7 +239,7 @@
     },
 
     // Reinitialize the exercise.
-    f_reset: function() {
+    reset: function() {
       // JSAV-List position.
       var leftMargin = 36,
           topMargin = 50;
@@ -338,7 +338,7 @@
       // Make a copy
       listArr = answerArr.slice(0);
 
-      llistRemovePRO.f_reset();
+      llistRemovePRO.reset();
 
       // correct answer of array values.
       if (currPosition !== listSize - 2) {
@@ -350,7 +350,7 @@
       });
       // Set up handler for reset button
       $("#reset").click(function() {
-        llistRemovePRO.f_reset();
+        llistRemovePRO.reset();
       });
     },
 

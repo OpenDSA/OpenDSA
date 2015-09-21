@@ -34,7 +34,7 @@
             In the array displayed below, the "current" position is
             <b><var>insert_pos</var></b>.</p>
           <div class="question">
-            <p>The value to insert is  <b><var>insert_value</var></b>,
+            <p>The value to insert is <b><var>insert_value</var></b>,
               and it is to be inserted into the "current" position.</p>
             <p>To move an element, click on it (to highlight it), then
               click on where you want it to go. You can insert the new
@@ -47,10 +47,10 @@
           <div class="solution" data-type="custom">
             <div class="guess"> [alistInsertPRO.userInput] </div>
             <div class="validator-function">
-              if (!alistInsertPRO.checkAnswer(arr_size) && !guess[0]) {
+              if (!alistInsertPRO.checkAnswer() && !guess[0]) {
                 return ""; // User did not click, and correct answer is not
                            // initial array state
-              } else { return alistInsertPRO.checkAnswer(arr_size); }
+              } else { return alistInsertPRO.checkAnswer(); }
             </div>
           </div>
           <div class="hints">

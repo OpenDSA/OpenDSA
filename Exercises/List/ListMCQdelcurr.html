@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math">
   <head>
-    <title>OpenDSA  List Linked Exercise: Delete Current</title>
+    <title>OpenDSA List Exercise: Delete Current</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
   </head>
@@ -10,8 +10,9 @@
     <div class="exercise">
       <div class="problems">
         <div id="problem-type-or-description">
-          <p class="question">Given a linked list implementation, deleting
-            the current element takes how long in the average case?</p>
+          <p class="question">Given a doubly linked list implementation,
+            removing the current element takes how long in the average
+            case?</p>
           <div class="solution"><code>\Theta(1)</code> time</div>
           <ul class="choices">
             <li><code>\Theta(n)</code> time</li>
@@ -19,10 +20,8 @@
             <li><code>\Theta(n \log n)</code> time</li>
           </ul>
           <div class="hints">
-            <p>Normally in a linked list, the bottleneck is reaching
-              the node in question.</p>
-            <p>If we are already at the node that we want to delete,
-              then its just a couple of changes to make to delete the node.</p>
+            <p>If you are already at the node that you want to remove,
+              then all that needs to be done is to update a few pointers.</p>
           </div>
         </div>
       </div>

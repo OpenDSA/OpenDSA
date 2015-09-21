@@ -1,0 +1,63 @@
+<!--
+    Array-Based Stacks Pop Proficiency Exercise.
+    Written by Junyang Chen and Cliff Shaffer
+  -->
+
+<!DOCTYPE html>
+<html data-require="jsav math AstackPopPRO LinkList">
+  <head>
+    <title>Array-Based Stack Pop Proficiency Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #AstackPopPRO .jsavcanvas {
+        height: 115px;
+      }
+    </style>
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="max_size">randRange(6, 8)</var>
+        <var id="arr_size">randRange(0, max_size - 1)</var>
+        <var id="insert_value">randRange(0, 999)</var>
+        <var id="JSAV">astackPopPRO.initJSAV(max_size, arr_size, insert_value)</var>
+      </div>
+      <div class="problems">
+        <div id="AstackPopPROp> <!-- Supresses answer box -->
+          <p class="problem">Your task in this exercise is to show the
+            behavior for the array-based stack's pop operation.
+            In the array displayed below, the "top" position
+            is <b><var>arr_size </var></b>.</p>
+          <div class="question">
+            <p>You can copy a value from the stack to the "return" box by
+              first clicking on the value in the stack, then clicking on the
+              "return" box.</p>
+            <p>To change the value of "top", click on a cell in the
+              array to highlight it, then click "Set Top".</p>
+            <input id="reset" type="button" value="Reset" />
+            <input id="top" type="button" value="Set Top" />
+            <div id="AstackPopPRO" class="jsavcanvas"></div>
+          </div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [astackPopPRO.userInput] </div>
+            <div class="validator-function">
+              if (!astackPopPRO.checkAnswer(max_size, arr_size) && !guess[0]) {
+                return ""; // User did not click, and correct answer is not
+                           // initial array state
+              } else { return astackPopPRO.checkAnswer(max_size, arr_size); }
+            </div>
+          </div>
+          <div class="hints">
+            <p>If the index of "top" is 0, then the stack is empty and
+              nothing can be pop'ed. In this case, just click "check answer".</p>
+            <p>Otherwise, the first step would be to copy the top value into the
+              "return" box.</p>
+            <p>Finally, decrease the "top" index by 1.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

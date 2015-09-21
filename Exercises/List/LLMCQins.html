@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html data-require="math">
-<head>
-  <title>OpenDSA List Linked Exercise: Insertion</title>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
-  <script src="../../khan-exercises/local-only/main.js" ></script>
+  <head>
+    <title>OpenDSA List Linked Exercise: Insertion</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
 
-</head>
-
-<body>
-<div class="exercise">
-  <div class="problems">
-    <div id="problem-type-or-description">
-      <p class="question">In the linked list, where does the insert
-      method place the new entry?</p>
-      <div class="solution"><var>"At the current position" </var> </div>
-      <ul class="choices">
-	<li><var>"At the head" </var></li>
-	<li><var>"At the rear" </var></li>
-	<li><var>" After all other entries that are greater than the new entry"</var></li>
-        <li><var>" After all other entries that are smaller than the new entry"</var></li>
-      </ul>
-      <div class="hints">
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="question">In the linked list, where does the insert
+            method place the new entry?</p>
+          <div class="solution">At the current position</div>
+          <ul class="choices">
+            <li>At the head</li>
+            <li>At the rear</li>
+            <li>After all other entries that are greater than the new entry</li>
+            <li>After all other entries that are smaller than the new entry</li>
+          </ul>
+          <div class="hints">
+            <p>We must be able to insert new values where we want
+              them, so the insert method cannot always put the new node
+              at the head or rear.</p>
+            <p>Our linked list does not need to be sorted, and we can,
+              in princple, insert anywhere.</p>
+          </div>
+        </div>
       </div>
-    </div> 
-  </div>
-</div>
-</body>
+    </div>
+  </body>
 </html>
