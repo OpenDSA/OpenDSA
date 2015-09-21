@@ -6,11 +6,6 @@
       listArr = [],       // Stores the jsav list values
       ptop,               // pointer top
       selected_pointer,   // pointer that is clicked, which will always be ptop here.
-      status = 0,         // Nothing is currently selected, status = 0;
-                          // List node is selected, status = 1;
-                          //   selected_node !== -1
-                          // pointer top is selected, status = 2.
-                          //   selected_pointer !== null
       arrReturn,          //
       copyFrom,           //
       jsavList,           // JSAV list
@@ -29,8 +24,6 @@
       if (selected_pointer !== null) { // Unselecting the pointer
         selected_pointer.element.removeClass("highlight");
         selected_pointer = null;
-        status = 0;
-        lstackPopPRO.userInput = true;
       } else { // Selecting the top poiner
         selected_pointer = pointer;
         selected_pointer.element.toggleClass("highlight");
@@ -52,7 +45,7 @@
       if (selected_node !== null) { // Deal with old highlight
         if (selected_node === this) { // Deselecting this node
           this.unhighlight();
-          status = 0;
+          selected_node = null;
         } else {
           selected_node.unhighlight();
           selected_node = this;
@@ -73,7 +66,7 @@
     addTail: function(node) {
       if (node.odsa_tail) {
         node.odsa_tail.element.remove();
-        var pos = $("#" + node.id()).position(); 
+        var pos = $("#" + node.id()).position();
         var fx = pos.left + 34;
         var tx = pos.left + 44;
         var fy = pos.top + 47 + 40;

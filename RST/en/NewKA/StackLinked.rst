@@ -11,6 +11,6 @@
 Linked Stacks
 =============
 
-.. avembed:: Exercises/List/lstackPushPRO.html ka
+.. avembed:: Exercises/List/LstackPushPRO.html ka
 
-.. avembed:: Exercises/List/lstackPopPRO.html ka
+.. avembed:: Exercises/List/LstackPopPRO.html ka
