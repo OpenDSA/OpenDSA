@@ -4,14 +4,14 @@
   -->
 
 <!DOCTYPE html>
-<html data-require="jsav math LstackPopPRO" LinkList>
+<html data-require="jsav math LstackPopPRO LinkList">
   <head>
     <title>List-based Stack Pop Proficiency Exercise</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
       #LstackPopPRO .jsavcanvas {
-        height: 170px;
+        height: 190px;
       }
       #LstackPopPRO .bgColor{
         font-size: 130%;
@@ -47,16 +47,16 @@
           <div class="solution" data-type="custom">
             <div class="guess"> [lstackPopPRO.userInput] </div>
             <div class="validator-function">
-              if (!lstackPopPRO.checkAnswer(arr_size) && !guess[0]) {
+              if (!lstackPopPRO.checkAnswer() && !guess[0]) {
                 return ""; // User did not click, and correct answer is not
                            // initial array state
-              } else { return lstackPopPRO.heckAnswer(arr_size); }
+              } else { return lstackPopPRO.checkAnswer(); }
             </div>
           </div>
           <div class="hints">
             <p>You first want to pop off the value where "top" is
               pointing.</p>
-            <p>Click on the node with value <var>insert_value</var>. Then
+            <p>Click on the first node in the list. Then
               click the box marked "return".</p>
             <p>Next, update the top pointer. Click on "top" and then click
               the second node on the linked list.</p>
