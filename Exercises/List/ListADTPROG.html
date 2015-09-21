@@ -44,12 +44,15 @@ void exercise1(List L) {
           <div class="solution" data-type="custom">
             <div class="guess"> [editor.getValue()] </div>
             <div class="validator-function">
-              window.codeValue = guess[0];
-              window.progexType= "list";
-              window.summexName= "ListADTPROG";
-              window.generatedList = "< " + listel1 + " " + listel2
-                                     + " | " + listel3 + " " +listel4 + " >";
-              //return "";
+              if (editor.getValue() != initEditor) {
+                console.log(editor.getValue());
+                window.codeValue = guess[0];
+                window.progexType = "list";
+                window.summexName = "ListADTPROG";
+                window.generatedList = "< " + listel1 + " " + listel2 + " | " + listel3 + " " + listel4 + " >";
+              } else {
+                return "";
+              }
             </div>
           </div>
           <div class="hints"></div>
