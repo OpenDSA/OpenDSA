@@ -1,0 +1,16 @@
+#problemarea {
+  width: 75%;
+}
+
+#answer_area_wrap {
+    width: 23%;
+}
+
+div.exercises-card {
+    width: 850px;
+}
+
+.exercises-stack,
+.exercises-card {
+  width: 4%;
+}
