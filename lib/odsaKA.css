@@ -14,3 +14,7 @@ div.exercises-card {
 .exercises-card {
   width: 4%;
 }
+
+#solutionarea {
+  min-height: 0;
+}
