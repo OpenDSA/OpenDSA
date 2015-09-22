@@ -11,5 +11,3 @@ Algorithm Analysis Summary Exercises
 ====================================
 
 .. avembed:: Exercises/AlgAnal/AlgAnalCS2114Summ.html ka
-
-.. avembed:: Exercises/AlgAnal/AlgAnalSumm.html ka

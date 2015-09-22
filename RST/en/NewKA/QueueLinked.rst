@@ -3,7 +3,7 @@
 .. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
    :author: Cliff Shaffer
    :satisfies: linked queue
    :topic: Lists
@@ -11,8 +11,8 @@
 Linked Queues
 =============
 
-.. avembed:: Exercises/List/lqueueEnqueuePRO.html ka
+.. avembed:: Exercises/List/LqueueEnqueuePRO.html ka
 
-.. avembed:: Exercises/List/lqueueDequeuePRO.html ka
+.. avembed:: Exercises/List/LqueueDequeuePRO.html ka
 
 .. avembed:: Exercises/List/StckQSumm.html ka

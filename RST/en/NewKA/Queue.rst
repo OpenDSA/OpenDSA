@@ -13,6 +13,6 @@
 Queues
 ======
 
-.. avembed:: Exercises/List/aqueueEnqueuePRO.html ka
+.. avembed:: Exercises/List/AqueueEnqueuePRO.html ka
 
 .. avembed:: Exercises/List/AqueueDequeuePRO.html ka
