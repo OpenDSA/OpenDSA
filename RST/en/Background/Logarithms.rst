@@ -78,7 +78,19 @@ constant factors in costs.
 Property (4) says that such analyses need not be concerned with the
 base of the logarithm, because this can change the total cost only by
 a constant factor.
-Note that :math:`2^{\log n} = n`.
+
+A useful identity to know is:
+
+.. math::
+
+   2^{\log n} = n
+
+To give some intuition for why this is true:
+What does it mean to take the log (base 2) of :math:`n`?
+If :math:`\log_2 n = x`, then :math:`x` is the power to which you need
+to raise 2 to get back to :math:`n`.
+So of course, :math:`2^{\log n} = n` when the base of the log is 2.
+
 
 When discussing logarithms, exponents often lead to confusion.
 Property (3) tells us that :math:`\log n^2 = 2 \log n`.

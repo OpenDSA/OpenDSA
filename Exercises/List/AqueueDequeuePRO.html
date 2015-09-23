@@ -9,18 +9,16 @@ Written by Junyang Chen and Cliff Shaffer
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
-    .jsavcanvas{
-    height: 350px;
-    }
-    #reset {
-    margin-right: 20px;
-    }
-    .highlight{
-    background-color: yellow;
-    }
+      #AqueueDequeuePRO .jsavcanvas{
+        height: 320px;
+      }
+      #AqueueDequeuePRO .highlight{
+        background-color: yellow;
+      }
     </style>
   </head>
-  <body data-height="700" data-width="950">
+
+  <body data-height="820" data-width="950">
     <div class="exercise">
       <div class="vars">
         <var id="maxSize">randRange(5, 10)</var>
@@ -30,11 +28,13 @@ Written by Junyang Chen and Cliff Shaffer
       </div>
       <div class="problems">
         <div id="AqueueDequeuePROp"> <!-- Supresses answer box -->
-        <p class="problem">
-          <div class="question">
-            <div class="question"><p>Show how the Dequeue operation works by
-              selecting an element to remove, and update
+          <p class="problem">Show how the dequeue operation works by
+            selecting an element to remove, and update
             "rear" and "front" if appropriate.</p>
+          <div class="question">
+            <p>To remove a value from the queue, just click on it. To
+              move "front" or "rear", click it, then click the desired
+              position in the queue.</p>
             <input id="reset" type="button" value="Reset" />
             <div id="AqueueDequeuePRO" class="jsavcanvas"></div>
           </div>
@@ -43,13 +43,19 @@ Written by Junyang Chen and Cliff Shaffer
               [aqueueDequeuePRO.userInput]
             </div>
             <div class="validator-function">
-              if (!aqueueDequeuePRO.checkAnswer(maxSize) && !guess[0])
-              return ""; // User did not click, and correct answer is not
-              // initial array state
-              else return aqueueDequeuePRO.checkAnswer(maxSize);
+              if (!aqueueDequeuePRO.checkAnswer(maxSize) && !guess[0]) {
+                return ""; // User did not click, and correct answer is not
+                           // initial array state
+              } else { return aqueueDequeuePRO.checkAnswer(maxSize); }
             </div>
           </div>
           <div class="hints">
+            <p>We always remove from the front value. So click on
+              the element that "front" points to.</p>
+            <p>We have to update "front" by moving it one step
+              clockwise.</p>
+            <p>If there is nothing to remove, then just click
+              "check answer".</p>
           </div>
         </div>
       </div>

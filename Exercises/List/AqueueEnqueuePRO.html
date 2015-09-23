@@ -1,7 +1,7 @@
 <!--
-Array-Based Queue Enqueue Proficiency Exercise.
-Written by Junyang Chen and Cliff Shaffer
--->
+    Array-Based Queue Enqueue Proficiency Exercise.
+    Written by Junyang Chen and Cliff Shaffer
+  -->
 <!DOCTYPE html>
 <html data-require="jsav math AqueueEnqueuePRO CircularQueue">
   <head>
@@ -9,16 +9,15 @@ Written by Junyang Chen and Cliff Shaffer
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
-    .jsavcanvas{
-    height: 350px;
-    }
-    #reset { margin-right: 20px;}
-    .highlight{
-    background-color: yellow;
-    }
+      #AqueueEnqueuePRO .jsavcanvas {
+        height: 320px;
+      }
+      #AqueueEnqueuePRO .highlight {
+        background-color: yellow;
+      }
     </style>
   </head>
-  <body data-height="700" data-width="950">
+  <body data-height="830" data-width="950">
     <div class="exercise">
       <div class="vars">
         <var id="maxSize">randRange(5, 10)</var>
@@ -29,29 +28,37 @@ Written by Junyang Chen and Cliff Shaffer
       </div>
       <div class="problems">
         <div id="AqueueEnqueuePROp"> <!-- Supresses answer box -->
-        <p class="problem">
-          <div class="question"><p>Show how the enqueue operation works by
-            selecting a position for where the new item goes, and update
-          "rear" and "front" if appropriate.</p>
-          <input id="reset" type="button" value="Reset" />
-          <input id="insert" type="button" value="Insert" />
-          <div id="AqueueEnqueuePRO" class="jsavcanvas"></div>
-        </div>
-        <div class="solution" data-type="custom">
-          <div class="guess">
-            [aqueueEnqueuePRO.userInput]
-          </div>
-          <div class="validator-function">
-            if (!aqueueEnqueuePRO.checkAnswer(maxSize) && !guess[0])
-            return ""; // User did not click, and correct answer is not
-            // initial array state
-            else return aqueueEnqueuePRO.checkAnswer(maxSize);
-          </div>
-        </div>
-        <div class="hints">
+          <p class="problem">Show how the enqueue operation works by
+                selecting a position for where the new item goes, and update
+                "rear" and "front" if appropriate.</p>
+            <div class="question">
+            <p>To insert a value into the queue, first click on it and
+              then click "Insert". To move "front" or "rear", click
+              it, then click the desired position in the queue.</p>
+              <input id="reset" type="button" value="Reset" />
+              <input id="insert" type="button" value="Insert" />
+              <div id="AqueueEnqueuePRO" class="jsavcanvas"></div>
+            </div>
+            <div class="solution" data-type="custom">
+              <div class="guess">
+                [aqueueEnqueuePRO.userInput]
+              </div>
+              <div class="validator-function">
+                if (!aqueueEnqueuePRO.checkAnswer(maxSize) && !guess[0]) {
+                  return ""; // User did not click, and correct answer is not
+                             // initial array state
+                } else { return aqueueEnqueuePRO.checkAnswer(maxSize); }
+              </div>
+            </div>
+            <div class="hints">
+            <p>We always insert to the rear of the queue.</p>
+            <p>But we have to update "rear" first by moving it one step
+              clockwise.</p>
+            <p>Then click on the empty space that "rear" now points at
+              to highlight it, then click "Insert".</p>
+            </div>
         </div>
       </div>
     </div>
-  </div>
-</body>
+  </body>
 </html>
