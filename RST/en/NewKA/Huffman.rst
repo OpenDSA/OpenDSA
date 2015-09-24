@@ -4,11 +4,11 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Sally Hamouda
-   :topic:  Binary Summary Exercises
+   :author: Cliff Shaffer
+   :satisfies: Huffman coding tree
+   :topic: BinTreeImp
 
+Huffman Coding Trees
+====================
 
-Binary Tree Summary Exercises
-=============================
-
-.. avembed:: Exercises/RecurTutor2/BinaryTreeSumm.html ka
+.. avembed:: Exercises/Binary/HuffmanDecodeFIB.html ka

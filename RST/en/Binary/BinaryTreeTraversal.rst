@@ -138,6 +138,8 @@ Here are some exercises to practice the traversals.
 
 .. avembed:: AV/Binary/btTravPreorderPRO.html pe
 
+.. avembed:: Exercises/Binary/TravSumm.html ka
+
 .. odsascript:: AV/Binary/BinExampCON.js
 .. odsascript:: AV/Binary/inorderCON.js
 .. odsascript:: AV/Binary/preorderCON.js

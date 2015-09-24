@@ -1,0 +1,16 @@
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://algoviz.org/OpenDSA for more details.
+.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
+
+.. avmetadata::
+   :author: Sally Hamouda
+   :satisfies: common mistakes in recursive binary tree traversal
+   :topic: Common Mistakes in Recursive Binary Trees Traversal
+
+Implementing Tree Traversals
+============================
+
+.. avembed:: Exercises/RecurTutor2/BinaryTreeLocalSumm.html ka
+
+.. avembed:: Exercises/RecurTutor2/BinaryTreeCntValSumm.html ka

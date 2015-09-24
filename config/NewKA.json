@@ -449,6 +449,145 @@
         }
       }
     },
+    "Binary Trees": {
+      "NewKA/BinaryTree": {
+        "long_name": "Binary Tree Terminology",
+        "exercises": {
+          "DefSumm": {
+            "long_name": "Tree Definition Summary Exercises",
+            "showhide": "show",
+            "required": true,
+            "points": 2,
+            "threshold": 8
+          }
+        }
+      },
+      "NewKA/BinaryTreeTraversal": {
+        "long_name": "Binary Tree Traversals",
+        "exercises": {
+          "TravSumm": {
+            "long_name": "Tree Traversal Summary Questions",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 3
+          }
+        }
+      },
+      "NewKA/WritingTraversals": {
+        "long_name": "Writing Tree Traversals",
+        "exercises": {        
+          "BinaryTreeLocalSumm": {
+            "long_name": "Node Update Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1
+          },
+          "BinaryTreeCntValSumm": {
+            "long_name": "Node Count Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1
+          }
+        }
+      },
+      "NewKA/BinaryTreeInfFlw": {
+        "long_name": "Binary Tree Information Flow",
+        "exercises": {
+          "BinaryTreeClctNrtrnSumm": {
+            "long_name": "Binary Tree Collect and Return Traversal Exercises",
+            "showhide": "show",
+            "required": true,
+            "points": 4.0,
+            "threshold": 4.0,
+            "showhide": "Show"
+          },
+          "BinaryTreeLocalSumm": {
+            "long_name": "Binary Tree Local Traversal Exercises",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1.0,
+            "showhide": "Show"
+          }
+        }
+      },
+      "NewKA/BinaryTreeGuidedInfFlw": {
+        "long_name": "Binary Tree Guided Information Flow",
+        "exercises": {
+          "BinaryTreeGuidedSumm": {
+            "long_name": "Binary Tree Guided Traversal Exercises",
+            "showhide": "show",
+            "required": true,
+            "points": 2.0,
+            "threshold": 2.0,
+            "showhide": "Show"
+          }
+        }
+      },
+      "NewKA/MultipleBinaryTrees": {
+        "long_name": "Multiple Binary Trees",
+        "exercises": {
+          "MultipleBinaryTreesSumm": {
+            "long_name": "Multiple Binary Trees Exercises",
+            "showhide": "show",
+            "required": true,
+            "points": 3.0,
+            "threshold": 3.0
+          }
+        }
+      }, 
+      "NewKA/BinaryTreeNodeSpace": {
+        "long_name": "Full Binary Tree Node Space Requirements",
+        "exercises": {
+          "TreeOverheadSumm": {
+            "long_name": "Tree Overhead Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 2,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/CompleteTree": {
+        "long_name": "Array Implementation for Complete Trees",
+        "exercises": {
+          "CompleteFIB": {
+            "long_name": "Complete Tree Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/Heaps": {
+        "long_name": "Heaps and Priority Queues",
+        "exercises": {
+          "HeapSumm": {
+            "long_name": "BST/Heap Summary",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 3
+          }
+        }
+      },
+      "NewKA/Huffman": {
+        "long_name": "Huffman Coding Trees",
+        "exercises": {
+          "HuffmanDecodeFIB": {
+            "long_name": "Huffman Decoding Proficiency Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      }
+    },
     "NewKA": {
       "NewKA/HeapsortStepPRO": {
         "long_name": "HeapsortStepPRO",
