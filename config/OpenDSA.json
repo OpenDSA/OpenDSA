@@ -477,12 +477,6 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "btLeafPROG": {
-            "long_name": "Node Count Programming Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1
-          },
           "btTravInorderPRO": {
             "long_name": "Binary Tree Inorder Traversal Exercise",
             "exer_options": { "JXOP-code": "none" },
@@ -503,6 +497,36 @@
             "required": true,
             "points": 1.0,
             "threshold": 0.90
+          }
+        }
+      },
+      "Binary/WritingTraversals": {
+        "long_name": "Writing Tree Traversals",
+        "sections": {
+          "RecurTreePROG": {
+            "long_name": "Recursive Tree Programming Exercises",
+            "showhide": "none",
+            "remove": false
+          }
+        },
+        "exercises": {        
+          "BinaryTreeMistakesCON": {
+            "long_name": "Binary Tree Common Mistakes",
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.90
+          },
+          "BinaryTreeLocalSumm": {
+            "long_name": "Node Update Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1
+          },
+          "BinaryTreeCntValSumm": {
+            "long_name": "Node Count Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1
           }
         }
       },

@@ -70,7 +70,7 @@ a large two-dimensional array
 that stores only a relatively few non-zero values.
 
 An :term:`abstract data type` (ADT) is the realization of a data type
-as an interface to a software component.
+as a software component.
 An ADT is defined in terms of a type and a set of operations on that
 type.
 The behavior of each operation is determined by its inputs and outputs.
