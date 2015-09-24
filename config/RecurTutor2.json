@@ -159,18 +159,6 @@
           }
         }
       }, 
-      "RecurTutor2/BinaryTreeSumm": {
-        "long_name": "Binary Tree Summary Exercises",
-        "exercises": {
-          "BinaryTreeSumm": {
-            "long_name": "Binary Tree Summary Exercises",
-            "required": true,
-            "points": 3.0,
-            "threshold": 3.0,
-            "showhide": "Show"
-          }
-        }
-      },   
       "RecurTutor2/recSorting": {
         "long_name": "Recursive Sorting",
         "exercises": {}
