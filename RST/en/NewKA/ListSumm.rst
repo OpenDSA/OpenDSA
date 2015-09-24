@@ -5,11 +5,12 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :topic: Math Background
+   :topic: Linear structures
 
-Linear Structure Summary Exercises
-==================================
+Linear Structure General Questeions
+===================================
 
-Here are some practice questions for various topics related to this chapter.
+Here are some general practice questions about various data structures
+in this chapter.
 
-.. avembed:: Exercises/List/LstChptrSumm.html ka
+.. avembed:: Exercises/List/ListdsSumm.html ka

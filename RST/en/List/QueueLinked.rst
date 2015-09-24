@@ -36,7 +36,7 @@ Here is the linked queue class declaration.
 
 .. avembed:: Exercises/List/LqueueDequeuePRO.html ka
 
-.. avembed:: Exercises/List/StckQSumm.html ka
+.. avembed:: Exercises/List/StackQSumm.html ka
 
 
 Comparison of Array-Based and Linked Queues

@@ -427,7 +427,7 @@
             "points": 1,
             "threshold": 5
           },
-          "StckQSumm": {
+          "StackQSumm": {
             "long_name": "Stack/Queue Summary Exercise",
             "showhide": "show",
             "required": true,
@@ -439,8 +439,8 @@
       "NewKA/ListSumm": {
         "long_name": "List Chapter Summary",
         "exercises": {
-          "LstChptrSumm": {
-            "long_name": "List Chapter Summary Exercise",
+          "ListdsSumm": {
+            "long_name": "List Data Structures General Questions",
             "showhide": "show",
             "required": true,
             "points": 2,

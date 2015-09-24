@@ -15,4 +15,4 @@ Linked Queues
 
 .. avembed:: Exercises/List/LqueueDequeuePRO.html ka
 
-.. avembed:: Exercises/List/StckQSumm.html ka
+.. avembed:: Exercises/List/StackQSumm.html ka
