@@ -683,7 +683,7 @@
             "required": true,
             "points": 1,
             "threshold": 5,
-            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/452/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/898/plain/"
           },
           "InssortSumm": {
             "long_name": "Insertion Sort Summary",
@@ -756,7 +756,7 @@
             "required": true,
             "points": 1,
             "threshold": 5,
-            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/453/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/899/plain/"
           },
           "SelsortSumm": {
             "long_name": "Selection Sort Summary",
@@ -793,7 +793,7 @@
             "points": 1.0,
             "remove": false,
             "threshold": 5,
-            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/452/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/898/plain/"
           }
         }
       },
@@ -905,7 +905,7 @@
             "required": true,
             "points": 1,
             "threshold": 0.9,
-            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/454/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/900/plain/"
           }
         }
       },
@@ -965,7 +965,7 @@
             "required": true,
             "points": 1,
             "threshold": 0.9,
-            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/455/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/901/plain/"
           },
           "QuicksortSumm": {
             "long_name": "Quicksort Summary",
@@ -995,7 +995,7 @@
             "required": true,
             "points": 1,
             "threshold": 0.9,
-            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/461/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/882/plain/"
           },
           "HeapsortSumm": {
             "long_name": "Heapsort Summary Exercise",
@@ -1121,21 +1121,21 @@
             "required": true,
             "points": 1.0,
             "threshold": 0.9,
-            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/594/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/911/plain/"
           },
           "btTravPreorderPRO": {
             "long_name": "Binary Tree Preorder Traversal Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 0.9,
-            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/593/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/910/plain/"
           },
           "btTravPostorderPRO": {
             "long_name": "Binary Tree Postorder Traversal Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 0.9,
-            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/595/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/912/plain/"
           }
         }
       },
@@ -1172,7 +1172,7 @@
             "required": true,
             "points": 1.0,
             "threshold": 0.9,
-            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/597/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/918/plain/"
           },
           "BSTinsertCON": {
             "long_name": "BST Insert Slideshow",
@@ -1185,7 +1185,7 @@
             "required": true,
             "points": 1.0,
             "threshold": 0.9,
-            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/598/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/919/plain/"
           },
           "BSTdeletemaxCON": {
             "long_name": "BST deletemax Slideshow",
@@ -1204,7 +1204,7 @@
             "required": true,
             "points": 2.0,
             "threshold": 0.9,
-            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/599/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/920/plain/"
           }
         }
       },
@@ -1230,7 +1230,7 @@
             "required": true,
             "points": 2.0,
             "threshold": 0.9,
-            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/459/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/879/plain/"
           },
           "heapbuildCON": {
             "long_name": "Heapbuild Slideshow",
@@ -1243,7 +1243,7 @@
             "required": true,
             "points": 1.0,
             "threshold": 0.9,
-            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/458/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/881/plain/"
           },
           "heapbuildProofCON": {
             "long_name": "Heap build analysis proof Slideshow",
@@ -1269,7 +1269,7 @@
             "required": true,
             "points": 2.0,
             "threshold": 0.9,
-            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/460/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/880/plain/"
           },
           "heapremoveCON": {
             "long_name": "Remove Any Slideshow",
@@ -1370,11 +1370,11 @@
         "exercises": {
           "redBlackTreePRO": {
             "long_name": "Red-Black Tree Proficiency",
-            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/607/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/931/plain/"
           },
           "redBlackTreeColoring": {
             "long_name": "Red-Black Tree Coloring Exercises",
-            "external_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/606/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/930/plain/"
           }
         }
       },
@@ -1668,46 +1668,46 @@
       }
     },
     "Graphs": {
-       "Graph/GraphIntro": {
-	 "long_name": "Introduction and Terminology",
-	 "exercises": {
-	   "GraphCalcSumm": {
-	     "long_name": "Graph Space Requirements Exercise",
-	     "required": true,
-	     "points": 2.0,
-	     "threshold": 5
-	   },
-	   "GraphIntroSumm": {
-	     "long_name": "Graph Terminology Summary Exercise",
-	     "required": true,
-	     "points": 2.0,
-	     "threshold": 5
-	   }
-	 }
-       },
-       "Development/GraphImpl": {
-	 "long_name": "Graph Implementation",
-	 "exercises": {}
-       },
-       "Development/GraphTraversal": {
-	 "long_name": "Graph Traversal",
-	 "exercises": {
-	   "graphDFS": {
-	     "long_name": "Depth First Search Visualization",
-	     "required": false,
-	     "points": 0,
-	     "showhide": "show",
-	     "threshold": 1.0
-	   },
-	   "graphBFS": {
-	     "long_name": "Breadth First Search Visualization",
-	     "required": false,
-	     "points": 0,
-	     "showhide": "show",
-	     "threshold": 1.0
-	   }
-	 }
-       },
+      "Graph/GraphIntro": {
+        "long_name": "Introduction and Terminology",
+        "exercises": {
+          "GraphCalcSumm": {
+            "long_name": "Graph Space Requirements Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          },
+          "GraphIntroSumm": {
+            "long_name": "Graph Terminology Summary Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          }
+        }
+      },
+      "Development/GraphImpl": {
+        "long_name": "Graph Implementation",
+        "exercises": {}
+      },
+      "Development/GraphTraversal": {
+        "long_name": "Graph Traversal",
+        "exercises": {
+          "graphDFS": {
+            "long_name": "Depth First Search Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "show",
+            "threshold": 1.0
+          },
+          "graphBFS": {
+            "long_name": "Breadth First Search Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "show",
+            "threshold": 1.0
+          }
+        }
+      },
       "Development/GraphTopsort": {
         "long_name": "Topological Sort",
         "exercises": {
