@@ -2107,6 +2107,10 @@
 	"dispModComp": true,				
         "exercises": {}
       },
+      "Development/Floyd": {
+        "long_name": "All-Pairs Shortest Paths",
+        "exercises": {}
+      },
       "Development/RandomIntro": {
         "long_name": "Introduction to Randomized Algorithms",
 	"dispModComp": true,					

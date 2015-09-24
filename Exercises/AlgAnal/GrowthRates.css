@@ -1,7 +1,7 @@
 .jsavhorizontalarray .jsavnode{
-  min-width: 75px !important;
+  min-width: 80px !important;
   min-height: 55px !important;
-  max-width: 75px !important;
+  max-width: 80px !important;
   max-height: 55px !important;
 }
 .jsavcanvas.jsavcontainer{
@@ -14,7 +14,7 @@
         -webkit-transform-style: flat !important;
 }
 .jsavnode{
-	border: none;
+        border: none;
 	box-shadow: none;
 	background-color: inherit;
 }
