@@ -11,4 +11,4 @@
 Binary Tree Guided Information Flow
 ===================================
 
-.. avembed:: Exercises/RecurTutor2/BinaryTreeGuidedSumm.html ka
+.. avembed:: Exercises/RecurTutor2/BTguidedPROGSumm.html ka

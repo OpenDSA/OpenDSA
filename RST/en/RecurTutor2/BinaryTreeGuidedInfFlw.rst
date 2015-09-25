@@ -41,6 +41,6 @@ trees are considered to be guided.
    Practice the guided information flow through the following programming
    exercises.
 
-   .. avembed:: Exercises/RecurTutor2/BinaryTreeGuidedSumm.html ka
+   .. avembed:: Exercises/RecurTutor2/BTguidedPROGSumm.html ka
 
 .. odsascript:: AV/RecurTutor2/IneffBinaryTreeRangeCON.js

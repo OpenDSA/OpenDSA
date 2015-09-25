@@ -503,7 +503,7 @@
             "points": 1.0,
             "threshold": 1
           },
-          "BinaryTreeClctNrtrnSumm": {
+          "BTreturnPROGSumm": {
             "long_name": "Binary Tree Collect and Return Traversal Exercises",
             "showhide": "show",
             "required": true,

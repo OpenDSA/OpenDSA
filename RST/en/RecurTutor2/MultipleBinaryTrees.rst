@@ -14,5 +14,4 @@ Multiple Binary Trees
 
 This section is for practicing programming exercises that involve more than one binary tree.
 
-.. avembed:: Exercises/RecurTutor2/MultipleBinaryTreesSumm.html ka
-  
+.. avembed:: Exercises/RecurTutor2/MultiTreePROGSumm.html ka
