@@ -5,7 +5,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
-      .CodeMirror {
+      #ListADTPROG .CodeMirror {
       height: 200px;
       }
     </style>
@@ -23,7 +23,7 @@
         <var id="listel4">randRange(0, 99)</var>
       </div>
       <div class="problems">
-        <div id="ListADTPROGQ1">
+        <div id="ListADTPROG">
           <p class="problem">Use appropriate method calls from the
             List ADT to create the following list:<br/>
             <b>&lt; <var>listel1</var>  <var>listel2</var>
@@ -45,7 +45,7 @@ void exercise1(List L) {
             <div class="guess"> [editor.getValue()] </div>
             <div class="validator-function">
               if (guess[0] != initEditor) {
-                console.log(editor.getValue());
+                console.log(guess[0]);
                 window.codeValue = guess[0];
                 window.progexType = "list";
                 window.summexName = "ListADTPROG";
@@ -56,6 +56,8 @@ void exercise1(List L) {
             </div>
           </div>
           <div class="hints"></div>
+           <p>Look at the list ADT, and use method calls from there to
+             manipulate what is on list L.</p>
         </div>
       </div>
     </div>

@@ -457,8 +457,15 @@
             "long_name": "Tree Definition Summary Exercises",
             "showhide": "show",
             "required": true,
-            "points": 2,
-            "threshold": 8
+            "points": 1,
+            "threshold": 4
+          },
+          "Treeprobs": {
+            "long_name": "Tree/Node Exercises",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 4
           }
         }
       },
@@ -477,14 +484,14 @@
       "NewKA/WritingTraversals": {
         "long_name": "Writing Tree Traversals",
         "exercises": {        
-          "BinaryTreeLocalSumm": {
+          "BTincPROG": {
             "long_name": "Node Update Exercise",
             "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 1
           },
-          "BinaryTreeCntValSumm": {
+          "BTcntvalPROG": {
             "long_name": "Node Count Exercise",
             "showhide": "show",
             "required": true,
@@ -690,18 +697,6 @@
         "exercises": {
           "SelsortFIB2": {
             "long_name": "SelsortFIB2",
-            "required": true,
-            "points": 1.0,
-            "showhide": "show",
-            "threshold": 5
-          }
-        }
-      },
-      "NewKA/Dprobs": {
-        "long_name": "Dprobs",
-        "exercises": {
-          "Dprobs": {
-            "long_name": "Dprobs",
             "required": true,
             "points": 1.0,
             "showhide": "show",

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html data-require="math math-format word-problems spin">
+  <head>
+    <title> Binary Tree Count Value Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #BTincPROG .CodeMirror {
+      height: 200px;
+      }
+    </style>
+  </head>
+  <body data-height="550" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="BTcntvalPROG"> <!-- Supresses answer box -->
+          <p class="problem">Write a recursive function that returns
+            the number of times that the given value appears in the
+            binary tree pointed at by "root".
+            <textarea id="codeTextarea" name="codeTextarea">
+int btCntVal(BinNode root, int value) {
+// Your code goes between these lines
+
+
+// Your code goes between these lines
+}</textarea>
+          </p>
+          <div class="question"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [editor.getValue()] </div>
+            <div class="validator-function">
+              if (guess[0] != initEditor) {
+                console.log(guess[0]);
+                window.codeValue = guess[0];
+                window.progexType= "binarytree";
+                window.summexName= "BTcntvalPROG";
+            </div>
+          </div>
+          <div class="hints">
+            <p>Do a traversal through all nodes of the tree.</p>
+            <p>If the value is not what you are looking for, then
+            return the sum of the recursive calls to the children. If
+            the current node has the same value, then return 1 to the
+            sum of the recursive calls to the children.</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

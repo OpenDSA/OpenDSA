@@ -12,3 +12,5 @@ Binary Trees
 ============
 
 .. avembed:: Exercises/Binary/DefSumm.html ka
+
+.. avembed:: Exercises/Binary/Treeprobs.html ka

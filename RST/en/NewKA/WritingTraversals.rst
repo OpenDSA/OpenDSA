@@ -11,6 +11,6 @@
 Implementing Tree Traversals
 ============================
 
-.. avembed:: Exercises/RecurTutor2/BinaryTreeLocalSumm.html ka
+.. avembed:: Exercises/RecurTutor2/BTincPROG.html ka
 
-.. avembed:: Exercises/RecurTutor2/BinaryTreeCntValSumm.html ka
+.. avembed:: Exercises/RecurTutor2/BTcntvalPROG.html ka
