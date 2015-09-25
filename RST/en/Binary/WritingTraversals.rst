@@ -231,11 +231,9 @@ efficiently without falling into the common mistakes.
 
 .. showhidecontent:: RecurTreePROG
 
-   Here are practice coding exercises.
+   Here is a simple practice example.
 
-   .. avembed:: Exercises/RecurTutor2/BinaryTreeLocalSumm.html ka
-
-   .. avembed:: Exercises/RecurTutor2/BinaryTreeCntValSumm.html ka
+   .. avembed:: Exercises/RecurTutor2/BTincPROG.html ka
 
 .. odsascript:: AV/Binary/BinaryTreeMistakesCON.js
 

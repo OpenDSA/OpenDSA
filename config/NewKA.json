@@ -490,19 +490,19 @@
             "required": true,
             "points": 1.0,
             "threshold": 1
-          },
-          "BTcntvalPROG": {
-            "long_name": "Node Count Exercise",
-            "showhide": "show",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1
           }
         }
       },
       "NewKA/BinaryTreeInfFlw": {
         "long_name": "Binary Tree Information Flow",
         "exercises": {
+          "BTcntvalPROG": {
+            "long_name": "Node Value Count Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1
+          },
           "BinaryTreeClctNrtrnSumm": {
             "long_name": "Binary Tree Collect and Return Traversal Exercises",
             "showhide": "show",
@@ -510,21 +510,13 @@
             "points": 4.0,
             "threshold": 4.0,
             "showhide": "Show"
-          },
-          "BinaryTreeLocalSumm": {
-            "long_name": "Binary Tree Local Traversal Exercises",
-            "showhide": "show",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
           }
         }
       },
       "NewKA/BinaryTreeGuidedInfFlw": {
         "long_name": "Binary Tree Guided Information Flow",
         "exercises": {
-          "BinaryTreeGuidedSumm": {
+          "BTguidedPROGSumm": {
             "long_name": "Binary Tree Guided Traversal Exercises",
             "showhide": "show",
             "required": true,

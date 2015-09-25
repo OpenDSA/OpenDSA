@@ -29,20 +29,16 @@ binary tree into the following categories:
  
 Some problems might include features from multiple categories.
 
-Here are a few simple examples and exrecises on each category.
+Here are a few simple examples and exercises.
 
 Local
 -----
-Local traversal invloves going to each node in the tree to do some
+Local traversal involves going to each node in the tree to do some
 operation.
 Such functions, need no information flow between the binary tree
 nodes.
 An example would be incrementing the value for all nodes in a binary
-tree by one.
-The following exercise lets you practice local information flow.
-
-.. avembed:: Exercises/RecurTutor2/BinaryTreeLocalSumm.html ka
-
+tree by one, which you should have done in the previous module.
 
 Collect-and-return
 ------------------
@@ -65,50 +61,11 @@ nodes of a tree.
    .. codeinclude:: Binary/Traverse
       :tag: count
 
-.. topic:: Example
-
-	A more difficult example is illustrated by the following problem.
-	Given an arbitrary binary tree we wish to determine if,
-	for every node :math:`A`, are all nodes in :math:`A`'s left
-	subtree less than the value of :math:`A`, and are all nodes in
-	:math:`A`'s right subtree greater than the value of :math:`A`?
-	(This happens to be the definition for a binary search tree.)
-	Unfortunately, to make this decision we need to know some context
-	that is not available just by looking at the node's parent or
-	children.
-	
-	.. _BSTCheckFig:
-	
-	.. odsafig:: Images/BSTCheckFig.png
-	   :width: 100
-	   :align: center
-	   :capalign: justify
-	   :figwidth: 90%
-	   :alt: Binary tree checking
-	
-	   To be a binary search tree, the left child of the node with value
-	   40 must have a value between 20 and 40.
-	
-	As shown by Figure :num:`Figure #BSTCheckFig`,
-	it is not enough to verify that :math:`A`'s left child has a value
-	less than that of :math:`A`, and that :math:`A`'s right child
-	has a greater value.
-	Nor is it enough to verify that :math:`A` has a value consistent
-	with that of its parent.
-	In fact, we need to know information about what range of values is
-	legal for a given node.
-	That information might come from any of the node's ancestors.
-	Thus, relevant range information must be passed down the tree.
-	We can implement this function as follows.
-	
-	.. codeinclude:: Binary/checkBST
-	   :tag: checkBST
-	
-
-Practice the collect and retun information flow through the following programming exercises
+Practice the collect and retun information flow through the following
+programming exercises.
  
-.. avembed:: Exercises/RecurTutor2/BinaryTreeClctNrtrnSumm.html ka
+.. avembed:: Exercises/RecurTutor2/BTreturnPROGSumm.html ka
    
-
-The guided information flow does not require visiting every node. In the next lesson, we will see more
-examples and exercises on this type of information flow.
+Guided traversal does not require visiting every node.
+Later on, we will see examples and exercises for this type of
+information flow.

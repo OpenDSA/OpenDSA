@@ -12,5 +12,3 @@ Implementing Tree Traversals
 ============================
 
 .. avembed:: Exercises/RecurTutor2/BTincPROG.html ka
-
-.. avembed:: Exercises/RecurTutor2/BTcntvalPROG.html ka

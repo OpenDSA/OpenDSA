@@ -11,10 +11,11 @@
 Binary Tree Information Flow
 =============================
 
-The following exercise lets you practice local information flow.
+The following exercise lets you practice a simple example of collect
+and retun information flow.
 
-.. avembed:: Exercises/RecurTutor2/BinaryTreeLocalSumm.html ka
+.. avembed:: Exercises/RecurTutor2/BTcntvalPROG.html ka
 
-Practice the collect and retun information flow through the following programming exercises
+Here are a few more practice exercises for collect and return information flow.
  
-.. avembed:: Exercises/RecurTutor2/BinaryTreeClctNrtrnSumm.html ka
+.. avembed:: Exercises/RecurTutor2/BTreturnPROGSumm.html ka
