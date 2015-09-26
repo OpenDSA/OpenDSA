@@ -1,65 +1,63 @@
 <!DOCTYPE html>
-<html data-require="math math-format word-problems spin">
-<head>
-  <title> Binary Tree Leaf Nodes Count Exercise</title>
+<html data-require="codemirror blockUI math math-format word-problems spin">
+  <head>
+    <title> Binary Tree Leaf Nodes Count Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #BTleafPROG .CodeMirror {
+        height: 200px;
+      }
+    </style>
+  </head>
 
-  <script> window.OpenPopKa = true; </script>
-  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-     
-  <script src="../../lib/codemirror/lib/codemirror.js"></script>
-  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
-  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
-  <script>
-  var editor = CodeMirror.fromTextArea(codeTextarea, {
-    lineNumbers: true,
-    mode:  "text/x-java"
-  });
-  </script>
-  
-</head>
-<body data-height="550" data-width="950">
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="config">
+          (function(){ window.OpenPopKa = true;}())
+        </var>
+      </div>
+      <div class="problems">
+        <div id="BTleafPROGp"> <!-- Supresses answer box -->
+          <p class="problem">Write a recursive function to count the
+            number of leaf nodes in the binary tree pointed at by "root".
+            You must use the "isleaf" method to check if the node is leaf or
+            not. That is, do not check the value of the left and right
+            children to see if they are null or not to decide if the node is
+            a leaf.<br/>
 
-<div class="exercise">
-
-  <div class="problems">
-    <div> <!-- Supresses answer box -->
-      <p class="problem" id = "test">Write a recursive function to
-      count the  number of leaf nodes in the binary tree
-      pointed at by "root". You must use the isleaf method to check if the 
-      node is leaf or not. (i.e. Don't check on the left and right children to see if they are null or not to know if the node is leaf)</p>
-
-      <textarea  id="codeTextarea">
-int btcountLeaf(BinNode root) {
-  // Your code goes between these lines
-
+            <textarea id="codeTextarea" name="codeTextarea">
+int BTleaf(BinNode root) {
+// Your code goes between these lines
 
 
-
-
-
-  // Your code goes between these lines
-
-}
-</textarea>
-
-      <div class="question"></div>
-      <div class="solution" data-type="custom">
-         <div class="guess"> [ editor.getValue()  ] </div>
-        <div class="validator-function">
-	     window.codeValue = editor.getValue();
-         window.progexType= "binarytree";
-         window.summexName= "btLeafPROG";
+// Your code goes between these lines
+}</textarea>
+          </p>
+          <div class="question"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [ editor.getValue()  ] </div>
+            <div class="validator-function">
+              if (guess[0] != initEditor) {
+                console.log(guess[0]);
+                window.codeValue = guess[0];
+                window.progexType= "binarytree";
+                window.summexName= "btLeafPROG";
+              } else {
+                return "";
+              }
+            </div>
+          </div>
+          <div class="hints">
+            <p> Make sure that you are answering the right question. There
+              is an example in the text that counts all nodes in a
+              tree. However, this exercise asks you to count all leaf
+              nodes in a tree.
+            </p>
+          </div>
         </div>
       </div>
-      <div class="hints">
-        <p> Make sure that you are answering the right question. There
-            is an example in the text that counts all nodes in a
-            tree. However, this exercise asks you to count all leaf
-            nodes in a tree.
-        </p>
-      </div>
     </div>
-  </div>
-</div>
-</body>
+  </body>
 </html>

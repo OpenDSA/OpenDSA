@@ -1,61 +1,58 @@
 <!DOCTYPE html>
-<html data-require="math math-format word-problems spin">
-<head>
-  <title> Swap Binary Trees Exercise</title>
+<html data-require="codemirror blockUI math math-format word-problems spin">
+  <head>
+    <title> Swap Binary Trees Exercise</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #MBTswapPROG .CodeMirror {
+        height: 200px;
+      }
+    </style>
+  </head>
 
-  <script> window.OpenPopKa = true; </script>
-  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-  
-  <script src="../../lib/codemirror/lib/codemirror.js"></script>
-  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
-  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
-  <script>
-  var editor = CodeMirror.fromTextArea(codeTextarea, {
-    lineNumbers: true,
-    mode:  "text/x-java"
-  });
-  
-  </script>
-</head>
-<body data-height="550" data-width="950">
-<div class="exercise">
- 
-  <div class="problems">
-    <div> <!-- Supresses answer box -->
-      <p class="problem" id = "test">
-      Given two binary trees with the same structure, swap the values of their nodes.	  
-      Add appropriate lines of code to the following function skeleton
-      so that the function will recursively swap the values between
-      the binary trees pointed at by "root1" and "root2". Note: Assume that the trees have the same structure so you don't need to check on that in your code.</p>
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="config">
+          (function(){ window.OpenPopKa = true;}())
+        </var>
+      </div>
+      <div class="problems">
+        <div id="MBTstructurePROGp"> <!-- Supresses answer box -->
+          <p class="problem">Given two binary trees with the same
+            structure, swap the values of their nodes.
+            Assume that the trees have the same structure so you don't need
+            to check on that in your code.<br/>
 
-    <textarea  id="codeTextarea">
-void btSwapTrees(BSTNode root1, BSTNode root2) {
-  // Your code goes between these lines
+            <textarea id="codeTextarea" name="codeTextarea">
+void MBTswap(BSTNode root1, BSTNode root2) {
+// Your code goes between these lines
 
 
-
-
-
-
-
-  // Your code goes between these lines
-
-}
-</textarea>
-
-      <div class="question"></div>
-      <div class="solution" data-type="custom">
-         <div class="guess"> [ editor.getValue()  ] </div>
-        <div class="validator-function">
-	     window.codeValue = editor.getValue();
-         window.progexType= "binarytree";
-         window.summexName= "mbtSwapPROG";
+// Your code goes between these lines
+}</textarea>
+          </p>
+          <div class="question"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [ editor.getValue()  ] </div>
+            <div class="validator-function">
+              if (guess[0] != initEditor) {
+                console.log(guess[0]);
+                window.codeValue = guess[0];
+                window.progexType= "binarytree";
+                window.summexName= "MBTswapPROG";
+              } else {
+                return "";
+              }
+            </div>
+          </div>
+          <div class="hints">
+            <p>Simply traverse the two trees together, and swap the values of the
+              roots, if they are not null.</p>
+          </div>
         </div>
       </div>
-      <div class="hints"></div>
     </div>
-  </div>
-</div>
-</body>
+  </body>
 </html>

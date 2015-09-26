@@ -1,61 +1,59 @@
 <!DOCTYPE html>
-<html data-require="math math-format word-problems spin">
-<head>
-  <title> Structurally Identical Binary Trees Exercise</title>
+<html data-require="codemirror blockUI math math-format word-problems spin">
+  <head>
+    <title>Structurally Identical Binary Trees Exercise</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #MBTstructurePROG .CodeMirror {
+        height: 200px;
+      }
+    </style>
+  </head>
 
-  <script> window.OpenPopKa = true; </script>
-  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-  
-  <script src="../../lib/codemirror/lib/codemirror.js"></script>
-  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
-  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
-  <script>
-  var editor = CodeMirror.fromTextArea(codeTextarea, {
-    lineNumbers: true,
-    mode:  "text/x-java"
-  });
-  
-  </script>
-</head>
-<body data-height="550" data-width="950">
-<div class="exercise">
- 
-  <div class="problems">
-    <div> <!-- Supresses answer box -->
-      <p class="problem" id = "test">
-      Given two binary trees check if they are structurally identical regardless the content of the nodes.
-      Add appropriate lines of code to the following function skeleton
-      so that the function will recursively find out if
-      the binary trees pointed at by "root1" and "root2" are structurally identical. </p>
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="config">
+          (function(){ window.OpenPopKa = true;}())
+        </var>
+      </div>
+      <div class="problems">
+        <div id="MBTstructurePROGp"> <!-- Supresses answer box -->
+          <p class="problem">Given two binary trees, return True if and
+            only if they are structurally identical (ignoring the content of
+            the nodes).<br/>
 
-    <textarea  id="codeTextarea">
-boolean mbtStrIdn(BSTNode root1, BSTNode root2) {
-  // Your code goes between these lines
+            <textarea id="codeTextarea" name="codeTextarea">
+boolean MBTstructure(BSTNode root1, BSTNode root2) {
+// Your code goes between these lines
 
 
-
-
-
-
-
-  // Your code goes between these lines
-
-}
-</textarea>
-
-      <div class="question"></div>
-      <div class="solution" data-type="custom">
-         <div class="guess"> [ editor.getValue()  ] </div>
-        <div class="validator-function">
-	     window.codeValue = editor.getValue();
-         window.progexType= "binarytree";
-         window.summexName= "mbtStrIdnPROG";
+// Your code goes between these lines
+}</textarea>
+          </p>
+          <div class="question"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [editor.getValue()] </div>
+            <div class="validator-function">
+              if (guess[0] != initEditor) {
+              console.log(guess[0]);
+              window.codeValue = guess[0];
+              window.progexType= "binarytree";
+              window.summexName= "MBTstructurePROG";
+              } else {
+              return "";
+              }
+            </div>
+          </div>
+          <div class="hints">
+            <p>To be identical in structure,
+              the left subtree of the first tree must match the
+              left subtree of the second tree. And the right subtree of the first
+              tree must match the right subtree of the second tree.</p>
+          </div>
         </div>
       </div>
-      <div class="hints"></div>
     </div>
-  </div>
-</div>
-</body>
+  </body>
 </html>

@@ -17,24 +17,9 @@
   "glob_exer_options": {
     "JXOP-debug": "true"
   },
-  "assumes": "recursion",
+  "assumes": "recursion; binary tree terminology",
   "chapters": {
     "Advanced Recursion Tutorial": {
-      "Binary/BinaryTreeIntro": {
-        "long_name": "Binary Trees Chapter Introduction",
-        "exercises": {}
-      },
-      "Binary/BinaryTree": {
-        "long_name": "Binary Tree",
-        "exercises": {
-           "DefSumm": {
-            "long_name": "Tree Definition Summary Exercises",
-            "required": true,
-            "points": 2.0,
-            "threshold": 8
-           }
-         }
-      },
       "Binary/RecursiveDS": {
         "long_name": "Binary Tree as a Recursive Data Structure",
         "exercises": {
@@ -47,7 +32,7 @@
          }
       },
       "Binary/BinaryTreeTraversal": {
-        "long_name": "Binary Trees Traversal",
+        "long_name": "Binary Tree Traversals",
         "exercises": {
           "preorderCON": {
             "long_name": "Preorder Traversal Slideshow",
@@ -69,18 +54,21 @@
           },
           "btTravInorderPRO": {
             "long_name": "Binary Tree Inorder Traversal Exercise",
+            "exer_options": { "JXOP-code": "none" },
             "required": true,
             "points": 1.0,
             "threshold": 0.90
           },
           "btTravPreorderPRO": {
             "long_name": "Binary Tree Preorder Traversal Exercise",
+            "exer_options": { "JXOP-code": "none" },
             "required": true,
             "points": 1.0,
             "threshold": 0.90
           },
           "btTravPostorderPRO": {
             "long_name": "Binary Tree Postorder Traversal Exercise",
+            "exer_options": { "JXOP-code": "none" },
             "required": true,
             "points": 1.0,
             "threshold": 0.90
@@ -96,20 +84,8 @@
       "Binary/WritingTraversals": {
         "long_name": "Writing Tree Traversals",
         "exercises": {        
-          "BinaryTreeMistakesCON": {
-            "long_name": "Binary Tree Common Mistakes",
-            "required": true,
-            "points": 1.0,
-            "threshold": 0.90
-          },
-          "BinaryTreeLocalSumm": {
-            "long_name": "Node Update Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1
-          },
-          "BinaryTreeCntValSumm": {
-            "long_name": "Node Count Exercise",
+          "BTincPROG": {
+            "long_name": "Node Increment Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 1
@@ -119,19 +95,101 @@
       "RecurTutor2/BinaryTreeInfFlw": {
         "long_name": "Binary Tree Information Flow",
         "exercises": {
-          "BinaryTreeClctNrtrnSumm": {
-            "long_name": "Binary Tree Collect and Return Traversal Exercises",
+          "BTsetdepthPROG": {
+            "long_name": "Set Node Depth Programming Exercise",
+            "showhide": "show",
             "required": true,
-            "points": 4.0,
-            "threshold": 4.0,
-            "showhide": "Show"
+            "points": 2.0,
+            "threshold": 1
           },
-          "BinaryTreeLocalSumm": {
-            "long_name": "Binary Tree Local Traversal Exercises",
+          "BinaryTreeMistakesCON": {
+            "long_name": "Binary Tree Common Mistakes Slideshow",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+            "threshold": 0.90
+          },
+          "BTreturnPROGSumm": {
+            "long_name": "Collect-and-Return Programming Exercises",
+            "showhide": "show",
+            "required": true,
+            "points": 4.0,
+            "threshold": 2.0
+          },
+          "BTcheckvalPROG": {
+            "long_name": "Node Value Count Programming Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 2.0,
+            "threshold": 1
+          },
+          "BTtransferPROGSumm": {
+            "long_name": "Duel-Flow Programming Exercises",
+            "showhide": "show",
+            "required": true,
+            "points": 4.0,
+            "threshold": 2
+          }
+        }
+      },
+      "Binary/BST": {
+        "long_name": "Binary Search Trees",
+        "exercises": {
+          "BSTsearchCON": {
+            "long_name": "BST Search Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "BSTsearchPRO": {
+            "long_name": "BST Search Proficiency Exercise",
+            "exer_options": {
+              "JXOP-code": "none",
+              "JXOP-feedback": "continuous",
+              "JXOP-fixmode": "undo"
+            },
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.90
+          },
+          "BSTinsertCON": {
+            "long_name": "BST Insert Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "BSTinsertPRO": {
+            "long_name": "BST Insert Proficiency Exercise",
+            "exer_options": {
+              "JXOP-code": "none",
+              "JXOP-feedback": "continuous",
+              "JXOP-fixmode": "undo"
+            },
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.90
+          },
+          "BSTdeletemaxCON": {
+            "long_name": "BST deletemax Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "BSTremoveCON": {
+            "long_name": "BST remove Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "BSTremovePRO": {
+            "long_name": "BST Remove Proficiency Exercise",
+            "exer_options": {
+              "JXOP-code": "none",
+              "JXOP-feedback": "continuous",
+              "JXOP-fixmode": "undo"
+            },
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90
           }
         }
       },
@@ -144,7 +202,7 @@
             "points": 1.0,
             "threshold": 0.90
           },
-          "BinaryTreeGuidedSumm": {
+          "BTguidedPROGSumm": {
             "long_name": "Binary Tree Guided Traversal Exercises",
             "required": true,
             "points": 2.0,
@@ -156,7 +214,7 @@
       "RecurTutor2/MultipleBinaryTrees": {
         "long_name": "Multiple Binary Trees",
         "exercises": {
-          "MultipleBinaryTreesSumm": {
+          "MultiTreePROGSumm": {
             "long_name": "Multiple Binary Trees Exercises",
             "required": true,
             "points": 3.0,
@@ -165,6 +223,11 @@
           }
         }
       }, 
+      "RecurTutor2/BSTCheck": {
+        "long_name": "BSTcheck Function",
+	"dispModComp": true,
+        "exercises": {}
+      },
       "RecurTutor2/recSorting": {
         "long_name": "Recursive Sorting",
         "exercises": {}

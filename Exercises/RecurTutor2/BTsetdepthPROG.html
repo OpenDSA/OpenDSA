@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html data-require="codemirror blockUI math math-format word-problems spin">
   <head>
-    <title> Binary Tree Count Value Exercise</title>
+    <title> Binary Tree Set Depth Exercise</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
       #BTincPROG .CodeMirror {
-      height: 200px;
+        height: 200px;
       }
     </style>
   </head>
-  <body data-height="550" data-width="950">
+
+  <body data-height="750" data-width="950">
     <div class="exercise">
       <div class="vars">
         <var id="config">
@@ -18,18 +19,20 @@
         </var>
       </div>
       <div class="problems">
-        <div id="BTcntvalPROGp"> <!-- Supresses answer box -->
-          <p class="problem">Write a recursive function that returns
-            the number of times that the given value appears in the
-            binary tree pointed at by "root".
+        <div id="BTsetdepthPROGp"> <!-- Supresses answer box -->
+          <p class="problem">Write a recursive function to set the
+            value for each node in a binary tree to be its depth.
+            Assume that nodes store integer values.<br/>
+
             <textarea id="codeTextarea" name="codeTextarea">
-int btCntVal(BinNode root, int value) {
+void BTsetdepth(BinNode root, int depth) {
 // Your code goes between these lines
+
 
 
 // Your code goes between these lines
 }</textarea>
-          </p>
+	  </p>
           <div class="question"></div>
           <div class="solution" data-type="custom">
             <div class="guess"> [editor.getValue()] </div>
@@ -38,19 +41,21 @@ int btCntVal(BinNode root, int value) {
                 console.log(guess[0]);
                 window.codeValue = guess[0];
                 window.progexType= "binarytree";
-                window.summexName= "btCntValPROG";
+                window.summexName= "BTsetdepthPROG";
               } else {
                 return "";
               }
             </div>
           </div>
           <div class="hints">
-            <p>Do a traversal through all nodes of the tree.</p>
-            <p>If the value is not what you are looking for, then
-            return the sum of the recursive calls to the children. If
-            the current node has the same value, then return 1 to the
-            sum of the recursive calls to the children.</p>
-        </div>
+            <p>For this exercise, you need to do a traversal that
+              visits each node of the tree, and sets the depth to the
+              value that has been passed to it.
+              No information needs to be returned.</p>
+            <p>However, the depth must be incremented by 1 on each
+              recursive call.</p>
+          </div>
+	</div>
       </div>
     </div>
   </body>

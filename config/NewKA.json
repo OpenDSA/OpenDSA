@@ -496,21 +496,40 @@
       "NewKA/BinaryTreeInfFlw": {
         "long_name": "Binary Tree Information Flow",
         "exercises": {
-          "BTcntvalPROG": {
-            "long_name": "Node Value Count Exercise",
+          "BTsetdepthPROG": {
+            "long_name": "Set Node Depth Programming Exercise",
             "showhide": "show",
             "required": true,
-            "points": 1.0,
+            "points": 2.0,
             "threshold": 1
           },
+          "BinaryTreeMistakesCON": {
+            "long_name": "Binary Tree Common Mistakes Slideshow",
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.90
+          },
           "BTreturnPROGSumm": {
-            "long_name": "Binary Tree Collect and Return Traversal Exercises",
+            "long_name": "Collect-and-Return Programming Exercises",
             "showhide": "show",
             "required": true,
             "points": 4.0,
-            "threshold": 4.0,
-            "showhide": "Show"
-          }
+            "threshold": 2.0,
+          },
+          "BTcntvalPROG": {
+            "long_name": "Node Value Count Programming Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 2.0,
+            "threshold": 1
+          },
+          "BTtraversePROGSumm": {
+            "long_name": "Duel-Flow Programming Exercises",
+            "showhide": "show",
+            "required": true,
+            "points": 4.0,
+            "threshold": 2
+          },
         }
       },
       "NewKA/BinaryTreeGuidedInfFlw": {
@@ -529,7 +548,7 @@
       "NewKA/MultipleBinaryTrees": {
         "long_name": "Multiple Binary Trees",
         "exercises": {
-          "MultipleBinaryTreesSumm": {
+          "MultiTreePROGSumm": {
             "long_name": "Multiple Binary Trees Exercises",
             "showhide": "show",
             "required": true,

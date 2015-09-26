@@ -1,60 +1,57 @@
 <!DOCTYPE html>
-<html data-require="math math-format word-problems spin">
-<head>
-  <title> Same Binary Tree Exercise</title>
+<html data-require="codemirror blockUI math math-format word-problems spin">
+  <head>
+    <title> Same Binary Tree Exercise</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #MBTsamePROG .CodeMirror {
+        height: 200px;
+      }
+    </style>
+  </head>
 
-  <script> window.OpenPopKa = true; </script>
-  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-  
-  <script src="../../lib/codemirror/lib/codemirror.js"></script>
-  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
-  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
-  <script>
-  var editor = CodeMirror.fromTextArea(codeTextarea, {
-    lineNumbers: true,
-    mode:  "text/x-java"
-  });
-  
-  </script>
-</head>
-<body data-height="550" data-width="950">
-<div class="exercise">
- 
-  <div class="problems">
-    <div> <!-- Supresses answer box -->
-      <p class="problem" id = "test">
-      Given two binary trees, return true if they are structurally
-      identical (they have nodes with the same values, 
-      arranged in the same way).</p>
-
-    <textarea  id="codeTextarea">
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="config">
+          (function(){ window.OpenPopKa = true;}())
+        </var>
+      </div>
+      <div class="problems">
+        <div id="MBTsamePROGp"> <!-- Supresses answer box -->
+          <p class="problem">Given two binary trees, return true if they
+            are structurally identical (they have nodes with the same
+            values, arranged in the same way).</br>
+            <textarea id="codeTextarea" name="codeTextarea">
 boolean btIdenticalTrees(BSTNode root1, BSTNode root2) {
-  // Your code goes between these lines
+// Your code goes between these lines
 
 
-
-
-
-
-
-  // Your code goes between these lines
-
-}
-</textarea>
-
-      <div class="question"></div>
-      <div class="solution" data-type="custom">
-         <div class="guess"> [ editor.getValue()  ] </div>
-        <div class="validator-function">
-	     window.codeValue = editor.getValue();
-         window.progexType= "binarytree";
-         window.summexName= "mbtSamePROG";
+// Your code goes between these lines
+}</textarea>
+          </p>
+          <div class="question"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [editor.getValue()] </div>
+            <div class="validator-function">
+              if (guess[0] != initEditor) {
+                console.log(guess[0]);
+                window.codeValue = guess[0];
+                window.progexType= "binarytree";
+                window.summexName= "MBTsamePROG";
+              } else {
+                return "";
+              }
+            </div>
+          </div>
+          <div class="hints"></div>
+          <p>To be identical, roots must match in value.</p>
+          <p>Then, the left subtree of the first tree must match the
+            left subtree of the second tree. And the right subtree of the first
+            tree must match the right subtree of the second tree.</p>
         </div>
       </div>
-      <div class="hints"></div>
     </div>
-  </div>
-</div>
-</body>
+  </body>
 </html>

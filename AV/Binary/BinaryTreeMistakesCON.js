@@ -13,20 +13,17 @@ $(document).ready(function () {
   av.displayInit();
     
   // Slide 2
-  av.umsg(interpret("av_c1"));
-  
-  pseudo.highlight("treenull");
+  av.umsg(interpret("av_c2"));
+  pseudo.setCurrentLine("treenull");
   av.step();
   
   // Slide 3
   av.umsg(interpret("av_c3"));
-  pseudo.unhighlight("treenull");
-  pseudo.highlight("childnull");
+  pseudo.setCurrentLine("reccall");
   av.step();
   
   // Slide 4
   av.umsg(interpret("av_c4"));
-  pseudo.unhighlight("childnull");
-  pseudo.highlight("childval");
+  pseudo.setCurrentLine("compute");
   av.recorded();
 });

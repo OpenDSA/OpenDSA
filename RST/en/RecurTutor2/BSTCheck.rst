@@ -4,8 +4,8 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-:author: Sally Hamouda and Cliff Shaffer
-:topic: Advanced Recursion
+   :author: Sally Hamouda and Cliff Shaffer
+   :topic: Advanced Recursion
 
 Hard Information Flow Problems
 ==============================
