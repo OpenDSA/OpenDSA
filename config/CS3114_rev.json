@@ -1,0 +1,139 @@
+{
+    "title": "CS3114 Fall 2014",
+    "build_dir": "Books",
+    "code_dir": "SourceCode/",
+    "code_lang": {
+        "Processing": {
+            "ext": [
+                "pde"
+            ],
+            "label": "Processing",
+            "lang": "java"
+        },
+        "Java_Generic": {
+            "ext": [
+                "java"
+            ],
+            "label": "Java (Generic)",
+            "lang": "java"
+        },
+        "C++": {
+            "ext": [
+                "cpp",
+                "h"
+            ],
+            "label": "C++",
+            "lang": "C++"
+        }
+    },
+    "lang": "en",
+    "module_origin": "https://ltitest.cs.vt.edu:9292",
+    "exercise_server": "https://ltitest.cs.vt.edu:8443",
+    "logging_server": "https://ltitest.cs.vt.edu:8443",
+    "score_server": "https://ltitest.cs.vt.edu:8443",
+    "build_JSAV": false,
+    "allow_anonymous_credit": true,
+    "suppress_todo": true,
+    "glob_exer_options": {
+        "JXOP-debug": "true"
+    },
+    "chapters": {
+        "Preface": {
+            "Intro": {
+                "long_name": "How to Use this System",
+                "dispModComp": true,
+                "exercises": {},
+                "sections": {}
+            }
+        },
+        "Binary Trees": {
+            "Binary/BSTrev": {
+                "long_name": "Binary Search Trees",
+                "exercises": {},
+                "sections": {
+                    "Binary Search Tree Definition": {
+                        "dispModComp": true
+                    },
+                    "BST Search": {
+                        "showsection": true,
+                        "BSTsearchCON": {
+                            "long_name": "BST Search Slideshow",
+                            "required": false,
+                            "points": 0,
+                            "threshold": 1
+                        }
+                    },
+                    "BST Search Exercise": {
+                        "BSTsearchPRO": {
+                            "long_name": "BST Search Proficiency Exercise",
+                            "exer_options": {
+                                "JXOP-code": "none",
+                                "JXOP-feedback": "continuous",
+                                "JXOP-fixmode": "undo"
+                            },
+                            "required": true,
+                            "points": 1,
+                            "threshold": 0.9
+                        }
+                    },
+                    "BST Insert": {
+                        "BSTinsertCON": {
+                            "long_name": "BST Insert Slideshow",
+                            "required": false,
+                            "points": 0,
+                            "threshold": 1
+                        }
+                    },
+                    "BST Insert Exercise": {
+                        "BSTinsertPRO": {
+                            "long_name": "BST Insert Proficiency Exercise",
+                            "exer_options": {
+                                "JXOP-code": "none",
+                                "JXOP-feedback": "continuous",
+                                "JXOP-fixmode": "undo"
+                            },
+                            "required": true,
+                            "points": 1,
+                            "threshold": 0.9
+                        }
+                    },
+                    "BST Remove Pt 1": {
+                        "BSTdeletemaxCON": {
+                            "long_name": "BST deletemax Slideshow",
+                            "required": false,
+                            "points": 0,
+                            "threshold": 1
+                        }
+                    },
+                    "BST Remove Pt 2": {
+                        "BSTremoveCON": {
+                            "long_name": "BST remove Slideshow",
+                            "required": false,
+                            "points": 0,
+                            "threshold": 1
+                        }
+                    },
+                    "BST Remove Exercise": {
+                        "BSTremovePRO": {
+                            "long_name": "BST Remove Proficiency Exercise",
+                            "exer_options": {
+                                "JXOP-code": "none",
+                                "JXOP-feedback": "continuous",
+                                "JXOP-fixmode": "undo"
+                            },
+                            "required": true,
+                            "points": 2,
+                            "threshold": 0.9
+                        }
+                    },
+                    "BST Analysis": {}
+                }
+            }
+        }
+    },
+    "LTI": {
+        "tool_name": "OpenDSA-LTI",
+        "url": "https://ltitest.cs.vt.edu:9292",
+        "xml_file_name": "tool_config.xml"
+    }
+}

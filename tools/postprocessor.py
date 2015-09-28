@@ -200,7 +200,7 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   
   soup = BeautifulSoup(html, "lxml")
   
-  verbose = False
+  verbose = True
   
   TAGS = [ ('script', 'src'), ('link', 'href'), ('img', 'src'), ('a', 'href') ]
   
@@ -275,10 +275,10 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
     soup.find('div', class_=class_name).extract()
   soup.find('img', alt='nsf').extract()
   
-  total_real_exercises = 0
-  for exercise, properties in exercises.items():
-    if 'points' in properties:
-      total_real_exercises += 1
+  total_real_exercises = len(exercises)#0
+  #for exercise, properties in exercises.items():
+  #  if 'points' in properties:
+  #    total_real_exercises += 1
   if total_real_exercises <= 1:
     if total_real_exercises == 0:
       filename = mod_name+'.html'
@@ -336,12 +336,22 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   new_slide = []
   found = []
   previous_parent = None
+  i = 0
   for section_div in content_div:
-    #print "\tNew Section"
+    print "\tNew Section"
     for subsection_div in section_div:
-      #print "\t\tNew Subsection"
+      print "\t\tNew Subsection"
+      name = "NEXT SLIDE"
       for parent, body in subsection_div:
-        #print "\t\t\tBody:", type(body)
+        print "\t\t\t", str(body)[:40]
+        new_slide.append( (parent, body) )
+      if not ''.join([str(s[1]) for s in new_slide]).strip():
+        continue
+      slides.append((name, new_slide))
+      new_slide = []
+      total_exercises += 1
+      found.append(name)
+      '''#print "\t\t\tBody:", type(body)
         # If we find a slideshow or practice exercise, then make it its own fragment
         if isinstance(body, element.Tag) and body.has_attr('id'):
           name = body['id']
@@ -357,17 +367,17 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
             total_exercises += 1
             found.append(name)
         else:
-          new_slide.append( (parent, body) )
+          new_slide.append( (parent, body) )'''
       # Anything after that exercise gets placed in a trailing slide
       #     before we move onto the next subsection
-      if new_slide and parent != previous_parent:
+      '''if new_slide and parent != previous_parent:
         if ''.join([str(s[1]) for s in new_slide]).strip():
           if has_sections and previous_parent == None:
             previous_parent = parent
             continue
           slides.append(("", new_slide))
           new_slide = []
-          previous_parent = parent
+          previous_parent = parent'''
   if verbose:
     print "\tPhase 2: Clustered into {} slides. Found {} exercises, expected {}.".format(len(slides), total_exercises, len(exercises))
   
@@ -432,7 +442,7 @@ def make_lti(config):
     for section_name, section_data in sections.items():
       name = section_name.split('/')[1] if '/' in section_name else section_name
       path = os.path.join(dest_dir, name+".html")
-      break_up_fragments(path, section_data['exercises'], tuple(html_files)+ignore_files, url_index, config.book_name)
+      break_up_fragments(path, section_data['sections'], tuple(html_files)+ignore_files, url_index, config.book_name)
 
 def main(argv):
   if len(argv) != 3:
