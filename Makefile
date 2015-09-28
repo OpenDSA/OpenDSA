@@ -8,7 +8,7 @@ CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicat
 CSSLINTFLAGS = --quiet --ignore=ids,adjoining-classes
 MINIMIZE = uglifyjs
 
-.PHONY: all clean lint csslint jshint min CS2114 CS2114F15 CS223 CS5114 CS3114 CS3114notes CS150 OpenDSA test testX IS allBooks nomin pull CPSC270S15 CS2401 COP3530 CS208 ECE252 Tutorial TDDD86_2014 S15 CSCI115
+.PHONY: all clean lint csslint jshint min CS2114 CS2114F15 CS223 CS5114 CS3114 CS3114LTI CS3114notes CS150 OpenDSA test testX IS allBooks nomin pull CPSC270S15 CS2401 COP3530 CS208 ECE252 Tutorial TDDD86_2014 S15 CSCI115
 
 all: lint
 
@@ -133,6 +133,9 @@ CS3114: min
 CS3114_rev: min
 	python $(CONFIG_SCRIPT) config/CS3114_rev.json
 
+CS3114LTI: min
+	python $(CONFIG_SCRIPT) config/CS3114LTI.json
+
 CS3114AM: min
 	python $(CONFIG_SCRIPT) config/CS3114AM.json
 
@@ -176,7 +179,7 @@ testcmap: min
 	python $(CONFIG_SCRIPT) config/testcmap.json
 
 testanal: min
-	python $(CONFIG_SCRIPT) config/testanal.json	
+	python $(CONFIG_SCRIPT) config/testanal.json
 
 testfi: min
 	python $(CONFIG_SCRIPT) config/testfi.json
@@ -209,7 +212,7 @@ Everything: min
 	python $(CONFIG_SCRIPT) config/Everything.json
 
 AlgAnalTest: min
-	python $(CONFIG_SCRIPT) config/AlgAnalTest.json	
+	python $(CONFIG_SCRIPT) config/AlgAnalTest.json
 
 invalid: min
 	python $(CONFIG_SCRIPT) config/invalid.json
