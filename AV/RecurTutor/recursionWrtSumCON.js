@@ -11,7 +11,7 @@
   av.step();
 
   var labela = av.label("First Version", {left: 70, top: -20});
-  var  pseudo = av.code(" int sum(int arr[], int size){\n if (size == 0)\n  return 0;\n else {\n  int smallResult = sum(arr, size-1);\n  return smallResult + arr[size-1];\n  }\n}" , {lineNumbers:false , top:0 , left:70});
+  var  pseudo = av.code("int sum(int arr[], int size){\n if (size == 0)\n  return 0;\n else {\n  int smallResult = sum(arr, size-1);\n  return smallResult + arr[size-1];\n  }\n}" , {lineNumbers:false , top:0 , left:70});
   
   av.step();
     
@@ -40,7 +40,7 @@
 
   av.step();
   
-  av.umsg("You can even have the recursive call in the if condition insted of the base case as long as you have the right condition to stop the recursice function.");
+  av.umsg("You can even have the recursive call in the if condition instead of the base case as long as you have the right condition to stop the recursice function.");
   
   var labeld = av.label("Fourth Version", {left: 430, top: 190});
   var  pseudo4 = av.code("int sum(int arr[], int size){\n if (size > 0)\n  return sum(arr, size - 1 ) +\n  arr[size - 1];\n return 0; \n}", {lineNumbers:false , top:215 , left:430});
