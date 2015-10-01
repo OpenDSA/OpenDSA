@@ -1,0 +1,14 @@
+{
+  "translations" :{
+    "en": {
+      ".avTitle": "Interpolation Search Visualization",
+      "av_Authors": "Kasper Hellström",
+      "#about": "About",
+      "#run": "Run",
+      "#reset": "Reset",
+      "#arraysizeLabel": " Array size: ",
+      "#arrayValuesLabel": " Your values: ",
+      "av_arrValsPlaceholder": "Type some array values, or click 'run' to use random values"
+    }
+  }
+}
