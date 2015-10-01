@@ -53,7 +53,7 @@
     "no-octal": 2,
     "no-param-reassign": [2, {"props": false}],
     "no-redeclare": [2, {"builtinGlobals": true}],
-    no-return-assign: [2, "always"],
+    "no-return-assign": [2, "always"],
     "no-self-compare": 2,
     "no-sequences": 2,
     "no-throw-literal": 2,
@@ -86,7 +86,7 @@
     "eol-last": 2,
     "func-style": [2, "declaration"],
     "indent": [2, 2],
-    "key-spacing": [2, {"beforeColon": false, "afterColon": true, align: "value" }],
+    "key-spacing": [2, {"beforeColon": false, "afterColon": true, "align": "value" }],
     "linebreak-style": [2, "unix"],
     "new-cap": 2,
     "new-parens": 2,
@@ -119,7 +119,12 @@
     "no-bitwise": 2
   },
   "env": {
+    "browser": true,
     "jquery": true
+  },
+  "globals": {
+    "ODSA": true,
+    "JSAV": true
   },
   "extends": "eslint:recommended"
 }

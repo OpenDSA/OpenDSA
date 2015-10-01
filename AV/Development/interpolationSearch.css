@@ -1,0 +1,79 @@
+.jsavcontainer {
+  height: auto;
+}
+.jsavline {
+  height: 17px;
+}
+#jsavcontainer .jsavcanvas {
+  height: 332px !important;
+  max-height: 332px !important;
+}
+.jsavcanvas svg {
+  /*z-index: 101;*/
+  height: 302px;
+}
+.jsavhighlight {
+  background-color: #fe7 !important;
+}
+.returnline {
+  background-color: #def;
+}
+/* bar array */
+.jsavbararray {
+  padding-bottom: 70px;
+}
+.jsavbararray .jsavnode {
+  width: 25px;
+}
+.jsavbararray .jsavvaluelabel {
+  font-size: 90%;
+}
+/* pointers */
+.jsavpointer.selected {
+  background-color: transparent;
+}
+.jsavpointer.selected .jsavpointerarea {
+  background-color: #bbf;
+}
+.jsavpointer .jsavlabel {
+  position: relative;
+  top: 40px;
+}
+.jsavpointer .jsavpointerarea {
+  background-color: #ccc;
+  border: none;
+  border-radius: 5px;
+  height: 20px;
+  width: 20px;
+}
+/* code */
+.jsavcode.collapsed {
+  height: 22px;
+  background-color: #FAFAFA;
+}
+.jsavcode.collapsed::before {
+  content: "Double click to show code";
+}
+.jsavcode.collapsed .jsavcodeline {
+  display: none;
+}
+/* return box */
+.returnbox {
+  width: 400px;
+  text-align: center;
+  margin: 10px auto;
+  padding: 10px;
+  background-color: #ddd;
+  border-radius: 5px;
+}
+#returndone {
+  color: #090;
+  font-weight: bold;
+}
+/* model answer */
+.jsavmodelanswer .jsavcanvas {
+  min-width: 0 !important;
+}
+.jsavmodelanswer .jsavline {
+  height: 50px;
+}

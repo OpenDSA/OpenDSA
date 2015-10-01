@@ -3,16 +3,10 @@
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
-    "Python": [
-      "py"
-    ],
-    "Processing": [
-      "pde"
-    ],
-    "C++": [
-      "cpp",
-      "h"
-    ]
+    "Python": { "ext":["py"], "label":"Python", "lang":"python"},
+    "Java": { "ext":["java"], "label":"Java", "lang":"java"},
+    "Processing": { "ext":["pde"], "label":"Processing","lang":"java"},
+    "C++":{ "ext": ["cpp", "h"],"label":"C++","lang":"C++"}
   },
   "module_origin": "https://trak.cs.hut.fi",
   "build_JSAV": false,
@@ -1209,9 +1203,16 @@
         "long_name": "Dictionary Implementation with BST",
         "exercises": {}
       },
-      "Development/CompleteTree": {
+      "Binary/CompleteTree": {
         "long_name": "Array Implementation for Complete Trees",
-        "exercises": {}
+        "exercises": {
+          "CompleteFIB": {
+            "long_name": "Complete Tree Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
       },
       "Binary/Heaps": {
         "long_name": "Heaps and Priority Queues",
@@ -1284,12 +1285,25 @@
       }
     },
     "GeneralTrees": {
-      "Development/GenTreeIntro": {
+      "General/GenTreeIntro": {
         "long_name": "General Trees",
-        "exercises": {}
+        "exercises": {
+          "GenTreePreTravCON": {
+            "long_name": "General Tree Preorder Traversal Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "GenTreePostTravCON": {
+            "long_name": "General Tree Postorder Traversal Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
-      "Development/UnionFind": {
-        "long_name": "UnionFind",
+      "General/UnionFind": {
+        "long_name": "Union/Find",
         "exercises": {
           "ufCON": {
             "long_name": "Union/Find Example",
@@ -1319,9 +1333,58 @@
         "long_name": "K-ary Trees",
         "exercises": {}
       },
-      "Development/SequentialRep": {
+      "General/SequentialRep": {
         "long_name": "Sequential Tree Representations",
-        "exercises": {}
+        "exercises": {
+         "SequentialTreeCON": {
+            "long_name": "First sequential representation Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "SequentialTreePRO": {
+            "long_name": "First Sequential Representation Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+         "SequentialTreeAltCON": {
+            "long_name": "Second sequential representation Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "SequentialTreeAltPRO": {
+            "long_name": "Alternate Sequential Representation Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+         "SequentialTreeBitsCON": {
+            "long_name": "Bit vector sequential representation Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "SequentialTreeBitVectorPRO": {
+            "long_name": "Bit Vector Sequential Representation Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+         "SequentialGenTreeCON": {
+            "long_name": "General Tree sequential representation Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "SequentialTreeGenTreePRO": {
+            "long_name": "General Tree Sequential Representation Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
       }
     },
     "Search Structures": {
@@ -1745,19 +1808,41 @@
       }
     },
     "Limits to Computing": {
-      "Development/LimComp": {
+      "NP/LimComp": {
         "long_name": "Chapter Intro: Limits to Computing",
         "exercises": {}
       },
-      "Development/Reduction": {
+      "NP/Reduction": {
         "long_name": "Reductions",
-        "exercises": {}
+        "exercises": {
+          "pairToSortReduction": {
+            "long_name": "Reduction of Pairing to Sorting",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "sortToPairReduction": {
+            "long_name": "Reduction of Sorting to Pairing",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "matrixMulReduction": {
+            "long_name": "Matrix Multiplication",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          }
+        }
       },
-      "Development/NPComplete": {
-        "long_name": "NP-Complete Problems",
-        "exercises": {}
+      "NP/NPComplete": {
+        "long_name":"NP Completeness",
+        "exercises":{}
       },
-      "Development/NPCoping": {
+      "NP/NPCoping": {
         "long_name": "Coping with NP-complete problems",
         "exercises": {}
       }
