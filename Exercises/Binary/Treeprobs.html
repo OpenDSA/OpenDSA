@@ -1,41 +1,20 @@
 <!DOCTYPE html>
-<html data-require="math jsav">
+<html data-require="math jsav Treeprobs">
   <head>
     <title>Tree Definition Questions</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
-      #Treeprobs .jsavcontainer {
-        height: 200px;
-      }
+    #Treeprobs .jsavcontainer {
+      height: 200px;
+    }
     </style>
   </head>
-
   <body data-height="650" data-width="950">
-    <script>
-      var initJSAV = function () {
-        var jsav = new JSAV("Treeprobs");
-        jsav.recorded();
-        var bt = jsav.ds.binarytree({center: true, visible: true, nodegap: 15});
-        bt.root(14);
-        var rt = bt.root();
-        rt.left(2);
-        rt.left().left(1);
-        rt.left().right(3);
-        rt.right(11);
-        rt.right().left(10);
-        rt.right().left().left(7);
-        rt.right().right(30);
-        rt.right().right().left(40);
-        bt.layout();
-      }
-    </script>
-
     <div class="exercise">
       <div class="vars">
-        <var id="JSAV">initJSAV()</var>
+        <var id="JSAV">treeprobs.initJSAV()</var>
       </div>
-
       <div class="problems">
         <div>
           <div class="vars">
@@ -47,10 +26,9 @@
           <p class="solution" data-type="text"><var>ANS</var></p>
           <div class="hints">
             <p>Anything that is <em>not</em> a leaf node is an
-              internal node. Internal nodes might have 1 or 2 children.</p>
+            internal node. Internal nodes might have 1 or 2 children.</p>
           </div>
         </div>
-
         <div id="problem-type-or-description-2">
           <div class="vars">
             <var id="ANS">4</var>
@@ -64,7 +42,6 @@
             <p>Anything that has <em>no</em> children is a leaf node.</p>
           </div>
         </div>
-
         <div id="problem-type-or-description-3">
           <div class="vars">
             <var id="ANS">6</var>
@@ -76,10 +53,9 @@
           <p class="solution" data-type="text"><var>ANS</var></p>
           <div class="hints">
             <p>Siblings must have the same parent. If a node has two
-              children, then each such child has a sibling.</p>
+            children, then each such child has a sibling.</p>
           </div>
         </div>
-
         <div id="problem-type-or-description-4">
           <div class="vars">
             <var id="ANS">8</var>
@@ -88,13 +64,12 @@
             <div id="Treeprobs" class="jsavcanvas"></div>
           </p>
           <p class="question">How many descendents does the root of this
-            tree have?</p>
+          tree have?</p>
           <p class="solution" data-type="text"><var>ANS</var></p>
           <div class="hints">
             <p>Every node <em>except</em> the root is a descendent.</p>
           </div>
         </div>
-
         <div id="TreeHeight">
           <div id="Treeprobs" class="jsavcanvas"></div>
           <p class="question">What is the height of this tree?</p>
@@ -114,7 +89,6 @@
             <p>Count the number of steps to the deepest node, and add 1.</p>
           </div>
         </div>
-
         <div id="TreeDepth">
           <div id="Treeprobs" class="jsavcanvas"></div>
           <p class="question">What is the depth of this tree?</p>
@@ -134,7 +108,6 @@
             <p>Nodes have depth.</p>
           </div>
         </div>
-
         <div id="FullComplete">
           <div id="Treeprobs" class="jsavcanvas"></div>
           <p class="question">Which statement is correct?</p>
@@ -146,9 +119,9 @@
           </ul>
           <div class="hints">
             <p>Do any internal nodes have only one child? If so, the
-             tree is <em>not</em> full.</p>
+            tree is <em>not</em> full.</p>
             <p>A complete tree fills in nodes level by level, with the
-              bottom level filled in from left to right.</p>
+            bottom level filled in from left to right.</p>
           </div>
         </div>
       </div>
