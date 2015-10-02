@@ -1,7 +1,7 @@
 /*global window */
 (function() {
   "use strict";
-  var overHead = {
+  var treeOverhead = {
     genAnswer: function(overhead, sum) {
       while ((sum % 2 === 0) && (overhead % 2 === 0)) {
         overhead = overhead / 2;
@@ -12,5 +12,5 @@ console.log("Overhead: " + overhead.toString() + "/" + sum.toString());
     }
   };
 
-  window.overHead = window.overHead || overHead;
+  window.treeOverhead = window.treeOverhead || treeOverhead;
 }());

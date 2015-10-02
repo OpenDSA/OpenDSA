@@ -5,7 +5,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
-      #Dprobs .jsavcontainer {
+      #Treeprobs .jsavcontainer {
         height: 200px;
       }
     </style>
@@ -14,7 +14,7 @@
   <body data-height="650" data-width="950">
     <script>
       var initJSAV = function () {
-        var jsav = new JSAV("Dprobs");
+        var jsav = new JSAV("Treeprobs");
         jsav.recorded();
         var bt = jsav.ds.binarytree({center: true, visible: true, nodegap: 15});
         bt.root(14);
@@ -42,7 +42,7 @@
             <var id="ANS">5</var>
           </div>
           <p class="question">How many internal nodes does this tree have?
-            <div id="Dprobs" class="jsavcanvas"></div>
+            <div id="Treeprobs" class="jsavcanvas"></div>
           </p>
           <p class="solution" data-type="text"><var>ANS</var></p>
           <div class="hints">
@@ -56,7 +56,7 @@
             <var id="ANS">4</var>
           </div>
           <p class="problem">
-            <div id="Dprobs" class="jsavcanvas"></div>
+            <div id="Treeprobs" class="jsavcanvas"></div>
           </p>
           <p class="question">How many leaf nodes does this tree have?</p>
           <p class="solution" data-type="text"><var>ANS</var></p>
@@ -70,7 +70,7 @@
             <var id="ANS">6</var>
           </div>
           <p class="problem">
-            <div id="Dprobs" class="jsavcanvas"></div>
+            <div id="Treeprobs" class="jsavcanvas"></div>
           </p>
           <p class="question">How many nodes in the tree have at least one sibling?</p>
           <p class="solution" data-type="text"><var>ANS</var></p>
@@ -85,7 +85,7 @@
             <var id="ANS">8</var>
           </div>
           <p class="problem">
-            <div id="Dprobs" class="jsavcanvas"></div>
+            <div id="Treeprobs" class="jsavcanvas"></div>
           </p>
           <p class="question">How many descendents does the root of this
             tree have?</p>
@@ -96,7 +96,7 @@
         </div>
 
         <div id="TreeHeight">
-          <div id="Dprobs" class="jsavcanvas"></div>
+          <div id="Treeprobs" class="jsavcanvas"></div>
           <p class="question">What is the height of this tree?</p>
           <div class="solution"><var>4</var></div>
           <ul class="choices" data-category="true">
@@ -116,7 +116,7 @@
         </div>
 
         <div id="TreeDepth">
-          <div id="Dprobs" class="jsavcanvas"></div>
+          <div id="Treeprobs" class="jsavcanvas"></div>
           <p class="question">What is the depth of this tree?</p>
           <div class="solution">Trees have height -- they do not have depth</div>
           <ul class="choices" data-category="true">
@@ -136,7 +136,7 @@
         </div>
 
         <div id="FullComplete">
-          <div id="Dprobs" class="jsavcanvas"></div>
+          <div id="Treeprobs" class="jsavcanvas"></div>
           <p class="question">Which statement is correct?</p>
           <div class="solution">The tree is neither full nor complete</div>
           <ul class="choices">
