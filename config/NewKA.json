@@ -3,9 +3,21 @@
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
-    "Processing": { "ext":["pde"], "label":"Processing","lang":"java"},
-    "Java_Generic": { "ext":["java"], "label":"Java (Generic)","lang":"java"},
-    "C++":{ "ext": ["cpp", "h"],"label":"C++","lang":"C++"}
+    "Processing": {
+      "ext": ["pde"],
+      "label": "Processing",
+      "lang": "java"
+    },
+    "Java_Generic": {
+      "ext": ["java"],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": ["cpp", "h"],
+      "label": "C++",
+      "lang": "C++"
+    }
   },
   "lang": "en",
   "module_origin": "http://algoviz.org",
@@ -476,7 +488,7 @@
       },
       "NewKA/WritingTraversals": {
         "long_name": "Writing Tree Traversals",
-        "exercises": {        
+        "exercises": {
           "BTincPROG": {
             "long_name": "Node Update Exercise",
             "showhide": "show",
@@ -572,7 +584,7 @@
             "threshold": 3.0
           }
         }
-      }, 
+      },
       "NewKA/CompleteTree": {
         "long_name": "Array Implementation for Complete Trees",
         "exercises": {
@@ -597,14 +609,14 @@
           }
         }
       },
-      "NewKA/Huffman": {
-        "long_name": "Huffman Coding Trees",
+      "NewKA/BinaryChapSumm": {
+        "long_name": "BinaryChapSumm",
         "exercises": {
-          "HuffmanDecodeFIB": {
-            "long_name": "Huffman Decoding Proficiency Exercise",
+          "BinaryChapSumm": {
+            "long_name": "BinaryChapSumm",
             "showhide": "show",
             "required": true,
-            "points": 1.0,
+            "points": 2.0,
             "threshold": 5
           }
         }
