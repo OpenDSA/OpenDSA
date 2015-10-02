@@ -40,7 +40,7 @@
     "no-floating-decimal": 2,
     "no-implicit-coercion": [2, {"boolean": true, "number": true, "string": true}],
     "no-implied-eval": 2,
-    "no-invalid-this": 2,
+    "no-invalid-this": 0,
     "no-labels": 2,
     "no-lone-blocks": 2,
     "no-loop-func": 2,
@@ -67,7 +67,7 @@
     "wrap-iife": [2, "any"],
     "yoda": 2,
 
-    "strict": [1, "function"], // KA exercises don't properly handle globlal "use strict"
+    "strict": [1, "function"],
 
     "no-delete-var": 2,
     "no-label-var": 2,
@@ -123,6 +123,7 @@
   },
   "globals": {
     "ODSA": true,
+    "PARAMS": true,
     "JSAV": true
   },
   "extends": "eslint:recommended"
