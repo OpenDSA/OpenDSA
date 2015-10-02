@@ -5,10 +5,10 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :satisfies: binary tree space requirements
+   :satisfies: BST
    :topic: Binary Trees
 
-Binary Tree Space Requirements
-==============================
+Binary Search Trees
+===================
 
-.. avembed:: Exercises/Binary/TreeOverhead.html ka
+.. avembed:: Exercises/Binary/BSTSumm.html ka

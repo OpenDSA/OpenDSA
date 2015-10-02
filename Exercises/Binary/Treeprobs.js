@@ -1,4 +1,6 @@
+/*global window */
 (function() {
+  "use strict";
   var treeprobs = {
     initJSAV: function() {
       var jsav = new JSAV("Treeprobs");
@@ -23,4 +25,4 @@
   };
 
   window.treeprobs = window.treeprobs || treeprobs;
-}())
+}());

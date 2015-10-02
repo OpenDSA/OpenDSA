@@ -525,6 +525,29 @@
           }
         }
       },
+      "NewKA/BinaryTreeNodeSpace": {
+        "long_name": "Full Binary Tree Node Space Requirements",
+        "exercises": {
+          "TreeOverhead": {
+            "long_name": "Tree Overhead Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 2,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/BST": {
+        "long_name": "Full Binary Tree Node Space Requirements",
+        "exercises": {
+          "BSTSumm": {
+            "long_name": "BST Question Summary",
+            "required": true,
+            "points": 1,
+            "threshold": 2
+          }
+        }
+      },
       "NewKA/BinaryTreeGuidedInfFlw": {
         "long_name": "Binary Tree Guided Information Flow",
         "exercises": {
@@ -550,18 +573,6 @@
           }
         }
       }, 
-      "NewKA/BinaryTreeNodeSpace": {
-        "long_name": "Full Binary Tree Node Space Requirements",
-        "exercises": {
-          "TreeOverheadSumm": {
-            "long_name": "Tree Overhead Exercise",
-            "showhide": "show",
-            "required": true,
-            "points": 2,
-            "threshold": 5
-          }
-        }
-      },
       "NewKA/CompleteTree": {
         "long_name": "Array Implementation for Complete Trees",
         "exercises": {
@@ -569,7 +580,7 @@
             "long_name": "Complete Tree Exercise",
             "showhide": "show",
             "required": true,
-            "points": 1,
+            "points": 1.0,
             "threshold": 5
           }
         }
@@ -581,8 +592,8 @@
             "long_name": "BST/Heap Summary",
             "showhide": "show",
             "required": true,
-            "points": 1,
-            "threshold": 3
+            "points": 2.0,
+            "threshold": 5
           }
         }
       },

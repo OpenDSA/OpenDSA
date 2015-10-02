@@ -190,6 +190,12 @@
             "required": true,
             "points": 2.0,
             "threshold": 0.90
+          },
+          "BSTSumm": {
+            "long_name": "BST Question Summary",
+            "required": true,
+            "points": 1,
+            "threshold": 2
           }
         }
       },
