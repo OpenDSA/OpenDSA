@@ -3,16 +3,9 @@
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
-    "Processing": {
-      "ext": ["pde"],
-      "label": "Processing",
-      "lang": "java"
-    },
-    "C++": {
-      "ext": ["cpp", "h"],
-      "label": "C++",
-      "lang": "C++"
-    }
+    "Processing": { "ext":["pde"], "label":"Processing","lang":"java"},
+    "Java_Generic": { "ext":["java"], "label":"Java (Generic)","lang":"java"},
+    "C++":{ "ext": ["cpp", "h"],"label":"C++","lang":"C++"}
   },
   "lang": "en",
   "module_origin": "http://algoviz.org",
@@ -289,8 +282,8 @@
             "points": 1,
             "threshold": 5
           },
-          "AlistDeletePRO": {
-            "long_name": "Array-based List Delete Exercise",
+          "AlistRemovePRO": {
+            "long_name": "Array-based List Remove Exercise",
             "showhide": "show",
             "required": true,
             "points": 1,

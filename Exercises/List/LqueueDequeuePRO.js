@@ -1,7 +1,7 @@
 /*global JSAV, window */
 (function() {
   "use strict";
-  var jsav,               // The JSAV object
+  var av,               // The JSAV object
       leftMargin,           //
       topMargin,            //
       answerArr = [],       // The (internal) array that stores the correct answer
@@ -39,28 +39,28 @@
     },
 
     // Helper function for seting pointer
-    setPointer: function(name, node) {
+    setPointer: function(pname, node) {
       var pointerRight = {anchor: "right top", myAnchor: "left bottom", fixed: "true",
                           left: -10, top: -20};
       var pointerLeft = {anchor: "left top", myAnchor: "right bottom", fixed: "true",
                          left: 15, top: -20};
-      if (name === "rear") { //(node.pNum === 1) {
+      if (pname === "rear") { //(node.pNum === 1) {
         node.pNum ++;
-        return node.jsav.pointer(name, node, pointerRight);
-      }//  else if (node.pNum === 0) {
+        return node.jsav.pointer(pname, node, pointerRight);
+      } //  else if (node.pNum === 0) {
       node.pNum ++;
-      return node.jsav.pointer(name, node, pointerLeft);
+      return node.jsav.pointer(pname, node, pointerLeft);
     },
 
     // Add an edge from obj1 to obj2
     connection: function(obj1, obj2) {
       if (obj1 === obj2) { return; }
-      var left = obj1.jsav.container.find(".jsavcanvas:first").offset().left;
-      var top = obj1.jsav.container.find(".jsavcanvas:first").offset().top;
-      var fx = obj1.element.offset().left + 39 - left;
-      var tx = obj2.element.offset().left  + 2 - left;
-      var fy = obj1.element.offset().top + 16 - top;
-      var ty = obj2.element.offset().top + 16 - top;
+      var leftOffset = obj1.jsav.container.find(".jsavcanvas:first").offset().left;
+      var topOffset = obj1.jsav.container.find(".jsavcanvas:first").offset().top;
+      var fx = obj1.element.offset().left + 39 - leftOffset;
+      var tx = obj2.element.offset().left + 2 - leftOffset;
+      var fy = obj1.element.offset().top + 16 - topOffset;
+      var ty = obj2.element.offset().top + 16 - topOffset;
       var fx1 = fx, fy1 = fy, tx1 = tx, ty1 = ty;
 
       var disx = (fx - tx - 22) > 0 ? 1 : (fx - tx - 22) === 0 ? 0 : -1;
@@ -92,8 +92,8 @@
         ty1 = ty;
       }
 
-      var edge = jsav.g.path(["M", fx, fy, "C", fx1, fy1, tx1, ty1, tx, ty].join(","),
-                             {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
+      var edge = av.g.path(["M", fx, fy, "C", fx1, fy1, tx1, ty1, tx, ty].join(","),
+                           {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
       if (obj1.odsa_next) {
         obj1.odsa_edgeToNext.element.remove();
       } else {
@@ -122,7 +122,7 @@
     copyHandler: function() {
       if (status === 1) {
         copyFrom = selected_node;
-        jsav.effects.copyValue(selected_node, returnArr, 0);
+        av.effects.copyValue(selected_node, returnArr, 0);
         selected_node.unhighlight();
         status = 0;
       }
@@ -176,7 +176,7 @@
               this.pNum++;
             }
           }
-          jsav.container.trigger("jsav-updaterelative");
+          av.container.trigger("jsav-updaterelative");
           selected_pointer.element.removeClass("highlight");
           selected_pointer = null;
           status = 0;
@@ -200,20 +200,20 @@
 
     // Add a tail for the target node
     addTail: function(node) {
-      var left = node.element.offset().left - jsav.container.find(".jsavcanvas:first").offset().left;
-      var top = node.element.offset().top - jsav.container.find(".jsavcanvas:first").offset().top;
-      var fx = left + 34;
-      var tx = left + 44;
-      var fy = top + 32;
-      var ty = top + 1;
+      var leftOffset = node.element.offset().left - av.container.find(".jsavcanvas:first").offset().left;
+      var topOffset = node.element.offset().top - av.container.find(".jsavcanvas:first").offset().top;
+      var fx = leftOffset + 34;
+      var tx = leftOffset + 44;
+      var fy = topOffset + 32;
+      var ty = topOffset + 1;
 
       if (node.odsa_tail) {
         node.odsa_tail.element.remove();
-        node.odsa_tail = jsav.g.line(fx, fy, tx, ty, {opacity: 100, "stroke-width": 1});
+        node.odsa_tail = av.g.line(fx, fy, tx, ty, {opacity: 100, "stroke-width": 1});
       } else {
         node.odsa_edgeToNext.element.remove();
         node.odsa_next = null;
-        node.odsa_tail = jsav.g.line(fx, fy, tx, ty, {opacity: 100, "stroke-width": 1});
+        node.odsa_tail = av.g.line(fx, fy, tx, ty, {opacity: 100, "stroke-width": 1});
       }
       node.odsa_next = null;
     },
@@ -226,76 +226,6 @@
         fromNode = null;
         status = 0;
       }
-    },
-
-    // reset function definition
-    reset: function() {
-      var i;
-      leftMargin = 40;
-      topMargin = 60;
-      lqueueDequeuePRO.userInput = false;
-      connections = [];
-      selected_node = null;
-      copyFrom = null;
-      status = 0;
-
-      // Clear old JSAV canvas
-      if ($("#LqueueDequeuePRO")) {
-        $("#LqueueDequeuePRO").empty();
-      }
-
-      // Build JSAV Objects
-      jsav = new JSAV("LqueueDequeuePRO");
-      jsavList = jsav.ds.list({nodegap: 30, top: topMargin, left: leftMargin});
-      returnArr = jsav.ds.array(["null"], {left: leftMargin + 62, top: topMargin + 70});
-      jsav.label("return", {left: leftMargin + 18, top: topMargin + 73});
-
-      for (i = listSize - 1; i >= 0; i--) {
-        jsavList.addFirst(listArr[i]);
-      }
-      jsavList.layout();
-      front = lqueueDequeuePRO.setPointer("front", jsavList.get(0));
-      rear = lqueueDequeuePRO.setPointer("rear", jsavList.get(listSize - 1));
-      jsav.recorded();
-      jsav.forward();
-
-      for (i = 0; i < listSize; i++) {
-        // Store JSAV List orders
-        orderArr[i] = jsavList.get(i).id();
-        // Assign .odsa_next the object of the next JSAV node
-        jsavList.get(i).odsa_next = jsavList.get(i).next();
-        // Assign odsa_edgeToNext the edge connecting the JSAV node to the following node
-        jsavList.get(i).odsa_edgeToNext = jsavList.get(i).edgeToNext();
-      }
-      // Manually add tail to the last node.
-      jsavList.get(listSize - 1).odsa_tail =
-          jsav.g.line(leftMargin + 34 + (listSize - 1) * 74, 47 + topMargin,
-                      leftMargin + 44 + (listSize - 1) * 74, 16 + topMargin,
-                      {opacity: 100, "stroke-width": 1});
-
-      // Correct answer
-      answerOrderArr = orderArr.slice(0);
-      if (listSize !== 1) {
-        answerOrderArr.splice(1, 1);
-        answerOrderArr.length = listSize - 1;
-        answCopyFrom = jsavList.get(1);
-      } else {
-        answCopyFrom = null;
-      }
-      answFrontNode = jsavList.get(0);
-      if (listSize === 2) {
-        answRearNode = jsavList.get(0);
-      } else {
-        answRearNode = jsavList.get(listSize - 1);
-      }
-
-      // Bind click event handlers.
-      front.click(lqueueDequeuePRO.pclick);
-      rear.click(lqueueDequeuePRO.pclick);
-      returnArr.click(lqueueDequeuePRO.copyHandler);
-      jsavList.click(lqueueDequeuePRO.clickHandler);
-
-      lqueueDequeuePRO.userInput = false;
     },
 
     // Initialise the exercise
@@ -312,7 +242,7 @@
       // Make a copy.
       listArr = answerArr.slice(0);
 
-      lqueueDequeuePRO.reset();
+      reset();
 
       // correct answer
       if (listSize !== 1) {
@@ -323,7 +253,7 @@
       // Set up handler for 'makenull'
       $("#makenull").click(function() { lqueueDequeuePRO.makenull(); });
       // Set up handler for reset button
-      $("#reset").click(function() { lqueueDequeuePRO.reset(); });
+      $("#reset").click(function() { reset(); });
     },
 
     // Check user's answer for correctness: User's array must match answer
@@ -353,6 +283,73 @@
       return false;
     }
   };
+
+  // reset function definition
+  function reset() {
+    var i;
+    leftMargin = 40;
+    topMargin = 60;
+    lqueueDequeuePRO.userInput = false;
+    connections = [];
+    selected_node = null;
+    copyFrom = null;
+    status = 0;
+
+    // Clear the old JSAV canvas.
+    if ($("#LqueueDequeuePRO")) { $("#LqueueDequeuePRO").empty(); }
+
+    // Set up the display
+    av = new JSAV("LqueueDequeuePRO");
+    jsavList = av.ds.list({nodegap: 30, top: topMargin, left: leftMargin});
+    returnArr = av.ds.array(["null"], {left: leftMargin + 62, top: topMargin + 70});
+    av.label("return", {left: leftMargin + 18, top: topMargin + 73});
+
+    for (i = listSize - 1; i >= 0; i--) {
+      jsavList.addFirst(listArr[i]);
+    }
+    jsavList.layout();
+    front = lqueueDequeuePRO.setPointer("front", jsavList.get(0));
+    rear = lqueueDequeuePRO.setPointer("rear", jsavList.get(listSize - 1));
+    for (i = 0; i < listSize; i++) {
+      // Store JSAV List orders
+      orderArr[i] = jsavList.get(i).id();
+      // Assign .odsa_next the object of the next JSAV node
+      jsavList.get(i).odsa_next = jsavList.get(i).next();
+      // Assign odsa_edgeToNext the edge connecting the JSAV node to the following node
+      jsavList.get(i).odsa_edgeToNext = jsavList.get(i).edgeToNext();
+    }
+    // Manually add tail to the last node.
+    jsavList.get(listSize - 1).odsa_tail =
+      av.g.line(leftMargin + 34 + (listSize - 1) * 74, 47 + topMargin,
+                leftMargin + 44 + (listSize - 1) * 74, 16 + topMargin,
+                {opacity: 100, "stroke-width": 1});
+
+    // Correct answer
+    answerOrderArr = orderArr.slice(0);
+    if (listSize !== 1) {
+      answerOrderArr.splice(1, 1);
+      answerOrderArr.length = listSize - 1;
+      answCopyFrom = jsavList.get(1);
+    } else {
+      answCopyFrom = null;
+    }
+    answFrontNode = jsavList.get(0);
+    if (listSize === 2) {
+      answRearNode = jsavList.get(0);
+    } else {
+      answRearNode = jsavList.get(listSize - 1);
+    }
+    av.displayInit();
+    av.recorded();
+
+    // Bind click event handlers.
+    front.click(lqueueDequeuePRO.pclick);
+    rear.click(lqueueDequeuePRO.pclick);
+    returnArr.click(lqueueDequeuePRO.copyHandler);
+    jsavList.click(lqueueDequeuePRO.clickHandler);
+
+    lqueueDequeuePRO.userInput = false;
+  }
 
   window.lqueueDequeuePRO = window.lqueueDequeuePRO || lqueueDequeuePRO;
 }());

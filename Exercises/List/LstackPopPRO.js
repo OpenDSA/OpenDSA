@@ -1,7 +1,7 @@
 /*global JSAV, window */
 (function() {
   "use strict";
-  var jsav,             // The JSAV object
+  var av,                 // The JSAV object
       answerArr = [],     // The (internal) array that stores the correct answer
       listArr = [],       // Stores the jsav list values
       ptop,               // pointer top
@@ -15,103 +15,6 @@
   var lstackPopPRO = {
     userInput: null,            // Boolean: Tells us if user ever did anything
 
-    // pointer click handler
-    pclick: function(pointer) {
-      if (selected_node !== null) { // Unhighlight selected node
-        selected_node.unhighlight();
-        selected_node = null;
-      }
-      if (selected_pointer !== null) { // Unselecting the pointer
-        selected_pointer.element.removeClass("highlight");
-        selected_pointer = null;
-      } else { // Selecting the top poiner
-        selected_pointer = pointer;
-        selected_pointer.element.toggleClass("highlight");
-      }
-      lstackPopPRO.userInput = true;
-    },
-
-    copyHandler: function() {
-      if (selected_node !== null) { // Copy the value
-        selected_node.unhighlight();
-        jsav.effects.copyValue(selected_node, arrReturn, 0);
-        copyFrom = selected_node;
-        lstackPopPRO.userInput = true;
-      }
-    },
-
-    // Click event handler on the list
-    clickHandler: function() {
-      if (selected_node !== null) { // Deal with old highlight
-        if (selected_node === this) { // Deselecting this node
-          this.unhighlight();
-          selected_node = null;
-        } else {
-          selected_node.unhighlight();
-          selected_node = this;
-          this.highlight();
-        }
-      } else if (selected_pointer !== null) { // Point to this node
-        selected_pointer.target(this);
-        jsav.container.trigger("jsav-updaterelative");
-        selected_pointer.element.removeClass("highlight");
-        selected_pointer = null;
-      } else { // Nothing was selected already
-        selected_node = this;
-        this.highlight();
-      }
-      lstackPopPRO.userInput = true;
-    },
-
-    addTail: function(node) {
-      if (node.odsa_tail) {
-        node.odsa_tail.element.remove();
-        var pos = $("#" + node.id()).position();
-        var fx = pos.left + 34;
-        var tx = pos.left + 44;
-        var fy = pos.top + 47 + 40;
-        var ty = pos.top + 16 + 40;
-        node.odsa_tail = jsav.g.line(fx, fy, tx, ty, {opacity: 100, "stroke-width": 1});
-      }
-    },
-
-    // reset function definition
-    reset: function() {
-      var i;
-      lstackPopPRO.userInput = false;
-      selected_node = null;
-      selected_pointer = null;
-      copyFrom = null;
-
-      if ($("#LstackPopPRO")) {
-        $("#LstackPopPRO").empty();
-      }
-      jsav = new JSAV("LstackPopPRO");
-      jsav.recorded();
-
-      jsavList = jsav.ds.list({nodegap: 30, top: 40, left: 0});
-      for (i = listSize - 1; i >= 0; i--) {
-        jsavList.addFirst(listArr[i]);
-      }
-      jsavList.layout();
-
-      arrReturn = jsav.ds.array([""], {left: 75, top: 100});
-      jsav.label("return", {left: jsavList.get(0).element.position().left, top: 105});
-      for (i = 0; i < listSize; i++) {
-        jsavList.get(i).odsa_next = jsavList.get(i).next();
-        jsavList.get(i).odsa_edgeToNext = jsavList.get(i).edgeToNext();
-      }
-      jsavList.get(listSize - 1).odsa_tail = jsav.g.line(34 + (listSize - 1) * 74, 47 + 40,
-                                                         44 + (listSize - 1) * 74, 16 + 40,
-                                                         {opacity: 100, "stroke-width": 1});
-      ptop = jsav.pointer("top", jsavList.get(0), {fixed: "true"});
-      ptop.click(lstackPopPRO.pclick);
-
-      arrReturn.click(lstackPopPRO.copyHandler);
-      jsavList.click(lstackPopPRO.clickHandler); // Rebind click handler after reset
-      lstackPopPRO.userInput = false;
-    },
-
     // Initialise the exercise
     initJSAV: function(size) {
       var i;
@@ -124,10 +27,10 @@
       }
       listArr = answerArr.slice(0);
 
-      lstackPopPRO.reset();
+      reset();
 
       // Set up handler for reset button
-      $("#reset").click(function() { lstackPopPRO.reset(); });
+      $("#reset").click(function() { reset(); });
     },
 
     // Check user's answer for correctness: User's array must match answer
@@ -137,6 +40,94 @@
       return true;
     }
   };
+
+  // pointer click handler
+  function pclick(pointer) {
+    if (selected_node !== null) { // Unhighlight selected node
+      selected_node.unhighlight();
+      selected_node = null;
+    }
+    if (selected_pointer !== null) { // Unselecting the pointer
+      selected_pointer.element.removeClass("highlight");
+      selected_pointer = null;
+    } else { // Selecting the top poiner
+      selected_pointer = pointer;
+      selected_pointer.element.toggleClass("highlight");
+    }
+    lstackPopPRO.userInput = true;
+  }
+
+  function copyHandler() {
+    if (selected_node !== null) { // Copy the value
+      selected_node.unhighlight();
+      av.effects.copyValue(selected_node, arrReturn, 0);
+      copyFrom = selected_node;
+      lstackPopPRO.userInput = true;
+    }
+  }
+
+  // Click event handler on the list
+  function clickHandler() {
+    if (selected_node !== null) { // Deal with old highlight
+      if (selected_node === this) { // Deselecting this node
+        this.unhighlight();
+        selected_node = null;
+      } else {
+        selected_node.unhighlight();
+        selected_node = this;
+        this.highlight();
+      }
+    } else if (selected_pointer !== null) { // Point to this node
+      selected_pointer.target(this);
+      av.container.trigger("jsav-updaterelative");
+      selected_pointer.element.removeClass("highlight");
+      selected_pointer = null;
+    } else { // Nothing was selected already
+      selected_node = this;
+      this.highlight();
+    }
+    lstackPopPRO.userInput = true;
+  }
+
+  // reset function definition
+  function reset() {
+    var i;
+    lstackPopPRO.userInput = false;
+    selected_node = null;
+    selected_pointer = null;
+    copyFrom = null;
+
+    // Clear the old JSAV canvas.
+    if ($("#LstackPopPRO")) { $("#LstackPopPRO").empty(); }
+
+    // Set up the display
+    av = new JSAV("LstackPopPRO");
+
+    jsavList = av.ds.list({nodegap: 30, top: 40, left: 0});
+    for (i = listSize - 1; i >= 0; i--) {
+      jsavList.addFirst(listArr[i]);
+    }
+    jsavList.layout();
+    arrReturn = av.ds.array([""], {left: 75, top: 100});
+    av.label("return", {left: jsavList.get(0).element.position().left, top: 105});
+    for (i = 0; i < listSize; i++) {
+      jsavList.get(i).odsa_next = jsavList.get(i).next();
+      jsavList.get(i).odsa_edgeToNext = jsavList.get(i).edgeToNext();
+    }
+    // Tail null pointer line
+    jsavList.get(listSize - 1).odsa_tail = av.g.line(34 + (listSize - 1) * 74, 47 + 40,
+                                                     44 + (listSize - 1) * 74, 16 + 40,
+                                                     {opacity: 100, "stroke-width": 1});
+    ptop = av.pointer("top", jsavList.get(0), {fixed: "true"});
+    av.displayInit();
+    av.recorded();
+
+    // Set click handers
+    ptop.click(pclick);
+    arrReturn.click(copyHandler);
+    jsavList.click(clickHandler); // Rebind click handler after reset
+    lstackPopPRO.userInput = false;
+  }
 
   window.lstackPopPRO = window.lstackPopPRO || lstackPopPRO;
 }());

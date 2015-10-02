@@ -1,28 +1,34 @@
 <!DOCTYPE html>
 <html data-require="math">
-<head>
-  <title>Binary Trees: Tree Types</title>
+  <head>
+    <title>Binary Trees: Tree Types</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
 
-  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-</head>
-
-<body>
-<div class="exercise">
-  <div class="problems">
-    <div id="problem-type-or-description">
-      <p class="question">Why does function preorder2() presented in
-	the Traversal module make only half as many recursive calls
-	as function preorder()?</p>
-      <div class="solution"><var>"Because half of the pointers are null"</var></div>
-      <ul class="choices">
-	<li><var>"Because there are half as many nodes"</var></li>
-	<li><var>"Because there are half as many leaf nodes"</var></li>
-	<li><var>"Because only internal nodes get called"</var></li>
-      </ul>
-      <div class="hints">
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="question">Why does function preorder2() presented in
+            the Traversal module make only half as many recursive calls
+            as function preorder()?</p>
+          <div class="solution">Because half of the pointers are null</div>
+          <ul class="choices">
+            <li>Because there are half as many nodes</li>
+            <li>Because there are half as many leaf nodes</li>
+            <li>Because only internal nodes get called</li>
+          </ul>
+          <div class="hints">
+            <p>All nodes will eventually get called</p>
+            <p>The number of nodes in the tree does not change based on
+              the algorithm used to traverse it.</p>
+            <p>The Full Binary Tree Theorem tells us that roughly half of
+              all pointers in a binary tree are null. No recursive call is
+              made for these pointers by preorder2.</p>
+          </div>
+        </div>
       </div>
-    </div> 
-  </div>
-</div>
-</body>
+    </div>
+  </body>
 </html>

@@ -1,7 +1,7 @@
 /*global JSAV, window */
 (function() {
   "use strict";
-  var jsav,               // The JSAV object
+  var av,                   // The JSAV object
       leftMargin,           //
       topMargin,            //
       answerArr = [],       // The (internal) array that stores the correct answer
@@ -38,31 +38,31 @@
     },
 
     // Helper function for seting pointer
-    setPointer: function(name, node) {
+    setPointer: function(pname, node) {
       var pointerRight = {anchor: "right top",
                           myAnchor: "left bottom", fixed: "true",
                           left: -10, top: -20};
       var pointerLeft = {anchor: "left top",
                          myAnchor: "right bottom", fixed: "true",
                          left: 5, top: -20};
-      if (name === "rear") {
+      if (pname === "rear") {
 	//      if (node.pNum === 1) {
         node.pNum++;
-        return node.jsav.pointer(name, node, pointerRight);
+        return node.jsav.pointer(pname, node, pointerRight);
       }
       node.pNum++;
-      return node.jsav.pointer(name, node, pointerLeft);
+      return node.jsav.pointer(pname, node, pointerLeft);
     },
 
     // Add an edge from obj1 to obj2
     connection: function(obj1, obj2) {
       if (obj1 === obj2) { return; }
-      var left = obj1.jsav.container.find(".jsavcanvas:first").offset().left;
-      var top = obj1.jsav.container.find(".jsavcanvas:first").offset().top;
-      var fx = obj1.element.offset().left + 39 - left;
-      var tx = obj2.element.offset().left  + 2 - left;
-      var fy = obj1.element.offset().top + 16 - top;
-      var ty = obj2.element.offset().top + 16 - top;
+      var leftOffset = obj1.jsav.container.find(".jsavcanvas:first").offset().left;
+      var topOffset = obj1.jsav.container.find(".jsavcanvas:first").offset().top;
+      var fx = obj1.element.offset().left + 39 - leftOffset;
+      var tx = obj2.element.offset().left  + 2 - leftOffset;
+      var fy = obj1.element.offset().top + 16 - topOffset;
+      var ty = obj2.element.offset().top + 16 - topOffset;
       var fx1 = fx, fy1 = fy, tx1 = tx, ty1 = ty;
 
       var disx = (fx - tx - 22) > 0 ? 1 : (fx - tx - 22) === 0 ? 0 : -1;
@@ -94,7 +94,7 @@
         ty1 = ty;
       }
 
-      var edge = jsav.g.path(["M", fx, fy, "C", fx1, fy1, tx1, ty1, tx, ty].join(","),
+      var edge = av.g.path(["M", fx, fy, "C", fx1, fy1, tx1, ty1, tx, ty].join(","),
                              {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
       if (obj1.odsa_next) {
         obj1.odsa_edgeToNext.element.remove();
@@ -164,7 +164,7 @@
               this.pNum++;
             }
           }
-          jsav.container.trigger("jsav-updaterelative");
+          av.container.trigger("jsav-updaterelative");
           selected_pointer.element.removeClass("highlight");
           selected_pointer = null;
           status = 0;
@@ -174,18 +174,18 @@
     },
 
     addTail: function(node) {
-      var left = node.element.offset().left - jsav.container.find(".jsavcanvas:first").offset().left;
-      var top = node.element.offset().top - jsav.container.find(".jsavcanvas:first").offset().top;
-      var fx = left + 34;
-      var tx = left + 44;
-      var fy = top + 32;
-      var ty = top + 1;
+      var leftOffset = node.element.offset().left - av.container.find(".jsavcanvas:first").offset().left;
+      var topOffset = node.element.offset().top - av.container.find(".jsavcanvas:first").offset().top;
+      var fx = leftOffset + 34;
+      var tx = leftOffset + 44;
+      var fy = topOffset + 32;
+      var ty = topOffset + 1;
 
       if (typeof node.odsa_tail !== "undefined") {
         node.odsa_tail.element.remove();
-        node.odsa_tail = jsav.g.line(fx, fy, tx, ty, {opacity: 100, "stroke-width": 1});
+        node.odsa_tail = av.g.line(fx, fy, tx, ty, {opacity: 100, "stroke-width": 1});
       } else {
-        node.odsa_tail = jsav.g.line(fx, fy, tx, ty, {opacity: 100, "stroke-width": 1});
+        node.odsa_tail = av.g.line(fx, fy, tx, ty, {opacity: 100, "stroke-width": 1});
       }
       node.odsa_next = null;
     },
@@ -204,22 +204,22 @@
         newLinkNode = jsavList.newNode("null");
         newLinkNode.pNum = 0;
         // Calculate the position for the new node
-        var left = (listSize - 1) * 73 / 2;
-        var top = 60;
+        var leftOffset = (listSize - 1) * 73 / 2;
+        var topOffset = 60;
         // Set the position for the new node
-        newLinkNode.css({top: top, left: left});
+        newLinkNode.css({top: topOffset, left: leftOffset});
 
         newLinkNode.odsa_next = null;
         newLinkNode.odsa_edgeToNext = null;
         answerOrderArr = orderArr.slice(0);
         answerOrderArr.splice(listSize, 0, newLinkNode.id());
 
-        var x1 = left + 34 + leftMargin;
-        var y1 = top + 46 + topMargin;
-        var x2 = left + 44 + leftMargin;
-        var y2 = top + 16 + topMargin;
+        var x1 = leftOffset + 34 + leftMargin;
+        var y1 = topOffset + 46 + topMargin;
+        var x2 = leftOffset + 44 + leftMargin;
+        var y2 = topOffset + 16 + topMargin;
 
-        newLinkNode.odsa_tail = jsav.g.line(x1, y1, x2, y2,
+        newLinkNode.odsa_tail = av.g.line(x1, y1, x2, y2,
                                             {opacity: 100, "stroke-width": 1});
 
         $("#" + newLinkNode.id()).css("cursor", "pointer");
@@ -242,7 +242,7 @@
             if (newLinkNode.odsa_tail) {
               lqueueEnqueuePRO.addTail(newLinkNode);
             }
-            jsav.container.trigger("jsav-updaterelative");
+            av.container.trigger("jsav-updaterelative");
           }
         });
         answRearNode = newLinkNode;
@@ -254,58 +254,10 @@
 
     insert: function() {
       if (newLinkNode) {
-        jsav.effects.copyValue(jsavArr, 0, newLinkNode);
+        av.effects.copyValue(jsavArr, 0, newLinkNode);
         newLinkNode.unhighlight();
         status = 0;
       }
-    },
-
-    // reset function definition
-    reset: function() {
-      var i;
-      leftMargin = 40;
-      topMargin = 60;
-      lqueueEnqueuePRO.userInput = false;
-      newNodeGen = false;
-      connections = [];
-      status = 0;
-
-      // Clear old JSAV canvas
-      if ($("#LqueueEnqueuePRO")) {
-        $("#LqueueEnqueuePRO").empty();
-      }
-
-      jsav = new JSAV("LqueueEnqueuePRO");
-      jsavList = jsav.ds.list({nodegap: 30, top: topMargin, left: leftMargin});
-      for (i = listSize - 1; i >= 0; i--) {
-        jsavList.addFirst(listArr[i]);
-      }
-      jsavList.layout();
-      front = lqueueEnqueuePRO.setPointer("front", jsavList.get(0));
-      rear = lqueueEnqueuePRO.setPointer("rear", jsavList.get(listSize - 1));
-      jsav.recorded();
-      jsav.forward();
-
-      for (i = 0; i < listSize; i++) {
-        orderArr[i] = jsavList.get(i).id();
-        jsavList.get(i).odsa_next = jsavList.get(i).next();
-        jsavList.get(i).odsa_edgeToNext = jsavList.get(i).edgeToNext();
-      }
-      jsavList.get(listSize - 1).odsa_tail =
-           jsav.g.line(leftMargin + 34 + (listSize - 1) * 74, 47 + topMargin,
-                       leftMargin + 44 + (listSize - 1) * 74, 16 + topMargin,
-                       {opacity: 100, "stroke-width": 1});
-      answFrontNode = jsavList.get(0);
-
-      // Hidden JSAV array for insert animation
-      jsavArr = jsav.ds.array([insertValue], {indexed: false, center: false, left: 550, top: -70});
-
-      // Bind click handlers
-      front.click(lqueueEnqueuePRO.pclick);
-      rear.click(lqueueEnqueuePRO.pclick);
-      jsavList.click(lqueueEnqueuePRO.clickHandler);
-
-      lqueueEnqueuePRO.userInput = false;
     },
 
     // Initialise the exercise
@@ -323,7 +275,7 @@
       }
       listArr = answerArr.slice(0);
 
-      lqueueEnqueuePRO.reset();
+      reset();
 
       // correct answer
       answerArr.splice(listSize, 0, insertValue);
@@ -356,6 +308,52 @@
       return true;
     }
   };
+
+  // reset function definition
+  function reset() {
+    var i;
+    leftMargin = 40;
+    topMargin = 60;
+    lqueueEnqueuePRO.userInput = false;
+    newNodeGen = false;
+    connections = [];
+    status = 0;
+
+    // Clear the old JSAV canvas.
+    if ($("#LqueueEnqueuePRO")) { $("#LqueueEnqueuePRO").empty(); }
+
+    // Set up the display
+    av = new JSAV("LqueueEnqueuePRO");
+    jsavList = av.ds.list({nodegap: 30, top: topMargin, left: leftMargin});
+    for (i = listSize - 1; i >= 0; i--) {
+      jsavList.addFirst(listArr[i]);
+    }
+    jsavList.layout();
+    front = lqueueEnqueuePRO.setPointer("front", jsavList.get(0));
+    rear = lqueueEnqueuePRO.setPointer("rear", jsavList.get(listSize - 1));
+    // Hidden JSAV array for insert animation
+    jsavArr = av.ds.array([insertValue], {indexed: false, center: false, left: 550, top: -70});
+    av.displayInit();
+    av.recorded();
+
+    for (i = 0; i < listSize; i++) {
+      orderArr[i] = jsavList.get(i).id();
+      jsavList.get(i).odsa_next = jsavList.get(i).next();
+      jsavList.get(i).odsa_edgeToNext = jsavList.get(i).edgeToNext();
+    }
+    jsavList.get(listSize - 1).odsa_tail =
+      av.g.line(leftMargin + 34 + (listSize - 1) * 74, 47 + topMargin,
+                leftMargin + 44 + (listSize - 1) * 74, 16 + topMargin,
+                {opacity: 100, "stroke-width": 1});
+    answFrontNode = jsavList.get(0);
+
+    // Bind click handlers
+    front.click(lqueueEnqueuePRO.pclick);
+    rear.click(lqueueEnqueuePRO.pclick);
+    jsavList.click(lqueueEnqueuePRO.clickHandler);
+
+    lqueueEnqueuePRO.userInput = false;
+  }
 
   window.lqueueEnqueuePRO = window.lqueueEnqueuePRO || lqueueEnqueuePRO;
 }());

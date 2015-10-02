@@ -1,7 +1,7 @@
 /*global JSAV, window */
 (function() {
   "use strict";
-  var jsav,               // The JSAV object
+  var av,                   // The JSAV object
       answerArr = [],       // The (internal) array that stores the correct answer
       answerOrderArr = [],  // The (internal) array that stores the correct order of nodes
       orderArr = [],        // Stores the node.id() of the jsavList
@@ -58,24 +58,22 @@
         fy1 = fy - dy;
         tx1 = tx - dx;
         ty1 = ty - dy;
-      } else {
-        if (disx === 1) {
-          tx += 22;
-          ty += 15 * disy;
-          fx1 = fx + dx;
-          fy1 = fy - dy * disy;
-          tx1 = tx;
-          ty1 = ty + dy * disy;
-        } else if (disx === -1) {
-          fx1 = fx + dx;
-          fy1 = fy;
-          tx1 = tx - dx;
-          ty1 = ty;
-        }
+      } else if (disx === 1) {
+        tx += 22;
+        ty += 15 * disy;
+        fx1 = fx + dx;
+        fy1 = fy - dy * disy;
+        tx1 = tx;
+        ty1 = ty + dy * disy;
+      } else if (disx === -1) {
+        fx1 = fx + dx;
+        fy1 = fy;
+        tx1 = tx - dx;
+        ty1 = ty;
       }
 
-      var edge = jsav.g.path(["M", fx, fy, "C", fx1, fy1, tx1, ty1, tx, ty].join(","),
-                             {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
+      var edge = av.g.path(["M", fx, fy, "C", fx1, fy1, tx1, ty1, tx, ty].join(","),
+                           {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
       if (obj1.odsa_next) {
         obj1.odsa_edgeToNext.element.remove();
       } else {
@@ -133,7 +131,7 @@
           status = 0;
         } else if (status === 3) {
           selected_pointer.target(this);
-          jsav.container.trigger("jsav-updaterelative");
+          av.container.trigger("jsav-updaterelative");
           selected_pointer.element.removeClass("highlight");
           selected_pointer = null;
           status = 0;
@@ -150,7 +148,7 @@
         var tx = $("#" + node.id()).position().left + 44;
         var fy = $("#" + node.id()).position().top + 47 + 40;
         var ty = $("#" + node.id()).position().top + 16 + 40;
-        node.odsa_tail = jsav.g.line(fx, fy, tx, ty, {opacity: 100, "stroke-width": 1});
+        node.odsa_tail = av.g.line(fx, fy, tx, ty, {opacity: 100, "stroke-width": 1});
       }
     },
 
@@ -168,23 +166,23 @@
         newLinkNode = jsavList.newNode("null");
 
         // Calculate the position for the new node
-        var left = (listSize - 1) * 73 / 2;
-        var top = 60;
+        var leftOffset = (listSize - 1) * 73 / 2;
+        var topOffset = 60;
 
         // Set the position for the new node
-        newLinkNode.css({top: top, left: left});
+        newLinkNode.css({top: topOffset, left: leftOffset});
 
         newLinkNode.odsa_next = null;
         newLinkNode.odsa_edgeToNext = null;
         answerOrderArr = orderArr.slice(0);
         answerOrderArr.splice(0, 0, newLinkNode.id());
 
-        var x1 = left + 34;
-        var y1 = top + 46 + 40;
-        var x2 = left + 45;
-        var y2 = top + 16 + 40;
+        var x1 = leftOffset + 34;
+        var y1 = topOffset + 46 + 40;
+        var x2 = leftOffset + 45;
+        var y2 = topOffset + 16 + 40;
 
-        newLinkNode.odsa_tail = jsav.g.line(x1, y1, x2, y2, {opacity: 100, "stroke-width": 1});
+        newLinkNode.odsa_tail = av.g.line(x1, y1, x2, y2, {opacity: 100, "stroke-width": 1});
 
         $("#" + newLinkNode.id()).draggable({
           start: function() {
@@ -209,7 +207,7 @@
               lstackPushPRO.connection(connections[i].from, connections[i].to);
             }
             lstackPushPRO.addTail(newLinkNode);
-            jsav.container.trigger("jsav-updaterelative");
+            av.container.trigger("jsav-updaterelative");
           }
         });
         $("#NewNode").disabled = true;
@@ -217,54 +215,6 @@
         newNodeGen = true;
       } else { return; }
       lstackPushPRO.userInput = true;
-    },
-
-    insert: function() {
-      if (newLinkNode) {
-        jsav.effects.copyValue(hiddenArr, 0, newLinkNode);
-        newLinkNode.unhighlight();
-        status = 0;
-      }
-    },
-
-    // reset function definition
-    reset: function() {
-      var i;
-      newNodeGen = false;
-      connections = [];
-      selected_node = null;
-      status = 0;
-
-      if ($("#LstackPushPRO")) {
-        $("#LstackPushPRO").empty();
-      }
-      jsav = new JSAV("LstackPushPRO");
-      jsav.recorded();
-
-      jsavList = jsav.ds.list({nodegap: 30, top: 40, left: 0});
-      for (i = listSize - 1; i >= 0; i--) {
-        jsavList.addFirst(listArr[i]);
-      }
-      jsavList.layout();
-
-      for (i = 0; i < listSize; i++) {
-        orderArr[i] = jsavList.get(i).id();
-        jsavList.get(i).odsa_next = jsavList.get(i).next();
-        jsavList.get(i).odsa_edgeToNext = jsavList.get(i).edgeToNext();
-      }
-      // Manually add a tail for the last node
-      jsavList.get(listSize - 1).odsa_tail = jsav.g.line(34 + (listSize - 1) * 74, 47 + 40,
-                                                         44 + (listSize - 1) * 74, 16 + 40,
-                                                         {opacity: 100, "stroke-width": 1});
-      // 'top' pointer
-      ptop = jsav.pointer("top", jsavList.get(0), {fixed: true});
-      ptop.click(lstackPushPRO.pclick);
-
-      // Hidden JSAV array for insert animation effect
-      hiddenArr = jsav.ds.array([insertValue], {indexed: false, center: false, left: 350, top: -70});
-
-      jsavList.click(lstackPushPRO.clickHandler);
-      lstackPushPRO.userInput = false;
     },
 
     // Initialise the exercise
@@ -281,15 +231,15 @@
       }
       listArr = answerArr.slice(0);
 
-      lstackPushPRO.reset();
-
       // correct answer
       answerArr.splice(0, 0, insertValue);
 
+      reset();
+
       // Set up button handlers
       $("#NewNode").click(function() { lstackPushPRO.newnode(); });
-      $("#insert").click(function() { lstackPushPRO.insert(); });
-      $("#reset").click(function() { lstackPushPRO.reset(); });
+      $("#insert").click(function() { insert(); });
+      $("#reset").click(function() { reset(); });
     },
 
     // Check user's answer for correctness: User's array must match answer
@@ -310,6 +260,57 @@
       return true;
     }
   };
+
+  // Handle insert button
+  function insert() {
+    if (newLinkNode) {
+      av.effects.copyValue(hiddenArr, 0, newLinkNode);
+      newLinkNode.unhighlight();
+      status = 0;
+    }
+  }
+
+  // Handle reset button
+  function reset() {
+    var i;
+    newNodeGen = false;
+    connections = [];
+    selected_node = null;
+    status = 0;
+
+    // Clear the old JSAV canvas.
+    if ($("#LstackPushPRO")) { $("#LstackPushPRO").empty(); }
+
+    // Set up the display
+    av = new JSAV("LstackPushPRO");
+    jsavList = av.ds.list({nodegap: 30, top: 40, left: 0});
+    for (i = listSize - 1; i >= 0; i--) {
+      jsavList.addFirst(listArr[i]);
+    }
+    jsavList.layout();
+
+    for (i = 0; i < listSize; i++) {
+      orderArr[i] = jsavList.get(i).id();
+      jsavList.get(i).odsa_next = jsavList.get(i).next();
+      jsavList.get(i).odsa_edgeToNext = jsavList.get(i).edgeToNext();
+    }
+    // Manually add a tail for the last node
+    jsavList.get(listSize - 1).odsa_tail = av.g.line(34 + (listSize - 1) * 74, 47 + 40,
+                                                     44 + (listSize - 1) * 74, 16 + 40,
+                                                     {opacity: 100, "stroke-width": 1});
+    // 'top' pointer
+    ptop = av.pointer("top", jsavList.get(0), {fixed: true});
+    ptop.click(lstackPushPRO.pclick);
+
+    // Hidden JSAV array for insert animation effect
+    hiddenArr = av.ds.array([insertValue], {indexed: false, center: false,
+                                            left: 350, top: -70});
+    av.displayInit();
+    av.recorded();
+
+    jsavList.click(lstackPushPRO.clickHandler);
+    lstackPushPRO.userInput = false;
+  }
 
   window.lstackPushPRO = window.lstackPushPRO || lstackPushPRO;
 }());

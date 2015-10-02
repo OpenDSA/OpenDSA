@@ -54,7 +54,7 @@ following slideshow.
 In the average case, insertion or removal each requires moving half
 of the elements, which is :math:`\Theta(n)`.
 
-.. avembed:: Exercises/List/AlistDeletePRO.html ka
+.. avembed:: Exercises/List/AlistRemovePRO.html ka
 
 Aside from ``insert`` and ``remove``, the only other operations that
 might require more than constant time are the constructor and

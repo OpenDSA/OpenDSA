@@ -436,8 +436,8 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "AlistDeletePRO": {
-            "long_name": "Array-based List Delete Exercise",
+          "AlistRemovePRO": {
+            "long_name": "Array-based List Remove Exercise",
             "required": true,
             "points": 1,
             "threshold": 5

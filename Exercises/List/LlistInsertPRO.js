@@ -1,4 +1,4 @@
-/*global window, JSAV */
+/*global window */
 (function() {
   "use strict";
   var av, // The JSAV object
@@ -150,7 +150,7 @@
     },
 
     // Handle "Insert" button click
-    f_insert: function() {
+    insert: function() {
       if (selected_node !== null) { // Only do something if value field selected
         av.effects.copyValue(hiddenArr, 0, selected_node);
         selected_node.removeClass("bgColor");
@@ -159,22 +159,22 @@
     },
 
     // Handle "NewNode" button click
-    f_newnode: function() {
+    newnode: function() {
       if (newLinkNode === null) { // Do nothing if new node already exists
         newLinkNode = jsavList.newNode("null");
         // Calculate and set position for the new node
-        var left = (listSize - 1) * 73 / 2;
-        var top = 60;
-        newLinkNode.css({top: top, left: left});
+        var leftOffset = (listSize - 1) * 73 / 2;
+        var topOffset = 60;
+        newLinkNode.css({top: topOffset, left: leftOffset});
         // Set its values
         newLinkNode.llist_next = null;
         newLinkNode.llist_edgeToNext = null;
         answerOrderArr = orderArr.slice(0);
         answerOrderArr.splice(insertPosition + 2, 0, newLinkNode.id());
 
-        newLinkNode.llist_tail = av.g.line(left + 34, top + 86,
-                                             left + 44, top + 55,
-                                             {opacity: 100, "stroke-width": 1});
+        newLinkNode.llist_tail = av.g.line(leftOffset + 34, topOffset + 86,
+                                           leftOffset + 44, topOffset + 55,
+                                           {opacity: 100, "stroke-width": 1});
 
         $("#" + newLinkNode.id()).draggable({
           start: function() {
@@ -209,20 +209,12 @@
       connections = [];
       selected_node = null;
       fromNode = null;
-      if ($("#LlistInsertPRO .jsavcanvas")) {
-        $("#LlistInsertPRO .jsavcanvas").remove();
-      }
-      if ($("#LlistInsertPRO .jsavshutter")) {
-        $("#LlistInsertPRO .jsavshutter").remove();
-      }
+
+      // Clear the old JSAV canvas.
+      if ($("#LlistInsertPRO")) { $("#LlistInsertPRO").empty(); }
+
+      // Set up the display
       av = new JSAV("LlistInsertPRO");
-      av.recorded();
-
-      if ($("#LlistInsertPRO path")) {
-        $("#LlistInsertPRO path").remove();
-      }
-      if (jsavList) { jsavList.clear(); }
-
       jsavList = av.ds.list({nodegap: 30, top: 40, left: 1});
       jsavList.addFirst("null");
       for (i = listSize - 2; i > 0; i--) {
@@ -256,6 +248,8 @@
       hiddenArr = av.ds.array([insertValue],
                               {indexed: false, center: false, left: 350, top: -70});
 
+      av.displayInit();
+      av.recorded();
       jsavList.click(llistInsertPRO.clickHandler); // Rebind click handler after reset
       llistInsertPRO.userInput = false;
     },
@@ -281,19 +275,10 @@
       // correct answer
       answerArr.splice(insertPosition + 1, 0, insertValue);
 
-      // Set up handler for newnode
-      $("#NewNode").click(function() {
-        llistInsertPRO.f_newnode();
-      });
-
-      $("#insert").click(function() {
-        llistInsertPRO.f_insert();
-      });
-
-      // Set up handler for reset button
-      $("#reset").click(function() {
-        llistInsertPRO.reset();
-      });
+      // Set up click handlers
+      $("#NewNode").click(function() { llistInsertPRO.newnode(); });
+      $("#insert").click(function() { llistInsertPRO.insert(); });
+      $("#reset").click(function() { llistInsertPRO.reset(); });
     },
 
     // Check user's answer for correctness: User's array must match answer

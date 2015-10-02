@@ -40,7 +40,6 @@
     "no-floating-decimal": 2,
     "no-implicit-coercion": [2, {"boolean": true, "number": true, "string": true}],
     "no-implied-eval": 2,
-    "no-invalid-this": 2,
     "no-labels": 2,
     "no-lone-blocks": 2,
     "no-loop-func": 2,

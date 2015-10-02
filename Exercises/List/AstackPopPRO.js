@@ -10,67 +10,9 @@
       topArr,         // JSAV array that holds value for top
       selectedIndex;  // Position that has been selected by user for swap
 
+  // These are things that need to be accessed from the HTML file
   var astackPopPRO = {
     userInput: null,      // Boolean: Tells us if user ever did anything
-
-    // Click event handler on the array "jsavArr"
-    clickHandler: function(index) {
-      if (selectedIndex === -1) { // nothing currently selected
-        // Selecting the current array index
-        jsavArr.css(index, {"font-size": "110%"});
-        selectedIndex = index;
-        jsavArr.highlight(index);
-      } else { // Something is already selected
-        if (selectedIndex !== index) { // He's swapping
-          jsavArr.swap(selectedIndex, index);
-          jsavArr.unhighlight(selectedIndex);
-          jsavArr.css(selectedIndex, {"font-size": "100%"});
-        }
-        jsavArr.css(index, {"font-size": "100%"});
-        jsavArr.unhighlight(index);
-        selectedIndex = -1;  // Reset to nothing selected
-      }
-      astackPopPRO.userInput = true;
-    },
-
-    // Click event handler on the array "returnArr"
-    copyHandler: function() {
-      if (selectedIndex !== -1) {
-        av.effects.moveValue(jsavArr, selectedIndex, returnArr, 0);
-        jsavArr.css(selectedIndex, {"background-color": "#ddd"});
-        jsavArr.css(selectedIndex, {"font-size": "100%"});
-        jsavArr.unhighlight(selectedIndex);
-        selectedIndex = -1;
-        astackPopPRO.userInput = true;
-      }
-    },
-
-    // reset function definition
-    reset: function(max_size, arr_size) {
-      var leftMargin = 30;
-      selectedIndex = -1;
-      if ($("#AstackPopPRO")) {
-        $("#AstackPopPRO").empty();
-      }
-      av = new JSAV("AstackPopPRO");
-
-      if (topArr) { topArr.clear(); }
-      topArr = av.ds.array([arr_size], {indexed: false, center: false, left: leftMargin, top: 0});
-
-      if (jsavArr) { jsavArr.clear(); }
-      jsavArr = av.ds.array(cloneArr, {indexed: true, center: false, top: 50});
-
-      if (returnArr) { returnArr.clear(); }
-      returnArr = av.ds.array([""], {left: 350, top: 50});
-      av.label("return", {left: 305, top: 55});
-
-      av.recorded();
-      av.forward();
-      // Bind the clickHandler to handle click events on the array
-      jsavArr.click(astackPopPRO.clickHandler);
-      returnArr.click(astackPopPRO.copyHandler);
-      astackPopPRO.userInput = false;
-    },
 
     // Initialise the exercise
     initJSAV: function(max_size, arr_size) {
@@ -89,8 +31,7 @@
       // Now make a copy
       cloneArr = answerArr.slice(0);
 
-      astackPopPRO.reset(max_size, arr_size);
-      av.label("top:", {left: 0, top: 2});
+      reset(max_size, arr_size);
 
       // correct answer
       if (arr_size === 0) {
@@ -103,15 +44,8 @@
       answerArr.splice(arr_size, 1);
 
       // Set up handler for reset button
-      $("#reset").click(function() { astackPopPRO.reset(max_size, arr_size); });
-      $("#top").click(function() { astackPopPRO.settop(); });
-    },
-
-    // Handler for set top button
-    settop: function() {
-      if (selectedIndex !== -1) { // Don't do anything if no index selected
-        topArr.value(0, selectedIndex);
-      }
+      $("#reset").click(function() { reset(max_size, arr_size); });
+      $("#top").click(function() { settop(); });
     },
 
     // Check user's answer for correctness
@@ -135,6 +69,73 @@
       return true;
     }
   };
+
+  // reset function definition
+  function reset(max_size, arr_size) {
+    var leftMargin = 30;
+    selectedIndex = -1;
+
+    // Clear the old JSAV canvas.
+    if ($("#AstackPopPRO")) { $("#AstackPopPRO").empty(); }
+
+    // Set up the display
+    av = new JSAV("AstackPopPRO");
+    topArr = av.ds.array([arr_size], {indexed: false, center: false,
+                                      left: leftMargin, top: 0});
+    jsavArr = av.ds.array(cloneArr, {indexed: true, center: false, top: 50});
+    returnArr = av.ds.array([""], {left: 350, top: 50});
+    av.label("return", {left: 305, top: 55});
+    av.label("top:", {left: 0, top: 2});
+    av.displayInit();
+    av.recorded();
+
+    // Bind the clickHandler to handle click events on the array
+    jsavArr.click(clickHandler);
+    returnArr.click(copyHandler);
+    astackPopPRO.userInput = false;
+  }
+
+  // Handler for set top button
+  function settop() {
+    if (selectedIndex !== -1) { // Don't do anything if no index selected
+      topArr.value(0, selectedIndex);
+      jsavArr.css(selectedIndex, {"font-size": "100%"});
+      jsavArr.unhighlight(selectedIndex);
+      selectedIndex = -1;
+    }
+  }
+
+  // Click event handler on the array "jsavArr"
+  function clickHandler(index) {
+    if (selectedIndex === -1) { // nothing currently selected
+      // Selecting the current array index
+      jsavArr.css(index, {"font-size": "110%"});
+      selectedIndex = index;
+      jsavArr.highlight(index);
+    } else { // Something is already selected
+      if (selectedIndex !== index) { // He's swapping
+        jsavArr.swap(selectedIndex, index);
+        jsavArr.unhighlight(selectedIndex);
+        jsavArr.css(selectedIndex, {"font-size": "100%"});
+      }
+      jsavArr.css(index, {"font-size": "100%"});
+      jsavArr.unhighlight(index);
+      selectedIndex = -1;  // Reset to nothing selected
+    }
+    astackPopPRO.userInput = true;
+  }
+
+  // Click event handler on the array "returnArr"
+  function copyHandler() {
+    if (selectedIndex !== -1) {
+      av.effects.moveValue(jsavArr, selectedIndex, returnArr, 0);
+      jsavArr.css(selectedIndex, {"background-color": "#ddd"});
+      jsavArr.css(selectedIndex, {"font-size": "100%"});
+      jsavArr.unhighlight(selectedIndex);
+      selectedIndex = -1;
+      astackPopPRO.userInput = true;
+    }
+  }
 
   window.astackPopPRO = window.astackPopPRO || astackPopPRO;
 }());

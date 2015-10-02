@@ -28,7 +28,7 @@
     userInput: null, // Boolean: Tells us if user ever did anything
 
     // Helper function for setting pointer
-    setPointer: function(name, newnode, oldpointer) {
+    setPointer: function(pname, newnode, oldpointer) {
       if (oldpointer) {
         if (newnode === oldpointer.target()) { return null; }
       }
@@ -51,11 +51,11 @@
       }
 
       if (!newnode.llist_pleft) {
-        newnode.llist_pleft = newnode.jsav.pointer(name, newnode, pointerLeft);
+        newnode.llist_pleft = newnode.jsav.pointer(pname, newnode, pointerLeft);
         newnode.llist_pleft.click(llistRemovePRO.pclick);
         return newnode.llist_pleft;
       } else if (!newnode.llist_pright) {
-        newnode.llist_pright = newnode.jsav.pointer(name, newnode, pointerRight);
+        newnode.llist_pright = newnode.jsav.pointer(pname, newnode, pointerRight);
         newnode.llist_pright.click(llistRemovePRO.pclick);
         return newnode.llist_pright;
       }
@@ -64,12 +64,12 @@
     // Add an edge from obj1(node) to obj2(node)
     connection: function(obj1, obj2, jsav) {
       if (obj1 === obj2) { return; }
-      var left = obj1.jsav.container.find(".jsavcanvas:first").offset().left;
-      var top = obj1.jsav.container.find(".jsavcanvas:first").offset().top;
-      var fx = obj1.element.offset().left + 39 - left;
-      var tx = obj2.element.offset().left + 2 - left;
-      var fy = obj1.element.offset().top + 16 - top;
-      var ty = obj2.element.offset().top + 16 - top;
+      var leftOffset = obj1.jsav.container.find(".jsavcanvas:first").offset().left;
+      var topOffset = obj1.jsav.container.find(".jsavcanvas:first").offset().top;
+      var fx = obj1.element.offset().left + 39 - leftOffset;
+      var tx = obj2.element.offset().left + 2 - leftOffset;
+      var fy = obj1.element.offset().top + 16 - topOffset;
+      var ty = obj2.element.offset().top + 16 - topOffset;
       var fx1 = fx,
           fy1 = fy,
           tx1 = tx,
@@ -119,12 +119,12 @@
 
     // Helper function for adding a tail to the target node.
     addTail: function(node) {
-      var left = node.element.offset().left - av.container.find(".jsavcanvas:first").offset().left;
-      var top = node.element.offset().top - av.container.find(".jsavcanvas:first").offset().top;
-      var fx = left + 34;
-      var tx = left + 44;
-      var fy = top + 32;
-      var ty = top + 1;
+      var leftOffset = node.element.offset().left - av.container.find(".jsavcanvas:first").offset().left;
+      var topOffset = node.element.offset().top - av.container.find(".jsavcanvas:first").offset().top;
+      var fx = leftOffset + 34;
+      var tx = leftOffset + 44;
+      var fy = topOffset + 32;
+      var ty = topOffset + 1;
 
       if (node.llist_tail) {
         node.llist_tail.element.remove();
@@ -255,8 +255,8 @@
       // Clear the old JSAV canvas.
       if ($("#LlistRemovePRO")) { $("#LlistRemovePRO").empty(); }
 
+      // Set up the display
       av = new JSAV("LlistRemovePRO");
-      // JSAV list
       jsavList = av.ds.list({nodegap: 30, top: topMargin, left: leftMargin});
       jsavList.addFirst("null");
       for (i = listSize - 2; i > 0; i--) {
@@ -284,8 +284,6 @@
       }
       // Add tail for the last node.
       jsavList.get(listSize - 1).llist_tail = llistRemovePRO.addTail(jsavList.get(listSize - 1));
-      av.recorded();
-      av.forward();
 
       llist_head = jsavList.get(0);
       headNode = jsavList.get(0);
@@ -314,8 +312,10 @@
       } else {
         answerCopyVal = jsavList.get(currPosition + 1).value();
       }
+      av.displayInit();
+      av.recorded();
 
-      // Rebind click handlers
+      // (Re-)Bind click handlers
       jsavCopyArr.click(llistRemovePRO.copyHandler);
       jsavList.click(llistRemovePRO.clickHandler);
     },

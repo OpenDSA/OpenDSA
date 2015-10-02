@@ -8,13 +8,11 @@
    :satisfies: array-based list
    :topic: Lists
 
-.. odsalink:: AV/List/alistCON.css
-
 Array-Based List Implementation
 ===============================
 
 .. avembed:: Exercises/List/AlistInsertPRO.html ka
   
-.. avembed:: Exercises/List/AlistDeletePRO.html ka
+.. avembed:: Exercises/List/AlistRemovePRO.html ka
   
 .. avembed:: Exercises/List/ALSumm.html ka

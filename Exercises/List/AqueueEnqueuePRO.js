@@ -1,7 +1,7 @@
 /*global JSAV, window */
 (function() {
   "use strict";
-  var jsav, // The JSAV object
+  var av, // The JSAV object
       answerArr = [], // The (internal) array that stores the correct answer
       answFrontPos,
       answRearPos,
@@ -103,56 +103,6 @@
       aqueueEnqueuePRO.userInput = true;
     },
 
-    f_insert: function() {
-      if ((Xstatus === 1) && (selected_index > -1)) {
-        jsavCir.value(selected_index, inValue);
-      }
-    },
-    // reset function definition
-    reset: function(maxSize, front, rear) {
-      selected_index = -1;
-      front_index = front;
-      rear_index = rear;
-      Xstatus = 0;
-      var cx = 250,
-          cy = 150;
-      if ($("#AqueueEnqueuePRO")) {
-        $("#AqueueEnqueuePRO").empty();
-      }
-      jsav = new JSAV("AqueueEnqueuePRO");
-      jsavCir = jsav.circular(cx, cy, 50, 100, maxSize, {
-        "stroke-width": 2
-      });
-      if (front === rear) {
-        front_pointer = jsavCir.pointer("front", front, 0.3);
-        rear_pointer = jsavCir.pointer("rear", rear, 0.7);
-      } else {
-        front_pointer = jsavCir.pointer("front", front);
-        rear_pointer = jsavCir.pointer("rear", rear);
-      }
-      var i = 0;
-      for (i = 0; i < maxSize; i++) {
-        jsavCir.value(i, cloneArr[i]);
-      }
-
-      jsav.displayInit();
-      jsav.recorded();
-      jsav.forward();
-
-      for (i = 0; i < maxSize; i++) {
-        jsavCir.path[i].rObj.node.onclick =
-          (function(j) {
-            return function() {
-              aqueueEnqueuePRO.clickHandler(j);
-            };
-          }(i));
-      }
-
-
-      aqueueEnqueuePRO.bindPointerClick(front_pointer);
-      aqueueEnqueuePRO.bindPointerClick(rear_pointer);
-      aqueueEnqueuePRO.userInput = false;
-    },
     // Initialise the exercise
     initJSAV: function(maxSize, front, rear, insertValue) {
       var i;
@@ -178,7 +128,7 @@
       // Now make a copy
       cloneArr = answerArr.slice(0);
 
-      aqueueEnqueuePRO.reset(maxSize, front, rear);
+      reset(maxSize, front, rear);
 
       // Define the correct answer
       answFrontPos = front;
@@ -190,12 +140,8 @@
       } // else we don't actually insert because queue is full
 
       // Set up button click handlers
-      $("#insert").click(function() {
-        aqueueEnqueuePRO.f_insert();
-      });
-      $("#reset").click(function() {
-        aqueueEnqueuePRO.reset(maxSize, front, rear);
-      });
+      $("#insert").click(function() { insert(); });
+      $("#reset").click(function() { reset(maxSize, front, rear); });
     },
 
     // Check user's answer for correctness: User's array must match answer
@@ -212,6 +158,58 @@
       return true;
     }
   };
+
+  // Handle insert button
+  function insert() {
+    if ((Xstatus === 1) && (selected_index > -1)) {
+      jsavCir.value(selected_index, inValue);
+    }
+  }
+
+  // Handle reset button
+  function reset(maxSize, front, rear) {
+    var cx = 250,
+        cy = 150;
+    selected_index = -1;
+    front_index = front;
+    rear_index = rear;
+    Xstatus = 0;
+
+    // Clear the old JSAV canvas.
+    if ($("#AqueueEnqueuePRO")) { $("#AqueueEnqueuePRO").empty(); }
+
+    // Set up the display
+    av = new JSAV("AqueueEnqueuePRO");
+    jsavCir = av.circular(cx, cy, 50, 100, maxSize, {
+      "stroke-width": 2
+    });
+    if (front === rear) {
+      front_pointer = jsavCir.pointer("front", front, 0.3);
+      rear_pointer = jsavCir.pointer("rear", rear, 0.7);
+    } else {
+      front_pointer = jsavCir.pointer("front", front);
+      rear_pointer = jsavCir.pointer("rear", rear);
+    }
+    var i = 0;
+    for (i = 0; i < maxSize; i++) {
+      jsavCir.value(i, cloneArr[i]);
+    }
+    av.displayInit();
+    av.recorded();
+
+    for (i = 0; i < maxSize; i++) {
+      jsavCir.path[i].rObj.node.onclick =
+        (function(j) {
+          return function() {
+            aqueueEnqueuePRO.clickHandler(j);
+          };
+        }(i));
+    }
+
+    aqueueEnqueuePRO.bindPointerClick(front_pointer);
+    aqueueEnqueuePRO.bindPointerClick(rear_pointer);
+    aqueueEnqueuePRO.userInput = false;
+  }
 
   window.aqueueEnqueuePRO = window.aqueueEnqueuePRO || aqueueEnqueuePRO;
 }());

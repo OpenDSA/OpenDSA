@@ -1,18 +1,18 @@
 <!--
-    Array-Based List Deletion mini-proficiency exercise.
+    Array-Based List Remove mini-proficiency exercise.
     Written by Junyang Chen and Cliff Shaffer
   -->
 
 <!DOCTYPE html>
-<html data-require="jsav math AlistDeletePRO">
+<html data-require="jsav math AlistRemovePRO">
   <head>
-    <title>Array-Based List Deletion Proficiency Exercise</title>
+    <title>Array-Based List Remove Proficiency Exercise</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
       #reset { margin-right: 20px;}
 
-      #AlistDeletePRO .jsavcanvas {
+      #AlistRemovePRO .jsavcanvas {
       height: 220px;
       }
     </style>
@@ -21,17 +21,17 @@
   <body data-height="750" data-width="950">
     <div class="exercise">
       <div class="vars">
-        <var id="arr_size">alistDeletePRO.getSize(1, 6)</var>
-        <var id="delete_pos">alistDeletePRO.getPos()</var>
-        <var id="JSAV">alistDeletePRO.initJSAV(arr_size, delete_pos)</var>
+        <var id="arrSize">alistRemovePRO.getSize(1, 6)</var>
+        <var id="removePos">alistRemovePRO.getPos()</var>
+        <var id="JSAV">alistRemovePRO.initJSAV(arrSize, removePos)</var>
       </div>
 
       <div class="problems">
-        <div id="AlistDeletePROp"> <!-- Supresses answer box -->
+        <div id="AlistRemovePROp"> <!-- Supresses answer box -->
           <p class="problem">Your task in this exercise is to show the
             behavior for array-based list deletion.
             In the array displayed below, the "current" position is
-            <b><var>delete_pos</var></b>.</p>
+            <b><var>removePos</var></b>.</p>
           <div class="question">
             <p>Click on a value to highlight it, then click on the return
               box to remember the highlighted element.
@@ -39,19 +39,19 @@
               on the element that you want to move (to highlight it), then
               click on where it goes.</p>
             <input id="reset" type="button" value="Reset" />
-            <div id="AlistDeletePRO" class="jsavcanvas"></div>
+            <div id="AlistRemovePRO" class="jsavcanvas"></div>
           </div>
           <div class="solution" data-type="custom">
-            <div class="guess"> [alistDeletePRO.userInput] </div>
+            <div class="guess"> [alistRemovePRO.userInput] </div>
             <div class="validator-function">
-              if (!alistDeletePRO.checkAnswer(arr_size) && !guess[0]) {
+              if (!alistRemovePRO.checkAnswer(arrSize) && !guess[0]) {
                 return ""; // User did not click, and correct answer is not
                            // initial array state
-              } else { return alistDeletePRO.checkAnswer(arr_size); }
+              } else { return alistRemovePRO.checkAnswer(arrSize); }
             </div>
           </div>
           <div class="hints">
-            <p>Move the element being deleted to the return box.</p>
+            <p>Move the element being removed to the return box.</p>
             <p>If "current" is not the last element of the array, shift
               all elements after "current" one position to the left.</p>
           </div>
