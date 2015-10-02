@@ -132,8 +132,25 @@ $(document).ready(function() {
   $("#about").click(about);
   $("#decrement").click(function() {
     if (bh.heapsize() !== 0) {
+      var sIndex = swapIndex.value();
       bh.heapsize(bh.heapsize() - 1);
-      bh.addClass(bh.heapsize(), "unused");
+      if (sIndex >= 0) {
+        // we need to deselect the selected element
+        if (sIndex === bh.heapsize()) {
+          // The element that was selected is the one the we want to mark as
+          // unused. We use toggleClass to both add the `unused` class and
+          // remove the `enlarge` class.
+          bh.toggleClass(sIndex, "unused enlarge");
+        } else {
+          // Deselect the selected element.
+          bh.removeClass(sIndex, "enlarge");
+          // Mark the last element as unused.
+          bh.addClass(bh.heapsize(), "unused");
+        }
+        swapIndex.value(-1);
+      } else {
+        bh.addClass(bh.heapsize(), "unused");
+      }
     }
     exercise.gradeableStep();
   });
