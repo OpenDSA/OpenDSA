@@ -50,11 +50,10 @@
       "Binary/BSTrev": {
         "long_name": "Binary Search Trees",
         "exercises": {},
-        "sections": [{
+        "sections": {
           "Binary Search Tree Definition": {
             "dispModComp": true
-          }
-        }, {
+          },
           "BST Search": {
             "showsection": true,
             "BSTsearchCON": {
@@ -63,8 +62,7 @@
               "points": 0,
               "threshold": 1
             }
-          }
-        }, {
+          },
           "BST Search Exercise": {
             "BSTsearchPRO": {
               "long_name": "BST Search Proficiency Exercise",
@@ -77,8 +75,7 @@
               "points": 1,
               "threshold": 0.9
             }
-          }
-        }, {
+          },
           "BST Insert": {
             "BSTinsertCON": {
               "long_name": "BST Insert Slideshow",
@@ -86,8 +83,7 @@
               "points": 0,
               "threshold": 1
             }
-          }
-        }, {
+          },
           "BST Insert Exercise": {
             "BSTinsertPRO": {
               "long_name": "BST Insert Proficiency Exercise",
@@ -100,8 +96,7 @@
               "points": 1,
               "threshold": 0.9
             }
-          }
-        }, {
+          },
           "BST Remove Pt 1": {
             "BSTdeletemaxCON": {
               "long_name": "BST deletemax Slideshow",
@@ -109,8 +104,7 @@
               "points": 0,
               "threshold": 1
             }
-          }
-        }, {
+          },
           "BST Remove Pt 2": {
             "BSTremoveCON": {
               "long_name": "BST remove Slideshow",
@@ -118,8 +112,7 @@
               "points": 0,
               "threshold": 1
             }
-          }
-        }, {
+          },
           "BST Remove Exercise": {
             "BSTremovePRO": {
               "long_name": "BST Remove Proficiency Exercise",
@@ -132,16 +125,15 @@
               "points": 2,
               "threshold": 0.9
             }
-          }
-        }, {
+          },
           "BST Analysis": {}
-        }]
+        }
       }
     }
   },
   "LTI": {
     "tool_name": "OpenDSA-LTI",
-    "url": "https://lti.cs.vt.edu:9292",
+    "url": "https://ltitest.cs.vt.edu:9292",
     "xml_file_name": "tool_config.xml"
   }
 }
