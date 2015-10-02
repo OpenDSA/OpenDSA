@@ -507,29 +507,29 @@
             "showhide": "show",
             "required": true,
             "points": 4.0,
-            "threshold": 2.0,
+            "threshold": 2.0
           },
-          "BTcntvalPROG": {
+          "BTcheckvalPROG": {
             "long_name": "Node Value Count Programming Exercise",
             "showhide": "show",
             "required": true,
             "points": 2.0,
             "threshold": 1
           },
-          "BTtraversePROGSumm": {
+          "BTtransferPROGSumm": {
             "long_name": "Duel-Flow Programming Exercises",
             "showhide": "show",
             "required": true,
             "points": 4.0,
             "threshold": 2
-          },
+          }
         }
       },
       "NewKA/BinaryTreeGuidedInfFlw": {
         "long_name": "Binary Tree Guided Information Flow",
         "exercises": {
-          "BTguidedPROGSumm": {
-            "long_name": "Binary Tree Guided Traversal Exercises",
+          "BSTsmallcountPROG": {
+            "long_name": "BST Small Value Count Programming Exercise",
             "showhide": "show",
             "required": true,
             "points": 2.0,

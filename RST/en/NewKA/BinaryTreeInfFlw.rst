@@ -15,6 +15,6 @@ Binary Tree Information Flow
 
 .. avembed:: Exercises/RecurTutor2/BTreturnPROGSumm.html ka
 
-.. avembed:: Exercises/RecurTutor2/BTcntvalPROG.html ka
+.. avembed:: Exercises/RecurTutor2/BTcheckvalPROG.html ka
 
 .. avembed:: Exercises/RecurTutor2/BTtransferPROGSumm.html ka

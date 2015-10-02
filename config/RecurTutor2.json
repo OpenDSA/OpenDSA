@@ -202,8 +202,8 @@
             "points": 1.0,
             "threshold": 0.90
           },
-          "BTguidedPROGSumm": {
-            "long_name": "Binary Tree Guided Traversal Exercises",
+          "BSTsmallcountPROG": {
+            "long_name": "BST Small Value Count Programming Exercise",
             "required": true,
             "points": 2.0,
             "threshold": 2.0,
