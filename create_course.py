@@ -25,6 +25,5 @@ course_json['book_json'] = book_json
 url = 'https://ltitest.cs.vt.edu:8443/api/v1/module/createcourse/'
 headers = {'content-type': 'application/json'}
 
-# response = requests.post(url, data=json.dumps(course_json), headers=headers, verify=False)
-response = requests.post(url, data=course_json, headers=headers, verify=False)
+response = requests.post(url, data=json.dumps(course_json), headers=headers, verify=False)
 print response.content
