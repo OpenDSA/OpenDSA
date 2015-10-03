@@ -126,7 +126,9 @@
               "threshold": 0.9
             }
           },
-          "BST Analysis": {}
+          "BST Analysis": {
+            "showsection": true
+          }
         }
       }
     }
