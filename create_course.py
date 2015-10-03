@@ -7,13 +7,18 @@ course and to register the book.
 book_json_file = sys.argv[1]
 conf_json_file = sys.argv[2]
 
-f = open(book_json_file, 'r')
-book_json = json.loads(f.read())
-f.close()
+with open(book_json_file) as config:
+    book_json = json.load(config, object_pairs_hook=collections.OrderedDict)
+with open(conf_json_file) as config:
+    conf_json = json.load(config, object_pairs_hook=collections.OrderedDict)
 
-f = open(conf_json_file, 'r')
-conf_json = json.loads(f.read())
-f.close()
+# f = open(book_json_file, 'r')
+# book_json = json.loads(f.read())
+# f.close()
+
+# f = open(conf_json_file, 'r')
+# conf_json = json.loads(f.read())
+# f.close()
 
 conf_json['book_json'] = book_json
 
