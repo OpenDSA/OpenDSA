@@ -1,4 +1,4 @@
-import json, sys, requests
+import json, sys, requests, collections
 '''
 This program sends the required information to OpenDSA-server api to create canvas
 course and to register the book.
