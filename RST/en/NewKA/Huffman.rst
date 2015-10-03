@@ -11,4 +11,4 @@
 Huffman Coding Trees
 ====================
 
-.. avembed:: Exercises/Binary/HuffmanDecodeFIB.html ka
+.. avembed:: Exercises/Binary/HuffmanDecodePRO.html ka

@@ -1219,7 +1219,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "HuffmanDecodeFIB": {
+          "HuffmanDecodePRO": {
             "long_name": "Huffman Decoding Proficiency Exercise",
             "required": true,
             "points": 1.0,

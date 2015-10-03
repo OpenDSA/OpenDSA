@@ -600,7 +600,7 @@
       "NewKA/Huffman": {
         "long_name": "Huffman Coding Trees",
         "exercises": {
-          "HuffmanDecodeFIB": {
+          "HuffmanDecodePRO": {
             "long_name": "Huffman Decoding Proficiency Exercise",
             "showhide": "show",
             "required": true,
