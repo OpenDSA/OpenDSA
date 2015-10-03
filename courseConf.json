@@ -1,9 +1,9 @@
 {
   "username": "opendsa",
   "password": "opendsa",
-  "canvas_url": "https://vt.test.instructure.com/api",
+  "canvas_url": "https://canvas.instructure.com/api",
   "course_code": "CS3114_rev",
-  "access_token": "4511~5XczgjCNRSjGgKgHRWC3bil6UUNfdo0qeDbndkL5brZCfCF5lcQilOFS0o7787MY",
+  "access_token": "7~98d8KnPbCj7wnA3GLyHIvh4yxHz7t2U6SPp7OLdvscWSN82qCnZbEWebFJVEb0b3",
   "consumer_key": "test",
   "consumer_secret": "secret",
   "build_date": "2015-09-28 13:08:33",
