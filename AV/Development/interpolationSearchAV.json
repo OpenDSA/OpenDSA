@@ -7,8 +7,19 @@
       "#run": "Run",
       "#reset": "Reset",
       "#arraysizeLabel": " Array size: ",
-      "#arrayValuesLabel": " Your values: ",
-      "av_arrValsPlaceholder": "Type some array values, or click 'run' to use random values"
+      "#searchValueLabel": "Search value: ",
+      "av_searchPlaceholder": "The value to search for",
+      "#arrayValuesLabel": "Your values: ",
+      "av_arrValsPlaceholder": "Type some array values, or click 'run' to use random values",
+      "av_intersect": "The lines intersect at ( {inter}, {key} )<br/>Therefore the estimated location for the key is index {newmid}",
+      "av_arr_mid_lt_key": "Because {arr_at_mid} is less than {key}, the new low will be <strong>{mid_plus_1}</strong>.",
+      "av_arr_mid_gt_key": "Because {arr_at_mid} is greater than {key}, the new high will be <strong>{mid_minus_1}</strong>.",
+      "av_found": "The key was found at index {mid}! The function returned <strong>{mid}</strong>.",
+      "av_not_found": "The key was not found in the table. The function returned <strong>-1</strong>.",
+      "av_loop_stopped_1": "The execution of the loop stopped, because the value of the table at index {low} (low) is greater or equal to the key.",
+      "av_loop_stopped_2": "The execution of the loop stopped, because the value of the table at index {high} (high) is less than the key.",
+      "av_line": "(line {first})",
+      "av_lines": "(lines {first} and {second})"
     }
   }
 }

@@ -1,25 +1,26 @@
-"use strict";
-$(document).ready(function () {
+$(document).ready(function() {
+  "use strict";
   //////////////////////////////////////////////////////////////////
   // Start processing here
   //////////////////////////////////////////////////////////////////
   var av,     // for JSAV library object
-    initialArray,
-    key = 500;    // for the JSAV array
+      initialArray,
+      key;    // for the JSAV array
 
   // Load the interpreter created by odsaAV.js
   var config = ODSA.UTILS.loadConfig(),
-    interpret = config.interpreter,
-    code = config.code,
-    settings = config.getSettings();      // Settings for the AV
+      interpret = config.interpreter,
+      code = config.code,
+      settings = config.getSettings();      // Settings for the AV
 
+  $("#searchValue").attr("placeholder", interpret("av_searchPlaceholder"));
   $("#arrayValues").attr("placeholder", interpret("av_arrValsPlaceholder"));
 
   // Note that unlike many sorting AVs, we are not going to let the user
   // select "bar" display for the array because there is not enough room
 
   // Initialize the arraysize dropdown list
-  ODSA.AV.initArraySize(15, 25, 20);
+  ODSA.AV.initArraySize(15, 25, 25);
 
   // Process about button: Pop up a message with an Alert
   function about() {
@@ -28,8 +29,8 @@ $(document).ready(function () {
 
   function interpolationSearch(array) {
     av.ds.array([key], {indexed: false}).css(0, {
-      "background-color": "#ddf",
-      border:             "none"
+      backgroundColor: "#ddf",
+      border: "none"
     });
     var arraySize = array.length;
     var modelArray = av.ds.array(array, {indexed: true, layout: "bar", autoresize: false});
@@ -39,14 +40,14 @@ $(document).ready(function () {
     }
 
     var low = 0,
-      high = arraySize - 1,
-      mid;
+        high = arraySize - 1,
+        mid;
 
     var pointerOpts = {
-      anchor:      "center bottom",
-      myAnchor:    "center top",
-      top:         10,
-      left:        -20,
+      anchor: "center bottom",
+      myAnchor: "center top",
+      top: 10,
+      left: -20,
       arrowAnchor: "center bottom"
     };
     var mLowPointer = av.pointer("low", modelArray.index(0), pointerOpts);
@@ -55,20 +56,20 @@ $(document).ready(function () {
 
     // draw the blue line
     var arrayX = modelArray.element.offset().left - av.canvas.offset().left,
-      arrayY = modelArray.element.offset().top - av.canvas.offset().top + 150,
-      lineY = arrayY - 130 * key / array[arraySize - 1],
-      lineWidth = modelArray.element.width();
+        arrayY = modelArray.element.offset().top - av.canvas.offset().top + 150,
+        lineY = arrayY - 130 * key / array[arraySize - 1],
+        lineWidth = modelArray.element.width();
     av.g.line(arrayX, lineY, arrayX + lineWidth, lineY, {
-      stroke:         "#00f",
+      stroke: "#00f",
       "stroke-width": 3,
-      opacity:        0.2
+      opacity: 0.2
     });
 
     // create the interLine
     var modelInterLine = av.g.line(arrayX, lineY, arrayX + lineWidth, lineY, {
-      stroke:         "#f00",
+      stroke: "#f00",
       "stroke-width": 3,
-      opacity:        0.2
+      opacity: 0.2
     });
     drawLine(modelArray, 0, arraySize - 1, modelInterLine);
 
@@ -79,9 +80,9 @@ $(document).ready(function () {
       // highlight guesstimate
       mid = intersectionX(low, high);
       mid = Math.floor(mid * 100) / 100;
-      av.umsg(interpret("av_ms_intersect"), {fill: {
-        inter:  mid,
-        key:    key,
+      av.umsg(interpret("av_intersect"), {fill: {
+        inter: mid,
+        key: key,
         newmid: Math.floor(mid)
       }});
       refLines(av, code, "guess_calculations");
@@ -91,42 +92,42 @@ $(document).ready(function () {
       if (array[mid] < key) {
         low = mid + 1;
         mLowPointer.target(modelArray.index(low));
-        av.umsg(interpret("av_ms_arr_mid_lt_key"), {fill: {
+        av.umsg(interpret("av_arr_mid_lt_key"), {fill: {
           arr_at_mid: array[mid],
-          key:        key,
+          key: key,
           mid_plus_1: mid + 1
         }});
         refLines(av, code, "tbl_mid_lt_key");
       } else if (array[mid] > key) {
         high = mid - 1;
         mHighPointer.target(modelArray.index(high));
-        av.umsg(interpret("av_ms_arr_mid_gt_key"), {fill: {
-          arr_at_mid:  array[mid],
-          key:         key,
+        av.umsg(interpret("av_arr_mid_gt_key"), {fill: {
+          arr_at_mid: array[mid],
+          key: key,
           mid_minus_1: mid - 1
         }});
         refLines(av, code, "tbl_mid_gt_key");
       } else {
-        av.umsg("<br/>" + interpret("av_ms_found"), {preserve: true, fill: {mid: mid}});
+        av.umsg("<br/>" + interpret("av_found"), {preserve: true, fill: {mid: mid}});
+        drawLine(modelArray, low, high, modelInterLine);
+        av.step();
+        return;
       }
       // draw Line
       drawLine(modelArray, low, high, modelInterLine);
-      if (modelArray.value(mid) === key) {
-        av.step();
-      }
-      // grade step
+
       av.step();
     }
     if (array[low] >= key) {
-      av.umsg(interpret("av_ms_loop_stopped_1"), {fill: {low: low}});
+      av.umsg(interpret("av_loop_stopped_1"), {fill: {low: low}});
       if (array[low] === key) {
-        av.umsg("<br/>" + interpret("av_ms_found"), {preserve: true, fill: {mid: low}});
+        av.umsg("<br/>" + interpret("av_found"), {preserve: true, fill: {mid: low}});
       } else {
-        av.umsg("<br/>" + interpret("av_ms_not_found"), {preserve: true});
+        av.umsg("<br/>" + interpret("av_not_found"), {preserve: true});
       }
     } else {
-      av.umsg(interpret("av_ms_loop_stopped_2"), {fill: {high: high}});
-      av.umsg("<br/>" + interpret("av_ms_not_found"), {preserve: true});
+      av.umsg(interpret("av_loop_stopped_2"), {fill: {high: high}});
+      av.umsg("<br/>" + interpret("av_not_found"), {preserve: true});
     }
     av.step();
   }
@@ -135,18 +136,18 @@ $(document).ready(function () {
   function drawLine(drawArray, low, high, line) {
     var arraySize = drawArray.size();
     var arrayX = drawArray.element.offset().left - drawArray.element.parent().offset().left,
-      arrayY = drawArray.element.offset().top - drawArray.element.parent().offset().top + 150,
-      barWidth = drawArray.element.find(".jsavnode:eq(0)").outerWidth(true),
-      dy = -(drawArray.value(high) - drawArray.value(low)) * 130 / drawArray.value(arraySize - 1),
-      dx = (high - low) * barWidth,
-      k = (dx ? dy / dx : 0),
-      x0 = arrayX + 2 + barWidth * low,
-      y0 = arrayY - 130 * drawArray.value(low) / drawArray.value(arraySize - 1),
-      b = y0 - k * x0,
-      x1 = arrayX + 2,
-      y1 = k * x1 + b,
-      x2 = arrayX + 2 + barWidth * arraySize,
-      y2 = k * x2 + b;
+        arrayY = drawArray.element.offset().top - drawArray.element.parent().offset().top + 150,
+        barWidth = drawArray.element.find(".jsavnode:eq(0)").outerWidth(true),
+        dy = -(drawArray.value(high) - drawArray.value(low)) * 130 /  drawArray.value(arraySize - 1),
+        dx = (high - low) * barWidth,
+        k = (dx ? dy / dx : 0),
+        x0 = arrayX + 2 + barWidth * low,
+        y0 = arrayY - 130 * drawArray.value(low) / drawArray.value(arraySize - 1),
+        b = y0 - k * x0,
+        x1 = arrayX + 2,
+        y1 = k * x1 + b,
+        x2 = arrayX + 2 + barWidth * arraySize,
+        y2 = k * x2 + b;
 
     line.movePoints([[0, x1, y1], [1, x2, y2]]);
   }
@@ -170,7 +171,7 @@ $(document).ready(function () {
 
   // Execute the "Run" button function
   function runIt() {
-    initialArray = ODSA.AV.processArrayValues().sort(function (a, b) {
+    initialArray = ODSA.AV.processArrayValues().sort(function(a, b) {
       return parseInt(a, 10) - parseInt(b, 10);
     });
 
@@ -180,15 +181,18 @@ $(document).ready(function () {
     }
     ODSA.AV.reset(true);
     $("#arrayValues").val(initialArray.join(" "));
+    key = parseInt($("#searchValue").val(), 10) ||
+      initialArray[0] +
+      Math.floor(
+        Math.random() *
+        (initialArray[initialArray.length - 1] - initialArray[0])
+      );
+    $("#searchValue").val(key);
     av = new JSAV($(".avcontainer"), {settings: settings});
      // Create a new array using the layout the user has selected
     av.displayInit();
-    // BEGIN AV
-    av.umsg(interpret("av_BEGIN_TODO"));
     av.step();
     interpolationSearch(initialArray);
-    // END AV
-    av.umsg(interpret("av_END_TODO"));
     av.recorded(); // mark the end
   }
 
@@ -196,10 +200,13 @@ $(document).ready(function () {
   // Connect action callbacks to the HTML entities
   $("#about").click(about);
   $("#run").click(runIt);
-  $("#ssperform").submit(function (evt) {
+  $("#ssperform").submit(function(evt) {
     evt.stopPropagation();
     evt.preventDefault();
     runIt();
   });
-  $("#reset").click(ODSA.AV.reset);
+  $("#reset").click(function() {
+    ODSA.AV.reset();
+    $("#searchValue").val("");
+  });
 });
