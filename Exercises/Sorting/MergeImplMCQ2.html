@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html data-require="math">
-<head>
-  <title>Mergesort Implementation Question 2</title>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
-  <script src="../../khan-exercises/local-only/main.js" ></script>
+  <head>
+    <title>Mergesort Implementation Question 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
 
-</head>
-
-<body>
-<div class="exercise">
-  <div class="problems">
-    <div id="problem-type-or-description">
-      <p class="question">The array implementation for Mergesort uses
-        how many arrays?
-      <div class="solution"><var>"2"</var></div>
-      <ul class="choices" >
-	<li><var>"1"</var></li>
-	<li><var><code>n</code></var></li>			  	  	 
-	<li><var><code>\log n</code></var></li>			  	  	 
-      </ul>
-      <div class="hints">
-	<p>There are <code>\log n</code> passes.</p>
-	<p>But the implementation is careful to reuse the auxilliary
-	array rather than make a new one on each pass.</p>
-	<p>So Mergesort requires the original array and an auxilliary array.</p>
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="question">The array-based implementation for
+            Mergesort uses how many arrays?</p>
+          <div class="solution">2</div>
+          <ul class="choices" >
+            <li>1</li>
+            <li><code>n</code></li>
+            <li><code>\log n</code></li>
+          </ul>
+          <div class="hints">
+            <p>There are <code>\log n</code> passes.</p>
+            <p>But the implementation is careful to reuse the auxilliary
+              array rather than make a new one on each pass.</p>
+            <p>So Mergesort requires the original array and an auxilliary array.</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</body>
+  </body>
 </html>
