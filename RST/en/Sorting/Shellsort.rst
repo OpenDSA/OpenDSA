@@ -149,7 +149,7 @@ Here is a code implementation for Shellsort.
 
 Now, test your understanding of the sublist concept.
 
-.. avembed:: Exercises/Sorting/ShellsortSublist.html ka
+.. avembed:: Exercises/Sorting/ShellsortSublistSumm.html ka
 
 There is a lot of flexibility to picking the increment series.
 It does not need to start with the greatest power of less than

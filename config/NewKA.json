@@ -633,6 +633,110 @@
         }
       }
     },
+    "Sorting": {
+      "NewKA/SortNotation": {
+        "long_name": "Sorting Terminology and Notation",
+        "exercises": {
+          "SortIntroSumm": {
+            "long_name": "Sorting Intro Summary",
+            "required": true,
+            "points": 1.0,
+            "threshold": 3
+          }
+        }
+      },
+      "NewKA/InsertionSort": {
+        "long_name": "Insertion Sort",
+        "exercises" : {
+          "InssortPRO": {
+            "long_name": "Insertion Sort Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          },
+          "InssortSumm": {
+            "long_name": "Insertion Sort Summary Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/BubbleSort": {
+        "long_name": "Bubble Sort",
+        "exercises": {
+          "BubsortPRO": {
+            "long_name": "Bubble Sort Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 3
+          },
+          "BubsortSumm": {
+            "long_name": "Bubble Sort Summary Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/SelectionSort": {
+        "long_name": "Selection Sort",
+        "exercises": {
+          "SelsortPRO": {
+            "long_name": "Selection Sort Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          },
+          "SelsortSumm": {
+            "long_name": "Selection Sort Summary Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/ExchangeSort": {
+        "long_name": "The Cost of Exchange Sorting",
+        "exercises": {
+          "FindInversionsPRO": {
+            "long_name": "Inversions Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          },
+          "ExchangeSumm": {
+            "long_name": "Exchange Sorting Summary Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/Shellsort": {
+        "long_name": "Shellsort",
+        "exercises": {
+          "ShellsortSublistSumm": {
+            "long_name": "Shellsort Sublist Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          },
+          "ShellsortSeries": {
+            "long_name": "Shellsort Series Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          },
+          "ShellsortSumm": {
+            "long_name": "Shellsort Summary Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      }
+    },
     "NewKA": {
       "NewKA/HeapsortStepPRO": {
         "long_name": "HeapsortStepPRO",
@@ -706,54 +810,6 @@
           }
         }
       },
-      "NewKA/ShellsortMCQ4": {
-        "long_name": "ShellsortMCQ4",
-        "exercises": {
-          "ShellsortMCQ4": {
-            "long_name": "ShellsortMCQ4",
-            "required": true,
-            "points": 1.0,
-            "showhide": "show",
-            "threshold": 5
-          }
-        }
-      },
-      "NewKA/ShellsortMCQ5": {
-        "long_name": "ShellsortMCQ5",
-        "exercises": {
-          "ShellsortMCQ5": {
-            "long_name": "ShellsortMCQ5",
-            "required": true,
-            "points": 1.0,
-            "showhide": "show",
-            "threshold": 5
-          }
-        }
-      },
-      "NewKA/SelsortFIB2": {
-        "long_name": "SelsortFIB2",
-        "exercises": {
-          "SelsortFIB2": {
-            "long_name": "SelsortFIB2",
-            "required": true,
-            "points": 1.0,
-            "showhide": "show",
-            "threshold": 5
-          }
-        }
-      },
-      "NewKA/BubsortPRO": {
-        "long_name": "BubsortPRO",
-        "exercises": {
-          "BubsortPRO": {
-            "long_name": "BubsortPRO",
-            "required": true,
-            "points": 1.0,
-            "showhide": "show",
-            "threshold": 5
-          }
-        }
-      },
       "NewKA/SortSumm": {
         "long_name": "Sorting Chapter Summary Exercises",
         "exercises": {
@@ -762,18 +818,6 @@
             "required": true,
             "points": 2,
             "threshold": 10
-          }
-        }
-      },
-      "NewKA/BubsortSumm": {
-        "long_name": "BubsortSumm",
-        "exercises": {
-          "BubsortSumm": {
-            "long_name": "BubsortSumm",
-            "required": true,
-            "points": 1.0,
-            "showhide": "show",
-            "threshold": 5
           }
         }
       },

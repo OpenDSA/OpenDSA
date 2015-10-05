@@ -1,4 +1,4 @@
-/*global JSAV, window */
+/*global window */
 (function() {
   "use strict";
   var av,               // The JSAV object

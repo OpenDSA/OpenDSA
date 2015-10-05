@@ -1,38 +1,37 @@
 <!DOCTYPE html>
 <html data-require="math">
-<head>
-  <title>Exchange Sort Question: Total Pairs</title>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
-  <script src="../../khan-exercises/local-only/main.js" ></script>
+  <head>
+    <title>Exchange Sort Question: Total Pairs</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
 
-</head>
-
-<body>
-<div class="exercise">
-  <div class="problems">
-    <div id="problem-type-or-description">
-      <p class="question"> The total number of pairs of records
-	among <code>n</code> records is:</p>
-      <div class="solution"><var><code>n(n-1)/2</code></var></div>
-      <ul class="choices">
-	<li><var><code>n^2/2</code></var></li>
-	<li><var><code>n</code></var></li>
-	<li><var><code>2n</code></var></li>
-	<li><var><code>2n^2</code></var></li>
-	<li><var><code>n \log n</code></var></li>	 	 
-	<li><var><code>n!</code></var></li>
-	<li><var><code>n!/2</code></var></li>
-	<li><var><code>n(n+1)/2</code></var></li>
-      </ul>
-      <div class="hints">
-        <p>There are <code>n</code> ways to pick the first record in
-        the pair.</p>
-	<p>This leaves <code>n-1</code> ways to pick the second
-	record.</p>
-	<p>We consider pair (A, B) to be the same as pair (B, A).</p>
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="question"> The total number of pairs of records
+            among <code>n</code> records is:</p>
+          <div class="solution"><code>n(n-1)/2</code></div>
+          <ul class="choices">
+            <li><code>n^2/2</code></li>
+            <li><code>n</code></li>
+            <li><code>2n</code></li>
+            <li><code>2n^2</code></li>
+            <li><code>n \log n</code></li>
+            <li><code>n!</code></li>
+            <li><code>n!/2</code></li>
+            <li><code>n(n+1)/2</code></li>
+          </ul>
+          <div class="hints">
+            <p>There are <code>n</code> ways to pick the first record in
+              the pair.</p>
+            <p>This leaves <code>n-1</code> ways to pick the second
+              record.</p>
+            <p>We consider pair (A, B) to be the same as pair (B, A).</p>
+          </div>
+        </div>
       </div>
-    </div> 	  
-  </div>
-</div>
-</body>
+    </div>
+  </body>
 </html>
