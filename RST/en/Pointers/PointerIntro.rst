@@ -4,14 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: Sally Hamouda
+   :author: Nick Parlante and Sally Hamouda
    :prerequisites:
    :topic: Pointers
 
 
+Pointers  - Before and After
+============================
 
-Pointers 
-=========
 There's a lot of nice, tidy code you can write without knowing about pointers. But once
 you learn to use the power of pointers, you can never go back. There are too many things
 that can only be done with pointers. But with increased power comes increased
@@ -19,23 +19,36 @@ responsibility. Pointers allow new and more ugly types of bugs, and pointer bugs
 crash in random ways which makes them more difficult to debug. Nonetheless, even with
 their problems, pointers are an irresistibly powerful programming construct. 
 
-Why do we have pointers?
-------------------------
+Why have pointers?
+------------------
+
 Pointers solve two common software problems. First, pointers allow different sections of
 code to share information easily. You can get the same effect by copying information
 back and forth, but pointers solve the problem better. Second, pointers enable complex
 "linked" data structures like linked lists and binary trees.
 
-What is A pointer?
+What is a pointer?
 ------------------
-Simple int and float variables operate pretty intuitively. An int variable is like a
-box which can store a single int value such as 42. In a drawing, a simple variable is a
-box with its current value drawn inside. A pointer works a little differently, it does not store 
-a simple value directly. Instead, a pointer stores a reference to another value. 
+
+Simple ``int`` and ``float`` variables operate pretty intuitively. An
+``int`` variable is like a box which can store a single ``int`` value such
+as 42. In a drawing, a simple variable is a box with its current value
+drawn inside.
+
+.. TODO::
+   :type: Figure
+
+   Figure here.
+
+A pointer works a little differently, it does not store  
+a simple value directly. Instead, a pointer stores a :term:`reference` to another value. 
 The variable the pointer refers to is sometimes known as its "pointee". 
 
-..Todo:
-      In a drawing, a pointer is a box which contains the beginning of an arrow which leads to its pointee. 
+.. TODO::
+   :type: Figure
+
+      In a drawing, a pointer is a box which contains the beginning of
+      an arrow which leads to its pointee.
       The following drawing shows two variables: num and numPtr. The simple variable num
       contains the value 42 in the usual way. The variable numPtr is a pointer which contains
       a reference to the variable num. The numPtr variable is the pointer and num is its

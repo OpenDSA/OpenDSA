@@ -15,7 +15,7 @@
   },
   "chapters": {
     "Pointers": {   
-      "Pointers/PntrIntro": {
+      "Pointers/PointerIntro": {
         "long_name": "Pointers",
         "exercises": { 
           }
