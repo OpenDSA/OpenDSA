@@ -4,13 +4,14 @@ $(document).ready(function() {
   // Start processing here
   //////////////////////////////////////////////////////////////////
   var av,     // for JSAV library object
+      pseudo,
       initialArray,
       key;    // for the JSAV array
 
   // Load the interpreter created by odsaAV.js
   var config = ODSA.UTILS.loadConfig(),
       interpret = config.interpreter,
-      code = config.code,
+      code = config.code ? $.extend({center: false}, config.code) : config.code,
       settings = config.getSettings();      // Settings for the AV
 
   $("#searchValue").attr("placeholder", interpret("av_searchPlaceholder"));
@@ -35,9 +36,7 @@ $(document).ready(function() {
     var arraySize = array.length;
     var modelArray = av.ds.array(array, {indexed: true, layout: "bar", autoresize: false});
 
-    if (code) {
-      av.code(code).highlight(code.tags.highlight);
-    }
+    pseudo = av.code(code);
 
     var low = 0,
         high = arraySize - 1,
@@ -109,6 +108,7 @@ $(document).ready(function() {
         refLines(av, code, "tbl_mid_gt_key");
       } else {
         av.umsg("<br/>" + interpret("av_found"), {preserve: true, fill: {mid: mid}});
+        refLines(av, code, "return_mid");
         drawLine(modelArray, low, high, modelInterLine);
         av.step();
         return;
@@ -122,12 +122,15 @@ $(document).ready(function() {
       av.umsg(interpret("av_loop_stopped_1"), {fill: {low: low}});
       if (array[low] === key) {
         av.umsg("<br/>" + interpret("av_found"), {preserve: true, fill: {mid: low}});
+        refLines(av, code, "return_low");
       } else {
         av.umsg("<br/>" + interpret("av_not_found"), {preserve: true});
+        refLines(av, code, "return_-1");
       }
     } else {
       av.umsg(interpret("av_loop_stopped_2"), {fill: {high: high}});
       av.umsg("<br/>" + interpret("av_not_found"), {preserve: true});
+      refLines(av, code, "return_-1");
     }
     av.step();
   }
@@ -161,6 +164,7 @@ $(document).ready(function() {
     if (!refCode) {
       return;
     }
+    pseudo.setCurrentLine(lineTag);
     var lines = refCode.tags[lineTag];
     if (typeof lines === "number") {
       refAV.umsg(" " + interpret("av_line"), {preserve: true, fill: {first: lines}});
@@ -189,7 +193,7 @@ $(document).ready(function() {
       );
     $("#searchValue").val(key);
     av = new JSAV($(".avcontainer"), {settings: settings});
-     // Create a new array using the layout the user has selected
+    // Create a new array using the layout the user has selected
     av.displayInit();
     av.step();
     interpolationSearch(initialArray);

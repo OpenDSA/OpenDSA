@@ -47,10 +47,14 @@
     "java" : {
       "url": "../../SourceCode/Java/Searching/interpolationSearch.java",
       "tags": {
+        "guess_calculations": 7,
         "highlight": [8, 9],
-        "return": [12, 13],
         "tbl_mid_lt_key": 8,
-        "tbl_mid_gt_key": 9
+        "tbl_mid_gt_key": 9,
+        "return": [12, 13],
+        "return_mid": 10,
+        "return_low": 12,
+        "return_-1": 13
       }
     }
   }
