@@ -1,35 +1,33 @@
 <!DOCTYPE html>
 <html data-require="math">
-<head>
+  <head>
+    <title>Binsort Question 4</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
 
-  <title>Binsort Question 4</title>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
-  <script src="../../khan-exercises/local-only/main.js" ></script>
-
-</head>
-<body>
-
-<div class="exercise">
-  <div class="problems">
-    <div id="problem-type-or-description">
-      <p class="question">Which statement is true about the second
-	Binsort pseudocode algorithm presented in this module?
-	Recall that a stable sorting algorithm maintains the relative
-	order of records with equal keys.</p>
-      <div class="solution"><var>"It is a stable algorithm."</var></div>
-      <ul class="choices">
-	<li><var>"It can be modified to make it stable"</var></li>
-	<li><var>"It is not stable, and there is no easy way to make it stable"</var></li>
-	<li><var>"None of these answers"</var></li>
-      </ul>  
-      <div class="hints">
-        <p>It processes the records from first to last.</p>
-	<p>Given two records with the same key value, where does the
-	second one go?</p>
-	<p>It goes at the end of the bin, so they do not switch order.</p>
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="question">Which statement is true about the second
+            Binsort pseudocode algorithm presented in this module?
+            Recall that a stable sorting algorithm maintains the relative
+            order of records with equal keys.</p>
+          <div class="solution">It is a stable algorithm</div>
+          <ul class="choices">
+            <li>It can be modified to make it stable</li>
+            <li>It is not stable, and there is no easy way to make it stable</li>
+            <li>None of these answers</li>
+          </ul>
+          <div class="hints">
+            <p>It processes the records from first to last.</p>
+            <p>Given two records with the same key value, where does the
+              second one go?</p>
+            <p>It goes at the end of the bin, so they do not switch order.</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</body>
+  </body>
 </html>

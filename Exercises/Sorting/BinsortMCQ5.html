@@ -1,37 +1,34 @@
 <!DOCTYPE html>
 <html data-require="math spin">
-<head>
-  <title>Binsort Question: cost</title>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
-  <script src="../../khan-exercises/local-only/main.js" ></script>
+  <head>
+    <title>Binsort Question: cost</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
 
-  <script src="../../JSAV/build/JSAV-min.js"></script>
-  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-</head>
-
-<body>
-<div class="exercise">
-  <div class="problems">
-    <div id="problem-type-or-description">
-      <div class="spin">
-	<p class="question">The {best|average|worst} case time
-	complexity of Binsort is:</p> 
-      </div>
-      <div class="solution"><var><code>\Theta(n + \mathrm{MaxKeyValue})</code></var></div>
-      <ul class="choices">
-	<li><var><code>\Theta(n)</code></var></li>
-	<li><var><code>\Theta(n^2)</code></var></li>
-	<li><var><code>\Theta(n \log n)</code></var></li>
-	<li><var><code>\Theta(\mathrm{MaxKeyValue})</code></var></li>
-      </ul>  
-      <div class="hints">
-        <p>We need a separate bin for every key value.</p>
-	<p>And we need to look at every such bin.</p>
-	<p>So the cost has to be related to both the number of records
-	and the number of bins.</p>
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <div class="spin">
+            <p class="question">The {best|average|worst} case time
+              complexity of Binsort is:</p>
+          </div>
+          <div class="solution"><code>\Theta(n + \mathrm{MaxKeyValue})</code></div>
+          <ul class="choices">
+            <li><code>\Theta(n)</code></li>
+            <li><code>\Theta(n^2)</code></li>
+            <li><code>\Theta(n \log n)</code></li>
+            <li><code>\Theta(\mathrm{MaxKeyValue})</code></li>
+          </ul>
+          <div class="hints">
+            <p>We need a separate bin for every key value.</p>
+            <p>And we need to look at every such bin.</p>
+            <p>So the cost has to be related to both the number of records
+              and the number of bins.</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</body>
+  </body>
 </html>
