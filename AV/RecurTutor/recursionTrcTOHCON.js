@@ -26,9 +26,9 @@
   var rect5 = av.g.rect(-10, 180, 240, 20).css({"fill": "blue"});
 
 // Labels for each tower
-  var labela = av.label("A", {left: 107, top: -30});
-  var labelb = av.label("B", {left: 378, top: -30});
-  var labelc = av.label("C", {left: 603, top: -30});
+  var labela = av.label("A", {left: 90, top: -18});
+  var labelb = av.label("B", {left: 363, top: -18});
+  var labelc = av.label("C", {left: 590, top: -18});
    
   
   var pseudo = av.code({url: "../../../SourceCode/Java/RecurTutor/RecTOH.java",
