@@ -5,13 +5,14 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :requires: sorting terminology; sort code tuning; insertion sort
    :satisfies: quicksort
    :topic: Sorting
 
-.. index:: ! RadixsortPRO
+Quicksort
+=========
 
-RadixsortPRO
-============
+.. avembed:: Exercises/Sorting/QuicksortPivotPRO.html ka
 
-.. avembed:: Exercises/NewKA/RadixsortPRO.html ka
+.. avembed:: Exercises/Sorting/QuicksortPartitPRO.html ka
+
+.. avembed:: Exercises/Sorting/QuicksortSumm.html ka

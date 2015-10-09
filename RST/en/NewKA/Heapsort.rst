@@ -5,13 +5,14 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :requires: sorting terminology; sort code tuning; insertion sort
-   :satisfies: quicksort
+   :satisfies: heapsort
    :topic: Sorting
 
-.. index:: ! HeapsortStepPRO
+.. index:: ! Heapsort
 
-HeapsortStepPRO
-===============
+Heapsort
+========
 
-.. avembed:: Exercises/NewKA/HeapsortStepPRO.html ka
+.. avembed:: Exercises/Sorting/HeapsortStepPRO.html ka
+
+.. avembed:: Exercises/Sorting/HeapsortSumm.html ka

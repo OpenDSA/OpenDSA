@@ -757,77 +757,71 @@
             "threshold": 5
           }
         }
-      }
-    },
-    "NewKA": {
-      "NewKA/HeapsortStepPRO": {
-        "long_name": "HeapsortStepPRO",
+      },
+      "NewKA/Quicksort": {
+        "long_name": "Quicksort",
+        "exercises": {
+          "QuicksortPivotPRO": {
+            "long_name": "Quicksort Pivot Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          },
+          "QuicksortPartitPRO": {
+            "long_name": "Quicksort Partition Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          },
+          "QuicksortSumm": {
+            "long_name": "Quicksort Summary Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/Heapsort": {
+        "long_name": "Heapsort",
         "exercises": {
           "HeapsortStepPRO": {
-            "long_name": "HeapsortStepPRO",
-            "required": true,
-            "points": 1.0,
-            "showhide": "show",
-            "threshold": 2
-          }
-        }
-      },
-      "NewKA/RadixsortPRO": {
-        "long_name": "RadixsortPRO",
-        "exercises": {
-          "RadixsortPRO": {
-            "long_name": "RadixsortPRO",
-            "required": true,
-            "points": 1.0,
-            "showhide": "show",
-            "threshold": 2
-          }
-        }
-      },
-      "NewKA/RadixMergesortSumm": {
-        "long_name": "RadixMergesortSumm",
-        "exercises": {
-          "RadixMergesortSumm": {
-            "long_name": "RadixMergesortSumm",
-            "required": true,
-            "points": 1.0,
-            "showhide": "show",
-            "threshold": 2
-          }
-        }
-      },
-      "NewKA/BinsortMCQ2": {
-        "long_name": "BinsortMCQ2",
-        "exercises": {
-          "BinsortMCQ2": {
-            "long_name": "BinsortMCQ2",
-            "required": true,
-            "points": 1.0,
-            "showhide": "show",
-            "threshold": 2
-          }
-        }
-      },
-      "NewKA/BinsortTF1": {
-        "long_name": "BinsortTF1",
-        "exercises": {
-          "BinsortTF1": {
-            "long_name": "BinsortTF1",
-            "required": true,
-            "points": 1.0,
-            "showhide": "show",
-            "threshold": 2
-          }
-        }
-      },
-      "NewKA/BinsortSumm": {
-        "long_name": "Binsort Module Summary",
-        "exercises": {
-          "BinsortSumm": {
-            "long_name": "Binsort Summary Exercise",
+            "long_name": "Heapsort RemoveMax Proficiency Exercise",
             "required": true,
             "points": 2.0,
-            "showhide": "show",
+            "threshold": 5
+          },
+          "HeapsortSumm": {
+            "long_name": "Heapsort Summary Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/RadixSort": {
+        "long_name": "Radix Sort",
+        "exercises": {
+          "RadixsortPRO": {
+            "long_name": "Radix Sort Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 4
+          },
+          "RadixSortSumm": {
+            "long_name": "Radix Sort Summary Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/SortingLowerBound": {
+        "long_name": "Lower Bounds of Sorting",
+        "exercises": {
+          "SortBoundSumm": {
+            "long_name": "Lower Bounds Summary Exercise",
+            "required": true,
+            "points": 1.0,
             "threshold": 4
           }
         }
@@ -842,7 +836,129 @@
             "threshold": 10
           }
         }
+      }
+    },
+    "Hashing": {
+      "NewKA/HashFuncExamp": {
+        "long_name": "Sample Hash Functions",
+        "exercises": {
+          "HashFuncFIBSumm": {
+            "long_name": "Hash Function Pick Slot Summary",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          },
+          "HashFuncSumm": {
+            "long_name": "Hash Function Summary Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
       },
+      "NewKA/OpenHash": {
+        "long_name": "Open Hashing",
+        "exercises": {
+          "OpenHashPRO": {
+            "long_name": "Open Hashing Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/BucketHash": {
+        "long_name": "Bucket Hashing",
+        "exercises": {
+          "HashBucketPRO": {
+            "long_name": "Bucket Hashing Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          },
+          "HashBucket2PRO": {
+            "long_name": "Alternate Bucket Hashing Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/HashCSimple": {
+        "long_name": "Collision Resolution",
+        "exercises": {
+          "HashLinearProbePRO": {
+            "long_name": "Linear Probing Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/HashCImproved": {
+        "long_name": "Improved Collision Resolution",
+        "exercises": {
+          "HashLinearStepProbePRO": {
+            "long_name": "Linear Probing By Steps Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          },
+          "HashPseudoRandomProbePRO": {
+            "long_name": "Pseudo-Random Probing Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          },
+          "HashQuadraticProbePRO": {
+            "long_name": "Quadratic Probing Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          },
+          "HashDoubleProbePRO": {
+            "long_name": "Double Hashing Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/HashAnal": {
+        "long_name": "Analysis of Closed Hashing",
+        "exercises": {
+          "HashAnalSumm": {
+            "long_name": "Analysis of Closed Hashing Summary Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "NewKA/HashDel": {
+        "long_name": "Deletion",
+        "exercises": {
+          "HashDelSumm": {
+            "long_name": "Hash Deletion Summary Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 3
+          }
+        }
+      },
+      "NewKA/HashSumm": {
+        "long_name": "Hashing Chapter Summary Exercises",
+        "exercises": {
+          "HashChapterSumm": {
+            "long_name": "Hashing Chapter Summary Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 10
+          }
+        }
+      }
+    },
+    "NewKA": {
       "NewKA/recCMultiplyPROGSumm": {
         "long_name": "recCMultiplyPROGSumm",
         "exercises": {

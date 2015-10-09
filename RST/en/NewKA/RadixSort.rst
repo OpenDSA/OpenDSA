@@ -7,9 +7,9 @@
    :author: Cliff Shaffer
    :topic: Sorting
 
-.. index:: ! BinsortTF1
-
-BinsortTF1
+Radix Sort
 ==========
 
-.. avembed:: Exercises/NewKA/BinsortTF1.html ka
+.. avembed:: Exercises/Sorting/RadixsortPRO.html ka
+
+.. avembed:: Exercises/Sorting/RadixSortSumm.html ka

@@ -5,13 +5,10 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :requires: sorting terminology; sort code tuning; insertion sort
-   :satisfies: BinsortMCQ2
+   :satisfies: sorting lower bound
    :topic: Sorting
 
-.. index:: ! BinsortMCQ2
+Lower Bounds for Sorting
+========================
 
-BinsortMCQ2
-===========
-
-.. avembed:: Exercises/NewKA/BinsortMCQ2.html ka
+.. avembed:: Exercises/Sorting/SortBoundSumm.html ka
