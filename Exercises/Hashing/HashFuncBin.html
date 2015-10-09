@@ -1,45 +1,35 @@
 <!DOCTYPE html>
 <html data-require="math">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Hash Function: Binning</title>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
-  <script src="../../khan-exercises/local-only/main.js" ></script>
+  <head>
+    <title>Hash Function: Binning</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
 
-</head>
-
-<body>
-<script>
-// Return the computed Answer
-var genAnswer = function (k, M) {
-console.log("Compute " + k + " / " + M);
-  return Math.floor(k / M);
-};
-</script>
-
-<div class="exercise">
-  <div class="vars">
-    <var id="M">100</var>
-    <var id="key">randRange(0, 9999)</var>
-    <var id="CorrectAnswer">genAnswer(key, M)</var>
-  </div>
-  <div class="problems">
-    <div>
-      <div class="question">Given a hash table size of 100, a key
-	in the range 0 to 9999, and using the <b>binning hash function</b>,
-	what slot in the table will <var>key</var> hash to?
+  <body>
+    <div class="exercise">
+      <div class="vars">
+        <var id="M">100</var>
+        <var id="key">randRange(0, 9999)</var>
+        <var id="CorrectAnswer">Math.floor(key / M)</var>
       </div>
-      <p class="solution" data-type="text"><var>CorrectAnswer</var></p>
-      <div class="hints"> 
-	<p>Each slot in the hash table gets 1/100 of the range.</p>
-	<p>Given that we have 10,000 key values (0 to 9999), there
-	are 100 values that hash to each slot.</p>
-	<p>We can compute this simply by
-	calculating <var>key</var>/100 (rounding down).
-	<p>The answer is <var>CorrectAnswer</var>.</p>
+      <div class="problems">
+        <div>
+          <div class="question">Given a hash table size of 100, a key
+            in the range 0 to 9999, and using the <b>binning hash function</b>,
+            what slot in the table will <var>key</var> hash to?
+          </div>
+          <p class="solution" data-type="text"><var>CorrectAnswer</var></p>
+          <div class="hints">
+            <p>Each slot in the hash table gets 1/100 of the range.</p>
+            <p>Given that we have 10,000 key values (0 to 9999), there
+              are 100 values that hash to each slot.</p>
+            <p>We can compute this simply by
+              calculating <var>key</var>/100 (rounding down).
+            <p>The answer is <var>CorrectAnswer</var>.</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</body>
+  </body>
 </html>

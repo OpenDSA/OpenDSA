@@ -1,54 +1,35 @@
 <!DOCTYPE html>
-<html data-require="math word-problems">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Hash Function: Simple String Folding</title>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
-  <script src="../../khan-exercises/local-only/main.js" ></script>
+<html data-require="math HashFuncSsimple">
+  <head>
+    <title>Hash Function: Simple String Folding</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
 
-</head>
-
-<body>
-<script>
-// Generate a key
-var genKey = function (len) {
-  return Math.random().toString(36).substring(2, len + 2);
-};
-
-// Return the computed Answer
-var genAnswer = function (k, M) {
-  var i;
-  var output = 0;
-  for (i = 0; i<k.length; i++) {
-    output += k.charCodeAt(i);
-  }
-  return output % M;
-};
-</script>
-
-<div class="exercise">
-  <div class="vars">
-    <var id="M">100</var>
-    <var id="len">randRange(5, 10)</var>
-    <var id="key">genKey(len)</var>
-    <var id="CorrectAnswer">genAnswer(key, M)</var>
-  </div>
-  <div class="problems">
-    <div>
-      <div class="question">Given a hash table size of 100,
-        a key that is a string, use the <b>simple string folding function</b>
-        to calculate a hash value that will then be set to a value
-        within the table size using the simple mod function.
-	What slot in the table will <b><var>key</var></b> hash to?
+  <body>
+    <div class="exercise">
+      <div class="vars">
+        <var id="M">100</var>
+        <var id="len">randRange(5, 10)</var>
+        <var id="key">hashFuncSsimple.genKey(len)</var>
+        <var id="CorrectAnswer">hashFuncSsimple.genAnswer(key, M)</var>
       </div>
-      <p class="solution" data-type="text"><var>CorrectAnswer</var></p>
-      <div class="hints"> 
-	<p>Use the Simple String Folding calculator to help you.</p>
-	<p>Take the answer it gives, and mod by 100.</p>
-	<p>The answer is <var>CorrectAnswer</var>.</p>
+      <div class="problems">
+        <div>
+          <div class="question">Given a hash table size of 100,
+            a key that is a string, use the <b>simple string folding function</b>
+            to calculate a hash value that will then be set to a value
+            within the table size using the simple mod function.
+            What slot in the table will <b><var>key</var></b> hash to?
+          </div>
+          <p class="solution" data-type="text"><var>CorrectAnswer</var></p>
+          <div class="hints">
+            <p>Use the Simple String Folding calculator to help you.</p>
+            <p>Take the answer it gives, and mod by 100.</p>
+            <p>The answer is <var>CorrectAnswer</var>.</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</body>
+  </body>
 </html>
