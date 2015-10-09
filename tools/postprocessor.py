@@ -338,12 +338,12 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   previous_parent = None
   i = 0
   for section_div in content_div:
-    print "\tNew Section"
+    #print "\tNew Section"
     for subsection_div in section_div:
-      print "\t\tNew Subsection"
+      #print "\t\tNew Subsection"
       name = "NEXT SLIDE"
       for parent, body in subsection_div:
-        print "\t\t\t", str(body)[:40]
+        #print "\t\t\t", str(body)[:40]
         new_slide.append( (parent, body) )
       if not ''.join([str(s[1]) for s in new_slide]).strip():
         continue
@@ -385,10 +385,7 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   for index, (exercise_name, slide) in enumerate(slides):
     #print "\tSlide", index, exercise_name, len(slide)
     # Identify the new filename
-    if total_exercises > 0:
-      slide_filename = '{0}-{1:02d}.html'.format(mod_name, 1+index)
-    else:
-      slide_filename = '{}.html'.format(mod_name)
+    slide_filename = '{0}-{1:02d}.html'.format(mod_name, index)
     slide_filepath = os.path.join(os.path.dirname(path), '..', 'lti_html', slide_filename)
     # Add the relevant content back in
     for body_index, (parent, body) in enumerate(slide):
