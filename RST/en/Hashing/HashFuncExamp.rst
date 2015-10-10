@@ -5,7 +5,6 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
    :topic: Hashing
 
 Sample Hash Functions
@@ -292,7 +291,7 @@ functions.
 You should use the calculators above for the more complicated hash
 functions.
 
-.. .. avembed:: Exercises/Hashing/HashFuncPROSumm.html ka
+.. avembed:: Exercises/Hashing/HashFuncFIBSumm.html ka
 
 Here are some review questions.
 

@@ -839,7 +839,7 @@
       }
     },
     "Hashing": {
-      "Hashing/HashFuncExamp": {
+      "NewKA/HashFuncExamp": {
         "long_name": "Sample Hash Functions",
         "exercises": {
           "HashFuncFIBSumm": {
@@ -856,7 +856,7 @@
           }
         }
       },
-      "Hashing/OpenHash": {
+      "NewKA/OpenHash": {
         "long_name": "Open Hashing",
         "exercises": {
           "OpenHashPRO": {
@@ -867,7 +867,7 @@
           }
         }
       },
-      "Hashing/BucketHash": {
+      "NewKA/BucketHash": {
         "long_name": "Bucket Hashing",
         "exercises": {
           "HashBucketPRO": {
@@ -884,10 +884,10 @@
           }
         }
       },
-      "Hashing/HashCSimple": {
+      "NewKA/HashCSimple": {
         "long_name": "Collision Resolution",
         "exercises": {
-          "HashLinearProbePRO": {
+          "HashLinearPPRO": {
             "long_name": "Linear Probing Proficiency Exercise",
             "required": true,
             "points": 1.0,
@@ -895,28 +895,28 @@
           }
         }
       },
-      "Hashing/HashCImproved": {
+      "NewKA/HashCImproved": {
         "long_name": "Improved Collision Resolution",
         "exercises": {
-          "HashLinearStepProbePRO": {
+          "HashLinearStepPPRO": {
             "long_name": "Linear Probing By Steps Proficiency Exercise",
             "required": true,
             "points": 2.0,
             "threshold": 5
           },
-          "HashPseudoRandomProbePRO": {
+          "HashPseudoRandomPPRO": {
             "long_name": "Pseudo-Random Probing Proficiency Exercise",
             "required": true,
             "points": 2.0,
             "threshold": 5
           },
-          "HashQuadraticProbePRO": {
+          "HashQuadraticPPRO": {
             "long_name": "Quadratic Probing Proficiency Exercise",
             "required": true,
             "points": 2.0,
             "threshold": 5
           },
-          "HashDoubleProbePRO": {
+          "HashDoublePPRO": {
             "long_name": "Double Hashing Proficiency Exercise",
             "required": true,
             "points": 2.0,
@@ -924,7 +924,7 @@
           }
         }
       },
-      "Hashing/HashAnal": {
+      "NewKA/HashAnal": {
         "long_name": "Analysis of Closed Hashing",
         "exercises": {
           "HashAnalSumm": {
@@ -935,7 +935,7 @@
           }
         }
       },
-      "Hashing/HashDel": {
+      "NewKA/HashDel": {
         "long_name": "Deletion",
         "exercises": {
           "HashDelSumm": {
@@ -946,7 +946,7 @@
           }
         }
       },
-      "Hashing/HashSumm": {
+      "NewKA/HashSumm": {
         "long_name": "Hashing Chapter Summary Exercises",
         "exercises": {
           "HashChapterSumm": {

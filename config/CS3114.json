@@ -2069,13 +2069,13 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "HashingBucketPRO": {
+          "HashBucketPRO": {
             "long_name": "Bucket Hashing Proficiency Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 5
           },
-          "HashingBucket2PRO": {
+          "HashBucket2PRO": {
             "long_name": "Alternate Bucket Hashing Proficiency Exercise",
             "required": true,
             "points": 1.0,
@@ -2098,7 +2098,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "HashingLinearProbePRO": {
+          "HashLinearPPRO": {
             "long_name": "Linear Probing Proficiency Exercise",
             "required": true,
             "points": 1.0,
@@ -2121,7 +2121,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "HashingLinearStepProbePRO": {
+          "HashLinearStepPPRO": {
             "long_name": "Linear Probing By Steps Proficiency Exercise",
             "required": true,
             "points": 2.0,
@@ -2133,7 +2133,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "HashingPseudoRandomProbePRO": {
+          "HashPseudoRandomPPRO": {
             "long_name": "Pseudo-Random Probing Proficiency Exercise",
             "required": true,
             "points": 2.0,
@@ -2151,7 +2151,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "HashingQuadraticProbePRO": {
+          "HashQuadraticPPRO": {
             "long_name": "Quadratic Probing Proficiency Exercise",
             "required": true,
             "points": 2.0,
@@ -2175,7 +2175,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "HashingDoubleProbePRO": {
+          "HashDoublePPRO": {
             "long_name": "Double Hashing Proficiency Exercise",
             "required": true,
             "points": 2.0,

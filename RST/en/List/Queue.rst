@@ -6,7 +6,7 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :requires: list ADT
-   :satisfies: queue
+   :satisfies: queue; array-based queue
    :topic: Lists
 
 .. odsalink:: AV/List/aqueueCON.css

@@ -5,7 +5,6 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: Sorting
    :topic: Sorting
 
 Sorting Summary Exercises
