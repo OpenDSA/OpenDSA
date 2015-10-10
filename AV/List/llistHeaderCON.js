@@ -11,6 +11,5 @@ $(document).ready(function () {
   setPointerL("curr", l.get(3));
   setPointerL("tail", l.get(6));
   l.get(3).addVLine();
-  l.get(6).addTail();
   av.recorded();
 });

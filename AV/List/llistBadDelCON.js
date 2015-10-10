@@ -18,8 +18,6 @@ $(document).ready(function () {
   var tail = setPointerL("tail", l.get(4));
   var bar = l.get(2).addVLine();
   var bar2 = l.get(3).addVLine({visible: 0});
-  var slash = l.get(4).addTail();
-  var slash6 = l.get(3).addTail({visible: 0}); // Diagonal slash in step 6
   var dashlineLeftMargin = 452;    // Dash line in step 4
   var dashline = av.g.polyline([[dashlineLeftMargin, 66],
                                 [dashlineLeftMargin + 13, 66],
@@ -65,8 +63,6 @@ $(document).ready(function () {
   dashline.hide();
   l.remove(3);
   l.get(2).edgeToNext().show();
-  slash.hide();
-  slash6.show();
   l.layout();
   av.umsg(interpret("av_c6"));
   av.step();

@@ -22,7 +22,6 @@ $(document).ready(function () {
   var head = setPointerL("head", l.get(0));
   var curr = setPointerL("curr", l.get(2));
   var tail = setPointerL("tail", l.get(4));
-  var slash = l.get(4).addTail();
   var bar = l.get(2).addVLine();
 
   // Box "it"
@@ -32,7 +31,6 @@ $(document).ready(function () {
   // Create pieces for later steps
   var arr = av.ds.array([""], {indexed: true});
   arr.hide();
-  var newSlash = l.get(4).addTail({left: 74, top: 0, visible: 0});
   //Horizontal arrow in step 4 pointing to item 12
   var longArrow = av.g.line(leftMargin + 190, topMargin + 31,
                             leftMargin + 298, topMargin + 31,
@@ -55,8 +53,6 @@ $(document).ready(function () {
   l.get(2).edgeToNext().hide();
   l.get(3).edgeToNext().hide();
   longArrow.show();
-  slash.hide();
-  newSlash.show();
   l.layout({ updateTop: false });
   av.umsg(interpret("av_c2"));
   //Copy 23 to the new link node

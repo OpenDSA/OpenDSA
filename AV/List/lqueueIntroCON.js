@@ -18,7 +18,6 @@ $(document).ready(function () {
       .addFirst(10)
       .addFirst(5)
       .addFirst("null");
-  var slash = list.get(3).addTail({left: 221});
   list.layout();
   var frontP = av.pointer("front", list.get(0));
   var rearP = av.pointer("rear", list.get(3));
@@ -26,12 +25,10 @@ $(document).ready(function () {
   // Would like to put this in Slide 2, but the slash doesn't hide correctly
   var listInit = av.ds.list({nodegap: 30, left: leftMargin, top: topMargin});
   listInit.addFirst("null");
-  var slashI = listInit.get(0).addTail();
   listInit.layout();
   var frontIP = setPointerL("front", listInit.get(0));
   var rearIP = setPointerR("rear", listInit.get(0));
   listInit.hide();
-  slashI.hide();
   frontIP.hide();
   rearIP.hide();
 
@@ -53,9 +50,7 @@ $(document).ready(function () {
   list.hide();
   frontP.hide();
   rearP.hide();
-  slash.hide();
   listInit.show();
-  slashI.show();
   frontIP.show();
   rearIP.show();
   av.umsg(interpret("av_c3"));
@@ -66,11 +61,9 @@ $(document).ready(function () {
   listInit.hide();
   frontIP.hide();
   rearIP.hide();
-  slashI.hide();
   list.show();
   frontP.show();
   rearP.show();
-  slash.show();
   av.umsg(interpret("av_c4"));
   av.recorded();
 });
