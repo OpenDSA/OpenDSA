@@ -16,7 +16,7 @@
       var mult;
       for (j = 0; j < intLength; j++) {
         mult = 1;
-        for (k = 0 ; k < 4; k++) {
+        for (k = 0; k < 4; k++) {
           sum += s.charCodeAt(curr) * mult;
           curr++;
           mult *= 256;

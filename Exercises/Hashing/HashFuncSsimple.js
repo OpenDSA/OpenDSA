@@ -11,7 +11,7 @@
     genAnswer: function(k, M) {
       var i;
       var output = 0;
-      for (i = 0; i<k.length; i++) {
+      for (i = 0; i < k.length; i++) {
         output += k.charCodeAt(i);
       }
       return output % M;

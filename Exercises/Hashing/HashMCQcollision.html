@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <html data-require="math">
-<head>
-  <title>Hashing Question: Collisions</title>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
-  <script src="../../khan-exercises/local-only/main.js" ></script>
+  <head>
+    <title>Hashing Question: Collisions</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
 
-</head>
-
-<body>
-  <div class="exercise">
-    <div class="problems">
-      <div id="problem-type-or-description">
-        <p class="question"> Which is the best definition for
-          collision in a hash table?</p>
-        <div class="solution"><var>"Two records with different keys have the same hash value"</var></div>
-	<ul class="choices" data-show="4">
-	  <li><var> "Two records are identical except for their keys"</var></li>
-	  <li><var> "Two records have the same key" </var></li>
-	  <li><var> "Two records have the same key and the same hash value" </var></li>
-	  <li><var> "Two records with the same key have different hash values"</var></li>
-	</ul>
-	<div class="hints">
-          <p>Collision occurs when two keys try to go to the same slot.</p>
-	</div>
-      </div> 
-    </div>	 
-  </div>
-</div>
-</body>
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="question"> Which is the best definition for
+            collision in a hash table?</p>
+          <div class="solution">Two records with different keys have the same hash value</div>
+          <ul class="choices" data-show="4">
+            <li>Two records are identical except for their keys</li>
+            <li>Two records have the same key</li>
+            <li>Two records have the same key and the same hash value</li>
+            <li>Two records with the same key have different hash values</li>
+          </ul>
+          <div class="hints">
+            <p>Collision occurs when two keys try to go to the same slot.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
