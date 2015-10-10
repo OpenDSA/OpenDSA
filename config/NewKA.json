@@ -647,7 +647,7 @@
       },
       "NewKA/InsertionSort": {
         "long_name": "Insertion Sort",
-        "exercises" : {
+        "exercises": {
           "InssortPRO": {
             "long_name": "Insertion Sort Proficiency Exercise",
             "required": true,
@@ -839,7 +839,7 @@
       }
     },
     "Hashing": {
-      "NewKA/HashFuncExamp": {
+      "Hashing/HashFuncExamp": {
         "long_name": "Sample Hash Functions",
         "exercises": {
           "HashFuncFIBSumm": {
@@ -856,7 +856,7 @@
           }
         }
       },
-      "NewKA/OpenHash": {
+      "Hashing/OpenHash": {
         "long_name": "Open Hashing",
         "exercises": {
           "OpenHashPRO": {
@@ -867,7 +867,7 @@
           }
         }
       },
-      "NewKA/BucketHash": {
+      "Hashing/BucketHash": {
         "long_name": "Bucket Hashing",
         "exercises": {
           "HashBucketPRO": {
@@ -884,7 +884,7 @@
           }
         }
       },
-      "NewKA/HashCSimple": {
+      "Hashing/HashCSimple": {
         "long_name": "Collision Resolution",
         "exercises": {
           "HashLinearProbePRO": {
@@ -895,7 +895,7 @@
           }
         }
       },
-      "NewKA/HashCImproved": {
+      "Hashing/HashCImproved": {
         "long_name": "Improved Collision Resolution",
         "exercises": {
           "HashLinearStepProbePRO": {
@@ -924,7 +924,7 @@
           }
         }
       },
-      "NewKA/HashAnal": {
+      "Hashing/HashAnal": {
         "long_name": "Analysis of Closed Hashing",
         "exercises": {
           "HashAnalSumm": {
@@ -935,7 +935,7 @@
           }
         }
       },
-      "NewKA/HashDel": {
+      "Hashing/HashDel": {
         "long_name": "Deletion",
         "exercises": {
           "HashDelSumm": {
@@ -946,7 +946,7 @@
           }
         }
       },
-      "NewKA/HashSumm": {
+      "Hashing/HashSumm": {
         "long_name": "Hashing Chapter Summary Exercises",
         "exercises": {
           "HashChapterSumm": {

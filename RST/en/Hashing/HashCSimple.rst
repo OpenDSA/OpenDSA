@@ -138,6 +138,6 @@ worse.
 The objection to primary clustering is that it leads to
 long probe sequences.
 
-.. avembed:: Exercises/Hashing/HashingLinearProbePRO.html ka
+.. avembed:: Exercises/Hashing/HashLinearPPRO.html ka
 
 .. odsascript:: AV/Hashing/linProbeCON.js
