@@ -14,8 +14,9 @@
     initJSAV: function(arrSize) {
       var config = ODSA.UTILS.loadConfig();
 console.log("PARAMS: " + PARAMS);
+// This is what I want to do:
+//      var randomData = hashProbeKA.randomizeInputData(PARAMS["probe"], arrSize);
       var randomData = hashProbeKA.randomizeInputData(linearProbing, arrSize);
-
       // Get the correct solution
       solutionArr = randomData[2];
       studentArr = randomData[0];
