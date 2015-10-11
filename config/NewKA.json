@@ -956,6 +956,17 @@
             "threshold": 10
           }
         }
+      },
+      "NewKA/HashProbeTest": {
+        "long_name": "Hash Probing Exercise Test",
+        "exercises": {
+          "HashProbePRO": {
+            "long_name": "Hash Probe Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 10
+          }
+        }
       }
     },
     "NewKA": {
