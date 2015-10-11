@@ -382,7 +382,7 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
     print "\tPhase 2: Clustered into {} slides. Found {} exercises, expected {}.".format(len(slides), total_exercises, len(exercises))
   
   # third pass: render them out with the relevant scripts
-  for index, (exercise_name, slide) in enumerate(slides):
+  for index, (slide_name, slide) in enumerate(slides):
     #print "\tSlide", index, exercise_name, len(slide)
     # Identify the new filename
     slide_filename = '{0}-{1:02d}.html'.format(mod_name, index)
@@ -393,16 +393,21 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
     # Add back in slide specific scripts
     sss_div = soup.new_tag('div', id='SLIDE-SPECIFIC-SCRIPTS')
     content_div_soup.insert_before(sss_div)
-    if exercise_name in slide_scripts:
-      for a_script in slide_scripts[exercise_name]:
-        sss_div.insert(0, a_script)
-    if exercise_name in ('quicksortCON', 'bubblesortCON'):
-      for a_script in slide_scripts[exercise_name.replace('CON', 'CODE')]:
-        sss_div.insert(0, a_script)  
+    if index != 0:
+        potential_exercises = exercises.values()[index-1].keys()
+    else:
+        potential_exercises = []
+    for potential_exercise in potential_exercises:
+        if potential_exercise in slide_scripts:
+          for a_script in slide_scripts[potential_exercise]:
+            sss_div.insert(0, a_script)
+        if potential_exercise in ('quicksortCON', 'bubblesortCON'):
+          for a_script in slide_scripts[potential_exercise.replace('CON', 'CODE')]:
+            sss_div.insert(0, a_script)  
     # Write out the file with what we have so far
     with codecs.open(slide_filepath, 'w', 'utf-8') as o:
       o.write(unicode(soup))
-    sss_div.clear()
+    sss_div.decompose()
     for parent, body in slide:
       body.extract()
   if verbose:
