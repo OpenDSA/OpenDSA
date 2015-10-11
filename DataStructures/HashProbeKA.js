@@ -1,15 +1,15 @@
-(function () {
+// Used by collision resolution proficiency exercises
+(function() {
   "use strict";
-  var Hashing = {
-    linearProbing: function (i) {
-      return i;
-    },
-    quadraticProbing: function (i) {
+  var hashProbeKA = {
+    quadraticProbing: function(i) {
       return i * i;
     },
     // randomize input for linear&quadratic probing, probefunction should be one of the above
-    randomizeInputData: function (probeFunction, arr_size) {
-      var tries = JSAV.utils.rand.sample([0, 1, 1, 1, 1, 2, 2, 2, 2, 3], 1)[0], // how many indices are tried before success
+    randomizeInputData: function(probeFunction, arr_size) {
+      var i,
+          // how many indices are tried before success
+          tries = JSAV.utils.rand.sample([0, 1, 1, 1, 1, 2, 2, 2, 2, 3], 1)[0],
           valueMod = JSAV.utils.rand.numKey(0, arr_size), // which index to insert to
           arr = [], // store the hashtable in this array
           // correct position where the student needs to insert the input value
@@ -19,12 +19,12 @@
           count,
           solutionArray,
           reservedIndices = [inputCorrectPosition]; // for tracking which indices are in use
-  
+
       arr.length = arr_size; // set the size of the array
-      
+
       // randomize keys to the indices tested by the hash function; as many as we like the student
       // to think about (see tries above)
-      for (var i = 0; i < tries; i++) {
+      for (i = 0; i < tries; i++) {
         val = JSAV.utils.rand.numKey(10, 99) * 10 + (valueMod + probeFunction(i));
         arr[val % arr_size] = val;
         reservedIndices.push(val % arr_size); // make sure we don't overwrite this index
@@ -46,7 +46,7 @@
       }
       // replace undefined values with empty strings because jsavArr.value(..) returns
       // empty strings and this makes comparison easier
-      arr = $.map(arr, function (item, index) { return item || ""; });
+      arr = $.map(arr, function(item, index) { return item || ""; });
 
       // create a duplicate for the solution and add the input to the array
       solutionArray = arr.slice(0);
@@ -57,5 +57,5 @@
     }
   }; // end Hashing
 
-  window.Hashing = Hashing;
+  window.hashProbeKA = window.hashProbeKA || hashProbeKA;
 })();

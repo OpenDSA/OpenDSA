@@ -10,4 +10,4 @@
 Collision Resolution
 ====================
 
-.. avembed:: Exercises/Hashing/HashLinearPPRO.html ka
+.. avembed:: Exercises/Hashing/HashLinearPPRO.html?probe=linear ka

@@ -1,15 +1,16 @@
 <!-- Bucket Hashing mini-proficiency exercise.
      Buckets as hash table size.
-     Written by Cliff Shaffer -->
+     Written by Cliff Shaffer
+-->
 
 <!DOCTYPE html>
-<html data-require="jsav math HashingBucketPRO">
+<html data-require="jsav math HashBucketPRO">
   <head>
     <title>Bucket Hashing Proficiency Exercise</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
-      #HashingBucketPRO {
+      #HashBucketPRO {
         height: 350px;
       }
     </style>
@@ -20,25 +21,25 @@
       <div class="vars">
         <var id="iKey">randRange(1, 999)</var>
         <var id="iSteps">randRange(0, 2)</var>
-        <var id="JSAV">hashingBucketPRO.initJSAV(iKey, iSteps)</var>
+        <var id="JSAV">hashBucketPRO.initJSAV(iKey, iSteps)</var>
       </div>
 
       <div class="problems">
-        <div id="HashingBucketPROp"> <!-- Supresses answer box -->
+        <div id="HashBucketPROp"> <!-- Supresses answer box -->
           <div class="question">
             <p>You are given a hash table of 5 buckets, each of size 2.
               Using the <b>first</b> bucket hash method described above,
               put key value <var>iKey</var> into the hash table.</p>
             <input id="reset" type="button" value="Reset" />
-            <div id="HashingBucketPRO" class="jsavcanvas"></div>
+            <div id="HashBucketPRO" class="jsavcanvas"></div>
           </div>
           <div class="solution" data-type="custom">
-            <div class="guess"> [hashingBucketPRO.userInput] </div>
+            <div class="guess"> [hashBucketPRO.userInput] </div>
             <div class="validator-function">
-              if (!hashingBucketPRO.checkAnswer() && !guess[0]) {
+              if (!hashBucketPRO.checkAnswer() && !guess[0]) {
                 return ""; // User did not click, and correct answer is not
                            // initial array state
-              } else { return hashingBucketPRO.checkAnswer(); }
+              } else { return hashBucketPRO.checkAnswer(); }
             </div>
           </div>
           <div class="hints">

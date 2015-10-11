@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math">
   <head>
-    <title>Hash Deletion Question 5</title>
+    <title>Hash System Type for Disk: Closed Hashing</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
   </head>
@@ -11,18 +11,15 @@
       <div class="problems">
         <div id="problem-type-or-description">
           <p class="problem">Answer TRUE or FALSE.</p>
-          <p class="question">
-            A problem with using tombstones
-            is that they take up slots in the table, so they slightly
-            increase the search and insert time.</p>
+          <p class="question">Closed hashing works well for disk-based hash systems.</p>
           <div class="solution">True</div>
           <ul class="choices" data-category="true">
             <li>True</li>
             <li>False</li>
           </ul>
           <div class="hints">
-            <p>They do take up slots in the table.</p>
-            <p>So they do need to be searched over.</p>
+            <p>Managing a bunch of linked lists is not so good on disk.</p>
+            <p>Otherwise, hashing works fine on disk.</p>
           </div>
         </div>
       </div>

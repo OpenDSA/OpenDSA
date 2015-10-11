@@ -252,6 +252,7 @@ nomin:
 	@cp lib/odsaUtils.js lib/odsaUtils-min.js
 	@cp lib/odsaMOD.js lib/odsaMOD-min.js
 	@cp lib/odsaAV.js lib/odsaAV-min.js
+	@cp lib/odsaKA.js lib/odsaKA-min.js
 	@cp lib/gradebook.js lib/gradebook-min.js
 	@cp lib/registerbook.js lib/registerbook-min.js
 	@cp lib/createcourse.js lib/createcourse-min.js
@@ -282,9 +283,17 @@ lib/odsaAV-min.js: lib/odsaAV.js
 	@echo 'Minimizing lib/odsaAV.js'
 	@$(MINIMIZE) lib/odsaAV.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaAV-min.js
 
+lib/odsaKA-min.js: lib/odsaKA.js
+	@echo 'Minimizing lib/odsaKA.js'
+	@$(MINIMIZE) lib/odsaKA.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaKA-min.js
+
 lib/odsaAV-min.css: lib/odsaAV.css
 	@echo 'Minimizing lib/odsaAV.css'
 	@$(MINIMIZE) lib/odsaAV.css --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaAV-min.css
+
+lib/odsaKA-min.css: lib/odsaKA.css
+	@echo 'Minimizing lib/odsaKA.css'
+	@$(MINIMIZE) lib/odsaKA.css --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaKA-min.css
 
 lib/odsaMOD-min.js: lib/odsaMOD.js
 	@echo 'Minimizing lib/odsaMOD.js'
