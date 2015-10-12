@@ -6,7 +6,7 @@
 .. avmetadata:: 
    :author: Nick Parlante and Sally Hamouda
    :prerequisites:
-   :topic: Memory
+   :topic: Pointers
 
 Local Memory
 ============
@@ -118,6 +118,12 @@ the code and the state of memory at that time is shown in the drawing.
   
 
 
+.. odsafig:: Images/T1-T5.png
+   :width: 600
+   :align: center
+   :capalign: justify
+   :figwidth: 100%     	
+
 
 (optional extra...) The drawing shows the sequence of the locals being allocated and
 deallocated — in effect the drawing shows the operation over time of the "stack" which is
@@ -126,8 +132,8 @@ the data structure which the system uses to implement local storage.
 Observations About Local Parameters
 -----------------------------------
 Local variables are tightly associated with their function — they are used there and
-nowhere else. Only the ``X()`` code can refer to its ``a`` and ``b`` . Only the ``Y()`` code can refer to
-its ``p`` and ``q``. This independence of local storage is the root cause of both its advantages
+nowhere else. Only the `X()` code can refer to its `a` and `b` . Only the `Y()` code can refer to
+its `p` and `q`. This independence of local storage is the root cause of both its advantages
 and disadvantages.
 
 Advantages Of Locals
@@ -138,7 +144,7 @@ Locals are great for 90% of a program's memory needs:
 
 - Efficient. Relative to other memory use techniques, locals are very efficient. Allocating and deallocating them is time efficient (fast) and they are space efficient in the way they use and recycle memory
 
-- Local Copies. Local parameters are basically local copies of the information from the caller. This is also known as "pass by value." Parameters are local variables which are initialized with an assignment ``(=)`` operation from the caller. The caller is not "sharing" the parameter value with the callee in the pointer sense— the callee is getting its own copy. This has the advantage that the callee can change its local copy without affecting the caller. (Such as with the "p" parameter in the above example.) This independence is good since it keeps the operation of the caller and callee functions separate which follows the rules of good software engineering — keep separate components as independent as possible
+- Local Copies. Local parameters are basically local copies of the information from the caller. This is also known as "pass by value." Parameters are local variables which are initialized with an assignment (`=`) operation from the caller. The caller is not "sharing" the parameter value with the callee in the pointer sense— the callee is getting its own copy. This has the advantage that the callee can change its local copy without affecting the caller. (Such as with the "p" parameter in the above example.) This independence is good since it keeps the operation of the caller and callee functions separate which follows the rules of good software engineering — keep separate components as independent as possible
 
 Disadvantages Of Locals
 -----------------------
@@ -158,7 +164,7 @@ The Ampersand (&) Bug — TAB
 ---------------------------
 Now that you understand the allocation schedule of locals, you can appreciate one of the
 more ugly bugs possible in C and C++. What is wrong with the following code where the
-function ``Victim()`` calls the function ``TAB()``? To see the problem, it may be useful to make
+function `Victim()` calls the function `TAB()`? To see the problem, it may be useful to make
 a drawing to trace the local storage of the two functions...
 
 ::
@@ -176,14 +182,14 @@ a drawing to trace the local storage of the two functions...
 	*ptr = 42;
 	// Runtime error! The pointee was local to TAB
 
-``TAB()`` is actually fine while it is running. The problem happens to its caller after ``TAB()`` exits. ``TAB()`` returns a pointer to an
-``int``, but where is that ``int``allocated? The problem is that the local ``int``, ``temp``, is allocated only while ``TAB()`` is running. When ``TAB()`` exits,
+`TAB()` is actually fine while it is running. The problem happens to its caller after `TAB()` exits. `TAB()` returns a pointer to an
+`int`, but where is that `int`allocated? The problem is that the local `int`, `temp`, is allocated only while `TAB()` is running. When `TAB()` exits,
 all of its locals are deallocated. So the caller is left with a pointer to a deallocated variable. ``TAB()``'s locals are deallocated when it exits, just as happened to the locals for
-``Y()`` in the previous example. It is incorrect (and useless) for ``TAB()`` to return a pointer to memory which is about to be
+`Y()` in the previous example. It is incorrect (and useless) for `TAB()` to return a pointer to memory which is about to be
 deallocated. We are essentially running into the "lifetime" constraint of local variables.
 We want the int to exist, but it gets deallocated automatically. Not all uses of & between
 functions are incorrect — only when used to pass a pointer back to the caller. The correct
-uses of ``&`` are discussed in section 3, and the way to pass a pointer back to the caller is
+uses of `&` are discussed in section 3, and the way to pass a pointer back to the caller is
 shown in section 4.	
 
 Local Memory Summary
@@ -200,18 +206,18 @@ You do not need to know how local variables are implemented during a function ca
 here is a rough outline of the steps if you are curious. The exact details of the
 implementation are language and compiler specific. However, the basic structure below is
 approximates the method used by many different systems and languages...
-To call a function such as ``foo(6, x+1)``:
+To call a function such as `foo(6, x+1)`:
 
 1. Evaluate the actual parameter expressions, such as the x+1, in the caller's context.
 
-2. Allocate memory for foo()'s locals by pushing a suitable "local block" of memory onto a runtime "call stack" dedicated to this purpose. For parameters but not local variables, store the values from step (1) into the appropriate slot in foo()'s local block.
+2. Allocate memory for `foo()`'s locals by pushing a suitable "local block" of memory onto a runtime "call stack" dedicated to this purpose. For parameters but not local variables, store the values from step (1) into the appropriate slot in foo()'s local block.
 
 3. Store the caller's current address of execution (its "return address") and switch execution to foo().
 
-4. ``foo()`` executes with its local block conveniently available at the end of the
+4. `foo()` executes with its local block conveniently available at the end of the
 call stack. 
 
-5. When foo() is finished, it exits by popping its locals off the stack and "returns" to the caller using the previously stored return address. Now the caller's locals are on the end of the stack and it can resume executing. 
+5. When `foo()` is finished, it exits by popping its locals off the stack and "returns" to the caller using the previously stored return address. Now the caller's locals are on the end of the stack and it can resume executing. 
 
 For the extremely curious, here are other miscellaneous notes on the function call
 process:
