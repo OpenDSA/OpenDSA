@@ -19,6 +19,11 @@
         "long_name": "Pointers",
         "exercises": { 
           }
+        },
+      "Pointers/LocalMem": {
+        "long_name": "Pointers",
+        "exercises": { 
+          }
         }
       }
     }
