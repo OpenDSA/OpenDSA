@@ -10,4 +10,6 @@
 Bucket Hashing
 ==============
 
-.. odsascript:: AV/Hashing/buckethashCON.js
+.. avembed:: Exercises/Hashing/HashBucketPRO.html ka
+
+.. avembed:: Exercises/Hashing/HashBucket2PRO.html ka

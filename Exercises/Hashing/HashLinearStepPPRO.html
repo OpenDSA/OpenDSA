@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-require="jsav math HashProbeKA HashLinearStepPPRO">
+<html data-require="jsav math ProbeCommon">
   <head>
     <title>Hashing Linear Probing by Steps Proficiency Exercise</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
@@ -10,9 +10,8 @@
     <div class="exercise">
       <div class="vars">
         <var id="arrSize">10</var>
-        <var id="probeStep">randRange(2, 4)</var>
         <var id="hashFunction">"h(k) = k  mod " + arrSize</var>
-        <var id="JSAV">hashLinearStepPPRO.initJSAV(probeStep, arrSize)</var>
+        <var id="JSAV">probeCommon.initJSAV("HashLinearStepPPRO", arrSize)</var>
       </div>
       <div class="problems">
         <div id="HashLinearStepPPROp"> <!-- Supresses answer box -->
@@ -20,19 +19,19 @@
             Given the following hash table, use hash
             function <var>hashFunction</var> and handle collisions
             using Linear Probing by Steps with probe function P(K, i) =
-            <var>probeStep</var>i.
+            <var>probeCommon.probeStep</var>i.
           </p>
           <p class="question">In which slot should the record with key
-            value <var>hashLinearStepPPRO.currentKey</var> be inserted?</p>
+            value <var>probeCommon.currentKey</var> be inserted?</p>
           <input id="reset" type="button" value="Reset" />
           <div id="HashLinearStepPPRO" class="jsavcanvas"></div>
           <div class="solution" data-type="custom">
-            <div class="guess"> [hashLinearStepPPRO.userInput] </div>
+            <div class="guess"> [probeCommon.userInput] </div>
             <div class="validator-function">
-              if (!hashLinearStepPPRO.checkAnswer(arrSize) && !guess[0]) {
+              if (!probeCommon.checkAnswer(arrSize) && !guess[0]) {
                 return ""; // User did not click, and correct answer is not
                            // initial array state
-              } else { return hashLinearStepPPRO.checkAnswer(arrSize); }
+              } else { return probeCommon.checkAnswer(arrSize); }
             </div>
           </div>
           <div class="hints">

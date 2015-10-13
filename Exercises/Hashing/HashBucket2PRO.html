@@ -4,7 +4,7 @@
   -->
 
 <!DOCTYPE html>
-<html data-require="jsav math HashBucket2PRO">
+<html data-require="jsav math BucketCommon">
   <head>
     <title>Alternate Bucket Hashing Proficiency Exercise</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
@@ -21,7 +21,7 @@
       <div class="vars">
         <var id="iKey">randRange(1, 999)</var>
         <var id="iSteps">randRange(0, 2)</var>
-        <var id="JSAV">hashBucket2PRO.initJSAV(iKey, iSteps)</var>
+        <var id="JSAV">bucketCommon.initJSAV("HashBucket2PRO", iKey, iSteps)</var>
       </div>
       <div class="problems">
         <div id="HashBucket2PROp"> <!-- Supresses answer box -->
@@ -33,12 +33,12 @@
             <div id="HashBucket2PRO" class="jsavcanvas"></div>
           </div>
           <div class="solution" data-type="custom">
-            <div class="guess"> [hashBucket2PRO.userInput] </div>
+            <div class="guess"> [bucketCommon.userInput] </div>
             <div class="validator-function">
-              if (!hashBucket2PRO.checkAnswer() && !guess[0]) {
+              if (!bucketCommon.checkAnswer() && !guess[0]) {
                 return ""; // User did not click, and correct answer is not
                            // initial array state
-              } else { return hashBucket2PRO.checkAnswer(); }
+              } else { return bucketCommon.checkAnswer(); }
             </div>
           </div>
           <div class="hints">
