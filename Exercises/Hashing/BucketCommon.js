@@ -1,7 +1,7 @@
 /*global window */
 (function() {
   "use strict";
-  var av,               // The JSAV object
+  var av = null,        // The JSAV object
       inputkey,         // The value that the user is inserting
       arrSize,          // Hash table size
       overflowSize,     // Overflow array size
@@ -13,11 +13,11 @@
       empty = [],       // Dummy for empty data to reset hash table
       empty8 = [];      // Dummy for empty data for overflow
 
-  var hashBucket2PRO = {
+  var bucketCommon = {
     userInput: null,        // Boolean: Tells us if user ever did anything
 
     // Do the one-time initializations
-    initJSAV: function(key, steps) {
+    initJSAV: function(jname, key, steps) {
       var i;
 
       inputkey = key;
@@ -25,12 +25,21 @@
       overflowSize = 8;
       for (i = 0; i < arrSize; i++) { empty[i] = ""; }
       for (i = 0; i < overflowSize; i++) { empty8[i] = ""; }
-      genInstance(steps);
+      switch (jname) {
+      case "HashBucketPRO":
+        genInstance1(steps);
+        break;
+      case "HashBucket2PRO":
+        genInstance2(steps);
+        break;
+      default: // Should never happen
+        return "";
+      }
 
-      reset();
+      reset(jname);
 
       // Set up handler for reset button
-      $("#reset").click(function() { reset(); });
+      $("#reset").click(function() { reset(jname); });
     },
 
     // Check user's answer for correctness
@@ -48,27 +57,26 @@
       }
       return true;
     }
-
   };
 
   // Handle a click event on an array
   // Place the value where user puts it
   function clickHandler(index) {
     this.value(index, inputkey);
-    hashBucket2PRO.userInput = true;
+    bucketCommon.userInput = true;
   }
 
   // reset function definition
-  function reset() {
+  function reset(jname) {
     var i;
     var offset = 103;
     var boxHeight = 58;
     var labelOffset = 50;
     // Clear the old JSAV canvas.
-    if ($("#HashBucket2PRO")) { $("#HashBucket2PRO").empty(); }
+    if (av !== null) { $("#" + jname).empty(); }
 
     // Set up the display
-    av = new JSAV("HashBucket2PRO");
+    av = new JSAV(jname);
     av.label("Hash Table", {left: 0, top: 0});
     av.label("<b style='color:#0b0;'>B0</b>", {left: 80, top: labelOffset + 0 * boxHeight});
     av.label("<b style='color:#0b0;'>B1</b>", {left: 80, top: labelOffset + boxHeight});
@@ -90,12 +98,49 @@
     av.displayInit();
     av.recorded();
 
-    hashBucket2PRO.userInput = false;
+    bucketCommon.userInput = false;
+  }
+
+  // Initialize the problem instance (and set the answer arrays)
+  // Original bucket hash method
+  function genInstance1(steps) {
+    var i, k;
+    for (i = 0; i < overflowSize; i++) {
+      answerOver[i] = empty8[i];
+    }
+    for (i = 0; i < arrSize; i++) {
+      answer[i] = empty[i];
+    }
+    if ((steps === 1) || (steps === 2)) { // Make a collision
+      k = JSAV.utils.rand.numKey(0, 1000);
+      while ((k % (arrSize / 2)) !== (inputkey % (arrSize / 2))) {
+        k = JSAV.utils.rand.numKey(0, 1000);
+      }
+      answer[(inputkey % 5) * 2] = k;
+    }
+    if (steps === 2) { // Put it in the other slot of this bucket
+      k = JSAV.utils.rand.numKey(0, 1000);
+      while ((k % 5) !== (inputkey % 5)) { k = JSAV.utils.rand.numKey(0, 1000); }
+      answer[(inputkey % 5) * 2 + 1] = k;
+    }
+    for (i = 0; i < (5 - steps); i++) {
+      k = JSAV.utils.rand.numKey(0, 1000);
+      while ((k % 5) === (inputkey % 5)) { k = JSAV.utils.rand.numKey(0, 1000); }
+      answer[(k % 5) * 2] = k;
+    }
+    initData = answer.slice(0);
+    if (steps === 0) {
+      answer[(inputkey % 5) * 2] = inputkey;
+    } else if (steps === 1) {
+      answer[(inputkey % 5) * 2 + 1] = inputkey;
+    } else { // steps === 2
+      answerOver[0] = inputkey;
+    }
   }
 
   // Initialize the problem instance (and set the answer arrays)
   // Alternate bucket hash method
-  function genInstance(steps) {
+  function genInstance2(steps) {
     var i, k;
     var slot; // The OTHER slot in the current bucket that does NOT hold inputkey
     if ((inputkey % 2) === 0) {
@@ -126,6 +171,7 @@
       if (Math.floor((k % arrSize) / 2) !== bucket) { answer[k % arrSize] = k; }
     }
     initData = answer.slice(0);
+    // Now set the answer
     if (steps === 0) {
       answer[inputkey % arrSize] = inputkey;
     } else if (steps === 1) {
@@ -133,5 +179,5 @@
     } else { answerOver[0] = inputkey; } // steps === 2
   }
 
-  window.hashBucket2PRO = window.hashBucket2PRO || hashBucket2PRO;
+  window.bucketCommon = window.bucketCommon || bucketCommon;
 }());

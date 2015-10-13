@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-require="jsav math HashProbeKA HashPseudoRandomPPRO">
+<html data-require="jsav math ProbeCommon">
   <head>
     <title>Hashing Pseudo-Random Probing Proficiency Exercise</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
@@ -11,8 +11,7 @@
       <div class="vars">
         <var id="arrSize">10</var>
         <var id="hashFunction">"h(k) = k  mod " + arrSize</var>
-        <var id="permutation">hashPseudoRandomPPRO.randomizePermutation(arrSize)</var>
-        <var id="JSAV">hashPseudoRandomPPRO.initJSAV(arrSize)</var>
+        <var id="JSAV">probeCommon.initJSAV("HashPseudoRandomPPRO", arrSize)</var>
       </div>
       <div class="problems">
         <div id="HashPseudoRandomPPROp"> <!-- Supresses answer box -->
@@ -20,19 +19,19 @@
             Given the following hash table, use hash
             function <var>hashFunction</var> and handle collisions
             using pseudo-random probing. The random permutation to use is
-            <var>permutation.join(' ')</var>.
+            <var>probeCommon.permutation.join(' ')</var>.
           </p>
           <p class="question">In which slot should the record with key
-            value <var>hashPseudoRandomPPRO.currentKey</var> be inserted?</p>
+            value <var>probeCommon.currentKey</var> be inserted?</p>
           <input id="reset" type="button" value="Reset" />
           <div id="HashPseudoRandomPPRO" class="jsavcanvas"></div>
           <div class="solution" data-type="custom">
-            <div class="guess"> [hashPseudoRandomPPRO.userInput] </div>
+            <div class="guess"> [probeCommon.userInput] </div>
             <div class="validator-function">
-              if (!hashPseudoRandomPPRO.checkAnswer(arrSize) && !guess[0]) {
+              if (!probeCommon.checkAnswer(arrSize) && !guess[0]) {
                 return ""; // User did not click, and correct answer is not
                            // initial array state
-              } else { return hashPseudoRandomPPRO.checkAnswer(arrSize); }
+              } else { return probeCommon.checkAnswer(arrSize); }
             </div>
           </div>
           <div class="hints">

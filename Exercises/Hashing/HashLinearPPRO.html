@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-require="jsav math HashProbeKA HashLinearPPRO">
+<html data-require="jsav math ProbeCommon">
   <head>
     <title>Hashing Linear Probing Proficiency Exercise</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
@@ -11,7 +11,7 @@
       <div class="vars">
         <var id="arrSize">10</var>
         <var id="hashFunction">"h(k) = k  mod " + arrSize</var>
-        <var id="JSAV">hashLinearPPRO.initJSAV(arrSize)</var>
+        <var id="JSAV">probeCommon.initJSAV("HashLinearPPRO", arrSize)</var>
       </div>
       <div class="problems">
         <div id="HashLinearPPROp"> <!-- Supresses answer box -->
@@ -22,17 +22,17 @@
           </p>
           <p class="question">
             In which slot should the record with key
-            value <var>hashLinearPPRO.currentKey</var> be inserted?
+            value <var>probeCommon.currentKey</var> be inserted?
           </p>
           <input id="reset" type="button" value="Reset" />
           <div id="HashLinearPPRO" class="jsavcanvas"></div>
           <div class="solution" data-type="custom">
-            <div class="guess"> [hashLinearPPRO.userInput] </div>
+            <div class="guess"> [probeCommon.userInput] </div>
             <div class="validator-function">
-              if (!hashLinearPPRO.checkAnswer(arrSize) && !guess[0]) {
+              if (!probeCommon.checkAnswer(arrSize) && !guess[0]) {
                 return ""; // User did not click, and correct answer is not
                            // initial array state
-              } else { return hashLinearPPRO.checkAnswer(arrSize); }
+              } else { return probeCommon.checkAnswer(arrSize); }
             </div>
           </div>
           <div class="hints">
