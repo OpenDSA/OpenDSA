@@ -20,7 +20,7 @@
     }
   },
   "lang": "en",
-  "module_origin": "http://algoviz.org",
+  "module_origin": "http://localhost:8000",
   "exercise_server": "https://ltitest.cs.vt.edu:8443",
   "logging_server": "https://ltitest.cs.vt.edu:8443",
   "score_server": "https://ltitest.cs.vt.edu:8443",
