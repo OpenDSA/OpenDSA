@@ -65,6 +65,7 @@ $(document).ready(function() {
     });
     drawLine(modelArray, 0, arraySize - 1, modelInterLine);
 
+    av.umsg(interpret("av_start"), {fill: {key: key}});
 
     av._undo = [];
 
