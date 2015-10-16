@@ -17,8 +17,8 @@ course_json['book_json'] = book_json
 url = 'https://ltitest.cs.vt.edu:8443/api/v1/module/createcourse/'
 headers = {'content-type': 'application/json'}
 
-response = requests.post(url, data=json.dumps(course_json), headers=headers, verify=False)
 print('Please wait, the course is being created in Canvas LMS ...')
+response = requests.post(url, data=json.dumps(course_json), headers=headers, verify=False)
 response_obj = json.loads(response.content)
 
 if response_obj['saved']:
