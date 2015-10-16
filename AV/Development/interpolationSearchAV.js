@@ -1,8 +1,5 @@
 $(document).ready(function() {
   "use strict";
-  //////////////////////////////////////////////////////////////////
-  // Start processing here
-  //////////////////////////////////////////////////////////////////
   var av,     // for JSAV library object
       pseudo,
       initialArray,
@@ -25,14 +22,10 @@ $(document).ready(function() {
 
   // Process about button: Pop up a message with an Alert
   function about() {
-    alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
+    window.alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
   }
 
   function interpolationSearch(array) {
-    av.ds.array([key], {indexed: false}).css(0, {
-      backgroundColor: "#ddf",
-      border: "none"
-    });
     var arraySize = array.length;
     var modelArray = av.ds.array(array, {indexed: true, layout: "bar", autoresize: false});
 
