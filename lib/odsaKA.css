@@ -18,3 +18,29 @@ div.exercises-card {
 #solutionarea {
   min-height: 0;
 }
+
+#modpanel {
+  width:950px;
+}
+
+body {
+  min-width: 950px;
+}
+
+#page-container {
+  min-width: 950px;
+}
+
+@media screen and (max-width: 950px) {
+  .demo-notification-bar .notification-bar-close {
+    display: none;
+  }
+}
+
+#top-header-container #top-header {
+  min-width: 950px;
+}
+
+footer .footer-container {
+  min-width: 950px;
+}
