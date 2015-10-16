@@ -182,7 +182,7 @@ $(document).ready(function() {
     key = parseInt($("#searchValue").val(), 10) ||
       initialArray[0] +
       Math.floor(
-        Math.random() *
+        (0.33 + 0.33 * Math.random()) *
         (initialArray[initialArray.length - 1] - initialArray[0])
       );
     $("#searchValue").val(key);
