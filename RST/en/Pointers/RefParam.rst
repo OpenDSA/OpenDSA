@@ -323,3 +323,13 @@ The types of the various variables and parameters operate simply as they are dec
 reference parameters is hidden. The compiler takes care of it without allowing the
 complication to disturb the types in the source code.
 	
+
+Notes
+-----
+
+This material taken from
+"`Pointers and Memory
+<http://cslibrary.stanford.edu/102/PointersAndMemory.pdf>`_"
+by Nick Parlante, Copyright 1998-2000,
+Stanford CS Education Library.
+Used by permission of the author.

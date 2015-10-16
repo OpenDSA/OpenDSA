@@ -231,3 +231,13 @@ process:
 - For a multithreaded environment, each thread gets its own call stack instead of just having single, global call stack.
 
 - For performance reasons, some languages pass some parameters through registers and others through the stack, so the overall process is complex. However, the apparent the lifetime of the variables will always follow the "stack" model presented here.
+
+Notes
+-----
+
+This material taken from
+"`Pointers and Memory
+<http://cslibrary.stanford.edu/102/PointersAndMemory.pdf>`_"
+by Nick Parlante, Copyright 1998-2000,
+Stanford CS Education Library.
+Used by permission of the author.

@@ -320,3 +320,13 @@ can be used to build linked structures such as linked lists and binary trees. Th
 disadvantage of heap memory is that  the program must make explicit allocation and
 deallocate calls to manage the heap memory. The heap memory does not operate
 automatically and conveniently the way local memory does.
+
+Notes
+-----
+
+This material taken from
+"`Pointers and Memory
+<http://cslibrary.stanford.edu/102/PointersAndMemory.pdf>`_"
+by Nick Parlante, Copyright 1998-2000,
+Stanford CS Education Library.
+Used by permission of the author.
