@@ -23,5 +23,5 @@ response_obj = json.loads(response.content)
 
 if response_obj['saved']:
   print('Course was created successfully')
-else
+else:
   print('Somthing wrong happened ...')
