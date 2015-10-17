@@ -26,9 +26,9 @@ interest.
 
 Bill Gates Example
 ------------------
-Suppose functions A() and B() both do computations involving Bill Gates' net worth
-measured in billions of dollars — the value of interest for this problem. A() is the main
-function and its stores the initial value (about 55 as of 1998). A() calls B() which tries to
+Suppose functions ``A()`` and ``B()`` both do computations involving Bill Gates' net worth
+measured in billions of dollars — the value of interest for this problem. ``A()`` is the main
+function and its stores the initial value (about 55 as of 1998). ``A()`` calls ``B()`` which tries to
 add 1 to the value of interest.
 
 
@@ -36,7 +36,7 @@ Bill Gates By Value
 -------------------
 
 Here is the code and memory drawing for a simple, but incorrect implementation where
-A() and B() use pass by value. Three points in time, T1, T2, and T3 are marked in the
+``A()`` and ``B()`` use pass by value. Three points in time, T1, T2, and T3 are marked in the
 code and the state of memory is shown for each state...
 
 ::
@@ -62,18 +62,18 @@ code and the state of memory is shown for each state...
    :capalign: justify
    :figwidth: 100%  
    
-B() adds 1 to its local `worth` copy, but when B() exits, `worth` is deallocated, so changing it was useless. The value of interest, 
+``B()`` adds 1 to its local ``worth`` copy, but when ``B()`` exits, ``worth`` is deallocated, so changing it was useless. The value of interest, 
 `netWorth`, rests unchanged the whole time in A()'s local storage. A function can change its local copy of the value of interest,
 but that change is not reflected back in the original value. This is really just the old "independence" property of local storage, but in this case it is not what is wanted.   	
 
 
 By Reference
 ------------
-The reference solution to the Bill Gates problem is to use a single `netWorth` variable
-for the value of interest and never copy it. Instead, each function can receives a pointer to `netWorth`.
+The reference solution to the Bill Gates problem is to use a single ``netWorth`` variable
+for the value of interest and never copy it. Instead, each function can receives a pointer to ``netWorth``.
 Each function can see the current value of `netWorth` by dereferencing its pointer. More importantly, each function can change the net 
-`worth`  — just dereference the pointer to the centralized  `netWorth` and change it directly. Everyone agrees what
-the current value of `netWorth`  because it exists in only one place — everyone has a pointer to the one master copy. The following memory drawing shows A() and B()
+``worth``  — just dereference the pointer to the centralized  ``netWorth`` and change it directly. Everyone agrees what
+the current value of ``netWorth``  because it exists in only one place — everyone has a pointer to the one master copy. The following memory drawing shows `A()` and `B()`
 functions changed to use "reference" parameters. As before, T1, T2, and T3 correspond to points in the code (below), but you can study the memory structure without looking at the
 code yet.
 
@@ -85,7 +85,7 @@ code yet.
    :capalign: justify
    :figwidth: 100%  
 
-The reference parameter strategy: B() receives a pointer to the value of interest instead of
+The reference parameter strategy: ``B()`` receives a pointer to the value of interest instead of
 a copy.
 
 Passing By Reference
@@ -104,13 +104,13 @@ Syntax
 The syntax for by reference parameters  in the C language just uses pointer operations on
 the parameters:
 
-1- Suppose a function wants to communicate about some value of interest — `int` or `float` or `struct fraction`.
+1- Suppose a function wants to communicate about some value of interest — ``int`` or ``float`` or ``struct fraction``.
 
-2- The function takes as its parameter a pointer to the value of interest — an `int*`  or `float*` or `struct fraction*`. Some programmers will add the word "ref" to the name of a reference parameter as a reminder that it is a reference to the value of interest instead of a copy.
+2- The function takes as its parameter a pointer to the value of interest — an ``int*``  or ``float*`` or ``struct fraction*``. Some programmers will add the word "ref" to the name of a reference parameter as a reminder that it is a reference to the value of interest instead of a copy.
 
 3- At the time of the call, the caller computes a pointer to the value of interest and passes that pointer. The type of the pointer (pointer to the value of interest) will agree with the type in (2) above. If the value of interest is local to the caller, then this will often involve a use of the & operator (Section 1).
  
-4- When the callee is running, if it wishes to access the value of interest, it must dereference its pointer to access the actual value of interest. Typically, this equates to use of the dereference operator (`*`) in the function to see the value of interest. 
+4- When the callee is running, if it wishes to access the value of interest, it must dereference its pointer to access the actual value of interest. Typically, this equates to use of the dereference operator (``*``) in the function to see the value of interest. 
 
 Bill Gates By Reference
 -----------------------
@@ -149,14 +149,14 @@ sure." Avoid making copies.
 
 Simple Reference Parameter Example — Swap()
 -------------------------------------------
-The standard example of reference parameters is a Swap() function which exchanges the
-values of two `ints`. It's a simple function, but it does need to change the caller's memory
+The standard example of reference parameters is a ``Swap()`` function which exchanges the
+values of two ``ints``. It's a simple function, but it does need to change the caller's memory
 which is the key feature of pass by reference.
 
 Swap() Function
 ---------------
-The values of interest for Swap() are two `ints`. Therefore, Swap() does not take `ints` as its parameters. It takes a pointers to 
-`int` — (`int*`)'s. In the body of Swap() the parameters, `a` and `b`, are dereferenced with `*` to get at the actual (`int`) values of interest.
+The values of interest for ``Swap()`` are two ``ints``. Therefore, ``Swap()`` does not take ``ints`` as its parameters. It takes a pointers to 
+``int`` — (``int*``)'s. In the body of ``Swap()`` the parameters, ``a`` and ``b``, are dereferenced with ``*`` to get at the actual (``int``) values of interest.
 ::
 
 	void Swap(int* a, int* b) {
@@ -187,17 +187,17 @@ To call Swap(), the caller must pass pointers to the values of interest...
    :capalign: justify
    :figwidth: 100%  
 
-The parameters to Swap() are pointers to values of interest which are back in the caller's
-locals. The Swap() code can dereference the pointers to get back to the caller's memory to
-exchange the values. In this case, Swap() follows the pointers to exchange the values in
-the variables x and y back in SwapCaller(). Swap() will exchange any two ints given
+The parameters to ``Swap()`` are pointers to values of interest which are back in the caller's
+locals. The ``Swap()`` code can dereference the pointers to get back to the caller's memory to
+exchange the values. In this case, ``Swap()`` follows the pointers to exchange the values in
+the variables x and y back in ``SwapCaller()``. ``Swap()`` will exchange any two ints given
 pointers to those two ints.
 
 Swap() With Arrays
 ------------------
 Just to demonstrate that the value of interest does not need to be a simple variable, here's
-a call to Swap() to exchange the first and last `ints` in an array. Swap() takes `int*`'s, but
-the `ints` can be anywhere. An `int` inside an array is still an `int`.
+a call to ``Swap()`` to exchange the first and last ``int``s in an array. ``Swap()`` takes ``int*``'s, but
+the ``ints`` can be anywhere. An ``int`` inside an array is still an ``int``.
 
 ::
 
@@ -209,7 +209,7 @@ the `ints` can be anywhere. An `int` inside an array is still an `int`.
 	         // simple variables -- they can be any int. The caller is responsible
 	         // for computing a pointer to the int.
 	         
-The above call to Swap() can be written equivalently as  `Swap(scores, scores+9)` due to the array syntax in C. You can ignore this case if it is not familiar to you —  it's
+The above call to ``Swap()`` can be written equivalently as  ``Swap(scores, scores+9)`` due to the array syntax in C. You can ignore this case if it is not familiar to you —  it's
 not an important area of the language and both forms compile to the exact same thing anyway.	         
 
 Is The & Always Necessary?
@@ -254,14 +254,14 @@ to the callee is fine. The reverse case, from the callee to the caller, is the &
 The ** Case
 -----------
 What if the value of interest to be shared and changed between the caller and callee is
-already a pointer, such as an `int*` or a `struct fraction*`? 
+already a pointer, such as an ``int*`` or a ``struct fraction*``? 
 Does that change the rules for setting  up reference parameters? No. 
 In that case, there is no change in the rules.
 They operate just as before. The reference parameter is still a pointer to the value of
 interest, even if the value of interest is itself a pointer. Suppose the value of interest is
-`int*`. This means there is an `int*` value which the caller and callee want to share and change. Then the reference parameter should be an 
-`int**`. For a `struct fraction*`  value of interest, the reference parameter is `struct fraction**`. 
-A single dereference (`*`) operation on the reference parameter yields the value of interest as it did in the simple cases. Double pointer (`**`) parameters are common in linked list or
+``int*``. This means there is an ``int*`` value which the caller and callee want to share and change. Then the reference parameter should be an 
+``int**``. For a ``struct fraction*``  value of interest, the reference parameter is ``struct fraction**``. 
+A single dereference (``*``) operation on the reference parameter yields the value of interest as it did in the simple cases. Double pointer (``**``) parameters are common in linked list or
 other pointer manipulating code were the value of interest to share and change is itself a pointer, such as a linked list head pointer.
 
 
@@ -273,15 +273,15 @@ pointers to avoid copying the value of interest, and allow the callee to communi
 to the caller.
 
 For pass by reference, there is only one copy of the value of interest, and pointers to that
-one copy are passed. So if the value of interest is an int, its reference parameter is an `int*`.
-If the value of interest is a `struct fraction*`, its reference parameters is a `struct fraction**`.
-Functions use the dereference operator (`*`) on the reference parameter to see or change the
+one copy are passed. So if the value of interest is an int, its reference parameter is an ``int*``.
+If the value of interest is a `struct fraction*`, its reference parameters is a ``struct fraction**``.
+Functions use the dereference operator (``*``) on the reference parameter to see or change the
 value of interest.
 
 
 Extra: Reference Parameters in Java
 -----------------------------------
-Because Java has no `*`/`&` operators, it is not possible to implement reference parameters
+Because Java has no ``*``/``&`` operators, it is not possible to implement reference parameters
 in Java directly. Maybe this is ok — in the OOP paradigm, you should change objects by
 sending them messages which makes the reference parameter concept unnecessary. The caller passes the callee a (shallow) reference to the value of interest (object of interest?),
 and the callee can send it a message to change it. Since all objects are intrinsically
@@ -294,10 +294,10 @@ Reference parameters are such a common programming task that they have been adde
 an official feature to the C++ language. So programming reference parameters in C++ is
 simpler than in C. All the programmer needs to do is syntactically indicate that they wish
 for a particular parameter to be passed by reference, and the compiler takes care of it. The
-syntax is to append a single '&' to right hand side of the parameter type. So an  `int`
+syntax is to append a single ``&`` to right hand side of the parameter type. So an  ``int``
 parameter passes an integer by value, but an `int&` parameter passes an integer value by
 reference. The key is that the compiler takes care of it. In the source code, there's no
-additional fiddling around with `&`'s or `*`'s. So Swap() and SwapCaller() written with C++
+additional fiddling around with ``&``'s or ``*``'s. So ``Swap()`` and ``SwapCaller()`` written with C++
 look simpler than in C, even though they accomplish the same thing..
 
 ::
@@ -319,7 +319,7 @@ look simpler than in C, even though they accomplish the same thing..
 	}
 	
 The types of the various variables and parameters operate simply as they are declared
-(`int` in this case). The complicating layer of pointers required to implement the
+(``int`` in this case). The complicating layer of pointers required to implement the
 reference parameters is hidden. The compiler takes care of it without allowing the
 complication to disturb the types in the source code.
 	

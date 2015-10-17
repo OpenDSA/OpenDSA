@@ -44,7 +44,7 @@ Allocation
 ~~~~~~~~~~
 The heap is a large area of memory available for use by the program. 
 The program can request areas, or "blocks", of memory for its use within the heap. 
-In order to allocate a block of some size, the program makes an explicit request by calling the heap *allocation* function. 
+In order to allocate a block of some size, the program makes an explicit request by calling the heap :term:`allocation` function. 
 The allocation function reserves a block of memory of the requested size in the heap and returns a pointer to it. Suppose a program makes three allocation requests to allocate memory to hold three separate GIF images in the heap each of which takes 1024 bytes of memory. After the three allocation requests, memory might look like...
 
 .. odsafig:: Images/LocalHeapaloc.png
@@ -100,7 +100,7 @@ are:
 
 - The heap is an area of memory available to allocate areas ("blocks") of memory for the program.
 
-- There is some "heap manager" library code which manages the heap for the program. The programmer makes requests to the heap manager, which in turn manages the internals of the heap. In C, the heap is managed by the ANSI library functions malloc(), free(), and realloc(). 
+- There is some "heap manager" library code which manages the heap for the program. The programmer makes requests to the heap manager, which in turn manages the internals of the heap. In C, the heap is managed by the ANSI library functions ``malloc()``, ``free()``, and ``realloc()``. 
 
 - The heap manager uses its own private data structures to keep track of which blocks in the heap are "free" (available for use) and which blocks are currently in use by the program and how large those blocks are. Initially, all of the heap is free.
 
@@ -113,33 +113,33 @@ are:
 
 C Specifics
 -----------
-In the C language, the library functions which make heap requests are malloc() ("memory
-allocate") and free(). The prototypes for these functions are in the header file <stdlib.h>.
-Although the syntax varies between languages, the roles of malloc() and free() are nearly
+In the C language, the library functions which make heap requests are ``malloc()`` ("memory
+allocate") and ``free()``. The prototypes for these functions are in the header file ``<stdlib.h>``.
+Although the syntax varies between languages, the roles of ``malloc()`` and ``free()`` are nearly
 identical in all languages...
 
-	`void* malloc(unsigned long size);`
-	The malloc() function 	takes an unsigned integer which is the requested size of the block
-	measured in bytes. Malloc() returns a pointer to a new heap block if the allocation is successful, and NULL if the request cannot be satisfied
-	because the heap is full. The C operator sizeof() is a convenient way to compute the size in bytes of a type —	`sizeof(int)` for an  int pointee, `sizeof(struct fraction)` for a `struct fraction` pointee.
+	``void* malloc(unsigned long size);``
+	The ``malloc()`` function 	takes an unsigned integer which is the requested size of the block
+	measured in bytes. ``malloc()`` returns a pointer to a new heap block if the allocation is successful, and NULL if the request cannot be satisfied
+	because the heap is full. The C operator ``sizeof()`` is a convenient way to compute the size in bytes of a type —	``sizeof(int)`` for an  int pointee, ``sizeof(struct fraction)`` for a ``struct fraction`` pointee.
 	
-	`void free(void* heapBlockPointer);` The free() function takes a pointer 
-	to a heap block and returns it to the free pool for later reuse. The pointer passed to free() must be exactly the pointer returned
-	earlier by malloc(), not just a pointer to somewhere in the block. Calling
-	free() with the wrong sort of pointer is famous for the particularly ugly
-	sort of crashing which it causes. The call to free() does not need to give
+	``void free(void* heapBlockPointer);`` The ``free()`` function takes a pointer 
+	to a heap block and returns it to the free pool for later reuse. The pointer passed to ``free()`` must be exactly the pointer returned
+	earlier by ``malloc()``, not just a pointer to somewhere in the block. Calling
+	``free()`` with the wrong sort of pointer is famous for the particularly ugly
+	sort of crashing which it causes. The call to ``free()`` does not need to give
 	the size of the heap block — the heap manager will have noted the size in
-	its private data structures. The call to free() just needs to identify which
+	its private data structures. The call to ``free()`` just needs to identify which
 	block to deallocate by its pointer. If a program correctly deallocates all of
-	the memory it allocates, then every call to malloc() will later be matched
-	by exactly one call to free() As a practical matter however, it is not always
+	the memory it allocates, then every call to ``malloc()`` will later be matched
+	by exactly one call to ``free()`` As a practical matter however, it is not always
 	necessary for a program to deallocate every block it allocates — see
 	"Memory Leaks" below.
 	
 Simple Heap Example
 -------------------
 Here is a simple example which allocates an 
-`int` block in the heap, stores the number 42 in the block, and then deallocates it. 
+``int`` block in the heap, stores the number 42 in the block, and then deallocates it. 
 This is the simplest possible example of heap block allocation, use, and deallocation. 
 The example shows the state of memory at three different times during the execution of the above code. The stack and heap are shown
 separately in the drawing — a drawing for code which uses stack and heap memory needs
@@ -199,11 +199,11 @@ difference.
 Simple Heap Observations
 -------------------------
 
-- After the allocation call allocates the block in the heap. The program stores the pointer to the block in the local variable intPtr. The block is the "pointee" and intPtr is its pointer as shown at T2. In this state, the pointer may be dereferenced safely to manipulate the pointee. The pointer/pointee rules from Section 1 still apply, the only difference is how the pointee is initially allocated.
+- After the allocation call allocates the block in the heap. The program stores the pointer to the block in the local variable ``intPtr``. The block is the "pointee" and ``intPtr`` is its pointer as shown at T2. In this state, the pointer may be dereferenced safely to manipulate the pointee. The pointer/pointee rules from Section 1 still apply, the only difference is how the pointee is initially allocated.
 
-- At T1 before the call to malloc(), intPtr is uninitialized does not have a pointee — at this point intPtr "bad" in the same sense as discussed in Section 1. As before, dereferencing such an uninitialized pointer is a common, but catastrophic error. Sometimes this error will crash immediately (lucky). Other times it will just slightly corrupt a random data structure (unlucky).
+- At T1 before the call to ``malloc()``, ``intPtr`` is uninitialized does not have a pointee — at this point ``intPtr`` "bad" in the same sense as discussed in Section 1. As before, dereferencing such an uninitialized pointer is a common, but catastrophic error. Sometimes this error will crash immediately (lucky). Other times it will just slightly corrupt a random data structure (unlucky).
 
-- The call to free() deallocates the pointee as shown at T3. Dereferencing the pointer after the pointee has been deallocated is an error. Unfortunately, this error will almost never be flagged as an immediate run-time error. 99% of the time the dereference will produce reasonable results 1% of the time the dereference will produce slightly wrong results. Ironically, such a rarely appearing bug is the most difficult type to track down.
+- The call to ``free()`` deallocates the pointee as shown at T3. Dereferencing the pointer after the pointee has been deallocated is an error. Unfortunately, this error will almost never be flagged as an immediate run-time error. 99% of the time the dereference will produce reasonable results 1% of the time the dereference will produce slightly wrong results. Ironically, such a rarely appearing bug is the most difficult type to track down.
 
 - When the function exits, its local variable intPtr will be automatically deallocated following the usual rules for local variables (Section 2). So this function has tidy memory behavior — all of the memory it allocates while running (its local variable, its one heap block) is deallocated by the time it exits.	
 
@@ -212,10 +212,10 @@ Heap Array
 ----------
 In the C language, it's convenient to allocate an array in the heap, since C can treat any
 pointer as an array. The size of the array memory block is the size of each element (as
-computed by the sizeof() operator) multiplied by the number of elements (See CS
+computed by the ``sizeof()`` operator) multiplied by the number of elements (See CS
 Education Library/101 The C Language, for a complete discussion of C, and arrays and
 pointers in particular). So the following code heap allocates an array of 100 
-`struct fraction`'s in the heap, sets them all to 22/7, and deallocates the heap array...
+``struct fraction``'s in the heap, sets them all to 22/7, and deallocates the heap array...
 
 ::
 
@@ -235,7 +235,7 @@ pointers in particular). So the following code heap allocates an array of 100
 	
 Heap String Example
 -------------------
-Here is a more useful heap array example. The StringCopy() function takes a C string,
+Here is a more useful heap array example. The ``StringCopy()`` function takes a C string,
 makes a copy of that string in the heap, and returns a pointer to the new string. The caller
 takes over ownership of the new string and is responsible for freeing it.
 
@@ -261,11 +261,11 @@ takes over ownership of the new string and is responsible for freeing it.
 
 Heap String Observations
 ------------------------
-StringCopy() takes advantage of both of the key features of heap memory:
+``StringCopy()`` takes advantage of both of the key features of heap memory:
 
-- Size.  StringCopy() specifies, at run-time, the exact size of the block needed to store the string in its call to malloc(). Local memory cannot do that since its size is specified at compile-time. The call to `sizeof(char)` is not really necessary, since the size of  `char`  is 1 by definition. In any case, the example demonstrates the correct formula for the size of an array block which is  `element-size * number-of-elements`. 
+- Size.  ``StringCopy()`` specifies, at run-time, the exact size of the block needed to store the string in its call to ``malloc()``. Local memory cannot do that since its size is specified at compile-time. The call to ``sizeof(char)`` is not really necessary, since the size of  ``char``  is 1 by definition. In any case, the example demonstrates the correct formula for the size of an array block which is  ``element-size * number-of-elements``. 
 
-- Lifetime.  StringCopy() allocates the block, but then passes ownership of it to the caller. There is no call to free(), so the block continues to exist even after the function exits. Local memory cannot do that. The caller will need to take care of the deallocation when it is finished with the string.
+- Lifetime.  ``StringCopy()`` allocates the block, but then passes ownership of it to the caller. There is no call to free(), so the block continues to exist even after the function exits. Local memory cannot do that. The caller will need to take care of the deallocation when it is finished with the string.
 
 
 Memory Leaks
@@ -290,14 +290,14 @@ leak, and the heap debugger can help you find them.
 
 Ownership
 ---------
-StringCopy() allocates the heap block, but it does not deallocate it. This is so the caller
+``StringCopy()`` allocates the heap block, but it does not deallocate it. This is so the caller
 can use the new string. However, this introduces the problem that somebody does need to
-remember to deallocate the block, and it is not going to be StringCopy(). That is why the
-comment for StringCopy() mentions specifically that the caller is taking on 
+remember to deallocate the block, and it is not going to be ``StringCopy()``. That is why the
+comment for ``StringCopy()`` mentions specifically that the caller is taking on 
 ownership  of the block. Every block of memory has exactly one "owner" who takes responsibility for
 deallocating it. Other entities can have pointers, but they are just sharing. There's only
-one owner, and the comment for StringCopy() makes it clear that ownership is being
-passed from StringCopy() to the caller. Good documentation always remembers to
+one owner, and the comment for ``StringCopy()`` makes it clear that ownership is being
+passed from ``StringCopy()`` to the caller. Good documentation always remembers to
 discuss the ownership rules which a function expects to apply to its parameters or return
 value. Or put the other way, a frequent error in documentation is that it forgets to
 mention, one way or the other, what the ownership rules are for a parameter or return
@@ -307,9 +307,9 @@ Ownership Models
 ----------------
 The two common patterns for ownership are:
 
-	- Caller ownership.  The caller owns its own memory. It may pass a pointer to the callee for sharing purposes, but the caller retains ownership. The 	callee can access things while it runs, and allocate and deallocate its own 	memory, but it should not disrupt the caller's memory.
+	- Caller ownership.  The caller owns its own memory. It may pass a pointer to the callee for sharing purposes, but the caller retains ownership. The 	callee can access things while it runs, and allocate and deallocate its own memory, but it should not disrupt the caller's memory.
 	
-	- Callee allocated and returned. The callee allocates some memory and returns it to the caller. This happens because the result of the callee 	computation needs new memory to be stored or represented. The new 	memory is passed to the caller so they can see the result, and the caller 	must take over ownership of the memory. This is the pattern demonstrated in StringCopy().
+	- Callee allocated and returned. The callee allocates some memory and returns it to the caller. This happens because the result of the callee 	computation needs new memory to be stored or represented. The new 	memory is passed to the caller so they can see the result, and the caller 	must take over ownership of the memory. This is the pattern demonstrated in ``StringCopy()``.
 
 Heap Memory Summary
 -------------------

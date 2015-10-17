@@ -225,11 +225,11 @@ A pointer type in C is just the pointee type followed by a asterisk ("*")...
 
 ``int"*"``  type: pointer to ``int``
 
-``float"*"`` type: pointer to float 
+``float"*"`` type: pointer to ``float`` 
 
-struct fraction"*" type: pointer to struct fraction 
+``struct fraction*`` type: pointer to ``struct fraction`` 
 
-struct fraction"*""*" type: pointer to struct fraction"*"
+``struct fraction**`` type: ``pointer to struct fraction*``
 
 
 Pointer Variables
@@ -383,16 +383,16 @@ No matter how complex a pointer structure gets, the list of rules remains short.
 
 Extra: How Do Pointers Work In Java
 -----------------------------------
-Java has pointers, but they are not manipulated with explicit operators such as "*" and "&". 
-In Java, simple data types such as `int` and `char` operate just as in C. More complex types
+Java has pointers, but they are not manipulated with explicit operators such as ``*`` and ``&``. 
+In Java, simple data types such as ``int`` and ``char`` operate just as in C. More complex types
 such as arrays and objects are automatically implemented using pointers. The language
 automatically uses pointers behind the scenes for such complex types, and no pointer
 specific syntax is required. The programmer just needs to realize that operations like
-`a=b;` will automatically be implemented with pointers if a and b are arrays or objects. Or
+``a=b;`` will automatically be implemented with pointers if a and b are arrays or objects. Or
 put another way, the programmer needs to remember that assignments and parameters
 with arrays and objects are intrinsically shallow or shared— see the Deep vs. Shallow
 material above. The following code shows some Java object references. Notice that there
-are no "*"'s or "&"'s in the code to create pointers. The code intrinsically uses pointers. Also,
+are no ``*``'s or ``&``'s in the code to create pointers. The code intrinsically uses pointers. Also,
 the garbage collector (Section 4), takes care of the deallocation automatically at the end
 of the function.
 
@@ -428,7 +428,7 @@ stored there. Pointer assignment just copies the numeric address from one pointe
 another. The NULL value is generally just the numeric address 0 — the computer just
 never allocates a pointee at 0 so that address can be used to represent NULL. A bad
 pointer is really just a pointer which contains a random address — just like an
-uninitialized `int` variable which starts out with a random `int` value. The pointer has not
+uninitialized ``int`` variable which starts out with a random ``int`` value. The pointer has not
 yet been assigned the specific address of a valid pointee. This is why dereference operations with bad pointers are so unpredictable. They operate on whatever random area
 of memory they happen to have the address of.
 
@@ -446,8 +446,8 @@ Extra: Why Are Bad Pointer Bugs So Common?
 Why is it so often the case that programmers will allocate a pointer, but forget to set it to
 refer to a pointee? The rules for pointers don't seem that complex, yet every programmer
 makes this error repeatedly. Why? The problem is that we are trained by the tools we use.
-Simple variables don't require any extra setup. You can allocate a simple variable, such as `int`
-, and use it immediately. All that `int`, `char`, struct fraction code you have written has trained you, quite reasonably, 
+Simple variables don't require any extra setup. You can allocate a simple variable, such as ``int``
+, and use it immediately. All that ``int``, ``char``, struct fraction code you have written has trained you, quite reasonably, 
 that a variable may be used once it is declared. Unfortunately, pointers look like simple variables but they require the extra initialization
 before use. It's unfortunate, in a way, that pointers happen look like other variables, since
 it makes it easy to forget that the rules for their use are very different. Oh well. Try to
