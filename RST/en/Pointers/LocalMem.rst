@@ -4,8 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: Nick Parlante and Sally Hamouda
-   :prerequisites:
+   :author: Nick Parlante, Cliff Shaffer, and Sally Hamouda
    :topic: Pointers
 
 Local Memory
@@ -16,7 +15,7 @@ Thanks For The Memory
 Local variables are the programming structure everyone uses but no one thinks about.
 You think about them a little when first mastering the syntax. But after a few weeks, the
 variables are so automatic that you soon forget to think about how they work. This
-situation is a credit to modern programming languages— most of the time variables
+situation is a credit to modern programming languages |---| most of the time variables
 appear automatically when you need them, and they disappear automatically when you
 are finished. For basic programming, this is a fine situation. However, for advanced
 programming, it's going to be useful to have an idea of how variables work...
@@ -39,9 +38,11 @@ will see however, the programmer must make sure that allocation is handled corre
 
 Local Memory
 ------------
-The most common variables you use are "local" variables within functions such as the
-variables ``num`` and ``result`` in the following function. All of the local variables and
-parameters taken together are called its "local storage" or just its "locals", such as
+The most common variables you use are :term:`local variables` within
+functions such as the variables ``num`` and ``result`` in the
+following function.
+All of the local variables and parameters taken together are called
+its :term:`local storage` or just its "locals", such as 
 ``num`` and ``result`` in the following code...
 
 ::
@@ -62,15 +63,38 @@ storage. When the function finally exits, its local storage is deallocated.
 
 Here is a more detailed version of the rules of local storage:
 
-	1. When a function is called, memory is allocated for all of its locals. In other words, when the flow of control hits the starting ``{`` for the function, all of its locals are allocated memory. Parameters such as num and local variables such as result in the above example both count as locals. The only difference between parameters and local variables is that parameters start out with a value copied from the caller while local variables start with random initial values. This article mostly uses simple ``int`` variables for its examples, however local allocation works for any type: structs, arrays... these can all be allocated locally.
-	2. The memory for the locals continues to be allocated so long as the thread of control is within the owning function. Locals continue to exist even if the function temporarily passes off the thread of control by calling another function. The locals exist undisturbed through all of this.
-	3. Finally, when the function finishes and exits, its locals are deallocated. This makes sense in a way — suppose the locals were somehow to continue to exist — how could the code even refer to them? The names like ``num`` and ``result``
-	only make sense within the body of ``Square()`` anyway. Once the flow of control leaves that body, there is no way to refer to the locals even if they were allocated. That locals are available
-	("scoped") only within their owning function is known as "lexical scoping" and pretty much all languages do it that way now.
+#.  When a function is called, memory is allocated for all of its
+    locals. In other words, when the flow of control hits the starting
+    ``{`` for the function, all of its locals are allocated
+    memory. Parameters such as num and local variables such as result
+    in the above example both count as locals. The only difference
+    between parameters and local variables is that parameters start
+    out with a value copied from the caller while local variables
+    start with random initial values. This article mostly uses simple
+    ``int`` variables for its examples, however local allocation works
+    for any type: structs, arrays... these can all be allocated
+    locally.
+
+#. The memory for the locals continues to be allocated so long as the
+   thread of control is within the owning function. Locals continue to
+   exist even if the function temporarily passes off the thread of
+   control by calling another function. The locals exist undisturbed
+   through all of this.
+
+#. Finally, when the function finishes and exits, its locals are
+   deallocated. This makes sense in a way |---| suppose the locals were
+   somehow to continue to exist |---| how could the code even refer to
+   them? The names like ``num`` and ``result``only make sense within
+   the body of ``Square()`` anyway. Once the flow of control leaves
+   that body, there is no way to refer to the locals even if they were
+   allocated. That locals are available	("scoped") only within their
+   owning function is known as :term:`lexical scoping` and pretty much
+   all    languages do it that way now.
 	
 Small Locals Example
 --------------------
-Here is a simple example of the lifetime of local storage...
+
+Here is a simple example of the lifetime of local storage.
 
 ::
 
@@ -88,12 +112,14 @@ Here is a simple example of the lifetime of local storage...
 	
 Large Locals Example
 ---------------------
-Here is a larger example which shows how the simple rule "the locals are allocated when
-their function begins running and are deallocated when it exits" can build more complex
-behavior. You will need a firm grasp of how local allocation works to understand the
-material in sections 3 and 4 later.
-The drawing shows the sequence of allocations and deallocations which result when the
-function X() calls the function Y() twice. The points in time T1, T2, etc. are marked in
+Here is a larger example which shows how the simple rule "the locals
+are allocated when their function begins running and are deallocated
+when it exits" can build more complex behavior.
+You will need a firm grasp of how local allocation works to understand the
+material in later modules.
+The drawing shows the sequence of allocations and deallocations which
+result when the function X() calls the function Y() twice.
+The points in time T1, T2, etc. are marked in 
 the code and the state of memory at that time is shown in the drawing.
 
 ::
@@ -126,46 +152,86 @@ the code and the state of memory at that time is shown in the drawing.
 
 
 (optional extra...) The drawing shows the sequence of the locals being allocated and
-deallocated — in effect the drawing shows the operation over time of the "stack" which is
-the data structure which the system uses to implement local storage.
+deallocated |---| in effect the drawing shows the operation over time of
+the :term:` runtime stack` which is the data structure which the
+system uses to implement local storage.
 
 Observations About Local Parameters
 -----------------------------------
-Local variables are tightly associated with their function — they are used there and
-nowhere else. Only the ``X()`` code can refer to its ``a`` and ``b`` . Only the ``Y()`` code can refer to
-its ``p`` and ``q``. This independence of local storage is the root cause of both its advantages
-and disadvantages.
+
+Local variables are tightly associated with their function |---| they
+are used there and nowhere else.
+Only the ``X()`` code can refer to its ``a`` and ``b``.
+Only the ``Y()`` code can refer to its ``p`` and ``q``.
+This independence of local storage is the root cause of both its
+advantages and disadvantages.
 
 Advantages Of Locals
 --------------------
+
 Locals are great for 90% of a program's memory needs:
 
-- Convenient. Locals satisfy a convenient need — functions often need some temporary memory which exists only during the function's computation. Local variables conveniently provide this sort of temporary, independent memory.
+* Convenient. Locals satisfy a convenient need |---| functions often need
+  some temporary memory which exists only during the function's
+  computation. Local variables conveniently provide this sort of
+  temporary, independent memory.
 
-- Efficient. Relative to other memory use techniques, locals are very efficient. Allocating and deallocating them is time efficient (fast) and they are space efficient in the way they use and recycle memory
+* Efficient. Relative to other memory use techniques, locals are very
+  efficient. Allocating and deallocating them is time efficient (fast)
+  and they are space efficient in the way they use and recycle memory
 
-- Local Copies. Local parameters are basically local copies of the information from the caller. This is also known as "pass by value." Parameters are local variables which are initialized with an assignment (``=``) operation from the caller. The caller is not "sharing" the parameter value with the callee in the pointer sense— the callee is getting its own copy. This has the advantage that the callee can change its local copy without affecting the caller. (Such as with the ``p`` parameter in the above example.) This independence is good since it keeps the operation of the caller and callee functions separate which follows the rules of good software engineering — keep separate components as independent as possible
+* Local Copies. Local parameters are basically local copies of the
+  information from the caller. This is also known as
+  :term:`pass by value`.
+  Parameters are local variables which are initialized with an
+  assignment (``=``) operation from the caller. The caller is not
+  "sharing" the parameter value with the callee in the pointer sense |---|
+  the callee is getting its own copy. This has the advantage that the
+  callee can change its local copy without affecting the caller. (Such
+  as with the ``p`` parameter in the above example.) This independence
+  is good since it keeps the operation of the caller and callee
+  functions separate which follows the rules of good software
+  engineering |---| keep separate components as independent as possible
 
 Disadvantages Of Locals
 -----------------------
+
 There are two disadvantages of Locals:
 
-#. Short Lifetime. Their allocation and deallocation schedule (their "lifetime") is very strict. Sometimes a program needs memory which continues to be allocated even after the function which originally allocated it has exited. Local variables will not work since they are deallocated automatically when their owning function exits. This problem will be solved later in Section 4 with "heap" memory.
-#. Restricted Communication. Since locals are copies of the caller parameters, they do not provide a means of communication from the callee back to the caller. This is the downside of the "independence" advantage. Also, sometimes making copies of a value is undesirable for other reasons. We will see the solution to this problem below in Section 3 "Reference Parameters".
+#. Short Lifetime. Their allocation and deallocation schedule (their
+   "lifetime") is very strict. Sometimes a program needs memory which
+   continues to be allocated even after the function which originally
+   allocated it has exited. Local variables will not work since they
+   are deallocated automatically when their owning function
+   exits. This problem will be solved in a later section with
+   :term:`heap` memory.
+
+#. Restricted Communication. Since locals are copies of the caller
+   parameters, they do not provide a means of communication from the
+   callee back to the caller. This is the downside of the
+   "independence" advantage. Also, sometimes making copies of a value
+   is undesirable for other reasons. We will see the solution to this
+   problem below in the next module.
 
 Synonyms For "Local"
 --------------------
-Local variables are also known as "automatic" variables since their allocation and
-deallocation is done automatically as part of the function call mechanism. Local variables
-are also sometimes known as "stack" variables because, at a low level, languages almost
-always implement local variables using a stack structure in memory.
 
-The Ampersand (&) Bug — TAB
----------------------------
-Now that you understand the allocation schedule of locals, you can appreciate one of the
-more ugly bugs possible in C and C++. What is wrong with the following code where the
-function ``Victim()`` calls the function ``TAB()``? To see the problem, it may be useful to make
-a drawing to trace the local storage of the two functions...
+Local variables are also known as :term:`automatic variables` since
+their allocation and deallocation is done automatically as part of the
+function call mechanism.
+Local variables are also sometimes known as :term`stack variables`
+because, at a low level, languages almost always implement local
+variables using a stack structure in memory.
+
+The Ampersand (&) Bug |---| TAB
+-------------------------------
+
+Now that you understand the allocation schedule of locals, you can
+appreciate one of the more ugly bugs possible in C and C++.
+What is wrong with the following code where the 
+function ``Victim()`` calls the function ``TAB()``?
+To see the problem, it may be useful to make
+a drawing to trace the local storage of the two functions.
 
 ::
 
@@ -188,15 +254,15 @@ all of its locals are deallocated. So the caller is left with a pointer to a dea
 ``Y()`` in the previous example. It is incorrect (and useless) for `TAB()` to return a pointer to memory which is about to be
 deallocated. We are essentially running into the "lifetime" constraint of local variables.
 We want the int to exist, but it gets deallocated automatically. Not all uses of & between
-functions are incorrect — only when used to pass a pointer back to the caller. The correct
+functions are incorrect |---| only when used to pass a pointer back to the caller. The correct
 uses of `&` are discussed in section 3, and the way to pass a pointer back to the caller is
 shown in section 4.	
 
 Local Memory Summary
 --------------------
-Locals are very convenient for what they do — providing convenient and efficient
+Locals are very convenient for what they do |---| providing convenient and efficient
 memory for a function which exists only so long as the function is executing. Locals have
-two deficiencies which we will address in the following sections — how a function can
+two deficiencies which we will address in the following sections |---| how a function can
 communicate back to its caller (Section 3), and how a function can allocate separate
 memory with a less constrained lifetime (section 4).
 
@@ -208,29 +274,53 @@ implementation are language and compiler specific. However, the basic structure 
 approximates the method used by many different systems and languages...
 To call a function such as ``foo(6, x+1)``:
 
-1. Evaluate the actual parameter expressions, such as the x+1, in the caller's context.
+1. Evaluate the actual parameter expressions, such as the x+1, in the
+   caller's context.
 
-2. Allocate memory for ``foo()``'s locals by pushing a suitable "local block" of memory onto a runtime "call stack" dedicated to this purpose. For parameters but not local variables, store the values from step (1) into the appropriate slot in ``foo()``'s local block.
+2. Allocate memory for ``foo()``'s locals by pushing a suitable "local
+   block" of memory onto a runtime :term:`call stack` dedicated to this
+   purpose. For parameters but not local variables, store the values
+   from step (1) into the appropriate slot in ``foo()``'s local
+   block.
 
-3. Store the caller's current address of execution (its "return address") and switch execution to ``foo()``.
+3. Store the caller's current address of execution (its "return
+   address") and switch execution to ``foo()``.
 
-4. ``foo()`` executes with its local block conveniently available at the end of the
-call stack. 
+4. ``foo()`` executes with its local block conveniently available at
+   the end of the call stack. 
 
-5. When ``foo()`` is finished, it exits by popping its locals off the stack and "returns" to the caller using the previously stored return address. Now the caller's locals are on the end of the stack and it can resume executing. 
+5. When ``foo()`` is finished, it exits by popping its locals off the
+   stack and "returns" to the caller using the previously stored
+   return address. Now the caller's locals are on the end of the stack
+   and it can resume executing.
 
-For the extremely curious, here are other miscellaneous notes on the function call
-process:
+For the extremely curious, here are other miscellaneous notes on the
+function call process:
 
-- This is why infinite recursion results in a "Stack Overflow Error" — the code keeps calling and calling resulting in steps (1) (2) (3), (1) (2) (3), but never a step (4)....eventually the call stack runs out of memory.
+* This is why infinite recursion results in a "Stack Overflow Error"
+  |---| the code keeps calling and calling resulting in steps (1) (2)
+  (3), (1) (2) (3), but never a step (4)....eventually the call stack
+  runs out of memory.
 
-- This is why local variables have random initial values — step (2) just pshes the whole local block in one operation. Each local gets its own area of memory, but the memory will contain whatever the most recent tenant left there. To clear all of the local block for each function call would be too time expensive.
+* This is why local variables have random initial values |---| step (2)
+  just pshes the whole local block in one operation. Each local gets
+  its own area of memory, but the memory will contain whatever the
+  most recent tenant left there. To clear all of the local block for
+  each function call would be too time expensive.
 
-- The "local block" is also known as the function's "activation record" or "stack frame". The entire block can be pushed onto the stack (step 2), in a single CPU operation — it is a very fast operation.
+* The "local block" is also known as the function's
+  :term:`activation record` or :term:`stack frame`.
+  The entire block can be pushed onto the
+  stack (step 2), in a single CPU operation |---| it is a very fast
+  operation.
 
-- For a multithreaded environment, each thread gets its own call stack instead of just having single, global call stack.
+* For a multithreaded environment, each thread gets its own call stack
+  instead of just having single, global call stack.
 
-- For performance reasons, some languages pass some parameters through registers and others through the stack, so the overall process is complex. However, the apparent the lifetime of the variables will always follow the "stack" model presented here.
+* For performance reasons, some languages pass some parameters through
+  registers and others through the stack, so the overall process is
+  complex. However, the apparent the lifetime of the variables will
+  always follow the "stack" model presented here.
 
 Notes
 -----

@@ -4,30 +4,36 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: Nick Parlante and Sally Hamouda
-   :prerequisites:
+   :author: Nick Parlante, Cliff Shaffer, and Sally Hamouda
    :topic: Pointers
 
 Reference Parameters
 ====================
 
-In the simplest "pass by value" or "value parameter" scheme, each function has separate,
-local memory and parameters are copied from the caller to the callee at the moment of the
-function call. But what about the other direction? How can the callee communicate back
-to its caller? Using a "return" at the end of the callee to copy a result back to the caller
-works for simple cases, but does not work well for all situations. Also, sometimes
-copying values back and forth is undesirable. "Pass by reference" parameters solve all of
-these problems.
-For the following discussion, the term "value of interest" will be a value that the caller
-and callee wish to communicate between each other. A reference parameter passes a
-pointer to the value of interest instead of a copy of the value of interest. This technique
-uses the sharing property of pointers so that the caller and callee can share the value of
-interest.
+In the simplest :term:`pass by value` or :term:`value parameter`
+scheme, each function has separate, local memory and parameters are
+copied from the caller to the callee at the moment of the function
+call.
+But what about the other direction?
+How can the callee communicate back to its caller?
+Using a "return" at the end of the callee to copy a result back to the
+caller works for simple cases, but does not work well for all
+situations.
+Also, sometimes copying values back and forth is undesirable.
+:term:`Pass by reference` parameters solve all of these problems.
+For the following discussion, the term "value of interest" will be a
+value that the caller and callee wish to communicate between each
+other.
+A reference parameter passes a pointer to the value of interest
+instead of a copy of the value of interest.
+This technique uses the sharing property of pointers so that the
+caller and callee can share the value of interest.
 
 Bill Gates Example
 ------------------
+
 Suppose functions ``A()`` and ``B()`` both do computations involving Bill Gates' net worth
-measured in billions of dollars — the value of interest for this problem. ``A()`` is the main
+measured in billions of dollars |---| the value of interest for this problem. ``A()`` is the main
 function and its stores the initial value (about 55 as of 1998). ``A()`` calls ``B()`` which tries to
 add 1 to the value of interest.
 
@@ -64,20 +70,23 @@ code and the state of memory is shown for each state...
    
 ``B()`` adds 1 to its local ``worth`` copy, but when ``B()`` exits, ``worth`` is deallocated, so changing it was useless. The value of interest, 
 `netWorth`, rests unchanged the whole time in A()'s local storage. A function can change its local copy of the value of interest,
-but that change is not reflected back in the original value. This is really just the old "independence" property of local storage, but in this case it is not what is wanted.   	
-
+but that change is not reflected back in the original value. This is
+really just the old "independence" property of local storage, but in
+this case it is not what is wanted.
 
 By Reference
 ------------
-The reference solution to the Bill Gates problem is to use a single ``netWorth`` variable
-for the value of interest and never copy it. Instead, each function can receives a pointer to ``netWorth``.
+
+The reference solution to the Bill Gates problem is to use a single
+``netWorth`` variable for the value of interest and never copy
+it. Instead, each function can receives a pointer to ``netWorth``.
 Each function can see the current value of `netWorth` by dereferencing its pointer. More importantly, each function can change the net 
-``worth``  — just dereference the pointer to the centralized  ``netWorth`` and change it directly. Everyone agrees what
-the current value of ``netWorth``  because it exists in only one place — everyone has a pointer to the one master copy. The following memory drawing shows `A()` and `B()`
-functions changed to use "reference" parameters. As before, T1, T2, and T3 correspond to points in the code (below), but you can study the memory structure without looking at the
-code yet.
-
-
+``worth``  |---| just dereference the pointer to the centralized  ``netWorth`` and change it directly. Everyone agrees what
+the current value of ``netWorth``  because it exists in only one place |---| everyone has a pointer to the one master copy. The following memory drawing shows `A()` and `B()`
+functions changed to use :term:`reference parameters`.
+As before, T1, T2, and T3 correspond to points in the code (below),
+but you can study the memory structure without looking at the code
+yet.
 
 .. odsafig:: Images/T1-T3-2nd.png
    :width: 600
@@ -92,29 +101,50 @@ Passing By Reference
 --------------------
 Here are the steps to use in the code to use the pass-by-reference strategy:
 
-- Have a single copy of the value of interest. The single "master" copy.
-- Pass pointers to that value to any function which wants to see or change the value.
-- Functions can dereference their pointer to see or change the value of interest.
-- Functions must remember that they do not have their own local copies. If they dereference their pointer and change the value, they really are
-changing the master value. If a function wants a local copy to change safely, the function must explicitly allocate and initialize such a local
-copy.
+* Have a single copy of the value of interest.
+  The single "master" copy. 
+* Pass pointers to that value to any function which wants to see or
+  change the value.
+* Functions can dereference their pointer to see or change the value
+  of interest.
+* Functions must remember that they do not have their own local
+  copies. If they dereference their pointer and change the value, they
+  really are changing the master value. If a function wants a local
+  copy to change safely, the function must explicitly allocate and
+  initialize such a local copy.
 
 Syntax
 ------
 The syntax for by reference parameters  in the C language just uses pointer operations on
 the parameters:
 
-1- Suppose a function wants to communicate about some value of interest — ``int`` or ``float`` or ``struct fraction``.
+#. Suppose a function wants to communicate about some value of
+   interest |---| ``int`` or ``float`` or ``struct fraction``.
 
-2- The function takes as its parameter a pointer to the value of interest — an ``int*``  or ``float*`` or ``struct fraction*``. Some programmers will add the word "ref" to the name of a reference parameter as a reminder that it is a reference to the value of interest instead of a copy.
+#. The function takes as its parameter a pointer to the value of
+   interest |---| an ``int*``  or ``float*`` or ``struct fraction*``.
+   Some programmers will add the word "ref" to the name of a reference
+   parameter as a reminder that it is a reference to the value of
+   interest instead of a copy.
 
-3- At the time of the call, the caller computes a pointer to the value of interest and passes that pointer. The type of the pointer (pointer to the value of interest) will agree with the type in (2) above. If the value of interest is local to the caller, then this will often involve a use of the & operator (Section 1).
+#. At the time of the call, the caller computes a pointer to the value
+   of interest and passes that pointer. The type of the pointer
+   (pointer to the value of interest) will agree with the type in (2)
+   above. If the value of interest is local to the caller, then this
+   will often involve a use of the & operator (Section 1).
  
-4- When the callee is running, if it wishes to access the value of interest, it must dereference its pointer to access the actual value of interest. Typically, this equates to use of the dereference operator (``*``) in the function to see the value of interest. 
+#. When the callee is running, if it wishes to access the value of
+   interest, it must dereference its pointer to access the actual
+   value of interest. Typically, this equates to use of the
+   dereference operator (*) in the function to see the value of
+   interest.
 
 Bill Gates By Reference
 -----------------------
-Here is the Bill Gates example written to use reference parameters. This code now matches the by-reference memory drawing above.
+
+Here is the Bill Gates example written to use reference
+parameters. This code now matches the by-reference memory drawing
+above. 
 
 ::
 
@@ -137,26 +167,41 @@ Here is the Bill Gates example written to use reference parameters. This code no
    
 Don't Make Copies
 -----------------
-Reference parameters enable communication between the callee and its caller. Another
-reason to use reference parameters is to avoid making copies. For efficiency, making
-copies may be undesirable if the value of interest is large, such as an array. Making the
-copy requires extra space for the copy itself and extra time to do the copying. From a
-design point of view, making copies may be undesirable because as soon as there are two
-copies, it is unclear which one is the "correct" one if either is changed. Proverb: "A
-person with one watch always knows what time it is. A person with two watches is never
-sure." Avoid making copies.
+
+Reference parameters enable communication between the callee and its
+caller.
+Another reason to use reference parameters is to avoid making
+copies.
+For efficiency, making copies may be undesirable if the value of
+interest is large, such as an array.
+Making the copy requires extra space for the copy itself and extra
+time to do the copying.
+From a design point of view, making copies may be undesirable because
+as soon as there are two copies, it is unclear which one is the
+"correct" one if either is changed.
+Proverb: "A person with one watch always knows what time it is.
+A person with two watches is never sure."
+Avoid making copies.
 
 
-Simple Reference Parameter Example — Swap()
--------------------------------------------
-The standard example of reference parameters is a ``Swap()`` function which exchanges the
-values of two ``ints``. It's a simple function, but it does need to change the caller's memory
+Simple Reference Parameter Example |---| Swap()
+-----------------------------------------------
+
+The standard example of reference parameters is a ``Swap()`` function
+that exchanges the values of two ``ints``.
+It's a simple function, but it does need to change the caller's memory
 which is the key feature of pass by reference.
 
 Swap() Function
 ---------------
-The values of interest for ``Swap()`` are two ``ints``. Therefore, ``Swap()`` does not take ``ints`` as its parameters. It takes a pointers to 
-``int`` — (``int*``)'s. In the body of ``Swap()`` the parameters, ``a`` and ``b``, are dereferenced with ``*`` to get at the actual (``int``) values of interest.
+
+The values of interest for ``Swap()`` are two ``ints``.
+Therefore, ``Swap()`` does not take ``ints`` as its parameters.
+It takes pointers to ``int`` |---| (``int*``)'s.
+In the body of ``Swap()`` the parameters, ``a`` and ``b``, are
+dereferenced with ``*`` to get at the actual (``int``) values of
+interest.
+
 ::
 
 	void Swap(int* a, int* b) {
@@ -169,7 +214,9 @@ The values of interest for ``Swap()`` are two ``ints``. Therefore, ``Swap()`` do
 	
 Swap() Caller
 -------------
-To call Swap(), the caller must pass pointers to the values of interest...
+
+To call Swap(), the caller must pass pointers to the values of interest.
+
 ::
 
 	void SwapCaller() {
@@ -209,7 +256,11 @@ the ``ints`` can be anywhere. An ``int`` inside an array is still an ``int``.
 	         // simple variables -- they can be any int. The caller is responsible
 	         // for computing a pointer to the int.
 	         
-The above call to ``Swap()`` can be written equivalently as  ``Swap(scores, scores+9)`` due to the array syntax in C. You can ignore this case if it is not familiar to you —  it's
+The above call to ``Swap()`` can be written equivalently as
+``Swap(scores, scores+9)`` due to the array syntax in C. You can
+
+ignore this case if it is not familiar to you |---|
+it's
 not an important area of the language and both forms compile to the exact same thing anyway.	         
 
 Is The & Always Necessary?
@@ -241,7 +292,7 @@ of interest...
 
 What About The & Bug TAB?
 -------------------------
-All this use of & might make you nervous — are we committing the & bug from Section
+All this use of & might make you nervous |---| are we committing the & bug from Section
 2? No, it turns out the above uses of & are fine. The & bug happens when an & passes a
 pointer to local storage from the callee back to its caller. When the callee exits, its local
 memory is deallocated and so the pointer no longer has a pointee. In the above, correct
@@ -282,7 +333,7 @@ value of interest.
 Extra: Reference Parameters in Java
 -----------------------------------
 Because Java has no ``*``/``&`` operators, it is not possible to implement reference parameters
-in Java directly. Maybe this is ok — in the OOP paradigm, you should change objects by
+in Java directly. Maybe this is ok |---| in the OOP paradigm, you should change objects by
 sending them messages which makes the reference parameter concept unnecessary. The caller passes the callee a (shallow) reference to the value of interest (object of interest?),
 and the callee can send it a message to change it. Since all objects are intrinsically
 shallow, any change is communicated back to the caller automatically since the object of
