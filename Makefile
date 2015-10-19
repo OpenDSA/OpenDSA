@@ -3,6 +3,7 @@ ifeq ($(OS),Windows_NT)
 endif
 RM = rm -rf
 CONFIG_SCRIPT = tools/configure.py
+CREATE_COURSE = tools/create_course.py
 TARGET = build
 CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 CSSLINTFLAGS = --quiet --ignore=ids,adjoining-classes
@@ -129,9 +130,10 @@ CS2401: min
 
 CS3114: min
 	python $(CONFIG_SCRIPT) config/CS3114.json
-    
+
 CS3114_rev: min
 	python $(CONFIG_SCRIPT) config/CS3114_rev.json
+	python $(CREATE_COURSE) config/CS3114_rev.json hs_courseConf.json
 
 CS3114LTI: min
 	python $(CONFIG_SCRIPT) config/CS3114LTI.json
