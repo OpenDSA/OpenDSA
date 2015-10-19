@@ -206,9 +206,9 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   
   # KILL MATHJAX
   '''Helpful for debugging, because MathJax takes forever to load'''
-  #for possible_math_jax in soup.find_all('script'):
-  #  if possible_math_jax.has_attr('src') and possible_math_jax['src'].startswith('//cdn.mathjax.org/mathjax'):
-  #    possible_math_jax.extract()
+  for possible_math_jax in soup.find_all('script'):
+    if possible_math_jax.has_attr('src') and possible_math_jax['src'].startswith('//cdn.mathjax.org/mathjax'):
+      possible_math_jax.extract()
   
   
   # Find all of the scripts, links, images, etc. that we might need
@@ -291,11 +291,15 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   
   # Collect out the slide-specific JS/CSS
   slide_scripts = defaultdict(list)
+  all_scripts = list()
   for tag_name, tag_url in TAGS:
     for a_tag in soup.find_all(tag_name):
       if a_tag.has_attr(tag_url) and a_tag[tag_url].startswith('OpenDSA/AV/'):
         name = os.path.splitext(os.path.basename(a_tag[tag_url]))[0]
-        slide_scripts[name].append(a_tag.extract())
+        script_tag = a_tag.extract()
+        slide_scripts[name].append(script_tag)
+        if name.endswith('Common.css'):
+            all_scripts.append(script_tag)
   
   # Breaking file into components
   
@@ -403,7 +407,9 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
             sss_div.insert(0, a_script)
         if potential_exercise in ('quicksortCON', 'bubblesortCON'):
           for a_script in slide_scripts[potential_exercise.replace('CON', 'CODE')]:
-            sss_div.insert(0, a_script)  
+            sss_div.insert(0, a_script)
+    for script_tag in all_scripts:
+        sss_div.insert(0, script_tag)
     # Write out the file with what we have so far
     with codecs.open(slide_filepath, 'w', 'utf-8') as o:
       o.write(unicode(soup))
