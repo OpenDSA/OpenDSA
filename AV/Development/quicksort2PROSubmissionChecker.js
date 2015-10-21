@@ -5,12 +5,23 @@ $(document).ready(function() {
 
   function showSteps(steps) {
     var array = av.ds.array(new Array(steps[0].ind.length), {indexed: true, layout: "bar"});
+    var pseudo = av.code({
+      url: "../../SourceCode/Processing/Sorting/Quicksort.pde",
+      startAfter: "/* *** ODSATag: partition *** */",
+      endBefore: "/* *** ODSAendTag: Quicksort *** */",
+      tags: {
+        comments_and_findpivot: [9, 11, 12, 13, 14, 15, 16]
+      }
+    });
+    pseudo.hide("comments_and_findpivot");
+
 
     // redos the steps the student has done based on the log
     steps.forEach(function(step, index) {
       av.umsg(JSON.stringify(step));
       if (index === 0) {
         array.state(step);
+        array.element.css("top", 0);
       } else {
         var swapIndex = -1;
         step.ind.forEach(function(element, i) {
