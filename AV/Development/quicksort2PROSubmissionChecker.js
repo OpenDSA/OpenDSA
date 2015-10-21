@@ -6,22 +6,29 @@ $(document).ready(function() {
   function showSteps(steps) {
     var array = av.ds.array(new Array(steps[0].ind.length), {indexed: true, layout: "bar"});
 
+    // redos the steps the student has done based on the log
     steps.forEach(function(step, index) {
       av.umsg(JSON.stringify(step));
       if (index === 0) {
         array.state(step);
       } else {
+        var swapIndex = -1;
         step.ind.forEach(function(element, i) {
-          array.value(i, element.v);
+          if (array.value(i) !== element.v) {
+            if (swapIndex === -1) {
+              swapIndex = i;
+            } else {
+              // we assume there will only be one swap per step
+              array.swap(swapIndex, i);
+            }
+          }
           array.index(i).element.attr("class").split(" ").forEach(function(cls) {
             if (cls.indexOf("jsavnode") === -1 && cls.indexOf("jsavindex") === -1 && (!element.cls || element.cls.indexOf(cls) === -1)) {
-              window.console.log("step", index, "remove class", cls, "from", i);
               array.removeClass(i, cls);
             }
           });
           if (element.cls) {
             element.cls.forEach(function(cls) {
-              window.console.log("step", index, "addClass class", cls, "to", i);
               array.addClass(i, cls);
             });
           }
