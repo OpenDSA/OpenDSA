@@ -5,7 +5,8 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: linear indexing; 2-3 tree
+   :satisfies: B tree
    :topic: Indexing
 
 B-Trees
@@ -129,7 +130,7 @@ called the :math:`\mathrm{B}^+` tree.
 When greater efficiency is required, a more complicated
 variant known as the :math:`\mathrm{B}^*` tree is used.
 
-Consider again the linear index.
+Consider again the :term:`linear index`.
 When the collection of records will not change, a linear index
 provides an extremely efficient way to search.
 The problem is how to handle those pesky inserts and deletes.

@@ -5,6 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
+   :requires: open hashing
+   :satisfies: bucket hashing
    :topic: Hashing
 
 .. odsalink:: AV/Hashing/buckethashCON.css

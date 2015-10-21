@@ -1857,7 +1857,7 @@
       "Sorting/SortSumm": {
         "long_name": "Sorting Chapter Summary Exercises",
         "exercises": {
-          "ChapterSumm": {
+          "SortChapterSumm": {
             "long_name": "Sorting Chapter Summary Exercise",
             "required": true,
             "points": 2,
@@ -2432,6 +2432,17 @@
             "exer_options": {
               "JXOP-feedback": "continuous"
             }
+          }
+        }
+      },
+      "Indexing/IndexingSumm": {
+        "long_name": "Indexing Chapter Summary",
+        "exercises": {
+          "IndexChoice": {
+            "long_name": "Choosing an Index",
+            "required": true,
+            "points": 2,
+            "threshold": 5
           }
         }
       }

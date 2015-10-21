@@ -5,6 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
+   :requires: exchange sort; shellsort; heapsort; mergesort; quicksort; radix sort; sorting lower bound
    :topic: Sorting
 
 Sorting Summary Exercises
@@ -15,4 +16,4 @@ questions in the modules of this chapter.
 If anything goes wrong with one of the questions, or if you think that
 you are in a series of repeating questions, then just reload the page.
 
-.. avembed:: Exercises/Sorting/ChapterSumm.html ka
+.. avembed:: Exercises/Sorting/SortChapterSumm.html ka

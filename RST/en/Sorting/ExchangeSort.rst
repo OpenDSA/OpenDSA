@@ -6,6 +6,7 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :requires: insertion sort; bubble sort; selection sort
+   :satisfies: exchange sort
    :topic: Sorting
 
 .. index:: ! exchange sorting

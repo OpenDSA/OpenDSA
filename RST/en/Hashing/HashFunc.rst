@@ -5,6 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
+   :requires: hash intro
+   :satisfies: hash function
    :topic: Hashing
 
 .. index:: ! hashing function

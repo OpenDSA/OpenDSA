@@ -5,6 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
+   :requires: collision resolution
    :topic: Hashing
 
 .. odsalink:: AV/Hashing/collisionCON.css

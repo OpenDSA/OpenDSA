@@ -5,6 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
+   :requires: hash function
    :topic: Hashing
 
 Sample Hash Functions

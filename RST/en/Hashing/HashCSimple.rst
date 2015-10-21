@@ -5,6 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
+   :requires: open hashing
+   :satisfies: collision resolution
    :topic: Hashing
 
 .. index:: ! collision resolution

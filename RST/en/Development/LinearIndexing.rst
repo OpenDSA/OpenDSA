@@ -5,7 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: indexing
+   :satisfies: linear indexing
    :topic: Indexing
    
 .. odsalink:: AV/Development/linearIndexingCON.css

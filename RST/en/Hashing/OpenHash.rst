@@ -5,7 +5,8 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: hash function
+   :satisfies: open hashing
    :topic: Hashing
 
 .. odsalink:: AV/Hashing/openhashCON.css

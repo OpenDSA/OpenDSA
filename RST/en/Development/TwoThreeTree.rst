@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :satisfies: 2-3 tree
    :topic: Indexing
 
 .. odsalink:: AV/Development/twoThreeTreeCON.css

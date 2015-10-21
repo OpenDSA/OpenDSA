@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :satisfies: indexing
    :topic: Indexing
 
 Indexing Chapter Introduction
