@@ -783,6 +783,12 @@
             "required": true,
             "points": 2,
             "threshold": 5
+          },
+          "ListChapterSumm": {
+            "long_name": "List Chapter Summary",
+            "required": true,
+            "points": 2,
+            "threshold": 10
           }
         }
       }
@@ -2538,8 +2544,8 @@
           "GraphIntroSumm": {
             "long_name": "Graph Terminology Summary Exercise",
             "required": true,
-            "points": 2.0,
-            "threshold": 5
+            "points": 3.0,
+            "threshold": 10
           }
         }
       },

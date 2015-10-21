@@ -14,3 +14,7 @@ Here are some general practice questions about various data structures
 in this chapter.
 
 .. avembed:: Exercises/List/ListdsSumm.html ka
+
+Here is a summary exercise with questions from everything in this chapter.
+
+.. avembed:: Exercises/List/ListChapterSumm.html ka

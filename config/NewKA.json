@@ -969,6 +969,25 @@
         }
       }
     },
+    "Graphs": {
+      "NewKA/GraphIntro": {
+        "long_name": "Introduction and Terminology",
+        "exercises": {
+          "GspaceCalcSumm": {
+            "long_name": "Graph Space Requirements Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          },
+          "GraphIntroSumm": {
+            "long_name": "Graph Terminology Summary Exercise",
+            "required": true,
+            "points": 3.0,
+            "threshold": 10
+          }
+        }
+      }
+    },
     "NewKA": {
       "NewKA/recCMultiplyPROGSumm": {
         "long_name": "recCMultiplyPROGSumm",
