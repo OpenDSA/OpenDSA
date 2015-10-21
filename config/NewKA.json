@@ -514,12 +514,6 @@
             "points": 2.0,
             "threshold": 1
           },
-          "BinaryTreeMistakesCON": {
-            "long_name": "Binary Tree Common Mistakes Slideshow",
-            "required": true,
-            "points": 1.0,
-            "threshold": 0.90
-          },
           "BTreturnPROGSumm": {
             "long_name": "Collect-and-Return Programming Exercises",
             "showhide": "show",
@@ -560,6 +554,7 @@
         "exercises": {
           "BSTSumm": {
             "long_name": "BST Question Summary",
+            "showhide": "show",
             "required": true,
             "points": 1,
             "threshold": 2
@@ -656,12 +651,14 @@
         "exercises": {
           "InssortPRO": {
             "long_name": "Insertion Sort Proficiency Exercise",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 5
           },
           "InssortSumm": {
             "long_name": "Insertion Sort Summary Exercise",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 5
@@ -673,12 +670,14 @@
         "exercises": {
           "BubsortPRO": {
             "long_name": "Bubble Sort Proficiency Exercise",
+            "showhide": "show",
             "required": true,
             "points": 2.0,
             "threshold": 3
           },
           "BubsortSumm": {
             "long_name": "Bubble Sort Summary Exercise",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 5
@@ -690,12 +689,14 @@
         "exercises": {
           "SelsortPRO": {
             "long_name": "Selection Sort Proficiency Exercise",
+            "showhide": "show",
             "required": true,
             "points": 2.0,
             "threshold": 5
           },
           "SelsortSumm": {
             "long_name": "Selection Sort Summary Exercise",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 5
@@ -707,12 +708,14 @@
         "exercises": {
           "FindInversionsPRO": {
             "long_name": "Inversions Proficiency Exercise",
+            "showhide": "show",
             "required": true,
             "points": 2.0,
             "threshold": 5
           },
           "ExchangeSumm": {
             "long_name": "Exchange Sorting Summary Exercise",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 5
@@ -724,18 +727,21 @@
         "exercises": {
           "ShellsortSublistSumm": {
             "long_name": "Shellsort Sublist Exercise",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 5
           },
           "ShellsortSeries": {
             "long_name": "Shellsort Series Exercise",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 5
           },
           "ShellsortSumm": {
             "long_name": "Shellsort Summary Exercise",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 5
@@ -747,6 +753,7 @@
         "exercises": {
           "MergesortMergePRO": {
             "long_name": "Mergesort Merging Proficiency Exercise",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 5
@@ -758,6 +765,7 @@
         "exercises": {
           "MergesortSumm": {
             "long_name": "Mergesort Summary Exercise",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 5
@@ -769,18 +777,21 @@
         "exercises": {
           "QuicksortPivotPRO": {
             "long_name": "Quicksort Pivot Proficiency Exercise",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 5
           },
           "QuicksortPartitPRO": {
             "long_name": "Quicksort Partition Proficiency Exercise",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 5
           },
           "QuicksortSumm": {
             "long_name": "Quicksort Summary Exercise",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 5
@@ -792,12 +803,14 @@
         "exercises": {
           "HeapsortStepPRO": {
             "long_name": "Heapsort RemoveMax Proficiency Exercise",
+            "showhide": "show",
             "required": true,
             "points": 2.0,
             "threshold": 5
           },
           "HeapsortSumm": {
             "long_name": "Heapsort Summary Exercise",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 5
@@ -809,12 +822,14 @@
         "exercises": {
           "RadixsortPRO": {
             "long_name": "Radix Sort Proficiency Exercise",
+            "showhide": "show",
             "required": true,
             "points": 2.0,
             "threshold": 4
           },
           "RadixSortSumm": {
             "long_name": "Radix Sort Summary Exercise",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 5
@@ -826,6 +841,7 @@
         "exercises": {
           "SortBoundSumm": {
             "long_name": "Lower Bounds Summary Exercise",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 4
@@ -837,6 +853,7 @@
         "exercises": {
           "SortChapterSumm": {
             "long_name": "Sorting Chapter Summary Exercise",
+            "showhide": "show",
             "required": true,
             "points": 2,
             "threshold": 10
@@ -850,12 +867,14 @@
         "exercises": {
           "HashFuncFIBSumm": {
             "long_name": "Hash Function Pick Slot Summary",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 5
           },
           "HashFuncSumm": {
             "long_name": "Hash Function Summary Exercise",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 5
@@ -867,6 +886,7 @@
         "exercises": {
           "OpenHashPRO": {
             "long_name": "Open Hashing Proficiency Exercise",
+            "showhide": "show",
             "required": true,
             "points": 2.0,
             "threshold": 5
@@ -878,12 +898,14 @@
         "exercises": {
           "HashBucketPRO": {
             "long_name": "Bucket Hashing Proficiency Exercise",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 5
           },
           "HashBucket2PRO": {
             "long_name": "Alternate Bucket Hashing Proficiency Exercise",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 5
@@ -895,6 +917,7 @@
         "exercises": {
           "HashLinearPPRO": {
             "long_name": "Linear Probing Proficiency Exercise",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 5
@@ -906,6 +929,7 @@
         "exercises": {
           "HashLinearStepPPRO": {
             "long_name": "Linear Probing By Steps Proficiency Exercise",
+            "showhide": "show",
             "required": true,
             "points": 2.0,
             "threshold": 5
@@ -918,12 +942,14 @@
           },
           "HashQuadraticPPRO": {
             "long_name": "Quadratic Probing Proficiency Exercise",
+            "showhide": "show",
             "required": true,
             "points": 2.0,
             "threshold": 5
           },
           "HashDoublePPRO": {
             "long_name": "Double Hashing Proficiency Exercise",
+            "showhide": "show",
             "required": true,
             "points": 2.0,
             "threshold": 5
@@ -935,6 +961,7 @@
         "exercises": {
           "HashAnalSumm": {
             "long_name": "Analysis of Closed Hashing Summary Exercise",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 5
@@ -946,6 +973,7 @@
         "exercises": {
           "HashDelSumm": {
             "long_name": "Hash Deletion Summary Exercise",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 3
@@ -957,9 +985,59 @@
         "exercises": {
           "HashChapterSumm": {
             "long_name": "Hashing Chapter Summary Exercise",
+            "showhide": "show",
             "required": true,
             "points": 2.0,
             "threshold": 10
+          }
+        }
+      }
+    },
+    "Indexing": {
+      "NewKA/IndexingSumm": {
+        "long_name": "Indexing Chapter Summary",
+        "exercises": {
+          "IndexChoice": {
+            "long_name": "Choosing an Index",
+            "showhide": "show",
+            "required": true,
+            "points": 2,
+            "threshold": 5
+          }
+        }
+      }
+    },
+    "General Trees": {
+      "NewKA/SequentialRep": {
+        "long_name": "Sequential Tree Representations",
+        "exercises": {
+          "SequentialTreePRO": {
+            "long_name": "First Sequential Representation Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "SequentialTreeAltPRO": {
+            "long_name": "Alternate Sequential Representation Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "SequentialTreeBitVectorPRO": {
+            "long_name": "Bit Vector Sequential Representation Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "SequentialTreeGenTreePRO": {
+            "long_name": "General Tree Sequential Representation Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1,
+            "threshold": 5
           }
         }
       }
@@ -970,12 +1048,14 @@
         "exercises": {
           "GspaceCalcSumm": {
             "long_name": "Graph Space Requirements Exercise",
+            "showhide": "show",
             "required": true,
             "points": 2.0,
             "threshold": 5
           },
           "GraphIntroSumm": {
             "long_name": "Graph Terminology Summary Exercise",
+            "showhide": "show",
             "required": true,
             "points": 3.0,
             "threshold": 10
@@ -989,9 +1069,9 @@
         "exercises": {
           "recCMultiplyPROGSumm": {
             "long_name": "recCMultiplyPROGSumm",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
-            "showhide": "show",
             "threshold": 5
           }
         }
