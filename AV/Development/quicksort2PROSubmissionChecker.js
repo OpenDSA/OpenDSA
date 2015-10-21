@@ -1,6 +1,7 @@
 $(document).ready(function() {
   "use strict";
-  var av;
+  var av,
+      settings = new JSAV.utils.Settings($(".jsavsettings"));
 
   function showSteps(steps) {
     var array = av.ds.array(new Array(steps[0].ind.length), {indexed: true, layout: "bar"});
@@ -35,12 +36,19 @@ $(document).ready(function() {
     });
   }
 
+  function reset() {
+    $(".jsavcanvas").remove();
+    $(".jsavcontrols").html("");
+    $(".jsavcounter").html("");
+    $(".jsavoutput").html("");
+  }
+
   // Execute the "Run" button function
   function runIt() {
     var steps = JSON.parse($("#json-answer").val()).answer;
 
-    $(".jsavcanvas").remove();
-    av = new JSAV($(".avcontainer"));
+    reset();
+    av = new JSAV($(".avcontainer"), {settings: settings});
     // Create a new array using the layout the user has selected
     showSteps(steps);
     av.recorded(); // mark the end
@@ -50,7 +58,7 @@ $(document).ready(function() {
   // Connect action callbacks to the HTML entities
   $("#run").click(runIt);
   $("#reset").click(function() {
-    $(".jsavcanvas").remove();
+    reset();
     $("#json-answer").val("");
   });
 });
