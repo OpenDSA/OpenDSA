@@ -7,7 +7,7 @@
     "Processing": { "ext":["pde"], "label":"Processing","lang":"java"}
   },
   "tabbed_codeinc": false,
-  "module_origin": "http://algoviz.edu",
+  "module_origin": "http://algoviz.org",
   "exercise_server": "https://ltitest.cs.vt.edu:8443",
   "logging_server": "https://ltitest.cs.vt.edu:8443",
   "score_server": "https://ltitest.cs.vt.edu:8443",
