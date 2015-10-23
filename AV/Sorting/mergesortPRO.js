@@ -68,7 +68,7 @@ $(document).ready(function() {
 
     // Dynamically create arrays
     arrays = {};
-    initArrays(0, initialArray.length - 1, 1, 1, userAnswerDepth);
+    initArrays(0, initialArray.length - 1, 1, 1, userAnswerDepth, arrays, av);
 
     // Reset the merge variables
     resetMergeVars();
@@ -89,27 +89,33 @@ $(document).ready(function() {
   // - We must track the value at each horizontal position and vertical
   //   position (depth) to ensure each element is sorted in the correct order
   function modelSolution(jsav) {
-    var modelArr = jsav.ds.array(initialArray, {indexed: true, layout: "array"});
     var depth = 1;
     var modelDepthArr = [];
-    initDepth(0, initialArray.length - 1, depth, modelDepthArr);
-    modelDepthArr = jsav.ds.array(modelDepthArr,
-                                {indexed: true, layout: "array"});
+    var modelArrays = {};
+    initArrays(0, initialArray.length - 1, depth, 1, modelDepthArr, modelArrays, jsav);
+    var modelArr = jsav.ds.array(initialArray, {
+      indexed: true,
+      visible: false
+    });
+    modelDepthArr = jsav.ds.array(modelDepthArr, {
+      indexed: true,
+      visible: false
+    });
     jsav.displayInit();
 
     var temp = [];
     mergeSort(jsav, modelArr, temp, modelDepthArr, 0,
-              initialArray.length - 1, depth);
-    modelDepthArr.element.css({top: rowHeight + "px"});
+              initialArray.length - 1, depth, 1, modelArrays);
     return [modelArr, modelDepthArr];
   }
 
   // Dynamically and recursively create the necessary arrays
   // Initialize all single element arrays to contain the appropriate
   // numbers from the initialArray and all other arrays to be empty
-  function initArrays(left, right, level, column) {
+  function initArrays(left, right, level, column, depthArray, container, jsav) {
     var numElements = right - left + 1;
     var contents = new Array(numElements);
+    var isModelAnswer = jsav !== av;
 
     // Set the contents for single element arrays
     if (numElements === 1) {
@@ -117,11 +123,14 @@ $(document).ready(function() {
     }
 
     // Dynamically create and position arrays
-    var arr = av.ds.array(contents, {indexed: true, center: false,
+    var arr = jsav.ds.array(contents, {indexed: true, center: false,
                                      layout: "array"});
 
     var id = "array_" + level + "_" + column;
-    arrays[id] = arr;
+    if (isModelAnswer) {
+      id = "model_" + id;
+    }
+    container[id] = arr;
 
     // Set array attributes
     arr.element.attr("id", id);
@@ -129,18 +138,20 @@ $(document).ready(function() {
     setPosition(arr, level, column);
 
     // Attach the click handler to the array
-    arr.click(function(index) { clickHandler(this, index); });
+    if (!isModelAnswer) { // don't attach click handlers for model answer
+      arr.click(function(index) { clickHandler(this, index); });
+    }
 
     if (left === right) {
-      userAnswerDepth[left] = level;
+      depthArray[left] = level;
       return;
     }
 
     var mid = Math.floor((left + right) / 2);
     // Recurse, passing the appropriate arguments necessary for
     // setPosition() to the next function call
-    initArrays(left, mid, level + 1, 2 * column - 1, userAnswerDepth);
-    initArrays(mid + 1, right, level + 1, 2 * column, userAnswerDepth);
+    initArrays(left, mid, level + 1, 2 * column - 1, depthArray, container, jsav);
+    initArrays(mid + 1, right, level + 1, 2 * column, depthArray, container, jsav);
   }
 
   // Calculate and set the appropriate "top" and "left" CSS values based
@@ -171,54 +182,46 @@ $(document).ready(function() {
     arr.element.css({left: elementLeft, top: elementTop});
   }
 
-  // Initialize the modelDepthArray by calculating the starting depth
-  // of each number
-  function initDepth(l, r, depth, depthArray) {
-    if (l === r) {
-      depthArray[l] = depth;
-      return;
-    }
-
-    var mid = Math.floor((l + r) / 2);
-    // Recurse, passing the appropriate arguments necessary for
-    // setPosition() to the next function call
-    initDepth(l, mid, depth + 1, depthArray);
-    initDepth(mid + 1, r, depth + 1, depthArray);
-  }
-
   // Generate the model answer (called by modelSolution())
-  function mergeSort(jsav, array, temp, depthArray, l, r, depth) {
+  function mergeSort(jsav, modelArray, temp, depthArray, l, r, depth, column, container) {
     // Record the depth and return when list has one element
     if (l === r) {
       depthArray.value(l, depth);
-      return array;
+      return;
     }
 
     // Select midpoint
     var mid = Math.floor((l + r) / 2);
 
     // Mergesort first half
-    mergeSort(jsav, array, temp, depthArray, l, mid, depth + 1);
+    mergeSort(jsav, modelArray, temp, depthArray, l, mid, depth + 1, column * 2 - 1, container);
     // Mergesort second half
-    mergeSort(jsav, array, temp, depthArray, mid + 1, r, depth + 1);
+    mergeSort(jsav, modelArray, temp, depthArray, mid + 1, r, depth + 1, column * 2, container);
 
     // Copy subarray into temp
     for (var i = l; i <= r; i++) {
-      temp[i] = array.value(i);
+      temp[i] = modelArray.value(i);
     }
 
     // Do the merge operation back to the array
     var i1 = l;
     var i2 = mid + 1;
+    var currArray = container["model_array_" + depth + "_" + column];
+    var lArray = container["model_array_" + (depth + 1) + "_" + (column * 2 - 1)];
+    var rArray = container["model_array_" + (depth + 1) + "_" + (column * 2)];
     for (var curr = l; curr <= r; curr++) {
       if (i1 === mid + 1) {          // Left sublist exhausted
-        array.value(curr, temp[i2++]);
+        jsav.effects.moveValue(rArray, i2 - mid - 1, currArray, curr - l);
+        modelArray.value(curr, temp[i2++]);
       } else if (i2 > r) {             // Right sublist exhausted
-        array.value(curr, temp[i1++]);
+        jsav.effects.moveValue(lArray, i1 - l, currArray, curr - l);
+        modelArray.value(curr, temp[i1++]);
       } else if (temp[i1] < temp[i2]) { // Get smaller
-        array.value(curr, temp[i1++]);
+        jsav.effects.moveValue(lArray, i1 - l, currArray, curr - l);
+        modelArray.value(curr, temp[i1++]);
       } else {
-        array.value(curr, temp[i2++]);
+        jsav.effects.moveValue(rArray, i2 - mid - 1, currArray, curr - l);
+        modelArray.value(curr, temp[i2++]);
       }
 
       // Update the depth of each number being merged
@@ -226,7 +229,7 @@ $(document).ready(function() {
       jsav.stepOption("grade", true);
       jsav.step();
     }
-    return array;
+    return;
   }
 
   // Fixstate method for continuous feedback/fix mode
