@@ -456,7 +456,8 @@ $(document).ready(function() {
       {
         compare: [{class: "jsavhighlight"}, {}],
         controls: $(".jsavexercisecontrols"),
-        fix: fixState
+        fix: fixState,
+        modelDialog: {width: 780}
       }
     );
   exercise.reset();
