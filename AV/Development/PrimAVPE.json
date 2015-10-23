@@ -12,6 +12,19 @@
       "av_ms_update_distances": "Update distance to {node}'s neighbors. For updated nodes, set closest node to {node}",
       "#help": "Help",
       "#about": "About"
+    },
+    "fi": {
+      ".avTitle": "Primin algoritmi",
+      "av_Authors": "Mohammed Fawzi, Kasper Hellström",
+      ".instructLabel": "Ohjeet:",
+      ".instructions": "Lisää särmät pienimpään virityspuuhun Primin algoritmin antamassa järjestyksessä. Aloita läpikäynti solmusta A. Klikkaa <strong>särmiä</strong> lisätäksesi ne virityspuuhun. Solmun naapurit käydään läpi aakkosjärjestyksessä.",
+      "av_ms_mst": "Verkon pienin virityspuu",
+      "av_ms_select_a": "Aloitetaan valitsemalla solmu A",
+      "av_ms_select_node": "Valitaan solmu {node}, koska se sijaitsee lähinnä virityspuuta.",
+      "av_ms_add_edge": "Lisätään särmä ({from}, {to}) virityspuuhun.",
+      "av_ms_update_distances": "Päivitetään etäisyyksiä {node}-solmun naapureihin. Päivitetyille solmuille asetetaan lähin solmu {node}:ksi",
+      "#help": "Ohje",
+      "#about": "Lisätietoa"
     }
   },
   "params": {
