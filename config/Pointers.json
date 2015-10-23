@@ -14,33 +14,32 @@
     "JXOP-debug": "true"
   },
   "chapters": {
-    "Pointers": {   
+    "Pointers": {
       "Pointers/PointerIntro": {
         "long_name": "Pointers",
-        "exercises": { 
-          }
-        },
+        "exercises": {
+        }
+      },
       "Pointers/BasicPointers": {
         "long_name": "Pointers",
-        "exercises": { 
-          }
-        },
+        "exercises": {
+        }
+      },
       "Pointers/LocalMem": {
         "long_name": "Pointers",
-        "exercises": { 
-          }
-        },
-        "Pointers/RefParam": {
+        "exercises": {
+        }
+      },
+      "Pointers/RefParam": {
         "long_name": "Reference Parameters",
-        "exercises": { 
-          }
-        },
-        "Pointers/HeapMem": {
+        "exercises": {
+        }
+      },
+      "Pointers/HeapMem": {
         "long_name": "Heap Memory",
-        "exercises": { 
-          }
+        "exercises": {
         }
       }
     }
- }
-
+  }
+}

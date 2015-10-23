@@ -1139,6 +1139,7 @@
           },
           "TreeIndexing": {
             "long_name": "Tree Indexing Proficiency Exercise",
+            "showhide": "show",
             "required": true,
             "points": 1.0,
             "threshold": 5

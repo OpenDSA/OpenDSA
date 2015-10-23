@@ -10,8 +10,8 @@
 Basic Pointers
 ==============
 
-Pointers  - Before and After
-----------------------------
+Pointers |---| Before and After
+-------------------------------
 
 There's a lot of nice, tidy code you can write without knowing about pointers. But once
 you learn to use the power of pointers, you can never go back. There are too many things
@@ -108,6 +108,7 @@ Java uses the symbol null.
 
 Pointer Assignment
 ------------------
+
 The assignment operation (``=``) between two pointers makes them point to the same
 pointee. It's a simple rule for a potentially complex situation, so it is worth repeating:
 assigning one pointer to another makes them point to the same thing. The example below
@@ -142,6 +143,7 @@ That's the way to do it.
 
 Sharing
 -------
+
 Two pointers which both refer to a single pointee are said to be
 "sharing".
 That two or more entities can cooperatively share a single memory
@@ -154,6 +156,7 @@ communication between parts of a program.
 
 Shallow and Deep Copying
 ------------------------
+
 In particular, sharing can enable communication between two functions. One function
 passes a pointer to the value of interest to another function. Both functions can access the
 value of interest, but the value of interest itself is not copied.
@@ -182,6 +185,7 @@ The next module will explain the above sharing technique in detail.
 
 Bad Pointers 
 ------------
+
 When a pointer is first allocated, it does not have a pointee.
 The pointer is :term:`uninitialized` or simply "bad".
 A dereference operation on a bad pointer is a serious runtime error.
@@ -221,6 +225,7 @@ C++.
 
 Two Levels
 ----------
+
 One way to think about pointer code is that operates at two levels |---| pointer level and
 pointee level. The trick is that **both** levels need to be initialized and connected for things
 to work. (1) the pointer must be allocated, (1) the pointee must be allocated, and (3) the
@@ -269,7 +274,7 @@ pointer starts out with a bad value.
 
 
 The & Operator |---| Reference To
--------------------------------
+---------------------------------
 
 There are several ways to compute a reference to a pointee suitable
 for storing in a pointer.

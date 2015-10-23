@@ -7,7 +7,7 @@ CSSLINTFLAGS = --quiet --ignore=ids,adjoining-classes
 MINIMIZE-JS = uglifyjs
 MINIMIZE-CSS = uglifycss
 
-.PHONY: all clean lint csslint lint min CS2114S215 CS2114F15 CS223 CS5114 CS3114 CS3114LTI NewKA CS3114F15 CS3114notes CS150 OpenDSA test testX IS allBooks nomin pull CPSC270S15 CS2401 COP3530 CS208 ECE252 Tutorial TDDD86F15 TDDC91F15 S15 CSCI115 CS316 CSE017F15 CS226JHU CS340 CS260F15
+.PHONY: all clean lint csslint lint min CS2114S215 CS2114F15 CS223 CS5114 CS3114 CS3114LTI NewKA CS3114F15 CS3114notes CS150 OpenDSA test testX IS allBooks nomin pull CPSC270S15 CS2401 COP3530 CS208 ECE252 Tutorial TDDD86F15 TDDC91F15 S15 CSCI115 CS316 CSE017F15 CS226JHU CS340 CS260F15 CSC232
 
 all: alllint
 
@@ -67,6 +67,8 @@ min: nomin #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-m
 
 F15: CS2114 CS3114F15 CS316 TDDD86F15 TDDC91F15 TDDI16F15 CSE017F15 CPSC270 COP3530 CISC-187 CS4104F15 CS226JHU CS340 CS260F15
 
+S16: CSC232 CS3114
+
 Pointers: min
 	python $(CONFIG_SCRIPT) config/Pointers.json
 
@@ -93,6 +95,12 @@ TestRecur: min
 
 RecurTutor2: min
 	python $(CONFIG_SCRIPT) config/RecurTutor2.json
+
+COP3530: min
+	python $(CONFIG_SCRIPT) config/COP3530F15.json
+
+CSC232: min
+	python $(CONFIG_SCRIPT) config/CSC232.json
 
 CS226JHU: min
 	python $(CONFIG_SCRIPT) config/CS226JHUF15.json
@@ -169,9 +177,6 @@ CS316: min
 
 CS340: min
 	python $(CONFIG_SCRIPT) config/CS340.json
-
-COP3530: min
-	python $(CONFIG_SCRIPT) config/COP3530F15.json
 
 CS4104F15: min
 	python $(CONFIG_SCRIPT) config/CS4104F15.json
