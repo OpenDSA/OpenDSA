@@ -1,12 +1,12 @@
-/* global ODSA, graphUtils */
-(function ($) {
+/* global graphUtils */
+(function() {
   "use strict";
   var exercise,
       graph,
       config = ODSA.UTILS.loadConfig(),
       interpret = config.interpreter,
       settings = config.getSettings(),
-      jsav = new JSAV($('.avcontainer'), {settings: settings});
+      jsav = new JSAV($(".avcontainer"), {settings: settings});
 
   jsav.recorded();
 
@@ -23,7 +23,7 @@
     });
     graphUtils.generate(graph); // Randomly generate the graph without weights
     graph.layout();
-    // mark the 'A' node
+    // mark the "A" node
     graph.nodes()[0].addClass("marked");
 
     jsav.displayInit();
@@ -73,7 +73,7 @@
       modelGraph.addEdge(startNode, endNode);
     }
 
-    // Mark the 'A' node
+    // Mark the "A" node
     modelNodes[0].addClass("marked");
     modelGraph.layout();
 
@@ -127,7 +127,7 @@
       av.step();
 
       // Check if all neighbors have already been visited
-      var visitedAll = adjacent.every(function (node) { return node.hasClass("marked"); });
+      var visitedAll = adjacent.every(function(n) { return n.hasClass("marked"); });
 
       if (!visitedAll) {
         // go through all neighbors
@@ -142,7 +142,7 @@
             av.umsg(interpret("av_ms_already_visited"), {
               preserve: true,
               fill: {
-                node: node.value()
+                node: neighbor.value()
               }
             });
             av.step();
@@ -152,7 +152,6 @@
         av.umsg(interpret("av_ms_all_neighbors_visited"), {fill: {node: node.value()}});
         av.step();
       }
-
     }
   }
 
@@ -163,23 +162,22 @@
   }
 
   exercise = jsav.exercise(model, init, {
-    compare: { class: "marked" },
-    controls: $('.jsavexercisecontrols'),
+    compare: {class: "marked"},
+    controls: $(".jsavexercisecontrols"),
     fix: fixState
   });
   exercise.reset();
 
-  $(".jsavcontainer").on("click", ".jsavedge", function () {
+  $(".jsavcontainer").on("click", ".jsavedge", function() {
     var edge = $(this).data("edge");
     if (!edge.hasClass("marked")) {
       markEdge(edge);
     }
   });
 
-  $(".jsavcontainer").on("click", ".jsavnode", function () {
+  $(".jsavcontainer").on("click", ".jsavnode", function() {
     window.alert("Please, click on the edges, not the nodes.");
   });
 
   $("#about").click(about);
-
-}(jQuery));
+})();
