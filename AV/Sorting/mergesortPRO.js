@@ -224,6 +224,13 @@ $(document).ready(function() {
         modelArray.value(curr, temp[i2++]);
       }
 
+      if (i1 === mid + 1) {
+        lArray.hide();
+      }
+      if (i2 > r) {
+        rArray.hide();
+      }
+
       // Update the depth of each number being merged
       depthArray.value(curr, depth);
       jsav.stepOption("grade", true);
