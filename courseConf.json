@@ -1,12 +1,12 @@
 {
   "username": "opendsa",
   "password": "opendsa",
-  "canvas_url": "https://canvas.instructure.com/api",
+  "canvas_url": "https://vt.test.instructure.com/api",
   "course_code": "CS3114_rev",
-  "access_token": "7~98d8KnPbCj7wnA3GLyHIvh4yxHz7t2U6SPp7OLdvscWSN82qCnZbEWebFJVEb0b3",
+  "access_token": "4511~vmQKAlWStlqOesryJvkHrTmBHm32GjLHAeEXgDIXpfQfM2h1AjEJoBzInRRL2PxP",
   "consumer_key": "test",
   "consumer_secret": "secret",
-  "build_date": "2015-09-28 13:08:33",
+  "build_date": "2015-10-01 13:08:33",
   "tool_name": "OpenDSA-LTI",
   "tool_url": "https://lti.cs.vt.edu:9292",
   "tool_xml_file": "tool_config.xml"
