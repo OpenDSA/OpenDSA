@@ -3,6 +3,10 @@
   height: 610px;
 }
 
+.jsavcanvas {
+  overflow: hidden;
+}
+
 .jsavarray {
   position: absolute;
 }
