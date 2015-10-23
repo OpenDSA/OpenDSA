@@ -16,7 +16,7 @@
       "av_Authors": "Mohammed Fawzi, Kasper Hellström",
       ".instructLabel": "Ohjeet:",
       ".instructions": "Käy läpi verkko DFS-järjestyksessä. Aloita läpikäynti solmusta A. Klikkaa <strong>särmiä</strong> samassa järjestyksessä kuin DFS-algoritmi käy ne läpi. Solmun naapurit käydään läpi aakkosjärjestyksessä.",
-      "av_ms_final": "DFS-algoritmin läpikäyntipuu",
+      "av_ms_final": "DFS-algoritmin virityspuu",
       "av_ms_process_edge": "Prosessoidaan särmää ({from}, {to}).",
       "av_ms_already_visited": " Solmu {node} on jo läpikäyty",
       "#help": "Ohje",

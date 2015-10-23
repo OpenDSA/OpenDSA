@@ -18,7 +18,7 @@
       "av_Authors": "Mohammed Fawzi, Kasper Hellström",
       ".instructLabel": "Ohjeet:",
       ".instructions": "Käy läpi verkko BFS-järjestyksessä. Aloita läpikäynti solmusta A. Klikkaa <strong>särmiä</strong> samassa järjestyksessä kuin BFS-algoritmi käy ne läpi. Solmun naapurit käydään läpi aakkosjärjestyksessä.",
-      "av_ms_final": "BFS-algoritmin läpikäyntipuu",
+      "av_ms_final": "BFS-algoritmin virityspuu",
       "av_ms_dequeue": "Poistetaan {node} jonosta",
       "av_ms_process_edge": "Prosessoidaan särmää ({from}, {to}).",
       "av_ms_already_visited": " Solmu {node} on jo läpikäyty",
