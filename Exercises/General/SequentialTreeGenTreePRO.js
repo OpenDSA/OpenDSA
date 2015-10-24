@@ -15,7 +15,6 @@
     makeTree: function() {
       var bt = av.ds.tree({center: true, visible: true, nodegap: 35});
       var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      var letterIndex = 1;
       bt.root(letters.charAt(0));
       // Generate a random tree with 4 to 7 nodes
       arrayOfNodes[0] = bt.root();
@@ -23,8 +22,7 @@
       var numNodes = Math.floor(Math.random() * (7 - 4)) + 4;
       var i = 1;
       while (i <= numNodes) {
-        if (randomNode(bt, letters.charAt(i)) == true)
-          i++;
+        if (randomNode(bt, letters.charAt(i)) === true) i++;
       }
       bt.layout();
       return bt;
@@ -33,13 +31,13 @@
     preOrderTraversal: function(bt) {
       var retString = "";
 
-      var preorderNode = function (node) {
-        retString+=node.value();
+      function preorderNode(node) {
+        retString += node.value();
         //if node is a leaf
         if (node.child(0)) {
           var i = 0;
           var temp = node.child(i);
-          while (temp != null) {
+          while (temp !== null) {
             preorderNode(temp);
             temp = node.child(++i);
           }
@@ -47,7 +45,7 @@
         } else {
           retString += ")";
         }
-      };
+      }
 
       preorderNode(bt.root());
       return retString;
@@ -61,16 +59,14 @@
 
     var i = 0;
     var parNode = arrayOfNodes[randomIndex].parent();
-    while (parNode != null) {
+    while (parNode !== null) {
       i++;
       parNode = parNode.parent();
     }
-    if (i >= 3) {
-      return false;
-    }
+    if (i >= 3) return false;
     arrayOfNodes[randomIndex].addChild(newNode);
     arrayOfNodes[sizeOfArray] = newNode;
-    sizeOfArray ++;
+    sizeOfArray++;
     return true;
   }
 

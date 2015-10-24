@@ -56,10 +56,17 @@ lintAV:
 
 lintExe:
 	@echo 'linting KA Exercises'
-	-@$(LINT) Exercises/Background/*.js
-	-@$(LINT) Exercises/Design/*.js
 	-@$(LINT) Exercises/AlgAnal/*.js
-
+	-@$(LINT) Exercises/Background/*.js
+	-@$(LINT) Exercises/Binary/*.js
+	-@$(LINT) Exercises/Design/*.js
+	-@$(LINT) Exercises/General/*.js
+	-@$(LINT) Exercises/Graph/*.js
+	-@$(LINT) Exercises/Hashing/*.js
+	-@$(LINT) Exercises/Indexing/*.js
+	-@$(LINT) Exercises/List/*.js
+	-@$(LINT) Exercises/RecurTutor2/*.js
+	-@$(LINT) Exercises/Sorting/*.js
 
 $(LINT)lib:
 	@echo 'linting libraries'
