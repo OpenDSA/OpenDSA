@@ -3189,6 +3189,18 @@
       "Development/RandomNums": {
         "long_name": "Random Numbers",
         "exercises": {}
+      },
+      "Development/FFT": {
+        "long_name": "Fast Fourier Transform",
+        "exercises": {
+          "FFT": {
+            "long_name": "FFT Storyboard",
+            "showhide": "show",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       }
     },
     "Lower Bounds": {

@@ -21,39 +21,43 @@
   },
   "chapters": {
     "Test": {
-      "AlgAnal/AnalProgram": {
-        "long_name": "Calculating the Running Time of a Program",
-        "sections": {
-          "binsearchpro": {
-            "long_name": "Binary Search Proficiency Exercise",
-            "showhide": "none",
-            "remove": false
-          }
-        },
+      "Development/FFT": {
+        "long_name": "Fast Fourier Transform",
         "exercises": {
-          "binarySearchCON": {
-            "long_name": "Binary Search Algorithm Slideshow",
-            "required": true,
+          "FFT": {
+            "long_name": "FFT Storyboard",
+            "showhide": "show",
+            "required": false,
             "points": 0.0,
             "threshold": 1.0
-          },
-          "binarySearchPRO": {
-            "long_name": "Binary Search Proficiency Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1.0
-          },
-          "AnalProgramSumm": {
-            "long_name": "Program Code Analysis Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5
           }
         }
       },
-      "Development/BalancedTree": {
-        "long_name": "Balanced Trees",
-        "exercises": {}
+      "Development/NPSudoku": {
+        "long_name": "Sudoku",
+        "exercises": {
+          "Sudoku1CON": {
+            "long_name": "Easy Sudoku Slideshow",
+            "showhide": "show",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "Sudoku2CON": {
+            "long_name": "Difficult Sudoku Slideshow",
+            "showhide": "show",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "Sudoku3CON": {
+            "long_name": "Verifying Sudoku Slideshow",
+            "showhide": "show",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       }
     },
     "Appendix": {
