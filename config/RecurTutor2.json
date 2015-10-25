@@ -2,7 +2,9 @@
   "title": "Advanced Recursion Tutor",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
-  "code_lang": {"Processing": ["pde"]},
+  "code_lang": {
+    "Processing": ["pde"]
+  },
   "module_origin": "http://algoviz-beta6.cs.vt.edu",
   "exercise_server": "http://opendsa.cs.vt.edu:8090",
   "logging_server": "http://opendsa.cs.vt.edu:8090",
@@ -11,7 +13,7 @@
   "allow_anonymous_credit": true,
   "suppress_todo": false,
   "glob_exer_options": {
-    "JXOP-debug": "true"
+    "JXOP-d ebug": "true"
   },
   "chapters": {
     "Advanced Recursion Tutorial": {
@@ -22,13 +24,13 @@
       "Binary/BinaryTree": {
         "long_name": "Binary Tree",
         "exercises": {
-           "DefSumm": {
+          "DefSumm": {
             "long_name": "Tree Definition Summary Exercises",
             "required": true,
             "points": 2.0,
             "threshold": 8
-           }
-         }
+          }
+        }
       },
       "RecurTutor2/btrecDataStr": {
         "long_name": "Binary Tree as a Recursive Data Structure",
@@ -38,8 +40,8 @@
             "required": true,
             "points": 1.0,
             "threshold": 0.90
-           }
-         }
+          }
+        }
       },
       "RecurTutor2/BinaryTreeTraversal": {
         "long_name": "Binary Trees Traversal",
@@ -82,10 +84,10 @@
           }
         }
       },
-      
+
       "RecurTutor2/BinaryTreeTrvprob": {
         "long_name": "Binary Tree  Common Traversal Problems",
-        "exercises": {        
+        "exercises": {
           "BinaryTreeMistakesCON": {
             "long_name": "Binary Tree Common Mistakes",
             "required": true,
@@ -94,7 +96,7 @@
           }
         }
       },
-      
+
       "Binary/BinaryTreeImpl": {
         "long_name": "Full Binary Tree Node Implementations",
         "exercises": {
@@ -154,7 +156,7 @@
             "showhide": "Show"
           }
         }
-      }, 
+      },
       "RecurTutor2/BinaryTreeSumm": {
         "long_name": "Binary Tree Summary Exercises",
         "exercises": {
@@ -166,7 +168,7 @@
             "showhide": "Show"
           }
         }
-      },   
+      },
       "RecurTutor2/recSorting": {
         "long_name": "Recursive Sorting",
         "exercises": {}
