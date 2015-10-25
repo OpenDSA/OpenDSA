@@ -25,6 +25,4 @@ Writing Practice Exercises
 
 .. avembed:: Exercises/RecurTutor/recWCnonballPROGSumm.html ka
 
-.. avembed:: Exercises/RecurTutor/recWIsMeasurblPROGSumm.html ka
-
 .. avembed:: Exercises/RecurTutor/recWStckRevrsPROGSumm.html ka

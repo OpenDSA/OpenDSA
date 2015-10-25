@@ -2,7 +2,9 @@
   "title": "Recursion Tutor",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
-  "code_lang": {"Java": ["java"]},
+  "code_lang": {
+    "Java": { "ext":["java"], "label":"Java","lang":"java"}
+  },
   "module_origin": "http://algoviz.org",
   "exercise_server": "https://opendsa.cs.vt.edu",
   "logging_server": "https://opendsa.cs.vt.edu",
@@ -15,7 +17,7 @@
   },
   "chapters": {
     "Recursion": {
-      "RecurTutor/Introduction": {
+      "RecurTutor/RecIntro": {
         "long_name": "Recursion Chapter Introduction",
         "exercises": {
           "recurIntroDelegateCON": {
@@ -180,13 +182,6 @@
           },
           "recWCnonballPROGSumm": {
             "long_name": "Recursion Code Writing Exercise Cannon Ball",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "recWIsMeasurblPROGSumm": {
-            "long_name": "Recursion Code Writing Exercise Is Measurable",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,

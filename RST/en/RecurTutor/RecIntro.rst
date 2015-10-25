@@ -33,10 +33,10 @@ For a recursive approach to be successful, the recursive
 attempted.
 In general, a recursive algorithm must have two parts:
 
-#. the :term:`base case`, which handles a simple input that can be
+#. The :term:`base case`, which handles a simple input that can be
    solved without resorting to a recursive call, and
 
-#. the recursive part which contains one or more recursive calls to the
+#. The recursive part which contains one or more recursive calls to the
    algorithm.
    In every recursive call, the parameters must be in some sense "closer"
    to the base case than those of the original call.
@@ -52,14 +52,15 @@ But when writing recursive functions, it is best to
 stop thinking about how the recursion works beyond the recursive
 call.
 You should adopt the attitude that the sub-problems will take care of
-themselves.
+themselves, that when you call the function recursively it will return
+the right answer.
 You just worry about the base cases and how to recombine the
 sub-problems.
 
 Newcomers who are unfamiliar with recursion often find it hard to
 accept that it is used primarily as a tool for simplifying the design
 and description of algorithms.
-A recursive algorithm might not yield the most efficient
+A recursive algorithm does not always yield the most efficient
 computer program for solving the problem because recursion
 involves function calls, which are typically more expensive than other
 alternatives such as a while loop.
@@ -71,34 +72,18 @@ yield a faster implementation.
 Imagine that someone in a movie theater asks you what row you're
 sitting in.
 You don't want to count, so you ask the person in front of you what
-row they are sitting in, knowing that you will respond one greater
-than their answer.
-The person in front will ask the person in front of them.
+row they are sitting in, knowing that they will tell you a number one
+less than your row number.
+The person in front could ask the person in front of them.
 This will keep happening until word reaches the front row and it
 is easy to respond: "I'm in row 1!"
 From there, the correct message (incremented by one each row)
 will eventually make it's way back to the person who asked.
 
-Here is a good way to start thinking about recursion.
 Imagine that you have a big task.
-What you could do is just a small piece of it,
-and then delegate the rest to some helper.
-Similar to the movie theater example,
-suppose that you have the task of multiplying two numbers x and y.
-You would like to delegate this task to some friend.
-But your friend is likely to do the same thing that you do.
-So if you just delegate the entire task to your friend, then your
-friend will do the same, and so on, and nothing will ever get done.
-So instead, you will ask your friend to do a problem that is a little
-bit easier.
-You ask the friend to multiply :math:`x-1` and :math:`y`.
-When your friend gives you back that answer, then you can
-simply add :math:`y` to the result.
-Then you will be done with your task.
-You don't need to think about how your friend is going to do the task.
-You only need to know how to do your own part.
-Here is a visualization that shows the
-:term:`delegation <delegation mental model for recursion>` process.
+You could just do a small piece of it,
+and then :term:`delegate <delegation mental model for recursion>`
+the rest to some helper, as in this example.
 
 .. inlineav:: recurIntroDelegateCON ss
    :output: show  

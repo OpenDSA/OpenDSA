@@ -3,8 +3,9 @@
 }
 
 #recursionWrtSumCON {
- margin-left: auto;
- margin-right: auto;
- height: 500px;
- width: 900px;
+ height: 520px;
+}
+
+#recursionWrtSumCON .jsavoutput.jsavline {
+  height: 30px;
 }
