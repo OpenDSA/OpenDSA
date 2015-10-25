@@ -5,7 +5,6 @@
 
 .. avmetadata::
    :author: Hosam Shahin
-   :prerequisites: 
    :topic: Createcourse
 
 .. odsascript:: lib/createcourse-min.js

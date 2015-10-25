@@ -5,7 +5,6 @@
 
 .. avmetadata::
    :author: OpenDSA Contributors
-   :prerequisites: 
    :topic:   
 
 
