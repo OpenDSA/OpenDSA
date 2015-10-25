@@ -994,6 +994,18 @@
       }
     },
     "Indexing": {
+      "NewKA/TreeIndexing": {
+        "long_name": "Tree Indexing",
+        "exercises": {
+          "TreeIndexing": {
+            "long_name": "Tree Indexing Proficiency Exercise",
+            "showhide": "show",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
       "NewKA/IndexingSumm": {
         "long_name": "Indexing Chapter Summary",
         "exercises": {
