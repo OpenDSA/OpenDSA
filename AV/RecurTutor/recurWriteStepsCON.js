@@ -3,7 +3,7 @@
 // Visualizing the four steps to write a recursive function
 $(document).ready(function() {
   "use strict";
-  var av = new JSAV("recursionWrtStepsCON");
+  var av = new JSAV("recurWriteStepsCON");
 
   // Slide 1
   av.umsg("Step 1: Write and define the prototype for the function.");

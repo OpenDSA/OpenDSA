@@ -4,14 +4,12 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: Sally Hamouda
+   :author: Sally Hamouda and Cliff Shaffer
    :requires: recursion intro
    :satisfies: recursion writing
    :topic: Recursion
 
-
-.. odsalink:: AV/RecurTutor/recursionWrtCON.css
-
+.. odsalink:: AV/RecurTutor/recurWriteCON.css
 
 Writing a recursive function
 ==================================
@@ -30,12 +28,12 @@ the larger problem.
 
 Here are the basic four steps that you need to write any recursive function.
 
-.. inlineav:: recursionWrtStepsCON ss
+.. inlineav:: recurWriteStepsCON ss
    :output: show  
 
 Now le't see some different ways that we could write ``Sum`` recursively.
 
-.. inlineav:: recursionWrtSumCON ss
+.. inlineav:: recurWriteSumCON ss
    :output: show  
 
 
@@ -56,5 +54,5 @@ Now le't see some different ways that we could write ``Sum`` recursively.
    
    .. codeinclude:: RecurTutor/Fibonacci
 
-.. odsascript:: AV/RecurTutor/recursionWrtStepsCON.js
-.. odsascript:: AV/RecurTutor/recursionWrtSumCON.js
+.. odsascript:: AV/RecurTutor/recurWriteStepsCON.js
+.. odsascript:: AV/RecurTutor/recurWriteSumCON.js
