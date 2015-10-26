@@ -215,6 +215,12 @@ BST Remove Exercise
 
 .. avembed:: AV/Binary/BSTremovePRO.html ss
 
+Complete Binary Tree
+--------------------
+
+.. avembed:: Exercises/Binary/CompleteFIB.html ka
+
+
 BST Analysis
 ------------
 
