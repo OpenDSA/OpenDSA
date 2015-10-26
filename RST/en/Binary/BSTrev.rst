@@ -221,6 +221,11 @@ Complete Binary Tree
 .. avembed:: Exercises/Binary/CompleteFIB.html ka
 
 
+Just for testing
+----------------
+.. avembed:: Exercises/Sorting/QuicksortPivotPRO.html ka
+
+
 BST Analysis
 ------------
 
