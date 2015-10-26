@@ -19,21 +19,21 @@ series of practice exercises that will lead you to master recursion.
 First, complete the base case condition and/or the base case action
 for the following exercises.
 
-.. avembed:: Exercises/RecurTutor/recCLargestPROGSumm.html ka
+.. avembed:: Exercises/RecurTutor/RecCLargestPROG.html ka
 
-.. avembed:: Exercises/RecurTutor/recCMultiplyPROGSumm.html ka
+.. avembed:: Exercises/RecurTutor/RecCMultiplyPROG.html ka
 
-.. avembed:: Exercises/RecurTutor/recCGcdPROGSumm.html ka
- 
+.. avembed:: Exercises/RecurTutor/RecCGcdPROG.html ka
+
 Next, complete the recursive case and/or the recursive call for the
 following exercises.
-  
-.. avembed:: Exercises/RecurTutor/recCLogPROGSumm.html ka
 
-.. avembed:: Exercises/RecurTutor/recCSumtokPROGSumm.html ka
+.. avembed:: Exercises/RecurTutor/RecCLogPROG.html ka
 
-.. avembed:: Exercises/RecurTutor/recCAddoddPROGSumm.html ka
+.. avembed:: Exercises/RecurTutor/RecCSumtokPROG.html ka
 
-.. avembed:: Exercises/RecurTutor/recCSumOfDigitsPROGSumm.html ka
+.. avembed:: Exercises/RecurTutor/RecCAddoddPROG.html ka
 
-.. avembed:: Exercises/RecurTutor/recCCountChrPROGSumm.html ka
+.. avembed:: Exercises/RecurTutor/RecCSumOfDigitsPROG.html ka
+
+.. avembed:: Exercises/RecurTutor/RecCCountChrPROG.html ka

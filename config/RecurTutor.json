@@ -54,56 +54,56 @@
       "RecurTutor/CodeCompletionEx": {
         "long_name": "Code Completion Exercises",
         "exercises": {
-          "recCLargestPROGSumm": {
+          "RecCLargestPROG": {
             "long_name": "Recursion Code Completion Exercise Largest",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recCMultiplyPROGSumm": {
+          "RecCMultiplyPROG": {
             "long_name": "Recursion Code Completion Exercise Multiply",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recCGcdPROGSumm": {
+          "RecCGcdPROG": {
             "long_name": "Recursion Code Completion Exercise GCD",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recCLogPROGSumm": {
+          "RecCLogPROG": {
             "long_name": "Recursion Code Completion Exercise Log",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recCSumtokPROGSumm": {
+          "RecCSumtokPROG": {
             "long_name": "Recursion Code Completion Exercise Sum to k",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recCAddoddPROGSumm": {
+          "RecCAddoddPROG": {
             "long_name": "Recursion Code Completion Exercise Add Odd",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recCSumOfDigitsPROGSumm": {
+          "RecCSumOfDigitsPROG": {
             "long_name": "Recursion Code Completion Exercise Sum of Digits",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recCCountChrPROGSumm": {
+          "RecCCountChrPROG": {
             "long_name": "Recursion Code Completion Exercise Count Characters",
             "required": true,
             "points": 1.0,
