@@ -126,6 +126,19 @@
               "threshold": 0.9
             }
           },
+          "Complete Binary Tree": {
+            "CompleteFIB": {
+              "long_name": "Complete Binary Tree Proficiency Exercise",
+              "exer_options": {
+                "JXOP-code": "none",
+                "JXOP-feedback": "continuous",
+                "JXOP-fixmode": "undo"
+              },
+              "required": true,
+              "points": 2,
+              "threshold": 0.9
+            }
+          },
           "BST Analysis": {
             "showsection": true
           }
