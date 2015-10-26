@@ -152,6 +152,19 @@
               "threshold": 1.0
             }
           },
+          "The List ADT": {
+            "ListADTPROG": {
+              "long_name": "The List ADT",
+              "exer_options": {
+                "JXOP-code": "none",
+                "JXOP-feedback": "continuous",
+                "JXOP-fixmode": "undo"
+              },
+              "required": true,
+              "points": 2,
+              "threshold": 1.0
+            }
+          },
           "BST Analysis": {
             "showsection": true
           }

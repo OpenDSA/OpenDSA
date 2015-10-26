@@ -225,6 +225,11 @@ Just for testing
 ----------------
 .. avembed:: Exercises/Sorting/QuicksortPivotPRO.html ka
 
+The List ADT
+============
+
+.. avembed:: Exercises/List/ListADTPROG.html ka
+
 
 BST Analysis
 ------------
