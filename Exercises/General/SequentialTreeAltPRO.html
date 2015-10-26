@@ -1,0 +1,44 @@
+<!--
+    General Trees: Alternate sequential representation
+    Written by Kevin Ellis and Cliff Shaffer.
+  -->
+
+<!DOCTYPE html>
+<html data-require="jsav math SequentialTreeAltPRO">
+  <head>
+    <title>Sequential Binary Tree Alternate Representation Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #SequentialTreeAltPRO {
+        height: 290px;
+      }
+    </style>
+  </head>
+
+  <body data-height="700" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="JSAV">sequentialTreeAltPRO.initJSAV()</var>
+        <var id="BT">sequentialTreeAltPRO.makeTree()</var>
+        <var id="ANS">sequentialTreeAltPRO.preOrderTraversal(BT)</var>
+      </div>
+      <p class="question">Using ' to signify internal nodes,
+        and '/' to signify missing children,
+        write the sequential representation for this tree.</p>
+      <div class="problems">
+        <div id="SequentialTreeAltPROp"> <!-- Supresses answer box -->
+          <p class="problem">
+            <div id="SequentialTreeAltPRO" class="jsavcanvas"></div>
+          </p>
+          <p class="solution" data-type="text"><var>ANS</var></p>
+          <div class="hints">
+            <p>This representation is intended for full trees,
+              so make sure to use a '/' for missing children.</p>
+            <p>Answer: <var>ANS</var></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

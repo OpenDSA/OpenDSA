@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html data-require="math">
+  <head>
+    <title>Hash Deletion Question 3</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="problem">Answer TRUE or FALSE.</p>
+          <p class="question">
+            When deleting a record from a
+            hash table, we can just do a normal search and then remove the
+            record from the slot where we find it.</p>
+          <div class="solution">False</div>
+          <ul class="choices" data-category="true">
+            <li>True</li>
+            <li>False</li>
+          </ul>
+          <div class="hints">
+            <p>If there is an empty slot along a probe path, records
+              further down the path won't be found on a search.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

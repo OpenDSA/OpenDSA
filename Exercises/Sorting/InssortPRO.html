@@ -1,0 +1,56 @@
+<!--
+    Insertion Sort mini-proficiency exercise.
+    Written by Gayathri Subramanian and Cliff Shaffer.
+  -->
+
+<!DOCTYPE html>
+<html data-require="jsav math InssortPRO">
+  <head>
+    <title>Insertion Sort Proficiency Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="arrSize">randRange(6, 10)</var>
+        <var id="sortPos">randRange(2, arrSize-1)</var>
+        <var id="JSAV">inssortPRO.initJSAV(arrSize, sortPos)</var>
+      </div>
+      <div class="problems">
+        <div id="InssortPROp"> <!-- Supresses answer box -->
+          <p class="problem">Your task in this exercise is to show the
+            behavior for one iteration of the outer for loop of Insertion Sort.
+            In the array displayed below, the record at
+            position <var>sortPos</var> is highlighted. Insertion Sort has
+            already processed the values to the left of
+            position <var>sortPos</var>, so those elements are sorted.</p>
+          <div class="question">
+            <p> Perform the next part of Insertion Sort to move the
+              highlighted record to its proper place in the array.</p>
+            <input id="reset" type="button" value="Reset" />
+            <div id="InssortPRO" class="jsavcanvas"></div>
+          </div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [inssortPRO.userInput] </div>
+            <div class="validator-function">
+              if (!inssortPRO.checkAnswer(arrSize) && !guess[0]) {
+              return ""; // User did not click, and correct answer is not
+                         // initial array state
+              } else { return inssortPRO.checkAnswer(arrSize); }
+            </div>
+          </div>
+          <div class="hints">
+            <p>Insert the highlighted element into its proper position
+              in the array using Insertion Sort.</p>
+            <p>Nothing to the right of position <var>sortPos</var>
+              should be changed.</p>
+            <p>All elements from position 0 to position
+              <var>sortPos</var> should be in ascending order.</p> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

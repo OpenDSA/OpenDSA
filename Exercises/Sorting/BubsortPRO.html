@@ -1,0 +1,48 @@
+<!--
+    Bubble Sort mini-proficiency exercise.
+    Written by Gayathri Subramanian and Cliff Shaffer
+  -->
+<!DOCTYPE html>
+<html data-require="jsav math BubsortPRO">
+  <head>
+    <title>Bubble Sort Proficiency Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="arr_size">randRange(7, 9)</var>
+        <var id="JSAV">bubsortPRO.initJSAV(arr_size)</var>
+      </div>
+      <div class="problems">
+        <div id="BubsortPROp"> <!-- Supresses answer box -->
+          <div class="question">
+            <p>Your task in this exercise is to show the
+              behavior for one iteration of the outer for loop of Bubble Sort.
+              Simply click on entries in the array to swap them in the way
+              that Bubble Sort would during its first pass.</p>
+            <input id="reset" type="button" value="Reset" />
+            <div id="BubsortPRO" class="jsavcanvas"></div>
+          </div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [bubsortPRO.userInput] </div>
+            <div class="validator-function">
+              if (!bubsortPRO.checkAnswer(arr_size) && !guess[0]) {
+                return ""; // User did not click, and correct answer is not
+                           // initial array state
+              } else { return bubsortPRO.checkAnswer(arr_size); }
+            </div>
+          </div>
+          <div class="hints">
+            <p>What does Bubble Sort do?</p>
+            <p>Move from left to right through the array.</p>
+            <p>At each position, if the value is greater than the value to
+              its right, then swap them.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

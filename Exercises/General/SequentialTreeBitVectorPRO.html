@@ -1,0 +1,44 @@
+<!--
+    General Trees: Bit vector representation
+    Written by Kevin Ellis and Cliff Shaffer.
+  -->
+
+<!DOCTYPE html>
+<html data-require="jsav math SequentialTreeBitVectorPRO">
+  <head>
+    <title>Bit Vector Sequential Representation Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #SequentialTreeBitVectorPRO {
+        height: 320px;
+      }
+    </style>
+  </head>
+
+  <body data-height="700" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="JSAV">sequentialTreeBitVectorPRO.initJSAV()</var>
+        <var id="BT">sequentialTreeBitVectorPRO.makeTree()</var>
+        <var id="ANS">sequentialTreeBitVectorPRO.preOrderTraversal(BT)</var>
+      </div>
+      <p class="question">Using '1' to signify internal nodes, '0' to
+        signify leaf nodes, and '/' to signify missing children, write the
+        sequential representation for this tree's structure</p>
+      <div class="problems">
+        <div id="SequentialTreeBitVectorPROp"> <!-- Supresses answer box -->
+          <p class="problem">
+            <div id="SequentialTreeBitVectorPRO" class="jsavcanvas"></div>
+          </p>
+          <p class="solution" data-type="text"><var>ANS</var></p>
+          <div class="hints">
+            <p>This representation is intended for full trees,
+              so make sure to use a '/' for missing children.</p>
+            <p>Answer: <var>ANS</var></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

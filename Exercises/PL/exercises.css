@@ -1,0 +1,24 @@
+#problem-and-answer .lambdaWidth.bindingVar {
+    border-radius: 0;
+    border-bottom: 3px solid black;
+}
+
+#problem-and-answer .jsavnode {
+    border-radius: 0;
+}
+
+
+#problem-and-answer .jsavnode {
+    border-radius: 0;
+}
+
+#problem-and-answer .noBoxShadow {
+    font-style: italic;
+    border:none;
+    box-shadow: none;
+}
+
+
+#problem-and-answer span.italic {
+    font-style: italic;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html data-require="math">
+  <head>
+    <title>Algorithm Analysis Exercise: Log</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="question"> What is the smallest integer <code>k</code>
+            such that <code>n \log n</code> is in <code>O(n^k)</code>? </p>
+          <p class="solution" data-type="text">2</p>
+          <div class="hints">
+            <p><code>n \log n</code> is bigger than <code>n^{1}</code></p>
+            <p>So, that means 1 is too small.</p>
+            <p>But, <code>n \log n</code> is less than <code>n^2</code></p>
+            <p>Actually <code> n \log n</code> is less
+              than <code>n^{1+a}</code> even for tiny positive values of <code>a</code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

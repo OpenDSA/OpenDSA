@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html data-require="math">
+  <head>
+    <title>Hash Function: Binning</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body>
+    <div class="exercise">
+      <div class="vars">
+        <var id="M">100</var>
+        <var id="key">randRange(0, 9999)</var>
+        <var id="CorrectAnswer">Math.floor(key / M)</var>
+      </div>
+      <div class="problems">
+        <div id="HashFuncBinp">
+          <div class="question">Given a hash table size of 100, a key
+            in the range 0 to 9999, and using the <b>binning hash function</b>,
+            what slot in the table will <var>key</var> hash to?
+          </div>
+          <p class="solution" data-type="text"><var>CorrectAnswer</var></p>
+          <div class="hints">
+            <p>Each slot in the hash table gets 1/100 of the range.</p>
+            <p>Given that we have 10,000 key values (0 to 9999), there
+              are 100 values that hash to each slot.</p>
+            <p>We can compute this simply by
+              calculating <var>key</var>/100 (rounding down).
+            <p>The answer is <var>CorrectAnswer</var>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!--
+    Selection Sort mini-proficiency exercise.
+    Written by Gayathri Subramanian and Cliff Shaffer
+  -->
+
+<!DOCTYPE html>
+<html data-require="jsav math SelsortPRO">
+  <head>
+    <title>Selection Sort Proficiency Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body data-height="560" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="arrSize">randRange(7, 9)</var>
+        <var id="sortPos">randRange(4, arrSize-1)</var>
+        <var id="JSAV">selsortPRO.initJSAV(arrSize, sortPos)</var>
+      </div>
+
+      <div class="problems">
+        <div id="SelSortPROp"> <!-- Supresses answer box -->
+          <p class="problem">In the array of size <var>arrSize</var>
+            displayed below, the element at position <var>sortPos</var> is
+            highlighted. The array represents an intermediate state in
+            Selection Sort, with all elements to the right of the
+            highlighted element holding the biggest values in the array.
+          </p>
+          <div class="question">
+            <p>Perform the next iteration of Selection Sort, to put the
+              proper array element into the highlighted position.</p>
+            <input id="reset" type="button" value="Reset" />
+            <div id="SelsortPRO" class="jsavcanvas"></div>
+          </div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [selsortPRO.userInput] </div>
+            <div class="validator-function">
+              if (!selsortPRO.checkAnswer(arrSize) && !guess[0]) {
+                return ""; // User did not click, and correct answer is not
+                           // initial array state
+              } else { return selsortPRO.checkAnswer(arrSize); }
+            </div>
+          </div>
+          <div class="hints">
+            <p>Determine the record that should appear at
+              index <var>sortPos</var> using Selection Sort.</p>
+            <p>Selection sort will place the largest record in the range
+              [0 to <var>sortPos</var>] at position <var>sortPos</var>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

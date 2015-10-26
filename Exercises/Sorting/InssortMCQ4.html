@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html data-require="math">
+  <head>
+    <title>Insertion Sort: Binary Search</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="question">When implementing Insertion Sort, a
+            binary search could be used to locate the position within
+            the first <code>i-1</code> records of the array into which
+            record <code>i</code> should be inserted. Using binary search will:</p>
+          <div class="solution">Not speed up the asymptotic running time
+            because shifting the records to make room for the insert
+            will require <code>\Theta(i)</code> time</div>
+          <ul class="choices">
+            <li>Speed up the asymptotic running time because the
+              position to insert will be found in
+              <code>\Theta(\log i)</code> time</li>
+            <li>Speed up the asymptotic running time because shifting
+              the records to make room for the insert will
+              require <code>\Theta(i)</code> time</li>
+            <li>None of these answers is correct</li>
+          </ul>
+          <div class="hints">
+            <p>The position at which to insert could be found in
+              <code>\Theta(\log(i))</code> steps, but shifting the records to make
+              room for the this record will require <code>\Theta(i)</code> time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

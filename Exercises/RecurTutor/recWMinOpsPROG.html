@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html data-require="math math-format word-problems spin">
+<head>
+  <title> Recursion Programming Exercise: Minimum number of Operations</title>
+  <script src="../../lib/jquery.min.js">
+  </script>
+  <script src="../../lib/jquery-ui.min.js">
+  </script>
+  <script>
+    window.OpenPopKa = true;
+  </script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+
+ 
+  <script src="../../lib/codemirror/lib/codemirror.js"></script>
+  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
+  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
+  <script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    mode:  "text/x-java"
+  });
+  </script>  
+
+ 
+</head>
+<body  data-height="650" data-width="950">
+   
+
+<div class="exercise">
+   <div class="problems">
+    <div> <!-- Supresses answer box -->
+      <p class="problem" id = "test">  Given the following recursive function signature, write the function code 
+      such that takes two positive integers x and y as its input where  x less than y,	and outputs 
+      the minimal number of invocations of the operations +1 and ∗2 that are required to obtain y from x. 
+      For Example: If the inputs 10 17, the output will be 7 (due to 7 invocations of +1). For the input 10 21, the output will be 2 
+      (due to ∗2 and then +1).
+			
+ <br />
+</h4>
+ <p></p>
+  
+<textarea  id="codeTextarea">int minOps (int x, int y)
+{
+
+
+
+
+
+
+
+
+}
+</textarea></p>
+
+      <div class="question">
+	
+      </div>
+      <div class="solution" data-type="custom">
+       <div class="guess"> [ editor.getValue() ] </div>
+        <div class="validator-function">
+          window.codeValue = editor.getValue();
+          window.progexType= "recursion";
+          window.summexName= "recWMinOpsPROG";
+         //return "openPop";
+        </div>
+      </div>
+      <div class="hints">
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

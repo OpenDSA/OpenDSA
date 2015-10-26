@@ -1,0 +1,57 @@
+<!--
+Heapsort mini-proficiency exercise.
+Written by Gayathri Subramanian and Cliff Shaffer
+-->
+
+<!DOCTYPE html>
+<html data-require="jsav math HeapsortStepPRO binaryheap">
+  <head>
+    <title>Heapsort Remove Maximum Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #reset {
+        left: 200px;
+      }
+      #decrement {
+        left: 200px;
+      }
+    </style>
+  </head>
+
+  <body data-height="820" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="arrSize">randRange( 6, 11 )</var>
+        <var id="JSAV">heapsortStepPRO.initJSAV(arrSize)</var>
+      </div>
+      <div class="problems">
+        <div id="HeapsortStepPROp"> <!-- Supresses answer box -->
+          <div class="question">
+            <p> Perform one iteration of heap sort. Swap the last key with
+              the largest key and restore the heap in the array/tree shown
+              below. Use the "Decrement" button to reduce the size of
+              the heap.</p>
+            <input id="reset" type="button" value="Reset" />
+            <input id="decrement" type="button" value="Decrement Heap Size" />
+            <div id="HeapsortStepPRO" class="jsavcanvas"></div>
+          </div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [heapsortStepPRO.userInput] </div>
+            <div class="validator-function">
+              if (!guess[0]) {
+                return ""; // User did not click, and correct answer is not
+                           // initial array state
+              } else { return heapsortStepPRO.checkAnswer(arrSize); }
+            </div>
+          </div>
+          <div class="hints">
+            <p> Select the maximum element and move it to the correct
+              location. Then restore the heap order.</p>
+            <p>Don't forget to decrement the heap size.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

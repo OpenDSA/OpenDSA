@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html data-require="codemirror blockUI math math-format word-problems spin">
+  <head>
+    <title>Linked List KA Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #ListADTPROG .CodeMirror {
+      height: 200px;
+      }
+    </style>
+  </head>
+
+  <body data-height="550" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="config">
+          (function(){ window.OpenPopKa = true; }())
+        </var>
+        <var id="listel1">randRange(0, 99)</var>
+        <var id="listel2">randRange(0, 99)</var>
+        <var id="listel3">randRange(0, 99)</var>
+        <var id="listel4">randRange(0, 99)</var>
+      </div>
+      <div class="problems">
+        <div id="ListADTPROG">
+          <p class="problem">Use appropriate method calls from the
+            List ADT to create the following list:<br/>
+            <b>&lt; <var>listel1</var>  <var>listel2</var>
+            | <var>listel3</var>  <var>listel4</var> &gt;</b>
+            <br/>
+            You should assume that L is passed to the function as an empty list.
+            <br/>
+            <textarea id="codeTextarea" name="codeTextarea">
+void exercise1(List L) {
+// Your code goes below this line
+
+
+
+// Your code goes above this line
+}</textarea>
+          </p>
+          <div class="question"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [editor.getValue()] </div>
+            <div class="validator-function">
+              if (guess[0] != initEditor) {
+                console.log(guess[0]);
+                window.codeValue = guess[0];
+                window.progexType = "list";
+                window.summexName = "ListADTPROG";
+                window.generatedList = "< " + listel1 + " " + listel2 + " | " + listel3 + " " + listel4 + " >";
+              } else {
+                return "";
+              }
+            </div>
+          </div>
+          <div class="hints"></div>
+           <p>Look at the list ADT, and use method calls from there to
+             manipulate what is on list L.</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

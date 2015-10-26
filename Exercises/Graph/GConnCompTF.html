@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html data-require="jsav math GConnCompTF">
+  <head>
+    <title>Connected Components</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #GConnCompTF {
+        height: 200px;
+      }
+    </style>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="JSAV">gConnCompTF.initJSAV()</var>
+      </div>
+
+      <div class="problems">
+        <div id="GConnCompTFp">
+          <p class="problem">
+            <div id="GConnCompTF" class="jsavcanvas"></div>
+          </p>
+          <p class="question">
+            How many connected components does this graph have?</p>
+          <div class="solution">3</div>
+          <ul class="choices" data-category="true">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>The number of components is undetermined</li>
+          </ul>
+          <div class="hints">
+            <p>The maximally connected subgraphs of an undirected
+              graph are called connected components.</p>
+            <p>Vertices 0, 1, 2, 3, and 4 form one connnected component</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

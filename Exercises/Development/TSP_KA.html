@@ -1,0 +1,249 @@
+<!--
+-->
+
+<!DOCTYPE html>
+<html data-require="math">
+<head data-height="750" data-width="950>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Traveling Salesman Problem</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+
+  <script src="../../JSAV/lib/jquery.transit.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
+  <link rel="stylesheet" href="TSP_KA.css" type="text/css" />
+</head>
+<body data-height="750" data-width="950">
+
+<script>
+var
+  jsav,           // The JSAV object
+  jsavGraph,
+  Answer,
+  From,
+  To,
+  guessedAns,
+  userInput;      // Boolean: Tells us if user ever did anything
+
+ var minC=-1, minPath=[];
+ var gnodes; //must be populated with the using g.nodes() befire calling getSol on g.
+ var visited; //must be initialized to an array containing as many nodes as g, all setto zero, before calling getSol on g.
+ var getSol= function(g,curr,start,path,cost){
+      visited[curr]=1;
+      path.push(curr);
+      var flag=0;
+      for(var i=0;i<gnodes.length;i++){
+          if(i==curr){
+              continue;
+          }
+          if(visited[i]==1){
+                continue;
+          }
+          flag=1;
+          var newcost = cost + g.getEdge(gnodes[curr],gnodes[i]).weight();
+          if(minC >= 0 && newcost>=minC)
+                continue;
+          getSol(g,i,start,path,newcost);
+      }
+      if(flag==0){
+          newcost = cost + g.getEdge(gnodes[curr],gnodes[start]).weight();
+          if(minC<0 || minC > newcost){
+             minC=newcost;
+             minPath = path.slice(0);
+             path.pop();
+             visited[curr]=0;
+             return;
+          }
+     }
+     path.pop();
+     visited[curr]=0;
+      return;
+ };
+
+
+function checkCycle(){
+  var edges=jsavGraph.edges();
+  var w=0;
+  for(var i=0;i<jsavGraph.edgeCount();i++)
+    if(edges[i].hasClass('selected'))
+        w=w+edges[i].weight();
+  if(w>minC)
+	return false;
+  
+  return true;
+}
+
+
+// Click event handler on the graph, intended for edges
+var clickHandler = function () {
+  var g = jsavGraph;
+  var nodes = g.nodes();
+  var node;
+  for(var i=0;i<g.nodeCount();i++){
+    if(nodes[i].value()==this.start().value())
+        s=i;
+    else if(nodes[i].value()==this.end().value())
+        e=i;
+  }
+  if(this.hasClass('selected')){
+    On[e] = On[e]-1;
+    On[s] = On[e]-1;
+    this.css({"stroke":"black"});
+    this.removeClass('selected');
+  }
+  else {
+    On[s] = On[s]+1;
+    On[e] = On[e]+1;
+    this.css({"stroke":"red"});
+    this.addClass('selected');
+  }
+
+  userInput = true;
+};
+
+
+// reset function definition
+var f_reset = function () {
+  if (jsavGraph) {
+    var nodes = jsavGraph.nodes();
+    for(var i=0;i<nodes.length;i++){
+      On[i] = 0;
+    }
+    var edges = jsavGraph.edges();
+    for(var i=0;i<edges.length;i++){
+      edges[i].removeClass('selected');      
+      edges[i].css({"stroke":"black"});
+    } 
+  }
+  userInput = false;
+};
+
+// Initialise the exercise
+var initJSAV = function (nnodes) {
+  userInput = false;
+
+  jsav = new JSAV("jsav");
+//  jsav.recorded();
+  
+  if (jsavGraph) {
+      jsavGraph.clear();
+  }
+
+  jsavGraph = jsav.ds.graph({width: 400, height: 280, layout: "manual",
+  directed: false});
+
+  var x = 50;
+  var y=30;
+
+  if(nnodes==5){
+      jsavGraph.addNode("A",{left:x+50,top:y-10});
+      jsavGraph.addNode("B",{left:x+200,top:y})
+      jsavGraph.addNode("C",{left:x,top:y+75});
+      jsavGraph.addNode("D",{left:x+280,top:y+100});
+      jsavGraph.addNode("E",{left:x+150,top:y+150});
+  }
+  if(nnodes==6){
+      jsavGraph.addNode("A",{left:x+50,top:y-10});
+      jsavGraph.addNode("B",{left:x+200,top:y})
+      jsavGraph.addNode("C",{left:x-20,top:y+75});
+      jsavGraph.addNode("D",{left:x+300,top:y+110});
+      jsavGraph.addNode("E",{left:x+210,top:y+230});
+      jsavGraph.addNode("F",{left:x+10,top:y+210})
+  }
+
+  gnodes=jsavGraph.nodes();
+  for(var i=0;i<nnodes;i++)
+    for(var j=i+1;j<nnodes;j++)
+       jsavGraph.addEdge(gnodes[i],gnodes[j],{weight:Math.floor((Math.random() * 30) + 1)});
+  On = new Array(jsavGraph.nodeCount());
+  for(i=0;i<jsavGraph.nodeCount();i++){
+      On[i]=0;
+  }
+
+  var edges = jsavGraph.edges();
+  for(i=0;i<edges.length;i++)
+    edges[i].css({"stroke-width":"1.5px","border": "5px solid transparent"});
+  jsavGraph.layout();
+
+  // Bind the clickHandler to handle click events on the array
+  jsavGraph.click(clickHandler,{edge:true});
+  jsavGraph.mouseleave(function() { this.removeClass("over")},
+// only for edges, don't record the changes
+        {edge: true, node: false, record: false}); 
+  jsavGraph.mouseenter(function() { this.addClass("over")},
+        {edge: true, node: false, record: false});
+
+  ;
+  guessedAns = true;
+  visited = new Array(jsavGraph.nodeCount());
+  for(var i=0;i<jsavGraph.nodeCount();i++)
+    visited[i]=0;
+
+  getSol(jsavGraph,0,0,[],0);
+   
+   Answer=gnodes[minPath[0]].value();
+    for(i=1;i<minPath.length;i++)
+     Answer=Answer+"->"+gnodes[minPath[i]].value();
+    Answer=Answer+"->"+gnodes[minPath[0]].value();
+  jsav.displayInit();
+  // Set up handler for reset button
+  $("#reset").click(f_reset);
+};
+
+
+// Check user's answer for correctness: User's array must match answer
+var checkAnswer = function () {
+
+  for(i in On){
+     if(On[i]!=2){
+         return false;
+     }
+  }
+ return checkCycle();
+  
+};
+
+ 
+</script>
+
+<div class="exercise">
+
+  <div class="vars">
+    <var id="nnodes">randRange(5, 6)</var>
+    <var id="JSAV">initJSAV(nnodes)</var>
+  </div>
+
+  <div class="problems">
+    <div> <!-- Supresses answer box -->
+
+      <p class="problem">Your task in this exercise is to find the shortest simple cycle that includes all nodes of the graph.</p>
+      <div class="question">
+        <p>Select the edges that can be a part of the shortest simple cycle.</p>
+        <input id="reset" type="button" value="Reset" />	
+        <div id="jsav" class="jsavcanvas"></div>
+      </div>
+
+      <div class="solution" data-type="custom">
+
+        <div class="guess">
+          [userInput]
+        </div>
+
+        <div class="validator-function">
+          if (!checkAnswer() && !guess[0])
+            return ""; // User did not click, and correct answer is not
+	               // initial array state
+          else return checkAnswer();
+        </div>
+       </div>
+       <div class="hints"><p><var>Answer</var></p></div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>

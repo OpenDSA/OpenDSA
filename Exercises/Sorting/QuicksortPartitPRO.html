@@ -1,0 +1,49 @@
+<!--
+Quicksort mini-proficiency exercise.
+Written by Gayathri Subramanian, Dan Breakiron, and Cliff Shaffer
+-->
+
+<!DOCTYPE html>
+<html data-require="jsav math QuicksortPartitPRO">
+  <head>
+    <title>Partition Array</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body data-height="540" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="arrSize">randRange(6, 12)</var>
+        <var id="JSAV">quicksortPartitPRO.initJSAV(arrSize)</var>
+      </div>
+      <div class="problems">
+        <div id="QuicksortPartitPROp"> <!-- Supresses answer box -->
+          <div class="question">
+            <p>The pivot element for quicksort is highlighted in the
+              array below. Partition the array using quicksort.</p>
+            <input id="reset" type="button" value="Reset" />
+            <div id="QuicksortPartitPRO" class="jsavcanvas"></div>
+          </div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [quicksortPartitPRO.userInput] </div>
+            <div class="validator-function">
+              if (!quicksortPartitPRO.checkAnswer(arrSize) && !guess[0]) {
+                return ""; // User did not click, and correct answer is not
+                           // initial array state
+              } else { return quicksortPartitPRO.checkAnswer(arrSize); }
+            </div>
+          </div>
+          <div class="hints">
+            <p>In this question, you will just do the partition step.</p>
+            <p>For this question, you will NOT move the pivot at the end
+              of the partition process.</p>
+            <p>Remember that partition moves left and right indices
+              inwards, swapping records as appropriate. So you will need to
+              swap some records by clicking on the two to exchange.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

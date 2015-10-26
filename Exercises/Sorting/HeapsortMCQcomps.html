@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html data-require="math">
+  <head>
+    <title>Heapsort Question: Input Order</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="question">(Assuming no duplicate key values:)
+            The order of the input records has what
+            impact on the number of comparisons required by Heapsort
+            (as presented in this module)?</p>
+          <div class="solution">There is a constant factor difference</div>
+          <ul class="choices">
+            <li>None</li>
+            <li>There is a big difference, the asymptotic running time can change</li>
+          </ul>
+          <div class="hints">
+            <p>Can Heapsort's behavior change depending on outcome of
+              a comparison?</p>
+            <p>Yes, it changes things a little bit in that it might
+              move things up and down the heap more or less.</p>
+            <p>But this does not matter, because removing a value
+              from the heap normally costs <code>\log n</code>.
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

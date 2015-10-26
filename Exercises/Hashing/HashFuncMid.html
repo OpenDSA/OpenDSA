@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html data-require="math">
+  <head>
+    <title>Hash Function: MidSquare Method</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body>
+    <div class="exercise">
+      <div class="vars">
+        <var id="M">100</var>
+        <var id="key">randRange(0, 9999)</var>
+        <var id="CorrectAnswer">Math.floor((key * key) / 1000) % M</var>
+      </div>
+      <div class="problems">
+        <div id="HashFuncMidp">
+          <div class="question">Given a hash table size of 100, a key
+            in the range 0 to 9999, and using the <b>Mid-square Method</b> hash function,
+            what slot in the table will <var>key</var> hash to?
+          </div>
+          <p class="solution" data-type="text"><var>CorrectAnswer</var></p>
+          <div class="hints">
+            <p>Assuming a 4-digit number, we want the middle two digits
+              for the square of the key.</p>
+            <p>Use the Mid-square Method calculator to help you.</p>
+            <p>The answer is <var>CorrectAnswer</var>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

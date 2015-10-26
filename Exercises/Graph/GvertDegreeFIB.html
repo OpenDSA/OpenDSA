@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html data-require="jsav math GvertDegreeFIB">
+<head>
+  <title>Graph Vertex Degree</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  <style>
+    #GvertDegreeFIB {
+      height: 250px;
+    }
+  </style>
+</head>
+
+<body data-height="650" data-width="950">
+<div class="exercise">
+  <div class="vars">
+    <var id="JSAV">gvertDegreeFIB.initJSAV()</var>
+    <var id="node">randRange(0, 4)</var>
+    <var id="ANS">gvertDegreeFIB.getAnswer(node)</var>
+  </div>
+  <div class="problems">
+    <div id="GvertDegreeFIBp">
+      <p class="problem">
+        <div id="GvertDegreeFIB" class="jsavcanvas"></div>
+      </p>
+      <p class="question">What is the degree of Vertex <var>node</var>?</p>
+      <p class="solution" data-type="text"><var>ANS</var></p>
+      <div class="hints">
+        <p>The degree of a vertex is the number of edges that the vertex touches.</p>
+        <p>Vertex <var>node</var> has a degree of <var>ANS</var>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

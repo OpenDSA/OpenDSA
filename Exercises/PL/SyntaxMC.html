@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+        <meta charset="utf-8">
+	<title>&lambda;-Calculus Syntax</title>
+	<script src="../../lib/jquery.min.js"></script>
+	<script src="../../lib/jquery-ui.min.js"></script>
+	<script src="../../JSAV/lib/jquery.transit.js"></script>
+	<script src="../../JSAV/lib/raphael.js"></script>
+	<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+	<!--script src="../../ODSAkhan-exercises/utils/math.js"></script-->
+	<script src="../../JSAV/build/JSAV-min.js"></script>
+	<script>var LAMBDA = {};</script>
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn.js"></script>
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter.js"></script>
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js"></script>
+	<link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+</head>
+
+<body data-height="650" data-width="950">
+<script src="SyntaxExercises.js"></script>
+
+<div class="exercise">
+	<div class="vars">
+		<var id="JSAV">initSyntaxMC()</var>
+		<var id="CorrectAnswer">getAnswerSyntaxMC()</var>
+		<var id="Option0">0</var>
+		<var id="Option1">1</var>
+		<var id="Option2">2</var>
+		<var id="Option3">3</var>
+		<var id="Option4">4</var>
+	</div>
+	<div class="problems">
+		<div>
+		  <div class="question"><p>How many of the following expressions are syntactically correct &lambda; expressions?</p>
+				<div id="jsav"></div>
+			</div>
+			<div class="solution"><var>CorrectAnswer</var></div>
+			<ul class="choices" data-category="true">
+			  <li><var>Option0</var></li>
+			  <li><var>Option1</var></li>
+			  <li><var>Option2</var></li>
+			  <li><var>Option3</var></li>
+			  <li><var>Option4</var></li>
+			</ul>
+
+			<div class="hints">
+			  <p>Remember that parentheses are not optional.</p>
+			  <p>Parentheses must surround every application expression, but nothing else.</p>
+			  <p>You could try to build a parse tree for each expression.<p>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

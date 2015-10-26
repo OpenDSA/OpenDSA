@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html data-require="jsav math GAdjacentTF1">
+  <head>
+    <title>Adjacent TF 1 </title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #GAdjacentTF1 {
+        height: 200px;
+      }
+    </style>
+  </head>
+
+  <body data-height="450" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="JSAV">gAdjacentTF1.initJSAV()</var>
+        <var id="node">randRange(1, 4)</var>
+        <var id="ANS">gAdjacentTF1.getAnswer(node)</var>
+      </div>
+
+      <div class="problems">
+        <div id="GAdjacentTF1p">
+          <p class="problem"> ANSWER TRUE OR FALSE
+            <div id="GAdjacentTF1" class="jsavcanvas"></div>
+          </p>
+          <p class="question">
+            Nodes <var>node</var> and 5 are adjacent.
+          </p>
+          <div class="solution"><var>ANS</var></div>
+          <ul class="choices" data-category="true">
+            <li>True</li>
+            <li>False</li>
+          </ul>
+          <div class="hints">
+            <p>Two vertices are adjacent if there exists and edge between them.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

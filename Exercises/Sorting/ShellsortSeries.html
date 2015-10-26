@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html data-require="math ShellsortSeries">
+<head>
+  <title>OpenDSA Exercise: Legal Shellsort Series</title>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+  <script src="../../khan-exercises/local-only/main.js" ></script>
+</head>
+
+<body data-height="525" data-width="950">
+<div class="exercise">
+  <div class="vars">
+    <var id="COUNT">randRange(1, 4)</var>
+    <var id="SERIES">shellsortSeries.makeSeries(COUNT)</var>
+    <var id="ANSWER">shellsortSeries.getAnswer(SERIES)</var>
+  </div>
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="question">
+        Is the following a legal series of increments when running Shellsort
+        on an array of 16 values?
+        <var>SERIES</var>
+      </p>
+      <div class="solution"><var>ANSWER</var></div>
+      <ul class="choices" data-category="true">
+        <li>Yes</li>
+        <li>No</li>
+      </ul>
+    </div>
+  </div>
+  <div class="hints">
+    <p>The values on the series must be decreasing.</p>
+    <p>A legal series always ends in 1.</p>
+  </div>
+</div>
+</body>
+</html>

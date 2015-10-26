@@ -1,0 +1,46 @@
+<!--
+    Quicksort mini-proficiency exercise.
+    Written by Gayathri Subramanian, Daniel Breakiron, and Cliff Shaffer
+  -->
+
+<!DOCTYPE html>
+<html data-require="jsav math QuicksortPivotPRO">
+  <head>
+    <title>Quicksort Find Pivot Element</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body data-height="525" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="arrSize">randRange(6, 12)</var>
+        <var id="JSAV">quicksortPivotPRO.initJSAV(arrSize)</var>
+      </div>
+      <div class="problems">
+        <div id="QuicksortPivotPROp"> <!-- Supresses answer box -->
+          <div class="question">
+            <p> Highlight the pivot element for Quicksort in the array
+              displayed below.The left pointer is at index 0 and the right
+              pointer is at index <var>arrSize - 1</var>
+              <div id="QuicksortPivotPRO" class="jsavcanvas"></div>
+            </p>
+          </div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [quicksortPivotPRO.selIndex !== -1] </div>
+            <div class="validator-function">
+              if (!guess[0]) {
+                return ""; // User did not click, and correct answer is not
+                           // initial array state
+              } else { return quicksortPivotPRO.checkAnswer(arrSize); }
+            </div>
+          </div>
+          <div class="hints">
+            <p>The pivot element is at the center of the array.</p>
+            <p>Round down when you compute the position for the center.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

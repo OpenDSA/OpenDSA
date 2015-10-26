@@ -1,0 +1,243 @@
+<!--
+-->
+
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Hamiltonian Cycle Problem</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+
+  <script src="../../JSAV/lib/jquery.transit.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <script src="graphUtilsHC.js"></script>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
+  <link rel="stylesheet" href="hamiltonianCycle_KA.css" type="text/css" />
+</head>
+<body data-height="750" data-width="950">
+
+<script>
+var
+  jsav,           // The JSAV object
+  jsavGraph,
+  solArr,
+  Answer,
+  gnodes,
+  guessedAns,
+  From,
+  To,
+  Solution,
+  userInput;      // Boolean: Tells us if user ever did anything
+
+var visited;
+var getSol= function(curr,path){
+
+      visited[curr]=1;
+      path.push(curr);
+      for(var i=0;i<gnodes.length;i++)
+          if(visited[i]==0)
+              break;
+      if(i==gnodes.length){
+          if(jsavGraph.hasEdge(gnodes[curr],gnodes[0])){
+             path.push(0);
+             solArr=path.slice(0);
+             return true;
+          }
+          else
+             path.pop();
+             visited[curr]=0;
+             return false;
+      }
+      var nextarr = gnodes[curr].neighbors();
+      for(var j=0;j<nextarr.length;j++){
+          i = gnodes.indexOf(nextarr[j]);
+          if(visited[i]==1){
+                continue;
+          }
+          if(getSol(i,path))
+               return true;
+      }
+     path.pop();
+     visited[curr]=0;
+     return false;
+
+ };
+
+// Click event handler on the graph, intended for edges
+var clickHandler = function () {
+  var node;
+  if(this.hasClass('selected')){
+    From[gnodes.indexOf(this.start())]-=1; 
+    To[gnodes.indexOf(this.end())]-=1; 
+    this.css({"stroke":"black"});
+    this.removeClass('selected');
+  }
+  else {
+    From[gnodes.indexOf(this.start())]+=1; 
+    To[gnodes.indexOf(this.end())]+=1; 
+    this.css({"stroke":"red"});
+    this.addClass('selected');
+  }
+
+  userInput = true;
+};
+
+
+// reset function definition
+var f_reset = function () {
+  if (jsavGraph) {
+    var nodes = jsavGraph.nodes();
+    for(var i=0;i<nodes.length;i++){
+        From[i]=0;
+        To[i]=0;
+        visited[i]=0;
+    }
+    var edges = jsavGraph.edges();
+    for(var i=0;i<edges.length;i++){
+      edges[i].removeClass('selected');      
+      edges[i].css({"stroke":"black"});
+    } 
+  }
+  userInput = false;
+};
+
+var f_noHC = function () {
+    for(var i=0;i<gnodes.length;i++){
+      From[i]=0; 
+      From[i]=1;
+    }
+    var edges = jsavGraph.edges();
+    for(var i=0;i<edges.length;i++){
+      edges[i].removeClass('selected');      
+      edges[i].css({"stroke":"black"});
+    } 
+    guessedAns = false;
+}
+
+// Initialise the exercise
+var initJSAV = function (nnodes,nedges) {
+  userInput = false;
+
+  jsav = new JSAV("jsav");
+//  jsav.recorded();
+  
+  if (jsavGraph) {
+      jsavGraph.clear();
+  }
+
+  jsavGraph = jsav.ds.graph({width: 400, height: 280, layout: "automatic",
+  directed: true});
+  graphUtils.generate(jsavGraph,{weighted:false,nodes:nnodes,edges:nedges});
+  
+  var edges = jsavGraph.edges();
+  for(i=0;i<edges.length;i++)
+    edges[i].css({"stroke-width":"1.5px","border": "5px solid transparent"});
+  jsavGraph.layout();
+  gnodes = jsavGraph.nodes();
+  From=new Array(gnodes.length);
+  To=new Array(gnodes.length);
+  visited=new Array(gnodes.length);
+  for(var i=0;i<gnodes.length;i++){
+    From[i]=0;
+    To[i]=0;
+    visited[i]=0;
+  }
+  // Bind the clickHandler to handle click events on the array
+  jsavGraph.click(clickHandler,{edge:true});
+  jsavGraph.mouseleave(function() { this.removeClass("over")},
+// only for edges, don't record the changes
+        {edge: true, node: false, record: false}); 
+  jsavGraph.mouseenter(function() { this.addClass("over")},
+        {edge: true, node: false, record: false});
+
+  var nodes = jsavGraph.nodes();
+  guessedAns = true;
+  if(getSol(0,[])==false){
+    Answer=false;	
+    Solution="No Hamiltonian Cycle";
+    //console.log("no Cyccle");
+  }
+  else{
+    Answer=true;
+    Solution=gnodes[solArr[0]].value();
+    for(i=1;i<solArr.length;i++)
+     Solution=Solution+"->"+gnodes[solArr[i]].value();
+    //console.log(str);
+  }
+  jsav.displayInit();
+  // Set up handler for reset button
+  $("#reset").click(f_reset);
+};
+
+
+// Check user's answer for correctness: User's array must match answer
+var checkAnswer = function () {
+ 
+  if(document.getElementById("noSol").checked==true){
+      if(Answer)
+        return false;
+      else
+        return true;
+    }
+ 
+  if(Answer){
+    for(var i=0;i<gnodes.length;i++)
+       if(From[i]!=1 || To[i]!=1)
+          return false;
+    return true;
+  }
+  return false;
+  
+};
+
+var showSolution = function(){
+  if(Answer){
+    for(i=0;i<solArr.length;i++)
+      solArr[i].css({"stroke":"blue"});
+    return "The Hamiltonian Cycle is shown in blue on the graph.";
+  }
+  else
+    return "The graph consists of no Hamiltonian Cycle";
+    
+}
+ 
+</script>
+
+<div class="exercise">
+  <div class="vars">
+    <var id="nnodes">randRange(7, 9)</var>
+    <var id="nedges">nnodes+randRange(5,nnodes)</var>
+    <var id="JSAV">initJSAV(nnodes,nedges)</var>
+  </div>
+
+  <div class="problems">
+    <div> <!-- Supresses answer box -->
+      <p class="problem">Your task in this exercise is to find a Hamiltonian Cycle.</p>
+      <div class="question">
+        <p>Select the edges that can be a part of a Hamiltonian Cycle.</p>
+        <input id="reset" type="button" value="Reset" />	
+        <form action="">
+           <input type="checkbox" id="noSol" value="noSol">No Cycle</input>
+        </form>
+        <div id="jsav" class="jsavcanvas"></div>
+      </div>
+      <div class="solution" data-type="custom">
+        <div class="guess">
+          [userInput]
+        </div>
+        <div class="validator-function">
+          if (!checkAnswer() && !guess[0])
+            return ""; // User did not click, and correct answer is not
+	               // initial array state
+          else return checkAnswer();
+        </div>
+      </div>
+     <div class="hints"><p><var>[Solution]</var></p></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

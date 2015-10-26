@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html data-require="jsav math GinoutDegreeFIB">
+  <head>
+    <title>Graph Vertex Degree</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #GinoutDegreeFIB {
+      height: 250px;
+      }
+    </style>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="JSAV">ginoutDegreeFIB.initJSAV()</var>
+        <var id="node">randRange(0, 4)</var>
+        <var id="INDEX">randRange(0, 1)</var>
+        <var id="ANS">ginoutDegreeFIB.getAnswer(node, INDEX)</var>
+        <var id="IO">["in", "out"]</var>
+      </div>
+      <div class="problems">
+        <div id="GinoutDegreeFIBp">
+          <p class="problem">
+            <div id="GinoutDegreeFIB" class="jsavcanvas"></div>
+          </p>
+          <p class="question">What is the <var>IO[INDEX]</var> degree
+            of Vertex <var>node</var>?</p>
+          <p class="solution" data-type="text"><var>ANS</var></p>
+          <div class="hints">
+            <p>The <b>in</b> degree of a vertex is the number of edges
+              going <b>into</b> the vertex.</p>
+            <p>The <b>out</b> degree of a vertex is the number of
+              edges going <b>out</b> of the vertex.</p>
+            <p>Vertex <var>node</var> has an <var>IO[INDEX]</var>
+              degree of <var>ANS</var>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

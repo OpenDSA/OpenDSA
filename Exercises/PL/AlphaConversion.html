@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+        <meta charset="utf-8">
+	<title>&alpha;-Conversion</title>
+	<script src="../../lib/jquery.min.js"></script>
+	<script src="../../lib/jquery-ui.min.js"></script>
+	<script src="../../JSAV/lib/jquery.transit.js"></script>
+	<script src="../../JSAV/lib/raphael.js"></script>
+	<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+	<!--script src="../../ODSAkhan-exercises/utils/math.js"></script-->
+	<script src="../../JSAV/build/JSAV-min.js"></script>
+	<link rel="stylesheet" href="./exercises.css" type="text/css" />
+	<script>var LAMBDA = {};</script>
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn.js"></script>
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter.js"></script>
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js"></script>
+	<link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+
+<style>
+
+    div.jsavcanvas {
+         text-align: center; /* needed to center the array in the container */
+    }
+    
+    div#jsav  div.jsavcanvas ol.jsavarray   {
+       max-width: 700px;   /* needed for centering the array to work */
+       max-height: 30px;
+       min-height: 30px;
+    }
+
+    li.jsavhighlight {
+        border: 1px solid black !important;
+    }
+     ol.jsavarray  li.jsavindex  {
+       max-height: 30px;
+       min-height:30px;
+       height: 30px;
+    }
+
+      li.jsavindex span.jsavvalue {
+       max-height:30px;
+       min-height:30px;
+    }
+    
+    ol.jsavarray .defaultCellStyle {
+        border: none;
+        box-shadow : none; 
+    }
+
+    ol.jsavarray .lambdaWidth {
+        width : 20px;
+        min-width : 20px;
+    }
+
+    ol.jsavarray .oneCharWidth {
+        width : 12px;
+        min-width : 12px;
+        text-align: center;
+    }
+
+    ol.jsavarray .parenWidth {
+        width : 7px;
+        min-width : 7px;
+    }
+
+    ol.jsavarray .emptyWidth {
+        width : 0px;
+        min-width : 0px;
+    }
+
+    .highlight { 
+        color : red;
+        font-weight: bold;
+    }
+
+    .unhighlight { 
+        color : black;
+        font-weight: normal;
+    }
+
+    #answer_area input[type=text]  {
+         width:220px;
+    }
+</style>
+
+</head>
+
+<body data-height="650" data-width="950">
+<script src="SyntaxExercises.js"></script>
+
+<div class="exercise">
+	<div class="vars">
+		<var id="JSAV">initAlphaConversion()</var>
+		<var id="CorrectAnswer">getAnswerAlphaConversion()</var>
+	</div>
+	<div class="problems">
+		<div>
+		  <div class="question"><p>Rewrite the complete
+		  &lambda; expression below after having
+		  &alpha;-converted (using the variable "a") the
+		  &lambda; abstraction whose binding occurrence is
+		  underlined. In your answer, use the character "^" to
+		  denote the character "&lambda;".</p>
+		    <div id="jsav"></div>
+		  </div>
+		  <div class="solution" data-type="regex">
+		    <var>CorrectAnswer</var>
+		  </div>
+		  
+		  <div class="hints">
+		    <p>Recall that to &alpha;-convert a lambda
+		    abstraction, you must first identify all of the
+		    variables in its body that are bound to its binding
+		    occurrence.</p>
+		    <p>Remember to write down as your answer the whole
+		    lambda expression, including the lambda abstraction
+		    that you are &alpha;-converting, not just the latter.</p>
+		    <p>Make sure to use "a" for the name of the new
+		    variable. In this exercise, you are not allowed to
+		    pick any new variable name.</p>
+		  </div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

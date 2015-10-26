@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html data-require="math">
+  <head>
+    <title>Quicksort Equal Values Question</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="question">(For the version of the algorithm as
+            presented in this module:) What is the running time of Quicksort
+            when the input is an array where all record values are equal? </p>
+          <div class="solution"><code>\Theta(n^2)</code></div>
+          <ul class="choices">
+            <li><code>\Theta(n)</code></li>
+            <li><code>\Theta(\log n)</code></li>
+            <li><code>\Theta(n \log n)</code></li>
+            <li><code>\Theta(n ^ n)</code></li>
+          </ul>
+          <div class="hints">
+            <p>What does the partition step do?</p>
+            <p>It splits the array into a partition with all values on one side.</p>
+            <p>This is very bad.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

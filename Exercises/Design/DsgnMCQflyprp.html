@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html data-require="math">
+  <head>
+    <title>Design Exercise: Flyweight Property </title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="question"> Which of these is <em>not</em> a defining
+            property of a flyweight?</p>
+          <div class="solution">It is small</div>
+          <ul class="choices">
+            <li>It is stateless</li>
+            <li>It is a singleton</li>
+            <li>It is reused</li>
+          </ul>
+          <div class="hints">
+            <p>There is only one copy of the flyweight (that is shared).</p>
+            <p>Since a flyweight is reused, the implementor cannot count
+              on its ability to store state (since all occurrances are the
+              same.</p>
+            <p>It doesn't matter how big the flyweight is.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

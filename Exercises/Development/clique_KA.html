@@ -1,0 +1,234 @@
+<!--
+-->
+
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Maximum Clique Problem</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+
+  <script src="../../JSAV/lib/jquery.transit.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <script src="graphUtils.js"></script>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
+  <link rel="stylesheet" href="clique_KA.css" type="text/css" />
+</head>
+<body data-height="750" data-width="950">
+
+<script>
+var
+  jsav,            // The JSAV object
+  jsavGraph, adjacencyMat, solutionShowStat, 
+  maxClique,
+  Solution,
+  userInput;      // Boolean: Tells us if user ever did anything
+
+function isClique(nodes){
+  for(var i=0;i<nodes.length;i++)
+    for(var j=i+1;j<nodes.length;j++)
+      if(!jsavGraph.hasEdge(nodes[i],nodes[j]))
+        return false;
+  return true;
+}
+
+function calcMaxClique(){
+  var nodenum = jsavGraph.nodeCount();
+  var gnodes = jsavGraph.nodes();
+  var subsets = new Array(2);
+  var tmparr,prev=0;
+  subsets[prev]= new Array(nodenum);
+  for(var i=0;i<nodenum;i++){
+    tmparr = new Array(1);
+    tmparr[0]=i;
+    subsets[prev][i]=tmparr;
+  } 
+  for(var n=2; n<=nodenum ;n++){
+    subsets[(prev+1)%2] = [];
+    var chk=0;
+    for(var i=0;i<subsets[prev].length;i++){
+      var start=getMaxOfArray(subsets[prev][i]);
+      for(var j=start+1;j<nodenum;j++){
+        tmparr=new Array(subsets[prev][i].length+1);
+        for(var k=0;k<subsets[prev][i].length;k++)
+          tmparr[k]=subsets[prev][i][k];
+        var flag=0;
+        for(var l=0;l<tmparr.length-1;l++){
+          if(!jsavGraph.hasEdge(gnodes[tmparr[l]],gnodes[j])){
+            flag = 1;
+            break;
+          }
+        }
+          if(flag==1)
+            continue;
+          chk=1;
+          tmparr[k] = j;   
+          subsets[(prev+1)%2].push(tmparr);
+        }
+      }
+      if(chk==0){
+        maxClique=subsets[prev].pop();
+        return maxClique.length;
+      }
+      prev = (prev+1)%2;
+    }
+    return 1;
+}
+
+
+function getMaxOfArray(numArray) {
+    return Math.max.apply(null,  numArray);
+}
+
+
+  
+function populateAdjacencyMatrix(){
+  var gnodes = jsavGraph.nodes();
+  var n = gnodes.length;
+  adjacencyMat = new Array(n);
+  for(var i=0;i<n;i++){
+    adjacencyMat[i] = new Array(n);
+    for(j=0;j<n;j++){
+      if(jsavGraph.hasEdge(gnodes[i], gnodes[j]))
+	adjacencyMat[i][j]=1;
+      else
+	adjacencyMat[i][j]=0;
+    }
+  }
+
+}
+// Click event handler on the graph 
+var clickHandler = function () {
+  var i,  edge;
+  var nodes=jsavGraph.nodes(); 
+  if (!this.hasClass('marked')) {
+    this.addClass('marked');
+    for(i=0;i<nodes.length;i++)
+      if(nodes[i].hasClass('marked') && jsavGraph.hasEdge(this,nodes[i]))
+         jsavGraph.getEdge(this,nodes[i]).addClass('edgemarked');
+  }
+  else if(this.hasClass('marked')) {
+    this.removeClass('marked');
+    for(i=0;i<nodes.length;i++)
+      if(nodes[i].hasClass('marked') && jsavGraph.hasEdge(this,nodes[i]))
+         jsavGraph.getEdge(this,nodes[i]).removeClass('edgemarked');
+  }
+  userInput = true;
+};
+
+// reset function definition
+var f_reset = function () {
+  if (jsavGraph) {
+    var nodes = jsavGraph.nodes();
+    for(var i=0;i<nodes.length;i++){
+      nodes[i].removeClass('marked');
+      nodes[i].removeClass('prohibited');
+    }
+    var edges = jsavGraph.edges();
+    for(var i=0;i<edges.length;i++)
+      edges[i].removeClass('edgemarked');
+  }
+  userInput = false;
+};
+
+/*var f_solution = function () {
+  var gnodes=jsavGraph.nodes();
+  if(solutionShowStat==0){
+    for(var i=0;i<gnodes.length;i++){
+      gnodes[i].removeClass('marked');
+      gnodes[i].removeClass('prohibited');
+    }
+    for(var i=0;i<maxClique.length;i++){
+      gnodes[maxClique[i]].css({"background-color":"Orange","opacity":0.5});
+    }
+      solutionShowStat=1;
+  }
+  else{
+    for(var i=0;i<maxClique.length;i++){
+       gnodes[maxClique[i]].css({"background-color":"White","opacity":1});
+    }
+      solutionShowStat=0;
+  }
+};
+*/
+// Initialise the exercise
+var initJSAV = function (nnodes, nedges) {
+  userInput = false;
+  solutionShowStat=0;
+
+  jsav = new JSAV("jsav");
+//  jsav.recorded();
+  
+  if (jsavGraph) {
+      jsavGraph.clear();
+  }
+
+  jsavGraph = jsav.ds.graph({width: 400,  height: 280,  layout: "automatic",  
+directed: false});
+  graphUtils.generate(jsavGraph, {weighted:false, nodes:nnodes, edges:nedges});
+  jsavGraph.layout();
+
+  // Bind the clickHandler to handle click events on the array
+  jsavGraph.click(clickHandler);
+  maxlique=[];
+  calcMaxClique(); 
+  var gnodes = jsavGraph.nodes();
+  Solution="The maximum clique is { "+gnodes[maxClique[0]]. value();
+  for(var i=1;i<maxClique.length;i++)
+    Solution+=" , "+gnodes[maxClique[i]].value();
+  Solution+=" }";
+  jsav.displayInit();
+  // Set up handler for reset button
+  $("#reset").click(f_reset);
+};
+
+
+// Check user's answer for correctness: User's array must match answer
+var checkAnswer = function () {
+  var gnodes=jsavGraph.nodes();
+  var cliqueNodes = [];
+  for(var i=0;i<gnodes.length;i++)
+    if(gnodes[i].hasClass('marked'))
+      cliqueNodes.push(gnodes[i]);
+  if(cliqueNodes.length>=maxClique.length && isClique(cliqueNodes))
+    return true;
+  return false;
+  
+};
+</script>
+
+<div class="exercise">
+  <div class="vars">
+    <var id="nnodes">randRange(10,12)</var>
+    <var id="nedges">2*nnodes+randRange(3, nnodes)</var>
+    <var id="JSAV">initJSAV(nnodes, nedges)</var>
+  </div>
+
+  <div class="problems">
+    <div> <!-- Supresses answer box -->
+      <p class="problem">Your task in this exercise is to find the largest clique.</p>
+      <div class="question">
+	<p>Select the vertices that can form the largest clique.</p>
+      <input id="reset" type="button" value="Reset" />  <div id="jsav" 
+class="jsavcanvas"></div>
+      </div>
+      <div class="solution" data-type="custom">
+	<div class="guess">
+	  [userInput]
+	</div>
+	<div class="validator-function">
+	  if (!checkAnswer() && !guess[0])
+	    return ""; // User did not click,  and correct answer is not
+		 // initial array state
+	  else return checkAnswer();
+	</div>
+      </div>
+	<div class="hints"><p><var>Solution</var></p></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

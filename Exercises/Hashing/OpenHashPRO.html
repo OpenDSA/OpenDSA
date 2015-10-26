@@ -1,0 +1,60 @@
+<!--
+    Open Hashing mini-proficiency exercise.
+    Written by Cliff Shaffer
+  -->
+
+<!DOCTYPE html>
+<html data-require="jsav math OpenHashPRO">
+  <head>
+    <title>Open Hashing Proficiency Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #OpenHashPRO .jsavcanvas {
+        height: 330px;
+      }
+      #OpenHashPRO .jsavlist .jsavlistnode {
+        min-height: 25px !important;
+        max-height: 25px !important;
+      }
+    </style>
+  </head>
+
+  <body data-height="720" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="arr_size">randRange(5, 8)</var>
+        <var id="JSAV">openHashPRO.initJSAV(arr_size)</var>
+      </div>
+      <div class="problems">
+        <div id="OpenHashPROp"> <!-- Supresses answer box -->
+          <p class="problem">On the left is an array of numbers that are
+            to be inserted (in order, from top to bottom) into the hash
+            table on the right. The hash table uses open hashing to deal
+            with collisions.</p>
+          <div class="question">
+            <p> Move each record on the left to the appropriate bin on the
+              right when using the simple mod hash function.</p>
+            <input id="reset" type="button" value="Reset" />
+            <div id="OpenHashPRO" class="jsavcanvas"></div>
+          </div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [openHashPRO.userInput] </div>
+            <div class="validator-function">
+              if (!openHashPRO.checkAnswer(arr_size) && !guess[0]) {
+                return ""; // User did not click, and correct answer is not
+                           // initial array state
+              } else { return openHashPRO.checkAnswer(arr_size); }
+            </div>
+          </div>
+          <div class="hints">
+            <p>This is easy. For each item in the left array, going
+              from top to bottom ...</p>
+            <p>... click on that item, compute modulo 10, and click on
+              the corresponding bin in the right array.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

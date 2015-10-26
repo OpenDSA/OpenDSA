@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html data-require="math">
+  <head>
+    <title>Adjaceny List Space Calculation: Undirected, Weighted</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body>
+    <div class="exercise">
+      <div class="vars">
+        <var id="numV">randRange(6, 10)</var>
+        <var id ="numE">randRange(numV, (numV * (numV - 1))/2)</var>
+        <var id="pointerB">randRange(4,6)</var>
+        <var id="edgeB">randRange(2,4)</var>
+        <var id="vertB">randRange(2,4)</var>
+        <var id="ANS">(numV * pointerB) + (2 * numE * (vertB + edgeB + pointerB))</var>
+      </div>
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="problem">WARNING! Read the conditions for the problems
+            in this set very carefully!
+          </p>
+          <p class="question">Assume for an undirected graph with <var>numV</var>
+            vertices and <var>numE</var> edges that a vertex index requires
+            <var>vertB</var> bytes, a pointer requires <var>pointerB</var>
+            bytes, and that edge weights require <var>edgeB</var> bytes.
+            Since the graph is undirected, each undirected edge is
+            represented by two directed edges.
+            Calculate the byte requirements for an adjacency list.
+          </p>
+          <p class="solution" data-type="text"><var>ANS</var></p>
+          <div class="hints">
+            <p> Adjacency list has an array (of size |V|) which points
+              to a list of edges.</p>
+            <p>Every edge appears twice on the list (the graph is
+              undirected, so we need the directed edge in each
+              direction). And for each edge there  has to be a vertex
+              ID, a weight, and a  pointer to the next edge.</p>
+            <p> (V * pointer) + (E * (2 * vertex_index + edge_weight + pointer))
+              bytes = <var>ANS</var></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

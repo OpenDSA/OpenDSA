@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html data-require="math HashFuncSfold">
+  <head>
+    <title>Hash Function: Improved String Folding</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body>
+    <div class="exercise">
+      <div class="vars">
+        <var id="M">100</var>
+        <var id="len">randRange(5, 10)</var>
+        <var id="key">hashFuncSfold.genKey(len)</var>
+        <var id="CorrectAnswer">hashFuncSfold.genAnswer(key, M)</var>
+      </div>
+      <div class="problems">
+        <div id="HashFuncSfold">
+          <div class="question">Given a hash table size of 100,
+            a key that is a string, use the <b>improved string folding function</b>
+            to calculate a hash value that will then be set to a value
+            within the table size using the simple mod function.
+            What slot in the table will <b><var>key</var></b> hash to?
+          </div>
+          <p class="solution" data-type="text"><var>CorrectAnswer</var></p>
+          <div class="hints">
+            <p>Use the Improved String Folding calculator to help you.</p>
+            <p>Take the answer it gives, and mod by 100.</p>
+            <p>The answer is <var>CorrectAnswer</var>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

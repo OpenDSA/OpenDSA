@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<!--
+	Edit Distance, Khan Academy Page
+	Erich Brungraber
+-->
+<html data-require="math">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Edit Distance - Khan Academy</title>
+
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />  
+  <script src="../../AV/edit.js"></script>
+
+<style>
+.jsavcontainer {
+  border: 0px;
+  height: 300px}
+
+  .jsavarray { margin: 0; height: 40px; min-height: 40px; }
+  .jsavarray li { border-radius: 0 !important; height: 40px; width: 40px; font-size: 14px; line-height: 40px;}
+</style>
+
+<body>
+<script>
+	var av, arr, myGuess;
+	var c1, c2, c3, c4;
+	
+	//debugging function
+	var select = function(choice) {
+		alert("Hey y'all, this is your choice: " + arr[choice]);
+		myGuess = arr[choice];
+	}
+	
+	/**
+	initJSAV
+	Initializes the JSAV.
+	*/
+	initJSAV = function() {
+		myGuess = -1;
+		av = new JSAV("jsav", {"animationMode": "none"});
+		var s1 = randString(3,5);
+		var s2 = randString(3,5);
+		arr = initKA(s1, s2);
+		
+		for (var i = 0; i < arr.length; i++) {
+			console.log("" + i + ": " + arr[i]);
+		}
+		
+		//set the labels
+		document.getElementById('a').innerHTML = arr[0];
+		document.getElementById('b').innerHTML = arr[1];
+		document.getElementById('c').innerHTML = arr[2];
+		document.getElementById('d').innerHTML = arr[3];
+	}
+	
+	getAns = function(num) {
+		return arr[num];
+	} //end initJSAV func
+
+	/**
+	randString
+	Creates random string for use in proficiency testing.
+	@params:
+	base = minimum char count
+	max = max char count
+	*/
+	var randString = function(base, max) {
+		var count = Math.floor((max - base + 1) * Math.random() + base);
+		var str = "";
+		for (var i = 0; i < count; i++) {
+			str += String.fromCharCode(26 * Math.random() + 97);
+		}
+		return str;
+	} //end randString func  
+  
+	genAnswer = function() {
+		return arr[4];
+	}
+</script>
+
+<div class="exercise">
+  <div class="vars">
+    <var id="JSAV">initJSAV()</var>
+    <var id="CorrectAnswer">genAnswer()</var>
+	
+  </div> <!-- vars -->
+
+	<div class="problems">
+		<div>
+			<div class="question">
+				Select the correct cell value from the list.
+				<div id="jsav"></div>
+			</div> <!-- question -->
+			<div class="solution"><var>genAnswer()</var></div>
+			<ul class="choices" data-category="true">
+				<li><var id="a"></var></li>
+				<li><var id="b"></var></li>
+				<li><var id="c"></var></li>
+				<li><var id="d"></var></li>
+			</ul>
+		</div>
+	</div> <!-- problems -->
+
+	<div class="hints">
+		<p><var>CorrectAnswer</var></p>
+    </div>
+</div> <!--exercises-->
+</body>
+</html>

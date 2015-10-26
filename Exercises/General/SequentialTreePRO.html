@@ -1,0 +1,43 @@
+<!--
+    General Trees: Binary Tree equential representation
+    Written by Kevin Ellis and Cliff Shaffer.
+  -->
+
+<!DOCTYPE html>
+<html data-require="jsav math SequentialTreePRO">
+  <head>
+    <title>Sequential Binary Tree Representation Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #SequentialTreePRO {
+        height: 290px;
+      }
+    </style>
+  </head>
+
+  <body data-height="720" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="JSAV">sequentialTreePRO.initJSAV()</var>
+        <var id="BT">sequentialTreePRO.makeTree()</var>
+        <var id="ANS">sequentialTreePRO.preOrderTraversal(BT)</var>
+      </div>
+      <p class="question">Using '/' to signify a null poiner,
+        write the sequential representation for this tree.</p>
+      <div class="problems">
+        <div id="SequentialTreePROp"> <!-- Supresses answer box -->
+          <p class="problem">
+            <div id="SequentialTreePRO" class="jsavcanvas"></div>
+          </p>
+          <p class="solution" data-type="text"><var>ANS</var></p>
+          <div class="hints">
+            <p>Make sure to use a '/' for every null pointer</p>
+            <p>There should be one more '/' than there are nodes.</p>
+            <p>Answer: <var>ANS</var></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

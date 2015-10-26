@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html data-require="math">
+  <head>
+    <title>Hash Deletion Question 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="question">Which is true about deletion from a hash
+            table using tombstones?</p>
+          <div class="solution">It causes a slight increase in the
+          average time to insert and search</div>
+          <ul class="choices" data-category="true">
+            <li>It causes a large decrease in the average time to insert and search</li>
+            <li>It causes a slight decrease in the average time to insert and search</li>
+            <li>It has no effect on the average time to insert and search</li>
+            <li>It causes a slight increase in the average time to insert and search</li>
+            <li>It causes a large increase in the average time to insert and search</li>
+          </ul>
+          <div class="hints">
+            <p>The tombstones fill some slots of the table.</p>
+            <p>While tombstone slots can be reused, they do have to be
+              searched through.</p>
+            <p>The fraction of hash table slots taken up by tombstones
+            is normally not large, so while there is an increased
+            cost, is is not large.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+</body>
+</html>

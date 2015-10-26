@@ -1,0 +1,68 @@
+<!--
+    Radix Sort mini-proficiency exercise.
+    Written by Gayathri Subramanian and Cliff Shaffer
+  -->
+
+<!DOCTYPE html>
+<html data-require="jsav math RadixsortPRO">
+  <head>
+    <title>Radix Sort Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #RadixsortPRO {
+        height: 470px;
+      }
+
+      /* We make the arrays bigger than the OpenDSA stylesheet standard
+      so that we  have reasonable room for the linked lists */
+      .jsavverticalarray .jsavnode {
+        line-height: 45px !important;
+        min-width: 45px !important;
+        max-width: 45px !important;
+        min-height: 45px !important;
+        max-height: 45px !important;
+      }
+    </style>
+  </head>
+
+  <body data-height="860" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="arr_size">randRange(6, 10)</var>
+        <var id="qchoice">randRange(0, 2)</var>
+        <var id="msgArray">[ "right-most", "middle", "left-most"]</var>
+        <var id="JSAV">radixsortPRO.initJSAV(arr_size, qchoice)</var>
+      </div>
+
+      <div class="problems">
+        <div id="RadixsortPROp"> <!-- Supresses answer box -->
+          <div class="question">
+            <p>Move each record in the left array to the appropriate bin in the
+              right array based on the <b><var>msgArray[qchoice]</var></b> digit.</p>
+            <input id="reset" type="button" value="Reset" />
+            <div id="RadixsortPRO" class="jsavcanvas"></div>
+          </div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [radixsortPRO.userInput] </div>
+            <div class="validator-function">
+              if (!radixsortPRO.checkAnswer(arr_size) && !guess[0]) {
+                return ""; // User did not click, and correct answer is not
+                           // initial array state
+              } else { return radixsortPRO.checkAnswer(arr_size); }
+            </div>
+          </div>
+          <div class="hints">
+            <p>Just take each record on the left one at a time and move it
+              to the proper bin on the right.</p>
+            <p> These are logically 3-digit numbers. If the value happens
+              to be less than 100, then you should think of the
+              missing digits as being 0.</p>
+            <p>Be sure that you are looking at the correct digit that the
+              question asks for.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
