@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html data-require="codemirror math">
+  <head>
+    <title> Recursion Tracing Exercise: dosomething Print </title>
+    <script>
+      window.config= {
+        OpenPopKa : true,
+        codeMirrorReadOnly: true
+        };
+    </script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+  
+  <body  data-height="550" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <div class="vars">
+            <var id="config">
+              (function(){
+                  window.codeMirrorReadOnly = true;
+                }())
+            </var>
+          </div>
+          <p class="question">
+          Consider the following function:
+          <textarea id="codeTextarea" name="codeTextarea">
+public void dosomething (int n) {
+  if(n > 0) {
+    dosomething(n-1);
+    System.out.print(n);
+  }
+}
+          </textarea>
+          What will be printed when "dosomething(5)" is called? (Either write a sequence of numbers, or write "infinite recursion".)
+          </p>
+          <br/>
+          <p><textarea rows="1" cols="20" style="resize:none"  id="answerTextarea" ></textarea></p>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [ "list" ] </div>
+            <div class="validator-function">
+              function checkAnswer(answer) {
+              if ( answer == 12345) {
+              return true;
+              } else {
+              return false;
+              }
+              };
+              answer = parseInt($('#answerTextarea').val());
+              return checkAnswer(answer );
+            </div>
+          </div>
+          <div class="hints">
+            <p>Don't forget that the print command will be exectued once the recursive call hit the basecase and is rolling back.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

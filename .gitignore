@@ -48,3 +48,4 @@ lib/*-min.*
 
 # sftp configuration file
 sftp-config.json
+

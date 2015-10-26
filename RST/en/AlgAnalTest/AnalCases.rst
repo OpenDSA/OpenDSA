@@ -125,7 +125,4 @@ If not, then we must resort to worst-case analysis.
 .. inlineav:: BestWorstAverageCON ss
    :output: show
 
-.. avembed:: Exercises/AlgAnalTest/BestWorstAverageCases.html ka
-
 .. odsascript:: AV/Development/AlgAnal/BestWorstAverageCON.js	  
-

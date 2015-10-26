@@ -1,184 +1,60 @@
 <!--
-  Open Hashing mini-proficiency exercise.
-  Written by Cliff Shaffer
--->
+    Open Hashing mini-proficiency exercise.
+    Written by Cliff Shaffer
+  -->
 
 <!DOCTYPE html>
-<html data-require="math">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <title>Open Hashing Proficiency Exercise</title>
-  <script src="../../lib/jquery.min.js"></script>
-  <script src="../../lib/jquery-ui.min.js"></script>
-  <script src="../../JSAV/lib/jquery.transit.js"></script>
-  <script src="../../JSAV/lib/raphael.js"></script>
-  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-  <script src="../../JSAV/build/JSAV-min.js"></script>
-  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
-  <style>
-    .jsavcanvas { height: 340px; }
-    .jsavlist .jsavlistnode {
-      min-height: 25px !important;
-      max-height: 25px !important;
-      line-height: 23px !important;
-    }
-  </style>
-</head>
-
-<body data-height="720" data-width="950">
-<script>
-var
-  jsav,           // The JSAV object
-  arr_size,       // Full array size
-  userInput,      // Boolean: Tells us if user ever did anything
-  arrdata = [],   // The array to be sorted; keep for reset
-  answer = [],    // Array that holds the correct order for the values
-  jsavInput,      // JSAV array of input values
-  jsavBins,       // JSAV array that serves as a point for user to click on bins
-  jsavLists = [], // The actual set of lists
-  empty = [],     // Dummy for empty data to reset bin array
-  isSelected;     // Boolean: True iff user has already clicked an array element
-  var blockHeight = 31;  // Width/height of an array or list element
-
-// Variables used to keep track of the index and array of the
-// currently selected element within click handler
-var ValueIndex = -1;
-
-// Handle a click event on an array
-// On click of bottom array element, highlight.
-// On click of (free) position in top array, move highlighted element there.
-var clickHandler = function (arr, index) {
-  if (ValueIndex === -1) {
-    // Nothing is selected. We must be in the input array
-    if (arr !== jsavInput) { return; } // Wasn't in input array
-    // Don't let the user select an empty element,
-    if (arr.value(index) === "") { return; }
-    arr.highlight(index);
-    ValueIndex = index;
-  } else {
-    // We should be setting the value into a bin
-    if (arr !== jsavBins) { return; } // Wasn't in bin array
-    // Move currently selected element from input array to selected bin
-    jsavLists[index].addLast(jsavInput.value(ValueIndex));
-    jsavLists[index].layout({center: false});
-    jsavInput.unhighlight(ValueIndex);
-    jsavInput.value(ValueIndex, "");
-    ValueIndex = -1;
-  }
-  userInput = true;
-};
-
-// function that creates and initialises the arrays
-function resetInit() {
-  var i;
-  // Do initializations, both for initial use and reset
-  userInput = false;
-  ValueIndex = -1;
-  jsavInput = jsav.ds.array(arrdata, {indexed: true, center: false,
-                            layout: "vertical", top: 10});
-  jsavInput.click(function (index) { clickHandler(this, index); });
-  jsavBins = jsav.ds.array(empty, {indexed: true, center: false,
-                           layout: "vertical", top: 10, left: 200});
-  jsavBins.click(function (index) { clickHandler(this, index); });
-  for (i = 0; i < 10; i++) {
-    jsavLists[i] = jsav.ds.list({top: (12 + i * blockHeight), left: 260, nodegap: 30});
-    jsavLists[i].layout({center: false});
-  }
-  jsav.step();
-}
-
-// reset function definition
-var f_reset = function () {
-  jsavInput.clear();
-  for (var i = 0; i < 10; i++) {
-    jsavLists[i].clear();
-  }
-  resetInit();
-};
-
-// function that initialise JSAV library
-var initJSAV = function (asize) {
-  var i, j;
-  var shift = 1;
-  var temp = [];
-  // Do all of the one-time initializations
-  arr_size = asize;
-  jsav = new JSAV("jsav");
-  jsav.recorded();
-  arrdata = JSAV.utils.rand.numKeys(0, 999, arr_size);
-  for (i = 0; i < 10; i++) { empty[i] = ""; }
-  resetInit();
-  // Set up handler for reset button
-  $("#reset").click(function () { f_reset(); });
-  // Compute the answer
-  for (i = 0; i < 10; i++) {
-    temp[i] = [];
-  }
-  for (i = 0; i < arr_size; i++) {
-    var a = arrdata[i] % 10;
-    temp[a][temp[a].length] = arrdata[i];
-  }
-  var curr = 0;
-  for (i = 0; i < 10; i++) {
-    for (j = 0; j < temp[i].length; j++) {
-      answer[curr++] = temp[i][j];
-    }
-  }
-};
-
-// Check user's answer for correctness
-function checkAnswer(arr_size) {
-  var i, j;
-  var curr = 0;
-  for (i = 0; i < 10; i++) {
-    for (j = 0; j < jsavLists[i].size(); j++) {
-      if (jsavLists[i].get(j).value() !== answer[curr++]) {
-        return false;
+<html data-require="jsav math OpenHashPRO">
+  <head>
+    <title>Open Hashing Proficiency Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #OpenHashPRO .jsavcanvas {
+        height: 330px;
       }
-    }
-  }
-  if (curr !== arr_size) { return false; }
-  return true;
-}
-</script>
+      #OpenHashPRO .jsavlist .jsavlistnode {
+        min-height: 25px !important;
+        max-height: 25px !important;
+      }
+    </style>
+  </head>
 
-<div class="exercise">
-  <div class="vars">
-    <var id="arr_size">randRange(5, 8)</var>
-    <var id="JSAV">initJSAV(arr_size)</var>
-  </div>
-
-  <div class="problems">
-    <div> <!-- Supresses answer box -->
-      <p class="problem">On the left is an array of numbers that are
-         to be inserted (in order, from top to bottom) into the hash
-         table on the right. The hash table uses open hashing to deal
-         with collisions.</p>
-      <div class="question">
-        <p> Move each record on the left to the appropriate bin on the
-            right when using the simple mod hash function.</p>
-        <input id="reset" type="button" value="Reset" />
-        <div id="jsav" class="jsavcanvas"></div>
+  <body data-height="720" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="arr_size">randRange(5, 8)</var>
+        <var id="JSAV">openHashPRO.initJSAV(arr_size)</var>
       </div>
-      <div class="solution" data-type="custom">
-        <div class="guess">
-          [userInput]
+      <div class="problems">
+        <div id="OpenHashPROp"> <!-- Supresses answer box -->
+          <p class="problem">On the left is an array of numbers that are
+            to be inserted (in order, from top to bottom) into the hash
+            table on the right. The hash table uses open hashing to deal
+            with collisions.</p>
+          <div class="question">
+            <p> Move each record on the left to the appropriate bin on the
+              right when using the simple mod hash function.</p>
+            <input id="reset" type="button" value="Reset" />
+            <div id="OpenHashPRO" class="jsavcanvas"></div>
+          </div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [openHashPRO.userInput] </div>
+            <div class="validator-function">
+              if (!openHashPRO.checkAnswer(arr_size) && !guess[0]) {
+                return ""; // User did not click, and correct answer is not
+                           // initial array state
+              } else { return openHashPRO.checkAnswer(arr_size); }
+            </div>
+          </div>
+          <div class="hints">
+            <p>This is easy. For each item in the left array, going
+              from top to bottom ...</p>
+            <p>... click on that item, compute modulo 10, and click on
+              the corresponding bin in the right array.</p>
+          </div>
         </div>
-        <div class="validator-function">
-          if (!checkAnswer(arr_size) && !guess[0])
-          return ""; // User did not click, and correct answer is not
-                     // initial array state
-          else return checkAnswer(arr_size);
-        </div>
-      </div>
-      <div class="hints">
-        <p>This is easy. Just click on each value from top to bottom
-          in the left array ...</p>
-        <p>... compute modulo 10, and click on that bin in the right array.</p>
       </div>
     </div>
-  </div>
-</div>
-</body>
+  </body>
 </html>

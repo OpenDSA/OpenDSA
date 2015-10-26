@@ -173,20 +173,19 @@ If the limit goes to some constant other than zero, then
 .. todo::
    :type: Slideshow
 
-   A visualization that illustrates the meaning of lower bounds, and tight bounds and the difference between them and best, and average cases respectiely. This visualization here should be similar to the one for upper bounds. We may also think of presenting this as function plots in which the running time of the algorithm is plotted against its upper and lower bounds.
+   A visualization that illustrates the meaning of lower bounds, and
+   tight bounds and the difference between them and best, and average
+   cases respectiely. This visualization here should be similar to the
+   one for upper bounds. We may also think of presenting this as
+   function plots in which the running time of the algorithm is
+   plotted against its upper and lower bounds.
 
 
-This text is just for testing.
-This text is just for testing.
-This text is just for testing.
-This text is just for testing.
-This text is just for testing.
-
-  .. inlineav:: LowerBoundCON ss
-     :output: show
+.. inlineav:: LowerBoundCON ss
+   :output: show
 
 
-.. avembed:: Exercises/AlgAnalTest/LowerBoundsTheta.html ka
+.. avembed:: Exercises/AlgAnal/LowerThetaSumm.html ka
 
 Notes
 -----

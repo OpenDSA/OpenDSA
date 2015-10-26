@@ -133,12 +133,12 @@ the end, and inserting to an empty list.
 .. inlineav:: llistSpecialCON ss
    :output: show
    
-.. avembed:: Exercises/Development/llistInsertPRO.html ka
+.. avembed:: Exercises/List/LlistInsertPRO.html ka
 
 .. inlineav:: llistRemoveCON ss
    :output: show
    
-.. avembed:: Exercises/Development/llistRemovePRO.html ka
+.. avembed:: Exercises/List/LlistRemovePRO.html ka
 
 .. inlineav:: llistOtherCON ss
    :output: show

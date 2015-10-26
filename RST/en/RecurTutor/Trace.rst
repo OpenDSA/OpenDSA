@@ -4,13 +4,12 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: Sally Hamouda
+   :author: Sally Hamouda and Cliff Shaffer
    :satisfies: recursion tracing
    :requires: recursion writing
    :topic: Recursion
 
-
-.. odsalink:: AV/RecurTutor/recursionTrcCON.css
+.. odsalink:: AV/RecurTutor/recurTraceCON.css
 
 Tracing recursive code
 ======================
@@ -18,22 +17,22 @@ As we have seen in the previous section that to write a recursive code you shoul
 
 Tracing recursive functions is a great way to learn how they behave. After you become comfortable with tracing, you will rarely need to trace again. You will begin to develop confidence that recursion will work. When tracing most recursive functions, there are two parts:  winding and unwinding. The "winding" part occurs as the recursion executes towards the base case. The "un-winding" part occurs when the recursion returns back to the original call. Most people forget there is the "unwinding" phase. The winding and unwinding is not really special to recursion. It occurs with any function.
 
-.. inlineav:: recursionTrcWindCON ss
+.. inlineav:: recurTraceWindCON ss
    :output: show 
 
 Next we will show a tracing example for a simple sum function:
 
-.. inlineav:: recursionTrcSumCON ss
+.. inlineav:: recurTraceSumCON ss
    :output: show
 
 Next we will show a tracing example of a factorial function:
 
-.. inlineav:: recursionTrcFctCON ss
+.. inlineav:: recurTraceFctCON ss
    :output: show 
 
 As you trace the code, you should observe several things:
 
-.. inlineav:: recursionTrcSum2CON ss
+.. inlineav:: recurTraceSum2CON ss
    :output: show 
 
 Starting at the base case, you have a value that is then used to solve the call
@@ -48,7 +47,7 @@ AFTER the recursive call, the function is said to be tail-recursive.
 
 Next Example will model the domino effect recursively:
 
-.. inlineav:: recursionTrcDmnCON ss
+.. inlineav:: recurTraceDmnCON ss
    :output: show 
 
 After modeling the domino effect recursively, the two steps
@@ -72,13 +71,13 @@ first followed by some subsequent computation.
 
 Next visualization will show how we can use the previously illustrated Domino effect solving technique to print positive integers from 1 to N recursively. 
 
-.. inlineav:: recursionTrcDmnPrntCON ss
+.. inlineav:: recurTraceDmnPrntCON ss
    :output: show 
 
 
 Next visualization will show how we can use the previously illustrated Domino effect solving technique to Count the number of digits within an integer n recursively. 
 
-.. inlineav:: recursionTrcDmnCntCON ss
+.. inlineav:: recurTraceDmnCntCON ss
    :output: show 
 
 Towers of Hanoi is an example of a problem which requires multiple recursive calls. 
@@ -97,16 +96,15 @@ The conditions for moving the disks are:
 
 Next visualization will show a tracing for the Towers of Hanoi problem.
 
-.. inlineav:: recursionTrcTOHCON ss
+.. inlineav:: recurTraceTOHCON ss
    :output: show 
 	   
 
-
-.. odsascript:: AV/RecurTutor/recursionTrcWindCON.js
-.. odsascript:: AV/RecurTutor/recursionTrcSumCON.js
-.. odsascript:: AV/RecurTutor/recursionTrcFctCON.js
-.. odsascript:: AV/RecurTutor/recursionTrcSum2CON.js
-.. odsascript:: AV/RecurTutor/recursionTrcDmnCON.js
-.. odsascript:: AV/RecurTutor/recursionTrcDmnPrntCON.js
-.. odsascript:: AV/RecurTutor/recursionTrcDmnCntCON.js
-.. odsascript:: AV/RecurTutor/recursionTrcTOHCON.js
+.. odsascript:: AV/RecurTutor/recurTraceWindCON.js
+.. odsascript:: AV/RecurTutor/recurTraceSumCON.js
+.. odsascript:: AV/RecurTutor/recurTraceFctCON.js
+.. odsascript:: AV/RecurTutor/recurTraceSum2CON.js
+.. odsascript:: AV/RecurTutor/recurTraceDmnCON.js
+.. odsascript:: AV/RecurTutor/recurTraceDmnPrntCON.js
+.. odsascript:: AV/RecurTutor/recurTraceDmnCntCON.js
+.. odsascript:: AV/RecurTutor/recurTraceTOHCON.js

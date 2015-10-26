@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html data-require="jsav math ProbeCommon">
+  <head>
+    <title>Double Hashing Proficiency Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="arrSize">11</var>
+        <var id="hashFunction">"h(k) = k  mod " + arrSize</var>
+        <var id="JSAV">probeCommon.initJSAV("HashDoublePPRO", arrSize)</var>
+        <var id="H1">probeCommon.getH1(probeCommon.currentKey)</var>
+        <var id="H2">probeCommon.getH2(probeCommon.currentKey)</var>
+      </div>
+      <div class="problems">
+        <div id="HashDoublePPROp"> <!-- Supresses answer box -->
+          <p class="problem">
+            Given the following hash table, use hash
+            function <var>hashFunction</var> and handle collisions
+            using Double Hashing with probe function
+            p(K, i) = i*h2(K), and h2(K) = 1 + (k % 10).
+          </p>
+          <p class="question">
+            In which slot should the record with key
+            value <var>probeCommon.currentKey</var> be inserted?
+          </p>
+          <p>h1(<var>probeCommon.currentKey</var>) = <var>H1</var>.</p>
+          <p>h2(<var>probeCommon.currentKey</var>) = <var>H2</var>.</p>
+          <input id="reset" type="button" value="Reset" />
+          <div id="HashDoublePPRO" class="jsavcanvas"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [probeCommon.userInput] </div>
+            <div class="validator-function">
+              if (!probeCommon.checkAnswer(arrSize) && !guess[0]) {
+                return ""; // User did not click, and correct answer is not
+                           // initial array state
+              } else { return probeCommon.checkAnswer(arrSize); }
+            </div>
+          </div>
+          <div class="hints">
+            <p>First, we hash to the home slot with the first hash function.</p>
+            <p>If there is a collistion, then we use the second hash
+              function to compute a stepsize.</p>
+            <p>We then use linear probing by the computed step size.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,10 +1,10 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2015 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Cliff Shaffer
+   :author: Cliff Shaffer and David Parillo
    :satisfies: DSA Introduction
    :topic: Introduction
 
@@ -88,6 +88,19 @@ estimate the time cost for every algorithm presented.
 This allows you to see how each algorithm compares to other
 algorithms for solving the same problem in terms of its
 efficiency.
+
+.. showhidecontent:: se
+
+   While the main focus of this course *_is_* data structures and algorithms,
+   this course will also cover some additional topics which are not standard fare
+   in a data structures course:
+
+   #. An introduction to object orientation and the Unified Modeling Language (UML).
+
+   #. An introduction to software design patterns.
+
+   #. An introduction to software development processes.
+
 
 A Philosophy of Data Structures
 -------------------------------

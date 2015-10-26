@@ -1,0 +1,69 @@
+<!--
+    Array-Based Queue Enqueue Proficiency Exercise.
+    Written by Junyang Chen and Cliff Shaffer
+  -->
+<!DOCTYPE html>
+<html data-require="jsav math AqueueEnqueuePRO CircularQueue">
+  <head>
+    <title>Array-Based Queue Enqueue Proficiency Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #AqueueEnqueuePRO .jsavcanvas {
+        height: 320px;
+      }
+      #AqueueEnqueuePRO .highlight {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body data-height="830" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="maxSize">randRange(5, 10)</var>
+        <var id="front">randRange(0, maxSize-1)</var>
+        <var id="rear">randRange(0, maxSize-1)</var>
+        <var id="insert_value">randRange(0, 999)</var>
+        <var id="JSAV">aqueueEnqueuePRO.initJSAV(maxSize, front, rear, insert_value)</var>
+      </div>
+      <div class="problems">
+        <div id="AqueueEnqueuePROp"> <!-- Supresses answer box -->
+          <p class="problem">Show how the enqueue operation works by
+                selecting a position for where the new item goes, and update
+                "rear" and "front" if appropriate.</p>
+            <div class="question">
+            <p>To insert a value into the queue, first click on it and
+              then click "Insert". To move "front" or "rear", click
+              it, then click the desired position in the queue.</p>
+              <input id="reset" type="button" value="Reset" />
+              <input id="insert" type="button" value="Insert" />
+              <div id="AqueueEnqueuePRO" class="jsavcanvas"></div>
+            </div>
+            <div class="solution" data-type="custom">
+              <div class="guess">
+                [aqueueEnqueuePRO.userInput]
+              </div>
+              <div class="validator-function">
+                if (!aqueueEnqueuePRO.checkAnswer(maxSize) && !guess[0]) {
+                  return ""; // User did not click, and correct answer is not
+                             // initial array state
+                } else { return aqueueEnqueuePRO.checkAnswer(maxSize); }
+              </div>
+            </div>
+            <div class="hints">
+            <p>We always insert to the rear of the queue.</p>
+            <p>But we have to update "rear" first by moving it one step
+              clockwise.</p>
+            <p>Move "rear" one step clockwise. Then Click on the empty
+              space that "rear" now points at to highlight it and then
+              click "Insert".</p>
+            <p>SPECIAL CASE: We require that there always be one empty
+              position in the queue's array. If there is only, then it
+              is full and nothing can be inserted. So just click
+              "check answer".</p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

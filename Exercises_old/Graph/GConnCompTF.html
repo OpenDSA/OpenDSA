@@ -1,79 +1,44 @@
 <!DOCTYPE html>
-<html data-require="math">
-<head>
-  <title>Connected Components</title>
-  <script src="../../lib/jquery.min.js"></script>
-  <script src="../../lib/jquery-ui.min.js"></script>
-  <script src="../../JSAV/lib/jquery.transit.js"></script>
-  <script src="../../JSAV/lib/raphael.js"></script>
-  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-  <script src="../../JSAV/build/JSAV-min.js"></script>
-  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
-  <style>
-    .jsavcontainer {
-      height: 200px;
-    }
-  </style>
-</head>
+<html data-require="jsav math GConnCompTF">
+  <head>
+    <title>Connected Components</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #GConnCompTF {
+        height: 200px;
+      }
+    </style>
+  </head>
 
-<body data-height="650" data-width="950">
-<script>
-var initJSAV = function () {
-  var jsav = new JSAV("jsav");
-  jsav.recorded();
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="JSAV">gConnCompTF.initJSAV()</var>
+      </div>
 
-  var gTop = 0; 
-  var gLeft = 150;
-
-  var graph = jsav.ds.graph({center: true, visible: true, height: 200, directed: true});
-
-  var node0 = graph.addNode("0", {left: gLeft, top: gTop});
-  var node1 = graph.addNode("1", {left: gLeft,  top: gTop + 100});
-  var node2 = graph.addNode("2", {left: gLeft + 100, top: gTop});
-  var node3 = graph.addNode("3", {left: gLeft + 100, top: gTop + 100});
-  var node4 = graph.addNode("4", {left: gLeft + 50, top: gTop + 50});
-  var node5 = graph.addNode("5", {left: gLeft + 175, top: gTop + 100});
-  var node6 = graph.addNode("6", {left: gLeft + 175, top: gTop});
-  var node7 = graph.addNode("7", {left: gLeft + 250, top: gTop});
-
-  //add edges to grapph 
-  graph.addEdge(node0, node1);
-  graph.addEdge(node0, node4);
-  graph.addEdge(node1, node3);
-  graph.addEdge(node2, node3);
-  graph.addEdge(node2, node4);
-  graph.addEdge(node4, node1);
-  graph.addEdge(node6, node5);
-  graph.layout();
-}
-</script> 
-
-<div class="exercise">
-  <div class="vars">
-    <var id="JSAV">initJSAV()</var>
-  </div>
-
-  <div class="problems">
-    <div id="problem-type-or-description-1">
-      <p class="problem"> 
-        <div id="jsav" class="jsavcanvas"></div>
-      </p>
-      <p class="question">
-        How many connected components does this graph have?</p>
-      <div class="solution"><var>"3"</var></div>
-      <ul class="choices">
-        <li><var>"1"</var></li>
-        <li><var>"2"</var></li>     
-        <li><var>"4"</var></li>
-        <li><var>"undetermined"</var></li>             
-      </ul>
-      <div class="hints">
-        <p>The maximally connected subgraphs of an undirected graph are called connected components.</p>
-        <p> Vertices 0, 1, 2, 3, and 4 form one connnected component</p>
+      <div class="problems">
+        <div id="GConnCompTFp">
+          <p class="problem">
+            <div id="GConnCompTF" class="jsavcanvas"></div>
+          </p>
+          <p class="question">
+            How many connected components does this graph have?</p>
+          <div class="solution">3</div>
+          <ul class="choices" data-category="true">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>The number of components is undetermined</li>
+          </ul>
+          <div class="hints">
+            <p>The maximally connected subgraphs of an undirected
+              graph are called connected components.</p>
+            <p>Vertices 0, 1, 2, 3, and 4 form one connnected component</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</body>
+  </body>
 </html>

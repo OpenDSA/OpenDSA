@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: Sally Hamouda
+   :author: Sally Hamouda and Cliff Shaffer
    :requires: recursion tracing
    :satisfies: recursion
    :topic: Recursion
@@ -13,6 +13,3 @@ Summary Exercises
 ===========================
 
 .. avembed:: Exercises/RecurTutor/recChapterSumm.html ka
-
-
-

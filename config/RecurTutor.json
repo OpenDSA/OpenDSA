@@ -2,7 +2,9 @@
   "title": "Recursion Tutor",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
-  "code_lang": {"Java": ["java"]},
+  "code_lang": {
+    "Java": { "ext":["java"], "label":"Java","lang":"java"}
+  },
   "module_origin": "http://algoviz.org",
   "exercise_server": "https://opendsa.cs.vt.edu",
   "logging_server": "https://opendsa.cs.vt.edu",
@@ -15,7 +17,7 @@
   },
   "chapters": {
     "Recursion": {
-      "RecurTutor/Introduction": {
+      "RecurTutor/RecIntro": {
         "long_name": "Recursion Chapter Introduction",
         "exercises": {
           "recurIntroDelegateCON": {
@@ -35,13 +37,13 @@
       "RecurTutor/Write": {
         "long_name": "How to write a recursive function",
         "exercises": {
-          "recursionWrtStepsCON": {
+          "recurWriteStepsCON": {
             "long_name": "Recursion Code Writing Slideshow 1",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "recursionWrtSumCON": {
+          "recurWriteSumCON": {
             "long_name": "Recursion Code Writing Slideshow 2",
             "required": true,
             "points": 0.0,
@@ -185,13 +187,6 @@
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recWIsMeasurblPROGSumm": {
-            "long_name": "Recursion Code Writing Exercise Is Measurable",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
           "recWStckRevrsPROGSumm": {
             "long_name": "Recursion Code Writing Exercise Stack Reversal",
             "required": true,
@@ -204,49 +199,49 @@
       "RecurTutor/Trace": {
         "long_name": "How to trace a recursive function?",
         "exercises": {
-          "recursionTrcWindCON": {
+          "recurTraceWindCON": {
             "long_name": "Recursion Tracing Winding and Unwinding",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "recursionTrcSumCON": {
+          "recurTraceSumCON": {
             "long_name": "Recursion Tracing Sum Function",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "recursionTrcFctCON": {
+          "recurTraceFctCON": {
             "long_name": "Recursion Tracing Factorial Function",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "recursionTrcSum2CON": {
+          "recurTraceSum2CON": {
             "long_name": "Recursion Tracing Sum Winding and Unwinding",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "recursionTrcDmnCON": {
+          "recurTraceDmnCON": {
             "long_name": "Recursion Tracing General Domino Effect",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "recursionTrcDmnPrntCON": {
+          "recurTraceDmnPrntCON": {
             "long_name": "Recursion Tracing Domino Effect for Printing",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "recursionTrcDmnCntCON": {
+          "recurTraceDmnCntCON": {
             "long_name": "Recursion Tracing Domino Effect for Counting",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "recursionTrcTOHCON": {
+          "recurTraceTOHCON": {
             "long_name": "Recursion Tracing Towers of Hanoi",
             "required": true,
             "points": 0.0,

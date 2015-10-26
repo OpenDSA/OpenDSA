@@ -6,6 +6,7 @@
   "code_lang": {
     "Java_Generic": { "ext":["java"], "label":"Java (Generic)","lang":"java"}
   },
+  "tabbed_codeinc": false,
   "module_origin": "http://algoviz.org",
   "exercise_server": "https://opendsa.cs.vt.edu/",
   "logging_server": "https://opendsa.cs.vt.edu/",
@@ -25,6 +26,13 @@
     "Introduction": {
       "Background/IntroDSA.rst": {
         "long_name": "Introduction to Data Structures and Algorithms",
+        "sections": {
+          "se": {
+            "long_name": "software engineering topics",
+            "showhide": "none",
+            "remove": true
+          }
+        },
         "exercises": {
           "IntroSumm": {
             "long_name": "Introduction Summary Questions",
@@ -37,7 +45,13 @@
       "Design/ADT": {
         "long_name": "Abstract Data Types",
         "exercises": {
-          "ADTCON": {}
+          "ADTCON": {},
+          "IntroADTSumm": {
+            "long_name": "ADT Summary Questions",
+            "required": true,
+            "points": 1.0,
+            "threshold": 4
+          }
         }
       }
     },
@@ -122,32 +136,63 @@
     "Algorithm Analysis": {
       "AlgAnal/AnalIntro": {
         "long_name": "Comparing Algorithms",
-        "exercises": {}
+	"dispModComp": true,
+        "exercises": {
+          "CompareAlgSumm": {
+            "long_name": "Comparing Growth Rates Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          },
+          "GrowthRates": {
+            "long_name": "Growth Rates Ordering Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          }
+        }
       },
       "AlgAnal/AnalCases": {
         "long_name": "Best, Average, and Worst Cases",
+	"dispModComp": true,
         "exercises": {}
       },
       "AlgAnal/AnalCompvsAlg": {
         "long_name": "A Faster Computer, or a Faster Algorithm?",
-        "exercises": {}
+        "exercises": {
+          "FasterCorASumm": {
+            "long_name": "Faster Computer or Faster Algorithm Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          }
+        }
       },
       "AlgAnal/AnalAsymptotic": {
         "long_name": "Asymptotic Analysis and Upper Bounds",
         "sections": {
           "thetadisc": {
             "long_name": "theta disclaimer",
-            "showhide": "none"
+            "showhide": "none",
+            "remove": true
           }
         },
-        "exercises": {}
+        "exercises": {
+          "UpperBoundsSumm": {
+            "long_name": "Asymptotic Analysis and Upper Bounds Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          }
+        }
       },
       "AlgAnal/AnalProgram": {
         "long_name": "Calculating the Running Time of a Program",
         "sections": {
           "binsearchpro": {
             "long_name": "Binary Search Proficiency Exercise",
-            "showhide": "none"
+            "showhide": "none",
+            "remove": false
           }
         },
         "exercises": {

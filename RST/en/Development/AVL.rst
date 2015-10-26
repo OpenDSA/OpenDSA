@@ -71,7 +71,7 @@ the root to the newly inserted node.
 
 Our problem now is how to balance the tree in :math:`O(\log n)` time.
 It turns out that we can do this using a series of local operations
-known as :term:`rotations`.
+known as :term:`rotations <rotation>`.
 Cases 1 and 4 can be fixed using a :term:`single rotation`,
 as shown in Figure :num:`Figure #AVLsingle`.
 Cases 2 and 3 can be fixed using a :term:`double rotation`, as shown

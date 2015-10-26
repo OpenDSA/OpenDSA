@@ -4,7 +4,7 @@ class AStack implements Stack {
   private Object stackArray[];    // Array holding stack
   private static final int defaultSize = 10;
   private int maxSize;            // Maximum size of stack
-  private int top;                // Index for top Object
+  private int top;                // First free position at top
 
   // Constructors
   AStack(int size) {

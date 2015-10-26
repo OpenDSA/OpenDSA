@@ -5,12 +5,18 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: Sorting
-   :topic: Math Background
+   :satisfies: list summary
+   :requires: array-based list; linked list; array-based stack; linked stack; array-based queue; linked queue;
+   :topic: Linear structures
 
 Linear Structure Summary Exercises
 ==================================
 
-Here are some practice questions for various topics related to this chapter.
+Here are some general practice questions about various data structures
+in this chapter.
 
-.. avembed:: Exercises/List/LstChptrSumm.html ka
+.. avembed:: Exercises/List/ListdsSumm.html ka
+
+Here is a summary exercise with questions from everything in this chapter.
+
+.. avembed:: Exercises/List/ListChapterSumm.html ka

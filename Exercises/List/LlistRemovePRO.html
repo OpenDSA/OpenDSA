@@ -1,0 +1,87 @@
+<!--
+    Linked List Deletion mini-proficiency exercise.
+    Written by Junyang Chen and Cliff Shaffer
+  -->
+
+<!DOCTYPE html>
+<html data-require="jsav math LlistRemovePRO LinkList">
+  <head>
+    <title>Linked List Deletion Proficiency Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #LlistRemovePRO .bgColor {
+        font-size: 130%;
+        background-color: yellow;
+      }
+
+      #LlistRemovePRO .jsavpointer {
+        width: 40px;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      #LlistRemovePRO .highlight {      /* For the pointer */
+        background-color: yellow;
+      }
+    </style>
+  </head>
+
+  <body data-height="900" data-width="950">
+
+    <div class="exercise">
+      <div class="vars">
+        <var id="arr_size">randRange(4, 6)</var>
+        <var id="curr_pos">randRange(0, arr_size-2)</var>
+        <var id="JSAV">llistRemovePRO.initJSAV(arr_size, curr_pos)</var>
+      </div>
+
+      <div class="problems">
+        <div id=LlistRemovePROp> <!-- Supresses answer box -->
+          <p class="problem">Your task in this exercise is to show the
+            behavior for Linked list deletion. You must delete the element
+            in the current position.
+          </p>
+          <div class="question">
+            <p>To move an element, click on it (to highlight it), then
+              click on the element position in the node where you want it to
+              go.
+              To set the "return" value, click on the element position in the
+              node you want to return (to highlight it), then click on the
+              return value box to set it to the highlighted value.
+              You can make a node's "next" pointer point to "null" by
+              first clicking the pointer for the node and then
+              clicking the "makenull" button.
+              To change the target of labels, such as "curr" and "tail",
+              click on the label (to highlight it), then click on the node
+              you want it to point to.</p>
+            <input id="reset" type="button" value="Reset" />
+            <input id="makenull" type="button" value="makenull" />
+            <div id="LlistRemovePRO" class="jsavcanvas"></div>
+          </div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [llistRemovePRO.userInput] </div>
+            <div class="validator-function">
+              if (!llistRemovePRO.checkAnswer(arr_size, curr_pos) && !guess[0]) {
+                return ""; // User did not click, and correct answer is not
+                           // initial array state
+              } else {return llistRemovePRO.checkAnswer(arr_size, curr_pos);}
+            </div>
+          </div>
+          <div class="hints">
+            <p>If "curr" points to the same node as "tail", the
+              default list is a correct answer. Otherwise, the first
+              step could be to remember the value of the "curr"
+              node.</p>
+            <p>Copy value to "curr" from the node following 'curr'.</p>
+            <p>If "curr" points to the node proceding tail, sets the
+              "curr" node to point to "null". Label "tail" should point
+              to the current node. Otherwise, the "curr" node should
+              point to the following node of the node it used to point
+              to. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

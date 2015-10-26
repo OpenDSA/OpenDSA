@@ -1,0 +1,20 @@
+{
+  "translations" :{
+    "en": {
+      "av_l1": "You",
+      "av_l2": "1st friend",
+      "av_l3": "2nd friend",
+      "av_l4": "Sum = 50",
+      "av_l5": "Sum = 75",
+      "av_l6": "Sum = 20 + 50 + 75",
+      "av_c1": "Suppose that you want to compute the sum of the values stored in a binary tree.",
+      "av_c2": "You can ask two friends to help you.",
+      "av_c3": "The first friend will take the left sub-tree to sum it.",
+      "av_c4": "The second friend will take the right sub-tree to sum it",
+      "av_c5": "The first friend will return the sum of  the left sub-tree",
+      "av_c6": "The second friend will return the sum of  the left sub-tree",
+      "av_c7": "You will simply sum the root value to the sums received from your friends",
+      "av_c8": "You don't need to think about the details of recursion. Just accept that your friends (the recursive calls) will return back to you the correct answer for what they do."
+    }
+  }
+}

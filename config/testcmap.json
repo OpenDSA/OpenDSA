@@ -2,7 +2,9 @@
   "title": "Test",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
-  "code_lang": {"C++": ["cpp", "h"], "Processing": ["pde"]},
+  "code_lang": {
+    "Processing": { "ext":["pde"], "label":"Processing","lang":"java"}
+  },
   "lang": "en",
   "module_origin": "http://algoviz.org",
   "build_JSAV": false,

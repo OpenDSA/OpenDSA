@@ -4,11 +4,9 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: Sally Hamouda
+   :author: Sally Hamouda and Cliff Shaffer
    :satisfies: recursion writing
    :topic: Recursion
-
-
 
 Writing Practice Exercises
 ==========================
@@ -24,7 +22,5 @@ Writing Practice Exercises
 .. avembed:: Exercises/RecurTutor/recWPascalPROGSumm.html ka
 
 .. avembed:: Exercises/RecurTutor/recWCnonballPROGSumm.html ka
-
-.. avembed:: Exercises/RecurTutor/recWIsMeasurblPROGSumm.html ka
 
 .. avembed:: Exercises/RecurTutor/recWStckRevrsPROGSumm.html ka

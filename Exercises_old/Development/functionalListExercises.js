@@ -575,7 +575,7 @@ var minmax1getACorrectAnswer = function(){
 	}
 	else
 	{
-		//then there is a correct answer, so select the correct value progression of the MAX var from it's current value
+		//then there is a correct answer, so select the correct value progression of the MAX var from its current value
 		//console.log("correctAns: "+ans);
 		ans = arrayToString(correctAnswer);
 	}
@@ -954,7 +954,7 @@ var MergeSort1Choice = function(){
 	else
 	{
 		var choice = correctAnswer;
-		//generate a number above or below the current answer, check if its been used,if not use it, if so, generate another until it's not used
+		//generate a number above or below the current answer, check if its been used,if not use it, if so, generate another until it is not used
 		
 		var delta = randNumBetween(1,5);
 		var subDelta = randomTrueFalse();//should we subtract (true) or add (false) the delta
@@ -1204,7 +1204,7 @@ var QuickSort1Choice = function(){
 	else
 	{
 		var choice = correctAnswer;
-		//generate a number above or below the current answer, check if its been used,if not use it, if so, generate another until it's not used
+		//generate a number above or below the current answer, check if its been used,if not use it, if so, generate another until it is not used
 		
 		var delta = randNumBetween(1,5);
 		var subDelta = randomTrueFalse();//should we subtract (true) or add (false) the delta

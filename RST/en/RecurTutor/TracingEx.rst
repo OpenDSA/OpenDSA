@@ -4,17 +4,21 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: Sally Hamouda
+   :author: Sally Hamouda and Cliff Shaffer
    :satisfies: recursion tracing
    :topic: Recursion
 
 Tracing Practice Exercises
 ===========================
+
 .. avembed:: Exercises/RecurTutor/recTracingSumm1.html ka
+
 .. avembed:: Exercises/RecurTutor/recTracingSumm2.html ka
+
 .. avembed:: Exercises/RecurTutor/recTracingSumm3.html ka
+
 .. avembed:: Exercises/RecurTutor/recTracingSumm4.html ka
+
 .. avembed:: Exercises/RecurTutor/recTracingSumm5.html ka
+
 .. avembed:: Exercises/RecurTutor/recTracingSumm6.html ka	
-
-

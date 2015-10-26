@@ -5,7 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: collision resolution
+   :satisfies: hash deletion
    :topic: Hashing
 
 Deletion

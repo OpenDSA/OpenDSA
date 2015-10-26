@@ -9,7 +9,7 @@
       "av_c6": "<code>enqueue</code> the value 3.",
       "av_c7": "<code>enqueue</code> the value 30.",
       "av_c8": "<code>enqueue</code> the value 4.",
-      "av_c9": "Now, both the enqueue and the dequeue operations can be performed in $\theta(1)$ time because no other elements in the queue need be moved."
+      "av_c9": "Now, both the enqueue and the dequeue operations can be performed in $\\theta(1)$ time because no other elements in the queue need be moved."
     }
   }
 }

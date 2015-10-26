@@ -4,18 +4,18 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: Sally Hamouda
-   :prerequisites:
+   :author: Sally Hamouda and Cliff Shaffer
+   :requires: recursion writing
    :topic: Recursion
-
-
 
 
 Harder Code Completion Practice Exercises
 ===========================================
 
 .. avembed:: Exercises/RecurTutor/recHMinPROGSumm.html ka
+
 .. avembed:: Exercises/RecurTutor/recHIsReversePROGSumm.html ka
+
 .. avembed:: Exercises/RecurTutor/recHDecibinaryPROGSumm.html ka
 
 

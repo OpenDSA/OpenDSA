@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :satisfies: hash intro
    :topic: Hashing
 
 .. index:: ! hashing
