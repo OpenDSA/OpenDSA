@@ -12,11 +12,11 @@
 Harder Code Completion Practice Exercises
 ===========================================
 
-.. avembed:: Exercises/RecurTutor/recHMinPROGSumm.html ka
+.. avembed:: Exercises/RecurTutor/RecHMinPROG.html ka
 
-.. avembed:: Exercises/RecurTutor/recHIsReversePROGSumm.html ka
+.. avembed:: Exercises/RecurTutor/RecHIsReversePROG.html ka
 
-.. avembed:: Exercises/RecurTutor/recHDecibinaryPROGSumm.html ka
+.. avembed:: Exercises/RecurTutor/RecHDecibinaryPROG.html ka
 
 
 

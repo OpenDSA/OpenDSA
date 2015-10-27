@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html data-require="codemirror blockUI math math-format word-problems spin">
   <head>
-    <title> Binary Tree Leaf Nodes Count Exercise</title>
+    <title> Recursion Programming Exercise: Add numbers in odd array positions</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
-      #BTleafPROG .CodeMirror {
+      #RecCAddoddPROG .CodeMirror {
         height: 200px;
       }
     </style>
@@ -19,20 +19,21 @@
         </var>
       </div>
       <div class="problems">
-        <div id="BTleafPROGp"> <!-- Supresses answer box -->
-          <p class="problem">Write a recursive function to count the
-            number of leaf nodes in the binary tree pointed at by "root".
-            You must use the "isleaf" method to check if the node is leaf or
-            not. That is, do not check the value of the left and right
-            children to see if they are null or not to decide if the node is
-            a leaf.<br/>
-
+        <div id="RecCAddoddPROGp"> <!-- Supresses answer box -->
+          <p class="problem">For function "addodd", write
+            the missing recursive call. This function
+            should return the sum of all positive odd numbers less than or
+            equal to "n".<br/>
             <textarea id="codeTextarea" name="codeTextarea">
-int BTleaf(BinNode root) {
-// Your code goes between these lines
-
-
-// Your code goes between these lines
+int addodd(int n) {
+  if (n <= 0) {
+    return 0;
+  }
+  if (n % 2 != 0) { // Odd value
+    return <<Missing a Recursive call>>
+  } else { // Even value
+    return addodd(n - 1);
+  }
 }</textarea>
           </p>
           <div class="question"></div>
@@ -42,19 +43,14 @@ int BTleaf(BinNode root) {
               if (guess[0] != initEditor) {
                 console.log(guess[0]);
                 window.codeValue = guess[0];
-                window.progexType= "binarytree";
-                window.summexName= "BTleafPROG";
+                window.progexType = "recursion";
+                window.summexName = "recCAddoddPROG";
               } else {
                 return "";
               }
             </div>
           </div>
           <div class="hints">
-            <p> Make sure that you are answering the right question. There
-              is an example in the text that counts all nodes in a
-              tree. However, this exercise asks you to count all leaf
-              nodes in a tree.
-            </p>
           </div>
         </div>
       </div>

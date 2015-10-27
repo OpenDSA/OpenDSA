@@ -11,6 +11,9 @@
 Writing Practice Exercises
 ==========================
 
+Here is a series of code writing exercises.
+For each one, you will write a complete recursive function.
+
 .. avembed:: Exercises/RecurTutor/recWIsbalancPROGSumm.html ka
 
 .. avembed:: Exercises/RecurTutor/recWChckPlndrmPROGSumm.html ka
