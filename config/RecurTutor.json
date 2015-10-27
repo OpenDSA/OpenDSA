@@ -113,28 +113,28 @@
         }
       },
       "RecurTutor/HarderWrite": {
-        "long_name": "How to write a more sophisticated recursive function",
+        "long_name": "Writing More Sophisticated Recursive Functions"
         "exercises": {}
       },
       "RecurTutor/HarderCodeCompletionEx": {
         "long_name": "Harder Code Completion Exercises",
         "exercises": {
-          "recHMinPROGSumm": {
-            "long_name": "Recursion Harder Code Completion Exercise Minimum",
+          "RecHMinPROG": {
+            "long_name": "Recursion Code Completion Exercise: Minimum",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recHIsReversePROGSumm": {
-            "long_name": "Recursion Harder Code Completion Exercise Is Reverse",
+          "RecHIsReversePROG": {
+            "long_name": "Recursion Code Completion Exercise: Is Reverse",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recHDecibinaryPROGSumm": {
-            "long_name": "Recursion Harder Code Completion Exercise Decimal to Binary",
+          "RecHDecibinaryPROG": {
+            "long_name": "Recursion Code Completion Exercise: Decimal to Binary",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
@@ -146,7 +146,7 @@
         "long_name": "Code Writing Exercises",
         "exercises": {
           "recWIsbalancPROGSumm": {
-            "long_name": " Recursion Code Writing Exercise Is Balanced",
+            "long_name": "Recursion Code Writing Exercise Is Balanced",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html data-require="codemirror blockUI math math-format word-problems spin">
   <head>
-    <title> Recursion Programming Exercise: Cummulative Sum</title>
+    <title> Recursion Programming Exercise: Minimum of array</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
-      #RecCSumtokPROG .CodeMirror {
+      #RecCSumOfDigitsPROG .CodeMirror {
         height: 200px;
       }
     </style>
@@ -19,17 +19,18 @@
         </var>
       </div>
       <div class="problems">
-        <div id="RecCSumtokPROGp"> <!-- Supresses answer box -->
-          <p class="problem">For function "sumtok", write
-            the missing recursive call. This function returns the
-            sum of the values from 1 to "k". For example, sumtok(5) will
-            return 15.<br/>
+        <div id="RecHMinPROGp"> <!-- Supresses answer box -->
+          <p class="problem">For function "recursiveMin", write
+            the missing part of the recursive call. This function
+            should return the minimum element in an array of
+            integers. You should assume that "recursiveMin" is
+            initially called with "startIndex" = 0.<br/>
             <textarea id="codeTextarea" name="codeTextarea">
-int sumtok(int k) {
-  if (k <= 0) {
-    return 0;
+int recursiveMin(int numbers[], int startIndex) {
+  if (startIndex == numbers.length - 1) {
+    return numbers[startIndex];
   } else {
-    return <<Missing a Recursive call>>
+    return Math.min(numbers[startIndex], <<Missing a Recursive call>>);
   }
 }</textarea>
           </p>
@@ -41,7 +42,7 @@ int sumtok(int k) {
                 console.log(guess[0]);
                 window.codeValue = guess[0];
                 window.progexType = "recursion";
-                window.summexName = "recCSumtokPROG";
+                window.summexName = "recHMinPROG";
               } else {
                 return "";
               }
@@ -52,5 +53,6 @@ int sumtok(int k) {
         </div>
       </div>
     </div>
+
   </body>
 </html>
