@@ -205,10 +205,10 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   TAGS = [ ('script', 'src'), ('link', 'href'), ('img', 'src'), ('a', 'href') ]
   
   # KILL MATHJAX
-  '''Helpful for debugging, because MathJax takes forever to load'''
-  for possible_math_jax in soup.find_all('script'):
-    if possible_math_jax.has_attr('src') and possible_math_jax['src'].startswith('//cdn.mathjax.org/mathjax'):
-      possible_math_jax.extract()
+  #'''Helpful for debugging, because MathJax takes forever to load'''
+  #for possible_math_jax in soup.find_all('script'):
+  #  if possible_math_jax.has_attr('src') and possible_math_jax['src'].startswith('//cdn.mathjax.org/mathjax'):
+  #    possible_math_jax.extract()
   
   
   # Find all of the scripts, links, images, etc. that we might need
