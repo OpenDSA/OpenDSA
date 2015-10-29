@@ -13,24 +13,51 @@
 
 Tracing recursive code
 ======================
-As we have seen in the previous section that to write a recursive code you should think in a top-down manner. The successful way is not to worry about how the recursive call solves the sub-problem. Simply accept that it will solve it correctly, and use this result to in turn correctly solve the original problem. On the other hand, if it is required to read or trace a recursive function you need to think in a bottom-up manner. That means you will need first to evaluate the base case and work backward until reaching the required function call. In this section we will illustrate how can you trace a recursive call.
 
-Tracing recursive functions is a great way to learn how they behave. After you become comfortable with tracing, you will rarely need to trace again. You will begin to develop confidence that recursion will work. When tracing most recursive functions, there are two parts:  winding and unwinding. The "winding" part occurs as the recursion executes towards the base case. The "un-winding" part occurs when the recursion returns back to the original call. Most people forget there is the "unwinding" phase. The winding and unwinding is not really special to recursion. It occurs with any function.
+When writing a recursive function, you should think in a top-down
+manner.
+Do not worry about how the recursive call solves the sub-problem.
+Simply accept that it will solve it correctly.
+Use this result as though you had called some library function,
+to correctly solve the original problem.
+
+When you have to read or trace a recursive function, then you do need
+to consider how the function is doing its work.
+Tracing a few recursive functions is a great way to learn how
+recursion behaves.
+But after you become comfortable with tracing, you will rarely need to
+work through so many details again.
+You will begin to develop confidence about how recursion works.
+
+You know that information can be passed in (using a function
+parameter) from one recursive call to another, on ever smaller
+problems, until a base case is reached.
+Then, a return value is passed back as the series of recursive calls
+unwinds.
+Sometimes people forget about the "unwinding" phase.
+This "winding" (as recursive calls are made) and "unwinding" (as the
+call stack is undone by returning from the function) is not really
+special to recursion.
+It occurs in the same way with any function.
 
 .. inlineav:: recurTraceWindCON ss
    :output: show 
 
-Next we will show a tracing example for a simple sum function:
+In this section, we will see several examples for how trace a
+recursive call.
+
+First is a trace for a simple sum function.
 
 .. inlineav:: recurTraceSumCON ss
    :output: show
 
-Next we will show a tracing example of a factorial function:
+Here is a tracing example of the factorial function.
 
-.. inlineav:: recurTraceFctCON ss
+.. inlineav:: recurTraceFactCON ss
    :output: show 
 
-As you trace the code, you should observe several things:
+As you trace the code, you should observe several things.
+Let's use the array summing function again for an example.
 
 .. inlineav:: recurTraceSum2CON ss
    :output: show 
@@ -102,9 +129,9 @@ Next visualization will show a tracing for the Towers of Hanoi problem.
 
 .. odsascript:: AV/RecurTutor/recurTraceWindCON.js
 .. odsascript:: AV/RecurTutor/recurTraceSumCON.js
-.. odsascript:: AV/RecurTutor/recurTraceFctCON.js
+.. odsascript:: AV/RecurTutor/recurTraceFactCON.js
 .. odsascript:: AV/RecurTutor/recurTraceSum2CON.js
-.. odsascript:: AV/RecurTutor/recurTraceDmnCON.js
-.. odsascript:: AV/RecurTutor/recurTraceDmnPrntCON.js
-.. odsascript:: AV/RecurTutor/recurTraceDmnCntCON.js
+.. .. odsascript:: AV/RecurTutor/recurTraceDmnCON.js
+.. .. odsascript:: AV/RecurTutor/recurTraceDmnPrntCON.js
+.. .. odsascript:: AV/RecurTutor/recurTraceDmnCntCON.js
 .. odsascript:: AV/RecurTutor/recurTraceTOHCON.js

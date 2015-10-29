@@ -10,6 +10,6 @@
    :topic: Recursion
 
 Summary Exercises
-===========================
+=================
 
-.. avembed:: Exercises/RecurTutor/recChapterSumm.html ka
+.. avembed:: Exercises/RecurTutor/RecChapterSumm.html ka

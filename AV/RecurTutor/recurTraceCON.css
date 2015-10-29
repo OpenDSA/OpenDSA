@@ -1,17 +1,21 @@
-#recursionTrcFctCON{
-  height: 580px;
+#recurTraceWindCON{
+  height: 270px;
 }
 
-#recursionTrcWindCON{
-  height: 270px;
+#recurTraceSumCON{
+  height: 325px;
+}
+
+#recurTraceSumCON .jsavoutput.jsavline {
+  height: 30px;
+}
+
+#recurTraceFactCON{
+  height: 580px;
 }
 
 #recursionTrcSum2CON{
   height: 350px;
-}
-
-#recursionTrcSumCON{
-  height: 400px;
 }
 
 #recursionTrcDmnCON{

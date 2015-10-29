@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html data-require="math">
+  <head>
+    <title> Recursion Summary Question: Recursive Call</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body  data-height="550" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="question">On a real computer, what will happen if you
+            make a recursive call that never makes the problem size
+            smaller?</p>
+          <div class="solution">The run-time stack overflows, halting the program</div>
+          <ul class="choices" >
+            <li>The operating system detects the infinite recursion
+              because of the repeated state</li>
+            <li>The program keeps running until you stop it</li>
+            <li>The results are nondeterministic</li>
+          </ul>
+          <div class="hints">
+            <p> Without making the problem smaller, the program will
+              keep calling itself until the stack is full.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

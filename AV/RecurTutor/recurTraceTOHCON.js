@@ -1,10 +1,11 @@
-"use strict";
-  
-//===============================================================================================================================
-// Visualization of Towers of Hanoi
-(function ($) {
+/*global ODSA */
+// Written by Sally Hamouda and Cliff Shaffer
+// Visualization for Towers of Hanoi
+$(document).ready(function () {
+  "use strict";
+  var av_name = "recurTraceTOHCON";
+  var av = new JSAV(av_name);
 
-  var av = new JSAV("recursionTrcTOHCON");
   var label0 = av.label("0", {left: 165, top: 12});
   var label1 = av.label("1", {left: 180, top: 42});
   var label2 = av.label("2", {left: 195, top: 72});
@@ -30,7 +31,6 @@
   var labelb = av.label("B", {left: 363, top: -18});
   var labelc = av.label("C", {left: 590, top: -18});
    
-  
   var pseudo = av.code({url: "../../../SourceCode/Java/RecurTutor/RecTOH.java",
                        lineNumbers: false,top:200 , left:250});
 
@@ -852,13 +852,5 @@
   labelCallStack4.hide();
   av.step();
   labelCallStack5.hide();
-  av.step();
-  
-  
   av.recorded();
-  
-}(jQuery));
-
-
-
-//==============================================================================================================================
+});

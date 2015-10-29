@@ -12,18 +12,17 @@ Writing Practice Exercises
 ==========================
 
 Here is a series of code writing exercises.
-For each one, you will write a complete recursive function.
+For each one, you will write a complete recursive function, using the
+given function signature.
 
-.. avembed:: Exercises/RecurTutor/recWIsbalancPROGSumm.html ka
+.. avembed:: Exercises/RecurTutor/RecWIsbalancedPROG.html ka
 
-.. avembed:: Exercises/RecurTutor/recWChckPlndrmPROGSumm.html ka
+.. avembed:: Exercises/RecurTutor/RecWCheckPalPROG.html ka
 
-.. avembed:: Exercises/RecurTutor/recWRvrsStrngPROGSumm.html ka
+.. avembed:: Exercises/RecurTutor/RecWReverseStringPROG.html ka
 
-.. avembed:: Exercises/RecurTutor/recWRmvDuplctPROGSumm.html ka
+.. avembed:: Exercises/RecurTutor/RecWCannonballPROG.html ka
 
-.. avembed:: Exercises/RecurTutor/recWPascalPROGSumm.html ka
+.. avembed:: Exercises/RecurTutor/RecWPascalPROG.html ka
 
-.. avembed:: Exercises/RecurTutor/recWCnonballPROGSumm.html ka
-
-.. avembed:: Exercises/RecurTutor/recWStckRevrsPROGSumm.html ka
+.. avembed:: Exercises/RecurTutor/RecWStackRevPROG.html ka
