@@ -9,7 +9,7 @@
    :topic: Recursion
 
 Writing More Sophisticated Recursive Functions
-=============================================
+==============================================
 
 Some recursive functions have only one base case and one recursive
 call.

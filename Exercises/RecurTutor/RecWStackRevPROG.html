@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html data-require="codemirror blockUI math math-format word-problems spin">
+  <head>
+    <title> Recursion Programming Exercise: Stack Reversal</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #RecCLargestPROG .CodeMirror {
+        height: 200px;
+      }
+    </style>
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="config">
+          (function(){ window.OpenPopKa = true;}())
+        </var>
+      </div>
+      <div class="problems">
+        <div id="RecWStackRevPROGp"> <!-- Supresses answer box -->
+          <p class="problem">Write recursive function "stackReverse"
+            that, given a stack "s", returns a stack holding the values in
+            reverse order. You may not create another stack or other data
+            structure. You may only used simple local variables for
+            storage.
+
+            You should use, as appropriate, methods from the Stack ADT
+            such as "push" or "pop". You should also assume that there
+            exists a special method called "popBottom" that returns the
+            value at the bottom of the stack.<br/>
+            <textarea  id="codeTextarea">
+void stackReverse(Stack s) {
+
+}</textarea>
+          </p>
+          <div class="question"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess">[editor.getValue()]</div>
+            <div class="validator-function">
+              if (guess[0] != initEditor) {
+                console.log(guess[0]);
+                window.codeValue = guess[0];
+                window.progexType= "recursion";
+                window.summexName = "recWStackRevPROG";
+              } else {
+                return "";
+              }
+            </div>
+          </div>
+          <div class="hints">
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

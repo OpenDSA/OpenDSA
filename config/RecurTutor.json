@@ -113,7 +113,7 @@
         }
       },
       "RecurTutor/HarderWrite": {
-        "long_name": "Writing More Sophisticated Recursive Functions"
+        "long_name": "Writing More Sophisticated Recursive Functions",
         "exercises": {}
       },
       "RecurTutor/HarderCodeCompletionEx": {
@@ -145,50 +145,50 @@
       "RecurTutor/WritingEx": {
         "long_name": "Code Writing Exercises",
         "exercises": {
-          "recWIsbalancPROGSumm": {
-            "long_name": "Recursion Code Writing Exercise Is Balanced",
+          "RecWIsbalancedPROG": {
+            "long_name": "Recursion Code Writing Exercise: Is Balanced",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recWChckPlndrmPROGSumm": {
-            "long_name": "Recursion Code Writing Exercise Check Palindrom",
+          "RecWCheckPalPROG": {
+            "long_name": "Recursion Code Writing Exercise: Check Palindrom",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recWRvrsStrngPROGSumm": {
-            "long_name": "Recursion Code Writing Exercise Reverse String",
+          "RecWReverseStringPROG": {
+            "long_name": "Recursion Code Writing Exercise: Reverse String",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recWRmvDuplctPROGSumm": {
-            "long_name": "Recursion Code Writing Exercise Remove Duplicates",
+          "RecWRemoveDupPROG": {
+            "long_name": "Recursion Code Writing Exercise: Remove Duplicates",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recWPascalPROGSumm": {
-            "long_name": "Recursion Code Writing Exercise Pascal",
+          "RecWPascalPROG": {
+            "long_name": "Recursion Code Writing Exercise: Pascal",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recWCnonballPROGSumm": {
-            "long_name": "Recursion Code Writing Exercise Cannon Ball",
+          "RecWCannonballPROG": {
+            "long_name": "Recursion Code Writing Exercise: Cannon Ball",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recWStckRevrsPROGSumm": {
-            "long_name": "Recursion Code Writing Exercise Stack Reversal",
+          "RecWStackRevPROG": {
+            "long_name": "Recursion Code Writing Exercise: Stack Reversal",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
@@ -211,7 +211,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "recurTraceFctCON": {
+          "recurTraceFactCON": {
             "long_name": "Recursion Tracing Factorial Function",
             "required": true,
             "points": 0.0,
@@ -296,10 +296,10 @@
           }
         }
       },
-      "RecurTutor/SummaryEx": {
-        "long_name": "Summary Exercises",
+      "RecurTutor/RecSummaryEx": {
+        "long_name": "Recursion Summary Exercises",
         "exercises": {
-          "recChapterSumm": {
+          "RecChapterSumm": {
             "long_name": "Recursion Summary Exercise",
             "required": true,
             "points": 1.0,

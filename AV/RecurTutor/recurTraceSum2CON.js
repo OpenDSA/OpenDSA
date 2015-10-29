@@ -1,37 +1,32 @@
-"use strict";
-//===============================================================================================================================
+/*global ODSA */
+// Written by Sally Hamouda and Cliff Shaffer
 // Showing how sum returns to the base case and then unwind
-(function ($) {
+$(document).ready(function () {
+  "use strict";
+  var av_name = "recurTraceSum2CON";
+  var av = new JSAV(av_name);
 
-  var av = new JSAV("recursionTrcSum2CON");
-  av.umsg("The tracing eventually gets down to the base case. All calls eventually reach the base case and if there is more than one base case, it reaches one of the base cases.");
- 
-  var pseudo = av.code({url: "../../../SourceCode/Java/RecurTutor/Recsum.java",
+  // Slide 1
+  av.umsg("The process must eventually reach a base case.");
+  var pseudo = av.code({url: "../../../SourceCode/Java/RecurTutor/WrtSumV4.java",
                        lineNumbers: false,});
-  pseudo.highlight(3);
+  pseudo.highlight(2);
   av.displayInit();
   av.step();
+
+  // Slide 2
   av.umsg("Thus, the value returned by the base case is important.");
+  pseudo.unhighlight(2);
+  pseudo.highlight(3);
+  av.step();
+
+  // Slide 3
+  av.umsg("To keep track of what is going on, it can be helpful to label recursive calls. A recursive call, like any other function call, eventually returns back to the point of being called. However, since you are calling the same function, it is easy to make mistakes when tracing the code.");
   pseudo.unhighlight(3);
-  pseudo.highlight(4);
-  av.step();
-
-
-  av.umsg("It’s helpful to label recursive calls. You do this to keep track of what’s going on. Recall that a recursive call, like any other function call, eventually returns back to the point of being called. However, since you’re calling the same function, it’s easy to make mistakes when tracing the code.");
-  pseudo.unhighlight(4);
-  pseudo.highlight(7);
+  pseudo.highlight(5);
   av.step();
   
-  av.umsg("Recursion involves a 'winding' phase where the calls are progressively getting closer to the base case, and you are getting to smaller and smaller problems, and an 'unwinding' phase, when you begin to return back to the original call. It’s usually in the 'unwinding' phase where the solution is generated.");
-  pseudo.unhighlight(7);
-  pseudo.highlight(8);
-  av.step();
-  
-  
+  // Slide 4
+  av.umsg("Recursion involves a 'winding' phase where the calls are progressively getting closer to the base case, and you are getting to smaller and smaller problems, and an 'unwinding' phase, when you begin to return back to the original call. It is usually in the 'unwinding' phase where the solution is generated.");
   av.recorded();
-  
-}(jQuery));
-
-
-
-//==============================================================================================================================
+});
