@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html data-require="codemirror math RectFIBmax">
+  <head>
+    <title> Recursion Tracing Exercise: mystrey return</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+ 
+  <body  data-height="550" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="A">randRange(0, 99, 10)</var>
+        <var id="ANS">rectFIBmax.genAnswer(A)</var>
+      </div>
+      <div class="problems">
+        <div id="RectFIBmaxp"> <!-- Supresses answer box -->
+          <p class="question">Consider the following function:
+            <textarea id="codeTextarea" name="codeTextarea">
+int mystery (int[] numbers, int index) {
+  if (index == numbers.length - 1)
+    return numbers[index];	
+  else {
+    int temp = mystery(numbers, index + 1);
+    if (temp > numbers[index])
+      return temp;
+    else
+      return numbers[index];
+  }
+}</textarea>
+            If initially numbers = [<var>A</var>] and index = 0, what will
+            be the value returned by this mystery function?
+            (Either write a number, or write "infinite recursion".)
+          </p>
+          <p class="solution" data-type="text"><var>ANS</var></p>
+          <div class="hints">
+            <p>This function recursively finds the biggest value in the
+              array.</p>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

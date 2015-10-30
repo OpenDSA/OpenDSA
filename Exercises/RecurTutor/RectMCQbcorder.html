@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html data-require="codemirror math">
+  <head>
+    <title> Recursion Tracing Exercise: Base case order</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body  data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RectMCQbcorder"> <!-- Supresses answer box -->
+          <p class="question">Consider the following code:
+            <textarea id="codeTextarea" name="codeTextarea">
+// Write the digits of the number, stacked vertically.
+// If number is negative, then a negative sign appears on top.
+void superWriteVertical(int number) {
+  if (number < 0) {
+    System.out.println("-");
+    superWriteVertical(-number);
+  }
+  else if (number < 10)
+    System.out.println(number);
+  else {
+    superWriteVertical(number / 10);
+    System.out.println(number % 10);
+  }
+}</textarea><br/>
+            What values of number are directly handled by the base case?
+          </p>
+          <div class="solution">number <code>< 10</code></div>
+          <ul class="choices" >
+            <li>number <code>< 0</code></li>
+            <li>number <code>\geq 0</code> and number <code>< 10</code></li>
+            <li><var>number <code>> 10</code></li>
+          </ul>
+          <div class="hints">
+            <p>When the base case is reached, no more recursive calls
+              are executed.</p>
+            <p>There is nothing special about the order of the
+              cases. The base case and recursive call cases can be in
+              any order.
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

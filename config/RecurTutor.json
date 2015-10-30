@@ -252,42 +252,42 @@
       "RecurTutor/TracingEx": {
         "long_name": "Tracing Practice Exercises",
         "exercises": {
-          "recTracingSumm1": {
+          "RecTraceSumm1": {
             "long_name": "Recursion Tracing Exercises Set 1",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recTracingSumm2": {
+          "RecTraceSumm2": {
             "long_name": "Recursion Tracing Exercises Set 2",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recTracingSumm3": {
+          "RecTraceSumm3": {
             "long_name": "Recursion Tracing Exercises Set 3",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recTracingSumm4": {
+          "RecTraceSumm4": {
             "long_name": "Recursion Tracing Exercises Set 4",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           }, 
-          "recTracingSumm5": {
+          "RecTraceSumm5": {
             "long_name": "Recursion Tracing Exercises Set 5",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },        
-          "recTracingSumm6": {
+          "RecTraceSumm6": {
             "long_name": "Recursion Tracing Exercises Set 6",
             "required": true,
             "points": 1.0,
