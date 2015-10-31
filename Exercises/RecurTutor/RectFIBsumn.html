@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html data-require="codemirror math">
   <head>
-    <title> Recursion Tracing Exercise: Mystery return</title>
+    <title> Recursion Tracing Exercise:exec Return</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
   </head>
  
-  <body data-height="550" data-width="950">
+  <body  data-height="550" data-width="950">
     <div class="exercise">
       <div class="vars">
-        <var id="A">randRange(0, 99)</var>
+        <var id="n">randRange(2, 10)</var>
+        <var id="ANS">n*(n+1)/2</var>
       </div>
       <div class="problems">
-        <div id="RectFIBmysteryabp"> <!-- Supresses answer box -->
+        <div id="RectFIBsumnp"> <!-- Supresses answer box -->
           <p class="question">Consider the following function:
             <textarea id="codeTextarea" name="codeTextarea">
-int mystery(int a, int b) {
-  if (b == 1)	  
-    return a;	
+public int exec(int n) {
+  if (n == 0)
+    return 0;	
   else
-    return a + mystery(a, b - 1);	
+    return n + exec(n - 1);
 }</textarea>		
-            What is the return value from calling mystery(<var>A</var>, 1)?
+            What value does <tt>exec(<var>n</var>)</tt> return?
             (Either write a number, or write "infinite recursion".)
           </p>
-          <p class="solution" data-type="text"><var>A</var></p>
+          <p class="solution" data-type="text"><var>ANS</var></p>
           <div class="hints">
-            <p>This function adds a to itself b times.</p>
+            <p>By tracing this recursive function, you should find that
+              the result is the sum of the integers from 1 to n.</p> 
           </div> 
         </div>
       </div>
