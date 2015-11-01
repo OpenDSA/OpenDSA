@@ -190,7 +190,7 @@ $(document).ready(function () {
       valtype = 'string';
     }
     this.element = el;
-    el.addClass('jsavnode jsavlistnode').attr({
+    el.addClass('jsavnode jsavlistnode' + (this._next ? '' : ' jsavnonext')  + (this._prev ? '' : ' jsavnoprev')).attr({
       'data-value': value,
       'id': this._value,
       'data-value-type': valtype
@@ -216,16 +216,8 @@ $(document).ready(function () {
     JSAV.utils._helpers.handleVisibility(this, this.options);
   };
 
-  JSAV.utils.extend(DListNode, JSAV._types.ds.Node);
+  JSAV.utils.extend(DListNode, JSAV._types.ds.ListNode);
   var listnodeproto = DListNode.prototype;
-
-  listnodeproto.next = function (newNext, options) {
-    if (typeof newNext === 'undefined') {
-      return this._next;
-    } else {
-      return this._setnext(newNext, options);
-    }
-  };
 
   listnodeproto.prev = function (newPrev, options) {
     if (typeof newPrev === 'undefined') {
@@ -234,19 +226,6 @@ $(document).ready(function () {
       return this._setprev(newPrev, options);
     }
   };
-  listnodeproto._setnext = JSAV.anim(function (newNext, options) {
-    var oldNext = this._next;
-    this._next = newNext;
-    if (newNext && this._edgetonext) {
-      this._edgetonext.end(newNext);
-    } else if (newNext) {
-      this._edgetonext = new Edge(this.jsav, this, this._next, { 'arrow-end': 'classic-wide-long' });
-    }
-    if (options && options.edgeLabel) {
-      this._edgetonext.label(options.edgeLabel);
-    }
-    return [oldNext];
-  });
 
   listnodeproto._setprev = JSAV.anim(function (newPrev, options) {
     var oldPrev = this._prev;
@@ -256,11 +235,13 @@ $(document).ready(function () {
     } else if (newPrev) {
       this._edgetoprev = new Edge(this.jsav, this, this._prev, { 'arrow-end': 'classic-wide-long' });
     }
+    if (!oldPrev && newPrev) {
+      this.element.removeClass('jsavnoprev');
+    } else if (oldPrev && !newPrev) {
+      this.element.addClass('jsavnoprev');
+    }
     return [oldPrev];
   });
-  listnodeproto.edgeToNext = function () {
-    return this._edgetonext;
-  };
 
   listnodeproto.edgeToPrev = function () {
     return this._edgetoprev;

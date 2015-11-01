@@ -19,7 +19,6 @@ $(document).ready(function () {
       .addFirst(8)
       .addFirst(23);
 
-  list.get(3).addTail({left: 222});
   var firstnode = list.get(0);
   var topPointer = av.pointer("top", firstnode);
   list.layout();

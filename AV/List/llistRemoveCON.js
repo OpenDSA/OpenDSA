@@ -23,9 +23,6 @@ $(document).ready(function () {
   var curr = setPointerL('curr', l.get(2));
   var tail = setPointerL('tail', l.get(5));
   var verticalBar = l.get(2).addVLine();
-  var slash = l.get(5).addTail();
-  // New slash after deletion
-  var newSlash = l.get(4).addTail({ visible: 0 });
 
   // Dashline
   var dashline = av.g.polyline([[leftMargin + 186, topMargin + 32],
@@ -88,8 +85,6 @@ $(document).ready(function () {
   dashline.hide();
   l.layout();
   l.get(2).edgeToNext().show();
-  slash.hide();
-  newSlash.show();
   l.get(2).unhighlight();
   l.get(3).unhighlight();
   av.umsg(interpret("av_c6"));
