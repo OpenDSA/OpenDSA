@@ -149,7 +149,7 @@ function connection(obj1, obj2){
   if(obj1.odsa_next){
     obj1.odsa_edgeToNext.element.remove();	
   }else{
-    obj1.odsa_tail.element.remove();
+//    obj1.odsa_tail.element.remove();
     obj1.odsa_tail = null;
   }
   obj1.odsa_edgeToNext = edge;
@@ -232,10 +232,10 @@ function addTail(node){
   var ty = top + 16;
 
   if(typeof node.odsa_tail !== 'undefined'){
-    node.odsa_tail.element.remove();
-    node.odsa_tail = jsav.g.line(fx,fy,tx,ty,{"opacity": 100,"stroke-width": 1});
+//    node.odsa_tail.element.remove();
+//    node.odsa_tail = jsav.g.line(fx,fy,tx,ty,{"opacity": 100,"stroke-width": 1});
   }else{
-    node.odsa_tail = jsav.g.line(fx,fy,tx,ty,{"opacity": 100,"stroke-width": 1});
+//    node.odsa_tail = jsav.g.line(fx,fy,tx,ty,{"opacity": 100,"stroke-width": 1});
   }
   node.odsa_next = null;
 }
@@ -268,8 +268,8 @@ function f_newnode() {
     var x2 = left + 44 + leftMargin;
     var y2 = top + 16 + topMargin;
 	
-    newLinkNode.odsa_tail = jsav.g.line(x1, y1,
-                          x2, y2,{"opacity": 100,"stroke-width": 1});
+//    newLinkNode.odsa_tail = jsav.g.line(x1, y1,
+//                          x2, y2,{"opacity": 100,"stroke-width": 1});
 
     $("#" + newLinkNode.id()).css( 'cursor', 'pointer' );
     $("#" + newLinkNode.id()).draggable({
@@ -291,7 +291,7 @@ function f_newnode() {
           connection(connections[i].from, connections[i].to);
         }
         if(newLinkNode.odsa_tail){
-          addTail(newLinkNode);
+//          addTail(newLinkNode);
         }
       },
       stop: function() {
@@ -303,7 +303,7 @@ function f_newnode() {
           connection(connections[i].from, connections[i].to);
         }
         if(newLinkNode.odsa_tail){
-          addTail(newLinkNode);
+//          addTail(newLinkNode);
         }       
         jsav.container.trigger("jsav-updaterelative");
       },
@@ -356,8 +356,8 @@ function f_reset() {
     jsavList.get(i).odsa_next = jsavList.get(i).next();
     jsavList.get(i).odsa_edgeToNext = jsavList.get(i).edgeToNext();
   }
-  jsavList.get(listSize - 1).odsa_tail = jsav.g.line(leftMargin + 34 + (listSize - 1)*74, 47 + topMargin,
-                          leftMargin + 44 + (listSize - 1)*74, 16 + topMargin,{"opacity": 100,"stroke-width": 1});
+//  jsavList.get(listSize - 1).odsa_tail = jsav.g.line(leftMargin + 34 + (listSize - 1)*74, 47 + topMargin,
+//                          leftMargin + 44 + (listSize - 1)*74, 16 + topMargin,{"opacity": 100,"stroke-width": 1});
   answFrontNode = jsavList.get(0);
 
   // Hidden JSAV array for insert animation

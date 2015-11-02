@@ -170,7 +170,7 @@ Written by Junyang Chen and Cliff Shaffer
     if(obj1.odsa_next){
       obj1.odsa_edgeToNext.element.remove();	
     }else{
-      obj1.odsa_tail.element.remove();
+//      obj1.odsa_tail.element.remove();
       obj1.odsa_tail = null;
     }
 
@@ -276,10 +276,10 @@ Written by Junyang Chen and Cliff Shaffer
     var ty = top + 1;
 
     if(node.odsa_tail){
-      node.odsa_tail.element.remove();
-      node.odsa_tail = jsav.g.line(fx,fy,tx,ty,{"opacity": 100,"stroke-width": 1});
+//      node.odsa_tail.element.remove();
+//      node.odsa_tail = jsav.g.line(fx,fy,tx,ty,{"opacity": 100,"stroke-width": 1});
     }else{
-      node.odsa_tail = jsav.g.line(fx,fy,tx,ty,{"opacity": 100,"stroke-width": 1});
+//      node.odsa_tail = jsav.g.line(fx,fy,tx,ty,{"opacity": 100,"stroke-width": 1});
     }
     node.odsa_next = null;
   }
@@ -288,7 +288,7 @@ Written by Junyang Chen and Cliff Shaffer
   function nullClickHandler(index,e) {
     if (status == 2) {
       $('#' + fromNode.id() + " .jsavpointerarea:first").removeClass('bgColor');
-      addTail(fromNode);
+//      addTail(fromNode);
       if(fromNode.odsa_edgeToNext){
         fromNode.odsa_edgeToNext.element.remove();
         fromNode.odsa_next = null;
@@ -340,10 +340,10 @@ Written by Junyang Chen and Cliff Shaffer
       orderArr[i] = jsavList.get(i).id();
       jsavList.get(i).odsa_next = jsavList.get(i).next();
       jsavList.get(i).odsa_edgeToNext = jsavList.get(i).edgeToNext();
-      jsavList.get(i).odsa_tail = null;
+//      jsavList.get(i).odsa_tail = null;
     }
     // Add tail for the last node.
-    jsavList.get(listSize - 1).odsa_tail = addTail(jsavList.get(listSize - 1));
+//    jsavList.get(listSize - 1).odsa_tail = addTail(jsavList.get(listSize - 1));
     jsav.recorded();
     jsav.forward();
 

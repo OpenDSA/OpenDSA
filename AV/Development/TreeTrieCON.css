@@ -25,11 +25,6 @@
   left: 190px;
 }
 
-.jsavoutput.jsavline {
-  width: 650px;
-  padding-top: 20px;
-}
-
 .jsavnode .jsavvalue {
   min-height: 25px;
   max-height: 25px;
@@ -108,33 +103,21 @@
 /*=================== TreeTimeline ===================*/
 
 #TreeTimeline {
-  width: 600px;
-  height: 520px;
+  height: 540px;
 }
 
-#TreeTimeline .jsavtree {
-  /*margin-left: 55px;*/
-  margin-top: -20px;
-}
-
-#TreeTimeline .jsavoutput {
-  width: 590px;
+#TreeTimeline .jsavoutput.jsavline {
+  height: 30px;
 }
 
 /*=================== TrieTimeline ===================*/
 
 #TrieTimeline {
-  width: 600px;
-  height: 600px;
+  height: 500px;
 }
 
-#TrieTimeline .jsavtree {
-  /*margin-left: 55px;*/
-  margin-top: -20px;
-}
-
-#TrieTimeline .jsavoutput {
-  width: 590px;
+#TrieTimeline .jsavoutput.jsavline {
+  height: 30px;
 }
 
 /* There are no numbers in these leaf nodes, so have to adjust. */

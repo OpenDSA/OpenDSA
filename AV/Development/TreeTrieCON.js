@@ -7,7 +7,7 @@
   var t = av.ds.binarytree({nodegap: 25});
   var r = t.root("36");
   t.layout();
-  var tl = new timeline(av, 49, 325, 500, 0, 70, 10);
+  var tl = new timeline(av, 175, 370, 500, 0, 70, 10);
   
   // These vars correspond the the height of each line corresponding
   // to the level of the tree. For example, ht1 is the height of the
@@ -168,7 +168,7 @@
   var t = av.ds.binarytree({nodegap: 25});
   var r = t.root("");
   r.addClass("huffmanleaf");
-  var tl = new timeline(av, 49, 325, 500, 0, 64, 10);
+  var tl = new timeline(av, 175, 300, 500, 0, 64, 10);
 
   var ht1 = 40;
   var hts = 105; // height of split

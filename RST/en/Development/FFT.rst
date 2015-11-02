@@ -12,9 +12,8 @@
 The Fast Fourier Transform
 ==========================
 
-See the FFT Storyboard.
-
-.. avembed:: Storyboard/FFT.pptx ss
+See the `FFT Storyboard <../../../Storyboard/FFT.pptx>`_ for some more
+visualizations of this material.
 
 Multiplication is considerably more difficult than addition.
 The cost to multiply two :math:`n`-bit numbers directly is
