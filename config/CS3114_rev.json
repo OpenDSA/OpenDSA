@@ -27,7 +27,7 @@
     }
   },
   "lang": "en",
-  "module_origin": "https://ltitest.cs.vt.edu:9292",
+  "module_origin": "https://lti.cs.vt.edu",
   "exercise_server": "https://ltitest.cs.vt.edu:8443",
   "logging_server": "https://ltitest.cs.vt.edu:8443",
   "score_server": "https://ltitest.cs.vt.edu:8443",
