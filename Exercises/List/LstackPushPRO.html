@@ -1,0 +1,71 @@
+<!--
+    List-based stack push mini-proficiency exercise.
+    Written by Junyang Chen and Cliff Shaffer
+  -->
+
+<!DOCTYPE html>
+<html data-require="jsav math LstackPushPRO LinkList">
+  <head>
+    <title>List-based Stack Push Proficiency Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #LstackPushPRO .jsavcanvas {
+        height: 150px;
+      }
+      #LstackPushPRO .bgColor{
+        font-size: 130%;
+        background-color: yellow;
+      }
+      #LstackPushPRO .highlight{
+        background-color: yellow;
+      }
+    </style>
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="arr_size">randRange(4, 6)</var>
+        <var id="insert_value">randRange(0, 999)</var>
+        <var id="JSAV">lstackPushPRO.initJSAV(arr_size,insert_value)</var>
+      </div>
+      <div class="problems">
+        <div id="LstackPushPROp"> <!-- Supresses answer box -->
+          <p class="problem">Your task in this exercise is to show the
+            behavior for the linked stack's push operation.</p>
+          <div class="question">
+            <p>Push <b><var>insert_value</var></b> into the stack.</p>
+            <p>You can create a new link node by clicking the "NewNode"
+              button. You can insert a value into the node by clicking the
+              "Insert" button. To change a pointer, click its start point
+              (in the right-hand side of its start node), and then click on
+              the node that you want it to point to.</p>
+            <input id="reset" type="button" value="Reset" />
+            <input id="NewNode" type="button" value="NewNode" />
+            <input id="insert" type="button" value="Insert" />
+            <div id="LstackPushPRO" class="jsavcanvas"></div>
+          </div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [lstackPushPRO.userInput] </div>
+            <div class="validator-function">
+              if (!lstackPushPRO.checkAnswer() && !guess[0]) {
+                return ""; // User did not click, and correct answer is not
+                           // initial array state
+              } else { return lstackPushPRO.checkAnswer(); }
+            </div>
+          </div>
+          <div class="hints">
+            <p>The first step would be to create a new link node.
+              Then insert the new value into the new node.</p>
+            <p>Next, click the right section of the new node so that you
+              can change where it points to. Then click the first node on
+              the list.</p>
+            <p>Finally, click "top" and then click the new node to change
+              where "top" points to.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

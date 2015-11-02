@@ -1,0 +1,90 @@
+<!--
+Ordering Growth Rates
+Written by Mohammed Farghally and Cliff Shaffer
+-->
+
+<!DOCTYPE html>
+<html data-require="jsav math GrowthRatesPRO">
+  <head>
+    <title>Growth Rates Ordering Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      .jsavhorizontalarray .jsavnode {
+        min-width: 80px !important;
+        min-height: 60px !important;
+        max-width: 80px !important;
+        max-height: 60px !important;
+      }
+
+      .jsavcanvas {
+        height: 100px;
+      }
+
+      .jsavarray * {
+        -webkit-transform-style: flat !important;
+      }
+
+      .jsavnode {
+        border: none;
+        box-shadow: none;
+        background-color: inherit;
+      }
+    </style>
+  </head>
+
+  <body data-height="860" data-width="1000">
+    <div class="exercise">
+      <div class="vars">
+        <var id="arr_size">6</var>
+        <var id="JSAV">growthRatesPRO.initJSAV(arr_size)</var>
+      </div>
+
+      <div class="problems">
+        <div id="GrowthRatesPROp"> <!-- Supresses answer box -->
+          <div class="question">
+            <p>Your task in this exercise is to put the following functions into
+              their appropriate positions in the list so that finally the list will
+              contain all the functions in ascending order of their
+              growth rates. You can swap two functions by clicking on
+              them.</p>
+            <input id="reset" type="button" value="Reset" />
+            <div id="GrowthRatesPRO" class="jsavcanvas"></div>
+          </div>
+          <div class="solution" data-type="custom">
+            <div class="guess">
+              [growthRatesPRO.userInput]
+            </div>
+            <div class="validator-function">
+              if (!growthRatesPRO.checkAnswer(arr_size) && !guess[0])
+              return ""; // User did not click, and correct answer is not
+                         // the initial array state
+              else return growthRatesPRO.checkAnswer(arr_size);
+            </div>
+          </div>
+          <div class="hints">
+            <p>Constant terms never matter, so ignore something like multiplying by 9.</p>
+            <p>Focus on the exponent.</p>
+            <p>Generally, things that are only logs go first.
+	     Note that <code>\log \log n</code> (taking the log of
+	     <code>\log n</code>) grows slower than
+	     <code>\log^2 n</code> (multiplying <code>\log n</code> by itself).</p>
+            <p>Generally, constant powers of <code>n</code> come after
+              things with only log factors.
+	      Even a small constant power of <code>n</code> grows
+              faster than things with only
+              logs. So <code>\sqrt{n}</code> grows faster
+              than <code>\log^3 n</code>.</p>
+            <p>Generally, things with some function of <code>n</code>
+              in the exponent go last. These are called "exponentials".
+              Of the exponentials, just see what has the biggest
+              function in the exponent. For example,
+              since <code>\sqrt{n}</code> grows faster than
+              <code>\log n</code>, then <code>2^\sqrt{n}</code> grows faster
+              than <code>2^{\log n}</code>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

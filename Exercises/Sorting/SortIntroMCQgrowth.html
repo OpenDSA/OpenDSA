@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html data-require="math">
+  <head>
+    <title>Sorting Intro: Growth Rate vs. Constant</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="question">Sometimes, the constant factors
+            in an algorithm's runtime equation are more important
+            thant its growth rate. When the problem is sorting, this
+            can happen in which situation?</p>
+          <div class="solution">When we are sorting lots of small
+            groups of records.</div>
+          <ul class="choices">
+            <li>When there are lots of records</li>
+            <li>When the CPU is really fast</li>
+            <li>When the amount of available space is small</li>
+            <li>When the records are nearly sorted</li>
+            <li>When the records are nearly reverse sorted</li>
+          </ul>
+          <div class="hints">
+            <p>CPU speed would affect all comparisons in the same way.</p>
+            <p>Records being sorted or reverse sorted affects the
+              growth rate of different algorithms differently. But
+              not relevant to this question.</p>
+            <p>When we sort only a few records, constants matter a lot.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -256,8 +256,8 @@ class avembed(Directive):
       # Exercise does not use oembed
       self.options['oembed'] = 'false'
 
-      if self.options['showhide'] != "none":
-        self.options['content'] = BUTTON_HTML % (self.options)
+      # if self.options['showhide'] != "none":
+      #   self.options['content'] = BUTTON_HTML % (self.options)
     else:
       # Exercise uses oembed
       self.options['oembed'] = 'true'
@@ -265,12 +265,12 @@ class avembed(Directive):
       parts = self.options['oembed_url'].split("//", 1)
       self.options['oembed_server'] = parts[0] + "//" + parts[1].split("/", 1)[0]
 
-      if self.options['showhide'] == "show":
-        self.options['show_hide_text'] = langDict["hide"]
-        self.options['content'] = BUTTON_HTML % (self.options)
-      elif self.options['showhide'] == "hide":
-        self.options['show_hide_text'] = langDict["show"]
-        self.options['content'] = BUTTON_HTML % (self.options)
+      # if self.options['showhide'] == "show":
+      #   self.options['show_hide_text'] = langDict["hide"]
+      #   self.options['content'] = BUTTON_HTML % (self.options)
+      # elif self.options['showhide'] == "hide":
+      #   self.options['show_hide_text'] = langDict["show"]
+      #   self.options['content'] = BUTTON_HTML % (self.options)
 
     res = CONTAINER_HTML % (self.options)
 

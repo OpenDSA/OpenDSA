@@ -125,16 +125,16 @@ This total cost can therefore be expressed as
 
 
 A similar argument was used in our analysis for the partition function
-in the Quicksort algorithm (Module :numref:`<QuickSort>`).
+in the :ref:`Quicksort <Quicksort> <Quicksort>` algorithm.
 While on any given pass through the while loop the left or right
 pointers might move all the way through the remainder of the
 partition, doing so would reduce the number of times that the while
 loop can be further executed.
 
 Our final example uses amortized analysis to prove a relationship
-between the cost of the move-to-front self-organizing list heuristic
-from Module :numref:`<SelfOrg>` and the cost for the optimal static
-ordering of the list.
+between the cost of the
+:ref:`move-to-front <move-to-front> <SelfOrg>` self-organizing list
+heuristic and the cost for the optimal static ordering of the list.
 
 Recall that, for a series of search operations, the minimum cost for a
 static list results when the list is sorted by

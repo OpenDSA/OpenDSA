@@ -92,7 +92,7 @@ The actual number of swaps performed by Bubble Sort will be identical
 to that performed by Insertion Sort.
 
 Here are some review questions to check your understanding of
-Insertion Sort. 
+Bubble Sort. 
  
 .. avembed:: Exercises/Sorting/BubsortSumm.html ka
 

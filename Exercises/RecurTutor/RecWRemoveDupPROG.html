@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html data-require="codemirror blockUI math math-format word-problems spin">
+  <head>
+    <title> Recursion Programming Exercise: Remove Duplicates</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #RecCLargestPROG .CodeMirror {
+        height: 200px;
+      }
+    </style>
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="config">
+          (function(){ window.OpenPopKa = true;}())
+        </var>
+      </div>
+      <div class="problems">
+        <div id="RecWRemoveDupPROGp"> <!-- Supresses answer box -->
+          <p class="problem">Given the following recursive function
+            signature, write the function code such that this function
+            modifies an array of Strings to remove duplicates. For
+            example, if the list has the values {"recursion", "recursion",
+            "is","is", "cool", "cool"} before the method is called, it
+            should have the values {"recursion", "is", "cool"}. You may
+            not create any new arrays.<br/>
+            <textarea id="codeTextarea" name="codeTextarea">
+void removeDuplicates(ArrayList<String> list, int counter) {
+
+
+}</textarea>
+          </p>
+          <div class="question"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess">[editor.getValue()]</div>
+            <div class="validator-function">
+              if (guess[0] != initEditor) {
+                console.log(guess[0]);
+                window.codeValue = guess[0];
+                window.progexType= "recursion";
+                window.summexName = "recWRemoveDupPROG";
+              } else {
+                return "";
+              }
+            </div>
+          </div>
+          <div class="hints">
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

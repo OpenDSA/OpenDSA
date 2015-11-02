@@ -7,3 +7,7 @@
 [submodule "OpenPOP"]
 	path = OpenPOP
 	url = https://github.com/OpenDSA/OpenPOP.git
+[submodule "khan-exercises"]
+	path = khan-exercises
+	url = https://github.com/OpenDSA/khan-exercises.git
+	branch = master

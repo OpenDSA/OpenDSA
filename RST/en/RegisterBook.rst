@@ -5,7 +5,6 @@
 
 .. avmetadata::
    :author: Eric Fouh
-   :prerequisites: 
    :topic: Registerbook
 
 .. odsascript:: lib/registerbook-min.js

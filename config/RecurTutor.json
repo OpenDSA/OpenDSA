@@ -2,7 +2,9 @@
   "title": "Recursion Tutor",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
-  "code_lang": {"Java": ["java"]},
+  "code_lang": {
+    "Java": { "ext":["java"], "label":"Java","lang":"java"}
+  },
   "module_origin": "http://algoviz.org",
   "exercise_server": "https://opendsa.cs.vt.edu",
   "logging_server": "https://opendsa.cs.vt.edu",
@@ -15,7 +17,7 @@
   },
   "chapters": {
     "Recursion": {
-      "RecurTutor/Introduction": {
+      "RecurTutor/RecIntro": {
         "long_name": "Recursion Chapter Introduction",
         "exercises": {
           "recurIntroDelegateCON": {
@@ -35,13 +37,13 @@
       "RecurTutor/Write": {
         "long_name": "How to write a recursive function",
         "exercises": {
-          "recursionWrtStepsCON": {
+          "recurWriteStepsCON": {
             "long_name": "Recursion Code Writing Slideshow 1",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "recursionWrtSumCON": {
+          "recurWriteSumCON": {
             "long_name": "Recursion Code Writing Slideshow 2",
             "required": true,
             "points": 0.0,
@@ -52,56 +54,56 @@
       "RecurTutor/CodeCompletionEx": {
         "long_name": "Code Completion Exercises",
         "exercises": {
-          "recCLargestPROGSumm": {
+          "RecCLargestPROG": {
             "long_name": "Recursion Code Completion Exercise Largest",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recCMultiplyPROGSumm": {
+          "RecCMultiplyPROG": {
             "long_name": "Recursion Code Completion Exercise Multiply",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recCGcdPROGSumm": {
+          "RecCGcdPROG": {
             "long_name": "Recursion Code Completion Exercise GCD",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recCLogPROGSumm": {
+          "RecCLogPROG": {
             "long_name": "Recursion Code Completion Exercise Log",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recCSumtokPROGSumm": {
+          "RecCSumtokPROG": {
             "long_name": "Recursion Code Completion Exercise Sum to k",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recCAddoddPROGSumm": {
+          "RecCAddoddPROG": {
             "long_name": "Recursion Code Completion Exercise Add Odd",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recCSumOfDigitsPROGSumm": {
+          "RecCSumOfDigitsPROG": {
             "long_name": "Recursion Code Completion Exercise Sum of Digits",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recCCountChrPROGSumm": {
+          "RecCCountChrPROG": {
             "long_name": "Recursion Code Completion Exercise Count Characters",
             "required": true,
             "points": 1.0,
@@ -111,28 +113,28 @@
         }
       },
       "RecurTutor/HarderWrite": {
-        "long_name": "How to write a more sophisticated recursive function",
+        "long_name": "Writing More Sophisticated Recursive Functions",
         "exercises": {}
       },
       "RecurTutor/HarderCodeCompletionEx": {
         "long_name": "Harder Code Completion Exercises",
         "exercises": {
-          "recHMinPROGSumm": {
-            "long_name": "Recursion Harder Code Completion Exercise Minimum",
+          "RecHMinPROG": {
+            "long_name": "Recursion Code Completion Exercise: Minimum",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recHIsReversePROGSumm": {
-            "long_name": "Recursion Harder Code Completion Exercise Is Reverse",
+          "RecHIsReversePROG": {
+            "long_name": "Recursion Code Completion Exercise: Is Reverse",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recHDecibinaryPROGSumm": {
-            "long_name": "Recursion Harder Code Completion Exercise Decimal to Binary",
+          "RecHDecibinaryPROG": {
+            "long_name": "Recursion Code Completion Exercise: Decimal to Binary",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
@@ -143,57 +145,50 @@
       "RecurTutor/WritingEx": {
         "long_name": "Code Writing Exercises",
         "exercises": {
-          "recWIsbalancPROGSumm": {
-            "long_name": " Recursion Code Writing Exercise Is Balanced",
+          "RecWIsbalancedPROG": {
+            "long_name": "Recursion Code Writing Exercise: Is Balanced",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recWChckPlndrmPROGSumm": {
-            "long_name": "Recursion Code Writing Exercise Check Palindrom",
+          "RecWCheckPalPROG": {
+            "long_name": "Recursion Code Writing Exercise: Check Palindrom",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recWRvrsStrngPROGSumm": {
-            "long_name": "Recursion Code Writing Exercise Reverse String",
+          "RecWReverseStringPROG": {
+            "long_name": "Recursion Code Writing Exercise: Reverse String",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recWRmvDuplctPROGSumm": {
-            "long_name": "Recursion Code Writing Exercise Remove Duplicates",
+          "RecWRemoveDupPROG": {
+            "long_name": "Recursion Code Writing Exercise: Remove Duplicates",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recWPascalPROGSumm": {
-            "long_name": "Recursion Code Writing Exercise Pascal",
+          "RecWPascalPROG": {
+            "long_name": "Recursion Code Writing Exercise: Pascal",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recWCnonballPROGSumm": {
-            "long_name": "Recursion Code Writing Exercise Cannon Ball",
+          "RecWCannonballPROG": {
+            "long_name": "Recursion Code Writing Exercise: Cannon Ball",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recWIsMeasurblPROGSumm": {
-            "long_name": "Recursion Code Writing Exercise Is Measurable",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "recWStckRevrsPROGSumm": {
-            "long_name": "Recursion Code Writing Exercise Stack Reversal",
+          "RecWStackRevPROG": {
+            "long_name": "Recursion Code Writing Exercise: Stack Reversal",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
@@ -204,49 +199,49 @@
       "RecurTutor/Trace": {
         "long_name": "How to trace a recursive function?",
         "exercises": {
-          "recursionTrcWindCON": {
+          "recurTraceWindCON": {
             "long_name": "Recursion Tracing Winding and Unwinding",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "recursionTrcSumCON": {
+          "recurTraceSumCON": {
             "long_name": "Recursion Tracing Sum Function",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "recursionTrcFctCON": {
+          "recurTraceFactCON": {
             "long_name": "Recursion Tracing Factorial Function",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "recursionTrcSum2CON": {
+          "recurTraceSum2CON": {
             "long_name": "Recursion Tracing Sum Winding and Unwinding",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "recursionTrcDmnCON": {
+          "recurTraceDmnCON": {
             "long_name": "Recursion Tracing General Domino Effect",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "recursionTrcDmnPrntCON": {
+          "recurTraceDmnPrntCON": {
             "long_name": "Recursion Tracing Domino Effect for Printing",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "recursionTrcDmnCntCON": {
+          "recurTraceDmnCntCON": {
             "long_name": "Recursion Tracing Domino Effect for Counting",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "recursionTrcTOHCON": {
+          "recurTraceTOHCON": {
             "long_name": "Recursion Tracing Towers of Hanoi",
             "required": true,
             "points": 0.0,
@@ -301,10 +296,10 @@
           }
         }
       },
-      "RecurTutor/SummaryEx": {
-        "long_name": "Summary Exercises",
+      "RecurTutor/RecSummaryEx": {
+        "long_name": "Recursion Summary Exercises",
         "exercises": {
-          "recChapterSumm": {
+          "RecChapterSumm": {
             "long_name": "Recursion Summary Exercise",
             "required": true,
             "points": 1.0,

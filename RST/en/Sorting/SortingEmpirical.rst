@@ -63,7 +63,7 @@ The algorithms compared include
 :ref:`Quicksort <Quicksort> <Quicksort>`,
 :ref:`Mergesort <Mergesort> <Mergesort>`,
 :ref:`Heapsort <Heapsort> <Heapsort>`,
-:ref:`radix sort <radix sort> <Radixsort>`.
+:ref:`Radix Sort <radix sort> <Radixsort>`.
 
 Shellsort compares times for both the basic version and a version with
 increments based on division by three.

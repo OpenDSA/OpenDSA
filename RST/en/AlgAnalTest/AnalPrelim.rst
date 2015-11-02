@@ -44,7 +44,7 @@ collection of information.
 The values making up an input are called the
 :term:`parameters` of the function.
 A specific selection of values for the parameters is called an
-:term:`instance` of the problem.
+:term:`instance <problem instance>` of the problem.
 For example, the input parameter to a sorting function might be an
 array of integers.
 A particular array of integers, with a given size and specific values
@@ -196,12 +196,24 @@ in a programming language.
 .. todo::
    :type: SlideShow
 
-   Here we need a visual description of the definitions of a problem, problem instance, algorithm, and program.  In this visualization, we may present the problem of sorting. The sorting problem here is a function that maps a specific problem instance to the desired output. An array of integers of size $n$ is randomly generated to represent a problem instance. Then an algorithm would be a recipe of mapping the problem instance to the desired output. We may present here bubble sort and merge sort as two recipes. We should give an example when the problem instance can have an effect on the efficiency of the algorithm (i.e. number of swaps for bubble sort in a sorted Vs. unsorted array). Finally, a program is an implementation of the algorithm in a specific programming language. So, here we may present the implemenation of bubble sort in C++ as an example of a program.  
-
+   Here we need a visual description of the definitions of a problem,
+   problem instance, algorithm, and program.  In this visualization,
+   we may present the problem of sorting. The sorting problem here is
+   a function that maps a specific problem instance to the desired
+   output. An array of integers of size $n$ is randomly generated to
+   represent a problem instance. Then an algorithm would be a recipe
+   of mapping the problem instance to the desired output. We may
+   present here bubble sort and merge sort as two recipes. We should
+   give an example when the problem instance can have an effect on the
+   efficiency of the algorithm (i.e. number of swaps for bubble sort
+   in a sorted Vs. unsorted array). Finally, a program is an
+   implementation of the algorithm in a specific programming
+   language. So, here we may present the implemenation of bubble sort
+   in C++ as an example of a program.
 
 .. inlineav:: ProblemAlgorithmCON ss
    :output: show
 
-.. avembed:: Exercises/AlgAnalTest/ProblemAlgorithmProgram.html ka 
+.. avembed:: Exercises/AlgAnal/AnalPrelimSumm.html ka 
 
 .. odsascript:: AV/Development/AlgAnal/ProblemAlgorithmCON.js

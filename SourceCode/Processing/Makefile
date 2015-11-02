@@ -7,12 +7,15 @@
 # (Bash) export DISPLAY=:0.0
 # (csh/tcsh) setenv DISPLAY :0.0
 
-PROCESS = ~/processing-2.0b9/processing-java
+PROCESS = ~/processing-2.2.1/processing-java
 
-# Use this one on Linux
-#BUILD = build
 # On Windows, I can't make it work without an absolute path
-BUILD = /c/Cliff/OpenDSA/SourceCode/Processing/build
+ifeq ($(OS),Windows_NT)
+	BUILD = /c/Cliff/OpenDSA/SourceCode/Processing/build
+else
+	# Use this one on Linux
+	BUILD = build
+endif
 
 # Run this to test the code for errors
 all: Demo Misc Lists Design Binary General Sorting Graphs
@@ -189,7 +192,7 @@ Binary: Traverse ExpTree ExpTreeC BST BSTDict Minheap Maxheap Huffman
 
 Traverse: build/Traverse/success
 
-build/Traverse/success: Binary/BinNode.pde Binary/BSTNode.pde Binary/Traverse.pde Utils/KVPair.pde
+build/Traverse/success: Binary/BinNode.pde Binary/BSTNode.pde Binary/Traverse.pde Utils/KVPair.pde Binary/Preorder.pde Binary/checkBST.pde
 	@echo "Traversal Test"
 	-@rm -rf build/Traverse
 	@mkdir build/Traverse
@@ -197,6 +200,8 @@ build/Traverse/success: Binary/BinNode.pde Binary/BSTNode.pde Binary/Traverse.pd
 	@cp Binary/BSTNode.pde build/Traverse
 	@cp Utils/KVPair.pde build/Traverse
 	@cp Binary/Traverse.pde build/Traverse
+	@cp Binary/checkBST.pde build/Traverse
+	@cp Binary/Preorder.pde build/Traverse
 	@$(PROCESS) --run --sketch="$(BUILD)/Traverse" --output="$(BUILD)/build" --force
 
 ExpTree: build/ExpTree/success
@@ -287,6 +292,17 @@ build/Huffman/success: Binary/Huffman.pde
 	@mkdir build/Huffman
 	@cp Binary/Huffman.pde build/Huffman
 	@$(PROCESS) --run --sketch="$(BUILD)/Huffman" --output="$(BUILD)/build" --force
+
+RecTutor: build/RecExCode/success
+
+build/RecExCode/success: Binary/BST.pde Binary/BSTTest.pde Binary/BSTNode.pde Binary/BinNode.pde Binary/RecExCode.pde
+	@echo "RecExCode Test"
+	-@rm -rf build/RecExCode
+	@mkdir build/RecExCode
+	@cp Binary/RecExCode.pde build/RecExCode
+	@cp Binary/BSTNode.pde build/RecExCode
+	@cp Binary/BinNode.pde build/RecExCode
+	@$(PROCESS) --run --sketch="$(BUILD)/RecExCode" --output="$(BUILD)/build" --force
 
 General: GenTree UFTest1 UFTest2
 

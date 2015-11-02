@@ -5,7 +5,8 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: linear indexing; 2-3 tree
+   :satisfies: B tree
    :topic: Indexing
 
 B-Trees
@@ -61,8 +62,8 @@ value stored in the tree is actually the number of the block
 containing the child node (usually interpreted as an offset from the
 beginning of the corresponding disk file).
 In a typical application, the B-tree's access to the disk file will be
-managed using a buffer pool and a block-replacement scheme such as LRU
-(see Module :numref:`BuffPool`).
+managed using a :ref:`buffer pool <buffer pool> <BuffPool>`
+and a block-replacement scheme such as :term:`LRU`.
 
 Figure :num:`Figure #BTexamp` shows a B-tree of order four.
 Each node contains up to three keys, and
@@ -129,7 +130,7 @@ called the :math:`\mathrm{B}^+` tree.
 When greater efficiency is required, a more complicated
 variant known as the :math:`\mathrm{B}^*` tree is used.
 
-Consider again the linear index.
+Consider again the :term:`linear index`.
 When the collection of records will not change, a linear index
 provides an extremely efficient way to search.
 The problem is how to handle those pesky inserts and deletes.

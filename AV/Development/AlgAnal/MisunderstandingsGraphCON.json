@@ -1,0 +1,27 @@
+{
+  "translations" :{
+    "en": {
+    	"Slide 1": "Imagine drawing a graph to show the cost of finding the maximum value among $n$ values, as $n$ grows.",
+    	"Slide 2": "<br><br>That is, the $x$ axis would be $n$, and the $y$ value would be the cost.",
+    	"Slide 3": "Of course, this is a diagonal line going up to the right, as $n$ increases",
+    	"Slide 4": "Now, imagine the graph showing the cost for each instance of the problem of finding the maximum value among (say) 20 elements in an array.",
+    	"Slide 5": "The first position along the $x$ axis of the graph might correspond to having the maximum element in the first position of the array.",
+    	"Slide 6": "<br><br> The second position along the $x$ axis of the graph might correspond to having the maximum element in the second position of the array, and so on.",
+    	"Slide 7": "Of course, the cost is always 20.",
+    	"Slide 8": "<br><br>Therefore, the graph would be a horizontal line with value 20.",
+    	"Slide 9": "Now, let us switch to the problem of doing a sequential search for a given value in an array.",
+    	"Slide 10": "Think about the graph showing all the problem instances of size 20.",
+    	"Slide 11": "The first problem instance might be when the value we search for is in the first position of the array.",
+    	"Slide 12": "<br><br>This has cost 1.",
+    	"Slide 13": "The second problem instance might be when the value we search for is in the second position of the array.",
+    	"Slide 14": "<br><br>This has cost 2. And so on.",
+    	"Slide 15": "If we arrange the problem instances of size 20 from least expensive on the left to most expensive on the right, we see that the graph forms a diagonal line from lower left (with value 0) to upper right (with value 20)",
+    	"Slide 16": "Finally, let us consider the cost for performing sequential search as the size of the array $n$ gets bigger. What will this graph look like?",
+    	"Slide 17": "The shape of this graph depends on whether we are considering:",
+    	"Slide 18": "<br> (1) The best case cost (that would be a horizontal line with value 1.)",
+    	"Slide 19": "<br> (2) The worst case cost (that would be a diagonal line with value $i$ at position $i$ along the $x$ axis.)",
+    	"Slide 20": "<br> (3) The average cost (that would be a a diagonal line with value $i/2$ at position $i$ along the $x$ axis).",
+    	"Slide 21": "This is why we must always say that function $f(n)$ is in $O(g(n))$ in the best, average, or worst case! If we leave off which class of inputs we are discussing, we cannot know which cost measure we are referring to for most algorithms."
+    }
+  }
+}

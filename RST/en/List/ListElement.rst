@@ -67,7 +67,7 @@ automatic garbage collection.
 .. inlineav:: listElementDeleteCON ss
    :output: show 
    
-.. avembed:: Exercises/List/LstSumm.html ka
+.. avembed:: Exercises/List/ListSumm.html ka
    
 .. odsascript:: AV/List/listElementDataCON.js
 .. odsascript:: AV/List/listElementTypeCON.js

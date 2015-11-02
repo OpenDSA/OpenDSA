@@ -134,6 +134,8 @@ is an example of a full binary tree.
 
 .. avembed:: Exercises/Binary/DefSumm.html ka
 
+.. avembed:: Exercises/Binary/Treeprobs.html ka
+
 Notes
 -----
 

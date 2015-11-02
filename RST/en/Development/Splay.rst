@@ -41,10 +41,11 @@ Maintaining balance is really done only for the sake of reaching this
 time efficiency goal.
 
 The splay tree access functions operate in a manner reminiscent of
-the move-to-front rule for self-organizing lists
-(see Module :numref:`<SelfOrg>`), and of the path compression
-technique for managing
-a series of Union/Find operations from Module :numref:`<UnionFind>`.
+the :term:`move-to-front` rule for
+:ref:`self-organizing lists <self-organizing list> <SelfOrg>`,
+and of the path compression technique for managing
+a series of
+:ref:`Union/Find <Union/Find> <UnionFind>` operations.
 These access functions tend to make the tree more balanced, but an
 individual access will not necessarily result in a more balanced
 tree.
@@ -56,7 +57,7 @@ Splaying moves :math:`S` to the root of the BST.
 When :math:`S` is being deleted, splaying
 moves the parent of :math:`S` to the root.
 As in the AVL tree, a splay of node :math:`S`
-consists of a series of :term:`rotations`.
+consists of a series of :term:`rotations <rotation>`.
 A rotation moves :math:`S` higher in the tree by adjusting its
 position with respect to its parent and grandparent.
 A side effect of the rotations is a tendency to balance the tree.

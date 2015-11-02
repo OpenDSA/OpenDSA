@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: HashIntro
+   :requires: hash deletion
    :topic: Hashing
 
 Hashing Chapter Summary Exercises

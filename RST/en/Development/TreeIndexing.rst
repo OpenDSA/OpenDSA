@@ -106,6 +106,6 @@ other balanced search trees is that it naturally
 leads to the :ref:`B-tree <B-tree> <BTree>`, which is by far the
 most widely used indexing method today.
 
-.. avembed:: Exercises/Development/TreeIndexing.html ka
+.. avembed:: Exercises/Indexing/TreeIndexing.html ka
 
 .. odsascript:: AV/Development/treeIndexingCON.js

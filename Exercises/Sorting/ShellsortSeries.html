@@ -1,41 +1,17 @@
 <!DOCTYPE html>
-<html data-require="math">
+<html data-require="math ShellsortSeries">
 <head>
   <title>OpenDSA Exercise: Legal Shellsort Series</title>
-  <script src="../../lib/jquery.min.js"></script>
-  <script src="../../lib/jquery-ui.min.js"></script>
-  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+  <script src="../../khan-exercises/local-only/main.js" ></script>
 </head>
+
 <body data-height="525" data-width="950">
-<script>
-// Determine whether a proposed series is legal or not
-function getAnswer(series) {
-  if (series[series.length - 1] !== 1) { return "No"; }
-  for (var i = 1; i < series.length; i++) {
-    if (series[i] >= series[i - 1]) { return "No"; }
-  }
-  return "Yes";
-}
-
-// Generate an array containing a proposed increment series
-// The series will have count+1 elements
-function makeSeries(count) {
-  var series = [];
-  for (var i = 0; i <= count; i++) {
-    series[i] = KhanUtil.randRange(count - i, 10 - (2 * i));
-  }
-  if (KhanUtil.randRange(0, 4) !== 3) {
-    series[count] = 1;
-  }
-  return series;
-}
-</script>
-
 <div class="exercise">
   <div class="vars">
     <var id="COUNT">randRange(1, 4)</var>
-    <var id="SERIES">makeSeries(COUNT)</var>
-    <var id="ANSWER">getAnswer(SERIES)</var>
+    <var id="SERIES">shellsortSeries.makeSeries(COUNT)</var>
+    <var id="ANSWER">shellsortSeries.getAnswer(SERIES)</var>
   </div>
   <div class="problems">
     <div id="problem-type-or-description">
@@ -46,8 +22,8 @@ function makeSeries(count) {
       </p>
       <div class="solution"><var>ANSWER</var></div>
       <ul class="choices" data-category="true">
-        <li><var>"Yes"</var></li>
-        <li><var>"No"</var></li>
+        <li>Yes</li>
+        <li>No</li>
       </ul>
     </div>
   </div>

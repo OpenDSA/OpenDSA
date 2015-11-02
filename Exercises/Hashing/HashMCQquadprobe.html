@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html data-require="math">
-<head>
-  <title>Hashing Question: Quadratic Probing</title>
-  <script src="../../lib/jquery.min.js"></script>
-  <script src="../../lib/jquery-ui.min.js"></script>
-  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-</head>
-<body>
-  <div class="exercise">
-    <div class="problems">
-      <div id="problem-type-or-description">
-        <p class="question">What is one disadvantage of quadratic
-        probing as a collision resolution method?</p>
-        <div class="solution"><var>"Insertions can fail even if there are empty slots in the hash table"</var></div>
-	<ul class="choices">
-	  <li><var>"You have to check whether or not a node needs to be split"</var></li>
-	  <li><var>"Memory usage increases with each insertion"</var></li>
-	  <li><var>"Primary clustering can degrade performance"</var></li>
-	</ul>
-	<div class="hints">
-          <p>Usually, the probe sequence for quadratic probing does
-            not visit all slots of the table.</p>
-	</div>
-      </div> 	  	  
+  <head>
+    <title>Hashing Question: Quadratic Probing</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="question">What is one disadvantage of quadratic
+            probing as a collision resolution method?</p>
+          <div class="solution">Insertions can fail even if there are
+            empty slots in the hash table</div>
+          <ul class="choices">
+            <li>You have to check whether or not a node needs to be split</li>
+            <li>Memory usage increases with each insertion</li>
+            <li>Primary clustering can degrade performance</li>
+          </ul>
+          <div class="hints">
+            <p>Usually, the probe sequence for quadratic probing does
+              not visit all slots of the table.</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-</body>
+  </body>
 </html>

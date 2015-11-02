@@ -362,7 +362,7 @@ def configure(config_file_path, options):
     print "Configuring OpenDSA, using " + config_file_path
 
     # Load and validate the configuration
-    config = ODSA_Config(config_file_path)
+    config = ODSA_Config(config_file_path, options.output_directory)
 
     # Delete everything in the book's HTML directory, otherwise the
     # post-processor can sometimes append chapter numbers to the existing HTML
@@ -478,6 +478,8 @@ if __name__ == "__main__":
                       dest="slides", action="store_true", default=False)
     parser.add_option("--dry-run", help="Causes configure.py to configure the book but stop before compiling it",
                       dest="dry_run", action="store_true", default=False)
+    parser.add_option("-o", help="Accepts a custom directory name instead of using the config file's name.",
+                      dest="output_directory", default=None)
     (options, args) = parser.parse_args()
 
     if options.slides:

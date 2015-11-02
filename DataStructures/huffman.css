@@ -31,12 +31,19 @@
 }
 
 .jsavnode.jsavtreenode.jsavbinarynode.huffmanleaf {
-  height:32px;
-  width:32px;
+  height:32px !important;
+  width:32px !important;
   line-height: 16px;
   z-index: 100;
   margin-top:3px; 
   padding-top: 1px;
+}
+
+.jsavautoresize .jsavnode {
+  height:32px !important;
+  min-height:32px !important;
+  width:32px !important;
+  min-width:32px !important;
 }
 
 .jsavoutput.jsavline {
@@ -49,7 +56,7 @@
 }
 
 .jsavmatrix .jsavarray li.jsavnode {
-  width: 65px;
+  width: 65px !important;
   min-width: 65px !important;
   max-width: 65px !important;
   background-color: transparent;

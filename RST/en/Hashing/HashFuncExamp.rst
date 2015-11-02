@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: hash function
    :topic: Hashing
 
 Sample Hash Functions
@@ -214,7 +214,7 @@ If the sum is not sufficiently large, then the modulus operator will
 yield a poor distribution.
 For example, because the ASCII value for 'A' is 65 and 'Z' is 90,
 ``sum`` will always be in the range 650 to 900 for a string of ten
-upper case letters. 
+upper case letters.
 For a hash table of size 100 or less, a reasonable  distribution
 results.
 For a hash table of size 1000, the distribution is terrible because
@@ -292,7 +292,7 @@ functions.
 You should use the calculators above for the more complicated hash
 functions.
 
-.. avembed:: Exercises/Hashing/HashFuncPROSumm.html ka
+.. avembed:: Exercises/Hashing/HashFuncFIBSumm.html ka
 
 Here are some review questions.
 

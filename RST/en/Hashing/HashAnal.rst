@@ -5,7 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: collision resolution
+   :satisfies: hashing
    :topic: Hashing
 
 Analysis of Closed Hashing

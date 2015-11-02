@@ -1,0 +1,8 @@
+{
+  "translations" :{
+    "en": {
+      "av_tag1": "Left sub-tree is a binary tree",
+      "av_tag2": "Right sub-tree is a binary tree"
+    }
+  }
+}

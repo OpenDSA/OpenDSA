@@ -20,6 +20,13 @@
     "Introduction": {
       "Background/IntroDSA.rst": {
         "long_name": "Introduction to Data Structures and Algorithms",
+        "sections": {
+          "se": {
+            "long_name": "software engineering topics",
+            "showhide": "none",
+            "remove": true
+          }
+        },
         "exercises": {
           "IntroSumm": {
             "long_name": "Introduction Summary Questions",
