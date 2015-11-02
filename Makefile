@@ -165,9 +165,16 @@ CS2401: min
 CS3114: min
 	python $(CONFIG_SCRIPT) config/CS3114.json
 
+CS3114LTI: min
+	python $(CONFIG_SCRIPT) config/CS3114LTI.json
+
 CS3114_rev: min
 	python $(CONFIG_SCRIPT) config/CS3114_rev.json
 	python $(CREATE_COURSE) config/CS3114_rev.json courseConf.json
+
+CS3: min
+	python $(CONFIG_SCRIPT) config/CS3.json
+	python $(CREATE_COURSE) config/CS3.json courseConf2.json
 
 NewKA: min
 	python $(CONFIG_SCRIPT) config/NewKA.json
