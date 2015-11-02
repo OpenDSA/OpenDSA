@@ -202,7 +202,7 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   
   verbose = True
   
-  TAGS = [ ('script', 'src'), ('link', 'href'), ('img', 'src'), ('a', 'href') ]
+  TAGS = [ ('script', 'src'), ('img', 'src'), ('a', 'href') ]
   
   # KILL MATHJAX
   '''Helpful for debugging, because MathJax takes forever to load'''
