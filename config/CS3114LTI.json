@@ -37,11 +37,11 @@
   "glob_exer_options": {
     "JXOP-debug": "true"
   },
+  "dispModComp": true,
   "chapters": {
     "Preface": {
       "Intro": {
         "long_name": "How to Use this System",
-        "dispModComp": true,
         "exercises": {},
         "sections": {}
       }
@@ -52,7 +52,7 @@
         "exercises": {},
         "sections": {
           "Binary Search Tree Definition": {
-            "dispModComp": true
+            "showsection": true
           },
           "BST Search": {
             "showsection": true,
