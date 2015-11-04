@@ -177,6 +177,14 @@ CS3: min
 	python $(CONFIG_SCRIPT) config/CS3.json
 	python $(CREATE_COURSE) config/CS3.json config/CS3_LMSconf.json
 
+CS3vt: min
+	python $(CONFIG_SCRIPT) config/CS3.json
+	python $(CREATE_COURSE) config/CS3.json config/CS3vt_LMSconf.json
+
+CS3in: min
+	python $(CONFIG_SCRIPT) config/CS3.json
+	python $(CREATE_COURSE) config/CS3.json config/CS3in_LMSconf.json
+
 NewKA: min
 	python $(CONFIG_SCRIPT) config/NewKA.json
 

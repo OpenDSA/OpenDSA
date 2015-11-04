@@ -1,15 +1,19 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2015 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Cliff Shaffer and David Parillo
+   :requires:
    :satisfies: DSA Introduction
    :topic: Introduction
 
 Data Structures and Algorithms
 ==============================
+
+Introduction
+------------
 
 How many cities with more than 250,000 people lie within 500 miles of
 Dallas, Texas?
@@ -89,17 +93,19 @@ This allows you to see how each algorithm compares to other
 algorithms for solving the same problem in terms of its
 efficiency.
 
-.. showhidecontent:: se
 
-   While the main focus of this course *_is_* data structures and algorithms,
-   this course will also cover some additional topics which are not standard fare
-   in a data structures course:
+Some Software Engineering Topics
+--------------------------------
 
-   #. An introduction to object orientation and the Unified Modeling Language (UML).
+While the main focus of this course *_is_* data structures and algorithms,
+this course will also cover some additional topics which are not standard fare
+in a data structures course:
 
-   #. An introduction to software design patterns.
+#. An introduction to object orientation and the Unified Modeling Language (UML).
 
-   #. An introduction to software development processes.
+#. An introduction to software design patterns.
+
+#. An introduction to software development processes.
 
 
 A Philosophy of Data Structures
@@ -164,6 +170,7 @@ amount of resources that the solution consumes.
 Most often, cost is measured in terms of one key resource such as
 time, with the implied assumption that the solution meets the other
 resource constraints.
+
 
 Selecting a Data Structure
 --------------------------
@@ -345,5 +352,8 @@ you determine the best data structure for the task.
    more appropriate if the database is created once, and then never
    changed, such as an atlas distributed on a CD or accessed from a
    website.
+
+Introduction Summary Questions
+------------------------------
 
 .. avembed:: Exercises/Background/IntroSumm.html ka
