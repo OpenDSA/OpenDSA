@@ -34,6 +34,9 @@ lib/*-min.*
 # Ignore files used by JetBrains IDE's to store project settings.
 .idea
 
+# Ignore LMS course configuration files
+config/*_LMSconf.json
+
 # cache files for sublime text
 *.tmlanguage.cache
 *.tmPreferences.cache

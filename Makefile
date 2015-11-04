@@ -165,9 +165,25 @@ CS2401: min
 CS3114: min
 	python $(CONFIG_SCRIPT) config/CS3114.json
 
+CS3114LTI: min
+	python $(CONFIG_SCRIPT) config/CS3114LTI.json
+	python $(CREATE_COURSE) config/CS3114LTI.json config/CS3114LTI_LMSconf.json
+
 CS3114_rev: min
 	python $(CONFIG_SCRIPT) config/CS3114_rev.json
-	python $(CREATE_COURSE) config/CS3114_rev.json courseConf.json
+	python $(CREATE_COURSE) config/CS3114_rev.json config/CS3114_rev_LMSconf.json
+
+CS3: min
+	python $(CONFIG_SCRIPT) config/CS3.json
+	python $(CREATE_COURSE) config/CS3.json config/CS3_LMSconf.json
+
+CS3vt: min
+	python $(CONFIG_SCRIPT) config/CS3.json
+	python $(CREATE_COURSE) config/CS3.json config/CS3vt_LMSconf.json
+
+CS3in: min
+	python $(CONFIG_SCRIPT) config/CS3.json
+	python $(CREATE_COURSE) config/CS3.json config/CS3in_LMSconf.json
 
 NewKA: min
 	python $(CONFIG_SCRIPT) config/NewKA.json

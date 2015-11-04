@@ -58,11 +58,13 @@ def format_mod_options(options):
   return option_str
 
 # Returns a boolean indicating whether or not the module can be completed
-def determine_module_completable(mod_attrib):
+def determine_module_completable(mod_attrib, dispModComp):
   # Set a JS flag on the page, indicating whether or not the module can be completed
   if 'dispModComp' in mod_attrib:
     # Use the value specified in the configuration file to override the calculated value
     dispModComp = mod_attrib['dispModComp']
+  elif dispModComp:
+    dispModComp = dispModComp
   else:
     dispModComp = False
 
@@ -249,7 +251,7 @@ class ODSA_RST_Module:
 
     exercises = mod_attrib['exercises']
 
-    dispModComp = determine_module_completable(mod_attrib)
+    dispModComp = determine_module_completable(mod_attrib, config.dispModComp)
 
     filename = '{0}RST/{1}/{2}.rst'.format(config.odsa_dir, config.lang, mod_path)
 

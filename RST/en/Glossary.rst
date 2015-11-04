@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -1710,6 +1710,19 @@ Glossary
    in degree
       In :term:`graph` terminology, the in degree for a :term:`vertex` is
       the number of edges directed into the vertex.
+
+   information theoretic lower bound
+      A :term:`lower bound` on the amount of resources needed to solve
+      a problem based on the number of bits of information needed to
+      uniquely specify the answer.
+      Sometimes referred to as a "Shannon theoretic lower bound" due
+      to Shannon's work on information theory and entropy.
+      An example is that sorting has a lower bound of
+      :math:`\Omega(\log_2 n!)` because there are :math:`n!` possible
+      orderings for :math:`n` values.
+      This observation alone does not make the lower bound tight,
+      because it is possible that no algorithm could actually reach
+      the information theory lower limit.
 
    inode
       Short for "index node".

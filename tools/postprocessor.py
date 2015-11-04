@@ -293,6 +293,7 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   slide_scripts = defaultdict(list)
   all_scripts = list()
   for tag_name, tag_url in TAGS:
+    if tag_name == 'link': continue
     for a_tag in soup.find_all(tag_name):
       if a_tag.has_attr(tag_url) and a_tag[tag_url].startswith('OpenDSA/AV/'):
         name = os.path.splitext(os.path.basename(a_tag[tag_url]))[0]
