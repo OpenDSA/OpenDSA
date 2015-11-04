@@ -36,6 +36,7 @@
         blocks = [],
         labels = [],
         connectStartArray,
+        scale = 2.0, // Scale block sizes to pixels
         linesArray = [];
 
     //creates the initial visualization of the memory pool, rectangles are created based
@@ -44,25 +45,25 @@
 
       var memPoolLabel = av.label("Memory Pool", {"left": 150, "top": 195});
       
-      var used1Size = Math.floor(Math.random() * 3) + 25;
-      var used2Size = Math.floor(Math.random() * 3) + 58;
-      var used3Size = Math.floor(Math.random() * 3) + 30;
-      var used4Size = Math.floor(Math.random() * 3) + 21;
+      var used1Size = scale * (Math.floor(Math.random() * 3) + 25);
+      var used2Size = scale * (Math.floor(Math.random() * 3) + 58);
+      var used3Size = scale * (Math.floor(Math.random() * 3) + 30);
+      var used4Size = scale * (Math.floor(Math.random() * 3) + 21);
 
-      var free1Start = 150;
-      var free1Finish = free1Start + (freeValues[0]*2);
+      var free1Start = 120;
+      var free1Finish = free1Start + (freeValues[0]*scale);
 
       var free2Start = free1Finish + used1Size;
-      var free2Finish = free2Start + (freeValues[1]*2);
+      var free2Finish = free2Start + (freeValues[1]*scale);
 
       var free3Start = free2Finish + used2Size;
-      var free3Finish = free3Start + (freeValues[2]*2);
+      var free3Finish = free3Start + (freeValues[2]*scale);
 
       var free4Start = free3Finish + used3Size;    
-      var free4Finish = free4Start + (freeValues[3]*2);
+      var free4Finish = free4Start + (freeValues[3]*scale);
 
       var rectY = 215;
-      var rectHeight = 60;
+      var rectHeight = 50;
 
       //used blocks in memory pool
       var used1 = av.g.rect(free1Finish, rectY, used1Size, rectHeight).css({"fill": "coral"});
@@ -80,17 +81,18 @@
       freeFinArray = new Array(free1Finish, free2Finish, free3Finish, free4Finish);
 
       var smallRectY = 135;
-      var usedRec = av.g.rect(620, smallRectY, 30, 40).css({"fill": "coral"});
-      var freeRec = av.g.rect(720, smallRectY, 30, 40).css({"fill": "cornflowerblue"});
+      var usedRec = av.g.rect(620, smallRectY, 30, 30).css({"fill": "coral"});
+      var freeRec = av.g.rect(720, smallRectY, 30, 30).css({"fill": "cornflowerblue"});
       
-      var labelY = 175;
-      var usedLabel = av.label("Used Space", {left :  600, top:  labelY});
-      var freeLabel = av.label("Free Space", {left :  700, top:  labelY});
+      var labelY = 170;
+      var usedLabel = av.label("Used Space", {left :  590, top:  labelY});
+      var freeLabel = av.label("Free Space", {left :  690, top:  labelY});
       
+console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Size + ", " + used4Size);
       usedNum = used1Size + used2Size + used3Size + used4Size;
       freeNum = freeValues[0] + freeValues[1] + freeValues[2] + freeValues[3];
       
-      var numLabelY = 145;
+      var numLabelY = 125;
       usedAmountLabel = av.label(usedNum, {left :  622, top:  numLabelY});
       usedAmountLabel.css({"z-index": 500});
 
@@ -102,8 +104,8 @@
       var connect3Start = 390;
       var connect4Start = 440;
 
-      var lineY1 = 390;
-      var lineY2 = 275; 
+      var lineY1 = 358;
+      var lineY2 = 265; 
 
       connectStartArray = new Array(connect1Start, connect2Start, connect3Start, connect4Start);
 
@@ -205,12 +207,12 @@
     function insertIntoBlock(index) {
 
       var currIncr = incrs[currIncrIndex];
-      var newUsedRect = av.g.rect(freeStartArray[index], 215, currIncr * 2, 60).css({"fill": "coral"});
+      var newUsedRect = av.g.rect(freeStartArray[index], 215, currIncr * 2, 50).css({"fill": "coral"});
 
       freeStartArray[index] = freeStartArray[index] + currIncr * 2;
 
      //move connecting line accordingly
-      linesArray[index].movePoints([[0, connectStartArray[index], 390], [1, ((freeStartArray[index] + freeFinArray[index])/2), 275]]).css({"stroke-width": 1});
+      linesArray[index].movePoints([[0, connectStartArray[index], 358], [1, ((freeStartArray[index] + freeFinArray[index])/2), 265]]).css({"stroke-width": 1});
       
       freeAmountLabel.text(freeNum - currIncr);
       usedNum = usedNum + currIncr;
