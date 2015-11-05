@@ -53,7 +53,7 @@ In this case, the depth is passed as a parameter to the function, and
 each recursive call must adjust that value (by adding one).
 Practice this simple example of information flow for yourself.
 
-.. avembed:: Exercises/RecurTutor2/BTsetdepthPROG.html ka
+.. avembed:: Exercises/BTRecurTutor/BTsetdepthPROG.html ka
 
 Collect-and-return
 ------------------
@@ -97,7 +97,7 @@ Another common mistake is to not return a value.
 Practice the simple collect-and-retun information flow with the
 following programming exercises.
  
-.. avembed:: Exercises/RecurTutor2/BTreturnPROGSumm.html ka
+.. avembed:: Exercises/BTRecurTutor/BTreturnPROGSumm.html ka
    
 
 Combining Information Flows
@@ -114,13 +114,13 @@ changes.
 The information passed up has the simple collect-and-return style:
 Return True if and only if one of the children returns True.
 
-.. avembed:: Exercises/RecurTutor2/BTcheckvalPROG.html ka
+.. avembed:: Exercises/BTRecurTutor/BTcheckvalPROG.html ka
 
 Slightly more complicated problems combine what we have seen so far.
 Information passing down the tree changes from node to node.
 Data passed back up the tree uses the collect-and-return paradigm.
 Here are practice problems.
 
-.. avembed:: Exercises/RecurTutor2/BTtransferPROGSumm.html ka
+.. avembed:: Exercises/BTRecurTutor/BTtransferPROGSumm.html ka
 
 .. odsascript:: AV/Binary/BinaryTreeMistakesCON.js

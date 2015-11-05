@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html data-require="codemirror blockUI math math-format word-problems spin">
   <head>
-    <title> Structurally Identical Binary Trees Exercise</title>
+    <title> Binary Tree Check Sum Exercise</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
-      #MBTmirrorPROG .CodeMirror {
+      #BTchecksumPROG .CodeMirror {
         height: 200px;
       }
     </style>
@@ -19,12 +19,15 @@
         </var>
       </div>
       <div class="problems">
-        <div id="MBTmirrorPROGp"> <!-- Supresses answer box -->
-          <p class="problem">Given two binary trees, return True if and
-            only if they are mirror images of each other.<br/>
+        <div id="BTchecksumPROGp"> <!-- Supresses answer box -->
+          <p class="problem">Given a binary tree, check if the tree satisfies
+            the property that for each node, the sum of the values of its left and
+            right children are equal to the node's value. If a node has only
+            one child, then the node should have the same value as that
+            child. Leaf nodes automatically satisfy the property.<br/>
 
-            <textarea id="codeTextarea" name="codeTextarea">
-boolean MBTmirror(BSTNode root1, BSTNode root2) {
+            <textarea  id="codeTextarea">
+boolean BTchecksum(BinNode root) {
 // Your code goes between these lines
 
 
@@ -38,19 +41,19 @@ boolean MBTmirror(BSTNode root1, BSTNode root2) {
               if (guess[0] != initEditor) {
                 console.log(guess[0]);
                 window.codeValue = guess[0];
-                window.progexType= "binarytree";
-                window.summexName= "MBTmirrorPROG";
+                window.progexType= "BTRecurTutor";
+                window.summexName= "BTchecksumPROG";
               } else {
                 return "";
               }
             </div>
           </div>
           <div class="hints">
-            <p>To be mirrors, the left subtree of the first tree must mirror the
-              right subtree of the second tree. And the right subtree of the first
-              tree must mirror the left subtree of the second tree.</p>
+            <p>Make sure that you are comparing the value of a node
+              against the sum of its immediate children, NOT the sum of
+              all its descendents.</p>
           </div>
-        </div>
+	</div>
       </div>
     </div>
   </body>
