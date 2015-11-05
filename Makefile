@@ -65,6 +65,7 @@ lintExe:
 	-@$(LINT) Exercises/Hashing/*.js
 	-@$(LINT) Exercises/Indexing/*.js
 	-@$(LINT) Exercises/List/*.js
+	-@$(LINT) Exercises/RecurTutor/*.js
 	-@$(LINT) Exercises/RecurTutor2/*.js
 	-@$(LINT) Exercises/Sorting/*.js
 
