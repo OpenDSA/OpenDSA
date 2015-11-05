@@ -108,8 +108,8 @@ RecurTutor: min
 TestRecur: min
 	python $(CONFIG_SCRIPT) config/TestRecur.json
 
-RecurTutor2: min
-	python $(CONFIG_SCRIPT) config/RecurTutor2.json
+BTRecurTutor: min
+	python $(CONFIG_SCRIPT) config/BTRecurTutor.json
 
 CS226JHU: min
 	python $(CONFIG_SCRIPT) config/CS226JHUF15.json

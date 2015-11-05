@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html data-require="codemirror blockUI math math-format word-problems spin">
   <head>
-    <title> Binary Tree Set Depth Exercise</title>
+    <title> Binary Tree Leaf Nodes Count Exercise</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
-      #BTincPROG .CodeMirror {
+      #BTleafPROG .CodeMirror {
         height: 200px;
       }
     </style>
@@ -19,43 +19,44 @@
         </var>
       </div>
       <div class="problems">
-        <div id="BTsetdepthPROGp"> <!-- Supresses answer box -->
-          <p class="problem">Write a recursive function to set the
-            value for each node in a binary tree to be its depth.
-            Assume that nodes store integer values.<br/>
+        <div id="BTleafPROGp"> <!-- Supresses answer box -->
+          <p class="problem">Write a recursive function to count the
+            number of leaf nodes in the binary tree pointed at by "root".
+            You must use the "isleaf" method to check if the node is leaf or
+            not. That is, do not check the value of the left and right
+            children to see if they are null or not to decide if the node is
+            a leaf.<br/>
 
             <textarea id="codeTextarea" name="codeTextarea">
-void BTsetdepth(BinNode root, int depth) {
+int BTleaf(BinNode root) {
 // Your code goes between these lines
-
 
 
 // Your code goes between these lines
 }</textarea>
-	  </p>
+          </p>
           <div class="question"></div>
           <div class="solution" data-type="custom">
-            <div class="guess"> [editor.getValue()] </div>
+            <div class="guess"> [ editor.getValue()  ] </div>
             <div class="validator-function">
               if (guess[0] != initEditor) {
                 console.log(guess[0]);
                 window.codeValue = guess[0];
-                window.progexType= "binarytree";
-                window.summexName= "BTsetdepthPROG";
+                window.progexType= "BTRecurTutor";
+                window.summexName= "BTleafPROG";
               } else {
                 return "";
               }
             </div>
           </div>
           <div class="hints">
-            <p>For this exercise, you need to do a traversal that
-              visits each node of the tree, and sets the depth to the
-              value that has been passed to it.
-              No information needs to be returned.</p>
-            <p>However, the depth must be incremented by 1 on each
-              recursive call.</p>
+            <p> Make sure that you are answering the right question. There
+              is an example in the text that counts all nodes in a
+              tree. However, this exercise asks you to count all leaf
+              nodes in a tree.
+            </p>
           </div>
-	</div>
+        </div>
       </div>
     </div>
   </body>

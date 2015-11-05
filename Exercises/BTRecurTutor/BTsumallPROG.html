@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html data-require="codemirror blockUI">
+<html data-require="codemirror blockUI math math-format word-problems spin">
   <head>
-    <title> Recursion Programming Exercise: Cummulative Sum</title>
+    <title> Binary Tree Sum Nodes Exercise</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
-      #RecCSumtokPROG .CodeMirror {
+      #BTsumallPROG .CodeMirror {
         height: 200px;
       }
     </style>
@@ -19,35 +19,37 @@
         </var>
       </div>
       <div class="problems">
-        <div id="RecCSumtokPROGp"> <!-- Supresses answer box -->
-          <p class="problem">For function "sumtok", write
-            the missing recursive call. This function returns the
-            sum of the values from 1 to "k". For example, sumtok(5) will
-            return 15.<br/>
+        <div id="BTsumallPROGp"> <!-- Supresses answer box -->
+          <p class="problem">Write a recursive function that
+            returns the sum for all of the nodes of the
+            binary tree pointed at by "root".<br/>
+
             <textarea id="codeTextarea" name="codeTextarea">
-int sumtok(int k) {
-  if (k <= 0) {
-    return 0;
-  } else {
-    return <<Missing a Recursive call>>
-  }
+int BTsumall(BinNode root) {
+// Your code goes between these lines
+
+
+// Your code goes between these lines
 }</textarea>
           </p>
           <div class="question"></div>
           <div class="solution" data-type="custom">
-            <div class="guess">[editor.getValue()]</div>
+            <div class="guess"> [editor.getValue()] </div>
             <div class="validator-function">
               if (guess[0] != initEditor) {
                 console.log(guess[0]);
                 window.codeValue = guess[0];
-                window.progexType = "recursion";
-                window.summexName = "recCSumtokPROG";
+                window.progexType= "BTRecurTutor";
+                window.summexName= "BTsumallPROG";
               } else {
                 return "";
               }
             </div>
           </div>
           <div class="hints">
+            <p>If the root is null, return 0.</p>
+            <p>Otherwise, just return the sum of the root value plus the result
+              of the recursive calls on the children.</p>
           </div>
         </div>
       </div>

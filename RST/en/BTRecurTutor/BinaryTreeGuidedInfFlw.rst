@@ -50,6 +50,6 @@ than just a single path, but not all of the nodes.
 Practice guided traversal with the following programming
 exercises.
 
-.. avembed:: Exercises/RecurTutor2/BSTsmallcountPROG.html ka
+.. avembed:: Exercises/BTRecurTutor/BSTsmallcountPROG.html ka
 
-.. odsascript:: AV/RecurTutor2/IneffBinaryTreeRangeCON.js
+.. odsascript:: AV/BTRecurTutor/IneffBinaryTreeRangeCON.js
