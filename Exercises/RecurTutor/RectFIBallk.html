@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html data-require="codemirror math">
+  <head>
+    <title> Recursion Tracing Exercise: Two Recursive Calls</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+ 
+  <body data-height="800" data-width="950">
+    <div class="exercise">
+      <div class="vars" data-ensure="k != n">
+        <var id="k">randRange(1, 10)</var>
+        <var id="n">randRange(1, 10)</var>
+        <var id="ANS">Math.min(k, n)</var>
+      </div>
+      <div class="problems">
+        <div id="RectFIBallk"> <!-- Supresses answer box -->
+          <p class="question">Consider the following function:
+            <textarea id="codeTextarea" name="codeTextarea">
+public int f(int k , int n) {
+  if (n == k)
+    return k;
+  else if(n > k)
+    return f(k, n - k);
+  else
+    return f(k - n, n);
+}</textarea>		
+            What value is returned by the call
+            <tt>f(<var>k</var>,<var>n</var>)</tt>?<br/>
+            (Either write a number, or write "infinite recursion".)
+          </p>
+          <p class="solution" data-type="text"><var>ANS</var></p>
+          <div class="hints">
+            <p>If n is greater than k then the first recursive call
+              will execute. Otherwise, the second one will excuse.</p>
+            <p>In either cases, n or k is decremented until they are equal.</p>
+            <p>So this computes the minimum of the two.</p>
+      </div> 
+  </div>
+</div>
+</body>
+</html>

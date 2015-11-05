@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html data-require="codemirror math">
+  <head>
+    <title> Recursion Tracing Exercise: What does the following function do?</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body  data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RectMCQfunmaxp"> <!-- Supresses answer box -->
+          <p class="question"> What does function "fun" do when called
+          with some array x and n = 0?
+            <textarea id="codeTextarea" name="codeTextarea">
+int fun (int[] x, int n) {
+  if (n == x.length - 1)
+    return x[n];	
+  else {
+    int temp = fun(x, n + 1);
+    if (temp > x[n])
+      return temp;
+    else
+      return x[n];
+  }
+}</textarea>
+      </p>
+
+      <div class="solution">It finds the largest value in x and leaves x unchanged.</div>
+      <ul class="choices" >
+	<li>It finds the smallest value in x and leaves x unchanged.</li>	  	 
+	<li>It sorts x in ascending order and returns the largest value in x.</li>
+        <li>It sorts x in descending order and returns the largest value in x.</li>
+        <li>It returns x[0] or x[n-1] whichever is larger.</li>
+      </ul>
+      <div class="hints">
+        <p> Do you seen any assignments to the array?</p>
+        <p> Do the comparisons keep the largest or the smallest
+          value?</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

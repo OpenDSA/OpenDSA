@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html data-require="codemirror math">
+  <head>
+    <title> Recursion Tracing Exercise: Recursive calls</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body data-height="550" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RectMCQlinp"> <!-- Supresses answer box -->
+          <p class="question"> 
+            <textarea id="codeTextarea" name="codeTextarea">
+public int result(int n) {
+  if (n == 1)
+    return 2;
+  else
+    return 2 * result(n - 1);
+}</textarea>
+	    If <code>n > 0</code>, how many times will "result" be
+	    called to evaluate "result(n)"?
+          </p>
+          <div class="solution"><code>n</code></div>
+          <ul class="choices" >
+	    <li>2</li>	  	 
+	    <li><code>2^n</code></li>
+            <li><code>2n</code></li>
+            <li><code>n^2</code></li>
+          </ul>
+          <div class="hints">
+            <p>On each call, <code>n</code> is decremented by 1, until
+              it reaches 1 when it hits the base case.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
