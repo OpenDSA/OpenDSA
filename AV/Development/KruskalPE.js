@@ -19,7 +19,11 @@
       layout: "automatic",
       directed: false
     });
-    graphUtils.generate(graph, {weighted: true}); // Randomly generate the graph with weights
+    graphUtils.generate(graph, {
+      weighted: true,
+      nodes: 6,
+      edges: 12
+    }); // Randomly generate the graph with weights
     graph.layout();
 
     jsav.displayInit();
@@ -70,31 +74,26 @@
       modelGraph.addEdge(startNode, endNode, {weight: weight});
     }
 
-    function getValue(node) { return node.value(); }
-
     var modelEdges = modelGraph.edges();
     // sort the edges alphabetically
     modelEdges.sort(function(a, b) {
-      var aNodes = [a.start(), a.end()],
-          bNodes = [b.start(), b.end()],
-          aName = aNodes.map(getValue).sort().join(""),
-          bName = bNodes.map(getValue).sort().join("");
-      return [aName, bName].sort()[0] === aName ? -1 : 1;
+      var nameA = edgeName(a),
+          nameB = edgeName(b);
+      return [nameA, nameB].sort()[0] === nameA ? -1 : 1;
     });
 
-    var distanceMatrixValues = [];
+    var edgeMatrixValues = [];
     modelEdges.forEach(function(edge) {
-      var nodes = [edge.start(), edge.end()],
-          edgeName = "(" + nodes.map(getValue).sort().join(", ") + ")";
-      distanceMatrixValues.push([edgeName, edge.weight()]);
+      var eName = "(" + edgeName(edge, ", ") + ")";
+      edgeMatrixValues.push([eName, edge.weight()]);
     });
 
-    var distances = modeljsav.ds.matrix(distanceMatrixValues, {
+    var edgeMatrix = modeljsav.ds.matrix(edgeMatrixValues, {
       style: "table",
       center: false,
       autoresize: false
     });
-    distances.element.css({
+    edgeMatrix.element.css({
       position: "absolute",
       top: 0,
       left: 10
@@ -106,7 +105,7 @@
     modeljsav.displayInit();
 
     // start the algorithm
-    kruskal(modelNodes, modelEdges, distances, modeljsav);
+    kruskal(modelNodes, modelEdges, edgeMatrix, modeljsav);
 
     modeljsav.umsg(interpret("av_ms_mst"));
     // hide all edges that are not part of the spanning tree
@@ -122,7 +121,7 @@
     return modelGraph;
   }
 
-  function kruskal(modelNodes, modelEdges, distances, modeljsav) {
+  function kruskal(modelNodes, modelEdges, edgeMatrix, modeljsav) {
     // Array of strings for book keeping of connected parts of the graph
     // Initially equal to ["A", "B", "C" ...]
     var connections = [];
@@ -158,18 +157,33 @@
       connections[endSetIndex] = "";
     }
 
+    function edgeIndex(edge) {
+      var eName = "(" + edgeName(edge, ", ") + ")";
+      for (var i = 0; i < modelEdges.length; i++) {
+        if (edgeMatrix.value(i, 0) === eName) { return i; }
+      }
+      return -1;
+    }
+
     // sort edges according to weight and alphabetical order
     modelEdges.sort(sortEdges);
 
     modelEdges.forEach(function(currentEdge) {
       //msg = "<b><u>Processing Edge (" + start().value() + "," + endNode.value() + "):</b></u>";
+      modeljsav.umsg("Processing Edge: (" + edgeName(currentEdge, ", ") + ")<br>");
+      var index = edgeIndex(currentEdge);
       if (!createsCycle(currentEdge)) {
         //Add to MST
-        // msg += " Adding edge to the MST";
+        modeljsav.umsg("Adding edge to the MST", {preserve: true});
         addEdge(currentEdge);
+        edgeMatrix.addClass(index, 0, "marked");
+        edgeMatrix.addClass(index, 1, "marked");
         markEdge(currentEdge, modeljsav);
       } else {
-        // msg += " Dismiss edge";
+        modeljsav.umsg("Dismiss edge", {preserve: true});
+        currentEdge.addClass("discarded");
+        edgeMatrix.addClass(index, 0, "discarded");
+        edgeMatrix.addClass(index, 1, "discarded");
         modeljsav.step();
       }
     });
@@ -186,19 +200,21 @@
     }
   }
 
+  function getValue(node) { return node.value(); }
+
+  function edgeName(edge, separator) {
+    var s = separator || "";
+    return [edge.start(), edge.end()].map(getValue).sort().join(s);
+  }
+
   function sortEdges(a, b) {
     var weightA = a.weight(),
         weightB = b.weight();
     if (weightA === weightB) {
-      var startA = a.start().value().charCodeAt(0),
-          endA   = a.end().value().charCodeAt(0),
-          minA   = Math.min(startA, endA),
-          maxA   = Math.max(startA, endA),
-          startB = b.start().value().charCodeAt(0),
-          endB   = b.end().value().charCodeAt(0),
-          minB   = Math.min(startB, endB),
-          maxB   = Math.max(startB, endB);
-      return (minA - minB) * 1000 + maxA - maxB;
+      var nameA = edgeName(a),
+          nameB = edgeName(b),
+          names = [nameA, nameB].sort();
+      return names[0] === nameA ? -1 : 1;
     }
     return weightA - weightB;
   }

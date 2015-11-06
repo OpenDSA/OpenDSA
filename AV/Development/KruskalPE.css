@@ -9,9 +9,15 @@
 .jsavgraph svg {
   z-index: 0;
 }
+.jsavline {
+  height: 35px;
+}
 
 .jsavnode.marked {
   background-color: #FFF050;
+}
+.jsavnode.discarded {
+  background-color: #ddd;
 }
 .jsavgraph .jsavedge {
   stroke-width: 8;
@@ -19,6 +25,9 @@
 }
 .jsavgraph .jsavedge.marked {
   stroke: #F6B611;
+}
+.jsavgraph .jsavedge.discarded {
+  stroke: rgba(125, 136, 121, 0.2);
 }
 .jsavgraph .jsavedgelabel {
   font-size: 16px;
