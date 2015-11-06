@@ -187,16 +187,14 @@ def validate_module(mod_name, module, conf_data):
                 print('ERROR: Language directory %s does not exist' % lang_dir)
                 error_count += 1
 
+
 # get names of chapter
-
-
 def get_chap_names(chapters):
     for k in chapters:
         listed_chapters.append(k)
 
+
 # Validate a section
-
-
 def validate_section(section, conf_data):
     """Validate a chapter or section"""
     for subsect in section:
@@ -555,6 +553,9 @@ class ODSA_Config:
 
         # The Unix-style relative path between the build directory and the OpenDSA root directory
         self.rel_build_to_odsa_path = os.path.relpath(self.odsa_dir, self.book_dir + self.rel_book_output_path).replace("\\", "/") + '/'
+
+        # LMS course_id, will be filled later while course creation.
+        self.course_id = ''
 
 
 # Code to execute when run as a standalone program

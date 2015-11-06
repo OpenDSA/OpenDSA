@@ -39,6 +39,7 @@ import re
 import subprocess
 import codecs
 import datetime
+import pprint
 from collections import Iterable
 from optparse import OptionParser
 from config_templates import *
@@ -353,6 +354,326 @@ def initialize_conf_py_options(config, slides):
     return options
 
 
+def register_book(config):
+    """Register Book in OpenDSA-server"""
+
+    # register book
+    # create course
+# def create_course(config):
+def create_course(self, request, **kwargs):
+    """Create course on target LMS (e.g. canvas)"""
+
+    # get canvas course information
+    access_token = config['access_token']
+    canvas_url = config['canvas_url']
+    canvas_parsed_url = urlparse(canvas_url)
+
+    course_code = config['course_code']
+    privacy_level = "public"  # should be public
+    consumer_key = config["consumer_key"]
+    consumer_secret = config["consumer_secret"]
+    config_type = "by_url"
+    tool_name = config["tool_name"]
+    tool_url = config["tool_url"]
+    tool_xml_file = config["tool_xml_file"]
+
+    book_json = config['book_json']
+
+
+    # init the request context
+    request_ctx = RequestContext(access_token, canvas_url)
+
+    # get course_id
+    results = courses.list_your_courses(request_ctx,
+                                        'total_scores')
+    # TODO: Proper error message when the course is not created yet.
+    for i, course in enumerate(results.json()):
+        if course.get("course_code") == course_code:
+            course_id = course.get("id")
+
+    # configure the course external_tool
+    results = external_tools.create_external_tool_courses(
+        request_ctx, course_id, tool_name,
+        privacy_level, consumer_key, consumer_secret,
+        config_type=config_type, config_url=tool_url + '/' + tool_xml_file)
+
+    # update the course name
+    course_name = book_json.get("title")
+    results = courses.update_course(
+        request_ctx, course_id, course_name=course_name)
+
+    chapters = book_json.get("chapters")
+
+    module_position = 1
+    # create course modules and assignments
+    for chapter in chapters:
+        chapter_obj = chapters[str(chapter)]
+        # OpenDSA chapters will map to canvas modules
+        results = modules.create_module(
+            request_ctx, course_id, "Chapter " + str(module_position - 1) + " " + str(chapter), module_position=module_position)
+        module_id = results.json().get("id")
+        t = threading.Thread(target=self.create_chapter, args=(request_ctx, course_id, course_code, module_id, module_position - 1, chapter_obj, tool_url))
+        t.start()
+        module_position += 1
+
+    # Register the book to OpenDSA server
+    kbook = get_book(sha1(canvas_parsed_url.netloc + '-' + str(course_id)).hexdigest())
+
+    if kbook is None:
+        with transaction.commit_on_success():
+            kbook, added = Books.objects.get_or_create(
+                book_name=sha1(canvas_parsed_url.netloc + '-' + str(course_id)).hexdigest(),
+                book_url=canvas_parsed_url.netloc + '/courses/' + str(course_id) + '-' + course_code,
+                creation_date=datetime.datetime.now())
+            ubook, created = UserBook.objects.get_or_create(
+                user=kusername,
+                book=kbook)
+    else:
+        # link a book to user
+        ubook = get_user_book(kusername, kbook)
+        if ubook is None:
+            with transaction.commit_on_success():
+                ubook, created = UserBook.objects.get_or_create(
+                    user=kusername,
+                    book=kbook)
+
+        # We first delete all entries of the book
+        # in BookModuleExercise table
+        # for exer in \
+        BookModuleExercise.components.filter(book=kbook).delete()
+
+        exers_ = []
+
+        # delete book chapters
+        BookChapter.objects.filter(book=kbook).delete()
+        for chapter in book_json['chapters']:
+          # get or create chapter
+            kchapter = get_chapter(kbook, chapter)
+            # First we delete chaper entry already in DB
+            if kchapter is not None:
+                with transaction.commit_on_success():
+                    kchapter.delete()
+            with transaction.commit_on_success():
+                kchapter, added = \
+                    BookChapter.objects.get_or_create(
+                        book=kbook, name=chapter)
+
+            for lesson in book_json['chapters'][chapter]:
+                # if we encounter "hidden" we do nothing
+                if not isinstance(book_json['chapters'][chapter][lesson], Iterable):
+                    continue
+
+                # Get list of exercises
+                # exercises_l = \
+                #     book_json['chapters'][chapter][lesson]['exercises']
+                # get or create module
+                # We first extract module name
+                lesson_name = lesson
+                if '/' in lesson_name:
+                    lesson_name = lesson_name.split('/')[1]
+                kmodule = get_module(lesson_name)
+
+                if kmodule is None:
+                    with transaction.commit_on_success():
+                        kmodule, added = Module.objects.get_or_create(
+                            name=lesson)
+                # link module/lesson to chapter
+                if kmodule not in kchapter.get_modules():
+                    kchapter.add_module(kmodule.id)
+                    kchapter.save()
+
+                sections = book_json['chapters'][chapter][lesson]['sections']
+                if isinstance(sections, dict):
+                    for section in sections:
+                        section_obj = sections[section]
+                        for attr in section_obj:
+                            # get or create exercises
+                            description = ''
+                            streak = 0
+                            required = False
+                            # module has exercises
+                            if isinstance(section_obj[attr], dict):
+                            # if len(section_obj[attr]) > 0:
+                                exercise_obj = section_obj[attr]
+                                exercise_name = attr
+                                description = exercise_obj['long_name']
+                                streak = exercise_obj['threshold']
+                                required = exercise_obj['required']
+
+                                if Exercise.objects.filter(name=exercise_name).count() == 0:
+                                  # Add new exercise
+                                    with transaction.commit_on_success():
+                                        kexercise, added = \
+                                            Exercise.objects.get_or_create(
+                                                name=exercise_name,
+                                                covers="dsa",
+                                                description=description,
+                                                streak=streak)
+                                else:
+                                    # Update existing exercise
+                                    with transaction.commit_on_success():
+                                        kexercise = get_exercise(exercise_name)
+                                        kexercise.covers = "dsa"
+                                        kexercise.description = description
+                                        kexercise.streak = Decimal(streak)
+                                        kexercise.save()
+
+                                # Link exercise to module and books only
+                                # if the exercise is required
+                                bme = None
+                                if BookModuleExercise.components.filter(
+                                        book=kbook,
+                                        module=kmodule,
+                                        exercise=kexercise).count() > 0 \
+                                        and required:
+                                    with transaction.commit_on_success():
+                                        bme = BookModuleExercise.components.filter(
+                                            book=kbook,
+                                            module=kmodule,
+                                            exercise=kexercise)[0]
+                                        bme.points = exercise_obj['points']
+                                        bme.save()
+                                        if kexercise not in exers_:
+                                            exers_.append(kexercise)
+                                    if kexercise not in exers_:
+                                        exers_.append(kexercise)
+                                if BookModuleExercise.components.filter(
+                                        book=kbook,
+                                        module=kmodule,
+                                        exercise=kexercise).count() == 0\
+                                        and required:
+                                    with transaction.commit_on_success():
+                                        bme = BookModuleExercise(
+                                            book=kbook,
+                                            module=kmodule,
+                                            exercise=kexercise,
+                                            points=exercise_obj['points'])
+                                        bme.save()
+                                        if kexercise not in exers_:
+                                            exers_.append(kexercise)
+
+        response['saved'] = True
+        # create book json file
+        if json_obj['build_date']:
+            build_date = datetime.datetime.strptime(
+                json_obj['build_date'], '%Y-%m-%d %H:%M:%S')
+            print(build_date)
+            if kbook.creation_date != build_date:
+                create_book_file(kbook)
+                kbook.creation_date = build_date
+                kbook.save()
+
+        return self.create_response(request, response)
+    else:
+        return self.create_response(request,
+                                    {'error': 'unauthorized action'},
+                                    HttpUnauthorized)
+
+def create_chapter(self, request_ctx, course_id, course_code, module_id, module_position, chapter_obj, tool_url, **kwargs):
+    """
+    Create canvas module that corresponds to OpenDSA chapter
+    """
+
+    module_item_position = 1
+
+    for module in chapter_obj:
+        module_obj = chapter_obj[str(module)]
+        module_name = module_obj.get("long_name")
+        module_name_url = module.split('/')[1] if '/' in module else module
+        # OpenDSA module header will map to canvas text header
+        results = modules.create_module_item(
+            request_ctx, course_id, module_id, 'SubHeader',
+            module_item_content_id=None,
+            module_item_title=str(module_position) + "." + str(module_item_position) + ". " + module_name,
+            module_item_indent=0)
+
+        module_item_position += 1
+        # exercises = module_obj.get("exercises")
+        sections = module_obj.get("sections")
+        if bool(sections):
+            section_couter = 1
+            # for exercise in exercises:
+            for section in sections:
+                section_obj = sections[section]
+                section_name = section
+                no_exercise = 1
+                for attr in section_obj:
+                    if isinstance(section_obj[attr], dict):
+                        # if len(section_obj[attr] > 0):
+                        exercise_obj = section_obj[attr]
+                        exercise_name = attr
+                        long_name = exercise_obj.get("long_name")
+                        required = exercise_obj.get("required")
+                        points = exercise_obj.get("points")
+                        threshold = exercise_obj.get("threshold")
+                        if long_name is not None and required is not None and points is not None and threshold is not None:
+                            print(str(section_couter).zfill(2)) + \
+                                " " + long_name
+                            # OpenDSA exercises will map to canvas assignments
+                            results = assignments.create_assignment(
+                                request_ctx,
+                                course_id,
+                                section_name,
+                                assignment_submission_types="external_tool",
+                                assignment_external_tool_tag_attributes={
+                                    "url": tool_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2)},
+                                assignment_points_possible=points,
+                                assignment_description=section_name)
+                            assignment_id = results.json().get("id")
+                            # add assignment to module
+                            results = modules.create_module_item(
+                                request_ctx,
+                                course_id,
+                                module_id,
+                                'Assignment',
+                                module_item_content_id=assignment_id,
+                                module_item_indent=1)
+                            section_couter += 1
+                            no_exercise = 0
+                if no_exercise == 1:
+                    results = assignments.create_assignment(
+                        request_ctx,
+                        course_id,
+                        section_name,
+                        assignment_submission_types="external_tool",
+                        assignment_external_tool_tag_attributes={
+                            "url": tool_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2)},
+                        assignment_points_possible=0,
+                        assignment_description=section_name)
+                    assignment_id = results.json().get("id")
+                    # add assignment to module
+                    results = modules.create_module_item(
+                        request_ctx,
+                        course_id,
+                        module_id,
+                        'Assignment',
+                        module_item_content_id=assignment_id,
+                        module_item_indent=1)
+                    section_couter += 1
+        else:
+            results = assignments.create_assignment(
+                request_ctx,
+                course_id,
+                module_name,
+                assignment_submission_types="external_tool",
+                assignment_external_tool_tag_attributes={
+                    "url": tool_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url},
+                assignment_points_possible=0,
+                assignment_description=module_name)
+            assignment_id = results.json().get("id")
+            # add assignment to module
+            results = modules.create_module_item(
+                request_ctx,
+                course_id,
+                module_id,
+                'Assignment',
+                module_item_content_id=assignment_id,
+                module_item_indent=1)
+    # publish the module
+    results = modules.update_module(request_ctx, course_id, module_id,
+                                    module_published=True)
+
+
 def configure(config_file_path, options):
     """Configure an OpenDSA textbook based on a validated configuration file"""
     global satisfied_requirements
@@ -363,6 +684,13 @@ def configure(config_file_path, options):
 
     # Load and validate the configuration
     config = ODSA_Config(config_file_path, options.output_directory)
+    # pprint(vars(config))
+    print ', '.join("%s: %s" % item for item in vars(config).items())
+
+
+    # Register book in OpenDSA-server and Create canvas course
+
+
 
     # Delete everything in the book's HTML directory, otherwise the
     # post-processor can sometimes append chapter numbers to the existing HTML
