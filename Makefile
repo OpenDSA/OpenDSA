@@ -174,6 +174,9 @@ CS3114_rev: min
 CS3: min
 	python $(CONFIG_SCRIPT) config/CS3.json $(opts)
 
+CS3LMS: min
+	python $(CONFIG_SCRIPT) config/CS3.json -c True
+
 CS3vt: min
 	python $(CONFIG_SCRIPT) config/CS3.json $(opts)
 

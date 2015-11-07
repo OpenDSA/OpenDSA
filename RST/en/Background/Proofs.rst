@@ -15,6 +15,9 @@
 Mathematical Proof Techniques
 =============================
 
+Introduction
+------------
+
 Solving any problem has two distinct parts:
 the investigation and the argument.
 Students are too used to seeing only the argument in their textbooks

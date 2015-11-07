@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: Sorting
+   :requires: set notation; relations; factorial; permuation; modulus; logarithms; summation; recurrence; induction proofs; estimation
    :topic: Math Background
 
 Math Background Summary Exercises

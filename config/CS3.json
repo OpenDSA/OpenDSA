@@ -41,6 +41,7 @@
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
+  "dispModComp": true,
   "glob_exer_options": {
     "JXOP-debug": "true"
   },
@@ -48,7 +49,6 @@
     "Preface": {
       "Intro": {
         "long_name": "How to Use this System",
-        "dispModComp": true,
         "exercises": {},
         "sections": {}
       }
@@ -93,16 +93,99 @@
         }
       }
     },
+    "Mathematical Background": {
+      "Background/MathpreIntro": {
+        "long_name": "Chapter Introduction",
+        "exercises": {},
+        "sections": {}
+      },
+      "Background/SetDef": {
+        "long_name": "Set Definitions",
+        "exercises": {},
+        "sections": {
+          "Set Notation": {},
+          "Relations": {},
+          "Relations Practice Exercise": {
+            "SetTFrelation": {
+              "long_name": "Relations Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 5
+            }
+          },
+          "Equivalence Relations Practice Exercise": {
+            "SetTFequivrel": {
+              "long_name": "Equivalence Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3
+            }
+          },
+          "Partial Orders": {
+            "SetTFpartialorder": {
+              "long_name": "PartialOrder Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3
+            }
+          }
+        }
+      },
+      "Background/MiscMath": {
+        "long_name": "Miscellaneous Notation",
+        "exercises": {},
+        "sections": {}
+      },
+      "Background/Logarithms": {
+        "long_name": "Logarithms",
+        "exercises": {},
+        "sections": {}
+      },
+      "Background/Summations": {
+        "long_name": "Summations and Recurrence Relations",
+        "exercises": {},
+        "sections": {}
+      },
+      "Background/Proofs": {
+        "long_name": "Proofs",
+        "exercises": {},
+        "sections": {
+          "Introduction": {},
+          "Direct Poof": {},
+          "Proof by Contradiction": {},
+          "Proof by Mathematical Induction": {
+            "twoColorCON": {}
+          }
+        }
+      },
+      "Background/Estimation": {
+        "long_name": "Estimation",
+        "exercises": {},
+        "sections": {}
+      },
+      "Background/MathpreSumm": {
+        "long_name": "Chapter Summary",
+        "exercises": {},
+        "sections": {
+          "Chapter Summary Questions": {
+            "MathBgSumm": {
+              "long_name": "Math Background Summary Questions",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      }
+    },
     "Appendix": {
       "Glossary": {
         "long_name": "Glossary",
-        "dispModComp": true,
         "exercises": {},
         "sections": {}
       },
       "Bibliography": {
         "long_name": "Bibliography",
-        "dispModComp": true,
         "exercises": {},
         "sections": {}
       }
