@@ -3,7 +3,6 @@ ifeq ($(OS),Windows_NT)
 endif
 RM = rm -rf
 CONFIG_SCRIPT = tools/configure.py
-CREATE_COURSE = tools/create_course.py
 TARGET = build
 LINT = eslint
 CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
@@ -169,27 +168,22 @@ CS3114LTI: min
 	python $(CONFIG_SCRIPT) config/CS3114LTI.json $(opts)
 
 CS3114_rev: min
-	python $(CONFIG_SCRIPT) config/CS3114_rev.json
-	python $(CREATE_COURSE) config/CS3114_rev.json config/CS3114_rev_LMSconf.json
+	python $(CONFIG_SCRIPT) config/CS3114_rev.json $(opts)
 
 CS3: min
-	python $(CONFIG_SCRIPT) config/CS3.json
-	python $(CREATE_COURSE) config/CS3.json config/CS3_LMSconf.json
+	python $(CONFIG_SCRIPT) config/CS3.json $(opts)
 
 CS3vt: min
-	python $(CONFIG_SCRIPT) config/CS3.json
-	python $(CREATE_COURSE) config/CS3.json config/CS3vt_LMSconf.json
+	python $(CONFIG_SCRIPT) config/CS3.json $(opts)
 
 CS3in: min
-	python $(CONFIG_SCRIPT) config/CS3.json
-	python $(CREATE_COURSE) config/CS3.json config/CS3in_LMSconf.json
+	python $(CONFIG_SCRIPT) config/CS3.json $(opts)
 
 NewKA: min
 	python $(CONFIG_SCRIPT) config/NewKA.json
 
 CS3114F15: min
-	python $(CONFIG_SCRIPT) config/CS3114F15Cao.json
-	python $(CONFIG_SCRIPT) config/CS3114F15Barnette.json
+	python $(CONFIG_SCRIPT) config/CS3114F15Cao.json $(opts)
 
 CS3114notes: min
 	python $(CONFIG_SCRIPT) s config/CS3114notes.json
