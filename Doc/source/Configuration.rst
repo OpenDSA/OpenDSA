@@ -182,7 +182,7 @@ All are required unless otherwise specified.
         "C++": {"ext": ["cpp","h"],"label":"C++","lang":"C++"}
         "Java": {"ext":["java"], "label":"Java", "lang":"java"},
         "Processing": {"ext":["pde"], "label":"Processing","lang":"java"}
-     }     
+     }
 
   * In this example, assuming that ``code_dir`` is ``SourceCode/``,
     the system would search for ``.cpp`` files,
@@ -562,11 +562,12 @@ OpenDSA requires communication between several entities, including:
 
 Here are the fields in the configuration file.
 
-* **username** - A viable user account on the course instance
+* **odsa_username** - A viable user account on the course instance
   (OpenDSA) scoring server.
-* **password** - The corresponding password on the course instance
+* **odsa_password** - The corresponding password on the course instance
   (OpenDSA) scoring server.
-* **canvas_url** - The URL for the LMS.
+* **target_LMS** - LMS name. We suport 'canvas', other LMSs like moodle, Desire2Learn, and Blackboard will be suported as well.
+* **LMS_url** - The URL for the LMS.
 * **access_token** - This is normally issued by the LMS to allow an
   LTI tool provider to communicate with it.
   In Canvas, go to your account-level settings.
@@ -576,9 +577,7 @@ Here are the fields in the configuration file.
   If you (the creator of the config file and the one who compiles the
   book) are not the course instructor (with access to the LMS), then
   the course instructor will need to provide this access token.
-* **consumer_key** - The key required by the LTI tool provider.
-* **consumer_secret** - Effectively the password for the LTI tool
+* **LTI_consumer_key** - The key required by the LTI tool provider.
+* **LTI_secret** - Effectively the password for the LTI tool
   provider.
-* **build_date** - Not important.
-* **tool_url** - The URL for the LTI tool provider.
-* **tool_xml_file** - Use ``tool_config.xml``.
+* **LTI_url** - The URL for the LTI tool provider.
