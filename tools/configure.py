@@ -361,7 +361,7 @@ def initialize_conf_py_options(config, slides):
     return options
 
 
-def create_chapter(request_ctx, config, course_id, course_code, module_id, module_position, chapter_name, chapter_obj, tool_url, **kwargs):
+def create_chapter(request_ctx, config, course_id, course_code, module_id, module_position, chapter_name, chapter_obj, LTI_url, **kwargs):
     """ Create canvas module that corresponds to OpenDSA chapter """
 
     module_item_position = 1
@@ -407,7 +407,7 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
                                 section_name,
                                 assignment_submission_types="external_tool",
                                 assignment_external_tool_tag_attributes={
-                                    "url": tool_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2)},
+                                    "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2)},
                                 assignment_points_possible=points,
                                 assignment_description=section_name)
                             assignment_id = results.json().get("id")
@@ -430,7 +430,7 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
                         section_name,
                         assignment_submission_types="external_tool",
                         assignment_external_tool_tag_attributes={
-                            "url": tool_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2)},
+                            "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2)},
                         assignment_points_possible=0,
                         assignment_description=section_name)
                     assignment_id = results.json().get("id")
@@ -452,7 +452,7 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
                 module_name,
                 assignment_submission_types="external_tool",
                 assignment_external_tool_tag_attributes={
-                    "url": tool_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url},
+                    "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url},
                 assignment_points_possible=0,
                 assignment_description=module_name)
             assignment_id = results.json().get("id")
@@ -497,10 +497,10 @@ def create_course(config):
     course_code = config['course_code']
     privacy_level = "public"  # should be public
     config_type = "by_url"
-    tool_url = config["tool_url"]
+    LTI_url = config["LTI_url"]
 
     # init the request context
-    request_ctx = RequestContext(config['access_token'], config['canvas_url'])
+    request_ctx = RequestContext(config['access_token'], config['LMS_url'])
 
     # get course_id
     results = courses.list_your_courses(request_ctx,
@@ -515,9 +515,9 @@ def create_course(config):
 
     # configure the course external_tool
     results = external_tools.create_external_tool_courses(
-        request_ctx, course_id, config["tool_name"],
-        privacy_level, config["consumer_key"], config["consumer_secret"],
-        config_type=config_type, config_url=tool_url + '/' + config["tool_xml_file"])
+        request_ctx, course_id, "OpenDSA-LTI",
+        privacy_level, config["LTI_consumer_key"], config["LTI_secret"],
+        config_type=config_type, config_url=LTI_url + '/' + "tool_config.xml")
 
     # update the course name
     course_name = config.title
@@ -535,7 +535,7 @@ def create_course(config):
         results = modules.create_module(
             request_ctx, course_id, "Chapter " + str(module_position - 1) + " " + str(chapter), module_position=module_position)
         module_id = results.json().get("id")
-        t = threading.Thread(target=create_chapter, args=(request_ctx, config, course_id, course_code, module_id, module_position - 1, chapter_name, chapter_obj, tool_url))
+        t = threading.Thread(target=create_chapter, args=(request_ctx, config, course_id, course_code, module_id, module_position - 1, chapter_name, chapter_obj, LTI_url))
         t.start()
         module_position += 1
 
