@@ -535,7 +535,7 @@ A specific course instance on a specific LMS installation is defined
 by a course configuration file.
 By convention, the file name will end with ``_LMSconf.json``.
 A template for course configuration can be found
-`here <https://github.com/OpenDSA/OpenDSA/blob/master/config/template_LMSconf.json>`_.
+`here <https://github.com/OpenDSA/OpenDSA/blob/LTI/config/template_LMSconf.json>`_.
 
 Since course configuration files routinely store sensitive information
 such as account passwords and access keys, they are not stored in the
