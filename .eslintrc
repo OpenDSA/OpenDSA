@@ -86,7 +86,7 @@
     "eol-last": 2,
     "func-style": [2, "declaration"],
     "indent": [2, 2, {"VariableDeclarator": 2}],
-    "key-spacing": [2, {"beforeColon": false, "afterColon": true}],
+    "key-spacing": [2, {"beforeColon": false, "afterColon": true, "mode": "minimum"}],
     "linebreak-style": [2, "unix"],
     "new-cap": 2,
     "new-parens": 2,
