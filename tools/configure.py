@@ -398,8 +398,7 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
                         points = exercise_obj.get("points")
                         threshold = exercise_obj.get("threshold")
                         if long_name is not None and required is not None and points is not None and threshold is not None:
-                            print(str(section_couter).zfill(2)) + \
-                                " " + long_name
+                            # print(str(section_couter).zfill(2)) + " " + long_name
                             # OpenDSA exercises will map to canvas assignments
                             results = assignments.create_assignment(
                                 request_ctx,
@@ -499,8 +498,9 @@ def create_course(config):
     config_type = "by_url"
     LTI_url = config["LTI_url"]
 
+    print "\nCreating course in " + config.target_LMS + " LMS " + config.LMS_url + '\n'
     # init the request context
-    request_ctx = RequestContext(config['access_token'], config['LMS_url'])
+    request_ctx = RequestContext(config['access_token'], config['LMS_url'] + "/api")
 
     # get course_id
     results = courses.list_your_courses(request_ctx,
@@ -517,7 +517,7 @@ def create_course(config):
     results = external_tools.create_external_tool_courses(
         request_ctx, course_id, "OpenDSA-LTI",
         privacy_level, config["LTI_consumer_key"], config["LTI_secret"],
-        config_type=config_type, config_url=LTI_url + '/' + "tool_config.xml")
+        config_type=config_type, config_url=LTI_url + "/tool_config.xml")
 
     # update the course name
     course_name = config.title
@@ -546,14 +546,14 @@ def register_book(config):
     url = config.logging_server + '/api/v1/module/loadbook/'
     headers = {'content-type': 'application/json'}
 
-    print('Please wait, the course is being registered in OpenDSA-server...')
+    print "\nRegistring Book in OpenDSA-server " + config.logging_server + '\n'
     response = requests.post(url, data=json.dumps(config.__dict__), headers=headers, verify=False)
     response_obj = json.loads(response.content)
 
     if response_obj['saved']:
-      print('Book was registered successfully')
+      print "\nBook was registered successfully\n"
     else:
-      print('Somthing wrong happened ...')
+      print "\nSomthing wrong happened ...\n"
 
 
 def configure(config_file_path, options):
@@ -569,9 +569,7 @@ def configure(config_file_path, options):
 
     # Register book in OpenDSA-server and create course in target LMS
     if options.create_course=='True':
-        print "Creating course in target LMS"
         create_course(config)
-        print "Registring Book in OpenDSA-server " + config.logging_server
         register_book(config)
 
     # Delete everything in the book's HTML directory, otherwise the
