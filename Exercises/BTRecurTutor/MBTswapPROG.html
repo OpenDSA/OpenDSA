@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html data-require="codemirror blockUI math math-format word-problems spin">
   <head>
-    <title>Structurally Identical Binary Trees Exercise</title>
+    <title> Swap Binary Trees Exercise</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
-      #MBTstructurePROG .CodeMirror {
+      #MBTswapPROG .CodeMirror {
         height: 200px;
       }
     </style>
@@ -20,12 +20,13 @@
       </div>
       <div class="problems">
         <div id="MBTstructurePROGp"> <!-- Supresses answer box -->
-          <p class="problem">Given two binary trees, return True if and
-            only if they are structurally identical (ignoring the content of
-            the nodes).<br/>
+          <p class="problem">Given two binary trees with the same
+            structure, swap the values of their nodes.
+            Assume that the trees have the same structure so you don't need
+            to check on that in your code.<br/>
 
             <textarea id="codeTextarea" name="codeTextarea">
-boolean MBTstructure(BSTNode root1, BSTNode root2) {
+void MBTswap(BSTNode root1, BSTNode root2) {
 // Your code goes between these lines
 
 
@@ -34,23 +35,21 @@ boolean MBTstructure(BSTNode root1, BSTNode root2) {
           </p>
           <div class="question"></div>
           <div class="solution" data-type="custom">
-            <div class="guess"> [editor.getValue()] </div>
+            <div class="guess"> [ editor.getValue()  ] </div>
             <div class="validator-function">
               if (guess[0] != initEditor) {
-              console.log(guess[0]);
-              window.codeValue = guess[0];
-              window.progexType= "binarytree";
-              window.summexName= "MBTstructurePROG";
+                console.log(guess[0]);
+                window.codeValue = guess[0];
+                window.progexType= "BTRecurTutor";
+                window.summexName= "MBTswapPROG";
               } else {
-              return "";
+                return "";
               }
             </div>
           </div>
           <div class="hints">
-            <p>To be identical in structure,
-              the left subtree of the first tree must match the
-              left subtree of the second tree. And the right subtree of the first
-              tree must match the right subtree of the second tree.</p>
+            <p>Simply traverse the two trees together, and swap the values of the
+              roots, if they are not null.</p>
           </div>
         </div>
       </div>

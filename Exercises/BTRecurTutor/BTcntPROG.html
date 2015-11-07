@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html data-require="codemirror blockUI math math-format word-problems spin">
   <head>
-    <title> Binary Tree Depth Exercise</title>
+    <title> Binary Tree Nodes Count Exercise</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
-      #BTdepthPROG .CodeMirror {
+      #BTcheckvalPROG .CodeMirror {
         height: 200px;
       }
     </style>
@@ -19,15 +19,14 @@
         </var>
       </div>
       <div class="problems">
-        <div id="BTdepthPROGp"> <!-- Supresses answer box -->
-          <p class="problem"> The depth of a binary tree is
-            the length of the path to the deepest node. An empty tree has a
-            depth of 0, a tree with one node has a depth of 1, and so on. Write a recursive
-            function to find the depth of the binary tree pointed at by
-            "root".<br/>
+        <div id="BTcntPROGp"> <!-- Supresses answer box -->
+          <p class="problem">Add appropriate lines of code to the
+            following function skeleton so that the function will
+            recursively count the  number of nodes in the binary tree
+            pointed at by "root".<br/>
 
             <textarea id="codeTextarea" name="codeTextarea">
-int BTdepth(BinNode root) {
+int BTcnt(BinNode root) {
 // Your code goes between these lines
 
 
@@ -36,22 +35,22 @@ int BTdepth(BinNode root) {
           </p>
           <div class="question"></div>
           <div class="solution" data-type="custom">
-            <div class="guess"> [ editor.getValue()  ] </div>
+            <div class="guess"> [editor.getValue()] </div>
             <div class="validator-function">
               if (guess[0] != initEditor) {
                 console.log(guess[0]);
                 window.codeValue = guess[0];
-                window.progexType= "binarytree";
-                window.summexName= "BTdepthPROG";
+                window.progexType= "BTRecurTutor";
+                window.summexName= "BTcntPROG";
               } else {
                 return "";
               }
             </div>
           </div>
           <div class="hints">
-            <p>If the tree is null, return 0.</p>
-            <p>Otherwise, simply return 1 + the larger of the depths
-              of the children.</p>
+            <p>If the root is null, then return 0.</p>
+            <p>Otherwise, return 1 plus the count for the left and
+              right children.</p>
           </div>
         </div>
       </div>
