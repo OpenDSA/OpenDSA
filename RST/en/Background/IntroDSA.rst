@@ -31,8 +31,8 @@ perform calculations, but to store and retrieve information |---|
 usually as fast as possible.
 For this reason, the study of data structures and the algorithms that
 manipulate them is at the heart of computer science.
-And that is what OpenDSA is about |---| helping you to understand how
-to structure information to support efficient processing.
+And that is what this book is about |---| helping you to understand
+how to structure information to support efficient processing.
 
 Course Goals
 ------------
@@ -97,7 +97,7 @@ efficiency.
 Some Software Engineering Topics
 --------------------------------
 
-While the main focus of this course *_is_* data structures and algorithms,
+While the main focus of this course *is* data structures and algorithms,
 this course will also cover some additional topics which are not standard fare
 in a data structures course:
 
@@ -345,7 +345,7 @@ you determine the best data structure for the task.
    The hash table suggested in the previous example is inappropriate
    for implementing our city database, because it cannot perform
    efficient range queries.
-   The :ref:`B+-tree <B$^+$-tree> <BTree>` supports large databases,
+   The :ref:`B$^+$-tree <B$^+$-tree> <BTree>` supports large databases,
    insertion and deletion of data records, and range queries.
    However, a simple
    :ref:`linear index <linear index> <LinearIndexing>` would be 
