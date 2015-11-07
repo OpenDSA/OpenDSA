@@ -24,6 +24,8 @@ from urlparse import urlparse
 
 error_count = 0
 
+LTI_fields = [  "username",  "password",  "canvas_url",  "course_code",  "access_token",  "consumer_key",  "consumer_secret",  "build_date",  "tool_name",  "tool_url",  "tool_xml_file"]
+
 required_fields = ['chapters', 'code_lang', 'module_origin', 'title']
 
 optional_fields = ['allow_anonymous_credit', 'assumes', 'av_origin', 'av_root_dir', 'build_cmap', 'build_dir', 'build_JSAV', 'code_dir', 'exercise_origin', 'exercises_root_dir', 'exercise_server',
@@ -518,6 +520,9 @@ class ODSA_Config:
         # Make conf_data publicly available
         for field in required_fields:
             self[field] = conf_data[field]
+
+        for field in LTI_fields:
+            self[field] = ''
 
         for field in optional_fields:
             self[field] = conf_data[field] if field in conf_data else None
