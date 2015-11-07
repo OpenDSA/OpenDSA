@@ -39,12 +39,20 @@ import re
 import subprocess
 import codecs
 import datetime
+import pprint
+import collections
+import threading
+import requests
+
 from collections import Iterable
 from optparse import OptionParser
 from config_templates import *
 from ODSA_RST_Module import ODSA_RST_Module
 from ODSA_Config import ODSA_Config
 from postprocessor import update_TOC, update_TermDef, make_lti
+from urlparse import urlparse
+from canvas_sdk.methods import accounts, courses, external_tools, modules, assignments
+from canvas_sdk import RequestContext
 
 # List of exercises encountered in RST files that do not appear in the
 # configuration file
@@ -353,6 +361,201 @@ def initialize_conf_py_options(config, slides):
     return options
 
 
+def create_chapter(request_ctx, config, course_id, course_code, module_id, module_position, chapter_name, chapter_obj, LTI_url, **kwargs):
+    """ Create canvas module that corresponds to OpenDSA chapter """
+
+    module_item_position = 1
+
+    for module in chapter_obj:
+        module_obj = chapter_obj[str(module)]
+        module_name = module_obj.get("long_name")
+        module_name_url = module.split('/')[1] if '/' in module else module
+
+        # OpenDSA module header will map to canvas text header
+        results = modules.create_module_item(
+            request_ctx, course_id, module_id, 'SubHeader',
+            module_item_content_id=None,
+            module_item_title=str(module_position) + "." + str(module_item_position) + ". " + module_name,
+            module_item_indent=0)
+
+        module_item_position += 1
+        # exercises = module_obj.get("exercises")
+        sections = module_obj.get("sections")
+        if bool(sections):
+            section_couter = 1
+            # for exercise in exercises:
+            for section in sections:
+                section_obj = sections[section]
+                section_name = section
+                no_exercise = 1
+                for attr in section_obj:
+                    if isinstance(section_obj[attr], dict):
+                        # if len(section_obj[attr] > 0):
+                        exercise_obj = section_obj[attr]
+                        exercise_name = attr
+                        long_name = exercise_obj.get("long_name")
+                        required = exercise_obj.get("required")
+                        points = exercise_obj.get("points")
+                        threshold = exercise_obj.get("threshold")
+                        if long_name is not None and required is not None and points is not None and threshold is not None:
+                            # print(str(section_couter).zfill(2)) + " " + long_name
+                            # OpenDSA exercises will map to canvas assignments
+                            results = assignments.create_assignment(
+                                request_ctx,
+                                course_id,
+                                section_name,
+                                assignment_submission_types="external_tool",
+                                assignment_external_tool_tag_attributes={
+                                    "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2)},
+                                assignment_points_possible=points,
+                                assignment_description=section_name)
+                            assignment_id = results.json().get("id")
+
+                            config.chapters[chapter_name][str(module)]["sections"][section_name]["item_id"] = assignment_id
+                            # add assignment to module
+                            results = modules.create_module_item(
+                                request_ctx,
+                                course_id,
+                                module_id,
+                                'Assignment',
+                                module_item_content_id=assignment_id,
+                                module_item_indent=1)
+                            section_couter += 1
+                            no_exercise = 0
+                if no_exercise == 1:
+                    results = assignments.create_assignment(
+                        request_ctx,
+                        course_id,
+                        section_name,
+                        assignment_submission_types="external_tool",
+                        assignment_external_tool_tag_attributes={
+                            "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2)},
+                        assignment_points_possible=0,
+                        assignment_description=section_name)
+                    assignment_id = results.json().get("id")
+
+                    config.chapters[chapter_name][str(module)]["sections"][section_name]["item_id"] = assignment_id
+                    # add assignment to module
+                    results = modules.create_module_item(
+                        request_ctx,
+                        course_id,
+                        module_id,
+                        'Assignment',
+                        module_item_content_id=assignment_id,
+                        module_item_indent=1)
+                    section_couter += 1
+        else:
+            results = assignments.create_assignment(
+                request_ctx,
+                course_id,
+                module_name,
+                assignment_submission_types="external_tool",
+                assignment_external_tool_tag_attributes={
+                    "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url},
+                assignment_points_possible=0,
+                assignment_description=module_name)
+            assignment_id = results.json().get("id")
+            config.chapters[chapter_name][str(module)]["item_id"] = assignment_id
+            # add assignment to module
+            results = modules.create_module_item(
+                request_ctx,
+                course_id,
+                module_id,
+                'Assignment',
+                module_item_content_id=assignment_id,
+                module_item_indent=1)
+    # publish the module
+    results = modules.update_module(request_ctx, course_id, module_id,
+                                    module_published=True)
+
+    # print(json.dumps(config.__dict__))
+
+
+def create_course(config):
+    """Create course on target LMS (e.g. canvas)"""
+
+    # load LMS config file
+    # Throw an error if the specified LMS config files doesn't exist
+    LMS_config = config.config_file_path[:-5]+'_LMSconf.json'
+    if not os.path.exists(LMS_config):
+        print_err("ERROR: File %s doesn't exist\n" % LMS_config)
+        sys.exit(1)
+
+    # Try to read the configuration file data as JSON
+    try:
+        with open(LMS_config) as config_file:
+            LMS_conf_data = json.load(config_file, object_pairs_hook=collections.OrderedDict)
+    except ValueError, err:
+        # Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
+        msg = err.message
+        print_err(msg)
+
+    for attr in LMS_conf_data:
+        config[attr] = LMS_conf_data[attr]
+
+    course_code = config['course_code']
+    privacy_level = "public"  # should be public
+    config_type = "by_url"
+    LTI_url = config["LTI_url"]
+
+    print "\nCreating course in " + config.target_LMS + " LMS " + config.LMS_url + '\n'
+    # init the request context
+    request_ctx = RequestContext(config['access_token'], config['LMS_url'] + "/api")
+
+    # get course_id
+    results = courses.list_your_courses(request_ctx,
+                                        'total_scores')
+    # TODO: Proper error message when the course is not created yet.
+    for i, course in enumerate(results.json()):
+        if course.get("course_code") == course_code:
+            course_id = course.get("id")
+
+    # save course_id
+    config['course_id'] = course_id
+
+    # configure the course external_tool
+    results = external_tools.create_external_tool_courses(
+        request_ctx, course_id, "OpenDSA-LTI",
+        privacy_level, config["LTI_consumer_key"], config["LTI_secret"],
+        config_type=config_type, config_url=LTI_url + "/tool_config.xml")
+
+    # update the course name
+    course_name = config.title
+    results = courses.update_course(
+        request_ctx, course_id, course_name=course_name)
+
+    chapters = config.chapters
+
+    module_position = 1
+    # create course modules and assignments
+    for chapter in chapters:
+        chapter_name = str(chapter)
+        chapter_obj = chapters[str(chapter)]
+        # OpenDSA chapters will map to canvas modules
+        results = modules.create_module(
+            request_ctx, course_id, "Chapter " + str(module_position - 1) + " " + str(chapter), module_position=module_position)
+        module_id = results.json().get("id")
+        t = threading.Thread(target=create_chapter, args=(request_ctx, config, course_id, course_code, module_id, module_position - 1, chapter_name, chapter_obj, LTI_url))
+        t.start()
+        module_position += 1
+
+
+def register_book(config):
+    """Register Book in OpenDSA-server"""
+
+    url = config.logging_server + '/api/v1/module/loadbook/'
+    headers = {'content-type': 'application/json'}
+
+    print "\nRegistring Book in OpenDSA-server " + config.logging_server + '\n'
+    response = requests.post(url, data=json.dumps(config.__dict__), headers=headers, verify=False)
+    response_obj = json.loads(response.content)
+
+    if response_obj['saved']:
+      print "\nBook was registered successfully\n"
+    else:
+      print "\nSomthing wrong happened ...\n"
+
+
 def configure(config_file_path, options):
     """Configure an OpenDSA textbook based on a validated configuration file"""
     global satisfied_requirements
@@ -363,6 +566,11 @@ def configure(config_file_path, options):
 
     # Load and validate the configuration
     config = ODSA_Config(config_file_path, options.output_directory)
+
+    # Register book in OpenDSA-server and create course in target LMS
+    if options.create_course=='True':
+        create_course(config)
+        register_book(config)
 
     # Delete everything in the book's HTML directory, otherwise the
     # post-processor can sometimes append chapter numbers to the existing HTML
@@ -480,6 +688,7 @@ if __name__ == "__main__":
                       dest="dry_run", action="store_true", default=False)
     parser.add_option("-o", help="Accepts a custom directory name instead of using the config file's name.",
                       dest="output_directory", default=None)
+    parser.add_option("-c", "--create_course", help="Causes configure.py to create course in target LMS", default=False)
     (options, args) = parser.parse_args()
 
     if options.slides:
@@ -490,7 +699,7 @@ if __name__ == "__main__":
     # Process script arguments
     if len(args) != 1:
         print_err(
-            "Usage: " + sys.argv[0] + " [-s] [--dry-run] config_file_path")
+            "Usage: " + sys.argv[0] + " [-s] [--dry-run] config_file_path [-c]")
         sys.exit(1)
 
     configure(args[0], options)

@@ -38,6 +38,7 @@
     "JXOP-debug": "true"
   },
   "dispModComp": true,
+
   "chapters": {
     "Preface": {
       "Intro": {

@@ -166,8 +166,7 @@ CS3114: min
 	python $(CONFIG_SCRIPT) config/CS3114.json
 
 CS3114LTI: min
-	python $(CONFIG_SCRIPT) config/CS3114LTI.json
-	python $(CREATE_COURSE) config/CS3114LTI.json config/CS3114LTI_LMSconf.json
+	python $(CONFIG_SCRIPT) config/CS3114LTI.json $(opts)
 
 CS3114_rev: min
 	python $(CONFIG_SCRIPT) config/CS3114_rev.json
