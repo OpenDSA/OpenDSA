@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html data-require="codemirror blockUI math math-format word-problems spin">
   <head>
-    <title> Binary Tree Sum Nodes Exercise</title>
+    <title>Structurally Identical Binary Trees Exercise</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
-      #BTsumallPROG .CodeMirror {
+      #MBTstructurePROG .CodeMirror {
         height: 200px;
       }
     </style>
@@ -19,13 +19,13 @@
         </var>
       </div>
       <div class="problems">
-        <div id="BTsumallPROGp"> <!-- Supresses answer box -->
-          <p class="problem">Write a recursive function that
-            returns the sum for all of the nodes of the
-            binary tree pointed at by "root".<br/>
+        <div id="MBTstructurePROGp"> <!-- Supresses answer box -->
+          <p class="problem">Given two binary trees, return True if and
+            only if they are structurally identical (ignoring the content of
+            the nodes).<br/>
 
             <textarea id="codeTextarea" name="codeTextarea">
-int BTsumall(BinNode root) {
+boolean MBTstructure(BSTNode root1, BSTNode root2) {
 // Your code goes between these lines
 
 
@@ -37,19 +37,20 @@ int BTsumall(BinNode root) {
             <div class="guess"> [editor.getValue()] </div>
             <div class="validator-function">
               if (guess[0] != initEditor) {
-                console.log(guess[0]);
-                window.codeValue = guess[0];
-                window.progexType= "binarytree";
-                window.summexName= "BTsumallPROG";
+              console.log(guess[0]);
+              window.codeValue = guess[0];
+              window.progexType= "BTRecurTutor";
+              window.summexName= "MBTstructurePROG";
               } else {
-                return "";
+              return "";
               }
             </div>
           </div>
           <div class="hints">
-            <p>If the root is null, return 0.</p>
-            <p>Otherwise, just return the sum of the root value plus the result
-              of the recursive calls on the children.</p>
+            <p>To be identical in structure,
+              the left subtree of the first tree must match the
+              left subtree of the second tree. And the right subtree of the first
+              tree must match the right subtree of the second tree.</p>
           </div>
         </div>
       </div>

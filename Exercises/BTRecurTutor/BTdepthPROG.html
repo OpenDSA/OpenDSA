@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html data-require="codemirror blockUI math math-format word-problems spin">
   <head>
-    <title> Binary Tree Check Sum Exercise</title>
+    <title> Binary Tree Depth Exercise</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
-      #BTchecksumPROG .CodeMirror {
+      #BTdepthPROG .CodeMirror {
         height: 200px;
       }
     </style>
@@ -19,15 +19,15 @@
         </var>
       </div>
       <div class="problems">
-        <div id="BTchecksumPROGp"> <!-- Supresses answer box -->
-          <p class="problem">Given a binary tree, check if the tree satisfies
-            the property that for each node, the sum of the values of its left and
-            right children are equal to the node's value. If a node has only
-            one child, then the node should have the same value as that
-            child. Leaf nodes automatically satisfy the property.<br/>
+        <div id="BTdepthPROGp"> <!-- Supresses answer box -->
+          <p class="problem"> The depth of a binary tree is
+            the length of the path to the deepest node. An empty tree has a
+            depth of 0, a tree with one node has a depth of 1, and so on. Write a recursive
+            function to find the depth of the binary tree pointed at by
+            "root".<br/>
 
-            <textarea  id="codeTextarea">
-boolean BTchecksum(BinNode root) {
+            <textarea id="codeTextarea" name="codeTextarea">
+int BTdepth(BinNode root) {
 // Your code goes between these lines
 
 
@@ -36,24 +36,24 @@ boolean BTchecksum(BinNode root) {
           </p>
           <div class="question"></div>
           <div class="solution" data-type="custom">
-            <div class="guess"> [editor.getValue()] </div>
+            <div class="guess"> [ editor.getValue()  ] </div>
             <div class="validator-function">
               if (guess[0] != initEditor) {
                 console.log(guess[0]);
                 window.codeValue = guess[0];
-                window.progexType= "binarytree";
-                window.summexName= "BTchecksumPROG";
+                window.progexType= "BTRecurTutor";
+                window.summexName= "BTdepthPROG";
               } else {
                 return "";
               }
             </div>
           </div>
           <div class="hints">
-            <p>Make sure that you are comparing the value of a node
-              against the sum of its immediate children, NOT the sum of
-              all its descendents.</p>
+            <p>If the tree is null, return 0.</p>
+            <p>Otherwise, simply return 1 + the larger of the depths
+              of the children.</p>
           </div>
-	</div>
+        </div>
       </div>
     </div>
   </body>

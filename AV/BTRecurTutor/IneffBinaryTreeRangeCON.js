@@ -3,7 +3,7 @@
 $(document).ready(function () {
   var av = new JSAV("IneffBinaryTreeRangeCON");
   
-  var pseudo = av.code({url: "../../../SourceCode/Java/RecurTutor2/RecIneffRng.java",
+  var pseudo = av.code({url: "../../../SourceCode/Java/BTRecurTutor/RecIneffRng.java",
                        lineNumbers: false,top:10 , left: 100});
 
   // Slide 1
@@ -96,7 +96,7 @@ $(document).ready(function () {
   av.umsg("The recursive calls should be controlled by if statements to avoid unnecessary node visits. The following code checks the current node value so as to decide whether to visit children.");
   
   pseudo.hide();
-  var pseudo2 = av.code({url: "../../../SourceCode/Java/RecurTutor2/RecEffRng.java",
+  var pseudo2 = av.code({url: "../../../SourceCode/Java/BTRecurTutor/RecEffRng.java",
                        lineNumbers: false,top:10 , left: 100});
   el2.hide();
   label2.hide();

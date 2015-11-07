@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html data-require="codemirror blockUI math math-format word-problems spin">
   <head>
-    <title> Binary Tree Nodes Count Exercise</title>
+    <title> Binary Tree Get Difference Exercise</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
-      #BTcheckvalPROG .CodeMirror {
+      #BTgetdiffPROG .CodeMirror {
         height: 200px;
       }
     </style>
@@ -19,14 +19,14 @@
         </var>
       </div>
       <div class="problems">
-        <div id="BTcntPROGp"> <!-- Supresses answer box -->
-          <p class="problem">Add appropriate lines of code to the
-            following function skeleton so that the function will
-            recursively count the  number of nodes in the binary tree
-            pointed at by "root".<br/>
+        <div id="BTgetdiffPROGp"> <!-- Supresses answer box -->
+          <p class="problem">Given a binary tree, write a recursive
+            function to return the difference between the sum of all node values
+            at odd levels and sum of all node values at even levels. Define the
+            root node to be at level 1.
 
             <textarea id="codeTextarea" name="codeTextarea">
-int BTcnt(BinNode root) {
+int BTgetdiff(BSTNode root) {
 // Your code goes between these lines
 
 
@@ -35,22 +35,25 @@ int BTcnt(BinNode root) {
           </p>
           <div class="question"></div>
           <div class="solution" data-type="custom">
-            <div class="guess"> [editor.getValue()] </div>
+            <div class="guess"> [ editor.getValue()  ] </div>
             <div class="validator-function">
               if (guess[0] != initEditor) {
                 console.log(guess[0]);
                 window.codeValue = guess[0];
-                window.progexType= "binarytree";
-                window.summexName= "BTcntPROG";
+                window.progexType= "BTRecurTutor";
+                window.summexName= "BTgetdiffPROG";
               } else {
                 return "";
               }
             </div>
           </div>
           <div class="hints">
-            <p>If the root is null, then return 0.</p>
-            <p>Otherwise, return 1 plus the count for the left and
-              right children.</p>
+            <p>This is probably easier than you think it is.</p>
+            <p>Just keep track of what level you are on (pass this information down when you
+              make a recursive call).</p>
+            <p>Sum the values of all nodes, but use the negative of
+              the value for odd level nodes. Just pass back the sum of
+              the node with its children.</p>
           </div>
         </div>
       </div>

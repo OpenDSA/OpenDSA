@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html data-require="codemirror blockUI math math-format word-problems spin">
   <head>
-    <title> Binary Tree Get Difference Exercise</title>
+    <title> Binary Tree Check Value Exercise</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
-      #BTgetdiffPROG .CodeMirror {
+      #BTcheckvalPROG .CodeMirror {
         height: 200px;
       }
     </style>
@@ -19,14 +19,14 @@
         </var>
       </div>
       <div class="problems">
-        <div id="BTgetdiffPROGp"> <!-- Supresses answer box -->
-          <p class="problem">Given a binary tree, write a recursive
-            function to return the difference between the sum of all node values
-            at odd levels and sum of all node values at even levels. Define the
-            root node to be at level 1.
+        <div id="BTcheckvalPROGp"> <!-- Supresses answer box -->
+          <p class="problem">Write a recursive function that
+            returns true if there is a node in the given binary tree with the
+            given value, and false otherwise. Note that this tree is not
+            be a Binary Search Tree.<br/>
 
             <textarea id="codeTextarea" name="codeTextarea">
-int BTgetdiff(BSTNode root) {
+boolean BTcheckval(BinNode root, Comparable value) {
 // Your code goes between these lines
 
 
@@ -35,25 +35,24 @@ int BTgetdiff(BSTNode root) {
           </p>
           <div class="question"></div>
           <div class="solution" data-type="custom">
-            <div class="guess"> [ editor.getValue()  ] </div>
+            <div class="guess"> [editor.getValue()] </div>
             <div class="validator-function">
               if (guess[0] != initEditor) {
                 console.log(guess[0]);
                 window.codeValue = guess[0];
-                window.progexType= "binarytree";
-                window.summexName= "BTgetdiffPROG";
+                window.progexType= "BTRecurTutor";
+                window.summexName= "BTcheckvalPROG";
               } else {
                 return "";
               }
             </div>
           </div>
           <div class="hints">
-            <p>This is probably easier than you think it is.</p>
-            <p>Just keep track of what level you are on (pass this information down when you
-              make a recursive call).</p>
-            <p>Sum the values of all nodes, but use the negative of
-              the value for odd level nodes. Just pass back the sum of
-              the node with its children.</p>
+            <p>If the current node has the value that you are
+              looking for, then return.</p>
+            <p>If the result of calling the function recursively on
+              either subtree returns true, then return
+              true. Otherwise, return false.</p>
           </div>
         </div>
       </div>

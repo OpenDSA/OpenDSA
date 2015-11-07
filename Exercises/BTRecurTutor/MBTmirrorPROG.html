@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html data-require="codemirror blockUI math math-format word-problems spin">
   <head>
-    <title> Binary Tree Increment By One Exercise</title>
+    <title> Structurally Identical Binary Trees Exercise</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
-      #BTincPROG .CodeMirror {
+      #MBTmirrorPROG .CodeMirror {
         height: 200px;
       }
     </style>
@@ -19,20 +19,18 @@
         </var>
       </div>
       <div class="problems">
-        <div id="BTincPROGp"> <!-- Supresses answer box -->
-          <p class="problem">Write a recursive function to increment
-            by one the value for every node in the binary tree pointed
-            at by "root".  Assume that nodes store integer values.<br/>
+        <div id="MBTmirrorPROGp"> <!-- Supresses answer box -->
+          <p class="problem">Given two binary trees, return True if and
+            only if they are mirror images of each other.<br/>
 
             <textarea id="codeTextarea" name="codeTextarea">
-void BTinc(BinNode root) {
+boolean MBTmirror(BSTNode root1, BSTNode root2) {
 // Your code goes between these lines
-
 
 
 // Your code goes between these lines
 }</textarea>
-	  </p>
+          </p>
           <div class="question"></div>
           <div class="solution" data-type="custom">
             <div class="guess"> [editor.getValue()] </div>
@@ -40,19 +38,19 @@ void BTinc(BinNode root) {
               if (guess[0] != initEditor) {
                 console.log(guess[0]);
                 window.codeValue = guess[0];
-                window.progexType= "binarytree";
-                window.summexName= "BTincPROG";
+                window.progexType= "BTRecurTutor";
+                window.summexName= "MBTmirrorPROG";
               } else {
                 return "";
               }
             </div>
           </div>
           <div class="hints">
-            <p>For this exercise, you need to do a traversal that
-              visits each node of the tree, and increments the value by
-              1. No information needs to be returned.</p>
+            <p>To be mirrors, the left subtree of the first tree must mirror the
+              right subtree of the second tree. And the right subtree of the first
+              tree must mirror the left subtree of the second tree.</p>
           </div>
-	</div>
+        </div>
       </div>
     </div>
   </body>

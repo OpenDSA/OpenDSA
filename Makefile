@@ -68,6 +68,7 @@ lintExe:
 	-@$(LINT) Exercises/Hashing/*.js
 	-@$(LINT) Exercises/Indexing/*.js
 	-@$(LINT) Exercises/List/*.js
+	-@$(LINT) Exercises/RecurTutor/*.js
 	-@$(LINT) Exercises/RecurTutor2/*.js
 	-@$(LINT) Exercises/Sorting/*.js
 
@@ -110,8 +111,8 @@ RecurTutor: min
 TestRecur: min
 	python $(CONFIG_SCRIPT) config/TestRecur.json
 
-RecurTutor2: min
-	python $(CONFIG_SCRIPT) config/RecurTutor2.json
+BTRecurTutor: min
+	python $(CONFIG_SCRIPT) config/BTRecurTutor.json
 
 CS226JHU: min
 	python $(CONFIG_SCRIPT) config/CS226JHUF15.json
