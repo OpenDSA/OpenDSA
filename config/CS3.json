@@ -61,7 +61,7 @@
           "Introduction": {},
           "Course Goals": {},
           "Some Software Engineering Topics": {
-            "showsection": true
+            "showsection": false
           },
           "A Philosophy of Data Structures": {},
           "Selecting a Data Structure": {},
