@@ -4,7 +4,7 @@ endif
 RM = rm -rf
 CONFIG_SCRIPT = tools/configure.py
 TARGET = build
-LINT = eslint
+LINT = eslint --no-color
 CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 CSSLINTFLAGS = --quiet --ignore=ids,adjoining-classes
 MINIMIZE = uglifyjs
@@ -22,7 +22,17 @@ clean:
 	- $(RM) Scripts/*~
 	- $(RM) config/*~
 
-alllint: csslint lint lintlib
+alllint: csslint lint lintlib jsonlint
+
+templint: jsonlint
+	@csslint $(CSSLINTFLAGS) AV/Background/*.css
+	@csslint $(CSSLINTFLAGS) AV/Design/*.css
+	-@$(LINT) AV/Background/*.js
+	-@$(LINT) AV/Design/*.js
+
+jsonlint:
+	@echo 'running jsonlint'
+	@jsonlint -q AV/Design/*.json
 
 csslint:
 	@echo 'running csslint'
@@ -42,20 +52,13 @@ lintAV:
 	@echo 'linting AVs'
 	-@$(LINT) AV/Background/*.js
 	-@$(LINT) AV/Binary/*.js
-	-@$(LINT) AV/Binary/*.json
 	-@$(LINT) AV/Design/*.js
-	-@$(LINT) AV/Design/*.json
 	-@$(LINT) AV/General/*.js
-	-@$(LINT) AV/General/*.json
 	-@$(LINT) AV/List/*.js
-	-@$(LINT) AV/List/*.json
 	-@$(LINT) AV/Sorting/*.js
-	-@$(LINT) AV/Sorting/*.json
 	-@$(LINT) AV/Hashing/*.js
 	-@$(LINT) AV/Searching/*.js
-	-@$(LINT) AV/Searching/*.json
 	-@$(LINT) AV/Sorting/*.js
-	-@$(LINT) AV/Sorting/*.json
 
 lintExe:
 	@echo 'linting KA Exercises'

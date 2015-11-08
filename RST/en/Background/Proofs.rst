@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
@@ -56,6 +56,7 @@ This section briefly introduces three commonly used proof techniques:
 
 #) proof by mathematical induction.
 
+
 Direct Proof
 ------------
 .. index:: ! proof; direct
@@ -103,6 +104,7 @@ proofs.
 
 .. index:: ! proof; by contradiction
 
+
 Proof by Contradiction
 ----------------------
 
@@ -149,6 +151,7 @@ This technique works because the :term:`truth table` for the two
 logical statements are the same.
 
 .. index:: ! proof; by induction
+
 
 Proof by Mathematical Induction
 -------------------------------
@@ -454,6 +457,10 @@ induction hypothesis.
    can be two-colored.
 
    **Proof:**
+
+.. inlineav:: TwoColoringProofCON ss
+   :output: show
+
    Consider the base case of a single infinite line in the plane.
    This line splits the plane into two regions.
    One region can be colored black and the other white to get a
@@ -563,3 +570,4 @@ Prior to this, we must prove that the function always terminates,
 which might also be done using an induction proof.
 
 .. odsascript:: AV/Background/twoColorCON.js
+.. odsascript:: AV/Background/TwoColoringProofCON.js

@@ -1,15 +1,11 @@
-#TwoColoringProofCON {
-  width: 800px;
-  height: 600px;
-}
-#TwoColoringProofCON .jsavline {
-  width:800px;
-  height:100px;
-}
 #TwoColoringProofCON .jsavcanvas {
-  width:800px;
   height:600px;
 }
+
+#TwoColoringProofCON .jsavoutput.jsavline {
+  height:100px;
+}
+
 .rotated {
   -webkit-transform: rotate(90deg);
   -moz-transform: rotate(90deg);
