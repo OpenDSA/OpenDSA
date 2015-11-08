@@ -24,6 +24,8 @@ from urlparse import urlparse
 
 error_count = 0
 
+LTI_fields = [  "username",  "password",  "canvas_url",  "course_code",  "access_token",  "consumer_key",  "consumer_secret",  "build_date",  "tool_name",  "tool_url",  "tool_xml_file"]
+
 required_fields = ['chapters', 'code_lang', 'module_origin', 'title']
 
 optional_fields = ['allow_anonymous_credit', 'assumes', 'av_origin', 'av_root_dir', 'build_cmap', 'build_dir', 'build_JSAV', 'code_dir', 'exercise_origin', 'exercises_root_dir', 'exercise_server',
@@ -187,16 +189,14 @@ def validate_module(mod_name, module, conf_data):
                 print('ERROR: Language directory %s does not exist' % lang_dir)
                 error_count += 1
 
+
 # get names of chapter
-
-
 def get_chap_names(chapters):
     for k in chapters:
         listed_chapters.append(k)
 
+
 # Validate a section
-
-
 def validate_section(section, conf_data):
     """Validate a chapter or section"""
     for subsect in section:
@@ -521,6 +521,9 @@ class ODSA_Config:
         for field in required_fields:
             self[field] = conf_data[field]
 
+        for field in LTI_fields:
+            self[field] = ''
+
         for field in optional_fields:
             self[field] = conf_data[field] if field in conf_data else None
 
@@ -555,6 +558,9 @@ class ODSA_Config:
 
         # The Unix-style relative path between the build directory and the OpenDSA root directory
         self.rel_build_to_odsa_path = os.path.relpath(self.odsa_dir, self.book_dir + self.rel_book_output_path).replace("\\", "/") + '/'
+
+        # LMS course_id, will be filled later while course creation.
+        self.course_id = ''
 
 
 # Code to execute when run as a standalone program

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-require="codemirror blockUI math math-format word-problems spin">
+<html data-require="codemirror blockUI">
   <head>
     <title> Recursion Programming Exercise: Minimum of array</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
@@ -41,8 +41,8 @@ int recursiveMin(int numbers[], int startIndex) {
               if (guess[0] != initEditor) {
                 console.log(guess[0]);
                 window.codeValue = guess[0];
-                window.progexType = "recursion";
-                window.summexName = "recHMinPROG";
+                window.progexType = "RecurTutor";
+                window.summexName = "RecHMinPROG";
               } else {
                 return "";
               }

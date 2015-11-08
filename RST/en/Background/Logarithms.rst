@@ -50,7 +50,7 @@ things in half, or store codes with binary bits.
 Whenever you see the notation :math:`\log n` in OpenDSA,
 either :math:`\log_2 n` is meant or else the term is being used
 asymptotically and so the actual base does not matter.
-Logarithms using any base other than two will show the base
+For logarithms using any base other than two, we will show the base
 explicitly.
 
 Logarithms have the following properties, for any positive values of
@@ -110,9 +110,6 @@ For example, :math:`\log^* 1024 = 4` because
 :math:`\log 1024 = 10`, :math:`\log 10 \approx 3.33`,
 :math:`\log 3.33 \approx 1.74`,
 and :math:`\log 1.74 < 1`, which is a total of 4 log operations.
-
-Notes
------
 
 .. [#] These properties are the idea behind the slide rule.
        Adding two numbers can be viewed as joining two lengths

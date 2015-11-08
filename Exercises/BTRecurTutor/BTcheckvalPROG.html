@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html data-require="codemirror blockUI math math-format word-problems spin">
+  <head>
+    <title> Binary Tree Check Value Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #BTcheckvalPROG .CodeMirror {
+        height: 200px;
+      }
+    </style>
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="config">
+          (function(){ window.OpenPopKa = true;}())
+        </var>
+      </div>
+      <div class="problems">
+        <div id="BTcheckvalPROGp"> <!-- Supresses answer box -->
+          <p class="problem">Write a recursive function that
+            returns true if there is a node in the given binary tree with the
+            given value, and false otherwise. Note that this tree is not
+            be a Binary Search Tree.<br/>
+
+            <textarea id="codeTextarea" name="codeTextarea">
+boolean BTcheckval(BinNode root, Comparable value) {
+// Your code goes between these lines
+
+
+// Your code goes between these lines
+}</textarea>
+          </p>
+          <div class="question"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [editor.getValue()] </div>
+            <div class="validator-function">
+              if (guess[0] != initEditor) {
+                console.log(guess[0]);
+                window.codeValue = guess[0];
+                window.progexType= "BTRecurTutor";
+                window.summexName= "BTcheckvalPROG";
+              } else {
+                return "";
+              }
+            </div>
+          </div>
+          <div class="hints">
+            <p>If the current node has the value that you are
+              looking for, then return.</p>
+            <p>If the result of calling the function recursively on
+              either subtree returns true, then return
+              true. Otherwise, return false.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -113,7 +113,7 @@ Make the call, and let their own base case handle it.
 As an exercise, write a simpler variant of the node update function
 (increment the value of each node by one).
 
-.. avembed:: Exercises/RecurTutor2/BTincPROG.html ka
+.. avembed:: Exercises/BTRecurTutor/BTincPROG.html ka
   
 In rare problems, you might need to explicitly check if the children
 are null or access the children values for each node.

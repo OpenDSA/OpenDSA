@@ -11,6 +11,9 @@
 Sets and Relations
 ==================
 
+Set Notation
+------------
+
 The concept of a set in the mathematical sense has wide
 application in computer science.
 The notations and techniques of set theory are commonly used
@@ -132,6 +135,16 @@ For example, :math:`\langle3, 4, 5, 4\rangle` is a sequence.
 Note that sequence :math:`\langle3, 5, 4, 4\rangle` is distinct from
 sequence :math:`\langle3, 4, 5, 4\rangle`, and both are distinct from
 sequence :math:`\langle3, 4, 5\rangle`. 
+
+.. [#] The object referred to here as a
+       bag is sometimes called a
+       :ref:`multilist <multilist> <Multilists>`.
+       But, the term multilist also refers to a list that may contain
+       sublists.
+
+
+Relations
+---------
 
 A :term:`relation` :math:`R` over set :math:`\mathbf{S}` is a set of
 ordered pairs from :math:`\mathbf{S}`.
@@ -257,9 +270,18 @@ computing a :ref:`minimal cost spanning tree <MCST> <MCST>`.
       :math:`y \bmod m = z \bmod m`, then
       :math:`x \bmod m = z \bmod m`.
 
+Relations Practice Exercise
+---------------------------
+
 .. avembed:: Exercises/Background/SetTFrelation.html ka
 
+Equivalence Relations Practice Exercise
+---------------------------------------
+
 .. avembed:: Exercises/Background/SetTFequivrel.html ka
+
+Partial Orders
+--------------
 
 A binary relation is called a
 :term:`partial order` if it is antisymmetric and transitive.
@@ -297,12 +319,3 @@ then the order is called a :term:`total order` or :term:`linear order`.
    powerset of the integers.
 
 .. avembed:: Exercises/Background/SetTFpartialorder.html ka
-
-Notes
------
-
-.. [#] The object referred to here as a
-       bag is sometimes called a
-       :ref:`multilist <multilist> <Multilists>`.
-       But, multilist is also refers to a list that may contain
-       sublists.

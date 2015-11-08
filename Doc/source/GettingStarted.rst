@@ -155,15 +155,16 @@ to call separate .js and .css files, respectively.
 We use ``csslint`` to validate css files.
 OpenDSA/Makefile contains our required csslint flags.
 
-
 **JavaScript**
-We use ``jshint`` for validating JavaScript.
-OpenDSA/.jshintrc contains our official configuration file that
+We use ``eslint`` for validating JavaScript.
+OpenDSA/.eslintrc contains our official configuration file that
 defines the expected style.
 It is relatively strict.
 Developers should strive to eliminate all warnings (and of course, all
 errors).
 
+**JSON Files**
+We use ``jsonlint`` to validate css files.
 
 -----
 Tools
@@ -247,12 +248,12 @@ For installation instructions, see
 http://nodejs.org (and don't forget to check for the 64-bit version if
 that is the OS you are running).
 
-jshint
+eslint
 ======
 
 Once you have nodejs installed, just do::
 
-   npm install -g jshint
+   npm install -g eslint
 
 csslint
 =======
@@ -263,6 +264,13 @@ Once you have nodejs installed, just do::
 
 Note: To be able to lint check either JavaScript or CSS, you need to
 put it in separate files from your HTML code.
+
+jsonlint
+========
+
+Once you have nodejs installed, just do::
+
+   npm install -g jsonlint
 
 uglifyjs
 ========
@@ -276,6 +284,14 @@ On Linux, you more likely will need to use the package manager.
 For example, on Ubuntu::
 
    apt-get install uglifyjs
+
+Some other things: requirements.txt
+===================================
+
+(This needs more documentation.)
+From the top level of the OpenDSA directory, do the following:
+
+   pip install -r requirements.txt
 
 Notes for Windows
 =================
