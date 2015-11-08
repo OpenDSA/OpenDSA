@@ -38,7 +38,7 @@
           }
 		}
       },
-      "AlgAnalTest/Proofs": {
+      "Background/Proofs": {
        "long_name": "Proofs",
        "sections": {
           "TwoColoringProof": {
