@@ -1,18 +1,7 @@
-#TwoColoringProofCON .jsavcanvas {
-  height:600px;
+#TwoColoringProofCON {
+  height: 400px;
 }
 
 #TwoColoringProofCON .jsavoutput.jsavline {
-  height:100px;
-}
-
-.rotated {
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  transform: rotate(90deg);
-}
-h1{
-  font-size: 1em;
+  height: 70px;
 }

@@ -154,7 +154,13 @@
           "Direct Poof": {},
           "Proof by Contradiction": {},
           "Proof by Mathematical Induction": {
-            "twoColorCON": {}
+            "twoColorCON": {},
+            "TwoColoringProofCON": {
+              "long_name": "Two Coloring Proof Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
           }
         }
       },
