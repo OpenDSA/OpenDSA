@@ -1,3 +1,4 @@
+# C++ version of Makefile
 # Standard UNIX
 CFLAGS= -s -Wall -O -DUNIX
 # Debugging
@@ -10,14 +11,46 @@ CC= g++ -std=c++0x
 
 #### Do the chapters #######################################################
 
-all: build sorting lists
+all: build utils sorting lists
 
-build: build
-	mkdir build
+build:
+	-@mkdir build
 
 clean:
 	-rm -rf build
 	mkdir build
+
+Utils: Permute UtilsTest
+
+Permute: build/Permute/success
+
+build/Permute/success: Utils/Permute.cpp Utils/utils.h
+	@echo "Permute Test"
+	@rm -rf build/Permute
+	@mkdir build/Permute
+	@cp Utils/Permute.cpp build/Permute
+	@cp Utils/utils.h build/Permute
+	cd build/Permute; \
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o Permute.o Permute.cpp; \
+	$(CC) $(CFLAGS) Permute.o -o Permute; \
+	./Permute
+
+UtilsTest: build build/Utils/success
+
+build/Utils/success: Utils/Checkorder.cpp Utils/Comparable.cpp Utils/Int.cpp Utils/KVPair.cpp Utils/utils.h Utils/UtilsTest.cpp
+	@echo "Utilities Test"
+	@rm -rf build/Utils
+	@mkdir build/Utils
+	@cp Utils/Checkorder.cpp build/Utils
+	@cp Utils/Comparable.cpp build/Utils
+	@cp Utils/Int.cpp build/Utils
+	@cp Utils/KVPair.cpp build/Utils
+	@cp Utils/UtilsTest.cpp build/Utils
+	@cp Utils/utils.h build/Utils
+	cd build/Utils; \
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o UtilsTest.o UtilsTest.cpp; \
+	$(CC) $(CFLAGS) UtilsTest.o -o UtilsTest; \
+	./UtilsTest
 
 Anal: build build/Anal/success
 
