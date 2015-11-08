@@ -1,9 +1,9 @@
 /*global ODSA */
+"use strict";
 // Written by Cliff Shaffer
-$(document).ready(function() {
-  "use strict";
+$(document).ready(function () {
   var av_name = "ADTCON";
-  var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
+  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
   var av = new JSAV(av_name, {animationMode: "none"});
   var left = 240;
 
@@ -30,4 +30,6 @@ $(document).ready(function() {
   av.g.rect(left + 180, 140, 158,  55);
   av.label(interpret("av_tag10"), {left: left + 185, top: 130});
   av.label(interpret("av_tag11"), {left: left + 195, top: 150});
+  av.displayInit();
+  av.recorded();
 });
