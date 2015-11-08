@@ -30,4 +30,6 @@ $(document).ready(function () {
   av.g.rect(left + 180, 140, 158,  55);
   av.label(interpret("av_tag10"), {left: left + 185, top: 130});
   av.label(interpret("av_tag11"), {left: left + 195, top: 150});
+  av.displayInit();
+  av.recorded();
 });
