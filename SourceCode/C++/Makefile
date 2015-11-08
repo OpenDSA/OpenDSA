@@ -20,20 +20,21 @@ clean:
 	-rm -rf build
 	mkdir build
 
-Utils: Permute UtilsTest
+Utils: PermuteTest UtilsTest
 
-Permute: build/Permute/success
+PermuteTest: build/PermuteTest/success
 
-build/Permute/success: Utils/Permute.cpp Utils/utils.h
+build/PermuteTest/success: Utils/PermuteTest.cpp Utils/Permute.h Utils/utils.h
 	@echo "Permute Test"
-	@rm -rf build/Permute
-	@mkdir build/Permute
-	@cp Utils/Permute.cpp build/Permute
-	@cp Utils/utils.h build/Permute
-	cd build/Permute; \
-	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o Permute.o Permute.cpp; \
-	$(CC) $(CFLAGS) Permute.o -o Permute; \
-	./Permute
+	@rm -rf build/PermuteTest
+	@mkdir build/PermuteTest
+	@cp Utils/PermuteTest.cpp build/PermuteTest
+	@cp Utils/Permute.h build/PermuteTest
+	@cp Utils/utils.h build/PermuteTest
+	cd build/PermuteTest; \
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o PermuteTest.o PermuteTest.cpp; \
+	$(CC) $(CFLAGS) PermuteTest.o -o PermuteTest; \
+	./PermuteTest
 
 UtilsTest: build build/Utils/success
 
