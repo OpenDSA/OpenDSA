@@ -1,6 +1,6 @@
+"use strict";
 // Written by Cliff Shaffer
-$(document).ready(function() {
-  "use strict";
+$(document).ready(function () {
   var av = new JSAV("TOHfigCON", {animationMode: "none"});
 
   var left = 160;
@@ -37,4 +37,6 @@ $(document).ready(function() {
 
   av.label("(a)",  {left: left + 112, top: 125});
   av.label("(b)",  {left: left + 391, top: 125});
+  av.displayInit();
+  av.recorded();
 });
