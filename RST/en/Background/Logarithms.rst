@@ -11,6 +11,9 @@
 Logarithms
 ==========
 
+Logarithms
+----------
+
 The :term:`logarithm` of base :math:`b` for value :math:`y` is the
 power to which :math:`b` is raised to get :math:`y`.
 Normally, this is written as :math:`\log_b y = x`.
@@ -91,7 +94,6 @@ If :math:`\log_2 n = x`, then :math:`x` is the power to which you need
 to raise 2 to get back to :math:`n`.
 So of course, :math:`2^{\log n} = n` when the base of the log is 2.
 
-
 When discussing logarithms, exponents often lead to confusion.
 Property (3) tells us that :math:`\log n^2 = 2 \log n`.
 How do we indicate the square of the logarithm (as opposed to the
@@ -110,6 +112,11 @@ For example, :math:`\log^* 1024 = 4` because
 :math:`\log 1024 = 10`, :math:`\log 10 \approx 3.33`,
 :math:`\log 3.33 \approx 1.74`,
 and :math:`\log 1.74 < 1`, which is a total of 4 log operations.
+
+Here is some practice with manipulating logarithms.
+
+.. avembed:: Exercises/Background/MathLogSumm.html ka
+
 
 .. [#] These properties are the idea behind the slide rule.
        Adding two numbers can be viewed as joining two lengths

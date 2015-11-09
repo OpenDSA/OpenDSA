@@ -139,7 +139,16 @@
       "Background/Logarithms": {
         "long_name": "Logarithms",
         "exercises": {},
-        "sections": {}
+        "sections": {
+          "Logarithms": {
+            "MathLogSumm": {
+              "long_name": "Logarithms Practice Questions",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
       },
       "Background/Summations": {
         "long_name": "Summations and Recurrence Relations",
