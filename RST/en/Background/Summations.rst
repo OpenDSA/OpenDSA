@@ -11,6 +11,9 @@
 Summations and Recurrence Relations
 ===================================
 
+Summations
+----------
+
 Most programs contain loop constructs.
 When analyzing running time costs for programs with loops, we
 need to add up the costs for each time the loop is executed.
@@ -124,7 +127,12 @@ where :math:`\gamma` is Euler's constant and has the value 0.5772...
 .. todo::
    :type: SlideShow
 
-   Provide a slideshow for some of the previous summations to present how we reached the closed form of the summation visually. For example, finding the closed form of :math:`\sum_{i=1}^{n} i` can be easily presented visually using a set of rectangles stacked vetrically for each value of $i$, and then the closed form would be the total surface area of the final shape. 
+   Provide a slideshow for some of the previous summations to present
+   how we reached the closed form of the summation visually. For
+   example, finding the closed form of :math:`\sum_{i=1}^{n} i` can be
+   easily presented visually using a set of rectangles stacked
+   vetrically for each value of $i$, and then the closed form would be
+   the total surface area of the final shape.
 
 
 Most of these equalities can be proved easily by a
@@ -134,6 +142,10 @@ solution.
 It only confirms when a proposed closed-form solution is correct.
 There are techniques for deriving
 :ref:`closed-form solutions <closed-form solution> <AdvSumm>`.
+
+
+Recurrence Relations
+--------------------
 
 The running time for a recursive algorithm is most easily expressed by
 a recursive expression because the total time for the recursive
@@ -266,11 +278,13 @@ definition.
    This is equivalent to the summation :math:`\sum_{i=1}^n i`,
    for which we already know the closed-form solution.
 
-There are
-:ref:`many more techniques <closed-form solution> <Recurrence>`
-to find closed-form solutions for recurrence relations.
+There are many more techniques to find closed-form solutions for
+recurrence relations.
 
 .. todo::
    :type: SlideShow
 
-   Provide a slideshow to present how we can guess the closed form of some recurrence relations using the unrolling method (using a tree). We can start with only two recurrences $T(n) = T(n-1) + 1$ and $T(n) = T(n-1) + n$   
+   Provide a slideshow to present how we can guess the closed form of
+   some recurrence relations using the unrolling method (using a
+   tree). We can start with only two recurrences $T(n) = T(n-1) + 1$
+   and $T(n) = T(n-1) + n$.

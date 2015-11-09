@@ -144,7 +144,10 @@
       "Background/Summations": {
         "long_name": "Summations and Recurrence Relations",
         "exercises": {},
-        "sections": {}
+        "sections": {
+          "Summations": {},
+          "Recurrence Relations": {}
+        }
       },
       "Background/Proofs": {
         "long_name": "Proofs",
