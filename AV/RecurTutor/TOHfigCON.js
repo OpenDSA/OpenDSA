@@ -37,4 +37,6 @@ $(document).ready(function () {
 
   av.label("(a)",  {left: left + 112, top: 125});
   av.label("(b)",  {left: left + 391, top: 125});
+  av.displayInit();
+  av.recorded();
 });

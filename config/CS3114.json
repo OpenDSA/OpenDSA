@@ -102,13 +102,6 @@
         "dispModComp": true,
         "exercises": {}
       },
-      "Background/Recursion": {
-        "long_name": "Recursion",
-        "dispModComp": true,
-        "exercises": {
-          "TOHfigCON": {}
-        }
-      },
       "Background/Proofs": {
         "long_name": "Proofs",
         "dispModComp": true,
