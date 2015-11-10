@@ -398,6 +398,7 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
     # Add back in slide specific scripts
     sss_div = soup.new_tag('div', id='SLIDE-SPECIFIC-SCRIPTS')
     content_div_soup.insert_before(sss_div)
+    print len(exercises)
     if index != 0:
         potential_exercises = exercises.values()[index-1].keys()
     else:
