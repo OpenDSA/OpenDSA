@@ -4,6 +4,7 @@
 $(document).ready(function() {
   "use strict";
   var av_name = "recurIntroDelegateCON";
+  var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
   // Load the config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter,       // get the interpreter
@@ -15,28 +16,28 @@ $(document).ready(function() {
   var label = av.label("x*y?", {left: 150, top: 170});
 
   // Slide 1
-  av.umsg("You want to multiply two numbers x and y.");
+  av.umsg(interpret("av_c1"));
   pseudo.highlight(1);
   av.displayInit();
 
   // Slide 2
-  av.umsg("You would like to delegate this task to some friend. But your friend is likely to do the same thing that you do. If you just delegate the entire task to your friend, then your friend will do the same, and so on, and nothing will ever get done. So instead, you will ask your friend to do a problem that is a little bit easier.");
+  av.umsg(interpret("av_c2"));
   av.step();
 
   // Slide 3
-  av.umsg("If the numbers are simple enough, then you will do the task on your own.");
+  av.umsg(interpret("av_c3"));
   pseudo.highlight([2, 3]);
   pseudo.unhighlight(1);
   av.step();
 
   // Slide 4
-  av.umsg("Otherwise, you will simplify and delegate this task to a friend.");
+  av.umsg(interpret("av_c4"));
   pseudo.unhighlight([2, 3]);
   pseudo.highlight(5);
   av.step();
 
   // Slide 5
-  av.umsg("Your friend will do a smaller version of the problem by multiplying x-1 and y. When he returns the result back, you will add a y to that result to complete your task.");
+  av.umsg(interpret("av_c5"));
   var Pointer1 = av.g.line(230, 210, 280, 210,
                            {"arrow-end": "classic-wide-long", opacity: 0,
                             stroke: "black", "stroke-width": 5});
@@ -46,7 +47,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 6
-  av.umsg("When you delegate the task to your friend. You are not worried how he is going to do it. You are just waiting for the answer.");
+  av.umsg(interpret("av_c6"));
   label.hide();
   label2.hide();
   Pointer1.hide();
@@ -55,7 +56,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 7
-  av.umsg("You will simply add y to the result and you will be done with your task!");
+  av.umsg(interpret("av_c7"));
   Pointer1 = av.g.line(280, 210, 230, 210,
                        {"arrow-end": "classic-wide-long", opacity: 0,
                         stroke: "black", "stroke-width": 5});
