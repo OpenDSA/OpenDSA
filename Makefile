@@ -31,7 +31,7 @@ templint: jsonlint
 	-@$(LINT) AV/Design/*.js
 
 jsonlint:
-	@echo 'running jsonlint'
+	@jsonlint -q AV/Background/*.json
 	@jsonlint -q AV/Design/*.json
 
 csslint:
