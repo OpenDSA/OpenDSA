@@ -7,12 +7,12 @@
   height:75px;
 }
 
-#LinearRecurrencesCON .jsavtree .jsavnode {
-  line-height: 45px !important;
-  min-width: 45px !important;
-  max-width: 45px !important;
-  min-height: 45px !important;
-  max-height: 45px !important;
+#LinearRecurrencesCON .jsavgraph .jsavnode {
+  line-height: 40px !important;
+  min-width: 40px !important;
+  max-width: 40px !important;
+  min-height: 40px !important;
+  max-height: 40px !important;
 }
 .rotated {
   -webkit-transform: rotate(90deg);
