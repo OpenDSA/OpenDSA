@@ -10,6 +10,8 @@
    :topic: Algorithm Analysis
 
 .. odsalink:: AV/Searching/binarySearchCON.css
+.. odsalink:: AV/Development/AlgAnal/SummationOneToNCON.css
+.. odsalink:: AV/Development/AlgAnal/SummationTwoPowerICON.css
 
 Calculating Program Running Time
 ================================
@@ -105,6 +107,9 @@ We will make use of the algorithm analysis simplifying rules:
    By simplifying rule (3), :math:`\Theta(c_1 + c_2 n + c_3 n^2)` is
    simply :math:`\Theta(n^2)`.
 
+.. inlineav:: SummationOneToNCON ss
+   :output: show
+
 .. topic:: Example
 
    Compare the asymptotic analysis for the following two code
@@ -160,11 +165,15 @@ We will make use of the algorithm analysis simplifying rules:
    where :math:`n` is assumed to be a power of two and again
    :math:`k = 2^i`.
 
+.. inlineav:: SummationTwoPowerICON ss
+   :output: show
+
 .. todo::
    :type: Slideshow
 
-   We need to think about a technique for visualizing the running time of some loop constructs. This can be very similar to how we visualize reaching the closed form solution of summations.
-
+   We need to think about a technique for visualizing the running time
+   of some loop constructs. This can be very similar to how we
+   visualize reaching the closed form solution of summations.
 
 What about other control statements?
 ``While`` loops are analyzed in a manner similar to ``for``
@@ -251,9 +260,7 @@ Here is an illustration of the binary search method.
 .. inlineav:: binarySearchCON ss
    :output: show
 
-.. showhidecontent:: binsearchpro
-
-   .. avembed:: AV/Searching/binarySearchPRO.html ss
+.. avembed:: AV/Searching/binarySearchPRO.html ss
 
 
 To find the cost of this algorithm in the worst case, we can model the
@@ -311,3 +318,5 @@ whether the advantage outweighs the disadvantage.
 .. avembed:: Exercises/AlgAnal/AnalProgramSumm.html ka
 
 .. odsascript:: AV/Searching/binarySearchCON.js
+.. odsascript:: AV/Development/AlgAnal/SummationOneToNCON.js
+.. odsascript:: AV/Development/AlgAnal/SummationTwoPowerICON.js
