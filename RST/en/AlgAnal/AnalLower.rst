@@ -9,6 +9,8 @@
    :requires: growth rate; best and worst case
    :topic: Algorithm Analysis
 
+.. odsalink:: AV/AlgAnal/LowerBoundCON.css
+
 Lower Bounds and :math:`\Theta` Notation
 ========================================
 
@@ -178,6 +180,11 @@ If the limit goes to some constant other than zero, then
    function plots in which the running time of the algorithm is
    plotted against its upper and lower bounds.
 
+
+.. inlineav:: LowerBoundCON ss
+   :output: show
+
+
 .. avembed:: Exercises/AlgAnal/LowerThetaSumm.html ka
 
 Notes
@@ -243,3 +250,6 @@ Notes
        is not a law of nature.
        It is merely a powerful modeling tool used to describe the
        behavior of algorithms.
+
+
+.. odsascript:: AV/AlgAnal/LowerBoundCON.js

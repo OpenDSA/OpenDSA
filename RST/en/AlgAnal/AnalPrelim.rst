@@ -8,6 +8,8 @@
    :satisfies: problems; algorithms; functions
    :topic: Algorithm Analysis
 
+.. odsalink:: AV/AlgAnal/ProblemAlgorithmCON.css
+
 Problems, Algorithms, and Programs
 ==================================
 
@@ -209,4 +211,9 @@ in a programming language.
    language. So, here we may present the implemenation of bubble sort
    in C++ as an example of a program.
 
+.. inlineav:: ProblemAlgorithmCON ss
+   :output: show
+
 .. avembed:: Exercises/AlgAnal/AnalPrelimSumm.html ka 
+
+.. odsascript:: AV/AlgAnal/ProblemAlgorithmCON.js

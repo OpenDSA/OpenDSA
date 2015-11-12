@@ -323,9 +323,9 @@ resources consumed by an algorithm.
       \mathsf{2^{60}} & \mathsf{2^{90}} & \mathsf{2^{1 {\rm G}}}\\
       \end{array}
 
-.. avembed:: Exercises/AlgAnal/CompareAlgSumm.html ka 
+.. avembed:: Exercises/AlgAnal/CompareGrowth.html ka 
 
-.. avembed:: Exercises/AlgAnal/GrowthRates.html ka 
+.. avembed:: Exercises/AlgAnal/GrowthRatesPRO.html ka 
 
 .. todo::
    :type: AV

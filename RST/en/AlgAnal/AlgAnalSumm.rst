@@ -12,10 +12,6 @@ Algorithm Analysis Summary Exercises
 
 Here are some practice questions for this chapter.
 
-.. showhidecontent:: upperbound
+.. avembed:: Exercises/AlgAnal/AlgAnalCS2114Summ.html ka
 
-   .. avembed:: Exercises/AlgAnal/AlgAnalCS2114Summ.html ka
-
-.. showhidecontent:: allbound
-
-   .. avembed:: Exercises/AlgAnal/AlgAnalSumm.html ka
+.. avembed:: Exercises/AlgAnal/AlgAnalSumm.html ka

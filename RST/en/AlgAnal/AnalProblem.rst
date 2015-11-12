@@ -9,6 +9,8 @@
    :satisfies: analyzing problems
    :topic: Algorithm Analysis
 
+.. odsalink:: AV/AlgAnal/AnalyzingProblemsCON.css
+
 Analyzing Problems
 ==================
 
@@ -36,6 +38,9 @@ The worst case lower bound is the *least* of all the
    :tag: Slideshow
 
    Present a visualization of the previous paragraph
+
+.. inlineav:: AnalyzingProblemsCON ss
+   :output: show
 
 It is much easier to show that an algorithm (or program) is in
 :math:`\Omega(f(n))` than it is to show that a problem is in
@@ -104,6 +109,7 @@ If the lower bound for the problem matches the upper bound for the
 algorithm (within a constant factor), then we know that we can find an
 algorithm that is better only by a constant factor.
 
+
 .. avembed:: Exercises/AlgAnal/AnalProblemSumm.html ka
 
 Notes
@@ -111,3 +117,6 @@ Notes
 
 .. [#] While it is fortunate to know the truth, it is unfortunate that
        sorting is :math:`\Theta(n \log n)` rather than :math:`\Theta(n)`!
+
+
+.. odsascript:: AV/AlgAnal/AnalyzingProblemsCON.js
