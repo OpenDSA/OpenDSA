@@ -272,8 +272,12 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   
   # Remove unnecessary parts of the HTML
   for class_name in ('topnav', 'bottomnav', 'footer'):
-    soup.find('div', class_=class_name).extract()
-  soup.find('img', alt='nsf').extract()
+    element = soup.find('div', class_=class_name)
+    if element:
+      element.extract()
+  element = soup.find('img', alt='nsf')
+  if element:
+    element.extract()
   
   total_real_exercises = len(exercises)#0
   #for exercise, properties in exercises.items():
@@ -308,12 +312,12 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   content_div_soup = soup.find('div', class_='content')
   section_divs_soup = content_div_soup.find_all('div', class_='section', recursive=False)
   content_div = []
+  # A body is an HTML fragment within a subsection
   total_bodies = 0
-  has_subsections = False
-  has_sections = False
+  # Iterate over the top-level sections
   for section_div_soup in section_divs_soup:
     section_div = []
-    section_starting_content = []
+    # And then iterate over the second-level sections
     for subsection_div_soup in list(section_div_soup.contents):
       subsection_div = []
       if (subsection_div_soup.name == 'div'
@@ -321,16 +325,18 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
           and 'section' in subsection_div_soup['class']):
         # This is a subsection, grab its children
         for body_soup in list(subsection_div_soup.contents):
+          #if verbose: print "\t\tSUB"
           subsection_div.append( ( body_soup.parent, body_soup.extract() ) )
           total_bodies += 1
-        has_subsections = True
       else:
         # This is section starter content.
+        #if verbose: print "\t\tSection"
         body_soup = subsection_div_soup
         subsection_div.append( ( body_soup.parent, body_soup.extract() ) )
         total_bodies += 1
-        has_sections = True
+      # Capture this subsection into this section
       section_div.append(subsection_div)
+    # Capture this section into the complete content
     content_div.append(section_div)
   if verbose:
     print "\tPhase 1: Found {} pieces of body content".format(total_bodies)
@@ -350,7 +356,7 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
       for parent, body in subsection_div:
         #print "\t\t\t", str(body)[:40]
         new_slide.append( (parent, body) )
-      if not ''.join([str(s[1]) for s in new_slide]).strip():
+      if not ''.join([str(s[1]) for s in new_slide if s[1].name != 'span' or not s[1].has_attr('id') or not s[1]['id'].startswith('index-')]).strip():
         continue
       slides.append((name, new_slide))
       new_slide = []
@@ -384,7 +390,7 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
           new_slide = []
           previous_parent = parent'''
   if verbose:
-    print "\tPhase 2: Clustered into {} slides. Found {} exercises, expected {}.".format(len(slides), total_exercises, len(exercises))
+    print "\tPhase 2: Clustered into {} slides. Found {} exercises, expected {}.".format(len(slides), total_exercises-1, len(exercises))
   
   # third pass: render them out with the relevant scripts
   for index, (slide_name, slide) in enumerate(slides):

@@ -8,8 +8,8 @@
    :requires: set notation; relations; factorial; permuation; modulus; logarithms; summation; recurrence; induction proofs; estimation
    :topic: Math Background
 
-Math Background Summary Exercises
-=================================
+Chapter Summary Questions
+=========================
 
 Here are some practice questions for the modules in this chapter.
 
