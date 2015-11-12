@@ -243,6 +243,9 @@ Everything: min
 
 AlgAnalTest: min
 	python $(CONFIG_SCRIPT) config/AlgAnalTest.json
+	
+AlgAnal: min
+	python $(CONFIG_SCRIPT) config/AlgAnal.json
 
 invalid: min
 	python $(CONFIG_SCRIPT) config/invalid.json
