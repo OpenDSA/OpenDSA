@@ -11,6 +11,9 @@
 Faster Computer, or Faster Algorithm?
 =====================================
 
+Faster Computer, or Faster Algorithm?
+-------------------------------------
+
 Imagine that you have a problem to solve, and you know of an algorithm
 whose running time is proportional to :math:`n^2` where :math:`n` is a
 measure of the input size.

@@ -8,6 +8,8 @@
    :satisfies: summation; recurrence
    :topic: Math Background
 
+.. odsalink:: AV/Background/LinearRecurrencesCON.css
+
 Summations and Recurrence Relations
 ===================================
 
@@ -281,10 +283,7 @@ definition.
 There are many more techniques to find closed-form solutions for
 recurrence relations.
 
-.. todo::
-   :type: SlideShow
-
-   Provide a slideshow to present how we can guess the closed form of
-   some recurrence relations using the unrolling method (using a
-   tree). We can start with only two recurrences $T(n) = T(n-1) + 1$
-   and $T(n) = T(n-1) + n$.
+.. inlineav:: LinearRecurrencesCON ss
+   :output: show
+	  
+.. odsascript:: AV/Background/LinearRecurrencesCON.js

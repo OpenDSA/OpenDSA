@@ -9,8 +9,13 @@
    :satisfies: analysis misunderstandings
    :topic: Algorithm Analysis
 
+.. odsalink:: AV/AlgAnal/MisunderstandingsGraphCON.css
+
 Common Misunderstandings
 ========================
+
+Common Misunderstandings
+------------------------
 
 :term:`Asymptotic analysis <asymptotic analysis>` is one of the most
 intellectually difficult topics that undergraduate computer science
@@ -143,6 +148,9 @@ worst, and average cases as the input size grows.
    If we leave off which class of inputs we are discussing, we cannot
    know which cost measure we are referring to for most algorithms.
 
+.. inlineav:: MisunderstandingsGraphCON ss
+   :output: show
+
 .. avembed:: Exercises/AlgAnal/MisSumm.html ka
 
 .. todo::
@@ -150,3 +158,5 @@ worst, and average cases as the input size grows.
 
    We need to draw the graphs for the previous example and make the
    discussion as a series of slides.
+
+.. odsascript:: AV/AlgAnal/MisunderstandingsGraphCON.js

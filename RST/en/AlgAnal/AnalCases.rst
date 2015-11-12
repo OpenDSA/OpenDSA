@@ -7,9 +7,14 @@
    :author: Cliff Shaffer
    :satisfies: best and worst case
    :topic: Algorithm Analysis
+   
+.. odsalink:: AV/Development/AlgAnal/BestWorstAverageCON.css
 
 Best, Worst, and Average Cases
 ==============================
+
+Best, Worst, and Average Cases
+------------------------------
 
 Consider the problem of finding the factorial of :math:`n`.
 For this problem, there is only one input of a given "size" (that
@@ -118,5 +123,9 @@ If not, then we must resort to worst-case analysis.
 .. todo::
    :type: Slideshow
 
-   A visualization to illustrate the difference between best, average, and worst cases. We may consider the problem of searching and the sequencial search algorithm. A random array of size $n$ is generated to represent a problem instance and then the best case occurs when the target is in the first position, the worst case occurs when the target is in the last position, and the average case occurs when the target is near the middle of the array. 
+   A visualization to illustrate the difference between best, average, and worst cases. We may consider the problem of searching and the sequencial search algorithm. A random array of size $n$ is generated to represent a problem instance and then the best case occurs when the target is in the first position, the worst case occurs when the target is in the last position, and the average case occurs when the target is near the middle of the array.
 
+.. inlineav:: BestWorstAverageCON ss
+   :output: show
+
+.. odsascript:: AV/Development/AlgAnal/BestWorstAverageCON.js	  

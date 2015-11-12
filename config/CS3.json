@@ -196,6 +196,270 @@
         }
       }
     },
+    "Algorithm Analysis": {
+      "AlgAnal/AnalChap": {
+        "long_name": "Chapter Intro: Algorithm Analysis",
+        "exercises": {},
+        "sections": {}
+      },
+      "AlgAnal/AnalPrelim": {
+        "long_name": "Problems, Algorithms, and Programs",
+        "exercises": {},
+        "sections": {
+          "Problems": {},
+          "Algorithms": {},
+          "Programs": {
+            "ProblemAlgorithmCON": {
+              "long_name": "Problem, Algorithm, and Program definitions Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Summary Questions": {
+            "AnalPrelimSumm": {
+              "long_name": "Problems, Algorithms, Programs Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 4
+            }
+          }
+        }
+      },
+      "AlgAnal/AnalIntro": {
+        "long_name": "Comparing Algorithms",
+        "exercises": {},
+        "sections": {
+          "Comparing Algorithms": {},
+          "Basic Operations and Input Size": {},
+          "Growth Rates": {
+            "CompareGrowth": {
+              "long_name": "Comparing Growth Rates Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 3
+            }
+          },
+          "Growth Rates Exercise": {
+            "GrowthRatesPRO": {
+              "long_name": "Growth Rates Ordering Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3
+            }
+          }
+        }
+      },
+      "AlgAnal/AnalCases": {
+        "long_name": "Best, Average, and Worst Cases",
+        "exercises": {},
+        "sections": {
+          "Best, Worst, and Average Cases": {
+            "BestWorstAverageCON": {
+              "long_name": "Best, Worst, and Average cases visualization",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "AlgAnal/AnalCompvsAlg": {
+        "long_name": "Faster Computer, or Faster Algorithm?",
+        "exercises": {},
+        "sections": {
+          "Faster Computer, or Faster Algorithm?": {
+            "FasterCorASumm": {
+              "long_name": "Faster Computer or Faster Algorithm Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 2
+            }
+          }
+        }
+      },
+      "AlgAnal/AnalAsymptotic": {
+        "long_name": "Asymptotic Analysis and Upper Bounds",
+        "exercises": {},
+        "sections": {
+          "Introduction": {},
+          "Upper Bounds": {},
+          "Simplifying Rules": {},
+          "Summary": {
+            "UpperBoundCON": {
+              "long_name": "Upper Bounds visualization",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Summary Exercise": {
+            "UpperBoundsSumm": {
+              "long_name": "Asymptotic Analysis and Upper Bounds Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 4
+            }
+          }
+        }
+      },
+      "AlgAnal/AnalLower": {
+        "long_name": "Lower Bounds and Theta Notation",
+        "exercises": {},
+        "sections": {
+          "Lower Bounds": {},
+          "$\\Theta$ Notation": {},
+          "Classifying Functions": {
+            "LowerThetaSumm": {
+              "long_name": "Lower Bounds and Theta Notation Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 5
+            }
+          },
+          "Summary Exercise": {
+            "LowerBoundCON": {
+              "long_name": "Lower Bounds visualization",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "AlgAnal/AnalProgram": {
+        "long_name": "Calculating the Running Time of a Program",
+        "exercises": {},
+        "sections": {
+          "Calculating Program Running Time": {
+            "SummationOneToNCON": {
+              "long_name": "Summation of the first N Integers visualization",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "SummationTwoPowerICON": {
+              "long_name": "Summation Two Power I visualization",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "LinearRecurrenceSimpleCON": {
+              "long_name": "Linear Recurrence visualization",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Case Study: Two Search Algorithms": {
+            "binarySearchCON": {
+              "long_name": "Binary Search Algorithm Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "binarySearchPRO": {
+              "long_name": "Binary Search Proficiency Exercise",
+              "exer_options": { "JXOP-code": "none" },
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            },
+            "DivideAndConquerRecurrenceSimpleCON": {
+              "long_name": "Linear Recurrence visualization",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Summary Exercise": {
+            "AnalProgramSumm": {
+              "long_name": "Program Code Analysis Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "AlgAnal/AnalProblem": {
+        "long_name": "Analyzing Problems",
+        "exercises": {},
+        "sections": {
+          "Analyzing Problems": {
+            "AnalyzingProblemsCON": {
+              "long_name": "Worst Case Lower Bound Visualization",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "AnalProblemSumm": {
+              "long_name": "Problem Analysis Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "AlgAnal/AnalMisunderstanding": {
+        "long_name": "Common Misunderstandings",
+        "exercises": {},
+        "sections": {
+          "Common Misunderstandings": {
+            "MisunderstandingsGraphCON": {
+              "long_name": "Example's graph Visualization",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "MisSumm": {
+              "long_name": "Common Misconceptions Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 4
+            }
+          }
+        }
+      },
+      "AlgAnal/AnalMultiple": {
+        "long_name": "Multiple Parameters",
+        "exercises": {},
+        "sections": {}
+      },
+      "AlgAnal/AnalSpace": {
+        "long_name": "Space Bounds",
+        "exercises": {},
+        "sections": {}
+      },
+      "AlgAnal/AnalTuning": {
+        "long_name": "Speeding Up Your Programs",
+        "exercises": {},
+        "sections": {}
+      },
+      "AlgAnal/AlgAnalSumm": {
+        "long_name": "Algorithm Analysis Summary Exercises",
+        "exercises": {},
+        "sections": {
+          "Summary Exercise: CS2": {
+            "AlgAnalCS2114Summ": {
+              "long_name": "Algorithm Analysis Summary Questions",
+              "required": false,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "Summary Exercise: CS3": {
+            "AlgAnalSumm": {
+              "long_name": "Algorithm Analysis Summary Questions",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      }
+    },
     "Appendix": {
       "Glossary": {
         "long_name": "Glossary",

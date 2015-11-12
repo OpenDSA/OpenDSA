@@ -7,6 +7,7 @@
    :author: Cliff Shaffer
    :prerequisites:
    
+.. odsalink:: AV/Development/AlgAnal/DivideAndConquerRecurrenceSimpleCON.css
 .. odsalink:: AV/Development/AlgAnal/DivideAndConquerRecurrencesCON.css
 
 Solving Recurrence Relations
@@ -18,6 +19,9 @@ Solving Recurrence Relations
    Throughout this module, there are references to equations, both
    on this page and in the Summations module. These should be made
    into proper cross-references rather than hard-coded equation numbers.
+
+.. inlineav:: DivideAndConquerRecurrenceSimpleCON ss
+   :output: show
 
 Recurrence relations are often used to model the cost of recursive
 functions.
@@ -630,4 +634,5 @@ From Equation (10) of Module :numref:`<Summations>`,
 :math:`{\cal H}_{n+1} = \Theta(\log n)`,
 so the final solution is :math:`\Theta(n \log n)`.
 
+.. odsascript:: AV/Development/AlgAnal/DivideAndConquerRecurrenceSimpleCON.js
 .. odsascript:: AV/Development/AlgAnal/DivideAndConquerRecurrencesCON.js

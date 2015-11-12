@@ -11,6 +11,9 @@
 Comparing Algorithms
 ====================
 
+Comparing Algorithms
+--------------------
+
 How do you compare two algorithms for solving some problem in terms
 of efficiency?
 We could implement both algorithms as computer programs and then
@@ -324,6 +327,9 @@ resources consumed by an algorithm.
       \end{array}
 
 .. avembed:: Exercises/AlgAnal/CompareGrowth.html ka 
+
+Growth Rates Exercise
+---------------------
 
 .. avembed:: Exercises/AlgAnal/GrowthRatesPRO.html ka 
 

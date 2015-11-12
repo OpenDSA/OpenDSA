@@ -10,9 +10,14 @@
    :topic: Algorithm Analysis
 
 .. odsalink:: AV/Searching/binarySearchCON.css
+.. odsalink:: AV/Development/AlgAnal/SummationOneToNCON.css
+.. odsalink:: AV/Development/AlgAnal/SummationTwoPowerICON.css
 
 Calculating Program Running Time
 ================================
+
+Calculating Program Running Time
+--------------------------------
 
 This modules discusses the analysis for several simple code
 fragments.
@@ -105,6 +110,9 @@ We will make use of the algorithm analysis simplifying rules:
    By simplifying rule (3), :math:`\Theta(c_1 + c_2 n + c_3 n^2)` is
    simply :math:`\Theta(n^2)`.
 
+.. inlineav:: SummationOneToNCON ss
+   :output: show
+
 .. topic:: Example
 
    Compare the asymptotic analysis for the following two code
@@ -160,11 +168,15 @@ We will make use of the algorithm analysis simplifying rules:
    where :math:`n` is assumed to be a power of two and again
    :math:`k = 2^i`.
 
+.. inlineav:: SummationTwoPowerICON ss
+   :output: show
+
 .. todo::
    :type: Slideshow
 
-   We need to think about a technique for visualizing the running time of some loop constructs. This can be very similar to how we visualize reaching the closed form solution of summations.
-
+   We need to think about a technique for visualizing the running time
+   of some loop constructs. This can be very similar to how we
+   visualize reaching the closed form solution of summations.
 
 What about other control statements?
 ``While`` loops are analyzed in a manner similar to ``for``
@@ -214,6 +226,12 @@ Thus, the running time for this function can be expressed as
 The closed-form solution for this
 recurrence relation is :math:`\Theta(n)`.
 
+.. inlineav:: LinearRecurrenceSimpleCON ss
+   :output: show
+
+Case Study: Two Search Algorithms
+---------------------------------
+
 The final example of algorithm analysis for this section will compare
 two algorithms for performing search in an array.
 Earlier, we determined that the running time for sequential search on
@@ -253,7 +271,6 @@ Here is an illustration of the binary search method.
 
 .. avembed:: AV/Searching/binarySearchPRO.html ss
 
-
 To find the cost of this algorithm in the worst case, we can model the
 running time as a recurrence and then find the closed-form solution.
 Each recursive call to ``binary`` cuts the size of the array
@@ -269,6 +286,9 @@ If we expand the recurrence, we find that we can do so only
 adds one to the cost.
 Thus, the closed-form solution for the recurrence is
 :math:`\mathbf{T}(n) = \log n`.
+
+.. inlineav:: DivideAndConquerRecurrenceSimpleCON ss
+   :output: show
 
 Function ``binary`` is designed to find the (single) occurrence of
 :math:`K` and return its position. 
@@ -306,6 +326,11 @@ to maintaining a sorted array.
 Only in the context of the complete problem to be solved can we know
 whether the advantage outweighs the disadvantage.
 
+Summary Exercise
+----------------
+
 .. avembed:: Exercises/AlgAnal/AnalProgramSumm.html ka
 
 .. odsascript:: AV/Searching/binarySearchCON.js
+.. odsascript:: AV/Development/AlgAnal/SummationOneToNCON.js
+.. odsascript:: AV/Development/AlgAnal/SummationTwoPowerICON.js

@@ -10,8 +10,12 @@
 Algorithm Analysis Summary Exercises
 ====================================
 
-Here are some practice questions for this chapter.
+Summary Exercise: CS2
+---------------------
 
 .. avembed:: Exercises/AlgAnal/AlgAnalCS2114Summ.html ka
+
+Summary Exercise: CS3
+---------------------
 
 .. avembed:: Exercises/AlgAnal/AlgAnalSumm.html ka

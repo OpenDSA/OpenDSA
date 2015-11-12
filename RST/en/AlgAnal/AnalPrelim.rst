@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -8,15 +8,17 @@
    :satisfies: problems; algorithms; functions
    :topic: Algorithm Analysis
 
+.. odsalink:: AV/AlgAnal/ProblemAlgorithmCON.css
+
 Problems, Algorithms, and Programs
 ==================================
+
+Problems
+--------
 
 Programmers commonly deal with problems, algorithms, and
 computer programs.
 These are three distinct concepts.
-
-Problems
---------
 
 As your intuition would suggest, a :term:`problem` is
 a task to be performed.
@@ -209,4 +211,12 @@ in a programming language.
    language. So, here we may present the implemenation of bubble sort
    in C++ as an example of a program.
 
+.. inlineav:: ProblemAlgorithmCON ss
+   :output: show
+
+Summary Questions
+-----------------
+
 .. avembed:: Exercises/AlgAnal/AnalPrelimSumm.html ka 
+
+.. odsascript:: AV/AlgAnal/ProblemAlgorithmCON.js
