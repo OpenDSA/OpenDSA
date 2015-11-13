@@ -25,7 +25,13 @@
         "long_name": "Summations and Recurrence Relations",
         "exercises": {
 	  "LinearRecurrencesCON": {
-            "long_name": "Linear Recurrences Slideshow",
+            "long_name": "Linear Recurrences Slideshow (1)",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+	  "LinearRecurrencesNCON": {
+            "long_name": "Linear Recurrences Slideshow (n)",
             "required": false,
             "points": 0.0,
             "threshold": 1.0

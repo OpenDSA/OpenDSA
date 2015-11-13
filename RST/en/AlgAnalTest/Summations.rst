@@ -9,6 +9,7 @@
    :topic: Math Background
    
 .. odsalink:: AV/Background/LinearRecurrencesCON.css
+.. odsalink:: AV/Background/LinearRecurrencesNCON.css
 
 Summations and Recurrence Relations
 ===================================
@@ -267,5 +268,9 @@ to find closed-form solutions for recurrence relations.
 
 .. inlineav:: LinearRecurrencesCON ss
    :output: show
+   
+.. inlineav:: LinearRecurrencesNCON ss
+   :output: show
 	  
 .. odsascript:: AV/Background/LinearRecurrencesCON.js
+.. odsascript:: AV/Background/LinearRecurrencesNCON.js
