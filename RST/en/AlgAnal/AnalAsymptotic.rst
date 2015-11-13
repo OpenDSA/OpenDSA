@@ -272,11 +272,6 @@ for large :math:`n`.
 From now on, we will use these simplifying
 rules when discussing the cost for a program or algorithm.
 
-.. todo::
-   :type: Slideshow
-
-   A visualization that illustrates the meaning of upper bounds and the difference between it and worst cases. We need to emphasize that there is an upper bound to an algorithm in its best, average, and worst cases. We can use the example of sequencial search to illustrate this.
-
 .. inlineav:: UpperBoundCON ss
    :output: show
 
