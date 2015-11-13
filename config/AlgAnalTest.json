@@ -23,12 +23,6 @@
     "Mathematical Background": {
       "AlgAnalTest/Summations": {
         "long_name": "Summations and Recurrence Relations",
-	"sections": {
-	  "LinearRecurrences": {
-            "long_name": "Linear Recurrences Visualization",
-            "showhide": "hide"
-          }
-        },
         "exercises": {
 	  "LinearRecurrencesCON": {
             "long_name": "Linear Recurrences Slideshow",
