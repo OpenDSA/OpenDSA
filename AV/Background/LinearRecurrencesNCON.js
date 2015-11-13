@@ -114,7 +114,7 @@ $(document).ready(function () {
   //Slide 7
   av.umsg(interpret("Slide 7"));
   labelSet.push
-  (av.label("|--------------------------------------------------- $\\displaystyle\\sum_{i=1}^{n}i$ ---------------------------------------------------|", {"top": topAlign + 2*nodeHeight , "left": leftAlign + 0.5 * nodeWidth}));
+  (av.label("|--------------------------------------------------------- $\\displaystyle\\sum_{i=1}^{n}i$ ---------------------------------------------------------|", {"top": topAlign + 2*nodeHeight , "left": leftAlign + 0.5 * nodeWidth}));
   av.step();
 
   //Slide 8
