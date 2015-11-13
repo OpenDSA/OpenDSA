@@ -31,6 +31,9 @@ lib/khan-exercises/exercises/khan-site.html
 # Ignore Minified JS and CSS files
 lib/*-min.*
 
+# Ignore python packages src folder
+src
+
 # Ignore files used by JetBrains IDE's to store project settings.
 .idea
 
