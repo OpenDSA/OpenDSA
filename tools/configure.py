@@ -39,8 +39,6 @@ import re
 import subprocess
 import codecs
 import datetime
-import pprint
-import collections
 import threading
 import requests
 
@@ -401,7 +399,7 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
                         if long_name is not None and required is not None and points is not None and threshold is not None:
                             # print(str(section_couter).zfill(2)) + " " + long_name
                             # OpenDSA exercises will map to canvas assignments
-                            if showsection is not None and showsection == True:
+                            if showsection is None or (showsection is not None and showsection == True):
                                 results = assignments.create_assignment(
                                     request_ctx,
                                     course_id,
@@ -425,7 +423,7 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
                             section_couter += 1
                             no_exercise = 0
                 if no_exercise == 1:
-                    if showsection is not None and showsection == True:
+                    if showsection is None or (showsection is not None and showsection == True):
                         results = assignments.create_assignment(
                             request_ctx,
                             course_id,
@@ -479,7 +477,7 @@ def create_course(config):
 
     # load LMS config file
     # Throw an error if the specified LMS config files doesn't exist
-    LMS_config = config.config_file_path[:-5]+'_LMSconf.json'
+    LMS_config = config.config_file_path[:-5] + '_LMSconf.json'
     if not os.path.exists(LMS_config):
         print_err("ERROR: File %s doesn't exist\n" % LMS_config)
         sys.exit(1)

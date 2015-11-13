@@ -171,9 +171,6 @@ CS3114: min
 testLTI: min
 	python $(CONFIG_SCRIPT) config/testLTI.json $(opts)
 
-CS3114_rev: min
-	python $(CONFIG_SCRIPT) config/CS3114_rev.json $(opts)
-
 CS3: min
 	python $(CONFIG_SCRIPT) config/CS3.json $(opts)
 
