@@ -8,7 +8,7 @@
    :satisfies: best and worst case
    :topic: Algorithm Analysis
    
-.. odsalink:: AV/Development/AlgAnal/BestWorstAverageCON.css
+.. odsalink:: AV/AlgAnal/BestWorstAverageCON.css
 
 Best, Worst, and Average Cases
 ==============================
@@ -125,4 +125,4 @@ If not, then we must resort to worst-case analysis.
 .. inlineav:: BestWorstAverageCON ss
    :output: show
 
-.. odsascript:: AV/Development/AlgAnal/BestWorstAverageCON.js	  
+.. odsascript:: AV/AlgAnal/BestWorstAverageCON.js	  

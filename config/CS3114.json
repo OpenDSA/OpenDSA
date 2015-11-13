@@ -14,7 +14,7 @@
   "score_server": "https://ltitest.cs.vt.edu:8443",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
-  "suppress_todo": true,
+  "suppress_todo": false,
   "glob_exer_options": {
     "JXOP-debug": "true"
   },
@@ -103,6 +103,12 @@
         "exercises": {
 	  "LinearRecurrencesCON": {
             "long_name": "Linear Recurrences Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+	  "LinearRecurrencesNCON": {
+            "long_name": "Linear Recurrences Slideshow (n)",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
