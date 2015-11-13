@@ -9,7 +9,7 @@
    :requires: growth rate; best and worst case
    :topic: Algorithm Analysis
 
-.. odsalink:: AV/Development/AlgAnal/UpperBoundCON.css
+.. odsalink:: AV/AlgAnal/UpperBoundCON.css
 
 Asymptotic Analysis and Upper Bounds
 ====================================
@@ -285,4 +285,4 @@ rules when discussing the cost for a program or algorithm.
 
 .. avembed:: Exercises/AlgAnal/UpperBoundsSumm.html ka
 
-.. odsascript:: AV/Development/AlgAnal/UpperBoundCON.js
+.. odsascript:: AV/AlgAnal/UpperBoundCON.js
