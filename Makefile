@@ -168,8 +168,8 @@ CS2401: min
 CS3114: min
 	python $(CONFIG_SCRIPT) config/CS3114.json
 
-CS3114LTI: min
-	python $(CONFIG_SCRIPT) config/CS3114LTI.json $(opts)
+testLTI: min
+	python $(CONFIG_SCRIPT) config/testLTI.json $(opts)
 
 CS3114_rev: min
 	python $(CONFIG_SCRIPT) config/CS3114_rev.json $(opts)
