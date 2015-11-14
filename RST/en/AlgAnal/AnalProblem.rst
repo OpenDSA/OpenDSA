@@ -34,11 +34,6 @@ Now, consider the collection of all the graphs for all of the
 The worst case lower bound is the *least* of all the
 *highest* points on all the graphs.
 
-.. TODO::
-   :tag: Slideshow
-
-   Present a visualization of the previous paragraph
-
 .. inlineav:: AnalyzingProblemsCON ss
    :output: show
 

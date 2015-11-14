@@ -243,13 +243,6 @@
       },
       "AlgAnal/AnalProgram": {
         "long_name": "Calculating the Running Time of a Program",
-        "sections": {
-          "binsearchpro": {
-            "long_name": "Binary Search Proficiency Exercise",
-            "showhide": "none",
-            "remove": false
-          }
-        },
         "exercises": {
           "binarySearchCON": {
             "long_name": "Binary Search Algorithm Slideshow",
@@ -293,34 +286,34 @@
       "AlgAnal/AnalProblem": {
         "long_name": "Analyzing Problems",
         "exercises": {
-          "AnalProblemSumm": {
-            "long_name": "Problem Analysis Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5
-          },
           "AnalyzingProblemsCON": {
             "long_name": "Worst Case Lower Bound Visualization",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
+          },
+          "AnalProblemSumm": {
+            "long_name": "Problem Analysis Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
           }
         }
       },
       "AlgAnal/AnalMisunderstanding": {
         "long_name": "Common Misunderstandings",
         "exercises": {
-          "MisSumm": {
-            "long_name": "Common Misconceptions Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 4
-          },
           "MisunderstandingsGraphCON": {
             "long_name": "Example's graph Visualization",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
+          },
+          "MisSumm": {
+            "long_name": "Common Misconceptions Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 4
           }
         }
       },
@@ -341,16 +334,6 @@
       },
       "AlgAnal/AlgAnalSumm": {
         "long_name": "Algorithm Analysis Summary Exercises",
-        "sections": {
-          "upperbound": {
-            "long_name": "Chapter Summary Questions",
-            "remove": true
-          },
-          "allbound": {
-            "long_name": "Chapter Summary Questions",
-            "showhide": "none"
-          }
-        },
         "exercises": {
           "AlgAnalCS2114Summ": {
             "long_name": "Algorithm Analysis Summary Questions",
@@ -423,7 +406,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "AlistInsertPRO": {
+          "alistInsertPRO": {
             "long_name": "Array-based List Insert Exercise",
             "required": true,
             "points": 1,
@@ -435,13 +418,13 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "AlistRemovePRO": {
+          "alistDeletePRO": {
             "long_name": "Array-based List Remove Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "ALSumm": {
+          "ArryLstSumm": {
             "long_name": "Array-based List Summary",
             "required": true,
             "points": 1,
@@ -491,7 +474,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "LlistInsertPRO": {
+          "llistInsertPRO": {
             "long_name": "Linked List Insert Exercise",
             "required": true,
             "points": 1,
@@ -503,7 +486,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "LlistRemovePRO": {
+          "llistRemovePRO": {
             "long_name": "Linked List Remove Exercise",
             "required": true,
             "points": 2,
@@ -526,7 +509,7 @@
             "points": 1,
             "threshold": 3
           },
-          "LLSumm": {
+          "LstLnkdSumm": {
             "long_name": "Linked List Summary Exercise",
             "required": true,
             "points": 2,
@@ -585,7 +568,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "ListSumm": {
+          "LstSumm": {
             "long_name": "List Summary Questions",
             "required": true,
             "points": 1,
@@ -620,13 +603,13 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "AstackPushPRO": {
+          "astackPushPRO": {
             "long_name": "Array-based Stack Push Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "AstackPopPRO": {
+          "astackPopPRO": {
             "long_name": "Array-based Stack Pop Exercise",
             "required": true,
             "points": 1,
@@ -650,13 +633,13 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "LstackPushPRO": {
+          "lstackPushPRO": {
             "long_name": "Linked Stack Push Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "LstackPopPRO": {
+          "lstackPopPRO": {
             "long_name": "Linked Stack Pop Exercise",
             "required": true,
             "points": 1,
@@ -719,13 +702,13 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "AqueueEnqueuePRO": {
+          "aqueueEnqueuePRO": {
             "long_name": "Array-based Queue Enqueue Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "AqueueDequeuePRO": {
+          "aqueueDequeuePRO": {
             "long_name": "Array-based Queue Dequeue Exercise",
             "required": true,
             "points": 1,
@@ -754,19 +737,19 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "LqueueEnqueuePRO": {
+          "lqueueEnqueuePRO": {
             "long_name": "Linked Queue Enqueue Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "LqueueDequeuePRO": {
+          "lqueueDequeuePRO": {
             "long_name": "Linked Queue Dequeue Exercise",
             "required": true,
             "points": 1,
             "threshold": 5
           },
-          "StackQSumm": {
+          "StckQSumm": {
             "long_name": "Stack/Queue Summary Exercise",
             "required": true,
             "points": 1,
@@ -783,7 +766,7 @@
             "points": 2,
             "threshold": 5
           },
-          "ListChapterSumm": {
+          "LstChptrSumm": {
             "long_name": "List Chapter Summary",
             "required": true,
             "points": 2,
@@ -1110,11 +1093,6 @@
           }
         }
       },
-      "RecurTutor2/BSTCheck": {
-        "long_name": "BSTcheck Function",
-        "dispModComp": true,
-        "exercises": {}
-      },
       "Binary/CompleteTree": {
         "long_name": "Array Implementation for Complete Trees",
         "exercises": {
@@ -1253,18 +1231,6 @@
         "long_name": "Proof for Huffman Coding",
         "dispModComp": true,
         "exercises": {}
-      },
-      "Binary/BinaryChapSumm": {
-        "long_name": "Binary Tree Chapter Summary",
-        "exercises": {
-          "BinaryChapSumm": {
-            "long_name": "BinaryChapSumm",
-            "showhide": "show",
-            "required": true,
-            "points": 2.0,
-            "threshold": 10
-          }
-        }
       }
     },
     "Sorting": {
@@ -2074,13 +2040,13 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "HashBucketPRO": {
+          "HashingBucketPRO": {
             "long_name": "Bucket Hashing Proficiency Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 5
           },
-          "HashBucket2PRO": {
+          "HashingBucket2PRO": {
             "long_name": "Alternate Bucket Hashing Proficiency Exercise",
             "required": true,
             "points": 1.0,
@@ -2103,7 +2069,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "HashLinearPPRO": {
+          "HashingLinearPPRO": {
             "long_name": "Linear Probing Proficiency Exercise",
             "required": true,
             "points": 1.0,
@@ -2126,7 +2092,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "HashLinearStepPPRO": {
+          "HashingLinearStepPPRO": {
             "long_name": "Linear Probing By Steps Proficiency Exercise",
             "required": true,
             "points": 2.0,
@@ -2138,7 +2104,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "HashPseudoRandomPPRO": {
+          "HashingPseudoRandomPPRO": {
             "long_name": "Pseudo-Random Probing Proficiency Exercise",
             "required": true,
             "points": 2.0,
@@ -2156,7 +2122,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "HashQuadraticPPRO": {
+          "HashingQuadraticPPRO": {
             "long_name": "Quadratic Probing Proficiency Exercise",
             "required": true,
             "points": 2.0,
@@ -2180,7 +2146,7 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "HashDoublePPRO": {
+          "HashingDoublePPRO": {
             "long_name": "Double Hashing Proficiency Exercise",
             "required": true,
             "points": 2.0,
@@ -2431,17 +2397,6 @@
             "exer_options": {
               "JXOP-feedback": "continuous"
             }
-          }
-        }
-      },
-      "Indexing/IndexingSumm": {
-        "long_name": "Indexing Chapter Summary",
-        "exercises": {
-          "IndexChoice": {
-            "long_name": "Choosing an Index",
-            "required": true,
-            "points": 2,
-            "threshold": 5
           }
         }
       }

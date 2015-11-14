@@ -10,8 +10,8 @@
    :topic: Algorithm Analysis
 
 .. odsalink:: AV/Searching/binarySearchCON.css
-.. odsalink:: AV/Development/AlgAnal/SummationOneToNCON.css
-.. odsalink:: AV/Development/AlgAnal/SummationTwoPowerICON.css
+.. odsalink:: AV/AlgAnal/SummationOneToNCON.css
+.. odsalink:: AV/AlgAnal/SummationTwoPowerICON.css
 
 Calculating Program Running Time
 ================================
@@ -318,5 +318,5 @@ whether the advantage outweighs the disadvantage.
 .. avembed:: Exercises/AlgAnal/AnalProgramSumm.html ka
 
 .. odsascript:: AV/Searching/binarySearchCON.js
-.. odsascript:: AV/Development/AlgAnal/SummationOneToNCON.js
-.. odsascript:: AV/Development/AlgAnal/SummationTwoPowerICON.js
+.. odsascript:: AV/AlgAnal/SummationOneToNCON.js
+.. odsascript:: AV/AlgAnal/SummationTwoPowerICON.js
