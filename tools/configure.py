@@ -508,10 +508,14 @@ def create_course(config):
     # get course_id
     results = courses.list_your_courses(request_ctx,
                                         'total_scores')
-    # TODO: Proper error message when the course is not created yet.
+    course_id = None
     for i, course in enumerate(results.json()):
         if course.get("course_code") == course_code:
             course_id = course.get("id")
+
+    if course_id is None:
+        print_err('Course ' +course_code+' was not found in '+ config.target_LMS + " LMS " + config.LMS_url)
+        sys.exit(1)
 
     # Reset course
     results = courses.reset_content(
