@@ -11,14 +11,13 @@
 
 Writing JUnit Tests
 ===================
+
 We have reviewed good design for test code and how to desgin modular and
 meaningful test code. This tutorial will show a basic series of tests on a
 binary search tree.
 
-Before You Start
-----------------
-Be sure you have familiarized yourself with the basics of the
-Junit/student.TestCase classes.
+Before you start, be sure you have familiarized yourself with the basics of the
+``Junit/student.TestCase classes``.
 
 *For this exercise I will be using a BST written by a V.S. Adamchik*
 

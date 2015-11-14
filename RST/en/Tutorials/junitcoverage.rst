@@ -11,6 +11,7 @@
 
 Code Coverage In JUnit
 ======================
+
 One of the most useful features that the webcat grading system provides is
 information of total code coverage. Thankfully Eclipse has a couple of plugins
 that offer similar functionality so when you write your code you will not be
@@ -18,6 +19,7 @@ dependent on webcat solely.
 
 Getting Started
 ---------------
+
 Step 1: Open Eclipse and select Help->Install New Software
 Step 2: A new window will appear similar to the following figure select the Add
 button.
@@ -38,6 +40,7 @@ through the installation screens.
 
 Using EclEmma
 -------------
+
 After installing the plugin begin writing test code. After completion of the
 test code select the button selected in red in the below image.
 
@@ -82,5 +85,3 @@ similar to below will appear providing information.
    :alt: Code coverage of each method in the BST class
 
    Code Coverage Of Each Method In The BST Class
-
-

@@ -13,9 +13,9 @@ Algorithm Analysis Summary Exercises
 Summary Exercise: CS2
 ---------------------
 
-.. avembed:: Exercises/AlgAnal/AlgAnalCS2114Summ.html ka
+.. avembed:: Exercises/AlgAnal/AlgAnalCS2Summ.html ka
 
 Summary Exercise: CS3
 ---------------------
 
-.. avembed:: Exercises/AlgAnal/AlgAnalSumm.html ka
+.. avembed:: Exercises/AlgAnal/AlgAnalCS3Summ.html ka

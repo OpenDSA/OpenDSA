@@ -12,14 +12,16 @@
 ========================
 Common Debugging Methods
 ========================
-When tracking down bugs in your code there are a number of methods that
+
+When tracking down bugs in your code, there are a number of methods that
 programmers can make use of. These methods all have different strengths, but
 the main goal of each is to help narrow down where the bugs exist and why they
 cause problems.
 
 
-Method 1: Print Debugging
-=========================
+Print Debugging
+~~~~~~~~~~~~~~~
+
 I frequently use this method to help me track down bugs in my code. The main
 idea is simple. Print out as much information as poissible in every stage of
 your program. By doing so we can see at every stage of the program how our
@@ -32,9 +34,11 @@ it will have to be removed later on
 2. Depending on how much data the program prints, it may be flooded with so much
 information that it becomes difficult to gain any meaning from it
 
-Method 2: Rubber Duck Debugging
-===============================
-Rubber Duck Debugging has become very popular through the programming industry.
+
+Rubber Duck Debugging
+~~~~~~~~~~~~~~~~~~~~~
+
+Rubber Duck Debugging has become popular through the programming industry.
 Rubber Duck Debugging focuses on making the programmer carefully examine each
 line of their code and not just assume that it does what they expect, but explain
 how it works. In order to use Rubber Duck Debugging a programmer should make use
@@ -46,8 +50,9 @@ be sure to be thorough in your explanations and to consider every possible case.
 For an example of Rubber Duck Debugging read this
 `blog <http://blog.codinghorror.com/rubber-duck-problem-solving/>`__.
 
-Method 3: Wolf Fence Debugging
-==============================
+Wolf Fence Debugging
+~~~~~~~~~~~~~~~~~~~~
+
 Imagine there is only one wolf in Alaska. How would you find him? The most
 effective way would be to fence Alaska in half and wait for the wolf to "howl."
 When you know which half has the wolf split it and again wait.
@@ -58,8 +63,10 @@ the problem has been found. The method is particularly useful when used in
 conjunction with Exceptions as the stack trace can show each line of code called
 leading to the actual Exception being thrown.
 
+
 Print Debugging vs Source Debugging
-===================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Choosing between source code debugging and print based debugging can be difficult
 at times. There are many different advantages and disadvantages to each method,
 however, in my personal experience I find it easiest to use print based

@@ -12,6 +12,7 @@
 ==========================================
 Reading In Input (From Files Or Otherwise)
 ==========================================
+
 The Scanner Class
 -----------------
 Java has an excellent class for reading in text. The

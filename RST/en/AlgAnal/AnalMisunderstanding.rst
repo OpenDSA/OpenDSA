@@ -153,10 +153,4 @@ worst, and average cases as the input size grows.
 
 .. avembed:: Exercises/AlgAnal/MisSumm.html ka
 
-.. todo::
-   :type: Slideshow
-
-   We need to draw the graphs for the previous example and make the
-   discussion as a series of slides.
-
 .. odsascript:: AV/AlgAnal/MisunderstandingsGraphCON.js

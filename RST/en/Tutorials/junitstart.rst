@@ -11,10 +11,13 @@
 
 JUnit Testing And You
 =====================
+
 *To err is human, to correct is divine.*
+
 
 Getting Started
 ---------------
+
 When writing code we often will make mistakes. To develop code with no bugs
 would be akin to having the power of a modern day God! As such it is extremely
 important that we test our code frequently and often in order to help spot, fix
@@ -31,6 +34,7 @@ is an excellent quick start to JUnit functionality.
 
 Design Considerations
 ---------------------
+
 There are a few different approaches to testing code. The approach most classes
 at Virginia Tech teach is code coverage. The code coverage approach to testing
 is fairly easy to understand. If our test cases hit every line of code and
@@ -54,6 +58,7 @@ seperate test methods: testJump and testWalk.
 
 Meaningful Tests
 ----------------
+
 When writing your test cases it is important not to just run the code with
 random tests. All the tests should be designed to test common runtime conditions
 as well as possible edge conditions that may change the behavior. Additionally
@@ -64,6 +69,7 @@ Remember quality over quantity!
 
 More Information
 ----------------
+
 For more information this
 `blog <http://openmymind.net/2011/2/23/Foundations-of-Programming-2-Chapter-5-Effective-T/>`__
 is an excellent resource to read and learn from.
