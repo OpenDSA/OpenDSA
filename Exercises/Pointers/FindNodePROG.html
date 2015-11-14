@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html data-require="codemirror blockUI">
   <head>
-    <title> Recursion Programming Exercise: Largest </title>
+    <title> Pointers Find Node Programming Exercise</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
-      #RecCLargestPROG .CodeMirror {
-        height: 200px;
+      #FindNodePROG .CodeMirror {
+      height: 200px;
       }
     </style>
   </head>
 
-  <body data-height="750" data-width="950">
+  <body  data-height="650" data-width="950">
     <div class="exercise">
       <div class="vars">
         <var id="config">
@@ -19,20 +19,14 @@
         </var>
       </div>
       <div class="problems">
-        <div id="RecCLargestPROGp"> <!-- Supresses answer box -->
-          <p class="problem">Write the missing base case
-            for function "largest" such that it finds the
-            largest number in array "numbers". Note that
-            when "largest" is first called, "index" is 0.<br/>
-
+        <div id="NodeFindPROGp"> <!-- Supresses answer box -->
+          <p class="problem">Given the following function header,
+            write the code to find a node in a linked list with the
+            value K.<br />
             <textarea id="codeTextarea" name="codeTextarea">
-int largest(int[] numbers, int index) {
-  if <<Missing base case>> {
-    return numbers[index];
-  } else if (numbers[index] > numbers[index+1]) {
-     numbers[index+1] = numbers[index];
-  }
-  return largest(numbers, index + 1);
+int findNode(int K) {
+
+
 }</textarea>
           </p>
           <div class="question"></div>
@@ -43,13 +37,14 @@ int largest(int[] numbers, int index) {
                 console.log(guess[0]);
                 window.codeValue = guess[0];
                 window.progexType= "RecurTutor";
-                window.summexName= "RecCLargestPROG";
+                window.summexName= "FindNodePROG";
               } else {
                 return "";
               }
             </div>
           </div>
           <div class="hints">
+            <p>Do sequential search moveing through the nodes one at a time.</p>
           </div>
         </div>
       </div>
