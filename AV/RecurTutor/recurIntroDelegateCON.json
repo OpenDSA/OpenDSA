@@ -1,6 +1,13 @@
 {
   "translations" :{
     "en": {
+      "av_c1": "You want to multiply two numbers x and y.",
+      "av_c2": "You would like to delegate this task to some friend. But your friend is likely to do the same thing that you do. If you just delegate the entire task to your friend, then your friend will do the same, and so on, and nothing will ever get done. So instead, you will ask your friend to do a problem that is a little bit easier.",
+      "av_c3": "If the numbers are simple enough, then you will do the task on your own.",
+      "av_c4": "Otherwise, you will simplify and delegate this task to a friend.",
+      "av_c5": "Your friend will do a smaller version of the problem by multiplying x-1 and y. When he returns the result back, you will add a y to that result to complete your task.",
+      "av_c6": "When you delegate the task to your friend. You are not worried how he is going to do it. You are just waiting for the answer.",
+      "av_c7": "You will simply add y to the result and you will be done with your task!"
     }
   },
   "code" : {

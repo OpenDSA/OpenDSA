@@ -4,6 +4,7 @@
 $(document).ready(function() {
   "use strict";
   var av_name = "recurIntroDetailsCON";
+  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
   // Load the config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter,       // get the interpreter
@@ -15,29 +16,29 @@ $(document).ready(function() {
   var label = av.label("x*y?", {left: 0, top: 170});
 
   // Slide 1
-  av.umsg("You want to multiply two numbers x and y.");
+  av.umsg(interpret("av_c1"));
   pseudo.highlight(1);
   av.displayInit();
 
   // Slide 2
-  av.umsg("If the numbers are simple enough, then you will do the task on your own.");
+  av.umsg(interpret("av_c2"));
   pseudo.highlight([2, 3]);
   pseudo.unhighlight(1);
   av.step();
 
   // Slide 3
-  av.umsg("Otherwise, you will simplify and delegate this task to a friend.");
+  av.umsg(interpret("av_c3"));
   pseudo.unhighlight([2, 3]);
   pseudo.highlight(5);
   av.step();
 
   // Slide 4
-  av.umsg("Your friend will do a smaller version of the problem by multiplying x-1 and y. When he returns the result back, you will add a y to that result to complete your task.");
+  av.umsg(interpret("av_c4"));
   pseudo.unhighlight(5);
   av.step();
 
   // Slide 5
-  av.umsg("Your friend will behave exactly as you do. If the problem is simple, he will just solve the problem. But if the problem is too hard, then he will ask another friend to help with a smaller version of the problem. The second friend will multiply $x-2$ by $y$.");
+  av.umsg(interpret("av_c5"));
   var Pointer1 = av.g.line(80, 210, 130, 210,
                    {"arrow-end": "classic-wide-long", opacity: 0, stroke: "black", "stroke-width": 5});
   Pointer1.show();
@@ -46,7 +47,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 6
-  av.umsg("Who will do exactly the same with a third friend.");
+  av.umsg(interpret("av_c6"));
   var Pointer2 = av.g.line(200, 210, 250, 210,
                    {"arrow-end": "classic-wide-long", opacity: 0, stroke: "black", "stroke-width": 5});
   Pointer2.show();
@@ -55,7 +56,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 7
-  av.umsg("The problem gets smaller as it goes from one friend to another. Eventually it reaches the <b> base case</b>, where $x$ is $1$ for some friend. This friend will find the task simple enough to be done on his own without doing any delegation.");
+  av.umsg(interpret("av_c7"));
   pseudo.highlight(2);
   var Pointer3 = av.g.line(320, 210, 370, 210,
                    {"arrow-end": "classic-wide-long", opacity: 0, stroke: "black", "stroke-width": 5});
@@ -71,7 +72,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 8
-  av.umsg("That friend will send back the result of multiplying $1$ and $y$. Then he will return back the result to the previous friend.");
+  av.umsg(interpret("av_c8"));
   pseudo.unhighlight(2);
   pseudo.highlight(3);
   // All the way back
@@ -94,7 +95,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 9
-  av.umsg("This process will continue all the way back until the result of $x-2$ multiplied by $y$ is back to your friend.");
+  av.umsg(interpret("av_c9"));
   pseudo.unhighlight(3);
   pseudo.highlight(5);
   dots3 = av.g.circle(470, 210, 2);
@@ -108,7 +109,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 10
-  av.umsg("Your friend will add $y$ and send you the result of multiplying $x-1$  by $y$.");
+  av.umsg(interpret("av_c10"));
   Pointer2 = av.g.line(250, 210, 200, 210,
                {"arrow-end": "classic-wide-long", opacity: 0, stroke: "black", "stroke-width": 5});
   Pointer2.show();
@@ -117,7 +118,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 11
-  av.umsg("When the result is back to you, you will simply add $y$ to the result. Then you will be done with your task!");
+  av.umsg(interpret("av_c11"));
   Pointer1 = av.g.line(130, 210, 80, 210,
                {"arrow-end": "classic-wide-long", opacity: 0, stroke: "black", "stroke-width": 5});
   Pointer1.show();
