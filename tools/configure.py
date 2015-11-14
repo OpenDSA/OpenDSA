@@ -52,6 +52,8 @@ from urlparse import urlparse
 from canvas_sdk.methods import accounts, courses, external_tools, modules, assignments
 from canvas_sdk import RequestContext
 
+requests.packages.urllib3.disable_warnings()
+
 # List of exercises encountered in RST files that do not appear in the
 # configuration file
 missing_exercises = []
@@ -510,6 +512,13 @@ def create_course(config):
     for i, course in enumerate(results.json()):
         if course.get("course_code") == course_code:
             course_id = course.get("id")
+
+    # Reset course
+    results = courses.reset_content(
+        request_ctx, course_id)
+
+    # get new course_ud, becasue canvas change it after course reset
+    course_id = results.json()["id"]
 
     # save course_id
     config['course_id'] = course_id
