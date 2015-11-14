@@ -1,13 +1,13 @@
-#LinearRecurrencesCON {
+#LinearRecurrencesNCON {
   width: 800px;
   height: 400px;
 }
-#LinearRecurrencesCON .jsavline {
+#LinearRecurrencesNCON .jsavline {
   width:800px;
   height:75px;
 }
 
-#LinearRecurrencesCON .jsavgraph .jsavnode {
+#LinearRecurrencesNCON .jsavgraph .jsavnode {
   line-height: 40px !important;
   min-width: 40px !important;
   max-width: 40px !important;

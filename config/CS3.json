@@ -155,7 +155,20 @@
         "exercises": {},
         "sections": {
           "Summations": {},
-          "Recurrence Relations": {}
+          "Recurrence Relations": {
+	    "LinearRecurrencesCON": {
+              "long_name": "Linear Recurrences Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+	    "LinearRecurrencesNCON": {
+              "long_name": "Linear Recurrences Slideshow (n)",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
         }
       },
       "Background/Proofs": {

@@ -156,7 +156,4 @@ result of the computation is always positive, or else add the hash
 table size to the result of the modulo function when that result is
 negative.
 
-Notes
------
-
 .. [#] The symbol ":math:`\approx`" means "approximately equal."
