@@ -105,6 +105,9 @@ CS3in: min
 Everything: min
 	python $(CONFIG_SCRIPT) config/Everything.json $(opts)
 
+EverythingLMS: min
+	python $(CONFIG_SCRIPT) config/Everything.json -c True
+
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
 	@cp lib/odsaUtils.js lib/odsaUtils-min.js

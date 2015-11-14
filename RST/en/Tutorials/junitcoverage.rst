@@ -12,13 +12,13 @@
 Code Coverage In JUnit
 ======================
 
+Getting Started
+---------------
+
 One of the most useful features that the webcat grading system provides is
 information of total code coverage. Thankfully Eclipse has a couple of plugins
 that offer similar functionality so when you write your code you will not be
 dependent on webcat solely.
-
-Getting Started
----------------
 
 Step 1: Open Eclipse and select Help->Install New Software
 Step 2: A new window will appear similar to the following figure select the Add

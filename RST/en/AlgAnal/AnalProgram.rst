@@ -9,9 +9,11 @@
    :satisfies: analyzing programs
    :topic: Algorithm Analysis
 
-.. odsalink:: AV/Searching/binarySearchCON.css
 .. odsalink:: AV/AlgAnal/SummationOneToNCON.css
 .. odsalink:: AV/AlgAnal/SummationTwoPowerICON.css
+.. odsalink:: AV/AlgAnal/LinearRecurrenceSimpleCON.css
+.. odsalink:: AV/Searching/binarySearchCON.css
+.. odsalink:: AV/AlgAnal/DivideAndConquerRecurrenceSimpleCON.css
 
 Calculating Program Running Time
 ================================
@@ -331,6 +333,9 @@ Summary Exercise
 
 .. avembed:: Exercises/AlgAnal/AnalProgramSumm.html ka
 
-.. odsascript:: AV/Searching/binarySearchCON.js
 .. odsascript:: AV/AlgAnal/SummationOneToNCON.js
 .. odsascript:: AV/AlgAnal/SummationTwoPowerICON.js
+.. odsascript:: AV/AlgAnal/LinearRecurrenceSimpleCON.js
+.. odsascript:: AV/Searching/binarySearchCON.js
+.. odsascript:: AV/AlgAnal/DivideAndConquerRecurrenceSimpleCON.js
+

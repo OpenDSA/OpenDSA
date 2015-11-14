@@ -139,8 +139,8 @@ case and 1 in the worst case).
        behavior of algorithms.
 
 
-:math:`\Theta` Notation
------------------------
+Theta Notation
+--------------
 
 The definitions for big-Oh and :math:`\Omega` give us ways to
 describe the upper bound for an algorithm (if we can find an equation
@@ -231,17 +231,6 @@ If the limit goes to some constant other than zero, then
 
    because :math:`n` grows faster than :math:`2\log n`.
    Thus, :math:`n^2` is in :math:`\Omega(2n\log n)`.
-
-.. todo::
-   :type: Slideshow
-
-   A visualization that illustrates the meaning of lower bounds, and
-   tight bounds and the difference between them and best, and average
-   cases respectiely. This visualization here should be similar to the
-   one for upper bounds. We may also think of presenting this as
-   function plots in which the running time of the algorithm is
-   plotted against its upper and lower bounds.
-
 
 .. inlineav:: LowerBoundCON ss
    :output: show

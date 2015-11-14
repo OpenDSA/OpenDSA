@@ -12,11 +12,11 @@
 JUnit Testing And You
 =====================
 
-*To err is human, to correct is divine.*
-
-
 Getting Started
 ---------------
+
+*To err is human, to correct is divine.*
+
 
 When writing code we often will make mistakes. To develop code with no bugs
 would be akin to having the power of a modern day God! As such it is extremely

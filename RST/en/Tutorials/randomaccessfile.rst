@@ -12,6 +12,9 @@
 Random Access Files In Java
 ===========================
 
+Understanding File I/O
+----------------------
+
 In earlier tutorials we saw how we can use Java's scanner class to read sequential
 text files. Scanners are great for reading files, but we can take a
 step farther out and conceptualize our data even more abstractly, instead of
@@ -21,9 +24,6 @@ we can store. Additionally, RandomAccessFiles, allow reading and writing anywher
 withing the file, jumping to any legal location within the file itself.
 Before reading this tutorial be sure to check the RandomAccessFile API found
 `here <https://docs.oracle.com/javase/7/docs/api/java/io/RandomAccessFile.html>`__.
-
-Understanding File I/O
-----------------------
 
 Before getting started using the RandomAccessFile class, be sure you understand
 the following concepts.

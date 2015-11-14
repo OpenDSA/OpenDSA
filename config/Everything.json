@@ -86,7 +86,6 @@
               "long_name": "Terminal",
               "required": false,
               "points": 0,
-              "showhide": "none",
               "threshold": 1.0
             }
           }
@@ -254,8 +253,7 @@
               "long_name": "Find Node Exercise",
               "required": true,
               "points": 1.0,
-              "threshold": 3,
-              "showhide": "Show"
+              "threshold": 3
             }
           }
         }
@@ -323,7 +321,20 @@
         "exercises": {},
         "sections": {
           "Summations": {},
-          "Recurrence Relations": {}
+          "Recurrence Relations": {
+	    "LinearRecurrencesCON": {
+              "long_name": "Linear Recurrences Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+	    "LinearRecurrencesNCON": {
+              "long_name": "Linear Recurrences Slideshow (n)",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
         }
       },
       "Background/Proofs": {
@@ -376,7 +387,8 @@
         "sections": {
           "Problems": {},
           "Algorithms": {},
-          "Programs": {
+          "Programs": {},
+          "Summary": {
             "ProblemAlgorithmCON": {
               "long_name": "Problem, Algorithm, and Program definitions Slideshow",
               "required": false,
@@ -459,9 +471,7 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Summary Exercise": {
+            },
             "UpperBoundsSumm": {
               "long_name": "Asymptotic Analysis and Upper Bounds Exercise",
               "required": true,
@@ -476,7 +486,7 @@
         "exercises": {},
         "sections": {
           "Lower Bounds": {},
-          "$\\Theta$ Notation": {},
+          ":math:`\\Theta` Notation": {},
           "Classifying Functions": {
             "LowerBoundCON": {
               "long_name": "Lower Bounds visualization",
@@ -610,6 +620,7 @@
         "exercises": {},
         "sections": {
           "Summary Exercise: CS2": {
+            "showsection": true,
             "AlgAnalCS2114Summ": {
               "long_name": "Algorithm Analysis Summary Questions",
               "required": false,
@@ -618,6 +629,7 @@
             }
           },
           "Summary Exercise: CS3": {
+            "showsection": true,
             "AlgAnalSumm": {
               "long_name": "Algorithm Analysis Summary Questions",
               "required": true,

@@ -275,6 +275,9 @@ for large :math:`n`.
 From now on, we will use these simplifying
 rules when discussing the cost for a program or algorithm.
 
+Summary
+-------
+
 .. inlineav:: UpperBoundCON ss
    :output: show
 
