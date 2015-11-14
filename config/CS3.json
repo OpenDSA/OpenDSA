@@ -309,19 +309,19 @@
           "Lower Bounds": {},
           ":math:`\\Theta` Notation": {},
           "Classifying Functions": {
-            "LowerThetaSumm": {
-              "long_name": "Lower Bounds and Theta Notation Exercise",
-              "required": true,
-              "points": 2.0,
-              "threshold": 5
-            }
-          },
-          "Summary Exercise": {
             "LowerBoundCON": {
               "long_name": "Lower Bounds visualization",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
+            }
+          },
+          "Summary Exercise": {
+            "LowerThetaSumm": {
+              "long_name": "Lower Bounds and Theta Notation Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 5
             }
           }
         }

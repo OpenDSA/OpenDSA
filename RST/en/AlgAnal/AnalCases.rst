@@ -8,7 +8,7 @@
    :satisfies: best and worst case
    :topic: Algorithm Analysis
    
-.. odsalink:: AV/Development/AlgAnal/BestWorstAverageCON.css
+.. odsalink:: AV/AlgAnal/BestWorstAverageCON.css
 
 Best, Worst, and Average Cases
 ==============================
@@ -120,12 +120,7 @@ Otherwise, we often desire an average-case analysis if we know enough
 about the distribution of our input to compute the average case.
 If not, then we must resort to worst-case analysis.
 
-.. todo::
-   :type: Slideshow
-
-   A visualization to illustrate the difference between best, average, and worst cases. We may consider the problem of searching and the sequencial search algorithm. A random array of size $n$ is generated to represent a problem instance and then the best case occurs when the target is in the first position, the worst case occurs when the target is in the last position, and the average case occurs when the target is near the middle of the array.
-
 .. inlineav:: BestWorstAverageCON ss
    :output: show
 
-.. odsascript:: AV/Development/AlgAnal/BestWorstAverageCON.js	  
+.. odsascript:: AV/AlgAnal/BestWorstAverageCON.js	  

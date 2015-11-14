@@ -71,9 +71,9 @@ in a ``:math:`` inline directive.
 This will be converted to appropriate math layout in the resulting
 HTML file.
 Note that due to various interactions between reStructuredText and
-MathJax (which does the LaTeX conversion within an HTML page, you have
-to use a double backslash for escaping the dollar sign symbol, such
-as::
+MathJax (which does the LaTeX conversion within an HTML page),
+you have to use a double backslash for escaping the dollar sign
+symbol, such as::
 
    This costs \\$5.00.
 
@@ -116,6 +116,9 @@ manipulating your code snippets within an AV.
 See the JSAV manual for details.
 Within a module, code snippets are meant to be embedded from a
 sourcecode file using the ``codeinclude`` directive.
+The default coding language(s) used by a textbook instance is
+controlled by the ``code_lang`` setting in the corresponding OpenDSA
+:ref:`configuration <Configuration>` file.
 
 The OpenDSA framework and configuration support makes it as easy as
 possible to be able to compile book instances with code snippets from
@@ -123,7 +126,7 @@ your desired programming language(s), assuming that the code snippets
 have been provided by a content developer.
 The most important principle for managing code snippets is that they
 should be taken from working programs that can properly support
-testing of the code that you included into your modules.
+testing of the code that you include into your modules.
 
 All such sourcecode should appear in the ``SourceCode`` directory
 within OpenDSA, with each coding language having its own

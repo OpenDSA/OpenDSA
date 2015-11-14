@@ -1,5 +1,5 @@
 {
-  "translations": {
+  "translations" :{
     "en": {
       "av_c1": "You want to multiply two numbers x and y.",
       "av_c2": "You would like to delegate this task to some friend. But your friend is likely to do the same thing that you do. If you just delegate the entire task to your friend, then your friend will do the same, and so on, and nothing will ever get done. So instead, you will ask your friend to do a problem that is a little bit easier.",
@@ -10,11 +10,12 @@
       "av_c7": "You will simply add y to the result and you will be done with your task!"
     }
   },
-  "code": {
+  "code" : {
     "processing": {
-      "url": "OpenDSA/SourceCode/Java/RecurTutor/Recmultiply.java",
+      "url": "../../../SourceCode/Java/RecurTutor/Recmultiply.java",
       "lineNumbers": false,
-      "tags": {}
+      "tags": {
+      }
     }
   }
 }

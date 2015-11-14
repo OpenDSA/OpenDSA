@@ -9,6 +9,7 @@
    :topic: Math Background
 
 .. odsalink:: AV/Background/LinearRecurrencesCON.css
+.. odsalink:: AV/Background/LinearRecurrencesNCON.css
 
 Summations and Recurrence Relations
 ===================================
@@ -249,6 +250,9 @@ definition.
    that this is the correct closed form solution, we should use an
    :ref:`induction proof <FactRecurProof>` to complete the process.
 
+.. inlineav:: LinearRecurrencesCON ss
+   :output: show
+   
 .. topic:: Example
 
    A slightly more complicated recurrence is
@@ -280,10 +284,11 @@ definition.
    This is equivalent to the summation :math:`\sum_{i=1}^n i`,
    for which we already know the closed-form solution.
 
+.. inlineav:: LinearRecurrencesNCON ss
+   :output: show
+	  
 There are many more techniques to find closed-form solutions for
 recurrence relations.
 
-.. inlineav:: LinearRecurrencesCON ss
-   :output: show
-	  
 .. odsascript:: AV/Background/LinearRecurrencesCON.js
+.. odsascript:: AV/Background/LinearRecurrencesNCON.js
