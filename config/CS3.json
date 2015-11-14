@@ -208,7 +208,8 @@
         "sections": {
           "Problems": {},
           "Algorithms": {},
-          "Programs": {
+          "Programs": {},
+          "Summary": {
             "ProblemAlgorithmCON": {
               "long_name": "Problem, Algorithm, and Program definitions Slideshow",
               "required": false,
@@ -291,9 +292,7 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Summary Exercise": {
+            },
             "UpperBoundsSumm": {
               "long_name": "Asymptotic Analysis and Upper Bounds Exercise",
               "required": true,
@@ -308,7 +307,7 @@
         "exercises": {},
         "sections": {
           "Lower Bounds": {},
-          "$\\Theta$ Notation": {},
+          ":math:`\\Theta` Notation": {},
           "Classifying Functions": {
             "LowerThetaSumm": {
               "long_name": "Lower Bounds and Theta Notation Exercise",

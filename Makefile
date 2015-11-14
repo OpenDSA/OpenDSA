@@ -22,22 +22,14 @@ clean:
 	- $(RM) Scripts/*~
 	- $(RM) config/*~
 
-alllint: csslint lint lintlib jsonlint
-
-templint: jsonlint
-	@csslint $(CSSLINTFLAGS) AV/Background/*.css
-	@csslint $(CSSLINTFLAGS) AV/Design/*.css
-	-@$(LINT) AV/Background/*.js
-	-@$(LINT) AV/Design/*.js
-
-jsonlint:
-	@jsonlint -q AV/Background/*.json
-	@jsonlint -q AV/Design/*.json
+alllint: csslint lint jsonlint
 
 csslint:
 	@echo 'running csslint'
 	@csslint $(CSSLINTFLAGS) AV/Background/*.css
 	@csslint $(CSSLINTFLAGS) AV/Design/*.css
+
+TODOcsslint:
 	@csslint $(CSSLINTFLAGS) AV/List/*.css
 	@csslint $(CSSLINTFLAGS) AV/Sorting/*.css
 	@csslint $(CSSLINTFLAGS) AV/Hashing/*.css
@@ -46,13 +38,14 @@ csslint:
 	@csslint $(CSSLINTFLAGS) Doc/*.css
 	@csslint $(CSSLINTFLAGS) lib/*.css
 
-lint: lintAV lintExe
-
-lintAV:
-	@echo 'linting AVs'
+lint: lintExe
+	@echo 'running eslint'
 	-@$(LINT) AV/Background/*.js
-	-@$(LINT) AV/Binary/*.js
 	-@$(LINT) AV/Design/*.js
+
+TODOlintAV:
+	@echo 'linting AVs'
+	-@$(LINT) AV/Binary/*.js
 	-@$(LINT) AV/General/*.js
 	-@$(LINT) AV/List/*.js
 	-@$(LINT) AV/Sorting/*.js
@@ -75,7 +68,7 @@ lintExe:
 	-@$(LINT) Exercises/RecurTutor2/*.js
 	-@$(LINT) Exercises/Sorting/*.js
 
-$(LINT)lib:
+TODO$(LINT)lib:
 	@echo 'linting libraries'
 	-@$(LINT) lib/odsaUtils.js
 	-@$(LINT) lib/odsaAV.js
@@ -84,6 +77,12 @@ $(LINT)lib:
 	-@$(LINT) lib/registerbook.js
 	-@$(LINT) lib/createcourse.js
 	-@$(LINT) lib/conceptMap.js
+
+jsonlint:
+	@jsonlint -q AV/Background/*.json
+	@jsonlint -q AV/Design/*.json
+	@jsonlint -q config/*.json
+	@jsonlint -q config/Old/*.json
 
 min: nomin
 #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
