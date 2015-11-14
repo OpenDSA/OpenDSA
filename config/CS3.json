@@ -441,7 +441,7 @@
         "exercises": {},
         "sections": {
           "Summary Exercise: CS2": {
-            "showsection": false;
+            "showsection": false,
             "AlgAnalCS2114Summ": {
               "long_name": "Algorithm Analysis Summary Questions",
               "required": false,

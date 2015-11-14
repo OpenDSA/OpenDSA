@@ -5,7 +5,6 @@
 
 .. avmetadata:: 
    :author: Kyle
-   :prerequisites:
    :topic: Pointers
 
 

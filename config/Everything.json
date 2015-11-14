@@ -131,7 +131,7 @@
         "exercises": {},
         "sections": {
           "Understanding File I/O": {},
-          "Using RandomAccessFile Class": {},
+          "Using RandomAccessFile Class": {}
         }
       },
       "Tutorials/junitstart": {
@@ -242,9 +242,9 @@
           "Heap String Example": {},
           "Memory Leaks": {},
           "Ownership": {},
-          "Heap Memory Summary": {},
+          "Heap Memory Summary": {}
         }
-      }
+      },
       "Pointers/Exercises": {
         "long_name": "Exercises",
         "exercises": {},
