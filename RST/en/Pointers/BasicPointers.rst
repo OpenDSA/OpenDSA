@@ -10,8 +10,8 @@
 Basic Pointers
 ==============
 
-Pointers |---| Before and After
--------------------------------
+What is a pointer?
+------------------
 
 There's a lot of nice, tidy code you can write without knowing about pointers. But once
 you learn to use the power of pointers, you can never go back. There are too many things
@@ -21,9 +21,6 @@ crash in random ways which makes them more difficult to debug. Nonetheless, even
 their problems, pointers are an irresistibly powerful programming construct. (The
 following explanation uses the C language syntax where a syntax is required; there is a
 discussion of Java at the section.)
-
-What is a pointer?
-------------------
 
 Pointers solve two common software problems. First, pointers allow different sections of
 code to share information easily. You can get the same effect by copying information
@@ -67,8 +64,8 @@ reference to an ``int``.
    :figwidth: 100%
 
 
-Pointer Dereference
--------------------
+Pointer Reference and Dereference
+---------------------------------
 
 The :term:`dereference` operation follows a pointer's reference to get
 the value of its pointee.
@@ -78,9 +75,6 @@ that the pointer must have a pointee for the dereference to access. Almost all b
 pointer code involve violating that one restriction. A pointer must be assigned a pointee
 before dereference operations will work.
 
-
-The NULL Pointer
-----------------
 
 The constant NULL is a special pointer value which encodes the idea of
 "points to nothing".

@@ -27,8 +27,8 @@ of this suite and released them for students to make use of. For the purpose of
 these tutorials we will make use of this class for our test cases. Note that it
 will in many ways be similar to the standard JUnit functionality, but will have
 some additional functions that help with testing. As such we must import and set
-our program to make use of this library. You can find directions to so on this  
-`page <http://web-cat.org/junit-quickstart/>`__.
+our program to make use of this library. You can find directions to so on
+`this page <http://web-cat.org/junit-quickstart/>`_.
 In addition to configuring your build path, be sure to look over this page as it
 is an excellent quick start to JUnit functionality.
 
@@ -70,6 +70,6 @@ Remember quality over quantity!
 More Information
 ----------------
 
-For more information this
-`blog <http://openmymind.net/2011/2/23/Foundations-of-Programming-2-Chapter-5-Effective-T/>`__
+For more information
+`this blog <http://openmymind.net/2011/2/23/Foundations-of-Programming-2-Chapter-5-Effective-T/>`_
 is an excellent resource to read and learn from.

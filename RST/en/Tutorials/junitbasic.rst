@@ -22,7 +22,7 @@ Before you start, be sure you have familiarized yourself with the basics of the
 *For this exercise I will be using a BST written by a V.S. Adamchik*
 
 The source code for the BST may be found
-`here <https://www.cs.cmu.edu/~adamchik/15-121/lectures/Trees/code/BST.java>`__.
+`here <https://www.cs.cmu.edu/~adamchik/15-121/lectures/Trees/code/BST.java>`_.
 
 While this class contains many methods this tutorial will only be testing a few.
 

@@ -76,6 +76,20 @@
         }
       }
     },
+    "Biographies": {
+      "Biography/CarlGauss": {
+        "exercises": {},
+        "sections": {
+          "Spotlight: Carl Friedrich Gauss": {}
+        }
+      },
+      "Biography/FrancisBacon": {
+        "exercises": {},
+        "sections": {
+          "Spotlight: Francis Bacon": {}
+        }
+      }
+    },
     "Programming Tutorials": {
       "Tutorials/cmdline": {
         "long_name": "Command Line Basics",

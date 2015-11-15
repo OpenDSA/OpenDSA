@@ -142,11 +142,11 @@ the parameters:
 #. When the callee is running, if it wishes to access the value of
    interest, it must dereference its pointer to access the actual
    value of interest. Typically, this equates to use of the
-   dereference operator (*) in the function to see the value of
+   dereference operator (``*``) in the function to see the value of
    interest.
 
 Bill Gates By Reference
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~
 
 Here is the Bill Gates example written to use reference
 parameters. This code now matches the by-reference memory drawing
