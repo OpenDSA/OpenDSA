@@ -395,7 +395,7 @@ drawing of how memory is likely to react.
 
 
 Pointer Rules Summary
-----------------------
+---------------------
 
 No matter how complex a pointer structure gets, the list of rules remains short.
 
@@ -483,7 +483,7 @@ yet been assigned the specific address of a valid pointee. This is why dereferen
 of memory they happen to have the address of.
 
 
-The Term "Reference"
+The Term 'Reference'
 --------------------
 
 The word :term:`reference` means almost the same thing as the word

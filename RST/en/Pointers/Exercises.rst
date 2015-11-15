@@ -7,10 +7,11 @@
    :author: Kyle
    :topic: Pointers
 
-
-
 Pointers Exercises
 ==================
+
+Exercises
+---------
 
 Solve following exercise.
 

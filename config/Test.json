@@ -1,0 +1,65 @@
+{
+  "title": "Problem Modules",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Processing": {
+      "ext": [
+        "pde"
+      ],
+      "label": "Processing",
+      "lang": "java"
+    },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "lang": "en",
+  "module_origin": "https://lti.cs.vt.edu",
+  "exercise_server": "https://ltitest.cs.vt.edu:8443",
+  "logging_server": "https://ltitest.cs.vt.edu:8443",
+  "score_server": "https://ltitest.cs.vt.edu:8443",
+  "build_JSAV": false,
+  "allow_anonymous_credit": true,
+  "suppress_todo": false,
+  "dispModComp": true,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "chapters": {
+    "Design I": {
+      "Design/IntroProcess": {
+        "long_name": "Software Development Processes",
+        "exercises": {},
+        "sections": {
+          "Introduction": {},
+          "Waterfall Method": {},
+          "Rational Unified Process": {},
+          "eXtreme Programming (XP)": {},
+          "Crystal": {},
+          "Scrum": {},
+          "Feature-Driven Development (FDD)": {}
+        }
+      }
+    }
+  }
+}

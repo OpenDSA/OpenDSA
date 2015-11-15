@@ -11,6 +11,8 @@
 Software Development Processes
 ==============================
 
+Introduction
+------------
 
 .. index:: process; software development
 
@@ -54,9 +56,6 @@ inception of the idea to delivery of the final system,
 to be carried out rigidly and sequentially" [#]_.
 Plan-driven methods continue to be the 'traditional' way most software
 continues to be developed today.
-
-
-
 
 Agile methods grew out frustration with the rigidity of the plan-driven processes commonly used
 in the 1990's just as the tech boom was heating up.
@@ -148,6 +147,10 @@ software development project has to make on their own.
    Adapted from *Balancing Agility and Discipline: A Guide for the Perplexed* [Boehm03]_
 
 
+.. [#] Geoffrey Elliott. *Global Business Information Technology: an integrated systems approach*. Pearson Education. 2004.
+
+.. [#] http://www.agilealliance.org/
+
 
 Waterfall Method
 ----------------
@@ -177,6 +180,10 @@ The waterfall model was simple to understand and was widely used throughout the 
 but came under criticism primarily for it's lack of flexibility.
 Although officially endorsed bu the US Department of Defense in 1985, the DoD supplanted
 it with other process guidance 10 years later.
+
+.. [#] Peter Kemp / Paul Smith, *Waterfall model*
+   (Adapted from Paul Smith's work at wikipedia) 
+   [CC BY 3.0 (http://creativecommons.org/licenses/by/3.0)], via Wikimedia Commons
 
 
 Rational Unified Process
@@ -234,11 +241,7 @@ Within each iteration, the tasks are categorized into nine disciplines:
    - Environment
 
 
-
 Other Plan-Driven Approaches
-----------------------------
-
-
 
 Military Methods (DoD)
    DoD-STD-2167 
@@ -297,7 +300,6 @@ Personal Software Process (PSP)/Team Software Process (TSP) (Watts Humphrey, SEI
    TSP 
       Builds on PSP and supports the development of industrial-strength software through 
       the use of team planning and control.
-
 
 
 eXtreme Programming (XP)
@@ -381,6 +383,10 @@ Designing
   Often more upfront design is required as well as checking and revisiting
   designs throughout the lifetime of the project.
 
+.. [#] Don Wells, *Planning / Feedback Loops*
+   (https://en.wikipedia.org/wiki/File:XP-feedback.gif) 
+   [CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons
+
 
 Crystal
 -------
@@ -419,24 +425,3 @@ Both design-by-feature and build-by-feature are incremental software
 construction methodologies.
 In FDD, the use of UML or other object-oriented design methods is strongly implied,
 if not explicitly required.
-
-
-
-Notes
------
-
-
-.. [#] Geoffrey Elliott. *Global Business Information Technology: an integrated systems approach*. Pearson Education. 2004.
-
-.. [#] http://www.agilealliance.org/
-
-.. [#] Peter Kemp / Paul Smith, *Waterfall model*
-   (Adapted from Paul Smith's work at wikipedia) 
-   [CC BY 3.0 (http://creativecommons.org/licenses/by/3.0)], via Wikimedia Commons
-
-.. [#] Don Wells, *Planning / Feedback Loops*
-   (https://en.wikipedia.org/wiki/File:XP-feedback.gif) 
-   [CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons
-
-
-

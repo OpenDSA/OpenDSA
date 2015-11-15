@@ -270,7 +270,7 @@ difference.
    
    
 Simple Heap Observations
--------------------------
+------------------------
 
 * After the allocation call allocates the block in the heap. The
   program stores the pointer to the block in the local variable

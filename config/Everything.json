@@ -78,14 +78,14 @@
     },
     "Biographies": {
       "Biography/CarlGauss": {
-        "long_name": "CarlGauss",
+        "long_name": "Carl Gauss",
         "exercises": {},
         "sections": {
           "Spotlight: Carl Friedrich Gauss": {}
         }
       },
       "Biography/FrancisBacon": {
-        "long_name": "FrancisBacon",
+        "long_name": "Francis Bacon",
         "exercises": {},
         "sections": {
           "Spotlight: Francis Bacon": {}
@@ -190,6 +190,40 @@
             }
           }
         }
+      },
+      "Design/IntroOO": {
+        "long_name": "Introduction to Object Orientation",
+        "exercises": {},
+        "sections": {
+          "Introduction": {},
+          "Principles of Object Oriented Programming": {},
+          "Encapsulation": {},
+          "Inheritance": {},
+          "Polymorphism": {},
+          "Abstraction": {}
+        }
+      },
+      "Design/IntroUML": {
+        "long_name": "The Unified Modeling Language",
+        "exercises": {},
+        "sections": {
+          "The Unified Modeling Language": {},
+          "Static and Dynamic Diagrams": {},
+          "Class Diagrams": {}
+        }
+      },
+      "Design/IntroProcess": {
+        "long_name": "Software Development Processes",
+        "exercises": {},
+        "sections": {
+          "Introduction": {},
+          "Waterfall Method": {},
+          "Rational Unified Process": {},
+          "eXtreme Programming (XP)": {},
+          "Crystal": {},
+          "Scrum": {},
+          "Feature-Driven Development (FDD)": {}
+        }
       }
     },
     "Pointers": {
@@ -202,10 +236,8 @@
         "long_name": "Pointers",
         "exercises": {},
         "sections": {
-          "Pointers |---| Before and After": {},
           "What is a pointer?": {},
-          "Pointer Dereference": {},
-          "The NULL Pointer": {},
+          "Pointer Reference and Dereference": {},
           "Pointer Assignment": {},
           "Bad Pointers": {},
           "Syntax": {},
@@ -213,7 +245,7 @@
           "Pointer Rules Summary": {},
           "How Do Pointers Work In Java?": {},
           "How Are Pointers Implemented In The Machine?": {},
-          "The Term `Reference'": {},
+          "The Term 'Reference'": {},
           "Why Are Bad Pointer Bugs So Common?": {}
         }
       },
@@ -236,7 +268,6 @@
           "Reference Parameters": {},
           "Passing By Reference": {},
           "Simple Reference Parameter Example: Swap()": {},
-          "Is The & Always Necessary?": {},
           "More Syntax": {},
           "Reference Parameter Summary": {},
           "Reference Parameters in Java": {},
@@ -264,7 +295,7 @@
         "long_name": "Exercises",
         "exercises": {},
         "sections": {
-          "Section Name": {
+          "Exercises": {
             "FindNodePROG": {
               "long_name": "Find Node Exercise",
               "required": true,
@@ -338,13 +369,13 @@
         "sections": {
           "Summations": {},
           "Recurrence Relations": {
-            "LinearRecurrencesCON": {
+	    "LinearRecurrencesCON": {
               "long_name": "Linear Recurrences Slideshow",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
-            "LinearRecurrencesNCON": {
+	    "LinearRecurrencesNCON": {
               "long_name": "Linear Recurrences Slideshow (n)",
               "required": false,
               "points": 0.0,
@@ -386,6 +417,29 @@
               "required": true,
               "points": 1.0,
               "threshold": 5
+            }
+          }
+        }
+      }
+    },
+    "Searching I": {
+      "Searching/BinarySearch": {
+        "long_name": "Binary Search",
+        "exercises": {},
+        "sections": {
+          "Sequential Search": {},
+          "Binary Search": {
+            "binarySearchCON": {
+              "long_name": "Binary Search Algorithm Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "binarySearchPRO": {
+              "long_name": "Binary Search Proficiency Exercise",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
             }
           }
         }
@@ -502,7 +556,7 @@
         "exercises": {},
         "sections": {
           "Lower Bounds": {},
-          ":math:`\\Theta` Notation": {},
+          "Theta Notation": {},
           "Classifying Functions": {
             "LowerBoundCON": {
               "long_name": "Lower Bounds visualization",
@@ -554,9 +608,7 @@
             },
             "binarySearchPRO": {
               "long_name": "Binary Search Proficiency Exercise",
-              "exer_options": {
-                "JXOP-code": "none"
-              },
+              "exer_options": { "JXOP-code": "none" },
               "required": true,
               "points": 1.0,
               "threshold": 1.0
