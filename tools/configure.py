@@ -375,7 +375,7 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
         results = modules.create_module_item(
             request_ctx, course_id, module_id, 'SubHeader',
             module_item_content_id=None,
-            module_item_title=str(module_position) + "." + str(module_item_position) + ". " + module_name,
+            module_item_title=str(module_position) + "." + str(module_item_position) + ". " + str(module_name),
             module_item_indent=0)
 
         module_item_position += 1
@@ -560,8 +560,16 @@ def register_book(config):
     url = config.logging_server + '/api/v1/module/loadbook/'
     headers = {'content-type': 'application/json'}
 
+    json_data = {}
+    json_data["odsa_username"] = config.odsa_username
+    json_data["odsa_password"] = config.odsa_password
+    json_data["course_id"] = config.course_id
+    json_data["course_code"] = config.course_code
+    json_data["LMS_url"] = config.LMS_url
+    json_data["chapters"] = config.chapters
+
     print "\nRegistring Book in OpenDSA-server " + config.logging_server + '\n'
-    response = requests.post(url, data=json.dumps(config.__dict__), headers=headers, verify=False)
+    response = requests.post(url, json=json_data, headers=headers, verify=False)
     response_obj = json.loads(response.content)
 
     if response_obj['saved']:

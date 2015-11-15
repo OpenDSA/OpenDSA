@@ -78,12 +78,14 @@
     },
     "Biographies": {
       "Biography/CarlGauss": {
+        "long_name": "CarlGauss",
         "exercises": {},
         "sections": {
           "Spotlight: Carl Friedrich Gauss": {}
         }
       },
       "Biography/FrancisBacon": {
+        "long_name": "FrancisBacon",
         "exercises": {},
         "sections": {
           "Spotlight: Francis Bacon": {}
@@ -336,13 +338,13 @@
         "sections": {
           "Summations": {},
           "Recurrence Relations": {
-	    "LinearRecurrencesCON": {
+            "LinearRecurrencesCON": {
               "long_name": "Linear Recurrences Slideshow",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
-	    "LinearRecurrencesNCON": {
+            "LinearRecurrencesNCON": {
               "long_name": "Linear Recurrences Slideshow (n)",
               "required": false,
               "points": 0.0,
@@ -552,7 +554,9 @@
             },
             "binarySearchPRO": {
               "long_name": "Binary Search Proficiency Exercise",
-              "exer_options": { "JXOP-code": "none" },
+              "exer_options": {
+                "JXOP-code": "none"
+              },
               "required": true,
               "points": 1.0,
               "threshold": 1.0
