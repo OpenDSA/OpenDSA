@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -13,6 +13,9 @@
 
 Analyzing Problems
 ==================
+
+Analyzing Problems
+------------------
 
 You most often use the techniques of "algorithm" analysis to analyze
 an :term:`algorithm`, or the instantiation of an algorithm as a
@@ -107,11 +110,7 @@ algorithm that is better only by a constant factor.
 
 .. avembed:: Exercises/AlgAnal/AnalProblemSumm.html ka
 
-Notes
------
-
 .. [#] While it is fortunate to know the truth, it is unfortunate that
        sorting is :math:`\Theta(n \log n)` rather than :math:`\Theta(n)`!
-
 
 .. odsascript:: AV/AlgAnal/AnalyzingProblemsCON.js

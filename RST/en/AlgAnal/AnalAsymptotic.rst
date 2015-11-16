@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -13,6 +13,9 @@
 
 Asymptotic Analysis and Upper Bounds
 ====================================
+
+Introduction
+------------
 
 .. _RunTimeGraph2:
 
@@ -272,8 +275,14 @@ for large :math:`n`.
 From now on, we will use these simplifying
 rules when discussing the cost for a program or algorithm.
 
+Summary
+-------
+
 .. inlineav:: UpperBoundCON ss
    :output: show
+
+Practice Questions
+------------------
 
 .. avembed:: Exercises/AlgAnal/UpperBoundsSumm.html ka
 

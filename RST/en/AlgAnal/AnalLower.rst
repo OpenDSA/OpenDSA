@@ -1,11 +1,11 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :satisfies: algorithm analysis
+   :satisfies: algorithm analysis lower bound
    :requires: growth rate; best and worst case
    :topic: Algorithm Analysis
 
@@ -77,8 +77,70 @@ because in both the average and worst cases we must examine
 *at least* :math:`cn` values (where :math:`c` is 1/2 in the average
 case and 1 in the worst case).
 
-:math:`\Theta` Notation
------------------------
+.. [#] An alternate (non-equivalent) definition for :math:`\Omega` is
+
+          :math:`\mathbf{T}(n)` is in the set :math:`\Omega(g(n))` if
+          there exists a positive constant :math:`c` such that
+          :math:`\mathbf{T}(n) \geq c g(n)` for an infinite number of
+          values for :math:`n`.
+
+       This definition says that for an "interesting" number of
+       cases, the algorithm takes at least :math:`c g(n)` time.
+       Note that this definition is *not* symmetric with the
+       definition of big-Oh.
+       For :math:`g(n)` to be a lower bound,
+       this definition *does not* require that
+       :math:`\mathbf{T}(n) \geq c g(n)` for
+       all values of :math:`n` greater than some constant.
+       It only requires that this happen often enough, in particular
+       that it happen for an infinite number of values for :math:`n`.
+       Motivation for this alternate definition can be found in the
+       following example.
+
+       Assume a particular algorithm has the following behavior:
+
+
+       .. math::
+
+          \mathbf{T}(n) = \left\{ \begin{array}{ll}
+          n  & \mbox{for all odd}\ n \geq 1\\
+          n^2/100 & \mbox{for all even}\ n \geq 0
+          \end{array}
+          \right.
+
+       From this definition, :math:`n^2/100 \geq \frac{1}{100} n^2`
+       for all even :math:`n \geq 0`.
+       So, :math:`\mathbf{T}(n) \geq c n^2` for an infinite number of
+       values of :math:`n` (i.e., for all even :math:`n`)
+       for :math:`c = 1/100`.
+       Therefore, :math:`\mathbf{T}(n)` is in :math:`\Omega(n^2)` by
+       the definition. 
+
+       For this equation for :math:`\mathbf{T}(n)`, it is true that
+       all inputs of size :math:`n` take at least :math:`cn` time.
+       But an infinite number of inputs of size :math:`n` take
+       :math:`cn^2` time, so we would like to say that the algorithm
+       is in :math:`\Omega(n^2)`. 
+       Unfortunately, using our first definition will
+       yield a lower bound of :math:`\Omega(n)` because it is not
+       possible to pick constants :math:`c` and :math:`n_0` such that
+       :math:`\mathbf{T}(n) \geq c n^2` for all :math:`n>n_0`.
+       The alternative definition does result in a lower
+       bound of :math:`\Omega(n^2)` for this algorithm, which seems to
+       fit common sense more closely.
+       Fortunately, few real algorithms or computer programs display
+       the pathological behavior of this example.
+       Our first definition for :math:`\Omega` generally yields the
+       expected result.
+
+       As you can see from this discussion, asymptotic bounds notation
+       is not a law of nature.
+       It is merely a powerful modeling tool used to describe the
+       behavior of algorithms.
+
+
+Theta Notation
+--------------
 
 The definitions for big-Oh and :math:`\Omega` give us ways to
 describe the upper bound for an algorithm (if we can find an equation
@@ -170,86 +232,12 @@ If the limit goes to some constant other than zero, then
    because :math:`n` grows faster than :math:`2\log n`.
    Thus, :math:`n^2` is in :math:`\Omega(2n\log n)`.
 
-.. todo::
-   :type: Slideshow
-
-   A visualization that illustrates the meaning of lower bounds, and
-   tight bounds and the difference between them and best, and average
-   cases respectiely. This visualization here should be similar to the
-   one for upper bounds. We may also think of presenting this as
-   function plots in which the running time of the algorithm is
-   plotted against its upper and lower bounds.
-
-
 .. inlineav:: LowerBoundCON ss
    :output: show
 
+Summary Exercise
+----------------
 
 .. avembed:: Exercises/AlgAnal/LowerThetaSumm.html ka
-
-Notes
------
-
-.. [#] An alternate (non-equivalent) definition for :math:`\Omega` is
-
-          :math:`\mathbf{T}(n)` is in the set :math:`\Omega(g(n))` if
-          there exists a positive constant :math:`c` such that
-          :math:`\mathbf{T}(n) \geq c g(n)` for an infinite number of
-          values for :math:`n`.
-
-       This definition says that for an "interesting" number of
-       cases, the algorithm takes at least :math:`c g(n)` time.
-       Note that this definition is *not* symmetric with the
-       definition of big-Oh.
-       For :math:`g(n)` to be a lower bound,
-       this definition *does not* require that
-       :math:`\mathbf{T}(n) \geq c g(n)` for
-       all values of :math:`n` greater than some constant.
-       It only requires that this happen often enough, in particular
-       that it happen for an infinite number of values for :math:`n`.
-       Motivation for this alternate definition can be found in the
-       following example.
-
-       Assume a particular algorithm has the following behavior:
-
-
-       .. math::
-
-          \mathbf{T}(n) = \left\{ \begin{array}{ll}
-          n  & \mbox{for all odd}\ n \geq 1\\
-          n^2/100 & \mbox{for all even}\ n \geq 0
-          \end{array}
-          \right.
-
-       From this definition, :math:`n^2/100 \geq \frac{1}{100} n^2`
-       for all even :math:`n \geq 0`.
-       So, :math:`\mathbf{T}(n) \geq c n^2` for an infinite number of
-       values of :math:`n` (i.e., for all even :math:`n`)
-       for :math:`c = 1/100`.
-       Therefore, :math:`\mathbf{T}(n)` is in :math:`\Omega(n^2)` by
-       the definition. 
-
-       For this equation for :math:`\mathbf{T}(n)`, it is true that
-       all inputs of size :math:`n` take at least :math:`cn` time.
-       But an infinite number of inputs of size :math:`n` take
-       :math:`cn^2` time, so we would like to say that the algorithm
-       is in :math:`\Omega(n^2)`. 
-       Unfortunately, using our first definition will
-       yield a lower bound of :math:`\Omega(n)` because it is not
-       possible to pick constants :math:`c` and :math:`n_0` such that
-       :math:`\mathbf{T}(n) \geq c n^2` for all :math:`n>n_0`.
-       The alternative definition does result in a lower
-       bound of :math:`\Omega(n^2)` for this algorithm, which seems to
-       fit common sense more closely.
-       Fortunately, few real algorithms or computer programs display
-       the pathological behavior of this example.
-       Our first definition for :math:`\Omega` generally yields the
-       expected result.
-
-       As you can see from this discussion, asymptotic bounds notation
-       is not a law of nature.
-       It is merely a powerful modeling tool used to describe the
-       behavior of algorithms.
-
 
 .. odsascript:: AV/AlgAnal/LowerBoundCON.js

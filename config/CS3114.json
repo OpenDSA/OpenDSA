@@ -101,6 +101,18 @@
         "long_name": "Summations and Recurrence Relations",
         "dispModComp": true,
         "exercises": {
+	  "SummationOneToNCON": {
+            "long_name": "Summation of the first N Integers visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "SummationTwoPowerICON": {
+            "long_name": "Summation Two Power I visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
 	  "LinearRecurrencesCON": {
             "long_name": "Linear Recurrences Slideshow",
             "required": false,
