@@ -16,6 +16,9 @@
 Doubly Linked Lists
 ===================
 
+Doubly Linked Lists
+-------------------
+
 The :ref:`singly linked list <linked list> <ListLinked>` allows
 for direct access from a list node only to the next node in the list.
 A :term:`doubly linked list` allows convenient access from a list node
@@ -66,8 +69,11 @@ the doubly linked list nodes have an extra data member.
 .. codeinclude:: Lists/DLink
    :tag: DLink
 
-The following slideshows illustrate the ``insert``, ``append``,
-``remove``, and ``prev`` doubly linked list methods.
+Insert and Append
+-----------------
+
+The following slideshows illustrate the ``insert`` and ``append``
+doubly linked list methods.
 The class declaration and the remaining member functions for the
 doubly linked list class are nearly identical to the singly linked
 list version.
@@ -81,6 +87,10 @@ each node to deal with), they tend to be easier to understand.
 .. inlineav:: dlistAppendCON ss
    :output: show  
    
+
+Remove and Prev
+---------------
+
 .. inlineav:: dlistRemoveCON ss
    :output: show
    
@@ -98,8 +108,9 @@ the singly linked list.
 
    Need exercises for inserting to and deleting from doubly linked lists.
 
-Notes
------
+
+Mangling Pointers
+-----------------
 
 There is a space-saving technique that can be employed to eliminate
 the additional space requirement, though it will complicate the

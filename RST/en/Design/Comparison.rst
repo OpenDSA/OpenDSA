@@ -16,6 +16,9 @@
 Comparing Records
 ==================
 
+Comparing Records
+-----------------
+
 If we want to sort some things, we have to be able to compare them, to
 decide which one is bigger.
 How do we compare two things?
@@ -162,8 +165,6 @@ Here are some review questions to test your knowledge from this module.
 
 .. avembed:: Exercises/Design/CompareSumm.html ka
 
-Notes
------
 
 .. [#] One example of a situation where it is not possible to write a
        function that extracts a key from a record is when we have a

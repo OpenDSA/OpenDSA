@@ -12,6 +12,9 @@
 Design Patterns
 ===============
 
+Introduction
+------------
+
 At a higher level of abstraction than ADTs
 are abstractions for describing the design of programs |---| that is,
 the interactions of objects and classes.
@@ -237,5 +240,8 @@ The visitor design pattern is focused on encapsulating an activity that
 will be performed on all members of a collection so that completely
 different activities can be substituted within a generic method that
 accesses all of the collection members.
+
+Summary Questions
+-----------------
 
 .. avembed:: Exercises/Design/DesignPatternSumm.html ka

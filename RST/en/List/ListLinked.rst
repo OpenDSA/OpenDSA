@@ -14,6 +14,9 @@
 Linked Lists
 ============
 
+Linked Lists
+------------
+
 In this module we present one of the two traditional implementations
 for lists, usually called a :term:`linked list`.
 The linked list uses :term:`dynamic memory allocation`,
@@ -106,6 +109,9 @@ Adding the trailer node also solves our problem with deleting the last
 node on the list, as we will see when we take a closer look at the
 remove method's implementation.
 
+Linked List Implementation
+--------------------------
+
 Here is the implementation for the linked list class,
 named ``LList``.
 
@@ -119,6 +125,10 @@ named ``LList``.
 
 .. inlineav:: llistConsCON ss
    :output: show
+
+
+Insert
+------
 
 Implementations for most member functions of the ``list``
 class are straightforward.
@@ -135,10 +145,18 @@ the end, and inserting to an empty list.
    
 .. avembed:: Exercises/List/LlistInsertPRO.html ka
 
+
+Remove
+------
+
 .. inlineav:: llistRemoveCON ss
    :output: show
    
 .. avembed:: Exercises/List/LlistRemovePRO.html ka
+
+
+Other Operations
+----------------
 
 .. inlineav:: llistOtherCON ss
    :output: show

@@ -80,7 +80,15 @@ array should represent the top of the stack.
 .. inlineav:: astackPopCON ss
    :output: show
    
+
+Push Practice
+-------------
+
 .. avembed:: Exercises/List/AstackPushPRO.html ka
+
+
+Pop Practice
+-------------
 
 .. avembed:: Exercises/List/AstackPopPRO.html ka
 

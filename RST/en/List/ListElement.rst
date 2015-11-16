@@ -14,6 +14,9 @@
 List Element Implementations
 ============================
 
+List Element Implementations
+----------------------------
+
 When designing any :term:`container class`, there are a number of
 design choices to be made regarding the data elements.
 
@@ -67,6 +70,10 @@ automatic garbage collection.
 .. inlineav:: listElementDeleteCON ss
    :output: show 
    
+
+Practice Questions
+------------------
+
 .. avembed:: Exercises/List/ListSumm.html ka
    
 .. odsascript:: AV/List/listElementDataCON.js

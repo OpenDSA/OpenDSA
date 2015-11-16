@@ -12,6 +12,9 @@
 The Dictionary ADT
 ==================
 
+The Dictionary ADT
+------------------
+
 The most common objective of computer programs is to store and
 retrieve data.
 Much of this book is about efficient ways to organize collections of

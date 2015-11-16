@@ -41,7 +41,15 @@ Now, let's look at how ``push`` and ``pop`` work in the linked stack implementat
 .. inlineav:: lstackPopCON ss
    :output: show
    
+
+Push Practice
+-------------
+
 .. avembed:: Exercises/List/LstackPushPRO.html ka
+
+
+Pop Practice
+-------------
 
 .. avembed:: Exercises/List/LstackPopPRO.html ka
 
