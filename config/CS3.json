@@ -155,13 +155,31 @@
         "exercises": {},
         "sections": {
           "Summations": {},
+          "Example: Summing Integers from 1 to n": {
+            "SummationOneToNCON": {
+              "long_name": "Summation of the first N Integers visualization",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Example: Summing Powers of 2": {
+            "SummationTwoPowerICON": {
+              "long_name": "Summation Two Power I visualization",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
           "Recurrence Relations": {
 	    "LinearRecurrencesCON": {
               "long_name": "Linear Recurrences Slideshow",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            },
+            }
+          },
+          "Another Recurrence Example": {
 	    "LinearRecurrencesNCON": {
               "long_name": "Linear Recurrences Slideshow (n)",
               "required": false,
@@ -305,7 +323,9 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            },
+            }
+          },
+          "Practice Questions": {
             "UpperBoundsSumm": {
               "long_name": "Asymptotic Analysis and Upper Bounds Exercise",
               "required": true,
@@ -343,40 +363,25 @@
         "long_name": "Calculating the Running Time of a Program",
         "exercises": {},
         "sections": {
-          "Calculating Program Running Time": {
-            "SummationOneToNCON": {
-              "long_name": "Summation of the first N Integers visualization",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
-            "SummationTwoPowerICON": {
-              "long_name": "Summation Two Power I visualization",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
-            "LinearRecurrenceSimpleCON": {
-              "long_name": "Linear Recurrence visualization",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            }
-          },
+          "Calculating Program Running Time": {},
           "Case Study: Two Search Algorithms": {
             "binarySearchCON": {
               "long_name": "Binary Search Algorithm Slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            },
+            }
+          },
+          "Binary Search Practice Exercise": {
             "binarySearchPRO": {
               "long_name": "Binary Search Proficiency Exercise",
               "exer_options": { "JXOP-code": "none" },
               "required": true,
               "points": 1.0,
               "threshold": 1.0
-            },
+            }
+          },
+          "Analyzing Binary Search": {
             "DivideAndConquerRecurrenceSimpleCON": {
               "long_name": "Linear Recurrence visualization",
               "required": false,

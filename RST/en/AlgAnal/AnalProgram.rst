@@ -5,12 +5,10 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :requires: algorithm analysis
+   :requires: algorithm analysis; summation; recurrence
    :satisfies: analyzing programs
    :topic: Algorithm Analysis
 
-.. odsalink:: AV/AlgAnal/SummationOneToNCON.css
-.. odsalink:: AV/AlgAnal/SummationTwoPowerICON.css
 .. odsalink:: AV/AlgAnal/LinearRecurrenceSimpleCON.css
 .. odsalink:: AV/Searching/binarySearchCON.css
 .. odsalink:: AV/AlgAnal/DivideAndConquerRecurrenceSimpleCON.css
@@ -112,9 +110,6 @@ We will make use of the algorithm analysis simplifying rules:
    By simplifying rule (3), :math:`\Theta(c_1 + c_2 n + c_3 n^2)` is
    simply :math:`\Theta(n^2)`.
 
-.. inlineav:: SummationOneToNCON ss
-   :output: show
-
 .. topic:: Example
 
    Compare the asymptotic analysis for the following two code
@@ -169,9 +164,6 @@ We will make use of the algorithm analysis simplifying rules:
 
    where :math:`n` is assumed to be a power of two and again
    :math:`k = 2^i`.
-
-.. inlineav:: SummationTwoPowerICON ss
-   :output: show
 
 .. todo::
    :type: Slideshow
@@ -228,8 +220,6 @@ Thus, the running time for this function can be expressed as
 The closed-form solution for this
 recurrence relation is :math:`\Theta(n)`.
 
-.. inlineav:: LinearRecurrenceSimpleCON ss
-   :output: show
 
 Case Study: Two Search Algorithms
 ---------------------------------
@@ -271,9 +261,16 @@ Here is an illustration of the binary search method.
 .. inlineav:: binarySearchCON ss
    :output: show
 
+Binary Search Practice Exercise
+-------------------------------
+
 .. avembed:: AV/Searching/binarySearchPRO.html ss
 
-To find the cost of this algorithm in the worst case, we can model the
+
+Analyzing Binary Search
+-----------------------
+
+To find the cost of binary search in the worst case, we can model the
 running time as a recurrence and then find the closed-form solution.
 Each recursive call to ``binary`` cuts the size of the array
 approximately in half, so we can model the worst-case cost as follows,
@@ -333,8 +330,6 @@ Summary Exercise
 
 .. avembed:: Exercises/AlgAnal/AnalProgramSumm.html ka
 
-.. odsascript:: AV/AlgAnal/SummationOneToNCON.js
-.. odsascript:: AV/AlgAnal/SummationTwoPowerICON.js
 .. odsascript:: AV/AlgAnal/LinearRecurrenceSimpleCON.js
 .. odsascript:: AV/Searching/binarySearchCON.js
 .. odsascript:: AV/AlgAnal/DivideAndConquerRecurrenceSimpleCON.js

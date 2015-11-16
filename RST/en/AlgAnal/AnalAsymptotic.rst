@@ -281,6 +281,9 @@ Summary
 .. inlineav:: UpperBoundCON ss
    :output: show
 
+Practice Questions
+------------------
+
 .. avembed:: Exercises/AlgAnal/UpperBoundsSumm.html ka
 
 .. odsascript:: AV/AlgAnal/UpperBoundCON.js
