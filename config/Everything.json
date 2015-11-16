@@ -228,12 +228,12 @@
     },
     "Pointers": {
       "Pointers/PointerIntro": {
-        "long_name": "Pointers",
+        "long_name": "Pointers Chapter Introduction",
         "exercises": {},
         "sections": {}
       },
       "Pointers/BasicPointers": {
-        "long_name": "Pointers",
+        "long_name": "Basic Pointers",
         "exercises": {},
         "sections": {
           "What is a pointer?": {},
@@ -250,7 +250,7 @@
         }
       },
       "Pointers/LocalMem": {
-        "long_name": "Pointers",
+        "long_name": "Local Memory",
         "exercises": {},
         "sections": {
           "Thanks For The Memory": {},
