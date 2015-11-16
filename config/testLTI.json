@@ -38,7 +38,6 @@
     "JXOP-debug": "true"
   },
   "dispModComp": true,
-
   "chapters": {
     "Preface": {
       "Intro": {
@@ -169,6 +168,100 @@
           },
           "BST Analysis": {
             "showsection": true
+          }
+        }
+      }
+    },
+    "Sorting": {
+      "Sorting/Quicksort": {
+        "long_name": "Quicksort",
+        "exercises": {},
+        "sections": {
+          "Introduction": {},
+          "Section_QuicksortPivotPRO": {
+            "QuicksortPivotPRO": {
+              "long_name": "Quicksort Pivot Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "Section_quicksortCON": {
+            "quicksortCON": {
+              "long_name": "Quicksort Partition Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Section_QuickSortPartitionAnalysisCON": {
+            "QuickSortPartitionAnalysisCON": {
+              "long_name": "Quicksort Partition Analysis Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Section_QuicksortPartitPRO": {
+            "QuicksortPartitPRO": {
+              "long_name": "Quicksort Partition Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "Section_quicksortAV": {
+            "quicksortAV": {
+              "long_name": "Quicksort Visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          },
+          "Section_quicksortPRO": {
+            "quicksortPRO": {
+              "long_name": "Quicksort Proficiency Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 0.90,
+              "exer_options": {
+                "JXOP-feedback": "continuous",
+                "JXOP-fixmode": "fix"
+              }
+            }
+          },
+          "Section_QuickSortWorstCaseCON": {
+            "QuickSortWorstCaseCON": {
+              "long_name": "Quicksort Worst Case Analysis Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Section_QuickSortBestCaseCON": {
+            "QuickSortBestCaseCON": {
+              "long_name": "Quicksort Best Case Analysis Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Section_QuickSortAverageCaseCON": {
+            "QuickSortAverageCaseCON": {
+              "long_name": "Quicksort Average Case Analysis Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Section_QuicksortSumm": {
+            "QuicksortSumm": {
+              "long_name": "Quicksort Summary Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
           }
         }
       }

@@ -1,5 +1,4 @@
-#! /usr/bin/python
-#
+
 # This script builds an OpenDSA textbook according to a specified configuration file
 #   - Creates an ODSA_Config object from the specified configuration file
 #     - Validates the configuration file and sets appropriate defaults for omitted fields (see ODSA_Config.py for more information)
