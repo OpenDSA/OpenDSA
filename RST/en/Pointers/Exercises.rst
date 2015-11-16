@@ -5,6 +5,8 @@
 
 .. avmetadata:: 
    :author: Kyle
+   :requires: Pointer intro
+   :satisfies:
    :topic: Pointers
 
 Pointers Exercises

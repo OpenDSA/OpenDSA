@@ -5,6 +5,8 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
+   :requires:
+   :satisfies:
    :topic: Pointers
 
 Introduction

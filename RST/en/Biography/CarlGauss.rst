@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2015 by Dave Parillo`
+.. Copyright (c) 2015-2016 by Dave Parillo`
 .. This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
 
 .. avmetadata::

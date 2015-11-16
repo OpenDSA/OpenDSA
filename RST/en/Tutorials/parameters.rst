@@ -1,12 +1,12 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Jordan Sablan
-   :requires: 
-   :satisfies: 
+   :requires: Commmand line
+   :satisfies: Command line parameters
    :topic: 
 
 ==============================================
@@ -15,6 +15,7 @@ Parsing Command Line Parameters In Your Progam
 
 Parameters In Programming
 -------------------------
+
 Alright I get the idea of parameters for a function, that's easy enough. But
 how does a Program itself have parameters? This comes in the Main function that
 every Java program has. Consider this the "launch" function. Usually the "main"

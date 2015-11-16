@@ -5,6 +5,7 @@
 
 .. avmetadata::
    :author: Dave Parillo
+   :requires: ADT
    :satisfies: OO Intro
    :topic: Introduction
 

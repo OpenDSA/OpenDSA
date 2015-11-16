@@ -5,6 +5,8 @@
 
 .. avmetadata:: 
    :author: Nick Parlante, Cliff Shaffer, and Sally Hamouda
+   :requires: Pointer intro
+   :satisfies: Local memory
    :topic: Pointers
 
 Local Memory

@@ -5,6 +5,8 @@
 
 .. avmetadata:: 
    :author: Nick Parlante, Cliff Shaffer, and Sally Hamouda
+   :requires: Local memory
+   :satisfies: Heap Memory
    :topic: Pointers
 
 Heap Memory

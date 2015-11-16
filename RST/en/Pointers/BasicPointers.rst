@@ -5,6 +5,8 @@
 
 .. avmetadata:: 
    :author: Nick Parlante, Cliff Shaffer, and Sally Hamouda
+   :requires:
+   :satisfies: Pointer intro
    :topic: Pointers
 
 Basic Pointers
