@@ -1,17 +1,19 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
    :author: Nick Parlante, Cliff Shaffer, and Sally Hamouda
+   :requires:
+   :satisfies: Pointer intro
    :topic: Pointers
 
 Basic Pointers
 ==============
 
-Pointers |---| Before and After
--------------------------------
+What is a pointer?
+------------------
 
 There's a lot of nice, tidy code you can write without knowing about pointers. But once
 you learn to use the power of pointers, you can never go back. There are too many things
@@ -22,16 +24,10 @@ their problems, pointers are an irresistibly powerful programming construct. (Th
 following explanation uses the C language syntax where a syntax is required; there is a
 discussion of Java at the section.)
 
-Why have pointers?
-------------------
-
 Pointers solve two common software problems. First, pointers allow different sections of
 code to share information easily. You can get the same effect by copying information
 back and forth, but pointers solve the problem better. Second, pointers enable complex
 linked data structures like linked lists and binary trees.
-
-What is a pointer?
-------------------
 
 Simple ``int`` and ``float`` variables operate pretty intuitively. An
 ``int`` variable is like a box which can store a single ``int`` value such
@@ -70,9 +66,9 @@ reference to an ``int``.
    :figwidth: 100%
 
 
+Pointer Reference and Dereference
+---------------------------------
 
-Pointer Dereference
--------------------
 The :term:`dereference` operation follows a pointer's reference to get
 the value of its pointee.
 The value of the dereference of ``numPtr`` above is 42. When the dereference operation is
@@ -81,9 +77,6 @@ that the pointer must have a pointee for the dereference to access. Almost all b
 pointer code involve violating that one restriction. A pointer must be assigned a pointee
 before dereference operations will work.
 
-
-The NULL Pointer
-----------------
 
 The constant NULL is a special pointer value which encodes the idea of
 "points to nothing".
@@ -105,6 +98,7 @@ The C language uses the symbol NULL for this purpose.
 NULL is equal to the integer constant 0, so NULL can play the role of a boolean 
 false. Official C++ no longer uses the NULL symbolic constant |---| use the integer constant 0 directly. 
 Java uses the symbol null.
+
 
 Pointer Assignment
 ------------------
@@ -132,9 +126,6 @@ After assignment, the ``==`` test comparing the two pointers will return true. F
 NULL value. An assignment operation with a NULL pointer copies the NULL value
 from one pointer to another.
 
-Make A Drawing
---------------
-
 Memory drawings are the key to thinking about pointer code.
 When you are looking at code, thinking about how it will use memory at
 run time, then make a quick drawing to work out your ideas.
@@ -142,7 +133,7 @@ This tutorial certainly uses drawings to show how pointers work.
 That's the way to do it.
 
 Sharing
--------
+~~~~~~~
 
 Two pointers which both refer to a single pointee are said to be
 "sharing".
@@ -154,8 +145,9 @@ often the real goal.
 Later we will see how sharing can be used to provide efficient
 communication between parts of a program.
 
+
 Shallow and Deep Copying
-------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 In particular, sharing can enable communication between two functions. One function
 passes a pointer to the value of interest to another function. Both functions can access the
@@ -183,7 +175,8 @@ deep case, the smiley face is copied, and each function gets their own.
    
 The next module will explain the above sharing technique in detail.
 
-Bad Pointers 
+
+Bad Pointers
 ------------
 
 When a pointer is first allocated, it does not have a pointee.
@@ -223,15 +216,13 @@ locate and fix pointer bugs in dynamic languages. The run-time checks are also a
 why such languages always run at least a little slower than a compiled language like C or
 C++.
 
-Two Levels
-----------
-
 One way to think about pointer code is that operates at two levels |---| pointer level and
 pointee level. The trick is that **both** levels need to be initialized and connected for things
 to work. (1) the pointer must be allocated, (1) the pointee must be allocated, and (3) the
 pointer must be assigned to point to the pointee. It's rare to forget step (1). But forget (2)
 or (3), and the whole thing will blow up at the first dereference. Remember to account for
 both levels |---| make a memory drawing during your design to make sure it's right.
+
 
 Syntax
 ------
@@ -244,7 +235,7 @@ We will use the Java language syntax which has the advantage that it
 has influenced the syntaxes of several languages.
 
 Pointer Type Syntax
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 A pointer type in C is just the pointee type followed by an asterisk (*).
 
@@ -258,7 +249,7 @@ A pointer type in C is just the pointee type followed by an asterisk (*).
 
 
 Pointer Variables
------------------
+~~~~~~~~~~~~~~~~~
 
 Pointer variables are declared just like any other variable.
 The declaration gives the type and name of the new variable and
@@ -274,7 +265,7 @@ pointer starts out with a bad value.
 
 
 The & Operator |---| Reference To
----------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There are several ways to compute a reference to a pointee suitable
 for storing in a pointer.
@@ -308,11 +299,12 @@ For now we will just use & in a simple way.
 
 
 The * Operator |---| Dereference
---------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The star operator (*) dereferences a pointer. 
 The * is a unary operator which goes to the left of the pointer
 it dereferences. The pointer must have a pointee, or it's a runtime error.
+
 
 Example Pointer Code
 --------------------
@@ -374,7 +366,7 @@ demonstrates all the pointer rules.
    
 
 Bad Pointer Example
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 Code with the most common sort of pointer bug will **look** like the
 above correct code, but without the middle step where the pointers are
@@ -403,8 +395,9 @@ drawing of how memory is likely to react.
    :capalign: justify
    :figwidth: 100%     	
 
+
 Pointer Rules Summary
-----------------------
+---------------------
 
 No matter how complex a pointer structure gets, the list of rules remains short.
 
@@ -423,8 +416,8 @@ No matter how complex a pointer structure gets, the list of rules remains short.
   which introduces sharing.
 
 
-Extra: How Do Pointers Work In Java?
-------------------------------------
+How Do Pointers Work In Java?
+-----------------------------
 
 Java has pointers, but they are not manipulated with explicit operators such as ``*`` and ``&``. 
 In Java, simple data types such as ``int`` and ``char`` operate just as in C. More complex types
@@ -473,8 +466,9 @@ The Java approach has two main features.
   appeal of increased programmer efficiency and fewer bugs makes the
   slowness worthwhile for some  applications.
 
-Extra: How Are Pointers Implemented In The Machine?
----------------------------------------------------
+
+How Are Pointers Implemented In The Machine?
+--------------------------------------------
 
 How are pointers implemented?
 The short explanation is that every area of memory in the
@@ -490,8 +484,9 @@ uninitialized ``int`` variable which starts out with a random ``int`` value. The
 yet been assigned the specific address of a valid pointee. This is why dereference operations with bad pointers are so unpredictable. They operate on whatever random area
 of memory they happen to have the address of.
 
-Extra: The Term "Reference"
----------------------------
+
+The Term 'Reference'
+--------------------
 
 The word :term:`reference` means almost the same thing as the word
 "pointer".
@@ -506,8 +501,9 @@ which is a technique that uses pointer parameters for two-way
 communication between functions.
 This technique is the subject of a later module.
 
-Extra: Why Are Bad Pointer Bugs So Common?
-------------------------------------------
+
+Why Are Bad Pointer Bugs So Common?
+-----------------------------------
 
 Why is it so often the case that programmers will allocate a pointer,
 but forget to set it to refer to a pointee?
@@ -522,13 +518,3 @@ that a variable may be used once it is declared. Unfortunately, pointers look li
 before use. It's unfortunate, in a way, that pointers happen look like other variables, since
 it makes it easy to forget that the rules for their use are very different. Oh well. Try to
 remember to assign your pointers to refer to pointees. Don't be surprised when you forget.
-
-Notes
------
-
-This material taken from
-"`Pointers and Memory
-<http://cslibrary.stanford.edu/102/PointersAndMemory.pdf>`_"
-by Nick Parlante, Copyright 1998-2000,
-Stanford CS Education Library.
-Used by permission of the author.

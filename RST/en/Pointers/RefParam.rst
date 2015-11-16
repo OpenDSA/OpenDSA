@@ -1,14 +1,19 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
    :author: Nick Parlante, Cliff Shaffer, and Sally Hamouda
+   :requires: Local memory
+   :satisfies: Reference parameters
    :topic: Pointers
 
 Reference Parameters
 ====================
+
+Reference Parameters
+--------------------
 
 In the simplest :term:`pass by value` or :term:`value parameter`
 scheme, each function has separate, local memory and parameters are
@@ -30,7 +35,7 @@ This technique uses the sharing property of pointers so that the
 caller and callee can share the value of interest.
 
 Bill Gates Example
-------------------
+~~~~~~~~~~~~~~~~~~
 
 Suppose functions ``A()`` and ``B()`` both do computations involving Bill Gates' net worth
 measured in billions of dollars |---| the value of interest for this problem. ``A()`` is the main
@@ -39,7 +44,7 @@ add 1 to the value of interest.
 
 
 Bill Gates By Value
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 Here is the code and memory drawing for a simple, but incorrect implementation where
 ``A()`` and ``B()`` use pass by value. Three points in time, T1, T2, and T3 are marked in the
@@ -75,7 +80,7 @@ really just the old "independence" property of local storage, but in
 this case it is not what is wanted.
 
 By Reference
-------------
+~~~~~~~~~~~~
 
 The reference solution to the Bill Gates problem is to use a single
 ``netWorth`` variable for the value of interest and never copy
@@ -97,8 +102,10 @@ yet.
 The reference parameter strategy: ``B()`` receives a pointer to the value of interest instead of
 a copy.
 
+
 Passing By Reference
 --------------------
+
 Here are the steps to use in the code to use the pass-by-reference strategy:
 
 * Have a single copy of the value of interest.
@@ -114,7 +121,8 @@ Here are the steps to use in the code to use the pass-by-reference strategy:
   initialize such a local copy.
 
 Syntax
-------
+~~~~~~
+
 The syntax for by reference parameters  in the C language just uses pointer operations on
 the parameters:
 
@@ -136,11 +144,11 @@ the parameters:
 #. When the callee is running, if it wishes to access the value of
    interest, it must dereference its pointer to access the actual
    value of interest. Typically, this equates to use of the
-   dereference operator (*) in the function to see the value of
+   dereference operator (``*``) in the function to see the value of
    interest.
 
 Bill Gates By Reference
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~
 
 Here is the Bill Gates example written to use reference
 parameters. This code now matches the by-reference memory drawing
@@ -165,8 +173,9 @@ above.
 	// T3 -- B() has used its pointer to change the value of interest
    }
    
+
 Don't Make Copies
------------------
+~~~~~~~~~~~~~~~~~
 
 Reference parameters enable communication between the callee and its
 caller.
@@ -184,8 +193,8 @@ A person with two watches is never sure."
 Avoid making copies.
 
 
-Simple Reference Parameter Example |---| Swap()
------------------------------------------------
+Simple Reference Parameter Example: Swap()
+------------------------------------------
 
 The standard example of reference parameters is a ``Swap()`` function
 that exchanges the values of two ``ints``.
@@ -193,7 +202,7 @@ It's a simple function, but it does need to change the caller's memory
 which is the key feature of pass by reference.
 
 Swap() Function
----------------
+~~~~~~~~~~~~~~~
 
 The values of interest for ``Swap()`` are two ``ints``.
 Therefore, ``Swap()`` does not take ``ints`` as its parameters.
@@ -213,7 +222,7 @@ interest.
 	}
 	
 Swap() Caller
--------------
+~~~~~~~~~~~~~
 
 To call Swap(), the caller must pass pointers to the values of interest.
 
@@ -241,7 +250,8 @@ the variables x and y back in ``SwapCaller()``. ``Swap()`` will exchange any two
 pointers to those two ints.
 
 Swap() With Arrays
-------------------
+~~~~~~~~~~~~~~~~~~
+
 Just to demonstrate that the value of interest does not need to be a simple variable, here's
 a call to ``Swap()`` to exchange the first and last ``int``s in an array. ``Swap()`` takes ``int*``'s, but
 the ``ints`` can be anywhere. An ``int`` inside an array is still an ``int``.
@@ -263,8 +273,12 @@ ignore this case if it is not familiar to you |---|
 it's
 not an important area of the language and both forms compile to the exact same thing anyway.	         
 
+More Syntax
+-----------
+
 Is The & Always Necessary?
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 When passing by reference, the caller does not always need to use & to compute a new
 pointer to the value of interest. Sometimes the caller already has a pointer to the value of
 interest, and so no new pointer computation is required. The pointer to the value of
@@ -290,8 +304,10 @@ of interest...
     }	
 
 
+
 What About The & Bug TAB?
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
 All this use of & might make you nervous |---| are we committing the & bug from Section
 2? No, it turns out the above uses of & are fine. The & bug happens when an & passes a
 pointer to local storage from the callee back to its caller. When the callee exits, its local
@@ -303,7 +319,8 @@ sometime after its callee exits. Using & to pass a pointer to local storage from
 to the callee is fine. The reverse case, from the callee to the caller, is the & bug.
 
 The ** Case
------------
+~~~~~~~~~~~
+
 What if the value of interest to be shared and changed between the caller and callee is
 already a pointer, such as an ``int*`` or a ``struct fraction*``? 
 Does that change the rules for setting  up reference parameters? No. 
@@ -318,6 +335,7 @@ other pointer manipulating code were the value of interest to share and change i
 
 Reference Parameter Summary
 ---------------------------
+
 Passing by value (copying) does not allow the callee to communicate back to its caller
 and has also has the usual disadvantages of making copies. Pass by reference uses
 pointers to avoid copying the value of interest, and allow the callee to communicate back
@@ -330,8 +348,9 @@ Functions use the dereference operator (``*``) on the reference parameter to see
 value of interest.
 
 
-Extra: Reference Parameters in Java
------------------------------------
+Reference Parameters in Java
+----------------------------
+
 Because Java has no ``*``/``&`` operators, it is not possible to implement reference parameters
 in Java directly. Maybe this is ok |---| in the OOP paradigm, you should change objects by
 sending them messages which makes the reference parameter concept unnecessary. The caller passes the callee a (shallow) reference to the value of interest (object of interest?),
@@ -339,8 +358,10 @@ and the callee can send it a message to change it. Since all objects are intrins
 shallow, any change is communicated back to the caller automatically since the object of
 interest was never copied.
 
-Extra: Reference Parameters in C++
------------------------------------
+
+Reference Parameters in C++
+---------------------------
+
 Reference parameters are such a common programming task that they have been added as
 an official feature to the C++ language. So programming reference parameters in C++ is
 simpler than in C. All the programmer needs to do is syntactically indicate that they wish
@@ -373,14 +394,3 @@ The types of the various variables and parameters operate simply as they are dec
 (``int`` in this case). The complicating layer of pointers required to implement the
 reference parameters is hidden. The compiler takes care of it without allowing the
 complication to disturb the types in the source code.
-	
-
-Notes
------
-
-This material taken from
-"`Pointers and Memory
-<http://cslibrary.stanford.edu/102/PointersAndMemory.pdf>`_"
-by Nick Parlante, Copyright 1998-2000,
-Stanford CS Education Library.
-Used by permission of the author.

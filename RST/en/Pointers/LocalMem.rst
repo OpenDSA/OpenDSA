@@ -1,10 +1,12 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
    :author: Nick Parlante, Cliff Shaffer, and Sally Hamouda
+   :requires: Pointer intro
+   :satisfies: Local memory
    :topic: Pointers
 
 Local Memory
@@ -12,6 +14,7 @@ Local Memory
 
 Thanks For The Memory
 ---------------------
+
 Local variables are the programming structure everyone uses but no one thinks about.
 You think about them a little when first mastering the syntax. But after a few weeks, the
 variables are so automatic that you soon forget to think about how they work. This
@@ -35,6 +38,7 @@ from its allocation until its deallocation is called its :term:`lifetime`.
 The most common memory related error is using a deallocated variable. For local
 variables, modern languages automatically protect against this error. With pointers, as we
 will see however, the programmer must make sure that allocation is handled correctly.
+
 
 Local Memory
 ------------
@@ -91,8 +95,9 @@ Here is a more detailed version of the rules of local storage:
    owning function is known as :term:`lexical scoping` and pretty much
    all    languages do it that way now.
 	
-Small Locals Example
---------------------
+
+Examples
+--------
 
 Here is a simple example of the lifetime of local storage.
 
@@ -110,8 +115,6 @@ Here is a simple example of the lifetime of local storage.
 	}  // even during calls to other functions.
   } // (4) The locals are all deallocated when the function exits.
 	
-Large Locals Example
----------------------
 Here is a larger example which shows how the simple rule "the locals
 are allocated when their function begins running and are deallocated
 when it exits" can build more complex behavior.
@@ -156,8 +159,9 @@ deallocated |---| in effect the drawing shows the operation over time of
 the :term:` runtime stack` which is the data structure which the
 system uses to implement local storage.
 
-Observations About Local Parameters
------------------------------------
+
+Local Parameters
+----------------
 
 Local variables are tightly associated with their function |---| they
 are used there and nowhere else.
@@ -166,8 +170,8 @@ Only the ``Y()`` code can refer to its ``p`` and ``q``.
 This independence of local storage is the root cause of both its
 advantages and disadvantages.
 
-Advantages Of Locals
---------------------
+Disadvantages Of Locals
+~~~~~~~~~~~~~~~~~~~~~~~
 
 Locals are great for 90% of a program's memory needs:
 
@@ -194,7 +198,7 @@ Locals are great for 90% of a program's memory needs:
   engineering |---| keep separate components as independent as possible
 
 Disadvantages Of Locals
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~
 
 There are two disadvantages of Locals:
 
@@ -214,7 +218,7 @@ There are two disadvantages of Locals:
    problem below in the next module.
 
 Synonyms For "Local"
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 Local variables are also known as :term:`automatic variables` since
 their allocation and deallocation is done automatically as part of the
@@ -223,8 +227,9 @@ Local variables are also sometimes known as :term`stack variables`
 because, at a low level, languages almost always implement local
 variables using a stack structure in memory.
 
+
 The Ampersand (&) Bug |---| TAB
--------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Now that you understand the allocation schedule of locals, you can
 appreciate one of the more ugly bugs possible in C and C++.
@@ -259,15 +264,18 @@ uses of `&` are discussed in section 3, and the way to pass a pointer back to th
 shown in section 4.	
 
 Local Memory Summary
---------------------
+~~~~~~~~~~~~~~~~~~~~
+
 Locals are very convenient for what they do |---| providing convenient and efficient
 memory for a function which exists only so long as the function is executing. Locals have
 two deficiencies which we will address in the following sections |---| how a function can
 communicate back to its caller (Section 3), and how a function can allocate separate
 memory with a less constrained lifetime (section 4).
 
-Extra: How Does The Function Call Stack Work?
----------------------------------------------
+
+How Does The Function Call Stack Work?
+--------------------------------------
+
 You do not need to know how local variables are implemented during a function call, but
 here is a rough outline of the steps if you are curious. The exact details of the
 implementation are language and compiler specific. However, the basic structure below is
@@ -321,13 +329,3 @@ function call process:
   registers and others through the stack, so the overall process is
   complex. However, the apparent the lifetime of the variables will
   always follow the "stack" model presented here.
-
-Notes
------
-
-This material taken from
-"`Pointers and Memory
-<http://cslibrary.stanford.edu/102/PointersAndMemory.pdf>`_"
-by Nick Parlante, Copyright 1998-2000,
-Stanford CS Education Library.
-Used by permission of the author.
