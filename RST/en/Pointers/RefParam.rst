@@ -1,21 +1,16 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
    :author: Nick Parlante, Cliff Shaffer, and Sally Hamouda
+   :requires: Local memory
+   :satisfies: Reference parameters
    :topic: Pointers
 
 Reference Parameters
 ====================
-
-This material taken from
-"`Pointers and Memory
-<http://cslibrary.stanford.edu/102/PointersAndMemory.pdf>`_"
-by Nick Parlante, Copyright 1998-2000,
-Stanford CS Education Library.
-Used by permission of the author.
 
 Reference Parameters
 --------------------
@@ -149,11 +144,11 @@ the parameters:
 #. When the callee is running, if it wishes to access the value of
    interest, it must dereference its pointer to access the actual
    value of interest. Typically, this equates to use of the
-   dereference operator (*) in the function to see the value of
+   dereference operator (``*``) in the function to see the value of
    interest.
 
 Bill Gates By Reference
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~
 
 Here is the Bill Gates example written to use reference
 parameters. This code now matches the by-reference memory drawing

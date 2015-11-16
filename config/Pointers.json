@@ -15,24 +15,37 @@
   },
   "chapters": {
     "Pointers": {
-     "Pointers/Intro": {
-        "long_name": "Pointers Intro",
-        "exercises": { 
-           "pntrSumm1": {
-            "long_name": "Pointers test Exercise",
+      "Pointers/PointerIntro": {
+        "long_name": "Pointers Chapter Introduction",
+        "exercises": {}
+      },
+      "Pointers/BasicPointers": {
+        "long_name": "Basic Pointers",
+        "exercises": {}
+      },
+      "Pointers/LocalMem": {
+        "long_name": "Local Memory",
+        "exercises": {}
+      },
+      "Pointers/RefParam": {
+        "long_name": "Reference Parameters",
+        "exercises": {}
+      },
+      "Pointers/HeapMem": {
+        "long_name": "Heap Memory",
+        "exercises": {}
+      },
+      "Pointers/Exercises": {
+        "long_name": "Exercises",
+        "exercises": {
+          "FindNodePROG": {
+            "long_name": "Find Node Exercise",
             "required": true,
             "points": 1.0,
-            "threshold": 3,
-            "showhide": "Show"
-          }
-        }
-      },
-      "Pointers/PntrIntro": {
-        "long_name": "Pointers",
-        "exercises": { 
+            "threshold": 3
           }
         }
       }
     }
- }
-
+  }
+}

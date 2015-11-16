@@ -5,11 +5,12 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires:
+   :satisfies:
    :topic: Pointers
 
-Introduction
-============
+Pointers Chapter Introduction
+=============================
 
 What you see in this chapter is an extremely early version of our
 Pointer Tutorial project.

@@ -1,24 +1,19 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
    :author: Nick Parlante, Cliff Shaffer, and Sally Hamouda
+   :requires:
+   :satisfies: Pointer intro
    :topic: Pointers
 
 Basic Pointers
 ==============
 
-This material taken from
-"`Pointers and Memory
-<http://cslibrary.stanford.edu/102/PointersAndMemory.pdf>`_"
-by Nick Parlante, Copyright 1998-2000,
-Stanford CS Education Library.
-Used by permission of the author.
-
-Pointers |---| Before and After
--------------------------------
+What is a pointer?
+------------------
 
 There's a lot of nice, tidy code you can write without knowing about pointers. But once
 you learn to use the power of pointers, you can never go back. There are too many things
@@ -28,9 +23,6 @@ crash in random ways which makes them more difficult to debug. Nonetheless, even
 their problems, pointers are an irresistibly powerful programming construct. (The
 following explanation uses the C language syntax where a syntax is required; there is a
 discussion of Java at the section.)
-
-What is a pointer?
-------------------
 
 Pointers solve two common software problems. First, pointers allow different sections of
 code to share information easily. You can get the same effect by copying information
@@ -74,8 +66,8 @@ reference to an ``int``.
    :figwidth: 100%
 
 
-Pointer Dereference
--------------------
+Pointer Reference and Dereference
+---------------------------------
 
 The :term:`dereference` operation follows a pointer's reference to get
 the value of its pointee.
@@ -85,9 +77,6 @@ that the pointer must have a pointee for the dereference to access. Almost all b
 pointer code involve violating that one restriction. A pointer must be assigned a pointee
 before dereference operations will work.
 
-
-The NULL Pointer
-----------------
 
 The constant NULL is a special pointer value which encodes the idea of
 "points to nothing".
@@ -408,7 +397,7 @@ drawing of how memory is likely to react.
 
 
 Pointer Rules Summary
-----------------------
+---------------------
 
 No matter how complex a pointer structure gets, the list of rules remains short.
 
@@ -496,7 +485,7 @@ yet been assigned the specific address of a valid pointee. This is why dereferen
 of memory they happen to have the address of.
 
 
-The Term "Reference"
+The Term 'Reference'
 --------------------
 
 The word :term:`reference` means almost the same thing as the word
