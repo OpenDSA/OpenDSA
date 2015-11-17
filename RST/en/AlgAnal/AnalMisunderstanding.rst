@@ -151,6 +151,10 @@ worst, and average cases as the input size grows.
 .. inlineav:: MisunderstandingsGraphCON ss
    :output: show
 
+
+Practice Questions
+------------------
+
 .. avembed:: Exercises/AlgAnal/MisSumm.html ka
 
 .. odsascript:: AV/AlgAnal/MisunderstandingsGraphCON.js

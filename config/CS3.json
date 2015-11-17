@@ -409,7 +409,9 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            },
+            }
+          },
+          "Practice Questions": {
             "AnalProblemSumm": {
               "long_name": "Problem Analysis Exercise",
               "required": true,
@@ -430,6 +432,8 @@
               "points": 0.0,
               "threshold": 1.0
             },
+          },
+          "Practice Questions": {
             "MisSumm": {
               "long_name": "Common Misconceptions Exercise",
               "required": true,
@@ -523,7 +527,9 @@
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            },
+            }
+          },
+          "Array-based List Positions": {
             "alistIntroCON": {
               "long_name": "Array-based List Intro Slideshow",
               "required": true,
@@ -537,18 +543,22 @@
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            },
-            "alistAppendCON": {
-              "long_name": "Array-based List Append Slideshow",
-              "required": true,
-              "points": 0.0,
-              "threshold": 1.0
-            },
+            }
+          },
+          "Insert Practice Exericse": {
             "AlistInsertPRO": {
               "long_name": "Array-based List Insert Exercise",
               "required": true,
               "points": 1,
               "threshold": 5
+            }
+          },
+          "Append": {
+            "alistAppendCON": {
+              "long_name": "Array-based List Append Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
             }
           },
           "Remove": {
@@ -557,7 +567,9 @@
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            },
+            }
+          },
+          "Remove Practice Exericse": {
             "AlistRemovePRO": {
               "long_name": "Array-based List Remove Exercise",
               "required": true,
@@ -565,6 +577,7 @@
               "threshold": 5
             }
           },
+          "Other Operations": {},
           "Array-based List Practice Questions": {
             "ALSumm": {
               "long_name": "Array-based List Summary",

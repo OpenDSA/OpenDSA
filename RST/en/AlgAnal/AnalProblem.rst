@@ -107,10 +107,13 @@ If the lower bound for the problem matches the upper bound for the
 algorithm (within a constant factor), then we know that we can find an
 algorithm that is better only by a constant factor.
 
-
-.. avembed:: Exercises/AlgAnal/AnalProblemSumm.html ka
-
 .. [#] While it is fortunate to know the truth, it is unfortunate that
        sorting is :math:`\Theta(n \log n)` rather than :math:`\Theta(n)`!
+
+
+Practice Questions
+------------------
+
+.. avembed:: Exercises/AlgAnal/AnalProblemSumm.html ka
 
 .. odsascript:: AV/AlgAnal/AnalyzingProblemsCON.js

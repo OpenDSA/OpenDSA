@@ -29,8 +29,12 @@ and so must implement all of the member functions of ``List``.
 .. inlineav:: alistVarsCON ss
    :output: show
 
+Array-based List Positions
+--------------------------
+
 .. inlineav:: alistIntroCON ss
    :output: show
+
 
 Insert
 ------
@@ -42,11 +46,18 @@ and ``remove`` methods must maintain this property.
 .. inlineav:: alistInsertCON ss
    :output: show
 
+
+Insert Practice Exericse
+------------------------
+
+.. avembed:: Exercises/List/AlistInsertPRO.html ka
+
+
+Append
+------
 .. inlineav:: alistAppendCON ss
    :output: show
 
-.. avembed:: Exercises/List/AlistInsertPRO.html ka
-  
 
 Remove
 ------
@@ -58,6 +69,10 @@ If we want to remove the element at position :math:`i`, then
 :math:`n - i - 1` elements must shift toward the head, as shown in the
 following slideshow. 
 
+
+Remove Practice Exericse
+------------------------
+
 .. inlineav:: alistRemoveCON ss
    :output: show
 
@@ -66,12 +81,17 @@ of the elements, which is :math:`\Theta(n)`.
 
 .. avembed:: Exercises/List/AlistRemovePRO.html ka
 
+
+Other Operations
+----------------
+
 Aside from ``insert`` and ``remove``, the only other operations that
 might require more than constant time are the constructor and
 ``clear``.
 The other methods for Class ``AList`` simply
 access the current list element or move the current position.
 They all require :math:`\Theta(1)` time.
+
 
 Array-based List Practice Questions
 -----------------------------------
