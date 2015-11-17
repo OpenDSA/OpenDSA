@@ -6,7 +6,7 @@ $(document).ready(function() {
   var av_name = "recurIntroDetailsCON";
   var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
   // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
+  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
