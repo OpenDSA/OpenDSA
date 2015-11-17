@@ -392,7 +392,8 @@ delete algorithm.
 
 .. codeinclude:: Indexing/BPremove
 
-The :math:`\mathrm{B}^+` tree requires that all nodes be at least half
+The :term:`B$^*$-tree`
+tree requires that all nodes be at least half
 full (except for the root).
 Thus, the storage utilization must be at least 50\%.
 This is satisfactory for many implementations, but note that keeping

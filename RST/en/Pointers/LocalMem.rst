@@ -12,32 +12,44 @@
 Local Memory
 ============
 
-Thanks For The Memory
----------------------
+Thanks For The Memory: Allocation and Deallocation
+--------------------------------------------------
 
-Local variables are the programming structure everyone uses but no one thinks about.
-You think about them a little when first mastering the syntax. But after a few weeks, the
-variables are so automatic that you soon forget to think about how they work. This
-situation is a credit to modern programming languages |---| most of the time variables
-appear automatically when you need them, and they disappear automatically when you
-are finished. For basic programming, this is a fine situation. However, for advanced
-programming, it's going to be useful to have an idea of how variables work...
+:term:`Local variables <local variable>` are the programming structure
+everyone uses but no one thinks about.
+You think about them a little when first mastering the syntax.
+But after a few weeks, the variables are so automatic that you soon
+forget to think about how they work.
+This situation is a credit to modern programming languages |---| most
+of the time variables appear automatically when you need them, and
+they disappear automatically when you are finished.
+For basic programming, this is a fine situation.
+However, for advanced programming, it's going to be useful to have an
+idea of how variables work...
 
+Variables represent storage space in the computer's memory.
+Each variable presents a convenient names like length or sum in the
+source code.
+Behind the scenes at runtime, each variable uses an area of the
+computer's memory to store its value.
+It is not the case that every variable in a program has a permanently
+assigned area of memory.
+Instead, modern languages are smart about giving memory to a variable
+only when necessary.
+The terminology is that a variable is allocated when it is given an
+area of memory to store its value.
+While the variable is :term:`allocated`, it can operate as a variable
+in the usual way to hold a value.
+A variable is :term:`deallocated` when the system reclaims the memory
+from the variable, so it no longer has an area to store its value.
+For a variable, the period of time from its allocation until its
+deallocation is called its :term:`lifetime`.
 
-Allocation And Deallocation
----------------------------
-Variables represent storage space in the computer's memory. Each variable presents a convenient names like
-length or sum in the source code. Behind the scenes at runtime, each variable uses an area of the computer's memory to store its value. It is not the case
-that every variable in a program has a permanently assigned area of memory. Instead, modern languages are smart about giving memory to a variable only when necessary. The
-terminology is that a variable is allocated when it is given an area of memory to store its
-value. While the variable is :term:`allocated`, it can operate as a variable in the usual way to hold
-a value. A variable is :term:`deallocated` when the system reclaims the memory from the
-variable, so it no longer has an area to store its value. For a variable, the period of time
-from its allocation until its deallocation is called its :term:`lifetime`.
-
-The most common memory related error is using a deallocated variable. For local
-variables, modern languages automatically protect against this error. With pointers, as we
-will see however, the programmer must make sure that allocation is handled correctly.
+The most common memory related error is using a deallocated variable.
+For local variables, modern languages automatically protect against
+this error.
+With pointers, as we will see however, the programmer must make sure
+that allocation is handled correctly.
 
 
 Local Memory
