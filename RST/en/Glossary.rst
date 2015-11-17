@@ -963,7 +963,7 @@ Glossary
       :to-term: strategy :label: example
       :to-term: visitor :label: example
 
-      An abstraction for describing the design of programs |---|
+      An abstraction for describing the design of programs,
       that is, the interactions of objects and classes.
       Experienced software designers learn and reuse patterns
       for combining software components, and design patterns allow
@@ -3212,8 +3212,8 @@ Glossary
 
    resource constraints
       Examples of resource constraints include the total space
-      available to store the data |---| possibly divided into separate
-      main memory and disk space constraints |---| and the time
+      available to store the data (possibly divided into separate
+      main memory and disk space constraints) and the time
       allowed to perform each subtask.
 
    root
