@@ -190,7 +190,7 @@ def process_module(config, index_rst, mod_path, mod_attrib={'exercises': {}}, de
     # Append data from the processed module to the global variables
     todo_list += module.todo_list
     images += module.images
-    missing_exercises += module.missing_exercises
+    #missing_exercises += module.missing_exercises
     satisfied_requirements += module.requirements_satisfied
     num_ref_map = dict(num_ref_map.items() + module.num_ref_map.items())
     if len(module.cmap_dict['concepts']) > 0:
