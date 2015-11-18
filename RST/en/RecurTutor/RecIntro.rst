@@ -11,7 +11,10 @@
 .. odsalink:: AV/RecurTutor/recurIntroCON.css
 
 Introduction
-==========================
+============
+
+Introduction
+------------
 
 An :term:`algorithm` (or a function in a computer program) is
 :term:`recursive <recursion>` if it invokes itself to do part of its
@@ -87,6 +90,10 @@ the rest to some helper, as in this example.
 
 .. inlineav:: recurIntroDelegateCON ss
    :output: show  
+
+
+Taking a Closer Look
+--------------------
 
 Let's look deeper into the details of what your friend does when
 you delegate the work.

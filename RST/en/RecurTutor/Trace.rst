@@ -12,8 +12,11 @@
 .. odsalink:: AV/RecurTutor/recurTraceCON.css
 .. odsalink:: AV/RecurTutor/TOHfigCON.css
 
-Tracing recursive code
+Tracing Recursive Code
 ======================
+
+Tracing Recursive Code
+----------------------
 
 When writing a recursive function, you should think in a top-down
 manner.
@@ -47,15 +50,27 @@ It occurs in the same way with any function.
 In this section, we will see several examples for how trace a
 recursive call.
 
+
+Sum Example
+-----------
+
 First is a trace for a simple sum function.
 
 .. inlineav:: recurTraceSumCON ss
    :output: show
 
+
+Factorial Example
+-----------------
+
 Here is a tracing example of the factorial function.
 
 .. inlineav:: recurTraceFactCON ss
    :output: show 
+
+
+Another Summing Example
+-----------------------
 
 As you trace the code, you should observe several things.
 Let's use the array summing function again for an example.
@@ -72,14 +87,16 @@ arrived at, having been built up from the base case.
 Whenever the return statement of the recursive call has no more work to do
 AFTER the recursive call, the function is said to be tail-recursive.
 
-Next Example will model the domino effect recursively:
+
+A Domino Analogy
+----------------
 
 .. inlineav:: recurTraceDmnCON ss
    :output: show 
 
 After modeling the domino effect recursively, the two steps
-in the previous visualization becomes a template solution for general linear
-recursive questions. If we think of tipping over each
+in the previous visualization becomes a template solution for general
+linear recursive questions. If we think of tipping over each
 domino as performing a further step of computation toward
 the final solution, then this template is capable of solving
 all linear recursive problems. The rules of thumb toward a
@@ -96,6 +113,9 @@ computed recursively by solving its next smaller case
 first followed by some subsequent computation.
 
 
+Using the Domino Analogy
+------------------------
+
 The next visualization shows how we can use the
 Domino effect to recursively print the integers from 1 to N.
 
@@ -103,11 +123,18 @@ Domino effect to recursively print the integers from 1 to N.
    :output: show 
 
 
+Another Domino Example
+----------------------
+
 This next visualization shows how we can use the Domino technique to
 recursively count the number of digits in an integer.
 
 .. inlineav:: recurTraceDmnCntCON ss
    :output: show 
+
+
+Towers of Hanoi
+---------------
 
 Here is another example of recursion, based on a famous puzzle called
 "Towers of Hanoi".

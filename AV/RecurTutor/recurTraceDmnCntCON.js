@@ -1,9 +1,6 @@
-"use strict";
-  
-//===============================================================================================================================
 // Visualization of Domino Effect to Count the number of digits in an integer
-(function ($) {
-
+$(document).ready(function () {
+  "use strict";
   var av_name ="recurTraceDmnCntCON";
   var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
       interpret = config.interpreter,       // get the interpreter
@@ -59,9 +56,4 @@
   av.label("10^n's digit",  {"top": "6px", "left": "150px"}).css({'font-size': '15px', "text-align": "center"});
  
   av.recorded();
-  
-}(jQuery));
-
-
-
-//==============================================================================================================================
+});

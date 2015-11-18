@@ -1,9 +1,6 @@
-"use strict";
-
-//===============================================================================================================================
 // Visualization of the basic principle of Domino Effect 
-(function ($) {
-
+$(document).ready(function () {
+  "use strict";
   var av_name ="recurTraceDmnCON";
   var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
       interpret = config.interpreter,       // get the interpreter
@@ -68,9 +65,4 @@
   av.step();
 
   av.recorded();
-  
-}(jQuery));
-
-
-
-//==============================================================================================================================
+});
