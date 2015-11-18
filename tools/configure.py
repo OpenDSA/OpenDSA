@@ -39,8 +39,6 @@ import re
 import subprocess
 import codecs
 import datetime
-import pprint
-import collections
 import threading
 import requests
 
@@ -53,6 +51,8 @@ from postprocessor import update_TOC, update_TermDef, make_lti
 from urlparse import urlparse
 from canvas_sdk.methods import accounts, courses, external_tools, modules, assignments
 from canvas_sdk import RequestContext
+
+requests.packages.urllib3.disable_warnings()
 
 # List of exercises encountered in RST files that do not appear in the
 # configuration file
@@ -375,7 +375,7 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
         results = modules.create_module_item(
             request_ctx, course_id, module_id, 'SubHeader',
             module_item_content_id=None,
-            module_item_title=str(module_position) + "." + str(module_item_position) + ". " + module_name,
+            module_item_title=str(module_position) + "." + str(module_item_position) + ". " + str(module_name),
             module_item_indent=0)
 
         module_item_position += 1
@@ -387,6 +387,7 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
             for section in sections:
                 section_obj = sections[section]
                 section_name = section
+                showsection = section_obj.get("showsection")
                 no_exercise = 1
                 for attr in section_obj:
                     if isinstance(section_obj[attr], dict):
@@ -400,49 +401,51 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
                         if long_name is not None and required is not None and points is not None and threshold is not None:
                             # print(str(section_couter).zfill(2)) + " " + long_name
                             # OpenDSA exercises will map to canvas assignments
-                            results = assignments.create_assignment(
-                                request_ctx,
-                                course_id,
-                                section_name,
-                                assignment_submission_types="external_tool",
-                                assignment_external_tool_tag_attributes={
-                                    "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2)},
-                                assignment_points_possible=points,
-                                assignment_description=section_name)
-                            assignment_id = results.json().get("id")
+                            if showsection is None or (showsection is not None and showsection == True):
+                                results = assignments.create_assignment(
+                                    request_ctx,
+                                    course_id,
+                                    section_name,
+                                    assignment_submission_types="external_tool",
+                                    assignment_external_tool_tag_attributes={
+                                        "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2)},
+                                    assignment_points_possible=points,
+                                    assignment_description=section_name)
+                                assignment_id = results.json().get("id")
 
-                            config.chapters[chapter_name][str(module)]["sections"][section_name]["item_id"] = assignment_id
-                            # add assignment to module
-                            results = modules.create_module_item(
-                                request_ctx,
-                                course_id,
-                                module_id,
-                                'Assignment',
-                                module_item_content_id=assignment_id,
-                                module_item_indent=1)
+                                config.chapters[chapter_name][str(module)]["sections"][section_name]["item_id"] = assignment_id
+                                # add assignment to module
+                                results = modules.create_module_item(
+                                    request_ctx,
+                                    course_id,
+                                    module_id,
+                                    'Assignment',
+                                    module_item_content_id=assignment_id,
+                                    module_item_indent=1)
                             section_couter += 1
                             no_exercise = 0
                 if no_exercise == 1:
-                    results = assignments.create_assignment(
-                        request_ctx,
-                        course_id,
-                        section_name,
-                        assignment_submission_types="external_tool",
-                        assignment_external_tool_tag_attributes={
-                            "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2)},
-                        assignment_points_possible=0,
-                        assignment_description=section_name)
-                    assignment_id = results.json().get("id")
+                    if showsection is None or (showsection is not None and showsection == True):
+                        results = assignments.create_assignment(
+                            request_ctx,
+                            course_id,
+                            section_name,
+                            assignment_submission_types="external_tool",
+                            assignment_external_tool_tag_attributes={
+                                "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2)},
+                            assignment_points_possible=0,
+                            assignment_description=section_name)
+                        assignment_id = results.json().get("id")
 
-                    config.chapters[chapter_name][str(module)]["sections"][section_name]["item_id"] = assignment_id
-                    # add assignment to module
-                    results = modules.create_module_item(
-                        request_ctx,
-                        course_id,
-                        module_id,
-                        'Assignment',
-                        module_item_content_id=assignment_id,
-                        module_item_indent=1)
+                        config.chapters[chapter_name][str(module)]["sections"][section_name]["item_id"] = assignment_id
+                        # add assignment to module
+                        results = modules.create_module_item(
+                            request_ctx,
+                            course_id,
+                            module_id,
+                            'Assignment',
+                            module_item_content_id=assignment_id,
+                            module_item_indent=1)
                     section_couter += 1
         else:
             results = assignments.create_assignment(
@@ -476,7 +479,7 @@ def create_course(config):
 
     # load LMS config file
     # Throw an error if the specified LMS config files doesn't exist
-    LMS_config = config.config_file_path[:-5]+'_LMSconf.json'
+    LMS_config = config.config_file_path[:-5] + '_LMSconf.json'
     if not os.path.exists(LMS_config):
         print_err("ERROR: File %s doesn't exist\n" % LMS_config)
         sys.exit(1)
@@ -505,10 +508,21 @@ def create_course(config):
     # get course_id
     results = courses.list_your_courses(request_ctx,
                                         'total_scores')
-    # TODO: Proper error message when the course is not created yet.
+    course_id = None
     for i, course in enumerate(results.json()):
         if course.get("course_code") == course_code:
             course_id = course.get("id")
+
+    if course_id is None:
+        print_err('Course ' +course_code+' was not found in '+ config.target_LMS + " LMS " + config.LMS_url)
+        sys.exit(1)
+
+    # Reset course
+    results = courses.reset_content(
+        request_ctx, course_id)
+
+    # get new course_ud, becasue canvas change it after course reset
+    course_id = results.json()["id"]
 
     # save course_id
     config['course_id'] = course_id
@@ -546,8 +560,16 @@ def register_book(config):
     url = config.logging_server + '/api/v1/module/loadbook/'
     headers = {'content-type': 'application/json'}
 
+    json_data = {}
+    json_data["odsa_username"] = config.odsa_username
+    json_data["odsa_password"] = config.odsa_password
+    json_data["course_id"] = config.course_id
+    json_data["course_code"] = config.course_code
+    json_data["LMS_url"] = config.LMS_url
+    json_data["chapters"] = config.chapters
+
     print "\nRegistring Book in OpenDSA-server " + config.logging_server + '\n'
-    response = requests.post(url, data=json.dumps(config.__dict__), headers=headers, verify=False)
+    response = requests.post(url, json=json_data, headers=headers, verify=False)
     response_obj = json.loads(response.content)
 
     if response_obj['saved']:

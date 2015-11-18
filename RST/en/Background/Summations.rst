@@ -8,6 +8,11 @@
    :satisfies: summation; recurrence
    :topic: Math Background
 
+.. odsalink:: AV/Background/SummationOneToNCON.css
+.. odsalink:: AV/Background/SummationTwoPowerICON.css
+.. odsalink:: AV/Background/LinearRecurrencesCON.css
+.. odsalink:: AV/Background/LinearRecurrencesNCON.css
+
 Summations and Recurrence Relations
 ===================================
 
@@ -123,18 +128,6 @@ the summation grows closer to
 
 where :math:`\gamma` is Euler's constant and has the value 0.5772...
 
-
-.. todo::
-   :type: SlideShow
-
-   Provide a slideshow for some of the previous summations to present
-   how we reached the closed form of the summation visually. For
-   example, finding the closed form of :math:`\sum_{i=1}^{n} i` can be
-   easily presented visually using a set of rectangles stacked
-   vetrically for each value of $i$, and then the closed form would be
-   the total surface area of the final shape.
-
-
 Most of these equalities can be proved easily by a
 :ref:`proof by induction <Proofs>`.
 Unfortunately, induction does not help us derive a closed-form
@@ -143,6 +136,19 @@ It only confirms when a proposed closed-form solution is correct.
 There are techniques for deriving
 :ref:`closed-form solutions <closed-form solution> <AdvSumm>`.
 
+
+Example: Summing Integers from 1 to n
+-------------------------------------
+
+.. inlineav:: SummationOneToNCON ss
+   :output: show
+
+
+Example: Summing Powers of 2
+----------------------------
+
+.. inlineav:: SummationTwoPowerICON ss
+   :output: show
 
 Recurrence Relations
 --------------------
@@ -247,6 +253,13 @@ definition.
    that this is the correct closed form solution, we should use an
    :ref:`induction proof <FactRecurProof>` to complete the process.
 
+.. inlineav:: LinearRecurrencesCON ss
+   :output: show
+   
+
+Another Recurrence Example
+--------------------------
+
 .. topic:: Example
 
    A slightly more complicated recurrence is
@@ -278,13 +291,13 @@ definition.
    This is equivalent to the summation :math:`\sum_{i=1}^n i`,
    for which we already know the closed-form solution.
 
+.. inlineav:: LinearRecurrencesNCON ss
+   :output: show
+	  
 There are many more techniques to find closed-form solutions for
 recurrence relations.
 
-.. todo::
-   :type: SlideShow
-
-   Provide a slideshow to present how we can guess the closed form of
-   some recurrence relations using the unrolling method (using a
-   tree). We can start with only two recurrences $T(n) = T(n-1) + 1$
-   and $T(n) = T(n-1) + n$.
+.. odsascript:: AV/Background/SummationOneToNCON.js
+.. odsascript:: AV/Background/SummationTwoPowerICON.js
+.. odsascript:: AV/Background/LinearRecurrencesCON.js
+.. odsascript:: AV/Background/LinearRecurrencesNCON.js

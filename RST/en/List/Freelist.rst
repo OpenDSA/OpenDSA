@@ -14,6 +14,9 @@
 Freelists
 =========
 
+Freelists
+---------
+
 The ``new`` operator is relatively expensive to use.
 Garbage collection is also expensive.
 A :chap:`memory manager <memory manager> <Memory Management>`
@@ -91,9 +94,6 @@ start of its memory pool.
 However, when you do not use a freelist, dropping access to nodes
 creates garbage which leads to expensive processing at garbage
 collection time.
-
-Notes
------
 
 .. [#] A language like C++ could use operator overloading to redefine
    the ``new`` and ``delete`` operators.

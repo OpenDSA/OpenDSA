@@ -4,7 +4,7 @@
 // Visualization of Domino Effect to Count the number of digits in an integer
 (function ($) {
 
-  var av = new JSAV("recursionTrcDmnCntCON");
+  var av = new JSAV("recurTraceDmnCntCON");
   var rect = av.g.rect(150, 30, 50, 90).css({"fill": "grey"});
 
   var dot = av.g.circle(270, 75, 2);

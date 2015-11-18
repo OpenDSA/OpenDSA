@@ -12,13 +12,13 @@
 Comparison of List Implementations
 ==================================
 
+Space Comparison
+----------------
+
 Now that you have seen two substantially different implementations for
 lists, it is natural to ask which is better.
 In particular, if you must implement a list for some task,
 which implementation should you choose?
-
-Space Comparison
-----------------
 
 Given a collection of elements to store, they take up some amount of
 space whether they are simple integers or large objects with many
@@ -155,5 +155,8 @@ quarter full.
 To analyze the overall cost of dynamic array operations over time,
 we need to use a technique known as
 :ref:`amortized analysis <amortized analysis> <AmortAnal>`.
+
+Practice Questions
+------------------
 
 .. avembed:: Exercises/List/LLSumm.html ka

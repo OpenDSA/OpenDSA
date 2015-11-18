@@ -1,0 +1,780 @@
+{
+  "title": "All OpenDSA Materials",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Processing": {
+      "ext": [
+        "pde"
+      ],
+      "label": "Processing",
+      "lang": "java"
+    },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "lang": "en",
+  "module_origin": "https://lti.cs.vt.edu",
+  "exercise_server": "https://ltitest.cs.vt.edu:8443",
+  "logging_server": "https://ltitest.cs.vt.edu:8443",
+  "score_server": "https://ltitest.cs.vt.edu:8443",
+  "build_JSAV": false,
+  "allow_anonymous_credit": true,
+  "suppress_todo": false,
+  "dispModComp": true,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "chapters": {
+    "Preface": {
+      "Intro": {
+        "long_name": "How to Use this System",
+        "exercises": {},
+        "sections": {}
+      }
+    },
+    "Introduction": {
+      "Background/IntroDSA": {
+        "long_name": "Introduction to Data Structures and Algorithms",
+        "exercises": {},
+        "sections": {
+          "Introduction": {},
+          "Course Goals": {},
+          "Some Software Engineering Topics": {
+            "showsection": true
+          },
+          "A Philosophy of Data Structures": {},
+          "Selecting a Data Structure": {},
+          "Introduction Summary Questions": {
+            "IntroSumm": {
+              "long_name": "Introduction Summary Questions",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      }
+    },
+    "Biographies": {
+      "Biography/CarlGauss": {
+        "long_name": "Carl Gauss",
+        "exercises": {},
+        "sections": {
+          "Spotlight: Carl Friedrich Gauss": {}
+        }
+      },
+      "Biography/FrancisBacon": {
+        "long_name": "Francis Bacon",
+        "exercises": {},
+        "sections": {
+          "Spotlight: Francis Bacon": {}
+        }
+      }
+    },
+    "Programming Tutorials": {
+      "Tutorials/cmdline": {
+        "long_name": "Command Line Basics",
+        "exercises": {},
+        "sections": {
+          "What's A CLI?": {
+            "terminal": {
+              "long_name": "Terminal",
+              "required": false,
+              "points": 0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Tutorials/parameters": {
+        "long_name": "Parsing Command Line Parameters",
+        "exercises": {},
+        "sections": {
+          "Parameters In Programming": {}
+        }
+      },
+      "Tutorials/eclipseparameters": {
+        "long_name": "Using parameters in Eclipse",
+        "exercises": {},
+        "sections": {}
+      },
+      "Tutorials/webcattools": {
+        "long_name": "Configuring Eclipse For Virginia Tech",
+        "exercises": {},
+        "sections": {}
+      },
+      "Tutorials/debugmethods": {
+        "long_name": "Debugging Methods",
+        "exercises": {},
+        "sections": {}
+      },
+      "Tutorials/debug": {
+        "long_name": "Debugging in Eclipse",
+        "exercises": {},
+        "sections": {}
+      },
+      "Tutorials/scanning": {
+        "long_name": "Reading In Input",
+        "exercises": {},
+        "sections": {
+          "The Scanner Class": {}
+        }
+      },
+      "Tutorials/randomaccessfile": {
+        "long_name": "Using the Java RandomAccessFile class",
+        "exercises": {},
+        "sections": {
+          "Understanding File I/O": {},
+          "Using RandomAccessFile Class": {}
+        }
+      },
+      "Tutorials/junitstart": {
+        "long_name": "Junit tests and how to use them",
+        "exercises": {},
+        "sections": {
+          "Getting Started": {},
+          "Design Considerations": {},
+          "Meaningful Tests": {},
+          "More Information": {}
+        }
+      },
+      "Tutorials/junitbasic": {
+        "long_name": "Junit tests and how to use them",
+        "exercises": {},
+        "sections": {}
+      },
+      "Tutorials/junitcoverage": {
+        "long_name": "Junit tests and how to use them",
+        "exercises": {},
+        "sections": {
+          "Getting Started": {},
+          "Using EclEmma": {}
+        }
+      }
+    },
+    "Design I": {
+      "Design/ADT": {
+        "long_name": "Abstract Data Types",
+        "exercises": {},
+        "sections": {
+          "Abstract Data Types": {
+            "ADTCON": {}
+          },
+          "ADT Summary Questions": {
+            "IntroADTSumm": {
+              "long_name": "ADT Summary Questions",
+              "required": true,
+              "points": 1.0,
+              "threshold": 4
+            }
+          }
+        }
+      },
+      "Design/IntroOO": {
+        "long_name": "Introduction to Object Orientation",
+        "exercises": {},
+        "sections": {
+          "Introduction": {},
+          "Principles of Object Oriented Programming": {},
+          "Encapsulation": {},
+          "Inheritance": {},
+          "Polymorphism": {},
+          "Abstraction": {}
+        }
+      },
+      "Design/IntroUML": {
+        "long_name": "The Unified Modeling Language",
+        "exercises": {},
+        "sections": {
+          "The Unified Modeling Language": {},
+          "Static and Dynamic Diagrams": {},
+          "Class Diagrams": {}
+        }
+      },
+      "Design/IntroProcess": {
+        "long_name": "Software Development Processes",
+        "exercises": {},
+        "sections": {
+          "Introduction": {},
+          "Waterfall Method": {},
+          "Rational Unified Process": {},
+          "eXtreme Programming (XP)": {},
+          "Crystal": {},
+          "Scrum": {},
+          "Feature-Driven Development (FDD)": {}
+        }
+      }
+    },
+    "Pointers": {
+      "Pointers/PointerIntro": {
+        "long_name": "Pointers Chapter Introduction",
+        "exercises": {},
+        "sections": {}
+      },
+      "Pointers/BasicPointers": {
+        "long_name": "Basic Pointers",
+        "exercises": {},
+        "sections": {
+          "What is a pointer?": {},
+          "Pointer Reference and Dereference": {},
+          "Pointer Assignment": {},
+          "Bad Pointers": {},
+          "Syntax": {},
+          "Example Pointer Code": {},
+          "Pointer Rules Summary": {},
+          "How Do Pointers Work In Java?": {},
+          "How Are Pointers Implemented In The Machine?": {},
+          "The Term 'Reference'": {},
+          "Why Are Bad Pointer Bugs So Common?": {}
+        }
+      },
+      "Pointers/LocalMem": {
+        "long_name": "Local Memory",
+        "exercises": {},
+        "sections": {
+          "Thanks For The Memory": {},
+          "Allocation And Deallocation": {},
+          "Local Memory": {},
+          "Examples": {},
+          "Local Parameters": {},
+          "How Does The Function Call Stack Work?": {}
+        }
+      },
+      "Pointers/RefParam": {
+        "long_name": "Reference Parameters",
+        "exercises": {},
+        "sections": {
+          "Reference Parameters": {},
+          "Passing By Reference": {},
+          "Simple Reference Parameter Example: Swap()": {},
+          "More Syntax": {},
+          "Reference Parameter Summary": {},
+          "Reference Parameters in Java": {},
+          "Reference Parameters in C++": {}
+        }
+      },
+      "Pointers/HeapMem": {
+        "long_name": "Heap Memory",
+        "exercises": {},
+        "sections": {
+          "Heap Memory": {},
+          "What Does The Heap Look Like?": {},
+          "Programming The Heap": {},
+          "C Specifics": {},
+          "Simple Heap Example": {},
+          "Simple Heap Observations": {},
+          "Heap Array": {},
+          "Heap String Example": {},
+          "Memory Leaks": {},
+          "Ownership": {},
+          "Heap Memory Summary": {}
+        }
+      },
+      "Pointers/Exercises": {
+        "long_name": "Exercises",
+        "exercises": {},
+        "sections": {
+          "Exercises": {
+            "FindNodePROG": {
+              "long_name": "Find Node Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3
+            }
+          }
+        }
+      }
+    },
+    "Mathematical Background": {
+      "Background/MathpreIntro": {
+        "long_name": "Chapter Introduction",
+        "exercises": {},
+        "sections": {}
+      },
+      "Background/SetDef": {
+        "long_name": "Set Definitions",
+        "exercises": {},
+        "sections": {
+          "Set Notation": {},
+          "Relations": {},
+          "Relations Practice Exercise": {
+            "SetTFrelation": {
+              "long_name": "Relations Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 5
+            }
+          },
+          "Equivalence Relations Practice Exercise": {
+            "SetTFequivrel": {
+              "long_name": "Equivalence Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3
+            }
+          },
+          "Partial Orders": {
+            "SetTFpartialorder": {
+              "long_name": "PartialOrder Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3
+            }
+          }
+        }
+      },
+      "Background/MiscMath": {
+        "long_name": "Miscellaneous Notation",
+        "exercises": {},
+        "sections": {}
+      },
+      "Background/Logarithms": {
+        "long_name": "Logarithms",
+        "exercises": {},
+        "sections": {
+          "Logarithms": {
+            "MathLogSumm": {
+              "long_name": "Logarithms Practice Questions",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Background/Summations": {
+        "long_name": "Summations and Recurrence Relations",
+        "exercises": {},
+        "sections": {
+          "Summations": {},
+          "Recurrence Relations": {
+	    "LinearRecurrencesCON": {
+              "long_name": "Linear Recurrences Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+	    "LinearRecurrencesNCON": {
+              "long_name": "Linear Recurrences Slideshow (n)",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Background/Proofs": {
+        "long_name": "Proofs",
+        "exercises": {},
+        "sections": {
+          "Introduction": {},
+          "Direct Proof": {},
+          "Proof by Contradiction": {},
+          "Proof by Mathematical Induction": {
+            "twoColorCON": {},
+            "TwoColoringProofCON": {
+              "long_name": "Two Coloring Proof Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Background/Estimation": {
+        "long_name": "Estimation",
+        "exercises": {},
+        "sections": {}
+      },
+      "Background/MathpreSumm": {
+        "long_name": "Chapter Summary",
+        "exercises": {},
+        "sections": {
+          "Chapter Summary Questions": {
+            "MathBgSumm": {
+              "long_name": "Math Background Summary Questions",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      }
+    },
+    "Searching I": {
+      "Searching/BinarySearch": {
+        "long_name": "Binary Search",
+        "exercises": {},
+        "sections": {
+          "Sequential Search": {},
+          "Binary Search": {
+            "binarySearchCON": {
+              "long_name": "Binary Search Algorithm Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "binarySearchPRO": {
+              "long_name": "Binary Search Proficiency Exercise",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      }
+    },
+    "Algorithm Analysis": {
+      "AlgAnal/AnalChap": {
+        "long_name": "Chapter Intro: Algorithm Analysis",
+        "exercises": {},
+        "sections": {}
+      },
+      "AlgAnal/AnalPrelim": {
+        "long_name": "Problems, Algorithms, and Programs",
+        "exercises": {},
+        "sections": {
+          "Problems": {},
+          "Algorithms": {},
+          "Programs": {},
+          "Summary": {
+            "ProblemAlgorithmCON": {
+              "long_name": "Problem, Algorithm, and Program definitions Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Summary Questions": {
+            "AnalPrelimSumm": {
+              "long_name": "Problems, Algorithms, Programs Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 4
+            }
+          }
+        }
+      },
+      "AlgAnal/AnalIntro": {
+        "long_name": "Comparing Algorithms",
+        "exercises": {},
+        "sections": {
+          "Comparing Algorithms": {},
+          "Basic Operations and Input Size": {},
+          "Growth Rates": {
+            "CompareGrowth": {
+              "long_name": "Comparing Growth Rates Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 3
+            }
+          },
+          "Growth Rates Exercise": {
+            "GrowthRatesPRO": {
+              "long_name": "Growth Rates Ordering Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3
+            }
+          }
+        }
+      },
+      "AlgAnal/AnalCases": {
+        "long_name": "Best, Average, and Worst Cases",
+        "exercises": {},
+        "sections": {
+          "Best, Worst, and Average Cases": {
+            "BestWorstAverageCON": {
+              "long_name": "Best, Worst, and Average cases visualization",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "AlgAnal/AnalCompvsAlg": {
+        "long_name": "Faster Computer, or Faster Algorithm?",
+        "exercises": {},
+        "sections": {
+          "Faster Computer, or Faster Algorithm?": {
+            "FasterCorASumm": {
+              "long_name": "Faster Computer or Faster Algorithm Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 2
+            }
+          }
+        }
+      },
+      "AlgAnal/AnalAsymptotic": {
+        "long_name": "Asymptotic Analysis and Upper Bounds",
+        "exercises": {},
+        "sections": {
+          "Introduction": {},
+          "Upper Bounds": {},
+          "Simplifying Rules": {},
+          "Summary": {
+            "UpperBoundCON": {
+              "long_name": "Upper Bounds visualization",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "UpperBoundsSumm": {
+              "long_name": "Asymptotic Analysis and Upper Bounds Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 4
+            }
+          }
+        }
+      },
+      "AlgAnal/AnalLower": {
+        "long_name": "Lower Bounds and Theta Notation",
+        "exercises": {},
+        "sections": {
+          "Lower Bounds": {},
+          "Theta Notation": {},
+          "Classifying Functions": {
+            "LowerBoundCON": {
+              "long_name": "Lower Bounds visualization",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Summary Exercise": {
+            "LowerThetaSumm": {
+              "long_name": "Lower Bounds and Theta Notation Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "AlgAnal/AnalProgram": {
+        "long_name": "Calculating the Running Time of a Program",
+        "exercises": {},
+        "sections": {
+          "Calculating Program Running Time": {
+            "SummationOneToNCON": {
+              "long_name": "Summation of the first N Integers visualization",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "SummationTwoPowerICON": {
+              "long_name": "Summation Two Power I visualization",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "LinearRecurrenceSimpleCON": {
+              "long_name": "Linear Recurrence visualization",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Case Study: Two Search Algorithms": {
+            "binarySearchCON": {
+              "long_name": "Binary Search Algorithm Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "binarySearchPRO": {
+              "long_name": "Binary Search Proficiency Exercise",
+              "exer_options": { "JXOP-code": "none" },
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            },
+            "DivideAndConquerRecurrenceSimpleCON": {
+              "long_name": "Linear Recurrence visualization",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Summary Exercise": {
+            "AnalProgramSumm": {
+              "long_name": "Program Code Analysis Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "AlgAnal/AnalProblem": {
+        "long_name": "Analyzing Problems",
+        "exercises": {},
+        "sections": {
+          "Analyzing Problems": {
+            "AnalyzingProblemsCON": {
+              "long_name": "Worst Case Lower Bound Visualization",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "AnalProblemSumm": {
+              "long_name": "Problem Analysis Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "AlgAnal/AnalMisunderstanding": {
+        "long_name": "Common Misunderstandings",
+        "exercises": {},
+        "sections": {
+          "Common Misunderstandings": {
+            "MisunderstandingsGraphCON": {
+              "long_name": "Example's graph Visualization",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "MisSumm": {
+              "long_name": "Common Misconceptions Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 4
+            }
+          }
+        }
+      },
+      "AlgAnal/AnalMultiple": {
+        "long_name": "Multiple Parameters",
+        "exercises": {},
+        "sections": {}
+      },
+      "AlgAnal/AnalSpace": {
+        "long_name": "Space Bounds",
+        "exercises": {},
+        "sections": {}
+      },
+      "AlgAnal/AnalTuning": {
+        "long_name": "Speeding Up Your Programs",
+        "exercises": {},
+        "sections": {}
+      },
+      "AlgAnal/AlgAnalSumm": {
+        "long_name": "Algorithm Analysis Summary Exercises",
+        "exercises": {},
+        "sections": {
+          "Summary Exercise: CS2": {
+            "showsection": true,
+            "AlgAnalCS2114Summ": {
+              "long_name": "Algorithm Analysis Summary Questions",
+              "required": false,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "Summary Exercise: CS3": {
+            "showsection": true,
+            "AlgAnalSumm": {
+              "long_name": "Algorithm Analysis Summary Questions",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      }
+    },
+    "Design II": {
+      "Design/DesignPatterns": {
+        "long_name": "Design Patterns",
+        "exercises": {},
+        "sections": {
+          "Introduction": {},
+          "Flyweight": {},
+          "Visitor": {},
+          "Composite": {},
+          "Strategy": {},
+          "Summary Questions": {
+            "DesignPatternSumm": {
+              "long_name": "Design Patterns Summary Exercise",
+              "required": true,
+              "points": 1,
+              "threshold": 4
+            }
+          }
+        }
+      },
+      "Design/DesignAltList": {
+        "long_name": "Alternate List ADT Design",
+        "exercises": {},
+        "sections": {}
+      },
+      "Design/Comparison": {
+        "long_name": "Comparing Records",
+        "exercises": {},
+        "sections": {
+          "Comparing Records": {
+            "CompareSumm": {
+              "long_name": "Record Comparison Summary Exercise",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Design/Dictionary": {
+        "long_name": "The Dictionary ADT",
+        "exercises": {},
+        "sections": {
+          "The Dictionary ADT": {
+            "DesignDictionarySumm": {
+              "long_name": "Dictionary Summary Exercise",
+              "required": true,
+              "points": 1,
+              "threshold": 3
+            }
+          }
+        }
+      }
+    },
+    "Appendix": {
+      "Glossary": {
+        "long_name": "Glossary",
+        "exercises": {},
+        "sections": {}
+      },
+      "Bibliography": {
+        "long_name": "Bibliography",
+        "exercises": {},
+        "sections": {}
+      }
+    }
+  }
+}

@@ -20,6 +20,9 @@
 Quicksort
 =========
 
+Introduction
+------------
+
 While Mergesort uses the most obvious form of divide and conquer
 (split the list in half then sort the halves), this is not the only way
 that we can break down the sorting problem.
@@ -93,7 +96,7 @@ Here is an implementation for Quicksort.
 Parameters ``i`` and ``j`` define the left and right
 indices, respectively, for the subarray being sorted.
 The initial call to ``quicksort`` would be
-``quicksort(array, 0, n-1)``. 
+``quicksort(array, 0, n-1)``.
 
 .. codeinclude:: Sorting/Quicksort
    :tag: Quicksort
@@ -126,6 +129,9 @@ Here is a simple ``findpivot`` function.
 .. codeinclude:: Sorting/Quicksort
    :tag: findpivot
 
+Section_QuicksortPivotPRO
+-------------------------
+
 Now you can have some practice.
 
 .. avembed:: Exercises/Sorting/QuicksortPivotPRO.html ka
@@ -154,16 +160,25 @@ Function ``partition`` returns the first index of the right
 partition (the place where ``left`` ends at) so that the subarray
 bound for the recursive calls to ``qsort`` can be determined.
 
+Section_quicksortCON
+--------------------
+
 .. inlineav:: quicksortCON ss
    :output: show
 
 
 .. _PartitionFig:
 
+Section_QuickSortPartitionAnalysisCON
+-------------------------------------
+
 And here is a visualization illustrating the running time analysis of the partition function
 
 .. inlineav:: QuickSortPartitionAnalysisCON ss
    :output: show
+
+Section_QuicksortPartitPRO
+--------------------------
 
 Now for some partition practice.
 
@@ -177,12 +192,21 @@ match the recursion tree.
 In reality, there is only a single array involved (as you will see in
 the proficiency exercise that follows the visualization).
 
+Section_quicksortAV
+-------------------
+
 .. avembed:: AV/Sorting/quicksortAV.html ss
+
+Section_quicksortPRO
+--------------------
 
 Here is a complete proficiency exercise to see how well you understand
 Quicksort.
 
 .. avembed:: AV/Sorting/quicksortPRO.html pe
+
+Section_QuickSortWorstCaseCON
+-----------------------------
 
 This visualization explains the worst-case running time of Quick Sort
 
@@ -198,6 +222,9 @@ When selecting the middle position of the current subarray, it is
 still unlikely to happen.
 It does not take many good partitionings for Quicksort to
 work fairly well.
+
+Section_QuickSortBestCaseCON
+----------------------------
 
 This visualization explains the best-case running time of Quick Sort
 
@@ -224,6 +251,9 @@ following equation:
    {\bf T}(n - 1 - k)],
    \quad {\bf T}(0) = {\bf T}(1) = c.
 
+Section_QuickSortAverageCaseCON
+-------------------------------
+
 This visualization will help you to understand how this recurrence
 relation was formed.
 
@@ -244,7 +274,7 @@ permutation and dividing by the number of permuations
 (which is :math:`n!`).
 We know that some of these :math:`n!` inputs cost :math:`O(n^2)`.
 But the sum of all the permutation costs has to be
-:math:`(n!)(O(n \log n))`. 
+:math:`(n!)(O(n \log n))`.
 Given the extremely high cost of the worst inputs, there must be
 very few of them.
 In fact, there cannot be a constant fraction of the inputs with cost
@@ -337,9 +367,12 @@ modest speedup.
    Quicksort to have its worst-case behavior.
 
    There are a number of possible correct answers. To assess the
-   answer, will need to run Quicksort over student's 
+   answer, will need to run Quicksort over student's
    partition, and verify that at each step it will generate new
    partitions of size 6, 5, 4, 3, 2, then 1.
+
+Section_QuicksortSumm
+---------------------
 
 Now for review questions.
 

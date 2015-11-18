@@ -14,6 +14,9 @@
 Array-Based List Implementation
 ===============================
 
+Array-Based List Implementation
+-------------------------------
+
 Here is an implementation for the array-based list, named ``AList``.
 ``AList`` inherits from the :ref:`List ADT <ListADT>`,
 and so must implement all of the member functions of ``List``.
@@ -26,8 +29,15 @@ and so must implement all of the member functions of ``List``.
 .. inlineav:: alistVarsCON ss
    :output: show
 
+Array-based List Positions
+--------------------------
+
 .. inlineav:: alistIntroCON ss
    :output: show
+
+
+Insert
+------
 
 Because the array-based list implementation is defined to store list
 elements in contiguous cells of the array, the ``insert``, ``append``,
@@ -36,11 +46,22 @@ and ``remove`` methods must maintain this property.
 .. inlineav:: alistInsertCON ss
    :output: show
 
+
+Insert Practice Exericse
+------------------------
+
+.. avembed:: Exercises/List/AlistInsertPRO.html ka
+
+
+Append
+------
 .. inlineav:: alistAppendCON ss
    :output: show
 
-.. avembed:: Exercises/List/AlistInsertPRO.html ka
-  
+
+Remove
+------
+
 Removing an element from the head of the list is
 similar to insert in that all remaining elements  must shift toward
 the head by one position to fill in the gap.
@@ -54,6 +75,9 @@ following slideshow.
 In the average case, insertion or removal each requires moving half
 of the elements, which is :math:`\Theta(n)`.
 
+Remove Practice Exericse
+------------------------
+
 .. avembed:: Exercises/List/AlistRemovePRO.html ka
 
 Aside from ``insert`` and ``remove``, the only other operations that
@@ -63,9 +87,10 @@ The other methods for Class ``AList`` simply
 access the current list element or move the current position.
 They all require :math:`\Theta(1)` time.
 
-Now try for yourself to see if you understand how Array-Based
-Insertion and Deletion work.
- 
+
+Array-based List Practice Questions
+-----------------------------------
+
 .. avembed:: Exercises/List/ALSumm.html ka
 
 .. odsascript:: AV/List/alistVarsCON.js

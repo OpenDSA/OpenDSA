@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -9,8 +9,13 @@
    :satisfies: analysis misunderstandings
    :topic: Algorithm Analysis
 
+.. odsalink:: AV/AlgAnal/MisunderstandingsGraphCON.css
+
 Common Misunderstandings
 ========================
+
+Common Misunderstandings
+------------------------
 
 :term:`Asymptotic analysis <asymptotic analysis>` is one of the most
 intellectually difficult topics that undergraduate computer science
@@ -143,10 +148,13 @@ worst, and average cases as the input size grows.
    If we leave off which class of inputs we are discussing, we cannot
    know which cost measure we are referring to for most algorithms.
 
+.. inlineav:: MisunderstandingsGraphCON ss
+   :output: show
+
+
+Practice Questions
+------------------
+
 .. avembed:: Exercises/AlgAnal/MisSumm.html ka
 
-.. todo::
-   :type: Slideshow
-
-   We need to draw the graphs for the previous example and make the
-   discussion as a series of slides.
+.. odsascript:: AV/AlgAnal/MisunderstandingsGraphCON.js

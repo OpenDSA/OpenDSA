@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -27,6 +27,7 @@ We will call this an :term:`unsuccessful search`.
 Here is a simple implementation for sequential search.
 
 .. codeinclude:: Searching/Sequential
+      :tag: Sequential
 
 It is natural to ask how long a program or algorithm will take to
 run.
@@ -93,9 +94,6 @@ And we can only cut the value of :math:`n` in half :math:`\log n`
 times before we reach 1. [#]_
 
 .. avembed:: AV/Searching/binarySearchPRO.html ss
-
-Notes
-=====
 
 .. [#] It seems to be really "obvious" that sequential search is the
        best that you can do on an unsorted array. 

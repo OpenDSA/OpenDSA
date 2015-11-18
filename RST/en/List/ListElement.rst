@@ -14,6 +14,9 @@
 List Element Implementations
 ============================
 
+List Element Implementations
+----------------------------
+
 When designing any :term:`container class`, there are a number of
 design choices to be made regarding the data elements.
 
@@ -26,6 +29,10 @@ better approach.
 
 .. inlineav:: listElementDataCON ss
    :output: show
+
+
+Homogeneity
+-----------
 
 The next issue to consider is whether to enforce :term:`homogeneity`
 in the list elements.
@@ -59,6 +66,10 @@ In C++, a similar effect can be achieved by using ``void*`` pointers.
 .. inlineav:: listElementTypeCON ss
    :output: show
    
+
+Element Deletion
+----------------
+
 Our last design issue is what to do to the list elements when the list
 itself is deleted?
 This is a serious concern in a language like C++ that does not support
@@ -67,6 +78,10 @@ automatic garbage collection.
 .. inlineav:: listElementDeleteCON ss
    :output: show 
    
+
+Practice Questions
+------------------
+
 .. avembed:: Exercises/List/ListSumm.html ka
    
 .. odsascript:: AV/List/listElementDataCON.js

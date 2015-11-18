@@ -7,6 +7,8 @@
    :author: Cliff Shaffer
    :prerequisites:
    :topic: Advanced Analysis
+   
+.. odsalink:: AV/Background/SummationOneToNCON.css
 
 Summation Techniques
 ====================
@@ -41,12 +43,8 @@ Having this estimate in hand helps us when trying to determine an
 exact closed-form solution, because we will hopefully recognize if our
 proposed solution is badly wrong.
 
-.. TODO::
-   :type: Image
-
-   Show an image of the heights of the bars filling half the area of
-   the rectangle. Later on, compare hights of bars for other sums,
-   ones that don't add up to :math:`\Theta(n^2)`.
+.. inlineav:: SummationOneToNCON ss
+   :output: show
 
 Let us now consider some ways that we might hit upon an exact equation
 for the closed form solution to this summation.
@@ -368,3 +366,5 @@ pattern in terms of :math:`f(n) - g(n)` or :math:`f(n)/g(n)`.
    .. math::
 
       = (n-1)2^{n+1} + 2.
+	  
+.. odsascript:: AV/Background/SummationOneToNCON.js

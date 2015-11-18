@@ -74,7 +74,7 @@ for (k=1; k<=n; k*=2)    // Do log n times
      count[i] = 0;
   for (i=0; i<P; i++)   // Look at all of the pixels
      count[value(i)]++; // Increment a pixel value count
-  sort(count, count+C); // Sort pixel value counts
+  sort(count, C);       // Sort pixel value counts
 /* *** ODSAendTag: c3p16 *** */
 }
 

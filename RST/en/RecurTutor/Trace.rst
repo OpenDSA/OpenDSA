@@ -185,8 +185,8 @@ This next slideshow explains the solution to the Towers of Hanoi problem.
 .. odsascript:: AV/RecurTutor/recurTraceSumCON.js
 .. odsascript:: AV/RecurTutor/recurTraceFactCON.js
 .. odsascript:: AV/RecurTutor/recurTraceSum2CON.js
-.. .. odsascript:: AV/RecurTutor/recurTraceDmnCON.js
-.. .. odsascript:: AV/RecurTutor/recurTraceDmnPrntCON.js
-.. .. odsascript:: AV/RecurTutor/recurTraceDmnCntCON.js
+.. odsascript:: AV/RecurTutor/recurTraceDmnCON.js
+.. odsascript:: AV/RecurTutor/recurTraceDmnPrntCON.js
+.. odsascript:: AV/RecurTutor/recurTraceDmnCntCON.js
 .. odsascript:: AV/RecurTutor/recurTraceTOHCON.js
 .. odsascript:: AV/RecurTutor/TOHfigCON.js

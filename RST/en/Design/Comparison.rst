@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -15,6 +15,9 @@
 
 Comparing Records
 ==================
+
+Comparing Records
+-----------------
 
 If we want to sort some things, we have to be able to compare them, to
 decide which one is bigger.
@@ -162,8 +165,6 @@ Here are some review questions to test your knowledge from this module.
 
 .. avembed:: Exercises/Design/CompareSumm.html ka
 
-Notes
------
 
 .. [#] One example of a situation where it is not possible to write a
        function that extracts a key from a record is when we have a
