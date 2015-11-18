@@ -69,21 +69,16 @@ If we want to remove the element at position :math:`i`, then
 :math:`n - i - 1` elements must shift toward the head, as shown in the
 following slideshow. 
 
-
-Remove Practice Exericse
-------------------------
-
 .. inlineav:: alistRemoveCON ss
    :output: show
 
 In the average case, insertion or removal each requires moving half
 of the elements, which is :math:`\Theta(n)`.
 
+Remove Practice Exericse
+------------------------
+
 .. avembed:: Exercises/List/AlistRemovePRO.html ka
-
-
-Other Operations
-----------------
 
 Aside from ``insert`` and ``remove``, the only other operations that
 might require more than constant time are the constructor and

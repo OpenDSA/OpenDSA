@@ -1,8 +1,8 @@
 /*global ODSA */
-'use strict';
 // Written by Jun Yang and Cliff Shaffer
 //Array-Based list deletion
 $(document).ready(function () {
+  "use strict";
   var arrValues = [13, 12, 20, 8, 3, "", "", ""];
   var itemsSize = 5;
   var av_name = "alistRemoveCON";
