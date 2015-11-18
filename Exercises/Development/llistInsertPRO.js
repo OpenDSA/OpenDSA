@@ -70,7 +70,7 @@ function connection(obj1, obj2) {
     if(obj1.exe_next){
       obj1.exe_edgeToNext.element.remove();
     }else{
-      obj1.exe_tail.element.remove();
+//      obj1.exe_tail.element.remove();
       obj1.exe_tail = null;
     }
 
@@ -184,8 +184,8 @@ function connection(obj1, obj2) {
       var x2 = left + 44;
       var y2 = top + 15 + 40;
 
-      newLinkNode.exe_tail = jsav.g.line(x1, y1,
-                            x2, y2,{"opacity": 100,"stroke-width": 1});
+      newLinkNode.exe_tail = null; //jsav.g.line(x1, y1,
+//                            x2, y2,{"opacity": 100,"stroke-width": 1});
 
       $("#" + newLinkNode.id()).draggable({
         start: function(){
@@ -207,7 +207,7 @@ function connection(obj1, obj2) {
           for (var i = connections.length; i--;) {
             connection(connections[i].from, connections[i].to);
           }
-          addTail(newLinkNode);
+//          addTail(newLinkNode);
         },
         stop: function() {
           var offset = $(this).position();
@@ -217,7 +217,7 @@ function connection(obj1, obj2) {
           for (var i = connections.length; i--;) {
             connection(connections[i].from, connections[i].to);
           }
-          addTail(newLinkNode);
+//          addTail(newLinkNode);
         }
       });
       $("#NewNode").disabled = true;
@@ -277,8 +277,8 @@ function connection(obj1, obj2) {
       jsavList.get(i).exe_next = jsavList.get(i).next();
       jsavList.get(i).exe_edgeToNext = jsavList.get(i).edgeToNext();
     }
-    jsavList.get(listSize - 1).exe_tail = jsav.g.line(34 + (listSize - 1)*74, 47 + 40,
-                            44 + (listSize - 1)*74, 16 + 40,{"opacity": 100,"stroke-width": 1});
+    jsavList.get(listSize - 1).exe_tail = null; // jsav.g.line(34 + (listSize - 1)*74, 47 + 40,
+//                            44 + (listSize - 1)*74, 16 + 40,{"opacity": 100,"stroke-width": 1});
 
     //Curr Label
     var currLabel = jsav.label("curr",

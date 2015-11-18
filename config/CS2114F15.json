@@ -490,13 +490,6 @@
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recWIsMeasurblPROGSumm": {
-            "long_name": "Recursion Code Writing Exercise Is Measurable",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
           "recWStckRevrsPROGSumm": {
             "long_name": "Recursion Code Writing Exercise Stack Reversal",
             "required": true,
@@ -1087,12 +1080,6 @@
             "required": false,
             "points": 0.0,
             "threshold": 1.0
-          },
-          "btLeafPROG": {
-            "long_name": "Node Count Programming Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1
           },
           "btTravInorderPRO": {
             "long_name": "Binary Tree Inorder Traversal Exercise",

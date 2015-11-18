@@ -19,7 +19,6 @@ $(document).ready(function () {
   temp.hide();
   var nextCurr = setPointerL("curr", l.get(4));
   nextCurr.hide();
-  var slash = l.get(5).addTail(); // Diagonal slash at end
 
   var pseudo_next = av.code($.extend({left: 80, top: 150,
                                       visible: false, lineNumbers: false}, code[0]));

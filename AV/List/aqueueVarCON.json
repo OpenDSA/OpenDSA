@@ -15,11 +15,10 @@
       "startAfter": "/* *** ODSATag: AQueue1 *** */",
       "endBefore": "/* *** ODSAendTag: AQueue1 *** */",
       "tags": {
-         "array": 6,
-         "constructor": 9,
+         "array": 2,
+         "constructor": 8,
          "setmaxsize": 10,
-	 "varmaxsize": 3,
-         "varrear": 5
+         "varrear": 11
       }
     },
     "java": {
@@ -28,11 +27,10 @@
       "startAfter": "/* *** ODSATag: AQueue1 *** */",
       "endBefore": "/* *** ODSAendTag: AQueue1 *** */",
       "tags": {
-         "array": 6,
-         "constructor": 9,
+         "array": 2,
+         "constructor": 8,
          "setmaxsize": 10,
-	 "varmaxsize": 3,
-         "varrear": 5
+         "varrear": 11
       }
     },
     "java_generic": {
@@ -41,11 +39,10 @@
       "startAfter": "/* *** ODSATag: AQueue1 *** */",
       "endBefore": "/* *** ODSAendTag: AQueue1 *** */",
       "tags": {
-         "array": 6,
-         "constructor": 9,
-         "setmaxsize": 10,
-	 "varmaxsize": 3,
-         "varrear": 5
+         "array": 2,
+         "constructor": 8,
+         "setmaxsize": 11,
+         "varrear": 12
       }
     }
   }

@@ -449,7 +449,7 @@ class ODSA_RST_Module:
                 exer_conf = exercises[av_name]
 
                 # List of valid options for avembed directive
-                options = ['long_name', 'points', 'required', 'showhide', 'threshold', 'oembed_url']
+                options = ['long_name', 'points', 'required', 'showhide', 'threshold', 'external_url']
 
                 rst_options = [' '*start_space + '   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
 

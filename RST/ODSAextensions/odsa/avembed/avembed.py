@@ -43,7 +43,7 @@ CONTAINER_HTML= '''\
     data-frame-src="%(av_address)s"
     data-frame-width="%(width)s"
     data-frame-height="%(height)s"
-    data-oembed="%(oembed)s"
+    data-external="%(external)s"
     data-points="%(points)s"
     data-required="%(required)s"
     data-showhide="%(showhide)s"
@@ -170,7 +170,7 @@ class avembed(Directive):
                  'required': directives.unchanged,
                  'showhide':showhide,
                  'threshold': directives.unchanged,
-                 'oembed_url': directives.unchanged,
+                 'external_url': directives.unchanged,
                  }
 
   def run(self):
@@ -252,25 +252,16 @@ class avembed(Directive):
     elif self.options['showhide'] == "hide":
       self.options['show_hide_text'] = langDict["show"]
 
-    if 'oembed_url' not in self.options:
-      # Exercise does not use oembed
-      self.options['oembed'] = 'false'
-
-      if self.options['showhide'] != "none":
-        self.options['content'] = BUTTON_HTML % (self.options)
+    if 'external_url' not in self.options:
+      # Exercise does not use external source
+      self.options['external'] = 'false'
     else:
-      # Exercise uses oembed
-      self.options['oembed'] = 'true'
-      self.options['av_address'] = self.options['oembed_url']
-      parts = self.options['oembed_url'].split("//", 1)
-      self.options['oembed_server'] = parts[0] + "//" + parts[1].split("/", 1)[0]
+      # Exercise uses external source
+      self.options['external'] = 'true'
+      self.options['av_address'] = self.options['external_url']
 
-      if self.options['showhide'] == "show":
-        self.options['show_hide_text'] = langDict["hide"]
-        self.options['content'] = BUTTON_HTML % (self.options)
-      elif self.options['showhide'] == "hide":
-        self.options['show_hide_text'] = langDict["show"]
-        self.options['content'] = BUTTON_HTML % (self.options)
+    if self.options['showhide'] != "none":
+      self.options['content'] = BUTTON_HTML % (self.options)
 
     res = CONTAINER_HTML % (self.options)
 
@@ -296,4 +287,3 @@ if __name__ == '__main__':
           writer_name="html")
 
   print doc_parts['html_body']
-

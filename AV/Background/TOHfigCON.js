@@ -1,3 +1,4 @@
+/*global JSAV, document */
 "use strict";
 // Written by Cliff Shaffer
 $(document).ready(function () {
@@ -28,13 +29,13 @@ $(document).ready(function () {
   av.g.rect(left + 390,  80,  25, 10).css({fill: "gray"});
   av.g.rect(left + 395,  70,  15, 10).css({fill: "gray"});
 
-  av.label("1",  {left: left +  37, top: -15});
-  av.label("2",  {left: left + 117, top: -15});
-  av.label("3",  {left: left + 197, top: -15});
-  av.label("1",  {left: left + 317, top: -15});
-  av.label("2",  {left: left + 397, top: -15});
-  av.label("3",  {left: left + 477, top: -15});
+  av.label("1", {left: left +  37, top: -15});
+  av.label("2", {left: left + 117, top: -15});
+  av.label("3", {left: left + 197, top: -15});
+  av.label("1", {left: left + 317, top: -15});
+  av.label("2", {left: left + 397, top: -15});
+  av.label("3", {left: left + 477, top: -15});
 
-  av.label("(a)",  {left: left + 112, top: 125});
-  av.label("(b)",  {left: left + 391, top: 125});
+  av.label("(a)", {left: left + 112, top: 125});
+  av.label("(b)", {left: left + 391, top: 125});
 });

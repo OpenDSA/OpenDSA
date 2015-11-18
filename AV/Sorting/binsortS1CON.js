@@ -1,23 +1,25 @@
-/*global ODSA */
+/*global ODSA, JSAV, document */
 "use strict";
-$(document).ready(function () {
+$(document).ready(function() {
   var av_name = "binsortS1CON";
-  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
+  var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
 
   var theArray = [];
   var empty = [];
+  var i;
+  var av = new JSAV(av_name);
+
   empty.length = 10;
-  for (var i = 0; i < 10; i++) {
+  for (i = 0; i < 10; i++) {
     theArray[i] = i;
   }
   ODSA.UTILS.permute(theArray);
-  var av = new JSAV(av_name);
 
   // Create an array object under control of JSAV library
   var arrA = av.ds.array(theArray, {indexed: true});
-  var labelA = av.label("A", {before: arrA, top: -9, left: 240});
+  av.label("A", {before: arrA, top: -9, left: 240});
   var arrB = av.ds.array(empty, {indexed: true});
-  var labelB = av.label("B", {before: arrB, top: 68, left: 240});
+  av.label("B", {before: arrB, top: 68, left: 240});
 
   av.umsg(interpret("av_c1"));
   av.displayInit();

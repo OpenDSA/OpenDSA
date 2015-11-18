@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>Theta vs. big-oh</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+
+<body>
+<div class="exercise">
+  <div class="problems">
+    <div id="problem-type-or-description">
+      <p class="question">If we know that algorithm X is <code>\Theta(n)</code> in
+	the average case, then what can we say about
+	its TIGHTEST upper bound?</p>
+      <div class="solution"><var>It is <code>O(n)</code> in the average case.</var></div>
+      <ul class="choices">
+        <li><var>"It is O(n) or greater in the average case, but we don't have enough information to say more."</var></li>
+        <li><var>"It is O(n) or less in the average case, but we don't have enough information to say more."</var></li>
+        <li><var>"We don't have enough information to say."</var></li>
+      </ul>
+      <div class="hints">
+        <p>What is the definition of <code>\Theta(n)</code>?</p>
+        <p>Being <code>\Theta(n)</code> means that we know a tight
+        bound (both the upper and the lower bounds match).</p>
+        <p>If X is <code>\Theta(n)</code>, then it is
+        both <code>O(n)</code> and <code>\Omega(n)</code>.
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

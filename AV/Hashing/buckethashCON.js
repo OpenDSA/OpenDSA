@@ -9,8 +9,8 @@ var setGray = function (a, index) {
   var empty = [];
   var empty2 = [];
   var i;
-  var offset = 79;
-  var stepsize = 62;
+  var offset = 75;
+  var stepsize = 58;
 
   for (i = 0; i < 10; i++) { empty[i] = ""; }
   for (i = 0; i < 8; i++) { empty2[i] = ""; }
@@ -126,8 +126,8 @@ var setGray = function (a, index) {
   var empty = [];
   var empty2 = [];
   var i;
-  var offset = 79;
-  var stepsize = 62;
+  var offset = 75;
+  var stepsize = 58;
 
   for (i = 0; i < 10; i++) { empty[i] = ""; }
   for (i = 0; i < 8; i++) { empty2[i] = ""; }

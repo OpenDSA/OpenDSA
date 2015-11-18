@@ -1,3 +1,4 @@
+/*global JSAV, document */
 "use strict";
 // Written by Cliff Shaffer
 $(document).ready(function () {
@@ -12,4 +13,6 @@ $(document).ready(function () {
   av.g.line(left +  50, 10, left + 250, 210, {"stroke-width": 2});
   av.g.line(left +   0, 70, left + 350,  70, {"stroke-width": 2});
   av.g.line(left + 300, 10, left + 100, 210, {"stroke-width": 2});
+  av.displayInit();
+  av.recorded();
 });

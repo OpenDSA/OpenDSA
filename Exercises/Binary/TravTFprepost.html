@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html data-require="math">
+  <head>
+    <title>Travesals: Reconstruct a tree</title>
+    <script src="../../lib/jquery.min.js"></script>
+    <script src="../../lib/jquery-ui.min.js"></script>
+    <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+    <script src="../../lib/odsaStyle-min.css"></script>
+  </head>
+
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="problem">Answer TRUE or FALSE.
+          <p class="question">If you are given the order of the nodes as
+            visited by a preorder traversal and the order of the nodes as
+            visited by a postorder traversal, do you have enough
+            information to reconstruct the original tree? Assume that the
+            nodes all have unique values.</p>
+          <div class="solution">False</div>
+          <ul class="choices" data-category="true">
+            <li>True</li>
+            <li>False</li>
+          </ul>
+          <div class="hints">
+            <p>Consider this example: The preorder traversal prints ABC, and
+              the postorder traversal prints CBA. Can you determine the
+              original tree from this information?</p>
+            <p>In general, if a node has only one subtree, then the preorder
+              and postorder traversals do not give you enough information to
+              determine which side the subtree goes on.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

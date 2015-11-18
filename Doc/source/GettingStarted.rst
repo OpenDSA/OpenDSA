@@ -264,18 +264,20 @@ Once you have nodejs installed, just do::
 Note: To be able to lint check either JavaScript or CSS, you need to
 put it in separate files from your HTML code.
 
-uglifyjs
-========
+uglifyjs and uglifycss
+======================
 
-We use this for minimizing JavaScript code.
+We use these for minimizing JavaScript code and CSS files.
 To install on Windows::
 
    npm install -g uglify-js
+   npm install -g uglify-css
 
 On Linux, you more likely will need to use the package manager.
 For example, on Ubuntu::
 
    apt-get install uglifyjs
+   apt-get install uglifycss
 
 Notes for Windows
 =================

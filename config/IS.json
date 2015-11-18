@@ -12,19 +12,6 @@
   },
   "chapters": {
     "Testing": {
-      "IS/FirstFit": {
-        "long_name": "First Fit",
-        "exercises": {
-          "firstFit": {
-            "long_name": "First Fit Visualization",
-            "required": false,
-            "points": 0,
-            "showhide": "none",
-            "threshold": 1.0,
-            "exer_options": { "fitAlgorithm": "1" }
-          }
-        }
-      },
       "IS/BinaryTreeFullThm": {
         "long_name": "Full Binary Tree Theorem",
         "exercises": {}

@@ -92,7 +92,7 @@ var gen_instance = function (steps) {
 // Do the one-time initializations
 var initJSAV = function (key, steps) {
   var i;
-  var offset = 107;
+  var offset = 103;
 
   userInput = false;
   inputkey = key;
@@ -104,13 +104,13 @@ var initJSAV = function (key, steps) {
   for (i = 0; i < overflow_size; i++) { empty8[i] = ""; }
   gen_instance(steps);
   jsav.label("Hash Table", {left: 0, top: 0});
-  jsav.label("<b style='color:#0b0;'>B0</b>", {left: 80, top: 51});
-  jsav.label("<b style='color:#0b0;'>B1</b>", {left: 80, top: 113});
-  jsav.label("<b style='color:#0b0;'>B2</b>", {left: 80, top: 175});
-  jsav.label("<b style='color:#0b0;'>B3</b>", {left: 80, top: 237});
-  jsav.label("<b style='color:#0b0;'>B4</b>", {left: 80, top: 299});
+  jsav.label("<b style='color:#0b0;'>B0</b>", {left: 80, top: 50});
+  jsav.label("<b style='color:#0b0;'>B1</b>", {left: 80, top: 108});
+  jsav.label("<b style='color:#0b0;'>B2</b>", {left: 80, top: 166});
+  jsav.label("<b style='color:#0b0;'>B3</b>", {left: 80, top: 224});
+  jsav.label("<b style='color:#0b0;'>B4</b>", {left: 80, top: 280});
   for (i = 0; i < 4; i++) {
-    jsav.g.line(20, offset + (i * 62), 70, offset + (i * 62), {"stroke-width": 2});
+    jsav.g.line(20, offset + (i * 58), 70, offset + (i * 58), {"stroke-width": 2});
   }
   // Array initializations
   jsavInput = jsav.ds.array(initData, {indexed: true, center: false,

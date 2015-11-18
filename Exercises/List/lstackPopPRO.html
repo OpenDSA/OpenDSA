@@ -119,13 +119,13 @@ function clickHandler(e) {
 
 function addTail(node){
   if(node.odsa_tail){
-    node.odsa_tail.element.remove();
+//    node.odsa_tail.element.remove();
   
     var fx = $('#' + node.id()).position().left + 34;
     var tx = $('#' + node.id()).position().left + 44;
     var fy = $('#' + node.id()).position().top + 47 +40;
     var ty = $('#' + node.id()).position().top + 16 +40;
-    node.odsa_tail = jsav.g.line(fx,fy,tx,ty,{"opacity": 100,"stroke-width": 1});
+//    node.odsa_tail = jsav.g.line(fx,fy,tx,ty,{"opacity": 100,"stroke-width": 1});
   }
 }
 
@@ -156,8 +156,8 @@ function f_reset() {
     jsavList.get(i).odsa_next = jsavList.get(i).next();
 	jsavList.get(i).odsa_edgeToNext = jsavList.get(i).edgeToNext();
   }
-  jsavList.get(listSize - 1).odsa_tail = jsav.g.line(34 + (listSize - 1)*74, 47 + 40,
-                          44 + (listSize - 1)*74, 16 + 40,{"opacity": 100,"stroke-width": 1});
+//  jsavList.get(listSize - 1).odsa_tail = jsav.g.line(34 + (listSize - 1)*74, 47 + 40,
+//                          44 + (listSize - 1)*74, 16 + 40,{"opacity": 100,"stroke-width": 1});
   ptop = jsav.pointer("top", jsavList.get(0),{fixed: "true",});
   ptop.click(pclick);
 
@@ -225,7 +225,7 @@ function checkAnswer(arr_size) {
       <div class="hints">
         <p>You first want to pop off the value where "top" is
           pointing.</p>
-	<p>Click on the node with value <var>insert_value</var>. Then
+	<p>Click on the first node on the list. Then
            click the box marked "return".</p>
         <p>Next, update the top pointer. Click on "top" and then click
            the second node on the linked list.</p>

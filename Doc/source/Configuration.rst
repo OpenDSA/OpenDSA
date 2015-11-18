@@ -180,17 +180,17 @@ All are required unless otherwise specified.
 * **exercise_server** - (optional) the protocol and domain (and port number, if different than the protocol default) of the exercise server which provides verification for the programming exercises, defaults to an empty string (exercise server disabled) if omitted
 
   * Trailing '/' is optional
-  * Ex: "exercise_server": "https://opendsa.cc.vt.edu/",
+  * Ex: "exercise_server": "https://opendsa.cs.vt.edu/",
 
 * **logging_server** - (optional) the protocol and domain (and port number, if different than the protocol default) of the logging server which supports interaction data collection, defaults to an empty string (logging server disabled) if omitted
 
   * Trailing '/' is optional
-  * Ex: "logging_server": "https://opendsa.cc.vt.edu/",
+  * Ex: "logging_server": "https://opendsa.cs.vt.edu/",
 
 * **score_server** - (optional) the protocol and domain (and port number, if different than the protocol default) of the score server which supports centralized user score collection, defaults to an empty string (score server disabled) if omitted
 
   * Trailing '/' is optional
-  * Ex: "score_server": "https://opendsa.cc.vt.edu/",
+  * Ex: "score_server": "https://opendsa.cs.vt.edu/",
 
 * **build_JSAV** - (optional) a boolean controlling whether or not the JSAV library should be rebuild every time the configuration file is run, defaults to ``false`` if omitted
 

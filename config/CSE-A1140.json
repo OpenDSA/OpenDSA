@@ -3,13 +3,10 @@
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
-    "Processing": [
-      "pde"
-    ],
-    "C++": [
-      "cpp",
-      "h"
-    ]
+    "Java": { "ext":["java"], "label":"Java", "lang":"java"},
+    "Processing": { "ext":["pde"], "label":"Processing","lang":"java"},
+    "Python": { "ext":["py"], "label":"Python", "lang":"python"},
+    "C++":{ "ext": ["cpp", "h"],"label":"C++","lang":"C++"}
   },
   "module_origin": "https://trak.cs.hut.fi",
   "build_JSAV": false,
@@ -160,7 +157,7 @@
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/450/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/874/plain/"
           },
           "AnalProgramSumm": {
             "long_name": "Program Code Analysis",
@@ -683,7 +680,7 @@
             "required": true,
             "points": 1,
             "threshold": 5,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/452/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/898/plain/"
           },
           "InssortSumm": {
             "long_name": "Insertion Sort Summary",
@@ -756,7 +753,7 @@
             "required": true,
             "points": 1,
             "threshold": 5,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/453/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/899/plain/"
           },
           "SelsortSumm": {
             "long_name": "Selection Sort Summary",
@@ -793,7 +790,7 @@
             "points": 1.0,
             "remove": false,
             "threshold": 5,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/452/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/898/plain/"
           }
         }
       },
@@ -905,7 +902,7 @@
             "required": true,
             "points": 1,
             "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/454/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/900/plain/"
           }
         }
       },
@@ -965,7 +962,7 @@
             "required": true,
             "points": 1,
             "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/455/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/901/plain/"
           },
           "QuicksortSumm": {
             "long_name": "Quicksort Summary",
@@ -995,7 +992,7 @@
             "required": true,
             "points": 1,
             "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/461/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/882/plain/"
           },
           "HeapsortSumm": {
             "long_name": "Heapsort Summary Exercise",
@@ -1110,32 +1107,26 @@
       "Binary/BinaryTreeTraversal": {
         "long_name": "Binary Tree Traversals",
         "exercises": {
-          "btLeafPROG": {
-            "long_name": "Node Count Function",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1
-          },
           "btTravInorderPRO": {
             "long_name": "Binary Tree Inorder Traversal Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/594/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/911/plain/"
           },
           "btTravPreorderPRO": {
             "long_name": "Binary Tree Preorder Traversal Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/593/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/910/plain/"
           },
           "btTravPostorderPRO": {
             "long_name": "Binary Tree Postorder Traversal Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/595/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/912/plain/"
           }
         }
       },
@@ -1172,7 +1163,7 @@
             "required": true,
             "points": 1.0,
             "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/597/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/918/plain/"
           },
           "BSTinsertCON": {
             "long_name": "BST Insert Slideshow",
@@ -1185,7 +1176,7 @@
             "required": true,
             "points": 1.0,
             "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/598/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/919/plain/"
           },
           "BSTdeletemaxCON": {
             "long_name": "BST deletemax Slideshow",
@@ -1204,7 +1195,7 @@
             "required": true,
             "points": 2.0,
             "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/599/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/920/plain/"
           }
         }
       },
@@ -1212,9 +1203,16 @@
         "long_name": "Dictionary Implementation with BST",
         "exercises": {}
       },
-      "Development/CompleteTree": {
+      "Binary/CompleteTree": {
         "long_name": "Array Implementation for Complete Trees",
-        "exercises": {}
+        "exercises": {
+          "CompleteFIB": {
+            "long_name": "Complete Tree Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
       },
       "Binary/Heaps": {
         "long_name": "Heaps and Priority Queues",
@@ -1230,7 +1228,7 @@
             "required": true,
             "points": 2.0,
             "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/459/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/879/plain/"
           },
           "heapbuildCON": {
             "long_name": "Heapbuild Slideshow",
@@ -1243,7 +1241,7 @@
             "required": true,
             "points": 1.0,
             "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/458/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/881/plain/"
           },
           "heapbuildProofCON": {
             "long_name": "Heap build analysis proof Slideshow",
@@ -1269,7 +1267,7 @@
             "required": true,
             "points": 2.0,
             "threshold": 0.9,
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/460/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/880/plain/"
           },
           "heapremoveCON": {
             "long_name": "Remove Any Slideshow",
@@ -1287,12 +1285,25 @@
       }
     },
     "GeneralTrees": {
-      "Development/GenTreeIntro": {
+      "General/GenTreeIntro": {
         "long_name": "General Trees",
-        "exercises": {}
+        "exercises": {
+          "GenTreePreTravCON": {
+            "long_name": "General Tree Preorder Traversal Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "GenTreePostTravCON": {
+            "long_name": "General Tree Postorder Traversal Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
-      "Development/UnionFind": {
-        "long_name": "UnionFind",
+      "General/UnionFind": {
+        "long_name": "Union/Find",
         "exercises": {
           "ufCON": {
             "long_name": "Union/Find Example",
@@ -1322,9 +1333,58 @@
         "long_name": "K-ary Trees",
         "exercises": {}
       },
-      "Development/SequentialRep": {
+      "General/SequentialRep": {
         "long_name": "Sequential Tree Representations",
-        "exercises": {}
+        "exercises": {
+         "SequentialTreeCON": {
+            "long_name": "First sequential representation Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "SequentialTreePRO": {
+            "long_name": "First Sequential Representation Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+         "SequentialTreeAltCON": {
+            "long_name": "Second sequential representation Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "SequentialTreeAltPRO": {
+            "long_name": "Alternate Sequential Representation Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+         "SequentialTreeBitsCON": {
+            "long_name": "Bit vector sequential representation Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "SequentialTreeBitVectorPRO": {
+            "long_name": "Bit Vector Sequential Representation Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+         "SequentialGenTreeCON": {
+            "long_name": "General Tree sequential representation Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "SequentialTreeGenTreePRO": {
+            "long_name": "General Tree Sequential Representation Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          }
+        }
       }
     },
     "Search Structures": {
@@ -1370,11 +1430,11 @@
         "exercises": {
           "redBlackTreePRO": {
             "long_name": "Red-Black Tree Proficiency",
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/607/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/931/plain/"
           },
           "redBlackTreeColoring": {
             "long_name": "Red-Black Tree Coloring Exercises",
-            "oembed_url": "https://plus.cs.hut.fi/oembed/?format=json&callback=?&url=/exercise/606/"
+            "external_url": "https://plus.cs.hut.fi/a1140/2015/exercises/930/plain/"
           }
         }
       },
@@ -1668,46 +1728,46 @@
       }
     },
     "Graphs": {
-       "Graph/GraphIntro": {
-	 "long_name": "Introduction and Terminology",
-	 "exercises": {
-	   "GraphCalcSumm": {
-	     "long_name": "Graph Space Requirements Exercise",
-	     "required": true,
-	     "points": 2.0,
-	     "threshold": 5
-	   },
-	   "GraphIntroSumm": {
-	     "long_name": "Graph Terminology Summary Exercise",
-	     "required": true,
-	     "points": 2.0,
-	     "threshold": 5
-	   }
-	 }
-       },
-       "Development/GraphImpl": {
-	 "long_name": "Graph Implementation",
-	 "exercises": {}
-       },
-       "Development/GraphTraversal": {
-	 "long_name": "Graph Traversal",
-	 "exercises": {
-	   "graphDFS": {
-	     "long_name": "Depth First Search Visualization",
-	     "required": false,
-	     "points": 0,
-	     "showhide": "show",
-	     "threshold": 1.0
-	   },
-	   "graphBFS": {
-	     "long_name": "Breadth First Search Visualization",
-	     "required": false,
-	     "points": 0,
-	     "showhide": "show",
-	     "threshold": 1.0
-	   }
-	 }
-       },
+      "Graph/GraphIntro": {
+        "long_name": "Introduction and Terminology",
+        "exercises": {
+          "GraphCalcSumm": {
+            "long_name": "Graph Space Requirements Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          },
+          "GraphIntroSumm": {
+            "long_name": "Graph Terminology Summary Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          }
+        }
+      },
+      "Development/GraphImpl": {
+        "long_name": "Graph Implementation",
+        "exercises": {}
+      },
+      "Development/GraphTraversal": {
+        "long_name": "Graph Traversal",
+        "exercises": {
+          "graphDFS": {
+            "long_name": "Depth First Search Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "show",
+            "threshold": 1.0
+          },
+          "graphBFS": {
+            "long_name": "Breadth First Search Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "show",
+            "threshold": 1.0
+          }
+        }
+      },
       "Development/GraphTopsort": {
         "long_name": "Topological Sort",
         "exercises": {
@@ -1748,19 +1808,41 @@
       }
     },
     "Limits to Computing": {
-      "Development/LimComp": {
+      "NP/LimComp": {
         "long_name": "Chapter Intro: Limits to Computing",
         "exercises": {}
       },
-      "Development/Reduction": {
+      "NP/Reduction": {
         "long_name": "Reductions",
-        "exercises": {}
+        "exercises": {
+          "pairToSortReduction": {
+            "long_name": "Reduction of Pairing to Sorting",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "sortToPairReduction": {
+            "long_name": "Reduction of Sorting to Pairing",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "matrixMulReduction": {
+            "long_name": "Matrix Multiplication",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          }
+        }
       },
-      "Development/NPComplete": {
-        "long_name": "NP-Complete Problems",
-        "exercises": {}
+      "NP/NPComplete": {
+        "long_name":"NP Completeness",
+        "exercises":{}
       },
-      "Development/NPCoping": {
+      "NP/NPCoping": {
         "long_name": "Coping with NP-complete problems",
         "exercises": {}
       }

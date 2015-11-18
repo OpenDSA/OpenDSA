@@ -1,15 +1,19 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Cliff Shaffer
+   :requires: problems; algorithms
    :satisfies: growth rate
    :topic: Algorithm Analysis
 
 Comparing Algorithms
 ====================
+
+Comparing Algorithms
+--------------------
 
 How do you compare two algorithms for solving some problem in terms
 of efficiency?
@@ -323,9 +327,12 @@ resources consumed by an algorithm.
       \mathsf{2^{60}} & \mathsf{2^{90}} & \mathsf{2^{1 {\rm G}}}\\
       \end{array}
 
-.. avembed:: Exercises/AlgAnal/CompareAlgSumm.html ka 
+.. avembed:: Exercises/AlgAnal/CompareGrowth.html ka 
 
-.. avembed:: Exercises/AlgAnal/GrowthRates.html ka 
+Growth Rates Exercise
+---------------------
+
+.. avembed:: Exercises/AlgAnal/GrowthRatesPRO.html ka 
 
 .. todo::
    :type: AV

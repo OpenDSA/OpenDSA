@@ -10,7 +10,6 @@ $(document).ready(function () {
   setPointerL("head", l.get(0));
   setPointerL("curr", l.get(1));
   setPointerR("tail", l.get(1));
-  l.get(1).addTail();
   l.get(1).addVLine();
   av.recorded();
 });

@@ -30,23 +30,6 @@ $(document).ready(function () {
   var curr = setPointerL("curr", l.get(2));
   var tail = setPointerR("tail", l.get(2));
   var bar1 = l.get(2).addVLine();
-  var slash = l.get(2).addTail();
-
-  //Diagonal slash for new node
-  var newNodeSlash = av.g.line(leftMargin + 256, topMargin + 100,
-                               leftMargin + 266, topMargin + 71,
-                               {"opacity": 0, "stroke-width": 1});
-
-  //Diagonal slash for new tail
-  var newTailSlash = l.get(2).addTail({left: 74, visible: 0});
-
-  //Diagonal slash for second new node
-  var newNodeSlash2 = av.g.line(leftMargin + 182, topMargin + 100,
-                                leftMargin + 192, topMargin + 71,
-                                {"opacity": 0, "stroke-width": 1});
-
-  var slash2 = l.get(0).addTail({left: 74});
-  slash2.hide();
 
   // Slide 1
   av.umsg(interpret("av_c1"));
@@ -69,7 +52,6 @@ $(document).ready(function () {
   av.step();
 
   // Slide 4
-  newNodeSlash.show();
   av.umsg(interpret("av_c4"));
   av.step();
 
@@ -81,7 +63,6 @@ $(document).ready(function () {
   newNode.unhighlight();
   l.get(2).highlight();
   l.layout({ updateTop: false }); // Do not recalculate top coordinate
-  slash.hide();
   av.umsg(interpret("av_c5"));
   av.step();
 
@@ -94,8 +75,6 @@ $(document).ready(function () {
 
   // Slide 7
   l.layout();
-  newNodeSlash.hide();
-  newTailSlash.show();
   tail.target(l.get(3), {anchor: 'left top', myAnchor: 'right bottom',
                          left: 15, top: -20});
   l.get(2).unhighlight();
@@ -123,9 +102,7 @@ $(document).ready(function () {
   l.addFirst("null");
   bar1.hide();
   itBox.highlight(0);
-  slash2.show();
   var bar2 = l.get(0).addVLine({left: 74});
-  newTailSlash.hide();
   head.target(l.get(0));
   curr.target(l.get(1));
   tail.target(l.get(1));
@@ -147,7 +124,6 @@ $(document).ready(function () {
   av.step();
 
   // Slide 12
-  newNodeSlash2.show();
   av.umsg(interpret("av_c12"));
   av.step();
 
@@ -159,7 +135,6 @@ $(document).ready(function () {
   newNode2.unhighlight();
   l.get(1).highlight();
   l.layout({updateTop: false}); // Do not recalculate top coordinate
-  slash2.hide();
   av.umsg(interpret("av_c13"));
   av.step();
 
@@ -171,13 +146,7 @@ $(document).ready(function () {
   av.step();
 
   // Slide 15
-  //Diagonal slash for new tail
-  var newTailSlash2 = av.g.line(leftMargin + 182, topMargin + 46,
-                                leftMargin + 192, topMargin + 15,
-                                {"opacity": 0, "stroke-width": 1});
   l.layout();
-  newNodeSlash2.hide();
-  newTailSlash2.show();
   tail.target(l.get(2), {anchor: "left top", myAnchor: "right bottom",
                          left: 15, top: -20});
   l.get(1).unhighlight();

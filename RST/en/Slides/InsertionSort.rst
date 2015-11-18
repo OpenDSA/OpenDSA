@@ -29,19 +29,19 @@ Insertion Sort
    respect to the first two, and so on.
 
 
-Overview
-========
+Overview 1
+==========
 
 .. slide:: Title 1  
    :level: 3 
  
    Consider this start to the process.
 
-   .. inlineav:: InssortCON1 ss
+   .. inlineav:: insertionsortS1CON ss
       :output: show
 
-Overview
-========
+Overview 2
+==========
 
 .. slide:: Title 2
    :level: 3
@@ -49,20 +49,20 @@ Overview
    Next, process the record in position 2.
    Swap it to the left until it reaches a value smaller than it is.
 
-   .. inlineav:: InssortCON2 ss
+   .. inlineav:: insertionsortS2CON ss
       :output: show
 
 
 
-Overview
-========
+Overview 3
+==========
 
 .. slide:: Title 3
    :level: 3 
 
    And now the record in position 3.
 
-   .. inlineav:: InssortCON3 ss
+   .. inlineav:: insertionsortS3CON ss
       :output: show
 
 
@@ -90,4 +90,6 @@ Insertion Sort Analysis
    its growth rate :num:`Figure #TOH456`.
 
 
-   .. odsascript:: AV/Sorting/insertionsortCON.js
+.. odsascript:: AV/Sorting/insertionsortS1CON.js
+.. odsascript:: AV/Sorting/insertionsortS2CON.js
+.. odsascript:: AV/Sorting/insertionsortS3CON.js

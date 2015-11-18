@@ -56,15 +56,35 @@
       },
       "NP/circuitSAT": {
         "long_name": "The Circuit Satisfiability problem",
-        "exercises": {}
+        "exercises": {
+          "circuitSATCON": {
+            "long_name": "Circuit Satisfiability Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/SAT": {
         "long_name": "The Formula Satisfiability problem",
-        "exercises": {}
+        "exercises": {
+          "SATCON": {
+            "long_name": "Satisfiability Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/threeSAT": {
         "long_name": "The 3-CNF Satisfiability problem",
         "exercises": {
+          "threeSATCON": {
+            "long_name": "3-CNF Satisfiability Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "threeSAT_KA":{
             "long_name": "Practice Exercise for 3-SAT",
             "required": false,
@@ -76,6 +96,12 @@
       "NP/clique": {
         "long_name": "The Clique problem",
         "exercises": {
+          "cliqueCON": {
+            "long_name": "Clique Problem Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "clique_KA":{
             "long_name": "Practice Exercise for Clique",
             "required": false,
@@ -87,6 +113,12 @@
       "NP/independentSet": {
         "long_name": "The Independent Set problem",
         "exercises": {
+          "independentSetCON": {
+            "long_name": "Independent Set Problem Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "independentSet_KA":{
             "long_name": "Practice Exercise for Independent Set",
             "required": false,
@@ -98,6 +130,12 @@
       "NP/vertexCover": {
         "long_name": "The Independent Set problem",
         "exercises": {
+          "vertexCoverCON": {
+            "long_name": "Vertex Cover Problem Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "vertexCover_KA":{
             "long_name": "Practice Exercise for Vertex Cover",
             "required": false,
@@ -109,6 +147,12 @@
       "NP/hamiltonianCycle": {
         "long_name": "The Hamiltonian Cycle problem",
         "exercises": {
+          "hamiltonianCycleCON": {
+            "long_name": "Hamiltonian Cycle Problem Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "hamiltonianCycle_KA":{
             "long_name": "Practice Exercise for Hamiltonian Cycle",
             "required": false,
@@ -120,6 +164,12 @@
       "NP/TSP": {
         "long_name": "The Traveling Salesman problem",
         "exercises": {
+          "TSPCON": {
+            "long_name": "Traveling Salesman Problem Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "TSP_KA":{
             "long_name": "Practice Exercise for Traveling Salesman Problem",
             "required": false,
@@ -134,31 +184,80 @@
       },
       "NP/circuitSAT_to_SAT": {
         "long_name": "Reduction of circuit SAT to SAT.",
-        "exercises": {}
+        "exercises": {
+          "circuitSATtoSATCON": {
+            "long_name": "Circuit SAT to SAT Reduction Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/SAT_to_threeSAT": {
         "long_name": "Reduction of SAT to 3-SAT.",
-        "exercises": {}
+        "exercises": {
+          "SATto3SATCON": {
+            "long_name": "SAT to 3-SAT Reduction Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/threeSAT_to_clique": {
         "long_name": "Reduction of 3-SAT to Clique problem.",
-        "exercises": {}
+        "exercises": {
+          "threeSATtoCliqueCON": {
+            "long_name": "3-SAT to Clique Reduction Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/clique_to_independentSet": {
         "long_name": "Reduction of Clique problem to Independent Set problem.",
-        "exercises": {}
+        "exercises": {
+          "cliqueToISCON": {
+            "long_name": "Clique to Independent Set Reduction Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/independentSet_to_vertexCover": {
         "long_name": "Reduction of Independent Set problem to Vertex Cover problem.",
-        "exercises": {}
+        "exercises": {
+          "IStoVCCON": {
+            "long_name": "Independent Set to Vertex Cover Reduction Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/threeSAT_to_hamiltonianCycle": {
         "long_name": "Reduction of 3-SAT to Hamiltonian Cycle Problem.",
-        "exercises": {}
+        "exercises": {
+          "threeSATtoHCCON": {
+            "long_name": "3-SAT to Hamiltonian Cycle Reduction Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/hamiltonianCycle_to_TSP": {
         "long_name": "Reduction of Hamiltonian Cycle Problem to TSP.",
-        "exercises": {}
+        "exercises": {
+          "HCtoTSPCON": {
+            "long_name": "Hamiltonian Cycle to TSP Reduction Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/NPCoping": {
         "long_name": "Coping with NP-complete problems",

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html data-require="math">
+  <head>
+    <title>Traversals: Reconstruct a Binary Tree</title>
+    <script src="../../lib/jquery.min.js"></script>
+    <script src="../../lib/jquery-ui.min.js"></script>
+    <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+    <script src="../../lib/odsaStyle-min.css"></script>
+  </head>
+
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="problem">Answer TRUE or FALSE.
+          <p class="question">If you are given the order of the nodes as
+            visited by a postorder traversal and the order of the nodes as
+            visited by an inorder traversal, do you have enough
+            information to reconstruct the original tree? Assume that the
+            nodes all have unique values.</p>
+          <div class="solution">True</div>
+          <ul class="choices" data-category="true">
+            <li>True</li>
+            <li>False</li>
+          </ul>
+          <div class="hints">
+            <p>Build yourself a small example tree of about 6 or 7
+              nodes and see what happens.</p>
+            <p>Consider the example where the root has value A. In the
+              postorder traversal, the left subtree is printed, then
+              the right subtree, then A. In the
+              inorder traversal, the left subtree comes first, then the
+              A, then the right subtree.</p>
+            <p>From this information, we always know the root, the
+              contents of its left subtree, and the contents of its
+              right subtree.</p>
+            <p>We can apply this concept recursively to reconstruct
+              the left subtree and the right subtree.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

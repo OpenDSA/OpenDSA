@@ -6,19 +6,19 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :requires: Spatial data structures
-   :satisfies: kd tree
+   :satisfies: KD tree
    :topic: Spatial Data Structures
 
-k-d Trees
+KD Trees
 =========
 
-The :term:`k-d tree` is a modification to the :term:`BST` that allows
+The :term:`kd tree` is a modification to the :term:`BST` that allows
 for efficient processing of
 :term:`multi-dimensional search keys <multi-dimensional search key>`.
-The k-d tree differs from the BST in that each level of the k-d tree
+The kd tree differs from the BST in that each level of the kd tree
 makes branching decisions based on a particular search key associated
 with that level, called the :term:`discriminator`.
-In principle, the k-d tree could be used to unify key searching across
+In principle, the kd tree could be used to unify key searching across
 any arbitrary set of keys such as name and zipcode.
 But in practice, it is nearly always used to support search on
 multi-dimensional coordinates, such as locations in 2D or 3D space.
@@ -44,7 +44,7 @@ There is no restriction on the relative values of :math:`M_x` and the
 decisions made at :math:`M` are based solely on the :math:`y`
 coordinate.
 Figure :num:`Figure #kdExamp` shows an example of how a collection
-of two-dimensional points would be stored in a k-d tree.
+of two-dimensional points would be stored in a kd tree.
 
 .. _kdExamp:
 
@@ -53,12 +53,12 @@ of two-dimensional points would be stored in a k-d tree.
    :align: center
    :capalign: justify
    :figwidth: 90%
-   :alt: Example of a k-d tree
+   :alt: Example of a kd tree
 
-   Example of a k-d tree.
-   (a) The k-d tree decomposition for a :math:`128 \times 128`-unit
+   Example of a kd tree.
+   (a) The kd tree decomposition for a :math:`128 \times 128`-unit
    region containing seven data points.
-   (b) The k-d tree for the region of (a).
+   (b) The kd tree for the region of (a).
 
 In Figure :num:`Figure #kdExamp`, the region containing the points
 is (arbitrarily) restricted to a :math:`128 \times 128` square, and
@@ -69,17 +69,17 @@ discriminators.
 The root node splits the space into two parts;
 its children further subdivide the space into smaller parts.
 The children's split lines do not cross the root's split line.
-Thus, each node in the k-d tree helps to decompose the space into
+Thus, each node in the kd tree helps to decompose the space into
 rectangles that show the extent of where nodes can fall in the
 various subtrees.
 
-Searching a k-d tree for the record with a specified xy-coordinate
+Searching a kd tree for the record with a specified xy-coordinate
 is like searching a BST, except that each level of the
-k-d tree is associated with a particular discriminator.
+kd tree is associated with a particular discriminator.
 
 .. topic:: Example
 
-   Consider searching the k-d tree for a
+   Consider searching the kd tree for a
    record located at :math:`P = (69, 50)`.
    First compare :math:`P` with the point stored at
    the root (record :math:`A` in Figure :num:`Figure #kdExamp`).
@@ -110,7 +110,7 @@ k-d tree is associated with a particular discriminator.
 
    If the search process reaches a ``NULL`` pointer, then
    that point is not contained in the tree.
-   Here is a k-d tree search implementation,
+   Here is a kd tree search implementation,
    equivalent to the ``findhelp`` function of the BST class.
    ``KD`` class private member ``D`` stores the key's dimension.
 
@@ -128,20 +128,20 @@ k-d tree is associated with a particular discriminator.
        return findhelp(rt.right(), key, (level+1)%D);
    }
 
-Inserting a new node into the k-d tree is similar to
+Inserting a new node into the kd tree is similar to
 BST insertion.
-The k-d tree search procedure is followed until a ``NULL`` pointer is
+The kd tree search procedure is followed until a ``NULL`` pointer is
 found, indicating the proper place to insert the new node.
 
 .. topic:: Example
 
    Inserting a record at location (10, 50) in the
-   k-d tree of Figure :num:`Figure #kdExamp` first requires a search
+   kd tree of Figure :num:`Figure #kdExamp` first requires a search
    to the node containing record :math:`B`.
    At this point, the new record is inserted into :math:`B`'s left
    subtree.
 
-Deleting a node from a k-d tree is similar to deleting from a BST,
+Deleting a node from a kd tree is similar to deleting from a BST,
 but slightly harder.
 As with deleting from a BST, the first step is to find the node
 (call it :math:`N`) to be deleted.
@@ -154,7 +154,7 @@ cannot simply assign :math:`N`'s parent to point to :math:`N`'s
 child as would be done in the BST.
 To do so would change the level of all nodes in the subtree, and thus
 the discriminator used for a search would also change.
-The result is that the subtree would no longer be a k-d tree because a
+The result is that the subtree would no longer be a kd tree because a
 node's children might now violate the BST property for that
 discriminator.
 
@@ -219,7 +219,7 @@ with the record having the greatest value for the discriminator in the
 left subtree, because this new value might be duplicated.
 If so, then we would have equal values for the discriminator in
 :math:`N`'s left subtree, which violates the ordering rules for the
-k-d tree.
+kd tree.
 Fortunately, there is a simple solution to the problem.
 We first move the left subtree of node :math:`N` to become the
 right subtree (i.e., we simply swap the values of :math:`N`'s left
@@ -251,7 +251,7 @@ the query circle.
 
 .. topic:: Example
 
-   We will now find all cities in the k-d tree of
+   We will now find all cities in the kd tree of
    Figure :num:`Figure #kdSearch` within 25 units of the point
    (25, 65). 
    The search begins with the root node, which contains record
@@ -302,12 +302,12 @@ the query circle.
    :align: center
    :capalign: justify
    :figwidth: 90%
-   :alt: Example of searching in a k-d tree
+   :alt: Example of searching in a kd tree
 
-   Searching in the k-d tree of Figure :num:`Figure #kdExamp`.
-   (a) The k-d tree decomposition for a :math:`128 \times 128`-unit
+   Searching in the kd tree of Figure :num:`Figure #kdExamp`.
+   (a) The kd tree decomposition for a :math:`128 \times 128`-unit
    region containing seven data points.
-   (b) The k-d tree for the region of (a).
+   (b) The kd tree for the region of (a).
 
 Here is an implementation for the region search method.
 
@@ -333,7 +333,7 @@ It is not enough to simply check that the differences between the
 distances because the the record could still be outside the search
 circle, as illustrated by Figure :num:`Figure #InCirc`.
 
-.. _kdExamp:
+.. _InCirc:
 
 .. odsafig:: Images/InCirc.png
    :width: 300

@@ -155,7 +155,7 @@ function connection(obj1, obj2){
   if(obj1.odsa_next){
     obj1.odsa_edgeToNext.element.remove();	
   }else{
-    obj1.odsa_tail.element.remove();
+//    obj1.odsa_tail.element.remove();
     obj1.odsa_tail = null;
   }
   obj1.odsa_edgeToNext = edge;
@@ -266,12 +266,12 @@ function addTail(node){
   var ty = top + 1;
 
   if(node.odsa_tail){;
-    node.odsa_tail.element.remove();
-    node.odsa_tail = jsav.g.line(fx,fy,tx,ty,{"opacity": 100,"stroke-width": 1});
+//    node.odsa_tail.element.remove();
+//    node.odsa_tail = jsav.g.line(fx,fy,tx,ty,{"opacity": 100,"stroke-width": 1});
   }else{
     node.odsa_edgeToNext.element.remove();
     node.odsa_next = null;
-    node.odsa_tail = jsav.g.line(fx,fy,tx,ty,{"opacity": 100,"stroke-width": 1});
+//    node.odsa_tail = jsav.g.line(fx,fy,tx,ty,{"opacity": 100,"stroke-width": 1});
   }
   node.odsa_next = null;
 }
@@ -327,8 +327,8 @@ function f_reset() {
     jsavList.get(i).odsa_edgeToNext = jsavList.get(i).edgeToNext();
   }
   // Manually add tail to the last node.
-  jsavList.get(listSize - 1).odsa_tail = jsav.g.line(leftMargin + 34 + (listSize - 1)*74, 47 + topMargin,
-                          leftMargin + 44 + (listSize - 1)*74, 16 + topMargin,{"opacity": 100,"stroke-width": 1});
+//  jsavList.get(listSize - 1).odsa_tail = jsav.g.line(leftMargin + 34 + (listSize - 1)*74, 47 + topMargin,
+//                          leftMargin + 44 + (listSize - 1)*74, 16 + topMargin,{"opacity": 100,"stroke-width": 1});
 
   // Correct answer
   answerOrderArr = orderArr.slice(0);

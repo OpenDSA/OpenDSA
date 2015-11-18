@@ -158,7 +158,7 @@ $(document).ready(function () {
   });
     
   var exercise = av.exercise(model, init,
-              {compare: { css: "opacity" },
+              { // compare: { css: "opacity" },
                controls: $('.jsavexercisecontrols'), fix: fixState});
   exercise.reset();
 });

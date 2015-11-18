@@ -4,7 +4,7 @@
 $(document).ready(function () {
   // Constructs the standard tree used in the slideshow
   function construct_tree(av) {
-    var t = av.ds.binarytree({nodegap: 25, top: -40});
+    var t = av.ds.binarytree({nodegap: 25});
     var r = t.root("");
 
     // constructs tree

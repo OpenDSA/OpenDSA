@@ -660,12 +660,6 @@
       "Development/BinaryTreeTraversal": {
         "long_name": "Binary Tree Traversals",
         "exercises": {
-          "btLeafPROG": {
-            "long_name": "Node Count Function",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1
-          },
           "binarytree-inorder": {
             "long_name": "Binary Tree Inorder Traversal",
             "required": true,
