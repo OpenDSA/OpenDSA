@@ -14,7 +14,7 @@
 Stacks
 ======
 
-Stack terminology
+Stack Terminology
 -----------------
 
 The :term:`stack` is a list-like structure
@@ -66,6 +66,10 @@ the array-based stack class.
 .. inlineav:: astackVarCON ss
    :output: show
    
+
+Positioning Top
+---------------
+
 The array-based stack implementation is essentially
 a simplified version of the array-based list.
 The only important design decision to be made is which end of the
@@ -74,12 +78,13 @@ array should represent the top of the stack.
 .. inlineav:: astackTopCON ss
    :output: show
    
+
+Push
+----
+
 .. inlineav:: astackPushCON ss
    :output: show
 
-.. inlineav:: astackPopCON ss
-   :output: show
-   
 
 Push Practice
 -------------
@@ -87,8 +92,15 @@ Push Practice
 .. avembed:: Exercises/List/AstackPushPRO.html ka
 
 
+Pop
+---
+
+.. inlineav:: astackPopCON ss
+   :output: show
+   
+
 Pop Practice
--------------
+------------
 
 .. avembed:: Exercises/List/AstackPopPRO.html ka
 

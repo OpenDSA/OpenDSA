@@ -30,6 +30,10 @@ better approach.
 .. inlineav:: listElementDataCON ss
    :output: show
 
+
+Homogeneity
+-----------
+
 The next issue to consider is whether to enforce :term:`homogeneity`
 in the list elements.
 That is, should lists be restricted so that all data elements stored
@@ -62,6 +66,10 @@ In C++, a similar effect can be achieved by using ``void*`` pointers.
 .. inlineav:: listElementTypeCON ss
    :output: show
    
+
+Element Deletion
+----------------
+
 Our last design issue is what to do to the list elements when the list
 itself is deleted?
 This is a serious concern in a language like C++ that does not support

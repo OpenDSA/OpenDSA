@@ -59,6 +59,10 @@ and ``link`` fields.
 .. inlineav:: llistBadCON ss
    :output: show
 
+
+Why This Has Problems
+---------------------
+
 There are a number of problems with the representation just
 described.
 First, there are lots of special cases to code for.
@@ -71,6 +75,10 @@ and thus increases the chance of introducing bugs.
 .. inlineav:: llistBadDelCON ss
    :output: show
    
+
+A Better Solution
+-----------------
+
 Fortunately, there is a fairly easy way to deal with all of the
 special cases, as well as the problem with deleting the last node.
 Many special cases can be eliminated by implementing
@@ -123,26 +131,35 @@ named ``LList``.
 .. inlineav:: llistVarsCON ss
    :output: show
 
+
+Class Constructors
+------------------
+
 .. inlineav:: llistConsCON ss
    :output: show
 
 
-Insert
-------
 
-Implementations for most member functions of the ``list``
-class are straightforward.
-However, ``insert`` and ``remove`` should be studied carefully.
+Insert Method
+-------------
 
 .. inlineav:: llistInsertCON ss
    :output: show
    
+
+Insertion Special Cases
+-----------------------
+
 Here are some special cases for linked list insertion: Inserting at
 the end, and inserting to an empty list.
 
 .. inlineav:: llistSpecialCON ss
    :output: show
    
+
+Linked List Insert Practice
+---------------------------
+
 .. avembed:: Exercises/List/LlistInsertPRO.html ka
 
 
@@ -152,6 +169,10 @@ Remove
 .. inlineav:: llistRemoveCON ss
    :output: show
    
+
+Remove Practice
+---------------
+
 .. avembed:: Exercises/List/LlistRemovePRO.html ka
 
 

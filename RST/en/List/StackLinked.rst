@@ -33,12 +33,11 @@ Here is a visual representation for the linked stack.
 .. inlineav:: lstackDiagramCON dgm
    :align: center   
 
-Now, let's look at how ``push`` and ``pop`` work in the linked stack implementation.
+
+Linked Stack Push
+-----------------
 
 .. inlineav:: lstackPushCON ss
-   :output: show
-   
-.. inlineav:: lstackPopCON ss
    :output: show
    
 
@@ -48,8 +47,15 @@ Push Practice
 .. avembed:: Exercises/List/LstackPushPRO.html ka
 
 
+Linked Stack Pop
+----------------
+
+.. inlineav:: lstackPopCON ss
+   :output: show
+   
+
 Pop Practice
--------------
+------------
 
 .. avembed:: Exercises/List/LstackPopPRO.html ka
 

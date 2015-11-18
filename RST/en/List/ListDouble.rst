@@ -69,8 +69,8 @@ the doubly linked list nodes have an extra data member.
 .. codeinclude:: Lists/DLink
    :tag: DLink
 
-Insert and Append
------------------
+Insert
+------
 
 The following slideshows illustrate the ``insert`` and ``append``
 doubly linked list methods.
@@ -84,16 +84,24 @@ each node to deal with), they tend to be easier to understand.
 .. inlineav:: dlistInsertCON ss
    :output: show   
    
+
+Append
+------
+
 .. inlineav:: dlistAppendCON ss
    :output: show  
    
 
-Remove and Prev
----------------
+Remove
+------
 
 .. inlineav:: dlistRemoveCON ss
    :output: show
    
+
+Prev
+----
+
 .. inlineav:: dlistPrevCON ss
    :output: show
    

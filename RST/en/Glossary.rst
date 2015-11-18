@@ -5,7 +5,6 @@
 
 .. avmetadata::
    :author: OpenDSA Contributors
-   :prerequisites: 
    :topic:   
 
 
@@ -2548,7 +2547,7 @@ Glossary
       Specifically, an NP-Completeness proof must first show that the
       problem is in class :term:`NP`, and then show (by using a
       reduction to another NP-Complete problem) that the problem is
-      :term:`NP hard`.
+      :term:`NP-hard`.
 
    NP-hard
       A problem that is "as hard as" any other problem in :term:`NP`.

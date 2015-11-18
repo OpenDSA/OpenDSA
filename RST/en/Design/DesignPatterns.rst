@@ -110,7 +110,7 @@ We could write a separate traversal function for each such activity
 that we intend to perform on the tree.
 A better approach would be to write a generic traversal function,
 and pass in the activity to be performed at each node.
-This organization constitutes the :term:`visitor design pattern`.
+This organization constitutes the :term:`visitor` design pattern.
 The visitor design pattern can also be used in
 :ref:`Graph Traversal <traversal> <GraphTraversal>`.
 
@@ -134,7 +134,7 @@ Each action method contains something like a switch statement that
 defines the details of the action for each subclass in the collection
 (e.g., page, column, row, character).
 We can cut the code down some by using the
-:term:`visitor design pattern`
+:term:`visitor` design pattern
 so that we only need to write the traversal once, and then write a
 visitor subroutine for each action that might be applied to the
 collection of objects.
@@ -205,7 +205,7 @@ action a method or class that does the appropriate rendering details
 for that output device.
 That is, we wish to hand to the object the appropriate ":term:`strategy`"
 for accomplishing the details of the rendering task.
-Thus, this approach is called the :term:`Strategy design pattern`.
+Thus, this approach is called the :term:`strategy` design pattern.
 
 The Strategy design pattern can be used to create generalized sorting
 functions.

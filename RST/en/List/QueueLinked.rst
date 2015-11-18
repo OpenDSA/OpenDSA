@@ -29,21 +29,32 @@ Here is the linked queue class declaration.
 .. inlineav:: lqueueIntroCON ss
    :output: show    
    
+
+Linked Enqueue
+--------------
+
 .. inlineav:: lqueueEnqueueCON ss
    :output: show   
    
-.. inlineav:: lqueueDequeueCON ss
-   :output: show 
-   
-Linked Queue Enqueue Practice
------------------------------
+
+Linked Enqueue Practice
+-----------------------
 
 .. avembed:: Exercises/List/LqueueEnqueuePRO.html ka
 
-Linked Queue Dequeue Practice
------------------------------
+
+Linked Dequeue
+--------------
+
+.. inlineav:: lqueueDequeueCON ss
+   :output: show 
+   
+
+Linked Dequeue Practice
+-----------------------
 
 .. avembed:: Exercises/List/LqueueDequeuePRO.html ka
+
 
 Comparison of Array-Based and Linked Queues
 -------------------------------------------

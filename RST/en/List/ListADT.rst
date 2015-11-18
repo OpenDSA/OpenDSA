@@ -131,9 +131,6 @@ object, sometimes referred to as an :term:`iterator`.
 .. inlineav:: listADTposCON ss
    :output: show  
 
-.. inlineav:: listADTnoteCON ss
-   :output: show   
-
 The ``List`` member functions allow you to build a list with elements
 in any desired order, and to access any desired position in the list.
 You might notice that the ``clear`` method is a "convenience" method,

@@ -50,14 +50,30 @@ efficient.
 .. inlineav:: aqueueFirstCON ss
    :output: show
 
+
+An Improvement
+--------------
+
 .. inlineav:: aqueueDriftCON ss
    :output: show
+
+
+A Problem
+---------
 
 .. inlineav:: aqueueBadCON ss
    :output: show
 
+
+The Circular Queue
+------------------
+
 .. inlineav:: aqueueCircularCON ss
    :output: show
+
+
+Defining Positions
+------------------
 
 .. inlineav:: aqueueEmptyCON ss
    :output: show
@@ -89,6 +105,10 @@ Here is an array-based queue implementation.
 
 .. codeinclude:: Lists/AQueue
    :tag: AQueue1,AQueue2
+
+
+Array-based Queue Implementation
+--------------------------------
 
 .. inlineav:: aqueueVarCON ss
    :output: show
