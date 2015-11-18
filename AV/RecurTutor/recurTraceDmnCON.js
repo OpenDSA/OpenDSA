@@ -1,9 +1,7 @@
-"use strict";
-
 //===============================================================================================================================
 // Visualization of the basic principle of Domino Effect 
-(function ($) {
-
+$(document).ready(function () {
+"use strict";
   var av = new JSAV("recurTraceDmnCON");
   // Show the Domino Effect recursively  on a figure too
   var rect = av.g.rect(100, 30, 50, 90).css({"fill": "grey"});
@@ -64,9 +62,4 @@
   av.step();
 
   av.recorded();
-  
-}(jQuery));
-
-
-
-//==============================================================================================================================
+});

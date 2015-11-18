@@ -1,9 +1,7 @@
-"use strict";
-  
 //===============================================================================================================================
 // Visualization of Domino Effect to Print a sequence of integers
-(function ($) {
-
+$(document).ready(function () {
+"use strict";
   var av = new JSAV("recurTraceDmnPrntCON");
   var rect = av.g.rect(100, 30, 50, 90).css({"fill": "grey"});
   var rect1 = av.g.rect(200, 30, 50, 90).css({"fill": "grey"});
@@ -60,9 +58,4 @@
   av.label("N",  {"top": "20px", "left": "720px"}).css({'font-size': '15px', "text-align": "center"});
 
   av.recorded();
-  
-}(jQuery));
-
-
-
-//==============================================================================================================================
+});

@@ -9,7 +9,7 @@ CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicat
 CSSLINTFLAGS = --quiet --ignore=ids,adjoining-classes
 MINIMIZE = uglifyjs
 
-.PHONY: all clean alllint csslint lint lintExe jsonlint min
+.PHONY: all clean alllint csslint lint lintExe jsonlint min testLTI Test TestLMS
 
 all: alllint
 
@@ -113,6 +113,12 @@ Everything: min
 
 EverythingLMS: min
 	python $(CONFIG_SCRIPT) config/Everything.json -c True
+
+RecurTutor: min
+	python $(CONFIG_SCRIPT) config/RecurTutor.json $(opts)
+
+RecurTutorLMS: min
+	python $(CONFIG_SCRIPT) config/RecurTutor.json -c True
 
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js

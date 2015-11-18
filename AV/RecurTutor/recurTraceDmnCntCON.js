@@ -1,9 +1,6 @@
-"use strict";
-  
-//===============================================================================================================================
 // Visualization of Domino Effect to Count the number of digits in an integer
-(function ($) {
-
+$(document).ready(function () {
+"use strict";
   var av = new JSAV("recurTraceDmnCntCON");
   var rect = av.g.rect(150, 30, 50, 90).css({"fill": "grey"});
 
@@ -56,9 +53,4 @@
   av.label("10^n's digit",  {"top": "6px", "left": "150px"}).css({'font-size': '15px', "text-align": "center"});
  
   av.recorded();
-  
-}(jQuery));
-
-
-
-//==============================================================================================================================
+});
