@@ -170,17 +170,17 @@
 
     modelEdges.forEach(function(currentEdge) {
       //msg = "<b><u>Processing Edge (" + start().value() + "," + endNode.value() + "):</b></u>";
-      modeljsav.umsg("Processing Edge: (" + edgeName(currentEdge, ", ") + ")<br>");
+      modeljsav.umsg(interpret("av_ms_processing"), {fill: {edge: edgeName(currentEdge, ", ")}});
       var index = edgeIndex(currentEdge);
       if (!createsCycle(currentEdge)) {
         //Add to MST
-        modeljsav.umsg("Adding edge to the MST", {preserve: true});
+        modeljsav.umsg(interpret("av_ms_adding"), {preserve: true});
         addEdge(currentEdge);
         edgeMatrix.addClass(index, 0, "marked");
         edgeMatrix.addClass(index, 1, "marked");
         markEdge(currentEdge, modeljsav);
       } else {
-        modeljsav.umsg("Dismiss edge", {preserve: true});
+        modeljsav.umsg(interpret("av_ms_dismiss"), {preserve: true});
         currentEdge.addClass("discarded");
         edgeMatrix.addClass(index, 0, "discarded");
         edgeMatrix.addClass(index, 1, "discarded");
