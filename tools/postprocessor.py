@@ -194,13 +194,14 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   
   # Get the module name and create its subfolder
   mod_name = os.path.splitext(os.path.basename(path))[0]
-  print "Found HTML file:", mod_name
   
   # Strip out the script, style, link, and meta tags
   
   soup = BeautifulSoup(html, "html.parser")
   
-  verbose = True
+  verbose = False
+  
+  if verbose: print "Found HTML file:", mod_name
   
   TAGS = [ ('script', 'src'), ('link', 'href'), ('img', 'src'), ('a', 'href') ]
   
@@ -234,19 +235,23 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
         # Really? No href? Is that even valid HTML?
         continue
     href = link['href']
-    # Skip dummy urls redirecting to itself
     if href == '#':
+      # Skip dummy urls redirecting to itself
       continue
     elif href.startswith('#'):
       # Do something with an internal page link
       continue
     elif href.startswith('mailto:'):
+      # Email
       continue
     elif href.startswith('http://'):
+      # Offsite
       continue
     elif href.startswith('../'):
+      # Current directory
       continue
     elif href.endswith('.rst'):
+      # The source reference
       continue
     else:
       if '#' in href:
@@ -259,7 +264,7 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
         # Map it to the proper folder in OpenEdX
         external = url_index.get(external, external)
         # Force it to approach it from the top
-        link['href'] = '../../'+'#'.join((external,internal))
+        link['href'] = '#'.join((external,internal))
         
       # Do something with the actual href
   
@@ -441,45 +446,23 @@ def make_lti(config):
   shutil.rmtree(lti_folder, ignore_errors=True)
   os.makedirs(lti_folder)
   
-  course_id = config.course_id
-  
   url_index = {}
-  URL_SOURCE = "https://canvas.instructure.com/courses/{course_id}/modules/items/{item_id}"
-  module_item_id = "NOT FOUND"
-  for chapter_name, chapter_data in config.chapters.items():
-    for module_name, module_data in chapter_data.items():
-      if 'item_id' in module_data:
-        module_item_id = module_data['item_id']
-      for section_name, section_data in module_data['sections'].items():
-        pattern = section_name.split('/')[1] if '/' in section_name else section_name
-        if 'item_id' in section_data:
-          url_index[pattern] = URL_SOURCE.format(course_id=course_id, item_id=section_data['item_id'])
-        else:
-          url_index[pattern] = URL_SOURCE.format(course_id=course_id, item_id=module_item_id)
-  pprint(url_index)
-  #sys.exit(0)
-  
-  '''
-  url_index = {
-    (section_name.split('/')[1] if '/' in section_name else section_name)
-        : '{}/{}'.format(chapter_name, section_name.replace('/', '_'))
-    for chapter_name, sections in config.chapters.items()
-    for section_name, section_data in sections.items()
-  }
-  pprint(url_index)
-  
-  url_index2 = {
-    (section_name.split('/')[1] if '/' in section_name else section_name)
-        : section_data["item_id"] if "item_id" in section_data else sections["item_id"]
-    for chapter_name, sections in config.chapters.items()
-    for section_name, section_data in sections.items()
-  }
-  pprint(url_index2)
-  
-  sys.exit(0)
-  '''
-  #url_index['genindex'] = 'Table_of_Contents/Table_of_Contents'
-  #url_index['search'] = 'Table_of_Contents/Table_of_Contents'
+  if config.course_id:
+    course_id = config.course_id
+    URL_SOURCE = "https://canvas.instructure.com/courses/{course_id}/modules/items/{item_id}"
+    module_item_id = "NOT FOUND"
+    for chapter_name, chapter_data in config.chapters.items():
+      for module_name, module_data in chapter_data.items():
+        if 'item_id' in module_data:
+          module_item_id = module_data['item_id']
+          url_index[module_name] = URL_SOURCE.format(course_id=course_id, item_id=module_item_id)
+        for section_name, section_data in module_data['sections'].items():
+          pattern = section_name.split('/')[1] if '/' in section_name else section_name
+          if 'item_id' in section_data:
+            item_id = section_data['item_id']
+          else:
+            item_id = module_item_id
+          url_index[pattern] = URL_SOURCE.format(course_id=course_id, item_id=item_id)
   
   for chapter_name, sections in config.chapters.items():
     for section_name, section_data in sections.items():
