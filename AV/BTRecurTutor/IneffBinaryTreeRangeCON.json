@@ -1,0 +1,32 @@
+{
+  "translations" :{
+    "en": {
+     "av_c1": "Suppose that you want to write a recursive function named range that, given a root to a BST, a key value min, and a key value max, returns the number of nodes having key values that fall between min and max. Function range should visit as few nodes in the BST as possible. An inefficient solution is shown.",
+     "av_c2": "This solution has neither compilation errors nor logical errors. It will return the correct number of nodes in the given range. However, the solution did not use the BST property to minimize the nodes visits.", 
+     "av_c3": "Suppose that the function call is range(rt, 10, 14). So we are looking for the values between 10 and 14. Let's trace the code on the tree shown.",
+     "av_c4": "Since the root is not null we proceed to check on the range.",
+     "av_c5": "The root value is not within the range.",
+     "av_c6": "We now proceed to the recursive calls. The first recursive call counts nodes in range in the left sub-tree, and the second recursive call counts nodes in range in the right subtree.",
+     "av_c7": "The code is not effecient because it does not avoid vsiting un-needed nodes. The code will visit the whole right sub-tree even though it is not needed.",
+     "av_c8": "As another example, suppose that the function call is range(rt, 38, 68). So we are looking for the values between 38 and 68. Let's trace the code on the tree shown.",
+     "av_c9": "Since the root is not null we proceed to check on the range.",
+     "av_c10": "The root value is not within the range.",
+     "av_c11": "We now proceed to the recursive calls. The first recursive call counts nodes in range in the left sub-tree, and the second recursive call counts nodes in range in the right subtree.",
+     "av_c12": "The recursive calls should be controlled by if statements to avoid unnecessary node visits. The following code checks the current node value so as to decide whether to visit children."
+   }
+  },
+  "code" : {
+      "java": [
+       {
+        "url": "../../../SourceCode/Java/BTRecurTutor/RecIneffRng.java",
+        "tags": {
+        }
+       },
+      {
+        "url": "../../../SourceCode/Java/BTRecurTutor/RecEffRng.java",
+        "tags": {
+       }
+      }
+   ]
+  }
+}
