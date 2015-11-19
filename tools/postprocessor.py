@@ -198,7 +198,7 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   
   # Strip out the script, style, link, and meta tags
   
-  soup = BeautifulSoup(html, "lxml")
+  soup = BeautifulSoup(html, "html.parser")
   
   verbose = True
   
@@ -295,16 +295,19 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   
   # Collect out the slide-specific JS/CSS
   slide_scripts = defaultdict(list)
-  all_scripts = list()
+  all_scripts = []
+
   for tag_name, tag_url in TAGS:
     if tag_name == 'link': continue
+    # Expand this to handle src
     for a_tag in soup.find_all(tag_name):
       if a_tag.has_attr(tag_url) and a_tag[tag_url].startswith('OpenDSA/AV/'):
         name = os.path.splitext(os.path.basename(a_tag[tag_url]))[0]
         script_tag = a_tag.extract()
-        slide_scripts[name].append(script_tag)
-        if name.endswith('Common.css'):
-            all_scripts.append(script_tag)
+        #slide_scripts[name].append(script_tag)
+        #if name.endswith('Common.css'):
+        all_scripts.append(script_tag)
+
   
   # Breaking file into components
   
@@ -393,6 +396,9 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
     print "\tPhase 2: Clustered into {} slides. Found {} exercises, expected {}.".format(len(slides), total_exercises-1, len(exercises))
   
   # third pass: render them out with the relevant scripts
+  sss_div = soup.new_tag('div', id='SLIDE-SPECIFIC-SCRIPTS')
+  for script_tag in all_scripts:
+      sss_div.insert(0, script_tag)
   for index, (slide_name, slide) in enumerate(slides):
     #print "\tSlide", index, exercise_name, len(slide)
     # Identify the new filename
@@ -402,25 +408,15 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
     for body_index, (parent, body) in enumerate(slide):
       parent.insert(body_index, body)
     # Add back in slide specific scripts
-    sss_div = soup.new_tag('div', id='SLIDE-SPECIFIC-SCRIPTS')
     content_div_soup.insert_before(sss_div)
     if index != 0:
         potential_exercises = exercises.values()[index-1].keys()
     else:
         potential_exercises = []
-    for potential_exercise in potential_exercises:
-        if potential_exercise in slide_scripts:
-          for a_script in slide_scripts[potential_exercise]:
-            sss_div.insert(0, a_script)
-        if potential_exercise in ('quicksortCON', 'bubblesortCON'):
-          for a_script in slide_scripts[potential_exercise.replace('CON', 'CODE')]:
-            sss_div.insert(0, a_script)
-    for script_tag in all_scripts:
-        sss_div.insert(0, script_tag)
     # Write out the file with what we have so far
     with codecs.open(slide_filepath, 'w', 'utf-8') as o:
       o.write(unicode(soup))
-    sss_div.decompose()
+    sss_div.extract()
     for parent, body in slide:
       body.extract()
   if verbose:
@@ -445,14 +441,46 @@ def make_lti(config):
   shutil.rmtree(lti_folder, ignore_errors=True)
   os.makedirs(lti_folder)
   
+  course_id = config.course_id
+  
+  url_index = {}
+  URL_SOURCE = "https://canvas.instructure.com/courses/{course_id}/modules/items/{item_id}"
+  module_item_id = "NOT FOUND"
+  for chapter_name, chapter_data in config.chapters.items():
+    for module_name, module_data in chapter_data.items():
+      if 'item_id' in module_data:
+        module_item_id = module_data['item_id']
+      for section_name, section_data in module_data['sections'].items():
+        pattern = section_name.split('/')[1] if '/' in section_name else section_name
+        if 'item_id' in section_data:
+          url_index[pattern] = URL_SOURCE.format(course_id=course_id, item_id=section_data['item_id'])
+        else:
+          url_index[pattern] = URL_SOURCE.format(course_id=course_id, item_id=module_item_id)
+  pprint(url_index)
+  #sys.exit(0)
+  
+  '''
   url_index = {
     (section_name.split('/')[1] if '/' in section_name else section_name)
         : '{}/{}'.format(chapter_name, section_name.replace('/', '_'))
     for chapter_name, sections in config.chapters.items()
     for section_name, section_data in sections.items()
   }
-  url_index['genindex'] = 'Table_of_Contents/Table_of_Contents'
-  url_index['search'] = 'Table_of_Contents/Table_of_Contents'
+  pprint(url_index)
+  
+  url_index2 = {
+    (section_name.split('/')[1] if '/' in section_name else section_name)
+        : section_data["item_id"] if "item_id" in section_data else sections["item_id"]
+    for chapter_name, sections in config.chapters.items()
+    for section_name, section_data in sections.items()
+  }
+  pprint(url_index2)
+  
+  sys.exit(0)
+  '''
+  #url_index['genindex'] = 'Table_of_Contents/Table_of_Contents'
+  #url_index['search'] = 'Table_of_Contents/Table_of_Contents'
+  
   for chapter_name, sections in config.chapters.items():
     for section_name, section_data in sections.items():
       name = section_name.split('/')[1] if '/' in section_name else section_name
