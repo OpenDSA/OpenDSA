@@ -12,4 +12,7 @@
 Summary Exercises
 =================
 
+Summary Questions
+-----------------
+
 .. avembed:: Exercises/RecurTutor/RecChapterSumm.html ka

@@ -4,7 +4,7 @@
 $(document).ready(function() {
   "use strict";
   var av_name = "recurIntroDelegateCON";
-  var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
+  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
   // Load the config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter,       // get the interpreter

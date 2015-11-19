@@ -1,0 +1,28 @@
+{
+  "translations" :{
+    "en": {
+      "av_c1": "Now let's consider an easy recursive call. We want to sum the elements of an array.",
+      "av_c2": "Assume the array contains [2, 4, 6], and that the first call is sum(arr, 3). This will sum the first three elements of the array.",
+      "av_c3": "As the initial call to sum is made, the base case is not true (n is not 0).",
+      "av_c4": "So it goes to the recursive call, this time passing a value of n$-1=2$. It will also pass a reference to the array.",
+      "av_c5": "The original sum makes a call to sum, passing in a copy of arr. Notice that n has a value of 2.",
+      "av_c6": "Here's the important question, to see if you're keeping up. How many n's are there? One or two? Recall that n is a value parameter. Because it is a value parameter, that means it's a copy. Thus, it occupies a different memory location.",
+      "av_c7": "In the second call, n is 2, which means we aren't at the base case yet. So, it again goes into the else case...",
+      "av_c8": "...and makes a recursive call.",
+      "av_c9": "Again, we're not yet to the base case, so we must make another recursive call.",
+      "av_c10":"At this point, we are at the base case. So, the value of 0 is returned.",
+      "av_c11":"The result returned is added to the value in arr[n - 1]. Since n is now 1 , arr[n - 1] is arr[1 - 1] which is arr[0] = 2. So, add 0 + 2.", 
+      "av_c12":"This is why it's important to return 0 from the base case. We add 0 to the value at array element 0. Any other value produces an incorrect answer. Next, 2 is returned back to the previous call.",
+      "av_c13":"Now 2 is added to arr[n - 1] = arr[2 - 1] = arr[1] = 4. So, 2 + 4 is 6, and that is returned back.",
+      "av_c14":"Finally, 6  will be added to arr[n - 1] = arr[3 - 1] = arr[2] = 6, which is 12, and 12 is the final result of the call. That is the answer expected."
+    }
+  },
+  "code" : {
+    "java": {
+      "url": "../../../SourceCode/Java/RecurTutor/WrtSumV4.java",
+      "lineNumbers": false,
+      "tags": {
+      }
+    }
+  }
+}

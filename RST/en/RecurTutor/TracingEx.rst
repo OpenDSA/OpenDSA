@@ -11,14 +11,37 @@
 Tracing Practice Exercises
 ===========================
 
+Tracing Exercise 1
+------------------
+
 .. avembed:: Exercises/RecurTutor/RecTraceSumm1.html ka
+
+
+Tracing Exercise 2
+------------------
 
 .. avembed:: Exercises/RecurTutor/RecTraceSumm2.html ka
 
+
+Tracing Exercise 3
+------------------
+
 .. avembed:: Exercises/RecurTutor/RecTraceSumm3.html ka
+
+
+Tracing Exercise 4
+------------------
 
 .. avembed:: Exercises/RecurTutor/RecTraceSumm4.html ka
 
+
+Tracing Exercise 5
+------------------
+
 .. avembed:: Exercises/RecurTutor/RecTraceSumm5.html ka
+
+
+Tracing Exercise 6
+------------------
 
 .. avembed:: Exercises/RecurTutor/RecTraceSumm6.html ka	

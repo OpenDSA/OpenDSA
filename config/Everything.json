@@ -368,13 +368,31 @@
         "exercises": {},
         "sections": {
           "Summations": {},
+          "Example: Summing Integers from 1 to n": {
+            "SummationOneToNCON": {
+              "long_name": "Summation of the first N Integers visualization",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Example: Summing Powers of 2": {
+            "SummationTwoPowerICON": {
+              "long_name": "Summation Two Power I visualization",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
           "Recurrence Relations": {
 	    "LinearRecurrencesCON": {
               "long_name": "Linear Recurrences Slideshow",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            },
+            }
+          },
+          "Another Recurrence Example": {
 	    "LinearRecurrencesNCON": {
               "long_name": "Linear Recurrences Slideshow (n)",
               "required": false,
@@ -541,7 +559,9 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            },
+            }
+          },
+          "Practice Questions": {
             "UpperBoundsSumm": {
               "long_name": "Asymptotic Analysis and Upper Bounds Exercise",
               "required": true,
@@ -579,40 +599,25 @@
         "long_name": "Calculating the Running Time of a Program",
         "exercises": {},
         "sections": {
-          "Calculating Program Running Time": {
-            "SummationOneToNCON": {
-              "long_name": "Summation of the first N Integers visualization",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
-            "SummationTwoPowerICON": {
-              "long_name": "Summation Two Power I visualization",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
-            "LinearRecurrenceSimpleCON": {
-              "long_name": "Linear Recurrence visualization",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            }
-          },
+          "Calculating Program Running Time": {},
           "Case Study: Two Search Algorithms": {
             "binarySearchCON": {
               "long_name": "Binary Search Algorithm Slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            },
+            }
+          },
+          "Binary Search Practice Exercise": {
             "binarySearchPRO": {
               "long_name": "Binary Search Proficiency Exercise",
               "exer_options": { "JXOP-code": "none" },
               "required": true,
               "points": 1.0,
               "threshold": 1.0
-            },
+            }
+          },
+          "Analyzing Binary Search": {
             "DivideAndConquerRecurrenceSimpleCON": {
               "long_name": "Linear Recurrence visualization",
               "required": false,
@@ -640,7 +645,9 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            },
+            }
+          },
+          "Practice Questions": {
             "AnalProblemSumm": {
               "long_name": "Problem Analysis Exercise",
               "required": true,
@@ -660,7 +667,9 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            },
+            }
+          },
+          "Practice Questions": {
             "MisSumm": {
               "long_name": "Common Misconceptions Exercise",
               "required": true,
@@ -699,12 +708,940 @@
             }
           },
           "Summary Exercise: CS3": {
-            "showsection": true,
             "AlgAnalSumm": {
               "long_name": "Algorithm Analysis Summary Questions",
               "required": true,
               "points": 1.0,
               "threshold": 5
+            }
+          }
+        }
+      }
+    },
+    "Linear Structures": {
+      "List/ListIntro": {
+        "long_name": "Chapter Introduction: Linear Structures",
+        "exercises": {},
+        "sections": {}
+      },
+      "List/ListADT": {
+        "long_name": "List ADT",
+        "exercises": {},
+        "sections": {
+          "List Terminology and Notation": {},
+          "Defining the ADT": {
+            "listADTposCON": {
+              "long_name": "List ADT Positions Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "ADT Practice Exercise": {
+            "ListADTPROG": {
+              "long_name": "List ADT Programming Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3
+            }
+          }
+        }
+      },
+      "List/ListArray": {
+        "long_name": "Array-based Lists",
+        "exercises": {},
+        "sections": {
+          "Array-Based List Implementation": {
+            "alistVarsCON": {
+              "long_name": "Array-based List Variables Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Array-based List Positions": {
+            "alistIntroCON": {
+              "long_name": "Array-based List Intro Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Insert": {
+            "alistInsertCON": {
+              "long_name": "Array-based List Insertion Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Insert Practice Exericse": {
+            "AlistInsertPRO": {
+              "long_name": "Array-based List Insert Exercise",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            }
+          },
+          "Append": {
+            "alistAppendCON": {
+              "long_name": "Array-based List Append Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Remove": {
+            "alistRemoveCON": {
+              "long_name": "Array-based List Remove",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Remove Practice Exericse": {
+            "AlistRemovePRO": {
+              "long_name": "Array-based List Remove Exercise",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            }
+          },
+          "Array-based List Practice Questions": {
+            "ALSumm": {
+              "long_name": "Array-based List Summary",
+              "required": true,
+              "points": 1,
+              "threshold": 3
+            }
+          }
+        }
+      },
+      "List/ListLinked": {
+        "long_name": "Linked Lists",
+        "exercises": {},
+        "sections": {
+          "Linked Lists": {
+            "llistRepCON": { },
+            "llistBadCON": {
+              "long_name": "Linked List Slideshow 1",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Why This Has Problems": {
+            "llistBadDelCON": {
+              "long_name": "Linked List Slideshow 2",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "A Better Solution": {
+            "llistInitCON": { },
+            "llistHeaderCON": {}
+          },
+          "Linked List Implementation": {
+            "llistVarsCON": {
+              "long_name": "Linked List Variables Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Class Constructors": {
+            "llistConsCON": {
+              "long_name": "Linked List Constructors Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Insert Method": {
+            "llistInsertCON": {
+              "long_name": "Linked List Insert Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Insertion Special Cases": {
+            "llistSpecialCON": {
+              "long_name": "Linked List Special Insert Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Linked List Insert Practice": {
+            "LlistInsertPRO": {
+              "long_name": "Linked List Insert Exercise",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            }
+          },
+          "Remove": {
+            "llistRemoveCON": {
+              "long_name": "Linked List Remove Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Remove Practice": {
+            "LlistRemovePRO": {
+              "long_name": "Linked List Remove Exercise",
+              "required": true,
+              "points": 2,
+              "threshold": 5
+            }
+          },
+          "Other Operations": {
+            "llistOtherCON": {
+              "long_name": "Linked List Position Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "List/ListAnalysis": {
+        "long_name": "Comparison of List Implementations",
+        "exercises": {},
+        "sections":{
+          "Space Comparison": {
+            "ListOverhead": {
+              "long_name": "Breakeven Point Exercise",
+              "required": true,
+              "points": 1,
+              "threshold": 3
+            }
+          },
+          "Time Comparison": {},
+          "Practice Questions": {
+            "LLSumm": {
+              "long_name": "Linked List Summary Exercise",
+              "required": true,
+              "points": 2,
+              "threshold": 6
+            }
+          }
+        }
+      },
+      "List/ListDouble": {
+        "long_name": "Doubly Linked Lists",
+        "exercises": {},
+        "sections": {
+          "Doubly Linked Lists": {
+            "dlistDiagramCON": {}
+          },
+          "Insert": {
+            "dlistInsertCON": {
+              "long_name": "Doubly Linked List Insert",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Append": {
+            "dlistAppendCON": {
+              "long_name": "Doubly Linked List Append",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Remove": {
+            "dlistRemoveCON": {
+              "long_name": "Doubly Linked List Remove",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Prev": {
+            "dlistPrevCON": {
+              "long_name": "Doubly Linked List Prev",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Mangling Pointers": {}
+        }
+      },
+      "List/ListElement": {
+        "long_name": "List Element Implementations",
+        "exercises": {},
+        "sections": {
+          "List Element Implementations": {
+            "listElementDataCON": {
+              "long_name": "List Element Data",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Homogeneity": {
+            "listElementTypeCON": {
+              "long_name": "List Element Type",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Element Deletion": {
+            "listElementDeleteCON": {
+              "long_name": "List Element Delete",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Practice Questions": {
+            "ListSumm": {
+              "long_name": "List Summary Questions",
+              "required": true,
+              "points": 1,
+              "threshold": 3
+            }
+          }
+        }
+      },
+      "List/StackArray": {
+        "long_name": "Array-based Stacks",
+        "exercises": {},
+        "sections": {
+          "Stack Terminology": {},
+          "Array-Based Stacks": {
+            "astackVarCON": {
+              "long_name": "Array stack variables slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Positioning Top": {
+            "astackTopCON": {
+              "long_name": "Array stack top position slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Push": {
+            "astackPushCON": {
+              "long_name": "Array stack push slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Push Practice": {
+            "AstackPushPRO": {
+              "long_name": "Array-based Stack Push Exercise",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            }
+          },
+          "Pop": {
+            "astackPopCON": {
+              "long_name": "Array stack pop slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Pop Practice": {
+            "AstackPopPRO": {
+              "long_name": "Array-based Stack Pop Exercise",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "List/StackLinked": {
+        "long_name": "Linked Stacks",
+        "exercises": {},
+        "sections": {
+          "Linked Stack Implementation": {
+            "lstackDiagramCON": {}
+          },
+          "Linked Stack Push": {
+            "lstackPushCON": {
+              "long_name": "Linked stack push",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Push Practice": {
+            "LstackPushPRO": {
+              "long_name": "Linked Stack Push Exercise",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            }
+          },
+          "Linked Stack Pop": {
+            "lstackPopCON": {
+              "long_name": "Linked stack pop",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Pop Practice": {
+            "LstackPopPRO": {
+              "long_name": "Linked Stack Pop Exercise",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            }
+          },
+          "Comparison of Array-Based and Linked Stacks": {
+            "lstackTwostackCON": {}
+          }
+        }
+      },
+      "List/Freelist": {
+        "long_name": "Freelists",
+        "exercises": {},
+        "sections": {
+          "Freelists": {
+            "listFreeCON": {
+              "long_name": "Freelist Slideshow 1",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "List/StackRecur": {
+        "long_name": "Implementing Recursion",
+        "exercises": {},
+        "sections": {}
+      },
+      "List/Queue": {
+        "long_name": "Queues",
+        "exercises": {},
+        "sections": {
+          "Queue Terminology": {},
+          "Array-Based Queues": {
+            "aqueueFirstCON": {
+              "long_name": "Array-based Queue Positions Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "An Improvement": {
+            "aqueueDriftCON": {
+              "long_name": "Array-based Queue Drift Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "A Problem": {
+            "aqueueBadCON": {
+              "long_name": "Array-based Queue Bad Representation Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "The Circular Queue": {
+            "aqueueCircularCON": {
+              "long_name": "Circular Array-based Queue Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Defining Positions": {
+            "aqueueEmptyCON": {
+              "long_name": "Empty Circular Array-based Queue Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Array-based Queue Implementation": {
+            "aqueueVarCON": {
+              "long_name": "Array-based Queue Variables Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Array-based Enqueue Practice": {
+            "AqueueEnqueuePRO": {
+              "long_name": "Array-based Queue Enqueue Exercise",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            }
+          },
+          "Array-based Dequeue Practice": {
+            "AqueueDequeuePRO": {
+              "long_name": "Array-based Queue Dequeue Exercise",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "List/QueueLinked": {
+        "long_name": "Linked Queues",
+        "exercises": {},
+        "sections": {
+          "Linked Queues": {
+            "lqueueIntroCON": {
+              "long_name": "Linked Queue Intro",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Linked Enqueue": {
+            "lqueueEnqueueCON": {
+              "long_name": "Linked Queue Enqueue",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Linked Enqueue Practice": {
+            "LqueueEnqueuePRO": {
+              "long_name": "Linked Queue Enqueue Exercise",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            }
+          },
+          "Linked Dequeue": {
+            "lqueueDequeueCON": {
+              "long_name": "Linked Queue Dequeue",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Linked Dequeue Practice": {
+            "LqueueDequeuePRO": {
+              "long_name": "Linked Queue Dequeue Exercise",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            }
+          },
+          "Comparison of Array-Based and Linked Queues": {},
+          "Stack and Queue Summary Questions": {
+            "StackQSumm": {
+              "long_name": "Stack/Queue Summary Exercise",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "List/ListSumm": {
+        "long_name": "List Chapter Summary",
+        "exercises": {},
+        "sections": {
+          "Practice Questions": {
+            "ListdsSumm": {
+              "long_name": "List Data Structures General Questions",
+              "required": true,
+              "points": 2,
+              "threshold": 5
+            }
+          },
+          "Chapter Review Questions": {
+            "ListChapterSumm": {
+              "long_name": "List Chapter Summary",
+              "required": true,
+              "points": 2,
+              "threshold": 10
+            }
+          }
+        }
+      }
+    },
+    "Recursion": {
+      "RecurTutor/RecIntro": {
+        "long_name": "Recursion Chapter Introduction",
+        "exercises": {},
+        "sections": {
+          "Introduction": {
+            "recurIntroDelegateCON": {
+              "long_name": "Recursion Introduction Slideshow 1",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Taking a Closer Look": {
+            "recurIntroDetailsCON": {
+              "long_name": "Recursion Introduction Slideshow 2",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "RecurTutor/Write": {
+        "long_name": "How to write a recursive function",
+        "exercises": {},
+        "sections": {
+          "The Big Picture": {
+            "recurWriteStepsCON": {
+              "long_name": "Recursion Code Writing Slideshow 1",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Some Different Approaches to Writing the Sum Function": {
+            "recurWriteSumCON": {
+              "long_name": "Recursion Code Writing Slideshow 2",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "RecurTutor/CodeCompletionEx": {
+        "long_name": "Code Completion Exercises",
+        "exercises": {},
+        "sections": {
+          "Introduction": {},
+          "Programming Exercise: Largest": {
+            "RecCLargestPROG": {
+              "long_name": "Recursion Code Completion Exercise Largest",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "Programming Exercise: Multiply": {
+            "RecCMultiplyPROG": {
+              "long_name": "Recursion Code Completion Exercise Multiply",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "Programming Exercise: GCD": {
+            "RecCGcdPROG": {
+              "long_name": "Recursion Code Completion Exercise GCD",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "Programming Exercise: Logs": {
+            "RecCLogPROG": {
+              "long_name": "Recursion Code Completion Exercise Log",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "Programming Exercise: Cummulative Sum": {
+            "RecCSumtokPROG": {
+              "long_name": "Recursion Code Completion Exercise Sum to k",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "Programming Exercise: Array Sum": {
+            "RecCAddoddPROG": {
+              "long_name": "Recursion Code Completion Exercise Add Odd",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "Programming Exercise: Digits Sum": {
+            "RecCSumOfDigitsPROG": {
+              "long_name": "Recursion Code Completion Exercise Sum of Digits",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "Programming Exercise: Characters": {
+            "RecCCountChrPROG": {
+              "long_name": "Recursion Code Completion Exercise Count Characters",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }
+        }
+      },
+      "RecurTutor/HarderWrite": {
+        "long_name": "Writing More Sophisticated Recursive Functions",
+        "exercises": {},
+        "sections": {}
+      },
+      "RecurTutor/HarderCodeCompletionEx": {
+        "long_name": "Harder Code Completion Exercises",
+        "exercises": {},
+        "sections": {
+          "Programming Exercise: Array Min": {
+            "RecHMinPROG": {
+              "long_name": "Recursion Code Completion Exercise: Minimum",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "Programming Exercise: Sring Reverse": {
+            "RecHIsReversePROG": {
+              "long_name": "Recursion Code Completion Exercise: Is Reverse",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "Programming Exercise: Decimal to Binary": {
+            "RecHDecibinaryPROG": {
+              "long_name": "Recursion Code Completion Exercise: Decimal to Binary",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }
+        }
+      },
+      "RecurTutor/WritingEx": {
+        "long_name": "Code Writing Exercises",
+        "exercises": {},
+        "sections": {
+          "Programming Exercise: Paren Balance": {
+            "RecWIsbalancedPROG": {
+              "long_name": "Recursion Code Writing Exercise: Is Balanced",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "Programming Exercise: Palindrome": {
+            "RecWCheckPalPROG": {
+              "long_name": "Recursion Code Writing Exercise: Check Palindrom",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "Programming Exercise: Reverse String": {
+            "RecWReverseStringPROG": {
+              "long_name": "Recursion Code Writing Exercise: Reverse String",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "Programming Exercise: Cannonballs": {
+            "RecWCannonballPROG": {
+              "long_name": "Recursion Code Writing Exercise: Cannon Ball",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "Programming Exercise: Pascal's Triangle": {
+            "RecWPascalPROG": {
+              "long_name": "Recursion Code Writing Exercise: Pascal",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "Programming Exercise: Stack Reversal": {
+            "RecWStackRevPROG": {
+              "long_name": "Recursion Code Writing Exercise: Stack Reversal",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }
+        }
+      },
+      "RecurTutor/Trace": {
+        "long_name": "Tracing recursive code",
+        "exercises": {},
+        "sections": {
+          "Tracing Recursive Code": {
+            "recurTraceWindCON": {
+              "long_name": "Recursion Tracing Winding and Unwinding",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Sum Example": {
+            "recurTraceSumCON": {
+              "long_name": "Recursion Tracing Sum Function",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Factorial Example": {
+            "recurTraceFactCON": {
+              "long_name": "Recursion Tracing Factorial Function",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Another Summing Example": {
+            "recurTraceSum2CON": {
+              "long_name": "Recursion Tracing Sum Winding and Unwinding",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "A Domino Analogy": {
+            "recurTraceDmnCON": {
+              "long_name": "Recursion Tracing General Domino Effect",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Using the Domino Analogy": {
+            "recurTraceDmnPrntCON": {
+              "long_name": "Recursion Tracing Domino Effect for Printing",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Another Domino Example": {
+            "recurTraceDmnCntCON": {
+              "long_name": "Recursion Tracing Domino Effect for Counting",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Towers of Hanoi": {
+            "TOHfigCON": {},
+            "recurTraceTOHCON": {
+              "long_name": "Recursion Tracing Towers of Hanoi",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "RecurTutor/TracingEx": {
+        "long_name": "Tracing Practice Exercises",
+        "exercises": {},
+        "sections": {
+          "Tracing Exercise 1": {
+            "RecTraceSumm1": {
+              "long_name": "Recursion Tracing Exercises Set 1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "Tracing Exercise 2": {
+            "RecTraceSumm2": {
+              "long_name": "Recursion Tracing Exercises Set 2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "Tracing Exercise 3": {
+            "RecTraceSumm3": {
+              "long_name": "Recursion Tracing Exercises Set 3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "Tracing Exercise 4": {
+            "RecTraceSumm4": {
+              "long_name": "Recursion Tracing Exercises Set 4",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }, 
+          "Tracing Exercise 5": {
+            "RecTraceSumm5": {
+              "long_name": "Recursion Tracing Exercises Set 5",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },        
+          "Tracing Exercise 6": {
+            "RecTraceSumm6": {
+              "long_name": "Recursion Tracing Exercises Set 6",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }
+        }
+      },
+      "RecurTutor/RecSummaryEx": {
+        "long_name": "Recursion Summary Exercises",
+        "exercises": {},
+        "sections": {
+          "Summary Questions": {
+            "RecChapterSumm": {
+              "long_name": "Recursion Summary Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5.0,
+              "showhide": "Show"
             }
           }
         }

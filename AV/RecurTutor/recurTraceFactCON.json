@@ -1,0 +1,71 @@
+{
+  "translations" :{
+    "en": {
+     "av_c1": "Suppose that we want to compute the value of factorial(5) using the following recursive factorial implementation.",
+     "av_c2": "The recursive call creates a new copy of the code with n = 5",
+     "av_c3": "The n=5 copy calls a new copy of the code with n = 4",
+     "av_c4": "The n=4 copy calls a new copy of the code with n = 3",
+     "av_c5": "The n=3 copy calls a new copy of the code with n = 2",
+     "av_c6": "The n=2 copy calls a new copy of the code with n = 1",
+     "av_c7": "Now, the base case satisfies and the n=1 recursive copy will return a value of 1.",
+     "av_c8": "The n=2 copy will multiply the return value of the n=1 copy  by 2.",
+     "av_c9": "The n=3 copy will multiply the return value of the n=2 by 3.",
+     "av_c10": "The n=4 copy will multiply the return value of the n=3 by 6.",
+     "av_c11": "The n=5 copy will multiply the return value of the n=4 by 24. This last copy will return the result of the required factorial."
+  }
+ },
+  "code" : {
+      "java": [
+       {
+        "url": "../../../SourceCode/Java/RecurTutor/Recfact.java",
+        "tags": {
+        }
+       },
+      {
+        "url": "../../../SourceCode/Java/RecurTutor/Recfact5.java",
+        "tags": {
+       }
+      },
+      {
+        "url": "../../../SourceCode/Java/RecurTutor/Recfact4.java",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/Java/RecurTutor/Recfact3.java",
+        "tags": {
+      }
+     },
+     {
+        "url": "../../../SourceCode/Java/RecurTutor/Recfact2.java",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/Java/RecurTutor/Recfact1.java",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/Java/RecurTutor/Recfact2r.java",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/Java/RecurTutor/Recfact3r.java",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/Java/RecurTutor/Recfact4r.java",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/Java/RecurTutor/Recfact5r.java",
+        "tags": {
+	  }
+      }
+   ]
+  }
+}

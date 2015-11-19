@@ -3,9 +3,14 @@
 // Visualization for Towers of Hanoi
 $(document).ready(function () {
   "use strict";
-  var av_name = "recurTraceTOHCON";
+  
+  var av_name ="recurTraceTOHCON";
+  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+      interpret = config.interpreter,       // get the interpreter
+      code = config.code;                   // get the code object
+      
   var av = new JSAV(av_name);
-
+  
   var label0 = av.label("0", {left: 165, top: 12});
   var label1 = av.label("1", {left: 180, top: 42});
   var label2 = av.label("2", {left: 195, top: 72});
@@ -31,32 +36,31 @@ $(document).ready(function () {
   var labelb = av.label("B", {left: 363, top: -18});
   var labelc = av.label("C", {left: 590, top: -18});
    
-  var pseudo = av.code({url: "../../../SourceCode/Java/RecurTutor/RecTOH.java",
-                       lineNumbers: false,top:200 , left:250});
+  var  pseudo = av.code(code);
 
-  av.umsg("The initial call is to move disk 5 from A to B"); 
+  av.umsg(interpret("av_c1")); 
   pseudo.highlight(1);
   var labelCallStack5=  av.label("Call Stack:", {left: 0, top: 200});
   var labelCallStack5=  av.label("TowersofHanoi(5, A, B, C)", {left: 0, top: 230});
   av.displayInit();
  
-  av.umsg("This will require moving disk 4 from A to C");
+  av.umsg(interpret("av_c2"));
   var labelCallStack4=  av.label("TowersofHanoi(4, A, C, B)", {left: 0, top: 260});
   av.step();
   
-  av.umsg("This will require moving disk 3 from A to B");
+  av.umsg(interpret("av_c3"));
   var labelCallStack3=  av.label("TowersofHanoi(3, A, B, C)", {left: 0, top: 290});
   av.step();
 
-  av.umsg("This will require moving disk 2 from A to C");
+  av.umsg(interpret("av_c4"));
   var labelCallStack2=  av.label("TowersofHanoi(2, A, C, B)", {left: 0, top: 320});
   av.step();
  
-  av.umsg("This will require moving disk 1 from A to B");
+  av.umsg(interpret("av_c5"));
   var labelCallStack1=  av.label("TowersofHanoi(1, A, B, C)", {left: 0, top: 350});
   av.step();
   
-  av.umsg("This will require moving disk 0 from A to C and that what we are going to do directly.");
+  av.umsg(interpret("av_c6"));
   var labelCallStack0=  av.label("TowersofHanoi(0, A, C, B)", {left: 0, top: 380});
   pseudo.unhighlight(1);
   pseudo.highlight(2);
@@ -78,11 +82,11 @@ $(document).ready(function () {
   
  // New label 1 in the middle
   labelCallStack0.hide();
-  av.umsg("Return from recursive call and continue to disk 1 where we left off.");
+  av.umsg(interpret("av_c7"));
   var label17 = av.label("1", {left: 440, top: 163});
   var rect17 = av.g.rect(315, 180, 120, 20).css({"fill": "yellow"});
   av.step();
-   av.umsg("Disk 1 moved and we need to move smaller disks.");
+   av.umsg(interpret("av_c8"));
   pseudo.unhighlight(9);
   av.step();
   pseudo.highlight(9); 
@@ -98,13 +102,13 @@ $(document).ready(function () {
   label2.hide();
 
   labelCallStack1.hide();
-  av.umsg("Return from recursive call and continue to disk 2 where we left off.");
+  av.umsg(interpret("av_c9"));
 
   var label29 = av.label("2", {left: 698, top: 163});
   var rect29 = av.g.rect(540, 180, 150, 20).css({"fill": "purple"});
   av.step();
 
-  av.umsg("Disk 2 moved and we need to move smaller disks.");
+  av.umsg(interpret("av_c10"));
   labelCallStack1.show();
   av.step();
   labelCallStack0.show();
@@ -117,7 +121,7 @@ $(document).ready(function () {
   av.step();
   
   labelCallStack0.hide();
-  av.umsg("Return from recursive call and continue to disk 1 where we left off.");
+  av.umsg(interpret("av_c11"));
   pseudo.unhighlight(1);
   pseudo.highlight(9);
   rect17.hide();
@@ -125,7 +129,7 @@ $(document).ready(function () {
   var label1711 = av.label("1", {left: 686, top: 132});
   var rect1711 = av.g.rect(550, 150, 120, 20).css({"fill": "yellow"});
   av.step();
-   av.umsg("Disk 1 moved and we need to move smaller disks.");
+   av.umsg(interpret("av_c12"));
   pseudo.unhighlight(9);
   pseudo.highlight(4);
   rect06810.hide();
@@ -134,7 +138,7 @@ $(document).ready(function () {
   var label0681012 = av.label("0", {left: 660, top: 102});
   var  rect0681012 = av.g.rect(565, 120, 90, 20).css({"fill": "grey"});
   av.step();
-  av.umsg("This process will repeat till we have all the disks moved to support B  as we will see in the rest of this tracing visualization:");
+  av.umsg(interpret("av_c13"));
   pseudo.unhighlight(4);
   pseudo.highlight(10);
   labelCallStack0.hide();
