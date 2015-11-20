@@ -15,21 +15,21 @@ $(document).ready(function () {
   var label1 = av.label("1", {left: 180, top: 42});
   var label2 = av.label("2", {left: 195, top: 72});
   var label3 = av.label("3", {left: 210, top: 102});
-  var label4 = av.label("4", {left: 225, top: 132});
-  var label5 = av.label("5", {left: 240, top: 162});
+ // var label4 = av.label("4", {left: 225, top: 132});
+ // var label5 = av.label("5", {left: 240, top: 162});
 
 //  The towers: define 3 vertical rectangles 
- var rectver0 = av.g.rect(105, 10, 10, 180).css({"fill": "brown"}); 
- var rectver1 = av.g.rect(375, 10, 10, 180).css({"fill": "brown"}); 
- var rectver2 = av.g.rect(605, 10, 10, 180).css({"fill": "brown"}); 
+ var rectver0 = av.g.rect(105, 10, 10, 140).css({"fill": "brown"}); 
+ var rectver1 = av.g.rect(375, 10, 10, 140).css({"fill": "brown"}); 
+ var rectver2 = av.g.rect(605, 10, 10, 140).css({"fill": "brown"}); 
 
 // The moving ones
   var rect0 = av.g.rect(65, 30, 90, 20).css({"fill": "grey"});
   var rect1 = av.g.rect(50, 60, 120, 20).css({"fill": "yellow"});
   var rect2 = av.g.rect(35, 90, 150, 20).css({"fill": "purple"});
   var rect3 = av.g.rect(20, 120, 180, 20).css({"fill": "green"});
-  var rect4 = av.g.rect(5, 150, 210, 20).css({"fill": "red"});
-  var rect5 = av.g.rect(-10, 180, 240, 20).css({"fill": "blue"});
+//  var rect4 = av.g.rect(5, 150, 210, 20).css({"fill": "red"});
+//  var rect5 = av.g.rect(-10, 180, 240, 20).css({"fill": "blue"});
 
 // Labels for each tower
   var labela = av.label("A", {left: 90, top: -18});
@@ -259,36 +259,36 @@ $(document).ready(function () {
   pseudo.highlight(10);
   av.step();
   
-  labelCallStack1.hide();
-  av.step();
-  labelCallStack2.hide();
-  av.step();
-  labelCallStack3.hide();
-  av.step();
-  pseudo.unhighlight(10);
-  pseudo.highlight(9);
-  rect4.hide();
-  label4.hide();
-  var label420= av.label("4", {left: 730, top: 162});
-  var rect420 = av.g.rect(515, 180, 210, 20).css({"fill": "red"});
-  av.step();
+  //labelCallStack1.hide();
+  //av.step();
+  //labelCallStack2.hide();
+  //av.step();
+  //labelCallStack3.hide();
+  //av.step();
+  //pseudo.unhighlight(10);
+  //pseudo.highlight(9);
+  //rect4.hide();
+  //label4.hide();
+  //var label420= av.label("4", {left: 730, top: 162});
+  //var rect420 = av.g.rect(515, 180, 210, 20).css({"fill": "red"});
+  //av.step();
   
-  labelCallStack3.show();
-  av.step();
+  //labelCallStack3.show();
+  //av.step();
   
-  labelCallStack2.show();
-  av.step();
+  //labelCallStack2.show();
+  //av.step();
   
-  labelCallStack1.show();
-  av.step();
+  //labelCallStack1.show();
+  //av.step();
   
-  labelCallStack0.show();
-  av.step();
+  //labelCallStack0.show();
+  //av.step();
   
-  pseudo.unhighlight(9);
-  pseudo.highlight(1);
+  //pseudo.unhighlight(9);
+  //pseudo.highlight(1);
 
-  av.step();
+  //av.step();
   pseudo.unhighlight(1);
   pseudo.highlight(4);
   rect019.hide();
@@ -480,8 +480,8 @@ $(document).ready(function () {
 
   pseudo.unhighlight(4);
   pseudo.highlight(9);
-  rect5.hide();
-  label5.hide();
+  //rect5.hide();
+  //label5.hide();
   
   labelCallStack0.hide();
   av.step();
@@ -495,24 +495,24 @@ $(document).ready(function () {
   av.step();
   
   
-  var label536 = av.label("5", {left: 500, top: 162}); 
-  var rect536 = av.g.rect(260, 180, 240, 20).css({"fill": "blue"});
-  av.step();
+  //var label536 = av.label("5", {left: 500, top: 162}); 
+  //var rect536 = av.g.rect(260, 180, 240, 20).css({"fill": "blue"});
+  //av.step();
  //==============
-  pseudo.unhighlight(9);
-  pseudo.highlight(4);
-  rect035.hide();
-  label035.hide();
+  //pseudo.unhighlight(9);
+  //pseudo.highlight(4);
+  //rect035.hide();
+  //label035.hide();
   
-  labelCallStack4.show();
-  av.step();
-  labelCallStack3.show();
-  av.step();
-  labelCallStack2.show();
-  av.step();
-  labelCallStack1.show();
-  av.step();
-  labelCallStack0.show();
+  //labelCallStack4.show();
+  //av.step();
+  //labelCallStack3.show();
+  //av.step();
+  //labelCallStack2.show();
+  //av.step();
+  //labelCallStack1.show();
+  //av.step();
+  //labelCallStack0.show();
   
   var label037= av.label("0", {left: 433, top: 132});
   var rect037 = av.g.rect(335, 150, 90, 20).css({"fill": "grey"});
@@ -665,8 +665,8 @@ $(document).ready(function () {
 
   pseudo.unhighlight(4);
   pseudo.highlight(9);
-  rect420.hide();
-  label420.hide();
+  //rect420.hide();
+  //label420.hide();
   labelCallStack0.hide();
   av.step();
   labelCallStack1.hide();
@@ -675,24 +675,24 @@ $(document).ready(function () {
   av.step();
   labelCallStack3.hide();
   
-  var label451 = av.label("4", {left: 488, top: 132});
-  var rect451 = av.g.rect(275, 150, 210, 20).css({"fill": "red"});
-  av.step();
+  //var label451 = av.label("4", {left: 488, top: 132});
+  //var rect451 = av.g.rect(275, 150, 210, 20).css({"fill": "red"});
+  //av.step();
 
 
-  pseudo.unhighlight(9);
-  pseudo.highlight(4);
-  rect050.hide();
-  label050.hide();
+  //pseudo.unhighlight(9);
+  //pseudo.highlight(4);
+  //rect050.hide();
+  //label050.hide();
   
-  labelCallStack3.show();
-  av.step();
+  //labelCallStack3.show();
+  //av.step();
   
-  labelCallStack2.show();
-  av.step();
-  labelCallStack1.show();
-  av.step();
-  labelCallStack0.show();
+  //labelCallStack2.show();
+  //av.step();
+  //labelCallStack1.show();
+  //av.step();
+  //labelCallStack0.show();
   
   var label052 = av.label("0", {left: 660, top: 162});
   var rect052 = av.g.rect(565, 180, 90, 20).css({"fill": "grey"});
@@ -853,8 +853,8 @@ $(document).ready(function () {
   av.step();
   labelCallStack3.hide();
   av.step();
-  labelCallStack4.hide();
-  av.step();
-  labelCallStack5.hide();
-  av.recorded();
+ // labelCallStack4.hide();
+ // av.step();
+ // labelCallStack5.hide();
+ //av.recorded();
 });
