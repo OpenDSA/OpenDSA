@@ -47,34 +47,77 @@ $(document).ready(function () {
   pseudo.unhighlight(3);
   rect1.hide();
   var rect7 = av.g.rect(220, 30, 50, 90).css({"fill": "lightgray"});
+  pseudo.unhighlight(6);
   pseudo.highlight(6);
   rect7.rotate(45);
   av.step();  
+  
   av.umsg(interpret("av_c4"));
   rect2.hide();
   var rect8 = av.g.rect(320, 30, 50, 90).css({"fill": "lightgray"});
+  pseudo.unhighlight(6);
   pseudo.highlight(6);
   rect8.rotate(45);
   av.step();
 
-  av.umsg(interpret("av_c5")); 
-  
-  
-  
+  av.umsg(interpret("av_c5"));   
   av.step();
+  
   pseudo.unhighlight(2);
   pseudo.highlight(5);
+  pseudo.unhighlight(6);
   pseudo.highlight(6);
   rect4.hide();
   rect5.hide();
   var rect9 = av.g.rect(620, 30, 50, 90).css({"fill": "lightgray"});
+  pseudo.unhighlight(6);
   pseudo.highlight(6);
   rect9.rotate(45);
   var rect10 = av.g.rect(720, 30, 50, 90).css({"fill": "lightgray"});
+  pseudo.unhighlight(6);
   pseudo.highlight(6);
   rect10.rotate(45);
 
   av.step();
 
+  rect6.hide();
+  rect7.hide();
+  rect8.hide();
+  rect9.hide();
+  rect10.hide();
+  
+  rect.show();
+  rect1.show();
+  rect2.show();
+  rect4.show();
+  rect5.show();
+  
+  av.umsg(interpret("av_c6"));
+  pseudo.unhighlight(5);
+  pseudo.highlight(5);
+  pseudo.unhighlight(6); 
+  av.step();
+  
+  av.umsg(interpret("av_c7"));
+  pseudo.unhighlight(5);
+  pseudo.highlight(3);  
+  rect.hide();
+  rect6.show();
+  av.step();
+  
+  av.umsg(interpret("av_c8"));
+  pseudo.unhighlight(3);  
+  pseudo.highlight(6);
+  rect1.hide();
+  rect2.hide();
+  rect4.hide();
+  rect5.hide();
+  rect7.show();
+  rect8.show();
+  rect9.show();  
+  rect10.show();
+  
+  av.step();
+  
   av.recorded();
 });
