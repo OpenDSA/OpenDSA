@@ -11,10 +11,10 @@ $(document).ready(function () {
   var rect1 = av.g.rect(200, 30, 50, 90).css({"fill": "grey"});
   var rect2 = av.g.rect(300, 30, 50, 90).css({"fill": "grey"});
    
-  var dots1 = av.g.circle(400, 75, 2);
-  var dots2 = av.g.circle(450, 75, 2);
-  var dots3 = av.g.circle(500, 75, 2);
-  var dots4 = av.g.circle(550, 75, 2);
+  var dots1 = av.g.circle(405, 75, 2);
+  var dots2 = av.g.circle(455, 75, 2);
+  var dots3 = av.g.circle(505, 75, 2);
+  var dots4 = av.g.circle(555, 75, 2);
 
   var rect4 = av.g.rect(600, 30, 50, 90).css({"fill": "grey"});
   var rect5 = av.g.rect(700, 30, 50, 90).css({"fill": "grey"});
@@ -26,7 +26,7 @@ $(document).ready(function () {
   av.step();
   av.umsg(interpret("av_c2"));
 
-  //var rect = av.g.rect(100, 30, 50, 90).css({"fill": "white", "opacity":"0.03"});
+  
   rect.hide();
   var rect6 = av.g.rect(125, 30, 50, 90).css({"fill": "lightgray"});
   rect6.rotate(55);
@@ -35,8 +35,14 @@ $(document).ready(function () {
   
   av.step();
 
-  av.umsg(interpret("av_c3"))
+
+  av.umsg(interpret("av_c3"));
+  pseudo.unhighlight(3);
   pseudo.highlight(5);
+  av.step();
+  
+  av.umsg(interpret("av_c4"))
+  pseudo.unhighlight(5);
   pseudo.highlight(6);
   pseudo.unhighlight(3);
   
