@@ -46,6 +46,99 @@
     "JXOP-debug": "true"
   },
   "chapters": {
+    "Linear Structures": {
+      "List/ListLinked": {
+        "long_name": "Linked Lists",
+        "exercises": {},
+        "sections": {
+          "Linked Lists": {
+            "llistRepCON": { },
+            "llistBadCON": {
+              "long_name": "Linked List Slideshow 1",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Why This Has Problems": {
+            "llistBadDelCON": {
+              "long_name": "Linked List Slideshow 2",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "A Better Solution": {
+            "llistInitCON": { },
+            "llistHeaderCON": {}
+          },
+          "Linked List Implementation": {
+            "llistVarsCON": {
+              "long_name": "Linked List Variables Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Class Constructors": {
+            "llistConsCON": {
+              "long_name": "Linked List Constructors Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Insert Method": {
+            "llistInsertCON": {
+              "long_name": "Linked List Insert Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Insertion Special Cases": {
+            "llistSpecialCON": {
+              "long_name": "Linked List Special Insert Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Linked List Insert Practice": {
+            "LlistInsertPRO": {
+              "long_name": "Linked List Insert Exercise",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            }
+          },
+          "Remove": {
+            "llistRemoveCON": {
+              "long_name": "Linked List Remove Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Remove Practice": {
+            "LlistRemovePRO": {
+              "long_name": "Linked List Remove Exercise",
+              "required": true,
+              "points": 2,
+              "threshold": 5
+            }
+          },
+          "Other Operations": {
+            "llistOtherCON": {
+              "long_name": "Linked List Position Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      }
+    },
     "Design I": {
       "Design/IntroProcess": {
         "long_name": "Software Development Processes",
@@ -59,6 +152,18 @@
           "Scrum": {},
           "Feature-Driven Development (FDD)": {}
         }
+      }
+    },
+    "Appendix": {
+      "Glossary": {
+        "long_name": "Glossary",
+        "exercises": {},
+        "sections": {}
+      },
+      "Bibliography": {
+        "long_name": "Bibliography",
+        "exercises": {},
+        "sections": {}
       }
     }
   }

@@ -568,7 +568,7 @@ def register_book(config):
     json_data["LMS_url"] = config.LMS_url
     json_data["chapters"] = config.chapters
 
-    print "\nRegistring Book in OpenDSA-server " + config.logging_server + '\n'
+    print "\nRegistering Book in OpenDSA-server " + config.logging_server + '\n'
     response = requests.post(url, json=json_data, headers=headers, verify=False)
     response_obj = json.loads(response.content)
 
