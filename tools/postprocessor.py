@@ -309,9 +309,9 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
       if a_tag.has_attr(tag_url) and a_tag[tag_url].startswith('OpenDSA/AV/'):
         name = os.path.splitext(os.path.basename(a_tag[tag_url]))[0]
         script_tag = a_tag.extract()
-        #slide_scripts[name].append(script_tag)
+        slide_scripts[name].append(script_tag)
         #if name.endswith('Common.css'):
-        all_scripts.append(script_tag)
+        #all_scripts.append(script_tag)
 
   
   # Breaking file into components
@@ -412,6 +412,17 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
     # Add the relevant content back in
     for body_index, (parent, body) in enumerate(slide):
       parent.insert(body_index, body)
+    if index != 0:
+      potential_exercises = exercises.values()[index-1].keys()
+    else:
+      potential_exercises = []
+    for potential_exercise in potential_exercises:
+      if potential_exercise in slide_scripts:
+        for a_script in slide_scripts[potential_exercise]:
+          sss_div.insert(0, a_script)
+      if potential_exercise in ('quicksortCON', 'bubblesortCON'):
+        for a_script in slide_scripts[potential_exercise.replace('CON', 'CODE')]:
+          sss_div.insert(0, a_script)
     # Add back in slide specific scripts
     content_div_soup.insert_before(sss_div)
     if index != 0:
