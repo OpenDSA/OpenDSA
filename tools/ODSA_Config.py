@@ -406,6 +406,27 @@ def set_defaults(conf_data):
     if 'theme_dir' not in conf_data:
         conf_data['theme_dir'] = '%sRST/_themes' % odsa_dir
 
+def group_exercises(conf_data):
+    """group all exercises of one module in exercises attribute"""
+    chapters = conf_data['chapters']
+
+    for chapter in chapters:
+        chapter_obj = chapters[chapter]
+
+        for module in chapter_obj:
+            module_obj = chapter_obj[module]
+            conf_data['chapters'][chapter][module]['exercises'] = {}
+
+            sections = module_obj.get("sections")
+            if bool(sections):
+                for section in sections:
+                    section_obj = sections[section]
+                    for attr in section_obj:
+                        if isinstance(section_obj[attr], dict):
+                            exercise_obj = section_obj[attr]
+                            # conf_data['chapters'][chapter][module]['exercises'][attr] = {}
+                            conf_data['chapters'][chapter][module]['exercises'][attr] = exercise_obj
+
 
 def get_translated_text(lang_):
     """ Loads appropriate text from language_msg.json file based on book language  """
@@ -506,6 +527,9 @@ class ODSA_Config:
 
             # TODO: Figure out how to get (simple)json to accept different encodings
             sys.exit(1)
+
+        # group exercises
+        group_exercises(conf_data)
 
         # Assign defaults to optional settings
         set_defaults(conf_data)
