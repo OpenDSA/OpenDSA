@@ -14,6 +14,9 @@
 Linked Lists
 ============
 
+Linked Lists
+------------
+
 In this module we present one of the two traditional implementations
 for lists, usually called a :term:`linked list`.
 The linked list uses :term:`dynamic memory allocation`,
@@ -56,6 +59,10 @@ and ``link`` fields.
 .. inlineav:: llistBadCON ss
    :output: show
 
+
+Why This Has Problems
+---------------------
+
 There are a number of problems with the representation just
 described.
 First, there are lots of special cases to code for.
@@ -68,6 +75,10 @@ and thus increases the chance of introducing bugs.
 .. inlineav:: llistBadDelCON ss
    :output: show
    
+
+A Better Solution
+-----------------
+
 Fortunately, there is a fairly easy way to deal with all of the
 special cases, as well as the problem with deleting the last node.
 Many special cases can be eliminated by implementing
@@ -106,6 +117,9 @@ Adding the trailer node also solves our problem with deleting the last
 node on the list, as we will see when we take a closer look at the
 remove method's implementation.
 
+Linked List Implementation
+--------------------------
+
 Here is the implementation for the linked list class,
 named ``LList``.
 
@@ -117,28 +131,53 @@ named ``LList``.
 .. inlineav:: llistVarsCON ss
    :output: show
 
+
+Class Constructors
+------------------
+
 .. inlineav:: llistConsCON ss
    :output: show
 
-Implementations for most member functions of the ``list``
-class are straightforward.
-However, ``insert`` and ``remove`` should be studied carefully.
+
+
+Insert Method
+-------------
 
 .. inlineav:: llistInsertCON ss
    :output: show
    
+
+Insertion Special Cases
+-----------------------
+
 Here are some special cases for linked list insertion: Inserting at
 the end, and inserting to an empty list.
 
 .. inlineav:: llistSpecialCON ss
    :output: show
    
+
+Linked List Insert Practice
+---------------------------
+
 .. avembed:: Exercises/List/LlistInsertPRO.html ka
+
+
+Remove
+------
 
 .. inlineav:: llistRemoveCON ss
    :output: show
    
+
+Remove Practice
+---------------
+
 .. avembed:: Exercises/List/LlistRemovePRO.html ka
+
+
+Other Operations
+----------------
 
 .. inlineav:: llistOtherCON ss
    :output: show
@@ -146,7 +185,7 @@ the end, and inserting to an empty list.
 Implementations for the remaining operations each require
 :math:`\Theta(1)` time.
 
-.. odsascript:: AV/List/llistCON.js
+.. odsascript:: AV/List/llist.js
 .. odsascript:: AV/List/llistRepCON.js
 .. odsascript:: AV/List/llistBadCON.js
 .. odsascript:: AV/List/llistBadDelCON.js

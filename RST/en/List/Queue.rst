@@ -50,14 +50,30 @@ efficient.
 .. inlineav:: aqueueFirstCON ss
    :output: show
 
+
+An Improvement
+--------------
+
 .. inlineav:: aqueueDriftCON ss
    :output: show
+
+
+A Problem
+---------
 
 .. inlineav:: aqueueBadCON ss
    :output: show
 
+
+The Circular Queue
+------------------
+
 .. inlineav:: aqueueCircularCON ss
    :output: show
+
+
+Defining Positions
+------------------
 
 .. inlineav:: aqueueEmptyCON ss
    :output: show
@@ -90,6 +106,10 @@ Here is an array-based queue implementation.
 .. codeinclude:: Lists/AQueue
    :tag: AQueue1,AQueue2
 
+
+Array-based Queue Implementation
+--------------------------------
+
 .. inlineav:: aqueueVarCON ss
    :output: show
 
@@ -101,7 +121,13 @@ Thus, ``enqueue`` increments the rear pointer (modulus ``maxSize``),
 and ``dequeue`` increments the front pointer.
 Implementation of all member functions is straightforward.
 
+Array-based Enqueue Practice
+----------------------------
+
 .. avembed:: Exercises/List/AqueueEnqueuePRO.html ka
+
+Array-based Dequeue Practice
+----------------------------
 
 .. avembed:: Exercises/List/AqueueDequeuePRO.html ka
 

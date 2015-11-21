@@ -929,7 +929,7 @@
           }
         }
       },
-      "RecurTutor2/BinaryTreeInfFlw": {
+      "BTRecurTutor/BinaryTreeInfFlw": {
         "long_name": "Binary Tree Information Flow",
         "exercises": {
           "BTsetdepthPROG": {
@@ -1074,7 +1074,7 @@
         "dispModComp": true,
         "exercises": {}
       },
-      "RecurTutor2/BinaryTreeGuidedInfFlw": {
+      "BTRecurTutor/BinaryTreeGuidedInfFlw": {
         "long_name": "Binary Tree Guided Information Flow",
         "exercises": {
           "IneffBinaryTreeRangeCON": {
@@ -1092,7 +1092,7 @@
           }
         }
       },
-      "RecurTutor2/MultipleBinaryTrees": {
+      "BTRecurTutor/MultipleBinaryTrees": {
         "long_name": "Multiple Binary Trees",
         "exercises": {
           "MultiTreePROGSumm": {
@@ -1104,7 +1104,7 @@
           }
         }
       },
-      "RecurTutor2/BSTCheck": {
+      "BTRecurTutor/BSTCheck": {
         "long_name": "BSTcheck Function",
         "dispModComp": true,
         "exercises": {}

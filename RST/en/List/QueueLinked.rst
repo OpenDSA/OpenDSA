@@ -14,6 +14,9 @@
 Linked Queues
 =============
 
+Linked Queues
+-------------
+
 The linked queue implementation is a straightforward adaptation
 of the linked list.
 Here is the linked queue class declaration.
@@ -26,17 +29,31 @@ Here is the linked queue class declaration.
 .. inlineav:: lqueueIntroCON ss
    :output: show    
    
+
+Linked Enqueue
+--------------
+
 .. inlineav:: lqueueEnqueueCON ss
    :output: show   
    
+
+Linked Enqueue Practice
+-----------------------
+
+.. avembed:: Exercises/List/LqueueEnqueuePRO.html ka
+
+
+Linked Dequeue
+--------------
+
 .. inlineav:: lqueueDequeueCON ss
    :output: show 
    
-.. avembed:: Exercises/List/LqueueEnqueuePRO.html ka
+
+Linked Dequeue Practice
+-----------------------
 
 .. avembed:: Exercises/List/LqueueDequeuePRO.html ka
-
-.. avembed:: Exercises/List/StackQSumm.html ka
 
 
 Comparison of Array-Based and Linked Queues
@@ -50,7 +67,13 @@ Unlike the array-based stack implementation, there is no convenient
 way to store two queues in the same array,
 unless items are always transferred directly from one queue to the other.
 
-.. odsascript:: AV/List/llistCON.js
+Stack and Queue Summary Questions
+---------------------------------
+
+.. avembed:: Exercises/List/StackQSumm.html ka
+
+
+.. odsascript:: AV/List/llist.js
 .. odsascript:: AV/List/lqueueIntroCON.js
 .. odsascript:: AV/List/lqueueEnqueueCON.js
 .. odsascript:: AV/List/lqueueDequeueCON.js
