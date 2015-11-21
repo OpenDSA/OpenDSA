@@ -20,6 +20,76 @@
     "JXOP-debug": "true"
   },
   "chapters": {
+    "List": {
+      "List/ListLinked": {
+        "long_name": "Linked Lists",
+        "exercises": {
+          "llistRepCON": { },
+          "llistBadCON": {
+            "long_name": "Linked List Slideshow 1",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "llistInitCON": { },
+          "llistBadDelCON": {
+            "long_name": "Linked List Slideshow 2",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "llistHeaderCON": { },
+          "llistVarsCON": {
+            "long_name": "Linked List Variables Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "llistConsCON": {
+            "long_name": "Linked List Constructors Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "llistInsertCON": {
+            "long_name": "Linked List Insert Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "llistSpecialCON": {
+            "long_name": "Linked List Special Insert Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "llistInsertPRO": {
+            "long_name": "Linked List Insert Exercise",
+            "required": true,
+            "points": 1,
+            "threshold": 5
+          },
+          "llistRemoveCON": {
+            "long_name": "Linked List Remove Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "llistRemovePRO": {
+            "long_name": "Linked List Remove Exercise",
+            "required": true,
+            "points": 2,
+            "threshold": 5
+          },
+          "llistOtherCON": {
+            "long_name": "Linked List Position Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      }
+    },
     "Test": {
       "Development/FFT": {
         "long_name": "Fast Fourier Transform",
