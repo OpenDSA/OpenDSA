@@ -309,10 +309,11 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
       if a_tag.has_attr(tag_url) and a_tag[tag_url].startswith('OpenDSA/AV/'):
         name = os.path.splitext(os.path.basename(a_tag[tag_url]))[0]
         script_tag = a_tag.extract()
-        slide_scripts[name].append(script_tag)
+        if "CON" in name and tag_name == "script":
+            slide_scripts[name].append(script_tag)
+        else:
+            all_scripts.append(script_tag)
         #if name.endswith('Common.css'):
-        #all_scripts.append(script_tag)
-
   
   # Breaking file into components
   
@@ -400,12 +401,15 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   if verbose:
     print "\tPhase 2: Clustered into {} slides. Found {} exercises, expected {}.".format(len(slides), total_exercises-1, len(exercises))
   
-  # third pass: render them out with the relevant scripts
-  sss_div = soup.new_tag('div', id='SLIDE-SPECIFIC-SCRIPTS')
+  # Add the slide general scripts to the top.
+  sgs_div = soup.new_tag('div', id='SLIDE-GENERAL-SCRIPTS')
   for script_tag in all_scripts:
-      sss_div.insert(0, script_tag)
+    sgs_div.insert(0, script_tag)
+  content_div_soup.insert_before(sgs_div)
+    
+  # third pass: render them out with the relevant scripts
   for index, (slide_name, slide) in enumerate(slides):
-    #print "\tSlide", index, exercise_name, len(slide)
+    if verbose: print "\tSlide", index, len(slide)
     # Identify the new filename
     slide_filename = '{0}-{1:02d}.html'.format(mod_name, index)
     slide_filepath = os.path.join(os.path.dirname(path), '..', 'lti_html', slide_filename)
@@ -416,15 +420,18 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
       potential_exercises = exercises.values()[index-1].keys()
     else:
       potential_exercises = []
+    sss_div = soup.new_tag('div', id='SLIDE-SPECIFIC-SCRIPTS')
     for potential_exercise in potential_exercises:
       if potential_exercise in slide_scripts:
         for a_script in slide_scripts[potential_exercise]:
+          if verbose: print "\t\t", id(a_script), str(a_script)
           sss_div.insert(0, a_script)
       if potential_exercise in ('quicksortCON', 'bubblesortCON'):
         for a_script in slide_scripts[potential_exercise.replace('CON', 'CODE')]:
           sss_div.insert(0, a_script)
+    if verbose: print(len(sss_div))
     # Add back in slide specific scripts
-    content_div_soup.insert_before(sss_div)
+    sgs_div.insert_after(sss_div)
     if index != 0:
         potential_exercises = exercises.values()[index-1].keys()
     else:
@@ -432,11 +439,10 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
     # Write out the file with what we have so far
     with codecs.open(slide_filepath, 'w', 'utf-8') as o:
       o.write(unicode(soup))
-    sss_div.extract()
+    sss_div.decompose()
     for parent, body in slide:
       body.extract()
-  if verbose:
-    print "\tPhase 3: complete"
+  if verbose: print "\tPhase 3: complete"
     
 def pretty_print_xml(data, file_path):
     ElementTree(data).write(file_path)
