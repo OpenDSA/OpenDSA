@@ -92,7 +92,7 @@ in the middle of the array will be exhausted quickly.
 .. inlineav:: lstackTwostackCON dgm
    :align: center     
 
-.. odsascript:: AV/List/llistCON.js
+.. odsascript:: AV/List/llist.js
 .. odsascript:: AV/List/lstackDiagramCON.js
 .. odsascript:: AV/List/lstackPushCON.js
 .. odsascript:: AV/List/lstackPopCON.js

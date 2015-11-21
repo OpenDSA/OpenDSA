@@ -158,13 +158,13 @@ Inorder Traversal Practice
 
 
 Postorder Traversal Practice
---------------------------
+----------------------------
 
 .. avembed:: AV/Binary/btTravPostorderPRO.html pe
 
 
 Preorder Traversal Practice
---------------------------
+---------------------------
 
 .. avembed:: AV/Binary/btTravPreorderPRO.html pe
 

@@ -1062,8 +1062,8 @@
         "long_name": "Binary Tree Terminology",
         "sections": {
           "Definitions and Properties": {
-            "BinExampCON": {}
-            "BinDiffCON": {}
+            "BinExampCON": {},
+            "BinDiffCON": {},
             "FullCompCON": {}
           },
           "Terminology Practice": {
@@ -1189,7 +1189,8 @@
         "long_name": "Binary Tree Information Flow",
         "sections": {
           "Introduction": {},
-          "Local": {
+          "Local": {},
+          "Passing Down Information": {
             "BTsetdepthPROG": {
               "long_name": "Set Node Depth Programming Exercise",
               "showhide": "show",
@@ -1490,6 +1491,7 @@
               "threshold": 1.0
             }
           },
+          "Priority Queues": {},
           "Practice Questions": {
             "HeapSumm": {
               "long_name": "Heap Question Summary",
@@ -1528,7 +1530,7 @@
               "threshold": 1.0
             }
           },
-          "Decoding" {
+          "Decoding": {
             "huffmanDecodeCON": {
               "long_name": "Huffman Coding Tree Slideshow: Decoding",
               "required": true,

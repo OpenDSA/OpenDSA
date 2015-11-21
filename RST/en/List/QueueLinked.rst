@@ -73,7 +73,7 @@ Stack and Queue Summary Questions
 .. avembed:: Exercises/List/StackQSumm.html ka
 
 
-.. odsascript:: AV/List/llistCON.js
+.. odsascript:: AV/List/llist.js
 .. odsascript:: AV/List/lqueueIntroCON.js
 .. odsascript:: AV/List/lqueueEnqueueCON.js
 .. odsascript:: AV/List/lqueueDequeueCON.js
