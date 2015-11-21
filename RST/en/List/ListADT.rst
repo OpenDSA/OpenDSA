@@ -196,4 +196,3 @@ ADT Practice Exercise
    variations on the question.
 
 .. odsascript:: AV/List/listADTposCON.js
-.. odsascript:: AV/List/listADTnoteCON.js
