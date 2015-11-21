@@ -98,5 +98,5 @@ collection time.
 .. [#] A language like C++ could use operator overloading to redefine
    the ``new`` and ``delete`` operators.
 
-.. odsascript:: AV/List/llistCON.js
+.. odsascript:: AV/List/llist.js
 .. odsascript:: AV/List/listFreeCON.js

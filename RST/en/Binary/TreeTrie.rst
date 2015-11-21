@@ -14,6 +14,9 @@
 Trees versus Tries
 ==================
 
+Trees versus Tries (1)
+----------------------
+
 We see that all letters with codes beginning with
 '0' are stored in the left branch, while all letters with codes
 beginning with '1' are stored in the right branch.
@@ -21,8 +24,6 @@ Contrast this with storing records in a BST.
 There, all records with key value less than the root value are stored
 in the left branch, while all records with key values greater than the
 root are stored in the right branch.
-
-
 
 Recall that the Huffman coding tree stored in the left branch all
 letters whose codes start with 0, and in the right branch all letters
@@ -38,6 +39,10 @@ The following slideshows present this in more detail.
 
 .. inlineav:: TreeTimeline ss
    :output: show
+
+
+Trees versus Tries (2)
+----------------------
 
 .. inlineav:: TrieTimeline ss
    :output: show

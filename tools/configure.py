@@ -569,10 +569,18 @@ def register_book(config):
     json_data["chapters"] = config.chapters
 
     print "\nRegistering Book in OpenDSA-server " + config.logging_server + '\n'
-    response = requests.post(url, json=json_data, headers=headers, verify=False)
-    response_obj = json.loads(response.content)
 
-    if response_obj['saved']:
+    try:
+        response = requests.post(url, json=json_data, headers=headers, verify=False)
+        response_obj = json.loads(response.content)
+    except requests.exceptions.Timeout:
+        print_err("Connection Timeout")
+    except requests.exceptions.TooManyRedirects:
+        print_err("Bad URL, please try different OpenDSA-server URL")
+    except requests.exceptions.RequestException as e:
+        print e
+
+    if 'saved' in response_obj:
       print "\nBook was registered successfully\n"
     else:
       print "\nSomthing wrong happened ...\n"

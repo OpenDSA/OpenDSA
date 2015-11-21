@@ -12,6 +12,9 @@
 Binary Tree Space Requirements
 ==============================
 
+Binary Tree Space Requirements
+------------------------------
+
 This module presents techniques for calculating the amount of
 :term:`overhead` required by a :term:`binary tree`,
 based on its node implementation.

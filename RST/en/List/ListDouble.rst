@@ -157,7 +157,7 @@ XORing the box outline a second time restores the original
 contents of the screen.
 
 .. odsascript:: DataStructures/DoubleLinkList.js
-.. odsascript:: AV/List/dlistCON.js
+.. odsascript:: AV/List/dlist.js
 .. odsascript:: AV/List/dlistDiagramCON.js
 .. odsascript:: AV/List/dlistInsertCON.js
 .. odsascript:: AV/List/dlistAppendCON.js
