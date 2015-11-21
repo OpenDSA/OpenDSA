@@ -13,6 +13,9 @@
 Binary Tree as a Recursive Data Structure
 =========================================
 
+Binary Tree as a Recursive Data Structure
+-----------------------------------------
+
 A recursive data structure is a data structure that is partially
 composed of smaller or simpler instances of the same data structure
 where the relationships identified by the structure provides a natural

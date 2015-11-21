@@ -14,6 +14,9 @@
 Composite-based Expression Tree
 ===============================
 
+Composite-based Expression Tree
+-------------------------------
+
 There is another approach that we can take to represent separate leaf
 and internal nodes, also using a virtual base class and separate node
 classes for the two types.

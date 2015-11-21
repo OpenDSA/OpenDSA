@@ -9,7 +9,10 @@
    :requires: binary tree terminology; binary tree space requirements; BST; complete tree; heap; Huffman coding tree
    :topic: Binary Trees
 
-BinaryChapSumm
-==============
+Binary Tree Chapter Summary
+===========================
+
+Summary Questions
+-----------------
 
 .. avembed:: Exercises/Binary/BinaryChapSumm.html ka

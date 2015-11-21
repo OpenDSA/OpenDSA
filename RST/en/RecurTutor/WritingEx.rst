@@ -30,7 +30,7 @@ Programming Exercise: Palindrome
 Programming Exercise: Reverse String
 ------------------------------------
 
-.. avembed:: Exercises/RecurTutor/RecWReverseStringPROG.html ka
+.. avembed:: Exercises/RecurTutor/RecWRevStringPROG.html ka
 
 
 Programming Exercise: Cannonballs

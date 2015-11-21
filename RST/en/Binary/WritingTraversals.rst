@@ -12,6 +12,9 @@
 Implementing Tree Traversals
 ============================
 
+Introduction
+------------
+
 Recall that any recursive function requires the following:
 
  #. The base case and its action.

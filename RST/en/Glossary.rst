@@ -1714,8 +1714,8 @@ Glossary
 
    heap
       This term has two different meanings.
-      Uncommonly, it is a synonym for :term:`free store`.
-      Most often it is used to refer to a particular data structure.
+      Sometimes it is used as a synonym for :term:`free store`.
+      Most often it refers to a particular data structure.
       This data structure is a :term:`complete binary tree` with the
       requirement that every :term:`node` has a value greater than its
       :term:`children <child>` (called a :term:`max heap`), or else

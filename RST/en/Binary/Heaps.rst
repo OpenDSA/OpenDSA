@@ -14,6 +14,9 @@
 Heaps and Priority Queues
 =========================
 
+Heaps and Priority Queues
+-------------------------
+
 There are many situations, both in real life and in computing
 applications, where we wish to choose the next "most important"
 from a collection of people, tasks, or objects.
@@ -97,9 +100,6 @@ The two are not synonymous because the logical view of the heap is
 actually a tree structure, while the typical physical implementation
 uses an array.
 
-.. inlineav:: heapinsertCON ss
-   :output: show
-
 Here is an implementation for max heaps.
 The class uses records that support the Comparable interface to
 provide flexibility.
@@ -133,9 +133,19 @@ and ``parent`` return the position (actually, the array index)
 for the left child, right child, and parent of the position passed,
 respectively.
 
+.. [#] Note that the term "heap" is also sometimes used to refer to
+       :term:`free store`.
+
+Heap Insert
+-----------
+
 One way to build a heap is to insert the elements one at a time.
 Method ``insert`` will insert a new element :math:`V` into
 the heap.
+
+.. inlineav:: heapinsertCON ss
+   :output: show
+
 You might expect the heap insertion process to be similar to the
 insert function for a BST, starting at the root and working down
 through the heap.
@@ -158,8 +168,6 @@ the two elements swap positions.
 From here, the process of comparing :math:`V` to its (current)
 parent continues until :math:`V` reaches its correct position.
 
-.. avembed:: AV/Binary/heapinsertPRO.html pe
-
 Since the heap is a complete binary tree, its height is guaranteed to
 be the minimum possible.
 In particular, a heap containing :math:`n` nodes will have a height of
@@ -179,6 +187,16 @@ distance from the bottom of the tree to the top of the tree.
 Thus, to insert :math:`n` values into the heap, if we insert them 
 one at a time, will take :math:`\Theta(n \log n)` time in the
 worst case.
+
+
+Heap Insert Practice
+--------------------
+
+.. avembed:: AV/Binary/heapinsertPRO.html pe
+
+
+Building a Heap
+---------------
 
 If all :math:`n` values are available at the beginning of the
 building process, we can build the heap faster than just
@@ -260,7 +278,15 @@ Here is a visualization of the heap build process.
 
 Method ``buildHeap`` implements the building algorithm.
 
+
+Heap Build Practice
+-------------------
+
 .. avembed:: AV/Binary/heapbuildPRO.html pe
+
+
+Heap Build Analysis
+-------------------
 
 What is the cost of ``buildHeap``?
 Clearly it is the sum of the costs for the calls to ``siftdown``.
@@ -293,6 +319,10 @@ BST.
 .. inlineav:: heapbuildProofCON ss
    :output: show
 
+
+Removing the Max Value
+----------------------
+
 .. inlineav:: heapmaxCON ss
    :output: show
 
@@ -300,10 +330,22 @@ Because the heap is :math:`\log n` levels deep, the cost of deleting
 the maximum element is :math:`\Theta(\log n)` in the average and worst
 cases.
 
+
+Removing the Max Value Practice
+-------------------------------
+
 .. avembed:: AV/Binary/heapremovePRO.html pe
+
+
+Removing an Arbritrary Value
+----------------------------
 
 .. inlineav:: heapremoveCON ss
    :output: show
+
+
+Priority Queues
+---------------
 
 The heap is a natural implementation for the priority queue discussed
 at the beginning of this section.
@@ -334,15 +376,13 @@ Priority queues can be helpful for solving graph problems such as
 and
 :ref:`minimal-cost spanning tree <minimal-cost spanning tree> <MCST>`.
 
+
+Practice Questions
+------------------
+
 .. avembed:: Exercises/Binary/HeapSumm.html ka
 
-Notes
------
-
-.. [#] Note that the term "heap" is also sometimes used to refer to a
-       memory pool.
-
-For a story on Priority Queues and dragons, see
+For a story about Priority Queues and dragons, see
 `Computational Fairy Tales: Stacks, Queues, Priority Queues, and the
 Prince's Complaint Line
 <http://computationaltales.blogspot.com/2011/04/stacks-queues-priority-queues-and.html>`_.

@@ -14,6 +14,9 @@
 Information Flow in Recursive Functions
 =======================================
 
+Introduction
+------------
+
 Handling information flow in a recursive function can be a challenge.
 In any given function, we might need to be concerned with either or
 both of:
@@ -94,6 +97,10 @@ Another common mistake is to not return a value.
 .. inlineav:: BinaryTreeMistakesCON ss
    :output: show
 
+
+Collect-and-return Practice
+---------------------------
+
 Practice the simple collect-and-retun information flow with the
 following programming exercises.
  
@@ -115,6 +122,10 @@ The information passed up has the simple collect-and-return style:
 Return True if and only if one of the children returns True.
 
 .. avembed:: Exercises/BTRecurTutor/BTcheckvalPROG.html ka
+
+
+Combination Problems
+--------------------
 
 Slightly more complicated problems combine what we have seen so far.
 Information passing down the tree changes from node to node.

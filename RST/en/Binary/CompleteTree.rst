@@ -13,6 +13,9 @@
 Array Implementation for Complete Binary Trees
 ==============================================
 
+Array Implementation for Complete Binary Trees
+----------------------------------------------
+
 From the :ref:`full binary tree theorem <BinaryTreeFullThm>`, we know
 that a large fraction of the space in a typical binary tree node
 implementation is devoted to structural :term:`overhead`, not to
