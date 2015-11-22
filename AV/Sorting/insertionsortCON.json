@@ -1,0 +1,17 @@
+{
+  "translations" :{
+    "en": {
+      "av_c1": "Insertion Sort starts with the record in position 1.",
+      "av_c2": "Since this is smaller than the value to its left, swap them.",
+      "av_c3": "Now we are done with this record since it can't move further left.",
+      "av_c4": "Now we are ready to process the record in position 2.",
+      "av_c5": "We will compare it to the record in position 1.",
+      "av_c6": "Since the record in position 2 is smaller, swap them.",
+      "av_c7": "Now compare against the record in position 0.",
+      "av_c8": "Since the record currently in position 1 is not smaller than the one in position 0, we are done with it.",
+      "av_c9": "Now we are ready to process the record in position 3.",
+      "av_c10": "We will compare it to the record in position 2.",
+      "av_c11": "Since the record in position 2 is smaller, nothing changes and we are done with the record in position 3."
+    }
+  }
+}
