@@ -12,6 +12,9 @@
 Binary Tree Guided Information Flow
 ===================================
 
+Binary Tree Guided Information Flow
+-----------------------------------
+
 When writing a recursive method to solve a problem that requires
 traversing a binary tree, we want to make sure that we are visiting
 the required nodes (no more and no less).
@@ -49,6 +52,10 @@ than just a single path, but not all of the nodes.
    
 Practice guided traversal with the following programming
 exercises.
+
+
+Guided Traversal Practice
+-------------------------
 
 .. avembed:: Exercises/BTRecurTutor/BSTsmallcountPROG.html ka
 

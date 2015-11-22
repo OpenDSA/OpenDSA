@@ -16,9 +16,6 @@
 Binary Trees
 ============
 
-This module presents definitions and some key properties
-for binary trees.
-
 Definitions and Properties
 --------------------------
 
@@ -132,13 +129,6 @@ of a complete binary tree.
 The :ref:`Huffman coding tree <Huffman coding tree> <Huffman>`
 is an example of a full binary tree.
 
-.. avembed:: Exercises/Binary/DefSumm.html ka
-
-.. avembed:: Exercises/Binary/Treeprobs.html ka
-
-Notes
------
-
 .. [#] While these definitions for full and complete binary tree are
        the ones most commonly used, they are not universal.
        Because the common meaning of the words "full" and "complete"
@@ -149,6 +139,18 @@ Notes
        "Complete" is a wider word than "full", and complete binary
        trees tend to be wider than full binary trees because each
        level of a complete binary tree is as wide as possible.
+
+
+Terminology Practice
+--------------------
+
+.. avembed:: Exercises/Binary/DefSumm.html ka
+
+
+Practice Questions
+------------------
+
+.. avembed:: Exercises/Binary/Treeprobs.html ka
 
 .. odsascript:: AV/Binary/BinExampCON.js
 .. odsascript:: AV/Binary/BinDiffCON.js

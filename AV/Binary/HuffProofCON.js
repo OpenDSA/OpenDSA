@@ -2,7 +2,7 @@
 
 /* Static image of incorrect huffman trie */
 (function ($) {
-  var av = new JSAV("InvalidTree");
+  var av = new JSAV("HuffProofCON");
   var cirOpt = {fill: "white"};
 
   av.label("V", {visible: true, left: 66, top: 95});

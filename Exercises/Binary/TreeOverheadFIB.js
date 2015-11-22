@@ -1,7 +1,7 @@
 /*global window */
 (function() {
   "use strict";
-  var treeOverhead = {
+  var treeOverheadFIB = {
     genAnswer: function(overhead, sum) {
       var o = overhead,
           s = sum;
@@ -13,5 +13,5 @@
     }
   };
 
-  window.treeOverhead = window.treeOverhead || treeOverhead;
+  window.treeOverheadFIB = window.treeOverheadFIB || treeOverheadFIB;
 }());

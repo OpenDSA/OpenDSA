@@ -993,7 +993,7 @@
       "Binary/BinaryTreeNodeSpace": {
         "long_name": "Full Binary Tree Node Space Requirements",
         "exercises": {
-          "TreeOverhead": {
+          "TreeOverheadFIB": {
             "long_name": "Tree Overhead Exercise",
             "required": true,
             "points": 2,
@@ -1229,13 +1229,13 @@
       "Binary/TreeTrie": {
         "long_name": "Trees versus Tries",
         "exercises": {
-          "TreeTimeline": {
+          "TreeTimelineCON": {
             "long_name": "Tree timeline Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "TrieTimeline": {
+          "TrieTimelineCON": {
             "long_name": "Trie timeline Slideshow",
             "required": true,
             "points": 0.0,
@@ -1246,7 +1246,9 @@
       "Development/HuffProof": {
         "long_name": "Proof for Huffman Coding",
         "dispModComp": true,
-        "exercises": {}
+        "exercises": {
+          "HuffProofCON": {}
+        }
       },
       "Binary/BinaryChapSumm": {
         "long_name": "Binary Tree Chapter Summary",
