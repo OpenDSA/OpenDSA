@@ -159,3 +159,85 @@
   av.recorded();
 
 }(jQuery));
+
+function fillpair(node, split, color)
+{
+  node.css({"fill": color});
+  node.css({"background-color": color});
+  split.css({"background-color": color});
+  split.css({"fill": color});
+}
+
+function split (av, x, x1, y, label, height, top) {
+
+  var label_ht = y - (height/2) - 20;
+  if (top) { label_ht = y + (height/2) + 5};
+
+  this.x = x;
+  this.label = label;
+
+  this.rec = av.g.rect(x + x1, y - (height / 2), 2, height, {fill: "red", "stroke-width": 0});
+  this.label = av.label(label, {left: x + x1 - 9, top: label_ht});
+
+  this.highlight = function () {
+    this.rec.css({"fill": "#2B44CF"});
+  };
+
+  this.unhighlight = function () {
+    this.rec.css({"fill": "red"});
+  };
+
+  this.css = function (css) {
+    this.rec.css(css);
+  }
+}
+
+/* Timeline Constructor */
+function timeline(av, x, y, len, min, max, inc) {
+
+  var buffer = 15; // 15 px buffer on each inside edge of arrow
+
+  // make line
+  av.g.rect(x, y, len, 3, {fill: "black", "stroke-width": 0});
+  // arrows
+  av.g.polyline([[x, y + 11], [x, y - 9], [x - 10, y + 1]],
+                {"stroke-width": 0, fill: "black"});
+  av.g.polyline([[x + len, y + 11], [x + len, y - 9], [x + 10 + len, y + 1]],
+                {"stroke-width": 0, fill: "black"});
+
+  // first and last tick marks
+  av.g.rect(x + buffer, y - 6, 1, 16, {fill: "black", "stroke-width":0});
+  av.g.rect(x + len - buffer, y - 6, 1, 15, {fill: "black", "stroke-width":0});
+
+  // labels under those tick marks
+  var firstLab = av.label(min, {"left": x + buffer - 3, "top": y + 7});
+  firstLab.css({"font-size": 13});
+
+  var secLab = av.label(max, {"left": x - buffer - 5 + len, "top": y + 7});
+  secLab.css({"font-size": 13});
+  /*
+   * Splits the timeline at 'x1' pixels from the rigth side with a line with
+   * label 'label' and height 'height'.
+   *
+   * Returns: The split object.
+   */
+  this.add_line = function (x1, label, height, top) {
+    return new split (av, x, x1, y, label, height, top);
+  };
+
+  /* Inserts a split at the numebr 'val' with label 'label' and
+   * height 'height'.
+   *
+   * Returns: The split obejct.
+   */
+  this.add_value = function (val, label, height, prop) {
+
+    var top = false;
+    if (typeof(prop) != 'undefined' && typeof(prop.label_top) != 'undefined') { top = true; }
+
+    var range = max - min;
+    var pxPerInc = (len - buffer * 2) / range; // 5px buff on each inner side of arrow
+    var pos = pxPerInc * val; // add 5 because must account for 5 px buffer
+    return this.add_line(pos, label, height, top);
+  };
+}

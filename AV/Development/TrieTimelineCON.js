@@ -1,6 +1,6 @@
 // Timeline visulization showing how a trie (NOT tree) splits space.
 (function ($) {
-  
+
   var av = new JSAV("TrieTimelineCON");
   var t = av.ds.binarytree({nodegap: 25});
   var r = t.root("");
@@ -119,7 +119,7 @@ function fillpair(node, split, color)
 }
 
 function split (av, x, x1, y, label, height, top) {
-  
+
   var label_ht = y - (height/2) - 20;
   if (top) { label_ht = y + (height/2) + 5};
 
@@ -143,17 +143,17 @@ function split (av, x, x1, y, label, height, top) {
 }
 
 /* Timeline Constructor */
-function timeline(av, x, y, len, min, max, inc) { 
-  
+function timeline(av, x, y, len, min, max, inc) {
+
   var buffer = 15; // 15 px buffer on each inside edge of arrow
 
   // make line
   av.g.rect(x, y, len, 3, {fill: "black", "stroke-width": 0});
   // arrows
-  av.g.polyline([[x, y + 11], [x, y - 9], [x - 10, y + 1]], 
-    {"stroke-width": 0, fill: "black"});
-  av.g.polyline([[x + len, y + 11], [x + len, y - 9], [x + 10 + len, y + 1]], 
-    {"stroke-width": 0, fill: "black"});
+  av.g.polyline([[x, y + 11], [x, y - 9], [x - 10, y + 1]],
+                {"stroke-width": 0, fill: "black"});
+  av.g.polyline([[x + len, y + 11], [x + len, y - 9], [x + 10 + len, y + 1]],
+                {"stroke-width": 0, fill: "black"});
 
   // first and last tick marks
   av.g.rect(x + buffer, y - 6, 1, 16, {fill: "black", "stroke-width":0});
@@ -165,8 +165,8 @@ function timeline(av, x, y, len, min, max, inc) {
 
   var secLab = av.label(max, {"left": x - buffer - 5 + len, "top": y + 7});
   secLab.css({"font-size": 13});
-  /* 
-   * Splits the timeline at 'x1' pixels from the rigth side with a line with 
+  /*
+   * Splits the timeline at 'x1' pixels from the rigth side with a line with
    * label 'label' and height 'height'.
    *
    * Returns: The split object.
@@ -175,16 +175,16 @@ function timeline(av, x, y, len, min, max, inc) {
     return new split (av, x, x1, y, label, height, top);
   };
 
-  /* Inserts a split at the numebr 'val' with label 'label' and 
+  /* Inserts a split at the numebr 'val' with label 'label' and
    * height 'height'.
    *
-   * Returns: The split obejct. 
+   * Returns: The split obejct.
    */
   this.add_value = function (val, label, height, prop) {
-    
+
     var top = false;
     if (typeof(prop) != 'undefined' && typeof(prop.label_top) != 'undefined') { top = true; }
-    
+
     var range = max - min;
     var pxPerInc = (len - buffer * 2) / range; // 5px buff on each inner side of arrow
     var pos = pxPerInc * val; // add 5 because must account for 5 px buffer
