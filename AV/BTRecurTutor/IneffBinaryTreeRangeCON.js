@@ -3,7 +3,7 @@
 $(document).ready(function () {
   var av = new JSAV("IneffBinaryTreeRangeCON");
   
-  var pseudo = av.code({url: "../../../SourceCode/Java/BTRecurTutor/RecIneffRng.java",
+  var pseudo = av.code({url: "OpenDSA/SourceCode/Java/BTRecurTutor/RecIneffRng.java",
                        lineNumbers: false,top:10 , left: 100});
 
   // Slide 1
@@ -16,7 +16,7 @@ $(document).ready(function () {
 
   // Slide 3
   // Set up the tree
-  var btTop = 300;
+  var btTop = 320;
   var btLeft = 305;
   var bt = av.ds.binarytree({nodegap: 15, top: btTop, left: btLeft});
   bt.root('20');
@@ -33,7 +33,7 @@ $(document).ready(function () {
   bt.layout();
   var rt1 = av.pointer("rt", bt.root(), {anchor: "left top", top: -10});
   
-  var label1 = av.label("range(rt, 10, 14)", {left: 50, top: 370}); 
+  var label1 = av.label("range(rt, 10, 14)", {left: 50, top: btTop + 50}); 
   av.umsg("Suppose that the function call is range(rt, 10, 14). So we are looking for the values between 10 and 14. Let's trace the code on the tree shown.");
   pseudo.highlight(2);
   rt1.target(rt, {anchor: "left top"});
@@ -59,8 +59,8 @@ $(document).ready(function () {
    
   // Slide 7
   av.umsg("The code is not effecient because it does not avoid vsiting un-needed nodes. The code will visit the whole right sub-tree even though it is not needed.");
-  var label3 = av.label("The range function should be written in a way that avoid traversing this side for the given range.", {left: 550, top: 420}); 
-  var el1= av.g.ellipse(442, 408, 50 , 50).css({fill: "red", opacity: 0.4});
+  var label3 = av.label("The range function should be written in a way that avoid traversing this side for the given range.", {left: 550, top: btTop + 50}); 
+  var el1= av.g.ellipse(442, btTop + 108, 50 , 50).css({fill: "red", opacity: 0.4});
   av.step();
   
   // Slide 8
@@ -69,7 +69,7 @@ $(document).ready(function () {
   el1.hide();
   av.umsg("As another example, suppose that the function call is range(rt, 38, 68). So we are looking for the values between 38 and 68. Let's trace the code on the tree shown.");
   label1.hide();
-  var label2 = av.label("range(rt, 38, 68)", {left: 50, top: 370}); 
+  var label2 = av.label("range(rt, 38, 68)", {left: 50, top: btTop + 50}); 
   pseudo.highlight(2);
   rt1.target(rt, {anchor: "left top"});
   av.step();
@@ -89,14 +89,14 @@ $(document).ready(function () {
   av.umsg("We now proceed to the recursive calls. The first recursive call counts nodes in range in the left sub-tree, and the second recursive call counts nodes in range in the right subtree.");
   pseudo.unhighlight(5);
   pseudo.highlight([7, 8]);
-  var el2= av.g.ellipse(342, 408, 50 , 50).css({fill: "red", opacity: 0.4});
+  var el2= av.g.ellipse(342, btTop + 108, 50 , 50).css({fill: "red", opacity: 0.4});
   av.step();
 
   // Slide 12
   av.umsg("The recursive calls should be controlled by if statements to avoid unnecessary node visits. The following code checks the current node value so as to decide whether to visit children.");
   
   pseudo.hide();
-  var pseudo2 = av.code({url: "../../../SourceCode/Java/BTRecurTutor/RecEffRng.java",
+  var pseudo2 = av.code({url: "OpenDSA/SourceCode/Java/BTRecurTutor/RecEffRng.java",
                        lineNumbers: false,top:10 , left: 100});
   el2.hide();
   label2.hide();

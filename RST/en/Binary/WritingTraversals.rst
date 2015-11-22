@@ -21,7 +21,8 @@ Recall that any recursive function requires the following:
  #. The recursive case and its action.
 
 In this module, we will talk about some details related to correctly
-and efficiently implementing recursive tree traversals.
+and clearly implementing recursive tree traversals.
+
 
 Base Case
 ---------

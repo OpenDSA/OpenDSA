@@ -516,7 +516,7 @@
               "long_name": "Array-based List Insert Exercise",
               "required": true,
               "points": 1,
-              "threshold": 5
+              "threshold": 3
             }
           },
           "Append": {
@@ -540,7 +540,7 @@
               "long_name": "Array-based List Remove Exercise",
               "required": true,
               "points": 1,
-              "threshold": 5
+              "threshold": 4
             }
           },
           "Array-based List Practice Questions": {
@@ -1266,7 +1266,7 @@
         "long_name": "Full Binary Tree Node Space Requirements",
         "sections": {
           "Binary Tree Space Requirements": {
-            "TreeOverhead": {
+            "TreeOverheadFIB": {
               "long_name": "Tree Overhead Exercise",
               "required": true,
               "points": 2,
@@ -1553,7 +1553,7 @@
         "long_name": "Trees versus Tries",
         "sections": {
           "Trees versus Tries (1)": {
-            "TreeTimeline": {
+            "TreeTimelineCON": {
               "long_name": "Tree timeline Slideshow",
               "required": true,
               "points": 0.0,
@@ -1561,7 +1561,7 @@
             }
           },
           "Trees versus Tries (2)": {
-            "TrieTimeline": {
+            "TrieTimelineCON": {
               "long_name": "Trie timeline Slideshow",
               "required": true,
               "points": 0.0,
@@ -1572,7 +1572,11 @@
       },
       "Development/HuffProof": {
         "long_name": "Proof for Huffman Coding",
-        "sections": {}
+        "sections": {
+          "Proof of Optimality for Huffman Coding": {
+            "HuffProofCON": {}
+          }
+        }
       },
       "Binary/BinaryChapSumm": {
         "long_name": "Binary Tree Chapter Summary",

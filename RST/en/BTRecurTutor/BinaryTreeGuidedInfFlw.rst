@@ -8,7 +8,6 @@
    :satisfies: information flow in a binary tree
    :topic: Information Flow in a Binary
 
-
 Binary Tree Guided Information Flow
 ===================================
 

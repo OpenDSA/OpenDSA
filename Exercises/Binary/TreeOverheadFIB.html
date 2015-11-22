@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-require="math TreeOverhead">
+<html data-require="math TreeOverheadFIB">
   <head>
     <title>Tree Implementation Overhead 1</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
@@ -14,7 +14,7 @@
             <var id="P">4 * randRange(1,2)</var>
             <var id="D">randRange(1, 32)</var>
             <var id="SUM">P+D</var>
-            <var id="ANS">treeOverhead.genAnswer(2*P, 2*P+D)</var>
+            <var id="ANS">treeOverheadFIB.genAnswer(2*P, 2*P+D)</var>
           </div>
           <p class="problem">WARNING! Read the conditions for the problems
             in this set very carefully! The type of tree and node structure
@@ -42,7 +42,7 @@
 
         <div id="TreeOverhead-problem-1" data-type="TreeOverhead-base">
           <div class="vars">
-            <var id="ANS">treeOverhead.genAnswer(P, P+D)</var>
+            <var id="ANS">treeOverheadFIB.genAnswer(P, P+D)</var>
           </div>
           <p class="question">Assume that for some binary tree node
             implementation, a pointer requires <var>P</var> bytes and a data
@@ -72,7 +72,7 @@
 
         <div id="TreeOverhead-problem-2" data-type="TreeOverhead-base">
           <div class="vars">
-            <var id="ANS">treeOverhead.genAnswer(2*P, 2*P+D)</var>
+            <var id="ANS">treeOverheadFIB.genAnswer(2*P, 2*P+D)</var>
           </div>
           <p class="question">Assume that for some binary tree node
             implementation, a pointer requires <var>P</var> bytes and a data

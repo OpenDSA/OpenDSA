@@ -85,7 +85,8 @@ shared information about strokes and shapes, and it might also contain
 the exact location for that instance of the character on the page.
 
 Flyweights are used in the implementation for the
-:ref:`PR quadtree <PR quadtree> <Spatial>`
+:ref:`PR quadtree <PR quadtree> <Spatial>` and the
+:ref:`bintree <bintree> <Spatial>`
 for storing collections of point objects.
 In a PR quadtree, many of the :term:`leaf nodes <leaf node>` represent
 empty areas, and the only information that they store is the fact that

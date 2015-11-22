@@ -37,14 +37,15 @@ In contrast, we could split key values based on their binary
 reprsentation similar to what the Huffman coding tree does.
 The following slideshows present this in more detail.
 
-.. inlineav:: TreeTimeline ss
+.. inlineav:: TreeTimelineCON ss
    :output: show
 
 
 Trees versus Tries (2)
 ----------------------
 
-.. inlineav:: TrieTimeline ss
+.. inlineav:: TrieTimelineCON ss
    :output: show
 
-.. odsascript:: AV/Development/TreeTrieCON.js
+.. odsascript:: AV/Development/TreeTimelineCON.js
+.. odsascript:: AV/Development/TrieTimelineCON.js

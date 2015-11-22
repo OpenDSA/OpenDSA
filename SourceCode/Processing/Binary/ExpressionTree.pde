@@ -1,3 +1,4 @@
+/* Procedural implementation for ExpressionTree */
 /* *** ODSATag: ExpressionTree *** */
 // Base class for expression tree nodes
 interface VarBinNode {
