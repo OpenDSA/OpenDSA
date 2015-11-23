@@ -365,7 +365,13 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
       for parent, body in subsection_div:
         #print "\t\t\t", str(body)[:40]
         new_slide.append( (parent, body) )
-      if not ''.join([str(s[1]) for s in new_slide if s[1].name != 'span' or not s[1].has_attr('id') or not s[1]['id'].startswith('index-')]).strip():
+      body_text = [str(s[1]) for s in new_slide
+                   if s[1].name != 'span' or 
+                    not s[1].has_attr('id') or 
+                    (not s[1]['id'].startswith('index-') and
+                     not s[1]['id'].startswith('id1')
+                    )]
+      if not ''.join(body_text).strip():
         continue
       slides.append((name, new_slide))
       new_slide = []
@@ -409,7 +415,7 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
     
   # third pass: render them out with the relevant scripts
   for index, (slide_name, slide) in enumerate(slides):
-    if verbose: print "\tSlide", index, len(slide)
+    #if verbose: print "\tSlide", index, len(slide)
     # Identify the new filename
     slide_filename = '{0}-{1:02d}.html'.format(mod_name, index)
     slide_filepath = os.path.join(os.path.dirname(path), '..', 'lti_html', slide_filename)
@@ -424,12 +430,12 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
     for potential_exercise in potential_exercises:
       if potential_exercise in slide_scripts:
         for a_script in slide_scripts[potential_exercise]:
-          if verbose: print "\t\t", id(a_script), str(a_script)
+          #if verbose: print "\t\t", id(a_script), str(a_script)
           sss_div.insert(0, a_script)
       if potential_exercise in ('quicksortCON', 'bubblesortCON'):
         for a_script in slide_scripts[potential_exercise.replace('CON', 'CODE')]:
           sss_div.insert(0, a_script)
-    if verbose: print(len(sss_div))
+    #if verbose: print(len(sss_div))
     # Add back in slide specific scripts
     sgs_div.insert_after(sss_div)
     if index != 0:
