@@ -22,7 +22,7 @@
         <div id="RecWIsbalancePROGp"> <!-- Supresses answer box -->
           <p class="problem">Write a recursive function named "isBalanced"
             that takes a string and returns true if the parentheses in
-            "str" are balanced, and false if they are not. Balanced
+            the given are balanced, and false if they are not. Balanced
             means both that the number of ( has to match the number of
             ), and there can never be a point in the string when
             moving from left to right when there are more ) than (.
@@ -49,6 +49,10 @@ boolean isBalanced(String str) {
             </div>
           </div>
           <div class="hints">
+			  <p>If the string is empty then the parentheses are matched.</p>
+			  <p> You need to check if the string contains at least one open and one close parentheses.</p>
+			  <p> You need to replace each existence of ( ) with an empty string. You should use regular expressions to handle if there are any characters between the parentheses.</p>
+			  <p> If you can not replace the () then this is not a balanced string. </p>
           </div>
         </div>
       </div>
