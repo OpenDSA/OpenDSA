@@ -531,7 +531,7 @@ def create_course(config):
     results = external_tools.create_external_tool_courses(
         request_ctx, course_id, "OpenDSA-LTI",
         privacy_level, config["LTI_consumer_key"], config["LTI_secret"],
-        config_type=config_type, config_url=LTI_url + "/tool_config.xml")
+        url=config["LTI_url"] + "/lti_tool")
 
     # update the course name
     course_name = config.title
