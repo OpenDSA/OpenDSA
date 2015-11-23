@@ -12,6 +12,9 @@
 Optimizing Sort Algorithms with Code Tuning
 ===========================================
 
+Code Tuning for Simple Sorting Algorithms
+-----------------------------------------
+
 Since sorting is such an important application,
 it is natural for programmers to want
 to optimize their sorting code to run faster.

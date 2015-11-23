@@ -11,6 +11,9 @@
 Implementing Mergesort
 ======================
 
+Implementing Mergesort
+----------------------
+
 Implementing Mergesort presents a number of technical difficulties.
 The first decision is how to represent the lists.
 Mergesort lends itself well to sorting a singly linked list because
@@ -78,6 +81,10 @@ Here is a visualization for the merge step.
 .. inlineav:: mergeImplS1CON ss
    :output: show
 
+
+Optimizing Mergesort
+--------------------
+
 An optimized Mergesort implementation is shown below.
 It reverses the order of the second subarray during the initial copy.
 Now the current positions of the two subarrays work inwards from the
@@ -97,7 +104,9 @@ Here is a visualization for the optimized merge step.
 .. inlineav:: mergeImplS2CON ss
    :output: show
 
-Now here are some review questions.
+
+Mergesort Summary Questions
+---------------------------
 
 .. avembed:: Exercises/Sorting/MergesortSumm.html ka
 

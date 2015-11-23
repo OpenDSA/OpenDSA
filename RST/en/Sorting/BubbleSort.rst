@@ -16,6 +16,9 @@
 Bubble Sort
 ===========
 
+Bubble Sort
+-----------
+
 Our next sorting algorithm is called :term:`Bubble Sort`.
 Bubble Sort is often taught to novice programmers in
 introductory computer science courses.
@@ -52,10 +55,16 @@ Here is an implementation.
 .. codeinclude:: Sorting/Bubblesort 
    :tag: Bubblesort        
 
-Consider the following array.
+
+Bubble Sort Iteration 1
+-----------------------
 
 .. inlineav:: bubblesortS1CON ss
    :output: show
+
+
+Bubble Sort Iteration 2
+-----------------------
 
 Now we continue with the second pass. However, since the largest
 record has "bubbled" to the very right, we will not need to look at
@@ -65,13 +74,27 @@ it again.
    :output: show
 
 Bubble Sort continues in this way until the entire array is sorted.
-The following visualization puts it all together.
+
+
+Putting It Together
+-------------------
+
+The following visualization shows the complete Bubble Sort.
+You can input your own data if you like.
 
 .. avembed:: AV/Sorting/bubblesortAV.html ss
+
+
+Bubble Sort Practice
+--------------------
 
 Now try for yourself to see if you understand how Bubble Sort works.
 
 .. avembed:: Exercises/Sorting/BubsortPRO.html ka
+
+
+Bubble Sort Analysis
+--------------------
 
 The following visualization illustrates the running time analysis of
 Bubble Sort.
@@ -90,6 +113,10 @@ average case, leading to :math:`\Theta(n^2)` for the
 expected number of swaps.
 The actual number of swaps performed by Bubble Sort will be identical
 to that performed by Insertion Sort.
+
+
+Bubble Sort Review Questions
+----------------------------
 
 Here are some review questions to check your understanding of
 Bubble Sort. 

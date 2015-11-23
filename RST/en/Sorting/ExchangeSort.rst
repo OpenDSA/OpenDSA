@@ -16,6 +16,9 @@
 The Cost of Exchange Sorting
 ============================
 
+The Cost of Exchange Sorting
+----------------------------
+
 Here is a summary for the cost of Insertion Sort,
 Bubble Sort, and Selection Sort in terms of their required number of
 comparisons and swaps in the best, average, and worst cases.
@@ -83,6 +86,8 @@ We therefore know with certainty that any sorting algorithm which
 limits comparisons to adjacent items will cost at least
 :math:`n(n-1)/4 = \Omega(n^2)` in the average case.
 
-Here are the module review questions.
+
+Exchange Sort Summary Questions
+-------------------------------
 
 .. avembed:: Exercises/Sorting/ExchangeSumm.html ka

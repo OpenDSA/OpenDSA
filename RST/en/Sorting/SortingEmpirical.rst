@@ -5,13 +5,15 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: Sorting
    :topic: Sorting
 
 .. index:: ! sorting; empirical comparison
 
 An Empirical Comparison of Sorting Algorithms
 =============================================
+
+An Empirical Comparison of Sorting Algorithms
+---------------------------------------------
 
 Which sorting algorithm is fastest?  Asymptotic complexity analysis
 lets us distinguish between :math:`\Theta(n^2)` and

@@ -12,6 +12,9 @@
 Sorting Terminology and Notation
 ================================
 
+Sorting Terminology and Notation
+--------------------------------
+
 .. index:: key, search key
 
 Given a set of records :math:`r_1`, :math:`r_2`, ..., :math:`r_n`

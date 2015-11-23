@@ -129,12 +129,14 @@ Here is a simple ``findpivot`` function.
 .. codeinclude:: Sorting/Quicksort
    :tag: findpivot
 
-Section_QuicksortPivotPRO
--------------------------
-
-Now you can have some practice.
+Quicksort Pivot Practice
+------------------------
 
 .. avembed:: Exercises/Sorting/QuicksortPivotPRO.html ka
+
+
+Partition
+---------
 
 We now turn to function ``partition``.
 If we knew in advance how many keys are less than the pivot,
@@ -160,29 +162,26 @@ Function ``partition`` returns the first index of the right
 partition (the place where ``left`` ends at) so that the subarray
 bound for the recursive calls to ``qsort`` can be determined.
 
-Section_quicksortCON
---------------------
-
 .. inlineav:: quicksortCON ss
    :output: show
 
 
-.. _PartitionFig:
+Quicksort Partition Practice
+----------------------------
 
-Section_QuickSortPartitionAnalysisCON
--------------------------------------
+.. avembed:: Exercises/Sorting/QuicksortPartitPRO.html ka
+
+Quicksort Partition Analysis
+----------------------------
 
 And here is a visualization illustrating the running time analysis of the partition function
 
 .. inlineav:: QuickSortPartitionAnalysisCON ss
    :output: show
 
-Section_QuicksortPartitPRO
---------------------------
 
-Now for some partition practice.
-
-.. avembed:: Exercises/Sorting/QuicksortPartitPRO.html ka
+Putting It Together
+-------------------
 
 Here is a visualization for the entire Quicksort algorithm.
 This visualization shows you how the logical decomposition caused by
@@ -192,20 +191,19 @@ match the recursion tree.
 In reality, there is only a single array involved (as you will see in
 the proficiency exercise that follows the visualization).
 
-Section_quicksortAV
--------------------
-
 .. avembed:: AV/Sorting/quicksortAV.html ss
 
-Section_quicksortPRO
---------------------
+
+Quicksort Practice Exercise
+---------------------------
 
 Here is a complete proficiency exercise to see how well you understand
 Quicksort.
 
 .. avembed:: AV/Sorting/quicksortPRO.html pe
 
-Section_QuickSortWorstCaseCON
+
+Quicksort Worst Case Analysis
 -----------------------------
 
 This visualization explains the worst-case running time of Quick Sort
@@ -223,13 +221,18 @@ still unlikely to happen.
 It does not take many good partitionings for Quicksort to
 work fairly well.
 
-Section_QuickSortBestCaseCON
+
+Quicksort Best Case Analysis
 ----------------------------
 
 This visualization explains the best-case running time of Quick Sort
 
 .. inlineav:: QuickSortBestCaseCON ss
    :output: show
+
+
+Quicksort Average Case Analysis
+-------------------------------
 
 Quicksort's average-case behavior falls somewhere
 between the extremes of worst and best case.
@@ -250,9 +253,6 @@ following equation:
    {\bf T}(n) = cn + \frac{1}{n}\sum_{k=0}^{n-1}[{\bf T}(k) +
    {\bf T}(n - 1 - k)],
    \quad {\bf T}(0) = {\bf T}(1) = c.
-
-Section_QuickSortAverageCaseCON
--------------------------------
 
 This visualization will help you to understand how this recurrence
 relation was formed.
@@ -286,6 +286,10 @@ be going toward a limit of zero.
 We can conclude that Quicksort will run fast if
 we can avoid those very few bad input permutations.
 This is why picking a good pivot is so important.
+
+
+Quicksort Optimization
+----------------------
 
 The running time for Quicksort can be improved (by a constant factor),
 and much study has gone into optimizing this algorithm.
@@ -371,10 +375,8 @@ modest speedup.
    partition, and verify that at each step it will generate new
    partitions of size 6, 5, 4, 3, 2, then 1.
 
-Section_QuicksortSumm
----------------------
-
-Now for review questions.
+Quicksort Summary Questions
+---------------------------
 
 .. avembed:: Exercises/Sorting/QuicksortSumm.html ka
 

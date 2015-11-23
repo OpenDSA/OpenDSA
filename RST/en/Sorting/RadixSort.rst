@@ -16,6 +16,9 @@
 Radix Sort
 ==========
 
+Radix Sort
+----------
+
 The major problem with Binsort is that it does not work so well for a
 large key range.
 Fortunately, there is a way to keep the number of bins small and the
@@ -61,9 +64,17 @@ keys' digit values working from the rightmost digit to the leftmost.
 If there are :math:`k` digits, then this requires that we assign keys to
 bins :math:`k` times.
 
+
+Radix Sort Practice Exercise
+----------------------------
+
 Here is a practice exercise for placing keys into bins.
 
 .. avembed:: Exercises/Sorting/RadixsortPRO.html ka
+
+
+Array-based Radix Sort
+----------------------
 
 As with Mergesort, an efficient implementation of Radix Sort is
 somewhat difficult to achieve.
@@ -97,11 +108,12 @@ The final loop simply copies the records back to
 array ``A`` to be ready for the next pass.
 Variable ``rtoi`` stores :math:`r^i` for use in bin computation
 on the :math:`i`'th iteration.
-The following visualization illustrates the process.
 
 .. avembed:: AV/Sorting/radixArrayAV.html ss
 
-This visualization analyzes the running time of RadixSort
+
+Radix Sort Analysis
+-------------------
 
 .. inlineav:: RadixSortAnalysisCON ss
    :output: show
@@ -177,7 +189,10 @@ Implementing the concept of Radix Sort with the
 :ref:`alphabet trie <alphabet trie> <Trie>` data structure is most
 appropriate for these situations.
 
-Now for some review questions.
+
+Radix Sort Summary Questions
+----------------------------
 
 .. avembed:: Exercises/Sorting/RadixSortSumm.html ka
+
 .. odsascript:: AV/Development/RadixSortAnalysisCON.js

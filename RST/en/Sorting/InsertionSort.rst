@@ -18,6 +18,9 @@
 Insertion Sort
 ==============
 
+Insertion Sort
+--------------
+
 What would you do if you have a stack of phone bills from the past
 two years and you want to order by date?
 A fairly natural way to handle this is to look at the first two
@@ -55,28 +58,15 @@ associate a key value with a record.
 The sorting algorithms will simply assume that the records are
 :term:`comparable`.)
 
-.. _explanation:
 
-Here is the start to the Insertion Sort process.
+How It Works
+------------
 
-.. inlineav:: insertionsortS1CON ss
+Here we see the first few iterations of Insertion Sort.
+
+.. inlineav:: insertionsortCON ss
    :output: show
    
-.. _banana:
-
-Next, process the record in position 2.
-Swap it to the left until it reaches a value smaller than it is.
-
-.. inlineav:: insertionsortS2CON ss
-   :output: show
-   
-.. _foo:
-
-And now the record in position 3.
-
-.. inlineav:: insertionsortS3CON ss
-   :output: show
-
 This continues on with each record in turn.
 Call the current record :math:`x`.
 Insertion Sort will move it to the left so
@@ -85,25 +75,39 @@ preceding it.
 As soon as a key value less than or equal to :math:`x` is
 encountered, ``inssort`` is done with that record because all
 records to its left in the array must have smaller keys.
-The following visualization puts it all together.
+
+Putting It Together
+-------------------
 
 .. avembed:: AV/Sorting/insertionsortAV.html ss
 
-Now try for yourself to see if you understand how Insertion Sort works.
+
+Insertion Sort Practice
+-----------------------
 
 .. avembed:: Exercises/Sorting/InssortPRO.html ka
 
-Insertion Sort Analysis
------------------------
+
+Insertion Sort Worst Case
+-------------------------
 
 .. inlineav:: InsertionSortWorstCaseCON ss
    :output: show
 
+
+Insertion Sort Best Case
+------------------------
+
 .. inlineav:: InsertionSortBestCaseCON ss
    :output: show
 
+
+Insertion Sort Analysis
+-----------------------
+
 .. inlineav:: InsertionSortAverageCaseCON ss
    :output: show
+
 
 While the best case is significantly faster than the average and worst
 cases, the average and worst cases are usually more reliable
@@ -156,13 +160,11 @@ You should spend some time right now trying to think of a situation
 where you will need to sort many small arrays.
 Actually, it happens a lot.
 
-Here are some review questions to check your understanding of
-Insertion Sort.
+
+Insertion Sort Summary Questions
+--------------------------------
 
 .. avembed:: Exercises/Sorting/InssortSumm.html ka
-
-Notes
------
 
 See
 `Computational Fairy Tales: Why Tailors Use Insertion Sort
@@ -170,9 +172,7 @@ See
 for a discussion on how the relative costs of search and insert can
 affect what is the best sort algorithm to use.
 
-.. odsascript:: AV/Sorting/insertionsortS1CON.js
-.. odsascript:: AV/Sorting/insertionsortS2CON.js
-.. odsascript:: AV/Sorting/insertionsortS3CON.js
+.. odsascript:: AV/Sorting/insertionsortCON.js
 .. odsascript:: AV/Development/InsertionSortWorstCaseCON.js
 .. odsascript:: AV/Development/InsertionSortBestCaseCON.js
 .. odsascript:: AV/Development/InsertionSortAverageCaseCON.js
