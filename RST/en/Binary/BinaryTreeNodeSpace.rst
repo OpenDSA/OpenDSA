@@ -12,6 +12,9 @@
 Binary Tree Space Requirements
 ==============================
 
+Binary Tree Space Requirements
+------------------------------
+
 This module presents techniques for calculating the amount of
 :term:`overhead` required by a :term:`binary tree`,
 based on its node implementation.
@@ -125,4 +128,4 @@ In any other situation, such "bit packing" tricks should be
 avoided because they are difficult to debug and understand at
 best, and are often machine dependent at worst.
 
-.. avembed:: Exercises/Binary/TreeOverhead.html ka
+.. avembed:: Exercises/Binary/TreeOverheadFIB.html ka

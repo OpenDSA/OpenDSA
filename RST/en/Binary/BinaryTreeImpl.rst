@@ -14,6 +14,9 @@
 Binary Tree Node Implementations
 ================================
 
+Binary Tree Node Implementations
+--------------------------------
+
 In this module we examine various ways to implement binary tree
 nodes.
 By definition, all binary tree nodes have two children,
@@ -150,6 +153,5 @@ caller.
 The other member functions for the derived subclasses are accessed by
 type-casting the base class pointer as appropriate, as shown in
 function ``traverse``.
-
 
 .. odsascript:: AV/Binary/expressionTraversalCON.js

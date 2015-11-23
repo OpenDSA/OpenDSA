@@ -159,7 +159,7 @@
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "RecWReverseStringPROG": {
+          "RecWRevStringPROG": {
             "long_name": "Recursion Code Writing Exercise: Reverse String",
             "required": true,
             "points": 1.0,

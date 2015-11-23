@@ -81,7 +81,12 @@ subroutine and is implemented as follows.
 .. inlineav:: BSTsearchCON ss
    :output: show
 
+
+BST Search Practice
+-------------------
+
 .. avembed:: AV/Binary/BSTsearchPRO.html pe
+
 
 BST Insert
 ----------
@@ -123,10 +128,15 @@ In general, it is preferable for a BST to be as shallow as
 possible.
 This keeps the average cost of a BST operation low.
 
+
+BST Insert Practice
+-------------------
+
 .. avembed:: AV/Binary/BSTinsertPRO.html pe
 
-BST Remove
-----------
+
+Deleting the Maximum Value
+--------------------------
 
 Removing a node from a BST is a bit trickier than inserting a node,
 but it is not complicated if all of the possible cases are considered
@@ -150,6 +160,10 @@ pointer to the node containing the maximum value in the subtree.
 
 .. codeinclude:: Binary/BST
    :tag: getmax
+
+
+BST Remove
+----------
 
 Now we are ready for the ``removehelp`` method.
 Removing a node with given key value :math:`R` from the BST
@@ -197,7 +211,16 @@ Selecting the greatest value from the left subtree does not
 have a similar problem, because it does not violate the Binary Search
 Tree Property if equal values appear in the left subtree.
 
+.. [#] Alternatively, if we prefer to store duplicate values in the
+       right subtree, then we must replace a deleted node with the
+       least value from its right subtree.
+
+
+BST Remove Practice
+-------------------
+
 .. avembed:: AV/Binary/BSTremovePRO.html ss
+
 
 BST Analysis
 ------------
@@ -254,14 +277,11 @@ Two examples are the
 There also exist other types of search trees that are guaranteed to
 remain balanced, such as the :ref:`2-3 Tree <2-3 tree> <TwoThreeTree>`.
 
+
+Summary Questions
+-----------------
+
 .. avembed:: Exercises/Binary/BSTSumm.html ka
-
-Notes
------
-
-.. [#] Alternatively, if we prefer to store duplicate values in the
-       right subtree, then we must replace a deleted node with the
-       least value from its right subtree.
 
 .. odsascript:: AV/Binary/BSTsearchCON.js
 .. odsascript:: AV/Binary/BSTinsertCON.js

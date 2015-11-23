@@ -9,10 +9,13 @@
    :satisfies: Huffman proof
    :topic: Huffman Coding Trees
 
-.. odsalink:: AV/Development/HuffProofCON.css
+.. odsalink:: AV/Binary/HuffProofCON.css
 
 Proof of Optimality for Huffman Coding
 ======================================
+
+Proof of Optimality for Huffman Coding
+--------------------------------------
 
 Huffman tree building is an example of a
 :term:`greedy algorithm`.
@@ -51,7 +54,7 @@ However, this is impossible because :math:`l_1` and
 
 .. _HProof:
 
-.. inlineav:: InvalidTree dgm 
+.. inlineav:: HuffProofCON dgm 
    :output: show
    :align: center
 
@@ -105,9 +108,9 @@ Here is the proof.
    Thus by mathematical induction, function ``buildHuff`` creates
    the Huffman tree with minimum external path length.
 
-.. odsascript:: AV/Development/HuffProofCON.js
-
 .. TODO::
    :type: Exercise
 
    Battery of MCQs for content.
+
+.. odsascript:: AV/Binary/HuffProofCON.js

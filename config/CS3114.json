@@ -929,7 +929,7 @@
           }
         }
       },
-      "RecurTutor2/BinaryTreeInfFlw": {
+      "BTRecurTutor/BinaryTreeInfFlw": {
         "long_name": "Binary Tree Information Flow",
         "exercises": {
           "BTsetdepthPROG": {
@@ -993,7 +993,7 @@
       "Binary/BinaryTreeNodeSpace": {
         "long_name": "Full Binary Tree Node Space Requirements",
         "exercises": {
-          "TreeOverhead": {
+          "TreeOverheadFIB": {
             "long_name": "Tree Overhead Exercise",
             "required": true,
             "points": 2,
@@ -1074,7 +1074,7 @@
         "dispModComp": true,
         "exercises": {}
       },
-      "RecurTutor2/BinaryTreeGuidedInfFlw": {
+      "BTRecurTutor/BinaryTreeGuidedInfFlw": {
         "long_name": "Binary Tree Guided Information Flow",
         "exercises": {
           "IneffBinaryTreeRangeCON": {
@@ -1092,7 +1092,7 @@
           }
         }
       },
-      "RecurTutor2/MultipleBinaryTrees": {
+      "BTRecurTutor/MultipleBinaryTrees": {
         "long_name": "Multiple Binary Trees",
         "exercises": {
           "MultiTreePROGSumm": {
@@ -1104,7 +1104,7 @@
           }
         }
       },
-      "RecurTutor2/BSTCheck": {
+      "BTRecurTutor/BSTCheck": {
         "long_name": "BSTcheck Function",
         "dispModComp": true,
         "exercises": {}
@@ -1229,13 +1229,13 @@
       "Binary/TreeTrie": {
         "long_name": "Trees versus Tries",
         "exercises": {
-          "TreeTimeline": {
+          "TreeTimelineCON": {
             "long_name": "Tree timeline Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "TrieTimeline": {
+          "TrieTimelineCON": {
             "long_name": "Trie timeline Slideshow",
             "required": true,
             "points": 0.0,
@@ -1246,7 +1246,9 @@
       "Development/HuffProof": {
         "long_name": "Proof for Huffman Coding",
         "dispModComp": true,
-        "exercises": {}
+        "exercises": {
+          "HuffProofCON": {}
+        }
       },
       "Binary/BinaryChapSumm": {
         "long_name": "Binary Tree Chapter Summary",
