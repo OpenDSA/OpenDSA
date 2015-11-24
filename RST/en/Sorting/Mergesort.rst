@@ -18,6 +18,9 @@
 Mergesort Concepts
 ==================
 
+Mergesort Concepts
+------------------
+
 A natural approach to problem solving is divide and conquer.
 To use divide and conquer when sorting, we might consider breaking the
 list to be sorted into pieces, process the pieces, and then put them
@@ -43,6 +46,10 @@ Here is a pseudocode sketch of Mergesort::
 Here is a visualization that illustrates how Mergesort works.
 
 .. avembed:: AV/Sorting/mergesortAV.html ss
+
+
+Merge Step
+----------
 
 The hardest step to understand about Mergesort is the merge function.
 The merge function starts by examining the first record of each
@@ -83,20 +90,31 @@ Here is a visualization for the merge operation.
 .. inlineav:: mergesortCON ss
    :output: show
 
+
+
+Mergesort Merge Practice
+------------------------
+
 Here is a mergesort warmup exercise to practice merging.
 
 .. avembed:: Exercises/Sorting/MergesortMergePRO.html ka
+
+
+Mergsort Practice Exercise
+--------------------------
 
 Now here is a full proficiency exercise to put it all together.
 
 .. avembed:: AV/Sorting/mergesortPRO.html pe
 
-.. showhidecontent:: MergeSortAnalysis
 
-   This visualization provides a running time analysis for Merge Sort.
+Mergesort Analysis
+------------------
 
-   .. inlineav:: MergeSortAnalysisCON ss
-      :output: show
+This visualization provides a running time analysis for Merge Sort.
+
+.. inlineav:: MergeSortAnalysisCON ss
+   :output: show
 
 .. odsascript:: AV/Sorting/mergesortCON.js
 .. odsascript:: AV/Development/MergeSortAnalysisCON.js

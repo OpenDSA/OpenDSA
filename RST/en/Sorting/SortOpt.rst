@@ -12,6 +12,9 @@
 Optimizing Sort Algorithms with Code Tuning
 ===========================================
 
+Code Tuning for Simple Sorting Algorithms
+-----------------------------------------
+
 Since sorting is such an important application,
 it is natural for programmers to want
 to optimize their sorting code to run faster.
@@ -50,11 +53,9 @@ Here is an implementation for Insertion Sort using this optimization.
 .. codeinclude:: Sorting/Insertionsort
    :tag: InsertionOpt
 
-.. showhidecontent:: inssortnoswapex
+Now, you can test whether you understand how this works.
 
-   Now, you can test whether you understand how this works.
-
-   .. avembed:: AV/Development/insertionSortWithoutSwapPRO.html pe
+.. avembed:: AV/Development/insertionSortWithoutSwapPRO.html pe
 
 .. _OptimizeTable:
 

@@ -21,39 +21,53 @@
   },
   "chapters": {
     "Test": {
-      "AlgAnal/AnalProgram": {
-        "long_name": "Calculating the Running Time of a Program",
-        "sections": {
-          "binsearchpro": {
-            "long_name": "Binary Search Proficiency Exercise",
-            "showhide": "none",
-            "remove": false
-          }
-        },
-        "exercises": {
-          "binarySearchCON": {
-            "long_name": "Binary Search Algorithm Slideshow",
-            "required": true,
+      "Sorting/InsertionSort": {
+        "long_name": "Insertion Sort",
+        "exercises" : {
+          "insertionsortCON": {
+            "long_name": "Insertion Sort Slideshow",
+            "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "binarySearchPRO": {
-            "long_name": "Binary Search Proficiency Exercise",
-            "required": true,
-            "points": 1.0,
+          "insertionsortAV": {
+            "long_name": "Insertion Sort Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
             "threshold": 1.0
           },
-          "AnalProgramSumm": {
-            "long_name": "Program Code Analysis Exercise",
+          "InssortPRO": {
+            "long_name": "Insertion Sort Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          },
+          "InsertionSortWorstCaseCON": {
+            "long_name": "Insertion Sort Worst Case Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "InsertionSortBestCaseCON": {
+            "long_name": "Insertion Sort Best Case Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "InsertionSortAverageCaseCON": {
+            "long_name": "Insertion Sort Average Case Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "InssortSumm": {
+            "long_name": "Insertion Sort Summary Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 5
           }
         }
-      },
-      "Development/BalancedTree": {
-        "long_name": "Balanced Trees",
-        "exercises": {}
       }
     },
     "Appendix": {

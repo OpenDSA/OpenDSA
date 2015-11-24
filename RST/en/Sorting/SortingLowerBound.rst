@@ -16,6 +16,9 @@
 Lower Bounds for Sorting
 ========================
 
+Lower Bounds for Sorting
+------------------------
+
 By now you have seen many analyses for algorithms.
 These analyses generally define the upper and lower bounds for
 algorithms in their worst and average cases.
@@ -144,8 +147,12 @@ As a corollary, we know that no comparison-based sorting algorithm can
 improve on existing :math:`\Theta(n \log n)` time sorting algorithms by
 more than a constant factor.
 
+Sorting Lower Bound Review Questions
+------------------------------------
+
 Here are some review questions to check that you understand
 this proof.
 
 .. avembed:: Exercises/Sorting/SortBoundSumm.html ka
+
 .. odsascript:: AV/Development/SortingLowerBoundCON.js

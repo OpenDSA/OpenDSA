@@ -16,6 +16,9 @@
 Heapsort
 ========
 
+Heapsort
+--------
+
 Our discussion of Quicksort began by considering the practicality of
 using a BST for sorting.
 The BST requires more space than the other sorting methods and will
@@ -63,21 +66,31 @@ A complete implementation is as follows.
 .. codeinclude:: Sorting/Heapsort 
    :tag: Heapsort 
    
+
+Heapsort Initial Practice
+-------------------------
+
 Here is a warmup practice exercise for Heapsort.
 
 .. avembed:: Exercises/Sorting/HeapsortStepPRO.html ka
+
+
+Heapsort Proficiency Practice
+-----------------------------
 
 Now test yourself to see how well you understand Heapsort.
 Can you reproduce its behavior?
 
 .. avembed:: AV/Sorting/heapsortPRO.html pe
 
-.. showhidecontent:: HeapSortAnalysis   
 
-   This visualization presents the running time analysis of Heap Sort       
+Heapsort Analysis
+-----------------
 
-   .. inlineav:: HeapSortAnalysisCON ss
-      :output: show
+This visualization presents the running time analysis of Heap Sort       
+
+.. inlineav:: HeapSortAnalysisCON ss
+   :output: show
 
 While typically slower than Quicksort by a constant factor
 (because unloading the heap using ``removemax`` is somewhat slower
@@ -103,7 +116,8 @@ order (so, use a min-heap), but this process stops as soon as the MST
 is complete.
 Thus, only a relatively small fraction of the edges need be sorted.
 
-Now here are summary questions.
+Heapsort Summary Questions
+--------------------------
 
 .. avembed:: Exercises/Sorting/HeapsortSumm.html ka
 
