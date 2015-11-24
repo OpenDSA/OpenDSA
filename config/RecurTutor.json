@@ -3,7 +3,8 @@
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
-    "Java": { "ext":["java"], "label":"Java","lang":"java"}
+    "Java": { "ext":["java"], "label":"Java","lang":"java"},
+    "Pseudo": { "ext":["txt"], "label":"Pseudo","lang":"java"}
   },
   "module_origin": "http://algoviz.org",
   "exercise_server": "https://opendsa.cs.vt.edu",
@@ -252,43 +253,43 @@
       "RecurTutor/TracingEx": {
         "long_name": "Tracing Practice Exercises",
         "exercises": {
-          "RecTraceSumm1": {
-            "long_name": "Recursion Tracing Exercises Set 1",
+          "RecTraceSummFwdFlow": {
+            "long_name": "Recursion Forward Flow Tracing Exercises",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "RecTraceSumm2": {
-            "long_name": "Recursion Tracing Exercises Set 2",
+          "RecTraceSummbckwrdFlow": {
+            "long_name": "Recursion Backward Flow Tracing Exercises",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "RecTraceSumm3": {
-            "long_name": "Recursion Tracing Exercises Set 3",
+          "RecTraceSummFuncErr": {
+            "long_name": "Recursion Find Error Tracing Exercises",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "RecTraceSumm4": {
-            "long_name": "Recursion Tracing Exercises Set 4",
+          "RecTraceSummTwoRC": {
+            "long_name": "Two Recursive Calls Tracing Exercises",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           }, 
-          "RecTraceSumm5": {
-            "long_name": "Recursion Tracing Exercises Set 5",
+          "RecTraceSummHowmany": {
+            "long_name": "Recursion How Many Times Tracing Exercises ",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },        
-          "RecTraceSumm6": {
-            "long_name": "Recursion Tracing Exercises Set 6",
+          "RecTraceSummHard": {
+            "long_name": "Recursion Harder Tracing Exercises",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,

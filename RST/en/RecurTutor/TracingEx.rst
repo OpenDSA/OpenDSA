@@ -11,37 +11,37 @@
 Tracing Practice Exercises
 ===========================
 
-Tracing Exercise 1
-------------------
+Forward Flow Tracing Exercises 
+------------------------------
 
-.. avembed:: Exercises/RecurTutor/RecTraceSumm1.html ka
-
-
-Tracing Exercise 2
-------------------
-
-.. avembed:: Exercises/RecurTutor/RecTraceSumm2.html ka
+.. avembed:: Exercises/RecurTutor/RecTraceSummFwdFlow.html ka
 
 
-Tracing Exercise 3
-------------------
+Backward Flow Tracing Exercises 
+-------------------------------
 
-.. avembed:: Exercises/RecurTutor/RecTraceSumm3.html ka
-
-
-Tracing Exercise 4
-------------------
-
-.. avembed:: Exercises/RecurTutor/RecTraceSumm4.html ka
+.. avembed:: Exercises/RecurTutor/RecTraceSummbckwrdFlow.html ka
 
 
-Tracing Exercise 5
-------------------
+Find Error Tracing Exercises
+----------------------------
 
-.. avembed:: Exercises/RecurTutor/RecTraceSumm5.html ka
+.. avembed:: Exercises/RecurTutor/RecTraceSummFuncErr.html ka
 
 
-Tracing Exercise 6
-------------------
+Two Recursive Calls Tracing Exercises
+-------------------------------------
 
-.. avembed:: Exercises/RecurTutor/RecTraceSumm6.html ka	
+.. avembed:: Exercises/RecurTutor/RecTraceSummTwoRC.html ka
+
+
+How Many Times Tracing Exercises 
+--------------------------------
+
+.. avembed:: Exercises/RecurTutor/RecTraceSummHowmany.html ka
+
+
+Harder Tracing Exercises 
+------------------------
+
+.. avembed:: Exercises/RecurTutor/RecTraceSummHard.html ka	
