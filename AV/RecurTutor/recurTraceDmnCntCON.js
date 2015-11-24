@@ -23,7 +23,10 @@ $(document).ready(function () {
   av.displayInit();
   av.step();
   av.umsg(interpret("av_c2"));
-
+  av.step();
+  
+  av.umsg(interpret("av_c3"));
+  
   rect5.hide();
   var rect10 = av.g.rect(675, 34, 50, 95).css({"fill": "lightgray"});
   rect10.rotate(-55);
@@ -31,11 +34,12 @@ $(document).ready(function () {
   pseudo.highlight(3);
   av.step();
 
-  av.umsg(interpret("av_c3"));
+  av.umsg(interpret("av_c4"));
   pseudo.highlight(5);
   pseudo.unhighlight(3);
+  av.step();
   
-
+  av.umsg(interpret("av_c5"));
   rect4.hide();
   var rect11 = av.g.rect(575, 34, 50, 95).css({"fill": "lightgray"});
   rect11.rotate(-55);

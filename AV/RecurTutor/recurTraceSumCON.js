@@ -3,14 +3,7 @@
 $(document).ready(function () {
   "use strict";
   var theArray = [2, 4, 6];
-  function setGreen(arr, index) {
-    arr.css(index, {"background-color": "#00FF00" });
-  };
-
-  function setWhite(arr, index) {
-    arr.css(index, {"background-color": "#fff" });
-  };
-
+  
   var av_name = "recurTraceSumCON";
   var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
       interpret = config.interpreter,       // get the interpreter
@@ -77,7 +70,8 @@ $(document).ready(function () {
   av.umsg(interpret("av_c11"));
   pseudo.unhighlight(3);
   pseudo.highlight(5);
-  setGreen(arr, 0);
+  arr.highlight([0]);
+  
   av.step();
 
   // Slide 12
@@ -86,13 +80,15 @@ $(document).ready(function () {
 
   // Slide 13
   av.umsg(interpret("av_c13"));
-  setWhite(arr,0);
-  setGreen(arr, 1);
+  arr.unhighlight([0]);
+  arr.addClass([0], "unused");
+  arr.highlight([1]);
   av.step();
 
   // Slide 14
   av.umsg(interpret("av_c14"));
-  setWhite(arr,1);
-  setGreen(arr, 2);
+  arr.unhighlight([1]);
+  arr.addClass([1], "unused");
+  arr.highlight([2]);
   av.recorded();
 });

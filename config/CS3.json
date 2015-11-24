@@ -1798,6 +1798,14 @@
               "threshold": 5
             }
           },
+          "Analysis": {
+            "ExchangeSortCON": {
+              "long_name": "Selection Sort Analysis Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
           "Exchange Sort Summary Questions": {
             "ExchangeSumm": {
               "long_name": "Exchange Sorting Summary Exercise",
