@@ -43,13 +43,15 @@ void stackReverse(Stack s) {
                 console.log(guess[0]);
                 window.codeValue = guess[0];
                 window.progexType= "recursion";
-                window.summexName = "recWStackRevPROG";
+                window.summexName = "RecWStackRevPROG";
               } else {
                 return "";
               }
             </div>
           </div>
           <div class="hints">
+			  <p> Pop from the stack. Then execute the recursive call  then push what you popped.
+			   The pushing will be executed in the unwinding phase of the recursive function and that's how the stack will be reversed.</p>
           </div>
         </div>
       </div>
