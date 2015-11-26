@@ -47,7 +47,7 @@
   },
   "chapters": {
     "Sorting": {
-      "Sorting/ShellsortTest": {
+      "Sorting/Shellsort": {
         "long_name": "Shellsort",
         "sections": {
           "Introduction": {},

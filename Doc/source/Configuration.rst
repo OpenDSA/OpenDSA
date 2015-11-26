@@ -1,8 +1,8 @@
 .. _Configuration:
 
-==========================================================
-Compiling Book Instances: the OpenDSA Configuration System
-==========================================================
+===============================================
+Compiling Book Instances: OpenDSA Configuration
+===============================================
 
 --------
 Overview

@@ -38,8 +38,7 @@ Here is a list of the individual repositories that we use:
 * We use the Khan Academy infrastructure for exercises and distribute
   the necessary portions with OpenDSA.
 
-* The server-side infrastructure is hosted at
-  https://github.com/OpenDSA/OpenDSA-server.
+* Support for setting up OpenDSA servers can be found at https://github.com/OpenDSA/OpenDSA-DevStack.
 
 * The OpenPOP project is in a separate repository at
   https://github.com/OpenDSA/OpenPOP.
@@ -391,27 +390,16 @@ can be used.
   or simply following code execution).
 
 
------------------------
-Looking at what you did
------------------------
+--------------------------------
+Setting up a Testing Environment
+--------------------------------
 
-Everything related to OpenDSA is ultimately rendered as a web
-page.
-But usually you cannot just open the HTML page as a local file in your
-browser.
-These pages usually need to be rendered by a web server.
-If you are working on your own computer and you don't normally run a
-web server, there is a simple solution.
-There is a script at OpenDSA/WebServer that you can run if you have
-python installed.
-It is very easy to use.
-You just run the script, and point your browser to the proper URL.
-Read the text in the script for details.
-Generally, when the script is running, you will just use a URL like
-``http://127.0.0.1:8000/<filename>``.
-
-To see the effect of changes that you make to .js or .css files, all
-that you should need to do is reload the relevant HTML page in your
-browser.
-If you modify a .rst file, then you will need to recompile your book
-instance.
+To compile your own books for testing purposes requires rather a lot
+of infrastruture.
+It also involves running multiple servers: at least one for the LTI
+provider and one for the OpenDSA scoring server.
+To make this relatively easy for most developers, we have created a
+package to deliver a complete "OpenDSA in a box" on a virtual
+machine.
+Complete instructions can be found at:
+https://github.com/OpenDSA/OpenDSA-DevStack.
