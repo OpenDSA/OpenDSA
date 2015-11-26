@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html data-require="math math-format word-problems spin">
+<head>
+  <title> Recursion Programming Exercise 30</title>
+  <script src="../../lib/jquery.min.js">
+  </script>
+  <script src="../../lib/jquery-ui.min.js">
+  </script>
+  <script>
+    window.OpenPopKa = true;
+  </script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../lib/odsaStyle-min.css"></script>
+  
+  <script src="../../lib/codemirror/lib/codemirror.js"></script>
+  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
+  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
+
+
+</head>
+
+<body  data-height="600" data-width="1000">
+
+<div class="exercise">
+  <div class="vars">
+    <var id="listel1">randRange(0, 99)</var>
+    <var id="listel2">randRange(0, 99)</var>
+    <var id="listel3">randRange(0, 99)</var>
+    <var id="listel4">randRange(0, 99)</var>
+  </div>
+
+  <div class="problems">
+    <div> <!-- Supresses answer box -->
+      <p class="problem" id = "test"> 
+Write a function that takes two stacks (A and B) as inputs, with some number of integer values in Stack A, and puts these values in sorted (ascending) order into stack B. There is one int variable named temp that you can use. You may declare no other variable. 
+<p></p>
+  <script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    mode:  "text/x-java"
+  });
+  
+  </script>
+<textarea  id="codeTextarea">void stacksort(Stack A, Stack B){
+int temp;
+// Put your code between these lines,do not declare any variables
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Put your code between these lines
+}
+</textarea></p>
+
+      <div class="question">
+	
+      </div>
+      <div class="solution" data-type="custom">
+      <div class="guess"> [ editor.getValue() ] </div>
+        <div class="validator-function">
+         window.codeValue = editor.getValue();
+         window.checkdefvar =  "True";
+         // The first one is already defined in the code so the student should not define more and the others should not be declared at all
+         window.listoftypes = "int,double,float,char";
+        </div>
+      </div>
+      <div class="hints">
+      </div>
+    </div>
+  </div>
+</div>
+ 
+</body>
+</html>

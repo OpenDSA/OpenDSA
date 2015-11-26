@@ -1805,7 +1805,7 @@
               "points": 0.0,
               "threshold": 1.0
             }
-          }
+          },
           "Exchange Sort Summary Questions": {
             "ExchangeSumm": {
               "long_name": "Exchange Sorting Summary Exercise",

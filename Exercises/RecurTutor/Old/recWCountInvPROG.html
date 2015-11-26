@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html data-require="math math-format word-problems spin">
+<head>
+  <title> Recursion Programming Exercise: Count Inversions</title>
+  <script src="../../lib/jquery.min.js">
+  </script>
+  <script src="../../lib/jquery-ui.min.js">
+  </script>
+  <script>
+    window.OpenPopKa = true;
+  </script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+
+  
+  <script src="../../lib/codemirror/lib/codemirror.js"></script>
+  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
+  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
+  <script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    mode:  "text/x-java"
+  });
+  </script>  
+
+  
+</head>
+
+<body  data-height="600" data-width="1000">
+   
+<div class="exercise">
+   <div class="problems">
+    <div> <!-- Supresses answer box -->
+      <p class="problem" id = "test">
+       Given the following recursive function signature, write the function code 
+       such that this function counts the number of inversions in a list of 
+       numbers. 
+       Example: for the input list 2 9 1 8, the output will be 3 
+       (due to the inversions 2 &gt; 1, 9 &gt; 1, and 9 &gt; 8):
+ <br />
+</h4>
+<p></p>
+ 
+<textarea  id="codeTextarea">int countInversions(int nums[]){
+
+
+
+
+
+	
+
+
+
+}
+</textarea></p>
+
+       <div class="question">
+	
+      </div>
+      <div class="solution" data-type="custom">
+       <div class="guess"> [ editor.getValue() ] </div>
+        <div class="validator-function">
+          window.codeValue = editor.getValue();
+          window.progexType= "recursion";
+          window.summexName= "recWCountInvPROG";
+         //return "openPop";
+        </div>
+      </div>
+      <div class="hints">
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
