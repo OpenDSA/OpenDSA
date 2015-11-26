@@ -13,6 +13,8 @@ MINIMIZE = uglifyjs
 
 all: alllint
 
+allbooks: Everything Test CS2 CS3 RecurTutor
+
 clean:
 	- $(RM) *~
 	- $(RM) Books
@@ -95,6 +97,12 @@ Test: min
 
 TestLMS: min
 	python $(CONFIG_SCRIPT) config/Test.json -c True
+
+CS2: min
+	python $(CONFIG_SCRIPT) config/CS2.json $(opts)
+
+CS2LMS: min
+	python $(CONFIG_SCRIPT) config/CS2.json -c True
 
 CS3: min
 	python $(CONFIG_SCRIPT) config/CS3.json $(opts)

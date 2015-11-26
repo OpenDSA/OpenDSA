@@ -11,13 +11,13 @@
 Tracing Practice Exercises
 ===========================
 
-Forward Flow Tracing Exercises 
+Forward Flow Tracing Exercises
 ------------------------------
 
 .. avembed:: Exercises/RecurTutor/RecTraceSummFwdFlow.html ka
 
 
-Backward Flow Tracing Exercises 
+Backward Flow Tracing Exercises
 -------------------------------
 
 .. avembed:: Exercises/RecurTutor/RecTraceSummbckwrdFlow.html ka
@@ -35,13 +35,13 @@ Two Recursive Calls Tracing Exercises
 .. avembed:: Exercises/RecurTutor/RecTraceSummTwoRC.html ka
 
 
-How Many Times Tracing Exercises 
+How Many Times Tracing Exercises
 --------------------------------
 
 .. avembed:: Exercises/RecurTutor/RecTraceSummHowmany.html ka
 
 
-Harder Tracing Exercises 
+Harder Tracing Exercises
 ------------------------
 
 .. avembed:: Exercises/RecurTutor/RecTraceSummHard.html ka	

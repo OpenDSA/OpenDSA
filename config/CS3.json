@@ -448,6 +448,7 @@
             }
           },
           "Summary Exercise: CS3": {
+            "showsection": true,
             "AlgAnalSumm": {
               "long_name": "Algorithm Analysis Summary Questions",
               "required": true,
@@ -2280,12 +2281,10 @@
     "Appendix": {
       "Glossary": {
         "long_name": "Glossary",
-        "exercises": {},
         "sections": {}
       },
       "Bibliography": {
         "long_name": "Bibliography",
-        "exercises": {},
         "sections": {}
       }
     }

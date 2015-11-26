@@ -3144,6 +3144,13 @@ Glossary
       Within a :term:`recursive function`, it is a call that the
       function makes to itself.
 
+   recursive data structure
+      A data structure that is partially
+      composed of smaller or simpler instances of the same data structure.
+      For example, :term:`linked lists <linked list>` and
+      :term:`binary trees <binary tree>` can be viewed as recursive
+      data structures.
+
    recursive function
       A function that includes a :term:`recursive call`.
 

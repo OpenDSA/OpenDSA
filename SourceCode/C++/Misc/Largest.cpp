@@ -1,3 +1,4 @@
+/* *** ODSATag: Largest *** */
 /** Return position of largest value in array A */
 int largest(int A[], int size) {
   int currlarge = 0; // Holds largest element position
@@ -6,3 +7,4 @@ int largest(int A[], int size) {
        currlarge = i;            // remember its position
   return currlarge;              // Return largest position
 }
+/* *** ODSAendTag: Largest *** */
