@@ -1,14 +1,19 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
    :author: Nick Parlante, Cliff Shaffer, and Sally Hamouda
+   :requires: Local memory
+   :satisfies: Heap Memory
    :topic: Pointers
 
 Heap Memory
 ===========
+
+Heap Memory
+-----------
 
 "Heap" memory, also known as "dynamic" memory, is an alternative to
 local stack memory.
@@ -53,6 +58,7 @@ the above disadvantages are mostly eliminated.
 The garbage collector takes over most of the responsibility for heap
 management at the cost of a little extra time taken at run-time.
 
+
 What Does The Heap Look Like?
 -----------------------------
 
@@ -93,6 +99,7 @@ which areas of the heap are in use.
 
 Deallocation
 ~~~~~~~~~~~~
+
 When the program is finished using a block of memory, it makes an explicit 
 deallocation request to indicate to the heap manager that the program is now finished with that block.
 The heap manager updates its private data structures to show that the area of memory
@@ -203,6 +210,7 @@ Although the syntax varies between languages, the roles of
    necessary for a program to deallocate every block it allocates
    |---| see "Memory Leaks" below.
 	
+
 Simple Heap Example
 -------------------
 Here is a simple example which allocates an 
@@ -264,7 +272,7 @@ difference.
    
    
 Simple Heap Observations
--------------------------
+------------------------
 
 * After the allocation call allocates the block in the heap. The
   program stores the pointer to the block in the local variable
@@ -353,7 +361,8 @@ takes over ownership of the new string and is responsible for freeing it.
 	}
 
 Heap String Observations
-------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
+
 ``StringCopy()`` takes advantage of both of the key features of heap memory:
 
 * **Size**. ``StringCopy()`` specifies, at run-time, the exact size of
@@ -412,7 +421,8 @@ mention, one way or the other, what the ownership rules are for a parameter or r
 value. That's one way that memory errors and leaks are created.
 
 Ownership Models
-----------------
+~~~~~~~~~~~~~~~~
+
 The two common patterns for ownership are:
 
 * **Caller ownership**.  The caller owns its own memory. It may pass a
@@ -439,13 +449,3 @@ can be used to build linked structures such as linked lists and binary trees. Th
 disadvantage of heap memory is that  the program must make explicit allocation and
 deallocate calls to manage the heap memory. The heap memory does not operate
 automatically and conveniently the way local memory does.
-
-Notes
------
-
-This material taken from
-"`Pointers and Memory
-<http://cslibrary.stanford.edu/102/PointersAndMemory.pdf>`_"
-by Nick Parlante, Copyright 1998-2000,
-Stanford CS Education Library.
-Used by permission of the author.

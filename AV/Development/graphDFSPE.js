@@ -47,9 +47,7 @@
   }
 
   function model(modeljsav) {
-    var i,
-        graphNodes = graph.nodes(),
-        graphEdges = graph.edges();
+    var i;
     // create the model
     var modelGraph = modeljsav.ds.graph({
       width: 400,
@@ -58,24 +56,12 @@
       directed: false
     });
 
-    // copy nodes from graph
-    for (i = 0; i < graphNodes.length; i++) {
-      modelGraph.addNode(graphNodes[i].value());
-    }
-
-    // copy edges from graph
+    // copy the graph and its weights
+    graphUtils.copy(graph, modelGraph, {weights: true});
     var modelNodes = modelGraph.nodes();
-    for (i = 0; i < graphEdges.length; i++) {
-      var startIndex = graphNodes.indexOf(graphEdges[i].start()),
-          endIndex   = graphNodes.indexOf(graphEdges[i].end()),
-          startNode  = modelNodes[startIndex],
-          endNode    = modelNodes[endIndex];
-      modelGraph.addEdge(startNode, endNode);
-    }
 
     // Mark the 'A' node
     modelNodes[0].addClass("marked");
-    modelGraph.layout();
 
     modeljsav.displayInit();
 
@@ -90,8 +76,7 @@
         modelEdges[i].hide();
       }
     }
-    // call the layout function for the new graph
-    modelGraph.layout();
+
     modeljsav.step();
 
     return modelGraph;

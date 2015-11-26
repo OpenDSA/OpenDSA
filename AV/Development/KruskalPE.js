@@ -47,9 +47,7 @@
   }
 
   function model(modeljsav) {
-    var i,
-        graphNodes = graph.nodes(),
-        graphEdges = graph.edges();
+    var i;
     // create the model
     var modelGraph = modeljsav.ds.graph({
       width: 400,
@@ -58,21 +56,9 @@
       directed: false
     });
 
-    // copy nodes from graph
-    for (i = 0; i < graphNodes.length; i++) {
-      modelGraph.addNode(graphNodes[i].value());
-    }
-
-    // copy edges from graph
+    // copy the graph and its weights
+    graphUtils.copy(graph, modelGraph, {weights: true});
     var modelNodes = modelGraph.nodes();
-    for (i = 0; i < graphEdges.length; i++) {
-      var startIndex = graphNodes.indexOf(graphEdges[i].start()),
-          endIndex   = graphNodes.indexOf(graphEdges[i].end()),
-          startNode  = modelNodes[startIndex],
-          endNode    = modelNodes[endIndex],
-          weight     = graphEdges[i].weight();
-      modelGraph.addEdge(startNode, endNode, {weight: weight});
-    }
 
     var modelEdges = modelGraph.edges();
     // sort the edges alphabetically
@@ -99,9 +85,6 @@
       left: 10
     });
 
-    // Mark the 'A' node
-    modelGraph.layout();
-
     modeljsav.displayInit();
 
     // start the algorithm
@@ -114,8 +97,6 @@
         modelEdges[i].hide();
       }
     }
-    // call the layout function for the new graph
-    modelGraph.layout();
     modeljsav.step();
 
     return modelGraph;
@@ -170,17 +151,17 @@
 
     modelEdges.forEach(function(currentEdge) {
       //msg = "<b><u>Processing Edge (" + start().value() + "," + endNode.value() + "):</b></u>";
-      modeljsav.umsg("Processing Edge: (" + edgeName(currentEdge, ", ") + ")<br>");
+      modeljsav.umsg(interpret("av_ms_processing"), {fill: {edge: edgeName(currentEdge, ", ")}});
       var index = edgeIndex(currentEdge);
       if (!createsCycle(currentEdge)) {
         //Add to MST
-        modeljsav.umsg("Adding edge to the MST", {preserve: true});
+        modeljsav.umsg(interpret("av_ms_adding"), {preserve: true});
         addEdge(currentEdge);
         edgeMatrix.addClass(index, 0, "marked");
         edgeMatrix.addClass(index, 1, "marked");
         markEdge(currentEdge, modeljsav);
       } else {
-        modeljsav.umsg("Dismiss edge", {preserve: true});
+        modeljsav.umsg(interpret("av_ms_dismiss"), {preserve: true});
         currentEdge.addClass("discarded");
         edgeMatrix.addClass(index, 0, "discarded");
         edgeMatrix.addClass(index, 1, "discarded");

@@ -9,12 +9,12 @@ $(document).ready(function () {
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
   var av;
-  var tree;
-  var leftAlign = 250;
-  var topAlign = 0;
-  var nodeGap = 25;
-  var nodeHeight = 33;
-  var nodeWidth = 45;
+  var graph;
+  var leftAlign = 10;
+  var topAlign = 10;
+  var nodeGap = 50;
+  var nodeHeight = 40;
+  var nodeWidth = 40;
   var labelShift = 10;
   var labelSet;
   
@@ -28,63 +28,78 @@ $(document).ready(function () {
 	//Slide 2
   av.umsg(interpret("Slide 2.1"));
   av.umsg(interpret("Slide 2.2"), {"preserve": true});
-  labelSet.push(av.label("<b><u>Amount of Work<b><u>", {"top": topAlign - 10 , "left": leftAlign + 200}));
-  labelSet.push(av.label("----------------------------------", {"top": topAlign + 0.5 * nodeHeight, "left": leftAlign + nodeWidth + labelShift}));
-  labelSet.push(av.label("1", {"top": topAlign + 0.5 * nodeHeight , "left": leftAlign + nodeWidth + labelShift * 20}));
-  tree = av.ds.tree({left: leftAlign, top: topAlign, nodegap: nodeGap});
-  var root = tree.newNode("$n$");
-  tree.root(root);
-  var nMinusOne = tree.newNode("$n/2$");
-  root.addChild(nMinusOne);
-  tree.layout();
+  graph = av.ds.graph({"left": leftAlign, "top": topAlign, layout: "manual", directed: false});
+  var n = graph.addNode("n", {"left": leftAlign, "top": topAlign});
+  var nOverTwo = graph.addNode("n/2", {"left": leftAlign + nodeWidth + nodeGap, "top": topAlign});
+  var oneTwo = graph.addEdge(n, nOverTwo, {"weight": "<b>1 +</b>"});
+  n.highlight();
+  oneTwo.css({"stroke":"green"});
+  nOverTwo.css({"background-color":"lightgreen"});
+  graph.layout();
   av.step();
 
   //Slide 3
   av.umsg(interpret("Slide 3.1"));
   av.umsg(interpret("Slide 3.2"), {"preserve": true});
-  labelSet.push(av.label("----------------------------------", {"top": topAlign + 2 * nodeHeight + nodeGap , "left": leftAlign + nodeWidth + labelShift}));
-  labelSet.push(av.label("1", {"top": topAlign + 2 * nodeHeight + nodeGap , "left": leftAlign + nodeWidth + labelShift * 20}));
-  var nMinusTwo = tree.newNode("$n/4$");
-  nMinusOne.addChild(nMinusTwo);
-  tree.layout();
+  var nOverFour = graph.addNode("n/4", {"left": leftAlign + 2*nodeGap + 2* nodeWidth, "top": topAlign});
+  var twoThree = graph.addEdge(nOverTwo, nOverFour, {"weight": "<b>1 +</b>"});
+  n.unhighlight();
+  nOverTwo.css({"background-color":"white"});
+  nOverTwo.highlight();
+  oneTwo.css({"stroke":"black"});
+  twoThree.css({"stroke":"green"});
+  nOverFour.css({"background-color":"lightgreen"});
+  graph.layout();
   av.step();
 
   //Slide 4
   av.umsg(interpret("Slide 4.1"));
   av.umsg(interpret("Slide 4.2"), {"preserve": true});
-  labelSet.push(av.label("----------------------------------", {"top": topAlign + 3.5 * nodeHeight + 2 * nodeGap , "left": leftAlign + nodeWidth + labelShift}));
-  labelSet.push(av.label("1", {"top": topAlign + 3.5 * nodeHeight + 2 * nodeGap , "left": leftAlign + nodeWidth + labelShift * 20}));
-  var nMinusThree = tree.newNode("$n/8$");
-  nMinusTwo.addChild(nMinusThree);
-  tree.layout();
+  var nOverEight = graph.addNode("n/8", {"left": leftAlign + 3*nodeGap + 3* nodeWidth, "top": topAlign});
+  var threeFour = graph.addEdge(nOverFour, nOverEight, {"weight": "<b>1 +</b>"});
+  nOverTwo.unhighlight();
+  nOverFour.highlight();
+  twoThree.css({"stroke":"black"});
+  threeFour.css({"stroke":"green"});
+  nOverEight.css({"background-color":"lightgreen"});
+  graph.layout();
   av.step();
 
   //Slide 5
   av.umsg(interpret("Slide 5.1"));
   av.umsg(interpret("Slide 5.2"), {"preserve": true});
-  labelSet.push(av.label("----------------------------------", {"top": topAlign + 5 * nodeHeight + 3 * nodeGap , "left": leftAlign + nodeWidth + labelShift}));
-  labelSet.push(av.label("1", {"top": topAlign + 5 * nodeHeight + 3 * nodeGap , "left": leftAlign + nodeWidth + labelShift * 20}));
-  var nMinusFour = tree.newNode("$n/16$");
-  nMinusThree.addChild(nMinusFour);
-  tree.layout();
+  var nOverSixteen = graph.addNode("n/16", {"left": leftAlign + 4*nodeGap + 4* nodeWidth, "top": topAlign});
+  var fourFive = graph.addEdge(nOverEight, nOverSixteen, {"weight": "<b>1 +</b>"});
+  nOverFour.unhighlight();
+  nOverFour.css({"background-color":"white"});
+  nOverEight.highlight();
+  threeFour.css({"stroke":"black"});
+  fourFive.css({"stroke":"green"});
+  nOverSixteen.css({"background-color":"lightgreen"});
+  graph.layout();
   av.step();
 
   //Slide 6
   av.umsg(interpret("Slide 6.1"));
   av.umsg(interpret("Slide 6.2"), {"preserve": true});
-  labelSet.push(av.label("----------------------------------", {"top": topAlign + 8.5 * nodeHeight + 4 * nodeGap , "left": leftAlign + nodeWidth + labelShift}));
-  labelSet.push(av.label("1", {"top": topAlign + 8.5 * nodeHeight + 4 * nodeGap , "left": leftAlign + nodeWidth + labelShift * 20}));
-  var one = tree.newNode("$1$");
-  nMinusFour.addChild(one);
-  var edge = one.edgeToParent();
-  edge.addClass("dashed");
-  tree.layout();
-  av.step();	
+  var last = graph.addNode("1", {"left": leftAlign + 6 * nodeGap + 6 * nodeWidth, "top": topAlign});
+  graph.layout();
+  var lastEdge = av.g.line(leftAlign + 4 * nodeGap + 5.25 * nodeWidth, 
+    topAlign + nodeHeight + 6, 
+    leftAlign + 5 * nodeGap + 5.25 * nodeWidth + 90, 
+    topAlign +  nodeHeight + 6);
+  lastEdge.addClass("dashed");
+  nOverEight.unhighlight();
+  nOverEight.css({"background-color":"white"});
+  fourFive.css({"stroke":"black"});
+  nOverSixteen.css({"background-color":"white"});
+  last.css({"background-color":"lightgreen"});
+  av.step();
 
   //Slide 7
   av.umsg(interpret("Slide 7"));
   labelSet.push
-  (av.label("|------------------------------ $\\displaystyle\\sum_{i=0}^{\\log{n}}1$ ------------------------------|", {"top": topAlign + 185 , "left": leftAlign + 190}).addClass("rotated"));
+  (av.label("|----------------------------------------------- $\\displaystyle\\sum_{i=0}^{\\log{n}}1$ -----------------------------------------------|", {"top": topAlign + 2*nodeHeight , "left": leftAlign + 0.5 * nodeWidth}));
   av.step();
 
   //Slide 8
