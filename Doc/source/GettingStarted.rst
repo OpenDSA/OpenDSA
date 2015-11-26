@@ -4,6 +4,43 @@
 Getting Started
 ===============
 
+------------------------------------
+Overview and Developer's First Steps
+------------------------------------
+
+OpenDSA consists of content delivered by servers.
+Content is delivered in the form of "book instances", which are
+created by the :ref:`configuration process <Configuration>`.
+A book instance is accessed through a Learning Management System (at
+the moment, we are only supporting Canvas), with the files delivered
+by an LTI Content Provider.
+Various support operations are conducted by the OpenDSA Server.
+If you want to develop content, then create a book instance and view
+it, then you will need to set up the necessary infrastructure.
+For testing purposes, this has all been packaged together to simplify
+setting up a development environment.
+See https://github.com/OpenDSA/OpenDSA-DevStack for how to set this
+up.
+
+Once you have the development environment in place, the next step is
+to get an account on a Canvas server.
+You can either use one provided by your institution, set up your own
+Canvas server, or use the public test server provided by Instructure
+at https://canvas.instructure.com.
+With your account in place, you can tell Canvas to create a course.
+The place to start is to create a course named "Test".
+You will then go back to your development environment, and create a
+:ref:`course configuration file <Configuration>`.
+You should start with one named "Test_LMSconf.json", made by copying
+the template in the config directory.
+You can then go to the top of the OpenDSA repository, and do
+``make Test``.
+If everything worked right, then you will have populated your course
+on Canvas with some content.
+At this point, you are ready to learn about the parts of the system
+that you need to know in detail so that you can do useful work.
+
+
 ----------------------
 Project Communications
 ----------------------
