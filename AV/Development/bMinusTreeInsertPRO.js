@@ -183,10 +183,9 @@
     parentNode.value(newParentValues);
     // position the new node on top of node
     newNode.element.position({of: node.element});
-    // move ms-highlight class to parent node if it exists
+    // remove ms-highlight class if it exists
     if (node.hasClass("ms-highlight")) {
       node.removeClass("ms-highlight");
-      node.parent().addClass("ms-highlight");
     }
     // call the layout function
     currentTree.layout();
