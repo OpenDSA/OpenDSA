@@ -12,6 +12,9 @@
 Deletion
 ========
 
+Deletion
+--------
+
 When deleting records from a hash table, there are two important
 considerations.
 
@@ -44,6 +47,10 @@ the first tombstone encountered.
 
 .. inlineav:: hashdelCON1 ss
    :output: show
+
+
+Deletion Practice
+-----------------
 
 Here is a practice exercise.
 
@@ -90,6 +97,10 @@ Two possible solutions to this problem are
    Not only will this remove the tombstones, but it also provides an
    opportunity to place the most frequently accessed records into their
    home positions.
+
+
+Hashing Deletion Summary Questions
+----------------------------------
 
 Now here are some practice questions.
 

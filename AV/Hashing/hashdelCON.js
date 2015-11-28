@@ -1,6 +1,5 @@
-"use strict";
-
-(function ($) {
+$(document).ready(function () {
+  "use strict";
   var empty = [];
   empty.length = 10;
   var av = new JSAV("hashdelCON1");
@@ -83,4 +82,4 @@
   arr.unhighlight(7);
   arr.highlight(8);
   av.recorded();
-}(jQuery));
+});

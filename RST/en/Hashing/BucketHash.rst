@@ -14,6 +14,9 @@
 Bucket Hashing
 ==============
 
+Bucket Hashing
+--------------
+
 Closed hashing stores all records directly in the hash table.
 Each record :math:`R` with key value :math:`k_R` has a
 :term:`home position` that is
@@ -57,9 +60,17 @@ expensive process.
 .. inlineav:: buckethashCON1 ss
    :output: show
 
+
+Bucket Hashing Practice
+-----------------------
+
 Now you can try it yourself.
 
 .. avembed:: Exercises/Hashing/HashBucketPRO.html ka
+
+
+An Alternate Approach
+---------------------
 
 A simple variation on bucket hashing is to hash a key value to some slot
 in the hash table as though bucketing were not being used.
@@ -74,9 +85,6 @@ in the bucket.
 .. inlineav:: buckethashCON2 ss
    :output: show
 
-Now you can try this version.
-
-.. avembed:: Exercises/Hashing/HashBucket2PRO.html ka
 
 Bucket methods are good for implementing hash tables stored on disk,
 because the bucket size can be set to the size of a disk block.
@@ -90,4 +98,11 @@ from disk as well.
 Naturally, overflow should be kept small to minimize unnecessary disk
 accesses.
 
-.. odsascript:: AV/Hashing/buckethashCON.js
+
+Alternate Practice
+------------------
+
+.. avembed:: Exercises/Hashing/HashBucket2PRO.html ka
+
+.. odsascript:: AV/Hashing/buckethashCON1.js
+.. odsascript:: AV/Hashing/buckethashCON2.js
