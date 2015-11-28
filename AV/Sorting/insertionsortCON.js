@@ -1,6 +1,6 @@
 /*global ODSA */
-"use strict";
 $(document).ready(function () {
+  "use strict";
   var av_name = "insertionsortCON";
   var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
 

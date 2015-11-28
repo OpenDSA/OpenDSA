@@ -2278,6 +2278,331 @@
         }
       }
     },
+    "Hashing": {
+      "Hashing/HashIntro": {
+        "long_name": "Introduction",
+        "sections": {
+          "Introduction": {
+            "hashIntroCON1": {
+              "long_name": "Hashing Intro Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Hashing/HashFunc": {
+        "long_name": "Hash Function Principles",
+        "sections": {
+          "Hash Function Principles": {
+            "Birthday": {
+              "long_name": "Birthday Problem Calculator",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Hashing/HashFuncExamp": {
+        "long_name": "Sample Hash Functions",
+        "sections": {
+          "Simple Mod Function": {
+            "hashFuncExCON1": {
+              "long_name": "Hash Function Slideshow 1",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Binning": {
+            "hashFuncExCON2": {
+              "long_name": "Hash Function Slideshow 2",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "The Mid-Square Method": {
+            "MidSquare": {
+              "long_name": "Mid-Square Calculator",
+              "required": true,
+              "points": 0.5,
+              "threshold": 1.0
+            }
+          },
+          "Hash Functions for Strings": {
+            "StringSimple": {
+              "long_name": "Simple String Folding Calculator",
+              "required": true,
+              "points": 0.5,
+              "threshold": 1.0
+            }
+          },
+          "String Folding": {
+            "StringSfold": {
+              "long_name": "Improved String Folding Calculator",
+              "required": true,
+              "points": 0.5,
+              "threshold": 1.0
+            }
+          },
+          "Hash Function Practice": {
+            "HashFuncFIBSumm": {
+              "long_name": "Hash Function Pick Slot Summary",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "Hash Function Review Questions": {
+            "HashFuncSumm": {
+              "long_name": "Hash Function Summary Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Hashing/OpenHash": {
+        "long_name": "Open Hashing",
+        "sections": {
+          "Open Hashing": {
+            "openhashCON": {},
+            "OpenHashPRO": {
+              "long_name": "Open Hashing Proficiency Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Hashing/BucketHash": {
+        "long_name": "Bucket Hashing",
+        "sections": {
+          "Bucket Hashing": {
+            "buckethashCON1": {
+              "long_name": "Bucket Hashing Slideshow 1",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Bucket Hashing Practice": {
+            "HashBucketPRO": {
+              "long_name": "Bucket Hashing Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "An Alternate Approach": {
+            "buckethashCON2": {
+              "long_name": "Bucket Hashing Slideshow 2",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Alternate Practice": {
+            "HashBucket2PRO": {
+              "long_name": "Alternate Bucket Hashing Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Hashing/HashCSimple": {
+        "long_name": "Collision Resolution",
+        "sections": {
+          "Collision Resolution": {
+            "linProbeCON1": {
+              "long_name": "Linear Probing Slideshow 1",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "The Problem with Linear Probing": {
+            "linProbeCON2": {
+              "long_name": "Linear Probing Slideshow 2",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Linear Probing Practice": {
+            "HashLinearPPRO": {
+              "long_name": "Linear Probing Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Hashing/HashCImproved": {
+        "long_name": "Improved Collision Resolution",
+        "sections": {
+          "Linear Probing by Steps": {
+            "collisionCON1": {
+              "long_name": "Linear Probing By Steps Slideshow 1",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Picking the Step Size": {
+            "collisionCON2": {
+              "long_name": "Linear Probing By Steps Slideshow 2",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Linear Probing with Steps Practice": {
+            "HashLinearStepPPRO": {
+              "long_name": "Linear Probing By Steps Proficiency Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 5
+            }
+          },
+          "Pseudo-Random Probing": {
+            "collisionCON3": {
+              "long_name": "Pseudo-Random Probing Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Pseudo-Random Probing Practice": {
+            "HashPseudoRandomPPRO": {
+              "long_name": "Pseudo-Random Probing Proficiency Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 5
+            }
+          },
+          "Avoiding the Train": {
+            "collisionCON4": {
+              "long_name": "Quadratic Probing Slideshow 1",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Quadratic Probing": {
+            "collisionCON5": {
+              "long_name": "Quadratic Probing Slideshow 2",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Quadratic Probing Practice": {
+            "HashQuadraticPPRO": {
+              "long_name": "Quadratic Probing Proficiency Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 5
+            }
+          },
+          "Quadratic Probing Problem": {
+            "collisionCON6": {
+              "long_name": "Double Hashing Slideshow 1",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Double Hashing": {
+            "collisionCON7": {
+              "long_name": "Double Hashing Slideshow 2",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Using Another Hash Function": {
+            "collisionCON8": {
+              "long_name": "Double Hashing Slideshow 3",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Double Hashing Practice": {
+            "HashDoublePPRO": {
+              "long_name": "Double Hashing Proficiency Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Hashing/HashAnal": {
+        "long_name": "Analysis of Closed Hashing",
+        "sections": {
+          "Analysis of Closed Hashing": {
+            "HashAnalSumm": {
+              "long_name": "Analysis of Closed Hashing Summary Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Hashing/HashDel": {
+        "long_name": "Deletion",
+        "sections": {
+          "Deletion": {
+            "hashdelCON": {
+              "long_name": "Hash Deletion Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Deletion Practice": {
+            "HashingDelPRO": {
+              "long_name": "Hash Deletion Proficiency Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 0.90
+            }
+          },
+          "Hashing Deletion Summary Questions": {
+            "HashDelSumm": {
+              "long_name": "Hash Deletion Summary Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3
+            }
+          }
+        }
+      },
+      "Hashing/HashSumm": {
+        "long_name": "Hashing Chapter Summary Exercises",
+        "sections": {
+          "Hashing Review": {
+            "HashChapterSumm": {
+              "long_name": "Hashing Chapter Summary Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 10
+            }
+          }
+        }
+      }
+    },
     "Appendix": {
       "Glossary": {
         "long_name": "Glossary",

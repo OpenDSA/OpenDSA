@@ -16,6 +16,9 @@
 Collision Resolution
 ====================
 
+Collision Resolution
+--------------------
+
 We now turn to the most commonly used form of hashing:
 closed hashing with no bucketing, and a collision resolution policy
 that can potentially use any slot in the hash table.
@@ -116,6 +119,10 @@ returns to the home position.
 Can you see any reason why this might not be the best approach
 to collision resolution?
 
+
+The Problem with Linear Probing
+-------------------------------
+
 While linear probing is probably
 the first idea that comes to mind when considering collision
 resolution policies, it is not the only one possible.
@@ -138,6 +145,9 @@ Small clusters tend to merge into big clusters, making the problem
 worse.
 The objection to primary clustering is that it leads to
 long probe sequences.
+
+Linear Probing Practice
+-----------------------
 
 .. avembed:: Exercises/Hashing/HashLinearPPRO.html ka
 
