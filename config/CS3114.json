@@ -1862,22 +1862,22 @@
       }
     },
     "File Processing": {
-      "Development/FileProc": {
+      "Files/FileProc": {
         "long_name": "File Processing Chapter Introduction",
         "dispModComp": true,
         "exercises": {}
       },
-      "Development/Secondary": {
+      "Files/Secondary": {
         "long_name": "Primary versus Secondary Storage",
         "dispModComp": true,
         "exercises": {}
       },
-      "Development/Diskdrive": {
+      "Files/Diskdrive": {
         "long_name": "Disk Drives",
         "dispModComp": true,
         "exercises": {}
       },
-      "Development/BuffPool": {
+      "Files/BuffPool": {
         "long_name": "Buffer Pools",
         "dispModComp": true,
         "sections": {
@@ -1921,12 +1921,12 @@
           }
         }
       },
-      "Development/FileProg": {
+      "Files/FileProg": {
         "long_name": "Programmer's View of Files",
         "dispModComp": true,
         "exercises": {}
       },
-      "Development/ExternalSort": {
+      "Files/ExternalSort": {
         "long_name": "ExternalSort",
         "exercises": {
           "ExternalMergeSort": {

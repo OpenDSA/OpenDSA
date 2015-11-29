@@ -1,17 +1,21 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: disk drives
+   :satisfies: buffer pool
    :topic: File Processing
 
-.. odsalink:: AV/Development/buffpoolCON.css      
+.. odsalink:: AV/Files/buffpoolCON.css      
 
 Buffer Pools
 ============
+
+Buffer Pools
+------------
 
 Given a :ref:`disk drive <DiskExamp>`
 rotating at 5400 rpm, :term:`average seek time` of 9.5ms,
@@ -112,6 +116,9 @@ than requiring new information to be read from disk.
    :align: center
    :output: show
 
+Replacement Strategies
+----------------------
+
 As long as there is an unused buffer available in the buffer pool,
 new information can be read in from disk on demand.
 When an application continues to read new information from
@@ -181,6 +188,10 @@ suggests a special-purpose buffer management scheme.
    :align: center
    :output: show
 
+
+The Dirty Bit
+-------------
+
 The main purpose of a buffer pool is to minimize disk I/O.
 When the contents of a block are modified, we could write the updated
 information to disk immediately.
@@ -220,16 +231,35 @@ The advantage is reduced programmer effort because a good virtual memory
 system provides the appearance of larger main memory without
 modifying the program.
 
-.. showhidecontent:: BPextra
+Unknown
+-------
 
-   Here is a visualization to let you experiment with the various buffer
-   pool replacement strategies.
+.. inlineav:: buffpoolCON ss
+   :output: show
 
-   .. avembed:: AV/Development/BufferPoolAV.html ss
+.. inlineav:: buffpooldgmCON ss
+   :output: show
 
-   Here is an exercise to help you practice.
 
-   .. avembed:: AV/Development/bufferpoolPRO.html pe
+Visualizing Buffer Pool Use
+---------------------------
+
+Here is a visualization to let you experiment with the various buffer
+pool replacement strategies.
+
+.. avembed:: AV/Files/BufferPoolAV.html ss
+
+
+Buffer Pool Practice Exercises
+------------------------------
+
+Here is an exercise to help you practice.
+
+.. avembed:: AV/Files/bufferpoolPRO.html pe
+
+
+Implementing Buffer Pools
+-------------------------
 
 When implementing buffer pools, there are two basic approaches that can 
 be taken regarding the transfer of information between the user of the 
@@ -285,7 +315,7 @@ storage if it has been modified.
 If the block has not been modified, then it is unnecessary to write it 
 out.
 
-.. topic:: Exmaple
+.. topic:: Example
 
    We wish to write 40 bytes beginning at logical position 6000 in
    the file.
@@ -415,6 +445,7 @@ This is in contrast to the :ref:`memory manager <MemmanIntro>`, in
 which the user passes a record to the manager and has no control at
 all over where the record is stored.
 
-.. odsascript:: AV/Development/buffintroCON.js
-.. odsascript:: AV/Development/LRUCON.js
-.. odsascript:: AV/Development/LRUwriteCON.js
+.. odsascript:: AV/Files/buffintroCON.js
+.. odsascript:: AV/Files/buffpoolCON.js
+.. odsascript:: AV/Files/LRUCON.js
+.. odsascript:: AV/Files/LRUwriteCON.js

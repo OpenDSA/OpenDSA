@@ -1,11 +1,11 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: 
+   :satisfies: file processing
    :topic: File Processing
 
 Chapter Introduction: File Processing
@@ -29,26 +29,19 @@ processing applications.
 
 This chapter presents the fundamental issues relating to the design of 
 algorithms and data structures for disk-based
-applications. [#]_
+applications.
 We begin with a description of the significant differences
-between primary memory and secondary storage.
-Module :numref:`Secondary` discusses the different types of memory in
+between primary memory and secondary storage,
+and then discuss the different types of  memory in
 a computer and how they compare for price and performance.
-Module :numref:`Diskdrive` discusses the physical aspects of disk drives.
-Module :numref:`BuffPool` presents basic methods for managing buffer pools.
-Module :numref:`FileProg` discusses the Java model for random access
-to data stored on disk.
-Module :numref:`ExternalSort` discusses the basic principles for sorting
-collections of records too large to fit in main memory.
-
-Notes
------
-
-.. [#] Computer technology changes rapidly.
-       This chapter provides examples of disk drive specifications and
-       other hardware performance numbers that are reasonably up to
-       date as of the time when it was written.
-       When you read it, the numbers might seem out of date.
-       However, the basic principles do not change.
-       The approximate ratios for time, space, and cost between memory and
-       disk have remained surprisingly steady for over 20 years.
+Computer technology changes rapidly.
+This chapter provides examples of disk drive specifications and
+other hardware performance numbers that are reasonably up to
+date as of the time when it was written.
+When you read it, the numbers might seem out of date.
+However, the basic principles do not change.
+The approximate ratios for time, space, and cost between memory and
+disk have remained surprisingly steady for over 30 years.
+The most important concept in the chapter is the
+:ref:`buffer pool <buffer pool> <BuffPool>`, which is the fundamental
+mechanism for implementing many :term:`caching` systems.
