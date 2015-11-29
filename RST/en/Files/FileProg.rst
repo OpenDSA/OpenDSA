@@ -1,11 +1,10 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites:
    :topic: File Processing
 
 The Programmer's View of Files
@@ -53,5 +52,6 @@ file.
   written.
 * ``close()``: Close a file at the end of processing.
 
-Note that the spirit if this ADT is similar to the "message passing"
-version of the ADT for buffer pools described in Module :numref:`<BuffPool>`.
+Note that the spirit if this ADT is similar to
+:ref:`message passing <message passing> <BuffPool>`
+version of the ADT for :term:`buffer pools <buffer pool>`.

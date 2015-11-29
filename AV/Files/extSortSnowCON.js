@@ -1,7 +1,6 @@
-"use strict";
-
-(function ($) {
-  var av = new JSAV("externalSortSnow", {"animationMode": "none"});
+$(document).ready(function () {
+  "use strict";
+  var av = new JSAV("extSortSnowCON", {"animationMode": "none"});
 
   // Draw the objects
   var height = 75;
@@ -33,5 +32,6 @@
   av.label("Future snow", {left: 250, top: height - 30, visible: true}).show;
   av.label("Start time T", {left: 50 + widthoffset, top: height + 110, visible: true}).show;
   av.label("Snowplow Movement", {left: 100 + widthoffset, top: height + 80, visible: true}).show;
-
-}(jQuery));
+  av.displayInit();
+  av.recorded();
+});

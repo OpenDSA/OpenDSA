@@ -1,10 +1,6 @@
-/*
- *
-*/
-
-var startarray = [12, 19, 31, 25, 21, 56, 40];
-
-(function ($) {
+$(document).ready(function () {
+  "use strict";
+  var startarray = [12, 19, 31, 25, 21, 56, 40];
   var input = [16, 29, 14, 35, 23];
   var output = ["", "", "", "", ""];
   var t;
@@ -222,9 +218,5 @@ var startarray = [12, 19, 31, 25, 21, 56, 40];
   unhighlight(0, t);
   highlight(4, t);
   t.swap(1, 4);
-  av.step();
-
-  // cleanup
   av.recorded();
-
-}(jQuery));
+});

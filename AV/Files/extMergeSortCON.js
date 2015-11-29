@@ -1,12 +1,12 @@
-"use strict";
+$(document).ready(function () {
+  "use strict";
 
-(function ($) {
   var input1 = [36, 17, 28, 23];
   var input2 = [20, 13, 14, 15];
   var output1 = ["", "", "", ""];
   var output2 = ["", "", "", ""];
 
-  var av = new JSAV("ExternalMergeSort");
+  var av = new JSAV("extMergeSortCON");
   // Create an array object under control of JSAV library
   var arr1 = av.ds.array(input1, {indexed: false, left: 50, top: 30});
   var arr2 = av.ds.array(input2, {indexed: false, left: 50, top: 130});
@@ -196,4 +196,4 @@ var setYellow = function (index, arr) {
   av.step();
 
   av.recorded();
-}(jQuery));
+});

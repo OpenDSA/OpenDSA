@@ -1,20 +1,14 @@
-"use strict";
-
-(function ($) {
-  var av = new JSAV("ExternalMergeSortExample");
-
-
+$(document).ready(function () {
+  "use strict";
+  var av = new JSAV("exMergeSortExampCON");
 
   av.umsg("Assume that each record has four bytes of data and a 4-byte key, for a total of eight bytes per record:");
-
   var label1 = av.label("8-byte record", {left: 115, top: 0});
   var rect1 = av.g.rect(50, 37, 250, 40);
   var line1 = av.g.line(160, 37, 160, 77, {"stroke-width": "2"});
   var rectlabel1 = av.label("4-byte key", {left: 60, top: 30});
   var rectlabel2 = av.label("4-bytes of data", {left: 170, top: 30});
-
   av.displayInit();
-
 
   av.umsg("We store the records in a file, where each block in the file is of size 4KB:");
   // hide previous unneeded variables
@@ -97,10 +91,5 @@
   var rectlabel18 = av.label("sorted records", {left: 390, top: 70});
   var rectlabel19 = av.label("Apply nine merge passes", {left: 210, top: -10});
   var line4 = av.g.line(240, 80, 380, 80, {"stroke-width": "10", "arrow-end": "classic"});
-  av.step();
-
-
-
-
   av.recorded();
-}(jQuery));
+});

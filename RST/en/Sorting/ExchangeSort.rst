@@ -12,7 +12,7 @@
 .. index:: ! exchange sorting
 .. index:: sorting; exchange
 
-.. odsalink:: AV/Development/ExchangeSortCON.css
+.. odsalink:: AV/Sorting/ExchangeSortCON.css
 
 The Cost of Exchange Sorting
 ============================
@@ -99,4 +99,4 @@ Exchange Sort Summary Questions
 
 .. avembed:: Exercises/Sorting/ExchangeSumm.html ka
 
-.. odsascript:: AV/Development/ExchangeSortCON.js
+.. odsascript:: AV/Sorting/ExchangeSortCON.js

@@ -1,13 +1,12 @@
-"use strict";
-
-(function ($) {
+$(document).ready(function () {
+  "use strict";
   var input1 = [5, 10, 15];
   var input2 = [6, 7, 23];
   var input3 = [12, 18, 20];
   var invoutput = ["", "", "", "", "", "", "", "", "", "", "", ""];
   var output = ["", "", ""];
 
-  var av = new JSAV("MultiMerge");
+  var av = new JSAV("extMultiMergeCON");
   // Create an array object under control of JSAV library
   var arr1 = av.ds.array(input1, {indexed: false, left: 85, top: 30});
   var arr2 = av.ds.array(input2, {indexed: false, left: 85, top: 80});

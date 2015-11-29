@@ -2278,6 +2278,141 @@
         }
       }
     },
+    "File Processing": {
+      "Files/FileProc": {
+        "long_name": "File Processing Chapter Introduction",
+        "sections": {}
+      },
+      "Files/Secondary": {
+        "long_name": "Primary versus Secondary Storage",
+        "sections": {}
+      },
+      "Files/Diskdrive": {
+        "long_name": "Disk Drives",
+        "sections": {}
+      },
+      "Files/BuffPool": {
+        "long_name": "Buffer Pools",
+        "sections": {
+          "Buffer Pools": {
+            "buffintroCON": {
+              "long_name": "Buffer Pool Introduction Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Unknown": {
+            "buffpoolCON": {
+              "long_name": "Unknown Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "buffpooldgmCON": {}
+          },
+          "Replacement Strategies": {
+            "LRUCON": {
+              "long_name": "LRU Replacement Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "The Dirty Bit": {
+            "LRUwriteCON": {
+              "long_name": "LRU Replacement with write Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Visualizing Buffer Pool Use": {
+            "BufferPoolAV": {
+              "long_name": "Buffer Pool Visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          },
+          "Buffer Pool Practice Exercises": {
+            "bufferpoolPRO": {
+              "long_name": "Buffer Pool Proficiency Exercise",
+              "required": false,
+              "points": 0,
+              "threshold": 0.9
+            }
+          },
+          "Implementing Buffer Pools": {}
+        }
+      },
+      "Files/FileProg": {
+        "long_name": "Programmer's View of Files",
+        "sections": {}
+      },
+      "Files/ExternalSort": {
+        "long_name": "ExternalSort",
+        "sections": {
+          "External Sorting": {},
+          "Simple Approaches to External Sorting": {
+            "extMergeSortCON": {
+              "long_name": "External Merge Sort Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Improving Performance": {
+            "extMergeSortExampCON": {
+              "long_name": "External Merge Sort Example Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Replacement Selection": {
+            "extSortOverCON": {},
+            "extRSCON": {
+              "long_name": "External Replacement Selection Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "extSortSnowCON": {}
+          },
+          "Replacement Selection Practice Exercise": {
+            "extRSPRO": {
+              "long_name": "Replacement Selection Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          },
+          "Multiway Merging": {
+            "extMultiMergeCON": {
+              "long_name": "Multiway Merge Example Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Multiway Merge Practice Exercise": {
+            "externalMultiwayMergePRO": {
+              "long_name": "Multi-way Merge Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          },
+          "Multiway Merge Analysis": {},
+          "Empirical Results": {},
+          "Summary": {}
+        }
+      }
+    },
     "Hashing": {
       "Hashing/HashIntro": {
         "long_name": "Introduction",

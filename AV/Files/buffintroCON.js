@@ -1,6 +1,6 @@
 /*global ODSA */
-"use strict";
 $(document).ready(function () {
+  "use strict";
 
   function hidelines() {
     var i;

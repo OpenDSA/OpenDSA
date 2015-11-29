@@ -1,7 +1,6 @@
-"use strict";
-
-(function ($) {
-  var av = new JSAV("externalSortOver", {"animationMode": "none"});
+$(document).ready(function () {
+  "use strict";
+  var av = new JSAV("extSortOverCON", {"animationMode": "none"});
 
   // Draw the objects
   var height = 100;
@@ -24,5 +23,6 @@
   av.label("RAM", {left: 293, top: height - 100, visible: true}).show;
   av.label("Output Buffer", {left: 386, top: height - 100, visible: true}).show;
   av.label("Output Run File", {left: 530, top: height - 100, visible: true}).show;
-
-}(jQuery));
+  av.displayInit();
+  av.recorded();
+});
