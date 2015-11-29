@@ -1,6 +1,6 @@
 $(document).ready(function () {
   "use strict";
-  var av = new JSAV("exMergeSortExampCON");
+  var av = new JSAV("extMergeSortExampCON");
 
   av.umsg("Assume that each record has four bytes of data and a 4-byte key, for a total of eight bytes per record:");
   var label1 = av.label("8-byte record", {left: 115, top: 0});

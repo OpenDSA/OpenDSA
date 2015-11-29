@@ -4,7 +4,7 @@ $(document).ready(function () {
   var input = [16, 29, 14, 35, 23];
   var output = ["", "", "", "", ""];
   var t;
-  var av = new JSAV("ExternalReplacementSelection");
+  var av = new JSAV("extRSCON");
   if (t) {
         t.clear();
   }
