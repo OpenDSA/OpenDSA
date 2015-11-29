@@ -1,34 +1,28 @@
-.jsavcanvas {
- margin-left: auto;
- margin-right: auto;
- height: 250px;
+#extMergeSortCON {
+ height: 375px;
 }
 
-#externalSortOver {
+#extMergeSortExampCON {
+ height: 300px;
+}
+
+#extSortOverCON {
  margin-left: auto;
  margin-right: auto;
  height: 120px;
 }
 
-#externalSortSnow {
+#extRSCON {
+ height: 420px;
+}
+
+#extSortSnowCON {
  margin-left: auto;
  margin-right: auto;
  height: 215px;
 }
 
-#ExternalMergeSort {
- height: 375px;
-}
-
-#ExternalMergeSortExample {
- height: 300px;
-}
-
-#ExternalReplacementSelection {
- height: 420px;
-}
-
-#MultiMerge {
+#extMultiMergeCON {
  height: 375px;
 }
 

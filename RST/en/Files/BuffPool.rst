@@ -237,7 +237,9 @@ Unknown
 .. inlineav:: buffpoolCON ss
    :output: show
 
-.. inlineav:: buffpooldgmCON ss
+|
+
+.. inlineav:: buffpooldgmCON dgm
    :output: show
 
 
@@ -447,5 +449,6 @@ all over where the record is stored.
 
 .. odsascript:: AV/Files/buffintroCON.js
 .. odsascript:: AV/Files/buffpoolCON.js
+.. odsascript:: AV/Files/buffpooldgmCON.js
 .. odsascript:: AV/Files/LRUCON.js
 .. odsascript:: AV/Files/LRUwriteCON.js

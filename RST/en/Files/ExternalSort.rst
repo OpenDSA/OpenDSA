@@ -709,4 +709,4 @@ following:
 .. odsascript:: AV/Files/extSortOverCON.js
 .. odsascript:: AV/Files/extRSCON.js
 .. odsascript:: AV/Files/extSortSnowCON.js
-.. odsascript:: AV/Development/extMultiMergeCON.js
+.. odsascript:: AV/Files/extMultiMergeCON.js

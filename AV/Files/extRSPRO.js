@@ -250,7 +250,7 @@ $(document).ready(function () {
   // Start processing here
   //////////////////////////////////////////////////////////////////
   // Load the interpreter created by odsaAV.js
-  var config = ODSA.UTILS.loadConfig({"json_path": "huffman.json"}),
+  var config = ODSA.UTILS.loadConfig({"json_path": "extRSPRO.json"}),
       interpret = config.interpreter,       // get the interpreter
       settings = config.getSettings();      // Settings for the AV
 
