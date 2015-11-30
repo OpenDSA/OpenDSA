@@ -566,7 +566,7 @@ Here are the fields in the configuration file.
   (OpenDSA) scoring server.
 * **odsa_password** - The corresponding password on the course instance
   (OpenDSA) scoring server.
-* **target_LMS** - LMS name. We suport 'canvas', other LMSs like moodle, Desire2Learn, and Blackboard will be suported as well.
+* **target_LMS** - LMS name. We support 'canvas', other LMSs like moodle, Desire2Learn, and Blackboard will be supported in the near future as well.
 * **LMS_url** - The URL for the LMS.
 * **access_token** - This is normally issued by the LMS to allow an
   LTI tool provider to communicate with it.
