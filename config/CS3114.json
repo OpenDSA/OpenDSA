@@ -2335,12 +2335,12 @@
       }
     },
     "Indexing": {
-      "Development/IndexIntro": {
+      "Indexing/IndexIntro": {
         "long_name": "Indexing Chapter Introduction",
         "dispModComp": true,
         "exercises": {}
       },
-      "Development/LinearIndexing.rst": {
+      "Indexing/LinearIndexing.rst": {
         "long_name": "LinearIndexing",
         "exercises": {
           "varindexCON": {
@@ -2363,12 +2363,12 @@
           }
         }
       },
-      "Development/ISAM": {
+      "Indexing/ISAM": {
         "long_name": "ISAM",
         "dispModComp": true,
         "exercises": {}
       },
-      "Development/TreeIndexing": {
+      "Indexing/TreeIndexing": {
         "long_name": "Tree Indexing",
         "exercises": {
           "pagedBST_CON": {
@@ -2391,7 +2391,7 @@
           }
         }
       },
-      "Development/TwoThreeTree": {
+      "Indexing/TwoThreeTree": {
         "long_name": "2-3 Trees",
         "exercises": {
           "twoThreeTreeCON": {},
@@ -2415,7 +2415,7 @@
           }
         }
       },
-      "Development/BTree": {
+      "Indexing/BTree": {
         "long_name": "B-Trees",
         "dispModComp": true,
         "exercises": {
