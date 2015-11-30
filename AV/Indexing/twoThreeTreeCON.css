@@ -43,13 +43,13 @@
 /* Styling for the twoThreeTreeCON diagram ***********************************/
 
 /* Sets maximum width to JSAV container */
-#twoThreeTreeCON {
+#twoThreedgmCON {
 	padding-top: 20px;
 	width: 560px;
 }
 
 /* Sets width and height to the JSAV canvas */
-#twoThreeTreeCON .jsavcanvas {
+#twoThreedgmCON .jsavcanvas {
 	height: 200px;
 	width: 560px;
 }

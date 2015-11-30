@@ -1,57 +1,57 @@
 /* Create styling for the pagedBSTCON diagram */
 
 /* Set size for the jsav container */
-#pagedBST_CON {
+#pagedBSTCON {
 	width: 700px;
 	height: 500px;
 }
 
 /* Change the size of the tree nodes */
-#pagedBST_CON .jsavtree .jsavnode {
+#pagedBSTCON .jsavtree .jsavnode {
 	min-width: 35px;
 	max-width: 35px;
 	min-height: 35px;
 	max-height: 35px;
 }
 
-#pagedBST_CON .jsavtree .jsavvalue {
+#pagedBSTCON .jsavtree .jsavvalue {
     height: 30px;
 }
 
-#pagedBST_CON .jsavoutput.jsavline {
+#pagedBSTCON .jsavoutput.jsavline {
 	text-align: center;
 	width: 700px;
 }
 
-#pagedBST_CON .jsavlabel {
+#pagedBSTCON .jsavlabel {
 	z-index: 900;
 	font-size: 1.3em;
 }
 
 /* Create styling for the rebalanceBST_CON diagram */
 
-#rebalanceBST_CON {
+#rebalanceBSTCON {
     width: 700px;
     height: 500px;
 }
 
-#rebalanceBST_CON .jsavtree .jsavnode, #rebalanceBST_CON .jsavarray .jsavnode {
+#rebalanceBSTCON .jsavtree .jsavnode, #rebalanceBST_CON .jsavarray .jsavnode {
     min-height: 35px;
     max-height: 35px;
     min-width: 35px;
     max-width: 35px;
 }
 
-#rebalanceBST_CON .jsavtree .jsavvalue, #rebalanceBST_CON .jsavarray .jsavvalue {
+#rebalanceBSTCON .jsavtree .jsavvalue, #rebalanceBST_CON .jsavarray .jsavvalue {
     height: 30px;
 }
 
-#rebalanceBST_CON .jsavoutput.jsavline {
+#rebalanceBSTCON .jsavoutput.jsavline {
     text-align: center;
     width: 700px;
 }
 
-#rebalanceBST_CON .jsavlabel {
+#rebalanceBSTCON .jsavlabel {
     z-index: 900;
     font-size: 1.3em;
 }

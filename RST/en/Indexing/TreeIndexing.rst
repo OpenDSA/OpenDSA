@@ -120,6 +120,6 @@ Tree-based Indexing Practice Exercise
 
 .. avembed:: Exercises/Indexing/TreeIndexing.html ka
 
-.. odsascript:: AV/Indexing/pagedBSTCON.json
-.. odsascript:: AV/Indexing/rebalanceBSTCON.json
+.. odsascript:: AV/Indexing/pagedBSTCON.js
+.. odsascript:: AV/Indexing/rebalanceBSTCON.js
 

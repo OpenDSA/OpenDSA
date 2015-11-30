@@ -37,10 +37,9 @@ $(document).ready(function () {
   // The CSS to remove the highlighting effect.
   var node_highlight_remove = {"box-shadow": "node"};
 
-  var av_name = "rebalanceBST_CON";
+  var av_name = "rebalanceBSTCON";
   // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig(
-                 {"av_name": av_name, "json_path": "AV/Development/treeIndexingCON.json"});
+  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
 
   var jsav = new JSAV(av_name);
 

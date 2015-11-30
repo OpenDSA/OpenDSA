@@ -239,4 +239,5 @@ San Francisco as part of his
 .. odsascript:: AV/Indexing/twoThreeTreeCON.js
 .. odsascript:: AV/Indexing/twoThreedgmCON.js
 .. odsascript:: AV/Indexing/simpleInsertCON.js
+.. odsascript:: AV/Indexing/promoteCON.js
 .. odsascript:: AV/Indexing/splitCON.js
