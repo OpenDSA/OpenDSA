@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "av_c1": "Insertion Sort starts with the record in position 1.",
       "av_c2": "Since this is smaller than the value to its left, swap them.",
