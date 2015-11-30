@@ -46,112 +46,37 @@
     "JXOP-debug": "true"
   },
   "chapters": {
-    "Sorting": {
-      "Sorting/Shellsort": {
-        "long_name": "Shellsort",
+    "Indexing": {
+      "Indexing/IndexIntro": {
+        "long_name": "Indexing Chapter Introduction",
+        "sections": {}
+      },
+      "Indexing/BTree": {
+        "long_name": "B-Trees",
         "sections": {
-          "Introduction": {},
-          "Selecting the First Increment": {
-            "shellsortCON1": {
-              "long_name": "Shellsort Slideshow 1",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            }
-          },
-          "Sorting the Initial Sublists": {
-            "shellsortCON2": {
-              "long_name": "Shellsort Slideshow 2",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
-            "shellsortCON3": {}
-          },
-          "Selecting the Next Increment": {
-            "shellsortCON4": {
-              "long_name": "Shellsort Slideshow 3",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            }
-          },
-          "Sorting the Next Sublists": {
-            "shellsortCON5": {
-              "long_name": "Shellsort Slideshow 4",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
-            "shellsortCON6": {}
-          },
-          "Third Pass": {
-            "shellsortCON7": {
-              "long_name": "Shellsort Slideshow 5",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
-            "shellsortCON8": {}
-          },
-          "Final Pass": {
-            "shellsortCON9": {
-              "long_name": "Shellsort Slideshow 6",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            }
-          },
-          "Shellsort Sublist Practice": {
-            "ShellsortSublistSumm": {
-              "long_name": "Shellsort Sublist Proficency Exercise",
-              "required": true,
-              "points": 1.0,
-              "threshold": 5
-            }
-          },
-          "Putting It Together": {
-            "shellsortAV": {
-              "long_name": "Shellsort Visualization",
-              "required": false,
-              "points": 0,
-              "showhide": "none",
-              "threshold": 1.0
-            }
-          },
-          "Shellsort Increments Exercise": {
-            "ShellsortSeries": {
-              "long_name": "Shellsort Series Exercise",
-              "required": true,
-              "points": 1.0,
-              "threshold": 5
-            }
-          },
-          "Shellsort Practice Exercise": {
-            "shellsortPRO": {
-              "long_name": "Shellsort Proficiency Exercise",
+          "B-Trees": {},
+          "B+ Trees": {
+            "bPlusTreeInsertPRO": {
+              "long_name": "B+ Tree Proficiency Exercise",
               "required": true,
               "points": 2.0,
               "threshold": 0.90,
               "exer_options": {
-                "JXOP-feedback": "continuous",
-                "JXOP-fixmode": "fix"
+                "JXOP-feedback": "continuous"
               }
             }
           },
-          "Optimizing Shellsort": {
-            "shellsortPerf": {
-              "long_name": "Shellsort Performance Activity",
+          "B-Tree Analysis": {}
+        }
+      },
+      "Indexing/IndexingSumm": {
+        "long_name": "Indexing Chapter Summary",
+        "sections": {
+          "Indexing Summary": {
+            "IndexChoice": {
+              "long_name": "Choosing an Index",
               "required": true,
-              "points": 2.0,
-              "threshold": 1.0
-            }
-          },
-          "Shellsort Summary Questions": {
-            "ShellsortSumm": {
-              "long_name": "Shellsort Summary Exercise",
-              "required": true,
-              "points": 1.0,
+              "points": 2,
               "threshold": 5
             }
           }

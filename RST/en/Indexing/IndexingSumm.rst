@@ -11,6 +11,9 @@
 Indexing Summary Exercises
 ==========================
 
+Indexing Summary
+----------------
+
 Here are some review questions.
 
 .. avembed:: Exercises/Indexing/IndexChoice.html ka

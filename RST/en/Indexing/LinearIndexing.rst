@@ -9,10 +9,13 @@
    :satisfies: linear indexing
    :topic: Indexing
    
-.. odsalink:: AV/Development/linearIndexingCON.css
+.. odsalink:: AV/Indexing/linearIndexingCON.css
 
 Linear Indexing
 ===============
+
+Linear Indexing
+---------------
 
 A :term:`linear index` is an :term:`index file` organized as a
 sequence of :term:`key-value pairs <key-value pair>` where the
@@ -34,6 +37,9 @@ database records, because it is amenable to
 
 .. inlineav:: varindexCON ss
    :output: show
+
+Two-level Linear Index
+----------------------
 
 If the database contains enough records, the linear index might
 be too large to store in :term:`main memory`.
@@ -88,7 +94,15 @@ record.
    (the first key in the first block of the linear index), while the
    second entry of the second-level index is key value 2003.
 
-.. avembed:: AV/Development/linearIndexingPRO.html pe
+
+Linear Indexing Practice Exercise
+---------------------------------
+
+.. avembed:: AV/Indexing/linearIndexingPRO.html pe
+
+
+Inverted Lists
+--------------
 
 Every time a record is inserted to or deleted from the database,
 all associated secondary indices must be updated.
@@ -101,6 +115,7 @@ When the secondary key field has many duplicates, such as when it has
 a limited range (e.g., a field to indicate job category from among a
 small number of possible job categories),
 this duplication might waste considerable space.
+
 
 One improvement on the simple sorted array is a two-dimensional
 array where each row corresponds to a secondary key value.
@@ -203,4 +218,5 @@ this a good implementation for disk-based inverted files.
    The ``next`` field of the primary key array indicates the next
    record with that secondary key value.
    
-.. odsascript:: AV/Development/linearIndexingCON.js
+.. odsascript:: AV/Indexing/varindexCON.js
+.. odsascript:: AV/Indexing/linindexCON.js

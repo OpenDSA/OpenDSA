@@ -2749,7 +2749,7 @@
           "Dynamic Storage Allocation": {
             "freeblocklistCON": {},
             "fragCON": {}
-          ]
+          }
         }
       },
       "MemManage/SequentialFit": {
@@ -2852,6 +2852,138 @@
       "MemManage/Garbage": {
         "long_name": "Failure Policies and Garbage Collection",
         "sections": {}
+      }
+    },
+    "Indexing": {
+      "Indexing/IndexIntro": {
+        "long_name": "Indexing Chapter Introduction",
+        "sections": {}
+      },
+      "Indexing/LinearIndexing": {
+        "long_name": "LinearIndexing",
+        "sections": {
+          "Linear Indexing": {
+            "varindexCON": {
+              "long_name": "Simple linear index Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Two-level Linear Index": {
+            "linindexCON": {
+              "long_name": "Two-level linear index Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Linear Indexing Practice Exercise": {
+            "linearIndexingPRO": {
+              "long_name": "Linear Indexing Proficiency Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 0.90
+            }
+          },
+          "Inverted Lists": {}
+        }
+      },
+      "Indexing/ISAM": {
+        "long_name": "ISAM",
+        "sections": {}
+      },
+      "Indexing/TreeIndexing": {
+        "long_name": "Tree Indexing",
+        "sections": {
+          "Tree-based Indexing": {
+            "pagedBSTCON": {
+              "long_name": "Paged BST Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Tree-based Indexing (2)": {
+            "rebalanceBSTCON": {
+              "long_name": "Paged BST With Disk Accesses Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Tree-based Indexing Practice Exercise": {
+            "TreeIndexing": {
+              "long_name": "Tree Indexing Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "Indexing/TwoThreeTree": {
+        "long_name": "2-3 Trees",
+        "sections": {
+          "2-3 Trees": {
+            "twoThreeTreeCON": {}
+          },
+          "Insertion (1)": {
+            "simpleInsertCON": {
+              "long_name": "2-3 Tree Insert Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Insertion (2)": {
+            "promoteCON": {
+              "long_name": "2-3 Tree Insert Promotion Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Insertion (3)": {
+            "splitCON": {
+              "long_name": "2-3 Tree Insert Split Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Indexing/BTree": {
+        "long_name": "B-Trees",
+        "sections": {
+          "B-Trees": {},
+          "B+ Trees": {
+            "bPlusTreeInsertPRO": {
+              "long_name": "B+ Tree Proficiency Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 0.90,
+              "exer_options": {
+                "JXOP-feedback": "continuous"
+              }
+            }
+          },
+          "B-Tree Analysis": {}
+        }
+      },
+      "Indexing/IndexingSumm": {
+        "long_name": "Indexing Chapter Summary",
+        "sections": {
+          "Indexing Summary": {
+            "IndexChoice": {
+              "long_name": "Choosing an Index",
+              "required": true,
+              "points": 2,
+              "threshold": 5
+            }
+          }
+        }
       }
     },
     "Appendix": {

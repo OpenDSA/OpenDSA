@@ -9,10 +9,13 @@
    :satisfies: shellsort
    :topic: Indexing
 
-.. odsalink:: AV/Development/treeIndexingCON.css
+.. odsalink:: AV/Indexing/treeIndexingCON.css
 
 Tree-based Indexing
 ===================
+
+Tree-based Indexing
+-------------------
 
 Linear indexing is efficient when the database is static,
 that is, when records are inserted and deleted rarely or never.
@@ -82,14 +85,19 @@ In particular, the tree should remain balanced when an update takes
 place, but doing so might require much reorganization.
 Each update should affect only a few blocks, or its cost will be
 too high.
-As you can see from the second slideshow,
+
+.. inlineav:: pagedBSTCON ss
+   :output: show
+
+
+Tree-based Indexing (2)
+-----------------------
+
+As you can see from this slideshow,
 adopting a rule such as requiring the BST to be complete can cause a
 great deal of rearranging of data within the tree.
 
-.. inlineav:: pagedBST_CON ss
-   :output: show
-
-.. inlineav:: rebalanceBST_CON ss
+.. inlineav:: rebalanceBSTCON ss
    :output: show
 
 We can solve these problems by selecting another tree structure that
@@ -106,6 +114,12 @@ other balanced search trees is that it naturally
 leads to the :ref:`B-tree <B-tree> <BTree>`, which is by far the
 most widely used indexing method today.
 
+
+Tree-based Indexing Practice Exercise
+-------------------------------------
+
 .. avembed:: Exercises/Indexing/TreeIndexing.html ka
 
-.. odsascript:: AV/Development/treeIndexingCON.js
+.. odsascript:: AV/Indexing/pagedBSTCON.json
+.. odsascript:: AV/Indexing/rebalanceBSTCON.json
+

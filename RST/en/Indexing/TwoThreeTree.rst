@@ -8,13 +8,15 @@
    :satisfies: 2-3 tree
    :topic: Indexing
 
-.. odsalink:: AV/Development/twoThreeTreeCON.css
+.. odsalink:: AV/Indexing/twoThreeTreeCON.css
 
 2-3 Trees
 =========
 
-This section presents a data structure
-called the 2-3 tree.
+2-3 Trees
+---------
+
+This section presents a data structure called the 2-3 tree.
 The 2-3 tree is not a binary tree, but instead its shape
 obeys the following definition:
 
@@ -43,7 +45,7 @@ Here is an example 2-3 tree.
 
 .. _TTexamp:
 
-.. inlineav:: twoThreeTreeCON dgm
+.. inlineav:: twoThreedgmCON dgm
    :align: center
 
    An example of a 2-3 tree.
@@ -94,6 +96,10 @@ Here is an implementation for the 2-3 tree search method.
 
 .. codeinclude:: Indexing/TTfind
 
+
+Insertion (1)
+-------------
+
 Insertion into a 2-3 tree is similar to insertion into a BST to the
 extent that the new record is placed in the appropriate leaf node.
 Unlike BST insertion, a new child is not created to hold the record
@@ -109,6 +115,10 @@ illustrated in the following visualization.
 .. inlineav:: simpleInsertCON ss
    :output: show
    :align: justify
+
+
+Insertion (2)
+-------------
 
 If we insert the new record into a leaf node :math:`L` that already
 contains two records, then more space must be created.
@@ -134,6 +144,10 @@ Here is an example of a a simple promotion.
 
 .. inlineav:: promoteCON ss
    :output: show
+
+
+Insertion (3)
+-------------
 
 Here is an illustration for what happens when promotions
 require the root to split, adding a new level to the tree.
@@ -222,4 +236,7 @@ San Francisco as part of his
 `Data Structure Visualizations
 <http://www.cs.usfca.edu/~galles/visualization/Algorithms.html>`_ package.
 
-.. odsascript:: AV/Development/twoThreeTreeCON.js
+.. odsascript:: AV/Indexing/twoThreeTreeCON.js
+.. odsascript:: AV/Indexing/twoThreedgmCON.js
+.. odsascript:: AV/Indexing/simpleInsertCON.js
+.. odsascript:: AV/Indexing/splitCON.js

@@ -12,6 +12,9 @@
 B-Trees
 =======
 
+B-Trees
+-------
+
 This section presents the B-tree.
 B-trees are usually attributed to R. Bayer and E. McCreight
 who described the B-tree in a 1972 paper.
@@ -117,8 +120,8 @@ The node is split into two nodes containing two keys each, thus
 retaining the B-tree property.
 The middle of the five children is promoted to its parent.
 
-:math:`\mathrm{B}^+` Trees
---------------------------
+B+ Trees
+--------
 
 The previous section mentioned that B-trees are universally used
 to implement large-scale disk-based systems.
@@ -292,7 +295,7 @@ tree insert algorithm.
 Here is an exercise to see if you get the basic idea of
 :math:`\mathrm{B}^+` tree insertion.
 
-.. avembed:: AV/Development/bPlusTreeInsertPRO.html pe
+.. avembed:: AV/Indexing/bPlusTreeInsertPRO.html pe
 
 To delete record :math:`R` from the :math:`\mathrm{B}^+` tree,
 first locate the leaf :math:`L` that contains :math:`R`.
@@ -433,6 +436,17 @@ San Francisco as part of his
 `Data Structure Visualizations
 <http://www.cs.usfca.edu/~galles/visualization/Algorithms.html>`_ package.
 
+.. [#] This concept can be extended further if higher space
+       utilization is required.
+       However, the update routines become much more complicated.
+       I once worked on a project where we implemented 3-for-4 node
+       split and merge routines.
+       This gave better performance than the 2-for-3 node split and
+       merge routines of the :math:`\mathrm{B}^*` tree.
+       However, the spitting and merging routines were so complicated
+       that even their author could no longer understand them
+       once they were completed!
+
 B-Tree Analysis
 ---------------
 
@@ -501,17 +515,3 @@ In general, if the buffer pool is even of modest size (say at least
 twice the depth of the tree), no special techniques for node
 replacement will be required because the upper-level nodes will
 naturally be accessed frequently.
-
-Notes
------
-
-.. [#] This concept can be extended further if higher space
-       utilization is required.
-       However, the update routines become much more complicated.
-       I once worked on a project where we implemented 3-for-4 node
-       split and merge routines.
-       This gave better performance than the 2-for-3 node split and
-       merge routines of the :math:`\mathrm{B}^*` tree.
-       However, the spitting and merging routines were so complicated
-       that even their author could no longer understand them
-       once they were completed!
