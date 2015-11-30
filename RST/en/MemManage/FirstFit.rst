@@ -1,15 +1,17 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: 
    :topic: Memory Management
 
 First Fit
 =========
+
+First Fit
+---------
 
 The simplest method for selecting a block would be to move down the
 free block list until a block of size at least 30 is found.
@@ -21,8 +23,12 @@ units of space.
 Because this approach selects the first block with enough space, it is
 called :term:`first fit`.
 
-.. avembed:: AV/Development/firstFit.html ss
+.. avembed:: AV/MemManage/firstFitAV.html ss
+
+
+First Fit Practice Exercise
+---------------------------
 
 Now try it for yourself with the following exercise.
 
-.. avembed:: AV/Development/firstFitPRO.html pe
+.. avembed:: AV/MemManage/firstFitPRO.html pe

@@ -1,17 +1,19 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: 
    :topic: Memory Management
    
-.. odsalink:: AV/Development/seqFitCON.css
+.. odsalink:: AV/MemManage/seqFitCON.css
 
 Sequential-Fit Methods
 ======================
+
+Sequential-Fit Methods
+----------------------
 
 Sequential-fit methods attempt to find a "good" block to service
 a storage request.
@@ -149,4 +151,4 @@ Assume that a request is made for 30 units of storage.
 For our examples, we ignore the overhead imposed for the tag, link,
 and size fields discussed above.
 
-.. odsascript:: AV/Development/seqFitCON.js
+.. odsascript:: AV/MemManage/seqFitCON.js

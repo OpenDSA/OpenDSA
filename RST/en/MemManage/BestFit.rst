@@ -1,15 +1,17 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: 
    :topic: Memory Management
 
 Best Fit
 ========
+
+Best Fit
+--------
 
 There is a potential disadvantage to first fit:
 It might "waste" larger blocks by breaking them up, and so they will
@@ -29,4 +31,4 @@ In other words, best fit tends to maximize problems of external
 fragmentation while it minimizes the chance of not being able to
 service an occasional large request.
 
-.. avembed:: AV/Development/firstFit.html ss
+.. avembed:: AV/MemManage/firstFitAV.html ss

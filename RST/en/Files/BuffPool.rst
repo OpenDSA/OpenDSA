@@ -448,7 +448,7 @@ which the user passes a record to the manager and has no control at
 all over where the record is stored.
 
 .. odsascript:: AV/Files/buffintroCON.js
-.. odsascript:: AV/Files/buffpoolCON.js
-.. odsascript:: AV/Files/buffpooldgmCON.js
 .. odsascript:: AV/Files/LRUCON.js
 .. odsascript:: AV/Files/LRUwriteCON.js
+.. odsascript:: AV/Files/buffpoolCON.js
+.. odsascript:: AV/Files/buffpooldgmCON.js

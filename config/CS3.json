@@ -2302,15 +2302,6 @@
               "threshold": 1.0
             }
           },
-          "Unknown": {
-            "buffpoolCON": {
-              "long_name": "Unknown Slideshow",
-              "required": true,
-              "points": 0.0,
-              "threshold": 1.0
-            },
-            "buffpooldgmCON": {}
-          },
           "Replacement Strategies": {
             "LRUCON": {
               "long_name": "LRU Replacement Slideshow",
@@ -2326,6 +2317,15 @@
               "points": 0.0,
               "threshold": 1.0
             }
+          },
+          "Unknown": {
+            "buffpoolCON": {
+              "long_name": "Unknown Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "buffpooldgmCON": {}
           },
           "Visualizing Buffer Pool Use": {
             "BufferPoolAV": {
@@ -2736,6 +2736,122 @@
             }
           }
         }
+      }
+    },
+    "Memory Management": {
+      "MemManage/MemmanIntro": {
+        "long_name": "Chapter Introduction: Memory Management",
+        "sections": {}
+      },
+      "MemManage/Dynamic": {
+        "long_name": "Dynamic Memory Allocation",
+        "sections": {
+          "Dynamic Storage Allocation": {
+            "freeblocklistCON": {},
+            "fragCON": {}
+          ]
+        }
+      },
+      "MemManage/SequentialFit": {
+        "long_name": "Sequential-Fit Methods",
+        "sections": {
+          "Sequential-Fit Methods": {
+            "seqFitCON": {}
+          }
+        }
+      },
+      "MemManage/FirstFit": {
+        "long_name": "First Fit",
+        "sections": {
+          "First Fit": {
+            "firstFitAV": {
+              "long_name": "First Fit Visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0,
+              "exer_options": { "fitAlgorithm": "1" }
+            }
+          },
+          "First Fit Practice Exercise": {
+            "firstFitPRO": {
+              "long_name": "First Fit Proficiency Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 0.90
+            }
+          }
+        }
+      },
+      "MemManage/CircularFit": {
+        "long_name": "Circular First Fit",
+        "sections": {
+          "Circular First Fit": {
+            "firstFitAV": {
+              "long_name": "Circular First Fit Visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0,
+              "exer_options": { "fitAlgorithm": "2" }
+            }
+          }
+        }
+      },
+      "MemManage/BestFit": {
+        "long_name": "Best Fit",
+        "sections": {
+          "Best Fit": {
+            "firstFitAV": {
+              "long_name": "Best Fit Visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0,
+              "exer_options": { "fitAlgorithm": "3" }
+            }
+          }
+        }
+      },
+      "MemManage/WorstFit": {
+        "long_name": "Worst Fit",
+        "sections": {
+          "Worst Fit": {
+            "firstFitAV": {
+              "long_name": "Worst Fit Visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0,
+              "exer_options": { "fitAlgorithm": "4" }
+            }
+          }
+        }
+      },
+      "MemManage/MMPerformance": {
+        "long_name": "Sequential Fit Performance",
+        "sections": {
+          "Sequential Fit Peformance": {
+            "firstFitAV": {
+              "long_name": "Sequential Fit Visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "MemManage/Buddy": {
+        "long_name": "Other Memory Allocation Methods",
+        "sections": {
+          "Buddy Methods": {},
+          "Other Methods": {}
+        }
+      },
+      "MemManage/Garbage": {
+        "long_name": "Failure Policies and Garbage Collection",
+        "sections": {}
       }
     },
     "Appendix": {

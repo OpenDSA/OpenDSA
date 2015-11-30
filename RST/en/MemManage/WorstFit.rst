@@ -1,15 +1,17 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: 
    :topic: Memory Management
 
 Worst Fit
 =========
+
+Worst Fit
+---------
 
 A strategy contrary to best fit might make sense because it tends to
 minimize the effects of external fragmentation.
@@ -27,4 +29,4 @@ each memory request to find the largest block.
 Alternatively, the freelist can be ordered from largest to smallest
 free block, possibly by using a priority queue implementation.
 
-.. avembed:: AV/Development/firstFit.html ss
+.. avembed:: AV/MemManage/firstFitAV.html ss

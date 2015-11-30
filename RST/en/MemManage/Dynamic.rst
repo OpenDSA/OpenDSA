@@ -1,17 +1,19 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: 
    :topic: Memory Management
    
-.. odsalink:: AV/Development/dynamicCON.css
+.. odsalink:: AV/MemManage/dynamicCON.css
 
 Dynamic Storage Allocation
 ==========================
+
+Dynamic Storage Allocation
+--------------------------
 
 For the purpose of dynamic storage allocation, we view memory as a
 single array broken into a series of variable-size blocks, where
@@ -24,7 +26,7 @@ a series of memory allocations and deallocations.
 
 .. _MemMode:
 
-.. inlineav:: freelistCON dgm
+.. inlineav:: freeblocklistCON dgm
    :align: justify
    
    The results from a series of memory allocations and
@@ -39,8 +41,8 @@ When a memory request is received by the memory manager, some block
 on the freelist must be found that is large enough to service the
 request.
 If no such block is found, then the memory manager must resort to a
-:term:`failure policy` such as discussed in
-Module :numref:`<Garbage>`.
+:ref:`failure policy <failure policy> <Garbage>` such as
+:term:`garbage collection`.
 
 If there is a request for :math:`m` words, and no block exists of
 exactly size :math:`m`, then a larger block must be used instead.
@@ -89,4 +91,5 @@ The process of searching the :term:`memory pool` for a block large
 enough to service the request, possibly reserving the remaining space
 as a free block, is referred to as a :term:`sequential fit` method.
 
-.. odsascript:: AV/Development/dynamicCON.js
+.. odsascript:: AV/MemManage/freeblocklistCON.js
+.. odsascript:: AV/MemManage/fragCON.js
