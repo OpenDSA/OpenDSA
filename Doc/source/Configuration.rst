@@ -34,7 +34,7 @@ From the top level of an OpenDSA repository, you can push the
 necessary book data to your LMS (as configured in the course
 configuration file ``config/foo_LMSconf.json``) by issuing this command:
 
-python tools/create_course.py config/foo.json config/foo_LMSconf.json
+make foo opts="-c True"
 
 A set of ``make`` targets are available within the OpenDSA Makefile.
 If you want to compile one of the existing book instances and bind it
