@@ -220,7 +220,7 @@ document-ready: a module is loaded.
 
 ``KA exercise``
 load-ka: this action is recorded when KA exercise framework is loaded. When KA exercise framework is loaded, all interaction logs go to userexerciselog, so userbutton table does not get any interaction log.
-              However, when the KA exercise is refreshed (for gaming or any other reason), this actin is recorded on the userbutton table. Therefore, by counting the frequency of this action, we can tell how many times students refreshed the page to avoid hard questions. With a new infrastructure, we are getting an exact exercise name, so along with these two information, we can catch one type of gaming activity with confidence.
+However, when the KA exercise is refreshed (for gaming or any other reason), this actin is recorded on the userbutton table. Therefore, by counting the frequency of this action, we can tell how many times students refreshed the page to avoid hard questions. With a new infrastructure, we are getting an exact exercise name, so along with these two information, we can catch one type of gaming activity with confidence.
 
 ``AV information``
 ev_num: number of clicks on Jsav with any jsav button (forward, backward, begin, or end).
