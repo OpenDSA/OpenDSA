@@ -376,8 +376,6 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
             module_item_title=str(module_position) + "." + str(module_item_position) + ". " + str(module_name),
             module_item_indent=0)
 
-        module_item_position += 1
-        # exercises = module_obj.get("exercises")
         sections = module_obj.get("sections")
         if bool(sections):
             section_couter = 1
@@ -400,10 +398,11 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
                             # print(str(section_couter).zfill(2)) + " " + long_name
                             # OpenDSA exercises will map to canvas assignments
                             if showsection is None or (showsection is not None and showsection == True):
+                                indexed_section_name = str(module_position).zfill(2) + "." + str(module_item_position).zfill(2) + "." +str(section_couter).zfill(2) + ' - ' +section_name
                                 results = assignments.create_assignment(
                                     request_ctx,
                                     course_id,
-                                    section_name,
+                                    indexed_section_name,
                                     assignment_submission_types="external_tool",
                                     assignment_external_tool_tag_attributes={
                                         "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2)},
@@ -424,10 +423,11 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
                             no_exercise = 0
                 if no_exercise == 1:
                     if showsection is None or (showsection is not None and showsection == True):
+                        indexed_section_name = str(module_position).zfill(2) + "." + str(module_item_position).zfill(2) + "." +str(section_couter).zfill(2) + ' - ' + section_name
                         results = assignments.create_assignment(
                             request_ctx,
                             course_id,
-                            section_name,
+                            indexed_section_name,
                             assignment_submission_types="external_tool",
                             assignment_external_tool_tag_attributes={
                                 "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2)},
@@ -446,10 +446,11 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
                             module_item_indent=1)
                     section_couter += 1
         else:
+            indexed_module_name = str(module_position).zfill(2) + "." + str(module_item_position).zfill(2) + ".01 - " + module_name
             results = assignments.create_assignment(
                 request_ctx,
                 course_id,
-                module_name,
+                indexed_module_name,
                 assignment_submission_types="external_tool",
                 assignment_external_tool_tag_attributes={
                     "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url},
@@ -465,6 +466,8 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
                 'Assignment',
                 module_item_content_id=assignment_id,
                 module_item_indent=1)
+
+        module_item_position += 1
     # publish the module
     results = modules.update_module(request_ctx, course_id, module_id,
                                     module_published=True)
