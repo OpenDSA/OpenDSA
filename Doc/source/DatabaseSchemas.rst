@@ -203,7 +203,7 @@ Stores clickstream/interactions data
 ``Foreign keys:`` (1) Book table, (2) Auth_User table (Django table), (3) Exercise table, (4) Module table.
 
 ``Jsav buttons``
-'''jsav-forward''': go to the next slide.
+```jsav-forward```: go to the next slide.
 jsav-backward: back to the previous slide.
 jsav-begin: go to the first page of the slideshow.
 jsav-end: go to the last page of the slideshow.
