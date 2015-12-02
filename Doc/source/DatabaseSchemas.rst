@@ -206,20 +206,20 @@ jsav-forward: go to the next slide
 jsav-backward: back to the previous slide
 jsav-begin: go to the first page of the slideshow
 jsav-end: go to the last page of the slideshow
-=> With AV information (see below), those actions would be very useful to calculate which slides are most viewed, and it would give a different aspect to calculate the slide reading time.
+=> With AV information (see below), those actions would be very useful to calculate which slides are most viewed, and it would give a different aspect to calculate the slide reading time
 
 ``Mouse focus``
 window-focus: student is looking at this page
 window-blur: student left this page
-=> With this information, we might be able to calculate students' actual spent time on OpenDSA.
+=> With this information, we might be able to calculate students' actual spent time on OpenDSA
 
 ``Module load``
 window-unload: in the current system, this actions is recorded only when students leave the page, but within Canvas, it is recorded when users hit the next button to continue reading the prose.
-document-ready: a module is loaded.
+document-ready: a module is loaded
 
 ``KA exercise``
 load-ka: this action is recorded when KA exercise framework is loaded. When KA exercise framework is loaded, all interaction logs go to userexerciselog, so userbutton table does not get any interaction log.
-              However, when the KA exercise is refreshed (for gaming or any other reason), this actin is recorded on the userbutton table. Therefore, by counting the frequency of this action, we can tell how many times students refreshed the page to avoid hard questions. With a new infrastructure, we are getting an exact exercise name, so along with these two information, we can catch one type of gaming activity with confidence.
+              However, when the KA exercise is refreshed (for gaming or any other reason), this actin is recorded on the userbutton table. Therefore, by counting the frequency of this action, we can tell how many times students refreshed the page to avoid hard questions. With a new infrastructure, we are getting an exact exercise name, so along with these two information, we can catch one type of gaming activity with confidence
 
 ``AV information``
 ev_num: number of clicks on Jsav with any jsav button (forward, backward, begin, or end)
