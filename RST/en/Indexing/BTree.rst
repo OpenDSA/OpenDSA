@@ -126,8 +126,7 @@ B+ Trees
 The previous section mentioned that B-trees are universally used
 to implement large-scale disk-based systems.
 Actually, the B-tree as described in the previous section is almost
-never implemented,  nor is the 2-3 tree as described in
-Module :numref:`<TwoThreeTree>`.
+never implemented.
 What is most commonly implemented is a variant of the B-tree,
 called the :math:`\mathrm{B}^+` tree.
 When greater efficiency is required, a more complicated

@@ -2986,6 +2986,141 @@
         }
       }
     },
+    "General Trees": {
+      "General/GenTreeIntro": {
+        "long_name": "General Trees",
+        "sections": {
+          "Introduction": {},
+          "General Tree Definitions and Terminology": {
+            "GenTreeCON": {}
+          },
+          "An ADT for General Tree Nodes": {},
+          "General Tree Traversals": {
+            "GenTreePreTravCON": {
+              "long_name": "General Tree Preorder Traversal Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Postorder Traversal": {
+            "GenTreePostTravCON": {
+              "long_name": "General Tree Postorder Traversal Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "General/UnionFind": {
+        "long_name": "Union/Find",
+        "sections": {
+          "The Union/Find Problem": {},
+          "Parent Pointer Trees": {
+            "UFfigCON": {}
+          },
+          "Equivalence Classes": {
+            "UFconcomCON": {}
+          },
+          "Weighted Union": {
+            "ufCON": {
+              "long_name": "Union/Find Example",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Path Compression": {
+            "pathcompCON": {
+              "long_name": "Union/Find Path Compression Example",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Path Compression Analysis": {},
+          "Union/Find Exercise": {
+            "UnionFindPRO": {
+              "long_name": "Union/Find Proficiency Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 0.90
+            }
+          }
+        }
+      },
+      "General/SequentialRep": {
+        "long_name": "Sequential Tree Representations",
+        "sections": {
+          "Sequential Tree Representations": {
+            "BinExampCON": {},
+            "SequentialTreeCON": {
+              "long_name": "First sequential representation Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Sequential Tree Practice": {
+            "SequentialTreePRO": {
+              "long_name": "First Sequential Representation Exercise",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            }
+          },
+          "Alternative Sequential Representation": {
+            "SequentialTreeAltCON": {
+              "long_name": "Second sequential representation Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Alternative Sequential Representation Practice": {
+            "SequentialTreeAltPRO": {
+              "long_name": "Alternate Sequential Representation Exercise",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            }
+          },
+          "Bit Vector Representation": {
+            "SequentialTreeBitsCON": {
+              "long_name": "Bit vector sequential representation Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Bit Vector Representation Practice": {
+            "SequentialTreeBitVectorPRO": {
+              "long_name": "Bit Vector Sequential Representation Exercise",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            }
+          },
+          "General Tree Sequential Representation": {
+            "SequentialGenTreeCON": {
+              "long_name": "General Tree sequential representation Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "General Tree Representation Practice": {
+            "SequentialTreeGenTreePRO": {
+              "long_name": "General Tree Sequential Representation Exercise",
+              "required": true,
+              "points": 1,
+              "threshold": 5
+            }
+          }
+        }
+      }
+    },
     "Appendix": {
       "Glossary": {
         "long_name": "Glossary",
