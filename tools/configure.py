@@ -493,7 +493,7 @@ def create_course(config):
             course_id = course.get("id")
 
     if course_id is None:
-        print_err('Course ' +course_code+' was not found in '+ config.target_LMS + " LMS " + config.LMS_url)
+        print_err('Course ' + course_code + ' was not found in '+ config.target_LMS + " LMS " + config.LMS_url)
         sys.exit(1)
 
     # Reset course

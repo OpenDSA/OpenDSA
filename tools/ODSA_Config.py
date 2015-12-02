@@ -24,7 +24,7 @@ from urlparse import urlparse
 
 error_count = 0
 
-LTI_fields = ['username', 'password', 'canvas_url', 'course_code', 'access_token', 'consumer_key', 'consumer_secret', 'build_date', 'tool_name', 'tool_url', 'tool_xml_file']
+LTI_fields = ["odsa_username",  "odsa_password",  "target_LMS",  "LMS_url",  "course_code",  "access_token",  "LTI_consumer_key",  "LTI_secret",  "LTI_url"]
 
 required_fields = ['chapters', 'code_lang', 'module_origin', 'title']
 
@@ -308,37 +308,27 @@ def validate_config_file(config_file_path, conf_data):
         sys.exit(1)
 
 
-
 # Validate LMS configuration file
-def validate_LMS_config_file(config_file_path, conf_data):
+def validate_LMS_config_file(config_file_path, LMS_conf_data):
     """" Load and validates LMS configuration file"""
+    global error_count
+
+    print "\nValidating " + config_file_path + '\n'
+
     # load LMS config file
     # Throw an error if the specified LMS config files doesn't exist
-    LMS_config = config_file_path[:-5] + '_LMSconf.json'
-    if not os.path.exists(LMS_config):
-        print_err("ERROR: File %s doesn't exist\n" % LMS_config)
-        sys.exit(1)
-
-    # Try to read the configuration file data as JSON
-    try:
-        with open(LMS_config) as config_file:
-            LMS_conf_data = json.load(config_file, object_pairs_hook=collections.OrderedDict)
-    except ValueError, err:
-        # Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
-        msg = err.message
-        print_err(msg)
-
     for field in LTI_fields:
         if field not in LMS_conf_data:
-            print_err('ERROR: LMS_config file, %s, is missing required field, %s' % (LMS_config, field))
+            print_err('ERROR: LMS_config file, %s, is missing required field, %s' % (config_file_path, field))
             error_count += 1
-        if LMS_conf_data[field] == null:
-            print_err('ERROR: LMS_config file, %s, has empty value for required field, %s' % (LMS_config, field))
-            error_count += 1
+        else:
+            if LMS_conf_data[field] == '':
+                print_err('ERROR: LMS_config file, %s, has empty value for required field, %s' % (config_file_path, field))
+                error_count += 1
 
-    for attr in LMS_conf_data:
-        conf_data[attr] = LMS_conf_data[attr]
-
+    if error_count > 0:
+        print_err('Errors found: %d\n' % error_count)
+        sys.exit(1)
 
 
 
@@ -514,6 +504,51 @@ def get_translated_text(lang_):
     return lang_text, final_lang
 
 
+def read_conf_file(config_file_path):
+    """read configuration file as json"""
+
+    # Throw an error if the specified config files doesn't exist
+    if not os.path.exists(config_file_path):
+        print_err("ERROR: File %s doesn't exist\n" % config_file_path)
+        sys.exit(1)
+
+    # Try to read the configuration file data as JSON
+    try:
+        with open(config_file_path) as config:
+            # Force python to maintain original order of JSON objects (or else the chapters and modules will appear out of order)
+            conf_data = json.load(config, object_pairs_hook=collections.OrderedDict)
+    except ValueError, err:
+        # Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
+        msg = err.message
+        print_err(msg)
+
+        if msg == 'No JSON object could be decoded':
+            print_err('ERROR: %s is not a valid JSON file or does not use a supported encoding\n' % config_file_path)
+        else:
+            err = parse_error(msg).groupdict()
+            # cast int captures to int
+            for k, v in err.items():
+                if v and v.isdigit():
+                    err[k] = int(v)
+
+            with open(config_file_path) as config:
+                lines = config.readlines()
+
+            for ii, line in enumerate(lines):
+                if ii == err["lineno"] - 1:
+                    break
+
+            print_err("""
+    %s
+    %s^-- %s
+    """ % (line.replace("\n", ""), " " * (err["colno"] - 1), err["msg"]))
+
+        # TODO: Figure out how to get (simple)json to accept different encodings
+        sys.exit(1)
+
+    return conf_data
+
+
 class ODSA_Config:
 
     def __getitem__(self, key):
@@ -524,44 +559,8 @@ class ODSA_Config:
 
     def __init__(self, config_file_path, output_directory=None, create_course=False):
         """Initializes an ODSA_Config object by reading in the JSON config file, setting default values, and validating the configuration"""
-        # Throw an error if the specified config files doesn't exist
-        if not os.path.exists(config_file_path):
-            print_err("ERROR: File %s doesn't exist\n" % config_file_path)
-            sys.exit(1)
 
-        # Try to read the configuration file data as JSON
-        try:
-            with open(config_file_path) as config:
-                # Force python to maintain original order of JSON objects (or else the chapters and modules will appear out of order)
-                conf_data = json.load(config, object_pairs_hook=collections.OrderedDict)
-        except ValueError, err:
-            # Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
-            msg = err.message
-            print_err(msg)
-
-            if msg == 'No JSON object could be decoded':
-                print_err('ERROR: %s is not a valid JSON file or does not use a supported encoding\n' % config_file_path)
-            else:
-                err = parse_error(msg).groupdict()
-                # cast int captures to int
-                for k, v in err.items():
-                    if v and v.isdigit():
-                        err[k] = int(v)
-
-                with open(config_file_path) as config:
-                    lines = config.readlines()
-
-                for ii, line in enumerate(lines):
-                    if ii == err["lineno"] - 1:
-                        break
-
-                print_err("""
-        %s
-        %s^-- %s
-        """ % (line.replace("\n", ""), " " * (err["colno"] - 1), err["msg"]))
-
-            # TODO: Figure out how to get (simple)json to accept different encodings
-            sys.exit(1)
+        conf_data = read_conf_file(config_file_path)
 
         # group exercises
         group_exercises(conf_data)
@@ -573,20 +572,25 @@ class ODSA_Config:
         validate_config_file(config_file_path, conf_data)
 
         if create_course:
-            # Make conf_data publicly available
-            for field in required_fields:
-                self[field] = conf_data[field]
+            # Throw an error if the specified LMS config files doesn't exist
+            LMS_config = config_file_path[:-5] + '_LMSconf.json'
+
+            LMS_conf_data = read_conf_file(LMS_config)
 
             # validate LMS config data
-            validate_LMS_config_file(config_file_path, conf_data)
+            validate_LMS_config_file(LMS_config, LMS_conf_data)
+
+            for field in LMS_conf_data:
+                self[field] = LMS_conf_data[field]
 
         # Convert the Python booleans to JavaScript booleans
         conf_data['allow_anonymous_credit'] = str(conf_data['allow_anonymous_credit']).lower()
+
         conf_data['req_full_ss'] = str(conf_data['req_full_ss']).lower()
 
-
-        for field in LTI_fields:
-            self[field] = ''
+        # Make conf_data publicly available
+        for field in required_fields:
+            self[field] = conf_data[field]
 
         for field in optional_fields:
             self[field] = conf_data[field] if field in conf_data else None
