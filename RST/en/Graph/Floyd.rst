@@ -1,11 +1,10 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites:
    :topic:
 
 All-Pairs Shortest Paths
@@ -17,10 +16,8 @@ the :term:`all-pairs shortest paths problem`.
 To be precise, for every :math:`u, v \in \mathbf{V}`,
 calculate :math:`d(u, v)`.
 
-One solution is to run Dijkstra's 
-algorithm
-for finding the single-source shortest path 
-(see Module :numref:`GraphShortest`)
+One solution is to run :term:`Dijkstra's algorithm`
+for finding the :term:`single-source shortest path`
 :math:`|\mathbf{V}|` times, each
 time computing the shortest path from a different start vertex.
 If :math:`\mathbf{G}` is sparse

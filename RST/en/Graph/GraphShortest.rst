@@ -1,17 +1,19 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: GraphTrav
+   :requires: graph traversal
+   :satisfies: graph shortest path
    :topic: Graphs
-
-.. odsalink:: AV/slideCON.css
 
 Shortest-Paths Problems
 =======================
+
+Introduction
+------------
 
 On a road map, a road connecting two towns is typically
 labeled with its distance.
@@ -56,10 +58,11 @@ We assume that all weights are positive.
 
 .. _DistExamp:
 
-.. inlineav:: dijkstraCON1 dgm
+.. inlineav:: dijkstraCON dgm
    :align: center
 
    Example graph for shortest-path definitions.
+
 
 Single-Source Shortest Paths
 ----------------------------
@@ -151,7 +154,7 @@ At the end, array ``D`` will contain the shortest distance values.
 .. codeinclude:: Graphs/Dijkstra 
    :tag: GraphDijk1
 
-.. avembed:: AV/Development/DijkstraAV.html ss
+.. avembed:: AV/Graph/DijkstraAV.html ss
 
 There are two reasonable solutions to the key issue of finding the
 unvisited vertex with minimum distance value during each pass through
@@ -243,13 +246,17 @@ However, when the graph is dense, this cost can become as great as
 
    Slideshow to demonstrate the relative costs of the two algorithms.
 
+
+Dijkstra's Algorithm Practice
+-----------------------------
+
 Now you can practice using Dijkstra's algorithm.
 
-.. avembed:: AV/Development/DijkstraPE.html pe
+.. avembed:: AV/Graph/DijkstraPE.html pe
 
 .. TODO::
    :type: Exercise
 
    Summary battery of questions for Dijkstra's algorithm
 
-.. odsascript:: AV/Development/dijkstraCON.js
+.. odsascript:: AV/Graph/dijkstraCON.js

@@ -1,15 +1,19 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: GraphImpl
+   :requires: graph implementation
+   :satisfies: graph traversal
    :topic: Graphs
 
 Graph Traversals
 ================
+
+Graph Traversals
+----------------
 
 Many graph applications need to visit the vertices of a graph in some
 specific order based on the graph's topology.
@@ -116,7 +120,7 @@ This would be a natural opportunity to make use of the
 This visualization shows a graph and the result of performing a DFS on
 it, resulting in a depth-first search tree.
  
-.. avembed:: AV/Development/graphDFS.html ss
+.. avembed:: AV/Graph/graphDFS.html ss
 
 DFS processes each edge once in a directed graph.
 In an undirected graph, DFS processes each edge from both
@@ -124,9 +128,13 @@ directions.
 Each vertex must be visited, but only once, so the total cost is
 :math:`\Theta(|\mathbf{V}| + |\mathbf{E}|)`.
 
+
+Depth-First Search Practice
+---------------------------
+
 Here is an exercise to practice DFS.
 
-.. avembed:: AV/Development/graphDFSPE.html pe
+.. avembed:: AV/Graph/graphDFSPE.html pe
 
 
 Breadth-First Search
@@ -154,11 +162,15 @@ Here is an implementation for BFS.
 
 Here is an AV for you to try it on other graphs.
 
-.. avembed:: AV/Development/graphBFS.html ss
+.. avembed:: AV/Graph/graphBFS.html ss
+
+
+Breadth-First Search Practice
+-----------------------------
 
 Here is an exercise to practice BFS.
 
-.. avembed:: AV/Development/graphBFSPE.html pe
+.. avembed:: AV/Graph/graphBFSPE.html pe
 
 .. TODO::
    :type: Exercise

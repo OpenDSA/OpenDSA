@@ -1,21 +1,21 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: GraphIntro
+   :requires: graph terminology
+   :satisfies: graph implementation
    :topic: Graphs
 
 Graph Implementations
 =====================
 
-We next turn to the problem of implementing a general-purpose graph
-class.
-From Module :numref:`<GraphIntro>` we know that there are two
-traditional approaches to representing graphs: The adjacency matrix
-and the adjacency list.
+We next turn to the problem of implementing a general-purpose
+:term:`graph` class.
+There are two traditional approaches to representing graphs:
+The :term:`adjacency matrix` and the :term:`adjacency list`.
 In this module we will show actual implementations for each approach.
 We will begin with an abstract class defining an ADT for graphs that a
 given implementation must meet.

@@ -1,7 +1,6 @@
-"use strict";
-
-(function ($) {
-  var jsav = new JSAV("dijkstraCON1", {"animationMode": "none"});
+$(document).ready(function () {
+  "use strict";
+  var jsav = new JSAV("dijkstraCON", {"animationMode": "none"});
   var g = jsav.ds.graph({width: 300, height: 200,
                          layout: "manual", directed: true});
   var a = g.addNode("a", {"left": 0, "top":  75});
@@ -19,4 +18,5 @@
   g.addEdge(d, e, {"weight": 11});
   g.layout();
   jsav.displayInit();
-}(jQuery));
+  av.recorded();
+});

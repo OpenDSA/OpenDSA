@@ -1,15 +1,19 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: GraphShortest
+   :satisfies: Prim's algorithm; MCST
+   :requires: graph shortest path
    :topic: Graphs
 
 Minimal Cost Spanning Trees
 ===========================
+
+Minimal Cost Spanning Trees
+---------------------------
 
 The :term:`minimal-cost spanning tree` (MCST)
 problem takes as input a connected, undirected graph
@@ -36,7 +40,7 @@ Figure :num:`Figure #MCSTdgm` shows the MCST for an example graph.
 
 .. _MCSTdgm:
 
-.. inlineav:: MCSTCON1 dgm
+.. inlineav:: MCSTCON dgm
    :align: justify
 
    A graph and its MCST.
@@ -49,7 +53,7 @@ Figure :num:`Figure #MCSTdgm` shows the MCST for an example graph.
 .. TODO::
    :type: Slideshow
 
-   Replace the previous disagram with a slideshow illustrating the
+   Replace the previous diagram with a slideshow illustrating the
    concept of MCST.
 
 
@@ -106,7 +110,11 @@ The implementation above also contains calls to
 ``AddEdgetoMST`` to indicate which edges are actually added to the
 MCST.
 
-.. avembed:: AV/Development/PrimAV.html ss
+.. avembed:: AV/Graph/PrimAV.html ss
+
+
+Prim's Algorithm Alternative Implementation
+-------------------------------------------
 
 Alternatively, we can implement Prim's algorithm using a
 :term:`priority queue` to find the next closest vertex, as
@@ -125,7 +133,7 @@ the :term:`heap` stores ``DijkElem`` objects.
 
 Here is an AV that lets you try Prim's algorithm on other graphs.
 
-.. avembed:: AV/Development/PrimAVPQ.html ss
+.. avembed:: AV/Graph/PrimAVPQ.html ss
 
 Prim's algorithm is an example of a greedy
 algorithm.
@@ -194,11 +202,15 @@ cost?
    include any marked vertex :math:`v_i, i \leq j`, because to do so
    would form a cycle.
 
-.. avembed:: AV/Development/PrimAVPE.html pe
+
+Prim's Algorithm Practice
+-------------------------
+
+.. avembed:: AV/Graph/PrimAVPE.html pe
 
 .. TODO::
    :type: Exercise
 
    Proficiency exercise for Prim's algorithm.
 
-.. odsascript:: AV/Development/MCSTCON.js
+.. odsascript:: AV/Graph/MCSTCON.js

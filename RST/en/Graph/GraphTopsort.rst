@@ -1,17 +1,18 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: GraphTraversal
+   :requires: graph traversal
    :topic: Graphs
-
-.. odsalink:: AV/slideCON.css
 
 Topological Sort
 ================
+
+Topological Sort
+----------------
 
 Assume that we need to schedule a series of tasks, such as classes or
 construction jobs, where we cannot start one task until after its
@@ -29,7 +30,7 @@ meet the prerequisite rules is called a :term:`topological sort`.
 
 .. _TopSort:
 
-.. inlineav:: topsortCON1 dgm
+.. inlineav:: topsortCON dgm
    :align: center
 
    An example graph for topological sort. Seven tasks have
@@ -45,6 +46,10 @@ Figure :num:`Figure #TopSort` illustrates the problem.
 An acceptable topological sort for this example is J1,
 J2, J3, J4, J5, J6, J7. However, other orders are also acceptable,
 such as J1, J3, J2, J6, J4, J5, J7.
+
+
+Depth-first solution
+--------------------
 
 A topological sort may be found by performing a DFS on the graph.
 When a vertex is visited, no action is taken (i.e., function
@@ -73,7 +78,11 @@ J1, J3, J2, J6, J4, J5, J7.
 
 Here is another example.
 
-.. avembed:: AV/Development/topSort.html ss
+.. avembed:: AV/Graph/topSort.html ss
+
+
+Queue-based Solution
+--------------------
 
 We can implement topological sort using a queue
 instead of recursion, as follows.
@@ -105,7 +114,7 @@ Here is the code to implement the queue-based topological sort:
 .. codeinclude:: Graphs/TopsortBFS 
    :tag: TopsortBFS
 
-.. avembed:: AV/Development/qTopSort.html ss
+.. avembed:: AV/Graph/qTopSort.html ss
 
 .. TODO::
    :type: Proficiency Exercise
@@ -118,4 +127,4 @@ Here is the code to implement the queue-based topological sort:
 
    Provide a summary battery of questions.
 
-.. odsascript:: AV/Development/topsortCON.js
+.. odsascript:: AV/Graph/topsortCON.js

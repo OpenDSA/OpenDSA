@@ -1,16 +1,19 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: MCST
+   :requires: MCST; Union/Find
    :topic: Graphs
 
 
 Kruskal's Algorithm
 ===================
+
+Kruskal's Algorithm
+-------------------
 
 Our next MCST algorithm is commonly referred to as
 :term:`Kruskal's algorithm`.
@@ -55,6 +58,10 @@ More often the edges of the spanning tree are the shorter ones,and
 only about :math:`|\mathbf{V}|` edges must be processed.
 If so, the cost is often close to
 :math:`\Theta(|\mathbf{V}| \log |\mathbf{E}|)` in the average case.
+
+
+Kruskal's Algorithm Practice
+----------------------------
 
 .. avembed:: AV/Development/KruskalPE.html pe
 

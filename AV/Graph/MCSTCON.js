@@ -1,7 +1,6 @@
-"use strict";
-
-(function ($) {
-  var jsav = new JSAV("MCSTCON1", {"animationMode": "none"});
+$(document).ready(function () {
+  "use strict";
+  var jsav = new JSAV("MCSTCON", {"animationMode": "none"});
   var g = jsav.ds.graph({width: 500, height: 250,
                          layout: "manual", directed: false});
   var j1 = g.addNode("A", {"left":  20, "top":   0});
@@ -20,4 +19,5 @@
   g.addEdge(j5, j6, {"weight": 1});
   g.layout();
   jsav.displayInit();
-}(jQuery));
+  av.recorded();
+});

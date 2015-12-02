@@ -1,7 +1,6 @@
-"use strict";
-
-(function ($) {
-  var jsav = new JSAV("topsortCON1", {"animationMode": "none"});
+$(document).ready(function () {
+  "use strict";
+  var jsav = new JSAV("topsortCON", {"animationMode": "none"});
   var g = jsav.ds.graph({width: 500, height: 200,
                          layout: "manual", directed: true});
   var j1 = g.addNode("J1", {"left":   0, "top":  75});
@@ -20,4 +19,6 @@
   g.addEdge(j4, j5);
   g.addEdge(j5, j7);
   g.layout();
-}(jQuery));
+  av.displayInit();
+  av.recorded();
+});
