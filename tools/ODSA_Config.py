@@ -24,7 +24,7 @@ from urlparse import urlparse
 
 error_count = 0
 
-LTI_fields = [  "username",  "password",  "canvas_url",  "course_code",  "access_token",  "consumer_key",  "consumer_secret",  "build_date",  "tool_name",  "tool_url",  "tool_xml_file"]
+LTI_fields = ['username', 'password', 'canvas_url', 'course_code', 'access_token', 'consumer_key', 'consumer_secret', 'build_date', 'tool_name', 'tool_url', 'tool_xml_file']
 
 required_fields = ['chapters', 'code_lang', 'module_origin', 'title']
 
@@ -308,6 +308,40 @@ def validate_config_file(config_file_path, conf_data):
         sys.exit(1)
 
 
+
+# Validate LMS configuration file
+def validate_LMS_config_file(config_file_path, conf_data):
+    """" Load and validates LMS configuration file"""
+    # load LMS config file
+    # Throw an error if the specified LMS config files doesn't exist
+    LMS_config = config_file_path[:-5] + '_LMSconf.json'
+    if not os.path.exists(LMS_config):
+        print_err("ERROR: File %s doesn't exist\n" % LMS_config)
+        sys.exit(1)
+
+    # Try to read the configuration file data as JSON
+    try:
+        with open(LMS_config) as config_file:
+            LMS_conf_data = json.load(config_file, object_pairs_hook=collections.OrderedDict)
+    except ValueError, err:
+        # Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
+        msg = err.message
+        print_err(msg)
+
+    for field in LTI_fields:
+        if field not in LMS_conf_data:
+            print_err('ERROR: LMS_config file, %s, is missing required field, %s' % (LMS_config, field))
+            error_count += 1
+        if LMS_conf_data[field] == null:
+            print_err('ERROR: LMS_config file, %s, has empty value for required field, %s' % (LMS_config, field))
+            error_count += 1
+
+    for attr in LMS_conf_data:
+        conf_data[attr] = LMS_conf_data[attr]
+
+
+
+
 def set_defaults(conf_data):
     """Assign default values to optional config attributes"""
 
@@ -406,6 +440,7 @@ def set_defaults(conf_data):
     if 'theme_dir' not in conf_data:
         conf_data['theme_dir'] = '%sRST/_themes' % odsa_dir
 
+
 def group_exercises(conf_data):
     """group all exercises of one module in exercises attribute"""
     chapters = conf_data['chapters']
@@ -487,7 +522,7 @@ class ODSA_Config:
     def __setitem__(self, key, value):
         self.__dict__[key] = value
 
-    def __init__(self, config_file_path, output_directory=None):
+    def __init__(self, config_file_path, output_directory=None, create_course=False):
         """Initializes an ODSA_Config object by reading in the JSON config file, setting default values, and validating the configuration"""
         # Throw an error if the specified config files doesn't exist
         if not os.path.exists(config_file_path):
@@ -537,13 +572,18 @@ class ODSA_Config:
         # Make sure the config file is valid
         validate_config_file(config_file_path, conf_data)
 
+        if create_course:
+            # Make conf_data publicly available
+            for field in required_fields:
+                self[field] = conf_data[field]
+
+            # validate LMS config data
+            validate_LMS_config_file(config_file_path, conf_data)
+
         # Convert the Python booleans to JavaScript booleans
         conf_data['allow_anonymous_credit'] = str(conf_data['allow_anonymous_credit']).lower()
         conf_data['req_full_ss'] = str(conf_data['req_full_ss']).lower()
 
-        # Make conf_data publicly available
-        for field in required_fields:
-            self[field] = conf_data[field]
 
         for field in LTI_fields:
             self[field] = ''
