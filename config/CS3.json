@@ -34,7 +34,7 @@
     }
   },
   "lang": "en",
-  "module_origin": "https://lti.cs.vt.edu",
+  "module_origin": "https://ltitest.cs.vt.edu:9292",
   "exercise_server": "https://ltitest.cs.vt.edu:8443",
   "logging_server": "https://ltitest.cs.vt.edu:8443",
   "score_server": "https://ltitest.cs.vt.edu:8443",
@@ -357,7 +357,9 @@
           "Binary Search Practice Exercise": {
             "binarySearchPRO": {
               "long_name": "Binary Search Proficiency Exercise",
-              "exer_options": { "JXOP-code": "none" },
+              "exer_options": {
+                "JXOP-code": "none"
+              },
               "required": true,
               "points": 1.0,
               "threshold": 1.0
@@ -559,7 +561,7 @@
         "long_name": "Linked Lists",
         "sections": {
           "Linked Lists": {
-            "llistRepCON": { },
+            "llistRepCON": {},
             "llistBadCON": {
               "long_name": "Linked List Slideshow 1",
               "required": true,
@@ -576,7 +578,7 @@
             }
           },
           "A Better Solution": {
-            "llistInitCON": { },
+            "llistInitCON": {},
             "llistHeaderCON": {}
           },
           "Linked List Implementation": {
@@ -647,7 +649,7 @@
       },
       "List/ListAnalysis": {
         "long_name": "Comparison of List Implementations",
-        "sections":{
+        "sections": {
           "Space Comparison": {
             "ListOverhead": {
               "long_name": "Breakeven Point Exercise",
@@ -1138,7 +1140,9 @@
           "Inorder Traversal Practice": {
             "btTravInorderPRO": {
               "long_name": "Binary Tree Inorder Traversal Exercise",
-              "exer_options": { "JXOP-code": "none" },
+              "exer_options": {
+                "JXOP-code": "none"
+              },
               "required": true,
               "points": 1.0,
               "threshold": 0.90
@@ -1147,7 +1151,9 @@
           "Postorder Traversal Practice": {
             "btTravPostorderPRO": {
               "long_name": "Binary Tree Postorder Traversal Exercise",
-              "exer_options": { "JXOP-code": "none" },
+              "exer_options": {
+                "JXOP-code": "none"
+              },
               "required": true,
               "points": 1.0,
               "threshold": 0.90
@@ -1156,7 +1162,9 @@
           "Preorder Traversal Practice": {
             "btTravPreorderPRO": {
               "long_name": "Binary Tree Preorder Traversal Exercise",
-              "exer_options": { "JXOP-code": "none" },
+              "exer_options": {
+                "JXOP-code": "none"
+              },
               "required": true,
               "points": 1.0,
               "threshold": 0.90
@@ -1435,7 +1443,9 @@
           "Heap Insert Practice": {
             "heapinsertPRO": {
               "long_name": "Heap Insert Proficiency Exercise",
-              "exer_options": { "JXOP-code": "none" },
+              "exer_options": {
+                "JXOP-code": "none"
+              },
               "required": true,
               "points": 2.0,
               "threshold": 0.90
@@ -1452,7 +1462,9 @@
           "Heap Build Practice": {
             "heapbuildPRO": {
               "long_name": "Heap Build Proficiency Exercise",
-              "exer_options": { "JXOP-code": "none" },
+              "exer_options": {
+                "JXOP-code": "none"
+              },
               "required": true,
               "points": 1.0,
               "threshold": 0.90
@@ -1615,7 +1627,7 @@
       },
       "Sorting/InsertionSort": {
         "long_name": "Insertion Sort",
-        "sections" : {
+        "sections": {
           "Insertion Sort": {},
           "How It Works": {
             "insertionsortCON": {
@@ -1823,7 +1835,9 @@
           "Code Tuning for Simple Sorting Algorithms": {
             "insertionSortWithoutSwapPRO": {
               "long_name": "Insertion Sort Without Swap Proficiency Exercise",
-              "exer_options": { "JXOP-code": "none" },
+              "exer_options": {
+                "JXOP-code": "none"
+              },
               "required": false,
               "points": 0.0,
               "threshold": 0.9
@@ -2134,7 +2148,9 @@
           "Heapsort Proficiency Practice": {
             "heapsortPRO": {
               "long_name": "Heapsort Proficiency Exercise",
-              "exer_options": { "JXOP-code": "none" },
+              "exer_options": {
+                "JXOP-code": "none"
+              },
               "required": true,
               "points": 2.0,
               "threshold": 0.9,
@@ -2770,7 +2786,9 @@
               "points": 0,
               "showhide": "none",
               "threshold": 1.0,
-              "exer_options": { "fitAlgorithm": "1" }
+              "exer_options": {
+                "fitAlgorithm": "1"
+              }
             }
           },
           "First Fit Practice Exercise": {
@@ -2793,7 +2811,9 @@
               "points": 0,
               "showhide": "none",
               "threshold": 1.0,
-              "exer_options": { "fitAlgorithm": "2" }
+              "exer_options": {
+                "fitAlgorithm": "2"
+              }
             }
           }
         }
@@ -2808,7 +2828,9 @@
               "points": 0,
               "showhide": "none",
               "threshold": 1.0,
-              "exer_options": { "fitAlgorithm": "3" }
+              "exer_options": {
+                "fitAlgorithm": "3"
+              }
             }
           }
         }
@@ -2823,7 +2845,9 @@
               "points": 0,
               "showhide": "none",
               "threshold": 1.0,
-              "exer_options": { "fitAlgorithm": "4" }
+              "exer_options": {
+                "fitAlgorithm": "4"
+              }
             }
           }
         }

@@ -82,8 +82,6 @@ module_chap_map = {}
 num_ref_map = {}
 
 # Prints the given string to standard error
-
-
 def print_err(err_msg):
     sys.stderr.write('%s\n' % err_msg)
 
@@ -477,25 +475,6 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
 def create_course(config):
     """Create course on target LMS (e.g. canvas)"""
 
-    # load LMS config file
-    # Throw an error if the specified LMS config files doesn't exist
-    LMS_config = config.config_file_path[:-5] + '_LMSconf.json'
-    if not os.path.exists(LMS_config):
-        print_err("ERROR: File %s doesn't exist\n" % LMS_config)
-        sys.exit(1)
-
-    # Try to read the configuration file data as JSON
-    try:
-        with open(LMS_config) as config_file:
-            LMS_conf_data = json.load(config_file, object_pairs_hook=collections.OrderedDict)
-    except ValueError, err:
-        # Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
-        msg = err.message
-        print_err(msg)
-
-    for attr in LMS_conf_data:
-        config[attr] = LMS_conf_data[attr]
-
     course_code = config['course_code']
     privacy_level = "public"  # should be public
     config_type = "by_url"
@@ -514,7 +493,7 @@ def create_course(config):
             course_id = course.get("id")
 
     if course_id is None:
-        print_err('Course ' +course_code+' was not found in '+ config.target_LMS + " LMS " + config.LMS_url)
+        print_err('Course ' + course_code + ' was not found in '+ config.target_LMS + " LMS " + config.LMS_url)
         sys.exit(1)
 
     # Reset course
@@ -595,7 +574,7 @@ def configure(config_file_path, options):
     print "Configuring OpenDSA, using " + config_file_path
 
     # Load and validate the configuration
-    config = ODSA_Config(config_file_path, options.output_directory)
+    config = ODSA_Config(config_file_path, options.output_directory, options.create_course)
 
     # Register book in OpenDSA-server and create course in target LMS
     if options.create_course=='True':
