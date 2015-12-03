@@ -306,7 +306,9 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
     if tag_name == 'link': continue
     # Expand this to handle src
     for a_tag in soup.find_all(tag_name):
-      if a_tag.has_attr(tag_url) and a_tag[tag_url].startswith('OpenDSA/AV/'):
+      if a_tag.has_attr(tag_url) and (
+            a_tag[tag_url].startswith('OpenDSA/AV/')
+            or a_tag[tag_url].startswith('OpenDSA/DataStructures/')):
         name = os.path.splitext(os.path.basename(a_tag[tag_url]))[0]
         script_tag = a_tag.extract()
         if "CON" in name and tag_name == "script":
