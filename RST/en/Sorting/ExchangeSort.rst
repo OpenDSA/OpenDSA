@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -10,8 +10,9 @@
    :topic: Sorting
 
 .. index:: ! exchange sorting
-
 .. index:: sorting; exchange
+
+.. odsalink:: AV/Sorting/ExchangeSortCON.css
 
 The Cost of Exchange Sorting
 ============================
@@ -60,6 +61,10 @@ appears before it.
 
 .. avembed:: Exercises/Sorting/FindInversionsPRO.html ka
 
+
+Analysis
+--------
+
 .. TODO::
    :tag: slideshow
 
@@ -86,8 +91,12 @@ We therefore know with certainty that any sorting algorithm which
 limits comparisons to adjacent items will cost at least
 :math:`n(n-1)/4 = \Omega(n^2)` in the average case.
 
+.. inlineav:: ExchangeSortCON ss
+   :output: show
 
 Exchange Sort Summary Questions
 -------------------------------
 
 .. avembed:: Exercises/Sorting/ExchangeSumm.html ka
+
+.. odsascript:: AV/Sorting/ExchangeSortCON.js

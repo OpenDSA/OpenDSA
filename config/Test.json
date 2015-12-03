@@ -46,116 +46,193 @@
     "JXOP-debug": "true"
   },
   "chapters": {
-    "Sorting": {
-      "Sorting/ShellsortTest": {
-        "long_name": "Shellsort",
+    "Graphs": {
+      "Graph/GraphIntro": {
+        "long_name": "Introduction and Terminology",
         "sections": {
           "Introduction": {},
-          "Selecting the First Increment": {
-            "shellsortCON1": {
-              "long_name": "Shellsort Slideshow 1",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            }
+          "Graph Terminology": {
+            "GdirundirCON": {},
+            "GneighborCON": {},
+            "GpathDefCON": {},
+            "GconcomCON": {},
+            "GsparseDefCON": {}
           },
-          "Sorting the Initial Sublists": {
-            "shellsortCON2": {
-              "long_name": "Shellsort Slideshow 2",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
-            "shellsortCON3": {}
-          },
-          "Selecting the Next Increment": {
-            "shellsortCON4": {
-              "long_name": "Shellsort Slideshow 3",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            }
-          },
-          "Sorting the Next Sublists": {
-            "shellsortCON5": {
-              "long_name": "Shellsort Slideshow 4",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
-            "shellsortCON6": {}
-          },
-          "Third Pass": {
-            "shellsortCON7": {
-              "long_name": "Shellsort Slideshow 5",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
-            "shellsortCON8": {}
-          },
-          "Final Pass": {
-            "shellsortCON9": {
-              "long_name": "Shellsort Slideshow 6",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            }
-          },
-          "Shellsort Sublist Practice": {
-            "ShellsortSublistSumm": {
-              "long_name": "Shellsort Sublist Proficency Exercise",
+          "Graph Representations": {
+            "GdirRepCON": {},
+            "GundirRepCON": {},
+            "GweightedCON": {},
+            "GspaceCalcSumm": {
+              "long_name": "Graph Space Requirements Exercise",
               "required": true,
-              "points": 1.0,
+              "points": 2.0,
               "threshold": 5
             }
           },
-          "Putting It Together": {
-            "shellsortAV": {
-              "long_name": "Shellsort Visualization",
+          "Graph Terminology Questions": {
+            "GraphIntroSumm": {
+              "long_name": "Graph Terminology Summary Exercise",
+              "required": true,
+              "points": 3.0,
+              "threshold": 10
+            }
+          }
+        }
+      },
+      "Graph/GraphImpl": {
+        "long_name": "Graph Implementation",
+        "sections": {}
+      },
+      "Graph/GraphTraversal": {
+        "long_name": "Graph Traversal",
+        "sections": {
+          "Graph Traversals": {},
+          "Depth-First Search": {
+            "graphDFS": {
+              "long_name": "Depth First Search Visualization",
               "required": false,
               "points": 0,
               "showhide": "none",
               "threshold": 1.0
             }
           },
-          "Shellsort Increments Exercise": {
-            "ShellsortSeries": {
-              "long_name": "Shellsort Series Exercise",
-              "required": true,
-              "points": 1.0,
-              "threshold": 5
-            }
-          },
-          "Shellsort Practice Exercise": {
-            "shellsortPRO": {
-              "long_name": "Shellsort Proficiency Exercise",
+          "Depth-First Search Practice": {
+            "graphDFSPE": {
+              "long_name": "DFS Proficiency Exercise",
               "required": true,
               "points": 2.0,
-              "threshold": 0.90,
-              "exer_options": {
-                "JXOP-feedback": "continuous",
-                "JXOP-fixmode": "fix"
-              }
+              "threshold": 0.90
             }
           },
-          "Optimizing Shellsort": {
-            "shellsortPerf": {
-              "long_name": "Shellsort Performance Activity",
-              "required": true,
-              "points": 2.0,
+          "Breadth-First Search": {
+            "graphBFS": {
+              "long_name": "Breadth First Search Visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
               "threshold": 1.0
             }
           },
-          "Shellsort Summary Questions": {
-            "ShellsortSumm": {
-              "long_name": "Shellsort Summary Exercise",
+          "Breadth-First Search Practice": {
+            "graphBFSPE": {
+              "long_name": "BFS Proficiency Exercise",
               "required": true,
-              "points": 1.0,
-              "threshold": 5
+              "points": 2.0,
+              "threshold": 0.90
             }
           }
         }
+      },
+      "Graph/GraphTopsort": {
+        "long_name": "Topological Sort",
+        "sections": {
+          "Topological Sort": {
+            "topsortCON1": {}
+          },
+          "Depth-first solution": {
+            "topSort": {
+              "long_name": "Topological Sort (DFS) visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          },
+          "Queue-based Solution": {
+            "qTopSort": {
+              "long_name": "Topological Sort (Queue) visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Graph/GraphShortest": {
+        "long_name": "Shortest Paths Problems",
+        "sections": {
+          "Introduction": {
+            "dijkstraCON1": {}
+          },
+          "Single-Source Shortest Paths": {
+            "DijkstraAV": {
+              "long_name": "Dijkstra's Algorithm Visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          },
+          "Dijkstra's Algorithm Practice": {
+            "DijkstraPE": {
+              "long_name": "Dijkstra's Algorithm Proficiency Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 0.90
+            }
+          }
+        }
+      },
+      "Graph/MCST": {
+        "long_name": "Minimal Cost Spanning Trees",
+        "sections": {
+          "Minimal Cost Spanning Trees": {
+            "MCSTCON1": {}
+          },
+          "Prim's Algorithm": {
+            "PrimAV": {
+              "long_name": "Prim's Algorithm Visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          },
+          "Prim's Algorithm Alternative Implementation": {
+            "PrimAVPQ": {
+              "long_name": "Prim's with Priority Queue Algorithm Visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          },
+          "Prim's Algorithm Practice": {
+            "PrimAVPE": {
+              "long_name": "Prim's Algorithm Proficiency Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 0.90
+            }
+          }
+        }
+      },
+      "Graph/Kruskal": {
+        "long_name": "Kruskal's Algorithm",
+        "sections": {
+          "Kruskal's Algorithm": {
+            "KruskalUFAV": {
+              "long_name": "Kruskal's Algorithm Visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          },
+          "Kruskal's Algorithm Practice": {
+            "KruskalPE": {
+              "long_name": "Kruskal's Algorithm Proficiency Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 0.90
+            }
+          }
+        }
+      },
+      "Graph/Floyd": {
+        "long_name": "All-Pairs Shortest Paths",
+        "sections": {}
       }
     },
     "Appendix": {

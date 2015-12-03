@@ -21,8 +21,8 @@
       <div class="problems">
         <div id="RecWCheckPalPROGp"> <!-- Supresses answer box -->
           <p class="problem">Write a recursive function named "checkPalindrome"
-            that takes a string "s" and returns true if "s" is a
-            palindrome and false if "s" is not a palindrome.
+            that takes a string and returns true if it is a
+            palindrome and false if it is not a palindrome.
             A string is a palindrome if it reads the same forwards or
             back-wards.<br/>
             <textarea  id="codeTextarea">
@@ -39,13 +39,17 @@ boolean checkPalindrome(String s) {
                 console.log(guess[0]);
                 window.codeValue = guess[0];
                 window.progexType= "recursion";
-                window.summexName = "recWCheckPalPROG";
+                window.summexName = "RecWCheckPalPROG";
               } else {
                 return "";
               }
             </div>
           </div>
           <div class="hints">
+			  <p> If the word is one character then it is a  palindrome. </p>
+			  <p> If the first character is not the same as the last one then it is not a palindrome.</p>
+			  <p> if the first and last characters are the same then exclude them and consider the new string as the substring in between.</p>
+			  <p> The recursive call should keep checking until either the first and the last character in the substring differs or the substring is empty.</p>
           </div>
         </div>
       </div>

@@ -74,7 +74,7 @@ function doSweep(av_name, inArr, increment) {
 }
 
 // Show the differences between the original array and given array "a"
-function showDifference(av_name, a) {
+function showDifference(av_name, theArray, a) {
   // Load the config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadConfig(
                  {"av_name": av_name, "json_path": "AV/Sorting/shellsortAV.json"});

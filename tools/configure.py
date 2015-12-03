@@ -82,8 +82,6 @@ module_chap_map = {}
 num_ref_map = {}
 
 # Prints the given string to standard error
-
-
 def print_err(err_msg):
     sys.stderr.write('%s\n' % err_msg)
 
@@ -378,8 +376,6 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
             module_item_title=str(module_position) + "." + str(module_item_position) + ". " + str(module_name),
             module_item_indent=0)
 
-        module_item_position += 1
-        # exercises = module_obj.get("exercises")
         sections = module_obj.get("sections")
         if bool(sections):
             section_couter = 1
@@ -402,10 +398,11 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
                             # print(str(section_couter).zfill(2)) + " " + long_name
                             # OpenDSA exercises will map to canvas assignments
                             if showsection is None or (showsection is not None and showsection == True):
+                                indexed_section_name = str(module_position).zfill(2) + "." + str(module_item_position).zfill(2) + "." +str(section_couter).zfill(2) + ' - ' +section_name
                                 results = assignments.create_assignment(
                                     request_ctx,
                                     course_id,
-                                    section_name,
+                                    indexed_section_name,
                                     assignment_submission_types="external_tool",
                                     assignment_external_tool_tag_attributes={
                                         "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2)},
@@ -426,10 +423,11 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
                             no_exercise = 0
                 if no_exercise == 1:
                     if showsection is None or (showsection is not None and showsection == True):
+                        indexed_section_name = str(module_position).zfill(2) + "." + str(module_item_position).zfill(2) + "." +str(section_couter).zfill(2) + ' - ' + section_name
                         results = assignments.create_assignment(
                             request_ctx,
                             course_id,
-                            section_name,
+                            indexed_section_name,
                             assignment_submission_types="external_tool",
                             assignment_external_tool_tag_attributes={
                                 "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2)},
@@ -448,10 +446,11 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
                             module_item_indent=1)
                     section_couter += 1
         else:
+            indexed_module_name = str(module_position).zfill(2) + "." + str(module_item_position).zfill(2) + ".01 - " + module_name
             results = assignments.create_assignment(
                 request_ctx,
                 course_id,
-                module_name,
+                indexed_module_name,
                 assignment_submission_types="external_tool",
                 assignment_external_tool_tag_attributes={
                     "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url},
@@ -467,6 +466,8 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
                 'Assignment',
                 module_item_content_id=assignment_id,
                 module_item_indent=1)
+
+        module_item_position += 1
     # publish the module
     results = modules.update_module(request_ctx, course_id, module_id,
                                     module_published=True)
@@ -476,25 +477,6 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
 
 def create_course(config):
     """Create course on target LMS (e.g. canvas)"""
-
-    # load LMS config file
-    # Throw an error if the specified LMS config files doesn't exist
-    LMS_config = config.config_file_path[:-5] + '_LMSconf.json'
-    if not os.path.exists(LMS_config):
-        print_err("ERROR: File %s doesn't exist\n" % LMS_config)
-        sys.exit(1)
-
-    # Try to read the configuration file data as JSON
-    try:
-        with open(LMS_config) as config_file:
-            LMS_conf_data = json.load(config_file, object_pairs_hook=collections.OrderedDict)
-    except ValueError, err:
-        # Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
-        msg = err.message
-        print_err(msg)
-
-    for attr in LMS_conf_data:
-        config[attr] = LMS_conf_data[attr]
 
     course_code = config['course_code']
     privacy_level = "public"  # should be public
@@ -514,7 +496,7 @@ def create_course(config):
             course_id = course.get("id")
 
     if course_id is None:
-        print_err('Course ' +course_code+' was not found in '+ config.target_LMS + " LMS " + config.LMS_url)
+        print_err('Course ' + course_code + ' was not found in '+ config.target_LMS + " LMS " + config.LMS_url)
         sys.exit(1)
 
     # Reset course
@@ -531,7 +513,7 @@ def create_course(config):
     results = external_tools.create_external_tool_courses(
         request_ctx, course_id, "OpenDSA-LTI",
         privacy_level, config["LTI_consumer_key"], config["LTI_secret"],
-        config_type=config_type, config_url=LTI_url + "/tool_config.xml")
+        url=config["LTI_url"] + "/lti_tool")
 
     # update the course name
     course_name = config.title
@@ -595,7 +577,7 @@ def configure(config_file_path, options):
     print "Configuring OpenDSA, using " + config_file_path
 
     # Load and validate the configuration
-    config = ODSA_Config(config_file_path, options.output_directory)
+    config = ODSA_Config(config_file_path, options.output_directory, options.create_course)
 
     # Register book in OpenDSA-server and create course in target LMS
     if options.create_course=='True':

@@ -1,8 +1,8 @@
 .. _Configuration:
 
-==========================================================
-Compiling Book Instances: the OpenDSA Configuration System
-==========================================================
+===============================================
+Compiling Book Instances: OpenDSA Configuration
+===============================================
 
 --------
 Overview
@@ -34,7 +34,7 @@ From the top level of an OpenDSA repository, you can push the
 necessary book data to your LMS (as configured in the course
 configuration file ``config/foo_LMSconf.json``) by issuing this command:
 
-python tools/create_course.py config/foo.json config/foo_LMSconf.json
+``make foo opts="-c True"``
 
 A set of ``make`` targets are available within the OpenDSA Makefile.
 If you want to compile one of the existing book instances and bind it
@@ -195,14 +195,6 @@ All are required unless otherwise specified.
     "programming language" called ``Pseudo`` with file suffix ``.txt``.
     However, Pygments might not do well with colorizing the result.
 
-* **lang** (optional) - Specifies the native language of the book
-  using the official ISO 639-1 or 639-2 standard abbreviation,
-  defaults to ``en`` if omitted.
-  This is used to control where RST source files are located, within
-  ``~OpenDSA/RST/[lang]``.
-  Any RST files not found in the indicated subdirectory will then be
-  located in ``~OpenDSA/RST/en``.
-
 * **tabbed_codeinc** (optional) - A boolean that controls whether or
   not code is displayed in a tabbed interface.
   If true, it will display the specified code in each of the languages
@@ -212,6 +204,14 @@ All are required unless otherwise specified.
   language for which the code exists with the order of precedence
   determined by the order specified in ``code_lang``).
   Defaults to ``true`` if omitted.
+
+* **lang** (optional) - Specifies the native language of the book
+  using the official ISO 639-1 or 639-2 standard abbreviation,
+  defaults to ``en`` if omitted.
+  This is used to control where RST source files are located, within
+  ``~OpenDSA/RST/[lang]``.
+  Any RST files not found in the indicated subdirectory will then be
+  located in ``~OpenDSA/RST/en``.
 
 * **module_origin** - The protocol and domain where the module files are hosted
 
@@ -566,7 +566,7 @@ Here are the fields in the configuration file.
   (OpenDSA) scoring server.
 * **odsa_password** - The corresponding password on the course instance
   (OpenDSA) scoring server.
-* **target_LMS** - LMS name. We suport 'canvas', other LMSs like moodle, Desire2Learn, and Blackboard will be suported as well.
+* **target_LMS** - LMS name. We support 'canvas', other LMSs like moodle, Desire2Learn, and Blackboard will be supported in the near future as well.
 * **LMS_url** - The URL for the LMS.
 * **access_token** - This is normally issued by the LMS to allow an
   LTI tool provider to communicate with it.

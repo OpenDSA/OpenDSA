@@ -49,7 +49,6 @@
     "Recursion": {
       "RecurTutor/RecIntro": {
         "long_name": "Recursion Chapter Introduction",
-        "exercises": {},
         "sections": {
           "Introduction": {
             "recurIntroDelegateCON": {
@@ -71,7 +70,6 @@
       },
       "RecurTutor/Write": {
         "long_name": "How to write a recursive function",
-        "exercises": {},
         "sections": {
           "The Big Picture": {
             "recurWriteStepsCON": {
@@ -93,7 +91,6 @@
       },
       "RecurTutor/CodeCompletionEx": {
         "long_name": "Code Completion Exercises",
-        "exercises": {},
         "sections": {
           "Introduction": {},
           "Programming Exercise: Largest": {
@@ -172,12 +169,10 @@
       },
       "RecurTutor/HarderWrite": {
         "long_name": "Writing More Sophisticated Recursive Functions",
-        "exercises": {},
         "sections": {}
       },
       "RecurTutor/HarderCodeCompletionEx": {
         "long_name": "Harder Code Completion Exercises",
-        "exercises": {},
         "sections": {
           "Programming Exercise: Array Min": {
             "RecHMinPROG": {
@@ -210,7 +205,6 @@
       },
       "RecurTutor/WritingEx": {
         "long_name": "Code Writing Exercises",
-        "exercises": {},
         "sections": {
           "Programming Exercise: Paren Balance": {
             "RecWIsbalancedPROG": {
@@ -270,7 +264,6 @@
       },
       "RecurTutor/Trace": {
         "long_name": "Tracing recursive code",
-        "exercises": {},
         "sections": {
           "Tracing Recursive Code": {
             "recurTraceWindCON": {
@@ -341,10 +334,9 @@
       },
       "RecurTutor/TracingEx": {
         "long_name": "Tracing Practice Exercises",
-        "exercises": {},
         "sections": {
-          "Tracing Exercise 1": {
-            "RecTraceSumm1": {
+          "Forward Flow Tracing Exercises": {
+            "RecTraceSummFwdFlow.html": {
               "long_name": "Recursion Tracing Exercises Set 1",
               "required": true,
               "points": 1.0,
@@ -352,8 +344,8 @@
               "showhide": "Show"
             }
           },
-          "Tracing Exercise 2": {
-            "RecTraceSumm2": {
+          "Backward Flow Tracing Exercises": {
+            "RecTraceSummbckwrdFlow": {
               "long_name": "Recursion Tracing Exercises Set 2",
               "required": true,
               "points": 1.0,
@@ -361,8 +353,8 @@
               "showhide": "Show"
             }
           },
-          "Tracing Exercise 3": {
-            "RecTraceSumm3": {
+          "Find Error Tracing Exercises": {
+            "RecTraceSummFuncErr": {
               "long_name": "Recursion Tracing Exercises Set 3",
               "required": true,
               "points": 1.0,
@@ -370,8 +362,8 @@
               "showhide": "Show"
             }
           },
-          "Tracing Exercise 4": {
-            "RecTraceSumm4": {
+          "Two Recursive Calls Tracing Exercises": {
+            "RecTraceSummTwoRC": {
               "long_name": "Recursion Tracing Exercises Set 4",
               "required": true,
               "points": 1.0,
@@ -379,8 +371,8 @@
               "showhide": "Show"
             }
           }, 
-          "Tracing Exercise 5": {
-            "RecTraceSumm5": {
+          "How Many Times Tracing Exercises": {
+            "RecTraceSummHowmany": {
               "long_name": "Recursion Tracing Exercises Set 5",
               "required": true,
               "points": 1.0,
@@ -388,8 +380,8 @@
               "showhide": "Show"
             }
           },        
-          "Tracing Exercise 6": {
-            "RecTraceSumm6": {
+          "Harder Tracing Exercises": {
+            "RecTraceSummHard": {
               "long_name": "Recursion Tracing Exercises Set 6",
               "required": true,
               "points": 1.0,
@@ -401,7 +393,6 @@
       },
       "RecurTutor/RecSummaryEx": {
         "long_name": "Recursion Summary Exercises",
-        "exercises": {},
         "sections": {
           "Summary Questions": {
             "RecChapterSumm": {
@@ -418,12 +409,10 @@
     "Appendix": {
       "Glossary": {
         "long_name": "Glossary",
-        "exercises": {},
         "sections": {}
       },
       "Bibliography": {
         "long_name": "Bibliography",
-        "exercises": {},
         "sections": {}
       }
     }

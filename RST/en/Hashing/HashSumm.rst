@@ -11,6 +11,9 @@
 Hashing Chapter Summary Exercises
 =================================
 
+Hashing Review
+--------------
+
 Here is a complete set of review questions, taken from all of the
 questions in the modules of this chapter.
 If anything goes wrong with one of the questions, or if you think that

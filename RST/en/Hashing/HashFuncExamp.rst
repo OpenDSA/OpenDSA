@@ -121,6 +121,7 @@ Thus, each table slot is equally likely (roughly) to get a key value.
 
    A comparison of binning vs. modulus as a hash function.
 
+
 The Mid-Square Method
 ---------------------
 
@@ -172,6 +173,7 @@ Here is a little calculator for you to see how this works.
 Start with '4567' as an example.
 
 .. avembed:: AV/Hashing/MidSquare.html pe
+
 
 Hash Functions for Strings
 --------------------------
@@ -225,6 +227,10 @@ slots.
 Now you can try it out with this calculator.
 
 .. avembed:: AV/Hashing/StringSimple.html pe
+
+
+String Folding
+--------------
 
 Here is a much better hash function for strings::
 
@@ -287,6 +293,10 @@ There is nothing special about using four characters at a time.
 Other choices could be made.
 Another alternative would be to fold two characters at a time.
 
+
+Hash Function Practice
+----------------------
+
 Now here is an exercise to let you practice these various hash
 functions.
 You should use the calculators above for the more complicated hash
@@ -294,8 +304,13 @@ functions.
 
 .. avembed:: Exercises/Hashing/HashFuncFIBSumm.html ka
 
+
+Hash Function Review Questions
+------------------------------
+
 Here are some review questions.
 
 .. avembed:: Exercises/Hashing/HashFuncSumm.html ka
 
-.. odsascript:: AV/Hashing/hashFuncExCON.js
+.. odsascript:: AV/Hashing/hashFuncExCON1.js
+.. odsascript:: AV/Hashing/hashFuncExCON2.js

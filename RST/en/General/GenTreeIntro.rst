@@ -1,17 +1,20 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :satisfies: general trees
    :topic: General Trees
 
 .. odsalink:: AV/General/GenTreeCON.css
 
 General Trees
 =============
+
+Introduction
+------------
 
 Many organizations are hierarchical in nature, such as the military
 and most businesses.
@@ -82,6 +85,7 @@ From this observation, it immediately follows that a tree with
 :math:`n` nodes must have :math:`n-1` edges because each node, aside
 from the root, has one edge connecting that node to its parent.
 
+
 An ADT for General Tree Nodes
 -----------------------------
 
@@ -123,6 +127,7 @@ Trying to find the next sibling of the rightmost sibling would return
 .. codeinclude:: General/GenTree
    :tag: GenTreeADT
 
+
 General Tree Traversals
 -----------------------
 
@@ -151,6 +156,10 @@ general trees.
 
 .. inlineav:: GenTreePreTravCON ss
    :output: show
+
+
+Postorder Traversal
+-------------------
 
 To perform a preorder traversal, it is necessary to visit each of the
 children for a given node (say :math:`R`) from left to right.

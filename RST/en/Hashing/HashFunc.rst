@@ -14,6 +14,9 @@
 Hash Function Principles
 ========================
 
+Hash Function Principles
+------------------------
+
 Hashing generally takes records whose key values come from a
 large range and stores those records in a table
 with a relatively small number of slots.

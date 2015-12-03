@@ -1,6 +1,7 @@
-"use strict";
 /*global ODSA */
-(function ($) {
+$(document).ready(function () {
+  "use strict";
+
   var move = function (o, i, h) {
     av.step();
     av.umsg(interpret("av_c1"));
@@ -60,4 +61,4 @@
   move(7, 3, 9);
   move(8, 4, 4);
   av.recorded();
-}(jQuery));
+});

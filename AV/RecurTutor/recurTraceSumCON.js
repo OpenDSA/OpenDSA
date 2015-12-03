@@ -3,14 +3,7 @@
 $(document).ready(function () {
   "use strict";
   var theArray = [2, 4, 6];
-  function setGreen(arr, index) {
-    arr.css(index, {"background-color": "#00FF00" });
-  };
-
-  function setWhite(arr, index) {
-    arr.css(index, {"background-color": "#fff" });
-  };
-
+  
   var av_name = "recurTraceSumCON";
   var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
       interpret = config.interpreter,       // get the interpreter
@@ -21,11 +14,17 @@ $(document).ready(function () {
   av.umsg(interpret("av_c1"));
 
   var pseudo = av.code(code);
+  
+  var arr = av.ds.array(theArray, {indexed: true});
+  var label = av.label("arr", {before: arr, left: 350, top: 150});
   av.displayInit();
 
   // Slide 2
+  var arrcopyn3 = av.ds.array(theArray, {"left": 40, "top":  120, "indexed": false});
+  var labeln3 = av.label("n=3", {before: arrcopyn2, left: 5, top: 120});
+  
   av.umsg(interpret("av_c2"));
-  var arr = av.ds.array(theArray, {indexed: true});
+ 
   av.step();
 
   // Slide 3
@@ -40,6 +39,10 @@ $(document).ready(function () {
   av.step();
 
   // Slide 5
+  
+  var arrcopyn2 = av.ds.array(theArray, {"left": 40, "top":  75, "indexed": false});
+  var labeln2 = av.label("n=2", {before: arrcopyn2, left: 5, top: 75});
+  
   av.umsg(interpret("av_c5"));
   pseudo.unhighlight(5);
   pseudo.highlight(1);
@@ -50,6 +53,9 @@ $(document).ready(function () {
   av.step();
 
   // Slide 7
+  var arrcopyn1 = av.ds.array(theArray, {"left": 40, "top":  30, "indexed": false});
+  var labeln1 = av.label("n=1", {before: arrcopyn2, left: 5, top: 30});
+  
   av.umsg(interpret("av_c7"));
   pseudo.unhighlight(1);
   pseudo.highlight(5);
@@ -77,7 +83,9 @@ $(document).ready(function () {
   av.umsg(interpret("av_c11"));
   pseudo.unhighlight(3);
   pseudo.highlight(5);
-  setGreen(arr, 0);
+  arrcopyn1.highlight([0]);
+  //arr.highlight([0]);
+  
   av.step();
 
   // Slide 12
@@ -85,14 +93,30 @@ $(document).ready(function () {
   av.step();
 
   // Slide 13
+  arrcopyn1.hide();
+  labeln1.hide();
+  
   av.umsg(interpret("av_c13"));
-  setWhite(arr,0);
-  setGreen(arr, 1);
+  arr.unhighlight([0]);
+  arr.addClass([0], "unused");
+  
+  arrcopyn2.highlight([1]);
   av.step();
 
   // Slide 14
+  arrcopyn2.hide();
+  labeln2.hide();
+  
   av.umsg(interpret("av_c14"));
-  setWhite(arr,1);
-  setGreen(arr, 2);
+  arr.unhighlight([1]);
+  arr.addClass([1], "unused");
+  
+  arrcopyn3.highlight([2]);
+  av.step();
+  
+  arrcopyn3.hide();
+  labeln3.hide();
+  
+  arr.addClass([2], "unused");
   av.recorded();
 });
