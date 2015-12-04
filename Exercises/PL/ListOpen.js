@@ -11,7 +11,7 @@
       return question.answer;
     },
 
-    initListOpen: function() {
+    initJSAV: function() {
 console.log("Hello");
       var jsav = new JSAV("OpenList");
 console.log("Hello X");
