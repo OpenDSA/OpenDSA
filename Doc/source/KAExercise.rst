@@ -251,3 +251,16 @@ to name it.
 Generally, a fill-in-the-blanks question that generates random problem
 instances and is presented as a stand-alone exercise to students
 should probably be named as a proficiency exercise.
+
+
+Common Errors
+-------------
+
+Your exercise might generate a console error that looks like::
+
+   Error while evaluating var#JSAV
+   khan-exercise.js:359 TypeError: Cannot read property 'id' of undefined(…)
+
+This is a common problem. Nearly always, it means that either you
+forgot to include ``jsav`` in the ``data-require`` field of the ``<html>``
+tag, or else you got the names wrong somewhere for the divs.
