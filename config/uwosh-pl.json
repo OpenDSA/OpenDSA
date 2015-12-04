@@ -70,12 +70,6 @@
 		"exercises": {
 		}
 	    },
-	    "PL/LC/ToDo": {
-		"long_name": "To do",
-		"dispModComp": false,	
-		"exercises": {
-		}
-	    },
 	    "PL/LC/ApplicativeOrder": {
 		"long_name": "Applicative-order Reduction Strategy",
 		"dispModComp": false,	
