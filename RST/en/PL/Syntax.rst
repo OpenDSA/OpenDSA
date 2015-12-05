@@ -6,9 +6,17 @@
 .. avmetadata:: 
    :author: David Furcy, Tom Naps and Taylor Rydahl
 
-
+.. odsalink::  AV/PL/AV/parseTree.css
+.. odsalink::  AV/PL/main.css
 
 .. index:: ! lambda calculus, Alonzo Church, functional programming ; lambda calculus
+
+===============================
+ Syntax of the Lambda Calculus
+===============================
+
+Lambda Calculus
+---------------
 
 The :dfn:`lambda calculus` (also written as :math:`\lambda`-calculus,
 where :term:`lambda` is the name of the Greek letter :math:`\lambda`)
@@ -20,25 +28,16 @@ calculus looks like a toy language, even though it is (provably!) as
 powerful as any of the programming languages being used today, such as
 JavaScript, Java, C++, etc. 
 
-
-
 .. index:: lambda calculus ; syntax
 
 .. _BNF-grammar-for-LC:
-
-===============================
- Syntax of the Lambda Calculus
-===============================
 
 Programs in the lambda calculus are called :dfn:`lambda expressions`
 (abbreviated :math:`\lambda exp`), of which there are only three
 kinds. In fact, here is a complete BNF grammar for the lambda
 calculus:
 
-
 .. index:: lambda calculus ; BNF grammar
-
-
 
 .. math::
 
@@ -129,28 +128,22 @@ Q2. How many terminals does this grammar contain?
 
 Q3. Is this grammar ambiguous, since the third production is doubly recursive?
 
-**Exercises**
+
+Exercise: Syntax TF
+-------------------
 
 Test your mastery of the syntax of the lambda calculus with these two exercises.
 
 .. avembed:: Exercises/PL/SyntaxTF.html ka
 
+
+Exercise: Syntax MC
+-------------------
+
 .. avembed:: Exercises/PL/SyntaxMC.html ka
 
-.. odsalink::  AV/PL/AV/parseTree.css
-
-.. odsalink::  AV/PL/main.css
-
 .. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/grammar.js
-
 .. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn.js
-
 .. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter.js
-
 .. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js
-
 .. odsascript:: AV/PL/AV/parseTree.js
-
-
-
-

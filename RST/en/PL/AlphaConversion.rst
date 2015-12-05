@@ -7,21 +7,14 @@
    :author: David Furcy, Tom Naps and Taylor Rydahl
 
 
-.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/grammar.js
-
-.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn.js
-
-.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter.js
-
-.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js
-
-
 .. _alpha-conversion:
 
-==========================
+================
 Alpha-Conversion
-==========================
+================
 
+Alpha-Conversion
+----------------
 We now turn our attention back to the semantics of the lambda calculus
 by focusing on how :ref:`free-and-bound-variables` in lambda
 expressions impact their meaning. Let us first consider bound variable
@@ -174,8 +167,3 @@ variable captures. :math:`\alpha`-conversion will be quite useful to
 us in the next section where we describe the main algorithm for
 determining the meaning of a lambda calculus program, namely the
 process of substitution.
-
-
-.. odsalink::  AV/PL/main.css
-
-
