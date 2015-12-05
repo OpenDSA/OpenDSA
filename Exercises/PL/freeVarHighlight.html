@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+	<title>Identifying Free Variables</title>
+	<script src="../../lib/jquery.min.js"></script>
+	<script src="../../lib/jquery-ui.min.js"></script>
+	<script src="../../JSAV/lib/jquery.transit.js"></script>
+	<script src="../../JSAV/lib/raphael.js"></script>
+	<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+	<script src="../../JSAV/build/JSAV-min.js"></script>
+	<link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn.js"></script>
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter.js"></script>
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js"></script>
+
+
+<style>
+
+    div.jsavcanvas {
+         text-align: center; /* needed to center the array in the container */
+    }
+    
+    div#jsav  div.jsavcanvas ol.jsavarray   {
+       max-width: 700px;   /* needed for centering the array to work */
+       max-height: 30px;
+       min-height: 30px;
+    }
+
+    li.jsavhighlight {
+        border: 1px solid black !important;
+    }
+     ol.jsavarray  li.jsavindex  {
+       max-height: 30px;
+       min-height:30px;
+       height: 30px;
+    }
+
+      li.jsavindex span.jsavvalue {
+       max-height:30px;
+       min-height:30px;
+    }
+    
+    ol.jsavarray .defaultCellStyle {
+        border: none;
+        box-shadow : none; 
+    }
+
+    ol.jsavarray .lambdaWidth {
+        width : 20px;
+        min-width : 20px;
+    }
+
+    ol.jsavarray .oneCharWidth {
+        width : 12px;
+        min-width : 12px;
+        text-align: center;
+    }
+
+    ol.jsavarray .parenWidth {
+        width : 7px;
+        min-width : 7px;
+    }
+
+    ol.jsavarray .emptyWidth {
+        width : 0px;
+        min-width : 0px;
+    }
+
+    .highlight { 
+        color : red;
+        font-weight: bold;
+    }
+
+    .unhighlight { 
+        color : black;
+        font-weight: normal;
+    }
+</style>
+
+</head>
+
+<body data-height="650" data-width="950">
+<script src="SyntaxExercises.js"></script>
+
+<div class="exercise">
+  <div class="vars">
+    <var id="JSAV">initFreeVarHighlight()</var>
+  </div>
+  <div class="problems">
+    <div>
+      <div class="question"><p>Click on all of the free variable
+      occurrences below and then check your answer on the right.
+	</p>
+	<div id="jsav"></div>
+      </div>
+      <div class="solution" data-type="custom">
+	<div class="guess">true</div>
+	<div class="validator-function">
+	   return validateFreeVar()</div>
+      </div>
+      <div class="hints freeVarHighlightHints">
+	<p>Consider each (non-binding) variable occurrence in turn. If
+	the expression contains no binding occurrence with the same
+	name as the variable occurrence under consideration, then this
+	variable occurrence is clearly free.</p>
+	<p>If there is one or more binding occurrences with the same
+	name as the variable occurrence under consideration, determine
+	whether it belongs to the scope of one of these binding
+	occurrences. If so, then the variable occurrence in question
+	is bound. Otherwise, it is free.</p>
+	<p>If you are still not sure what the correct answer is, here
+        is a complete and correct algorithm to determine whether or
+        not a given variable occurrence is free in a given lambda
+        expression:<br /> 1. Build a parse tree for the
+        expression.<br />  2. Find the leaf node in this tree that
+        corresponds to the variable occurrence in
+        question.<br /> 3. Starting from this leaf node, repeatedly go
+        up along the edges of the tree until you reach a node for a
+        lambda abstraction whose parameter has the same name as the
+        variable in question.<br />  4. If you find such a node, then
+        the variable occurrence is bound; otherwise, it is
+        free.<br />
+        </p>
+      </div> 
+    </div>
+  </div>
+</body>
+</html>

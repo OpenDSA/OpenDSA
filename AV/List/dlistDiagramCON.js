@@ -1,8 +1,8 @@
 /*global ODSA, setPointer */
-"use strict";
 // Written by Jun Yang and Cliff Shaffer
 // Diagram showing the doubly linked list
 $(document).ready(function () {
+  "use strict";
   var av = new JSAV('dlistDiagramCON');
   // Relative offsets
   var leftMargin = 160;

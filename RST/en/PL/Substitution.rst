@@ -6,19 +6,14 @@
 .. avmetadata:: 
    :author: David Furcy, Tom Naps and Taylor Rydahl
 
+.. odsalink::  AV/PL/main.css
 
-.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/grammar.js
+======================
+Substitution Algorithm
+======================
 
-.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn.js
-
-.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter.js
-
-.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js
-
-
-=======================
- Substitution Algorithm
-=======================
+Substitution Algorithm
+----------------------
 
 In this section, we continue our investigation of the semantics of the
 lambda calculus. Now that we understand the meaning of each one of the
@@ -79,14 +74,12 @@ substitution, :math:`p` is always the expression that gets taken out
 of :math:`b` and :math:`a` is always the expression that gets
 inserted into :math:`b`.
 
-
 Now, back to the substitution algorithm. Since :math:`b` is an
 arbitrary lambda expression, looking back at the BNF grammar for the
 lambda calculus (see :ref:`BNF-grammar-for-LC`), we see that we must
 consider three cases for :math:`b`, namely a variable, a lambda
 abstraction or an application expression. Therefore, our description
 of the algorithm is broken down into three numbered cases.
-
 
 **Case 1:** If :math:`b` is a variable, say :math:`x`, then
 :math:`subst(a, p, b)` becomes :math:`subst(a, p,x)`. Recall that
@@ -114,7 +107,6 @@ since both :math:`p` and :math:`b` are equal to the same variable
    :output: show
 
 
-
 **Case 2:** To be completed
 
 **Case 3:** If :math:`b` is an application expression, say
@@ -135,18 +127,20 @@ examples listed above, the final result of the algorithm is
 :math:`(\lambda v.\lambda y.(y\ x)\ \lambda y.(y\ x))`.
 
 
+Exercise 1
+----------
+
 The following exercise is good practice for identifying which case applies
 at each step of the substitution algorithm.
 
 .. avembed:: Exercises/PL/SubstitutionCases.html ka
 
+Exercise 2
+----------
+
 The following exercise will test your ability to complete a full
 substitution by applying the algorithm scrupulously.
 
 .. avembed:: Exercises/PL/SubstitutionResult.html ka
-
-
-.. odsalink::  AV/PL/main.css
-
 
 .. odsascript:: AV/PL/AV/substCase1b.js

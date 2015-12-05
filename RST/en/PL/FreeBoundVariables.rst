@@ -6,20 +6,14 @@
 .. avmetadata:: 
    :author: David Furcy, Tom Naps and Taylor Rydahl
 
-
-.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/grammar.js
-
-.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn.js
-
-.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter.js
-
-.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js
-
 .. _free-and-bound-variables:
 
-==========================
- Free and Bound Variables
-==========================
+========================
+Free and Bound Variables
+========================
+
+Free and Bound Variables
+------------------------
 
 In the lambda calculus, like in other programming languages, there are
 two kinds of variable occurrences: variable declaration and variable
@@ -99,6 +93,9 @@ expression. It is preferrable to ask this question about each
 particular *occurrence* of a variable, keeping in mind that a binding
 occurrence is never free since its role is to define a new variable.
 
+Exercise 1
+----------
+
 The following exercise will be good practice for identifying free
 variables in lambda expressions.
 
@@ -107,11 +104,18 @@ variables in lambda expressions.
 Remember that, since binding occurrences are (by definition) bound, each and
 every variable occurrence is either free or bound, but not both.
 
+
+Exercise 2
+----------
+
 The following exercise will help you identify bound variables in lambda
 expressions.
 
 .. avembed:: Exercises/PL/boundVarHighlight.html ka
 
+
+Continued
+---------
 
 Throughout this section, we have attempted to be as intuitive and
 informal as possible. However, it is possible to define the notions of
@@ -198,10 +202,7 @@ all cases of this definition.
        would become bound in :math:`E` by the leading binding
        occurrence of :math:`x`.
 
-
 In conclusion, we should emphasize that the reason we
 devoted a whole section to the notions of free and bound variables is
 because we will invoke them repeatedly throughout this chapter,
 starting in the next section.
-
-

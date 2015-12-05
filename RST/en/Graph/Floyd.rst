@@ -17,7 +17,7 @@ To be precise, for every :math:`u, v \in \mathbf{V}`,
 calculate :math:`d(u, v)`.
 
 One solution is to run :term:`Dijkstra's algorithm`
-for finding the :term:`single-source shortest path`
+for finding the :term:`shortest path <single-source shortest paths problem>`
 :math:`|\mathbf{V}|` times, each
 time computing the shortest path from a different start vertex.
 If :math:`\mathbf{G}` is sparse

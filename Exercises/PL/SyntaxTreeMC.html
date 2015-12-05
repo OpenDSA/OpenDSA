@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+        <meta charset="utf-8">
+	<title>&lambda;-Calculus Syntax</title>
+	<script src="../../lib/jquery.min.js"></script>
+	<script src="../../lib/jquery-ui.min.js"></script>
+	<script src="../../JSAV/lib/jquery.transit.js"></script>
+	<script src="../../JSAV/lib/raphael.js"></script>
+	<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+	<!--script src="../../ODSAkhan-exercises/utils/math.js"></script-->
+	<script src="../../JSAV/build/JSAV-min.js"></script>
+	<script>var LAMBDA = {};</script>
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn.js"></script>
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter.js"></script>
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js"></script>
+	<link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+</head>
+
+<body data-height="650" data-width="950">
+<script src="SyntaxExercises.js"></script>
+
+<div class="exercise">
+	<div class="vars">
+		<var id="JSAV">initSyntaxTreeMC()</var>
+		<var id="CorrectAnswer">getOptionSyntaxTreeMC()[0]</var>
+		<var id="half">Math.ceil(CorrectAnswer/2)</var>
+		<var id="wrongAnswers">randRangeUnique(CorrectAnswer-half,CorrectAnswer+half,4)</var>
+		<var id="Option0">wrongAnswers[0]</var>
+		<var id="Option1">wrongAnswers[1]</var>
+		<var id="Option2">wrongAnswers[2]</var>
+		<var id="Option3">wrongAnswers[3]</var>
+	</div>
+	<div class="problems">
+		<div>
+		  <div class="question"><p>What is the total number of
+		  nodes (both interior and leaf nodes) in the parse
+		  tree for the following &lambda; expression?</p>
+				<div id="jsav"></div>
+			</div>
+			<div class="solution"><var>CorrectAnswer</var></div>
+			<ul class="choices">
+			  <li><var>Option0</var></li>
+			  <li><var>Option1</var></li>
+			  <li><var>Option2</var></li>
+			  <li><var>Option3</var></li>
+			</ul>
+
+			<div class="hints">
+			  <p>Remember to count all leaf nodes,
+			  including one node for each &lambda; and one
+			  node for each dot.</p>
+			  <p>There is also one node for each left
+			  parenthesis and one node for each right
+			  parenthesis.</p>
+			  <p>There is also one leaf node for each
+			  variable, in addition to the interior node
+			  for the non-terminal &lt;var&gt;.</p>
+			  <p>After you have built enough parse trees, you
+			  should notice patterns that allow you to
+			  answer this question  without
+			  building a parse tree.
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

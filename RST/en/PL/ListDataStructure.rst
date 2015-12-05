@@ -6,11 +6,14 @@
 .. avmetadata:: 
    :author: David Furcy and Tom Naps
 
-===============================
+========================
  The List data structure
-===============================
+========================
+
+The List data structure
+-----------------------
 
 To do
 
 
-.. avembed:: Exercises/PL/ListExerciseOpen.html ka
+.. avembed:: Exercises/PL/ListOpen.html ka
