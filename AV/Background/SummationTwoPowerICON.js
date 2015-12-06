@@ -5,7 +5,7 @@ $(document).ready(function() {
   "use strict";
   var av_name = "SummationTwoPowerICON";
   // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter;       // get the interpreter
   var av;
   var rectHeight = 30;
@@ -15,10 +15,10 @@ $(document).ready(function() {
   var labelShift = 5;
   var set2; //To hold rectangles of i = 2
   var set1; //To hold rectangles of i = 1
-  
+
   av = new JSAV(av_name);
   set2 = av.g.set();
-  set1 = av.g.set();  
+  set1 = av.g.set();
 
   //Slide 1
   av.umsg(interpret("av_c1"));
@@ -27,13 +27,13 @@ $(document).ready(function() {
   //Slide 2
   av.umsg(interpret("av_c2"));
   av.step();
-	
+
   //Slide 3
   av.umsg(interpret("av_c3.1"));
   av.umsg(interpret("av_c3.2"), {preserve: true});
   var rect0 = av.g.rect(leftAlign, topAlign, rectWidth, rectHeight);
-  var label0 = av.label("$i = 0$",  {top: topAlign - 0.5*rectHeight,
-                                     left: leftAlign + rectWidth + labelShift});
+  var label0 = av.label("$i = 0$", {top: topAlign - 0.5 * rectHeight,
+                                    left: leftAlign + rectWidth + labelShift});
   av.step();
 
   //Slide 4
@@ -115,10 +115,10 @@ $(document).ready(function() {
   //Slide 11
   rect0.translate(14 * rectWidth, 3 * rectHeight);
   av.step();
-    
+
   //Slide 12
   av.umsg(interpret("av_c12"));
-  av.g.rect(leftAlign + 15 * rectWidth, topAlign + 3 * rectHeight, rectWidth, rectHeight).css({fill:"black"});
+  av.g.rect(leftAlign + 15 * rectWidth, topAlign + 3 * rectHeight, rectWidth, rectHeight).css({fill: "black"});
   av.step();
 
   //Slide 13
