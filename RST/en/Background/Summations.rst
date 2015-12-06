@@ -3,7 +3,7 @@
 .. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
    :author: Cliff Shaffer
    :satisfies: summation; recurrence
    :topic: Math Background
@@ -68,8 +68,8 @@ comfortable with it.
    :output: show
 
 
-Another Example: Summing Powers of 2
-------------------------------------
+.. Another Example: Summing Powers of 2
+.. ------------------------------------
 
 .. inlineav:: SummationTwoPowerICON ss
    :output: show
@@ -150,8 +150,8 @@ solution.
 It only confirms when a proposed closed-form solution is correct.
 
 
-Recurrence Relations
---------------------
+.. Recurrence Relations
+.. --------------------
 
 The running time for a recursive algorithm is most easily expressed by
 a recursive expression because the total time for the recursive
@@ -183,7 +183,7 @@ Fibonacci sequence are
 
 Notice that this definition contains two parts: the general
 definition for :math:`\mbox{Fib}(n)` and the base cases for
-:math:`\mbox{Fib}(1)` and :math:`\mbox{Fib}(2)`. 
+:math:`\mbox{Fib}(1)` and :math:`\mbox{Fib}(2)`.
 Likewise, the definition for factorial contains a recursive part and
 base cases.
 
@@ -193,7 +193,7 @@ For example, the number of multiplications required by a recursive
 version of the factorial function for an input of size
 :math:`n` will be zero when :math:`n = 0` or :math:`n = 1` (the base
 cases), and it will be one plus the cost of calling ``fact`` on a
-value of :math:`n-1`. 
+value of :math:`n-1`.
 This can be defined using the following recurrence:
 
 .. math::
@@ -209,11 +209,11 @@ definition.
 
 .. inlineav:: LinearRecurrencesCON ss
    :output: show
-   
 
-Another Recurrence Example
---------------------------
 
+.. `Another Recurrence Example
+.. --------------------------
+`
 A slightly more complicated recurrence is
 
 .. math::

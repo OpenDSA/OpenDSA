@@ -379,72 +379,49 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
         sections = module_obj.get("sections")
         if bool(sections):
             section_couter = 1
-            # for exercise in exercises:
             for section in sections:
                 section_obj = sections[section]
                 section_name = section
                 showsection = section_obj.get("showsection")
-                no_exercise = 1
+                exercises_count = 0
                 for attr in section_obj:
                     if isinstance(section_obj[attr], dict):
-                        # if len(section_obj[attr] > 0):
                         exercise_obj = section_obj[attr]
-                        exercise_name = attr
                         long_name = exercise_obj.get("long_name")
                         required = exercise_obj.get("required")
                         points = exercise_obj.get("points")
                         threshold = exercise_obj.get("threshold")
                         if long_name is not None and required is not None and points is not None and threshold is not None:
-                            # print(str(section_couter).zfill(2)) + " " + long_name
-                            # OpenDSA exercises will map to canvas assignments
-                            if showsection is None or (showsection is not None and showsection == True):
-                                indexed_section_name = str(module_position).zfill(2) + "." + str(module_item_position).zfill(2) + "." +str(section_couter).zfill(2) + ' - ' +section_name
-                                results = assignments.create_assignment(
-                                    request_ctx,
-                                    course_id,
-                                    indexed_section_name,
-                                    assignment_submission_types="external_tool",
-                                    assignment_external_tool_tag_attributes={
-                                        "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2)},
-                                    assignment_points_possible=points,
-                                    assignment_description=section_name)
-                                assignment_id = results.json().get("id")
+                            exercises_count += 1
 
-                                config.chapters[chapter_name][str(module)]["sections"][section_name]["item_id"] = assignment_id
-                                # add assignment to module
-                                results = modules.create_module_item(
-                                    request_ctx,
-                                    course_id,
-                                    module_id,
-                                    'Assignment',
-                                    module_item_content_id=assignment_id,
-                                    module_item_indent=1)
-                            section_couter += 1
-                            no_exercise = 0
-                if no_exercise == 1:
-                    if showsection is None or (showsection is not None and showsection == True):
-                        indexed_section_name = str(module_position).zfill(2) + "." + str(module_item_position).zfill(2) + "." +str(section_couter).zfill(2) + ' - ' + section_name
-                        results = assignments.create_assignment(
-                            request_ctx,
-                            course_id,
-                            indexed_section_name,
-                            assignment_submission_types="external_tool",
-                            assignment_external_tool_tag_attributes={
-                                "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2)},
-                            assignment_points_possible=0,
-                            assignment_description=section_name)
-                        assignment_id = results.json().get("id")
+                if showsection is None or (showsection is not None and showsection == True):
+                    indexed_section_name = str(module_position).zfill(2) + "." + str(module_item_position).zfill(2) + "." +str(section_couter).zfill(2) + ' - ' + section_name
+                    # if section object contains no exercies or more than one exercise then only one assignment with 0 points will be created in canvas
+                    if exercises_count != 1 :
+                        points = 0
 
-                        config.chapters[chapter_name][str(module)]["sections"][section_name]["item_id"] = assignment_id
-                        # add assignment to module
-                        results = modules.create_module_item(
-                            request_ctx,
-                            course_id,
-                            module_id,
-                            'Assignment',
-                            module_item_content_id=assignment_id,
-                            module_item_indent=1)
-                    section_couter += 1
+                    results = assignments.create_assignment(
+                        request_ctx,
+                        course_id,
+                        indexed_section_name,
+                        assignment_submission_types="external_tool",
+                        assignment_external_tool_tag_attributes={
+                            "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2)},
+                        assignment_points_possible=points,
+                        assignment_description=section_name)
+                    assignment_id = results.json().get("id")
+
+                    config.chapters[chapter_name][str(module)]["sections"][section_name]["item_id"] = assignment_id
+
+                    # add assignment to canvas module
+                    results = modules.create_module_item(
+                        request_ctx,
+                        course_id,
+                        module_id,
+                        'Assignment',
+                        module_item_content_id=assignment_id,
+                        module_item_indent=1)
+                section_couter += 1
         else:
             indexed_module_name = str(module_position).zfill(2) + "." + str(module_item_position).zfill(2) + ".01 - " + module_name
             results = assignments.create_assignment(
@@ -468,11 +445,11 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
                 module_item_indent=1)
 
         module_item_position += 1
+
     # publish the module
     results = modules.update_module(request_ctx, course_id, module_id,
                                     module_published=True)
 
-    # print(json.dumps(config.__dict__))
 
 
 def create_course(config):
