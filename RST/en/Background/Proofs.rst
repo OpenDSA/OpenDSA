@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
@@ -9,11 +9,15 @@
    :topic: Math Background
 
 .. odsalink:: AV/Background/twoColorCON.css
+.. odsalink:: AV/Background/TwoColoringProofCON.css
 
 .. index:: !proof
 
 Mathematical Proof Techniques
 =============================
+
+Introduction
+------------
 
 Solving any problem has two distinct parts:
 the investigation and the argument.
@@ -52,6 +56,7 @@ This section briefly introduces three commonly used proof techniques:
 #) proof by contradiction and
 
 #) proof by mathematical induction.
+
 
 Direct Proof
 ------------
@@ -100,6 +105,7 @@ proofs.
 
 .. index:: ! proof; by contradiction
 
+
 Proof by Contradiction
 ----------------------
 
@@ -146,6 +152,7 @@ This technique works because the :term:`truth table` for the two
 logical statements are the same.
 
 .. index:: ! proof; by induction
+
 
 Proof by Mathematical Induction
 -------------------------------
@@ -451,31 +458,9 @@ induction hypothesis.
    can be two-colored.
 
    **Proof:**
-   Consider the base case of a single infinite line in the plane.
-   This line splits the plane into two regions.
-   One region can be colored black and the other white to get a
-   valid two-coloring.
-   The induction hypothesis is that the set of regions formed by
-   :math:`n-1` infinite lines can be two-colored.
-   To prove the theorem for :math:`n`, consider the set of regions
-   formed by the :math:`n-1` lines remaining when any one of the
-   :math:`n` lines is removed. 
-   By the induction hypothesis, this set of regions can be
-   two-colored.
-   Now, put the :math:`n`'th line back.
-   This splits the plane into two half-planes, each of which
-   (independently) has a valid two-coloring inherited from the
-   two-coloring of the plane with :math:`n-1` lines.
-   Unfortunately, the regions newly split by the :math:`n`'th line
-   violate the rule for a two-coloring.
-   Take all regions on one side of the :math:`n`'th line and reverse
-   their coloring (after doing so, this half-plane is still
-   two-colored).
-   Those regions split by the :math:`n`'th line are now properly
-   two-colored, because the part of the region to one side of the line
-   is now black and the region to the other side is now white.
-   Thus, by mathematical induction, the entire plane is
-   two-colored.
+
+   .. inlineav:: TwoColoringProofCON ss
+      :output: show
 
 Compare the proof in Example :num:`Example #ThmRegion` with that in
 Example :num:`Example #ThmStamps`.
@@ -560,3 +545,4 @@ Prior to this, we must prove that the function always terminates,
 which might also be done using an induction proof.
 
 .. odsascript:: AV/Background/twoColorCON.js
+.. odsascript:: AV/Background/TwoColoringProofCON.js

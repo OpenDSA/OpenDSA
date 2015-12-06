@@ -29,13 +29,6 @@
     "Introduction": {
       "Background/IntroDSA.rst": {
         "long_name": "Introduction to Data Structures and Algorithms",
-        "sections": {
-          "se": {
-            "long_name": "software engineering topics",
-            "showhide": "none",
-            "remove": true
-          }
-        },
         "exercises": {
           "IntroSumm": {
             "long_name": "Introduction Summary Questions",
@@ -100,7 +93,32 @@
       "Background/Summations": {
         "long_name": "Summations and Recurrence Relations",
         "dispModComp": true,
-        "exercises": {}
+        "exercises": {
+          "SummationOneToNCON": {
+            "long_name": "Summation of the first N Integers visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "SummationTwoPowerICON": {
+            "long_name": "Summation Two Power I visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "LinearRecurrencesCON": {
+            "long_name": "Linear Recurrences Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "LinearRecurrencesNCON": {
+            "long_name": "Linear Recurrences Slideshow (n)",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "Background/Proofs": {
         "long_name": "Proofs",
@@ -1243,7 +1261,7 @@
           }
         }
       },
-      "Development/HuffProof": {
+      "Binary/HuffProof": {
         "long_name": "Proof for Huffman Coding",
         "dispModComp": true,
         "exercises": {
