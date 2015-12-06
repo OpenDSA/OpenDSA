@@ -1,0 +1,15 @@
+#SummationTwoPowerICON {
+  height: 310px;
+}
+
+#SummationTwoPowerICON .jsavoutput.jsavline {
+  height: 50px;
+}
+
+#SummationTwoPowerICON .rotated {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}

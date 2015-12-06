@@ -1,8 +1,7 @@
-"use strict";
 // Written by Cliff Shaffer
-$(document).ready(function () {
+$(document).ready(function() {
+  "use strict";
   var av = new JSAV("TOHfigCON", {animationMode: "none"});
-
   var left = 160;
 
   av.g.rect(left +   0, 120, 245, 10);
