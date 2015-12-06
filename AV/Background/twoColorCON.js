@@ -1,7 +1,7 @@
 /*global JSAV, document */
-"use strict";
 // Written by Cliff Shaffer
-$(document).ready(function () {
+$(document).ready(function() {
+  "use strict";
   var av = new JSAV("twoColorCON", {animationMode: "none"});
 
   var left = 250;

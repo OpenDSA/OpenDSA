@@ -58,8 +58,23 @@ is simply the expression "1" summed :math:`n` times
 (remember that :math:`i` ranges from 1 to :math:`n`).
 Because the sum of :math:`n` 1s is :math:`n`,
 the closed-form solution is :math:`n`.
-The following is a list of useful summations,
-along with their closed-form solutions.
+
+Here is an explanation about the closed form solution of one summation
+that you will see many times in this book.
+Since this appears so often, it will help you later if you can get
+comfortable with it.
+
+.. inlineav:: SummationOneToNCON ss
+   :output: show
+
+
+Another Example: Summing Powers of 2
+------------------------------------
+
+.. inlineav:: SummationTwoPowerICON ss
+   :output: show
+
+Here is a list of useful summations, along with their closed-form solutions.
 
 .. math::
    :label: sum1
@@ -135,20 +150,6 @@ solution.
 It only confirms when a proposed closed-form solution is correct.
 There are techniques for deriving
 :ref:`closed-form solutions <closed-form solution> <AdvSumm>`.
-
-
-Example: Summing Integers from 1 to n
--------------------------------------
-
-.. inlineav:: SummationOneToNCON ss
-   :output: show
-
-
-Example: Summing Powers of 2
-----------------------------
-
-.. inlineav:: SummationTwoPowerICON ss
-   :output: show
 
 Recurrence Relations
 --------------------
