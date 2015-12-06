@@ -207,52 +207,6 @@ One approach is to expand the recurrence by replacing any
 occurrences of :math:`\mathbf{T}` on the right-hand side with its
 definition.
 
-.. _FactRecurSol:
-
-.. topic:: Example
-
-   If we expand the recurrence
-   :math:`\mathbf{T}(n) = \mathbf{T}(n-1) + 1`, we get 
-
-   .. math::
-
-      \begin{eqnarray*}
-      \mathbf{T}(n) &=& \mathbf{T}(n-1) + 1\\
-      &=& (\mathbf{T}(n-2) + 1) + 1.\\
-      \end{eqnarray*}
-
-   We can expand the recurrence as many steps as we like, but the goal is 
-   to detect some pattern that will permit us to rewrite the recurrence
-   in terms of a summation.
-   In this example, we might notice that
-
-   .. math::
-
-      \mathbf{T}(n-2) + 1) + 1 = \mathbf{T}(n-2) + 2
-
-   and if we expand the recurrence again, we get
-
-   .. math::
-
-      \mathbf{T}(n) = \mathbf{T}(n-2) + 2 = \mathbf{T}(n-3) + 1 + 2 =
-      \mathbf{T}(n-3) + 3
-
-   which generalizes to the pattern
-   :math:`\mathbf{T}(n) = \mathbf{T}(n-i) + i`.
-   We might conclude that
-
-   .. math::
-
-      \begin{eqnarray*}
-      \mathbf{T}(n) &=& \mathbf{T}(n - (n-1)) + (n - 1)\\
-      &=& \mathbf{T}(1) + n-1\\
-      &=& n-1.
-     \end{eqnarray*}
-
-   Because we have merely guessed at a pattern and not actually proved
-   that this is the correct closed form solution, we should use an
-   :ref:`induction proof <FactRecurProof>` to complete the process.
-
 .. inlineav:: LinearRecurrencesCON ss
    :output: show
    
@@ -260,42 +214,16 @@ definition.
 Another Recurrence Example
 --------------------------
 
-.. topic:: Example
+A slightly more complicated recurrence is
 
-   A slightly more complicated recurrence is
+.. math::
 
-   .. math::
+   \mathbf{T}(n) = \mathbf{T}(n-1) + n; \quad \mathbf{T}(1) = 1.
 
-      \mathbf{T}(n) = \mathbf{T}(n-1) + n; \quad \mathbf{T}(1) = 1.
-
-   Expanding this recurrence a few steps, we get
-
-   .. math::
-
-      \begin{eqnarray*}
-      \mathbf{T}(n) &=& \mathbf{T}(n-1) + n\\
-      &=& \mathbf{T}(n-2) + (n-1) + n\\
-      &=& \mathbf{T}(n-3) + (n-2) + (n-1) + n.\\
-      \end{eqnarray*}
-
-   We should then observe that this recurrence appears to have a
-   pattern that leads to
-
-   .. math::
-
-      \begin{eqnarray*}
-      \mathbf{T}(n) &=& \mathbf{T}(n-(n-1)) + (n-(n-2)) + \cdots + (n-1) + n\\
-      &=& 1 + 2 + \cdots + (n-1) + n.
-      \end{eqnarray*}
-
-   This is equivalent to the summation :math:`\sum_{i=1}^n i`,
-   for which we already know the closed-form solution.
+Again, we will use expansion to help us find a closed form solution.
 
 .. inlineav:: LinearRecurrencesNCON ss
    :output: show
-	  
-There are many more techniques to find closed-form solutions for
-recurrence relations.
 
 .. odsascript:: AV/Background/SummationOneToNCON.js
 .. odsascript:: AV/Background/SummationTwoPowerICON.js
