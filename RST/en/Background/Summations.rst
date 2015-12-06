@@ -148,8 +148,7 @@ Most of these equalities can be proved easily by a
 Unfortunately, induction does not help us derive a closed-form
 solution.
 It only confirms when a proposed closed-form solution is correct.
-There are techniques for deriving
-:ref:`closed-form solutions <closed-form solution> <AdvSumm>`.
+
 
 Recurrence Relations
 --------------------
