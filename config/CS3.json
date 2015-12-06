@@ -147,8 +147,7 @@
       "Background/Summations": {
         "long_name": "Summations and Recurrence Relations",
         "sections": {
-          "Summations": {},
-          "Example: Summing Integers from 1 to n": {
+          "Summations": {
             "SummationOneToNCON": {
               "long_name": "Summation of the first N Integers visualization",
               "required": false,
@@ -156,7 +155,7 @@
               "threshold": 1.0
             }
           },
-          "Example: Summing Powers of 2": {
+          "Another Example: Summing Powers of 2": {
             "SummationTwoPowerICON": {
               "long_name": "Summation Two Power I visualization",
               "required": false,
