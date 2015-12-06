@@ -1,10 +1,8 @@
 #LinearRecurrencesNCON {
-  width: 800px;
-  height: 400px;
+  height: 250px;
 }
 #LinearRecurrencesNCON .jsavline {
-  width:800px;
-  height:75px;
+  height: 40px;
 }
 
 #LinearRecurrencesNCON .jsavgraph .jsavnode {
@@ -14,6 +12,7 @@
   min-height: 40px !important;
   max-height: 40px !important;
 }
+
 .rotated {
   -webkit-transform: rotate(90deg);
   -moz-transform: rotate(90deg);
@@ -21,9 +20,7 @@
   -o-transform: rotate(90deg);
   transform: rotate(90deg);
 }
-h1{
-  font-size: 1em;
-}
+
 .dashed{
   stroke-dasharray: 5, 5;
 }
