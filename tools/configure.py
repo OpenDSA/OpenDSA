@@ -385,7 +385,7 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
                 showsection = section_obj.get("showsection")
                 exercises_count = 0
                 for attr in section_obj:
-                    if isinstance(section_obj[attr], dict):
+                    if bool(section_obj[attr]) and isinstance(section_obj[attr], dict):
                         exercise_obj = section_obj[attr]
                         long_name = exercise_obj.get("long_name")
                         required = exercise_obj.get("required")
@@ -397,59 +397,60 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
                 if showsection is None or (showsection is not None and showsection == True):
                     indexed_section_name = str(module_position).zfill(2) + "." + str(module_item_position).zfill(2) + "." +str(section_couter).zfill(2) + ' - ' + section_name
                     # if section object contains no exercies or more than one exercise then only one assignment with 0 points will be created in canvas
-                    if exercises_count != 1 :
-                        points = 0
+                    if exercises_count == 1 :
+                        results = assignments.create_assignment(
+                            request_ctx,
+                            course_id,
+                            indexed_section_name,
+                            assignment_submission_types="external_tool",
+                            assignment_external_tool_tag_attributes={
+                                "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2)},
+                            assignment_points_possible=points,
+                            assignment_description=section_name)
 
-                    results = assignments.create_assignment(
-                        request_ctx,
-                        course_id,
-                        indexed_section_name,
-                        assignment_submission_types="external_tool",
-                        assignment_external_tool_tag_attributes={
-                            "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2)},
-                        assignment_points_possible=points,
-                        assignment_description=section_name)
-                    assignment_id = results.json().get("id")
+                        item_id = results.json().get("id")
 
-                    config.chapters[chapter_name][str(module)]["sections"][section_name]["item_id"] = assignment_id
+                        # add assignment to canvas module
+                        results = modules.create_module_item(
+                            request_ctx,
+                            course_id,
+                            module_id,
+                            'Assignment',
+                            module_item_content_id=item_id,
+                            module_item_indent=1)
+                    else:
+                        results = modules.create_module_item(
+                            request_ctx,
+                            course_id,
+                            module_id,
+                            'ExternalTool',
+                            module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2),
+                            module_item_content_id=None,
+                            module_item_title=indexed_section_name,
+                            module_item_indent=1)
+                        item_id = results.json().get("id")
 
-                    # add assignment to canvas module
-                    results = modules.create_module_item(
-                        request_ctx,
-                        course_id,
-                        module_id,
-                        'Assignment',
-                        module_item_content_id=assignment_id,
-                        module_item_indent=1)
+                    config.chapters[chapter_name][str(module)]["sections"][section_name]["item_id"] = item_id
                 section_couter += 1
         else:
             indexed_module_name = str(module_position).zfill(2) + "." + str(module_item_position).zfill(2) + ".01 - " + module_name
-            results = assignments.create_assignment(
-                request_ctx,
-                course_id,
-                indexed_module_name,
-                assignment_submission_types="external_tool",
-                assignment_external_tool_tag_attributes={
-                    "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url},
-                assignment_points_possible=0,
-                assignment_description=module_name)
-            assignment_id = results.json().get("id")
-            config.chapters[chapter_name][str(module)]["item_id"] = assignment_id
-            # add assignment to module
+
             results = modules.create_module_item(
                 request_ctx,
                 course_id,
                 module_id,
-                'Assignment',
-                module_item_content_id=assignment_id,
+                'ExternalTool',
+                module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url,
+                module_item_content_id=None,
+                module_item_title=indexed_module_name,
                 module_item_indent=1)
-
+            item_id = results.json().get("id")
+            config.chapters[chapter_name][str(module)]["item_id"] = item_id
         module_item_position += 1
 
     # publish the module
     results = modules.update_module(request_ctx, course_id, module_id,
                                     module_published=True)
-
 
 
 def create_course(config):
