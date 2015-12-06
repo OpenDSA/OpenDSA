@@ -1,19 +1,19 @@
 {
   "translations" :{
     "en": {
-	  "Slide 1": "Let's see how we can guess the closed form solution of the recurrence $T(n) = T(n-1) + 1$",
-	  "Slide 2.1": "For a problem of size $n$, we have $1$ unit of work plus the amount of work required for one subproblem of size $n-1$",
-	  "Slide 2.2": "<br> $T(n) = 1 + T(n-1)$",
-	  "Slide 3.1": "For a problem of size $n-1$, we have $1$ unit of work plus the amount of work required for one subproblem of size $n-2$",
-	  "Slide 3.2": "<br> $T(n) = 1 + (1 + T(n-2))$",
-	  "Slide 4.1": "For a problem of size $n-2$, we have $1$ unit of work plus the amount of work required for one subproblem of size $n-3$",
-	  "Slide 4.2": "<br> $T(n) = 1 + (1 + (1 + T(n-3)))$",
-	  "Slide 5.1": "For a problem of size $n-3$, we have $1$ unit of work plus the amount of work required for one subproblem of size $n-4$",
-	  "Slide 5.2": "<br> $T(n) = 1 + (1 + (1 + (1 + T(n-4)))$",
-	  "Slide 6.1": "This pattern will continue till we reach a subproblem of size $1$",
-	  "Slide 6.2": "<br> $T(n) = 1 + (1 + (1 + (1 + (1 + (...))))$",
-	  "Slide 7": "Thus, the closed form solution of $T(n) = T(n-1) + 1$ can be modeled by the summation $\\displaystyle\\sum_{i=1}^{n}1$",  
-	  "Slide 8": "Finally, we have the closed form solution of $T(n) = T(n-1) + 1$ evaluates to $n$"
+      "av_c1": "We will use expansion to guess the closed form solution for the recurrence $\\mathbf{T}(n) = \\mathbf{T}(n-1) + 1\\ \\mbox{for}\\ n > 1; \\mathbf{T}(0) = \\mathbf{T}(1) = 0$.",
+      "av_c2.1": "When we expand the recurrence for a problem of size $n$, we replace the problem of size $n$ with $1$ unit of work plus a subproblem of size $n-1$:",
+      "av_c2.2": " $\\mathbf{T}(n) = 1 + \\mathbf{T}(n-1)$",
+      "av_c3.1": "We replace a problem of size $n-1$ with $1$ unit of work plus a subproblem of size $n-2$",
+      "av_c3.2": "<br> $\\mathbf{T}(n) = 1 + (1 + \\mathbf{T}(n-2))$",
+      "av_c4.1": "We replace a problem of size $n-2$ with $1$ unit of work plus a subproblem of size $n-3$",
+      "av_c4.2": "<br> $\\mathbf{T}(n) = 1 + (1 + (1 + \\mathbf{T}(n-3)))$",
+      "av_c5.1": "We replace a problem of size $n-3$ with $1$ unit of work plus a subproblem of size $n-4$",
+      "av_c5.2": "<br> $\\mathbf{T}(n) = 1 + (1 + (1 + (1 + \\mathbf{T}(n-4)))$",
+      "av_c6.1": "This pattern will continue till we reach a subproblem of size $1$",
+      "av_c6.2": "<br> $\\mathbf{T}(n) = 1 + (1 + (1 + (1 + (1 + (...))))$",
+      "av_c7": "Thus, the closed form solution of $\\mathbf{T}(n) = \\mathbf{T}(n-1) + 1$ can be modeled by the summation $\\displaystyle\\sum_{i=1}^{n}1$",
+      "av_c8": "This gives us a closed form solution of $\\mathbf{T}(n) = \\mathbf{T}(n-1) + 1 = n$"
     }
   }
 }
