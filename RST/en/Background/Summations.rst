@@ -211,9 +211,9 @@ definition.
    :output: show
 
 
-.. `Another Recurrence Example
+.. Another Recurrence Example
 .. --------------------------
-`
+
 A slightly more complicated recurrence is
 
 .. math::
