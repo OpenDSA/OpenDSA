@@ -30,19 +30,8 @@ The convention is that if the book configuration file is ``foo.json``,
 then the corresponding course configuration file(s) will be in in
 ``fooXX_LMSconf.json`` where XX allows you to distinguish between
 the various courses that use the book.
-From the top level of an OpenDSA repository, you can push the
-necessary book data to your LMS (as configured in the course
-configuration file ``config/foo_LMSconf.json``) by issuing this command:
 
-``make foo opts="-c True"``
-
-A set of ``make`` targets are available within the OpenDSA Makefile.
-If you want to compile one of the existing book instances and bind it
-to a particular course instance in the Makefile, you can just type:
-
-``make <courseinstance>``
-
-Further information about how to set up a course is in
+Details about how to set up a course is in
 :ref:`Configuring Courses  <ConfCourse>` below.
 
 ---------------------------------------
@@ -543,6 +532,37 @@ OpenDSA repository.
 This documentation along with the template file should provide enough
 information for you to successfully define the contents of a
 configuration file.
+
+A set of ``make`` targets are available in the OpenDSA Makefile.
+From the top level of an OpenDSA repository, you can 
+compile the HTML files for a book instance by typing
+
+``make <courseinstance>``
+
+So, if there existed a book with a configuration file named
+``config/foo.json``, you would type
+
+``make foo``
+
+This much (locally creating the HTML files) uses just the book
+configuration file.
+
+If you want to bind a book instance to a particular course instance on
+a given LMS, that requires both compiling the book and pushing
+information about it to the LMS.
+Pushing information to the LMS is where the course configuration file
+comes into play.
+**After** you set up the proper course configuration file in
+``config/foo_LMSconf.json``,  you can type:
+
+``make foo opts="-c True"``
+
+to push the necessary book data to your LMS.
+Alternatively, there may already be a Makefile target named ``fooLMS``
+that has this same effect by typing
+
+``make fooLMS``
+
 
 Format
 ~~~~~~
