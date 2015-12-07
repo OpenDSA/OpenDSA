@@ -26,69 +26,69 @@ $(document).ready(function() {
   //Slide 3
   av.umsg(interpret("av_c3.1"));
   av.umsg(interpret("av_c3.2"), {preserve: true});
-  var rect1 = av.g.rect(leftAlign, topAlign, rectWidth, rectHeight).css({fill: "red"});
+  var rect1 = av.g.rect(leftAlign, topAlign, rectWidth, rectHeight).addClass("highlight");
   av.label("$i = 1$",  {top: topAlign + 12, left: leftAlign + 10});
   av.step();
 
   //Slide 4
   av.umsg(interpret("av_c4.1"));
   av.umsg(interpret("av_c4.2"), {preserve: true});
-  rect1.css({fill: "none"});
-  var rect21 = av.g.rect(leftAlign + rectWidth, topAlign, rectWidth, rectHeight).css({fill: "red"});
-  var rect22 = av.g.rect(leftAlign + rectWidth, topAlign - rectHeight, rectWidth, rectHeight).css({fill: "red"});
+  rect1.removeClass("highlight");
+  var rect21 = av.g.rect(leftAlign + rectWidth, topAlign, rectWidth, rectHeight).addClass("highlight");
+  var rect22 = av.g.rect(leftAlign + rectWidth, topAlign - rectHeight, rectWidth, rectHeight).addClass("highlight");
   av.label("$i = 2$",  {top: topAlign + 12, left: leftAlign + rectWidth + 10});
   av.step();
 
   //Slide 5
   av.umsg(interpret("av_c5.1"));
   av.umsg(interpret("av_c5.2"), {preserve: true});
-  rect21.css({fill: "none"});
-  rect22.css({fill: "none"});
-  var rect31 = av.g.rect(leftAlign + 2 * rectWidth, topAlign, rectWidth, rectHeight).css({fill: "red"});
-  var rect32 = av.g.rect(leftAlign + 2 * rectWidth, topAlign - rectHeight, rectWidth, rectHeight).css({fill: "red"});
-  var rect33 = av.g.rect(leftAlign + 2 * rectWidth, topAlign - 2 * rectHeight, rectWidth, rectHeight).css({fill: "red"});
+  rect21.removeClass("highlight");
+  rect22.removeClass("highlight");
+  var rect31 = av.g.rect(leftAlign + 2 * rectWidth, topAlign, rectWidth, rectHeight).addClass("highlight");
+  var rect32 = av.g.rect(leftAlign + 2 * rectWidth, topAlign - rectHeight, rectWidth, rectHeight).addClass("highlight");
+  var rect33 = av.g.rect(leftAlign + 2 * rectWidth, topAlign - 2 * rectHeight, rectWidth, rectHeight).addClass("highlight");
   av.label("$i = 3$",  {top: topAlign + 12, left: leftAlign + 2 * rectWidth + 10});
   av.step();
 
   //Slide 6
   av.umsg(interpret("av_c6.1"));
   av.umsg(interpret("av_c6.2"), {preserve: true});
-  rect31.css({fill: "none"});
-  rect32.css({fill: "none"});
-  rect33.css({fill: "none"});
-  var rect41 = av.g.rect(leftAlign + 3 * rectWidth, topAlign, rectWidth, rectHeight).css({fill: "red"});
-  var rect42 = av.g.rect(leftAlign + 3 * rectWidth, topAlign - rectHeight, rectWidth, rectHeight).css({fill: "red"});
-  var rect43 = av.g.rect(leftAlign + 3 * rectWidth, topAlign - 2 * rectHeight, rectWidth, rectHeight).css({fill: "red"});
-  var rect44 = av.g.rect(leftAlign + 3 * rectWidth, topAlign - 3 * rectHeight, rectWidth, rectHeight).css({fill: "red"});
+  rect31.removeClass("highlight");
+  rect32.removeClass("highlight");
+  rect33.removeClass("highlight");
+  var rect41 = av.g.rect(leftAlign + 3 * rectWidth, topAlign, rectWidth, rectHeight).addClass("highlight");
+  var rect42 = av.g.rect(leftAlign + 3 * rectWidth, topAlign - rectHeight, rectWidth, rectHeight).addClass("highlight");
+  var rect43 = av.g.rect(leftAlign + 3 * rectWidth, topAlign - 2 * rectHeight, rectWidth, rectHeight).addClass("highlight");
+  var rect44 = av.g.rect(leftAlign + 3 * rectWidth, topAlign - 3 * rectHeight, rectWidth, rectHeight).addClass("highlight");
   av.label("$i = 4$",  {top: topAlign + 12, left: leftAlign + 3 * rectWidth + 10});
   av.step();
 
   //Slide 7
   av.umsg(interpret("av_c7.1"));
   av.umsg(interpret("av_c7.2"), {preserve: true});
-  rect41.css({fill: "none"});
-  rect42.css({fill: "none"});
-  rect43.css({fill: "none"});
-  rect44.css({fill: "none"});
-  var rect51 = av.g.rect(leftAlign + 4 * rectWidth, topAlign, rectWidth, rectHeight).css({fill: "red"});
-  var rect52 = av.g.rect(leftAlign + 4 * rectWidth, topAlign - rectHeight, rectWidth, rectHeight).css({fill: "red"});
-  var rect53 = av.g.rect(leftAlign + 4 * rectWidth, topAlign - 2 * rectHeight, rectWidth, rectHeight).css({fill: "red"});
-  var rect54 = av.g.rect(leftAlign + 4 * rectWidth, topAlign - 3 * rectHeight, rectWidth, rectHeight).css({fill: "red"});
-  var rect55 = av.g.rect(leftAlign + 4 * rectWidth, topAlign - 4 * rectHeight, rectWidth, rectHeight).css({fill: "red"});
+  rect41.removeClass("highlight");
+  rect42.removeClass("highlight");
+  rect43.removeClass("highlight");
+  rect44.removeClass("highlight");
+  var rect51 = av.g.rect(leftAlign + 4 * rectWidth, topAlign, rectWidth, rectHeight).addClass("highlight");
+  var rect52 = av.g.rect(leftAlign + 4 * rectWidth, topAlign - rectHeight, rectWidth, rectHeight).addClass("highlight");
+  var rect53 = av.g.rect(leftAlign + 4 * rectWidth, topAlign - 2 * rectHeight, rectWidth, rectHeight).addClass("highlight");
+  var rect54 = av.g.rect(leftAlign + 4 * rectWidth, topAlign - 3 * rectHeight, rectWidth, rectHeight).addClass("highlight");
+  var rect55 = av.g.rect(leftAlign + 4 * rectWidth, topAlign - 4 * rectHeight, rectWidth, rectHeight).addClass("highlight");
   av.label("$i = 5$",  {top: topAlign + 12, left: leftAlign + 4 * rectWidth + 10});
   av.step();
 
   //Slide 8
   av.umsg(interpret("av_c8"));
-  rect51.css({fill: "none"});
-  rect52.css({fill: "none"});
-  rect53.css({fill: "none"});
-  rect54.css({fill: "none"});
-  rect55.css({fill: "none"});
+  rect51.removeClass("highlight");
+  rect52.removeClass("highlight");
+  rect53.removeClass("highlight");
+  rect54.removeClass("highlight");
+  rect55.removeClass("highlight");
   av.label("|---------------- $n$ ------------------|",
-           {top: topAlign + 25, left: leftAlign + 20}).css({"font-size": "16px", "text-align": "center"});
+           {top: topAlign + 25, left: leftAlign + 20}).addClass("sizeLabel");
   av.label("|------- $n$ -------|",
-           {top: topAlign - 60, left: leftAlign + 5 * rectWidth - 35}).css({"font-size": "16px", "text-align": "center"}).addClass("rotated");
+           {top: topAlign - 60, left: leftAlign + 5 * rectWidth - 35}).addClass("sizeLabel").addClass("rotated");
   av.step();
 
   //Slide 9
@@ -103,19 +103,19 @@ $(document).ready(function() {
   av.umsg(interpret("av_c10"), {preserve: true});
   av.g.polyline([[leftAlign, topAlign + rectHeight],
                  [leftAlign, topAlign],
-                 [leftAlign + rectWidth, topAlign]]).css({fill: "green", opacity: 0.2});
+                 [leftAlign + rectWidth, topAlign]]).addClass("smallTriangle");
   av.g.polyline([[leftAlign + rectWidth, topAlign],
                  [leftAlign + rectWidth, topAlign - rectHeight],
-                 [leftAlign + 2 * rectWidth, topAlign - rectHeight]]).css({fill: "green", opacity: 0.2});
+                 [leftAlign + 2 * rectWidth, topAlign - rectHeight]]).addClass("smallTriangle");
   av.g.polyline([[leftAlign + 2 * rectWidth, topAlign - rectHeight],
                  [leftAlign + 2 * rectWidth, topAlign - 2 * rectHeight],
-                 [leftAlign + 3 * rectWidth, topAlign - 2 * rectHeight]]).css({fill: "green", opacity: 0.2});
+                 [leftAlign + 3 * rectWidth, topAlign - 2 * rectHeight]]).addClass("smallTriangle");
   av.g.polyline([[leftAlign + 3 * rectWidth, topAlign - 2 * rectHeight],
                  [leftAlign + 3 * rectWidth, topAlign - 3 * rectHeight],
-                 [leftAlign + 4 * rectWidth, topAlign - 3 * rectHeight]]).css({fill: "green", opacity: 0.2});
+                 [leftAlign + 4 * rectWidth, topAlign - 3 * rectHeight]]).addClass("smallTriangle");
   av.g.polyline([[leftAlign + 4 * rectWidth, topAlign - 3 * rectHeight],
                  [leftAlign + 4 * rectWidth, topAlign - 4 * rectHeight],
-                 [leftAlign + 5 * rectWidth, topAlign - 4 * rectHeight]]).css({fill: "green", opacity: 0.2});
+                 [leftAlign + 5 * rectWidth, topAlign - 4 * rectHeight]]).addClass("smallTriangle");
   av.step();
 
   //Slide 11

@@ -31,8 +31,8 @@ $(document).ready(function() {
   var nMinusOne = graph.addNode("n-1", {left: leftAlign + nodeWidth + nodeGap, top: topAlign});
   var oneTwo = graph.addEdge(n, nMinusOne, {weight: "n +"});
   n.highlight();
-  oneTwo.css({stroke: "green"});
-  nMinusOne.css({"background-color": "lightgreen"});
+  oneTwo.addClass("subProblemEdge");
+  nMinusOne.addClass("subProblemNode");
   graph.layout();
   av.step();
 
@@ -42,11 +42,11 @@ $(document).ready(function() {
   var nMinusTwo = graph.addNode("n-2", {left: leftAlign + 2 * nodeGap + 2 * nodeWidth, top: topAlign});
   var twoThree = graph.addEdge(nMinusOne, nMinusTwo, {weight: "n-1 +</b>"});
   n.unhighlight();
-  nMinusOne.css({"background-color": "white"});
+  nMinusOne.removeClass("subProblemNode");
   nMinusOne.highlight();
-  oneTwo.css({stroke: "black"});
-  twoThree.css({stroke: "green"});
-  nMinusTwo.css({"background-color": "lightgreen"});
+  oneTwo.removeClass("subProblemEdge");
+  twoThree.addClass("subProblemEdge");
+  nMinusTwo.addClass("subProblemNode");
   graph.layout();
   av.step();
 
@@ -57,9 +57,9 @@ $(document).ready(function() {
   var threeFour = graph.addEdge(nMinusTwo, nMinusThree, {weight: "n-2 +"});
   nMinusOne.unhighlight();
   nMinusTwo.highlight();
-  twoThree.css({stroke: "black"});
-  threeFour.css({stroke: "green"});
-  nMinusThree.css({"background-color": "lightgreen"});
+  twoThree.removeClass("subProblemEdge");
+  threeFour.addClass("subProblemEdge");
+  nMinusThree.addClass("subProblemNode");
   graph.layout();
   av.step();
 
@@ -69,11 +69,11 @@ $(document).ready(function() {
   var nMinusFour = graph.addNode("n-4", {left: leftAlign + 4 * nodeGap + 4 * nodeWidth, top: topAlign});
   var fourFive = graph.addEdge(nMinusThree, nMinusFour, {weight: "n-3+"});
   nMinusTwo.unhighlight();
-  nMinusTwo.css({"background-color": "white"});
+  nMinusTwo.removeClass("subProblemNode");
   nMinusThree.highlight();
-  threeFour.css({stroke: "black"});
-  fourFive.css({stroke: "green"});
-  nMinusFour.css({"background-color": "lightgreen"});
+  threeFour.removeClass("subProblemEdge");
+  fourFive.addClass("subProblemEdge");
+  nMinusFour.addClass("subProblemNode");
   graph.layout();
   av.step();
 
@@ -88,10 +88,10 @@ $(document).ready(function() {
                            topAlign + nodeHeight - 4);
   lastEdge.addClass("dashed");
   nMinusThree.unhighlight();
-  nMinusThree.css({"background-color": "white"});
-  fourFive.css({stroke: "black"});
-  nMinusFour.css({"background-color": "white"});
-  last.css({"background-color": "lightgreen"});
+  nMinusThree.removeClass("subProblemNode");
+  fourFive.removeClass("subProblemEdge");
+  nMinusFour.removeClass("subProblemNode");
+  last.addClass("subProblemNode");
   av.step();
 
   //Slide 7

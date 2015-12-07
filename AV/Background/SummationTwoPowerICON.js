@@ -35,7 +35,7 @@ $(document).ready(function() {
   //Slide 3
   av.umsg(interpret("av_c3.1"));
   av.umsg(interpret("av_c3.2"), {preserve: true});
-  var rect0 = av.g.rect(leftAlign, topAlign, rectWidth, rectHeight).css({fill: "red"});
+  var rect0 = av.g.rect(leftAlign, topAlign, rectWidth, rectHeight).addClass("highlight");
   var label0 = av.label("$i = 0$", {top: topAlign - 0.5 * rectHeight,
                                     left: leftAlign + rectWidth + labelShift});
   av.step();
@@ -43,7 +43,7 @@ $(document).ready(function() {
   //Slide 4
   av.umsg(interpret("av_c4.1"));
   av.umsg(interpret("av_c4.2"), {preserve: true});
-  rect0.css({fill: "none"});
+  rect0.removeClass("highlight");
   set1.push(av.g.rect(leftAlign, topAlign + rectHeight, rectWidth, rectHeight));
   set1.push(av.g.rect(leftAlign + rectWidth, topAlign + rectHeight, rectWidth, rectHeight));
   set1.css({fill: "red"});
