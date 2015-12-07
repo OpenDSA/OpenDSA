@@ -58,7 +58,6 @@
         "long_name": "Introduction to Data Structures and Algorithms",
         "sections": {
           "Introduction": {},
-          "Course Goals": {},
           "Some Software Engineering Topics": {
             "showsection": false
           },
@@ -78,9 +77,7 @@
         "long_name": "Abstract Data Types",
         "sections": {
           "Abstract Data Types": {
-            "ADTCON": {}
-          },
-          "ADT Summary Questions": {
+            "ADTCON": {},
             "IntroADTSumm": {
               "long_name": "ADT Summary Questions",
               "required": true,
@@ -100,8 +97,7 @@
         "long_name": "Set Definitions",
         "sections": {
           "Set Notation": {},
-          "Relations": {},
-          "Relations Practice Exercise": {
+          "Relations": {
             "SetTFrelation": {
               "long_name": "Relations Exercise",
               "required": true,
@@ -109,7 +105,7 @@
               "threshold": 5
             }
           },
-          "Equivalence Relations Practice Exercise": {
+          "Equivalence Relations": {
             "SetTFequivrel": {
               "long_name": "Equivalence Exercise",
               "required": true,
@@ -145,7 +141,7 @@
         }
       },
       "Background/Summations": {
-        "long_name": "Summations and Recurrence Relations",
+        "long_name": "Summations",
         "sections": {
           "Summations": {
             "SummationOneToNCON": {
@@ -153,25 +149,26 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Another Example: Summing Powers of 2": {
+            },
             "SummationTwoPowerICON": {
               "long_name": "Summation Two Power I visualization",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
             }
-          },
+          }
+        }
+      },
+      "Background/RecurrenceIntro": {
+        "long_name": "Recurrence Relations",
+        "sections": {
           "Recurrence Relations": {
             "LinearRecurrencesCON": {
               "long_name": "Linear Recurrences Slideshow",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Another Recurrence Example": {
+            },
             "LinearRecurrencesNCON": {
               "long_name": "Linear Recurrences Slideshow (n)",
               "required": false,
@@ -182,12 +179,9 @@
         }
       },
       "Background/Proofs": {
-        "long_name": "Proofs",
+        "long_name": "Mathematical Proof Techniques",
         "sections": {
-          "Introduction": {},
-          "Direct Proof": {},
-          "Proof by Contradiction": {},
-          "Proof by Mathematical Induction": {
+          "Mathematical Proof Techniques": {
             "twoColorCON": {},
             "TwoColoringProofCON": {
               "long_name": "Two Coloring Proof Slideshow",
@@ -224,10 +218,7 @@
       "AlgAnal/AnalPrelim": {
         "long_name": "Problems, Algorithms, and Programs",
         "sections": {
-          "Problems": {},
-          "Algorithms": {},
-          "Programs": {},
-          "Summary": {
+          "Problems, Algorithms, and Programs": {
             "ProblemAlgorithmCON": {
               "long_name": "Problem, Algorithm, and Program definitions Slideshow",
               "required": false,

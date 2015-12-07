@@ -34,9 +34,6 @@ manipulate them is at the heart of computer science.
 And that is what this book is about |---| helping you to understand
 how to structure information to support efficient processing.
 
-Course Goals
-------------
-
 Any course on Data Structures and Algorithms will try to teach you
 about three things:
 

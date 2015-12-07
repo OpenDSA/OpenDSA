@@ -296,8 +296,6 @@ The interface becomes a form of communication between the two programmers.
    Within the class, a variety of physical implementations for lists
    is possible.
 
-ADT Summary Questions
----------------------
 .. avembed:: Exercises/Design/IntroADTSumm.html ka
 
 .. odsascript:: AV/Design/ADTCON.js

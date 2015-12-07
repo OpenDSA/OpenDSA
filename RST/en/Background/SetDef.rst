@@ -206,6 +206,12 @@ If we define a person to be a sibling of himself, then it is
 reflexive; if we define a person not to be a sibling of himself, then
 it is not reflexive.
 
+.. avembed:: Exercises/Background/SetTFrelation.html ka
+
+
+Equivalence Relations
+---------------------
+
 :math:`R` is an :term:`equivalence relation` on set :math:`\mathbf{S}`
 if it is reflexive, symmetric, and transitive.
 An equivalence relation can be used to partition a set into
@@ -270,15 +276,8 @@ computing a :ref:`minimal cost spanning tree <MCST> <MCST>`.
       :math:`y \bmod m = z \bmod m`, then
       :math:`x \bmod m = z \bmod m`.
 
-Relations Practice Exercise
----------------------------
-
-.. avembed:: Exercises/Background/SetTFrelation.html ka
-
-Equivalence Relations Practice Exercise
----------------------------------------
-
 .. avembed:: Exercises/Background/SetTFequivrel.html ka
+
 
 Partial Orders
 --------------

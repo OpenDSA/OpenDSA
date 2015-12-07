@@ -1,23 +1,22 @@
 {
   "translations": {
     "en": {
-      "Slide 1": "Let's see how we can differentiate between a problem, problem instance, algorithm, and a program.",
-      "Slide 2": "A problem is a task that matches input to output.",
-      "Slide 3": "<br><br> Consider the problem of searching for an element in an array.",
-      "Slide 4": "Here, we have: <br><b><u> Input: </u></b> An array, and the target key.",
-      "Slide 5": "<br><b><u> Output: </u></b> The index of the target element if it is found or the size of the array if not found.",
-      "Slide 6": "<br><br>Note here that we have the searching problem as a black box. We don't know how the searching is performed.",
-      "Slide 7": "A problem instance is a specific selection of values for the problem input.",
-      "Slide 8": "<br><br> Here we see an example of a searching problem instance in which we have initialized the array and we have a value for the target key.",
-      "Slide 9": "An algorithm is a receipe or a specific way of mapping problem input to output.",
-      "Slide 10": "<br><br> An algorithm takes a problem instance as its input.",
-      "Slide 11": "<br><br>Then a series of steps is performed to generate the output.",
-      "Slide 12": "There are several different algorithms that can solve a particular problem. For the searching problem, here we present the sequencial search algorithm.",
-      "Slide 13": "<br><br> The sequencial search algorithm simply loops through all the keys in the array until the target key is found in which the index is returned. Otherwise the array size is returned.",
-      "Slide 14": "A program is an instance of a particular algorithm that solves a particular problem implemented in some programming language.",
-      "Slide 15": "<br><br>A program accepts a problem instance as an input.",
-      "Slide 16": "<br><br>Then the program is executed to generate the output.",
-      "Slide 17": "Here we present the sequencial search algorithm implemented as a Java function."
+      "av_c1": "Here is a visual summary showing how to differentiate between a problem, a problem instance, an algorithm, and a program.",
+      "av_c2": "A problem is a task that matches input to output. Consider the problem of searching for an element in an unsorted array.",
+      "av_c3": "Here, we have: <br><b><u>Input:</u></b> An array, and the target key.",
+      "av_c4": "<br><b><u>Output:</u></b> The index of the target element if it is found, or the size of the array if not found.",
+      "av_c5": "<br><br>We show the searching problem as a 'black box'. In this context, we don't need to know how a search is actually performed.",
+      "av_c6": "A problem instance is a specific selection of values for the problem input.",
+      "av_c7": "<br><br> Here we see an example of a searching problem instance in which we have initialized the array and we have a value for the target key.",
+      "av_c8": "An algorithm is a receipe or a specific way of mapping problem input to output.",
+      "av_c9": "<br><br> An algorithm takes a problem instance as its input.",
+      "av_c10": "<br><br>Then a series of steps is performed to generate the output.",
+      "av_c11": "There are several different algorithms that can solve a particular problem. For the searching problem, here we present pseudocode for the sequential search algorithm.",
+      "av_c12": "<br><br> The sequential search algorithm simply loops through all the keys in the array until the target key is found in (which case the index is returned). If its not there, then the array size is returned.",
+      "av_c13": "A program is an instance of a particular algorithm that solves a particular problem, implemented in some programming language.",
+      "av_c14": "<br><br>A program accepts a problem instance as an input.",
+      "av_c15": "<br><br>Then the program is executed to generate the output.",
+      "av_c16": "Here we present the sequential search algorithm implemented as a Java function."
     }
   },
   "code": {
@@ -26,20 +25,18 @@
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: Sequential *** */",
       "endBefore": "/* *** ODSAendTag: Sequential *** */",
-      "top": 150,
-      "left": 385,
+      "top": 80,
+      "left": 397,
       "tags": {
-
       }
     }, {
       "url": "OpenDSA/SourceCode/Pseudo/Searching/Sequential.txt",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: Sequential *** */",
       "endBefore": "/* *** ODSAendTag: Sequential *** */",
-      "top": 150,
-      "left": 385,
+      "top": 80,
+      "left": 397,
       "tags": {
-
       }
     }]
   }

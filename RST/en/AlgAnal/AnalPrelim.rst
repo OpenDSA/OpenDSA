@@ -13,8 +13,11 @@
 Problems, Algorithms, and Programs
 ==================================
 
+Problems, Algorithms, and Programs
+----------------------------------
+
 Problems
---------
+~~~~~~~~
 
 Programmers commonly deal with problems, algorithms, and
 computer programs.
@@ -78,7 +81,7 @@ The limits to what functions can be implemented by programs is part of
 the domain of :ref:`Computability <computability> <Computability>`.
 
 Algorithms
-----------
+~~~~~~~~~~
 
 An :term:`algorithm` is a method or a process followed to
 solve a problem.
@@ -156,8 +159,9 @@ of the following properties.
 #. It must *terminate*.
    In other words, it may not go into an infinite loop.
 
+
 Programs
---------
+~~~~~~~~
 
 We often think of a computer :term:`program` as an
 instance, or concrete representation, of an algorithm in some
@@ -183,8 +187,9 @@ each solved by specific algorithms implemented by a part of the
 operating system program, and each one of which terminates once its
 output is produced.
 
+
 Summary
--------
+~~~~~~~
 
 To summarize:
 A :term:`problem` is a function or a mapping of
@@ -199,6 +204,7 @@ The following slideshow should help you to visualize the differences.
 
 .. inlineav:: ProblemAlgorithmCON ss
    :output: show
+
 
 Summary Questions
 -----------------
