@@ -16,23 +16,23 @@ $(document).ready(function() {
   av = new JSAV(av_name);
 
   //Slide 1
-  av.umsg(interpret("av_c1"));
+  av.umsg(interpret("sc1"));
   av.displayInit();
 
   //Slide 2
-  av.umsg(interpret("av_c2"));
+  av.umsg(interpret("sc2"));
   av.step();
 
   //Slide 3
-  av.umsg(interpret("av_c3.1"));
-  av.umsg(interpret("av_c3.2"), {preserve: true});
+  av.umsg(interpret("sc3.1"));
+  av.umsg(interpret("sc3.2"), {preserve: true});
   var rect1 = av.g.rect(leftAlign, topAlign, rectWidth, rectHeight).addClass("highlight");
   av.label("$i = 1$",  {top: topAlign + 12, left: leftAlign + 10});
   av.step();
 
   //Slide 4
-  av.umsg(interpret("av_c4.1"));
-  av.umsg(interpret("av_c4.2"), {preserve: true});
+  av.umsg(interpret("sc4.1"));
+  av.umsg(interpret("sc4.2"), {preserve: true});
   rect1.removeClass("highlight");
   var rect21 = av.g.rect(leftAlign + rectWidth, topAlign, rectWidth, rectHeight).addClass("highlight");
   var rect22 = av.g.rect(leftAlign + rectWidth, topAlign - rectHeight, rectWidth, rectHeight).addClass("highlight");
@@ -40,8 +40,8 @@ $(document).ready(function() {
   av.step();
 
   //Slide 5
-  av.umsg(interpret("av_c5.1"));
-  av.umsg(interpret("av_c5.2"), {preserve: true});
+  av.umsg(interpret("sc5.1"));
+  av.umsg(interpret("sc5.2"), {preserve: true});
   rect21.removeClass("highlight");
   rect22.removeClass("highlight");
   var rect31 = av.g.rect(leftAlign + 2 * rectWidth, topAlign, rectWidth, rectHeight).addClass("highlight");
@@ -51,8 +51,8 @@ $(document).ready(function() {
   av.step();
 
   //Slide 6
-  av.umsg(interpret("av_c6.1"));
-  av.umsg(interpret("av_c6.2"), {preserve: true});
+  av.umsg(interpret("sc6.1"));
+  av.umsg(interpret("sc6.2"), {preserve: true});
   rect31.removeClass("highlight");
   rect32.removeClass("highlight");
   rect33.removeClass("highlight");
@@ -64,8 +64,8 @@ $(document).ready(function() {
   av.step();
 
   //Slide 7
-  av.umsg(interpret("av_c7.1"));
-  av.umsg(interpret("av_c7.2"), {preserve: true});
+  av.umsg(interpret("sc7.1"));
+  av.umsg(interpret("sc7.2"), {preserve: true});
   rect41.removeClass("highlight");
   rect42.removeClass("highlight");
   rect43.removeClass("highlight");
@@ -79,7 +79,7 @@ $(document).ready(function() {
   av.step();
 
   //Slide 8
-  av.umsg(interpret("av_c8"));
+  av.umsg(interpret("sc8"));
   rect51.removeClass("highlight");
   rect52.removeClass("highlight");
   rect53.removeClass("highlight");
@@ -92,7 +92,7 @@ $(document).ready(function() {
   av.step();
 
   //Slide 9
-  av.umsg(interpret("av_c9"));
+  av.umsg(interpret("sc9"));
   av.g.line(leftAlign, topAlign + rectHeight, leftAlign + 5 * rectWidth, topAlign - 4 * rectHeight);
   av.g.polyline([[leftAlign, topAlign + rectHeight],
                  [leftAlign + 5 * rectWidth, topAlign - 4 * rectHeight],
@@ -100,7 +100,7 @@ $(document).ready(function() {
   av.step();
 
   //Slide 10
-  av.umsg(interpret("av_c10"), {preserve: true});
+  av.umsg(interpret("sc10"), {preserve: true});
   av.g.polyline([[leftAlign, topAlign + rectHeight],
                  [leftAlign, topAlign],
                  [leftAlign + rectWidth, topAlign]]).addClass("smallTriangle");
@@ -119,10 +119,10 @@ $(document).ready(function() {
   av.step();
 
   //Slide 11
-  av.umsg(interpret("av_c11"));
+  av.umsg(interpret("sc11"));
   av.step();
 
   //Slide 12
-  av.umsg(interpret("av_c12"));
+  av.umsg(interpret("sc12"));
   av.recorded();
 });
