@@ -1,15 +1,19 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Cliff Shaffer
+   :requires: problems; algorithms
    :satisfies: growth rate
    :topic: Algorithm Analysis
 
 Comparing Algorithms
 ====================
+
+Comparing Algorithms
+--------------------
 
 How do you compare two algorithms for solving some problem in terms
 of efficiency?
@@ -125,7 +129,7 @@ because the cost depends on the value of :math:`n`
    This algorithm is called the *largest-value sequential search*
    and is illustrated by the following function:
 
-   .. codeinclude:: Misc/LargestTest
+   .. codeinclude:: Misc/Largest
       :tag: Largest
 
    Here, the size of the problem is ``A.length``,
@@ -324,6 +328,9 @@ resources consumed by an algorithm.
       \end{array}
 
 .. avembed:: Exercises/AlgAnal/CompareGrowth.html ka 
+
+Growth Rates Exercise
+---------------------
 
 .. avembed:: Exercises/AlgAnal/GrowthRatesPRO.html ka 
 
