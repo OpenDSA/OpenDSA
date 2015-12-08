@@ -1,19 +1,19 @@
 {
   "translations" :{
     "en": {
-      "av_c1": "We will use expansion to guess the closed form solution for the recurrence $\\mathbf{T}(n) = \\mathbf{T}(n-1) + n\\ \\mbox{for}\\ n > 1; \\mathbf{T}(1) = 1$.",
-      "av_c2.1": "We replace a problem of size $n$ with $n$ units of work plus a subproblem of size $n-1$.",
-      "av_c2.2": "<br> $\\mathbf{T}(n) = n + \\mathbf{T}(n-1)$.",
-      "av_c3.1": "We replace a problem of size $n-1$ with $n-1$ units of work plus a subproblem of size $n-2$.",
-      "av_c3.2": "<br> $\\mathbf{T}(n) = n + (n-1 + \\mathbf{T}(n-2))$.",
-      "av_c4.1": "We replace a problem of size $n-2$ with $n-2$ units of work plus a subproblem of size $n-3$.",
-      "av_c4.2": "<br> $\\mathbf{T}(n) = n + (n-1 + (n-2 + \\mathbf{T}(n-3)))$.",
-      "av_c5.1": "We replace a problem of size $n-3$ with $n-3$ units of work plus a subproblem of size $n-4$.",
-      "av_c5.2": "<br> $\\mathbf{T}(n) = n + (n-1 + (n-2 + (n-3 + \\mathbf{T}(n-4)))$.",
-      "av_c6.1": "This pattern will continue till we reach a subproblem of size $1$, which we know costs 1 unit of work.",
-      "av_c6.2": "<br> $\\mathbf{T}(n) = n + (n-1 + (n-2 + (n-3 + (n-4 + (... + 1))))$.",
-      "av_c7": "Thus, the closed form solution of $\\mathbf{T}(n) = \\mathbf{T}(n-1) + n$ can be modeled by the summation $\\displaystyle\\sum_{i=1}^{n}i$.",
-      "av_c8": "Since we already know that $\\displaystyle\\sum_{i=1}^{n}i = \\frac{n(n+1)}{2}$, we have the closed form solution of $\\mathbf{T}(n) = \\mathbf{T}(n-1) + n = \\frac{n(n+1)}{2}$."
+      "sc1": "We will use expansion to guess the closed form solution for the recurrence $\\mathbf{T}(n) = \\mathbf{T}(n-1) + n\\ \\mbox{for}\\ n > 1; \\mathbf{T}(1) = 1$.",
+      "sc2.1": "We replace a problem of size $n$ with $n$ units of work plus a subproblem of size $n-1$.",
+      "sc2.2": "<br> $\\mathbf{T}(n) = n + \\mathbf{T}(n-1)$.",
+      "sc3.1": "We replace a problem of size $n-1$ with $n-1$ units of work plus a subproblem of size $n-2$.",
+      "sc3.2": "<br> $\\mathbf{T}(n) = n + (n-1 + \\mathbf{T}(n-2))$.",
+      "sc4.1": "We replace a problem of size $n-2$ with $n-2$ units of work plus a subproblem of size $n-3$.",
+      "sc4.2": "<br> $\\mathbf{T}(n) = n + (n-1 + (n-2 + \\mathbf{T}(n-3)))$.",
+      "sc5.1": "We replace a problem of size $n-3$ with $n-3$ units of work plus a subproblem of size $n-4$.",
+      "sc5.2": "<br> $\\mathbf{T}(n) = n + (n-1 + (n-2 + (n-3 + \\mathbf{T}(n-4)))$.",
+      "sc6.1": "This pattern will continue till we reach a subproblem of size $1$, which we know costs 1 unit of work.",
+      "sc6.2": "<br> $\\mathbf{T}(n) = n + (n-1 + (n-2 + (n-3 + (n-4 + (... + 1))))$.",
+      "sc7": "Thus, the closed form solution of $\\mathbf{T}(n) = \\mathbf{T}(n-1) + n$ can be modeled by the summation $\\displaystyle\\sum_{i=1}^{n}i$.",
+      "sc8": "Since we already know that $\\displaystyle\\sum_{i=1}^{n}i = \\frac{n(n+1)}{2}$, we have the closed form solution of $\\mathbf{T}(n) = \\mathbf{T}(n-1) + n = \\frac{n(n+1)}{2}$."
     }
   }
 }
