@@ -21,3 +21,7 @@
   background-color: transparent;
   font-size: 10px;
 }
+.largeLabel{
+  font-size: 18px; 
+  text-align: center; 
+}

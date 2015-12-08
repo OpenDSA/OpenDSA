@@ -17,7 +17,10 @@
       "Slide 14": "A program is an instance of a particular algorithm that solves a particular problem implemented in some programming language.",
       "Slide 15": "<br><br>A program accepts a problem instance as an input.",
       "Slide 16": "<br><br>Then the program is executed to generate the output.",
-      "Slide 17": "Here we present the sequencial search algorithm implemented as a Java function."
+      "Slide 17": "Here we present the sequencial search algorithm implemented as a Java function.",
+      "lab1": "<b>Searching Problem</b>",
+      "lab2": "<b>Algorithm</b>",
+      "lab3": "<b>Program</b>"
     }
   },
   "code" : {

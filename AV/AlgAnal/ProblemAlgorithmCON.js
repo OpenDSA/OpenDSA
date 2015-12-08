@@ -15,7 +15,7 @@ $(document).ready(function () {
   var arr_values = [];
   var topAlign = 120;
   var leftAlign = 10;
-  var rectWidth = 150;
+  var rectWidth = 165;
   var rectHeight = 225;
   
   // Slide 1
@@ -29,7 +29,7 @@ $(document).ready(function () {
   //Slide 3
   av.umsg(interpret("Slide 3"), {preserve:true});
   var rect = av.g.rect(leftAlign + 380, topAlign - 25, rectWidth, rectHeight);
-  var labelProblem = av.label("Searching Problem",  {"top": topAlign + 25, "left": leftAlign + 385});
+  var labelProblem = av.label(interpret("lab1"),  {"top": topAlign + 25, "left": leftAlign + 385});
   av.step();
 
   //Slide 4
@@ -39,7 +39,7 @@ $(document).ready(function () {
   }
   arr = av.ds.array(arr_values, {"left": leftAlign, "top": topAlign, "indexed": true});  
   var labelInput = 
-  av.label("Target key",  {"top": topAlign + 85, "left": leftAlign + 215}).css({'font-size': '18px', "text-align": "center", 'font-style':"bold"});
+  av.label("Target key",  {"top": topAlign + 85, "left": leftAlign + 215}).addClass("largeLabel");
   var line1 = av.g.line(leftAlign + 320, topAlign + 30, leftAlign + 380, topAlign + 30);
   var line2 = av.g.line(leftAlign + 320, topAlign + 125, leftAlign + 380, topAlign + 125);
   av.step();
@@ -83,20 +83,22 @@ $(document).ready(function () {
   arr = av.ds.array(arr_values, {"left": leftAlign, "top": topAlign, "indexed": true});  
   labelInput.text("");
   labelInput = 
-  av.label("Target key =" + arr_values[3],  {"top": topAlign + 85, "left": leftAlign + 180}).css({'font-size': '18px', "text-align": "center", 'font-style':"bold"});
+  av.label("Target key =" + arr_values[3],  {"top": topAlign + 85, "left": leftAlign + 180}).addClass("largeLabel");
   labelOutput2.hide();
   labelOutput4.hide();
   lineOutput2.hide();
   labelOutput3.text("Index = 3");
+  arr.highlight(3);
   av.step();
 
   //Slide 9
   av.umsg(interpret("Slide 9"));
-  labelProblem.text("Algorithm");
+  labelProblem.text(interpret("lab2"));
   labelProblem.css({"top":"-=50", "left":"+=20"});
   labelOutput1.hide();
   labelOutput3.hide();
   lineOutput1.hide();
+  arr.unhighlight(3);
   arr.hide();
   line1.hide();
   line2.hide();
@@ -130,14 +132,16 @@ $(document).ready(function () {
   labelOutput1.show();
   labelOutput3.show();
   lineOutput1.show();
+  arr.highlight(3);
   av.step();
 
   //Slide 14
   av.umsg(interpret("Slide 14"));
-  labelProblem.text("Program");
+  labelProblem.text(interpret("lab3"));
   labelOutput1.hide();
   labelOutput3.hide();
   lineOutput1.hide();
+  arr.unhighlight(3);
   arr.hide();
   line1.hide();
   line2.hide();
@@ -168,6 +172,7 @@ $(document).ready(function () {
   lineOutput1.show();
   labelOutput1.show();
   labelOutput3.show();
+  arr.highlight(3);
   av.step();
 
   av.recorded();
