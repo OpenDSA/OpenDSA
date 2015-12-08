@@ -26,7 +26,7 @@ $(document).ready(function() {
   // Slide 2
   av.umsg(interpret("av_c2.1"));
   av.umsg(interpret("av_c2.2"), {preserve: true});
-  graph = av.ds.graph({left: leftAlign, top: topAlign, width: 550,layout: "manual", directed: false});
+  graph = av.ds.graph({left: leftAlign, top: topAlign, width: 550, layout: "manual", directed: false});
   var n = graph.addNode("n", {left: leftAlign, top: topAlign});
   var nMinusOne = graph.addNode("n-1", {left: leftAlign + nodeWidth + nodeGap, top: topAlign});
   var oneTwo = graph.addEdge(n, nMinusOne, {weight: "<b>1 +</b>"});
