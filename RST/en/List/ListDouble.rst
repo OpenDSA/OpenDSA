@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
@@ -69,8 +69,9 @@ the doubly linked list nodes have an extra data member.
 .. codeinclude:: Lists/DLink
    :tag: DLink
 
+
 Insert
-------
+~~~~~~
 
 The following slideshows illustrate the ``insert`` and ``append``
 doubly linked list methods.
@@ -86,21 +87,21 @@ each node to deal with), they tend to be easier to understand.
    
 
 Append
-------
+~~~~~~
 
 .. inlineav:: dlistAppendCON ss
    :output: show  
    
 
 Remove
-------
+~~~~~~
 
 .. inlineav:: dlistRemoveCON ss
    :output: show
    
 
 Prev
-----
+~~~~
 
 .. inlineav:: dlistPrevCON ss
    :output: show
@@ -118,7 +119,7 @@ the singly linked list.
 
 
 Mangling Pointers
------------------
+~~~~~~~~~~~~~~~~~
 
 There is a space-saving technique that can be employed to eliminate
 the additional space requirement, though it will complicate the

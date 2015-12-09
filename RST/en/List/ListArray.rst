@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
@@ -29,15 +29,12 @@ and so must implement all of the member functions of ``List``.
 .. inlineav:: alistVarsCON ss
    :output: show
 
-Array-based List Positions
---------------------------
-
 .. inlineav:: alistIntroCON ss
    :output: show
 
 
 Insert
-------
+~~~~~~
 
 Because the array-based list implementation is defined to store list
 elements in contiguous cells of the array, the ``insert``, ``append``,
@@ -53,14 +50,11 @@ Insert Practice Exericse
 .. avembed:: Exercises/List/AlistInsertPRO.html ka
 
 
-Append
-------
+Append and Remove
+-----------------
+
 .. inlineav:: alistAppendCON ss
    :output: show
-
-
-Remove
-------
 
 Removing an element from the head of the list is
 similar to insert in that all remaining elements  must shift toward
@@ -75,8 +69,9 @@ following slideshow.
 In the average case, insertion or removal each requires moving half
 of the elements, which is :math:`\Theta(n)`.
 
-Remove Practice Exericse
-------------------------
+
+Remove Practice Exericise
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/List/AlistRemovePRO.html ka
 

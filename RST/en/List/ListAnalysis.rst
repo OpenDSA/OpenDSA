@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
@@ -103,6 +103,7 @@ certain limit.
 
 .. avembed:: Exercises/List/ListOverhead.html ka
 
+
 Time Comparison
 ---------------
 
@@ -156,7 +157,8 @@ To analyze the overall cost of dynamic array operations over time,
 we need to use a technique known as
 :ref:`amortized analysis <amortized analysis> <AmortAnal>`.
 
+
 Practice Questions
-------------------
+~~~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/List/LLSumm.html ka

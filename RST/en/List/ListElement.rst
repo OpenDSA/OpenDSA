@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
@@ -32,7 +32,7 @@ better approach.
 
 
 Homogeneity
------------
+~~~~~~~~~~~
 
 The next issue to consider is whether to enforce :term:`homogeneity`
 in the list elements.
@@ -68,7 +68,7 @@ In C++, a similar effect can be achieved by using ``void*`` pointers.
    
 
 Element Deletion
-----------------
+~~~~~~~~~~~~~~~~
 
 Our last design issue is what to do to the list elements when the list
 itself is deleted?
@@ -80,7 +80,7 @@ automatic garbage collection.
    
 
 Practice Questions
-------------------
+~~~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/List/ListSumm.html ka
    

@@ -41,6 +41,7 @@
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": true,
+  "assumes": "recursion",
   "glob_exer_options": {
     "JXOP-debug": "true"
   },
@@ -80,7 +81,6 @@
     "Mathematical Background": {
       "Background/MathpreIntro": {
         "long_name": "Chapter Introduction",
-        "dispModComp": true,
         "exercises": {}
       },
       "Background/SetDef": {
@@ -124,7 +124,6 @@
       },
       "Background/Summations": {
         "long_name": "Summations and Recurrence Relations",
-        "dispModComp": true,
         "exercises": {
           "SummationOneToNCON": {
             "long_name": "Summation of the first N Integers visualization",
@@ -137,7 +136,12 @@
             "required": false,
             "points": 0.0,
             "threshold": 1.0
-          },
+          }
+        }
+      },
+      "Background/RecurrenceIntro": {
+        "long_name": "Recurrence Relations",
+        "exercises": {
           "LinearRecurrencesCON": {
             "long_name": "Linear Recurrences Slideshow",
             "required": false,
@@ -167,7 +171,6 @@
       },
       "Background/Estimation": {
         "long_name": "Estimation",
-        "dispModComp": true,
         "exercises": {}
       },
       "Background/MathpreSumm": {

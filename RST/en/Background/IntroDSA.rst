@@ -12,8 +12,11 @@
 Data Structures and Algorithms
 ==============================
 
+Data Structures and Algorithms
+------------------------------
+
 Introduction
-------------
+~~~~~~~~~~~~
 
 How many cities with more than 250,000 people lie within 500 miles of
 Dallas, Texas?
@@ -33,9 +36,6 @@ For this reason, the study of data structures and the algorithms that
 manipulate them is at the heart of computer science.
 And that is what this book is about |---| helping you to understand
 how to structure information to support efficient processing.
-
-Course Goals
-------------
 
 Any course on Data Structures and Algorithms will try to teach you
 about three things:
@@ -94,22 +94,8 @@ algorithms for solving the same problem in terms of its
 efficiency.
 
 
-Some Software Engineering Topics
---------------------------------
-
-While the main focus of this course *is* data structures and algorithms,
-this course will also cover some additional topics which are not standard fare
-in a data structures course:
-
-#. An introduction to object orientation and the Unified Modeling Language (UML).
-
-#. An introduction to software design patterns.
-
-#. An introduction to software development processes.
-
-
 A Philosophy of Data Structures
--------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You might think that with ever more powerful computers,
 program efficiency is becoming less important.
@@ -173,7 +159,7 @@ resource constraints.
 
 
 Selecting a Data Structure
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. index:: data structure; selecting
 
@@ -354,6 +340,20 @@ you determine the best data structure for the task.
    website.
 
 Introduction Summary Questions
-------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/Background/IntroSumm.html ka
+
+
+Some Software Engineering Topics
+--------------------------------
+
+While the main focus of this course *is* data structures and algorithms,
+this course will also cover some additional topics which are not standard fare
+in a data structures course:
+
+#. An introduction to object orientation and the Unified Modeling Language (UML).
+
+#. An introduction to software design patterns.
+
+#. An introduction to software development processes.

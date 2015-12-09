@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
@@ -35,15 +35,11 @@ Here is a visual representation for the linked stack.
 
 
 Linked Stack Push
------------------
+~~~~~~~~~~~~~~~~~
 
 .. inlineav:: lstackPushCON ss
    :output: show
    
-
-Push Practice
--------------
-
 .. avembed:: Exercises/List/LstackPushPRO.html ka
 
 
@@ -54,14 +50,11 @@ Linked Stack Pop
    :output: show
    
 
-Pop Practice
-------------
-
 .. avembed:: Exercises/List/LstackPopPRO.html ka
 
    
 Comparison of Array-Based and Linked Stacks
--------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 All operations for the array-based and linked stack implementations
 take constant time, so from a time efficiency perspective,
