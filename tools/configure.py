@@ -387,14 +387,15 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
                 for attr in section_obj:
                     if bool(section_obj[attr]) and isinstance(section_obj[attr], dict):
                         exercise_obj = section_obj[attr]
+                        exercise_name = attr
                         long_name = exercise_obj.get("long_name")
                         required = exercise_obj.get("required")
                         points = exercise_obj.get("points")
                         threshold = exercise_obj.get("threshold")
                         if long_name is not None and required is not None and points is not None and threshold is not None:
-
                             if points > 0:
                                 section_points = points
+                                gradeable_exercise = exercise_name
 
                 if showsection is None or (showsection is not None and showsection == True):
                     indexed_section_name = str(module_position).zfill(2) + "." + str(module_item_position).zfill(2) + "." +str(section_couter).zfill(2) + ' - ' + section_name
@@ -406,7 +407,7 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
                             indexed_section_name,
                             assignment_submission_types="external_tool",
                             assignment_external_tool_tag_attributes={
-                                "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2)},
+                                "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2) + "&gradeable_exercise=" + gradeable_exercise},
                             assignment_points_possible=section_points,
                             assignment_description=section_name)
 
