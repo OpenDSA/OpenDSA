@@ -894,12 +894,7 @@
       "Design/DesignPatterns": {
         "long_name": "Design Patterns",
         "sections": {
-          "Introduction": {},
-          "Flyweight": {},
-          "Visitor": {},
-          "Composite": {},
-          "Strategy": {},
-          "Summary Questions": {
+          "Design Patterns": {
             "DesignPatternSumm": {
               "long_name": "Design Patterns Summary Exercise",
               "required": true,

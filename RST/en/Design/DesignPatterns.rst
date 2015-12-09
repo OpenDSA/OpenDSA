@@ -12,8 +12,8 @@
 Design Patterns
 ===============
 
-Introduction
-------------
+Design Patterns
+---------------
 
 At a higher level of abstraction than ADTs
 are abstractions for describing the design of programs |---| that is,
@@ -48,7 +48,7 @@ The rest of this module introduces a few simple design patterns that
 occur frequently in a study of data structures and algorithms.
 
 Flyweight
----------
+~~~~~~~~~
 
 The :term:`Flyweight` is meant to solve the following problem:
 You have an application with many objects.
@@ -95,7 +95,7 @@ These identical nodes can be implemented using a reference to a single
 instance of the flyweight to reduce memory costs.
 
 Visitor
--------
+~~~~~~~
 
 Given a tree of objects to describe a page layout,
 we might wish to perform some activity on every node in the tree.
@@ -115,8 +115,9 @@ This organization constitutes the :term:`visitor` design pattern.
 The visitor design pattern can also be used in
 :ref:`Graph Traversal <traversal> <GraphTraversal>`.
 
+
 Composite
----------
+~~~~~~~~~
 
 There are two fundamental approaches to dealing with the relationship
 between a collection of actions and a hierarchy of object types.
@@ -187,8 +188,9 @@ A detailed example for using the Composite design pattern
 can be seen in a discussion of the
 :ref:`Expression Tree <Expression Tree> <Composite>`.
 
+
 Strategy
---------
+~~~~~~~~
 
 Our final example of a design pattern lets us encapsulate and make
 interchangeable a set of alternative actions that
@@ -242,7 +244,8 @@ will be performed on all members of a collection so that completely
 different activities can be substituted within a generic method that
 accesses all of the collection members.
 
+
 Summary Questions
------------------
+~~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/Design/DesignPatternSumm.html ka
