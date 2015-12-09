@@ -17,7 +17,10 @@
       "Slide 14": "The third case is the average case of the algorithm, since $\\lceil\\frac{n}{2}\\rceil$ elements are investigated. $T(n) = \\frac{1}{2}n$",
       "Slide 15": "<br><br>Accordingly, the highest growth rate (upper bound) of the algorithm in the average case is also $O(n)$ since we ignore constant terms.",
       "Slide 16": "Accordingly, the correct way to ask the question should be : <br><br>What is the upper bound of sequencial search in the best/average/worst case?",
-      "Slide 17": "<br><br>And the answer should be..."
+      "Slide 17": "<br><br>And the answer should be...",
+      "lab1": "$O(1)$ in the <b><u>Best Case.</u></b>",
+      "lab2": "$O(n)$ in the <b><u>Worst Case</u></b>.",
+      "lab3": "$O(n)$ in the <b><u>Average Case</u></b>."
     }
   }
 }
