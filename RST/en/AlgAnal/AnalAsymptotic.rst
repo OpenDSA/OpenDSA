@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -9,8 +9,13 @@
    :requires: growth rate; best and worst case
    :topic: Algorithm Analysis
 
+.. odsalink:: AV/AlgAnal/UpperBoundCON.css
+
 Asymptotic Analysis and Upper Bounds
 ====================================
+
+Asymptotic Analysis and Upper Bounds
+------------------------------------
 
 .. _RunTimeGraph2:
 
@@ -85,7 +90,7 @@ Just be aware of the limitations to asymptotic analysis in the
 rare situation where the constant is important.
 
 Upper Bounds
-------------
+~~~~~~~~~~~~
 
 Several terms are used to describe the running-time equation for an
 algorithm.
@@ -210,16 +215,9 @@ There is no strict equality to the use of big-Oh notation.
 :math:`O(n)` is in :math:`O(n^2)`, but :math:`O(n^2)` is not in
 :math:`O(n)`.
 
-.. showhidecontent:: thetadisc
-
-   In some of the following material, you will see use of the symbol
-   :math:`\Theta`, such as :math:`\Theta(n)`.
-   While they are technically somewhat different, you may interpret use
-   of :math:`\Theta` in :math:`\Theta(n)` to have the same meaning as
-   :math:`O(n)`.
 
 Simplifying Rules
------------------
+~~~~~~~~~~~~~~~~~
 
 Once you determine the running-time equation for an algorithm,
 it really is a simple matter to derive the big-Oh
@@ -277,9 +275,17 @@ for large :math:`n`.
 From now on, we will use these simplifying
 rules when discussing the cost for a program or algorithm.
 
-.. todo::
-   :type: Slideshow
 
-   A visualization that illustrates the meaning of upper bounds and the difference between it and worst cases. We need to emphasize that there is an upper bound to an algorithm in its best, average, and worst cases. We can use the example of sequencial search to illustrate this.
+Summary
+~~~~~~~
+
+.. inlineav:: UpperBoundCON ss
+   :output: show
+
+
+Practice Questions
+~~~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/AlgAnal/UpperBoundsSumm.html ka
+
+.. odsascript:: AV/AlgAnal/UpperBoundCON.js

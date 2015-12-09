@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -8,15 +8,20 @@
    :satisfies: problems; algorithms; functions
    :topic: Algorithm Analysis
 
+.. odsalink:: AV/AlgAnal/ProblemAlgorithmCON.css
+
 Problems, Algorithms, and Programs
 ==================================
+
+Problems, Algorithms, and Programs
+----------------------------------
+
+Problems
+~~~~~~~~
 
 Programmers commonly deal with problems, algorithms, and
 computer programs.
 These are three distinct concepts.
-
-Problems
---------
 
 As your intuition would suggest, a :term:`problem` is
 a task to be performed.
@@ -76,7 +81,7 @@ The limits to what functions can be implemented by programs is part of
 the domain of :ref:`Computability <computability> <Computability>`.
 
 Algorithms
-----------
+~~~~~~~~~~
 
 An :term:`algorithm` is a method or a process followed to
 solve a problem.
@@ -154,8 +159,9 @@ of the following properties.
 #. It must *terminate*.
    In other words, it may not go into an infinite loop.
 
+
 Programs
---------
+~~~~~~~~
 
 We often think of a computer :term:`program` as an
 instance, or concrete representation, of an algorithm in some
@@ -181,6 +187,10 @@ each solved by specific algorithms implemented by a part of the
 operating system program, and each one of which terminates once its
 output is produced.
 
+
+Summary
+~~~~~~~
+
 To summarize:
 A :term:`problem` is a function or a mapping of
 inputs to outputs.
@@ -190,23 +200,15 @@ Algorithms must be correct, of finite length, and must terminate
 for all inputs.
 A :term:`program` is an instantiation of an algorithm
 in a programming language.
+The following slideshow should help you to visualize the differences.
 
-.. todo::
-   :type: SlideShow
+.. inlineav:: ProblemAlgorithmCON ss
+   :output: show
 
-   Here we need a visual description of the definitions of a problem,
-   problem instance, algorithm, and program.  In this visualization,
-   we may present the problem of sorting. The sorting problem here is
-   a function that maps a specific problem instance to the desired
-   output. An array of integers of size $n$ is randomly generated to
-   represent a problem instance. Then an algorithm would be a recipe
-   of mapping the problem instance to the desired output. We may
-   present here bubble sort and merge sort as two recipes. We should
-   give an example when the problem instance can have an effect on the
-   efficiency of the algorithm (i.e. number of swaps for bubble sort
-   in a sorted Vs. unsorted array). Finally, a program is an
-   implementation of the algorithm in a specific programming
-   language. So, here we may present the implemenation of bubble sort
-   in C++ as an example of a program.
+
+Summary Questions
+~~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/AlgAnal/AnalPrelimSumm.html ka 
+
+.. odsascript:: AV/AlgAnal/ProblemAlgorithmCON.js
