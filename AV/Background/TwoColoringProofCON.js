@@ -31,19 +31,19 @@ $(document).ready(function() {
   p7.hide();
 
   // Slide 1
-  av.umsg(interpret("av_c1"));
+  av.umsg(interpret("sc1"));
   var baseCaseLine = av.g.line(leftAlign, topAlign + 50, leftAlign + 350, topAlign + 50, {"stroke-width": 3});
   var baseCaseLabel1 = av.label("Region 1",  {top: topAlign - 25, left: leftAlign + 400}).css({"font-size": "16px", "text-align": "center"});
   var baseCaseLabel2 =  av.label("Region 2",  {top: topAlign + 75, left: leftAlign + 400}).css({"font-size": "16px", "text-align": "center"});
   av.displayInit();
 
   // Slide 2
-  av.umsg(interpret("av_c2"), {preserve: true});
+  av.umsg(interpret("sc2"), {preserve: true});
   var baseCaseRect = av.g.rect(leftAlign, topAlign + 50, 350, 50).css({fill: "gray"});
   av.step();
 
   // Slide 3
-  av.umsg(interpret("av_c3"));
+  av.umsg(interpret("sc3"));
   baseCaseRect.hide();
   baseCaseLine.hide();
   baseCaseLabel1.hide();
@@ -51,7 +51,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 4
-  av.umsg(interpret("av_c4"), {preserve: true});
+  av.umsg(interpret("sc4"), {preserve: true});
   av.g.line(leftAlign + 50, topAlign + 20, leftAlign + 250, topAlign + 220, {"stroke-width": 3});
   av.g.line(leftAlign + 0, topAlign + 80, leftAlign + 350, topAlign + 80, {"stroke-width": 3});
   av.g.line(leftAlign + 300, topAlign + 20, leftAlign + 100, topAlign + 220, {"stroke-width": 3});
@@ -59,12 +59,12 @@ $(document).ready(function() {
   av.step();
 
   // Slide 5
-  av.umsg(interpret("av_c5"), {preserve: true});
+  av.umsg(interpret("sc5"), {preserve: true});
   l4.hide();
   av.step();
 
   // Slide 6
-  av.umsg(interpret("av_c6"));
+  av.umsg(interpret("sc6"));
   p1.show();
   p2.show();
   p3.show();
@@ -72,13 +72,13 @@ $(document).ready(function() {
   av.step();
 
   // Slide 7
-  av.umsg(interpret("av_c7"));
+  av.umsg(interpret("sc7"));
   var nLine = av.label("$n^{th}$ line",  {top: topAlign + 135, left: leftAlign + 400}).css({"font-size": "16px", "text-align": "center"});
   l4.show();
   av.step();
 
   // Slide 8
-  av.umsg(interpret("av_c8"), {preserve: true});
+  av.umsg(interpret("sc8"), {preserve: true});
   var plane1 = av.label("Half Plane 1",  {top: topAlign + 75, left: leftAlign + 400}).css({"font-size": "16px", "text-align": "center"});
   var plane2 = av.label("Half Plane 2",  {top: topAlign + 175, left: leftAlign + 400}).css({"font-size": "16px", "text-align": "center"});
   var planeRect1 = av.g.rect(leftAlign + 0, topAlign + 165, 350, 55).css({fill: "green", opacity: 0.1});
@@ -86,7 +86,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 9
-  av.umsg(interpret("av_c9"));
+  av.umsg(interpret("sc9"));
   planeRect1.hide();
   planeRect2.hide();
   plane1.hide();
@@ -94,7 +94,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 10
-  av.umsg(interpret("av_c10"));
+  av.umsg(interpret("sc10"));
   plane1.show();
   plane2.show();
   planeRect1.show();
@@ -102,7 +102,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 11
-  av.umsg(interpret("av_c11"), {preserve: true});
+  av.umsg(interpret("sc11"), {preserve: true});
   p4.hide();
   p5.show();
   p6.show();
@@ -110,7 +110,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 12
-  av.umsg(interpret("av_c12"));
+  av.umsg(interpret("sc12"));
   plane1.hide();
   plane2.hide();
   nLine.hide();

@@ -2,7 +2,7 @@
   height: 250px;
 }
 #LinearRecurrencesNCON .jsavline {
-  height: 40px;
+  height: 60px;
 }
 
 #LinearRecurrencesNCON .jsavgraph .jsavnode {
@@ -13,14 +13,12 @@
   max-height: 40px !important;
 }
 
-.rotated {
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  transform: rotate(90deg);
-}
-
 .dashed{
   stroke-dasharray: 5, 5;
+}
+.subProblemNode{
+  background-color: lightgreen;
+}
+.subProblemEdge{
+  stroke: green;
 }

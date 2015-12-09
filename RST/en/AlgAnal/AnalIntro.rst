@@ -332,6 +332,7 @@ resources consumed by an algorithm.
 
 .. avembed:: Exercises/AlgAnal/CompareGrowth.html ka 
 
+
 Growth Rates Ordering Exercise
 ------------------------------
 

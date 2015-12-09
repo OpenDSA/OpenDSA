@@ -3,9 +3,35 @@
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
-    "Processing": { "ext":["pde"], "label":"Processing","lang":"java"},
-    "Java_Generic": { "ext":["java"], "label":"Java (Generic)","lang":"java"},
-    "C++":{ "ext": ["cpp", "h"],"label":"C++","lang":"C++"}
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Processing": {
+      "ext": [
+        "pde"
+      ],
+      "label": "Processing",
+      "lang": "java"
+    },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
   },
   "lang": "en",
   "module_origin": "http://algoviz.org",
@@ -87,8 +113,14 @@
       },
       "Background/Logarithms": {
         "long_name": "Logarithms",
-        "dispModComp": true,
-        "exercises": {}
+        "exercises": {
+          "MathLogSumm": {
+            "long_name": "Logarithms Practice Questions",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
       },
       "Background/Summations": {
         "long_name": "Summations and Recurrence Relations",
@@ -124,7 +156,13 @@
         "long_name": "Proofs",
         "dispModComp": true,
         "exercises": {
-          "twoColorCON": {}
+          "twoColorCON": {},
+          "TwoColoringProofCON": {
+            "long_name": "Two Coloring Proof Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
         }
       },
       "Background/Estimation": {
@@ -353,24 +391,14 @@
       },
       "AlgAnal/AlgAnalSumm": {
         "long_name": "Algorithm Analysis Summary Exercises",
-        "sections": {
-          "upperbound": {
-            "long_name": "Chapter Summary Questions",
-            "remove": true
-          },
-          "allbound": {
-            "long_name": "Chapter Summary Questions",
-            "showhide": "none"
-          }
-        },
         "exercises": {
-          "AlgAnalCS2114Summ": {
+          "AlgAnalCS2Summ": {
             "long_name": "Algorithm Analysis Summary Questions",
             "required": false,
             "points": 1.0,
             "threshold": 5
           },
-          "AlgAnalSumm": {
+          "AlgAnalCS3Summ": {
             "long_name": "Algorithm Analysis Summary Questions",
             "required": true,
             "points": 1.0,

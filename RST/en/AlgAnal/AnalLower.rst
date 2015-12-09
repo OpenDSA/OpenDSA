@@ -238,6 +238,7 @@ If the limit goes to some constant other than zero, then
 .. inlineav:: LowerBoundCON ss
    :output: show
 
+
 Summary Exercise
 ~~~~~~~~~~~~~~~~
 
