@@ -14,8 +14,8 @@
 Trees versus Tries
 ==================
 
-Trees versus Tries (1)
-----------------------
+Trees versus Tries
+------------------
 
 We see that all letters with codes beginning with
 '0' are stored in the left branch, while all letters with codes
@@ -40,9 +40,7 @@ The following slideshows present this in more detail.
 .. inlineav:: TreeTimelineCON ss
    :output: show
 
-
-Trees versus Tries (2)
-----------------------
+|
 
 .. inlineav:: TrieTimelineCON ss
    :output: show

@@ -52,10 +52,6 @@ than just a single path, but not all of the nodes.
 Practice guided traversal with the following programming
 exercises.
 
-
-Guided Traversal Practice
--------------------------
-
 .. avembed:: Exercises/BTRecurTutor/BSTsmallcountPROG.html ka
 
 .. odsascript:: AV/BTRecurTutor/IneffBinaryTreeRangeCON.js

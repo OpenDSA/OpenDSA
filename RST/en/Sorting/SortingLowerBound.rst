@@ -147,9 +147,6 @@ As a corollary, we know that no comparison-based sorting algorithm can
 improve on existing :math:`\Theta(n \log n)` time sorting algorithms by
 more than a constant factor.
 
-Sorting Lower Bound Review Questions
-------------------------------------
-
 Here are some review questions to check that you understand
 this proof.
 

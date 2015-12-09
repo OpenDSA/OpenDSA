@@ -136,9 +136,6 @@ respectively.
 .. [#] Note that the term "heap" is also sometimes used to refer to
        :term:`free store`.
 
-Heap Insert
------------
-
 One way to build a heap is to insert the elements one at a time.
 Method ``insert`` will insert a new element :math:`V` into
 the heap.
@@ -187,10 +184,6 @@ distance from the bottom of the tree to the top of the tree.
 Thus, to insert :math:`n` values into the heap, if we insert them 
 one at a time, will take :math:`\Theta(n \log n)` time in the
 worst case.
-
-
-Heap Insert Practice
---------------------
 
 .. avembed:: AV/Binary/heapinsertPRO.html pe
 
@@ -278,15 +271,7 @@ Here is a visualization of the heap build process.
 
 Method ``buildHeap`` implements the building algorithm.
 
-
-Heap Build Practice
--------------------
-
 .. avembed:: AV/Binary/heapbuildPRO.html pe
-
-
-Heap Build Analysis
--------------------
 
 What is the cost of ``buildHeap``?
 Clearly it is the sum of the costs for the calls to ``siftdown``.
@@ -320,7 +305,7 @@ BST.
    :output: show
 
 
-Removing the Max Value
+Removing from the heap
 ----------------------
 
 .. inlineav:: heapmaxCON ss
@@ -330,15 +315,7 @@ Because the heap is :math:`\log n` levels deep, the cost of deleting
 the maximum element is :math:`\Theta(\log n)` in the average and worst
 cases.
 
-
-Removing the Max Value Practice
--------------------------------
-
 .. avembed:: AV/Binary/heapremovePRO.html pe
-
-
-Removing an Arbritrary Value
-----------------------------
 
 .. inlineav:: heapremoveCON ss
    :output: show
@@ -375,10 +352,6 @@ Priority queues can be helpful for solving graph problems such as
 :ref:`single-source shortest paths <single-source shortest paths problem> <GraphShortest>`
 and
 :ref:`minimal-cost spanning tree <minimal-cost spanning tree> <MCST>`.
-
-
-Practice Questions
-------------------
 
 .. avembed:: Exercises/Binary/HeapSumm.html ka
 

@@ -58,10 +58,6 @@ associate a key value with a record.
 The sorting algorithms will simply assume that the records are
 :term:`comparable`.)
 
-
-How It Works
-------------
-
 Here we see the first few iterations of Insertion Sort.
 
 .. inlineav:: insertionsortCON ss
@@ -76,38 +72,27 @@ As soon as a key value less than or equal to :math:`x` is
 encountered, ``inssort`` is done with that record because all
 records to its left in the array must have smaller keys.
 
-Putting It Together
--------------------
-
 .. avembed:: AV/Sorting/insertionsortAV.html ss
 
 
-Insertion Sort Practice
------------------------
-
 .. avembed:: Exercises/Sorting/InssortPRO.html ka
-
-
-Insertion Sort Worst Case
--------------------------
-
-.. inlineav:: InsertionSortWorstCaseCON ss
-   :output: show
-
-
-Insertion Sort Best Case
-------------------------
-
-.. inlineav:: InsertionSortBestCaseCON ss
-   :output: show
 
 
 Insertion Sort Analysis
 -----------------------
 
-.. inlineav:: InsertionSortAverageCaseCON ss
+.. inlineav:: InsertionSortWorstCaseCON ss
    :output: show
 
+|
+
+.. inlineav:: InsertionSortBestCaseCON ss
+   :output: show
+
+|
+
+.. inlineav:: InsertionSortAverageCaseCON ss
+   :output: show
 
 While the best case is significantly faster than the average and worst
 cases, the average and worst cases are usually more reliable
@@ -159,10 +144,6 @@ small arrays.
 You should spend some time right now trying to think of a situation
 where you will need to sort many small arrays.
 Actually, it happens a lot.
-
-
-Insertion Sort Summary Questions
---------------------------------
 
 .. avembed:: Exercises/Sorting/InssortSumm.html ka
 

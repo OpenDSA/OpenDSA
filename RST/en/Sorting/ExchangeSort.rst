@@ -103,9 +103,6 @@ limits comparisons to adjacent items will cost at least
 .. inlineav:: ExchangeSortCON ss
    :output: show
 
-Exchange Sort Summary Questions
--------------------------------
-
 .. avembed:: Exercises/Sorting/ExchangeSumm.html ka
 
 .. odsascript:: AV/Sorting/ExchangeSortCON.js

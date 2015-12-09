@@ -140,10 +140,6 @@ is an example of a full binary tree.
        trees tend to be wider than full binary trees because each
        level of a complete binary tree is as wide as possible.
 
-
-Terminology Practice
---------------------
-
 .. avembed:: Exercises/Binary/DefSumm.html ka
 
 

@@ -17,8 +17,8 @@
 Huffman Coding Trees
 ====================
 
-Fixed-length and Variable-length codes
---------------------------------------
+Huffman Coding Trees
+--------------------
 
 One can often gain an improvement in space requirements in exchange
 for a penalty in running time.

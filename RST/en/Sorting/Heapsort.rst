@@ -65,10 +65,6 @@ A complete implementation is as follows.
 
 .. codeinclude:: Sorting/Heapsort 
    :tag: Heapsort 
-   
-
-Heapsort Initial Practice
--------------------------
 
 Here is a warmup practice exercise for Heapsort.
 
@@ -115,9 +111,6 @@ That algorithm requires that edges be visited in ascending
 order (so, use a min-heap), but this process stops as soon as the MST
 is complete.
 Thus, only a relatively small fraction of the edges need be sorted.
-
-Heapsort Summary Questions
---------------------------
 
 .. avembed:: Exercises/Sorting/HeapsortSumm.html ka
 

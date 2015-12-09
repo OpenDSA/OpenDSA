@@ -64,10 +64,6 @@ keys' digit values working from the rightmost digit to the leftmost.
 If there are :math:`k` digits, then this requires that we assign keys to
 bins :math:`k` times.
 
-
-Radix Sort Practice Exercise
-----------------------------
-
 Here is a practice exercise for placing keys into bins.
 
 .. avembed:: Exercises/Sorting/RadixsortPRO.html ka
@@ -110,10 +106,6 @@ Variable ``rtoi`` stores :math:`r^i` for use in bin computation
 on the :math:`i`'th iteration.
 
 .. avembed:: AV/Sorting/radixArrayAV.html ss
-
-
-Radix Sort Analysis
--------------------
 
 .. inlineav:: RadixSortAnalysisCON ss
    :output: show
@@ -188,10 +180,6 @@ or the last character in variable length strings.
 Implementing the concept of Radix Sort with the
 :ref:`alphabet trie <alphabet trie> <Trie>` data structure is most
 appropriate for these situations.
-
-
-Radix Sort Summary Questions
-----------------------------
 
 .. avembed:: Exercises/Sorting/RadixSortSumm.html ka
 

@@ -81,10 +81,6 @@ Here is a visualization for the merge step.
 .. inlineav:: mergeImplS1CON ss
    :output: show
 
-
-Optimizing Mergesort
---------------------
-
 An optimized Mergesort implementation is shown below.
 It reverses the order of the second subarray during the initial copy.
 Now the current positions of the two subarrays work inwards from the
@@ -103,10 +99,6 @@ Here is a visualization for the optimized merge step.
 
 .. inlineav:: mergeImplS2CON ss
    :output: show
-
-
-Mergesort Summary Questions
----------------------------
 
 .. avembed:: Exercises/Sorting/MergesortSumm.html ka
 

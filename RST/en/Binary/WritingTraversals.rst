@@ -12,8 +12,8 @@
 Implementing Tree Traversals
 ============================
 
-Introduction
-------------
+Implementing Tree Traversals
+----------------------------
 
 Recall that any recursive function requires the following:
 
@@ -25,7 +25,7 @@ and clearly implementing recursive tree traversals.
 
 
 Base Case
----------
+~~~~~~~~~
 
 In binary tree traversals, most often the base case is to check if we
 have an empty tree.
@@ -83,8 +83,9 @@ In this case, we care that the current node is not ``null``, and we care
 about how to invoke the recursion on the children, but we do **not**
 have to care about how or when that is done.
 
+
 The Recursive Call
-------------------
+~~~~~~~~~~~~~~~~~~
 
 The secret to success when writing a recursive function is to not
 worry about how the recursive call works.

@@ -15,8 +15,8 @@
 Shellsort
 =========
 
-Introduction
-------------
+Shellsort
+---------
 
 Shellsort was named for its inventor, D.L. Shell, who first published
 it in 1959.
@@ -58,10 +58,6 @@ Each record in a given sublist is :math:`I` positions apart.
 For example, if the increment were 4, then each record in the sublist
 would be 4 positions apart.
 
-
-Selecting the First Increment
------------------------------
-
 One possible implementation for Shellsort is to use increments that
 are all powers of two.
 We start by picking as :math:`I` the largest power of two less than
@@ -87,10 +83,6 @@ records 4 through 7), then we can skip processing them.
 .. inlineav:: shellsortCON1 ss
    :output: show
 
-
-Sorting the Initial Sublists
-----------------------------
-
 Shellsort will sort each of these sublists of length 2 using Insertion
 Sort.
 As you click through the next slideshow, you will first see the current
@@ -108,10 +100,6 @@ sorted".
 
 .. inlineav:: shellsortCON3 dgm
 
-
-Selecting the Next Increment
-----------------------------
-
 The second pass of Shellsort looks at fewer, bigger sublists.
 In our example, the second pass will have an increment of size 4,
 resulting in :math:`n/4` sublists.
@@ -128,10 +116,6 @@ increment size 4.
 .. inlineav:: shellsortCON4 ss
    :output: show
 
-
-Sorting the Next Sublists
--------------------------
-
 Each sublist of 3 records would also be sorted using an Insertion
 Sort, as shown next.
 
@@ -142,10 +126,6 @@ At the end of processing sublists with increment 4, the array is
 "even more sorted".
 
 .. inlineav:: shellsortCON6 dgm
-
-
-Third Pass
-----------
 
 The third pass will be made on sublists with increment 2.
 The effect is that we process 2 lists, one consisting of the odd
@@ -158,10 +138,6 @@ As usual, we sort the sublists using Insertion Sort.
 At this point, we are getting close to sorted.
 
 .. inlineav:: shellsortCON8 dgm
-
-
-Final Pass
-----------
 
 Shellsort's final pass will always use an increment of 1,
 which means a "regular" Insertion Sort of all records.
@@ -178,10 +154,6 @@ Here is a code implementation for Shellsort.
 
 .. codeinclude:: Sorting/Shellsort
    :tag: Shellsort
-
-
-Shellsort Sublist Practice
---------------------------
 
 Now, test your understanding of the sublist concept.
 
@@ -206,10 +178,6 @@ Use this visualization to make sure that you understand how Shellsort
 works.
 
 .. avembed:: AV/Sorting/shellsortAV.html ss
-
-
-Shellsort Increments Exercise
------------------------------
 
 Next, let's review what makes for a legal increment series.
 
