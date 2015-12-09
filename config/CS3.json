@@ -57,19 +57,16 @@
       "Background/IntroDSA": {
         "long_name": "Introduction to Data Structures and Algorithms",
         "sections": {
-          "Introduction": {},
-          "Some Software Engineering Topics": {
-            "showsection": false
-          },
-          "A Philosophy of Data Structures": {},
-          "Selecting a Data Structure": {},
-          "Introduction Summary Questions": {
+          "Data Structures and Algorithms": {
             "IntroSumm": {
               "long_name": "Introduction Summary Questions",
               "required": true,
               "points": 1.0,
               "threshold": 5
             }
+          },
+          "Some Software Engineering Topics": {
+            "showsection": false
           }
         }
       },
@@ -224,9 +221,7 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Summary Questions": {
+            },
             "AnalPrelimSumm": {
               "long_name": "Problems, Algorithms, Programs Exercise",
               "required": true,
@@ -239,9 +234,7 @@
       "AlgAnal/AnalIntro": {
         "long_name": "Comparing Algorithms",
         "sections": {
-          "Comparing Algorithms": {},
-          "Basic Operations and Input Size": {},
-          "Growth Rates": {
+          "Comparing Algorithms": {
             "CompareGrowth": {
               "long_name": "Comparing Growth Rates Exercise",
               "required": true,
@@ -249,7 +242,7 @@
               "threshold": 3
             }
           },
-          "Growth Rates Exercise": {
+          "Growth Rates Ordering Exercise": {
             "GrowthRatesPRO": {
               "long_name": "Growth Rates Ordering Exercise",
               "required": true,
@@ -288,18 +281,13 @@
       "AlgAnal/AnalAsymptotic": {
         "long_name": "Asymptotic Analysis and Upper Bounds",
         "sections": {
-          "Introduction": {},
-          "Upper Bounds": {},
-          "Simplifying Rules": {},
-          "Summary": {
+          "Asymptotic Analysis and Upper Bounds": {
             "UpperBoundCON": {
               "long_name": "Upper Bounds visualization",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Practice Questions": {
+            },
             "UpperBoundsSumm": {
               "long_name": "Asymptotic Analysis and Upper Bounds Exercise",
               "required": true,
@@ -312,17 +300,13 @@
       "AlgAnal/AnalLower": {
         "long_name": "Lower Bounds and Theta Notation",
         "sections": {
-          "Lower Bounds": {},
-          "Theta Notation": {},
-          "Classifying Functions": {
+          "Lower Bounds and Theta Notation": {
             "LowerBoundCON": {
               "long_name": "Lower Bounds visualization",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Summary Exercise": {
+            },
             "LowerThetaSumm": {
               "long_name": "Lower Bounds and Theta Notation Exercise",
               "required": true,
@@ -333,18 +317,15 @@
         }
       },
       "AlgAnal/AnalProgram": {
-        "long_name": "Calculating the Running Time of a Program",
+        "long_name": "Calculating Program Running Time",
         "sections": {
-          "Calculating Program Running Time": {},
-          "Case Study: Two Search Algorithms": {
+          "Calculating Program Running Time": {
             "binarySearchCON": {
               "long_name": "Binary Search Algorithm Slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Binary Search Practice Exercise": {
+            },
             "binarySearchPRO": {
               "long_name": "Binary Search Proficiency Exercise",
               "exer_options": {
@@ -352,14 +333,6 @@
               },
               "required": true,
               "points": 1.0,
-              "threshold": 1.0
-            }
-          },
-          "Analyzing Binary Search": {
-            "DivideAndConquerRecurrenceSimpleCON": {
-              "long_name": "Linear Recurrence visualization",
-              "required": false,
-              "points": 0.0,
               "threshold": 1.0
             }
           },
@@ -382,9 +355,7 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Practice Questions": {
+            },
             "AnalProblemSumm": {
               "long_name": "Problem Analysis Exercise",
               "required": true,
@@ -403,9 +374,7 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Practice Questions": {
+            },
             "MisSumm": {
               "long_name": "Common Misconceptions Exercise",
               "required": true,
@@ -432,7 +401,7 @@
         "sections": {
           "Summary Exercise: CS2": {
             "showsection": false,
-            "AlgAnalCS2114Summ": {
+            "AlgAnalCS2Summ": {
               "long_name": "Algorithm Analysis Summary Questions",
               "required": false,
               "points": 1.0,
@@ -441,7 +410,7 @@
           },
           "Summary Exercise: CS3": {
             "showsection": true,
-            "AlgAnalSumm": {
+            "AlgAnalCS3Summ": {
               "long_name": "Algorithm Analysis Summary Questions",
               "required": true,
               "points": 1.0,

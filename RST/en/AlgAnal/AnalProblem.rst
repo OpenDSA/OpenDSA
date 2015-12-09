@@ -110,10 +110,6 @@ algorithm that is better only by a constant factor.
 .. [#] While it is fortunate to know the truth, it is unfortunate that
        sorting is :math:`\Theta(n \log n)` rather than :math:`\Theta(n)`!
 
-
-Practice Questions
-------------------
-
 .. avembed:: Exercises/AlgAnal/AnalProblemSumm.html ka
 
 .. odsascript:: AV/AlgAnal/AnalyzingProblemsCON.js

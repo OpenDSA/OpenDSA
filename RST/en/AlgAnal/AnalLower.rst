@@ -14,8 +14,11 @@
 Lower Bounds and :math:`\Theta` Notation
 ========================================
 
+Lower Bounds and Theta Notation
+-------------------------------
+
 Lower Bounds
-------------
+~~~~~~~~~~~~
 
 Big-Oh notation describes an upper bound.
 In other words, big-Oh notation states a claim about the greatest
@@ -140,7 +143,7 @@ case and 1 in the worst case).
 
 
 Theta Notation
---------------
+~~~~~~~~~~~~~~
 
 The definitions for big-Oh and :math:`\Omega` give us ways to
 describe the upper bound for an algorithm (if we can find an equation
@@ -194,7 +197,7 @@ lower bound of a problem or algorithm, the corresponding notation will
 be used in preference to :math:`\Theta` notation.
 
 Classifying Functions
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 Given functions :math:`f(n)` and :math:`g(n)` whose growth rates are
 expressed as algebraic equations, we might like to determine if one
@@ -236,7 +239,7 @@ If the limit goes to some constant other than zero, then
    :output: show
 
 Summary Exercise
-----------------
+~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/AlgAnal/LowerThetaSumm.html ka
 

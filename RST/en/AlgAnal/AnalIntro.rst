@@ -15,6 +15,9 @@ Comparing Algorithms
 Comparing Algorithms
 --------------------
 
+Introduction
+~~~~~~~~~~~~
+
 How do you compare two algorithms for solving some problem in terms
 of efficiency?
 We could implement both algorithms as computer programs and then
@@ -99,7 +102,7 @@ The only alternative is to use some other measure as a surrogate for
 running time.
 
 Basic Operations and Input Size
--------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Of primary consideration when estimating an algorithm's performance
 is the number of :term:`basic operations` required by
@@ -218,7 +221,7 @@ because the cost depends on the value of :math:`n`
    :math:`\mathbf{T}(n) = c_2 n^2`.
 
 Growth Rates
-------------
+~~~~~~~~~~~~
 
 The :term:`growth rate` for an algorithm is the rate at which the cost
 of the algorithm grows as the size of its input grows.
@@ -329,8 +332,8 @@ resources consumed by an algorithm.
 
 .. avembed:: Exercises/AlgAnal/CompareGrowth.html ka 
 
-Growth Rates Exercise
----------------------
+Growth Rates Ordering Exercise
+------------------------------
 
 .. avembed:: Exercises/AlgAnal/GrowthRatesPRO.html ka 
 

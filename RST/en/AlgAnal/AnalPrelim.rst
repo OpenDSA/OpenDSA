@@ -207,7 +207,7 @@ The following slideshow should help you to visualize the differences.
 
 
 Summary Questions
------------------
+~~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/AlgAnal/AnalPrelimSumm.html ka 
 

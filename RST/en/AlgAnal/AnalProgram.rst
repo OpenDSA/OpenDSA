@@ -222,7 +222,7 @@ recurrence relation is :math:`\Theta(n)`.
 
 
 Case Study: Two Search Algorithms
----------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The final example of algorithm analysis for this section will compare
 two algorithms for performing search in an array.
@@ -262,13 +262,13 @@ Here is an illustration of the binary search method.
    :output: show
 
 Binary Search Practice Exercise
--------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. avembed:: AV/Searching/binarySearchPRO.html ss
 
 
 Analyzing Binary Search
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~
 
 To find the cost of binary search in the worst case, we can model the
 running time as a recurrence and then find the closed-form solution.
