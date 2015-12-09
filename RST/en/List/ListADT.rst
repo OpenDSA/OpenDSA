@@ -67,7 +67,7 @@ Using this notation, the empty list would appear as
 
 
 Defining the ADT
-----------------
+~~~~~~~~~~~~~~~~
 
 What basic operations do we want our lists to support?
 Our common intuition about lists tells us that a list should be able
@@ -185,7 +185,7 @@ There are two standard approaches to implementing lists, the
 
 
 ADT Practice Exercise
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/List/ListADTPROG.html ka
   

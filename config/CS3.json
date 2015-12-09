@@ -428,16 +428,13 @@
       "List/ListADT": {
         "long_name": "List ADT",
         "sections": {
-          "List Terminology and Notation": {},
-          "Defining the ADT": {
+          "List Terminology and Notation": {
             "listADTposCON": {
               "long_name": "List ADT Positions Slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "ADT Practice Exercise": {
+            },
             "ListADTPROG": {
               "long_name": "List ADT Programming Exercise",
               "required": true,
@@ -456,17 +453,13 @@
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Array-based List Positions": {
+            },
             "alistIntroCON": {
               "long_name": "Array-based List Intro Slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Insert": {
+            },
             "alistInsertCON": {
               "long_name": "Array-based List Insertion Slideshow",
               "required": true,
@@ -482,23 +475,19 @@
               "threshold": 3
             }
           },
-          "Append": {
+          "Append and Remove": {
             "alistAppendCON": {
               "long_name": "Array-based List Append Slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Remove": {
+            },
             "alistRemoveCON": {
               "long_name": "Array-based List Remove",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Remove Practice Exericse": {
+            },
             "AlistRemovePRO": {
               "long_name": "Array-based List Remove Exercise",
               "required": true,
@@ -526,17 +515,13 @@
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Why This Has Problems": {
+            },
             "llistBadDelCON": {
               "long_name": "Linked List Slideshow 2",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "A Better Solution": {
+            },
             "llistInitCON": {},
             "llistHeaderCON": {}
           },
@@ -546,33 +531,25 @@
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Class Constructors": {
+            },
             "llistConsCON": {
               "long_name": "Linked List Constructors Slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Insert Method": {
+            },
             "llistInsertCON": {
               "long_name": "Linked List Insert Slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Insertion Special Cases": {
+            },
             "llistSpecialCON": {
               "long_name": "Linked List Special Insert Slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Linked List Insert Practice": {
+            },
             "LlistInsertPRO": {
               "long_name": "Linked List Insert Exercise",
               "required": true,
@@ -580,23 +557,19 @@
               "threshold": 5
             }
           },
-          "Remove": {
+          "Linked List Remove": {
             "llistRemoveCON": {
               "long_name": "Linked List Remove Slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Remove Practice": {
+            },
             "LlistRemovePRO": {
               "long_name": "Linked List Remove Exercise",
               "required": true,
               "points": 2,
               "threshold": 5
-            }
-          },
-          "Other Operations": {
+            },
             "llistOtherCON": {
               "long_name": "Linked List Position Slideshow",
               "required": true,
@@ -617,8 +590,7 @@
               "threshold": 3
             }
           },
-          "Time Comparison": {},
-          "Practice Questions": {
+          "Time Comparison": {
             "LLSumm": {
               "long_name": "Linked List Summary Exercise",
               "required": true,
@@ -632,41 +604,32 @@
         "long_name": "Doubly Linked Lists",
         "sections": {
           "Doubly Linked Lists": {
-            "dlistDiagramCON": {}
-          },
-          "Insert": {
+            "dlistDiagramCON": {},
             "dlistInsertCON": {
               "long_name": "Doubly Linked List Insert",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Append": {
+            },
             "dlistAppendCON": {
               "long_name": "Doubly Linked List Append",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Remove": {
+            },
             "dlistRemoveCON": {
               "long_name": "Doubly Linked List Remove",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Prev": {
+            },
             "dlistPrevCON": {
               "long_name": "Doubly Linked List Prev",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
             }
-          },
-          "Mangling Pointers": {}
+          }
         }
       },
       "List/ListElement": {
@@ -678,25 +641,19 @@
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Homogeneity": {
+            },
             "listElementTypeCON": {
               "long_name": "List Element Type",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Element Deletion": {
+            },
             "listElementDeleteCON": {
               "long_name": "List Element Delete",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Practice Questions": {
+            },
             "ListSumm": {
               "long_name": "List Summary Questions",
               "required": true,
@@ -716,25 +673,19 @@
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Positioning Top": {
+            },
             "astackTopCON": {
               "long_name": "Array stack top position slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Push": {
+            },
             "astackPushCON": {
               "long_name": "Array stack push slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Push Practice": {
+            },
             "AstackPushPRO": {
               "long_name": "Array-based Stack Push Exercise",
               "required": true,
@@ -748,9 +699,7 @@
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Pop Practice": {
+            },
             "AstackPopPRO": {
               "long_name": "Array-based Stack Pop Exercise",
               "required": true,
@@ -764,17 +713,13 @@
         "long_name": "Linked Stacks",
         "sections": {
           "Linked Stack Implementation": {
-            "lstackDiagramCON": {}
-          },
-          "Linked Stack Push": {
+            "lstackDiagramCON": {},
             "lstackPushCON": {
               "long_name": "Linked stack push",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Push Practice": {
+            },
             "LstackPushPRO": {
               "long_name": "Linked Stack Push Exercise",
               "required": true,
@@ -788,17 +733,13 @@
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Pop Practice": {
+            },
             "LstackPopPRO": {
               "long_name": "Linked Stack Pop Exercise",
               "required": true,
               "points": 1,
               "threshold": 5
-            }
-          },
-          "Comparison of Array-Based and Linked Stacks": {
+            },
             "lstackTwostackCON": {}
           }
         }
@@ -830,33 +771,25 @@
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "An Improvement": {
+            },
             "aqueueDriftCON": {
               "long_name": "Array-based Queue Drift Slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "A Problem": {
+            },
             "aqueueBadCON": {
               "long_name": "Array-based Queue Bad Representation Slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "The Circular Queue": {
+            },
             "aqueueCircularCON": {
               "long_name": "Circular Array-based Queue Slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Defining Positions": {
+            },
             "aqueueEmptyCON": {
               "long_name": "Empty Circular Array-based Queue Slideshow",
               "required": true,
@@ -870,9 +803,7 @@
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Array-based Enqueue Practice": {
+            },
             "AqueueEnqueuePRO": {
               "long_name": "Array-based Queue Enqueue Exercise",
               "required": true,
@@ -899,17 +830,13 @@
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Linked Enqueue": {
+            },
             "lqueueEnqueueCON": {
               "long_name": "Linked Queue Enqueue",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Linked Enqueue Practice": {
+            },
             "LqueueEnqueuePRO": {
               "long_name": "Linked Queue Enqueue Exercise",
               "required": true,
@@ -923,9 +850,7 @@
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Linked Dequeue Practice": {
+            },
             "LqueueDequeuePRO": {
               "long_name": "Linked Queue Dequeue Exercise",
               "required": true,
@@ -933,8 +858,7 @@
               "threshold": 5
             }
           },
-          "Comparison of Array-Based and Linked Queues": {},
-          "Stack and Queue Summary Questions": {
+          "Comparison of Array-Based and Linked Queues": {
             "StackQSumm": {
               "long_name": "Stack/Queue Summary Exercise",
               "required": true,

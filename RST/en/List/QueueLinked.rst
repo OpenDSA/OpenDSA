@@ -29,17 +29,11 @@ Here is the linked queue class declaration.
 .. inlineav:: lqueueIntroCON ss
    :output: show    
    
-
-Linked Enqueue
---------------
+|
 
 .. inlineav:: lqueueEnqueueCON ss
    :output: show   
    
-
-Linked Enqueue Practice
------------------------
-
 .. avembed:: Exercises/List/LqueueEnqueuePRO.html ka
 
 
@@ -49,10 +43,6 @@ Linked Dequeue
 .. inlineav:: lqueueDequeueCON ss
    :output: show 
    
-
-Linked Dequeue Practice
------------------------
-
 .. avembed:: Exercises/List/LqueueDequeuePRO.html ka
 
 
@@ -68,7 +58,7 @@ way to store two queues in the same array,
 unless items are always transferred directly from one queue to the other.
 
 Stack and Queue Summary Questions
----------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/List/StackQSumm.html ka
 

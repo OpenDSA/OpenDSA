@@ -52,6 +52,7 @@ The two approaches presented here are the :term:`array-based stack`
 and the :ref:`linked stack <linked stack> <StackLinked>`, 
 which are analogous to array-based and linked lists, respectively.
 
+
 Array-Based Stacks
 ------------------
 
@@ -67,9 +68,6 @@ the array-based stack class.
    :output: show
    
 
-Positioning Top
----------------
-
 The array-based stack implementation is essentially
 a simplified version of the array-based list.
 The only important design decision to be made is which end of the
@@ -78,16 +76,10 @@ array should represent the top of the stack.
 .. inlineav:: astackTopCON ss
    :output: show
    
-
-Push
-----
+|
 
 .. inlineav:: astackPushCON ss
    :output: show
-
-
-Push Practice
--------------
 
 .. avembed:: Exercises/List/AstackPushPRO.html ka
 
@@ -98,10 +90,6 @@ Pop
 .. inlineav:: astackPopCON ss
    :output: show
    
-
-Pop Practice
-------------
-
 .. avembed:: Exercises/List/AstackPopPRO.html ka
 
 .. odsascript:: AV/List/astackVarCON.js

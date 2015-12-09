@@ -61,7 +61,7 @@ and ``link`` fields.
 
 
 Why This Has Problems
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 There are a number of problems with the representation just
 described.
@@ -77,7 +77,7 @@ and thus increases the chance of introducing bugs.
    
 
 A Better Solution
------------------
+~~~~~~~~~~~~~~~~~
 
 Fortunately, there is a fairly easy way to deal with all of the
 special cases, as well as the problem with deleting the last node.
@@ -117,6 +117,7 @@ Adding the trailer node also solves our problem with deleting the last
 node on the list, as we will see when we take a closer look at the
 remove method's implementation.
 
+
 Linked List Implementation
 --------------------------
 
@@ -131,24 +132,16 @@ named ``LList``.
 .. inlineav:: llistVarsCON ss
    :output: show
 
-
-Class Constructors
-------------------
+|
 
 .. inlineav:: llistConsCON ss
    :output: show
 
-
-
-Insert Method
--------------
+|
 
 .. inlineav:: llistInsertCON ss
    :output: show
    
-
-Insertion Special Cases
------------------------
 
 Here are some special cases for linked list insertion: Inserting at
 the end, and inserting to an empty list.
@@ -157,27 +150,16 @@ the end, and inserting to an empty list.
    :output: show
    
 
-Linked List Insert Practice
----------------------------
-
 .. avembed:: Exercises/List/LlistInsertPRO.html ka
 
 
-Remove
-------
+Linked List Remove
+------------------
 
 .. inlineav:: llistRemoveCON ss
    :output: show
-   
-
-Remove Practice
----------------
 
 .. avembed:: Exercises/List/LlistRemovePRO.html ka
-
-
-Other Operations
-----------------
 
 .. inlineav:: llistOtherCON ss
    :output: show

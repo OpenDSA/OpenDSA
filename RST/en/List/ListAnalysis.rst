@@ -103,6 +103,7 @@ certain limit.
 
 .. avembed:: Exercises/List/ListOverhead.html ka
 
+
 Time Comparison
 ---------------
 
@@ -156,7 +157,8 @@ To analyze the overall cost of dynamic array operations over time,
 we need to use a technique known as
 :ref:`amortized analysis <amortized analysis> <AmortAnal>`.
 
+
 Practice Questions
-------------------
+~~~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/List/LLSumm.html ka
