@@ -838,7 +838,6 @@
     "Design": {
       "Design/DesignPatterns": {
         "long_name": "Design Patterns",
-        "dispModComp": true,
         "exercises": {
           "DesignPatternSumm": {
             "long_name": "Design Patterns Summary Exercise",
@@ -850,7 +849,6 @@
       },
       "Design/DesignAltList": {
         "long_name": "Alternate List ADT Design",
-        "dispModComp": true,
         "exercises": {}
       },
       "Design/Comparison": {
@@ -866,7 +864,6 @@
       },
       "Design/Dictionary": {
         "long_name": "The Dictionary ADT",
-        "dispModComp": true,
         "exercises": {
           "DesignDictionarySumm": {
             "long_name": "Dictionary Summary Exercise",

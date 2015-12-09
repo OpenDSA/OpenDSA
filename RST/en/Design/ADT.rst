@@ -1,10 +1,11 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2015 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Cliff Shaffer
+   :requires:
    :satisfies: ADT; metaphor
    :topic: Abstract Data Types
 
@@ -12,6 +13,9 @@
 
 Abstract Data Types
 ===================
+
+Abstract Data Types
+-------------------
 
 This module presents terminology and definitions related to techniques
 for managing the tremendous complexity of computer programs.
@@ -249,7 +253,8 @@ Data types have both a :term:`logical form` and a :term:`physical form`.
 The definition of the data type in terms of an ADT is its logical
 form.
 The implementation of the data type as a data structure
-is its physical form. Sometimes you may see the term *concrete implementation*,
+is its physical form.
+Sometimes you might see the term *concrete implementation*,
 but the word concrete is redundant.
 The figure below illustrates this relationship between logical
 and physical forms for data types.
@@ -291,6 +296,6 @@ The interface becomes a form of communication between the two programmers.
    Within the class, a variety of physical implementations for lists
    is possible.
 
-.. odsascript:: AV/Design/ADTCON.js
-
 .. avembed:: Exercises/Design/IntroADTSumm.html ka
+
+.. odsascript:: AV/Design/ADTCON.js
