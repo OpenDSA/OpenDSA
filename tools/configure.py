@@ -383,7 +383,7 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
                 section_obj = sections[section]
                 section_name = section
                 showsection = section_obj.get("showsection")
-                exercises_count = 0
+                section_points = 0
                 for attr in section_obj:
                     if bool(section_obj[attr]) and isinstance(section_obj[attr], dict):
                         exercise_obj = section_obj[attr]
@@ -392,12 +392,14 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
                         points = exercise_obj.get("points")
                         threshold = exercise_obj.get("threshold")
                         if long_name is not None and required is not None and points is not None and threshold is not None:
-                            exercises_count += 1
+
+                            if points > 0:
+                                section_points = points
 
                 if showsection is None or (showsection is not None and showsection == True):
                     indexed_section_name = str(module_position).zfill(2) + "." + str(module_item_position).zfill(2) + "." +str(section_couter).zfill(2) + ' - ' + section_name
-                    # if section object contains no exercies or more than one exercise then only one assignment with 0 points will be created in canvas
-                    if exercises_count == 1 :
+                    # if section object contains gradeable exercieassignment will be created in canvas
+                    if section_points > 0:
                         results = assignments.create_assignment(
                             request_ctx,
                             course_id,
@@ -405,7 +407,7 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
                             assignment_submission_types="external_tool",
                             assignment_external_tool_tag_attributes={
                                 "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2)},
-                            assignment_points_possible=points,
+                            assignment_points_possible=section_points,
                             assignment_description=section_name)
 
                         item_id = results.json().get("id")
