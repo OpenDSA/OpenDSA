@@ -1,0 +1,12 @@
+var testvisualizerTrace = {"code":"Link p = createList(1,2,3)\nLink q = p.next()\n//Insert Your Code Here \np=q\n","trace":[{"stdout":"","event":"step_line","line":1,"stack_to_render":[{"func_name":"reAssignPointer:127","encoded_locals":{},"ordered_varnames":[],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"140","frame_id":140}],"globals":{},"ordered_globals":[],"func_name":"reAssignPointer","heap":{}},{"stdout":"","event":"step_line","line":2,"stack_to_render":[{"func_name":"reAssignPointer:127","encoded_locals":{"p":["REF",443]},"ordered_varnames":["p"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"142","frame_id":142}],"globals":{},"ordered_globals":[],"func_name":"reAssignPointer","heap":{"443":["INSTANCE","Link",["n",["REF",441]],["e",1]],"441":["INSTANCE","Link",["n",["REF",439]],["e",2]],"439":["INSTANCE","Link",["n",null],["e",3]],"440":3,"442":2,"444":1}},{"stdout":"","event":"step_line","line":3,"stack_to_render":[{"func_name":"reAssignPointer:127","encoded_locals":{"p":["REF",443]},"ordered_varnames":["p"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"164","frame_id":164}],"globals":{},"ordered_globals":[],"func_name":"reAssignPointer","heap":{"443":["INSTANCE","Link",["n",["REF",441]],["e",1]],"441":["INSTANCE","Link",["n",["REF",439]],["e",2]],"439":["INSTANCE","Link",["n",null],["e",3]],"440":3,"442":2,"444":1}},{"stdout":"","event":"step_line","line":4,"stack_to_render":[{"func_name":"reAssignPointer:128","encoded_locals":{"p":["REF",443],"q":["REF",441]},"ordered_varnames":["p","q"],"parent_frame_id_list":[],"is_highlighted":true,"is_zombie":false,"is_parent":false,"unique_hash":"166","frame_id":166}],"globals":{},"ordered_globals":[],"func_name":"reAssignPointer","heap":{"441":["INSTANCE","Link",["n",["REF",439]],["e",2]],"439":["INSTANCE","Link",["n",null],["e",3]],"440":3,"442":2,"443":["INSTANCE","Link",["n",["REF",441]],["e",1]],"444":1}},],"userlog":"Debugger VM maxMemory: 807M \n "}
+$(document).ready(function() { 
+ 
+ 	 var testvisualizer = new ExecutionVisualizer('testvisualizerDiv', testvisualizerTrace,{embeddedMode: false, lang: 'java', heightChangeCallback: redrawAllVisualizerArrows}); 
+ 
+ 	function redrawAllVisualizerArrows() { 
+ 
+ 	 	 if (testvisualizer) testvisualizer.redrawConnectors(); 
+ 	 } 
+ 
+ $(window).resize(redrawAllVisualizerArrows); 
+});
