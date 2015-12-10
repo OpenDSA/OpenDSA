@@ -5,8 +5,7 @@
 
 .. avmetadata::
    :author: OpenDSA Contributors
-   :prerequisites: 
-   :topic:   
+   :topic: OpenDSA Glossary
 
 
 Glossary
@@ -2018,14 +2017,14 @@ Glossary
       analog of the kd tree.
 
    key
-      :to-term: key space : label: has
+      :to-term: key space :label: has
 
       A field or part of a larger record used to represent that record
       for the purpose of searching or comparing.
       Another term for :term:`search key`.
 
    key sort
-      :to-term: key : label: uses
+      :to-term: key :label: uses
 
       Any sorting opertation applied to a collection of
       :term:`key-value pairs <key-value pair>` where the value in this
@@ -2582,7 +2581,7 @@ Glossary
       Specifically, an NP-Completeness proof must first show that the
       problem is in class :term:`NP`, and then show (by using a
       reduction to another NP-Complete problem) that the problem is
-      :term:`NP hard`.
+      :term:`NP-hard`.
 
    NP-hard
       A problem that is "as hard as" any other problem in :term:`NP`.
@@ -3156,7 +3155,7 @@ Glossary
 
    record
       A collection of information, typical implemented as an
-      :term:`object` in an :term:`object-oriented programming language`.
+      :term:`object` in the :term:`object-oriented programming paradigm`.
       Many data structures are organized containers for a collection
       of records.
 

@@ -50,8 +50,9 @@ It occurs in the same way with any function.
 In this section, we will see several examples for how trace a
 recursive call.
    
+
 A Domino Analogy
-----------------
+~~~~~~~~~~~~~~~~
 
 .. inlineav:: recurTraceDmnCON ss
    :output: show 
@@ -74,27 +75,15 @@ subsequently. So the solution for a recursive case is
 computed recursively by solving its next smaller case
 first followed by some subsequent computation.
    
-
-Sum Example
------------
-
 First is a trace for a simple sum function.
 
 .. inlineav:: recurTraceSumCON ss
    :output: show
 
-
-Factorial Example
------------------
-
 Here is a tracing example of the factorial function.
 
 .. inlineav:: recurTraceFactCON ss
    :output: show 
-
-
-Another Summing Example
------------------------
 
 As you trace the code, you should observe several things.
 Let's use the array summing function again for an example.
@@ -111,22 +100,11 @@ arrived at, having been built up from the base case.
 Whenever the return statement of the recursive call has no more work to do
 AFTER the recursive call, the function is said to be tail-recursive.
 
-
-
-
-
-Using the Domino Analogy
-------------------------
-
 The next visualization shows how we can use the
 Domino effect to recursively print the integers from 1 to N.
 
 .. inlineav:: recurTraceDmnPrntCON ss
    :output: show 
-
-
-Another Domino Example
-----------------------
 
 This next visualization shows how we can use the Domino technique to
 recursively count the number of digits in an integer.
@@ -136,7 +114,7 @@ recursively count the number of digits in an integer.
 
 
 Towers of Hanoi
----------------
+~~~~~~~~~~~~~~~
 
 Here is another example of recursion, based on a famous puzzle called
 "Towers of Hanoi".

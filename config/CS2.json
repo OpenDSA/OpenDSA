@@ -27,20 +27,16 @@
       "Background/IntroDSA": {
         "long_name": "Introduction to Data Structures and Algorithms",
         "sections": {
-          "Introduction": {},
-          "Course Goals": {},
-          "Some Software Engineering Topics": {
-            "showsection": false
-          },
-          "A Philosophy of Data Structures": {},
-          "Selecting a Data Structure": {},
-          "Introduction Summary Questions": {
+          "Data Structures and Algorithms": {
             "IntroSumm": {
               "long_name": "Introduction Summary Questions",
               "required": true,
               "points": 1.0,
               "threshold": 5
             }
+          },
+          "Some Software Engineering Topics": {
+            "showsection": false
           }
         }
       },
@@ -48,9 +44,7 @@
         "long_name": "Abstract Data Types",
         "sections": {
           "Abstract Data Types": {
-            "ADTCON": {}
-          },
-          "ADT Summary Questions": {
+            "ADTCON": {},
             "IntroADTSumm": {
               "long_name": "ADT Summary Questions",
               "required": true,
@@ -65,16 +59,13 @@
       "List/ListADT": {
         "long_name": "List ADT",
         "sections": {
-          "List Terminology and Notation": {},
-          "Defining the ADT": {
+          "List Terminology and Notation": {
             "listADTposCON": {
               "long_name": "List ADT Positions Slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "ADT Practice Exercise": {
+            },
             "ListADTPROG": {
               "long_name": "List ADT Programming Exercise",
               "required": true,
@@ -93,17 +84,13 @@
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Array-based List Positions": {
+            },
             "alistIntroCON": {
               "long_name": "Array-based List Intro Slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Insert": {
+            },
             "alistInsertCON": {
               "long_name": "Array-based List Insertion Slideshow",
               "required": true,
@@ -119,23 +106,19 @@
               "threshold": 3
             }
           },
-          "Append": {
+          "Append and Remove": {
             "alistAppendCON": {
               "long_name": "Array-based List Append Slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Remove": {
+            },
             "alistRemoveCON": {
               "long_name": "Array-based List Remove",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Remove Practice Exericse": {
+            },
             "AlistRemovePRO": {
               "long_name": "Array-based List Remove Exercise",
               "required": true,
@@ -158,9 +141,7 @@
       "AlgAnal/AnalIntro": {
         "long_name": "Comparing Algorithms",
         "sections": {
-          "Comparing Algorithms": {},
-          "Basic Operations and Input Size": {},
-          "Growth Rates": {
+          "Comparing Algorithms": {
             "CompareGrowth": {
               "long_name": "Comparing Growth Rates Exercise",
               "required": true,
@@ -168,7 +149,7 @@
               "threshold": 3
             }
           },
-          "Growth Rates Exercise": {
+          "Growth Rates Ordering Exercise": {
             "GrowthRatesPRO": {
               "long_name": "Growth Rates Ordering Exercise",
               "required": true,
@@ -207,18 +188,13 @@
       "AlgAnal/AnalAsymptotic": {
         "long_name": "Asymptotic Analysis and Upper Bounds",
         "sections": {
-          "Introduction": {},
-          "Upper Bounds": {},
-          "Simplifying Rules": {},
-          "Summary": {
+          "Asymptotic Analysis and Upper Bounds": {
             "UpperBoundCON": {
               "long_name": "Upper Bounds visualization",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Practice Questions": {
+            },
             "UpperBoundsSumm": {
               "long_name": "Asymptotic Analysis and Upper Bounds Exercise",
               "required": true,
@@ -228,55 +204,23 @@
           }
         }
       },
-      "AlgAnal/AnalLower": {
-        "long_name": "Lower Bounds and Theta Notation",
-        "sections": {
-          "Lower Bounds": {},
-          "Theta Notation": {},
-          "Classifying Functions": {
-            "LowerBoundCON": {
-              "long_name": "Lower Bounds visualization",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            }
-          },
-          "Summary Exercise": {
-            "LowerThetaSumm": {
-              "long_name": "Lower Bounds and Theta Notation Exercise",
-              "required": true,
-              "points": 2.0,
-              "threshold": 5
-            }
-          }
-        }
-      },
       "AlgAnal/AnalProgram": {
-        "long_name": "Calculating the Running Time of a Program",
+        "long_name": "Calculating Program Running Time",
         "sections": {
-          "Calculating Program Running Time": {},
-          "Case Study: Two Search Algorithms": {
+          "Calculating Program Running Time": {
             "binarySearchCON": {
               "long_name": "Binary Search Algorithm Slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Binary Search Practice Exercise": {
+            },
             "binarySearchPRO": {
               "long_name": "Binary Search Proficiency Exercise",
-              "exer_options": { "JXOP-code": "none" },
+              "exer_options": {
+                "JXOP-code": "none"
+              },
               "required": true,
               "points": 1.0,
-              "threshold": 1.0
-            }
-          },
-          "Analyzing Binary Search": {
-            "DivideAndConquerRecurrenceSimpleCON": {
-              "long_name": "Linear Recurrence visualization",
-              "required": false,
-              "points": 0.0,
               "threshold": 1.0
             }
           },
@@ -295,7 +239,7 @@
         "sections": {
           "Summary Exercise: CS2": {
             "showsection": true,
-            "AlgAnalCS2114Summ": {
+            "AlgAnalCS2Summ": {
               "long_name": "Algorithm Analysis Summary Questions",
               "required": false,
               "points": 1.0,
@@ -304,7 +248,7 @@
           },
           "Summary Exercise: CS3": {
             "showsection": false,
-            "AlgAnalSumm": {
+            "AlgAnalCS3Summ": {
               "long_name": "Algorithm Analysis Summary Questions",
               "required": true,
               "points": 1.0,
@@ -325,25 +269,19 @@
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Positioning Top": {
+            },
             "astackTopCON": {
               "long_name": "Array stack top position slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Push": {
+            },
             "astackPushCON": {
               "long_name": "Array stack push slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Push Practice": {
+            },
             "AstackPushPRO": {
               "long_name": "Array-based Stack Push Exercise",
               "required": true,
@@ -357,9 +295,7 @@
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Pop Practice": {
+            },
             "AstackPopPRO": {
               "long_name": "Array-based Stack Pop Exercise",
               "required": true,
@@ -373,17 +309,13 @@
         "long_name": "Linked Stacks",
         "sections": {
           "Linked Stack Implementation": {
-            "lstackDiagramCON": {}
-          },
-          "Linked Stack Push": {
+            "lstackDiagramCON": {},
             "lstackPushCON": {
               "long_name": "Linked stack push",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Push Practice": {
+            },
             "LstackPushPRO": {
               "long_name": "Linked Stack Push Exercise",
               "required": true,
@@ -397,17 +329,13 @@
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Pop Practice": {
+            },
             "LstackPopPRO": {
               "long_name": "Linked Stack Pop Exercise",
               "required": true,
               "points": 1,
               "threshold": 5
-            }
-          },
-          "Comparison of Array-Based and Linked Stacks": {
+            },
             "lstackTwostackCON": {}
           }
         }
@@ -423,9 +351,7 @@
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Taking a Closer Look": {
+            },
             "recurIntroDetailsCON": {
               "long_name": "Recursion Introduction Slideshow 2",
               "required": true,
@@ -438,15 +364,13 @@
       "RecurTutor/Write": {
         "long_name": "How to write a recursive function",
         "sections": {
-          "The Big Picture": {
+          "Writing a recursive function": {
             "recurWriteStepsCON": {
               "long_name": "Recursion Code Writing Slideshow 1",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Some Different Approaches to Writing the Sum Function": {
+            },
             "recurWriteSumCON": {
               "long_name": "Recursion Code Writing Slideshow 2",
               "required": true,
@@ -459,7 +383,6 @@
       "RecurTutor/CodeCompletionEx": {
         "long_name": "Code Completion Exercises",
         "sections": {
-          "Introduction": {},
           "Programming Exercise: Largest": {
             "RecCLargestPROG": {
               "long_name": "Recursion Code Completion Exercise Largest",
@@ -638,57 +561,43 @@
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Sum Example": {
+            },
             "recurTraceSumCON": {
               "long_name": "Recursion Tracing Sum Function",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Factorial Example": {
+            },
             "recurTraceFactCON": {
               "long_name": "Recursion Tracing Factorial Function",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Another Summing Example": {
+            },
             "recurTraceSum2CON": {
               "long_name": "Recursion Tracing Sum Winding and Unwinding",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "A Domino Analogy": {
+            },
             "recurTraceDmnCON": {
               "long_name": "Recursion Tracing General Domino Effect",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Using the Domino Analogy": {
+            },
             "recurTraceDmnPrntCON": {
               "long_name": "Recursion Tracing Domino Effect for Printing",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Another Domino Example": {
+            },
             "recurTraceDmnCntCON": {
               "long_name": "Recursion Tracing Domino Effect for Counting",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Towers of Hanoi": {
+            },
             "TOHfigCON": {},
             "recurTraceTOHCON": {
               "long_name": "Recursion Tracing Towers of Hanoi",
@@ -806,26 +715,21 @@
       },
       "Sorting/InsertionSort": {
         "long_name": "Insertion Sort",
-        "sections" : {
-          "Insertion Sort": {},
-          "How It Works": {
+        "sections": {
+          "Insertion Sort": {
             "insertionsortCON": {
               "long_name": "Insertion Sort Slideshow",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Putting It Together": {
+            },
             "insertionsortAV": {
               "long_name": "Insertion Sort Visualization",
               "required": false,
               "points": 0,
               "showhide": "none",
               "threshold": 1.0
-            }
-          },
-          "Insertion Sort Practice": {
+            },
             "InssortPRO": {
               "long_name": "Insertion Sort Proficiency Exercise",
               "required": true,
@@ -833,37 +737,29 @@
               "threshold": 5
             }
           },
-          "Insertion Sort Worst Case": {
+          "Insertion Sort Analysis": {
             "InsertionSortWorstCaseCON": {
               "long_name": "Insertion Sort Worst Case Slideshow",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Insertion Sort Best Case": {
+            },
             "InsertionSortBestCaseCON": {
               "long_name": "Insertion Sort Best Case Slideshow",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-
-          "Insertion Sort Analysis": {
+            },
             "InsertionSortAverageCaseCON": {
               "long_name": "Insertion Sort Average Case Slideshow",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Insertion Sort Summary Questions": {
+            },
             "InssortSumm": {
               "long_name": "Insertion Sort Summary Exercise",
               "required": true,
               "points": 1.0,
-
               "threshold": 5
             }
           }
@@ -872,33 +768,26 @@
       "Sorting/BubbleSort": {
         "long_name": "Bubble Sort",
         "sections": {
-          "Bubble Sort": {},
-          "Bubble Sort Iteration 1": {
+          "Bubble Sort": {
             "bubblesortS1CON": {
               "long_name": "Bubble Sort Slideshow 1",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Bubble Sort Iteration 2": {
+            },
             "bubblesortS2CON": {
               "long_name": "Bubble Sort Slideshow 2",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Putting It Together": {
+            },
             "bubblesortAV": {
               "long_name": "Bubble Sort Visualization",
               "required": false,
               "points": 0,
               "showhide": "none",
               "threshold": 1.0
-            }
-          },
-          "Bubble Sort Practice": {
+            },
             "BubsortPRO": {
               "long_name": "Bubble Sort Proficiency Exercise",
               "required": true,
@@ -912,9 +801,7 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Bubble Sort Review Questions": {
+            },
             "BubsortSumm": {
               "long_name": "Bubble Sort Summary Exercise",
               "required": true,
@@ -927,33 +814,26 @@
       "Sorting/SelectionSort": {
         "long_name": "Selection Sort",
         "sections": {
-          "Selection Sort": {},
-          "Selection Sort Iteration 1": {
+          "Selection Sort": {
             "selectionsortS1CON": {
               "long_name": "Selection Sort Slideshow 1",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Selection Sort Iteration 2": {
+            },
             "selectionsortS2CON": {
               "long_name": "Selection Sort Slideshow 2",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Putting It Together": {
+            },
             "selectionsortAV": {
               "long_name": "Selection Sort Visualization",
               "required": false,
               "points": 0,
               "showhide": "none",
               "threshold": 1.0
-            }
-          },
-          "Selection Sort Practice Exercise": {
+            },
             "SelsortPRO": {
               "long_name": "Selection Sort Proficiency Exercise",
               "required": true,
@@ -967,9 +847,7 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Selection Sort Summary Questions": {
+            },
             "SelsortSumm": {
               "long_name": "Selection Sort Summary Exercise",
               "required": true,
@@ -991,33 +869,25 @@
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "An Improvement": {
+            },
             "aqueueDriftCON": {
               "long_name": "Array-based Queue Drift Slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "A Problem": {
+            },
             "aqueueBadCON": {
               "long_name": "Array-based Queue Bad Representation Slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "The Circular Queue": {
+            },
             "aqueueCircularCON": {
               "long_name": "Circular Array-based Queue Slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Defining Positions": {
+            },
             "aqueueEmptyCON": {
               "long_name": "Empty Circular Array-based Queue Slideshow",
               "required": true,
@@ -1031,9 +901,7 @@
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Array-based Enqueue Practice": {
+            },
             "AqueueEnqueuePRO": {
               "long_name": "Array-based Queue Enqueue Exercise",
               "required": true,
@@ -1060,17 +928,13 @@
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Linked Enqueue": {
+            },
             "lqueueEnqueueCON": {
               "long_name": "Linked Queue Enqueue",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Linked Enqueue Practice": {
+            },
             "LqueueEnqueuePRO": {
               "long_name": "Linked Queue Enqueue Exercise",
               "required": true,
@@ -1084,9 +948,7 @@
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Linked Dequeue Practice": {
+            },
             "LqueueDequeuePRO": {
               "long_name": "Linked Queue Dequeue Exercise",
               "required": true,
@@ -1094,8 +956,7 @@
               "threshold": 5
             }
           },
-          "Comparison of Array-Based and Linked Queues": {},
-          "Stack and Queue Summary Questions": {
+          "Comparison of Array-Based and Linked Queues": {
             "StackQSumm": {
               "long_name": "Stack/Queue Summary Exercise",
               "required": true,
@@ -1111,24 +972,20 @@
         "long_name": "Linked Lists",
         "sections": {
           "Linked Lists": {
-            "llistRepCON": { },
+            "llistRepCON": {},
             "llistBadCON": {
               "long_name": "Linked List Slideshow 1",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Why This Has Problems": {
+            },
             "llistBadDelCON": {
               "long_name": "Linked List Slideshow 2",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "A Better Solution": {
-            "llistInitCON": { },
+            },
+            "llistInitCON": {},
             "llistHeaderCON": {}
           },
           "Linked List Implementation": {
@@ -1137,33 +994,25 @@
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Class Constructors": {
+            },
             "llistConsCON": {
               "long_name": "Linked List Constructors Slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Insert Method": {
+            },
             "llistInsertCON": {
               "long_name": "Linked List Insert Slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Insertion Special Cases": {
+            },
             "llistSpecialCON": {
               "long_name": "Linked List Special Insert Slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Linked List Insert Practice": {
+            },
             "LlistInsertPRO": {
               "long_name": "Linked List Insert Exercise",
               "required": true,
@@ -1171,23 +1020,19 @@
               "threshold": 5
             }
           },
-          "Remove": {
+          "Linked List Remove": {
             "llistRemoveCON": {
               "long_name": "Linked List Remove Slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Remove Practice": {
+            },
             "LlistRemovePRO": {
               "long_name": "Linked List Remove Exercise",
               "required": true,
               "points": 2,
               "threshold": 5
-            }
-          },
-          "Other Operations": {
+            },
             "llistOtherCON": {
               "long_name": "Linked List Position Slideshow",
               "required": true,
@@ -1199,7 +1044,7 @@
       },
       "List/ListAnalysis": {
         "long_name": "Comparison of List Implementations",
-        "sections":{
+        "sections": {
           "Space Comparison": {
             "ListOverhead": {
               "long_name": "Breakeven Point Exercise",
@@ -1208,8 +1053,7 @@
               "threshold": 3
             }
           },
-          "Time Comparison": {},
-          "Practice Questions": {
+          "Time Comparison": {
             "LLSumm": {
               "long_name": "Linked List Summary Exercise",
               "required": true,
@@ -1223,41 +1067,32 @@
         "long_name": "Doubly Linked Lists",
         "sections": {
           "Doubly Linked Lists": {
-            "dlistDiagramCON": {}
-          },
-          "Insert": {
+            "dlistDiagramCON": {},
             "dlistInsertCON": {
               "long_name": "Doubly Linked List Insert",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Append": {
+            },
             "dlistAppendCON": {
               "long_name": "Doubly Linked List Append",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Remove": {
+            },
             "dlistRemoveCON": {
               "long_name": "Doubly Linked List Remove",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Prev": {
+            },
             "dlistPrevCON": {
               "long_name": "Doubly Linked List Prev",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
             }
-          },
-          "Mangling Pointers": {}
+          }
         }
       },
       "List/ListElement": {
@@ -1269,25 +1104,19 @@
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Homogeneity": {
+            },
             "listElementTypeCON": {
               "long_name": "List Element Type",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Element Deletion": {
+            },
             "listElementDeleteCON": {
               "long_name": "List Element Delete",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Practice Questions": {
+            },
             "ListSumm": {
               "long_name": "List Summary Questions",
               "required": true,
@@ -1343,9 +1172,7 @@
           "Definitions and Properties": {
             "BinExampCON": {},
             "BinDiffCON": {},
-            "FullCompCON": {}
-          },
-          "Terminology Practice": {
+            "FullCompCON": {},
             "DefSumm": {
               "long_name": "Tree Definition Summary Exercises",
               "required": true,
@@ -1367,24 +1194,19 @@
       "Binary/BinaryTreeTraversal": {
         "long_name": "Binary Tree Traversals",
         "sections": {
-          "Binary Tree Traversals": {},
-          "Preorder Traversal": {
+          "Binary Tree Traversals": {
             "preorderCON": {
               "long_name": "Preorder Traversal Slideshow",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Postorder Traversal": {
+            },
             "postorderCON": {
               "long_name": "Postorder Traversal Slideshow",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "Inorder Traversal": {
+            },
             "inorderCON": {
               "long_name": "Inorder Traversal Slideshow",
               "required": false,
@@ -1392,11 +1214,12 @@
               "threshold": 1.0
             }
           },
-          "Implementation": {},
-          "Inorder Traversal Practice": {
+          "Implementation": {
             "btTravInorderPRO": {
               "long_name": "Binary Tree Inorder Traversal Exercise",
-              "exer_options": { "JXOP-code": "none" },
+              "exer_options": {
+                "JXOP-code": "none"
+              },
               "required": true,
               "points": 1.0,
               "threshold": 0.90
@@ -1405,7 +1228,9 @@
           "Postorder Traversal Practice": {
             "btTravPostorderPRO": {
               "long_name": "Binary Tree Postorder Traversal Exercise",
-              "exer_options": { "JXOP-code": "none" },
+              "exer_options": {
+                "JXOP-code": "none"
+              },
               "required": true,
               "points": 1.0,
               "threshold": 0.90
@@ -1414,7 +1239,9 @@
           "Preorder Traversal Practice": {
             "btTravPreorderPRO": {
               "long_name": "Binary Tree Preorder Traversal Exercise",
-              "exer_options": { "JXOP-code": "none" },
+              "exer_options": {
+                "JXOP-code": "none"
+              },
               "required": true,
               "points": 1.0,
               "threshold": 0.90
@@ -1433,16 +1260,13 @@
       "Binary/BST": {
         "long_name": "Binary Search Trees",
         "sections": {
-          "Binary Search Tree Definition": {},
-          "BST Search": {
+          "Binary Search Tree Definition": {
             "BSTsearchCON": {
               "long_name": "BST Search Slideshow",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "BST Search Practice": {
+            },
             "BSTsearchPRO": {
               "long_name": "BST Search Proficiency Exercise",
               "exer_options": {
@@ -1461,9 +1285,7 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "BST Insert Practice": {
+            },
             "BSTinsertPRO": {
               "long_name": "BST Insert Proficiency Exercise",
               "exer_options": {
@@ -1476,23 +1298,19 @@
               "threshold": 0.90
             }
           },
-          "Deleting the Maximum Value": {
+          "BST Remove": {
             "BSTdeletemaxCON": {
               "long_name": "BST deletemax Slideshow",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "BST Remove": {
+            },
             "BSTremoveCON": {
               "long_name": "BST remove Slideshow",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            }
-          },
-          "BST Remove Practice": {
+            },
             "BSTremovePRO": {
               "long_name": "BST Remove Proficiency Exercise",
               "exer_options": {
@@ -1505,8 +1323,7 @@
               "threshold": 0.90
             }
           },
-          "BST Analysis": {},
-          "Summary Questions": {
+          "BST Analysis": {
             "BSTSumm": {
               "long_name": "BST Question Summary",
               "required": true,

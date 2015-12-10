@@ -10,8 +10,8 @@
 Code Completion Practice Exercises
 ==================================
 
-Introduction
-------------
+Programming Exercise: Largest
+-----------------------------
 
 The most important step to learning recursion is doing a lot of
 practice.
@@ -21,9 +21,6 @@ series of practice exercises that will lead you to master recursion.
 First, complete the base case condition and/or the base case action
 for the following exercises.
 
-
-Programming Exercise: Largest
------------------------------
 
 .. avembed:: Exercises/RecurTutor/RecCLargestPROG.html ka
 
