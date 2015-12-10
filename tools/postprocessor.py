@@ -65,7 +65,7 @@ def update_index_html(dest_dir, sectnum):
       #remove createcourse page from TOC
       index_html[line_num] = ''
     elif 'hide-from-toc' in line:
-      #remove stub chapter title 
+      #remove stub chapter title
       if '<h1>' in index_html[line_num-1]:
         index_html[line_num-1] = ''
     elif 'class="toctree-l' in line and 'Gradebook' not in line and 'TODO List' not in line:
@@ -117,7 +117,7 @@ def update_mod_html(file_path, data, prefix):
         html[line_num] = line.replace(texts[1] + '</em>', texts[0] + '</em>')
       html[line_num] = html[line_num].replace(line_args[1], '')
       html[line_num] = html[line_num].replace('&lt;anchor-text&gt;', '')
-      html[line_num] = html[line_num].replace('&lt;/anchor-text&gt;', '') 
+      html[line_num] = html[line_num].replace('&lt;/anchor-text&gt;', '')
 
     if mod_name in data and mod_name not in ignore_mods:
       (chap_title, chap_num) = data[mod_name]
@@ -172,7 +172,7 @@ def update_TermDef(glossary_file, terms_dict):
         i += 1
         endofdef = False
         while (i < len(mod_data) and not endofdef):
-          if '</dd>' in  mod_data[i]:  
+          if '</dd>' in  mod_data[i]:
             term_def += mod_data[i].split('</dd>')[0] + '</dd>'
             endofdef = True
           else:
@@ -181,7 +181,7 @@ def update_TermDef(glossary_file, terms_dict):
         terms_dict[term] = str(term_def)
         i-= 1
     i += 1
-    
+
 triple_up = re.compile(r'^\.\.[\/\\]\.\.[\/\\]\.\.[\/\\]')
 def break_up_fragments(path, exercises, modules, url_index, book_name):
   # Read contents of module HTML file
@@ -191,27 +191,27 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   except IOError:
     print "Error: Could not find HTML file for", path
     return {}
-  
+
   # Get the module name and create its subfolder
   mod_name = os.path.splitext(os.path.basename(path))[0]
-  
+
   # Strip out the script, style, link, and meta tags
-  
+
   soup = BeautifulSoup(html, "html.parser")
-  
+
   verbose = False
-  
+
   if verbose: print "Found HTML file:", mod_name
-  
+
   TAGS = [ ('script', 'src'), ('link', 'href'), ('img', 'src'), ('a', 'href') ]
-  
+
   # KILL MATHJAX
   #'''Helpful for debugging, because MathJax takes forever to load'''
   #for possible_math_jax in soup.find_all('script'):
   #  if possible_math_jax.has_attr('src') and possible_math_jax['src'].startswith('//cdn.mathjax.org/mathjax'):
   #    possible_math_jax.extract()
-  
-  
+
+
   # Find all of the scripts, links, images, etc. that we might need
   for tag_name, tag_url in TAGS+[('div', 'data-frame-src')]:
     for a_tag in soup(tag_name):
@@ -222,13 +222,13 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
           a_tag[tag_url] = 'OpenDSA/Books/'+book_name+'/html/'+a_tag[tag_url]
         elif a_tag[tag_url].startswith('_images/'):
           a_tag[tag_url] = 'OpenDSA/Books/'+book_name+'/html/'+a_tag[tag_url]
-      
-      
+
+
   '''
   Skip any exercises that don't have points
-  
+
   '''
-  
+
   # Redirect href urls
   for link in soup.find_all('a'):
     if 'href' not in link.attrs:
@@ -265,16 +265,16 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
         external = url_index.get(external, external)
         # Force it to approach it from the top
         link['href'] = '#'.join((external,internal))
-        
+
       # Do something with the actual href
-  
+
   # Move header scripts out of header, kill header
   header_tag = soup.find('div', class_='header')
   for bit in reversed(header_tag.contents):
     if bit.name in ('script', 'link'):
       header_tag.next_sibling.insert_before(bit.extract())
   header_tag.extract()
-  
+
   # Remove unnecessary parts of the HTML
   for class_name in ('topnav', 'bottomnav', 'footer'):
     element = soup.find('div', class_=class_name)
@@ -283,7 +283,7 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   element = soup.find('img', alt='nsf')
   if element:
     element.extract()
-  
+
   total_real_exercises = len(exercises)#0
   #for exercise, properties in exercises.items():
   #  if 'points' in properties:
@@ -297,7 +297,7 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
     with codecs.open(single_file_path, 'w', 'utf-8') as o:
       o.write(unicode(soup))
     return None
-  
+
   # Collect out the slide-specific JS/CSS
   slide_scripts = defaultdict(list)
   all_scripts = []
@@ -316,9 +316,9 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
         else:
             all_scripts.append(script_tag)
         #if name.endswith('Common.css'):
-  
+
   # Breaking file into components
-  
+
   # First pass: grab out all of the HTML fragments
   content_div_soup = soup.find('div', class_='content')
   section_divs_soup = content_div_soup.find_all('div', class_='section', recursive=False)
@@ -332,7 +332,7 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
     for subsection_div_soup in list(section_div_soup.contents):
       subsection_div = []
       if (subsection_div_soup.name == 'div'
-          and subsection_div_soup.has_attr('class') 
+          and subsection_div_soup.has_attr('class')
           and 'section' in subsection_div_soup['class']):
         # This is a subsection, grab its children
         for body_soup in list(subsection_div_soup.contents):
@@ -351,7 +351,7 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
     content_div.append(section_div)
   if verbose:
     print "\tPhase 1: Found {} pieces of body content".format(total_bodies)
-    
+
   # Second pass: cluster body fragments by exercises into "slides"
   total_exercises = 0
   slides = []
@@ -368,8 +368,8 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
         #print "\t\t\t", str(body)[:40]
         new_slide.append( (parent, body) )
       body_text = [str(s[1]) for s in new_slide
-                   if s[1].name != 'span' or 
-                    not s[1].has_attr('id') or 
+                   if s[1].name != 'span' or
+                    not s[1].has_attr('id') or
                     (not s[1]['id'].startswith('index-') and
                      not s[1]['id'].startswith('id1')
                     )]
@@ -408,13 +408,13 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
           previous_parent = parent'''
   if verbose:
     print "\tPhase 2: Clustered into {} slides. Found {} exercises, expected {}.".format(len(slides), total_exercises-1, len(exercises))
-  
+
   # Add the slide general scripts to the top.
   sgs_div = soup.new_tag('div', id='SLIDE-GENERAL-SCRIPTS')
   for script_tag in all_scripts:
     sgs_div.insert(0, script_tag)
   content_div_soup.insert_before(sgs_div)
-    
+
   # third pass: render them out with the relevant scripts
   for index, (slide_name, slide) in enumerate(slides):
     #if verbose: print "\tSlide", index, len(slide)
@@ -451,14 +451,14 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
     for parent, body in slide:
       body.extract()
   if verbose: print "\tPhase 3: complete"
-    
+
 def pretty_print_xml(data, file_path):
     ElementTree(data).write(file_path)
     xml = minidom.parse(file_path)
     with open(file_path, 'w') as resaved_file:
         # [23:] omits the stupid xml header
         resaved_file.write(xml.toprettyxml()[23:])
-    
+
 def make_lti(config):
   dest_dir = config.book_dir + config.rel_book_output_path
   # Iterate through all of the existing files
@@ -466,15 +466,16 @@ def make_lti(config):
                   'genindex.html', 'RegisterBook.html', 'index.html')
   html_files = [path for path in os.listdir(dest_dir)
                 if path.endswith('.html') and path not in ignore_files]
-  
+
   lti_folder = os.path.join(dest_dir, '..', 'lti_html')
   shutil.rmtree(lti_folder, ignore_errors=True)
   os.makedirs(lti_folder)
-  
+
   url_index = {}
   if config.course_id:
     course_id = config.course_id
-    URL_SOURCE = "https://canvas.instructure.com/courses/{course_id}/modules/items/{item_id}"
+    # URL_SOURCE = "https://canvas.instructure.com/courses/{course_id}/modules/items/{item_id}"
+    URL_SOURCE = config.LMS_url+"/courses/{course_id}/modules/items/{item_id}"
     module_item_id = "NOT FOUND"
     for chapter_name, chapter_data in config.chapters.items():
       for module_name, module_data in chapter_data.items():
@@ -488,7 +489,7 @@ def make_lti(config):
           else:
             item_id = module_item_id
           url_index[pattern] = URL_SOURCE.format(course_id=course_id, item_id=item_id)
-  
+
   for chapter_name, sections in config.chapters.items():
     for section_name, section_data in sections.items():
       name = section_name.split('/')[1] if '/' in section_name else section_name
