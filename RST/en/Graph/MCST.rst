@@ -114,7 +114,7 @@ MCST.
 
 
 Prim's Algorithm Alternative Implementation
--------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Alternatively, we can implement Prim's algorithm using a
 :term:`priority queue` to find the next closest vertex, as
@@ -201,10 +201,6 @@ cost?
    Note that the path from :math:`v_w` to :math:`v_j` cannot
    include any marked vertex :math:`v_i, i \leq j`, because to do so
    would form a cycle.
-
-
-Prim's Algorithm Practice
--------------------------
 
 .. avembed:: AV/Graph/PrimAVPE.html pe
 

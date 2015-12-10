@@ -52,7 +52,7 @@ The process of finding the ultimate root for a given node we will call
 
 
 Parent Pointer Trees
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 The parent pointer representation is most often used to maintain a
 collection of :term:`disjoint sets`.
@@ -128,7 +128,7 @@ UNION/FIND array, and methods ``UNION`` and
 
 
 Equivalence Classes
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 Consider the problem of assigning the members of a set to
 disjoint subsets called
@@ -222,7 +222,7 @@ close as possible.
 
 
 Weighted Union
---------------
+~~~~~~~~~~~~~~
 
 A low-cost approach to reducing the height is to be smart about how
 two trees are joined together.
@@ -256,7 +256,7 @@ weighted union.
 
 
 Path Compression
-----------------
+~~~~~~~~~~~~~~~~
 
 The weighted union rule helps to minimize the depth of the tree, but
 we can do better than this.
@@ -286,10 +286,6 @@ step in the previous example.
 
 Path compression keeps the cost of each FIND operation very
 close to constant.
-
-
-Path Compression Analysis
--------------------------
 
 To be more precise about what is meant by "very close to constant",
 the cost of path compression for :math:`n` FIND operations on
@@ -324,12 +320,7 @@ compression for UNION/FIND, see [Tarjan75]_.
 The survey article by Galil & Italiano [GalilItaliano91]_
 covers many aspects of the equivalence class problem.
 
-
-Union/Find Exercise
--------------------
-
 .. avembed:: AV/Development/UnionFindPRO.html pe
-
 
 .. odsascript:: AV/General/UFfigCON.js
 .. odsascript:: AV/General/UFconcomCON.js

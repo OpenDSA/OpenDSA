@@ -25,10 +25,6 @@ called :term:`first fit`.
 
 .. avembed:: AV/MemManage/firstFitAV.html ss
 
-
-First Fit Practice Exercise
----------------------------
-
 Now try it for yourself with the following exercise.
 
 .. avembed:: AV/MemManage/firstFitPRO.html pe

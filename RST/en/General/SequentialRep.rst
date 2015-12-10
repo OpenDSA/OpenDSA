@@ -85,10 +85,6 @@ the tree structure.
 .. inlineav:: SequentialTreeCON ss
    :output: show
 
-
-Sequential Tree Practice
-------------------------
-
 .. avembed:: Exercises/General/SequentialTreePRO.html ka
 
 
@@ -151,10 +147,6 @@ An example would be if all node values must be positive.
 Then the high-order (sign) bit of the integer value could be used as
 the mark bit.
 
-
-Alternative Sequential Representation Practice
-----------------------------------------------
-
 .. avembed:: Exercises/General/SequentialTreeAltPRO.html ka
 
 
@@ -171,9 +163,6 @@ a leaf node.
 .. inlineav:: SequentialTreeBitsCON ss
    :output: show
 
-
-Bit Vector Representation Practice
-----------------------------------
 .. avembed:: Exercises/General/SequentialTreeBitVectorPRO.html ka
 
 
@@ -208,10 +197,6 @@ both might be empty.
 So this representation cannot let us distinguish whether node
 :math:`D` in Figure :num:`Figure #BinExampb` is the left or right
 child of node :math:`B`.
-
-
-General Tree Representation Practice
-------------------------------------
 
 .. avembed:: Exercises/General/SequentialTreeGenTreePRO.html ka
 

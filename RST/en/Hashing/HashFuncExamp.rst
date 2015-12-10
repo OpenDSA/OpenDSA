@@ -11,8 +11,11 @@
 Sample Hash Functions
 =====================
 
+Sample Hash Functions
+---------------------
+
 Simple Mod Function
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 Consider the following hash function used to hash integers to a table
 of sixteen slots::
@@ -41,7 +44,7 @@ function produces a number in the range 0 to :math:`M-1`.
 
 
 Binning
--------
+~~~~~~~
 
 Say we are given keys in the range 0 to 999, and have a hash table of
 size 10.
@@ -123,7 +126,7 @@ Thus, each table slot is equally likely (roughly) to get a key value.
 
 
 The Mid-Square Method
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 A good hash function to use with integer key values is the
 :term:`mid-square method`.
@@ -175,10 +178,11 @@ Start with '4567' as an example.
 .. avembed:: AV/Hashing/MidSquare.html pe
 
 
-Hash Functions for Strings
---------------------------
+A Simple Hash Function for Strings
+----------------------------------
 
-Now we will examine some hash functions suitable for storing strings of characters.
+Now we will examine some hash functions suitable for storing strings
+of characters.
 We start with a simple summation function::
 
    int sascii(String x, int M) {

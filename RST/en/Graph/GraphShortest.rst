@@ -12,8 +12,8 @@
 Shortest-Paths Problems
 =======================
 
-Introduction
-------------
+Shortest-Paths Problems
+-----------------------
 
 On a road map, a road connecting two towns is typically
 labeled with its distance.
@@ -65,7 +65,7 @@ We assume that all weights are positive.
 
 
 Single-Source Shortest Paths
-----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 We will now present an algorithm to solve the
 :term:`single-source shortest paths problem`.
@@ -245,10 +245,6 @@ However, when the graph is dense, this cost can become as great as
    :type: Slideshow
 
    Slideshow to demonstrate the relative costs of the two algorithms.
-
-
-Dijkstra's Algorithm Practice
------------------------------
 
 Now you can practice using Dijkstra's algorithm.
 

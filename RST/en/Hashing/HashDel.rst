@@ -48,10 +48,6 @@ the first tombstone encountered.
 .. inlineav:: hashdelCON ss
    :output: show
 
-
-Deletion Practice
------------------
-
 Here is a practice exercise.
 
 .. avembed:: AV/Hashing/HashingDelPRO.html pe

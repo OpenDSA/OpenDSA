@@ -128,10 +128,6 @@ directions.
 Each vertex must be visited, but only once, so the total cost is
 :math:`\Theta(|\mathbf{V}| + |\mathbf{E}|)`.
 
-
-Depth-First Search Practice
----------------------------
-
 Here is an exercise to practice DFS.
 
 .. avembed:: AV/Graph/graphDFSPE.html pe
@@ -163,10 +159,6 @@ Here is an implementation for BFS.
 Here is an AV for you to try it on other graphs.
 
 .. avembed:: AV/Graph/graphBFS.html ss
-
-
-Breadth-First Search Practice
------------------------------
 
 Here is an exercise to practice BFS.
 

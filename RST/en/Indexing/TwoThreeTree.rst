@@ -96,10 +96,6 @@ Here is an implementation for the 2-3 tree search method.
 
 .. codeinclude:: Indexing/TTfind
 
-
-Insertion (1)
--------------
-
 Insertion into a 2-3 tree is similar to insertion into a BST to the
 extent that the new record is placed in the appropriate leaf node.
 Unlike BST insertion, a new child is not created to hold the record
@@ -115,10 +111,6 @@ illustrated in the following visualization.
 .. inlineav:: simpleInsertCON ss
    :output: show
    :align: justify
-
-
-Insertion (2)
--------------
 
 If we insert the new record into a leaf node :math:`L` that already
 contains two records, then more space must be created.
@@ -144,10 +136,6 @@ Here is an example of a a simple promotion.
 
 .. inlineav:: promoteCON ss
    :output: show
-
-
-Insertion (3)
--------------
 
 Here is an illustration for what happens when promotions
 require the root to split, adding a new level to the tree.

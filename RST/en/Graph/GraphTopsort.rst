@@ -49,7 +49,7 @@ such as J1, J3, J2, J6, J4, J5, J7.
 
 
 Depth-first solution
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 A topological sort may be found by performing a DFS on the graph.
 When a vertex is visited, no action is taken (i.e., function
@@ -82,7 +82,7 @@ Here is another example.
 
 
 Queue-based Solution
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 We can implement topological sort using a queue
 instead of recursion, as follows.

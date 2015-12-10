@@ -29,10 +29,6 @@ same probe sequence.
 .. inlineav:: collisionCON1 ss
    :output: show
 
-
-Picking the Step Size
----------------------
-
 One quality of a good probe sequence is that it will cycle through
 all slots in the hash table before returning to the home position.
 Clearly linear probing (which "skips" slots by one each time) does this.
@@ -67,10 +63,6 @@ probe sequence that visits all slots for every key.
 
 .. inlineav:: collisionCON2 ss
    :output: show
-
-
-Linear Probing with Steps Practice
-----------------------------------
 
 Now you can practice linear probing by different step sizes.
 
@@ -120,16 +112,9 @@ random permutation of the values from 1 to :math:`M - 1` in slots 1 to
 .. inlineav:: collisionCON3 ss
    :output: show
 
-
-Pseudo-Random Probing Practice
-------------------------------
-
 Here is a practice exercise for pseudo-random probing.
 
 .. avembed:: Exercises/Hashing/HashPseudoRandomPPRO.html ka
-
-Avoiding the Train
-------------------
 
 Pseudo-random probing exhibits another desirable feature in a hash
 function.
@@ -158,17 +143,9 @@ Then the :math:`i` th value in the probe sequence would be
 .. inlineav:: collisionCON5 ss
    :output: show
 
-
-Quadratic Probing Practice
---------------------------
-
 Now you can practice quadratic probing.
 
 .. avembed:: Exercises/Hashing/HashQuadraticPPRO.html ka
-
-
-Quadratic Probing Problem
--------------------------
 
 There is one problem with quadratic probing: Its probe sequence
 typically will not visit all slots in the hash table.
@@ -261,16 +238,11 @@ We can get that result with this secondary hash function:
 .. inlineav:: collisionCON7 ss
    :output: show
 
-
-Using Another Hash Function
----------------------------
+|
 
 .. inlineav:: collisionCON8 ss
    :output: show
 
-
-Double Hashing Practice
------------------------
 
 Now you can try it.
 

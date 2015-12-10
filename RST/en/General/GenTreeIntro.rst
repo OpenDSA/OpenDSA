@@ -13,8 +13,8 @@
 General Trees
 =============
 
-Introduction
-------------
+General Trees
+-------------
 
 Many organizations are hierarchical in nature, such as the military
 and most businesses.
@@ -43,7 +43,7 @@ In this module we will examine general tree terminology and define a
 basic ADT for general trees.
 
 General Tree Definitions and Terminology
-----------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A :term:`tree` :math:`\mathbf{T}` is a finite set of one or more nodes
 such that there is one designated node :math:`R`, called the root
@@ -87,7 +87,7 @@ from the root, has one edge connecting that node to its parent.
 
 
 An ADT for General Tree Nodes
------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Before discussing general tree implementations, we should first make
 precise what operations such implementations must support.
@@ -129,7 +129,7 @@ Trying to find the next sibling of the rightmost sibling would return
 
 
 General Tree Traversals
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~
 
 There are three traditional
 :ref:`tree traversals <tree traversal> <BinaryTreeTraversal>`
@@ -156,10 +156,6 @@ general trees.
 
 .. inlineav:: GenTreePreTravCON ss
    :output: show
-
-
-Postorder Traversal
--------------------
 
 To perform a preorder traversal, it is necessary to visit each of the
 children for a given node (say :math:`R`) from left to right.

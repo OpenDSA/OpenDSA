@@ -14,8 +14,8 @@
 Graphs Chapter Introduction
 ===========================
 
-Introduction
-------------
+Graph Terminology
+-----------------
 
 Graphs provide the ultimate in data structure flexibility.
 A graph consists of a set of nodes, and a set of edges where an
@@ -66,10 +66,6 @@ throughout the course.
        either of these special cases.
        To simplify our graph API, we will assume that there are no
        dupicate edges, and no edges that connect a node to itself.
-
-
-Graph Terminology
------------------
 
 A :term:`graph` :math:`\mathbf{G} = (\mathbf{V}, \mathbf{E})` consists
 of a set of :term:`vertices <vertex>` :math:`\mathbf{V}` and a set of
