@@ -51,7 +51,7 @@ ISAM is based on a modified form of the :term:`linear index`, as
 illustrated by Figure :num:`Figure #ISAMfig`.
 Records are stored in sorted order by primary key.
 The disk file is divided among a number of
-:term:`cylinders <cylinder>` on disk. [#]_ 
+:term:`cylinders <cylinder>` on disk.
 Each cylinder holds a section of the list in sorted order.
 Initially, each cylinder is not filled to capacity, and the extra
 space is set aside in the :term:`cylinder overflow`.
@@ -90,10 +90,3 @@ the records within each cylinder, and updating both the system
 index table and the within-cylinder block table.
 Such reorganization was typical of database systems during the 1960s
 and would normally be done each night or weekly.
-
-Notes
------
-
-.. [#] Recall from Module :numref:`<Diskdrive>` that a cylinder is all
-       of the tracks readable from a particular placement of the heads
-       on the multiple platters of a disk drive.

@@ -45,12 +45,8 @@ not in the table.
 However, the new record would actually be inserted into the slot of
 the first tombstone encountered.
 
-.. inlineav:: hashdelCON1 ss
+.. inlineav:: hashdelCON ss
    :output: show
-
-
-Deletion Practice
------------------
 
 Here is a practice exercise.
 

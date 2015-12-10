@@ -5,7 +5,9 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   
+.. odsalink:: AV/AlgAnal/DivideAndConquerRecurrenceSimpleCON.css
+.. odsalink:: AV/Development/AlgAnal/DivideAndConquerRecurrencesCON.css
 
 Solving Recurrence Relations
 ============================
@@ -16,6 +18,9 @@ Solving Recurrence Relations
    Throughout this module, there are references to equations, both
    on this page and in the Summations module. These should be made
    into proper cross-references rather than hard-coded equation numbers.
+
+.. inlineav:: DivideAndConquerRecurrenceSimpleCON ss
+   :output: show
 
 Recurrence relations are often used to model the cost of recursive
 functions.
@@ -358,6 +363,9 @@ A more complex example is given next.
    a power of two.
    At this point, we should use a simple induction proof to verify
    that our solution is indeed correct.
+   
+.. inlineav:: DivideAndConquerRecurrencesCON ss
+   :output: show
 
 .. topic:: Example
 
@@ -544,8 +552,8 @@ Average-Case Analysis of Quicksort
 ----------------------------------
 
 
-In Module :ref:`Quicksort <Quicksort> <Quicksort>`, we determined that the average-case
-analysis of Quicksort had the following recurrence:
+In Module :ref:`Quicksort <Quicksort> <Quicksort>`, we determined that
+the average-case analysis of Quicksort had the following recurrence:
 
 .. math::
 
@@ -622,3 +630,6 @@ for :math:`{\cal H}_{n+1}`, the Harmonic Series.
 From Equation (10) of Module :ref`summation <summation> <Summation>`,
 :math:`{\cal H}_{n+1} = \Theta(\log n)`,
 so the final solution is :math:`\Theta(n \log n)`.
+
+.. odsascript:: AV/AlgAnal/DivideAndConquerRecurrenceSimpleCON.js
+.. odsascript:: AV/Development/AlgAnal/DivideAndConquerRecurrencesCON.js

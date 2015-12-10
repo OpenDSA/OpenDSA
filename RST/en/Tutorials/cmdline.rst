@@ -1,19 +1,21 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Jordan Sablan
    :requires:
-   :satisfies:
+   :satisfies: Commmand line
    :topic:
 
 ===================
 Command Line Basics
 ===================
+
 What's A CLI?
 -------------
+
 A Command Line Interface or CLI is a simple text only interface. A user provides
 a command with or without some additional information and then the command is
 exectued.
@@ -76,7 +78,6 @@ If you are using Windows the native Command Prompt does not have a man command.*
 
 |
 
-Give the terminal a try
-=======================
+Give the terminal a try.
 
 .. avembed:: AV/Tutorials/terminal.html ka

@@ -5,7 +5,6 @@
 
 .. avmetadata::
    :author: OpenDSA Contributors
-   :prerequisites: 
    :topic:   
 
 
@@ -16,6 +15,8 @@ Glossary
    :sorted:
 
    2-3 tree
+      :to-term: binary search tree property :label: has
+
       A specialized form of the :term:`B-tree` where each internal
       node has either 2 children or 3 children.
       Key values are ordered to maintain the
@@ -32,18 +33,24 @@ Glossary
       to the concept of :term:`locality of reference`.
 
    abstract data type
-      Abreviated :term:`ADT`. The realization of a :term:`data type`
+      :to-term: ADT :label: abbreviation
+
+      Abbreviated :term:`ADT`. The realization of a :term:`data type`
       as a software component.
 
    activation record
+      :to-term: local variable :label: stores
+
       The entity that is stored on the :term:`runtime stack` during
       program execution.
-      It stores any active local variable and the return address from
-      which a new subroutine is being called, so that this information
-      can be recovered when the subroutine terminates.
+      It stores any active :term:`local variable` and the return
+      address from which a new subroutine is being called, so that
+      this information can be recovered when the subroutine
+      terminates.
 
    acyclic graph
       :to-term: directed acyclic graph :label: types
+      :to-term: cycles <cycle> :label: has no
 
       In :term:`graph` terminology, a graph that contains no
       :term:`cycles <cycle>`.
@@ -87,18 +94,28 @@ Glossary
       possible.
 
    aggregate type
-      A type whose :term:`members <member>` have subparts.
+      :to-term: composite type :label: synonym
+      :to-term: has :label: member
+
+      A :term:`data type` whose :term:`members <member>` have subparts.
       For example, a typical database record.
       Another term for this is :term:`composite type`. 
 
    algorithm
+      :to-term: problem :label: solves
+      :to-term: program :label: implemented by
+
       A method or a process followed to solve a :term:`problem`.
 
    algorithm analysis
+      :to-term: growth rate :label: key concept
+
       A less formal version of the term
       :term:`asymptotic algorithm analysis`.
 
    all-pairs shortest paths problem
+      :to-term: Floyd's algorithm :label: solved by
+
       Given a :term:`graph` with :term:`weights <weight>` or
       distances on the :term:`edges <edge>`,
       find the shortest paths between every pair of
@@ -198,6 +215,9 @@ Glossary
       :term:`track-to-track seek time`.
 
    AVL Tree
+      :to-term: double rotation :label: operations
+      :to-term: single rotation :label: operations
+
       A variant implementation for the :term:`BST`, which differs from
       the standard BST in that it uses modified insert and remove
       methods in order to keep the tree
@@ -214,7 +234,23 @@ Glossary
       Only the :term:`leaf nodes <leaf node>` store a reference to the
       actual data records.
 
+   B$^*$-tree
+      A variant on the :term:`B$^+$-tree`.
+      The :math:`\mathrm{B}^*` tree is identical to the :math:`\mathrm{B}^+`
+      tree, except for the rules used to split and merge nodes.
+      Instead of splitting a node in half when it overflows, the
+      :math:`\mathrm{B}^*` tree
+      gives some records to its neighboring sibling, if possible.
+      If the sibling is also full, then these two nodes split into three.
+      Similarly, when a node underflows, it is combined with its two
+      siblings, and the total reduced to two nodes.
+      Thus, the nodes are always at least two thirds full.
+
    B-tree
+      :to-term: 2-3 tree graph :label: variant
+      :to-term: B$^+$-tree :label: variant
+      :to-term: B$^*$-tree :label: variant
+
       A method for :term:`indexing` a large collection of records.
       A B-tree is a :term:`balanced tree` that typically has high
       branching factor (commonly as much as 100
@@ -269,9 +305,10 @@ Glossary
       The class that inherits is called a :term:`subclass`.
   
    base type
-      The data type for the elements in a set. For example, the set
-      might consist of the integer values 3, 5, and 7. In this
-      example, the base type is integers.
+      The :term:`data type` for the elements in a set.
+      For example, the set might consist of the integer values 3, 5,
+      and 7.
+      In this example, the base type is integers.
 
    basic operations
       Examples of basic operations include inserting a data
@@ -312,6 +349,11 @@ Glossary
       too large.
       
    binary search tree
+      :to-term: AVL tree :label: example
+      :to-term: binary search tree property :label: has
+      :to-term: BST :label: abbreviated
+      :to-term: splay tree :label: example
+
       A binary tree that imposes the following constraint on its node
       values: The :term:`search key` value for any node :math:`A` must
       be greater than the (key) values for all nodes in the left
@@ -330,6 +372,11 @@ Glossary
       is :math:`K` have key values greater than :math:`K`.
 
    binary tree
+      :to-term: binary search tree :label: example
+      :to-term: binary trie :label: example
+      :to-term: complete binary tree :label: example
+      :to-term: bintree :label: example
+
       A finite set of nodes which is either empty, or else has a root
       node together two binary trees, called the left and right
       :term:`subtrees <subtree>`, which are :term:`disjoint` from each
@@ -360,13 +407,15 @@ Glossary
       distribution of the high-order bits of the keys.
 
    bintree
+      :to-term: flyweight :label: uses
+
       A :term:`spatial data structure` in the form of binary
       :term:`trie`, typically used to store point data in two or more
       dimensions.
       Similar to a :term:`PR quadtree` except that at each level, it
       splits one dimension in half.
       Since many leaf nodes of the PR quadtree will contain no data
-      points, implementation often makes use of the :term:`Flyweight`
+      points, implementation often makes use of the :term:`flyweight`
       :term:`design pattern`.
 
    Binsort
@@ -482,12 +531,26 @@ Glossary
       if both are free.
 
    buffer
+      :to-term: dirty bit :label: uses
+
       A block of memory, most often in :term:`primary storage`.
       The size of a buffer is typically one or a multiple of the basic
       unit of I/O that is read or written on each access to
       :term:`secondary storage` such as a :term:`disk drive`.
 
+   buffer passing
+      An approach to implementing the :term:`ADT` for a
+      :term:`buffer pool`, where a pointer to a :term:`buffer` is
+      passed between the client and the buffer pool.
+      This is in contrast to a :term:`message passing` approach,
+      it is most likely to be used for long messages or when the
+      message size is always the same as the buffer size, such as when
+      implementing a :term:`B-tree`.
+
    buffer pool
+      :to-term: buffer :label: composed of
+      :to-term: flush :label: operation
+
       A collection of one or more :term:`buffers <buffer>`.
       The buffer pool is an example of a :term:`cache <caching>`. 
       It is stored in :term:`primary storage`, and holds data that is
@@ -515,6 +578,8 @@ Glossary
       such an access is stored in a :term:`buffer`.
 
    caching
+      :to-term: buffering :label: synonym
+
       The concept of keeping selected data in :term:`main memory`.
       The goal is to have in main memory the data values that are
       most likely to be used in the near future.
@@ -569,10 +634,10 @@ Glossary
       Likewise the class or code that calls a :term:`buffer pool`.
 
    clique
-      In :term:`graph` terminology, a clique is any :term:`subset`
-      :math:`U` of the graph's :term:`vertices <vertex>` such that
-      every vertex in :math:`U` has an :term:`edge` to every other
-      vertex in :math:`U`.
+      In :term:`graph` terminology, a clique is a :term:`subgraph`,
+      defined as any :term:`subset` :math:`U` of the graph's
+      :term:`vertices <vertex>` such that every vertex in :math:`U`
+      has an :term:`edge` to every other vertex in :math:`U`.
       The size of the clique is the number of vertices in the clique.
 
    closed-form solution
@@ -618,8 +683,16 @@ Glossary
       location of the desired record.
 
    collision resolution
-      In a :term:`closed hash system`, this is the process of finding
-      the proper position in a :term:`hash table` that contains the
+      The outcome of a :term:`collision resolution policy`.
+
+   collision resolution policy
+      :to-term: collision resolution :label: performs
+
+      In :term:`hashing`, the process of resolving a
+      :term:`collision`.
+      Specifically in a :term:`closed hash system`, this is the
+      process of finding the proper position in a :term:`hash table`
+      that contains the
       desired record if the :term:`hash function` did not return the
       correct position for that record due to a :term:`collision` with
       another record.
@@ -809,9 +882,15 @@ Glossary
       :term:`attribute`, and :term:`instance variable`.
 
    data structure
+      :to-term: serialization :label: concept
+
       The implementation for an :term:`ADT`.
 
    data type
+      :to-term: abstract data type :label: implemented by
+      :to-term: aggregate type :label: type
+      :to-term: simple type :label: type
+
       A type together with a collection of operations to manipulate
       the type.
 
@@ -887,7 +966,12 @@ Glossary
       in-memory form.
 
    design pattern
-      An abstraction for describing the design of programs |---|
+      :to-term: Composite design pattern :label: example
+      :to-term: flyweight :label: example
+      :to-term: strategy :label: example
+      :to-term: visitor :label: example
+
+      An abstraction for describing the design of programs,
       that is, the interactions of objects and classes.
       Experienced software designers learn and reuse patterns
       for combining software components, and design patterns allow
@@ -1108,6 +1192,8 @@ Glossary
       Dynamic binding or dynamic memory allocation occurs at run time.
 
    dynamic allocation
+      :to-term: node :label: example
+
       The act of creating an object from :term:`free store`.
       In C++, Java, and JavaScript, this is done using the ``new``
       operator.
@@ -1130,6 +1216,8 @@ Glossary
       left as :term:`garbage`, depending on the programming language.
 
    dynamic programming
+      :to-term: Floyd's algorithm :label: example
+
       An approach to designing algorithms that works by storing a table
       of results for subproblems.
       A typical cause for excessive cost in
@@ -1356,6 +1444,8 @@ Glossary
       secondary storage.
 
    Floyd's algorithm
+      :to-term: k-path :label: uses
+
       An algorithm to solve the
       :term:`all-pairs shortest paths problem`.
       It uses the :term:`dynamic programming` algorithmic technique,
@@ -1378,7 +1468,7 @@ Glossary
       then they must be copied back to the backing storage before the
       buffer can be reused.
 
-   Flyweight
+   flyweight
       A :term:`design pattern` that is meant to solve the following
       problem:
       You have an application with many objects.
@@ -1537,6 +1627,9 @@ Glossary
       An algorithm that makes locally optimal choices at each step.
 
    growth rate
+      :to-term: lower bound :label: type
+      :to-term: upper bound :label: type
+
       The rate at which the cost
       of the algorithm grows as the size of its input grows.
 
@@ -1601,6 +1694,10 @@ Glossary
       records for lookup using :term:`hashing`.
 
    hashing
+      :to-term: hash table :label: has
+      :to-term: hash function :label: has
+      :to-term: collision resolution policy :label: has
+
       A search method that uses a :term:`hash function` to convert a
       :term:`search key` value into a position within a
       :term:`hash table`. 
@@ -1626,8 +1723,8 @@ Glossary
 
    heap
       This term has two different meanings.
-      Uncommonly, it is a synonym for :term:`free store`.
-      Most often it is used to refer to a particular data structure.
+      Sometimes it is used as a synonym for :term:`free store`.
+      Most often it refers to a particular data structure.
       This data structure is a :term:`complete binary tree` with the
       requirement that every :term:`node` has a value greater than its
       :term:`children <child>` (called a :term:`max heap`), or else
@@ -1711,6 +1808,19 @@ Glossary
    in degree
       In :term:`graph` terminology, the in degree for a :term:`vertex` is
       the number of edges directed into the vertex.
+
+   information theoretic lower bound
+      A :term:`lower bound` on the amount of resources needed to solve
+      a problem based on the number of bits of information needed to
+      uniquely specify the answer.
+      Sometimes referred to as a "Shannon theoretic lower bound" due
+      to Shannon's work on information theory and entropy.
+      An example is that sorting has a lower bound of
+      :math:`\Omega(\log_2 n!)` because there are :math:`n!` possible
+      orderings for :math:`n` values.
+      This observation alone does not make the lower bound tight,
+      because it is possible that no algorithm could actually reach
+      the information theory lower limit.
 
    inode
       Short for "index node".
@@ -1881,6 +1991,8 @@ Glossary
       vertices with an index value less than or equal to :math:`k`.
 
    kd tree
+      :to-term: discriminator :label: uses
+
       A :term:`spatial data structure` that uses a binary tree to
       store a collection of data records based on their (point)
       location in space.
@@ -2081,7 +2193,17 @@ Glossary
       table` :term:`slots <slot>` that contain a record.
       Hash systems usually try to keep the load factor below 50%.
 
+   local variable
+      A variable declared within a function or method.
+      It exists only from the time when the function is called to when
+      the function exits.
+      When a function is suspended (due to calling another function),
+      the function's local variables are stored in an
+      :term:`activation record` on the :term:`runtime stack`.
+
    locality of reference
+      :to-term: 80/20 rule :label: example use
+
       The concept that accesses within a collection of records is not
       evenly distributed.
       This can express itself as some small fraction of the records
@@ -2121,6 +2243,10 @@ Glossary
       the truth.
 
    lower bounds proof
+      :to-term: adversary argument :label: example
+      :to-term: sorting lower bound :label: example
+      :to-term: search lower bound :label: example
+
       A proof regarding the lower bound, with this term most typically
       referring to the lower bound for any possible algorithm to solve
       a given :term:`problem`.
@@ -2261,8 +2387,9 @@ Glossary
       some bytes there.
 
    message
-      In a :term:`memory manager` implementation (particularly a
-      memory manager implemented with a "message passing" style of
+      In a :term:`memory manager` implementation
+      (particularly a memory manager implemented with a
+      :term:`message passing` style of
       interface), the message is the data that the :term:`client` of
       the memory manager wishes to have stored in the
       :term:`memory pool`.
@@ -2271,6 +2398,13 @@ Glossary
       as stored in the memory pool.
       The client can later recover the message by passing the handle
       back to the memory manager.
+
+   message passing
+      A common approach to implementing the :term:`ADT` for a
+      :term:`memory manager` or :term:`buffer pool`, where the
+      contents of a :term:`message` to be stored is explicitly
+      passed between the client and the memory manager.
+      This is in contrast to a :term:`buffer passing` approach.
 
    metaphor
       Humans deal with complexity by assigning a label to an assembly of
@@ -2382,13 +2516,20 @@ Glossary
       :term:`bag`.
 
    neighbor
+      :to-term: adjacent :label: is
+      :to-term: graph :label: context
+
       In a :term:`graph`, a :term:`node` :math:`w` is said to be a
       neighbor of :term:`node` :math:`v` if there is an :term:`edge`
       from :math:`v` to :math:`w`.
 
    node
+      :to-term: neighbor :label: linked to
+      :to-term: dynamic allocation :label: created by
+
       The objects that make up a linked structure such as a linked
-      list or binary tree. Typically, nodes are allocated using
+      list or binary tree.
+      Typically, nodes are allocated using
       :term:`dynamic memory allocation`.
       In :term:`graph` terminology, the nodes are more commonly called
       :term:`vertices <vertex>`.
@@ -2402,6 +2543,10 @@ Glossary
       :term:`non-deterministic polynomial <non-deterministic polynomial time algorithm>`.
 
    NP-Complete
+      :to-term: NP :label: is
+      :to-term: NP-hard :label: is
+      :to-term: clique :label: example problem
+
       A class of problems that are related to each other in this way:
       If ever one such problem is proved to be solvable in
       polynomial time, or proved to require exponential time,
@@ -2412,6 +2557,14 @@ Glossary
       been able to determine the truth of the situation.
       A more technical definition is that a problem is NP-Complete if
       it is in NP and is NP-hard.
+
+   NP-Completeness proof
+      A type of :term:`reduction` used to demonstrate that a
+      particular :term:`problem` is :term:`NP-complete`.
+      Specifically, an NP-Completeness proof must first show that the
+      problem is in class :term:`NP`, and then show (by using a
+      reduction to another NP-Complete problem) that the problem is
+      :term:`NP-hard`.
 
    NP-hard
       A problem that is "as hard as" any other problem in :term:`NP`.
@@ -2814,6 +2967,14 @@ Glossary
       This is in contrast to the 
       :term:`object-oriented programming paradigm`.
      
+   proof
+      :to-term: lower bounds proof :label: example
+      :to-term: NP-Completeness proof :label: example
+      :to-term: proof by contradiction :label: type
+      :to-term: proof by induction :label: type
+
+      The establishment of the truth of anything, a demonstration.
+
    proof by contradiction
       A mathematical proof technique that proves a theorem by first
       assuming that the theorem is false, and then uses a chain of
@@ -3000,6 +3161,13 @@ Glossary
       Within a :term:`recursive function`, it is a call that the
       function makes to itself.
 
+   recursive data structure
+      A data structure that is partially
+      composed of smaller or simpler instances of the same data structure.
+      For example, :term:`linked lists <linked list>` and
+      :term:`binary trees <binary tree>` can be viewed as recursive
+      data structures.
+
    recursive function
       A function that includes a :term:`recursive call`.
 
@@ -3067,8 +3235,8 @@ Glossary
 
    resource constraints
       Examples of resource constraints include the total space
-      available to store the data |---| possibly divided into separate
-      main memory and disk space constraints |---| and the time
+      available to store the data (possibly divided into separate
+      main memory and disk space constraints) and the time
       allowed to perform each subtask.
 
    root
@@ -3123,6 +3291,8 @@ Glossary
       Compare to :term:`compile-time polymorphism`.
 
    runtime stack
+      :to-term: activation record :label: composed of
+
       The place where an :term:`activation record` is stored when a
       subroutine is called during a program's runtime.
 
@@ -3145,6 +3315,10 @@ Glossary
       case in :math:`O(\log \log n)` time. 
 
    search tree
+      :to-term: Binary Search Tree :label: example
+      :to-term: 2-3 tree :label: example
+      :to-term: search trie :label: example
+
       A :term:`tree` data structure that makes search by :term:`key`
       value more efficient.
       A type of :term:`container`, it is common to implement an
@@ -3268,6 +3442,9 @@ Glossary
       tree.
 
    serialization
+      :to-term: deserialization :label: reversed by
+      :to-term: sequential tree representation :label: example
+
       The process of taking a data structure in memory and
       representing it as a sequence of bytes.
       This is sometimes done in order to transmit the data structure
@@ -3311,7 +3488,8 @@ Glossary
       vertices on the path are distinct.
 
    simple type
-      A type whose values contain no subparts. An example is the integers.
+      A :term:`data type` whose values contain no subparts.
+      An example is the integers.
 
    simulating recursion
       If a programming language does not support :term:`recursion`,
@@ -3446,6 +3624,10 @@ Glossary
       Any object or record that has a position (in space).
 
    spatial data structure
+      :to-term: bintree :label: example
+      :to-term: kd tree :label: example
+      :to-term: PR quadtree :label: example
+
       A :term:`data structure` designed to support efficient
       processing when a 
       :term:`spatial attribute` is used as the key.
@@ -3535,16 +3717,14 @@ Glossary
    strategy
       An approach to accomplish a task, often encapsulated as an
       algorithm.
-
-   Strategy design pattern
-      A :term:`design pattern` that separates the algorithm for
-      performing a task from the control for applying that task to
-      each member of a collection.
+      Also the name for a :term:`design pattern` that separates the
+      algorithm for performing a task from the control for applying
+      that task to each member of a collection.
       A good example is a generic sorting function that takes a
       collection of records (such as an array) and a "strategy" in the
       form of an algorithm that knows how to extract the key from a
       record in the array.
-      Only subtly different from the :term:`Visitor design pattern`,
+      Only subtly different from the :term:`visitor` design pattern,
       where the difference is primarily one of intent rather than
       syntax.
       The strategy design pattern is focused on encapsulating an
@@ -3577,6 +3757,8 @@ Glossary
       :term:`inherits <inherit>` from some other class.
 
    subgraph
+      :to-term: clique :label: example
+
       A subgraph :math:`\mathbf{S}` is formed from :term:`graph`
       :math:`\mathbf{G}` by selecting a :term:`subset`
       :math:`\mathbf{V}_s` of :math:`\mathbf{G}`'s :term:`vertices
@@ -3733,6 +3915,10 @@ Glossary
       appropriate for a :term:`BST`.
 
    trie
+      :to-term: alphebet trie :label: example
+      :to-term: binary trie :label: example
+      :to-term: search trie :label: example
+
       A form of :term:`search tree` where an internal node represents
       a split in the :term:`key space` at a predetermined location,
       rather than split based on the actual :term:`key` values seen.
@@ -3829,31 +4015,38 @@ Glossary
       :term:`mark array`.
 
    upper bound
-      In algorithm analysis, the upper or highest growth rate that
-      an algorithm can have. In practice, this is the smallest-growing
-      function that we know grows at least as fast as all but a
-      constant number of inputs. It could be a gross over-estimate of
-      the truth.
+      In :term:`algorithm analysis`, the upper or highest
+      :term:`growth rate` that an :term:`algorithm` can have.
+      In practice, this is the smallest-growing function that we know
+      grows at least as fast as all but a constant number of inputs.
+      It could be a gross over-estimate of the truth.
 
    variable-length coding
+      :to-term: Huffman codes :label: example
+      :to-term: fixed-length coding:label: contrast to
+
       Given a collection of objects, a variable-length coding scheme
       assigns a code to each object in the collection using codes that
       can be of different lengths.
       Typically this is done in a way such that the objects that are
       most likely to be used have the shortest codes, with the goal of
-      minimizing the total space needed to represent an actual
-      :term:`sequence` of objects, such as when representing the
-      characters in a document.
+      minimizing the total space needed to represent a sequence of
+      objects, such as when representing the characters in a document.
       :term:`Huffman coding <Huffman codes>` is an example of a
       variable-length coding scheme.
       This is in contrast to :term:`fixed-length coding`.
 
    vector
+      :to-term: sequence :label: synonym
+      :to-term: dynamic array :label: synonym
+
       In set notation, another term for a :term:`sequence`.
       As a data structure, the term vector usually used as a snyonym
       for a :term:`dynamic array`.
 
    vertex
+      :to-term: node :label: synonym
+
       Another name for a :term:`node` in a :term:`graph`.
 
    virtual memory
@@ -3881,7 +4074,7 @@ Glossary
       This information is typically maintained by using a
       :term:`mark array`.
 
-   visitor design pattern
+   visitor
       A :term:`design pattern` where a :term:`traversal` process is
       given a function (known as the visitor) that is applied to every
       object in the collection being traversed.

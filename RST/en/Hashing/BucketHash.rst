@@ -60,10 +60,6 @@ expensive process.
 .. inlineav:: buckethashCON1 ss
    :output: show
 
-
-Bucket Hashing Practice
------------------------
-
 Now you can try it yourself.
 
 .. avembed:: Exercises/Hashing/HashBucketPRO.html ka
@@ -97,10 +93,6 @@ If the bucket is full, then the overflow bucket must be retrieved
 from disk as well.
 Naturally, overflow should be kept small to minimize unnecessary disk
 accesses.
-
-
-Alternate Practice
-------------------
 
 .. avembed:: Exercises/Hashing/HashBucket2PRO.html ka
 

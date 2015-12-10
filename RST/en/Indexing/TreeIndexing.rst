@@ -89,10 +89,6 @@ too high.
 .. inlineav:: pagedBSTCON ss
    :output: show
 
-
-Tree-based Indexing (2)
------------------------
-
 As you can see from this slideshow,
 adopting a rule such as requiring the BST to be complete can cause a
 great deal of rearranging of data within the tree.
@@ -113,10 +109,6 @@ The main reason for discussing the 2-3 Tree here in preference to the
 other balanced search trees is that it naturally
 leads to the :ref:`B-tree <B-tree> <BTree>`, which is by far the
 most widely used indexing method today.
-
-
-Tree-based Indexing Practice Exercise
--------------------------------------
 
 .. avembed:: Exercises/Indexing/TreeIndexing.html ka
 

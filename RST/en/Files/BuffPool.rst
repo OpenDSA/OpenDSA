@@ -116,8 +116,9 @@ than requiring new information to be read from disk.
    :align: center
    :output: show
 
+
 Replacement Strategies
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 As long as there is an unused buffer available in the buffer pool,
 new information can be read in from disk on demand.
@@ -190,7 +191,7 @@ suggests a special-purpose buffer management scheme.
 
 
 The Dirty Bit
--------------
+~~~~~~~~~~~~~
 
 The main purpose of a buffer pool is to minimize disk I/O.
 When the contents of a block are modified, we could write the updated
@@ -231,9 +232,6 @@ The advantage is reduced programmer effort because a good virtual memory
 system provides the appearance of larger main memory without
 modifying the program.
 
-Unknown
--------
-
 .. inlineav:: buffpoolCON ss
    :output: show
 
@@ -242,18 +240,10 @@ Unknown
 .. inlineav:: buffpooldgmCON dgm
    :output: show
 
-
-Visualizing Buffer Pool Use
----------------------------
-
 Here is a visualization to let you experiment with the various buffer
 pool replacement strategies.
 
 .. avembed:: AV/Files/BufferPoolAV.html ss
-
-
-Buffer Pool Practice Exercises
-------------------------------
 
 Here is an exercise to help you practice.
 
@@ -261,7 +251,7 @@ Here is an exercise to help you practice.
 
 
 Implementing Buffer Pools
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When implementing buffer pools, there are two basic approaches that can 
 be taken regarding the transfer of information between the user of the 
@@ -448,7 +438,7 @@ which the user passes a record to the manager and has no control at
 all over where the record is stored.
 
 .. odsascript:: AV/Files/buffintroCON.js
-.. odsascript:: AV/Files/buffpoolCON.js
-.. odsascript:: AV/Files/buffpooldgmCON.js
 .. odsascript:: AV/Files/LRUCON.js
 .. odsascript:: AV/Files/LRUwriteCON.js
+.. odsascript:: AV/Files/buffpoolCON.js
+.. odsascript:: AV/Files/buffpooldgmCON.js

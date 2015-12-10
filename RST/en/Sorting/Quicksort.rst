@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -129,9 +129,6 @@ Here is a simple ``findpivot`` function.
 .. codeinclude:: Sorting/Quicksort
    :tag: findpivot
 
-Quicksort Pivot Practice
-------------------------
-
 .. avembed:: Exercises/Sorting/QuicksortPivotPRO.html ka
 
 
@@ -166,13 +163,7 @@ bound for the recursive calls to ``qsort`` can be determined.
    :output: show
 
 
-Quicksort Partition Practice
-----------------------------
-
 .. avembed:: Exercises/Sorting/QuicksortPartitPRO.html ka
-
-Quicksort Partition Analysis
-----------------------------
 
 And here is a visualization illustrating the running time analysis of the partition function
 
@@ -194,17 +185,14 @@ the proficiency exercise that follows the visualization).
 .. avembed:: AV/Sorting/quicksortAV.html ss
 
 
-Quicksort Practice Exercise
----------------------------
-
 Here is a complete proficiency exercise to see how well you understand
 Quicksort.
 
 .. avembed:: AV/Sorting/quicksortPRO.html pe
 
 
-Quicksort Worst Case Analysis
------------------------------
+Quicksort Analysis
+------------------
 
 This visualization explains the worst-case running time of Quick Sort
 
@@ -221,18 +209,10 @@ still unlikely to happen.
 It does not take many good partitionings for Quicksort to
 work fairly well.
 
-
-Quicksort Best Case Analysis
-----------------------------
-
 This visualization explains the best-case running time of Quick Sort
 
 .. inlineav:: QuickSortBestCaseCON ss
    :output: show
-
-
-Quicksort Average Case Analysis
--------------------------------
 
 Quicksort's average-case behavior falls somewhere
 between the extremes of worst and best case.
@@ -286,10 +266,6 @@ be going toward a limit of zero.
 We can conclude that Quicksort will run fast if
 we can avoid those very few bad input permutations.
 This is why picking a good pivot is so important.
-
-
-Quicksort Optimization
-----------------------
 
 The running time for Quicksort can be improved (by a constant factor),
 and much study has gone into optimizing this algorithm.
@@ -374,9 +350,6 @@ modest speedup.
    answer, will need to run Quicksort over student's
    partition, and verify that at each step it will generate new
    partitions of size 6, 5, 4, 3, 2, then 1.
-
-Quicksort Summary Questions
----------------------------
 
 .. avembed:: Exercises/Sorting/QuicksortSumm.html ka
 

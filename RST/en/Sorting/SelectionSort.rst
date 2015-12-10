@@ -46,18 +46,10 @@ Here is an implementation for Selection Sort.
 .. codeinclude:: Sorting/Selectionsort 
    :tag: Selectionsort
 
-
-Selection Sort Iteration 1
---------------------------
-
 Consider the example of the following array.
 
 .. inlineav:: selectionsortS1CON ss
    :output: show
-
-
-Selection Sort Iteration 2
---------------------------
 
 Now we continue with the second pass.
 However, since the largest record is already at the right end,
@@ -68,17 +60,9 @@ we will not need to look at it again.
 
 Selection Sort continues in this way until the entire array is sorted.
 
-
-Putting It Together
--------------------
-
 The following visualization puts it all together.
 
 .. avembed:: AV/Sorting/selectionsortAV.html ss
-
-
-Selection Sort Practice Exercise
---------------------------------
 
 Now try for yourself to see if you understand how Selection Sort works.
 
@@ -136,10 +120,6 @@ return is a faster swap operation.
    :type: Figure
 
    Replace with with a JSAV version of the figure
-
-
-Selection Sort Summary Questions
---------------------------------
 
 Here are some review questions to check how well you understand
 Selection Sort.

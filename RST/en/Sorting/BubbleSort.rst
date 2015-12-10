@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -55,16 +55,8 @@ Here is an implementation.
 .. codeinclude:: Sorting/Bubblesort 
    :tag: Bubblesort        
 
-
-Bubble Sort Iteration 1
------------------------
-
 .. inlineav:: bubblesortS1CON ss
    :output: show
-
-
-Bubble Sort Iteration 2
------------------------
 
 Now we continue with the second pass. However, since the largest
 record has "bubbled" to the very right, we will not need to look at
@@ -75,18 +67,10 @@ it again.
 
 Bubble Sort continues in this way until the entire array is sorted.
 
-
-Putting It Together
--------------------
-
 The following visualization shows the complete Bubble Sort.
 You can input your own data if you like.
 
 .. avembed:: AV/Sorting/bubblesortAV.html ss
-
-
-Bubble Sort Practice
---------------------
 
 Now try for yourself to see if you understand how Bubble Sort works.
 
@@ -113,10 +97,6 @@ average case, leading to :math:`\Theta(n^2)` for the
 expected number of swaps.
 The actual number of swaps performed by Bubble Sort will be identical
 to that performed by Insertion Sort.
-
-
-Bubble Sort Review Questions
-----------------------------
 
 Here are some review questions to check your understanding of
 Bubble Sort. 

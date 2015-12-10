@@ -38,9 +38,6 @@ database records, because it is amenable to
 .. inlineav:: varindexCON ss
    :output: show
 
-Two-level Linear Index
-----------------------
-
 If the database contains enough records, the linear index might
 be too large to store in :term:`main memory`.
 This makes binary search of the index more expensive because many
@@ -94,15 +91,7 @@ record.
    (the first key in the first block of the linear index), while the
    second entry of the second-level index is key value 2003.
 
-
-Linear Indexing Practice Exercise
----------------------------------
-
 .. avembed:: AV/Indexing/linearIndexingPRO.html pe
-
-
-Inverted Lists
---------------
 
 Every time a record is inserted to or deleted from the database,
 all associated secondary indices must be updated.

@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -14,8 +14,8 @@
 Information Flow in Recursive Functions
 =======================================
 
-Introduction
-------------
+Information Flow in Recursive Functions
+---------------------------------------
 
 Handling information flow in a recursive function can be a challenge.
 In any given function, we might need to be concerned with either or
@@ -30,7 +30,7 @@ Any given problems might need to do either or both.
 Here are some examples and exercises.
 
 Local
------
+~~~~~
 
 Local traversal involves going to each node in the tree to do some
 operation.
@@ -40,7 +40,7 @@ Examples include preorder traversal and incrementing the value of
 every node by one.
 
 Passing Down Information
-------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Slightly more complicated is the situation where every node needs the
 same piece of information to be passed to it.
@@ -57,6 +57,7 @@ each recursive call must adjust that value (by adding one).
 Practice this simple example of information flow for yourself.
 
 .. avembed:: Exercises/BTRecurTutor/BTsetdepthPROG.html ka
+
 
 Collect-and-return
 ------------------
@@ -96,10 +97,6 @@ Another common mistake is to not return a value.
 
 .. inlineav:: BinaryTreeMistakesCON ss
    :output: show
-
-
-Collect-and-return Practice
----------------------------
 
 Practice the simple collect-and-retun information flow with the
 following programming exercises.

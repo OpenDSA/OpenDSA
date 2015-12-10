@@ -170,7 +170,7 @@ These ideas are explored further in Chapter :chap:`Indexing`.
 
 
 Simple Approaches to External Sorting
--------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If your operating system
 supports virtual memory, the simplest
@@ -268,7 +268,7 @@ maximum efficiency.
 
 
 Improving Performance
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 The external Mergesort algorithm just described requires that
 :math:`\log n` passes be made to sort a file of :math:`n` records.
@@ -311,7 +311,7 @@ presented, but all are based on the following two steps:
 
 
 Replacement Selection
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 This section treats the problem of creating initial runs as large as
 possible from a disk file, assuming a fixed amount of RAM is available
@@ -486,10 +486,6 @@ snow falls evenly throughout the track).
 Sorted and reverse sorted inputs do not meet this expectation and so
 change the length of the run.
 
-
-Replacement Selection Practice Exercise
----------------------------------------
-
 .. avembed:: AV/Files/extRSPRO.html pe
 
 
@@ -549,15 +545,7 @@ passes with a single random access pass.
 If the processing would not be sequential anyway (such as when all
 processing is on a single disk drive), no time is lost by doing so.
 
-
-Multiway Merge Practice Exercise
---------------------------------
-
 .. avembed:: AV/Files/extMultiMergePRO.html pe
-
-
-Multiway Merge Analysis
------------------------
 
 Multiway merging can greatly reduce the number of passes required.
 If there is room in memory to store one block for each run, then all
@@ -607,7 +595,7 @@ external sorting.
 
 
 Empirical Results
------------------
+~~~~~~~~~~~~~~~~~
 
 Table :num:`#ExSortTimes` shows a comparison of the running time to
 sort various-sized files for the following implementations:
@@ -683,7 +671,7 @@ Using a multi-way merge further cuts the time nearly in half.
 
 
 Summary
--------
+~~~~~~~
 
 In summary, a good external sorting algorithm will seek to do the
 following:

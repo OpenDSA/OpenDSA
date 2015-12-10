@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -139,10 +139,6 @@ is an example of a full binary tree.
        "Complete" is a wider word than "full", and complete binary
        trees tend to be wider than full binary trees because each
        level of a complete binary tree is as wide as possible.
-
-
-Terminology Practice
---------------------
 
 .. avembed:: Exercises/Binary/DefSumm.html ka
 

@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -14,6 +14,15 @@ Optimizing Sort Algorithms with Code Tuning
 
 Code Tuning for Simple Sorting Algorithms
 -----------------------------------------
+
+.. TODO::
+   :tag: Revision
+
+   Rewrite along these lines: A classic form of code tuning is "test
+   to save work". For each of our three sorting algorithms, we have a
+   potential "test to save work" "optimization". The question is: When
+   is the cost of test worth the work saved? Let's look at each of the
+   three.
 
 Since sorting is such an important application,
 it is natural for programmers to want

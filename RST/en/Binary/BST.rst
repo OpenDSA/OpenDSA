@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -62,8 +62,9 @@ Our BST implementation will require that records implement the
 .. codeinclude:: Binary/BST
    :tag: BST
 
+
 BST Search
-----------
+~~~~~~~~~~
 
 The first operation that we will look at in detail will find the
 record that matches a given key.
@@ -80,10 +81,6 @@ subroutine and is implemented as follows.
 
 .. inlineav:: BSTsearchCON ss
    :output: show
-
-
-BST Search Practice
--------------------
 
 .. avembed:: AV/Binary/BSTsearchPRO.html pe
 
@@ -128,15 +125,11 @@ In general, it is preferable for a BST to be as shallow as
 possible.
 This keeps the average cost of a BST operation low.
 
-
-BST Insert Practice
--------------------
-
 .. avembed:: AV/Binary/BSTinsertPRO.html pe
 
 
-Deleting the Maximum Value
---------------------------
+BST Remove
+----------
 
 Removing a node from a BST is a bit trickier than inserting a node,
 but it is not complicated if all of the possible cases are considered
@@ -160,10 +153,6 @@ pointer to the node containing the maximum value in the subtree.
 
 .. codeinclude:: Binary/BST
    :tag: getmax
-
-
-BST Remove
-----------
 
 Now we are ready for the ``removehelp`` method.
 Removing a node with given key value :math:`R` from the BST
@@ -214,10 +203,6 @@ Tree Property if equal values appear in the left subtree.
 .. [#] Alternatively, if we prefer to store duplicate values in the
        right subtree, then we must replace a deleted node with the
        least value from its right subtree.
-
-
-BST Remove Practice
--------------------
 
 .. avembed:: AV/Binary/BSTremovePRO.html ss
 
@@ -276,10 +261,6 @@ Two examples are the
 :ref:`splay tree <splay tree> <Splay>`.
 There also exist other types of search trees that are guaranteed to
 remain balanced, such as the :ref:`2-3 Tree <2-3 tree> <TwoThreeTree>`.
-
-
-Summary Questions
------------------
 
 .. avembed:: Exercises/Binary/BSTSumm.html ka
 

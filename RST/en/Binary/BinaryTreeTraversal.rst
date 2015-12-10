@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -32,7 +32,7 @@ preserves some relationship.
 
 
 Preorder Traversal
-------------------
+~~~~~~~~~~~~~~~~~~
 
 For example, we might wish to make sure that we visit any given node
 *before* we visit its children.
@@ -60,7 +60,7 @@ This is called a :term:`preorder traversal`.
 
 
 Postorder Traversal
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 Alternatively, we might wish to visit each node only
 *after* we visit its children (and their subtrees).
@@ -83,7 +83,7 @@ This is called a :term:`postorder traversal`.
 
 
 Inorder Traversal
------------------
+~~~~~~~~~~~~~~~~~
 
 An :term:`inorder traversal` first visits the left child
 (including its entire subtree), then visits the node, and finally
@@ -149,10 +149,6 @@ visiting all nodes in the right subtree.
 Postorder and inorder traversals are similar.
 They simply change the order in which the node and its children are
 visited, as appropriate.
-
-
-Inorder Traversal Practice
---------------------------
 
 .. avembed:: AV/Binary/btTravInorderPRO.html pe
 

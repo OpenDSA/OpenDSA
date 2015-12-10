@@ -121,7 +121,7 @@ to collision resolution?
 
 
 The Problem with Linear Probing
--------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 While linear probing is probably
 the first idea that comes to mind when considering collision
@@ -145,9 +145,6 @@ Small clusters tend to merge into big clusters, making the problem
 worse.
 The objection to primary clustering is that it leads to
 long probe sequences.
-
-Linear Probing Practice
------------------------
 
 .. avembed:: Exercises/Hashing/HashLinearPPRO.html ka
 

@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -14,8 +14,8 @@
 Binsort
 =======
 
-Simple Binsort
---------------
+Binsort
+-------
 
 Imagine that for the past year, as you paid your various bills, you
 then simply piled all the paperwork into a corner somewhere.
@@ -79,10 +79,6 @@ Here is the extended Binsort algorithm.
 
 This version of Binsort can sort any collection of records whose key
 values fall in the range from 0 to ``MaxKeyValue``.
-
-
-Binsort Analysis
-----------------
 
 .. inlineav:: binsortS2CON ss
    :output: show
