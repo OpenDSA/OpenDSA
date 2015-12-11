@@ -76,12 +76,12 @@ $(document).ready(function() {
   arr.hide();
   arr = av.ds.array(arr_values, {left: leftAlign, top: topAlign, indexed: true});
   labelInput.text("");
-  labelInput = av.label(interpret("lab4")+" = " + arr_values[3],
+  labelInput = av.label(interpret("lab4") + " = " + arr_values[3],
                         {top: topAlign + 92, left: leftAlign + 180}).addClass("largeLabel");
   labelOutput2.hide();
   labelOutput4.hide();
   lineOutput2.hide();
-  labelOutput3.text(interpret("lab8")+" = 3");
+  labelOutput3.text(interpret("lab8") + " = 3");
   arr.highlight(3);
   av.step();
 
