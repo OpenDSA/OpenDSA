@@ -20,7 +20,7 @@ Best, Worst, and Average Cases
 Consider the problem of finding the factorial of :math:`n`.
 For this problem, there is only one input of a given "size" (that
 is, there is only a single instance for each size of :math:`n`).
-Now consider the largest-value :term:`sequential search`
+Now consider the largest-value sequential search
 algorithm, which always examines every array value.
 This algorithm works on many inputs of a given size :math:`n`.
 That is, there are many possible arrays of any given size.

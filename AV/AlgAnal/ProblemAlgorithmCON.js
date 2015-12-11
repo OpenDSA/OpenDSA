@@ -81,7 +81,7 @@ $(document).ready(function() {
   labelOutput2.hide();
   labelOutput4.hide();
   lineOutput2.hide();
-  labelOutput3.text(interpret("lab8") + " = 3");
+  labelOutput3.text(interpret("lab8"));
   arr.highlight(3);
   av.step();
 
