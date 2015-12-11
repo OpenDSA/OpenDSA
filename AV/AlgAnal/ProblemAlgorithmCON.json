@@ -24,7 +24,7 @@
   },
   "code": {
     "java": [{
-      "url": "../../../SourceCode/Java/Searching/SequentialNoComments.java",
+      "url": "OpenDSA/SourceCode/Java/Searching/SequentialNoComments.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: Sequential *** */",
       "endBefore": "/* *** ODSAendTag: Sequential *** */",
@@ -35,7 +35,7 @@
       }
     },
     {
-      "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
+      "url": "OpenDSA/SourceCode/Pseudo/Searching/Sequential.txt",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: Sequential *** */",
       "endBefore": "/* *** ODSAendTag: Sequential *** */",

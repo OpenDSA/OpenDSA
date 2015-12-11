@@ -1,9 +1,9 @@
 /*global ODSA */
-"use strict";
 // Written by Cliff Shaffer
-$(document).ready(function () {
+$(document).ready(function() {
+  "use strict";
   var av_name = "ADTCON";
-  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
+  var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
   var av = new JSAV(av_name, {animationMode: "none"});
   var left = 240;
 
