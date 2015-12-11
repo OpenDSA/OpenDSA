@@ -48,8 +48,8 @@ $(document).ready(function() {
   var labelOutput2 = av.label("Not found", {top: topAlign + 105,
                                             left: leftAlign + 385 + rectWidth});
   var labelOutput3 = av.label("Index of the target key",
-                              {top: topAlign + 23, left: leftAlign + 490 + rectWidth});
-  var labelOutput4 = av.label("$n$", {top: topAlign + 96, left: leftAlign + 490 + rectWidth});
+                              {top: topAlign + 22, left: leftAlign + 490 + rectWidth});
+  var labelOutput4 = av.label("$n$", {top: topAlign + 87, left: leftAlign + 490 + rectWidth});
   av.step();
 
   // Slide 5
@@ -159,10 +159,10 @@ $(document).ready(function() {
   // Slide 16
   av.umsg(interpret("sc16"));
   javaCode.show();
-  rect.css({width: rectWidth + 96});
+  rect.css({width: rectWidth + 98});
   labelProblem.css({left: "+=15"});
   lineOutput1.hide();
-  lineOutput1 = av.g.line(leftAlign + 475 + rectWidth, topAlign + 50, leftAlign + 545 + rectWidth, topAlign + 50);
+  lineOutput1 = av.g.line(leftAlign + 477 + rectWidth, topAlign + 50, leftAlign + 545 + rectWidth, topAlign + 50);
   labelOutput1.css({left: "+=35"});
   lineOutput1.show();
   labelOutput1.show();
