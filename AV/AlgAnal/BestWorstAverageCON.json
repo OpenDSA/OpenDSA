@@ -14,7 +14,11 @@
       "Slide 12": "This is the worst case of the algorithm since the number of keys examined determine the running time of the algorithm and here we have $n$ keys examined.",
       "Slide 13": "Now suppose that $k$ is located in the middle of the array.",
       "Slide 14": "<br><br>In this case the sequencial search algorithm will find $k$ after $\\lceil\\frac{n}{2}\\rceil$ comparisons.",
-      "Slide 16": "This is the average case of the algorithm since the number of keys examined determine the running time of the algorithm and here we have <b><u>$\\lceil\\frac{n}{2}\\rceil$</u></b> keys examined."
+      "Slide 16": "This is the average case of the algorithm since the number of keys examined determine the running time of the algorithm and here we have <b><u>$\\lceil\\frac{n}{2}\\rceil$</u></b> keys examined.",
+      "lab1": "<b>Sequencial Search</b>",
+      "lab2": "<b><u>Best Case.</u></b> Only single comparison is performed",
+      "lab3": "<b><u>Worst Case</u></b>. $n$ comparisons are performed",
+      "lab4": "<b><u>Average Case</u></b>. $\\lceil\\frac{n}{2}\\rceil$ comparisons are performed"
 
     }
   },

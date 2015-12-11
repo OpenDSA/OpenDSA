@@ -33,8 +33,8 @@ $(document).ready(function () {
   var nOverTwo = graph.addNode("n/2", {"left": leftAlign + nodeWidth + nodeGap, "top": topAlign});
   var oneTwo = graph.addEdge(n, nOverTwo, {"weight": "<b>1 +</b>"});
   n.highlight();
-  oneTwo.css({"stroke":"green"});
-  nOverTwo.css({"background-color":"lightgreen"});
+  oneTwo.addClass("subProblemEdge");
+  nOverTwo.addClass("subProblemNode");
   graph.layout();
   av.step();
 
@@ -44,11 +44,11 @@ $(document).ready(function () {
   var nOverFour = graph.addNode("n/4", {"left": leftAlign + 2*nodeGap + 2* nodeWidth, "top": topAlign});
   var twoThree = graph.addEdge(nOverTwo, nOverFour, {"weight": "<b>1 +</b>"});
   n.unhighlight();
-  nOverTwo.css({"background-color":"white"});
+  nOverTwo.removeClass("subProblemNode");
   nOverTwo.highlight();
-  oneTwo.css({"stroke":"black"});
-  twoThree.css({"stroke":"green"});
-  nOverFour.css({"background-color":"lightgreen"});
+  oneTwo.removeClass("subProblemEdge");
+  twoThree.addClass("subProblemEdge");
+  nOverFour.addClass("subProblemNode");
   graph.layout();
   av.step();
 
@@ -59,9 +59,9 @@ $(document).ready(function () {
   var threeFour = graph.addEdge(nOverFour, nOverEight, {"weight": "<b>1 +</b>"});
   nOverTwo.unhighlight();
   nOverFour.highlight();
-  twoThree.css({"stroke":"black"});
-  threeFour.css({"stroke":"green"});
-  nOverEight.css({"background-color":"lightgreen"});
+  twoThree.removeClass("subProblemEdge");
+  threeFour.addClass("subProblemEdge");
+  nOverEight.addClass("subProblemNode");
   graph.layout();
   av.step();
 
@@ -71,11 +71,11 @@ $(document).ready(function () {
   var nOverSixteen = graph.addNode("n/16", {"left": leftAlign + 4*nodeGap + 4* nodeWidth, "top": topAlign});
   var fourFive = graph.addEdge(nOverEight, nOverSixteen, {"weight": "<b>1 +</b>"});
   nOverFour.unhighlight();
-  nOverFour.css({"background-color":"white"});
+  nOverFour.removeClass("subProblemNode");
   nOverEight.highlight();
-  threeFour.css({"stroke":"black"});
-  fourFive.css({"stroke":"green"});
-  nOverSixteen.css({"background-color":"lightgreen"});
+  threeFour.removeClass("subProblemEdge");
+  fourFive.addClass("subProblemEdge");
+  nOverSixteen.addClass("subProblemNode");
   graph.layout();
   av.step();
 
@@ -90,14 +90,15 @@ $(document).ready(function () {
     topAlign +  nodeHeight + 6);
   lastEdge.addClass("dashed");
   nOverEight.unhighlight();
-  nOverEight.css({"background-color":"white"});
-  fourFive.css({"stroke":"black"});
-  nOverSixteen.css({"background-color":"white"});
-  last.css({"background-color":"lightgreen"});
+  nOverEight.removeClass("subProblemNode");
+  fourFive.removeClass("subProblemEdge");
+  nOverSixteen.removeClass("subProblemNode");
+  last.addClass("subProblemNode");
   av.step();
 
   //Slide 7
   av.umsg(interpret("Slide 7"));
+  last.removeClass("subProblemNode");
   labelSet.push
   (av.label("|----------------------------------------------- $\\displaystyle\\sum_{i=0}^{\\log{n}}1$ -----------------------------------------------|", {"top": topAlign + 2*nodeHeight , "left": leftAlign + 0.5 * nodeWidth}));
   av.step();

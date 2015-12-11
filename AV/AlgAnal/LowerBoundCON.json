@@ -12,9 +12,10 @@
       "Slide 9": "In the average case of the algorithm, $\\lceil\\frac{n}{2}\\rceil$ elements are investigated. $T(n) = \\frac{1}{2}n$",
       "Slide 10": "<br><br>Accordingly, the lowest growth rate (lower bound) of the algorithm in the average case is also $\\Omega(n)$ since we ignore constant terms.",
       "Slide 11": "Accordingly, the correct way to ask the question should be : <br><br>What is the lower bound of sequencial search in the best/average/worst case?",
-      "Slide 12": "<br><br>And the answer should be..."
-
-
+      "Slide 12": "<br><br>And the answer should be...",
+      "lab1": "$\\Omega(1)$ in the <b><u>Best Case.</u></b>",
+      "lab2": "$\\Omega(n)$ in the <b><u>Worst Case</u></b>.",
+      "lab3": "$\\Omega(n)$ in the <b><u>Average Case</u></b>."
     }
   }
 }

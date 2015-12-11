@@ -1,23 +1,24 @@
 #ProblemAlgorithmCON {
-  height: 600px;
+  height: 460px;
 }
+
 #ProblemAlgorithmCON .jsavline{
   height: 120px;
 }
-.rotated {
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  transform: rotate(90deg);
-}
+
 #ProblemAlgorithmCON .jsavhorizontalarray .jsavnode{
   min-width: 50px !important;
   max-width: 200px !important;
   min-height: 35px !important;
   max-height: 35px !important;
 }
-.jsavcodeline{
+
+#ProblemAlgorithmCON .jsavcodeline{
   background-color: transparent;
   font-size: 10px;
+}
+
+.largeLabel{
+  font-size: 18px; 
+  text-align: center; 
 }

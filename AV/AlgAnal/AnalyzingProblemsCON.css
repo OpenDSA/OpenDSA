@@ -4,13 +4,21 @@
 #AnalyzingProblemsCON .jsavline{
   height: 75px;
 }
-.rotated {
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  transform: rotate(90deg);
-}
 .dashed{
   stroke-dasharray: 5, 5;
+}
+.largeLabel{
+	font-size: 16px; 
+	text-align: center;
+}
+.mediumLabel{
+    font-size: 12px; 
+	text-align: center;
+}
+.smallLabel{
+    font-size: 10px; 
+	text-align: center;	
+}
+.colored{
+	color: red;
 }

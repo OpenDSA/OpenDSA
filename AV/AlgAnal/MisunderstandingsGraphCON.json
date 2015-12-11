@@ -21,7 +21,9 @@
     	"Slide 18": "<br> (1) The best case cost (that would be a horizontal line with value 1.)",
     	"Slide 19": "<br> (2) The worst case cost (that would be a diagonal line with value $i$ at position $i$ along the $x$ axis.)",
     	"Slide 20": "<br> (3) The average cost (that would be a a diagonal line with value $i/2$ at position $i$ along the $x$ axis).",
-    	"Slide 21": "This is why we must always say that function $f(n)$ is in $O(g(n))$ in the best, average, or worst case! If we leave off which class of inputs we are discussing, we cannot know which cost measure we are referring to for most algorithms."
+    	"Slide 21": "This is why we must always say that function $f(n)$ is in $O(g(n))$ in the best, average, or worst case! If we leave off which class of inputs we are discussing, we cannot know which cost measure we are referring to for most algorithms.",
+        "lab1": "Cost",
+        "lab2": "Problem Instance"
     }
   }
 }
