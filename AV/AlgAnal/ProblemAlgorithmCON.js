@@ -15,7 +15,7 @@ $(document).ready(function() {
   var arr_values = [];
   var topAlign = 60;
   var leftAlign = 10;
-  var rectWidth = 150;
+  var rectWidth = 155;
   var rectHeight = 225;
 
   // Slide 1
@@ -35,7 +35,7 @@ $(document).ready(function() {
     arr_values.push("Key " + (i + 1));
   }
   arr = av.ds.array(arr_values, {left: leftAlign, top: topAlign, indexed: true});
-  var labelInput = av.label("Target key", {top: topAlign + 92, left: leftAlign + 215}).addClass("largeLabel");
+  var labelInput = av.label(interpret("lab4"), {top: topAlign + 92, left: leftAlign + 215}).addClass("largeLabel");
   var line1 = av.g.line(leftAlign + 320, topAlign + 30, leftAlign + 380, topAlign + 30);
   var line2 = av.g.line(leftAlign + 320, topAlign + 125, leftAlign + 380, topAlign + 125);
   av.step();
@@ -44,10 +44,10 @@ $(document).ready(function() {
   av.umsg(interpret("sc4"), {preserve: true});
   var lineOutput1 = av.g.line(leftAlign + 380 + rectWidth, topAlign + 50, leftAlign + 475 + rectWidth, topAlign + 50);
   var lineOutput2 = av.g.line(leftAlign + 380 + rectWidth, topAlign + 115, leftAlign + 475 + rectWidth, topAlign + 115);
-  var labelOutput1 = av.label("Found", {top: topAlign + 14, left: leftAlign + 385 + rectWidth});
-  var labelOutput2 = av.label("Not found", {top: topAlign + 105,
+  var labelOutput1 = av.label(interpret("lab5"), {top: topAlign + 14, left: leftAlign + 385 + rectWidth});
+  var labelOutput2 = av.label(interpret("lab6"), {top: topAlign + 105,
                                             left: leftAlign + 385 + rectWidth});
-  var labelOutput3 = av.label("Index of the target key",
+  var labelOutput3 = av.label(interpret("lab7"),
                               {top: topAlign + 22, left: leftAlign + 490 + rectWidth});
   var labelOutput4 = av.label("$n$", {top: topAlign + 87, left: leftAlign + 490 + rectWidth});
   av.step();
@@ -76,12 +76,12 @@ $(document).ready(function() {
   arr.hide();
   arr = av.ds.array(arr_values, {left: leftAlign, top: topAlign, indexed: true});
   labelInput.text("");
-  labelInput = av.label("Target key = " + arr_values[3],
+  labelInput = av.label(interpret("lab4")+" = " + arr_values[3],
                         {top: topAlign + 92, left: leftAlign + 180}).addClass("largeLabel");
   labelOutput2.hide();
   labelOutput4.hide();
   lineOutput2.hide();
-  labelOutput3.text("Index = 3");
+  labelOutput3.text(interpret("lab8")+" = 3");
   arr.highlight(3);
   av.step();
 
