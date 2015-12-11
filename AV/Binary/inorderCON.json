@@ -15,7 +15,7 @@
   },
   "code": {
     "processing": {
-      "url": "OpenDSA/SourceCode/Processing/Binary/Traverse.pde",
+      "url": "../../../SourceCode/Processing/Binary/Traverse.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: inorder *** */",
       "endBefore": "/* *** ODSAendTag: inorder *** */",
@@ -29,7 +29,7 @@
       }
     },
     "java": {
-      "url": "OpenDSA/SourceCode/Java/Binary/Traverse.java",
+      "url": "../../../SourceCode/Java/Binary/Traverse.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: inorder *** */",
       "endBefore": "/* *** ODSAendTag: inorder *** */",
@@ -43,7 +43,7 @@
       }
     },
     "java_generic": {
-      "url": "OpenDSA/SourceCode/Java_Generic/Binary/Traverse.java",
+      "url": "../../../SourceCode/Java_Generic/Binary/Traverse.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: inorder *** */",
       "endBefore": "/* *** ODSAendTag: inorder *** */",

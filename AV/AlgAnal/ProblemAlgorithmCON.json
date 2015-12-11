@@ -29,26 +29,21 @@
   },
   "code": {
     "java": [{
-      "url": "OpenDSA/SourceCode/Java/Searching/SequentialNoComments.java",
+      "url": "../../../SourceCode/Java/Searching/SequentialNoComments.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: Sequential *** */",
       "endBefore": "/* *** ODSAendTag: Sequential *** */",
-	  "top": 80,
-	  "left": 397,
-      "tags": {
-        
-      }
-    },
-    {
-      "url": "OpenDSA/SourceCode/Pseudo/Searching/Sequential.txt",
+      "top": 80,
+      "left": 397,
+      "tags": {}
+    }, {
+      "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: Sequential *** */",
       "endBefore": "/* *** ODSAendTag: Sequential *** */",
-	  "top": 80,
-	  "left": 397,
-      "tags": {
-        
-      }
+      "top": 80,
+      "left": 397,
+      "tags": {}
     }]
   }
 }

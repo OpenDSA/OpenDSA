@@ -11,7 +11,7 @@
   },
   "code": {
     "processing": {
-      "url": "OpenDSA/SourceCode/Processing/Binary/BST.pde",
+      "url": "../../../SourceCode/Processing/Binary/BST.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: removehelp *** */",
       "endBefore": "/* *** ODSAendTag: removehelp *** */",
@@ -34,7 +34,7 @@
       }
     },
     "java": {
-      "url": "OpenDSA/SourceCode/Java/Binary/BST.java",
+      "url": "../../../SourceCode/Java/Binary/BST.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: removehelp *** */",
       "endBefore": "/* *** ODSAendTag: removehelp *** */",
@@ -57,7 +57,7 @@
       }
     },
     "java_generic": {
-      "url": "OpenDSA/SourceCode/Java_Generic/Binary/BST.java",
+      "url": "../../../SourceCode/Java_Generic/Binary/BST.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: removehelp *** */",
       "endBefore": "/* *** ODSAendTag: removehelp *** */",
