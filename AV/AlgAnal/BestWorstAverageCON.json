@@ -24,7 +24,7 @@
   },
   "code" : {
     "processing": {
-      "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
+      "url": "OpenDSA/SourceCode/Pseudo/Searching/Sequential.txt",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: Sequential *** */",
       "endBefore": "/* *** ODSAendTag: Sequential *** */",

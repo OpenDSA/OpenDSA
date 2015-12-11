@@ -19,12 +19,17 @@
       "sc16": "Here we present the sequential search algorithm implemented as a Java function.",
       "lab1": "<b>Searching Problem</b>",
       "lab2": "<b>Algorithm</b>",
-      "lab3": "<b>Program</b>"
+      "lab3": "<b>Program</b>",
+      "lab4": "Target key",
+      "lab5": "Found",
+      "lab6": "Not found",
+      "lab7": "Index of the target key",
+      "lab8": "Index = 3"
     }
   },
   "code": {
     "java": [{
-      "url": "../../../SourceCode/Java/Searching/SequentialNoComments.java",
+      "url": "OpenDSA/SourceCode/Java/Searching/SequentialNoComments.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: Sequential *** */",
       "endBefore": "/* *** ODSAendTag: Sequential *** */",
@@ -35,7 +40,7 @@
       }
     },
     {
-      "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
+      "url": "OpenDSA/SourceCode/Pseudo/Searching/Sequential.txt",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: Sequential *** */",
       "endBefore": "/* *** ODSAendTag: Sequential *** */",
