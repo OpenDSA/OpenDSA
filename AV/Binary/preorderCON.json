@@ -27,7 +27,7 @@
       }
     },
     "java": {
-      "url": "OpenDSA/SourceCode/Java/Binary/Preorder.java",
+      "url": "../../../SourceCode/Java/Binary/Preorder.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: preorder *** */",
       "endBefore": "/* *** ODSAendTag: preorder *** */",
@@ -41,7 +41,7 @@
       }
     },
     "java_generic": {
-      "url": "OpenDSA/SourceCode/Java_Generic/Binary/Preorder.java",
+      "url": "../../../SourceCode/Java_Generic/Binary/Preorder.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: preorder *** */",
       "endBefore": "/* *** ODSAendTag: preorder *** */",

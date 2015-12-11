@@ -9,7 +9,7 @@
   },
   "code": {
     "processing": {
-      "url": "OpenDSA/SourceCode/Processing/Lists/LQueue.pde",
+      "url": "../../../SourceCode/Processing/Lists/LQueue.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: LQueue1 *** */",
       "endBefore": "/* *** ODSAendTag: LQueue1 *** */",
@@ -19,7 +19,7 @@
       }
     },
     "java": {
-      "url": "OpenDSA/SourceCode/Java/Lists/LQueue.java",
+      "url": "../../../SourceCode/Java/Lists/LQueue.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: LQueue1 *** */",
       "endBefore": "/* *** ODSAendTag: LQueue1 *** */",
@@ -29,7 +29,7 @@
       }
     },
     "java_generic": {
-      "url": "OpenDSA/SourceCode/Java_Generic/Lists/LQueue.java",
+      "url": "../../../SourceCode/Java_Generic/Lists/LQueue.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: LQueue1 *** */",
       "endBefore": "/* *** ODSAendTag: LQueue1 *** */",

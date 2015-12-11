@@ -11,7 +11,7 @@
   },
   "code": {
     "processing": {
-      "url": "OpenDSA/SourceCode/Processing/Lists/AList.pde",
+      "url": "../../../SourceCode/Processing/Lists/AList.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: AListRemove *** */",
       "endBefore": "/* *** ODSAendTag: AListRemove *** */",
@@ -25,7 +25,7 @@
       }
     },
     "java": {
-      "url": "OpenDSA/SourceCode/Java/Lists/AList.java",
+      "url": "../../../SourceCode/Java/Lists/AList.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: AListRemove *** */",
       "endBefore": "/* *** ODSAendTag: AListRemove *** */",
@@ -39,7 +39,7 @@
       }
     },
     "java_generic": {
-      "url": "OpenDSA/SourceCode/Java_Generic/Lists/AList.java",
+      "url": "../../../SourceCode/Java_Generic/Lists/AList.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: AListRemove *** */",
       "endBefore": "/* *** ODSAendTag: AListRemove *** */",

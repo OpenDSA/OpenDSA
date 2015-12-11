@@ -9,7 +9,7 @@
   },
   "code": {
     "processing": {
-      "url": "OpenDSA/SourceCode/Processing/Lists/AStack.pde",
+      "url": "../../../SourceCode/Processing/Lists/AStack.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: AStackPush *** */",
       "endBefore": "/* *** ODSAendTag: AStackPush *** */",
@@ -20,7 +20,7 @@
       }
     },
     "java": {
-      "url": "OpenDSA/SourceCode/Java/Lists/AStack.java",
+      "url": "../../../SourceCode/Java/Lists/AStack.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: AStackPush *** */",
       "endBefore": "/* *** ODSAendTag: AStackPush *** */",
@@ -31,7 +31,7 @@
       }
     },
     "java_generic": {
-      "url": "OpenDSA/SourceCode/Java_Generic/Lists/AStack.java",
+      "url": "../../../SourceCode/Java_Generic/Lists/AStack.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: AStackPush *** */",
       "endBefore": "/* *** ODSAendTag: AStackPush *** */",

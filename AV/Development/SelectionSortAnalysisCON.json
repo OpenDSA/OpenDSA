@@ -14,7 +14,7 @@
   },
   "code": {
     "processing": {
-      "url": "OpenDSA/SourceCode/Processing/Sorting/Selectionsort.pde",
+      "url": "../../../SourceCode/Processing/Sorting/Selectionsort.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: Selectionsort *** */",
       "endBefore": "/* *** ODSAendTag: Selectionsort *** */",

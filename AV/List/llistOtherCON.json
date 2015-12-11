@@ -15,14 +15,14 @@
   },
   "code": {
     "processing": [{
-      "url": "OpenDSA/SourceCode/Processing/Lists/LList.pde",
+      "url": "../../../SourceCode/Processing/Lists/LList.pde",
       "startAfter": "/* *** ODSATag: LListNext *** */",
       "endBefore": "/* *** ODSAendTag: LListNext *** */",
       "tags": {
         "sig": 2
       }
     }, {
-      "url": "OpenDSA/SourceCode/Processing/Lists/LList.pde",
+      "url": "../../../SourceCode/Processing/Lists/LList.pde",
       "startAfter": "/* *** ODSATag: LListPrev *** */",
       "endBefore": "/* *** ODSAendTag: LListPrev *** */",
       "tags": {
@@ -31,7 +31,7 @@
         "curr": 7
       }
     }, {
-      "url": "OpenDSA/SourceCode/Processing/Lists/LList.pde",
+      "url": "../../../SourceCode/Processing/Lists/LList.pde",
       "startAfter": "/* *** ODSATag: LListPos *** */",
       "endBefore": "/* *** ODSAendTag: LListPos *** */",
       "tags": {
@@ -40,14 +40,14 @@
       }
     }],
     "java": [{
-      "url": "OpenDSA/SourceCode/Java/Lists/LList.java",
+      "url": "../../../SourceCode/Java/Lists/LList.java",
       "startAfter": "/* *** ODSATag: LListNext *** */",
       "endBefore": "/* *** ODSAendTag: LListNext *** */",
       "tags": {
         "sig": 2
       }
     }, {
-      "url": "OpenDSA/SourceCode/Java/Lists/LList.java",
+      "url": "../../../SourceCode/Java/Lists/LList.java",
       "startAfter": "/* *** ODSATag: LListPrev *** */",
       "endBefore": "/* *** ODSAendTag: LListPrev *** */",
       "tags": {
@@ -56,7 +56,7 @@
         "curr": 7
       }
     }, {
-      "url": "OpenDSA/SourceCode/Java/Lists/LList.java",
+      "url": "../../../SourceCode/Java/Lists/LList.java",
       "startAfter": "/* *** ODSATag: LListPos *** */",
       "endBefore": "/* *** ODSAendTag: LListPos *** */",
       "tags": {
@@ -65,14 +65,14 @@
       }
     }],
     "java_generic": [{
-      "url": "OpenDSA/SourceCode/Java_Generic/Lists/LList.java",
+      "url": "../../../SourceCode/Java_Generic/Lists/LList.java",
       "startAfter": "/* *** ODSATag: LListNext *** */",
       "endBefore": "/* *** ODSAendTag: LListNext *** */",
       "tags": {
         "sig": 2
       }
     }, {
-      "url": "OpenDSA/SourceCode/Java_Generic/Lists/LList.java",
+      "url": "../../../SourceCode/Java_Generic/Lists/LList.java",
       "startAfter": "/* *** ODSATag: LListPrev *** */",
       "endBefore": "/* *** ODSAendTag: LListPrev *** */",
       "tags": {
@@ -81,7 +81,7 @@
         "curr": 7
       }
     }, {
-      "url": "OpenDSA/SourceCode/Java_Generic/Lists/LList.java",
+      "url": "../../../SourceCode/Java_Generic/Lists/LList.java",
       "startAfter": "/* *** ODSATag: LListPos *** */",
       "endBefore": "/* *** ODSAendTag: LListPos *** */",
       "tags": {

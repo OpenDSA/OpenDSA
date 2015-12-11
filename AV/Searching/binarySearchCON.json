@@ -15,7 +15,7 @@
         "sig": 3,
         "while": 6
       },
-      "url": "OpenDSA/SourceCode/C++/Searching/bsearch.cpp"
+      "url": "../../../SourceCode/C++/Searching/bsearch.cpp"
     },
     "java": {
       "endBefore": "/* *** ODSAendTag: BinarySearch *** */",
@@ -34,7 +34,7 @@
         "sig": 3,
         "while": 6
       },
-      "url": "OpenDSA/SourceCode/Java/Searching/Bsearch.java"
+      "url": "../../../SourceCode/Java/Searching/Bsearch.java"
     },
     "java_generic": {
       "endBefore": "/* *** ODSAendTag: BinarySearch *** */",
@@ -53,7 +53,7 @@
         "sig": 3,
         "while": 6
       },
-      "url": "OpenDSA/SourceCode/Java_Generic/Searching/Bsearch.java"
+      "url": "../../../SourceCode/Java_Generic/Searching/Bsearch.java"
     },
     "processing": {
       "endBefore": "/* *** ODSAendTag: BinarySearch *** */",
@@ -72,7 +72,7 @@
         "sig": 3,
         "while": 6
       },
-      "url": "OpenDSA/SourceCode/Processing/Searching/bsearch.pde"
+      "url": "../../../SourceCode/Processing/Searching/bsearch.pde"
     }
   },
   "translations": {
