@@ -21,12 +21,9 @@ $(document).ready(function () {
   
   //Draw the axis
   var axis = av.g.polyline([[left, top], [left, top + yLength], [left + xLength, top + yLength]]);
-  var xLabel = av.label("Input of Size $n$",  {"top": top + yLength - 10, "left": left + xLength + 10}).css
-  ({'font-size': '16px', "text-align": "center"});
-  var yLabel = av.label("Cost",  {"top": top - 20, "left": left - 75}).css
-  ({'font-size': '16px', "text-align": "center"});
-  var origin = av.label("$(0,0)$",  {"top": top + yLength - 10, "left": left - 20}).css
-  ({'font-size': '16px', "text-align": "center"});
+  var xLabel = av.label(interpret("lab1"),  {"top": top + yLength - 10, "left": left + xLength + 10}).addClass("largeLabel");
+  var yLabel = av.label(interpret("lab2"),  {"top": top - 20, "left": left - 75}).addClass("largeLabel");
+  var origin = av.label("$(0,0)$",  {"top": top + yLength - 10, "left": left - 20}).addClass("largeLabel");
 
   //Draw the points
   var points = [];
@@ -54,11 +51,11 @@ $(document).ready(function () {
   var worstCostLine = av.g.line(points[maxIndex].options.left - 5, points[maxIndex].options.top + 20,
                                       left, points[maxIndex].options.top + 20).addClass("dashed");
 
-  var worstInput = av.label("Worst Case Input",  {"top": top + yLength - 10, 
-    "left": points[maxIndex].options.left}).css({'font-size': '12px', "text-align": "center", "color":"red"});
+  var worstInput = av.label(interpret("lab3"),  {"top": top + yLength - 10, 
+    "left": points[maxIndex].options.left}).addClass("mediumLabel colored");
 
-  var worstCost = av.label("Worst Case Cost",  {"top": points[maxIndex].options.top + 10, 
-    "left": left - 100}).css({'font-size': '12px', "text-align": "center", "color":"red"});
+  var worstCost = av.label(interpret("lab4"),  {"top": points[maxIndex].options.top + 10, 
+    "left": left - 100}).addClass("mediumLabel colored");
   
 
   av.step();
@@ -115,12 +112,9 @@ $(document).ready(function () {
     left = 150 + leftSpace;
     //Draw the axis
     axis.push(av.g.polyline([[left, top], [left, top + yLength], [left + xLength, top + yLength]]));
-    xLabel.push(av.label("Input of Size $n$",  {"top": top + yLength - 5, "left": left + xLength + 10}).css
-    ({'font-size': '12px', "text-align": "center"}));
-    yLabel.push(av.label("Cost",  {"top": top - 15, "left": left - 50}).css
-    ({'font-size': '12px', "text-align": "center"}));
-    origin.push(av.label("$(0,0)$",  {"top": top + yLength - 10, "left": left - 20}).css
-    ({'font-size': '12px', "text-align": "center"}));
+    xLabel.push(av.label(interpret("lab1"),  {"top": top + yLength - 5, "left": left + xLength + 10}).addClass("mediumLabel"));
+    yLabel.push(av.label(interpret("lab2"),  {"top": top - 15, "left": left - 50}).addClass("mediumLabel"));
+    origin.push(av.label("$(0,0)$",  {"top": top + yLength - 10, "left": left - 20}).addClass("mediumLabel"));
 
     //Draw the points
     for(var k = 0; k < numPoints; k++){
@@ -145,11 +139,11 @@ $(document).ready(function () {
     worstCostLine.push(av.g.line(points[i][maxIndex].options.left - 5, points[i][maxIndex].options.top + 20,
                                       left, points[i][maxIndex].options.top + 20).addClass("dashed"));
 
-    worstInput.push(av.label("Worst Case Input",  {"top": top + yLength - 10, 
-    "left": points[i][maxIndex].options.left}).css({'font-size': '10px', "text-align": "center", "color":"red"}));
+    worstInput.push(av.label(interpret("lab3"),  {"top": top + yLength - 10, 
+    "left": points[i][maxIndex].options.left}).addClass("smallLabel colored"));
 
-    worstCost.push(av.label("Worst Case Cost",  {"top": points[i][maxIndex].options.top + 10, 
-    "left": left - 100}).css({'font-size': '10px', "text-align": "center", "color":"red"}));
+    worstCost.push(av.label(interpret("lab4"),  {"top": points[i][maxIndex].options.top + 10, 
+    "left": left - 100}).addClass("smallLabel colored"));
   }
   av.step();
 

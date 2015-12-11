@@ -60,7 +60,7 @@ course are used not only in the UML, but in other modeling systems as well [#]_ 
 
 
 Static and Dynamic Diagrams
----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Static diagrams emphasize the static structure of the system, its objects
 attributes, methods, and relationships.  
@@ -83,7 +83,7 @@ and the collaborations between objects.  Dynamic views include:
 
 
 Class Diagrams
---------------
+~~~~~~~~~~~~~~
 
 .. sidebar:: A Class
 

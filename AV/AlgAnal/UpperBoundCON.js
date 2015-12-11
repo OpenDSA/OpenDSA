@@ -119,19 +119,19 @@ $(document).ready(function () {
   var arr1 = av.ds.array(arr_values, {"left": leftAlign, "top": topAlign + 20, "indexed": true});
   var pointer1 = av.pointer("$k$", arr1.index(0));
   arr1.css([0], {"background-color":"green"});
-  var label1 = av.label("$O(1)$ in the <b><u>Best Case.</u></b>",  {"top": topAlign + 25, "left": leftAlign + 395});
+  var label1 = av.label(interpret("lab1"),  {"top": topAlign + 25, "left": leftAlign + 395});
  
   var arr2 = av.ds.array(arr_values, {"left": leftAlign, "top": topAlign + 130, "indexed": true});
   var pointer2 = av.pointer("$k$", arr2.index(arraySize - 1));
   arr2.css(indices, {"background-color":"red"});
-  var label2 = av.label("$O(n)$ in the <b><u>Worst Case</u></b>.",  {"top": topAlign + 135, "left": leftAlign + 395});
+  var label2 = av.label(interpret("lab2"),  {"top": topAlign + 135, "left": leftAlign + 395});
 
   var arr3 = av.ds.array(arr_values, {"left": leftAlign, "top": topAlign + 240, "indexed": true});
   var pointer3 = av.pointer("$k$", arr3.index(parseInt(arraySize/2)));
   for(i = 0; i <= parseInt(arraySize/2); i++){
     arr3.highlight(i);
   }
-  var label3 = av.label("$O(n)$ in the <b><u>Average Case</u></b>.",  {"top": topAlign + 245, "left": leftAlign + 395});
+  var label3 = av.label(interpret("lab3"),  {"top": topAlign + 245, "left": leftAlign + 395});
   av.step();
 
   av.recorded();

@@ -13,7 +13,7 @@ MINIMIZE = uglifyjs
 
 all: alllint
 
-allbooks: Everything Test CS2 CS3 RecurTutor uwosh-pl
+allbooks: Everything Test CS2 CS3 RecurTutor PL
 
 clean:
 	- $(RM) *~
@@ -133,6 +133,12 @@ PL: min
 
 PLLMS: min
 	python $(CONFIG_SCRIPT) config/PL.json -c True
+
+India: min
+	python $(CONFIG_SCRIPT) config/India.json $(opts)
+
+IndiaLMS: min
+	python $(CONFIG_SCRIPT) config/India.json -c True
 
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
