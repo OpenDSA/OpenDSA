@@ -1,0 +1,31 @@
+#AnalCasesSameCON {
+  height: 370px;
+}
+
+#AnalCasesSameCON .jsavline{
+  height: 30px;
+}
+
+.jsavhorizontalarray .jsavnode{
+  min-width: 50px !important;
+  max-width: 200px !important;
+  min-height: 35px !important;
+  max-height: 35px !important;
+}
+
+.jsavcodeline{
+  background-color: transparent;
+  font-size: 10px;
+}
+
+.largeLabel{
+  font-size: 18px; 
+  text-align: center; 
+}
+
+#AnalCasesDiffCON {
+  height: 450px;
+}
+#AnalCasesDiffCON .jsavline{
+  height: 75px;
+}

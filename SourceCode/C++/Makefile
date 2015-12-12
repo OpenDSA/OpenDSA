@@ -1,4 +1,3 @@
-# C++ version of Makefile
 # Standard UNIX
 CFLAGS= -s -Wall -O -DUNIX
 # Debugging
@@ -11,58 +10,25 @@ CC= g++ -std=c++0x
 
 #### Do the chapters #######################################################
 
-all: build utils sorting lists
+all: build sorting lists
 
-build:
-	-@mkdir build
+build: build
+	mkdir build
 
 clean:
 	-rm -rf build
 	mkdir build
 
-Utils: PermuteTest UtilsTest
-
-PermuteTest: build/PermuteTest/success
-
-build/PermuteTest/success: Utils/PermuteTest.cpp Utils/Permute.h Utils/utils.h
-	@echo "Permute Test"
-	@rm -rf build/PermuteTest
-	@mkdir build/PermuteTest
-	@cp Utils/PermuteTest.cpp build/PermuteTest
-	@cp Utils/Permute.h build/PermuteTest
-	@cp Utils/utils.h build/PermuteTest
-	cd build/PermuteTest; \
-	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o PermuteTest.o PermuteTest.cpp; \
-	$(CC) $(CFLAGS) PermuteTest.o -o PermuteTest; \
-	./PermuteTest
-
-UtilsTest: build build/Utils/success
-
-build/Utils/success: Utils/Checkorder.cpp Utils/Comparable.cpp Utils/Int.cpp Utils/KVPair.cpp Utils/utils.h Utils/UtilsTest.cpp
-	@echo "Utilities Test"
-	@rm -rf build/Utils
-	@mkdir build/Utils
-	@cp Utils/Checkorder.cpp build/Utils
-	@cp Utils/Comparable.cpp build/Utils
-	@cp Utils/Int.cpp build/Utils
-	@cp Utils/KVPair.cpp build/Utils
-	@cp Utils/UtilsTest.cpp build/Utils
-	@cp Utils/utils.h build/Utils
-	cd build/Utils; \
-	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o UtilsTest.o UtilsTest.cpp; \
-	$(CC) $(CFLAGS) UtilsTest.o -o UtilsTest; \
-	./UtilsTest
-
 Anal: build build/Anal/success
 
-build/Anal/success: Misc/Anal.cpp Searching/bsearch.cpp Searching/Sequential.cpp Misc/Largest.cpp Utils/utils.h
+build/Anal/success: Misc/Anal.cpp Searching/bsearch.cpp Searching/Sequential.cpp Misc/LargestTest.cpp Utils/utils.h
 	@echo "Analysis Chapter Test"
 	@rm -rf build/Anal
 	@mkdir build/Anal
 	@cp Misc/Anal.cpp build/Anal
 	@cp Searching/bsearch.cpp build/Anal
 	@cp Searching/Sequential.cpp build/Anal
-	@cp Misc/Largest.cpp build/Anal
+	@cp Misc/LargestTest.cpp build/Anal
 	@cp Utils/utils.h build/Anal
 	cd build/Anal; \
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o Anal.o Anal.cpp; \
