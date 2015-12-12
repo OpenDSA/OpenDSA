@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Knapsack Item Select</title>
+  <script src="../../lib/jquery.min.js"></script>
+<script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+
+
+<style>
+.jsavcontainer {
+  border: 0px;
+  height: 300px}
+  .jsavarray { margin: 0; height: 40px; min-height: 40px; }
+  .jsavarray li { border-radius: 0 !important; height: 40px; width: 40px; font-size: 14px; line-height: 40px;}
+</style>
+  <body data-height="650" data-width="950">
+<script>
+
+    var randomInt = function(a, b)
+    {
+        return Math.floor(Math.random()*(b-a+1)) + a;
+    }
+
+    var jsav, arr, myGuess, currPos, item, table;
+    
+    initJSAV = function(a) 
+    {
+        jsav = new JSAV("jsav", {"animationMode": "none"});
+        item = jsav.ds.array([randomInt(1,4), randomInt(1,5)], 
+            {centered:false, left:"20px" , top: "10px", layout:"vertical"});
+
+        //label the item
+        jsav.label("Item", {left: "25px", top: "-10px"});
+        jsav.label("Weight", {left: "70px", top: "20px"});
+        jsav.label("Value", {left: "70px", top: "60px"})
+        //build a section of the dynamic table for the question
+        var row = [];
+        for(var i = 0; i < 5; i++)
+        {
+            if(i === 0)
+                row[i] = 0; //first element always zero
+            else
+                row[i] = row[i-1] + randomInt(0, 3); 
+        }
+        table = [];
+        table[0] = jsav.ds.array(row, {top:"30px"});
+        row = [];
+        for(var i = 0; i < table[0].size(); i++)
+        {
+            row[i] = "-";
+        }
+        table[1] = jsav.ds.array(row, {top:"70px"});
+        table[1].css(table[1].size()-1, {"background-color":"#00FF00"});
+        jsav.label("Item", {top:(parseInt(table[0].css("top"))+10), left:(parseInt(table[0].css("left")) - 30)})
+        jsav.label("Capacity", {top:(parseInt(table[0].css("top"))-25), left:(parseInt(table[0].css("left")))})
+        jsav.forward();
+    }
+
+genAnswer = function() {
+    //return max;
+    var a = table[0].value(table[0].size()-1);
+    var b = table[0].value((table[0].size()-1) - item.value(0)) + item.value(1);
+    //console.log("a: " + a + " b: " + b);
+    if(a >= b)
+        return "Leave It";
+    return "Take It";
+}
+
+var hintHighlight = function()
+{
+    table[0].css(table[0].size()-1, {"background-color":"yellow"});
+    table[0].css(table[0].size()-1-item.value(0), {"background-color":"yellow"});
+}
+
+</script>
+
+<div class="exercise">
+  <div class="vars">
+    <var id="A">randRange( 6, 10 )</var>
+    <var id="JSAV">initJSAV(A)</var>
+    <var id="CorrectAnswer">genAnswer()</var>
+  </div>
+
+  <div class="problems">
+    <div>
+      <div class="question">
+	    Is the current item taken or left behind?
+	    <div id="jsav"></div>
+      </div>
+      <div class="solution"><var>genAnswer()</var></div>
+	    <ul class="choices" data-category="true">
+	      <li><var>"Take It"</var></li>
+	      <li><var>"Leave It"</var></li>
+	    </ul>
+
+	</div>
+      </div>
+      <div class="hints">
+	    <p>Look at positions (0, <var>table[1].size()</var>) and (0, <var>table[1].size()-1-item.value(0)</var>).</p>
+        <p>If the item is left behind, move strait up the table and gain no extra value.</p>
+        <p>If the item is taken you have reduced capacity in the knapsack but gain the value of the item. Move left by the items weight and up one to the next item</p>
+        <p>Remember, if the value is a tie, it does not matter if the item is left or taken. In the event of a tie, leave the item behind by default.<p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

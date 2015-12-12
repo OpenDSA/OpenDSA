@@ -5,13 +5,15 @@
 
 .. avmetadata::
    :author: Nabanita Maji
-   :prerequisites:
    :topic: NP-completeness
 
 .. odsalink:: AV/Development/NP/independentSetCON.css
 
 The Independent Set Problem
 ===========================
+
+Independent Set
+---------------
 
 INDEPENDENT SET PROBLEM.
 
@@ -23,4 +25,3 @@ Try out an instance of the Independent Set problem on your own.
 .. avembed:: Exercises/Development/independentSet_KA.html ka
 
 .. odsascript:: AV/Development/NP/independentSetCON.js
-

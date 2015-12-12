@@ -4,8 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author:
-   :prerequisites:
+   :author: Cliff Shaffer
    :topic: Randomized Algorithms
 
 Random Numbers
@@ -108,9 +107,6 @@ your own, an effective one can be made with the following formula.
 .. math::
 
    r(i) = 16807 r(i-1) \bmod 2^{31} - 1.
-
-Notes
------
 
 .. [#] Another approach is based on
        using a computer chip that generates random numbers resulting

@@ -333,7 +333,7 @@ It is not enough to simply check that the differences between the
 distances because the the record could still be outside the search
 circle, as illustrated by Figure :num:`Figure #InCirc`.
 
-.. _kdExamp:
+.. _InCirc:
 
 .. odsafig:: Images/InCirc.png
    :width: 300
@@ -368,9 +368,6 @@ Here is a version where you can click to get the node inserted.
    :type: exercise
 
    We need a proficiency exercise.
-
-Notes
------
 
 .. [#] A more efficient computation is
        :math:`(P_x - N_x)^2 + (P_y - N_y)^{2} \leq d^{2}`.

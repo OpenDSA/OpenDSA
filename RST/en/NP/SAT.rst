@@ -5,19 +5,19 @@
 
 .. avmetadata::
    :author: Nabanita Maji
-   :prerequisites:
    :topic: NP-completeness
 
 .. odsalink:: AV/Development/NP/SATCON.css
 
 Formula Satisfiability
-================================
+======================
+
+Formula Satisfiability
+----------------------
 
 FORMULA SATISFIABILITY PROBLEM (SAT) 
 
 .. inlineav:: SATCON ss
    :output: show
 
-
 .. odsascript:: AV/Development/NP/SATCON.js
-

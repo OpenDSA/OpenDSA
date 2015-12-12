@@ -5,13 +5,15 @@
 
 .. avmetadata::
    :author: Nabanita Maji
-   :prerequisites:
    :topic: NP-completeness
 
 .. odsalink:: AV/Development/NP/hamiltonianCycleCON.css
 
 The Hamiltonian Cycle Problem
 =============================
+
+Hamiltonian Cycle
+-----------------
 
 HAMILTONIAN CYCLE PROBLEM.
 

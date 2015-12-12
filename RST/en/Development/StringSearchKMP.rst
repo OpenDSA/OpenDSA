@@ -6,9 +6,8 @@
 .. avmetadata:: 
    :author: Tom Naps and Sam Micka
 
-KMP String Search Algorithm [Draft]
-===================================
-
+KMP String Search Algorithm
+===========================
 
 This apparently more efficient string search algorithm was discovered
 in the 1970s by D. E. Knuth, J. H. Morris, and V. R. Pratt.

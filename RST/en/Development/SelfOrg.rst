@@ -14,6 +14,9 @@
 Self-Organizing Lists
 =====================
 
+Introduction
+------------
+
 While ordering of lists is most commonly done by :term:`key` value,
 this is not the only viable option.
 Another approach to organizing lists to speed search is to order the
@@ -183,99 +186,111 @@ to determine if the desired information is already in main memory.
 When ordered by frequency of access, the buffer at the end of the
 list will be the one most appropriate for reuse when a new page
 of information must be read.
-Below are three traditional heuristics for managing self-organizing
-lists:
 
-#. The most obvious way to keep a list ordered by frequency would be to
-   store a count of accesses to each record and always maintain records
-   in this order.
-   This method will be referred to as :term:`frequency count` or just
-   "count".
-   Count is similar to the :term:`least frequently used` buffer
-   replacement strategy.
-   Whenever a record is accessed, it might move toward the front of
-   the list if its number of accesses becomes greater than a record
-   preceding it.
-   Thus, count will store the records in the order of frequency
-   that has actually occurred so far.
-   Besides requiring space for the access counts, count does not
-   react well to changing frequency of access over time.
-   Once a record has been accessed a large number of times under the
-   frequency count system, it will
-   remain near the front of the list regardless of further access
-   history.
+Frequency Count
+---------------
 
-#. Bring a record to the front of the list when it is
-   found, pushing all the other records back one position.
-   This is analogous to the :term:`least recently used`
-   buffer replacement strategy and is called
-   :term:`move-to-front`.
-   This heuristic is easy to implement if the records are stored using
-   a linked list.
-   When records are stored in an array, bringing a record forward from
-   near the end of the array will result in a
-   large number of records (slightly) changing position.
-   Move-to-front's cost is bounded in the sense that it requires at
-   most twice the number of accesses required by the
-   :term:`optimal static ordering` for :math:`n` records when at least
-   :math:`n` searches are performed. 
-   In other words, if we had known the series of (at least :math:`n`)
-   searches in advance and had stored the records in order of frequency
-   so as to minimize the total cost for these accesses, this cost would
-   be at least half the cost required by the move-to-front heuristic.
-   (This can be proved using
-   :ref:`amortized analysis <amortized analysis> <AmortAnal>`.)
-   Finally, move-to-front responds well to local changes in frequency
-   of access, in that if a record is frequently accessed for a brief
-   period of time it will be near the front of the list during that
-   period of access.
-   Move-to-front does poorly when the records are processed in
-   sequential order, especially if that sequential order is then
-   repeated multiple times.
+There are three traditional heuristics for managing self-organizing
+lists.
 
-#. Swap any record found with the record immediately
-   preceding it in the list.
-   This heuristic is called :term:`transpose`.
-   Transpose is good for list implementations based on either linked
-   lists or arrays.
-   Frequently used records will, over time, move to the front of the
-   list.
-   Records that were once frequently accessed but are no longer used
-   will slowly drift toward the back.
-   Thus, it appears to have good properties with respect to changing
-   frequency of access.
-   Unfortunately, there are some pathological sequences of access that
-   can make transpose perform poorly.
-   Consider the case where the last record of the list
-   (call it :math:`X`) is accessed.
-   This record is then swapped with the next-to-last record
-   (call it :math:`Y`), making :math:`Y` the last record.
-   If :math:`Y` is now accessed, it swaps with :math:`X`.
-   A repeated series of accesses alternating between :math:`X`
-   and :math:`Y` will continually search to the end of the list,
-   because neither record will ever make progress toward the front.
-   However, such pathological cases are unusual in practice.
-   A variation on transpose would be to move the accessed record
-   forward in the list by some fixed number of steps.
-
+The most obvious way to keep a list ordered by frequency would be to
+store a count of accesses to each record and always maintain records
+in this order.
+This method will be referred to as :term:`frequency count` or just
+"count".
+Count is similar to the :term:`least frequently used` buffer
+replacement strategy.
+Whenever a record is accessed, it might move toward the front of
+the list if its number of accesses becomes greater than a record
+preceding it.
+Thus, count will store the records in the order of frequency
+that has actually occurred so far.
+Besides requiring space for the access counts, count does not
+react well to changing frequency of access over time.
+Once a record has been accessed a large number of times under the
+frequency count system, it will
+remain near the front of the list regardless of further access
+history.
 
 .. inlineav:: SelforgCON1 ss
    :output: show
 
+.. avembed:: Exercises/Development/SelfOrgCounterPro.html ka
 
-Now lets do the move-to-front method
 
+Move to Front
+-------------
+
+Bring a record to the front of the list when it is
+found, pushing all the other records back one position.
+This is analogous to the :term:`least recently used`
+buffer replacement strategy and is called
+:term:`move-to-front`.
+This heuristic is easy to implement if the records are stored using
+a linked list.
+When records are stored in an array, bringing a record forward from
+near the end of the array will result in a
+large number of records (slightly) changing position.
+Move-to-front's cost is bounded in the sense that it requires at
+most twice the number of accesses required by the
+:term:`optimal static ordering` for :math:`n` records when at least
+:math:`n` searches are performed. 
+In other words, if we had known the series of (at least :math:`n`)
+searches in advance and had stored the records in order of frequency
+so as to minimize the total cost for these accesses, this cost would
+be at least half the cost required by the move-to-front heuristic.
+(This can be proved using
+:ref:`amortized analysis <amortized analysis> <AmortAnal>`.)
+Finally, move-to-front responds well to local changes in frequency
+of access, in that if a record is frequently accessed for a brief
+period of time it will be near the front of the list during that
+period of access.
+Move-to-front does poorly when the records are processed in
+sequential order, especially if that sequential order is then
+repeated multiple times.
 
 .. inlineav:: SelforgCON2 ss
    :output: show
 
+.. avembed:: Exercises/Development/SelfOrgMove-to-FrontPro.html ka
 
-And finally the Transpose method
 
+Transpose
+---------
+
+Swap any record found with the record immediately
+preceding it in the list.
+This heuristic is called :term:`transpose`.
+Transpose is good for list implementations based on either linked
+lists or arrays.
+Frequently used records will, over time, move to the front of the
+list.
+Records that were once frequently accessed but are no longer used
+will slowly drift toward the back.
+Thus, it appears to have good properties with respect to changing
+frequency of access.
+Unfortunately, there are some pathological sequences of access that
+can make transpose perform poorly.
+Consider the case where the last record of the list
+(call it :math:`X`) is accessed.
+This record is then swapped with the next-to-last record
+(call it :math:`Y`), making :math:`Y` the last record.
+If :math:`Y` is now accessed, it swaps with :math:`X`.
+A repeated series of accesses alternating between :math:`X`
+and :math:`Y` will continually search to the end of the list,
+because neither record will ever make progress toward the front.
+However, such pathological cases are unusual in practice.
+A variation on transpose would be to move the accessed record
+forward in the list by some fixed number of steps.
 
 .. inlineav:: SelforgCON3 ss
    :output: show
 
+.. avembed:: Exercises/Development/SelfOrgTransposePro.html ka
+
+
+An Example
+----------
 
 While self-organizing lists do not generally perform as well
 as search trees or a sorted list, both of which require
@@ -316,7 +331,6 @@ Consider the following example message to be transmitted
 
 ``The car on the left hit the car I left``
 
-
 The first three words have not been seen before, so they must be sent
 as full words.
 The fourth word is the second appearance of "the" which at this
@@ -343,17 +357,6 @@ string.
 The codes are stored in a self-organizing list in order to speed
 up the time required to search for a string that has previously been
 seen.
-
-
-.. avembed:: Exercises/Development/SelfOrgMove-to-FrontPro.html ka
-
-.. avembed:: Exercises/Development/SelfOrgTransposePro.html ka
-
-.. avembed:: Exercises/Development/SelfOrgCounterPro.html ka
-
-
-Notes
------
 
 .. [#] The compression algorithm and the example used both come from
        the following paper:

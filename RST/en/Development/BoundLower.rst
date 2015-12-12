@@ -180,9 +180,6 @@ The first variation does not change the lower bound (at
 least not asymptotically).
 The second one does.
 
-Notes
------
-
 .. [#] Throughout this discussion, it should be
        understood that any mention of bounds must specify what class
        of inputs are being considered.

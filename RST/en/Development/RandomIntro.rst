@@ -4,8 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author:
-   :prerequisites:
+   :author: Cliff Shaffer
    :topic: Randomized Algorithms
 
 Randomized Algorithms: Introduction

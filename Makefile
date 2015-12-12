@@ -98,6 +98,12 @@ Test: min
 TestLMS: min
 	python $(CONFIG_SCRIPT) config/Test.json -c True
 
+RecurTutor: min
+	python $(CONFIG_SCRIPT) config/RecurTutor.json $(opts)
+
+RecurTutorLMS: min
+	python $(CONFIG_SCRIPT) config/RecurTutor.json -c True
+
 CS2: min
 	python $(CONFIG_SCRIPT) config/CS2.json $(opts)
 
@@ -116,17 +122,17 @@ CS3vt: min
 CS3in: min
 	python $(CONFIG_SCRIPT) config/CS3.json $(opts)
 
+Algorithms: min
+	python $(CONFIG_SCRIPT) config/Algorithms.json $(opts)
+
+AlgorithmsLMS: min
+	python $(CONFIG_SCRIPT) config/Algorithms.json -c True
+
 Everything: min
 	python $(CONFIG_SCRIPT) config/Everything.json $(opts)
 
 EverythingLMS: min
 	python $(CONFIG_SCRIPT) config/Everything.json -c True
-
-RecurTutor: min
-	python $(CONFIG_SCRIPT) config/RecurTutor.json $(opts)
-
-RecurTutorLMS: min
-	python $(CONFIG_SCRIPT) config/RecurTutor.json -c True
 
 PL: min
 	python $(CONFIG_SCRIPT) config/PL.json $(opts)

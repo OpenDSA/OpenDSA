@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Knapsack Row Completion</title>
+  <script src="../../lib/jquery.min.js"></script>
+<script src="../../lib/jquery-ui.min.js"></script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../JSAV/build/JSAV-min.js"></script>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+
+<style>
+.jsavcontainer {
+  border: 0px;
+  height: 300px}
+  .jsavarray { margin: 0; height: 40px; min-height: 40px; }
+  .jsavarray li { border-radius: 0 !important; height: 40px; width: 40px; font-size: 14px; line-height: 40px;}
+</style>
+
+  <body data-height="650" data-width="950">
+<script>
+    var jsav, arr, myGuess, currPos, jsavItems, jsavDynTable, numItems, capacity;
+
+    var randomInt = function(a, b)
+    {
+        return Math.floor(Math.random()*(b-a+1)) + a;
+    }
+    
+    // function to handle a click event on an array
+    var clickHandler = function(index) 
+    {
+        console.log("\"" + this.css(index, "background-color") + "\"");
+        console.log(typeof this.css(index, "background-color"));
+        if(this.css(index, "background-color") === "rgb(208, 208, 255)")
+        {
+            this.css(index, {"background-color":"#FFFFFF"});
+        }
+        else
+        {
+            this.css(index, {"background-color":"#D0D0FF"});
+        }
+    }
+
+    //works on jsav arrays...
+    var fillTableComplete = function(table, itemTable)
+    {
+        for(var i = 1; i < table.length; i++)
+        {
+            for(var w = 1; w < table[i].size(); w++)
+            {
+                var itemWeight, itemValue;
+                itemWeight = itemTable[1].value(i-1);
+                itemValue = itemTable[2].value(i-1);
+                if(itemWeight > w) //item won't fit in the knapsack
+                {
+                    table[i].value(w, table[i-1].value(w));
+                }
+                else
+                {
+                    table[i].value(w, Math.max(table[i-1].value(w), 
+                                               table[i-1].value(w-itemWeight) + itemValue));
+                }
+            }
+        }
+    }
+
+    initJSAV = function(a) 
+    {
+        jsav = new JSAV("jsav", {"animationMode": "none"});
+
+        //generate items
+        numItems = randomInt(3, 5);
+        myGuess = [];
+        var weights = [];
+        var values = [];
+        var itemNumbers = [];
+        for(var i = 0; i < numItems; i++)
+        {
+            weights[i] = randomInt(1, 5);
+            values[i] = randomInt(1, 5);
+            itemNumbers[i] = i+1;
+            myGuess[i] = 0;
+        }
+
+        //build jsav arrays out of the generated items
+        jsavItems = [];
+        jsavItems[0] = jsav.ds.array(itemNumbers, {centered:false, top: 40, left:20});
+        jsavItems[1] = jsav.ds.array(weights, {centered: false,  top: 80, left:20});
+        jsavItems[2] = jsav.ds.array(values, {centered: false, top: 120, left:20});
+
+        //labels for the elements
+        jsav.label("item", {left:(30 + 40 * jsavItems[0].size()), top:50});
+        jsav.label("weight", {left:(30 + 40 * jsavItems[0].size()), top:90});
+        jsav.label("value", {left:(30 + 40 * jsavItems[0].size()), top:130});
+
+        //build the dynamic table for the provided items
+        //initalize dynTable
+        capacity = randomInt(5, 7);
+        var row;
+        jsavDynTable = [];
+        for(var i = 0; i <= numItems; i++)
+        {
+            row = [];
+            if(i == 0)
+            {
+                for(j = 0; j <= capacity; j++)
+                {
+                    row[j] = 0; 
+                }
+            }
+            else
+            {
+                for(j = 0; j <= capacity; j++)
+                {
+                    if(j == 0)
+                        row[j] = 0;
+                    else
+                        row[j] = "";
+                }
+            }
+            jsavDynTable[i] = jsav.ds.array(row, 
+                                        {centered:false, 
+                                         top: ((i*40) + 30) + "px",
+                                         right: "0px"});
+            jsavDynTable[i].click(clickHandler);
+        }
+        
+        fillTableComplete(jsavDynTable, jsavItems);
+        //black out the bottom row, but store the values in an array for later
+        arr = [];        
+        for(var i = 0; i < jsavDynTable[jsavDynTable.length-1].size(); i++)
+        {
+            arr[i] = jsavDynTable[jsavDynTable.length-1].value(i);
+            jsavDynTable[jsavDynTable.length-1].value(i, "-");
+        }
+
+        jsav.label("Item", {top:(parseInt(jsavDynTable[0].css("top")) + 10),
+                            right:(parseInt(jsavDynTable[0].css("right")) + (40 * capacity + 90))});
+        for(var i = 0; i <= numItems; i++)
+        {
+            jsav.label(i, {top:(parseInt(jsavDynTable[0].css("top")) + 42 * i + 10),
+                           right:(parseInt(jsavDynTable[0].css("right")) + (40 * capacity + 60))});
+        }
+        jsav.label("Capacity", {top:-12, right:(parseInt(jsavDynTable[0].css("right")) + (capacity*40))});
+        for(var i = 0; i <= capacity; i++)
+        {
+            jsav.label(capacity - i, {top:5, 
+                           right:(parseInt(jsavDynTable[0].css("right")) + 17 + 41*i)});
+        }
+        jsav.forward();
+    }
+
+    genAnswer = function() 
+    {
+        //attempt at generating a regex answer for kahn in a string...
+        var retStr = "[\s]*";
+        var skip = "[\\s,]+";
+        for(var i = 0; i < arr.length; i++)
+        {
+            if(i === arr.length-1)
+            {
+                retStr = retStr + arr[i] + "[\\s,]*";
+            }
+            else
+            {
+                retStr = retStr + arr[i] + skip;
+            }
+        }
+        //console.log("answer experession: \"" + retStr + "\"");
+        return retStr;       
+}
+
+var hintHighlight = function()
+{
+    table[0].css(table[0].size()-1, {"background-color":"yellow"});
+    table[0].css(table[0].size()-1-item.value(0), {"background-color":"yellow"});
+}
+
+var gradeFunction = function(userGuess)
+{
+    var solution = genAnswer();
+    if(userGuess.length !== solution.length)
+    {
+        return false;
+    }//sanity check
+
+    for(var i = 0; i < solution.length; i++)
+    {
+        if(solution[i] !== userGuess[i])
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+</script>
+
+<div class="exercise">
+  <div class="vars">
+    <var id="A">randRange( 6, 10 )</var>
+    <var id="JSAV">initJSAV(A)</var>
+    <var id="CorrectAnswer">genAnswer()</var>
+    <var id="Weight">capacity</var>
+    <var id="NumItems">numItems</var>
+  </div>
+
+  <div class="problems">
+    <div>
+      <div class="question">
+	    Enter the values that would go into the bottom row of the dynamic table. Separate each value with a space or comma.
+	    <div id="jsav"></div>
+      </div>
+      <p class="solution" data-type="regex">^<var>CorrectAnswer</var>$</p>
+      <!--         
+      <div class="solution" data-type="custom">
+        <div class="guess"> [myGuess] </div>
+        <div class="validator-function">
+          return gradeFunction(guess[0]);
+        </div>
+      </div>
+      -->
+    </div>
+  </div>
+  <!--
+  <div class="hints">
+    <p>hint</p>
+  </div>
+    !-->
+</div>
+</body>
+</html>
