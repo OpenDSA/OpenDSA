@@ -40,7 +40,7 @@
   "score_server": "https://ltitest.cs.vt.edu:8443",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
-  "suppress_todo": true,
+  "suppress_todo": false,
   "assumes": "recursion",
   "glob_exer_options": {
     "JXOP-debug": "true"
@@ -224,8 +224,14 @@
       "AlgAnal/AnalCases": {
         "long_name": "Best, Average, and Worst Cases",
         "exercises": {
-          "BestWorstAverageCON": {
-            "long_name": "Best, Worst, and Average cases visualization",
+          "AnalCasesSameCON": {
+            "long_name": "Simple analysis cases slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "AnalCasesDiffCON": {
+            "long_name": "Best, Worst, and Average cases slideshow",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
