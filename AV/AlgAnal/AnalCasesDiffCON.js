@@ -112,7 +112,7 @@ $(document).ready(function() {
   label.hide();
   pseudo.hide();
   labelOutput.hide();
-  topAlign = 0;
+  topAlign = 15;
   var arr1 = av.ds.array(arr_values, {left: leftAlign, top: topAlign + 20, indexed: true});
   av.pointer("$k$", arr1.index(0));
   arr1.css([0], {"background-color": "green"});
