@@ -25,8 +25,8 @@ $(document).ready(function() {
     arr_values[i] = parseInt(Math.random() * 20, 10);
   }
   arr = av.ds.array(arr_values, {left: 250, top: 20, indexed: true});
-  av.label("<b><u>Number of Comparisons</u></b>",  {top: "172px", left: "50px"}).addClass("largeLabel");
-  av.label("<b><u>Number of Swaps</u></b>",  {top: "172px", left: "500px"}).addClass("largeLabel");
+  av.label(interpret("lab1"),  {top: "172px", left: "50px"}).addClass("largeLabel");
+  av.label(interpret("lab2"),  {top: "172px", left: "500px"}).addClass("largeLabel");
   av.step();
 
   // Slide 4
