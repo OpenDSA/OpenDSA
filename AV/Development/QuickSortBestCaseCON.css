@@ -8,3 +8,19 @@
   -o-transform: rotate(90deg);
   transform: rotate(90deg);
 }
+.smallLabel{
+	font-size: 11px; 
+	text-align: center;
+}
+.mediumLabel{
+    font-size: 18px; 
+	text-align: center;	
+}
+.mediumLabel2{
+  font-size: 1em; 
+  text-align: center;		
+}
+.largeLabel{
+	font-size: 32px; 
+	text-align: center;	
+}
