@@ -13,9 +13,9 @@
       "sc10": "<br>On average, the algorithm examines $\\lceil\\frac{n}{2}\\rceil$ values. We call this the <b>average case</b> for this algorithm.",
       "sc11": "Putting things all together...",
       "lab1": "<b>Sequential Search</b>",
-      "lab2": "<b><u>Best Case.</u></b> A single comparison is performed",
-      "lab3": "<b><u>Worst Case</u></b>. $n$ comparisons are performed",
-      "lab4": "<b><u>Average Case</u></b>. $\\lceil\\frac{n}{2}\\rceil$ comparisons are performed"
+      "lab2": "<b><u>Best Case.</u></b> A single comparison is performed.",
+      "lab3": "<b><u>Worst Case</u></b>. $n$ comparisons are performed.",
+      "lab4": "<b><u>Average Case</u></b>. $\\lceil\\frac{n}{2}\\rceil$ comparisons are performed."
 
     }
   },
