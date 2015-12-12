@@ -14,8 +14,8 @@
 Asymptotic Analysis and Upper Bounds
 ====================================
 
-Introduction
-------------
+Asymptotic Analysis and Upper Bounds
+------------------------------------
 
 .. _RunTimeGraph2:
 
@@ -90,7 +90,7 @@ Just be aware of the limitations to asymptotic analysis in the
 rare situation where the constant is important.
 
 Upper Bounds
-------------
+~~~~~~~~~~~~
 
 Several terms are used to describe the running-time equation for an
 algorithm.
@@ -217,7 +217,7 @@ There is no strict equality to the use of big-Oh notation.
 
 
 Simplifying Rules
------------------
+~~~~~~~~~~~~~~~~~
 
 Once you determine the running-time equation for an algorithm,
 it really is a simple matter to derive the big-Oh
@@ -275,14 +275,16 @@ for large :math:`n`.
 From now on, we will use these simplifying
 rules when discussing the cost for a program or algorithm.
 
+
 Summary
--------
+~~~~~~~
 
 .. inlineav:: UpperBoundCON ss
    :output: show
 
+
 Practice Questions
-------------------
+~~~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/AlgAnal/UpperBoundsSumm.html ka
 

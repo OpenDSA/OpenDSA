@@ -2,7 +2,7 @@
   "translations": {
     "en": {
       "sc1": "Consider the problem of finding the factorial of $n$.",
-      "sc2": "For this problem, there is only one input of a given size. That is, there is only a single instance for each size of $n$.",
+      "sc2": "For this problem, there is only one input of a given 'size'. That is, there is only a single instance for each size of $n$.",
       "sc3": "For example, $n$ can take the value of 2",
       "sc4": " or 3",
       "sc5": " or 4.",

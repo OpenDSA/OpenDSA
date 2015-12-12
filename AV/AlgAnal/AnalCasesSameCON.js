@@ -3,7 +3,7 @@
 // Problem, Algorithm, and program definitions
 $(document).ready(function() {
   "use strict";
-  var av_name = "BestWorstAverageInputCON";
+  var av_name = "AnalCasesSameCON";
   // Load the config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter,       // get the interpreter
@@ -20,7 +20,7 @@ $(document).ready(function() {
   av.umsg(interpret("sc1"));
   var rect = av.g.rect(leftAlign + 380, topAlign - 25, rectWidth, rectHeight);
   var mainLabel = av.label(interpret("lab1"),
-                              {top: topAlign - 20, left: leftAlign + 385});
+                              {top: topAlign - 20, left: leftAlign + 400});
   av.displayInit();
 
   // Slide 2
@@ -44,7 +44,7 @@ $(document).ready(function() {
   var labelOutput1 = av.label("$n! = 2$", {top: topAlign + 0, left: leftAlign + rectWidth + 460}).addClass("largeLabel");
   av.step();
 
-  //Slide 4
+  // Slide 4
   av.umsg(interpret("sc4"), {preserve: true});
   var lineInput2 = av.g.line(leftAlign + 320, topAlign + 95, leftAlign + 380, topAlign + 95);
   var labelInput2 = av.label("$n = 3$", {top: topAlign + 62, left: leftAlign + 250}).addClass("largeLabel");
@@ -52,7 +52,7 @@ $(document).ready(function() {
   var labelOutput2 = av.label("$n! = 6$", {top: topAlign + 62, left: leftAlign + rectWidth + 460}).addClass("largeLabel");
   av.step();
 
-  //Slide 5
+  // Slide 5
   av.umsg(interpret("sc5"), {preserve: true});
   var lineInput3 = av.g.line(leftAlign + 320, topAlign + 155, leftAlign + 380, topAlign + 155);
   var labelInput3 = av.label("$n = 4$", {top: topAlign + 124, left: leftAlign + 250}).addClass("largeLabel");
@@ -60,7 +60,7 @@ $(document).ready(function() {
   var labelOutput3 = av.label("$n! = 24$", {top: topAlign + 124, left: leftAlign + rectWidth + 460}).addClass("largeLabel");
   av.step();
 
-  //Slide 6
+  // Slide 6
   av.umsg(interpret("sc6"));
   lineInput1.hide();
   labelInput1.hide();
@@ -76,29 +76,32 @@ $(document).ready(function() {
   labelOutput3.hide();
   pseudo.show();
   mainLabel.text(interpret("lab2"));
-  rect.css({width: rectWidth + 65});
-  mainLabel.css({left: "+=35"});
+  rect.css({width: rectWidth + 50});
+  mainLabel.css({left: "+=20"});
   av.step();
 
-  //Slide 7
+  // Slide 7
   av.umsg(interpret("sc7"));
   av.step();
 
-  //Slide 8
+  // Slide 8
   av.umsg(interpret("sc8"), {preserve: true});
-  arr1 = av.ds.array(["Key1", "Key2", "Key3"], {left: leftAlign + 100, top: topAlign - 10, indexed: false});
-  lineInput1 = av.g.line(leftAlign + 270, topAlign + 30, leftAlign + 380, topAlign + 30);
+  arr1 = av.ds.array(["Key1", "Key2", "Key3"],
+                     {left: leftAlign + 118, top: topAlign - 2, indexed: false});
+  lineInput1 = av.g.line(leftAlign + 273, topAlign + 30, leftAlign + 380, topAlign + 30);
   av.step();
 
   //Slide 9
   av.umsg(interpret("sc9"), {preserve: true});
-  arr2 = av.ds.array(["Key1", "Key2", "Key3", "Key4"], {left: leftAlign + 100, top: topAlign + 65, indexed: false});
+  arr2 = av.ds.array(["Key1", "Key2", "Key3", "Key4"],
+                     {left: leftAlign + 105, top: topAlign + 73, indexed: false});
   lineInput2 = av.g.line(leftAlign + 310, topAlign + 105, leftAlign + 380, topAlign + 105);
   av.step();
 
   //Slide 10
   av.umsg(interpret("sc10"), {preserve: true});
-  arr3 = av.ds.array(["Key1", "Key2", "Key3", "Key4", "key5"], {left: leftAlign + 100, top: topAlign + 140, indexed: false});
+  arr3 = av.ds.array(["Key1", "Key2", "Key3", "Key4", "key5"],
+                     {left: leftAlign + 103, top: topAlign + 148, indexed: false});
   lineInput3 = av.g.line(leftAlign + 360, topAlign + 180, leftAlign + 380, topAlign + 180);
   av.step();
 
