@@ -10,6 +10,7 @@
    :topic: Algorithm Analysis
    
 .. odsalink:: AV/AlgAnal/BestWorstAverageCON.css
+.. odsalink:: AV/AlgAnal/BestWorstAverageInputCON.css
 
 Best, Worst, and Average Cases
 ==============================
@@ -27,6 +28,9 @@ That is, there are many possible arrays of any given size.
 However, no matter what array of size :math:`n` that the algorithm
 looks at, its cost will always be the same in that it always looks at
 every element in the array exactly one time.
+
+.. inlineav:: BestWorstAverageInputCON ss
+   :output: show
 
 For some algorithms, different inputs of a given size require
 different amounts of time.
@@ -125,3 +129,4 @@ If not, then we must resort to worst-case analysis.
    :output: show
 
 .. odsascript:: AV/AlgAnal/BestWorstAverageCON.js	  
+.. odsascript:: AV/AlgAnal/BestWorstAverageInputCON.js	  

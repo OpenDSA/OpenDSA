@@ -20,6 +20,356 @@
     "JXOP-debug": "true"
   },
   "chapters": {
+
+    "Preface": {
+      "Intro": {
+        "long_name": "How to Use this System",
+        "dispModComp": true,
+        "exercises": {}
+      }
+    },
+    "Introduction": {
+      "Background/IntroDSA.rst": {
+        "long_name": "Introduction to Data Structures and Algorithms",
+        "sections": {
+          "se": {
+            "long_name": "software engineering topics",
+            "showhide": "none",
+            "remove": true
+          }
+        },
+        "exercises": {
+          "IntroSumm": {
+            "long_name": "Introduction Summary Questions",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "Design/ADT": {
+        "long_name": "Abstract Data Types",
+        "exercises": {
+          "ADTCON": {},
+          "IntroADTSumm": {
+            "long_name": "ADT Summary Questions",
+            "required": true,
+            "points": 1.0,
+            "threshold": 4
+          }
+        }
+      }
+    },
+    "Mathematical Background": {
+      "Background/MathpreIntro": {
+        "long_name": "Chapter Introduction",
+        "dispModComp": true,
+        "exercises": {}
+      },
+      "Background/SetDef": {
+        "long_name": "Set Definitions",
+        "exercises": {
+          "SetTFrelation": {
+            "long_name": "Relations Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          },
+          "SetTFequivrel": {
+            "long_name": "Equivalence Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 3
+          },
+          "SetTFpartialorder": {
+            "long_name": "PartialOrder Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 3
+          }
+        }
+      },
+      "Background/MiscMath": {
+        "long_name": "Miscellaneous Notation",
+        "dispModComp": true,
+        "exercises": {}
+      },
+      "Background/Logarithms": {
+        "long_name": "Logarithms",
+        "dispModComp": true,
+        "exercises": {}
+      },
+      "Background/Summations": {
+        "long_name": "Summations and Recurrence Relations",
+        "dispModComp": true,
+        "exercises": {
+    "SummationOneToNCON": {
+            "long_name": "Summation of the first N Integers visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "SummationTwoPowerICON": {
+            "long_name": "Summation Two Power I visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+    "LinearRecurrencesCON": {
+            "long_name": "Linear Recurrences Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+    "LinearRecurrencesNCON": {
+            "long_name": "Linear Recurrences Slideshow (n)",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+  }
+      },
+      "Background/Proofs": {
+        "long_name": "Proofs",
+        "dispModComp": true,
+        "exercises": {
+          "twoColorCON": {},
+          "TwoColoringProofCON": {
+            "long_name": "Two Coloring Proof Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      },
+      "Background/Estimation": {
+        "long_name": "Estimation",
+        "dispModComp": true,
+        "exercises": {}
+      },
+      "Background/MathpreSumm": {
+        "long_name": "Chapter Summary",
+        "exercises": {
+          "MathBgSumm": {
+            "long_name": "Math Background Summary Questions",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      }
+    },
+    "Algorithm Analysis": {
+      "AlgAnal/AnalChap": {
+        "long_name": "Chapter Intro: Algorithm Analysis",
+        "dispModComp": true,
+        "exercises": {}
+      },
+      "AlgAnal/AnalPrelim": {
+        "long_name": "Problems, Algorithms, and Programs",
+        "exercises": {
+          "ProblemAlgorithmCON": {
+            "long_name": "Problem, Algorithm, and Program definitions Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "AnalPrelimSumm": {
+            "long_name": "Problems, Algorithms, Programs Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 4
+          }
+        }
+      },
+      "AlgAnal/AnalIntro": {
+        "long_name": "Comparing Algorithms",
+        "exercises": {
+          "CompareGrowth": {
+            "long_name": "Comparing Growth Rates Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 3
+          },
+          "GrowthRatesPRO": {
+            "long_name": "Growth Rates Ordering Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 3
+          }
+        }
+      },
+      "AlgAnal/AnalCases": {
+        "long_name": "Best, Average, and Worst Cases",
+        "exercises": {
+          "BestWorstAverageCON": {
+            "long_name": "Best, Worst, and Average cases visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "BestWorstAverageInputCON": {
+            "long_name": "Input for Best, Worst, and Average cases visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      },
+      "AlgAnal/AnalCompvsAlg": {
+        "long_name": "A Faster Computer, or a Faster Algorithm?",
+        "exercises": {
+          "FasterCorASumm": {
+            "long_name": "Faster Computer or Faster Algorithm Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 2
+          }
+        }
+      },
+      "AlgAnal/AnalAsymptotic": {
+        "long_name": "Asymptotic Analysis and Upper Bounds",
+        "exercises": {
+          "UpperBoundCON": {
+            "long_name": "Upper Bounds visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "UpperBoundsSumm": {
+            "long_name": "Asymptotic Analysis and Upper Bounds Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 4
+          }
+        }
+      },
+      "AlgAnal/AnalLower": {
+        "long_name": "Lower Bounds and Theta Notation",
+        "exercises": {
+          "LowerThetaSumm": {
+            "long_name": "Lower Bounds and Theta Notation Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 5
+          },
+          "LowerBoundCON": {
+            "long_name": "Lower Bounds visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      },
+      "AlgAnal/AnalProgram": {
+        "long_name": "Calculating the Running Time of a Program",
+        "exercises": {
+          "binarySearchCON": {
+            "long_name": "Binary Search Algorithm Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "binarySearchPRO": {
+            "long_name": "Binary Search Proficiency Exercise",
+            "exer_options": { "JXOP-code": "none" },
+            "required": true,
+            "points": 1.0,
+            "threshold": 1.0
+          },
+          "AnalProgramSumm": {
+            "long_name": "Program Code Analysis Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          },
+          "SummationOneToNCON": {
+            "long_name": "Summation of the first N Integers visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "SummationTwoPowerICON": {
+            "long_name": "Summation Two Power I visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "LinearRecurrenceSimpleCON": {
+            "long_name": "Linear Recurrence visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      },
+      "AlgAnal/AnalProblem": {
+        "long_name": "Analyzing Problems",
+        "exercises": {
+          "AnalyzingProblemsCON": {
+            "long_name": "Worst Case Lower Bound Visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "AnalProblemSumm": {
+            "long_name": "Problem Analysis Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "AlgAnal/AnalMisunderstanding": {
+        "long_name": "Common Misunderstandings",
+        "exercises": {
+          "MisunderstandingsGraphCON": {
+            "long_name": "Example's graph Visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "MisSumm": {
+            "long_name": "Common Misconceptions Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 4
+          }
+        }
+      },
+      "AlgAnal/AnalMultiple": {
+        "long_name": "Multiple Parameters",
+        "dispModComp": true,
+        "exercises": {}
+      },
+      "AlgAnal/AnalSpace": {
+        "long_name": "Space Bounds",
+        "dispModComp": true,
+        "exercises": {}
+      },
+      "AlgAnal/AnalTuning": {
+        "long_name": "Speeding Up Your Programs",
+        "dispModComp": true,
+        "exercises": {}
+      },
+      "AlgAnal/AlgAnalSumm": {
+        "long_name": "Algorithm Analysis Summary Exercises",
+        "exercises": {
+          "AlgAnalCS2114Summ": {
+            "long_name": "Algorithm Analysis Summary Questions",
+            "required": false,
+            "points": 1.0,
+            "threshold": 5
+          },
+          "AlgAnalSumm": {
+            "long_name": "Algorithm Analysis Summary Questions",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      }
+    },
     "List": {
       "List/ListLinked": {
         "long_name": "Linked Lists",

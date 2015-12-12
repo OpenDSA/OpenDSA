@@ -1,0 +1,33 @@
+{
+  "translations": {
+    "en": {
+      "sc1": "Consider the problem of finding the factorial of $n$.",
+      "sc2": "For this problem, there is only one input of a given size. That is, there is only a single instance for each size of $n$.",
+      "sc3": "For example, $n$ can take the value of 2",
+      "sc4": " or 3",
+      "sc5": " or 4.",
+      "sc6": "Now consider the largest-value sequential search algorithm, which always examines every array value.",
+      "sc7": "This algorithm works on many inputs of a given size $n$. That is, there are many possible arrays of any given size.",
+      "sc8": "<br>For example, we can have an input array of size $n = 3$",
+      "sc9": " or 4",
+      "sc10": " or 5",
+      "sc11": "However, no matter what array of size $n$ that the algorithm looks at, its cost will always be the same in that it always looks at every element in the array exactly one time.",
+      "lab1": "<b>Factorial Problem</b>",
+      "lab2": "<b>Sequential Search</b>"
+    }
+  },
+  "code": {
+    "java": [
+    {
+      "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: Sequential *** */",
+      "endBefore": "/* *** ODSAendTag: Sequential *** */",
+	  "top": 80,
+	  "left": 397,
+      "tags": {
+        
+      }
+    }]
+  }
+}

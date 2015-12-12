@@ -1,0 +1,24 @@
+#BestWorstAverageInputCON {
+  height: 460px;
+}
+
+#BestWorstAverageInputCON .jsavline{
+  height: 120px;
+}
+
+#BestWorstAverageInputCON .jsavhorizontalarray .jsavnode{
+  min-width: 50px !important;
+  max-width: 200px !important;
+  min-height: 35px !important;
+  max-height: 35px !important;
+}
+
+#BestWorstAverageInputCON .jsavcodeline{
+  background-color: transparent;
+  font-size: 10px;
+}
+
+.largeLabel{
+  font-size: 18px; 
+  text-align: center; 
+}
