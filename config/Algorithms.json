@@ -461,8 +461,8 @@
             },
             "threeSAT_KA":{
               "long_name": "Practice Exercise for 3-SAT",
-              "required": false,
-              "points": 0,
+              "required": true,
+              "points": 1,
               "threshold": 1.0
             }
           }
@@ -480,8 +480,8 @@
             },
             "clique_KA":{
               "long_name": "Practice Exercise for Clique",
-              "required": false,
-              "points": 0,
+              "required": true,
+              "points": 1,
               "threshold": 1.0
             }
           }
@@ -499,8 +499,8 @@
             },
             "independentSet_KA":{
               "long_name": "Practice Exercise for Independent Set",
-              "required": false,
-              "points": 0,
+              "required": true,
+              "points": 1,
               "threshold": 1.0
             }
           }
@@ -518,8 +518,8 @@
             },
             "vertexCover_KA":{
               "long_name": "Practice Exercise for Vertex Cover",
-              "required": false,
-              "points": 0,
+              "required": true,
+              "points": 1,
               "threshold": 1.0
             }
           }
@@ -537,8 +537,8 @@
             },
             "hamiltonianCycle_KA":{
               "long_name": "Practice Exercise for Hamiltonian Cycle",
-              "required": false,
-              "points": 0,
+              "required": true,
+              "points": 1,
               "threshold": 1.0
             }
           }
@@ -556,8 +556,8 @@
             },
             "TSP_KA":{
               "long_name": "Practice Exercise for Traveling Salesman Problem",
-              "required": false,
-              "points": 0,
+              "required": true,
+              "points": 1,
               "threshold": 1.0
             }
           }
