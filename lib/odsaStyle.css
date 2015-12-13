@@ -221,3 +221,6 @@
 .jsavgraph .jsavedge {
   stroke-width: 1.5px;
 }
+.redbg{
+  background-color: #FFB6C1 !important;
+}

@@ -40,7 +40,7 @@ $(document).ready(function() {
   // Slide 4
   av.umsg(interpret("sc4"));
   var pointer = av.pointer("$K$", arr.index(0));
-  arr.css(0, {"background-color": "#3f5"});
+  arr.addClass(0, "greenbg");
   av.step();
 
   // Slide 5
@@ -50,12 +50,12 @@ $(document).ready(function() {
   for (i = 0; i < parseInt(arraySize, 10); i++) {
     indices[i] = i;
   }
-  arr.css(indices, {"background-color": "#C34A2C"});
+  arr.addClass(indices, "redbg");
   av.step();
 
   // Slide 6
   av.umsg(interpret("sc6"));
-  arr.css(indices, {"background-color": "white"});
+  arr.removeClass(indices, "redbg");
   pointer.hide();
   arr.unhighlight();
   for (i = 0; i <= parseInt(arraySize / 2, 10); i++) {
@@ -71,11 +71,11 @@ $(document).ready(function() {
   topAlign = 15;
   var arr1 = av.ds.array(arr_values, {left: leftAlign, top: topAlign + 20, indexed: true});
   var p1 = av.pointer("$K$", arr1.index(0));
-  arr1.css([0], {"background-color": "#3f5"});
+  arr1.addClass([0], "greenbg");
   var l1 = av.label(interpret("lab1"),  {top: topAlign + 25, left: leftAlign + 395});
   var arr2 = av.ds.array(arr_values, {left: leftAlign, top: topAlign + 130, indexed: true});
   var p2 = av.pointer("$K$", arr2.index(arraySize - 1));
-  arr2.css(indices, {"background-color": "#C34A2C"});
+  arr2.addClass(indices, "redbg");
   var l2 = av.label(interpret("lab2"),  {top: topAlign + 135, left: leftAlign + 395});
   var arr3 = av.ds.array(arr_values, {left: leftAlign, top: topAlign + 240, indexed: true});
   for (i = 0; i <= parseInt(arraySize / 2, 10); i++) {
