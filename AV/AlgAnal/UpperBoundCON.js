@@ -65,7 +65,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 10
-  av.umsg(interpret("sc10"))
+  av.umsg(interpret("sc10"));
   pointer.show();
   pointer.target(arr.index(0));
   arr.css(0, {"background-color": "green"});

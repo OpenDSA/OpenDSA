@@ -85,14 +85,14 @@ $(document).ready(function() {
   av.step();
 
   av.umsg(interpret("sc8"));
-  arr1.hide();  
-  arr2.hide();  
-  arr3.hide();  
+  arr1.hide();
+  arr2.hide();
+  arr3.hide();
   p1.hide();
   p2.hide();
   l1.hide();
   l2.hide();
-  l3.hide();  
+  l3.hide();
   av.step();
 
   av.umsg(interpret("sc9"), {preserve: true});

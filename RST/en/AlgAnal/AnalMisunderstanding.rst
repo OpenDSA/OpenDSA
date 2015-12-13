@@ -95,61 +95,8 @@ worst, and average cases as the input size grows.
 
 .. topic:: Example
 
-   Imagine drawing a graph to show the cost of finding the maximum
-   value among :math:`n` values, as :math:`n` grows.
-   That is, the :math:`x` axis would be :math:`n`, and the :math:`y`
-   value would be the cost.
-   Of course, this is a diagonal line going up to the right, as
-   :math:`n` increases (you might want to sketch this graph for
-   yourself before reading further).
-
-   Now, imagine the graph showing the cost for *each* instance of
-   the problem of finding the maximum value among (say) 20 elements in
-   an array.
-   The first position along the :math:`x` axis of the graph might
-   correspond to having the maximum element in the first position of
-   the array.
-   The second position along the :math:`x` axis of the graph might
-   correspond to having the maximum element in the second position of
-   the array, and so on.
-   Of course, the cost is always 20.
-   Therefore, the graph would be a horizontal line with value 20.
-   You should sketch this graph for yourself.
-
-   Now, let us switch to the problem of doing a sequential search for
-   a given value in an array.
-   Think about the graph showing all the problem instances of size 20.
-   The first problem instance might be when the value we search for is
-   in the first position of the array.
-   This has cost 1.
-   The second problem instance might be when the value we search for
-   is in the second position of the array.
-   This has cost 2.
-   And so on.
-   If we arrange the problem instances of size 20 from least expensive
-   on the left to most expensive on the right, we see that the graph
-   forms a diagonal line from lower left (with value 0) to upper right
-   (with value 20).
-   Sketch this graph for yourself.
-
-   Finally, let us consider the cost for performing sequential search
-   as the size of the array :math:`n` gets bigger.
-   What will this graph look like?
-   Unfortunately, there's not one simple answer, as there was for
-   finding the maximum value.
-   The shape of this graph depends on whether we are considering the
-   best case cost (that would be a horizontal line with value 1),
-   the worst case cost (that would be a diagonal line with value
-   :math:`i` at position :math:`i` along the :math:`x` axis), or the
-   average cost (that would be a a diagonal line with value
-   :math:`i/2` at position :math:`i` along the :math:`x` axis).
-   This is why we must always say that function :math:`f(n)` is in
-   :math:`O(g(n))` in the best, average, or worst case!
-   If we leave off which class of inputs we are discussing, we cannot
-   know which cost measure we are referring to for most algorithms.
-
-.. inlineav:: MisunderstandingsGraphCON ss
-   :output: show
+   .. inlineav:: MisunderstandingsGraphCON ss
+      :output: show
 
 .. avembed:: Exercises/AlgAnal/MisSumm.html ka
 

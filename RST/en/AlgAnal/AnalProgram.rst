@@ -9,9 +9,8 @@
    :satisfies: analyzing programs
    :topic: Algorithm Analysis
 
-.. odsalink:: AV/AlgAnal/LinearRecurrenceSimpleCON.css
 .. odsalink:: AV/Searching/binarySearchCON.css
-.. odsalink:: AV/AlgAnal/DivideAndConquerRecurrenceSimpleCON.css
+.. odsalink:: AV/AlgAnal/BsearchDandCRecurCON.css
 
 Calculating Program Running Time
 ================================
@@ -233,30 +232,7 @@ cases.
 We would like to compare this running time to that required to perform
 a :term:`binary search` on an array whose values are stored in order
 from lowest to highest.
-
-Binary search begins by examining the value in the middle
-position of the array; call this position :math:`mid` and the
-corresponding value :math:`k_{mid}`.
-If :math:`k_{mid} = K`, then processing can stop immediately.
-This is unlikely to be the case, however.
-Fortunately, knowing the middle value provides useful information
-that can help guide the search process.
-In particular, if :math:`k_{mid} > K`, then you know that the value
-:math:`K` cannot appear in the array at any position greater
-than :math:`mid`. 
-Thus, you can eliminate future search in the upper half of the array.
-Conversely, if :math:`k_{mid} < K`, then you know that you can
-ignore all positions in the array less than :math:`mid`.
-Either way, half of the positions are eliminated from further
-consideration.
-Binary search next looks at the middle position in that part of the
-array where value :math:`K` may exist.
-The value at this position again allows us to eliminate half
-of the remaining positions from consideration.
-This process repeats until either the desired value is found, or
-there are no positions remaining in the array that might contain the
-value :math:`K`.
-Here is an illustration of the binary search method.
+Here is a visualization of the binary search method.
 
 .. inlineav:: binarySearchCON ss
    :output: show
@@ -270,26 +246,10 @@ Binary Search Practice Exercise
 Analyzing Binary Search
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-To find the cost of binary search in the worst case, we can model the
-running time as a recurrence and then find the closed-form solution.
-Each recursive call to ``binary`` cuts the size of the array
-approximately in half, so we can model the worst-case cost as follows,
-assuming for simplicity that :math:`n` is a power of two.
-
-.. math::
-
-   \Theta(n) = \Theta(n/2) + 1\ \mbox{for}\ n>1; \quad \Theta(1) = 1.
-
-If we expand the recurrence, we find that we can do so only
-:math:`\log n` times before we reach the base case, and each expansion
-adds one to the cost.
-Thus, the closed-form solution for the recurrence is
-:math:`\mathbf{T}(n) = \log n`.
-
-.. inlineav:: DivideAndConquerRecurrenceSimpleCON ss
+.. inlineav:: BsearchDandCRecurCON ss
    :output: show
 
-Function ``binary`` is designed to find the (single) occurrence of
+Function ``binarySearch`` is designed to find the (single) occurrence of
 :math:`K` and return its position. 
 A special value is returned if :math:`K` does not appear in the array.
 This algorithm can be modified to implement variations 
@@ -330,7 +290,6 @@ Summary Exercise
 
 .. avembed:: Exercises/AlgAnal/AnalProgramSumm.html ka
 
-.. odsascript:: AV/AlgAnal/LinearRecurrenceSimpleCON.js
 .. odsascript:: AV/Searching/binarySearchCON.js
-.. odsascript:: AV/AlgAnal/DivideAndConquerRecurrenceSimpleCON.js
+.. odsascript:: AV/AlgAnal/BsearchDandCRecurCON.js
 

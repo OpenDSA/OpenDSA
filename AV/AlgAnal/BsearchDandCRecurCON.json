@@ -1,0 +1,20 @@
+{
+  "translations" :{
+    "en": {
+      "sc1": "To find the cost of binary search in the worst case, we can model the running time as a recurrence and then find the closed-form solution. Each recursive call to <tt>binarySearch</tt> cuts the size of the array approximately in half, so we can model the worst-case cost as follows, assuming for simplicity that $n$ is a power of two.<br>$\\Theta(n) = \\Theta(n/2) + 1, \\Theta(1) = 1$",
+      "sc2.1": "If we expand the recurrence, we will find that we can do so only $\\log n$ times before we reach the base case, and each expansion adds one to the cost. For a problem of size $n$, we have $1$ unit of work plus the amount of work required for one subproblem of size $n/2$",
+      "sc2.2": "<br> $\\Theta(n) = 1 + \\Theta(n/2)$",
+      "sc3.1": "For a problem of size $n/2$, we have $1$ unit of work plus the amount of work required for one subproblem of size $n/4$",
+      "sc3.2": "<br> $\\Theta(n) = 1 + (1 + \\Theta(n/4))$",
+      "sc4.1": "For a problem of size $n/4$, we have $1$ unit of work plus the amount of work required for one subproblem of size $n/8$",
+      "sc4.2": "<br> $\\Theta(n) = 1 + (1 + (1 + \\Theta(n/8)))$",
+      "sc5.1": "For a problem of size $n/8$, we have $1$ unit of work plus the amount of work required for one subproblem of size $n/16$",
+      "sc5.2": "<br> $\\Theta(n) = 1 + (1 + (1 + (1 + \\Theta(n/16)))$",
+      "sc6.1": "This pattern will continue till we reach a subproblem of size $1$",
+      "sc6.2": "<br> $\\Theta(n) = 1 + (1 + (1 + (1 + (1 + (...))))$",
+      "sc7": "Thus, the closed form solution of $\\Theta(n) = \\Theta(n/2) + 1$ can be modeled by the summation $\\displaystyle\\sum_{i=0}^{\\log{n}}1$",
+      "sc8": "Finally, we have the closed form solution of $\\Theta(n) = \\Theta(n/2) + 1,\\ \\Theta(1) = 1$ evaluates to $\\log{n} + 1$ or $\\Theta(\\log{n})$"
+
+    }
+  }
+}
