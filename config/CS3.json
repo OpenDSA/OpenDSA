@@ -341,8 +341,8 @@
               "points": 1.0,
               "threshold": 1.0
             },
-            "DivideAndConquerRecurrenceSimpleCON": {
-              "long_name": "Simple Divide-and-Conquer Slideshow",
+            "BsearchDandCRecurCON": {
+              "long_name": "Binary Search recurrence slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
