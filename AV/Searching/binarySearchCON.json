@@ -17,7 +17,7 @@
   },
   "code" : {
     "processing": {
-      "url": "../../../SourceCode/Processing/Searching/bsearch.pde",
+      "url": "../../../SourceCode/Processing/Searching/Bsearch.pde",
       "startAfter": "/* *** ODSATag: BinarySearch *** */",
       "endBefore": "/* *** ODSAendTag: BinarySearch *** */",
       "lineNumbers": false,
@@ -65,7 +65,7 @@
       }
     },
     "c++": {
-      "url": "../../../SourceCode/C++/Searching/bsearch.cpp",
+      "url": "../../../SourceCode/C++/Searching/Bsearch.cpp",
       "lineNumbers": false,
       "tags": {
         "sig": 3,

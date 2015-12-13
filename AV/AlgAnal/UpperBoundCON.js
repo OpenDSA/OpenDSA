@@ -13,19 +13,18 @@ $(document).ready(function() {
   var topAlign = 80;
   var leftAlign = 10;
   var arraySize = 7;
-  var slideNumber = 1;
   var i;
 
   // Slide 1
-  av.umsg(interpret("Slide " + slideNumber++));
+  av.umsg(interpret("sc1"));
   av.displayInit();
 
-  //Slide 2
-  av.umsg(interpret("Slide " + slideNumber++));
+  // Slide 2
+  av.umsg(interpret("sc2"), {preserve: true});
   av.step();
 
-  //Slide 3
-  av.umsg(interpret("Slide " + slideNumber++), {preserve: true});
+  // Slide 3
+  av.umsg(interpret("sc3"));
   var nLabel = av.label("|---------------------------- $n$ ----------------------------|", {left: leftAlign + 25, top: topAlign + 60});
   var count = 0;
   while (count < arraySize) {
@@ -38,45 +37,46 @@ $(document).ready(function() {
   arr = av.ds.array(arr_values, {left: leftAlign, top: topAlign, indexed: true});
   av.step();
 
-  //Slide 4
-  av.umsg(interpret("Slide " + slideNumber++), {preserve: true});
+  // Slide 4
+  av.umsg(interpret("sc4"), {preserve: true});
   av.step();
 
-  //Slide 5
-  av.umsg(interpret("Slide " + slideNumber++), {preserve: true, color: "red"});
+  // Slide 5
+  av.umsg(interpret("sc5"), {preserve: true, color: "red"});
   av.step();
 
-  //Slide 6
-  av.umsg(interpret("Slide " + slideNumber++));
+  // Slide 6
+  av.umsg(interpret("sc6"));
   av.step();
 
-  //Slide 7
-  av.umsg(interpret("Slide " + slideNumber++), {preserve: true});
-  var pointer = av.pointer("$k$", arr.index(0));
+  // Slide 7
+  av.umsg(interpret("sc7"), {preserve: true});
+  var pointer = av.pointer("$K$", arr.index(0));
   av.step();
 
-  //Slide 8
-  av.umsg(interpret("Slide " + slideNumber++), {preserve: true});
+  // Slide 8
+  av.umsg(interpret("sc8"), {preserve: true});
   pointer.target(arr.index(arraySize - 1, 10));
   av.step();
 
-  //Slide 9
-  av.umsg(interpret("Slide " + slideNumber++), {preserve: true});
-  pointer.target(arr.index(parseInt(arraySize / 2, 10)));
+  // Slide 9
+  av.umsg(interpret("sc9"), {preserve: true});
+  pointer.hide();
   av.step();
 
-  //Slide 10
-  av.umsg(interpret("Slide " + slideNumber++));
+  // Slide 10
+  av.umsg(interpret("sc10"))
+  pointer.show();
   pointer.target(arr.index(0));
   arr.css(0, {"background-color": "green"});
   av.step();
 
-  //Slide 11
-  av.umsg(interpret("Slide " + slideNumber++), {preserve: true});
+  // Slide 11
+  av.umsg(interpret("sc11"), {preserve: true});
   av.step();
 
-  //Slide 12
-  av.umsg(interpret("Slide " + slideNumber++));
+  // Slide 12
+  av.umsg(interpret("sc12"));
   var indices = [];
   pointer.target(arr.index(parseInt(arraySize - 1, 10)));
   for (i = 0; i < parseInt(arraySize, 10); i++) {
@@ -85,12 +85,12 @@ $(document).ready(function() {
   arr.css(indices, {"background-color": "red"});
   av.step();
 
-  //Slide 13
-  av.umsg(interpret("Slide " + slideNumber++), {preserve: true});
+  // Slide 13
+  av.umsg(interpret("sc13"), {preserve: true});
   av.step();
 
-  //Slide 14
-  av.umsg(interpret("Slide " + slideNumber++));
+  // Slide 14
+  av.umsg(interpret("sc14"));
   for (i = 0; i < parseInt(arraySize, 10); i++) {
     arr.css(i, {"background-color": "white"});
   }
@@ -101,37 +101,32 @@ $(document).ready(function() {
   }
   av.step();
 
-  //Slide 15
-  av.umsg(interpret("Slide " + slideNumber++), {preserve: true});
+  // Slide 15
+  av.umsg(interpret("sc15"), {preserve: true});
   av.step();
 
-  //Slide 16
-  av.umsg(interpret("Slide " + slideNumber++), {color: "green"});
+  // Slide 16
+  av.umsg(interpret("sc16"), {color: "green"});
   arr.hide();
   nLabel.hide();
   pointer.hide();
   av.step();
 
-  //Slide 17
-  av.umsg(interpret("Slide " + slideNumber++), {preserve: true});
+  // Slide 17
+  av.umsg(interpret("sc17"), {preserve: true});
   topAlign = 15;
   var arr1 = av.ds.array(arr_values, {left: leftAlign, top: topAlign + 20, indexed: true});
-  av.pointer("$k$", arr1.index(0));
+  av.pointer("$K$", arr1.index(0));
   arr1.css([0], {"background-color": "green"});
   av.label(interpret("lab1"),  {top: topAlign + 25, left: leftAlign + 395});
-
   var arr2 = av.ds.array(arr_values, {left: leftAlign, top: topAlign + 130, indexed: true});
-  av.pointer("$k$", arr2.index(arraySize - 1));
+  av.pointer("$K$", arr2.index(arraySize - 1));
   arr2.css(indices, {"background-color": "red"});
   av.label(interpret("lab2"),  {top: topAlign + 135, left: leftAlign + 395});
-
   var arr3 = av.ds.array(arr_values, {left: leftAlign, top: topAlign + 240, indexed: true});
-  av.pointer("$k$", arr3.index(parseInt(arraySize / 2, 10)));
   for (i = 0; i <= parseInt(arraySize / 2, 10); i++) {
     arr3.highlight(i);
   }
   av.label(interpret("lab3"),  {top: topAlign + 245, left: leftAlign + 395});
-  av.step();
-
   av.recorded();
 });
