@@ -1,8 +1,8 @@
 #UpperBoundCON {
-  height: 600px;
+  height: 480px;
 }
 #UpperBoundCON .jsavline{
-  height: 165px;
+  height: 75px;
 }
 #UpperBoundCON .jsavhorizontalarray .jsavnode{
   min-width: 50px !important;
