@@ -1,6 +1,6 @@
 // Return the position of an element in sorted array A
 // with value k.  If k is not in A, -1.
-int binary(int A[], int size, int k) {
+int binarySearch(int A[], int size, int k) {
   int low = 0;
   int high = size - 1;
   while (low <= high) {                  // Stop when low and high meet

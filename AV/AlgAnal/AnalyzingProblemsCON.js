@@ -17,7 +17,7 @@ $(document).ready(function() {
   var i;
 
   // Slide 1
-  av.umsg(interpret("Slide 1"));
+  av.umsg(interpret("sc1"));
 
   //Draw the axis
   var axis = av.g.polyline([[left, topAlign], [left, topAlign + yLength], [left + xLength, topAlign + yLength]]);
@@ -34,7 +34,7 @@ $(document).ready(function() {
   av.displayInit();
 
   //Slide 2
-  av.umsg(interpret("Slide 2"), {preserve: true});
+  av.umsg(interpret("sc2"), {preserve: true});
 
   //Getting the highest point
   var maxIndex = 0;
@@ -61,7 +61,7 @@ $(document).ready(function() {
   av.step();
 
   //Slide 3
-  av.umsg(interpret("Slide 3"));
+  av.umsg(interpret("sc3"));
   for (i = 0; i < numPoints; i++) {
     points[i].hide();
   }
@@ -77,7 +77,7 @@ $(document).ready(function() {
 
   //Slide 4
   //Draw 4 smaller versions of the previous graph
-  av.umsg(interpret("Slide 4"), {preserve: true});
+  av.umsg(interpret("sc4"), {preserve: true});
 
   var leftSpace = 0;
   var topAlignSpace = 0;
@@ -147,7 +147,7 @@ $(document).ready(function() {
   av.step();
 
   //Slide 5
-  av.umsg(interpret("Slide 5"));
+  av.umsg(interpret("sc5"));
 
   //Finding the lowest highest point
   var minIndex = 0;
@@ -158,9 +158,6 @@ $(document).ready(function() {
     }
   }
   //highestPoints[minIndex].css({"color":"blue"});
-  av.g.circle(highestPoints[minIndex].options.left + 2, highestPoints[minIndex].options.top + 20, 10, {stroke: "green"});
-
-  av.step();
-
+  av.g.circle(highestPoints[minIndex].options.left + 3, highestPoints[minIndex].options.top + 23, 10, {stroke: "green"});
   av.recorded();
 });
