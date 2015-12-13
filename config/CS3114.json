@@ -299,32 +299,8 @@
             "points": 1.0,
             "threshold": 1.0
           },
-          "AnalProgramSumm": {
-            "long_name": "Program Code Analysis Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5
-          },
-          "SummationOneToNCON": {
-            "long_name": "Summation of the first N Integers visualization",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "SummationTwoPowerICON": {
-            "long_name": "Summation Two Power I visualization",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "LinearRecurrenceSimpleCON": {
-            "long_name": "Linear Recurrence visualization",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "DivideAndConquerRecurrenceSimpleCON": {
-            "long_name": "Linear Recurrence visualization",
+          "BsearchDandCRecurCON": {
+            "long_name": "Binary Search recurrence slideshow",
             "required": false,
             "points": 0.0,
             "threshold": 1.0

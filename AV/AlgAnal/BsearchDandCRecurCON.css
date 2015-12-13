@@ -1,28 +1,27 @@
-#DivideAndConquerRecurrenceSimpleCON{
-  width: 800px;
-  height: 400px;
+#BsearchDandCRecurCON{
+  height: 300px;
 }
-#DivideAndConquerRecurrenceSimpleCON .jsavline {
-  width:800px;
+
+#BsearchDandCRecurCON .jsavline {
   height:100px;
 }
 
-#DivideAndConquerRecurrenceSimpleCON .jsavgraph .jsavnode {
+#BsearchDandCRecurCON .jsavgraph .jsavnode {
   line-height: 40px !important;
   min-width: 40px !important;
   max-width: 40px !important;
   min-height: 40px !important;
   max-height: 40px !important;
 }
-h1{
-  font-size: 1em;
-}
+
 .dashed{
   stroke-dasharray: 5, 5;
 }
+
 .subProblemNode{
   background-color: lightgreen;
 }
+
 .subProblemEdge{
   stroke: green;
 }
