@@ -2598,7 +2598,7 @@ Glossary
       Specifically, an NP-Completeness proof must first show that the
       problem is in class :term:`NP`, and then show (by using a
       reduction to another NP-Complete problem) that the problem is
-      :term:`NP hard`.
+      :term:`NP-hard`.
 
    NP-hard
       A problem that is "as hard as" any other problem in :term:`NP`.
@@ -3172,7 +3172,8 @@ Glossary
 
    record
       A collection of information, typically implemented as an
-      :term:`object` in an :term:`object-oriented programming language`.
+      :term:`object` in an
+      :term:`object-oriented programming language <object-oriented programming paradigm>`.
       Many data structures are organized containers for a collection
       of records.
 

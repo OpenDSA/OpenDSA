@@ -1,0 +1,90 @@
+{
+  "translations" :{
+    "en": {
+     "sc1": "Step 1: Write and define the prototype for the function.",
+     "sc2": "Let's look at an example. Here is a function to sum the first $n$ elements of an array.", 
+     "sc3": "Step 2: Write out a sample function call. Once you've determined what the function does, then we imagine a function call. This will sum the first $n$ elements of arr.",
+     "sc4": "Pick the most generic function call. For example, you don't want to have a call like:",
+     "sc5": "The problem with this version is that it is calling with a constant for the number of values summed. You want to use variables when possible, because that's the most general way to call the function.",
+     "sc6": "Step 3: Think of the smallest version of the problem. This is called the base case. Here, you pick a small value for $n$, and give its answer. A common mistake is to pick a base case that is too large.",
+     "sc7": "So, what is the smallest version of the problem? Here are three choices:",
+     "sc8": "Some people pick choice 1, reasoning that if you are to sum elements of an array, then you must have at least two elements to sum.",
+     "sc9": "However, it is perfectly valid to have a summation of only one element. You could just return the value for that one element.",
+     "sc10":"Some people pick choice 2, because it does not make sense to sum an array of size 0, whereas an array of size 1 seems to make sense.",
+     "sc11":"But the real issue is: How small might an array be? Choice 3 is the smallest array size possible (an empty array). You can sum zero elements of an array. What value should it return? It should return 0.",
+     "sc12": "Step 4: Think of smaller versions of the function call. Here's the function call: ",
+     "sc13":"This means to solve a problem of size $n$. We need to think of a smaller problem, which we will assume can be solved correctly. The next smallest problem is to sum $n-1$ elements.",
+     "sc14":"Assume this smaller problem of size $n-1$ has been solved for you. How would you solve the original, larger problem?",
+     "sc15":"If the first $n - 1$ elements have already been summed, then only the $n$th element is left to be summed. So, the solution to solving sum(arr,n) is to add sum(arr, n-1) to arr[n-1]. (Remember that the $n$th element is actually at index $n - 1$ because arrays start at index 0).",
+     "sc16":"Putting it all together: Writing a recursive function requires putting the base case and the recursive case together. Here is the usual format:",
+     "sc17":"It doesn't really matter whether the base case or the recursive part comes first."
+  }
+ },
+  "code" : {
+      "Pseudo": [
+       {
+        "url": "../../../SourceCode/Pseudo/RecurTutor/WrtSteps.txt",
+        "startAfter": "/* *** ODSATag: slide2 *** */",
+        "endBefore": "/* *** ODSAendTag: slide2 *** */",
+        "tags": {
+        }
+       },
+      {
+        "url": "../../../SourceCode/Pseudo/RecurTutor/WrtSteps.txt",
+        "startAfter": "/* *** ODSATag: slide3 *** */",
+        "endBefore": "/* *** ODSAendTag: slide3 *** */",
+        "tags": {
+       }
+      },
+      {
+        "url": "../../../SourceCode/Pseudo/RecurTutor/WrtSteps.txt",
+        "startAfter": "/* *** ODSATag: slide4 *** */",
+        "endBefore": "/* *** ODSAendTag: slide4 *** */",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/Pseudo/RecurTutor/WrtSteps.txt",
+        "startAfter": "/* *** ODSATag: slide7 *** */",
+        "endBefore": "/* *** ODSAendTag: slide7 *** */",
+        "tags": {
+      }
+     },
+     {
+        "url": "../../../SourceCode/Pseudo/RecurTutor/WrtSteps.txt",
+        "startAfter": "/* *** ODSATag: slide12 *** */",
+        "endBefore": "/* *** ODSAendTag: slide12 *** */",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/Pseudo/RecurTutor/WrtSteps.txt",
+        "startAfter": "/* *** ODSATag: slide13 *** */",
+        "endBefore": "/* *** ODSAendTag: slide13 *** */",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/Pseudo/RecurTutor/WrtSteps.txt",
+        "startAfter": "/* *** ODSATag: slide15 *** */",
+        "endBefore": "/* *** ODSAendTag: slide15 *** */",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/Pseudo/RecurTutor/WrtSteps.txt",
+        "startAfter": "/* *** ODSATag: slide16 *** */",
+        "endBefore": "/* *** ODSAendTag: slide16 *** */",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/Pseudo/RecurTutor/WrtSteps.txt",
+        "startAfter": "/* *** ODSATag: slide17 *** */",
+        "endBefore": "/* *** ODSAendTag: slide17 *** */",
+        "tags": {
+	  }
+      }
+   ]
+  }
+}

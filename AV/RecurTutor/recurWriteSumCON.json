@@ -1,0 +1,36 @@
+{
+  "translations" :{
+    "en": {
+     "sc1": "Here are a few variations on how to solve the sum problem recursively.",
+     "sc2": "Here is the first one.", 
+     "sc3": "Some people like a more verbose style. Here each part explicitly sets the value for <code>result</code>, and it is returned at the end.",
+     "sc4": "There is no real need to declare the variable <code>smallResult</code>. Declaring a local variable to store the result of the recursive call might help you in the beginning. First you get the solution to the smaller problem, and then you use that small solution to solve the bigger problem.",
+     "sc5": "Once you gain more experience you won't need to use that intermediate variable.",
+     "sc6": "You also do not need an <code>else</code> clause when the <code>if</code> ends in a <code>return</code> statement."
+  }
+ },
+  "code" : {
+      "java": [
+       {
+        "url": "../../../SourceCode/Java/RecurTutor/WrtSumV1.java",
+        "tags": {
+        }
+       },
+      {
+        "url": "../../../SourceCode/Java/RecurTutor/WrtSumV2.java",
+        "tags": {
+       }
+      },
+      {
+        "url": "../../../SourceCode/Java/RecurTutor/WrtSumV3.java",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/Java/RecurTutor/WrtSumV4.java",
+        "tags": {
+      }
+     }
+   ]
+  }
+}

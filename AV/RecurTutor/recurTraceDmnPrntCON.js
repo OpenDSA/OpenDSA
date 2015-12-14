@@ -1,30 +1,32 @@
-"use strict";
-  
-//===============================================================================================================================
 // Visualization of Domino Effect to Print a sequence of integers
-(function ($) {
-
-  var av = new JSAV("recursionTrcDmnPrntCON");
+$(document).ready(function () {
+  "use strict";
+  var av_name ="recurTraceDmnPrntCON";
+  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+      interpret = config.interpreter,       // get the interpreter
+      code = config.code;                   // get the code object
+  var av = new JSAV(av_name);
+  
   var rect = av.g.rect(100, 30, 50, 90).css({"fill": "grey"});
   var rect1 = av.g.rect(200, 30, 50, 90).css({"fill": "grey"});
   var rect2 = av.g.rect(300, 30, 50, 90).css({"fill": "grey"});
    
-  var dots1 = av.g.circle(400, 75, 2);
-  var dots2 = av.g.circle(450, 75, 2);
-  var dots3 = av.g.circle(500, 75, 2);
-  var dots4 = av.g.circle(550, 75, 2);
+  var dots1 = av.g.circle(405, 75, 2);
+  var dots2 = av.g.circle(455, 75, 2);
+  var dots3 = av.g.circle(505, 75, 2);
+  var dots4 = av.g.circle(555, 75, 2);
 
   var rect4 = av.g.rect(600, 30, 50, 90).css({"fill": "grey"});
   var rect5 = av.g.rect(700, 30, 50, 90).css({"fill": "grey"});
 
-  av.umsg("To apply Domino effect solving technique, it is assumed that there is a sequence of integers, from 1 to N, hidden behind the dominos, and the only way to see the integer behind a domino is tipping its front domino over");
-  var  pseudo = av.code({url: "../../../SourceCode/Java/RecurTutor/TrcDmnPrnt.java", lineNumbers:false , top:130 , left:100});
-  //var  pseudo = av.code("PrintOneToN(n){\n If(n==1)\n  print 1\n else{\n  PrintOneToN(n-1) //to print integers from 1 to n-1\n  print n //where 1<n≤N\n  }\n}" , {lineNumbers:false , top:130 , left:150}); 
+  av.umsg(interpret("av_c1"));
+  
+  var  pseudo = av.code(code);
   av.displayInit();
   av.step();
-  av.umsg("Since the first domino has to be tipped over manually, the solution for the base case, PrintOneToN(1), is solved nonrecursively by printing 1.");
+  av.umsg(interpret("av_c2"));
 
-  //var rect = av.g.rect(100, 30, 50, 90).css({"fill": "white", "opacity":"0.03"});
+  
   rect.hide();
   var rect6 = av.g.rect(125, 30, 50, 90).css({"fill": "lightgray"});
   rect6.rotate(55);
@@ -33,8 +35,14 @@
   
   av.step();
 
-  av.umsg("For any other domino, before a domino is tipped over all of its preceded dominos have to be tipped over and then the current domino will be tipped over subsequently.")
+
+  av.umsg(interpret("av_c3"));
+  pseudo.unhighlight(3);
   pseudo.highlight(5);
+  av.step();
+  
+  av.umsg(interpret("av_c4"))
+  pseudo.unhighlight(5);
   pseudo.highlight(6);
   pseudo.unhighlight(3);
   
@@ -60,9 +68,4 @@
   av.label("N",  {"top": "20px", "left": "720px"}).css({'font-size': '15px', "text-align": "center"});
 
   av.recorded();
-  
-}(jQuery));
-
-
-
-//==============================================================================================================================
+});

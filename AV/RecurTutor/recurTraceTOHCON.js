@@ -1,148 +1,178 @@
-"use strict";
+/*global ODSA */
+// Written by Sally Hamouda and Cliff Shaffer
+// Visualization for Towers of Hanoi
+$(document).ready(function () {
+  "use strict";
   
-//===============================================================================================================================
-// Visualization of Towers of Hanoi
-(function ($) {
-
-  var av = new JSAV("recursionTrcTOHCON");
-  var label0 = av.label("0", {left: 165, top: 12});
-  var label1 = av.label("1", {left: 180, top: 42});
-  var label2 = av.label("2", {left: 195, top: 72});
-  var label3 = av.label("3", {left: 210, top: 102});
-  var label4 = av.label("4", {left: 225, top: 132});
-  var label5 = av.label("5", {left: 240, top: 162});
+  var av_name ="recurTraceTOHCON";
+  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+      interpret = config.interpreter,       // get the interpreter
+      code = config.code;                   // get the code object
+      
+  var av = new JSAV(av_name);
+  
+  var label0 = av.label("0", {left: 165, top: 72});
+  var label1 = av.label("1", {left: 180, top: 102});
+  var label2 = av.label("2", {left: 195, top: 132});
+  var label3 = av.label("3", {left: 210, top: 162});
+ // var label4 = av.label("4", {left: 225, top: 132});
+ // var label5 = av.label("5", {left: 240, top: 162});
 
 //  The towers: define 3 vertical rectangles 
- var rectver0 = av.g.rect(105, 10, 10, 180).css({"fill": "brown"}); 
- var rectver1 = av.g.rect(375, 10, 10, 180).css({"fill": "brown"}); 
- var rectver2 = av.g.rect(605, 10, 10, 180).css({"fill": "brown"}); 
+ var rectver0 = av.g.rect(105, 10, 10, 190).css({"fill": "brown"}); 
+ var rectver1 = av.g.rect(375, 10, 10, 190).css({"fill": "brown"}); 
+ var rectver2 = av.g.rect(605, 10, 10, 190).css({"fill": "brown"}); 
 
 // The moving ones
-  var rect0 = av.g.rect(65, 30, 90, 20).css({"fill": "grey"});
-  var rect1 = av.g.rect(50, 60, 120, 20).css({"fill": "yellow"});
-  var rect2 = av.g.rect(35, 90, 150, 20).css({"fill": "purple"});
-  var rect3 = av.g.rect(20, 120, 180, 20).css({"fill": "green"});
-  var rect4 = av.g.rect(5, 150, 210, 20).css({"fill": "red"});
-  var rect5 = av.g.rect(-10, 180, 240, 20).css({"fill": "blue"});
+  var rect0 = av.g.rect(65, 90, 90, 20).css({"fill": "grey"});
+  var rect1 = av.g.rect(50, 120, 120, 20).css({"fill": "yellow"});
+  var rect2 = av.g.rect(35, 150, 150, 20).css({"fill": "purple"});
+  var rect3 = av.g.rect(20, 180, 180, 20).css({"fill": "green"});
+//  var rect4 = av.g.rect(5, 150, 210, 20).css({"fill": "red"});
+//  var rect5 = av.g.rect(-10, 180, 240, 20).css({"fill": "blue"});
 
 // Labels for each tower
   var labela = av.label("A", {left: 90, top: -18});
   var labelb = av.label("B", {left: 363, top: -18});
   var labelc = av.label("C", {left: 590, top: -18});
    
-  
-  var pseudo = av.code({url: "../../../SourceCode/Java/RecurTutor/RecTOH.java",
-                       lineNumbers: false,top:200 , left:250});
-
-  av.umsg("The initial call is to move disk 5 from A to B"); 
-  pseudo.highlight(1);
-  var labelCallStack5=  av.label("Call Stack:", {left: 0, top: 200});
-  var labelCallStack5=  av.label("TowersofHanoi(5, A, B, C)", {left: 0, top: 230});
+  var  pseudo = av.code(code);
   av.displayInit();
- 
-  av.umsg("This will require moving disk 4 from A to C");
-  var labelCallStack4=  av.label("TowersofHanoi(4, A, C, B)", {left: 0, top: 260});
-  av.step();
   
-  av.umsg("This will require moving disk 3 from A to B");
+  //av.umsg(interpret("av_c1")); 
+  //pseudo.highlight(1);
+  //var labelCallStack5=  av.label("Call Stack:", {left: 0, top: 200});
+  //var labelCallStack5=  av.label("TowersofHanoi(5, A, B, C)", {left: 0, top: 230});
+  
+ 
+  //av.umsg(interpret("av_c2"));
+  //var labelCallStack4=  av.label("TowersofHanoi(4, A, C, B)", {left: 0, top: 260});
+  //av.step();
+
+  //slide 1
+  av.umsg(interpret("av_c3"));
   var labelCallStack3=  av.label("TowersofHanoi(3, A, B, C)", {left: 0, top: 290});
   av.step();
 
-  av.umsg("This will require moving disk 2 from A to C");
+  //slide 2
+  av.umsg(interpret("av_c4"));
   var labelCallStack2=  av.label("TowersofHanoi(2, A, C, B)", {left: 0, top: 320});
   av.step();
  
-  av.umsg("This will require moving disk 1 from A to B");
+  //slide 3
+  av.umsg(interpret("av_c5"));
   var labelCallStack1=  av.label("TowersofHanoi(1, A, B, C)", {left: 0, top: 350});
   av.step();
   
-  av.umsg("This will require moving disk 0 from A to C and that what we are going to do directly.");
+  //slide 4
+  av.umsg(interpret("av_c6"));
   var labelCallStack0=  av.label("TowersofHanoi(0, A, C, B)", {left: 0, top: 380});
-  pseudo.unhighlight(1);
-  pseudo.highlight(2);
+  //pseudo.unhighlight(1);
+  pseudo.highlight(10);
   av.step();
 
-
-  pseudo.unhighlight(2);
-  pseudo.highlight(4);
+  //slide 5
+  pseudo.unhighlight(10);
+  pseudo.highlight(11);
   rect0.hide();
   label0.hide();
   var label0 = av.label("0", {left: 660, top: 163});
 
   var rect06 = av.g.rect(565, 180, 90, 20).css({"fill": "grey"});
   av.step();
-  pseudo.unhighlight(4);
-  pseudo.highlight(9);
+  
+  //slide 6
+  pseudo.unhighlight(11);
+  pseudo.highlight(10);
   rect1.hide();
   label1.hide();
   
  // New label 1 in the middle
   labelCallStack0.hide();
-  av.umsg("Return from recursive call and continue to disk 1 where we left off.");
+  av.umsg(interpret("av_c7"));
   var label17 = av.label("1", {left: 440, top: 163});
   var rect17 = av.g.rect(315, 180, 120, 20).css({"fill": "yellow"});
   av.step();
-   av.umsg("Disk 1 moved and we need to move smaller disks.");
-  pseudo.unhighlight(9);
+  
+  //slide 7
+  av.umsg(interpret("av_c8"));
+  pseudo.unhighlight(10);
   av.step();
-  pseudo.highlight(9); 
+  
+  
+  //slide 8
+  pseudo.highlight(10); 
   rect06.hide();
 
   label0.hide();
   var label068 = av.label("0", {left: 425, top: 130});
   var rect068 = av.g.rect(330, 150, 90, 20).css({"fill": "grey"});
   av.step();
-  pseudo.unhighlight(9);
-  pseudo.highlight(10); 
+  
+  //slide 9
+  pseudo.unhighlight(10);
+  pseudo.highlight(11); 
   rect2.hide();
   label2.hide();
 
   labelCallStack1.hide();
-  av.umsg("Return from recursive call and continue to disk 2 where we left off.");
+  av.umsg(interpret("av_c9"));
 
   var label29 = av.label("2", {left: 698, top: 163});
   var rect29 = av.g.rect(540, 180, 150, 20).css({"fill": "purple"});
   av.step();
 
-  av.umsg("Disk 2 moved and we need to move smaller disks.");
+  //slide 10
+  av.umsg(interpret("av_c10"));
   labelCallStack1.show();
   av.step();
+  
+  //slide 11
   labelCallStack0.show();
-  pseudo.unhighlight(10);
-  pseudo.highlight(1);
+  pseudo.unhighlight(11);
+  pseudo.highlight(8);
   rect068.hide();
   label068.hide();
-  var label06810 = av.label("0", {left: 165, top: 72});
-  var  rect06810 = av.g.rect(65, 90, 90, 20).css({"fill": "grey"});
+  var label06810 = av.label("0", {left: 165, top: 132});
+  var  rect06810 = av.g.rect(65, 150, 90, 20).css({"fill": "grey"});
   av.step();
   
+  //slide 12
   labelCallStack0.hide();
-  av.umsg("Return from recursive call and continue to disk 1 where we left off.");
-  pseudo.unhighlight(1);
-  pseudo.highlight(9);
+  av.umsg(interpret("av_c11"));
+  pseudo.unhighlight(8);
+  pseudo.highlight(16);
   rect17.hide();
   label17.hide();
   var label1711 = av.label("1", {left: 686, top: 132});
   var rect1711 = av.g.rect(550, 150, 120, 20).css({"fill": "yellow"});
   av.step();
-   av.umsg("Disk 1 moved and we need to move smaller disks.");
-  pseudo.unhighlight(9);
-  pseudo.highlight(4);
+  
+  //slide 13
+  av.umsg(interpret("av_c12"));
+  pseudo.unhighlight(10);
+  pseudo.highlight(11);
   rect06810.hide();
   label06810.hide();
   labelCallStack0.show();
   var label0681012 = av.label("0", {left: 660, top: 102});
-  var  rect0681012 = av.g.rect(565, 120, 90, 20).css({"fill": "grey"});
+  var rect0681012 = av.g.rect(565, 120, 90, 20).css({"fill": "grey"});
   av.step();
-  av.umsg("This process will repeat till we have all the disks moved to support B  as we will see in the rest of this tracing visualization:");
-  pseudo.unhighlight(4);
-  pseudo.highlight(10);
+  
+  //slide 14
+  av.umsg(interpret("av_c13"));
+  pseudo.unhighlight(11);
+  pseudo.highlight(11);
   labelCallStack0.hide();
   av.step();
+  
+  //slide 15
   labelCallStack1.hide();
   av.step();
-  pseudo.unhighlight(10);
-  pseudo.highlight(9);
+  
+  //slide 16
+  pseudo.unhighlight(11);
+  pseudo.highlight(10);
   labelCallStack2.hide(); 
    
   rect3.hide();
@@ -151,140 +181,155 @@
   var rect313 = av.g.rect(295, 180, 180, 20).css({"fill": "green"});
   av.step();
  
-  pseudo.unhighlight(9);
-  pseudo.highlight(1);
+  //slide 17
+  pseudo.unhighlight(10);
+  pseudo.highlight(11);
   
   labelCallStack2.show(); 
   av.step();
 
+  //slide 18
   labelCallStack1.show(); 
   av.step();
 
+  //slide 19
   labelCallStack0.show(); 
   av.step();
 
-  
-  pseudo.unhighlight(1);
-  pseudo.highlight(4);
+  //slide 20
+  pseudo.unhighlight(11);
+  pseudo.highlight(11);
   rect0681012.hide();
   label0681012.hide();
   var label068101214 = av.label("0", {left: 428, top: 132});
   var  rect068101214 = av.g.rect(330, 150, 90, 20).css({"fill": "grey"});
   av.step();
   
-  
-  pseudo.unhighlight(4);
-  pseudo.highlight(9);
+  //slide 21
+  pseudo.unhighlight(11);
+  pseudo.highlight(10);
   
   labelCallStack0.hide(); 
   rect1711.hide();
   label1711.hide();
-  av.step();
-  var label171115 = av.label("1", {left: 180, top: 102});
-  var rect171115 = av.g.rect(50, 120, 120, 20).css({"fill": "yellow"});
+  //av.step();
+  
+  //slide 22
+  var label171115 = av.label("1", {left: 180, top: 162});
+  var rect171115 = av.g.rect(50, 180, 120, 20).css({"fill": "yellow"});
   labelCallStack0.show(); 
   av.step();
 
-  
-  pseudo.unhighlight(9);
-  pseudo.highlight(1);
+  //slide 23
+  pseudo.unhighlight(10);
+  pseudo.highlight(12);
   rect068101214.hide();
   label068101214.hide();
   
   labelCallStack0.hide();
-  var label015  = av.label("0", {left: 165, top: 72});
-  var rect015 = av.g.rect(65, 90, 90, 20).css({"fill": "grey"});
+  var label015  = av.label("0", {left: 165, top: 132});
+  var rect015 = av.g.rect(65, 150, 90, 20).css({"fill": "grey"});
   av.step();
   
+  //slide 24
   labelCallStack1.hide();
-  pseudo.unhighlight(1);
-  pseudo.highlight(10);
+  pseudo.unhighlight(12);
+  pseudo.highlight(11);
   av.step();
   
-  pseudo.unhighlight(10);
-  pseudo.highlight(9);
+  //slide 25
+  pseudo.unhighlight(11);
+  pseudo.highlight(12);
   rect29.hide();
   label29.hide();
   var label216 = av.label("2", {left: 468, top: 132});
-  var rect216 = av.g.rect(315, 150, 150, 20).css({"fill": "purple"});  
+  var rect216 = av.g.rect(310, 150, 150, 20).css({"fill": "purple"});  
   av.step();
   
-  pseudo.unhighlight(9);
-  pseudo.highlight(1);
+  //slide 26
+  pseudo.unhighlight(12);
+  pseudo.highlight(10);
   labelCallStack1.show();
   av.step();
   
+  //slide 27
   labelCallStack0.show();
   av.step();
   
-  pseudo.unhighlight(1);
-  pseudo.highlight(4);
+  //slide 28
+  pseudo.unhighlight(10);
+  pseudo.highlight(11);
   rect015.hide();
   label015.hide();
   var label017  = av.label("0", {left: 660, top: 162});
   var rect017 = av.g.rect(565, 180, 90, 20).css({"fill": "grey"});
   av.step();
   
-  pseudo.unhighlight(4);
-  pseudo.highlight(9);
+  //slide 29
+  pseudo.unhighlight(11);
+  pseudo.highlight(10);
   rect171115.hide();
   label171115.hide();
   labelCallStack0.hide();
   
+  
   var label118 = av.label("1", {left: 450, top: 102});
-  var rect118 = av.g.rect(315, 120, 120, 20).css({"fill": "yellow"});
+  var rect118 = av.g.rect(320, 120, 120, 20).css({"fill": "yellow"});
   av.step();
   
-  pseudo.unhighlight(9);
-  pseudo.highlight(1);
+  //slide 30
+  pseudo.unhighlight(10);
+  pseudo.highlight(11);
   
   labelCallStack0.show();
   av.step();
-  
-  pseudo.unhighlight(1);
-  pseudo.highlight(4);
+ 
+ 
+  //slide 31
+  pseudo.unhighlight(11);
+  pseudo.highlight(11);
   rect017.hide();
   label017.hide();
-  var label019 = av.label("0", {left: 433, top: 72});
+  var label019 = av.label("0", {left: 440, top: 72});
   var rect019 = av.g.rect(340, 90, 90, 20).css({"fill": "grey"});
   labelCallStack0.hide();
   av.step();
  
-  
-  pseudo.unhighlight(4);
-  pseudo.highlight(10);
-  av.step();
-  
-  labelCallStack1.hide();
-  av.step();
-  labelCallStack2.hide();
-  av.step();
-  labelCallStack3.hide();
-  av.step();
-  pseudo.unhighlight(10);
+  //slide 32
+  pseudo.unhighlight(11);
   pseudo.highlight(9);
-  rect4.hide();
-  label4.hide();
-  var label420= av.label("4", {left: 730, top: 162});
-  var rect420 = av.g.rect(515, 180, 210, 20).css({"fill": "red"});
   av.step();
+   /*
+  //labelCallStack1.hide();
+  //av.step();
+  //labelCallStack2.hide();
+  //av.step();
+  //labelCallStack3.hide();
+  //av.step();
+  //pseudo.unhighlight(10);
+  //pseudo.highlight(9);
+  //rect4.hide();
+  //label4.hide();
+  //var label420= av.label("4", {left: 730, top: 162});
+  //var rect420 = av.g.rect(515, 180, 210, 20).css({"fill": "red"});
+  //av.step();
   
-  labelCallStack3.show();
-  av.step();
+  //labelCallStack3.show();
+  //av.step();
   
-  labelCallStack2.show();
-  av.step();
+  //labelCallStack2.show();
+  //av.step();
   
-  labelCallStack1.show();
-  av.step();
+  //labelCallStack1.show();
+  //av.step();
   
-  labelCallStack0.show();
-  av.step();
+  //labelCallStack0.show();
+  //av.step();
   
-  pseudo.unhighlight(9);
-  pseudo.highlight(1);
+  //pseudo.unhighlight(9);
+  //pseudo.highlight(1);
 
-  av.step();
+  //av.step();
   pseudo.unhighlight(1);
   pseudo.highlight(4);
   rect019.hide();
@@ -476,8 +521,8 @@
 
   pseudo.unhighlight(4);
   pseudo.highlight(9);
-  rect5.hide();
-  label5.hide();
+  //rect5.hide();
+  //label5.hide();
   
   labelCallStack0.hide();
   av.step();
@@ -487,28 +532,28 @@
   av.step();
   labelCallStack3.hide();
   av.step();
-  labelCallStack4.hide();
-  av.step();
+  //labelCallStack4.hide();
+  //av.step();
   
   
-  var label536 = av.label("5", {left: 500, top: 162}); 
-  var rect536 = av.g.rect(260, 180, 240, 20).css({"fill": "blue"});
-  av.step();
+  //var label536 = av.label("5", {left: 500, top: 162}); 
+  //var rect536 = av.g.rect(260, 180, 240, 20).css({"fill": "blue"});
+  //av.step();
  //==============
-  pseudo.unhighlight(9);
-  pseudo.highlight(4);
-  rect035.hide();
-  label035.hide();
+  //pseudo.unhighlight(9);
+  //pseudo.highlight(4);
+  //rect035.hide();
+  //label035.hide();
   
-  labelCallStack4.show();
-  av.step();
-  labelCallStack3.show();
-  av.step();
-  labelCallStack2.show();
-  av.step();
-  labelCallStack1.show();
-  av.step();
-  labelCallStack0.show();
+  //labelCallStack4.show();
+  //av.step();
+  //labelCallStack3.show();
+  //av.step();
+  //labelCallStack2.show();
+  //av.step();
+  //labelCallStack1.show();
+  //av.step();
+  //labelCallStack0.show();
   
   var label037= av.label("0", {left: 433, top: 132});
   var rect037 = av.g.rect(335, 150, 90, 20).css({"fill": "grey"});
@@ -661,8 +706,8 @@
 
   pseudo.unhighlight(4);
   pseudo.highlight(9);
-  rect420.hide();
-  label420.hide();
+  //rect420.hide();
+  //label420.hide();
   labelCallStack0.hide();
   av.step();
   labelCallStack1.hide();
@@ -671,24 +716,24 @@
   av.step();
   labelCallStack3.hide();
   
-  var label451 = av.label("4", {left: 488, top: 132});
-  var rect451 = av.g.rect(275, 150, 210, 20).css({"fill": "red"});
-  av.step();
+  //var label451 = av.label("4", {left: 488, top: 132});
+  //var rect451 = av.g.rect(275, 150, 210, 20).css({"fill": "red"});
+  //av.step();
 
 
-  pseudo.unhighlight(9);
-  pseudo.highlight(4);
-  rect050.hide();
-  label050.hide();
+  //pseudo.unhighlight(9);
+  //pseudo.highlight(4);
+  //rect050.hide();
+  //label050.hide();
   
-  labelCallStack3.show();
-  av.step();
+  //labelCallStack3.show();
+  //av.step();
   
-  labelCallStack2.show();
-  av.step();
-  labelCallStack1.show();
-  av.step();
-  labelCallStack0.show();
+  //labelCallStack2.show();
+  //av.step();
+  //labelCallStack1.show();
+  //av.step();
+  //labelCallStack0.show();
   
   var label052 = av.label("0", {left: 660, top: 162});
   var rect052 = av.g.rect(565, 180, 90, 20).css({"fill": "grey"});
@@ -840,25 +885,22 @@
   var label065=  av.label("0", {left: 433, top: 12});
   var rect065 = av.g.rect(335, 30, 90, 20).css({"fill": "grey"});
   av.step();
-  
+  */
+  //slide 33
   labelCallStack0.hide();
   av.step();
+  
+  //slide 34
   labelCallStack1.hide();
   av.step();
+  //slide 35
   labelCallStack2.hide();
   av.step();
+  //slide 36
   labelCallStack3.hide();
-  av.step();
-  labelCallStack4.hide();
-  av.step();
-  labelCallStack5.hide();
-  av.step();
   
-  
+ // labelCallStack4.hide();
+ // av.step();
+ // labelCallStack5.hide();
   av.recorded();
-  
-}(jQuery));
-
-
-
-//==============================================================================================================================
+});
