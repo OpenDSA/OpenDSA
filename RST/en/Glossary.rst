@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: OpenDSA Contributors
-   :topic: OpenDSA Glossary
+   :topic:   
 
 
 Glossary
@@ -545,6 +545,15 @@ Glossary
       The size of a buffer is typically one or a multiple of the basic
       unit of I/O that is read or written on each access to
       :term:`secondary storage` such as a :term:`disk drive`.
+
+   buffer passing
+      An approach to implementing the :term:`ADT` for a
+      :term:`buffer pool`, where a pointer to a :term:`buffer` is
+      passed between the client and the buffer pool.
+      This is in contrast to a :term:`message passing` approach,
+      it is most likely to be used for long messages or when the
+      message size is always the same as the buffer size, such as when
+      implementing a :term:`B-tree`.
 
    buffer pool
       :to-term: buffer :label: composed of
@@ -2405,8 +2414,9 @@ Glossary
       some bytes there.
 
    message
-      In a :term:`memory manager` implementation (particularly a
-      memory manager implemented with a "message passing" style of
+      In a :term:`memory manager` implementation
+      (particularly a memory manager implemented with a
+      :term:`message passing` style of
       interface), the message is the data that the :term:`client` of
       the memory manager wishes to have stored in the
       :term:`memory pool`.
@@ -2415,6 +2425,13 @@ Glossary
       as stored in the memory pool.
       The client can later recover the message by passing the handle
       back to the memory manager.
+
+   message passing
+      A common approach to implementing the :term:`ADT` for a
+      :term:`memory manager` or :term:`buffer pool`, where the
+      contents of a :term:`message` to be stored is explicitly
+      passed between the client and the memory manager.
+      This is in contrast to a :term:`buffer passing` approach.
 
    metaphor
       Humans deal with complexity by assigning a label to an assembly of
@@ -2581,7 +2598,7 @@ Glossary
       Specifically, an NP-Completeness proof must first show that the
       problem is in class :term:`NP`, and then show (by using a
       reduction to another NP-Complete problem) that the problem is
-      :term:`NP-hard`.
+      :term:`NP hard`.
 
    NP-hard
       A problem that is "as hard as" any other problem in :term:`NP`.
@@ -3154,8 +3171,8 @@ Glossary
       keeping the tree :term:`height balanced`.
 
    record
-      A collection of information, typical implemented as an
-      :term:`object` in the :term:`object-oriented programming paradigm`.
+      A collection of information, typically implemented as an
+      :term:`object` in an :term:`object-oriented programming language`.
       Many data structures are organized containers for a collection
       of records.
 
@@ -3185,6 +3202,13 @@ Glossary
    recursive call
       Within a :term:`recursive function`, it is a call that the
       function makes to itself.
+
+   recursive data structure
+      A data structure that is partially
+      composed of smaller or simpler instances of the same data structure.
+      For example, :term:`linked lists <linked list>` and
+      :term:`binary trees <binary tree>` can be viewed as recursive
+      data structures.
 
    recursive function
       A function that includes a :term:`recursive call`.
