@@ -1,25 +1,22 @@
 {
   "translations" :{
     "en": {
-     "av_c1": "Suppose function a() has a call to function b().",
-     "av_c2": "Function b() has a call to function c().", 
-     "av_c3": "Function c() has a call to function d().",
-     "av_c4": "Once function d() is done, what happens next?",
-     "av_c5": "It goes back to c()...",
-     "av_c6": "... then to b()...",
-     "av_c7": "...and finally back to a().",
-     "av_c8": "So you can think of going from a() to d() as the 'winding' for a series of function calls.",
-     "av_c9": "And returning back to a() as the `unwinding`.",
-     "av_c10": "The same thing happens with all functions. Recursive functions aren't different from non-recursive functions in how they behave.",
-     "av_c11": "Suppose function f() makes a recursive call to function f()...",
-     "av_c12":  "...which makes a call to function f()...",
-     "av_c13":  "...which eventually makes a call to function f() that triggers the base case.",
-     "av_c14":  "Once reaching the base case, it will then return to the previous instance of f()...",
-     "av_c15":  "...then f()...",
-     "av_c16":  "...and finally back to the original f()"
-  }
- },
-  "code" : {
-
+      "sc1": "Suppose function a() has a call to function b().",
+      "sc2": "Function b() has a call to function c().",
+      "sc3": "Function c() has a call to function d().",
+      "sc4": "Once function d() is done, what happens next?",
+      "sc5": "It goes back to c()...",
+      "sc6": "... then to b()...",
+      "sc7": "...and finally back to a().",
+      "sc8": "So you can think of going from a() to d() as the 'winding' for a series of function calls...",
+      "sc9": " and returning back to a() as the 'unwinding'.",
+      "sc10": "The same thing happens with all functions. Recursive functions aren't different from non-recursive functions in how they behave.",
+      "sc11": "Suppose function f() makes a recursive call to function f()...",
+      "sc12":  "...which makes a call to function f()...",
+      "sc13":  "...which eventually makes a call to function f() that triggers the base case.",
+      "sc14":  "Once reaching the base case, it will then return to the previous instance of f()...",
+      "sc15":  "...then f()...",
+      "sc16":  "...and finally back to the original f()"
+    }
   }
 }
