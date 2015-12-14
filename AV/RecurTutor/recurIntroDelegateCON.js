@@ -4,7 +4,6 @@
 $(document).ready(function() {
   "use strict";
   var av_name = "recurIntroDelegateCON";
-  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
   // Load the config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter,       // get the interpreter
@@ -16,28 +15,28 @@ $(document).ready(function() {
   var label = av.label("x*y?", {left: 150, top: 170});
 
   // Slide 1
-  av.umsg(interpret("av_c1"));
+  av.umsg(interpret("sc1"));
   pseudo.highlight(1);
   av.displayInit();
 
   // Slide 2
-  av.umsg(interpret("av_c2"));
+  av.umsg(interpret("sc2"));
   av.step();
 
   // Slide 3
-  av.umsg(interpret("av_c3"));
+  av.umsg(interpret("sc3"));
   pseudo.highlight([2, 3]);
   pseudo.unhighlight(1);
   av.step();
 
   // Slide 4
-  av.umsg(interpret("av_c4"));
+  av.umsg(interpret("sc4"));
   pseudo.unhighlight([2, 3]);
   pseudo.highlight(5);
   av.step();
 
   // Slide 5
-  av.umsg(interpret("av_c5"));
+  av.umsg(interpret("sc5"));
   var Pointer1 = av.g.line(230, 210, 280, 210,
                            {"arrow-end": "classic-wide-long", opacity: 0,
                             stroke: "black", "stroke-width": 5});
@@ -47,7 +46,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 6
-  av.umsg(interpret("av_c6"));
+  av.umsg(interpret("sc6"));
   label.hide();
   label2.hide();
   Pointer1.hide();
@@ -56,7 +55,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 7
-  av.umsg(interpret("av_c7"));
+  av.umsg(interpret("sc7"));
   Pointer1 = av.g.line(280, 210, 230, 210,
                        {"arrow-end": "classic-wide-long", opacity: 0,
                         stroke: "black", "stroke-width": 5});
