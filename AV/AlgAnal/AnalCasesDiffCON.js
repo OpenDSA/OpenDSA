@@ -81,7 +81,7 @@ $(document).ready(function() {
   for (i = 0; i < arr_values.length; i++) {
     indices[i] = i;
   }
-  arr.addClass(indices, "redbg"); 
+  arr.addClass(indices, "redbg");
   labelOutput = av.label("index  = " + (arraySize - 1),
                          {top: topAlign + 15, left: leftAlign + 395 + rectWidth});
   av.step();
@@ -119,7 +119,7 @@ $(document).ready(function() {
   av.label(interpret("lab2"),  {top: topAlign + 25, left: leftAlign + 395});
   var arr2 = av.ds.array(arr_values, {left: leftAlign, top: topAlign + 120, indexed: true});
   av.pointer("$k$", arr2.index(arraySize - 1));
-  arr2.addClass(indices, "redbg"); 
+  arr2.addClass(indices, "redbg");
   av.label(interpret("lab3"),  {top: topAlign + 125, left: leftAlign + 395});
 
   var arr3 = av.ds.array(arr_values, {left: leftAlign, top: topAlign + 220, indexed: true});

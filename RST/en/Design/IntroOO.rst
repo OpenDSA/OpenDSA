@@ -1,15 +1,19 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2014-2015 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2014-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Dave Parillo
+   :requires: ADT
    :satisfies: OO Intro
    :topic: Introduction
 
 Introduction to Object Oriented Programming
-=============================================
+===========================================
+
+Introduction to Object Oriented Programming
+-------------------------------------------
 
 Object-oriented programming (OOP) is a programming paradigm based on the 
 concept of :term:`objects <object>`, which are :term:`data structures
@@ -25,8 +29,6 @@ There is significant diversity in object-oriented programming,
 but most popular languages are class-based, meaning that objects are instances of classes, 
 which typically also determines their type.
 
-Comparisons to Procedural Programming
--------------------------------------
 Object orientation is an outgrowth of procedural programming.
 Procedural programming is a programming paradigm, derived from structured programming, 
 based upon the concept of the procedure call. Procedures, also known as routines, subroutines, 
@@ -49,7 +51,7 @@ so an **object**, which is an **instance of a class**, operates on its "own" dat
 
 
 Principles of Object Oriented Programming
--------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There are many views on the main features and motivations for object
 oriented programming [#]_ [#]_.
@@ -97,9 +99,12 @@ There are 4 principles that apply to most:
     an object we can find in the real world. 
     Encapsulation hides the details of that implementation.
 
+.. [#] `Wikipedia OO fundamental concepts <https://en.wikipedia.org/wiki/Object-oriented_programming#Fundamental_features_and_concepts>`_
+.. [#] `SOLID <http://en.wikipedia.org/wiki/SOLID_%28object-oriented_design%29>`_ Object oriented design
+
 
 Encapsulation
-.............
+~~~~~~~~~~~~~
 
 Consider the following example:
 
@@ -145,7 +150,7 @@ No classes would need to be modified to add the new capability below.
 .. codeinclude:: Introduction/GoodEncapsulation
 
 Inheritance
-...........
+~~~~~~~~~~~
 
 Consider the following example:
 
@@ -242,7 +247,7 @@ polymorphism in our code.
 
 
 Polymorphism
-............
+~~~~~~~~~~~~
 
 :term:`Polymorphism` is often referred to as the third pillar 
 of object-oriented programming, after encapsulation and inheritance. 
@@ -274,7 +279,7 @@ two distinct forms:
   different number of arguments or different types of arguments or both.
 
 Run-time Polymorphism
-+++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~
 
 Consider our earlier discussion of the class *Object* when we discussed encapsulation.
 What is the result of the following code from [Bloch]_ pg. 74?
@@ -321,7 +326,7 @@ The output is:
 
 
 Compile-time Polymorphism
-+++++++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In procedural languages without overloading, it was common to have many functions
 with similar names to perform essentially the same task on different data types.
@@ -365,7 +370,7 @@ overloading, so consider your use of overloading carefully.
 
 
 Abstraction
-...........
+~~~~~~~~~~~
 
 One of the key advantages of object oriented languages over :term:`procedural` languages is that
 objects act as metaphors for the real-world |---| in other words, objects *model* the real world.
@@ -389,19 +394,3 @@ is called :term:`cohesion` and is difficult achieve in procedural programs.
 For very large programs, which might contain hundreds or even thousands of entities,
 lack of cohesion can introduce errors, make programs more difficult to understand and maintain,
 and complicate the development of very large programs.
-
-
-
-
-
-
-Notes
------
-
-.. [#] `Wikipedia OO fundamental concepts <https://en.wikipedia.org/wiki/Object-oriented_programming#Fundamental_features_and_concepts>`_
-.. [#] `SOLID <http://en.wikipedia.org/wiki/SOLID_%28object-oriented_design%29>`_ Object oriented design
-
-
-
-
-

@@ -1,16 +1,19 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2015 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2015-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Dave Parillo
-   :satisfies: Process Intro
+   :requires: ADT; OO Intro; UML
+   :satisfies: Software development process
    :topic: Introduction
 
 Software Development Processes
 ==============================
 
+Software Development Processes
+------------------------------
 
 .. index:: process; software development
 
@@ -54,9 +57,6 @@ inception of the idea to delivery of the final system,
 to be carried out rigidly and sequentially" [#]_.
 Plan-driven methods continue to be the 'traditional' way most software
 continues to be developed today.
-
-
-
 
 Agile methods grew out frustration with the rigidity of the plan-driven processes commonly used
 in the 1990's just as the tech boom was heating up.
@@ -148,9 +148,13 @@ software development project has to make on their own.
    Adapted from *Balancing Agility and Discipline: A Guide for the Perplexed* [Boehm03]_
 
 
+.. [#] Geoffrey Elliott. *Global Business Information Technology: an integrated systems approach*. Pearson Education. 2004.
+
+.. [#] http://www.agilealliance.org/
+
 
 Waterfall Method
-----------------
+~~~~~~~~~~~~~~~~
 
 Initially described in 1970, the Waterfall process was another early 
 software development process adapted from manufacturing and construction processes.
@@ -178,9 +182,13 @@ but came under criticism primarily for it's lack of flexibility.
 Although officially endorsed bu the US Department of Defense in 1985, the DoD supplanted
 it with other process guidance 10 years later.
 
+.. [#] Peter Kemp / Paul Smith, *Waterfall model*
+   (Adapted from Paul Smith's work at wikipedia) 
+   [CC BY 3.0 (http://creativecommons.org/licenses/by/3.0)], via Wikimedia Commons
+
 
 Rational Unified Process
-------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Unified Software Development Process or Unified Process is a popular iterative 
 and incremental software development process framework. 
@@ -234,11 +242,7 @@ Within each iteration, the tasks are categorized into nine disciplines:
    - Environment
 
 
-
 Other Plan-Driven Approaches
-----------------------------
-
-
 
 Military Methods (DoD)
    DoD-STD-2167 
@@ -299,9 +303,8 @@ Personal Software Process (PSP)/Team Software Process (TSP) (Watts Humphrey, SEI
       the use of team planning and control.
 
 
-
 eXtreme Programming (XP)
-------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Established in the late 1990's by Kent Beck, XP is 
 regarded as perhaps the most famous agile method.
@@ -381,9 +384,13 @@ Designing
   Often more upfront design is required as well as checking and revisiting
   designs throughout the lifetime of the project.
 
+.. [#] Don Wells, *Planning / Feedback Loops*
+   (https://en.wikipedia.org/wiki/File:XP-feedback.gif) 
+   [CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons
+
 
 Crystal
--------
+~~~~~~~
 
 Established in the late 1990's by Alistair Cockburn, Crystal is 
 conceived as a family of software development processes organized by color, 
@@ -396,7 +403,7 @@ Crystal practices draw from agile and plan-driven methods as well as psychology
 and organizational development research.
 
 Scrum
------
+~~~~~
 
 Scrum is an agile software management process.
 That is, it describes how software development teams should be organised and
@@ -410,7 +417,7 @@ project stakeholders (pigs and chickens).
 
 
 Feature-Driven Development (FDD)
---------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 FDD is a lightweight, architecturally based process that initially establishes 
 an overall object architecture and features list.
@@ -419,24 +426,3 @@ Both design-by-feature and build-by-feature are incremental software
 construction methodologies.
 In FDD, the use of UML or other object-oriented design methods is strongly implied,
 if not explicitly required.
-
-
-
-Notes
------
-
-
-.. [#] Geoffrey Elliott. *Global Business Information Technology: an integrated systems approach*. Pearson Education. 2004.
-
-.. [#] http://www.agilealliance.org/
-
-.. [#] Peter Kemp / Paul Smith, *Waterfall model*
-   (Adapted from Paul Smith's work at wikipedia) 
-   [CC BY 3.0 (http://creativecommons.org/licenses/by/3.0)], via Wikimedia Commons
-
-.. [#] Don Wells, *Planning / Feedback Loops*
-   (https://en.wikipedia.org/wiki/File:XP-feedback.gif) 
-   [CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons
-
-
-

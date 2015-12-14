@@ -15,6 +15,7 @@
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
+  "assumes": "recursion",
   "glob_exer_options": {
     "JXOP-debug": "true"
   },
@@ -275,29 +276,17 @@
             "points": 1.0,
             "threshold": 1.0
           },
+          "BsearchDandCRecurCON": {
+            "long_name": "Binary Search recurrence slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "AnalProgramSumm": {
             "long_name": "Program Code Analysis Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 5
-          },
-          "SummationOneToNCON": {
-            "long_name": "Summation of the first N Integers visualization",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "SummationTwoPowerICON": {
-            "long_name": "Summation Two Power I visualization",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "LinearRecurrenceSimpleCON": {
-            "long_name": "Linear Recurrence visualization",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
           }
         }
       },
@@ -353,13 +342,13 @@
       "AlgAnal/AlgAnalSumm": {
         "long_name": "Algorithm Analysis Summary Exercises",
         "exercises": {
-          "AlgAnalCS2114Summ": {
+          "AlgAnalCS2Summ": {
             "long_name": "Algorithm Analysis Summary Questions",
             "required": false,
             "points": 1.0,
             "threshold": 5
           },
-          "AlgAnalSumm": {
+          "AlgAnalCS3Summ": {
             "long_name": "Algorithm Analysis Summary Questions",
             "required": true,
             "points": 1.0,

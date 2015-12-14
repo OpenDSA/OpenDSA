@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -11,6 +11,9 @@
 
 Design Patterns
 ===============
+
+Design Patterns
+---------------
 
 At a higher level of abstraction than ADTs
 are abstractions for describing the design of programs |---| that is,
@@ -45,7 +48,7 @@ The rest of this module introduces a few simple design patterns that
 occur frequently in a study of data structures and algorithms.
 
 Flyweight
----------
+~~~~~~~~~
 
 The :term:`Flyweight` is meant to solve the following problem:
 You have an application with many objects.
@@ -82,7 +85,8 @@ shared information about strokes and shapes, and it might also contain
 the exact location for that instance of the character on the page.
 
 Flyweights are used in the implementation for the
-:ref:`PR quadtree <PR quadtree> <Spatial>`
+:ref:`PR quadtree <PR quadtree> <Spatial>` and the
+:ref:`bintree <bintree> <Spatial>`
 for storing collections of point objects.
 In a PR quadtree, many of the :term:`leaf nodes <leaf node>` represent
 empty areas, and the only information that they store is the fact that
@@ -91,7 +95,7 @@ These identical nodes can be implemented using a reference to a single
 instance of the flyweight to reduce memory costs.
 
 Visitor
--------
+~~~~~~~
 
 Given a tree of objects to describe a page layout,
 we might wish to perform some activity on every node in the tree.
@@ -107,12 +111,13 @@ We could write a separate traversal function for each such activity
 that we intend to perform on the tree.
 A better approach would be to write a generic traversal function,
 and pass in the activity to be performed at each node.
-This organization constitutes the :term:`visitor design pattern`.
+This organization constitutes the :term:`visitor` design pattern.
 The visitor design pattern can also be used in
 :ref:`Graph Traversal <traversal> <GraphTraversal>`.
 
+
 Composite
----------
+~~~~~~~~~
 
 There are two fundamental approaches to dealing with the relationship
 between a collection of actions and a hierarchy of object types.
@@ -131,7 +136,7 @@ Each action method contains something like a switch statement that
 defines the details of the action for each subclass in the collection
 (e.g., page, column, row, character).
 We can cut the code down some by using the
-:term:`visitor design pattern`
+:term:`visitor` design pattern
 so that we only need to write the traversal once, and then write a
 visitor subroutine for each action that might be applied to the
 collection of objects.
@@ -183,8 +188,9 @@ A detailed example for using the Composite design pattern
 can be seen in a discussion of the
 :ref:`Expression Tree <Expression Tree> <Composite>`.
 
+
 Strategy
---------
+~~~~~~~~
 
 Our final example of a design pattern lets us encapsulate and make
 interchangeable a set of alternative actions that
@@ -202,7 +208,7 @@ action a method or class that does the appropriate rendering details
 for that output device.
 That is, we wish to hand to the object the appropriate ":term:`strategy`"
 for accomplishing the details of the rendering task.
-Thus, this approach is called the :term:`Strategy design pattern`.
+Thus, this approach is called the :term:`strategy` design pattern.
 
 The Strategy design pattern can be used to create generalized sorting
 functions.
@@ -237,3 +243,9 @@ The visitor design pattern is focused on encapsulating an activity that
 will be performed on all members of a collection so that completely
 different activities can be substituted within a generic method that
 accesses all of the collection members.
+
+
+Summary Questions
+~~~~~~~~~~~~~~~~~
+
+.. avembed:: Exercises/Design/DesignPatternSumm.html ka

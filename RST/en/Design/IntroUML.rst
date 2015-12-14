@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2015 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2015-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -13,6 +13,8 @@ The Unified Modeling Language
 
 .. index:: unified modeling langauage; selecting
 
+The Unified Modeling Language
+-----------------------------
 
 The Unified Modeling Language, or UML is an industry standard graphical
 notation for describing and analysing software designs.
@@ -48,10 +50,17 @@ Since there is an excellent chance you will encounter the UML or something
 very similar to it in your professional career and the diagrams used in this
 course are used not only in the UML, but in other modeling systems as well [#]_ [#]_ [#]_.
 
+.. [#] `OMG Homepage <http://www.omg.org/>`_
+
+.. [#] `Data Flow Diagrams <http://www.infoarchgroup.com/qrdfd.htm>`_
+
+.. [#] `The Integration DEFinition (IDEF) model family <http://www.idef.com>`_
+
+.. [#] `DoD Architecture Framework <http://dodcio.defense.gov/Portals/0/Documents/DODAF/DoDAF_v2-02_web.pdf>`_
 
 
 Static and Dynamic Diagrams
----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Static diagrams emphasize the static structure of the system, its objects
 attributes, methods, and relationships.  
@@ -73,9 +82,8 @@ and the collaborations between objects.  Dynamic views include:
 - Use Case diagrams
 
 
-
 Class Diagrams
---------------
+~~~~~~~~~~~~~~
 
 .. sidebar:: A Class
 
@@ -327,22 +335,5 @@ The *Customer* class requires the *Book* class to function, but doesn't own it.
 The caller of the purchase method is required to supply a *Book*.
 
 
-
-
-Notes
------
-
-.. [#] `OMG Homepage <http://www.omg.org/>`_
-
-.. [#] `Data Flow Diagrams <http://www.infoarchgroup.com/qrdfd.htm>`_
-
-.. [#] `The Integration DEFinition (IDEF) model family <http://www.idef.com>`_
-
-.. [#] `DoD Architecture Framework <http://dodcio.defense.gov/Portals/0/Documents/DODAF/DoDAF_v2-02_web.pdf>`_
-
-
 More example diagrams and explanations can be viewed at 
-`uml-diagrams.org <http://www.uml-diagrams.org/class-diagrams-overview.html>`_
-
-
-
+`uml-diagrams.org <http://www.uml-diagrams.org/class-diagrams-overview.html>`_.
