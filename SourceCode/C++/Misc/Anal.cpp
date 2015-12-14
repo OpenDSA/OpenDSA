@@ -100,7 +100,7 @@ int main(int argc, char** argv) {
 
   int temp = largest(myarray, 4);
   if (temp != 1) SUCCESS = false;
-  temp = binary(myarray, 4, 20);
+  temp = binarySearch(myarray, 4, 20);
   if (temp != 1) SUCCESS = false;
   temp = sequential(myarray, 4, 3);
   if (temp != 2) SUCCESS = false;

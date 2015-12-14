@@ -27,16 +27,6 @@ problem cannot be worse than the upper bound for the best algorithm
 that we know for that problem.
 But what does it mean to give a :term:`lower bound` for a problem?
 
-Consider a graph of cost over all inputs of a given size :math:`n` for
-some algorithm for a given problem.
-Define :math:`\mathcal{A}` to be the collection of all algorithms that
-solve the problem (theoretically, there are an infinite number of such
-algorithms).
-Now, consider the collection of all the graphs for all of the
-(infinitely many) algorithms in :math:`\mathcal{A}`.
-The worst case lower bound is the *least* of all the
-*highest* points on all the graphs.
-
 .. inlineav:: AnalyzingProblemsCON ss
    :output: show
 

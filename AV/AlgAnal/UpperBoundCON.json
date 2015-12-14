@@ -1,23 +1,26 @@
 {
   "translations" :{
     "en": {
-      "Slide 1": "Let's see how we can define upper bounds and distinguish it from worst cases.",
-      "Slide 2": "The upper bound of an algorithm indicates the upper or highest growth rate that the algorithm can have for a problem of size $n$.",
-      "Slide 3": "<br><br>The sequencial search algorithm accepts as its input an array of $n$ keys and the target key $k$ to search for.",
-      "Slide 4": "<br><br> So what is the upper bound of the sequencial search algorithm?",
-      "Slide 5": "<br>Do you think this is the correct way to ask this question?",
-      "Slide 6": "Remember that there are three input cases that affect the running time of sequencial search.",
-      "Slide 7": "<br><br>1- When the target key $k$ is located at the first position in the input array.",
-      "Slide 8": "<br><br>2- When the target key $k$ is located at the last position in the input array.",
-      "Slide 9": "<br><br>3- When the target key $k$ is located at the middle position in the input array.",
-      "Slide 10": "The first case is the best case of the algorithm, since only a single element is investigated. $T(n) = 1$",
-      "Slide 11": "<br><br>Accordingly, the highest growth rate (upper bound) of the algorithm in the best case is $O(1)$.",
-      "Slide 12": "The second case is the worst case of the algorithm, since $n$ elements are investigated. $T(n) = n$",
-      "Slide 13": "<br><br>Accordingly, the highest growth rate (upper bound) of the algorithm in the worst case is $O(n)$.",
-      "Slide 14": "The third case is the average case of the algorithm, since $\\lceil\\frac{n}{2}\\rceil$ elements are investigated. $T(n) = \\frac{1}{2}n$",
-      "Slide 15": "<br><br>Accordingly, the highest growth rate (upper bound) of the algorithm in the average case is also $O(n)$ since we ignore constant terms.",
-      "Slide 16": "Accordingly, the correct way to ask the question should be : <br><br>What is the upper bound of sequencial search in the best/average/worst case?",
-      "Slide 17": "<br><br>And the answer should be..."
+      "sc1": "A mistake that people often make is to confuse the upper bound and the worst case.",
+      "sc2": "<br>The upper bound of an algorithm indicates the upper or highest growth rate that the algorithm can have for a problem of size $n$.",
+      "sc3": "The sequential search algorithm accepts as its input an array of $n$ keys and the target key $K$ to search for.",
+      "sc4": "<br> So what is the upper bound of the sequential search algorithm?",
+      "sc5": "<br>Do you think this is the correct way to ask this question?",
+      "sc6": "Remember that there are three input cases that affect the running time of sequential search.",
+      "sc7": "<br>1- When the target key $K$ is located at the first position in the input array.",
+      "sc8": "<br>2- When the target key $K$ is located at the last position in the input array.",
+      "sc9": "<br>3- The average cost over all possible positions for $K$, which comes out to about $n/2$.",
+      "sc10": "In the best case for the algorithm, only a single element is visited. $\\mathbf{T}(n) = 1$",
+      "sc11": "<br>Accordingly, an upper bound for the algorithm in the best case is $O(1)$. Even when $n$ increases, the cost for the best case does not <b>grow</b>.",
+      "sc12": "In the worst case for the algorithm, $n$ elements must be visited. $\\mathbf{T}(n) = n$",
+      "sc13": "<br>So an upper bound for the algorithm in the worst case is $O(n)$. No matter the value of $n$, for some constant $c$, $cn$ is bigger than $n$.",
+      "sc14": "In the average case for the algorithm, about $n/2$ elements are visited. $T(n) = \\frac{n}{2}$",
+      "sc15": "<br><br>So an upper bound for the algorithm in the average case is also $O(n)$. No matter the value of $n$, for some constant $c$, $cn$ is bigger than $n/2$.",
+      "sc16": "Accordingly, the correct way to ask the question is: <br><br>What is the upper bound of sequential search in the best/average/worst case?",
+      "sc17": "<br><br>And the answer should be...",
+      "lab1": "$O(1)$ in the <b><u>Best Case.</u></b>",
+      "lab2": "$O(n)$ in the <b><u>Worst Case</u></b>.",
+      "lab3": "$O(n)$ in the <b><u>Average Case</u></b>."
     }
   }
 }

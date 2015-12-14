@@ -1,19 +1,19 @@
-#ProblemAlgorithmCON {
-  height: 460px;
+#AnalCasesSameCON {
+  height: 370px;
 }
 
-#ProblemAlgorithmCON .jsavline{
-  height: 120px;
+#AnalCasesSameCON .jsavline{
+  height: 30px;
 }
 
-#ProblemAlgorithmCON .jsavhorizontalarray .jsavnode{
+.jsavhorizontalarray .jsavnode{
   min-width: 50px !important;
   max-width: 200px !important;
   min-height: 35px !important;
   max-height: 35px !important;
 }
 
-#ProblemAlgorithmCON .jsavcodeline{
+.jsavcodeline{
   background-color: transparent;
   font-size: 10px;
 }
@@ -21,4 +21,11 @@
 .largeLabel{
   font-size: 18px; 
   text-align: center; 
+}
+
+#AnalCasesDiffCON {
+  height: 465px;
+}
+#AnalCasesDiffCON .jsavline{
+  height: 75px;
 }

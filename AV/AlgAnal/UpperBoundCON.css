@@ -1,15 +1,8 @@
 #UpperBoundCON {
-  height: 600px;
+  height: 480px;
 }
 #UpperBoundCON .jsavline{
-  height: 165px;
-}
-.rotated {
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  transform: rotate(90deg);
+  height: 75px;
 }
 #UpperBoundCON .jsavhorizontalarray .jsavnode{
   min-width: 50px !important;

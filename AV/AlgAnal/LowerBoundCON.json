@@ -1,20 +1,19 @@
 {
   "translations" :{
     "en": {
-      "Slide 1": "Let's see how we can define lower bounds and distinguish it from best cases.",
-      "Slide 2": "The lower bound of an algorithm indicates the least amount of a resource that the algorithm needs for a problem of size $n$.",
-      "Slide 3": "So what is the lower bound of the sequencial search algorithm?",
-      "Slide 4": "<br><br>Remember, this is not the correct way to ask the question since we have three cases that affect the running time of the algorithm.", 
-      "Slide 5": "In the best case of the algorithm, only a single element is investigated. $T(n) = 1$",
-      "Slide 6": "<br><br>Accordingly, the lowest growth rate (lower bound) of the algorithm in the best case is $\\Omega(1)$.",
-      "Slide 7": "In the worst case of the algorithm, $n$ elements are investigated. $T(n) = n$",
-      "Slide 8": "<br><br>Accordingly, the lowest growth rate (lower bound) of the algorithm in the worst case is $\\Omega(n)$.",
-      "Slide 9": "In the average case of the algorithm, $\\lceil\\frac{n}{2}\\rceil$ elements are investigated. $T(n) = \\frac{1}{2}n$",
-      "Slide 10": "<br><br>Accordingly, the lowest growth rate (lower bound) of the algorithm in the average case is also $\\Omega(n)$ since we ignore constant terms.",
-      "Slide 11": "Accordingly, the correct way to ask the question should be : <br><br>What is the lower bound of sequencial search in the best/average/worst case?",
-      "Slide 12": "<br><br>And the answer should be..."
-
-
+      "sc1": "A mistake that people can make is to confuse the lower bound and the best case. In general, people find lower bounds confusing, in part because for simple algorithms, they look just like the upper bound. Let's try to figure this out.",
+      "sc2": "The lower bound of an algorithm indicates the least amount of a resource that the algorithm needs for a problem of size $n$. So what is the lower bound of the sequential search algorithm?",
+      "sc3": "<br>Remember, this is not the correct way to ask the question since we have three cases that affect the running time of the algorithm: the best, worst, and average cases.", 
+      "sc4": "In the best case of the algorithm, only a single element is visited. $T(n) = 1$.<br>So, $\\Omega(1)$ is a lower bound for the algorithm in the best case, because 1 is less than or equal to the number of elements that we look at.",
+      "sc5": "In the worst case of the algorithm, $n$ elements are visited. $T(n) = n$.<br>So, $\\Omega(n)$ is a lower bound for the cost of the algorithm in the worst case because the worst case must <b>always</b> must look at $n$ records.",
+      "sc6": "Likewise, in the average case we visit about $n/2$ elements.<br>So, $\\Omega(n)$ is a lower bound for the cost of the algorithm in the average case because for some constant $c$, $cn$ is less than or equal to the average case cost of $n/2$.",
+      "sc7": "To summarize: What is the lower bound of sequential search in the best/average/worst case?",
+      "sc8": "But this is confusing. How is the lower bound different from the upper bound?",
+      "sc9": "<br>Well, in this case we have perfect understanding about the cost of this simple algorithm. So they are not different. The upper and lower bound will only be different when we are describing what we know about an algorithm that we don't know the exact cost for.",
+      "sc10": "But, we do have a shorthand that we use to say that we know the upper and lower bounds match. That is to say that the cost is $\\Theta$ some value. Sequential search has worst case cost $\\Theta(n)$ because its upper and lower bounds are the same. Likewise, sequential search has a best case cost of $\\Theta(1)$.",
+      "lab1": "$\\Omega(1)$ in the <b><u>Best Case.</u></b>",
+      "lab2": "$\\Omega(n)$ in the <b><u>Worst Case</u></b>.",
+      "lab3": "$\\Omega(n)$ in the <b><u>Average Case</u></b>."
     }
   }
 }

@@ -1,0 +1,27 @@
+#BsearchDandCRecurCON{
+  height: 300px;
+}
+
+#BsearchDandCRecurCON .jsavline {
+  height:100px;
+}
+
+#BsearchDandCRecurCON .jsavgraph .jsavnode {
+  line-height: 40px !important;
+  min-width: 40px !important;
+  max-width: 40px !important;
+  min-height: 40px !important;
+  max-height: 40px !important;
+}
+
+.dashed{
+  stroke-dasharray: 5, 5;
+}
+
+.subProblemNode{
+  background-color: lightgreen;
+}
+
+.subProblemEdge{
+  stroke: green;
+}

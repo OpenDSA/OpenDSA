@@ -1,17 +1,17 @@
 {
   "translations" :{
     "en": {
-     "av_c1": "You want to multiply two numbers x and y.",
-     "av_c2": "If the numbers are simple enough, then you will do the task on your own.", 
-     "av_c3": "Otherwise, you will simplify and delegate this task to a friend.",
-     "av_c4": "Your friend will do a smaller version of the problem by multiplying x-1 and y. When he returns the result back, you will add a y to that result to complete your task.",
-     "av_c5": "Your friend will behave exactly as you do. If the problem is simple, he will just solve the problem. But if the problem is too hard, then he will ask another friend to help with a smaller version of the problem. The second friend will multiply $x-2$ by $y$.",
-     "av_c6": "Who will do exactly the same with a third friend.",
-     "av_c7": "The problem gets smaller as it goes from one friend to another. Eventually it reaches the <b> base case</b>, where $x$ is $1$ for some friend. This friend will find the task simple enough to be done on his own without doing any delegation.",
-     "av_c8": "That friend will send back the result of multiplying $1$ and $y$. Then he will return back the result to the previous friend.",
-     "av_c9": "This process will continue all the way back until the result of $x-2$ multiplied by $y$ is back to your friend.",
-     "av_c10": "Your friend will add $y$ and send you the result of multiplying $x-1$  by $y$.",
-     "av_c11": "When the result is back to you, you will simply add $y$ to the result. Then you will be done with your task!"
+     "sc1": "You want to multiply two numbers x and y.",
+     "sc2": "If the numbers are simple enough, then you will do the task on your own.", 
+     "sc3": "Otherwise, you will simplify and delegate this task to a friend.",
+     "sc4": "Your friend will do a smaller version of the problem by multiplying x-1 and y. When he returns the result back, you will add a y to that result to complete your task.",
+     "sc5": "Your friend will behave exactly as you do. If the problem is simple, he will just solve the problem. But if the problem is too hard, then he will ask another friend to help with a smaller version of the problem. The second friend will multiply $x-2$ by $y$.",
+     "sc6": "Who will do exactly the same with a third friend.",
+     "sc7": "The problem gets smaller as it goes from one friend to another. Eventually it reaches the <b> base case</b>, where $x$ is $1$ for some friend. This friend will find the task simple enough to be done on his own without doing any delegation.",
+     "sc8": "That friend will send back the result of multiplying $1$ and $y$. Then he will return back the result to the previous friend.",
+     "sc9": "This process will continue all the way back until the result of $x-2$ multiplied by $y$ is back to your friend.",
+     "sc10": "Your friend will add $y$ and send you the result of multiplying $x-1$  by $y$.",
+     "sc11": "When the result is back to you, you will simply add $y$ to the result. Then you will be done with your task!"
     }
   },
   "code" : {
