@@ -109,6 +109,8 @@ Glossary
 
    algorithm analysis
       :to-term: growth rate :label: key concept
+      :to-term: upper bound :label: key concept
+      :to-term: lower bound :label: key concept
 
       A less formal version of the term
       :term:`asymptotic algorithm analysis`.
@@ -278,6 +280,8 @@ Glossary
       Abbreviation for :term:`breadth-first search`.
 
    bag
+      :to-term: multilist :label: synonym
+
       In set notation, a bag is a collection of elements with no order
       (like a set), but which allows for duplicate-valued elements
       (unlike a set).
@@ -470,6 +474,8 @@ Glossary
       implementation becomes more space efficient.
 
    breadth-first search
+     :to-term: BFS :label: abbreviation
+
      A :term:`graph` :term:`traversal` algorithm.
      As the name implies, all immediate :term:`neighbors <neighbor>`
      for a :term:`node` are :term:`visited <visit>` before any
@@ -497,6 +503,8 @@ Glossary
       together.
 
    bucket hashing
+      :to-term: bucket :label: uses
+
       A method of :term:`hashing` where multiple :term:`slots <slot>`
       of the :term:`hash table` are grouped together to form a
       :term:`bucket`.
@@ -648,6 +656,8 @@ Glossary
       summation or recurrence.
 
    closed hash system
+      :to-term: open addressing :label: synonym
+
       A :term:`hash system` where all records are stored in slots of
       the :term:`hash table`.
       This is in contrast to an :term:`open hash system`.
@@ -936,6 +946,9 @@ Glossary
      of the path from the root of the tree to :math:`M`.
 
    depth-first search
+     :to-term: DFS :label: abbreviation
+     :to-term: depth-first search tree :label: generates
+
      A :term:`graph` :term:`traversal` algorithm.
      Whenever a :math:`v` is :term:`visited <visit>` during the
      traversal, DFS will :term:`recursively <recursion>` visit all of
@@ -1682,6 +1695,11 @@ Glossary
       record that matches the key value.
 
    hash system
+      :to-term: hash function :label: uses
+      :to-term: bucket hashing :label: type
+      :to-term: closed hash system :label: type
+      :to-term: open hash system :label: type
+
       The implementation for search based on hash lookup in a
       :term:`hash table`.
       The :term:`search key` is processed by a
@@ -1723,8 +1741,8 @@ Glossary
 
    heap
       This term has two different meanings.
-      Sometimes it is used as a synonym for :term:`free store`.
-      Most often it refers to a particular data structure.
+      Uncommonly, it is a synonym for :term:`free store`.
+      Most often it is used to refer to a particular data structure.
       This data structure is a :term:`complete binary tree` with the
       requirement that every :term:`node` has a value greater than its
       :term:`children <child>` (called a :term:`max heap`), or else
@@ -2008,11 +2026,15 @@ Glossary
       analog of the kd tree.
 
    key
+      :to-term: key space :label: has
+
       A field or part of a larger record used to represent that record
       for the purpose of searching or comparing.
       Another term for :term:`search key`.
 
    key sort
+      :to-term: key :label: uses
+
       Any sorting opertation applied to a collection of
       :term:`key-value pairs <key-value pair>` where the value in this
       case is a reference to a complete record (that is, a pointer to
@@ -2043,6 +2065,9 @@ Glossary
       The range of values that a :term:`key` value may take on.
 
    key space decomposition
+      :to-term: object space decomposition :label: type
+      :to-term: image space decomposition :label: type
+
       The idea that the range for a :term:`search key` will be split
       into pieces.
       There are two general approaches to this:
@@ -2360,6 +2385,8 @@ Glossary
       cause the program to terminate.
 
    memory manager
+      :to-term: buddy method :label: example
+
       Functionality for managing a :term:`memory pool`.
       Typically, the memory pool is viewed as an array of bytes by the
       memory manager.
@@ -2467,9 +2494,11 @@ Glossary
       if it has less weight.
 
    mod
-      Another name for the :term:`modulus` function.
+      Abbreviation for the :term:`modulus` function.
 
    modulus
+      :to-term: mod :label: abbreviation
+
       The modulus function returns the
       remainder of an integer division.
       Sometimes written :math:`n \bmod m` in mathematical expressions,
@@ -2499,6 +2528,8 @@ Glossary
       non-spatial dimensions, such as temperature and time.
 
    multi-dimensional search structure
+      :to-term: multi-dimensional search key :label: uses
+
       A data structure used to support efficient search on a
       :term:`multi-dimensional search key`.
       The main concept here is that a multi-dimensional search
@@ -2511,6 +2542,8 @@ Glossary
       multi-dimensional space.
 
    multilist
+      :to-term: bag :label: synonym
+
       A list that may contain sublists.
       This term is sometimes used as a synonym to the term
       :term:`bag`.
@@ -2526,6 +2559,7 @@ Glossary
    node
       :to-term: neighbor :label: linked to
       :to-term: dynamic allocation :label: created by
+      :to-term: depth :label: property
 
       The objects that make up a linked structure such as a linked
       list or binary tree.
@@ -2539,7 +2573,7 @@ Glossary
       :term:`antisymmetric`, and :term:`transitive`.
 
    NP
-      An acronym for
+      An abbreviation for
       :term:`non-deterministic polynomial <non-deterministic polynomial time algorithm>`.
 
    NP-Complete
@@ -2564,7 +2598,7 @@ Glossary
       Specifically, an NP-Completeness proof must first show that the
       problem is in class :term:`NP`, and then show (by using a
       reduction to another NP-Complete problem) that the problem is
-      :term:`NP-hard`.
+      :term:`NP hard`.
 
    NP-hard
       A problem that is "as hard as" any other problem in :term:`NP`.
@@ -2584,6 +2618,9 @@ Glossary
       least one of the choices leads to a correct answer.
 
    non-deterministic polynomial time algorithm
+      :to-term: NP :label: abbreviation
+      :to-term: non-deterministic choice :label: operation
+
       An algorithm that runs in polynomial time, and which may
       (or might not) use :term:`non-deterministic choice`.
 
@@ -2597,6 +2634,8 @@ Glossary
       (:term:`methods <method>`).
 
    object-oriented programming paradigm
+      :to-term: cohesion :label: key concept
+
       An approach to problem-solving where all computations are
       carried out using :term:`objects <object>`.
 
@@ -3043,6 +3082,9 @@ Glossary
       of the probe sequence.
 
    queue
+      :to-term: dequeue :label: operations
+      :to-term: enqueue :label: operations
+
       A list-like structure in which elements are inserted only at one
       end, and removed only from the other one end.
 
@@ -3129,8 +3171,8 @@ Glossary
       keeping the tree :term:`height balanced`.
 
    record
-      A collection of information, typical implemented as an object in
-      an object-oriented programming language.
+      A collection of information, typically implemented as an
+      :term:`object` in an :term:`object-oriented programming language`.
       Many data structures are organized containers for a collection
       of records.
 
@@ -3317,6 +3359,7 @@ Glossary
    search tree
       :to-term: Binary Search Tree :label: example
       :to-term: 2-3 tree :label: example
+      :to-term: B-tree :label: example
       :to-term: search trie :label: example
 
       A :term:`tree` data structure that makes search by :term:`key`
@@ -3327,6 +3370,9 @@ Glossary
       deletion, and search operations are all :math:`\Theta(\log n)`.
 
    search trie
+      :to-term: alphabet trie :label: example
+      :to-term: binary trie :label: example
+
       Any :term:`search tree` that is a :term:`trie`.
 
    secondary clustering
@@ -3389,6 +3435,9 @@ Glossary
       iteration.
 
    self-organizing list
+      :to-term: move-to-front :label: heuristic
+      :to-term: transpose :label: heuristic
+
       A list that, over a series of search operations, will make
       use of some :term:`heuristic` to re-order its elements in an
       effort to improve search times.
@@ -3514,6 +3563,8 @@ Glossary
       One algorithm to solve this problem is :term:`Dijkstra's algorithm`.
 
    singly linked list
+      :to-term: one-way list :label: synonym
+
       A :term:`linked list` implementation variant where each list
       node contains access an pointer only to the next element in the list.
 
@@ -3643,6 +3694,8 @@ Glossary
       :term:`platters <platter>` in place.
 
    Splay Tree
+      :to-term: splaying :label: operation
+
       A variant implementation for the :term:`BST`, which differs from
       the standard BST in that it uses modified insert and remove
       methods in order to keep the tree
@@ -3665,6 +3718,9 @@ Glossary
       :term:`key` values. 
 
    stack
+      :to-term: push :label: operations
+      :to-term: pop :label: operations
+
       A list-like structure in which elements may be inserted or
       removed from only one end.
 
