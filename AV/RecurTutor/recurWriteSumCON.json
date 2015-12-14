@@ -10,7 +10,29 @@
   }
  },
   "code" : {
-      "java": [
+    "processing": [
+       {
+        "url": "../../../SourceCode/Processing/RecurTutor/WrtSumV1.pde",
+        "tags": {
+        }
+       },
+      {
+        "url": "../../../SourceCode/Processing/RecurTutor/WrtSumV2.pde",
+        "tags": {
+       }
+      },
+      {
+        "url": "../../../SourceCode/Processing/RecurTutor/WrtSumV3.pde",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/Processing/RecurTutor/WrtSumV4.pde",
+        "tags": {
+      }
+     }
+    ],
+    "java": [
        {
         "url": "../../../SourceCode/Java/RecurTutor/WrtSumV1.java",
         "tags": {
@@ -28,6 +50,50 @@
       },
       {
         "url": "../../../SourceCode/Java/RecurTutor/WrtSumV4.java",
+        "tags": {
+      }
+     }
+    ],
+    "java_generic": [
+       {
+        "url": "../../../SourceCode/Java_Generic/RecurTutor/WrtSumV1.java",
+        "tags": {
+        }
+       },
+      {
+        "url": "../../../SourceCode/Java_Generic/RecurTutor/WrtSumV2.java",
+        "tags": {
+       }
+      },
+      {
+        "url": "../../../SourceCode/Java_Generic/RecurTutor/WrtSumV3.java",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/Java_Generic/RecurTutor/WrtSumV4.java",
+        "tags": {
+      }
+     }
+   ],
+   "c++": [
+       {
+        "url": "../../../SourceCode/C++/RecurTutor/WrtSumV1.cpp",
+        "tags": {
+        }
+       },
+      {
+        "url": "../../../SourceCode/C++/RecurTutor/WrtSumV2.cpp",
+        "tags": {
+       }
+      },
+      {
+        "url": "../../../SourceCode/C++/RecurTutor/WrtSumV3.cpp",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/C++/RecurTutor/WrtSumV4.cpp",
         "tags": {
       }
      }

@@ -8,8 +8,26 @@
     }
   },
   "code" : {
+    "processing": {
+      "url": "../../../SourceCode/Processing/RecurTutor/WrtSumV4.pde",
+      "lineNumbers": false,
+      "tags": {
+      }
+    },
     "java": {
       "url": "../../../SourceCode/Java/RecurTutor/WrtSumV4.java",
+      "lineNumbers": false,
+      "tags": {
+      }
+    },
+    "java_generic": {
+      "url": "../../../SourceCode/Java_Generic/RecurTutor/WrtSumV4.java",
+      "lineNumbers": false,
+      "tags": {
+      }
+    },
+    "c++": {
+      "url": "../../../SourceCode/C++/RecurTutor/WrtSumV4.cpp",
       "lineNumbers": false,
       "tags": {
       }

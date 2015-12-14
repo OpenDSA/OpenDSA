@@ -15,7 +15,59 @@
   }
  },
   "code" : {
-      "java": [
+      "processing": [
+       {
+        "url": "../../../SourceCode/Processing/RecurTutor/Recfact.pde",
+        "tags": {
+        }
+       },
+      {
+        "url": "../../../SourceCode/Processing/RecurTutor/Recfact5.pde",
+        "tags": {
+       }
+      },
+      {
+        "url": "../../../SourceCode/Processing/RecurTutor/Recfact4.pde",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/Processing/RecurTutor/Recfact3.pde",
+        "tags": {
+      }
+     },
+     {
+        "url": "../../../SourceCode/Processing/RecurTutor/Recfact2.pde",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/Processing/RecurTutor/Recfact1.pde",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/Processing/RecurTutor/Recfact2r.pde",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/Processing/RecurTutor/Recfact3r.pde",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/Processing/RecurTutor/Recfact4r.pde",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/Processing/RecurTutor/Recfact5r.pde",
+        "tags": {
+	  }
+      }
+   ],
+   "java": [
        {
         "url": "../../../SourceCode/Java/RecurTutor/Recfact.java",
         "tags": {
@@ -66,6 +118,111 @@
         "tags": {
 	  }
       }
+   ],
+   "java_generic": [
+       {
+        "url": "../../../SourceCode/Java_Generic/RecurTutor/Recfact.java",
+        "tags": {
+        }
+       },
+      {
+        "url": "../../../SourceCode/Java_Generic/RecurTutor/Recfact5.java",
+        "tags": {
+       }
+      },
+      {
+        "url": "../../../SourceCode/Java_Generic/RecurTutor/Recfact4.java",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/Java_Generic/RecurTutor/Recfact3.java",
+        "tags": {
+      }
+     },
+     {
+        "url": "../../../SourceCode/Java_Generic/RecurTutor/Recfact2.java",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/Java_Generic/RecurTutor/Recfact1.java",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/Java_Generic/RecurTutor/Recfact2r.java",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/Java_Generic/RecurTutor/Recfact3r.java",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/Java_Generic/RecurTutor/Recfact4r.java",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/Java/RecurTutor/Recfact5r.java",
+        "tags": {
+	  }
+      }
+    ],
+     "c++": [
+       {
+        "url": "../../../SourceCode/C++/RecurTutor/Recfact.cpp",
+        "tags": {
+        }
+       },
+      {
+        "url": "../../../SourceCode/C++/RecurTutor/Recfact5.cpp",
+        "tags": {
+       }
+      },
+      {
+        "url": "../../../SourceCode/C++/RecurTutor/Recfact4.cpp",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/C++/RecurTutor/Recfact3.cpp",
+        "tags": {
+      }
+     },
+     {
+        "url": "../../../SourceCode/C++/RecurTutor/Recfact2.cpp",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/C++/RecurTutor/Recfact1.cpp",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/C++/RecurTutor/Recfact2r.cpp",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/C++/RecurTutor/Recfact3r.cpp",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/C++/RecurTutor/Recfact4r.cpp",
+        "tags": {
+	  }
+      },
+      {
+        "url": "../../../SourceCode/C++/RecurTutor/Recfact5r.cpp",
+        "tags": {
+	  }
+      }
    ]
+   
   }
 }

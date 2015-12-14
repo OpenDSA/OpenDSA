@@ -12,7 +12,25 @@
   },
   "code" : {
     "processing": {
+      "url": "../../../SourceCode/Processing/RecurTutor/Recmultiply.pde",
+      "lineNumbers": false,
+      "tags": {
+      }
+    },
+    "java": {
       "url": "../../../SourceCode/Java/RecurTutor/Recmultiply.java",
+      "lineNumbers": false,
+      "tags": {
+      }
+    },
+     "java_generic": {
+      "url": "../../../SourceCode/Java_Generic/RecurTutor/Recmultiply.java",
+      "lineNumbers": false,
+      "tags": {
+      }
+    },
+    "c++": {
+      "url": "../../../SourceCode/C++/RecurTutor/Recmultiply.cpp",
       "lineNumbers": false,
       "tags": {
       }
