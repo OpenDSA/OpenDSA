@@ -26,14 +26,18 @@ $(document).ready(function () {
 
   var rect4 = av.g.rect(600, 30, 50, 90).css({"fill": "grey"});
   var rect5 = av.g.rect(700, 30, 50, 90).css({"fill": "grey"});
-
   
-  av.umsg(interpret("av_c1"));
-  var  pseudo = av.code(code);
+  // Slide 1
+  av.umsg(interpret("sc1"));
   av.displayInit();
+
+  // Slide 2
+  av.umsg(interpret("sc2"));
+  var  pseudo = av.code(code);
   av.step();
   
-  av.umsg(interpret("av_c2"));
+  // Slide 3
+  av.umsg(interpret("sc3"));
   rect.hide();
   var rect6 = av.g.rect(120, 30, 50, 90).css({"fill": "lightgray"});
   pseudo.highlight(3);
@@ -42,7 +46,8 @@ $(document).ready(function () {
   pseudo.highlight(3);
   av.step();
   
-  av.umsg(interpret("av_c3"));
+  // Slide 4
+  av.umsg(interpret("sc4"));
   pseudo.unhighlight(2);
   pseudo.unhighlight(3);
   rect1.hide();
@@ -52,60 +57,55 @@ $(document).ready(function () {
   rect7.rotate(45);
   av.step();  
   
-  av.umsg(interpret("av_c4"));
+  // Slide 5
+  av.umsg(interpret("sc5"));
   rect2.hide();
   var rect8 = av.g.rect(320, 30, 50, 90).css({"fill": "lightgray"});
-  pseudo.unhighlight(6);
-  pseudo.highlight(6);
   rect8.rotate(45);
   av.step();
 
-  av.umsg(interpret("av_c5"));   
+  // Slide 6
+  av.umsg(interpret("sc6"));   
   av.step();
   
+  // Slide 7
   pseudo.unhighlight(2);
   pseudo.highlight(5);
-  pseudo.unhighlight(6);
-  pseudo.highlight(6);
   rect4.hide();
   rect5.hide();
   var rect9 = av.g.rect(620, 30, 50, 90).css({"fill": "lightgray"});
-  pseudo.unhighlight(6);
-  pseudo.highlight(6);
   rect9.rotate(45);
   var rect10 = av.g.rect(720, 30, 50, 90).css({"fill": "lightgray"});
-  pseudo.unhighlight(6);
-  pseudo.highlight(6);
   rect10.rotate(45);
-
   av.step();
 
+  // Slide 8
+  av.umsg(interpret("sc8"));
   rect6.hide();
   rect7.hide();
   rect8.hide();
   rect9.hide();
   rect10.hide();
-  
   rect.show();
   rect1.show();
   rect2.show();
   rect4.show();
   rect5.show();
-  
-  av.umsg(interpret("av_c6"));
   pseudo.unhighlight(5);
   pseudo.highlight(5);
   pseudo.unhighlight(6); 
   av.step();
-  
-  av.umsg(interpret("av_c7"));
+
+  // Slide 9
+  av.umsg(interpret("sc9"));
   pseudo.unhighlight(5);
   pseudo.highlight(3);  
   rect.hide();
   rect6.show();
   av.step();
   
-  av.umsg(interpret("av_c8"));
+  // Slide 10
+  av.umsg(interpret("sc10"));
   pseudo.unhighlight(3);  
   pseudo.highlight(6);
   rect1.hide();
@@ -116,8 +116,5 @@ $(document).ready(function () {
   rect8.show();
   rect9.show();  
   rect10.show();
-  
-  av.step();
-  
   av.recorded();
 });
