@@ -6,9 +6,9 @@ $(document).ready(function() {
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
-  var rect = av.g.rect(100, 30, 50, 90).css({fill: "grey"});
-  var rect1 = av.g.rect(200, 30, 50, 90).css({fill: "grey"});
-  var rect2 = av.g.rect(300, 30, 50, 90).css({fill: "grey"});
+  var rect = av.g.rect(100, 30, 50, 90).addClass("dominocolor");
+  var rect1 = av.g.rect(200, 30, 50, 90).addClass("dominocolor");
+  var rect2 = av.g.rect(300, 30, 50, 90).addClass("dominocolor");
   rect.show();
   rect1.show();
   rect2.show();
@@ -20,8 +20,8 @@ $(document).ready(function() {
   dots2.show();
   dots3.show();
   dots4.show();
-  var rect4 = av.g.rect(600, 30, 50, 90).css({fill: "grey"});
-  var rect5 = av.g.rect(700, 30, 50, 90).css({fill: "grey"});
+  var rect4 = av.g.rect(600, 30, 50, 90).addClass("dominocolor");
+  var rect5 = av.g.rect(700, 30, 50, 90).addClass("dominocolor");
   rect4.show();
   rect5.show();
   av.umsg(interpret("av_c1"));
@@ -30,9 +30,9 @@ $(document).ready(function() {
   av.step();
   av.umsg(interpret("av_c2"));
   rect.hide();
-  var rect6 = av.g.rect(125, 30, 50, 90).css({fill: "lightgray"});
+  var rect6 = av.g.rect(125, 30, 50, 90).addClass("tilteddominocolor");
   rect6.rotate(55);
-  av.label("1",  {top: "20px", left: "120px"}).css({"font-size": "15px", "text-align": "center"});
+  av.label("1",  {top: "20px", left: "120px"}).addClass("digitstyle");
   pseudo.highlight(3);
   av.step();
   av.umsg(interpret("av_c3"));
@@ -44,20 +44,20 @@ $(document).ready(function() {
   pseudo.highlight(6);
   pseudo.unhighlight(3);
   rect1.hide();
-  var rect7 = av.g.rect(225, 30, 50, 90).css({fill: "lightgray"});
+  var rect7 = av.g.rect(225, 30, 50, 90).addClass("tilteddominocolor");
   rect7.rotate(55);
-  av.label("2",  {top: "20px", left: "220px"}).css({"font-size": "15px", "text-align": "center"});
+  av.label("2",  {top: "20px", left: "220px"}).addClass("digitstyle");
   rect2.hide();
-  var rect8 = av.g.rect(325, 30, 50, 90).css({fill: "lightgray"});
+  var rect8 = av.g.rect(325, 30, 50, 90).addClass("tilteddominocolor");
   rect8.rotate(55);
-  av.label("3",  {top: "20px", left: "320px"}).css({"font-size": "15px", "text-align": "center"});
+  av.label("3",  {top: "20px", left: "320px"}).addClass("digitstyle");
   rect4.hide();
-  var rect9 = av.g.rect(625, 30, 50, 90).css({fill: "lightgray"});
+  var rect9 = av.g.rect(625, 30, 50, 90).addClass("tilteddominocolor");
   rect9.rotate(55);
-  av.label("N-1",  {top: "20px", left: "620px"}).css({"font-size": "15px", "text-align": "center"});
+  av.label("N-1",  {top: "20px", left: "620px"}).addClass("digitstyle");
   rect5.hide();
-  var rect10 = av.g.rect(725, 30, 50, 90).css({fill: "lightgray"});
+  var rect10 = av.g.rect(725, 30, 50, 90).addClass("tilteddominocolor");
   rect10.rotate(55);
-  av.label("N",  {top: "20px", left: "720px"}).css({"font-size": "15px", "text-align": "center"});
+  av.label("N",  {top: "20px", left: "720px"}).addClass("digitstyle");
   av.recorded();
 });
