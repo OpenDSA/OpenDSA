@@ -34,3 +34,16 @@
   height: 600px;
 }
 
+.dominocolor{
+  fill:grey;
+}
+
+.tilteddominocolor{
+   fill:lightgray;
+}
+
+.digitstyle{
+  font-size: 15px;
+  text-align: center;
+}
+
