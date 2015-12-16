@@ -48,10 +48,10 @@ $(document).ready(function() {
   av.umsg(interpret("av_c6"));
   var labelCallStack0 = av.label("TowersofHanoi(0, A, C, B)", {left: 0, top: 380});
   //pseudo.unhighlight(1);
-  pseudo.highlight(10);
+  pseudo.highlight("rc1");
   av.step();
   //slide 5
-  pseudo.unhighlight(10);
+  pseudo.unhighlight("rc1");
   pseudo.highlight(11);
   rect0.hide();
   label0.hide();
@@ -61,7 +61,7 @@ $(document).ready(function() {
   av.step();
   //slide 6
   pseudo.unhighlight(11);
-  pseudo.highlight(10);
+  pseudo.highlight("rc1");
   rect1.hide();
   label1.hide();
  // New label 1 in the middle
@@ -72,18 +72,18 @@ $(document).ready(function() {
   av.step();
   //slide 7
   av.umsg(interpret("av_c8"));
-  pseudo.unhighlight(10);
+  pseudo.unhighlight("rc1");
   av.step();
   //slide 8
-  pseudo.highlight(10);
+  pseudo.highlight("rc1");
   rect06.hide();
   label2122.hide();
   var label068 = av.label("0", {left: 425, top: 130});
   var rect068 = av.g.rect(330, 150, 90, 20).addClass("disk0color");
   av.step();
   //slide 9
-  pseudo.unhighlight(10);
-  pseudo.highlight(11);
+  pseudo.unhighlight("rc1");
+  pseudo.highlight("rcac");
   rect2.hide();
   label2.hide();
   labelCallStack1.hide();
@@ -97,8 +97,8 @@ $(document).ready(function() {
   av.step();
   //slide 11
   labelCallStack0.show();
-  pseudo.unhighlight(11);
-  pseudo.highlight(8);
+  pseudo.unhighlight("rcac");
+  pseudo.highlight("sig");
   rect068.hide();
   label068.hide();
   var label06810 = av.label("0", {left: 165, top: 132});
@@ -107,7 +107,7 @@ $(document).ready(function() {
   //slide 12
   labelCallStack0.hide();
   av.umsg(interpret("av_c11"));
-  pseudo.unhighlight(8);
+  pseudo.unhighlight("sig");
   pseudo.highlight(16);
   rect17.hide();
   label17.hide();
@@ -116,8 +116,8 @@ $(document).ready(function() {
   av.step();
   //slide 13
   av.umsg(interpret("av_c12"));
-  pseudo.unhighlight(10);
-  pseudo.highlight(11);
+  pseudo.unhighlight("rc1");
+  pseudo.highlight("rcac");
   rect06810.hide();
   label06810.hide();
   labelCallStack0.show();
@@ -126,16 +126,16 @@ $(document).ready(function() {
   av.step();
   //slide 14
   av.umsg(interpret("av_c13"));
-  pseudo.unhighlight(11);
-  pseudo.highlight(11);
+  pseudo.unhighlight("rcac");
+  pseudo.highlight("rcac");
   labelCallStack0.hide();
   av.step();
   //slide 15
   labelCallStack1.hide();
   av.step();
   //slide 16
-  pseudo.unhighlight(11);
-  pseudo.highlight(10);
+  pseudo.unhighlight("rcac");
+  pseudo.highlight("rc1");
   labelCallStack2.hide();
   rect3.hide();
   label3.hide();
@@ -145,8 +145,8 @@ $(document).ready(function() {
   rect313.show();
   av.step();
   //slide 17
-  pseudo.unhighlight(10);
-  pseudo.highlight(11);
+  pseudo.unhighlight("rc1");
+  pseudo.highlight("rcac");
   labelCallStack2.show();
   av.step();
   //slide 18
@@ -156,16 +156,16 @@ $(document).ready(function() {
   labelCallStack0.show();
   av.step();
   //slide 20
-  pseudo.unhighlight(11);
-  pseudo.highlight(11);
+  pseudo.unhighlight("rcac");
+  pseudo.highlight("rcac");
   rect0681012.hide();
   label0681012.hide();
   var label068101214 = av.label("0", {left: 428, top: 132});
   var  rect068101214 = av.g.rect(330, 150, 90, 20).addClass("disk0color");
   av.step();
   //slide 21
-  pseudo.unhighlight(11);
-  pseudo.highlight(10);
+  pseudo.unhighlight("rcac");
+  pseudo.highlight("rc1");
   labelCallStack0.hide();
   rect1711.hide();
   label1711.hide();
@@ -176,8 +176,8 @@ $(document).ready(function() {
   labelCallStack0.show();
   av.step();
   //slide 23
-  pseudo.unhighlight(10);
-  pseudo.highlight(12);
+  pseudo.unhighlight("rc1");
+  pseudo.highlight("rc2");
   rect068101214.hide();
   label068101214.hide();
   labelCallStack0.hide();
@@ -186,12 +186,12 @@ $(document).ready(function() {
   av.step();
   //slide 24
   labelCallStack1.hide();
-  pseudo.unhighlight(12);
-  pseudo.highlight(11);
+  pseudo.unhighlight("rc2");
+  pseudo.highlight("rcac");
   av.step();
   //slide 25
-  pseudo.unhighlight(11);
-  pseudo.highlight(12);
+  pseudo.unhighlight("rcac");
+  pseudo.highlight("rc2");
   rect29.hide();
   label29.hide();
   var label216 = av.label("2", {left: 468, top: 132});
@@ -200,24 +200,24 @@ $(document).ready(function() {
   rect216.show();
   av.step();
   //slide 26
-  pseudo.unhighlight(12);
-  pseudo.highlight(10);
+  pseudo.unhighlight("rc2");
+  pseudo.highlight("rc1");
   labelCallStack1.show();
   av.step();
   //slide 27
   labelCallStack0.show();
   av.step();
   //slide 28
-  pseudo.unhighlight(10);
-  pseudo.highlight(11);
+  pseudo.unhighlight("rc1");
+  pseudo.highlight("rcac");
   rect015.hide();
   label015.hide();
   var label017  = av.label("0", {left: 660, top: 162});
   var rect017 = av.g.rect(565, 180, 90, 20).addClass("disk0color");
   av.step();
   //slide 29
-  pseudo.unhighlight(11);
-  pseudo.highlight(10);
+  pseudo.unhighlight("rcac");
+  pseudo.highlight("rc1");
   rect171115.hide();
   label171115.hide();
   labelCallStack0.hide();
@@ -227,13 +227,13 @@ $(document).ready(function() {
   rect118.show();
   av.step();
   //slide 30
-  pseudo.unhighlight(10);
-  pseudo.highlight(11);
+  pseudo.unhighlight("rc1");
+  pseudo.highlight("rcac");
   labelCallStack0.show();
   av.step();
   //slide 31
-  pseudo.unhighlight(11);
-  pseudo.highlight(11);
+  pseudo.unhighlight("rcac");
+  pseudo.highlight("rcac");
   rect017.hide();
   label017.hide();
   var label019 = av.label("0", {left: 440, top: 72});
@@ -243,8 +243,8 @@ $(document).ready(function() {
   labelCallStack0.hide();
   av.step();
   //slide 32
-  pseudo.unhighlight(11);
-  pseudo.highlight(9);
+  pseudo.unhighlight("rcac");
+  pseudo.highlight("bc");
   av.step();
   //slide 33
   labelCallStack0.hide();

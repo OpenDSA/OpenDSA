@@ -12,18 +12,18 @@ $(document).ready(function() {
   av.umsg(interpret("av_c1"));
   var pseudo = av.code(code);
   pseudo.show();
-  pseudo.highlight(2);
+  pseudo.highlight("bc");
   av.displayInit();
   av.step();
   // Slide 2
   av.umsg(interpret("av_c2"));
-  pseudo.unhighlight(2);
-  pseudo.highlight(3);
+  pseudo.unhighlight("bc");
+  pseudo.highlight("bcac");
   av.step();
   // Slide 3
   av.umsg(interpret("av_c3"));
-  pseudo.unhighlight(3);
-  pseudo.highlight(5);
+  pseudo.unhighlight("bcac");
+  pseudo.highlight("rc");
   av.step();
   // Slide 4
   av.umsg(interpret("av_c4"));

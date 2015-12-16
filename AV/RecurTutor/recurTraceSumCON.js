@@ -22,19 +22,19 @@ $(document).ready(function() {
   av.step();
   // Slide 3
   av.umsg(interpret("av_c3"));
-  pseudo.highlight(2);
+  pseudo.highlight("bc");
   av.step();
   // Slide 4
   av.umsg(interpret("av_c4"));
-  pseudo.unhighlight(2);
-  pseudo.highlight(5);
+  pseudo.unhighlight("bc");
+  pseudo.highlight("rc");
   av.step();
   // Slide 5
   var arrcopyn2 = av.ds.array(theArray, {left: 40, top:  75, indexed: false});
   var labeln2 = av.label("n=2", {before: arrcopyn2, left: 5, top: 75});
   av.umsg(interpret("av_c5"));
-  pseudo.unhighlight(5);
-  pseudo.highlight(1);
+  pseudo.unhighlight("rc");
+  pseudo.highlight("sig");
   av.step();
   // Slide 6
   av.umsg(interpret("av_c6"));
@@ -43,28 +43,28 @@ $(document).ready(function() {
   var arrcopyn1 = av.ds.array(theArray, {left: 40, top:  30, indexed: false});
   var labeln1 = av.label("n=1", {before: arrcopyn2, left: 5, top: 30});
   av.umsg(interpret("av_c7"));
-  pseudo.unhighlight(1);
-  pseudo.highlight(5);
+  pseudo.unhighlight("sig");
+  pseudo.highlight("rc");
   av.step();
   // Slide 8
   av.umsg(interpret("av_c8"));
-  pseudo.unhighlight(5);
-  pseudo.highlight(1);
+  pseudo.unhighlight("rc");
+  pseudo.highlight("sig");
   av.step();
   // Slide 9
   av.umsg(interpret("av_c9"));
-  pseudo.unhighlight(1);
-  pseudo.highlight(5);
+  pseudo.unhighlight("sig");
+  pseudo.highlight("rc");
   av.step();
   // Slide 10
   av.umsg(interpret("av_c10"));
-  pseudo.unhighlight(5);
-  pseudo.highlight(3);
+  pseudo.unhighlight("rc");
+  pseudo.highlight("bcac");
   av.step();
   // Slide 11
   av.umsg(interpret("av_c11"));
-  pseudo.unhighlight(3);
-  pseudo.highlight(5);
+  pseudo.unhighlight("bcac");
+  pseudo.highlight("rc");
   arrcopyn1.highlight([0]);
   //arr.highlight([0]);
   av.step();

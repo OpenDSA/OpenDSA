@@ -29,11 +29,11 @@ $(document).ready(function() {
   var rect10 = av.g.rect(675, 34, 50, 95).addClass("tilteddominocolor");
   rect10.rotate(-55);
   av.label("1's digit",  {top: "6px", left: "700px"}).addClass("digitstyle");
-  pseudo.highlight(3);
+  pseudo.highlight("bcac");
   av.step();
   av.umsg(interpret("av_c4"));
-  pseudo.highlight(5);
-  pseudo.unhighlight(3);
+  pseudo.highlight("rc");
+  pseudo.unhighlight("bcac");
   av.step();
   av.umsg(interpret("av_c5"));
   rect4.hide();

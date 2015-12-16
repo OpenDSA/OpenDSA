@@ -35,36 +35,36 @@ $(document).ready(function() {
   pseudo9.hide();
   pseudo10.hide();
   pseudo2.show();
-  pseudo2.highlight(1);
-  pseudo2.highlight(4);
+  pseudo2.highlight("sig");
+  pseudo2.highlight("rc");
   av.step();
   // Slide 3
   av.umsg(interpret("av_c3"));
   pseudo3.show();
-  pseudo3.highlight(1);
-  pseudo3.highlight(4);
+  pseudo3.highlight("sig");
+  pseudo3.highlight("rc");
   av.step();
   // Slide 4
   av.umsg(interpret("av_c4"));
   pseudo4.show();
-  pseudo4.highlight(1);
-  pseudo4.highlight(4);
+  pseudo4.highlight("sig");
+  pseudo4.highlight("rc");
   av.step();
   // Slide 5
   av.umsg(interpret("av_c5"));
   pseudo5.show();
-  pseudo5.highlight(1);
-  pseudo5.highlight(4);
+  pseudo5.highlight("sig");
+  pseudo5.highlight("rc");
   av.step();
   // Slide 6
   av.umsg(interpret("av_c6"));
   pseudo6.show();
-  pseudo6.highlight(2);
+  pseudo6.highlight("bc");
   av.step();
   // Slide 7
   av.umsg(interpret("av_c7"));
-  pseudo6.unhighlight(2);
-  pseudo6.highlight(3);
+  pseudo6.unhighlight("bc");
+  pseudo6.highlight("bcac");
   av.step();
   // Slide 8
   av.umsg(interpret("av_c8"));
@@ -74,21 +74,21 @@ $(document).ready(function() {
   pseudo5.hide();
   pseudo6.hide();
   pseudo7.show();
-  pseudo7.highlight(4);
+  pseudo7.highlight("rc");
   av.step();
   // Slide 9
   av.umsg(interpret("av_c9"));
   pseudo8.show();
-  pseudo8.highlight(4);
+  pseudo8.highlight("rc");
   av.step();
   // Slide 10
   av.umsg(interpret("av_c10"));
   pseudo9.show();
-  pseudo9.highlight(4);
+  pseudo9.highlight("rc");
   av.step();
   // Slide 11
   av.umsg(interpret("av_c11"));
   pseudo10.show();
-  pseudo10.highlight(3);
+  pseudo10.highlight("bcac");
   av.recorded();
 });

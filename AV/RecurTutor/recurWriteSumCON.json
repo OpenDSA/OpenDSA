@@ -14,21 +14,30 @@
        {
         "url": "../../../SourceCode/Processing/RecurTutor/WrtSumV1.pde",
         "tags": {
+         "bc": 3,
+         "rc": 5
         }
        },
       {
         "url": "../../../SourceCode/Processing/RecurTutor/WrtSumV2.pde",
         "tags": {
+         "bc": 3,
+         "rc": 6,
+         "ret": 8
        }
       },
       {
         "url": "../../../SourceCode/Processing/RecurTutor/WrtSumV3.pde",
         "tags": {
+         "bc": 3,
+         "rc": 5      
 	  }
       },
       {
         "url": "../../../SourceCode/Processing/RecurTutor/WrtSumV4.pde",
         "tags": {
+         "bc": 3,
+         "rc": 5
       }
      }
     ],
@@ -36,21 +45,31 @@
        {
         "url": "../../../SourceCode/Java/RecurTutor/WrtSumV1.java",
         "tags": {
+         "bc": 3,
+         "rc": 5
         }
        },
       {
         "url": "../../../SourceCode/Java/RecurTutor/WrtSumV2.java",
         "tags": {
+         "bc": 3,
+         "rc": 6,
+         "ret": 8
+         
        }
       },
       {
         "url": "../../../SourceCode/Java/RecurTutor/WrtSumV3.java",
         "tags": {
+         "bc": 3,
+         "rc": 5
 	  }
       },
       {
         "url": "../../../SourceCode/Java/RecurTutor/WrtSumV4.java",
         "tags": {
+         "bc": 3,
+         "rc": 5
       }
      }
     ],
@@ -58,21 +77,30 @@
        {
         "url": "../../../SourceCode/Java_Generic/RecurTutor/WrtSumV1.java",
         "tags": {
+         "bc": 3,
+         "rc": 5
         }
        },
       {
         "url": "../../../SourceCode/Java_Generic/RecurTutor/WrtSumV2.java",
         "tags": {
+         "bc": 3,
+         "rc": 6,
+         "ret": 8
        }
       },
       {
         "url": "../../../SourceCode/Java_Generic/RecurTutor/WrtSumV3.java",
         "tags": {
+         "bc": 3,
+         "rc": 5
 	  }
       },
       {
         "url": "../../../SourceCode/Java_Generic/RecurTutor/WrtSumV4.java",
         "tags": {
+         "bc": 3,
+         "rc": 5
       }
      }
    ],
@@ -80,21 +108,30 @@
        {
         "url": "../../../SourceCode/C++/RecurTutor/WrtSumV1.cpp",
         "tags": {
+         "bc": 3,
+         "rc": 5
         }
        },
       {
         "url": "../../../SourceCode/C++/RecurTutor/WrtSumV2.cpp",
         "tags": {
+         "bc": 3,
+         "rc": 6,
+         "ret": 8
        }
       },
       {
         "url": "../../../SourceCode/C++/RecurTutor/WrtSumV3.cpp",
         "tags": {
+         "bc": 3,
+         "rc": 5
 	  }
       },
       {
         "url": "../../../SourceCode/C++/RecurTutor/WrtSumV4.cpp",
         "tags": {
+         "bc": 3,
+         "rc": 5
       }
      }
    ]
