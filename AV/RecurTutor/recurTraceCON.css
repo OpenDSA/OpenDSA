@@ -47,3 +47,22 @@
   text-align: center;
 }
 
+.disk0color{
+  fill:grey;
+}
+
+.disk1color{
+  fill:yellow;
+}
+
+.disk2color{
+  fill:purple;
+}
+
+.disk3color{
+  fill:green;
+}
+
+.polecolor{
+  fill:brown;
+}
