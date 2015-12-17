@@ -38,6 +38,7 @@
 
     // generate random infix
     initialInfix = generateRandomInfix(arraySize, 2, false);
+    ODSA.AV.logExerciseInit(initialInfix);
 
     // create array with infix expression
     if (infixArray) {
@@ -135,7 +136,7 @@
 
     // postfix index
     var postfixInd = 0;
-    
+
     var node;
 
     for (var i = 0; i < arraySize; i++) {

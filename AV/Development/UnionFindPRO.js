@@ -11,6 +11,7 @@
     var nodes1 = [], nodes2 = [];
     var pairCount;  //Number of pairs
     var step;      //The current instruction step
+    var topoffset = 50;
 
     jsav.recorded();
 	
@@ -33,12 +34,12 @@
       for (i = 0; i < arr.length; i++) {
         arr[i] = String.fromCharCode(i + 65);
       }
-      labels = jsav.ds.array(arr, {left: 250, top: 200, indexed: true});
+      labels = jsav.ds.array(arr, {left: 250, top: topoffset + 46, indexed: true});
       //Initializing the parent pointer
       for (i = 0; i < arr.length; i++) {
         arr[i] = "/";
       }
-      parents = jsav.ds.array(arr, {left: 250, top: 153});
+      parents = jsav.ds.array(arr, {left: 250, top: topoffset + 0});
       initTree();
       generateRandomPairs();
       jsav.displayInit();
@@ -199,7 +200,7 @@
 	  
     function initTree() {
       var newNode;
-      tree = jsav.ds.tree({left: 90, top: 300, nodegap: 20});
+      tree = jsav.ds.tree({left: 90, top: topoffset + 100, nodegap: 20});
       var root = tree.newNode("X");
       tree.root(root);
       root.id("root");
@@ -220,10 +221,13 @@
       alert("Heapsort Proficiency Exercise\nWritten by Ville Karavirta\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://algoviz.org/OpenDSA\nSource and development history available at\nhttps://github.com/cashaffer/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
     }
 
+// fixState has a bug, it can't handle properly the case where the user gets
+// the order backward on equal-weight nodes. So I am putting this to "undo" for now.
     exercise = jsav.exercise(model, init,
 			     { compare:  {css: "background-color"},
                                controls: $('.jsavexercisecontrols'),
-                               fix: fixState });
+//                               fix: fixState });
+                               fix: fixState, fixmode: "undo"});
     exercise.reset();
 	
     function getNodeByValue(value){

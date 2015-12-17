@@ -12,8 +12,6 @@ $(document).ready(function () {
   l.addFirst(15).addFirst(12).addFirst(10).addFirst(23).addFirst(20);
   l.layout();
   var bar = l.get(2).addVLine();
-  var slash = l.get(4).addTail();
-  var slash3 = l.get(3).addTail({visible: 0}); //Diagonal slash in step 3, hide for now
 
   // Set up the various pointers
   var head = av.pointer("head", l.get(0));
@@ -35,8 +33,6 @@ $(document).ready(function () {
   av.step();
 
   // Slide 3
-  slash.hide();
-  slash3.show();
   l.remove(2);
   l.layout();
   av.umsg(interpret("av_c3"));

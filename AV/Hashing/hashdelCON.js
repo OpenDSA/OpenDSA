@@ -2,7 +2,7 @@ $(document).ready(function () {
   "use strict";
   var empty = [];
   empty.length = 10;
-  var av = new JSAV("hashdelCON1");
+  var av = new JSAV("hashdelCON");
   // Create an array object under control of JSAV library
   var arr = av.ds.array(empty, {indexed: true});
 

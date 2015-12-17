@@ -58,7 +58,7 @@
 
     // jsav variable
     // not selected  0
-    // selected      1 
+    // selected      1
     nodeSelected = av.variable(0);
     selectedPointer = av.variable(0);
 
@@ -68,7 +68,7 @@
     $layoutButton.attr("disabled", false);
     // set hasCheckedModelAnswer to false
     hasCheckedModelAnswer = false;
-    
+
     return tree;
   }
 
@@ -133,7 +133,7 @@
       console.warn("Difficulty \"" + options.difficulty + "\" does not exist. Falling back to hard difficulty.");
       options.difficulty = "hard";
     }
-    
+
     while (true) {
       var arr = [];
       var bt = av.ds.binarytree();
@@ -348,5 +348,11 @@
     feedback: "atend",
     modelDialog: {width: 780}
   });
+  // NOTE!
+  // FOR SOME REASON JSON DUMP CREATES A CYCLE TO THE TREE, SO IT IS
+  // OVERRID HERE TO PREVENT THE EXERCISE FROM CRASHING.
+  exercise._jsondump = function() {
+    return JSON.stringify([{dummy: "fixme"}]);
+  };
   exercise.reset();
 }(jQuery));

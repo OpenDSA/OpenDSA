@@ -15,17 +15,17 @@ $(document).ready(function () {
   for (ind = 0; ind < arr.length; ind++) {
     arr[ind] = "/";
   }
-  var parents = av.ds.array(arr, {left: 280, top: -40});
+  var parents = av.ds.array(arr, {left: 280, top: 0});
 
   //Initializing the labels
   for (ind = 0; ind < arr.length; ind++) {
     arr[ind] = String.fromCharCode(ind + 65);
   }
-  var labels = av.ds.array(arr, {left: 280, top: 0, indexed: true});
+  var labels = av.ds.array(arr, {left: 280, top: 40, indexed: true});
 
   //Displaying Tree Nodes
   var newNode;
-  var tree = av.ds.tree({left: 280, top: 60, nodegap: 20});
+  var tree = av.ds.tree({left: 280, top: 95, nodegap: 20});
   var root = tree.newNode("X");
   tree.root(root);
   for (ind = 0; ind < arr.length; ind++) {

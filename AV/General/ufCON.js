@@ -15,19 +15,19 @@ $(document).ready(function () {
   for (ind = 0; ind < arr.length; ind++) {
     arr[ind] = String.fromCharCode(ind + 65);
   }
-  var labels = av.ds.array(arr, {left: 620, top: -50, indexed: true,
+  var labels = av.ds.array(arr, {left: 620, top: 0, width: 40, indexed: true,
                                  layout: 'vertical'});
 
   //Initializing the parent pointer
   for (ind = 0; ind < arr.length; ind++) {
     arr[ind] = "/";
   }
-  var parents = av.ds.array(arr, {left: 675, top: -50, layout: 'vertical'});
+  var parents = av.ds.array(arr, {left: 675, top: 0, width: 40, layout: 'vertical'});
   var pseudo = av.code(code);
 
   //Displaying Tree Nodes
   var newNode;
-  var tree = av.ds.tree({left: 50, top: 235, nodegap: 20});
+  var tree = av.ds.tree({left: 50, top: 260, nodegap: 20});
   var root = tree.newNode("X");
   tree.root(root);
   for (ind = 0; ind < arr.length; ind++) {

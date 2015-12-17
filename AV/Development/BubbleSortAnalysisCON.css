@@ -8,3 +8,18 @@
   -o-transform: rotate(90deg);
   transform: rotate(90deg);
 }
+.bigTriangle{
+  fill: blue; 
+  opacity: 0.2 !important;
+}
+.smallTriangle{
+  fill: green;
+  opacity: 0.2 !important;
+}
+.largeLabel{
+	font-size: 16px; 
+	text-align: center;
+}
+.arrayStyle{
+  background-color: #00FA9A;
+}

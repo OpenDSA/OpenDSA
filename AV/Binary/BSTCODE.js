@@ -1,9 +1,9 @@
 "use strict";
-/*global ODSA */
+/*global JSAV, document */
 $(document).ready(function () {
   // TODO: This block can be removed if / when a fixstate function is created
-		    //  window.JSAV_EXERCISE_OPTIONS.fixmode = "undo";
-		    //  ODSA.UTILS.parseURLParams();
+                    //  window.JSAV_EXERCISE_OPTIONS.fixmode = "undo";
+                    //  ODSA.UTILS.parseURLParams();
 
   JSAV._types.ds.BinaryTree.prototype.insert = function (value) {
     // helper function to recursively insert

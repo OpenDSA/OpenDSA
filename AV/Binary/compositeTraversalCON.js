@@ -1,7 +1,7 @@
 /*global ODSA */
-"use strict";
-// Remove slideshow
+// Composite design traversal
 $(document).ready(function () {
+"use strict";
 
   function preorder(node) {
     //check if null

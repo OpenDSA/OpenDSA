@@ -6,16 +6,14 @@
   width:800px;
   height:50px;
 }
-.rotated {
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  transform: rotate(90deg);
-}
 h1{
   font-size: 1em;
 }
 .dashed{
   stroke-dasharray: 5, 5;
+}
+.largeLabel{
+  font-size: 22px; 
+  text-align: center;
+  font-style: bold;
 }

@@ -1,18 +1,19 @@
-"use strict";
 // Written by Mohammed Farghally and Cliff Shaffer
 $(document).ready(function () {
+  "use strict";
   var av = new JSAV("UFfigCON", {"animationMode": "none"});
   var ind;
+  var leftoffset = 260;
 
   var arr1 = [5, 0, 0, 5, 3, "/", 5, 2, 5, "/"];
-  var parents = av.ds.array(arr1, {top: -10});
+  var parents = av.ds.array(arr1, {top: 0, left: leftoffset});
 
   var arr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
-  var labels = av.ds.array(arr, {top: 25, indexed: true, center: true});
+  var labels = av.ds.array(arr, {top: 35, left: leftoffset, indexed: true, center: true});
 
   //Displaying Tree Nodes
   var newNode;
-  var tree = av.ds.tree({top: 100, center: true, nodegap: 20});
+  var tree = av.ds.tree({top: 85, left: leftoffset + 30, center: true, nodegap: 20});
   var root = tree.newNode("X");
   tree.root(root); // This "root" node will be hidden
 
@@ -42,4 +43,6 @@ $(document).ready(function () {
   c.addChild(h);
   root.hide({recursive: false});
   tree.layout();
+  av.displayInit();
+  av.recorded();
 });

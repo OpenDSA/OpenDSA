@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "av_c1": "The linked list before insertion. 15 is the value to be inserted.",
       "av_c2": "Create a new link node.",
@@ -13,7 +13,7 @@
       "av_c10": "Increase the list size by 1."
     }
   },
-  "code" : {
+  "code": {
     "processing": {
       "url": "../../../SourceCode/Processing/Lists/DList.pde",
       "lineNumbers": false,

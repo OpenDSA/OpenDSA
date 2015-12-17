@@ -1,7 +1,5 @@
-/* global ODSA, JSAV*/
-(function ($) {
+(function() {
   "use strict";
-
   // AV variables
   var arraySize = 26,
       key,
@@ -19,13 +17,14 @@
       pseudo,
 
       // get the configurations from the configuration file
-      config = ODSA.UTILS.loadConfig({'av_container': 'jsavcontainer'}),
+      config = ODSA.UTILS.loadConfig({av_container: "jsavcontainer"}),
       interpret = config.interpreter,
       code = config.code,
       settings = config.getSettings(),
+      exercise,
 
       // create a JSAV instance
-      av = new JSAV($("#jsavcontainer"), { autoresize: false, settings: settings });
+      av = new JSAV($("#jsavcontainer"), {autoresize: false, settings: settings});
 
   av.recorded(); // we are not recording an AV with an algorithm
 
@@ -36,18 +35,48 @@
     pseudo.highlight("highlight");
     pseudo.addClass("return", "returnline");
     // toggle with double click
-    pseudo.element.dblclick(function () {
+    pseudo.element.dblclick(function() {
       pseudo.element.toggleClass("collapsed");
     });
     pseudo.element.attr("title", "Double click to toggle code");
   }
 
+  function pointerClickHandler(pointer) {
+    var pointers = [lowPointer, highPointer],
+        pointerIndex = pointers.indexOf(pointer);
+    // click handler
+    function handler() {
+      switch (clickState.value()) {
+      case -1:
+        // nothing selected -> select pointer
+        clickState.value(pointerIndex);
+        pointer.addClass("selected");
+        break;
+      case pointerIndex:
+        // this pointer was selected -> deselect
+        clickState.value(-1);
+        pointer.removeClass("selected");
+        break;
+      default:
+        // another pointer was selected -> deselect and select this one
+        pointers.forEach(function(p) { p.removeClass("selected"); });
+        clickState.value(pointerIndex);
+        pointer.addClass("selected");
+        break;
+      }
+    }
+    // assign click handler to pointer area and pointer arrow
+    pointer.element.click(handler);
+    pointer.arrow.click(handler);
+  }
+
   function initialize() {
     //generate random array with ascending values
     var min = 1 + Math.floor(Math.random() * 20),
-        max = 120 + Math.floor(Math.random() * 20);
+        max = 120 + Math.floor(Math.random() * 20),
+        i;
     key = (min + max) / 2;
-    for (var i = 0; i < arraySize; i++) {
+    for (i = 0; i < arraySize; i++) {
       initialArray[i] = min + Math.floor((max - min) / (1 + Math.exp((arraySize / 2 - i) * 0.5)));
     }
 
@@ -57,13 +86,14 @@
     } else {
       key = Math.floor(2 * (min + max) / 7);
     }
+    ODSA.AV.logExerciseInit([key]);
 
     // clear old elements
     if ($findLabel) {
       $findLabel.remove();
     }
     [keyholder, array, clickState, lowIndex, highIndex, lowPointer, highPointer, returnValue]
-      .forEach(function (item) { if (item) { item.clear(); } });
+      .forEach(function(item) { if (item) { item.clear(); } });
 
     // hide return box
     $("form.returnbox")[0].reset();
@@ -73,7 +103,7 @@
     keyholder = av.ds.array([key], {indexed: false});
     keyholder.css(0, {
       "background-color": "#ddf",
-      "border": "none"
+      border: "none"
     });
     $findLabel = $("<p>" + interpret("av_find_label") + "</p>").css({
       "text-align": "center",
@@ -130,7 +160,7 @@
   function modelSolution(jsav) {
     jsav.ds.array([key], {indexed: false}).css(0, {
       "background-color": "#ddf",
-      "border": "none"
+      border: "none"
     });
     var modelArray = jsav.ds.array(initialArray, {indexed: true, layout: "bar", autoresize: false});
 
@@ -152,9 +182,9 @@
       left: -20,
       arrowAnchor: "center bottom"
     };
-    var lowPointer = jsav.pointer("low", modelArray.index(0), pointerOpts);
+    var mLowPointer = jsav.pointer("low", modelArray.index(0), pointerOpts);
     pointerOpts.left = 20;
-    var highPointer = jsav.pointer("high", modelArray.index(arraySize - 1), pointerOpts);
+    var mHighPointer = jsav.pointer("high", modelArray.index(arraySize - 1), pointerOpts);
 
     // draw the blue line
     var arrayX = modelArray.element.offset().left - jsav.canvas.offset().left,
@@ -168,12 +198,12 @@
     });
 
     // create the interLine
-    var interLine = jsav.g.line(arrayX, lineY, arrayX + lineWidth, lineY, {
+    var modelInterLine = jsav.g.line(arrayX, lineY, arrayX + lineWidth, lineY, {
       stroke: "#f00",
       "stroke-width": 3,
       opacity: 0.2
     });
-    drawLine(modelArray, 0, arraySize - 1, interLine);
+    drawLine(modelArray, 0, arraySize - 1, modelInterLine);
 
 
     jsav._undo = [];
@@ -193,7 +223,7 @@
       // modelArray.highlight(mid);
       if (initialArray[mid] < key) {
         low = mid + 1;
-        lowPointer.target(modelArray.index(low));
+        mLowPointer.target(modelArray.index(low));
         jsav.umsg(interpret("av_ms_arr_mid_lt_key"), {fill: {
           arr_at_mid: initialArray[mid],
           key: key,
@@ -202,7 +232,7 @@
         refLines(jsav, code, "tbl_mid_lt_key");
       } else if (initialArray[mid] > key) {
         high = mid - 1;
-        highPointer.target(modelArray.index(high));
+        mHighPointer.target(modelArray.index(high));
         jsav.umsg(interpret("av_ms_arr_mid_gt_key"), {fill: {
           arr_at_mid: initialArray[mid],
           key: key,
@@ -216,7 +246,7 @@
       modelLow.value(low);
       modelHigh.value(high);
       // draw Line
-      drawLine(modelArray, low, high, interLine);
+      drawLine(modelArray, low, high, modelInterLine);
       if (modelArray.value(mid) === key) {
         modelReturn.value(mid);
         jsav.gradeableStep();
@@ -226,16 +256,16 @@
       jsav.gradeableStep();
     }
     if (initialArray[low] >= key) {
-      jsav.umsg(interpret("av_ms_loop_stopped_1"), {fill: { low: low }});
+      jsav.umsg(interpret("av_ms_loop_stopped_1"), {fill: {low: low}});
       if (initialArray[low] === key) {
-        jsav.umsg("<br/>" + interpret("av_ms_found"), {preserve: true, fill: { mid: low }});
+        jsav.umsg("<br/>" + interpret("av_ms_found"), {preserve: true, fill: {mid: low}});
         modelReturn.value(low);
       } else {
         jsav.umsg("<br/>" + interpret("av_ms_not_found"), {preserve: true});
         modelReturn.value(-1);
       }
     } else {
-      jsav.umsg(interpret("av_ms_loop_stopped_2"), {fill: { high: high }});
+      jsav.umsg(interpret("av_ms_loop_stopped_2"), {fill: {high: high}});
       jsav.umsg("<br/>" + interpret("av_ms_not_found"), {preserve: true});
       modelReturn.value(-1);
     }
@@ -244,15 +274,15 @@
   }
 
   // updates and shows the interpolation line
-  function drawLine(array, low, high, line) {
-    var arrayX = array.element.offset().left - array.element.parent().offset().left,
-        arrayY = array.element.offset().top - array.element.parent().offset().top + 150,
-        barWidth = array.element.find(".jsavnode:eq(0)").outerWidth(true),
-        dy = - (array.value(high) - array.value(low)) * 130 / array.value(arraySize - 1),
+  function drawLine(drawArray, low, high, line) {
+    var arrayX = drawArray.element.offset().left - drawArray.element.parent().offset().left,
+        arrayY = drawArray.element.offset().top - drawArray.element.parent().offset().top + 150,
+        barWidth = drawArray.element.find(".jsavnode:eq(0)").outerWidth(true),
+        dy = -(drawArray.value(high) - drawArray.value(low)) * 130 / drawArray.value(arraySize - 1),
         dx = (high - low) * barWidth,
         k = (dx ? dy / dx : 0),
         x0 = arrayX + 2 + barWidth * low,
-        y0 = arrayY - 130 * array.value(low) / array.value(arraySize - 1),
+        y0 = arrayY - 130 * drawArray.value(low) / drawArray.value(arraySize - 1),
         b = y0 - k * x0,
         x1 = arrayX + 2,
         y1 = k * x1 + b,
@@ -267,61 +297,32 @@
     return Math.floor(result * 100) / 100;
   }
 
-  function printIntersection(av, low, high) {
+  function printIntersection(printAV, low, high) {
     var x = intersectionX(low, high);
     if (isFinite(x)) {
-      av.umsg(interpret("av_lines_intersect") + " (" + x + ", " + key + ")");
+      printAV.umsg(interpret("av_lines_intersect") + " (" + x + ", " + key + ")");
     } else {
-      av.umsg(interpret("av_lines_dont_intersect"));
+      printAV.umsg(interpret("av_lines_dont_intersect"));
     }
   }
 
-  function refLines(av, code, lineTag) {
-    if (!code) {
+  function refLines(refAV, refCode, lineTag) {
+    if (!refCode) {
       return;
     }
-    var lines = code.tags[lineTag];
+    var lines = refCode.tags[lineTag];
     if (typeof lines === "number") {
-      av.umsg(" " + interpret("av_line"), {preserve: true, fill: {first: lines}});
+      refAV.umsg(" " + interpret("av_line"), {preserve: true, fill: {first: lines}});
     } else if (typeof lines === "object") {
-      av.umsg(" " + interpret("av_lines"), {preserve: true, fill: {first: lines[0], second: lines[1]}});
+      refAV.umsg(" " + interpret("av_lines"), {preserve: true, fill: {first: lines[0], second: lines[1]}});
     }
   }
 
   var showHidden = JSAV.utils.getUndoableFunction(
     av,
-    function (element) { element.css("visibility", "visible"); },
-    function (element) { element.css("visibility", "hidden"); }
+    function(element) { element.css("visibility", "visible"); },
+    function(element) { element.css("visibility", "hidden"); }
   );
-
-  var pointerClickHandler = function (pointer) {
-    var pointers = [lowPointer, highPointer],
-        pointerIndex = pointers.indexOf(pointer);
-    // click handler
-    function handler() {
-      switch (clickState.value()) {
-      case -1:
-        // nothing selected -> select pointer
-        clickState.value(pointerIndex);
-        pointer.addClass("selected");
-        break;
-      case pointerIndex:
-        // this pointer was selected -> deselect
-        clickState.value(-1);
-        pointer.removeClass("selected");
-        break;
-      default:
-        // another pointer was selected -> deselect and select this one
-        pointers.forEach(function (p) { p.removeClass("selected"); });
-        clickState.value(pointerIndex);
-        pointer.addClass("selected");
-        break;
-      }
-    }
-    // assign click handler to pointer area and pointer arrow
-    pointer.element.click(handler);
-    pointer.arrow.click(handler);
-  };
 
   function barClickHandler(index) {
     var pointers = [lowPointer, highPointer];
@@ -341,18 +342,17 @@
     exercise.gradeableStep();
   }
 
-  $("form.returnbox").submit(function () {
+  $("form.returnbox").submit(function() {
     returnValue.value(parseInt($("#returninput").val(), 10));
     showHidden($("#returndone"));
     exercise.gradeableStep();
     return false;
   });
 
-  var exercise = av.exercise(modelSolution, initialize, {
+  exercise = av.exercise(modelSolution, initialize, {
     // compare: [{class: "jsavhighlight"}],
     feedback: "atend",
     modelDialog: {width: 760}
   });
   exercise.reset();
-
-}(jQuery));
+}());

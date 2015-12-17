@@ -19,8 +19,6 @@ $(document).ready(function () {
   var l = av.ds.dlist({nodegap: 30, center: false, left: leftMargin, top: topMargin});
   l.addFirst("null").addFirst(10).addFirst(35).addFirst(8).addFirst(23).addFirst("null");
   l.layout();
-  l.get(0).addSlash("left");
-  var tailSlash = l.get(5).addSlash();
   var Vline = l.get(3).addVLine();
   var Vline1 = l.get(2).addVLine();
   Vline1.hide();

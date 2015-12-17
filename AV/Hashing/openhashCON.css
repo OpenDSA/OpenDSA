@@ -1,14 +1,9 @@
-.jsavcontainer {
-  height: 350px;
+#openhashCON1 .jsavcontainer {
+  height: 330px;
 }
 
-.jsavlist .jsavlistnode {
+#openhashCON1 .jsavlist .jsavlistnode {
   min-height: 25px !important;
   max-height: 25px !important;
   line-height: 23px !important;
-}
-
-.jsavcanvas > svg {
-  height: 350px;
-  width: 835px;
 }
