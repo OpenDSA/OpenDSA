@@ -684,12 +684,12 @@ if __name__ == "__main__":
                       dest="slides", action="store_true", default=False)
     parser.add_option("--dry-run", help="Causes configure.py to configure the book but stop before compiling it",
                       dest="dry_run", action="store_true", default=False)
-    parser.add_option("-o", help="Accepts a custom directory name instead of using the config file's name.",
+    parser.add_option("-b", help="Accepts a custom directory name instead of using the config file's name.",
                       dest="output_directory", default=None)
     # # parser.add_option("-a", "--create_course", help="Accepts a custom LMS configure file instead of using the predefined config file.",
     # #                   dest="conf_file", default=None)
-    parser.add_option("-a", help="Accepts a custom LMS configure file instead of using the predefined config file.",
-                      dest="conf_file", default=None)
+    # parser.add_option("-a", help="Accepts a custom LMS configure file instead of using the predefined config file.",
+    #                   dest="conf_file", default=None)
     # parser.add_option("-c", "--create_course", help="Causes configure.py to create course in target LMS", default=False)
     parser.add_option("-c", "--create_course", help="Causes configure.py to create course in target LMS",
                       dest="conf_file", default=None)

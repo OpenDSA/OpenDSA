@@ -587,9 +587,9 @@ class ODSA_Config:
             LMS_config = config_file_path[:-5] + '_LMSconf.json'
         else:
             if output_directory is None:
-                LMS_config = config_file_path[:-8] + sys.argv[3]
+                LMS_config = config_file_path[:-8] + sys.argv[3] + '.json'
             else:
-                LMS_config = config_file_path[:-8] + sys.argv[5]
+                LMS_config = config_file_path[:-8] + sys.argv[5] + '.json'
 
             # LMS_config = config_file_path[:-5] + '_LMSconf.json'
             # LMS_config = config_file_path[:-8] + sys.argv[1]
