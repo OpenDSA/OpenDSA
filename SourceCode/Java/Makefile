@@ -3,7 +3,7 @@ JAVA= java
 CFLAGS= -Xlint
 RFLAGS= 
 
-all: Demo Utils Lists Binary Sorting Searching
+all: Demo Misc Lists Binary Sorting Searching
 
 clean:
 	-rm -rf build
@@ -20,19 +20,18 @@ UpDown: Demo/UpDown.1 Demo/UpDown.2 Utils/Processing.java
 	javac $(CFLAGS) UpDown.java; \
 	$(JAVA) $(RFLAGS) UpDown
 
-Utils: UtilsTest Anal
+Misc: LargestTest Anal
 
-UtilsTest: build/UtilsTest/success
+LargestTest: build/LargestTest/success
 
-build/UtilsTest/success: Utils/UtilsTest.1 Utils/UtilsTest.2 Misc/Largest.java Utils/Permute.java Utils/Swap.java Utils/KVPair.java
-	@echo "Utils Test"
-	-@rm -rf build/UtilsTest
-	@mkdir build/UtilsTest
-	cat Utils/UtilsTest.1 Misc/Largest.java Utils/Swap.java Utils/Permute.java Utils/UtilsTest.2 > build/UtilsTest/UtilsTest.java
-	cp Utils/KVPair.java build/UtilsTest
-	cd build/UtilsTest; \
-	javac $(CFLAGS) UtilsTest.java; \
-	$(JAVA) $(RFLAGS) UtilsTest
+build/LargestTest/success: Misc/LargestTest.java
+	@echo "Largest Test"
+	-@rm -rf build/LargestTest
+	@mkdir build/LargestTest
+	cp Misc/LargestTest.java build/LargestTest
+	cd build/LargestTest; \
+	javac $(CFLAGS) LargestTest.java; \
+	$(JAVA) $(RFLAGS) LargestTest
 
 Anal: build/Anal/success
 

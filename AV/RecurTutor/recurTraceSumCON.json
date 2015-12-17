@@ -18,11 +18,45 @@
     }
   },
   "code" : {
+    "processing": {
+      "url": "../../../SourceCode/Processing/RecurTutor/WrtSumV4.pde",
+      "lineNumbers": false,
+      "tags": {
+       "sig": 1,
+       "bc": 2,
+       "bcac": 3,
+       "rc": 5  
+      }
+    },
     "java": {
       "url": "../../../SourceCode/Java/RecurTutor/WrtSumV4.java",
       "lineNumbers": false,
       "tags": {
+       "sig": 1,
+       "bc": 2,
+       "bcac": 3,
+       "rc": 5  
       }
-    }
+    },
+    "java_generic": {
+      "url": "../../../SourceCode/Java/RecurTutor/WrtSumV4.java",
+      "lineNumbers": false,
+      "tags": {
+       "sig": 1,
+       "bc": 2,
+       "bcac": 3,
+       "rc": 5  
+      }
+    },
+    "c++": {
+      "url": "../../../SourceCode/C++/RecurTutor/WrtSumV4.cpp",
+      "lineNumbers": false,
+      "tags": {
+       "sig": 1,
+       "bc": 2,
+       "bcac": 3,
+       "rc": 5  
+      }
+    } 
   }
 }
