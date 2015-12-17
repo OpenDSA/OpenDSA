@@ -27,6 +27,7 @@
         "startAfter": "/* *** ODSATag: slide2 *** */",
         "endBefore": "/* *** ODSAendTag: slide2 *** */",
         "tags": {
+        "sig": 2
         }
        },
       {
@@ -34,6 +35,7 @@
         "startAfter": "/* *** ODSATag: slide3 *** */",
         "endBefore": "/* *** ODSAendTag: slide3 *** */",
         "tags": {
+       
        }
       },
       {
@@ -48,6 +50,9 @@
         "startAfter": "/* *** ODSATag: slide7 *** */",
         "endBefore": "/* *** ODSAendTag: slide7 *** */",
         "tags": {
+         "rc1": 1,
+         "rc2": 2,
+         "rc3": 3
       }
      },
      {
@@ -76,6 +81,8 @@
         "startAfter": "/* *** ODSATag: slide16 *** */",
         "endBefore": "/* *** ODSAendTag: slide16 *** */",
         "tags": {
+         "bc": 1,
+         "rc": 3
 	  }
       },
       {
@@ -83,6 +90,8 @@
         "startAfter": "/* *** ODSATag: slide17 *** */",
         "endBefore": "/* *** ODSAendTag: slide17 *** */",
         "tags": {
+         "rc": 1,
+         "bc": 5
 	  }
       }
    ]

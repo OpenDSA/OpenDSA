@@ -34,3 +34,35 @@
   height: 600px;
 }
 
+.dominocolor{
+  fill:grey;
+}
+
+.tilteddominocolor{
+   fill:lightgray;
+}
+
+.digitstyle{
+  font-size: 15px;
+  text-align: center;
+}
+
+.disk0color{
+  fill:grey;
+}
+
+.disk1color{
+  fill:yellow;
+}
+
+.disk2color{
+  fill:purple;
+}
+
+.disk3color{
+  fill:green;
+}
+
+.polecolor{
+  fill:brown;
+}

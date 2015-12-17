@@ -117,7 +117,7 @@ CS3LMS: min
 	python $(CONFIG_SCRIPT) config/CS3.json -c True
 
 CS3vt: min
-	python $(CONFIG_SCRIPT) config/CS3.json $(opts)
+	python $(CONFIG_SCRIPT) config/CS3.json -b CS3test -c CS3vtt_LMSconf
 
 CS3in: min
 	python $(CONFIG_SCRIPT) config/CS3.json $(opts)

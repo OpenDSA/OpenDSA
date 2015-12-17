@@ -16,7 +16,7 @@ $(document).ready(function() {
   // Slide 2
   av.umsg(interpret("sc2"));
   var pseudo = av.code($.extend({lineNumbers: false}, code[0]));
-  pseudo.highlight(2);
+  pseudo.highlight("sig");
   av.step();
 
   // Slide 3
@@ -47,23 +47,23 @@ $(document).ready(function() {
 
   // Slide 8
   av.umsg(interpret("sc8"));
-  pseudo4.highlight(1);
+  pseudo4.highlight("rc1");
   av.step();
 
   // Slide 9
   av.umsg(interpret("sc9"));
-  pseudo4.unhighlight(1);
+  pseudo4.unhighlight("rc1");
   av.step();
 
   // Slide 10
   av.umsg(interpret("sc10"));
-  pseudo4.highlight(2);
+  pseudo4.highlight("rc2");
   av.step();
 
   // Slide 11
   av.umsg(interpret("sc11"));
-  pseudo4.unhighlight(2);
-  pseudo4.highlight(3);
+  pseudo4.unhighlight("rc2");
+  pseudo4.highlight("rc3");
   av.step();
 
   // Slide 12
@@ -92,8 +92,8 @@ $(document).ready(function() {
   av.umsg(interpret("sc16"));
   pseudo7.hide();
   var peseudo8 = av.code($.extend({lineNumbers: false, top: 10, left: 70}, code[7]));
-  peseudo8.highlight(1);
-  peseudo8.highlight(3);
+  peseudo8.highlight("bc");
+  peseudo8.highlight("rc");
   av.step();
 
   // Slide 17
@@ -101,7 +101,7 @@ $(document).ready(function() {
   av.label("Usual Format:", {left: 70, top: -20});
   av.label("Alternative Format:", {left: 430, top: -20});
   var peseudo9 = av.code($.extend({lineNumbers: false, top: 10, left: 430}, code[8]));
-  peseudo9.highlight(1);
-  peseudo9.highlight(5);
+  peseudo9.highlight("rc");
+  peseudo9.highlight("bc");
   av.recorded();
 });
