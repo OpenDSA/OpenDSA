@@ -20,7 +20,7 @@ $(document).ready(function () {
     key = Math.ceil(5 * (initialArray[0] + initialArray[arraySize - 1]) / 7);
     // log the key
     av.logEvent({
-      type: "exercise-data",
+      type: "exercise-input",
       key: key
     });
 
