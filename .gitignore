@@ -57,3 +57,6 @@ sftp-config.json
 
 # python virtual environment
 env
+
+# todo files
+tasks.todo
