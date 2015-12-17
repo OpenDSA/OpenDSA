@@ -38,10 +38,7 @@
 
     // generate random infix
     initialInfix = generateRandomInfix(arraySize, 2, false);
-    av.logEvent({
-      type: "exercise-input",
-      input: initialInfix
-    });
+    ODSA.AV.logExerciseInit(initialInfix);
 
     // create array with infix expression
     if (infixArray) {
