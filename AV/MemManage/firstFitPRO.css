@@ -8,22 +8,8 @@ label {
 }
 
 .jsavcanvas > svg { 
-  width: 900px;
-  height: 550px;
-}
-
-#bottom {
-padding-left: 5px;
-  height: 90px;
-  width: 805px;
-  border: 1px solid black;
-  background-color: #ddd;
-  overflow: hidden;
-}
-
-#input {
-  /* Spacing between the input box and the Next button */
-  margin-right: 5px;
+  width: 760px;
+  height: 400px;
 }
 
 .avcontainer {

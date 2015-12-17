@@ -1,0 +1,19 @@
+#ExchangeSortCON {
+  width: 800px;
+  height: 400px;
+}
+#ExchangeSortCON .jsavline {
+  width:800px;
+  height:50px;
+}
+h1{
+  font-size: 1em;
+}
+.dashed{
+  stroke-dasharray: 5, 5;
+}
+.largeLabel{
+  font-size: 22px; 
+  text-align: center;
+  font-style: bold;
+}

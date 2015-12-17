@@ -874,12 +874,6 @@
       "Binary/BinaryTreeTraversal": {
         "long_name": "Binary Tree Traversals",
         "exercises": {
-          "btLeafPROG": {
-            "long_name": "Node Count Programming Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1
-          },
           "btTravInorderPRO": {
             "long_name": "Binary Tree Inorder Traversal Exercise",
             "exer_options": { "JXOP-code": "none" },

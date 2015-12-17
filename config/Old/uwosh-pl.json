@@ -1,15 +1,18 @@
 {
-    "title": "Programming Languages",
-    "build_dir": "Books",
-    "code_dir": "SourceCode/",
-    "code_lang": {"Javascript": ["js"]},
-    "module_origin": "http://algoviz.org",
-    "exercise_server": "https://opendsa.cs.vt.edu/",
-    "logging_server": "https://opendsa.cs.vt.edu/",
-    "score_server": "https://opendsa.cs.vt.edu/",
-    "build_JSAV": false,
-    "allow_anonymous_credit": true,
-    "suppress_todo": false,
+  "title": "Programming Languages",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+    "Processing": { "ext":["pde"], "label":"Processing","lang":"java"}
+  },
+  "lang": "en",
+  "module_origin": "http://algoviz.org",
+  "exercise_server": "https://opendsa.cs.vt.edu/",
+  "logging_server": "https://opendsa.cs.vt.edu/",
+  "score_server": "https://opendsa.cs.vt.edu/",
+  "build_JSAV": false,
+  "allow_anonymous_credit": true,
+  "suppress_todo": false,
     "chapters": {
 	"Preface": {
 	    "Intro": {
@@ -64,12 +67,6 @@
 	    "PL/LC/Substitution": {
 		"long_name": "Substitution algorithm",
 		"dispModComp": false,
-		"exercises": {
-		}
-	    },
-	    "PL/LC/ToDo": {
-		"long_name": "To do",
-		"dispModComp": false,	
 		"exercises": {
 		}
 	    },

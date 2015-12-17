@@ -3,12 +3,12 @@
   height: 610px;
 }
 
-.jsavarray {
-  position: absolute;
+.jsavcanvas {
+  overflow: hidden;
 }
 
-.jsavmodelanswer {
-  height: 275px;
+.jsavarray {
+  position: absolute;
 }
 
 .jsavcontainer {

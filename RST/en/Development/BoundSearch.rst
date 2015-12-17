@@ -58,7 +58,7 @@ Here is our first attempt at proving the theorem.
    Assume an algorithm :math:`A` exists that requires only :math:`n-1`
    (or less) comparisons of :math:`K` with elements of **L**.
    Because there are :math:`n` elements of **L**, :math:`A` must have
-   avoided comparing :math:`K` with **L**[:math:`i`} for some value
+   avoided comparing :math:`K` with **L** [:math:`i`] for some value
    :math:`i`.
    We can feed the algorithm an input with :math:`K` in position
    :math:`i`. 

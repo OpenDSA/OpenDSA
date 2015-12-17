@@ -276,7 +276,7 @@ All are required unless otherwise specified.
   Defaults to an empty string (exercise server disabled) if omitted.
 
   * Trailing '/' is optional
-  * Ex: "exercise_server": "https://opendsa.cc.vt.edu/",
+  * Ex: "exercise_server": "https://opendsa.cs.vt.edu/",
 
 * **logging_server** - (optional) The protocol and domain (and port
   number, if different than the protocol default) of the logging
@@ -284,7 +284,7 @@ All are required unless otherwise specified.
   Defaults to an empty string (logging server disabled) if omitted.
 
   * Trailing '/' is optional
-  * Ex: "logging_server": "https://opendsa.cc.vt.edu/",
+  * Ex: "logging_server": "https://opendsa.cs.vt.edu/",
 
 * **score_server** - (optional) The protocol and domain (and port
   number, if different than the protocol default) of the score server
@@ -292,7 +292,7 @@ All are required unless otherwise specified.
   Defaults to an empty string (score server disabled) if omitted.
 
   * Trailing '/' is optional
-  * Ex: "score_server": "https://opendsa.cc.vt.edu/",
+  * Ex: "score_server": "https://opendsa.cs.vt.edu/",
 
 * **build_JSAV** - (optional) A boolean controlling whether or not the
   JSAV library should be rebuilt whenever the book is compiled.

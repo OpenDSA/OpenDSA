@@ -14,7 +14,5 @@ $(document).ready(function () {
   setPointer("head", l.get(0));
   setPointer("curr", l.get(2));
   setPointer("tail", l.get(5));
-  l.get(0).addSlash("left");
-  l.get(5).addSlash();
   l.get(2).addVLine();
 });

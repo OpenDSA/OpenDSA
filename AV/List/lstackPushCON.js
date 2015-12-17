@@ -18,7 +18,6 @@ $(document).ready(function () {
       .addFirst(12)
       .addFirst(8)
       .addFirst("");
-  list.get(3).addTail({left: 222});
   var newnode = list.get(0);
   newnode.edgeToNext().hide();
   newnode.hide();

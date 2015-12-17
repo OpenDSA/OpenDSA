@@ -5,30 +5,41 @@
 #procontrols {
   text-align: center;
 }
-.jsavcanvas{
-  min-width:800px !important;
+
+.jsavgraph svg {
+  z-index: 0;
 }
-.jsavverticalarray .jsavindex:first-of-type, .jsavverticalarray .jsavindex:first-of-type .jsavvalue {
-  -ms-border-top-left-radius: 0px;
-  -moz-border-top-left-radius: 0px;
-  -o-border-top-left-radius: 0px;
-  -webkit-border-top-left-radius: 0px;
-  border-top-left-radius: 0px;
-  -ms-border-top-right-radius: 0px;
-  -moz-border-top-right-radius: 0px;
-  -o-border-top-right-radius: 0px;
-  -webkit-border-top-right-radius: 0px;
-  border-top-right-radius: 0px;
+.jsavline {
+  height: 35px;
 }
-.jsavverticalarray .jsavindex:last-of-type, .jsavverticalarray .jsavindex:last-of-type .jsavvalue {
-  -ms-border-bottom-left-radius: 0px;
-  -moz-border-bottom-left-radius: 0px;
-  -o-border-bottom-left-radius: 0px;
-  -webkit-border-bottom-left-radius: 0px;
-  border-bottom-left-radius: 0px;
-  -ms-border-bottom-right-radius: 0px;
-  -moz-border-bottom-right-radius: 0px;
-  -o-border-bottom-right-radius: 0px;
-  -webkit-border-bottom-right-radius: 0px;
-  border-bottom-right-radius: 0px;
+
+.jsavnode.marked {
+  background-color: #FFF050;
+}
+.jsavnode.discarded {
+  background-color: #ddd;
+}
+.jsavgraph .jsavedge {
+  stroke-width: 8;
+  stroke: #7D8879;
+}
+.jsavgraph .jsavedge.marked {
+  stroke: #F6B611;
+}
+.jsavgraph .jsavedge.discarded {
+  stroke: rgba(125, 136, 121, 0.2);
+}
+.jsavgraph .jsavedgelabel {
+  font-size: 16px;
+  background-color: transparent;
+  text-shadow: 0 0 5px #fff;
+}
+.jsavautoresize .jsavnode {
+  min-width: 45px;
+  min-height: 45px;
+}
+
+.jsavmatrix .jsavarray li.jsavnode {
+  width: 40px;
+  height: 35px;
 }

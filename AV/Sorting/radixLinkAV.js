@@ -65,16 +65,17 @@ $(document).ready(function () {
     var lists = [];
     var arrows = [];
     var oldanswer;
+    var cellheight = 44;
 
     for (d = 0; d < $("#digitsize").val(); d++) {
       av.umsg("Starting a new pass.");
       av.step();
       // Initialize the lists
       for (i = 0; i < 10; i++) {
-        lists[i] = av.ds.list({top: (47 + i * 46), left: 270, nodegap: 30});
+        lists[i] = av.ds.list({top: (43 + i * cellheight), left: 270, nodegap: 30});
         lists[i].layout({center: false});
         // create initially hidden arrows from array indices to lists
-        arrows[i] = av.g.line(230, 77 + i * 46, 270, 77 + i * 46,
+        arrows[i] = av.g.line(230, 75 + i * cellheight, 270, 75 + i * cellheight,
                        {"arrow-end": "classic-wide-long", "opacity": 0,
                         "stroke-width": 2});
       }

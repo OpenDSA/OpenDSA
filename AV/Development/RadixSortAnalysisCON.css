@@ -1,13 +1,6 @@
 #RadixSortAnalysisCON {
   height: 650px;
 }
-.rotated {
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  transform: rotate(90deg);
-}
 #RadixSortAnalysisCON .jsavnode {
   line-height: 30px !important;
   min-width: 30px !important;
@@ -17,4 +10,8 @@
 }
 #RadixSortAnalysisCON .jsavnode .jsavvalue { /* This will get the array cell values to center vertically */
   height: 30px;
+}
+.mediumLabel{
+  font-size: 14px; 
+  text-align: center;   
 }

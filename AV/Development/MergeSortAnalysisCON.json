@@ -18,7 +18,9 @@
 	  "Slide 29": "Merging the green highlighted arrays requires 8 units of work",
 	  "Slide 31": "Thus, we have $\\log{n+1}$ levels each of which requires $\\theta(n)$ amount of work",
 	  "Slide 32": "Therefore, the total running time of merge sort is $\\theta(n\\log{n})$",
-	  "Slide 33": "This cost is unaffected by the relative order of the values being sorted, thus this analysis holds for the best, average, and worst cases."
+	  "Slide 33": "This cost is unaffected by the relative order of the values being sorted, thus this analysis holds for the best, average, and worst cases.",
+	  "lab1": "<b><u>Splitting Work</u></b>",
+	  "lab2": "<b><u>Merging Work</u></b>"
     }
   }
 }

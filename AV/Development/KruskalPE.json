@@ -1,0 +1,32 @@
+{
+  "translations" :{
+    "en": {
+      ".avTitle": "Kruskal's Algorithm Proficiency Exercise",
+      "av_Authors": "Mohammed Fawzi, Kasper Hellström",
+      ".instructLabel": "Instructions:",
+      ".instructions": "Reproduce the behavior of Kruskal's Algorithm for the graph below. Just click on the appropriate <strong>edge</strong> in the graph to add it to the MST. In case of equal weights, select the edge that comes first in alphabetical order.",
+      "av_ms_mst": "Complete minimum spanning tree",
+      "av_ms_processing": "Processing Edge: ({edge})<br>",
+      "av_ms_adding": "Adding edge to the MST",
+      "av_ms_dismiss": "Dismiss edge",
+      "#help": "Help",
+      "#about": "About"
+    },
+    "fi": {
+      ".avTitle": "Kruskalin algoritmi",
+      "av_Authors": "Mohammed Fawzi, Kasper Hellström",
+      ".instructLabel": "Ohjeet:",
+      ".instructions": "Lisää särmät pienimpään virityspuuhun Kruskalin algoritmin antamassa järjestyksessä. Klikkaa <strong>särmiä</strong> lisätäksesi ne virityspuuhun. Jos kahdella särmällä on sama paino valitse niistä aakkosjärjsetyksessä ensimmäinen (solmujen nimen mukaan).",
+      "av_ms_mst": "Verkon pienin virityspuu",
+      "av_ms_processing": "Prosessoidaan särmää: ({edge})<br>",
+      "av_ms_adding": "Lisätään särmä virityspuuhun",
+      "av_ms_dismiss": "Hylätään särmä",
+      "#help": "Ohje",
+      "#about": "Lisätietoa"
+    }
+  },
+  "params": {
+    "JXOP-feedback": "continuous",
+    "JXOP-fixmode": "fix"
+  }
+}

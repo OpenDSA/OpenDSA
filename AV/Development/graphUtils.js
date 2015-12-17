@@ -1,23 +1,23 @@
-(function ($) {
+(function() {
   "use strict";
 
   function generateRandomEdges(nNodes, nEdges, weighted) {
-    // Utility funciton to check whether the edge already exists 
-    function isEligibleEdge(startIndex, endIndex) {
-      if ((startIndex === endIndex) ||
-          (adjacencyMatrix[startIndex][endIndex] === 1) ||
-          (adjacencyMatrix[endIndex][startIndex] === 1))
-      {
-        return false;
-      }
-      return true;
-    }
-
     var edges = new Array(nEdges),
         adjacencyMatrix,
         index1,
         index2,
         i, j;
+
+    // Utility funciton to check whether the edge already exists
+    function isEligibleEdge(startIndex, endIndex) {
+      if ((startIndex === endIndex) ||
+          (adjacencyMatrix[startIndex][endIndex] === 1) ||
+          (adjacencyMatrix[endIndex][startIndex] === 1)) {
+        return false;
+      }
+      return true;
+    }
+
     //Create the adjacencyMatrix
     adjacencyMatrix = new Array(nNodes);
     for (i = 0; i < nNodes; i++) {
@@ -51,7 +51,7 @@
 
   /*
    * Generates a graph to an empty JSAV graph instance (graph).
-   * 
+   *
    * Arguments:
    *    - graph:    an empty JSAV graph instance
    *
@@ -95,8 +95,43 @@
     }
   }
 
-  window.graphUtils = {
-    generate: generateGraph
-  };
+  function copyGraph(source, destination, options) {
+    var sourceNodes = source.nodes(),
+        sourceEdges = source.edges(),
+        opts = options || {weights: false};
+    // copy nodes from graph
+    sourceNodes.forEach(function(node) {
+      destination.addNode(node.value());
+    });
 
-}(jQuery));
+    // copy source node positions
+    var destinationNodes = destination.nodes();
+    destinationNodes.forEach(function(node, i) {
+      var pos = sourceNodes[i].position();
+      node.moveTo(pos.left, pos.top);
+    });
+
+    // copy edges from graph
+    sourceEdges.forEach(function(edge) {
+      var startIndex = sourceNodes.indexOf(edge.start()),
+          endIndex   = sourceNodes.indexOf(edge.end()),
+          startNode  = destinationNodes[startIndex],
+          endNode    = destinationNodes[endIndex],
+          eOpts      = opts.weights ? {weight: edge.weight()} : {};
+      destination.addEdge(startNode, endNode, eOpts);
+    });
+
+    // call the layout function for each edge
+    var destinationEdges = destination.edges();
+    destinationEdges.forEach(function(edge) {
+      edge.layout();
+    });
+
+    return destination;
+  }
+
+  window.graphUtils = {
+    generate: generateGraph,
+    copy: copyGraph
+  };
+})();

@@ -8,6 +8,5 @@ $(document).ready(function () {
   l.layout();
   //  var topPointer = setPointerL("top", l.get(0));
   var topPointer = av.pointer("top", l.get(0));
-  l.get(4).addTail();
   av.recorded();
 });
