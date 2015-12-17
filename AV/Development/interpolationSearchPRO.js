@@ -86,6 +86,10 @@
     } else {
       key = Math.floor(2 * (min + max) / 7);
     }
+    av.logEvent({
+      type: "exercise-input",
+      key: key
+    });
 
     // clear old elements
     if ($findLabel) {
