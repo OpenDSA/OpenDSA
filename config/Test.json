@@ -46,66 +46,18 @@
     "JXOP-debug": "true"
   },
   "chapters": {
-    "Searching": {
-      "Development/SelfOrg": {
-        "long_name": "Self Organizing Lists",
+    "Sorting": {
+      "Sorting/InsertionSortTest": {
+        "long_name": "Insertion Sort",
         "sections": {
-          "Introduction": {},
-          "Frequency Count": {
-            "SelforgCON1": {
-              "long_name": "Self-organizing List Slideshow: Frequency Count",
+          "Insertion Sort": {
+            "insertionsortCON": {
+              "long_name": "Insertion Sort Slideshow",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            },
-            "SelfOrgCounterPro": {
-              "long_name": "Self-organizing List Counter Proficiency Exercise",
-              "required": true,
-              "points": 2.0,
-              "threshold": 0.90,
-              "exer_options": {
-                "JXOP-feedback": "continuous",
-                "JXOP-fixmode": "fix"
-              }
             }
-          },
-          "Move to Front": {
-            "SelforgCON2": {
-              "long_name": "Self-organizing List Slideshow: Move-to-front",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
-            "SelfOrgMove-to-FrontPro": {
-              "long_name": "Self-organizing List Move-to-front Proficiency Exercise",
-              "required": true,
-              "points": 2.0,
-              "threshold": 0.90,
-              "exer_options": {
-                "JXOP-feedback": "continuous",
-                "JXOP-fixmode": "fix"
-              }
-            }
-          },
-          "Transpose": {
-            "SelforgCON3": {
-              "long_name": "Self-organizing List Slideshow: Transpose",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
-            "SelfOrgTransposePro": {
-              "long_name": "Self-organizing List Transpose Proficiency Exercise",
-              "required": true,
-              "points": 2.0,
-              "threshold": 0.90,
-              "exer_options": {
-                "JXOP-feedback": "continuous",
-                "JXOP-fixmode": "fix"
-              }
-            }
-          },
-          "An Example": {}
+          }
         }
       }
     },
