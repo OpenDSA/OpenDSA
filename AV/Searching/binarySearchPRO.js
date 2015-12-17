@@ -18,6 +18,11 @@ $(document).ready(function () {
 
     //generate a random key, with value between the min and max of the array
     key = Math.ceil(5 * (initialArray[0] + initialArray[arraySize - 1]) / 7);
+    // log the key
+    av.logEvent({
+      type: "exercise-data",
+      key: key
+    });
 
     // clear old elements
     if (keyholder) {
