@@ -38,6 +38,10 @@
 
     // generate random infix
     initialInfix = generateRandomInfix(arraySize, 2, false);
+    av.logEvent({
+      type: "exercise-input",
+      input: initialInfix
+    });
 
     // create array with infix expression
     if (infixArray) {
@@ -135,7 +139,7 @@
 
     // postfix index
     var postfixInd = 0;
-    
+
     var node;
 
     for (var i = 0; i < arraySize; i++) {
