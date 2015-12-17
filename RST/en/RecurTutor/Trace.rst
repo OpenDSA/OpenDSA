@@ -39,17 +39,10 @@ problems, until a base case is reached.
 Then, a return value is passed back as the series of recursive calls
 unwinds.
 Sometimes people forget about the "unwinding" phase.
-This "winding" (as recursive calls are made) and "unwinding" (as the
-call stack is undone by returning from the function) is not really
-special to recursion.
-It occurs in the same way with any function.
 
 .. inlineav:: recurTraceWindCON ss
    :output: show 
 
-In this section, we will see several examples for how trace a
-recursive call.
-   
 
 A Domino Analogy
 ~~~~~~~~~~~~~~~~
@@ -68,22 +61,18 @@ linear recursive solution can now be summarized as follows:
 1. Since the first domino has to be tipped over manually,
 the solution for base case is computed non-recursively.
 
-2. For any other domino, before a domino is tipped over
-all of its preceded dominos have to be tipped over and
-then the current domino will be tipped over
-subsequently. So the solution for a recursive case is
-computed recursively by solving its next smaller case
-first followed by some subsequent computation.
+2. For any other domino, before any given domino can be tipped over,
+all preceding dominos have to be tipped over first.
    
-First is a trace for a simple sum function.
-
 .. inlineav:: recurTraceSumCON ss
    :output: show
 
-Here is a tracing example of the factorial function.
+|
 
 .. inlineav:: recurTraceFactCON ss
    :output: show 
+
+|
 
 As you trace the code, you should observe several things.
 Let's use the array summing function again for an example.
@@ -105,6 +94,7 @@ Domino effect to recursively print the integers from 1 to N.
 
 .. inlineav:: recurTraceDmnPrntCON ss
    :output: show 
+
 
 This next visualization shows how we can use the Domino technique to
 recursively count the number of digits in an integer.
