@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -24,5 +24,5 @@ or organizing the information needed to drive
 :ref:`data compression algorithms <Huffman codes> <Huffman>`.
 
 This chapter covers terminology used for discussing binary trees,
-tree traversals, approaches to implementing tree :term:`nodes <node>`,
-and various examples of binary trees.
+:term:`tree traversals <tree traversal>`, approaches to implementing
+tree :term:`nodes <node>`, and various examples of binary trees.

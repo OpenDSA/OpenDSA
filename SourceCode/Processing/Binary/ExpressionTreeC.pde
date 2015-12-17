@@ -1,3 +1,4 @@
+/* Composite design: ExpressionTree */
 /* *** ODSATag: Composite *** */
    /** Base class: Composite */
    interface VarBinNode {

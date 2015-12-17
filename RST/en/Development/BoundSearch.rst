@@ -22,7 +22,7 @@ We will extend our pool of techniques for lower bounds proofs in this
 section by studying lower bounds for searching unsorted and sorted lists.
 
 Searching in Unsorted Lists
----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Given an (unsorted) list **L** of :math:`n` elements and 
 a search key :math:`K`, we seek to identify one element in **L**
@@ -158,7 +158,7 @@ Figure :num:`Figure #Poset`.
    worst case.
 
 Searching in Sorted Lists
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 We will now assume that list **L** is sorted.
 In this case, is linear search still optimal?

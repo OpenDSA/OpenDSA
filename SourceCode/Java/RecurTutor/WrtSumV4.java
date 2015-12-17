@@ -1,5 +1,6 @@
-int sum(int arr[], int size){
-  if (size > 0)
-    return sum(arr, size - 1 ) + arr[size - 1];
-  return 0;
+int sum(int arr[], int n) {
+  if (n == 0) {
+    return 0;
+  }
+  return sum(arr, n - 1) + arr[n - 1];
 }

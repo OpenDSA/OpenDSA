@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
@@ -13,6 +13,9 @@
 
 Freelists
 =========
+
+Freelists
+---------
 
 The ``new`` operator is relatively expensive to use.
 Garbage collection is also expensive.
@@ -92,11 +95,8 @@ However, when you do not use a freelist, dropping access to nodes
 creates garbage which leads to expensive processing at garbage
 collection time.
 
-Notes
------
-
 .. [#] A language like C++ could use operator overloading to redefine
    the ``new`` and ``delete`` operators.
 
-.. odsascript:: AV/List/llistCON.js
+.. odsascript:: AV/List/llist.js
 .. odsascript:: AV/List/listFreeCON.js

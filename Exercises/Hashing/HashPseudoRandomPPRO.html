@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html data-require="jsav math ProbeCommon">
+  <head>
+    <title>Hashing Pseudo-Random Probing Proficiency Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body data-height="700" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="arrSize">10</var>
+        <var id="hashFunction">"h(k) = k  mod " + arrSize</var>
+        <var id="JSAV">probeCommon.initJSAV("HashPseudoRandomPPRO", arrSize)</var>
+      </div>
+      <div class="problems">
+        <div id="HashPseudoRandomPPROp"> <!-- Supresses answer box -->
+          <p class="problem">
+            Given the following hash table, use hash
+            function <var>hashFunction</var> and handle collisions
+            using pseudo-random probing. The random permutation to use is
+            <var>probeCommon.permutation.join(' ')</var>.
+          </p>
+          <p class="question">In which slot should the record with key
+            value <var>probeCommon.currentKey</var> be inserted?</p>
+          <input id="reset" type="button" value="Reset" />
+          <div id="HashPseudoRandomPPRO" class="jsavcanvas"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [probeCommon.userInput] </div>
+            <div class="validator-function">
+              if (!probeCommon.checkAnswer(arrSize) && !guess[0]) {
+                return ""; // User did not click, and correct answer is not
+                           // initial array state
+              } else { return probeCommon.checkAnswer(arrSize); }
+            </div>
+          </div>
+          <div class="hints">
+            <p>First use the hash function to computer the home slot.</p>
+            <p>If there is a collision, use the random permutation table
+              to tell you how far to step from the home slot.</p>
+            <p>Offsets are always from the home slot, not from the last
+              slot probed to.</p>
+            <p>If we reach the end of the array while stepping, then cycle
+              around to the beginning.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

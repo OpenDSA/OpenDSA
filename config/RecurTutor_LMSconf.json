@@ -1,0 +1,11 @@
+{
+  "odsa_username": "opendsa",
+  "odsa_password": "opendsa",
+  "target_LMS": "canvas",
+  "LMS_url": "https://vt.test.instructure.com",
+  "course_code": "RecurTutor",
+  "access_token": "4511~DiKsLdQEsrN4Bzx4n8xsWoIcVA9ZBns8YkaKvDryAQKY4EYYKMZ0F9XLD3Xq63Zz",
+  "LTI_consumer_key": "test",
+  "LTI_secret": "secret",
+  "LTI_url": "https://lti.cs.vt.edu"
+}

@@ -1,113 +1,44 @@
+<!--
+    General Trees: Alternate sequential representation
+    Written by Kevin Ellis and Cliff Shaffer.
+  -->
+
 <!DOCTYPE html>
-<html data-require="math">
-<head>
-  <title>Sequential Binary Tree Alternate Representation Exercise</title>
-  <script src="../../lib/jquery.min.js"></script>
-  <script src="../../lib/jquery-ui.min.js"></script>
-  <script src="../../JSAV/lib/jquery.transit.js"></script>
-  <script src="../../JSAV/lib/raphael.js"></script>
-  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-  <script src="../../JSAV/build/JSAV-min.js"></script>
-  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
-  <style>
-    .jsavcontainer {
-      height: 320px;
-    }
-  </style>
-</head>
-
-<body data-height="700" data-width="950">
-<script>
-var jsav;
-
-var initJSAV = function () {
-  jsav = new JSAV("jsav");
-  jsav.recorded();
-}
-
-var makeTree = function () {
-  var bt = jsav.ds.binarytree({center: true, visible: true, nodegap: 35});
-  var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  var letterIndex = 1;
-  bt.root(letters.charAt(0));
-  //generate random tree with between 4-7nodes
-  var numNodes = Math.floor(Math.random() * (7-4))+4;
-  var i = 1;
-  while (i <= numNodes) {
-    randomNode(bt, bt.root(), letters.charAt(i));
-    i++;
-  }
-  bt.layout();
-  return bt;
-}
-
-function preOrderTraversal(bt) {
-  var retString = "";
-
-  var preorderNode = function (node) {
-    var isInternal = false;
-    retString+=node.value();
-    if (node.left()) {
-      isInternal = true;
-      retString+='\'';
-      preorderNode(node.left());
-    } else {
-      if (node.right()) {
-        retString += '\'';
-        retString += '/';
+<html data-require="jsav math SequentialTreeAltPRO">
+  <head>
+    <title>Sequential Binary Tree Alternate Representation Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #SequentialTreeAltPRO {
+        height: 290px;
       }
-    }
-    if (node.right()) {
-      preorderNode(node.right());
-    } else {
-      if (node.left()) {
-        retString += '/';
-      }
-    }
-  };
+    </style>
+  </head>
 
-  preorderNode(bt.root());
-  return retString;
-}
-
-function randomNode(bt,root, value) {
-  if (root == null) {
-    return bt.newNode(value);
-  } else {
-    if ((Math.floor( Math.random() * 100) % 2) == 1 ) {
-      root.left(randomNode( bt , root.left(), value));
-    } else {      
-      root.right(randomNode( bt , root.right(), value));
-    }
-  }
-}
-</script>
-
-<div class="exercise">
-  <div class="vars">
-    <var id="JSAV">initJSAV()</var>
-    <var id="BT">makeTree()</var>
-    <var id="ANS">preOrderTraversal(BT)</var>
-  </div>
-
-  <p class="question">Using ' to signify internal nodes,
-    and '/' to signify missing children,
-    write the sequential representation of this tree</p> 
-
-  <div class="problems">
-    <div id="problem-type-or-description-2">
-      <p class="problem">
-        <div id="jsav" class="jsavcanvas"></div>
-      </p>
-      <p class="solution" data-type="text"><var>ANS</var></p>
-      <div class="hints">
-        <p>This representation is intended for full trees,
-          so make sure to use a '/' for missing children.</p>
-        <p>Answer: <var>ANS</var></p>
+  <body data-height="700" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="JSAV">sequentialTreeAltPRO.initJSAV()</var>
+        <var id="BT">sequentialTreeAltPRO.makeTree()</var>
+        <var id="ANS">sequentialTreeAltPRO.preOrderTraversal(BT)</var>
+      </div>
+      <p class="question">Using ' to signify internal nodes,
+        and '/' to signify missing children,
+        write the sequential representation for this tree.</p>
+      <div class="problems">
+        <div id="SequentialTreeAltPROp"> <!-- Supresses answer box -->
+          <p class="problem">
+            <div id="SequentialTreeAltPRO" class="jsavcanvas"></div>
+          </p>
+          <p class="solution" data-type="text"><var>ANS</var></p>
+          <div class="hints">
+            <p>This representation is intended for full trees,
+              so make sure to use a '/' for missing children.</p>
+            <p>Answer: <var>ANS</var></p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</body>
+  </body>
 </html>

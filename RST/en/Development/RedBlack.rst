@@ -12,6 +12,13 @@
 The Red-Black Tree
 ==================
 
+Exercise 1
+----------
+
 .. avembed:: AV/Development/redBlackTreeColoring.html ss
+
+
+Exercise 2
+----------
 
 .. avembed:: AV/Development/redBlackTreePRO.html pe

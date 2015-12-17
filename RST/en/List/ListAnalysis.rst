@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
@@ -12,13 +12,13 @@
 Comparison of List Implementations
 ==================================
 
+Space Comparison
+----------------
+
 Now that you have seen two substantially different implementations for
 lists, it is natural to ask which is better.
 In particular, if you must implement a list for some task,
 which implementation should you choose?
-
-Space Comparison
-----------------
 
 Given a collection of elements to store, they take up some amount of
 space whether they are simple integers or large objects with many
@@ -103,6 +103,7 @@ certain limit.
 
 .. avembed:: Exercises/List/ListOverhead.html ka
 
+
 Time Comparison
 ---------------
 
@@ -156,4 +157,8 @@ To analyze the overall cost of dynamic array operations over time,
 we need to use a technique known as
 :ref:`amortized analysis <amortized analysis> <AmortAnal>`.
 
-.. avembed:: Exercises/List/LstLnkdSumm.html ka
+
+Practice Questions
+~~~~~~~~~~~~~~~~~~
+
+.. avembed:: Exercises/List/LLSumm.html ka

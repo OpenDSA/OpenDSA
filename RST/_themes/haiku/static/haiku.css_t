@@ -26,7 +26,8 @@
 html {
     margin: 0px;
     padding: 0px;
-    background: #FFF url(bg-page.png) top left repeat-x;
+    /*background: #FFF url(bg-page.png) top left repeat-x;*/
+    background: #FFF;
 }
 
 body {

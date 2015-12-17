@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
@@ -33,21 +33,28 @@ Here is a visual representation for the linked stack.
 .. inlineav:: lstackDiagramCON dgm
    :align: center   
 
-Now, let's look at how ``push`` and ``pop`` work in the linked stack implementation.
+
+Linked Stack Push
+~~~~~~~~~~~~~~~~~
 
 .. inlineav:: lstackPushCON ss
    :output: show
    
+.. avembed:: Exercises/List/LstackPushPRO.html ka
+
+
+Linked Stack Pop
+----------------
+
 .. inlineav:: lstackPopCON ss
    :output: show
    
-.. avembed:: Exercises/List/lstackPushPRO.html ka
 
-.. avembed:: Exercises/List/lstackPopPRO.html ka
+.. avembed:: Exercises/List/LstackPopPRO.html ka
 
    
 Comparison of Array-Based and Linked Stacks
--------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 All operations for the array-based and linked stack implementations
 take constant time, so from a time efficiency perspective,
@@ -78,7 +85,7 @@ in the middle of the array will be exhausted quickly.
 .. inlineav:: lstackTwostackCON dgm
    :align: center     
 
-.. odsascript:: AV/List/llistCON.js
+.. odsascript:: AV/List/llist.js
 .. odsascript:: AV/List/lstackDiagramCON.js
 .. odsascript:: AV/List/lstackPushCON.js
 .. odsascript:: AV/List/lstackPopCON.js

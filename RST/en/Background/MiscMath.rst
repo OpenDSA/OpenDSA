@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
@@ -155,8 +155,5 @@ Implementers of hash functions must either insure that the
 result of the computation is always positive, or else add the hash
 table size to the result of the modulo function when that result is
 negative.
-
-Notes
------
 
 .. [#] The symbol ":math:`\approx`" means "approximately equal."

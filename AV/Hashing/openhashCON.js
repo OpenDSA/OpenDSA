@@ -1,7 +1,7 @@
 /*global ODSA */
-"use strict";
 $(document).ready(function () {
-  var av_name = "openhashCON1";
+  "use strict";
+  var av_name = "openhashCON";
   var temp;
   var empty = [];
   var arrows = [];

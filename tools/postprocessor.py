@@ -8,6 +8,15 @@ import os
 import re
 import codecs
 import json
+import xml.dom.minidom as minidom
+from pprint import pprint
+from xml.etree.ElementTree import ElementTree, SubElement, Element
+from bs4 import BeautifulSoup, element
+from bs4.element import NavigableString
+from collections import defaultdict
+import tarfile
+import shutil
+import urlparse
 
 __author__ = 'breakid'
 
@@ -56,7 +65,7 @@ def update_index_html(dest_dir, sectnum):
       #remove createcourse page from TOC
       index_html[line_num] = ''
     elif 'hide-from-toc' in line:
-      #remove stub chapter title 
+      #remove stub chapter title
       if '<h1>' in index_html[line_num-1]:
         index_html[line_num-1] = ''
     elif 'class="toctree-l' in line and 'Gradebook' not in line and 'TODO List' not in line:
@@ -108,7 +117,7 @@ def update_mod_html(file_path, data, prefix):
         html[line_num] = line.replace(texts[1] + '</em>', texts[0] + '</em>')
       html[line_num] = html[line_num].replace(line_args[1], '')
       html[line_num] = html[line_num].replace('&lt;anchor-text&gt;', '')
-      html[line_num] = html[line_num].replace('&lt;/anchor-text&gt;', '') 
+      html[line_num] = html[line_num].replace('&lt;/anchor-text&gt;', '')
 
     if mod_name in data and mod_name not in ignore_mods:
       (chap_title, chap_num) = data[mod_name]
@@ -163,7 +172,7 @@ def update_TermDef(glossary_file, terms_dict):
         i += 1
         endofdef = False
         while (i < len(mod_data) and not endofdef):
-          if '</dd>' in  mod_data[i]:  
+          if '</dd>' in  mod_data[i]:
             term_def += mod_data[i].split('</dd>')[0] + '</dd>'
             endofdef = True
           else:
@@ -172,6 +181,320 @@ def update_TermDef(glossary_file, terms_dict):
         terms_dict[term] = str(term_def)
         i-= 1
     i += 1
+
+triple_up = re.compile(r'^\.\.[\/\\]\.\.[\/\\]\.\.[\/\\]')
+def break_up_fragments(path, exercises, modules, url_index, book_name):
+  # Read contents of module HTML file
+  try:
+    with codecs.open(path, 'r', 'utf-8') as html_file:
+      html = html_file.read()
+  except IOError:
+    print "Error: Could not find HTML file for", path
+    return {}
+
+  # Get the module name and create its subfolder
+  mod_name = os.path.splitext(os.path.basename(path))[0]
+
+  # Strip out the script, style, link, and meta tags
+
+  soup = BeautifulSoup(html, "html.parser")
+
+  verbose = False
+
+  if verbose: print "Found HTML file:", mod_name
+
+  TAGS = [ ('script', 'src'), ('link', 'href'), ('img', 'src'), ('a', 'href') ]
+
+  # KILL MATHJAX
+  #'''Helpful for debugging, because MathJax takes forever to load'''
+  #for possible_math_jax in soup.find_all('script'):
+  #  if possible_math_jax.has_attr('src') and possible_math_jax['src'].startswith('//cdn.mathjax.org/mathjax'):
+  #    possible_math_jax.extract()
+
+
+  # Find all of the scripts, links, images, etc. that we might need
+  for tag_name, tag_url in TAGS+[('div', 'data-frame-src')]:
+    for a_tag in soup(tag_name):
+      if a_tag.has_attr(tag_url):
+        if triple_up.match(a_tag[tag_url]):
+          a_tag[tag_url] = 'OpenDSA/' + a_tag[tag_url][len('../../../'):]
+        elif a_tag[tag_url].startswith('_static/'):
+          a_tag[tag_url] = 'OpenDSA/Books/'+book_name+'/html/'+a_tag[tag_url]
+        elif a_tag[tag_url].startswith('_images/'):
+          a_tag[tag_url] = 'OpenDSA/Books/'+book_name+'/html/'+a_tag[tag_url]
+
+
+  '''
+  Skip any exercises that don't have points
+
+  '''
+
+  # Redirect href urls
+  for link in soup.find_all('a'):
+    if 'href' not in link.attrs:
+        # Really? No href? Is that even valid HTML?
+        continue
+    href = link['href']
+    if href == '#':
+      # Skip dummy urls redirecting to itself
+      continue
+    elif href.startswith('#'):
+      # Do something with an internal page link
+      continue
+    elif href.startswith('mailto:'):
+      # Email
+      continue
+    elif href.startswith('http://'):
+      # Offsite
+      continue
+    elif href.startswith('../'):
+      # Current directory
+      continue
+    elif href.endswith('.rst'):
+      # The source reference
+      continue
+    else:
+      if '#' in href:
+        external, internal = href.split('#', 1)
+      else:
+        external, internal = href, ''
+      if external.endswith('.html'):
+        # Snip off the ".html"
+        external = external[:-5]
+        # Map it to the proper folder in OpenEdX
+        external = url_index.get(external, external)
+        # Force it to approach it from the top
+        link['href'] = '#'.join((external,internal))
+
+      # Do something with the actual href
+
+  # Move header scripts out of header, kill header
+  header_tag = soup.find('div', class_='header')
+  for bit in reversed(header_tag.contents):
+    if bit.name in ('script', 'link'):
+      header_tag.next_sibling.insert_before(bit.extract())
+  header_tag.extract()
+
+  # Remove unnecessary parts of the HTML
+  for class_name in ('topnav', 'bottomnav', 'footer'):
+    element = soup.find('div', class_=class_name)
+    if element:
+      element.extract()
+  element = soup.find('img', alt='nsf')
+  if element:
+    element.extract()
+
+  total_real_exercises = len(exercises)#0
+  #for exercise, properties in exercises.items():
+  #  if 'points' in properties:
+  #    total_real_exercises += 1
+  if total_real_exercises <= 1:
+    if total_real_exercises == 0:
+      filename = mod_name+'.html'
+    else:
+      filename = mod_name+'-01.html'
+    single_file_path = os.path.join(os.path.dirname(path), '..', 'lti_html', filename)
+    with codecs.open(single_file_path, 'w', 'utf-8') as o:
+      o.write(unicode(soup))
+    return None
+
+  # Collect out the slide-specific JS/CSS
+  slide_scripts = defaultdict(list)
+  all_scripts = []
+
+  for tag_name, tag_url in TAGS:
+    if tag_name == 'link': continue
+    # Expand this to handle src
+    for a_tag in soup.find_all(tag_name):
+      if a_tag.has_attr(tag_url) and (
+            a_tag[tag_url].startswith('OpenDSA/AV/')
+            or a_tag[tag_url].startswith('OpenDSA/DataStructures/')):
+        name = os.path.splitext(os.path.basename(a_tag[tag_url]))[0]
+        script_tag = a_tag.extract()
+        if "CON" in name and tag_name == "script":
+            slide_scripts[name].append(script_tag)
+        else:
+            all_scripts.append(script_tag)
+        #if name.endswith('Common.css'):
+
+  # Breaking file into components
+
+  # First pass: grab out all of the HTML fragments
+  content_div_soup = soup.find('div', class_='content')
+  section_divs_soup = content_div_soup.find_all('div', class_='section', recursive=False)
+  content_div = []
+  # A body is an HTML fragment within a subsection
+  total_bodies = 0
+  # Iterate over the top-level sections
+  for section_div_soup in section_divs_soup:
+    section_div = []
+    # And then iterate over the second-level sections
+    for subsection_div_soup in list(section_div_soup.contents):
+      subsection_div = []
+      if (subsection_div_soup.name == 'div'
+          and subsection_div_soup.has_attr('class')
+          and 'section' in subsection_div_soup['class']):
+        # This is a subsection, grab its children
+        for body_soup in list(subsection_div_soup.contents):
+          #if verbose: print "\t\tSUB"
+          subsection_div.append( ( body_soup.parent, body_soup.extract() ) )
+          total_bodies += 1
+      else:
+        # This is section starter content.
+        #if verbose: print "\t\tSection"
+        body_soup = subsection_div_soup
+        subsection_div.append( ( body_soup.parent, body_soup.extract() ) )
+        total_bodies += 1
+      # Capture this subsection into this section
+      section_div.append(subsection_div)
+    # Capture this section into the complete content
+    content_div.append(section_div)
+  if verbose:
+    print "\tPhase 1: Found {} pieces of body content".format(total_bodies)
+
+  # Second pass: cluster body fragments by exercises into "slides"
+  total_exercises = 0
+  slides = []
+  new_slide = []
+  found = []
+  previous_parent = None
+  i = 0
+  for section_div in content_div:
+    #print "\tNew Section"
+    for subsection_div in section_div:
+      #print "\t\tNew Subsection"
+      name = "NEXT SLIDE"
+      for parent, body in subsection_div:
+        #print "\t\t\t", str(body)[:40]
+        new_slide.append( (parent, body) )
+      body_text = [str(s[1]) for s in new_slide
+                   if s[1].name != 'span' or
+                    not s[1].has_attr('id') or
+                    (not s[1]['id'].startswith('index-') and
+                     not s[1]['id'].startswith('id1')
+                    )]
+      if not ''.join(body_text).strip():
+        continue
+      slides.append((name, new_slide))
+      new_slide = []
+      total_exercises += 1
+      found.append(name)
+      '''#print "\t\t\tBody:", type(body)
+        # If we find a slideshow or practice exercise, then make it its own fragment
+        if isinstance(body, element.Tag) and body.has_attr('id'):
+          name = body['id']
+          if body['id'] in exercises and 'points' in exercises[body['id']]:
+            #print "\t\t\t\tFound exercise:", name
+            # Finish off this slide
+            slides.append((name, new_slide))
+            # Make a new slide, append in the content
+            new_slide = [(parent, body)]
+            slides.append((name, new_slide))
+            # And now start a new slide
+            new_slide = []
+            total_exercises += 1
+            found.append(name)
+        else:
+          new_slide.append( (parent, body) )'''
+      # Anything after that exercise gets placed in a trailing slide
+      #     before we move onto the next subsection
+      '''if new_slide and parent != previous_parent:
+        if ''.join([str(s[1]) for s in new_slide]).strip():
+          if has_sections and previous_parent == None:
+            previous_parent = parent
+            continue
+          slides.append(("", new_slide))
+          new_slide = []
+          previous_parent = parent'''
+  if verbose:
+    print "\tPhase 2: Clustered into {} slides. Found {} exercises, expected {}.".format(len(slides), total_exercises-1, len(exercises))
+
+  # Add the slide general scripts to the top.
+  sgs_div = soup.new_tag('div', id='SLIDE-GENERAL-SCRIPTS')
+  for script_tag in all_scripts:
+    sgs_div.insert(0, script_tag)
+  content_div_soup.insert_before(sgs_div)
+
+  # third pass: render them out with the relevant scripts
+  for index, (slide_name, slide) in enumerate(slides):
+    #if verbose: print "\tSlide", index, len(slide)
+    # Identify the new filename
+    slide_filename = '{0}-{1:02d}.html'.format(mod_name, index)
+    slide_filepath = os.path.join(os.path.dirname(path), '..', 'lti_html', slide_filename)
+    # Add the relevant content back in
+    for body_index, (parent, body) in enumerate(slide):
+      parent.insert(body_index, body)
+    if index != 0:
+      potential_exercises = exercises.values()[index-1].keys()
+    else:
+      potential_exercises = []
+    sss_div = soup.new_tag('div', id='SLIDE-SPECIFIC-SCRIPTS')
+    for potential_exercise in potential_exercises:
+      if potential_exercise in slide_scripts:
+        for a_script in slide_scripts[potential_exercise]:
+          #if verbose: print "\t\t", id(a_script), str(a_script)
+          sss_div.insert(0, a_script)
+      if potential_exercise in ('quicksortCON', 'bubblesortCON'):
+        for a_script in slide_scripts[potential_exercise.replace('CON', 'CODE')]:
+          sss_div.insert(0, a_script)
+    #if verbose: print(len(sss_div))
+    # Add back in slide specific scripts
+    sgs_div.insert_after(sss_div)
+    if index != 0:
+        potential_exercises = exercises.values()[index-1].keys()
+    else:
+        potential_exercises = []
+    # Write out the file with what we have so far
+    with codecs.open(slide_filepath, 'w', 'utf-8') as o:
+      o.write(unicode(soup))
+    sss_div.decompose()
+    for parent, body in slide:
+      body.extract()
+  if verbose: print "\tPhase 3: complete"
+
+def pretty_print_xml(data, file_path):
+    ElementTree(data).write(file_path)
+    xml = minidom.parse(file_path)
+    with open(file_path, 'w') as resaved_file:
+        # [23:] omits the stupid xml header
+        resaved_file.write(xml.toprettyxml()[23:])
+
+def make_lti(config):
+  dest_dir = config.book_dir + config.rel_book_output_path
+  # Iterate through all of the existing files
+  ignore_files = ('Gradebook.html', 'search.html', 'conceptMap.html',
+                  'genindex.html', 'RegisterBook.html', 'index.html')
+  html_files = [path for path in os.listdir(dest_dir)
+                if path.endswith('.html') and path not in ignore_files]
+
+  lti_folder = os.path.join(dest_dir, '..', 'lti_html')
+  shutil.rmtree(lti_folder, ignore_errors=True)
+  os.makedirs(lti_folder)
+
+  url_index = {}
+  if config.course_id:
+    course_id = config.course_id
+    # URL_SOURCE = "https://canvas.instructure.com/courses/{course_id}/modules/items/{item_id}"
+    URL_SOURCE = config.LMS_url+"/courses/{course_id}/modules/items/{item_id}"
+    module_item_id = "NOT FOUND"
+    for chapter_name, chapter_data in config.chapters.items():
+      for module_name, module_data in chapter_data.items():
+        if 'item_id' in module_data:
+          module_item_id = module_data['item_id']
+          url_index[module_name] = URL_SOURCE.format(course_id=course_id, item_id=module_item_id)
+        for section_name, section_data in module_data['sections'].items():
+          pattern = section_name.split('/')[1] if '/' in section_name else section_name
+          if 'item_id' in section_data:
+            item_id = section_data['item_id']
+          else:
+            item_id = module_item_id
+          url_index[pattern] = URL_SOURCE.format(course_id=course_id, item_id=item_id)
+
+  for chapter_name, sections in config.chapters.items():
+    for section_name, section_data in sections.items():
+      name = section_name.split('/')[1] if '/' in section_name else section_name
+      path = os.path.join(dest_dir, name+".html")
+      break_up_fragments(path, section_data['sections'], tuple(html_files)+ignore_files, url_index, config.book_name)
 
 def main(argv):
   if len(argv) != 3:

@@ -1,2 +1,3 @@
-Sphinx==1.3.1
+beautifulsoup4==4.3.2
 hieroglyph==0.5.5
+-e git://github.com/hosamshahin/canvas_python_sdk#egg=canvas_sdk

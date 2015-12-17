@@ -5,11 +5,13 @@
 
 .. avmetadata::
    :author: Cliff Shaffer Nabanita Maji
-   :prerequisites:
    :topic: NP-completeness
 
 NP-Completeness Proofs
 ======================
+
+NP-Completeness Proofs
+----------------------
 
 To start the process of being able to prove problems are NP-complete,
 we need to prove just one problem :math:`H` is NP-complete.
@@ -47,10 +49,7 @@ Satisfiability is an NP Complete Problem.
 
    We will use this sequence of reductions for the NP Complete Proofs.
 
-Examples of reductions for proof of NP Completeness
----------------------------------------------------
-
-The next few chapters provide examples of reductions that can be used
+The next few modules provide examples of reductions that can be used
 to prove that a particular problem is NP Complete.
 
 

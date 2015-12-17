@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html data-require="codemirror math">
+  <head>
+    <title> Recursion Tracing Exercise: Recursive function nested calls</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body  data-height="550" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RectFIBfactp"> <!-- Supresses answer box -->
+          <p class="question">Consider the following code:
+            <textarea id="codeTextarea" name="codeTextarea">
+public long foo(long x) { 
+  if(x == 1 || x == 3)
+    return x;
+  else
+    return x * foo(x-1);
+}</textarea>
+            Assuming no possibility of integer overflow, what will be
+            returned by the following call to <tt>foo</tt>?
+            <tt>foo(foo(3)+foo(4));</tt>
+          </p>
+          <div class="solution"><code>(15!)/(2!)</code></div>
+          <ul class="choices" >
+	    <li><code>3!+4!</code></li>
+	    <li><code>(7!)!</code></li>
+            <li><code>(3!+4!)!</code></li>
+            <li><code>15</code></li>
+          </ul>
+          <div class="hints">
+            <p>This function computes factorial, except that it leaves
+              out 2 from the series of multiplications.</p>
+            <p>So, <tt>foo(3)+foo(4) = 15</tt>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

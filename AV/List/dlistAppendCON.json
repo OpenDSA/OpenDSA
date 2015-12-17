@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "av_c1": "The append method works almost the same as insertion. We will insert the value 15.",
       "av_c2": "Create a new link node.",
@@ -11,7 +11,7 @@
       "av_c8": "Increase the list size by 1."
     }
   },
-  "code" : {
+  "code": {
     "processing": {
       "url": "../../../SourceCode/Processing/Lists/DList.pde",
       "lineNumbers": false,

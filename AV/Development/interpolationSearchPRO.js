@@ -86,6 +86,7 @@
     } else {
       key = Math.floor(2 * (min + max) / 7);
     }
+    ODSA.AV.logExerciseInit([key]);
 
     // clear old elements
     if ($findLabel) {

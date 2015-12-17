@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html data-require="math">
+  <head>
+    <title>OpenDSA List Exercise: Operations </title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="question">Which of the following operations is
+            performed more efficiently by a doubly linked list
+            implementation than by singly linked list? </p>
+          <div class="solution">Finding the node preceeding the current node</div>
+          <ul class="choices">
+            <li>Removing the current node</li>
+            <li>Searching an unsorted list for a given item</li>
+            <li>Traversing a list to process each node</li>
+          </ul>
+          <div class="hints">
+            <p>Both can quickly remove the current node.</p>
+            <p>Both must do search sequentially.</p>
+            <p>Both must traverse a list sequentially.</p>
+            <p>The key difference between the singly and doubly linked
+              list impleentations is that the doubly linked list can easily
+              reach the previous node.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

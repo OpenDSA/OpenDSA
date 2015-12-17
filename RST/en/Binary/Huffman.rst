@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -16,6 +16,9 @@
 
 Huffman Coding Trees
 ====================
+
+Huffman Coding Trees
+--------------------
 
 One can often gain an improvement in space requirements in exchange
 for a penalty in running time.
@@ -100,8 +103,15 @@ One motivation for studying Huffman coding is because it provides our
 first opportunity to see a type of tree structure referred to as a
 :term:`search trie`.
 
+.. [#] To keep things simple, these examples for building Huffman
+       trees uses a :term:`sorted list` to keep the partial Huffman trees
+       ordered by frequency.
+       But a real implementation would use a :term:`heap` to implement a
+       :term:`priority queue` keyed by the frequencies.
+
+
 Building Huffman Coding Trees
---------------------------------
+-----------------------------
 
 Huffman coding assigns codes to characters such that the length of the
 code depends on the relative frequency or :term:`weight` of the
@@ -198,8 +208,15 @@ A tree is created (``temp3``) such that the left and right subtrees
 are ``temp1`` and ``temp2``, respectively.
 Finally, ``temp3`` is returned to ``fl``.
 
-Assigning and Using Huffman Codes
------------------------------------
+.. [#] ASCII coding actually uses 8 bits per character.
+       Seven bits are used to represent the 128 codes of the ASCII
+       character set.
+       The eigth bit as a :term:`parity` bit, that can be used to
+       check if there is a transmission error for the character.
+
+
+Assigning and Using Huffman Codes (1)
+-------------------------------------
 
 Once the Huffman tree has been constructed, it is an easy matter to
 assign codes to individual letters.
@@ -210,6 +227,10 @@ This process is illustrated by the following slideshow.
 
 .. inlineav:: huffmanLabelCON ss 
    :output: show
+
+
+Assigning and Using Huffman Codes (2)
+-------------------------------------
 
 Now that we see how the edges associate with bits in the code, it is a
 simple matter to generate the codes for each letter (since each letter
@@ -222,6 +243,10 @@ Now that we have a code for each letter,
 encoding a text message is done by replacing each letter of the
 message with its binary code.
 A lookup table can be used for this purpose.
+
+
+Decoding
+--------
 
 A set of codes is said to meet the :term:`prefix property` if no
 code in the set is the prefix of another.
@@ -243,7 +268,12 @@ by traversing the tree appropriately.
 .. inlineav:: huffmanDecodeCON ss
    :output: show
 
-.. avembed:: Exercises/Binary/HuffmanDecodeFIB.html ka
+
+Decoding Practice
+-----------------
+
+.. avembed:: Exercises/Binary/HuffmanDecodePRO.html ka
+
 
 How efficient is Huffman coding?
 --------------------------------
@@ -328,21 +358,6 @@ The problem is that "MUCK" is composed of letters that are not
 expected to occur often.
 If the message does not match the expected frequencies of the letters,
 than the length of the encoding will not be as expected either.
-
-Notes
------
-
-.. [#] To keep things simple, these examples for building Huffman
-       trees uses a :term:`sorted list` to keep the partial Huffman trees
-       ordered by frequency.
-       But a real implementation would use a :term:`heap` to implement a
-       :term:`priority queue` keyed by the frequencies.
-
-.. [#] ASCII coding actually uses 8 bits per character.
-       Seven bits are used to represent the 128 codes of the ASCII
-       character set.
-       The eigth bit as a :term:`parity` bit, that can be used to
-       check if there is a transmission error for the character.
 
 .. odsascript:: DataStructures/huffman.js
 .. odsascript:: AV/Binary/huffmanBuildCON.js

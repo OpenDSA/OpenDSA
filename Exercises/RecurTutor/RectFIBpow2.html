@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html data-require="codemirror math">
+  <head>
+    <title> Recursion Tracing Exercise: Result Return</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+ 
+  <body  data-height="550" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="n">randRange(2, 10)</var>
+        <var id="ANS">Math.pow(2, n)</var>
+      </div>
+      <div class="problems">
+        <div id="RectFIBpow2p"> <!-- Supresses answer box -->
+          <p class="question">Consider the following function:
+            <textarea id="codeTextarea" name="codeTextarea">
+public int result(int n) {
+  if(n == 1)
+    return 2;
+  else
+    return 2 * result(n-1);	
+}</textarea><br/>
+            What value does result(<var>n</var>) return?<br/>
+            (Either write a number, or write "infinite recursion".)
+          </p>
+          <p class="solution" data-type="text"><var>ANS</var></p>
+          <div class="hints">
+            <p>2 is multiplied by itself n times. In other words the
+              result is <code>2^n</code>.</p>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

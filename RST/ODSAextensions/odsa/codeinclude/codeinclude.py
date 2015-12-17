@@ -100,7 +100,7 @@ class codeinclude(Directive):
           lang = self.options['lang']
 
         if 'lang' in code_lang[lang]:
-          code_color = code_lang[lang]['lang'] 
+          code_color = code_lang[lang]['lang']
         else:
           print_err('Failed to find language name in configuration file ("lang" option)')
           return [document.reporter.warning('Missing "lang" option in code_lang configuration',
@@ -159,7 +159,7 @@ class codeinclude(Directive):
         html_strs[0] = tab_header + '</ul>' + html_strs[0]
         # Link to additional jQuery UI libraries, so we don't load it on pages where its not needed
         lib_path = os.path.relpath(conf.odsa_path,conf.ebook_path) + '/lib'
-        html_strs[-1] += '</div><script src="%s/jquery-ui-1.8.24.min.js"></script><script>$(function() {$( "#%s" ).tabs();});</script>' % (lib_path, tab_id)
+        html_strs[-1] += '</div><script>$(function() {$( "#%s" ).tabs();});</script>' % (tab_id)
 
     # If only one code block exists, print the code normally
     if len(code_nodes) == 1:

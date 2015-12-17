@@ -5,7 +5,8 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: open hashing
+   :satisfies: collision resolution
    :topic: Hashing
 
 .. index:: ! collision resolution
@@ -14,6 +15,9 @@
 
 Collision Resolution
 ====================
+
+Collision Resolution
+--------------------
 
 We now turn to the most commonly used form of hashing:
 closed hashing with no bucketing, and a collision resolution policy
@@ -115,6 +119,10 @@ returns to the home position.
 Can you see any reason why this might not be the best approach
 to collision resolution?
 
+
+The Problem with Linear Probing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 While linear probing is probably
 the first idea that comes to mind when considering collision
 resolution policies, it is not the only one possible.
@@ -138,6 +146,6 @@ worse.
 The objection to primary clustering is that it leads to
 long probe sequences.
 
-.. avembed:: Exercises/Hashing/HashingLinearProbePRO.html ka
+.. avembed:: Exercises/Hashing/HashLinearPPRO.html ka
 
 .. odsascript:: AV/Hashing/linProbeCON.js

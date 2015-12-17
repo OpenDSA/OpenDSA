@@ -1,0 +1,17 @@
+{
+  "translations" :{
+    "en": {
+	  "Slide 1": "What is the average number of inversions?",
+	  "Slide 2": "Consider a list $L$ containing $n$ values.",
+	  "Slide 3": "Define $L_R$ to be $L$ in reverse.",
+	  "Slide 4": "For example, if we have input list 3 4 1 2, the reverse list is 2 1 4 3",
+	  "Slide 5": "$L$ has ${n\\choose 2} = \\frac{n(n-1)}{2}$ distinct pairs of values, each of which could potentially be an inversion.",
+	  "Slide 6": "<br>In our example, we have 6 distinct pairs",
+	  "Slide 12": "Each such pair must either be an inversion in $L$ or in $L_R$.",
+	  "Slide 13": "<br>Here in the example, 3 comes before 4 in the original list, and 4 comes before 3 in the reverse list.",
+	  "Slide 14": "Thus, the total number of inversions in $L$ and $L_R$ together is exactly $\\frac{n(n-1)}{2}$",
+	  "Slide 15": "This means that the average number of inversions must be half of that, or $\\frac{n(n-1)}{4}$ per list.",
+	  "Slide 16": "We therefore know with certainty that any sorting algorithm which limits comparisons to adjacent items will cost at least $\\frac{n(n-1)}{4}=\\Omega(n2)$ in the average case."
+	}
+  }
+}

@@ -1,0 +1,81 @@
+      "Binary/BST": {
+        "long_name": "Binary Search Trees",
+        "sections": {
+          "Binary Search Tree Definition": {
+          "dispModComp": true
+          },
+          "BST Search": {
+	    "showsection": true,
+            "BSTsearchCON": {
+              "long_name": "BST Search Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+	  },
+	  "BST Search Exercise": {
+            "BSTsearchPRO": {
+              "long_name": "BST Search Proficiency Exercise",
+              "exer_options": {
+		"JXOP-code": "none",
+		"JXOP-feedback": "continuous",
+		"JXOP-fixmode": "undo"
+              },
+              "required": true,
+              "points": 1.0,
+              "threshold": 0.90
+            }
+	  },
+	  "BST Insert": {
+            "BSTinsertCON": {
+              "long_name": "BST Insert Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+	  },
+	  "BST Insert Exercise": {
+            "BSTinsertPRO": {
+              "long_name": "BST Insert Proficiency Exercise",
+              "exer_options": {
+		"JXOP-code": "none",
+		"JXOP-feedback": "continuous",
+		"JXOP-fixmode": "undo"
+              },
+              "required": true,
+              "points": 1.0,
+              "threshold": 0.90
+            }
+	  },
+	  "BST Remove Pt 1": {
+            "BSTdeletemaxCON": {
+              "long_name": "BST deletemax Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+	  },
+	  "BST Remove Pt 2": {
+            "BSTremoveCON": {
+              "long_name": "BST remove Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+	  },
+	  "BST Remove Exercise": {
+            "BSTremovePRO": {
+              "long_name": "BST Remove Proficiency Exercise",
+              "exer_options": {
+		"JXOP-code": "none",
+		"JXOP-feedback": "continuous",
+		"JXOP-fixmode": "undo"
+              },
+              "required": true,
+              "points": 2.0,
+              "threshold": 0.90
+            }
+          },
+	  "BST Analysis": {}
+	}
+      }

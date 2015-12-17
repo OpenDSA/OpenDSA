@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html data-require="math">
+  <head>
+    <title>Stack/Queue Exercise: Two Stacks</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="question">Stack A has entries a, b, c (in that
+            order with a on top), while Stack B is initially empty.
+            When an entry is popped out of stack
+            A, it can be printed immediately or pushed to stack B. When an
+            entry is popped out of stack B, it can only be printed. Which of
+            the following permutations of a, b, c is not possible to
+            print?</p>
+          <div class="solution">c a b</div>
+          <ul class="choices">
+            <li>b a c</li>
+            <li>b c a</li>
+            <li>a b c</li>
+          </ul>
+          <div class="hints">
+            <p>We can manage to get "c" to print first.</p>
+            <p>But to do so requires putting "a" and then "b" into
+              stack B.<p>
+            <p>Which then means that they must come out of B and be
+              printed in reverse order.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

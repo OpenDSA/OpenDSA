@@ -1,0 +1,51 @@
+{
+  "title": "Pointers Tutor",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {"Java": ["java"]},
+  "module_origin": "http://algoviz-beta.cs.vt.edu",
+  "exercise_server": "http://opendsa.cs.vt.edu:8090",
+  "logging_server": "http://opendsa.cs.vt.edu:8090",
+  "score_server": "http://opendsa.cs.vt.edu:8090",
+  "build_JSAV": false,
+  "allow_anonymous_credit": true,
+  "suppress_todo": false,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "chapters": {
+    "Pointers": {
+      "Pointers/PointerIntro": {
+        "long_name": "Pointers Chapter Introduction",
+        "exercises": {}
+      },
+      "Pointers/BasicPointers": {
+        "long_name": "Basic Pointers",
+        "exercises": {}
+      },
+      "Pointers/LocalMem": {
+        "long_name": "Local Memory",
+        "exercises": {}
+      },
+      "Pointers/RefParam": {
+        "long_name": "Reference Parameters",
+        "exercises": {}
+      },
+      "Pointers/HeapMem": {
+        "long_name": "Heap Memory",
+        "exercises": {}
+      },
+      "Pointers/Exercises": {
+        "long_name": "Exercises",
+        "exercises": {
+          "FindNodePROG": {
+            "long_name": "Find Node Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 3
+          }
+        }
+      }
+    }
+  }
+}

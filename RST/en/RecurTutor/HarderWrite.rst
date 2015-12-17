@@ -1,52 +1,67 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: Sally Hamouda
+   :author: Sally Hamouda and Cliff Shaffer
    :requires: recursion writing
    :topic: Recursion
 
+Writing More Sophisticated Recursive Functions
+==============================================
 
-Writing a more sophisticated recursive function
-===============================================
+Some recursive functions have only one base case and one recursive
+call.
+But it is common for there to be more than one of either or both.
 
-In the previous examples and exercises, all the recursive functions has only one base case and one recursive case. A more general structure for recursion
-can have more than one base case and recursive case. 
-
-The following Figure shows how a general structure recursive function looks like.
+The following is the general structure for a recursive function.
 
 .. codeinclude:: RecurTutor/RecMultBcRc
 
-In some problems, we need to have more than one base case and more than one recursive case. 
-
 .. topic:: Example
 
-   Example of a function that has multiple base cases is a function that determines if an integer X is prime or not. 
-   The following code shows a recursive function that determines if an integer X is prime or not.
-   Where X is the number to check whether it is prime or not. Y is a divisor which is a number below X, when calling the function initially Y equals X-1:
+   Consider a rather simple function to determine if an integer ``X`` is
+   prime or not. 
+   ``Y`` is a helper variable that is used as the devisor.
+   When calling the function initially, ``Y = X - 1``
 
    .. codeinclude:: RecurTutor/Prime
 
+   We see that ``Prime`` has two base cases and one recursive call.
 
 .. topic:: Example
 
-   Example of a function that has multiple recursive calls, is a function that finds whether a subset of given numbers
-   adds up to a target sum.  For example, given the set 3,8,1,7,-3 (where n is 5 for this set) and the target sum is 4, 
-   the result is true because the subset 3,1 sums to 4. 
-   Also, if the target is 6 the result will be true because the subset 8,1,-3 sums to 6.  
-   On the other hand, if the target is 2 then the result is false because non of the subsets can sum to 2. 
-   As shown in the following code, the function takes a set of integers, the number of integers and a target sum:
+   Here is a function that has multiple recursive calls.
+   Given an ``int`` array named ``arr``, function
+   ``isSubsetSum`` determines whether some of the values in
+   ``arr`` add up to ``sum``.
+   For example, given the number 3, 8, 1, 7, and -3, with ``sum = 4``,
+   the result is ``true`` because the values 3 and 1 sum to 4. 
+   If ``sum = 6``, then the result will be ``true`` because the
+   :math:`8 + 1 + -3 = 6`.  
+   On the other hand, if ``sum = 2`` then the result is ``false``
+   there is no combination of the five numbers that adds up to 2.
+   In this code, variable ``n`` is the number of values that we look
+   at.
+   We don't want to just use ``arr.length`` because the recursive
+   calls need to limit their work to part of the array.
    
    .. codeinclude:: RecurTutor/IsSubsetSum
    
+   This example has two base cases and two recursive calls.
+
 .. topic:: Example
 
-   Example of a function that has multiple base cases and multiple recursive calls, is a function that counts 
-   the number of different ways to reach a basketball score. 
-   Example: For the input 3, the output will be 4, since there are 4 different ways to accumulate 3: 1+1+1, 1+2, 2+1, 3.:
+   Here is a function that has multiple base cases and multiple
+   recursive calls.
+   Function ``paths`` counts the number of different ways to reach a
+   given basketball score.
+   Recall that in Basketball, it is possible to get points in
+   increments of 1, 2, or 3.
+   So if ``n = 3``, then ``paths`` will return 4, since there are four
+   different ways to accumulate 3 points: :math:`1+1+1, 1+2, 2+1,` and 3.
    
-   .. codeinclude:: RecurTutor/NumOfOps
-      
-You need to practice harder recursive functions in order to gain more experience on recursion.
+   .. codeinclude:: RecurTutor/Paths
+
+   This function has three base cases and three recursive calls.

@@ -1,17 +1,18 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Jordan Sablan
-   :requires: 
-   :satisfies: 
+   :requires: debugging
+   :satisfies: Eclipse debugging
    :topic:
 
 ====================
 Debugging In Eclipse
 ====================
+
 In this tutorial we will show basic debugging steps. To begin debugging a
 program, select the Debug mode by clicking the icon circled in blue below.
 
@@ -25,7 +26,8 @@ program, select the Debug mode by clicking the icon circled in blue below.
    Figure 1
 
 What Is A Debugger?
-==================
+~~~~~~~~~~~~~~~~~~~
+
 A debugger is a piece of software that allows a programmer to run their code
 as if it is executing normally, but allowing stops and pauses at any point to
 dump information from the program. It gives unprecendented knowledge to what
@@ -34,7 +36,8 @@ to the entry on
 `Wikipedia <http://en.wikipedia.org/wiki/Debugger>`__.
 
 Debugging Terms
-===============
+~~~~~~~~~~~~~~~
+
 1. Resume - Resuming will run the code until another breakpoint is hit or until
 the program finishes (see Figure 2 for icon).
 
@@ -66,7 +69,8 @@ learn more about them*
 `here <http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2Ftasks%2Ftask-stepping.htm>`__.
 
 Debugging A Memory Pool
-=======================
+~~~~~~~~~~~~~~~~~~~~~~~
+
 This section follows very closely with projects like
 `this <http://courses.cs.vt.edu/~cs3114/Fall14/P1.pdf>`__.
 For some programs you may need to analyze byte chunks, in other words for a region
@@ -154,7 +158,8 @@ unsigned value as well.
    Figure 9: All Three Views Enabled
 
 The Eclipse Console
-===================
+~~~~~~~~~~~~~~~~~~~
+
 So you can now view memory, set breakpoints and even step through functions to
 the points you care about. gdb's command line interface is very handy for dumping
 information quickly and programmatically when debugging C programs.
@@ -183,7 +188,8 @@ your replacement code and test it on the spot to insure success.
    Figure 9: The Display
 
 Conditional Breakpoints
-=======================
+~~~~~~~~~~~~~~~~~~~~~~~
+
 Sometimes your bug might appear after a lot of processing. you cannot just set a
 breakpoint to a line of code, because that line is executed 10,000 times before
 the bug occurs. What you really want is to stop at a line only when some other

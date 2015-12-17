@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
@@ -14,7 +14,7 @@
 Stacks
 ======
 
-Stack terminology
+Stack Terminology
 -----------------
 
 The :term:`stack` is a list-like structure
@@ -52,6 +52,7 @@ The two approaches presented here are the :term:`array-based stack`
 and the :ref:`linked stack <linked stack> <StackLinked>`, 
 which are analogous to array-based and linked lists, respectively.
 
+
 Array-Based Stacks
 ------------------
 
@@ -66,6 +67,7 @@ the array-based stack class.
 .. inlineav:: astackVarCON ss
    :output: show
    
+
 The array-based stack implementation is essentially
 a simplified version of the array-based list.
 The only important design decision to be made is which end of the
@@ -74,15 +76,21 @@ array should represent the top of the stack.
 .. inlineav:: astackTopCON ss
    :output: show
    
+|
+
 .. inlineav:: astackPushCON ss
    :output: show
+
+.. avembed:: Exercises/List/AstackPushPRO.html ka
+
+
+Pop
+---
 
 .. inlineav:: astackPopCON ss
    :output: show
    
-.. avembed:: Exercises/List/astackPushPRO.html ka
-
-.. avembed:: Exercises/List/astackPopPRO.html ka
+.. avembed:: Exercises/List/AstackPopPRO.html ka
 
 .. odsascript:: AV/List/astackVarCON.js
 .. odsascript:: AV/List/astackTopCON.js

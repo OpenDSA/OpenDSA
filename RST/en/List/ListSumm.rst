@@ -1,16 +1,28 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: Sorting
-   :topic: Math Background
+   :satisfies: list summary
+   :requires: array-based list; linked list; array-based stack; linked stack; array-based queue; linked queue;
+   :topic: Linear structures
 
 Linear Structure Summary Exercises
 ==================================
 
-Here are some practice questions for various topics related to this chapter.
+Practice Questions
+------------------
 
-.. avembed:: Exercises/List/LstChptrSumm.html ka
+Here are some general practice questions about various data structures
+in this chapter.
+
+.. avembed:: Exercises/List/ListdsSumm.html ka
+
+Chapter Review Questions
+------------------------
+
+Here is a summary exercise with questions from everything in this chapter.
+
+.. avembed:: Exercises/List/ListChapterSumm.html ka

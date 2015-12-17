@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html data-require="codemirror blockUI">
+  <head>
+    <title> Recursion Programming Exercise: Sum Of the Digits</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #RecCSumOfDigitsPROG .CodeMirror {
+        height: 200px;
+      }
+    </style>
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="config">
+          (function(){ window.OpenPopKa = true;}())
+        </var>
+      </div>
+      <div class="problems">
+        <div id="RecCSumOfDigitsPROGp"> <!-- Supresses answer box -->
+          <p class="problem">For function "sumOfDigits", write
+            write the missing recursive call. This function takes
+            a non-negative integer and returns the sum of its digits.
+            For example, sumOfDigits(1234) returns 1+2+3+4 = 10.<br/>
+            <textarea id="codeTextarea" name="codeTextarea">
+int sumOfDigits(int number) {
+  if (number / 10 == 0) {
+    return number;
+  return <<Missing a Recursive case action>>
+}</textarea>
+          </p>
+          <div class="question"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess">[editor.getValue()]</div>
+            <div class="validator-function">
+              if (guess[0] != initEditor) {
+                console.log(guess[0]);
+                window.codeValue = guess[0];
+                window.progexType = "RecurTutor";
+                window.summexName =  "RecCSumOfDigitsPROG";
+              } else {
+                return "";
+              }
+            </div>
+          </div>
+          <div class="hints">
+			  <p>Every time the recursive call is executed the number of digits that should be returned should be incremented by one and a digit should be dropped of "number".</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,21 +1,33 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Cliff Shaffer
    :requires: insertion sort; bubble sort; selection sort
+   :satisfies: exchange sort
    :topic: Sorting
 
 .. index:: ! exchange sorting
-
 .. index:: sorting; exchange
 
-.. odsalink:: AV/Development/ExchangeSortCON.css
+.. odsalink:: AV/Sorting/ExchangeSortCON.css
 
 The Cost of Exchange Sorting
 ============================
+
+The Cost of Exchange Sorting
+----------------------------
+
+.. TODO::
+   :tag: Revision
+
+   Rewrite along these lines: Here are two measures of "out of order":
+   inversions and min-swaps. Selection sort (especially w/
+   optimization) meets min-swaps, but that's not a useful measure in
+   general. Insertion sort tracks inversions, it is I + n. Now, if we
+   had an exchange sort, what would cost be? Go on to the proof.
 
 Here is a summary for the cost of Insertion Sort,
 Bubble Sort, and Selection Sort in terms of their required number of
@@ -58,39 +70,39 @@ appears before it.
 
 .. avembed:: Exercises/Sorting/FindInversionsPRO.html ka
 
+
+Analysis
+--------
+
 .. TODO::
    :tag: slideshow
 
    The following analysis material should be a slideshow
 
-.. showhidecontent:: ExchangeSortAnalysis
+What is the average number of inversions?
+Consider a list **L** containing
+:math:`n` values.
+Define **L**:math:`_R`
+to be **L** in reverse.
+For example, if we have input list 3 4 1 2, the reverse list is 2 1 4 3.
+**L** has :math:`n(n-1)/2` distinct pairs of
+values, each of which could potentially be an inversion.
+Each such pair must either be an inversion in
+**L** or in **L**:math:`_R`.
+In the example list and its reverse above, 3 comes before 4 in the
+original list, and 4 comes before 3 in the reverse list.
+Thus, the total number of inversions in **L** and
+**L**:math:`_R` together is exactly
+:math:`n(n-1)/2`.
+This means that the average number of inversions must be half of that,
+or :math:`n(n-1)/4` per list.
+We therefore know with certainty that any sorting algorithm which
+limits comparisons to adjacent items will cost at least
+:math:`n(n-1)/4 = \Omega(n^2)` in the average case.
 
-   What is the average number of inversions?
-   Consider a list **L** containing
-   :math:`n` values.
-   Define **L**:math:`_R`
-   to be **L** in reverse.
-   For example, if we have input list 3 4 1 2, the reverse list is 2 1 4 3.
-   **L** has :math:`n(n-1)/2` distinct pairs of
-   values, each of which could potentially be an inversion.
-   Each such pair must either be an inversion in
-   **L** or in **L**:math:`_R`.
-   In the example list and its reverse above, 3 comes before 4 in the
-   original list, and 4 comes before 3 in the reverse list.
-   Thus, the total number of inversions in **L** and
-   **L**:math:`_R` together is exactly
-   :math:`n(n-1)/2`.
-   This means that the average number of inversions must be half of that,
-   or :math:`n(n-1)/4` per list.
-   We therefore know with certainty that any sorting algorithm which
-   limits comparisons to adjacent items will cost at least
-   :math:`n(n-1)/4 = \Omega(n^2)` in the average case.
-   
 .. inlineav:: ExchangeSortCON ss
    :output: show
 
-Here are the module review questions.
-
 .. avembed:: Exercises/Sorting/ExchangeSumm.html ka
 
-.. odsascript:: AV/Development/ExchangeSortCON.js
+.. odsascript:: AV/Sorting/ExchangeSortCON.js

@@ -1,22 +1,33 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: Sally Hamouda
-   :prerequisites:
+   :author: Sally Hamouda and Cliff Shaffer
+   :requires: recursion writing
    :topic: Recursion
-
-
 
 
 Harder Code Completion Practice Exercises
 ===========================================
 
-.. avembed:: Exercises/RecurTutor/recHMinPROGSumm.html ka
-.. avembed:: Exercises/RecurTutor/recHIsReversePROGSumm.html ka
-.. avembed:: Exercises/RecurTutor/recHDecibinaryPROGSumm.html ka
+Programming Exercise: Array Min
+-------------------------------
+
+.. avembed:: Exercises/RecurTutor/RecHMinPROG.html ka
+
+
+Programming Exercise: Sring Reverse
+-----------------------------------
+
+.. avembed:: Exercises/RecurTutor/RecHIsReversePROG.html ka
+
+
+Programming Exercise: Decimal to Binary
+---------------------------------------
+
+.. avembed:: Exercises/RecurTutor/RecHDecibinaryPROG.html ka
 
 
 

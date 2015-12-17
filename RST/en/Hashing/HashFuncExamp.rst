@@ -5,14 +5,17 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: hash function
    :topic: Hashing
 
 Sample Hash Functions
 =====================
 
+Sample Hash Functions
+---------------------
+
 Simple Mod Function
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 Consider the following hash function used to hash integers to a table
 of sixteen slots::
@@ -41,7 +44,7 @@ function produces a number in the range 0 to :math:`M-1`.
 
 
 Binning
--------
+~~~~~~~
 
 Say we are given keys in the range 0 to 999, and have a hash table of
 size 10.
@@ -121,8 +124,9 @@ Thus, each table slot is equally likely (roughly) to get a key value.
 
    A comparison of binning vs. modulus as a hash function.
 
+
 The Mid-Square Method
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 A good hash function to use with integer key values is the
 :term:`mid-square method`.
@@ -173,10 +177,12 @@ Start with '4567' as an example.
 
 .. avembed:: AV/Hashing/MidSquare.html pe
 
-Hash Functions for Strings
---------------------------
 
-Now we will examine some hash functions suitable for storing strings of characters.
+A Simple Hash Function for Strings
+----------------------------------
+
+Now we will examine some hash functions suitable for storing strings
+of characters.
 We start with a simple summation function::
 
    int sascii(String x, int M) {
@@ -214,7 +220,7 @@ If the sum is not sufficiently large, then the modulus operator will
 yield a poor distribution.
 For example, because the ASCII value for 'A' is 65 and 'Z' is 90,
 ``sum`` will always be in the range 650 to 900 for a string of ten
-upper case letters. 
+upper case letters.
 For a hash table of size 100 or less, a reasonable  distribution
 results.
 For a hash table of size 1000, the distribution is terrible because
@@ -225,6 +231,10 @@ slots.
 Now you can try it out with this calculator.
 
 .. avembed:: AV/Hashing/StringSimple.html pe
+
+
+String Folding
+--------------
 
 Here is a much better hash function for strings::
 
@@ -287,15 +297,24 @@ There is nothing special about using four characters at a time.
 Other choices could be made.
 Another alternative would be to fold two characters at a time.
 
+
+Hash Function Practice
+----------------------
+
 Now here is an exercise to let you practice these various hash
 functions.
 You should use the calculators above for the more complicated hash
 functions.
 
-.. avembed:: Exercises/Hashing/HashFuncPROSumm.html ka
+.. avembed:: Exercises/Hashing/HashFuncFIBSumm.html ka
+
+
+Hash Function Review Questions
+------------------------------
 
 Here are some review questions.
 
 .. avembed:: Exercises/Hashing/HashFuncSumm.html ka
 
-.. odsascript:: AV/Hashing/hashFuncExCON.js
+.. odsascript:: AV/Hashing/hashFuncExCON1.js
+.. odsascript:: AV/Hashing/hashFuncExCON2.js

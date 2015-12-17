@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -62,8 +62,9 @@ Our BST implementation will require that records implement the
 .. codeinclude:: Binary/BST
    :tag: BST
 
+
 BST Search
-----------
+~~~~~~~~~~
 
 The first operation that we will look at in detail will find the
 record that matches a given key.
@@ -82,6 +83,7 @@ subroutine and is implemented as follows.
    :output: show
 
 .. avembed:: AV/Binary/BSTsearchPRO.html pe
+
 
 BST Insert
 ----------
@@ -124,6 +126,7 @@ possible.
 This keeps the average cost of a BST operation low.
 
 .. avembed:: AV/Binary/BSTinsertPRO.html pe
+
 
 BST Remove
 ----------
@@ -197,7 +200,12 @@ Selecting the greatest value from the left subtree does not
 have a similar problem, because it does not violate the Binary Search
 Tree Property if equal values appear in the left subtree.
 
+.. [#] Alternatively, if we prefer to store duplicate values in the
+       right subtree, then we must replace a deleted node with the
+       least value from its right subtree.
+
 .. avembed:: AV/Binary/BSTremovePRO.html ss
+
 
 BST Analysis
 ------------
@@ -254,12 +262,7 @@ Two examples are the
 There also exist other types of search trees that are guaranteed to
 remain balanced, such as the :ref:`2-3 Tree <2-3 tree> <TwoThreeTree>`.
 
-Notes
------
-
-.. [#] Alternatively, if we prefer to store duplicate values in the
-       right subtree, then we must replace a deleted node with the
-       least value from its right subtree.
+.. avembed:: Exercises/Binary/BSTSumm.html ka
 
 .. odsascript:: AV/Binary/BSTsearchCON.js
 .. odsascript:: AV/Binary/BSTinsertCON.js

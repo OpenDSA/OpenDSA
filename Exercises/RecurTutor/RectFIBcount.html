@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html data-require="codemirror math">
+  <head>
+    <title> Recursion Tracing Exercise: dosomething Print </title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+ 
+  <body  data-height="550" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RectFIBcountdownp"> <!-- Supresses answer box -->
+          <p class="question">Consider the following function:
+            <textarea id="codeTextarea" name="codeTextarea">
+public void dosomething (int n) {
+  if (n > 0) {
+   dosomething(n - 1);
+   System.out.print(n);
+  }		
+}</textarea>		
+            What will be printed when <tt>dosomething(5)</tt> is called?<br/>
+            (Either write a sequence of numbers, or write "infinite
+            recursion".)
+          </p>
+          <p class="solution" data-type="text">12345</p>
+          <div class="hints">
+            <p>The print command will be exectued when the recursive
+              call reaches the base case, and then each time coming
+              back back.</p>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

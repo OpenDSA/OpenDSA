@@ -1,28 +1,34 @@
 <!DOCTYPE html>
 <html data-require="math">
-<head>
-  <title>Heaps: Worst Case</title>
-  <script src="../../lib/jquery.min.js"></script>
-  <script src="../../lib/jquery-ui.min.js"></script>
-  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-</head>
+  <head>
+    <title>Heaps: Worst Case</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
 
-<body>
-<div class="exercise">
-  <div class="problems">
-    <div id="problem-type-or-description">
-      <p class="question">Which of these is a true statement about the
-	worst-case time for operations on heaps?</p>
-      <div class="solution"><var>"Both insertion and removal are better than linear"</var></div>
-      <ul class="choices">
-	<li><var>"Insertion is better than linear, but removal is not"</var></li>
-	<li><var>"Removal is better than linear, but insertion is not"</var></li>
-	<li><var>"Neither insertion nor removal are better than linear"</var></li>
-      </ul>
-      <div class="hints">
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="question">Which of these is a true statement about the
+            worst-case time for operations on heaps?</p>
+          <div class="solution">Both insertion and removal are better than linear</div>
+          <ul class="choices">
+            <li>Insertion is better than linear, but removal is not</li>
+            <li>Removal is better than linear, but insertion is not</li>
+            <li>Neither insertion nor removal are better than linear</li>
+          </ul>
+          <div class="hints">
+            <p>Insert works by putting the new element at the end of
+              the array, and moving it up the tree as appropriate.</p>
+            <p>So its worst-case cost is proportional to the depth of the tree.</p>
+            <p>Remove works swapping the element to remove with the
+              one at the end of the array. Then move that moved item up
+              or down the tree, as appropriate.</p>
+            <p>So its worst-case cost is proportional to the depth of the tree.</p>
+          </div>
+        </div>
       </div>
-    </div> 
-  </div>
-</div>
-</body>
+    </div>
+  </body>
 </html>

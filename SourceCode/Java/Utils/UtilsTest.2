@@ -1,0 +1,28 @@
+static boolean SUCCESS = true;
+
+public static void main(String args[]) throws IOException {
+  int[] A = {5, 7, 10, 4, 3, 2, 10};
+  Integer[] Aint = new Integer[A.length];
+  KVPair[] AKVpair = new KVPair[A.length];
+
+  for(int i=0; i < A.length; i++)
+    Aint[i] = new Integer(A[i]);
+
+  int pos = largest(A);
+  if (pos != 2)
+    SUCCESS = false;
+
+  permute(Aint);
+
+  if (SUCCESS) {
+    PrintWriter output = new PrintWriter("success");
+    output.println("Success");
+    output.flush();
+    output.close();
+    System.out.println("Success!");
+  } else {
+    System.out.println("Miscellaneous Testing failed");
+  }
+}
+
+}

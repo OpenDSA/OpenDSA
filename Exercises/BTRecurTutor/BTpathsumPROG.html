@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html data-require="codemirror blockUI math math-format word-problems spin">
+  <head>
+    <title> Binary Tree Has Path Sum Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #BTleafPROG .CodeMirror {
+        height: 200px;
+      }
+    </style>
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="config">
+          (function(){ window.OpenPopKa = true;}())
+        </var>
+      </div>
+      <div class="problems">
+        <div id="BTpathsumPROGp"> <!-- Supresses answer box -->
+          <p class="problem">We'll define a "root-to-leaf path" to be a
+            sequence of nodes in a tree starting with the root node and
+            proceeding downward to a leaf (a node with no children), and
+            the "root-to-leaf path sum" for that path to be the sum of
+            all nodes (including the root) along that path.
+            Define an empty tree to contain no root-to-leaf
+            paths (and so its sum is zero). Define a tree with one node
+            to have a root-to-leaf path consisting of just the root (and
+            so its sum is the value of the root).
+            Given a binary tree and a value "sum", return true if the
+            tree has a root-to-leaf path such that adding up all the
+            values along the path equals "sum".
+            Return false if no such path can be found. Assume that the
+            function is initially called with the value of sum being zero.<br/>
+
+            <textarea id="codeTextarea" name="codeTextarea">
+boolean BTpathsum(BinNode root, int sum) {
+// Your code goes between these lines
+
+
+// Your code goes between these lines
+}</textarea>
+          </p>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [ editor.getValue()  ] </div>
+            <div class="validator-function">
+              if (guess[0] != initEditor) {
+                console.log(guess[0]);
+                window.codeValue = guess[0];
+                window.progexType= "BTRecurTutor";
+                window.summexName= "BTpathsumPROG";
+              } else {
+                return "";
+              }
+            </div>
+          </div>
+          <div class="hints">
+            <p>If the root is null, and "sum" is zero, then we have success. To
+              return True. Otherwise return False.</p>
+            <p>We can't pass the sum of the path from the leaf coming up as the
+              return value of the function, because we won't know which child's
+              sum to use. So instead, we have to pass something useful DOWN the
+              tree. In particular, call the children recursively by subtracting
+              the root's value from "sum".</p>
+            <p>The return value for any non-null node is simply true if and only
+              if at least child returns true.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

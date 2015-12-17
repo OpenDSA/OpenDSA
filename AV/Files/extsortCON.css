@@ -1,0 +1,31 @@
+#extMergeSortCON {
+ height: 375px;
+}
+
+#extMergeSortExampCON {
+ height: 300px;
+}
+
+#extSortOverCON {
+ margin-left: auto;
+ margin-right: auto;
+ height: 120px;
+}
+
+#extRSCON {
+ height: 420px;
+}
+
+#extSortSnowCON {
+ margin-left: auto;
+ margin-right: auto;
+ height: 215px;
+}
+
+#extMultiMergeCON {
+ height: 375px;
+}
+
+svg{
+  stroke-width: 1;
+}

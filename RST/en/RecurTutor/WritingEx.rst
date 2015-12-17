@@ -1,28 +1,51 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: Sally Hamouda
+   :author: Sally Hamouda and Cliff Shaffer
    :satisfies: recursion writing
    :topic: Recursion
-
-
 
 Writing Practice Exercises
 ==========================
 
-.. avembed:: Exercises/RecurTutor/recWIsbalancPROGSumm.html ka
+Programming Exercise: Paren Balance
+-----------------------------------
 
-.. avembed:: Exercises/RecurTutor/recWChckPlndrmPROGSumm.html ka
+Here is a series of code writing exercises.
+For each one, you will write a complete recursive function, using the
+given function signature.
 
-.. avembed:: Exercises/RecurTutor/recWRvrsStrngPROGSumm.html ka
+.. avembed:: Exercises/RecurTutor/RecWIsbalancedPROG.html ka
 
-.. avembed:: Exercises/RecurTutor/recWRmvDuplctPROGSumm.html ka
 
-.. avembed:: Exercises/RecurTutor/recWPascalPROGSumm.html ka
+Programming Exercise: Palindrome
+--------------------------------
 
-.. avembed:: Exercises/RecurTutor/recWCnonballPROGSumm.html ka
+.. avembed:: Exercises/RecurTutor/RecWCheckPalPROG.html ka
 
-.. avembed:: Exercises/RecurTutor/recWStckRevrsPROGSumm.html ka
+
+Programming Exercise: Reverse String
+------------------------------------
+
+.. avembed:: Exercises/RecurTutor/RecWRevStringPROG.html ka
+
+
+Programming Exercise: Cannonballs
+---------------------------------
+
+.. avembed:: Exercises/RecurTutor/RecWCannonballPROG.html ka
+
+
+Programming Exercise: Pascal's Triangle
+---------------------------------------
+
+.. avembed:: Exercises/RecurTutor/RecWPascalPROG.html ka
+
+
+Programming Exercise: Stack Reversal
+------------------------------------
+
+.. avembed:: Exercises/RecurTutor/RecWStackRevPROG.html ka

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html data-require="codemirror math">
+  <head>
+    <title> Recursion Tracing Exercise:exec Return</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+ 
+  <body  data-height="550" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="n">randRange(2, 10)</var>
+        <var id="ANS">n*(n+1)/2</var>
+      </div>
+      <div class="problems">
+        <div id="RectFIBsumnp"> <!-- Supresses answer box -->
+          <p class="question">Consider the following function:
+            <textarea id="codeTextarea" name="codeTextarea">
+public int exec(int n) {
+  if (n == 0)
+    return 0;	
+  else
+    return n + exec(n - 1);
+}</textarea>		
+            What value does <tt>exec(<var>n</var>)</tt> return?<br/>
+            (Either write a number, or write "infinite recursion".)
+          </p>
+          <p class="solution" data-type="text"><var>ANS</var></p>
+          <div class="hints">
+            <p>By tracing this recursive function, you should find that
+              the result is the sum of the integers from 1 to n.</p> 
+          </div> 
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

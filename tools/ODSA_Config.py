@@ -24,10 +24,12 @@ from urlparse import urlparse
 
 error_count = 0
 
+LTI_fields = ["odsa_username",  "odsa_password",  "target_LMS",  "LMS_url",  "course_code",  "access_token",  "LTI_consumer_key",  "LTI_secret",  "LTI_url"]
+
 required_fields = ['chapters', 'code_lang', 'module_origin', 'title']
 
 optional_fields = ['allow_anonymous_credit', 'assumes', 'av_origin', 'av_root_dir', 'build_cmap', 'build_dir', 'build_JSAV', 'code_dir', 'exercise_origin', 'exercises_root_dir', 'exercise_server',
-                   'glob_mod_options', 'glob_exer_options', 'lang', 'logging_server', 'req_full_ss', 'score_server', 'start_chap_num', 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir', 'LTI']
+                   'glob_mod_options', 'glob_exer_options', 'lang', 'logging_server', 'req_full_ss', 'score_server', 'start_chap_num', 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir', 'LTI', 'dispModComp']
 
 lang_file = os.path.abspath('tools/language_msg.json')
 
@@ -150,8 +152,8 @@ def validate_module(mod_name, module, conf_data):
     """Validate a module object"""
     global error_count
 
-    required_fields = ['exercises']
-    optional_fields = ['codeinclude', 'dispModComp', 'long_name', 'mod_options', 'sections']
+    required_fields = []
+    optional_fields = ['codeinclude', 'dispModComp', 'long_name', 'mod_options', 'sections', 'exercises']
 
     # Get module name
     get_mod_name(mod_name)
@@ -187,16 +189,14 @@ def validate_module(mod_name, module, conf_data):
                 print('ERROR: Language directory %s does not exist' % lang_dir)
                 error_count += 1
 
+
 # get names of chapter
-
-
 def get_chap_names(chapters):
     for k in chapters:
         listed_chapters.append(k)
 
+
 # Validate a section
-
-
 def validate_section(section, conf_data):
     """Validate a chapter or section"""
     for subsect in section:
@@ -308,6 +308,30 @@ def validate_config_file(config_file_path, conf_data):
         sys.exit(1)
 
 
+# Validate LMS configuration file
+def validate_LMS_config_file(config_file_path, LMS_conf_data):
+    """" Load and validates LMS configuration file"""
+    global error_count
+
+    print "\nValidating " + config_file_path + '\n'
+
+    # load LMS config file
+    # Throw an error if the specified LMS config files doesn't exist
+    for field in LTI_fields:
+        if field not in LMS_conf_data:
+            print_err('ERROR: LMS_config file, %s, is missing required field, %s' % (config_file_path, field))
+            error_count += 1
+        else:
+            if LMS_conf_data[field] == '':
+                print_err('ERROR: LMS_config file, %s, has empty value for required field, %s' % (config_file_path, field))
+                error_count += 1
+
+    if error_count > 0:
+        print_err('Errors found: %d\n' % error_count)
+        sys.exit(1)
+
+
+
 def set_defaults(conf_data):
     """Assign default values to optional config attributes"""
 
@@ -371,6 +395,9 @@ def set_defaults(conf_data):
         conf_data['glob_mod_options'] = {}
 
     # If no global exercise options are specified, defer to exercise-specific options or the defaults in odsaUtils.js
+    if 'dispModComp' not in conf_data:
+        conf_data['dispModComp'] = True
+
     if 'glob_exer_options' not in conf_data:
         conf_data['glob_exer_options'] = {}
 
@@ -402,6 +429,28 @@ def set_defaults(conf_data):
 
     if 'theme_dir' not in conf_data:
         conf_data['theme_dir'] = '%sRST/_themes' % odsa_dir
+
+
+def group_exercises(conf_data):
+    """group all exercises of one module in exercises attribute"""
+    chapters = conf_data['chapters']
+
+    for chapter in chapters:
+        chapter_obj = chapters[chapter]
+
+        for module in chapter_obj:
+            module_obj = chapter_obj[module]
+            conf_data['chapters'][chapter][module]['exercises'] = {}
+
+            sections = module_obj.get("sections")
+            if bool(sections):
+                for section in sections:
+                    section_obj = sections[section]
+                    for attr in section_obj:
+                        if isinstance(section_obj[attr], dict):
+                            exercise_obj = section_obj[attr]
+                            # conf_data['chapters'][chapter][module]['exercises'][attr] = {}
+                            conf_data['chapters'][chapter][module]['exercises'][attr] = exercise_obj
 
 
 def get_translated_text(lang_):
@@ -455,6 +504,51 @@ def get_translated_text(lang_):
     return lang_text, final_lang
 
 
+def read_conf_file(config_file_path):
+    """read configuration file as json"""
+
+    # Throw an error if the specified config files doesn't exist
+    if not os.path.exists(config_file_path):
+        print_err("ERROR: File %s doesn't exist\n" % config_file_path)
+        sys.exit(1)
+
+    # Try to read the configuration file data as JSON
+    try:
+        with open(config_file_path) as config:
+            # Force python to maintain original order of JSON objects (or else the chapters and modules will appear out of order)
+            conf_data = json.load(config, object_pairs_hook=collections.OrderedDict)
+    except ValueError, err:
+        # Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
+        msg = err.message
+        print_err(msg)
+
+        if msg == 'No JSON object could be decoded':
+            print_err('ERROR: %s is not a valid JSON file or does not use a supported encoding\n' % config_file_path)
+        else:
+            err = parse_error(msg).groupdict()
+            # cast int captures to int
+            for k, v in err.items():
+                if v and v.isdigit():
+                    err[k] = int(v)
+
+            with open(config_file_path) as config:
+                lines = config.readlines()
+
+            for ii, line in enumerate(lines):
+                if ii == err["lineno"] - 1:
+                    break
+
+            print_err("""
+    %s
+    %s^-- %s
+    """ % (line.replace("\n", ""), " " * (err["colno"] - 1), err["msg"]))
+
+        # TODO: Figure out how to get (simple)json to accept different encodings
+        sys.exit(1)
+
+    return conf_data
+
+
 class ODSA_Config:
 
     def __getitem__(self, key):
@@ -463,46 +557,15 @@ class ODSA_Config:
     def __setitem__(self, key, value):
         self.__dict__[key] = value
 
-    def __init__(self, config_file_path, output_directory=None):
+    # def __init__(self, config_file_path, output_directory=None, create_course=False):
+    # def __init__(self, config_file_path, output_directory=None, conf_file=None, create_course=False):
+    def __init__(self, config_file_path, output_directory=None, conf_file=None):
         """Initializes an ODSA_Config object by reading in the JSON config file, setting default values, and validating the configuration"""
-        # Throw an error if the specified config files doesn't exist
-        if not os.path.exists(config_file_path):
-            print_err("ERROR: File %s doesn't exist\n" % config_file_path)
-            sys.exit(1)
 
-        # Try to read the configuration file data as JSON
-        try:
-            with open(config_file_path) as config:
-                # Force python to maintain original order of JSON objects (or else the chapters and modules will appear out of order)
-                conf_data = json.load(config, object_pairs_hook=collections.OrderedDict)
-        except ValueError, err:
-            # Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
-            msg = err.message
-            print_err(msg)
+        conf_data = read_conf_file(config_file_path)
 
-            if msg == 'No JSON object could be decoded':
-                print_err('ERROR: %s is not a valid JSON file or does not use a supported encoding\n' % config_file_path)
-            else:
-                err = parse_error(msg).groupdict()
-                # cast int captures to int
-                for k, v in err.items():
-                    if v and v.isdigit():
-                        err[k] = int(v)
-
-                with open(config_file_path) as config:
-                    lines = config.readlines()
-
-                for ii, line in enumerate(lines):
-                    if ii == err["lineno"] - 1:
-                        break
-
-                print_err("""
-        %s
-        %s^-- %s
-        """ % (line.replace("\n", ""), " " * (err["colno"] - 1), err["msg"]))
-
-            # TODO: Figure out how to get (simple)json to accept different encodings
-            sys.exit(1)
+        # group exercises
+        group_exercises(conf_data)
 
         # Assign defaults to optional settings
         set_defaults(conf_data)
@@ -510,8 +573,38 @@ class ODSA_Config:
         # Make sure the config file is valid
         validate_config_file(config_file_path, conf_data)
 
+        # if create_course:
+        #     # Throw an error if the specified LMS config files doesn't exist
+        #     if conf_file is None:
+        #         LMS_config = config_file_path[:-5] + '_LMSconf.json'
+        #     else:
+        #         if output_directory is None:
+        #             LMS_config = config_file_path[:-8] + sys.argv[3]
+        #         else:
+        #             LMS_config = config_file_path[:-8] + sys.argv[5]
+
+        if conf_file is None:
+            LMS_config = config_file_path[:-5] + '_LMSconf.json'
+        else:
+            if output_directory is None:
+                LMS_config = config_file_path[:-8] + sys.argv[3] + '.json'
+            else:
+                LMS_config = config_file_path[:-8] + sys.argv[5] + '.json'
+
+            # LMS_config = config_file_path[:-5] + '_LMSconf.json'
+            # LMS_config = config_file_path[:-8] + sys.argv[1]
+
+            LMS_conf_data = read_conf_file(LMS_config)
+
+            # validate LMS config data
+            validate_LMS_config_file(LMS_config, LMS_conf_data)
+
+            for field in LMS_conf_data:
+                self[field] = LMS_conf_data[field]
+
         # Convert the Python booleans to JavaScript booleans
         conf_data['allow_anonymous_credit'] = str(conf_data['allow_anonymous_credit']).lower()
+
         conf_data['req_full_ss'] = str(conf_data['req_full_ss']).lower()
 
         # Make conf_data publicly available
@@ -552,6 +645,9 @@ class ODSA_Config:
 
         # The Unix-style relative path between the build directory and the OpenDSA root directory
         self.rel_build_to_odsa_path = os.path.relpath(self.odsa_dir, self.book_dir + self.rel_book_output_path).replace("\\", "/") + '/'
+
+        # LMS course_id, will be filled later while course creation.
+        self.course_id = ''
 
 
 # Code to execute when run as a standalone program

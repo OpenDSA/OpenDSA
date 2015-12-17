@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "av_c1": "Now we look at the <code>remove</code> method.",
       "av_c2": "Here is the linked list before we remove the node with value 8.",
@@ -11,7 +11,7 @@
       "av_c7": "Return the value of the node that was deleted."
     }
   },
-  "code" : {
+  "code": {
     "processing": {
       "url": "../../../SourceCode/Processing/Lists/LList.pde",
       "lineNumbers": false,

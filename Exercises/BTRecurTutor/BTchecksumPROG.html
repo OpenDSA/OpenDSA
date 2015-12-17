@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html data-require="codemirror blockUI math math-format word-problems spin">
+  <head>
+    <title> Binary Tree Check Sum Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #BTchecksumPROG .CodeMirror {
+        height: 200px;
+      }
+    </style>
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="config">
+          (function(){ window.OpenPopKa = true;}())
+        </var>
+      </div>
+      <div class="problems">
+        <div id="BTchecksumPROGp"> <!-- Supresses answer box -->
+          <p class="problem">Given a binary tree, check if the tree satisfies
+            the property that for each node, the sum of the values of its left and
+            right children are equal to the node's value. If a node has only
+            one child, then the node should have the same value as that
+            child. Leaf nodes automatically satisfy the property.<br/>
+
+            <textarea  id="codeTextarea">
+boolean BTchecksum(BinNode root) {
+// Your code goes between these lines
+
+
+// Your code goes between these lines
+}</textarea>
+          </p>
+          <div class="question"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [editor.getValue()] </div>
+            <div class="validator-function">
+              if (guess[0] != initEditor) {
+                console.log(guess[0]);
+                window.codeValue = guess[0];
+                window.progexType= "BTRecurTutor";
+                window.summexName= "BTchecksumPROG";
+              } else {
+                return "";
+              }
+            </div>
+          </div>
+          <div class="hints">
+            <p>Make sure that you are comparing the value of a node
+              against the sum of its immediate children, NOT the sum of
+              all its descendents.</p>
+          </div>
+	</div>
+      </div>
+    </div>
+  </body>
+</html>

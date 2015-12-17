@@ -1,16 +1,16 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
    :author: Cliff Shaffer
    :requires: list ADT
-   :satisfies: queue
+   :satisfies: queue; array-based queue
    :topic: Lists
 
-.. odsalink:: AV/List/aqueueCON.css   
-   
+.. odsalink:: AV/List/aqueueCON.css
+
 Queues
 ======
 
@@ -40,6 +40,7 @@ the array-based queue and the linked queue.
 .. codeinclude:: Lists/Queue
    :tag: Queue
 
+
 Array-Based Queues
 ------------------
 
@@ -50,18 +51,28 @@ efficient.
 .. inlineav:: aqueueFirstCON ss
    :output: show
 
+|
+
 .. inlineav:: aqueueDriftCON ss
    :output: show
-   
+
+|
+
 .. inlineav:: aqueueBadCON ss
-   :output: show 
-   
+   :output: show
+
+
+The Circular Queue
+~~~~~~~~~~~~~~~~~~
+
 .. inlineav:: aqueueCircularCON ss
-   :output: show 
-   
+   :output: show
+
+|
+
 .. inlineav:: aqueueEmptyCON ss
-   :output: show 
-   
+   :output: show
+
 If the value of ``front`` is fixed, then :math:`n+1` different
 values for ``rear`` are needed to distinguish among the :math:`n+1`
 states.
@@ -90,9 +101,13 @@ Here is an array-based queue implementation.
 .. codeinclude:: Lists/AQueue
    :tag: AQueue1,AQueue2
 
+
+Array-based Queue Implementation
+--------------------------------
+
 .. inlineav:: aqueueVarCON ss
-   :output: show 
-   
+   :output: show
+
 In this implementation, the front of the queue is defined to be toward
 the lower numbered positions in the array (in the counter-clockwise
 direction in the circular array), and the rear is
@@ -101,9 +116,13 @@ Thus, ``enqueue`` increments the rear pointer (modulus ``maxSize``),
 and ``dequeue`` increments the front pointer.
 Implementation of all member functions is straightforward.
 
-.. avembed:: Exercises/List/aqueueEnqueuePRO.html ka
+.. avembed:: Exercises/List/AqueueEnqueuePRO.html ka
 
-.. avembed:: Exercises/List/aqueueDequeuePRO.html ka
+
+Array-based Dequeue Practice
+----------------------------
+
+.. avembed:: Exercises/List/AqueueDequeuePRO.html ka
 
 .. odsascript:: DataStructures/CircularQueue.js
 .. odsascript:: AV/List/aqueueFirstCON.js

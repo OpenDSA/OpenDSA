@@ -1,15 +1,22 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2015 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Cliff Shaffer and David Parillo
+   :requires:
    :satisfies: DSA Introduction
    :topic: Introduction
 
 Data Structures and Algorithms
 ==============================
+
+Data Structures and Algorithms
+------------------------------
+
+Introduction
+~~~~~~~~~~~~
 
 How many cities with more than 250,000 people lie within 500 miles of
 Dallas, Texas?
@@ -27,11 +34,8 @@ perform calculations, but to store and retrieve information |---|
 usually as fast as possible.
 For this reason, the study of data structures and the algorithms that
 manipulate them is at the heart of computer science.
-And that is what OpenDSA is about |---| helping you to understand how
-to structure information to support efficient processing.
-
-Course Goals
-------------
+And that is what this book is about |---| helping you to understand
+how to structure information to support efficient processing.
 
 Any course on Data Structures and Algorithms will try to teach you
 about three things:
@@ -89,21 +93,9 @@ This allows you to see how each algorithm compares to other
 algorithms for solving the same problem in terms of its
 efficiency.
 
-.. showhidecontent:: se
-
-   While the main focus of this course *_is_* data structures and algorithms,
-   this course will also cover some additional topics which are not standard fare
-   in a data structures course:
-
-   #. An introduction to object orientation and the Unified Modeling Language (UML).
-
-   #. An introduction to software design patterns.
-
-   #. An introduction to software development processes.
-
 
 A Philosophy of Data Structures
--------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You might think that with ever more powerful computers,
 program efficiency is becoming less important.
@@ -165,8 +157,9 @@ Most often, cost is measured in terms of one key resource such as
 time, with the implied assumption that the solution meets the other
 resource constraints.
 
+
 Selecting a Data Structure
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. index:: data structure; selecting
 
@@ -338,7 +331,7 @@ you determine the best data structure for the task.
    The hash table suggested in the previous example is inappropriate
    for implementing our city database, because it cannot perform
    efficient range queries.
-   The :ref:`B+-tree <B$^+$-tree> <BTree>` supports large databases,
+   The :ref:`B$^+$-tree <B$^+$-tree> <BTree>` supports large databases,
    insertion and deletion of data records, and range queries.
    However, a simple
    :ref:`linear index <linear index> <LinearIndexing>` would be 
@@ -346,4 +339,21 @@ you determine the best data structure for the task.
    changed, such as an atlas distributed on a CD or accessed from a
    website.
 
+Introduction Summary Questions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 .. avembed:: Exercises/Background/IntroSumm.html ka
+
+
+Some Software Engineering Topics
+--------------------------------
+
+While the main focus of this course *is* data structures and algorithms,
+this course will also cover some additional topics which are not standard fare
+in a data structures course:
+
+#. An introduction to object orientation and the Unified Modeling Language (UML).
+
+#. An introduction to software design patterns.
+
+#. An introduction to software development processes.

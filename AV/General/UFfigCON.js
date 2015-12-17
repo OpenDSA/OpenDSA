@@ -1,6 +1,6 @@
-"use strict";
 // Written by Mohammed Farghally and Cliff Shaffer
 $(document).ready(function () {
+  "use strict";
   var av = new JSAV("UFfigCON", {"animationMode": "none"});
   var ind;
   var leftoffset = 260;
@@ -43,4 +43,6 @@ $(document).ready(function () {
   c.addChild(h);
   root.hide({recursive: false});
   tree.layout();
+  av.displayInit();
+  av.recorded();
 });

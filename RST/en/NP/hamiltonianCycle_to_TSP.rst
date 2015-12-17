@@ -5,7 +5,6 @@
 
 .. avmetadata::
    :author: Nabanita Maji
-   :prerequisites:
    :topic: NP-completeness
 
 .. odsalink:: AV/Development/NP/HCtoTSPCON.css
@@ -13,6 +12,8 @@
 Reduction of Hamiltonian Cycle to Traveling Salesman
 ====================================================
 
+Hamiltonian Cycle to Traveling Salesman
+---------------------------------------
 
 The following slideshow shows that an instance of Hamiltonian Cycle 
 problem can be reduced to an instance of Traveling Salesman problem in 

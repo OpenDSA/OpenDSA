@@ -5,13 +5,16 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :satisfies: hash intro
    :topic: Hashing
 
 .. index:: ! hashing
 
 Introduction
 ============
+
+Introduction
+------------
 
 Hashing is a method for storing and retrieving records from a database.
 It lets you insert, delete, and search for records based on a search

@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html data-require="math">
-<head>
-  <title>Heaps: Feature</title>
-  <script src="../../lib/jquery.min.js"></script>
-  <script src="../../lib/jquery-ui.min.js"></script>
-  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-</head>
+  <head>
+    <title>Heaps: Feature</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
 
-<body>
-<div class="exercise">
-  <div class="problems">
-    <div id="problem-type-or-description">
-      <p class="question">Which feature of heaps allows them to be
-	efficienty implemented using an array?</p>
-      <div class="solution"><var>"Heaps are complete binary trees"</var></div>
-      <ul class="choices">
-	<li><var>"Heaps are binary trees"</var></li>
-	<li><var>"Heaps are binary search trees"</var></li>
-	<li><var>"Heaps are full binary trees"</var></li>
-      </ul>
-      <div class="hints">
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="question">Which feature of heaps allows them to be
+            efficienty implemented using an array?</p>
+          <div class="solution">Heaps are complete binary trees</div>
+          <ul class="choices">
+            <li>Heaps are binary trees</li>
+            <li>Heaps are binary search trees</li>
+            <li>Heaps are full binary trees</li>
+          </ul>
+          <div class="hints">
+            <p>A heap is not a BST.</p>
+            <p>In general, just being a binary tree (or even a full binary
+              tree) is not enough to let something be implemented
+              using an array.</p>
+          </div>
+        </div>
       </div>
-    </div> 
-  </div>
-</div>
-</body>
+    </div>
+  </body>
 </html>

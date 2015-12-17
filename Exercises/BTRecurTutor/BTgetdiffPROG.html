@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html data-require="codemirror blockUI math math-format word-problems spin">
+  <head>
+    <title> Binary Tree Get Difference Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #BTgetdiffPROG .CodeMirror {
+        height: 200px;
+      }
+    </style>
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="config">
+          (function(){ window.OpenPopKa = true;}())
+        </var>
+      </div>
+      <div class="problems">
+        <div id="BTgetdiffPROGp"> <!-- Supresses answer box -->
+          <p class="problem">Given a binary tree, write a recursive
+            function to return the difference between the sum of all node values
+            at odd levels and sum of all node values at even levels. Define the
+            root node to be at level 1.
+
+            <textarea id="codeTextarea" name="codeTextarea">
+int BTgetdiff(BSTNode root) {
+// Your code goes between these lines
+
+
+// Your code goes between these lines
+}</textarea>
+          </p>
+          <div class="question"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [ editor.getValue()  ] </div>
+            <div class="validator-function">
+              if (guess[0] != initEditor) {
+                console.log(guess[0]);
+                window.codeValue = guess[0];
+                window.progexType= "BTRecurTutor";
+                window.summexName= "BTgetdiffPROG";
+              } else {
+                return "";
+              }
+            </div>
+          </div>
+          <div class="hints">
+            <p>This is probably easier than you think it is.</p>
+            <p>Just keep track of what level you are on (pass this information down when you
+              make a recursive call).</p>
+            <p>Sum the values of all nodes, but use the negative of
+              the value for odd level nodes. Just pass back the sum of
+              the node with its children.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

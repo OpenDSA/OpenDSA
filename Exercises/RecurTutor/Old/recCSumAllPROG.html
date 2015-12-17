@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html data-require="math math-format word-problems spin">
+<head>
+  <title> Recursion Programming Exercise: Sum the numbers</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+
+  <script> window.OpenPopKa = true; </script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+   <script src="../../lib/odsaStyle-min.css"></script>
+ 
+ 
+  <script src="../../lib/codemirror/lib/codemirror.js"></script>
+  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
+  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
+  <script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    mode:  "text/x-java"
+  });
+  
+  </script>
+
+</head>
+<body  data-height="550" data-width="950">
+   
+<div class="exercise">
+  <div class="vars">
+    <var id="listel1">randRange(0, 99)</var>
+    <var id="listel2">randRange(0, 99)</var>
+    <var id="listel3">randRange(0, 99)</var>
+    <var id="listel4">randRange(0, 99)</var>
+  </div>
+
+  <div class="problems">
+    <div> <!-- Supresses answer box -->
+      <p class="problem" id = "test"> Given the following recursive function 
+      write down the missing recursive call such that this function given 
+      2 numbers, will find the sum of all the integers between them. 
+      Example: given 1 and 4, the method should add 1+2+3+4 = 10.
+
+      <br />
+    </h4>
+    <p></p>
+    <textarea  id="codeTextarea">int sumAll(int a, int b)
+{
+  if (a == b)
+    return a;
+  else
+    return //<<Missing a Recursive call>>
+}
+</textarea></p>
+
+      <div class="question">
+	
+      </div>
+      <div class="solution" data-type="custom">
+      <div class="guess"> [ editor.getValue() ] </div>
+        <div class="validator-function">
+          window.codeValue = editor.getValue();
+          window.progexType= "recursion";    
+          window.summexName=  "recCSumAllPROG";
+        </div>
+      </div>
+      <div class="hints">
+      </div>
+    </div>
+  </div>
+</div>
+ 
+</body>
+</html>

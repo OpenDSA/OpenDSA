@@ -43,7 +43,6 @@ class avmetadata(Directive):
     has_content = True
     option_spec = {'author':directives.unchanged,
                    #'title': directives.unchanged,
-                   'prerequisites': directives.unchanged,
                    'topic': directives.unchanged,
                    'requires': directives.unchanged,
                    'satisfies': directives.unchanged,
@@ -69,7 +68,6 @@ This is some text.
 
 .. avmetadata:: address 
    :author:
-   :prerequisites: 
    :topic:
    :requires:
    :satisfies:   

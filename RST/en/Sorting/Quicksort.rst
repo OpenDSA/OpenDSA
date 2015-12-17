@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -19,6 +19,9 @@
 
 Quicksort
 =========
+
+Introduction
+------------
 
 While Mergesort uses the most obvious form of divide and conquer
 (split the list in half then sort the halves), this is not the only way
@@ -93,7 +96,7 @@ Here is an implementation for Quicksort.
 Parameters ``i`` and ``j`` define the left and right
 indices, respectively, for the subarray being sorted.
 The initial call to ``quicksort`` would be
-``quicksort(array, 0, n-1)``. 
+``quicksort(array, 0, n-1)``.
 
 .. codeinclude:: Sorting/Quicksort
    :tag: Quicksort
@@ -126,9 +129,11 @@ Here is a simple ``findpivot`` function.
 .. codeinclude:: Sorting/Quicksort
    :tag: findpivot
 
-Now you can have some practice.
-
 .. avembed:: Exercises/Sorting/QuicksortPivotPRO.html ka
+
+
+Partition
+---------
 
 We now turn to function ``partition``.
 If we knew in advance how many keys are less than the pivot,
@@ -158,16 +163,16 @@ bound for the recursive calls to ``qsort`` can be determined.
    :output: show
 
 
-.. _PartitionFig:
+.. avembed:: Exercises/Sorting/QuicksortPartitPRO.html ka
 
 And here is a visualization illustrating the running time analysis of the partition function
 
 .. inlineav:: QuickSortPartitionAnalysisCON ss
    :output: show
 
-Now for some partition practice.
 
-.. avembed:: Exercises/Sorting/QuicksortPartitPRO.html ka
+Putting It Together
+-------------------
 
 Here is a visualization for the entire Quicksort algorithm.
 This visualization shows you how the logical decomposition caused by
@@ -179,85 +184,88 @@ the proficiency exercise that follows the visualization).
 
 .. avembed:: AV/Sorting/quicksortAV.html ss
 
+
 Here is a complete proficiency exercise to see how well you understand
 Quicksort.
 
 .. avembed:: AV/Sorting/quicksortPRO.html pe
 
-.. showhidecontent:: QuickSortAnalysis
 
-   This visualization explains the worst-case running time of Quick Sort
-   
-   .. inlineav:: QuickSortWorstCaseCON ss
-      :output: show
-   
-   This is terrible, no better than Bubble Sort.
-   When will this worst case occur?
-   Only when each pivot yields a bad partitioning of the array.
-   If the pivot values are selected at random, then this is extremely
-   unlikely to happen.
-   When selecting the middle position of the current subarray, it is
-   still unlikely to happen.
-   It does not take many good partitionings for Quicksort to
-   work fairly well.
+Quicksort Analysis
+------------------
 
-   This visualization explains the best-case running time of Quick Sort
+This visualization explains the worst-case running time of Quick Sort
 
-   .. inlineav:: QuickSortBestCaseCON ss
-      :output: show
+.. inlineav:: QuickSortWorstCaseCON ss
+   :output: show
 
-   Quicksort's average-case behavior falls somewhere
-   between the extremes of worst and best case.
-   Average-case analysis considers the cost for all possible arrangements
-   of input, summing the costs and dividing by the number of cases.
-   We make one reasonable simplifying assumption:
-   At each partition step, the pivot is
-   equally likely to end in any position in the (sorted) array.
-   In other words, the pivot is equally likely to break an array into
-   partitions of sizes 0 and :math:`n-1`, or 1 and :math:`n-2`, and so
-   on.
+This is terrible, no better than Bubble Sort.
+When will this worst case occur?
+Only when each pivot yields a bad partitioning of the array.
+If the pivot values are selected at random, then this is extremely
+unlikely to happen.
+When selecting the middle position of the current subarray, it is
+still unlikely to happen.
+It does not take many good partitionings for Quicksort to
+work fairly well.
 
-   Given this assumption, the average-case cost is computed from the
-   following equation:
+This visualization explains the best-case running time of Quick Sort
 
-   .. math::
+.. inlineav:: QuickSortBestCaseCON ss
+   :output: show
 
-      {\bf T}(n) = cn + \frac{1}{n}\sum_{k=0}^{n-1}[{\bf T}(k) +
-      {\bf T}(n - 1 - k)],
-      \quad {\bf T}(0) = {\bf T}(1) = c.
+Quicksort's average-case behavior falls somewhere
+between the extremes of worst and best case.
+Average-case analysis considers the cost for all possible arrangements
+of input, summing the costs and dividing by the number of cases.
+We make one reasonable simplifying assumption:
+At each partition step, the pivot is
+equally likely to end in any position in the (sorted) array.
+In other words, the pivot is equally likely to break an array into
+partitions of sizes 0 and :math:`n-1`, or 1 and :math:`n-2`, and so
+on.
 
-   This visualization will help you to understand how this recurrence
-   relation was formed.
+Given this assumption, the average-case cost is computed from the
+following equation:
 
-   .. inlineav:: QuickSortAverageCaseCON ss
-      :output: show
+.. math::
 
-   This is an unusual situation that the average case cost and the worst
-   case cost have asymptotically different growth rates.
-   Consider what "average case" actually means.
-   We compute an average cost for inputs of size :math:`n` by summing up
-   for every possible input of size :math:`n` the product of the running
-   time cost of that input times the probability that that input will
-   occur.
-   To simplify things, we assumed that every permutation is equally
-   likely to occur.
-   Thus, finding the average means summing up the cost for every
-   permutation and dividing by the number of permuations
-   (which is :math:`n!`).
-   We know that some of these :math:`n!` inputs cost :math:`O(n^2)`.
-   But the sum of all the permutation costs has to be
-   :math:`(n!)(O(n \log n))`. 
-   Given the extremely high cost of the worst inputs, there must be
-   very few of them.
-   In fact, there cannot be a constant fraction of the inputs with cost
-   :math:`O(n^2)`.
-   If even, say, 1% of the inputs have cost :math:`O(n^2)`, this would
-   lead to an average cost of :math:`O(n^2)`.
-   Thus, as :math:`n` grows, the fraction of inputs with high cost must
-   be going toward a limit of zero.
-   We can conclude that Quicksort will run fast if
-   we can avoid those very few bad input permutations.
-   This is why picking a good pivot is so important.
+   {\bf T}(n) = cn + \frac{1}{n}\sum_{k=0}^{n-1}[{\bf T}(k) +
+   {\bf T}(n - 1 - k)],
+   \quad {\bf T}(0) = {\bf T}(1) = c.
+
+This visualization will help you to understand how this recurrence
+relation was formed.
+
+.. inlineav:: QuickSortAverageCaseCON ss
+   :output: show
+
+This is an unusual situation that the average case cost and the worst
+case cost have asymptotically different growth rates.
+Consider what "average case" actually means.
+We compute an average cost for inputs of size :math:`n` by summing up
+for every possible input of size :math:`n` the product of the running
+time cost of that input times the probability that that input will
+occur.
+To simplify things, we assumed that every permutation is equally
+likely to occur.
+Thus, finding the average means summing up the cost for every
+permutation and dividing by the number of permuations
+(which is :math:`n!`).
+We know that some of these :math:`n!` inputs cost :math:`O(n^2)`.
+But the sum of all the permutation costs has to be
+:math:`(n!)(O(n \log n))`.
+Given the extremely high cost of the worst inputs, there must be
+very few of them.
+In fact, there cannot be a constant fraction of the inputs with cost
+:math:`O(n^2)`.
+If even, say, 1% of the inputs have cost :math:`O(n^2)`, this would
+lead to an average cost of :math:`O(n^2)`.
+Thus, as :math:`n` grows, the fraction of inputs with high cost must
+be going toward a limit of zero.
+We can conclude that Quicksort will run fast if
+we can avoid those very few bad input permutations.
+This is why picking a good pivot is so important.
 
 The running time for Quicksort can be improved (by a constant factor),
 and much study has gone into optimizing this algorithm.
@@ -339,11 +347,9 @@ modest speedup.
    Quicksort to have its worst-case behavior.
 
    There are a number of possible correct answers. To assess the
-   answer, will need to run Quicksort over student's 
+   answer, will need to run Quicksort over student's
    partition, and verify that at each step it will generate new
    partitions of size 6, 5, 4, 3, 2, then 1.
-
-Now for review questions.
 
 .. avembed:: Exercises/Sorting/QuicksortSumm.html ka
 

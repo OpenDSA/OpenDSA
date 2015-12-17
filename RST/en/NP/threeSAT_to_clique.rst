@@ -5,7 +5,6 @@
 
 .. avmetadata::
    :author: Nabanita Maji
-   :prerequisites:
    :topic: NP-completeness
 
 .. odsalink:: AV/Development/NP/threeSATtoCliqueCON.css
@@ -13,6 +12,8 @@
 Reduction of 3-SAT to Clique
 ============================
 
+Reduction of 3-SAT to Clique
+----------------------------
 
 The following slideshow shows that an instance of 3-CNF Satisfiability 
 problem can be reduced to an instance of Clique problem in 

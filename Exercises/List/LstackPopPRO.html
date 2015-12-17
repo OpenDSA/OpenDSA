@@ -1,0 +1,68 @@
+<!--
+    List-based stack push mini-proficiency exercise.
+    Written by Junyang Chen and Cliff Shaffer
+  -->
+
+<!DOCTYPE html>
+<html data-require="jsav math LstackPopPRO LinkList">
+  <head>
+    <title>List-based Stack Pop Proficiency Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #LstackPopPRO .jsavcanvas {
+        height: 190px;
+      }
+      #LstackPopPRO .bgColor{
+        font-size: 130%;
+        background-color: yellow;
+      }
+      #LstackPopPRO .highlight{
+        background-color: yellow;
+      }
+    </style>
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="arr_size">randRange(4, 6)</var>
+        <var id="JSAV">lstackPopPRO.initJSAV(arr_size)</var>
+      </div>
+
+      <div class="problems">
+        <div id=LstackPopPROp> <!-- Supresses answer box -->
+          <p class="problem">Your task in this exercise is to show the
+            behavior for the linked stack's pop operation.</p>
+          <div class="question">
+            <p>Pop the top value from the stack.</p>
+            <p>To move a value from one node to another, or to the return
+              value, click first on the value that you want to move and then
+              on the destination. To change a pointer, first click on where
+              it starts, and then click on the node that you want it to
+              point to.</p>
+            <input id="reset" type="button" value="Reset" />
+            <div id="LstackPopPRO" class="jsavcanvas"></div>
+          </div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [lstackPopPRO.userInput] </div>
+            <div class="validator-function">
+              if (!lstackPopPRO.checkAnswer() && !guess[0]) {
+                return ""; // User did not click, and correct answer is not
+                           // initial array state
+              } else { return lstackPopPRO.checkAnswer(); }
+            </div>
+          </div>
+          <div class="hints">
+            <p>You first want to pop off the value where "top" is
+              pointing.</p>
+            <p>Click on the first node in the list. Then
+              click the box marked "return".</p>
+            <p>Next, update the top pointer. Click on "top" and then click
+              the second node on the linked list.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

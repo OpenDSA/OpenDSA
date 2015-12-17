@@ -116,7 +116,7 @@ range query is linear on the number of data records that fall within
 the query circle.
 
 Implementation Concerns
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~
 
 Let us now consider how the structure of the Bintree affects the
 design of its node representation.
@@ -244,9 +244,6 @@ to your browser to run it.
 	scrolling="no">
    </iframe>
    </center>
-
-Notes
------
 
 .. [#] A more efficient computation is
        :math:`(P_x - N_x)^2 + (P_y - N_y)^2 \leq d^2`.
