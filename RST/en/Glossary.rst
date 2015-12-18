@@ -599,8 +599,8 @@ Glossary
       ceiling is the least integer :math:`\geq x`.
 
    child
-      In a tree, the set of :math:`nodes` directly pointed to by a node
-      :math:`R` are the :term:`children <child>` of :math:`R`.
+      In a tree, the set of :term:`nodes <node>` directly pointed to
+      by a node :math:`R` are the :term:`children <child>` of :math:`R`.
 
    circular first fit
       In a :term:`memory manager`, circular first fit is a

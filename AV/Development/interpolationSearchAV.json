@@ -1,0 +1,63 @@
+{
+  "translations" :{
+    "en": {
+      ".avTitle": "Interpolation Search Visualization",
+      "av_Authors": "Kasper Hellström",
+      "#about": "About",
+      "#run": "Run",
+      "#reset": "Reset",
+      "#arraysizeLabel": "Array size: ",
+      "#searchValueLabel": "Search value: ",
+      "av_searchPlaceholder": "The value to search for",
+      "#arrayValuesLabel": "Your values: ",
+      "av_arrValsPlaceholder": "Type some array values, or click 'run' to use random values",
+      "av_start": "We are searching for the key {key} (represented by the blue line) in the array. The red line represents the interpolation between current low and current high values.",
+      "av_intersect": "The lines intersect at ( {inter}, {key} )<br/>Therefore the estimated location for the key is index {newmid}",
+      "av_arr_mid_lt_key": "Because {arr_at_mid} is less than the searched key {key}, the new low will be <strong>{mid_plus_1}</strong>.",
+      "av_arr_mid_gt_key": "Because {arr_at_mid} is greater than the searched key {key}, the new high will be <strong>{mid_minus_1}</strong>.",
+      "av_found": "The key was found at index {mid}! The function returned <strong>{mid}</strong>.",
+      "av_not_found": "The key was not found in the table. The function returned <strong>-1</strong>.",
+      "av_loop_stopped_1": "The execution of the loop stopped, because the value of the table at index {low} (low) is greater or equal to the key.",
+      "av_loop_stopped_2": "The execution of the loop stopped, because the value of the table at index {high} (high) is less than the key.",
+      "av_line": "(line {first})",
+      "av_lines": "(lines {first} and {second})"
+    },
+    "fi": {
+      ".avTitle": "Interpolaatiohaku",
+      "av_Authors": "Kasper Hellström",
+      "#about": "Tietoa",
+      "#run": "Aja",
+      "#reset": "Alusta",
+      "#arraysizeLabel": "Taulukon koko: ",
+      "#searchValueLabel": "Haettava avain: ",
+      "av_searchPlaceholder": "Arvo jota haetaan",
+      "#arrayValuesLabel": "Taulukon arvot: ",
+      "av_arrValsPlaceholder": "Erottele arvot välilyönnillä tai jätä tyhjäksi satunnaislukuja varten",
+      "av_start": "Haettava avain on {key} ja sitä kuvaa sininen suora taulukon päällä. Punainen suora esittää interpolaatiota nykyisen low ja high-arvon välillä.",
+      "av_intersect": "Suorat leikkaavat pisteessä ( {inter}, {key} ),<br/>joten estimoitu sijainti avaimelle on indeksissä {newmid}.",
+      "av_arr_mid_lt_key": "Koska {arr_at_mid} on pienempi kuin haettava avain {key}, low:n uudeksi arvoksi tulee <strong>{mid_plus_1}</strong>.",
+      "av_arr_mid_gt_key": "Koska {arr_at_mid} on suurempi kuin haettava avain {key}, high:n uudeksi arvoksi tulee <strong>{mid_minus_1}</strong>.",
+      "av_found": "Haettava avain löytyi kohdasta {mid}! Funktio palautti arvon <strong>{mid}</strong>.",
+      "av_not_found": "Avainta ei löytynyt. Funktio palautti arvon <strong>-1</strong>.",
+      "av_loop_stopped_1": "Silmukan ajo loppui, koska taulukon arvo kohdassa {low} (low) on suurempi tai yhtä suuri kuin haettava avain.",
+      "av_loop_stopped_2": "Silmukan ajo loppui, koska taulukon arvo kohdassa {high} (high) on pienempi kuin haettava avain.",
+      "av_line": "(rivi {first})",
+      "av_lines": "(rivit {first} ja {second})"
+    }
+  },
+  "code" : {
+    "java" : {
+      "url": "../../SourceCode/Java/Searching/interpolationSearch.java",
+      "tags": {
+        "guess_calculations": 7,
+        "highlight": [8, 9],
+        "tbl_mid_lt_key": 8,
+        "tbl_mid_gt_key": 9,
+        "return": [12, 13],
+        "return_mid": 10,
+        "return_low": 12,
+        "return_-1": 13
+      }
+    }
+  }
+}

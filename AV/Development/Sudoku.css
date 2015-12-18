@@ -1,0 +1,15 @@
+  #container .jsavarray {
+     left: -10px;
+  }
+
+  p.jsavoutput.jsavline {
+    height: 80px;
+    margin: 10px, 0px;
+  }
+  .jsavarray { margin: 0; height: 40px; min-height: 40px; min-width: 40px}
+  .jsavarray li { border-radius: 0 !important; height: 40px; width: 40px; font-size: 12px; line-height: 40px; border-bottom: none;}
+  .jsavarray li:nth-of-type(3n) { border-right: 1px solid black !important;}
+  .jsavarray li:last-of-type { border-right: 2px solid black !important; }
+  .jsavarray li:first-of-type { border-left: 2px solid black;}
+  .jsavarray:nth-of-type(3n-2) li { border-top: 2px solid black;}
+  .jsavarray:nth-of-type(9) li { border-bottom: 2px solid black;}
