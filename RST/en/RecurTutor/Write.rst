@@ -1,49 +1,62 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: Sally Hamouda
+   :author: Sally Hamouda and Cliff Shaffer
    :requires: recursion intro
    :satisfies: recursion writing
    :topic: Recursion
 
-
-.. odsalink:: AV/RecurTutor/recursionWrtCON.css
-
+.. odsalink:: AV/RecurTutor/recurWriteCON.css
 
 Writing a recursive function
-==================================
+============================
 
-As we have mentioned before, solving a "big" problem recursively means to solve one or more smaller versions of the problem, and using those solutions of the smaller problems to solve the "big" problem. 
+Writing a recursive function
+----------------------------
 
-In particular, solving problems recursively typically means that there are smaller versions of the problem solved in similar ways. For example, consider the problem of summing values of an array. What's the difference between summing an array of 100 elements versus summing an array of 50 elements?
+Solving a "big" problem recursively means to solve one or more smaller
+versions of the problem, and using those solutions of the smaller
+problems to solve the "big" problem.
+In particular, solving problems recursively means that
+smaller versions of the problem are solved in a similar way.
+For example, consider the problem of summing values of an array.
+What's the difference between summing the first 50 elements in an
+array versus summing the first 100 elements?
+You would use the same technique.
+You can even use the solution to the smaller problem to help you solve
+the larger problem.
 
-You use the same technique, but in one case you sum up to 100 elements, and in the other case, you sum up to the first 50 elements. And, even more importantly, you can use the solution to the smaller problem to help you solve the larger problem.
+Here are the basic four steps that you need to write any recursive function.
 
-To understand recursion, you must understand that the basic unit of recursion is the function call. In fact, if you avoid using loops and use only recursion, you will find that your function code will generally be much shorter. 
-
-The following visualization shows the basic four steps you need to write any recursive function:
-
-
-.. inlineav:: recursionWrtStepsCON ss
+.. inlineav:: recurWriteStepsCON ss
    :output: show  
 
-The following visualization shows four different versions of the Sum recursive function and the differences between them
 
-.. inlineav:: recursionWrtSumCON ss
+Now le't see some different ways that we could write ``Sum`` recursively.
+
+.. inlineav:: recurWriteSumCON ss
    :output: show  
 
 
 .. topic:: Example
 
-   The following code shows an example of a recursive function that computes the Fibonacci of a given number.
-   Fibonacci Sequence is the series of numbers: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ... Where the next number is found by adding up the two numbers before it:
+   Our example for summing the first :math:`n` numbers of an array
+   could have been written just as easily using a loop.
+   Here is an example of a function that is more naturally written
+   using recursion.
+
+   The following code computes the Fibonacci sequence for a given number.
+   The Fibonacci Sequence is the series of numbers: 1, 1, 2, 3, 5, 8,
+   13, 21, 34, ...
+   Any number in the sequence is found by adding up the two numbers
+   before it.
+   The base cases are that ``Fibonacci(0) = 1`` and
+   ``Fibonacci(1) = 1``.
    
    .. codeinclude:: RecurTutor/Fibonacci
 
-You will never understand recursion well without doing a lot of practice on it. Here are set of practice exercises on recursion, try to practice them all to master recursion.
-
-.. odsascript:: AV/RecurTutor/recursionWrtStepsCON.js
-.. odsascript:: AV/RecurTutor/recursionWrtSumCON.js
+.. odsascript:: AV/RecurTutor/recurWriteStepsCON.js
+.. odsascript:: AV/RecurTutor/recurWriteSumCON.js

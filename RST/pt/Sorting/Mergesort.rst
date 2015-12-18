@@ -85,8 +85,6 @@ Agora, um exercício completo de proficiência, juntando tudo:
 
 .. avembed:: AV/Sorting/mergesortPRO.html pe
 
-.. showhidecontent:: MergeSortAnalysis
-
 A análise do Mergesort é bastante direta, a despeito de ser um algoritmo que usa recursão.
 A parte de mesclagem requer o tempo :math:`\Theta(i)` onde :math:`i` é o comprimento
 total das duas sublistas sendo mescladas.

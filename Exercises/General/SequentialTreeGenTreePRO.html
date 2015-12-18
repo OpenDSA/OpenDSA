@@ -1,116 +1,42 @@
+<!--
+    General Trees: General Tree sequential representation
+    Written by Kevin Ellis and Cliff Shaffer.
+  -->
+
 <!DOCTYPE html>
-<html data-require="math">
-<head>
-  <title>Sequential General Tree Representation Exercise</title>
-  <script src="../../lib/jquery.min.js"></script>
-  <script src="../../lib/jquery-ui.min.js"></script>
-  <script src="../../JSAV/lib/jquery.transit.js"></script>
-  <script src="../../JSAV/lib/raphael.js"></script>
-  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-  <script src="../../JSAV/build/JSAV-min.js"></script>
-  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
-  <style>
-    .jsavcontainer {
-      height: 300px;
-    }
-  </style>
-</head>
-
-<body data-height="720" data-width="950">
-<script>
-var jsav,
-    sizeOfArray = 0;
-    arrayOfNodes = [];
-
-var initJSAV = function () {
-  jsav = new JSAV("jsav");
-  jsav.recorded();
-}
-
-var makeTree = function () {
-  var bt = jsav.ds.tree({center: true, visible: true, nodegap: 35});
-  var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  var letterIndex = 1;
-  bt.root(letters.charAt(0));
-  // Generate a random tree with 4 to 7 nodes
-  arrayOfNodes[0] = bt.root();
-  sizeOfArray = 1;
-  var numNodes = Math.floor(Math.random() * (7 - 4)) + 4;
-  var i = 1;
-  while (i <= numNodes) {
-    if (randomNode(bt, letters.charAt(i)) == true)
-    i++;
-  }
-  bt.layout();
-  return bt;
-}
-
-function preOrderTraversal(bt) {
-  var retString = "";
-
-  var preorderNode = function (node) {
-    retString+=node.value();
-    //if node is a leaf
-    if (node.child(0)) {
-      var i = 0;
-      var temp = node.child(i);
-      while (temp != null) {
-        preorderNode(temp);
-        temp = node.child(++i);
+<html data-require="jsav math SequentialTreeGenTreePRO">
+  <head>
+    <title>Sequential General Tree Representation Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #SequentialTreeGenTreePRO {
+        height: 300px;
       }
-      retString += ")";
-    } else {
-      retString += ")";
-    }
-  };
+    </style>
+  </head>
 
-  preorderNode(bt.root());
-  return retString;
-}
-
-function randomNode(bt, value) {
-  // Add a child to a random node with value 
-  var newNode = bt.newNode(value);
-  var randomIndex = Math.floor(Math.random() * (sizeOfArray));
-
-  var i = 0;
-  var parNode = arrayOfNodes[randomIndex].parent();
-  while (parNode != null) {
-    i++;
-    parNode = parNode.parent();
-  }
-  if (i >= 3) {
-    return false;
-  }
-  arrayOfNodes[randomIndex].addChild(newNode);
-  arrayOfNodes[sizeOfArray] = newNode;
-  sizeOfArray ++;
-  return true;
-}
-</script>
-
-<div class="exercise">
-  <p class="question">Using ')' to signify the end of each subtree,
-    write the sequential representation for the following tree.
-  <div class="vars">
-    <var id="JSAV">initJSAV()</var>
-    <var id="BT">makeTree()</var>
-    <var id="ANS">preOrderTraversal(BT)</var>
-  </div>
-
-  <div class="problems">
-    <div id="problem-type-or-description-2">
-      <p clss="problem">
-        <div id="jsav" class="jsavcanvas"></div>
-    </p>
-    <p class="solution" data-type="text"><var>ANS</var></p>
-    <div class="hints">
-      <p>Make sure to use a ')' for the end of every sub tree</p>
-      <p>There should be the same number of ')' as there are nodes.</p>
-      <p>Answer: <var>ANS</var></p>
-    </div>
-  </div>
-</div>
-</body>
+  <body data-height="800" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="JSAV">sequentialTreeGenTreePRO.initJSAV()</var>
+        <var id="BT">sequentialTreeGenTreePRO.makeTree()</var>
+        <var id="ANS">sequentialTreeGenTreePRO.preOrderTraversal(BT)</var>
+      </div>
+      <p class="question">Using ')' to signify the end of each subtree,
+        write the sequential representation for this tree.</p>
+        <div class="problems">
+        <div id="SequentialTreeGenTreePROp"> <!-- Supresses answer box -->
+            <p clss="problem">
+              <div id="SequentialTreeGenTreePRO" class="jsavcanvas"></div>
+            </p>
+            <p class="solution" data-type="text"><var>ANS</var></p>
+            <div class="hints">
+              <p>Make sure to use a ')' for the end of every sub tree</p>
+              <p>There should be the same number of ')' as there are nodes.</p>
+              <p>Answer: <var>ANS</var></p>
+            </div>
+          </div>
+        </div>
+  </body>
 </html>

@@ -1,0 +1,13 @@
+{
+  "username": "opendsa",
+  "password": "opendsa",
+  "canvas_url": "https://canvas.vt.edu/api",
+  "course_code": "CS3",
+  "access_token": "4511~1V3gDevzXdYKE0Gk3tEGL4ZeRAP6dQNUe4DSbLhObVKiLQg23ZwG8cy5qlpeMbP8",
+  "consumer_key": "test",
+  "consumer_secret": "secret",
+  "build_date": "2015-10-01 13:08:33",
+  "tool_name": "OpenDSA-LTI",
+  "tool_url": "https://lti.cs.vt.edu",
+  "tool_xml_file": "tool_config.xml"
+}

@@ -39,12 +39,20 @@ import re
 import subprocess
 import codecs
 import datetime
+import threading
+import requests
+
 from collections import Iterable
 from optparse import OptionParser
 from config_templates import *
 from ODSA_RST_Module import ODSA_RST_Module
 from ODSA_Config import ODSA_Config
-from postprocessor import update_TOC, update_TermDef
+from postprocessor import update_TOC, update_TermDef, make_lti
+from urlparse import urlparse
+from canvas_sdk.methods import accounts, courses, external_tools, modules, assignments
+from canvas_sdk import RequestContext
+
+requests.packages.urllib3.disable_warnings()
 
 # List of exercises encountered in RST files that do not appear in the
 # configuration file
@@ -74,8 +82,6 @@ module_chap_map = {}
 num_ref_map = {}
 
 # Prints the given string to standard error
-
-
 def print_err(err_msg):
     sys.stderr.write('%s\n' % err_msg)
 
@@ -182,7 +188,7 @@ def process_module(config, index_rst, mod_path, mod_attrib={'exercises': {}}, de
     # Append data from the processed module to the global variables
     todo_list += module.todo_list
     images += module.images
-    missing_exercises += module.missing_exercises
+    #missing_exercises += module.missing_exercises
     satisfied_requirements += module.requirements_satisfied
     num_ref_map = dict(num_ref_map.items() + module.num_ref_map.items())
     if len(module.cmap_dict['concepts']) > 0:
@@ -353,6 +359,196 @@ def initialize_conf_py_options(config, slides):
     return options
 
 
+def create_chapter(request_ctx, config, course_id, course_code, module_id, module_position, chapter_name, chapter_obj, LTI_url, **kwargs):
+    """ Create canvas module that corresponds to OpenDSA chapter """
+
+    module_item_position = 1
+
+    for module in chapter_obj:
+        module_obj = chapter_obj[str(module)]
+        module_name = module_obj.get("long_name")
+        module_name_url = module.split('/')[1] if '/' in module else module
+
+        # OpenDSA module header will map to canvas text header
+        results = modules.create_module_item(
+            request_ctx, course_id, module_id, 'SubHeader',
+            module_item_content_id=None,
+            module_item_title=str(module_position) + "." + str(module_item_position) + ". " + str(module_name),
+            module_item_indent=0)
+
+        sections = module_obj.get("sections")
+        if bool(sections):
+            section_couter = 1
+            for section in sections:
+                section_obj = sections[section]
+                section_name = section
+                showsection = section_obj.get("showsection")
+                section_points = 0
+                for attr in section_obj:
+                    if bool(section_obj[attr]) and isinstance(section_obj[attr], dict):
+                        exercise_obj = section_obj[attr]
+                        exercise_name = attr
+                        long_name = exercise_obj.get("long_name")
+                        required = exercise_obj.get("required")
+                        points = exercise_obj.get("points")
+                        threshold = exercise_obj.get("threshold")
+                        if long_name is not None and required is not None and points is not None and threshold is not None:
+                            if points > 0:
+                                section_points = points
+                                gradeable_exercise = exercise_name
+
+                if showsection is None or (showsection is not None and showsection == True):
+                    indexed_section_name = str(module_position).zfill(2) + "." + str(module_item_position).zfill(2) + "." +str(section_couter).zfill(2) + ' - ' + section_name
+                    # if section object contains gradeable exercieassignment will be created in canvas
+                    if section_points > 0:
+                        results = assignments.create_assignment(
+                            request_ctx,
+                            course_id,
+                            indexed_section_name,
+                            assignment_submission_types="external_tool",
+                            assignment_external_tool_tag_attributes={
+                                "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2) + "&gradeable_exercise=" + gradeable_exercise},
+                            assignment_points_possible=section_points,
+                            assignment_description=section_name)
+
+                        item_id = results.json().get("id")
+
+                        # add assignment to canvas module
+                        results = modules.create_module_item(
+                            request_ctx,
+                            course_id,
+                            module_id,
+                            'Assignment',
+                            module_item_content_id=item_id,
+                            module_item_indent=1)
+                    else:
+                        results = modules.create_module_item(
+                            request_ctx,
+                            course_id,
+                            module_id,
+                            'ExternalTool',
+                            module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2),
+                            module_item_content_id=None,
+                            module_item_title=indexed_section_name,
+                            module_item_indent=1)
+                        item_id = results.json().get("id")
+
+                    config.chapters[chapter_name][str(module)]["sections"][section_name]["item_id"] = item_id
+                section_couter += 1
+        else:
+            indexed_module_name = str(module_position).zfill(2) + "." + str(module_item_position).zfill(2) + ".01 - " + module_name
+
+            results = modules.create_module_item(
+                request_ctx,
+                course_id,
+                module_id,
+                'ExternalTool',
+                module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url,
+                module_item_content_id=None,
+                module_item_title=indexed_module_name,
+                module_item_indent=1)
+            item_id = results.json().get("id")
+            config.chapters[chapter_name][str(module)]["item_id"] = item_id
+        module_item_position += 1
+
+    # publish the module
+    results = modules.update_module(request_ctx, course_id, module_id,
+                                    module_published=True)
+
+
+def create_course(config):
+    """Create course on target LMS (e.g. canvas)"""
+
+    course_code = config['course_code']
+    privacy_level = "public"  # should be public
+    config_type = "by_url"
+    LTI_url = config["LTI_url"]
+
+    print "\nCreating course in " + config.target_LMS + " LMS " + config.LMS_url + '\n'
+    # init the request context
+    request_ctx = RequestContext(config['access_token'], config['LMS_url'] + "/api")
+
+    # get course_id
+    results = courses.list_your_courses(request_ctx,
+                                        'total_scores')
+    course_id = None
+    for i, course in enumerate(results.json()):
+        if course.get("course_code") == course_code:
+            course_id = course.get("id")
+
+    if course_id is None:
+        print_err('Course ' + course_code + ' was not found in '+ config.target_LMS + " LMS " + config.LMS_url)
+        sys.exit(1)
+
+    # Reset course
+    results = courses.reset_content(
+        request_ctx, course_id)
+
+    # get new course_ud, becasue canvas change it after course reset
+    course_id = results.json()["id"]
+
+    # save course_id
+    config['course_id'] = course_id
+
+    # configure the course external_tool
+    results = external_tools.create_external_tool_courses(
+        request_ctx, course_id, "OpenDSA-LTI",
+        privacy_level, config["LTI_consumer_key"], config["LTI_secret"],
+        url=config["LTI_url"] + "/lti_tool")
+
+    # update the course name
+    course_name = config.title
+    results = courses.update_course(
+        request_ctx, course_id, course_name=course_name)
+
+    chapters = config.chapters
+
+    module_position = 1
+    # create course modules and assignments
+    for chapter in chapters:
+        chapter_name = str(chapter)
+        chapter_obj = chapters[str(chapter)]
+        # OpenDSA chapters will map to canvas modules
+        results = modules.create_module(
+            request_ctx, course_id, "Chapter " + str(module_position - 1) + " " + str(chapter), module_position=module_position)
+        module_id = results.json().get("id")
+        t = threading.Thread(target=create_chapter, args=(request_ctx, config, course_id, course_code, module_id, module_position - 1, chapter_name, chapter_obj, LTI_url))
+        t.start()
+        module_position += 1
+
+
+def register_book(config):
+    """Register Book in OpenDSA-server"""
+
+    url = config.logging_server + '/api/v1/module/loadbook/'
+    headers = {'content-type': 'application/json'}
+
+    json_data = {}
+    json_data["odsa_username"] = config.odsa_username
+    json_data["odsa_password"] = config.odsa_password
+    json_data["course_id"] = config.course_id
+    json_data["course_code"] = config.course_code
+    json_data["LMS_url"] = config.LMS_url
+    json_data["chapters"] = config.chapters
+
+    print "\nRegistering Book in OpenDSA-server " + config.logging_server + '\n'
+
+    try:
+        response = requests.post(url, json=json_data, headers=headers, verify=False)
+        response_obj = json.loads(response.content)
+    except requests.exceptions.Timeout:
+        print_err("Connection Timeout")
+    except requests.exceptions.TooManyRedirects:
+        print_err("Bad URL, please try different OpenDSA-server URL")
+    except requests.exceptions.RequestException as e:
+        print e
+
+    if 'saved' in response_obj:
+      print "\nBook was registered successfully\n"
+    else:
+      print "\nSomthing wrong happened ...\n"
+
+
 def configure(config_file_path, options):
     """Configure an OpenDSA textbook based on a validated configuration file"""
     global satisfied_requirements
@@ -362,7 +558,17 @@ def configure(config_file_path, options):
     print "Configuring OpenDSA, using " + config_file_path
 
     # Load and validate the configuration
-    config = ODSA_Config(config_file_path, options.output_directory)
+    config = ODSA_Config(config_file_path, options.output_directory, options.conf_file)
+    # config = ODSA_Config(config_file_path, options.output_directory, options.conf_file, options.create_course)
+    # config = ODSA_Config(config_file_path, options.output_directory, options.create_course)
+
+    # Register book in OpenDSA-server and create course in target LMS
+    # if options.create_course=='True':
+    #     create_course(config)
+    #     register_book(config)
+
+    create_course(config)
+    register_book(config)
 
     # Delete everything in the book's HTML directory, otherwise the
     # post-processor can sometimes append chapter numbers to the existing HTML
@@ -469,6 +675,7 @@ def configure(config_file_path, options):
         # Create the concept map definition file in _static html directory
         with codecs.open(config.book_dir + 'html/_static/GraphDefs.json', 'w', 'utf-8') as graph_defs_file:
             json.dump(cmap_map, graph_defs_file)
+    make_lti(config)
 
 # Code to execute when run as a standalone program
 if __name__ == "__main__":
@@ -477,8 +684,15 @@ if __name__ == "__main__":
                       dest="slides", action="store_true", default=False)
     parser.add_option("--dry-run", help="Causes configure.py to configure the book but stop before compiling it",
                       dest="dry_run", action="store_true", default=False)
-    parser.add_option("-o", help="Accepts a custom directory name instead of using the config file's name.",
+    parser.add_option("-b", help="Accepts a custom directory name instead of using the config file's name.",
                       dest="output_directory", default=None)
+    # # parser.add_option("-a", "--create_course", help="Accepts a custom LMS configure file instead of using the predefined config file.",
+    # #                   dest="conf_file", default=None)
+    # parser.add_option("-a", help="Accepts a custom LMS configure file instead of using the predefined config file.",
+    #                   dest="conf_file", default=None)
+    # parser.add_option("-c", "--create_course", help="Causes configure.py to create course in target LMS", default=False)
+    parser.add_option("-c", "--create_course", help="Causes configure.py to create course in target LMS",
+                      dest="conf_file", default=None)
     (options, args) = parser.parse_args()
 
     if options.slides:
@@ -489,7 +703,7 @@ if __name__ == "__main__":
     # Process script arguments
     if len(args) != 1:
         print_err(
-            "Usage: " + sys.argv[0] + " [-s] [--dry-run] config_file_path")
+            "Usage: " + sys.argv[0] + " [-s] [--dry-run] config_file_path [-c]")
         sys.exit(1)
 
     configure(args[0], options)

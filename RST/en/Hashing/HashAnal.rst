@@ -5,11 +5,15 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: collision resolution
+   :satisfies: hashing
    :topic: Hashing
 
 Analysis of Closed Hashing
 ==========================
+
+Analysis of Closed Hashing
+--------------------------
 
 How efficient is hashing?
 We can measure hashing performance in terms of the number of

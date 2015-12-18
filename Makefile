@@ -1,15 +1,19 @@
+ifeq ($(OS),Windows_NT)
+	SHELL=C:/Windows/System32/cmd.exe
+endif
 RM = rm -rf
 CONFIG_SCRIPT = tools/configure.py
 TARGET = build
-LINT = eslint
+LINT = eslint --no-color
 CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 CSSLINTFLAGS = --quiet --ignore=ids,adjoining-classes
-MINIMIZE-JS = uglifyjs
-MINIMIZE-CSS = uglifycss
+MINIMIZE = uglifyjs
 
-.PHONY: all clean lint csslint lint min CS2114S215 CS2114F15 CS223 CS5114 CS3114 CS3114LTI NewKA CS3114F15 CS3114notes CS150 OpenDSA test testX IS allBooks nomin pull CPSC270S15 CS2401 COP3530 CS208 ECE252 Tutorial TDDD86F15 TDDC91F15 S15 CSCI115 CS316 CSE017F15 CS226JHU CS340 CS260F15 CSC232
+.PHONY: all clean alllint csslint lint lintExe jsonlint min testLTI Test TestLMS
 
 all: alllint
+
+allbooks: Everything Test CS2 CS3 RecurTutor PL
 
 clean:
 	- $(RM) *~
@@ -20,12 +24,14 @@ clean:
 	- $(RM) Scripts/*~
 	- $(RM) config/*~
 
-alllint: csslint lint lintlib
+alllint: csslint lint jsonlint
 
 csslint:
 	@echo 'running csslint'
 	@csslint $(CSSLINTFLAGS) AV/Background/*.css
 	@csslint $(CSSLINTFLAGS) AV/Design/*.css
+
+TODOcsslint:
 	@csslint $(CSSLINTFLAGS) AV/List/*.css
 	@csslint $(CSSLINTFLAGS) AV/Sorting/*.css
 	@csslint $(CSSLINTFLAGS) AV/Hashing/*.css
@@ -34,27 +40,38 @@ csslint:
 	@csslint $(CSSLINTFLAGS) Doc/*.css
 	@csslint $(CSSLINTFLAGS) lib/*.css
 
-lint:
-	@echo 'running $(LINT)'
+lint: lintExe
+	@echo 'running eslint'
 	-@$(LINT) AV/Background/*.js
-	-@$(LINT) AV/Binary/*.js
-	-@$(LINT) AV/Binary/*.json
 	-@$(LINT) AV/Design/*.js
-	-@$(LINT) AV/Design/*.json
+
+TODOlintAV:
+	@echo 'linting AVs'
+	-@$(LINT) AV/Binary/*.js
 	-@$(LINT) AV/General/*.js
-	-@$(LINT) AV/General/*.json
 	-@$(LINT) AV/List/*.js
-	-@$(LINT) AV/List/*.json
 	-@$(LINT) AV/Sorting/*.js
-	-@$(LINT) AV/Sorting/*.json
 	-@$(LINT) AV/Hashing/*.js
 	-@$(LINT) AV/Searching/*.js
-	-@$(LINT) AV/Searching/*.json
 	-@$(LINT) AV/Sorting/*.js
-	-@$(LINT) AV/Sorting/*.json
-	-@$(LINT) Exercises/Hashing/*.js
 
-lintlib:
+lintExe:
+	@echo 'linting KA Exercises'
+	-@$(LINT) Exercises/AlgAnal/*.js
+	-@$(LINT) Exercises/Background/*.js
+	-@$(LINT) Exercises/Binary/*.js
+	-@$(LINT) Exercises/Design/*.js
+	-@$(LINT) Exercises/General/*.js
+	-@$(LINT) Exercises/Graph/*.js
+	-@$(LINT) Exercises/Hashing/*.js
+	-@$(LINT) Exercises/Indexing/*.js
+	-@$(LINT) Exercises/List/*.js
+	-@$(LINT) Exercises/RecurTutor/*.js
+	-@$(LINT) Exercises/RecurTutor2/*.js
+	-@$(LINT) Exercises/Sorting/*.js
+
+TODO$(LINT)lib:
+	@echo 'linting libraries'
 	-@$(LINT) lib/odsaUtils.js
 	-@$(LINT) lib/odsaAV.js
 	-@$(LINT) lib/odsaMOD.js
@@ -63,214 +80,86 @@ lintlib:
 	-@$(LINT) lib/createcourse.js
 	-@$(LINT) lib/conceptMap.js
 
-min: nomin #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
+jsonlint:
+	@jsonlint -q AV/Background/*.json
+	@jsonlint -q AV/Design/*.json
+	@jsonlint -q config/*.json
+	@jsonlint -q config/Old/*.json
 
-F15: CS2114 CS3114F15 CS316 TDDD86F15 TDDC91F15 TDDI16F15 CSE017F15 CPSC270 COP3530 CISC-187 CS4104F15 CS226JHU CS340 CS260F15
+min: nomin
+#lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
-S16: CSC232 CS3114
+testLTI: min
+	python $(CONFIG_SCRIPT) config/testLTI.json $(opts)
 
-Pointers: min
-	python $(CONFIG_SCRIPT) config/Pointers.json
+Test: min
+	python $(CONFIG_SCRIPT) config/Test.json -b Test -c Test_LMSconf
 
-Tutorial: min
-	python $(CONFIG_SCRIPT) config/Tutorial.json
-
-TDDD86F15: min
-	python $(CONFIG_SCRIPT) config/TDDD86F15.json
-
-TDDC91F15: min
-	python $(CONFIG_SCRIPT) config/TDDC91F15.json
-
-TDDI16F15: min
-	python $(CONFIG_SCRIPT) config/TDDI16F15.json
-
-good: min
-	python $(CONFIG_SCRIPT) config/good.json
+TestLMS: min
+	python $(CONFIG_SCRIPT) config/Test.json -c True
 
 RecurTutor: min
-	python $(CONFIG_SCRIPT) config/RecurTutor.json
+	python $(CONFIG_SCRIPT) config/RecurTutor.json $(opts)
 
-TestRecur: min
-	python $(CONFIG_SCRIPT) config/TestRecur.json
+RecurTutorLMS: min
+	python $(CONFIG_SCRIPT) config/RecurTutor.json -c True
 
-RecurTutor2: min
-	python $(CONFIG_SCRIPT) config/RecurTutor2.json
+CS2: min
+	python $(CONFIG_SCRIPT) config/CS2.json $(opts)
 
-COP3530: min
-	python $(CONFIG_SCRIPT) config/COP3530F15.json
+CS2LMS: min
+	python $(CONFIG_SCRIPT) config/CS2.json -c True
 
-CSC232: min
-	python $(CONFIG_SCRIPT) config/CSC232.json
+CS3: min
+	python $(CONFIG_SCRIPT) config/CS3.json $(opts)
 
-CS226JHU: min
-	python $(CONFIG_SCRIPT) config/CS226JHUF15.json
+CS3LMS: min
+	python $(CONFIG_SCRIPT) config/CS3.json -c True
 
-CISC-187: min
-	python $(CONFIG_SCRIPT) config/CISC-187.json
+CS3vt: min
+	python $(CONFIG_SCRIPT) config/CS3.json -b CS3test -c CS3vtt_LMSconf
 
-CSCI102: min
-	python $(CONFIG_SCRIPT) config/CSCI102.json
+CS3in: min
+	python $(CONFIG_SCRIPT) config/CS3.json $(opts)
 
-CSCI115: min
-	python $(CONFIG_SCRIPT) config/CSCI115S15.json
+Algorithms: min
+	python $(CONFIG_SCRIPT) config/Algorithms.json $(opts)
 
-CS150: min
-	python $(CONFIG_SCRIPT) config/CS150.json
-
-CSE017F15: min
-	python $(CONFIG_SCRIPT) config/CSE017F15.json
-
-CPSC270: min
-	python $(CONFIG_SCRIPT) config/CPSC270F15.json
-
-CSCI204: min
-	python $(CONFIG_SCRIPT) config/CSCI204S15.json
-
-CS208: min
-	python $(CONFIG_SCRIPT) config/CS208.json
-
-CS223: min
-	python $(CONFIG_SCRIPT) config/CS223.json
-
-CSE-A1140: min
-	python $(CONFIG_SCRIPT) config/CSE-A1140.json
-
-CSE-A1141: min
-	python $(CONFIG_SCRIPT) config/CSE-A1141.json
-
-CSE-A1141eng: min
-	python $(CONFIG_SCRIPT) config/CSE-A1141eng.json
-
-CSE-A1141test: min
-	python $(CONFIG_SCRIPT) config/CSE-A1141test.json
-
-CS2114SS215: min
-	python $(CONFIG_SCRIPT) config/CS2114SS215.json
-
-CS2114: min
-	python $(CONFIG_SCRIPT) config/CS2114F15.json
-
-CS2401: min
-	python $(CONFIG_SCRIPT) config/CS2401.json
-
-CS260F15: min
-	python $(CONFIG_SCRIPT) config/CS260F15.json
-
-CS3114: min
-	python $(CONFIG_SCRIPT) config/CS3114.json
-
-CS3114LTI: min
-	python $(CONFIG_SCRIPT) config/CS3114LTI.json
-
-NewKA: min
-	python $(CONFIG_SCRIPT) config/NewKA.json
-
-CS3114F15: min
-	python $(CONFIG_SCRIPT) config/CS3114F15Cao.json
-	python $(CONFIG_SCRIPT) config/CS3114F15Barnette.json
-
-CS3114notes: min
-	python $(CONFIG_SCRIPT) s config/CS3114notes.json
-
-CS316: min
-	python $(CONFIG_SCRIPT) config/CS316.json
-
-CS340: min
-	python $(CONFIG_SCRIPT) config/CS340.json
-
-CS4104F15: min
-	python $(CONFIG_SCRIPT) config/CS4104F15.json
-
-CS5114: min
-	python $(CONFIG_SCRIPT) config/CS5114.json
-
-CS5114S15: min
-	python $(CONFIG_SCRIPT) config/CS5114S15.json
-
-ECE252: min
-	python $(CONFIG_SCRIPT) config/ECE252S15.json
-
-OpenDSA: min
-	python $(CONFIG_SCRIPT) config/OpenDSA.json
-
-IS: min
-	python $(CONFIG_SCRIPT) config/IS.json
-
-NP: min
-	python $(CONFIG_SCRIPT) config/NP.json
-
-test: min
-	python $(CONFIG_SCRIPT) config/test.json
-
-testX: min
-	python $(CONFIG_SCRIPT) config/testX.json
-
-testcmap: min
-	python $(CONFIG_SCRIPT) config/testcmap.json
-
-testanal: min
-	python $(CONFIG_SCRIPT) config/testanal.json
-
-testfi: min
-	python $(CONFIG_SCRIPT) config/testfi.json
-
-testpt: min
-	python $(CONFIG_SCRIPT) config/testpt.json
-
-testsv: min
-	python $(CONFIG_SCRIPT) config/testsv.json
-
-testcpp: min
-	python $(CONFIG_SCRIPT) config/testcpp.json
-
-uwosh: min
-	python $(CONFIG_SCRIPT) config/uwosh.json
-
-uwosh-taylor: min
-	python $(CONFIG_SCRIPT) config/uwosh-taylor.json
-
-uwosh-pl: min
-	python $(CONFIG_SCRIPT) config/uwosh-pl.json
-
-List: min
-	python $(CONFIG_SCRIPT) s config/List.json
-
-Dev: min
-	python $(CONFIG_SCRIPT) config/Dev.json
+AlgorithmsLMS: min
+	python $(CONFIG_SCRIPT) config/Algorithms.json -c True
 
 Everything: min
-	python $(CONFIG_SCRIPT) config/Everything.json
+	python $(CONFIG_SCRIPT) config/Everything.json $(opts)
 
-AlgAnalTest: min
-	python $(CONFIG_SCRIPT) config/AlgAnalTest.json
-	
-AlgAnal: min
-	python $(CONFIG_SCRIPT) config/AlgAnal.json
+EverythingLMS: min
+	python $(CONFIG_SCRIPT) config/Everything.json -c True
 
-invalid: min
-	python $(CONFIG_SCRIPT) config/invalid.json
+PL: min
+	python $(CONFIG_SCRIPT) config/PL.json $(opts)
 
-C2GEN: min
-	python $(CONFIG_SCRIPT) config/C2GEN.json
+PLLMS: min
+	python $(CONFIG_SCRIPT) config/PL.json -c True
 
-slides: min
-	python $(CONFIG_SCRIPT) -s config/slides.json
+India: min
+	python $(CONFIG_SCRIPT) config/India.json $(opts)
 
-allBooks: CS208 CS2114 CS2401 CS3114 CS3530 OpenDSA Everything testcmap
+IndiaLMS: min
+	python $(CONFIG_SCRIPT) config/India.json -c True
 
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
 	@cp lib/odsaUtils.js lib/odsaUtils-min.js
 	@cp lib/odsaMOD.js lib/odsaMOD-min.js
 	@cp lib/odsaAV.js lib/odsaAV-min.js
+	@cp lib/odsaKA.js lib/odsaKA-min.js
 	@cp lib/gradebook.js lib/gradebook-min.js
-	@cp ODSAkhan-exercises/khan-exercise.js lib/khan-exercise-min.js
 	@cp lib/registerbook.js lib/registerbook-min.js
 	@cp lib/createcourse.js lib/createcourse-min.js
 	@cp lib/site.css lib/site-min.css
 	@cat lib/normalize.css lib/odsaAV.css > lib/odsaAV-min.css
 	@cp lib/odsaMOD.css lib/odsaMOD-min.css
 	@cp lib/odsaStyle.css lib/odsaStyle-min.css
+	@cp lib/odsaKA.css lib/odsaKA-min.css
 	@cp lib/gradebook.css lib/gradebook-min.css
 
 pull:
@@ -283,40 +172,48 @@ pull:
 
 lib/odsaUtils-min.js: lib/odsaUtils.js
 	@echo 'Minimizing lib/odsaUtils.js'
-	@$(MINIMIZE-JS) lib/odsaUtils.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaUtils-min.js
+	@$(MINIMIZE) lib/odsaUtils.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaUtils-min.js
 
 lib/site-min.css: lib/site.css
 	@echo 'Minimizing lib/site.css'
-	-@$(MINIMIZE-CSS) lib/site.css > lib/site-min.css
+	-@$(MINIMIZE) lib/site.css --comments '/^!|@preserve|@license|@cc_on/i' > lib/site-min.css
 
 lib/odsaAV-min.js: lib/odsaAV.js
 	@echo 'Minimizing lib/odsaAV.js'
-	@$(MINIMIZE-JS) lib/odsaAV.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaAV-min.js
+	@$(MINIMIZE) lib/odsaAV.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaAV-min.js
+
+lib/odsaKA-min.js: lib/odsaKA.js
+	@echo 'Minimizing lib/odsaKA.js'
+	@$(MINIMIZE) lib/odsaKA.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaKA-min.js
 
 lib/odsaAV-min.css: lib/odsaAV.css
 	@echo 'Minimizing lib/odsaAV.css'
-	@$(MINIMIZE-CSS) lib/odsaAV.css > lib/odsaAV-min.css
+	@$(MINIMIZE) lib/odsaAV.css --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaAV-min.css
+
+lib/odsaKA-min.css: lib/odsaKA.css
+	@echo 'Minimizing lib/odsaKA.css'
+	@$(MINIMIZE) lib/odsaKA.css --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaKA-min.css
 
 lib/odsaMOD-min.js: lib/odsaMOD.js
 	@echo 'Minimizing lib/odsaMOD.js'
-	@$(MINIMIZE-JS) lib/odsaMOD.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaMOD-min.js
+	@$(MINIMIZE) lib/odsaMOD.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaMOD-min.js
 
 lib/odsaMOD-min.css: lib/odsaMOD.css
 	@echo 'Minimizing lib/odsaMOD.css'
-	@$(MINIMIZE-CSS) lib/odsaMOD.css > lib/odsaMOD-min.css
+	@$(MINIMIZE) lib/odsaMOD.css --comments '/^!|@preserve|@license|@cc_on/i' > lib/odsaMOD-min.css
 
 lib/gradebook-min.js: lib/gradebook.js
 	@echo 'Minimizing lib/gradebook.js'
-	@$(MINIMIZE-JS) lib/gradebook.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/gradebook-min.js
+	@$(MINIMIZE) lib/gradebook.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/gradebook-min.js
 
 lib/gradebook-min.css: lib/gradebook.css
 	@echo 'Minimizing lib/gradebook.css'
-	@$(MINIMIZE-CSS) lib/gradebook.css > lib/gradebook-min.css
+	@$(MINIMIZE) lib/gradebook.css --comments '/^!|@preserve|@license|@cc_on/i' > lib/gradebook-min.css
 
 lib/registerbook-min.js: lib/registerbook.js
 	@echo 'Minimizing lib/registerbook.js'
-	@$(MINIMIZE-JS) lib/registerbook.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/registerbook-min.js
+	@$(MINIMIZE) lib/registerbook.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/registerbook-min.js
 
 lib/createcourse-min.js: lib/createcourse.js
 	@echo 'Minimizing lib/createcourse.js'
-	@$(MINIMIZE-JS) lib/createcourse.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/createcourse-min.js
+	@$(MINIMIZE) lib/createcourse.js --comments '/^!|@preserve|@license|@cc_on/i' > lib/createcourse-min.js

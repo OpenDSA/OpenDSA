@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
@@ -15,6 +15,9 @@
 
 Doubly Linked Lists
 ===================
+
+Doubly Linked Lists
+-------------------
 
 The :ref:`singly linked list <linked list> <ListLinked>` allows
 for direct access from a list node only to the next node in the list.
@@ -66,8 +69,12 @@ the doubly linked list nodes have an extra data member.
 .. codeinclude:: Lists/DLink
    :tag: DLink
 
-The following slideshows illustrate the ``insert``, ``append``,
-``remove``, and ``prev`` doubly linked list methods.
+
+Insert
+~~~~~~
+
+The following slideshows illustrate the ``insert`` and ``append``
+doubly linked list methods.
 The class declaration and the remaining member functions for the
 doubly linked list class are nearly identical to the singly linked
 list version.
@@ -78,12 +85,24 @@ each node to deal with), they tend to be easier to understand.
 .. inlineav:: dlistInsertCON ss
    :output: show   
    
+
+Append
+~~~~~~
+
 .. inlineav:: dlistAppendCON ss
    :output: show  
    
+
+Remove
+~~~~~~
+
 .. inlineav:: dlistRemoveCON ss
    :output: show
    
+
+Prev
+~~~~
+
 .. inlineav:: dlistPrevCON ss
    :output: show
    
@@ -98,8 +117,9 @@ the singly linked list.
 
    Need exercises for inserting to and deleting from doubly linked lists.
 
-Notes
------
+
+Mangling Pointers
+~~~~~~~~~~~~~~~~~
 
 There is a space-saving technique that can be employed to eliminate
 the additional space requirement, though it will complicate the
@@ -138,7 +158,7 @@ XORing the box outline a second time restores the original
 contents of the screen.
 
 .. odsascript:: DataStructures/DoubleLinkList.js
-.. odsascript:: AV/List/dlistCON.js
+.. odsascript:: AV/List/dlist.js
 .. odsascript:: AV/List/dlistDiagramCON.js
 .. odsascript:: AV/List/dlistInsertCON.js
 .. odsascript:: AV/List/dlistAppendCON.js

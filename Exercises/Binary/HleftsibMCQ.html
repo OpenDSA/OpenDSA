@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html data-require="math">
+  <head>
+    <title>Heaps: Left Child</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="question">Consider a node <code>R</code> of a complete binary tree
+            whose value is stored in position <code>i</code> of an array
+            representation for the tree. If <code>R</code> has a left
+            sibling, where will the left sibling's position be in the array?</p>
+          <div class="solution"><code>i-1</code></div>
+          <ul class="choices" data-show="4" data-none="true">
+            <li><code>i+1</code></li>
+            <li><code>i+2</code></li>
+            <li><code>2*i+2</code></li>
+            <li><code>\lfloor (r-1)/2 \rfloor</code></li>
+          </ul>
+          <div class="hints">
+            <p>If you have a parent, it is at <code>\lfloor (r-1)/2 \rfloor</code>.</p>
+            <p>If you have a right child, it is at <code>2*i+2</code>.</p>
+            <p>If you have a left child, it is at <code>2*i+1</code>.</p>
+            <p>If you have a right sibling, it is at <code>i+1</code>.</p>
+            <p>If you have a left sibling, it is at <code>i-1</code>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

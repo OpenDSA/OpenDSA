@@ -1,0 +1,55 @@
+<!-- Bucket Hashing mini-proficiency exercise.
+     Alternate form: Slots as hash table size.
+     Written by Cliff Shaffer
+  -->
+
+<!DOCTYPE html>
+<html data-require="jsav math BucketCommon">
+  <head>
+    <title>Alternate Bucket Hashing Proficiency Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #HashBucket2PRO {
+        height: 350px;
+      }
+    </style>
+  </head>
+
+  <body data-height="850" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="iKey">randRange(1, 999)</var>
+        <var id="iSteps">randRange(0, 2)</var>
+        <var id="JSAV">bucketCommon.initJSAV("HashBucket2PRO", iKey, iSteps)</var>
+      </div>
+      <div class="problems">
+        <div id="HashBucket2PROp"> <!-- Supresses answer box -->
+          <div class="question">
+            <p>You are given a hash table of 5 buckets, each of size 2.
+              Using the <b>alternate</b> bucket hash method described above,
+              put key value <var>iKey</var> into the hash table.</p>
+            <input id="reset" type="button" value="Reset" />
+            <div id="HashBucket2PRO" class="jsavcanvas"></div>
+          </div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [bucketCommon.userInput] </div>
+            <div class="validator-function">
+              if (!bucketCommon.checkAnswer() && !guess[0]) {
+                return ""; // User did not click, and correct answer is not
+                           // initial array state
+              } else { return bucketCommon.checkAnswer(); }
+            </div>
+          </div>
+          <div class="hints">
+            <p>The alternate bucket hash first hashes to a home slot in the
+              normal way (the number of slots serves as the hash table size).</p>
+            <p>If there is a collision, then linear probing is used to
+              locate another slot <b>within that bucket</b>.
+            <p>If the bucket is full, then put the record into the overflow.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

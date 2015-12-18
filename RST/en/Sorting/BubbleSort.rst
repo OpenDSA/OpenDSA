@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -15,6 +15,9 @@
 
 Bubble Sort
 ===========
+
+Bubble Sort
+-----------
 
 Our next sorting algorithm is called :term:`Bubble Sort`.
 Bubble Sort is often taught to novice programmers in
@@ -52,8 +55,6 @@ Here is an implementation.
 .. codeinclude:: Sorting/Bubblesort 
    :tag: Bubblesort        
 
-Consider the following array.
-
 .. inlineav:: bubblesortS1CON ss
    :output: show
 
@@ -65,7 +66,9 @@ it again.
    :output: show
 
 Bubble Sort continues in this way until the entire array is sorted.
-The following visualization puts it all together.
+
+The following visualization shows the complete Bubble Sort.
+You can input your own data if you like.
 
 .. avembed:: AV/Sorting/bubblesortAV.html ss
 
@@ -73,25 +76,27 @@ Now try for yourself to see if you understand how Bubble Sort works.
 
 .. avembed:: Exercises/Sorting/BubsortPRO.html ka
 
-.. showhidecontent:: BubbleSortAnalysis
 
-   The following visualization illustrates the running time analysis of
-   Bubble Sort.
+Bubble Sort Analysis
+--------------------
 
-   .. inlineav:: BubbleSortAnalysisCON ss
-      :output: show
+The following visualization illustrates the running time analysis of
+Bubble Sort.
 
-   Thus, Bubble Sort's running time is roughly the same
-   in the best, average, and worst cases.
+.. inlineav:: BubbleSortAnalysisCON ss
+   :output: show
 
-   The number of swaps required depends on how often a
-   record's value is less than that of the record immediately preceding
-   it in the array.
-   We can expect this to occur for about half the comparisons in the
-   average case, leading to :math:`\Theta(n^2)` for the
-   expected number of swaps.
-   The actual number of swaps performed by Bubble Sort will be identical
-   to that performed by Insertion Sort.
+Thus, Bubble Sort's running time is roughly the same
+in the best, average, and worst cases.
+
+The number of swaps required depends on how often a
+record's value is less than that of the record immediately preceding
+it in the array.
+We can expect this to occur for about half the comparisons in the
+average case, leading to :math:`\Theta(n^2)` for the
+expected number of swaps.
+The actual number of swaps performed by Bubble Sort will be identical
+to that performed by Insertion Sort.
 
 Here are some review questions to check your understanding of
 Bubble Sort. 

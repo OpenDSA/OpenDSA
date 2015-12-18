@@ -29,7 +29,7 @@ and any given search query searches one of these independent
 indices as appropriate.
 
 Multdimensional Keys
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 A multidimensional search key presents a rather different concept.
 Imagine that we have a database of city records, where

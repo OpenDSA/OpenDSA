@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
@@ -10,6 +10,9 @@
 
 Sets and Relations
 ==================
+
+Set Notation
+------------
 
 The concept of a set in the mathematical sense has wide
 application in computer science.
@@ -133,6 +136,16 @@ Note that sequence :math:`\langle3, 5, 4, 4\rangle` is distinct from
 sequence :math:`\langle3, 4, 5, 4\rangle`, and both are distinct from
 sequence :math:`\langle3, 4, 5\rangle`. 
 
+.. [#] The object referred to here as a
+       bag is sometimes called a
+       :ref:`multilist <multilist> <Multilists>`.
+       But, the term multilist also refers to a list that may contain
+       sublists.
+
+
+Relations
+---------
+
 A :term:`relation` :math:`R` over set :math:`\mathbf{S}` is a set of
 ordered pairs from :math:`\mathbf{S}`.
 As an example of a relation, if :math:`\mathbf{S}` is
@@ -192,6 +205,12 @@ transitive.
 If we define a person to be a sibling of himself, then it is
 reflexive; if we define a person not to be a sibling of himself, then
 it is not reflexive.
+
+.. avembed:: Exercises/Background/SetTFrelation.html ka
+
+
+Equivalence Relations
+---------------------
 
 :math:`R` is an :term:`equivalence relation` on set :math:`\mathbf{S}`
 if it is reflexive, symmetric, and transitive.
@@ -257,9 +276,11 @@ computing a :ref:`minimal cost spanning tree <MCST> <MCST>`.
       :math:`y \bmod m = z \bmod m`, then
       :math:`x \bmod m = z \bmod m`.
 
-.. avembed:: Exercises/Background/SetTFrelation.html ka
-
 .. avembed:: Exercises/Background/SetTFequivrel.html ka
+
+
+Partial Orders
+--------------
 
 A binary relation is called a
 :term:`partial order` if it is antisymmetric and transitive.
@@ -297,12 +318,3 @@ then the order is called a :term:`total order` or :term:`linear order`.
    powerset of the integers.
 
 .. avembed:: Exercises/Background/SetTFpartialorder.html ka
-
-Notes
------
-
-.. [#] The object referred to here as a
-       bag is sometimes called a
-       :ref:`multilist <multilist> <Multilists>`.
-       But, multilist is also refers to a list that may contain
-       sublists.

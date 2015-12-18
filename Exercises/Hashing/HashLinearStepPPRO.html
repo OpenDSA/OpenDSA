@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html data-require="jsav math ProbeCommon">
+  <head>
+    <title>Hashing Linear Probing by Steps Proficiency Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body data-height="700" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="arrSize">10</var>
+        <var id="hashFunction">"h(k) = k  mod " + arrSize</var>
+        <var id="JSAV">probeCommon.initJSAV("HashLinearStepPPRO", arrSize)</var>
+      </div>
+      <div class="problems">
+        <div id="HashLinearStepPPROp"> <!-- Supresses answer box -->
+          <p class="problem">
+            Given the following hash table, use hash
+            function <var>hashFunction</var> and handle collisions
+            using Linear Probing by Steps with probe function P(K, i) =
+            <var>probeCommon.probeStep</var>i.
+          </p>
+          <p class="question">In which slot should the record with key
+            value <var>probeCommon.currentKey</var> be inserted?</p>
+          <input id="reset" type="button" value="Reset" />
+          <div id="HashLinearStepPPRO" class="jsavcanvas"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [probeCommon.userInput] </div>
+            <div class="validator-function">
+              if (!probeCommon.checkAnswer(arrSize) && !guess[0]) {
+                return ""; // User did not click, and correct answer is not
+                           // initial array state
+              } else { return probeCommon.checkAnswer(arrSize); }
+            </div>
+          </div>
+          <div class="hints">
+            <p>First use the hash function to computer the home slot.</p>
+            <p>If there is a collsion, then just step to the right like
+              normal linear probing, but step by the step size. For
+              example, if the step size is 4, go 4 slots to the right.
+            <p>If we reach the end of the array while stepping, then cycle
+              around to the beginning.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

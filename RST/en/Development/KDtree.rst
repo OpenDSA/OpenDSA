@@ -369,9 +369,6 @@ Here is a version where you can click to get the node inserted.
 
    We need a proficiency exercise.
 
-Notes
------
-
 .. [#] A more efficient computation is
        :math:`(P_x - N_x)^2 + (P_y - N_y)^{2} \leq d^{2}`.
        This avoids performing a square root function.

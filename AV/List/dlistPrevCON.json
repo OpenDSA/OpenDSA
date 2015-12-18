@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "av_c1": "The prev method is easy.",
       "av_c2": "The node with value 35 is the current node",
@@ -8,7 +8,7 @@
       "av_c5": "This takes $\\Theta(1)$ time."
     }
   },
-  "code" : {
+  "code": {
     "processing": {
       "url": "../../../SourceCode/Processing/Lists/DList.pde",
       "lineNumbers": false,

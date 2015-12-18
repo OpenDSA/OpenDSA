@@ -1,11 +1,10 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
    :topic: General Trees
 
 
@@ -14,6 +13,9 @@
 
 Sequential Tree Representations
 ===============================
+
+Sequential Tree Representations
+-------------------------------
 
 Next we consider a fundamentally different approach to implementing
 trees.
@@ -85,6 +87,10 @@ the tree structure.
 
 .. avembed:: Exercises/General/SequentialTreePRO.html ka
 
+
+Alternative Sequential Representation
+-------------------------------------
+
 To illustrate the difficulty involved in using the sequential tree
 representation for processing, consider searching for the right child
 of the root node.
@@ -129,8 +135,6 @@ implementation, and so requires less overhead.
 .. inlineav:: SequentialTreeAltCON ss
    :output: show
 
-.. avembed:: Exercises/General/SequentialTreeAltPRO.html ka
-
 Storing :math:`n` extra bits can be a considerable savings over
 storing :math:`n` ``null`` values.
 In the example above, each node was shown with a
@@ -143,6 +147,12 @@ An example would be if all node values must be positive.
 Then the high-order (sign) bit of the integer value could be used as
 the mark bit.
 
+.. avembed:: Exercises/General/SequentialTreeAltPRO.html ka
+
+
+Bit Vector Representation
+-------------------------
+
 Another approach is to store a separate bit vector to represent the
 status of each node.
 In this case, each node of the tree corresponds to one bit in the bit
@@ -154,6 +164,10 @@ a leaf node.
    :output: show
 
 .. avembed:: Exercises/General/SequentialTreeBitVectorPRO.html ka
+
+
+General Tree Sequential Representation
+--------------------------------------
 
 Storing general trees by means of a sequential implementation requires
 that more explicit structural information be included with the node
@@ -174,8 +188,6 @@ this by two or more successive ")" symbols.
 .. inlineav:: SequentialGenTreeCON ss
    :output: show
 
-.. avembed:: Exercises/General/SequentialTreeGenTreePRO.html ka
-
 Note that this representation for serializing general trees cannot be
 used for binary trees.
 This is because a binary tree is not merely a restricted form of
@@ -185,6 +197,8 @@ both might be empty.
 So this representation cannot let us distinguish whether node
 :math:`D` in Figure :num:`Figure #BinExampb` is the left or right
 child of node :math:`B`.
+
+.. avembed:: Exercises/General/SequentialTreeGenTreePRO.html ka
 
 .. odsascript:: AV/Binary/BinExampCON.js
 .. odsascript:: AV/General/SequentialTreeCON.js

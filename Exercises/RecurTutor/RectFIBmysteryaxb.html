@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html data-require="codemirror math">
+  <head>
+    <title> Recursion Tracing Exercise: Mystery return</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+ 
+  <body data-height="550" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="A">randRange(0, 99)</var>
+      </div>
+      <div class="problems">
+        <div id="RectFIBmysteryabp"> <!-- Supresses answer box -->
+          <p class="question">Consider the following function:
+            <textarea id="codeTextarea" name="codeTextarea">
+int mystery(int a, int b) {
+  if (b == 1)	  
+    return a;	
+  else
+    return a + mystery(a, b - 1);	
+}</textarea>		
+            What is the return value from calling mystery(<var>A</var>, 1)?<br/>
+            (Either write a number, or write "infinite recursion".)
+          </p>
+          <p class="solution" data-type="text"><var>A</var></p>
+          <div class="hints">
+            <p>This function adds a to itself b times.</p>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

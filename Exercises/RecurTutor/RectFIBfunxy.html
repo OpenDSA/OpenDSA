@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html data-require="codemirror math">
+  <head>
+    <title> Recursion Tracing Exercise: Function return </title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+ 
+  <body data-height="550" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="x">randRange(2, 10)</var>
+        <var id="y">randRange(2, 10)</var>
+      </div>
+      <div class="problems">
+        <div id="RectFIBfunxyp"> <!-- Supresses answer box -->
+          <p class="question">Consider the following function:
+            <textarea id="codeTextarea" name="codeTextarea">
+int func (int x, int y) {
+  if (y == 1)
+    return x;
+  else	 
+    return x + func(x, y + 1);
+}</textarea>		
+            What value does func(<var>x</var> , <var>y</var>) return?<br/>
+            (Either write a number, or write "infinite recursion".)
+          </p> 
+          <p class="solution" data-type="text">infinite recursion</p>
+          <div class="hints">
+            <p>The base case is executed when y reaches zero while the
+              recursive call is incrementing y. Since y is positive, then the
+              base case will never be executed.
+          </div> 
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

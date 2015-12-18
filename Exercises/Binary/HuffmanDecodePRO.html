@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html data-require="math jsav huffman HuffmanDecodePRO">
+<head>
+  <title>Huffman Tree Coding Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  <style>
+    #HuffmanDecodePRO {
+      top: -30px;
+      height: 350px;
+      border: 0;
+    }
+  </style>
+</head>
+
+<body data-height="800" data-width="950">
+<div class="exercise">
+  <div class="vars">
+    <var id="JSAV">huffmanDecodePRO.initJSAV()</var>
+    <var id="type">randRange(0,1)</var>
+    <var id="sequenceNames">["sequence of bits", "letter"]</var>
+    <var id="sequence">sequenceNames[type]</var>
+    <var id="answerNames">["series of 1s or 0s", "letter"]</var>
+    <var id="answer">answerNames[type]</var>
+    <var id="indices">huffmanDecodePRO.getIndices(type)</var>
+    <var id="question">huffmanDecodePRO.genQandA(indices, type, 0)</var>
+    <var id="ANS">huffmanDecodePRO.genQandA(indices, type, 1)</var>
+  </div>
+  <div class="problems">
+    <div id="HuffmanDecodePROp">
+      <p class="question">
+        For the Huffman tree shown below, what is
+        the corresponding <var>sequence</var> represented by <var>question</var>? 
+        Type its representation as a <var>answer</var>.
+        <div id="HuffmanDecodePRO" class="jsavcanvas"></div>
+      </p>
+      <p class="solution" data-type="text"><var>ANS</var></p>
+      <div class="hints">
+         <p>To decode a letter, trace the path down the
+           tree to the letter. Add a 0 for each left branch or 1 for
+           right branch, until you get to the leaf node.
+           For example, the code for Z is 1+1+1+1+0+0.</p>
+          <p>To find the corresponding letter for a code, trace a
+            path through the tree according to the 0s (left) or 1s
+            (right) until you get to a letter.
+            For example, for 1110 you would go left (1), left (1),
+            left (1), and then right (0) to find the letter C.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

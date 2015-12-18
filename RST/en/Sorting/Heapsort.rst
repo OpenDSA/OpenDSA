@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -15,6 +15,9 @@
 
 Heapsort
 ========
+
+Heapsort
+--------
 
 Our discussion of Quicksort began by considering the practicality of
 using a BST for sorting.
@@ -62,22 +65,28 @@ A complete implementation is as follows.
 
 .. codeinclude:: Sorting/Heapsort 
    :tag: Heapsort 
-   
+
 Here is a warmup practice exercise for Heapsort.
 
 .. avembed:: Exercises/Sorting/HeapsortStepPRO.html ka
+
+
+Heapsort Proficiency Practice
+-----------------------------
 
 Now test yourself to see how well you understand Heapsort.
 Can you reproduce its behavior?
 
 .. avembed:: AV/Sorting/heapsortPRO.html pe
 
-.. showhidecontent:: HeapSortAnalysis   
 
-   This visualization presents the running time analysis of Heap Sort       
+Heapsort Analysis
+-----------------
 
-   .. inlineav:: HeapSortAnalysisCON ss
-      :output: show
+This visualization presents the running time analysis of Heap Sort       
+
+.. inlineav:: HeapSortAnalysisCON ss
+   :output: show
 
 While typically slower than Quicksort by a constant factor
 (because unloading the heap using ``removemax`` is somewhat slower
@@ -102,8 +111,6 @@ That algorithm requires that edges be visited in ascending
 order (so, use a min-heap), but this process stops as soon as the MST
 is complete.
 Thus, only a relatively small fraction of the edges need be sorted.
-
-Now here are summary questions.
 
 .. avembed:: Exercises/Sorting/HeapsortSumm.html ka
 

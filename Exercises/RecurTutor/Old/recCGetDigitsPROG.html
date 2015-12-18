@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title> Recursion Programming Exercise 11</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+
+  <script> window.OpenPopKa = true; </script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../lib/odsaStyle-min.css"></script>
+ 
+  <script src="../../lib/codemirror/lib/codemirror.js"></script>
+  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
+  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
+  <script>
+   var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    mode:  "text/x-java"
+   });
+  </script>
+</head>
+
+<body  data-height="550" data-width="950">
+   
+<div class="exercise">
+   <div class="problems">
+    <div> <!-- Supresses answer box -->
+      <p class="problem" id = "test">  Given the following recursive function 
+      write down the missing recursive call such that this function counts 
+      the number of digits in an integer. Given  that digits is initially set 
+      to 1 on invoking the recursive function.
+      <br />
+    </h4>
+    <p></p>
+    <textarea  id="codeTextarea">int getDigits(int number, int digits)
+{	
+if (number < 10)
+
+ return digits;
+
+return //<<Missing a Recursive call>>
+}
+</textarea></p>
+
+      <div class="question">
+	
+      </div>
+      <div class="solution" data-type="custom">
+        <div class="guess"> [ editor.getValue() ] </div>
+        <div class="validator-function">
+          window.codeValue = editor.getValue();
+          window.progexType= "recursion";    
+          window.summexName= "recCGetDigitsPROG";
+        </div>
+      </div>
+      <div class="hints">
+		  <p>Every time the recursive call is executed the digits should be incremented by one and a digit should be dropped of the number.</p>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+</body>
+</html>

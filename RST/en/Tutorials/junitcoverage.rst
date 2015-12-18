@@ -1,23 +1,25 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Jordan Sablan
-   :requires:
-   :satisfies:
-   :topic:
+   :requires: JUnit test writing
+   :satisfies: Junit code coverage
+   :topic: JUnit
 
 Code Coverage In JUnit
 ======================
+
+Getting Started
+---------------
+
 One of the most useful features that the webcat grading system provides is
 information of total code coverage. Thankfully Eclipse has a couple of plugins
 that offer similar functionality so when you write your code you will not be
 dependent on webcat solely.
 
-Getting Started
----------------
 Step 1: Open Eclipse and select Help->Install New Software
 Step 2: A new window will appear similar to the following figure select the Add
 button.
@@ -38,6 +40,7 @@ through the installation screens.
 
 Using EclEmma
 -------------
+
 After installing the plugin begin writing test code. After completion of the
 test code select the button selected in red in the below image.
 
@@ -82,5 +85,3 @@ similar to below will appear providing information.
    :alt: Code coverage of each method in the BST class
 
    Code Coverage Of Each Method In The BST Class
-
-

@@ -5,11 +5,14 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: HashIntro
+   :requires: hash deletion
    :topic: Hashing
 
 Hashing Chapter Summary Exercises
 =================================
+
+Hashing Review
+--------------
 
 Here is a complete set of review questions, taken from all of the
 questions in the modules of this chapter.

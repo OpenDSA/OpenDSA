@@ -1,11 +1,11 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :satisfies: graph terminology
    :topic: Graphs
 
 
@@ -13,6 +13,9 @@
 
 Graphs Chapter Introduction
 ===========================
+
+Graph Terminology
+-----------------
 
 Graphs provide the ultimate in data structure flexibility.
 A graph consists of a set of nodes, and a set of edges where an
@@ -56,9 +59,13 @@ Besides being useful and interesting in their own right, these
 algorithms illustrate the use of many other data structures presented
 throughout the course.
 
-
-Terminology and Representations
--------------------------------
+.. [#] Some graph applications require that a given pair of vertices
+       can have multiple or parallel edges connecting them, or that a
+       vertex can have an edge to itself.
+       However, the applications discussed here do not require
+       either of these special cases.
+       To simplify our graph API, we will assume that there are no
+       dupicate edges, and no edges that connect a node to itself.
 
 A :term:`graph` :math:`\mathbf{G} = (\mathbf{V}, \mathbf{E})` consists
 of a set of :term:`vertices <vertex>` :math:`\mathbf{V}` and a set of
@@ -164,6 +171,10 @@ A :term:`free tree` is a connected, undirected graph with no simple
 cycles.
 An equivalent definition is that
 a free tree is connected and has :math:`|\mathbf{V}| - 1` edges.
+
+
+Graph Representations
+---------------------
 
 There are two commonly used methods for representing graphs.
 The :term:`adjacency matrix` for a graph is a
@@ -294,18 +305,11 @@ time when the algorithm might otherwise require only
 This is a considerable disadvantage when the graph is sparse,
 but not when the graph is closer to full.
 
+
+Graph Terminology Questions
+---------------------------
+
 .. avembed:: Exercises/Graph/GraphIntroSumm.html ka 
-
-Notes
------
-
-.. [#] Some graph applications require that a given pair of vertices
-       can have multiple or parallel edges connecting them, or that a
-       vertex can have an edge to itself.
-       However, the applications discussed here do not require
-       either of these special cases.
-       To simplify our graph API, we will assume that there are no
-       dupicate edges, and no edges that connect a node to itself.
 
 .. odsascript:: AV/Graph/GdirundirCON.js
 .. odsascript:: AV/Graph/GneighborCON.js

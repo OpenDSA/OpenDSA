@@ -6,8 +6,11 @@
 .. avmetadata:: 
    :author: Jeremy Rodencal
 
-0/1 Knapsack Problem [Draft]
-============================
+0/1 Knapsack Problem
+====================
+
+0/1 Knapsack Problem
+--------------------
 
 The 0/1 Knapsack problem can be defined in terms of a thief who enters the
 place they will rob with a single knapsack to carry away their spoils. This
@@ -122,7 +125,7 @@ be very apparent from the tree that the algorithm is of exponential efficency,
 O\(2 ^ *N*\), where *N* is the number of items.
 
 
-.. avembed:: AV/Development/sackCallTree.html pe
+.. avembed:: AV/Development/sackCallTree.html ss
 
 Now, consider what makes a problem suited to dynamic programing.
 
@@ -147,7 +150,7 @@ are simple integers,that could easily be stored in a two dimensional array.
 The following visualization shows how dynamic programming could be used to
 greatly increase the efficency of the original recursive algorithm.
 
-.. avembed:: AV/Development/sackTreePluck.html pe
+.. avembed:: AV/Development/sackTreePluck.html ss
 
 One important thing to notice is, although this algorithm finds the optimal value,
 it does not find the item set that produced the value. To answer the 0/1
@@ -158,7 +161,7 @@ the item *is* part of the solution. In the visualization below, the optimal
 solution set is recovered from a complete table of optimal values for the
 set of items.
 
-.. avembed:: AV/Development/sackTraceBack.html pe
+.. avembed:: AV/Development/sackTraceBack.html ss
 
 But how would a complete table of values be easily obtained? Recall that the two
 function calls are V\(*i*-1, *c*\) and V(*i*-1, *c*-WT\(*i*\)\). As it turns out,
@@ -210,11 +213,18 @@ A series of exercises are provided to help you test your knowlege of the
 0/1 Knapsack algorithm. Some of the exercises are easier if you have some
 scratch paper to work on.
 
+Exercise 1
+----------
+
 In the exercise below, you are provided a row of the table from the previous
 algorithm. Determine if the item with weigh and value given on the left should
 be taken as part of the optimal solution.
 
 .. avembed:: Exercises/Development/knapsackSelect.html ka
+
+
+Exercise 2
+----------
 
 This next exercise has you fill in an entire row of the table. Enter the answer
 as a list of integers sparated by spaces or commas. Clicking a cell in the table
@@ -222,12 +232,20 @@ will hilight the cell, alowing you to keep your place as you progress
 
 .. avembed:: Exercises/Development/knapsackFillRow.html ka
 
+
+Exercise 3
+----------
+
 In this exercise you must determine the correct set of items to produce the
 optimal solution. To select an item, click on the item's column in the item table
 on the left. You can also select cells in the main table like you could in the
 previous exercise.
 
 .. avembed:: Exercises/Development/knapsackSolution.html ka
+
+
+Exercise 4
+----------
 
 For a final proficency exercise, you will be required to select values from the
 \"choices\" list and put them into the correct location in the table. You must

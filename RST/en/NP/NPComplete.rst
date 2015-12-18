@@ -5,14 +5,13 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
    :topic: NP-completeness
 
 NP-Completeness
 ===============
 
 Hard Problems
--------------
+~~~~~~~~~~~~~
 
 There are several ways that a problem could be considered hard.
 For example, we might have trouble understanding the definition of the
@@ -103,7 +102,7 @@ to be one that runs in exponential time, that is, in
 A definition for a hard *problem* will be presented soon.
 
 The Theory of NP-Completeness
------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Imagine a magical computer that works by guessing the correct
 solution from among all of the possible solutions to a problem.
@@ -187,7 +186,7 @@ science is whether :math:`P = NP`.
 Given below are some problems that are NP Complete.
 
 Examples of NP-Complete Problems
---------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The next few chapters provides a few examples of NP Complete Problems.
 

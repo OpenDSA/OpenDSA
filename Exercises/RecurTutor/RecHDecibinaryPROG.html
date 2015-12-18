@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html data-require="codemirror blockUI">
+  <head>
+    <title> Recursion Programming Exercise: Decimal to Binary</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #RecHIsReversePROG .CodeMirror {
+        height: 200px;
+      }
+    </style>
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="config">
+          (function(){ window.OpenPopKa = true;}())
+        </var>
+      </div>
+      <div class="problems">
+        <div id="RecHDecibinaryPROGp"> <!-- Supresses answer box -->
+          <p class="problem">For function "decibinary", write
+            the missing parts of the recursion case. This function
+            should return a string that stores the binary equivalent
+            for decimal int variable "num".
+            Example: the binary equivalent of 13 may be found by
+            repeatedly dividing 13 by 2. So, 13 in base 2 is
+            represented by the string "1101".<br/>
+            <textarea id="codeTextarea" name="codeTextarea">
+String decibinary (int num) {
+  if (num < 2)
+    return Integer.toString(num);
+  else
+    return <<Missing a Recursive call>> + <<Missing command>>;
+}</textarea>
+          </p>
+          <div class="question"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess">[editor.getValue()]</div>
+            <div class="validator-function">
+              if (guess[0] != initEditor) {
+                console.log(guess[0]);
+                window.codeValue = guess[0];
+                window.progexType = "RecurTutor";
+                window.summexName = "RecHDecibinaryPROG";
+              } else {
+                return "";
+              }
+            </div>
+          </div>
+          <div class="hints">
+			  <p> The recursive call should divide the given number by 2 
+			  and the result should then be concatenated  to the string representation of the remainder of 
+			  dividing num by 2.
+			   </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

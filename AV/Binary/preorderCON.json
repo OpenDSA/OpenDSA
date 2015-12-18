@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "av_preorder": "Preorder traversal begins.",
       "av_nullcheck": "Check to see if node is null.",
@@ -11,19 +11,19 @@
       "av_done": "Finished the preorder traversal on "
     }
   },
-  "code" : {
+  "code": {
     "processing": {
       "url": "../../../SourceCode/Processing/Binary/Preorder.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: preorder *** */",
       "endBefore": "/* *** ODSAendTag: preorder *** */",
       "tags": {
-         "sig": 1,
-         "checknull": 2,
-         "visit": 3,
-         "visitleft": 4,
-         "visitright": 5,
-         "end": 6
+        "sig": 1,
+        "checknull": 2,
+        "visit": 3,
+        "visitleft": 4,
+        "visitright": 5,
+        "end": 6
       }
     },
     "java": {
@@ -32,12 +32,12 @@
       "startAfter": "/* *** ODSATag: preorder *** */",
       "endBefore": "/* *** ODSAendTag: preorder *** */",
       "tags": {
-         "sig": 1,
-         "checknull": 2,
-         "visit": 3,
-         "visitleft": 4,
-         "visitright": 5,
-         "end": 6
+        "sig": 1,
+        "checknull": 2,
+        "visit": 3,
+        "visitleft": 4,
+        "visitright": 5,
+        "end": 6
       }
     },
     "java_generic": {
@@ -46,12 +46,12 @@
       "startAfter": "/* *** ODSATag: preorder *** */",
       "endBefore": "/* *** ODSAendTag: preorder *** */",
       "tags": {
-         "sig": 1,
-         "checknull": 2,
-         "visit": 3,
-         "visitleft": 4,
-         "visitright": 5,
-         "end": 6
+        "sig": 1,
+        "checknull": 2,
+        "visit": 3,
+        "visitleft": 4,
+        "visitright": 5,
+        "end": 6
       }
     }
   }

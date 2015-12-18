@@ -5,11 +5,15 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: collision resolution
+   :satisfies: hash deletion
    :topic: Hashing
 
 Deletion
 ========
+
+Deletion
+--------
 
 When deleting records from a hash table, there are two important
 considerations.
@@ -41,7 +45,7 @@ not in the table.
 However, the new record would actually be inserted into the slot of
 the first tombstone encountered.
 
-.. inlineav:: hashdelCON1 ss
+.. inlineav:: hashdelCON ss
    :output: show
 
 Here is a practice exercise.
@@ -89,6 +93,10 @@ Two possible solutions to this problem are
    Not only will this remove the tombstones, but it also provides an
    opportunity to place the most frequently accessed records into their
    home positions.
+
+
+Hashing Deletion Summary Questions
+----------------------------------
 
 Now here are some practice questions.
 

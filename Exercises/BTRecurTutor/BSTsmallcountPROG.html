@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html data-require="codemirror blockUI math math-format word-problems spin">
+  <head>
+    <title> Binary Search Tree Small Count Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #BSTsmallcountPROG .CodeMirror {
+        height: 200px;
+      }
+    </style>
+  </head>
+
+  <body data-height="750" data-width="950">
+
+    <div class="exercise">
+      <div class="exercise">
+        <div class="vars">
+          <var id="config">
+            (function(){ window.OpenPopKa = true;}())
+          </var>
+        </div>
+        <div class="problems">
+          <div id="BSTsmallcountPROGp"> <!-- Supresses answer box -->
+            <p class="problem">Given a BST, write a recursive function
+              BSTsmallcount that, given a key value, returns the number
+              of nodes having values less than the key.
+              Your function should visit as few nodes in the BST as possible.
+
+              <textarea  id="codeTextarea">
+int BSTsmallcount(BinNode root , int key) {
+// Your code goes between these lines
+
+
+// Your code goes between these lines
+}</textarea>
+            </p>
+            <div class="question"></div>
+            <div class="solution" data-type="custom">
+              <div class="guess"> [editor.getValue()] </div>
+              <div class="validator-function">
+                if (guess[0] != initEditor) {
+                  console.log(guess[0]);
+                  window.codeValue = guess[0];
+                  window.progexType= "BTRecurTutor";
+                  window.summexName= "BSTsmallcountPROG";
+                } else {
+                  return "";
+                }
+              </div>
+            </div>
+            <div class="hints">
+              <p>This is simpler than the "range" example.</p>
+              <p>If the root is greater than or equal to "key", then there is no
+                reason to visit the right subtree.</p>
+              <p>You always have to visit the left subtree. Even if the root has a
+                big value, something small could be in the left subtree.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </body>
+</html>

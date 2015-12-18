@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html data-require="codemirror math">
+  <head>
+    <title> Recursion Tracing Exercise: Function Error</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body  data-height="550" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RectMCQstringrecurp"> <!-- Supresses answer box -->
+          <p class="question">Consider the following code:
+            <textarea id="codeTextarea" name="codeTextarea">
+public void stringRecur(String s) {
+  if(s.length() < 15)
+    System.out.println(s);     
+  stringRecur(s + "*");
+}</textarea><br/>
+            When will method stringRecur terminate without error?
+          </p>
+          <div class="solution">It never works. It calls itself for
+            any input and goes into an infinite loop.</div> 
+          <ul class="choices" >
+	    <li>Only when the length of the input string is greater than or equal to 15.</li>	  	 
+	    <li>Only when an empty string is input.</li>
+            <li>For all string inputs.</li>
+            <li>Only when the length of the input string is less than 15.</li>
+          </ul>
+          <div class="hints">
+            <p>Does triggering the "if" statement affect whether a
+              recursive call is made?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

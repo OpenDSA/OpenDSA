@@ -1,9 +1,8 @@
 {
-  "translations" :{
-    "en": {
-    }
+  "translations": {
+    "en": {}
   },
-  "code" : {
+  "code": {
     "processing": {
       "url": "../../../SourceCode/Processing/General/ParPtrTree2.pde",
       "lineNumbers": false,
@@ -16,7 +15,7 @@
         "weight1": 7,
         "setroot2": 9,
         "weight2": 10
-     }
+      }
     }
   }
 }

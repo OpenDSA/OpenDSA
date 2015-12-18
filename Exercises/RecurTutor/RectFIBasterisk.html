@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html data-require="codemirror math">
+  <head>
+    <title> Recursion Tracing Exercise: Two Successive Recursive calls</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body data-height="550" data-width="950">
+    <div class="exercise">
+      <div class="vars" >
+        <var id="i"> randRange(1, 10)</var>
+        <var id="ANS">Math.pow(2, Math.floor(Math.log2(i))+1) - 1</var>
+      </div>
+      <div class="problems">
+        <div id="RectFIBasteriskp"> <!-- Supresses answer box -->
+          <p class="question">Consider the following function:
+            <textarea id="codeTextarea" name="codeTextarea">
+void asterisksPrinter(int i) {	
+  if (i > 1) {
+    asterisksPrinter(i / 2);	
+    asterisksPrinter(i / 2);	
+  }	
+  System.out.print("*");
+}</textarea>
+            How many asterisks are printed by the method call
+            <tt>asterisksPrinter(<var>i</var>)</tt>?<br/>
+            (Either write a number, or write "infinite recursion".)
+          </p>
+          <p class="solution" data-type="text"><var>ANS</var></p>
+          <div class="hints">
+            <p> Note that there are two recursive calls.</p>
+            <p>Don't forget that the print statement will be exectued
+              on the rollback for EACH of the recursive calls.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

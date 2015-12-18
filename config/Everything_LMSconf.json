@@ -1,0 +1,11 @@
+{
+  "odsa_username": "opendsa",
+  "odsa_password": "opendsa",
+  "target_LMS": "canvas",
+  "LMS_url": "https://vt.test.instructure.com",
+  "course_code": "Everything",
+  "access_token": "4511~eA0RZxE0Iqpo3lnM0VBEQrVPfQuqvCFtN7UNANCWK6Ionrx8wiAyVml7jkaMRjiT",
+  "LTI_consumer_key": "test",
+  "LTI_secret": "secret",
+  "LTI_url": "https://lti.cs.vt.edu"
+}

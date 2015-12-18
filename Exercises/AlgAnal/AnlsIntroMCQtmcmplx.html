@@ -1,51 +1,50 @@
 <!DOCTYPE html>
 <html data-require="math">
-<head>
-  <title> Analysis Introduction Exercise: Time Complexity</title>
-  <script src="../../lib/jquery.min.js"></script>
-  <script src="../../lib/jquery-ui.min.js"></script>
-<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-</head>
+  <head>
+    <title> Analysis Introduction Exercise: Time Complexity</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
 
-<body>
-<div class="exercise">
-  <div class="problems">
-    <div id="problem-type-or-description">
-      <p class="question"> Suppose that a particular algorithm has
-      time complexity <code> T(n) = 3 \times 2^n </code> and that executing
-      an implementation of it on a particular machine
-      takes <code>t </code> seconds for <code>n</code> inputs. Now
-      suppose that we are presented with a machine that is 64 times as
-      fast. How many inputs could we process on the new machine
-      in <code>t</code> seconds? </p>
-      <p class="solution"><var><code>n+6</code></var></p>
-      <ul class="choices">
-	<li><var><code>6</code></var></li>
-	<li><var><code>3</code></var></li>
-	<li><var><code>3n</code></var></li>
-	<li><var><code>6n</code></var></li>
-	<li><var><code>n^2</code></var></li>
-	<li><var><code>n+3</code></var></li>
-	<li><var><code>64</code></var></li>
-	<li><var><code>64n</code></var></li>
-      </ul>
-      <div class="hints">
-        <p>This problem has an exponential growth rate. The behavior
-          of an exponential growth rate is different from a polynomial
-          growth rate.</p>
-        <p>With a polynomial growth rate, a faster computer leads to a
-          new problem size that is bigger by some factor multiplied by
-          the original problem size that can done in the same amount
-          of time.</p>
-        <p>But with an exponential growth rate, we only get an
-          additive improvement.</p>
-        <p>Regardless of the value of <code>t</code>, the machine that
-          is 64 times faster can only do a problem size that is 6
-          larger in the same amount of time
-          (because <code>\log 64 = 6</code>).</p>
-      </div> 
+  <body>
+    <div class="exercise">
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="question"> Suppose that a particular algorithm has
+            time complexity <code> T(n) = 3 \times 2^n </code> and that executing
+            an implementation of it on a particular machine
+            takes <code>t </code> seconds for <code>n</code> inputs. Now
+            suppose that we are presented with a machine that is 64 times as
+            fast. How many inputs could we process on the new machine
+            in <code>t</code> seconds? </p>
+          <p class="solution"><code>n+6</code></p>
+          <ul class="choices">
+            <li><code>6</code></li>
+            <li><code>3</code></li>
+            <li><code>3n</code></li>
+            <li><code>6n</code></li>
+            <li><code>n^2</code></li>
+            <li><code>n+3</code></li>
+            <li><code>64</code></li>
+            <li><code>64n</code></li>
+          </ul>
+          <div class="hints">
+            <p>This problem has an exponential growth rate. The behavior
+              of an exponential growth rate is different from a polynomial
+              growth rate.</p>
+            <p>With a polynomial growth rate, a faster computer leads to a
+              new problem size that is bigger by some factor multiplied by
+              the original problem size that can done in the same amount
+              of time.</p>
+            <p>But with an exponential growth rate, we only get an
+              additive improvement.</p>
+            <p>Regardless of the value of <code>t</code>, the machine that
+              is 64 times faster can only do a problem size that is 6
+              larger in the same amount of time
+              (because <code>\log 64 = 6</code>).</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-</body>
+  </body>
 </html>

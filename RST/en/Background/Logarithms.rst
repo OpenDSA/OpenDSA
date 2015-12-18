@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
@@ -10,6 +10,9 @@
 
 Logarithms
 ==========
+
+Logarithms
+----------
 
 The :term:`logarithm` of base :math:`b` for value :math:`y` is the
 power to which :math:`b` is raised to get :math:`y`.
@@ -50,7 +53,7 @@ things in half, or store codes with binary bits.
 Whenever you see the notation :math:`\log n` in OpenDSA,
 either :math:`\log_2 n` is meant or else the term is being used
 asymptotically and so the actual base does not matter.
-Logarithms using any base other than two will show the base
+For logarithms using any base other than two, we will show the base
 explicitly.
 
 Logarithms have the following properties, for any positive values of
@@ -91,7 +94,6 @@ If :math:`\log_2 n = x`, then :math:`x` is the power to which you need
 to raise 2 to get back to :math:`n`.
 So of course, :math:`2^{\log n} = n` when the base of the log is 2.
 
-
 When discussing logarithms, exponents often lead to confusion.
 Property (3) tells us that :math:`\log n^2 = 2 \log n`.
 How do we indicate the square of the logarithm (as opposed to the
@@ -111,8 +113,10 @@ For example, :math:`\log^* 1024 = 4` because
 :math:`\log 3.33 \approx 1.74`,
 and :math:`\log 1.74 < 1`, which is a total of 4 log operations.
 
-Notes
------
+Here is some practice with manipulating logarithms.
+
+.. avembed:: Exercises/Background/MathLogSumm.html ka
+
 
 .. [#] These properties are the idea behind the slide rule.
        Adding two numbers can be viewed as joining two lengths

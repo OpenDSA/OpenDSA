@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html data-require="codemirror math">
+  <head>
+    <title> Recursion Tracing Exercise: Mystery Return</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+ 
+  <body  data-height="550" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="n">randRange(2, 6)</var>
+        <var id="a">randRange(0, 5)</var>
+        <var id="d">randRange(0, 5)</var>
+        <var id="ANS">(n-1)*d + a</var>
+      </div>
+      <div class="problems">
+        <div id="RectFIBmysterynadp"> <!-- Supresses answer box -->
+          <p class="question">Consider the following function:
+            <textarea id="codeTextarea" name="codeTextarea">
+public int mystery(int n, int a , int d) {
+  if(n == 1)
+    return a;
+  else
+    return d + mystery(n - 1, a, d);
+}</textarea>		
+            What value is returned by the
+            call <tt>mystery(<var>n</var>,<var>a</var>,<var>d</var>)</tt>?<br/>
+            (Either write a number, or write "infinite recursion".)
+          </p>
+          <p class="solution" data-type="text"><var>ANS</var></p>
+          <div class="hints">
+            <p>If you trace this function, you should find that d is
+              added to it self n-1 times. Then in the nth time (the
+              base case), a is added to the sum.</p>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

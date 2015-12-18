@@ -1,0 +1,73 @@
+<!--
+List-based dequeue mini-proficiency exercise.
+Written by Junyang Chen and Cliff Shaffer
+-->
+
+<!DOCTYPE html>
+<html data-require="jsav math LqueueDequeuePRO LinkList">
+  <head>
+    <title>List-based dequeue Proficiency Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #LqueueDequeuePRO .jsavcanvas{
+        height: 200px;
+      }
+      #LqueueDequeuePRO .bgColor{
+        font-size: 130%;
+        background-color: yellow;
+      }
+      #LqueueDequeuePRO .highlight{
+        background-color: yellow;
+      }
+    </style>
+  </head>
+
+  <body data-height="550" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="arr_size">randRange(1, 6)</var>
+        <var id="JSAV">lqueueDequeuePRO.initJSAV(arr_size)</var>
+      </div>
+
+      <div class="problems">
+        <div id="LqueueDequeuePROp"> <!-- Supresses answer box -->
+          <p class="problem">Dequeue a value from the linked queue.</p>
+          <div class="question">
+            <p>First move the correct value to the box shown below the
+              list. Then update any
+              necessary pointers. If a pointer variable needs to be set to
+              null, then click the pointer and then click on the "Make Null" button.</p>
+            <input id="reset" type="button" value="Reset" />
+            <input id="makenull" type="button" value="Make Null" />
+            <div id="LqueueDequeuePRO" class="jsavcanvas"></div>
+          </div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [lqueueDequeuePRO.userInput] </div>
+            <div class="validator-function">
+              if (!lqueueDequeuePRO.checkAnswer(arr_size) && !guess[0]) {
+                return ""; // User did not click, and correct answer is not
+                           // initial array state
+              } else { return lqueueDequeuePRO.checkAnswer(arr_size); }
+            </div>
+          </div>
+          <div class="hints">
+            <p>If there are no values on the list, then nothing can be
+              removed. So just click "Check Answer".</p>
+            <p>The value to be removed must be in the node following
+              the one that "front" is pointing to (that is, the second
+              node on the list). So click that value, then click the
+              "return" box below the list.</p>
+            <p>If there are more than two nodes on the list, then
+              the node that "front" points to should have its pointer
+              field changed to point to the third node.</p>
+            <p>But if there are only two nodes on the list, then the
+              front node's pointer field must be changed to null with
+              the "Make Null" button. And the "Rear" pointer needs to
+              point to the first node.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

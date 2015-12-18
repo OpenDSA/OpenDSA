@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "av_c1": "Inserting at the tail of the list is easy.",
       "av_c2": "We will append the value 23.",
@@ -8,7 +8,7 @@
       "av_c5": "The append operation therefore requires $\\Theta(1)$ time."
     }
   },
-  "code" : {
+  "code": {
     "processing": {
       "url": "../../../SourceCode/Processing/Lists/AList.pde",
       "lineNumbers": false,
