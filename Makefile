@@ -93,7 +93,7 @@ testLTI: min
 	python $(CONFIG_SCRIPT) config/testLTI.json $(opts)
 
 Test: min
-	python $(CONFIG_SCRIPT) config/Test.json -c Test_LMSconf
+	python $(CONFIG_SCRIPT) config/Test.json $(opts)
 
 TestLMS: min
 	python $(CONFIG_SCRIPT) config/Test.json -c True
