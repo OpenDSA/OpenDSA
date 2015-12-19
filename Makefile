@@ -93,7 +93,7 @@ testLTI: min
 	python $(CONFIG_SCRIPT) config/testLTI.json $(opts)
 
 Test: min
-	python $(CONFIG_SCRIPT) config/Test.json -b Test -c Test_LMSconf
+	python $(CONFIG_SCRIPT) config/Test.json -c Test_LMSconf
 
 TestLMS: min
 	python $(CONFIG_SCRIPT) config/Test.json -c True
@@ -117,7 +117,7 @@ CS3LMS: min
 	python $(CONFIG_SCRIPT) config/CS3.json -c True
 
 CS3vt: min
-	python $(CONFIG_SCRIPT) config/CS3.json -b CS3test -c CS3vtt_LMSconf
+	python $(CONFIG_SCRIPT) config/CS3.json $(opts)
 
 CS3in: min
 	python $(CONFIG_SCRIPT) config/CS3.json $(opts)
