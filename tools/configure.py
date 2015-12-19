@@ -463,7 +463,8 @@ def create_course(config):
     course_code = config['course_code']
     privacy_level = "public"  # should be public
     config_type = "by_url"
-    LTI_url = config["LTI_url"]
+    # LTI_url = config["LTI_url"]
+    LTI_url = config["module_origin"]
 
     print "\nCreating course in " + config.target_LMS + " LMS " + config.LMS_url + '\n'
     # init the request context
@@ -495,7 +496,7 @@ def create_course(config):
     results = external_tools.create_external_tool_courses(
         request_ctx, course_id, "OpenDSA-LTI",
         privacy_level, config["LTI_consumer_key"], config["LTI_secret"],
-        url=config["LTI_url"] + "/lti_tool")
+        url=LTI_url + "/lti_tool")
 
     # update the course name
     course_name = config.title
@@ -563,6 +564,7 @@ def configure(config_file_path, options):
     # Load and validate the configuration
     config = ODSA_Config(config_file_path, options.output_directory, options.LMS_config_file)
 
+    # print(json.dumpsconfig.__dict__)
     # Register book in OpenDSA-server and create course in target LMS
     if LMS_config_file is not None:
         create_course(config)
