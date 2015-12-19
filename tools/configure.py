@@ -359,7 +359,7 @@ def initialize_conf_py_options(config, slides):
     return options
 
 
-def create_chapter(request_ctx, config, course_id, course_code, module_id, module_position, chapter_name, chapter_obj, LTI_url, **kwargs):
+def create_chapter(request_ctx, config, course_id, book_name, module_id, module_position, chapter_name, chapter_obj, LTI_url, **kwargs):
     """ Create canvas module that corresponds to OpenDSA chapter """
 
     module_item_position = 1
@@ -407,7 +407,7 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
                             indexed_section_name,
                             assignment_submission_types="external_tool",
                             assignment_external_tool_tag_attributes={
-                                "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2) + "&gradeable_exercise=" + gradeable_exercise},
+                                "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2) + "&gradeable_exercise=" + gradeable_exercise},
                             assignment_points_possible=section_points,
                             assignment_description=section_name)
 
@@ -427,7 +427,7 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
                             course_id,
                             module_id,
                             'ExternalTool',
-                            module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2),
+                            module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2),
                             module_item_content_id=None,
                             module_item_title=indexed_section_name,
                             module_item_indent=1)
@@ -443,7 +443,7 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
                 course_id,
                 module_id,
                 'ExternalTool',
-                module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + course_code + "&short_name=" + module_name_url,
+                module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url,
                 module_item_content_id=None,
                 module_item_title=indexed_module_name,
                 module_item_indent=1)
@@ -459,6 +459,7 @@ def create_chapter(request_ctx, config, course_id, course_code, module_id, modul
 def create_course(config):
     """Create course on target LMS (e.g. canvas)"""
 
+    book_name = config['book_name']
     course_code = config['course_code']
     privacy_level = "public"  # should be public
     config_type = "by_url"
@@ -512,7 +513,7 @@ def create_course(config):
         results = modules.create_module(
             request_ctx, course_id, "Chapter " + str(module_position - 1) + " " + str(chapter), module_position=module_position)
         module_id = results.json().get("id")
-        t = threading.Thread(target=create_chapter, args=(request_ctx, config, course_id, course_code, module_id, module_position - 1, chapter_name, chapter_obj, LTI_url))
+        t = threading.Thread(target=create_chapter, args=(request_ctx, config, course_id, book_name, module_id, module_position - 1, chapter_name, chapter_obj, LTI_url))
         t.start()
         module_position += 1
 
@@ -555,14 +556,15 @@ def configure(config_file_path, options):
     global satisfied_requirements
 
     slides = options.slides
+    LMS_config_file = options.LMS_config_file
 
     print "Configuring OpenDSA, using " + config_file_path
 
     # Load and validate the configuration
-    config = ODSA_Config(config_file_path, options.output_directory, options.create_course)
+    config = ODSA_Config(config_file_path, options.output_directory, options.LMS_config_file)
 
     # Register book in OpenDSA-server and create course in target LMS
-    if options.create_course=='True':
+    if LMS_config_file is not None:
         create_course(config)
         register_book(config)
 
@@ -671,6 +673,7 @@ def configure(config_file_path, options):
         # Create the concept map definition file in _static html directory
         with codecs.open(config.book_dir + 'html/_static/GraphDefs.json', 'w', 'utf-8') as graph_defs_file:
             json.dump(cmap_map, graph_defs_file)
+
     make_lti(config)
 
 # Code to execute when run as a standalone program
@@ -680,9 +683,9 @@ if __name__ == "__main__":
                       dest="slides", action="store_true", default=False)
     parser.add_option("--dry-run", help="Causes configure.py to configure the book but stop before compiling it",
                       dest="dry_run", action="store_true", default=False)
-    parser.add_option("-o", help="Accepts a custom directory name instead of using the config file's name.",
+    parser.add_option("-b", help="Accepts a custom directory name instead of using the config file's name.",
                       dest="output_directory", default=None)
-    parser.add_option("-c", "--create_course", help="Causes configure.py to create course in target LMS", default=False)
+    parser.add_option("-c", "--LMS_config_file", help="Causes configure.py to create course in target LMS", default=None)
     (options, args) = parser.parse_args()
 
     if options.slides:

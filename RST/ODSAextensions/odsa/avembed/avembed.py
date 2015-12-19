@@ -260,8 +260,8 @@ class avembed(Directive):
       self.options['external'] = 'true'
       self.options['av_address'] = self.options['external_url']
 
-    if self.options['showhide'] != "none":
-      self.options['content'] = BUTTON_HTML % (self.options)
+    # if self.options['showhide'] != "none":
+    #   self.options['content'] = BUTTON_HTML % (self.options)
 
     res = CONTAINER_HTML % (self.options)
 

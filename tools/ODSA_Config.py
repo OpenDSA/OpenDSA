@@ -557,7 +557,8 @@ class ODSA_Config:
     def __setitem__(self, key, value):
         self.__dict__[key] = value
 
-    def __init__(self, config_file_path, output_directory=None, create_course=False):
+    # def __init__(self, config_file_path, output_directory=None, create_course=False):
+    def __init__(self, config_file_path, output_directory=None, LMS_config_file=None):
         """Initializes an ODSA_Config object by reading in the JSON config file, setting default values, and validating the configuration"""
 
         conf_data = read_conf_file(config_file_path)
@@ -571,14 +572,16 @@ class ODSA_Config:
         # Make sure the config file is valid
         validate_config_file(config_file_path, conf_data)
 
-        if create_course:
+        if LMS_config_file is not None:
             # Throw an error if the specified LMS config files doesn't exist
-            LMS_config = config_file_path[:-5] + '_LMSconf.json'
+            # LMS_config = config_file_path[:-5] + '_LMSconf.json'
 
-            LMS_conf_data = read_conf_file(LMS_config)
+            # LMS_conf_data = read_conf_file(LMS_config)
+            LMS_conf_data = read_conf_file(LMS_config_file)
 
             # validate LMS config data
-            validate_LMS_config_file(LMS_config, LMS_conf_data)
+            # validate_LMS_config_file(LMS_config, LMS_conf_data)
+            validate_LMS_config_file(LMS_config_file, LMS_conf_data)
 
             for field in LMS_conf_data:
                 self[field] = LMS_conf_data[field]
