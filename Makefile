@@ -96,10 +96,13 @@ testLTI: min
 	python $(CONFIG_SCRIPT) config/testLTI.json -c config/testLTI_LMSconf.json -b testLTI_HS2
 
 Test: min
-	python $(CONFIG_SCRIPT) config/Test.json $(opts)
+	python $(CONFIG_SCRIPT) config/Test.json
 
-TestLMS: min
-	python $(CONFIG_SCRIPT) config/Test.json -c True
+Testvt: min
+	python $(CONFIG_SCRIPT) config/Test.json -c config/Testvt_LMSconf.json -b Testvt
+
+Testin: min
+	python $(CONFIG_SCRIPT) config/Test.json -c config/Testin_LMSconf.json -b Testin
 
 RecurTutor: min
 	python $(CONFIG_SCRIPT) config/RecurTutor.json $(opts)
