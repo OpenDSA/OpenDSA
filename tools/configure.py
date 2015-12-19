@@ -94,6 +94,52 @@ def print_err(err_msg):
 #   - section_name - a string passed to modules for inclusion in the RST header that specifies which chapter / section the module belongs to
 
 
+# to read lti_config.json
+def read_conf_file(config_file_path):
+    """read configuration file as json"""
+
+    # Throw an error if the specified config files doesn't exist
+    if not os.path.exists(config_file_path):
+        print_err("INFO: course will be created for the first time")
+        return False
+
+    # Try to read the configuration file data as JSON
+    try:
+        with open(config_file_path) as config:
+            # Force python to maintain original order of JSON objects (or else the chapters and modules will appear out of order)
+            # conf_data = json.load(config, object_pairs_hook=collections.OrderedDict)
+            conf_data = json.load(config)
+    except ValueError, err:
+        # Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
+        msg = err.message
+        print_err(msg)
+
+        if msg == 'No JSON object could be decoded':
+            print_err('ERROR: %s is not a valid JSON file or does not use a supported encoding\n' % config_file_path)
+        else:
+            err = parse_error(msg).groupdict()
+            # cast int captures to int
+            for k, v in err.items():
+                if v and v.isdigit():
+                    err[k] = int(v)
+
+            with open(config_file_path) as config:
+                lines = config.readlines()
+
+            for ii, line in enumerate(lines):
+                if ii == err['lineno'] - 1:
+                    break
+
+            print_err("""
+    %s
+    %s^-- %s
+    """ % (line.replace("\n", ""), " " * (err['colno'] - 1), err['msg']))
+
+        # TODO: Figure out how to get (simple)json to accept different encodings
+        sys.exit(1)
+
+    return conf_data
+
 def process_section(config, section, index_rst, depth, current_section_numbers=[], section_name=''):
     # Initialize the section number for the current depth
     if depth >= len(current_section_numbers):
@@ -358,14 +404,43 @@ def initialize_conf_py_options(config, slides):
 
     return options
 
+def dict_compare(d1, d2):
+    d1_keys = set(d1.keys())
+    d2_keys = set(d2.keys())
+    intersect_keys = d1_keys.intersection(d2_keys)
+    added = d1_keys - d2_keys
+    removed = d2_keys - d1_keys
+    modified = {o : (d1[o], d2[o]) for o in intersect_keys if d1[o] != d2[o]}
+    same = set(o for o in intersect_keys if d1[o] == d2[o])
+    return added, removed, modified, same
 
-def create_chapter(request_ctx, config, course_id, book_name, module_id, module_position, chapter_name, chapter_obj, LTI_url, **kwargs):
-    """ Create canvas module that corresponds to OpenDSA chapter """
+
+def byteify(input):
+    if isinstance(input, dict):
+        return {byteify(key):byteify(value) for key,value in input.iteritems()}
+    elif isinstance(input, list):
+        return [byteify(element) for element in input]
+    elif isinstance(input, unicode):
+        return input.encode('utf-8')
+    else:
+        return input
+
+def create_chapter(request_ctx, config, course_id, book_name, module_id, module_position, chapter_name, chapter_obj, prev_chapter_obj, LTI_url, **kwargs):
+    """
+    Create canvas module that corresponds to OpenDSA chapter. Based on the difference between chapter_obj and prev_chapter_obj for each sectoin one of the following actions will be performed
+    'No action' for identical sections
+    'Update' for changed sections in config object
+    'Add' for new sections in config object
+    'Delete' for removed sections from config object
+
+    """
 
     module_item_position = 1
 
     for module in chapter_obj:
         module_obj = chapter_obj[str(module)]
+        prev_module_obj  = prev_chapter_obj.get(module)
+        # print(prev_module_obj)
         module_name = module_obj.get("long_name")
         module_name_url = module.split('/')[1] if '/' in module else module
 
@@ -433,7 +508,7 @@ def create_chapter(request_ctx, config, course_id, book_name, module_id, module_
                             module_item_indent=1)
                         item_id = results.json().get("id")
 
-                    config.chapters[chapter_name][str(module)]["sections"][section_name]["item_id"] = item_id
+                    config.chapters[chapter_name][str(module)]['sections'][section_name]['item_id'] = item_id
                 section_couter += 1
         else:
             indexed_module_name = str(module_position).zfill(2) + "." + str(module_item_position).zfill(2) + ".01 - " + module_name
@@ -448,7 +523,7 @@ def create_chapter(request_ctx, config, course_id, book_name, module_id, module_
                 module_item_title=indexed_module_name,
                 module_item_indent=1)
             item_id = results.json().get("id")
-            config.chapters[chapter_name][str(module)]["item_id"] = item_id
+            config.chapters[chapter_name][str(module)]['item_id'] = item_id
         module_item_position += 1
 
     # publish the module
@@ -459,44 +534,57 @@ def create_chapter(request_ctx, config, course_id, book_name, module_id, module_
 def create_course(config):
     """Create course on target LMS (e.g. canvas)"""
 
-    book_name = config['book_name']
-    course_code = config['course_code']
+    book_dir = config.book_dir
+
+    # load lti_config.json which will be used with config object to decide what action to perform for each section
+    # prev_config_data = byteify(read_conf_file(book_dir + '/lti_html/lti_config.json'))
+    prev_config_data = read_conf_file(book_dir + '/lti_html/lti_config.json')
+
+    # print(json.dumps(prev_config_data));
+
+    book_name = config.book_name
+    course_code = config.course_code
     privacy_level = "public"  # should be public
     config_type = "by_url"
     # LTI_url = config["LTI_url"]
-    LTI_url = config["module_origin"]
+    LTI_url = config.module_origin
 
     print "\nCreating course in " + config.target_LMS + " LMS " + config.LMS_url + '\n'
     # init the request context
-    request_ctx = RequestContext(config['access_token'], config['LMS_url'] + "/api")
+    request_ctx = RequestContext(config.access_token, config.LMS_url + "/api")
 
-    # get course_id
-    results = courses.list_your_courses(request_ctx,
-                                        'total_scores')
-    course_id = None
-    for i, course in enumerate(results.json()):
-        if course.get("course_code") == course_code:
-            course_id = course.get("id")
+    prev_chapters = {}
+    if prev_config_data:
+        # print(json.dumps(prev_config_data));
+        course_id = prev_config_data['course_id']
+        prev_chapters = prev_config_data.get("chapters")
+    else:
+        # get course_id
+        results = courses.list_your_courses(request_ctx, 'total_scores')
+        course_id = None
+        for i, course in enumerate(results.json()):
+            if course.get("course_code") == course_code:
+                course_id = course.get("id")
 
-    if course_id is None:
-        print_err('Course ' + course_code + ' was not found in '+ config.target_LMS + " LMS " + config.LMS_url)
-        sys.exit(1)
+        if course_id is None:
+            print_err('Course ' + course_code + ' was not found in '+ config.target_LMS + " LMS " + config.LMS_url)
+            sys.exit(1)
 
-    # Reset course
-    results = courses.reset_content(
-        request_ctx, course_id)
+        # Reset course
+        # results = courses.reset_content(
+        #     request_ctx, course_id)
 
-    # get new course_ud, becasue canvas change it after course reset
-    course_id = results.json()["id"]
+        # get new course_ud, becasue canvas change it after course reset
+        # course_id = results.json()["id"]
+
+        # configure the course external_tool
+        results = external_tools.create_external_tool_courses(
+            request_ctx, course_id, "OpenDSA-LTI",
+            privacy_level, config.LTI_consumer_key, config.LTI_secret,
+            url=LTI_url + "/lti_tool")
 
     # save course_id
     config['course_id'] = course_id
-
-    # configure the course external_tool
-    results = external_tools.create_external_tool_courses(
-        request_ctx, course_id, "OpenDSA-LTI",
-        privacy_level, config["LTI_consumer_key"], config["LTI_secret"],
-        url=LTI_url + "/lti_tool")
 
     # update the course name
     course_name = config.title
@@ -510,11 +598,12 @@ def create_course(config):
     for chapter in chapters:
         chapter_name = str(chapter)
         chapter_obj = chapters[str(chapter)]
+        prev_chapter_obj = prev_chapters.get(chapter, None)
         # OpenDSA chapters will map to canvas modules
         results = modules.create_module(
             request_ctx, course_id, "Chapter " + str(module_position - 1) + " " + str(chapter), module_position=module_position)
         module_id = results.json().get("id")
-        t = threading.Thread(target=create_chapter, args=(request_ctx, config, course_id, book_name, module_id, module_position - 1, chapter_name, chapter_obj, LTI_url))
+        t = threading.Thread(target=create_chapter, args=(request_ctx, config, course_id, book_name, module_id, module_position - 1, chapter_name, chapter_obj, prev_chapter_obj, LTI_url))
         t.start()
         module_position += 1
 
@@ -526,12 +615,12 @@ def register_book(config):
     headers = {'content-type': 'application/json'}
 
     json_data = {}
-    json_data["odsa_username"] = config.odsa_username
-    json_data["odsa_password"] = config.odsa_password
-    json_data["course_id"] = config.course_id
-    json_data["course_code"] = config.course_code
-    json_data["LMS_url"] = config.LMS_url
-    json_data["chapters"] = config.chapters
+    json_data['odsa_username'] = config.odsa_username
+    json_data['odsa_password'] = config.odsa_password
+    json_data['course_id'] = config.course_id
+    json_data['course_code'] = config.course_code
+    json_data['LMS_url'] = config.LMS_url
+    json_data['chapters'] = config.chapters
 
     print "\nRegistering Book in OpenDSA-server " + config.logging_server + '\n'
 

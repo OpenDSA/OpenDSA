@@ -496,6 +496,12 @@ def make_lti(config):
       path = os.path.join(dest_dir, name+".html")
       break_up_fragments(path, section_data['sections'], tuple(html_files)+ignore_files, url_index, config.book_name)
 
+  # save config object to use ut later for course update
+  config_file_path = os.path.join(dest_dir, '..', 'lti_html', 'lti_config.json')
+  with codecs.open(config_file_path, 'w', 'utf-8') as o:
+    o.write(json.dumps(config.__dict__))
+
+
 def main(argv):
   if len(argv) != 3:
     print "ERROR. Usage: %s <source directory> <destination directory>\n" % argv[0]
