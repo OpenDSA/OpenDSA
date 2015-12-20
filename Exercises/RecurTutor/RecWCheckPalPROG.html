@@ -11,7 +11,7 @@
     </style>
   </head>
 
-  <body data-height="750" data-width="950">
+  <body data-height="800" data-width="950">
     <div class="exercise">
       <div class="vars">
         <var id="config">
@@ -38,7 +38,7 @@ boolean checkPalindrome(String s) {
               if (guess[0] != initEditor) {
                 console.log(guess[0]);
                 window.codeValue = guess[0];
-                window.progexType= "recursion";
+                window.progexType= "RecurTutor";
                 window.summexName = "RecWCheckPalPROG";
               } else {
                 return "";
@@ -46,10 +46,14 @@ boolean checkPalindrome(String s) {
             </div>
           </div>
           <div class="hints">
-			  <p> If the word is one character then it is a  palindrome. </p>
-			  <p> If the first character is not the same as the last one then it is not a palindrome.</p>
-			  <p> if the first and last characters are the same then exclude them and consider the new string as the substring in between.</p>
-			  <p> The recursive call should keep checking until either the first and the last character in the substring differs or the substring is empty.</p>
+	    <p>A string of length zero or one is a palindrome.</p>
+	    <p>If the first character is not the same as the last,
+	      then it is not a palindrome.</p>
+	    <p>Be careful. s.charAt() returns a character,
+              but s.substring() returns a string. You cannot
+              compare strings with ==.</p>
+            <p>The recursive call should remove the first and last
+              characters.</p>
           </div>
         </div>
       </div>

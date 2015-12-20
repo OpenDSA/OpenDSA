@@ -91,10 +91,6 @@ the rest to some helper, as in this example.
 .. inlineav:: recurIntroDelegateCON ss
    :output: show  
 
-
-Taking a Closer Look
---------------------
-
 Let's look deeper into the details of what your friend does when
 you delegate the work.
 (Note that we show  you this process once now,

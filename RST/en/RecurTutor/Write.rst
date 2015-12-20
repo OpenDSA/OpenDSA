@@ -14,8 +14,8 @@
 Writing a recursive function
 ============================
 
-The Big Picture
----------------
+Writing a recursive function
+----------------------------
 
 Solving a "big" problem recursively means to solve one or more smaller
 versions of the problem, and using those solutions of the smaller
@@ -34,9 +34,6 @@ Here are the basic four steps that you need to write any recursive function.
 .. inlineav:: recurWriteStepsCON ss
    :output: show  
 
-
-Some Different Approaches to Writing the Sum Function
------------------------------------------------------
 
 Now le't see some different ways that we could write ``Sum`` recursively.
 

@@ -26,7 +26,7 @@
             For example, sumOfDigits(1234) returns 1+2+3+4 = 10.<br/>
             <textarea id="codeTextarea" name="codeTextarea">
 int sumOfDigits(int number) {
-  if (number / 10 == 0) {
+  if (number < 10) {
     return number;
   return <<Missing a Recursive case action>>
 }</textarea>
@@ -46,7 +46,9 @@ int sumOfDigits(int number) {
             </div>
           </div>
           <div class="hints">
-			  <p>Every time the recursive call is executed the number of digits that should be returned should be incremented by one and a digit should be dropped of "number".</p>
+	    <p>Use mod (%) to get the value of the last digit.</p>
+            <p>Return the value of the last digit plus the value of
+              recursive call</p> 
           </div>
         </div>
       </div>

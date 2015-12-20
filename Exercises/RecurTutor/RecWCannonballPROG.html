@@ -11,7 +11,7 @@
     </style>
   </head>
 
-  <body data-height="750" data-width="950">
+  <body data-height="850" data-width="950">
     <div class="exercise">
       <div class="vars">
         <var id="config">
@@ -41,7 +41,7 @@ int Cannonball(int height){
               if (guess[0] != initEditor) {
                 console.log(guess[0]);
                 window.codeValue = guess[0];
-                window.progexType= "recursion";
+                window.progexType= "RecurTutor";
                 window.summexName = "RecWCannonballPROG";
               } else {
                 return "";
@@ -49,9 +49,10 @@ int Cannonball(int height){
             </div>
           </div>
           <div class="hints">
-			  <p> If the cannonball pyramid of zero height then it has no cannonballs. </p>
-			  <p> A level i has a number of balls of i squared. </p>
-			  <p> The recursive case action will simply accumlate the number of cannonballs at all heights starting from 0 to "height". </p>
+	    <p>A cannonball pyramid of zero height has no cannonballs.</p>
+	    <p>Level i <code>i^2</code> cannonballs.</p>
+	    <p>Simply add up the number of balls at each level, using
+	      recursion.</p>
           </div>
         </div>
       </div>
