@@ -196,9 +196,9 @@
       "RecurTutor/WritingEx": {
         "long_name": "Code Writing Exercises",
         "sections": {
-          "Programming Exercise: Paren Balance": {
-            "RecWIsbalancedPROG": {
-              "long_name": "Recursion Code Writing Exercise: Is Balanced",
+          "Programming Exercise: Cannonballs": {
+            "RecWCannonballPROG": {
+              "long_name": "Recursion Code Writing Exercise: Cannon Ball",
               "required": true,
               "points": 1.0,
               "threshold": 1.0,
@@ -223,27 +223,9 @@
               "showhide": "Show"
             }
           },
-          "Programming Exercise: Cannonballs": {
-            "RecWCannonballPROG": {
-              "long_name": "Recursion Code Writing Exercise: Cannon Ball",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
-          },
           "Programming Exercise: Pascal's Triangle": {
             "RecWPascalPROG": {
               "long_name": "Recursion Code Writing Exercise: Pascal",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
-          },
-          "Programming Exercise: Stack Reversal": {
-            "RecWStackRevPROG": {
-              "long_name": "Recursion Code Writing Exercise: Stack Reversal",
               "required": true,
               "points": 1.0,
               "threshold": 1.0,

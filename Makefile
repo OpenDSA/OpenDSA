@@ -105,7 +105,7 @@ Testin: min
 	python $(CONFIG_SCRIPT) config/Test.json -c config/Testin_LMSconf.json -b Testin
 
 RecurTutor: min
-	python $(CONFIG_SCRIPT) config/RecurTutor.json
+	python $(CONFIG_SCRIPT) config/RecurTutor.json -b RecurTutor
 
 RecurTutorvt: min
 	python $(CONFIG_SCRIPT) config/RecurTutor.json -c config/RecurTutorvt_LMSconf.json -b RecurTutorvt

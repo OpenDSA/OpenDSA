@@ -11,14 +11,10 @@
 Writing Practice Exercises
 ==========================
 
-Programming Exercise: Paren Balance
------------------------------------
+Programming Exercise: Cannonballs
+---------------------------------
 
-Here is a series of code writing exercises.
-For each one, you will write a complete recursive function, using the
-given function signature.
-
-.. avembed:: Exercises/RecurTutor/RecWIsbalancedPROG.html ka
+.. avembed:: Exercises/RecurTutor/RecWCannonballPROG.html ka
 
 
 Programming Exercise: Palindrome
@@ -33,19 +29,7 @@ Programming Exercise: Reverse String
 .. avembed:: Exercises/RecurTutor/RecWRevStringPROG.html ka
 
 
-Programming Exercise: Cannonballs
----------------------------------
-
-.. avembed:: Exercises/RecurTutor/RecWCannonballPROG.html ka
-
-
 Programming Exercise: Pascal's Triangle
 ---------------------------------------
 
 .. avembed:: Exercises/RecurTutor/RecWPascalPROG.html ka
-
-
-Programming Exercise: Stack Reversal
-------------------------------------
-
-.. avembed:: Exercises/RecurTutor/RecWStackRevPROG.html ka
