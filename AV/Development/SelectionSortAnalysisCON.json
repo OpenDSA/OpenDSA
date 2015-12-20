@@ -9,7 +9,9 @@
 	  "Slide 16": "At $i=2$",
 	  "Slide 20": "At $i=3$",
 	  "Slide 23": "At $i=4$",
-	  "Slide 24": "Thus, the number of comparisons is determined by the equation $\\displaystyle\\sum_{i=0}^{n-1}i = \\frac{n(n-1)}{2}$  and hence, the number of comparisons is $\\theta(n^2)$, while the number of swaps is $\\theta(n)$"
+	  "Slide 24": "Thus, the number of comparisons is determined by the equation $\\displaystyle\\sum_{i=0}^{n-1}i = \\frac{n(n-1)}{2}$  and hence, the number of comparisons is $\\theta(n^2)$, while the number of swaps is $\\theta(n)$",
+    "lab1": "<b><u>Number of Comparisons</u></b>",
+    "lab2": "<b><u>Number of Swaps</u></b>"
     }
   },
   "code" : {

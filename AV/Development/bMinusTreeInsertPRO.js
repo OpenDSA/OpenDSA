@@ -1,10 +1,10 @@
-/* global ODSA, PARAMS, ClickHandler */
-(function ($) {
+(function() {
   "use strict";
   // AV variables
   var insertValues,
       tree,
       stack,
+      exercise,
       nodeSize = parseInt(PARAMS.nodesize || 3, 10),
       insertSize = Math.min(20, parseInt(PARAMS.insertsize || nodeSize * 4, 10)),
 
@@ -29,7 +29,6 @@
   av.code(code, codeOptions);
 
   function initialize() {
-
     av.container.find(".jsavcanvas").css("min-height", 450);
 
     // generate values for the stack
@@ -49,11 +48,11 @@
       tree.clear();
     }
     //create binary tree
-    tree = new av.ds.arraytree({nodesize: nodeSize});
+    tree = av.ds.arraytree({nodesize: nodeSize});
 
     tree.layout();
 
-    tree.click(function (index) {
+    tree.click(function() {
       if (isFull(this)) {
         // click on non-leaf node -> split this node
         splitNode(this);
@@ -67,25 +66,26 @@
   }
 
   function modelSolution(jsav) {
-    var modelStack = jsav.ds.stack(insertValues, { center: true });
+    var modelStack = jsav.ds.stack(insertValues, {center: true});
     modelStack.layout();
-    var modelTree = jsav.ds.arraytree(3);
+    var modelTree = jsav.ds.arraytree({nodesize: nodeSize});
     modelTree.layout();
 
     jsav.displayInit();
 
+    var val;
     function keyFilter(v) { return v && v <= val; }
-    function checkAndSplit(node) {
-      if (isFull(node)) {
+    function checkAndSplit(n) {
+      if (isFull(n)) {
         jsav.umsg(interpret("av_ms_split"));
-        splitNode(node);
+        splitNode(n);
         return true;
       }
       return false;
     }
     while (modelStack.size()) {
       // the value we are inserting
-      var val = modelStack.first().value();
+      val = modelStack.first().value();
       jsav.umsg(interpret("av_ms_search"), {fill: {val: val}});
       // find the node
       var node = modelTree.root();
@@ -109,14 +109,14 @@
       // insert the value into the found node
       jsav.umsg(interpret("av_ms_insert"), {fill: {val: val}});
       insertValueToNode(node, modelStack);
-      if (node !== tree.root()) {
+      if (node !== modelTree.root()) {
         node.removeClass("ms-highlight");
       }
     }
 
     return modelTree;
   }
-  
+
   //generate values without duplicates
   function generateValues(n, min, max) {
     var arr = [];
@@ -131,34 +131,33 @@
   }
 
   function isFull(node) {
-    return node.value().every(function (v) { return typeof v === "number"; });
+    return node.value().every(function(v) { return typeof v === "number"; });
   }
 
   function splitNode(node) {
-    var tree = node.container,
-        av = tree.jsav,
-        nodeSize = tree.options.nodesize,
-        parent = node.parent(),
+    var currentTree = node.container,
+        jsav = currentTree.jsav,
+        parentNode = node.parent(),
         arr = node.value(),
         sliceInd = Math.ceil(nodeSize / 2),
         left = arr.slice(0, sliceInd),
         right = arr.slice(sliceInd);
     // if there is no parent we are in the root node
     // -> create new root node and set 'node' as child of new root
-    if (!parent) {
-      parent = tree.newNode(new Array(nodeSize).join(",").split(","));
-      tree.root(parent, {hide: false});
-      parent.addChild(node);
+    if (!parentNode) {
+      parentNode = currentTree.newNode(new Array(nodeSize).join(",").split(","));
+      currentTree.root(parentNode, {hide: false});
+      parentNode.addChild(node);
     }
     // create a new node and give the right half to it
-    var newNode = tree.newNode(right, parent),
-        parentChildIndex = parent.childnodes.indexOf(node),
-        newParentValues = parent.value().slice(0, -1),
-        newParentChildNodes = parent.childnodes.slice(0);
+    var newNode = currentTree.newNode(right, parentNode),
+        parentChildIndex = parentNode.childnodes.indexOf(node),
+        newParentValues = parentNode.value().slice(0, -1),
+        newParentChildNodes = parentNode.childnodes.slice(0);
     // add the new node to the parents child node array
     newParentChildNodes.splice(parentChildIndex + 1, 0, newNode);
     // set the new child nodes to the parent
-    parent._setchildnodes(newParentChildNodes);
+    parentNode._setchildnodes(newParentChildNodes);
     // if the split node was a non-leaf node
     if (node.childnodes.length) {
       // give half of the child nodes to the new node
@@ -166,8 +165,8 @@
           leftChildren = node.childnodes.slice(0, childSliceInd),
           rightChildren = node.childnodes.slice(childSliceInd);
       node._setchildnodes(leftChildren);
-      rightChildren.forEach(function (node) {
-        node.parent(newNode);
+      rightChildren.forEach(function(n) {
+        n.parent(newNode);
       });
       newNode._setchildnodes(rightChildren);
       // give new values for the parent node
@@ -181,39 +180,37 @@
     // give the left half of the values to node
     node.value(left);
     // set new values for the parent node
-    parent.value(newParentValues);
+    parentNode.value(newParentValues);
     // position the new node on top of node
     newNode.element.position({of: node.element});
-    // move ms-highlight class to parent node if it exists
+    // remove ms-highlight class if it exists
     if (node.hasClass("ms-highlight")) {
       node.removeClass("ms-highlight");
-      node.parent().addClass("ms-highlight");
     }
     // call the layout function
-    tree.layout();
-    av.gradeableStep();
+    currentTree.layout();
+    jsav.gradeableStep();
   }
 
-  function insertValueToNode(node, stack) {
-    if (!stack.size()) { return; } // return if stack is empty
-    var newValues = node.value().slice(0, -1).concat(stack.first().value()).sort(function (a, b) {
-      if (a === "") { a = 1000; }
-      if (b === "") { b = 1000; }
+  function insertValueToNode(node, insertStack) {
+    if (!insertStack.size()) { return; } // return if stack is empty
+    var newValues = node.value().slice(0, -1).concat(insertStack.first().value()).sort(function(a, b) {
+      if (a === "") { return 1; }
+      if (b === "") { return -1; }
       return a - b;
     });
     node.value(newValues);
-    stack.removeFirst();
-    stack.layout();
-    stack.jsav.gradeableStep();
+    insertStack.removeFirst();
+    insertStack.layout();
+    insertStack.jsav.gradeableStep();
   }
 
   // create exercise and reset it
-  var exercise = av.exercise(modelSolution, initialize, {
+  exercise = av.exercise(modelSolution, initialize, {
     feedback: "atend",
     modelDialog: {
       width: 750
     }
   });
   exercise.reset();
-
-}(jQuery));
+})();

@@ -18,6 +18,10 @@
   -o-transform: rotate(90deg);
   transform: rotate(90deg);
 }
+.largeLabel{
+  font-size: 16px; 
+  text-align: center;
+}
 
 
 

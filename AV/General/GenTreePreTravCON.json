@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "av_c1": "Consider searching for the record with key value 32 in this tree. We call the findhelp method with a pointer to the BST root (the node with key value 37).",
       "av_c2": "Check what rt is pointing to. It is not null.",
@@ -13,25 +13,25 @@
       "av_c13": "Pop the recursion, now rt is back to the node with value 24.",
       "av_c14": "Pop the recursion, now rt is back to the node with value 37.",
       "av_c15": "Pop the recursion one final time to return the record with value 32 back to the original caller of findhelp.",
-       "av_c16": "Check the value at the root. We find that it is not greater than what we are looking for.",
-       "av_c17": "Check the value at the root. We find that it is not equal to what we are looking for."
+      "av_c16": "Check the value at the root. We find that it is not greater than what we are looking for.",
+      "av_c17": "Check the value at the root. We find that it is not equal to what we are looking for."
     }
   },
-  "code" : {
+  "code": {
     "processing": {
       "url": "../../../SourceCode/Processing/General/GenTree.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: GenTreePrint *** */",
       "endBefore": "/* *** ODSAendTag: GenTreePrint *** */",
       "tags": {
-         "sig": 2,
-         "processNode": 3,
-         "checkLeaf": 4,
-         "leftChild": 5,
-         "checkNull": 6,
-         "processChild": 7,
-         "getNextSibling": 8,
-         "end": 9
+        "sig": 2,
+        "processNode": 3,
+        "checkLeaf": 4,
+        "leftChild": 5,
+        "checkNull": 6,
+        "processChild": 7,
+        "getNextSibling": 8,
+        "end": 9
       }
     }
   }

@@ -1,10 +1,11 @@
 #container {
-  width: 850px;
+  width: 900px;
   height: 750px;
 }
 
 .jsavcontainer {
-  height: 620px;
+  height: 670px;
+  width: 870px;
 }
 
 .jsavlist .jsavedge {
@@ -17,9 +18,14 @@
   padding-left: 0;
 }
 
+.jsavcanvas {
+  height: 520px;
+  width: 870px;
+}
+
 .jsavcanvas > svg {
-  height: 550px;
-  width: 835px;
+  height: 520px;
+  width: 870px;
 }
 
 /* We make the arrays bigger than the OpenDSA stylesheet standard

@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "av_beginning": "Inorder traversal begins.",
       "av_nullcheck": "Check to see if node is null.",
@@ -13,19 +13,19 @@
       "av_inorderdone": "Finished the inorder traversal on A."
     }
   },
-  "code" : {
+  "code": {
     "processing": {
       "url": "../../../SourceCode/Processing/Binary/Traverse.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: inorder *** */",
       "endBefore": "/* *** ODSAendTag: inorder *** */",
       "tags": {
-         "sig": 1,
-         "checknull": 2,
-         "visitleft": 3,
-         "visit": 4,
-         "visitright": 5,
-         "end": 6
+        "sig": 1,
+        "checknull": 2,
+        "visitleft": 3,
+        "visit": 4,
+        "visitright": 5,
+        "end": 6
       }
     },
     "java": {
@@ -34,12 +34,12 @@
       "startAfter": "/* *** ODSATag: inorder *** */",
       "endBefore": "/* *** ODSAendTag: inorder *** */",
       "tags": {
-         "sig": 1,
-         "checknull": 2,
-         "visitleft": 3,
-         "visit": 4,
-         "visitright": 5,
-         "end": 6
+        "sig": 1,
+        "checknull": 2,
+        "visitleft": 3,
+        "visit": 4,
+        "visitright": 5,
+        "end": 6
       }
     },
     "java_generic": {
@@ -48,12 +48,12 @@
       "startAfter": "/* *** ODSATag: inorder *** */",
       "endBefore": "/* *** ODSAendTag: inorder *** */",
       "tags": {
-         "sig": 1,
-         "checknull": 2,
-         "visitleft": 3,
-         "visit": 4,
-         "visitright": 5,
-         "end": 6
+        "sig": 1,
+        "checknull": 2,
+        "visitleft": 3,
+        "visit": 4,
+        "visitright": 5,
+        "end": 6
       }
     }
   }

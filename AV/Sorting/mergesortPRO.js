@@ -1,6 +1,36 @@
-"use strict";
 /*global alert: true, console: true, ODSA */
-$(document).ready(function () {
+$(document).ready(function() {
+  "use strict";
+
+  // Load the interpreter created by odsaAV.js
+  var config = ODSA.UTILS.loadConfig();
+  var interpret = config.interpreter;
+
+  // Variables used by "setPosition()"
+  var canvasWidth = $("#container").width();     // The width of the display
+  var rowHeight = 70;        // Space required for each row to be displayed
+  var blockWidth = 32;       // The width of an array element
+
+  // Variables used to keep track of the index and array of
+  // currently selected element
+  var mergeValueIndex = -1;
+  var mergeValueArr = null;
+
+  // Settings for the AV
+  var settings = config.getSettings();
+
+  var arraySize = 10,
+      initialArray = [],
+      userAnswerValue = [],
+      userAnswerDepth = [],
+      av = new JSAV($(".avcontainer"), {settings: settings}),
+      exercise;
+
+  // Stores the various JSAV arrays created for the user to enter their solution
+  var arrays = {};
+
+  av.recorded();   // we are not recording an AV with an algorithm
+
   // Process help button: Give a full help page for this activity
   function help() {
     window.open("mergesortHelpPRO.html", "helpwindow");
@@ -38,7 +68,7 @@ $(document).ready(function () {
 
     // Dynamically create arrays
     arrays = {};
-    initArrays(0, initialArray.length - 1, 1, 1, userAnswerDepth);
+    initArrays(0, initialArray.length - 1, 1, 1, userAnswerDepth, arrays, av);
 
     // Reset the merge variables
     resetMergeVars();
@@ -58,28 +88,34 @@ $(document).ready(function () {
   // Create the model solution, which is used for grading the exercise
   // - We must track the value at each horizontal position and vertical
   //   position (depth) to ensure each element is sorted in the correct order
-  function modelSolution(av) {
-    var modelArr = av.ds.array(initialArray, {indexed: true, layout: "array"});
+  function modelSolution(jsav) {
     var depth = 1;
     var modelDepthArr = [];
-    initDepth(0, initialArray.length - 1, depth, modelDepthArr);
-    modelDepthArr = av.ds.array(modelDepthArr,
-                                {indexed: true, layout: "array"});
-    av.displayInit();
+    var modelArrays = {};
+    initArrays(0, initialArray.length - 1, depth, 1, modelDepthArr, modelArrays, jsav);
+    var modelArr = jsav.ds.array(initialArray, {
+      indexed: true,
+      visible: false
+    });
+    modelDepthArr = jsav.ds.array(modelDepthArr, {
+      indexed: true,
+      visible: false
+    });
+    jsav.displayInit();
 
     var temp = [];
-    mergeSort(av, modelArr, temp, modelDepthArr, 0,
-              initialArray.length - 1, depth);
-    modelDepthArr.element.css({"top": rowHeight + "px"});
+    mergeSort(jsav, modelArr, temp, modelDepthArr, 0,
+              initialArray.length - 1, depth, 1, modelArrays);
     return [modelArr, modelDepthArr];
   }
 
   // Dynamically and recursively create the necessary arrays
   // Initialize all single element arrays to contain the appropriate
   // numbers from the initialArray and all other arrays to be empty
-  function initArrays(left, right, level, column) {
+  function initArrays(left, right, level, column, depthArray, container, jsav) {
     var numElements = right - left + 1;
     var contents = new Array(numElements);
+    var isModelAnswer = jsav !== av;
 
     // Set the contents for single element arrays
     if (numElements === 1) {
@@ -87,11 +123,14 @@ $(document).ready(function () {
     }
 
     // Dynamically create and position arrays
-    var arr = av.ds.array(contents, {indexed: true, center: false,
+    var arr = jsav.ds.array(contents, {indexed: true, center: false,
                                      layout: "array"});
 
     var id = "array_" + level + "_" + column;
-    arrays[id] = arr;
+    if (isModelAnswer) {
+      id = "model_" + id;
+    }
+    container[id] = arr;
 
     // Set array attributes
     arr.element.attr("id", id);
@@ -99,18 +138,20 @@ $(document).ready(function () {
     setPosition(arr, level, column);
 
     // Attach the click handler to the array
-    arr.click(function (index) { clickHandler(this, index); });
+    if (!isModelAnswer) { // don't attach click handlers for model answer
+      arr.click(function(index) { clickHandler(this, index); });
+    }
 
     if (left === right) {
-      userAnswerDepth[left] = level;
+      depthArray[left] = level;
       return;
     }
 
     var mid = Math.floor((left + right) / 2);
     // Recurse, passing the appropriate arguments necessary for
     // setPosition() to the next function call
-    initArrays(left, mid, level + 1, 2 * column - 1, userAnswerDepth);
-    initArrays(mid + 1, right, level + 1, 2 * column, userAnswerDepth);
+    initArrays(left, mid, level + 1, 2 * column - 1, depthArray, container, jsav);
+    initArrays(mid + 1, right, level + 1, 2 * column, depthArray, container, jsav);
   }
 
   // Calculate and set the appropriate "top" and "left" CSS values based
@@ -133,31 +174,16 @@ $(document).ready(function () {
     // center value of each array we calculate the length each array
     // (blockWidth *  arr.size()), divide this value in half and
     // subtract it from the center line to find the left value
-    var left = (canvasWidth / (2 * numArrInRow)) * (2 * column - 1) -
-               (blockWidth * arr.size() / 2);
-    var top = rowHeight * (level - 1);
+    var elementLeft = (canvasWidth / (2 * numArrInRow)) * (2 * column - 1) -
+                      (blockWidth * arr.size() / 2),
+        elementTop = rowHeight * (level - 1);
 
     // Set the top and left values so that all arrays are spaced properly
-    arr.element.css({"left": left, "top": top});
-  }
-
-  // Initialize the modelDepthArray by calculating the starting depth
-  // of each number
-  function initDepth(l, r, depth, depthArray) {
-    if (l === r) {
-      depthArray[l] = depth;
-      return;
-    }
-
-    var mid = Math.floor((l + r) / 2);
-    // Recurse, passing the appropriate arguments necessary for
-    // setPosition() to the next function call
-    initDepth(l, mid, depth + 1, depthArray);
-    initDepth(mid + 1, r, depth + 1, depthArray);
+    arr.element.css({left: elementLeft, top: elementTop});
   }
 
   // Generate the model answer (called by modelSolution())
-  function mergeSort(av, array, temp, depthArray, l, r, depth) {
+  function mergeSort(jsav, modelArray, temp, depthArray, l, r, depth, column, container) {
     // Record the depth and return when list has one element
     if (l === r) {
       depthArray.value(l, depth);
@@ -168,35 +194,49 @@ $(document).ready(function () {
     var mid = Math.floor((l + r) / 2);
 
     // Mergesort first half
-    mergeSort(av, array, temp, depthArray, l, mid, depth + 1);
+    mergeSort(jsav, modelArray, temp, depthArray, l, mid, depth + 1, column * 2 - 1, container);
     // Mergesort second half
-    mergeSort(av, array, temp, depthArray, mid + 1, r, depth + 1);
+    mergeSort(jsav, modelArray, temp, depthArray, mid + 1, r, depth + 1, column * 2, container);
 
     // Copy subarray into temp
     for (var i = l; i <= r; i++) {
-      temp[i] = array.value(i);
+      temp[i] = modelArray.value(i);
     }
 
     // Do the merge operation back to the array
     var i1 = l;
     var i2 = mid + 1;
+    var currArray = container["model_array_" + depth + "_" + column];
+    var lArray = container["model_array_" + (depth + 1) + "_" + (column * 2 - 1)];
+    var rArray = container["model_array_" + (depth + 1) + "_" + (column * 2)];
     for (var curr = l; curr <= r; curr++) {
       if (i1 === mid + 1) {          // Left sublist exhausted
-        array.value(curr, temp[i2++]);
+        jsav.effects.moveValue(rArray, i2 - mid - 1, currArray, curr - l);
+        modelArray.value(curr, temp[i2++]);
       } else if (i2 > r) {             // Right sublist exhausted
-        array.value(curr, temp[i1++]);
+        jsav.effects.moveValue(lArray, i1 - l, currArray, curr - l);
+        modelArray.value(curr, temp[i1++]);
       } else if (temp[i1] < temp[i2]) { // Get smaller
-        array.value(curr, temp[i1++]);
+        jsav.effects.moveValue(lArray, i1 - l, currArray, curr - l);
+        modelArray.value(curr, temp[i1++]);
       } else {
-        array.value(curr, temp[i2++]);
+        jsav.effects.moveValue(rArray, i2 - mid - 1, currArray, curr - l);
+        modelArray.value(curr, temp[i2++]);
+      }
+
+      if (i1 === mid + 1) {
+        lArray.hide();
+      }
+      if (i2 > r) {
+        rArray.hide();
       }
 
       // Update the depth of each number being merged
       depthArray.value(curr, depth);
-      av.stepOption("grade", true);
-      av.step();
+      jsav.stepOption("grade", true);
+      jsav.step();
     }
-    return array;
+    return;
   }
 
   // Fixstate method for continuous feedback/fix mode
@@ -320,12 +360,10 @@ $(document).ready(function () {
       mergeValueArr = arr;
       mergeValueIndex = index;
       return;
-    }
-    else if (arr === mergeValueArr && index === mergeValueIndex) {
+    } else if (arr === mergeValueArr && index === mergeValueIndex) {
       // Deselect the currently selected element
       resetMergeVars();
-    }
-    else if (arr !== mergeValueArr) { // Decide how to handle selected element
+    } else if (arr !== mergeValueArr) { // Decide how to handle selected element
       // Don't let the user overwrite a merged element
       if (arr.value(index) !== "") { return; }
       var arrLevel = getLevel(arr);
@@ -416,43 +454,18 @@ $(document).ready(function () {
     return [level, column, arrOffset];
   }
 
-
-  //////////////////////////////////////////////////////////////////
-  // Start processing here
-  //////////////////////////////////////////////////////////////////
-  // Load the interpreter created by odsaAV.js
-  var config = ODSA.UTILS.loadConfig();
-  var interpret = config.interpreter;
-
-  // Variables used by "setPosition()"
-  var canvasWidth = $("#container").width();     // The width of the display
-  var rowHeight = 70;        // Space required for each row to be displayed
-  var blockWidth = 32;       // The width of an array element
-
-  // Variables used to keep track of the index and array of
-  // currently selected element
-  var mergeValueIndex = -1;
-  var mergeValueArr = null;
-
-  // Settings for the AV
-  var settings = config.getSettings();
-
-  var arraySize = 10,
-      initialArray = [],
-      userAnswerValue = [],
-      userAnswerDepth = [],
-      av = new JSAV($(".avcontainer"), {settings: settings});
-
-  // Stores the various JSAV arrays created for the user to enter their solution
-  var arrays = {};
-
-  av.recorded();   // we are not recording an AV with an algorithm
-
   // Using continuous mode slows the exercise down considerably
   // (probably because it has to check that all the arrays are correct)
-  var exercise = av.exercise(modelSolution, initialize,
-                             {compare: [{"class": "jsavhighlight"}, {}],
-                              controls: $(".jsavexercisecontrols"),
-                              fix: fixState});
+  exercise =
+    av.exercise(
+      modelSolution,
+      initialize,
+      {
+        compare: [{class: "jsavhighlight"}, {}],
+        controls: $(".jsavexercisecontrols"),
+        fix: fixState,
+        modelDialog: {width: 780}
+      }
+    );
   exercise.reset();
 });

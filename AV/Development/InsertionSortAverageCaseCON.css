@@ -1,3 +1,11 @@
 #InsertionSortAverageCaseCON{
   height: 500px;
 }
+.largeLabel{
+	font-size: 20px;
+	text-align: center;
+}
+.mediumLabel{
+	font-size: 16px;
+	text-align: left;
+}

@@ -1,11 +1,11 @@
 /*global ODSA */
-"use strict";
 // Written by Mohammed Farghally and Cliff Shaffer
 // Insertion Sort Worst Case
-$(document).ready(function () {
+$(document).ready(function() {
+  "use strict";
   var av_name = "InsertionSortWorstCaseCON";
   // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
@@ -37,21 +37,21 @@ $(document).ready(function () {
   // Slide 5
   av.umsg(interpret("Slide 5"));
   pseudo.unhighlight("loop2");
-  arr = av.ds.array([6, 5, 4, 3, 2, 1], {"left": 10, "top": 160, "indexed": true});
+  arr = av.ds.array([6, 5, 4, 3, 2, 1], {left: 10, top: 160, indexed: true});
   av.step();
 
   // Slide 6
   av.umsg(interpret("Slide 6"));
   arr.swap(0, 1);
   av.g.rect(320, 320, 50, 20);
-  av.label("i=1",  {"top": "330px", "left": "330px"});
+  av.label("i=1",  {top: "330px", left: "330px"});
   av.step();
 
   // Slide 7
   av.umsg(interpret("Slide 7"));
   arr.swap(1, 2);
   av.g.rect(370, 320, 50, 20);
-  av.label("i=2",  {"top": "330px", "left": "380px"});
+  av.label("i=2",  {top: "330px", left: "380px"});
   av.step();
 
   // Slide 8
@@ -63,7 +63,7 @@ $(document).ready(function () {
   av.umsg(interpret("Slide 9"));
   arr.swap(2, 3);
   av.g.rect(420, 320, 50, 20);
-  av.label("i=3",  {"top": "330px", "left": "430px"});
+  av.label("i=3",  {top: "330px", left: "430px"});
   av.step();
 
   // Slide 10
@@ -80,7 +80,7 @@ $(document).ready(function () {
   av.umsg(interpret("Slide 12"));
   arr.swap(3, 4);
   av.g.rect(470, 320, 50, 20);
-  av.label("i=4",  {"top": "330px", "left": "480px"});
+  av.label("i=4",  {top: "330px", left: "480px"});
   av.step();
 
   // Slide 13
@@ -102,7 +102,7 @@ $(document).ready(function () {
   av.umsg(interpret("Slide 16"));
   arr.swap(4, 5);
   av.g.rect(520, 320, 50, 20);
-  av.label("i=5",  {"top": "330px", "left": "530px"});
+  av.label("i=5",  {top: "330px", left: "530px"});
   av.step();
 
   // Slide 17
@@ -129,22 +129,22 @@ $(document).ready(function () {
   av.umsg(interpret("Slide 21"));
   var rect5 = av.g.rect(310, 290, 268, 1);
   rect5.rotate(-22);
-  av.label("|--- $n-1$ ---|",  {"top": 262, "left": 540}).css({'font-size': '16px', "text-align": "center"}).addClass("rotated");
-  av.label("|------------ $n-1$ ------------|",  {"top": 342, "left": 348}).css({'font-size': '16px', "text-align": "center"});
+  av.label("|--- $n-1$ ---|",  {top: 262, left: 540}).addClass("largeLabel rotated");
+  av.label("|------------ $n-1$ ------------|",  {top: 342, left: 348}).addClass("largeLabel");
   av.step();
 
   // Slide 22
   av.umsg(interpret("Slide 22_1"));
-  var bigTriangle = av.g.polyline([[320, 340], [570, 340], [570, 240]]).css({"fill": "blue", "opacity": 0.2});
+  av.g.polyline([[320, 340], [570, 340], [570, 240]]).addClass("bigTriangle");
   av.step();
   av.umsg(interpret("Slide 22_2"), {preserve: true});
-  var smallTriangle1 = av.g.polyline([[320, 340], [320, 320], [370, 320]]).css({"fill": "green", "opacity": 0.2});
-  var smallTriangle2 = av.g.polyline([[370, 320], [370, 300], [420, 300]]).css({"fill": "green", "opacity": 0.2});
-  var smallTriangle3 = av.g.polyline([[420, 300], [420, 280], [470, 280]]).css({"fill": "green", "opacity": 0.2});
-  var smallTriangle4 = av.g.polyline([[470, 280], [470, 260], [520, 260]]).css({"fill": "green", "opacity": 0.2});
-  var smallTriangle5 = av.g.polyline([[520, 260], [520, 240], [570, 240]]).css({"fill": "green", "opacity": 0.2});
+  av.g.polyline([[320, 340], [320, 320], [370, 320]]).addClass("smallTriangle");
+  av.g.polyline([[370, 320], [370, 300], [420, 300]]).addClass("smallTriangle");
+  av.g.polyline([[420, 300], [420, 280], [470, 280]]).addClass("smallTriangle");
+  av.g.polyline([[470, 280], [470, 260], [520, 260]]).addClass("smallTriangle");
+  av.g.polyline([[520, 260], [520, 240], [570, 240]]).addClass("smallTriangle");
   av.step();
-  
+
   //Slide 23
   av.umsg(interpret("Slide 23"));
   av.step();

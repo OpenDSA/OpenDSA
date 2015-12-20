@@ -25,7 +25,6 @@ $(document).ready(function () {
   av.step();
 
   // Slide 4
-  pseudo.setCurrentLine("varmaxsize");
   av.umsg(interpret("av_c4"));
   av.step();
 

@@ -1,3 +1,5 @@
+// JSAV extensions
+$(document).ready(function () {
 "use strict";
 // Written by Jun Yang
 // Helper function for creating a pointer
@@ -76,8 +78,6 @@ function addEdge(node1, node2) {
   return edges;
 }
 
-// JSAV extensions
-$(document).ready(function () {
   JSAV._types.ds.DListNode.prototype.addSlash = function (type, opts) {
     var fx = this.element.position().left + this.container.position().left + 41;
     var fy = this.element.position().top + this.container.position().top + 47;

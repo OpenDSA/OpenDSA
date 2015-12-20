@@ -47,9 +47,6 @@ $(document).ready(function () {
   var list = av.ds.list({nodegap: 30, left: leftMargin, top: topMargin});
   list.addFirst(30).addFirst(21).addFirst(3).addFirst("null");
   list.layout();
-  var slash1 = list.get(3).addTail();
-  var slash2 = list.get(2).addTail();
-  slash2.hide();
 
   var frontP = av.pointer("front", list.get(0));
   var rearP = av.pointer("rear", list.get(3));
@@ -85,8 +82,6 @@ $(document).ready(function () {
   list.remove(1);
   list.get(0).edgeToNext().show();
   dashLine.hide();
-  slash1.hide();
-  slash2.show();
   list.layout();
   av.step();
 

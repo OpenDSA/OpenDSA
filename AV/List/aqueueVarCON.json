@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "av_c1": "Member <code>queueArray</code> holds the queue elements...",
       "av_c2": "...and as usual, the queue constructor allows an optional parameter to set the maximum size of the queue.",
@@ -8,18 +8,18 @@
       "av_c5": "Member <code>rear</code> is set to the position of the current rear element, while front is the position of the current front element."
     }
   },
-  "code" : {
+  "code": {
     "processing": {
       "url": "../../../SourceCode/Processing/Lists/AQueue.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: AQueue1 *** */",
       "endBefore": "/* *** ODSAendTag: AQueue1 *** */",
       "tags": {
-         "array": 6,
-         "constructor": 9,
-         "setmaxsize": 10,
-	 "varmaxsize": 3,
-         "varrear": 5
+        "array": 6,
+        "constructor": 9,
+        "setmaxsize": 10,
+        "varmaxsize": 3,
+        "varrear": 5
       }
     },
     "java": {
@@ -28,11 +28,11 @@
       "startAfter": "/* *** ODSATag: AQueue1 *** */",
       "endBefore": "/* *** ODSAendTag: AQueue1 *** */",
       "tags": {
-         "array": 6,
-         "constructor": 9,
-         "setmaxsize": 10,
-	 "varmaxsize": 3,
-         "varrear": 5
+        "array": 6,
+        "constructor": 9,
+        "setmaxsize": 10,
+        "varmaxsize": 3,
+        "varrear": 5
       }
     },
     "java_generic": {
@@ -41,11 +41,11 @@
       "startAfter": "/* *** ODSATag: AQueue1 *** */",
       "endBefore": "/* *** ODSAendTag: AQueue1 *** */",
       "tags": {
-         "array": 6,
-         "constructor": 9,
-         "setmaxsize": 10,
-	 "varmaxsize": 3,
-         "varrear": 5
+        "array": 6,
+        "constructor": 9,
+        "setmaxsize": 10,
+        "varmaxsize": 3,
+        "varrear": 5
       }
     }
   }

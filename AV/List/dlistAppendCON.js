@@ -22,8 +22,6 @@ $(document).ready(function () {
   var l = av.ds.dlist({nodegap: 30, center: false, left: leftMargin, top: topMargin});
   l.addFirst("null").addFirst(10).addFirst(35).addFirst(8).addFirst(23).addFirst("null");
   l.layout();
-  l.get(0).addSlash("left");
-  var tailSlash = l.get(5).addSlash();
   var Vline = l.get(5).addVLine();
   var Vline1 = l.get(5).addVLine({ left: l.get(2).element.outerWidth() / 2 + 15 });
   var Vline2 = l.get(5).addVLine({ top: 25 });
@@ -56,10 +54,8 @@ $(document).ready(function () {
   l.get(6).edgeToPrev().hide();
   l.layout({ updateTop: false });
   var longEdge = addEdge(l.get(4), l.get(6));
-  tailSlash.hide();
   Vline.hide();
   Vline1.show();
-  var newTailSlash = l.get(6).addSlash();
   pseudo.setCurrentLine("setPrev");
   av.step();
 

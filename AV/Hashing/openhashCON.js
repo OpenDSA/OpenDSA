@@ -6,7 +6,7 @@ $(document).ready(function () {
   var empty = [];
   var arrows = [];
   var i;
-  var skipheight = 31;
+  var skipheight = 29;
   var offset = 32;
   var loffset = 4;
   for (i = 0; i < 10; i++) { empty[i] = ""; }
@@ -37,4 +37,5 @@ $(document).ready(function () {
   lists[9].layout({center: false});
   av.g.line(52, offset + 9 * skipheight, 96, offset + 9 * skipheight,
     {"arrow-end": "classic-wide-long", "stroke-width": 2});
+  av.recorded();
 });

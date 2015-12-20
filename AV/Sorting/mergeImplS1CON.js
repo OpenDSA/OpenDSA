@@ -1,6 +1,6 @@
 /*global ODSA */
-"use strict";
 $(document).ready(function () {
+  "use strict";
   var move = function (o, i) {
     av.step();
     av.umsg(interpret("av_c1"));
