@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="codemirror blockUI">
   <head>
-    <title> Recursion Programming Exercise: log</title>
+    <title>Recursion Programming Exercise: log</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
@@ -30,10 +30,10 @@
             power.<br/>
             <textarea id="codeTextarea" name="codeTextarea">
 int log(int b, int n ) {
-  if // <<Missing base case condition>> {
+  if <<Missing base case condition>> {
     return 1;
   } else {
-    return //<<Missing a Recursive case action>>
+    return <<Missing a Recursive case action>>
   }
 }</textarea>
           </p>
@@ -52,8 +52,10 @@ int log(int b, int n ) {
             </div>
           </div>
           <div class="hints">
-			  <p>The log of any number to a base with same value is 1. 
-			  Every time the recursive call is executed it should keep counting how many times we can divide b by n. </p>
+	    <p>The log of any number <code>x</code> to
+	      base <code>x</code> is 1. Every time the recursive call
+	      is executed it should increment the count for how many
+	      times we can divide b by n.</p>
           </div>
         </div>
       </div>

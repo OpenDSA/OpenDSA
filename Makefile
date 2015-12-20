@@ -105,28 +105,31 @@ Testin: min
 	python $(CONFIG_SCRIPT) config/Test.json -c config/Testin_LMSconf.json -b Testin
 
 RecurTutor: min
-	python $(CONFIG_SCRIPT) config/RecurTutor.json $(opts)
+	python $(CONFIG_SCRIPT) config/RecurTutor.json
 
-RecurTutorLMS: min
-	python $(CONFIG_SCRIPT) config/RecurTutor.json -c True
+RecurTutorvt: min
+	python $(CONFIG_SCRIPT) config/RecurTutor.json -c config/RecurTutorvt_LMSconf.json -b RecurTutorvt
+
+RecurTutorin: min
+	python $(CONFIG_SCRIPT) config/RecurTutor.json -c config/RecurTutorin_LMSconf.json -b RecurTutorin
 
 CS2: min
-	python $(CONFIG_SCRIPT) config/CS2.json $(opts)
+	python $(CONFIG_SCRIPT) config/CS2.json
 
-CS2LMS: min
-	python $(CONFIG_SCRIPT) config/CS2.json -c True
+CS2vt: min
+	python $(CONFIG_SCRIPT) config/CS2.json -c config/CS2vt_LMSconf.json -b CS2vt
+
+CS2in: min
+	python $(CONFIG_SCRIPT) config/CS2.json -c config/CS2in_LMSconf.json -b CS2in
 
 CS3: min
-	python $(CONFIG_SCRIPT) config/CS3.json $(opts)
-
-CS3LMS: min
-	python $(CONFIG_SCRIPT) config/CS3.json -c True
+	python $(CONFIG_SCRIPT) config/CS3.json
 
 CS3vt: min
-	python $(CONFIG_SCRIPT) config/CS3.json $(opts)
+	python $(CONFIG_SCRIPT) config/CS3.json -c config/CS3vt_LMSconf.json -b CS3vt
 
 CS3in: min
-	python $(CONFIG_SCRIPT) config/CS3.json $(opts)
+	python $(CONFIG_SCRIPT) config/CS3.json -c config/CS3in_LMSconf.json -b CS3in
 
 Algorithms: min
 	python $(CONFIG_SCRIPT) config/Algorithms.json $(opts)

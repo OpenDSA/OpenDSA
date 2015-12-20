@@ -1,5 +1,4 @@
 {
-  "title": "CS3 Generic DSA Course",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
@@ -34,10 +33,6 @@
     }
   },
   "lang": "en",
-  "module_origin": "https://lti.cs.vt.edu",
-  "exercise_server": "https://opendsa.cs.vt.edu",
-  "logging_server": "https://opendsa.cs.vt.edu",
-  "score_server": "https://opendsa.cs.vt.edu",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,

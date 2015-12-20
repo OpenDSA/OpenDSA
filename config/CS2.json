@@ -1,5 +1,4 @@
 {
-  "title": "CS2 Generic Course: Data Structures",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
@@ -7,10 +6,6 @@
   },
   "tabbed_codeinc": false,
   "lang": "en",
-  "module_origin": "https://lti.cs.vt.edu",
-  "exercise_server": "https://ltitest.cs.vt.edu:8443",
-  "logging_server": "https://ltitest.cs.vt.edu:8443",
-  "score_server": "https://ltitest.cs.vt.edu:8443",
   "build_JSAV": false,
   "build_cmap": false,
   "allow_anonymous_credit": true,

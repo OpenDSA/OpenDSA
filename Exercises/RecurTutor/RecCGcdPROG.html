@@ -11,7 +11,7 @@
     </style>
   </head>
 
-  <body data-height="750" data-width="950">
+  <body data-height="775" data-width="950">
     <div class="exercise">
       <div class="vars">
         <var id="config">
@@ -20,20 +20,21 @@
       </div>
       <div class="problems">
         <div id="RecCGcdPROGp"> <!-- Supresses answer box -->
-          <p class="problem"> The greatest common divisor (GCD) of a set of numbers
-           is the largest positive integer number that divides all the numbers in the set
-           without remainder. 
-            For function "GCD", write the missing base case condition and action. This function
+          <p class="problem"> The greatest common divisor (GCD) of a
+            pair of numbers is the largest positive integer that
+            divides both numbers without remainder. 
+            For function "GCD", write the missing base case condition
+            and action. This function
             will compute the greatest common divisor of "x" and "y".
-            You can assume that "x" and "y" are both greater than 0 and
-            <code>x > y</code>. Greatest common divisor is computed as
-            follows:<br/>
+            You can assume that "x" and "y" are both integers greater
+            than 0 and <code>x > y</code>. Greatest common divisor is
+            computed as follows:<br/>
             <pre>GCD(x, 0) = x</pre>
             <pre>GCD(x, y) = GCD(y, x % y)</pre><br/>
-            <textarea   id="codeTextarea">
+            <textarea id="codeTextarea">
 int GCD(int x, int y) {
   if <<Missing base case condition>> {
-    // <<Missing base case action>>
+    <<Missing base case action>>
   } else {
     return GCD(y, x % y);
   }
@@ -54,8 +55,9 @@ int GCD(int x, int y) {
             </div>
           </div>
           <div class="hints">
-			  <p> If there is no remainder from  dividing x by y 
-			  the greater of them should be returned. According to specification of the problem y is the greater.   </p>
+	    <p>Look at the base case in the first line of the
+	      definition given for GCD.
+            </p>
           </div>
         </div>
       </div>
