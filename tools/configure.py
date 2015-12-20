@@ -432,14 +432,19 @@ def create_chapter(request_ctx, config, course_id, book_name, module_id, module_
     'Update' for changed sections in config object
     'Add' for new sections in config object
     'Delete' for removed sections from config object
-
     """
 
     module_item_position = 1
 
     for module in chapter_obj:
         module_obj = chapter_obj[str(module)]
-        prev_module_obj  = prev_chapter_obj.get(module)
+        # prev_module_obj  = prev_chapter_obj.get(module, None)
+        # if prev_module_obj is not None:
+        #     prev_module_obj[str(module)]["action"] = "update"
+
+        # if prev_chapter_obj is not None:
+        #     prev_chapters[str(chapter)]["action"] = "update"
+
         # print(prev_module_obj)
         module_name = module_obj.get("long_name")
         module_name_url = module.split('/')[1] if '/' in module else module
@@ -450,6 +455,8 @@ def create_chapter(request_ctx, config, course_id, book_name, module_id, module_
             module_item_content_id=None,
             module_item_title=str(module_position) + "." + str(module_item_position) + ". " + str(module_name),
             module_item_indent=0)
+        item_id = results.json().get("id")
+        config.chapters[chapter_name][str(module)]['module_item_id'] = item_id
 
         sections = module_obj.get("sections")
         if bool(sections):
@@ -599,6 +606,8 @@ def create_course(config):
         chapter_name = str(chapter)
         chapter_obj = chapters[str(chapter)]
         prev_chapter_obj = prev_chapters.get(chapter, None)
+        if prev_chapter_obj is not None:
+            prev_chapters[str(chapter)]["action"] = "update"
         # OpenDSA chapters will map to canvas modules
         results = modules.create_module(
             request_ctx, course_id, "Chapter " + str(module_position - 1) + " " + str(chapter), module_position=module_position)
@@ -606,6 +615,12 @@ def create_course(config):
         t = threading.Thread(target=create_chapter, args=(request_ctx, config, course_id, book_name, module_id, module_position - 1, chapter_name, chapter_obj, prev_chapter_obj, LTI_url))
         t.start()
         module_position += 1
+
+    for chapter in prev_chapters:
+        chapter_name = str(chapter)
+        if prev_chapters[chapter].get("action", None) is None:
+            print("chapter "+chapter_name+" will be deleted")
+            # delete the cahpter
 
 
 def register_book(config):
