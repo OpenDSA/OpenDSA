@@ -55,7 +55,7 @@
             }
           },
           "Some Software Engineering Topics": {
-            "showsection": false
+          "showsection": false
           }
         }
       },
@@ -69,128 +69,6 @@
               "required": true,
               "points": 1.0,
               "threshold": 4
-            }
-          }
-        }
-      }
-    },
-    "Mathematical Background": {
-      "Background/MathpreIntro": {
-        "long_name": "Chapter Introduction",
-        "sections": {}
-      },
-      "Background/SetDef": {
-        "long_name": "Set Definitions",
-        "sections": {
-          "Set Notation": {},
-          "Relations": {
-            "SetTFrelation": {
-              "long_name": "Relations Exercise",
-              "required": true,
-              "points": 2.0,
-              "threshold": 5
-            }
-          },
-          "Equivalence Relations": {
-            "SetTFequivrel": {
-              "long_name": "Equivalence Exercise",
-              "required": true,
-              "points": 1.0,
-              "threshold": 3
-            }
-          },
-          "Partial Orders": {
-            "SetTFpartialorder": {
-              "long_name": "PartialOrder Exercise",
-              "required": true,
-              "points": 1.0,
-              "threshold": 3
-            }
-          }
-        }
-      },
-      "Background/MiscMath": {
-        "long_name": "Miscellaneous Notation",
-        "sections": {}
-      },
-      "Background/Logarithms": {
-        "long_name": "Logarithms",
-        "sections": {
-          "Logarithms": {
-            "MathLogSumm": {
-              "long_name": "Logarithms Practice Questions",
-              "required": true,
-              "points": 1.0,
-              "threshold": 5
-            }
-          }
-        }
-      },
-      "Background/Summations": {
-        "long_name": "Summations",
-        "sections": {
-          "Summations": {
-            "SummationOneToNCON": {
-              "long_name": "Summation of the first N Integers visualization",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
-            "SummationTwoPowerICON": {
-              "long_name": "Summation Two Power I visualization",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            }
-          }
-        }
-      },
-      "Background/RecurrenceIntro": {
-        "long_name": "Recurrence Relations",
-        "sections": {
-          "Recurrence Relations": {
-            "LinearRecurrencesCON": {
-              "long_name": "Linear Recurrences Slideshow",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
-            "LinearRecurrencesNCON": {
-              "long_name": "Linear Recurrences Slideshow (n)",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            }
-          }
-        }
-      },
-      "Background/Proofs": {
-        "long_name": "Mathematical Proof Techniques",
-        "sections": {
-          "Mathematical Proof Techniques": {
-            "twoColorCON": {},
-            "TwoColoringProofCON": {
-              "long_name": "Two Coloring Proof Slideshow",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            }
-          }
-        }
-      },
-      "Background/Estimation": {
-        "long_name": "Estimation",
-        "sections": {}
-      },
-      "Background/MathpreSumm": {
-        "long_name": "Chapter Summary",
-        "sections": {
-          "Chapter Summary Questions": {
-            "MathBgSumm": {
-              "long_name": "Math Background Summary Questions",
-              "required": true,
-              "points": 1.0,
-              "threshold": 5
             }
           }
         }
