@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "av_c1": "Let's take a look at the private data members for class <code>AList</code>.",
       "av_c2": "First, notice that class <code>AList</code> implements the <code>List</code> interface. This means that <code>AList</code> is required to give implementations for all of the methods listed as part of the <code>List</code> interface.",
@@ -11,7 +11,7 @@
       "av_c8": "Because <code>listArray</code>, <code>maxSize</code>, <code>listSize</code>, and <code>curr</code> are all declared to be <code>private</code>, they may only be accessed by methods of Class <code>AList</code>."
     }
   },
-  "code" : {
+  "code": {
     "processing": {
       "url": "../../../SourceCode/Processing/Lists/AList.pde",
       "lineNumbers": false,

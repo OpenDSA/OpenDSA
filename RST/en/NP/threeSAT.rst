@@ -5,13 +5,15 @@
 
 .. avmetadata::
    :author: Nabanita Maji
-   :prerequisites:
    :topic: NP-completeness
 
 .. odsalink:: AV/Development/NP/threeSATCON.css
 
 3-CNF Satisfiability
 ====================
+
+3-CNF Satisfiability
+--------------------
 
 3-CNF SATISFIABILITY PROBLEM (3-SAT)
 

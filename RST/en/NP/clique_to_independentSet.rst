@@ -5,7 +5,6 @@
 
 .. avmetadata::
    :author: Nabanita Maji
-   :prerequisites:
    :topic: NP-completeness
 
 .. odsalink:: AV/Development/NP/cliqueToISCON.css
@@ -13,6 +12,8 @@
 Reduction of Clique to Independent Set
 ======================================
 
+Clique to Independent Set
+-------------------------
 
 The following slideshow shows that an instance of Clique
 problem can be reduced to an instance of Independent Set problem 

@@ -1,39 +1,83 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: Sally Hamouda
+   :author: Sally Hamouda and Cliff Shaffer
    :satisfies: recursion tracing
    :requires: recursion writing
    :topic: Recursion
 
+.. odsalink:: AV/RecurTutor/recurTraceCON.css
+.. odsalink:: AV/RecurTutor/TOHfigCON.css
 
-.. odsalink:: AV/RecurTutor/recursionTrcCON.css
-
-Tracing recursive code
+Tracing Recursive Code
 ======================
-As we have seen in the previous section that to write a recursive code you should think in a top-down manner. The successful way is not to worry about how the recursive call solves the sub-problem. Simply accept that it will solve it correctly, and use this result to in turn correctly solve the original problem. On the other hand, if it is required to read or trace a recursive function you need to think in a bottom-up manner. That means you will need first to evaluate the base case and work backward until reaching the required function call. In this section we will illustrate how can you trace a recursive call.
 
-Tracing recursive functions is a great way to learn how they behave. After you become comfortable with tracing, you will rarely need to trace again. You will begin to develop confidence that recursion will work. When tracing most recursive functions, there are two parts:  winding and unwinding. The "winding" part occurs as the recursion executes towards the base case. The "un-winding" part occurs when the recursion returns back to the original call. Most people forget there is the "unwinding" phase. The winding and unwinding is not really special to recursion. It occurs with any function.
+Tracing Recursive Code
+----------------------
 
-.. inlineav:: recursionTrcWindCON ss
+When writing a recursive function, you should think in a top-down
+manner.
+Do not worry about how the recursive call solves the sub-problem.
+Simply accept that it will solve it correctly.
+Use this result as though you had called some library function,
+to correctly solve the original problem.
+
+When you have to read or trace a recursive function, then you do need
+to consider how the function is doing its work.
+Tracing a few recursive functions is a great way to learn how
+recursion behaves.
+But after you become comfortable with tracing, you will rarely need to
+work through so many details again.
+You will begin to develop confidence about how recursion works.
+
+You know that information can be passed in (using a function
+parameter) from one recursive call to another, on ever smaller
+problems, until a base case is reached.
+Then, a return value is passed back as the series of recursive calls
+unwinds.
+Sometimes people forget about the "unwinding" phase.
+
+.. inlineav:: recurTraceWindCON ss
    :output: show 
 
-Next we will show a tracing example for a simple sum function:
 
-.. inlineav:: recursionTrcSumCON ss
+A Domino Analogy
+~~~~~~~~~~~~~~~~
+
+.. inlineav:: recurTraceDmnCON ss
+   :output: show 
+
+After modeling the domino effect recursively, the two steps
+in the previous visualization becomes a template solution for general
+linear recursive questions. If we think of tipping over each
+domino as performing a further step of computation toward
+the final solution, then this template is capable of solving
+all linear recursive problems. The rules of thumb toward a
+linear recursive solution can now be summarized as follows:
+
+1. Since the first domino has to be tipped over manually,
+the solution for base case is computed non-recursively.
+
+2. For any other domino, before any given domino can be tipped over,
+all preceding dominos have to be tipped over first.
+   
+.. inlineav:: recurTraceSumCON ss
    :output: show
 
-Next we will show a tracing example of a factorial function:
+|
 
-.. inlineav:: recursionTrcFctCON ss
+.. inlineav:: recurTraceFactCON ss
    :output: show 
 
-As you trace the code, you should observe several things:
+|
 
-.. inlineav:: recursionTrcSum2CON ss
+As you trace the code, you should observe several things.
+Let's use the array summing function again for an example.
+
+.. inlineav:: recurTraceSum2CON ss
    :output: show 
 
 Starting at the base case, you have a value that is then used to solve the call
@@ -45,68 +89,101 @@ arrived at, having been built up from the base case.
 Whenever the return statement of the recursive call has no more work to do
 AFTER the recursive call, the function is said to be tail-recursive.
 
+The next visualization shows how we can use the
+Domino effect to recursively print the integers from 1 to N.
 
-Next Example will model the domino effect recursively:
-
-.. inlineav:: recursionTrcDmnCON ss
-   :output: show 
-
-After modeling the domino effect recursively, the two steps
-in the previous visualization becomes a template solution for general linear
-recursive questions. If we think of tipping over each
-domino as performing a further step of computation toward
-the final solution, then this template is capable of solving
-all linear recursive problems. The rules of thumb toward a
-linear recursive solution can now be summarized as follows:
-
-1. Since the first domino has to be tipped over manually,
-the solution for base case is computed non-recursively.
-
-2. For any other domino, before a domino is tipped over
-all of its preceded dominos have to be tipped over and
-then the current domino will be tipped over
-subsequently. So the solution for a recursive case is
-computed recursively by solving its next smaller case
-first followed by some subsequent computation.
-
-
-Next visualization will show how we can use the previously illustrated Domino effect solving technique to print positive integers from 1 to N recursively. 
-
-.. inlineav:: recursionTrcDmnPrntCON ss
+.. inlineav:: recurTraceDmnPrntCON ss
    :output: show 
 
 
-Next visualization will show how we can use the previously illustrated Domino effect solving technique to Count the number of digits within an integer n recursively. 
+This next visualization shows how we can use the Domino technique to
+recursively count the number of digits in an integer.
 
-.. inlineav:: recursionTrcDmnCntCON ss
+.. inlineav:: recurTraceDmnCntCON ss
    :output: show 
 
-Towers of Hanoi is an example of a problem which requires multiple recursive calls. 
-The problem of the Towers of Hanoi originates from an ancient legend from Vietnam, according to which a group of monks is moving around a tower of 64 disks of different sizes according to certain rules. The legend says that, when the monks will have finished moving around the disks, the end of the world will come. 
 
-The rules according to which the disks have to be moved are the following:
+Towers of Hanoi
+~~~~~~~~~~~~~~~
 
-1. Initially, the disks are placed in decreasing size on support 1.
-2. The objective is to move them to support 2, making also use of an auxiliary support 3.
+Here is another example of recursion, based on a famous puzzle called
+"Towers of Hanoi".
+The natural algorithm to solve this problem has multiple recursive calls.
+It cannot be rewritten easily using loops.
+"Towers of Hanoi" comes from an ancient Vietnamese legend.
+A group of monks is tasked with moving a tower of 64 disks of
+different sizes according to certain rules.
+The legend says that, when the monks will have finished moving all of
+the disks, the world will end.
 
-The conditions for moving the disks are:
+.. inlineav:: TOHfigCON dgm
+   :output: show 
 
-1. All disks (except the one to be moved) have to be on one of the three supports;
-2. It is possible to move only one disk at a time, taking it from the top of the tower on one of the supports and placing it on the top of the tower on another support;
-3. A disk can never be placed on a smaller disk.
+The Towers of Hanoi puzzle begins with three poles and :math:`n`
+rings, where all rings start on the leftmost pole (labeled Pole 1).
+The rings each have a different size, and are stacked in order of
+decreasing size with the largest ring at the bottom, as shown in
+part (a) of the figure.
+The problem is to move the rings from the leftmost pole to the
+rightmost pole (labeled Pole 3) in a series of steps.
+At each step the top ring on some pole is moved to another pole.
+What makes this puzzle interesting is the limitation on where rings
+may be moved:
+A ring may never be moved on top of a smaller ring.
 
-Next visualization will show a tracing for the Towers of Hanoi problem.
+How can you solve this problem?
+It is easy if you don't think too hard about the details.
+Instead, consider that all rings are to be moved from Pole 1 to Pole 3.
+It is not possible to do this without first moving the bottom
+(largest) ring to Pole 3.
+To do that, Pole 3 must be empty, and only the bottom ring can be on
+Pole 1.
+The remaining :math:`n-1` rings must be stacked up in order
+on Pole 2, as shown in part (b) of the figure.
+How can you do this?
+Assume that a function :math:`X` is available to solve the
+problem of moving the top :math:`n-1` rings from Pole 1 to Pole 2.
+Then move the bottom ring from Pole 1 to Pole 3.
+Finally, again use function :math:`X` to move the
+remaining :math:`n-1` rings from Pole 2 to Pole 3.
+In both cases, "function :math:`X`" is simply the Towers of Hanoi
+function called on a smaller version of the problem.
 
-.. inlineav:: recursionTrcTOHCON ss
+The secret to success is relying on the Towers of Hanoi
+algorithm to do the work for you.
+You need not be concerned about the gory details of *how* the
+Towers of Hanoi subproblem will be solved.
+That will take care of itself provided that two things are done.
+First, there must be a base case (what to do if there is only one
+ring) so that the recursive process will not go on forever.
+Second, the recursive call to Towers of Hanoi can only be used to
+solve a smaller problem, and then only one of the proper form (one
+that meets the original definition for the Towers of Hanoi problem,
+assuming appropriate renaming of the poles).
+
+Here is an implementation for the recursive Towers of Hanoi
+algorithm.
+Function ``move(start, goal)`` takes the top ring from Pole
+``start`` and moves it to Pole ``goal``.
+If ``move`` were to print the values of its parameters,
+then the result of calling ``TOH`` would be a list of
+ring-moving instructions that solves the problem.
+
+.. codeinclude:: Misc/TOH 
+   :tag: TOH
+
+This next slideshow explains the solution to the Towers of Hanoi problem.
+
+.. inlineav:: recurTraceTOHCON ss
    :output: show 
 	   
 
-
-.. odsascript:: AV/RecurTutor/recursionTrcWindCON.js
-.. odsascript:: AV/RecurTutor/recursionTrcSumCON.js
-.. odsascript:: AV/RecurTutor/recursionTrcFctCON.js
-.. odsascript:: AV/RecurTutor/recursionTrcSum2CON.js
-.. odsascript:: AV/RecurTutor/recursionTrcDmnCON.js
-.. odsascript:: AV/RecurTutor/recursionTrcDmnPrntCON.js
-.. odsascript:: AV/RecurTutor/recursionTrcDmnCntCON.js
-.. odsascript:: AV/RecurTutor/recursionTrcTOHCON.js
+.. odsascript:: AV/RecurTutor/recurTraceWindCON.js
+.. odsascript:: AV/RecurTutor/recurTraceSumCON.js
+.. odsascript:: AV/RecurTutor/recurTraceFactCON.js
+.. odsascript:: AV/RecurTutor/recurTraceSum2CON.js
+.. odsascript:: AV/RecurTutor/recurTraceDmnCON.js
+.. odsascript:: AV/RecurTutor/recurTraceDmnPrntCON.js
+.. odsascript:: AV/RecurTutor/recurTraceDmnCntCON.js
+.. odsascript:: AV/RecurTutor/recurTraceTOHCON.js
+.. odsascript:: AV/RecurTutor/TOHfigCON.js

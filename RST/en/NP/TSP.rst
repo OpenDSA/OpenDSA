@@ -5,13 +5,15 @@
 
 .. avmetadata::
    :author: Nabanita Maji
-   :prerequisites:
    :topic: NP-completeness
 
 .. odsalink:: AV/Development/NP/TSPCON.css
 
 The Traveling Salesman Problem
 ==============================
+
+Traveling Salesman
+------------------
 
 TRAVELING SALESMAN PROBLEM (TSP)
 

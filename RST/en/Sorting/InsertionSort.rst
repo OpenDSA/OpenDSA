@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -17,6 +17,9 @@
 
 Insertion Sort
 ==============
+
+Insertion Sort
+--------------
 
 What would you do if you have a stack of phone bills from the past
 two years and you want to order by date?
@@ -36,8 +39,12 @@ already processed.
 Here is an implementation.
 The input is an array named ``A`` that stores :math:`n` records.
 
+.. _introduction:
+
 .. codeinclude:: Sorting/Insertionsort
    :tag: Insertionsort
+   
+.. _practice:
 
 (Note that to make the explanation for these sorting algorithms as
 simple as possible, our visualizations will show the array as though
@@ -51,22 +58,11 @@ associate a key value with a record.
 The sorting algorithms will simply assume that the records are
 :term:`comparable`.)
 
-Here is the start to the Insertion Sort process.
+Here we see the first few iterations of Insertion Sort.
 
-.. inlineav:: insertionsortS1CON ss
+.. inlineav:: insertionsortCON ss
    :output: show
-
-Next, process the record in position 2.
-Swap it to the left until it reaches a value smaller than it is.
-
-.. inlineav:: insertionsortS2CON ss
-   :output: show
-
-And now the record in position 3.
-
-.. inlineav:: insertionsortS3CON ss
-   :output: show
-
+   
 This continues on with each record in turn.
 Call the current record :math:`x`.
 Insertion Sort will move it to the left so
@@ -75,86 +71,81 @@ preceding it.
 As soon as a key value less than or equal to :math:`x` is
 encountered, ``inssort`` is done with that record because all
 records to its left in the array must have smaller keys.
-The following visualization puts it all together.
 
 .. avembed:: AV/Sorting/insertionsortAV.html ss
 
-Now try for yourself to see if you understand how Insertion Sort works.
 
 .. avembed:: Exercises/Sorting/InssortPRO.html ka
+
 
 Insertion Sort Analysis
 -----------------------
 
-.. showhidecontent:: InsertionSortAnalysis
+.. inlineav:: InsertionSortWorstCaseCON ss
+   :output: show
 
-   .. inlineav:: InsertionSortWorstCaseCON ss
-      :output: show
+|
 
-   .. inlineav:: InsertionSortBestCaseCON ss
-      :output: show
+.. inlineav:: InsertionSortBestCaseCON ss
+   :output: show
 
-   .. inlineav:: InsertionSortAverageCaseCON ss
-      :output: show
+|
 
-   While the best case is significantly faster than the average and worst
-   cases, the average and worst cases are usually more reliable
-   indicators of the "typical" running time.
-   However, there are situations where we can expect the input to be in
-   sorted or nearly sorted order.
-   One example is when an already sorted list is slightly disordered by a
-   small number of additions to the list;
-   restoring sorted order using Insertion Sort might be a good idea if we
-   know that the disordering is slight.
-   And even when the input is not perfectly sorted, Insertion Sort's cost
-   goes up in proportion to the number of inversions.
-   So a "nearly sorted" list will always be cheap to sort with Insertion
-   Sort.
-   Examples of algorithms that take advantage of Insertion Sort's
-   near-best-case running time are
-   :ref:`Shellsort <Shellsort> <Shellsort>`
-   and :ref:`Quicksort <Quicksort> <Quicksort>`.
+.. inlineav:: InsertionSortAverageCaseCON ss
+   :output: show
 
-   Counting comparisons or swaps yields similar results.
-   Each time through the inner ``for`` loop yields both a
-   comparison and a swap, except the last (i.e., the comparison that
-   fails the inner ``for`` loop's test), which has no swap.
-   Thus, the number of swaps for the entire sort operation is
-   :math:`n-1` less than the number of comparisons.
-   This is 0 in the best case, and :math:`\Theta(n^2)` in the
-   average and worst cases.
+While the best case is significantly faster than the average and worst
+cases, the average and worst cases are usually more reliable
+indicators of the "typical" running time.
+However, there are situations where we can expect the input to be in
+sorted or nearly sorted order.
+One example is when an already sorted list is slightly disordered by a
+small number of additions to the list;
+restoring sorted order using Insertion Sort might be a good idea if we
+know that the disordering is slight.
+And even when the input is not perfectly sorted, Insertion Sort's cost
+goes up in proportion to the number of inversions.
+So a "nearly sorted" list will always be cheap to sort with Insertion
+Sort.
+Examples of algorithms that take advantage of Insertion Sort's
+near-best-case running time are
+:ref:`Shellsort <Shellsort> <Shellsort>`
+and :ref:`Quicksort <Quicksort> <Quicksort>`.
 
-   Later we will see algorithms whose growth rate is much
-   better than :math:`\Theta(n^2)`.
-   Thus for larger arrays, Insertion Sort will not be so good a
-   performer as other algorithms.
-   So Insertion Sort is not the best sorting algorithm to use in most
-   situations.
-   But there are special situations where it is ideal.
-   We already know that Insertion Sort works great when the input is
-   sorted or nearly so.
-   Another good time to use Insertion Sort is when the array is very
-   small, since Insertion Sort is so simple.
-   The algorithms that have better asymptotic growth rates tend to be
-   more complicated, which leads to larger constant factors in their
-   running time.
-   That means they typically need fewer comparisons for larger arrays,
-   but they cost more per comparison.
-   This observation might not seem that helpful, since even an algorithm
-   with high cost per comparison will be fast on small input sizes.
-   But there are times when we might need to do many, many sorts on very
-   small arrays.
-   You should spend some time right now trying to think of a situation
-   where you will need to sort many small arrays.
-   Actually, it happens a lot.
+Counting comparisons or swaps yields similar results.
+Each time through the inner ``for`` loop yields both a
+comparison and a swap, except the last (i.e., the comparison that
+fails the inner ``for`` loop's test), which has no swap.
+Thus, the number of swaps for the entire sort operation is
+:math:`n-1` less than the number of comparisons.
+This is 0 in the best case, and :math:`\Theta(n^2)` in the
+average and worst cases.
 
-Here are some review questions to check your understanding of
-Insertion Sort.
+Later we will see algorithms whose growth rate is much
+better than :math:`\Theta(n^2)`.
+Thus for larger arrays, Insertion Sort will not be so good a
+performer as other algorithms.
+So Insertion Sort is not the best sorting algorithm to use in most
+situations.
+But there are special situations where it is ideal.
+We already know that Insertion Sort works great when the input is
+sorted or nearly so.
+Another good time to use Insertion Sort is when the array is very
+small, since Insertion Sort is so simple.
+The algorithms that have better asymptotic growth rates tend to be
+more complicated, which leads to larger constant factors in their
+running time.
+That means they typically need fewer comparisons for larger arrays,
+but they cost more per comparison.
+This observation might not seem that helpful, since even an algorithm
+with high cost per comparison will be fast on small input sizes.
+But there are times when we might need to do many, many sorts on very
+small arrays.
+You should spend some time right now trying to think of a situation
+where you will need to sort many small arrays.
+Actually, it happens a lot.
 
 .. avembed:: Exercises/Sorting/InssortSumm.html ka
-
-Notes
------
 
 See
 `Computational Fairy Tales: Why Tailors Use Insertion Sort
@@ -162,9 +153,7 @@ See
 for a discussion on how the relative costs of search and insert can
 affect what is the best sort algorithm to use.
 
-.. odsascript:: AV/Sorting/insertionsortS1CON.js
-.. odsascript:: AV/Sorting/insertionsortS2CON.js
-.. odsascript:: AV/Sorting/insertionsortS3CON.js
+.. odsascript:: AV/Sorting/insertionsortCON.js
 .. odsascript:: AV/Development/InsertionSortWorstCaseCON.js
 .. odsascript:: AV/Development/InsertionSortBestCaseCON.js
 .. odsascript:: AV/Development/InsertionSortAverageCaseCON.js

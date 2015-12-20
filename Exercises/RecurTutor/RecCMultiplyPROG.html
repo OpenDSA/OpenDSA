@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html data-require="codemirror blockUI">
+  <head>
+    <title> Recursion Programming Exercise: Multiply</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #RecCLargestPROG .CodeMirror {
+        height: 200px;
+      }
+    </style>
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="config">
+          (function(){ window.OpenPopKa = true;}())
+        </var>
+      </div>
+      <div class="problems">
+        <div id="RecCMultiplyPROGp"> <!-- Supresses answer box -->
+          <p class="problem">For function "multiply", write
+            the missing base case condition and action. This function
+            will multiply two numbers "x" and "y". You can assume that
+            both "x" and "y" are positive.<br/>
+            <textarea id="codeTextarea" name="codeTextarea">
+int multiply(int x, int y) {
+  if <<Missing base case condition>> {
+    <<Missing base case action>>
+  } else {
+    return multiply(x - 1, y) + y;
+  }
+}</textarea>
+          </p>
+          <div class="question"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess">[editor.getValue()]</div>
+            <div class="validator-function">
+              if (guess[0] != initEditor) {
+                console.log(guess[0]);
+                window.codeValue = guess[0];
+                window.progexType = "RecurTutor";
+                window.summexName = "RecCMultiplyPROG";
+              } else {
+                return "";
+              }
+            </div>
+          </div>
+          <div class="hints">
+	    <p>If x equals one then there is only one y.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

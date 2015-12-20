@@ -1,16 +1,20 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Jordan Sablan
-   :requires:
-   :satisfies:
+   :requires: Text input
+   :satisfies: Random access file
    :topic:
 
 Random Access Files In Java
 ===========================
+
+Understanding File I/O
+----------------------
+
 In earlier tutorials we saw how we can use Java's scanner class to read sequential
 text files. Scanners are great for reading files, but we can take a
 step farther out and conceptualize our data even more abstractly, instead of
@@ -21,8 +25,6 @@ withing the file, jumping to any legal location within the file itself.
 Before reading this tutorial be sure to check the RandomAccessFile API found
 `here <https://docs.oracle.com/javase/7/docs/api/java/io/RandomAccessFile.html>`__.
 
-Understanding File I/O
-----------------------
 Before getting started using the RandomAccessFile class, be sure you understand
 the following concepts.
 
@@ -47,6 +49,7 @@ an error.
 
 Using RandomAccessFile Class
 ----------------------------
+
 Consider the code example below. It will generate a file of a size 0 to 999
 bytes and it will then fill those bytes in order with numbers from 65 to 90
 (randomly chosen). The program will output a plaintext file randomly filled with

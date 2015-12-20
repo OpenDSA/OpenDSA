@@ -1,0 +1,65 @@
+<!--
+Tree indexing disk access count exercise.
+Written by Elmer Landaverde and Cliff Shaffer.
+-->
+
+<!DOCTYPE html>
+<html data-require="jsav math TreeIndexing">
+  <head>
+    <title>Tree Indexing</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #TreeIndexing .jsavtree .jsavnode {
+      min-height: 25px;
+      max-height: 25px;
+      min-width: 25px;
+      max-width: 25px;
+      }
+
+      #TreeIndexing {
+      min-height: 180px;
+      }
+    </style>
+  </head>
+
+  <body data-height="775" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="temp">10</var>
+        <var id="tree_root">treeIndexing.initJSAV()</var>
+        <var id="answer">treeIndexing.diskAccesses</var>
+      </div>
+      <div class="problems">
+        <div id="TreeIndexingp">
+          <div class="question">
+            <p>Starting at the root of the binary search tree,
+              determine how many disk accesses are required to reach
+              the selected (highlighted) node.
+              <br/>
+              <br/>
+              <b>Assumptions:</b><br />
+              1) Same color nodes are in the same disk block.<br />
+              2) Consecutive reads from the same color block only count as one
+              disk access.<br />
+              3) Consider only the direct path from the root to the
+              selected node.<br />
+              4) There are no buffers. Every new block read has to be read from
+              disk and never from memory.
+            </p>
+            <div id="TreeIndexing" class="jsavcanvas"></div>
+          </div>
+          <p class="solution" data-type="text"><var>answer</var></p>
+          <div class="hints">
+            <p>Accessing the root node always takes one disk access.</p>
+            <p>Consecutively reading from same-color blocks counts as
+              one disk access.</p>
+            <p>Don't forget to include the disk access for the last
+              node (selected node) if the color is different from the
+              parent node.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

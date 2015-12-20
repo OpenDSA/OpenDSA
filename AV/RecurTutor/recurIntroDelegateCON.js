@@ -16,7 +16,7 @@ $(document).ready(function() {
 
   // Slide 1
   av.umsg(interpret("sc1"));
-  pseudo.highlight(1);
+  pseudo.highlight("sig");
   av.displayInit();
 
   // Slide 2
@@ -25,14 +25,14 @@ $(document).ready(function() {
 
   // Slide 3
   av.umsg(interpret("sc3"));
-  pseudo.highlight([2, 3]);
-  pseudo.unhighlight(1);
+  pseudo.highlight("bc");
+  pseudo.unhighlight("sig");
   av.step();
 
   // Slide 4
   av.umsg(interpret("sc4"));
-  pseudo.unhighlight([2, 3]);
-  pseudo.highlight(5);
+  pseudo.unhighlight("bc");
+  pseudo.highlight("rc");
   av.step();
 
   // Slide 5

@@ -1,18 +1,42 @@
+<!--
+Picking a value for where this function is cheapest
+Written by Cliff Shaffer
+-->
 <!DOCTYPE html>
-<html data-require="math">
-<head>
-  <title>Asymptotic Analysis and Upper Bounds Exercise</title>
-  <script src="../../lib/jquery.min.js"></script>
-  <script src="../../lib/jquery-ui.min.js"></script>
-<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-</head>
-
-<body data-height="650" data-width="950">
-  <div class="exercise" data-name="AnlsIntroFIBgrthfn10n"></div>
-  <div class="exercise" data-name="AnlsIntroFIBgrthfn20n"></div>
-  <div class="exercise" data-name="AnlsIntroFIBgrthfn2n2"></div>
-  <div class="exercise" data-name="AnlsIntroFIBgrthfn2n"></div>
-  <div class="exercise" data-name="AnlsIntroFIBgrthfn5nlogn"></div>
-  <div class="exercise" data-name="AnlsIntroFIBgrthfnnfact"></div>
-</body>
+<html data-require="math CompareGrowth">
+  <head>
+    <title>Comparing Growth Rates Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="FUNCS">["n!", "2^n", "2n^2", "5 n \\log n", "20n", "10n"]</var>
+        <var id="FINDEX">randRange(0,5)</var>
+      </div>
+      <div class="problems">
+        <div id="problem-type-or-description">
+          <p class="question"> You are given this set of growth functions:
+          <code>n!, 2^n, 2n^2, 5 n \log n, 20n, 10n</code></p>
+          <p>For the growth function <var>katex.renderToString(FUNCS[FINDEX])</var>,
+            type a value (a positive integer) for which this function
+            is the most efficient of the six. If there is no integer
+          value for which it is most efficent, type "none".</p>
+          <textarea rows="1" cols="9" style="resize:none"  id="answerTextarea"></textarea>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [ $('#answerTextarea').val() ] </div>
+            <div class="validator-function">
+              return compareGrowth.checkAnswer(guess[0], FINDEX);
+            </div>
+          </div>
+          <div class="hints">
+            <p>Try plugging a few small numbers into each of the six
+              functions and see what you get. Then see what happens
+            when you make a number one bigger or smaller.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
@@ -65,8 +65,9 @@ The subscript indicates an element's position within the list.
 Using this notation, the empty list would appear as
 :math:`\langle\ \rangle`. 
 
+
 Defining the ADT
-----------------
+~~~~~~~~~~~~~~~~
 
 What basic operations do we want our lists to support?
 Our common intuition about lists tells us that a list should be able
@@ -130,9 +131,6 @@ object, sometimes referred to as an :term:`iterator`.
 .. inlineav:: listADTposCON ss
    :output: show  
 
-.. inlineav:: listADTnoteCON ss
-   :output: show   
-
 The ``List`` member functions allow you to build a list with elements
 in any desired order, and to access any desired position in the list.
 You might notice that the ``clear`` method is a "convenience" method,
@@ -181,6 +179,14 @@ so requires some agreement between the list ADT and the ``find``
 function on the concept of a key, and on
 :ref:`how keys may be compared <comparable> <Comparison>`.
 
+There are two standard approaches to implementing lists, the
+:ref:`array-based list <ListArray>`, and the
+:ref:`linked list <linked list> <ListLinked>`.
+
+
+ADT Practice Exercise
+~~~~~~~~~~~~~~~~~~~~~
+
 .. avembed:: Exercises/List/ListADTPROG.html ka
   
 .. TODO::
@@ -189,12 +195,4 @@ function on the concept of a key, and on
    This exercise ought to get expanded to a much richer set of
    variations on the question.
 
-Implementing Lists
-------------------
-
-There are two standard approaches to implementing lists, the
-:ref:`array-based list <ListArray>`, and the
-:ref:`linked list <linked list> <ListLinked>`.
-
 .. odsascript:: AV/List/listADTposCON.js
-.. odsascript:: AV/List/listADTnoteCON.js

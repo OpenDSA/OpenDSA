@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html data-require="codemirror math">
+  <head>
+    <title> Recursion Tracing Exercise: Error in print</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body  data-height="700" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RectMCQwritecommap"> <!-- Supresses answer box -->
+          <p class="question"> "writeWithCommas" is supposed to print
+            its input value with commas properly inserted (every three
+            digits, starting at the right). But "writeWithCommas"
+            doesn’t always work as intended. Which of the following
+            arguments will not be printed correctly?
+            <textarea id="codeTextarea" name="codeTextarea">
+public static void writeThreeDigits(int n) {
+  System.out.print(n / 100);	
+  System.out.print((n / 10) % 10);		
+  System.out.print(n % 10);
+} 
+
+public static void writeWithCommas(int n) {	
+  if (n < 1000)
+    System.out.print(n);			
+  else { 
+    writeThreeDigits(n%1000);
+    System.out.print(",");	
+    writeWithCommas(n/1000);
+  }
+}</textarea><br/>
+          </p>
+          <div class="solution">365051</div>
+          <ul class="choices" >
+	    <li>896</li>	  	 
+	    <li>251462251</li>
+            <li>278278</li>
+            <li>4</li>
+          </ul>
+          <div class="hints">
+            <p>The problem is that the blocks of digits are put in
+              reverse order.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

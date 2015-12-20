@@ -5,7 +5,6 @@
 
 .. avmetadata::
    :author: Nabanita Maji
-   :prerequisites:
    :topic: NP-completeness
 
 .. odsalink:: AV/Development/NP/IStoVCCON.css
@@ -13,6 +12,8 @@
 Reduction of Independent Set to Vertex Cover
 ============================================
 
+Independent Set to Vertex Cover
+-------------------------------
 
 The following slideshow shows that an instance of Independent Set
 problem can be reduced to an instance of Vertex Cover problem 

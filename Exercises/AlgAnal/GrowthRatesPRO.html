@@ -1,182 +1,77 @@
 <!--
-  Ordering Growth Rates
-  Written by Mohammed Farghally and Cliff Shaffer
+Ordering Growth Rates
+Written by Mohammed Farghally and Cliff Shaffer
 -->
+
 <!DOCTYPE html>
-<html data-require="math">
+<html data-require="jsav math GrowthRatesPRO">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Growth Rates Ordering Exercise</title>
-    <script src="../../lib/jquery.min.js"></script>
-    <script src="../../lib/jquery-ui.min.js"></script>
-    <script src="../../JSAV/lib/jquery.transit.js"></script>
-    <script src="../../JSAV/lib/raphael.js"></script>
-    <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-    <script src="../../JSAV/build/JSAV-min.js"></script>
-    <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-    <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
-    <link rel="stylesheet" href="GrowthRates.css" type="text/css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #GrowthRatesPRO .jsavhorizontalarray .jsavnode {
+        min-width: 80px !important;
+        min-height: 60px !important;
+        max-width: 80px !important;
+        max-height: 60px !important;
+      }
+
+      #GrowthRatesPRO .jsavcanvas {
+        height: 100px;
+      }
+
+      #GrowthRatesPRO .jsavarray * {
+        -webkit-transform-style: flat !important;
+      }
+
+      #GrowthRatesPRO .jsavnode {
+        border: none;
+        box-shadow: none;
+        background-color: inherit;
+      }
+    </style>
   </head>
 
   <body data-height="860" data-width="950">
-<script>
-var
-jsav,           // The JSAV object
-answerArr = [], // The (internal) array that stores the correct answer
-cloneArr = [],  // A copy of the (internal) array at the start of the exercise for reset
-functions = [],
-jsavArr,        // The array that the user manipulates (JSAV object)
-userInput,      // Boolean: Tells us if user ever did anything
-selected_index; // Position that has been selected by user for swap
-
-// Click event handler on the array
-var clickHandler = function (index, e) {
-  if (selected_index === -1) { // if nothing currently selected
-    jsavArr.css(index, {"font-size": "130%"});
-    selected_index = index;
-  }
-  else {
-    jsavArr.swap(selected_index, index);
-    jsavArr.css(index, {"font-size": "100%"});
-    jsavArr.css(selected_index, {"font-size": "100%"});
-    selected_index = -1;  // Reset to nothing selected
-  }
-  userInput = true;
-};
-
-// reset function definition
-var f_reset = function () {
-  jsavArr.clear();             // Re-initialize the displayed array object
-  jsavArr = jsav.ds.array(cloneArr, {indexed: false, center: false});
-  jsavArr.click(clickHandler); // Rebind click handler after reset
-  userInput = false;
-  selected_index = -1;         // Reset to nothing selected
-};
-
-// swap two values in array
-var swap = function (arr, i, j) {
-  var temp = arr[i];
-  arr[i] = arr[j];
-  arr[j] = temp;
-};
-
-// Initialise the exercise
-var initJSAV = function (arr_size) {
-  var i, j, value;
-  userInput = false;
-  selected_index = -1;
-
-  functions = [
-    "$5 \\log \\log n$",
-    "$2 \\log n$",
-    "$\\log^2 n$",
-    "$2 \\log^3 n$",
-    "$7 \\sqrt{n}$",
-    "$\\sqrt{n} \\log n$",
-    "$n \\log \\log n$",
-    "$9 n \\log n$",
-    "$n \\log^2 n$",
-    "$n^{4/3}$",
-    "$n^2$",
-    "$n^4$",
-    "$2^{\\sqrt{n}}$",
-    "$2^n$",
-    "$2^{n^2}$"
-  ];
-  answerArr.length = 0; // Out with the old
-
-  jsav = new JSAV("jsav");
-  jsav.recorded();
-
-  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true}});
-
-  randomize(arr_size, functions.length);
-  jsavArr = jsav.ds.array([], {indexed: false, center: false});
-  for(i = 0; i < arr_size; i++){
-    jsavArr.value(i, answerArr[i]);
-    console.log(answerArr[i]);
-  }
-  MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-
-  // Now make a copy
-  cloneArr = answerArr.slice(0);
-
-  // Compute the correct Answer
-  for (i = 0; i < arr_size - 1; i++) {
-    for(j = 1; j < arr_size - i; j++)
-      if (functions.indexOf(answerArr[j-1]) > functions.indexOf(answerArr[j])) {
-        swap(answerArr, j-1, j);
-      }
-  }
-
-  // Bind the clickHandler to handle click events on the array
-  jsavArr.click(clickHandler);
-  // Set up handler for reset button
-  $("#reset").click(function () { f_reset(); MathJax.Hub.Queue(["Typeset", MathJax.Hub]);});
-};
-
-// Check student's answer for correctness: User's array must match answer
-var checkAnswer = function (arr_size) {
-  var i;
-  for (i = 0; i < arr_size; i++) {
-    if (jsavArr.value(i) !== answerArr[i]) {
-      return false;
-    }
-  }
-  return true;
-};
-
-
-var randomize = function (arr_size, numfuncs){
-  var count = 0;
-  var randomIndex;
-  while(count < arr_size){
-    randomIndex = Math.floor(Math.random() * numfuncs);
-    if(answerArr.indexOf(functions[randomIndex]) == -1){
-      answerArr.push(functions[randomIndex]);
-      count++;
-    }
-  }
-};
-</script>
-
     <div class="exercise">
       <div class="vars">
         <var id="arr_size">6</var>
-        <var id="JSAV">initJSAV(arr_size)</var>
+        <var id="JSAV">growthRatesPRO.initJSAV(arr_size)</var>
       </div>
 
       <div class="problems">
-        <div> <!-- Supresses answer box -->
+        <div id="GrowthRatesPROp"> <!-- Supresses answer box -->
           <div class="question">
             <p>Your task in this exercise is to put the following functions into
               their appropriate positions in the list so that finally the list will
-              contain all the functions in ascending order of their growth rates. You can swap two functions by clicking on them.</p>
+              contain all the functions in ascending order of their
+              growth rates. You can swap two functions by clicking on
+              them.</p>
             <input id="reset" type="button" value="Reset" />
-            <div id="jsav" class="jsavcanvas"></div>
+            <div id="GrowthRatesPRO" class="jsavcanvas"></div>
           </div>
           <div class="solution" data-type="custom">
             <div class="guess">
-              [userInput]
+              [growthRatesPRO.userInput]
             </div>
             <div class="validator-function">
-              if (!checkAnswer(arr_size) && !guess[0])
+              if (!growthRatesPRO.checkAnswer(arr_size) && !guess[0])
               return ""; // User did not click, and correct answer is not
-              // initial array state
-              else return checkAnswer(arr_size);
+                         // the initial array state
+              else return growthRatesPRO.checkAnswer(arr_size);
             </div>
           </div>
           <div class="hints">
             <p>Constant terms never matter, so ignore something like multiplying by 9.</p>
             <p>Focus on the exponent.</p>
             <p>Generally, things that are only logs go first.
-	     Note that <code>\log \log n</code> (taking the log of
-	     <code>\log n</code>) grows slower than
-	     <code>\log^2 n</code> (multiplying <code>\log n</code> by itself).</p>
+              Note that <code>\log \log n</code> (taking the log of
+              <code>\log n</code>) grows slower than
+              <code>\log^2 n</code> (multiplying <code>\log n</code> by itself).</p>
             <p>Generally, constant powers of <code>n</code> come after
               things with only log factors.
-	      Even a small constant power of <code>n</code> grows
+              Even a small constant power of <code>n</code> grows
               faster than things with only
               logs. So <code>\sqrt{n}</code> grows faster
               than <code>\log^3 n</code>.</p>

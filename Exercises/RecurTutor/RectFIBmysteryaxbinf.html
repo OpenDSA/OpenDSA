@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html data-require="codemirror math">
+  <head>
+    <title> Recursion Tracing Exercise: Mystery Return</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+ 
+  <body  data-height="550" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RectFIBmysteryaxbinfp"> <!-- Supresses answer box -->
+          <p class="question">Consider the following function:
+            <textarea id="codeTextarea" name="codeTextarea">
+int mystery(int a, int b) {
+  if (b == 1)	
+    return a;
+  else
+    return a + mystery(a, b - 1);
+}</textarea>
+            What is the return of calling mystery(2,0)?<br/>
+            (Either write a number, or write "infinite recursion".)
+          </p>
+          <p class="solution" data-type="text">infinite recursion</p>
+          <div class="hints">
+            <p>Initially b = 0, and the recursive function keeps on
+              decrementing b. Do you think that it will ever reach the
+              base case?</p>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,16 +1,17 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Jordan Sablan
    :requires:
-   :satisfies:
+   :satisfies: web-cat VT tools
    :topic:
 
 Using/Installing VT Development Tools
 =====================================
+
 As a Virginia Tech student you will be using a number of tools to assist in
 projects. These tools will help you submit and test your project. If you are
 working in Java you will almost certainly make use of WebCAT. WebCAT is an

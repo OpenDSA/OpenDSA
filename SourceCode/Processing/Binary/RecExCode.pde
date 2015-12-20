@@ -1,21 +1,19 @@
 boolean SUCCESS = true;
 
 /* *** ODSATag: EffCnt *** */
-static int eff_count(BinNode root) {
+static int count(BinNode root) {
   if (root == null) return 0;  // Nothing to count
-    return 1 + eff_count(root.left()) + eff_count(root.right());
+  return 1 + count(root.left()) + count(root.right());
 }
 /* *** ODSAendTag: EffCnt *** */
 
 
 /* *** ODSATag: IneffCnt *** */
 static int ineff_count(BinNode root) {
-  if (root == null) {
-    return 0;
-  }
+  if (root == null) return 0;  // Nothing to count
   int count = 0;
   if (root.left() != null) {
-    count = 1+ ineff_count(root.left());
+    count = 1 + ineff_count(root.left());
   }
   if (root.right() != null) {
     count = 1 + ineff_count(root.right());
@@ -29,20 +27,30 @@ static int ineff_count(BinNode root) {
 
 
 /* *** ODSATag: IneffbtInc *** */
-static void ineff_btInc(BinNode root , int value) {
+static void ineff_BTinc(BinNode root) {
   if (root != null) {
-    root.setElement(((Integer)root.element()) + value);
-	if(root.left()!= null) {
-      root.left().setElement(((Integer)root.left().element()) + value);
-	  ineff_btInc(root.left().left() , value);
-	}
-	if(root.right()!= null) {
-      root.right().setElement(((Integer)root.right().element()) + value);
-	  ineff_btInc(root.right().right() , value);
+    root.setElement((root.element()) + 1);
+    if (root.left() != null) {
+      root.left().setElement((root.left().element()) + 1);
+      ineff_BTinc(root.left().left());
     }
-   }
+    if (root.right() != null) {
+      root.right().setElement((root.right().element()) + 1);
+      ineff_BTinc(root.right().right());
+    }
+  }
 }
 /* *** ODSAendTag: IneffbtInc *** */
+
+/* *** ODSATag: bad_count *** */
+static int bad_count(BinNode root) {
+  if (root == null) return 0;  // Nothing to count
+  bad_count(root.left();
+  1 + bad_count(root.left()) + bad_count(root.right());
+}
+/* *** ODSAendTag: bad_count *** */
+
+
 
 void setup() {
  

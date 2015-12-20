@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -17,6 +17,9 @@
 
 Mergesort Concepts
 ==================
+
+Mergesort Concepts
+------------------
 
 A natural approach to problem solving is divide and conquer.
 To use divide and conquer when sorting, we might consider breaking the
@@ -87,16 +90,18 @@ Here is a mergesort warmup exercise to practice merging.
 
 .. avembed:: Exercises/Sorting/MergesortMergePRO.html ka
 
+
+Mergsort Practice Exercise
+--------------------------
+
 Now here is a full proficiency exercise to put it all together.
 
 .. avembed:: AV/Sorting/mergesortPRO.html pe
 
-.. showhidecontent:: MergeSortAnalysis
+This visualization provides a running time analysis for Merge Sort.
 
-   This visualization provides a running time analysis for Merge Sort.
-
-   .. inlineav:: MergeSortAnalysisCON ss
-      :output: show
+.. inlineav:: MergeSortAnalysisCON ss
+   :output: show
 
 .. odsascript:: AV/Sorting/mergesortCON.js
 .. odsascript:: AV/Development/MergeSortAnalysisCON.js

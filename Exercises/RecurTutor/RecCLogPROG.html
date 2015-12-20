@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html data-require="codemirror blockUI">
+  <head>
+    <title>Recursion Programming Exercise: log</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #RecCLogPROG .CodeMirror {
+        height: 200px;
+      }
+    </style>
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="config">
+          (function(){ window.OpenPopKa = true;}())
+        </var>
+      </div>
+      <div class="problems">
+        <div id="RecCLogPROGp"> <!-- Supresses answer box -->
+          <p class="problem">For function "log", write the missing
+            base case condition and the recursive call. This function
+            computes the log of "n" to the base "b".
+            As an example: log 8 to the base 2 equals 3
+            since 8 = 2*2*2. We can find this by dividing 8 by 2 until we
+            reach 1, and we count the number of divisions we made.
+            You should assume that "n" is exactly "b" to some integer
+            power.<br/>
+            <textarea id="codeTextarea" name="codeTextarea">
+int log(int b, int n ) {
+  if <<Missing base case condition>> {
+    return 1;
+  } else {
+    return <<Missing a Recursive case action>>
+  }
+}</textarea>
+          </p>
+          <div class="question"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess">[editor.getValue()]</div>
+            <div class="validator-function">
+              if (guess[0] != initEditor) {
+                console.log(guess[0]);
+                window.codeValue = guess[0];
+                window.progexType= "RecurTutor";
+                window.summexName=  "RecCLogPROG";
+              } else {
+                return "";
+              }
+            </div>
+          </div>
+          <div class="hints">
+	    <p>The log of any number <code>x</code> to
+	      base <code>x</code> is 1. Every time the recursive call
+	      is executed it should increment the count for how many
+	      times we can divide b by n.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html data-require="codemirror blockUI">
+  <head>
+    <title> Recursion Programming Exercise: Cannonballs </title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #RecCLargestPROG .CodeMirror {
+        height: 200px;
+      }
+    </style>
+  </head>
+
+  <body data-height="850" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="config">
+          (function(){ window.OpenPopKa = true;}())
+        </var>
+      </div>
+      <div class="problems">
+        <div id="RecWCannonballPROGp"> <!-- Supresses answer box -->
+          <p class="problem">
+          <p align="center"><img src= "../../RST/Images/cannonballs.png" width="100" height="75"></p>
+          Spherical objects, such as cannonballs, can be stacked to form a pyramid with one
+          cannonball at the top, sitting on top of a square composed of four cannonballs,
+          sitting on top of a square composed of nine cannonballs, and so forth.
+          Given the following recursive function signature, write a recursive function
+          that it takes as its argument the height of a pyramid of cannonballs
+          and returns the number of cannonballs it contains.<br/>
+          <textarea id="codeTextarea" name="codeTextarea">
+int Cannonball(int height){
+
+
+}</textarea>
+          </p>
+          <div class="question"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess">[editor.getValue()]</div>
+            <div class="validator-function">
+              if (guess[0] != initEditor) {
+                console.log(guess[0]);
+                window.codeValue = guess[0];
+                window.progexType= "RecurTutor";
+                window.summexName = "RecWCannonballPROG";
+              } else {
+                return "";
+              }
+            </div>
+          </div>
+          <div class="hints">
+	    <p>A cannonball pyramid of zero height has no cannonballs.</p>
+	    <p>Level i <code>i^2</code> cannonballs.</p>
+	    <p>Simply add up the number of balls at each level, using
+	      recursion.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

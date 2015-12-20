@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html data-require="codemirror blockUI">
+  <head>
+    <title>Recursion Programming Exercise: Add odd positions</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #RecCAddoddPROG .CodeMirror {
+        height: 200px;
+      }
+    </style>
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="config">
+          (function(){ window.OpenPopKa = true;}())
+        </var>
+      </div>
+      <div class="problems">
+        <div id="RecCAddoddPROGp"> <!-- Supresses answer box -->
+          <p class="problem">For function "addodd", write
+            the missing recursive call. This function
+            should return the sum of all positive odd numbers less than or
+            equal to "n".<br/>
+            <textarea id="codeTextarea" name="codeTextarea">
+int addodd(int n) {
+  if (n <= 0) {
+    return 0;
+  }
+  if (n % 2 != 0) { // Odd value
+    return <<Missing a Recursive call>>
+  } else { // Even value
+    return addodd(n - 1);
+  }
+}</textarea>
+          </p>
+          <div class="question"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess">[editor.getValue()]</div>
+            <div class="validator-function">
+              if (guess[0] != initEditor) {
+                console.log(guess[0]);
+                window.codeValue = guess[0];
+                window.progexType = "RecurTutor";
+                window.summexName = "RecCAddoddPROG";
+              } else {
+                return "";
+              }
+            </div>
+          </div>
+          <div class="hints">
+	    <p> When n is odd, accumlate n's value to whatever will be
+	    returned from the recursive call.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

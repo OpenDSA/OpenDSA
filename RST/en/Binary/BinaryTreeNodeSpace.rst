@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -11,6 +11,9 @@
 
 Binary Tree Space Requirements
 ==============================
+
+Binary Tree Space Requirements
+------------------------------
 
 This module presents techniques for calculating the amount of
 :term:`overhead` required by a :term:`binary tree`,
@@ -125,4 +128,4 @@ In any other situation, such "bit packing" tricks should be
 avoided because they are difficult to debug and understand at
 best, and are often machine dependent at worst.
 
-.. avembed:: Exercises/Binary/TreeOverheadSumm.html ka
+.. avembed:: Exercises/Binary/TreeOverheadFIB.html ka

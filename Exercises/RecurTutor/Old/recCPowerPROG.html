@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html data-require="math math-format word-problems spin">
+<head>
+  <title> Recursion Programming Exercise: Power</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+
+  <script> window.OpenPopKa = true; </script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../lib/odsaStyle-min.css"></script>
+ 
+ 
+  <script src="../../lib/codemirror/lib/codemirror.js"></script>
+  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
+  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
+  <script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    mode:  "text/x-java"
+  });
+  
+  </script>
+</head>
+<body  data-height="550" data-width="950">
+   
+<div class="exercise">
+   <div class="problems">
+    <div> <!-- Supresses answer box -->
+   
+      <p class="problem" id = "test">  Given the following recursive function 
+      write down the missing recursive call such that this function computes 
+      the value of y to the x power:
+    
+      <br />
+    </h4>
+    <p></p>
+    <textarea  id="codeTextarea">int power(int x, int y) {
+ if ( x == 1 )
+  return y;
+ else
+  return //<<Missing a Recursive call>>
+}
+
+</textarea></p>
+
+
+      <div class="question">
+	
+      </div>
+      <div class="solution" data-type="custom">
+       <div class="guess"> [ editor.getValue() ] </div>
+        <div class="validator-function">
+          window.codeValue = editor.getValue();
+          window.progexType= "recursion";    
+         window.summexName=  "recCPowerPROG";
+        </div>
+      </div>
+      <div class="hints">
+      </div>
+    </div>
+  </div>
+</div>
+ 
+</body>
+</html>

@@ -16,6 +16,9 @@
 Selection Sort
 ==============
 
+Selection Sort
+--------------
+
 Consider again the problem of sorting a pile of phone bills for the
 past year.
 Another intuitive approach might be to look through the pile until you
@@ -56,6 +59,7 @@ we will not need to look at it again.
    :output: show
 
 Selection Sort continues in this way until the entire array is sorted.
+
 The following visualization puts it all together.
 
 .. avembed:: AV/Sorting/selectionsortAV.html ss
@@ -64,23 +68,25 @@ Now try for yourself to see if you understand how Selection Sort works.
 
 .. avembed:: Exercises/Sorting/SelsortPRO.html ka
 
-.. showhidecontent:: SelectionSortAnalysis
 
-   Any algorithm can be written in slightly different ways.
-   For example, we could have written Selection Sort to find the smallest
-   record, the next smallest, and so on.
-   We wrote this version of Selection Sort to mimic the behavior of our
-   Bubble Sort implementation as closely as possible.
-   This shows that Selection Sort is essentially a Bubble Sort
-   except that rather than repeatedly swapping adjacent values to get
-   the next-largest record into place, we instead remember the position
-   of the record to be selected and do one swap at the end.
+Selection Sort Analysis
+-----------------------
 
-   This visualization analyzes the number of
-   comparisons and swaps required by Selection Sort.
+Any algorithm can be written in slightly different ways.
+For example, we could have written Selection Sort to find the smallest
+record, the next smallest, and so on.
+We wrote this version of Selection Sort to mimic the behavior of our
+Bubble Sort implementation as closely as possible.
+This shows that Selection Sort is essentially a Bubble Sort
+except that rather than repeatedly swapping adjacent values to get
+the next-largest record into place, we instead remember the position
+of the record to be selected and do one swap at the end.
 
-   .. inlineav:: SelectionSortAnalysisCON ss
-      :output: show
+This visualization analyzes the number of
+comparisons and swaps required by Selection Sort.
+
+.. inlineav:: SelectionSortAnalysisCON ss
+   :output: show
 
 There is another approach to keeping the cost of swapping records low,
 and it can be used by any sorting algorithm even when the records are

@@ -16,24 +16,24 @@ $(document).ready(function() {
 
   // Slide 1
   av.umsg(interpret("sc1"));
-  pseudo.highlight(1);
+  pseudo.highlight("sig");
   av.displayInit();
 
   // Slide 2
   av.umsg(interpret("sc2"));
-  pseudo.highlight([2, 3]);
-  pseudo.unhighlight(1);
+  pseudo.highlight("bc");
+  pseudo.unhighlight("sig");
   av.step();
 
   // Slide 3
   av.umsg(interpret("sc3"));
-  pseudo.unhighlight([2, 3]);
-  pseudo.highlight(5);
+  pseudo.unhighlight("bc");
+  pseudo.highlight("rc");
   av.step();
 
   // Slide 4
   av.umsg(interpret("sc4"));
-  pseudo.unhighlight(5);
+  pseudo.unhighlight("rc");
   av.step();
 
   // Slide 5
@@ -56,7 +56,7 @@ $(document).ready(function() {
 
   // Slide 7
   av.umsg(interpret("sc7"));
-  pseudo.highlight(2);
+  pseudo.highlight("bccond");
   var Pointer3 = av.g.line(320, 210, 370, 210,
                    {"arrow-end": "classic-wide-long", opacity: 0, stroke: "black", "stroke-width": 5});
   Pointer3.show();
@@ -72,8 +72,8 @@ $(document).ready(function() {
 
   // Slide 8
   av.umsg(interpret("sc8"));
-  pseudo.unhighlight(2);
-  pseudo.highlight(3);
+  pseudo.unhighlight("bccond");
+  pseudo.highlight("bcac");
   // All the way back
   label.hide();
   label2.hide();
@@ -95,8 +95,8 @@ $(document).ready(function() {
 
   // Slide 9
   av.umsg(interpret("sc9"));
-  pseudo.unhighlight(3);
-  pseudo.highlight(5);
+  pseudo.unhighlight("bcac");
+  pseudo.highlight("rc");
   dots3 = av.g.circle(470, 210, 2);
   dots2 = av.g.circle(430, 210, 2);
   dots1 = av.g.circle(390, 210, 2);

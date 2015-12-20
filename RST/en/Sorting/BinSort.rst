@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -13,6 +13,9 @@
 
 Binsort
 =======
+
+Binsort
+-------
 
 Imagine that for the past year, as you paid your various bills, you
 then simply piled all the paperwork into a corner somewhere.
@@ -80,33 +83,31 @@ values fall in the range from 0 to ``MaxKeyValue``.
 .. inlineav:: binsortS2CON ss
    :output: show
 
-.. showhidecontent:: BinSortAnalysis   
+The total work required is simply that needed to place each record
+into the appropriate bin and then take all of the records out of the
+bins.
+Thus, we need to process each record twice, for :math:`\Theta(n)`
+work.
 
-   The total work required is simply that needed to place each record
-   into the appropriate bin and then take all of the records out of the
-   bins.
-   Thus, we need to process each record twice, for :math:`\Theta(n)`
-   work.
-
-   Does that cost analysis really make sense?
-   Actually, that last statement is **wrong**,
-   because it neglects a crucial observation.
-   Taking all of the records out of the bins requires Binsort to look at
-   every bin to see if it contains a record.
-   Thus, the algorithm must process ``MaxKeyValue`` bins,
-   regardless of how many of them actually hold records.
-   If ``MaxKeyValue``
-   is small compared to :math:`n`, then this is not a great expense.
-   Suppose that ``MaxKeyValue`` :math:`= n^2`.
-   In this case, the total amount of work done will be
-   :math:`\Theta(n + n^2) = \Theta(n^2)`.
-   This results in a poor sorting algorithm.
-   And the algorithm becomes even worse as the disparity between
-   :math:`n` and ``MaxKeyValue`` increases.
-   In addition, a large key range requires an unacceptably large array
-   ``B``.
-   Thus, even the extended Binsort is useful only for a limited key
-   range.
+Does that cost analysis really make sense?
+Actually, that last statement is **wrong**,
+because it neglects a crucial observation.
+Taking all of the records out of the bins requires Binsort to look at
+every bin to see if it contains a record.
+Thus, the algorithm must process ``MaxKeyValue`` bins,
+regardless of how many of them actually hold records.
+If ``MaxKeyValue``
+is small compared to :math:`n`, then this is not a great expense.
+Suppose that ``MaxKeyValue`` :math:`= n^2`.
+In this case, the total amount of work done will be
+:math:`\Theta(n + n^2) = \Theta(n^2)`.
+This results in a poor sorting algorithm.
+And the algorithm becomes even worse as the disparity between
+:math:`n` and ``MaxKeyValue`` increases.
+In addition, a large key range requires an unacceptably large array
+``B``.
+Thus, even the extended Binsort is useful only for a limited key
+range.
 
 A further generalization to Binsort would yield a :term:`bucket sort`.
 Here, each bin (now called a bucket) is associated with not just one

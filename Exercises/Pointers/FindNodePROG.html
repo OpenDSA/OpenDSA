@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html data-require="codemirror blockUI">
+  <head>
+    <title> Pointers Find Node Programming Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #FindNodePROG .CodeMirror {
+      height: 200px;
+      }
+    </style>
+  </head>
+
+  <body  data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="config">
+          (function(){ window.OpenPopKa = true;}())
+        </var>
+      </div>
+      <div class="problems">
+        <div id="NodeFindPROGp"> <!-- Supresses answer box -->
+          <p class="problem">Given the following function header,
+            write the code to find a node in a linked list with the
+            value K.<br />
+            <textarea id="codeTextarea" name="codeTextarea">
+int findNode(int K) {
+
+
+}</textarea>
+          </p>
+          <div class="question"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess">[editor.getValue()]</div>
+            <div class="validator-function">
+              if (guess[0] != initEditor) {
+                console.log(guess[0]);
+                window.codeValue = guess[0];
+                window.progexType= "RecurTutor";
+                window.summexName= "FindNodePROG";
+              } else {
+                return "";
+              }
+            </div>
+          </div>
+          <div class="hints">
+            <p>Do sequential search moveing through the nodes one at a time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

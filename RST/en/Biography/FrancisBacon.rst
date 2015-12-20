@@ -1,14 +1,17 @@
-
-.. Copyright (c) 2015 by Dave Parillo`
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://algoviz.org/OpenDSA for more details.
+.. Copyright (c) 2015-2016 by Dave Parillo`
 .. This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
 
 .. avmetadata::
    :author: Dave Parillo
-   :prerequisites:
    :topic: Biography
 
 Spotlight: Francis Bacon
 ========================
+
+Spotlight: Francis Bacon
+------------------------
 
 .. sidebar:: Portrait of Francis Bacon [#]_
 
@@ -54,10 +57,6 @@ things which obstructed the path of correct scientific reasoning.
 
 :Idols of the Theatre:
     Following of academic dogma and not asking questions about the world.
-
-
-Notes
------
 
 .. [#] Frans Pourbus the younger, *Portrait of Francis Bacon*
    [Public domain], via Wikimedia Commons.

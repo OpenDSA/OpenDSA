@@ -1,20 +1,23 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Jordan Sablan
    :requires:
-   :satisfies:
-   :topic:
+   :satisfies: JUnit intro
+   :topic: JUnit
 
 JUnit Testing And You
 =====================
-*To err is human, to correct is divine.*
 
 Getting Started
 ---------------
+
+*To err is human, to correct is divine.*
+
+
 When writing code we often will make mistakes. To develop code with no bugs
 would be akin to having the power of a modern day God! As such it is extremely
 important that we test our code frequently and often in order to help spot, fix
@@ -24,13 +27,14 @@ of this suite and released them for students to make use of. For the purpose of
 these tutorials we will make use of this class for our test cases. Note that it
 will in many ways be similar to the standard JUnit functionality, but will have
 some additional functions that help with testing. As such we must import and set
-our program to make use of this library. You can find directions to so on this  
-`page <http://web-cat.org/junit-quickstart/>`__.
+our program to make use of this library. You can find directions to so on
+`this page <http://web-cat.org/junit-quickstart/>`_.
 In addition to configuring your build path, be sure to look over this page as it
 is an excellent quick start to JUnit functionality.
 
 Design Considerations
 ---------------------
+
 There are a few different approaches to testing code. The approach most classes
 at Virginia Tech teach is code coverage. The code coverage approach to testing
 is fairly easy to understand. If our test cases hit every line of code and
@@ -54,6 +58,7 @@ seperate test methods: testJump and testWalk.
 
 Meaningful Tests
 ----------------
+
 When writing your test cases it is important not to just run the code with
 random tests. All the tests should be designed to test common runtime conditions
 as well as possible edge conditions that may change the behavior. Additionally
@@ -64,6 +69,7 @@ Remember quality over quantity!
 
 More Information
 ----------------
-For more information this
-`blog <http://openmymind.net/2011/2/23/Foundations-of-Programming-2-Chapter-5-Effective-T/>`__
+
+For more information
+`this blog <http://openmymind.net/2011/2/23/Foundations-of-Programming-2-Chapter-5-Effective-T/>`_
 is an excellent resource to read and learn from.

@@ -1,17 +1,21 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites: GenTreeIntro
+   :requires: general trees
+   :satisfies: Union/Find
    :topic: Union/Find
    
 .. odsalink:: AV/General/UFCON.css
 
 Union/Find and the Parent Pointer Implementation
 ================================================
+
+The Union/Find Problem
+----------------------
 
 :term:`General trees <general tree>` are trees whose
 :term:`internal nodes <internal node>` have no fixed number of
@@ -45,6 +49,10 @@ If the roots are different, then the two nodes are not in the same
 tree.
 The process of finding the ultimate root for a given node we will call
 :term:`FIND`.
+
+
+Parent Pointer Trees
+~~~~~~~~~~~~~~~~~~~~
 
 The parent pointer representation is most often used to maintain a
 collection of :term:`disjoint sets`.
@@ -117,6 +125,10 @@ UNION/FIND array, and methods ``UNION`` and
    This figure shows two trees stored in the same parent pointer array,
    one rooted at :math:`F` (with a total of 9 nodes),
    and the other rooted at :math:`J` (with a total of 1 node).
+
+
+Equivalence Classes
+~~~~~~~~~~~~~~~~~~~
 
 Consider the problem of assigning the members of a set to
 disjoint subsets called
@@ -208,6 +220,10 @@ Achieving this goal all the time would require too much additional
 processing to be worth the effort, so we must settle for getting as
 close as possible.
 
+
+Weighted Union
+~~~~~~~~~~~~~~
+
 A low-cost approach to reducing the height is to be smart about how
 two trees are joined together.
 One simple technique, called the
@@ -238,6 +254,10 @@ weighted union.
 .. inlineav:: ufCON ss
    :output: show
 
+
+Path Compression
+~~~~~~~~~~~~~~~~
+
 The weighted union rule helps to minimize the depth of the tree, but
 we can do better than this.
 :term:`Path compression <path compression>` is a method that tends to
@@ -265,45 +285,42 @@ step in the previous example.
    :output: show
 
 Path compression keeps the cost of each FIND operation very
-close to constant. [#]_
+close to constant.
+
+To be more precise about what is meant by "very close to constant",
+the cost of path compression for :math:`n` FIND operations on
+:math:`n` nodes (when combined with the weighted union rule for
+joining sets) is approximately
+:math:`\Theta(n \log^* n)`.
+The notation :math:`\log^* n` means the number of times that
+the log of :math:`n` must be taken before :math:`n \leq 1`.
+For example, :math:`\log^* 65536` is 4 because
+:math:`\log 65536 = 16, \log 16 = 4, \log 4 = 2`, and finally
+:math:`\log 2 = 1`.
+Thus, :math:`\log^* n` grows *very* slowly, so the cost for a series
+of :math:`n` FIND operations is very close to :math:`n`.
+
+Note that this does not mean that the tree resulting from
+processing :math:`n` equivalence pairs necessarily has depth
+:math:`\Theta(\log^* n)`.
+One can devise a series of equivalence operations that yields
+:math:`\Theta(\log n)` depth for the resulting tree.
+However, many of the equivalences in such a series will look only at
+the roots of the trees being merged, requiring little processing time.
+The *total* amount of processing time required for :math:`n`
+operations will be :math:`\Theta(n \log^* n)`,
+yielding nearly constant time for each equivalence operation.
+This is an example of
+:ref:`amortized analysis <amortized analysis> <AmortAnal>`.
+
+The expression :math:`\log^* n` is closely related to the inverse of
+Ackermann's function.
+For more information about Ackermann's function and the cost of path
+compression for UNION/FIND, see [Tarjan75]_.
+The survey article by Galil & Italiano [GalilItaliano91]_
+covers many aspects of the equivalence class problem.
 
 .. avembed:: AV/Development/UnionFindPRO.html pe
-
-Notes
------
-
-.. [#] To be more precise about what is meant by "very close to constant",
-       the cost of path compression for :math:`n` FIND operations on
-       :math:`n` nodes (when combined with the weighted union rule for
-       joining sets) is approximately
-       :math:`\Theta(n \log^* n)`.
-       The notation :math:`\log^* n` means the number of times that
-       the log of :math:`n` must be taken before :math:`n \leq 1`.
-       For example, :math:`\log^* 65536` is 4 because
-       :math:`\log 65536 = 16, \log 16 = 4, \log 4 = 2`, and finally
-       :math:`\log 2 = 1`.
-       Thus, :math:`\log^* n` grows *very* slowly, so the cost for a series
-       of :math:`n` FIND operations is very close to :math:`n`.
-
-       Note that this does not mean that the tree resulting from
-       processing :math:`n` equivalence pairs necessarily has depth
-       :math:`\Theta(\log^* n)`.
-       One can devise a series of equivalence operations that yields
-       :math:`\Theta(\log n)` depth for the resulting tree.
-       However, many of the equivalences in such a series will look only at
-       the roots of the trees being merged, requiring little processing time.
-       The *total* amount of processing time required for :math:`n`
-       operations will be :math:`\Theta(n \log^* n)`,
-       yielding nearly constant time for each equivalence operation.
-       This is an example of
-       :ref:`amortized analysis <amortized analysis> <AmortAnal>`.
-
-       The expression :math:`\log^* n` is closely related to the inverse of
-       Ackermann's function.
-       For more information about Ackermann's function and the cost of path
-       compression for UNION/FIND, see [Tarjan75]_.
-       The survey article by Galil & Italiano [GalilItaliano91]_
-       covers many aspects of the equivalence class problem.
 
 .. odsascript:: AV/General/UFfigCON.js
 .. odsascript:: AV/General/UFconcomCON.js

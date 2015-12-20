@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "av_postorder": "Postorder traversal begins.",
       "av_nullcheck": "Check to see if node is null.",
@@ -11,19 +11,19 @@
       "av_done": "Finished the postorder traversal on "
     }
   },
-  "code" : {
+  "code": {
     "processing": {
       "url": "../../../SourceCode/Processing/Binary/Traverse.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: postorder *** */",
       "endBefore": "/* *** ODSAendTag: postorder *** */",
       "tags": {
-         "sig": 1,
-         "checknull": 2,
-         "visitleft": 3,
-         "visitright": 4,
-         "visit": 5,
-         "end": 6
+        "sig": 1,
+        "checknull": 2,
+        "visitleft": 3,
+        "visitright": 4,
+        "visit": 5,
+        "end": 6
       }
     },
     "java": {
@@ -32,12 +32,12 @@
       "startAfter": "/* *** ODSATag: postorder *** */",
       "endBefore": "/* *** ODSAendTag: postorder *** */",
       "tags": {
-         "sig": 1,
-         "checknull": 2,
-         "visitleft": 3,
-         "visitright": 4,
-         "visit": 5,
-         "end": 6
+        "sig": 1,
+        "checknull": 2,
+        "visitleft": 3,
+        "visitright": 4,
+        "visit": 5,
+        "end": 6
       }
     },
     "java_generic": {
@@ -46,12 +46,12 @@
       "startAfter": "/* *** ODSATag: postorder *** */",
       "endBefore": "/* *** ODSAendTag: postorder *** */",
       "tags": {
-         "sig": 1,
-         "checknull": 2,
-         "visitleft": 3,
-         "visitright": 4,
-         "visit": 5,
-         "end": 6
+        "sig": 1,
+        "checknull": 2,
+        "visitleft": 3,
+        "visitright": 4,
+        "visit": 5,
+        "end": 6
       }
     }
   }

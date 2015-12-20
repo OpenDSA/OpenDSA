@@ -142,7 +142,7 @@ UserBook
 --------
 
 Stores book-user relationships and if user's work should be graded.
- 
+
         +-------------------------+------------------+-----------------------------+
         |   Column                |   Type           |   Description               |
         +=========================+==================+=============================+
@@ -151,7 +151,7 @@ Stores book-user relationships and if user's work should be graded.
         |   user(2)               | int              |  Reference to user          |
         +-------------------------+------------------+-----------------------------+
         |   grade                 | boolean          |  Indicates if user's grades |
-        |                         |                  |  should be displayed        | 
+        |                         |                  |  should be displayed        |
         |                         |                  |  in teachers' view          |
         +-------------------------+------------------+-----------------------------+
 
@@ -201,7 +201,33 @@ Stores clickstream/interactions data
         +-------------------------+------------------+-----------------------------+
 
 ``Foreign keys:`` (1) Book table, (2) Auth_User table (Django table), (3) Exercise table, (4) Module table.
-   
+
+``Jsav buttons``
+jsav-forward: go to the next slide.
+jsav-backward: back to the previous slide.
+jsav-begin: go to the first page of the slideshow.
+jsav-end: go to the last page of the slideshow.
+=> With AV information (see below), those actions would be very useful to calculate which slides are most viewed, and it would give a different aspect to calculate the slide reading time.
+
+``Mouse focus``
+window-focus: student is looking at this page.
+window-blur: student left this page.
+=> With this information, we might be able to calculate students' actual spent time on OpenDSA.
+
+``Module load``
+window-unload: in the current system, this actions is recorded only when students leave the page, but within Canvas, it is recorded when users hit the next button to continue reading the prose.
+document-ready: a module is loaded.
+
+``KA exercise``
+load-ka: this action is recorded when KA exercise framework is loaded. When KA exercise framework is loaded, all interaction logs go to userexerciselog, so userbutton table does not get any interaction log.
+However, when the KA exercise is refreshed (for gaming or any other reason), this actin is recorded on the userbutton table. Therefore, by counting the frequency of this action, we can tell how many times students refreshed the page to avoid hard questions. With a new infrastructure, we are getting an exact exercise name, so along with these two information, we can catch one type of gaming activity with confidence.
+
+``AV information``
+ev_num: number of clicks on Jsav with any jsav button (forward, backward, begin, or end).
+currentStep: number of required clicks to reach the last slide. Thus, the total number of slide is the value of currentStep + 1. (e.g. if there is a set of slide with five slides, the currentStep value is four since you need to click four times to get to the end of the slide show).
+
+
+
 UserModule
 ----------
 
@@ -326,7 +352,7 @@ Stores additional information about each JSAV proficiency exercise attempt.
 UserExercise
 ------------
 
-Stores statistics about student attempts each record contains the data 
+Stores statistics about student attempts each record contains the data
 related to one student and one exercise.
 
 
@@ -375,6 +401,6 @@ Stores bugs reported by users.
         |  description            | longtext         | detailed bug's description  |
         +-------------------------+------------------+-----------------------------+
         |  screenshot             | longtext         | path to the screenshot      |
-        +-------------------------+------------------+-----------------------------+   
+        +-------------------------+------------------+-----------------------------+
 
 ``Foreign keys:`` (1) Auth_User table (Django table).

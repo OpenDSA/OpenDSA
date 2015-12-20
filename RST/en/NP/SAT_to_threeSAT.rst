@@ -5,7 +5,6 @@
 
 .. avmetadata::
    :author: Nabanita Maji
-   :prerequisites:
    :topic: NP-completeness
 
 .. odsalink:: AV/Development/NP/SATto3SATCON.css
@@ -13,6 +12,8 @@
 Reduction of SAT to 3-SAT
 =========================
 
+Reduction of SAT to 3-SAT
+-------------------------
 
 The following slideshow shows that an instance of Formula Satisfiability 
 problem can be reduced to an instance of 3 CNF Satisfiability problem in 

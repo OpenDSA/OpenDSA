@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html data-require="codemirror blockUI">
+  <head>
+    <title> Recursion Programming Exercise: GCD</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #RecCGcdPROG .CodeMirror {
+        height: 200px;
+      }
+    </style>
+  </head>
+
+  <body data-height="775" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="config">
+          (function(){ window.OpenPopKa = true;}())
+        </var>
+      </div>
+      <div class="problems">
+        <div id="RecCGcdPROGp"> <!-- Supresses answer box -->
+          <p class="problem"> The greatest common divisor (GCD) of a
+            pair of numbers is the largest positive integer that
+            divides both numbers without remainder. 
+            For function "GCD", write the missing base case condition
+            and action. This function
+            will compute the greatest common divisor of "x" and "y".
+            You can assume that "x" and "y" are both integers greater
+            than 0 and <code>x > y</code>. Greatest common divisor is
+            computed as follows:<br/>
+            <pre>GCD(x, 0) = x</pre>
+            <pre>GCD(x, y) = GCD(y, x % y)</pre><br/>
+            <textarea id="codeTextarea">
+int GCD(int x, int y) {
+  if <<Missing base case condition>> {
+    <<Missing base case action>>
+  } else {
+    return GCD(y, x % y);
+  }
+}</textarea>
+          </p>
+          <div class="question"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess">[editor.getValue()]</div>
+            <div class="validator-function">
+              if (guess[0] != initEditor) {
+                console.log(guess[0]);
+                window.codeValue = guess[0];
+                window.progexType= "RecurTutor";
+                window.summexName=  "RecCGcdPROG";
+              } else {
+                return "";
+              }
+            </div>
+          </div>
+          <div class="hints">
+	    <p>Look at the base case in the first line of the
+	      definition given for GCD.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

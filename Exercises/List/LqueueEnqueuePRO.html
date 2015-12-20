@@ -1,0 +1,72 @@
+<!--
+List-based Enqueue mini-proficiency exercise.
+Written by Junyang Chen and Cliff Shaffer
+-->
+
+<!DOCTYPE html>
+<html data-require="jsav math LqueueEnqueuePRO LinkList">
+  <head>
+    <title>List-based Enqueue Proficiency Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #LqueueEnqueuePRO .jsavcanvas{
+        height: 200px;
+      }
+      #LqueueEnqueuePRO .bgColor{
+        font-size: 130%;
+        background-color: yellow;
+      }
+      #LqueueEnqueuePRO .highlight{
+        background-color: yellow;
+      }
+    </style>
+  </head>
+
+  <body data-height="550" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="arr_size">randRange(1, 6)</var>
+        <var id="insert_value">randRange(0, 999)</var>
+        <var id="JSAV">lqueueEnqueuePRO.initJSAV(arr_size,insert_value)</var>
+      </div>
+
+      <div class="problems">
+        <div id="LqueueEnqueuePROp"> <!-- Supresses answer box -->
+          <p class="problem">Enqueue a new value by creating a new
+            node, placing the value, and adjusting "front" and "rear"
+            if appropriate.</p>
+          <div class="question">
+            <p>Click "NewNode" to create a new node. Click "Insert"
+            to put the new value into the new node. To change a
+            pointer's destination, first click the pointer then click
+            the new destination.</p>
+            <input id="reset" type="button" value="Reset" />
+            <input id="NewNode" type="button" value="NewNode" />
+            <input id="insert" type="button" value="Insert" />
+            <div id="LqueueEnqueuePRO" class="jsavcanvas"></div>
+          </div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [lqueueEnqueuePRO.userInput] </div>
+            <div class="validator-function">
+              if (!lqueueEnqueuePRO.checkAnswer(arr_size) && !guess[0]) {
+                return ""; // User did not click, and correct answer is not
+                           // initial array state
+              } else { return lqueueEnqueuePRO.checkAnswer(arr_size); }
+            </div>
+          </div>
+          <div class="hints">
+	    <p>We need something to insert into, so click
+	      "NewNode".</p>
+            <p>Then, the only place the new value can go is into the
+              new node. So click "Insert".</p>
+	    <p>The new node must go at the end of the queue. So set
+	      the (null) pointer of the last node in the list to point
+	      to the new node.</p>
+	    <p>Finally, update "rear" to point to the new node.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

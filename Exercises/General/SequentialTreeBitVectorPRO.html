@@ -1,113 +1,44 @@
+<!--
+    General Trees: Bit vector representation
+    Written by Kevin Ellis and Cliff Shaffer.
+  -->
+
 <!DOCTYPE html>
-<html data-require="math">
-<head>
-  <title>Bit Vector Sequential Representation Exercise</title>
-  <script src="../../lib/jquery.min.js"></script>
-  <script src="../../lib/jquery-ui.min.js"></script>
-  <script src="../../JSAV/lib/jquery.transit.js"></script>
-  <script src="../../JSAV/lib/raphael.js"></script>
-  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
-  <script src="../../JSAV/build/JSAV-min.js"></script>
-  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
-  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
-  <style>
-    .jsavcontainer {
-      height: 320px;
-    }
-  </style>
-</head>
-
-<body data-height="700" data-width="950">
-<script>
-var jsav;
-
-var initJSAV = function () {
-  jsav = new JSAV("jsav");
-  jsav.recorded();
-}
-
-var makeTree = function () {
-  var bt = jsav.ds.binarytree({center: true, visible: true, nodegap: 35});
-  bt.root(' ');
-  //generate random tree with between 4-7nodes
-  var numNodes = Math.floor(Math.random() * (7-4))+4;
-  var i = 1;
-  while (i <= numNodes) {
-    //var temp = Math.floor(Math.random() * 100) % 2;
-    randomNode(bt, bt.root(), ' ');
-    i++;
-  }
-  bt.layout();
-  return bt;
-}
-
-function preOrderTraversal(bt) {
-  var retString = "";
-
-  var preorderNode = function (node) {
-    var isInternal = false;
-    //retString+=node.value();
-    if (node.left()) {
-      isInternal = true;
-      retString += '1';
-      preorderNode(node.left());
-    } else {
-      if (node.right()) {
-        retString += '1';
-        retString += '/';
-      } else {
-        retString += '0';
+<html data-require="jsav math SequentialTreeBitVectorPRO">
+  <head>
+    <title>Bit Vector Sequential Representation Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #SequentialTreeBitVectorPRO {
+        height: 320px;
       }
-    }
-    if (node.right()) {
-      preorderNode(node.right());
-    } else {
-      if (node.left()) {
-        retString += '/';
-      }
-    }
-  };
+    </style>
+  </head>
 
-  preorderNode(bt.root());
-  return retString;
-}
-
-function randomNode(bt,root, value) {
-  if (root == null) {
-    return bt.newNode(value);
-  } else {
-    if ((Math.floor( Math.random() * 100) % 2) == 1 ) {
-      root.left(randomNode(bt, root.left(), value));
-    } else {      
-      root.right(randomNode(bt, root.right(), value));
-    }
-  }
-}
-</script>
-
-<div class="exercise">
-  <div class="vars">
-    <var id="JSAV">initJSAV()</var>
-    <var id="BT">makeTree()</var>
-    <var id="ANS">preOrderTraversal(BT)</var>
-  </div>
-  <p class="question">Using '1' to signify internal nodes, '0' to
-    signify leaf nodes, and '/' to signify missing children, write the
-    sequential representation for this 
-    tree's structure</p> 
-  <div class="problems">
-    <div id="problem-type-or-description-2">
-      <p class="problem">
-        <div id="jsav" class="jsavcanvas"></div>
-      </p>
-      <p class="solution" data-type="text"><var>ANS</var></p>
-      <div class="hints">
-        <p>This representation is intended for full trees,
-          so make sure to use a '/' for missing children.</p>
-        <p>Answer: <var>ANS</var></p>
+  <body data-height="700" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="JSAV">sequentialTreeBitVectorPRO.initJSAV()</var>
+        <var id="BT">sequentialTreeBitVectorPRO.makeTree()</var>
+        <var id="ANS">sequentialTreeBitVectorPRO.preOrderTraversal(BT)</var>
+      </div>
+      <p class="question">Using '1' to signify internal nodes, '0' to
+        signify leaf nodes, and '/' to signify missing children, write the
+        sequential representation for this tree's structure</p>
+      <div class="problems">
+        <div id="SequentialTreeBitVectorPROp"> <!-- Supresses answer box -->
+          <p class="problem">
+            <div id="SequentialTreeBitVectorPRO" class="jsavcanvas"></div>
+          </p>
+          <p class="solution" data-type="text"><var>ANS</var></p>
+          <div class="hints">
+            <p>This representation is intended for full trees,
+              so make sure to use a '/' for missing children.</p>
+            <p>Answer: <var>ANS</var></p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</body>
+  </body>
 </html>

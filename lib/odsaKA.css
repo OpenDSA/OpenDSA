@@ -1,0 +1,51 @@
+#problemarea {
+  width: 75%;
+}
+
+#answer_area_wrap {
+    width: 23%;
+}
+
+div.exercises-card {
+    width: 850px;
+}
+
+.exercises-stack,
+.exercises-card {
+  width: 4%;
+}
+
+#solutionarea {
+  min-height: 0;
+}
+
+#modpanel {
+  width:950px;
+}
+
+body {
+  min-width: 950px;
+}
+
+#page-container {
+  min-width: 950px;
+}
+
+@media screen and (max-width: 950px) {
+  .demo-notification-bar .notification-bar-close {
+    display: none;
+  }
+}
+
+#top-header-container #top-header {
+  min-width: 950px;
+}
+
+footer .footer-container {
+  min-width: 950px;
+}
+
+.CodeMirror {
+  /* Set  borders */
+  border: 1.5px solid #000;
+}

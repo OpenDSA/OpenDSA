@@ -5,7 +5,6 @@
 
 .. avmetadata::
    :author: Nabanita Maji
-   :prerequisites:
    :topic: NP-completeness
 
 .. odsalink:: AV/Development/NP/threeSATtoHCCON.css
@@ -13,6 +12,8 @@
 Reduction of 3-SAT to Hamiltonian Cycle
 =======================================
 
+3-SAT to Hamiltonian Cycle
+--------------------------
 
 The following slideshow shows that an instance of 3-CNF Satisfiability 
 problem can be reduced to an instance of Hamiltonian Cycle problem in 

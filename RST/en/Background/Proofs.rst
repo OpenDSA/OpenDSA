@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
@@ -15,6 +15,9 @@
 
 Mathematical Proof Techniques
 =============================
+
+Mathematical Proof Techniques
+-----------------------------
 
 Solving any problem has two distinct parts:
 the investigation and the argument.
@@ -54,13 +57,16 @@ This section briefly introduces three commonly used proof techniques:
 
 #) proof by mathematical induction.
 
-Direct Proof
-------------
+
 .. index:: ! proof; direct
 
 In general, a :term:`direct proof` is just a "logical explanation".
 A direct proof is sometimes referred to as an argument by deduction.
 This is simply an argument in terms of logic.
+
+
+Direct Proof
+~~~~~~~~~~~~
 
 .. _SumDirect:
 
@@ -101,8 +107,9 @@ proofs.
 
 .. index:: ! proof; by contradiction
 
+
 Proof by Contradiction
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 The simplest way to *disprove* a theorem or statement is to find
 a counter-example to the theorem.
@@ -148,8 +155,9 @@ logical statements are the same.
 
 .. index:: ! proof; by induction
 
+
 Proof by Mathematical Induction
--------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Mathematical induction can be used to prove a wide variety of
 theorems.

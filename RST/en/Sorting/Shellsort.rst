@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -15,6 +15,12 @@
 Shellsort
 =========
 
+Shellsort
+---------
+
+Shellsort was named for its inventor, D.L. Shell, who first published
+it in 1959.
+It is also sometimes called the :term:`diminishing increment sort`.
 When properly implemented, :term:`Shellsort` will give
 substantially better performance than any of the :math:`\theta(n^2)`
 sorts like Insertion Sort or Selection Sort.
@@ -75,6 +81,7 @@ record (as will be the case for each of the sublists beginning with
 records 4 through 7), then we can skip processing them.
 
 .. inlineav:: shellsortCON1 ss
+   :output: show
 
 Shellsort will sort each of these sublists of length 2 using Insertion
 Sort.
@@ -107,6 +114,7 @@ As you click through the slides, you will see the sublists for
 increment size 4.
 
 .. inlineav:: shellsortCON4 ss
+   :output: show
 
 Each sublist of 3 records would also be sorted using an Insertion
 Sort, as shown next.
@@ -149,7 +157,11 @@ Here is a code implementation for Shellsort.
 
 Now, test your understanding of the sublist concept.
 
-.. avembed:: Exercises/Sorting/ShellsortSublist.html ka
+.. avembed:: Exercises/Sorting/ShellsortSublistSumm.html ka
+
+
+Putting It Together
+-------------------
 
 There is a lot of flexibility to picking the increment series.
 It does not need to start with the greatest power of less than
@@ -171,10 +183,18 @@ Next, let's review what makes for a legal increment series.
 
 .. avembed:: Exercises/Sorting/ShellsortSeries.html ka
 
+
+Shellsort Practice Exercise
+---------------------------
+
 Now test yourself to see how well you understand Shellsort.
 Can you reproduce its behavior?
 
 .. avembed:: AV/Sorting/shellsortPRO.html pe
+
+
+Optimizing Shellsort
+--------------------
 
 Some choices for the series of increments will make Shellsort
 run more efficiently than others.
@@ -212,21 +232,25 @@ Shellsort illustrates how we can sometimes exploit the special properties
 of an algorithm (in this case Insertion Sort) even if in general that
 algorithm is unacceptably slow.
 
+
+Shellsort Summary Questions
+---------------------------
+
 Here are some review questions to check that you understand Shellsort.
 
 .. avembed:: Exercises/Sorting/ShellsortSumm.html ka
-
-Notes
------
-
-Shellsort was named for its inventor, D.L. Shell, who first published
-it in 1959.
-
-It is also sometimes called the :term:`diminishing increment sort`.
 
 If you want to know more about Shellsort, you can find a lot of
 details about its analysis along with ideas on how to pick a good
 increment series in [KnuthV3]_.
 
 .. odsascript:: AV/Sorting/shellsortCODE.js
-.. odsascript:: AV/Sorting/shellsortCON.js
+.. odsascript:: AV/Sorting/shellsortCON1.js
+.. odsascript:: AV/Sorting/shellsortCON2.js
+.. odsascript:: AV/Sorting/shellsortCON3.js
+.. odsascript:: AV/Sorting/shellsortCON4.js
+.. odsascript:: AV/Sorting/shellsortCON5.js
+.. odsascript:: AV/Sorting/shellsortCON6.js
+.. odsascript:: AV/Sorting/shellsortCON7.js
+.. odsascript:: AV/Sorting/shellsortCON8.js
+.. odsascript:: AV/Sorting/shellsortCON9.js

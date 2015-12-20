@@ -5,13 +5,15 @@
 
 .. avmetadata::
    :author: Nabanita Maji
-   :prerequisites:
    :topic: NP-completeness
 
 .. odsalink:: AV/Development/NP/cliqueCON.css
 
 The Clique Problem
 ==================
+
+The Clique Problem
+------------------
 
 CLIQUE PROBLEM  
 

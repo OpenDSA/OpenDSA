@@ -1,29 +1,28 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
    :author: Jordan Sablan
-   :requires:
-   :satisfies:
-   :topic:
+   :requires: JUnit intro
+   :satisfies: JUnit test writing
+   :topic: JUnit
 
 Writing JUnit Tests
 ===================
-We have reviewed good design for test code and how to desgin modular and
+
+We have reviewed good design for test code and how to design modular and
 meaningful test code. This tutorial will show a basic series of tests on a
 binary search tree.
 
-Before You Start
-----------------
-Be sure you have familiarized yourself with the basics of the
-Junit/student.TestCase classes.
+Before you start, be sure you have familiarized yourself with the basics of the
+``Junit/student.TestCase classes``.
 
 *For this exercise I will be using a BST written by a V.S. Adamchik*
 
 The source code for the BST may be found
-`here <https://www.cs.cmu.edu/~adamchik/15-121/lectures/Trees/code/BST.java>`__.
+`here <https://www.cs.cmu.edu/~adamchik/15-121/lectures/Trees/code/BST.java>`_.
 
 While this class contains many methods this tutorial will only be testing a few.
 

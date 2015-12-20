@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html data-require="codemirror blockUI">
+  <head>
+    <title> Recursion Programming Exercise: Minimum of array</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #RecCSumOfDigitsPROG .CodeMirror {
+        height: 200px;
+      }
+    </style>
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="config">
+          (function(){ window.OpenPopKa = true;}())
+        </var>
+      </div>
+      <div class="problems">
+        <div id="RecHMinPROGp"> <!-- Supresses answer box -->
+          <p class="problem">For function "recursiveMin", write
+            the missing part of the recursive call. This function
+            should return the minimum element in an array of
+            integers. You should assume that "recursiveMin" is
+            initially called with "startIndex" = 0.<br/>
+            <textarea id="codeTextarea" name="codeTextarea">
+int recursiveMin(int numbers[], int startIndex) {
+  if (startIndex == numbers.length - 1) {
+    return numbers[startIndex];
+  } else {
+    return Math.min(numbers[startIndex], <<Missing a Recursive call>>);
+  }
+}</textarea>
+          </p>
+          <div class="question"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess">[editor.getValue()]</div>
+            <div class="validator-function">
+              if (guess[0] != initEditor) {
+                console.log(guess[0]);
+                window.codeValue = guess[0];
+                window.progexType = "RecurTutor";
+                window.summexName = "RecHMinPROG";
+              } else {
+                return "";
+              }
+            </div>
+          </div>
+          <div class="hints">
+	    <p> Each time the recursive call is
+	      executed, <tt>startindex</tt> should be incremented so
+	      that the recursive case action passes
+	      through all the values in the array.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

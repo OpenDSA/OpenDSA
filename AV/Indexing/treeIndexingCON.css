@@ -1,0 +1,80 @@
+/* Create styling for the pagedBSTCON diagram */
+
+/* Set size for the jsav container */
+#pagedBSTCON {
+	width: 700px;
+	height: 500px;
+}
+
+/* Change the size of the tree nodes */
+#pagedBSTCON .jsavtree .jsavnode {
+	min-width: 35px;
+	max-width: 35px;
+	min-height: 35px;
+	max-height: 35px;
+}
+
+#pagedBSTCON .jsavtree .jsavvalue {
+    height: 30px;
+}
+
+#pagedBSTCON .jsavoutput.jsavline {
+	text-align: center;
+	width: 700px;
+}
+
+#pagedBSTCON .jsavlabel {
+	z-index: 900;
+	font-size: 1.3em;
+}
+
+/* Create styling for the rebalanceBST_CON diagram */
+
+#rebalanceBSTCON {
+    width: 700px;
+    height: 500px;
+}
+
+#rebalanceBSTCON .jsavtree .jsavnode, #rebalanceBST_CON .jsavarray .jsavnode {
+    min-height: 35px;
+    max-height: 35px;
+    min-width: 35px;
+    max-width: 35px;
+}
+
+#rebalanceBSTCON .jsavtree .jsavvalue, #rebalanceBST_CON .jsavarray .jsavvalue {
+    height: 30px;
+}
+
+#rebalanceBSTCON .jsavoutput.jsavline {
+    text-align: center;
+    width: 700px;
+}
+
+#rebalanceBSTCON .jsavlabel {
+    z-index: 900;
+    font-size: 1.3em;
+}
+
+/* Create styling for the colorizedBST diagram */
+
+#colorizedBST {
+	width: 600px;
+}
+
+#colorizedBST .jsavcanvas {
+	width: 600px;
+	height: 300px;
+}
+
+#colorizedBST .jsavtree .jsavnode {
+	min-width: 20px;
+	min-height: 20px;
+	max-width: 20px;
+	max-height: 20px;
+	line-height: 20px;
+}
+
+#colorizedBST .jsavvalue {
+	height: 20px;
+}

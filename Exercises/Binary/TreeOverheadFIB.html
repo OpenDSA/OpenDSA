@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html data-require="math TreeOverheadFIB">
+  <head>
+    <title>Tree Implementation Overhead 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="TreeOverhead-base">
+          <div class="vars">
+            <var id="P">4 * randRange(1,2)</var>
+            <var id="D">randRange(1, 32)</var>
+            <var id="SUM">P+D</var>
+            <var id="ANS">treeOverheadFIB.genAnswer(2*P, 2*P+D)</var>
+          </div>
+          <p class="problem">WARNING! Read the conditions for the problems
+            in this set very carefully! The type of tree and node structure
+            can change from problem to problem.</p>
+          <p class="question">Assume that for some binary tree node
+            implementation, a pointer requires <var>P</var> bytes and a data
+            object requires <var>D</var> bytes.
+            Further assume that all nodes are implemented to store two
+            pointers and a data field.
+            Type a fraction (like "1/2") that represents the fraction of
+            the total space taken up by overhead.
+            Give your fraction in lowest terms.
+          </p>
+          <p class="solution" data-type="text"><var>ANS</var></p>
+          <div class="hints">
+            <p>The overhead is the space taken up by the
+              pointers to the node's children, as a fraction of all space
+              in the node.</p>
+            <p>Every node has two pointers and a data field.</p>
+            <p>The total space is therefore <code>2*P + D</code> and the
+              overhead is <code>2*P</code>.</p>
+            <p>If you have values like 4/8, reduce to 1/2.</p>
+          </div>
+        </div>
+
+        <div id="TreeOverhead-problem-1" data-type="TreeOverhead-base">
+          <div class="vars">
+            <var id="ANS">treeOverheadFIB.genAnswer(P, P+D)</var>
+          </div>
+          <p class="question">Assume that for some binary tree node
+            implementation, a pointer requires <var>P</var> bytes and a data
+            object requires <var>D</var> bytes.
+            Further assume that we are storing a Full binary tree, that the
+            internal nodes are implemented to store two pointers and a
+            data field,
+            and that the leaf nodes store only a data field.
+            Type a fraction (like "1/2") that represents the fraction of
+            the total space taken up by overhead.
+            Give your fraction in lowest terms.
+          </p>
+          <p class="solution" data-type="text"><var>ANS</var></p>
+          <div class="hints">
+            <p>The overhead is the space taken up by the
+              pointers to the node's children, as a fraction of all space
+              in the node.</p>
+            <p>In a full binary tree, half the nodes are leaf nodes and
+              half are internal nodes.</p>
+            <p>Internal nodes have two pointers and a data field, while
+              leaf nodes have only a data field.</p>
+            <p>The total space is therefore <code>(2*P/2) + D = P + D</code> and the
+              overhead is <code>(2*P/2)</code>.</p>
+            <p>If you have values like 4/8, reduce to 1/2.</p>
+          </div>
+        </div>
+
+        <div id="TreeOverhead-problem-2" data-type="TreeOverhead-base">
+          <div class="vars">
+            <var id="ANS">treeOverheadFIB.genAnswer(2*P, 2*P+D)</var>
+          </div>
+          <p class="question">Assume that for some binary tree node
+            implementation, a pointer requires <var>P</var> bytes and a data
+            object requires <var>D</var> bytes.
+            Further assume that we are storing a Full binary tree, that the
+            internal nodes are implemented to store only two pointers (no
+            data field),
+            and that the leaf nodes store only a data field.
+            Type a fraction (like "1/2") that represents the fraction of
+            the total space taken up by overhead.
+            Give your fraction in lowest terms.
+          </p>
+          <p class="solution" data-type="text"><var>ANS</var></p>
+          <div class="hints">
+            <p>The overhead is the space taken up by the
+              pointers to the node's children, as a fraction of all space
+              in the node.</p>
+            <p>In a full binary tree, half the nodes are leaf nodes and
+              half are internal nodes.</p>
+            <p>Internal nodes have two pointers, while
+              leaf nodes have only a data field.</p>
+            <p>The total space is therefore <code>(2*P/2) + (D/2) = P + D/2</code> and the
+              overhead is <code>P</code>. It is probably simpler to think
+              of it as <code>2*P + D</code> total space
+              and <code>2*P</code> overhead.</p>
+            <p>If you have values like 4/8, reduce to 1/2.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

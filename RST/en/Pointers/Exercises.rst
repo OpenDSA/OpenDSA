@@ -17,4 +17,4 @@ Exercises
 
 Solve following exercise.
 
-.. avembed:: Exercises/Pointers/pntrSumm1.html ka
+.. avembed:: Exercises/Pointers/FindNodePROG.html ka

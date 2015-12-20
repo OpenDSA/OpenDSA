@@ -5,8 +5,7 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites:
-   :topic:
+   :topic: Dynamic Programming
 
 Dynamic Programming
 ===================

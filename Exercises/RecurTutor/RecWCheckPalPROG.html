@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html data-require="codemirror blockUI">
+  <head>
+    <title> Recursion Programming Exercise: Check Palindrome</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #RecCLargestPROG .CodeMirror {
+        height: 200px;
+      }
+    </style>
+  </head>
+
+  <body data-height="800" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="config">
+          (function(){ window.OpenPopKa = true;}())
+        </var>
+      </div>
+      <div class="problems">
+        <div id="RecWCheckPalPROGp"> <!-- Supresses answer box -->
+          <p class="problem">Write a recursive function named "checkPalindrome"
+            that takes a string and returns true if it is a
+            palindrome and false if it is not a palindrome.
+            A string is a palindrome if it reads the same forwards or
+            back-wards.<br/>
+            <textarea  id="codeTextarea">
+boolean checkPalindrome(String s) {
+
+
+}</textarea>
+          </p>
+          <div class="question"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess">[editor.getValue()]</div>
+            <div class="validator-function">
+              if (guess[0] != initEditor) {
+                console.log(guess[0]);
+                window.codeValue = guess[0];
+                window.progexType= "RecurTutor";
+                window.summexName = "RecWCheckPalPROG";
+              } else {
+                return "";
+              }
+            </div>
+          </div>
+          <div class="hints">
+	    <p>A string of length zero or one is a palindrome.</p>
+	    <p>If the first character is not the same as the last,
+	      then it is not a palindrome.</p>
+	    <p>Be careful. s.charAt() returns a character,
+              but s.substring() returns a string. You cannot
+              compare strings with ==.</p>
+            <p>The recursive call should remove the first and last
+              characters.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

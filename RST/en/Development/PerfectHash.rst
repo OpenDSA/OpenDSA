@@ -5,13 +5,15 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
    :topic: Hashing
 
 .. index:: ! perfect hashing
 
-Perfect Hashing [STUB]
-======================
+Perfect Hashing
+===============
+
+Perfect Hashing
+---------------
 
 Perfect hashing is a technique for storing records in a hash table in
 a way that guarentees no collisions.

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html data-require="codemirror blockUI">
+  <head>
+    <title> Recursion Programming Exercise: Largest </title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #RecCLargestPROG .CodeMirror {
+        height: 200px;
+      }
+    </style>
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="config">
+          (function(){ window.OpenPopKa = true;}())
+        </var>
+      </div>
+      <div class="problems">
+        <div id="RecCLargestPROGp"> <!-- Supresses answer box -->
+          <p class="problem">Write the missing base case
+            for function "largest" such that it finds the
+            largest number in array "numbers". Note that
+            when "largest" is first called, "index" is 0.<br/>
+
+            <textarea id="codeTextarea" name="codeTextarea">
+int largest(int[] numbers, int index) {
+  if <<Missing base case>> {
+    return numbers[index];
+  } else if (numbers[index] > numbers[index+1]) {
+    numbers[index+1] = numbers[index];
+  }
+  return largest(numbers, index + 1);
+}</textarea>
+          </p>
+          <div class="question"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess">[editor.getValue()]</div>
+            <div class="validator-function">
+              if (guess[0] != initEditor) {
+              console.log(guess[0]);
+              window.codeValue = guess[0];
+              window.progexType= "RecurTutor";
+              window.summexName= "RecCLargestPROG";
+              } else {
+              return "";
+              }
+            </div>
+          </div>
+          <div class="hints">
+            <p>Notice that the index variable is incremented every
+              time the recursive call is executed. The base case
+              should be executed on the last element of the array.</p>
+            <p>The index for this element is one less than the length
+              of the array.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

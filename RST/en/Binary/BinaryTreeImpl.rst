@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -13,6 +13,9 @@
 
 Binary Tree Node Implementations
 ================================
+
+Binary Tree Node Implementations
+--------------------------------
 
 In this module we examine various ways to implement binary tree
 nodes.
@@ -150,6 +153,5 @@ caller.
 The other member functions for the derived subclasses are accessed by
 type-casting the base class pointer as appropriate, as shown in
 function ``traverse``.
-
 
 .. odsascript:: AV/Binary/expressionTraversalCON.js

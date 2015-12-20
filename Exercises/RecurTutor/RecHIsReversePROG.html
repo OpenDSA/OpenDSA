@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html data-require="codemirror blockUI">
+  <head>
+    <title> Recursion Programming Exercise: Is Reverse</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #RecHIsReversePROG .CodeMirror {
+        height: 200px;
+      }
+    </style>
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="config">
+          (function(){ window.OpenPopKa = true;}())
+        </var>
+      </div>
+      <div class="problems">
+        <div id="RecHIsReversePROGp"> <!-- Supresses answer box -->
+          <p class="problem">For function "isReverse", write
+            the two missing base case conditions. Given two strings,
+            this function returns true if the two strings are
+            identical, but are in the opposite order. Otherwise it
+            returns false.<br/>
+            <textarea id="codeTextarea" name="codeTextarea">
+boolean isReverse(String s1, String s2) {
+  if <<Missing condition 1>>
+    return true;
+  else if <<Missing condition 2>>
+    return false;
+  else {
+    String s1first = s1.substring(0, 1);           // Git first char
+    String s2last = s2.substring(s2.length() - 1); // Get last char
+    return s1first.equals(s2last) &&
+           isReverse(s1.substring(1), s2.substring(0, s2.length() - 1));
+  }
+}</textarea>
+          </p>
+          <div class="question"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess">[editor.getValue()]</div>
+            <div class="validator-function">
+              if (guess[0] != initEditor) {
+              console.log(guess[0]);
+              window.codeValue = guess[0];
+              window.progexType = "RecurTutor";
+              window.summexName = "RecHIsReversePROG";
+              } else {
+              return "";
+              }
+            </div>
+          </div>
+          <div class="hints">
+	    <p> Think about if the both strings are empty or if one of
+	      them is empty.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -5,13 +5,15 @@
 
 .. avmetadata::
    :author: Nabanita Maji
-   :prerequisites:
    :topic: NP-completeness
 
 .. odsalink:: AV/Development/NP/vertexCoverCON.css
 
 The Vertex Cover Problem
 ========================
+
+Vertex Cover
+------------
 
 THE VERTEX COVER PROBLEM.
 

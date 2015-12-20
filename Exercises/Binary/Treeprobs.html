@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html data-require="math jsav Treeprobs">
+  <head>
+    <title>Tree Definition Questions</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+    #Treeprobs {
+      height: 200px;
+      border: 0;
+    }
+    </style>
+  </head>
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Treeprobs-base">
+          <div class="vars">
+            <var id="ANS">5</var>
+            <var id="JSAV">treeprobs.initJSAV()</var>
+          </div>
+          <p class="question">How many internal nodes does this tree have?
+            <div id="Treeprobs" class="jsavcanvas"></div>
+          </p>
+          <p class="solution" data-type="text"><var>ANS</var></p>
+          <div class="hints">
+            <p>Anything that is <em>not</em> a leaf node is an
+            internal node. Internal nodes might have 1 or 2 children.</p>
+          </div>
+        </div>
+        <div id="Treeprobs-problem-1" data-type="Treeprobs-base">
+          <div class="vars">
+            <var id="ANS">4</var>
+          </div>
+          <p class="question">How many leaf nodes does this tree have?</p>
+          <p class="solution" data-type="text"><var>ANS</var></p>
+          <div class="hints">
+            <p>Anything that has <em>no</em> children is a leaf node.</p>
+          </div>
+        </div>
+        <div id="Treeprobs-problem-2" data-type="Treeprobs-base">
+          <div class="vars">
+            <var id="ANS">6</var>
+          </div>
+          <p class="question">How many nodes in the tree have at least one sibling?</p>
+          <p class="solution" data-type="text"><var>ANS</var></p>
+          <div class="hints">
+            <p>Siblings must have the same parent. If a node has two
+            children, then each such child has a sibling.</p>
+          </div>
+        </div>
+        <div id="Treeprobs-problem-3" data-type="Treeprobs-base">
+          <div class="vars">
+            <var id="ANS">8</var>
+          </div>
+          <p class="question">How many descendents does the root of this
+          tree have?</p>
+          <p class="solution" data-type="text"><var>ANS</var></p>
+          <div class="hints">
+            <p>Every node <em>except</em> the root is a descendent.</p>
+          </div>
+        </div>
+        <div id="Treeprobs-TreeHeight" data-type="Treeprobs-base">
+          <p class="question">What is the height of this tree?</p>
+          <div class="solution"><var>4</var></div>
+          <ul class="choices" data-category="true">
+            <li>0</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>9</li>
+            <li>Trees have depth -- they do not have height</li>
+            <li>None of the above</li>
+          </ul>
+          <div class="hints">
+            <p>Count the number of steps to the deepest node, and add 1.</p>
+          </div>
+        </div>
+        <div id="Treeprobs-TreeDepth" data-type="Treeprobs-base">
+          <p class="question">What is the depth of this tree?</p>
+          <div class="solution">Trees have height -- they do not have depth</div>
+          <ul class="choices" data-category="true">
+            <li>0</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>9</li>
+            <li>Trees have height -- they do not have depth</li>
+            <li>None of the above</li>
+          </ul>
+          <div class="hints">
+            <p>Nodes have depth.</p>
+          </div>
+        </div>
+        <div id="Treeprobs-FullComplete" data-type="Treeprobs-base">
+          <p class="question">Which statement is correct?</p>
+          <div class="solution">The tree is neither full nor complete</div>
+          <ul class="choices">
+            <li>The tree is complete but not full</li>
+            <li>The tree is full but not complete</li>
+            <li>The tree is full and complete</li>
+          </ul>
+          <div class="hints">
+            <p>Do any internal nodes have only one child? If so, the
+            tree is <em>not</em> full.</p>
+            <p>A complete tree fills in nodes level by level, with the
+            bottom level filled in from left to right.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

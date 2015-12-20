@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html data-require="codemirror math RectFIBmystery">
+  <head>
+    <title> Recursion Tracing Exercise: Mystery Return</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars" >
+        <var id="n"> randRange(-29999, 29999)</var>
+        <var id="ANS">rectFIBmystery.checkAnswer(n)</var>
+      </div>
+      <div class="problems">
+        <div id="RectFIBmysteryp"> <!-- Supresses answer box -->
+          <p class="question">Consider the following code:
+            <textarea id="codeTextarea" name="codeTextarea">
+public void mystery(int n) {
+  if (n < 0) {
+    System.out.print("-");
+    mystery(-n);
+  } else if (n < 10) {
+      System.out.println(n);
+  } else {
+    int two = n % 100;
+    System.out.print(two / 10);
+    System.out.print(two % 10);
+    mystery(n / 100); 
+  } 
+}</textarea>
+            What will be printed by the call <tt>mystery(<var>n</var>)</tt>?
+          </p>
+          <p class="solution" data-type="text"><var>ANS</var></p>
+          <div class="hints">
+            <p>The recursive call strips off the rightmost two digits
+              and prints them.</p>
+            <p>My answer is <var>ANS</var>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

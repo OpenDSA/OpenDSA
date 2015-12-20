@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -13,18 +13,20 @@
 Binary Tree as a Recursive Data Structure
 =========================================
 
-A recursive data structure is a data structure that is partially
-composed of smaller or simpler instances of the same data structure
-where the relationships identified by the structure provides a natural
-model for the recursive algorithm to work with that data.
-For example, lists and binary trees could be viewed as a recursive
+Binary Tree as a Recursive Data Structure
+-----------------------------------------
+
+A :term:`recursive data structure` is a data structure that is partially
+composed of smaller or simpler instances of the same data structure.
+For example, :term:`linked lists <linked list>` and
+:term:`binary trees <binary tree>` can be viewed as recursive
 data structures. 
 A list is a recursive data structure because a list can be defined as
 either (1) an empty list or (2) a node followed by a list.
-A binary tree can be defined as (1) an empty tree or
-(2) a node pointing to two binary trees, one on its right and the
-other one on its left.
-Here are examples of a recursive view of data structures.
+A binary tree is typically defined as
+(1) an empty tree or
+(2) a node pointing to two binary trees, one its left child and the
+other one its right child.
 
 .. _ListRecDS:
 
@@ -37,8 +39,8 @@ Here are examples of a recursive view of data structures.
 .. inlineav:: BinRecDSCON dgm
    :align: justify
    
-Recursive definitions for data structures naturally lead to recursive
-implementations for algorithms on those data structures.
+The recursive relationships used to define a structure provide a
+natural model for any recursive algorithm on the structure.
 
 .. inlineav:: SumBinaryTreeCON ss
    :output: show

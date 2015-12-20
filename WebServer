@@ -4,5 +4,6 @@
 # web server running, here is a little python-based web server.
 # You only need to have Python installed to run this.
 # After invoking this script from ~OpenDSA, point your web browser to:
-# http://127.0.0.1:8000/
-python -m SimpleHTTPServer
+# http://127.0.0.1:8080/
+# python -m SimpleHTTPServer
+sudo python server.py 0.0.0.0:8080

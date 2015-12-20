@@ -5,13 +5,17 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
+   :requires: hash intro
+   :satisfies: hash function
    :topic: Hashing
 
 .. index:: ! hashing function
 
 Hash Function Principles
 ========================
+
+Hash Function Principles
+------------------------
 
 Hashing generally takes records whose key values come from a
 large range and stores those records in a table

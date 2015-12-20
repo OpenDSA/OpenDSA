@@ -1,0 +1,79 @@
+<!--
+Linked List Insertion mini-proficiency exercise.
+Written by Junyang Chen and Cliff Shaffer
+-->
+<!DOCTYPE html>
+<html data-require="jsav math LlistInsertPRO">
+  <head>
+    <title>Linked List Insertion Proficiency Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+    #LlistInsertPRO .jsavcanvas {
+      height: 150px;
+    }
+
+    #LlistInsertPRO .bgColor {
+      font-size: 130%;
+      background-color: yellow;
+    }
+    </style>
+  </head>
+  <body data-height="900" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="arr_size">randRange(4, 6)</var>
+        <var id="insert_value">randRange(0, 999)</var>
+        <var id="insert_pos">randRange(0, arr_size-1 - 2)</var>
+        <var id="JSAV">llistInsertPRO.initJSAV(arr_size, insert_pos,insert_value)</var>
+      </div>
+      <div class="problems">
+        <div id=LlistInsertPROp> <!-- Suppresses answer box -->
+        <p class="problem">
+          Your task in this exercise is to show the behavior for linked list
+          insertion. You must insert the value <b><var>insert_value</var></b> to
+          the current position. In the process, you will need to create a new node
+          and move some node values and pointers.
+        </p>
+        <div class="question">
+          <p> To move an element value from one node to another, click on it (to
+            highlight it), then click on the element position in the node where
+            you want it to go. You can insert the new value
+            <b><var>insert_value</var></b> into a highlighted node by clicking the
+            "Insert" button. You can create a new link node by clicking the
+            "NewNode" button. To change a pointer, click on its box (on the right
+            side of the node) to highlight it, then click on the node that you
+          want it to point to.</p>
+          <input id="reset" type="button" value="Reset" />
+          <input id="NewNode" type="button" value="NewNode" />
+          <input id="insert" type="button" value="Insert" />
+          <div id="LlistInsertPRO" class="jsavcanvas"></div>
+        </div>
+        <div class="solution" data-type="custom">
+          <div class="guess"> [llistInsertPRO.userInput] </div>
+          <div class="validator-function">
+            if (!llistInsertPRO.checkAnswer() && !guess[0]) {
+            return ""; // User did not click, and correct answer is not
+            // initial array state
+            } else { return llistInsertPRO.checkAnswer(arr_size); }
+          </div>
+        </div>
+        <div class="hints">
+          <p>You want to reproduce the behavior of the insertion
+          function. Try starting with a new node.</p>
+          <p>Remember that the new node has to come after the current
+            node in the list, but we want the new value to appear before
+          the the current node's value.</p>
+          <p>So move the current node's value to the new node's value,
+            then use "insert" to put the new value into the current
+          node.</p>
+          <p>Now you need to fix up the pointers. Click the new node's
+            pointer box, then click the node after current. Click the
+            current node's pointer box, then click the new node.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

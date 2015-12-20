@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "av_c1": "Consider inserting a record with key value 30 in this tree. We call the findhelp method with a pointer to the BST root (the node with value 37).",
       "av_c2": "Check what rt is pointing to. It is not null.",
@@ -17,20 +17,20 @@
       "av_c19": "Finally we return from initial call to inserthelp, returning a pointer to the node with value 37 (the root of the original tree). We now re-assign the BST's root pointer."
     }
   },
-  "code" : {
+  "code": {
     "processing": {
       "url": "../../../SourceCode/Processing/Binary/BST.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: inserthelp *** */",
       "endBefore": "/* *** ODSAendTag: inserthelp *** */",
       "tags": {
-         "sig": 1,
-         "checknull": 2,
-         "compare": 3,
-         "visitleft": 4,
-         "visitright": 6,
-         "return": 7,
-         "end": 8
+        "sig": 1,
+        "checknull": 2,
+        "compare": 3,
+        "visitleft": 4,
+        "visitright": 6,
+        "return": 7,
+        "end": 8
       }
     },
     "java": {
@@ -39,13 +39,13 @@
       "startAfter": "/* *** ODSATag: inserthelp *** */",
       "endBefore": "/* *** ODSAendTag: inserthelp *** */",
       "tags": {
-         "sig": 1,
-         "checknull": 2,
-         "compare": 3,
-         "visitleft": 4,
-         "visitright": 6,
-         "return": 7,
-         "end": 8
+        "sig": 1,
+        "checknull": 2,
+        "compare": 3,
+        "visitleft": 4,
+        "visitright": 6,
+        "return": 7,
+        "end": 8
       }
     },
     "java_generic": {
@@ -54,13 +54,13 @@
       "startAfter": "/* *** ODSATag: inserthelp *** */",
       "endBefore": "/* *** ODSAendTag: inserthelp *** */",
       "tags": {
-         "sig": 1,
-         "checknull": 2,
-         "compare": 3,
-         "visitleft": 4,
-         "visitright": 6,
-         "return": 7,
-         "end": 8
+        "sig": 1,
+        "checknull": 2,
+        "compare": 3,
+        "visitleft": 4,
+        "visitright": 6,
+        "return": 7,
+        "end": 8
       }
     }
   }

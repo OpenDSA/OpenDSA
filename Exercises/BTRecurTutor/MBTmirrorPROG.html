@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html data-require="codemirror blockUI math math-format word-problems spin">
+  <head>
+    <title> Structurally Identical Binary Trees Exercise</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #MBTmirrorPROG .CodeMirror {
+        height: 200px;
+      }
+    </style>
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="config">
+          (function(){ window.OpenPopKa = true;}())
+        </var>
+      </div>
+      <div class="problems">
+        <div id="MBTmirrorPROGp"> <!-- Supresses answer box -->
+          <p class="problem">Given two binary trees, return True if and
+            only if they are mirror images of each other.<br/>
+
+            <textarea id="codeTextarea" name="codeTextarea">
+boolean MBTmirror(BSTNode root1, BSTNode root2) {
+// Your code goes between these lines
+
+
+// Your code goes between these lines
+}</textarea>
+          </p>
+          <div class="question"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [editor.getValue()] </div>
+            <div class="validator-function">
+              if (guess[0] != initEditor) {
+                console.log(guess[0]);
+                window.codeValue = guess[0];
+                window.progexType= "BTRecurTutor";
+                window.summexName= "MBTmirrorPROG";
+              } else {
+                return "";
+              }
+            </div>
+          </div>
+          <div class="hints">
+            <p>To be mirrors, the left subtree of the first tree must mirror the
+              right subtree of the second tree. And the right subtree of the first
+              tree must mirror the left subtree of the second tree.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

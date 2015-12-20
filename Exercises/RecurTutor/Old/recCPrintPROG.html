@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html data-require="math math-format word-problems spin">
+<head>
+  <title> Recursion Programming Exercise: Print</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+
+  <script> window.OpenPopKa = true;  </script>
+  <script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  <script src="../../lib/odsaStyle-min.css"></script>
+  
+
+  <script src="../../lib/codemirror/lib/codemirror.js"></script>
+  <link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css">
+  <script src="../../lib/codemirror/mode/clike/clike.js"></script>
+  <script>
+  var editor = CodeMirror.fromTextArea(codeTextarea, {
+    lineNumbers: true,
+    mode:  "text/x-java"
+  });
+  </script>
+
+
+</head>
+<body >
+  
+<div class="exercise">
+  <div class="vars">
+    <var id="listel1">randRange(0, 99)</var>
+    <var id="listel2">randRange(0, 99)</var>
+    <var id="listel3">randRange(0, 99)</var>
+    <var id="listel4">randRange(0, 99)</var>
+  </div>
+
+  <div class="problems">
+    <div> <!-- Supresses answer box -->
+      <p class="problem" id = "test"> Given the following recursive function, 
+      write down the missing code so that this function concatenates the values 
+      in an array named list and returns it in a String. 
+      The values must be separated with a space and in the order of increasing 
+      subscript. The initial call to the function will be made with an index 
+      value of zero.
+      <br />
+    </h4>
+    <p></p>
+    <textarea  id="codeTextarea">
+String recursiveprint(String[] list, int index) { 
+ if (index < list.length) 
+   // <<Missing code>> 
+
+ return "";   
+}
+</textarea></p>
+
+      <div class="question">
+	
+      </div>
+      <div class="solution" data-type="custom">
+       <div class="guess"> [ editor.getValue() ] </div>
+        <div class="validator-function">
+          window.codeValue = editor.getValue();
+          window.progexType= "recursion";          
+          window.summexName = "recCPrintPROG";
+        </div>
+      </div>
+      <div class="hints">
+      </div>
+    </div>
+  </div>
+</div>
+ 
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html data-require="codemirror blockUI">
+  <head>
+    <title> Recursion Programming Exercise: Count Characters</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #RecCSumOfDigitsPROG .CodeMirror {
+        height: 200px;
+      }
+    </style>
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="config">
+          (function(){ window.OpenPopKa = true;}())
+        </var>
+      </div>
+      <div class="problems">
+        <div id="RecCCountChrPROGp"> <!-- Supresses answer box -->
+          <p class="problem">For function "countChr", write
+            the missing part of the recursive call. This function
+            should return the number of times that the letter "A"
+            appears in string "str".<br/>
+            <textarea id="codeTextarea" name="codeTextarea">
+int countChr(String str) {
+  if (str.length() == 0) {
+    return 0;
+  }
+  int count = 0;
+  if (str.substring(0, 1).equals("A")) {
+    count = 1;
+  }
+  return count + <<Missing a Recursive call>>
+}</textarea>
+          </p>
+          <div class="question"></div>
+          <div class="solution" data-type="custom">
+            <div class="guess">[editor.getValue()]</div>
+            <div class="validator-function">
+              if (guess[0] != initEditor) {
+                console.log(guess[0]);
+                window.codeValue = guess[0];
+                window.progexType = "RecurTutor";
+                window.summexName = "RecCCountChrPROG";
+              } else {
+                return "";
+              }
+            </div>
+          </div>
+          <div class="hints">
+			  <p>The string passed in the  recursive call should be less by one character everytime the recursive call is executed. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

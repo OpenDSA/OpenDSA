@@ -1,6 +1,6 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -10,6 +10,9 @@
 
 Implementing Mergesort
 ======================
+
+Implementing Mergesort
+----------------------
 
 Implementing Mergesort presents a number of technical difficulties.
 The first decision is how to represent the lists.
@@ -96,8 +99,6 @@ Here is a visualization for the optimized merge step.
 
 .. inlineav:: mergeImplS2CON ss
    :output: show
-
-Now here are some review questions.
 
 .. avembed:: Exercises/Sorting/MergesortSumm.html ka
 

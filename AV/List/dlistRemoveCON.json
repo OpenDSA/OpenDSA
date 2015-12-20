@@ -1,5 +1,5 @@
 {
-  "translations" :{
+  "translations": {
     "en": {
       "av_c1": "Now we will look at the remove method. Here is the linked list before we remove the node with value 8.",
       "av_c2": "Since curr is not at the tail position, we can proceed",
@@ -12,7 +12,7 @@
       "av_c9": "Return value removed."
     }
   },
-  "code" : {
+  "code": {
     "processing": {
       "url": "../../../SourceCode/Processing/Lists/DList.pde",
       "lineNumbers": false,

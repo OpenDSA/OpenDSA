@@ -1,14 +1,17 @@
-
-.. Copyright (c) 2015 by Dave Parillo`
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://algoviz.org/OpenDSA for more details.
+.. Copyright (c) 2015-2016 by Dave Parillo`
 .. This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
 
 .. avmetadata::
    :author: Dave Parillo
-   :prerequisites:
    :topic: Biography
 
 Spotlight: Carl Friedrich Gauss
 ===============================
+
+Spotlight: Carl Friedrich Gauss
+-------------------------------
 
 .. index:: Gauss, Carl Friedrich Gauss
 
@@ -83,11 +86,6 @@ Today Gauss's name occurs in many places in mathematics and science:
 Gauss died in Göttingen, at the age of 78 on February 23, 1855.
 In Brunswick, there is a statue of him.
 Its base is, appropriately, a 17 pointed star.
-
-
-
-Notes
------
 
 .. [#] Gottlieb Biermann, *Portrait of Carl Friedrich Gauss*
    By Gottlieb Biermann A. Wittmann (photo) [Public domain], via Wikimedia Commons

@@ -1,20 +1,47 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://algoviz.org/OpenDSA for more details.
-.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: Sally Hamouda
+   :author: Sally Hamouda and Cliff Shaffer
    :satisfies: recursion tracing
    :topic: Recursion
 
 Tracing Practice Exercises
 ===========================
-.. avembed:: Exercises/RecurTutor/recTracingSumm1.html ka
-.. avembed:: Exercises/RecurTutor/recTracingSumm2.html ka
-.. avembed:: Exercises/RecurTutor/recTracingSumm3.html ka
-.. avembed:: Exercises/RecurTutor/recTracingSumm4.html ka
-.. avembed:: Exercises/RecurTutor/recTracingSumm5.html ka
-.. avembed:: Exercises/RecurTutor/recTracingSumm6.html ka	
+
+Forward Flow Tracing Exercises
+------------------------------
+
+.. avembed:: Exercises/RecurTutor/RecTraceSummFwdFlow.html ka
 
 
+Backward Flow Tracing Exercises
+-------------------------------
+
+.. avembed:: Exercises/RecurTutor/RecTraceSummbckwrdFlow.html ka
+
+
+Find Error Tracing Exercises
+----------------------------
+
+.. avembed:: Exercises/RecurTutor/RecTraceSummFuncErr.html ka
+
+
+Two Recursive Calls Tracing Exercises
+-------------------------------------
+
+.. avembed:: Exercises/RecurTutor/RecTraceSummTwoRC.html ka
+
+
+How Many Times Tracing Exercises
+--------------------------------
+
+.. avembed:: Exercises/RecurTutor/RecTraceSummHowmany.html ka
+
+
+Harder Tracing Exercises
+------------------------
+
+.. avembed:: Exercises/RecurTutor/RecTraceSummHard.html ka	
