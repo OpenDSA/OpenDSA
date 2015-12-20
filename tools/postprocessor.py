@@ -479,22 +479,24 @@ def make_lti(config):
     module_item_id = "NOT FOUND"
     for chapter_name, chapter_data in config.chapters.items():
       for module_name, module_data in chapter_data.items():
-        if 'item_id' in module_data:
-          module_item_id = module_data['item_id']
-          url_index[module_name] = URL_SOURCE.format(course_id=course_id, item_id=module_item_id)
-        for section_name, section_data in module_data['sections'].items():
-          pattern = section_name.split('/')[1] if '/' in section_name else section_name
-          if 'item_id' in section_data:
-            item_id = section_data['item_id']
-          else:
-            item_id = module_item_id
-          url_index[pattern] = URL_SOURCE.format(course_id=course_id, item_id=item_id)
+        if isinstance(module_data, dict):
+          if 'item_id' in module_data:
+            module_item_id = module_data['item_id']
+            url_index[module_name] = URL_SOURCE.format(course_id=course_id, item_id=module_item_id)
+          for section_name, section_data in module_data['sections'].items():
+            pattern = section_name.split('/')[1] if '/' in section_name else section_name
+            if 'item_id' in section_data:
+              item_id = section_data['item_id']
+            else:
+              item_id = module_item_id
+            url_index[pattern] = URL_SOURCE.format(course_id=course_id, item_id=item_id)
 
   for chapter_name, sections in config.chapters.items():
     for section_name, section_data in sections.items():
-      name = section_name.split('/')[1] if '/' in section_name else section_name
-      path = os.path.join(dest_dir, name+".html")
-      break_up_fragments(path, section_data['sections'], tuple(html_files)+ignore_files, url_index, config.book_name)
+      if isinstance(section_data, dict):
+        name = section_name.split('/')[1] if '/' in section_name else section_name
+        path = os.path.join(dest_dir, name+".html")
+        break_up_fragments(path, section_data['sections'], tuple(html_files)+ignore_files, url_index, config.book_name)
 
   # save config object to use ut later for course update
   config_file_path = os.path.join(dest_dir, '..', 'lti_html', 'lti_config.json')
