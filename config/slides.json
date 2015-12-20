@@ -17,7 +17,26 @@
     "Sorting": {
       "Slides/InsertionSort": {
         "long_name": "Insertion Sort",
-        "exercises" : {}
+        "exercises" : {
+        "insertionsortS1CON": {
+            "long_name": "Insertion Sort Slideshow 1",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "insertionsortS2CON": {
+            "long_name": "Insertion Sort Slideshow 2",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "insertionsortS3CON": {
+            "long_name": "Insertion Sort Slideshow 3",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       }
     }
   }
