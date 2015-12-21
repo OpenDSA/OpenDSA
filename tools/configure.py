@@ -495,8 +495,6 @@ def save_chapter(request_ctx, config, course_id, module_id, module_position, cha
                                 item_id = prev_section_obj.get('item_id', None)
                                 if item_id is not None:
                                     results = assignments.edit_assignment(request_ctx, course_id, item_id, assignment_name=indexed_section_name, assignment_position=module_item_counter, assignment_submission_types="external_tool", assignment_external_tool_tag_attributes= {"url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2) + "&gradeable_exercise=" + gradeable_exercise}, assignment_points_possible=section_points, assignment_description=section_name)
-
-                                # results = modules.update_module_item(request_ctx, course_id, module_id, item_id, 'Assignment', module_item_content_id=item_id, module_item_indent=1)
                         else:
                             if section_action == "add":
                                 results = modules.create_module_item(request_ctx, course_id, module_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2), module_item_content_id=None,module_item_title=indexed_section_name, module_item_indent=1, module_item_position=module_item_counter)
@@ -509,6 +507,35 @@ def save_chapter(request_ctx, config, course_id, module_id, module_position, cha
                         config.chapters[chapter_name][str(module)]['sections'][section_name]['item_id'] = item_id
                         module_item_counter += 1
                     section_couter += 1
+
+                # delete un-updated sections
+                if prev_module_obj is not None:
+                    prev_sections = prev_module_obj.get("sections", None)
+
+                if prev_sections:
+                    for section_name, section_obj in prev_sections.items():
+                        if section_obj.get("action", None) is None:
+                            showsection = section_obj.get("showsection")
+                            section_points = 0
+                            for attr in section_obj:
+                                if bool(section_obj[attr]) and isinstance(section_obj[attr], dict):
+                                    exercise_obj = section_obj[attr]
+                                    exercise_name = attr
+                                    long_name = exercise_obj.get("long_name")
+                                    required = exercise_obj.get("required")
+                                    points = exercise_obj.get("points")
+                                    threshold = exercise_obj.get("threshold")
+                                    if long_name is not None and required is not None and points is not None and threshold is not None:
+                                        if points > 0:
+                                            section_points = points
+                                            gradeable_exercise = exercise_name
+
+                            if showsection is None or (showsection is not None and showsection == True):
+                                item_id = section_obj.get("item_id", None)
+                                if section_points > 0:
+                                    results = assignments.delete_assignment(request_ctx, course_id, item_id)
+                                else:
+                                    results = modules.delete_module_item(request_ctx, course_id, module_id, item_id)
             else:
                 section_action = "add"
                 if prev_chapter_obj is not None and prev_module_obj is not None and not prev_sections:
@@ -521,6 +548,17 @@ def save_chapter(request_ctx, config, course_id, module_id, module_position, cha
                     results = modules.create_module_item(request_ctx, course_id, module_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url,
                         module_item_content_id=None, module_item_title=indexed_module_name, module_item_indent=1, module_item_position=module_item_counter)
                     item_id = results.json().get("id")
+
+                    # delete the old item
+                    item_id = prev_module_obj.get("item_id", None)
+                    if item_id is not None:
+                        results = modules.delete_module_item(request_ctx, course_id, module_id, item_id)
+
+                    # delete the old module subheader
+                    module_item_id = prev_module_obj.get('module_item_id', None)
+                    if module_item_id is not None:
+                        results = modules.delete_module_item(request_ctx, course_id, module_id, module_item_id)
+
                 else:
                     item_id = prev_module_obj.get('item_id', None)
                     if item_id is not None:
@@ -528,42 +566,6 @@ def save_chapter(request_ctx, config, course_id, module_id, module_position, cha
 
                 config.chapters[chapter_name][str(module)]['item_id'] = item_id
                 module_item_counter += 1
-
-            # delete un-updated sections
-            # if prev_module_obj is not None:
-            #     sections = prev_module_obj.get("sections", None)
-            #     if bool(sections):
-            #         for section in sections:
-            #             section_obj = sections[section]
-            #             if section_obj.get("action", None) is None:
-            #                 showsection = section_obj.get("showsection")
-            #                 section_points = 0
-            #                 for attr in section_obj:
-            #                     if bool(section_obj[attr]) and isinstance(section_obj[attr], dict):
-            #                         exercise_obj = section_obj[attr]
-            #                         exercise_name = attr
-            #                         long_name = exercise_obj.get("long_name")
-            #                         required = exercise_obj.get("required")
-            #                         points = exercise_obj.get("points")
-            #                         threshold = exercise_obj.get("threshold")
-            #                         if long_name is not None and required is not None and points is not None and threshold is not None:
-            #                             if points > 0:
-            #                                 section_points = points
-            #                                 gradeable_exercise = exercise_name
-
-            #                 if showsection is None or (showsection is not None and showsection == True):
-            #                     item_id = section_obj.get("item_id", None)
-            #                     if section_points > 0:
-            #                         results = assignments.delete_assignment(request_ctx, course_id, item_id)
-            #                     else:
-            #                         results = modules.delete_module_item(request_ctx, course_id, module_id, item_id)
-            #     else:
-            #         if prev_module_obj.get("action", None) is None:
-            #             item_id = prev_module_obj.get("item_id", None)
-            #             module_item_id = prev_module_obj.get('module_item_id', None)
-            #             results = modules.delete_module_item(request_ctx, course_id, module_id, item_id)
-            #             results = modules.delete_module_item(request_ctx, course_id, module_id, module_item_id)
-
 
         module_item_position += 1
 
