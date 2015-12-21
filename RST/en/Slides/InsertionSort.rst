@@ -37,8 +37,8 @@ Overview
  
    Consider this start to the process.
 
-.. inlineav:: insertionsortCON ss
-   :output: show
+   .. inlineav:: insertionsortCON ss
+      :output: show
 
 Insertion Sort Analysis
 =======================
