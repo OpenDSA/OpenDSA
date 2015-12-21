@@ -550,14 +550,15 @@ def save_chapter(request_ctx, config, course_id, module_id, module_position, cha
                     item_id = results.json().get("id")
 
                     # delete the old item
-                    item_id = prev_module_obj.get("item_id", None)
-                    if item_id is not None:
-                        results = modules.delete_module_item(request_ctx, course_id, module_id, item_id)
+                    if prev_module_obj is not None:
+                        item_id = prev_module_obj.get("item_id", None)
+                        if item_id is not None:
+                            results = modules.delete_module_item(request_ctx, course_id, module_id, item_id)
 
-                    # delete the old module subheader
-                    module_item_id = prev_module_obj.get('module_item_id', None)
-                    if module_item_id is not None:
-                        results = modules.delete_module_item(request_ctx, course_id, module_id, module_item_id)
+                        # delete the old module subheader
+                        module_item_id = prev_module_obj.get('module_item_id', None)
+                        if module_item_id is not None:
+                            results = modules.delete_module_item(request_ctx, course_id, module_id, module_item_id)
 
                 else:
                     item_id = prev_module_obj.get('item_id', None)
