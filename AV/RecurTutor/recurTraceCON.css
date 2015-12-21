@@ -3,7 +3,7 @@
 }
 
 #recurTraceSumCON{
-  height: 325px;
+  height: 315px;
 }
 
 #recurTraceSumCON .jsavoutput.jsavline {
@@ -14,23 +14,19 @@
   height: 580px;
 }
 
-#recursionTrcSum2CON{
+#recurTraceSum2CON{
   height: 350px;
 }
 
-#recursionTrcDmnCON{
+#recurTraceDmnPrntCON {
   height: 450px;
 }
 
-#recursionTrcDmnPrntCON {
-  height: 450px;
-}
-
-#recursionTrcDmnCntCON{
+#recurTraceDmnCntCON{
   height: 420px;
 }
 
-#recursionTrcTOHCON {
+#recuTraceTOHCON {
   height: 600px;
 }
 

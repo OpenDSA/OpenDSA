@@ -50,18 +50,17 @@ A Domino Analogy
 .. inlineav:: recurTraceDmnCON ss
    :output: show 
 
-After modeling the domino effect recursively, the two steps
-in the previous visualization becomes a template solution for general
-linear recursive questions. If we think of tipping over each
-domino as performing a further step of computation toward
-the final solution, then this template is capable of solving
-all linear recursive problems. The rules of thumb toward a
-linear recursive solution can now be summarized as follows:
+This recursive model for the domino effect can be used as a template
+for the solution to linear recursive functions.
+If we think of tipping over each domino as performing a further step
+of computation toward the final solution, this approach can
+solve all linear recursive problems.
+Rember these rules:
 
 1. Since the first domino has to be tipped over manually,
-the solution for base case is computed non-recursively.
+the solution for the base case is computed non-recursively.
 
-2. For any other domino, before any given domino can be tipped over,
+2. Before any given domino can be tipped over,
 all preceding dominos have to be tipped over first.
    
 .. inlineav:: recurTraceSumCON ss
