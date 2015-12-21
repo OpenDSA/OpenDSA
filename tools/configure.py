@@ -452,18 +452,16 @@ def save_chapter(request_ctx, config, course_id, module_id, module_position, cha
                 prev_sections = prev_module_obj.get("sections", None)
             if bool(sections):
                 section_couter = 1
-                for section in sections:
-                    section_obj = sections[section]
+                for section_name, section_obj in sections.items():
                     prev_section_obj = None
                     if prev_sections is not None:
                         prev_section_obj = prev_sections.get(section, None)
-                    section_name = section
                     showsection = section_obj.get("showsection")
                     section_points = 0
-                    for attr in section_obj:
-                        if bool(section_obj[attr]) and isinstance(section_obj[attr], dict):
-                            exercise_obj = section_obj[attr]
-                            exercise_name = attr
+                    for attr_name, attr_obj in section_obj:
+                        if bool(attr_obj) and isinstance(attr_obj, dict):
+                            exercise_obj = attr_obj
+                            exercise_name = attr_name
                             long_name = exercise_obj.get("long_name")
                             required = exercise_obj.get("required")
                             points = exercise_obj.get("points")
