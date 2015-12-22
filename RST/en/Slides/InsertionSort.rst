@@ -29,42 +29,16 @@ Insertion Sort
    respect to the first two, and so on.
 
 
-Overview 1
-==========
+Overview
+========
 
 .. slide:: Title 1  
    :level: 3 
  
    Consider this start to the process.
 
-   .. inlineav:: insertionsortS1CON ss
+   .. inlineav:: insertionsortCON ss
       :output: show
-
-Overview 2
-==========
-
-.. slide:: Title 2
-   :level: 3
-
-   Next, process the record in position 2.
-   Swap it to the left until it reaches a value smaller than it is.
-
-   .. inlineav:: insertionsortS2CON ss
-      :output: show
-
-
-
-Overview 3
-==========
-
-.. slide:: Title 3
-   :level: 3 
-
-   And now the record in position 3.
-
-   .. inlineav:: insertionsortS3CON ss
-      :output: show
-
 
 Insertion Sort Analysis
 =======================
@@ -89,7 +63,4 @@ Insertion Sort Analysis
    So, the average case is no better than the worst case in
    its growth rate :num:`Figure #TOH456`.
 
-
-.. odsascript:: AV/Sorting/insertionsortS1CON.js
-.. odsascript:: AV/Sorting/insertionsortS2CON.js
-.. odsascript:: AV/Sorting/insertionsortS3CON.js
+.. odsascript:: AV/Sorting/insertionsortCON.js
