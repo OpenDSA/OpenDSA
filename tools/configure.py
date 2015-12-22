@@ -81,6 +81,25 @@ module_chap_map = {}
 # numbers
 num_ref_map = {}
 
+# Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
+def parse_error(err):
+    """
+    "Parse" error string (formats) raised by (simple)json:
+    '%s: line %d column %d (char %d)'
+    '%s: line %d column %d - line %d column %d (char %d - %d)'
+    """
+    return re.match(r"""^
+      (?P<msg>.+):\s+
+      line\ (?P<lineno>\d+)\s+
+      column\ (?P<colno>\d+)\s+
+      (?:-\s+
+        line\ (?P<endlineno>\d+)\s+
+        column\ (?P<endcolno>\d+)\s+
+      )?
+      \(char\ (?P<pos>\d+)(?:\ -\ (?P<end>\d+))?\)
+  $""", err, re.VERBOSE)
+
+
 # Prints the given string to standard error
 def print_err(err_msg):
     sys.stderr.write('%s\n' % err_msg)
@@ -402,8 +421,8 @@ def initialize_conf_py_options(config, slides):
     return options
 
 
-def dict_compare(prev_org, current):
-    prev = prev_org
+def identical_dict(prev_org, current):
+    prev = prev_org.copy()
     if "item_id" in prev:
         del prev["item_id"]
     if "module_item_id" in prev:
@@ -418,7 +437,7 @@ def dict_compare(prev_org, current):
     removed = current_keys - prev_keys
     modified = {o : (prev[o], current[o]) for o in intersect_keys if prev[o] != current[o]}
     same = set(o for o in intersect_keys if prev[o] == current[o])
-    return modified
+    return not modified
 
 
 def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position, chapter_name, chapter_obj, prev_chapter_obj, assignment_group_id, **kwargs):
@@ -510,25 +529,32 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                                 results = modules.create_module_item(request_ctx, course_id, module_id, 'Assignment', module_item_content_id=item_id, module_item_indent=1, module_item_position=module_item_counter)
                                 # print("non-zero section ADD"+chapter_name+" "+str(module)+" "+section_name+" "+str(item_id))
                             else:
-                                if not dict_compare(prev_section_obj, section_obj):
+                                if not identical_dict(prev_section_obj, section_obj):
+                                    print("non zero points")
+                                    print(prev_section_obj)
+                                    print(section_obj)
                                     item_id = prev_section_obj.get('item_id', None)
                                     if item_id is not None:
                                         # print(str(indexed_section_name) +" "+str(section_points))
                                         results = assignments.edit_assignment(request_ctx, course_id, item_id, assignment_name=indexed_section_name, assignment_position=module_item_counter, assignment_submission_types="external_tool", assignment_external_tool_tag_attributes= {"url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2) + "&gradeable_exercise=" + gradeable_exercise}, assignment_points_possible=section_points, assignment_description=section_name, assignment_assignment_group_id=assignment_group_id)
-                                    else:
-                                        print("Identical "+chapter_name+" "+str(module)+" "+section_name+" "+str(item_id))
+                                else:
+                                    print("Identical non zero points "+chapter_name+" "+str(module)+" "+section_name+" "+str(item_id))
                         else:
                             if section_action == "add":
                                 results = modules.create_module_item(request_ctx, course_id, module_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2), module_item_content_id=None,module_item_title=indexed_section_name, module_item_indent=1, module_item_position=module_item_counter)
                                 item_id = results.json().get("id")
                                 # print("zero section ADD"+chapter_name+" "+str(module)+" "+section_name+" "+str(item_id))
                             else:
-                                if not dict_compare(prev_section_obj, section_obj):
+                                if not identical_dict(prev_section_obj, section_obj):
+                                    print("zero points")
+                                    print(prev_section_obj)
+                                    print(section_obj)
+
                                     item_id = prev_section_obj.get('item_id', None)
                                     results = modules.update_module_item(request_ctx, course_id, module_id, item_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2),
                                         module_item_title=indexed_section_name, module_item_indent=1, module_item_position=module_item_counter)
                                 else:
-                                    print("Identical "+chapter_name+" "+str(module)+" "+section_name+" "+str(item_id))
+                                    print("Identical zero points"+chapter_name+" "+str(module)+" "+section_name+" "+str(item_id))
 
                         # print("JUST BEFORE ADDING item_id"+chapter_name+" "+str(module)+" "+section_name+" "+str(item_id))
                         config.chapters[chapter_name][str(module)]['sections'][section_name]['item_id'] = item_id
@@ -588,12 +614,12 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                             results = modules.delete_module_item(request_ctx, course_id, module_id, module_item_id)
 
                 else:
-                    if not dict_compare(prev_module_obj, module_obj):
+                    if not identical_dict(prev_module_obj, module_obj):
                         item_id = prev_module_obj.get('item_id', None)
                         if item_id is not None:
                             results = modules.update_module_item(request_ctx, course_id, module_id, item_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url, module_item_title=indexed_module_name, module_item_indent=1, module_item_position=module_item_counter)
                     else:
-                        print("Identical indexed_module_name")
+                        print("Identical no sections " + indexed_module_name)
 
 
                 config.chapters[chapter_name][str(module)]['item_id'] = item_id
