@@ -113,23 +113,22 @@ $(document).ready(function() {
   topAlign = 50;
   var leftSpace = xLength + 100;
   axis = av.g.polyline([[left, topAlign], [left, topAlign + yLength], [left + xLength, topAlign + yLength]]);
-  xLabel = av.label("$n$",  {top: topAlign + yLength - 10, left: left + xLength + 10}).addClass("largeLabel");
+  xLabel = av.label("$n$", {top: topAlign + yLength - 10, left: left + xLength + 10}).addClass("largeLabel");
   yLabel = av.label(interpret("lab1"),  {top: topAlign - 20, left: left - 50}).addClass("largeLabel");
-  costOne = av.label("1",  {top: topAlign + yLength - 50, left: left - 20}).addClass("largeLabel");
-  av.label("_",  {top: topAlign + yLength - 57, left: left - 5}).addClass("largeLabel");
+  costOne = av.label("1", {top: topAlign + yLength - 50, left: left - 20}).addClass("largeLabel");
+  av.label("_", {top: topAlign + yLength - 57, left: left - 5}).addClass("largeLabel");
   horizontalLine = av.g.line(left, topAlign + yLength - 21, left + xLength - 20, topAlign + yLength - 21);
   av.step();
 
   // Slide 14
   av.umsg(interpret("sc14"), {preserve: true});
   axis = av.g.polyline([[left + leftSpace, topAlign], [left + leftSpace, topAlign + yLength], [left + xLength + leftSpace, topAlign + yLength]]);
-  xLabel = av.label("$n$",  {top: topAlign + yLength - 10, left: left + xLength + leftSpace + 10}).addClass("largeLabel");
-  yLabel = av.label(interpret("lab1"),  {top: topAlign - 20, left: left + leftSpace - 50}).addClass("largeLabel");
-  av.label("*",  {top: topAlign + yLength - 25, left: left + leftSpace + 50}).addClass("largeLabel");
-  av.label("$i$",  {top: topAlign + yLength - 10, left: left + leftSpace + 50}).addClass("largeLabel");
-  av.label("$i$",  {top: topAlign + 50, left: left + leftSpace - 20}).addClass("largeLabel");
-  av.label("_",  {top: topAlign + 48, left: left + leftSpace - 5}).addClass("largeLabel");
-  av.label("$*$",  {top: topAlign + 50, left: left + leftSpace + 50}).addClass("mediumPoint colored");
+  xLabel = av.label("$n$", {top: topAlign + yLength - 10, left: left + xLength + leftSpace + 10}).addClass("largeLabel");
+  yLabel = av.label(interpret("lab1"), {top: topAlign - 20, left: left + leftSpace - 50}).addClass("largeLabel");
+  av.label("$i$", {top: topAlign + yLength - 10, left: left + leftSpace + 45}).addClass("largeLabel");
+  av.label("$i$", {top: topAlign + 60, left: left + leftSpace - 20}).addClass("largeLabel");
+  av.label("_", {top: topAlign + 48, left: left + leftSpace - 5}).addClass("largeLabel");
+  av.label("$*$", {top: topAlign + 63, left: left + leftSpace + 45}).addClass("mediumPoint colored");
   diagonal = av.g.line(left + leftSpace, topAlign + yLength, left + leftSpace + 100, topAlign + yLength - 130);
   av.step();
 
@@ -139,11 +138,10 @@ $(document).ready(function() {
   axis = av.g.polyline([[left + leftSpace, topAlign], [left + leftSpace, topAlign + yLength], [left + xLength + leftSpace, topAlign + yLength]]);
   xLabel = av.label("$n$",  {top: topAlign + yLength - 10, left: left + xLength + leftSpace + 10}).addClass("largeLabel");
   yLabel = av.label(interpret("lab1"),  {top: topAlign - 20, left: left + leftSpace - 50}).addClass("largeLabel");
-  av.label("*",  {top: topAlign + yLength - 25, left: left + leftSpace + 50}).addClass("largeLabel");
-  av.label("$i$",  {top: topAlign + yLength - 10, left: left + leftSpace + 50}).addClass("largeLabel");
-  av.label("$i/2$",  {top: topAlign + 85, left: left + leftSpace - 35}).addClass("largeLabel");
+  av.label("$i$",  {top: topAlign + yLength - 10, left: left + leftSpace + 45}).addClass("largeLabel");
+  av.label("$i/2$",  {top: topAlign + 95, left: left + leftSpace - 35}).addClass("largeLabel");
   av.label("_",  {top: topAlign + 83, left: left + leftSpace - 5}).addClass("largeLabel");
-  av.label("$*$",  {top: topAlign + 85, left: left + leftSpace + 50}).addClass("mediumPoint colored");
+  av.label("$*$",  {top: topAlign + 98, left: left + leftSpace + 43}).addClass("mediumPoint colored");
   diagonal = av.g.line(left + leftSpace, topAlign + yLength, left + leftSpace + 130, topAlign + yLength - 85);
   av.step();
 

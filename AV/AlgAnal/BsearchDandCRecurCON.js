@@ -83,9 +83,9 @@ $(document).ready(function() {
   av.umsg(interpret("sc6.2"), {preserve: true});
   var last = graph.addNode("1", {left: leftAlign + 6 * nodeGap + 6 * nodeWidth, top: topAlign});
   graph.layout();
-  var lastEdge = av.g.line(leftAlign + 4 * nodeGap + 5.25 * nodeWidth,
+  var lastEdge = av.g.line(leftAlign + 4 * nodeGap + 5.25 * nodeWidth + 3,
                            topAlign + nodeHeight - 3,
-                           leftAlign + 5 * nodeGap + 5.25 * nodeWidth + 90,
+                           leftAlign + 5 * nodeGap + 5.25 * nodeWidth + 93,
                            topAlign + nodeHeight - 3);
   lastEdge.addClass("dashed");
   nOverEight.unhighlight();

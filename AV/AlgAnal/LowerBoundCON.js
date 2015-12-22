@@ -69,19 +69,19 @@ $(document).ready(function() {
   nLabel.hide();
   pointer.hide();
   topAlign = 15;
-  var arr1 = av.ds.array(arr_values, {left: leftAlign, top: topAlign + 20, indexed: true});
+  var arr1 = av.ds.array(arr_values, {left: leftAlign, top: topAlign + 25, indexed: true});
   var p1 = av.pointer("$K$", arr1.index(0));
   arr1.addClass([0], "greenbg");
-  var l1 = av.label(interpret("lab1"),  {top: topAlign + 25, left: leftAlign + 395});
-  var arr2 = av.ds.array(arr_values, {left: leftAlign, top: topAlign + 130, indexed: true});
+  var l1 = av.label(interpret("lab1"), {left: leftAlign + 395, top: topAlign + 30});
+  var arr2 = av.ds.array(arr_values, {left: leftAlign, top: topAlign + 135, indexed: true});
   var p2 = av.pointer("$K$", arr2.index(arraySize - 1));
   arr2.addClass(indices, "redbg");
-  var l2 = av.label(interpret("lab2"),  {top: topAlign + 135, left: leftAlign + 395});
-  var arr3 = av.ds.array(arr_values, {left: leftAlign, top: topAlign + 240, indexed: true});
+  var l2 = av.label(interpret("lab2"), {left: leftAlign + 395, top: topAlign + 140});
+  var arr3 = av.ds.array(arr_values, {left: leftAlign, top: topAlign + 245, indexed: true});
   for (i = 0; i <= parseInt(arraySize / 2, 10); i++) {
     arr3.highlight(i);
   }
-  var l3 = av.label(interpret("lab3"),  {top: topAlign + 245, left: leftAlign + 395});
+  var l3 = av.label(interpret("lab3"), {left: leftAlign + 395, top: topAlign + 250});
   av.step();
 
   av.umsg(interpret("sc8"));
