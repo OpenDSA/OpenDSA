@@ -226,11 +226,11 @@ testcpp: min
 uwosh: min
 	python $(CONFIG_SCRIPT) config/uwosh.json
 
+PL: min
+	python $(CONFIG_SCRIPT) config/PL.json
+
 uwosh-taylor: min
 	python $(CONFIG_SCRIPT) config/uwosh-taylor.json
-
-uwosh-pl: min
-	python $(CONFIG_SCRIPT) config/uwosh-pl.json
 
 List: min
 	python $(CONFIG_SCRIPT) s config/List.json

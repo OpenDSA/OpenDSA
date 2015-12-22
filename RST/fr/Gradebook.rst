@@ -5,7 +5,6 @@
 
 .. avmetadata::
    :author: Daniel Breakiron, Eric Fouh
-   :prerequisites: 
    :topic: Gradebook
 
 .. odsalink:: lib/gradebook-min.css

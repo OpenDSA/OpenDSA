@@ -32,7 +32,6 @@ index_header = '''\
 
 .. avmetadata:: OpenDSA Sample eTextbook
    :author: OpenDSA Contributors
-   :prerequisites:
    :topic: Data Structures
 
 .. chapnum::
