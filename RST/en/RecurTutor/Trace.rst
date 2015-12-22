@@ -35,13 +35,31 @@ You will begin to develop confidence about how recursion works.
 
 You know that information can be passed in (using a function
 parameter) from one recursive call to another, on ever smaller
-problems, until a base case is reached.
+problems, until a base case is reached in the winding phase.
 Then, a return value is passed back as the series of recursive calls
 unwinds.
 Sometimes people forget about the "unwinding" phase.
 
 .. inlineav:: recurTraceWindCON ss
    :output: show 
+
+
+In the winding phase, you may pass parameters through the recursive call
+so the information flows forward till the base case is reached. In the unwinding phase,
+the information may flow backward through the return statement if the recursive function returns
+a value. A recursive function that computes the factorial of a given number is an example
+where the information flows forward through the recursive call and backward through the return.
+
+.. inlineav:: recurTraceFactCON ss
+   :output: show 
+
+The recursive function may have information flow for more than one parameter. For example, a recursive
+function that sums the values in an array recursively may pass the array itself 
+and the index through the recursive call in the winding phase and returns back the summed value so far
+in the unwinding phase.
+
+.. inlineav:: recurTraceSumCON ss
+   :output: show
 
 
 A Domino Analogy
@@ -63,21 +81,13 @@ the solution for the base case is computed non-recursively.
 2. Before any given domino can be tipped over,
 all preceding dominos have to be tipped over first.
    
-.. inlineav:: recurTraceSumCON ss
-   :output: show
-
-|
-
-.. inlineav:: recurTraceFactCON ss
-   :output: show 
-
-|
 
 As you trace the code, you should observe several things.
-Let's use the array summing function again for an example.
+The process must eventually reach a base case.
+Thus, the value returned by the base case is important.
+To keep track of what is going on, it can be helpful to label recursive calls. A recursive call, like any other function call, eventually returns back to the point of being called. However, since you are calling the same function, it is easy to make mistakes when tracing the code.
+Recursion involves a 'winding' phase where the calls are progressively getting closer to the base case, and you are getting to smaller and smaller problems, and an 'unwinding' phase, when you begin to return back to the original call. It is usually in the 'unwinding' phase where the solution is generated.
 
-.. inlineav:: recurTraceSum2CON ss
-   :output: show 
 
 Starting at the base case, you have a value that is then used to solve the call
 from the function that called the base case, which is used to solve the call that
@@ -87,19 +97,6 @@ arrived at, having been built up from the base case.
 
 Whenever the return statement of the recursive call has no more work to do
 AFTER the recursive call, the function is said to be tail-recursive.
-
-The next visualization shows how we can use the
-Domino effect to recursively print the integers from 1 to N.
-
-.. inlineav:: recurTraceDmnPrntCON ss
-   :output: show 
-
-
-This next visualization shows how we can use the Domino technique to
-recursively count the number of digits in an integer.
-
-.. inlineav:: recurTraceDmnCntCON ss
-   :output: show 
 
 
 Towers of Hanoi
@@ -180,9 +177,6 @@ This next slideshow explains the solution to the Towers of Hanoi problem.
 .. odsascript:: AV/RecurTutor/recurTraceWindCON.js
 .. odsascript:: AV/RecurTutor/recurTraceSumCON.js
 .. odsascript:: AV/RecurTutor/recurTraceFactCON.js
-.. odsascript:: AV/RecurTutor/recurTraceSum2CON.js
 .. odsascript:: AV/RecurTutor/recurTraceDmnCON.js
-.. odsascript:: AV/RecurTutor/recurTraceDmnPrntCON.js
-.. odsascript:: AV/RecurTutor/recurTraceDmnCntCON.js
 .. odsascript:: AV/RecurTutor/recurTraceTOHCON.js
 .. odsascript:: AV/RecurTutor/TOHfigCON.js

@@ -218,26 +218,8 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "recurTraceSum2CON": {
-            "long_name": "Recursion Tracing Sum Winding and Unwinding",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
           "recurTraceDmnCON": {
             "long_name": "Recursion Tracing General Domino Effect",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "recurTraceDmnPrntCON": {
-            "long_name": "Recursion Tracing Domino Effect for Printing",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "recurTraceDmnCntCON": {
-            "long_name": "Recursion Tracing Domino Effect for Counting",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
