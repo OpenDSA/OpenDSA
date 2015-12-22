@@ -10,10 +10,10 @@
    :topic: Introduction
 
 Introduction to Object Oriented Programming
-=============================================
+===========================================
 
-Introduction
-------------
+Introduction to Object Oriented Programming
+-------------------------------------------
 
 Object-oriented programming (OOP) is a programming paradigm based on the 
 concept of :term:`objects <object>`, which are :term:`data structures
@@ -51,7 +51,7 @@ so an **object**, which is an **instance of a class**, operates on its "own" dat
 
 
 Principles of Object Oriented Programming
------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There are many views on the main features and motivations for object
 oriented programming [#]_ [#]_.
@@ -104,7 +104,7 @@ There are 4 principles that apply to most:
 
 
 Encapsulation
--------------
+~~~~~~~~~~~~~
 
 Consider the following example:
 
@@ -150,7 +150,7 @@ No classes would need to be modified to add the new capability below.
 .. codeinclude:: Introduction/GoodEncapsulation
 
 Inheritance
------------
+~~~~~~~~~~~
 
 Consider the following example:
 
@@ -247,7 +247,7 @@ polymorphism in our code.
 
 
 Polymorphism
-------------
+~~~~~~~~~~~~
 
 :term:`Polymorphism` is often referred to as the third pillar 
 of object-oriented programming, after encapsulation and inheritance. 
@@ -370,7 +370,7 @@ overloading, so consider your use of overloading carefully.
 
 
 Abstraction
------------
+~~~~~~~~~~~
 
 One of the key advantages of object oriented languages over :term:`procedural` languages is that
 objects act as metaphors for the real-world |---| in other words, objects *model* the real world.
