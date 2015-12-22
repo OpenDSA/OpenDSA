@@ -22,7 +22,7 @@ We will extend our pool of techniques for lower bounds proofs in this
 section by studying lower bounds for searching unsorted and sorted lists.
 
 Searching in Unsorted Lists
----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Given an (unsorted) list **L** of :math:`n` elements and 
 a search key :math:`K`, we seek to identify one element in **L**
@@ -58,7 +58,7 @@ Here is our first attempt at proving the theorem.
    Assume an algorithm :math:`A` exists that requires only :math:`n-1`
    (or less) comparisons of :math:`K` with elements of **L**.
    Because there are :math:`n` elements of **L**, :math:`A` must have
-   avoided comparing :math:`K` with **L**[:math:`i`} for some value
+   avoided comparing :math:`K` with **L** [:math:`i`] for some value
    :math:`i`.
    We can feed the algorithm an input with :math:`K` in position
    :math:`i`. 
@@ -158,7 +158,7 @@ Figure :num:`Figure #Poset`.
    worst case.
 
 Searching in Sorted Lists
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 We will now assume that list **L** is sorted.
 In this case, is linear search still optimal?

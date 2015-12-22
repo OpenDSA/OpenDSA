@@ -34,8 +34,6 @@ known as Horner's polynomial evaluation algorithm) takes this into
 account by using the :math:`mod` operator to avoid an overflow
 condition.
 
-
-
 Slideshow for Horner's Method algorithm for computing Rabin-Karp "magic number" for a string
 
 .. avembed:: AV/Development/Rabin_Karp_Horner_Slideshow.html ss 
