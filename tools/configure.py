@@ -529,33 +529,19 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                                 results = modules.create_module_item(request_ctx, course_id, module_id, 'Assignment', module_item_content_id=item_id, module_item_indent=1, module_item_position=module_item_counter)
                                 # print("non-zero section ADD"+chapter_name+" "+str(module)+" "+section_name+" "+str(item_id))
                             else:
-                                if not identical_dict(prev_section_obj, section_obj):
-                                    print("non zero points")
-                                    print(prev_section_obj)
-                                    print(section_obj)
-                                    item_id = prev_section_obj.get('item_id', None)
-                                    if item_id is not None:
-                                        # print(str(indexed_section_name) +" "+str(section_points))
-                                        results = assignments.edit_assignment(request_ctx, course_id, item_id, assignment_name=indexed_section_name, assignment_position=module_item_counter, assignment_submission_types="external_tool", assignment_external_tool_tag_attributes= {"url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2) + "&gradeable_exercise=" + gradeable_exercise}, assignment_points_possible=section_points, assignment_description=section_name, assignment_assignment_group_id=assignment_group_id)
-                                else:
-                                    print("Identical non zero points "+chapter_name+" "+str(module)+" "+section_name+" "+str(item_id))
+                                item_id = prev_section_obj.get('item_id', None)
+                                if item_id is not None:
+                                    # print(str(indexed_section_name) +" "+str(section_points))
+                                    results = assignments.edit_assignment(request_ctx, course_id, item_id, assignment_name=indexed_section_name, assignment_position=module_item_counter, assignment_submission_types="external_tool", assignment_external_tool_tag_attributes= {"url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2) + "&gradeable_exercise=" + gradeable_exercise}, assignment_points_possible=section_points, assignment_description=section_name, assignment_assignment_group_id=assignment_group_id)
                         else:
                             if section_action == "add":
                                 results = modules.create_module_item(request_ctx, course_id, module_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2), module_item_content_id=None,module_item_title=indexed_section_name, module_item_indent=1, module_item_position=module_item_counter)
                                 item_id = results.json().get("id")
                                 # print("zero section ADD"+chapter_name+" "+str(module)+" "+section_name+" "+str(item_id))
                             else:
-                                if not identical_dict(prev_section_obj, section_obj):
-                                    print("zero points")
-                                    print(prev_section_obj)
-                                    print(section_obj)
-
-                                    item_id = prev_section_obj.get('item_id', None)
-                                    results = modules.update_module_item(request_ctx, course_id, module_id, item_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2),
-                                        module_item_title=indexed_section_name, module_item_indent=1, module_item_position=module_item_counter)
-                                else:
-                                    print("Identical zero points"+chapter_name+" "+str(module)+" "+section_name+" "+str(item_id))
-
+                                item_id = prev_section_obj.get('item_id', None)
+                                results = modules.update_module_item(request_ctx, course_id, module_id, item_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2),
+                                    module_item_title=indexed_section_name, module_item_indent=1, module_item_position=module_item_counter)
                         # print("JUST BEFORE ADDING item_id"+chapter_name+" "+str(module)+" "+section_name+" "+str(item_id))
                         config.chapters[chapter_name][str(module)]['sections'][section_name]['item_id'] = item_id
                         module_item_counter += 1
@@ -614,13 +600,9 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                             results = modules.delete_module_item(request_ctx, course_id, module_id, module_item_id)
 
                 else:
-                    if not identical_dict(prev_module_obj, module_obj):
-                        item_id = prev_module_obj.get('item_id', None)
-                        if item_id is not None:
-                            results = modules.update_module_item(request_ctx, course_id, module_id, item_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url, module_item_title=indexed_module_name, module_item_indent=1, module_item_position=module_item_counter)
-                    else:
-                        print("Identical no sections " + indexed_module_name)
-
+                    item_id = prev_module_obj.get('item_id', None)
+                    if item_id is not None:
+                        results = modules.update_module_item(request_ctx, course_id, module_id, item_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url, module_item_title=indexed_module_name, module_item_indent=1, module_item_position=module_item_counter)
 
                 config.chapters[chapter_name][str(module)]['item_id'] = item_id
                 module_item_counter += 1
