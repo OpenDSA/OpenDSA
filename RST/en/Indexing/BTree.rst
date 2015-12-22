@@ -3,7 +3,7 @@
 .. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata::
+.. avmetadata:: 
    :author: Cliff Shaffer
    :requires: linear indexing; 2-3 tree
    :satisfies: B tree
@@ -199,7 +199,7 @@ keys and four pointers, class ``BPNode`` is slightly different in that
 it stores key/pointer pairs.
 Figure :num:`Figure #BTexamp` shows the :math:`\mathrm{B}^+` tree as
 it is traditionally drawn.
-To simplify implementation in practice, nodes really do
+To simplify implementation in practice, nodes really do 
 associate a key with each pointer.
 Each internal node should be assumed to hold in the leftmost position
 an additional key that is less than or equal to any possible key value
@@ -343,9 +343,9 @@ Figure :num:`Figure #BPborrow` illustrates the process.
    :capalign: justify
    :figwidth: 90%
    :alt: Deletion from a :math:`\mathrm{B}^+` tree via borrowing from
-         a sibling.
+         a sibling. 
 
-   Deletion from the :math:`\mathrm{B}^+` tree of Figure
+   Deletion from the :math:`\mathrm{B}^+` tree of Figure 
    :num:`Figure #BPexamp` via borrowing from a sibling.
    The key with value 12 is deleted from the leftmost leaf, causing the
    record with key value 18 to shift to the leftmost leaf to take its
@@ -395,8 +395,7 @@ delete algorithm.
 
 .. codeinclude:: Indexing/BPremove
 
-The :term:`B$^*$-tree`
-tree requires that all nodes be at least half
+The :math:`\mathrm{B}^+` tree requires that all nodes be at least half
 full (except for the root).
 Thus, the storage utilization must be at least 50\%.
 This is satisfactory for many implementations, but note that keeping
@@ -422,9 +421,9 @@ Here is a visualization for the :math:`\mathrm{B}^+` tree.
 
 .. raw:: html
 
-   <center>
-   <iframe id="BT_iframe"
-        src="https://www.cs.usfca.edu/~galles/visualization/BPlusTree.html"
+   <center> 
+   <iframe id="BT_iframe" 
+        src="http://www.cs.usfca.edu/~galles/visualization/BPlusTree.html"
         width="1100" height="800"
         frameborder="1" marginwidth="0" marginheight="0"
 	scrolling="no">
