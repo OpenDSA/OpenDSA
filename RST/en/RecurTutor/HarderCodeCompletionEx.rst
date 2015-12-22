@@ -18,8 +18,8 @@ Programming Exercise: Array Min
 .. avembed:: Exercises/RecurTutor/RecHMinPROG.html ka
 
 
-Programming Exercise: Sring Reverse
------------------------------------
+Programming Exercise: String Reverse
+------------------------------------
 
 .. avembed:: Exercises/RecurTutor/RecHIsReversePROG.html ka
 

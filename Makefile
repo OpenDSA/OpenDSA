@@ -123,13 +123,19 @@ CS2in: min
 	python $(CONFIG_SCRIPT) config/CS2.json -c config/CS2in_LMSconf.json -b CS2in
 
 CS3: min
-	python $(CONFIG_SCRIPT) config/CS3.json -c config/CS3_LMSconf.json
+	python $(CONFIG_SCRIPT) config/CS3.json
 
 CS3vt: min
 	python $(CONFIG_SCRIPT) config/CS3.json -c config/CS3vt_LMSconf.json -b CS3vt
 
 CS3in: min
 	python $(CONFIG_SCRIPT) config/CS3.json -c config/CS3in_LMSconf.json -b CS3in
+
+India: min
+	python $(CONFIG_SCRIPT) config/DS2.json
+
+Indiain: min
+	python $(CONFIG_SCRIPT) config/DS2.json -c config/DS2in_LMSconf.json -b DS2in
 
 Algorithms: min
 	python $(CONFIG_SCRIPT) config/Algorithms.json $(opts)
@@ -148,12 +154,6 @@ PL: min
 
 PLLMS: min
 	python $(CONFIG_SCRIPT) config/PL.json -c True
-
-India: min
-	python $(CONFIG_SCRIPT) config/India.json $(opts)
-
-IndiaLMS: min
-	python $(CONFIG_SCRIPT) config/India.json -c True
 
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js

@@ -1,5 +1,4 @@
 {
-  "title": "India DSA Course",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
@@ -34,14 +33,9 @@
     }
   },
   "lang": "en",
-  "module_origin": "https://lti.cs.vt.edu",
-  "exercise_server": "https://ltitest.cs.vt.edu:8443",
-  "logging_server": "https://ltitest.cs.vt.edu:8443",
-  "score_server": "https://ltitest.cs.vt.edu:8443",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
-  "assumes": "recursion",
   "dispModComp": true,
   "glob_exer_options": {
     "JXOP-debug": "true"
@@ -1067,7 +1061,7 @@
               "showhide": "Show"
             }
           },
-          "Programming Exercise: Sring Reverse": {
+          "Programming Exercise: String Reverse": {
             "RecHIsReversePROG": {
               "long_name": "Recursion Code Completion Exercise: Is Reverse",
               "required": true,
@@ -1090,9 +1084,9 @@
       "RecurTutor/WritingEx": {
         "long_name": "Code Writing Exercises",
         "sections": {
-          "Programming Exercise: Paren Balance": {
-            "RecWIsbalancedPROG": {
-              "long_name": "Recursion Code Writing Exercise: Is Balanced",
+          "Programming Exercise: Cannonballs": {
+            "RecWCannonballPROG": {
+              "long_name": "Recursion Code Writing Exercise: Cannon Ball",
               "required": true,
               "points": 1.0,
               "threshold": 1.0,
@@ -1117,27 +1111,9 @@
               "showhide": "Show"
             }
           },
-          "Programming Exercise: Cannonballs": {
-            "RecWCannonballPROG": {
-              "long_name": "Recursion Code Writing Exercise: Cannon Ball",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
-          },
           "Programming Exercise: Pascal's Triangle": {
             "RecWPascalPROG": {
               "long_name": "Recursion Code Writing Exercise: Pascal",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
-          },
-          "Programming Exercise: Stack Reversal": {
-            "RecWStackRevPROG": {
-              "long_name": "Recursion Code Writing Exercise: Stack Reversal",
               "required": true,
               "points": 1.0,
               "threshold": 1.0,
@@ -1168,26 +1144,8 @@
               "points": 0.0,
               "threshold": 1.0
             },
-            "recurTraceSum2CON": {
-              "long_name": "Recursion Tracing Sum Winding and Unwinding",
-              "required": true,
-              "points": 0.0,
-              "threshold": 1.0
-            },
             "recurTraceDmnCON": {
               "long_name": "Recursion Tracing General Domino Effect",
-              "required": true,
-              "points": 0.0,
-              "threshold": 1.0
-            },
-            "recurTraceDmnPrntCON": {
-              "long_name": "Recursion Tracing Domino Effect for Printing",
-              "required": true,
-              "points": 0.0,
-              "threshold": 1.0
-            },
-            "recurTraceDmnCntCON": {
-              "long_name": "Recursion Tracing Domino Effect for Counting",
               "required": true,
               "points": 0.0,
               "threshold": 1.0

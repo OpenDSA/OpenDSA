@@ -3,7 +3,7 @@
 }
 
 #recurTraceSumCON{
-  height: 315px;
+  height: 600px;
 }
 
 #recurTraceSumCON .jsavoutput.jsavline {
@@ -26,8 +26,14 @@
   height: 420px;
 }
 
-#recuTraceTOHCON {
+#recurTraceTOHCON {
   height: 600px;
+}
+
+
+#recurTraceFactCON .jsavcode.bordercolored {
+  border-width: 3px;
+  border-color: red;  
 }
 
 .dominocolor{
