@@ -5,6 +5,8 @@
 
 .. avmetadata:: 
    :author: Jeremy Rodencal
+   :satisfies: Knapsack
+   :topic: Dynamic Programming
 
 0/1 Knapsack Problem
 ====================
