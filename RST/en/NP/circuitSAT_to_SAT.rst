@@ -5,7 +5,6 @@
 
 .. avmetadata::
    :author: Nabanita Maji
-   :prerequisites:
    :topic: NP-completeness
 
 .. odsalink:: AV/Development/NP/circuitSATtoSATCON.css
@@ -13,6 +12,8 @@
 Reduction of Circuit SAT to SAT
 ===============================
 
+Reduction of Circuit SAT to SAT
+-------------------------------
 
 The following slideshow shows that an instance of Circuit Satisfiability 
 problem can be reduced to an instance of SAT problem in polynomial time.

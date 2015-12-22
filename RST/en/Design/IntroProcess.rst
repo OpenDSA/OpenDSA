@@ -12,8 +12,8 @@
 Software Development Processes
 ==============================
 
-Introduction
-------------
+Software Development Processes
+------------------------------
 
 .. index:: process; software development
 
@@ -154,7 +154,7 @@ software development project has to make on their own.
 
 
 Waterfall Method
-----------------
+~~~~~~~~~~~~~~~~
 
 Initially described in 1970, the Waterfall process was another early 
 software development process adapted from manufacturing and construction processes.
@@ -188,7 +188,7 @@ it with other process guidance 10 years later.
 
 
 Rational Unified Process
-------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Unified Software Development Process or Unified Process is a popular iterative 
 and incremental software development process framework. 
@@ -304,7 +304,7 @@ Personal Software Process (PSP)/Team Software Process (TSP) (Watts Humphrey, SEI
 
 
 eXtreme Programming (XP)
-------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Established in the late 1990's by Kent Beck, XP is 
 regarded as perhaps the most famous agile method.
@@ -390,7 +390,7 @@ Designing
 
 
 Crystal
--------
+~~~~~~~
 
 Established in the late 1990's by Alistair Cockburn, Crystal is 
 conceived as a family of software development processes organized by color, 
@@ -403,7 +403,7 @@ Crystal practices draw from agile and plan-driven methods as well as psychology
 and organizational development research.
 
 Scrum
------
+~~~~~
 
 Scrum is an agile software management process.
 That is, it describes how software development teams should be organised and
@@ -417,7 +417,7 @@ project stakeholders (pigs and chickens).
 
 
 Feature-Driven Development (FDD)
---------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 FDD is a lightweight, architecturally based process that initially establishes 
 an overall object architecture and features list.

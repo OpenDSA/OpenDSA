@@ -5,13 +5,13 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
    :topic: Reductions
-
-.. odsalink:: AV/slideCON.css
 
 Reductions
 ==========
+
+Reductions
+----------
 
 This module introduces an important concept for
 understanding the relationships between problems, called
@@ -350,9 +350,6 @@ matrices :math:`A` and :math:`B` together.
 The following slideshow illustrates this reduction process.
 
 .. avembed:: AV/Development/NP/matrixMulReduction.html ss
-
-Notes
------
 
 .. [#] The transpose operation
        takes position :math:`ij` of the original matrix and places it

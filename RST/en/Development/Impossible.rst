@@ -13,7 +13,7 @@ Unsolveable Problems
 ====================
 
 Introduction
-------------
+~~~~~~~~~~~~
 
 Even the best programmer sometimes writes a program that goes into an
 infinite loop.
@@ -76,7 +76,7 @@ This comes as a result of the fact that the Halting Problem is
 unsolvable.
 
 Uncountability
---------------
+~~~~~~~~~~~~~~
 
 Before proving that the Halting Problem is unsolvable, we first prove
 that not all functions can be implemented as a computer program.
@@ -261,7 +261,7 @@ Figure :num:`Figure #Diag` illustrates this argument.
    is uncountable.
 
 The Halting Problem Is Unsolvable
----------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There might be intellectual appeal to knowing
 that there exists **some** function that cannot be computed by a
@@ -463,8 +463,6 @@ Real virus checkers do a pretty good job,
 but, it will always be possible for malicious people to invent new
 viruses that no existing virus checker can recognize.
 
-Notes
------
 .. [#] There is no requirement for a function to have any discernible
        relationship between input and output.
        A function is simply a mapping of inputs to outputs, with no

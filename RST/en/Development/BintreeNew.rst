@@ -14,6 +14,9 @@
 The Bintree
 ===========
 
+The Bintree
+-----------
+
 This module presents a spatial data structure for storing
 point data in two or more dimensions, called the Bintree.
 The Bintree is a natural extension of the BST to
@@ -116,7 +119,7 @@ range query is linear on the number of data records that fall within
 the query circle.
 
 Implementation Concerns
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~
 
 Let us now consider how the structure of the Bintree affects the
 design of its node representation.
@@ -227,9 +230,6 @@ Below is a visualization of the Bintree. Use this visualization to
 help understand how the Bintree data structure works.
 
 .. avembed:: AV/Development/bintreeAV.html ss
-
-Notes
------
 
 .. [#] A more efficient computation is
        :math:`(P_x - N_x)^2 + (P_y - N_y)^2 \leq d^2`.

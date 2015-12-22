@@ -5,7 +5,6 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :prerequisites:
    :topic: Advanced Analysis
    
 .. odsalink:: AV/Background/SummationOneToNCON.css

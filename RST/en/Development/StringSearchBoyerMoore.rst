@@ -6,8 +6,8 @@
 .. avmetadata:: 
    :author: Tom Naps and Sam Micka
 
-Boyer-Moore String Search Algorithm [Draft]
-===========================================
+Boyer-Moore String Search Algorithm
+===================================
 
 Like the KMP algorithm, a string search algorithm developed by Boyer
 and Moore in 1977 initially examines the structure of the string :math:`sub`

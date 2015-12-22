@@ -106,7 +106,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 16
-  av.umsg(interpret("sc16"), {color: "green"});
+  av.umsg(interpret("sc16"));
   arr.hide();
   nLabel.hide();
   pointer.hide();
@@ -115,18 +115,18 @@ $(document).ready(function() {
   // Slide 17
   av.umsg(interpret("sc17"), {preserve: true});
   topAlign = 15;
-  var arr1 = av.ds.array(arr_values, {left: leftAlign, top: topAlign + 20, indexed: true});
+  var arr1 = av.ds.array(arr_values, {left: leftAlign, top: topAlign + 30, indexed: true});
   av.pointer("$K$", arr1.index(0));
   arr1.addClass([0], "greenbg");
-  av.label(interpret("lab1"),  {top: topAlign + 25, left: leftAlign + 395});
-  var arr2 = av.ds.array(arr_values, {left: leftAlign, top: topAlign + 130, indexed: true});
+  av.label(interpret("lab1"), {left: leftAlign + 395, top: topAlign + 35});
+  var arr2 = av.ds.array(arr_values, {left: leftAlign, top: topAlign + 140, indexed: true});
   av.pointer("$K$", arr2.index(arraySize - 1));
   arr2.addClass(indices, "redbg");
-  av.label(interpret("lab2"),  {top: topAlign + 135, left: leftAlign + 395});
-  var arr3 = av.ds.array(arr_values, {left: leftAlign, top: topAlign + 240, indexed: true});
+  av.label(interpret("lab2"), {left: leftAlign + 395, top: topAlign + 145});
+  var arr3 = av.ds.array(arr_values, {left: leftAlign, top: topAlign + 250, indexed: true});
   for (i = 0; i <= parseInt(arraySize / 2, 10); i++) {
     arr3.highlight(i);
   }
-  av.label(interpret("lab3"),  {top: topAlign + 245, left: leftAlign + 395});
+  av.label(interpret("lab3"), {left: leftAlign + 395, top: topAlign + 255});
   av.recorded();
 });
