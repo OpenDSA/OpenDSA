@@ -115,9 +115,6 @@ and :math:`\log 1.74 < 1`, which is a total of 4 log operations.
 
 Here is some practice with manipulating logarithms.
 
-.. avembed:: Exercises/Background/MathLogSumm.html ka
-
-
 .. [#] These properties are the idea behind the slide rule.
        Adding two numbers can be viewed as joining two lengths
        together and measuring their combined length.
@@ -131,3 +128,5 @@ Here is some practice with manipulating logarithms.
        up the total length, and finally converts this total length to
        the correct numeric answer by taking the inverse of the
        logarithm for the result. 
+
+.. avembed:: Exercises/Background/MathLogSumm.html ka

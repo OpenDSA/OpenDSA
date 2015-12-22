@@ -16,7 +16,7 @@
       "sc13": "<br>So an upper bound for the algorithm in the worst case is $O(n)$. No matter the value of $n$, for some constant $c$, $cn$ is bigger than $n$.",
       "sc14": "In the average case for the algorithm, about $n/2$ elements are visited. $T(n) = \\frac{n}{2}$",
       "sc15": "<br><br>So an upper bound for the algorithm in the average case is also $O(n)$. No matter the value of $n$, for some constant $c$, $cn$ is bigger than $n/2$.",
-      "sc16": "Accordingly, the correct way to ask the question is: <br><br>What is the upper bound of sequential search in the best/average/worst case?",
+      "sc16": "Accordingly, the correct way to ask the question is: <br>What is the upper bound of sequential search in the best/average/worst case?",
       "sc17": "<br><br>And the answer should be...",
       "lab1": "$O(1)$ in the <b><u>Best Case.</u></b>",
       "lab2": "$O(n)$ in the <b><u>Worst Case</u></b>.",
