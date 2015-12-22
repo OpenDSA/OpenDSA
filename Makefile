@@ -13,6 +13,7 @@ MINIMIZE = uglifyjs
 
 all: alllint
 
+
 allbooks: Everything Test CS2 CS3 RecurTutor PL
 
 clean:
@@ -113,6 +114,12 @@ RecurTutorvt: min
 RecurTutorin: min
 	python $(CONFIG_SCRIPT) config/RecurTutor.json -c config/RecurTutorin_LMSconf.json -b RecurTutorin
 
+Everything: min
+	python $(CONFIG_SCRIPT) config/Everything.json
+
+Everythingin: min
+	python $(CONFIG_SCRIPT) config/Everything.json -c config/Everythingin_LMSconf.json -b Everythingin
+
 CS2: min
 	python $(CONFIG_SCRIPT) config/CS2.json
 
@@ -143,17 +150,11 @@ Algorithms: min
 AlgorithmsLMS: min
 	python $(CONFIG_SCRIPT) config/Algorithms.json -c True
 
-Everything: min
-	python $(CONFIG_SCRIPT) config/Everything.json $(opts)
-
-EverythingLMS: min
-	python $(CONFIG_SCRIPT) config/Everything.json -c True
-
 PL: min
-	python $(CONFIG_SCRIPT) config/PL.json $(opts)
+	python $(CONFIG_SCRIPT) config/PL.json
 
-PLLMS: min
-	python $(CONFIG_SCRIPT) config/PL.json -c True
+PLin: min
+	python $(CONFIG_SCRIPT) config/PL.json -c config/PLin_LMSconf.json -b PLin
 
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
