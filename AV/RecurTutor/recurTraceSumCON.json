@@ -1,22 +1,21 @@
 {
   "translations" :{
     "en": {
-      "sc1": "Let's consider a simple recursive function to sum the elements of an array. The information flow passes the array and the idex in the winding phase and the sum of the values is passed in the unwinding phase.",
-      "sc1_1": " Remember the factorial example, we can also imagine that the code is making a copy of itself on each recursive call.",
+      "sc1": "Now consider a simple recursive function to sum the elements of an array. The information flow passes the array and the index forward during the winding phase. The sum of the values is passed backward during the unwinding phase.",
+      "sc1_1": "Again, we can imagine that the code is making a copy of itself on each recursive call.",
       "sc2": "Assume the array contains [2, 4, 6], and that the function is called as sum(arr, 3). This will sum the first three elements of the array.",
       "sc3": "On the initial call, the base case is not true (since n is not 0).",
-      "sc4": "In the winding phase, the recursive call is made, passing the information forward which is the value of n$-1=2$, and a reference to the array.",
+      "sc4": "In the winding phase, the recursive call is made, passing the information forward. This includes the value of n (n$-1=2$), and a reference to the array.",
       "sc5": "The original sum makes a call to sum, passing in a copy of arr. Notice that n has a value of 2.",
-      "sc6": "Here's the important question, to see if you're keeping up. How many n's are there? One or two? Recall that n is a value parameter so it's a copy and occupies a different memory location.",
-      "sc7": "In the second call, n is 2, which means we aren't at the base case yet. So, it again goes to the recursive call ...",
+      "sc6": "Here's an important question, to see if you're keeping up. How many n's are there? One or two? Recall that n is a value parameter so it's a copy and occupies a different memory location.",
+      "sc7": "In the second call, n is 2, which means we are not at the base case yet. So, it again goes to the recursive call ...",
       "sc8": "... which gives us a third copy of n.",
-      "sc9": "We are still  not at the base case, so we must make another recursive call.",
-      "sc10":"At this point, we are at the base case. Then in the unwinding phase the information flows backward to formulate the summed value. So, the value of 0 is returned.",
-      "sc11":"The result returned is added to the value in arr[n - 1]. Since n is now 1 , arr[n - 1] is arr[1 - 1], which is arr[0] = 2. So, add 0 + 2.", 
-      "sc12":"This is why it's important to return 0 from the base case. We add 0 to the value at array element 0. Now 2 is returned back to the previous call.",
-      "sc13":"Now 2 is added to arr[n - 1] = arr[2 - 1] = arr[1] = 4. So, 2 + 4 is 6, and that is returned back.",
-      "sc14":"Finally, 6  will be added to arr[n - 1] = arr[3 - 1] = arr[2] = 6, which is 12.",
-      "sc15": "So 12 is the final result of the call. That is the answer that we expect."
+      "sc9": "We are still not at the base case, so we must make another recursive call.",
+      "sc10": "At this point, we are at the base case. Now we begin the unwinding phase, where the information flows backward to build the summed value. From the case case, the value of 0 is returned.",
+      "sc11": "The result returned is added to the value in arr[n - 1]. Since n is now 1 , arr[n - 1] = arr[1 - 1] = arr[0] = 2. So, add 0 + 2 and return it.", 
+      "sc12":"Now 2 is added to arr[n - 1] = arr[2 - 1] = arr[1] = 4. So, 2 + 4 is 6, and that is returned back.",
+      "sc13":"Finally, 6  will be added to arr[n - 1] = arr[3 - 1] = arr[2] = 6, which is 12.",
+      "sc14": "So 12 is the final result of the call. That is the answer that we expect."
     }
   },
   "code" : {

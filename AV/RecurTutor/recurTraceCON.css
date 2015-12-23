@@ -12,15 +12,11 @@
 }
 
 #recurTraceSumCON{
-  height: 600px;
+  height: 530px;
 }
 
 #recurTraceSumCON .jsavoutput.jsavline {
   height: 30px;
-}
-
-#recurTraceSum2CON{
-  height: 350px;
 }
 
 #recurTraceDmnPrntCON {

@@ -9,6 +9,7 @@ $(document).ready(function() {
       code = config.code;
   var av = new JSAV(av_name);
  
+  var ptop = 230;
   
   // Slide 1
   av.umsg(interpret("sc1"));
@@ -22,7 +23,7 @@ $(document).ready(function() {
   av.step();
   // Slide 2
   av.umsg(interpret("sc2"));
-  var pseudo2 = av.code($.extend({lineNumbers: false, top: 250, left: 260}, code[4]));
+  var pseudo2 = av.code($.extend({lineNumbers: false, top: ptop, left: 260}, code[4]));
   pseudo2.css([0,1,2,3,4,5,6],{"border-width": "1px", "border-color": "black"});
   pseudo.highlight("sig");
   av.step();
@@ -43,7 +44,7 @@ $(document).ready(function() {
   // Slide 5
   av.umsg(interpret("sc5"));
   pseudo2.css([0,1,2,3,4,5,6],{"border-width": "0px"});
-  var pseudo3 = av.code($.extend({lineNumbers: false, top: 270, left: 290}, code[3]));
+  var pseudo3 = av.code($.extend({lineNumbers: false, top: ptop + 20, left: 290}, code[3]));
   pseudo3.css([0,1,2,3,4,5,6],{"border-width": "1px", "border-color": "black"});
   pseudo.unhighlight("rc");
   pseudo2.unhighlight("rc");
@@ -58,7 +59,7 @@ $(document).ready(function() {
   // Slide 7
   av.umsg(interpret("sc7"));
   pseudo3.css([0,1,2,3,4,5,6],{"border-width": "0px"});
-  var pseudo4 = av.code($.extend({lineNumbers: false, top: 290, left: 320}, code[2]));
+  var pseudo4 = av.code($.extend({lineNumbers: false, top: ptop + 40, left: 320}, code[2]));
   pseudo4.css([0,1,2,3,4,5,6],{"border-width": "1px", "border-color": "black"});
   pseudo.unhighlight("sig");
   pseudo3.unhighlight("rc");
@@ -84,7 +85,7 @@ $(document).ready(function() {
   pseudo4.unhighlight("rc");
   pseudo.highlight("bcac");
   pseudo4.css([0,1,2,3,4,5,6],{"border-width": "0px"});
-  var pseudo5 = av.code($.extend({lineNumbers: false, top: 310, left: 430}, code[1]));
+  var pseudo5 = av.code($.extend({lineNumbers: false, top: ptop + 60, left: 430}, code[1]));
   pseudo5.css([0,1,2,3,4,5,6],{"border-width": "1px", "border-color": "black"});
   pseudo5.highlight("bcac");
   av.step();
@@ -99,26 +100,22 @@ $(document).ready(function() {
 
   // Slide 12
   av.umsg(interpret("sc12"));
-  av.step();
-
-  // Slide 13
-  av.umsg(interpret("sc13"));
   arr.unhighlight([0]);
   arr.addClass([0], "unused");
   pseudo4.hide();
   pseudo3.css([0,1,2,3,4,5,6],{"border-width": "1px", "border-color": "black"});
   av.step();
 
-  // Slide 14
-  av.umsg(interpret("sc14"));
+  // Slide 13
+  av.umsg(interpret("sc13"));
   arr.unhighlight([1]);
   arr.addClass([1], "unused");
   pseudo3.hide();
   pseudo2.css([0,1,2,3,4,5,6],{"border-width": "1px", "border-color": "black"});
   av.step();
 
-  // Slide 15
-  av.umsg(interpret("sc15"));
+  // Slide 14
+  av.umsg(interpret("sc14"));
   arr.addClass([2], "unused");
   pseudo2.hide();
   av.recorded();
