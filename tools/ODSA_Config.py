@@ -660,6 +660,9 @@ class ODSA_Config:
         # LMS course_id, will be filled later while course creation.
         self.course_id = ''
 
+        # LMS assignment_group_id, will be filled later while course creation.
+        self.assignment_group_id = ''
+
 
 # Code to execute when run as a standalone program
 if __name__ == "__main__":

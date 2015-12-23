@@ -93,8 +93,8 @@ min: nomin
 testLTI: min
 	# python $(CONFIG_SCRIPT) config/testLTI.json
 	# python $(CONFIG_SCRIPT) config/testLTI.json -b testLTI_HS1
-	# python $(CONFIG_SCRIPT) config/testLTI.json -c config/testLTI_LMSconf.json
-	python $(CONFIG_SCRIPT) config/testLTI.json -c config/testLTI_LMSconf.json -b testLTI_HS2
+	python $(CONFIG_SCRIPT) config/testLTI.json -c config/testLTI_LMSconf.json
+	# python $(CONFIG_SCRIPT) config/testLTI.json -c config/testLTI_LMSconf.json -b testLTI_HS2
 
 Test: min
 	python $(CONFIG_SCRIPT) config/Test.json

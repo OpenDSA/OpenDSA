@@ -1,4 +1,3 @@
-#! /usr/bin/python
 #
 # This script builds an OpenDSA textbook according to a specified configuration file
 #   - Creates an ODSA_Config object from the specified configuration file
@@ -46,10 +45,10 @@ from collections import Iterable
 from optparse import OptionParser
 from config_templates import *
 from ODSA_RST_Module import ODSA_RST_Module
-from ODSA_Config import ODSA_Config
+from ODSA_Config import ODSA_Config, parse_error
 from postprocessor import update_TOC, update_TermDef, make_lti
 from urlparse import urlparse
-from canvas_sdk.methods import accounts, courses, external_tools, modules, assignments
+from canvas_sdk.methods import accounts, courses, external_tools, modules, assignments, assignment_groups
 from canvas_sdk import RequestContext
 
 requests.packages.urllib3.disable_warnings()
@@ -93,6 +92,52 @@ def print_err(err_msg):
 #   - current_section_numbers - a list that contains the numbering scheme for each section or module ([chapter].[section].[...].[module])
 #   - section_name - a string passed to modules for inclusion in the RST header that specifies which chapter / section the module belongs to
 
+
+# read lti_config.json
+def read_conf_file(config_file_path):
+    """read configuration file as json"""
+
+    # Throw an error if the specified config files doesn't exist
+    if not os.path.exists(config_file_path):
+        print_err("INFO: course will be created for the first time")
+        return False
+
+    # Try to read the configuration file data as JSON
+    try:
+        with open(config_file_path) as config:
+            # Force python to maintain original order of JSON objects (or else the chapters and modules will appear out of order)
+            # conf_data = json.load(config, object_pairs_hook=collections.OrderedDict)
+            conf_data = json.load(config)
+    except ValueError, err:
+        # Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
+        msg = err.message
+        print_err(msg)
+
+        if msg == 'No JSON object could be decoded':
+            print_err('ERROR: %s is not a valid JSON file or does not use a supported encoding\n' % config_file_path)
+        else:
+            err = ODSA_Config.parse_error(msg).groupdict()
+            # cast int captures to int
+            for k, v in err.items():
+                if v and v.isdigit():
+                    err[k] = int(v)
+
+            with open(config_file_path) as config:
+                lines = config.readlines()
+
+            for ii, line in enumerate(lines):
+                if ii == err['lineno'] - 1:
+                    break
+
+            print_err("""
+    %s
+    %s^-- %s
+    """ % (line.replace("\n", ""), " " * (err['colno'] - 1), err['msg']))
+
+        # TODO: Figure out how to get (simple)json to accept different encodings
+        sys.exit(1)
+
+    return conf_data
 
 def process_section(config, section, index_rst, depth, current_section_numbers=[], section_name=''):
     # Initialize the section number for the current depth
@@ -149,8 +194,6 @@ def process_section(config, section, index_rst, depth, current_section_numbers=[
 #   - depth - the depth of the recursion, used to determine the number of spaces to print before the module name to ensure proper indentation
 #   - current_section_numbers - a list that contains the numbering scheme for each section or module ([chapter].[section].[...].[module])
 #   - section_name - a string passed to modules for inclusion in the RST header that specifies which chapter / section the module belongs to
-
-
 def process_module(config, index_rst, mod_path, mod_attrib={'exercises': {}}, depth=0, current_section_numbers=[], section_name=''):
     global todo_list
     global images
@@ -207,7 +250,6 @@ def process_module(config, index_rst, mod_path, mod_attrib={'exercises': {}}, de
             str(j) for j in current_section_numbers[:-1]), (current_section_numbers[-1] + 1))
 
     num_ref_map[mod_name] = mod_num
-
 
 def generate_index_rst(config, slides=False):
     """Generates the index.rst file, calls process_section() on config.chapters to recursively process all the modules in the book (in order), as each is processed it is added to the index.rst"""
@@ -359,144 +401,337 @@ def initialize_conf_py_options(config, slides):
     return options
 
 
-def create_chapter(request_ctx, config, course_id, book_name, module_id, module_position, chapter_name, chapter_obj, LTI_url, **kwargs):
-    """ Create canvas module that corresponds to OpenDSA chapter """
+def identical_dict(prev_org, current):
+    prev = prev_org.copy()
+    if "item_id" in prev:
+        del prev["item_id"]
+    if "module_item_id" in prev:
+        del prev["module_item_id"]
+    if "canvas_module_id" in prev:
+        del prev["canvas_module_id"]
 
+    prev_keys = set(prev.keys())
+    current_keys = set(current.keys())
+    intersect_keys = prev_keys.intersection(current_keys)
+    added = prev_keys - current_keys
+    removed = current_keys - prev_keys
+    modified = {o : (prev[o], current[o]) for o in intersect_keys if prev[o] != current[o]}
+    same = set(o for o in intersect_keys if prev[o] == current[o])
+    return not modified
+
+
+def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position, chapter_name, chapter_obj, prev_chapter_obj, assignment_group_id, **kwargs):
+    """
+    Create canvas module detals. canvas modules corresponds to OpenDSA chapter. OpenDSA modules corresponds to module_item of type "SubHeader", and each OpenDSA section will be mapped to canvas assignment (if it is gradable, which means it had points greater than zero) or a section will be mapped to module_item of type "ExternalTool" (if it has zero points exercises or no exercises at all).
+
+    chapter_obj contains chapter configuration details for the current comilation while prev_section_obj contains the same chapter configuration details from the previous comilation. Based on the difference between chapter_obj and prev_chapter_obj for each sectoin one of the following actions will be performed:
+    If a section exists in both chapter_obj and prev_chapter_obj then it will be updated. item_id and canvas_module_id saved in prev_chapter_obj will be used to update the existing section.
+    If a section exists in chapter_obj and not in prev_section_obj it will be added to canvas course.
+    If a section does not exist in chapter_obj and exists in prev_section_obj then it should be removed from canvas course.
+    """
+    book_name = config.book_name
+    LTI_url = config.module_origin
+
+    # canvas module_item_position and counter
     module_item_position = 1
+    module_item_counter = 1
 
     for module in chapter_obj:
         module_obj = chapter_obj[str(module)]
-        module_name = module_obj.get("long_name")
-        module_name_url = module.split('/')[1] if '/' in module else module
+        prev_module_obj = None
+        if prev_chapter_obj is not None:
+            prev_module_obj = prev_chapter_obj.get(module, None)
 
-        # OpenDSA module header will map to canvas text header
-        results = modules.create_module_item(
-            request_ctx, course_id, module_id, 'SubHeader',
-            module_item_content_id=None,
-            module_item_title=str(module_position) + "." + str(module_item_position) + ". " + str(module_name),
-            module_item_indent=0)
+        if isinstance(module_obj, dict):
+            module_name = module_obj.get("long_name")
+            module_name_url = module.split('/')[1] if '/' in module else module
 
-        sections = module_obj.get("sections")
-        if bool(sections):
-            section_couter = 1
-            for section in sections:
-                section_obj = sections[section]
-                section_name = section
-                showsection = section_obj.get("showsection")
-                section_points = 0
-                for attr in section_obj:
-                    if bool(section_obj[attr]) and isinstance(section_obj[attr], dict):
-                        exercise_obj = section_obj[attr]
-                        exercise_name = attr
-                        long_name = exercise_obj.get("long_name")
-                        required = exercise_obj.get("required")
-                        points = exercise_obj.get("points")
-                        threshold = exercise_obj.get("threshold")
-                        if long_name is not None and required is not None and points is not None and threshold is not None:
-                            if points > 0:
-                                section_points = points
-                                gradeable_exercise = exercise_name
+            # OpenDSA module action
+            # any modules in prev_chapter_obj which wasn't marked as updaed will be deleted later
+            module_action = "add"
+            if prev_chapter_obj is not None and prev_module_obj is not None:
+                prev_chapter_obj[module]["action"] = "update"
+                module_action = "update"
 
-                if showsection is None or (showsection is not None and showsection == True):
-                    indexed_section_name = str(module_position).zfill(2) + "." + str(module_item_position).zfill(2) + "." +str(section_couter).zfill(2) + ' - ' + section_name
-                    # if section object contains gradeable exercieassignment will be created in canvas
-                    if section_points > 0:
-                        results = assignments.create_assignment(
-                            request_ctx,
-                            course_id,
-                            indexed_section_name,
-                            assignment_submission_types="external_tool",
-                            assignment_external_tool_tag_attributes={
-                                "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2) + "&gradeable_exercise=" + gradeable_exercise},
-                            assignment_points_possible=section_points,
-                            assignment_description=section_name)
+            # OpenDSA chapters will map to canvas modules
+            if module_action == "add":
+                # OpenDSA module header will map to canvas module_item of type 'SubHeader'
+                results = modules.create_module_item(request_ctx, course_id, module_id, module_item_type='SubHeader',module_item_content_id=None, module_item_title=str(module_position) + "." + str(module_item_position) + ". " + str(module_name), module_item_indent=0, module_item_position=module_item_counter)
+                item_id = results.json().get("id")
+            else:
+                item_id = prev_module_obj.get('module_item_id', None)
+                if item_id is not None:
+                    results = modules.update_module_item(request_ctx, course_id, module_id, item_id, module_item_type='SubHeader', module_item_title=str(module_position) + "." + str(module_item_position) + ". " + str(module_name), module_item_indent=0, module_item_position=module_item_counter)
 
-                        item_id = results.json().get("id")
+            # save canvas item_id to config object. Note config object will be dumped in a json file (lti_config.json) later in the script
+            config.chapters[chapter_name][str(module)]['module_item_id'] = item_id
+            module_item_counter += 1
 
-                        # add assignment to canvas module
-                        results = modules.create_module_item(
-                            request_ctx,
-                            course_id,
-                            module_id,
-                            'Assignment',
-                            module_item_content_id=item_id,
-                            module_item_indent=1)
-                    else:
-                        results = modules.create_module_item(
-                            request_ctx,
-                            course_id,
-                            module_id,
-                            'ExternalTool',
-                            module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2),
-                            module_item_content_id=None,
-                            module_item_title=indexed_section_name,
-                            module_item_indent=1)
-                        item_id = results.json().get("id")
+            sections = module_obj.get("sections")
+            prev_sections = None
+            if prev_module_obj is not None:
+                prev_sections = prev_module_obj.get("sections", None)
+            if bool(sections):
+                section_couter = 1
+                for section_name, section_obj in sections.items():
+                    prev_section_obj = None
+                    prev_showsection = None
+                    if prev_sections is not None:
+                        prev_section_obj = prev_sections.get(section_name, None)
+                        if prev_section_obj is not None:
+                            prev_showsection = prev_section_obj.get("showsection", None)
+                    showsection = section_obj.get("showsection", None)
+                    section_points = 0
+                    for attr_name, attr_obj in section_obj.items():
+                        if bool(attr_obj) and isinstance(attr_obj, dict):
+                            exercise_obj = attr_obj
+                            exercise_name = attr_name
+                            long_name = exercise_obj.get("long_name")
+                            required = exercise_obj.get("required")
+                            points = exercise_obj.get("points")
+                            threshold = exercise_obj.get("threshold")
+                            if long_name is not None and required is not None and points is not None and threshold is not None:
+                                if points > 0:
+                                    section_points = points
+                                    gradeable_exercise = exercise_name
 
-                    config.chapters[chapter_name][str(module)]["sections"][section_name]["item_id"] = item_id
-                section_couter += 1
-        else:
-            indexed_module_name = str(module_position).zfill(2) + "." + str(module_item_position).zfill(2) + ".01 - " + module_name
+                    if showsection is None or (showsection is not None and showsection == True):
+                        indexed_section_name = str(module_position).zfill(2) + "." + str(module_item_position).zfill(2) + "." +str(section_couter).zfill(2) + ' - ' + section_name
 
-            results = modules.create_module_item(
-                request_ctx,
-                course_id,
-                module_id,
-                'ExternalTool',
-                module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url,
-                module_item_content_id=None,
-                module_item_title=indexed_module_name,
-                module_item_indent=1)
-            item_id = results.json().get("id")
-            config.chapters[chapter_name][str(module)]["item_id"] = item_id
+                        section_action = "add"
+                        if prev_chapter_obj is not None and prev_module_obj is not None and prev_section_obj is not None and  prev_showsection == True:
+                            prev_module_obj["sections"][section_name]["action"] = "update"
+                            section_action = "update"
+                        # if section object contains gradeable exercie then assignment will be created in canvas
+                        if section_points > 0:
+                            if section_action == "add":
+                                results = assignments.create_assignment(request_ctx, course_id, assignment_name=indexed_section_name,assignment_submission_types="external_tool",assignment_external_tool_tag_attributes={
+                                        "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2) + "&gradeable_exercise=" + gradeable_exercise}, assignment_points_possible=section_points, assignment_description=section_name, assignment_assignment_group_id=assignment_group_id)
+                                item_id = results.json().get("id")
+
+                                # add assignment to canvas module
+                                results = modules.create_module_item(request_ctx, course_id, module_id, 'Assignment', module_item_content_id=item_id, module_item_indent=1, module_item_position=module_item_counter)
+                                # print("non-zero section ADD"+chapter_name+" "+str(module)+" "+section_name+" "+str(item_id))
+                            else:
+                                item_id = prev_section_obj.get('item_id', None)
+                                if item_id is not None:
+                                    # print(str(indexed_section_name) +" "+str(section_points))
+                                    results = assignments.edit_assignment(request_ctx, course_id, item_id, assignment_name=indexed_section_name, assignment_position=module_item_counter, assignment_submission_types="external_tool", assignment_external_tool_tag_attributes= {"url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2) + "&gradeable_exercise=" + gradeable_exercise}, assignment_points_possible=section_points, assignment_description=section_name, assignment_assignment_group_id=assignment_group_id)
+                        else:
+                            if section_action == "add":
+                                results = modules.create_module_item(request_ctx, course_id, module_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2), module_item_content_id=None,module_item_title=indexed_section_name, module_item_indent=1, module_item_position=module_item_counter)
+                                item_id = results.json().get("id")
+                                # print("zero section ADD"+chapter_name+" "+str(module)+" "+section_name+" "+str(item_id))
+                            else:
+                                item_id = prev_section_obj.get('item_id', None)
+                                results = modules.update_module_item(request_ctx, course_id, module_id, item_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2),
+                                    module_item_title=indexed_section_name, module_item_indent=1, module_item_position=module_item_counter)
+                        # print("JUST BEFORE ADDING item_id"+chapter_name+" "+str(module)+" "+section_name+" "+str(item_id))
+                        config.chapters[chapter_name][str(module)]['sections'][section_name]['item_id'] = item_id
+                        module_item_counter += 1
+                    section_couter += 1
+
+                # delete un-updated sections
+                if prev_module_obj is not None:
+                    prev_sections = prev_module_obj.get("sections", None)
+
+                if prev_sections:
+                    for section_name, section_obj in prev_sections.items():
+                        if section_obj.get("action", None) is None or (showsection == False and prev_showsection == True):
+                            showsection = section_obj.get("showsection")
+                            section_points = 0
+                            for attr in section_obj:
+                                if bool(section_obj[attr]) and isinstance(section_obj[attr], dict):
+                                    exercise_obj = section_obj[attr]
+                                    exercise_name = attr
+                                    long_name = exercise_obj.get("long_name")
+                                    required = exercise_obj.get("required")
+                                    points = exercise_obj.get("points")
+                                    threshold = exercise_obj.get("threshold")
+                                    if long_name is not None and required is not None and points is not None and threshold is not None:
+                                        if points > 0:
+                                            section_points = points
+                                            gradeable_exercise = exercise_name
+
+                            if showsection is None or (showsection is not None and showsection == True):
+                                item_id = section_obj.get("item_id", None)
+                                if section_points > 0:
+                                    results = assignments.delete_assignment(request_ctx, course_id, item_id)
+                                else:
+                                    results = modules.delete_module_item(request_ctx, course_id, module_id, item_id)
+            else:
+                section_action = "add"
+                if prev_chapter_obj is not None and prev_module_obj is not None and not prev_sections:
+                    prev_module_obj["action"] = "update"
+                    section_action = "update"
+
+                indexed_module_name = str(module_position).zfill(2) + "." + str(module_item_position).zfill(2) + ".01 - " + module_name
+
+                if section_action == "add":
+                    results = modules.create_module_item(request_ctx, course_id, module_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url,
+                        module_item_content_id=None, module_item_title=indexed_module_name, module_item_indent=1, module_item_position=module_item_counter)
+                    item_id = results.json().get("id")
+
+                    # delete the old item
+                    if prev_module_obj is not None:
+                        item_id = prev_module_obj.get("item_id", None)
+                        if item_id is not None:
+                            results = modules.delete_module_item(request_ctx, course_id, module_id, item_id)
+
+                        # delete the old module subheader
+                        module_item_id = prev_module_obj.get('module_item_id', None)
+                        if module_item_id is not None:
+                            results = modules.delete_module_item(request_ctx, course_id, module_id, module_item_id)
+
+                else:
+                    item_id = prev_module_obj.get('item_id', None)
+                    if item_id is not None:
+                        results = modules.update_module_item(request_ctx, course_id, module_id, item_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url, module_item_title=indexed_module_name, module_item_indent=1, module_item_position=module_item_counter)
+
+                config.chapters[chapter_name][str(module)]['item_id'] = item_id
+                module_item_counter += 1
+
         module_item_position += 1
 
+    if prev_chapter_obj is not None:
+        # canvas_module_id is id for OpenDSA chapter
+        canvas_module_id = prev_chapter_obj.get('canvas_module_id', None)
+        if canvas_module_id is not None:
+            # loop over all OpenDSA modules in prev_chapter_obj to deleted the un-updated ones
+            for module_name, module_obj in prev_chapter_obj.items():
+                if isinstance(module_obj, dict):
+                    # if there is no action attribute then this OpenDSA module was un-updated and should be deleted
+                    if module_obj.get("action", None) is None:
+                        del_odsa_module(request_ctx, course_id, canvas_module_id, module_obj)
+                        # del_mod_threads = threading.Thread(target=del_odsa_module, args=(request_ctx, course_id, canvas_module_id, module_obj))
+                        # del_mod_threads.start()
+                        print("module "+module_name+" will be deleted")
+
     # publish the module
-    results = modules.update_module(request_ctx, course_id, module_id,
-                                    module_published=True)
+    results = modules.update_module(request_ctx, course_id, module_id, module_published=True)
+
+
+def del_odsa_chapter(request_ctx, config, course_id, chapter_obj, **kwargs):
+    """
+    iterate to delete the entire OpenDSA chapter content
+    """
+
+    module_id = chapter_obj.get('canvas_module_id', None)
+    if module_id is not None:
+        for module_name, module_obj in chapter_obj.items():
+            if bool(module_obj) and isinstance(module_obj, dict):
+                for section_name, section_obj in module_obj.items():
+                    if bool(section_obj) and isinstance(section_obj, dict):
+                        item_id = section_obj.get('item_id', None)
+                        if item_id is not None:
+                            results = assignments.delete_assignment(request_ctx, course_id, item_id)
+                module_item_id = module_obj.get('module_item_id', None)
+                if module_item_id is not None:
+                    results = modules.delete_module_item(request_ctx, course_id, module_id, module_item_id)
+
+        results = modules.delete_module(request_ctx, course_id, module_id)
+
+
+def del_odsa_module(request_ctx, course_id, module_id, prev_module_obj, **kwargs):
+    """
+    iterate to delete the entire OpenDSA module content
+    """
+
+    sections = prev_module_obj.get("sections", None)
+    if bool(sections):
+        for section_name, section_obj in sections.items():
+            showsection = section_obj.get("showsection")
+            section_points = 0
+            for attr in section_obj:
+                if bool(section_obj[attr]) and isinstance(section_obj[attr], dict):
+                    exercise_obj = section_obj[attr]
+                    exercise_name = attr
+                    long_name = exercise_obj.get("long_name")
+                    required = exercise_obj.get("required")
+                    points = exercise_obj.get("points")
+                    threshold = exercise_obj.get("threshold")
+                    if long_name is not None and required is not None and points is not None and threshold is not None:
+                        if points > 0:
+                            section_points = points
+                            gradeable_exercise = exercise_name
+
+            if showsection is None or (showsection is not None and showsection == True):
+                item_id = section_obj.get("item_id", None)
+                if section_points > 0:
+                    results = assignments.delete_assignment(request_ctx, course_id, item_id)
+                else:
+                    results = modules.delete_module_item(request_ctx, course_id, module_id, item_id)
+    # if the sections object is empty then the module will have only one section
+    else:
+        item_id = prev_module_obj.get("item_id", None)
+        results = modules.delete_module_item(request_ctx, course_id, module_id, item_id)
+
+    # remove module subheader
+    module_item_id = prev_module_obj.get('module_item_id', None)
+    if module_item_id is not None:
+        results = modules.delete_module_item(request_ctx, course_id, module_id, module_item_id)
 
 
 def create_course(config):
     """Create course on target LMS (e.g. canvas)"""
 
-    book_name = config['book_name']
-    course_code = config['course_code']
+    book_dir = config.book_dir
+
+    # load lti_config.json which will be used with config object to decide what action to perform for each section
+    prev_config_data = read_conf_file(book_dir + '/lti_html/lti_config.json')
+
+    book_name = config.book_name
+    course_code = config.course_code
     privacy_level = "public"  # should be public
     config_type = "by_url"
-    # LTI_url = config["LTI_url"]
-    LTI_url = config["module_origin"]
+    LTI_url = config.module_origin
 
     print "\nCreating course in " + config.target_LMS + " LMS " + config.LMS_url + '\n'
     # init the request context
-    request_ctx = RequestContext(config['access_token'], config['LMS_url'] + "/api")
+    request_ctx = RequestContext(config.access_token, config.LMS_url + "/api")
 
-    # get course_id
-    results = courses.list_your_courses(request_ctx,
-                                        'total_scores')
-    course_id = None
-    for i, course in enumerate(results.json()):
-        if course.get("course_code") == course_code:
-            course_id = course.get("id")
+    prev_chapters = {}
+    if prev_config_data:
+        course_id = prev_config_data['course_id']
+        assignment_group_id = prev_config_data['assignment_group_id']
+        prev_chapters = prev_config_data.get("chapters")
 
-    if course_id is None:
-        print_err('Course ' + course_code + ' was not found in '+ config.target_LMS + " LMS " + config.LMS_url)
-        sys.exit(1)
+        # check course already exists in canvas instance
+        results = courses.list_your_courses(request_ctx, 'total_scores')
+        course_found = False
+        for i, course in enumerate(results.json()):
+            if course.get("id") == course_id:
+                course_found = True
 
-    # Reset course
-    results = courses.reset_content(
-        request_ctx, course_id)
+        if not course_found:
+            print_err('Course ' + course_code + ' (course_id=' + str(course_id) + ') was not found in '+ config.target_LMS + " LMS " + config.LMS_url)
+            print_err('If you have course ' + course_code + ' with different course_id already created in canvas then you need to delete '+ book_dir +' folder first and recompile the book again')
+            sys.exit(1)
+    else:
+        # get course_id
+        results = courses.list_your_courses(request_ctx, 'total_scores')
+        course_id = None
+        for i, course in enumerate(results.json()):
+            if course.get("course_code") == course_code:
+                course_id = course.get("id")
 
-    # get new course_ud, becasue canvas change it after course reset
-    course_id = results.json()["id"]
+        if course_id is None:
+            print_err('Course ' + course_code + ' was not found in '+ config.target_LMS + " LMS " + config.LMS_url)
+            sys.exit(1)
 
-    # save course_id
+        # configure the course external_tool
+        results = external_tools.create_external_tool_courses(
+            request_ctx, course_id, "OpenDSA-LTI",
+            privacy_level, config.LTI_consumer_key, config.LTI_secret,
+            url=LTI_url + "/lti_tool")
+
+        # create OpenDSA assignment group
+        results = assignment_groups.create_assignment_group(request_ctx, course_id, name="OpenDSA")
+        assignment_group_id = results.json().get("id")
+
+    # save course_id and assignment_group_id
     config['course_id'] = course_id
-
-    # configure the course external_tool
-    results = external_tools.create_external_tool_courses(
-        request_ctx, course_id, "OpenDSA-LTI",
-        privacy_level, config["LTI_consumer_key"], config["LTI_secret"],
-        url=LTI_url + "/lti_tool")
+    config['assignment_group_id'] = assignment_group_id
 
     # update the course name
     course_name = config.title
@@ -506,17 +741,40 @@ def create_course(config):
     chapters = config.chapters
 
     module_position = 1
-    # create course modules and assignments
-    for chapter in chapters:
-        chapter_name = str(chapter)
-        chapter_obj = chapters[str(chapter)]
+
+    # create OpenDSA course chapters, modules, and assignments
+    for chapter_name, chapter_obj in chapters.items():
+        prev_chapter_obj = prev_chapters.get(chapter_name, None)
+        chapter_action = "add"
+        if prev_chapter_obj is not None:
+            prev_chapters[chapter_name]["action"] = "update"
+            chapter_action = "update"
         # OpenDSA chapters will map to canvas modules
-        results = modules.create_module(
-            request_ctx, course_id, "Chapter " + str(module_position - 1) + " " + str(chapter), module_position=module_position)
-        module_id = results.json().get("id")
-        t = threading.Thread(target=create_chapter, args=(request_ctx, config, course_id, book_name, module_id, module_position - 1, chapter_name, chapter_obj, LTI_url))
-        t.start()
+        if chapter_action == "add":
+            results = modules.create_module(request_ctx, course_id, module_name="Chapter " + str(module_position - 1) + " " + chapter_name, module_position=module_position)
+            module_id = results.json().get("id")
+        else:
+            module_id = prev_chapter_obj.get('canvas_module_id', None)
+            if module_id is not None:
+                results = modules.update_module(request_ctx, course_id, module_id, module_name="Chapter " + str(module_position - 1) + " " + chapter_name, module_position=module_position)
+
+        config.chapters[chapter_name]['canvas_module_id'] = module_id
+
+        print("Creating chapter " + str(module_position-1) + " " +chapter_name)
+        save_odsa_chapter(request_ctx, config, course_id, module_id, module_position - 1, chapter_name, chapter_obj, prev_chapter_obj, assignment_group_id)
+        # save_threads = threading.Thread(target=save_odsa_chapter, args=(request_ctx, config, course_id, module_id, module_position - 1, chapter_name, chapter_obj, prev_chapter_obj))
+        # save_threads.start()
         module_position += 1
+
+
+    # if a chapter in a previous run wasn't marked as updated that means it was deleted from the new config file, then it should be deleted from canvas as well.
+    for chapter_name, chapter_obj in prev_chapters.items():
+        if isinstance(chapter_obj, dict):
+            if chapter_obj.get("action", None) is None:
+                delete_threads = threading.Thread(target=del_odsa_chapter, args=(request_ctx, config, course_id, chapter_obj))
+                delete_threads.start()
+                print("chapter "+chapter_name+" will be deleted")
+
 
 
 def register_book(config):
@@ -526,19 +784,19 @@ def register_book(config):
     headers = {'content-type': 'application/json'}
 
     json_data = {}
-    json_data["odsa_username"] = config.odsa_username
-    json_data["odsa_password"] = config.odsa_password
-    json_data["course_id"] = config.course_id
-    json_data["course_code"] = config.course_code
-    json_data["LMS_url"] = config.LMS_url
-    json_data["chapters"] = config.chapters
+    json_data['odsa_username'] = config.odsa_username
+    json_data['odsa_password'] = config.odsa_password
+    json_data['course_id'] = config.course_id
+    json_data['course_code'] = config.course_code
+    json_data['LMS_url'] = config.LMS_url
+    json_data['chapters'] = config.chapters
 
     print "\nRegistering Book in OpenDSA-server " + config.logging_server + '\n'
 
     try:
         response = requests.post(url, json=json_data, headers=headers, verify=False)
         response_obj = json.loads(response.content)
-        print(json.dumps(response_obj))
+        # print(json.dumps(response_obj))
     except requests.exceptions.Timeout:
         print_err("Connection Timeout")
     except requests.exceptions.TooManyRedirects:
