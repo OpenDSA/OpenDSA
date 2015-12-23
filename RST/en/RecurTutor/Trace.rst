@@ -44,11 +44,13 @@ Sometimes people forget about the "unwinding" phase.
    :output: show 
 
 
-In the winding phase, you may pass parameters through the recursive call
-so the information flows forward till the base case is reached. In the unwinding phase,
-the information may flow backward through the return statement if the recursive function returns
-a value. A recursive function that computes the factorial of a given number is an example
-where the information flows forward through the recursive call and backward through the return.
+During the winding phase, any parameter passed through the recursive
+call flows forward until the base case is reached.
+During the unwinding phase, the return value of the function (if there
+is one) flows backwards to the calling copy of the function.
+In the following example, a recursive function to compute factorial
+has information flowing forward during the winding phase, and backward
+during the unwinding phase.
 
 .. inlineav:: recurTraceFactCON ss
    :output: show 

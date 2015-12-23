@@ -8,13 +8,13 @@
       "sc5": "It goes back to c()...",
       "sc6": "... then to b()...",
       "sc7": "...and finally back to a().",
-      "sc8": "So you can think of going from a() to d() as the 'winding' for a series of function calls...",
+      "sc8": "You can think of going from a() to d() as the 'winding' for a series of function calls...",
       "sc9": " and returning back to a() as the 'unwinding'.",
       "sc10": "The same thing happens with all functions. Recursive functions are no different from non-recursive functions in how they behave.",
       "sc11": "Suppose function f() makes a recursive call to function f()...",
       "sc12":  "...which makes a call to function f()...",
       "sc13":  "...which eventually makes a call to function f() that triggers the base case.",
-      "sc14":  "Once reaching the base case, it will then return to the previous instance of f()...",
+      "sc14":  "Once reaching the base case, it will then unwind to the previous instance of f()...",
       "sc15":  "...then f()...",
       "sc16":  "...and finally back to the original f()."
     }
