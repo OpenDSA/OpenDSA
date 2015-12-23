@@ -122,7 +122,8 @@ informal as possible. However, it is possible to define the notions of
 free and bound variables systematically. For any precise definition
 pertaining to  lambda calculus, we need only consider the three types of
 lambda expressions defined in the lambda calculus grammar (see
-:ref:`BNF-grammar-for-LC`). For example, we say that any variable
+:ref:`BNF grammar <BNF grammar> <BNF-grammar-for-LC>`).
+For example, we say that any variable
 :math:`x` occurs :term:`free` in any lambda expression
 :math:`E` if and only if:
 
