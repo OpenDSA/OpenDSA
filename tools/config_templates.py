@@ -315,7 +315,7 @@ html_context = {"script_files": [
                   '%(eb2root)sJSAV/css/JSAV.css',
                   '%(eb2root)slib/odsaMOD-min.css',
                   'https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css',
-                  '%(eb2root)slib/odsaStyle.css'
+                  '%(eb2root)slib/odsaStyle-min.css'
                 ],
                 "odsa_root_path": "%(eb2root)s",
                 %(text_translated)s}
