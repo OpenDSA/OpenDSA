@@ -30,8 +30,8 @@
           "The List data structure": {
             "ListOpen": {
               "long_name": "What is the value of this expression?",
-              "required": false,
-              "points": 0.0,
+              "required": true,
+              "points": 1.0,
               "threshold": 1.0
             }
           }
