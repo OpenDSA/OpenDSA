@@ -24,9 +24,10 @@
         "exercises": {
           "ListOpen": {
             "long_name": "What is the value of this expression?",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
+            "required": true,
+            "points": 1.0,
+            "threshold": 1.0,
+            "showhide": "Show"
           }
         }
       }
@@ -43,15 +44,17 @@
           },
           "SyntaxTF": {
             "long_name": "Algorithm Analysis Summary TF Questions",
-            "required": false,
+            "required": true,
             "points": 1.0,
-            "threshold": 5
+            "threshold": 5,
+            "showhide": "Show"
           },
           "SyntaxMC": {
             "long_name": "Algorithm Analysis Summary MC Questions",
-            "required": false,
+            "required": true,
             "points": 1.0,
-            "threshold": 5
+            "threshold": 5,
+            "showhide": "Show"
           }
         }
       },
@@ -66,15 +69,17 @@
         "exercises": {
           "freeVarHighlight": {
             "long_name": "Exercise 1",
-            "required": false,
+            "required": true,
             "points": 1.0,
-            "threshold": 5
+            "threshold": 5,
+            "showhide": "Show"
           },
           "boundVarHighlight": {
             "long_name": "Exercise 2",
-            "required": false,
+            "required": true,
             "points": 1.0,
-            "threshold": 5
+            "threshold": 5,
+            "showhide": "Show"
           }
         }
       },
@@ -84,9 +89,10 @@
         "exercises": {
           "AlphaConversion": {
             "long_name": "Alpha Conversion",
-            "required": false,
+            "required": true,
             "points": 1.0,
-            "threshold": 5
+            "threshold": 5,
+            "showhide": "Show"
           }
         }
       },
@@ -102,15 +108,17 @@
           },
           "SubstitutionCases": {
             "long_name": "Exercise 1",
-            "required": false,
+            "required": true,
             "points": 1.0,
-            "threshold": 5
+            "threshold": 5,
+            "showhide": "Show"
           },
           "SubstitutionResult": {
             "long_name": "Exercise 2",
-            "required": false,
+            "required": true,
             "points": 1.0,
-            "threshold": 5
+            "threshold": 5,
+            "showhide": "Show"
           }
         }
       },
@@ -135,9 +143,10 @@
         "exercises": {
           "applicativeNormalOrderPro": {
             "long_name": "Normal-order reduction Proficiency Exercise",
-            "required": false,
-            "points": 0.0,
+            "required": true,
+            "points": 1.0,
             "threshold": 1.0,
+            "showhide": "Show",
             "exer_options": {
               "strategy": "normal"
             }
