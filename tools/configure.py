@@ -1,4 +1,3 @@
-#! /usr/bin/python
 #
 # This script builds an OpenDSA textbook according to a specified configuration file
 #   - Creates an ODSA_Config object from the specified configuration file
@@ -46,7 +45,7 @@ from collections import Iterable
 from optparse import OptionParser
 from config_templates import *
 from ODSA_RST_Module import ODSA_RST_Module
-from ODSA_Config import ODSA_Config
+from ODSA_Config import ODSA_Config, parse_error
 from postprocessor import update_TOC, update_TermDef, make_lti
 from urlparse import urlparse
 from canvas_sdk.methods import accounts, courses, external_tools, modules, assignments, assignment_groups
@@ -80,25 +79,6 @@ module_chap_map = {}
 # their numbers, and figures, tables, theorems, and equations to their
 # numbers
 num_ref_map = {}
-
-# Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
-def parse_error(err):
-    """
-    "Parse" error string (formats) raised by (simple)json:
-    '%s: line %d column %d (char %d)'
-    '%s: line %d column %d - line %d column %d (char %d - %d)'
-    """
-    return re.match(r"""^
-      (?P<msg>.+):\s+
-      line\ (?P<lineno>\d+)\s+
-      column\ (?P<colno>\d+)\s+
-      (?:-\s+
-        line\ (?P<endlineno>\d+)\s+
-        column\ (?P<endcolno>\d+)\s+
-      )?
-      \(char\ (?P<pos>\d+)(?:\ -\ (?P<end>\d+))?\)
-  $""", err, re.VERBOSE)
-
 
 # Prints the given string to standard error
 def print_err(err_msg):
@@ -136,7 +116,7 @@ def read_conf_file(config_file_path):
         if msg == 'No JSON object could be decoded':
             print_err('ERROR: %s is not a valid JSON file or does not use a supported encoding\n' % config_file_path)
         else:
-            err = parse_error(msg).groupdict()
+            err = ODSA_Config.parse_error(msg).groupdict()
             # cast int captures to int
             for k, v in err.items():
                 if v and v.isdigit():
@@ -442,16 +422,17 @@ def identical_dict(prev_org, current):
 
 def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position, chapter_name, chapter_obj, prev_chapter_obj, assignment_group_id, **kwargs):
     """
-    Create canvas module that corresponds to OpenDSA chapter. Based on the difference between chapter_obj and prev_chapter_obj for each sectoin one of the following actions will be performed:
-    'Update' for changed sections in config object
-    'Add' for new sections in config object
-    'Delete' for removed sections from config object
+    Create canvas module detals. canvas modules corresponds to OpenDSA chapter. OpenDSA modules corresponds to module_item of type "SubHeader", and each OpenDSA section will be mapped to canvas assignment (if it is gradable, which means it had points greater than zero) or a section will be mapped to module_item of type "ExternalTool" (if it has zero points exercises or no exercises at all).
+
+    chapter_obj contains chapter configuration details for the current comilation while prev_section_obj contains the same chapter configuration details from the previous comilation. Based on the difference between chapter_obj and prev_chapter_obj for each sectoin one of the following actions will be performed:
+    If a section exists in both chapter_obj and prev_chapter_obj then it will be updated. item_id and canvas_module_id saved in prev_chapter_obj will be used to update the existing section.
+    If a section exists in chapter_obj and not in prev_section_obj it will be added to canvas course.
+    If a section does not exist in chapter_obj and exists in prev_section_obj then it should be removed from canvas course.
     """
     book_name = config.book_name
     LTI_url = config.module_origin
 
-    config.chapters[chapter_name]['canvas_module_id'] = module_id
-
+    # canvas module_item_position and counter
     module_item_position = 1
     module_item_counter = 1
 
@@ -465,6 +446,8 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
             module_name = module_obj.get("long_name")
             module_name_url = module.split('/')[1] if '/' in module else module
 
+            # OpenDSA module action
+            # any modules in prev_chapter_obj which wasn't marked as updaed will be deleted later
             module_action = "add"
             if prev_chapter_obj is not None and prev_module_obj is not None:
                 prev_chapter_obj[module]["action"] = "update"
@@ -472,7 +455,7 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
 
             # OpenDSA chapters will map to canvas modules
             if module_action == "add":
-                # OpenDSA module header will map to canvas text header
+                # OpenDSA module header will map to canvas module_item of type 'SubHeader'
                 results = modules.create_module_item(request_ctx, course_id, module_id, module_item_type='SubHeader',module_item_content_id=None, module_item_title=str(module_position) + "." + str(module_item_position) + ". " + str(module_name), module_item_indent=0, module_item_position=module_item_counter)
                 item_id = results.json().get("id")
             else:
@@ -480,6 +463,7 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                 if item_id is not None:
                     results = modules.update_module_item(request_ctx, course_id, module_id, item_id, module_item_type='SubHeader', module_item_title=str(module_position) + "." + str(module_item_position) + ". " + str(module_name), module_item_indent=0, module_item_position=module_item_counter)
 
+            # save canvas item_id to config object. Note config object will be dumped in a json file (lti_config.json) later in the script
             config.chapters[chapter_name][str(module)]['module_item_id'] = item_id
             module_item_counter += 1
 
@@ -629,7 +613,7 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
 
 def del_odsa_chapter(request_ctx, config, course_id, chapter_obj, **kwargs):
     """
-    iterate to delete the entire chapter content
+    iterate to delete the entire OpenDSA chapter content
     """
 
     module_id = chapter_obj.get('canvas_module_id', None)
@@ -694,10 +678,7 @@ def create_course(config):
     book_dir = config.book_dir
 
     # load lti_config.json which will be used with config object to decide what action to perform for each section
-    # prev_config_data = byteify(read_conf_file(book_dir + '/lti_html/lti_config.json'))
     prev_config_data = read_conf_file(book_dir + '/lti_html/lti_config.json')
-
-    # print(json.dumps(prev_config_data));
 
     book_name = config.book_name
     course_code = config.course_code
@@ -711,7 +692,6 @@ def create_course(config):
 
     prev_chapters = {}
     if prev_config_data:
-        # print(json.dumps(prev_config_data));
         course_id = prev_config_data['course_id']
         assignment_group_id = prev_config_data['assignment_group_id']
         prev_chapters = prev_config_data.get("chapters")
@@ -725,6 +705,7 @@ def create_course(config):
 
         if not course_found:
             print_err('Course ' + course_code + ' (course_id=' + str(course_id) + ') was not found in '+ config.target_LMS + " LMS " + config.LMS_url)
+            print_err('If you have course ' + course_code + ' with different course_id already created in canvas then you need to delete '+ book_dir +' folder first and recompile the book again')
             sys.exit(1)
     else:
         # get course_id
@@ -748,7 +729,7 @@ def create_course(config):
         results = assignment_groups.create_assignment_group(request_ctx, course_id, name="OpenDSA")
         assignment_group_id = results.json().get("id")
 
-    # save course_id
+    # save course_id and assignment_group_id
     config['course_id'] = course_id
     config['assignment_group_id'] = assignment_group_id
 
@@ -760,7 +741,8 @@ def create_course(config):
     chapters = config.chapters
 
     module_position = 1
-    # create course modules and assignments
+
+    # create OpenDSA course chapters, modules, and assignments
     for chapter_name, chapter_obj in chapters.items():
         prev_chapter_obj = prev_chapters.get(chapter_name, None)
         chapter_action = "add"
@@ -776,20 +758,23 @@ def create_course(config):
             if module_id is not None:
                 results = modules.update_module(request_ctx, course_id, module_id, module_name="Chapter " + str(module_position - 1) + " " + chapter_name, module_position=module_position)
 
-        print("Creating chapter - "+chapter_name)
+        config.chapters[chapter_name]['canvas_module_id'] = module_id
+
+        print("Creating chapter " + str(module_position-1) + " " +chapter_name)
         save_odsa_chapter(request_ctx, config, course_id, module_id, module_position - 1, chapter_name, chapter_obj, prev_chapter_obj, assignment_group_id)
         # save_threads = threading.Thread(target=save_odsa_chapter, args=(request_ctx, config, course_id, module_id, module_position - 1, chapter_name, chapter_obj, prev_chapter_obj))
         # save_threads.start()
         module_position += 1
 
+
+    # if a chapter in a previous run wasn't marked as updated that means it was deleted from the new config file, then it should be deleted from canvas as well.
     for chapter_name, chapter_obj in prev_chapters.items():
         if isinstance(chapter_obj, dict):
             if chapter_obj.get("action", None) is None:
                 delete_threads = threading.Thread(target=del_odsa_chapter, args=(request_ctx, config, course_id, chapter_obj))
                 delete_threads.start()
-                # del_odsa_chapter(request_ctx, config, course_id, chapter_obj)
                 print("chapter "+chapter_name+" will be deleted")
-                # delete the cahpter
+
 
 
 def register_book(config):
