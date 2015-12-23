@@ -35,8 +35,8 @@
 <a href="source.zip" target="_blank">Download Source</a><br>
 <a href="jcho_paper.pdf" target="_blank">Download Cho 2015 Paper</a>
 
-<script src="../../lib/jquery.min.js"></script>
-<script src="../../lib/jquery-ui.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="../../JSAV/lib/jquery.transit.js"></script>
 <script src="../../JSAV/lib/raphael.js"></script>
 <script src="../../JSAV/build/JSAV-min.js"></script>
@@ -89,12 +89,12 @@ function myJsFunction(input) {
 
   var arr1 = jsav.ds.array(textArray);
 
-  for (var i = 0; i < textArray.length; i++) {  
+  for (var i = 0; i < textArray.length; i++) {
     var result = dfa.traverse(text.charAt(i));
-    
+
     // Invalid result from rejected character
     if (result == -1) {
-        arr1.css(i, {"background-color": "#ff2222"});        
+        arr1.css(i, {"background-color": "#ff2222"});
         break;
     }
     arr1.css(i, {"background-color": "#ffaaaa"});
@@ -109,7 +109,7 @@ function myJsFunction(input) {
     // Line 96 takes care of this by marking the invalid character with red.
     // The last character does not need to provide redundant information.
     arr1.css(textArray.length - 1, {"background-color": "#ff2222"});
-    jsav.step();    
+    jsav.step();
   }
 
   jsav.recorded();
