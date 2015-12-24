@@ -40,6 +40,7 @@ import codecs
 import datetime
 import threading
 import requests
+import urllib
 
 from collections import Iterable
 from optparse import OptionParser
@@ -482,6 +483,7 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                             prev_showsection = prev_section_obj.get("showsection", None)
                     showsection = section_obj.get("showsection", None)
                     section_points = 0
+                    gradeable_exercise = None
                     for attr_name, attr_obj in section_obj.items():
                         if bool(attr_obj) and isinstance(attr_obj, dict):
                             exercise_obj = attr_obj
@@ -499,14 +501,23 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                         indexed_section_name = str(module_position).zfill(2) + "." + str(module_item_position).zfill(2) + "." +str(section_couter).zfill(2) + ' - ' + section_name
 
                         section_action = "add"
-                        if prev_chapter_obj is not None and prev_module_obj is not None and prev_section_obj is not None and  prev_showsection == True:
+                        if prev_chapter_obj is not None and prev_module_obj is not None and prev_section_obj is not None and (prev_showsection is None or (prev_showsection is not None and prev_showsection == True)):
                             prev_module_obj["sections"][section_name]["action"] = "update"
                             section_action = "update"
+
+                        LTI_url_opts = {
+                        "problem_type":"module",
+                        "problem_url": book_name,
+                        "short_name": module_name_url + "-" + str(section_couter).zfill(2),
+                        "gradeable_exercise": gradeable_exercise,
+                        "section_name": indexed_section_name
+                        }
                         # if section object contains gradeable exercie then assignment will be created in canvas
                         if section_points > 0:
                             if section_action == "add":
-                                results = assignments.create_assignment(request_ctx, course_id, assignment_name=indexed_section_name,assignment_submission_types="external_tool",assignment_external_tool_tag_attributes={
-                                        "url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2) + "&gradeable_exercise=" + gradeable_exercise}, assignment_points_possible=section_points, assignment_description=section_name, assignment_assignment_group_id=assignment_group_id)
+                                results = assignments.create_assignment(request_ctx, course_id, assignment_name=indexed_section_name,
+                                    assignment_submission_types="external_tool",assignment_external_tool_tag_attributes={
+                                        "url": LTI_url + "/lti_tool?" + urllib.urlencode(LTI_url_opts)}, assignment_points_possible=section_points, assignment_description=section_name, assignment_assignment_group_id=assignment_group_id)
                                 item_id = results.json().get("id")
 
                                 # add assignment to canvas module
@@ -516,15 +527,15 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                                 item_id = prev_section_obj.get('item_id', None)
                                 if item_id is not None:
                                     # print(str(indexed_section_name) +" "+str(section_points))
-                                    results = assignments.edit_assignment(request_ctx, course_id, item_id, assignment_name=indexed_section_name, assignment_position=module_item_counter, assignment_submission_types="external_tool", assignment_external_tool_tag_attributes= {"url": LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2) + "&gradeable_exercise=" + gradeable_exercise}, assignment_points_possible=section_points, assignment_description=section_name, assignment_assignment_group_id=assignment_group_id)
+                                    results = assignments.edit_assignment(request_ctx, course_id, item_id, assignment_name=indexed_section_name, assignment_position=module_item_counter, assignment_submission_types="external_tool", assignment_external_tool_tag_attributes= {"url": LTI_url + "/lti_tool?"+ urllib.urlencode(LTI_url_opts)}, assignment_points_possible=section_points, assignment_description=section_name, assignment_assignment_group_id=assignment_group_id)
                         else:
                             if section_action == "add":
-                                results = modules.create_module_item(request_ctx, course_id, module_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2), module_item_content_id=None,module_item_title=indexed_section_name, module_item_indent=1, module_item_position=module_item_counter)
+                                results = modules.create_module_item(request_ctx, course_id, module_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?" + urllib.urlencode(LTI_url_opts), module_item_content_id=None,module_item_title=indexed_section_name, module_item_indent=1, module_item_position=module_item_counter)
                                 item_id = results.json().get("id")
                                 # print("zero section ADD"+chapter_name+" "+str(module)+" "+section_name+" "+str(item_id))
                             else:
                                 item_id = prev_section_obj.get('item_id', None)
-                                results = modules.update_module_item(request_ctx, course_id, module_id, item_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url + "-" + str(section_couter).zfill(2),
+                                results = modules.update_module_item(request_ctx, course_id, module_id, item_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?" + urllib.urlencode(LTI_url_opts),
                                     module_item_title=indexed_section_name, module_item_indent=1, module_item_position=module_item_counter)
                         # print("JUST BEFORE ADDING item_id"+chapter_name+" "+str(module)+" "+section_name+" "+str(item_id))
                         config.chapters[chapter_name][str(module)]['sections'][section_name]['item_id'] = item_id
@@ -537,7 +548,7 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
 
                 if prev_sections:
                     for section_name, section_obj in prev_sections.items():
-                        if section_obj.get("action", None) is None or (showsection == False and prev_showsection == True):
+                        if section_obj.get("action", None) is None or (showsection == False and (prev_showsection is None or (prev_showsection is not None and prev_showsection == True))):
                             showsection = section_obj.get("showsection")
                             section_points = 0
                             for attr in section_obj:
@@ -567,8 +578,15 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
 
                 indexed_module_name = str(module_position).zfill(2) + "." + str(module_item_position).zfill(2) + ".01 - " + module_name
 
+                LTI_url_opts = {
+                "problem_type":"module",
+                "problem_url": book_name,
+                "short_name": module_name_url,
+                "section_name": indexed_module_name
+                }
+
                 if section_action == "add":
-                    results = modules.create_module_item(request_ctx, course_id, module_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url,
+                    results = modules.create_module_item(request_ctx, course_id, module_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?" + urllib.urlencode(LTI_url_opts),
                         module_item_content_id=None, module_item_title=indexed_module_name, module_item_indent=1, module_item_position=module_item_counter)
                     item_id = results.json().get("id")
 
@@ -586,7 +604,7 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                 else:
                     item_id = prev_module_obj.get('item_id', None)
                     if item_id is not None:
-                        results = modules.update_module_item(request_ctx, course_id, module_id, item_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?problem_type=module&problem_url=" + book_name + "&short_name=" + module_name_url, module_item_title=indexed_module_name, module_item_indent=1, module_item_position=module_item_counter)
+                        results = modules.update_module_item(request_ctx, course_id, module_id, item_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?" + urllib.urlencode(LTI_url_opts), module_item_title=indexed_module_name, module_item_indent=1, module_item_position=module_item_counter)
 
                 config.chapters[chapter_name][str(module)]['item_id'] = item_id
                 module_item_counter += 1
@@ -774,7 +792,6 @@ def create_course(config):
                 delete_threads = threading.Thread(target=del_odsa_chapter, args=(request_ctx, config, course_id, chapter_obj))
                 delete_threads.start()
                 print("chapter "+chapter_name+" will be deleted")
-
 
 
 def register_book(config):
