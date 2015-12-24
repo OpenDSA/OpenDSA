@@ -1,12 +1,17 @@
 {
   "title": "Test",
-  "tag": "Java",
+  "tag": "CPP",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
-    "Processing": ["pde"],
-    "Java": ["java"],
-    "C++": ["cpp", "h"]
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
   },
   "lang": "en",
   "module_origin": "http://algoviz.org",
