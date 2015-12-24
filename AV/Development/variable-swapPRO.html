@@ -49,9 +49,9 @@
   </div>
 
     <script
-       src="../../lib/jquery.min.js">
+       src="https://code.jquery.com/jquery-2.1.4.min.js">
     </script>
-    <script src="../../lib/jquery-ui.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <script src="../../JSAV/lib/jquery.transit.js"></script>
     <script src="../../JSAV/build/JSAV.js"></script>
 
@@ -84,7 +84,7 @@
         bVariable.click(varClickHandler);
         return [aVariable, bVariable];
       }
-      
+
       function modelSolution(modeljsav) {
         var modelAVariable = modeljsav.variable(aInitial, {label: "a = ", visible: true});
         var modelBVariable = modeljsav.variable(bInitial, {label: "b = ", visible: true});
@@ -105,8 +105,8 @@
         modeljsav.gradeableStep();
         return [modelAVariable, modelBVariable];
       }
-      
-      // initialize the exercise      
+
+      // initialize the exercise
       var exercise = av.exercise(modelSolution, initialize,
                                  { feedback: "atend", grader: "finalStep"});
       exercise.reset();

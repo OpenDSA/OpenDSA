@@ -32,7 +32,6 @@ index_header = '''\
 
 .. avmetadata:: OpenDSA Sample eTextbook
    :author: OpenDSA Contributors
-   :prerequisites:
    :topic: Data Structures
 
 .. chapnum::
@@ -291,7 +290,7 @@ html_static_path = ['_static']
 # to properly link to Privacy.html
 # The code that appends these scripts can be found in RST/_themes/haiku/layout.html and basic/layout.html
 html_context = {"script_files": [
-                  '%(eb2root)slib/jquery.min.js',
+                  'https://code.jquery.com/jquery-2.1.4.min.js',
                   '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
                 ],
                 "search_scripts": [
@@ -299,7 +298,7 @@ html_context = {"script_files": [
                   '_static/doctools.js'
                 ],
                 "odsa_scripts": [
-                  '%(eb2root)slib/jquery-ui.min.js',
+                  'https://code.jquery.com/ui/1.11.4/jquery-ui.min.js',
                   '%(eb2root)sJSAV/lib/jquery.transit.js',
                   '%(eb2root)sJSAV/lib/raphael.js',
                   '%(eb2root)sJSAV/build/JSAV-min.js',
@@ -313,8 +312,8 @@ html_context = {"script_files": [
                   '%(eb2root)slib/normalize.css',
                   '%(eb2root)sJSAV/css/JSAV.css',
                   '%(eb2root)slib/odsaMOD-min.css',
-                  '%(eb2root)slib/jquery-ui.min.css',
-                  '%(eb2root)slib/odsaStyle.css'
+                  'https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css',
+                  '%(eb2root)slib/odsaStyle-min.css'
                 ],
                 "odsa_root_path": "%(eb2root)s",
                 %(text_translated)s}

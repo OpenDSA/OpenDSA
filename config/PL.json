@@ -2,7 +2,8 @@
   "title": "Programming Languages",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
-  "code_lang": {"Javascript": ["js"]},
+  "code_lang": {
+  },
   "module_origin": "http://algoviz.org",
   "exercise_server": "https://opendsa.cs.vt.edu/",
   "logging_server": "https://opendsa.cs.vt.edu/",
@@ -20,13 +21,13 @@
     "Functional Programming": {
       "PL/ListDataStructure": {
         "long_name": "The List data structure",
-        "dispModComp": false,
         "exercises": {
           "ListOpen": {
             "long_name": "What is the value of this expression?",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
+            "required": true,
+            "points": 1.0,
+            "threshold": 1.0,
+            "showhide": "Show"
           }
         }
       }
@@ -34,13 +35,26 @@
     "Lambda Calculus": {
       "PL/Syntax": {
         "long_name": "Syntax of the Lambda Calculus",
-        "dispModComp": false,
         "exercises": {
           "parseTree": {
             "long_name": "Slideshow for how to build a parse tree",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
+          },
+          "SyntaxTF": {
+            "long_name": "Algorithm Analysis Summary TF Questions",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5,
+            "showhide": "Show"
+          },
+          "SyntaxMC": {
+            "long_name": "Algorithm Analysis Summary MC Questions",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5,
+            "showhide": "Show"
           }
         }
       },
@@ -53,18 +67,59 @@
         "long_name": "Free and Bound Variables",
         "dispModComp": false,
         "exercises": {
+          "freeVarHighlight": {
+            "long_name": "Exercise 1",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5,
+            "showhide": "Show"
+          },
+          "boundVarHighlight": {
+            "long_name": "Exercise 2",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5,
+            "showhide": "Show"
+          }
         }
       },
       "PL/AlphaConversion": {
         "long_name": "Alpha conversion",
         "dispModComp": false,
         "exercises": {
+          "AlphaConversion": {
+            "long_name": "Alpha Conversion",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5,
+            "showhide": "Show"
+          }
         }
       },
       "PL/Substitution": {
         "long_name": "Substitution algorithm",
         "dispModComp": false,
         "exercises": {
+          "substCase1b": {
+            "long_name": "Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "SubstitutionCases": {
+            "long_name": "Exercise 1",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5,
+            "showhide": "Show"
+          },
+          "SubstitutionResult": {
+            "long_name": "Exercise 2",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5,
+            "showhide": "Show"
+          }
         }
       },
       "PL/ApplicativeOrder": {
@@ -88,9 +143,10 @@
         "exercises": {
           "applicativeNormalOrderPro": {
             "long_name": "Normal-order reduction Proficiency Exercise",
-            "required": false,
-            "points": 0.0,
+            "required": true,
+            "points": 1.0,
             "threshold": 1.0,
+            "showhide": "Show",
             "exer_options": {
               "strategy": "normal"
             }

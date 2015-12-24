@@ -27,8 +27,8 @@
             <p class="jsavoutput jsavline"></p>
         </div>
 
-        <script src="../../lib/jquery.min.js"></script>
-        <script src="../../lib/jquery-ui.min.js"></script>
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
         <script src="../../JSAV/lib/jquery.transit.js"></script>
         <script src="../../JSAV/lib/raphael.js"></script>
         <script src="../../JSAV/build/JSAV-min.js"></script>
@@ -80,10 +80,10 @@
             restoreAnimationState();
             return jsavArray;
         }
-        
+
         function modelSolution(jsav) {
             var modelArray = jsav.ds.array(initialArray, {indexed: true, layout: "bar"});
-            
+
             // modelArray.paintGreen = function(index) {
             //     this.css(index, {"background-color": "#5f5"});
             // }
@@ -122,7 +122,7 @@
                 if (i !== arraySize - 2) {
                     modelArray.addClass(function(ind) {return ind <= i}, "greenbg");
                 } else {
-                    modelArray.addClass(function(ind) {return ind <= arraySize - 1}, "greenbg");                
+                    modelArray.addClass(function(ind) {return ind <= arraySize - 1}, "greenbg");
                 }
                 jsav.stepOption("grade", true);
                 jsav.step();
@@ -130,7 +130,7 @@
 
           return modelArray;
         }
-        
+
         var oldfx;
 
         function turnAnimationOff() {
@@ -148,12 +148,12 @@
                                    { compare: {css: "background-color"},
                                      feedback: "atend"});
         exercise.reset();
-        
+
         // bind a function to handle all click events on the array
         jsavArray.click(function(index) {
-            
+
             if (!this.isHighlight(true)) {
-                //higlight the first bar 
+                //higlight the first bar
                 this.highlight(index);
                 this.toggleLine(index, {startIndex: index});
                 lineIndex.value(index);
@@ -180,7 +180,7 @@
                     exercise.gradeableStep();
                 }
             }
-            
+
         });
 
         </script>

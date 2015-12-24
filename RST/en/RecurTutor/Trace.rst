@@ -44,11 +44,13 @@ Sometimes people forget about the "unwinding" phase.
    :output: show 
 
 
-In the winding phase, you may pass parameters through the recursive call
-so the information flows forward till the base case is reached. In the unwinding phase,
-the information may flow backward through the return statement if the recursive function returns
-a value. A recursive function that computes the factorial of a given number is an example
-where the information flows forward through the recursive call and backward through the return.
+During the winding phase, any parameter passed through the recursive
+call flows forward until the base case is reached.
+During the unwinding phase, the return value of the function (if there
+is one) flows backwards to the calling copy of the function.
+In the following example, a recursive function to compute factorial
+has information flowing forward during the winding phase, and backward
+during the unwinding phase.
 
 .. inlineav:: recurTraceFactCON ss
    :output: show 
@@ -69,35 +71,17 @@ A Domino Analogy
    :output: show 
 
 This recursive model for the domino effect can be used as a template
-for the solution to linear recursive functions.
-If we think of tipping over each domino as performing a further step
-of computation toward the final solution, this approach can
-solve all linear recursive problems.
-Rember these rules:
+for the solution to all linear recursive functions.
+Think of tipping over each domino as performing a further step
+of computation toward the final solution.
+Remember these rules:
 
 1. Since the first domino has to be tipped over manually,
 the solution for the base case is computed non-recursively.
 
 2. Before any given domino can be tipped over,
-all preceding dominos have to be tipped over first.
+all preceding dominos have to be tipped over.
    
-
-As you trace the code, you should observe several things.
-The process must eventually reach a base case.
-Thus, the value returned by the base case is important.
-To keep track of what is going on, it can be helpful to label recursive calls. A recursive call, like any other function call, eventually returns back to the point of being called. However, since you are calling the same function, it is easy to make mistakes when tracing the code.
-Recursion involves a 'winding' phase where the calls are progressively getting closer to the base case, and you are getting to smaller and smaller problems, and an 'unwinding' phase, when you begin to return back to the original call. It is usually in the 'unwinding' phase where the solution is generated.
-
-
-Starting at the base case, you have a value that is then used to solve the call
-from the function that called the base case, which is used to solve the call that
-called the call that called the base case, and so forth. Basically, the solution is
-being built up, until finally, you reach the original call, and the final solution is
-arrived at, having been built up from the base case.
-
-Whenever the return statement of the recursive call has no more work to do
-AFTER the recursive call, the function is said to be tail-recursive.
-
 
 Towers of Hanoi
 ~~~~~~~~~~~~~~~

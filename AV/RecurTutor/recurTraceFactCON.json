@@ -1,17 +1,17 @@
 {
   "translations" :{
     "en": {
-     "av_c1": "Suppose that we want to compute the value of factorial(5) using the following recursive factorial implementation.",
-     "av_c2": "In the winding phase, the information flows forward by passing n through the recursive call. We can imagine that each recursive call creates a new copy of the code with the passed n value. Below we will show you a copy of the code after replacing the value of  n in the function with the passed value of n.",
-     "av_c3": "The n=5 copy calls a new copy of the code with n = 4",
-     "av_c4": "The n=4 copy calls a new copy of the code with n = 3",
-     "av_c5": "The n=3 copy calls a new copy of the code with n = 2",
-     "av_c6": "The n=2 copy calls a new copy of the code with n = 1",
-     "av_c7": "Now, the base case satisfies and the n=1 recursive copy will return a value of 1. We are ready now for the unwinding phase. In the unwinding phase, the information is passed back. Each copy returns the value computed so far so the return command preceeds the recursive call.",
-     "av_c8": "The n=2 copy will multiply the return value of the n=1 copy  by 2.",
-     "av_c9": "The n=3 copy will multiply the return value of the n=2 by 3.",
-     "av_c10": "The n=4 copy will multiply the return value of the n=3 by 6.",
-     "av_c11": "The n=5 copy will multiply the return value of the n=4 by 24. This last copy will return the result of the required factorial. That ends the unwinding phase where the correct value of factorial of 5 is completely computed."
+     "sc1": "Suppose that we want to compute the value of factorial(5) using the following recursive factorial implementation.",
+     "sc2": "We can imagine that each recursive call creates a new copy of the code with the passed n value. Below we will show you flow during the winding phase by showing a copy of the code where we replace n in the function with actual value n during that call.",
+     "sc3": "The n=5 copy calls a new copy of the code with n = 4",
+     "sc4": "The n=4 copy calls a new copy of the code with n = 3",
+     "sc5": "The n=3 copy calls a new copy of the code with n = 2",
+     "sc6": "The n=2 copy calls a new copy of the code with n = 1",
+     "sc7": "The base case is now reached. So the function returns a value of 1. We are ready now for the unwinding phase, where the information is passed back. Each copy returns the value computed so far.",
+     "sc8": "The n=2 copy will multiply the return value of the n=1 copy  by 2.",
+     "sc9": "The n=3 copy will multiply the return value of the n=2 copy by 3.",
+     "sc10": "The n=4 copy will multiply the return value of the n=3 copy by 6.",
+     "sc11": "The n=5 copy will multiply the return value of the n=4 copy by 24. This last copy will return the final answer (120). This ends the unwinding phase."
   }
  },
   "code" : {
