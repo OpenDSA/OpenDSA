@@ -27,7 +27,7 @@ error_count = 0
 required_fields = ['chapters', 'code_lang', 'module_origin', 'title']
 
 optional_fields = ['allow_anonymous_credit', 'assumes', 'av_origin', 'av_root_dir', 'build_cmap', 'build_dir', 'build_JSAV', 'code_dir', 'exercise_origin', 'exercises_root_dir', 'exercise_server',
-                   'glob_mod_options', 'glob_exer_options', 'lang', 'logging_server', 'req_full_ss', 'score_server', 'start_chap_num', 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir', 'LTI']
+                   'glob_mod_options', 'glob_exer_options', 'lang', 'logging_server', 'req_full_ss', 'score_server', 'start_chap_num', 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir', 'LTI', 'tag']
 
 lang_file = os.path.abspath('tools/language_msg.json')
 
