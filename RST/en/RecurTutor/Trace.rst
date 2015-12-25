@@ -105,7 +105,7 @@ The rings each have a different size, and are stacked in order of
 decreasing size with the largest ring at the bottom, as shown in
 part (a) of the figure.
 The problem is to move the rings from the leftmost pole to the
-rightmost pole (labeled Pole 3) in a series of steps.
+middle pole (labeled Pole B) in a series of steps.
 At each step the top ring on some pole is moved to another pole.
 What makes this puzzle interesting is the limitation on where rings
 may be moved:
@@ -113,19 +113,19 @@ A ring may never be moved on top of a smaller ring.
 
 How can you solve this problem?
 It is easy if you don't think too hard about the details.
-Instead, consider that all rings are to be moved from Pole 1 to Pole 3.
+Instead, consider that all rings are to be moved from Pole A to Pole B.
 It is not possible to do this without first moving the bottom
-(largest) ring to Pole 3.
-To do that, Pole 3 must be empty, and only the bottom ring can be on
-Pole 1.
+(largest) ring to Pole B.
+To do that, Pole B must be empty, and only the bottom ring can be on
+Pole A.
 The remaining :math:`n-1` rings must be stacked up in order
-on Pole 2, as shown in part (b) of the figure.
+on Pole C, as shown in part (b) of the figure.
 How can you do this?
 Assume that a function :math:`X` is available to solve the
-problem of moving the top :math:`n-1` rings from Pole 1 to Pole 2.
-Then move the bottom ring from Pole 1 to Pole 3.
+problem of moving the top :math:`n-1` rings from Pole A to Pole C.
+Then move the bottom ring from Pole A to Pole B.
 Finally, again use function :math:`X` to move the
-remaining :math:`n-1` rings from Pole 2 to Pole 3.
+remaining :math:`n-1` rings from Pole C to Pole B.
 In both cases, "function :math:`X`" is simply the Towers of Hanoi
 function called on a smaller version of the problem.
 
@@ -156,7 +156,6 @@ This next slideshow explains the solution to the Towers of Hanoi problem.
 
 .. inlineav:: recurTraceTOHCON ss
    :output: show 
-	   
 
 .. odsascript:: AV/RecurTutor/recurTraceWindCON.js
 .. odsascript:: AV/RecurTutor/recurTraceSumCON.js
