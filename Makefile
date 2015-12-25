@@ -97,7 +97,7 @@ testLTI: min
 	# python $(CONFIG_SCRIPT) config/testLTI.json -c config/testLTI_LMSconf.json -b testLTI_HS2
 
 Test: min
-	python $(CONFIG_SCRIPT) config/Test.json
+	python $(CONFIG_SCRIPT) config/Test.json -c config/Test_LMSconf.json 
 
 Testvt: min
 	python $(CONFIG_SCRIPT) config/Test.json -c config/Testvt_LMSconf.json -b Testvt

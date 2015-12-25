@@ -37,12 +37,13 @@
   "allow_anonymous_credit": true,
   "suppress_todo": false,
   "dispModComp": true,
+  "tag": "CPP",
   "glob_exer_options": {
     "JXOP-debug": "true"
   },
   "chapters": {
     "Sorting": {
-      "Sorting/InsertionSortTest": {
+      "Sorting/InsertionSort1": {
         "long_name": "Insertion Sort",
         "sections": {
           "Insertion Sort": {
