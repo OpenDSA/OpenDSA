@@ -1493,6 +1493,12 @@
             "points": 2.0,
             "threshold": 5
           },
+          "ExchangeSortCON": {
+            "long_name": "Exchange Sort Analysis Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "ExchangeSumm": {
             "long_name": "Exchange Sorting Summary Exercise",
             "required": true,
@@ -1920,6 +1926,13 @@
             "points": 0.0,
             "threshold": 1.0
           },
+          "buffpoolCON": {
+            "long_name": "Unknown Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "buffpooldgmCON": {},
           "BufferPoolAV": {
             "long_name": "Buffer Pool Visualization",
             "required": false,
@@ -1943,26 +1956,27 @@
       "Files/ExternalSort": {
         "long_name": "ExternalSort",
         "exercises": {
-          "ExternalMergeSort": {
+          "extMergeSortCON": {
             "long_name": "External Merge Sort Slideshow",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "ExternalMergeSortExample": {
+          "extMergeSortExampCON": {
             "long_name": "External Merge Sort Example Slideshow",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "externalSortOver": {},
-          "ExternalReplacementSelection": {
+          "extSortOverCON": {},
+          "extRSCON": {
             "long_name": "External Replacement Selection Slideshow",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "externalReplacementSelectionPRO": {
+          "extSortSnowCON": {},
+          "extRSPRO": {
             "long_name": "Replacement Selection Proficiency Exercise",
             "required": true,
             "showhide": "show",
@@ -1970,14 +1984,13 @@
             "showhide": "none",
             "threshold": 1.0
           },
-          "externalSortSnow": {},
-          "MultiMerge": {
+          "extMultiMergeCON": {
             "long_name": "Multiway Merge Example Slideshow",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "externalMultiwayMergePRO": {
+          "extMultiMergePRO": {
             "long_name": "Multi-way Merge Proficiency Exercise",
             "required": true,
             "showhide": "show",
@@ -2234,7 +2247,7 @@
       "Hashing/HashDel": {
         "long_name": "Deletion",
         "exercises": {
-          "hashdelCON1": {
+          "hashdelCON": {
             "long_name": "Hash Deletion Slideshow",
             "required": false,
             "points": 0.0,
@@ -2285,7 +2298,7 @@
       "MemManage/FirstFit": {
         "long_name": "First Fit",
         "exercises": {
-          "firstFit": {
+          "firstFitAV": {
             "long_name": "First Fit Visualization",
             "required": false,
             "points": 0,
@@ -2305,7 +2318,7 @@
       "MemManage/CircularFit": {
         "long_name": "Circular First Fit",
         "exercises": {
-          "firstFit": {
+          "firstFitAV": {
             "long_name": "Circular First Fit Visualization",
             "required": false,
             "points": 0,
@@ -2318,7 +2331,7 @@
       "MemManage/BestFit": {
         "long_name": "Best Fit",
         "exercises": {
-          "firstFit": {
+          "firstFitAV": {
             "long_name": "Best Fit Visualization",
             "required": false,
             "points": 0,
@@ -2331,7 +2344,7 @@
       "MemManage/WorstFit": {
         "long_name": "Worst Fit",
         "exercises": {
-          "firstFit": {
+          "firstFitAV": {
             "long_name": "Worst Fit Visualization",
             "required": false,
             "points": 0,
@@ -2344,7 +2357,7 @@
       "MemManage/MMPerformance": {
         "long_name": "Sequential-Fit Performance",
         "exercises": {
-          "firstFit": {
+          "firstFitAV": {
             "long_name": "Sequential Fit Visualization",
             "required": false,
             "points": 0,
@@ -2398,13 +2411,13 @@
       "Indexing/TreeIndexing": {
         "long_name": "Tree Indexing",
         "exercises": {
-          "pagedBST_CON": {
+          "pagedBSTCON": {
             "long_name": "Paged BST Slideshow",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "rebalanceBST_CON": {
+          "rebalanceBSTCON": {
             "long_name": "Paged BST With Disk Accesses Slideshow",
             "required": false,
             "points": 0.0,
