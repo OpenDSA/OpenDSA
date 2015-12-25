@@ -1,81 +1,8 @@
 {
   "translations" :{
     "en": {
-     "av_c1": "The initial call is to move disk 5 from A to B",
-     "av_c2": "This will require moving disk 4 from A to C", 
-     "av_c3": "This will require moving disk 3 from A to B",
-     "av_c4": "This will require moving disk 2 from A to C",
-     "av_c5": "This will require moving disk 1 from A to B",
-     "av_c6": "This will require moving disk 0 from A to C and that what we are going to do directly.",
-     "av_c7": "Return from recursive call and continue to disk 1 where we left off.",
-     "av_c8": "Disk 1 moved and we need to move smaller disks.",
-     "av_c9": "Return from recursive call and continue to disk 2 where we left off.",
-     "av_c10": "Disk 2 moved and we need to move smaller disks.",
-     "av_c11": "Return from recursive call and continue to disk 1 where we left off.",
-     "av_c12": "Disk 1 moved and we need to move smaller disks.",
-     "av_c13": "This process will repeat till we have all the disks moved to support B  as we will see in the rest of this tracing visualization:"
    }
   },
   "code" : {
-    "processing": {
-      "url": "../../../SourceCode/Processing/Misc/TOH.pde",
-      "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: TOH *** */",
-      "endBefore": "/* *** ODSAendTag: TOH *** */",
-      "top": 200, 
-      "left": 250,
-      "tags": {
-       "sig": 8,
-       "bc": 9,
-       "rc1": 10,
-       "rcac": 11,
-       "rc2": 12  
-      }
-    },
-    "java": {
-      "url": "../../../SourceCode/Java/Misc/TOH.java",
-      "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: TOH *** */",
-      "endBefore": "/* *** ODSAendTag: TOH *** */",
-      "top": 200, 
-      "left": 250,
-      "tags": {
-       "sig": 8,
-       "bc": 9,
-       "rc1": 10,
-       "rcac": 11,
-       "rc2": 12  
-      }
-    },
-    "java_generic": {
-      "url": "../../../SourceCode/Java_Generic/Misc/TOH.java",
-      "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: TOH *** */",
-      "endBefore": "/* *** ODSAendTag: TOH *** */",
-      "top": 200, 
-      "left": 250,
-      "tags": {
-       "sig": 8,
-       "bc": 9,
-       "rc1": 10,
-       "rcac": 11,
-       "rc2": 12  
-      }
-    },
-    "c++": {
-      "url": "../../../SourceCode/C++/Misc/TOH.cpp",
-      "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: TOH *** */",
-      "endBefore": "/* *** ODSAendTag: TOH *** */",
-      "top": 200, 
-      "left": 250,
-      "tags": {
-       "sig": 8,
-       "bc": 9,
-       "rc1": 10,
-       "rcac": 11,
-       "rc2": 12  
-      }
-    }
-  }
+  }        
 }
