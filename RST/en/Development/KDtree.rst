@@ -10,7 +10,10 @@
    :topic: Spatial Data Structures
 
 KD Trees
-=========
+========
+
+KD Trees
+--------
 
 The :term:`kd tree` is a modification to the :term:`BST` that allows
 for efficient processing of
