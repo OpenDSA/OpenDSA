@@ -9,7 +9,10 @@
     "C++":{ "ext": ["cpp", "h"],"label":"C++","lang":"C++"}
   },
   "lang": "en",
-  "module_origin": "http://www.ida.liu.se",
+  "module_origin": "http://algoviz.org",
+  "exercise_server": "https://opendsa.cs.vt.edu/",
+  "logging_server": "https://opendsa.cs.vt.edu/",
+  "score_server": "https://opendsa.cs.vt.edu/",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
@@ -31,22 +34,81 @@
     "Introduction": {
       "Background/IntroDSA.rst": {
         "long_name": "Introduction to Data Structures and Algorithms",
-        "sections": {
-          "se": {
-            "long_name": "software engineering topics",
-            "showhide": "none",
-            "remove": false
-          }
-        },
         "exercises": {
           "IntroSumm": {
             "long_name": "Introduction Summary Questions",
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 5
           }
         }
+      }
+    },
+    "Biographies": {
+      "Biography/CarlGauss": {
+        "long_name": "Carl Gauss",
+        "exercises": {}
       },
+      "Biography/FrancisBacon": {
+        "long_name": "Francis Bacon",
+        "exercises": {}
+      }
+    },
+    "Programming Tutorials": {
+      "Tutorials/cmdline": {
+        "long_name": "Command Line Basics",
+        "exercises": {
+          "terminal": {
+            "long_name": "Terminal",
+            "required": false,
+            "points": 0,
+            "threshold": 1.0
+          }
+        }
+      },
+      "Tutorials/parameters": {
+        "long_name": "Parsing Command Line Parameters",
+        "exercises": {}
+      },
+      "Tutorials/eclipseparameters": {
+        "long_name": "Using parameters in Eclipse",
+        "exercises": {}
+      },
+      "Tutorials/webcattools": {
+        "long_name": "Configuring Eclipse For Virginia Tech",
+        "exercises": {}
+      },
+      "Tutorials/debugmethods": {
+        "long_name": "Debugging Methods",
+        "exercises": {}
+      },
+      "Tutorials/debug": {
+        "long_name": "Debugging in Eclipse",
+        "exercises": {}
+      },
+      "Tutorials/scanning": {
+        "long_name": "Reading In Input",
+        "exercises": {}
+      },
+      "Tutorials/randomaccessfile": {
+        "long_name": "Using the Java RandomAccessFile class",
+        "exercises": {}
+      },
+      "Tutorials/junitstart": {
+        "long_name": "Junit tests and how to use them",
+        "exercises": {}
+      },
+      "Tutorials/junitbasic": {
+        "long_name": "Junit tests and how to use them",
+        "exercises": {}
+      },
+      "Tutorials/junitcoverage": {
+        "long_name": "Junit tests and how to use them",
+        "exercises": {}
+      }
+    },
+    "Design I": {
       "Design/ADT": {
         "long_name": "Abstract Data Types",
         "exercises": {
@@ -69,9 +131,39 @@
       },
       "Design/IntroProcess": {
         "exercises": {}
-      },
-      "Biography/FrancisBacon": {
+      }
+    },
+    "Pointers": {
+      "Pointers/PointerIntro": {
+        "long_name": "Pointers Chapter Introduction",
         "exercises": {}
+      },
+      "Pointers/BasicPointers": {
+        "long_name": "Basic Pointers",
+        "exercises": {}
+      },
+      "Pointers/LocalMem": {
+        "long_name": "Local Memory",
+        "exercises": {}
+      },
+      "Pointers/RefParam": {
+        "long_name": "Reference Parameters",
+        "exercises": {}
+      },
+      "Pointers/HeapMem": {
+        "long_name": "Heap Memory",
+        "exercises": {}
+      },
+      "Pointers/Exercises": {
+        "long_name": "Exercises",
+        "exercises": {
+          "FindNodePROG": {
+            "long_name": "Find Node Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 3
+          }
+        }
       }
     },
     "Mathematical Background": {
@@ -108,11 +200,48 @@
       },
       "Background/Logarithms": {
         "long_name": "Logarithms",
-        "exercises": {}
+        "exercises": {
+          "MathLogSumm": {
+            "long_name": "Logarithms Practice Questions",
+            "required": true,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
       },
       "Background/Summations": {
         "long_name": "Summations and Recurrence Relations",
-        "exercises": {}
+        "exercises": {
+          "SummationOneToNCON": {
+            "long_name": "Summation of the first N Integers visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "SummationTwoPowerICON": {
+            "long_name": "Summation Two Power I visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      },
+      "Background/RecurrenceIntro": {
+        "long_name": "Recurrence Relations",
+        "exercises": {
+          "LinearRecurrencesCON": {
+            "long_name": "Linear Recurrences Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "LinearRecurrencesNCON": {
+            "long_name": "Linear Recurrences Slideshow (n)",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "Background/Recursion": {
         "long_name": "Recursion",
@@ -123,7 +252,13 @@
       "Background/Proofs": {
         "long_name": "Proofs",
         "exercises": {
-          "twoColorCON": {}
+          "twoColorCON": {},
+          "TwoColoringProofCON": {
+            "long_name": "Two Coloring Proof Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
         }
       },
       "Background/Estimation": {
@@ -140,13 +275,672 @@
             "threshold": 5
           }
         }
-      },
-      "Biography/CarlGauss": {
+      }
+    },
+    "Searching I": {
+      "Searching/BinarySearch": {
+        "long_name": "Binary Search",
+        "exercises": {
+          "binarySearchCON": {
+            "long_name": "Binary Search Algorithm Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "binarySearchPRO": {
+            "long_name": "Binary Search Proficiency Exercise",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      }
+    },
+    "Algorithm Analysis": {
+      "AlgAnal/AnalChap": {
+        "long_name": "Chapter Intro: Algorithm Analysis",
         "exercises": {}
+      },
+      "AlgAnal/AnalPrelim": {
+        "long_name": "Problems, Algorithms, and Programs",
+        "exercises": {
+          "ProblemAlgorithmCON": {
+            "long_name": "Problem, Algorithm, and Program definitions Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "AnalPrelimSumm": {
+            "long_name": "Problems, Algorithms, Programs Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 1.0,
+            "threshold": 4
+          }
+        }
+      },
+      "AlgAnal/AnalIntro": {
+        "long_name": "Comparing Algorithms",
+        "exercises": {
+          "CompareGrowth": {
+            "long_name": "Comparing Growth Rates Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 2.0,
+            "threshold": 3
+          },
+          "GrowthRatesPRO": {
+            "long_name": "Growth Rates Ordering Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 1.0,
+            "threshold": 3
+          }
+        }
+      },
+      "AlgAnal/AnalCases": {
+        "long_name": "Best, Average, and Worst Cases",
+        "exercises": {
+          "AnalCasesSameCON": {
+            "long_name": "Simple analysis cases slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "AnalCasesDiffCON": {
+            "long_name": "Best, Worst, and Average cases slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      },
+      "AlgAnal/AnalCompvsAlg": {
+        "long_name": "A Faster Computer, or a Faster Algorithm?",
+        "exercises": {
+          "FasterCorASumm": {
+            "long_name": "Faster Computer or Faster Algorithm Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 1.0,
+            "threshold": 2
+          }
+        }
+      },
+      "AlgAnal/AnalAsymptotic": {
+        "long_name": "Asymptotic Analysis and Upper Bounds",
+        "exercises": {
+          "UpperBoundCON": {
+            "long_name": "Upper Bounds visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "UpperBoundsSumm": {
+            "long_name": "Asymptotic Analysis and Upper Bounds Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 1.0,
+            "threshold": 4
+          }
+        }
+      },
+      "AlgAnal/AnalLower": {
+        "long_name": "Lower Bounds and Theta Notation",
+        "exercises": {
+          "LowerThetaSumm": {
+            "long_name": "Lower Bounds and Theta Notation Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 2.0,
+            "threshold": 5
+          },
+          "LowerBoundCON": {
+            "long_name": "Lower Bounds visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      },
+      "AlgAnal/AnalProgram": {
+        "long_name": "Calculating the Running Time of a Program",
+        "exercises": {
+          "binarySearchCON": {
+            "long_name": "Binary Search Algorithm Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "binarySearchPRO": {
+            "long_name": "Binary Search Proficiency Exercise",
+            "exer_options": { "JXOP-code": "none" },
+            "required": true,
+            "showhide": "show",
+            "points": 1.0,
+            "threshold": 1.0
+          },
+          "BsearchDandCRecurCON": {
+            "long_name": "Binary Search recurrence slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "AnalProgramSumm": {
+            "long_name": "Program Code Analysis Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "AlgAnal/AnalProblem": {
+        "long_name": "Analyzing Problems",
+        "exercises": {
+          "AnalProblemSumm": {
+            "long_name": "Problem Analysis Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 1.0,
+            "threshold": 5
+          },
+          "AnalyzingProblemsCON": {
+            "long_name": "Worst Case Lower Bound Visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      },
+      "AlgAnal/AnalMisunderstanding": {
+        "long_name": "Common Misunderstandings",
+        "exercises": {
+          "MisSumm": {
+            "long_name": "Common Misconceptions Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 1.0,
+            "threshold": 4
+          },
+          "MisunderstandingsGraphCON": {
+            "long_name": "Example's graph Visualization",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      },
+      "AlgAnal/AnalMultiple": {
+        "long_name": "Multiple Parameters",
+        "exercises": {}
+      },
+      "AlgAnal/AnalSpace": {
+        "long_name": "Space Bounds",
+        "exercises": {}
+      },
+      "AlgAnal/AnalTuning": {
+        "long_name": "Speeding Up Your Programs",
+        "exercises": {}
+      },
+      "AlgAnal/AlgAnalSumm": {
+        "long_name": "Algorithm Analysis Summary Exercises",
+        "exercises": {
+          "AlgAnalCS2Summ": {
+            "long_name": "Algorithm Analysis Summary Questions",
+            "required": false,
+            "points": 0.0,
+            "threshold": 5
+          },
+          "AlgAnalCS3Summ": {
+            "long_name": "Algorithm Analysis Summary Questions",
+            "required": true,
+            "showhide": "show",
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      }
+    },
+    "Linear Structures": {
+      "List/ListIntro": {
+        "long_name": "Chapter Introduction: Linear Structures",
+        "exercises": {}
+      },
+      "List/ListADT": {
+        "long_name": "List ADT",
+        "exercises": {
+          "listADTposCON": {
+            "long_name": "List ADT Positions Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "ListADTPROG": {
+            "long_name": "List ADT Programming Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 1.0,
+            "threshold": 3
+          }
+        }
+      },
+      "List/ListArray": {
+        "long_name": "Array-based Lists",
+        "exercises": {
+          "alistVarsCON": {
+            "long_name": "Array-based List Variables Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "alistIntroCON": {
+            "long_name": "Array-based List Intro Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "alistInsertCON": {
+            "long_name": "Array-based List Insertion Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "alistAppendCON": {
+            "long_name": "Array-based List Append Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "AlistInsertPRO": {
+            "long_name": "Array-based List Insert Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 1,
+            "threshold": 5
+          },
+          "alistRemoveCON": {
+            "long_name": "Array-based List Remove",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "AlistRemovePRO": {
+            "long_name": "Array-based List Remove Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 1,
+            "threshold": 5
+          },
+          "ALSumm": {
+            "long_name": "Array-based List Summary",
+            "required": true,
+            "showhide": "show",
+            "points": 1,
+            "threshold": 3
+          }
+        }
+      },
+      "List/ListLinked": {
+        "long_name": "Linked Lists",
+        "exercises": {
+          "llistRepCON": { },
+          "llistBadCON": {
+            "long_name": "Linked List Slideshow 1",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "llistInitCON": { },
+          "llistBadDelCON": {
+            "long_name": "Linked List Slideshow 2",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "llistHeaderCON": { },
+          "llistVarsCON": {
+            "long_name": "Linked List Variables Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "llistConsCON": {
+            "long_name": "Linked List Constructors Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "llistInsertCON": {
+            "long_name": "Linked List Insert Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "llistSpecialCON": {
+            "long_name": "Linked List Special Insert Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "LlistInsertPRO": {
+            "long_name": "Linked List Insert Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 1,
+            "threshold": 5
+          },
+          "llistRemoveCON": {
+            "long_name": "Linked List Remove Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "LlistRemovePRO": {
+            "long_name": "Linked List Remove Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 2,
+            "threshold": 5
+          },
+          "llistOtherCON": {
+            "long_name": "Linked List Position Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      },
+      "List/ListAnalysis": {
+        "long_name": "Comparison of List Implementations",
+        "exercises": {
+          "ListOverhead": {
+            "long_name": "Breakeven Point Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 1,
+            "threshold": 3
+          },
+          "LLSumm": {
+            "long_name": "Linked List Summary Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 2,
+            "threshold": 6
+          }
+        }
+      },
+      "List/ListDouble": {
+        "long_name": "Doubly Linked Lists",
+        "exercises": {
+          "dlistDiagramCON": {},
+          "dlistInsertCON": {
+            "long_name": "Doubly Linked List Insert",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "dlistAppendCON": {
+            "long_name": "Doubly Linked List Append",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "dlistRemoveCON": {
+            "long_name": "Doubly Linked List Remove",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "dlistPrevCON": {
+            "long_name": "Doubly Linked List Prev",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      },
+      "List/ListElement": {
+        "long_name": "List Element Implementations",
+        "exercises": {
+          "listElementDataCON": {
+            "long_name": "List Element Data",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "listElementTypeCON": {
+            "long_name": "List Element Type",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "listElementDeleteCON": {
+            "long_name": "List Element Delete",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "ListSumm": {
+            "long_name": "List Summary Questions",
+            "required": true,
+            "showhide": "show",
+            "points": 1,
+            "threshold": 3
+          }
+        }
+      },
+      "List/StackArray": {
+        "long_name": "Array-based Stacks",
+        "exercises": {
+          "astackVarCON": {
+            "long_name": "Array stack variables slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "astackTopCON": {
+            "long_name": "Array stack top position slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "astackPushCON": {
+            "long_name": "Array stack push slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "astackPopCON": {
+            "long_name": "Array stack pop slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "AstackPushPRO": {
+            "long_name": "Array-based Stack Push Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 1,
+            "threshold": 5
+          },
+          "AstackPopPRO": {
+            "long_name": "Array-based Stack Pop Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 1,
+            "threshold": 5
+          }
+        }
+      },
+      "List/StackLinked": {
+        "long_name": "Linked Stacks",
+        "exercises": {
+          "lstackDiagramCON": {},
+          "lstackPushCON": {
+            "long_name": "Linked stack push",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "lstackPopCON": {
+            "long_name": "Linked stack pop",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "LstackPushPRO": {
+            "long_name": "Linked Stack Push Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 1,
+            "threshold": 5
+          },
+          "LstackPopPRO": {
+            "long_name": "Linked Stack Pop Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 1,
+            "threshold": 5
+          }
+        }
+      },
+      "List/Freelist": {
+        "long_name": "Freelists",
+        "exercises": {
+          "listFreeCON": {
+            "long_name": "Freelist Slideshow 1",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      },
+      "List/StackRecur": {
+        "long_name": "Implementing Recursion",
+        "exercises": {}
+      },
+      "List/Queue": {
+        "long_name": "Queues",
+        "exercises": {
+          "aqueueFirstCON": {
+            "long_name": "Array-based Queue Positions Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "aqueueDriftCON": {
+            "long_name": "Array-based Queue Drift Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "aqueueBadCON": {
+            "long_name": "Array-based Queue Bad Representation Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "aqueueCircularCON": {
+            "long_name": "Circular Array-based Queue Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "aqueueEmptyCON": {
+            "long_name": "Empty Circular Array-based Queue Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "aqueueVarCON": {
+            "long_name": "Array-based Queue Variables Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "AqueueEnqueuePRO": {
+            "long_name": "Array-based Queue Enqueue Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 1,
+            "threshold": 5
+          },
+          "AqueueDequeuePRO": {
+            "long_name": "Array-based Queue Dequeue Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 1,
+            "threshold": 5
+          }
+        }
+      },
+      "List/QueueLinked": {
+        "long_name": "Linked Queues",
+        "exercises": {
+          "lqueueIntroCON": {
+            "long_name": "Linked Queue Intro",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "lqueueEnqueueCON": {
+            "long_name": "Linked Queue Enqueue",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "lqueueDequeueCON": {
+            "long_name": "Linked Queue Dequeue",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "LqueueEnqueuePRO": {
+            "long_name": "Linked Queue Enqueue Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 1,
+            "threshold": 5
+          },
+          "LqueueDequeuePRO": {
+            "long_name": "Linked Queue Dequeue Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 1,
+            "threshold": 5
+          },
+          "StackQSumm": {
+            "long_name": "Stack/Queue Summary Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 1,
+            "threshold": 5
+          }
+        }
+      },
+      "List/ListSumm": {
+        "long_name": "List Chapter Summary",
+        "exercises": {
+          "ListdsSumm": {
+            "long_name": "List Data Structures General Questions",
+            "required": true,
+            "showhide": "show",
+            "points": 2,
+            "threshold": 5
+          },
+          "ListChapterSumm": {
+            "long_name": "List Chapter Summary",
+            "required": true,
+            "showhide": "show",
+            "points": 2,
+            "threshold": 10
+          }
+        }
       }
     },
     "Recursion": {
-      "RecurTutor/Introduction": {
+      "RecurTutor/RecIntro": {
         "long_name": "Recursion Chapter Introduction",
         "exercises": {
           "recurIntroDelegateCON": {
@@ -166,13 +960,13 @@
       "RecurTutor/Write": {
         "long_name": "How to write a recursive function",
         "exercises": {
-          "recursionWrtStepsCON": {
+          "recurWriteStepsCON": {
             "long_name": "Recursion Code Writing Slideshow 1",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "recursionWrtSumCON": {
+          "recurWriteSumCON": {
             "long_name": "Recursion Code Writing Slideshow 2",
             "required": true,
             "points": 0.0,
@@ -180,59 +974,59 @@
           }
         }
       },
-       "RecurTutor/CodeCompletionEx": {
+      "RecurTutor/CodeCompletionEx": {
         "long_name": "Code Completion Exercises",
         "exercises": {
-          "recCLargestPROGSumm": {
+          "RecCLargestPROG": {
             "long_name": "Recursion Code Completion Exercise Largest",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recCMultiplyPROGSumm": {
+          "RecCMultiplyPROG": {
             "long_name": "Recursion Code Completion Exercise Multiply",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recCGcdPROGSumm": {
+          "RecCGcdPROG": {
             "long_name": "Recursion Code Completion Exercise GCD",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recCLogPROGSumm": {
+          "RecCLogPROG": {
             "long_name": "Recursion Code Completion Exercise Log",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recCSumtokPROGSumm": {
+          "RecCSumtokPROG": {
             "long_name": "Recursion Code Completion Exercise Sum to k",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recCAddoddPROGSumm": {
+          "RecCAddoddPROG": {
             "long_name": "Recursion Code Completion Exercise Add Odd",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recCSumOfDigitsPROGSumm": {
+          "RecCSumOfDigitsPROG": {
             "long_name": "Recursion Code Completion Exercise Sum of Digits",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recCCountChrPROGSumm": {
+          "RecCCountChrPROG": {
             "long_name": "Recursion Code Completion Exercise Count Characters",
             "required": true,
             "points": 1.0,
@@ -242,28 +1036,28 @@
         }
       },
       "RecurTutor/HarderWrite": {
-        "long_name": "How to write a more sophisticated recursive function",
+        "long_name": "Writing More Sophisticated Recursive Functions",
         "exercises": {}
       },
       "RecurTutor/HarderCodeCompletionEx": {
         "long_name": "Harder Code Completion Exercises",
         "exercises": {
-          "recHMinPROGSumm": {
-            "long_name": "Recursion Harder Code Completion Exercise Minimum",
+          "RecHMinPROG": {
+            "long_name": "Recursion Code Completion Exercise: Minimum",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recHIsReversePROGSumm": {
-            "long_name": "Recursion Harder Code Completion Exercise Is Reverse",
+          "RecHIsReversePROG": {
+            "long_name": "Recursion Code Completion Exercise: Is Reverse",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recHDecibinaryPROGSumm": {
-            "long_name": "Recursion Harder Code Completion Exercise Decimal to Binary",
+          "RecHDecibinaryPROG": {
+            "long_name": "Recursion Code Completion Exercise: Decimal to Binary",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
@@ -274,57 +1068,50 @@
       "RecurTutor/WritingEx": {
         "long_name": "Code Writing Exercises",
         "exercises": {
-          "recWIsbalancPROGSumm": {
-            "long_name": " Recursion Code Writing Exercise Is Balanced",
+          "RecWIsbalancedPROG": {
+            "long_name": "Recursion Code Writing Exercise: Is Balanced",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recWChckPlndrmPROGSumm": {
-            "long_name": "Recursion Code Writing Exercise Check Palindrom",
+          "RecWCheckPalPROG": {
+            "long_name": "Recursion Code Writing Exercise: Check Palindrom",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recWRvrsStrngPROGSumm": {
-            "long_name": "Recursion Code Writing Exercise Reverse String",
+          "RecWRevStringPROG": {
+            "long_name": "Recursion Code Writing Exercise: Reverse String",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recWRmvDuplctPROGSumm": {
-            "long_name": "Recursion Code Writing Exercise Remove Duplicates",
+          "RecWRemoveDupPROG": {
+            "long_name": "Recursion Code Writing Exercise: Remove Duplicates",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recWPascalPROGSumm": {
-            "long_name": "Recursion Code Writing Exercise Pascal",
+          "RecWPascalPROG": {
+            "long_name": "Recursion Code Writing Exercise: Pascal",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recWCnonballPROGSumm": {
-            "long_name": "Recursion Code Writing Exercise Cannon Ball",
+          "RecWCannonballPROG": {
+            "long_name": "Recursion Code Writing Exercise: Cannon Ball",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
           },
-          "recWIsMeasurblPROGSumm": {
-            "long_name": "Recursion Code Writing Exercise Is Measurable",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
-          },
-          "recWStckRevrsPROGSumm": {
-            "long_name": "Recursion Code Writing Exercise Stack Reversal",
+          "RecWStackRevPROG": {
+            "long_name": "Recursion Code Writing Exercise: Stack Reversal",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
@@ -335,49 +1122,31 @@
       "RecurTutor/Trace": {
         "long_name": "How to trace a recursive function?",
         "exercises": {
-          "recursionTrcWindCON": {
+          "recurTraceWindCON": {
             "long_name": "Recursion Tracing Winding and Unwinding",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "recursionTrcSumCON": {
+          "recurTraceSumCON": {
             "long_name": "Recursion Tracing Sum Function",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "recursionTrcFctCON": {
+          "recurTraceFactCON": {
             "long_name": "Recursion Tracing Factorial Function",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "recursionTrcSum2CON": {
-            "long_name": "Recursion Tracing Sum Winding and Unwinding",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "recursionTrcDmnCON": {
+          "recurTraceDmnCON": {
             "long_name": "Recursion Tracing General Domino Effect",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
-          "recursionTrcDmnPrntCON": {
-            "long_name": "Recursion Tracing Domino Effect for Printing",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "recursionTrcDmnCntCON": {
-            "long_name": "Recursion Tracing Domino Effect for Counting",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "recursionTrcTOHCON": {
+          "recurTraceTOHCON": {
             "long_name": "Recursion Tracing Towers of Hanoi",
             "required": true,
             "points": 0.0,
@@ -388,593 +1157,59 @@
       "RecurTutor/TracingEx": {
         "long_name": "Tracing Practice Exercises",
         "exercises": {
-          "recTracingSumm1": {
-            "long_name": "Recursion Tracing Exercises Set 1",
+          "RecTraceSummFwdFlow": {
+            "long_name": "Recursion Forward Flow Tracing Exercises",
             "required": true,
             "points": 1.0,
-            "threshold": 4.0,
+            "threshold": 1.0,
             "showhide": "Show"
           },
-          "recTracingSumm2": {
-            "long_name": "Recursion Tracing Exercises Set 2",
+          "RecTraceSummbckwrdFlow": {
+            "long_name": "Recursion Backward Flow Tracing Exercises",
             "required": true,
             "points": 1.0,
-            "threshold": 2.0,
+            "threshold": 1.0,
             "showhide": "Show"
           },
-          "recTracingSumm3": {
-            "long_name": "Recursion Tracing Exercises Set 3",
+          "RecTraceSummFuncErr": {
+            "long_name": "Recursion Find Error Tracing Exercises",
             "required": true,
             "points": 1.0,
-            "threshold": 2.0,
+            "threshold": 1.0,
             "showhide": "Show"
           },
-          "recTracingSumm4": {
-            "long_name": "Recursion Tracing Exercises Set 4",
+          "RecTraceSummTwoRC": {
+            "long_name": "Two Recursive Calls Tracing Exercises",
             "required": true,
             "points": 1.0,
-            "threshold": 2.0,
+            "threshold": 1.0,
             "showhide": "Show"
           }, 
-          "recTracingSumm5": {
-            "long_name": "Recursion Tracing Exercises Set 5",
+          "RecTraceSummHowmany": {
+            "long_name": "Recursion How Many Times Tracing Exercises ",
             "required": true,
             "points": 1.0,
-            "threshold": 2.0,
+            "threshold": 1.0,
             "showhide": "Show"
           },        
-          "recTracingSumm6": {
-            "long_name": "Recursion Tracing Exercises Set 6",
+          "RecTraceSummHard": {
+            "long_name": "Recursion Harder Tracing Exercises",
             "required": true,
             "points": 1.0,
-            "threshold": 2.0,
+            "threshold": 1.0,
             "showhide": "Show"
           }
         }
       },
-      "RecurTutor/SummaryEx": {
-        "long_name": "Summary Exercises",
+      "RecurTutor/RecSummaryEx": {
+        "long_name": "Recursion Summary Exercises",
         "exercises": {
-          "recChapterSumm": {
+          "RecChapterSumm": {
             "long_name": "Recursion Summary Exercise",
             "required": true,
             "points": 1.0,
-            "threshold": 9.0,
+            "threshold": 5.0,
             "showhide": "Show"
-          }
-        }
-      }
-    },
-    "Algorithm Analysis": {
-      "AlgAnal/AnalChap": {
-        "long_name": "Chapter Intro: Algorithm Analysis",
-        "exercises": {}
-      },
-      "AlgAnal/AnalPrelim": {
-        "long_name": "Problems, Algorithms, and Programs",
-        "exercises": {}
-      },
-      "AlgAnal/AnalIntro": {
-        "long_name": "Comparing Algorithms",
-        "exercises": {}
-      },
-      "AlgAnal/AnalCases": {
-        "long_name": "Best, Average, and Worst Cases",
-        "exercises": {}
-      },
-      "AlgAnal/AnalCompvsAlg": {
-        "long_name": "A Faster Computer, or a Faster Algorithm?",
-        "exercises": {}
-      },
-      "AlgAnal/AnalAsymptotic": {
-        "long_name": "Asymptotic Analysis and Upper Bounds",
-        "sections": {
-          "thetadisc": {
-            "long_name": "theta disclaimer",
-            "showhide": "none",
-            "remove": true
-          }
-        },
-        "exercises": {}
-      },
-      "AlgAnal/AnalLower": {
-        "long_name": "Lower Bounds and Theta Notation",
-        "exercises": {
-          "AnalPairSumm": {
-            "long_name": "Function Pairs Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 5
-          }
-        }
-      },
-      "AlgAnal/AnalProgram": {
-        "long_name": "Calculating the Running Time of a Program",
-        "sections": {
-          "binsearchpro": {
-            "long_name": "Binary Search Proficiency Exercise",
-            "showhide": "none",
-            "remove": false
-          }
-        },
-        "exercises": {
-          "binarySearchCON": {
-            "long_name": "Binary Search Algorithm Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "binarySearchPRO": {
-            "long_name": "Binary Search Proficiency Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1.0
-          },
-          "AnalProgramSumm": {
-            "long_name": "Program Code Analysis Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5
-          }
-        }
-      },
-      "AlgAnal/AnalProblem": {
-        "long_name": "Analyzing Problems",
-        "exercises": {}
-      },
-      "AlgAnal/AnalMisunderstanding": {
-        "long_name": "Common Misunderstandings",
-        "exercises": {}
-      },
-      "AlgAnal/AnalMultiple": {
-        "long_name": "Multiple Parameters",
-        "exercises": {}
-      },
-      "AlgAnal/AnalSpace": {
-        "long_name": "Space Bounds",
-        "exercises": {}
-      },
-      "AlgAnal/AnalTuning": {
-        "long_name": "Speeding Up Your Programs",
-        "exercises": {}
-      },
-      "AlgAnal/AlgAnalSumm": {
-        "long_name": "Algorithm Analysis Summary Exercises",
-        "sections": {
-          "upperbound": {
-            "long_name": "Chapter Summary Questions",
-            "remove": true
-          },
-          "allbound": {
-            "long_name": "Chapter Summary Questions",
-            "showhide": "none"
-          }
-        },
-        "exercises": {
-          "AlgAnalCS2114Summ": {
-            "long_name": "Algorithm Analysis Summary Questions",
-            "required": false,
-            "points": 0.0,
-            "threshold": 5
-          },
-          "AlgAnalSumm": {
-            "long_name": "Algorithm Analysis Summary Questions",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5
-          }
-        }
-      }
-    },
-    "Linear Structures": {
-      "List/ListIntro": {
-        "long_name": "Chapter Introduction: Linear Structures",
-        "exercises": {}
-      },
-      "List/ListADT": {
-        "long_name": "List ADT",
-        "exercises": {
-          "listADTposCON": {
-            "long_name": "List ADT Positions Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "listADTnoteCON": {
-            "long_name": "List ADT Notation Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "ListADTPROG": {
-            "long_name": "List ADT Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 3
-          }
-        }
-      },
-      "List/ListArray": {
-        "long_name": "Array-based Lists",
-        "exercises": {
-          "alistVarsCON": {
-            "long_name": "Array-based List Variables Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "alistIntroCON": {
-            "long_name": "Array-based List Intro Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-         "alistInsertCON": {
-            "long_name": "Array-based List Insertion Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "alistAppendCON": {
-            "long_name": "Array-based List Append Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "alistInsertPRO": {
-            "long_name": "Array-based List Insert Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          },
-          "alistRemoveCON": {
-            "long_name": "Array-based List Remove",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "alistDeletePRO": {
-            "long_name": "Array-based List Delete Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          },
-          "ArryLstSumm": {
-            "long_name": "Array-based List Summary",
-            "required": true,
-            "points": 1,
-            "threshold": 3
-          }
-        }
-      },
-      "List/ListLinked": {
-        "long_name": "Linked Lists",
-        "exercises": {
-          "llistRepCON": { },
-          "llistBadCON": {
-            "long_name": "Linked List Slideshow 1",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "llistInitCON": { },
-          "llistBadDelCON": {
-            "long_name": "Linked List Slideshow 2",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "llistHeaderCON": { },
-          "llistVarsCON": {
-            "long_name": "Linked List Variables Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "llistConsCON": {
-            "long_name": "Linked List Constructors Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "llistInsertCON": {
-            "long_name": "Linked List Insert Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "llistSpecialCON": {
-            "long_name": "Linked List Special Insert Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "llistInsertPRO": {
-            "long_name": "Linked List Insert Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          },
-          "llistRemoveCON": {
-            "long_name": "Linked List Remove Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "llistRemovePRO": {
-            "long_name": "Linked List Remove Exercise",
-            "required": true,
-            "points": 2,
-            "threshold": 5
-          },
-          "llistOtherCON": {
-            "long_name": "Linked List Position Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          }
-        }
-      },
-      "List/ListAnalysis": {
-        "long_name": "Comparison of List Implementations",
-        "exercises": {
-          "ListOverhead": {
-            "long_name": "Breakeven Point Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 3
-          },
-          "LstLnkdSumm": {
-            "long_name": "Linked List Summary Exercise",
-            "required": true,
-            "points": 2,
-            "threshold": 6
-          }
-        }
-      },
-      "List/ListDouble": {
-        "long_name": "Doubly Linked Lists",
-        "exercises": {
-          "dlistDiagramCON": {},
-          "dlistInsertCON": {
-            "long_name": "Doubly Linked List Insert",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "dlistAppendCON": {
-            "long_name": "Doubly Linked List Append",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "dlistRemoveCON": {
-            "long_name": "Doubly Linked List Remove",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "dlistPrevCON": {
-            "long_name": "Doubly Linked List Prev",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          }
-        }
-      },
-      "List/ListElement": {
-        "long_name": "List Element Implementations",
-        "exercises": {
-          "listElementDataCON": {
-            "long_name": "List Element Data",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "listElementTypeCON": {
-            "long_name": "List Element Type",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "listElementDeleteCON": {
-          },
-          "LstSumm": {
-            "long_name": "List Summary Questions",
-            "required": true,
-            "points": 1,
-            "threshold": 3
-          }
-        }
-      },
-      "List/StackArray": {
-        "long_name": "Array-based Stacks",
-          "exercises": {
-          "astackVarCON": {
-            "long_name": "Array stack variables slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "astackTopCON": {
-            "long_name": "Array stack top position slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "astackPushCON": {
-            "long_name": "Array stack push slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "astackPopCON": {
-            "long_name": "Array stack pop slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "astackPushPRO": {
-            "long_name": "Array-based Stack Push Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          },
-          "astackPopPRO": {
-            "long_name": "Array-based Stack Pop Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          }
-        }
-      },
-      "List/StackLinked": {
-        "long_name": "Linked Stacks",
-        "exercises": {
-          "lstackDiagramCON": {},
-          "lstackPushCON": {
-            "long_name": "Linked stack push",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "lstackPopCON": {
-            "long_name": "Linked stack pop",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "lstackPushPRO": {
-            "long_name": "Linked Stack Push Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          },
-          "lstackPopPRO": {
-            "long_name": "Linked Stack Pop Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          }
-        }
-      },
-      "List/Freelist": {
-        "long_name": "Freelists",
-        "exercises": {
-          "listFreeCON": {
-            "long_name": "Freelist Slideshow 1",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          }
-        }
-      },
-      "List/StackRecur": {
-        "long_name": "Implementing Recursion",
-        "exercises": {}
-      },
-      "List/Queue": {
-        "long_name": "Queues",
-        "exercises": {
-          "aqueueFirstCON": {
-            "long_name": "Array-based Queue Positions Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "aqueueDriftCON": {
-            "long_name": "Array-based Queue Drift Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "aqueueBadCON": {
-            "long_name": "Array-based Queue Bad Representation Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "aqueueCircularCON": {
-            "long_name": "Circular Array-based Queue Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "aqueueEmptyCON": {
-            "long_name": "Empty Circular Array-based Queue Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "aqueueVarCON": {
-            "long_name": "Array-based Queue Variables Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "aqueueEnqueuePRO": {
-            "long_name": "Array-based Queue Enqueue Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          },
-          "aqueueDequeuePRO": {
-            "long_name": "Array-based Queue Dequeue Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          }
-        }
-      },
-      "List/QueueLinked": {
-        "long_name": "Linked Queues",
-        "exercises": {
-          "lqueueIntroCON": {
-            "long_name": "Linked Queue Intro",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "lqueueEnqueueCON": {
-            "long_name": "Linked Queue Enqueue",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "lqueueDequeueCON": {
-            "long_name": "Linked Queue Dequeue",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "lqueueEnqueuePRO": {
-            "long_name": "Linked Queue Enqueue Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          },
-          "lqueueDequeuePRO": {
-            "long_name": "Linked Queue Dequeue Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          },
-          "StckQSumm": {
-            "long_name": "Stack/Queue Summary Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          }
-        }
-      },
-      "List/ListSumm": {
-        "long_name": "List Chapter Summary",
-        "exercises": {
-          "LstChptrSumm": {
-            "long_name": "List Chapter Summary Exercise",
-            "required": true,
-            "points": 2,
-            "threshold": 5
           }
         }
       }
@@ -982,7 +1217,15 @@
     "Design 2": {
       "Design/DesignPatterns": {
         "long_name": "Design Patterns",
-        "exercises": {}
+        "exercises": {
+          "DesignPatternSumm": {
+            "long_name": "Design Patterns Summary Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 1,
+            "threshold": 4
+          }
+        }
       },
       "Design/DesignAltList": {
         "long_name": "Alternate List ADT Design",
@@ -994,6 +1237,7 @@
           "CompareSumm": {
             "long_name": "Record Comparison Summary Exercise",
             "required": true,
+            "showhide": "show",
             "points": 1,
             "threshold": 5
           }
@@ -1001,16 +1245,13 @@
       },
       "Design/Dictionary": {
         "long_name": "The Dictionary ADT",
-        "exercises": {}
-      },
-      "Design/DesignSumm": {
-        "long_name": "Design Chapter Summary",
         "exercises": {
-          "DesignSumm": {
-            "long_name": "Design Summary Exercise",
+          "DesignDictionarySumm": {
+            "long_name": "Dictionary Summary Exercise",
             "required": true,
+            "showhide": "show",
             "points": 1,
-            "threshold": 5
+            "threshold": 3
           }
         }
       }
@@ -1018,7 +1259,6 @@
     "Binary Trees": {
       "Binary/BinaryTreeIntro": {
         "long_name": "Binary Trees Chapter Introduction",
-	"dispModComp": true,
         "exercises": {}
       },
       "Binary/BinaryTree": {
@@ -1027,8 +1267,17 @@
           "DefSumm": {
             "long_name": "Tree Definition Summary Exercises",
             "required": true,
+            "showhide": "show",
             "points": 2,
             "threshold": 8
+          },
+          "Treeprobs": {
+            "long_name": "Tree/Node Exercises",
+            "showhide": "show",
+            "required": true,
+            "showhide": "show",
+            "points": 1,
+            "threshold": 4
           }
         }
       },
@@ -1038,14 +1287,14 @@
           "SumBinaryTreeCON": {
             "long_name": "Sum values in a Binary Tree Slide Show",
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 0.90
-           }
-         }
+          }
+        }
       },
       "Binary/BinaryTreeFullThm": {
         "long_name": "Full Binary Tree Theorem",
-	"dispModComp": true,
         "exercises": {}
       },
       "Binary/BinaryTreeTraversal": {
@@ -1069,16 +1318,11 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "btLeafPROG": {
-            "long_name": "Node Count Programming Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1
-          },
           "btTravInorderPRO": {
             "long_name": "Binary Tree Inorder Traversal Exercise",
             "exer_options": { "JXOP-code": "none" },
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 0.90
           },
@@ -1086,6 +1330,7 @@
             "long_name": "Binary Tree Preorder Traversal Exercise",
             "exer_options": { "JXOP-code": "none" },
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 0.90
           },
@@ -1093,31 +1338,72 @@
             "long_name": "Binary Tree Postorder Traversal Exercise",
             "exer_options": { "JXOP-code": "none" },
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 0.90
+          },
+          "TravSumm": {
+            "long_name": "Tree Traversal Summary Questions",
+            "required": true,
+            "points": 1.0,
+            "showhide": "show",
+            "threshold": 3
           }
         }
       },
       "Binary/WritingTraversals": {
         "long_name": "Writing Tree Traversals",
-        "exercises": {        
-          "BinaryTreeMistakesCON": {
-            "long_name": "Binary Tree Common Mistakes",
+        "exercises": {
+          "BTincPROG": {
+            "long_name": "Node Increment Exercise",
             "required": true,
+            "showhide": "show",
+            "points": 1.0,
+            "threshold": 1
+          }
+        }
+      },
+      "BTRecurTutor/BinaryTreeInfFlw": {
+        "long_name": "Binary Tree Information Flow",
+        "exercises": {
+          "BTsetdepthPROG": {
+            "long_name": "Set Node Depth Programming Exercise",
+            "showhide": "show",
+            "required": true,
+            "showhide": "show",
+            "points": 2.0,
+            "threshold": 1
+          },
+          "BinaryTreeMistakesCON": {
+            "long_name": "Binary Tree Common Mistakes Slideshow",
+            "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 0.90
           },
-          "BinaryTreeLocalSumm": {
-            "long_name": "Node Update Exercise",
+          "BTreturnPROGSumm": {
+            "long_name": "Collect-and-Return Programming Exercises",
+            "showhide": "show",
             "required": true,
-            "points": 1.0,
+            "showhide": "show",
+            "points": 4.0,
+            "threshold": 2.0
+          },
+          "BTcheckvalPROG": {
+            "long_name": "Node Value Count Programming Exercise",
+            "showhide": "show",
+            "required": true,
+            "showhide": "show",
+            "points": 2.0,
             "threshold": 1
           },
-          "BinaryTreeCntValSumm": {
-            "long_name": "Node Count Exercise",
+          "BTtransferPROGSumm": {
+            "long_name": "Duel-Flow Programming Exercises",
+            "showhide": "show",
             "required": true,
-            "points": 1.0,
-            "threshold": 1
+            "showhide": "show",
+            "points": 4.0,
+            "threshold": 2
           }
         }
       },
@@ -1146,9 +1432,10 @@
       "Binary/BinaryTreeNodeSpace": {
         "long_name": "Full Binary Tree Node Space Requirements",
         "exercises": {
-          "TreeOverheadSumm": {
+          "TreeOverheadFIB": {
             "long_name": "Tree Overhead Exercise",
             "required": true,
+            "showhide": "show",
             "points": 2,
             "threshold": 5
           }
@@ -1171,6 +1458,7 @@
               "JXOP-fixmode": "undo"
             },
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 0.90
           },
@@ -1188,6 +1476,7 @@
               "JXOP-fixmode": "undo"
             },
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 0.90
           },
@@ -1211,14 +1500,55 @@
               "JXOP-fixmode": "undo"
             },
             "required": true,
+            "showhide": "show",
             "points": 2.0,
             "threshold": 0.90
+          },
+          "BSTSumm": {
+            "long_name": "BST Question Summary",
+            "required": true,
+            "showhide": "show",
+            "points": 1,
+            "threshold": 2
           }
         }
       },
       "Binary/BSTDict": {
         "long_name": "Dictionary Implementation with BST",
-	"dispModComp": true,
+        "exercises": {}
+      },
+      "BTRecurTutor/BinaryTreeGuidedInfFlw": {
+        "long_name": "Binary Tree Guided Information Flow",
+        "exercises": {
+          "IneffBinaryTreeRangeCON": {
+            "long_name": "Inefficient Binary Tree Traversal on Range Slide Show",
+            "required": false,
+            "points": 0.0,
+            "threshold": 0.90
+          },
+          "BSTsmallcountPROG": {
+            "long_name": "BST Small Value Count Programming Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 2.0,
+            "threshold": 2.0
+          }
+        }
+      },
+      "BTRecurTutor/MultipleBinaryTrees": {
+        "long_name": "Multiple Binary Trees",
+        "exercises": {
+          "MultiTreePROGSumm": {
+            "long_name": "Multiple Binary Trees Exercises",
+            "required": true,
+            "points": 3.0,
+            "threshold": 3.0,
+            "showhide": "Show"
+          }
+        }
+      },
+      "BTRecurTutor/BSTCheck": {
+        "long_name": "BSTcheck Function",
         "exercises": {}
       },
       "Binary/CompleteTree": {
@@ -1227,6 +1557,7 @@
           "CompleteFIB": {
             "long_name": "Complete Tree Exercise",
             "required": true,
+            "showhide": "show",
             "points": 1,
             "threshold": 5
           }
@@ -1245,6 +1576,7 @@
             "long_name": "Heap Insert Proficiency Exercise",
             "exer_options": { "JXOP-code": "none" },
             "required": true,
+            "showhide": "show",
             "points": 2.0,
             "threshold": 0.90
           },
@@ -1258,6 +1590,7 @@
             "long_name": "Heap Build Proficiency Exercise",
             "exer_options": { "JXOP-code": "none" },
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 0.90
           },
@@ -1282,8 +1615,11 @@
           },
           "heapremovePRO": {
             "long_name": "Heap Remove Exercise",
-            "exer_options": { "JXOP-code": "none" },
+            "exer_options": {
+              "JXOP-code": "none"
+            },
             "required": true,
+            "showhide": "show",
             "points": 2.0,
             "threshold": 0.90
           },
@@ -1294,10 +1630,11 @@
             "threshold": 1.0
           },
           "HeapSumm": {
-            "long_name": "BST/Heap Summary",
+            "long_name": "Heap Question Summary",
             "required": true,
-            "points": 1,
-            "threshold": 3
+            "showhide": "show",
+            "points": 2.0,
+            "threshold": 5
           }
         }
       },
@@ -1306,31 +1643,32 @@
         "exercises": {
           "huffmanBuildCON": {
             "long_name": "Huffman Coding Tree Slideshow: Build",
-            "required": true,
+            "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
           "huffmanLabelCON": {
             "long_name": "Huffman Coding Tree Slideshow: Label Edges",
-            "required": true,
+            "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
           "huffmanCodesCON": {
             "long_name": "Huffman Coding Tree Slideshow: Setting Codes",
-            "required": true,
+            "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
           "huffmanDecodeCON": {
             "long_name": "Huffman Coding Tree Slideshow: Decoding",
-            "required": true,
+            "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "HuffmanDecodeFIB": {
+          "HuffmanDecodePRO": {
             "long_name": "Huffman Decoding Proficiency Exercise",
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 5
           }
@@ -1339,156 +1677,36 @@
       "Binary/TreeTrie": {
         "long_name": "Trees versus Tries",
         "exercises": {
-          "TreeTimeline": {
+          "TreeTimelineCON": {
             "long_name": "Tree timeline Slideshow",
-            "required": true,
+            "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "TrieTimeline": {
+          "TrieTimelineCON": {
             "long_name": "Trie timeline Slideshow",
-            "required": true,
+            "required": false,
             "points": 0.0,
             "threshold": 1.0
           }
         }
       },
-      "Development/HuffProof": {
+      "Binary/HuffProof": {
         "long_name": "Proof for Huffman Coding",
-	"dispModComp": true,
-        "exercises": {}
-      },
-      "Development/BinaryTreeSumm": {
-        "long_name": "Binary Tree Exercises",
-        "exercises": {}
-      }
-    },
-    "Spatial Data Structures": {
-      "Development/Spatial": {
-        "long_name": "Spatial Data Structures",
-        "exercises": {}
-      },
-      "Development/KDtree": {
-        "long_name": "k-d Trees",
-        "exercises": {}
-      },
-      "Development/Bintree": {
-        "long_name": "Bintrees",
-        "exercises": {}
-      },
-      "Development/BintreeNew": {
-        "long_name": "Bintrees",
         "exercises": {
-          "bintreeCONBTEX": {},
-          "bintreeAV": {
-            "long_name": "Bintree Visualization",
-            "required": false,
-            "points": 0,
-            "showhide": "none",
-            "threshold": 1.0
-          }
-        }
-      }
-    },
-    "GeneralTrees": {
-      "General/GenTreeIntro": {
-        "long_name": "General Trees",
-        "exercises": {
-          "GenTreePreTravCON": {
-            "long_name": "General Tree Preorder Traversal Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "GenTreePostTravCON": {
-            "long_name": "General Tree Postorder Traversal Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          }
+          "HuffProofCON": {}
         }
       },
-      "General/UnionFind": {
-        "long_name": "Union/Find",
+      "Binary/BinaryChapSumm": {
+        "long_name": "Binary Tree Chapter Summary",
         "exercises": {
-          "ufCON": {
-            "long_name": "Union/Find Example",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "pathcompCON": {
-            "long_name": "Union/Find Path Compression Example",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "UnionFindPRO": {
-            "long_name": "Union/Find Proficiency Exercise",
+          "BinaryChapSumm": {
+            "long_name": "BinaryChapSumm",
+            "showhide": "show",
             "required": true,
+            "showhide": "show",
             "points": 2.0,
-            "threshold": 0.90
-          }
-        }
-      },
-      "Development/GenTreeImplement": {
-        "long_name": "General Tree Implementations",
-        "exercises": {}
-      },
-      "Development/Kary": {
-        "long_name": "K-ary Trees",
-        "exercises": {}
-      },
-      "General/SequentialRep": {
-        "long_name": "Sequential Tree Representations",
-        "exercises": {
-         "SequentialTreeCON": {
-            "long_name": "First sequential representation Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "SequentialTreePRO": {
-            "long_name": "First Sequential Representation Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          },
-         "SequentialTreeAltCON": {
-            "long_name": "Second sequential representation Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "SequentialTreeAltPRO": {
-            "long_name": "Alternate Sequential Representation Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          },
-         "SequentialTreeBitsCON": {
-            "long_name": "Bit vector sequential representation Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "SequentialTreeBitVectorPRO": {
-            "long_name": "Bit Vector Sequential Representation Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
-          },
-         "SequentialGenTreeCON": {
-            "long_name": "General Tree sequential representation Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "SequentialTreeGenTreePRO": {
-            "long_name": "General Tree Sequential Representation Exercise",
-            "required": true,
-            "points": 1,
-            "threshold": 5
+            "threshold": 10
           }
         }
       }
@@ -1504,6 +1722,7 @@
           "SortIntroSumm": {
             "long_name": "Sorting Intro Summary",
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 3
           }
@@ -1512,20 +1731,8 @@
       "Sorting/InsertionSort": {
         "long_name": "Insertion Sort",
         "exercises" : {
-          "insertionsortS1CON": {
-            "long_name": "Insertion Sort Slideshow 1",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "insertionsortS2CON": {
-            "long_name": "Insertion Sort Slideshow 2",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "insertionsortS3CON": {
-            "long_name": "Insertion Sort Slideshow 3",
+          "insertionsortCON": {
+            "long_name": "Insertion Sort Slideshow",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
@@ -1533,13 +1740,13 @@
           "insertionsortAV": {
             "long_name": "Insertion Sort Visualization",
             "required": false,
-            "points": 0,
             "showhide": "none",
-            "threshold": 1.0
+            "points": 0
           },
           "InssortPRO": {
             "long_name": "Insertion Sort Proficiency Exercise",
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 5
           },
@@ -1564,6 +1771,7 @@
           "InssortSumm": {
             "long_name": "Insertion Sort Summary Exercise",
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 5
           }
@@ -1594,8 +1802,9 @@
           "BubsortPRO": {
             "long_name": "Bubble Sort Proficiency Exercise",
             "required": true,
+            "showhide": "show",
             "points": 2.0,
-            "threshold": 5
+            "threshold": 3
           },
           "BubbleSortAnalysisCON": {
             "long_name": "Bubble Sort Analysis Slideshow",
@@ -1606,6 +1815,7 @@
           "BubsortSumm": {
             "long_name": "Bubble Sort Summary Exercise",
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 5
           }
@@ -1636,6 +1846,7 @@
           "SelsortPRO": {
             "long_name": "Selection Sort Proficiency Exercise",
             "required": true,
+            "showhide": "show",
             "points": 2.0,
             "threshold": 5
           },
@@ -1648,6 +1859,7 @@
           "SelsortSumm": {
             "long_name": "Selection Sort Summary Exercise",
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 5
           }
@@ -1659,12 +1871,20 @@
           "FindInversionsPRO": {
             "long_name": "Inversions Proficiency Exercise",
             "required": true,
+            "showhide": "show",
             "points": 2.0,
             "threshold": 5
+          },
+          "ExchangeSortCON": {
+            "long_name": "Exchange Sort Analysis Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
           },
           "ExchangeSumm": {
             "long_name": "Exchange Sorting Summary Exercise",
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 5
           }
@@ -1724,9 +1944,10 @@
             "points": 0.0,
             "threshold": 1.0
           },
-          "ShellsortSublist": {
-            "long_name": "Shellsort Sublist Exercise",
+          "ShellsortSublistSumm": {
+            "long_name": "Shellsort Sublist Proficency Exercise",
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 5
           },
@@ -1740,6 +1961,7 @@
           "ShellsortSeries": {
             "long_name": "Shellsort Series Exercise",
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 5
           },
@@ -1747,6 +1969,7 @@
             "long_name": "Shellsort Proficiency Exercise",
             "required": true,
             "points": 2.0,
+            "showhide": "show",
             "threshold": 0.90,
             "exer_options": {
               "JXOP-feedback": "continuous",
@@ -1756,12 +1979,14 @@
           "shellsortPerf": {
             "long_name": "Shellsort Performance Activity",
             "required": true,
+            "showhide": "show",
             "points": 2.0,
             "threshold": 1.0
           },
           "ShellsortSumm": {
             "long_name": "Shellsort Summary Exercise",
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 5
           }
@@ -1786,12 +2011,14 @@
           "MergesortMergePRO": {
             "long_name": "Mergesort Merging Proficiency Exercise",
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 5
           },
           "mergesortPRO": {
             "long_name": "Mergesort Proficiency Exercise",
             "required": true,
+            "showhide": "show",
             "points": 2.0,
             "threshold": 0.90,
             "exer_options": {
@@ -1825,6 +2052,7 @@
           "MergesortSumm": {
             "long_name": "Mergesort Summary Exercise",
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 5
           }
@@ -1836,6 +2064,7 @@
           "QuicksortPivotPRO": {
             "long_name": "Quicksort Pivot Proficiency Exercise",
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 5
           },
@@ -1854,6 +2083,7 @@
           "QuicksortPartitPRO": {
             "long_name": "Quicksort Partition Proficiency Exercise",
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 5
           },
@@ -1867,12 +2097,13 @@
           "quicksortPRO": {
             "long_name": "Quicksort Proficiency Exercise",
             "required": true,
+            "showhide": "show",
             "points": 2.0,
             "threshold": 0.90,
             "exer_options": {
               "JXOP-feedback": "continuous",
               "JXOP-fixmode": "fix"
-	    }
+            }
           },
           "QuickSortWorstCaseCON": {
             "long_name": "Quicksort Worst Case Analysis Slideshow",
@@ -1895,6 +2126,7 @@
           "QuicksortSumm": {
             "long_name": "Quicksort Summary Exercise",
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 5
           }
@@ -1912,6 +2144,7 @@
           "HeapsortStepPRO": {
             "long_name": "Heapsort RemoveMax Proficiency Exercise",
             "required": true,
+            "showhide": "show",
             "points": 2.0,
             "threshold": 5
           },
@@ -1919,12 +2152,13 @@
             "long_name": "Heapsort Proficiency Exercise",
             "exer_options": { "JXOP-code": "none" },
             "required": true,
+            "showhide": "show",
             "points": 2.0,
             "threshold": 0.9,
             "exer_options": {
               "JXOP-feedback": "continuous",
               "JXOP-fixmode": "fix"
-	    }
+            }
           },
           "HeapSortAnalysisCON": {
             "long_name": "Heapsort Analysis Slideshow",
@@ -1935,6 +2169,7 @@
           "HeapsortSumm": {
             "long_name": "Heapsort Summary Exercise",
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 5
           }
@@ -1942,7 +2177,6 @@
       },
       "Sorting/BinSort": {
         "long_name": "Binsort",
-        "dispModComp": true,
         "exercises": {
           "binsortS1CON": {
             "long_name": "Binsort Slideshow 1",
@@ -1971,6 +2205,7 @@
           "RadixsortPRO": {
             "long_name": "Radix Sort Proficiency Exercise",
             "required": true,
+            "showhide": "show",
             "points": 2.0,
             "threshold": 4
           },
@@ -1990,6 +2225,7 @@
           "RadixSortSumm": {
             "long_name": "Radix Sort Summary Exercise",
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 5
           }
@@ -2001,6 +2237,7 @@
           "SortAlgCompSumm": {
             "long_name": "Sort Comparison Summary Exercise",
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 5
           }
@@ -2018,6 +2255,7 @@
           "SortBoundSumm": {
             "long_name": "Lower Bounds Summary Exercise",
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 4
           }
@@ -2026,60 +2264,57 @@
       "Sorting/SortSumm": {
         "long_name": "Sorting Chapter Summary Exercises",
         "exercises": {
-          "ChapterSumm": {
+          "SortChapterSumm": {
             "long_name": "Sorting Chapter Summary Exercise",
             "required": true,
+            "showhide": "show",
             "points": 2,
             "threshold": 10
           }
         }
-      },
-      "Development/SortProgExer.rst": {
-        "long_name": "Sorting Chapter Programming Exercises",
-        "exercises": {}
       }
     },
     "File Processing": {
-      "Development/FileProc": {
+      "Files/FileProc": {
         "long_name": "File Processing Chapter Introduction",
         "exercises": {}
       },
-      "Development/Secondary": {
+      "Files/Secondary": {
         "long_name": "Primary versus Secondary Storage",
         "exercises": {}
       },
-      "Development/Diskdrive": {
+      "Files/Diskdrive": {
         "long_name": "Disk Drives",
         "exercises": {}
       },
-      "Development/BuffPool": {
+      "Files/BuffPool": {
         "long_name": "Buffer Pools",
-        "sections": {
-          "BPextra": {
-            "long_name": "Buffer Pool Extra Material",
-            "showhide": "none",
-            "remove": true
-          }
-        },
         "exercises": {
-         "buffintroCON": {
+          "buffintroCON": {
             "long_name": "Buffer Pool Introduction Slideshow",
-            "required": true,
+            "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-         "LRUCON": {
+          "LRUCON": {
             "long_name": "LRU Replacement Slideshow",
-            "required": true,
+            "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-         "LRUwriteCON": {
+          "LRUwriteCON": {
             "long_name": "LRU Replacement with write Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "buffpoolCON": {
+            "long_name": "Unknown Slideshow",
             "required": true,
             "points": 0.0,
             "threshold": 1.0
           },
+          "buffpooldgmCON": {},
           "BufferPoolAV": {
             "long_name": "Buffer Pool Visualization",
             "required": false,
@@ -2089,152 +2324,62 @@
           },
           "bufferpoolPRO": {
             "long_name": "Buffer Pool Proficiency Exercise",
-            "required": false,
-            "points": 0,
+            "required": true,
+            "showhide": "show",
+            "points": 1,
             "threshold": 0.9
           }
         }
       },
-      "Development/FileProg": {
+      "Files/FileProg": {
         "long_name": "Programmer's View of Files",
         "exercises": {}
       },
-      "Development/ExternalSort": {
+      "Files/ExternalSort": {
         "long_name": "ExternalSort",
         "exercises": {
-          "ExternalMergeSort": {
+          "extMergeSortCON": {
             "long_name": "External Merge Sort Slideshow",
-            "required": true,
+            "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "ExternalMergeSortExample": {
+          "extMergeSortExampCON": {
             "long_name": "External Merge Sort Example Slideshow",
-            "required": true,
+            "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "externalSortOver": {},
-          "ExternalReplacementSelection": {
+          "extSortOverCON": {},
+          "extRSCON": {
             "long_name": "External Replacement Selection Slideshow",
-            "required": true,
+            "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "externalReplacementSelectionPRO": {
+          "extSortSnowCON": {},
+          "extRSPRO": {
             "long_name": "Replacement Selection Proficiency Exercise",
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "showhide": "none",
             "threshold": 1.0
           },
-          "externalSortSnow": {},
-          "MultiMerge": {
+          "extMultiMergeCON": {
             "long_name": "Multiway Merge Example Slideshow",
-            "required": true,
+            "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "externalMultiwayMergePRO": {
+          "extMultiMergePRO": {
             "long_name": "Multi-way Merge Proficiency Exercise",
             "required": true,
+            "showhide": "show",
             "points": 1.0,
-            "showhide": "none",
             "threshold": 1.0
           }
         }
-      }
-    },
-    "Searching": {
-      "Development/SearchIntro": {
-        "long_name": "Search Chapter Introduction",
-        "dispModComp": true,
-        "exercises": {}
-      },
-      "Searching/BinarySearch": {
-        "long_name": "Binary Search",
-        "exercises": {
-          "binarySearchCON": {
-            "long_name": "Binary Search Algorithm Slideshow",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "binarySearchPRO": {
-            "long_name": "Binary Search Proficiency Exercise",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
-          }
-        }
-      },
-      "Development/UnsortedSearch": {
-        "long_name": "Analyzing Search in Unsorted Arrays",
-        "dispModComp": true,
-        "exercises": {}
-      },
-      "Development/SortedSearch": {
-        "long_name": "Search in sorted Arrays",
-        "dispModComp": true,
-        "exercises": {}
-      },
-      "Development/SelfOrg": {
-        "long_name": "Self Organizing Lists",
-        "exercises": {
-          "SelforgCON1": {
-            "long_name": "Self-organizing List Slideshow: Frequency Count",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "SelforgCON2": {
-            "long_name": "Self-organizing List Slideshow: Move-to-front",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "SelforgCON3": {
-            "long_name": "Self-organizing List Slideshow: Transpose",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "SelfOrgMove-to-FrontPro": {
-            "long_name": "Self-organizing List Move-to-front Proficiency Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 0.90,
-            "exer_options": {
-              "JXOP-feedback": "continuous",
-              "JXOP-fixmode": "fix"
-            }
-          },
-          "SelfOrgTransposePro": {
-            "long_name": "Self-organizing List Transpose Proficiency Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 0.90,
-            "exer_options": {
-              "JXOP-feedback": "continuous",
-              "JXOP-fixmode": "fix"
-            }
-          },
-          "SelfOrgCounterPro": {
-            "long_name": "Self-organizing List Counter Proficiency Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 0.90,
-            "exer_options": {
-              "JXOP-feedback": "continuous",
-              "JXOP-fixmode": "fix"
-            }
-          }
-        }
-      },
-      "Development/SetSearch": {
-        "long_name": "Bit Vectors for Representing Sets",
-        "dispModComp": true,
-        "exercises": {}
       }
     },
     "Hashing": {
@@ -2243,8 +2388,8 @@
         "exercises": {
           "hashIntroCON1": {
             "long_name": "Hashing Intro Slideshow",
-            "required": true,
-            "points": 0.1,
+            "required": false,
+            "points": 0.0,
             "threshold": 1.0
           }
         }
@@ -2255,7 +2400,8 @@
           "Birthday": {
             "long_name": "Birthday Problem Calculator",
             "required": true,
-            "points": 0.1,
+            "showhide": "show",
+            "points": 1.0,
             "threshold": 1.0
           }
         }
@@ -2265,44 +2411,49 @@
         "exercises": {
           "hashFuncExCON1": {
             "long_name": "Hash Function Slideshow 1",
-            "required": true,
-            "points": 0.1,
+            "required": false,
+            "points": 0.0,
             "threshold": 1.0
           },
           "hashFuncExCON2": {
             "long_name": "Hash Function Slideshow 2",
-            "required": true,
-            "points": 0.1,
+            "required": false,
+            "points": 0.0,
             "threshold": 1.0
           },
           "MidSquare": {
             "long_name": "Mid-Square Calculator",
             "required": true,
-            "points": 0.1,
+            "showhide": "show",
+            "points": 0.5,
             "threshold": 1.0
           },
           "StringSimple": {
             "long_name": "Simple String Folding Calculator",
             "required": true,
-            "points": 0.1,
+            "showhide": "show",
+            "points": 0.5,
             "threshold": 1.0
           },
           "StringSfold": {
             "long_name": "Improved String Folding Calculator",
             "required": true,
-            "points": 0.1,
+            "showhide": "show",
+            "points": 0.5,
             "threshold": 1.0
           },
-          "HashFuncPROSumm": {
-            "long_name": "Hash Function Proficiency Summary",
+          "HashFuncFIBSumm": {
+            "long_name": "Hash Function Pick Slot Summary",
             "required": true,
-            "points": 1.5,
+            "showhide": "show",
+            "points": 1.0,
             "threshold": 5
           },
           "HashFuncSumm": {
-            "long_name": "Hash Function Summary",
+            "long_name": "Hash Function Summary Exercise",
             "required": true,
-            "points": 1.5,
+            "showhide": "show",
+            "points": 1.0,
             "threshold": 5
           }
         }
@@ -2312,9 +2463,10 @@
         "exercises": {
           "openhashCON1": {},
           "OpenHashPRO": {
-            "long_name": "Open Hashing Proficiency",
+            "long_name": "Open Hashing Proficiency Exercise",
             "required": true,
-            "points": 1,
+            "showhide": "show",
+            "points": 2.0,
             "threshold": 5
           }
         }
@@ -2324,26 +2476,28 @@
         "exercises": {
           "buckethashCON1": {
             "long_name": "Bucket Hashing Slideshow 1",
-            "required": true,
-            "points": 0.1,
+            "required": false,
+            "points": 0.0,
             "threshold": 1.0
           },
           "buckethashCON2": {
             "long_name": "Bucket Hashing Slideshow 2",
-            "required": true,
-            "points": 0.1,
+            "required": false,
+            "points": 0.0,
             "threshold": 1.0
           },
-          "HashingBucketPRO": {
-            "long_name": "Bucket Hashing Proficiency",
+          "HashBucketPRO": {
+            "long_name": "Bucket Hashing Proficiency Exercise",
             "required": true,
-            "points": 1,
+            "showhide": "show",
+            "points": 1.0,
             "threshold": 5
           },
-          "HashingBucket2PRO": {
-            "long_name": "Alternate Bucket Hashing Proficiency",
+          "HashBucket2PRO": {
+            "long_name": "Alternate Bucket Hashing Proficiency Exercise",
             "required": true,
-            "points": 1,
+            "showhide": "show",
+            "points": 1.0,
             "threshold": 5
           }
         }
@@ -2353,20 +2507,21 @@
         "exercises": {
           "linProbeCON1": {
             "long_name": "Linear Probing Slideshow 1",
-            "required": true,
-            "points": 0.1,
+            "required": false,
+            "points": 0.0,
             "threshold": 1.0
           },
           "linProbeCON2": {
             "long_name": "Linear Probing Slideshow 2",
-            "required": true,
-            "points": 0.1,
+            "required": false,
+            "points": 0.0,
             "threshold": 1.0
           },
-          "HashingLinearProbePRO": {
-            "long_name": "Linear Probing Proficiency",
+          "HashLinearPPRO": {
+            "long_name": "Linear Probing Proficiency Exercise",
             "required": true,
-            "points": 1,
+            "showhide": "show",
+            "points": 1.0,
             "threshold": 5
           }
         }
@@ -2376,74 +2531,78 @@
         "exercises": {
           "collisionCON1": {
             "long_name": "Linear Probing By Steps Slideshow 1",
-            "required": true,
-            "points": 0.1,
+            "required": false,
+            "points": 0.0,
             "threshold": 1.0
           },
           "collisionCON2": {
             "long_name": "Linear Probing By Steps Slideshow 2",
-            "required": true,
-            "points": 0.1,
+            "required": false,
+            "points": 0.0,
             "threshold": 1.0
           },
-          "HashingLinearStepProbePRO": {
-            "long_name": "Linear Probing By Steps Proficiency",
+          "HashLinearStepPPRO": {
+            "long_name": "Linear Probing By Steps Proficiency Exercise",
             "required": true,
-            "points": 1.0,
+            "showhide": "show",
+            "points": 2.0,
             "threshold": 5
           },
           "collisionCON3": {
             "long_name": "Pseudo-Random Probing Slideshow",
-            "required": true,
-            "points": 0.1,
+            "required": false,
+            "points": 0.0,
             "threshold": 1.0
           },
-          "HashingPseudoRandomProbePRO": {
-            "long_name": "Pseudo-Random Probing Proficiency",
+          "HashPseudoRandomPPRO": {
+            "long_name": "Pseudo-Random Probing Proficiency Exercise",
             "required": true,
-            "points": 1.0,
+            "showhide": "show",
+            "points": 2.0,
             "threshold": 5
           },
           "collisionCON4": {
             "long_name": "Quadratic Probing Slideshow 1",
-            "required": true,
-            "points": 0.1,
+            "required": false,
+            "points": 0.0,
             "threshold": 1.0
           },
           "collisionCON5": {
             "long_name": "Quadratic Probing Slideshow 2",
-            "required": true,
-            "points": 0.1,
+            "required": false,
+            "points": 0.0,
             "threshold": 1.0
           },
-          "HashingQuadraticProbePRO": {
-            "long_name": "Quadratic Probing Proficiency",
+          "HashQuadraticPPRO": {
+            "long_name": "Quadratic Probing Proficiency Exercise",
             "required": true,
-            "points": 1.0,
+            "showhide": "show",
+            "points": 2.0,
             "threshold": 5
           },
           "collisionCON6": {
             "long_name": "Double Hashing Slideshow 1",
-            "required": true,
-            "points": 0.1,
+            "required": false,
+            "points": 0.0,
             "threshold": 1.0
           },
           "collisionCON7": {
             "long_name": "Double Hashing Slideshow 2",
-            "required": true,
-            "points": 0.1,
+            "required": false,
+            "points": 0.0,
             "threshold": 1.0
           },
           "collisionCON8": {
             "long_name": "Double Hashing Slideshow 3",
-            "required": true,
-            "points": 0.1,
+            "required": false,
+            "points": 0.0,
             "threshold": 1.0
           },
-          "HashingDoubleProbePRO": {
-            "long_name": "Double Hashing Proficiency",
+          "HashDoublePPRO": {
+            "long_name": "Double Hashing Proficiency Exercise",
             "required": true,
-            "points": 1,
+            "showhide": "show",
+            "points": 2.0,
             "threshold": 5
           },
           "hashAV": {
@@ -2459,32 +2618,35 @@
         "long_name": "Analysis of Closed Hashing",
         "exercises": {
           "HashAnalSumm": {
-            "long_name": "Analysis of Closed Hashing Summary",
+            "long_name": "Analysis of Closed Hashing Summary Exercise",
             "required": true,
-            "points": 2,
+            "showhide": "show",
+            "points": 1.0,
             "threshold": 5
           }
         }
       },
       "Hashing/HashDel": {
-        "long_name": "Hash Deletion",
+        "long_name": "Deletion",
         "exercises": {
-          "hashdelCON1": {
+          "hashdelCON": {
             "long_name": "Hash Deletion Slideshow",
-            "required": true,
-            "points": 0.1,
+            "required": false,
+            "points": 0.0,
             "threshold": 1.0
           },
           "HashingDelPRO": {
-            "long_name": "Hash Deletion Proficiency",
+            "long_name": "Hash Deletion Proficiency Exercise",
             "required": true,
-            "points": 1,
+            "showhide": "show",
+            "points": 2.0,
             "threshold": 0.90
           },
           "HashDelSumm": {
-            "long_name": "Hash Deletion Summary",
+            "long_name": "Hash Deletion Summary Exercise",
             "required": true,
-            "points": 1,
+            "showhide": "show",
+            "points": 1.0,
             "threshold": 3
           }
         }
@@ -2493,43 +2655,32 @@
         "long_name": "Hashing Chapter Summary Exercises",
         "exercises": {
           "HashChapterSumm": {
-            "long_name": "Hashing Chapter Summary",
+            "long_name": "Hashing Chapter Summary Exercise",
             "required": true,
-            "points": 1,
+            "showhide": "show",
+            "points": 2.0,
             "threshold": 10
-          }
-        }
-      },
-      "Development/PerfectHash": {
-        "long_name": "Perfect Hashing",
-        "exercises": {
-          "perfectHashAV": {
-            "long_name": "Perfect Hashing Visualization",
-            "required": false,
-            "showhide": "none",
-            "points": 0,
-            "threshold": 1.0
           }
         }
       }
     },
     "Memory Management": {
-      "Development/MemmanIntro": {
+      "MemManage/MemmanIntro": {
         "long_name": "Chapter Introduction: Memory Management",
         "exercises": {}
       },
-      "Development/Dynamic": {
+      "MemManage/Dynamic": {
         "long_name": "Dynamic Memory Allocation",
         "exercises": {}
       },
-      "Development/SequentialFit": {
+      "MemManage/SequentialFit": {
         "long_name": "Sequential-Fit Methods",
         "exercises": {}
       },
-      "Development/FirstFit": {
+      "MemManage/FirstFit": {
         "long_name": "First Fit",
         "exercises": {
-          "firstFit": {
+          "firstFitAV": {
             "long_name": "First Fit Visualization",
             "required": false,
             "points": 0,
@@ -2540,15 +2691,16 @@
           "firstFitPRO": {
             "long_name": "First Fit Proficiency Exercise",
             "required": true,
+            "showhide": "show",
             "points": 2.0,
             "threshold": 0.90
           }
         }
       },
-      "Development/CircularFit": {
+      "MemManage/CircularFit": {
         "long_name": "Circular First Fit",
         "exercises": {
-          "firstFit": {
+          "firstFitAV": {
             "long_name": "Circular First Fit Visualization",
             "required": false,
             "points": 0,
@@ -2558,10 +2710,10 @@
           }
         }
       },
-      "Development/BestFit": {
+      "MemManage/BestFit": {
         "long_name": "Best Fit",
         "exercises": {
-          "firstFit": {
+          "firstFitAV": {
             "long_name": "Best Fit Visualization",
             "required": false,
             "points": 0,
@@ -2571,10 +2723,10 @@
           }
         }
       },
-      "Development/WorstFit": {
+      "MemManage/WorstFit": {
         "long_name": "Worst Fit",
         "exercises": {
-          "firstFit": {
+          "firstFitAV": {
             "long_name": "Worst Fit Visualization",
             "required": false,
             "points": 0,
@@ -2584,10 +2736,10 @@
           }
         }
       },
-      "Development/MMPerformance": {
+      "MemManage/MMPerformance": {
         "long_name": "Sequential-Fit Performance",
         "exercises": {
-          "firstFit": {
+          "firstFitAV": {
             "long_name": "Sequential Fit Visualization",
             "required": false,
             "points": 0,
@@ -2596,25 +2748,21 @@
           }
         }
       },
-      "Development/MMPerformance2": {
-        "long_name": "Sequential-Fit Performance 2",
-        "exercises": {}
-      },
-      "Development/Buddy": {
+      "MemManage/Buddy": {
         "long_name": "Other Memory Allocation Methods",
         "exercises": {}
       },
-      "Development/Garbage": {
+      "MemManage/Garbage": {
         "long_name": "Failure Policies and Garbage Collection",
         "exercises": {}
       }
     },
     "Indexing": {
-      "Development/IndexIntro": {
+      "Indexing/IndexIntro": {
         "long_name": "Indexing Chapter Introduction",
         "exercises": {}
       },
-      "Development/LinearIndexing.rst": {
+      "Indexing/LinearIndexing.rst": {
         "long_name": "LinearIndexing",
         "exercises": {
           "varindexCON": {
@@ -2632,25 +2780,26 @@
           "linearIndexingPRO": {
             "long_name": "Linear Indexing Proficiency Exercise",
             "required": true,
+            "showhide": "show",
             "points": 2.0,
             "threshold": 0.90
           }
         }
       },
-      "Development/ISAM": {
+      "Indexing/ISAM": {
         "long_name": "ISAM",
         "exercises": {}
       },
-      "Development/TreeIndexing": {
+      "Indexing/TreeIndexing": {
         "long_name": "Tree Indexing",
         "exercises": {
-          "pagedBST_CON": {
+          "pagedBSTCON": {
             "long_name": "Paged BST Slideshow",
             "required": false,
             "points": 0.0,
             "threshold": 1.0
           },
-          "rebalanceBST_CON": {
+          "rebalanceBSTCON": {
             "long_name": "Paged BST With Disk Accesses Slideshow",
             "required": false,
             "points": 0.0,
@@ -2659,12 +2808,13 @@
           "TreeIndexing": {
             "long_name": "Tree Indexing Proficiency Exercise",
             "required": true,
+            "showhide": "show",
             "points": 1.0,
             "threshold": 5
           }
         }
       },
-      "Development/TwoThreeTree": {
+      "Indexing/TwoThreeTree": {
         "long_name": "2-3 Trees",
         "exercises": {
           "twoThreeTreeCON": {},
@@ -2688,34 +2838,159 @@
           }
         }
       },
-      "Development/BTree": {
+      "Indexing/BTree": {
         "long_name": "B-Trees",
-        "exercises": {}
+        "exercises": {
+          "bPlusTreeInsertPRO": {
+            "long_name": "B+ Tree Proficiency Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 2.0,
+            "threshold": 0.90,
+            "exer_options": {
+              "JXOP-feedback": "continuous"
+            }
+          }
+        }
+      },
+      "Indexing/IndexingSumm": {
+        "long_name": "Indexing Chapter Summary",
+        "exercises": {
+          "IndexChoice": {
+            "long_name": "Choosing an Index",
+            "required": true,
+            "showhide": "show",
+            "points": 2,
+            "threshold": 5
+          }
+        }
+      }
+    },
+    "General Trees": {
+      "General/GenTreeIntro": {
+        "long_name": "General Trees",
+        "exercises": {
+          "GenTreePreTravCON": {
+            "long_name": "General Tree Preorder Traversal Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "GenTreePostTravCON": {
+            "long_name": "General Tree Postorder Traversal Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      },
+      "General/UnionFind": {
+        "long_name": "Union/Find",
+        "exercises": {
+          "ufCON": {
+            "long_name": "Union/Find Example",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "pathcompCON": {
+            "long_name": "Union/Find Path Compression Example",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "UnionFindPRO": {
+            "long_name": "Union/Find Proficiency Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 2.0,
+            "threshold": 0.90
+          }
+        }
+      },
+      "General/SequentialRep": {
+        "long_name": "Sequential Tree Representations",
+        "exercises": {
+          "SequentialTreeCON": {
+            "long_name": "First sequential representation Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "SequentialTreePRO": {
+            "long_name": "First Sequential Representation Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 1,
+            "threshold": 5
+          },
+          "SequentialTreeAltCON": {
+            "long_name": "Second sequential representation Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "SequentialTreeAltPRO": {
+            "long_name": "Alternate Sequential Representation Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 1,
+            "threshold": 5
+          },
+          "SequentialTreeBitsCON": {
+            "long_name": "Bit vector sequential representation Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "SequentialTreeBitVectorPRO": {
+            "long_name": "Bit Vector Sequential Representation Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 1,
+            "threshold": 5
+          },
+          "SequentialGenTreeCON": {
+            "long_name": "General Tree sequential representation Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "SequentialTreeGenTreePRO": {
+            "long_name": "General Tree Sequential Representation Exercise",
+            "required": true,
+            "showhide": "show",
+            "points": 1,
+            "threshold": 5
+          }
+        }
       }
     },
     "Graphs": {
       "Graph/GraphIntro": {
         "long_name": "Introduction and Terminology",
         "exercises": {
-          "GraphCalcSumm": {
+          "GspaceCalcSumm": {
             "long_name": "Graph Space Requirements Exercise",
             "required": true,
+            "showhide": "show",
             "points": 2.0,
             "threshold": 5
           },
           "GraphIntroSumm": {
             "long_name": "Graph Terminology Summary Exercise",
             "required": true,
-            "points": 2.0,
-            "threshold": 5
+            "showhide": "show",
+            "points": 3.0,
+            "threshold": 10
           }
         }
       },
-      "Development/GraphImpl": {
+      "Graph/GraphImpl": {
         "long_name": "Graph Implementation",
         "exercises": {}
       },
-      "Development/GraphTraversal": {
+      "Graph/GraphTraversal": {
         "long_name": "Graph Traversal",
         "exercises": {
           "graphDFS": {
@@ -2728,6 +3003,7 @@
           "graphDFSPE": {
             "long_name": "DFS Proficiency Exercise",
             "required": true,
+            "showhide": "show",
             "points": 2.0,
             "threshold": 0.90
           },
@@ -2741,12 +3017,13 @@
           "graphBFSPE": {
             "long_name": "BFS Proficiency Exercise",
             "required": true,
+            "showhide": "show",
             "points": 2.0,
             "threshold": 0.90
           }
         }
       },
-      "Development/GraphTopsort": {
+      "Graph/GraphTopsort": {
         "long_name": "Topological Sort",
         "exercises": {
           "topsortCON1": {},
@@ -2766,7 +3043,7 @@
           }
         }
       },
-      "Development/GraphShortest": {
+      "Graph/GraphShortest": {
         "long_name": "Shortest Paths Problems",
         "exercises": {
           "dijkstraCON1": {},
@@ -2780,12 +3057,13 @@
           "DijkstraPE": {
             "long_name": "Dijkstra's Algorithm Proficiency Exercise",
             "required": true,
+            "showhide": "show",
             "points": 2.0,
             "threshold": 0.90
           }
         }
       },
-      "Development/MCST": {
+      "Graph/MCST": {
         "long_name": "Minimal Cost Spanning Trees",
         "exercises": {
           "MCSTCON1": {},
@@ -2806,12 +3084,13 @@
           "PrimAVPE": {
             "long_name": "Prim's Algorithm Proficiency Exercise",
             "required": true,
+            "showhide": "show",
             "points": 2.0,
             "threshold": 0.90
           }
         }
       },
-      "Development/Kruskal": {
+      "Graph/Kruskal": {
         "long_name": "Kruskal's Algorithm",
         "exercises": {
           "KruskalUFAV": {
@@ -2824,8 +3103,146 @@
           "KruskalPE": {
             "long_name": "Kruskal's Algorithm Proficiency Exercise",
             "required": true,
+            "showhide": "show",
             "points": 2.0,
             "threshold": 0.90
+          }
+        }
+      },
+      "Graph/Floyd": {
+        "long_name": "All-Pairs Shortest Paths",
+        "exercises": {}
+      }
+    },
+    "Spatial Data Structures": {
+      "Development/Spatial": {
+        "long_name": "Spatial Data Structures",
+        "exercises": {}
+      },
+      "Development/KDtree": {
+        "long_name": "k-d Trees",
+        "exercises": {
+          "kd-treeAV": {
+            "long_name": "KD tree Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "kd-interact": {
+            "long_name": "KD tree Interaction",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          }
+        }
+      },
+      "Development/Bintree": {
+        "long_name": "Bintrees",
+        "exercises": {
+          "bintreeAV": {
+            "long_name": "Bintree Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          }
+        }
+      },
+      "Development/BintreeNew": {
+        "long_name": "Bintrees",
+        "exercises": {
+          "bintreeCONBTEX": {},
+          "bintreeAV": {
+            "long_name": "Bintree Visualization",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          }
+        }
+      }
+    },
+    "Searching": {
+      "Development/SearchIntro": {
+        "long_name": "Search Chapter Introduction",
+        "exercises": {}
+      },
+      "Development/UnsortedSearch": {
+        "long_name": "Analyzing Search in Unsorted Arrays",
+        "exercises": {}
+      },
+      "Development/SortedSearch": {
+        "long_name": "Search in sorted Arrays",
+        "exercises": {}
+      },
+      "Development/SelfOrg": {
+        "long_name": "Self Organizing Lists",
+        "exercises": {
+          "SelforgCON1": {
+            "long_name": "Self-organizing List Slideshow: Frequency Count",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "SelfOrgCounterPro": {
+            "long_name": "Self-organizing List Counter Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90,
+            "exer_options": {
+              "JXOP-feedback": "continuous",
+              "JXOP-fixmode": "fix"
+            }
+          },
+          "SelforgCON2": {
+            "long_name": "Self-organizing List Slideshow: Move-to-front",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "SelfOrgMove-to-FrontPro": {
+            "long_name": "Self-organizing List Move-to-front Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90,
+            "exer_options": {
+              "JXOP-feedback": "continuous",
+              "JXOP-fixmode": "fix"
+            }
+          },
+          "SelforgCON3": {
+            "long_name": "Self-organizing List Slideshow: Transpose",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "SelfOrgTransposePro": {
+            "long_name": "Self-organizing List Transpose Proficiency Exercise",
+            "required": true,
+            "points": 2.0,
+            "threshold": 0.90,
+            "exer_options": {
+              "JXOP-feedback": "continuous",
+              "JXOP-fixmode": "fix"
+            }
+          }
+        }
+      },
+      "Development/SetSearch": {
+        "long_name": "Bit Vectors for Representing Sets",
+        "exercises": {}
+      },
+      "Development/PerfectHash": {
+        "long_name": "Perfect Hashing",
+        "exercises": {
+          "perfectHashAV": {
+            "long_name": "Perfect Hashing Visualization",
+            "required": false,
+            "showhide": "none",
+            "points": 0,
+            "threshold": 1.0
           }
         }
       }
@@ -2836,16 +3253,29 @@
         "exercises": {}
       },
       "Development/AVL": {
-        "long_name": "The AVL Tree",
+        "long_name": "AVL Tree",
         "exercises": {}
       },
       "Development/Splay": {
-        "long_name": "The Splay Tree",
+        "long_name": "Splay Tree",
         "exercises": {}
       },
       "Development/RedBlack": {
         "long_name": "The Red-Black Tree",
-        "exercises": {}
+        "exercises": {
+          "redBlackTreeColoring": {
+            "long_name": "Red-Black Tree Coloring Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.90
+          },
+          "redBlackTreePRO": {
+            "long_name": "Red-Black Tree Proficiency Exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 0.90
+          }
+        }
       }
     },
     "Advanced Analysis": {
@@ -2855,7 +3285,14 @@
       },
       "Development/Recurrence": {
         "long_name": "Solving Recurrence Relations",
-        "exercises": {}
+        "exercises": {
+          "DivideAndConquerRecurrencesCON": {
+            "long_name": "Divide-and-Conquer Expansion Slideshow",
+            "required": true,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "Development/AmortAnal": {
         "long_name": "Amortized Analysis",
@@ -2867,28 +3304,24 @@
         "long_name": "Dynamic Programming",
         "exercises": {}
       },
-      "Development/Floyd": {
-        "long_name": "All-Pairs Shortest Paths",
-        "exercises": {}
-      },
       "Development/Knapsack": {
         "exercises": {
           "sackCallTree": {
             "long_name": "Knapsack Call Tree",
-            "required": true,
-            "points": 0.1,
+            "required": false,
+            "points": 0.0,
             "threshold": 1.0
           },
           "sackTreePluck": {
             "long_name": "Knapsack Call Tree Pluck",
-            "required": true,
-            "points": 0.1,
+            "required": false,
+            "points": 0.0,
             "threshold": 1.0
           },
           "sackTraceBack": {
             "long_name": "Knapsack Tree Reduction",
-            "required": true,
-            "points": 0.1,
+            "required": false,
+            "points": 0.0,
             "threshold": 1.0
           },
           "knapsackSelect": {
@@ -3006,6 +3439,20 @@
         "exercises": {}
       }
     },
+    "Miscellaneous": {
+      "Development/GenTreeImplement": {
+        "long_name": "General Tree Implementations",
+        "exercises": {}
+      },
+      "Development/Kary": {
+        "long_name": "K-ary Tree Implementations",
+        "exercises": {}
+      },
+      "Development/SortProgExer": {
+        "long_name": "Sorting programming exercises",
+        "exercises": {}
+      },
+    },
     "Limits to Computing": {
       "NP/LimComp": {
         "long_name": "Chapter Intro: Limits to Computing",
@@ -3039,23 +3486,43 @@
       },
       "NP/NPComplete": {
         "long_name":"NP Completeness",
-        "exercises":{}
+        "exercises": {}
       },
       "NP/circuitSAT": {
         "long_name": "The Circuit Satisfiability problem",
-        "exercises": {}
+        "exercises": {
+          "circuitSATCON": {
+            "long_name": "Circuit Satisfiability",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/SAT": {
         "long_name": "The Formula Satisfiability problem",
-        "exercises": {}
+        "exercises": {
+          "SATCON": {
+            "long_name": "Formula Satisfiability",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/threeSAT": {
         "long_name": "The 3-CNF Satisfiability problem",
         "exercises": {
+          "threeSATCON": {
+            "long_name": "3-Satisfiability",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "threeSAT_KA":{
             "long_name": "Practice Exercise for 3-SAT",
-            "required": false,
-            "points": 0,
+            "required": true,
+            "points": 1,
             "threshold": 1.0
           }
         }
@@ -3063,10 +3530,16 @@
       "NP/clique": {
         "long_name": "The Clique problem",
         "exercises": {
+          "cliqueCON": {
+            "long_name": "Clique",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "clique_KA":{
             "long_name": "Practice Exercise for Clique",
-            "required": false,
-            "points": 0,
+            "required": true,
+            "points": 1,
             "threshold": 1.0
           }
         }
@@ -3074,10 +3547,16 @@
       "NP/independentSet": {
         "long_name": "The Independent Set problem",
         "exercises": {
+          "independentSetCON": {
+            "long_name": "Independent Set",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "independentSet_KA":{
             "long_name": "Practice Exercise for Independent Set",
-            "required": false,
-            "points": 0,
+            "required": true,
+            "points": 1,
             "threshold": 1.0
           }
         }
@@ -3085,10 +3564,16 @@
       "NP/vertexCover": {
         "long_name": "The Independent Set problem",
         "exercises": {
+          "vertexCoverCON": {
+            "long_name": "Vertex Cover",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "vertexCover_KA":{
             "long_name": "Practice Exercise for Vertex Cover",
-            "required": false,
-            "points": 0,
+            "required": true,
+            "points": 1,
             "threshold": 1.0
           }
         }
@@ -3096,10 +3581,16 @@
       "NP/hamiltonianCycle": {
         "long_name": "The Hamiltonian Cycle problem",
         "exercises": {
+          "hamiltonianCycleCON": {
+            "long_name": "Hamiltonian Cycle",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "hamiltonianCycle_KA":{
             "long_name": "Practice Exercise for Hamiltonian Cycle",
-            "required": false,
-            "points": 0,
+            "required": true,
+            "points": 1,
             "threshold": 1.0
           }
         }
@@ -3107,45 +3598,102 @@
       "NP/TSP": {
         "long_name": "The Traveling Salesman problem",
         "exercises": {
+          "TSPCON": {
+            "long_name": "Traveling Salesman",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
           "TSP_KA":{
             "long_name": "Practice Exercise for Traveling Salesman Problem",
-            "required": false,
-            "points": 0,
+            "required": true,
+            "points": 1,
             "threshold": 1.0
           }
         }
       },
       "NP/provingNPC": {
         "long_name": "NP-completeness Proofs",
-        "exercises": {}
+        "exercises": {
+          "NPCProofDiagramCON": {}
+        }
       },
       "NP/circuitSAT_to_SAT": {
         "long_name": "Reduction of circuit SAT to SAT.",
-        "exercises": {}
+        "exercises": {
+          "circuitSATtoSATCON": {
+            "long_name": "Circuit SAT to SAT",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/SAT_to_threeSAT": {
         "long_name": "Reduction of SAT to 3-SAT.",
-        "exercises": {}
+        "exercises": {
+          "circuitSATtoSATCON": {
+            "long_name": "SAT to 3-SAT Reduction",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/threeSAT_to_clique": {
         "long_name": "Reduction of 3-SAT to Clique problem.",
-        "exercises": {}
+        "exercises": {
+          "circuitSATtoCliqueCON": {
+            "long_name": "3-SAT to Clique Reduction",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/clique_to_independentSet": {
-        "long_name": "Reduction of Clique problem to Independent Set problem.",
-        "exercises": {}
+        "long_name": "Reduction of Clique to Independent Set",
+        "exercises": {
+          "cliqueToISCON": {
+            "long_name": "Clique to IS Reduction",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/independentSet_to_vertexCover": {
-        "long_name": "Reduction of Independent Set problem to Vertex Cover problem.",
-        "exercises": {}
+        "long_name": "Reduction of Independent Set to Vertex Cover",
+        "exercises": {
+          "IStoVCCON": {
+            "long_name": "IS to VC Reduction",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/threeSAT_to_hamiltonianCycle": {
         "long_name": "Reduction of 3-SAT to Hamiltonian Cycle Problem.",
-        "exercises": {}
+        "exercises": {
+          "threeSATtoHCCON": {
+            "long_name": "3-SAT to HC Reduction",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/hamiltonianCycle_to_TSP": {
         "long_name": "Reduction of Hamiltonian Cycle Problem to TSP.",
-        "exercises": {}
+        "exercises": {
+          "HCtoTSPCON": {
+            "long_name": "HC to TSP Reduction",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
       },
       "NP/NPCoping": {
         "long_name": "Coping with NP-complete problems",

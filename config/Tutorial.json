@@ -22,7 +22,6 @@
             "long_name": "Terminal",
             "required": false,
             "points": 0,
-            "showhide": "none",
             "threshold": 1.0
           }
         }

@@ -63,7 +63,7 @@ $(document).ready(function () {
   trees[0].hide();
   av.umsg(interpret("av_c5"));
   var matrixData = [ ["<b>Char</b>", "<b>Freq</b>", "<b>Code</b>", "<b>Bits</b>"] ];
-  for (var i = 1; i < freqs.length; i++) {
+  for (var i = 0; i < freqs.length; i++) {
     matrixData.push([chars[i], freqs[i], codeArray[i], codeArray[i].length]);
   }
   var theMatrix = new av.ds.matrix(matrixData, {style: "plain"});

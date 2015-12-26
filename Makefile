@@ -90,6 +90,9 @@ Pointers: min
 Tutorial: min
 	python $(CONFIG_SCRIPT) config/Tutorial.json
 
+Algorithms: min
+	python $(CONFIG_SCRIPT) config/Algorithms.json
+
 TDDD86F15: min
 	python $(CONFIG_SCRIPT) config/TDDD86F15.json
 
