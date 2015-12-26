@@ -382,6 +382,9 @@ logging_server = '%(logging_server)s'
 # Protocol and domain of the score_server
 score_server = '%(score_server)s'
 
+# Boolean to control whether book will compile in local mode, which means no communication with the server
+local_mode = %(local_mode)s
+
 # Protocol and domain of the server hosting the module files
 module_origin = '%(module_origin)s'
 
@@ -428,6 +431,7 @@ config_js_template = '''\
   settings.ALLOW_ANON_CREDIT = %(allow_anonymous_credit)s;
   settings.REQ_FULL_SS = %(req_full_ss)s;
   settings.BUILD_TO_ODSA = "%(rel_build_to_odsa_path)s";
+  settings.LOCAL_MODE = %(local_mode)s;
 
   window.ODSA = {};
   window.ODSA.SETTINGS = settings;
