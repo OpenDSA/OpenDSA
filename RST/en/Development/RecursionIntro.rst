@@ -5,7 +5,6 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer and Sally Hamouda
-   :prerequisites:
    :topic: Recursion Chapter
 
 .. odsalink:: AV/Development/recursionIntroCON.css

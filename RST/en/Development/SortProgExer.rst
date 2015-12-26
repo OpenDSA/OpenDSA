@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Sally Hamouda and Cliff Shaffer
-   :prerequisites: Sorting, InsertionSort, BubbleSort, SelectionSort, MergeSort
+   :requires: Sorting; InsertionSort; BubbleSort; SelectionSort; MergeSort
    :topic: Sorting
 
 Sorting Chapter Programming Exercises [SB]

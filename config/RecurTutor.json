@@ -3,9 +3,22 @@
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
-    "Java": { "ext":["java"], "label":"Java","lang":"java"},
-    "Pseudo": { "ext":["txt"], "label":"Pseudo","lang":"java"}
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Pseudo": {
+      "ext":[
+        "txt"
+      ],
+      "label":"Pseudo",
+      "lang":"java"
+    }
   },
+  "lang": "en",
   "module_origin": "http://algoviz.org",
   "exercise_server": "https://opendsa.cs.vt.edu",
   "logging_server": "https://opendsa.cs.vt.edu",
@@ -285,9 +298,9 @@
           "RecChapterSumm": {
             "long_name": "Recursion Summary Exercise",
             "required": true,
+            "showhide": "show",
             "points": 1.0,
-            "threshold": 5.0,
-            "showhide": "Show"
+            "threshold": 5.0
           }
         }
       }
