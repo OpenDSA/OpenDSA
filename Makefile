@@ -170,6 +170,7 @@ CS3114test: min
 
 CS3114: min
 	python $(CONFIG_SCRIPT) config/CS3114.json
+	# python $(CONFIG_SCRIPT) config/CS3114.json --local
 
 NewKA: min
 	python $(CONFIG_SCRIPT) config/NewKA.json
