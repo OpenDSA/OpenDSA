@@ -16,7 +16,7 @@
     }
   },
   "code": {
-    "processing": {
+    "processing": [{
       "url": "../../../SourceCode/Processing/Sorting/Bubblesort.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: Bubblesort *** */",
@@ -26,6 +26,6 @@
       "tags": {
         "loop": 3
       }
-    }
+    }]
   }
 }
