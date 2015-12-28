@@ -522,7 +522,7 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                         if section_points > 0:
                             if section_action == "add":
 
-                                if assignment_group_id is None
+                                if assignment_group_id is None:
                                     # create chapter assignment group
                                     assignment_group_name = "Chapter " + str(module_position) + " " + chapter_name
                                     results = assignment_groups.create_assignment_group(request_ctx, course_id, name=assignment_group_name)
