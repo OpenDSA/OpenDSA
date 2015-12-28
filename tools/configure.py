@@ -439,7 +439,7 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
         assignment_group_id = prev_chapter_obj.get('assignment_group_id', None)
     else:
     # create chapter assignment group
-        assignment_group_name = "Chapter " + str(module_position - 1) + " " + assignment_group_name
+        assignment_group_name = "Chapter " + str(module_position - 1) + " " + chapter_name
         results = assignment_groups.create_assignment_group(request_ctx, course_id, name=assignment_group_name)
         assignment_group_id = results.json().get("id")
 
