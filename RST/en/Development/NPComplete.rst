@@ -5,7 +5,6 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
    :topic: NP-completeness
 
 NP-Completeness

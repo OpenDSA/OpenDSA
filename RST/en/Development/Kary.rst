@@ -5,7 +5,6 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: GenTreeIntro
    :topic: General Trees
 
 :math:`K`-ary Trees

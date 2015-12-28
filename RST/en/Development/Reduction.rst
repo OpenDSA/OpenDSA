@@ -5,7 +5,6 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites:
    :topic: Reductions
 
 .. odsalink:: AV/slideCON.css

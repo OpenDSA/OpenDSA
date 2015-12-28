@@ -1,10 +1,13 @@
-body, input, select {
+body,
+input,
+select {
   font-size: 15px;
   font-family: Arial, sans-serif;
 }
 
 /* Creates a header which standardizes the layout for proficiency exercise controls and buttons */
 .proHeaderTable {
+
   /*margin-top: -20px;*/
   margin-top: -30px;
   border-bottom: 0 none;
@@ -13,7 +16,9 @@ body, input, select {
 
 /* Creates a header which standardizes the layout for AV controls */
 .headerTable {
+
   /*margin-top: -10px;*/
+
   /*border-bottom: 1px solid black;*/
   border-bottom: 1px solid #B6C0B2;
   width: 100%;
@@ -38,6 +43,7 @@ table .headerRight {
 
 /* Affects the margin of buttons in the header table */
 table td input {
+
   /*margin-top: 10px;*/
   margin-top: 0;
 }
@@ -59,12 +65,14 @@ form {
 }
 
 .jsavcontainer {
+
   /*background-color: #efe;*/
   background-color: transparent;
   border: 0 none;
 }
 
 .jsavexercisecontrols {
+
   /*margin-top: 10px;*/
   margin-top: 20px;
   text-align: center;
@@ -111,14 +119,14 @@ form {
 
 /* Style for the container holding proficiency exercise instructions */
 .instructions {
-  padding: 10px;
-  /*border: 1px solid black;*/
+  padding: 10px;  /*border: 1px solid black;*/
   border: 1px solid #B6C0B2;
   margin-top: -15px;
 }
 
 /* Style for the div containing the entire AV or exercise */
 #container {
+
   /*border: 1px solid black;
   background-color: #efe;*/
   border: 1px solid #B6C0B2;
@@ -144,6 +152,13 @@ form {
   float: left;
 }
 
-#increments, #arrayValues {
+#increments,
+#arrayValues {
   padding-left: 5px;
+}
+
+#prof_check_mark {
+  position: absolute;
+  top: 5px;
+  left: 650px;
 }

@@ -5,7 +5,6 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: 
    :topic: Memory Management
 
 Sequential Fit Peformance (cont)
