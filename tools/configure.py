@@ -661,7 +661,7 @@ def del_odsa_chapter(request_ctx, config, course_id, chapter_obj, **kwargs):
                     results = modules.delete_module_item(request_ctx, course_id, module_id, module_item_id)
         results = modules.delete_module(request_ctx, course_id, module_id)
 
-        if assignment_group_id is not None
+        if assignment_group_id is not None:
             results = delete_assignment(request_ctx, course_id, assignment_group_id)
 
 
