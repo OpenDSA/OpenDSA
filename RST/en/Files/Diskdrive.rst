@@ -261,7 +261,7 @@ fragmentation.
 
 .. _Layout:
 
-.. inlineav:: disk dgm
+.. inlineav:: diskSector dgm
    :align: center
 
    An illustration of sector gaps within a track.
@@ -439,5 +439,5 @@ Notes
        To complicate matters further, Solid State Drives (SSD) work
        rather differently.
 
-.. odsascript:: AV/Development/sectorLayoutCON.js
+.. odsascript:: AV/Files/diskSectorCON.js
 

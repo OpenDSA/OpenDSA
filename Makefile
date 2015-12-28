@@ -162,12 +162,6 @@ CS2114: min
 CS2401: min
 	python $(CONFIG_SCRIPT) config/CS2401.json
 
-Etest: min
-	python $(CONFIG_SCRIPT) config/Etest.json
-
-CS3114test: min
-	python $(CONFIG_SCRIPT) config/CS3114test.json
-
 CS3114: min
 	python $(CONFIG_SCRIPT) config/CS3114.json
 	# python $(CONFIG_SCRIPT) config/CS3114.json --local
