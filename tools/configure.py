@@ -422,7 +422,7 @@ def identical_dict(prev_org, current):
     return not modified
 
 
-def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position, chapter_name, chapter_obj, prev_chapter_obj, assignment_group_id, **kwargs):
+def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position, chapter_name, chapter_obj, prev_chapter_obj, **kwargs):
     """
     Create canvas module detals. canvas modules corresponds to OpenDSA chapter. OpenDSA modules corresponds to module_item of type "SubHeader", and each OpenDSA section will be mapped to canvas assignment (if it is gradable, which means it had points greater than zero) or a section will be mapped to module_item of type "ExternalTool" (if it has zero points exercises or no exercises at all).
 
@@ -433,6 +433,11 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
     """
     book_name = config.book_name
     LTI_url = config.module_origin
+
+    # get assignment_group_id from prev_chapter_obj.
+    assignment_group_id = None
+    if prev_chapter_obj is not None:
+        assignment_group_id = prev_chapter_obj.get('assignment_group_id', None)
 
     # canvas module_item_position and counter
     module_item_position = 1
@@ -516,6 +521,13 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                         # if section object contains gradeable exercie then assignment will be created in canvas
                         if section_points > 0:
                             if section_action == "add":
+
+                                if assignment_group_id is None:
+                                    # create chapter assignment group
+                                    assignment_group_name = "Chapter " + str(module_position) + " " + chapter_name
+                                    results = assignment_groups.create_assignment_group(request_ctx, course_id, name=assignment_group_name)
+                                    assignment_group_id = results.json().get("id")
+
                                 results = assignments.create_assignment(request_ctx, course_id, assignment_name=indexed_section_name,
                                     assignment_submission_types="external_tool",assignment_external_tool_tag_attributes={
                                         "url": LTI_url + "/lti_tool?" + urllib.urlencode(LTI_url_opts)}, assignment_points_possible=section_points, assignment_description=section_name, assignment_assignment_group_id=assignment_group_id)
@@ -612,6 +624,8 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
 
         module_item_position += 1
 
+    config.chapters[chapter_name]['assignment_group_id'] = assignment_group_id
+
     if prev_chapter_obj is not None:
         # canvas_module_id is id for OpenDSA chapter
         canvas_module_id = prev_chapter_obj.get('canvas_module_id', None)
@@ -636,6 +650,7 @@ def del_odsa_chapter(request_ctx, config, course_id, chapter_obj, **kwargs):
     """
 
     module_id = chapter_obj.get('canvas_module_id', None)
+    assignment_group_id = chapter_obj.get('assignment_group_id', None)
     if module_id is not None:
         for module_name, module_obj in chapter_obj.items():
             if bool(module_obj) and isinstance(module_obj, dict):
@@ -647,8 +662,10 @@ def del_odsa_chapter(request_ctx, config, course_id, chapter_obj, **kwargs):
                 module_item_id = module_obj.get('module_item_id', None)
                 if module_item_id is not None:
                     results = modules.delete_module_item(request_ctx, course_id, module_id, module_item_id)
-
         results = modules.delete_module(request_ctx, course_id, module_id)
+
+        if assignment_group_id is not None:
+            results = delete_assignment(request_ctx, course_id, assignment_group_id)
 
 
 def del_odsa_module(request_ctx, course_id, module_id, prev_module_obj, **kwargs):
@@ -712,7 +729,7 @@ def create_course(config):
     prev_chapters = {}
     if prev_config_data:
         course_id = prev_config_data['course_id']
-        assignment_group_id = prev_config_data['assignment_group_id']
+        # assignment_group_id = prev_config_data['assignment_group_id']
         prev_chapters = prev_config_data.get("chapters")
 
         # check course already exists in canvas instance
@@ -744,13 +761,13 @@ def create_course(config):
             privacy_level, config.LTI_consumer_key, config.LTI_secret,
             url=LTI_url + "/lti_tool")
 
-        # create OpenDSA assignment group
-        results = assignment_groups.create_assignment_group(request_ctx, course_id, name="OpenDSA")
-        assignment_group_id = results.json().get("id")
+        # # create OpenDSA assignment group
+        # results = assignment_groups.create_assignment_group(request_ctx, course_id, name="OpenDSA")
+        # assignment_group_id = results.json().get("id")
 
     # save course_id and assignment_group_id
     config['course_id'] = course_id
-    config['assignment_group_id'] = assignment_group_id
+    # config['assignment_group_id'] = assignment_group_id
 
     # update the course name
     course_name = config.title
@@ -768,19 +785,22 @@ def create_course(config):
         if prev_chapter_obj is not None:
             prev_chapters[chapter_name]["action"] = "update"
             chapter_action = "update"
+
+        module_name = "Chapter " + str(module_position - 1) + " " + chapter_name
         # OpenDSA chapters will map to canvas modules
         if chapter_action == "add":
-            results = modules.create_module(request_ctx, course_id, module_name="Chapter " + str(module_position - 1) + " " + chapter_name, module_position=module_position)
+            results = modules.create_module(request_ctx, course_id, module_name=module_name, module_position=module_position)
             module_id = results.json().get("id")
+
         else:
             module_id = prev_chapter_obj.get('canvas_module_id', None)
             if module_id is not None:
-                results = modules.update_module(request_ctx, course_id, module_id, module_name="Chapter " + str(module_position - 1) + " " + chapter_name, module_position=module_position)
+                results = modules.update_module(request_ctx, course_id, module_id, module_name=module_name, module_position=module_position)
 
         config.chapters[chapter_name]['canvas_module_id'] = module_id
 
         print("Creating chapter " + str(module_position-1) + " " +chapter_name)
-        save_odsa_chapter(request_ctx, config, course_id, module_id, module_position - 1, chapter_name, chapter_obj, prev_chapter_obj, assignment_group_id)
+        save_odsa_chapter(request_ctx, config, course_id, module_id, module_position - 1, chapter_name, chapter_obj, prev_chapter_obj)
         # save_threads = threading.Thread(target=save_odsa_chapter, args=(request_ctx, config, course_id, module_id, module_position - 1, chapter_name, chapter_obj, prev_chapter_obj))
         # save_threads.start()
         module_position += 1
