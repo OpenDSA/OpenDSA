@@ -434,16 +434,10 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
     book_name = config.book_name
     LTI_url = config.module_origin
 
-    # get assignment_group_id from prev_chapter_obj or create a new one.
+    # get assignment_group_id from prev_chapter_obj.
+    assignment_group_id = None
     if prev_chapter_obj is not None:
         assignment_group_id = prev_chapter_obj.get('assignment_group_id', None)
-    else:
-    # create chapter assignment group
-        assignment_group_name = "Chapter " + str(module_position) + " " + chapter_name
-        results = assignment_groups.create_assignment_group(request_ctx, course_id, name=assignment_group_name)
-        assignment_group_id = results.json().get("id")
-
-    config.chapters[chapter_name]['assignment_group_id'] = assignment_group_id
 
     # canvas module_item_position and counter
     module_item_position = 1
@@ -527,6 +521,13 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                         # if section object contains gradeable exercie then assignment will be created in canvas
                         if section_points > 0:
                             if section_action == "add":
+
+                                if assignment_group_id is None
+                                    # create chapter assignment group
+                                    assignment_group_name = "Chapter " + str(module_position) + " " + chapter_name
+                                    results = assignment_groups.create_assignment_group(request_ctx, course_id, name=assignment_group_name)
+                                    assignment_group_id = results.json().get("id")
+
                                 results = assignments.create_assignment(request_ctx, course_id, assignment_name=indexed_section_name,
                                     assignment_submission_types="external_tool",assignment_external_tool_tag_attributes={
                                         "url": LTI_url + "/lti_tool?" + urllib.urlencode(LTI_url_opts)}, assignment_points_possible=section_points, assignment_description=section_name, assignment_assignment_group_id=assignment_group_id)
@@ -622,6 +623,8 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                 module_item_counter += 1
 
         module_item_position += 1
+
+    config.chapters[chapter_name]['assignment_group_id'] = assignment_group_id
 
     if prev_chapter_obj is not None:
         # canvas_module_id is id for OpenDSA chapter
