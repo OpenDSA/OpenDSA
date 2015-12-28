@@ -12,7 +12,7 @@
     }
   },
   "code": {
-    "processing": {
+    "processing": [{
       "url": "../../../SourceCode/Processing/Sorting/Insertionsort.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: Insertionsort *** */",
@@ -23,6 +23,6 @@
         "loop1": 2,
         "loop2": 3
       }
-    }
+    }]
   }
 }
