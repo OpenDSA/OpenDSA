@@ -26,7 +26,7 @@ $(document).ready(function() {
   av.umsg(interpret("sc2"));
   var rect = av.g.rect(leftAlign + 380, topAlign - 25, rectWidth, rectHeight);
   var labelProblem = av.label(interpret("lab1"),
-                              {top: topAlign - 20, left: leftAlign + 385});
+                              {top: topAlign - 20, left: leftAlign + 385}).addClass("codeLabel");
   av.step();
 
   // Slide 3
