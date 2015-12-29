@@ -17,7 +17,7 @@
     }
   },
   "code": {
-    "pseudo": {
+    "processing": [{
       "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: Sequential *** */",
@@ -26,6 +26,36 @@
       "left": 397,
       "tags": {
       }
-    }
+    }],
+    "java": [{
+      "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: Sequential *** */",
+      "endBefore": "/* *** ODSAendTag: Sequential *** */",
+      "top": 80,
+      "left": 397,
+      "tags": {
+      }
+    }],
+    "java_generic": [{
+      "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: Sequential *** */",
+      "endBefore": "/* *** ODSAendTag: Sequential *** */",
+      "top": 80,
+      "left": 397,
+      "tags": {
+      }
+    }],
+    "c++": [{
+      "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: Sequential *** */",
+      "endBefore": "/* *** ODSAendTag: Sequential *** */",
+      "top": 80,
+      "left": 397,
+      "tags": {
+      }
+    }]
   }
 }

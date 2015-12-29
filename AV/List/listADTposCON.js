@@ -29,7 +29,7 @@ $(document).ready(function() {
   arr2.hide();
 
   // Slide 1
-  av.umsg(interpret("av_c1"));
+  av.umsg(interpret("sc1"));
   av.displayInit();
 
   // Slide 2
@@ -40,14 +40,14 @@ $(document).ready(function() {
                               {"arrow-end": "classic-wide-long",
                                opacity: 0, "stroke-width": 2});
   }
-  av.umsg(interpret("av_c2"));
+  av.umsg(interpret("sc2"));
   av.step();
 
   // Slide 3
   for (i = 0; i < 5; i++) {
     arrowArray[i].show();
   }
-  av.umsg(interpret("av_c3"));
+  av.umsg(interpret("sc3"));
   av.step();
 
   // Slide 4
@@ -57,11 +57,11 @@ $(document).ready(function() {
     arrowArray[i].hide();
   }
   arr2.show();
-  av.umsg(interpret("av_c4"));
+  av.umsg(interpret("sc4"));
   av.step();
 
   // Slide 5
-  av.umsg(interpret("av_c5"));
+  av.umsg(interpret("sc5"));
   av.step();
 
   // Slide 6
@@ -70,7 +70,7 @@ $(document).ready(function() {
   }
   av.effects.copyValue(arr1, 0, arr2, curr + 1);
   arr2.value(curr + 2, ",");
-  av.umsg(interpret("av_c6"));
+  av.umsg(interpret("sc6"));
   arr2.css([5], {color: "red"});
   av.step();
 
@@ -79,18 +79,17 @@ $(document).ready(function() {
   arr2.value(10, "|");
   arr2.value(11, ">");
   arr2.css([5], {color: "black"});
-  av.umsg(interpret("av_c7"));
+  av.umsg(interpret("sc7"));
   av.step();
 
   // Slide 8
   av.effects.copyValue(arr2, 11, arr2, 12);
   av.effects.copyValue(arr1, 2, arr2, 11);
-  av.umsg(interpret("av_c8"));
+  av.umsg(interpret("sc8"));
   arr2.css([11], {color: "red"});
   av.step();
 
   // Slide 9
-  av.umsg(interpret("av_c9"));
-  av.step();
+  av.umsg(interpret("sc9"));
   av.recorded();
 });
