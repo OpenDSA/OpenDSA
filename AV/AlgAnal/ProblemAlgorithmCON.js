@@ -15,7 +15,7 @@ $(document).ready(function() {
   var arr_values = [];
   var topAlign = 60;
   var leftAlign = 10;
-  var rectWidth = 155;
+  var rectWidth = 170;
   var rectHeight = 225;
 
   // Slide 1
