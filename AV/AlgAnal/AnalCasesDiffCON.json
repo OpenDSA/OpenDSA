@@ -25,8 +25,8 @@
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: Sequential *** */",
       "endBefore": "/* *** ODSAendTag: Sequential *** */",
-	  "top": 90,
-	  "left": 395,
+      "top": 90,
+      "left": 395,
       "tags": {
         "comparison": 3,
         "return": 4
