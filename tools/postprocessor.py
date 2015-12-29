@@ -52,11 +52,8 @@ def update_index_html(dest_dir, sectnum):
     elif 'RegisterBook' in line:
       #remove registerbook page from TOC
       index_html[line_num] = ''
-    elif 'CreateCourse' in line:
-      #remove createcourse page from TOC
-      index_html[line_num] = ''
     elif 'hide-from-toc' in line:
-      #remove stub chapter title 
+      #remove stub chapter title
       if '<h1>' in index_html[line_num-1]:
         index_html[line_num-1] = ''
     elif 'class="toctree-l' in line and 'Gradebook' not in line and 'TODO List' not in line:
@@ -77,7 +74,7 @@ def update_mod_html(file_path, data, prefix):
 
   mod_name = os.path.splitext(os.path.basename(file_path))[0]
 
-  ignore_mods = ['index', 'Gradebook', 'search', 'RegisterBook', 'CreateCourse']
+  ignore_mods = ['index', 'Gradebook', 'search', 'RegisterBook']
 
   link_pattern = re.compile('<a.+href="(?P<href>.*).html">(?P<text>.*)</a>')
   title_pattern = re.compile('<title>(?P<title>.*)</title>')
@@ -90,16 +87,12 @@ def update_mod_html(file_path, data, prefix):
       link_text = m.group('text')
       link_mod = m.group('href')
 
-      if link_mod in data and link_mod not in ['index', 'Gradebook', 'ToDo', 'RegisterBook', 'CreateCourse']:
+      if link_mod in data and link_mod not in ['index', 'Gradebook', 'ToDo', 'RegisterBook']:
         new_link_text = '%s.' % data[link_mod][1] + link_text
         html[line_num] = line.replace(link_text, new_link_text)
 
       if link_mod in ['RegisterBook']:
         html[line_num] = line.replace(link_text, "")
-
-      if link_mod in ['CreateCourse']:
-        html[line_num] = line.replace(link_text, "")
-
 
     if '&lt;anchor-text&gt;' in line:
       line_args = re.split('&lt;anchor-text&gt;|&lt;/anchor-text&gt;', line)
@@ -108,7 +101,7 @@ def update_mod_html(file_path, data, prefix):
         html[line_num] = line.replace(texts[1] + '</em>', texts[0] + '</em>')
       html[line_num] = html[line_num].replace(line_args[1], '')
       html[line_num] = html[line_num].replace('&lt;anchor-text&gt;', '')
-      html[line_num] = html[line_num].replace('&lt;/anchor-text&gt;', '') 
+      html[line_num] = html[line_num].replace('&lt;/anchor-text&gt;', '')
 
     if mod_name in data and mod_name not in ignore_mods:
       (chap_title, chap_num) = data[mod_name]
@@ -163,7 +156,7 @@ def update_TermDef(glossary_file, terms_dict):
         i += 1
         endofdef = False
         while (i < len(mod_data) and not endofdef):
-          if '</dd>' in  mod_data[i]:  
+          if '</dd>' in  mod_data[i]:
             term_def += mod_data[i].split('</dd>')[0] + '</dd>'
             endofdef = True
           else:
