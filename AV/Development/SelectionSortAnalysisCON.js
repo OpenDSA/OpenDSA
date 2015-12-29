@@ -33,11 +33,11 @@ $(document).ready(function() {
   av.umsg(interpret("Slide 4"));
   var bigIndex = 0;
   var pointer = av.pointer("Big-index", arr.index(bigIndex));
-  arr.css(bigIndex, {"background-color": "green"});
+  arr.addClass(bigIndex, "greenbg");
   av.step();
 
   // Slide 5
-  arr.css(1, {"background-color": "yellow"});
+  arr.highlight(1);
   av.label("$i=0$",  {top: "345px", left: "30px"});
   av.g.rect(25, 325, 50, 20);
   av.step();
@@ -45,83 +45,83 @@ $(document).ready(function() {
   // Slide 6
   av.clearumsg();
   if (arr.value(1) > arr.value(bigIndex)) {
-    arr.css(bigIndex, {"background-color": "white"});
+    arr.removeClass(bigIndex, "greenbg");
     pointer.target(arr.index(1));
     bigIndex = 1;
-    arr.css(1, {"background-color": "green"});
-    av.step();
-  } else {
-    arr.css(1, {"background-color": "white"});
+    arr.addClass(1, "greenbg");
   }
-  arr.css(2, {"background-color": "yellow"});
+  arr.unhighlight(1);
+  av.step();
+
+  arr.highlight(2);
   av.g.rect(25, 305, 50, 20);
   av.step();
 
   // Slide 7
   if (arr.value(2) > arr.value(bigIndex)) {
-    arr.css(bigIndex, {"background-color": "white"});
+    arr.removeClass(bigIndex, "greenbg");
     pointer.target(arr.index(2));
     bigIndex = 2;
-    arr.css(2, {"background-color": "green"});
-    av.step();
-  } else {
-    arr.css(2, {"background-color": "white"});
+    arr.addClass(2, "greenbg");
   }
-  arr.css(3, {"background-color": "yellow"});
+  arr.unhighlight(2);
+  av.step();
+
+  arr.highlight(3);
   av.g.rect(25, 285, 50, 20);
   av.step();
 
   // Slide 8
   if (arr.value(3) > arr.value(bigIndex)) {
-    arr.css(bigIndex, {"background-color": "white"});
+    arr.removeClass(bigIndex, "greenbg");
     pointer.target(arr.index(3));
     bigIndex = 3;
-    arr.css(3, {"background-color": "green"});
-    av.step();
-  } else {
-    arr.css(3, {"background-color": "white"});
+    arr.addClass(3, "greenbg");
   }
-  arr.css(4, {"background-color": "yellow"});
+  arr.unhighlight(3);
+  av.step();
+
+  arr.highlight(4);
   av.g.rect(25, 265, 50, 20);
   av.step();
 
   // Slide 9
   if (arr.value(4) > arr.value(bigIndex)) {
-    arr.css(bigIndex, {"background-color": "white"});
+    arr.removeClass(bigIndex, "greenbg");
     pointer.target(arr.index(4));
     bigIndex = 4;
-    arr.css(4, {"background-color": "green"});
-    av.step();
-  } else {
-    arr.css(4, {"background-color": "white"});
+    arr.addClass(4, "greenbg");
   }
-  arr.css(5, {"background-color": "yellow"});
+  arr.unhighlight(4);
+  av.step();
+
+  arr.highlight(5);
   av.g.rect(25, 245, 50, 20);
   av.step();
 
   // Slide 10
   if (arr.value(5) > arr.value(bigIndex)) {
-    arr.css(bigIndex, {"background-color": "white"});
+    arr.removeClass(bigIndex, "greenbg");
     pointer.target(arr.index(5));
     bigIndex = 5;
-    arr.css(5, {"background-color": "green"});
-    av.step();
-  } else {
-    arr.css(5, {"background-color": "white"});
+    arr.addClass(5, "greenbg");
   }
+  arr.unhighlight(5);
+  av.step();
+
   arr.swap(bigIndex, 5);
-  arr.css(bigIndex, {"background-color": "white"});
-  arr.css(5, {"background-color": "grey"});
+  arr.removeClass(bigIndex, "greenbg");
+  arr.addClass(5, "greybg");
   av.g.rect(450, 325, 50, 20);
   av.label("$i=0$",  {top: "345px", left: "455px"});
   bigIndex = 0;
   pointer.target(arr.index(bigIndex));
-  arr.css(bigIndex, {"background-color": "green"});
+  arr.addClass(bigIndex, "greenbg");
   av.step();
 
   // Slide 11
   av.umsg(interpret("Slide 11"));
-  arr.css(1, {"background-color": "yellow"});
+  arr.highlight(1);
   av.label("$i=1$",  {top: "345px", left: "80px"});
   av.g.rect(75, 325, 50, 20);
   av.step();
@@ -129,69 +129,69 @@ $(document).ready(function() {
   // Slide 12
   av.clearumsg();
   if (arr.value(1) > arr.value(bigIndex)) {
-    arr.css(bigIndex, {"background-color": "white"});
+    arr.removeClass(bigIndex, "greenbg");
     pointer.target(arr.index(1));
     bigIndex = 1;
-    arr.css(1, {"background-color": "green"});
-    av.step();
-  } else {
-    arr.css(1, {"background-color": "white"});
+    arr.addClass(1, "greenbg");
   }
-  arr.css(2, {"background-color": "yellow"});
+  arr.unhighlight(1);
+  av.step();
+
+  arr.highlight(2);
   av.g.rect(75, 305, 50, 20);
   av.step();
 
   // Slide 13
   if (arr.value(2) > arr.value(bigIndex)) {
-    arr.css(bigIndex, {"background-color": "white"});
+    arr.removeClass(bigIndex, "greenbg");
     pointer.target(arr.index(2));
     bigIndex = 2;
-    arr.css(2, {"background-color": "green"});
-    av.step();
-  } else {
-    arr.css(2, {"background-color": "white"});
+    arr.addClass(2, "greenbg");
   }
-  arr.css(3, {"background-color": "yellow"});
+  arr.unhighlight(2);
+  av.step();
+
+  arr.highlight(3);
   av.g.rect(75, 285, 50, 20);
   av.step();
 
   // Slide 14
   if (arr.value(3) > arr.value(bigIndex)) {
-    arr.css(bigIndex, {"background-color": "white"});
+    arr.removeClass(bigIndex, "greenbg");
     pointer.target(arr.index(3));
     bigIndex = 3;
-    arr.css(3, {"background-color": "green"});
-    av.step();
-  } else {
-    arr.css(3, {"background-color": "white"});
+    arr.addClass(3, "greenbg");
   }
-  arr.css(4, {"background-color": "yellow"});
+  arr.unhighlight(3);
+  av.step();
+
+  arr.highlight(4);
   av.g.rect(75, 265, 50, 20);
   av.step();
 
   // Slide 15
   if (arr.value(4) > arr.value(bigIndex)) {
-    arr.css(bigIndex, {"background-color": "white"});
+    arr.removeClass(bigIndex, "greenbg");
     pointer.target(arr.index(4));
     bigIndex = 4;
-    arr.css(4, {"background-color": "green"});
-    av.step();
-  } else {
-    arr.css(4, {"background-color": "white"});
+    arr.addClass(4, "greenbg");
   }
+  arr.unhighlight(4);
+  av.step();
+
   arr.swap(bigIndex, 4);
-  arr.css(bigIndex, {"background-color": "white"});
-  arr.css(4, {"background-color": "grey"});
+  arr.removeClass(bigIndex, "greenbg");
+  arr.addClass(4, "greybg");
   av.g.rect(500, 325, 50, 20);
   av.label("$i=1$",  {top: "345px", left: "505px"});
   bigIndex = 0;
   pointer.target(arr.index(bigIndex));
-  arr.css(bigIndex, {"background-color": "green"});
+  arr.addClass(bigIndex, "greenbg");
   av.step();
 
   // Slide 16
   av.umsg(interpret("Slide 16"));
-  arr.css(1, {"background-color": "yellow"});
+  arr.highlight(1);
   av.label("$i=2$",  {top: "345px", left: "130px"});
   av.g.rect(125, 325, 50, 20);
   av.step();
@@ -199,55 +199,55 @@ $(document).ready(function() {
   // Slide 17
   av.clearumsg();
   if (arr.value(1) > arr.value(bigIndex)) {
-    arr.css(bigIndex, {"background-color": "white"});
+    arr.removeClass(bigIndex, "greenbg");
     pointer.target(arr.index(1));
     bigIndex = 1;
-    arr.css(1, {"background-color": "green"});
-    av.step();
-  } else {
-    arr.css(1, {"background-color": "white"});
+    arr.addClass(1, "greenbg");
   }
-  arr.css(2, {"background-color": "yellow"});
+  arr.unhighlight(1);
+  av.step();
+
+  arr.highlight(2);
   av.g.rect(125, 305, 50, 20);
   av.step();
 
   // Slide 18
   if (arr.value(2) > arr.value(bigIndex)) {
-    arr.css(bigIndex, {"background-color": "white"});
+    arr.removeClass(bigIndex, "greenbg");
     pointer.target(arr.index(2));
     bigIndex = 2;
-    arr.css(2, {"background-color": "green"});
-    av.step();
-  } else {
-    arr.css(2, {"background-color": "white"});
+    arr.addClass(2, "greenbg");
   }
-  arr.css(3, {"background-color": "yellow"});
+  arr.unhighlight(2);
+  av.step();
+
+  arr.highlight(3);
   av.g.rect(125, 285, 50, 20);
   av.step();
 
   // Slide 19
   if (arr.value(3) > arr.value(bigIndex)) {
-    arr.css(bigIndex, {"background-color": "white"});
+    arr.removeClass(bigIndex, "greenbg");
     pointer.target(arr.index(3));
     bigIndex = 3;
-    arr.css(3, {"background-color": "green"});
-    av.step();
-  } else {
-    arr.css(3, {"background-color": "white"});
+    arr.addClass(3, "greenbg");
   }
+  arr.unhighlight(3);
+  av.step();
+
   arr.swap(bigIndex, 3);
-  arr.css(bigIndex, {"background-color": "white"});
-  arr.css(3, {"background-color": "grey"});
+  arr.removeClass(bigIndex, "greenbg");
+  arr.addClass(3, "greybg");
   av.g.rect(550, 325, 50, 20);
   av.label("$i=2$", {top: "345px", left: "555px"});
   bigIndex = 0;
   pointer.target(arr.index(bigIndex));
-  arr.css(bigIndex, {"background-color": "green"});
+  arr.addClass(bigIndex, "greenbg");
   av.step();
 
   // Slide 20
   av.umsg(interpret("Slide 20"));
-  arr.css(1, {"background-color": "yellow"});
+  arr.highlight(1);
   av.label("$i=3$",  {top: "345px", left: "180px"});
   av.g.rect(175, 325, 50, 20);
   av.step();
@@ -255,61 +255,61 @@ $(document).ready(function() {
   // Slide 21
   av.clearumsg();
   if (arr.value(1) > arr.value(bigIndex)) {
-    arr.css(bigIndex, {"background-color": "white"});
+    arr.removeClass(bigIndex, "greenbg");
     pointer.target(arr.index(1));
     bigIndex = 1;
-    arr.css(1, {"background-color": "green"});
-    av.step();
-  } else {
-    arr.css(1, {"background-color": "white"});
+    arr.addClass(1, "greenbg");
   }
-  arr.css(2, {"background-color": "yellow"});
+  arr.unhighlight(1);
+  av.step();
+
+  arr.highlight(2);
   av.g.rect(175, 305, 50, 20);
   av.step();
 
   // Slide 22
   if (arr.value(2) > arr.value(bigIndex)) {
-    arr.css(bigIndex, {"background-color": "white"});
+    arr.removeClass(bigIndex, "greenbg");
     pointer.target(arr.index(2));
     bigIndex = 2;
-    arr.css(2, {"background-color": "green"});
-    av.step();
-  } else {
-    arr.css(2, {"background-color": "white"});
+    arr.addClass(2, "greenbg");
   }
+  arr.unhighlight(2);
+  av.step();
+
   arr.swap(bigIndex, 2);
-  arr.css(bigIndex, {"background-color": "white"});
-  arr.css(2, {"background-color": "grey"});
+  arr.removeClass(bigIndex, "greenbg");
+  arr.addClass(2, "greybg");
   av.g.rect(600, 325, 50, 20);
   av.label("$i=3$",  {top: "345px", left: "605px"});
   bigIndex = 0;
   pointer.target(arr.index(bigIndex));
-  arr.css(bigIndex, {"background-color": "green"});
+  arr.addClass(bigIndex, "greenbg");
   av.step();
 
   // Slide 23
   av.umsg(interpret("Slide 23"));
-  arr.css(1, {"background-color": "yellow"});
+  arr.highlight(1);
   av.label("$i=4$",  {top: "345px", left: "230px"});
   av.g.rect(225, 325, 50, 20);
   av.step();
   av.clearumsg();
   if (arr.value(1) > arr.value(bigIndex)) {
-    arr.css(bigIndex, {"background-color": "white"});
+    arr.removeClass(bigIndex, "greenbg");
     pointer.target(arr.index(1));
     bigIndex = 1;
-    arr.css(1, {"background-color": "green"});
-    av.step();
-  } else {
-    arr.css(1, {"background-color": "white"});
+    arr.addClass(1, "greenbg");
   }
+  arr.unhighlight(1);
+  av.step();
+
   arr.swap(bigIndex, 1);
-  arr.css(bigIndex, {"background-color": "white"});
-  arr.css(1, {"background-color": "grey"});
+  arr.removeClass(bigIndex, "greenbg");
+  arr.addClass(1, "greybg");
   av.g.rect(650, 325, 50, 20);
   av.label("$i=4$",  {top: "345px", left: "655px"});
   pointer.hide();
-  arr.css(0, {"background-color": "grey"});
+  arr.addClass(0, "greybg");
   av.step();
 
   // Slide 24

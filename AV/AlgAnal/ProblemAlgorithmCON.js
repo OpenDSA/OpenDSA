@@ -15,7 +15,7 @@ $(document).ready(function() {
   var arr_values = [];
   var topAlign = 60;
   var leftAlign = 10;
-  var rectWidth = 155;
+  var rectWidth = 170;
   var rectHeight = 225;
 
   // Slide 1
@@ -26,7 +26,7 @@ $(document).ready(function() {
   av.umsg(interpret("sc2"));
   var rect = av.g.rect(leftAlign + 380, topAlign - 25, rectWidth, rectHeight);
   var labelProblem = av.label(interpret("lab1"),
-                              {top: topAlign - 20, left: leftAlign + 385});
+                              {top: topAlign - 20, left: leftAlign + 385}).addClass("codeLabel");
   av.step();
 
   // Slide 3

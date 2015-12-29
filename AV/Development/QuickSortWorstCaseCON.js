@@ -16,7 +16,7 @@ $(document).ready(function() {
   // Slide 2
   av.umsg(interpret("Slide 2"));
   av.g.rect(100, 0, 400, 30);
-  av.label("$n$",  {top: "-17px", left: "300px"}).addClass("mediumLabel");
+  av.label("$n$",  {top: "-12px", left: "300px"}).addClass("mediumLabel");
   av.step();
 
   // Slide 3
@@ -27,7 +27,7 @@ $(document).ready(function() {
   av.label("pivot",  {top: "74px", left: "98px"}).addClass("smallLabel rotated");
   av.label("$n-1$",  {top: "67px", left: "270px"}).addClass("mediumLabel");
   av.label("$n-1$",  {top: "67px", left: "600px"}).addClass("mediumLabel");
-  av.label("<b><u>Amount Of Work</b></u>",  {top: "-17px", left: "580px"}).addClass("mediumLabel");
+  av.label(interpret("lab1"),  {top: "-17px", left: "580px"}).addClass("mediumLabel");
   av.step();
 
   // Slide 4
@@ -52,8 +52,8 @@ $(document).ready(function() {
 
   // Slide 6
   av.umsg(interpret("Slide 6"));
-  av.label("...",  {top: "240px", left: "470px"}).addClass("largeLabel rotated");
-  av.label("...",  {top: "240px", left: "620px"}).addClass("largeLabel rotated");
+  av.label("...",  {top: "260px", left: "470px"}).addClass("largeLabel rotated");
+  av.label("...",  {top: "250px", left: "620px"}).addClass("largeLabel rotated");
   av.g.rect(460, 315, 40, 30);
   av.g.rect(460, 315, 20, 30);
   av.label("pivot",  {top: "309px", left: "458px"}).addClass("smallLabel rotated");

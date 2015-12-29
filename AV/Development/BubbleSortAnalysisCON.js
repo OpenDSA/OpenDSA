@@ -34,7 +34,7 @@ $(document).ready(function() {
 
   // Slide 4
   av.umsg(interpret("Slide 4"));
-  arr.addClass([0,1], "greenbg");
+  arr.addClass([0, 1], "greenbg");
   if (arr.value(0) > arr.value(1)) {
     arr.swap(0, 1);
   }
@@ -44,7 +44,7 @@ $(document).ready(function() {
 
   // Slide 5
   av.clearumsg();
-  arr.addClass([1,2], "greenbg");
+  arr.addClass([1, 2], "greenbg");
   arr.removeClass(0, "greenbg");
   if (arr.value(1) > arr.value(2)) {
     arr.swap(1, 2);
@@ -53,7 +53,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 6
-  arr.addClass([2,3], "greenbg");
+  arr.addClass([2, 3], "greenbg");
   arr.removeClass(1, "greenbg");
   if (arr.value(2) > arr.value(3)) {
     arr.swap(2, 3);
@@ -62,7 +62,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 7
-  arr.addClass([3,4], "greenbg");
+  arr.addClass([3, 4], "greenbg");
   arr.removeClass(2, "greenbg");
   if (arr.value(3) > arr.value(4)) {
     arr.swap(3, 4);
@@ -71,7 +71,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 8
-  arr.addClass([4,5], "greenbg");
+  arr.addClass([4, 5], "greenbg");
   arr.removeClass(3, "greenbg");
   if (arr.value(4) > arr.value(5)) {
     arr.swap(4, 5);
@@ -84,7 +84,7 @@ $(document).ready(function() {
 
   // Slide 9
   av.umsg(interpret("Slide 9"));
-  arr.addClass([0,1], "greenbg");
+  arr.addClass([0, 1], "greenbg");
   if (arr.value(0) > arr.value(1)) {
     arr.swap(0, 1);
   }
@@ -94,7 +94,7 @@ $(document).ready(function() {
 
   // Slide 10
   av.clearumsg();
-  arr.addClass([1,2], "greenbg");
+  arr.addClass([1, 2], "greenbg");
   arr.removeClass(0, "greenbg");
   if (arr.value(1) > arr.value(2)) {
     arr.swap(1, 2);
@@ -103,7 +103,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 11
-  arr.addClass([2,3], "greenbg");
+  arr.addClass([2, 3], "greenbg");
   arr.removeClass(1, "greenbg");
   if (arr.value(2) > arr.value(3)) {
     arr.swap(2, 3);
@@ -112,7 +112,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 12
-  arr.addClass([3,4], "greenbg");
+  arr.addClass([3, 4], "greenbg");
   arr.removeClass(2, "greenbg");
   if (arr.value(3) > arr.value(4)) {
     arr.swap(3, 4);
@@ -125,7 +125,7 @@ $(document).ready(function() {
 
   // Slide 13
   av.umsg(interpret("Slide 13"));
-  arr.addClass([0,1], "greenbg");
+  arr.addClass([0, 1], "greenbg");
   if (arr.value(0) > arr.value(1)) {
     arr.swap(0, 1);
   }
@@ -135,7 +135,7 @@ $(document).ready(function() {
 
   // Slide 14
   av.clearumsg();
-  arr.addClass([1,2], "greenbg");
+  arr.addClass([1, 2], "greenbg");
   arr.removeClass(0, "greenbg");
   if (arr.value(1) > arr.value(2)) {
     arr.swap(1, 2);
@@ -144,7 +144,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 15
-  arr.addClass([2,3], "greenbg");
+  arr.addClass([2, 3], "greenbg");
   arr.removeClass(1, "greenbg");
   if (arr.value(2) > arr.value(3)) {
     arr.swap(2, 3);
@@ -160,7 +160,7 @@ $(document).ready(function() {
 
   // Slide 17
   av.umsg(interpret("Slide 17"));
-  arr.addClass([0,1], "greenbg");
+  arr.addClass([0, 1], "greenbg");
   if (arr.value(0) > arr.value(1)) {
     arr.swap(0, 1);
   }
@@ -170,7 +170,7 @@ $(document).ready(function() {
 
   // Slide 18
   av.clearumsg();
-  arr.addClass([1,2], "greenbg");
+  arr.addClass([1, 2], "greenbg");
   arr.removeClass(0, "greenbg");
   if (arr.value(1) > arr.value(2)) {
     arr.swap(1, 2);
@@ -186,7 +186,7 @@ $(document).ready(function() {
 
   // Slide 20
   av.umsg(interpret("Slide 20"));
-  arr.addClass([0,1], "greenbg");
+  arr.addClass([0, 1], "greenbg");
   if (arr.value(0) > arr.value(1)) {
     arr.swap(0, 1);
   }
