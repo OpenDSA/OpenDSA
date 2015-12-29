@@ -52,8 +52,8 @@ $(document).ready(function() {
 
   // Slide 6
   av.umsg(interpret("Slide 6"));
-  av.label("...",  {top: "240px", left: "470px"}).addClass("largeLabel rotated");
-  av.label("...",  {top: "240px", left: "620px"}).addClass("largeLabel rotated");
+  av.label("...",  {top: "260px", left: "470px"}).addClass("largeLabel rotated");
+  av.label("...",  {top: "250px", left: "620px"}).addClass("largeLabel rotated");
   av.g.rect(460, 315, 40, 30);
   av.g.rect(460, 315, 20, 30);
   av.label("pivot",  {top: "309px", left: "458px"}).addClass("smallLabel rotated");
