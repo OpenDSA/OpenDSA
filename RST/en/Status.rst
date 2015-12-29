@@ -10,67 +10,56 @@
 OpenDSA Project Content Status
 ==============================
 
-This status report was last updated on June 24, 2014.
-
 Status Report
 -------------
 
-OpenDSA is rapidly evolving and adding new content.
-At the present time, the chapters on Linear Structures, Binary Trees,
-Sorting, and Hashing are considered complete (though some polishing
-and minor additions are still being made), and they are actively
-maintained.
-There is also complete text for the Algorithm Analysis chapter, but we
-are hoping to develop new material to provide a more visual approach
-to this topic.
-This amounts to roughly 8-9 weeks worth of material in a typical
+This status report was last updated on December 28, 2015.
+
+OpenDSA continues its pace of evolving and adding new content.
+At the present time, the chapters on Algorithm Analysis, Recursion
+Tutorial, Linear Structures, Binary Trees, Sorting, and Hashing are
+considered complete (though some polishing and minor additions are
+still being made), and they are actively maintained.
+This amounts to roughly 8-10 weeks worth of material in a typical
 CS2- or post-CS2-level class.
 If you are looking at the "Everything" book, you will see these as
 well as all modules that are in various stages of perparation.
 There you will also see the "TODO" list items.
-If you are looking at the "Dev" book, then you are seeing everything
-**execept** the modules that are considered complete.
-(We maintain this version to speed up compilation a bit for the
-developers.)
-If you are looking at the "OpenDSA" book, you are seeing the modules
-that we consider "ready for use".
 
 There are also many chapters that partially complete. These include
 materials related to design, general trees, memory management, file
 processing, indexing, searching, graphs, and NP-completeness. These
-all have text, but not as many visualizations and exercises as we
-plan. A lot of progress is being made on fleshing these out. They
-should be reasonably complete by the end of 2015.
+all have text, visualizations, and exercises. They are useable in a
+class in their present form. But they do not have as many
+visualizations and exercises as we would like, and their content is
+not as polished. A lot of progress continues to be made on fleshing
+these out.
 
 There are also ongoing major efforts to create materials for
 Programming languages (translators and compilers), and Finite
 Languages and Automata.
 
-We are also in the midst of a major effort to re-engineer our
+We are coming to the end of a major effort to re-engineer our
 communications layer between content server and scoring server.
-We hope to have completed a prototype by the end of Summer 2015, and
-have it ready for production use by the beginning of 2016.
-This new system will provide integration with at least the Canvas LMS,
-and hopefully will make it easy for us to provide integration with
-other LMS such as Moodle.
+Beginning with Spring Semester 2016, all of our courses will use this
+new infrastructure. This new system uses the LTI protocol to serve
+content, and we now integrate with the Canvas LMS. We intend to extend
+this integration to support other major LMS in the coming year.
 
 
 Configuring Your Own Book
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you look in the "Books" directory, you might see that this is only
-one of several versions of the OpenDSA materials.
-The "config" directory contains various configuration files that
-control the modules in a book, the exercises in a module, and the
-points awarded for completing an exercise.
+This is only one of several versions of the OpenDSA materials.
+The "config" directory in our github repository contains various
+configuration files that control the modules in a book, the exercises
+in a module, and the points awarded for completing an exercise.
 You can create your own book by writing a new configuration file and
 compiling it. Look at the Makefile for guidance on how to compile a
 new configuration file.
 
 At some point in the future, we will make a more user friendly way to
 create OpenDSA books.
-This might come as part of our second-generation infrastructure effort
-mentioned above.
 For now, if you are an instructor who would like to have a custom book
 set up for use with your class, feel free to contact the OpenDSA
 project team for help (see the "contact us" link below).

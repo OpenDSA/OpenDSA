@@ -12,45 +12,9 @@
   },
   "chapters": {
     "Testing": {
-      "IS/FirstFit": {
-        "long_name": "First Fit",
-        "exercises": {
-          "firstFit": {
-            "long_name": "First Fit Visualization",
-            "required": false,
-            "points": 0,
-            "showhide": "none",
-            "threshold": 1.0,
-            "exer_options": { "fitAlgorithm": "1" }
-          }
-        }
-      },
-      "IS/BinaryTreeFullThm": {
-        "long_name": "Full Binary Tree Theorem",
-        "exercises": {}
-      },
       "IS/TwoThreeTree_Test": {
         "long_name": "Two Three Tree",
         "exercises": {}
-      }
-    },
-    "Graphs": {
-      "Graph/GraphIntro": {
-        "long_name": "Introduction and Terminology",
-        "exercises": {
-          "GraphCalcSumm": {
-            "long_name": "Graph Space Requirements Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 5
-          },
-          "GraphIntroSumm": {
-            "long_name": "Graph Terminology Summary Exercise",
-            "required": true,
-            "points": 2.0,
-            "threshold": 5
-          }
-        }
       }
     },
     "Appendix": {

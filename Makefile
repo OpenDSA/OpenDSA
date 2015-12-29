@@ -19,65 +19,98 @@ clean:
 	- $(RM) Scripts/*~
 	- $(RM) config/*~
 
-alllint: csslint lint lintlib
+alllint: csslintAV csslintExe lint lintlib
 
-csslint:
-	@echo 'running csslint'
+csslintAV:
+	@echo 'running csslint: AVs'
+	@csslint $(CSSLINTFLAGS) AV/AlgAnal/*.css
 	@csslint $(CSSLINTFLAGS) AV/Background/*.css
+	@csslint $(CSSLINTFLAGS) AV/Binary/*.css
+	@csslint $(CSSLINTFLAGS) AV/BTRecurTutor/*.css
 	@csslint $(CSSLINTFLAGS) AV/Design/*.css
-	@csslint $(CSSLINTFLAGS) AV/List/*.css
-	@csslint $(CSSLINTFLAGS) AV/Sorting/*.css
+	@csslint $(CSSLINTFLAGS) AV/Files/*.css
+	@csslint $(CSSLINTFLAGS) AV/FLA/*.css
+	@csslint $(CSSLINTFLAGS) AV/General/*.css
+	@csslint $(CSSLINTFLAGS) AV/Graph/*.css
 	@csslint $(CSSLINTFLAGS) AV/Hashing/*.css
+	@csslint $(CSSLINTFLAGS) AV/Indexing/*.css
+	@csslint $(CSSLINTFLAGS) AV/List/*.css
+	@csslint $(CSSLINTFLAGS) AV/MemManage/*.css
+	@csslint $(CSSLINTFLAGS) AV/PL/*.css
+	@csslint $(CSSLINTFLAGS) AV/RecurTutor/*.css
 	@csslint $(CSSLINTFLAGS) AV/Searching/*.css
-	#@csslint $(CSSLINTFLAGS) AV/*.css
-	@csslint $(CSSLINTFLAGS) Doc/*.css
+	@csslint $(CSSLINTFLAGS) AV/Sorting/*.css
+	@csslint $(CSSLINTFLAGS) AV/Tutorials/*.css
 	@csslint $(CSSLINTFLAGS) lib/*.css
+
+csslintExe:
+	@echo 'running csslint: Exercises'
+	@csslint $(CSSLINTFLAGS) Exercises/AlgAnal/*.css
+	@csslint $(CSSLINTFLAGS) Exercises/Background/*.css
+	@csslint $(CSSLINTFLAGS) Exercises/Binary/*.css
+	@csslint $(CSSLINTFLAGS) Exercises/BTRecurTutor/*.css
+	@csslint $(CSSLINTFLAGS) Exercises/Design/*.css
+	@csslint $(CSSLINTFLAGS) Exercises/General/*.css
+	@csslint $(CSSLINTFLAGS) Exercises/Graph/*.css
+	@csslint $(CSSLINTFLAGS) Exercises/Hashing/*.css
+	@csslint $(CSSLINTFLAGS) Exercises/Indexing/*.css
+	@csslint $(CSSLINTFLAGS) Exercises/List/*.css
+	@csslint $(CSSLINTFLAGS) Exercises/PL/*.css
+	@csslint $(CSSLINTFLAGS) Exercises/RecurTutor/*.css
+	@csslint $(CSSLINTFLAGS) Exercises/Sorting/*.css
 
 lint: lintAV lintExe
 
 lintAV:
 	@echo 'linting AVs'
+	-@$(LINT) AV/AlgAnal/*.js
 	-@$(LINT) AV/Background/*.js
-	-@$(LINT) AV/Binary/*.js
-	-@$(LINT) AV/Binary/*.json
 	-@$(LINT) AV/Design/*.js
-	-@$(LINT) AV/Design/*.json
+	-@$(LINT) AV/RecurTutor/*.js
+
+lintAVTODO:
+	-@$(LINT) AV/Binary/*.js
+	-@$(LINT) AV/BTRecurTutor/*.js
+	-@$(LINT) AV/Files/*.js
+	-@$(LINT) AV/FLA/*.js
 	-@$(LINT) AV/General/*.js
-	-@$(LINT) AV/General/*.json
-	-@$(LINT) AV/List/*.js
-	-@$(LINT) AV/List/*.json
-	-@$(LINT) AV/Sorting/*.js
-	-@$(LINT) AV/Sorting/*.json
+	-@$(LINT) AV/Graph/*.js
 	-@$(LINT) AV/Hashing/*.js
+	-@$(LINT) AV/Indexing/*.js
+	-@$(LINT) AV/List/*.js
+	-@$(LINT) AV/MemManage/*.js
+	-@$(LINT) AV/PL/*.js
 	-@$(LINT) AV/Searching/*.js
-	-@$(LINT) AV/Searching/*.json
 	-@$(LINT) AV/Sorting/*.js
-	-@$(LINT) AV/Sorting/*.json
+	-@$(LINT) AV/Tutorials/*.js
 
 lintExe:
 	@echo 'linting KA Exercises'
 	-@$(LINT) Exercises/AlgAnal/*.js
 	-@$(LINT) Exercises/Background/*.js
 	-@$(LINT) Exercises/Binary/*.js
+	-@$(LINT) Exercises/BTRecurTutor/*.js
 	-@$(LINT) Exercises/Design/*.js
 	-@$(LINT) Exercises/General/*.js
 	-@$(LINT) Exercises/Graph/*.js
 	-@$(LINT) Exercises/Hashing/*.js
 	-@$(LINT) Exercises/Indexing/*.js
 	-@$(LINT) Exercises/List/*.js
+	-@$(LINT) Exercises/PL/*.js
 	-@$(LINT) Exercises/RecurTutor/*.js
-	-@$(LINT) Exercises/RecurTutor2/*.js
 	-@$(LINT) Exercises/Sorting/*.js
 
 $(LINT)lib:
 	@echo 'linting libraries'
-	-@$(LINT) lib/odsaUtils.js
-	-@$(LINT) lib/odsaAV.js
-	-@$(LINT) lib/odsaMOD.js
-	-@$(LINT) lib/gradebook.js
-	-@$(LINT) lib/registerbook.js
-	-@$(LINT) lib/createcourse.js
 	-@$(LINT) lib/conceptMap.js
+	-@$(LINT) lib/createcourse.js
+	-@$(LINT) lib/dataStructures.js
+	-@$(LINT) lib/gradebook.js
+	-@$(LINT) lib/odsaAV.js
+	-@$(LINT) lib/odsaKA.js
+	-@$(LINT) lib/odsaMOD.js
+	-@$(LINT) lib/odsaUtils.js
+	-@$(LINT) lib/registerbook.js
 
 min: nomin
 #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js

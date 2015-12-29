@@ -268,12 +268,6 @@
           }
         }
       },
-      "Background/Recursion": {
-        "long_name": "Recursion",
-        "exercises": {
-          "TOHfigCON": {}
-        }
-      },
       "Background/Proofs": {
         "long_name": "Proofs",
         "exercises": {
@@ -1239,7 +1233,7 @@
         }
       }
     },
-    "Design 2": {
+    "Design II": {
       "Design/DesignPatterns": {
         "long_name": "Design Patterns",
         "exercises": {
@@ -3139,6 +3133,127 @@
         "exercises": {}
       }
     },
+    "Functional Programming": {
+      "PL/ListDataStructure": {
+        "long_name": "The List data structure",
+        "exercises": {
+          "ListOpen": {
+            "long_name": "What is the value of this expression?",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      }
+    },
+    "Lambda Calculus": {
+      "PL/Syntax": {
+        "long_name": "Syntax of the Lambda Calculus",
+        "exercises": {
+          "parseTree": {
+            "long_name": "Slideshow for how to build a parse tree",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "SyntaxTF": {
+            "long_name": "Algorithm Analysis Summary TF Questions",
+            "required": false,
+            "points": 1.0,
+            "threshold": 5
+          },
+          "SyntaxMC": {
+            "long_name": "Algorithm Analysis Summary MC Questions",
+            "required": false,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "PL/Semantics": {
+        "long_name": "Semantics of the Lambda Calculus",
+        "exercises": {}
+      },
+      "PL/FreeBoundVariables": {
+        "long_name": "Free and Bound Variables",
+        "exercises": {
+          "freeVarHighlight": {
+            "long_name": "Exercise 1",
+            "required": false,
+            "points": 1.0,
+            "threshold": 5
+          },
+          "boundVarHighlight": {
+            "long_name": "Exercise 2",
+            "required": false,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "PL/AlphaConversion": {
+        "long_name": "Alpha conversion",
+        "exercises": {
+          "boundVarHighlight": {
+            "long_name": "Exercise 1",
+            "required": false,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "PL/Substitution": {
+        "long_name": "Substitution algorithm",
+        "exercises": {
+          "substCase1b": {
+            "long_name": "Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "SubstitutionCases": {
+            "long_name": "Exercise 1",
+            "required": false,
+            "points": 1.0,
+            "threshold": 5
+          },
+          "SubstitutionResult": {
+            "long_name": "Exercise 2",
+            "required": false,
+            "points": 1.0,
+            "threshold": 5
+          }
+        }
+      },
+      "PL/ApplicativeOrder": {
+        "long_name": "Applicative-order Reduction Strategy",
+        "exercises": {
+          "applicativeNormalOrderPro": {
+            "long_name": "Applicative-order reduction Proficiency Exercise",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0,
+            "exer_options": {
+              "strategy": "applicative"
+            }
+          }
+        }
+      },
+      "PL/NormalOrder": {
+        "long_name": "Normal-order Reduction Strategy",
+        "exercises": {
+          "applicativeNormalOrderPro": {
+            "long_name": "Normal-order reduction Proficiency Exercise",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0,
+            "exer_options": {
+              "strategy": "normal"
+            }
+          }
+        }
+      }
+    },
     "Spatial Data Structures": {
       "Development/Spatial": {
         "long_name": "Spatial Data Structures",
@@ -3475,6 +3590,10 @@
       },
       "Development/SortProgExer": {
         "long_name": "Sorting programming exercises",
+        "exercises": {}
+      },
+      "BTRecurTutor/recSorting": {
+        "long_name": "Recursive Sorting",
         "exercises": {}
       }
     },
