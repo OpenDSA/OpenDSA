@@ -12,8 +12,8 @@
       "sc9": " or 4",
       "sc10": " or 5",
       "sc11": "However, no matter what array of size $n$ that the algorithm looks at, its cost will always be the same in that it always looks at every element in the array exactly one time.",
-      "lab1": "<b>Factorial Problem</b>",
-      "lab2": "<b>Sequential Search</b>"
+      "lab1": "Factorial Problem",
+      "lab2": "Sequential Search"
     }
   },
   "code": {

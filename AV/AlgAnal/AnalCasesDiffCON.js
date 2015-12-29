@@ -22,7 +22,7 @@ $(document).ready(function() {
   // Slide 1
   av.umsg(interpret("sc1"));
   var rect = av.g.rect(leftAlign + 380, topAlign - 25, rectWidth, rectHeight);
-  var label = av.label(interpret("lab1"),  {top: topAlign - 25, left: leftAlign + 420});
+  var label = av.label(interpret("lab1"),  {top: topAlign - 25, left: leftAlign + 420}).addClass("codelabel");
   av.displayInit();
 
   // Slide 2
