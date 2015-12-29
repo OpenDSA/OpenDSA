@@ -44,15 +44,15 @@ $(document).ready(function() {
   pointer2 = av.pointer("right", arr.index(7),
                              {anchor: "center bottom",
                                myAnchor: "right top",
-                               top: 80,
-                               left: -50,
+                               top: 50,
+                               left: -80,
                                arrowAnchor: "center bottom"
                              });
 
   pointer3 = av.pointer("pivot", arr.index(8),
                              {anchor: "center bottom",
                                myAnchor: "right top",
-                               top: 80,
+                               top: 50,
                                left: -50,
                                arrowAnchor: "center bottom"
                              });
