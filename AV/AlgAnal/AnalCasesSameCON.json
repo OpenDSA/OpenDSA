@@ -17,17 +17,15 @@
     }
   },
   "code": {
-    "java": [
-    {
+    "pseudo": {
       "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: Sequential *** */",
       "endBefore": "/* *** ODSAendTag: Sequential *** */",
-	  "top": 80,
-	  "left": 397,
+      "top": 80,
+      "left": 397,
       "tags": {
-        
       }
-    }]
+    }
   }
 }
