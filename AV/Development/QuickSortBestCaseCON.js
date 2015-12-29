@@ -16,7 +16,7 @@ $(document).ready(function() {
   // Slide 2
   av.umsg(interpret("Slide 2"));
   av.g.rect(100, 5, 400, 30);
-  av.label("$n$",  {top: "-18px", left: "300px"}).addClass("mediumLabel");
+  av.label("$n$",  {top: "-5px", left: "300px"}).addClass("mediumLabel");
   av.step();
 
   // Slide 3
@@ -26,9 +26,9 @@ $(document).ready(function() {
   av.label("|--------  $< A[pivot]$  --------|",  {top: "35px", left: "105px"}).addClass("mediumLabel2");
   av.label("|---------  $> A[pivot]$  ---------|",  {top: "35px", left: "310px"}).addClass("mediumLabel2");
   av.label("pivot",  {top: "75px", left: "281px"}).addClass("smallLabel rotated");
-  av.label("$\\frac{n}{2}$",  {top: "62px", left: "190px"}).addClass("mediumLabel");
-  av.label("$\\frac{n}{2}$",  {top: "62px", left: "390px"}).addClass("mediumLabel");
-  av.label("$\\theta(n)$",  {top: "62px", left: "600px"}).addClass("mediumLabel");
+  av.label("$\\frac{n}{2}$",  {top: "70px", left: "190px"}).addClass("mediumLabel");
+  av.label("$\\frac{n}{2}$",  {top: "70px", left: "390px"}).addClass("mediumLabel");
+  av.label("$\\theta(n)$",  {top: "70px", left: "600px"}).addClass("mediumLabel");
   av.step();
 
   // Slide 4
@@ -39,11 +39,11 @@ $(document).ready(function() {
   av.g.rect(415, 160, 10, 30);
   av.label("pivot",  {top: "155px", left: "166px"}).addClass("smallLabel rotated");
   av.label("pivot",  {top: "155px", left: "406px"}).addClass("smallLabel rotated");
-  av.label("$\\frac{n}{4}$",  {top: "142px", left: "120px"}).addClass("mediumLabel");
-  av.label("$\\frac{n}{4}$",  {top: "142px", left: "220px"}).addClass("mediumLabel");
-  av.label("$\\frac{n}{4}$",  {top: "142px", left: "360px"}).addClass("mediumLabel");
-  av.label("$\\frac{n}{4}$",  {top: "142px", left: "460px"}).addClass("mediumLabel");
-  av.label("$\\theta(n)$",  {top: "142px", left: "600px"}).addClass("mediumLabel");
+  av.label("$\\frac{n}{4}$",  {top: "150px", left: "120px"}).addClass("mediumLabel");
+  av.label("$\\frac{n}{4}$",  {top: "150px", left: "220px"}).addClass("mediumLabel");
+  av.label("$\\frac{n}{4}$",  {top: "150px", left: "360px"}).addClass("mediumLabel");
+  av.label("$\\frac{n}{4}$",  {top: "150px", left: "460px"}).addClass("mediumLabel");
+  av.label("$\\theta(n)$",  {top: "150px", left: "600px"}).addClass("mediumLabel");
   av.step();
 
   // Slide 5
@@ -60,15 +60,15 @@ $(document).ready(function() {
   av.label("pivot",  {top: "235px", left: "216px"}).addClass("smallLabel rotated");
   av.label("pivot",  {top: "235px", left: "356px"}).addClass("smallLabel rotated");
   av.label("pivot",  {top: "235px", left: "476px"}).addClass("smallLabel rotated");
-  av.label("$\\frac{n}{8}$",  {top: "222px", left: "75px"}).addClass("mediumLabel");
-  av.label("$\\frac{n}{8}$",  {top: "222px", left: "130px"}).addClass("mediumLabel");
-  av.label("$\\frac{n}{8}$",  {top: "222px", left: "195px"}).addClass("mediumLabel");
-  av.label("$\\frac{n}{8}$",  {top: "222px", left: "250px"}).addClass("mediumLabel");
-  av.label("$\\frac{n}{8}$",  {top: "222px", left: "330px"}).addClass("mediumLabel");
-  av.label("$\\frac{n}{8}$",  {top: "222px", left: "390px"}).addClass("mediumLabel");
-  av.label("$\\frac{n}{8}$",  {top: "222px", left: "450px"}).addClass("mediumLabel");
-  av.label("$\\frac{n}{8}$",  {top: "222px", left: "510px"}).addClass("mediumLabel");
-  av.label("$\\theta(n)$",  {top: "222px", left: "600px"}).addClass("mediumLabel");
+  av.label("$\\frac{n}{8}$",  {top: "230px", left: "75px"}).addClass("mediumLabel");
+  av.label("$\\frac{n}{8}$",  {top: "230px", left: "130px"}).addClass("mediumLabel");
+  av.label("$\\frac{n}{8}$",  {top: "230px", left: "195px"}).addClass("mediumLabel");
+  av.label("$\\frac{n}{8}$",  {top: "230px", left: "250px"}).addClass("mediumLabel");
+  av.label("$\\frac{n}{8}$",  {top: "230px", left: "330px"}).addClass("mediumLabel");
+  av.label("$\\frac{n}{8}$",  {top: "230px", left: "390px"}).addClass("mediumLabel");
+  av.label("$\\frac{n}{8}$",  {top: "230px", left: "450px"}).addClass("mediumLabel");
+  av.label("$\\frac{n}{8}$",  {top: "230px", left: "510px"}).addClass("mediumLabel");
+  av.label("$\\theta(n)$",  {top: "230px", left: "600px"}).addClass("mediumLabel");
   av.step();
 
   // Slide 6
@@ -80,19 +80,19 @@ $(document).ready(function() {
   av.label("...",  {top: "235px", left: "610px"}).addClass("largeLabel rotated");
   av.g.rect(40, 320, 30, 30);
   av.g.rect(80, 320, 30, 30);
-  av.label(".....................................",  {top: "270px", left: "120px"}).addClass("largeLabel");
+  av.label("......................................................................",  {top: "300px", left: "120px"}).addClass("largeLabel");
   av.g.rect(500, 320, 30, 30);
   av.g.rect(540, 320, 30, 30);
-  av.label("$1$",  {top: "302px", left: "50px"}).addClass("mediumLabel");
-  av.label("$1$",  {top: "302px", left: "90px"}).addClass("mediumLabel");
-  av.label("$1$",  {top: "302px", left: "510px"}).addClass("mediumLabel");
-  av.label("$1$",  {top: "302px", left: "550px"}).addClass("mediumLabel");
-  av.label("$\\theta(n)$",  {top: "302px", left: "600px"}).addClass("mediumLabel");
+  av.label("$1$",  {top: "310px", left: "50px"}).addClass("mediumLabel");
+  av.label("$1$",  {top: "310px", left: "90px"}).addClass("mediumLabel");
+  av.label("$1$",  {top: "310px", left: "510px"}).addClass("mediumLabel");
+  av.label("$1$",  {top: "310px", left: "550px"}).addClass("mediumLabel");
+  av.label("$\\theta(n)$",  {top: "310px", left: "600px"}).addClass("mediumLabel");
   av.step();
 
   // Slide 7
   av.umsg(interpret("Slide 7"));
-  av.label("|------------------ $\\log{n}$------------------|",
+  av.label("|----------------- $\\log{n}$-----------------|",
   {top: "195px", left: "550px"}).css({"font-size": "16px", "text-align": "center"}).addClass("rotated");
   av.recorded();
 });
