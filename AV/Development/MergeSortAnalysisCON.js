@@ -97,8 +97,8 @@ $(document).ready(function() {
 
   // Slide 9
   av.umsg(interpret("Slide 9"));
-  arr31.css(0, {"background-color": "green"});
-  arr32.css(0, {"background-color": "green"});
+  arr31.addClass(0, "greenbg");
+  arr32.addClass(0, "greenbg");
   av.step();
 
   // Slide 10
@@ -131,8 +131,8 @@ $(document).ready(function() {
 
   // Slide 13
   av.umsg(interpret("Slide 13"));
-  arr33.css(0, {"background-color": "green"});
-  arr34.css(0, {"background-color": "green"});
+  arr33.addClass(0, "greenbg");
+  arr34.addClass(0, "greenbg");
   av.step();
 
   // Slide 14
@@ -150,8 +150,8 @@ $(document).ready(function() {
 
   // Slide 15
   av.umsg(interpret("Slide 15"));
-  arr21.css([0, 1], {"background-color": "green"});
-  arr22.css([0, 1], {"background-color": "green"});
+  arr21.addClass([0, 1], "greenbg");
+  arr22.addClass([0, 1], "greenbg");
   av.step();
 
   // Slide 16
@@ -195,8 +195,8 @@ $(document).ready(function() {
 
   //Slide 21
   av.umsg(interpret("Slide 21"));
-  arr35.css(0, {"background-color": "green"});
-  arr36.css(0, {"background-color": "green"});
+  arr35.addClass(0, "greenbg");
+  arr36.addClass(0, "greenbg");
   av.step();
 
   // Slide 22
@@ -228,8 +228,8 @@ $(document).ready(function() {
 
   //Slide 25
   av.umsg(interpret("Slide 25"));
-  arr37.css(0, {"background-color": "green"});
-  arr38.css(0, {"background-color": "green"});
+  arr37.addClass(0, "greenbg");
+  arr38.addClass(0, "greenbg");
   av.step();
 
   // Slide 26
@@ -247,8 +247,8 @@ $(document).ready(function() {
 
   // Slide 27
   av.umsg(interpret("Slide 27"));
-  arr23.css([0, 1], {"background-color": "green"});
-  arr24.css([0, 1], {"background-color": "green"});
+  arr23.addClass([0, 1], "greenbg");
+  arr24.addClass([0, 1], "greenbg");
   av.step();
 
   // Slide 28
@@ -263,8 +263,8 @@ $(document).ready(function() {
 
   // Slide 29
   av.umsg(interpret("Slide 29"));
-  arr11.css([0, 1, 2, 3], {"background-color": "green"});
-  arr12.css([0, 1, 2, 3], {"background-color": "green"});
+  arr11.addClass([0, 1, 2, 3], "greenbg");
+  arr12.addClass([0, 1, 2, 3], "greenbg");
   av.step();
 
   // Slide 30
