@@ -12,12 +12,6 @@
   min-height: 35px !important;
   max-height: 35px !important;
 }
-
-.jsavcodeline{
-  background-color: transparent;
-  font-size: 10px;
-}
-
 .largeLabel{
   font-size: 18px; 
   text-align: center; 
@@ -28,4 +22,9 @@
 }
 #AnalCasesDiffCON .jsavline{
   height: 75px;
+}
+.codeLabel{
+  font-family:Helvetica, Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif !important;
+  font-weight: bold !important;
+  font-size: 16px !important;
 }
