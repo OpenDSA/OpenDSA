@@ -12,18 +12,18 @@ $(document).ready(function() {
   var label2 = av.label("2", {left: tleft + 195, top: ttop + 133});
   var label3 = av.label("3", {left: tleft + 210, top: ttop + 163});
   // Poles
-  var rectver0 = av.g.rect(tleft + 105, ttop + 20, 10, 180).addClass("polecolor");
-  var rectver1 = av.g.rect(tleft + 375, ttop + 20, 10, 180).addClass("polecolor");
-  var rectver2 = av.g.rect(tleft + 605, ttop + 20, 10, 180).addClass("polecolor");
+  av.g.rect(tleft + 105, ttop + 20, 10, 180).addClass("polecolor");
+  av.g.rect(tleft + 375, ttop + 20, 10, 180).addClass("polecolor");
+  av.g.rect(tleft + 605, ttop + 20, 10, 180).addClass("polecolor");
   // The moving disks
   var rect0 = av.g.rect(tleft + 65, ttop + 90, 90, 20).addClass("disk0color");
   var rect1 = av.g.rect(tleft + 50, ttop + 120, 120, 20).addClass("disk1color");
   var rect2 = av.g.rect(tleft + 35, ttop + 150, 150, 20).addClass("disk2color");
   var rect3 = av.g.rect(tleft + 20, ttop + 180, 180, 20).addClass("disk3color");
   // Labels for each tower
-  var labela = av.label("A", {left: tleft + 105, top: ttop - 20});
-  var labelb = av.label("B", {left: tleft + 375, top: ttop - 20});
-  var labelc = av.label("C", {left: tleft + 605, top: ttop - 20});
+  av.label("A", {left: tleft + 105, top: ttop - 20});
+  av.label("B", {left: tleft + 375, top: ttop - 20});
+  av.label("C", {left: tleft + 605, top: ttop - 20});
 
   // Slide 1
   av.displayInit();
