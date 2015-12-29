@@ -73,11 +73,11 @@ $(document).ready(function() {
 
   // Slide 6
   av.umsg(interpret("Slide 6"));
-  av.label("...",  {top: "235px", left: "105px"}).addClass("largeLabel rotated");
-  av.label("...",  {top: "235px", left: "225px"}).addClass("largeLabel rotated");
-  av.label("...",  {top: "235px", left: "365px"}).addClass("largeLabel rotated");
-  av.label("...",  {top: "235px", left: "485px"}).addClass("largeLabel rotated");
-  av.label("...",  {top: "235px", left: "610px"}).addClass("largeLabel rotated");
+  av.label("...",  {top: "270px", left: "105px"}).addClass("rotated");
+  av.label("...",  {top: "270px", left: "225px"}).addClass("rotated");
+  av.label("...",  {top: "270px", left: "365px"}).addClass("rotated");
+  av.label("...",  {top: "270px", left: "485px"}).addClass("rotated");
+  av.label("...",  {top: "260px", left: "610px"}).addClass("rotated");
   av.g.rect(40, 320, 30, 30);
   av.g.rect(80, 320, 30, 30);
   av.label("......................................................................",  {top: "300px", left: "120px"}).addClass("largeLabel");
