@@ -1,16 +1,16 @@
 {
   "translations": {
     "en": {
-      "av_c1": "Method <code>pop</code> is also quite simple.",
-      "av_c2": "<code>top</code> points to the first node. Since <code>top</code> is not equal to <code>null</code>, we proceed.",
-      "av_c3": "Variable <code>it</code> stores the top node's value as it is removed from the stack.",
-      "av_c4": "The stack is updated by setting <code>top</code> to point to the next link in the stack. The old node becomes garbage.",
-      "av_c5": "Decrease the stack size by 1.",
-      "av_c6": "The element value is returned."
+      "sc1": "Method <code>pop</code> is also quite simple.",
+      "sc2": "<code>top</code> points to the first node. Since <code>top</code> is not equal to <code>null</code>, we proceed.",
+      "sc3": "Variable <code>it</code> stores the top node's value as it is removed from the stack.",
+      "sc4": "The stack is updated by setting <code>top</code> to point to the next link in the stack. The old node becomes garbage.",
+      "sc5": "Decrease the stack size by 1.",
+      "sc6": "The element value is returned."
     }
   },
   "code": {
-    "processing": {
+    "processing": [{
       "url": "../../../SourceCode/Processing/Lists/LStack.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: LStackPop *** */",
@@ -23,8 +23,8 @@
         "size": 5,
         "return": 6
       }
-    },
-    "java": {
+    }],
+    "java": [{
       "url": "../../../SourceCode/Java/Lists/LStack.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: LStackPop *** */",
@@ -37,8 +37,8 @@
         "size": 5,
         "return": 6
       }
-    },
-    "java_generic": {
+    }],
+    "java_generic": [{
       "url": "../../../SourceCode/Java_Generic/Lists/LStack.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: LStackPop *** */",
@@ -51,6 +51,6 @@
         "size": 5,
         "return": 6
       }
-    }
+    }]
   }
 }

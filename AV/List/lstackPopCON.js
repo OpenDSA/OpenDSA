@@ -1,19 +1,19 @@
 /*global ODSA */
-"use strict";
 // Written by Jun Yang and Cliff Shaffer
 // LStack pop slideshow
-$(document).ready(function () {
+$(document).ready(function() {
+  "use strict";
   var av_name = "lstackPopCON";
-  var config = ODSA.UTILS.loadConfig({'av_name': av_name}),
+  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
-  var pseudo = av.code(code);
+  var pseudo = av.code(code[0]);
 
   // Relative offsets
   var leftMargin = 10;
   var topMargin = 35;
-  var list = av.ds.list({"nodegap": 30, left: leftMargin + 60, top: topMargin});
+  var list = av.ds.list({nodegap: 30, left: leftMargin + 60, top: topMargin});
   list.addFirst(15)
       .addFirst(12)
       .addFirst(8)
@@ -24,31 +24,31 @@ $(document).ready(function () {
   list.layout();
 
   var arrIt = av.ds.array([""], {left: leftMargin + 110, top: topMargin + 50});
-  var labelIt = av.label("it", {left: leftMargin + 90, top: topMargin + 55});
+  av.label("it", {left: leftMargin + 90, top: topMargin + 55});
 
   // Slide 1
-  av.umsg(interpret("av_c1"));
+  av.umsg(interpret("sc1"));
   pseudo.setCurrentLine("sig");
   av.displayInit();
 
   // Slide 2
+  av.umsg(interpret("sc2"));
   firstnode.highlight();
-  av.umsg(interpret("av_c2"));
-  pseudo.setCurrentLine(0);
+  pseudo.setCurrentLine("null");
   av.step();
 
   // Slide 3
+  av.umsg(interpret("sc3"));
   av.effects.copyValue(firstnode, arrIt, 0);
   firstnode.unhighlight();
   arrIt.highlight(0);
-  av.umsg(interpret("av_c3"));
   pseudo.setCurrentLine("it");
   av.step();
 
   // Slide 4
+  av.umsg(interpret("sc4"));
   arrIt.unhighlight();
   list.get(1).highlight();
-  av.umsg(interpret("av_c4"));
   topPointer.target(list.get(1));
   firstnode.addClass("unused");
   list.layout();
@@ -56,7 +56,7 @@ $(document).ready(function () {
   av.step();
 
   // Slide 5
-  av.umsg(interpret("av_c5"));
+  av.umsg(interpret("sc5"));
   firstnode.hide();
   firstnode.edgeToNext().hide();
   list.layout();
@@ -64,8 +64,8 @@ $(document).ready(function () {
   av.step();
 
   // Slide 6
+  av.umsg(interpret("sc6"));
   arrIt.highlight();
-  av.umsg(interpret("av_c6"));
   list.get(1).unhighlight();
   pseudo.setCurrentLine("return");
   av.step();

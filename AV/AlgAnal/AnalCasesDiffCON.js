@@ -14,7 +14,7 @@ $(document).ready(function() {
   var arr_values = [];
   var topAlign = 60;
   var leftAlign = 10;
-  var rectWidth = 210;
+  var rectWidth = 230;
   var rectHeight = 200;
   var arraySize = 7;
   var i;

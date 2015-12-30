@@ -19,8 +19,8 @@ $(document).ready(function() {
   // Slide 1
   av.umsg(interpret("sc1"));
   var rect = av.g.rect(leftAlign + 380, topAlign - 25, rectWidth, rectHeight);
-  var mainLabel = av.label(interpret("lab1"),
-                              {top: topAlign - 20, left: leftAlign + 400}).addClass("codeLabel");
+  var mainLabel = av.label(interpret("lab1"), {top: topAlign - 20, left: leftAlign + 400});
+  mainLabel.addClass("codeLabel");
   av.displayInit();
 
   // Slide 2

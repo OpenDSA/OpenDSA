@@ -1,15 +1,15 @@
 {
   "translations": {
     "en": {
-      "av_c1": "Now we look at the constructors for class <code>LList</code>.",
-      "av_c2": "The LList constructor maintains the optional parameter for minimum list size introduced for Class AList. This is done simply to keep the calls to the constructor consistent for both implementations. The linked list class does not declare a fixed-size array when the list is created, so this parameter is unnecessary for linked lists. It is ignored.",
-      "av_c3": "So the constructor that takes the (optional) size value just calls the version that does not take a value.",
-      "av_c4": "Both constructors rely on the clear method to do the real work.",
-      "av_c5": "The <code>clear</code> method initializes the list to just the empty header and trailer nodes as was shown before."
+      "sc1": "Now we look at the constructors for class <code>LList</code>.",
+      "sc2": "The LList constructor maintains the optional parameter for minimum list size introduced for Class AList. This is done simply to keep the calls to the constructor consistent for both implementations. The linked list class does not declare a fixed-size array when the list is created, so this parameter is unnecessary for linked lists. It is ignored.",
+      "sc3": "So the constructor that takes the (optional) size value just calls the version that does not take a value.",
+      "sc4": "Both constructors rely on the clear method to do the real work.",
+      "sc5": "The <code>clear</code> method initializes the list to just the empty header and trailer nodes as was shown before."
     }
   },
   "code": {
-    "processing": {
+    "processing": [{
       "url": "../../../SourceCode/Processing/Lists/LList.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: LListCons *** */",
@@ -25,8 +25,8 @@
         "c5": 10,
         "clear": [6, 7, 8, 9, 10]
       }
-    },
-    "java": {
+    }],
+    "java": [{
       "url": "../../../SourceCode/Java/Lists/LList.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: LListCons *** */",
@@ -42,8 +42,8 @@
         "c5": 10,
         "clear": [6, 7, 8, 9, 10]
       }
-    },
-    "java_generic": {
+    }],
+    "java_generic": [{
       "url": "../../../SourceCode/Java_Generic/Lists/LList.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: LListCons *** */",
@@ -59,6 +59,6 @@
         "c5": 10,
         "clear": [6, 7, 8, 9, 10]
       }
-    }
+    }]
   }
 }

@@ -1,24 +1,23 @@
 /*global ODSA */
-"use strict";
 // Written by Jun Yang and Cliff Shaffer
 // Astack push method
-$(document).ready(function () {
+$(document).ready(function() {
+  "use strict";
   var av_name = "astackPushCON";
   // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
-  var pseudo = av.code(code);
+  var pseudo = av.code(code[0]);
   var topMargin = 0;
   var leftMargin = 30;
 
   var arr = av.ds.array([12, 45, 5, 81, "", "", "", ""],
                         {indexed: true, top: topMargin, left: 20});
-  var topArr = av.ds.array([4], {left: leftMargin + 50, top: topMargin + 60});
-  var topLabel = av.label("top", {left: leftMargin + 20, top: topMargin + 60});
-
   arr.addClass([4, 5, 6, 7], "unused");
+  var topArr = av.ds.array([4], {left: leftMargin + 50, top: topMargin + 60});
+  av.label("top", {left: leftMargin + 20, top: topMargin + 60});
 
   // The purpose of this "array" is only to hold a value,
   // it will always remain hidden.
@@ -28,25 +27,25 @@ $(document).ready(function () {
   arrCopy.hide();
 
   // Slide 1
-  av.umsg(interpret("av_c1"));
+  av.umsg(interpret("sc1"));
   pseudo.setCurrentLine("sig");
   av.displayInit();
 
   // Slide 2
-  av.umsg(interpret("av_c2"));
+  av.umsg(interpret("sc2"));
   arr.highlight(4);
   pseudo.setCurrentLine("full");
   av.step();
 
   // Slide 3
+  av.umsg(interpret("sc3"));
   pseudo.setCurrentLine("copy");
-  av.umsg(interpret("av_c3"));
   av.effects.copyValue(arrCopy, 0, arr, 4);
   arr.removeClass(4, "unused");
   av.step();
 
   // Slide 4
-  av.umsg(interpret("av_c4"));
+  av.umsg(interpret("sc4"));
   topArr.value(0, 5);
   topArr.highlight(0);
   arr.unhighlight(4);

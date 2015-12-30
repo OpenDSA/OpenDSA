@@ -1,17 +1,17 @@
 {
   "translations": {
     "en": {
-      "av_c1": "Now for the <code>dequeue</code> operation.",
-      "av_c2": "First check that the Queue is not empty.",
-      "av_c3": "Store dequeued value.",
-      "av_c4": "Advance front to point to the new link node.",
-      "av_c6": "Check that the next node of <code>front</code> is not empty. If it were, this would be a special case requiring <code>rear</code> to be adjusted.",
-      "av_c7": "Decrease the size by 1.",
-      "av_c8": "Return the dequeued value."
+      "sc1": "Now for the <code>dequeue</code> operation.",
+      "sc2": "First check that the Queue is not empty.",
+      "sc3": "Store dequeued value.",
+      "sc4": "Advance front to point to the new link node.",
+      "sc6": "Check that the next node of <code>front</code> is not empty. If it were, this would be a special case requiring <code>rear</code> to be adjusted.",
+      "sc7": "Decrease the size by 1.",
+      "sc8": "Return the dequeued value."
     }
   },
   "code": {
-    "processing": {
+    "processing": [{
       "url": "../../../SourceCode/Processing/Lists/LQueue.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: LQueueDequeue *** */",
@@ -24,8 +24,8 @@
         "endcheck": 6,
         "return": 7
       }
-    },
-    "java": {
+    }],
+    "java": [{
       "url": "../../../SourceCode/Java/Lists/LQueue.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: LQueueDequeue *** */",
@@ -38,8 +38,8 @@
         "endcheck": 6,
         "return": 7
       }
-    },
-    "java_generic": {
+    }],
+    "java_generic": [{
       "url": "../../../SourceCode/Java_Generic/Lists/LQueue.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: LQueueDequeue *** */",
@@ -52,6 +52,6 @@
         "endcheck": 6,
         "return": 7
       }
-    }
+    }]
   }
 }

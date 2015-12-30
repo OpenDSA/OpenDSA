@@ -1,13 +1,13 @@
 {
   "translations" :{
     "en": {
-      "av_c1": "This implementation raises a new problem. When elements are removed from the queue, the front index increases.",
-      "av_c2": "<code>dequeue</code> the value 17.",
-      "av_c3": "Meanwhile, enqueue'ing a new item makes the rear index increase. <code>enqueue</code> the value 3.",
-      "av_c4": "Next, <code>enqueue</code> the value 40.",
-      "av_c5": "Now <code>enqueue</code> the value 42.",
-      "av_c6": "Over time, the entire queue has drifted toward the higher-numbered positions in the array.",
-      "av_c7": "The queue has now has no place to put the next item to be enqueued, despite the fact that there are free positions at the low end of the array where elements have previously been removed from the queue."
+      "sc1": "This implementation raises a new problem. When elements are removed from the queue, the front index increases.",
+      "sc2": "<code>dequeue</code> the value 17.",
+      "sc3": "Meanwhile, enqueue'ing a new item makes the rear index increase. <code>enqueue</code> the value 3.",
+      "sc4": "Next, <code>enqueue</code> the value 40.",
+      "sc5": "Now <code>enqueue</code> the value 42.",
+      "sc6": "Over time, the entire queue has drifted toward the higher-numbered positions in the array.",
+      "sc7": "The queue has now has no place to put the next item to be enqueued, despite the fact that there are free positions at the low end of the array where elements have previously been removed from the queue."
     }
   }
 }

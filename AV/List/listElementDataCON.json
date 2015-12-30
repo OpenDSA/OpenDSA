@@ -1,9 +1,9 @@
 {
   "translations": {
     "en": {
-      "av_c1": "In this slide, values are stored directly in the list element. If something appears multiple times, the that means that there are multiple copies. For small elements such as an integer, this makes sense.",
-      "av_c2": "If the elements are payroll records, it might be desirable for the list node to store a pointer to the record rather than store a copy of the record itself. This change would allow multiple list nodes (or other data structures) to point to the same record, rather than make repeated copies of the record. Not only might this save space, but it also means that a modification to an element's value is automatically reflected at all locations where it is referenced.",
-      "av_c3": "The disadvantage of storing a pointer to each element is that the pointer requires space of its own. If elements are never duplicated, then this additional space adds unnecessary overhead. Java most naturally stores references to objects, meaning that only a single copy of an object such as a payroll record will be maintained, even if it is on multiple lists."
+      "sc1": "This slide show values stored directly in the list elements. If something appears multiple times, then there are multiple copies of that thing. For small elements such as an integer, this makes sense.",
+      "sc2": "If the elements are payroll records, it might be desirable for the list node to store a pointer to the record rather than store a copy of the record itself. This change would allow multiple list nodes (or other data structures) to point to the same record, rather than make repeated copies of the record. Not only might this save space, but it also means that a modification to an element's value is automatically reflected at all locations where it is referenced.",
+      "sc3": "The disadvantage of storing a pointer to each element is that the pointer requires space of its own. If elements are never duplicated, then this additional space adds unnecessary overhead. Java most naturally stores references to objects, meaning that only a single copy of an object such as a payroll record will be maintained, even if it is on multiple lists."
     }
   }
 }

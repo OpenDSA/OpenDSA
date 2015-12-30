@@ -1,11 +1,11 @@
 /*global ODSA */
-"use strict";
 // Written by Jun Yang and Cliff Shaffer
 // Array-based circular queue
-$(document).ready(function () {
+$(document).ready(function() {
+  "use strict";
   var av_name = "aqueueCircularCON";
   // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter;       // get the interpreter
   var av = new JSAV(av_name);
 
@@ -26,19 +26,20 @@ $(document).ready(function () {
   curve.hide();
 
   // Slide 1
-  av.umsg(interpret("av_c1"));
+  av.umsg(interpret("sc1"));
   av.displayInit();
 
   // Slide 2
-  av.umsg(interpret("av_c2"));
+  av.umsg(interpret("sc2"));
   av.step();
 
   // Slide 3
-  av.umsg(interpret("av_c3"));
+  av.umsg(interpret("sc3"));
   curve.show();
   av.step();
 
   // Slide 4
+  av.umsg(interpret("sc4"));
   curve.hide();
   cir.value(8, "20");
   cir.value(9, "5");
@@ -46,10 +47,10 @@ $(document).ready(function () {
   cir.value(11, "17");
   var frontP = cir.pointer("front", 8);
   var rearP = cir.pointer("rear", 11);
-  av.umsg(interpret("av_c4"));
   av.step();
 
   // Slide 5
+  av.umsg(interpret("sc5"));
   cir.value(8, " ");
   cir.value(9, " ");
   cir.value(0, "3");
@@ -63,6 +64,5 @@ $(document).ready(function () {
   rearP.label.hide();
   cir.pointer("front", 10);
   cir.pointer("rear", 2);
-  av.umsg(interpret("av_c5"));
   av.recorded();
 });
