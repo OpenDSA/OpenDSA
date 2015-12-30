@@ -1,14 +1,14 @@
 {
   "translations": {
     "en": {
-      "av_c1": "Now, for the implementation of <code>pop</code>. <code>top</code> is at the first free position, which is index 4 on the array.",
-      "av_c2": "Since <code>top</code> is not 0 (which would indicate an empty stack), we proceed.",
-      "av_c3": "<code>pop</code> first decrements <code>top<code> by 1 position.",
-      "av_c4": "Then it removes and returns the <code>top</code> element."
+      "sc1": "Now, for the implementation of <code>pop</code>. <code>top</code> is at the first free position, which is index 4 on the array.",
+      "sc2": "Since <code>top</code> is not 0 (which would indicate an empty stack), we proceed.",
+      "sc3": "<code>pop</code> first decrements <code>top<code> by 1 position.",
+      "sc4": "Then it removes and returns the <code>top</code> element."
     }
   },
   "code": {
-    "processing": {
+    "processing": [{
       "url": "../../../SourceCode/Processing/Lists/AStack.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: AStackPop *** */",
@@ -18,8 +18,8 @@
         "empty": 2,
         "return": 3
       }
-    },
-    "java": {
+    }],
+    "java": [{
       "url": "../../../SourceCode/Java/Lists/AStack.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: AStackPop *** */",
@@ -29,8 +29,8 @@
         "empty": 2,
         "return": 3
       }
-    },
-    "java_generic": {
+    }],
+    "java_generic": [{
       "url": "../../../SourceCode/Java_Generic/Lists/AStack.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: AStackPop *** */",
@@ -40,6 +40,6 @@
         "empty": 2,
         "return": 3
       }
-    }
+    }]
   }
 }

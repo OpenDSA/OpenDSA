@@ -17,9 +17,9 @@
       "sc14": "<br><br>A program accepts a problem instance as an input.",
       "sc15": "<br><br>Then the program is executed to generate the output.",
       "sc16": "Here we present the sequential search algorithm implemented as a Java function.",
-      "lab1": "<b>Searching Problem</b>",
-      "lab2": "<b>Algorithm</b>",
-      "lab3": "<b>Program</b>",
+      "lab1": "Searching Problem",
+      "lab2": "Algorithm",
+      "lab3": "Program",
       "lab4": "Target key",
       "lab5": "Found",
       "lab6": "Not found",
@@ -28,27 +28,97 @@
     }
   },
   "code": {
-    "java": [{
-      "url": "../../../SourceCode/Java/Searching/SequentialNoComments.java",
-      "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: Sequential *** */",
-      "endBefore": "/* *** ODSAendTag: Sequential *** */",
-	  "top": 80,
-	  "left": 397,
-      "tags": {
-        
+    "processing": [
+      {
+        "url": "../../../SourceCode/Java/Searching/SequentialNoComments.java",
+        "lineNumbers": false,
+        "startAfter": "/* *** ODSATag: Sequential *** */",
+        "endBefore": "/* *** ODSAendTag: Sequential *** */",
+        "top": 80,
+        "left": 397,
+        "tags": {
+        }
+      },
+      {
+        "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
+        "lineNumbers": false,
+        "startAfter": "/* *** ODSATag: Sequential *** */",
+        "endBefore": "/* *** ODSAendTag: Sequential *** */",
+        "top": 80,
+        "left": 397,
+        "tags": {
+
+        }
       }
-    },
-    {
-      "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
-      "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: Sequential *** */",
-      "endBefore": "/* *** ODSAendTag: Sequential *** */",
-	  "top": 80,
-	  "left": 397,
-      "tags": {
-        
+    ],
+    "java": [
+      {
+        "url": "../../../SourceCode/Java/Searching/SequentialNoComments.java",
+        "lineNumbers": false,
+        "startAfter": "/* *** ODSATag: Sequential *** */",
+        "endBefore": "/* *** ODSAendTag: Sequential *** */",
+        "top": 80,
+        "left": 397,
+        "tags": {
+        }
+      },
+      {
+        "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
+        "lineNumbers": false,
+        "startAfter": "/* *** ODSATag: Sequential *** */",
+        "endBefore": "/* *** ODSAendTag: Sequential *** */",
+        "top": 80,
+        "left": 397,
+        "tags": {
+
+        }
       }
-    }]
+    ],
+    "java_generic": [
+      {
+        "url": "../../../SourceCode/Java/Searching/SequentialNoComments.java",
+        "lineNumbers": false,
+        "startAfter": "/* *** ODSATag: Sequential *** */",
+        "endBefore": "/* *** ODSAendTag: Sequential *** */",
+        "top": 80,
+        "left": 397,
+        "tags": {
+        }
+      },
+      {
+        "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
+        "lineNumbers": false,
+        "startAfter": "/* *** ODSATag: Sequential *** */",
+        "endBefore": "/* *** ODSAendTag: Sequential *** */",
+        "top": 80,
+        "left": 397,
+        "tags": {
+
+        }
+      }
+    ],
+    "c++": [
+      {
+        "url": "../../../SourceCode/Java/Searching/SequentialNoComments.java",
+        "lineNumbers": false,
+        "startAfter": "/* *** ODSATag: Sequential *** */",
+        "endBefore": "/* *** ODSAendTag: Sequential *** */",
+        "top": 80,
+        "left": 397,
+        "tags": {
+        }
+      },
+      {
+        "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
+        "lineNumbers": false,
+        "startAfter": "/* *** ODSATag: Sequential *** */",
+        "endBefore": "/* *** ODSAendTag: Sequential *** */",
+        "top": 80,
+        "left": 397,
+        "tags": {
+
+        }
+      }
+    ]
   }
 }

@@ -15,7 +15,7 @@
     }
   },
   "code": {
-    "processing": {
+    "processing": [{
       "url": "../../../SourceCode/Processing/Sorting/RadixsortNoComments.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: Radixsort *** */",
@@ -31,6 +31,6 @@
         "loop5": 13,
         "loop6": 17
       }
-    }
+    }]
   }
 }

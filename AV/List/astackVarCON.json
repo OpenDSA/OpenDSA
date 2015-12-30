@@ -1,13 +1,13 @@
 {
   "translations": {
     "en": {
-      "av_c1": "As with any array-based implementation, <code>stackArray</code> must be declared of fixed size when the stack is created.",
-      "av_c2": "In the stack constructor, <code>size</code> indicates stack size.",
-      "av_c3": "Variable <code>top</code> acts somewhat like a current position value (because the \"current\" position is always at the top of the stack). It also indicates the number of elements currently in the stack."
+      "sc1": "As with any array-based implementation, <code>stackArray</code> must be declared of fixed size when the stack is created.",
+      "sc2": "In the stack constructor, <code>size</code> indicates stack size.",
+      "sc3": "Variable <code>top</code> acts somewhat like a current position value (because the \"current\" position is always at the top of the stack). It also indicates the number of elements currently in the stack."
     }
   },
   "code": {
-    "processing": {
+    "processing": [{
       "url": "../../../SourceCode/Processing/Lists/AStack.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: AStack1 *** */",
@@ -17,8 +17,8 @@
         "top": 5,
         "constructor": 8
       }
-    },
-    "java": {
+    }],
+    "java": [{
       "url": "../../../SourceCode/Java/Lists/AStack.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: AStack1 *** */",
@@ -28,8 +28,8 @@
         "top": 5,
         "constructor": 8
       }
-    },
-    "java_generic": {
+    }],
+    "java_generic": [{
       "url": "../../../SourceCode/Java_Generic/Lists/AStack.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: AStack1 *** */",
@@ -39,6 +39,6 @@
         "top": 5,
         "constructor": 9
       }
-    }
+    }]
   }
 }

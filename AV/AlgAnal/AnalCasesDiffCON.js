@@ -9,12 +9,12 @@ $(document).ready(function() {
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
-  var pseudo = av.code(code).hide();
+  var pseudo = av.code(code[0]).hide();
   var arr;
   var arr_values = [];
   var topAlign = 60;
   var leftAlign = 10;
-  var rectWidth = 210;
+  var rectWidth = 230;
   var rectHeight = 200;
   var arraySize = 7;
   var i;
@@ -22,7 +22,7 @@ $(document).ready(function() {
   // Slide 1
   av.umsg(interpret("sc1"));
   var rect = av.g.rect(leftAlign + 380, topAlign - 25, rectWidth, rectHeight);
-  var label = av.label(interpret("lab1"),  {top: topAlign - 25, left: leftAlign + 420});
+  var label = av.label(interpret("lab1"),  {top: topAlign - 25, left: leftAlign + 420}).addClass("codelabel");
   av.displayInit();
 
   // Slide 2

@@ -1,15 +1,15 @@
-/*global ODSA, setPointerL, setPointerR */
-"use strict";
+/*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // List-based Queue Introduction.
-$(document).ready(function () {
+$(document).ready(function() {
+  "use strict";
   var av_name = "lqueueIntroCON";
   // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
-  var pseudo = av.code(code);
+  var pseudo = av.code(code[0]);
 
   var leftMargin = 20;
   var topMargin = 50;
@@ -26,25 +26,27 @@ $(document).ready(function () {
   var listInit = av.ds.list({nodegap: 30, left: leftMargin, top: topMargin});
   listInit.addFirst("null");
   listInit.layout();
-  var frontIP = setPointerL("front", listInit.get(0));
-  var rearIP = setPointerR("rear", listInit.get(0));
+  var frontIP = av.pointer("front", listInit.get(0));
+  var rearIP = av.pointer("rear", listInit.get(0), {anchor: "right top",
+                                myAnchor: "left bottom", left: -10});
   listInit.hide();
   frontIP.hide();
   rearIP.hide();
 
   // Slide 1
-  av.umsg(interpret("av_c1"));
+  av.umsg(interpret("sc1"));
   pseudo.highlight("vars");
   av.displayInit();
 
   // Slide 2
-  av.umsg(interpret("av_c2"));
+  av.umsg(interpret("sc2"));
   var l0 = list.get(0);
   l0.highlight();
   pseudo.unhighlight("vars");
   av.step();
 
   // Slide 3
+  av.umsg(interpret("sc3"));
   l0.unhighlight();
   pseudo.highlight("init");
   list.hide();
@@ -53,10 +55,10 @@ $(document).ready(function () {
   listInit.show();
   frontIP.show();
   rearIP.show();
-  av.umsg(interpret("av_c3"));
   av.step();
 
   // Slide 4
+  av.umsg(interpret("sc4"));
   pseudo.unhighlight("init");
   listInit.hide();
   frontIP.hide();
@@ -64,6 +66,5 @@ $(document).ready(function () {
   list.show();
   frontP.show();
   rearP.show();
-  av.umsg(interpret("av_c4"));
   av.recorded();
 });

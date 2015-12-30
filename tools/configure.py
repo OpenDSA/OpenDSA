@@ -282,10 +282,7 @@ def generate_index_rst(config, slides=False):
         # Process the Gradebook and Registerbook as well
         if not slides:
             process_module(config, mod_path='Gradebook', index_rst=index_rst)
-            process_module(
-                config, mod_path='RegisterBook', index_rst=index_rst)
-            process_module(
-                config, mod_path='CreateCourse', index_rst=index_rst)
+            process_module(config, mod_path='RegisterBook', index_rst=index_rst)
 
         # If a ToDo file will be generated, append it to index.rst
         if len(todo_list) > 0:

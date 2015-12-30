@@ -1,15 +1,15 @@
-/*global ODSA, setPointerL */
-"use strict";
+/*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // Linked list deletion
-$(document).ready(function () {
+$(document).ready(function() {
+  "use strict";
   var av_name = "llistRemoveCON";
   // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
-  var pseudo = av.code(code);
+  var pseudo = av.code(code[0]);
 
   // Relative offsets
   var leftMargin = 250;
@@ -17,12 +17,12 @@ $(document).ready(function () {
 
   var l = av.ds.list({nodegap: 30, center: false,
                       left: leftMargin, top: topMargin});
-  l.addFirst("null").addFirst(10).addFirst(35).addFirst(8).addFirst(23).addFirst('null');
+  l.addFirst("null").addFirst(10).addFirst(35).addFirst(8).addFirst(23).addFirst("null");
   l.layout();
-  var head = setPointerL('head', l.get(0));
-  var curr = setPointerL('curr', l.get(2));
-  var tail = setPointerL('tail', l.get(5));
-  var verticalBar = l.get(2).addVLine();
+  av.pointer("head", l.get(0));
+  av.pointer("curr", l.get(2));
+  av.pointer("tail", l.get(5));
+  l.get(2).addVLine();
 
   // Dashline
   var dashline = av.g.polyline([[leftMargin + 186, topMargin + 32],
@@ -32,7 +32,7 @@ $(document).ready(function () {
                                 [leftMargin + 276, topMargin + 32],
                                 [leftMargin + 297, topMargin + 32]],
                                {"arrow-end": "classic-wide-long",
-                                "opacity": 0, "stroke-width": 2,
+                                opacity: 0, "stroke-width": 2,
                                 "stroke-dasharray": "-"});
 
   // Create hidden array for holding the removed value
@@ -43,57 +43,57 @@ $(document).ready(function () {
   labelIt.hide();
 
   // Slide 1
-  av.umsg(interpret("av_c1"));
+  av.umsg(interpret("sc1"));
   pseudo.setCurrentLine("sig");
   av.displayInit();
 
   // Slide 2
+  av.umsg(interpret("sc2"));
   l.get(2).highlight();
-  l.layout({ updateLeft: false }); // Do not change left position on update
-  av.umsg(interpret("av_c2"));
+  l.layout({updateLeft: false}); // Do not change left position on update
   av.step();
 
   // Slide 3
+  av.umsg(interpret("sc3"));
   arr.show();
   av.effects.copyValue(l.get(2), arr, 0);
   labelIt.show();
   l.get(2).unhighlight();
   arr.highlight(0);
-  av.umsg(interpret("av_c3"));
   pseudo.setCurrentLine("remember");
   av.step();
 
   // Slide 4
+  av.umsg(interpret("sc4"));
   av.effects.copyValue(l.get(3), l.get(2));
   l.get(2).highlight();
   arr.unhighlight(0);
-  av.umsg(interpret("av_c4"));
   pseudo.setCurrentLine("setelem");
   av.step();
 
   // Slide 5
+  av.umsg(interpret("sc5"));
   l.get(2).edgeToNext().hide();
   l.get(3).edgeToNext().hide();
   dashline.show();
   l.get(4).highlight();
-  av.umsg(interpret("av_c5"));
   pseudo.setCurrentLine("setnext");
   av.step();
 
   // Slide 6
+  av.umsg(interpret("sc6"));
   l.remove(3);
   dashline.hide();
   l.layout();
   l.get(2).edgeToNext().show();
   l.get(2).unhighlight();
   l.get(3).unhighlight();
-  av.umsg(interpret("av_c6"));
   pseudo.setCurrentLine("listSize");
   av.step();
 
   // Slide 7
+  av.umsg(interpret("sc7"));
   arr.highlight();
-  av.umsg(interpret("av_c7"));
   pseudo.setCurrentLine("return");
   av.recorded();
 });

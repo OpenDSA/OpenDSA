@@ -91,13 +91,13 @@ min: nomin
 #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
 testLTI: min
-	# python $(CONFIG_SCRIPT) config/testLTI.json
+	python $(CONFIG_SCRIPT) config/testLTI.json
 	# python $(CONFIG_SCRIPT) config/testLTI.json -b testLTI_HS1
-	python $(CONFIG_SCRIPT) config/testLTI.json -c config/testLTI_LMSconf.json
+	# python $(CONFIG_SCRIPT) config/testLTI.json -c config/testLTI_LMSconf.json
 	# python $(CONFIG_SCRIPT) config/testLTI.json -c config/testLTI_LMSconf.json -b testLTI_HS2
 
 Test: min
-	python $(CONFIG_SCRIPT) config/Test.json -c config/Test_LMSconf.json 
+	python $(CONFIG_SCRIPT) config/Test.json -c config/Test_LMSconf.json
 
 Testvt: min
 	python $(CONFIG_SCRIPT) config/Test.json -c config/Testvt_LMSconf.json -b Testvt
@@ -164,7 +164,6 @@ nomin:
 	@cp lib/odsaKA.js lib/odsaKA-min.js
 	@cp lib/gradebook.js lib/gradebook-min.js
 	@cp lib/registerbook.js lib/registerbook-min.js
-	@cp lib/createcourse.js lib/createcourse-min.js
 	@cp lib/site.css lib/site-min.css
 	@cat lib/normalize.css lib/odsaAV.css > lib/odsaAV-min.css
 	@cp lib/odsaMOD.css lib/odsaMOD-min.css

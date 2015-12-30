@@ -13,14 +13,14 @@ $(document).ready(function() {
   var arr1, arr2, arr3;
   var topAlign = 60;
   var leftAlign = 10;
-  var rectWidth = 165;
+  var rectWidth = 180;
   var rectHeight = 225;
 
   // Slide 1
   av.umsg(interpret("sc1"));
   var rect = av.g.rect(leftAlign + 380, topAlign - 25, rectWidth, rectHeight);
-  var mainLabel = av.label(interpret("lab1"),
-                              {top: topAlign - 20, left: leftAlign + 400});
+  var mainLabel = av.label(interpret("lab1"), {top: topAlign - 20, left: leftAlign + 400});
+  mainLabel.addClass("codeLabel");
   av.displayInit();
 
   // Slide 2

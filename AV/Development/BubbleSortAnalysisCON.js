@@ -9,7 +9,7 @@ $(document).ready(function() {
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
-  var pseudo = av.code(code).hide();
+  var pseudo = av.code(code[0]).hide();
   var arr;
   var arr_values = [];
 
@@ -34,7 +34,7 @@ $(document).ready(function() {
 
   // Slide 4
   av.umsg(interpret("Slide 4"));
-  arr.css([0, 1], {"background-color": "#00FA9A"});
+  arr.addClass([0, 1], "greenbg");
   if (arr.value(0) > arr.value(1)) {
     arr.swap(0, 1);
   }
@@ -44,8 +44,8 @@ $(document).ready(function() {
 
   // Slide 5
   av.clearumsg();
-  arr.css([1, 2], {"background-color": "#00FA9A"});
-  arr.css(0, {"background-color": "white"});
+  arr.addClass([1, 2], "greenbg");
+  arr.removeClass(0, "greenbg");
   if (arr.value(1) > arr.value(2)) {
     arr.swap(1, 2);
   }
@@ -53,8 +53,8 @@ $(document).ready(function() {
   av.step();
 
   // Slide 6
-  arr.css([2, 3], {"background-color": "#00FA9A"});
-  arr.css(1, {"background-color": "white"});
+  arr.addClass([2, 3], "greenbg");
+  arr.removeClass(1, "greenbg");
   if (arr.value(2) > arr.value(3)) {
     arr.swap(2, 3);
   }
@@ -62,8 +62,8 @@ $(document).ready(function() {
   av.step();
 
   // Slide 7
-  arr.css([3, 4], {"background-color": "#00FA9A"});
-  arr.css(2, {"background-color": "white"});
+  arr.addClass([3, 4], "greenbg");
+  arr.removeClass(2, "greenbg");
   if (arr.value(3) > arr.value(4)) {
     arr.swap(3, 4);
   }
@@ -71,19 +71,20 @@ $(document).ready(function() {
   av.step();
 
   // Slide 8
-  arr.css([4, 5], {"background-color": "#00FA9A"});
-  arr.css(3, {"background-color": "white"});
+  arr.addClass([4, 5], "greenbg");
+  arr.removeClass(3, "greenbg");
   if (arr.value(4) > arr.value(5)) {
     arr.swap(4, 5);
   }
   av.g.rect(400, 70, 50, 20);
-  arr.css(5, {"background-color": "grey"});
-  arr.css(4, {"background-color": "white"});
+  arr.addClass(5, "greybg");
+  arr.removeClass(4, "greenbg");
+  arr.removeClass(5, "greenbg");
   av.step();
 
   // Slide 9
   av.umsg(interpret("Slide 9"));
-  arr.css([0, 1], {"background-color": "#00FA9A"});
+  arr.addClass([0, 1], "greenbg");
   if (arr.value(0) > arr.value(1)) {
     arr.swap(0, 1);
   }
@@ -93,8 +94,8 @@ $(document).ready(function() {
 
   // Slide 10
   av.clearumsg();
-  arr.css([1, 2], {"background-color": "#00FA9A"});
-  arr.css(0, {"background-color": "white"});
+  arr.addClass([1, 2], "greenbg");
+  arr.removeClass(0, "greenbg");
   if (arr.value(1) > arr.value(2)) {
     arr.swap(1, 2);
   }
@@ -102,8 +103,8 @@ $(document).ready(function() {
   av.step();
 
   // Slide 11
-  arr.css([2, 3], {"background-color": "#00FA9A"});
-  arr.css(1, {"background-color": "white"});
+  arr.addClass([2, 3], "greenbg");
+  arr.removeClass(1, "greenbg");
   if (arr.value(2) > arr.value(3)) {
     arr.swap(2, 3);
   }
@@ -111,19 +112,20 @@ $(document).ready(function() {
   av.step();
 
   // Slide 12
-  arr.css([3, 4], {"background-color": "#00FA9A"});
-  arr.css(2, {"background-color": "white"});
+  arr.addClass([3, 4], "greenbg");
+  arr.removeClass(2, "greenbg");
   if (arr.value(3) > arr.value(4)) {
     arr.swap(3, 4);
   }
   av.g.rect(450, 90, 50, 20);
-  arr.css(4, {"background-color": "grey"});
-  arr.css(3, {"background-color": "white"});
+  arr.addClass(4, "greybg");
+  arr.removeClass(3, "greenbg");
+  arr.removeClass(4, "greenbg");
   av.step();
 
   // Slide 13
   av.umsg(interpret("Slide 13"));
-  arr.css([0, 1], {"background-color": "#00FA9A"});
+  arr.addClass([0, 1], "greenbg");
   if (arr.value(0) > arr.value(1)) {
     arr.swap(0, 1);
   }
@@ -133,8 +135,8 @@ $(document).ready(function() {
 
   // Slide 14
   av.clearumsg();
-  arr.css([1, 2], {"background-color": "#00FA9A"});
-  arr.css(0, {"background-color": "white"});
+  arr.addClass([1, 2], "greenbg");
+  arr.removeClass(0, "greenbg");
   if (arr.value(1) > arr.value(2)) {
     arr.swap(1, 2);
   }
@@ -142,8 +144,8 @@ $(document).ready(function() {
   av.step();
 
   // Slide 15
-  arr.css([2, 3], {"background-color": "#00FA9A"});
-  arr.css(1, {"background-color": "white"});
+  arr.addClass([2, 3], "greenbg");
+  arr.removeClass(1, "greenbg");
   if (arr.value(2) > arr.value(3)) {
     arr.swap(2, 3);
   }
@@ -151,13 +153,14 @@ $(document).ready(function() {
   av.step();
 
   // Slide 16
-  arr.css(3, {"background-color": "grey"});
-  arr.css(2, {"background-color": "white"});
+  arr.addClass(3, "greybg");
+  arr.removeClass(2, "greenbg");
+  arr.removeClass(3, "greenbg");
   av.step();
 
   // Slide 17
   av.umsg(interpret("Slide 17"));
-  arr.css([0, 1], {"background-color": "#00FA9A"});
+  arr.addClass([0, 1], "greenbg");
   if (arr.value(0) > arr.value(1)) {
     arr.swap(0, 1);
   }
@@ -167,8 +170,8 @@ $(document).ready(function() {
 
   // Slide 18
   av.clearumsg();
-  arr.css([1, 2], {"background-color": "#00FA9A"});
-  arr.css(0, {"background-color": "white"});
+  arr.addClass([1, 2], "greenbg");
+  arr.removeClass(0, "greenbg");
   if (arr.value(1) > arr.value(2)) {
     arr.swap(1, 2);
   }
@@ -176,20 +179,23 @@ $(document).ready(function() {
   av.step();
 
   // Slide 19
-  arr.css(2, {"background-color": "grey"});
-  arr.css(1, {"background-color": "white"});
+  arr.addClass(2, "greybg");
+  arr.removeClass(1, "greenbg");
+  arr.removeClass(2, "greenbg");
   av.step();
 
   // Slide 20
   av.umsg(interpret("Slide 20"));
-  arr.css([0, 1], {"background-color": "#00FA9A"});
+  arr.addClass([0, 1], "greenbg");
   if (arr.value(0) > arr.value(1)) {
     arr.swap(0, 1);
   }
   av.g.rect(600, 150, 50, 20);
   av.label("i=4", {top: "172px", left: "610px"});
-  arr.css(1, {"background-color": "grey"});
-  arr.css(0, {"background-color": "grey"});
+  arr.addClass(1, "greybg");
+  arr.addClass(0, "greybg");
+  arr.removeClass(0, "greenbg");
+  arr.removeClass(1, "greenbg");
   av.step();
 
   // Slide 21

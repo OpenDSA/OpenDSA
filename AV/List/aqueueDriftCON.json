@@ -1,15 +1,15 @@
 {
   "translations" :{
     "en": {
-      "av_c1": "A more efficient implementation can be obtained by relaxing the requirement that all elements of the queue must be in the first $n$ positions of the array. We still require that the queue be stored be in contiguous array positions, but the contents of the queue will be permitted to drift within the array.",
-      "av_c2": " The queue after the initial four numbers 20, 5, 12, and 17 have been inserted",
-      "av_c3": "<code>dequeue</code> the value 20.",
-      "av_c4": "<code>dequeue</code> the value 5.",
-      "av_c5": "<code>dequeue</code> the value 12.",
-      "av_c6": "<code>enqueue</code> the value 3.",
-      "av_c7": "<code>enqueue</code> the value 30.",
-      "av_c8": "<code>enqueue</code> the value 4.",
-      "av_c9": "Now, both the enqueue and the dequeue operations can be performed in $\\theta(1)$ time because no other elements in the queue need be moved."
+      "sc1": "A more efficient implementation can be obtained by relaxing the requirement that all elements of the queue must be in the first $n$ positions of the array. We still require that the queue be stored be in contiguous array positions, but the contents of the queue will be permitted to drift within the array.",
+      "sc2": " The queue after the initial four numbers 20, 5, 12, and 17 have been inserted",
+      "sc3": "<code>dequeue</code> the value 20.",
+      "sc4": "<code>dequeue</code> the value 5.",
+      "sc5": "<code>dequeue</code> the value 12.",
+      "sc6": "<code>enqueue</code> the value 3.",
+      "sc7": "<code>enqueue</code> the value 30.",
+      "sc8": "<code>enqueue</code> the value 4.",
+      "sc9": "Now, both the enqueue and the dequeue operations can be performed in $\\theta(1)$ time because no other elements in the queue need be moved."
     }
   }
 }

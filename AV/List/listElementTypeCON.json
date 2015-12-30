@@ -1,8 +1,8 @@
 {
   "translations": {
     "en": {
-      "av_c1": "In some applications, the user would like to define the class of the data element that is stored on a given list, and then never permit objects of a different class to be stored on that same list.",
-      "av_c2": "In other applications, the user would like to permit the objects stored on a single list to be of differing types."
+      "sc1": "In some applications, the user would like to define the class of the data element that is stored on a given list, and then never permit objects of a different class to be stored on that same list.",
+      "sc2": "In other applications, the user would like to permit the objects stored on a single list to be of differing types."
     }
   }
 }

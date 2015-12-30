@@ -9,7 +9,7 @@ $(document).ready(function() {
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
-  var pseudo = av.code(code).hide();
+  var pseudo = av.code(code[0]).hide();
   var arr;
   function insert_equation(current, added) {
     var new_equation;
@@ -32,7 +32,7 @@ $(document).ready(function() {
 
   //Slide 3
   av.umsg(interpret("Slide 3"));
-  arr.css([0, 1, 2, 3], {"background-color": "#00FA9A"});
+  arr.addClass([0, 1, 2, 3], "greenbg");
   av.step();
 
   //Slide 4
@@ -52,7 +52,7 @@ $(document).ready(function() {
   var label = av.label("|------- $n-1$ --------|",  {top: "50px", left: "320px"}).addClass("largeLabel");
   pseudo.highlight("loop1");
   arr.unhighlight(4);
-  arr.css([0, 1, 2, 3], {"background-color": "white"});
+  arr.removeClass([0, 1, 2, 3], "greenbg");
   av.step();
 
   //Slide 7

@@ -1,15 +1,15 @@
-/*global ODSA, setPointer, arrowAround */
-"use strict";
+/*global ODSA, setPointer */
 // Written by Jun Yang and Cliff Shaffer
 // Dlist prev method
-$(document).ready(function () {
+$(document).ready(function() {
+  "use strict";
   var av_name = "dlistPrevCON";
   // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
-  var pseudo = av.code(code);
+  var pseudo = av.code(code[0]);
 
   // Relative offsets
   var leftMargin = 190;
@@ -25,24 +25,24 @@ $(document).ready(function () {
   setPointer("head", l.get(0));
   var curr = setPointer("curr", l.get(3));
   setPointer("tail", l.get(5));
-  av.umsg(interpret("av_c1"));
+  av.umsg(interpret("sc1"));
   pseudo.setCurrentLine("sig");
   av.displayInit();
 
   // Step 2
-  av.umsg(interpret("av_c2"));
+  av.umsg(interpret("sc2"));
   l.get(3).highlight();
   av.step();
 
   // Step 3
-  av.umsg(interpret("av_c3"));
+  av.umsg(interpret("sc3"));
   l.get(3).unhighlight();
   l.get(2).highlight();
   pseudo.setCurrentLine("headcheck");
   av.step();
 
   // Step 4
-  av.umsg(interpret("av_c4"));
+  av.umsg(interpret("sc4"));
   curr.target(l.get(2));
   Vline.hide();
   Vline1.show();
@@ -50,7 +50,7 @@ $(document).ready(function () {
   av.step();
 
   // Step 5
-  av.umsg(interpret("av_c5"));
+  av.umsg(interpret("sc5"));
   pseudo.setCurrentLine(0);
   av.recorded();
 });

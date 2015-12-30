@@ -1,15 +1,15 @@
-/*global ODSA, setPointerL */
-"use strict";
+/*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 //Linked list insertion
-$(document).ready(function () {
+$(document).ready(function() {
+  "use strict";
   var av_name = "llistInsertCON";
   // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
-  var pseudo = av.code(code);
+  var pseudo = av.code(code[0]);
 
   // Offsets
   var leftMargin = 217;
@@ -19,13 +19,13 @@ $(document).ready(function () {
   var l = av.ds.list({nodegap: 30, top: topMargin, left: leftMargin});
   l.addFirst("null").addFirst(12).addFirst(23).addFirst(35).addFirst("null");
   l.layout();
-  var head = setPointerL("head", l.get(0));
-  var curr = setPointerL("curr", l.get(2));
-  var tail = setPointerL("tail", l.get(4));
-  var bar = l.get(2).addVLine();
+  av.pointer("head", l.get(0));
+  av.pointer("curr", l.get(2));
+  av.pointer("tail", l.get(4));
+  l.get(2).addVLine();
 
   // Box "it"
-  var itLabel = av.label("it", {left: 20, top: -10});
+  av.label("it", {left: 20, top: -10});
   var itBox = av.ds.array([15], {indexed: false, top: -15, left: 40});
 
   // Create pieces for later steps
@@ -35,15 +35,16 @@ $(document).ready(function () {
   var longArrow = av.g.line(leftMargin + 190, topMargin + 31,
                             leftMargin + 298, topMargin + 31,
                             {"arrow-end": "classic-wide-long",
-                             "opacity": 0, "stroke-width": 2});
+                             opacity: 0, "stroke-width": 2});
 
   // Slide 1
-  av.umsg(interpret("av_c1"));
+  av.umsg(interpret("sc1"));
   itBox.highlight(0);
   pseudo.setCurrentLine("sig");
   av.displayInit();
 
   // Slide 2
+  av.umsg(interpret("sc2"));
   var newNode = l.newNode("");
   // Set the position for the new node
   newNode.css({top: 50, left: 222});
@@ -53,8 +54,7 @@ $(document).ready(function () {
   l.get(2).edgeToNext().hide();
   l.get(3).edgeToNext().hide();
   longArrow.show();
-  l.layout({ updateTop: false });
-  av.umsg(interpret("av_c2"));
+  l.layout({updateTop: false});
   //Copy 23 to the new link node
   av.effects.copyValue(arr, 0, newNode);
   newNode.highlight();
@@ -62,51 +62,51 @@ $(document).ready(function () {
   av.step();
 
   // Slide 3
-  av.umsg(interpret("av_c3"));
+  av.umsg(interpret("sc3"));
   //Copy 10 to the new link node
   av.effects.copyValue(l.get(2), newNode);
   av.step();
 
   // Slide 4
+  av.umsg(interpret("sc4"));
   l.get(3).edgeToNext().show();
   newNode.unhighlight();
-  l.layout({ updateTop: false }); // Do not recalculate top coordinate
+  l.layout({updateTop: false}); // Do not recalculate top coordinate
   l.get(3).highlight();
-  av.umsg(interpret("av_c4"));
   av.step();
 
   // Slide 5
+  av.umsg(interpret("sc5"));
   l.get(2).highlight();
   l.get(3).unhighlight();
   l.get(2).edgeToNext().show();
   longArrow.hide();
-  av.umsg(interpret("av_c5"));
   av.step();
 
   // Slide 6
+  av.umsg(interpret("sc6"));
   l.get(2).unhighlight();
   l.get(3).highlight();
-  av.umsg(interpret("av_c6"));
   l.layout();
   av.step();
 
   // Slide 7
+  av.umsg(interpret("sc7"));
   av.effects.copyValue(itBox, 0, l.get(2));
   itBox.unhighlight(0);
   l.get(3).unhighlight();
   l.get(2).highlight();
-  av.umsg(interpret("av_c7"));
   pseudo.setCurrentLine("setelem");
   av.step();
 
   // Slide 8
-  av.umsg(interpret("av_c8"));
+  av.umsg(interpret("sc8"));
   l.get(2).unhighlight();
   pseudo.setCurrentLine("listSize");
   av.step();
 
   // Slide 9
-  av.umsg(interpret("av_c9"));
+  av.umsg(interpret("sc9"));
   pseudo.setCurrentLine("return");
   av.recorded();
 });

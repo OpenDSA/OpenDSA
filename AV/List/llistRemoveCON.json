@@ -1,18 +1,18 @@
 {
   "translations": {
     "en": {
-      "av_c1": "Now we look at the <code>remove</code> method.",
-      "av_c2": "Here is the linked list before we remove the node with value 8.",
+      "sc1": "Now we look at the <code>remove</code> method.",
+      "sc2": "Here is the linked list before we remove the node with value 8.",
 
-      "av_c3": "Remember the value of the current node.",
-      "av_c4": "Pull forward the next node's value",
-      "av_c5": "<code>curr</code>'s next field is set to point to the node following the one being deleted. This removes the node from the linked list.",
-      "av_c6": "Decrease the list size by 1.",
-      "av_c7": "Return the value of the node that was deleted."
+      "sc3": "Remember the value of the current node.",
+      "sc4": "Pull forward the next node's value",
+      "sc5": "<code>curr</code>'s next field is set to point to the node following the one being deleted. This removes the node from the linked list.",
+      "sc6": "Decrease the list size by 1.",
+      "sc7": "Return the value of the node that was deleted."
     }
   },
   "code": {
-    "processing": {
+    "processing": [{
       "url": "../../../SourceCode/Processing/Lists/LList.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: LListRemove *** */",
@@ -25,8 +25,8 @@
         "listSize": 8,
         "return": 9
       }
-    },
-    "java": {
+    }],
+    "java": [{
       "url": "../../../SourceCode/Java/Lists/LList.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: LListRemove *** */",
@@ -39,8 +39,8 @@
         "listSize": 8,
         "return": 9
       }
-    },
-    "java_generic": {
+    }],
+    "java_generic": [{
       "url": "../../../SourceCode/Java_Generic/Lists/LList.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: LListRemove *** */",
@@ -53,6 +53,6 @@
         "listSize": 8,
         "return": 9
       }
-    }
+    }]
   }
 }

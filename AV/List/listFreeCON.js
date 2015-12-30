@@ -1,9 +1,10 @@
-/*global ODSA, setPointerL, setPointerR */
-"use strict";
+/*global ODSA */
+// Written by Jun Yang and Cliff Shaffer
 // Freelist example
-$(document).ready(function () {
+$(document).ready(function() {
+  "use strict";
   var av_name = "listFreeCON";
-  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter;       // get the interpreter
   var av = new JSAV(av_name);
 
@@ -22,30 +23,31 @@ $(document).ready(function () {
 
   // Labels and pointers
   var nullLabel = av.label("null", {left: leftMargin, top: topMargin + 100});
-  nullLabel.css({ color: "red" });
-  var head = setPointerL("head", l.get(0));
-  var curr = setPointerL("curr", l.get(1));
-  var tail = setPointerR("tail", l.get(1));
-  var pfreelist = setPointerL("freelist", nullLabel);
+  nullLabel.css({color: "red"});
+  av.pointer("head", l.get(0));
+  var curr = av.pointer("curr", l.get(1));
+  var tail = av.pointer("tail", l.get(1), {anchor: "right top",
+                                           myAnchor: "left bottom", left: -10});
+  var pfreelist = av.pointer("freelist", nullLabel);
 
   // Slide 1
-  av.umsg(interpret("av_c1"));
+  av.umsg(interpret("sc1"));
   av.displayInit();
 
   // Slide 2
-  av.umsg(interpret("av_c2"));
+  av.umsg(interpret("sc2"));
   av.step();
 
   // Slide 3
+  av.umsg(interpret("sc3"));
   l.add(1, 8);
   l.layout();
   curr.target(l.get(1));
   tail.target(l.get(2), {anchor: "left top", myAnchor: "right bottom", left: 15, top: -20});
-  av.umsg(interpret("av_c3"));
   av.step();
 
   // Slide 4
-  av.umsg(interpret("av_c4"));
+  av.umsg(interpret("sc4"));
   l.add(1, 12);
   l.add(2, 6);
   l.add(3, 20);
@@ -54,7 +56,7 @@ $(document).ready(function () {
   av.step();
 
   // Slide 5
-  av.umsg(interpret("av_c5"));
+  av.umsg(interpret("sc5"));
   l.remove(1);
   l.layout();
   nullLabel.hide();
@@ -64,7 +66,7 @@ $(document).ready(function () {
   av.step();
 
   // Slide 6
-  av.umsg(interpret("av_c6"));
+  av.umsg(interpret("sc6"));
   l.remove(1);
   l.layout();
   freelist.addFirst("null");
@@ -73,7 +75,7 @@ $(document).ready(function () {
   av.step();
 
   // Slide 7
-  av.umsg(interpret("av_c7"));
+  av.umsg(interpret("sc7"));
   l.add(1, 6);
   l.layout();
   freelist.remove(0);

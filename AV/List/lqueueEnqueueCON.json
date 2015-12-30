@@ -1,9 +1,15 @@
 {
   "translations": {
-    "en": {}
+    "en": {
+      "sc1": "Let's look at how the <code>enqueue</code> operation works.",
+      "sc2": "We will enqueue the the value 10. Create a new node with this value.",
+      "sc3": "The <code>next</code> field of the <code>rear</code> node is assigned to point to the new node.",
+      "sc4": "Advance <code>rear</code> to point to the new link node.",
+      "sc5": "Increase <code>size</code> by 1."
+    }
   },
   "code": {
-    "processing": {
+    "processing": [{
       "url": "../../../SourceCode/Processing/Lists/LQueue.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: LQueueEnqueue *** */",
@@ -14,8 +20,8 @@
         "rear": 4,
         "size": 5
       }
-    },
-    "java": {
+    }],
+    "java": [{
       "url": "../../../SourceCode/Java/Lists/LQueue.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: LQueueEnqueue *** */",
@@ -26,8 +32,8 @@
         "rear": 4,
         "size": 5
       }
-    },
-    "java_generic": {
+    }],
+    "java_generic": [{
       "url": "../../../SourceCode/Java_Generic/Lists/LQueue.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: LQueueEnqueue *** */",
@@ -38,6 +44,6 @@
         "rear": 4,
         "size": 5
       }
-    }
+    }]
   }
 }

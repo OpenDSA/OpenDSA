@@ -1,10 +1,10 @@
 /*global ODSA */
-"use strict";
 // Written by Jun Yang and Cliff Shaffer
 // List data storage
-$(document).ready(function () {
+$(document).ready(function() {
+  "use strict";
   var av_name = "listElementDataCON";
-  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter;       // get the interpreter
   var av = new JSAV(av_name);
 
@@ -18,40 +18,36 @@ $(document).ready(function () {
   l.addFirst("null").addFirst(9).addFirst(21).addFirst(35).addFirst(21).addFirst("null");
   l.layout();
 
-  var bigData = av.ds.array([
-      "ID : 546457",
-      "Name : Jake",
-      "Phone : 5405642511",
-      "Email : example@vt.edu",
-      "Office : 212"
-    ], {layout: "vertical", top: 135, left: 170});
+  var bigData = av.ds.array(["ID : 546457",
+                             "Name : Jake",
+                             "Phone : 5405642511",
+                             "Email : example@vt.edu",
+                             "Office : 212"
+                            ], {layout: "vertical", top: 135, left: 170});
   bigData.addClass(true, "widerecord");
 
-  var bigData1 = av.ds.array([
-      "ID : 546213",
-      "Name : Mike",
-      "Phone : 5405642513",
-      "Email : example@vt.edu",
-      "Office : 212"
-    ], {layout: "vertical", top: 135, left: 470});
+  var bigData1 = av.ds.array(["ID : 546213",
+                              "Name : Mike",
+                              "Phone : 5405642513",
+                              "Email : example@vt.edu",
+                              "Office : 212"
+                             ], {layout: "vertical", top: 135, left: 470});
   bigData1.addClass(true, "widerecord");
 
-  var bigData2 = av.ds.array([
-      "ID : 546805",
-      "Name : John",
-      "Phone : 5405642552",
-      "Email : example@vt.edu",
-      "Office : 212"
-    ], {layout: "vertical", top: 135, left: 470});
+  var bigData2 = av.ds.array(["ID : 546805",
+                              "Name : John",
+                              "Phone : 5405642552",
+                              "Email : example@vt.edu",
+                              "Office : 212"
+                             ], {layout: "vertical", top: 135, left: 470});
   bigData2.addClass(true, "widerecord");
 
-  var bigData3 = av.ds.array([
-      "ID : 546991",
-      "Name : Lucy",
-      "Phone : 5405642568",
-      "Email : example@vt.edu",
-      "Office : 212"
-    ], {layout: "vertical", top: 135, left: 470});
+  var bigData3 = av.ds.array(["ID : 546991",
+                              "Name : Lucy",
+                              "Phone : 5405642568",
+                              "Email : example@vt.edu",
+                              "Office : 212"
+                             ], {layout: "vertical", top: 135, left: 470});
   bigData3.addClass(true, "widerecord");
 
   bigData.hide();
@@ -63,7 +59,7 @@ $(document).ready(function () {
   var tail = av.pointer("tail", l.get(5));
 
   // Slide 1
-  av.umsg(interpret("av_c1"));
+  av.umsg(interpret("sc1"));
   av.displayInit();
 
   // Slide 2
@@ -84,7 +80,7 @@ $(document).ready(function () {
                  {"arrow-end": "classic-wide", "stroke-width": 2});
   var listP4 = av.g.line(555, 70, 570, 150,
                  {"arrow-end": "classic-wide", "stroke-width": 2});
-  av.umsg(interpret("av_c2"));
+  av.umsg(interpret("sc2"));
   av.step();
 
   // Slide 3
@@ -110,14 +106,10 @@ $(document).ready(function () {
   bigData1.css({left: 210});
   bigData2.css({left: 410});
   bigData3.css({left: 610});
-  var listP5 = av.g.line(380, 50, 100, 150,
-                 {"arrow-end": "classic-wide", "stroke-width": 2});
-  var listP6 = av.g.line(409, 50, 300, 150,
-                 {"arrow-end": "classic-wide", "stroke-width": 2});
-  var listP7 = av.g.line(438, 50, 500, 150,
-                 {"arrow-end": "classic-wide", "stroke-width": 2});
-  var listP8 = av.g.line(467, 50, 700, 150,
-                 {"arrow-end": "classic-wide", "stroke-width": 2});
-  av.umsg(interpret("av_c3"));
+  av.g.line(380, 50, 100, 150, {"arrow-end": "classic-wide", "stroke-width": 2});
+  av.g.line(409, 50, 300, 150, {"arrow-end": "classic-wide", "stroke-width": 2});
+  av.g.line(438, 50, 500, 150, {"arrow-end": "classic-wide", "stroke-width": 2});
+  av.g.line(467, 50, 700, 150, {"arrow-end": "classic-wide", "stroke-width": 2});
+  av.umsg(interpret("sc3"));
   av.recorded();
 });

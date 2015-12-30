@@ -1,13 +1,13 @@
 {
   "translations" :{
     "en": {
-      "av_c1": "We will illustrate using a freelist by performing a series of list operations. Let's start from an empty singly linked list and a <code>freelist</code> variable pointing to <code>null</code>.",
-      "av_c2": "Now insert a new node with value 8 to the current node.",
-      "av_c3": "Since the freelist is empty, we must use the <code>new</code> operator to create a new node for insertion.", 
-      "av_c4": "Here is the list after inserting 20, 6 and 12. So far, we have not been able to take advantage of the freelist.",
-      "av_c5": "Now remove the current node from the list. Set its value to be <code>null</code>. The deleted node is moved to the head of freelist for later reuse.",
-      "av_c6": "The list after another delete operation of the current node. Again put the deleted node at the head of the freelist.",
-      "av_c7": "Now let's insert a node with value 6 to the current position. This time the head node of the freelist is reused."
+      "sc1": "We will illustrate using a freelist by performing a series of list operations. Let's start from an empty singly linked list and a <code>freelist</code> variable pointing to <code>null</code>.",
+      "sc2": "Now insert a new node with value 8 to the current node.",
+      "sc3": "Since the freelist is empty, we must use the <code>new</code> operator to create a new node for insertion.", 
+      "sc4": "Here is the list after inserting 20, 6 and 12. So far, we have not been able to take advantage of the freelist.",
+      "sc5": "Now remove the current node from the list. Set its value to be <code>null</code>. The deleted node is moved to the head of freelist for later reuse.",
+      "sc6": "The list after another delete operation of the current node. Again put the deleted node at the head of the freelist.",
+      "sc7": "Now let's insert a node with value 6 to the current position. This time the head node of the freelist is reused."
     }
   }
 }

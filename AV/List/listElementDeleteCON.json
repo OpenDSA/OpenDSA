@@ -1,8 +1,8 @@
 {
   "translations": {
     "en": {
-      "av_c1": "In this example, consider what happens when the list is deleted.",
-      "av_c2": "Deleting the container might remove the only reference to an object, leaving its memory space inaccessible. Unfortunately, there is no way for the list implementation to know whether a given object is pointed to in another part of the program or not. Thus, the user of the list must be responsible for deleting these objects when that is appropriate."
+      "sc1": "In this example, consider what happens when the list is deleted.",
+      "sc2": "Deleting the container might remove the only reference to an object, leaving its memory space inaccessible. Unfortunately, there is no way for the list implementation to know whether a given object is pointed to in another part of the program or not. Thus, the user of the list must be responsible for deleting these objects when that is appropriate."
     }
   }
 }

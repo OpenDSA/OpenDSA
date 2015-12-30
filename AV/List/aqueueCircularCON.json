@@ -1,11 +1,11 @@
 {
   "translations" :{
     "en": {
-      "av_c1": "The \"drifting queue\" problem can be solved by pretending that the array is circular and so allow the queue to continue directly from the highest-numbered position in the array to the lowest-numbered position.",
-      "av_c2": "This is easily implemented through use of the modulus operator (denoted by % in many programming languages). In this way, positions in the array are numbered from 0 through <code>size-1</code>, and position <code>size-1</code> is defined to immediately precede position 0.",
-      "av_c3": "We will draw the circular queue with array positions increasing in the clockwise direction.",
-      "av_c4": "Here is a queue with the four numbers 20, 5, 12, and 17 enqueued.",
-      "av_c5": "The queue after elements 20 and 5 are dequeued, following which 3, 30, and 4 are enqueued."
+      "sc1": "The \"drifting queue\" problem can be solved by pretending that the array is circular and so allow the queue to continue directly from the highest-numbered position in the array to the lowest-numbered position.",
+      "sc2": "This is easily implemented through use of the modulus operator (denoted by % in many programming languages). In this way, positions in the array are numbered from 0 through <code>size-1</code>, and position <code>size-1</code> is defined to immediately precede position 0.",
+      "sc3": "We will draw the circular queue with array positions increasing in the clockwise direction.",
+      "sc4": "Here is a queue with the four numbers 20, 5, 12, and 17 enqueued.",
+      "sc5": "The queue after elements 20 and 5 are dequeued, following which 3, 30, and 4 are enqueued."
     }
   }
 }
