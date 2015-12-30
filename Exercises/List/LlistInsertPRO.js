@@ -87,27 +87,9 @@
                               "stroke-width": 2});
       if (obj1.llist_next) {
         obj1.llist_edgeToNext.element.remove();
-      } else {
-        obj1.llist_tail.element.remove();
-        obj1.llist_tail = null;
       }
 
       obj1.llist_edgeToNext = edge;
-    },
-
-    // TODO: Simplify relationship to drag, use DataStructures/LinkedList addTail
-    addTail: function(node) {
-      if (node.llist_tail) {
-        node.llist_tail.element.remove();
-        var pos = $("#" + node.id()).position();
-
-        var fx = pos.left + 34;
-        var tx = pos.left + 44;
-        var fy = pos.top + 47 + 40;
-        var ty = pos.top + 16 + 40;
-        node.llist_tail = av.g.line(fx, fy, tx, ty,
-                                    {opacity: 100, "stroke-width": 1});
-      }
     },
 
     // Click event handler on a list node
@@ -172,10 +154,6 @@
         answerOrderArr = orderArr.slice(0);
         answerOrderArr.splice(insertPosition + 2, 0, newLinkNode.id());
 
-        newLinkNode.llist_tail = av.g.line(leftOffset + 34, topOffset + 86,
-                                           leftOffset + 44, topOffset + 55,
-                                           {opacity: 100, "stroke-width": 1});
-
         $("#" + newLinkNode.id()).draggable({
           start: function() {
             $("#" + newLinkNode.id()).css("cursor", "pointer");
@@ -185,14 +163,12 @@
             for (i = connections.length - 1; i >= 0; i--) {
               llistInsertPRO.connection(connections[i].from, connections[i].to, av);
             }
-            llistInsertPRO.addTail(newLinkNode);
           },
           stop: function() {
             var i;
             for (i = connections.length - 1; i >= 0; i--) {
               llistInsertPRO.connection(connections[i].from, connections[i].to, av);
             }
-            llistInsertPRO.addTail(newLinkNode);
           }
         });
         $("#NewNode").disabled = true;
@@ -229,22 +205,8 @@
         jsavList.get(i).llist_next = jsavList.get(i).next();
         jsavList.get(i).llist_edgeToNext = jsavList.get(i).edgeToNext();
       }
-      jsavList.get(listSize - 1).llist_tail =
-        av.g.line(34 + (listSize - 1) * 74, 47 + 40,
-                    44 + (listSize - 1) * 74, 16 + 40,
-                    {opacity: 100, "stroke-width": 1});
 
-      // TODO: This should be done with a JSAV pointer object
-      // Curr Label
-      av.label("curr", {left: 60 + insertPosition * 74,
-                        top: 0, "font-size": "20px"});
-      // Curr arrow
-      av.g.line(70 + insertPosition * 74, 35,
-                90 + insertPosition * 74, 55,
-		{"arrow-end": "classic-wide-long",
-                 opacity: 100, "stroke-width": 2});
-
-      //Hidden JSAV array for insert animation effect
+      av.pointer("curr", jsavList.get(insertPosition + 1));
       hiddenArr = av.ds.array([insertValue],
                               {indexed: false, center: false, left: 350, top: -70});
 
