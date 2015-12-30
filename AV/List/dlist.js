@@ -1,6 +1,4 @@
 // JSAV extensions
-$(document).ready(function () {
-"use strict";
 // Written by Jun Yang
 // Helper function for creating a pointer
 function setPointer(name, obj) {
@@ -67,18 +65,20 @@ function addEdge(node1, node2) {
     {"arrow-end": "classic-wide-long", "stroke-width": 2, "stroke-dasharray": "-"});
   edges.bottomEdge = jsav.g.line(edge2_fx, edge2_fy + 15, edge2_tx, edge2_ty + 15,
     {"arrow-end": "classic-wide-long", "stroke-width": 2, "stroke-dasharray": "-"});
-  edges.hide = function () {
+  edges.hide = function() {
     edges.topEdge.hide();
     edges.bottomEdge.hide();
   };
-  edges.show = function () {
+  edges.show = function() {
     edges.topEdge.hide();
     edges.bottomEdge.hide();
   };
   return edges;
 }
 
-  JSAV._types.ds.DListNode.prototype.addSlash = function (type, opts) {
+$(document).ready(function() {
+  "use strict";
+  JSAV._types.ds.DListNode.prototype.addSlash = function(type, opts) {
     var fx = this.element.position().left + this.container.position().left + 41;
     var fy = this.element.position().top + this.container.position().top + 47;
     if (type === "left") {
@@ -96,10 +96,10 @@ function addEdge(node1, node2) {
       options.visible = 100;
     }
     return this.jsav.g.line(fx, fy, fx + 10, fy - 31,
-                            {"opacity": options.visible, "stroke-width": 1});
+                            {opacity: options.visible, "stroke-width": 1});
   };
 
-  JSAV._types.ds.DListNode.prototype.addVLine = function (opts) {
+  JSAV._types.ds.DListNode.prototype.addVLine = function(opts) {
     var fx = this.element.position().left + this.container.position().left;
     var fy = this.element.position().top + this.container.position().top + 15;
     var nodeWidth = this.element.outerWidth();
@@ -116,6 +116,6 @@ function addEdge(node1, node2) {
       options.visible = 100;
     }
     return this.jsav.g.line(fx - nodegap / 2, fy - 5, fx - nodegap / 2, fy + 35,
-                            {"opacity": options.visible, "stroke-width": 1});
+                            {opacity: options.visible, "stroke-width": 1});
   };
 });

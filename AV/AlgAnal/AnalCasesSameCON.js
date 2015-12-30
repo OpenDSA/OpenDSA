@@ -9,7 +9,7 @@ $(document).ready(function() {
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
-  var pseudo = av.code(code).hide();
+  var pseudo = av.code(code[0]).hide();
   var arr1, arr2, arr3;
   var topAlign = 60;
   var leftAlign = 10;
@@ -19,8 +19,8 @@ $(document).ready(function() {
   // Slide 1
   av.umsg(interpret("sc1"));
   var rect = av.g.rect(leftAlign + 380, topAlign - 25, rectWidth, rectHeight);
-  var mainLabel = av.label(interpret("lab1"),
-                              {top: topAlign - 20, left: leftAlign + 400}).addClass("codeLabel");
+  var mainLabel = av.label(interpret("lab1"), {top: topAlign - 20, left: leftAlign + 400});
+  mainLabel.addClass("codeLabel");
   av.displayInit();
 
   // Slide 2

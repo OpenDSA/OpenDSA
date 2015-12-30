@@ -1,4 +1,4 @@
-#include "ListADT.h"
+#include "List.h"
 #include <iostream>
 
 using namespace std;
@@ -31,31 +31,28 @@ bool isEmpty() const
 
 /* *** ODSATag: AListInsert *** */
 // Insert "it" at current position
-bool insert(const ListItemType& newItem)
-{
+bool insert(const ListItemType& it) {
   if (listSize >= MAX_SIZE) return false;
   for (int i = listSize; i > curr; i--) //Shift elements up
     listArray[i] = listArray[i-1];      //to make room
-  listArray[curr] = newItem;
+  listArray[curr] = it;
   listSize++;                           //Increment list size
   return true;
-}//
+}
 /* *** ODSAendTag: AListInsert *** */
 
 /* *** ODSATag: AListAppend *** */
-//Append item to list
-bool append(const ListItemType& newItem)
-{
+// Append "it" to list
+bool append(const ListItemType& it) {
   if ( listSize >= MAX_SIZE ) return false;
-  listArray[listSize++] = newItem;
+  listArray[listSize++] = it;
   return true;
 }
 /* *** ODSAendTag: AListAppend *** */
 
 /* *** ODSATag: AListRemove *** */
 // Remove and return the current element
-ListItemType remove()
-{
+ListItemType remove() {
   if( (curr < 0) || (curr >= listSize) )  // No current element
     return 0;
   ListItemType it = listArray[curr];      // Copy the element

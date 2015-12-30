@@ -28,7 +28,7 @@
 }
 
 #alistInsertCON .jsavoutput.jsavline {
-  height: 40px;
+  height: 30px;
 }
 
 #alistAppendCON {
@@ -41,19 +41,18 @@
 }
 
 #alistAppendCON .jsavoutput.jsavline {
-  height: 40px;
+  height: 20px;
 }
 
 #alistRemoveCON {
-  height: 360px;
+  height: 350px;
 }
 
 #alistRemoveCON .jsavcode {
   margin-left: 285px;
-  width: 564px;
+  width: 500px;
 }
 
 #alistRemoveCON .jsavoutput.jsavline {
-  height: 40px;
+  height: 30px;
 }
-

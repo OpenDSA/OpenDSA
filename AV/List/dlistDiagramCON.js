@@ -1,18 +1,20 @@
-/*global ODSA, setPointer */
+/*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // Diagram showing the doubly linked list
-$(document).ready(function () {
+$(document).ready(function() {
   "use strict";
-  var av = new JSAV('dlistDiagramCON');
+  var av = new JSAV("dlistDiagramCON");
   // Relative offsets
-  var leftMargin = 160;
-  var topMargin = 30;
+  var leftMargin = 180;
+  var topMargin = 40;
   // JSAV list
   var l = av.ds.dlist({nodegap: 30, center: false, left: leftMargin, top: topMargin});
   l.addFirst("null").addFirst(15).addFirst(12).addFirst(23).addFirst(20).addFirst("null");
   l.layout();
-  setPointer("head", l.get(0));
-  setPointer("curr", l.get(2));
-  setPointer("tail", l.get(5));
+  av.pointer("head", l.get(0));
+  av.pointer("curr", l.get(2));
+  av.pointer("tail", l.get(5));
   l.get(2).addVLine();
+  av.displayInit();
+  av.recorded();
 });
