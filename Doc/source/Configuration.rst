@@ -330,6 +330,19 @@ All are required unless otherwise specified.
     ``make clean`` or otherwise remove previously compiled book files
     so as to completely remove any references to ``ToDo``.
 
+* **tag** - (optional) A string containing a semi-colon delimited
+  list of tags.
+  This directs Sphinx to include material from RST ``only`` directives
+  with the matching tag(s).
+  This is useful for relatively fine-grain control over whether
+  material will be included in a book instance.
+  For example, if you want to have multiple paragraphs each with a
+  programming language-dependent discussion, with only the appropriate
+  paragraph for the language being used for this book instance
+  actually appearing to the reader.
+  Any material within an ``only`` block that does **not**
+  have a matching ``tag`` in the config file will be left out.
+
 * **assumes** - (optional) A string containing a semi-colon delimited
   list of topics that the book assumes students are familiar with.
   This allows for control over warnings about missing prerequisite

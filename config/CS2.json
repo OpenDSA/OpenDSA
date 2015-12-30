@@ -10,6 +10,7 @@
   "build_cmap": false,
   "allow_anonymous_credit": true,
   "suppress_todo": true,
+  "tag": "CS2",
   "assumes": "ADT; relations",
   "chapters": {
     "Preface": {
