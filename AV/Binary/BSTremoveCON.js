@@ -7,7 +7,7 @@ $(document).ready(function () {
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
-  var pseudo = av.code(code);
+  var pseudo = av.code(code[0]);
   var temp1;
 
   var bstTop = 410;

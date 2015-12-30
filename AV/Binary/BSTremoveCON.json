@@ -10,7 +10,7 @@
     }
   },
   "code": {
-    "processing": {
+    "processing": [{
       "url": "../../../SourceCode/Processing/Binary/BST.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: removehelp *** */",
@@ -32,8 +32,8 @@
         "return": 16,
         "end": 17
       }
-    },
-    "java": {
+    }],
+    "java": [{
       "url": "../../../SourceCode/Java/Binary/BST.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: removehelp *** */",
@@ -55,8 +55,8 @@
         "return": 16,
         "end": 17
       }
-    },
-    "java_generic": {
+    }],
+    "java_generic": [{
       "url": "../../../SourceCode/Java_Generic/Binary/BST.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: removehelp *** */",
@@ -78,6 +78,6 @@
         "return": 16,
         "end": 17
       }
-    }
+    }]
   }
 }

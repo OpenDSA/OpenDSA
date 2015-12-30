@@ -36,8 +36,8 @@ children.
 .. codeinclude:: Binary/ExpressionTreeC
    :tag: Composite
 
-.. inlineav:: compositeTraversalCON ss
-   :output: show
+.. .. inlineav:: compositeTraversalCON ss
+..   :output: show
 
 When comparing the composite implementation to
 the :ref:`procedural approach <procedural> <BinaryTreeImpl>`,

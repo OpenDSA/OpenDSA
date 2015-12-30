@@ -317,6 +317,8 @@ cases.
 
 .. avembed:: AV/Binary/heapremovePRO.html pe
 
+|
+
 .. inlineav:: heapremoveCON ss
    :output: show
 

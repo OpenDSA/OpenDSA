@@ -14,7 +14,7 @@
     }
   },
   "code": {
-    "processing": {
+    "processing": [{
       "url": "../../../SourceCode/Processing/Binary/Traverse.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: inorder *** */",
@@ -27,8 +27,8 @@
         "visitright": 5,
         "end": 6
       }
-    },
-    "java": {
+    }],
+    "java": [{
       "url": "../../../SourceCode/Java/Binary/Traverse.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: inorder *** */",
@@ -41,8 +41,8 @@
         "visitright": 5,
         "end": 6
       }
-    },
-    "java_generic": {
+    }],
+    "java_generic": [{
       "url": "../../../SourceCode/Java_Generic/Binary/Traverse.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: inorder *** */",
@@ -55,6 +55,6 @@
         "visitright": 5,
         "end": 6
       }
-    }
+    }]
   }
 }

@@ -1502,6 +1502,7 @@
         "long_name": "Binary Tree Traversals",
         "sections": {
           "Binary Tree Traversals": {
+            "BinExampCON": {},
             "preorderCON": {
               "long_name": "Preorder Traversal Slideshow",
               "required": false,
