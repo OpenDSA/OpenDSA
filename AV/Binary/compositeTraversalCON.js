@@ -1,7 +1,7 @@
 /*global ODSA */
 // Composite design traversal
 $(document).ready(function () {
-"use strict";
+  "use strict";
 
   function preorder(node) {
     //check if null
@@ -81,7 +81,7 @@ $(document).ready(function () {
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
-  var pseudo = av.code(code);
+  var pseudo = av.code(code[0]);
 
   var bt = av.ds.binarytree({visible: true, nodegap: 15});
   bt.root("-");

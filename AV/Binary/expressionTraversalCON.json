@@ -14,7 +14,7 @@
     }
   },
   "code": {
-    "processing": {
+    "processing": [{
       "url": "../../../SourceCode/Processing/Binary/ExpressionTree.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: pointer based preorder *** */",
@@ -31,6 +31,6 @@
         "endnotleaf": 9,
         "end": 10
       }
-    }
+    }]
   }
 }

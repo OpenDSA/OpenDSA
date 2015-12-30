@@ -45,6 +45,7 @@ This is called a :term:`preorder traversal`.
 
    A binary tree for traversal examples.
 
+
 .. topic:: Example
 
    The preorder enumeration for the tree of

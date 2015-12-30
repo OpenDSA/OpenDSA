@@ -1,14 +1,14 @@
 {
   "translations": {
     "en": {
-      "av_c1": "When you write a recursive method that traverses a binary tree, you should avoid the following common mistakes.",
-      "av_c2": "Do not forget to check if the root is null",
-      "av_c3": "Making a recursive call does not itself do anything with the return value.",
-      "av_c4": "This line computes the correct value. But it does not go anywhere, as it is missing the return."
+      "sc1": "When you write a recursive method that traverses a binary tree, you should avoid the following common mistakes.",
+      "sc2": "Do not forget to check if the root is null",
+      "sc3": "Making a recursive call does not itself do anything with the return value.",
+      "sc4": "This line computes the correct value. But it does not go anywhere, as it is missing the return."
     }
   },
   "code": {
-    "processing": {
+    "processing": [{
       "url": "../../../SourceCode/Processing/Binary/RecExCode.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: bad_count *** */",
@@ -18,6 +18,6 @@
         "reccall": 3,
         "compute": 4
       }
-    }
+    }]
   }
 }

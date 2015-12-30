@@ -57,17 +57,17 @@
 }
 
 #compositeTraversalCON {
-  height: 630px;
+  height: 950px;
 }
 
 #compositeTraversalCON .jsavcode {
-  margin-top: -15px;
-  margin-left: 350px;
+  margin-top:  0px;
+  margin-left: 300px;
 }
 
 #compositeTraversalCON .jsavtree {
-  top: -400px;
-  right: -260px;
+  top: -770px;
+  left: 300px;
 }
 
 /* Make these internal nodes square */

@@ -1,16 +1,16 @@
 {
   "translations": {
     "en": {
-      "av_c1": "To remove the node with the maximum key value from a subtree, first find that node by starting at the subtree root and continuously move down the right link until there is no further right link to follow.",
-      "av_c2": "Beginning at the node with value 10, we check and find that the right child is not null.",
-      "av_c3": "Recursively call deletemax on the right child.",
-      "av_c4": "The node with value 20 does not have a right child. So return the pointer to its left child.",
-      "av_c5": "Unwinding the recursion a level, we are back to the node with root 10, who has its right pointer changed to point to the result of its call to deletemax. This has the effect of setting it to point to the node with value 12.",
-      "av_c6": "Unwinding the original call to deletemax returns a copy of the original pointer to the node with value 10, which will be set by the caller."
+      "sc1": "To remove the node with the maximum key value from a subtree, first find that node by starting at the subtree root and continuously move down the right link until there is no further right link to follow.",
+      "sc2": "Beginning at the node with value 10, we check and find that the right child is not null.",
+      "sc3": "Recursively call deletemax on the right child.",
+      "sc4": "The node with value 20 does not have a right child. So return the pointer to its left child.",
+      "sc5": "Unwinding the recursion a level, we are back to the node with root 10, who has its right pointer changed to point to the result of its call to deletemax. This has the effect of setting it to point to the node with value 12.",
+      "sc6": "Unwinding the original call to deletemax returns a copy of the original pointer to the node with value 10, which will be set by the caller."
     }
   },
   "code": {
-    "processing": {
+    "processing": [{
       "url": "../../../SourceCode/Processing/Binary/BST.pde",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: deletemax *** */",
@@ -21,8 +21,8 @@
         "setright": 4,
         "return": 5
       }
-    },
-    "java": {
+    }],
+    "java": [{
       "url": "../../../SourceCode/Java/Binary/BST.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: deletemax *** */",
@@ -33,8 +33,8 @@
         "setright": 4,
         "return": 5
       }
-    },
-    "java_generic": {
+    }],
+    "java_generic": [{
       "url": "../../../SourceCode/Java_Generic/Binary/BST.java",
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: deletemax *** */",
@@ -45,6 +45,6 @@
         "setright": 4,
         "return": 5
       }
-    }
+    }]
   }
 }

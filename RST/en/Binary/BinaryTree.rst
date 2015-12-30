@@ -113,7 +113,7 @@ The bottom level has its nodes filled in from the left side.
 .. _FullComplete:
 
 .. inlineav:: FullCompCON dgm
-   :align: justify
+   :align: center
 
    Examples of full and complete binary trees.
 

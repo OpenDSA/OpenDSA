@@ -76,7 +76,7 @@
   av.step();
 
   // step 5 -- add second split
-  av.umsg("We now try to add the original value, 45, again. This brings us to the leaf node of 38 which requires another split at 40.");
+  av.umsg("We now try again to add 45. This brings us to the leaf node of 38 which requires another split at 40.");
   r.right().left(40);
   r.right().left().left(38);
   r.right().left().removeClass("huffmanleaf");
@@ -88,7 +88,7 @@
   av.step();
 
   // step 6 -- finally add 45
-  av.umsg("We can now add our original value of 45 since it falls to the right of the split at 40.");
+  av.umsg("We can now add 45 since it falls to the right of the split at 40.");
   r.right().left().right(45);
   r.right().left().right().addClass("huffmanleaf");
   var split45 = tl.add_value(45, "45", ht1, {"label_top": true}); // the value split

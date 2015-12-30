@@ -1,15 +1,14 @@
-"use strict";
-
 /* Static image of incorrect huffman trie */
-(function ($) {
+$(document).ready(function() {
+"use strict";
   var av = new JSAV("HuffProofCON");
   var cirOpt = {fill: "white"};
 
-  av.label("V", {visible: true, left: 66, top: 95});
-  av.label("U", {visible: true, left: 185, top: 95});
-  av.label("L<sub>1</sub>", {visible: true, left: 33, top: 152});
-  av.label("L<sub>2</sub>", {visible: true, left: 93, top: 152});
-  av.label("X", {visible: true, left: 216, top: 154});
+  av.label("V", {visible: true, left: 66, top: 80});
+  av.label("U", {visible: true, left: 185, top: 80});
+  av.label("L<sub>1</sub>", {visible: true, left: 33, top: 137});
+  av.label("L<sub>2</sub>", {visible: true, left: 93, top: 137});
+  av.label("X", {visible: true, left: 216, top: 139});
 
   // lines
   av.g.line(130, 55, 190, 10);
@@ -42,4 +41,6 @@
   av.g.polygon([[190, 207], [172, 243], [208, 243]], cirOpt);
   // root.right.right.right
   av.g.polygon([[250, 207], [232, 243], [268, 243]], cirOpt);
-}(jQuery));
+  av.displayInit();
+  av.recorded();
+});

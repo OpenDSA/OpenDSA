@@ -1,13 +1,13 @@
 /*global ODSA */
-"use strict";
 // Insert slideshow
-$(document).ready(function () {
+$(document).ready(function() {
+  "use strict";
   var av_name = "BSTinsertCON";
-  var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
+  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
-  var pseudo = av.code(code);
+  var pseudo = av.code(code[0]);
 
   var bt = av.ds.binarytree({visible: true, nodegap: 15});
   bt.root(37);
@@ -31,78 +31,78 @@ $(document).ready(function () {
   var rt1 = av.pointer("rt", bt.root(), {anchor: "right top", top: -10});
 
   // Slide 1
-  av.umsg(interpret("av_c1"));
+  av.umsg(interpret("sc1"));
   pseudo.setCurrentLine("sig");
   av.displayInit();
 
   // Slide 2
-  av.umsg(interpret("av_c2"));
+  av.umsg(interpret("sc2"));
   pseudo.setCurrentLine("checknull");
   av.step();
 
   // Slide 3
-  av.umsg(interpret("av_c3"));
+  av.umsg(interpret("sc3"));
   pseudo.setCurrentLine("compare");
   av.step();
 
   // Slide 4
-  av.umsg(interpret("av_c4"));
+  av.umsg(interpret("sc4"));
   pseudo.setCurrentLine("visitleft");
   av.step();
 
   // Slide 5
-  av.umsg(interpret("av_c5"));
+  av.umsg(interpret("sc5"));
   pseudo.setCurrentLine("sig");
   bt.root().addClass("processing");
   rt1.target(bt.root().left(), {anchor: "left top"});
   av.step();
 
   // Slide 6
-  av.umsg(interpret("av_c2"));
+  av.umsg(interpret("sc2"));
   pseudo.setCurrentLine("checknull");
   av.step();
 
   // Slide 7
-  av.umsg(interpret("av_c7"));
+  av.umsg(interpret("sc7"));
   pseudo.setCurrentLine("compare");
   av.step();
 
   // Slide 8
-  av.umsg(interpret("av_c8"));
+  av.umsg(interpret("sc8"));
   pseudo.setCurrentLine("visitright");
   av.step();
 
   // Slide 9
-  av.umsg(interpret("av_c9"));
+  av.umsg(interpret("sc9"));
   pseudo.setCurrentLine("sig");
   bt.root().left().addClass("processing");
   rt1.target(bt.root().left().right(), {anchor: "right top"});
   av.step();
 
   // Slide 10
-  av.umsg(interpret("av_c2"));
+  av.umsg(interpret("sc2"));
   pseudo.setCurrentLine("checknull");
   av.step();
 
   // Slide 11
-  av.umsg(interpret("av_c3"));
+  av.umsg(interpret("sc3"));
   pseudo.setCurrentLine("compare");
   av.step();
 
   // Slide 12
-  av.umsg(interpret("av_c4"));
+  av.umsg(interpret("sc4"));
   pseudo.setCurrentLine("visitleft");
   av.step();
 
   // Slide 13
-  av.umsg(interpret("av_c5"));
+  av.umsg(interpret("sc5"));
   pseudo.setCurrentLine("sig");
   bt.root().left().right().addClass("processing");
   rt1.target(newnode, {anchor: "left top"});
   av.step();
 
   // Slide 14
-  av.umsg(interpret("av_c14"));
+  av.umsg(interpret("sc14"));
   pseudo.setCurrentLine("checknull");
   newnode.show();
   newnode.removeClass("invisnode");
@@ -111,11 +111,11 @@ $(document).ready(function () {
   av.step();
 
   // Slide 15
-  av.umsg(interpret("av_c15"));
+  av.umsg(interpret("sc15"));
   av.step();
 
   // Slide 16
-  av.umsg(interpret("av_c16"));
+  av.umsg(interpret("sc16"));
   newnode = newnode.parent();
   newedge.show();
   bt.root().left().right().removeClass("processing");
@@ -124,7 +124,7 @@ $(document).ready(function () {
   av.step();
 
   // Slide 17
-  av.umsg(interpret("av_c17"));
+  av.umsg(interpret("sc17"));
   newedge = newnode.edgeToParent();
   newnode = newnode.parent();
   newedge.addClass("rededge");
@@ -134,7 +134,7 @@ $(document).ready(function () {
   av.step();
 
   // Slide 18
-  av.umsg(interpret("av_c18"));
+  av.umsg(interpret("sc18"));
   newedge = newnode.edgeToParent();
   newnode = newnode.parent();
   newedge.addClass("rededge");
@@ -144,7 +144,7 @@ $(document).ready(function () {
   av.step();
 
   // Slide 19
-  av.umsg(interpret("av_c19"));
+  av.umsg(interpret("sc19"));
   rt1.hide();
   var root1 = av.pointer("root", bt.root(), {anchor: "right top", top: -10});
   root1.arrow.addClass("thinredline");
