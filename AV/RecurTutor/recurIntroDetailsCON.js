@@ -9,7 +9,7 @@ $(document).ready(function() {
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
-  var pseudo = av.code(code);
+  var pseudo = av.code(code[0]);
 
   // create a label for the icon
   var label = av.label("x*y?", {left: 0, top: 170});
