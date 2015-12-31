@@ -141,6 +141,9 @@ CS3vt: min
 CS3in: min
 	python $(CONFIG_SCRIPT) config/CS3.json -c config/CS3in_LMSconf.json -b CS3in
 
+ECE252: min
+	python $(CONFIG_SCRIPT) config/ECE252.json -c config/ECE252_LMSconf.json -b ECE252S16
+
 India: min
 	python $(CONFIG_SCRIPT) config/DS2.json
 
