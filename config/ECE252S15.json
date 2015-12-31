@@ -3,8 +3,21 @@
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
-    "C++": ["cpp", "h"],
-    "Processing": ["pde"]
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    },
+    "Processing": {
+      "ext": [
+        "pde"
+      ],
+      "label": "Processing",
+      "lang": "java"
+    }
   },
   "lang": "en",
   "module_origin": "http://algoviz.org",
