@@ -11,7 +11,7 @@
 
 .. index:: ! Bubble Sort
 
-.. odsalink:: AV/Development/BubbleSortAnalysisCON.css
+.. odsalink:: AV/Sorting/BubbleSortAnalysisCON.css
 
 Bubble Sort
 ===========
@@ -54,6 +54,8 @@ Here is an implementation.
 
 .. codeinclude:: Sorting/Bubblesort 
    :tag: Bubblesort        
+
+|
 
 .. inlineav:: bubblesortS1CON ss
    :output: show
@@ -105,4 +107,4 @@ Bubble Sort.
 
 .. odsascript:: AV/Sorting/bubblesortS1CON.js
 .. odsascript:: AV/Sorting/bubblesortS2CON.js
-.. odsascript:: AV/Development/BubbleSortAnalysisCON.js
+.. odsascript:: AV/Sorting/BubbleSortAnalysisCON.js

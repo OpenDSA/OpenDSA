@@ -14,18 +14,18 @@ $(document).ready(function() {
   var arr_values = [];
 
   // Slide 1
-  av.umsg(interpret("Slide 1"));
+  av.umsg(interpret("sc1"));
   av.displayInit();
 
   // Slide 2
   pseudo.show();
-  av.umsg(interpret("Slide 2"));
+  av.umsg(interpret("sc2"));
   pseudo.highlight("loop");
   av.step();
 
   // Slide 3
   pseudo.unhighlight("loop");
-  av.umsg(interpret("Slide 3"));
+  av.umsg(interpret("sc3"));
   for (var i = 0; i < 6; i++) {
     arr_values[i] = parseInt(Math.random() * 20, 10);
   }
@@ -33,7 +33,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 4
-  av.umsg(interpret("Slide 4"));
+  av.umsg(interpret("sc4"));
   arr.addClass([0, 1], "greenbg");
   if (arr.value(0) > arr.value(1)) {
     arr.swap(0, 1);
@@ -43,7 +43,6 @@ $(document).ready(function() {
   av.step();
 
   // Slide 5
-  av.clearumsg();
   arr.addClass([1, 2], "greenbg");
   arr.removeClass(0, "greenbg");
   if (arr.value(1) > arr.value(2)) {
@@ -83,7 +82,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 9
-  av.umsg(interpret("Slide 9"));
+  av.umsg(interpret("sc9"));
   arr.addClass([0, 1], "greenbg");
   if (arr.value(0) > arr.value(1)) {
     arr.swap(0, 1);
@@ -93,7 +92,6 @@ $(document).ready(function() {
   av.step();
 
   // Slide 10
-  av.clearumsg();
   arr.addClass([1, 2], "greenbg");
   arr.removeClass(0, "greenbg");
   if (arr.value(1) > arr.value(2)) {
@@ -124,7 +122,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 13
-  av.umsg(interpret("Slide 13"));
+  av.umsg(interpret("sc13"));
   arr.addClass([0, 1], "greenbg");
   if (arr.value(0) > arr.value(1)) {
     arr.swap(0, 1);
@@ -134,7 +132,6 @@ $(document).ready(function() {
   av.step();
 
   // Slide 14
-  av.clearumsg();
   arr.addClass([1, 2], "greenbg");
   arr.removeClass(0, "greenbg");
   if (arr.value(1) > arr.value(2)) {
@@ -159,7 +156,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 17
-  av.umsg(interpret("Slide 17"));
+  av.umsg(interpret("sc17"));
   arr.addClass([0, 1], "greenbg");
   if (arr.value(0) > arr.value(1)) {
     arr.swap(0, 1);
@@ -169,7 +166,6 @@ $(document).ready(function() {
   av.step();
 
   // Slide 18
-  av.clearumsg();
   arr.addClass([1, 2], "greenbg");
   arr.removeClass(0, "greenbg");
   if (arr.value(1) > arr.value(2)) {
@@ -185,7 +181,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 20
-  av.umsg(interpret("Slide 20"));
+  av.umsg(interpret("sc20"));
   arr.addClass([0, 1], "greenbg");
   if (arr.value(0) > arr.value(1)) {
     arr.swap(0, 1);
@@ -199,15 +195,14 @@ $(document).ready(function() {
   av.step();
 
   // Slide 21
-  av.clearumsg();
-  av.umsg(interpret("Slide 21"));
+  av.umsg(interpret("sc21"));
   av.label("|------------ $n-1$ --------------|",  {top: "190px", left: "420px"}).addClass("largeLabel");
   av.label("|--- $n-1$ ---|",  {top: "90px", left: "330px"}).addClass("largeLabel rotated");
   av.g.line(400, 70, 650, 170);
   av.step();
 
   // Slide 22
-  av.umsg(interpret("Slide 22"));
+  av.umsg(interpret("sc22"));
   av.g.polyline([[650, 170], [400, 170], [400, 70]]).addClass("bigTriangle");
   av.g.polyline([[650, 170], [650, 150], [600, 150]]).addClass("smallTriangle");
   av.g.polyline([[600, 150], [600, 130], [550, 130]]).addClass("smallTriangle");
@@ -217,10 +212,10 @@ $(document).ready(function() {
   av.step();
 
   // Slide 23
-  av.umsg(interpret("Slide 23"));
+  av.umsg(interpret("sc23"));
   av.step();
 
   // Slide 24
-  av.umsg(interpret("Slide 24"));
+  av.umsg(interpret("sc24"));
   av.recorded();
 });

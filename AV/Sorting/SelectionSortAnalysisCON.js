@@ -12,15 +12,15 @@ $(document).ready(function() {
   var arr_values = [];
 
   // Slide 1
-  av.umsg(interpret("Slide 1"));
+  av.umsg(interpret("sc1"));
   av.displayInit();
 
   // Slide 2
-  av.umsg(interpret("Slide 2"));
+  av.umsg(interpret("sc2"));
   av.step();
 
   // Slide 3
-  av.umsg(interpret("Slide 3"));
+  av.umsg(interpret("sc3"));
   for (var i = 0; i < 6; i++) {
     arr_values[i] = parseInt(Math.random() * 20, 10);
   }
@@ -30,7 +30,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 4
-  av.umsg(interpret("Slide 4"));
+  av.umsg(interpret("sc4"));
   var bigIndex = 0;
   var pointer = av.pointer("Big-index", arr.index(bigIndex));
   arr.addClass(bigIndex, "greenbg");
@@ -120,7 +120,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 11
-  av.umsg(interpret("Slide 11"));
+  av.umsg(interpret("sc11"));
   arr.highlight(1);
   av.label("$i=1$",  {top: "345px", left: "80px"});
   av.g.rect(75, 325, 50, 20);
@@ -190,7 +190,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 16
-  av.umsg(interpret("Slide 16"));
+  av.umsg(interpret("sc16"));
   arr.highlight(1);
   av.label("$i=2$",  {top: "345px", left: "130px"});
   av.g.rect(125, 325, 50, 20);
@@ -246,7 +246,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 20
-  av.umsg(interpret("Slide 20"));
+  av.umsg(interpret("sc20"));
   arr.highlight(1);
   av.label("$i=3$",  {top: "345px", left: "180px"});
   av.g.rect(175, 325, 50, 20);
@@ -288,7 +288,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 23
-  av.umsg(interpret("Slide 23"));
+  av.umsg(interpret("sc23"));
   arr.highlight(1);
   av.label("$i=4$",  {top: "345px", left: "230px"});
   av.g.rect(225, 325, 50, 20);
@@ -313,7 +313,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 24
-  av.umsg(interpret("Slide 24"));
+  av.umsg(interpret("sc24"));
   av.label("|--- $n-1$---|",  {top: "270px", left: "-30px"}).addClass("rotated");
   av.label("|--------------- $n-1$ ---------------|",  {top: "365px", left: "45px"});
   av.label("|--------------- $n-1$ ---------------|",  {top: "365px", left: "470px"});

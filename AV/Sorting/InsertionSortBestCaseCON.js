@@ -12,22 +12,22 @@ $(document).ready(function() {
   var pseudo = av.code(code[0]).hide();
 
   // Slide 1
-  av.umsg(interpret("Slide 1"));
+  av.umsg(interpret("sc1"));
   av.displayInit();
 
   // Slide 2
-  av.umsg(interpret("Slide 2"));
+  av.umsg(interpret("sc2"));
   av.ds.array([1, 2, 3, 4, 5, 6], {left: 10, top: 150, indexed: true});
   av.step();
 
   // Slide3
   pseudo.show();
-  av.umsg(interpret("Slide 3"));
+  av.umsg(interpret("sc3"));
   pseudo.highlight("loop2");
   av.step();
 
   // Slide4
-  av.umsg(interpret("Slide 4"));
+  av.umsg(interpret("sc4"));
   pseudo.unhighlight("loop2");
   pseudo.highlight("loop1");
   av.g.rect(320, 230, 50, 20);
@@ -44,6 +44,6 @@ $(document).ready(function() {
   av.step();
 
   //Slide 5
-  av.umsg(interpret("Slide 5"));
+  av.umsg(interpret("sc5"));
   av.recorded();
 });

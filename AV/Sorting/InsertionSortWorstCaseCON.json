@@ -1,0 +1,34 @@
+{
+  "translations": {
+    "en": {
+      "sc1": "We first examine the worst case cost.",
+      "sc2": "The body of inssort contains two nested for loops.",
+      "sc3": "The outer for loop is executed $n-1$ times.",
+      "sc4": "The inner loop is harder to analyze since it depends on how many records in positions $0$ to $i-1$ have a value less than that of the record in position $i$.",
+      "sc5": "Let's consider now a worst case example of an array with 6 elements. Since it is the worst case, each iteration of the outer loop does the greatest possible number of comparisons.",
+      "sc6": "At $i=1$ a single comparison is required. We draw one box.",
+      "sc7": "At $i=2$ two comparisons are required. We draw two boxes.",
+      "sc9": "At $i=3$ three comparisons are required, so three boxes.",
+      "sc12": "At $i=4$ four comparisons are required, so four boxes.",
+      "sc16": "At $i=5$ five comparisons are required, so five boxes.",
+      "sc21": "The total running time now will be the total surface area of this shape.",
+      "sc22_1": "The total area will be the sum of the areas of the big traingle <br>",
+      "sc22_2": "+ <br> the series of $(n-1)$ small traingles.",
+      "sc23": "<br>So, the total area is $\\frac{(n-1)(n-1)}{2} + \\frac{(n-1)}{2}$ which gives $\\frac{n(n-1)}{2}$.",
+      "sc24": "Therefore, the worst case running time of insertion sort is $\\theta(n^2)$."
+    }
+  },
+  "code": {
+    "processing": [{
+      "url": "../../../SourceCode/Processing/Sorting/Insertionsort.pde",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: Insertionsort *** */",
+      "endBefore": "/* *** ODSAendTag: Insertionsort *** */",
+      "tags": {
+        "loops": [2, 3],
+        "loop1": 2,
+        "loop2": 3
+      }
+    }]
+  }
+}

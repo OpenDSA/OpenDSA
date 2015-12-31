@@ -1,0 +1,23 @@
+{
+  "translations": {
+    "en": {
+      "sc1": "Now we will consider the best case cost.",
+      "sc2": "The best case of insertion sort occurs when the array values are already in order from lowest to highest, as shown.",
+      "sc3": "Every test on the inner for loop will fail immediately, and no values will be moved.",
+      "sc4": "The total number of comparisons will be $n-1$, which is the number of times the outer for loop executes.",
+      "sc5": "Therefore, the best case running time of insertion sort is $\\theta(n)$."
+    }
+  },
+  "code": {
+    "processing": [{
+      "url": "../../../SourceCode/Processing/Sorting/Insertionsort.pde",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: Insertionsort *** */",
+      "endBefore": "/* *** ODSAendTag: Insertionsort *** */",
+      "tags": {
+        "loop1": 2,
+        "loop2": 3
+      }
+    }]
+  }
+}

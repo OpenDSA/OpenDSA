@@ -11,9 +11,9 @@
 
 .. index:: ! Insertion Sort
 
-.. odsalink:: AV/Development/InsertionSortWorstCaseCON.css
-.. odsalink:: AV/Development/InsertionSortBestCaseCON.css
-.. odsalink:: AV/Development/InsertionSortAverageCaseCON.css
+.. odsalink:: AV/Sorting/InsertionSortWorstCaseCON.css
+.. odsalink:: AV/Sorting/InsertionSortBestCaseCON.css
+.. odsalink:: AV/Sorting/InsertionSortAverageCaseCON.css
 
 Insertion Sort
 ==============
@@ -154,6 +154,6 @@ for a discussion on how the relative costs of search and insert can
 affect what is the best sort algorithm to use.
 
 .. odsascript:: AV/Sorting/insertionsortCON.js
-.. odsascript:: AV/Development/InsertionSortWorstCaseCON.js
-.. odsascript:: AV/Development/InsertionSortBestCaseCON.js
-.. odsascript:: AV/Development/InsertionSortAverageCaseCON.js
+.. odsascript:: AV/Sorting/InsertionSortWorstCaseCON.js
+.. odsascript:: AV/Sorting/InsertionSortBestCaseCON.js
+.. odsascript:: AV/Sorting/InsertionSortAverageCaseCON.js
