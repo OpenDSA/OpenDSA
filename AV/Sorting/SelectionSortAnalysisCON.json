@@ -13,17 +13,5 @@
     "lab1": "<b><u>Number of Comparisons</u></b>",
     "lab2": "<b><u>Number of Swaps</u></b>"
     }
-  },
-  "code" : {
-    "processing": {
-      "url": "../../../SourceCode/Processing/Sorting/Selectionsort.pde",
-      "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: Selectionsort *** */",
-      "endBefore": "/* *** ODSAendTag: Selectionsort *** */",
-      "tags": {
-        "loop1": 2,
-        "loop2": 3
-      }
-    }
   }
 }

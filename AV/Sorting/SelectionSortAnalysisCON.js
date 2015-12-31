@@ -10,6 +10,11 @@ $(document).ready(function() {
   var av = new JSAV(av_name);
   var arr;
   var arr_values = [];
+  var leftAlign = 250;
+  var topAlign = 150;
+  var rectWidth = 50;
+  var rectHeight = 20;
+  var gap = 325;
 
   // Slide 1
   av.umsg(interpret("sc1"));
@@ -24,9 +29,9 @@ $(document).ready(function() {
   for (var i = 0; i < 6; i++) {
     arr_values[i] = parseInt(Math.random() * 20, 10);
   }
-  arr = av.ds.array(arr_values, {left: 250, top: 20, indexed: true});
-  av.label(interpret("lab1"),  {top: "172px", left: "50px"}).addClass("largeLabel");
-  av.label(interpret("lab2"),  {top: "172px", left: "500px"}).addClass("largeLabel");
+  arr = av.ds.array(arr_values, {left: 0, top: 50, indexed: true});
+  av.label(interpret("lab1"),  {top: topAlign - 150, left: leftAlign + 25}).addClass("largeLabel");
+  av.label(interpret("lab2"),  {top: topAlign - 150, left: leftAlign + gap + 50}).addClass("largeLabel");
   av.step();
 
   // Slide 4
@@ -38,8 +43,8 @@ $(document).ready(function() {
 
   // Slide 5
   arr.highlight(1);
-  av.label("$i=0$",  {top: "345px", left: "30px"});
-  av.g.rect(25, 325, 50, 20);
+  av.label("$i=0$",  {top: topAlign + 20, left: leftAlign + 5});
+  av.g.rect(leftAlign, topAlign, rectWidth, rectHeight);
   av.step();
 
   // Slide 6
@@ -54,7 +59,7 @@ $(document).ready(function() {
   av.step();
 
   arr.highlight(2);
-  av.g.rect(25, 305, 50, 20);
+  av.g.rect(leftAlign, topAlign - rectHeight, rectWidth, rectHeight);
   av.step();
 
   // Slide 7
@@ -68,7 +73,7 @@ $(document).ready(function() {
   av.step();
 
   arr.highlight(3);
-  av.g.rect(25, 285, 50, 20);
+  av.g.rect(leftAlign, topAlign - 2 * rectHeight, rectWidth, rectHeight);
   av.step();
 
   // Slide 8
@@ -82,7 +87,7 @@ $(document).ready(function() {
   av.step();
 
   arr.highlight(4);
-  av.g.rect(25, 265, 50, 20);
+  av.g.rect(leftAlign, topAlign - 3 * rectHeight, rectWidth, rectHeight);
   av.step();
 
   // Slide 9
@@ -96,7 +101,7 @@ $(document).ready(function() {
   av.step();
 
   arr.highlight(5);
-  av.g.rect(25, 245, 50, 20);
+  av.g.rect(leftAlign, topAlign - 4 * rectHeight, rectWidth, rectHeight);
   av.step();
 
   // Slide 10
@@ -112,8 +117,8 @@ $(document).ready(function() {
   arr.swap(bigIndex, 5);
   arr.removeClass(bigIndex, "greenbg");
   arr.addClass(5, "greybg");
-  av.g.rect(450, 325, 50, 20);
-  av.label("$i=0$",  {top: "345px", left: "455px"});
+  av.g.rect(leftAlign + gap, topAlign, rectWidth, rectHeight);
+  av.label("$i=0$",  {top: topAlign + 20, left: leftAlign + gap + 5});
   bigIndex = 0;
   pointer.target(arr.index(bigIndex));
   arr.addClass(bigIndex, "greenbg");
@@ -122,8 +127,8 @@ $(document).ready(function() {
   // Slide 11
   av.umsg(interpret("sc11"));
   arr.highlight(1);
-  av.label("$i=1$",  {top: "345px", left: "80px"});
-  av.g.rect(75, 325, 50, 20);
+  av.label("$i=1$",  {top: topAlign + 20, left: leftAlign + rectWidth + 5});
+  av.g.rect(leftAlign + rectWidth, topAlign, rectWidth, rectHeight);
   av.step();
 
   // Slide 12
@@ -138,7 +143,7 @@ $(document).ready(function() {
   av.step();
 
   arr.highlight(2);
-  av.g.rect(75, 305, 50, 20);
+  av.g.rect(leftAlign + rectWidth, topAlign - rectHeight, rectWidth, rectHeight);
   av.step();
 
   // Slide 13
@@ -152,7 +157,7 @@ $(document).ready(function() {
   av.step();
 
   arr.highlight(3);
-  av.g.rect(75, 285, 50, 20);
+  av.g.rect(leftAlign + rectWidth, topAlign - 2 * rectHeight, rectWidth, rectHeight);
   av.step();
 
   // Slide 14
@@ -166,7 +171,7 @@ $(document).ready(function() {
   av.step();
 
   arr.highlight(4);
-  av.g.rect(75, 265, 50, 20);
+  av.g.rect(leftAlign + rectWidth, topAlign - 3 * rectHeight, rectWidth, rectHeight);
   av.step();
 
   // Slide 15
@@ -182,8 +187,8 @@ $(document).ready(function() {
   arr.swap(bigIndex, 4);
   arr.removeClass(bigIndex, "greenbg");
   arr.addClass(4, "greybg");
-  av.g.rect(500, 325, 50, 20);
-  av.label("$i=1$",  {top: "345px", left: "505px"});
+  av.g.rect(leftAlign + gap + rectWidth, topAlign, rectWidth, rectHeight);
+  av.label("$i=1$",  {top: topAlign + 20, left: leftAlign + gap + rectWidth + 5});
   bigIndex = 0;
   pointer.target(arr.index(bigIndex));
   arr.addClass(bigIndex, "greenbg");
@@ -192,8 +197,8 @@ $(document).ready(function() {
   // Slide 16
   av.umsg(interpret("sc16"));
   arr.highlight(1);
-  av.label("$i=2$",  {top: "345px", left: "130px"});
-  av.g.rect(125, 325, 50, 20);
+  av.label("$i=2$",  {top: topAlign + 20, left: leftAlign + 2 * rectWidth + 5});
+  av.g.rect(leftAlign + 2 * rectWidth, topAlign, rectWidth, rectHeight);
   av.step();
 
   // Slide 17
@@ -208,7 +213,7 @@ $(document).ready(function() {
   av.step();
 
   arr.highlight(2);
-  av.g.rect(125, 305, 50, 20);
+  av.g.rect(leftAlign + 2 * rectWidth, topAlign - rectHeight, rectWidth, rectHeight);
   av.step();
 
   // Slide 18
@@ -222,7 +227,7 @@ $(document).ready(function() {
   av.step();
 
   arr.highlight(3);
-  av.g.rect(125, 285, 50, 20);
+  av.g.rect(leftAlign + 2 * rectWidth, topAlign - 2 * rectHeight, rectWidth, rectHeight);
   av.step();
 
   // Slide 19
@@ -238,8 +243,8 @@ $(document).ready(function() {
   arr.swap(bigIndex, 3);
   arr.removeClass(bigIndex, "greenbg");
   arr.addClass(3, "greybg");
-  av.g.rect(550, 325, 50, 20);
-  av.label("$i=2$", {top: "345px", left: "555px"});
+  av.g.rect(leftAlign + gap + 2 * rectWidth, topAlign, rectWidth, rectHeight);
+  av.label("$i=2$", {top: topAlign + 20, left: leftAlign + gap + 2 * rectWidth + 5});
   bigIndex = 0;
   pointer.target(arr.index(bigIndex));
   arr.addClass(bigIndex, "greenbg");
@@ -248,8 +253,8 @@ $(document).ready(function() {
   // Slide 20
   av.umsg(interpret("sc20"));
   arr.highlight(1);
-  av.label("$i=3$",  {top: "345px", left: "180px"});
-  av.g.rect(175, 325, 50, 20);
+  av.label("$i=3$",  {top: topAlign + 20, left: leftAlign + 3 * rectWidth + 5});
+  av.g.rect(leftAlign + 3 * rectWidth, topAlign, rectWidth, rectHeight);
   av.step();
 
   // Slide 21
@@ -264,7 +269,7 @@ $(document).ready(function() {
   av.step();
 
   arr.highlight(2);
-  av.g.rect(175, 305, 50, 20);
+  av.g.rect(leftAlign + 3 * rectWidth, topAlign - rectHeight, rectWidth, rectHeight);
   av.step();
 
   // Slide 22
@@ -280,8 +285,8 @@ $(document).ready(function() {
   arr.swap(bigIndex, 2);
   arr.removeClass(bigIndex, "greenbg");
   arr.addClass(2, "greybg");
-  av.g.rect(600, 325, 50, 20);
-  av.label("$i=3$",  {top: "345px", left: "605px"});
+  av.g.rect(leftAlign + gap + 3 * rectWidth, topAlign, rectWidth, rectHeight);
+  av.label("$i=3$",  {top: topAlign + 20, left: leftAlign + gap + 3 * rectWidth + 5});
   bigIndex = 0;
   pointer.target(arr.index(bigIndex));
   arr.addClass(bigIndex, "greenbg");
@@ -290,8 +295,8 @@ $(document).ready(function() {
   // Slide 23
   av.umsg(interpret("sc23"));
   arr.highlight(1);
-  av.label("$i=4$",  {top: "345px", left: "230px"});
-  av.g.rect(225, 325, 50, 20);
+  av.label("$i=4$",  {top: topAlign + 20, left: leftAlign + 4 * rectWidth + 5});
+  av.g.rect(leftAlign + 4 * rectWidth, topAlign, rectWidth, rectHeight);
   av.step();
   av.clearumsg();
   if (arr.value(1) > arr.value(bigIndex)) {
@@ -306,17 +311,17 @@ $(document).ready(function() {
   arr.swap(bigIndex, 1);
   arr.removeClass(bigIndex, "greenbg");
   arr.addClass(1, "greybg");
-  av.g.rect(650, 325, 50, 20);
-  av.label("$i=4$",  {top: "345px", left: "655px"});
+  av.g.rect(leftAlign + gap + 4 * rectWidth, topAlign, rectWidth, rectHeight);
+  av.label("$i=4$",  {top: topAlign + 20, left: leftAlign + gap + 4 * rectWidth + 5});
   pointer.hide();
   arr.addClass(0, "greybg");
   av.step();
 
   // Slide 24
   av.umsg(interpret("sc24"));
-  av.label("|--- $n-1$---|",  {top: "270px", left: "-30px"}).addClass("rotated");
-  av.label("|--------------- $n-1$ ---------------|",  {top: "365px", left: "45px"});
-  av.label("|--------------- $n-1$ ---------------|",  {top: "365px", left: "470px"});
+  av.label("|--- $n-1$---|",  {top: topAlign - 55, left: leftAlign - 55}).addClass("rotated");
+  av.label("|--------------- $n-1$ ---------------|",  {top: topAlign + 40, left: leftAlign + 20});
+  av.label("|--------------- $n-1$ ---------------|",  {top: topAlign + 40, left: leftAlign + gap + 20});
   av.step();
   av.recorded();
 });
