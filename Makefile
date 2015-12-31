@@ -120,11 +120,14 @@ Everything: min
 Everythingin: min
 	python $(CONFIG_SCRIPT) config/Everything.json -c config/Everythingin_LMSconf.json -b Everythingin
 
+Everythingvtt: min
+	python $(CONFIG_SCRIPT) config/Everything.json -c config/Everythingvtt_LMSconf.json -b Everythingvtt
+
 CS2: min
 	python $(CONFIG_SCRIPT) config/CS2.json
 
-CS2vt: mintestLTI
-	python $(CONFIG_SCRIPT) config/CS2.json -c config/CS2vt_LMSconf.json -b CS2vt
+CS2vt: min
+	python $(CONFIG_SCRIPT) config/CS2.json -c config/CS2vt_LMSconf.json -b CS2114S16
 
 CS2in: min
 	python $(CONFIG_SCRIPT) config/CS2.json -c config/CS2in_LMSconf.json -b CS2in
@@ -137,6 +140,9 @@ CS3vt: min
 
 CS3in: min
 	python $(CONFIG_SCRIPT) config/CS3.json -c config/CS3in_LMSconf.json -b CS3in
+
+ECE252: min
+	python $(CONFIG_SCRIPT) config/ECE252.json -c config/ECE252_LMSconf.json -b ECE252S16
 
 India: min
 	python $(CONFIG_SCRIPT) config/DS2.json

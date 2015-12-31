@@ -67,6 +67,21 @@
         "swap": 7,
         "end": 9
       }
+    },
+    "java_generic": {
+      "url": "../../SourceCode/Java_Generic/Sorting/Insertionsort.java",
+      "startAfter": "/* *** ODSATag: Insertionsort *** */",
+      "endBefore": "/* *** ODSAendTag: Insertionsort *** */",
+      "tags": {
+        "sig": 1,
+        "outloop": 2,
+        "initbig": 3,
+        "inloop": 4,
+        "compare": 5,
+        "setbig": 6,
+        "swap": 7,
+        "end": 9
+      }
     }
   }
 }

@@ -73,7 +73,7 @@ This is particularly useful when implementing a
 a large two-dimensional array
 that stores only a relatively few non-zero values.
 
-An :term:`abstract data type` (ADT) is the realization of a data type
+An :term:`abstract data type` (ADT) is the specification of a data type
 within some language, independent of an implementation.
 The interface for the ADT is defined in terms of a type and a set of
 operations on that type.
