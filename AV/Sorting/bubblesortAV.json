@@ -92,6 +92,19 @@
         "swap": 5,
         "end": 6
       }
+    },
+    "java_generic": {
+      "url": "../../SourceCode/Java_Generic/Sorting/Bubblesort.java",
+      "startAfter": "/* *** ODSATag: Bubblesort *** */",
+      "endBefore": "/* *** ODSAendTag: Bubblesort *** */",
+      "tags": {
+        "sig": 1,
+        "outloop": 2,
+        "inloop": 3,
+        "compare": 4,
+        "swap": 5,
+        "end": 6
+      }
     }
   }
 }

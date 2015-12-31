@@ -58,7 +58,7 @@
           "List Terminology and Notation": {
             "listADTposCON": {
               "long_name": "List ADT Positions Slideshow",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
@@ -77,19 +77,19 @@
           "Array-Based List Implementation": {
             "alistVarsCON": {
               "long_name": "Array-based List Variables Slideshow",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
             "alistIntroCON": {
               "long_name": "Array-based List Intro Slideshow",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
             "alistInsertCON": {
               "long_name": "Array-based List Insertion Slideshow",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             }
@@ -105,13 +105,13 @@
           "Append and Remove": {
             "alistAppendCON": {
               "long_name": "Array-based List Append Slideshow",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
             "alistRemoveCON": {
               "long_name": "Array-based List Remove",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
@@ -134,6 +134,25 @@
       }
     },
     "Algorithm Analysis": {
+      "AlgAnal/AnalPrelim": {
+        "long_name": "Problems, Algorithms, and Programs",
+        "sections": {
+          "Problems, Algorithms, and Programs": {
+            "ProblemAlgorithmCON": {
+              "long_name": "Problem, Algorithm, and Program definitions Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "AnalPrelimSumm": {
+              "long_name": "Problems, Algorithms, Programs Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 4
+            }
+          }
+        }
+      },
       "AlgAnal/AnalIntro": {
         "long_name": "Comparing Algorithms",
         "sections": {
@@ -159,8 +178,14 @@
         "long_name": "Best, Average, and Worst Cases",
         "sections": {
           "Best, Worst, and Average Cases": {
-            "BestWorstAverageCON": {
-              "long_name": "Best, Worst, and Average cases visualization",
+            "AnalCasesSameCON": {
+              "long_name": "Simple analysis cases slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "AnalCasesDiffCON": {
+              "long_name": "Best, Worst, and Average cases slideshow",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
@@ -206,7 +231,7 @@
           "Calculating Program Running Time": {
             "binarySearchCON": {
               "long_name": "Binary Search Algorithm Slideshow",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
@@ -217,6 +242,12 @@
               },
               "required": true,
               "points": 1.0,
+              "threshold": 1.0
+            },
+            "BsearchDandCRecurCON": {
+              "long_name": "Binary Search recurrence slideshow",
+              "required": false,
+              "points": 0.0,
               "threshold": 1.0
             }
           },
@@ -237,7 +268,7 @@
             "showsection": true,
             "AlgAnalCS2Summ": {
               "long_name": "Algorithm Analysis Summary Questions",
-              "required": false,
+              "required": true,
               "points": 1.0,
               "threshold": 5
             }
@@ -246,7 +277,7 @@
             "showsection": false,
             "AlgAnalCS3Summ": {
               "long_name": "Algorithm Analysis Summary Questions",
-              "required": true,
+              "required": false,
               "points": 1.0,
               "threshold": 5
             }
@@ -262,19 +293,19 @@
           "Array-Based Stacks": {
             "astackVarCON": {
               "long_name": "Array stack variables slideshow",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
             "astackTopCON": {
               "long_name": "Array stack top position slideshow",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
             "astackPushCON": {
               "long_name": "Array stack push slideshow",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
@@ -288,7 +319,7 @@
           "Pop": {
             "astackPopCON": {
               "long_name": "Array stack pop slideshow",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
@@ -308,7 +339,7 @@
             "lstackDiagramCON": {},
             "lstackPushCON": {
               "long_name": "Linked stack push",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
@@ -322,7 +353,7 @@
           "Linked Stack Pop": {
             "lstackPopCON": {
               "long_name": "Linked stack pop",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
@@ -826,31 +857,31 @@
           "Array-Based Queues": {
             "aqueueFirstCON": {
               "long_name": "Array-based Queue Positions Slideshow",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
             "aqueueDriftCON": {
               "long_name": "Array-based Queue Drift Slideshow",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
             "aqueueBadCON": {
               "long_name": "Array-based Queue Bad Representation Slideshow",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
             "aqueueCircularCON": {
               "long_name": "Circular Array-based Queue Slideshow",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
             "aqueueEmptyCON": {
               "long_name": "Empty Circular Array-based Queue Slideshow",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             }
@@ -858,7 +889,7 @@
           "Array-based Queue Implementation": {
             "aqueueVarCON": {
               "long_name": "Array-based Queue Variables Slideshow",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
@@ -885,13 +916,13 @@
           "Linked Queues": {
             "lqueueIntroCON": {
               "long_name": "Linked Queue Intro",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
             "lqueueEnqueueCON": {
               "long_name": "Linked Queue Enqueue",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
@@ -905,7 +936,7 @@
           "Linked Dequeue": {
             "lqueueDequeueCON": {
               "long_name": "Linked Queue Dequeue",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
@@ -935,13 +966,13 @@
             "llistRepCON": {},
             "llistBadCON": {
               "long_name": "Linked List Slideshow 1",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
             "llistBadDelCON": {
               "long_name": "Linked List Slideshow 2",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
@@ -951,25 +982,25 @@
           "Linked List Implementation": {
             "llistVarsCON": {
               "long_name": "Linked List Variables Slideshow",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
             "llistConsCON": {
               "long_name": "Linked List Constructors Slideshow",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
             "llistInsertCON": {
               "long_name": "Linked List Insert Slideshow",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
             "llistSpecialCON": {
               "long_name": "Linked List Special Insert Slideshow",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
@@ -983,7 +1014,7 @@
           "Linked List Remove": {
             "llistRemoveCON": {
               "long_name": "Linked List Remove Slideshow",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
@@ -995,7 +1026,7 @@
             },
             "llistOtherCON": {
               "long_name": "Linked List Position Slideshow",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             }
@@ -1030,25 +1061,25 @@
             "dlistDiagramCON": {},
             "dlistInsertCON": {
               "long_name": "Doubly Linked List Insert",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
             "dlistAppendCON": {
               "long_name": "Doubly Linked List Append",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
             "dlistRemoveCON": {
               "long_name": "Doubly Linked List Remove",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
             "dlistPrevCON": {
               "long_name": "Doubly Linked List Prev",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             }
@@ -1061,19 +1092,19 @@
           "List Element Implementations": {
             "listElementDataCON": {
               "long_name": "List Element Data",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
             "listElementTypeCON": {
               "long_name": "List Element Type",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
             "listElementDeleteCON": {
               "long_name": "List Element Delete",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
@@ -1092,7 +1123,7 @@
           "Freelists": {
             "listFreeCON": {
               "long_name": "Freelist Slideshow 1",
-              "required": true,
+              "required": false,
               "points": 0.0,
               "threshold": 1.0
             }
@@ -1135,7 +1166,7 @@
             "FullCompCON": {},
             "DefSumm": {
               "long_name": "Tree Definition Summary Exercises",
-              "required": true,
+              "required": false,
               "points": 2,
               "threshold": 8
             }
@@ -1155,6 +1186,7 @@
         "long_name": "Binary Tree Traversals",
         "sections": {
           "Binary Tree Traversals": {
+            "BinExampCON": {},
             "preorderCON": {
               "long_name": "Preorder Traversal Slideshow",
               "required": false,
