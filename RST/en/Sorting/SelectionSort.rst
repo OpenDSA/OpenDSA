@@ -11,7 +11,7 @@
 
 .. index:: ! Selection Sort
 
-.. odsalink:: AV/Development/SelectionSortAnalysisCON.css
+.. odsalink:: AV/Sorting/SelectionSortAnalysisCON.css
 
 Selection Sort
 ==============
@@ -128,4 +128,4 @@ Selection Sort.
 
 .. odsascript:: AV/Sorting/selectionsortS1CON.js
 .. odsascript:: AV/Sorting/selectionsortS2CON.js
-.. odsascript:: AV/Development/SelectionSortAnalysisCON.js
+.. odsascript:: AV/Sorting/SelectionSortAnalysisCON.js

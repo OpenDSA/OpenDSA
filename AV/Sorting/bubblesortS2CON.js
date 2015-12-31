@@ -1,8 +1,8 @@
 /*global ODSA */
-"use strict";
-$(document).ready(function () {
+$(document).ready(function() {
+  "use strict";
   var av_name = "bubblesortS2CON";
-  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
+  var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
 
   var theArray2 =  [10, 15, 20, 54, 11, 55, 14, 78];
   var av = new JSAV(av_name);

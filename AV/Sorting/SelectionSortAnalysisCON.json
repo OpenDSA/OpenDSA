@@ -1,0 +1,29 @@
+{
+  "translations" :{
+    "en": {
+	  "sc1": "What is the cost for Selection Sort?",
+	  "sc2": "Selection Sort is essentially a bubble sort, except that the next largest value is remembered so that we can delay the swap to the end of each pass.",
+	  "sc3": "Consider the following example of an array with 6 elements.",
+	  "sc4": "At $i=0$",
+	  "sc11": "At $i=1$",
+	  "sc16": "At $i=2$",
+	  "sc20": "At $i=3$",
+	  "sc23": "At $i=4$",
+	  "sc24": "Thus, the number of comparisons is defined by the equation $\\displaystyle\\sum_{i=0}^{n-1}i = \\frac{n(n-1)}{2}$, or $\\theta(n^2)$, while the number of swaps is $\\theta(n)$.",
+    "lab1": "<b><u>Number of Comparisons</u></b>",
+    "lab2": "<b><u>Number of Swaps</u></b>"
+    }
+  },
+  "code" : {
+    "processing": {
+      "url": "../../../SourceCode/Processing/Sorting/Selectionsort.pde",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: Selectionsort *** */",
+      "endBefore": "/* *** ODSAendTag: Selectionsort *** */",
+      "tags": {
+        "loop1": 2,
+        "loop2": 3
+      }
+    }
+  }
+}
