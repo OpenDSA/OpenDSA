@@ -431,9 +431,9 @@ def identical_dict(prev_org, current):
 
 def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position, chapter_name, chapter_obj, prev_chapter_obj, **kwargs):
     """
-    Create canvas module detals. canvas modules corresponds to OpenDSA chapter. OpenDSA modules corresponds to module_item of type "SubHeader", and each OpenDSA section will be mapped to canvas assignment (if it is gradable, which means it had points greater than zero) or a section will be mapped to module_item of type "ExternalTool" (if it has zero points exercises or no exercises at all).
+    Create canvas module details. canvas modules corresponds to OpenDSA chapter. OpenDSA modules corresponds to module_item of type "SubHeader", and each OpenDSA section will be mapped to canvas assignment (if it is gradable, which means it had points greater than zero) or a section will be mapped to module_item of type "ExternalTool" (if it has zero points exercises or no exercises at all).
 
-    chapter_obj contains chapter configuration details for the current comilation while prev_section_obj contains the same chapter configuration details from the previous comilation. Based on the difference between chapter_obj and prev_chapter_obj for each sectoin one of the following actions will be performed:
+    chapter_obj contains chapter configuration details for the current compilation while prev_section_obj contains the same chapter configuration details from the previous compilation. Based on the difference between chapter_obj and prev_chapter_obj for each section one of the following actions will be performed:
     If a section exists in both chapter_obj and prev_chapter_obj then it will be updated. item_id and canvas_module_id saved in prev_chapter_obj will be used to update the existing section.
     If a section exists in chapter_obj and not in prev_section_obj it will be added to canvas course.
     If a section does not exist in chapter_obj and exists in prev_section_obj then it should be removed from canvas course.
@@ -547,7 +547,7 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                                 item_id = prev_section_obj.get('item_id', None)
                                 if item_id is not None:
                                     # print(str(indexed_section_name) +" "+str(section_points))
-                                    results = assignments.edit_assignment(request_ctx, course_id, item_id, assignment_name=indexed_section_name, assignment_position=module_item_counter, assignment_submission_types="external_tool", assignment_external_tool_tag_attributes= {"url": LTI_url + "/lti_tool?"+ urllib.urlencode(LTI_url_opts)}, assignment_points_possible=section_points, assignment_description=section_name, assignment_assignment_group_id=assignment_group_id)
+                                    results = assignments.edit_assignment(request_ctx, course_id, item_id, assignment_name=indexed_section_name, assignment_position=module_item_counter, assignment_submission_types="external_tool", assignment_external_tool_tag_attributes= {"url": LTI_url + "/lti_tool?"+ urllib.urlencode(LTI_url_opts)}, assignment_points_possible=section_points, assignment_description=section_name)
                         else:
                             if section_action == "add":
                                 results = modules.create_module_item(request_ctx, course_id, module_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?" + urllib.urlencode(LTI_url_opts), module_item_content_id=None,module_item_title=indexed_section_name, module_item_indent=1, module_item_position=module_item_counter)
@@ -733,9 +733,12 @@ def create_course(config):
     # init the request context
     request_ctx = RequestContext(config.access_token, config.LMS_url + "/api")
 
-    prev_chapters = {}
+    course_id = None
     if prev_config_data:
-        course_id = prev_config_data['course_id']
+        course_id = prev_config_data.get('course_id', None)
+
+    prev_chapters = {}
+    if bool(course_id) and course_id is not None:
         # assignment_group_id = prev_config_data['assignment_group_id']
         prev_chapters = prev_config_data.get("chapters")
 
@@ -753,7 +756,6 @@ def create_course(config):
     else:
         # get course_id
         results = courses.list_your_courses(request_ctx, 'total_scores')
-        course_id = None
         for i, course in enumerate(results.json()):
             if course.get("course_code") == course_code:
                 course_id = course.get("id")
@@ -825,7 +827,7 @@ def create_course(config):
 def register_book(config):
     """Register Book in OpenDSA-server"""
 
-    url = config.logging_server + '/api/v1/module/loadbook/'
+    url = config.logging_server + '/api/v1/module/load_lms_book/'
     headers = {'content-type': 'application/json'}
 
     json_data = {}
