@@ -334,7 +334,15 @@ def initialize_conf_py_options(config, slides):
     options['tabbed_code'] = config.tabbed_codeinc
     options['code_lang'] = json.dumps(config.code_lang)
     options['text_lang'] = json.dumps(config.lang)
-    options['tag'] = config.tag
+    
+	#Adding multiple tags
+    tags_string = ""
+    tags_array = []
+    tags_array += [a.strip() for a in config.tag.split(';')]
+    for tag in tags_array:
+      tags_string += " -t "+tag 
+    options["tag"] = tags_string 
+	
     # convert the translation text into unicode sstrings
     tmpSTR = ''
     for k, v in config.text_translated.iteritems():
@@ -348,7 +356,6 @@ def initialize_conf_py_options(config, slides):
     options['rel_book_output_path'] = config.rel_book_output_path
     options['slides_lib'] = 'hieroglyph' if slides else ''
     options['local_mode'] = str(config.local_mode).title()
-
     return options
 
 

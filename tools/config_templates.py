@@ -45,7 +45,6 @@ todo_rst_template = '''\
 
 TODO List
 =========
-
 '''
 makefile_template = '''\
 # Makefile for Sphinx documentation
@@ -54,7 +53,7 @@ makefile_template = '''\
 SPHINXBUILD   = sphinx-build
 HTMLDIR       = %(rel_book_output_path)s
 MINIMIZE      = java -jar "%(odsa_dir)stools/yuicompressor-2.4.7.jar"
-TAG = %(tag)s
+TAGS = %(tag)s
 .PHONY: clean html
 
 all: html min
@@ -80,7 +79,7 @@ min-searchtools:
 	-@$(MINIMIZE) $(HTMLDIR)_static/searchtools.js -o $(HTMLDIR)_static/searchtools.js
 
 html:
-	$(SPHINXBUILD) -t $(TAG) -b html source $(HTMLDIR)
+	$(SPHINXBUILD) $(TAGS) -b html source $(HTMLDIR)
 	rm html/_static/jquery.js html/_static/websupport.js
 	cp "%(odsa_dir)slib/conceptMap.html" $(HTMLDIR)
 	rm *.json
@@ -117,7 +116,6 @@ import sys, os
 
 #checking if we are building a book or class notes (slides)
 on_slides = os.environ.get('SLIDES', None) == "yes"
-
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the

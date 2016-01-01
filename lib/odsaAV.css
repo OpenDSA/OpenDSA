@@ -143,9 +143,3 @@ form {
 #increments, #arrayValues {
   padding-left: 5px;
 }
-
-#prof_check_mark {
-  position: absolute;
-  top: 5px;
-  left: 650px;
-}
