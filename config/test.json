@@ -1,6 +1,6 @@
 {
   "title": "Test",
-  "tag": "CPP",
+  "tag": "Java;CPP",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
