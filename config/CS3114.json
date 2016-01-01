@@ -49,7 +49,7 @@
     "Preface": {
       "Intro": {
         "long_name": "How to Use this System",
-        "exercises": {}
+      "exercises": {}
       }
     },
     "Introduction": {
@@ -1160,8 +1160,8 @@
             "long_name": "Multiple Binary Trees Exercises",
             "required": true,
             "points": 3.0,
-            "threshold": 3.0,
-            "showhide": "Show"
+            "showhide": "Show",
+            "threshold": 3.0
           }
         }
       },
@@ -1359,7 +1359,8 @@
             "long_name": "Insertion Sort Visualization",
             "required": false,
             "showhide": "none",
-            "points": 0
+            "points": 0,
+            "threshold": 1.0
           },
           "InssortPRO": {
             "long_name": "Insertion Sort Proficiency Exercise",
