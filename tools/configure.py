@@ -723,9 +723,12 @@ def create_course(config):
     # init the request context
     request_ctx = RequestContext(config.access_token, config.LMS_url + "/api")
 
-    prev_chapters = {}
+    course_id = None
     if prev_config_data:
-        course_id = prev_config_data['course_id']
+        course_id = prev_config_data.get('course_id', None)
+
+    prev_chapters = {}
+    if bool(course_id) and course_id is not None:
         # assignment_group_id = prev_config_data['assignment_group_id']
         prev_chapters = prev_config_data.get("chapters")
 
@@ -743,7 +746,6 @@ def create_course(config):
     else:
         # get course_id
         results = courses.list_your_courses(request_ctx, 'total_scores')
-        course_id = None
         for i, course in enumerate(results.json()):
             if course.get("course_code") == course_code:
                 course_id = course.get("id")
@@ -815,7 +817,7 @@ def create_course(config):
 def register_book(config):
     """Register Book in OpenDSA-server"""
 
-    url = config.logging_server + '/api/v1/module/loadbook/'
+    url = config.logging_server + '/api/v1/module/load_lms_book/'
     headers = {'content-type': 'application/json'}
 
     json_data = {}
