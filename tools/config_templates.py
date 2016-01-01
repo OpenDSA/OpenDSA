@@ -49,7 +49,6 @@ TODO List
 
 '''
 
-
 makefile_template = '''\
 # Makefile for Sphinx documentation
 #
@@ -57,8 +56,7 @@ makefile_template = '''\
 SPHINXBUILD   = sphinx-build
 HTMLDIR       = %(rel_book_output_path)s
 MINIMIZE      = java -jar "%(odsa_dir)stools/yuicompressor-2.4.7.jar"
-TAG = %(tag)s
-
+TAGS = %(tag)s
 .PHONY: clean html
 
 all: html min
@@ -84,7 +82,7 @@ min-searchtools:
 	-@$(MINIMIZE) $(HTMLDIR)_static/searchtools.js -o $(HTMLDIR)_static/searchtools.js
 
 html:
-	$(SPHINXBUILD) -t $(TAG) -b html source $(HTMLDIR)
+	$(SPHINXBUILD) $(TAGS) -b html source $(HTMLDIR)
 	rm html/_static/jquery.js html/_static/websupport.js
 	cp "%(odsa_dir)slib/conceptMap.html" $(HTMLDIR)
 	rm *.json
@@ -121,7 +119,6 @@ import sys, os
 
 #checking if we are building a book or class notes (slides)
 on_slides = os.environ.get('SLIDES', None) == "yes"
-
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
@@ -153,6 +150,14 @@ sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/showhidecon
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'avembed', 'avmetadata', 'codeinclude', 'numref', 'chapnum', 'odsalink', 'odsascript', 'numfig', 'inlineav', 'html5', 'odsafig', 'odsatable', 'chapref', 'odsatoctree','showhidecontent']
 
 slides_lib = '%(slides_lib)s'
+
+#Adding tags 
+t = '%(tag)s'
+tags_array = []
+tags_array += [a.strip() for a in t.split(';')]
+for tag in tags_array:
+  #tags.add(tag)
+  print tag
 
 #only import hieroglyph when building course notes
 if slides_lib == 'hieroglyph':
@@ -412,6 +417,7 @@ exercises_dir = '%(exercises_root_dir)s'
 # Path to translation json file
 translation_file = '%(odsa_dir)stools/language_msg.json'
 '''
+
 
 # Used to create a JS file with settings common to all modules
 config_js_template = '''\

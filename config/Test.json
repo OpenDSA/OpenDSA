@@ -37,7 +37,7 @@
   "allow_anonymous_credit": true,
   "suppress_todo": false,
   "dispModComp": true,
-  "tag": "CPP",
+  "tag": "CPP;CS2",
   "glob_exer_options": {
     "JXOP-debug": "true"
   },

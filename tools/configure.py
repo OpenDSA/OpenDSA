@@ -384,6 +384,16 @@ def initialize_conf_py_options(config, slides):
     options['tabbed_code'] = config.tabbed_codeinc
     options['code_lang'] = json.dumps(config.code_lang)
     options['text_lang'] = json.dumps(config.lang)
+
+
+    #Adding multiple tags support
+    tags_string = ""
+    tags_array = []
+    tags_array += [a.strip() for a in config.tag.split(';')]
+    for tag in tags_array:
+      tags_string += " -t "+tag 
+    options["tag"] = tags_string 
+    
     # convert the translation text into unicode sstrings
     tmpSTR = ''
     for k, v in config.text_translated.iteritems():
