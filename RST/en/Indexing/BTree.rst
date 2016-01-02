@@ -431,9 +431,12 @@ Here is a visualization for the :math:`\mathrm{B}^+` tree.
    </center>
 
 This visualization was written by David Galles of the University of
-San Francisco as part of his
-`Data Structure Visualizations
-<http://www.cs.usfca.edu/~galles/visualization/Algorithms.html>`_ package.
+San Francisco as part of his |external_link| package.
+
+.. |external_link| raw:: html
+
+   <a href="http://www.cs.usfca.edu/~galles/visualization/Algorithms.html" target="_blank">Data Structure Visualizations</a>
+
 
 .. [#] This concept can be extended further if higher space
        utilization is required.
