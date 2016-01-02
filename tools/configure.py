@@ -331,17 +331,21 @@ def initialize_conf_py_options(config, slides):
     options['odsa_dir'] = config.odsa_dir
     options['book_dir'] = config.book_dir
     options['code_dir'] = config.code_dir
+    options['tag'] = config.tag
     options['tabbed_code'] = config.tabbed_codeinc
     options['code_lang'] = json.dumps(config.code_lang)
     options['text_lang'] = json.dumps(config.lang)
     
 	#Adding multiple tags
-    tags_string = ""
-    tags_array = []
-    tags_array += [a.strip() for a in config.tag.split(';')]
-    for tag in tags_array:
-      tags_string += " -t "+tag 
-    options["tag"] = tags_string 
+    if config.tag:
+      tags_string = ""
+      tags_array = []
+      tags_array += [a.strip() for a in config.tag.split(';')]
+      for tag in tags_array:
+        tags_string += " -t "+tag 
+      options["tag"] = tags_string
+    else:
+        options["tag"] = ""
 	
     # convert the translation text into unicode sstrings
     tmpSTR = ''
