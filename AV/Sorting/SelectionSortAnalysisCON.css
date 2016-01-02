@@ -1,5 +1,8 @@
 #SelectionSortAnalysisCON {
-  height: 600px;
+  height: 400px;
+}
+#SelectionSortAnalysisCON .jsavline {
+  height: 55px;
 }
 .rotated {
   -webkit-transform: rotate(90deg);

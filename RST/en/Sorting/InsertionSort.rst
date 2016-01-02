@@ -43,7 +43,7 @@ The input is an array named ``A`` that stores :math:`n` records.
 
 .. codeinclude:: Sorting/Insertionsort
    :tag: Insertionsort
-   
+
 .. _practice:
 
 (Note that to make the explanation for these sorting algorithms as
@@ -62,7 +62,7 @@ Here we see the first few iterations of Insertion Sort.
 
 .. inlineav:: insertionsortCON ss
    :output: show
-   
+
 This continues on with each record in turn.
 Call the current record :math:`x`.
 Insertion Sort will move it to the left so
@@ -147,11 +147,15 @@ Actually, it happens a lot.
 
 .. avembed:: Exercises/Sorting/InssortSumm.html ka
 
-See
-`Computational Fairy Tales: Why Tailors Use Insertion Sort
-<http://computationaltales.blogspot.com/2011/04/why-tailors-use-insertion-sort.html>`_
-for a discussion on how the relative costs of search and insert can
+See |external_link| for a discussion on how the relative costs of search and insert can
 affect what is the best sort algorithm to use.
+
+.. |external_link| raw:: html
+
+   <a href="http://computationaltales.blogspot.com/2011/04/why-tailors-use-insertion-sort.html" target="_blank">Computational Fairy Tales: Why Tailors Use Insertion Sort</a>
+
+.. `Computational Fairy Tales: Why Tailors Use Insertion Sort
+.. <http://computationaltales.blogspot.com/2011/04/why-tailors-use-insertion-sort.html target = "_blank">`_
 
 .. odsascript:: AV/Sorting/insertionsortCON.js
 .. odsascript:: AV/Sorting/InsertionSortWorstCaseCON.js

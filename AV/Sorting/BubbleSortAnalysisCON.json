@@ -21,8 +21,41 @@
       "lineNumbers": false,
       "startAfter": "/* *** ODSATag: Bubblesort *** */",
       "endBefore": "/* *** ODSAendTag: Bubblesort *** */",
-      "top": 250,
-      "left": 200,
+      "top": 180,
+      "left": 180,
+      "tags": {
+        "loop": 3
+      }
+    }],
+    "c++": [{
+      "url": "../../../SourceCode/C++/Sorting/Bubblesort.cpp",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: Bubblesort *** */",
+      "endBefore": "/* *** ODSAendTag: Bubblesort *** */",
+      "top": 180,
+      "left": 180,
+      "tags": {
+        "loop": 3
+      }
+    }],
+    "java": [{
+      "url": "../../../SourceCode/Java/Sorting/Bubblesort.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: Bubblesort *** */",
+      "endBefore": "/* *** ODSAendTag: Bubblesort *** */",
+      "top": 130,
+      "left": 180,
+      "tags": {
+        "loop": 3
+      }
+    }],
+    "java_generic": [{
+      "url": "../../../SourceCode/Java_Generic/Sorting/Bubblesort.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: Bubblesort *** */",
+      "endBefore": "/* *** ODSAendTag: Bubblesort *** */",
+      "top": 180,
+      "left": 180,
       "tags": {
         "loop": 3
       }
