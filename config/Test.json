@@ -43,7 +43,7 @@
   },
   "chapters": {
     "Sorting": {
-      "Sorting/InsertionSort1": {
+      "Sorting/InsertionSort": {
         "long_name": "Insertion Sort",
         "sections": {
           "Insertion Sort": {

@@ -151,14 +151,6 @@ extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sp
 
 slides_lib = '%(slides_lib)s'
 
-#Adding tags 
-t = '%(tag)s'
-tags_array = []
-tags_array += [a.strip() for a in t.split(';')]
-for tag in tags_array:
-  #tags.add(tag)
-  print tag
-
 #only import hieroglyph when building course notes
 if slides_lib == 'hieroglyph':
   extensions.append('hieroglyph')

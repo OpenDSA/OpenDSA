@@ -387,12 +387,15 @@ def initialize_conf_py_options(config, slides):
 
 
     #Adding multiple tags support
-    tags_string = ""
-    tags_array = []
-    tags_array += [a.strip() for a in config.tag.split(';')]
-    for tag in tags_array:
-      tags_string += " -t "+tag 
-    options["tag"] = tags_string 
+    if config.tag:
+      tags_string = ""
+      tags_array = []
+      tags_array += [a.strip() for a in config.tag.split(';')]
+      for tag in tags_array:
+        tags_string += " -t "+tag 
+      options["tag"] = tags_string
+    else:
+      options["tag"] = ""
     
     # convert the translation text into unicode sstrings
     tmpSTR = ''
