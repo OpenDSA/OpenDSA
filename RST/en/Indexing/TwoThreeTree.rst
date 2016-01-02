@@ -23,7 +23,7 @@ obeys the following definition:
 #. A node contains one or two keys.
 
 #. Every internal node has either two children (if it contains one key)
-   or three children (if it contains two keys).  Hence the name. 
+   or three children (if it contains two keys).  Hence the name.
 
 #. All leaves are at the same level in the tree, so
    the tree is always height balanced.
@@ -210,9 +210,9 @@ setting.
 
 .. raw:: html
 
-   <center> 
-   <iframe id="BT_iframe" 
-        src="http://www.cs.usfca.edu/~galles/visualization/BTree.html"
+   <center>
+   <iframe id="BT_iframe"
+        src="//www.cs.usfca.edu/~galles/visualization/BTree.html"
         width="1100" height="800"
         frameborder="1" marginwidth="0" marginheight="0"
 	scrolling="no">

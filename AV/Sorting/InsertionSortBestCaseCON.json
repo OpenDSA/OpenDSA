@@ -15,6 +15,40 @@
       "startAfter": "/* *** ODSATag: Insertionsort *** */",
       "endBefore": "/* *** ODSAendTag: Insertionsort *** */",
       "tags": {
+        "loops": [2, 3],
+        "loop1": 2,
+        "loop2": 3
+      }
+    }],
+    "c++": [{
+      "url": "../../../SourceCode/C++/Sorting/Insertionsort.cpp",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: Insertionsort *** */",
+      "endBefore": "/* *** ODSAendTag: Insertionsort *** */",
+      "tags": {
+        "loops": [2, 3],
+        "loop1": 2,
+        "loop2": 3
+      }
+    }],
+    "java": [{
+      "url": "../../../SourceCode/Java/Sorting/Insertionsort.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: Insertionsort *** */",
+      "endBefore": "/* *** ODSAendTag: Insertionsort *** */",
+      "tags": {
+        "loops": [2, 3],
+        "loop1": 2,
+        "loop2": 3
+      }
+    }],
+    "java_generic": [{
+      "url": "../../../SourceCode/Java_Generic/Sorting/Insertionsort.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: Insertionsort *** */",
+      "endBefore": "/* *** ODSAendTag: Insertionsort *** */",
+      "tags": {
+        "loops": [2, 3],
         "loop1": 2,
         "loop2": 3
       }
