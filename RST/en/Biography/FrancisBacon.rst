@@ -61,4 +61,3 @@ things which obstructed the path of correct scientific reasoning.
 .. [#] Frans Pourbus the younger, *Portrait of Francis Bacon*
    [Public domain], via Wikimedia Commons.
    File URL: https://upload.wikimedia.org/wikipedia/commons/a/a7/Pourbus_Francis_Bacon.jpg
-
