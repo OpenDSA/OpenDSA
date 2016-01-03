@@ -305,6 +305,7 @@ html_context = {"script_files": [
                   '_static/config.js',
                   '%(eb2root)slib/odsaUtils-min.js',
                   '%(eb2root)slib/odsaMOD-min.js',
+                  'https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js',
                   '%(eb2root)slib/dataStructures.js',
                   '%(eb2root)slib/conceptMap.js'
                 ],
