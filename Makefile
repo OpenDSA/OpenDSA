@@ -133,7 +133,7 @@ CS2in: min
 	python $(CONFIG_SCRIPT) config/CS2.json -c config/CS2in_LMSconf.json -b CS2in
 
 CS3: min
-	python $(CONFIG_SCRIPT) config/CS3.json -c config/CS3_LMSconf.json
+	python $(CONFIG_SCRIPT) config/CS3.json
 
 CS3vt: min
 	python $(CONFIG_SCRIPT) config/CS3.json -c config/CS3vt_LMSconf.json -b CS3vt

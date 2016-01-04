@@ -1719,6 +1719,14 @@
           }
         }
       },
+      "Development/BalancedTree": {
+        "long_name": "Balanced Trees",
+        "sections": {}
+      },
+      "Development/AVL": {
+        "long_name": "AVL Tree",
+        "sections": {}
+      },
       "Binary/BinaryChapSumm": {
         "long_name": "Binary Tree Chapter Summary",
         "sections": {
@@ -2330,6 +2338,28 @@
               "required": true,
               "points": 2,
               "threshold": 10
+            }
+          }
+        }
+      }
+    },
+    "Searching": {
+      "Searching/BinarySearch": {
+        "long_name": "Binary Search",
+        "sections": {
+          "Sequential Search": {},
+          "Binary Search": {
+            "binarySearchCON": {
+              "long_name": "Binary Search Algorithm Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "binarySearchPRO": {
+              "long_name": "Binary Search Proficiency Exercise",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
             }
           }
         }

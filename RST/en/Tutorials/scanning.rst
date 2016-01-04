@@ -9,22 +9,33 @@
    :satisfies: Text input
    :topic:
 
-==========================================
-Reading In Input (From Files Or Otherwise)
-==========================================
+=======================================
+Reading Input (from Files or Otherwise)
+=======================================
 
 The Scanner Class
 -----------------
+
 Java has an excellent class for reading in text. The
-Scanner class is extremely useful to quickly parse through a String. The API for
-the Scanner class can be found
-`here <http://docs.oracle.com/javase/7/docs/api/java/util/Scanner.html>`__.
-So how do we properly read in a file? Well there are a number of ways.
-For a simple demonstration I will show you how to use the Scanner class to read
-in a command file from an old CS3114 project. In this project we are given 4
-commands that our program must handle: debug, search, add, and delete. Take a
-look at the input file
-`here <http://courses.cs.vt.edu/~cs3114/Fall13/watcherP4.txt>`__.
+Scanner class is extremely useful to quickly parse through a String.
+See the |external_link1|.
+So how do we properly read in a file?
+There are a number of ways.
+This page shows a simple demonstration of how to use the Scanner class to read
+in a command file from an old CS3114 project.
+In this project we are given 4 commands that our program must handle:
+debug, search, add, and delete.
+Take a look at the |external_link2|.
+
+.. |external_link1| raw:: html
+
+   <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Scanner.html" target = "_blank">Scanner class API</a>
+
+
+.. |external_link2| raw:: html
+
+   <a href="http://courses.cs.vt.edu/~cs3114/Fall13/watcherP4.txt" target = "_blank">input file</a>
+
 
 1. debug - prints information about the tree in the program
 
@@ -46,12 +57,16 @@ that this code is not necessarily safe. It assumes that the command file
 given is properly formatted, and as such if a user decides to give the program
 a malformed file the program will behave in a possibly unknown way.
 
-
 Depending on the structure of your file you may not wish to simply do the token
 method. Another approach would be to read in an entire line and then work from
-there. Consider the input file found
-`here <http://courses.cs.vt.edu/~cs3114/Fall14/P1sampleInput.txt>`__.
-We now have 3 commands we must support.
+there.
+Consider |external_link3|.
+We now have 3 commands that we must support.
+
+.. |external_link3| raw:: html
+
+   <a href="http://courses.cs.vt.edu/~cs3114/Fall14/P1sampleInput.txt" target = "_blank">this input file</a>
+
 
 1. insert {artist-name}<SEP>{song-name} - inserts a song using the information
 provided in the fields
@@ -71,5 +86,6 @@ uses the seperator <SEP>.
 
 Seperating artists and song name on the same line can prove to be rather difficult
 due to the fact that either name might include a space or other
-traditional deliminator. By seperating these fields using <SEP>, we drastically
+traditional deliminator.
+By seperating these fields using <SEP>, we drastically
 reduce the possibilty of a valid name containing the delimeter.

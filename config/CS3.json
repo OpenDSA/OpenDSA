@@ -80,6 +80,69 @@
         }
       }
     },
+    "Programming Tutorials": {
+      "Tutorials/cmdline": {
+        "long_name": "Command Line Basics",
+        "sections": {
+          "What's A CLI?": {
+            "terminal": {
+              "long_name": "Terminal",
+              "required": false,
+              "points": 0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Tutorials/parameters": {
+        "long_name": "Parsing Command Line Parameters",
+        "sections": {
+          "Parameters In Programming": {}
+        }
+      },
+      "Tutorials/eclipseparameters": {
+        "long_name": "Using parameters in Eclipse",
+        "sections": {}
+      },
+      "Tutorials/webcattools": {
+        "long_name": "Configuring Eclipse For Virginia Tech",
+        "sections": {}
+      },
+      "Tutorials/debugmethods": {
+        "long_name": "Debugging Methods",
+        "sections": {}
+      },
+      "Tutorials/debug": {
+        "long_name": "Debugging in Eclipse",
+        "sections": {}
+      },
+      "Tutorials/scanning": {
+        "long_name": "Reading In Input",
+        "sections": {
+          "The Scanner Class": {}
+        }
+      },
+      "Tutorials/randomaccessfile": {
+        "long_name": "Using the Java RandomAccessFile class",
+        "sections": {
+          "Understanding File I/O": {}
+        }
+      },
+      "Tutorials/junitstart": {
+        "long_name": "Junit Testing and You",
+        "sections": {
+          "Getting Started": {}
+        }
+      },
+      "Tutorials/junitbasic": {
+        "long_name": "Writing JUnit Tests",
+        "sections": {}
+      },
+      "Tutorials/junitcoverage": {
+        "long_name": "Junit tests and how to use them",
+        "sections": {}
+      }
+    },
     "Mathematical Background": {
       "Background/MathpreIntro": {
         "long_name": "Chapter Introduction",

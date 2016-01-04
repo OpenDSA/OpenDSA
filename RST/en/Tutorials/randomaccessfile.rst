@@ -22,8 +22,11 @@ reading in files as strings we can instead read the raw bytes and then write
 those bytes to the file. By doing this we have no limits on the types of data
 we can store. Additionally, RandomAccessFiles, allow reading and writing anywhere
 withing the file, jumping to any legal location within the file itself.
-Before reading this tutorial be sure to check the RandomAccessFile API found
-`here <https://docs.oracle.com/javase/7/docs/api/java/io/RandomAccessFile.html>`__.
+Before reading this tutorial be sure to check the |external_link|.
+
+.. |external_link| raw:: html
+
+   <a href="https://docs.oracle.com/javase/7/docs/api/java/io/RandomAccessFile.html" target = "_blank">RandomAccessFile API</a>
 
 Before getting started using the RandomAccessFile class, be sure you understand
 the following concepts.
@@ -47,8 +50,9 @@ moved past the end of file and written to at that location, if the user tries to
 read it may encounter the EndOfFile or EOF at the old size and as such will throw
 an error.
 
+
 Using RandomAccessFile Class
-----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Consider the code example below. It will generate a file of a size 0 to 999
 bytes and it will then fill those bytes in order with numbers from 65 to 90
