@@ -47,8 +47,12 @@ through each line of their code and explain it to the duck as if it were a
 normal person with no programming experience. Rubber Duck Debugging is only as
 effective as the thought put into it, however. When making use of the technique
 be sure to be thorough in your explanations and to consider every possible case.
-For an example of Rubber Duck Debugging read this
-`blog <http://blog.codinghorror.com/rubber-duck-problem-solving/>`__.
+For an example of Rubber Duck Debugging read |external_link|.
+
+.. |external_link| raw:: html
+
+   <a href="http://blog.codinghorror.com/rubber-duck-problem-solving/" target = "_blank">this blog</a>
+
 
 Wolf Fence Debugging
 ~~~~~~~~~~~~~~~~~~~~
@@ -68,14 +72,9 @@ Print Debugging vs Source Debugging
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Choosing between source code debugging and print based debugging can be difficult
-at times. There are many different advantages and disadvantages to each method,
-however, in my personal experience I find it easiest to use print based
-debugging to troubleshoot quick problems (i.e. what value is this method returning)
-or to help give a more detailed context for source level debugging. For exmaple,
-in a recent project, I encountered an exception. While the exception provided
-a very detailed message and even gave the line of code that caused the error, it
-still did not provide the information needed. I made use of a print statement to
-ensure that that the data being used was as expected. When the data had been
-verified, I had to use the source level debugger to give more information. That
-being said printing the information made it easier to find the cause of the issue.
-
+at times.
+There are advantages and disadvantages to each method.
+Generally, print-based debugging can conveniently give you a small
+amount of targetted information (that is, you know what you want).
+Otherwise, source-level debugging makes it easy to explore what is
+going on with your code.

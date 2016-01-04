@@ -12,9 +12,6 @@
 Code Coverage In JUnit
 ======================
 
-Getting Started
----------------
-
 One of the most useful features that the webcat grading system provides is
 information of total code coverage. Thankfully Eclipse has a couple of plugins
 that offer similar functionality so when you write your code you will not be
@@ -39,7 +36,7 @@ the option to select EclEmma for installation. Click the checkbox and progress
 through the installation screens.
 
 Using EclEmma
--------------
+~~~~~~~~~~~~~
 
 After installing the plugin begin writing test code. After completion of the
 test code select the button selected in red in the below image.

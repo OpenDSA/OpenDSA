@@ -60,9 +60,11 @@ is a more in depth explanation of the command. Below is an example of running
 
 4. Further Reading: This was a very brief introduction to the terminal. It was
 included only to give some context to further chapters that make use of
-arguments. For more information feel free to check this resource
-`here <https://help.ubuntu.com/community/UsingTheTerminal>`__.
+arguments. For more information feel free to |external_link|.
 
+.. |external_link| raw:: html
+
+   <a href="https://help.ubuntu.com/community/UsingTheTerminal" target="_blank">check this resource</a>
 
 .. odsafig:: Images/manexample.png
    :width: 500
@@ -73,11 +75,11 @@ arguments. For more information feel free to check this resource
 
    The man command is extremely useful for learning about the syntax/usage of a command
 
-*\*Author's Note: The man command should be available in any GNU-style terminal.
+*\*Note: The man command should be available in any GNU-style terminal.
 If you are using Windows the native Command Prompt does not have a man command.*
 
 |
+.. Does not work with new LTI support.
+.. Give the terminal a try.
 
-Give the terminal a try.
-
-.. avembed:: AV/Tutorials/terminal.html ka
+.. .. avembed:: AV/Tutorials/terminal.html ka

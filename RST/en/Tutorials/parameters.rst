@@ -51,8 +51,13 @@ your array in C would be::
 Java however, removes the command name and only provides parameters.
 
 I have created a main function skeleton for you to use in your projects. It is 
-set up simply and makes use of switch cases. You can download it 
-`here <http://pastebin.com/gwSH2cEa>`__. Let's see how it works.
+set up simply and makes use of switch cases. You can |external_link1|.
+Let's see how it works.
+
+.. |external_link1| raw:: html
+
+   <a href="http://pastebin.com/gwSH2cEa" target="_blank">download it</a>
+
 
 .. codeinclude:: Java/Tutorials/MainParameters.java
 
@@ -64,8 +69,7 @@ can invoke them anyway you wish. The switch case statement allows you to easily
 write for any parameter and add a case for unrecognized parameters by using the
 default case for any non matching parameters. In this example I choose to exit
 after printing the unrecognized string. In the future you may wish to change
-this to something else. You can learn more about switch statements
-`here <http://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html>`__.
+this to something else. You can learn more about |external_link2|.
 It is also important to note that this function will possibly throw an exception
 or behave in an unexpected way if you use "-f" but do not give a file name. For
 example you call the program with {"-f", "-v"}, this will set the filename to -v.
@@ -74,3 +78,7 @@ access outside the array bounds. You can prevent this by using a try catch, but
 for simplicity's sake I chose to make example very simple. Once you have your
 parameters set, you can call the appropriate methods to launch your program.
 There you go simple command line parsing!
+
+.. |external_link2| raw:: html
+
+   <a href="http://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html" target="_blank">switch statements</a>

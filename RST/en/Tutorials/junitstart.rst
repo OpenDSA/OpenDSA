@@ -26,14 +26,19 @@ test code. In addition to this Virginia Tech has developed a few more extensions
 of this suite and released them for students to make use of. For the purpose of
 these tutorials we will make use of this class for our test cases. Note that it
 will in many ways be similar to the standard JUnit functionality, but will have
-some additional functions that help with testing. As such we must import and set
-our program to make use of this library. You can find directions to so on
-`this page <http://web-cat.org/junit-quickstart/>`_.
+some additional functions that help with testing.
+As such we must import and set our program to make use of this library.
+You can find directions |external_link1|.
 In addition to configuring your build path, be sure to look over this page as it
 is an excellent quick start to JUnit functionality.
 
+.. |external_link1| raw:: html
+
+   <a href="http://web-cat.org/junit-quickstart/" target = "_blank">here</a>
+
+
 Design Considerations
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 There are a few different approaches to testing code. The approach most classes
 at Virginia Tech teach is code coverage. The code coverage approach to testing
@@ -57,7 +62,7 @@ The walk and jump methods. In order to keep them modular simply create two
 seperate test methods: testJump and testWalk.
 
 Meaningful Tests
-----------------
+~~~~~~~~~~~~~~~~
 
 When writing your test cases it is important not to just run the code with
 random tests. All the tests should be designed to test common runtime conditions
@@ -68,8 +73,11 @@ again will not add anything and will slow down the overall runtime of tests.
 Remember quality over quantity!
 
 More Information
-----------------
+~~~~~~~~~~~~~~~~
 
-For more information
-`this blog <http://openmymind.net/2011/2/23/Foundations-of-Programming-2-Chapter-5-Effective-T/>`_
+For more information |external_link2|
 is an excellent resource to read and learn from.
+
+.. |external_link2| raw:: html
+
+   <a href="http://openmymind.net/2011/2/23/Foundations-of-Programming-2-Chapter-5-Effective-T/" target = "_blank">this blog</a>

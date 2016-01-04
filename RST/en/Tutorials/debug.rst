@@ -31,9 +31,13 @@ What Is A Debugger?
 A debugger is a piece of software that allows a programmer to run their code
 as if it is executing normally, but allowing stops and pauses at any point to
 dump information from the program. It gives unprecendented knowledge to what
-happens in each step of the program. For more information about debuggers refer
-to the entry on 
-`Wikipedia <http://en.wikipedia.org/wiki/Debugger>`__.
+happens in each step of the program.
+For more information about debuggers, refer to the |external_link1|.
+
+.. |external_link1| raw:: html
+
+   <a href="http://en.wikipedia.org/wiki/Debugger" target = "_blank">Wikipedia entry</a>
+
 
 Debugging Terms
 ~~~~~~~~~~~~~~~
@@ -64,19 +68,24 @@ window (see Figure 1).
 
    Figure 2
 
-*\*Note - There are a few more step functions not documented here, to
-learn more about them*
-`here <http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2Ftasks%2Ftask-stepping.htm>`__.
+*\*Note - There are a few more step functions not documented here, you can
+learn more about them* |external_link2|.
+
+.. |external_link2| raw:: html
+
+   <a href="http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2Ftasks%2Ftask-stepping.htm" target = "_blank">here</a>
+
 
 Debugging A Memory Pool
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-This section follows very closely with projects like
-`this <http://courses.cs.vt.edu/~cs3114/Fall14/P1.pdf>`__.
-For some programs you may need to analyze byte chunks, in other words for a region
-of memory what does it represent and what information does it contain?
-Doing so can be difficult due to a combination of factors. So how do we
-meaningfully analyze a chunk of bytes? Consider the following code. 
+This section applies directly to many CS3114 projects.
+For some programs you may need to analyze byte chunks.
+In other words, for a region of memory, what does it represent and what information
+does it contain?
+Doing so can be difficult due to a combination of factors.
+So how do we meaningfully analyze a chunk of bytes?
+Consider the following code. 
 
 .. codeinclude:: Java/Tutorials/MainByteArrayDebug.java
 
@@ -225,6 +234,10 @@ you choose conditional, create an arbitrary boolean expression to satisfy.
    :alt: Breakpoint condition
 
 By making use of conditional breakpoints you can speed up debugging and eliminate
-the chance of accidentally progressing too far. For more information on using,
-breakpoints check out Eclipse's official documentation found
-`here <https://wiki.eclipse.org/FAQ_How_do_I_set_a_conditional_breakpoint%3F>`__.
+the chance of accidentally progressing too far.
+For more information on using breakpoints,
+check out |external_link3|.
+
+.. |external_link3| raw:: html
+
+   <a href="https://wiki.eclipse.org/FAQ_How_do_I_set_a_conditional_breakpoint%3F" target = "_blank">Eclipse's official documentation</a>
