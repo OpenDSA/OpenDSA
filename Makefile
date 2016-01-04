@@ -105,6 +105,12 @@ Testvt: min
 Testin: min
 	python $(CONFIG_SCRIPT) config/Test.json -c config/Testin_LMSconf.json -b Testin
 
+testcmap: min
+	python $(CONFIG_SCRIPT) config/testcmap.json -b testcmap
+
+testcmapin: min
+	python $(CONFIG_SCRIPT) config/testcmap.json -c config/testcmapin_LMSconf.json -b testcmapin
+
 RecurTutor: min
 	python $(CONFIG_SCRIPT) config/RecurTutor.json -b RecurTutor
 
