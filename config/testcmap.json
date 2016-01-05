@@ -1,0 +1,211 @@
+{
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Processing": {
+      "ext": [
+        "pde"
+      ],
+      "label": "Processing",
+      "lang": "java"
+    }
+  },
+  "lang": "en",
+  "build_JSAV": false,
+  "allow_anonymous_credit": true,
+  "suppress_todo": false,
+  "build_cmap": true,
+  "glob_exer_options": {
+    "JXOP-debug": "true",
+    "JXOP-code": "c++"
+  },
+  "chapters": {
+    "Graphs": {
+      "Graph/GraphIntro": {
+        "long_name": "Introduction and Terminology",
+        "sections": {
+          "Graph Terminology": {
+            "GdirundirCON": {},
+            "GneighborCON": {},
+            "GpathDefCON": {},
+            "GconcomCON": {},
+            "GsparseDefCON": {}
+          },
+          "Graph Representations": {
+            "GdirRepCON": {},
+            "GundirRepCON": {},
+            "GweightedCON": {},
+            "GspaceCalcSumm": {
+              "long_name": "Graph Space Requirements Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 5
+            }
+          },
+          "Graph Terminology Questions": {
+            "GraphIntroSumm": {
+              "long_name": "Graph Terminology Summary Exercise",
+              "required": true,
+              "points": 3.0,
+              "threshold": 10
+            }
+          }
+        }
+      },
+      "Graph/GraphImpl": {
+        "long_name": "Graph Implementation",
+        "sections": {}
+      },
+      "Graph/GraphTraversal": {
+        "long_name": "Graph Traversal",
+        "sections": {
+          "Graph Traversals": {},
+          "Depth-First Search": {
+            "graphDFS": {
+              "long_name": "Depth First Search Visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            },
+            "graphDFSPE": {
+              "long_name": "DFS Proficiency Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 0.90
+            }
+          },
+          "Breadth-First Search": {
+            "graphBFS": {
+              "long_name": "Breadth First Search Visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            },
+            "graphBFSPE": {
+              "long_name": "BFS Proficiency Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 0.90
+            }
+          }
+        }
+      },
+      "Graph/GraphTopsort": {
+        "long_name": "Topological Sort",
+        "sections": {
+          "Topological Sort": {
+            "topsortCON": {},
+            "topSort": {
+              "long_name": "Topological Sort (DFS) visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            },
+            "qTopSort": {
+              "long_name": "Topological Sort (Queue) visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Graph/GraphShortest": {
+        "long_name": "Shortest-Paths Problems",
+        "sections": {
+          "Shortest-Paths Problems": {
+            "dijkstraCON": {},
+            "DijkstraAV": {
+              "long_name": "Dijkstra's Algorithm Visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            },
+            "DijkstraPE": {
+              "long_name": "Dijkstra's Algorithm Proficiency Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 0.90
+            }
+          }
+        }
+      },
+      "Graph/MCST": {
+        "long_name": "Minimal Cost Spanning Trees",
+        "sections": {
+          "Minimal Cost Spanning Trees": {
+            "MCSTCON": {}
+          },
+          "Prim's Algorithm": {
+            "PrimAV": {
+              "long_name": "Prim's Algorithm Visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            },
+            "PrimAVPQ": {
+              "long_name": "Prim's with Priority Queue Algorithm Visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            },
+            "PrimAVPE": {
+              "long_name": "Prim's Algorithm Proficiency Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 0.90
+            }
+          }
+        }
+      },
+      "Graph/Kruskal": {
+        "long_name": "Kruskal's Algorithm",
+        "sections": {
+          "Kruskal's Algorithm": {
+            "KruskalUFAV": {
+              "long_name": "Kruskal's Algorithm Visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            },
+            "KruskalPE": {
+              "long_name": "Kruskal's Algorithm Proficiency Exercise",
+              "required": true,
+              "points": 2.0,
+              "threshold": 0.90
+            }
+          }
+        }
+      },
+      "Graph/Floyd": {
+        "long_name": "All-Pairs Shortest Paths",
+        "sections": {}
+      }
+    },
+    "Appendix": {
+      "Glossary": {
+        "long_name": "Glossary",
+        "sections": {}
+      },
+      "Bibliography": {
+        "long_name": "Bibliography",
+        "sections": {}
+      }
+    }
+  }
+}

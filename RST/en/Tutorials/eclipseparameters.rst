@@ -14,8 +14,11 @@ Using Parameters in Eclipse
 ===========================
 
 Sometimes your projects developed Eclipse need to use command line parameters.
-You can view a tutorial of the material in this 
-`tutorial <https://www.youtube.com/watch?v=0tpsXmchBfk&feature=youtu.be>`__.
+You can |external_link2| of the material.
+
+.. |external_link2| raw:: html
+
+   <a href="https://www.youtube.com/watch?v=0tpsXmchBfk&feature=youtu.be" target="_blank">view a tutorial</a>
 
 1. Open your project and select the drop down arrow next to the Green Run Arrow
 (circled below). If you cannot see this arrow then you may be in the wrong
