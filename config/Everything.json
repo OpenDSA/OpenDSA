@@ -128,29 +128,22 @@
       "Tutorials/randomaccessfile": {
         "long_name": "Using the Java RandomAccessFile class",
         "sections": {
-          "Understanding File I/O": {},
-          "Using RandomAccessFile Class": {}
+          "Understanding File I/O": {}
         }
       },
       "Tutorials/junitstart": {
-        "long_name": "Junit tests and how to use them",
+        "long_name": "Junit Testing and You",
         "sections": {
-          "Getting Started": {},
-          "Design Considerations": {},
-          "Meaningful Tests": {},
-          "More Information": {}
+          "Getting Started": {}
         }
       },
       "Tutorials/junitbasic": {
-        "long_name": "Junit tests and how to use them",
+        "long_name": "Writing JUnit Tests",
         "sections": {}
       },
       "Tutorials/junitcoverage": {
         "long_name": "Junit tests and how to use them",
-        "sections": {
-          "Getting Started": {},
-          "Using EclEmma": {}
-        }
+        "sections": {}
       }
     },
     "Design I": {
