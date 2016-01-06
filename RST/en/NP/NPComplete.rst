@@ -183,10 +183,4 @@ terms of Figure :num:`Figure #Complex`.
 The most important unanswered question in theoretical computer
 science is whether :math:`P = NP`.
 
-Given below are some problems that are NP Complete.
-
-Examples of NP-Complete Problems
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The next few chapters provides a few examples of NP Complete Problems.
-
+The next few modules show examples of NP Complete Problems.

@@ -79,6 +79,7 @@ arguments. For more information feel free to |external_link|.
 If you are using Windows the native Command Prompt does not have a man command.*
 
 |
+
 .. Does not work with new LTI support.
 .. Give the terminal a try.
 

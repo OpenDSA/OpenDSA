@@ -3032,6 +3032,20 @@
         "sections": {}
       }
     },
+    "Advanced Data Structures": {
+      "SearchStruct/SkipList": {
+        "long_name": "Skip Lists",
+        "sections": {}
+      },
+      "Spatial/Spatial": {
+        "long_name": "Spatial Data Structures",
+        "sections": {}
+      },
+      "Spatial/PRquadtree": {
+        "long_name": "PR Quadtrees",
+        "sections": {}
+      }
+    },
     "Appendix": {
       "Glossary": {
         "long_name": "Glossary",
