@@ -51,3 +51,6 @@ sftp-config.json
 
 /src/
 *.todo
+
+# Ignore LMS course configuration files
+config/*_LMSconf.json
