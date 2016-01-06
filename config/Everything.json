@@ -3255,11 +3255,15 @@
       }
     },
     "Spatial Data Structures": {
-      "Development/Spatial": {
+      "Spatial/Spatial": {
         "long_name": "Spatial Data Structures",
         "exercises": {}
       },
-      "Development/KDtree": {
+      "Spatial/PRquadtree": {
+        "long_name": "PR QUadtrees",
+        "exercises": {}
+      },
+      "Spatial/KDtree": {
         "long_name": "k-d Trees",
         "exercises": {
           "kd-treeAV": {
@@ -3278,7 +3282,7 @@
           }
         }
       },
-      "Development/Bintree": {
+      "Spatial/Bintree": {
         "long_name": "Bintrees",
         "exercises": {
           "bintreeAV": {
@@ -3290,7 +3294,7 @@
           }
         }
       },
-      "Development/BintreeNew": {
+      "Spatial/BintreeNew": {
         "long_name": "Bintrees",
         "exercises": {
           "bintreeCONBTEX": {},
@@ -3302,6 +3306,10 @@
             "threshold": 1.0
           }
         }
+      },
+      "Spatial/OtherSpatial": {
+        "long_name": "Other Spatial Data Structures",
+        "exercises": {}
       }
     },
     "Searching": {
@@ -3387,20 +3395,24 @@
         }
       }
     },
-    "Balanced Trees": {
-      "Development/BalancedTree": {
+    "Search Structures": {
+      "SearchStruct/SkipList": {
+        "long_name": "Skip Lists",
+        "exercises": {}
+      },
+      "SearchStruct/BalancedTree": {
         "long_name": "Balanced Trees",
         "exercises": {}
       },
-      "Development/AVL": {
+      "SearchStruct/AVL": {
         "long_name": "AVL Tree",
         "exercises": {}
       },
-      "Development/Splay": {
+      "SearchStruct/Splay": {
         "long_name": "Splay Tree",
         "exercises": {}
       },
-      "Development/RedBlack": {
+      "SearchStruct/RedBlack": {
         "long_name": "The Red-Black Tree",
         "exercises": {
           "redBlackTreeColoring": {
@@ -3540,41 +3552,37 @@
         "long_name": "Introduction to Randomized Algorithms",
         "exercises": {}
       },
-      "Development/SkipList": {
-        "long_name": "Skip Lists",
-        "exercises": {}
-      },
       "Development/RandomNums": {
         "long_name": "Random Numbers",
         "exercises": {}
       }
     },
     "Lower Bounds": {
-      "Development/BoundLower": {
+      "Bounds/BoundLower": {
         "long_name": "Introduction to Lower Bounds",
         "exercises": {}
       },
-      "Development/BoundSearch": {
+      "Bounds/BoundSearch": {
         "long_name": "Lower Bounds on Search",
         "exercises": {}
       },
-      "Development/BoundMax": {
+      "Bounds/BoundMax": {
         "long_name": "Lower Bounds on Search",
         "exercises": {}
       },
-      "Development/BoundAdversary": {
+      "Bounds/BoundAdversary": {
         "long_name": "Adversary Lower Bounds",
         "exercises": {}
       },
-      "Development/BoundState": {
+      "Bounds/BoundState": {
         "long_name": "State Space Lower Bounds",
         "exercises": {}
       },
-      "Development/BoundiBest": {
+      "Bounds/BoundiBest": {
         "long_name": "Finding ith Best Element",
         "exercises": {}
       },
-      "Development/SortingOptimal": {
+      "Bounds/SortingOptimal": {
         "long_name": "Optimal Sorting",
         "exercises": {}
       }

@@ -2733,6 +2733,20 @@
         "exercises": {}
       }
     },
+    "Advanced Data Structures": {
+      "SearchStruct/SkipList": {
+        "long_name": "Skip Lists",
+        "exercises": {}
+      },
+      "Spatial/Spatial": {
+        "long_name": "Spatial Data Structures",
+        "exercises": {}
+      },
+      "Spatial/PRquadtree": {
+        "long_name": "PR Quadtrees",
+        "exercises": {}
+      }
+    },
     "Appendix": {
       "Glossary": {
         "long_name": "Glossary",

@@ -2843,6 +2843,10 @@ Glossary
       It is similar to the :term:`kd tree` which splits alternately in
       each dimension, except that it splits in all dimensions at once.
 
+   point-region quadtree
+      Formal name for what is commonly referred to as a
+      :term:`PR quadtree`.
+
    pop
       A specialized term used to indicate removing an :term:`element`
       from a :term:`stack`. 
