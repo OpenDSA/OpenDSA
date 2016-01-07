@@ -1,11 +1,6 @@
 #container {
-  width: 900px;
-  height: 750px;
-}
-
-.jsavcontainer {
-  height: 670px;
-  width: 870px;
+  width: 850px;
+  height: 730px;
 }
 
 .jsavlist .jsavedge {
@@ -16,16 +11,6 @@
    nodes appear in the right place. */
 .jsavarray {
   padding-left: 0;
-}
-
-.jsavcanvas {
-  height: 520px;
-  width: 870px;
-}
-
-.jsavcanvas > svg {
-  height: 520px;
-  width: 870px;
 }
 
 /* We make the arrays bigger than the OpenDSA stylesheet standard
