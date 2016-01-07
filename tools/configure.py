@@ -392,11 +392,11 @@ def initialize_conf_py_options(config, slides):
       tags_array = []
       tags_array += [a.strip() for a in config.tag.split(';')]
       for tag in tags_array:
-        tags_string += " -t "+tag 
+        tags_string += " -t "+tag
       options["tag"] = tags_string
     else:
       options["tag"] = ""
-    
+
     # convert the translation text into unicode sstrings
     tmpSTR = ''
     for k, v in config.text_translated.iteritems():
@@ -452,6 +452,7 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
     # canvas module_item_position and counter
     module_item_position = 1
     module_item_counter = 1
+    module_map = {}
 
     for module in chapter_obj:
         module_obj = chapter_obj[str(module)]
@@ -562,6 +563,11 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                                     module_item_title=indexed_section_name, module_item_indent=1, module_item_position=module_item_counter)
                         # print("JUST BEFORE ADDING item_id"+chapter_name+" "+str(module)+" "+section_name+" "+str(item_id))
                         config.chapters[chapter_name][str(module)]['sections'][section_name]['item_id'] = item_id
+
+                        if section_couter == 1:
+                            module_map[module_name_url] = item_id
+                            config.chapters['module_map'].update(module_map)
+
                         module_item_counter += 1
                     section_couter += 1
 
@@ -630,6 +636,9 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                         results = modules.update_module_item(request_ctx, course_id, module_id, item_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?" + urllib.urlencode(LTI_url_opts), module_item_title=indexed_module_name, module_item_indent=1, module_item_position=module_item_counter)
 
                 config.chapters[chapter_name][str(module)]['item_id'] = item_id
+                module_map[module_name_url] = item_id
+                config.chapters['module_map'].update(module_map)
+
                 module_item_counter += 1
 
         module_item_position += 1
@@ -789,6 +798,9 @@ def create_course(config):
     chapters = config.chapters
 
     module_position = 1
+
+    # prepare module_map to be used to update links later
+    config.chapters['module_map'] = {}
 
     # create OpenDSA course chapters, modules, and assignments
     for chapter_name, chapter_obj in chapters.items():
