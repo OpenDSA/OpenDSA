@@ -177,8 +177,12 @@ def update_TermDef(glossary_file, terms_dict):
     i += 1
 
 triple_up = re.compile(r'^\.\.[\/\\]\.\.[\/\\]\.\.[\/\\]')
-def break_up_sections(path, sections, modules, url_index, config, module_data):
+def break_up_sections(path, module_data, modules, url_index, config):
   book_name = config.book_name
+  sections = module_data['sections']
+  course_id = config.course_id
+  URL_SOURCE = config.LMS_url+"/courses/{course_id}/modules/items/{item_id}"
+
   # Read contents of module HTML file
   try:
     with codecs.open(path, 'r', 'utf-8') as html_file:
@@ -191,15 +195,10 @@ def break_up_sections(path, sections, modules, url_index, config, module_data):
   mod_name = os.path.splitext(os.path.basename(path))[0]
 
   # Strip out the script, style, link, and meta tags
-
   soup = BeautifulSoup(html, "html.parser")
 
   verbose = True
 
-  course_id = config.course_id
-  URL_SOURCE = config.LMS_url+"/courses/{course_id}/modules/items/{item_id}#{anchor_id}"
-
-  module_map = {}
   if verbose:
     print "Found HTML file:", mod_name
 
@@ -284,31 +283,31 @@ def break_up_sections(path, sections, modules, url_index, config, module_data):
   if element:
     element.extract()
 
-  total_real_exercises = len(sections)#0
-  #for exercise, properties in exercises.items():
-  #  if 'points' in properties:
-  #    total_real_exercises += 1
+  module_map = {}
+
+  total_real_exercises = len(sections)
   if total_real_exercises <= 1:
     if total_real_exercises == 0:
       filename = mod_name+'.html'
 
       item_id = module_data['item_id']
-      module_map[mod_name] = item_id
+      module_map[mod_name] = URL_SOURCE.format(course_id=course_id, item_id=item_id)
       print('module ' + str(mod_name) + ' will be mapped to one section module ' + str(item_id))
+      config.chapters['module_map'].update(module_map)
 
     else:
       filename = mod_name+'-01.html'
 
       section_name, section_data = sections.items()[0]
       item_id = section_data['item_id']
-      module_map[mod_name] = item_id
+      module_map[mod_name] = URL_SOURCE.format(course_id=course_id, item_id=item_id)
       print('module ' + str(mod_name) + ' will be mapped to one section module ' + str(item_id))
+      config.chapters['module_map'].update(module_map)
 
     single_file_path = os.path.join(os.path.dirname(path), '..', 'lti_html', filename)
     with codecs.open(single_file_path, 'w', 'utf-8') as o:
       o.write(unicode(soup))
     return None
-    config.chapters['module_map'].update(module_map)
 
 
   # Collect out the slide-specific JS/CSS
@@ -395,9 +394,9 @@ def break_up_sections(path, sections, modules, url_index, config, module_data):
     section_name, section_data = module_data['sections'].items()[i]
     if 'item_id' in section_data:
       item_id = section_data['item_id']
-      module_map[mod_name] = item_id
+      module_map[mod_name] = URL_SOURCE.format(course_id=course_id, item_id=item_id)
       print('section ' + str(section_name) + ' will be mapped to section id ' + str(item_id))
-  config.chapters['module_map'].update(module_map)
+      config.chapters['module_map'].update(module_map)
 
 
   if verbose:
@@ -449,9 +448,9 @@ def break_up_sections(path, sections, modules, url_index, config, module_data):
       section_name, section_data = module_data['sections'].items()[index]
       if 'item_id' in section_data:
         item_id = section_data['item_id']
-        module_map[mod_name] = item_id
+        module_map[mod_name] = URL_SOURCE.format(course_id=course_id, item_id=item_id)
         print('section ' + str(section_name) + ' will be mapped to section id ' + str(item_id))
-  config.chapters['module_map'].update(module_map)
+        config.chapters['module_map'].update(module_map)
   if verbose: print "\tPhase 3: complete"
 
 def pretty_print_xml(data, file_path):
@@ -476,7 +475,6 @@ def make_lti(config):
   url_index = {}
   if config.course_id:
     course_id = config.course_id
-    # URL_SOURCE = "https://canvas.instructure.com/courses/{course_id}/modules/items/{item_id}"
     URL_SOURCE = config.LMS_url+"/courses/{course_id}/modules/items/{item_id}"
     module_item_id = "NOT FOUND"
     for chapter_name, chapter_data in config.chapters.items():
@@ -499,7 +497,7 @@ def make_lti(config):
       if isinstance(module_data, dict):
         name = module_name.split('/')[1] if '/' in module_name else module_name
         path = os.path.join(dest_dir, name+".html")
-        break_up_sections(path, module_data['sections'], tuple(html_files)+ignore_files, url_index, config, module_data)
+        break_up_sections(path, module_data, tuple(html_files)+ignore_files, url_index, config)
 
   # save config object to use ut later for course update
   config_file_path = os.path.join(dest_dir, '..', 'lti_html', 'lti_config.json')
