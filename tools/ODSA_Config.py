@@ -663,6 +663,9 @@ class ODSA_Config:
         # LMS assignment_group_id, will be filled later while course creation.
         self.assignment_group_id = ''
 
+        # module canvas id map, will be filled later while course creation.
+        self.module_map = {}
+
 
 # Code to execute when run as a standalone program
 if __name__ == "__main__":
