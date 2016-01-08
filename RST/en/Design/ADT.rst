@@ -67,11 +67,17 @@ However, array can also mean a logical data type composed of a
 (typically homogeneous) collection of data items, with each data item
 identified by an index number.
 It is possible to implement arrays in many different ways besides as a
-block of contiguous memory location.
-This is particularly useful when implementing a
-:ref:`sparse matrix <sparse matrix> <SparseMatrix>`,
-a large two-dimensional array
+block of contiguous memory locations.
+The :ref:`sparse matrix <sparse matrix> <SparseMatrix>`
+refers to a large, two-dimensional array
 that stores only a relatively few non-zero values.
+This is often implemented with a linked structure, or possibly using a
+:ref:`hash table <hash table> <HashIntro>`.
+But it could be implemented with an interface that uses traditional
+row and column indices, thus appearing to the user in the same way
+that it would if it had been implemented as a block of contiguous
+memory locations.
+
 
 An :term:`abstract data type` (ADT) is the specification of a data type
 within some language, independent of an implementation.
