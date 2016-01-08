@@ -10,8 +10,10 @@
 {% extends "basic/layout.html" %}
 
 {# do not display relbars #}
-{% block relbar1 %}{% endblock %}
-{% block relbar2 %}{% endblock %}
+{% block relbar1 %}
+{% endblock %}
+{% block relbar2 %}
+{% endblock %}
 
 {% macro script() %}
   <script type="text/javascript" src="test.js"></script>
@@ -93,60 +95,6 @@
 </div>
 {% endmacro %}
 
-{% macro bugreport() %}
-<a id="bugreport-link" style="float:right;color:red;margin:10px 20px auto" class="bugreport-link" href="#">{{ report_bug  }}</a>
-<div id="bugreport-box" class="bugreport-popup ">
-  <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="{{ close }}" alt="{{ close }}" /></a>
-  <form method="post" class="report" action="https://#">
-    <fieldset class="textbox">
-      <div id="bug_error" class="error"></div>
-      <label>
-        <span>{{ summary }}*:</span>
-        <input type="text" id="b_title" placeholder="{{ summary }}" />
-      </label>
-
-      <label class="os">
-        <span>{{ os }}*:</span>
-        <select id="b_os">
-          <option value="windows">Windows</option>
-          <option value="macos">Mac OS</option>
-          <option value="linux">Linux</option>
-          <option value="ios">iOS</option>
-          <option value="android">Android</option>
-          <option value="other">Other</option>
-        </select>
-      </label>
-
-      <label class="browser">
-        <span>{{ browser }}*:</span>
-        <select id="b_browser">
-          <option value="chrome">Chrome</option>
-          <option value="safari">Safari</option>
-          <option value="internetexplorer">Internet Explorer</option>
-          <option value="opera">Opera</option>
-          <option value="other">Other</option>
-        </select>
-      </label>
-
-      <label class="description">
-        <span>{{ description }}*:</span><br>
-        <textarea id="b_description" rows="5" cols="25" placeholder="{{ bug_desc  }}"></textarea>
-      </label>
-
-      <label class="screenshot">
-        <span>{{ screenshot }}:</span>
-        <input type="file" id="b_screenshot" accept="image/*" placeholder="{{ screenshot }}">
-      </label>
-
-      <p>
-        <input type="submit" id="bug-submit-button" value="{{ submit }} &rarr;"/>
-      </p>
-    </fieldset>
-  </form>
-</div>
-{% endmacro %}
-
-
 {% macro nav() %}
         {%- block haikurel1 %}
         {%- endblock %}
@@ -183,13 +131,11 @@
 {% endmacro %}
 
 {% block content %}
-
       <div class="header">
         {%- block haikuheader %}
         {{ scripts() }}
         {{ login() }}
         {{ registration() }}
-        {{ bugreport() }}
         {%- if theme_full_logo != "false" %}
         <a href="{{ pathto('index') }}">
           <img class="logo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>

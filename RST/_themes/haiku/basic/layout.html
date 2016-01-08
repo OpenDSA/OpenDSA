@@ -12,8 +12,7 @@
 {%- endblock %}
 {%- set reldelim1 = reldelim1 is not defined and ' &raquo;' or reldelim1 %}
 {%- set reldelim2 = reldelim2 is not defined and ' |' or reldelim2 %}
-{%- set render_sidebar = (not embedded) and (not theme_nosidebar|tobool) and
-                         (sidebars != []) %}
+{%- set render_sidebar = (not embedded) and (not theme_nosidebar|tobool) and (sidebars != []) %}
 {%- set url_root = pathto('', 1) %}
 {# XXX necessary? #}
 {%- if url_root == '#' %}{% set url_root = '' %}{% endif %}
@@ -93,7 +92,7 @@
       HAS_SOURCE:  {{ has_source|lower }}
     };
   </script>
-  
+
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
       tex2jax: {
@@ -111,7 +110,7 @@
     {%- for scriptfile in script_files %}
       <script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
     {%- endfor %}
-    
+
     {%- for scriptfile in search_scripts %}
       <script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
     {%- endfor %}
@@ -124,11 +123,63 @@
     {%- for cssfile in css_files %}
     <link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
     {%- endfor %}
-    
+
     {%- for cssfile in odsa_css %}
     <link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
     {%- endfor %}
 {%- endmacro %}
+
+{% macro bugreport() %}
+<div id="bugreport-box" class="bugreport-popup ">
+  <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="{{ close }}" alt="{{ close }}" /></a>
+  <form method="post" class="report" action="https://#">
+    <fieldset class="textbox">
+      <div id="bug_error" class="error"></div>
+      <label>
+        <span>{{ summary }}*:</span>
+        <input type="text" id="b_title" placeholder="{{ summary }}" />
+      </label>
+
+      <label class="os">
+        <span>{{ os }}*:</span>
+        <select id="b_os">
+          <option value="windows">Windows</option>
+          <option value="macos">Mac OS</option>
+          <option value="linux">Linux</option>
+          <option value="ios">iOS</option>
+          <option value="android">Android</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+
+      <label class="browser">
+        <span>{{ browser }}*:</span>
+        <select id="b_browser">
+          <option value="chrome">Chrome</option>
+          <option value="safari">Safari</option>
+          <option value="internetexplorer">Internet Explorer</option>
+          <option value="opera">Opera</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+
+      <label class="description">
+        <span>{{ description }}*:</span><br>
+        <textarea id="b_description" rows="5" cols="25" placeholder="{{ bug_desc  }}"></textarea>
+      </label>
+
+      <label class="screenshot">
+        <span>{{ screenshot }}:</span>
+        <input type="file" id="b_screenshot" accept="image/*" placeholder="{{ screenshot }}">
+      </label>
+
+      <p>
+        <input type="submit" id="bug-submit-button" value="{{ submit }} &rarr;"/>
+      </p>
+    </fieldset>
+  </form>
+</div>
+{% endmacro %}
 
 <html lang="en">
   <head>
@@ -173,12 +224,17 @@
     <link rel="prev" title="{{ prev.title|striptags|e }}" href="{{ prev.link|e }}" />
     {%- endif %}
 {%- endblock %}
-{%- block extrahead %} {% endblock %}
-  </head>
-  <body>
-{%- block header %}{% endblock %}
 
-{%- block relbar1 %}{{ relbar() }}{% endblock %}
+{%- block extrahead %}
+{% endblock %}
+  </head>
+
+  <body>
+{%- block header %}
+{% endblock %}
+
+{%- block relbar1 %}{{ relbar() }}
+{% endblock %}
 
 {%- block content %}
   {%- block sidebar1 %} {# possible location for sidebar #} {% endblock %}
@@ -203,10 +259,18 @@
     </div>
 {%- endblock %}
 
-{%- block relbar2 %}{{ relbar() }}{% endblock %}
+{%- block relbar2 %}{{ relbar() }}
+{% endblock %}
 
 {%- block footer %}
     <div class="footer">
+      <p>
+        <span class="email_div" style="display:inline;">
+          <a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:">{{ contact }} |</a>
+          <a id="bugreport-link" style="float:left;color:blue;" class="bugreport-link" href="#">| {{ report_bug  }}</a>
+        </span>
+      </p>
+
     {%- if show_copyright %}
       {%- if hasdoc('copyright') %}
         {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}
@@ -221,6 +285,7 @@
       {% trans sphinx_version=sphinx_version|e %}Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}
     {%- endif %}
     </div>
+    {{ bugreport() }}
 {%- endblock %}
   </body>
 </html>
