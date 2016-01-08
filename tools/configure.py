@@ -392,11 +392,11 @@ def initialize_conf_py_options(config, slides):
       tags_array = []
       tags_array += [a.strip() for a in config.tag.split(';')]
       for tag in tags_array:
-        tags_string += " -t "+tag 
+        tags_string += " -t "+tag
       options["tag"] = tags_string
     else:
       options["tag"] = ""
-    
+
     # convert the translation text into unicode sstrings
     tmpSTR = ''
     for k, v in config.text_translated.iteritems():
@@ -452,6 +452,7 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
     # canvas module_item_position and counter
     module_item_position = 1
     module_item_counter = 1
+    module_map = {}
 
     for module in chapter_obj:
         module_obj = chapter_obj[str(module)]
@@ -462,6 +463,7 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
         if isinstance(module_obj, dict):
             module_name = module_obj.get("long_name")
             module_name_url = module.split('/')[1] if '/' in module else module
+            module_map[module_name_url] = {}
 
             # OpenDSA module action
             # any modules in prev_chapter_obj which wasn't marked as updaed will be deleted later
@@ -474,14 +476,14 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
             if module_action == "add":
                 # OpenDSA module header will map to canvas module_item of type 'SubHeader'
                 results = modules.create_module_item(request_ctx, course_id, module_id, module_item_type='SubHeader',module_item_content_id=None, module_item_title=str(module_position) + "." + str(module_item_position) + ". " + str(module_name), module_item_indent=0, module_item_position=module_item_counter)
-                item_id = results.json().get("id")
+                module_subheader_id = results.json().get("id")
             else:
-                item_id = prev_module_obj.get('module_item_id', None)
-                if item_id is not None:
-                    results = modules.update_module_item(request_ctx, course_id, module_id, item_id, module_item_type='SubHeader', module_item_title=str(module_position) + "." + str(module_item_position) + ". " + str(module_name), module_item_indent=0, module_item_position=module_item_counter)
+                module_subheader_id = prev_module_obj.get('module_subheader_id', None)
+                if module_subheader_id is not None:
+                    results = modules.update_module_item(request_ctx, course_id, module_id, module_subheader_id, module_item_type='SubHeader', module_item_title=str(module_position) + "." + str(module_item_position) + ". " + str(module_name), module_item_indent=0, module_item_position=module_item_counter)
 
             # save canvas item_id to config object. Note config object will be dumped in a json file (lti_config.json) later in the script
-            config.chapters[chapter_name][str(module)]['module_item_id'] = item_id
+            config.chapters[chapter_name][str(module)]['module_subheader_id'] = module_subheader_id
             module_item_counter += 1
 
             sections = module_obj.get("sections")
@@ -545,12 +547,20 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
 
                                 # add assignment to canvas module
                                 results = modules.create_module_item(request_ctx, course_id, module_id, 'Assignment', module_item_content_id=item_id, module_item_indent=1, module_item_position=module_item_counter)
+                                module_item_id = results.json().get("id")
+                                config.chapters[chapter_name][str(module)]['sections'][section_name]['module_item_id'] = module_item_id
                                 # print("non-zero section ADD"+chapter_name+" "+str(module)+" "+section_name+" "+str(item_id))
+
                             else:
                                 item_id = prev_section_obj.get('item_id', None)
-                                if item_id is not None:
+                                module_item_id = prev_section_obj.get('module_item_id', None)
+                                if item_id is not None and module_item_id is not None:
                                     # print(str(indexed_section_name) +" "+str(section_points))
                                     results = assignments.edit_assignment(request_ctx, course_id, item_id, assignment_name=indexed_section_name, assignment_position=module_item_counter, assignment_submission_types="external_tool", assignment_external_tool_tag_attributes= {"url": LTI_url + "/lti_tool?"+ urllib.urlencode(LTI_url_opts)}, assignment_points_possible=section_points, assignment_description=section_name)
+                            if section_couter == 1:
+                                module_map[module_name_url]['assignment_id'] = item_id
+                                module_map[module_name_url]['module_item_id'] = module_item_id
+                                config['module_map'].update(module_map)
                         else:
                             if section_action == "add":
                                 results = modules.create_module_item(request_ctx, course_id, module_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?" + urllib.urlencode(LTI_url_opts), module_item_content_id=None,module_item_title=indexed_section_name, module_item_indent=1, module_item_position=module_item_counter)
@@ -560,8 +570,14 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                                 item_id = prev_section_obj.get('item_id', None)
                                 results = modules.update_module_item(request_ctx, course_id, module_id, item_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?" + urllib.urlencode(LTI_url_opts),
                                     module_item_title=indexed_section_name, module_item_indent=1, module_item_position=module_item_counter)
+                            if section_couter == 1:
+                                    module_map[module_name_url]['item_id'] = item_id
+                                    config['module_map'].update(module_map)
+
                         # print("JUST BEFORE ADDING item_id"+chapter_name+" "+str(module)+" "+section_name+" "+str(item_id))
                         config.chapters[chapter_name][str(module)]['sections'][section_name]['item_id'] = item_id
+
+
                         module_item_counter += 1
                     section_couter += 1
 
@@ -620,16 +636,20 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                             results = modules.delete_module_item(request_ctx, course_id, module_id, item_id)
 
                         # delete the old module subheader
-                        module_item_id = prev_module_obj.get('module_item_id', None)
-                        if module_item_id is not None:
-                            results = modules.delete_module_item(request_ctx, course_id, module_id, module_item_id)
+                        module_subheader_id = prev_module_obj.get('module_subheader_id', None)
+                        if module_subheader_id is not None:
+                            results = modules.delete_module_item(request_ctx, course_id, module_id, module_subheader_id)
 
                 else:
                     item_id = prev_module_obj.get('item_id', None)
                     if item_id is not None:
                         results = modules.update_module_item(request_ctx, course_id, module_id, item_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?" + urllib.urlencode(LTI_url_opts), module_item_title=indexed_module_name, module_item_indent=1, module_item_position=module_item_counter)
 
+                module_map[module_name_url]['item_id'] = item_id
+                config['module_map'].update(module_map)
+
                 config.chapters[chapter_name][str(module)]['item_id'] = item_id
+
                 module_item_counter += 1
 
         module_item_position += 1
@@ -857,7 +877,7 @@ def register_book(config):
     if 'saved' in response_obj:
       print "\nBook was registered successfully\n"
     else:
-      print "\nSomthing wrong happened ...\n"
+      print "\nSomething wrong happened ...\n"
 
 
 def configure(config_file_path, options):

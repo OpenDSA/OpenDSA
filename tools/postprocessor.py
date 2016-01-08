@@ -177,7 +177,14 @@ def update_TermDef(glossary_file, terms_dict):
     i += 1
 
 triple_up = re.compile(r'^\.\.[\/\\]\.\.[\/\\]\.\.[\/\\]')
-def break_up_fragments(path, exercises, modules, url_index, book_name):
+def break_up_sections(path, module_data, config):
+  book_name = config.book_name
+  sections = module_data['sections']
+  module_map = config['module_map']
+  course_id = config.course_id
+  item_url = config.LMS_url+"/courses/{course_id}/modules/items/{item_id}"
+  assignment_url = config.LMS_url+"/courses/{course_id}/assignments/{assignment_id}?module_item_id={module_item_id}"
+
   # Read contents of module HTML file
   try:
     with codecs.open(path, 'r', 'utf-8') as html_file:
@@ -195,7 +202,8 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
 
   verbose = False
 
-  if verbose: print "Found HTML file:", mod_name
+  if verbose:
+    print "Found HTML file:", mod_name
 
   TAGS = [ ('script', 'src'), ('link', 'href'), ('img', 'src'), ('a', 'href') ]
 
@@ -219,7 +227,7 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
 
 
   '''
-  Skip any exercises that don't have points
+  Skip any sections that don't have points
 
   '''
 
@@ -255,11 +263,15 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
       if external.endswith('.html'):
         # Snip off the ".html"
         external = external[:-5]
-        # Map it to the proper folder in OpenEdX
-        external = url_index.get(external, external)
+        # Map it to the proper folder in canvas
+        if external in module_map:
+          module_obj = module_map[external]
+          if 'assignment_id' in module_map[external]:
+            external = assignment_url.format(course_id=course_id, module_item_id=module_obj.get('module_item_id'), assignment_id=module_obj.get('assignment_id'))
+          else:
+            external = item_url.format(course_id=course_id, item_id=module_obj.get('item_id'))
         # Force it to approach it from the top
         link['href'] = '#'.join((external,internal))
-
       # Do something with the actual href
 
   # Move header scripts out of header, kill header
@@ -278,7 +290,7 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
   if element:
     element.extract()
 
-  total_real_exercises = len(exercises)#0
+  total_real_exercises = len(sections)#0
   #for exercise, properties in exercises.items():
   #  if 'points' in properties:
   #    total_real_exercises += 1
@@ -291,6 +303,7 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
     with codecs.open(single_file_path, 'w', 'utf-8') as o:
       o.write(unicode(soup))
     return None
+
 
   # Collect out the slide-specific JS/CSS
   slide_scripts = defaultdict(list)
@@ -373,35 +386,10 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
       new_slide = []
       total_exercises += 1
       found.append(name)
-      '''#print "\t\t\tBody:", type(body)
-        # If we find a slideshow or practice exercise, then make it its own fragment
-        if isinstance(body, element.Tag) and body.has_attr('id'):
-          name = body['id']
-          if body['id'] in exercises and 'points' in exercises[body['id']]:
-            #print "\t\t\t\tFound exercise:", name
-            # Finish off this slide
-            slides.append((name, new_slide))
-            # Make a new slide, append in the content
-            new_slide = [(parent, body)]
-            slides.append((name, new_slide))
-            # And now start a new slide
-            new_slide = []
-            total_exercises += 1
-            found.append(name)
-        else:
-          new_slide.append( (parent, body) )'''
-      # Anything after that exercise gets placed in a trailing slide
-      #     before we move onto the next subsection
-      '''if new_slide and parent != previous_parent:
-        if ''.join([str(s[1]) for s in new_slide]).strip():
-          if has_sections and previous_parent == None:
-            previous_parent = parent
-            continue
-          slides.append(("", new_slide))
-          new_slide = []
-          previous_parent = parent'''
+
+
   if verbose:
-    print "\tPhase 2: Clustered into {} slides. Found {} exercises, expected {}.".format(len(slides), total_exercises-1, len(exercises))
+    print "\tPhase 2: Clustered into {} slides. Found {} sections, expected {}.".format(len(slides), total_exercises-1, len(sections))
 
   # Add the slide general scripts to the top.
   sgs_div = soup.new_tag('div', id='SLIDE-GENERAL-SCRIPTS')
@@ -419,7 +407,7 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
     for body_index, (parent, body) in enumerate(slide):
       parent.insert(body_index, body)
     if index != 0:
-      potential_exercises = exercises.values()[index-1].keys()
+      potential_exercises = sections.values()[index-1].keys()
     else:
       potential_exercises = []
     sss_div = soup.new_tag('div', id='SLIDE-SPECIFIC-SCRIPTS')
@@ -435,7 +423,7 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
     # Add back in slide specific scripts
     sgs_div.insert_after(sss_div)
     if index != 0:
-        potential_exercises = exercises.values()[index-1].keys()
+        potential_exercises = sections.values()[index-1].keys()
     else:
         potential_exercises = []
     # Write out the file with what we have so far
@@ -444,7 +432,9 @@ def break_up_fragments(path, exercises, modules, url_index, book_name):
     sss_div.decompose()
     for parent, body in slide:
       body.extract()
-  if verbose: print "\tPhase 3: complete"
+
+  if verbose:
+    print "\tPhase 3: complete"
 
 def pretty_print_xml(data, file_path):
     ElementTree(data).write(file_path)
@@ -465,32 +455,12 @@ def make_lti(config):
   shutil.rmtree(lti_folder, ignore_errors=True)
   os.makedirs(lti_folder)
 
-  url_index = {}
-  if config.course_id:
-    course_id = config.course_id
-    # URL_SOURCE = "https://canvas.instructure.com/courses/{course_id}/modules/items/{item_id}"
-    URL_SOURCE = config.LMS_url+"/courses/{course_id}/modules/items/{item_id}"
-    module_item_id = "NOT FOUND"
-    for chapter_name, chapter_data in config.chapters.items():
-      for module_name, module_data in chapter_data.items():
-        if isinstance(module_data, dict):
-          if 'item_id' in module_data:
-            module_item_id = module_data['item_id']
-            url_index[module_name] = URL_SOURCE.format(course_id=course_id, item_id=module_item_id)
-          for section_name, section_data in module_data['sections'].items():
-            pattern = section_name.split('/')[1] if '/' in section_name else section_name
-            if 'item_id' in section_data:
-              item_id = section_data['item_id']
-            else:
-              item_id = module_item_id
-            url_index[pattern] = URL_SOURCE.format(course_id=course_id, item_id=item_id)
-
-  for chapter_name, sections in config.chapters.items():
-    for section_name, section_data in sections.items():
-      if isinstance(section_data, dict):
-        name = section_name.split('/')[1] if '/' in section_name else section_name
+  for chapter_name, chapter_data in config.chapters.items():
+    for module_name, module_data in chapter_data.items():
+      if isinstance(module_data, dict):
+        name = module_name.split('/')[1] if '/' in module_name else module_name
         path = os.path.join(dest_dir, name+".html")
-        break_up_fragments(path, section_data['sections'], tuple(html_files)+ignore_files, url_index, config.book_name)
+        break_up_sections(path, module_data, config)
 
   # save config object to use ut later for course update
   config_file_path = os.path.join(dest_dir, '..', 'lti_html', 'lti_config.json')
