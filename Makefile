@@ -96,6 +96,8 @@ testLTI: min
 	python $(CONFIG_SCRIPT) config/testLTI.json -c config/testLTI_LMSconf.json
 	# python $(CONFIG_SCRIPT) config/testLTI.json -c config/testLTI_LMSconf.json -b testLTI_HS2
 
+S16: ECE252 Indiain CSCI204 CISC187in CS3114vt CS2114vt CSE017in CPSC270in CS316in CSC232in
+
 Test: min
 	python $(CONFIG_SCRIPT) config/Test.json -c config/Test_LMSconf.json
 
@@ -138,6 +140,9 @@ CS2vt: min
 CS2in: min
 	python $(CONFIG_SCRIPT) config/CS2.json -c config/CS2in_LMSconf.json -b CS2in
 
+CSE017: min
+	python $(CONFIG_SCRIPT) config/CSE017.json -c config/CSE017in_LMSconf.json -b CSE017S16
+
 CS3: min
 	python $(CONFIG_SCRIPT) config/CS3.json
 
@@ -147,8 +152,14 @@ CS3vt: min
 CS3in: min
 	python $(CONFIG_SCRIPT) config/CS3.json -c config/CS3in_LMSconf.json -b CS3in
 
+CPSC270: min
+	python $(CONFIG_SCRIPT) config/CS3.json -c config/CPSC270in_LMSconf.json -b CPSC270S16
+
+CSCI204: min
+	python $(CONFIG_SCRIPT) config/CS3.json -c config/CSCI204in_LMSconf.json -b CSCI204S16
+
 ECE252: min
-	python $(CONFIG_SCRIPT) config/ECE252.json -c config/ECE252_LMSconf.json -b ECE252S16
+	python $(CONFIG_SCRIPT) config/ECE252.json -c config/ECE252in_LMSconf.json -b ECE252S16
 
 India: min
 	python $(CONFIG_SCRIPT) config/DS2.json
