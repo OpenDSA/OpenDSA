@@ -282,7 +282,7 @@ def break_up_sections(path, module_data, config):
   header_tag.extract()
 
   # Remove unnecessary parts of the HTML
-  for class_name in ('topnav', 'bottomnav', 'footer'):
+  for class_name in ('topnav', 'bottomnav'):
     element = soup.find('div', class_=class_name)
     if element:
       element.extract()
