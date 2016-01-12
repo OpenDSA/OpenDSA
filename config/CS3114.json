@@ -40,7 +40,7 @@
   "score_server": "https://opendsa.cs.vt.edu/",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
-  "suppress_todo": false,
+  "suppress_todo": true,
   "assumes": "recursion",
   "glob_exer_options": {
     "JXOP-debug": "true"

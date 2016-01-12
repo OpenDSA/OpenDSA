@@ -12,7 +12,8 @@ $(document).ready(function() {
   var pseudo = av.code(code).hide();
   var arr;
   var arr_values = [];
-  var pointer1, pointer2, pointer3;
+  var left = [], pivot = [], right = [];
+  var pivotLabel;
 
   // Slide 1
   av.umsg(interpret("Slide 1"));
@@ -24,38 +25,35 @@ $(document).ready(function() {
     arr_values[i] = " ";
   }
   arr = av.ds.array(arr_values, {left: 150, top: 40, indexed: true});
-  pointer1 = av.pointer("i", arr.index(0));
-  pointer2 = av.pointer("j", arr.index(8));
-  pointer3 = av.pointer("pivot", arr.index(4));
+  pivot = av.ds.array([4], {left: 550, top: 40, indexed: false});
+  pivotLabel = av.label(interpret("lab1"), {left: 590, top: 42, indexed: false});
+  arr.highlight(4);
+  pivot.highlight();
   av.step();
 
   // Slide 3
   pseudo.show();
-  pointer1.hide();
-  pointer2.hide();
-  pointer3.hide();
   av.umsg("Function partition contains an outer while loop with two nested while loops");
   pseudo.highlight("loops");
+  pivot.hide();
+  pivotLabel.hide();
+  arr.unhighlight(4);
   av.step();
 
   // Slide 4
   av.umsg(interpret("Slide 4"));
-  pointer1 = av.pointer("left", arr.index(0));
-  pointer2 = av.pointer("right", arr.index(7),
-                             {anchor: "center bottom",
-                               myAnchor: "right top",
-                               top: 50,
-                               left: -80,
-                               arrowAnchor: "center bottom"
-                             });
-
-  pointer3 = av.pointer("pivot", arr.index(8),
-                             {anchor: "center bottom",
-                               myAnchor: "right top",
-                               top: 50,
-                               left: -50,
-                               arrowAnchor: "center bottom"
-                             });
+  left = av.ds.array([0], {left: 550, top: 0, indexed: false});
+  av.label(interpret("lab2"), {left: 590, top: 2, indexed: false});
+  arr.addClass(0, "greenbg");
+  left.addClass(0, "greenbg");
+  right = av.ds.array([7], {left: 550, top: 80, indexed: false});
+  av.label(interpret("lab3"), {left: 590, top: 82, indexed: false});
+  arr.addClass(7, "redbg");
+  right.addClass(0, "redbg");
+  arr.highlight(8);
+  pivot.value(0, 8);
+  pivot.show();
+  pivotLabel.show();
   av.step();
 
   // Slide 5
@@ -71,25 +69,31 @@ $(document).ready(function() {
 
   // Slide 7
   av.umsg(interpret("Slide 7"));
-  pointer1.target(arr.index(8));
+  arr.removeClass(0, "greenbg");
+  left.value(0, 8);
+  arr.addClass(8, "greenbg");
+  arr.unhighlight(8);
   pseudo.unhighlight("if");
   pseudo.highlight("loop2");
   av.step();
 
   // Slide 8
   av.umsg(interpret("Slide 8"));
-  pointer1.target(arr.index(0));
-  var a = av.ds.array(["-1"], {left: 103, top: 30, indexed: false});
-  pointer2.target(a.index(0));
+  arr.removeClass(8, "greenbg");
+  left.value(0, 0);
+  arr.addClass(0, "greenbg");
+  right.value(0, -1);
+  arr.removeClass(7, "redbg");
+  arr.highlight(8);
   pseudo.unhighlight("loop2");
   pseudo.highlight("loop3");
   av.step();
 
   // Slide 9
   av.umsg(interpret("Slide 9"));
+  right.value(0, 7);
+  arr.addClass(7, "redbg");
   pseudo.highlight("loop2");
-  a.hide();
-  pointer2.target(arr.index(7));
   av.step();
 
   // Slide 10

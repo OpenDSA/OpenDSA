@@ -9,7 +9,10 @@
       "Slide 7": "The first inner while loop can be executed at most $s-1$ times in which case left will end up at the pivot and the outer while loop will end",
       "Slide 8": "The second inner while loop can be executed at most $s-1$ times in which case right will end up at array position $-1$ and the outer while loop will end",
       "Slide 9": "Accordingly, the outer while loop along with its two inner loops will move left and right a total of $s-1$ steps",
-      "Slide 10": "Thus, the running time of the partition function is $\\theta(s)$, where $s$ is the size of the subarray"
+      "Slide 10": "Thus, the running time of the partition function is $\\theta(s)$, where $s$ is the size of the subarray",
+      "lab1": "Pivot",
+      "lab2": "Left",
+      "lab3": "Right"
     }
   },
   "code": {

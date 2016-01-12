@@ -206,7 +206,7 @@ CS3114F15: min
 	python $(CONFIG_SCRIPT) config/CS3114F15Barnette.json
 
 CS3114notes: min
-	python $(CONFIG_SCRIPT) s config/CS3114notes.json
+	python $(CONFIG_SCRIPT) -s config/CS3114notes.json
 
 CS316: min
 	python $(CONFIG_SCRIPT) config/CS316.json
