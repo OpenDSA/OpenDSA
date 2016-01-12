@@ -134,8 +134,8 @@ Everythingvtt: min
 CS2: min
 	python $(CONFIG_SCRIPT) config/CS2.json
 
-CS2vt: min
-	python $(CONFIG_SCRIPT) config/CS2.json -c config/CS2vt_LMSconf.json -b CS2114S16
+CS2114vt: min
+	python $(CONFIG_SCRIPT) config/CS2.json -c config/CS2114vt_LMSconf.json -b CS2114S16
 
 CS2in: min
 	python $(CONFIG_SCRIPT) config/CS2.json -c config/CS2in_LMSconf.json -b CS2in
@@ -151,6 +151,9 @@ CS3vt: min
 
 CS3in: min
 	python $(CONFIG_SCRIPT) config/CS3.json -c config/CS3in_LMSconf.json -b CS3in
+
+CS316: min
+	python $(CONFIG_SCRIPT) config/CS3.json -c config/CS316in_LMSconf.json -b CS316S16
 
 CPSC270: min
 	python $(CONFIG_SCRIPT) config/CS3.json -c config/CPSC270in_LMSconf.json -b CPSC270S16
