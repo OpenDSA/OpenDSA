@@ -1314,7 +1314,7 @@
               "long_name": "BST Small Value Count Programming Exercise",
               "required": true,
               "points": 2.0,
-              "threshold": 2.0,
+              "threshold": 1.0,
               "showhide": "Show"
             }
           }
@@ -1327,8 +1327,8 @@
             "MultiTreePROGSumm": {
               "long_name": "Multiple Binary Trees Exercises",
               "required": true,
-              "points": 3.0,
-              "threshold": 3.0,
+              "points": 4.0,
+              "threshold": 2.0,
               "showhide": "Show"
             }
           }
