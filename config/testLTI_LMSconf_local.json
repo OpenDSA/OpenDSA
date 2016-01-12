@@ -1,0 +1,15 @@
+{
+  "title": "testLTI Generic DSA Course",
+  "odsa_username": "opendsa",
+  "odsa_password": "opendsa",
+  "target_LMS": "canvas",
+  "LMS_url": "https://canvas.instructure.com",
+  "course_code": "testLTI",
+  "access_token": "7~DaXAP8mxtkcUtRc4Lrp3CERhMGvUoYU5bvFjMACCRrYP5jrxZ0rK21uDDJqnS7Tg",
+  "LTI_consumer_key": "test",
+  "LTI_secret": "secret",
+  "module_origin": "https://ltitest.cs.vt.edu:9292",
+  "exercise_server": "https://ltitest.cs.vt.edu:8443",
+  "logging_server": "https://ltitest.cs.vt.edu:8443",
+  "score_server": "https://ltitest.cs.vt.edu:8443"
+}
