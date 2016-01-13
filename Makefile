@@ -160,7 +160,7 @@ CPSC270: min
 	python $(CONFIG_SCRIPT) config/CS3.json -c config/CPSC270in_LMSconf.json -b CPSC270S16
 
 CSCI204: min
-	python $(CONFIG_SCRIPT) config/CS3.json -c config/CSCI204in_LMSconf.json -b CSCI204S16
+	python $(CONFIG_SCRIPT) config/CSCI204.json -c config/CSCI204in_LMSconf.json -b CSCI204S16
 
 ECE252: min
 	python $(CONFIG_SCRIPT) config/ECE252.json -c config/ECE252in_LMSconf.json -b ECE252S16
