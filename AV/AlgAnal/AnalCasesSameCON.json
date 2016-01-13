@@ -20,8 +20,8 @@
     "processing": [{
       "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
       "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: Sequential *** */",
-      "endBefore": "/* *** ODSAendTag: Sequential *** */",
+      "startAfter": "/* *** ODSATag: SequentialLargest *** */",
+      "endBefore": "/* *** ODSAendTag: SequentialLargest *** */",
       "top": 80,
       "left": 397,
       "tags": {
@@ -30,8 +30,8 @@
     "java": [{
       "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
       "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: Sequential *** */",
-      "endBefore": "/* *** ODSAendTag: Sequential *** */",
+      "startAfter": "/* *** ODSATag: SequentialLargest *** */",
+      "endBefore": "/* *** ODSAendTag: SequentialLargest *** */",
       "top": 80,
       "left": 397,
       "tags": {
@@ -40,8 +40,8 @@
     "java_generic": [{
       "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
       "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: Sequential *** */",
-      "endBefore": "/* *** ODSAendTag: Sequential *** */",
+      "startAfter": "/* *** ODSATag: SequentialLargest *** */",
+      "endBefore": "/* *** ODSAendTag: SequentialLargest *** */",
       "top": 80,
       "left": 397,
       "tags": {
@@ -50,8 +50,8 @@
     "c++": [{
       "url": "../../../SourceCode/Pseudo/Searching/Sequential.txt",
       "lineNumbers": false,
-      "startAfter": "/* *** ODSATag: Sequential *** */",
-      "endBefore": "/* *** ODSAendTag: Sequential *** */",
+      "startAfter": "/* *** ODSATag: SequentialLargest *** */",
+      "endBefore": "/* *** ODSAendTag: SequentialLargest *** */",
       "top": 80,
       "left": 397,
       "tags": {
