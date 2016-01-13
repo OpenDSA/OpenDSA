@@ -34,7 +34,7 @@ public boolean insert(KVPair<K,E> it) {
 /* *** ODSAendTag: SkipInsert *** */
 
 /* *** ODSATag: SkipFind *** */
-/** Skiplist Search */
+/** Return pointer to first node with value equal or greater than key */
 private SkipNode searchhelp(Comparable<K> key) {
   SkipNode x = head;                     // Dummy header node
   for (int i=level; i>=0; i--)           // For each level...
