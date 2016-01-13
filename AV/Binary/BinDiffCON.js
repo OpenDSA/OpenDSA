@@ -1,5 +1,5 @@
-"use strict";
 $(document).ready(function () {
+  "use strict";
   var av = new JSAV("BinDiffCON", {"animationMode": "none"});
   // Setup first row of trees
   var btTop = 0;

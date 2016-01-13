@@ -1,7 +1,7 @@
 /*global ODSA */
-"use strict";
 // Heap remove max slideshow
 $(document).ready(function () {
+  "use strict";
   var sortArray2 = [88, 85, 83, 72, 73, 42, 57, 6, 48, 60];
   var av_name = "heapmaxCON";
   var config = ODSA.UTILS.loadConfig({"av_name": av_name}),

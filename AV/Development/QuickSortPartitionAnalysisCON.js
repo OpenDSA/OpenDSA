@@ -24,9 +24,9 @@ $(document).ready(function() {
   for (var i = 0; i < 9; i++) {
     arr_values[i] = " ";
   }
-  arr = av.ds.array(arr_values, {left: 150, top: 40, indexed: true});
-  pivot = av.ds.array([4], {left: 550, top: 40, indexed: false});
-  pivotLabel = av.label(interpret("lab1"), {left: 590, top: 42, indexed: false});
+  arr = av.ds.array(arr_values, {left: 150, top: 20, indexed: true});
+  pivot = av.ds.array([4], {left: 550, top: 30, indexed: false});
+  pivotLabel = av.label(interpret("lab1"), {left: 590, top: 32, indexed: false});
   arr.highlight(4);
   pivot.highlight();
   av.step();
@@ -42,12 +42,12 @@ $(document).ready(function() {
 
   // Slide 4
   av.umsg(interpret("Slide 4"));
-  left = av.ds.array([0], {left: 550, top: 0, indexed: false});
-  av.label(interpret("lab2"), {left: 590, top: 2, indexed: false});
+  left = av.ds.array([0], {left: 550, top: -10, indexed: false});
+  av.label(interpret("lab2"), {left: 590, top: -8, indexed: false});
   arr.addClass(0, "greenbg");
   left.addClass(0, "greenbg");
-  right = av.ds.array([7], {left: 550, top: 80, indexed: false});
-  av.label(interpret("lab3"), {left: 590, top: 82, indexed: false});
+  right = av.ds.array([7], {left: 550, top: 70, indexed: false});
+  av.label(interpret("lab3"), {left: 590, top: 72, indexed: false});
   arr.addClass(7, "redbg");
   right.addClass(0, "redbg");
   arr.highlight(8);

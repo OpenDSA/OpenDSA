@@ -1,7 +1,7 @@
 /*global ODSA */
-"use strict";
 // Heapbuild slideshow
 $(document).ready(function () {
+  "use strict";
   var unsortArray = [1, 2, 3, 4, 5, 6, 7];
   var av_name = "heapbuildCON";
   var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
