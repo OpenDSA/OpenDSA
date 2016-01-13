@@ -97,7 +97,7 @@ testLTI: min
 	python $(CONFIG_SCRIPT) config/testLTI.json -c config/testLTI_LMSconf_local.json
 	# python $(CONFIG_SCRIPT) config/testLTI.json -c config/testLTI_LMSconf.json -b testLTI_HS2
 
-S16: ECE252 Indiain CSCI204 CISC187in CS3114vt CS2114vt CSE017in CPSC270in CS316in CSC232in
+S16: ECE252 Indiain CSCI204 CSE017 CPSC270 CS316 CS3in CS2114vt 
 
 Test: min
 	python $(CONFIG_SCRIPT) config/Test.json -c config/Test_LMSconf.json
