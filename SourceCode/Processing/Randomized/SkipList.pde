@@ -9,41 +9,51 @@ int randomLevel() {
 
 
 /* *** ODSATag: SkipInsert *** */
-/** Insert a record into the skiplist */
-public void insert(Key k, E newValue) {
-  int newLevel = randomLevel();  // New node's level
-  if (newLevel > level)          // If new node is deeper
-    AdjustHead(newLevel);        //   adjust the header
-  // Track end of level
-  SkipNode<Key,E>[] update =
-         (SkipNode<Key,E>[])new SkipNode[level+1];
-  SkipNode<Key,E> x = head;        // Start at header node
+/** Insert a KVPair into the skiplist */
+public boolean insert(KVPair<K,E> it) {
+  int newLevel = randomLevel();
+  Comparable<K> k = it.key();
+  if (level < newLevel)
+    adjustHead(newLevel);
+  @SuppressWarnings("unchecked") // Generic array allocation
+  SkipNode[] update = (SkipNode[])Array.newInstance(SkipList.SkipNode.class, level+1);
+  SkipNode x = head;        // Start at header node
   for (int i=level; i>=0; i--) { // Find insert position
-    while((x.forward[i] != null) &&
-          (k.compareTo(x.forward[i].key()) > 0))
+    while((x.forward[i] != null) && (k.compareTo((x.forward[i]).element().key()) > 0))
       x = x.forward[i];
     update[i] = x;               // Track end at level i
-  }
-  x = new SkipNode<Key,E>(k, newValue, newLevel);
+  }	
+  x = new SkipNode(it, newLevel);
   for (int i=0; i<=newLevel; i++) {      // Splice into list
     x.forward[i] = update[i].forward[i]; // Who x points to
     update[i].forward[i] = x;            // Who y points to
   }
   size++;                       // Increment dictionary size
+  return true;
 }
 /* *** ODSAendTag: SkipInsert *** */
 
 /* *** ODSATag: SkipFind *** */
 /** Skiplist Search */
-public E find(Key searchKey) {
-  SkipNode<Key,E> x = head;          // Dummy header node
-  for (int i=level; i>=0; i--)       // For each level...
-    while ((x.forward[i] != null) && // go forward
-           (searchKey.compareTo(x.forward[i].key()) > 0))
+private SkipNode searchhelp(Comparable<K> key) {
+  SkipNode x = head;                     // Dummy header node
+  for (int i=level; i>=0; i--)           // For each level...
+    while ((x.forward[i] != null) &&
+           (key.compareTo(x.forward[i].element().key()) > 0)) // go forward
       x = x.forward[i];              // Go one last step
   x = x.forward[0];  // Move to actual record, if it exists
-  if ((x != null) && (searchKey.compareTo(x.key()) == 0))
-    return x.element();              // Got it
-  else return null;                  // Its not there
+  return x;
+}
+
+// Print any matching elements. Return true iff at least one element is found
+public boolean search(Comparable<K> key) {
+  boolean found = false;
+  SkipNode x = searchhelp(key);
+  while ((x != null) && (key.compareTo(x.element().key()) == 0)) {
+    System.out.println("Found: " + x.element());
+    found = true;
+    x = x.forward[0];
+  }
+  return found;
 }
 /* *** ODSAendTag: SkipFind *** */
