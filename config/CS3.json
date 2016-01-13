@@ -1974,15 +1974,13 @@
             "heapsortPRO": {
               "long_name": "Heapsort Proficiency Exercise",
               "exer_options": {
-                "JXOP-code": "none"
+                "JXOP-code": "none",
+                "JXOP-feedback": "continuous",
+                "JXOP-fixmode": "fix"
               },
               "required": true,
               "points": 2.0,
-              "threshold": 0.9,
-              "exer_options": {
-                "JXOP-feedback": "continuous",
-                "JXOP-fixmode": "fix"
-              }
+              "threshold": 0.9
             }
           },
           "Heapsort Analysis": {
@@ -3029,20 +3027,6 @@
       },
       "Graph/Floyd": {
         "long_name": "All-Pairs Shortest Paths",
-        "sections": {}
-      }
-    },
-    "Advanced Data Structures": {
-      "SearchStruct/SkipList": {
-        "long_name": "Skip Lists",
-        "sections": {}
-      },
-      "Spatial/Spatial": {
-        "long_name": "Spatial Data Structures",
-        "sections": {}
-      },
-      "Spatial/PRquadtree": {
-        "long_name": "PR Quadtrees",
         "sections": {}
       }
     },
