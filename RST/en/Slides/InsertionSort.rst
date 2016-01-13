@@ -5,7 +5,6 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :prerequisites: Sorting
    :topic: Sorting
 
 .. slideconf::
@@ -29,10 +28,7 @@ Insertion Sort
    respect to the first two, and so on.
 
 
-Overview
-========
-
-.. slide:: Title 1  
+.. slide:: Initial Step
    :level: 3 
  
    Consider this start to the process.
@@ -40,10 +36,8 @@ Overview
    .. inlineav:: insertionsortCON ss
       :output: show
 
-Insertion Sort Analysis
-=======================
 
-.. slide:: Title 4
+.. slide:: Analysis
    :level: 3
 
    The body of ``inssort`` consists of two nested

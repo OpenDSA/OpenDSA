@@ -6,6 +6,9 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
+.. odsalink:: AV/slides.css
+.. odsalink:: AV/Binary/heapbuildProofCON.css
+
 .. slideconf::
    :autoslides: False
 
@@ -14,11 +17,12 @@ Heaps
 =====
 
 .. slide:: Complete Trees
+   :level: 3
 
    .. _BinArray:
 
    .. figure:: Images/BinArray.png
-      :width: 400
+      :width: 200
       :align: center
       :alt: Complete binary tree node numbering
 
@@ -47,25 +51,43 @@ Heaps
       \hline
       \end{array}
 
+
 .. slide:: Heap insert
+   :level: 3 
 
    .. inlineav:: heapinsertCON ss
       :output: show
 
+
 .. slide:: Building a Heap
+   :level: 3 
+
+   Mathjax: :math:`\Theta(n \log n)`
 
    .. inlineav:: heapbuildCON ss
       :output: show
 
+.. slide:: Building a Heap Proof
+   :level: 3 
+
+   .. inlineav:: heapbuildProofCON ss
+      :output: show
+
 .. slide:: Delete the maximum value
+   :level: 3 
 
    .. inlineav:: heapmaxCON ss
       :output: show
 
 .. slide:: Delete an arbitrary value
+   :level: 3 
 
-   .. inlineav:: heapdeleteCON ss
+   .. inlineav:: heapremoveCON ss
       :output: show
 
    .. odsascript:: DataStructures/binaryheap.js
-   .. odsascript:: AV/Development/heapsCON.js
+   .. odsascript:: AV/Binary/heapinsertCON.js
+   .. odsascript:: AV/Binary/heapbuildCON.js
+   .. odsascript:: AV/Binary/heapbuildProofCON.js
+   .. odsascript:: AV/Binary/heapmaxCON.js
+   .. odsascript:: AV/Binary/heapremoveCON.js
