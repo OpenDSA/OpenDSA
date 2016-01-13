@@ -1149,7 +1149,7 @@
             "required": true,
             "showhide": "show",
             "points": 2.0,
-            "threshold": 2.0
+            "threshold": 1.0
           }
         }
       },
@@ -1159,9 +1159,9 @@
           "MultiTreePROGSumm": {
             "long_name": "Multiple Binary Trees Exercises",
             "required": true,
-            "points": 3.0,
+            "points": 4.0,
             "showhide": "Show",
-            "threshold": 3.0
+            "threshold": 2.0
           }
         }
       },
