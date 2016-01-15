@@ -894,7 +894,8 @@ def configure(config_file_path, options):
 
     # print(json.dumpsconfig.__dict__)
     # Register book in OpenDSA-server and create course in target LMS
-    if LMS_config_file is not None:
+
+    if not options.compile_only:
         create_course(config)
         register_book(config)
 
@@ -1009,13 +1010,11 @@ def configure(config_file_path, options):
 # Code to execute when run as a standalone program
 if __name__ == "__main__":
     parser = OptionParser()
-    parser.add_option("-s", "--slides", help="Causes configure.py to create slides",
-                      dest="slides", action="store_true", default=False)
-    parser.add_option("--dry-run", help="Causes configure.py to configure the book but stop before compiling it",
-                      dest="dry_run", action="store_true", default=False)
-    parser.add_option("-b", help="Accepts a custom directory name instead of using the config file's name.",
-                      dest="output_directory", default=None)
+    parser.add_option("-s", "--slides", help="Causes configure.py to create slides",dest="slides", action="store_true", default=False)
+    parser.add_option("--dry-run", help="Causes configure.py to configure the book but stop before compiling it", dest="dry_run", action="store_true", default=False)
+    parser.add_option("-b", help="Accepts a custom directory name instead of using the config file's name.",dest="output_directory", default=None)
     parser.add_option("-c", "--LMS_config_file", help="Causes configure.py to create course in target LMS", default=None)
+    parser.add_option("-o", "--compile_only", help="Causes configure.py to compile the book but not create course in LMS", default=False)
     (options, args) = parser.parse_args()
 
     if options.slides:
