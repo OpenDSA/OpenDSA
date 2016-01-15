@@ -152,6 +152,17 @@ CS3vt: min
 CS3in: min
 	python $(CONFIG_SCRIPT) config/CS3.json -c config/CS3in_LMSconf.json -b CS3in
 
+CS3114: CS3114am CS3114pm
+
+CS3114test: min
+	python $(CONFIG_SCRIPT) config/CS3114.json -c config/CS3114vttest_LMSconf.json -b CS3114S16test
+
+CS3114am: min
+	python $(CONFIG_SCRIPT) config/CS3114.json -c config/CS3114vtam_LMSconf.json -b CS3114S16am
+
+CS3114pm: min
+	python $(CONFIG_SCRIPT) config/CS3114.json -c config/CS3114vtpm_LMSconf.json -b CS3114S16pm
+
 CS316: min
 	python $(CONFIG_SCRIPT) config/CS3.json -c config/CS316in_LMSconf.json -b CS316S16
 
