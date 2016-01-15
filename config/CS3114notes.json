@@ -11,7 +11,13 @@
   "allow_anonymous_credit": false,
   "suppress_todo": false,
   "chapters": {
-    "Programming": {
+    "Week 1": {
+      "Slides/Day1": {
+        "long_name": "Introduction",
+        "exercises" : {
+          "ADTCON": {}
+        }
+      },
       "Slides/Programming": {
         "long_name": "Programming",
         "exercises" : {}
