@@ -147,7 +147,7 @@ BTRecurTutor: min
 	python $(CONFIG_SCRIPT) config/BTRecurTutor.json
 
 CS226JHU: min
-	python $(CONFIG_SCRIPT) config/CS226JHUF15.json
+	python $(CONFIG_SCRIPT) config/CS226JHU.json -o CS226JHUS16
 
 CISC-187: min
 	python $(CONFIG_SCRIPT) config/CISC-187.json
