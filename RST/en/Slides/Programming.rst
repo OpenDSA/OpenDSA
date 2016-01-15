@@ -14,8 +14,28 @@
 Program Management
 ==================
 
+.. slide:: Scheduling
+   :level: 3
+   
+   * Managing large-scale projects involves scheduling activities
+      * It is human nature to work better toward intermediate milestones.
+
+   * The same concepts can/should be applied to mid-sized projects
+     encountered in class.
+      * For any project needing more than a week to complete, break into parts
+        and design a schedule with milestones and deliverables.
+      * Find some way to keep track of details.
+
+.. note::
+
+   For me, programming takes a lot of focus and concentration. One
+   concern for me is the many details to remember. I use "todo"
+   lists a lot. I find things like the GitHub Issue Tracker invaluable
+   for bigger projects (but that might be overkill for CS3114 class
+   projects). The key thing is to write down any details that occur to
+   you that you don't want to deal with right this instant.
+
 .. slide:: Historical Data
-   :level: 1
 
    .. _ProgramerData:
 
@@ -58,12 +78,14 @@ Program Management
       * Avoiding the “zombie” effect makes people more productive
         (and cuts time requirements)
 
-.. slide:: How to fail at implementing your project
+.. slide:: How to fail at implementing your project:
 
-   * Write the project
-   * Debug the project
+     * Write the project
+     * Debug the project
 
 .. slide:: How to succeed at implementing your project
+
+   .. rst-class:: build
 
    * Write the smallest possible kernel
    * Debug the kernel thoroughly
@@ -71,3 +93,68 @@ Program Management
       * Add a functional unit
       * Debug the resulting program
       * Have a way to track details
+
+.. slide:: How to Survive
+
+   * Keys to success:
+   * Keeping Track of all the details
+      * You can't remember it all
+   * Rational Planning (and keeping to the plan)
+      * Spread the work over time
+   * Incremental Development
+      * Interleave writing and debugging
+
+.. slide:: Being Organized 1
+
+   * Software development has so many details
+      * Spec requirements
+      * Program interactions
+
+   * So does Life
+      * Assignments and other things to do
+
+.. slide:: Being Organized 2
+
+   * You can't turn this on/off
+      * Either you live an organized life, or you can't succeed as a
+        software developer
+      * Part of it is developing the attitude of "sweating the details"
+      * Part of it is having the coping mechanisms to handle the details
+
+.. note::
+
+   The good news is that there is an alternative: there are plenty of
+   jobs where someone will tell you what to do every minute of the day.
+   The bad news is that they tend not to pay well. Many of these jobs
+   involve hamburgers.
+
+.. slide:: Memory Can't Handle It
+
+   * Externalize
+      * TODO lists (What)
+      * Scheduling (The Plan for How)
+      * Issue trackers
+      * Documenting/Commenting
+      * Be able to update lists at any time, 
+
+   * Repository: GitHub
+
+.. slide:: Spread Work Over Time
+
+   * For anything beyond a small software project, you must have a
+     plan/schedule
+
+   * Explicitly develop a schedule:
+      * Break into pieces: List of subtasks
+      * Deadlines for subtasks
+      * Realistic, enough flexibility built in
+      * Continuously modify and refine the plan
+
+.. slide:: Incremental Development
+
+   * Break the project into a small initial core
+   * Implement and test the core
+   * Then gradually add functionality
+   * On any given day, write only as much code as you have time to debug
+     THAT DAY 
+   * This works well with Scheduling and Organizing
