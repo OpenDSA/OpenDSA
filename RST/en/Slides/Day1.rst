@@ -18,6 +18,9 @@ CS3114 Introduction
 
 .. slide:: Introduction
 
+   .. odsalink:: AV/JSAVReset.css
+
+
    * Go over Syllabus
    * Consent forms
    * Course online support: Canvas, OpenDSA, Web-CAT

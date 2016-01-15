@@ -19,6 +19,8 @@ Insertion Sort
 
 .. slide:: Insertion Sort
    :level: 1
+   
+   .. odsalink:: AV/JSAVReset.css
 
    What would you do if you have a stack of phone bills from the past
    two years and you want to order by date?
