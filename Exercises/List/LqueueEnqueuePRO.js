@@ -284,7 +284,7 @@
       $("#NewNode").click(function() { lqueueEnqueuePRO.newnode(); });
       $("#insert").click(function() { lqueueEnqueuePRO.insert(); });
       // Set up handler for reset button
-      $("#reset").click(function() { lqueueEnqueuePRO.reset(); });
+      $("#reset").click(function() { reset(); });
     },
 
     // Check user's answer for correctness
