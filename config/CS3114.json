@@ -121,8 +121,8 @@
             "long_name": "Logarithms Practice Questions",
             "required": true,
             "showhide": "show",
-            "points": 1.0,
-            "threshold": 5
+            "points": 2.0,
+            "threshold": 10
           }
         }
       },
