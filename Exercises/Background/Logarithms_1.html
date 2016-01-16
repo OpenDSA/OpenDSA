@@ -1,28 +1,11 @@
 <!DOCTYPE html>
-<html data-require="math">
+<html data-require="math Logarithms_1">
   <head>
     <!-- Copied directly from Khan Academy, with instructions added -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Evaluating logarithms</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
-    <script>
-
-      /* The structure of the log problem is:
-      * log_base (number) = answer.
-      */
-
-      /* This is used for hints. Given the number you're taking a logarithim of, and
-      * a base, breaks the number into base x base x base...     x base.
-      * Returns a string. */
-      function get_power_string(number, base) {
-      var result = base;
-      for (var i=base; i<number; i*=base){
-                                 result += "\\times" + base;
-                                 }
-                                 return result;
-                                 }
-                                 </script>
   </head>
   <body>
     <div class="exercise">
@@ -32,11 +15,11 @@
         <var id="answer">randRange( 2, 5 )</var>
         <var id="number">pow( base, answer)</var>
 
-        <var id="power_string">get_power_string(number, base)</var>
+        <var id="power_string">logarithms_1.get_power_string(number, base)</var>
       </div>
 
       <div class="problems">
-        <div id="logarithms_1">
+        <div id="logarithms_1p">
           <p class="question"><code>\large{\log_{<var>base</var>}}<var>number</var> = {?}</code></p>
           <p class="solution"><var>answer</var></p>
         </div>
