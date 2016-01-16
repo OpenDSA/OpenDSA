@@ -1,46 +1,65 @@
 {
   "build_dir": "Books",
   "code_dir": "SourceCode/",
-  "code_lang": {
-    "Java": {
-      "ext": [
+  "code_lang":
+  {
+    "Java":
+    {
+      "ext":
+      [
         "java"
       ],
+
       "label": "Java",
       "lang": "java"
     },
-    "Processing": {
-      "ext": [
+
+    "Processing":
+    {
+      "ext":
+      [
         "pde"
       ],
+
       "label": "Processing",
       "lang": "java"
     },
-    "Java_Generic": {
-      "ext": [
+
+    "Java_Generic":
+    {
+      "ext":
+      [
         "java"
       ],
+
       "label": "Java (Generic)",
       "lang": "java"
     },
-    "C++": {
-      "ext": [
+
+    "C++":
+    {
+      "ext":
+      [
         "cpp",
         "h"
       ],
+
       "label": "C++",
       "lang": "C++"
     }
   },
+
   "lang": "en",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": true,
   "assumes": "recursion",
   "dispModComp": true,
-  "glob_exer_options": {
+  "glob_exer_options":
+  {
     "JXOP-debug": "true"
   },
+
   "chapters":
   {
     "Preface":
@@ -406,8 +425,8 @@
             "AlgAnalCS3Summ":
             {
               "long_name": "Algorithm Analysis Summary Questions",
-              "required": false,
-              "points": 0.0,
+              "required": true,
+              "points": 1.0,
               "threshold": 5
             }
           }
@@ -446,7 +465,7 @@
               "long_name": "List ADT Programming Exercise",
               "required": true,
               "points": 1.0,
-              "threshold": 3
+              "threshold": 1
             }
           }
         }
@@ -491,7 +510,7 @@
               "long_name": "Array-based List Insert Exercise",
               "required": true,
               "points": 1,
-              "threshold": 3
+              "threshold": 1
             }
           },
 
@@ -518,7 +537,7 @@
               "long_name": "Array-based List Remove Exercise",
               "required": true,
               "points": 1,
-              "threshold": 4
+              "threshold": 2
             }
           },
 
@@ -613,7 +632,7 @@
               "long_name": "Linked List Insert Exercise",
               "required": true,
               "points": 1,
-              "threshold": 5
+              "threshold": 2
             }
           },
 
@@ -632,7 +651,7 @@
               "long_name": "Linked List Remove Exercise",
               "required": true,
               "points": 2,
-              "threshold": 5
+              "threshold": 2
             },
 
             "llistOtherCON":
@@ -658,7 +677,7 @@
               "long_name": "Breakeven Point Exercise",
               "required": true,
               "points": 1,
-              "threshold": 3
+              "threshold": 1
             }
           },
 
@@ -805,7 +824,7 @@
               "long_name": "Array-based Stack Push Exercise",
               "required": true,
               "points": 1,
-              "threshold": 5
+              "threshold": 1
             }
           },
 
@@ -824,7 +843,7 @@
               "long_name": "Array-based Stack Pop Exercise",
               "required": true,
               "points": 1,
-              "threshold": 5
+              "threshold": 1
             }
           }
         }
@@ -855,7 +874,7 @@
               "long_name": "Linked Stack Push Exercise",
               "required": true,
               "points": 1,
-              "threshold": 5
+              "threshold": 1
             }
           },
 
@@ -874,7 +893,7 @@
               "long_name": "Linked Stack Pop Exercise",
               "required": true,
               "points": 1,
-              "threshold": 5
+              "threshold": 1
             },
 
             "lstackTwostackCON":
@@ -980,7 +999,7 @@
               "long_name": "Array-based Queue Enqueue Exercise",
               "required": true,
               "points": 1,
-              "threshold": 5
+              "threshold": 1
             }
           },
 
@@ -991,7 +1010,7 @@
               "long_name": "Array-based Queue Dequeue Exercise",
               "required": true,
               "points": 1,
-              "threshold": 5
+              "threshold": 1
             }
           }
         }
@@ -1025,7 +1044,7 @@
               "long_name": "Linked Queue Enqueue Exercise",
               "required": true,
               "points": 1,
-              "threshold": 5
+              "threshold": 1
             }
           },
 
@@ -1044,7 +1063,7 @@
               "long_name": "Linked Queue Dequeue Exercise",
               "required": true,
               "points": 1,
-              "threshold": 5
+              "threshold": 1
             }
           },
 
@@ -1112,9 +1131,9 @@
             "CompareSumm":
             {
               "long_name": "Record Comparison Summary Exercise",
-              "required": true,
-              "points": 1,
-              "threshold": 5
+              "required": false,
+              "points": 0,
+              "threshold": 0
             }
           }
         }
@@ -1177,7 +1196,7 @@
               "long_name": "Tree Definition Summary Exercises",
               "required": false,
               "points": 2,
-              "threshold": 8
+              "threshold": 4
             }
           },
 
@@ -1450,7 +1469,7 @@
               "long_name": "Tree Overhead Exercise",
               "required": false,
               "points": 0,
-              "threshold": 5
+              "threshold": 0
             }
           }
         }
@@ -1606,9 +1625,9 @@
             "MultiTreePROGSumm":
             {
               "long_name": "Multiple Binary Trees Exercises",
-              "required": true,
+              "required": false,
               "points": 4.0,
-              "threshold": 2.0,
+              "threshold": 0.0,
               "showhide": "Show"
             }
           }
@@ -1636,7 +1655,7 @@
               "long_name": "Complete Tree Exercise",
               "required": true,
               "points": 1,
-              "threshold": 5
+              "threshold": 3
             }
           }
         }
@@ -1761,7 +1780,7 @@
               "showhide": "show",
               "required": false,
               "points": 0.0,
-              "threshold": 10
+              "threshold": 0
             }
           }
         }
@@ -1826,7 +1845,7 @@
               "long_name": "Insertion Sort Proficiency Exercise",
               "required": true,
               "points": 1.0,
-              "threshold": 5
+              "threshold": 1
             }
           },
 
@@ -1904,7 +1923,7 @@
               "long_name": "Bubble Sort Proficiency Exercise",
               "required": true,
               "points": 2.0,
-              "threshold": 3
+              "threshold": 1
             }
           },
 
@@ -1966,7 +1985,7 @@
               "long_name": "Selection Sort Proficiency Exercise",
               "required": true,
               "points": 2.0,
-              "threshold": 5
+              "threshold": 1
             }
           },
 
@@ -2003,7 +2022,7 @@
               "long_name": "Inversions Proficiency Exercise",
               "required": true,
               "points": 2.0,
-              "threshold": 5
+              "threshold": 2
             }
           },
 
@@ -2020,9 +2039,9 @@
             "ExchangeSumm":
             {
               "long_name": "Exchange Sorting Summary Exercise",
-              "required": true,
-              "points": 1.0,
-              "threshold": 5
+              "required": false,
+              "points": 0.0,
+              "threshold": 0
             }
           }
         }
@@ -2057,7 +2076,7 @@
               "long_name": "Mergesort Merging Proficiency Exercise",
               "required": true,
               "points": 1.0,
-              "threshold": 5
+              "threshold": 1
             }
           },
 
@@ -2133,7 +2152,7 @@
               "long_name": "Quicksort Pivot Proficiency Exercise",
               "required": true,
               "points": 1.0,
-              "threshold": 5
+              "threshold": 1
             }
           },
 
@@ -2152,7 +2171,7 @@
               "long_name": "Quicksort Partition Proficiency Exercise",
               "required": true,
               "points": 1.0,
-              "threshold": 5
+              "threshold": 1
             },
 
             "QuickSortPartitionAnalysisCON":
@@ -2246,18 +2265,22 @@
               "long_name": "Heapsort RemoveMax Proficiency Exercise",
               "required": true,
               "points": 2.0,
-              "threshold": 5
+              "threshold": 1
             }
           },
 
-          "Heapsort Proficiency Practice": {
-            "heapsortPRO": {
+          "Heapsort Proficiency Practice":
+          {
+            "heapsortPRO":
+            {
               "long_name": "Heapsort Proficiency Exercise",
-              "exer_options": {
+              "exer_options":
+              {
                 "JXOP-code": "none",
                 "JXOP-feedback": "continuous",
                 "JXOP-fixmode": "fix"
               },
+
               "required": true,
               "points": 2.0,
               "threshold": 0.9
@@ -2297,7 +2320,7 @@
               "long_name": "Sorting Chapter Summary Exercise",
               "required": false,
               "points": 0,
-              "threshold": 10
+              "threshold": 0
             }
           }
         }
@@ -2401,9 +2424,9 @@
             "HashFuncFIBSumm":
             {
               "long_name": "Hash Function Pick Slot Summary",
-              "required": true,
-              "points": 1.0,
-              "threshold": 5
+              "required": false,
+              "points": 0.0,
+              "threshold": 0
             }
           },
 
@@ -2437,7 +2460,7 @@
               "long_name": "Open Hashing Proficiency Exercise",
               "required": true,
               "points": 2.0,
-              "threshold": 5
+              "threshold": 1
             }
           }
         }
@@ -2463,7 +2486,7 @@
               "long_name": "Bucket Hashing Proficiency Exercise",
               "required": true,
               "points": 1.0,
-              "threshold": 5
+              "threshold": 1
             }
           },
 
@@ -2482,7 +2505,7 @@
               "long_name": "Alternate Bucket Hashing Proficiency Exercise",
               "required": true,
               "points": 1.0,
-              "threshold": 5
+              "threshold": 1
             }
           }
         }
@@ -2516,7 +2539,7 @@
               "long_name": "Linear Probing Proficiency Exercise",
               "required": true,
               "points": 1.0,
-              "threshold": 5
+              "threshold": 3
             }
           }
         }
@@ -2550,7 +2573,7 @@
               "long_name": "Linear Probing By Steps Proficiency Exercise",
               "required": true,
               "points": 2.0,
-              "threshold": 5
+              "threshold": 1
             }
           },
 
@@ -2569,7 +2592,7 @@
               "long_name": "Pseudo-Random Probing Proficiency Exercise",
               "required": true,
               "points": 2.0,
-              "threshold": 5
+              "threshold": 2
             },
 
             "collisionCON4":
@@ -2596,7 +2619,7 @@
               "long_name": "Quadratic Probing Proficiency Exercise",
               "required": true,
               "points": 2.0,
-              "threshold": 5
+              "threshold": 3
             },
 
             "collisionCON6":
@@ -2631,7 +2654,7 @@
               "long_name": "Double Hashing Proficiency Exercise",
               "required": true,
               "points": 2.0,
-              "threshold": 5
+              "threshold": 2
             }
           }
         }
@@ -2704,7 +2727,7 @@
               "long_name": "Hashing Chapter Summary Exercise",
               "required": true,
               "points": 2.0,
-              "threshold": 10
+              "threshold": 5
             }
           }
         }
@@ -2766,9 +2789,9 @@
             "GspaceCalcSumm":
             {
               "long_name": "Graph Space Requirements Exercise",
-              "required": true,
-              "points": 2.0,
-              "threshold": 5
+              "required": false,
+              "points": 0.0,
+              "threshold": 0
             }
           },
 
@@ -2777,9 +2800,9 @@
             "GraphIntroSumm":
             {
               "long_name": "Graph Terminology Summary Exercise",
-              "required": true,
-              "points": 3.0,
-              "threshold": 10
+              "required": false,
+              "points": 0.0,
+              "threshold": 0
             }
           }
         }
