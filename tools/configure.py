@@ -536,7 +536,6 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                             indexed_chapter_name = "Chapter " + str(module_position) + " " + chapter_name
                             breadcrumb = indexed_chapter_name + " >> " + module_item_title + " >> " + indexed_section_name
                             if section_action == "add":
-
                                 if assignment_group_id is None:
                                     # create chapter assignment group
                                     assignment_group_name = indexed_chapter_name
@@ -551,13 +550,14 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                                 # add assignment to canvas module
                                 results = modules.create_module_item(request_ctx, course_id, module_id, 'Assignment', module_item_content_id=item_id, module_item_indent=1, module_item_position=module_item_counter)
                                 module_item_id = results.json().get("id")
-                                config.chapters[chapter_name][str(module)]['sections'][section_name]['module_item_id'] = module_item_id
 
                             else:
                                 item_id = prev_section_obj.get('item_id', None)
                                 module_item_id = prev_section_obj.get('module_item_id', None)
                                 if item_id is not None and module_item_id is not None:
                                     results = assignments.edit_assignment(request_ctx, course_id, item_id, assignment_name=indexed_section_name, assignment_position=module_item_counter, assignment_submission_types="external_tool", assignment_external_tool_tag_attributes= {"url": LTI_url + "/lti_tool?"+ urllib.urlencode(LTI_url_opts)}, assignment_points_possible=section_points, assignment_description=breadcrumb)
+
+                            config.chapters[chapter_name][str(module)]['sections'][section_name]['module_item_id'] = module_item_id
                             if section_couter == 1:
                                 module_map[module_name_url]['assignment_id'] = item_id
                                 module_map[module_name_url]['module_item_id'] = module_item_id
@@ -575,7 +575,6 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                                     config['module_map'].update(module_map)
 
                         config.chapters[chapter_name][str(module)]['sections'][section_name]['item_id'] = item_id
-
 
                         module_item_counter += 1
                     section_couter += 1
