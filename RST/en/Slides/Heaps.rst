@@ -18,6 +18,9 @@ Heaps
 
 .. slide:: Complete Trees
    :level: 3
+   
+   .. odsalink:: AV/JSAVReset.css
+
 
    .. _BinArray:
 

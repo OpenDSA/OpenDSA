@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="codemirror blockUI math math-format word-problems spin">
   <head>
-    <title> Binary Tree Depth Exercise</title>
+    <title> Binary Tree Height Exercise</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <style>
@@ -20,11 +20,11 @@
       </div>
       <div class="problems">
         <div id="BTdepthPROGp"> <!-- Supresses answer box -->
-          <p class="problem"> The depth of a binary tree is
+          <p class="problem"> The height of a binary tree is
             the length of the path to the deepest node. An empty tree has a
-            depth of 0, a tree with one node has a depth of 1, and so on. Write a recursive
-            function to find the depth of the binary tree pointed at by
-            "root".<br/>
+            height of 0, a tree with one node has a height of 1, and so
+            on. Write a recursive function to find the height of the
+            binary tree pointed at by "root".<br/>
 
             <textarea id="codeTextarea" name="codeTextarea">
 int BTdepth(BinNode root) {
@@ -50,7 +50,7 @@ int BTdepth(BinNode root) {
           </div>
           <div class="hints">
             <p>If the tree is null, return 0.</p>
-            <p>Otherwise, simply return 1 + the larger of the depths
+            <p>Otherwise, simply return 1 + the larger of the heights
               of the children.</p>
           </div>
         </div>
