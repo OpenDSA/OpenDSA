@@ -431,7 +431,6 @@ def identical_dict(prev_org, current):
     same = set(o for o in intersect_keys if prev[o] == current[o])
     return not modified
 
-
 def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position, chapter_name, chapter_obj, prev_chapter_obj, **kwargs):
     """
     Create canvas module details. canvas modules corresponds to OpenDSA chapter. OpenDSA modules corresponds to module_item of type "SubHeader", and each OpenDSA section will be mapped to canvas assignment (if it is gradable, which means it had points greater than zero) or a section will be mapped to module_item of type "ExternalTool" (if it has zero points exercises or no exercises at all).
@@ -453,6 +452,7 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
     module_item_position = 1
     module_item_counter = 1
     module_map = {}
+
 
     for module in chapter_obj:
         module_obj = chapter_obj[str(module)]
@@ -554,6 +554,12 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                             else:
                                 item_id = prev_section_obj.get('item_id', None)
                                 module_item_id = prev_section_obj.get('module_item_id', None)
+                                if module_item_id is None:
+                                    results = modules.list_module_items(request_ctx, course_id, module_id, include=[])
+                                    module_items_list = results.json()
+                                    module_item_obj = next(obj for obj in module_items_list if obj["title"]==indexed_section_name)
+                                    module_item_id = module_item_obj["id"]
+
                                 if item_id is not None and module_item_id is not None:
                                     results = assignments.edit_assignment(request_ctx, course_id, item_id, assignment_name=indexed_section_name, assignment_position=module_item_counter, assignment_submission_types="external_tool", assignment_external_tool_tag_attributes= {"url": LTI_url + "/lti_tool?"+ urllib.urlencode(LTI_url_opts)}, assignment_points_possible=section_points, assignment_description=breadcrumb)
 
@@ -752,7 +758,7 @@ def create_course(config):
 
     print "\nCreating course in " + config.target_LMS + " LMS " + config.LMS_url + '\n'
     # init the request context
-    request_ctx = RequestContext(config.access_token, config.LMS_url + "/api")
+    request_ctx = RequestContext(auth_token=config.access_token, base_api_url=config.LMS_url + "/api", max_retries=5, per_page=100)
 
     course_id = None
     if prev_config_data:
