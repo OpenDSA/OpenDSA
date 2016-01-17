@@ -1,0 +1,93 @@
+h1 {
+  font-family: arial, serif;
+  font-size: 28px;
+  margin: 10px 0 20px 0;
+}
+body {
+  font-size: 16px;
+  font-family: arial, sans-serif;
+  color: #333;
+}
+#headingBar {
+  font-family: Arial, serif;
+  background-color: #555;
+  border-width: 2px 0 2px 0;
+  border-color: #999;
+  border-style: solid;
+  font-size: 14px;
+}
+.headingBarInner {
+  margin: 0 auto 0 auto; width: 960px;
+  height: 42px;
+  padding: 3px 0 0 0;
+}
+.headingBarLogoDiv {
+  float: left;
+  padding: 3px 50px 0 0;
+}
+#headingBarLinks {
+  float: left;
+  padding: 13px 0 0 0;
+}
+#headingBarLinks a {
+  font-size: 14px;
+  font-weight: bold;
+  color: #FFF;
+  text-decoration: none;
+  margin-right: 25px;
+}
+#headingBarLinks a:hover {
+  border-bottom: 2px solid #85B233;
+}
+.stdContent {
+  width: 700px;
+  margin: 30px auto 30px auto;
+  min-height: 400px;
+}
+h1.plainHeading {
+  margin-bottom: 20px;
+  background-image: url(http://feedjit.com/images/logos/feedjitLogo.png);
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  padding-left: 340px;
+  height: 83px;
+  padding-top: 25px;
+
+}
+.footerLinks {
+  font-family: Arial;
+  font-size: 12px;
+  color: #999;
+  margin: 50px 0 20px 0;
+}
+
+.footerLinks a:link, .footerLinks a:visited, .footerLinks a:active {
+  color: #667D3E;
+  font-family: Arial;
+  text-decoration: none;
+}
+.footerLinks a:hover {
+  text-decoration: underline;
+}
+.footerLinks .footerSiteLinks a {
+  font-weight: bold;
+}
+.footerSiteLinks {
+  border-top: solid 4px #E6F1D4;
+  border-bottom: solid 4px #E6F1D4;
+  background-color: #F3F6EE;
+  margin: 10px 0 10px 0;
+  padding: 10px 0 10px 0;
+  font-weight: bold;
+}
+.theGBS {
+  margin: 20px 0 50px 0;
+}
+.footerPadding {
+  width: 850px;
+  margin: 0 auto 0 auto;
+  height: 18px;
+}
+
+
+
