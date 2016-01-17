@@ -1,3 +1,15 @@
+.error {
+  color: #c00;
+}
+.loading {
+  color: #888;
+}
+.hidden {
+  display: none;
+}
+.shown{
+  display: block;
+}
 h1 {
   font-family: arial, serif;
   font-size: 28px;
@@ -89,5 +101,12 @@ h1.plainHeading {
   height: 18px;
 }
 
+.enabled{
+  border: 2px solid #0A0;
+  padding: 5px;
+}
 
-
+.disabled{
+  border: 2px solid #F60;
+  padding: 5px;
+}
