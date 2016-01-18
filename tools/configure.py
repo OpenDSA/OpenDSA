@@ -409,6 +409,7 @@ def initialize_conf_py_options(config, slides):
     options['eb2root'] = config.rel_build_to_odsa_path
     options['rel_book_output_path'] = config.rel_book_output_path
     options['slides_lib'] = 'hieroglyph' if slides else ''
+    options['local_mode'] = str(config.local_mode).title()
 
     return options
 
@@ -933,6 +934,10 @@ def configure(config_file_path, options):
 
     print "Writing files to " + config.book_dir + "\n"
 
+    # local mode option
+    config.local_mode = str(options.local).lower()
+
+
     # Initialize output directory, create index.rst, and process all of the
     # modules
     initialize_output_directory(config)
@@ -1017,6 +1022,7 @@ if __name__ == "__main__":
     parser.add_option("-s", "--slides", help="Causes configure.py to create slides",dest="slides", action="store_true", default=False)
     parser.add_option("--dry-run", help="Causes configure.py to configure the book but stop before compiling it", dest="dry_run", action="store_true", default=False)
     parser.add_option("-b", help="Accepts a custom directory name instead of using the config file's name.",dest="output_directory", default=None)
+    parser.add_option("--local", help="Causes the compiled book to work in local mode, which means no communication with the server",dest="local", action="store_true", default=False)
     parser.add_option("-c", "--LMS_config_file", help="Causes configure.py to create course in target LMS", default=None)
     parser.add_option("-o", "--compile_only", help="Causes configure.py to compile the book but not create course in LMS", default=False)
     (options, args) = parser.parse_args()
