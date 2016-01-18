@@ -182,6 +182,7 @@ class avembed(Directive):
     url_params['exerciseServer'] = conf.exercise_server
     url_params['loggingServer'] = conf.logging_server
     url_params['scoreServer'] = conf.score_server
+    url_params['localMode'] = str(conf.local_mode).lower()
     url_params['moduleOrigin'] = conf.module_origin
     url_params['module'] = self.options['module']
     url_params['selfLoggingEnabled'] = 'false'
