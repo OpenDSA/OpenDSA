@@ -51,6 +51,26 @@
         }
       }
     },
+    "Object-Oriented Programming": {
+      "Design/IntroOO": {
+        "long_name": "Introduction to Object Orientation",
+        "sections": {
+          "Introduction to Object Oriented Programming": {}
+        }
+      },
+      "Design/IntroUML": {
+        "long_name": "The Unified Modeling Language",
+        "sections": {
+          "The Unified Modeling Language": {}
+        }
+      },
+      "Design/IntroProcess": {
+        "long_name": "Software Development Processes",
+        "sections": {
+          "Software Development Processes": {}
+        }
+      }
+    },
     "List Interface & Array-based Lists": {
       "List/ListADT": {
         "long_name": "List ADT",

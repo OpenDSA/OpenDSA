@@ -14,6 +14,16 @@
 Program Management
 ==================
 
+.. slide:: Project Management
+
+   * Project management is a skill
+      * It has to be learned
+      * It has to be practiced
+   * Any skill-based class will typically grade you on process
+      * Consider taking a class to learn Tennis
+   * This semester, we will pay a lot of attention to your **process**
+      * We are working on ways to grade process
+
 .. slide:: Scheduling
    :level: 3
    
