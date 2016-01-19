@@ -20,23 +20,61 @@ CS3114 Introduction
 
    .. odsalink:: AV/JSAVReset.css
 
+   What we are doing today:
+
+   * Administration stuff
+   * Course mechanics
+   * Course introduction (OpenDSA Chapter 1)
+
+.. slide:: Administration stuff
+
+   .. rst-class:: build
+
+   * Sign-in sheet (be sure to sign-in on one of them)
+   * Get a copy of the syllabus
+   * Force Add System: https://www.cs.vt.edu/S16Force-Adds, Password: 3114cas#
+   * Consent forms (please return at end of class)
+
+.. slide:: Course Mechanics
+
+   .. rst-class:: build
 
    * Go over Syllabus
-   * Consent forms
    * Course online support: Canvas, OpenDSA, Web-CAT
-   * Course introduction (OpenDSA Chapter 1)
 
 .. slide:: Canvas
 
    We will use Canvas
 
+   * Project specs and supporting documents
+   * Link to Piazza forum
+   * Post grades
+   * Access to OpenDSA (online textbook)
+
 .. slide:: OpenDSA
 
-  * Access OpenDSA through Canvas
+  * Access OpenDSA through Canvas->Modules
+
   * Lots of visualizations, exercises
+
   * Mastery-based approach
 
-.. slide:: Goals of this Course
+  * Homework due most days before class
+
+   .. rst-class:: build
+
+    * Small homework due this Thursday morning
+
+.. slide:: Web-CAT
+
+  * Get the updated plugin
+  * Project submission
+  * Support for junit testing
+  * Auto-grading: Correctness, style
+
+.. slide:: Course Introduction
+
+   Goals of this Course
 
    * Reinforce the concept that costs and benefits exist for every data
      structure.
@@ -54,14 +92,24 @@ CS3114 Introduction
       * Programming (we focus on projects with dynamic memory allocation and
         file processing)
       * Content, theory and analysis
-   * The projects test programming proficiencies, OpenDSA exercises
-     test knowledge of how algorithms work, exams test understanding
-     of the theory
+
+   .. rst-class:: build
+
+   * The projects test programming proficiencies
+   * OpenDSA exercises test knowledge of how algorithms work
+   * Exams test understanding of the theory (analysis)
+
+.. note:: 
+
+   Most graduates from our department will tell you that this is one
+   of the two hardest courses, and also one of the two most important
+   for job preparation. So its both high effort and high value.
+
 
 .. slide:: Costs and Benefits
 
    * Each data structure has costs and benefits.
-   * Rarely is one data structure better than another in all situations.
+      * Rarely is one data structure better than another in all situations.
    * Any data structure requires:
       * space for each data item it stores,
       * time to perform each basic operation,
@@ -82,10 +130,14 @@ CS3114 Introduction
 .. slide:: Logical vs. Physical Form
 
    * Data items have both a logical and a physical form.
+
    * Logical form: definition of the data item within an ADT.
+
       * Ex: Integers in mathematical sense: +, -
+
    * Physical form: implementation of the data item within a data
      structure.
+
       * Ex: 32/64 bit integers, overflow.
 
 .. slide:: Logical vs. Physical Form (2)
@@ -97,11 +149,13 @@ CS3114 Introduction
 
   * Look at Canvas
   * Look at Project 1 spec: Will discuss next time
-  * Do Chapter 1 in OpenDSA
+  * Do Chapter 1 exercises in OpenDSA by 11:00am Thursday
 
-.. slide:: Before you leave today:
+.. slide:: Before you leave today
 
-  * Turn in force-add form if needed
+  * Put your name and PID on sign-up sheet
+  * If you need to add the course: Log in to
+    https://www.cs.vt.edu/S16Force-Adds, Password: 3114cas#
   * Please return consent form
 
    .. odsascript:: AV/Design/ADTCON.js

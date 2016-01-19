@@ -29,7 +29,6 @@ Program Management
    
    .. odsalink:: AV/JSAVReset.css
 
-   
    * Managing large-scale projects involves scheduling activities
       * It is human nature to work better toward intermediate milestones.
 
