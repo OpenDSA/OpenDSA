@@ -36,6 +36,7 @@
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": true,
+  "build_cmap": true,
   "assumes": "recursion",
   "dispModComp": true,
   "glob_exer_options": {

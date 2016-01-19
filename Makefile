@@ -135,7 +135,7 @@ CS2: min
 	python $(CONFIG_SCRIPT) config/CS2.json
 
 CS2114vt: min
-	python $(CONFIG_SCRIPT) config/CS2.json -c config/CS2114vt_LMSconf.json -b CS2114S16
+	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114vt_LMSconf.json -b CS2114S16
 
 CS2in: min
 	python $(CONFIG_SCRIPT) config/CS2.json -c config/CS2in_LMSconf.json -b CS2in
@@ -156,6 +156,9 @@ CS3114: CS3114am CS3114pm
 
 CS3114test: min
 	python $(CONFIG_SCRIPT) config/CS3114.json -c config/CS3114vttest_LMSconf.json -b CS3114S16test
+
+CS3114testupdate: min
+	python $(CONFIG_SCRIPT) config/CS3114.json -c config/CS3114vttest_LMSconf.json -b CS3114S16test -o True
 
 CS3114am: min
 	python $(CONFIG_SCRIPT) config/CS3114.json -c config/CS3114vtam_LMSconf.json -b CS3114S16am

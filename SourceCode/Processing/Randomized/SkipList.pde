@@ -34,26 +34,18 @@ public boolean insert(KVPair<K,E> it) {
 /* *** ODSAendTag: SkipInsert *** */
 
 /* *** ODSATag: SkipFind *** */
-/** Return pointer to first node with value equal or greater than key */
-private SkipNode searchhelp(Comparable<K> key) {
+// Return the (first) matching matching element if one exists, null otherwise
+public KVPair<K,E> search(Comparable<K> key) {
+  boolean found = false;
   SkipNode x = head;                     // Dummy header node
   for (int i=level; i>=0; i--)           // For each level...
     while ((x.forward[i] != null) &&
            (key.compareTo(x.forward[i].element().key()) > 0)) // go forward
       x = x.forward[i];              // Go one last step
   x = x.forward[0];  // Move to actual record, if it exists
-  return x;
-}
-
-// Print any matching elements. Return true iff at least one element is found
-public boolean search(Comparable<K> key) {
-  boolean found = false;
-  SkipNode x = searchhelp(key);
-  while ((x != null) && (key.compareTo(x.element().key()) == 0)) {
-    System.out.println("Found: " + x.element());
-    found = true;
-    x = x.forward[0];
-  }
-  return found;
+  if ((x != null) && (key.compareTo(x.element().key()) == 0))
+    return x.element();
+  else
+    return null;
 }
 /* *** ODSAendTag: SkipFind *** */
