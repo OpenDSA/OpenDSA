@@ -1,72 +1,92 @@
 <!DOCTYPE html>
 <html>
-<head id="head">
-  <meta charset=utf-8 />
-  <title>Test if Third-Party Cookies are Enabled</title>
-  <link rel="stylesheet" media="screen" type="text/css" href="/OpenDSA/lib/3rdPartyCookies.css" />
-  <script type="text/javascript" src="/OpenDSA/lib/3rdPartyCookies.js"></script>
-</head>
-<body>
-  <div class="stdContent">
-    <h1>How to enable third-party cookies for OpenDSA-LTI provider tool</h1>
-    <p id="3rd_party_cookie_test_results" class='loading'>Testing&hellip;</p>
-    <p id="3rd_party_cookie_test_error" class="error hidden">(If this message persists, the test could not be completed; we could not reach the third-party to test, or another error occurred.)</p>
-  <div id="instructions">
-    <br />
-    We have included instructions to enable Third Party Cookies in various browsers below.
-    <br />
-    <h2>Google Chrome:</h2>
-    <ol>
-      <li>Open Settings menu.</li>
-      <li>Click on 'Show advanced settings...' link and scroll down to 'Privacy'.</li>
-      <li>Click on the 'Content settings...' button.</li>
-      <li>Under 'Cookies' click 'Manage exceptions' button.</li>
-      <li>Add https://lti.cs.vt.edu as new 'Hostname pattern' and select 'Allow' Behavior.</li>
-    </ol>
-    <h2>Firefox:</h2>
-    <ol>
-      <li>Open Settings menu and choose Options.</li>
-      <li>Select the Privacy panel.</li>
-      <li>Under History set Firefox will: to Use custom settings for history.</li>
-      <li>Check mark Accept cookies from sites to enable cookies.</li>
-      <li>Click Exceptions button.</li>
-      <li>Add https://lti.cs.vt.edu as Address of website and click Allow button.</li>
-    </ol>
-    <h2>Safari:</h2>
-      <ol>
-        <li>Go to the Safari drop-down menu and select Preferences.</li>
-        <li>Click Privacy in the top panel.</li>
-        <li>Under 'Block cookies' select the option 'Never.'</li>
-      </ol>
-    <h2>Opera:</h2>
-    <ol>
-      <li>Go to preferences menu and select Privacy and security submenu.</li>
-      <li>Under 'Cookies' click 'Manage exceptions' button.</li>
-      <li>Add https://lti.cs.vt.edu as new 'Hostname pattern' and select 'Allow' Behavior.</li>
-    </ol>
-    <h2>Internet Explorer:</h2>
-    <ol>
-      <li>Click the Tools button, and then click Internet Options.</li>
-      <li>Click the Privacy tab, and then move the slider to a position between the top and bottom so you are not blocking or allowing all cookies.</li>
-      <li>Click Sites.</li>
-      <li>In the Address of website box, type https://lti.cs.vt.edu, and then click Block or Allow.</li>
-      <li>Move the slider back to the position it was originally in, and then click OK.</li>
-    </ol>
-  </div>
-    <script type="text/javascript" src="https://lti.cs.vt.edu/1"></script>
-  </div>
-  <br clear="both" />
-
-  <script type="text/javascript">
-  window.setTimeout(function(){
-    var errorEl = document.getElementById('3rd_party_cookie_test_error');
-    if(errorEl.className.match(/\berror\b/)) {
-      // Show error message
-      errorEl.className = errorEl.className.replace(/\bhidden\b/,' ');
-    } else {
+  <head>
+    <title>OpenDSA Project Homepage</title>
+    <meta charset="utf-8" />
+    <link href="/OpenDSA/lib/site.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" media="screen" type="text/css" href="/OpenDSA/lib/3rdPartyCookies.css" />
+    <script type="text/javascript" src="/OpenDSA/lib/3rdPartyCookies.js"></script>
+    <style type="text/css">
+    body {
+    min-width: 980px;
     }
-  }, 7*1000); // 7 sec timeout
-  </script>
-  <script type="text/javascript" src="https://lti.cs.vt.edu/1"></script>
-</body>
+    .rightimg {
+    float: right;
+    }
+    .odsawidget {
+    position: absolute;
+    right: 55px;
+    top: 165px;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="content">
+      <div id="mytitle">
+        <h1>
+        How to enable Third Party Cookies <br/> for OpenDSA-LTI provider tool
+        </h1>
+        <img src="/OpenDSA/lib/images/OpenDSALogoT64.png" alt="OpenDSA logo" style="position: absolute; top: 60px; height: 50px; left: 85px;"/>
+      </div>
+      <div id="maintext" class="stdContent">
+        <p id="3rd_party_cookie_test_results" class='loading'>Testing&hellip;</p>
+        <p id="3rd_party_cookie_test_error" class="error hidden">(If this message persists, the test could not be completed; we could not reach the third-party to test, or another error occurred.)</p>
+        <div id="instructions">
+          <br />
+          We have included instructions to enable <a target="_blank" href="https://en.wikipedia.org/wiki/HTTP_cookie#Third-party_cookie">Third Party Cookies</a> in various browsers below. Then <a href="#" onclick="window.location.reload(); return false;">click here to reload this page</a> to check if your changes have worked.
+          <br />
+          <h2>Google Chrome:</h2>
+          <ol>
+            <li>Open Settings menu.</li>
+            <li>Click on 'Show advanced settings...' link and scroll down to 'Privacy'.</li>
+            <li>Click on the 'Content settings...' button.</li>
+            <li>Under 'Cookies' click 'Manage exceptions' button.</li>
+            <li>Add https://lti.cs.vt.edu as new 'Hostname pattern' and select 'Allow' Behavior.</li>
+          </ol>
+          <h2>Firefox:</h2>
+          <ol>
+            <li>Open Settings menu and choose Options.</li>
+            <li>Select the Privacy panel.</li>
+            <li>Under History set Firefox will: to Use custom settings for history.</li>
+            <li>Check mark Accept cookies from sites to enable cookies.</li>
+            <li>Click Exceptions button.</li>
+            <li>Add https://lti.cs.vt.edu as Address of website and click Allow button.</li>
+          </ol>
+          <h2>Safari:</h2>
+          <ol>
+            <li>Go to the Safari drop-down menu and select Preferences.</li>
+            <li>Click Privacy in the top panel.</li>
+            <li>Under 'Block cookies' select the option 'Never.'</li>
+          </ol>
+          <h2>Opera:</h2>
+          <ol>
+            <li>Go to preferences menu and select Privacy and security submenu.</li>
+            <li>Under 'Cookies' click 'Manage exceptions' button.</li>
+            <li>Add https://lti.cs.vt.edu as new 'Hostname pattern' and select 'Allow' Behavior.</li>
+          </ol>
+          <h2>Internet Explorer:</h2>
+          <ol>
+            <li>Click the Tools button, and then click Internet Options.</li>
+            <li>Click the Privacy tab, and then move the slider to a position between the top and bottom so you are not blocking or allowing all cookies.</li>
+            <li>Click Sites.</li>
+            <li>In the Address of website box, type https://lti.cs.vt.edu, and then click Block or Allow.</li>
+            <li>Move the slider back to the position it was originally in, and then click OK.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="https://lti.cs.vt.edu/1"></script>
+    <br clear="both" />
+    <script type="text/javascript">
+    window.setTimeout(function(){
+      var errorEl = document.getElementById('3rd_party_cookie_test_error');
+      if(errorEl.className.match(/\berror\b/)) {
+        // Show error message
+        errorEl.className = errorEl.className.replace(/\bhidden\b/,' ');
+      } else {
+      }
+    }, 7*1000); // 7 sec timeout
+    </script>
+    <script type="text/javascript" src="https://lti.cs.vt.edu/1"></script>
+  </body>
 </html>
