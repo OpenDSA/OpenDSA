@@ -22,8 +22,8 @@
       "PL/Grammars": {
         "long_name": "Intro to BNG grammars",
         "exercises": {
-          "TestMC": {
-            "long_name": "This is a test MC exercise",
+          "RP1.1": {
+            "long_name": "RP set #1, question #1",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,

@@ -1,0 +1,9 @@
+table.grammar {
+    border-collapse: separate;
+    border-spacing: 5px 0;
+    font-family: monospace;         
+    margin: auto;
+}
+span.string {
+    font-family: monospace;
+}

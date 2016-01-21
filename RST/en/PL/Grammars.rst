@@ -10,8 +10,6 @@
  BNF Grammars
 ========================
 
+Here are the review problems for day 1.
 
-
-To do
-
-.. avembed:: Exercises/PL/TestMC.html ka
+.. avembed:: Exercises/PL/RP1.1.html ka
