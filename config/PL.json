@@ -21,7 +21,16 @@
     "Formal Grammars": {
       "PL/Grammars": {
         "long_name": "Intro to BNG grammars",
-        "exercises": {}
+        "exercises": {
+          "TestMC": {
+            "long_name": "This is a test MC exercise",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1.0,
+            "showhide": "Show"
+          }
+
+	}
       }
     },
     "Functional Programming": {
