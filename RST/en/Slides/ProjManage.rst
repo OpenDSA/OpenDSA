@@ -16,6 +16,8 @@ Program Management
 
 .. slide:: Project Management
 
+   .. rst-class:: build
+
    * Project management is a skill
       * It has to be learned
       * It has to be practiced
@@ -34,6 +36,7 @@ Program Management
 
    * The same concepts can/should be applied to mid-sized projects
      encountered in class.
+
       * For any project needing more than a week to complete, break into parts
         and design a schedule with milestones and deliverables.
       * Find some way to keep track of details.
@@ -63,9 +66,14 @@ Program Management
 .. slide:: Historical Data 2
 
    * Results were significant:
+
+   .. rst-class:: build
+
       * 90% of scores below median were students who did less than 50% of the
         project prior to the last week.
+
       * Few did poorly who put in > 50% time early
+
       * Some did well who didn’t put in >50% time early, but most who did well
         put in the early time
 
@@ -73,10 +81,12 @@ Program Management
 
    * Correlations:
       * Strong correlation between early time and high score
-      * No correlation between time spent and score
+      * No correlation between total time spent and score
       * No correlation between % early time and total time
 
 .. slide:: What is the Mechanism?
+
+   .. rst-class:: build
 
    * Correlations do not necessarily mean causation
       * Do they behave that way because they are good, or does
@@ -91,6 +101,8 @@ Program Management
         (and cuts time requirements)
 
 .. slide:: How to fail at implementing your project:
+
+   .. rst-class:: build
 
      * Write the project
      * Debug the project
@@ -128,10 +140,11 @@ Program Management
 .. slide:: Being Organized 2
 
    * You can't turn this on/off
-      * Either you live an organized life, or you can't succeed as a
-        software developer
+      * Either you get in the habit of developing in an organized way,
+        or you can't succeed as a software developer
       * Part of it is developing the attitude of "sweating the details"
-      * Part of it is having the coping mechanisms to handle the details
+      * Part of it is having the coping mechanisms to handle the
+        details (organizational tactics)
 
 .. note::
 
@@ -164,8 +177,10 @@ Program Management
 
 .. slide:: Incremental Development
 
+   .. rst-class:: build
+
    * Break the project into a small initial core
-   * Implement and test the core
+   * Implement AND TEST the core
    * Then gradually add functionality
    * On any given day, write only as much code as you have time to debug
      THAT DAY 
