@@ -4,6 +4,43 @@
 Getting Started
 ===============
 
+------------------------------------
+Overview and Developer's First Steps
+------------------------------------
+
+OpenDSA consists of content delivered by servers.
+Content is delivered in the form of "book instances", which are
+created by the :ref:`configuration process <Configuration>`.
+A book instance is accessed through a Learning Management System (at
+the moment, we are only supporting Canvas), with the files delivered
+by an LTI Content Provider.
+Various support operations are conducted by the OpenDSA Server.
+If you want to develop content, then create a book instance and view
+it, then you will need to set up the necessary infrastructure.
+For testing purposes, this has all been packaged together to simplify
+setting up a development environment.
+See https://github.com/OpenDSA/OpenDSA-DevStack for how to set this
+up.
+
+Once you have the development environment in place, the next step is
+to get an account on a Canvas server.
+You can either use one provided by your institution, set up your own
+Canvas server, or use the public test server provided by Instructure
+at https://canvas.instructure.com.
+With your account in place, you can tell Canvas to create a course.
+The place to start is to create a course named "Test".
+You will then go back to your development environment, and create a
+:ref:`course configuration file <Configuration>`.
+You should start with one named "Test_LMSconf.json", made by copying
+the template in the config directory.
+You can then go to the top of the OpenDSA repository, and do
+``make Test``.
+If everything worked right, then you will have populated your course
+on Canvas with some content.
+At this point, you are ready to learn about the parts of the system
+that you need to know in detail so that you can do useful work.
+
+
 ----------------------
 Project Communications
 ----------------------
@@ -38,8 +75,7 @@ Here is a list of the individual repositories that we use:
 * We use the Khan Academy infrastructure for exercises and distribute
   the necessary portions with OpenDSA.
 
-* The server-side infrastructure is hosted at
-  https://github.com/OpenDSA/OpenDSA-server.
+* Support for setting up OpenDSA servers can be found at https://github.com/OpenDSA/OpenDSA-DevStack.
 
 * The OpenPOP project is in a separate repository at
   https://github.com/OpenDSA/OpenPOP.
@@ -155,15 +191,16 @@ to call separate .js and .css files, respectively.
 We use ``csslint`` to validate css files.
 OpenDSA/Makefile contains our required csslint flags.
 
-
 **JavaScript**
-We use ``jshint`` for validating JavaScript.
-OpenDSA/.jshintrc contains our official configuration file that
+We use ``eslint`` for validating JavaScript.
+OpenDSA/.eslintrc contains our official configuration file that
 defines the expected style.
 It is relatively strict.
 Developers should strive to eliminate all warnings (and of course, all
 errors).
 
+**JSON Files**
+We use ``jsonlint`` to validate css files.
 
 -----
 Tools
@@ -247,12 +284,12 @@ For installation instructions, see
 http://nodejs.org (and don't forget to check for the 64-bit version if
 that is the OS you are running).
 
-jshint
+eslint
 ======
 
 Once you have nodejs installed, just do::
 
-   npm install -g jshint
+   npm install -g eslint
 
 csslint
 =======
@@ -263,6 +300,13 @@ Once you have nodejs installed, just do::
 
 Note: To be able to lint check either JavaScript or CSS, you need to
 put it in separate files from your HTML code.
+
+jsonlint
+========
+
+Once you have nodejs installed, just do::
+
+   npm install -g jsonlint
 
 uglifyjs
 ========
@@ -276,6 +320,14 @@ On Linux, you more likely will need to use the package manager.
 For example, on Ubuntu::
 
    apt-get install uglifyjs
+
+Some other things: requirements.txt
+===================================
+
+(This needs more documentation.)
+From the top level of the OpenDSA directory, do the following:
+
+   pip install -r requirements.txt
 
 Notes for Windows
 =================
@@ -375,27 +427,16 @@ can be used.
   or simply following code execution).
 
 
------------------------
-Looking at what you did
------------------------
+--------------------------------
+Setting up a Testing Environment
+--------------------------------
 
-Everything related to OpenDSA is ultimately rendered as a web
-page.
-But usually you cannot just open the HTML page as a local file in your
-browser.
-These pages usually need to be rendered by a web server.
-If you are working on your own computer and you don't normally run a
-web server, there is a simple solution.
-There is a script at OpenDSA/WebServer that you can run if you have
-python installed.
-It is very easy to use.
-You just run the script, and point your browser to the proper URL.
-Read the text in the script for details.
-Generally, when the script is running, you will just use a URL like
-``http://127.0.0.1:8000/<filename>``.
-
-To see the effect of changes that you make to .js or .css files, all
-that you should need to do is reload the relevant HTML page in your
-browser.
-If you modify a .rst file, then you will need to recompile your book
-instance.
+To compile your own books for testing purposes requires rather a lot
+of infrastruture.
+It also involves running multiple servers: at least one for the LTI
+provider and one for the OpenDSA scoring server.
+To make this relatively easy for most developers, we have created a
+package to deliver a complete "OpenDSA in a box" on a virtual
+machine.
+Complete instructions can be found at:
+https://github.com/OpenDSA/OpenDSA-DevStack.
