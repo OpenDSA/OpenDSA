@@ -159,6 +159,7 @@ form {
 
 #prof_check_mark {
   position: absolute;
-  top: 5px;
-  left: 650px;
+  top: 10px;
+  right: 10px;
+  opacity: .8;
 }
