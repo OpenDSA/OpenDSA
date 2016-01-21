@@ -18,6 +18,12 @@
         "exercises": {}
       }
     },
+    "Formal Grammars": {
+      "PL/Grammars": {
+        "long_name": "Intro to BNG grammars",
+        "exercises": {}
+      }
+    },
     "Functional Programming": {
       "PL/ListDataStructure": {
         "long_name": "The List data structure",
