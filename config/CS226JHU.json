@@ -3105,6 +3105,53 @@
       }
     },
     "Appendix": {
+      "Tutorials/cmdline": {
+        "long_name": "Command Line Basics",
+        "exercises": {
+          "terminal": {
+            "long_name": "Terminal",
+            "required": false,
+            "points": 0,
+            "threshold": 1.0
+          }
+        }
+      },
+      "Tutorials/parameters": {
+        "long_name": "Parsing Command Line Parameters",
+        "exercises": {}
+      },
+      "Tutorials/eclipseparameters": {
+        "long_name": "Using parameters in Eclipse",
+        "exercises": {}
+      },
+      "Tutorials/debugmethods": {
+        "long_name": "Debugging Methods",
+        "exercises": {}
+      },
+      "Tutorials/debug": {
+        "long_name": "Debugging in Eclipse",
+        "exercises": {}
+      },
+      "Tutorials/scanning": {
+        "long_name": "Reading In Input",
+        "exercises": {}
+      },
+      "Tutorials/randomaccessfile": {
+        "long_name": "Using the Java RandomAccessFile class",
+        "exercises": {}
+      },
+      "Tutorials/junitstart": {
+        "long_name": "Junit tests and how to use them",
+        "exercises": {}
+      },
+      "Tutorials/junitbasic": {
+        "long_name": "Junit tests and how to use them",
+        "exercises": {}
+      },
+      "Tutorials/junitcoverage": {
+        "long_name": "Junit tests and how to use them",
+        "exercises": {}
+      },
       "Glossary": {
         "long_name": "Glossary",
         "exercises": {}
