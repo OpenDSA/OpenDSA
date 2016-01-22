@@ -13,3 +13,10 @@
 Here are the review problems for day 1.
 
 .. avembed:: Exercises/PL/RP1.1.html ka
+
+
+test
+----
+
+.. avembed:: Exercises/PL/RP1.2.html ka
+
