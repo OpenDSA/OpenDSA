@@ -42,6 +42,13 @@
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
+          },
+          "RP1part4": {
+            "long_name": "RP set #1, question #4",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1.0,
+            "showhide": "Show"
           }
 	}
       }
