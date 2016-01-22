@@ -12,7 +12,7 @@
 
 Here are the review problems for day 1.
 
-.. avembed:: Exercises/PL/RP1.1.html ka
+.. avembed:: Exercises/PL/RP1part1.html ka
 
-.. avembed:: Exercises/PL/RP1.2.html ka
+.. avembed:: Exercises/PL/RP1part2.html ka
 
