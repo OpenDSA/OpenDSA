@@ -10,14 +10,23 @@
  BNF Grammars
 ========================
 
+Here are the review problems for day 1.
+
 Part 1
 ------
 
-Here are the review problems for day 1.
+
 
 .. avembed:: Exercises/PL/RP1part1.html ka
+
 
 Part 2
 ------
 
 .. avembed:: Exercises/PL/RP1part2.html ka
+
+
+Part 3
+------
+
+.. avembed:: Exercises/PL/RP1part3.html ka
