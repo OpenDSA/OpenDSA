@@ -18,6 +18,31 @@
         "sections": {}
       }
     },
+    "Formal Grammars": {
+      "PL/Grammars": {
+        "long_name": "Intro to BNF grammars",
+        "sections": {
+          "Part 1": {
+            "RP1part1": {
+              "long_name": "RP set #1, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "Part 2": {
+            "RP1part2": {
+              "long_name": "RP set #1, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }
+        }
+      }
+    },
     "Functional Programming": {
       "PL/ListDataStructure": {
         "long_name": "The List data structure",
