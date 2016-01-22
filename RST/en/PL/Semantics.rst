@@ -30,8 +30,8 @@ stream via print statements. Therefore, the lambda calculus is a
 purely functional language.
 
 Now, we will explain the meaning of the three types of lambda
-expressions whose syntax is given in the lambda calculus grammar (see
-:ref:`BNF-grammar-for-LC`). For each type of lambda expressions, we will
+expressions whose syntax is given in the lambda calculus grammar.
+For each type of lambda expressions, we will
 describe its meaning using both an English statement and a JavaScript
 code fragment.
 

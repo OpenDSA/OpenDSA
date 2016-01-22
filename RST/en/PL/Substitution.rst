@@ -76,7 +76,8 @@ inserted into :math:`b`.
 
 Now, back to the substitution algorithm. Since :math:`b` is an
 arbitrary lambda expression, looking back at the BNF grammar for the
-lambda calculus (see :ref:`BNF-grammar-for-LC`), we see that we must
+:ref:`lambda calculus <lambda calculus> <Semantics>`,
+we see that we must
 consider three cases for :math:`b`, namely a variable, a lambda
 abstraction or an application expression. Therefore, our description
 of the algorithm is broken down into three numbered cases.
