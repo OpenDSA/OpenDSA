@@ -100,8 +100,7 @@ it almost never seems to make sense to do a three-level algorithm.
 Instead, when we go beyond two levels, we nearly always generalize by
 using recursion.
 This leads us to the most commonly used search algorithm for sorted
-arrays, the binary search described in
-Module :numref:`<AnalProgram>`.
+arrays, the :ref:`binary search <binary search> <AnalProgram>`.
 
 If we know nothing about the distribution of
 key values, then binary search is the best

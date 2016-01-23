@@ -17,8 +17,9 @@ Consider the following simple summation.
 .. math::
    \sum_{i=1}^n i.
 
-In Module :numref:`<Proofs>` it was proved by induction that this
-summation has the well-known closed form :math:`n(n+1)/2`.
+An easy :term:`proof by induction <proof by induction> <Proofs>`
+shows that this summation has the well-known closed form
+:math:`n(n+1)/2`.
 But while induction is a good technique for proving that a proposed
 closed-form expression is correct, 
 how do we find a candidate closed-form expression to test in the first

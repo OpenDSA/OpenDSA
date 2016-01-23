@@ -221,7 +221,7 @@ CS4104F15: min
 	python $(CONFIG_SCRIPT) config/CS4104F15.json
 
 CS5114: min
-	python $(CONFIG_SCRIPT) config/CS5114.json
+	python $(CONFIG_SCRIPT) config/CS5114S16.json
 
 CS5114S15: min
 	python $(CONFIG_SCRIPT) config/CS5114S15.json

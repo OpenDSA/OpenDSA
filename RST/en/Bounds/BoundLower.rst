@@ -20,10 +20,11 @@ element.
 The value of an algorithm must be determined in relation to the
 inherent complexity of the problem at hand.
 
-In Module :numref:`<AnalProblem>` we defined the upper bound for
-a problem to be the upper bound of the best algorithm we know for that
-problem, and the lower bound to be the tightest lower bound that we
-can prove over all algorithms for that problem.
+We define the :term:`upper bound <problem upper bound>` for a problem
+to be the upper bound of the best algorithm we know for that
+problem, and the
+:term:`lower bound <problem lower bound>` to be the tightest lower
+bound that we can prove over all algorithms for that problem.
 While we usually can recognize the upper bound for a given algorithm,
 finding the tightest lower bound for all possible algorithms is often
 difficult, especially if that lower bound is more than the
@@ -40,16 +41,16 @@ It also saves us the effort of attempting to discover more
 exist.
 
 Often the most effective way to determine the lower bound for a
-problem is to find a reduction to another problem whose lower bound is
-already known.
-This is the subject of Module :numref:`<Reduction>`.
+problem is to find a :ref:`reduction <reduction> <Reduction>` to
+another problem whose lower bound is already known.
 However, this approach does not help us when we cannot find a suitable
 "similar problem".
 Our focus in this chapter is discovering and proving lower bounds
 from first principles.
 Our most  significant example of a lower bounds argument so far is the
-proof from Module :numref:`<SortingLowerBound>` that the problem of
-sorting is :math:`O(n \log n)` in the worst case.
+:ref:`sorting lower bound proof <sorting lower bound> <SortingLowerBound>`,
+which shows that the problem of sorting has a lower bound of
+:math:`O(n \log n)` in the worst case.
 
 The lower bound for the problem is the tightest (highest) lower bound
 that we can prove **for all possible algorithms** that solve the
@@ -134,11 +135,11 @@ This simply is not true, and any lower bounds proof that refers to
 specific behavior that must take place should be viewed with some
 suspicion.
 
-Let us consider the Towers of Hanoi problem again.
-Recall from Module :numref:`<Recursion>` that our basic algorithm is
-to move :math:`n-1` disks (recursively) to the middle pole, move the
-bottom disk to the third pole, and then move :math:`n-1` disks (again
-recursively) from the middle to the third pole.
+Let us consider the :term:`Towers of Hanoi problem`.
+Our basic algorithm is to move :math:`n-1` disks (recursively) to the
+middle pole, move the bottom disk to the third pole, and then move
+:math:`n-1` disks (again recursively) from the middle to the third
+pole.
 This algorithm generates the recurrence
 :math:`\mathbf{T}(n) = 2\mathbf{T}(n-1) + 1 = 2^n - 1`.
 So, the upper bound for our algorithm is :math:`2^n - 1`.

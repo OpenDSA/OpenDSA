@@ -191,8 +191,8 @@ The next-closest vertex can be found in the heap in
 Every time we modify :math:`\mathbf{D}(X)`,
 we could reorder :math:`X` in
 the heap by deleting and reinserting it.
-This is an example of a priority queue with
-priority update, as described in Module :numref: `<Heaps>`.
+This is an example of a :ref:`priority queue <priority queue> <Heaps>`
+with priority update.
 To implement true priority updating, we would need to store with each
 vertex its position within the heap so that we can remove its old
 distances whenever it is updated by processing new edges.
