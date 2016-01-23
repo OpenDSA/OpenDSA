@@ -34,3 +34,19 @@ This problem is about determining how many parse trees a given string
 has in the grammar given above for :math:`L`.
 
 .. avembed:: Exercises/PL/RP2part1.html ka
+
+RP 2 part 2
+-----------
+
+This problem is again about determining how many parse trees a given string
+has in the grammar given above for :math:`L`.
+
+.. avembed:: Exercises/PL/RP2part2.html ka
+
+RP 2 part 2
+-----------
+
+This problem is once more about determining how many parse trees a given string
+has in the grammar given above for :math:`L`.
+
+.. avembed:: Exercises/PL/RP2part3.html ka

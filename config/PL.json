@@ -63,6 +63,20 @@
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
+          },
+          "RP2part2": {
+            "long_name": "RP set #2, question #2",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1.0,
+            "showhide": "Show"
+          },
+          "RP2part3": {
+            "long_name": "RP set #2, question #3",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1.0,
+            "showhide": "Show"
           }
 	}
       }
