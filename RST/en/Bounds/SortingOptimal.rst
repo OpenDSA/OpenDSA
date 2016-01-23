@@ -159,8 +159,9 @@ Finally, Element 2 will be inserted into a list of size 5, 6, or 7.
    by the remaining six elements.
 
 Merge insert sort is pretty good, but is it optimal?
-Recall from Module :numref:`<SortingLowerBound>` that no sorting
-algorithm can be faster than :math:`\Omega(n \log n)`.
+We know from the
+:ref:`sorting lower bound proof <sorting lower bound> <SortingLowerBound>`
+that no sorting algorithm can be faster than :math:`\Omega(n \log n)`.
 To be precise, the :term:`information theoretic lower bound` for
 sorting can be proved to be :math:`\lceil \log n!\rceil`.
 That is, we can prove a lower bound of exactly 

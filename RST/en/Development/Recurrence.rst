@@ -371,9 +371,9 @@ A more complex example is given next.
 .. topic:: Example
 
    Our next example models the cost of the algorithm to build a heap.
-   Recall from Module :numref:`<Heaps>` that to build a heap, we first
-   heapify the two subheaps, then push down the root to its proper
-   position.
+   You should recall that to build a :ref:`heap <heap> <Heaps>`,
+   we first heapify the two subheaps, then push down the root to its
+   proper position.
    The cost is:
 
    .. math::

@@ -1803,7 +1803,7 @@ Glossary
 
    homogeneity
       In a :term:`container` class, this is the property that all
-      objects stored in the container are of the same class.
+      objects stored in the ncontainer are of the same class.
       For example, if you have a list intended to store Payroll
       records, is it possible for the programmer to insert an integer
       onto the list instead?
@@ -3006,6 +3006,16 @@ Glossary
       A specific selection of values for the parameters to a problem.
       In other words, a specific set of inputs to a problem.
 
+   problem lower bound
+      The tightest lower bound that we can prove over all algorithms
+      for that problem.
+      This is often much harder to determine than the
+      `:term:`problem upper bound`.
+
+   problem upper bound
+      The upper bound for the best algorithm that we know for the
+      problem.
+
    procedural
       Typically referring to the
       :term:`procedural programming paradigm`, in contrast to the
@@ -3587,7 +3597,7 @@ Glossary
       and search.
       It is a :term:`probabilistic data structure` since it adds the
       additional links using a :term:`probabilistic algorithm`.
-      It can implement a dictionary more efficiently than a
+      It can implement a :term:`dictionary` more efficiently than a
       :term:`BST`, and is roughly as difficult to implement.
 
    slot

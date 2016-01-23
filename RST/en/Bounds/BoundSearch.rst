@@ -12,12 +12,11 @@
 Lower Bounds on Searching Lists
 ===============================
 
-In Module :numref:`<SortingLowerBound>` we presented an important lower
-bounds proof to show that the problem of sorting is
+The :ref:`sorting lower bound proof <sorting lower bound> <SortingLowerBound>`
+is important because it shows that the problem of sorting is
 :math:`\Theta(n \log n)` in the worst case. 
-In Chapter :chap:`Searching` we discussed a number of algorithms to
-search in sorted and unsorted lists, but we did not provide any lower
-bounds proofs to this important problem.
+There are a number of algorithms to search in sorted and unsorted
+lists, and it would be nice to know the lower bound to this important problem.
 We will extend our pool of techniques for lower bounds proofs in this
 section by studying lower bounds for searching unsorted and sorted lists.
 
@@ -212,10 +211,11 @@ are a number of circumstances that might lead us to select another
 algorithm instead.
 One possibility is that we know something about the distribution of
 the data in the array.
-We saw in Module :numref:`<SortedSearch>` that if each position in
-**L** is equally likely to hold :math:`K` (equivalently, the data are
-well distributed along the full key range), then an interpolation
-search is :math:`\Theta(\log \log n` in the average case.
+If each position in **L** is equally likely to hold :math:`K`
+(equivalently, the data are 
+well distributed along the full key range), then an
+:ref:`interpolation search <interpolation search> <SortedSearch>`
+is :math:`\Theta(\log \log n)` in the average case.
 If the data are not sorted, then using binary search requires us to
 pay the cost of sorting the list in advance, which is only worthwhile
 if many (at least :math:`O(\log n)` searches will be performed on the
@@ -225,4 +225,5 @@ implemented using an array or some other structure that supports
 random access to all elements with equal cost.
 Finally, if we know all search requests in advance, we might prefer to
 sort the list by frequency and do linear search in extreme search
-distributions, as discussed in Module :numref:`<SelfOrg>`.
+distributions, or use a
+:ref:`self-organizing list <self-organizing list> <SelfOrg>`.
