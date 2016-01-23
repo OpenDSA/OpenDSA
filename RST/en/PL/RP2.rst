@@ -1,0 +1,36 @@
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://algoviz.org/OpenDSA for more details.
+.. Copyright (c) 2012-13 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
+
+.. avmetadata:: 
+   :author: David Furcy and Tom Naps
+
+====
+RP 2
+====
+
+This set contains four review problems, the first three of which refer
+to the following grammar for a language called :math:`L`:
+
+.. math::
+
+   \begin{eqnarray*} 
+   <s> & ::= & <v>\ =\ <e>\\
+       & |   & <s>\ ;\ <s>\\
+       & |   & \mathrm{if}\ <b>\ \mathrm{then}\ <s>\\
+       & |   & \mathrm{if}\ <b>\ \mathrm{then}\ <s>\ \mathrm{else}\ <s>\\
+   <v> & ::= & \,\,\,x\,\,\, |\,\,\, y\,\,\, |\,\,\, z\\
+   <e> & ::= & <v>\ |\,\,\,  0\,\,\, |\,\,\, 1\,\,\, |\,\,\, 2\,\,\, |\,\,\, 3\,\,\, |\,\,\, 4\\
+   <b> & ::= & <e>\ ===\ <e>\\
+   \end{eqnarray*}
+
+where, like in JavaScript,  :math:`=` is the assignment operator and :math:`===` is the equality testing  operator.
+
+RP 2 part 1
+-----------
+
+This problem is about determining how many parse trees a given string
+has in the grammar given above for :math:`L`.
+
+.. avembed:: Exercises/PL/RP2part1.html ka
