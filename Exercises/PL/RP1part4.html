@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html data-require="math">
+  <head>
+    <title>RP 1.4</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="850" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP1part4p">
+          <p class="question">Consider the following grammar for a
+	    language
+	    called <code>L</code>:<br /><span class="string">&lt;s&gt;
+	    ::= a &lt;s&gt; a | b &lt;s&gt; b | &epsilon;</span><br />
+	    <br /> Given that, for this problem,
+	    a `palindrome' is defined as a string made of
+	    an arbitrary number (including 0) of <code>a</code>s
+	    and <code>b</code>s that reads the same backwards as it
+	    does forwards, which one of the statements below is true?
+	  </p>
+          <div class="solution"> <code>L</code> contains only
+             palindromes, but some palindromes do not belong
+             to <code>L</code>.</div>
+          <ul class="choices">
+            <li><code>L</code> contains all of the palindromes, as
+	      well as some strings that are not palindromes.</li>
+            <li><code>L</code> is exactly the set of all
+            palindromes.</li>
+            <li><code>L</code> contains a finite number of
+            palindromes.</li>
+	    <li>None of the other options is true.</li>
+          </ul>
+          <div class="hints">
+            <p>You can use structural induction (informally) to
+            determine the truth value of some of these statements. </p>
+            <p>One way to get started is to derive a few of the
+            shortest strings in <code>L</code> and look for
+            patterns.</p>
+            <p>You can also consider each one of the strings of length
+            0, 1, 2, etc., to determine which ones are
+            not in <code>L</code> and why.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

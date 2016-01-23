@@ -60,7 +60,7 @@ approaches:
 #. Tree indexing methods.
 
 Any of these approaches are potentially suitable for implementing the
-:term:`Dictionary` ADT introduced in Module :numref:`<Dictionary>`.
+:ref:`Dictionary <dictionary> <Dictionary>` ADT.
 However, each has different performance characteristics that make it
 the method of choice in particular circumstances.
 
@@ -69,8 +69,8 @@ lists.
 List in this context means any list implementation including a
 linked list or an array.
 Most of these methods are appropriate for sequences
-(i.e., duplicate key values are allowed), although special techniques
-applicable to sets are discussed in Module :numref:`<SetSearch>`.
+(i.e., duplicate key values are allowed), although there are special
+techniques applicable to :ref:`sets <set> <SetSearch>`.
 The techniques from the first three sections of this chapter are most
 appropriate for searching a collection of records stored in RAM.
 Chapter :chap:`Hashing` introduces hashing, a technique for
