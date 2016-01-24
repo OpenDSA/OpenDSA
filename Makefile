@@ -96,7 +96,7 @@ testLTI: min
 	# python $(CONFIG_SCRIPT) config/testLTI.json -c config/testLTI_LMSconf_local.json
 	# python $(CONFIG_SCRIPT) config/testLTI.json -c config/testLTI_LMSconf_local.json -o True
 
-S16: ECE252 Indiain CSCI204 CSE017 CPSC270 CS316 CS3in CS2114vt CSCI115
+S16: ECE252 Indiain CSCI204 CSE017 CPSC270 CS316 CS3in CS2114 CSCI115
 
 Test: min
 	python $(CONFIG_SCRIPT) config/Test.json -c config/Test_LMSconf.json
@@ -134,8 +134,16 @@ Everythingvtt: min
 CS2: min
 	python $(CONFIG_SCRIPT) config/CS2.json
 
-CS2114vt: min
-	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114vt_LMSconf.json -b CS2114S16
+CS2114: min
+	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12506_LMSconf.json -b CS2114_12506
+	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12507_LMSconf.json -b CS2114_12506
+	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12508_LMSconf.json -b CS2114_12506
+	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12509_LMSconf.json -b CS2114_12506
+	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12510_LMSconf.json -b CS2114_12506
+	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12511_LMSconf.json -b CS2114_12506
+	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12512_LMSconf.json -b CS2114_12506
+	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12513_LMSconf.json -b CS2114_12506
+	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_20419_LMSconf.json -b CS2114_12506
 
 CS2in: min
 	python $(CONFIG_SCRIPT) config/CS2.json -c config/CS2in_LMSconf.json -b CS2in

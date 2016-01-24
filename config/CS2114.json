@@ -2,7 +2,8 @@
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
-    "Java_Generic": { "ext":["java"], "label":"Java (Generic)","lang":"java"}
+    "Java_Generic": { "ext":["java"], "label":"Java (Generic)","lang":"java"},
+    "Java": { "ext":["java"], "label":"Java (Generic)","lang":"java"}
   },
   "tabbed_codeinc": false,
   "lang": "en",
