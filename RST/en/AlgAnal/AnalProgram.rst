@@ -277,7 +277,7 @@ from lowest to highest.
 Depending on the context in which binary search is to be used, this
 requirement for a sorted array could be detrimental to the running
 time of a complete program, because  maintaining the values in sorted
-order requires to greater cost when inserting new elements into the
+order requires a greater cost when inserting new elements into the
 array.
 This is an example of a tradeoff between the
 advantage of binary search during search and the disadvantage related
