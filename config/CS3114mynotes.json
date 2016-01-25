@@ -2,7 +2,39 @@
   "title": "CS3114 Fall Coursenotes",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
-  "code_lang": {"Processing": ["pde"]},
+  "lang": "en",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Processing": {
+      "ext": [
+        "pde"
+      ],
+      "label": "Processing",
+      "lang": "java"
+    },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "tabbed_codeinc": false,
   "module_origin": "http://algoviz.org",
   "exercise_server": "https://opendsa.cs.vt.edu/",
   "logging_server": "https://opendsa.cs.vt.edu/",
@@ -21,6 +53,13 @@
       "Slides/ProjManage": {
         "long_name": "Project Management",
         "exercises" : {}
+      }
+    },
+    "Week 2": {
+      "Slides/AlgAnal": {
+        "long_name": "Algorithm Analysis",
+        "exercises" : {
+        }
       }
     },
     "Binary Trees": {

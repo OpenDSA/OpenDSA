@@ -118,6 +118,10 @@ Program Management
       * Debug the resulting program
       * Have a way to track details
 
+   * Do mechanics early
+   * Do structural design before implementation
+   * Implement the tricky parts last
+
 .. slide:: How to Survive
 
    * Keys to success:
@@ -180,8 +184,18 @@ Program Management
    .. rst-class:: build
 
    * Break the project into a small initial core
-   * Implement AND TEST the core
+   * Implement and TEST and COMMENT the core
    * Then gradually add functionality
    * On any given day, write only as much code as you have time to debug
      THAT DAY 
    * This works well with Scheduling and Organizing
+
+.. note::
+
+   For our projects, you need implementation, comments, and tests.
+   If you write the comments (especially javadoc comments) and the
+   tests when you add a functional unit, its not that big a burden.
+   If you add them at the end, it feels really tedious (and you don't
+   get any of the benefits).
+
+
