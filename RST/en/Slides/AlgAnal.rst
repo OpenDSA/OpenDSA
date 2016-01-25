@@ -17,6 +17,8 @@ Algorithm Analysis
 
 .. slide:: Algorithm Efficiency
 
+   .. odsalink:: AV/JSAVReset.css
+
    There are often many approaches (algorithms) to solve a problem.
    How do we choose between them?
 
