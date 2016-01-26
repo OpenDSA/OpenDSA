@@ -88,6 +88,20 @@
 	}
       }
     },
+    "RP3": {
+      "PL/RP3": {
+        "long_name": "Review Problem Set #3",
+        "exercises": {
+          "RP3part1": {
+            "long_name": "RP set #3, question #1",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1.0,
+            "showhide": "Show"
+          }
+	}
+      }
+    },
     "Functional Programming": {
       "PL/ListDataStructure": {
         "long_name": "The List data structure",
