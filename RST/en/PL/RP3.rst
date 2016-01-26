@@ -18,3 +18,11 @@ RP 3 part 1
 This problem is about determining whether a grammar is ambiguous or not.
 
 .. avembed:: Exercises/PL/RP3part1.html ka
+
+RP 3 part 2
+-----------
+
+This problem demonstrates how grammatical structure impacts the
+associativity property of arithmetic operators.
+
+.. avembed:: Exercises/PL/RP3part2.html ka
