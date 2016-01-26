@@ -119,6 +119,13 @@
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
+          },
+          "RP3part5": {
+            "long_name": "RP set #3, question #5",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1.0,
+            "showhide": "Show"
           }
 	}
       }
