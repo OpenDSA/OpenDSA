@@ -54,8 +54,8 @@ has in the grammar given above for :math:`L`.
 RP 2 part 4
 -----------
 
-This problem is yet again about determining how many parse trees a
-given string has in a given grammar. But this time, the grammar involved is
-*not* the one given above for :math:`L`.
+This problem again deals with an expression with multiple parse trees
+in a given grammar. But this time, the grammar involved is *not* the
+one given above for :math:`L`.
 
 .. avembed:: Exercises/PL/RP2part4.html ka
