@@ -43,10 +43,19 @@ has in the grammar given above for :math:`L`.
 
 .. avembed:: Exercises/PL/RP2part2.html ka
 
-RP 2 part 2
+RP 2 part 3
 -----------
 
 This problem is once more about determining how many parse trees a given string
 has in the grammar given above for :math:`L`.
 
 .. avembed:: Exercises/PL/RP2part3.html ka
+
+RP 2 part 4
+-----------
+
+This problem is yet again about determining how many parse trees a
+given string has in a given grammar. But this time, the grammar involved is
+*not* the one given above for :math:`L`.
+
+.. avembed:: Exercises/PL/RP2part4.html ka
