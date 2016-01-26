@@ -26,3 +26,13 @@ This problem demonstrates how grammatical structure impacts the
 associativity property of arithmetic operators.
 
 .. avembed:: Exercises/PL/RP3part2.html ka
+
+
+RP 3 part 3
+-----------
+
+This problem illustrates how grammatical structure impacts the
+associativity property and order of precedence of arithmetic
+operators.
+
+.. avembed:: Exercises/PL/RP3part3.html ka

@@ -14,31 +14,21 @@
           <p class="question">Consider the following grammars:
 	    <table class="grammar">
 	      <tr><td><strong>Grammar 1:</strong></td>
-		<td><span class="string">
-		    &lt;s&gt; ::= a &lt;s&gt; |  b &lt;s&gt; | &epsilon;</span>
+		<td>&lt;s&gt; ::= a &lt;s&gt; |  b &lt;s&gt; | &epsilon;
 		</td></tr>
 	      <tr><td><strong>Grammar 2:</strong></td>
-		<td><span class="string">
-		    &lt;s&gt; ::= a | b |  &lt;s&gt; &lt;s&gt; | &epsilon;</span>
-		  </td></tr>
+		<td>&lt;s&gt; ::= a | b |  &lt;s&gt; &lt;s&gt; | &epsilon;
+	      </td></tr>
 	      <tr><td><strong>Grammar 3:</strong></td>
-		<td><span class="string">
-		    &lt;s&gt; ::= a &lt;s&gt; b | &epsilon;</span>
-		  </td></tr>
+		<td>&lt;s&gt; ::= a &lt;s&gt; b | &epsilon;</td></tr>
 	      <tr><td><strong>Grammar 4:</strong></td>
-		<td><span class="string">
-		    &lt;s&gt; ::= &lt;s&gt; a | &lt;s&gt; b | a</span>
-		  </td></tr>
+		<td>&lt;s&gt; ::= &lt;s&gt; a | &lt;s&gt; b | a</td></tr>
 	      <tr><td><strong>Grammar 5:</strong></td>
-		<td><span class="string">
-		    &lt;s&gt; ::= a &lt;r&gt; | &lt;r&gt;</span>
-		  </td></tr>
+		<td>&lt;s&gt; ::= a &lt;r&gt; | &lt;r&gt;</td></tr>
 	      <tr><td></td>
-		<td><span class="string">
-		    &lt;r&gt; ::= b &lt;s&gt; | &lt;s&gt; | &epsilon;</span>
-		  </td></tr>
+		<td>&lt;r&gt; ::= b &lt;s&gt; | &lt;s&gt; | &epsilon;</td></tr>
 	    </table>
-          How many of these grammars are ambiguous?
+            <p class="question">How many of these grammars are ambiguous?</p>
           <div class="solution">2</div>
           <ul class="choices">
             <li>0</li>
