@@ -77,6 +77,55 @@
             "points": 1.0,
             "threshold": 1.0,
             "showhide": "Show"
+          },
+          "RP2part4": {
+            "long_name": "RP set #2, question #4",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1.0,
+            "showhide": "Show"
+          }
+	}
+      }
+    },
+    "RP3": {
+      "PL/RP3": {
+        "long_name": "Review Problem Set #3",
+        "exercises": {
+          "RP3part1": {
+            "long_name": "RP set #3, question #1",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1.0,
+            "showhide": "Show"
+          },
+          "RP3part2": {
+            "long_name": "RP set #3, question #2",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1.0,
+            "showhide": "Show"
+          },
+          "RP3part3": {
+            "long_name": "RP set #3, question #3",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1.0,
+            "showhide": "Show"
+          },
+          "RP3part4": {
+            "long_name": "RP set #3, question #4",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1.0,
+            "showhide": "Show"
+          },
+          "RP3part5": {
+            "long_name": "RP set #3, question #5",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1.0,
+            "showhide": "Show"
           }
 	}
       }
