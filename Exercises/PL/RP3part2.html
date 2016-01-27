@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html data-require="math">
+  <head>
+    <title>RP 3.2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="920" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP3part2p">
+          <p class="question">Consider the following grammars:
+	    <table class="grammar">
+	      <tr><td><strong>Grammar 1:</strong></td>
+		<td>&lt;exp&gt;</td> 
+		<td>::= &lt;term&gt;</td>
+		<td>| &lt;exp&gt; ^ &lt;term&gt;</td></tr>
+	      <tr><td></td>
+		<td>&lt;term&gt;</td>
+		<td>::= &lt;integer&gt;</td>
+		<td>| ( &lt;exp&gt; )</td></tr>
+	      <tr><td><strong>Grammar 2:</strong></td>
+		<td>&lt;exp&gt;</td> 
+		<td>::= &lt;term&gt;</td>
+		<td>| &lt;term&gt; ^ &lt;exp&gt;</td></tr>
+	      <tr><td></td>
+		<td>&lt;term&gt;</td>
+		<td>::= &lt;integer&gt;</td>
+		<td>| ( &lt;exp&gt; )</td></tr>
+	      <tr><td><strong>Grammar 3:</strong></td>
+		<td>&lt;exp&gt;</td> 
+		<td>::= &lt;integer&gt;</td>
+		<td>| &lt;exp&gt; ^ &lt;exp&gt;</td>
+		<td>| ( &lt;exp&gt;)</td></tr>
+	    </table>
+	    <p class="question">If ^ represents exponentiation, how
+	    many of these grammars force 2^3^2 to evaluate to 512?</p>
+          <div class="solution">1</div>
+          <ul class="choices">
+            <li>0</li>
+            <li>2</li>
+            <li>3</li>
+          </ul>
+          <div class="hints">
+            <p>Which operator associativity (left or right) does ^
+            need to have for 2^3^2 to evaluate to 512?</p>
+	    <p>How does left- and right-recursion patterns in a production
+	    correspond to the associativity of the operator defined by
+	    the production?</p>
+	    <p>How does the double-recursion pattern (i.e.,
+	    simultaneous left- and right-recursion) in a production
+	    impact the associativity of the operator defined by the
+	    production?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -18,8 +18,6 @@ CS3114 Introduction
 
 .. slide:: Introduction
 
-   .. odsalink:: AV/JSAVReset.css
-
    What we are doing today:
 
    * Administration stuff
