@@ -49,13 +49,18 @@
         "exercises" : {
           "ADTCON": {}
         }
-      },
-      "Slides/ProjManage": {
-        "long_name": "Project Management",
-        "exercises" : {}
       }
     },
     "Week 2": {
+      "Slides/ProjManage": {
+        "long_name": "Project Management",
+        "exercises" : {}
+      },
+      "Slides/SkipList": {
+        "long_name": "SkipLists",
+        "exercises" : {
+        }
+      },
       "Slides/AlgAnal": {
         "long_name": "Algorithm Analysis",
         "exercises" : {
