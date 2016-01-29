@@ -74,6 +74,10 @@
       }
     },
     "Week 3": {
+      "Slides/Coding": {
+        "long_name": "Clean Code",
+        "exercises" : {}
+      },
       "Slides/Lists": {
         "long_name": "Lists",
         "exercises" : {}
