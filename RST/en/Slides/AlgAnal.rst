@@ -246,16 +246,19 @@ Algorithm Analysis
 
 .. slide:: Simplifying Rules
 
-   #. If f(n) is in O(g(n)) and g(n) is in O(h(n)), then f(n) is in O(h(n)).
+   #. If :math:`f(n)` is in :math:`O(g(n))` and :math:`g(n)` is in
+      :math:`O(h(n))`, then :math:`f(n)` is in :math:`O(h(n))`.
 
-   #. If f(n) is in O(kg(n)) for some constant k > 0, then f(n) is in
-      O(g(n)).
+   #. If :math:`f(n)` is in :math:`O(kg(n))` for some constant
+      :math:`k > 0`, then :math:`f(n)` is in :math:`O(g(n))`.
 
-   #. If f1(n) is in O(g1(n)) and f2(n) is in O(g2(n)), then (f1 + f2)(n) is
-      in O(max(g1(n), g2(n))).
+   #. If :math:`f_1(n)` is in :math:`O(g_1(n))` and :math:`f_2(n)` is
+      in :math:`O(g_2(n))`, then :math:`(f_1 + f_2)(n)` is
+      in :math:`O(\max(g_1(n), g_2(n)))`.
 
-   #. If f1(n) is in O(g1(n)) and f2(n) is in O(g2(n)) then f1(n)f2(n) is in
-      O(g1(n)g2(n)).
+   #. If :math:`f_1(n)` is in :math:`O(g_1(n))` and :math:`f_2(n)` is
+      in :math:`O(g_2(n))`, then :math:`f_1(n)f_2(n)` is in
+      :math:`O(g_1(n)g_2(n))`.
 
 .. slide:: Time Complexity Examples (1)
 
@@ -319,10 +322,10 @@ Algorithm Analysis
 
    Example of imperfect knowledge: Sorting
 
-   1. Cost of I/O: (n).
-   2. Bubble or insertion sort: O(n2).
-   3. A better sort (Quicksort, Mergesort, Heapsort, etc.): O(n log n).
-   4. We prove later that sorting is in (n log n).
+   1. Cost of I/O: :math:`\Omega(n)`.
+   2. Bubble or insertion sort: :math:`O(n^2)`.
+   3. A better sort (Quicksort, Mergesort, Heapsort, etc.): :math:`O(n \log n)`.
+   4. We prove later that sorting is in :math:`\Omega(n \log n)`.
 
 .. slide:: Space/Time Tradeoff Principle
 

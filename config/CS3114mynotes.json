@@ -64,6 +64,12 @@
       "Slides/AlgAnal": {
         "long_name": "Algorithm Analysis",
         "exercises" : {
+          "ProblemAlgorithmCON": {
+            "long_name": "Problem, Algorithm, and Program definitions Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
         }
       }
     },

@@ -44,7 +44,7 @@ If you want to enforce homogeneity, the most rigid way is to simply
 define the elements to be of a fixed type.
 But that does not help if you want one list to store integers while
 another stores strings.
-A much more flexible approach is to us Java generics or C++
+A much more flexible approach is to use Java generics or C++
 templates.
 In this way, the compiler will enforce that a given list will only
 store a single data type, while still allowing different lists to have
