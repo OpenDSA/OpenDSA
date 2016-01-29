@@ -302,6 +302,8 @@ Records information about each exercise attempt.
         +-------------------------+------------------+-----------------------------+
         | ex_question             | varchar          | KA question name            |
         +-------------------------+------------------+-----------------------------+
+        | request_type            | longtext         | KA user interaction type    |
+        +-------------------------+------------------+-----------------------------+
 
 
 ``Foreign keys:`` (1) Book table, (2) Exercise.
@@ -378,6 +380,12 @@ related to one student and one exercise.
         |  proficient_date        | datetime         | date of proficiency         |
         +-------------------------+------------------+-----------------------------+
         |  progress               | decimal          | correctness percentage      |
+        +-------------------------+------------------+-----------------------------+
+        |  correct_exercises      | longtext         | a list of correct exercise  |
+        +-------------------------+------------------+-----------------------------+
+        |  current_exercises      | longtext         | current Exercises           |
+        +-------------------------+------------------+-----------------------------+
+        |  hinted_exercises       | longtext         | hint used Exercises         |
         +-------------------------+------------------+-----------------------------+
 
 
