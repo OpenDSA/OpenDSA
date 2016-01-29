@@ -381,11 +381,11 @@ related to one student and one exercise.
         +-------------------------+------------------+-----------------------------+
         |  progress               | decimal          | correctness percentage      |
         +-------------------------+------------------+-----------------------------+
-        |  correct_exercises      | longtext         | a list of correct exercise  |
+        |  correct_exercises      | longtext         | a list of correct exercises |
         +-------------------------+------------------+-----------------------------+
-        |  current_exercises      | longtext         | current Exercises           |
+        |  current_exercises      | longtext         | current exercise title      |
         +-------------------------+------------------+-----------------------------+
-        |  hinted_exercises       | longtext         | hint used Exercises         |
+        |  hinted_exercises       | longtext         | recently hint used exercise |
         +-------------------------+------------------+-----------------------------+
 
 
