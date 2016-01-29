@@ -73,6 +73,12 @@
         }
       }
     },
+    "Week 3": {
+      "Slides/Lists": {
+        "long_name": "Lists",
+        "exercises" : {}
+      }
+    },
     "Binary Trees": {
       "Slides/Heaps": {
         "long_name": "Heaps and Priority Queues",

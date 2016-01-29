@@ -9,6 +9,7 @@ class AList implements List {
   private int curr;                       // Position of current element
 /* *** ODSAendTag: AListVars *** */
 
+/* *** ODSATag: Constructors *** */
   // Constructors
   // Create a new list object with maximum size "size"
   AList(int size) { 
@@ -18,6 +19,7 @@ class AList implements List {
   }
   // Create a list with the default capacity
   AList() { this(defaultSize); }          // Just call the other constructor
+/* *** ODSAendTag: Constructors *** */
 
   public void clear()                     // Reinitialize the list
     { listSize = curr = 0; }              // Simply reinitialize values
