@@ -6,12 +6,21 @@
 .. avmetadata:: 
    :author: David Furcy and Tom Naps
 
-====
-RP 2
-====
 
-This set contains four review problems, the first three of which refer
-to the following grammar for a language called :math:`L`:
+============================
+Grammars - Part 2 (W 2/3/16)
+============================
+
+Topics of the day:
+
+  1. Infinite languages and recursion
+  2. Ambiguous grammars
+  3. Operator associativity
+
+
+The review problem set for today contains four review problems, the
+first three of which refer to the following grammar for a language
+called :math:`L`:
 
 .. math::
 
