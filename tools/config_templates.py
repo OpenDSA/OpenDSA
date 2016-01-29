@@ -311,12 +311,14 @@ html_context = {"script_files": [
                   '%(eb2root)sJSAV/css/JSAV.css',
                   '%(eb2root)slib/odsaMOD-min.css',
                   'https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css',
-                  '%(eb2root)slib/odsaStyle-min.css',
-				  '%(eb2root)sAV/JSAVReset.css'
+                  '%(eb2root)slib/odsaStyle-min.css'
                 ],
                 "odsa_root_path": "%(eb2root)s",
                 %(text_translated)s}
 
+if on_slides:
+   html_context["css_files"].append('%(eb2root)slib/ODSAcoursenotes.css');   				
+				
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.

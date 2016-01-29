@@ -2,7 +2,7 @@
   "translations": {
     "en": {
       "sc1": "Method <code>push</code> is easy.",
-      "sc2": "<code>top</code> is at the first free position, which is at position 4. Since this is less than <code>maxSize</code> (which is 7), we can proceed.",
+      "sc2": "<code>top</code> is at the first free position, which is at position 4. Since this is less than <code>maxSize</code> (which is 8), we can proceed.",
       "sc3": "Method <code>push</code> simply places an element into the array position indicated by top.",
       "sc4": "Then Increment top by one position."
     }
