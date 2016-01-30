@@ -23,6 +23,8 @@ RP 3 part 1
 This problem illustrates how grammatical structure influences the
 evaluation of arithmetic expressions, and thus the meaning of programs.
 
+Note that, **for full credit,** you must solve this problem correctly three different times (the question is randomized). 
+
 .. avembed:: Exercises/PL/RP3part1.html ka
 
 RP 3 part 2
