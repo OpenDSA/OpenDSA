@@ -140,16 +140,16 @@
 	    infix_priority[end_token] = 0;
 
 	    if (left1) {
-		grammar1 = "&lt;a&gt; ::= &lt;b&gt; | &lt;a&gt; " + ops[0] + " &lt;b&gt; | &lt;a&gt; " + ops[1] + " &lt;b&gt; <br />";
+		grammar1 = "&lt;a&gt;&nbsp; ::= &lt;b&gt; | &lt;a&gt; " + ops[0] + " &lt;b&gt; | &lt;a&gt; " + ops[1] + " &lt;b&gt; <br />";
 	    } else {
-		grammar1 = "&lt;a&gt; ::= &lt;b&gt; | &lt;b&gt; " + ops[0] + " &lt;a&gt; | &lt;b&gt; " + ops[1] + " &lt;a&gt; <br />";
+		grammar1 = "&lt;a&gt;&nbsp; ::= &lt;b&gt; | &lt;b&gt; " + ops[0] + " &lt;a&gt; | &lt;b&gt; " + ops[1] + " &lt;a&gt; <br />";
 	    }
 	    if (left2) {
-		grammar2 = "&lt;b&gt; ::= &lt;c&gt; | &lt;b&gt; " + ops[2] + " &lt;c&gt; | &lt;b&gt; " + ops[3] + " &lt;c&gt; <br />";
+		grammar2 = "&lt;b&gt;&nbsp; ::= &lt;c&gt; | &lt;b&gt; " + ops[2] + " &lt;c&gt; | &lt;b&gt; " + ops[3] + " &lt;c&gt; <br />";
 	    } else {
-		grammar2 = "&lt;b&gt; ::= &lt;c&gt; | &lt;c&gt; " + ops[2] + " &lt;b&gt; | &lt;c&gt; " + ops[3] + " &lt;b&gt; <br />";
+		grammar2 = "&lt;b&gt;&nbsp; ::= &lt;c&gt; | &lt;c&gt; " + ops[2] + " &lt;b&gt; | &lt;c&gt; " + ops[3] + " &lt;b&gt; <br />";
 	    }
-	    grammar = grammar1 + grammar2 + "&lt;c&gt; ::= &lt;id&gt; | ( &lt;a&gt; ) <br />";
+	    grammar = grammar1 + grammar2 + "&lt;c&gt;&nbsp; ::= &lt;id&gt; | ( &lt;a&gt; ) <br />";
 
 	    return grammar + "&lt;id&gt; ::= " + operands.join(" | "); 
 	    //	    document.getElementById("grammar").innerHTML = grammar;
@@ -241,6 +241,7 @@
  		}
  	    }
 	    v = val_stack.pop();
+	    console.log(v);
 	    return v;
  	}
 	
