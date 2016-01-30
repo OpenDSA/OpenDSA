@@ -16,7 +16,7 @@
     var grammar = "";
     var vals = [];
     var ops = [];
-    var operands = [];
+    var operands = ["p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     var i;
     var left1;
     var left2;
@@ -78,7 +78,7 @@
 	// 	    }
 	
  	postfix_str = postfix.join("");
- 	//    console.log(postfix_str);
+ 	//console.log(postfix_str);
 	
 	return postfix_str;
 	// 	    document.getElementById("postfix").innerHTML = postfix_str;
@@ -140,26 +140,25 @@
 	    infix_priority[end_token] = 0;
 
 	    if (left1) {
-		grammar1 = "&lt;A&gt; :== &lt;B&gt; | &lt;A&gt; " + ops[0] + " &lt;B&gt; | &lt;A&gt; " + ops[1] + " &lt;B&gt; <br />";
+		grammar1 = "&lt;a&gt; ::= &lt;b&gt; | &lt;a&gt; " + ops[0] + " &lt;b&gt; | &lt;a&gt; " + ops[1] + " &lt;b&gt; <br />";
 	    } else {
-		grammar1 = "&lt;A&gt; :== &lt;B&gt; | &lt;B&gt; " + ops[0] + " &lt;A&gt; | &lt;B&gt; " + ops[1] + " &lt;A&gt; <br />";
+		grammar1 = "&lt;a&gt; ::= &lt;b&gt; | &lt;b&gt; " + ops[0] + " &lt;a&gt; | &lt;b&gt; " + ops[1] + " &lt;a&gt; <br />";
 	    }
 	    if (left2) {
-		grammar2 = "&lt;B&gt; :== &lt;C&gt; | &lt;B&gt; " + ops[2] + " &lt;C&gt; | &lt;B&gt; " + ops[3] + " &lt;C&gt; <br />";
+		grammar2 = "&lt;b&gt; ::= &lt;c&gt; | &lt;b&gt; " + ops[2] + " &lt;c&gt; | &lt;b&gt; " + ops[3] + " &lt;c&gt; <br />";
 	    } else {
-		grammar2 = "&lt;B&gt; :== &lt;C&gt; | &lt;C&gt; " + ops[2] + " &lt;B&gt; | &lt;C&gt; " + ops[3] + " &lt;B&gt; <br />";
+		grammar2 = "&lt;b&gt; ::= &lt;c&gt; | &lt;c&gt; " + ops[2] + " &lt;b&gt; | &lt;c&gt; " + ops[3] + " &lt;b&gt; <br />";
 	    }
-	    grammar = grammar1 + grammar2 + "&lt;C&gt; :== id | ( &lt;A&gt; ) <br />";
+	    grammar = grammar1 + grammar2 + "&lt;c&gt; ::= &lt;id&gt; | ( &lt;a&gt; ) <br />";
 
-	    return grammar;
+	    return grammar + "&lt;id&gt; ::= " + operands.join(" | "); 
 	    //	    document.getElementById("grammar").innerHTML = grammar;
-
 	},
 
 	generate_exp: function() {
 	    infix_exp = "";
 	    ops = ["+","-","*","/"];
-	    operands = ["p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+	    // operands = ["p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 	    shuffle(ops);
 	    var five_ops = false;
 	    if (Math.random() < 0.5) {
@@ -174,10 +173,10 @@
 		infix_exp = infix_exp + (i === parens_start ? "(" : "") + operands[i] + (i === parens_end ? ")" : "") + ops[i];
 	    }
 	    infix_exp = infix_exp + operands[ops.length] + (parens_end === ops.length ? ")" : "");
-	    //    console.log("expression is " + infix_exp);
+	    //console.log("expression is " + infix_exp);
 	    //	    document.getElementById("expression").innerHTML = infix_exp;
 	    parse_exp();
-	    return infix_exp;
+	    return infix_exp.split("").join(" ");
 	},
 
 	
@@ -197,7 +196,7 @@
 	    
  	    var display_vals = "";
  	    for (i = 0; i <= ops.length; i++) {
- 		display_vals = display_vals + " " + operands[i] + ":" + vals[operands[i]] + " | ";
+ 		display_vals = display_vals + " " + operands[i] + ": " + vals[operands[i]] + "&nbsp;&nbsp;&nbsp;";
  	    }
 	    
 	    return display_vals;
