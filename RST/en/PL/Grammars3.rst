@@ -23,7 +23,8 @@ The review problem set for today contains five review problems.
 This problem illustrates how grammatical structure influences the
 evaluation of arithmetic expressions, and thus the meaning of programs.
 
-Note that, **for full credit,** you must solve this problem correctly three different times (the question is randomized). 
+Note that, **to get credit for this problem,** you must solve it
+correctly three times in a row (the question is randomized).
 
 .. avembed:: Exercises/PL/RP3part1.html ka
 
