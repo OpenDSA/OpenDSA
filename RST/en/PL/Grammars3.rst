@@ -10,8 +10,12 @@
 Grammars - Part 3 (F 2/5/16)
 ============================
 
+Topics of the day:
 
-This set contains five review problems.
+  1. Operator precedence
+  2. EBNF extensions and their advantages
+
+The review problem set for today contains five review problems.
 
 RP 3 part 1
 -----------
