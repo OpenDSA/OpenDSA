@@ -26,31 +26,27 @@
             "long_name": "RP set #1, question #1",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+            "threshold": 1.0
           },
           "RP1part2": {
             "long_name": "RP set #1, question #2",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+            "threshold": 1.0
           },
           "RP1part3": {
             "long_name": "RP set #1, question #3",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+            "threshold": 1.0
           },
           "RP1part4": {
             "long_name": "RP set #1, question #4",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+            "threshold": 1.0
           }
-	}
+        }
       },
       "PL/Grammars2": {
         "long_name": "Introduction to BNF grammars - Part 2",
@@ -59,31 +55,27 @@
             "long_name": "RP set #2, question #1",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+            "threshold": 1.0
           },
           "RP2part2": {
             "long_name": "RP set #2, question #2",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+            "threshold": 1.0
           },
           "RP2part3": {
             "long_name": "RP set #2, question #3",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+            "threshold": 1.0
           },
           "RP2part4": {
             "long_name": "RP set #2, question #4",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+            "threshold": 1.0
           }
-	}
+        }
       },
       "PL/Grammars3": {
         "long_name": "Introduction to BNF grammars - Part 3",
@@ -92,38 +84,33 @@
             "long_name": "RP set #3, question #1",
             "required": true,
             "points": 1.0,
-            "threshold": 3.0,
-            "showhide": "Show"
+            "threshold": 3.0
           },
           "RP3part2": {
             "long_name": "RP set #3, question #2",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+            "threshold": 1.0
           },
           "RP3part3": {
             "long_name": "RP set #3, question #3",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+            "threshold": 1.0
           },
           "RP3part4": {
             "long_name": "RP set #3, question #4",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+            "threshold": 1.0
           },
           "RP3part5": {
             "long_name": "RP set #3, question #5",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+            "threshold": 1.0
           }
-	}
+        }
       }
     },
     "Functional Programming": {
@@ -134,8 +121,7 @@
             "long_name": "What is the value of this expression?",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+            "threshold": 1.0
           }
         }
       }
@@ -154,59 +140,50 @@
             "long_name": "Algorithm Analysis Summary TF Questions",
             "required": true,
             "points": 1.0,
-            "threshold": 5,
-            "showhide": "Show"
+            "threshold": 5
           },
           "SyntaxMC": {
             "long_name": "Algorithm Analysis Summary MC Questions",
             "required": true,
             "points": 1.0,
-            "threshold": 5,
-            "showhide": "Show"
+            "threshold": 5
           }
         }
       },
       "PL/Semantics": {
         "long_name": "Semantics of the Lambda Calculus",
-        "dispModComp": false,
         "exercises": {}
       },
       "PL/FreeBoundVariables": {
         "long_name": "Free and Bound Variables",
-        "dispModComp": false,
         "exercises": {
           "freeVarHighlight": {
             "long_name": "Exercise 1",
             "required": true,
             "points": 1.0,
-            "threshold": 5,
-            "showhide": "Show"
+            "threshold": 5
           },
           "boundVarHighlight": {
             "long_name": "Exercise 2",
             "required": true,
             "points": 1.0,
-            "threshold": 5,
-            "showhide": "Show"
+            "threshold": 5
           }
         }
       },
       "PL/AlphaConversion": {
         "long_name": "Alpha conversion",
-        "dispModComp": false,
         "exercises": {
           "AlphaConversion": {
             "long_name": "Alpha Conversion",
             "required": true,
             "points": 1.0,
-            "threshold": 5,
-            "showhide": "Show"
+            "threshold": 5
           }
         }
       },
       "PL/Substitution": {
         "long_name": "Substitution algorithm",
-        "dispModComp": false,
         "exercises": {
           "substCase1b": {
             "long_name": "Slideshow",
@@ -218,21 +195,18 @@
             "long_name": "Exercise 1",
             "required": true,
             "points": 1.0,
-            "threshold": 5,
-            "showhide": "Show"
+            "threshold": 5
           },
           "SubstitutionResult": {
             "long_name": "Exercise 2",
             "required": true,
             "points": 1.0,
-            "threshold": 5,
-            "showhide": "Show"
+            "threshold": 5
           }
         }
       },
       "PL/ApplicativeOrder": {
         "long_name": "Applicative-order Reduction Strategy",
-        "dispModComp": false,
         "exercises": {
           "applicativeNormalOrderPro": {
             "long_name": "Applicative-order reduction Proficiency Exercise",
@@ -247,14 +221,12 @@
       },
       "PL/NormalOrder": {
         "long_name": "Normal-order Reduction Strategy",
-        "dispModComp": false,
         "exercises": {
           "applicativeNormalOrderPro": {
             "long_name": "Normal-order reduction Proficiency Exercise",
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
-            "showhide": "Show",
             "exer_options": {
               "strategy": "normal"
             }
