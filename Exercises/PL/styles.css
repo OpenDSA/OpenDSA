@@ -4,6 +4,6 @@ table.grammar {
     font-family: monospace;         
     margin: auto;
 }
-span.string {
+.string {
     font-family: monospace;
 }

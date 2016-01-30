@@ -6,16 +6,24 @@
 .. avmetadata:: 
    :author: David Furcy and Tom Naps
 
-====
-RP 3
-====
+============================
+Grammars - Part 3 (F 2/5/16)
+============================
 
-This set contains five review problems.
+Topics of the day:
+
+  1. Operator precedence
+  2. EBNF extensions and their advantages
+
+The review problem set for today contains five review problems.
 
 RP 3 part 1
 -----------
 
-This problem is about determining whether a grammar is ambiguous or not.
+This problem illustrates how grammatical structure influences the
+evaluation of arithmetic expressions, and thus the meaning of programs.
+
+Note that, **for full credit,** you must solve this problem correctly three different times (the question is randomized). 
 
 .. avembed:: Exercises/PL/RP3part1.html ka
 
@@ -52,3 +60,7 @@ This problem is about the equivalence between a given BNF grammar (the
 same one as in part 4 above) and a smaller EBNF grammar.
 
 .. avembed:: Exercises/PL/RP3part5.html ka
+
+.. odsascript:: Exercises/PL/RP3part1.js
+
+
