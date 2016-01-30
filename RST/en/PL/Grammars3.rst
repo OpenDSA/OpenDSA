@@ -20,7 +20,8 @@ The review problem set for today contains five review problems.
 RP 3 part 1
 -----------
 
-This problem is about determining whether a grammar is ambiguous or not.
+This problem illustrates how grammatical structure influences the
+evaluation of arithmetic expressions, and thus the meaning of programs.
 
 .. avembed:: Exercises/PL/RP3part1.html ka
 
@@ -57,3 +58,7 @@ This problem is about the equivalence between a given BNF grammar (the
 same one as in part 4 above) and a smaller EBNF grammar.
 
 .. avembed:: Exercises/PL/RP3part5.html ka
+
+.. odsascript:: Exercises/PL/RP3part1.js
+
+
