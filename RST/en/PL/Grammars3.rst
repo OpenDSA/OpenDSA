@@ -10,15 +10,15 @@
 Grammars - Part 3 (F 2/5/16)
 ============================
 
+RP 3 part 1
+-----------
+
 Topics of the day:
 
   1. Operator precedence
   2. EBNF extensions and their advantages
 
 The review problem set for today contains five review problems.
-
-RP 3 part 1
------------
 
 This problem illustrates how grammatical structure influences the
 evaluation of arithmetic expressions, and thus the meaning of programs.
@@ -62,5 +62,3 @@ same one as in part 4 above) and a smaller EBNF grammar.
 .. avembed:: Exercises/PL/RP3part5.html ka
 
 .. odsascript:: Exercises/PL/RP3part1.js
-
-
