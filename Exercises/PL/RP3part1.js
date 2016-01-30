@@ -241,8 +241,8 @@
  		}
  	    }
 	    v = val_stack.pop();
-	    console.log(v);
-	    return v;
+	    //console.log(v);
+	    return v === -Infinity ? Infinity : v;
  	}
 	
     };
