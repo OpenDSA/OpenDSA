@@ -10,6 +10,9 @@
 Grammars - Part 1 (M 2/1/16)
 ============================
 
+RP 1 part 1
+-----------
+
 Topics of the day:
 
   1. Syntax versus semantics
@@ -18,9 +21,6 @@ Topics of the day:
   4. Lexical structure versus phrase structure
 
 The review problem set for today contains four review problems.
-
-RP 1 part 1
------------
 
 This problem is about building a parse tree given a grammar and a string.
 

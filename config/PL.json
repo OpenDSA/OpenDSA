@@ -18,26 +18,120 @@
         "sections": {}
       }
     },
-    "Formal Grammars": {
-      "PL/Grammars": {
-        "long_name": "Intro to BNF grammars",
+    "Grammars": {
+      "PL/Grammars1": {
+        "long_name": "Introduction to BNF grammars - Part 1",
         "sections": {
-          "Part 1": {
+          "RP 1 part 1": {
             "RP1part1": {
               "long_name": "RP set #1, question #1",
               "required": true,
               "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
+              "threshold": 1.0
             }
           },
-          "Part 2": {
+          "RP 1 part 2": {
             "RP1part2": {
               "long_name": "RP set #1, question #2",
               "required": true,
               "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
+              "threshold": 1.0
+            }
+          },
+          "RP 1 part 3": {
+            "RP1part3": {
+              "long_name": "RP set #1, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "RP 1 part 4": {
+            "RP1part4": {
+              "long_name": "RP set #1, question #4",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "PL/Grammars2": {
+        "long_name": "Introduction to BNF grammars - Part 2",
+        "sections": {
+          "RP 2 part 1": {
+            "RP2part1": {
+              "long_name": "RP set #2, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "RP 2 part 2": {
+            "RP2part2": {
+              "long_name": "RP set #2, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "RP 2 part 3": {
+            "RP2part3": {
+              "long_name": "RP set #2, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "RP 2 part 4": {
+            "long_name": "RP set #2, question #4",
+            "required": true,
+            "points": 1.0,
+            "threshold": 1.0
+          }
+        }
+      },
+      "PL/Grammars3": {
+        "long_name": "Introduction to BNF grammars - Part 3",
+        "sections": {
+          "RP 3 part 1": {
+            "RP3part1": {
+              "long_name": "RP set #3, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0
+            }
+          },
+          "RP 3 part 2": {
+            "RP3part2": {
+              "long_name": "RP set #3, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "RP 3 part 3": {
+            "RP3part3": {
+              "long_name": "RP set #3, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "RP 3 part 4": {
+            "RP3part4": {
+              "long_name": "RP set #3, question #4",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "RP 3 part 5": {
+            "RP3part5": {
+              "long_name": "RP set #3, question #5",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
             }
           }
         }

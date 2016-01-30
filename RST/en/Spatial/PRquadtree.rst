@@ -215,7 +215,7 @@ in the environment, such as in global variables or passed to the
 method.
 If your recursive calls that process the tree pass in the coordinates
 for the current node, then the coordinates will be extrinsic state.
-A flyweight can have in its intrinsic state <em>only</em>
+A flyweight can have in its intrinsic state *only*
 information that is accurate for *all* instances of the
 flyweight.
 Clearly coordinates do not qualify, because each empty

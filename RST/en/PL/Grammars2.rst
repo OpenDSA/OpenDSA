@@ -11,6 +11,9 @@
 Grammars - Part 2 (W 2/3/16)
 ============================
 
+RP 2 part 1
+-----------
+
 Topics of the day:
 
   1. Infinite languages and recursion
@@ -35,9 +38,6 @@ called :math:`L`:
    \end{eqnarray*}
 
 where, like in JavaScript,  :math:`=` is the assignment operator and :math:`===` is the equality testing  operator.
-
-RP 2 part 1
------------
 
 This problem is about determining how many parse trees a given string
 has in the grammar given above for :math:`L`.
