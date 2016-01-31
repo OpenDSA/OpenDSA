@@ -26,25 +26,29 @@
             "long_name": "RP set #1, question #1",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "showhide": "Show"
           },
           "RP1part2": {
             "long_name": "RP set #1, question #2",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "showhide": "Show"
           },
           "RP1part3": {
             "long_name": "RP set #1, question #3",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "showhide": "Show"
           },
           "RP1part4": {
             "long_name": "RP set #1, question #4",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "showhide": "Show"
           }
         }
       },
@@ -55,25 +59,29 @@
             "long_name": "RP set #2, question #1",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "showhide": "Show"
           },
           "RP2part2": {
             "long_name": "RP set #2, question #2",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "showhide": "Show"
           },
           "RP2part3": {
             "long_name": "RP set #2, question #3",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "showhide": "Show"
           },
           "RP2part4": {
             "long_name": "RP set #2, question #4",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "showhide": "Show"
           }
         }
       },
@@ -84,31 +92,36 @@
             "long_name": "RP set #3, question #1",
             "required": true,
             "points": 1.0,
-            "threshold": 3.0
+            "threshold": 3.0,
+            "showhide": "Show"
           },
           "RP3part2": {
             "long_name": "RP set #3, question #2",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "showhide": "Show"
           },
           "RP3part3": {
             "long_name": "RP set #3, question #3",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "showhide": "Show"
           },
           "RP3part4": {
             "long_name": "RP set #3, question #4",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "showhide": "Show"
           },
           "RP3part5": {
             "long_name": "RP set #3, question #5",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "showhide": "Show"
           }
         }
       }
@@ -121,7 +134,8 @@
             "long_name": "What is the value of this expression?",
             "required": true,
             "points": 1.0,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "showhide": "Show"
           }
         }
       }
@@ -134,19 +148,22 @@
             "long_name": "Slideshow for how to build a parse tree",
             "required": false,
             "points": 0.0,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "showhide": "Show"
           },
           "SyntaxTF": {
             "long_name": "Algorithm Analysis Summary TF Questions",
             "required": true,
             "points": 1.0,
-            "threshold": 5
+            "threshold": 5,
+            "showhide": "Show"
           },
           "SyntaxMC": {
             "long_name": "Algorithm Analysis Summary MC Questions",
             "required": true,
             "points": 1.0,
-            "threshold": 5
+            "threshold": 5,
+            "showhide": "Show"
           }
         }
       },
@@ -161,13 +178,15 @@
             "long_name": "Exercise 1",
             "required": true,
             "points": 1.0,
-            "threshold": 5
+            "threshold": 5,
+            "showhide": "Show"
           },
           "boundVarHighlight": {
             "long_name": "Exercise 2",
             "required": true,
             "points": 1.0,
-            "threshold": 5
+            "threshold": 5,
+            "showhide": "Show"
           }
         }
       },
@@ -178,7 +197,8 @@
             "long_name": "Alpha Conversion",
             "required": true,
             "points": 1.0,
-            "threshold": 5
+            "threshold": 5,
+            "showhide": "Show"
           }
         }
       },
@@ -189,19 +209,22 @@
             "long_name": "Slideshow",
             "required": false,
             "points": 0.0,
-            "threshold": 1.0
+            "threshold": 1.0,
+            "showhide": "Show"
           },
           "SubstitutionCases": {
             "long_name": "Exercise 1",
             "required": true,
             "points": 1.0,
-            "threshold": 5
+            "threshold": 5,
+            "showhide": "Show"
           },
           "SubstitutionResult": {
             "long_name": "Exercise 2",
             "required": true,
             "points": 1.0,
-            "threshold": 5
+            "threshold": 5,
+            "showhide": "Show"
           }
         }
       },
@@ -213,6 +236,7 @@
             "required": false,
             "points": 0.0,
             "threshold": 1.0,
+            "showhide": "Show",
             "exer_options": {
               "strategy": "applicative"
             }
@@ -227,6 +251,7 @@
             "required": true,
             "points": 1.0,
             "threshold": 1.0,
+            "showhide": "Show",
             "exer_options": {
               "strategy": "normal"
             }
