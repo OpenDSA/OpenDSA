@@ -246,7 +246,7 @@ class avembed(Directive):
       self.options['long_name'] = self.options['exer_name']
 
     if 'showhide' not in self.options:
-      self.options['showhide'] = 'hide'
+      self.options['showhide'] = 'show'
 
     if self.options['showhide'] == "show":
       self.options['show_hide_text'] = langDict["hide"]
