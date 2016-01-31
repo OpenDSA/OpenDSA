@@ -26,8 +26,7 @@ error_count = 0
 
 required_fields = ['chapters', 'code_lang', 'module_origin', 'title']
 
-optional_fields = ['allow_anonymous_credit', 'assumes', 'av_origin', 'av_root_dir', 'build_cmap', 'build_dir', 'build_JSAV', 'code_dir', 'exercise_origin', 'exercises_root_dir', 'exercise_server',
-                   'glob_mod_options', 'glob_exer_options', 'lang', 'logging_server', 'req_full_ss', 'score_server', 'start_chap_num', 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir', 'tag', 'local_mode']
+optional_fields = ['allow_anonymous_credit', 'assumes', 'av_origin', 'av_root_dir', 'build_cmap', 'build_dir', 'build_JSAV', 'code_dir', 'exercise_origin', 'exercises_root_dir', 'exercise_server','glob_mod_options', 'glob_exer_options', 'lang', 'logging_server', 'req_full_ss', 'score_server', 'start_chap_num', 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir', 'tag', 'local_mode']
 
 lang_file = os.path.abspath('tools/language_msg.json')
 
@@ -455,6 +454,28 @@ def get_translated_text(lang_):
     return lang_text, final_lang
 
 
+def group_exercises(conf_data):
+    """group all exercises of one module in exercises attribute"""
+    chapters = conf_data['chapters']
+
+    for chapter in chapters:
+        chapter_obj = chapters[chapter]
+
+        for module in chapter_obj:
+            module_obj = chapter_obj[module]
+            conf_data['chapters'][chapter][module]['exercises'] = {}
+
+            sections = module_obj.get("sections")
+            if bool(sections):
+                for section in sections:
+                    section_obj = sections[section]
+                    for attr in section_obj:
+                        if isinstance(section_obj[attr], dict):
+                            exercise_obj = section_obj[attr]
+                            # conf_data['chapters'][chapter][module]['exercises'][attr] = {}
+                            conf_data['chapters'][chapter][module]['exercises'][attr] = exercise_obj
+
+
 class ODSA_Config:
 
     def __getitem__(self, key):
@@ -503,6 +524,9 @@ class ODSA_Config:
 
             # TODO: Figure out how to get (simple)json to accept different encodings
             sys.exit(1)
+
+        # group exercises
+        group_exercises(conf_data)
 
         # Assign defaults to optional settings
         set_defaults(conf_data)

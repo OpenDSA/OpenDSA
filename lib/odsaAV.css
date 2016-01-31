@@ -143,3 +143,10 @@ form {
 #increments, #arrayValues {
   padding-left: 5px;
 }
+
+#prof_check_mark {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  opacity: .8;
+}
