@@ -33,14 +33,16 @@ $(document).ready(function() {
   av.umsg(interpret("sc2"));
   arr.highlight(0);
   arrRear.highlight(0);
+  arrFront.addClass([0], "special");
+  arr.addClass([3], "special");
   av.step();
 
   // Slide 3
   av.umsg(interpret("sc3"));
   arrRear.unhighlight(0);
-  arr.highlight(0);
-  arr.highlight(1);
-  arr.highlight(2);
+  arrFront.removeClass([0], "special");
+  arr.removeClass([3], "special");
+  arr.highlight([0, 1, 2, 3]);
   av.step();
 
   // Slide 4
@@ -54,5 +56,6 @@ $(document).ready(function() {
 
   // Slide 5
   av.umsg(interpret("sc5"));
+  arr.highlight([0, 1, 2]);
   av.recorded();
 });
