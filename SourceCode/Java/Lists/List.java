@@ -1,4 +1,5 @@
 /* *** ODSATag: ListADT *** */
+/* *** ODSATag: ListADT1 *** */
 // List class ADT. Generalize by using "Object" for the element type.
 // An alternative would be to use Java Generics.
 public interface List { // List class ADT
@@ -15,7 +16,9 @@ public interface List { // List class ADT
 
   // Remove and return the current element
   public Object remove();
+/* *** ODSAendTag: ListADT1 *** */
 
+/* *** ODSATag: ListADT2 *** */
   // Set the current position to the start of the list
   public void moveToStart();
 
@@ -30,7 +33,9 @@ public interface List { // List class ADT
 
   // Return the number of elements in the list
   public int length();
+/* *** ODSAendTag: ListADT2 *** */
 
+/* *** ODSATag: ListADT3 *** */
   // Return the position of the current element
   public int currPos();
 
@@ -43,4 +48,5 @@ public interface List { // List class ADT
   // Return the current element
   public Object getValue();
 }
+/* *** ODSAendTag: ListADT3 *** */
 /* *** ODSAendTag: ListADT *** */

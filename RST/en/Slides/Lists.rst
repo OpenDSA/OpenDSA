@@ -6,11 +6,6 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-.. odsalink:: DataStructures/DoubleLinkList.css
-.. odsalink:: AV/List/alistCON.css
-.. odsalink:: AV/List/llistCON.css
-.. odsalink:: AV/List/dlistCON.css
-
 .. slideconf::
    :autoslides: False
 
@@ -19,6 +14,11 @@ Lists
 =====
 
 .. slide:: Lists
+
+   .. odsalink:: DataStructures/DoubleLinkList.css
+   .. odsalink:: AV/List/alistCON.css
+   .. odsalink:: AV/List/llistCON.css
+   .. odsalink:: AV/List/dlistCON.css
 
    A list is a finite, ordered **sequence** of data items.
 
@@ -36,21 +36,33 @@ Lists
 
    Operations will act relative to the current position.
 
-   :math:`<20, 23 | 12, 15>`
+   :math:`<20, 23\ |\ 12, 15>`
 
-.. slide:: List ADT
+.. slide:: List ADT (1)
 
    .. codeinclude:: Lists/List
-      :tag: ListADT
+      :tag: ListADT1
+
+
+.. slide:: List ADT (2)
+
+   .. codeinclude:: Lists/List
+      :tag: ListADT2
+
+
+.. slide:: List ADT (3)
+
+   .. codeinclude:: Lists/List
+      :tag: ListADT3
 
 
 .. slide:: List ADT Examples
 
-   List: :math:`<12 | 32, 15>`
+   List: :math:`<12\ |\ 32, 15>`
 
    L.insert(99);
 
-   Result: :math:`<12 | 99, 32, 15>`
+   Result: :math:`<12\ |\ 99, 32, 15>`
 
    Iterate through the whole list:
 
