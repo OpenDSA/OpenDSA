@@ -4,6 +4,7 @@
   "code_dir": "SourceCode/",
   "code_lang": {
   },
+  "lang": "en",
   "module_origin": "http://algoviz.org",
   "exercise_server": "https://opendsa.cs.vt.edu/",
   "logging_server": "https://opendsa.cs.vt.edu/",
@@ -11,117 +12,133 @@
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
   "chapters": {
     "Preface": {
       "Intro": {
         "long_name": "How to Use this System",
-        "exercises": {}
+        "sections": {}
       }
     },
     "Grammars": {
       "PL/Grammars1": {
         "long_name": "Introduction to BNF grammars - Part 1",
-        "exercises": {
-          "RP1part1": {
-            "long_name": "RP set #1, question #1",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+        "sections": {
+          "RP 1 part 1": {
+            "RP1part1": {
+              "long_name": "RP set #1, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
           },
-          "RP1part2": {
-            "long_name": "RP set #1, question #2",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+          "RP 1 part 2": {
+            "RP1part2": {
+              "long_name": "RP set #1, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
           },
-          "RP1part3": {
-            "long_name": "RP set #1, question #3",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+          "RP 1 part 3": {
+            "RP1part3": {
+              "long_name": "RP set #1, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
           },
-          "RP1part4": {
-            "long_name": "RP set #1, question #4",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+          "RP 1 part 4": {
+            "RP1part4": {
+              "long_name": "RP set #1, question #4",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
           }
         }
       },
       "PL/Grammars2": {
         "long_name": "Introduction to BNF grammars - Part 2",
-        "exercises": {
-          "RP2part1": {
-            "long_name": "RP set #2, question #1",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+        "sections": {
+          "RP 2 part 1": {
+            "RP2part1": {
+              "long_name": "RP set #2, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
           },
-          "RP2part2": {
-            "long_name": "RP set #2, question #2",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+          "RP 2 part 2": {
+            "RP2part2": {
+              "long_name": "RP set #2, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
           },
-          "RP2part3": {
-            "long_name": "RP set #2, question #3",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+          "RP 2 part 3": {
+            "RP2part3": {
+              "long_name": "RP set #2, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
           },
-          "RP2part4": {
-            "long_name": "RP set #2, question #4",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+          "RP 2 part 4": {
+            "RP2part4": {
+              "long_name": "RP set #2, question #4",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
           }
         }
       },
       "PL/Grammars3": {
         "long_name": "Introduction to BNF grammars - Part 3",
-        "exercises": {
-          "RP3part1": {
-            "long_name": "RP set #3, question #1",
-            "required": true,
-            "points": 1.0,
-            "threshold": 3.0,
-            "showhide": "Show"
+        "sections": {
+          "RP 3 part 1": {
+            "RP3part1": {
+              "long_name": "RP set #3, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0
+            }
           },
-          "RP3part2": {
-            "long_name": "RP set #3, question #2",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+          "RP 3 part 2": {
+            "RP3part2": {
+              "long_name": "RP set #3, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
           },
-          "RP3part3": {
-            "long_name": "RP set #3, question #3",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+          "RP 3 part 3": {
+            "RP3part3": {
+              "long_name": "RP set #3, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
           },
-          "RP3part4": {
-            "long_name": "RP set #3, question #4",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+          "RP 3 part 4": {
+            "RP3part4": {
+              "long_name": "RP set #3, question #4",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
           },
-          "RP3part5": {
-            "long_name": "RP set #3, question #5",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+          "RP 3 part 5": {
+            "RP3part5": {
+              "long_name": "RP set #3, question #5",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
           }
         }
       }
@@ -129,13 +146,14 @@
     "Functional Programming": {
       "PL/ListDataStructure": {
         "long_name": "The List data structure",
-        "exercises": {
-          "ListOpen": {
-            "long_name": "What is the value of this expression?",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+        "sections": {
+          "The List data structure": {
+            "ListOpen": {
+              "long_name": "What is the value of this expression?",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
           }
         }
       }
@@ -143,117 +161,130 @@
     "Lambda Calculus": {
       "PL/Syntax": {
         "long_name": "Syntax of the Lambda Calculus",
-        "exercises": {
-          "parseTree": {
-            "long_name": "Slideshow for how to build a parse tree",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+        "sections": {
+          "Lambda Calculus": {
+            "parseTree": {
+              "long_name": "Slideshow for how to build a parse tree",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
           },
-          "SyntaxTF": {
-            "long_name": "Algorithm Analysis Summary TF Questions",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5,
-            "showhide": "Show"
+          "Exercise: Syntax TF": {
+            "SyntaxTF": {
+              "long_name": "Algorithm Analysis Summary TF Questions",
+              "required": false,
+              "points": 1.0,
+              "threshold": 5
+            }
           },
-          "SyntaxMC": {
-            "long_name": "Algorithm Analysis Summary MC Questions",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5,
-            "showhide": "Show"
+          "Exercise: Syntax MC": {
+            "SyntaxMC": {
+              "long_name": "Algorithm Analysis Summary MC Questions",
+              "required": false,
+              "points": 1.0,
+              "threshold": 5
+            }
           }
         }
       },
       "PL/Semantics": {
         "long_name": "Semantics of the Lambda Calculus",
-        "exercises": {}
+        "sections": {}
       },
       "PL/FreeBoundVariables": {
         "long_name": "Free and Bound Variables",
-        "exercises": {
-          "freeVarHighlight": {
-            "long_name": "Exercise 1",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5,
-            "showhide": "Show"
+        "sections": {
+          "Free and Bound Variables": {},
+          "Exercise 1": {
+            "freeVarHighlight": {
+              "long_name": "Exercise 1",
+              "required": false,
+              "points": 1.0,
+              "threshold": 5
+            }
           },
-          "boundVarHighlight": {
-            "long_name": "Exercise 2",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5,
-            "showhide": "Show"
-          }
+          "Exercise 2": {
+            "boundVarHighlight": {
+              "long_name": "Exercise 2",
+              "required": false,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "Continued": {}
         }
       },
       "PL/AlphaConversion": {
         "long_name": "Alpha conversion",
-        "exercises": {
-          "AlphaConversion": {
-            "long_name": "Alpha Conversion",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5,
-            "showhide": "Show"
+        "sections": {
+          "Alpha-Conversion": {
+            "boundVarHighlight": {
+              "long_name": "Exercise 1",
+              "required": false,
+              "points": 1.0,
+              "threshold": 5
+            }
           }
         }
       },
       "PL/Substitution": {
         "long_name": "Substitution algorithm",
-        "exercises": {
-          "substCase1b": {
-            "long_name": "Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show"
+        "sections": {
+          "Substitution Algorithm": {
+            "substCase1b": {
+              "long_name": "Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
           },
-          "SubstitutionCases": {
-            "long_name": "Exercise 1",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5,
-            "showhide": "Show"
+          "Exercise 1": {
+            "SubstitutionCases": {
+              "long_name": "Exercise 1",
+              "required": false,
+              "points": 1.0,
+              "threshold": 5
+            }
           },
-          "SubstitutionResult": {
-            "long_name": "Exercise 2",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5,
-            "showhide": "Show"
+          "Exercise 2": {
+            "SubstitutionResult": {
+              "long_name": "Exercise 2",
+              "required": false,
+              "points": 1.0,
+              "threshold": 5
+            }
           }
         }
       },
       "PL/ApplicativeOrder": {
         "long_name": "Applicative-order Reduction Strategy",
-        "exercises": {
-          "applicativeNormalOrderPro": {
-            "long_name": "Applicative-order reduction Proficiency Exercise",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0,
-            "showhide": "Show",
-            "exer_options": {
-              "strategy": "applicative"
+        "sections": {
+          "Applicative Order": {
+            "applicativeNormalOrderPro": {
+              "long_name": "Applicative-order reduction Proficiency Exercise",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0,
+              "exer_options": {
+                "strategy": "applicative"
+              }
             }
           }
         }
       },
       "PL/NormalOrder": {
         "long_name": "Normal-order Reduction Strategy",
-        "exercises": {
-          "applicativeNormalOrderPro": {
-            "long_name": "Normal-order reduction Proficiency Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 1.0,
-            "showhide": "Show",
-            "exer_options": {
-              "strategy": "normal"
+        "sections": {
+          "Normal Order": {
+            "applicativeNormalOrderPro": {
+              "long_name": "Normal-order reduction Proficiency Exercise",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0,
+              "exer_options": {
+                "strategy": "normal"
+              }
             }
           }
         }
@@ -262,7 +293,7 @@
     "Appendices": {
       "PL/PL_Glossary": {
         "long_name": "Glossary",
-        "exercises": {}
+        "sections": {}
       }
     }
   }
