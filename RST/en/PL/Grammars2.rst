@@ -22,25 +22,10 @@ Topics of the day:
 
 
 The review problem set for today contains four review problems, the
-first three of which refer to the following grammar for a language
-called :math:`L`:
-
-.. math::
-
-   \begin{eqnarray*} 
-   <s> & ::= & <v>\ =\ <e>\\
-       & |   & <s>\ ;\ <s>\\
-       & |   & \mathrm{if}\ <b>\ \mathrm{then}\ <s>\\
-       & |   & \mathrm{if}\ <b>\ \mathrm{then}\ <s>\ \mathrm{else}\ <s>\\
-   <v> & ::= & \,\,\,x\,\,\, |\,\,\, y\,\,\, |\,\,\, z\\
-   <e> & ::= & <v>\ |\,\,\,  0\,\,\, |\,\,\, 1\,\,\, |\,\,\, 2\,\,\, |\,\,\, 3\,\,\, |\,\,\, 4\\
-   <b> & ::= & <e>\ ===\ <e>\\
-   \end{eqnarray*}
-
-where, like in JavaScript,  :math:`=` is the assignment operator and :math:`===` is the equality testing  operator.
+first three of which refer to the same grammar.
 
 This problem is about determining how many parse trees a given string
-has in the grammar given above for :math:`L`.
+has in a given grammar.
 
 .. avembed:: Exercises/PL/RP2part1.html ka
 
@@ -48,15 +33,15 @@ RP 2 part 2
 -----------
 
 This problem is again about determining how many parse trees a given string
-has in the grammar given above for :math:`L`.
+has in a given grammar.
 
 .. avembed:: Exercises/PL/RP2part2.html ka
 
 RP 2 part 3
 -----------
 
-This problem is once more about determining how many parse trees a given string
-has in the grammar given above for :math:`L`.
+This problem is once more about determining how many parse trees a
+given string has in a given grammar.
 
 .. avembed:: Exercises/PL/RP2part3.html ka
 
@@ -64,7 +49,6 @@ RP 2 part 4
 -----------
 
 This problem again deals with an expression with multiple parse trees
-in a given grammar. But this time, the grammar involved is *not* the
-one given above for :math:`L`.
+in a given grammar.
 
 .. avembed:: Exercises/PL/RP2part4.html ka

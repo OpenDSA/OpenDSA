@@ -7,11 +7,22 @@
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
   </head>
 
-  <body data-height="520" data-width="950">
+  <body data-height="820" data-width="950">
     <div class="exercise">
       <div class="problems">
         <div id="RP2part3p">
-          <p class="question">Consider the following candidate for a
+          <p class="question">Consider the following grammar for a language <code>L</code>:</p>
+<pre class="string">
+&lt;s&gt; ::= &lt;v&gt; = &lt;e&gt;
+      | &lt;s&gt; ; &lt;s&gt;
+      | if &lt;b&gt; then &lt;s&gt;
+      | if &lt;b&gt; then &lt;s&gt; else &lt;s&gt;
+&lt;v&gt; ::= x | y | z
+&lt;e&gt; ::= &lt;v&gt; | 0 | 1 | 2 | 3 | 4
+&lt;b&gt; ::= &lt;e&gt; === &lt;e&gt;
+</pre>
+          <p class="question">where, like in JavaScript, = is the assignment operator and === is the equality testing  operator.<br />
+          Now consider the following candidate for a
           statement <span class="string">&lt;s&gt;</span> in the
           language <code>L</code>:<p>
 
