@@ -1,6 +1,17 @@
 .jsavoutput.jsavline{
   line-height: 1.2em !important;
   font-size: 15px !important;
+  font-family: "DejaVu Sans", Arial, Helvetica, sans-serif !important;
+  text-align: justify !important;
+  margin-bottom: 5px !important;
+}
+.jsavlabel{
+  font-family: "DejaVu Sans", Arial, Helvetica, sans-serif !important;
+  color: black !important;
+}
+.jsavcontainer{
+  letter-spacing: 0px !important;
+  text-shadow: none !important;
 }
 .jsavtree.jsavbinarytree{
   width: 356px !important;
@@ -13,3 +24,15 @@
 .highlight{
   font-size: 20px !important;
 }
+.jsavcode.jsavcenter{
+  width: 500px !important;
+}
+ul li::before {
+    content: none !important;
+    width: 0px;
+    margin-left: 0px !important;
+}
+.jsavcanvas{
+  min-height: 600px !important;
+}
+
