@@ -6,11 +6,6 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-.. odsalink:: DataStructures/DoubleLinkList.css
-.. odsalink:: AV/List/alistCON.css
-.. odsalink:: AV/List/llistCON.css
-.. odsalink:: AV/List/dlistCON.css
-
 .. slideconf::
    :autoslides: False
 
@@ -19,6 +14,11 @@ Lists
 =====
 
 .. slide:: Lists
+
+   .. odsalink:: DataStructures/DoubleLinkList.css
+   .. odsalink:: AV/List/alistCON.css
+   .. odsalink:: AV/List/llistCON.css
+   .. odsalink:: AV/List/dlistCON.css
 
    A list is a finite, ordered **sequence** of data items.
 
