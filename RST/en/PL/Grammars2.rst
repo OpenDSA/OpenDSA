@@ -48,7 +48,7 @@ given string has in a given grammar.
 RP 2 part 4
 -----------
 
-This problem again deals with an expression with multiple parse trees
-in a given grammar.
+This problem will help you discover ambiguities in grammars as well as
+convince yourself that a grammar is not ambiguous.
 
 .. avembed:: Exercises/PL/RP2part4.html ka

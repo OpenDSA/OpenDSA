@@ -18,6 +18,7 @@ Lists
    .. odsalink:: DataStructures/DoubleLinkList.css
    .. odsalink:: AV/List/alistCON.css
    .. odsalink:: AV/List/llistCON.css
+   .. odsalink:: AV/List/listFreeCON.css
    .. odsalink:: AV/List/dlistCON.css
 
    A list is a finite, ordered **sequence** of data items.
@@ -116,15 +117,16 @@ Lists
 
    .. odsascript:: AV/List/llistBadDelCON.js
 
+
 .. slide:: Linked List Position (3)
 
    .. inlineav:: llistInitCON dgm
-      :align: center
+      :output: show
 
-|
+   |
 
    .. inlineav:: llistHeaderCON dgm
-      :align: center
+      :output: show
 
    .. odsascript:: AV/List/llistInitCON.js
    .. odsascript:: AV/List/llistHeaderCON.js
@@ -135,13 +137,16 @@ Lists
    .. inlineav:: llistVarsCON ss
       :output: show
 
-|
+   .. odsascript:: AV/List/llistVarsCON.js
+
+
+.. slide:: Linked List Class (2)
 
    .. inlineav:: llistConsCON ss
       :output: show
 
-   .. odsascript:: AV/List/llistVarsCON.js
    .. odsascript:: AV/List/llistConsCON.js
+
 
 .. slide:: Insertion
 
@@ -163,6 +168,17 @@ Lists
       :output: show
 
    .. odsascript:: AV/List/llistOtherCON.js
+
+.. slide:: Overhead
+
+   * Container classes store elements. Those take space.
+
+   * Container classes also store additional space to organize the
+     elements.
+      * This is called **overhead**
+
+   * The **overhead fraction** is: overhead/total space
+
 
 .. slide:: Comparison of Implementations
 
@@ -211,10 +227,21 @@ Lists
      * When the array is half full
 
 
+.. slide:: Freelist
+
+   System new and garbage collection are slow.
+
+   * Add freelist support to the Link class.
+
+   .. inlineav:: listFreeCON ss
+      :output: show
+
+   .. odsascript:: AV/List/listFreeCON.js
+
 .. slide:: Doubly Linked Lists
 
    .. inlineav:: dlistDiagramCON dgm
-      :align: center
+      :output: show
 
    .. odsascript:: DataStructures/DoubleLinkList.js
    .. odsascript:: AV/List/dlist.js
@@ -226,7 +253,6 @@ Lists
    .. codeinclude:: Lists/DLink
       :tag: DLink
 
-   .. odsascript:: AV/List/dlistInsertCON.js
 
 
 .. slide:: Doubly Linked Insert
@@ -234,7 +260,8 @@ Lists
    .. inlineav:: dlistInsertCON ss
       :output: show   
 
-   .. odsascript:: AV/List/dlistAppendCON.js
+   .. odsascript:: AV/List/dlistInsertCON.js
+
 
 
 .. slide:: Doubly Linked Remove

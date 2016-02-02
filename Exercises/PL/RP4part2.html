@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 4.2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1520" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP4part2p">
+          <div class="question">
+	    <p class="question">Consider the following Jison grammar:</p>
+
+<pre class="string">
+%lex
+%%
+\s+                                             /* skip whitespace */
+"the"|"a"                                       return "ARTICLE"
+"go"|"jump"|"run"|"like"|"eat"                  return "VERB"
+"dog"|"cat"|"fish"|"fox"|"moose"                return "NOUN"
+"blue"|"red"|"orange"|"white"|"big"|"small"     return "ADJECTIVE"
+"quickly"|"easily"|"slowly"                     return "ADVERB"
+"over"|"under"|"around"|"through"|"between"     return "PREPOSITION"
+"."|"!"                                         return "PUNCTUATION"       
+&lt;&lt;EOF>>                                         return "EOF"
+.                                               return "INVALID"
+
+/lex
+
+%start ss
+
+%% /* language grammar */
+
+ss
+    : s "EOF"
+    ;
+s
+        : nphrase "VERB" "PUNCTUATION"
+        | nphrase "VERB" vmodifier "PUNCTUATION"
+        | nphrase "VERB" nphrase "PUNCTUATION"
+        ;
+nphrase
+        :       modifiednoun
+        |       "ARTICLE" modifiednoun
+        ;
+modifiednoun
+        :       "NOUN"
+        |       nmodifier modifiednoun
+        ;
+nmodifier
+        :       "ADJECTIVE"
+        |       "ADVERB" nmodifier
+        ;
+vmodifier
+        :       "ADVERB"
+        |       "ADVERB" vmodifier
+        |       "PREPOSITION" nphrase
+        ;
+</pre>
+	    <p class="question">Now consider the following five strings:</p>
+	    <ul>
+	      <li>a fox jump through red blue dog.</li>
+	      <li>a small fox jump through red blue dog over the fish.</li>
+	      <li>a small fox jump easily over the fish.</li>
+	      <li>a small fox jump easily the fish.</li>
+	      <li>a small fox jump the fish.</li>
+	    </ul>
+	    <p class="question">How many of these strings are parsed
+	    successfully according to the grammar above?</p>
+            <p class="solution" data-type="text">3</p>
+          <ul class="choices">
+	    <li>0</li>
+	    <li>1</li>
+	    <li>2</li>
+	    <li>4</li>
+	    <li>5</li>
+          </ul>
+	  </div>
+          <div class="hints">
+            <p>To do</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

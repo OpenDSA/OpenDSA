@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html data-require="math">
+<html data-require="math" lang="en">
   <head>
+    <meta charset=utf-8>
     <title>RP 4.1</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
@@ -12,7 +13,7 @@
       <div class="problems">
         <div id="RP4part1p">
           <div class="question">
-	    <p class="question">Consider the following JISON grammar:</p>
+	    <p class="question">Consider the following Jison grammar:</p>
 
 <pre class="string">
 %lex
@@ -21,7 +22,7 @@
 \s+                   /* skip whitespace */
 [a-c]                 return "X"
 [d-f]                 return "Y"
-<&lt;EOF>>               return "EOF"
+&lt;EOF>>               return "EOF"
 .                     return "INVALID"
 
 /lex
