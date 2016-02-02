@@ -6,9 +6,6 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-.. odsalink:: AV/slides.css
-.. odsalink:: AV/Binary/heapbuildProofCON.css
-
 .. slideconf::
    :autoslides: False
 
@@ -18,6 +15,9 @@ Heaps
 
 .. slide:: Complete Trees
    :level: 3
+   
+   .. odsalink:: AV/slides.css
+   .. odsalink:: AV/Binary/heapbuildProofCON.css
   
    .. _BinArray:
 
