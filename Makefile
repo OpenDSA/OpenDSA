@@ -136,14 +136,14 @@ CS2: min
 
 CS2114: min
 	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12506_LMSconf.json -b CS2114_12506
-	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12507_LMSconf.json -b CS2114_12506
-	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12508_LMSconf.json -b CS2114_12506
-	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12509_LMSconf.json -b CS2114_12506
-	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12510_LMSconf.json -b CS2114_12506
-	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12511_LMSconf.json -b CS2114_12506
-	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12512_LMSconf.json -b CS2114_12506
-	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12513_LMSconf.json -b CS2114_12506
-	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_20419_LMSconf.json -b CS2114_12506
+	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12507_LMSconf.json -b CS2114_12507
+	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12508_LMSconf.json -b CS2114_12508
+	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12509_LMSconf.json -b CS2114_12509
+	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12510_LMSconf.json -b CS2114_12510
+	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12511_LMSconf.json -b CS2114_12511
+	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12512_LMSconf.json -b CS2114_12512
+	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12513_LMSconf.json -b CS2114_12513
+	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_20419_LMSconf.json -b CS2114_20419
 
 CS2in: min
 	python $(CONFIG_SCRIPT) config/CS2.json -c config/CS2in_LMSconf.json -b CS2in
