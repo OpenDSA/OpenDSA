@@ -153,6 +153,15 @@
               "threshold": 1.0,
               "showhide": "Show"
             }
+          },
+          "RP 4 part 2": {
+            "RP4part2": {
+              "long_name": "RP set #4, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
           }
         }
       }
