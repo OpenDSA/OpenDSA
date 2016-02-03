@@ -268,6 +268,9 @@ uwosh: min
 PL: min
 	python $(CONFIG_SCRIPT) config/PL.json
 
+PL2: min
+	python $(CONFIG_SCRIPT) config/PL2.json
+
 uwosh-taylor: min
 	python $(CONFIG_SCRIPT) config/uwosh-taylor.json
 
