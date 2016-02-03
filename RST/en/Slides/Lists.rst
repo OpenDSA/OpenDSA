@@ -15,10 +15,8 @@ Lists
 
 .. slide:: Lists
 
-   .. odsalink:: DataStructures/DoubleLinkList.css
    .. odsalink:: AV/List/alistCON.css
    .. odsalink:: AV/List/llistCON.css
-   .. odsalink:: AV/List/dlistCON.css
 
    A list is a finite, ordered **sequence** of data items.
 
@@ -116,15 +114,16 @@ Lists
 
    .. odsascript:: AV/List/llistBadDelCON.js
 
+
 .. slide:: Linked List Position (3)
 
    .. inlineav:: llistInitCON dgm
-      :align: center
+      :output: show
 
-|
+   |
 
    .. inlineav:: llistHeaderCON dgm
-      :align: center
+      :output: show
 
    .. odsascript:: AV/List/llistInitCON.js
    .. odsascript:: AV/List/llistHeaderCON.js
@@ -135,13 +134,16 @@ Lists
    .. inlineav:: llistVarsCON ss
       :output: show
 
-|
+   .. odsascript:: AV/List/llistVarsCON.js
+
+
+.. slide:: Linked List Class (2)
 
    .. inlineav:: llistConsCON ss
       :output: show
 
-   .. odsascript:: AV/List/llistVarsCON.js
    .. odsascript:: AV/List/llistConsCON.js
+
 
 .. slide:: Insertion
 
@@ -163,6 +165,18 @@ Lists
       :output: show
 
    .. odsascript:: AV/List/llistOtherCON.js
+
+.. slide:: Overhead
+
+   * Container classes store elements. Those take space.
+
+   * Container classes also store additional space to organize the
+     elements.
+
+      * This is called **overhead**
+
+   * The **overhead fraction** is: overhead/total space
+
 
 .. slide:: Comparison of Implementations
 
@@ -194,52 +208,3 @@ Lists
    P: Space for pointer.
 
    D: Number of elements in array.
-
-
-.. slide:: Space Example
-
-   * Array-based list: Overhead is one pointer (4 bytes) per position in
-     array – whether used or not.
-
-   * Linked list: Overhead is two pointers per link node
-     one to the element, one to the next link
-
-   * Data is the same for both.
-
-   * When is the space the same?
-
-     * When the array is half full
-
-
-.. slide:: Doubly Linked Lists
-
-   .. inlineav:: dlistDiagramCON dgm
-      :align: center
-
-   .. odsascript:: DataStructures/DoubleLinkList.js
-   .. odsascript:: AV/List/dlist.js
-   .. odsascript:: AV/List/dlistDiagramCON.js
-
-
-.. slide:: Doubly Linked Node (1)
-
-   .. codeinclude:: Lists/DLink
-      :tag: DLink
-
-   .. odsascript:: AV/List/dlistInsertCON.js
-
-
-.. slide:: Doubly Linked Insert
-
-   .. inlineav:: dlistInsertCON ss
-      :output: show   
-
-   .. odsascript:: AV/List/dlistAppendCON.js
-
-
-.. slide:: Doubly Linked Remove
-
-   .. inlineav:: dlistRemoveCON ss
-      :output: show
-
-   .. odsascript:: AV/List/dlistRemoveCON.js

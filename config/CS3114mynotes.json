@@ -81,6 +81,10 @@
       "Slides/Lists": {
         "long_name": "Lists",
         "exercises" : {}
+      },
+      "Slides/Lists2": {
+        "long_name": "Lists",
+        "exercises" : {}
       }
     },
     "Binary Trees": {

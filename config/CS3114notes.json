@@ -43,9 +43,43 @@
   "allow_anonymous_credit": false,
   "suppress_todo": false,
   "chapters": {
+    "Week 1": {
+      "Slides/Day1": {
+        "long_name": "Introduction",
+        "exercises" : {
+          "ADTCON": {}
+        }
+      }
+    },
+    "Week 2": {
+      "Slides/ProjManage": {
+        "long_name": "Project Management",
+        "exercises" : {}
+      },
+      "Slides/SkipList": {
+        "long_name": "SkipLists",
+        "exercises" : {
+        }
+      },
+      "Slides/AlgAnal": {
+        "long_name": "Algorithm Analysis",
+        "exercises" : {
+          "ProblemAlgorithmCON": {
+            "long_name": "Problem, Algorithm, and Program definitions Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      }
+    },
     "Week 3": {
       "Slides/Coding": {
         "long_name": "Clean Code",
+        "exercises" : {}
+      },
+      "Slides/Lists": {
+        "long_name": "Lists",
         "exercises" : {}
       }
     }
