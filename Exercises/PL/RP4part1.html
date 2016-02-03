@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-require="math" lang="en">
+<html data-require="math RP4part1" lang="en">
   <head>
     <meta charset=utf-8>
     <title>RP 4.1</title>
@@ -10,19 +10,24 @@
 
   <body data-height="1520" data-width="950">
     <div class="exercise">
+      <div class="vars">
+        <var id="init">RP4part1.init()</var>
+        <var id="tokens">RP4part1.tokenLines</var>
+        <var id="productions">RP4part1.productions</var>
+      </div>
+
       <div class="problems">
         <div id="RP4part1p">
           <div class="question">
 	    <p class="question">Consider the following Jison grammar:</p>
+
 
 <pre class="string">
 %lex
 %%
 
 \s+                   /* skip whitespace */
-[a-c]                 return "X"
-[d-f]                 return "Y"
-&lt;EOF>>               return "EOF"
+<var>tokens</var>&lt;&lt;EOF>>               return "EOF"
 .                     return "INVALID"
 
 /lex
@@ -32,12 +37,9 @@
 %% 
 
 ss
-    : s "EOF"
-    ;
-s
-    : /* empty */
-    | "X" s "Y"
-    ;
+  : s "EOF"
+  ;
+<var>productions</var>
 </pre>
 	    <p class="question">Now consider the following five strings:</p>
 	    <ul>

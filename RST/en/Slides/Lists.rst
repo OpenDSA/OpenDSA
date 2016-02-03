@@ -15,11 +15,8 @@ Lists
 
 .. slide:: Lists
 
-   .. odsalink:: DataStructures/DoubleLinkList.css
    .. odsalink:: AV/List/alistCON.css
    .. odsalink:: AV/List/llistCON.css
-   .. odsalink:: AV/List/listFreeCON.css
-   .. odsalink:: AV/List/dlistCON.css
 
    A list is a finite, ordered **sequence** of data items.
 
@@ -175,6 +172,7 @@ Lists
 
    * Container classes also store additional space to organize the
      elements.
+
       * This is called **overhead**
 
    * The **overhead fraction** is: overhead/total space
@@ -210,63 +208,3 @@ Lists
    P: Space for pointer.
 
    D: Number of elements in array.
-
-
-.. slide:: Space Example
-
-   * Array-based list: Overhead is one pointer (4 bytes) per position in
-     array – whether used or not.
-
-   * Linked list: Overhead is two pointers per link node
-     one to the element, one to the next link
-
-   * Data is the same for both.
-
-   * When is the space the same?
-
-     * When the array is half full
-
-
-.. slide:: Freelist
-
-   System new and garbage collection are slow.
-
-   * Add freelist support to the Link class.
-
-   .. inlineav:: listFreeCON ss
-      :output: show
-
-   .. odsascript:: AV/List/listFreeCON.js
-
-.. slide:: Doubly Linked Lists
-
-   .. inlineav:: dlistDiagramCON dgm
-      :output: show
-
-   .. odsascript:: DataStructures/DoubleLinkList.js
-   .. odsascript:: AV/List/dlist.js
-   .. odsascript:: AV/List/dlistDiagramCON.js
-
-
-.. slide:: Doubly Linked Node (1)
-
-   .. codeinclude:: Lists/DLink
-      :tag: DLink
-
-
-
-.. slide:: Doubly Linked Insert
-
-   .. inlineav:: dlistInsertCON ss
-      :output: show   
-
-   .. odsascript:: AV/List/dlistInsertCON.js
-
-
-
-.. slide:: Doubly Linked Remove
-
-   .. inlineav:: dlistRemoveCON ss
-      :output: show
-
-   .. odsascript:: AV/List/dlistRemoveCON.js
