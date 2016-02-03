@@ -1,0 +1,200 @@
+{
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+  },
+  "lang": "en",
+  "build_JSAV": false,
+  "allow_anonymous_credit": true,
+  "suppress_todo": false,
+  "dispModComp": true,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "chapters": {
+    "Preface": {
+      "Intro": {
+        "long_name": "How to Use this System",
+        "sections": {}
+      }
+    },
+    "Grammars": {
+      "PL/Grammars4": {
+        "long_name": "Introduction to BNF grammars - Part 4",
+        "sections": {
+          "RP 4 part 1": {
+            "RP4part1": {
+              "long_name": "RP set #4, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 4 part 2": {
+            "RP4part2": {
+              "long_name": "RP set #4, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }
+        }
+      }
+    },
+    "Functional Programming": {
+      "PL/ListDataStructure": {
+        "long_name": "The List data structure",
+        "sections": {
+          "The List data structure": {
+            "ListOpen": {
+              "long_name": "What is the value of this expression?",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      }
+    },
+    "Lambda Calculus": {
+      "PL/Syntax": {
+        "long_name": "Syntax of the Lambda Calculus",
+        "sections": {
+          "Lambda Calculus": {
+            "parseTree": {
+              "long_name": "Slideshow for how to build a parse tree",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Exercise: Syntax TF": {
+            "SyntaxTF": {
+              "long_name": "Algorithm Analysis Summary TF Questions",
+              "required": false,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "Exercise: Syntax MC": {
+            "SyntaxMC": {
+              "long_name": "Algorithm Analysis Summary MC Questions",
+              "required": false,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "PL/Semantics": {
+        "long_name": "Semantics of the Lambda Calculus",
+        "sections": {}
+      },
+      "PL/FreeBoundVariables": {
+        "long_name": "Free and Bound Variables",
+        "sections": {
+          "Free and Bound Variables": {},
+          "Exercise 1": {
+            "freeVarHighlight": {
+              "long_name": "Exercise 1",
+              "required": false,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "Exercise 2": {
+            "boundVarHighlight": {
+              "long_name": "Exercise 2",
+              "required": false,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "Continued": {}
+        }
+      },
+      "PL/AlphaConversion": {
+        "long_name": "Alpha conversion",
+        "sections": {
+          "Alpha-Conversion": {
+            "boundVarHighlight": {
+              "long_name": "Exercise 1",
+              "required": false,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "PL/Substitution": {
+        "long_name": "Substitution algorithm",
+        "sections": {
+          "Substitution Algorithm": {
+            "substCase1b": {
+              "long_name": "Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Exercise 1": {
+            "SubstitutionCases": {
+              "long_name": "Exercise 1",
+              "required": false,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "Exercise 2": {
+            "SubstitutionResult": {
+              "long_name": "Exercise 2",
+              "required": false,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      },
+      "PL/ApplicativeOrder": {
+        "long_name": "Applicative-order Reduction Strategy",
+        "sections": {
+          "Applicative Order": {
+            "applicativeNormalOrderPro": {
+              "long_name": "Applicative-order reduction Proficiency Exercise",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0,
+              "exer_options": {
+                "strategy": "applicative"
+              }
+            }
+          }
+        }
+      },
+      "PL/NormalOrder": {
+        "long_name": "Normal-order Reduction Strategy",
+        "sections": {
+          "Normal Order": {
+            "applicativeNormalOrderPro": {
+              "long_name": "Normal-order reduction Proficiency Exercise",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0,
+              "exer_options": {
+                "strategy": "normal"
+              }
+            }
+          }
+        }
+      }
+    },
+    "Appendices": {
+      "PL/PL_Glossary": {
+        "long_name": "Glossary",
+        "sections": {}
+      }
+    }
+  }
+}

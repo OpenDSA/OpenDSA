@@ -207,6 +207,9 @@ PL: min
 PLin: min
 	python $(CONFIG_SCRIPT) config/PL.json -c config/PLin_LMSconf.json -b PLin
 
+PL2in: min
+	python $(CONFIG_SCRIPT) config/PL2.json -c config/PL2in_LMSconf.json -b PL2in
+
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
 	@cp lib/odsaUtils.js lib/odsaUtils-min.js
