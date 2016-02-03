@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-require="math" lang="en">
+<html data-require="math RP4part1" lang="en">
   <head>
     <meta charset=utf-8>
     <title>RP 4.1</title>
@@ -10,16 +10,22 @@
 
   <body data-height="1520" data-width="950">
     <div class="exercise">
+      <div class="vars">
+        <var id="Test">RP4part1.init()</var>
+      </div>
+
       <div class="problems">
         <div id="RP4part1p">
           <div class="question">
 	    <p class="question">Consider the following Jison grammar:</p>
+
 
 <pre class="string">
 %lex
 %%
 
 \s+                   /* skip whitespace */
+<var>Test</var>
 [a-c]                 return "X"
 [d-f]                 return "Y"
 &lt;EOF>>               return "EOF"
