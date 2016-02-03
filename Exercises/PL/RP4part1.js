@@ -60,11 +60,10 @@
 	var tmp;
 
 	function formatRange(r) {
-	    return (r.start === 0 
-		    ? "empty"
-		    : ( r.width === 1 
-			? '"' + String.fromCharCode(aAscii + r.start - 1) + '"'
-			: ("[" + 
+	    return (r.start === 0 ? 
+		    "empty" : ( r.width === 1 ?
+			'"' + String.fromCharCode(aAscii + r.start - 1) + '"' :
+			("[" + 
 			   String.fromCharCode(aAscii + r.start - 1) +
 			   "-" +  
 			   String.fromCharCode(aAscii + r.start + r.width - 2) +
@@ -152,9 +151,9 @@
 	    r1Meetr2 = (r2Start.charCodeAt(0) - r1End.charCodeAt(0)) === 1;
 	    r2Meetr1 = (r1Start.charCodeAt(0) - r2End.charCodeAt(0)) === 1;
 	    if (r1Meetr2) {
-		return "[" + r1Start + "-" + r2End + "]"
+		return "[" + r1Start + "-" + r2End + "]";
 	    } else if (r2Meetr1) {
-		return "[" + r2Start + "-" + r1End + "]"
+		return "[" + r2Start + "-" + r1End + "]";
 	    } else {
 		if (r1.charAt(0) === '"' && r2.charAt(0) === '"') { 
 		    return r1.substring(0,2) + r2.substring(1,3);
@@ -197,11 +196,8 @@
 	}
 	while (ranges.length < 6) {
 	    var range = findFirstAvailableRange(3);
-	    //console.log( JSON.stringify(range) )
 	    ranges.push( range );
 	}		
-
-	//console.log(JSON.stringify(ranges));
 
 	// eliminate empty ranges
 	ranges = ranges.filter( function(r) { return r.start>0; } );
@@ -210,31 +206,32 @@
 	}
 	
 	// assign ranges to the tokens	
-	for(var i=0; i<names.length; i++) {
+	for(i=0; i<names.length; i++) {
 	    tokens.push({ name: names[i], regexp: formatRange(ranges[i]) });
 	}
 	ranges.splice(0,3); // delete the ranges just assigned
-	for(var i=0; i<tokens.length; i++) {
-	    if (ranges.length > 0 & rnd()<1) {
+	for(i=0; i<tokens.length; i++) {
+	    if (ranges.length > 0 && rnd()<0.5) {
 		tokens[i].regexp = joinRanges( tokens[i].regexp,
 					       formatRange(ranges[0]) );
 		ranges.splice(0,1);
 	    }
 	}
 
-	for(var i=0; i<tokens.length; i++) {
+	for(i=0; i<tokens.length; i++) {
 	    tmp = tokens[i].regexp;
-	    while (tmp.length < 15) {
+	    while (tmp.length < 22) {
 		tmp += " ";
 	    }
 	    tokenLines.push(  tmp + 'return "' + tokens[i].name + '"\n');
 	    
 	    //tokenLines.push( token.range + 'return "' + token.name + '"\n'); 
 	}
+/*
 	tokenLines.map ( function(tl) {
 	    console.log(tl);	    
 	});
-
+*/
 
     }
 
@@ -265,7 +262,6 @@
 	    tokenNames.push( token3 );
 	    // pick type of grammar called thisCase (see comments above)
 	    thisCase = 1 + floor( rnd() * numCases );
-	    //console.log(thisCase);
 	    //thisCase = 5;
 	    switch (thisCase) {
 		case 1:
@@ -274,7 +270,7 @@
 		grammar  = 's\n';
 		grammar += '  : "' + token1 + '"\n';
 		grammar += '  | s "' + token2 + '"\n';
-		grammar += '  ;\n';
+		grammar += '  ;';
 		break;
 	    case 2:
 		numTokens = 2;
@@ -282,28 +278,28 @@
 		grammar  = 's\n';
 		grammar += '  : "' + token1 + '"\n';
 		grammar += '  | "' + token2 + '" s\n';
-		grammar += '  ;\n';
+		grammar += '  ;';
 		break;
 	    case 3:
 		numTokens = 3;
 		grammar  = 's\n';
 		grammar += '  : "' + token3 + '"\n';
 		grammar += '  | s "' + token1 + '" "' + token2 + '"\n';
-		grammar += '  ;\n';
+		grammar += '  ;';
 		break;
 	    case 4:
 		numTokens = 3;
 		grammar  = 's\n';
 		grammar += '  : "' + token3 + '"\n';
 		grammar += '  | "' + token1 + '" s "' + token2 + '"\n';
-		grammar += '  ;\n';
+		grammar += '  ;';
 		break;
 	    case 5:
 		numTokens = 3;
 		grammar  = 's\n';
 		grammar += '  : "' + token3 + '"\n';
 		grammar += '  | "' + token1 + '" "' + token2 + '" s\n';
-		grammar += '  ;\n';
+		grammar += '  ;';
 		break;
 	    }
 	    if (numTokens>2 && (token3 === token1 || token3 === token2)) {
@@ -311,11 +307,11 @@
 	    }	    
 
 	    generateTokens(tokenNames);
-
 	    
-	    //console.log(JSON.stringify(possibleTokenNames));
-	    console.log(grammar);
-	    //console.log(tokenLines);
+	    // export tokenLines and productions
+	    this.tokenLines = tokenLines.join("");
+	    this.productions = grammar;
+	   	    
 	}// init function
 
     };// RP4part1 object

@@ -11,7 +11,9 @@
   <body data-height="1520" data-width="950">
     <div class="exercise">
       <div class="vars">
-        <var id="Test">RP4part1.init()</var>
+        <var id="init">RP4part1.init()</var>
+        <var id="tokens">RP4part1.tokenLines</var>
+        <var id="productions">RP4part1.productions</var>
       </div>
 
       <div class="problems">
@@ -25,10 +27,7 @@
 %%
 
 \s+                   /* skip whitespace */
-<var>Test</var>
-[a-c]                 return "X"
-[d-f]                 return "Y"
-&lt;EOF>>               return "EOF"
+<var>tokens</var>&lt;&lt;EOF>>               return "EOF"
 .                     return "INVALID"
 
 /lex
@@ -38,12 +37,9 @@
 %% 
 
 ss
-    : s "EOF"
-    ;
-s
-    : /* empty */
-    | "X" s "Y"
-    ;
+  : s "EOF"
+  ;
+<var>productions</var>
 </pre>
 	    <p class="question">Now consider the following five strings:</p>
 	    <ul>
