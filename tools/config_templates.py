@@ -317,6 +317,7 @@ html_context = {"script_files": [
                 %(text_translated)s}
 
 if on_slides: 
+   html_context["css_files"].append('%(eb2root)slib/ODSAcoursenotes.css');   
    html_context["odsa_scripts"].append('%(eb2root)slib/ODSAcoursenotes.js');   
 				
 
