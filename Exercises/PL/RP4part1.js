@@ -207,10 +207,12 @@
 
 	// eliminate empty ranges
 	ranges = ranges.filter( function(r) { return r.start>0; } );
+/*
 	if (ranges.length <3) {
+            // we should never here
 	    console.log( "******************** NOoooO!!! *************");
 	}
-	
+*/	
 	// assign ranges to the tokens	
 	tokens.push({ name: tokenNames[0], regexp: formatRange(ranges[0]) });
 	tokens.push({ name: tokenNames[1], regexp: formatRange(ranges[1]) });
@@ -425,11 +427,14 @@
 	    generateTokens();
 	    generateStrings();
 
+/*
 	    console.log("valid:");
 	    console.log(validStrings);
 	    console.log("invalid:");
 	    console.log(invalidStrings);
-	    // export tokenLines and productions
+*/
+
+	    // export to the HTML page
 	    this.tokenLines = tokenLines.join("");
 	    this.productions = grammar;
 	    this.strings =
@@ -438,7 +443,7 @@
 		.join("<li>\n<li>") +
 		"</li>\n";
 	    this.answer = validStrings.length;
-	    console.log("============> correct answer: " + this.answer);
+
 	}// init function
 
     };// RP4part1 object
