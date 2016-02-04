@@ -41,7 +41,8 @@
     av.displayInit();
     // We are now starting a new slide (#2)
     av.umsg("... and text after displayInit()", {preserve: true});
-    av.step();
+    arr.swap(0, 1);
+    av.step();    
     // We are now starting a new slide (#3)
     av.umsg("Text after av.step()");
     av.recorded();
