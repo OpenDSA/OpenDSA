@@ -1,4 +1,4 @@
-/*global window */
+/* global window */
 
 (function() {
     "use strict";
@@ -29,8 +29,8 @@
 
     second, the productions:
 
-    case 1: <s> ::= <s> X | Y         pattern: Y through YXXXX
-    case 2: <s> ::= X <s> | Y         pattern: Y through XXXXY
+    case 1: <s> ::= X | <s> Y         pattern: X through XYYYY
+    case 2: <s> ::= X | Y <s>         pattern: Y through XXXXY
     case 3: <s> ::= <s> X Y | Z       pattern: Z through ZXYXYXY
     case 4: <s> ::= X <s> Y | Z       pattern: Z through XXXZYYY
     case 5: <s> ::= X Y <s> | Z       pattern: Z through XYXYXYZ
@@ -47,8 +47,12 @@
     var aAscii = "a".charCodeAt(0);
     var floor = Math.floor;
     var rnd = Math.random;
-
-    function generateTokens(names) {
+    var tokens;
+    var numOptions = 5;
+    var validStrings = [];
+    var invalidStrings= [];
+    
+    function generateTokens() {
 
 	var indices = [];  // indices of available letters for tokens
 	// since there are at most three tokens and two ranges per token
@@ -56,8 +60,8 @@
 	var ranges = [];
 	var startIndex;
 	var randNum, numEmpty;
-	var tokens = [];
-	var tmp;
+
+	var tmp, i;
 
 	function formatRange(r) {
 	    return (r.start === 0 ? 
@@ -163,8 +167,10 @@
 	    }
 	}//joinRanges function
 
+	tokens = [];
+
 	// first, generate all available letters
-	for(var i = 1; i<=18; i++) {
+	for(i = 1; i<=18; i++) {
 	    indices.push(i);
 	}
 	// pick 6 random ranges
@@ -206,10 +212,24 @@
 	}
 	
 	// assign ranges to the tokens	
-	for(i=0; i<names.length; i++) {
-	    tokens.push({ name: names[i], regexp: formatRange(ranges[i]) });
+	tokens.push({ name: tokenNames[0], regexp: formatRange(ranges[0]) });
+	tokens.push({ name: tokenNames[1], regexp: formatRange(ranges[1]) });
+	if (tokenNames.length === 3) {
+	    if (tokenNames[2] === tokenNames[0]) {
+		tokens.push({ name: tokenNames[2], 
+			      regexp: formatRange(ranges[0]) });
+		ranges.splice(0,2); // delete the ranges just assigned
+	    } else if (tokenNames[2] === tokenNames[1]) {
+		tokens.push({ name: tokenNames[2], 
+			      regexp: formatRange(ranges[1]) });
+		ranges.splice(0,2); // delete the ranges just assigned
+	    } else {	    
+		tokens.push({ name: tokenNames[2], 
+			      regexp: formatRange(ranges[2]) });
+		ranges.splice(0,3); // delete the ranges just assigned
+	    }
 	}
-	ranges.splice(0,3); // delete the ranges just assigned
+	
 	for(i=0; i<tokens.length; i++) {
 	    if (ranges.length > 0 && rnd()<0.5) {
 		tokens[i].regexp = joinRanges( tokens[i].regexp,
@@ -217,23 +237,114 @@
 		ranges.splice(0,1);
 	    }
 	}
-
+	// note that tokens.length must equal 2 or 3
 	for(i=0; i<tokens.length; i++) {
 	    tmp = tokens[i].regexp;
 	    while (tmp.length < 22) {
 		tmp += " ";
 	    }
 	    tokenLines.push(  tmp + 'return "' + tokens[i].name + '"\n');
-	    
 	    //tokenLines.push( token.range + 'return "' + token.name + '"\n'); 
 	}
-/*
-	tokenLines.map ( function(tl) {
-	    console.log(tl);	    
-	});
-*/
+    }// generateTokens
 
-    }
+    function generateCharacterInRange(range) {
+	// range is of the form:  "[f-l]"
+	var first = range.charCodeAt(1);
+	var last = range.charCodeAt(3);
+	return String.fromCharCode(floor(rnd() * (last - first + 1)) + first);
+    }// generateCharacterInRange function
+
+    function generateStringFromToken(token) {
+	var regexp = token.regexp;
+	var result = "";
+	var cStart = regexp.indexOf('"');  // start of "..." part of regexp
+	var rStart = regexp.indexOf('[');  // start of "[ ... ]" part of regexp	
+	var r2Start; // start of second "[ ... ]" part of regexp	
+	var firstRange, secondRange;
+	if (rStart === -1) {  // no range in regexp
+	    return regexp.substring(1,regexp.length-1); // strip off quotes
+	} else {  // at least one range in regexp
+	    r2Start = regexp.indexOf("[",rStart+1);
+	    if (cStart === -1) {  // regexp contains only one or two ranges
+		if (r2Start === -1) { // regexp is one range
+		    return generateCharacterInRange(regexp);
+		} else { // regexp has the form: [?-?][?-?]
+		    firstRange = regexp.substring(0,r2Start);
+		    secondRange = regexp.substring(r2Start);
+		    return generateCharacterInRange(firstRange) +
+			generateCharacterInRange(secondRange);
+		}	    
+	    } else { // regex contains one constant and one range
+		if (cStart < rStart) { // regexp has the form: "???"[?-?]
+		    firstRange = regexp.substring(rStart);
+		    return regexp.substring(1,regexp.indexOf('"',1)) +
+			generateCharacterInRange(firstRange);
+		} else { // regexp has the form: [?-?]"???"
+		    firstRange = regexp.substring(0,cStart);
+		    return generateCharacterInRange(firstRange) +
+			regexp.substring(cStart+1, regexp.length-1); 
+		}
+	    }
+	}
+	// should never get here
+    }// generateStringFromToken method
+
+    function generateStringFromPattern(pattern) {
+	var result = "";
+	for(var i=0; i<pattern.length; i++) {
+	    result += generateStringFromToken( tokens[ pattern.charAt(i)] );
+	}
+	return result;
+    } //generateString function
+
+    function generateStrings() {
+	var patterns;
+	var antipatterns;
+	var str;
+	switch (thisCase) {
+	case 1:
+	    // <s> ::= 0 | <s> 1         pattern: 0 through 01111
+	    patterns = ["01", "011", "0111","01111" ];
+	    antipatterns = [ "10", "010", "110","0110" ];
+	    break;
+	case 2:
+	    // <s> ::= 0 | 1 <s>         pattern: 0 through 11110
+	    patterns = ["10", "110", "1110","11110" ];
+	    antipatterns = [ "01", "010", "1011","11101" ];
+	    break;
+	case 3:
+	    // <s> ::= 2 | <s> 0 1       pattern: 2 through 20101
+	    patterns = ["2", "201", "20101" ];
+	    antipatterns = [ "21", "210", "01012" ];
+	    break;
+	case 4:
+	    // <s> ::= 2 | 0 <s> 1       pattern: 2 through 00211
+	    patterns = ["2", "021", "00211","0002111" ];
+	    antipatterns = [ "01", "210", "0021", "002111"];
+	    break;
+	case 5:
+	    // <s> ::= 2 | 0 1 <s>       pattern: 2 through 01012
+	    patterns = ["2", "012", "01012", "0101012" ];
+	    antipatterns = [ "01", "201", "0102", "01011" ];
+	    break;
+	}// switch
+	while (validStrings.length + invalidStrings.length < numOptions) {
+	    if (rnd() < 0.5) { // generate a valid string
+		str = generateStringFromPattern(
+		    patterns[ floor(rnd()*patterns.length) ]);
+		if (validStrings.indexOf(str) === -1) {
+		    validStrings.push(str);
+		}
+	    } else { // generate an invalid string
+		str = generateStringFromPattern(
+		    antipatterns[ floor(rnd()*antipatterns.length) ]);
+		if (invalidStrings.indexOf(str) === -1) {
+		    invalidStrings.push(str);
+		}
+	    }	    
+	}
+    }// generateStrings function
 
     var RP4part1 = {
 
@@ -245,24 +356,32 @@
 	init: function() {
 	    var token1, token2, token3;
 	    var index, numTokens;	    
-	    // pick third token name (tokens 1 and 2 may be equal to this one)
-	    index = floor( rnd() * possibleTokenNames.length );
-	    token3 = possibleTokenNames[ index ]; 
+	    var correct = [], incorrect = [];
+
+	    function shuffle(array){
+		for(var j, x, i = array.length; 
+		    i; 
+		    j = Math.floor(Math.random() * i), 
+		    x = array[--i], array[i] = array[j], array[j] = x);
+		return array;
+	    }
 	    // pick first token name
 	    index = floor( rnd() * possibleTokenNames.length );
 	    token1 = possibleTokenNames[ index ]; 
 	    tokenNames.push( token1 );
 	    possibleTokenNames.splice(index,1);
-	    // pick second token name distinct from token1
+	    // pick second token name
 	    index = floor( rnd() * possibleTokenNames.length );
 	    token2 = possibleTokenNames[ index ]; 
 	    tokenNames.push( token2 );
 	    possibleTokenNames.splice(index,1);
-	    // remember token3 picked earlier
+	    // pick third token name
+	    index = floor( rnd() * possibleTokenNames.length );
+	    token3 = possibleTokenNames[ index ]; 
 	    tokenNames.push( token3 );
+	    possibleTokenNames.splice(index,1);
 	    // pick type of grammar called thisCase (see comments above)
 	    thisCase = 1 + floor( rnd() * numCases );
-	    //thisCase = 5;
 	    switch (thisCase) {
 		case 1:
 		numTokens = 2;
@@ -302,16 +421,24 @@
 		grammar += '  ;';
 		break;
 	    }
-	    if (numTokens>2 && (token3 === token1 || token3 === token2)) {
-		tokenNames.pop();
-	    }	    
+	    	    
+	    generateTokens();
+	    generateStrings();
 
-	    generateTokens(tokenNames);
-	    
+	    console.log("valid:");
+	    console.log(validStrings);
+	    console.log("invalid:");
+	    console.log(invalidStrings);
 	    // export tokenLines and productions
 	    this.tokenLines = tokenLines.join("");
 	    this.productions = grammar;
-	   	    
+	    this.strings =
+		"<li>" +
+		shuffle(validStrings.concat(invalidStrings))
+		.join("<li>\n<li>") +
+		"</li>\n";
+	    this.answer = validStrings.length;
+	    console.log("============> correct answer: " + this.answer);
 	}// init function
 
     };// RP4part1 object
