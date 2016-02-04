@@ -39,27 +39,27 @@ ss
     : s "EOF"
     ;
 s
-        : nphrase "VERB" "PUNCTUATION"
-        | nphrase "VERB" vmodifier "PUNCTUATION"
-        | nphrase "VERB" nphrase "PUNCTUATION"
-        ;
+    : nphrase "VERB" "PUNCTUATION"
+    | nphrase "VERB" vmodifier "PUNCTUATION"
+    | nphrase "VERB" nphrase "PUNCTUATION"
+    ;
 nphrase
-        :       modifiednoun
-        |       "ARTICLE" modifiednoun
-        ;
+    : modifiednoun
+    | "ARTICLE" modifiednoun
+    ;
 modifiednoun
-        :       "NOUN"
-        |       nmodifier modifiednoun
-        ;
+    : "NOUN"
+    | nmodifier modifiednoun
+    ;
 nmodifier
-        :       "ADJECTIVE"
-        |       "ADVERB" nmodifier
-        ;
+    : "ADJECTIVE"
+    | "ADVERB" nmodifier
+    ;
 vmodifier
-        :       "ADVERB"
-        |       "ADVERB" vmodifier
-        |       "PREPOSITION" nphrase
-        ;
+    : "ADVERB"
+    | "ADVERB" vmodifier
+    | "PREPOSITION" nphrase
+    ;
 </pre>
 	    <p class="question">Now consider the following five strings:</p>
 	    <ul>
@@ -81,7 +81,9 @@ vmodifier
           </ul>
 	  </div>
           <div class="hints">
-            <p>To do</p>
+            <p>For this problem, you must focus on the details of the
+            given grammar instead of relying on your vast experience
+            with actual English sentences.</p>
           </div>
         </div>
       </div>
