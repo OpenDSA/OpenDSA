@@ -1,4 +1,4 @@
-/*global window KhanUtil */
+/*global window Khan */
 // Used by collision resolution proficiency exercises
 (function() {
   "use strict";
@@ -33,7 +33,7 @@
         probeFunc = linearProbing;
         break;
       case "HashLinearStepPPRO":
-        probeCommon.probeStep = KhanUtil.randRange(2, 4);
+        probeCommon.probeStep = Khan.randRange(2, 4);
         probeFunc = probe_by_step(probeCommon.probeStep);
         break;
       case "HashPseudoRandomPPRO":

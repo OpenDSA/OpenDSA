@@ -1,4 +1,4 @@
-/*global window KhanUtil */
+/*global window Khan */
 (function() {
   "use strict";
   var shellsortSeries = {
@@ -16,9 +16,9 @@
     makeSeries: function(count) {
       var series = [];
       for (var i = 0; i <= count; i++) {
-        series[i] = KhanUtil.randRange(count - i, 10 - (2 * i));
+        series[i] = Khan.randRange(count - i, 10 - (2 * i));
       }
-      if (KhanUtil.randRange(0, 4) !== 3) {
+      if (Khan.randRange(0, 4) !== 3) {
         series[count] = 1;
       }
       return series;
