@@ -202,7 +202,7 @@ AlgorithmsLMS: min
 	python $(CONFIG_SCRIPT) config/Algorithms.json -c True
 
 PL: min
-	python $(CONFIG_SCRIPT) config/PL.json
+	python $(CONFIG_SCRIPT) config/PLtest.json -o True -b PL
 
 PL2: min
 	python $(CONFIG_SCRIPT) config/PL2.json -o True
@@ -215,6 +215,10 @@ PL2vt: min
 
 PL2in: min
 	python $(CONFIG_SCRIPT) config/PL2.json -c config/PL2in_LMSconf.json -b PL2in
+
+PLtest: min
+	python $(CONFIG_SCRIPT) config/PLtest.json -c config/PL2test_LMSconf.json -b PLtest
+
 
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js

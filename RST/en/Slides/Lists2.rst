@@ -30,7 +30,7 @@ Lists2
 
 .. slide:: Space Example
 
-   * Array-based list: Overhead is one pointer (4 bytes) per position in
+   * Array-based list: Overhead is one pointer (8 bytes) per position in
      array – whether used or not.
 
    * Linked list: Overhead is two pointers per link node
@@ -69,11 +69,17 @@ Lists2
    .. odsascript:: AV/List/dlistDiagramCON.js
 
 
+.. slide:: Container Class Design Issues
+
+   * Storing a record vs. Storing a reference to a record
+   * Homogeneity: Allow different record types? Check and block?
+   * Deletion: What happens to the record?
+
+
 .. slide:: Doubly Linked Node (1)
 
    .. codeinclude:: Lists/DLink
       :tag: DLink
-
 
 
 .. slide:: Doubly Linked Insert

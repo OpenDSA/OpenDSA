@@ -8,34 +8,29 @@
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
   </head>
 
-  <body data-height="1520" data-width="950">
+  <body data-height="1000" data-width="950">
     <div class="exercise">
       <div class="vars">
         <var id="init">RP4part1.init()</var>
         <var id="tokens">RP4part1.tokenLines</var>
         <var id="productions">RP4part1.productions</var>
+        <var id="strings">RP4part1.strings</var>        
+	<var id="answer">RP4part1.answer</var>
       </div>
 
       <div class="problems">
         <div id="RP4part1p">
           <div class="question">
 	    <p class="question">Consider the following Jison grammar:</p>
-
-
 <pre class="string">
 %lex
 %%
-
 \s+                   /* skip whitespace */
 <var>tokens</var>&lt;&lt;EOF>>               return "EOF"
 .                     return "INVALID"
-
 /lex
-
 %start ss
-
 %% 
-
 ss
   : s "EOF"
   ;
@@ -43,24 +38,16 @@ ss
 </pre>
 	    <p class="question">Now consider the following five strings:</p>
 	    <ul>
-	      <li>d e f a b c</li>
-	      <li>a b c d e f</li>
-	      <li>a b c e f</li>
-	      <li>d a</li>
-	      <li>a d</li>
+	      <var>strings</var>
 	    </ul>
 	    <p class="question">How many of these strings are parsed successfully according to the grammar above?</p>
-            <p class="solution" data-type="text">2</p>
-          <ul class="choices">
-	    <li>0</li>
-	    <li>1</li>
-	    <li>3</li>
-	    <li>4</li>
-	    <li>5</li>
-          </ul>
+            <p class="solution" data-type="text"><var>answer</var></p>
 	  </div>
           <div class="hints">
-            <p>To do</p>
+            <p>First, make sure to understand the regular expressions
+            that define the tokens in this grammar.</p>
+            <p>Then, carefully study the phrase-structure component of the
+            grammar, focusing on the recursive pattern of the productions.</p>
           </div>
         </div>
       </div>
