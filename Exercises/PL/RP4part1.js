@@ -241,7 +241,8 @@
 	}
 	// note that tokens.length must equal 2 or 3
 	for(i=0; i<tokens.length; i++) {
-	    tmp = tokens[i].regexp;
+	    tmp = tokens[i].regexp.replace(/"(\w)"/g,"[$1]");
+	    // above: replace "a" with [a] for Jison regexp syntax (not sure why)
 	    while (tmp.length < 22) {
 		tmp += " ";
 	    }
