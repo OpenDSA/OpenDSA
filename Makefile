@@ -204,8 +204,14 @@ AlgorithmsLMS: min
 PL: min
 	python $(CONFIG_SCRIPT) config/PL.json
 
+PL2: min
+	python $(CONFIG_SCRIPT) config/PL2.json -o True
+
 PLin: min
 	python $(CONFIG_SCRIPT) config/PL.json -c config/PLin_LMSconf.json -b PLin
+
+PL2vt: min
+	python $(CONFIG_SCRIPT) config/PL2.json -c config/PL2vt_LMSconf.json -b PL2vt
 
 PL2in: min
 	python $(CONFIG_SCRIPT) config/PL2.json -c config/PL2in_LMSconf.json -b PL2in
