@@ -217,7 +217,7 @@ PL2in: min
 	python $(CONFIG_SCRIPT) config/PL2.json -c config/PL2in_LMSconf.json -b PL2in
 
 PLtest: min
-	python $(CONFIG_SCRIPT) config/PLtest.json -c config/PL2test_LMSconf.json -b PLtest
+	python $(CONFIG_SCRIPT) config/PLtest.json -c config/PLtest_LMSconf.json -b PLtest
 
 
 nomin:
