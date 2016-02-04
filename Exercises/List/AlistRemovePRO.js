@@ -1,4 +1,4 @@
-/*global KhanUtil, window */
+/*global Khan, window */
 (function() {
   "use strict";
   var av,              // The JSAV object
@@ -15,18 +15,18 @@
     userInput: null,       // Boolean: Tells us if user ever did anything
 
     getSize: function() {
-      var range = KhanUtil.randRange(1, 6);
+      var range = Khan.randRange(1, 6);
       if (range === 1) { // Lower the odds on size of 1
-        range = KhanUtil.randRange(1, 6);
+        range = Khan.randRange(1, 6);
       }
       aSize = range;
       return range;
     },
 
     getPos: function() {
-      var range = KhanUtil.randRange(0, aSize - 1);
+      var range = Khan.randRange(0, aSize - 1);
       if (range === (aSize - 1)) { // Lower the odds on being at end
-        range = KhanUtil.randRange(0, aSize - 1);
+        range = Khan.randRange(0, aSize - 1);
       }
       return range;
     },
