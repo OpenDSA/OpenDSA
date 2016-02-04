@@ -20,7 +20,7 @@ Topics of the day:
   2. Introduction to functional programming (see next chapter).
 
 The review problem set for today contains five review problems.  The
-first one (see below) is about grammars. The remaining four problems are in
+first one (see below) is about grammars. The four remaining problems are in
 the chapter on functional programming.
 
 This first problem will help you understand how annotated Jison grammars

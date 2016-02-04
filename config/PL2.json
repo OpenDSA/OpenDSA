@@ -62,6 +62,20 @@
       }
     },
     "Functional Programming": {
+      "PL/FP1": {
+        "long_name": "Introduction to functional programming - Part 1",
+        "sections": {
+          "RP 5 part 2": {
+            "RP5part2": {
+              "long_name": "RP set #5, question #12",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }
+        }
+      },
       "PL/ListDataStructure": {
         "long_name": "The List data structure",
         "sections": {
