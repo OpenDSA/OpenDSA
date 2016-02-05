@@ -14,9 +14,9 @@ $(document).ready(function() {
   var topMargin = 0;
 
   // Create the graphics for front and rear boxes
-  var arrFront = av.ds.array([3], {indexed: false, left: 200, top: topMargin});
+  var arrFront = av.ds.array([""], {indexed: false, left: 200, top: topMargin});
   av.label("front", {left: 163, top: topMargin + 4});
-  var arrRear = av.ds.array([0], {indexed: false, left: 200, top: topMargin + 35});
+  var arrRear = av.ds.array([""], {indexed: false, left: 200, top: topMargin + 35});
   av.label("rear", {left: 168, top: topMargin + 39});
   av.ds.array([4], {indexed: false, left: 200, top: topMargin + 70});
   av.label("listSize", {left: 147, top: topMargin + 74});
@@ -31,31 +31,29 @@ $(document).ready(function() {
 
   // Slide 2
   av.umsg(interpret("sc2"));
-  arr.highlight(0);
-  arrRear.highlight(0);
+  arrFront.value(0, 3);
   arrFront.addClass([0], "special");
   arr.addClass([3], "special");
+  arrRear.value(0, 0);
+  arrRear.addClass([0], "processing");
+  arr.addClass([0], "processing");
   av.step();
 
   // Slide 3
   av.umsg(interpret("sc3"));
-  arrRear.unhighlight(0);
-  arrFront.removeClass([0], "special");
-  arr.removeClass([3], "special");
-  arr.highlight([0, 1, 2, 3]);
   av.step();
 
   // Slide 4
   av.umsg(interpret("sc4"));
-  arr.unhighlight([0, 1, 2]);
-  arrRear.value(0, 3);
   arrFront.value(0, 0);
-  arr.highlight(3);
-  arrRear.highlight(0);
+  arr.removeClass([3], "special");
+  arr.addClass([3], "processing");
+  arrRear.value(0, 3);
+  arr.removeClass([0], "processing");
+  arr.addClass([0], "special");
   av.step();
 
   // Slide 5
   av.umsg(interpret("sc5"));
-  arr.highlight([0, 1, 2]);
   av.recorded();
 });
