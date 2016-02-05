@@ -24,39 +24,43 @@ $(document).ready(function() {
   arr.addClass([4, 5, 6, 7, 8, 9], "unused");
   // Create the graphics for front and rear boxes
   var arrFront = av.ds.array([0], {indexed: false, left: 200, top: topMargin});
-  av.label("front", {left: 163, top: topMargin + 4});
+  av.label("front", {left: 161, top: topMargin + 4});
+  arrFront.addClass([0], "special");
+  arr.addClass([0], "special");
   var arrRear = av.ds.array([3], {indexed: false, left: 200, top: topMargin + 35});
-  av.label("rear", {left: 168, top: topMargin + 39});
+  av.label("rear", {left: 166, top: topMargin + 39});
+  arrRear.addClass([0], "processing");
+  arr.addClass([3], "processing");
   var arrSize = av.ds.array([4], {indexed: false, left: 200, top: topMargin + 70});
-  av.label("listSize", {left: 147, top: topMargin + 74});
+  av.label("listSize", {left: 145, top: topMargin + 74});
   av.step();
 
   // Slide 3
   av.umsg(interpret("sc3"));
   arr.value(0, "");
-  arr.highlight(0);
+  arr.removeClass(0, "special");
   arr.addClass(0, "unused");
+  arr.addClass(1, "special");
   arrSize.value(0, 3);
   arrFront.value(0, 1);
-  arrFront.highlight(0);
   av.step();
 
   // Slide 4
   av.umsg(interpret("sc4"));
   arr.value(1, "");
+  arr.removeClass(1, "special");
   arr.addClass(1, "unused");
-  arr.unhighlight(0);
-  arr.highlight(1);
+  arr.addClass(2, "special");
   arrSize.value(0, 2);
   arrFront.value(0, 2);
   av.step();
 
   // Slide 5
   av.umsg(interpret("sc5"));
-  arr.unhighlight(1);
   arr.value(2, "");
+  arr.removeClass(2, "special");
   arr.addClass(2, "unused");
-  arr.highlight(2);
+  arr.addClass(3, "special");
   arrSize.value(0, 1);
   arrFront.value(0, 3);
   av.step();
@@ -64,33 +68,30 @@ $(document).ready(function() {
   // Slide 6
   av.umsg(interpret("sc6"));
   arr.removeClass(4, "unused");
+  arr.addClass(4, "processing");
   arr.value(4, "3");
   arrSize.value(0, 2);
   arrRear.value(0, 4);
-  arrRear.highlight(0);
-  arr.unhighlight(2);
-  arr.highlight(4);
-  arrFront.unhighlight(0);
   av.step();
 
   // Slide 7
   av.umsg(interpret("sc7"));
   arr.removeClass(5, "unused");
   arr.value(5, "30");
+  arr.addClass(5, "processing");
+  arr.removeClass(4, "processing");
   arrSize.value(0, 3);
   arrRear.value(0, 5);
-  arr.unhighlight(4);
-  arr.highlight(5);
   av.step();
 
   // Slide 8
   av.umsg(interpret("sc8"));
   arr.removeClass(6, "unused");
   arr.value(6, "4");
+  arr.addClass(6, "processing");
+  arr.removeClass(5, "processing");
   arrSize.value(0, 4);
   arrRear.value(0, 6);
-  arr.unhighlight(5);
-  arr.highlight(6);
   av.step();
 
   // Slide 9
