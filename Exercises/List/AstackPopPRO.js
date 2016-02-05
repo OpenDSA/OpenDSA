@@ -25,15 +25,15 @@
       for (i = 0; i < arr_size; i++) {
         answerArr[i] = Math.floor(Math.random() * 1000);
       }
-      for (i = 0; i < max_size - arr_size; i++) {
-        answerArr.push([""]);
+      for (i = arr_size; i < max_size; i++) {
+        answerArr[i] = "";
       }
       // Now make a copy
       cloneArr = answerArr.slice(0);
 
       reset(max_size, arr_size);
 
-      // correct answer
+      // Set the correct return value
       if (arr_size === 0) {
         returnVal = "";
       } else {
