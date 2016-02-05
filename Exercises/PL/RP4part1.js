@@ -246,8 +246,8 @@
 	    while (tmp.length < 22) {
 		tmp += " ";
 	    }
-	    tokenLines.push(  tmp + 'return "' + tokens[i].name + '"\n');
-	    //tokenLines.push( token.range + 'return "' + token.name + '"\n'); 
+	    tokenLines.push(  tmp + '{ return "' + 
+			      tokens[i].name + '";           }\n');
 	}
     }// generateTokens
 
@@ -365,7 +365,10 @@
 		for(var j, x, i = array.length; 
 		    i; 
 		    j = Math.floor(Math.random() * i), 
-		    x = array[--i], array[i] = array[j], array[j] = x);
+		    x = array[--i], array[i] = array[j], array[j] = x) {  
+		    // block added for jshint
+		    var dummy = 1; 
+		}
 		return array;
 	    }
 	    // pick first token name

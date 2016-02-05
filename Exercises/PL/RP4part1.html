@@ -25,9 +25,9 @@
 <pre class="string">
 %lex
 %%
-\s+                   /* skip whitespace */
-<var>tokens</var>&lt;&lt;EOF>>               return "EOF"
-.                     return "INVALID"
+\s+                   { /* skip whitespace */ }
+<var>tokens</var>&lt;&lt;EOF>>               { return "EOF";         }
+.                     { return "INVALID";     }
 /lex
 %start ss
 %% 
