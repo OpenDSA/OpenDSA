@@ -19,11 +19,11 @@
 %lex
 %%
 
-\s+                   /* skip whitespace */
-"["                   return "LBRACKET"
-"]"                   return "RBRACKET"
-&lt;&lt;EOF>>               return "EOF"
-.                     return "INVALID"
+\s+                   { /* skip whitespace */ }
+"["                   { return "LBRACKET";    }
+"]"                   { return "RBRACKET";    }
+&lt;&lt;EOF>>               { return "EOF";         }
+.                     { return "INVALID";     }
 
 %start program
 /lex
