@@ -1,4 +1,5 @@
 /* *** ODSATag: Composite *** */
+/* *** ODSATag: Composite1 *** */
    /** Base class: Composite */
    interface VarBinNode {
      boolean isLeaf();
@@ -17,7 +18,9 @@
        Visit.VisitLeafNode(operand);
      }
    }
+/* *** ODSAendTag: Composite1 *** */
 
+/* *** ODSATag: Composite2 *** */
    /** Internal node: Composite */
    class VarIntlNode implements VarBinNode { // Internal node
      private VarBinNode left;                // Left child
@@ -38,9 +41,12 @@
        if (right != null) right.traverse();
      }
    }
+/* *** ODSAendTag: Composite2 *** */
 
+/* *** ODSATag: Composite3 *** */
    /** Preorder traversal */
    static void traverse(VarBinNode rt) {
      if (rt != null) rt.traverse();
    }
+/* *** ODSAendTag: Composite3 *** */
 /* *** ODSAendTag: Composite *** */
