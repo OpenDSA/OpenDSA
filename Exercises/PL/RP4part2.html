@@ -18,16 +18,16 @@
 <pre class="string">
 %lex
 %%
-\s+                                             /* skip whitespace */
-"the"|"a"                                       return "ARTICLE"
-"go"|"jump"|"run"|"like"|"eat"                  return "VERB"
-"dog"|"cat"|"fish"|"fox"|"moose"                return "NOUN"
-"blue"|"red"|"orange"|"white"|"big"|"small"     return "ADJECTIVE"
-"quickly"|"easily"|"slowly"                     return "ADVERB"
-"over"|"under"|"around"|"through"|"between"     return "PREPOSITION"
-"."|"!"                                         return "PUNCTUATION"       
-&lt;&lt;EOF>>                                         return "EOF"
-.                                               return "INVALID"
+\s+                                             { /* skip whitespace */ }
+"the"|"a"                                       { return "ARTICLE";     }
+"go"|"jump"|"run"|"like"|"eat"                  { return "VERB";        }
+"dog"|"cat"|"fish"|"fox"|"moose"                { return "NOUN";        }
+"blue"|"red"|"orange"|"white"|"big"|"small"     { return "ADJECTIVE";   }
+"quickly"|"easily"|"slowly"                     { return "ADVERB";      }
+"over"|"under"|"around"|"through"|"between"     { return "PREPOSITION"; }
+"."|"!"                                         { return "PUNCTUATION"; }    
+&lt;&lt;EOF>>                                         { return "EOF";         }
+.                                               { return "INVALID";     }
 
 /lex
 

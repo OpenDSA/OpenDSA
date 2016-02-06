@@ -37,20 +37,20 @@
         <s> is always the same
 */
     
-    var grammar, tokenLines = [], options, answer;
+    var grammar, tokenLines, options, answer;
 
-    var possibleTokenNames = [ 'U', 'V', 'W', 'X', 'Y', 'Z' ];
+    var possibleTokenNames;
     var numCases = 5;
     var thisCase;
-    var tokenNames = [];
+    var tokenNames;
     var numAttempts;
     var aAscii = "a".charCodeAt(0);
     var floor = Math.floor;
     var rnd = Math.random;
     var tokens;
     var numOptions = 5;
-    var validStrings = [];
-    var invalidStrings= [];
+    var validStrings;
+    var invalidStrings;
     
     function generateTokens() {
 
@@ -72,7 +72,7 @@
 			   "-" +  
 			   String.fromCharCode(aAscii + r.start + r.width - 2) +
 			   "]")));
-	}
+	}// formatRange inner function
 
 	// return the index of a letter such that a w-wide range starting at
 	// that letter is easy to find (b/c the w consecutive letters have
@@ -115,7 +115,7 @@
 	    } else {
 		return startIndex;
 	    }
-	}// findStart function
+	}// findStart inner function
 
 	function findFirstAvailableRange(max) {
 	    var width, start;
@@ -134,7 +134,7 @@
 	    }
 	    // should never get here because there should always at least
 	    // one letter available (not yet included in any other range)
-	}// findAvailableRange
+	}// findFirstAvailableRange inner function
 
 	function joinRanges(r1,r2) {
 	    var r1Start, r1End, r2Start, r2End;
@@ -165,10 +165,9 @@
 		    return r1 + r2;
 		}
 	    }
-	}//joinRanges function
+	}//joinRanges inner function
 
 	tokens = [];
-
 	// first, generate all available letters
 	for(i = 1; i<=18; i++) {
 	    indices.push(i);
@@ -204,7 +203,6 @@
 	    var range = findFirstAvailableRange(3);
 	    ranges.push( range );
 	}		
-
 	// eliminate empty ranges
 	ranges = ranges.filter( function(r) { return r.start>0; } );
 /*
@@ -216,20 +214,11 @@
 	// assign ranges to the tokens	
 	tokens.push({ name: tokenNames[0], regexp: formatRange(ranges[0]) });
 	tokens.push({ name: tokenNames[1], regexp: formatRange(ranges[1]) });
+	ranges.splice(0,2); // delete the ranges just assigned
 	if (tokenNames.length === 3) {
-	    if (tokenNames[2] === tokenNames[0]) {
-		tokens.push({ name: tokenNames[2], 
-			      regexp: formatRange(ranges[0]) });
-		ranges.splice(0,2); // delete the ranges just assigned
-	    } else if (tokenNames[2] === tokenNames[1]) {
-		tokens.push({ name: tokenNames[2], 
-			      regexp: formatRange(ranges[1]) });
-		ranges.splice(0,2); // delete the ranges just assigned
-	    } else {	    
-		tokens.push({ name: tokenNames[2], 
-			      regexp: formatRange(ranges[2]) });
-		ranges.splice(0,3); // delete the ranges just assigned
-	    }
+	    tokens.push({ name: tokenNames[2], 
+			  regexp: formatRange(ranges[0]) });
+	    ranges.splice(0,1); // delete the range just assigned
 	}
 	
 	for(i=0; i<tokens.length; i++) {
@@ -239,6 +228,7 @@
 		ranges.splice(0,1);
 	    }
 	}
+	tokenLines = [];
 	// note that tokens.length must equal 2 or 3
 	for(i=0; i<tokens.length; i++) {
 	    tmp = tokens[i].regexp.replace(/"(\w)"/g,"[$1]");
@@ -246,8 +236,8 @@
 	    while (tmp.length < 22) {
 		tmp += " ";
 	    }
-	    tokenLines.push(  tmp + 'return "' + tokens[i].name + '"\n');
-	    //tokenLines.push( token.range + 'return "' + token.name + '"\n'); 
+	    tokenLines.push(  tmp + '{ return "' + 
+			      tokens[i].name + '";           }\n');
 	}
     }// generateTokens
 
@@ -305,6 +295,7 @@
 	var patterns;
 	var antipatterns;
 	var str;
+	var numValid;
 	switch (thisCase) {
 	case 1:
 	    // <s> ::= 0 | <s> 1         pattern: 0 through 01111
@@ -332,21 +323,28 @@
 	    antipatterns = [ "01", "201", "0102", "01011" ];
 	    break;
 	}// switch
-	while (validStrings.length + invalidStrings.length < numOptions) {
-	    if (rnd() < 0.5) { // generate a valid string
-		str = generateStringFromPattern(
-		    patterns[ floor(rnd()*patterns.length) ]);
-		if (validStrings.indexOf(str) === -1) {
-		    validStrings.push(str);
-		}
-	    } else { // generate an invalid string
-		str = generateStringFromPattern(
-		    antipatterns[ floor(rnd()*antipatterns.length) ]);
-		if (invalidStrings.indexOf(str) === -1) {
-		    invalidStrings.push(str);
-		}
-	    }	    
+	validStrings = [];
+	invalidStrings = [];	
+	numValid = floor( rnd() * (numOptions+1) );
+	/*
+	console.log("Correct answer: " + numValid);
+	*/
+	while (validStrings.length < numValid) {
+	    // generate valid strings
+	    str = generateStringFromPattern(
+		patterns[ floor(rnd()*patterns.length) ]);
+	    if (validStrings.indexOf(str) === -1) {
+		validStrings.push(str);
+	    }
 	}
+	while (validStrings.length + invalidStrings.length < numOptions) {
+	    // generate invalid strings
+	    str = generateStringFromPattern(
+		antipatterns[ floor(rnd()*antipatterns.length) ]);
+	    if (invalidStrings.indexOf(str) === -1) {
+		invalidStrings.push(str);
+	    }
+	}	    
     }// generateStrings function
 
     var RP4part1 = {
@@ -365,9 +363,15 @@
 		for(var j, x, i = array.length; 
 		    i; 
 		    j = Math.floor(Math.random() * i), 
-		    x = array[--i], array[i] = array[j], array[j] = x);
+		    x = array[--i], array[i] = array[j], array[j] = x) {  
+		    // block added for jshint
+		    var dummy = 1; 
+		}
 		return array;
 	    }
+	    tokenNames = [];
+	    possibleTokenNames = [ 'U', 'V', 'W', 'X', 'Y', 'Z' ];
+
 	    // pick first token name
 	    index = floor( rnd() * possibleTokenNames.length );
 	    token1 = possibleTokenNames[ index ]; 
@@ -383,6 +387,7 @@
 	    token3 = possibleTokenNames[ index ]; 
 	    tokenNames.push( token3 );
 	    possibleTokenNames.splice(index,1);
+
 	    // pick type of grammar called thisCase (see comments above)
 	    thisCase = 1 + floor( rnd() * numCases );
 	    switch (thisCase) {

@@ -2,7 +2,7 @@
 (function() {
   "use strict";
 
-  var listOpen = {
+  var RP5part3 = {
     getSetupText: function() {
       return setupText;
     },
@@ -172,5 +172,5 @@
     }
   }
 
-  window.listOpen = window.listOpen || listOpen;
+  window.RP5part3 = window.RP5part3 || RP5part3;
 }());

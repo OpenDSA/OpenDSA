@@ -25,5 +25,29 @@ problems are in this section.
 
 This problem deals with the syntax and semantics of the ``fp.cons`` function.
 
-
 .. avembed:: Exercises/PL/RP5part2.html ka
+
+RP 5 part 3
+-----------
+
+This problem deals with the semantics of the ``fp.hd``,
+``fp.tl``, and ``fp.cons`` functions.
+
+.. avembed:: Exercises/PL/RP5part3.html ka
+
+
+RP 5 part 4
+-----------
+
+This problem deals with the syntax and semantics of the ``fp.hd``,
+``fp.tl``, and ``fp.isEq`` functions.
+
+.. avembed:: Exercises/PL/RP5part4.html ka
+
+RP 5 part 5
+-----------
+
+This problem once more helps you review the semantics of the ``fp.hd``,
+``fp.tl``, and ``fp.cons`` functions.
+
+.. avembed:: Exercises/PL/RP5part5.html ka
