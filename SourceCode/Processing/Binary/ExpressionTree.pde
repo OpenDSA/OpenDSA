@@ -1,4 +1,5 @@
 /* *** ODSATag: ExpressionTree *** */
+/* *** ODSATag: ExpressionTree1 *** */
 // Base class for expression tree nodes
 interface VarBinNode {
   boolean isLeaf(); // All subclasses must implement
@@ -12,7 +13,9 @@ class VarLeafNode implements VarBinNode {
   boolean isLeaf() { return true; }
   String value() { return operand; }
 };
+/* *** ODSAendTag: ExpressionTree1 *** */
 
+/* *** ODSATag: ExpressionTree2 *** */
 /** Internal node */
 class VarIntlNode implements VarBinNode {
   private VarBinNode left;                // Left child
@@ -26,6 +29,7 @@ class VarIntlNode implements VarBinNode {
   VarBinNode rightchild() { return right; }
   Character value() { return operator; }
 }
+/* *** ODSAendTag: ExpressionTree2 *** */
 
 /** Preorder traversal */
 /* *** ODSATag: pointer based preorder *** */
@@ -41,3 +45,15 @@ static void traverse(VarBinNode rt) {
 }
 /* *** ODSAendTag: pointer based preorder *** */
 /* *** ODSAendTag: ExpressionTree *** */
+
+
+
+
+
+
+
+
+
+
+
+
