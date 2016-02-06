@@ -14,20 +14,19 @@
         <div id="RP5part4p">
           <p class="question">Assuming
 	    that <span class="string">foo</span> is a valid
-	    list, <span class="list">fp.isEq( fp.hd(foo), fp.hd(
+	    list, the expression <span class="list">fp.isEq( fp.hd(foo), fp.hd(
 	    fp.tl(foo) ) )</span> ...</p>
           <div class="solution">... could crash or return true or false.</div>
           <ul class="choices">
-            <li>... could return true.</li>
-            <li>... could return false.</li>
-            <li>... could crash.</li>
+            <li>... can only return true.</li>
+            <li>... can only return false.</li>
+            <li>... can only crash.</li>
             <li>... could return true or false, but it could not crash.</li>
           </ul>
           <div class="hints">
-	    <p>Review the API for <span class="string">fp.isEq</span> and
-	      <span class="string">fp.tl</span></p>
-	    <p>Review the API for <span class="string">fp.hd</span> and
-	      <span class="string">fp.tl</span></p>
+	    <p>Review the API for the three functions involved.</p>
+	    <p>Consider  all possible relevant cases for the value
+	    of <span class="string">foo</span>.</p>
           </div>
         </div>
       </div>
