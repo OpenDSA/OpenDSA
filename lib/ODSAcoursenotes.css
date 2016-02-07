@@ -30,4 +30,10 @@ ul li::before {
 .jsavcanvas{
   min-height: 600px !important;
 }
+.slide{
+  height: 100% !important;
+}
+.hide{
+  display: none !important;
+}
 
