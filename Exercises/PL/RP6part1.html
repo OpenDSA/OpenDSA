@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 6.1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="850" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP6part1p">
+          <p class="question">In class, we discussed one
+          implementation of the <span class="string">isMember</span>
+          function. Now suppose that we define
+          the <span class="string">isMember</span> function as
+          follows:
+<pre class="string">
+var isMember = function (n,ns) {
+      if (fp.isEq(n, fp.hd(ns))) {
+           return true;
+      } else if (isMember(n, fp.tl(ns))) {
+           return true;
+      } else {
+           return false;
+      }
+}
+</pre>
+          <p class="question">Which one of the following statements
+          best characterizes this new version of
+          this <span class="string">isMember</span> function?
+	  </p>
+          <div class="solution">It could never return false.
+	  </div>
+          <ul class="choices">
+            <li>It is not as good stylistically, but it does work
+            correctly.</li>
+	    <li>It could never return true.</li>
+          </ul>
+          <div class="hints">
+	    <p></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
