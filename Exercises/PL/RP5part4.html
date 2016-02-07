@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 5.4</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="550" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP5part4p">
+          <p class="question">Assuming
+	    that <span class="string">foo</span> is a valid
+	    list, the expression <span class="list">fp.isEq( fp.hd(foo), fp.hd(
+	    fp.tl(foo) ) )</span> ...</p>
+          <div class="solution">... could crash or return true or false.</div>
+          <ul class="choices">
+            <li>... can only return true.</li>
+            <li>... can only return false.</li>
+            <li>... can only crash.</li>
+            <li>... could return true or false, but it could not crash.</li>
+          </ul>
+          <div class="hints">
+	    <p>Review the API for the three functions involved.</p>
+	    <p>Consider  all possible relevant cases for the value
+	    of <span class="string">foo</span>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
