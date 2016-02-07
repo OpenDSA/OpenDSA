@@ -17,13 +17,13 @@ Topics of the day:
 
   1. How to add annotations to a Jison grammar to produce an
      interpreter, rather than just a parser.
-  2. Introduction to functional programming (see next chapter).
+  2. Introduction to functional programming (beginning of the next chapter).
 
 The review problem set for today contains five review problems.  The
 first one (see below) is about grammars. The four remaining problems are in
 the chapter on functional programming.
 
 This first problem will help you understand how annotated Jison grammars
-can be used as interpreters.
+can be used to generate interpreters.
 
 .. avembed:: Exercises/PL/RP5part1.html ka

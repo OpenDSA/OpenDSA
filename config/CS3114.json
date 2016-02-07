@@ -1044,8 +1044,8 @@
             "SumBinaryTreeCON": {
               "long_name": "Sum values in a Binary Tree Slide Show",
               "required": false,
-              "points": 1.0,
-              "threshold": 0.90
+              "points": 0.0,
+              "threshold": 1.0
             }
           }
         }
@@ -1150,8 +1150,8 @@
             "BinaryTreeMistakesCON": {
               "long_name": "Binary Tree Common Mistakes Slideshow",
               "required": false,
-              "points": 1.0,
-              "threshold": 0.90
+              "points": 0.0,
+              "threshold": 1.0
             },
             "BTreturnPROGSumm": {
               "long_name": "Collect-and-Return Programming Exercises",
@@ -1307,8 +1307,8 @@
             "IneffBinaryTreeRangeCON": {
               "long_name": "Inefficient Binary Tree Traversal on Range Slide Show",
               "required": false,
-              "points": 1.0,
-              "threshold": 0.90
+              "points": 0.0,
+              "threshold": 1.0
             },
             "BSTsmallcountPROG": {
               "long_name": "BST Small Value Count Programming Exercise",

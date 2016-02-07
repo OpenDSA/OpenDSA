@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html data-require="math jsav fp RP5part3">
+<html data-require="math jsav fp RP5part3" lang="en">
   <head>
+    <meta charset=utf-8>
     <title>RP 5 part 3</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
@@ -89,12 +90,17 @@
               expression? Note: If the evaluation of the expression
               throws an exception,
               the correct answer is the single word  (in
-              all lowercase letters): error.
+              all lowercase letters): error.</p>
             <div id="ListOpen" class="jsavcanvas"></div>
-          </p>
           <div class="solution" data-type="regex"><var>ANS</var></div>
           <div class="hints">
-            <p>Answer: <var>ANS</var></p>
+            <p>The first step is to understand the structure of the
+            given expression, e.g., what are the arguments for each
+            one of the function calls?</p>
+	    <p>You may want to proceed from the inside out, i.e.,
+	    evaluate the innermost function calls first.</p>
+	    <p>There is only one acceptable answer; however,
+	    whitespace characters are allowed between list elements.</p>
           </div>
         </div>
       </div>
