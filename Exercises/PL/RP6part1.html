@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-require="math" lang="en">
+<html data-require="math RP6part1" lang="en">
   <head>
     <meta charset=utf-8>
     <title>RP 6.1</title>
@@ -10,34 +10,36 @@
 
   <body data-height="850" data-width="950">
     <div class="exercise">
+      <div class="vars">
+        <var id="setup">RP6part1.init()</var>
+        <var id="functionDefinition">RP6part1.functionDefinition</var>
+        <var id="functionCalls">RP6part1.functionCalls</var>
+        <var id="CorrectAnswer">RP6part1.correct</var>
+        <var id="option1">RP6part1.incorrect[0]</var>
+        <var id="option2">RP6part1.incorrect[1]</var>
+        <var id="option3">RP6part1.incorrect[2]</var>
+      </div>
+
       <div class="problems">
         <div id="RP6part1p">
-          <p class="question">In class, we discussed one
-          implementation of the <span class="string">isMember</span>
-          function. Now suppose that we define
-          the <span class="string">isMember</span> function as
-          follows:
+          <p class="question">Consider the following definition of
+          the function <span class="string">f</span>:
 <pre class="string">
-var isMember = function (n,ns) {
-      if (fp.isEq(n, fp.hd(ns))) {
-           return true;
-      } else if (isMember(n, fp.tl(ns))) {
-           return true;
-      } else {
-           return false;
-      }
-}
+var fp = require('./fp');
+<var>functionDefinition</var>
 </pre>
-          <p class="question">Which one of the following statements
-          best characterizes this new version of
-          this <span class="string">isMember</span> function?
-	  </p>
-          <div class="solution">It could never return false.
-	  </div>
+          <p class="question">Now consider the following sequence of
+          invocations of the
+          function <span class="string">f</span>:<br />
+	  <var>functionCalls</var></p>
+	  <p class="question">What values are returned assuming that
+	  these invocations of <span class="string">f</span> are made
+	  in the order given above?</p>
+          <div class="solution"><var>CorrectAnswer</var></div>
           <ul class="choices">
-            <li>It is not as good stylistically, but it does work
-            correctly.</li>
-	    <li>It could never return true.</li>
+            <li><var>option1</var></li>
+            <li><var>option2</var></li>
+            <li><var>option3</var></li>
           </ul>
           <div class="hints">
 	    <p></p>
