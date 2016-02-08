@@ -19,6 +19,6 @@ Topics of the day:
 
 The review problem set for today contains three review problems.
 
-This problem deals with the syntax and semantics of the ``fp.cons`` function.
+This problem deals with recursive function definitions.
 
 .. avembed:: Exercises/PL/RP6part1.html ka
