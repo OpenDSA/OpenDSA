@@ -91,6 +91,8 @@ slides:
 	@SLIDES=yes \
 	$(SPHINXBUILD) -b slides source $(HTMLDIR)
 	rm html/_static/jquery.js html/_static/websupport.js
+	rm html/_static/styles.css
+	cp "%(odsa_dir)slib/styles.css" html/_static/
 	rm *.json
 	@echo
 	@echo "Build finished. The HTML pages are in $(HTMLDIR)."
