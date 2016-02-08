@@ -206,16 +206,317 @@
 	     "error, 1, -1, error, -8",
 	     "error, 1, error, error, error"
 	 ]
+	},
+
+	/* option 10 */
+	{f:
+	 "var f = function (n,ns) {\n" +
+	 "    if (fp.isNull(ns))\n" +
+         "        return false;\n" + 
+	 "    else if (fp.isEq(n,fp.hd(ns)))\n" +
+         "        return true;\n" +
+	 "    else\n" +
+	 "        return f(n,fp.tl(ns));\n" +
+	 "}",
+	 tests:
+	 "f( 1, [ ] )<br />f( 1, [ 1, 2, 3 ] )<br />f( 2, [ 1, 2, 3 ] )<br />" + 
+	 "f( 3, [ 1, 2, 3 ] )<br />f( 4, [ 1, 2, 3 ] )<br />",
+	 correct:  "false, true, true, true, false",
+	 incorrect: [
+	     "false, true, error, error, error",
+	     "false, true, true, true, error",
+	     "false, true, false, false, false"
+	 ]
+	},
+
+	/* option 11 */
+	{f:
+	 "var f = function (n,ns) {\n" +
+	 "    if (fp.isEq(n,fp.hd(ns)))\n" +
+         "        return true;\n" +
+	 "    else if (f(n,fp.tl(ns)))\n" +
+         "        return true;\n" +
+	 "    else\n" +
+	 "        return false;\n" +
+	 "}",
+	 tests:
+	 "f( 1, [ ] )<br />f( 1, [ 1, 2, 3 ] )<br />f( 2, [ 1, 2, 3 ] )<br />" + 
+	 "f( 3, [ 1, 2, 3 ] )<br />f( 4, [ 1, 2, 3 ] )<br />",
+	 correct:  "error, true, true, true, error",
+	 incorrect: [
+	     "error, true, true, true, false",
+	     "error, true, error, error, error",
+	     "error, true, false, false, false"
+	 ]
+	},
+
+	/* option 12 */
+	{f:
+	 "var f = function (n,ns) {\n" +
+	 "    if (f(n,fp.tl(ns)))\n" +
+	 "        return true;\n" +
+	 "    else if (fp.isEq(n,fp.hd(ns)))\n" +
+         "        return true;\n" +
+	 "    else\n" +
+         "        return false;\n" +
+	 "}",
+	 tests:
+	 "f( 1, [ ] )<br />f( 1, [ 1, 2, 3 ] )<br />f( 2, [ 1, 2, 3 ] )<br />" + 
+	 "f( 3, [ 1, 2, 3 ] )<br />f( 4, [ 1, 2, 3 ] )<br />",
+	 correct:  "error, error, error, error, error",
+	 incorrect: [
+	     "error, error, error, error, false",
+	     "error, error, error, true, false",
+	     "false, true, true, true, false"
+	 ]
+	},
+
+	/* option 13 */
+	{f:
+	 "var f = function (n,ns) {\n" +
+	 "    if (fp.isNull(ns))\n" +
+	 "        return 0;\n" +
+	 "    else if (fp.isEq(n,fp.hd(ns)))\n" +
+         "        return n;\n" +
+	 "    else\n" +
+         "        return f(n,fp.tl(ns));\n" +
+	 "}",
+	 tests:
+	 "f( 1, [ ] )<br />f( 1, [ 1, 2, 3 ] )<br />f( 2, [ 1, 2, 3 ] )<br />" + 
+	 "f( 3, [ 1, 2, 3 ] )<br />f( 4, [ 1, 2, 3 ] )<br />",
+	 correct:  "0, 1, 2, 3, 0",
+	 incorrect: [
+	     "0, 1, 2, 3, 4",
+	     "0, 1, 2, 3, error",
+	     "0, 1, 1, 1, 0"
+	 ]
+	},
+
+	/* option 14 */
+	{f:
+	 "var f = function (n,ns) {\n" +
+	 "    if (fp.isNull(ns))\n" +
+	 "        return 0;\n" +
+	 "    else if (fp.isEq(n,fp.hd(ns)))\n" +
+         "        return fp.add(n,fp.hd(fp.tl(ns)));\n" +
+	 "    else\n" +
+         "        return f(n,fp.tl(ns));\n" +
+	 "}",
+	 tests:
+	 "f( 1, [ ] )<br />f( 1, [ 1, 2, 3 ] )<br />f( 2, [ 1, 2, 3 ] )<br />" + 
+	 "f( 3, [ 1, 2, 3 ] )<br />f( 4, [ 1, 2, 3 ] )<br />",
+	 correct:  "0, 3, 5, error, 0",
+	 incorrect: [
+	     "0, 3, error, error, error",
+	     "0, 3, 5, error, error",
+	     "0, 3, error, error, 0"
+	 ]
+	},
+
+	/* option 15 */
+	{f:
+	 "var f = function (n,ns) {\n" +
+	 "    if (fp.isNull(ns))\n" +
+         "        return false;\n" + 
+	 "    else if (fp.isEq(n,fp.hd(ns)))\n" +
+         "        return true;\n" +
+	 "    else\n" +
+	 "        return f(n,fp.tl(fp.tl(ns)));\n" +
+	 "}",
+	 tests:
+	 "f( 1, [ ] )<br />f( 1, [ 1, 2, 3 ] )<br />f( 2, [ 1, 2, 3 ] )<br />" + 
+	 "f( 3, [ 1, 2, 3 ] )<br />f( 4, [ 1, 2, 3 ] )<br />",
+	 correct:  "false, true, error, true, error",
+	 incorrect: [
+	     "false, true, false, true, false",
+	     "false, true, false, true, error",
+	     "false, true, false, false, error"
+	 ]
+	},
+
+	/* option 16 */
+	{f:
+	 "var f = function (n,ns) {\n" +
+	 "    if (fp.isNull(ns))\n" +
+	 "        return 0;\n" +
+	 "    else if (fp.isEq(n,fp.hd(ns)))\n" +
+         "        return n;\n" +
+	 "    else\n" +
+         "        return f(n,fp.tl(fp.tl(ns)));\n" +
+	 "}",
+	 tests:
+	 "f( 1, [ ] )<br />f( 1, [ 1, 2, 3 ] )<br />f( 2, [ 1, 2, 3 ] )<br />" + 
+	 "f( 3, [ 1, 2, 3 ] )<br />f( 4, [ 1, 2, 3 ] )<br />",
+	 correct:  "0, 1, error, 3, error",
+	 incorrect: [
+	     "0, 1, 2, 3, 0",
+	     "0, 1, 2, 3, error",
+	     "0, 1, 1, 1, 0"
+	 ]
+	},
+
+	/* option 17 */
+	{f:
+	 "var f = function (n,ns) {\n" +
+	 "    if (fp.isNull(ns))\n" +
+	 "        return 0;\n" +
+	 "    else if (fp.isEq(n,fp.hd(ns)))\n" +
+         "        return fp.add(n,fp.hd(fp.tl(ns)));\n" +
+	 "    else\n" +
+         "        return f(n,fp.tl(fp.tl(ns)));\n" +
+	 "}",
+	 tests:
+	 "f( 1, [ ] )<br />f( 1, [ 1, 2, 3 ] )<br />f( 2, [ 1, 2, 3 ] )<br />" + 
+	 "f( 3, [ 1, 2, 3 ] )<br />f( 4, [ 1, 2, 3 ] )<br />",
+	 correct:  "0, 3, error, error, error",
+	 incorrect: [
+	     "0, 3, 5, error, 0",
+	     "0, 3, 5, error, error",
+	     "0, 3, error, error, 0"
+	 ]
+	},
+
+	/* option 18 */
+	{f:
+	 "var f = function (ns) {\n" +
+	 "    if (fp.isNull(ns))\n" +
+	 "        return [];\n" +
+	 "    else\n" +
+         "        return fp.cons(fp.hd(ns),f(fp.tl(ns)));\n" +
+	 "}",
+	 tests:
+	 "f( [ ] )<br />f( [ 1 ] )<br />f( [ 1, 2 ] )<br />" + 
+	 "f( [ 1, 2, 3 ] )<br />f( [ 1, 2, 3, 4 ] )<br />",
+	 correct:  "[ ], [ 1 ], [ 1, 2 ], [ 1, 2, 3 ], [ 1, 2, 3, 4 ]",
+	 incorrect: [
+	     "[ ], [ 1 ], [ 2, 1 ], [ 3, 2, 1 ], [ 4, 3, 2, 1 ]",
+	     "[ ], [ 1 ], [ 1, 2 ], [ 1, 3, 2 ], [ 1, 4, 2, 3 ]",
+	     "[ ], [ 1 ], [ 1, 2 ], [ 1, 2], [ 1, 2]"
+	 ]
+	},
+
+	/* option 19 */
+	{f:
+	 "var f = function (ns) {\n" +
+	 "    if (fp.isNull(ns))\n" +
+	 "        return [];\n" +
+	 "    else\n" +
+         "        return fp.cons(fp.hd(ns),f(fp.tl(fp.tl(ns))));\n" +
+	 "}",
+	 tests:
+	 "f( [ ] )<br />f( [ 1 ] )<br />f( [ 1, 2 ] )<br />" + 
+	 "f( [ 1, 2, 3 ] )<br />f( [ 1, 2, 3, 4 ] )<br />",
+	 correct:  "[ ], error, [ 1 ], error, [ 1, 3 ]",
+	 incorrect: [
+	     "[ ], [ 1 ], [ 1 ], [ 1, 3 ], [ 1, 3 ]",
+	     "[ ], error, error, error, error",
+	     "[ ], error, error, error, [ 1, 3 ]"
+
+	 ]
+	},
+
+	/* option 20 */
+	{f:
+	 "var f = function (n,ns) {\n" +
+	 "    if (fp.isNull(ns))\n" +
+	 "        return fp.cons(n,[ ]);\n" +
+	 "    else\n" +
+         "        return fp.cons(fp.hd(ns),f(n,fp.tl(ns)));\n" +
+	 "}",
+	 tests:
+	 "f( 10, [ ] )<br />f( 10, [ 1 ] )<br />f( 10, [ 1, 2 ] )<br />" + 
+	 "f( 10, [ 1, 2, 3 ] )<br />f( 10, [ 1, 2, 3, 4 ] )<br />",
+	 correct:  "[ 10 ], [ 1, 10 ], [ 1, 2, 10 ], [ 1, 2, 3, 10 ], [ 1, 2, 3, 4, 10 ]",
+	 incorrect: [
+	     "[ 10 ], [ 1, 10 ], [ 1, 2, 10 ], [ 1, 2, 3, 10 ], error ",
+	     "[ 10 ], [ 10, 1 ], [ 10, 1, 2 ],  [ 10, 1, 2, 3 ], [ 10, 1, 2, 3, 4]",
+
+	     "[ 10 ], error, error, error, error"
+	 ]
+	},
+
+	/* option 21 */
+	{f:
+	 "var f = function (n,ns) {\n" +
+	 "    if (fp.isNull(ns))\n" +
+	 "        return fp.cons(n,[ ]);\n" +
+	 "    else\n" +
+         "        return fp.cons(n, fp.cons( fp.hd(ns),f(n,fp.tl(ns))));\n" +
+	 "}",
+	 tests:
+	 "f( 10, [ ] )<br />f( 10, [ 1 ] )<br />f( 10, [ 1, 2 ] )<br />" + 
+	 "f( 10, [ 1, 2, 3 ] )<br />f( 10, [ 1, 2, 3, 4 ] )<br />",
+	 correct:  "[ 10 ], [ 10, 1, 10 ], [ 10, 1, 10, 2, 10 ], [ 10, 1, 10, 2, 10, 3, 10 ], [ 10, 1, 10, 2, 10, 3, 10, 4, 10 ]",
+	 incorrect: [
+	     "[ 10 ], [ 1, 10 ], [ 1, 10, 2, 10 ], [ 1, 10, 2, 10, 3, 10 ], [ 1, 10, 2, 10, 3, 10, 4, 10 ]",
+	     "[ 10 ], [ 10, 1 ], [ 10, 1, 10, 2 ], [ 10, 1, 10, 2, 10, 3 ], [ 10, 1, 10, 2, 10, 3, 10, 4 ]",
+	     "[ 10 ], [ 1, 10 ], [ 1, 2, 10 ], [ 1, 2, 3, 10 ], [ 1, 2, 3, 4, 10 ]"
+	 ]
+	},
+
+	/* option 22 */
+	{f:
+	 "var f = function (ms,ns) {\n" +
+	 "    if (fp.isNull(ms))\n" +
+	 "        return ns;\n" +
+	 "    else\n" +
+         "        return f(fp.tl(ms),fp.cons(fp.hd(ms),ns));\n" +
+	 "}",
+	 tests:
+	 "f( [ ], [ ] )<br />f( [ 1 ], [ ] )<br />f( [ 1, 2 ], [ ] )<br />" + 
+	 "f( [ 1, 2, 3 ], [ ], )<br />f( [ 1, 2, 3 ], [ 4, 5 ] )<br />",
+	 correct:  "[ ], [ 1 ], [ 2, 1 ], [ 3, 2, 1 ], [ 3, 2, 1, 4, 5 ]",
+	 incorrect: [
+	     "[ ], [ 1 ], [ 2, 1 ], [ 2, 1, 3 ], [ 2, 1, 3, 4, 5 ]",
+	     "[ ], [ 1 ], [ 2, 1 ], [ 3, 2, 1 ], error",
+	     "[ ], [ 1 ], [ 2, 1 ], [ 2, 1, 3 ], error"
+	 ]
+	},
+
+	/* option 23 */
+	{f:
+	 "var f = function (ms,ns) {\n" +
+	 "    if (fp.isNull(ms))\n" +
+	 "        return fp.cons(fp.hd(ns),ns);\n" +
+	 "    else\n" +
+         "        return f(fp.tl(ms),fp.cons(fp.hd(ms),ns));\n" +
+	 "}",
+	 tests:
+	 "f( [ ], [ ] )<br />f( [ 1 ], [ ] )<br />f( [ 1, 2 ], [ ] )<br />" + 
+	 "f( [ 1, 2, 3 ], [ ], )<br />f( [ 1, 2, 3 ], [ 4, 5 ] )<br />",
+	 correct:  "error, [ 1, 1 ], [ 2, 2, 1 ], [ 3, 3, 2, 1 ], [ 3, 3, 2, 1, 4, 5 ]",
+	 incorrect: [
+	     "error, [ 1, 1 ], [ 2, 2, 1 ], [ 3, 3, 2, 1 ], [ 4, 3, 2, 1, 4, 5 ]",
+	     "error, error, error, error, error",
+	     "error, [ 1, 1 ], error, [ 3, 3, 2, 1 ], error"
+	 ]
+	},
+
+	/* option 22 */
+	{f:
+	 "var f = function (ms,ns) {\n" +
+	 "    if (fp.isNull(ms))\n" +
+	 "        return ms;\n" +
+	 "    else\n" +
+         "        return f(fp.tl(ms),fp.cons(fp.hd(ms),ns));\n" +
+	 "}",
+	 tests:
+	 "f( [ ], [ ] )<br />f( [ 1 ], [ ] )<br />f( [ 1, 2 ], [ ] )<br />" + 
+	 "f( [ 1, 2, 3 ], [ ], )<br />f( [ 1, 2, 3 ], [ 4, 5 ] )<br />",
+	 correct:  "[ ], [ ], [ ], [ ], [ ]",
+	 incorrect: [
+	     "[ ], error, error, error, error",
+	     "[ ], [ 1 ], [ 1, 2 ], [ 1, 2, 3 ], [ 1, 2, 3]",
+	     "[ ], [ 1 ], [ 1, 2 ], [ 1, 2, 3 ], [ 1, 2, 3, 4, 5]"
+	 ]
 	}
-
-
     ];
     var RP6part1 = {
 
 	init: function() {
 
 	    var option = Math.floor( Math.random() * options.length );
-	    //option = 9;
+
 	    // export to the HTML page
 	    this.functionDefinition = options[option].f;
 	    this.functionCalls = options[option].tests;
