@@ -15,10 +15,23 @@ RP 6 part 1
 
 Topics of the day:
 
-  1. To do 
+  1. Developing basic, recursive list-processing functions, including
+     ``sum``, ``isMember``, ``removeFirst``, and ``subst``
 
 The review problem set for today contains three review problems.
 
-This problem deals with recursive function definitions.
+This problem aims to increase your comfort with recursion in functions
+that manipulate lists. Note that this problem is randomized. You
+must solve it correctly three times in a row to earn the point
+associated with it.
+
 
 .. avembed:: Exercises/PL/RP6part1.html ka
+
+
+RP 6 part 2
+-----------
+
+This problem asks you to modify the ``removeFirst`` function.
+
+.. avembed:: Exercises/PL/RP6part2.html ka
