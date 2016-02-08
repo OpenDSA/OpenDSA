@@ -36,4 +36,7 @@ ul li::before {
 .hide{
   display: none !important;
 }
+.jsavvaluelabel{
+  font-size: 15px !important;
+}
 
