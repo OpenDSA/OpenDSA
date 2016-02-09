@@ -5,7 +5,9 @@
 
     var options = [
 	/* option 0 */
-	{ f: 
+	{ args:
+	  '<span class="string">ns</span> is a list of integers',
+	  f: 
 	  "var f = function (ns) {\n" +
 	  "    if (fp.isNull(ns))\n" +
           "        return 0;\n" +
@@ -24,7 +26,9 @@
 	},
 
 	/* option 1 */
-	{ f: 
+	{ args:
+	  '<span class="string">ns</span> is a list of integers',
+	  f: 
 	  "var f = function (ns) {\n" +
 	  "    if (fp.isNull(ns))\n" +
           "        return 0;\n" +
@@ -45,7 +49,9 @@
 	},
 
 	/* option 2 */
-	{ f:
+	{ args:
+	  '<span class="string">ns</span> is a list of integers',
+	  f:
 	  "var f = function (ns) {\n" +
 	  "    if (fp.isEq(fp.hd(ns),2))\n" +
 	  "        return 2;\n" +
@@ -64,7 +70,9 @@
 	},
 
 	/* option 3 */
-	{ f:
+	{ args:
+	  '<span class="string">ns</span> is a list of integers',
+	  f:
 	  "var f = function (ns) {\n" +
 	  "    if (fp.isGT(fp.hd(ns),2))\n" +
           "        return 10;\n" +
@@ -83,7 +91,9 @@
 	},
 
 	/* option 4 */
-	{f:
+	{ args:
+	  '<span class="string">ns</span> is a list of integers',
+	 f:
 	 "var f = function (ns) {\n" +
 	 "    if (fp.isNull(ns))\n" +
          "        return 0;\n" +
@@ -102,7 +112,9 @@
 	},
 
 	/* option 5 */
-	{f:
+	{ args:
+	  '<span class="string">ns</span> is a list of integers',
+	  f:
 	 "var f = function (ns) {\n" +
 	 "    if (fp.isNull(fp.tl(ns)))\n" +
          "        return fp.hd(ns);\n" +
@@ -123,7 +135,9 @@
 	},
 
 	/* option 6 */
-	{f:
+	{ args:
+	  '<span class="string">ns</span> is a list of integers',
+	  f:
 	 "var f = function (ns) {\n" +
 	 "    if (fp.isNull(ns))\n" +
          "        return 0;\n" +
@@ -144,7 +158,9 @@
 	},
 
 	/* option 7 */
-	{f:
+	{ args:
+	  '<span class="string">ns</span> is a list of integers',
+	  f:
 	 "var f = function (ns) {\n" +
 	 "    if (fp.isEq(fp.hd(ns),2))\n" +
 	 "        return 2;\n" +
@@ -163,7 +179,9 @@
 	},
 
 	/* option 8 */
-	{f:
+	{ args:
+	  '<span class="string">ns</span> is a list of integers',
+	  f:
 	 "var f = function (ns) {\n" +
 	 "    if (fp.isEq(fp.hd(ns),2))\n" +
 	 "        return f([2,1]);\n" +
@@ -186,7 +204,9 @@
 	},
 
 	/* option 9 */
-	{f:
+	{ args:
+	  '<span class="string">ns</span> is a list of integers',
+	  f:
 	 "var f = function (ns) {\n" +
 	 "    if (fp.isNull(fp.tl(ns)))\n" +
          "        return fp.hd(ns);\n" +
@@ -209,7 +229,10 @@
 	},
 
 	/* option 10 */
-	{f:
+	{ args:
+	  '<span class="string">n</span> is an integer and ' +
+	  '<span class="string">ns</span> is a list of integers',
+	  f:
 	 "var f = function (n,ns) {\n" +
 	 "    if (fp.isNull(ns))\n" +
          "        return false;\n" + 
@@ -230,7 +253,10 @@
 	},
 
 	/* option 11 */
-	{f:
+	{args:
+	  '<span class="string">n</span> is an integer and ' +
+	  '<span class="string">ns</span> is a list of integers',
+	 f:
 	 "var f = function (n,ns) {\n" +
 	 "    if (fp.isEq(n,fp.hd(ns)))\n" +
          "        return true;\n" +
@@ -251,7 +277,10 @@
 	},
 
 	/* option 12 */
-	{f:
+	{args:
+	  '<span class="string">n</span> is an integer and ' +
+	  '<span class="string">ns</span> is a list of integers',
+	 f:
 	 "var f = function (n,ns) {\n" +
 	 "    if (f(n,fp.tl(ns)))\n" +
 	 "        return true;\n" +
@@ -272,7 +301,10 @@
 	},
 
 	/* option 13 */
-	{f:
+	{args:
+	  '<span class="string">n</span> is an integer and ' +
+	  '<span class="string">ns</span> is a list of integers',
+	 f:
 	 "var f = function (n,ns) {\n" +
 	 "    if (fp.isNull(ns))\n" +
 	 "        return 0;\n" +
@@ -293,7 +325,10 @@
 	},
 
 	/* option 14 */
-	{f:
+	{args:
+	  '<span class="string">n</span> is an integer and ' +
+	  '<span class="string">ns</span> is a list of integers',
+	 f:
 	 "var f = function (n,ns) {\n" +
 	 "    if (fp.isNull(ns))\n" +
 	 "        return 0;\n" +
@@ -314,7 +349,10 @@
 	},
 
 	/* option 15 */
-	{f:
+	{args:
+	  '<span class="string">n</span> is an integer and ' +
+	  '<span class="string">ns</span> is a list of integers',
+	 f:
 	 "var f = function (n,ns) {\n" +
 	 "    if (fp.isNull(ns))\n" +
          "        return false;\n" + 
@@ -335,7 +373,10 @@
 	},
 
 	/* option 16 */
-	{f:
+	{args:
+	  '<span class="string">n</span> is an integer and ' +
+	  '<span class="string">ns</span> is a list of integers',
+	 f:
 	 "var f = function (n,ns) {\n" +
 	 "    if (fp.isNull(ns))\n" +
 	 "        return 0;\n" +
@@ -356,7 +397,10 @@
 	},
 
 	/* option 17 */
-	{f:
+	{args:
+	  '<span class="string">n</span> is an integer and ' +
+	  '<span class="string">ns</span> is a list of integers',
+	 f:
 	 "var f = function (n,ns) {\n" +
 	 "    if (fp.isNull(ns))\n" +
 	 "        return 0;\n" +
@@ -377,7 +421,9 @@
 	},
 
 	/* option 18 */
-	{f:
+	{args:
+	  '<span class="string">ns</span> is a list of integers',
+	 f:
 	 "var f = function (ns) {\n" +
 	 "    if (fp.isNull(ns))\n" +
 	 "        return [];\n" +
@@ -396,7 +442,9 @@
 	},
 
 	/* option 19 */
-	{f:
+	{ args:
+	  '<span class="string">ns</span> is a list of integers',
+	 f:
 	 "var f = function (ns) {\n" +
 	 "    if (fp.isNull(ns))\n" +
 	 "        return [];\n" +
@@ -416,7 +464,10 @@
 	},
 
 	/* option 20 */
-	{f:
+	{args:
+	  '<span class="string">n</span> is an integer and ' +
+	  '<span class="string">ns</span> is a list of integers',
+	 f:
 	 "var f = function (n,ns) {\n" +
 	 "    if (fp.isNull(ns))\n" +
 	 "        return fp.cons(n,[ ]);\n" +
@@ -436,7 +487,10 @@
 	},
 
 	/* option 21 */
-	{f:
+	{args:
+	  '<span class="string">n</span> is an integer and ' +
+	  '<span class="string">ns</span> is a list of integers',
+	 f:
 	 "var f = function (n,ns) {\n" +
 	 "    if (fp.isNull(ns))\n" +
 	 "        return fp.cons(n,[ ]);\n" +
@@ -455,7 +509,10 @@
 	},
 
 	/* option 22 */
-	{f:
+	{args:
+	 'both <span class="string">ms</span> and ' +
+	 '<span class="string">ns</span> are lists of integers',
+	 f:
 	 "var f = function (ms,ns) {\n" +
 	 "    if (fp.isNull(ms))\n" +
 	 "        return ns;\n" +
@@ -474,7 +531,10 @@
 	},
 
 	/* option 23 */
-	{f:
+	{args:
+	 'both <span class="string">ms</span> and ' +
+	 '<span class="string">ns</span> are lists of integers',
+	 f:
 	 "var f = function (ms,ns) {\n" +
 	 "    if (fp.isNull(ms))\n" +
 	 "        return fp.cons(fp.hd(ns),ns);\n" +
@@ -492,8 +552,11 @@
 	 ]
 	},
 
-	/* option 22 */
-	{f:
+	/* option 24 */
+	{args:
+	 'both <span class="string">ms</span> and ' +
+	 '<span class="string">ns</span> are lists of integers',
+	 f:
 	 "var f = function (ms,ns) {\n" +
 	 "    if (fp.isNull(ms))\n" +
 	 "        return ms;\n" +
@@ -518,6 +581,7 @@
 	    var option = Math.floor( Math.random() * options.length );
 
 	    // export to the HTML page
+	    this.args = options[option].args;
 	    this.functionDefinition = options[option].f;
 	    this.functionCalls = options[option].tests;
 	    this.correct = options[option].correct;
