@@ -25,9 +25,7 @@ that manipulate lists. Note that this problem is randomized. You
 must solve it correctly three times in a row to earn the point
 associated with it.
 
-
 .. avembed:: Exercises/PL/RP6part1.html ka
-
 
 RP 6 part 2
 -----------
@@ -35,3 +33,11 @@ RP 6 part 2
 This problem asks you to modify the ``removeFirst`` function.
 
 .. avembed:: Exercises/PL/RP6part2.html ka
+
+
+RP 6 part 3
+-----------
+
+This problem asks you to modify the ``subst`` function.
+
+.. avembed:: Exercises/PL/RP6part3.html ka
