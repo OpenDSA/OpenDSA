@@ -19,9 +19,9 @@
 .highlight{
   font-size: 20px !important;
 }
-.jsavcode.jsavcenter{
+/*.jsavcode.jsavcenter{
   width: 500px !important;
-}
+}*/
 ul li::before {
     content: none !important;
     width: 0px;
@@ -29,6 +29,7 @@ ul li::before {
 }
 .jsavcanvas{
   min-height: 600px !important;
+  overflow-x: visible !important;
 }
 .hide{
   display: none !important;
