@@ -8,10 +8,11 @@
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
   </head>
 
-  <body data-height="850" data-width="950">
+  <body data-height="1000" data-width="950">
     <div class="exercise">
       <div class="vars">
         <var id="setup">RP6part1.init()</var>
+        <var id="args">RP6part1.args</var>
         <var id="functionDefinition">RP6part1.functionDefinition</var>
         <var id="functionCalls">RP6part1.functionCalls</var>
         <var id="CorrectAnswer">RP6part1.correct</var>
@@ -23,7 +24,7 @@
       <div class="problems">
         <div id="RP6part1p">
           <p class="question">Consider the following definition of
-          the function <span class="string">f</span>:
+          the function <span class="string">f</span>, where <var>args</var>:
 <pre class="string">
 var fp = require('./fp');
 <var>functionDefinition</var>
@@ -34,7 +35,10 @@ var fp = require('./fp');
 	  <var>functionCalls</var></p>
 	  <p class="question">What values are returned assuming that
 	  these invocations of <span class="string">f</span> are made
-	  in the order given above?</p>
+	  in the order given above? Note that, if a given invocation
+	  throws an exception or goes into an infinite loop, the
+	  correct answer is the word "error" in all lowercase
+	  letters.</p>
           <div class="solution"><var>CorrectAnswer</var></div>
           <ul class="choices">
             <li><var>option1</var></li>
@@ -42,7 +46,10 @@ var fp = require('./fp');
             <li><var>option3</var></li>
           </ul>
           <div class="hints">
-	    <p></p>
+	    <p>Identify the base and recursive cases.</p>	    	    
+	    <p>Make the recursive "leap of faith".</p>	    
+	    <p>You may want to trace each function call on paper,
+	    keeping track of each recursive call.</p>
           </div>
         </div>
       </div>
