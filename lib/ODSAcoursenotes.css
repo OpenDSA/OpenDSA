@@ -28,7 +28,7 @@ ul li::before {
     margin-left: 0px !important;
 }
 .jsavcanvas{
-  min-height: 600px !important;
+  /*min-height: 600px !important;*/
   overflow-x: visible !important;
 }
 .hide{
