@@ -33,6 +33,7 @@
   (function() {
     var av = new JSAV("container");
     var theArray = [20, 30, 44, 54, 55, 11, 78, 14, 13, 79, 12, 98];
+   theArray.sort();
     var arr = av.ds.array(theArray, {indexed: true});
     av.umsg("Text before displayInit()");
     // Note: av.displayInit() will not affect the number of slides.
@@ -41,8 +42,46 @@
     av.displayInit();
     // We are now starting a new slide (#2)
     av.umsg("... and text after displayInit()", {preserve: true});
-	arr.swap(1, 2);
-    av.step();
+   //
+   
+   var myArray = new Array(12);
+   for(i = 0; i < theArray.length; i++)
+   {
+   var rand = Math.floor(Math.random() * (11 - 0 + 1)) + 0;
+   
+   for(j = 0; j < myArray.length; j++)
+   {
+   var randCheckSecond = Math.floor(Math.random() * (11 - 0 + 1)) + 0;
+   if(rand != myArray[j])
+   {
+   arr.swap(i, rand);//Need to find a way to check every spot of myArray
+   myArray[j] += rand;
+   }
+   
+   while(rand == randCheckSecond)
+   {
+   randCheckSecond = Math.floor(Math.random() * (11 - 0 + 1)) + 0;
+   if(rand != randCheckSecond)
+   {
+   arr.swap(i, randCheckSecond);
+   myArray[j] += randCheckSecond;
+   }
+   
+   }
+   
+   if(rand != randCheckSecond)
+   {
+   arr.swap(i, randCheckSecond);
+   myArray[j] += randCheckSecond;
+   }
+   
+   }
+   av.step();
+   }
+   //
+   //av.step();
+	//arr.swap(1, 2);
+    //av.step();
     // We are now starting a new slide (#3)
     av.umsg("Text after av.step()");
     av.recorded();
