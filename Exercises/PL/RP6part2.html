@@ -16,12 +16,12 @@
           the function <span class="string">removeFirst</span>:</p>
 <pre class="string">
 1. var removeFirst = function (n,ns) {
-2.    if (fp. isNull (ns )) {
+2.    if (fp.isNull(ns)) {
 3.        return [ ];
-4.    } else if (fp. isEq (n, fp.hd(ns ))) {
-5.        return fp.tl(ns );
+4.    } else if (fp.isEq(n,fp.hd(ns))) {
+5.        return fp.tl(ns);
 6.    } else {
-7.        return fp. cons (fp.hd(ns), removeFirst (n, fp.tl(ns )));
+7.        return fp.cons(fp.hd(ns),removeFirst(n,fp.tl(ns)));
 8.    }
 9. }
 </pre>
@@ -29,7 +29,7 @@
           function to make it remove all occurrences
           of <span class="string">n</span>
           in <span class="string">ns</span> instead of just the
-          first, you could accomplish this by making a small change
+          first one, you could accomplish this by making a small change
           in one line and leaving the rest of the function unchanged.
           Which line is it?
 	  </p>
