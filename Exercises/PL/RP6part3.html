@@ -15,24 +15,25 @@
           <p class="question">Consider the following definition of
           the function <span class="string">subst</span>:</p>
 <pre class="string">
-1. var subst = function (n,o,ns) {
-2.     if (fp.isNull(ns)) {
-3.         return [ ];
-4.     } else if (fp.isEq(o,fp.hd(ns))) {
-5.         return fp.cons(n,subst(n,o,fp.tl(ns)));
-6.     } else {
-7.         return fp.cons(fp.hd(ns),subst(n,o,fp.tl(ns)));
-8.     }
-9. }
+var subst = function (n,o,ns) {
+    if (fp.isNull(ns)) {
+        return [ ];
+    } else if (fp.isEq(o,fp.hd(ns))) {
+        return fp.cons(n,subst(n,o,fp.tl(ns)));
+    } else {
+        return fp.cons(fp.hd(ns),subst(n,o,fp.tl(ns)));
+    }
+}
 </pre>
           <p class="question">Suppose that you want to make this
            function perform a "deep substitution" at all levels of a
-           list. For example:
+           list. For example:</p>
 <pre>
 > subst( 2, 3, [3, 9, [4, 2, 3], 3, 5] ) 
 [ 2, 9, [ 4, 2, 2 ], 2, 5 ]
-</pre><br /> Which one of the following statements best characterizes
- how this could be done?
+</pre>
+	  <p class="question">Which one of the following statements
+          best characterizes how this could be done?</p>
           <div class="solution">You must add at least one additional
           <em>else-if</em>, with two recursive calls to
           <span class="string">subst</span>.</div>

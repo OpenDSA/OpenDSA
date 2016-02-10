@@ -229,6 +229,38 @@
               "threshold": 3.0,
               "showhide": "Show"
             }
+          },
+          "RP 6 part 2": {
+            "RP6part2": {
+              "long_name": "RP set #6, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 6 part 3": {
+            "RP6part3": {
+              "long_name": "RP set #6, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }
+	}
+      },
+      "PL/FP3": {
+        "long_name": "Introduction to functional programming - Part 3",
+        "sections": {
+          "RP 7 part 1": {
+            "RP7part1": {
+              "long_name": "RP set #7, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
           }
 	}
       }

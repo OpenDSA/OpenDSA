@@ -41,6 +41,63 @@
             }
           }
         }
+      },
+      "PL/Grammars5": {
+        "long_name": "Introduction to BNF grammars - Part 5",
+        "sections": {
+          "RP 5 part 1": {
+            "RP5part1": {
+              "long_name": "RP set #5, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }
+        }
+      }
+    },
+    "Functional Programming": {
+      "PL/FP1": {
+        "long_name": "Introduction to functional programming - Part 1",
+        "sections": {
+          "RP 5 part 2": {
+            "RP5part2": {
+              "long_name": "RP set #5, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 5 part 3": {
+            "RP5part3": {
+              "long_name": "RP set #5, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 5 part 4": {
+            "RP5part4": {
+              "long_name": "RP set #5, question 4",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 5 part 5": {
+            "RP5part5": {
+              "long_name": "RP set #5, question 5",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }
+        }
       }
     },
     "Appendices": {
