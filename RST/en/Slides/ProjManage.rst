@@ -16,8 +16,6 @@ Program Management
 
 .. slide:: Project Management
 
-   .. rst-class:: build
-
    * Project management is a skill
       * It has to be learned
       * It has to be practiced
@@ -65,8 +63,6 @@ Program Management
 
    * Results were significant:
 
-   .. rst-class:: build
-
       * 90% of scores below median were students who did less than 50% of the
         project prior to the last week.
 
@@ -84,8 +80,6 @@ Program Management
 
 .. slide:: What is the Mechanism?
 
-   .. rst-class:: build
-
    * Correlations do not necessarily mean causation
       * Do they behave that way because they are good, or does
         behaving that way make them good?
@@ -100,14 +94,10 @@ Program Management
 
 .. slide:: How to fail at implementing your project:
 
-   .. rst-class:: build
-
      * Write the project
      * Debug the project
 
 .. slide:: How to succeed at implementing your project
-
-   .. rst-class:: build
 
    * Write the smallest possible kernel
    * Debug the kernel thoroughly
@@ -178,8 +168,6 @@ Program Management
       * Continuously modify and refine the plan
 
 .. slide:: Incremental Development
-
-   .. rst-class:: build
 
    * Break the project into a small initial core
    * Implement and TEST and COMMENT the core
