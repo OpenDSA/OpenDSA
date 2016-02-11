@@ -37,8 +37,6 @@ Algorithm Analysis
    #. Empirical comparison (run programs)
    #. Asymptotic Algorithm Analysis
 
-   .. rst-class:: build
-
    * Critical resources:
 
    * Factors affecting running time:

@@ -43,15 +43,13 @@
   "allow_anonymous_credit": false,
   "suppress_todo": false,
   "chapters": {
-    "Week 1": {
+    "Weeks 1&2": {
       "Slides/Day1": {
         "long_name": "Introduction",
         "exercises" : {
           "ADTCON": {}
         }
-      }
-    },
-    "Week 2": {
+      },
       "Slides/ProjManage": {
         "long_name": "Project Management",
         "exercises" : {}
@@ -84,6 +82,12 @@
       },
       "Slides/Lists2": {
         "long_name": "Lists",
+        "exercises" : {}
+      }
+    },
+    "Week 4": {
+      "Slides/Binary": {
+        "long_name": "Binary Trees Part 1",
         "exercises" : {}
       }
     }

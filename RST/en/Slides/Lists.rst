@@ -180,19 +180,17 @@ Lists
 
 .. slide:: Comparison of Implementations
 
-   Array-Based Lists:
+   * Array-Based Lists:
+      * Insertion and deletion are :math:`\Theta(n)`.
+      * Prev and direct access are :math:`\Theta(1)`.
+      * Array must be allocated in advance.
+      * No overhead if all array positions are full.
 
-   * Insertion and deletion are :math:`\Theta(n)`.
-   * Prev and direct access are :math:`\Theta(1)`.
-   * Array must be allocated in advance.
-   * No overhead if all array positions are full.
-
-   Linked Lists:
-
-   * Insertion and deletion are :math:`\Theta(1)`.
-   * Prev and direct access are :math:`\Theta(n)`.
-   * Space grows with number of elements.
-   * Every element requires overhead.
+   * Linked Lists:
+      * Insertion and deletion are :math:`\Theta(1)`.
+      * Prev and direct access are :math:`\Theta(n)`.
+      * Space grows with number of elements.
+      * Every element requires overhead.
 
 
 .. slide:: Space Comparison
