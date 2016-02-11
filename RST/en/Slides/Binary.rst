@@ -9,11 +9,13 @@
 .. slideconf::
    :autoslides: False
 
-============
-Binary Trees
-============
+===================
+Binary Trees Part 1
+===================
 
 .. slide:: Binary Trees
+
+   .. odsalink:: AV/Binary/BinExampCON.css
 
    A binary tree is made up of a finite set of nodes that is either
    empty or consists of a node called the root together with two
@@ -22,6 +24,90 @@ Binary Trees
 
    Notation: Node, children, edge, parent, ancestor, descendant, path,
    depth, height, level, leaf node, internal node, subtree.
+
+   .. inlineav:: BinExampCON dgm
+      :align: justify
+
+   .. odsascript:: AV/Binary/BinExampCON.js
+
+
+.. slide:: A Recursive Data Structure
+
+   .. odsalink:: AV/Binary/RecursiveDSCON.css
+
+   .. inlineav:: ListRecDSCON dgm
+      :align: justify
+
+   .. inlineav:: BinRecDSCON dgm
+      :align: justify
+   
+   .. odsascript:: AV/Binary/ListRecDSCON.js
+   .. odsascript:: AV/Binary/BinRecDSCON.js
+
+
+.. slide:: Binary Tree Node Class
+
+   .. codeinclude:: Binary/BinNode
+      :tag: BinNode
+
+
+.. slide:: Question
+
+   * Write a recursive function named **count** that, given the root to a
+     binary tree, returns a count of the number of nodes in the
+     tree. Function **count** should have the following prototype::
+
+        int count(BinNode root)
+
+
+.. slide:: Traversals
+
+   * Any process for visiting the nodes in some order is called a
+     **traversal**.
+
+   * Any traversal that lists every node in the tree exactly once is called
+     an **enumeration** of the tree's nodes.
+
+   * Preorder traversal: Visit each node before visiting its children.
+
+   * Postorder traversal: Visit each node after visiting its children.
+
+   * Inorder traversal: Visit the left subtree, then the node, then the
+     right subtree.
+
+
+.. slide:: Preorder Traversal (1)
+
+   .. codeinclude:: Binary/Preorder
+      :tag: preorder
+
+.. slide:: Preorder Traversal (2)
+
+   .. odsalink:: AV/Binary/BTCON.css
+
+   .. inlineav:: preorderCON ss
+      :output: show
+
+   .. odsascript:: AV/Binary/preorderCON.js
+
+
+.. slide:: How not to write a traversal
+
+   .. codeinclude:: Binary/Preorder
+      :tag: preorder2
+
+
+.. slide:: Recursion Examples
+
+   .. odsalink:: AV/Binary/WriteTrav.css
+
+   .. codeinclude:: Binary/Traverse
+      :tag: count
+
+   .. inlineav:: BinaryTreeMistakesCON ss
+      :output: show
+
+   .. odsascript:: AV/Binary/BinaryTreeMistakesCON.js
 
 
 .. slide:: Full and Complete Binary Trees
@@ -40,6 +126,7 @@ Binary Trees
       :align: center
 
    .. odsascript:: AV/Binary/FullCompCON.js
+
 
 .. slide:: Full Binary Tree Theorem (1)
 
@@ -77,120 +164,3 @@ Binary Trees
 
    **Proof:** Replace all null pointers with a pointer to an empty leaf
    node.  This is a full binary tree.
-
-
-.. slide:: Binary Tree Node Class
-
-   .. codeinclude:: Binary/BinNode
-      :tag: BinNode
-
-
-.. slide:: Traversals (1)
-
-   .. rst-class:: build
-
-   * Any process for visiting the nodes in some order is called a
-     **traversal**.
-
-   * Any traversal that lists every node in the tree exactly once is called
-     an **enumeration** of the tree's nodes.
-
-   * Preorder traversal: Visit each node before visiting its children.
-
-   * Postorder traversal: Visit each node after visiting its children.
-
-   * Inorder traversal: Visit the left subtree, then the node, then the
-     right subtree.
-
-
-.. slide:: Traversals (2)
-
-   .. rst-class:: build
-
-      .. codeinclude:: Binary/Preorder
-         :tag: preorder
-
-      .. codeinclude:: Binary/Preorder
-         :tag: preorder2
-
-
-.. slide:: Recursion Examples
-
-   .. odsalink:: AV/Binary/WriteTrav.css
-
-   .. rst-class:: build
-
-      .. codeinclude:: Binary/Traverse
-         :tag: count
-
-      .. inlineav:: BinaryTreeMistakesCON ss
-         :output: show
-
-      .. odsascript:: AV/Binary/BinaryTreeMistakesCON.js
-
-
-.. slide:: Binary Tree Implementation (1)
-
-   .. odsafig:: Images/BinLink.png
-      :width: 300
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Binary tree node implementation
-
-
-.. slide:: Binary Tree Implementation (2)
-
-   .. odsafig:: Images/DiffNode.png
-      :width: 300
-      :align: center
-      :capalign: center
-      :figwidth: 90%
-      :alt: Expression Tree
-
-
-.. slide:: Inheritance (1)
-
-   .. codeinclude:: Binary/ExpressionTree
-      :tag: ExpressionTree1
-
-.. slide:: Inheritance (2)
-
-   .. codeinclude:: Binary/ExpressionTree
-      :tag: ExpressionTree2
-
-
-.. slide:: Inheritance (3)
-
-   .. odsalink:: AV/Binary/BTCON.css
-
-   .. inlineav:: expressionTraversalCON ss
-      :output: show
-
-   .. odsascript:: AV/Binary/expressionTraversalCON.js
-
-.. slide:: Design Patterns
-
-   Design patterns capture reusable pieces of design wisdom.
-
-   Goals:
-
-   * Quickly communicate design wisdom to new designers
-   * Give a shared vocabulary to designers
-
-
-.. slide:: Composite (1)
-
-   .. codeinclude:: Binary/ExpressionTreeC
-      :tag: Composite1
-
-
-.. slide:: Composite (2)
-
-   .. codeinclude:: Binary/ExpressionTreeC
-      :tag: Composite2
-
-.. slide:: Composite (3)
-
-   .. codeinclude:: Binary/ExpressionTreeC
-      :tag: Composite3

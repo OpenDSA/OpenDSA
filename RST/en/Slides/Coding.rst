@@ -15,11 +15,9 @@ Clean Code
 
 .. slide:: Example 1
 
-   .. rst-class:: build
-
-   * Here was a real bug that I had in some code for an OpenDSA
-     exercise. You don't need to know much about the language to recognize
-     the bug (if you are able to spot it)::
+   * A real bug from some code for an OpenDSA exercise.
+     You don't need to know much about the language to recognize
+     the bug (once you spot it)::
 
       <li><var><code>O(n^2)</code></var></li>
       <li><var><code>O(n \log n)</code></var></li>
@@ -36,8 +34,6 @@ Clean Code
 
 
 .. slide:: Example 2
-
-   .. rst-class:: build
 
    * A real sample of code::
 

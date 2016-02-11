@@ -26,8 +26,6 @@ CS3114 Introduction
 
 .. slide:: Administration stuff
 
-   .. rst-class:: build
-
    * Sign-in sheet (be sure to sign-in on one of them)
    * Get a copy of the syllabus
    * Force Add System: https://www.cs.vt.edu/S16Force-Adds, Password: 3114cas#
@@ -35,7 +33,6 @@ CS3114 Introduction
 
 .. slide:: Course Mechanics
 
-   .. rst-class:: build
 
    * Go over Syllabus
    * Course online support: Canvas, OpenDSA, Web-CAT
@@ -59,7 +56,6 @@ CS3114 Introduction
 
   * Homework due most days before class
 
-   .. rst-class:: build
 
     * Small homework due this Thursday morning
 
@@ -90,8 +86,6 @@ CS3114 Introduction
       * Programming (we focus on projects with dynamic memory allocation and
         file processing)
       * Content, theory and analysis
-
-   .. rst-class:: build
 
    * The projects test programming proficiencies
    * OpenDSA exercises test knowledge of how algorithms work
