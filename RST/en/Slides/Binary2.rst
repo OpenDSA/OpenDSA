@@ -22,9 +22,15 @@ Binary Trees Part 2
       :figwidth: 90%
       :alt: Two Binary Search Trees
 
-.. slide:: BST as a Dictionary
+.. slide:: BST as a Dictionary (1)
 
-   TODO
+   .. codeinclude:: Binary/BST
+      :tag: BSTa
+
+.. slide:: BST as a Dictionary (2)
+
+   .. codeinclude:: Binary/BST
+      :tag: BSTb
 
 .. slide:: BST ``findhelp``
 
@@ -74,6 +80,36 @@ Binary Trees Part 2
 
    What is the worst case cost? When?
 
+
+.. slide:: BST vs. SkipList
+
+   Both can have bad performance (:math:`\Theta(n)`) in the worst case.
+
+   Both have operations that cost :math:`\log(n)` in the average case.
+
+   Its all a matter of chance (SkipList) vs. highly probably bad
+   scenarios (BST).
+
+.. slide:: Spatial Data Structures
+
+   BST, SkipList handle a one dimensional key.
+
+   What if we have 2 or more dimensions?
+
+   * Could concatenate sub-keys into one. But that makes one dimension
+     more important.
+   * We want all dimensions to be equally important.
+
+   Keystone functionality: Regionsearch, nearest
+
+
+.. slide:: Spatial Data Structure (2)
+
+   Key design considerations:
+
+   * Alternating dimensions vs. multiway splits
+   * Key space vs. Object space decomposition
+   * Decomposition rule
 
 .. slide:: Binary Tree Implementation
 
@@ -142,3 +178,6 @@ Binary Trees Part 2
       :tag: Composite3
 
 .. slide:: Flyweight Design Pattern
+
+   (Otherwise) multiple copies of a stateless object, all references
+   pointing to the same copy.
