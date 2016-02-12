@@ -13,6 +13,104 @@
 Binary Trees Part 2
 ===================
 
+.. slide:: Binary Search Trees
+
+   .. odsafig:: Images/BSTShape2.png
+      :width: 500
+      :align: center
+      :capalign: justify
+      :figwidth: 90%
+      :alt: Two Binary Search Trees
+
+.. slide:: BST as a Dictionary (1)
+
+   .. codeinclude:: Binary/BST
+      :tag: BSTa
+
+.. slide:: BST as a Dictionary (2)
+
+   .. codeinclude:: Binary/BST
+      :tag: BSTb
+
+.. slide:: BST ``findhelp``
+
+   .. odsalink:: AV/Binary/BSTCON.css
+
+   .. inlineav:: BSTsearchCON ss
+      :output: show
+
+   .. odsascript:: AV/Binary/BSTsearchCON.js
+
+
+.. slide:: BST ``inserthelp``
+
+   .. inlineav:: BSTinsertCON ss
+      :output: show
+
+   .. odsascript:: AV/Binary/BSTinsertCON.js
+
+
+.. slide:: BST ``deletemax``
+
+   .. inlineav:: BSTdeletemaxCON ss
+      :output: show
+
+   .. odsascript:: AV/Binary/BSTdeletemaxCON.js
+
+
+.. slide:: BST ``removehelp``
+
+   .. inlineav:: BSTremoveCON ss
+      :output: show
+
+   .. odsascript:: AV/Binary/BSTremoveCON.js
+
+
+.. slide:: BST Analysis
+
+   Find: :math:`O(d)`
+
+   Insert: :math:`O(d)`
+
+   Delete: :math:`O(d)`
+
+   :math:`d =` depth of the tree
+
+   :math:`d` is :math:`O(\log n)` if the tree is balanced.
+
+   What is the worst case cost? When?
+
+
+.. slide:: BST vs. SkipList
+
+   Both can have bad performance (:math:`\Theta(n)`) in the worst case.
+
+   Both have operations that cost :math:`\log(n)` in the average case.
+
+   Its all a matter of chance (SkipList) vs. highly probably bad
+   scenarios (BST).
+
+.. slide:: Spatial Data Structures
+
+   BST, SkipList handle a one dimensional key.
+
+   What if we have 2 or more dimensions?
+
+   * Could concatenate sub-keys into one. But that makes one dimension
+     more important.
+   * We want all dimensions to be equally important.
+
+   Keystone functionality: Regionsearch, nearest
+
+
+.. slide:: Spatial Data Structure (2)
+
+   Key design considerations:
+
+   * Alternating dimensions vs. multiway splits
+   * Key space vs. Object space decomposition
+   * Decomposition rule
+
 .. slide:: Binary Tree Implementation
 
    .. odsafig:: Images/BinLink.png
@@ -78,3 +176,8 @@ Binary Trees Part 2
 
    .. codeinclude:: Binary/ExpressionTreeC
       :tag: Composite3
+
+.. slide:: Flyweight Design Pattern
+
+   (Otherwise) multiple copies of a stateless object, all references
+   pointing to the same copy.
