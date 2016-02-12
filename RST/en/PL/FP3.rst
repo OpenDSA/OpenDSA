@@ -23,3 +23,12 @@ This problem helps you get more comfortable with "deep recursion,"
 that is, recursion on trees.
 
 .. avembed:: Exercises/PL/RP7part1.html ka
+
+
+RP 7 part 2
+-----------
+
+This problem will you get more comfortable with "deep recursion,"
+that is, recursion on trees.
+
+.. avembed:: Exercises/PL/RP7part2.html ka
