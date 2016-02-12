@@ -105,7 +105,7 @@ function (t) {
 		}
 		// compute the answer
 		answer = JSON.stringify(eval("var f = " + fStr + "; f(" + 
-					     JSON.stringify(input) + ");"));
+					     JSON.stringify(tree) + ");"));
 	    } 
 	    catch (e) {
 		answer = "error";
@@ -113,7 +113,7 @@ function (t) {
 	    console.log(answer);	  
 	    this.functionDef = fStr;
 	    this.params = params;
-	    this.functionCall = ("f( " + JSON.stringify(input) + " )")
+	    this.functionCall = ("f( " + JSON.stringify(tree) + " )")
 		.split("").join(" ");
 	    this.answer = answer;
 	    
