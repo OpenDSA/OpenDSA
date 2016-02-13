@@ -23,8 +23,8 @@
       }
     },
     "A Simple Example": {
-      "Development/XXX": {
-        "long_name": "Simple Example of Using a Slide Show in a Book Module",
+      "Development/DatabaseJoins": {
+        "long_name": "DatabaseJoins Example",
         "sections": {}
       }
     }
