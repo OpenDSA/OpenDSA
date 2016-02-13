@@ -28,7 +28,7 @@
 	return a;
     }
 
-    var RP7part2 = {    
+    var RP7part4 = {    
 	init: function() {
 
 	    var functions = [
@@ -364,8 +364,8 @@ function (n,t) {
 	checkAnswer: function (studentAnswer) {
 	    return this.answer === studentAnswer.replace(/\s+/g,"");
 	}
-    };// RP7part2  
+    };// RP7part4  
 
-    window.RP7part2 = window.RP7part2 || RP7part2;
+    window.RP7part4 = window.RP7part4 || RP7part4;
 }());
 

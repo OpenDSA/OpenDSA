@@ -1,52 +1,55 @@
 <!DOCTYPE html>
-<html data-require="math fp RP7part2" lang="en">
+<html data-require="math" lang="en">
   <head>
     <meta charset=utf-8>
-    <title>RP 7 part 2</title>
+    <title>RP 7.2</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
   </head>
 
-  <body data-height="850" data-width="950">
+  <body data-height="950" data-width="950">
     <div class="exercise">
-      <div class="vars">
-        <var id="setup">RP7part2.init()</var>
-        <var id="answer">RP7part2.answer</var>
-        <var id="functionDef">RP7part2.functionDef</var>        
-	<var id="params">RP7part2.params</var>
-        <var id="functionCall">RP7part2.functionCall</var>
-      </div>
       <div class="problems">
-        <div id="RP5part3p">
-          <p class="question">
-            Given the following function definition,
-            where <var>params</var>:</p>
+        <div id="RP7part2p">
+          <p class="question">Consider the following definition of
+          the function <span class="string">subst</span>:</p>
 <pre class="string">
-<var>functionDef</var>
-</pre>
-          <p class="question">
-	  what is the value of the following function call?
-          <br />
-	  <var class="string">functionCall</var><br />
-	  Note that, if the function call generates an exception, the
-	  correct answer is the word "error" in all lowercase letters.
-	  </p>
-	  <textarea rows="1" cols="40" style="resize:none"
-		    id="answerTextarea"></textarea>
-	  <div class="solution" data-type="custom">
-            <div class="guess"> $('#answerTextarea').val()  </div>
-            <div class="validator-function">
-              return RP7part2.checkAnswer(guess);
-            </div>
-          </div>
+1. var subst = function (n,o,ns) {
+2.     if (fp.isNull(ns)) {
+3.         return ns;
+4.     } else if (fp.isEq(o,fp.hd(ns))) {
+5.         return fp.cons(n,subst(n,o,fp.tl(ns)));
+6.     } else {
+7.         return fp.cons(fp.hd(ns),subst(n,o,fp.tl(ns)));
+8.     }
+9. };</pre>
+          <p class="question">Suppose that you want a function that
+          inserts its first argument <em>before</em> each occurrence of
+          its second argument in its third argument, where that third
+          argument must be a list. Hence a call with the arguments 
+	    <span class="string">4</span>,
+            <span class="string">5</span>, 
+	    <span class="string">[1,2,3,4,5,5,6]</span> would return 
+	    <span class="string">[1,2,3,4,4,5,4,5,6]</span>. This
+          could be accomplished by making a small change in one line
+          of the <span class="string">subst</span> function above and
+          leaving the rest of the function unchanged. Which line
+          should you change?
+          <div class="solution">Line 5</div>
+          <ul class="choices">
+            <li>Line 3</li>
+            <li>Line 4</li>
+            <li>Line 7</li>
+          </ul>
           <div class="hints">
-	    <p>Try to understand what the function does by
-	    studying its definition. Ignore the function call at
-	    first.</p>
-	    <p>Once you have a hypothesis for the behavior of the
-	    function, trace it on the given input.</p>
-	    <p>It may take a few iterations for the correct answer to emerge.</p>
+	    <p>Make sure you understand what the new function is
+	    supposed to compute and how it differs
+	    from the <span class="string">sumTree</span> function.</p>
+	    <p>Make sure that the new function considers all possible
+	    cases in the right order.</p>
+	    <p>Remember to look for the solution with the minimum number
+	    of lines with code  changes.</p>
           </div>
         </div>
       </div>

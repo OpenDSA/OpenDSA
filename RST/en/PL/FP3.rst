@@ -28,7 +28,16 @@ that is, recursion on trees.
 RP 7 part 2
 -----------
 
-This problem will you get more comfortable with "deep recursion,"
-that is, recursion on trees.
+This problem deals with deep recursion, and more specifically the
+``subst`` function that was previously described.
+
+
 
 .. avembed:: Exercises/PL/RP7part2.html ka
+
+RP 7 part 4
+-----------
+
+This problem will give you a lot more practice with deep recursion.
+
+.. avembed:: Exercises/PL/RP7part4.html ka
