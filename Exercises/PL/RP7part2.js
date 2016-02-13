@@ -345,7 +345,7 @@ function (n,t) {
 		}
 	    } 
 	    catch (e) {
-		answer = "\\s*error\\s*";
+		answer = "error";
 	    }
 	    this.functionDef = "var f = " + fStr;
 	    this.params = params;
@@ -357,22 +357,13 @@ function (n,t) {
 				     JSON.stringify(tree) + " )")
 		    .split("").join(" ");
 	    }
-	    //console.log(answer);
-	    if (answer.indexOf("error") === -1) {
-		// not an error
-		if (answer.match(/^(-?\d+)|true|false$/)) {
-		    // must be an integer value
-		    answer = "\\s*" + answer + "\\s*";
-		} else {
-		    // must be a list 
-		    answer = answer.replace(/\s+/g, "").split("");
-		    answer = "\\s*" +  answer.join("\\s*") + "\\s*";
-		    answer = answer.replace(/\[/g,"\\[").replace(/\]/g,"\\]");
-		}
-	    }
-	    this.answer = answer;
-	    
-	}// init
+	    this.answer = answer.replace(/\+/g,"");;
+	    console.log(answer);
+	},// init
+
+	checkAnswer: function (studentAnswer) {
+	    return this.answer === studentAnswer.replace(/\s+/g,"");
+	}
     };// RP7part2  
 
     window.RP7part2 = window.RP7part2 || RP7part2;

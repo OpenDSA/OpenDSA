@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-require="math jsav fp RP7part2" lang="en">
+<html data-require="math fp RP7part2" lang="en">
   <head>
     <meta charset=utf-8>
     <title>RP 7 part 2</title>
@@ -11,7 +11,7 @@
   <body data-height="850" data-width="950">
     <div class="exercise">
       <div class="vars">
-        <var id="JSAV">RP7part2.init()</var>
+        <var id="setup">RP7part2.init()</var>
         <var id="answer">RP7part2.answer</var>
         <var id="functionDef">RP7part2.functionDef</var>        
 	<var id="params">RP7part2.params</var>
@@ -32,7 +32,14 @@
 	  Note that, if the function call generates an exception, the
 	  correct answer is the word "error" in all lowercase letters.
 	  </p>
-          <div class="solution" data-type="regex"><var>answer</var></div>
+	  <textarea rows="1" cols="40" style="resize:none"
+		    id="answerTextarea"></textarea>
+	  <div class="solution" data-type="custom">
+            <div class="guess"> $('#answerTextarea').val()  </div>
+            <div class="validator-function">
+              return RP7part2.checkAnswer(guess);
+            </div>
+          </div>
           <div class="hints">
 	    <p>Try to understand what the function does by
 	    studying its definition. Ignore the function call at
