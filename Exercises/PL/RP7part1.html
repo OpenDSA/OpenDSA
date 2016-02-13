@@ -16,13 +16,14 @@
           the function <span class="string">sumTree</span>:</p>
 <pre class="string">
 1. var sumTree = function (t) {
-2.     if (fp.isNull(t))
+2.     if (fp.isNull(t)) {
 3.         return 0;
-4.     else if (fp.isList(fp.hd(t)))
-5.         return fp.add(sumTree(fp.hd(t)), sumTree(fp.tl(t)));
-6.     else
-7.         return fp.add(fp.hd(t), sumTree(fp.tl(t)));
-8. };</pre>
+4.     } else if (fp.isList(fp.hd(t))) {
+5.         return fp.add(sumTree(fp.hd(t)),sumTree(fp.tl(t)));
+6.     } else {
+7.         return fp.add(fp.hd(t),sumTree(fp.tl(t)));
+8.     }
+9. };</pre>
           <p class="question">Suppose that you want to develop a
           function that takes in an integer tree (represented, as
           usual, as a list of lists of . . . of integers, just like

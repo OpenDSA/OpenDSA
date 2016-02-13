@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 7.3</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="950" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP7part3p">
+          <p class="question">Consider the following definition of
+          the function <span class="string">subst</span>:</p>
+<pre class="string">
+1.  var subst = function (n,o,t) {
+2.     if (fp.isNull(t)) {
+3.         return t;
+4.     } else if (fp.isList(fp.hd(t))) {
+5.         return fp.cons(subst(n,o,fp.hd(t)),subst(n,o,fp.tl(t)));
+6.     } else if (fp.isEq(o,fp.hd(t))) {
+7.         return fp.cons(n,subst(n,o,fp.tl(t)));
+8.     } else {
+9.         return fp.cons(fp.hd(t),subst(n,o,fp.tl(t)));
+10.    }
+11. };</pre>
+          <p class="question">Suppose that you want a function that
+          inserts its first argument <em>after</em> each occurrence of
+          its second argument in its third argument, where that third
+          argument must be a list. This could be accomplished by
+          making a small change in the same line you identified in the
+          previous problem. Now, assume that you have made that change
+          to that line of the <span class="string">subst</span>
+          function.  What further change would you have to perform to
+          go from the "insert before" behavior to the "insert after"
+          behavior?
+          <div class="solution">Swap the first two arguments of
+          two <span class="string">fp.cons</span> calls.
+	  </div>
+          <ul class="choices">
+            <li>Swap an <span class="string">fp.cons</span> with an
+            <span class="string">fp.hd</span>.</li>
+            <li>Swap an <span class="string">fp.cons</span> with an
+            <span class="string">fp.tl</span>.</li>
+            <li>None of the other options.</li>
+          </ul>
+          <div class="hints">
+	    <p>Make sure you understand what the new function is
+	    supposed to compute and how it differs from both
+	    the <span class="string">subst</span> function above and
+	    the function that you wrote for the previous problem.</p>
+	    <p>You may have to solve the previous problem again, which
+          was to insert the first argument <em>before</em> each
+          occurrence of the second argument in the third argument,
+          where that third argument must be a list.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
