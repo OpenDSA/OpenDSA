@@ -98,6 +98,38 @@
             }
           }
         }
+      },
+      "PL/FP2": {
+        "long_name": "Introduction to functional programming - Part 2",
+        "sections": {
+          "RP 6 part 1": {
+            "RP6part1": {
+              "long_name": "RP set #6, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 6 part 2": {
+            "RP6part2": {
+              "long_name": "RP set #6, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 6 part 3": {
+            "RP6part3": {
+              "long_name": "RP set #6, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }
+	}
       }
     },
     "Appendices": {
