@@ -21,6 +21,8 @@ The review problem set for today contains three review problems.
 
 This first problem is ...
 
+.. avembed:: Exercises/PL/RP9part1.html ka
+
 RP 9 part 2
 -----------
 

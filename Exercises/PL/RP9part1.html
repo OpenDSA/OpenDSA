@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html data-require="math fp RP9part1" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 9 part 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="850" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="setup">RP9part1.init()</var>
+        <var id="functionDef">RP9part1.functionDef</var>        
+        <var id="params">RP9part1.params</var>        
+        <var id="functionCall">RP9part1.functionCall</var>        
+	<var id="answer">RP9part1.answer</var>
+      </div>
+      <div class="problems">
+        <div id="RP9part1p">
+          <p class="question">
+            Given the following function definition,
+            where <var>params</var>:</p>
+<pre class="string">
+<var>functionDef</var>
+</pre>
+          <p class="question">
+	  what is the value of the following function call?<br />
+	  <var class="string">functionCall</var><br /><br />
+	  
+	  Note that, if the function call generates an exception, the
+	  correct answer is the word "error" (without the double
+	  quotes) in all lowercase letters.
+	  </p>
+	  <textarea rows="1" cols="40" style="resize:none"
+		    id="answerTextarea"></textarea>
+	  <div class="solution" data-type="custom">
+            <div class="guess"> $('#answerTextarea').val()  </div>
+            <div class="validator-function">
+              return RP9part1.checkAnswer(guess);
+            </div>
+          </div>
+          <div class="hints">
+	    <p>To do </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
