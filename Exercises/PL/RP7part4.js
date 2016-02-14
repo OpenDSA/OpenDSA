@@ -169,7 +169,6 @@ function (n,t) {
     }
 }], 
 
-
     [ "<span class='string'>n</span> is an integer and " +
       "<span class='string'>t</span> is a tree of integers",
       /* 10: deep version of isMember */
@@ -357,7 +356,7 @@ function (n,t) {
 				     JSON.stringify(tree) + " )")
 		    .split("").join(" ");
 	    }
-	    this.answer = answer.replace(/\+/g,"");;
+	    this.answer = answer.replace(/\+/g,"");
 	    console.log(answer);
 	},// init
 
