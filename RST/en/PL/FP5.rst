@@ -24,7 +24,21 @@ This first problem is ...
 RP 9 part 2
 -----------
 
-
 This problem is ...
 
 .. avembed:: Exercises/PL/RP9part2.html ka
+
+
+RP 9 part 3
+-----------
+
+This problem is ...
+
+.. avembed:: Exercises/PL/RP9part3.html ka
+
+RP 9 part 4
+-----------
+
+This problem is ...
+
+.. avembed:: Exercises/PL/RP9part4.html ka
