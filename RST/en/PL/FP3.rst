@@ -24,7 +24,6 @@ This first problem will give you one more example of deep recursion.
 
 .. avembed:: Exercises/PL/RP7part1.html ka
 
-<<<<<<< HEAD
 RP 7 part 2
 -----------
 
@@ -50,13 +49,3 @@ recursion. This is a randomized exercise. So you have to solve it
 correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP7part4.html ka
-=======
-
-RP 7 part 2
------------
-
-This problem will you get more comfortable with "deep recursion,"
-that is, recursion on trees.
-
-.. avembed:: Exercises/PL/RP7part2.html ka
->>>>>>> 5abc63bbd38743ff71343cb29a371d9886e0ea4f
