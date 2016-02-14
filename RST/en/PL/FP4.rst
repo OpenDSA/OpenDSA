@@ -24,6 +24,11 @@ described.
 
 .. avembed:: Exercises/PL/RP8part1.html ka
 
+RP 8 part 2
+-----------
+
+.. avembed:: Exercises/PL/RP8part2.html ka
+
 RP 8 part 3
 -----------
 

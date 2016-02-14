@@ -307,6 +307,15 @@
               "showhide": "Show"
             }
           },
+          "RP 8 part 2": {
+            "RP8part2": {
+              "long_name": "RP set #8, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
           "RP 8 part 3": {
             "RP8part3": {
               "long_name": "RP set #8, question #3",
