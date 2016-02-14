@@ -37,8 +37,6 @@
        in the function body are placeholder values to be replaced later on:
  
        -12345 will be replaced by a random digit between 0 and 9
-       -999   will be replaced by a random digit present in the input tree
-
      */
 
     [ "<span class='string'>t</span> is a tree of integers",
