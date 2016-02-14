@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 8.1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1350" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP8part1p">
+          <p class="question">Consider the following function definitions:</p>
+<pre class="string">
+var split = function (pivot,ns) {
+    return split_helper(pivot,ns,[ ],[ ]);
+};
+
+var split_helper = function (pivot,ns,smalls,bigs)  {
+    if (fp.isNull(ns)) {
+         return fp.cons(smalls,fp.cons(bigs,[ ]));
+    } else if (fp.isLT(fp.hd(ns),pivot)) {
+         return split_helper(pivot,fp.tl(ns),
+                             fp.cons(fp.hd(ns),smalls),bigs);
+    } else {
+         return split_helper(pivot,fp.tl(ns),
+                             smalls,fp.cons(fp.hd(ns),bigs));
+    }
+};
+
+var join = function (ms,ns) {
+    if (fp.isNull(ms)) {
+        return ns;
+    } else {
+        return fp.cons(fp.hd(ms),join(fp.tl(ms),ns));
+    }
+};
+</pre>
+          <p class="question">The <span class="string">join</span>
+           function, in which both <span class="string">ms</span>
+           and <span class="string">ns</span> are (flat) lists, is one
+           that we have not yet discussed.  What is the value of
+           the following call to <span class="string">join</span>?</p>
+<pre class="string">
+  join(fp.hd(split(5,[1,9,2,8,3,7])),
+       fp.hd(fp.tl(split(5,[1,9,2,8,3,7]))))
+</pre>
+          <div class="solution">[ 3, 2, 1, 7, 8, 9 ]</div>
+          <ul class="choices">
+            <li>[ 1, 2, 3, 9, 8, 7 ]</li>
+            <li>[ [1, 2, 3], [9, 8, 7] ]</li>
+            <li>[ [3, 2, 1], [7, 8, 9] ]</li>
+          </ul>
+          <div class="hints">
+	    <p>Make sure to review how
+	    the <span class="string">split_helper</span> function
+	    works.</p>
+	    <p>Note that the <span class="string">split</span>
+	    function is being called twice with the same argument
+	    list.</p>
+	    <p>Since the <span class="string">join</span> function is
+	    being introduced for the first time in this exercise, make
+	    sure to understand its behavior fully, paying special attention to
+	    the order of the elements in its output.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
