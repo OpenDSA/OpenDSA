@@ -12,14 +12,11 @@
     },
 
     initJSAV: function() {
-      console.log("Hello");
       var jsav = new JSAV("ListOpen");
-      console.log("Hello X");
       var maxLength = 3 + Math.floor(Math.random() * 6);
       L1 = genRndListOfNumbers(maxLength);
       maxLength = 3 + Math.floor(Math.random() * 6);
       L2 = genRndListOfNumbers(maxLength);
-      console.log("Hello Y");
 
       while (true) {
         exp = genRndList().toString();
@@ -34,7 +31,6 @@
       } catch (e) {
         question.answer = "\\s*error\\s*";
       }
-      console.log("Hello 1");
       jsav.code(exp, {
         lineNumbers: false
       });

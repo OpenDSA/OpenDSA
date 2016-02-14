@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 7.2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="950" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP7part2p">
+          <p class="question">Consider the following definition of
+          the function <span class="string">subst</span>:</p>
+<pre class="string">
+1.  var subst = function (n,o,t) {
+2.     if (fp.isNull(t)) {
+3.         return t;
+4.     } else if (fp.isList(fp.hd(t))) {
+5.         return fp.cons(subst(n,o,fp.hd(t)),subst(n,o,fp.tl(t)));
+6.     } else if (fp.isEq(o,fp.hd(t))) {
+7.         return fp.cons(n,subst(n,o,fp.tl(t)));
+8.     } else {
+9.         return fp.cons(fp.hd(t),subst(n,o,fp.tl(t)));
+10.    }
+11. };</pre>
+          <p class="question">Suppose that you want a function that
+          inserts its first argument <em>before</em> each occurrence of
+          its second argument in its third argument, where that third
+          argument must be a list. Hence a call with the arguments 
+	    <span class="string">4</span>,
+            <span class="string">5</span>, and 
+	    <span class="string">[1,2,3,[4,5],5,6]</span> would return 
+	    <span class="string">[1,2,3,[4,4,5],4,5,6]</span>. This
+          could be accomplished by making a small change in one line
+          of the <span class="string">subst</span> function above and
+          leaving the rest of the function unchanged. Which line
+          should you change?
+          <div class="solution">Line 7</div>
+          <ul class="choices">
+            <li>Line 4</li>
+            <li>Line 5</li>
+            <li>Line 6</li>
+            <li>Line 9</li>
+          </ul>
+          <div class="hints">
+	    <p>Make sure you understand what the new function is
+	    supposed to compute and how it differs
+	    from the given <span class="string">subst</span> function.</p>
+	    <p>Make sure that the new function considers all possible
+	    cases in the right order.</p>
+	    <p>Remember to look for a solution with a single code change.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
