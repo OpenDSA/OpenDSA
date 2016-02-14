@@ -213,18 +213,75 @@ function helper(ns,a) {
 }
     ],
 
+    /* 12: return element count + init acc. */
+    [ "<span class='string'>ns</span> is a (flat) list of integers and " +
+      "<span class='string'>a</span> is an integer accumulator",
+      1, // index of main function 
+function helper(ns,a) {
+    if (fp.isNull(ns)) {
+	return a;
+    } else {
+	return helper(fp.tl(ns),fp.add(1,a));
+    }
+}
+    ],
+
+    /* 13: count all elements GT a random digit then add init acc.*/
+    [ "<span class='string'>ns</span> is a (flat) list of integers and " +
+      "<span class='string'>a</span> is an integer accumulator",
+      1, // index of main function 
+function helper(ns,a) {
+    if (fp.isNull(ns)) {
+	return a;
+    } else if (fp.isGT(fp.hd(ns),randomDigit)) {
+	return fp.add(1,helper(fp.tl(ns),a));
+    } else {
+	return helper(fp.tl(ns),a);
+    }
+}
+    ],
+
+    /* 14: count all elements LT a random digit then add init acc.*/
+    [ "<span class='string'>ns</span> is a (flat) list of integers and " +
+      "<span class='string'>a</span> is an integer accumulator",
+      1, // index of main function 
+function helper(ns,a) {
+    if (fp.isNull(ns)) {
+	return a;
+    } else if (fp.isLT(fp.hd(ns),randomDigit)) {
+	return fp.add(1,helper(fp.tl(ns),a));
+    } else {
+	return helper(fp.tl(ns),a);
+    }
+}
+    ],
+
+    /* 15: count all elements EQ to a random digit then add init acc.*/
+    [ "<span class='string'>ns</span> is a (flat) list of integers and " +
+      "<span class='string'>a</span> is an integer accumulator",
+      1, // index of main function 
+function helper(ns,a) {
+    if (fp.isNull(ns)) {
+	return a;
+    } else if (fp.isEq(fp.hd(ns),randomDigit)) {
+	return fp.add(1,helper(fp.tl(ns),a));
+    } else {
+	return helper(fp.tl(ns),a);
+    }
+}
+    ]
+
 	    ];// functions array
 
 	    // pick a random input
 	    var randomDigit =  Math.floor(Math.random() * 10);
 	    var randomDigit2 =  Math.floor(Math.random() * 10); 
 	    var list = generateRandomList();
-	    //console.log(list);
 	    var integer = Math.floor(Math.random() * 10); 
 	    // pick a random function
 	    var functionNumber = 
 		Math.floor(Math.random() * helperFunctions.length); 
-	    //functionNumber = 11;
+	    //functionNumber = 15;
 	    var helper = helperFunctions[ functionNumber ][2];
 	    var main = mainFunctions[helperFunctions[functionNumber][1]];
 	    var params = helperFunctions[ functionNumber ][0];
@@ -244,7 +301,7 @@ function helper(ns,a) {
 	    this.functionDef = helperStr + "<br /><br />" +  mainStr;
 	    this.params = params;
 	    this.functionCall = "f( " + JSON.stringify(list) + " )";
-	    console.log(answer);
+	    //console.log(answer);
 	},// init
 
 	checkAnswer: function (studentAnswer) {
