@@ -23,3 +23,10 @@ This first problem is based on the ``split`` function that was previously
 described.
 
 .. avembed:: Exercises/PL/RP8part1.html ka
+
+RP 8 part 3
+-----------
+
+This problem ...
+
+.. avembed:: Exercises/PL/RP8part3.html ka
