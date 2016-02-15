@@ -13,6 +13,24 @@
 Binary Trees Part 3
 ===================
 
+.. slide:: Midterm 1
+
+   Midterm 1 is Tuesday, February 23
+
+   Topics:
+
+   * Algorithm Analysis:
+      * Upper, lower bounds, bounds on a problem
+
+   * Linear Structures: Lists, Stacks, Queues
+      * Implementation and Analysis, space requirements
+
+   * Binary Trees: Notation, full binary tree theorem
+
+   * BST implementation and analysis
+
+   * Heaps
+
 .. slide:: Spatial Data Structures
 
    BST, SkipList handle a one dimensional key.
@@ -33,6 +51,26 @@ Binary Trees Part 3
    * Alternating dimensions vs. multiway splits
    * Key space vs. Object space decomposition
    * Decomposition rule
+
+.. slide:: PR Quadtree (1)
+
+   .. odsafig:: Images/PRexamp.png
+      :width: 700
+      :align: center
+      :capalign: justify
+      :figwidth: 90%
+      :alt: Example of a PR quadtree
+
+
+.. slide:: PR Quadtree (2)
+
+   .. odsafig:: Images/PRinsert.png
+      :width: 700
+      :align: center
+      :capalign: justify
+      :figwidth: 90%
+      :alt: PR quadtree insertion example.
+
 
 .. slide:: Binary Tree Implementation
 
@@ -104,3 +142,36 @@ Binary Trees Part 3
 
    (Otherwise) multiple copies of a stateless object, all references
    pointing to the same copy.
+
+.. slide:: Space Overhead (1)
+
+   From the Full Binary Tree Theorem:
+
+   * Half of the pointers are null.
+
+   If leaves store only data, then overhead depends on whether the tree
+   is full.
+
+   Ex: Full tree, all nodes the same, with two pointers to children and
+   one to element:
+
+   * Total space required is :math:`(3p + d)n`
+   * Overhead: :math:`3pn`
+   * If :math:`p = d`, this means :math:`3p/(3p + d) = 3/4` overhead.
+
+
+.. slide:: Space Overhead (2)
+
+   Eliminate pointers from the leaf nodes:
+
+   .. math::
+
+      \frac{n/2(2p)}{n/2(2p) + dn} = \frac{p}{p + d}
+
+   This is 1/2 if :math:`p = d`.
+
+   :math:`(2p)/(2p + d)` if data only at leaves :math:`\Rightarrow`
+   2/3 overhead. 
+
+   Note that some method is needed to distinguish leaves from internal
+   nodes.
