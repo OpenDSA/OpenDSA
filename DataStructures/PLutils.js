@@ -4,7 +4,11 @@
 
     var PLutils = {    
 
-	generateRandomArray: function() {
+	/* generate a random tree represented as a list of lists 
+	   of ... of integers
+	 */
+	generateRandomTree : function () {
+
 	    var f = function (maxLength,maxDepth) {
 		var result = [];
 		var minIntegerVal = 0;
@@ -28,7 +32,7 @@
 		complexity = JSON.stringify(a).match(/\[/g).length;
 	    }
 	    return a;
-	}// generateRandomArray 
+	}// generateRandomTree
     };// PLutils
 
     window.PLutils = window.PLutils || PLutils;

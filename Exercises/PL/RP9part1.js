@@ -84,12 +84,44 @@ function (x) {
       "y/x must have at most three decimals"
     ],
 
+    /* 6 */
+    [ "<span class='string'>x</span> and <span class='string'>y</span> " +
+      "are both integers",
+function (x) { 
+   return function (y) { return x < y; }; 
+}     
+    ],
+
+    /* 7 */
+    [ "<span class='string'>x</span> and <span class='string'>y</span> " +
+      "are both integers",
+function (x) { 
+   return function (y) { return y < x; }; 
+}     
+    ],
+
+    /* 8 */
+    [ "<span class='string'>x</span> and <span class='string'>y</span> " +
+      "are both integers",
+function (x) { 
+   return function (y) { return x > y; }; 
+}     
+    ],
+
+    /* 9 */
+    [ "<span class='string'>x</span> and <span class='string'>y</span> " +
+      "are both integers",
+function (x) { 
+   return function (y) { return y > x; }; 
+}     
+    ],
+
 	    ];// functions array
 
 	    // pick a random function
 	    var functionNumber = 
 		Math.floor(Math.random() * functions.length); 
-	    //functionNumber = 4;
+	    //functionNumber = 9;
 	    var params = functions[ functionNumber ][0];
 	    var f = functions[ functionNumber ][1];
 	    var fStr = f.toString();
@@ -142,7 +174,9 @@ function (x) {
 	},// init
 
 	checkAnswer: function (studentAnswer) {
-	    if (this.answer === "error") {
+	    if (this.answer === "error" ||
+		this.answer === "false" ||
+		this.answer === "true") {
 		return this.answer === studentAnswer.trim();
 	    } else if (this.answer.match(/^-?\d+(\.\d+)?$/)) {
 		// correct answer is a number
