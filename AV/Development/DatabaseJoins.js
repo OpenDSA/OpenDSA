@@ -29,7 +29,7 @@ $(document).ready(function () {
     for(i = 0; i < 11; i++){
       av.step();
       var swapWith = parseInt((Math.random() * 11));
-      arr.swap(parseInt(i),swapWith, highlight=true);
+      arr.swap(parseInt(i),swapWith, true);
       av.umsg("In this step the swap was for index " + i + "  and this it swapped with " + swapWith);
     }
     av.recorded();
