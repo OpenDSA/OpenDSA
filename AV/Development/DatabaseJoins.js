@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     JSAV.init();
 
-    var av = new JSAV("container");
+    var av = new JSAV("DatabaseJoins");
     var theArray = [20, 30, 44, 54, 55, 11, 78, 14, 13, 79, 12, 98];
     var arr = av.ds.array(theArray, {indexed: true});
     av.umsg("Text before displayInit()");
