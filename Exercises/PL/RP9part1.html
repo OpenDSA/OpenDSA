@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html data-require="math fp RP8part3" lang="en">
+<html data-require="math fp RP9part1" lang="en">
   <head>
     <meta charset=utf-8>
-    <title>RP 8 part 3</title>
+    <title>RP 9 part 1</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
@@ -11,16 +11,16 @@
   <body data-height="850" data-width="950">
     <div class="exercise">
       <div class="vars">
-        <var id="setup">RP8part3.init()</var>
-        <var id="functionDef">RP8part3.functionDef</var>        
-        <var id="params">RP8part3.params</var>        
-        <var id="functionCall">RP8part3.functionCall</var>        
-	<var id="answer">RP8part3.answer</var>
+        <var id="setup">RP9part1.init()</var>
+        <var id="functionDef">RP9part1.functionDef</var>        
+        <var id="params">RP9part1.params</var>        
+        <var id="functionCall">RP9part1.functionCall</var>        
+	<var id="answer">RP9part1.answer</var>
       </div>
       <div class="problems">
-        <div id="RP8part3p">
+        <div id="RP9part1p">
           <p class="question">
-            Given the following function definitions,
+            Given the following function definition,
             where <var>params</var>:</p>
 <pre class="string">
 <var>functionDef</var>
@@ -31,21 +31,23 @@
 	  
 	  Note that, if the function call generates an exception, the
 	  correct answer is the word "error" (without the double
-	  quotes) in all lowercase letters.
+	  quotes) in all lowercase letters. Otherwise, the answer may
+	  be a number (not necessarily an integer, for example, when the division
+	  operator is applied) or a Boolean constant.
 	  </p>
 	  <textarea rows="1" cols="40" style="resize:none"
 		    id="answerTextarea"></textarea>
 	  <div class="solution" data-type="custom">
             <div class="guess"> $('#answerTextarea').val()  </div>
             <div class="validator-function">
-              return RP8part3.checkAnswer(guess);
+              return RP9part1.checkAnswer(guess);
             </div>
           </div>
           <div class="hints">
-	    <p>What type of data does the accumulator contain?</p>	    
-	    <p>What is the initial value of the accumulator?</p>
-	    <p>How is the accumulator updated at each recursive call?</p>
-	    <p>How is the input list  updated at each recursive call?</p>
+	    <p>Note that <span class="string">f</span> is a curried
+	    function.</p>
+	    <p>If you had to find a short, descriptive name for the function
+	      <span class="string">g</span>, what would it be?</p>
           </div>
         </div>
       </div>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 9.3</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="950" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP9part3p">
+          <p class="question">Given the following code:</p>
+<pre class="string">
+var b = 6;
+
+var foo = function (a) {
+    a = b + a;
+    return function () { return a; };
+};
+
+b = 2;
+
+var bar = function () {
+    var b = 3;
+    return foo(b);
+};
+</pre>
+          <p class="question">what does
+           <span class="string">bar()()</span> evaluate to?
+          <div class="solution">5</div>
+          <ul class="choices">
+            <li>9</li>
+            <li>a function</li>
+            <li>6</li>
+            <li>error</li>
+          </ul>
+          <div class="hints">
+	    <p>Determine what the <span class="string">foo</span> and 
+	      <span class="string">bar</span> functions return.</p>
+	    <p>Keep in mind the difference between a function
+	    definition expression and a function call.</p>
+	    <p>Note that the code defines two variables called 
+	    <span class="string">b</span>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

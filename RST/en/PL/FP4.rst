@@ -15,7 +15,7 @@ RP 8 part 1
 
 Topics of the day:
 
-  1. Helper functions using the accumulator pattern.
+  1. Helper functions using the accumulator pattern
 
 The review problem set for today contains three review problems.
 
@@ -27,11 +27,15 @@ described.
 RP 8 part 2
 -----------
 
+This problem will have you use the ``split`` function to implement an
+efficient sorting algorithm.
+
 .. avembed:: Exercises/PL/RP8part2.html ka
 
 RP 8 part 3
 -----------
 
-This problem ...
+This problem will give you a lot more practice with the accumulator pattern.
+It is a randomized problem. You have to solve it three times in a row.
 
 .. avembed:: Exercises/PL/RP8part3.html ka
