@@ -6,7 +6,7 @@ $(document).ready(function () {
     JSAV.init();
 
     //create the JSAV object
-    var av = new JSAV("container");
+    var av = new JSAV("DatabaseJoins");
     //initialize the array
     var theArray = [];
     //insert random integers in the array
