@@ -97,6 +97,10 @@
       "Slides/Binary3": {
         "long_name": "Binary Trees Part 3",
         "exercises" : {}
+      },
+      "Slides/Interruptions": {
+        "long_name": "Memory cues and resumption strategies",
+        "exercises" : {}
       }
     },
     "Binary Trees": {
