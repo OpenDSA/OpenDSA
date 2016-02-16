@@ -2,67 +2,16 @@
 (function() {
   "use strict";
    
-    var randomDigit;
-    var randomDigit2;
-
     var RP10part5 = {    
 	init: function() {
 	    var e, f, g, h, j, k;
-/*
-	    // pick a random function
-	    var functionNumber = 
-		Math.floor(Math.random() * functions.length); 
-	    //functionNumber = 9;
-	    var params = functions[ functionNumber ][0];
-	    var f = functions[ functionNumber ][1];
-	    var fStr = f.toString();
-
-	    // pick a random input
-	    var x =  Math.floor(Math.random() * 11);
-	    var y =  Math.floor(Math.random() * 11); 
-	    var constraint;
-
-	    // enfore special constraints, if any
-	    if (functions[functionNumber][2]) {
-		constraint = functions[functionNumber][2];
-		switch (constraint) {
-		case "y cannot be 0":
-		    if ( y === 0)  {
-			y =  1 + Math.floor(Math.random() * 10); 
-		    }
-		    break;
-		case "x cannot be 0":
-		    if ( x === 0)  {
-			x =  1 + Math.floor(Math.random() * 10); 
-		    }
-		    break;
-		case "x/y must have at most three decimals":
-		    pickDivisionArguments(x,y,false);
-		    break;
-		case "y/x must have at most three decimals":
-		    pickDivisionArguments(x,y,true);
-		    break;
-		}
-		//console.log("new y = " + y);
-	    }// enforce constraints
-
-
-	    var answer;
-	    try {
-		answer = JSON.stringify(
-		    eval("var f = " + fStr + ";\n" +
-			 "var g = f(" + x + ");\n" +
-			 "g(" + y + ")"));
-	    } 
-	    catch (e) {
-		answer = "error";
-	    }
-*/
+	    var randomDigit = Math.floor( Math.random() * 10);
+	    var randomDigit2 = Math.floor( Math.random() * 10);
 
 	    function generateEorFfunction(funcName,sign) { /* a * x +/- b */
 		var a, b, sign_of_a = "";
 		var result = "var " + funcName + " = function (x)   { return ";
-		var suffix= "; }"
+		var suffix = "; };";
 		if (Math.random() < 0.1) {
 		    a = 0;
 		} else {
@@ -84,7 +33,7 @@
 	    function generateGorHfunction(funcName,sign) { /* a * x >/< b */
 		var a, b, sign_of_a = "";
 		var result = "var " + funcName + " = function (x)   { return ";
-		var suffix= "; }"
+		var suffix = "; };";
 		a = 1 + Math.floor( Math.random() * 10);
 		sign_of_a = Math.random() < 0.5 ? "-" : "";
 		result += (a === 1 ? (sign_of_a === "-" ? "-x" : "x") : 
@@ -96,7 +45,7 @@
 	    function generateJfunction() { /* a * x +/- b * y */
 		var a, b, sign_of_a = "", sign_of_b = "";
 		var result = "var j = function (x,y) { return ";
-		var suffix= "; }"
+		var suffix = "; };";
 		var LHS, op, RHS;
 		a = 1 + Math.floor( Math.random() * 10);
 		b = 1 + Math.floor( Math.random() * 10);
@@ -122,7 +71,7 @@
 	    function generateKfunction() { /* a * x >/< b * y */
 		var a, b, sign_of_a = "", sign_of_b = "";
 		var result = "var k = function (x,y) { return ";
-		var suffix= "; }"
+		var suffix = "; };";
 		var LHS, RHS;
 		a = 1 + Math.floor( Math.random() * 10);
 		b = 1 + Math.floor( Math.random() * 10);
@@ -145,11 +94,75 @@
 	    j = generateJfunction();
 	    k = generateKfunction();
 	    
-	    this.answer = "to do"
 	    this.functionDef = e + "<br />" + f + "<br />" + g + "<br />" +
-		h + "<br />" + j + "<br />" + k + "<br />";
-	    this.functionCall = "to do";
-	    console.log(answer);
+		h + "<br />" + j + "<br />" + k;
+	    switch (Math.floor( Math.random() * 15 )) {
+	    case 0:
+		this.functionCall = "compose( e , f )( " + randomDigit + " )";
+		break;
+	    case 1:
+		this.functionCall = 
+		    "curry( compose )( e )( f )( " + randomDigit + " )";
+		break;
+	    case 2:
+		this.functionCall = "compose( f , e )( " + randomDigit + " )";
+		break;
+	    case 3:
+		this.functionCall = 
+		    "curry( compose )( f )( e )( " + randomDigit + " )";
+		break;
+	    case 4:
+		this.functionCall = "compose( g , f )( " + randomDigit + " )";
+		break;
+	    case 5:
+		this.functionCall = 
+		    "curry( compose )( g )( f )( " + randomDigit + " )";
+		break;
+	    case 6:
+		this.functionCall = "compose( e , compose( f , e ) )( " + 
+		    randomDigit + " )";
+		break;
+	    case 7:
+		this.functionCall = "compose( compose( f , e ) , e )( " + 
+		    randomDigit + " )";
+		break;
+	    case 8:
+		this.functionCall = "compose( g , compose( f , e ) )( " + 
+		    randomDigit + " )";
+		break;
+	    case 9:
+		this.functionCall = "compose( compose( g , e ) , f )( " + 
+		    randomDigit + " )";
+		break;
+	    case 10:
+		this.functionCall = "curry( j )( " + randomDigit + 
+		    " )( " + randomDigit2 + " )";
+		break;
+	    case 11:
+		this.functionCall = "curry( k )( " + randomDigit + 
+		    " )( " + randomDigit2 + " )";
+		break;
+	    case 12:
+		this.functionCall = "compose( e , curry( j )( " + randomDigit + 
+		    " ) )( " + randomDigit2 + " )";
+		break;
+	    case 13:
+		this.functionCall = "compose( curry( j )( " + randomDigit + 
+		    " ) , f )( " + randomDigit2 + " )";
+		break;
+	    case 14:
+		this.functionCall = "compose( curry( k )( " + randomDigit + 
+		    " ) , f )( " + randomDigit2 + " )";
+		break;		
+	    }
+
+	    this.answer = JSON.stringify(
+		eval("var curry = function (f) { return function (x) {" +
+                     "return function (y) { return f(x,y); };};};" +
+		     "var compose = function (f,g) {" +
+		     "return function (x) { return f(g(x));};};" +
+		     e + f + g + h + j + k + this.functionCall ));	    
+	    //console.log(this.answer);
 	},// init
 
 	checkAnswer: function (studentAnswer) {

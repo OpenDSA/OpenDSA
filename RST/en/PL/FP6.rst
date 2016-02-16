@@ -11,7 +11,7 @@ Functional Programming - Part 6 (M 2/22/16)
 ===========================================
 
 RP 10 part 1
------------
+------------
 
 Topics of the day:
 
@@ -23,8 +23,10 @@ This first problem is ...
 
 
 RP 10 part 5
------------
+------------
 
-This problem is ...
+This problem will give you more practice with the ``curry`` and
+``compose`` functions. This problem is randomized and
+must be solved three times in a row.
 
 .. avembed:: Exercises/PL/RP10part5.html ka

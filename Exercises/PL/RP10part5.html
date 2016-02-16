@@ -13,7 +13,6 @@
       <div class="vars">
         <var id="setup">RP10part5.init()</var>
         <var id="functionDef">RP10part5.functionDef</var>        
-        <var id="params">RP10part5.params</var>        
         <var id="functionCall">RP10part5.functionCall</var>        
 	<var id="answer">RP10part5.answer</var>
       </div>
@@ -22,6 +21,16 @@
           <p class="question">
             Given the following function definitions:</p>
 <pre class="string">
+var curry = function (f) {
+               return function (x) {
+                  return function (y) { return f(x,y); };
+               };
+};
+var compose = function (f,g) {
+                  return function (x) {
+                     return f(g(x));
+                  };
+};
 <var>functionDef</var>
 </pre>
           <p class="question">
@@ -31,8 +40,9 @@
 	  Note that, if the function call generates an exception, the
 	  correct answer is the word "error" (without the double
 	  quotes) in all lowercase letters. Otherwise, the answer may
-	  be a number (not necessarily an integer, for example, when the division
-	  operator is applied) or a Boolean constant.
+	  be an integer or one of the Boolean
+	  constants <span class="string">true</span>
+	  or <span class="string">false</span>.
 	  </p>
 	  <textarea rows="1" cols="40" style="resize:none"
 		    id="answerTextarea"></textarea>
@@ -43,10 +53,7 @@
             </div>
           </div>
           <div class="hints">
-	    <p>Note that <span class="string">f</span> is a curried
-	    function.</p>
-	    <p>If you had to find a short, descriptive name for the function
-	      <span class="string">g</span>, what would it be?</p>
+	    <p>You may need a calculator for this problem.</p>
           </div>
         </div>
       </div>
