@@ -1,4 +1,4 @@
-/* global console fp */
+/* global console, fp */
 (function() {
   "use strict";
 
