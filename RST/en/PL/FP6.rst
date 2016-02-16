@@ -19,14 +19,15 @@ Topics of the day:
 
 The review problem set for today contains five review problems.
 
-This first problem is ...
+This first problem is about function composition.
 
+.. avembed:: Exercises/PL/RP10part1.html ka
 
 RP 10 part 5
 ------------
 
-This problem will give you more practice with the ``curry`` and
-``compose`` functions. This problem is randomized and
-must be solved three times in a row.
+This problem will give you intensive practice with the ``curry`` and
+``compose`` functions. This problem is randomized and must be solved
+three times in a row.
 
 .. avembed:: Exercises/PL/RP10part5.html ka
