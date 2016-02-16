@@ -17,7 +17,7 @@ Topics of the day:
 
   1. To do 
 
-The review problem set for today contains five review problems.
+The review problem set for today contains four review problems.
 
 This first problem is about function composition.
 
@@ -38,11 +38,11 @@ This problem is about the mapping pattern.
 
 .. avembed:: Exercises/PL/RP10part3.html ka
 
-RP 10 part 5
+RP 10 part 4
 ------------
 
 This problem will give you intensive practice with the ``curry`` and
 ``compose`` functions. This problem is randomized and must be solved
 three times in a row.
 
-.. avembed:: Exercises/PL/RP10part5.html ka
+.. avembed:: Exercises/PL/RP10part4.html ka
