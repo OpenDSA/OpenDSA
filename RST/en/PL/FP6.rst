@@ -23,6 +23,13 @@ This first problem is about function composition.
 
 .. avembed:: Exercises/PL/RP10part1.html ka
 
+RP 10 part 2
+------------
+
+This problem is about both currying and function composition.
+
+.. avembed:: Exercises/PL/RP10part2.html ka
+
 RP 10 part 5
 ------------
 

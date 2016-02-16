@@ -380,6 +380,15 @@
               "showhide": "Show"
             }
           },
+          "RP 10 part 2": {
+            "RP10part2": {
+              "long_name": "RP set #10, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
           "RP 10 part 5": {
             "RP10part5": {
               "long_name": "RP set #10, question #5",

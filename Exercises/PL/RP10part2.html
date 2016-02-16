@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html data-require="math fp" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 10 part 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1050" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP10part2p">
+          <p class="question">
+            Given the following function definitions:</p>
+<pre class="string">
+var curry = function (f) {
+               return function (x) {
+                  return function (y) { return f(x,y); };
+               };
+};
+var compose = function (f,g) {
+                 return function (x) {
+                    return f(g(x));
+                 };
+};
+var g = function (x) { return 2 * x + 2; };
+</pre>
+          <p class="question">
+	  what is the value of the following function call?<br />
+	  <span class="string">curry( compose )( g )( function (x) { return x/2; } )( 8 )</span>
+	  
+	  <div class="solution">10</div>
+          <ul class="choices">
+            <li>12</li>
+            <li>11</li>
+            <li>9</li>
+	    <li>error</li>
+          </ul>
+
+          <div class="hints">
+	    <p>Is <span class="string">g</span>
+	      or the anonymous function invoked first when
+	      the two functions are composed as done in this function call?
+	    </p> 
+	    <p>Is each function being invoked given the expected
+	    number of arguments?</p>
+	    <p>Is each function being invoked given the expected
+	    type of arguments?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
