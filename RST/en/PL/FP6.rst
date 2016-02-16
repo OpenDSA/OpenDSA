@@ -30,6 +30,14 @@ This problem is about both currying and function composition.
 
 .. avembed:: Exercises/PL/RP10part2.html ka
 
+
+RP 10 part 3
+------------
+
+This problem is about the mapping pattern.
+
+.. avembed:: Exercises/PL/RP10part3.html ka
+
 RP 10 part 5
 ------------
 
