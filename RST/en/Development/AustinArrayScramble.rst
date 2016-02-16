@@ -7,20 +7,21 @@
    :author: Austin Hoefs
 
 ============================================================
-Illustrate a simple slide show in an OpenDSA learning module
+Array Scrambling
 ============================================================
 
-Swapping array elements
+Random Array Scramble
 -----------------------
 
 
-The following slideshow demonstrates how, starting with a slideshow
-like you worked with in last week's lab, you can incorporate it into a
-learning module.
+This algorithm starts with a sorted list and scrambles them in a random order. 
+The scrambling is done by looping through the length of the array. In the loop it 
+swaps the index with a random generated number. If the random generated number is the same
+as the value of the current index it chooses a new number. It also chooses a new number if the
+random generated number is the same as the previous number.
 
-.. inlineav:: ArrayScramble ss
+.. inlineav:: AustinArrayScramble ss
    :output: show
 
-Here we scramble an array
-.. avembed:: Exercises/Development/hoefsa97/arrayScramble.html ka
+
 .. odsascript:: AV/Development/hoefsa97/js/ArrayScramble.js

@@ -1,5 +1,5 @@
 {
-  "title": "Example of Simple Book",
+  "title": "Array Scramble",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
@@ -19,12 +19,12 @@
     "Preface": {
       "Intro": {
         "long_name": "How to Use this System",
-        "sections": {}
+      "exercises": {}
       }
     },
-    "A Simple Example": {
-      "Development/hoefsa97/test": {
-        "long_name": "Simple Example of Using a Slide Show in a Book Module",
+    "Array Scramble": {
+      "Development/AustinArrayScramble": {
+        "long_name": "Simple Random Array Scramble of a sorted list",
         "sections": {}
       }
     }

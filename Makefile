@@ -119,6 +119,9 @@ F15: CS2114 CS3114F15 CS316 TDDD86F15 TDDC91F15 TDDI16F15 CSE017F15 CPSC270 COP3
 Pointers: min
 	python $(CONFIG_SCRIPT) config/Pointers.json
 
+AustinArrayScramble: min
+	python $(CONFIG_SCRIPT) config/AustinArrayScramble.json
+
 Tutorial: min
 	python $(CONFIG_SCRIPT) config/Tutorial.json
 
@@ -318,7 +321,7 @@ pull:
 	git submodule update
 	make -s -C JSAV
 	make -s min
-	cd Doc; make
+	#cd Doc; make
 
 lib/odsaUtils-min.js: lib/odsaUtils.js
 	@echo 'Minimizing lib/odsaUtils.js'

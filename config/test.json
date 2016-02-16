@@ -1,17 +1,8 @@
 {
-  "title": "Test",
-  "tag": "Java;CPP",
+  "title": "Example of Simple Book111",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
-    "C++": {
-      "ext": [
-        "cpp",
-        "h"
-      ],
-      "label": "C++",
-      "lang": "C++"
-    }
   },
   "lang": "en",
   "module_origin": "http://algoviz.org",
@@ -21,69 +12,20 @@
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
-  "build_cmap": true,
   "glob_exer_options": {
     "JXOP-debug": "true"
   },
   "chapters": {
-    "Test": {
-      "Sorting/InsertionSort1": {
-        "long_name": "Insertion Sort",
-        "exercises" : {
-          "insertionsortCON": {
-            "long_name": "Insertion Sort Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "insertionsortAV": {
-            "long_name": "Insertion Sort Visualization",
-            "required": false,
-            "points": 0,
-            "showhide": "none",
-            "threshold": 1.0
-          },
-          "InssortPRO": {
-            "long_name": "Insertion Sort Proficiency Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5
-          },
-          "InsertionSortWorstCaseCON": {
-            "long_name": "Insertion Sort Worst Case Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "InsertionSortBestCaseCON": {
-            "long_name": "Insertion Sort Best Case Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "InsertionSortAverageCaseCON": {
-            "long_name": "Insertion Sort Average Case Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "InssortSumm": {
-            "long_name": "Insertion Sort Summary Exercise",
-            "required": true,
-            "points": 1.0,
-            "threshold": 5
-          }
-        }
+    "Preface": {
+      "Intro": {
+        "long_name": "How to Use this System",
+        "sections": {}
       }
     },
-    "Appendix": {
-      "Glossary": {
-        "long_name": "Glossary",
-        "exercises": {}
-      },
-      "Bibliography": {
-        "long_name": "Bibliography",
-        "exercises": {}
+    "A Simple Example": {
+      "Development/hoefsa97/test": {
+        "long_name": "Simple Example of Using a Slide Show in a Book Module",
+        "sections": {}
       }
     }
   }

@@ -1,24 +1,30 @@
 "use strict";
 
 $(document).ready(function () {
-
-
     JSAV.init();
 
-    var av = new JSAV("XXX1");
-    var theArray = [20, 30, 44, 54, 55, 11, 78, 14, 13, 79, 12, 98];
+    var av = new JSAV("AustinArrayScramble");
+    var theArray = [1, 2, 3, 4, 5];
     var arr = av.ds.array(theArray, {indexed: true});
-    av.umsg("Text before displayInit()");
     // Note: av.displayInit() will not affect the number of slides.
     // All that it will do is affect what you get to see on the
     // initial slide.
     av.displayInit();
     // We are now starting a new slide (#2)
-    av.umsg("... and text after displayInit()", {preserve: true});
-    arr.swap(3,7);
-    av.step();
+    av.umsg("At each step the array will swap. This is done by swapping the current element with a random number generated from the length of elements in the array", {preserve: true});
+    av.umsg("To keep the array from swapping trying to swap an element to its current index or to the last place it was swapped to, we keeping generating a random until it is different")
+    var prevRand;
+    for(var i = 0; i < theArray.length; i++){
+      var rand;
+      while(rand == prevRand || rand == i){
+        rand = Math.floor(Math.random() * theArray.length);
+      }
+      arr.swap(rand,i);
+      av.step();
+      prevRand = rand; 
+    }
     // We are now starting a new slide (#3)
-    av.umsg("Text after av.step()");
+    av.umsg("Viola! The array is now scrambled");
     av.recorded();
     // If you add av.umsg after av.recorded, it will add new slides in
     // ways that you probably do not expect and probably cannot
@@ -27,5 +33,4 @@ $(document).ready(function () {
     // So, unless you are trying to add slides on-the-fly
     // interactively, you don't want to do this.
     // av.umsg("Text after av.recorded()");
-
 });
