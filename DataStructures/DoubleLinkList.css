@@ -23,12 +23,3 @@
   max-width: 50px;
   padding-right: 0;
 }
-.jsavhorizontallist .jsavnonext .jsavrightpointerarea:after,
-.jsavhorizontallist .jsavnoprev .jsavleftpointerarea:after {
-    display: inline-block;
-    content: "";
-    height: 104%;
-    width: 1px;
-    background-color: #000;
-    transform: rotate(12deg);
-}
