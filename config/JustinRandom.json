@@ -1,5 +1,5 @@
 {
-  "title": "Database Joins Introduction",
+  "title": "JustinRandom",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
@@ -22,15 +22,9 @@
         "sections": {}
       }
     },
-    "Inner Joins": {
-      "Development/DatabaseJoins": {
-        "long_name": "An Explanation of Inner Joins for Database Systems",
-        "sections": {}
-      }
-    },
-    "Left Outer Joins": {
-      "Development/LeftOuterJoins" : {
-        "long_name": "An Explanation of Left Outer Joins for Database Systems",
+    "JustinRandom Overview": {
+      "Development/JustinRandom": {
+        "long_name": "Explanation and Visualization of the JustinRandom Algorithm",
         "sections": {}
       }
     }

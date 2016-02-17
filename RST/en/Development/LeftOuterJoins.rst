@@ -7,12 +7,12 @@
    :author: RJ Freund, Justin Gottschalk, Shane Livieri
 
 ============================================================
-Inner Join Textual
+Left Outer Join Textual
 ============================================================
 
 
 ============================================================
-Inner Join Slideshow Demo
+Left Outer Join Slideshow Demo
 ============================================================
 TODO: Add InnerJoin Slideshow
 
@@ -21,12 +21,12 @@ TODO: Add InnerJoin Slideshow
 
 
 ============================================================
-Inner Join Embedded Demo
+Left Outer Join Embedded Demo
 ============================================================
 
 
 ============================================================
-Inner Join Practice
+Left Outer Join Practice
 ============================================================
 
 
