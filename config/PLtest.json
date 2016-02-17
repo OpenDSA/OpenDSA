@@ -322,6 +322,88 @@
             }
           }
 	}
+      },
+      "PL/FP5": {
+        "long_name": "Introduction to functional programming - Part 5",
+        "sections": {
+          "RP 9 part 1": {
+            "RP9part1": {
+              "long_name": "RP set #9, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 9 part 2": {
+            "RP9part2": {
+              "long_name": "RP set #9, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 9 part 3": {
+            "RP9part3": {
+              "long_name": "RP set #9, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 9 part 4": {
+            "RP9part4": {
+              "long_name": "RP set #9, question #4",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }
+	}
+      },
+      "PL/FP6": {
+        "long_name": "Introduction to functional programming - Part 6",
+        "sections": {
+          "RP 10 part 1": {
+            "RP10part1": {
+              "long_name": "RP set #10, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 10 part 2": {
+            "RP10part2": {
+              "long_name": "RP set #10, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 10 part 3": {
+            "RP10part3": {
+              "long_name": "RP set #10, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 10 part 4": {
+            "RP10part4": {
+              "long_name": "RP set #10, question #4",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+	}
       }
     },
     "Lambda Calculus": {
