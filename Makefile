@@ -241,6 +241,9 @@ IS: min
 NP: min
 	python $(CONFIG_SCRIPT) config/NP.json
 
+ScrambleArray: min
+	python $(CONFIG_SCRIPT) config/ScrambleArray.json --local
+
 test: min
 	python $(CONFIG_SCRIPT) config/test.json
 
