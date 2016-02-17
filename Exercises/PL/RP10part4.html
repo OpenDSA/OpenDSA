@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html data-require="math fp RP10part4" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 10 part 4</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="850" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="setup">RP10part4.init()</var>
+        <var id="functionDef">RP10part4.functionDef</var>        
+        <var id="functionCall">RP10part4.functionCall</var>        
+	<var id="answer">RP10part4.answer</var>
+      </div>
+      <div class="problems">
+        <div id="RP10part4p">
+          <p class="question">
+            Given the following function definitions:</p>
+<pre class="string">
+var curry = function (f) {
+               return function (x) {
+                  return function (y) { return f(x,y); };
+               };
+};
+var compose = function (f,g) {
+                  return function (x) {
+                     return f(g(x));
+                  };
+};
+<var>functionDef</var>
+</pre>
+          <p class="question">
+	  what is the value of the following function call?<br />
+	  <var class="string">functionCall</var><br /><br />
+	  
+	  Note that, if the function call generates an exception, the
+	  correct answer is the word "error" (without the double
+	  quotes) in all lowercase letters. Otherwise, the answer may
+	  be an integer or one of the Boolean
+	  constants <span class="string">true</span>
+	  or <span class="string">false</span>.
+	  </p>
+	  <textarea rows="1" cols="40" style="resize:none"
+		    id="answerTextarea"></textarea>
+	  <div class="solution" data-type="custom">
+            <div class="guess"> $('#answerTextarea').val()  </div>
+            <div class="validator-function">
+              return RP10part4.checkAnswer(guess);
+            </div>
+          </div>
+          <div class="hints">
+	    <p>You may need a calculator for this problem.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
