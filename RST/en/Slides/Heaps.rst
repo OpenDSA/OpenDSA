@@ -14,13 +14,9 @@ Heaps
 =====
 
 .. slide:: Complete Trees
-   :level: 3
    
-   .. odsalink:: AV/slides.css
    .. odsalink:: AV/Binary/heapbuildProofCON.css
   
-   .. _BinArray:
-
    .. figure:: Images/BinArray.png
       :width: 200
       :align: center
@@ -53,41 +49,40 @@ Heaps
 
 
 .. slide:: Heap insert
-   :level: 3 
 
    .. inlineav:: heapinsertCON ss
       :output: show
 
+   .. odsascript:: DataStructures/binaryheap.js
+   .. odsascript:: AV/Binary/heapinsertCON.js
+
 
 .. slide:: Building a Heap
-   :level: 3 
-
-   Mathjax: :math:`\Theta(n \log n)`
 
    .. inlineav:: heapbuildCON ss
       :output: show
 
+   .. odsascript:: AV/Binary/heapbuildCON.js
+
+
 .. slide:: Building a Heap Proof
-   :level: 3 
 
    .. inlineav:: heapbuildProofCON ss
       :output: show
 
+   .. odsascript:: AV/Binary/heapbuildProofCON.js
+
+
 .. slide:: Delete the maximum value
-   :level: 3 
 
    .. inlineav:: heapmaxCON ss
       :output: show
 
+   .. odsascript:: AV/Binary/heapmaxCON.js
+
 .. slide:: Delete an arbitrary value
-   :level: 3 
 
    .. inlineav:: heapremoveCON ss
       :output: show
 
-   .. odsascript:: DataStructures/binaryheap.js
-   .. odsascript:: AV/Binary/heapinsertCON.js
-   .. odsascript:: AV/Binary/heapbuildCON.js
-   .. odsascript:: AV/Binary/heapbuildProofCON.js
-   .. odsascript:: AV/Binary/heapmaxCON.js
    .. odsascript:: AV/Binary/heapremoveCON.js
