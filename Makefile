@@ -125,6 +125,9 @@ AustinArrayScramble: min
 Tutorial: min
 	python $(CONFIG_SCRIPT) config/Tutorial.json
 
+ArraySwapping: min
+	python $(CONFIG_SCRIPT) config/Yupheng.json
+
 Algorithms: min
 	python $(CONFIG_SCRIPT) config/Algorithms.json
 

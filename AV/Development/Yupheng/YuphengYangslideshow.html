@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>JSAV Slideshow Demonstration</title>
-    <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+    <link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
     <style>
     #container {
       width: 98%;
@@ -26,9 +26,9 @@
   </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-    <script src="../../JSAV/lib/jquery.transit.js"></script>
-    <script src="../../JSAV/lib/raphael.js"></script>
-    <script src="../../JSAV/build/JSAV.js"></script>
+    <script src="../../../JSAV/lib/jquery.transit.js"></script>
+    <script src="../../../JSAV/lib/raphael.js"></script>
+    <script src="../../../JSAV/build/JSAV.js"></script>
     <script>
   (function() {
     var av = new JSAV("container");
@@ -45,39 +45,15 @@
    //
    
    var myArray = new Array(12);
+   
    for(i = 0; i < theArray.length; i++)
    {
    var rand = Math.floor(Math.random() * (11 - 0 + 1)) + 0;
    
-   for(j = 0; j < myArray.length; j++)
-   {
-   var randCheckSecond = Math.floor(Math.random() * (11 - 0 + 1)) + 0;
-   if(rand != myArray[j])
-   {
-   arr.swap(i, rand);//Need to find a way to check every spot of myArray
-   myArray[j] += rand;
-   }
-   
-   while(rand == randCheckSecond)
-   {
-   randCheckSecond = Math.floor(Math.random() * (11 - 0 + 1)) + 0;
-   if(rand != randCheckSecond)
-   {
-   arr.swap(i, randCheckSecond);
-   myArray[j] += randCheckSecond;
-   }
-   
-   }
-   
-   if(rand != randCheckSecond)
-   {
-   arr.swap(i, randCheckSecond);
-   myArray[j] += randCheckSecond;
-   }
-   
-   }
+   arr.swap(i, rand);
    av.step();
    }
+   
    //
    //av.step();
 	//arr.swap(1, 2);
