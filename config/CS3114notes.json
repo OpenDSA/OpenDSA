@@ -92,6 +92,12 @@
         "long_name": "Binary Trees Part 2",
         "exercises" : {}
       }
+    },
+    "Week 5": {
+      "Slides/Binary3": {
+        "long_name": "Binary Trees Part 3",
+        "exercises" : {}
+      }
     }
   }
 }
