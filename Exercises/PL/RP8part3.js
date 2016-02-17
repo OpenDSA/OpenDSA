@@ -1,21 +1,9 @@
-/* global console,  fp  */
+/* global console, fp, PLutils  */
 (function() {
   "use strict";
    
     var randomDigit;
     var randomDigit2;
-
-    function generateRandomList () {
-	var result = [];
-	var minIntegerVal = 0;
-	var maxIntegerVal = 9;
-	var len = 2 + Math.floor(Math.random() * 8);
-	for(var i=0; i<len; i++) {
-	    result.push(minIntegerVal + 
-			Math.floor(Math.random() * maxIntegerVal));
-	}	
-	return result;
-    }
 
     var RP8part3 = {    
 	init: function() {
@@ -276,7 +264,7 @@ function helper(ns,a) {
 	    // pick a random input
 	    var randomDigit =  Math.floor(Math.random() * 10);
 	    var randomDigit2 =  Math.floor(Math.random() * 10); 
-	    var list = generateRandomList();
+	    var list = PLutils.generateRandomList();
 	    var integer = Math.floor(Math.random() * 10); 
 	    // pick a random function
 	    var functionNumber = 

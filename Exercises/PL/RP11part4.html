@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html data-require="math fp RP11part4 PLutils" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 11 part 4</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="850" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="setup">RP11part4.init()</var>
+        <var id="answer">RP11part4.answer</var>
+        <var id="functionDef">RP11part4.functionDef</var>        
+	<var id="params">RP11part4.params</var>
+        <var id="functionCall">RP11part4.functionCall</var>
+      </div>
+      <div class="problems">
+        <div id="RP11part4p">
+          <p class="question">
+            Given the following function definition,
+            where <var>params</var>:</p>
+<pre class="string">
+<var>functionDef</var>
+</pre>
+          <p class="question">
+	  what is the value of the following function call?
+          <br />
+	  <var class="string">functionCall</var><br /> Note that, if
+	  the function call generates an exception, the correct answer
+	  is the word "error" (without the double quotes) in all
+	  lowercase letters.
+	  </p>
+	  <textarea rows="1" cols="40" style="resize:none"
+		    id="answerTextarea"></textarea>
+	  <div class="solution" data-type="custom">
+            <div class="guess"> $('#answerTextarea').val()  </div>
+            <div class="validator-function">
+              return RP11part4.checkAnswer(guess);
+            </div>
+          </div>
+          <div class="hints">
+	    <p>Try to understand what the function does by
+	    studying its definition. Ignore the function call at
+	    first.</p>
+	    <p>Once you have a hypothesis for the behavior of the
+	    function, trace it on the given input.</p>
+	    <p>You may need to revise your hypothesis while tracing
+	    the specific function call. Do not hesitate to iterate
+	    this process until you are convinced you have the correct
+	    answer.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

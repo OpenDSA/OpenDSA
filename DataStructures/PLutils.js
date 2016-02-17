@@ -32,9 +32,22 @@
 		complexity = JSON.stringify(a).match(/\[/g).length;
 	    }
 	    return a;
-	}// generateRandomTree
-    };// PLutils
+	},// generateRandomTree
 
+	/* generate a random (flat) list of integers */
+	generateRandomList : function () {
+	    var result = [];
+	    var minIntegerVal = 0;
+	    var maxIntegerVal = 9;
+	    var len = 2 + Math.floor(Math.random() * 8);
+	    for(var i=0; i<len; i++) {
+		result.push(minIntegerVal + 
+			    Math.floor(Math.random() * maxIntegerVal));
+	    }	
+	return result;
+	}//  generateRandomList
+    };// PLutils
+    
     window.PLutils = window.PLutils || PLutils;
 }());
 

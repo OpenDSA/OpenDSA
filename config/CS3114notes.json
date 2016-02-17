@@ -1,0 +1,92 @@
+{
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Processing": {
+      "ext": [
+        "pde"
+      ],
+      "label": "Processing",
+      "lang": "java"
+    },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "lang": "en",
+  "build_JSAV": false,
+  "allow_anonymous_credit": true,
+  "suppress_todo": true,
+  "assumes": "recursion",
+  "dispModComp": true,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "chapters": {
+    "Weeks 1-3": {
+      "Slides/Day1": {
+        "long_name": "Introduction",
+        "sections" : {}
+      },
+      "Slides/ProjManage": {
+        "long_name": "Project Management",
+        "sections" : {}
+      },
+      "Slides/SkipList": {
+        "long_name": "SkipLists",
+        "sections" : {}
+      },
+      "Slides/AlgAnal": {
+        "long_name": "Algorithm Analysis",
+        "sections" : {}
+      },
+      "Slides/Coding": {
+        "long_name": "Clean Code",
+        "sections" : {}
+      },
+      "Slides/Lists": {
+        "long_name": "Lists",
+        "sections" : {}
+      },
+      "Slides/Lists2": {
+        "long_name": "Lists",
+        "sections" : {}
+      }
+    },
+    "Week 4": {
+      "Slides/Binary": {
+        "long_name": "Binary Trees Part 1",
+        "sections" : {}
+      },
+      "Slides/Binary2": {
+        "long_name": "Binary Trees Part 2",
+        "sections" : {}
+      }
+    },
+    "Week 5": {
+      "Slides/Binary3": {
+        "long_name": "Binary Trees Part 3",
+        "sections" : {}
+      }
+    }
+  }
+}

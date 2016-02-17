@@ -168,6 +168,9 @@ CS3114test: min
 CS3114testupdate: min
 	python $(CONFIG_SCRIPT) config/CS3114.json -c config/CS3114vttest_LMSconf.json -b CS3114S16test -o True
 
+CS3114notestest: min
+	python $(CONFIG_SCRIPT) config/CS3114notes.json -c config/CS3114notes_LMSconf.json -b CS3114notestest
+
 CS3114am: min
 	python $(CONFIG_SCRIPT) config/CS3114.json -c config/CS3114vtam_LMSconf.json -b CS3114S16am
 
