@@ -23,6 +23,14 @@ This first problem deals with the filtering pattern.
 
 .. avembed:: Exercises/PL/RP11part1.html ka
 
+RP 11 part 2
+------------
+
+This problem deals with the folding pattern.
+
+.. avembed:: Exercises/PL/RP11part2.html ka
+
+
 RP 11 part 4
 ------------
 
