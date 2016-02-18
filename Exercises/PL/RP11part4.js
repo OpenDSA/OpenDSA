@@ -474,7 +474,7 @@ function (ns) {
 	    }
 	    this.answer = answer.replace(/\+/g,"");
 	    
-	    console.log(answer);
+	    //console.log(answer);
 	},// init
 
 	checkAnswer: function (studentAnswer) {

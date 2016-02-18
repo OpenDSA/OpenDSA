@@ -430,6 +430,15 @@
               "showhide": "Show"
             }
           },
+          "RP 11 part 3": {
+            "RP11part3": {
+		"long_name": "RP set #11, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
           "RP 11 part 4": {
             "RP11part4": {
               "long_name": "RP set #11, question #4",
