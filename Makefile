@@ -152,7 +152,7 @@ CSE017: min
 	python $(CONFIG_SCRIPT) config/CSE017.json -c config/CSE017in_LMSconf.json -b CSE017S16
 
 CS3: min
-	python $(CONFIG_SCRIPT) config/CS3.json
+	python $(CONFIG_SCRIPT) config/CS3.json -c config/CS3_LMSconf.json -b CS3Test
 
 CS3vt: min
 	python $(CONFIG_SCRIPT) config/CS3.json -c config/CS3vt_LMSconf.json -b CS3vt
@@ -221,6 +221,9 @@ PL2in: min
 
 PLtest: min
 	python $(CONFIG_SCRIPT) config/PLtest.json -c config/PLtest_LMSconf.json -b PLtest
+
+CS3notes:
+	python $(CONFIG_SCRIPT) config/CS3notes.json -c config/CS3notes_LMSconf.json -b CS3114S16mynotes
 
 
 nomin:
