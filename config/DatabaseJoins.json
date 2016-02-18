@@ -23,14 +23,26 @@
       }
     },
     "Inner Joins": {
-      "Development/DatabaseJoins": {
+      "Development/DatabaseJoinsInner": {
         "long_name": "An Explanation of Inner Joins for Database Systems",
         "sections": {}
       }
     },
     "Left Outer Joins": {
-      "Development/LeftOuterJoins" : {
+      "Development/DatabaseJoinsLeftOuter": {
         "long_name": "An Explanation of Left Outer Joins for Database Systems",
+        "sections": {}
+      }
+    },
+    "Right Outer Joins": {
+      "Development/DatabaseJoinsRightOuter": {
+        "long_name": "An Explanation of Right Outer Joins for Database Systems",
+        "sections": {}
+      }
+    },
+    "Full Outer Joins": {
+      "Development/DatabaseJoinsFullOuter" : {
+        "long_name": "An Explanation of Full Outer Joins for Database Systems",
         "sections": {}
       }
     }
