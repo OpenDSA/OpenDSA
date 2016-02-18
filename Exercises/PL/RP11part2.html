@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html data-require="math fp" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 11 part 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1000" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP11part2p">
+          <p class="question">
+	    We want to use the <span class="string">fp.reduce</span>
+	    function to compute the average of a list of numbers, as in: 
+<pre class="string">
+> average( [ 2, 4, 1, 5 ] ) 
+3 
+</pre>
+	  <p class="question">The following implementation will work
+          as long as you replace the question marks on line 4 with the
+          correct expression.</p>
+<pre class="string">
+1.  var average = function (ns) {
+2.        var p = fp.reduce (
+3.                            function (x,y) {
+4.                                ????????????????????????
+5.                            },
+6.                            ns,
+7.                            [ 0 , 0 ]
+8.                          );
+9.        return fp.div(fp.hd(p),fp.hd(fp.tl(p)));
+10. };
+</pre>
+	  <p class="question">Which one of the following expressions
+	    must replace the question marks above?</p>
+	  <div class="solution">
+	    <span class="string">fp.makeList(fp.add(fp.hd(x),y),fp.add(fp.hd(fp.tl(x)),1));</span></div>
+          <ul class="choices">
+           <li><span class="string">fp.makeList(fp.add(x,fp.hd(y)),fp.add(1,fp.hd(fp.tl(y))));</span></li>
+           <li><span class="string">fp.makeList(fp.add(1,fp.hd(fp.tl(y))),fp.add(x,fp.hd(y)));</span></li>
+           <li><span class="string">fp.makeList(fp.add(1,fp.hd(fp.tl(y))),fp.add(fp.hd(x),y));</span></li>
+	    <li>None of the other expressions will work.</li>
+          </ul>
+
+          <div class="hints">
+	    <p>What is the formula for computing the average of a list
+	    of numbers?</p>
+	    <p>What is the semantics of the two arguments of the
+	    anonymous function in the code above?</p>
+	    <p>What is the structure of the accumulator in this case?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
