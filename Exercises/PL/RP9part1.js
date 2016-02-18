@@ -170,7 +170,7 @@ function (x) {
 		"var g = f(" + x + ");<br />";
 	    this.params = params;
 	    this.functionCall = "g( " + y + " )";
-	    console.log(answer);
+	    //console.log(answer);
 	},// init
 
 	checkAnswer: function (studentAnswer) {
