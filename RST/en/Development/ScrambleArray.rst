@@ -19,7 +19,7 @@ with elements equal to their respective indices. Then for each element in the ar
 that has an index that is greater than or equal its own index.
 
 .. inlineav:: ScrambleArray ss
-:output: show
+	:output: show
 
 
 .. odsascript:: AV/Development/ScrambleArray.js
