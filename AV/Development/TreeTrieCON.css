@@ -103,7 +103,7 @@
 /*=================== TreeTimeline ===================*/
 
 #TreeTimeline {
-  height: 540px;
+  height: 520px;
 }
 
 #TreeTimeline .jsavoutput.jsavline {
@@ -113,7 +113,7 @@
 /*=================== TrieTimeline ===================*/
 
 #TrieTimeline {
-  height: 500px;
+  height: 480px;
 }
 
 #TrieTimeline .jsavoutput.jsavline {

@@ -25,32 +25,29 @@ Binary Trees Part 3
    * Linear Structures: Lists, Stacks, Queues
       * Implementation and Analysis, space requirements
 
-   * Binary Trees: Notation, full binary tree theorem
+   * Binary Trees: Notation, full binary tree theorem, space analysis
 
-   * BST implementation and analysis
-
-   * Heaps
+   * BST implementation and analysis, compare to SkipList
 
 .. slide:: Spatial Data Structures
 
-   BST, SkipList handle a one dimensional key.
+   * BST, SkipList handle a one dimensional key.
 
-   What if we have 2 or more dimensions?
+   * What if we have 2 or more dimensions?
+      * Could concatenate sub-keys into one. But that makes one dimension
+        more important.
+      * We want all dimensions to be equally important.
 
-   * Could concatenate sub-keys into one. But that makes one dimension
-     more important.
-   * We want all dimensions to be equally important.
-
-   Keystone functionality: Regionsearch, nearest
+   * Keystone functionality: Regionsearch, nearest
 
 
 .. slide:: Spatial Data Structure (2)
 
-   Key design considerations:
+   * Key design considerations:
+      * Alternating dimensions vs. multiway splits
+      * Key space vs. Object space decomposition
+      * Decomposition rule
 
-   * Alternating dimensions vs. multiway splits
-   * Key space vs. Object space decomposition
-   * Decomposition rule
 
 .. slide:: PR Quadtree (1)
 
@@ -114,12 +111,11 @@ Binary Trees Part 3
 
 .. slide:: Design Patterns
 
-   Design patterns capture reusable pieces of design wisdom.
+   * Design patterns capture reusable pieces of design wisdom.
 
-   Goals:
-
-   * Quickly communicate design wisdom to new designers
-   * Give a shared vocabulary to designers
+   * Goals:
+      * Quickly communicate design wisdom to new designers
+      * Give a shared vocabulary to designers
 
 
 .. slide:: Composite (1)
@@ -145,24 +141,23 @@ Binary Trees Part 3
 
 .. slide:: Space Overhead (1)
 
-   From the Full Binary Tree Theorem:
+   * From the Full Binary Tree Theorem:
+      * Half of the pointers are null.
 
-   * Half of the pointers are null.
+   * If leaves store only data, then overhead depends on whether this
+     is full tree.
 
-   If leaves store only data, then overhead depends on whether the tree
-   is full.
+   * Ex: Full tree, all nodes the same, with two pointers to children and
+     one to element
 
-   Ex: Full tree, all nodes the same, with two pointers to children and
-   one to element:
-
-   * Total space required is :math:`(3p + d)n`
-   * Overhead: :math:`3pn`
-   * If :math:`p = d`, this means :math:`3p/(3p + d) = 3/4` overhead.
+      * Total space required is :math:`(3p + d)n`
+      * Overhead: :math:`3pn`
+      * If :math:`p = d`, this means :math:`3p/(3p + d) = 3/4` overhead.
 
 
 .. slide:: Space Overhead (2)
 
-   Eliminate pointers from the leaf nodes:
+   Eliminate pointers from the leaf nodes
 
    .. math::
 
