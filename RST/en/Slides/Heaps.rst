@@ -13,16 +13,35 @@
 Heaps
 =====
 
+.. slide:: Tree vs. Trie (1)
+
+   .. odsalink:: AV/Development/TreeTrieCON.css
+
+   .. inlineav:: TreeTimelineCON ss
+      :output: show
+
+   .. odsascript:: AV/Development/TreeTimelineCON.js
+
+
+.. slide:: Tree vs. Trie (2)
+
+   .. inlineav:: TrieTimelineCON ss
+      :output: show
+
+   .. odsascript:: AV/Development/TrieTimelineCON.js
+
+
 .. slide:: Complete Trees
    
+   .. odsalink:: AV/slides.css
    .. odsalink:: AV/Binary/heapbuildProofCON.css
   
+   .. _BinArray:
+
    .. figure:: Images/BinArray.png
-      :width: 200
+      :width: 300
       :align: center
       :alt: Complete binary tree node numbering
-
-      A complete binary tree of 12 nodes, numbered starting from 0.
 
    .. math::
 
@@ -79,10 +98,3 @@ Heaps
       :output: show
 
    .. odsascript:: AV/Binary/heapmaxCON.js
-
-.. slide:: Delete an arbitrary value
-
-   .. inlineav:: heapremoveCON ss
-      :output: show
-
-   .. odsascript:: AV/Binary/heapremoveCON.js
