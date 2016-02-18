@@ -19,7 +19,9 @@ Topics of the day:
 
 The review problem set for today contains four review problems.
 
-This first problem ...
+This first problem deals with the filtering pattern.
+
+.. avembed:: Exercises/PL/RP11part1.html ka
 
 RP 11 part 4
 ------------
