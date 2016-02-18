@@ -229,6 +229,9 @@ CS5114S15: min
 DatabaseJoins: min
 	python $(CONFIG_SCRIPT) config/DatabaseJoins.json --local
 
+JustinRandom: min
+	python $(CONFIG_SCRIPT) config/JustinRandom.json --local
+
 ECE252: min
 	python $(CONFIG_SCRIPT) config/ECE252S15.json
 

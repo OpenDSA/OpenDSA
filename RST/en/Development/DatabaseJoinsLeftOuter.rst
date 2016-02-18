@@ -7,17 +7,28 @@
    :author: RJ Freund, Justin Gottschalk, Shane Livieri
 
 ============================================================
-Understanding Database Joins
+Left Outer Join Textual
 ============================================================
 
-This is a test
------------------------
 
-
-The following slideshow demonstrates a test.
+============================================================
+Left Outer Join Slideshow Demo
+============================================================
+TODO: Add InnerJoin Slideshow
 
 .. inlineav:: DatabaseJoins ss
    :output: show
+
+
+============================================================
+Left Outer Join Embedded Demo
+============================================================
+
+
+============================================================
+Left Outer Join Practice
+============================================================
+
 
 
 .. odsascript:: AV/Development/DatabaseJoins.js

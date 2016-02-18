@@ -1,0 +1,32 @@
+{
+  "title": "JustinRandom",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+  },
+  "lang": "en",
+  "module_origin": "http://algoviz.org",
+  "exercise_server": "https://opendsa.cs.vt.edu/",
+  "logging_server": "https://opendsa.cs.vt.edu/",
+  "score_server": "https://opendsa.cs.vt.edu/",
+  "build_JSAV": false,
+  "allow_anonymous_credit": true,
+  "suppress_todo": false,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "chapters": {
+    "Preface": {
+      "Intro": {
+        "long_name": "How to Use this System",
+        "sections": {}
+      }
+    },
+    "JustinRandom Overview": {
+      "Development/JustinRandom": {
+        "long_name": "Explanation and Visualization of the JustinRandom Algorithm",
+        "sections": {}
+      }
+    }
+  }
+}

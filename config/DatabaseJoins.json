@@ -1,5 +1,5 @@
 {
-  "title": "Database Joins Book",
+  "title": "Database Joins Introduction",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
@@ -22,9 +22,27 @@
         "sections": {}
       }
     },
-    "A Simple Example": {
-      "Development/DatabaseJoins": {
-        "long_name": "DatabaseJoins Example",
+    "Inner Joins": {
+      "Development/DatabaseJoinsInner": {
+        "long_name": "An Explanation of Inner Joins for Database Systems",
+        "sections": {}
+      }
+    },
+    "Left Outer Joins": {
+      "Development/DatabaseJoinsLeftOuter": {
+        "long_name": "An Explanation of Left Outer Joins for Database Systems",
+        "sections": {}
+      }
+    },
+    "Right Outer Joins": {
+      "Development/DatabaseJoinsRightOuter": {
+        "long_name": "An Explanation of Right Outer Joins for Database Systems",
+        "sections": {}
+      }
+    },
+    "Full Outer Joins": {
+      "Development/DatabaseJoinsFullOuter" : {
+        "long_name": "An Explanation of Full Outer Joins for Database Systems",
         "sections": {}
       }
     }
