@@ -14,9 +14,7 @@ Inner Join Textual
 ============================================================
 Inner Join Slideshow Demo
 ============================================================
-TODO: Add InnerJoin Slideshow
-
-.. inlineav:: DatabaseJoins ss
+.. inlineav:: DatabaseJoinsInnerSlideshow ss
    :output: show
 
 
@@ -31,4 +29,4 @@ Inner Join Practice
 
 
 
-.. odsascript:: AV/Development/DatabaseJoins.js
+.. odsascript:: AV/Development/DatabaseJoinsInnerSlideshow.js
