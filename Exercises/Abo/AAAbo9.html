@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>Algorithm Analysis Exercise: Ordering question 1</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+
+<style>
+  #sortable { list-style-type: none; margin: 0; padding: 0; width: 30%; }
+  #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.1em; height: 18px; }
+  #sortable li span { position: absolute; margin-left: -1.3em; }
+  </style>
+
+
+</head>
+
+<body>
+<div class="exercise">
+
+<script>
+  $(function() {
+    $( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
+  });
+  </script>
+ 
+<p> <b> <font size="3">Arrange the following items in the order of complexity, with the lowest complex on top and the highest complex on the bottom: </font></b> </p> 
+<font size="3">
+<ul style="cursor: pointer" id="sortable">
+  <li id="3" class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>O ( N&#178 )</li>
+  <li id="4" class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>O ( N&#179 )</li>
+  <li id="1" class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>O ( 1 )</li>
+  <li id="2" class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>O ( N )</li>
+</ul>
+</font>
+
+  <div class="problems">
+    <div id="problem-type-or-description">
+       <script> 
+             var items = [];
+
+             function checkAnswer() { 
+                                      $("#sortable").children().each(function (i) {
+                                            var li = $(this);
+                                            items[i] = li.attr("id"); 
+                                      });
+                                      if ( items[0] == 1 && items[1] == 2 && 
+                                           items[2] == 3 && items[3] == 4 ) return true; else return false; } 
+                                      var check; check = true; 
+          </script>
+            <div class="solution" data-type="custom">
+                <div class="guess"> [ check ] </div>
+                  <div class="validator-function"> 
+                      return checkAnswer(); 
+                  </div>
+         </div>
+      <div class="hints">
+      </div> 
+    </div>
+  </div>
+</div>
+</body>
+</html>

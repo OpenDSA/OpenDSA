@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>Algorithm Analysis Exercise: Error guessing question 1</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+
+
+</head>
+
+<script> var a; </script>
+
+<body>
+
+<div class="exercise">
+
+<font size="3"> <p> <b> Select the <u>wrong</u> word in the following sentence by clicking on it: </font> </b> </p>
+
+<script type="text/javascript"> 
+
+    $( document ).ready( function() {
+        var p = $( "p", "#sentence" );
+        $.each( p, function( i, obj ){
+            $( obj ).attr( "class", "highlightable" );
+            obj.innerHTML = "<per>" + obj.innerHTML.split(" ").join( "</per> <per>" ) + "</per>";
+        });
+
+        $( ".highlightable per", "#sentence" )
+            .on( "click", function(){
+                $( "per", $( this ).parent() )
+                    .css( "background-color", ""); 
+                $( this )
+                    .css( "background-color", "#ffff45" ); 
+                 a = this.innerText;
+                
+            });
+    });
+</script>
+
+  <div class="problems">
+    <div id="problem-type-or-description">
+          <script> 
+             function checkAnswer() { if (a == 'program') { a = ""; return true; } else return false; } 
+             var check; check = false; 
+          </script>
+
+<div id="sentence">
+    <p style="cursor: pointer; font-size:16px">Asymptotic program analysis allows us to compare the relative costs of two or more algorithms.</p>
+
+</div>
+            <div class="solution" data-type="custom">
+                <div class="guess"> [ check ] </div>
+                  <div class="validator-function"> 
+                      return checkAnswer(); 
+                  </div>
+         </div>
+      <div class="hints">
+	
+      </div> 
+    </div>
+  </div>
+</div>
+</body>
+</html>

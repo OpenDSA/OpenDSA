@@ -15,7 +15,10 @@ RP 10 part 1
 
 Topics of the day:
 
-  1. To do 
+  1. Procedural abstraction
+  2. Mapping pattern
+  3. Currying
+  4. Function composition
 
 The review problem set for today contains four review problems.
 

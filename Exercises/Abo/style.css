@@ -1,0 +1,91 @@
+body {
+  margin: 30px;
+  font-family: "Georgia", serif;
+  line-height: 1.8em;
+  color: #333;
+}
+
+/* Give font to the headings*/
+
+he1, he2, he3, he4 {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+/* Contents area */
+
+#content {
+  margin: 80px 70px;
+  text-align: center;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Inserts for final positions */
+
+#inserts {
+  margin: 50px auto 0 auto;
+  background: purple;
+}
+
+/* The unsorted stack */
+
+#stack {
+  margin: 0 auto;
+  background: #87CEFA;
+}
+
+#inserts, #stack {
+  width: 460px;
+  height: 120px;
+  padding: 20px;
+  border: 1px solid #333;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+  box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+}
+
+/* Individual answers and inserts */
+
+#inserts div, #stack div {
+  float: left;
+  width: 58px;
+  height: 78px;
+  padding: 10px;
+  padding-top: 40px;
+  padding-bottom: 0;
+  border: 1px solid #333;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  margin: 0 0 0 10px;
+  background: #fff;
+}
+
+#inserts div:first-child, #cardPile div:first-child {  
+margin-left: 0;
+}
+
+#inserts div.hovered {
+  background: #866;
+}
+
+#inserts div {
+  border-style: dotted;
+}
+
+#stack div {
+  background: #686;
+  color: #fff;
+  font-size: 17px;
+  text-shadow: 0 0 3px #000;
+}
+
+#stack div.ui-draggable-dragging {
+  -moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+  box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+}

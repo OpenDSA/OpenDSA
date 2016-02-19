@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>Algorithm Analysis Exercise: Fill in the blank question 1</title>
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+</head>
+
+<body>
+<div class="exercise">
+
+<p> <b> <font size="3">Fill in the following question with the appropriate answers: </font></b> </p>
+$(function() {
+    $( "#choice1" ).selectmenu();
+    $( "#choice2" ).selectmenu();
+});
+
+<font size="3">
+<fieldset>
+    <label for="choice1">A(n)</label>
+    <select name="choice1" id="choice1">
+      <option>algorithm</option>
+      <option>flow chart</option>
+      <option selected="selected">sketch</option>
+      <option>program</option>
+    </select>
+    <label for="choice2">is a method or a process followed to solve a problem, and a(n)</label>
+    <select name="choice2" id="choice2">
+      <option>algorithm</option>
+      <option selected="selected">flow chart</option>
+      <option>sketch</option>
+      <option>problem</option>
+    </select>
+<p\n>is a task to be performed.</p>
+</fieldset>
+</font>
+  <div class="problems">
+    <div id="problem-type-or-description">
+          <script> 
+             function checkAnswer() { var check1 = $( "#choice1" ).val(); var check2 = $( "#choice2" ).val();
+                                      if (check1 == "algorithm" && check2 == "problem")  return true; else return false; } 
+             var check; check = false; 
+          </script>
+            <div class="solution" data-type="custom">
+                <div class="guess"> [ check ] </div>
+                  <div class="validator-function"> 
+                      return checkAnswer(); 
+                  </div>
+         </div>
+      <div class="hints">
+	
+      </div> 
+    </div>
+  </div>
+</div>
+</body>
+</html>
