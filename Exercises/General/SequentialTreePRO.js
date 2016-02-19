@@ -47,7 +47,7 @@
   };
 
   function randomNode(bt, root, value) {
-    if (root === null) return bt.newNode(value);
+    if (root === undefined) return bt.newNode(value);
     if ((Math.floor(Math.random() * 100) % 2) === 1) {
       root.left(randomNode(bt, root.left(), value));
     } else {
