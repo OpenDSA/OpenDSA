@@ -101,9 +101,7 @@
       "Slides/Interruptions": {
         "long_name": "Memory cues and resumption strategies",
         "exercises" : {}
-      }
-    },
-    "Binary Trees": {
+      },
       "Slides/Heaps": {
         "long_name": "Heaps and Priority Queues",
         "exercises": {
@@ -140,17 +138,6 @@
           },
           "heapremoveCON": {
             "long_name": "Remove Any Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          }
-        }
-      },
-      "Slides/InsertionSort": {
-        "long_name": "Insertion Sort",
-        "exercises" : {
-          "insertionsortCON": {
-            "long_name": "Insertion Sort Slideshow",
             "required": false,
             "points": 0.0,
             "threshold": 1.0

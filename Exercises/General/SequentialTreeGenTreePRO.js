@@ -37,7 +37,7 @@
         if (node.child(0)) {
           var i = 0;
           var temp = node.child(i);
-          while (temp !== null) {
+          while (temp !== undefined) {
             preorderNode(temp);
             temp = node.child(++i);
           }
