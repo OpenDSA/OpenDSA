@@ -228,6 +228,9 @@ PLtest: min
 CS3notes: min
 	python $(CONFIG_SCRIPT) config/CS3notes.json -c config/CS3notes_LMSconf.json -b CS3notes
 
+CS3114notes: min
+	python $(CONFIG_SCRIPT) config/CS3notes.json -c config/CS3114notes_LMSconf.json -b CS3114notes
+
 
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
