@@ -18,7 +18,7 @@
 var compose = function (f,g) {
                  return function (x) {
                     return f(g(x));
-                 };
+              };
 };
 var f = function (x) { return 4 * x - 3; };
 var g = function (x) { return 2 * x + 2; };
