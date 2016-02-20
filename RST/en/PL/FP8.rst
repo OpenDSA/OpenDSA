@@ -48,3 +48,15 @@ problem use the :math:`gcd` function introduced in the first problem
 in this set, but you do not need to remember how it was implemented.
 
 .. avembed:: Exercises/PL/RP12part3.html ka
+
+
+RP 12 part 4
+------------
+
+This review problem is the last one in a sequence of three problems
+that require you to complete the implementation of a recursive
+function that uses continuation-passing style programming. This
+problem use the :math:`gcd` function introduced in the first problem
+in this set, but you do not need to remember how it was implemented.
+
+.. avembed:: Exercises/PL/RP12part4.html ka
