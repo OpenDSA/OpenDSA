@@ -6,13 +6,9 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-.. slideconf::
-   :autoslides: False
-
-
-==================
+===================
 Program Management
-==================
+===================
 
    * Project management is a skill
       * It has to be learned
@@ -22,9 +18,9 @@ Program Management
    * This semester, we will pay a lot of attention to your **process**
       * We are working on ways to grade process
 
-==================
+
 Scheduling
-==================
+~~~~~~~~~~~~~~~~
 
    * Managing large-scale projects involves scheduling activities
       * It is human nature to work better toward intermediate milestones.
@@ -45,9 +41,9 @@ Scheduling
    projects). The key thing is to write down any details that occur to
    you that you don't want to deal with right this instant.
 
-==================
+
 Historical Data
-==================
+~~~~~~~~~~~~~~~~
 
    .. _ProgramerData:
 
@@ -60,9 +56,9 @@ Historical Data
      due date.
    * Y axis is score.
 
-==================
+
 Historical Data 2
-==================
+~~~~~~~~~~~~~~~~~~
 
    * Results were significant:
 
@@ -74,18 +70,18 @@ Historical Data 2
       * Some did well who didn’t put in >50% time early, but most who did well
         put in the early time
 
-==================
+
 Historical Data 3
-==================
+~~~~~~~~~~~~~~~~~~
 
    * Correlations:
       * Strong correlation between early time and high score
       * No correlation between total time spent and score
       * No correlation between % early time and total time
 
-==================
+
 What is the Mechanism?
-==================
+~~~~~~~~~~~~~~~~~~~~~~~
 
    * Correlations do not necessarily mean causation
       * Do they behave that way because they are good, or does
@@ -99,16 +95,15 @@ What is the Mechanism?
       * Avoiding the “zombie” effect makes people more productive
         (and cuts time requirements)
 
-==================
+
 How to fail at implementing your project:
-==================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
      * Write the project
      * Debug the project
 
-==================
 How to succeed at implementing your project
-==================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    * Write the smallest possible kernel
    * Debug the kernel thoroughly
@@ -121,9 +116,8 @@ How to succeed at implementing your project
    * Do structural design before implementation
    * Implement the tricky parts last
 
-==================
 How to Survive
-==================
+~~~~~~~~~~~~~~~~
 
    * Keys to success:
    * Keeping Track of all the details
@@ -133,9 +127,8 @@ How to Survive
    * Incremental Development
       * Interleave writing and debugging
 
-==================
 Being Organized 1
-==================
+~~~~~~~~~~~~~~~~~~~
 
    * Software development has so many details
       * Spec requirements
@@ -144,9 +137,8 @@ Being Organized 1
    * So does Life
       * Assignments and other things to do
 
-==================
 Being Organized 2
-==================
+~~~~~~~~~~~~~~~~~~
 
    * You can't turn this on/off
       * Either you get in the habit of developing in an organized way,
@@ -162,9 +154,8 @@ Being Organized 2
    The bad news is that they tend not to pay well. Many of these jobs
    involve hamburgers.
 
-==================
 Memory Can't Handle It
-==================
+~~~~~~~~~~~~~~~~~~~~~~~
 
    * Externalize
       * TODO lists (What)
@@ -175,9 +166,8 @@ Memory Can't Handle It
 
    * Repository: GitHub
 
-==================
 Spread Work Over Time
-==================
+~~~~~~~~~~~~~~~~~~~~~~~
 
    * For anything beyond a small software project, you must have a
      plan/schedule
@@ -188,9 +178,8 @@ Spread Work Over Time
       * Realistic, enough flexibility built in
       * Continuously modify and refine the plan
 
-==================
 Incremental Development
-==================
+~~~~~~~~~~~~~~~~~~~~~~~~
 
    * Break the project into a small initial core
    * Implement and TEST and COMMENT the core

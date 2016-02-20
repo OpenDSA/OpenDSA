@@ -6,16 +6,12 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-.. slideconf::
-   :autoslides: False
-
 ===================
 Binary Trees Part 3
 ===================
 
-===================
 Midterm 1
-===================
+~~~~~~~~~~~
 
    Midterm 1 is Tuesday, February 23
 
@@ -31,9 +27,8 @@ Midterm 1
 
    * BST implementation and analysis, compare to SkipList
 
-===================
 Spatial Data Structures
-===================
+~~~~~~~~~~~~~~~~~~~~~~~~
 
    * BST, SkipList handle a one dimensional key.
 
@@ -44,18 +39,16 @@ Spatial Data Structures
 
    * Keystone functionality: Regionsearch, nearest
 
-===================
 Spatial Data Structure (2)
-===================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    * Key design considerations:
       * Alternating dimensions vs. multiway splits
       * Key space vs. Object space decomposition
       * Decomposition rule
 
-===================
 PR Quadtree (1)
-===================
+~~~~~~~~~~~~~~~~
 
    .. odsafig:: Images/PRexamp.png
       :width: 700
@@ -64,9 +57,8 @@ PR Quadtree (1)
       :figwidth: 90%
       :alt: Example of a PR quadtree
 
-===================
 PR Quadtree (2)
-===================
+~~~~~~~~~~~~~~~
 
    .. odsafig:: Images/PRinsert.png
       :width: 700
@@ -75,9 +67,8 @@ PR Quadtree (2)
       :figwidth: 90%
       :alt: PR quadtree insertion example.
 
-===================
 Binary Tree Implementation
-===================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    .. odsafig:: Images/BinLink.png
       :width: 600
@@ -86,9 +77,8 @@ Binary Tree Implementation
       :figwidth: 90%
       :alt: Binary tree node implementation
 
-===================
 Binary Tree Implementation (2)
-===================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    .. odsafig:: Images/DiffNode.png
       :width: 400
@@ -97,23 +87,20 @@ Binary Tree Implementation (2)
       :figwidth: 90%
       :alt: Expression Tree
 
-===================
 Inheritance (1)
-===================
+~~~~~~~~~~~~~~~~
 
    .. codeinclude:: Binary/ExpressionTree
       :tag: ExpressionTree1
 
-===================
 Inheritance (2)
-===================
+~~~~~~~~~~~~~~~
 
    .. codeinclude:: Binary/ExpressionTree
       :tag: ExpressionTree2
 
-===================
 Inheritance (3)
-===================
+~~~~~~~~~~~~~~~~
 
    .. odsalink:: AV/Binary/BTCON.css
 
@@ -122,9 +109,9 @@ Inheritance (3)
 
    .. odsascript:: AV/Binary/expressionTraversalCON.js
 
-===================
+
 Design Patterns
-===================
+~~~~~~~~~~~~~~~~
 
    * Design patterns capture reusable pieces of design wisdom.
 
@@ -132,37 +119,35 @@ Design Patterns
       * Quickly communicate design wisdom to new designers
       * Give a shared vocabulary to designers
 
-===================
+
 Composite (1)
-===================
+~~~~~~~~~~~~~~~
 
    .. codeinclude:: Binary/ExpressionTreeC
       :tag: Composite1
 
-===================
+
 Composite (2)
-===================
+~~~~~~~~~~~~~~~
 
    .. codeinclude:: Binary/ExpressionTreeC
       :tag: Composite2
 
-===================
+
 Composite (3)
-===================
+~~~~~~~~~~~~~~
 
    .. codeinclude:: Binary/ExpressionTreeC
       :tag: Composite3
 
-===================
 Flyweight Design Pattern
-===================
+~~~~~~~~~~~~~~~~~~~~~~~~
 
    (Otherwise) multiple copies of a stateless object, all references
    pointing to the same copy.
 
-===================
 Space Overhead (1)
-===================
+~~~~~~~~~~~~~~~~~~~~
 
    * From the Full Binary Tree Theorem:
       * Half of the pointers are null.
@@ -177,9 +162,8 @@ Space Overhead (1)
       * Overhead: :math:`3pn`
       * If :math:`p = d`, this means :math:`3p/(3p + d) = 3/4` overhead.
 
-===================
 Space Overhead (2)
-===================
+~~~~~~~~~~~~~~~~~~~
 
    Eliminate pointers from the leaf nodes
 

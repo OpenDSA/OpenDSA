@@ -6,16 +6,12 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-.. slideconf::
-   :autoslides: False
-
 ==========
 Clean Code
 ==========
 
-==========
 Example 1
-==========
+~~~~~~~~~~
 
    * A real bug from some code for an OpenDSA exercise.
      You don't need to know much about the language to recognize
@@ -34,9 +30,8 @@ Example 1
       <li><var><code>O(\log n)  </code><var></li>
       <li><var><code>O(1)       </code></var></li>
 
-==========
 Example 2
-==========      
+~~~~~~~~~~
 
    * A real sample of code::
 

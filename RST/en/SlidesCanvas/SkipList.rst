@@ -6,16 +6,13 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-.. slideconf::
-   :autoslides: False
-
 =========
 SkipLists
 =========
 
-==================
+
 SkipList Idea
-==================
+~~~~~~~~~~~~~~~
 
    .. odsafig:: Images/SkipList.png
       :height: 500
@@ -24,9 +21,9 @@ SkipList Idea
       :figwidth: 90%
       :alt: Ideal Skip List
 
-==================
+
 SkipList Reality
-==================
+~~~~~~~~~~~~~~~~~
 
    .. odsafig:: Images/SkipExamp.png
       :height: 500
@@ -35,9 +32,9 @@ SkipList Reality
       :figwidth: 90%
       :alt: Ideal Skip List
 
-==================
+
 Programming Principles
-==================
+~~~~~~~~~~~~~~~~~~~~~~
 
    #. All container classes should be general.
    #. Any container class's initial state should be identical to its

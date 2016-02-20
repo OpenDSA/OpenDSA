@@ -6,16 +6,12 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-.. slideconf::
-   :autoslides: False
-
 ===================
 Binary Trees Part 1
 ===================
 
-===================
 Binary Trees
-===================
+~~~~~~~~~~~~
 
    .. odsalink:: AV/Binary/BinExampCON.css
 
@@ -32,9 +28,8 @@ Binary Trees
 
    .. odsascript:: AV/Binary/BinExampCON.js
 
-===================
 A Recursive Data Structure
-===================
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    .. odsalink:: AV/Binary/RecursiveDSCON.css
 
@@ -47,16 +42,14 @@ A Recursive Data Structure
    .. odsascript:: AV/Binary/ListRecDSCON.js
    .. odsascript:: AV/Binary/BinRecDSCON.js
 
-===================
 Binary Tree Node Class
-===================
+~~~~~~~~~~~~~~~~~~~~~~~~
 
    .. codeinclude:: Binary/BinNode
       :tag: BinNode
 
-===================
 Question
-===================
+~~~~~~~~~
 
    * Write a recursive function named **count** that, given the root to a
      binary tree, returns a count of the number of nodes in the
@@ -64,9 +57,8 @@ Question
 
         int count(BinNode root)
 
-===================
 Traversals
-===================
+~~~~~~~~~~~
 
    * Any process for visiting the nodes in some order is called a
      **traversal**.
@@ -81,16 +73,14 @@ Traversals
    * Inorder traversal: Visit the left subtree, then the node, then the
      right subtree.
 
-===================
 Preorder Traversal (1)
-===================
+~~~~~~~~~~~~~~~~~~~~~~~
 
    .. codeinclude:: Binary/Preorder
       :tag: preorder
 
-===================
 Preorder Traversal (2)
-===================
+~~~~~~~~~~~~~~~~~~~~~~~
 
    .. odsalink:: AV/Binary/BTCON.css
 
@@ -99,16 +89,14 @@ Preorder Traversal (2)
 
    .. odsascript:: AV/Binary/preorderCON.js
 
-===================
 How not to write a traversal
-===================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    .. codeinclude:: Binary/Preorder
       :tag: preorder2
 
-===================
 Recursion Examples
-===================
+~~~~~~~~~~~~~~~~~~~~
 
    .. odsalink:: AV/Binary/WriteTrav.css
 
@@ -120,9 +108,8 @@ Recursion Examples
 
    .. odsascript:: AV/Binary/BinaryTreeMistakesCON.js
 
-===================
 Full and Complete Binary Trees
-===================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    .. odsalink:: AV/Binary/FullCompCON.css
 
@@ -138,9 +125,8 @@ Full and Complete Binary Trees
 
    .. odsascript:: AV/Binary/FullCompCON.js
 
-===================
 Full Binary Tree Theorem (1)
-===================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    **Theorem:** The number of leaves in a non-empty full binary tree
    is one more than the number of internal nodes.
@@ -153,9 +139,8 @@ Full Binary Tree Theorem (1)
    **Induction Hypothesis:** Assume any full binary tree **T** containing
    :math:`n-1` internal nodes has :math:`n` leaves.
 
-===================
 Full Binary Tree Theorem (2)
-===================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    **Induction Step:** Given tree **T** with :math:`n` internal nodes,
    pick internal node :math:`I` with two leaf children.
@@ -169,9 +154,8 @@ Full Binary Tree Theorem (2)
    :math:`n`.
    The number of leaves has also gone up by 1.
 
-===================
 Full Binary Tree Corollary
-===================
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    **Theorem:** The number of null pointers in a non-empty tree is one
    more than the number of nodes in the tree.

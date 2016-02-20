@@ -6,14 +6,12 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-.. slideconf::
-   :autoslides: False
-
 =====
 Heaps
 =====
 
-.. slide:: Tree vs. Trie (1)
+Tree vs. Trie (1)
+~~~~~~~~~~~~~~~~~~~
 
    .. odsalink:: AV/Development/TreeTrieCON.css
 
@@ -23,7 +21,8 @@ Heaps
    .. odsascript:: AV/Development/TreeTimelineCON.js
 
 
-.. slide:: Tree vs. Trie (2)
+Tree vs. Trie (2)
+~~~~~~~~~~~~~~~~~~~
 
    .. inlineav:: TrieTimelineCON ss
       :output: show
@@ -31,8 +30,9 @@ Heaps
    .. odsascript:: AV/Development/TrieTimelineCON.js
 
 
-.. slide:: Complete Trees
-   
+Complete Trees
+~~~~~~~~~~~~~~~~~~~
+
    .. odsalink:: AV/slides.css
    .. odsalink:: AV/Binary/heapbuildProofCON.css
   
@@ -67,7 +67,8 @@ Heaps
       \end{array}
 
 
-.. slide:: Heap insert
+Heap insert
+~~~~~~~~~~~~~
 
    .. inlineav:: heapinsertCON ss
       :output: show
@@ -76,7 +77,8 @@ Heaps
    .. odsascript:: AV/Binary/heapinsertCON.js
 
 
-.. slide:: Building a Heap
+Building a Heap
+~~~~~~~~~~~~~~~~~
 
    .. inlineav:: heapbuildCON ss
       :output: show
@@ -84,7 +86,8 @@ Heaps
    .. odsascript:: AV/Binary/heapbuildCON.js
 
 
-.. slide:: Building a Heap Proof
+Building a Heap Proof
+~~~~~~~~~~~~~~~~~~~~~~
 
    .. inlineav:: heapbuildProofCON ss
       :output: show
@@ -92,7 +95,8 @@ Heaps
    .. odsascript:: AV/Binary/heapbuildProofCON.js
 
 
-.. slide:: Delete the maximum value
+Delete the maximum value
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
    .. inlineav:: heapmaxCON ss
       :output: show

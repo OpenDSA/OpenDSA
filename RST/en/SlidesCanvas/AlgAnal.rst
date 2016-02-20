@@ -8,16 +8,12 @@
 
 .. odsalink:: AV/AlgAnal/ProblemAlgorithmCON.css
 
-.. slideconf::
-   :autoslides: False
-
 ==================
 Algorithm Analysis
 ==================
 
-==================
 Algorithm Efficiency
-==================
+~~~~~~~~~~~~~~~~~~~~
    There are often many approaches (algorithms) to solve a problem.
    How do we choose between them?
 
@@ -32,9 +28,8 @@ Algorithm Efficiency
 
     Goal (2) is the concern of data structures and algorithm analysis
 
-==================
 How to Measure Efficiency?
-==================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    #. Empirical comparison (run programs)
    #. Asymptotic Algorithm Analysis
@@ -48,27 +43,24 @@ How to Measure Efficiency?
    * Running time is expressed as :math:`\mathbf{T}(n)` for some
      function :math:`\mathbf{T}` on input size :math:`n`.
 
-==================
 Problems, Algorithms, Programs
-==================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    .. inlineav:: ProblemAlgorithmCON ss
       :output: show
 
    .. odsascript:: AV/AlgAnal/ProblemAlgorithmCON.js
 
-==================
 Growth Rate Example (1)
-==================
+~~~~~~~~~~~~~~~~~~~~~~~~
 
    Example 1: Find largest value
 
    .. codeinclude:: Misc/LargestTest
       :tag: Largest
 
-==================
 Growth Rate Example (2)
-==================
+~~~~~~~~~~~~~~~~~~~~~~~
 
    Example 2: Assignment statement
 
@@ -77,9 +69,8 @@ Growth Rate Example (2)
    .. codeinclude:: Misc/Anal 
       :tag: c3p4
 
-==================
 Growth Rate Graph
-==================
+~~~~~~~~~~~~~~~~~~
 
    .. odsafig:: Images/plot.png
       :height: 500
@@ -88,9 +79,8 @@ Growth Rate Graph
       :figwidth: 90%
       :alt: The growth rates for five equations
 
-==================
 Best, Worst, Average Cases
-==================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    Not all inputs of a given size take the same time to run.
 
@@ -105,18 +95,16 @@ Best, Worst, Average Cases
 
    Average case:
 
-==================
 Which Analysis to Use?
-==================
+~~~~~~~~~~~~~~~~~~~~~~~~
 
    * While average time appears to be the fairest measure, it may be
      difficult to determine.
 
    * When is the worst case time important?
 
-==================
 Faster Computer or Algorithm?
-==================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    Suppose we buy a computer 10 times faster.
 
@@ -126,9 +114,8 @@ Faster Computer or Algorithm?
    * n’: size of input that can be processed in one second on new computer
      (in 10,000 computational units)
 
-==================
 Faster Computer or Algorithm? 2
-==================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    .. math::
 
@@ -146,9 +133,8 @@ Faster Computer or Algorithm? 2
       2^n         & 13   & 16     & n' = n + 3             & --\\
       \end{array}
 
-==================
 Asymptotic Analysis: Big-oh
-==================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    Definition: For :math:`\mathbf{T}(n)` a non-negatively valued
    function, :math:`\mathbf{T}(n)` is in the set :math:`O(f(n))` if
@@ -162,9 +148,8 @@ Asymptotic Analysis: Big-oh
    the algorithm always executes in less than :math:`cf(n)` steps in
    the [best, average, worst] case.
 
-==================
 Big-oh Notation (cont)
-==================
+~~~~~~~~~~~~~~~~~~~~~~~~
 
    Big-oh notation indicates an upper bound.
 
@@ -176,10 +161,8 @@ Big-oh Notation (cont)
    * While :math:`\mathbf{T}(n) = 3n^2` is in :math:`O(n^3)`, we
      prefer :math:`O(n^2)`.
 
-
-==================
 Big-Oh Examples
-==================
+~~~~~~~~~~~~~~~~
 
    Example 1: Finding value X in an array (average cost).
 
@@ -191,9 +174,8 @@ Big-Oh Examples
    and :math:`c = c_s`.
    Hence, :math:`\textbf{T}(n)` is in :math:`O(n)`.
 
-==================
 Big-Oh Examples (2)
-==================
+~~~~~~~~~~~~~~~~~~~
 
    Example 2: Suppose :math:`\textbf{T}(n) = c_{1}n^2 + c_{2}n`, where
    :math:`c_1` and :math:`c_2` are positive. 
@@ -209,9 +191,8 @@ Big-Oh Examples (2)
    Example 3: :math:`\textbf{T}(n) = c`.  Then :math:`\textbf{T}(n)`
    is in :math:`O(1)`.
 
-==================
 A Common Misunderstanding
-==================
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
    “The best case for my algorithm is n=1 because that is the fastest.”
 
@@ -222,9 +203,8 @@ A Common Misunderstanding
    Best case is defined for the input of size n that is cheapest among
    all inputs of size :math:`n`.
 
-==================
 Big-Omega :math:`\Omega`
-==================
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
    Definition: For :math:`\textbf{T}(n)` a non-negatively valued
    function, :math:`\textbf{T}(n)` is in the
@@ -237,9 +217,8 @@ Big-Omega :math:`\Omega`
 
    Lower bound.
 
-==================
 Big-Omega Example
-==================
+~~~~~~~~~~~~~~~~~~
 
    :math:`\textbf{T}(n) = c_1n^2 + c_2n`.
 
@@ -252,9 +231,8 @@ Big-Omega Example
 
    We want the greatest lower bound.
 
-==================
 Theta Notation :math:`\Theta`
-==================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    When big-Oh and :math:`\Omega` coincide, we indicate this by using 
    :math:`\Theta` (big-Theta) notation.
@@ -262,9 +240,8 @@ Theta Notation :math:`\Theta`
    Definition: An algorithm is said to be in :math:`\Theta(h(n))` if
    it is in :math:`O(h(n))` and it is in :math:`\Omega(h(n))`.
 
-==================
 A Common Misunderstanding
-==================
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    Confusing worst case with upper bound.
 
@@ -273,9 +250,8 @@ A Common Misunderstanding
    Worst case refers to the worst input from among the choices for
    possible inputs of a given size.
 
-==================
 Simplifying Rules
-==================
+~~~~~~~~~~~~~~~~~~
 
    #. If :math:`f(n)` is in :math:`O(g(n))` and :math:`g(n)` is in
       :math:`O(h(n))`, then :math:`f(n)` is in :math:`O(h(n))`.
@@ -291,9 +267,8 @@ Simplifying Rules
       in :math:`O(g_2(n))`, then :math:`f_1(n)f_2(n)` is in
       :math:`O(g_1(n)g_2(n))`.
 
-==================
 Time Complexity Examples (1)
-==================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    Example: a = b;
 
@@ -304,45 +279,40 @@ Time Complexity Examples (1)
    .. codeinclude:: Misc/Anal 
       :tag: c3p3
 
-==================
 Time Complexity Examples (2)
-==================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    Example:
 
    .. codeinclude:: Misc/Anal
       :tag: c3p4
 
-==================
 Time Complexity Examples (3)
-==================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    Example: Compare these two code fragments:
 
    .. codeinclude:: Misc/Anal 
       :tag: c3p5
 
-==================
 Time Complexity Examples (4)
-==================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    Not all double loops are :math:`\Theta(n^2)`.
 
    .. codeinclude:: Misc/Anal
       :tag: c3p6
 
-==================
 Binary Search
-==================
+~~~~~~~~~~~~~~
 
    How many elements are examined in worst case?
 
    .. codeinclude:: Searching/Bsearch
       :tag: BinarySearch
 
-==================
 Other Control Statements
-==================
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
    while loop: Analyze like a for loop.
 
@@ -352,17 +322,15 @@ Other Control Statements
 
    Subroutine call: Complexity of the subroutine.
 
-==================
 Analyzing Problems
-==================
+~~~~~~~~~~~~~~~~~~
 
    Upper bound: Upper bound of best known algorithm.
 
    Lower bound: Lower bound for every possible algorithm.
 
-==================
 Analyzing Problems: Example
-==================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    May or may not be able to obtain matching upper and lower bounds.
 
@@ -373,9 +341,8 @@ Analyzing Problems: Example
    3. A better sort (Quicksort, Mergesort, Heapsort, etc.): :math:`O(n \log n)`.
    4. We prove later that sorting is in :math:`\Omega(n \log n)`.
 
-==================
 Space/Time Tradeoff Principle
-==================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    One can often reduce time if one is willing to sacrifice space, or
    vice versa.
@@ -389,9 +356,8 @@ Space/Time Tradeoff Principle
    Disk-based Space/Time Tradeoff Principle: The smaller you make the
    disk storage requirements, the faster your program will run.
 
-==================
 Multiple Parameters
-==================
+~~~~~~~~~~~~~~~~~~~
 
    Compute the rank ordering for all C pixel values in a picture of P
    pixels.
@@ -403,9 +369,8 @@ Multiple Parameters
 
    More accurate is :math:`\Theta(P + C log C)`.
 
-==================
 Space Complexity
-==================
+~~~~~~~~~~~~~~~~~
 
    Space complexity can also be analyzed with asymptotic complexity
    analysis.

@@ -6,12 +6,9 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-.. slideconf::
-   :autoslides: False
-
-=====
+======
 Lists
-=====
+======
 
    .. odsalink:: AV/List/alistCON.css
    .. odsalink:: AV/List/llistCON.css
@@ -24,9 +21,8 @@ Lists
 
    What operations should we implement?
 
-==========
 List Implementation Concepts
-==========
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    Our list implementation will support the concept of a
    **current position**.
@@ -35,30 +31,26 @@ List Implementation Concepts
 
    :math:`<20, 23\ |\ 12, 15>`
 
-==========
 List ADT (1)
-==========
+~~~~~~~~~~~~
 
    .. codeinclude:: Lists/List
       :tag: ListADT1
 
-==========
 List ADT (2)
-==========
+~~~~~~~~~~~~~
 
    .. codeinclude:: Lists/List
       :tag: ListADT2
 
-==========
 List ADT (3)
-==========
+~~~~~~~~~~~~~
 
    .. codeinclude:: Lists/List
       :tag: ListADT3
 
-==========
 List ADT Examples
-==========
+~~~~~~~~~~~~~~~~~~
 
    List: :math:`<12\ |\ 32, 15>`
 
@@ -71,16 +63,14 @@ List ADT Examples
    .. codeinclude:: Lists/ListTest
       :tag: listiter
 
-==========
 List Find Function
-==========
+~~~~~~~~~~~~~~~~~~~
 
    .. codeinclude:: Lists/ListTest
       :tag: listfind
 
-==========
 Array-Based List Class (1)
-==========
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    .. codeinclude:: Lists/AList
       :tag: AListVars
@@ -88,27 +78,24 @@ Array-Based List Class (1)
    .. codeinclude:: Lists/AList
       :tag: Constructors
 
-==========
 Array-Based List Insert
-==========
+~~~~~~~~~~~~~~~~~~~~~~~~
 
    .. inlineav:: alistInsertCON ss
       :output: show
 
    .. odsascript:: AV/List/alistInsertCON.js
 
-==========
 Link Class
-==========
+~~~~~~~~~~
 
    Dynamic allocation of new list elements.
 
    .. codeinclude:: Lists/Link
       :tag: Link
 
-==========
 Linked List Position (1)
-==========
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
    .. inlineav:: llistBadCON ss
       :output: show
@@ -116,18 +103,16 @@ Linked List Position (1)
    .. odsascript:: AV/List/llist.js
    .. odsascript:: AV/List/llistBadCON.js
 
-==========
 Linked List Position (2)
-==========
+~~~~~~~~~~~~~~~~~~~~~~~~
 
    .. inlineav:: llistBadDelCON ss
       :output: show
 
    .. odsascript:: AV/List/llistBadDelCON.js
 
-==========
 Linked List Position (3)
-==========
+~~~~~~~~~~~~~~~~~~~~~~~~
 
    .. inlineav:: llistInitCON dgm
       :output: show
@@ -140,53 +125,48 @@ Linked List Position (3)
    .. odsascript:: AV/List/llistInitCON.js
    .. odsascript:: AV/List/llistHeaderCON.js
 
-==========
 Linked List Class (1)
-==========
+~~~~~~~~~~~~~~~~~~~~~~
 
    .. inlineav:: llistVarsCON ss
       :output: show
 
    .. odsascript:: AV/List/llistVarsCON.js
 
-==========
 Linked List Class (2)
-==========
+~~~~~~~~~~~~~~~~~~~~~
 
    .. inlineav:: llistConsCON ss
       :output: show
 
    .. odsascript:: AV/List/llistConsCON.js
 
-==========
 Insertion
-==========
+~~~~~~~~~~
 
    .. inlineav:: llistInsertCON ss
       :output: show
    
    .. odsascript:: AV/List/llistInsertCON.js
 
-==========
 Removal
-==========
+~~~~~~~
 
    .. inlineav:: llistRemoveCON ss
       :output: show
 
    .. odsascript:: AV/List/llistRemoveCON.js
-==========
+
 Prev
-==========
+~~~~~~
 
    .. inlineav:: llistOtherCON ss
       :output: show
 
    .. odsascript:: AV/List/llistOtherCON.js
 
-==========
 Overhead
-==========
+~~~~~~~~~
 
    * Container classes store elements. Those take space.
 
@@ -197,9 +177,8 @@ Overhead
 
    * The **overhead fraction** is: overhead/total space
 
-==========
 Comparison of Implementations
-==========
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    * Array-Based Lists:
       * Insertion and deletion are :math:`\Theta(n)`.
@@ -213,9 +192,8 @@ Comparison of Implementations
       * Space grows with number of elements.
       * Every element requires overhead.
 
-==========
 Space Comparison
-==========
+~~~~~~~~~~~~~~~~~
 
    "Break-even" point:
 
