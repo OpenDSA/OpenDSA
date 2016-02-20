@@ -461,6 +461,15 @@
               "threshold": 1.0,
               "showhide": "Show"
             }
+          },
+          "RP 12 part 2": {
+            "RP12part2": {
+              "long_name": "RP set #12, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
           }
 	}
       }
