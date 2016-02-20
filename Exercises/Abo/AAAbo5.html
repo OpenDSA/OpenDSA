@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html data-require="math">
+<head>
+  <title>Algorithm Analysis Exercise: Matching question 1</title>
+  
+  <link rel="stylesheet" type="text/css" href="style.css"> 
+
+  <script src="../../lib/jquery.min.js"></script>
+  <script src="../../lib/jquery-ui.min.js"></script>
+<script src="../../ODSAkhan-exercises/khan-exercise.js"></script>
+  
+</head>
+
+<body>
+
+<div class="exercise">  
+
+<p> <b><font size="3">Match each term with its corresponding data structure: </font></b> </p>
+
+<script>
+  
+var correctAnswers = 0;
+$( init );
+
+function init() {
+
+var check = false;
+
+//Reset
+correctAnswers = 0;
+  $('#stack').html( '' );
+  $('#inserts').html( '' );
+
+//The randomized stack
+  var random = [ 'top', 'fifo', 'binary', 'index', 'edge' ];
+  random.sort( function() { return Math.random() - .5 } );
+
+for ( var i=0; i<5; i++ ) {
+    $('<div>' + random[i] + '</div>').data( 'number', random[i] ).attr( 'id', 'element'+random[i] ).appendTo( '#stack' ).draggable( {
+      containment: '#content',
+      stack: '#stack div',
+      cursor: 'move',
+      revert: true
+    } );
+  }
+
+//The inserts
+  var inserts = [ 'stack', 'queue', 'tree', 'array', 'graph' ];
+  for ( var i=1; i<=5; i++ ) {
+    $('<div>' + inserts[i-1] + '</div>').data( 'number', inserts[i-1] ).appendTo( '#inserts' ).droppable( {
+      accept: '#stack div',
+      hoverClass: 'hovered',
+      drop: handleDrop
+    } );
+  }
+
+}
+
+function handleDrop( event, ui ) {
+  var inserts = $(this).data( 'number' );
+  var stack = ui.draggable.data( 'number' );
+
+  //The reaction after the drop
+
+if (( inserts == 'stack' && stack == 'top') || ( inserts == 'queue' && stack == 'fifo')
+|| ( inserts == 'tree' && stack == 'binary') || ( inserts == 'array' && stack == 'index')
+|| ( inserts == 'graph' && stack == 'edge')) {
+    ui.draggable.draggable( 'disable' );
+    $(this).droppable( 'disable' );
+    ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
+    ui.draggable.draggable( 'option', 'revert', false );
+    correctAnswers++;
+  } 
+
+ //The completion
+
+  if ( correctAnswers == 5 ) {
+    check = true;
+  }
+
+}
+
+
+  </script>
+
+
+<div id="content">
+
+  <div id="stack"> </div>
+  <div id="inserts"> </div>
+
+</div>
+
+  <div class="problems">
+
+
+    <div id="problem-type-or-description">
+          <script> 
+             function checkAnswer() { if (check == true) { check = false; return true; } else return false; }  
+          </script>
+            <div class="solution" data-type="custom">
+                <div class="guess"> [ check ] </div>
+                  <div class="validator-function"> 
+                      return checkAnswer(); 
+                  </div>
+         </div>
+      <div class="hints">
+      
+    </div> 
+    </div>
+  </div> 
+</div>
+</body>
+</html>
