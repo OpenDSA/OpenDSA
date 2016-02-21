@@ -46,35 +46,35 @@
   "chapters": {
     "CS3114 Course Notes": {
       "SlidesCanvas/Day1": {
-        "long_name": "week1-3: Introduction",
+        "long_name": "Week 1: Introduction",
         "sections" : {}
       },
       "SlidesCanvas/ProjManage": {
-        "long_name": "week1-3: Project Management",
+        "long_name": "Week 1: Project Management",
         "sections" : {}
       },
       "SlidesCanvas/SkipList": {
-        "long_name": "week1-3: SkipLists",
+        "long_name": "Week 1: SkipLists",
         "sections" : {}
       },
       "SlidesCanvas/AlgAnal": {
-        "long_name": "week1-3: Algorithm Analysis",
+        "long_name": "Week 2: Algorithm Analysis",
         "sections" : {}
       },
       "SlidesCanvas/Coding": {
-        "long_name": "week1-3: Clean Code",
+        "long_name": "Week 2: Clean Code",
         "sections" : {}
       },
       "SlidesCanvas/Lists": {
-        "long_name": "week1-3: Lists",
+        "long_name": "Week 3: Lists",
         "sections" : {}
       },
       "SlidesCanvas/Lists2": {
-        "long_name": "week1-3: Lists2",
+        "long_name": "Week 3: Lists2",
         "sections" : {}
       },
       "SlidesCanvas/Binary": {
-        "long_name": "Week4: Binary Trees Part 1",
+        "long_name": "Week 4: Binary Trees Part 1",
         "sections" : {}
       },
       "SlidesCanvas/Binary2": {
