@@ -67,6 +67,21 @@ Motivation for the Configuration System
   a GUI tool is rapidly moving to the front burner).
 
 
+--------
+Branches
+--------
+
+We are temporarily supporting two versions of OpenDSA, as represented
+by the branches "master" and "NewKA".
+The "master" branch currently is intended for generating books as
+used in Canvas, while "NewKA" supports "old style" book instances
+directly accessible via HTML files.
+Only the master branch uses the server configuration files described
+at the end of this section.
+There are a few fields of the configuration process that appear in
+NewKA book configuration files, that are moved to the server
+configuration file in the master branch.
+
 ---------------------
 Configuration Process
 ---------------------
@@ -114,6 +129,10 @@ Future Features
 
 * GUI editor/interface for editing configuration files.
 
+* Merge the "master" and "NewKA" branches, with support for both
+  Canvas-style and "HTML page" book instances, controlled by
+  command-line parameters on the configuration script.
+  
 ------
 Format
 ------
@@ -121,6 +140,11 @@ Format
 OpenDSA configuration files are stored using JSON.
 Here are the field definitions.
 All are required unless otherwise specified.
+**Note**: The fields "title", "exercise_server", "logging_server", and
+"score_server" appear in the book configuration file only for the
+NewKA branch.
+These fields are moved to the server configuration file in the master
+branch.
 
 * **title** - The title of the OpenDSA textbook.
 
@@ -595,12 +619,16 @@ OpenDSA requires communication between several entities, including:
 
 Here are the fields in the configuration file.
 
+* **title** - The title for the course intance.
 * **odsa_username** - A viable user account on the course instance
   (OpenDSA) scoring server.
 * **odsa_password** - The corresponding password on the course instance
   (OpenDSA) scoring server.
-* **target_LMS** - LMS name. We support 'canvas', other LMSs like moodle, Desire2Learn, and Blackboard will be supported in the near future as well.
+* **target_LMS** - LMS name. We currently support 'canvas'.
+  Other LMSs like moodle and Desire2Learn will be supported in the future.
 * **LMS_url** - The URL for the LMS.
+* **course_code** - The name used at the LMS to identify the
+  course. In Canvas, this is the identfier given when creating the course.
 * **access_token** - This is normally issued by the LMS to allow an
   LTI tool provider to communicate with it.
   In Canvas, go to your account-level settings.
@@ -613,4 +641,32 @@ Here are the fields in the configuration file.
 * **LTI_consumer_key** - The key required by the LTI tool provider.
 * **LTI_secret** - Effectively the password for the LTI tool
   provider.
-* **LTI_url** - The URL for the LTI tool provider.
+* **module_origin** - The protocol and domain where the module files are hosted
+
+  * Used by embedded exercises as the target of HTML5 post messages
+    which send information to the parent (module) page
+  * Ex: "module_origin": "http://algoviz.org",
+
+* **exercise_server** - The protocol and domain (and port
+  number, if different than the protocol default) of the exercise
+  server that provides verification for the programming exercises.
+  Defaults to an empty string (exercise server disabled) if omitted.
+
+  * Trailing '/' is optional
+  * Ex: "exercise_server": "https://opendsa.cs.vt.edu/",
+
+* **logging_server** - The protocol and domain (and port
+  number, if different than the protocol default) of the logging
+  server that supports interaction data collection.
+  Defaults to an empty string (logging server disabled) if omitted.
+
+  * Trailing '/' is optional
+  * Ex: "logging_server": "https://opendsa.cs.vt.edu/",
+
+* **score_server** - The protocol and domain (and port
+  number, if different than the protocol default) of the score server
+  that supports centralized user score collection.
+  Defaults to an empty string (score server disabled) if omitted.
+
+  * Trailing '/' is optional
+  * Ex: "score_server": "https://opendsa.cs.vt.edu/",
