@@ -26,11 +26,11 @@ var m3 = function (ns) {
     return fp.add(fp.hd(ns),fp.hd(fp.tl(ns)));
 };
 var g = function (ns,f) {
-    return fp. reduce(
-                       function (x,y) { return x + y; },
-                       fp.map(f,ns),
-                       0
-                     );
+    return fp.reduce(
+                      function (x,y) { return x + y; },
+                      fp.map(f,ns),
+                      0
+                    );
 };
 </pre>
 	  <p class="question">We then make the following three

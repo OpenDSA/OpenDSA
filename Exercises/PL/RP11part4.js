@@ -434,7 +434,7 @@ function (ns) {
 	    var integer = Math.floor(Math.random() * 10); 
 	    // pick a random function
 	    var functionNumber = Math.floor(Math.random() * functions.length); 
-	    functionNumber = 26;
+	    //functionNumber = 26;
 	    var f = functions[ functionNumber ][1];
 	    var fStr = f.toString()
 		.replace(/randomDigit2/g,randomDigit2)
