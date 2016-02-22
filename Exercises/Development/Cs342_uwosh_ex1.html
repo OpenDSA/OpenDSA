@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
-<html data-require="jsav math Cs342_uwosh_ex1">  <!-- Cap C here matches file name -->
+<!-- Cap C here matches file name -->
+<html data-require="jsav math Cs342_uwosh_ex1">  
   <head>
     <title>Find a Maximum</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
@@ -12,20 +13,25 @@
       <div class="vars">
         <var id="arrSize">Khan.randRange(4, 11)</var>
 	<var id="lastIndex">arrSize - 1</var>
-        <var id="JSAV">cs342_uwosh_ex1.initJSAV(arrSize)</var> <!-- Lower case C here matches export name -->
+	<!-- Lower case C here matches export name -->
+        <var id="JSAV">cs342_uwosh_ex1.initJSAV(arrSize)</var> 
       </div>
       <div class="problems">
-        <div id="Cs342_uwosh_ex1p"> <!-- Cap C and trailing p necessary here -->
+	<!-- Cap C and trailing p necessary here -->
+        <div id="Cs342_uwosh_ex1p"> 
           <div class="question">
             <p>Highlight the array element containing the largest value</p>
-            <div id="Cs342_uwosh_ex1" class="jsavcanvas"></div> <!-- Cap C here -->
+	    <!-- Cap C here -->
+            <div id="Cs342_uwosh_ex1" class="jsavcanvas"></div> 
           </div>
           <div class="solution" data-type="custom">
-            <div class="guess"> [cs342_uwosh_ex1.userInput] </div> <!-- Lower case C here matches export name -->
+	    <!-- Lower case C here matches export name -->
+            <div class="guess"> [cs342_uwosh_ex1.userInput] </div> 
             <div class="validator-function">
               if (!guess[0]) {
                 return ""; // User did not click anything
-              } else { return cs342_uwosh_ex1.checkAnswer(); } <!-- Lower case C here matches export name -->
+	      <!-- Lower case C here matches export name -->
+              } else { return cs342_uwosh_ex1.checkAnswer(); } 
             </div>
           </div>
           <div class="hints">
