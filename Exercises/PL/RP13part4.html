@@ -2,7 +2,7 @@
 <html data-require="math" lang="en">
   <head>
     <meta charset=utf-8>
-    <title>RP 12 part 3</title>
+    <title>RP 13 part 4</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
@@ -11,7 +11,7 @@
   <body data-height="1150" data-width="950">
     <div class="exercise">
       <div class="problems">
-        <div id="RP12part3p">
+        <div id="RP13part4p">
           <p class="question">Consider the following definition of the
             <span class="string">gcd_list </span> function that, when
             completed, will compute the greatest common divisor
@@ -38,28 +38,27 @@
 </pre>
           <p class="question">The function above uses
           continuation-passing style. What should the question marks
-          on line 7 be replaced with to ensure the function behaves
+          on line 12 be replaced with to ensure the function behaves
           this way?
 	  </p>
 	  <div class="solution">
-	    <span class="string">fp.isNull(fp.tl(ns))</span></div>
+	    <span class="string">fp.hd(ns), x</span></div>
           <ul class="choices">
             <li><span class="string">fp.isEq(fp.hd(ns),1)</span></li>
-            <li><span class="string">fp.hd(ns), x</span></li>
+            <li><span class="string">fp.isNull(fp.tl(ns))</span></li>
             <li><span class="string">fp.isNull(ns)</span></li>
           </ul>
 
           <div class="hints">
-	    <p>Note that, in this case (line 8), we call the
-	    continuation for the first time to initiate the
-	    computation.</p>
-	    <p>Recall that the only argument of the continuation is
-	    the result of the parts of the computation that have been
-	    completed so far. In this case, no computations have been
-	    completed yet.</p>
-	    <p>The specific argument given to the continuation on the
-	    call on line 8 gives you a hint about the ordering of the
-	    computations and the answer to this question.</p>
+	    <p>Note that, in this case (lines 10-13), we make the
+	      recursive call to the helper function with two
+	      arguments, namely the tail of the input list and a new
+	      continuation.</p>
+	    <p>The specific argument given to the continuation in the
+	    call on line 12 must be the result of computing one more
+	    gcd operation after having already computed other gcd
+	    operations (whose result is the value
+	    of <span class="string">x</span>).</p>
           </div>
         </div>
       </div>
