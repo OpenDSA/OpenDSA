@@ -289,6 +289,47 @@
             }
           }
 	}
+      },
+      "PL/FP7": {
+        "long_name": "Introduction to functional programming - Part 7",
+        "sections": {
+          "RP 11 part 1": {
+            "RP11part1": {
+              "long_name": "RP set #11, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 11 part 2": {
+            "RP11part2": {
+		"long_name": "RP set #11, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 11 part 3": {
+            "RP11part3": {
+		"long_name": "RP set #11, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 11 part 4": {
+            "RP11part4": {
+              "long_name": "RP set #11, question #4",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+	}
       }
     },
     "Appendices": {
