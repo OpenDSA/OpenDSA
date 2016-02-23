@@ -45,7 +45,28 @@
 			    Math.floor(Math.random() * maxIntegerVal));
 	    }	
 	return result;
-	}//  generateRandomList
+	},//  generateRandomList
+
+	/* generate a random list of (flat) integer lists */
+	generateRandomListOfLists : function () {
+	    var result = [];
+	    var minIntegerVal = 0;
+	    var maxIntegerVal = 9;
+	    var len = 2 + Math.floor(Math.random() * 4);
+	    var arr;
+	    var len2
+	    var i,j;
+	    for(var i=0; i<len; i++) {
+		arr = [];
+		len2 = 2 + Math.floor(Math.random() * 4);
+		for(var j=0; j<len2; j++) {
+		    arr.push(minIntegerVal + 
+			     Math.floor(Math.random() * maxIntegerVal));
+		}	
+		result.push(arr);
+	    }
+	    return result;
+	}//  generateRandomListOfLists
     };// PLutils
     
     window.PLutils = window.PLutils || PLutils;

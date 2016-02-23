@@ -450,6 +450,20 @@
           }
 	}
       },
+      "PL/FP8": {
+        "long_name": "Introduction to functional programming - Part 8",
+        "sections": {
+          "RP 12 part 1": {
+            "RP12part1": {
+              "long_name": "RP set #12, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+	}
+      },
       "PL/FP9": {
         "long_name": "Introduction to functional programming - Part 9",
         "sections": {
