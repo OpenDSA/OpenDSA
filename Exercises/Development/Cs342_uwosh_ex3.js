@@ -48,12 +48,12 @@
 	    my_array[1] = my_array[temp_index];
 	    my_array[temp_index] = temp;
 
-	    temp_index = Math.floor(Math.random() * (my_array.length-1)) + 2;
+	    temp_index = Math.floor(Math.random() * (my_array.length-2)) + 2;
 	    temp = my_array[2];
 	    my_array[2] = my_array[temp_index];
 	    my_array[temp_index] = temp;
 
-	    temp_index = Math.floor(Math.random() * (my_array.length-1)) + 3;
+	    temp_index = Math.floor(Math.random() * (my_array.length-3)) + 3;
 	    temp = my_array[3];
 	    my_array[3] = my_array[temp_index];
 	    my_array[temp_index] = temp;
