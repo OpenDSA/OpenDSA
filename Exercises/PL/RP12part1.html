@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-require="math" lang="en">
+<html data-require="math fp RP12part1 PLutils" lang="en">
   <head>
     <meta charset=utf-8>
     <title>RP 12 part 1</title>
@@ -8,46 +8,51 @@
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
   </head>
 
-  <body data-height="950" data-width="950">
+  <body data-height="900" data-width="950">
     <div class="exercise">
+      <div class="vars">
+        <var id="setup">RP12part1.init()</var>
+        <var id="answer">RP12part1.answer</var>
+        <var id="functionDef">RP12part1.functionDef</var>        
+	<var id="params">RP12part1.params</var>
+        <var id="functionCall">RP12part1.functionCall</var>
+      </div>
       <div class="problems">
         <div id="RP12part1p">
-          <p class="question">Consider the following definition of the
-            <span class="string">gcd</span> function:</p>
-
+          <p class="question">
+            Given the following function definition,
+            where <var>params</var>:</p>
 <pre class="string">
-var gcd = function (a,b) {
-    if (b === 0) {
-        return a;
-    } else {
-        return gcd(b, a % b);
-    }
-};
+<var>functionDef</var>
 </pre>
-          <p class="question">This question has two parts. First, is
-            the <span class="string">gcd</span> function above tail
-            recursive? Second, how many recursive calls
-            to <span class="string">gcd</span> are made when we call
-            it with the arguments <span class="string">(6,21)</span>
-            in this order, counting only the recursive calls, not the 
-            top-level call?
+          <p class="question">
+	  what is the value of the following function call?
+          <br />
+	  <var class="string">functionCall</var><br /> Note that, if
+	  the function call generates an exception, the correct answer
+	  is the word "error" (without the double quotes) in all
+	  lowercase letters.
 	  </p>
-	  <div class="solution">Yes; 3 recursive calls</div>
-          <ul class="choices">
-            <li>Yes; 2 recursive calls</li>
-            <li>Yes; 4 recursive calls</li>
-            <li>Yes; 5 recursive calls</li>
-            <li>No; 2 recursive calls</li>
-            <li>No; 3 recursive calls</li>
-            <li>No; 4 recursive calls</li>
-            <li>No; 5 recursive calls</li>
-          </ul>
-
+	  <textarea rows="1" cols="40" style="resize:none"
+		    id="answerTextarea"></textarea>
+	  <div class="solution" data-type="custom">
+            <div class="guess"> $('#answerTextarea').val()  </div>
+            <div class="validator-function">
+              return RP12part1.checkAnswer(guess);
+            </div>
+          </div>
           <div class="hints">
-	    <p>Review the definition of a <em>tail call</em> and a
-	    <em>tail-recursive function</em>.</p>
-	    <p>Trace the call to <span class="string">gcd(6,21)</span>
-	    with pencil and paper.</p>
+	    <p>First, determine what
+	    the <span class="string">mapper</span> function computes
+	    in general, that is, for any input.</p>
+	    <p>Second, determine what
+	    the <span class="string">reducer</span> function computes
+	      in general, that is, for any input.</p>
+	    <p>Then, determine what the 
+	      <span class="string">f</span> function returns based on
+	      its use of the folding pattern.</p>
+	    <p>Finally, plug in the given input to determine the final
+	    answer.</p>
           </div>
         </div>
       </div>

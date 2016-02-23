@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 13 part 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="950" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP13part1p">
+          <p class="question">Consider the following definition of the
+            <span class="string">gcd</span> function:</p>
+
+<pre class="string">
+var gcd = function (a,b) {
+    if (b === 0) {
+        return a;
+    } else {
+        return gcd(b, a % b);
+    }
+};
+</pre>
+          <p class="question">This question has two parts. First, is
+            the <span class="string">gcd</span> function above tail
+            recursive? Second, how many recursive calls
+            to <span class="string">gcd</span> are made when we call
+            it with the arguments <span class="string">(6,21)</span>
+            in this order, counting only the recursive calls, not the 
+            top-level call?
+	  </p>
+	  <div class="solution">Yes; 3 recursive calls</div>
+          <ul class="choices">
+            <li>Yes; 2 recursive calls</li>
+            <li>Yes; 4 recursive calls</li>
+            <li>Yes; 5 recursive calls</li>
+            <li>No; 2 recursive calls</li>
+            <li>No; 3 recursive calls</li>
+            <li>No; 4 recursive calls</li>
+            <li>No; 5 recursive calls</li>
+          </ul>
+
+          <div class="hints">
+	    <p>Review the definition of a <em>tail call</em> and a
+	    <em>tail-recursive function</em>.</p>
+	    <p>Trace the call to <span class="string">gcd(6,21)</span>
+	    with pencil and paper.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
