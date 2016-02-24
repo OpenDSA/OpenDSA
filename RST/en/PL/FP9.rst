@@ -57,3 +57,13 @@ problem use the :math:`gcd` function introduced in the first problem
 in this set, but you do not need to remember how it was implemented.
 
 .. avembed:: Exercises/PL/RP13part4.html ka
+
+
+RP 13 part 5
+------------
+
+This randomized review problem will give you more practice writing
+recursive functions in the continuation-passing style. To get credit
+for it, you must solve it correctly three times in a row.
+
+.. avembed:: Exercises/PL/RP13part5.html ka
