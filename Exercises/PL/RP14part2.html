@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 14 part 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP14part1p">
+          <p class="question">Consider the following &lambda; expression:</p>
+
+<pre class="string">
+(&lambda;x.(x (&lambda;x.x x)) (x &lambda;x.(x x)))
+</pre>
+          <p class="question">How many occurrences
+            of <span class="string">x</span> are free in this &lambda;
+            expression?</p>
+	  <div class="solution">1</div>
+          <ul class="choices">
+            <li>0</li>
+            <li>2</li>
+            <li>3</li>
+            <li>more than 3</li>
+          </ul>
+
+          <div class="hints">
+	    <p>It might help to build the parse tree for this expression.</p>
+	    <p>Identify all of the <em>variable declarations</em>
+	    (or <em>binding occurrences</em>) in this expression, as
+	    well as the <em>scope</em> that each one of them defines.</p>
+	    <p>Review the definition of <em>free occurrences</em> and use the
+	    scopes you identified already to answer the question.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

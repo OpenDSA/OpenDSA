@@ -23,3 +23,10 @@ This first problem is about the structure (or syntax) of
 :math:`\lambda` expressions.
 
 .. avembed:: Exercises/PL/RP14part1.html ka
+
+RP 14 part 2
+------------
+
+This problem is about free occurrences of variables.
+
+.. avembed:: Exercises/PL/RP14part2.html ka

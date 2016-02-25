@@ -72,15 +72,15 @@ example:
 
 This lambda expression is a lambda abstraction whose parameter is
 :math:`y` and whose body is the application of the identity function
-to the expreeions :math:`(y\ x)`. Therefore, the :math:`y` after the
+to the expression :math:`(y\ x)`. Therefore, the :math:`y` after the
 :math:`\lambda` is the binding occurrence of the variable
 :math:`y`. The scope of this declaration is :math:`(\lambda x.x\ (y\
 x))`, which implies that the rightmost occurrence of :math:`y` is
-bound the leftmost binding occurrence. In contrast, the scope of the
+bound to the leftmost binding occurrence. In contrast, the scope of the
 binding occurrence of :math:`x` in :math:`\lambda x.x` is just the
 second :math:`x` in it (that is, as always, the body of the lambda
-abstraction. As result, the third, rightmost occurrence of :math:`x`
-in the expression above is free since it is a use of :math:`x` that
+abstraction). As a result, the third, rightmost occurrence of :math:`x`
+in the expression above is free: it is a use of :math:`x` that
 does not belong to the scope of any declarations of :math:`x`. 
 
 To summarize this example, going from left to right, the first
@@ -89,7 +89,7 @@ bound to the first one, and the third one is free. This example
 illustrates the fact that it is possible for any variable to occur
 both free and bound within the same expression. Therefore, it can be
 confusing to ask whether a variable is free or bound in a lambda
-expression. It is preferrable to ask this question about each
+expression. It is preferable to ask this question about each
 particular *occurrence* of a variable, keeping in mind that a binding
 occurrence is never free since its role is to define a new variable.
 
@@ -114,8 +114,8 @@ expressions.
 .. avembed:: Exercises/PL/boundVarHighlight.html ka
 
 
-Continued
----------
+Formal definition of free variables
+-----------------------------------
 
 Throughout this section, we have attempted to be as intuitive and
 informal as possible. However, it is possible to define the notions of
@@ -130,7 +130,7 @@ For example, we say that any variable
    1. :math:`E` is a variable and :math:`E` is identical to :math:`x`, or
 
    2. :math:`E` is of the form :math:`(E_1\ E_2)` and :math:`x` occurs
-      free in either :math:`E_1` or :math:`E2` (or both), or
+      free in either :math:`E_1` or :math:`E_2` (or both), or
 
    3. :math:`E` is of the form :math:`\lambda y.E'` where :math:`y` is
       different from :math:`x` and :math:`x` occurs free in :math:`E'`.
@@ -152,7 +152,7 @@ all cases of this definition.
      - 1
      - yes, because ...
      - ... :math:`x` appears in (is equal to) :math:`E` and :math:`E`
-       does not contain any binding occurrences (no :math:`lambda`).
+       does not contain any binding occurrences (no :math:`\lambda`).
    * - :math:`y`
      - 1
      - no, because ...
@@ -180,7 +180,7 @@ all cases of this definition.
        abstraction) and :math:`x` occurs free in the body of the lambda 
        abstraction (recursive application of case 1). Note that the body is what
        is left of the lambda abstraction after the binding occurrence (i.e.,
-       :math:`\lambda z.` is removed.
+       :math:`\lambda z.`) is removed.
    * - :math:`\lambda z.z`
      - 3
      - no, because ...
@@ -203,7 +203,6 @@ all cases of this definition.
        would become bound in :math:`E` by the leading binding
        occurrence of :math:`x`.
 
-In conclusion, we should emphasize that the reason we
-devoted a whole section to the notions of free and bound variables is
-because we will invoke them repeatedly throughout this chapter,
-starting in the next section.
+The reason we devoted a whole section to the notions of free and bound
+variables is because we will invoke them repeatedly throughout this
+chapter, starting in the next section.

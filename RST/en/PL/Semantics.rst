@@ -15,7 +15,7 @@
 In the previous section, we covered the entirety of the syntax of the
 lambda calculus. The rest of this chapter, including this section,
 deals with the semantics of the lambda calculus, that is, the meaning
-of lambda expressions, in other words, how they are interpreted and what
+of lambda expressions, or in other words, how they are interpreted and what
 their value is. Clearly, the expressive power of the lambda calculus
 is outstanding: its tiny syntax will allow us to express a rich set of
 computations, in fact, all possible computations (for more on this,
@@ -61,7 +61,7 @@ code fragment.
     The main difference between lambda calculus and JavaScript is
     that, in the lambda calculus, each variable can only get bound to
     one value during the execution of the whole program, whereas, in
-    JavaScript, the value of a variable cen be changed multiple times
+    JavaScript, the value of a variable can be changed multiple times
     during execution using assignment statements. In conclusion,
     variables in the lambda calculus are more like named constants
     than variables in imperative programming languages. Furthermore,
@@ -201,4 +201,4 @@ code fragment.
 
 
    Note that, in example 11 above, the top-level expression is a
-   lambda abrsaction whose body is a function application.
+   lambda abstraction whose body is a function application.
