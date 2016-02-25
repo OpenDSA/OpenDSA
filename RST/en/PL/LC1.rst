@@ -16,6 +16,8 @@ RP 14 part 1
 Topics of the day:
 
   1. Syntax of the lambda calculus
+  2. Free and bound variables
+  3. Semantics of the lambda calculus
 
 The review problem set for today contains four review problems.
 
@@ -24,9 +26,18 @@ This first problem is about the structure (or syntax) of
 
 .. avembed:: Exercises/PL/RP14part1.html ka
 
+
 RP 14 part 2
 ------------
 
 This problem is about free occurrences of variables.
 
 .. avembed:: Exercises/PL/RP14part2.html ka
+
+RP 14 part 3
+------------
+
+This problem is about the meaning of lambda expressions in terms of
+JavaScript expressions.
+
+.. avembed:: Exercises/PL/RP14part3.html ka
