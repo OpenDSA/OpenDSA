@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 14 part 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP14part1p">
+          <p class="question">Consider the following expressions:</p>
+
+<pre class="string">
+&lambda;x.&lambda;y.&lambda;z.(x &lambda;z).&lambda;y.(x y)
+(&lambda;x.&lambda;y.(x &lambda;z.y))
+(&lambda;x.&lambda;y.&lambda;z.x &lambda;z.(&lambda;y.(x y)))
+(&lambda;x.(x x) &lambda;y.(x y x))
+</pre>
+          <p class="question">How many of these expressions are
+            &lambda; expressions?</p>
+	  <div class="solution">0</div>
+          <ul class="choices">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+          </ul>
+
+          <div class="hints">
+	    <p>If you cannot work it out in your head, use
+	    pencil and paper to build parse trees.</p>
+	    <p>Review the three productions in the lambda
+	    calculus grammar and study until you know them cold.</p>
+	    <p>Pay special attention to the constraints on
+	    the location of parentheses.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

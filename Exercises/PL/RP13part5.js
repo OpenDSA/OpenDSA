@@ -7,17 +7,17 @@
 
 	    var functions = [
 
-    [ "The following function takes in a (flat) list of integers and, after " +
+    [ "The following function takes in a (flat) list of integers. After " +
       "you replace the comment made up of question marks with the correct " +
-      "answer, is supposed to return the sum of the elements in the input " +
-      "list.",
+      "answer, this function is supposed to return the sum of the elements " +
+      "in the input list.",
       /* 0: the add function */
 function (ns) {
-    var h = function (ns,k) {
-	if (fp.isNull(ns)) {
+    var h = function (list,k) {
+	if (fp.isNull(list)) {
 	    return k(0);
 	} else {
-	    return h(fp.tl(ns),
+	    return h(fp.tl(list),
 		     function (x) {
 			 /* ???????????????????? */
 		     });
@@ -25,49 +25,105 @@ function (ns) {
     };
     return h(ns,function (x) { return x; })
 },
-      "return k(fp.add(x,fp.hd(ns)));" ,
-      "return k(fp.add(fp.hd(x),ns));" ,
-      "return fp.add(x,k(fp.hd(ns)));" ,
-      "return fp.add(k(x),fp.hd(ns));" 
+      [ ["[]" , "0" ],
+	["[1]", "1" ],
+	["[1,2]", "3" ],
+	["[1,2,3]", "6" ],
+	["[1,-2,3,-4]", "-2" ],
+	["[5,4,3,-2,-1,0,-7,6]", "8" ]
+      ]
+    ],
+
+
+    [ "The following function takes in a non-empty (flat) list of integers. " +
+      "After you replace the comment made up of question marks with the " +
+      "correct answer, this function is supposed to return the sum of the " +
+      "elements in the input list.",
+      /* 1: the min function */
+function (ns) {
+    var h = function (list,k) {
+	if (fp.isNull(list)) {
+	    return k(fp.hd(ns));
+	} else {
+	    return h(fp.tl(list),
+		     function (x) {
+			 /* ??????????????????? */
+		     });
+	}
+    };
+    return h(ns,function (x) { return x; })
+},
+      
+      [ ["[1]", "1" ],
+	["[1,2]", "1" ],
+	["[3,2,1]", "1" ],
+	["[1,-2,3,-4,5]", "-4" ],
+	["[5,-7,4,3,-2,-1,0,-5,6]", "-7" ]
+      ]
+    ],
+
+    [ "The following function takes in a (flat) list of integers. " +
+      "After you replace the comment made up of question marks with the " +
+      "correct answer, this function is supposed to return the reverse of " +
+      "input list.",
+      /* 2: the reverse function */
+function (ns) {
+    var h = function (list,k) {
+	if (fp.isNull(list)) {
+	    return k(list);
+	} else {
+	    return h(fp.tl(list),
+		     function (x) {
+			 /* ????????????????? */
+		     });
+	}
+    };
+    return h(ns,function (x) { return x; })
+},
+      
+      [ ["[]", "[]" ],
+	["[1]", "[1]" ],
+	["[3,2,1]", "[1,2,3]" ],
+	["[1,-2,3,-4,5]", "[5,-4,3,-2,1]" ]
+      ]
     ],
    
 	    ];// functions array
 
 	    // pick a random input
 	    var randomDigit = Math.floor( Math.random() * 10);
-
-	    var list = PLutils.generateRandomList();
-	    var integer = Math.floor(Math.random() * 10); 
 	    // pick a random function
 	    var functionNumber = Math.floor(Math.random() * functions.length); 
-	    //functionNumber = 25;
-	    var f = functions[ functionNumber ][1];
-	    var correctAnswer = functions[ functionNumber ][2];
+	    functionNumber = 2;
 	    this.initialStatement = functions[ functionNumber ][0];
-	    this.option1 = functions[ functionNumber ][3];
-	    this.option2 = functions[ functionNumber ][4];
-	    this.option3 = functions[ functionNumber ][5];
-	    var fStr = f.toString()
-		.replace(/\/\*.+\*\//,correctAnswer);
-	    var answer;
-	    try {
-		// compute the answer
-		answer = JSON.stringify(eval("var f = " + fStr + "; f(" + 
-					     JSON.stringify(list) + ");"));
-	    } 
-	    catch (e) {
-		answer = "error";
-	    }
+	    var f = functions[ functionNumber ][1];
 	    this.functionDef = "var f = " + f.toString();
-	    this.functionCall = ("f( " + JSON.stringify(list) + " )")
-		.split("").join(" ");
-	    this.answer = correctAnswer;
-	    
-	    console.log(answer);
-	},// init
+	    this.tests = functions[ functionNumber ][2];
+	    var fStr = f.toString();
+		// .replace(/\/\*.+\*\//,correctAnswer);
+	}, //init
 
 	checkAnswer: function (studentAnswer) {
-	    return this.answer === studentAnswer.replace(/\s+/g,"");
+	    var fDefinition = this.functionDef
+		.replace(/\/\*.+\*\//,studentAnswer);
+	    var passTests = true, i, output;
+	    try {
+		for(var i=0; i<this.tests.length; i++) {
+		    var output = 
+			JSON.stringify(eval(fDefinition + "; f(" + 
+					    this.tests[i][0] + ");"));
+		    console.log(output);
+		    if (output.replace(/\s+/g,"") !==
+			this.tests[i][1].replace(/\s+/g,"")) {
+			return false;
+		    }
+		    //console.log(output);
+		}
+	    } catch (e) {
+		passTests = false;
+	    }
+	    // return this.answer === studentAnswer.replace(/\s+/g,"");
+	    return passTests;
 	}
     };// RP13part5  
 

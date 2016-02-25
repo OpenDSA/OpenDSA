@@ -15,9 +15,6 @@
         <var id="answer">RP13part5.answer</var>
         <var id="functionDef">RP13part5.functionDef</var>        
 	<var id="initialStatement">RP13part5.initialStatement</var>
-        <var id="option1">RP13part5.option1</var>
-        <var id="option2">RP13part5.option2</var>
-        <var id="option3">RP13part5.option3</var>
       </div>
       <div class="problems">
         <div id="RP13part5p">
@@ -27,17 +24,16 @@
 <var>functionDef</var>
 </pre>
           <p class="question">
-	  Which one of the following code segments must
-	  replace the comment above?
-
-	  <div class="solution">
-	    <span class="string"><var>answer</var></span>
-	  </div>
-          <ul class="choices">
-            <li><span class="string"><var>option1</var></span></li>
-            <li><span class="string"><var>option2</var></span></li>
-            <li><span class="string"><var>option3</var></span></li>
-          </ul>
+	    Write down below the code segment  that must
+	  replace the comment above.
+	    <textarea rows="5" cols="40" style="resize:none"
+                    id="answerTextarea"></textarea>
+            <div class="solution" data-type="custom">
+              <div class="guess"> $('#answerTextarea').val()  </div>
+              <div class="validator-function">
+		return RP13part5.checkAnswer(guess);
+            </div>
+          </div>
           <div class="hints">
           </div>
         </div>

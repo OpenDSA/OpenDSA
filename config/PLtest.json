@@ -516,6 +516,22 @@
       }
     },
     "Lambda Calculus": {
+      "PL/LC1": {
+        "long_name": "Introduction to the lambda calculus - Part 1",
+        "sections": {
+          "RP 14 part 1": {
+            "RP14part1": {
+              "long_name": "RP set #14, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }
+	}
+      }
+    },
+    "Lambda Calculus old": {
       "PL/Syntax": {
         "long_name": "Syntax of the Lambda Calculus",
         "sections": {
