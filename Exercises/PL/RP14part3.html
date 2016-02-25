@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 14 part 3</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="950" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP14part3p">
+          <p class="question">Consider the following JavaScript expression:</p>
+
+<pre class="string">
+function (x) {
+    return function (y) {
+               return function (x) {
+                          return function (z) {
+                                     return x(y)(z);
+                          };
+               };
+    };
+}
+</pre>
+          <p class="question">Which one of the following expressions
+          is a &lambda; expression that is equivalent to the code given
+          above?</p>
+	  <div class="solution">
+	    <span class="string">
+	      &lambda;a.&lambda;b.&lambda;a.&lambda;c.((a b) c)
+	    </span>
+	  </div>
+          <ul class="choices">
+            <li>
+	      <span class="string">
+		&lambda;a.&lambda;b.&lambda;a.&lambda;c.(a b c)
+	    </span></li>
+            <li>
+	    <span class="string">
+	      &lambda;y.&lambda;z.&lambda;y.&lambda;x.((y x) z)
+	    </span>
+	    </li>
+            <li>
+	    <span class="string">
+	      &lambda;x.&lambda;y.&lambda;x.&lambda;z.(x (y z))
+	    </span>
+	    </li>
+	    <li>
+	      None of the other options is correct.
+	    </li>
+          </ul>
+
+          <div class="hints">
+	    <p>Recall that all functions in the lambda calculus are
+	    curried.</p>
+	    <p>Scoping rules are the same in JavaScript and the lambda
+	    calculus.</p>
+	    <p>Pay special attention to the use of parentheses in
+	    function calls in JavaScript and in function applications
+	    in the lambda calculus.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

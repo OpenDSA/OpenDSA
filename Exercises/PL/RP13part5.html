@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html data-require="math fp RP13part5 PLutils" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 13 part 5</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="900" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="setup">RP13part5.init()</var>
+        <var id="answer">RP13part5.answer</var>
+        <var id="functionDef">RP13part5.functionDef</var>        
+	<var id="initialStatement">RP13part5.initialStatement</var>
+      </div>
+      <div class="problems">
+        <div id="RP13part5p">
+          <p class="question">
+            <var>initialStatement</var></p>
+<pre class="string">
+<var>functionDef</var>
+</pre>
+          <p class="question">
+	    Write down below the code segment  that must
+	  replace the comment above.
+	    <textarea rows="5" cols="40" style="resize:none"
+                    id="answerTextarea"></textarea>
+            <div class="solution" data-type="custom">
+              <div class="guess"> $('#answerTextarea').val()  </div>
+              <div class="validator-function">
+		return RP13part5.checkAnswer(guess);
+            </div>
+          </div>
+          <div class="hints">
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
