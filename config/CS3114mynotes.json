@@ -83,7 +83,7 @@
         "exercises" : {}
       }
     },
-    "Week 4": {
+    "Weeks 4-5": {
       "Slides/Binary": {
         "long_name": "Binary Trees Part 1",
         "exercises" : {}
@@ -91,15 +91,9 @@
       "Slides/Binary2": {
         "long_name": "Binary Trees Part 2",
         "exercises" : {}
-      }
-    },
-    "Week 5": {
+      },
       "Slides/Binary3": {
         "long_name": "Binary Trees Part 3",
-        "exercises" : {}
-      },
-      "Slides/Interruptions": {
-        "long_name": "Memory cues and resumption strategies",
         "exercises" : {}
       },
       "Slides/Heaps": {
@@ -143,6 +137,16 @@
             "threshold": 1.0
           }
         }
+      }
+    },
+    "Week 6": {
+      "Slides/Sorting1": {
+        "long_name": "Sorting, Part 1",
+        "exercises" : {}
+      },
+      "Slides/Interruptions": {
+        "long_name": "Memory cues and resumption strategies",
+        "exercises" : {}
       }
     }
   }
