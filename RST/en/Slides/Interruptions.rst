@@ -67,7 +67,7 @@ Memory Cues and Resumption Strategies
 
 .. slide:: Selective Suspension
 
-   Maybe quitting for the data when you finish a function is not best.
+   Maybe quitting for the day when you finish a function is not best.
 
    * This means you have to remember what you finished, and figure out
      what needs to be done next
