@@ -95,7 +95,7 @@ function getSyntaxError(minDepth,maxDepth,vs) {
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                  code for SyntaxTF exercise
    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
-// Initialize Alpha Multiple Choice Exercises.
+
 function initSyntaxTF()
 {
     var vs = "uvxyz";

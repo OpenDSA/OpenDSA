@@ -792,27 +792,29 @@ function (ns) {
       "return k(fp.cons(fp.hd(list),x));"
     ],
 
+/* this exercise does not use the following function because there are several
+   answers with different traces
+*/
 
     [ "The following function takes in a non-empty (flat) list of integers. " +
       "After " +
       "you replace the comment made up of question marks with the correct " +
-      "answer, this function is supposed to return an integer that is equal " +
-      " to the result of converting the " +
-      "list to an arithmetic expression with a minus sign between " +
-      "consecutive integers, and then evaluating this expression with " +
-      "subtraction being right-associative. For example, " +
+      "answer, this function is supposed to return true if and only if " +
+      "all of the elements in the input list are non-negative. For example, " +
       "<span class='string'>f([1,2,3])</span> must " +
-      "return <span class='string'>2</span>, since " +
-      "<span class='string'>(1-(2-3)) = 2</span>, and " +
-      "<span class='string'>f([10])</span> must return " +
-      "<span class='string'>10</span>.",
+      "return <span class='string'>true</span> while " +
+      "<span class='string'>f([1,-2,3])</span> must return " +
+      "<span class='string'>false</span>.",
 
-      /* ?: the "???????" function */
+      /* 19: the "all non-negative" function */
 function (ns) {
     var h = function (list,k) {
 	if (fp.isNull(list)) {
 	    /* trace 1 */
-	    return k([ ]);
+	    return k(true);               // would work with only 'true'
+	} else if (fp.isLT(fp.hd(list),0)) {
+	    /* trace 1 */
+	    return false;
 	} else {
 	    /* trace 2 */
 	    return h(fp.tl(list),
@@ -824,32 +826,32 @@ function (ns) {
     };
     return h(ns,function (x) { return x; });
 },
-      [ ["[]" , "1", 
-	 ""],
-	["[]" , "1", 
-	 ""],
-	["[]" , "1", 
-	 ""],
-	["[]" , "1", 
-	 ""],
-	["[]" , "1", 
-	 ""]
+      [ ["[1]" , "true", 
+	 "{rec [1]}{base}"],
+	["[1,2,3]" , "true", 
+	 "{rec [1,2,3]}{rec [2,3]}{rec [3]}{base}"],
+	["[-1,2,3]" , "false", 
+	 "{base}"],
+	["[1,-2,3]" , "false", 
+	 "{rec [1,-2,3]}{base}"],
+	["[1,2,-3]" , "false", 
+	 "{rec [1,2,-3]}{rec [2,-3]}{base}" ]
       ],
-	"",      
+      "return x;"  // or: return k(x);    // but different traces
     ],
 
 	    ];// functions array
 
 	    // pick a random function
-	    var functionNumber = Math.floor(Math.random() * functions.length); 
-	    //functionNumber = 18;
+	    var functionNumber = Math.floor(Math.random() * 
+					    (functions.length-1)); 
+	    //  the -1 above is because we do not want to use function #19
+	    //functionNumber = 19;
 	    this.initialStatement = functions[ functionNumber ][0];
 	    f = functions[ functionNumber ][1];
 	    this.functionDisplayed = "var f = " + f.toString()
 		.replace(/[ \t]*\/\* trace [123] \*\/[ \t]*\n/g, "");
 	    this.tests = functions[ functionNumber ][2];
-	    var fStr = f.toString();
-		// .replace(/\/\*.+\*\//,correctAnswer);
 	}, //init
 
 	checkAnswer: function (studentAnswer) {

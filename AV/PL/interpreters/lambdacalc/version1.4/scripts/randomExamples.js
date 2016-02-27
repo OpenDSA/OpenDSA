@@ -2,7 +2,7 @@
 
 /* global LAMBDA : true */
 
-$(document).ready( function() {
+( function() {
 
     // types of lambda expressions:
     // 1: variable
@@ -86,5 +86,5 @@ $(document).ready( function() {
     LAMBDA.getRnd = getRnd;
 
 
-});
+})();
 

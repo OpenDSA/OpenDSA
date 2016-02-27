@@ -2,7 +2,7 @@
 
 /* global LAMBDA : true, parser, MathJax, console, exp, order */
 
-$(function () {
+(function () {
 
     var maxReductionSteps = 15;
     var arr;
@@ -679,7 +679,7 @@ LAMBDA.labelBoundVariables = labelBoundVariables;
 LAMBDA.free = free;
 LAMBDA.substitute = substitute;
 
-});
+})();
 
 // the code below is only used when creating slide shows
 if (typeof running_in_node !== 'undefined') {
@@ -710,4 +710,4 @@ if (typeof running_in_node !== 'undefined') {
 	    console.log( "];\n");
 	}
     })();
-}
+};

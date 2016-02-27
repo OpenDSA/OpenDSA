@@ -2,7 +2,7 @@
 
 var LAMBDA = {};
 
-$(function () {
+(function () {
 
 var exports = {};
 
@@ -217,4 +217,4 @@ exports.doesNotContainAnApp = doesNotContainAnApp;
 LAMBDA.absyn = exports;
 
 
-});
+})();
