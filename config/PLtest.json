@@ -516,9 +516,17 @@
       }
     },
     "Lambda Calculus": {
-      "PL/LC1": {
-        "long_name": "Introduction to the lambda calculus - Part 1",
+      "PL/Syntax": {
+        "long_name": "Syntax of the Lambda Calculus",
         "sections": {
+          "Lambda Calculus": {
+            "parseTree": {
+              "long_name": "Slideshow for how to build a parse tree",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
           "RP 14 part 1": {
             "RP14part1": {
               "long_name": "RP set #14, question #1",
@@ -533,51 +541,11 @@
               "long_name": "RP set #14, question #2",
               "required": true,
               "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
-          },
-          "RP 14 part 3": {
-            "RP14part3": {
-              "long_name": "RP set #14, question #3",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
+              "threshold": 3.0,
               "showhide": "Show"
             }
           }
 	}
-      }
-    },
-    "Lambda Calculus old": {
-      "PL/Syntax": {
-        "long_name": "Syntax of the Lambda Calculus",
-        "sections": {
-          "Lambda Calculus": {
-            "parseTree": {
-              "long_name": "Slideshow for how to build a parse tree",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            }
-          },
-          "Exercise: Syntax TF": {
-            "SyntaxTF": {
-              "long_name": "Algorithm Analysis Summary TF Questions",
-              "required": false,
-              "points": 1.0,
-              "threshold": 5
-            }
-          },
-          "Exercise: Syntax MC": {
-            "SyntaxMC": {
-              "long_name": "Algorithm Analysis Summary MC Questions",
-              "required": false,
-              "points": 1.0,
-              "threshold": 5
-            }
-          }
-        }
       },
       "PL/Semantics": {
         "long_name": "Semantics of the Lambda Calculus",

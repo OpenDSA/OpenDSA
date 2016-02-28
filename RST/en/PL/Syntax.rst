@@ -137,10 +137,10 @@ Test your mastery of the syntax of the lambda calculus with these two exercises.
 .. avembed:: Exercises/PL/RP14part1.html ka
 
 
-Exercise: Syntax MC
+RP 14 part 2
 -------------------
 
-.. .. avembed:: Exercises/PL/SyntaxMC.html ka
+.. avembed:: Exercises/PL/RP14part2.html ka
 
 .. .. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/grammar.js
 .. .. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn.js
