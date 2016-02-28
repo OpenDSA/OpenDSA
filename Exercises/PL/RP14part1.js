@@ -94,11 +94,10 @@
 		    question.answer = "False";
 		    break;
 		}    
-		console.log(question.answer);
 		return s;
 	    }// getSyntaxError function
 	    
-	    if (L.getRnd(0,1) > 2) {
+	    if (L.getRnd(0,1) === 0) {
 		// syntactically correct lambda exp
 		this.expression = 
 		    L.printExp( L.getRndExp(1,minDepth,maxDepth,vs,""));
@@ -107,6 +106,8 @@
 		this.expression = getSyntaxError(minDepth,maxDepth,vs);
 		this.answer = question.answer;
 	    }
+	    console.log(this.answer);
+	    
 	}, //init
 
 	checkAnswer: function (studentAnswer) {

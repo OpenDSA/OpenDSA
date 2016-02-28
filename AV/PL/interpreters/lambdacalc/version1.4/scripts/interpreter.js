@@ -1,11 +1,12 @@
-"use strict";
-
 /* global LAMBDA : true, parser, MathJax, console, exp, order */
 
 (function () {
 
+    "use strict";
+
     var maxReductionSteps = 15;
     var arr;
+    var LAMBDA = window.LAMBDA;
 
 /** takes in a VarExp and a lambda expression
  */

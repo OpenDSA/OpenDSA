@@ -1,8 +1,8 @@
-"use strict";
-
 /* global LAMBDA : true */
 
 ( function() {
+
+    "use strict";
 
     // types of lambda expressions:
     // 1: variable
@@ -80,10 +80,10 @@
 					    );
 	}
     }
-    
-    LAMBDA.getRndExp = getRndExp;
-    LAMBDA.getRndExp2 = getRndExp2;
-    LAMBDA.getRnd = getRnd;
+
+    window.LAMBDA.getRndExp = getRndExp;
+    window.LAMBDA.getRndExp2 = getRndExp2;
+    window.LAMBDA.getRnd = getRnd;
 
 
 })();
