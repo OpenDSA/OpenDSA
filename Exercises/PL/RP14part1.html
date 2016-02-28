@@ -1,43 +1,46 @@
 <!DOCTYPE html>
-<html data-require="math" lang="en">
+<html data-require="math RP14part1" lang="en">
   <head>
     <meta charset=utf-8>
     <title>RP 14 part 1</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
+	<script>var LAMBDA = {};</script>
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn.js"></script>
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter.js"></script>
+	<script src="../../AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js"></script>
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
   </head>
 
-  <body data-height="750" data-width="950">
+  <body data-height="650" data-width="950">
     <div class="exercise">
+	<div class="vars">
+		<var id="init">RP14part1.init()</var>
+		<var id="expression">RP14part1.expression</var>
+		<var id="CorrectAnswer">RP14part1.answer</var>
+	</div>
+
       <div class="problems">
         <div id="RP14part1p">
-          <p class="question">Consider the following expressions:</p>
-
+          <p class="question">True or False? The
+	    following expression is a syntactically
+	    correct &lambda; expression.</p>
 <pre class="string">
-&lambda;x.&lambda;y.&lambda;z.(x &lambda;z).&lambda;y.(x y)
-(&lambda;x.&lambda;y.(x &lambda;z.y))
-(&lambda;x.&lambda;y.&lambda;z.x &lambda;z.(&lambda;y.(x y)))
-(&lambda;x.(x x) &lambda;y.(x y x))
-</pre>
-          <p class="question">How many of these expressions are
-            &lambda; expressions?</p>
-	  <div class="solution">0</div>
-          <ul class="choices">
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-          </ul>
+<var>expression</var>
 
-          <div class="hints">
-	    <p>If you cannot work it out in your head, use
-	    pencil and paper to build parse trees.</p>
-	    <p>Review the three productions in the lambda
-	    calculus grammar and study until you know them cold.</p>
-	    <p>Pay special attention to the constraints on
-	    the location of parentheses.</p>
-          </div>
+</pre>
+	  <div class="solution"><var>CorrectAnswer</var></div>
+	  <ul class="choices" data-category="true">
+	    <li>True</li>
+	    <li>False</li>
+	  </ul>
+	  
+	  <div class="hints">
+	    <p>Remember that parentheses are not optional.</p>
+	    <p>Parentheses must surround every application expression,
+	    but nothing else.</p>
+	    <p>If needed, try to build a parse tree for this expression.<p>
+	  </div>	 
         </div>
       </div>
     </div>

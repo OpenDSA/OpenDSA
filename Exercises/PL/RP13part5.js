@@ -1,6 +1,3 @@
-/* a function that represents the rest of the computation relative to this function call.
-*/
-
 /* global console, fp */
 (function() {
   "use strict";
