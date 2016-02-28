@@ -584,19 +584,20 @@
               }
 	  }
       },
-      "PL/AlphaConversion": {
-        "long_name": "Alpha conversion",
-        "sections": {
-          "Alpha-Conversion": {
-            "boundVarHighlight": {
-              "long_name": "Exercise 1",
-              "required": false,
-              "points": 1.0,
-              "threshold": 5
+	"PL/AlphaConversion": {
+            "long_name": "Alpha conversion",
+            "sections": {
+		"RP 15 part 1": {
+		    "RP15part1p": {
+			"long_name": "RP set #15, question #1",
+			"required": true,
+			"points": 1.0,
+			"threshold": 1.0,
+			"showhide": "Show"
+		    }
+		}
             }
-          }
-        }
-      },
+	},
       "PL/Substitution": {
         "long_name": "Substitution algorithm",
         "sections": {

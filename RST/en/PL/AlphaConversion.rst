@@ -156,10 +156,14 @@ using the following rule:
     a *new* variable, that is, a variable that does not occur in the body
     of the function being :math:`\alpha`-converted.
 
-To practice the process of :math:`\alpha`-conversion,
-complete the following exercise.
+RP 15 part 1
+------------
 
-.. avembed:: Exercises/PL/AlphaConversion.html ka
+To practice the process of :math:`\alpha`-conversion, complete the
+following exercise. To earn credit for it, you will have to solve it
+correctly three times in a row.
+
+.. avembed:: Exercises/PL/RP15part1.html ka
 
 In conclusion, :math:`\alpha`-conversion simply replaces the name of a
 function parameter with a completely new name in order to avoid
