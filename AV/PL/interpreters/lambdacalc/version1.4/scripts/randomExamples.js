@@ -1,8 +1,8 @@
-"use strict";
-
 /* global LAMBDA : true */
 
-$(document).ready( function() {
+( function() {
+
+    "use strict";
 
     // types of lambda expressions:
     // 1: variable
@@ -80,11 +80,11 @@ $(document).ready( function() {
 					    );
 	}
     }
-    
-    LAMBDA.getRndExp = getRndExp;
-    LAMBDA.getRndExp2 = getRndExp2;
-    LAMBDA.getRnd = getRnd;
+
+    window.LAMBDA.getRndExp = getRndExp;
+    window.LAMBDA.getRndExp2 = getRndExp2;
+    window.LAMBDA.getRnd = getRnd;
 
 
-});
+})();
 

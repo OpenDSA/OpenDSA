@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 13 part 3</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1150" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP13part3p">
+          <p class="question">Consider the following definition of the
+            <span class="string">gcd_list </span> function that, when
+            completed, will compute the greatest common divisor
+            of a list of numbers:</p>
+
+<pre class="string">
+1.  var gcd_list = function (ns) {
+2.      var gcd_list_cps = function (ns,k) {
+3.           if ( ????? ) {
+4.               return "Cannot ask for the gcd of the empty list";
+5.           } else if ( ????? ) {
+6.               return 1;
+7.           } else if ( ????? ) {
+8.               return k(fp.hd(ns));
+9.           } else {
+10.              return gcd_list_cps( fp.tl(ns),
+11.                                   function (x) {
+12.                                       return k(gcd( ????? ));
+13.                                   });
+14.          }
+15.      };
+16.      return gcd_list_cps(ns,function (x) { return x; });
+17. };
+</pre>
+          <p class="question">The function above uses
+          continuation-passing style. What should the question marks
+          on line 7 be replaced with to ensure the function behaves
+          this way?
+	  </p>
+	  <div class="solution">
+	    <span class="string">fp.isNull(fp.tl(ns))</span></div>
+          <ul class="choices">
+            <li><span class="string">fp.isEq(fp.hd(ns),1)</span></li>
+            <li><span class="string">fp.hd(ns), x</span></li>
+            <li><span class="string">fp.isNull(ns)</span></li>
+          </ul>
+
+          <div class="hints">
+	    <p>Note that, in this case (line 8), we call the
+	    continuation for the first time to initiate the
+	    computation.</p>
+	    <p>Recall that the only argument of the continuation is
+	    the result of the parts of the computation that have been
+	    completed so far. In this case, no computations have been
+	    completed yet.</p>
+	    <p>The specific argument given to the continuation on the
+	    call on line 8 gives you a hint about the ordering of the
+	    computations and the answer to this question.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

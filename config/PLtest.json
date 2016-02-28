@@ -248,7 +248,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/FP3": {
         "long_name": "Introduction to functional programming - Part 3",
@@ -289,7 +289,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/FP4": {
         "long_name": "Introduction to functional programming - Part 4",
@@ -321,7 +321,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/FP5": {
         "long_name": "Introduction to functional programming - Part 5",
@@ -362,7 +362,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/FP6": {
         "long_name": "Introduction to functional programming - Part 6",
@@ -403,7 +403,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/FP7": {
         "long_name": "Introduction to functional programming - Part 7",
@@ -419,7 +419,7 @@
           },
           "RP 11 part 2": {
             "RP11part2": {
-		"long_name": "RP set #11, question #2",
+              "long_name": "RP set #11, question #2",
               "required": true,
               "points": 1.0,
               "threshold": 1.0,
@@ -428,7 +428,7 @@
           },
           "RP 11 part 3": {
             "RP11part3": {
-		"long_name": "RP set #11, question #3",
+              "long_name": "RP set #11, question #3",
               "required": true,
               "points": 1.0,
               "threshold": 1.0,
@@ -444,7 +444,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/FP8": {
         "long_name": "Introduction to functional programming - Part 8",
@@ -458,7 +458,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/FP9": {
         "long_name": "Introduction to functional programming - Part 9",
@@ -498,8 +498,17 @@
               "threshold": 1.0,
               "showhide": "Show"
             }
+          },
+          "RP 13 part 5": {
+            "RP13part5": {
+              "long_name": "RP set #13, question #45",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
           }
-	}
+        }
       }
     },
     "Lambda Calculus": {
@@ -514,49 +523,64 @@
               "threshold": 1.0
             }
           },
-          "Exercise: Syntax TF": {
-            "SyntaxTF": {
-              "long_name": "Algorithm Analysis Summary TF Questions",
-              "required": false,
+          "RP 14 part 1": {
+            "RP14part1": {
+              "long_name": "RP set #14, question #1",
+              "required": true,
               "points": 1.0,
-              "threshold": 5
+              "threshold": 3.0,
+              "showhide": "Show"
             }
           },
-          "Exercise: Syntax MC": {
-            "SyntaxMC": {
-              "long_name": "Algorithm Analysis Summary MC Questions",
-              "required": false,
+          "RP 14 part 2": {
+            "RP14part2": {
+              "long_name": "RP set #14, question #2",
+              "required": true,
               "points": 1.0,
-              "threshold": 5
+              "threshold": 3.0,
+              "showhide": "Show"
             }
           }
         }
       },
       "PL/Semantics": {
         "long_name": "Semantics of the Lambda Calculus",
-        "sections": {}
+        "sections": {
+          "Semantics of the Lambda Calculus": {},
+          "RP 14 part 3": {
+            "RP14part3p": {
+              "long_name": "RP set #14, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+        }
       },
       "PL/FreeBoundVariables": {
         "long_name": "Free and Bound Variables",
         "sections": {
           "Free and Bound Variables": {},
-          "Exercise 1": {
-            "freeVarHighlight": {
-              "long_name": "Exercise 1",
-              "required": false,
+          "RP 14 part 4": {
+            "RP14part4p": {
+              "long_name": "RP set #14, question #4",
+              "required": true,
               "points": 1.0,
-              "threshold": 5
+              "threshold": 3.0,
+              "showhide": "Show"
             }
           },
-          "Exercise 2": {
-            "boundVarHighlight": {
-              "long_name": "Exercise 2",
-              "required": false,
+          "RP 14 part 5": {
+            "RP14part5p": {
+              "long_name": "RP set #14, question #5",
+              "required": true,
               "points": 1.0,
-              "threshold": 5
+              "threshold": 3.0,
+              "showhide": "Show"
             }
           },
-          "Continued": {}
+          "Formal definition of free variables": {}
         }
       },
       "PL/AlphaConversion": {

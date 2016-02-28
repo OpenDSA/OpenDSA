@@ -12,6 +12,9 @@
  Semantics of the Lambda Calculus
 ==================================
 
+Semantics of the Lambda Calculus
+--------------------------------
+
 In the previous section, we covered the entirety of the syntax of the
 lambda calculus. The rest of this chapter, including this section,
 deals with the semantics of the lambda calculus, that is, the meaning
@@ -202,3 +205,11 @@ code fragment.
 
    Note that, in example 11 above, the top-level expression is a
    lambda abstraction whose body is a function application.
+
+RP 14 part 3
+------------
+
+This problem is about the semantic equivalence between lambda
+expressions and JavaScript expressions.
+
+.. avembed:: Exercises/PL/RP14part3.html ka

@@ -31,7 +31,7 @@ RP 13 part 2
 This review problem is the first one in a sequence of three problems
 that require you to complete the implementation of a recursive
 function that uses continuation-passing style programming. This
-problem use the :math:`gcd` function introduced in the first problem
+problem uses the :math:`gcd` function introduced in the first problem
 in this set, but you do not need to remember how it was implemented.
 
 .. avembed:: Exercises/PL/RP13part2.html ka
@@ -42,7 +42,7 @@ RP 13 part 3
 This review problem is the second one in a sequence of three problems
 that require you to complete the implementation of a recursive
 function that uses continuation-passing style programming. This
-problem use the :math:`gcd` function introduced in the first problem
+problem uses the :math:`gcd` function introduced in the first problem
 in this set, but you do not need to remember how it was implemented.
 
 .. avembed:: Exercises/PL/RP13part3.html ka
@@ -53,7 +53,7 @@ RP 13 part 4
 This review problem is the last one in a sequence of three problems
 that require you to complete the implementation of a recursive
 function that uses continuation-passing style programming. This
-problem use the :math:`gcd` function introduced in the first problem
+problem uses the :math:`gcd` function introduced in the first problem
 in this set, but you do not need to remember how it was implemented.
 
 .. avembed:: Exercises/PL/RP13part4.html ka

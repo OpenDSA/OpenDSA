@@ -1,12 +1,10 @@
+(function () {
+
  "use strict";
-
-var LAMBDA = {};
-
-$(function () {
 
 var exports = {};
 
-function createProgram(e) {
+function createProgram (e) {
     return ["Program", e]; 
 }
 function isProgram(e) { 
@@ -214,7 +212,7 @@ exports.createDisjunction = createDisjunction;
 exports.createAddition = createAddition;
 exports.createMultiplication = createMultiplication;
 exports.doesNotContainAnApp = doesNotContainAnApp;
-LAMBDA.absyn = exports;
 
+window.LAMBDA.absyn = exports;
 
-});
+})();

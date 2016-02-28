@@ -22,7 +22,8 @@ Topics of the day:
 The review problem set for today contains four review problems.
 
 This first problem is about the structure (or syntax) of
-:math:`\lambda` expressions.
+:math:`\lambda` expressions. Since it is a randomized problem, you
+need to solve it correctly three times in a row to get credit for it.
 
 .. avembed:: Exercises/PL/RP14part1.html ka
 

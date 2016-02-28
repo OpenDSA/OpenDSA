@@ -129,7 +129,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/FP3": {
         "long_name": "Introduction to functional programming - Part 3",
@@ -170,7 +170,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/FP4": {
         "long_name": "Introduction to functional programming - Part 4",
@@ -202,7 +202,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/FP5": {
         "long_name": "Introduction to functional programming - Part 5",
@@ -243,7 +243,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/FP6": {
         "long_name": "Introduction to functional programming - Part 6",
@@ -284,7 +284,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/FP7": {
         "long_name": "Introduction to functional programming - Part 7",
@@ -300,7 +300,7 @@
           },
           "RP 11 part 2": {
             "RP11part2": {
-		"long_name": "RP set #11, question #2",
+              "long_name": "RP set #11, question #2",
               "required": true,
               "points": 1.0,
               "threshold": 1.0,
@@ -309,7 +309,7 @@
           },
           "RP 11 part 3": {
             "RP11part3": {
-		"long_name": "RP set #11, question #3",
+              "long_name": "RP set #11, question #3",
               "required": true,
               "points": 1.0,
               "threshold": 1.0,
@@ -325,7 +325,71 @@
               "showhide": "Show"
             }
           }
-	}
+        }
+      },
+      "PL/FP8": {
+        "long_name": "Introduction to functional programming - Part 8",
+        "sections": {
+          "RP 12 part 1": {
+            "RP12part1": {
+              "long_name": "RP set #12, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+        }
+      },
+      "PL/FP9": {
+        "long_name": "Introduction to functional programming - Part 9",
+        "sections": {
+          "RP 13 part 1": {
+            "RP13part1": {
+              "long_name": "RP set #13, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 13 part 2": {
+            "RP13part2": {
+              "long_name": "RP set #13, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 13 part 3": {
+            "RP13part3": {
+              "long_name": "RP set #13, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 13 part 4": {
+            "RP13part4": {
+              "long_name": "RP set #13, question #4",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 13 part 5": {
+            "RP13part5": {
+              "long_name": "RP set #13, question #45",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+        }
       }
     },
     "Appendices": {

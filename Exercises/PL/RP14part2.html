@@ -1,41 +1,49 @@
 <!DOCTYPE html>
-<html data-require="math" lang="en">
+<html data-require="math ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples RP14part2" lang="en">
   <head>
     <meta charset=utf-8>
     <title>RP 14 part 2</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>var LAMBDA = {};</script>
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
   </head>
 
-  <body data-height="750" data-width="950">
+  <body data-height="950" data-width="950">
     <div class="exercise">
+	<div class="vars">
+		<var id="init">RP14part2.init()</var>
+		<var id="expressions">RP14part2.expressions</var>
+		<var id="CorrectAnswer">RP14part2.answer</var>
+		<var id="Option1">RP14part2.option1</var>
+		<var id="Option2">RP14part2.option2</var>
+		<var id="Option3">RP14part2.option3</var>
+		<var id="Option4">RP14part2.option4</var>
+	</div>
+
       <div class="problems">
         <div id="RP14part2p">
-          <p class="question">Consider the following &lambda; expression:</p>
-
+          <p class="question">How many of the following expressions
+          are syntactically correct &lambda; expressions?</p>
 <pre class="string">
-(&lambda;x.(x (&lambda;x.x x)) (x &lambda;x.(x x)))
-</pre>
-          <p class="question">How many occurrences
-            of <span class="string">x</span> are free in this &lambda;
-            expression?</p>
-	  <div class="solution">1</div>
-          <ul class="choices">
-            <li>0</li>
-            <li>2</li>
-            <li>3</li>
-            <li>more than 3</li>
-          </ul>
+<var>expressions</var>
 
-          <div class="hints">
-	    <p>It might help to build the parse tree for this expression.</p>
-	    <p>Identify all of the <em>variable declarations</em>
-	    (or <em>binding occurrences</em>) in this expression, as
-	    well as the <em>scope</em> that each one of them defines.</p>
-	    <p>Review the definition of <em>free occurrences</em> and use the
-	    scopes you identified already to answer the question.</p>
-          </div>
+</pre>
+	  <div class="solution"><var>CorrectAnswer</var></div>
+	  <ul class="choices">
+	    <li><var>Option1</var></li>
+	    <li><var>Option2</var></li>
+	    <li><var>Option3</var></li>
+	    <li><var>Option4</var></li>
+	  </ul>
+	  
+	  <div class="hints">
+	    <p>Remember that parentheses are not optional.</p>
+	    <p>Parentheses must surround every application expression,
+	    but nothing else.</p>
+	    <p>If you are struggling to complete this problem, you should
+	      go back and practice with the previous problem.</p>
+	  </div>	 
         </div>
       </div>
     </div>

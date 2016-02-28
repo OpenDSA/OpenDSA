@@ -1,11 +1,12 @@
-"use strict";
-
 /* global LAMBDA : true, parser, MathJax, console, exp, order */
 
-$(function () {
+(function () {
+
+    "use strict";
 
     var maxReductionSteps = 15;
     var arr;
+    var LAMBDA = window.LAMBDA;
 
 /** takes in a VarExp and a lambda expression
  */
@@ -679,7 +680,7 @@ LAMBDA.labelBoundVariables = labelBoundVariables;
 LAMBDA.free = free;
 LAMBDA.substitute = substitute;
 
-});
+})();
 
 // the code below is only used when creating slide shows
 if (typeof running_in_node !== 'undefined') {
@@ -710,4 +711,4 @@ if (typeof running_in_node !== 'undefined') {
 	    console.log( "];\n");
 	}
     })();
-}
+};
