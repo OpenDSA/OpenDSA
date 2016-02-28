@@ -110,8 +110,8 @@ second and third productions in the grammar  above.
 The following slideshow demonstrates how to use the grammar above
 to build the parse tree for a given lambda expression.
 
-.. inlineav:: parseTree ss
-   :output: show
+.. .. inlineav:: parseTree ss
+..    :output: show
 
 
 **Questions to ponder**
@@ -129,21 +129,21 @@ Q2. How many terminals does this grammar contain?
 Q3. Is this grammar ambiguous, since the third production is doubly recursive?
 
 
-Exercise: Syntax TF
--------------------
+RP 14 part 1
+------------
 
 Test your mastery of the syntax of the lambda calculus with these two exercises.
 
-.. avembed:: Exercises/PL/SyntaxTF.html ka
+.. avembed:: Exercises/PL/RP14part1.html ka
 
 
 Exercise: Syntax MC
 -------------------
 
-.. avembed:: Exercises/PL/SyntaxMC.html ka
+.. .. avembed:: Exercises/PL/SyntaxMC.html ka
 
-.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/grammar.js
-.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn.js
-.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter.js
-.. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js
-.. odsascript:: AV/PL/AV/parseTree.js
+.. .. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/grammar.js
+.. .. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn.js
+.. .. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter.js
+.. .. odsascript:: AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples.js
+.. .. odsascript:: AV/PL/AV/parseTree.js
