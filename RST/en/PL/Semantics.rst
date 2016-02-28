@@ -202,3 +202,11 @@ code fragment.
 
    Note that, in example 11 above, the top-level expression is a
    lambda abstraction whose body is a function application.
+
+RP 14 part 3
+------------
+
+This problem is about the semantic equivalence between lambda
+expressions and JavaScript expressions.
+
+.. avembed:: Exercises/PL/RP14part3.html ka

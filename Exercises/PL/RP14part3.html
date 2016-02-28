@@ -8,33 +8,59 @@
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
   </head>
 
-  <body data-height="750" data-width="950">
+  <body data-height="950" data-width="950">
     <div class="exercise">
       <div class="problems">
         <div id="RP14part3p">
-          <p class="question">Consider the following &lambda; expression:</p>
+          <p class="question">Consider the following JavaScript expression:</p>
 
 <pre class="string">
-(&lambda;x.(x (&lambda;x.x x)) (x &lambda;x.(x x)))
+function (x) {
+    return function (y) {
+               return function (x) {
+                          return function (z) {
+                                     return x(y)(z);
+                          };
+               };
+    };
+}
 </pre>
-          <p class="question">How many occurrences
-            of <span class="string">x</span> are free in this &lambda;
-            expression?</p>
-	  <div class="solution">1</div>
+          <p class="question">Which one of the following expressions
+          is a &lambda; expression that is equivalent to the code given
+          above?</p>
+	  <div class="solution">
+	    <span class="string">
+	      &lambda;a.&lambda;b.&lambda;a.&lambda;c.((a b) c)
+	    </span>
+	  </div>
           <ul class="choices">
-            <li>0</li>
-            <li>2</li>
-            <li>3</li>
-            <li>more than 3</li>
+            <li>
+	      <span class="string">
+		&lambda;a.&lambda;b.&lambda;a.&lambda;c.(a b c)
+	    </span></li>
+            <li>
+	    <span class="string">
+	      &lambda;y.&lambda;z.&lambda;y.&lambda;x.((y x) z)
+	    </span>
+	    </li>
+            <li>
+	    <span class="string">
+	      &lambda;x.&lambda;y.&lambda;x.&lambda;z.(x (y z))
+	    </span>
+	    </li>
+	    <li>
+	      None of the other options is correct.
+	    </li>
           </ul>
 
           <div class="hints">
-	    <p>It might help to build the parse tree for this expression.</p>
-	    <p>Identify all of the <em>variable declarations</em>
-	    (or <em>binding occurrences</em>) in this expression, as
-	    well as the <em>scope</em> that each one of them defines.</p>
-	    <p>Review the definition of <em>free occurrences</em> and use the
-	    scopes you identified already to answer the question.</p>
+	    <p>Recall that all functions in the lambda calculus are
+	    curried.</p>
+	    <p>Scoping rules are the same in JavaScript and the lambda
+	    calculus.</p>
+	    <p>Pay special attention to the use of parentheses in
+	    function calls in JavaScript and in function applications
+	    in the lambda calculus.</p>
           </div>
         </div>
       </div>
