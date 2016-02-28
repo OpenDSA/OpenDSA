@@ -12,6 +12,9 @@
  Semantics of the Lambda Calculus
 ==================================
 
+Semantics of the Lambda Calculus
+--------------------------------
+
 In the previous section, we covered the entirety of the syntax of the
 lambda calculus. The rest of this chapter, including this section,
 deals with the semantics of the lambda calculus, that is, the meaning
