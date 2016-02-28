@@ -96,22 +96,21 @@ occurrence is never free since its role is to define a new variable.
 RP 14 part 4
 ------------
 
-The following exercise will be good practice for identifying free
-variables in lambda expressions.
+This exercise will be good practice for identifying free
+variables in lambda expressions. To get credit for this randomized
+problem, you must solve it correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP14part4.html ka
 
-Remember that, since binding occurrences are (by definition) bound, each and
-every variable occurrence is either free or bound, but not both.
+RP 14 part 5
+------------
+
+This exercise will be good practice for identifying bound
+variables in lambda expressions. To get credit for this randomized
+problem, you must solve it correctly three times in a row.
 
 
-Exercise 2
-----------
-
-The following exercise will help you identify bound variables in lambda
-expressions.
-
-.. .. avembed:: Exercises/PL/boundVarHighlight.html ka
+.. avembed:: Exercises/PL/RP14part5.html ka
 
 
 Formal definition of free variables
