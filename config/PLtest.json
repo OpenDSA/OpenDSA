@@ -595,7 +595,7 @@
 			"long_name": "RP set #15, question #1",
 			"required": true,
 			"points": 1.0,
-			"threshold": 1.0,
+			"threshold": 3.0,
 			"showhide": "Show"
 		    }
 		}
@@ -615,6 +615,15 @@
 		"RP 15 part 2": {
 		    "RP15part2": {
 			"long_name": "RP set #15, question #2",
+			"required": true,
+			"points": 1.0,
+			"threshold": 3.0,
+			"showhide": "Show"
+		    }
+		},
+		"RP 15 part 3": {
+		    "RP15part3": {
+			"long_name": "RP set #15, question #3",
 			"required": true,
 			"points": 1.0,
 			"threshold": 3.0,

@@ -33,15 +33,6 @@
 	    arr.value(x) === ' '; 
     };
 
-
-    function makeRegex( lambdaexp ) {
-	lambdaexp = lambdaexp.replace(/\s+/g,"").replace(/\u03BB/g,"^").split("");
-	return ("\\s*" + lambdaexp.join("\\s*") + "\\s*")
-	    .replace(/\^/g,"\\^").replace(/\./g,"\\.").replace(/\(/g,"\\(")
-	    .replace(/\)/g,"\\)");
-    }
-
-
     var RP15part1 = {    
 
 	init: function () {

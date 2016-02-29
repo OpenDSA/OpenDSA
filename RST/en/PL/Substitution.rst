@@ -104,8 +104,8 @@ other hand, :math:`subst(\lambda y.(y\ x), u, u)` falls into Case 1a,
 since both :math:`p` and :math:`b` are equal to the same variable
 :math:`u`. So, the algorithm returns :math:`\lambda y.(y\ x)`.
 
-.. inlineav:: substCase1b ss
-   :output: show
+.. .. inlineav:: substCase1b ss
+..    :output: show
 
 
 **Case 2:** To be completed
@@ -133,17 +133,19 @@ RP 15 part 2
 
 The following exercise is good practice for identifying which case
 applies at each step of the substitution algorithm. To get credit for
-this randomized algorithm, you must solve it correctly three times in
+this randomized problem, you must solve it correctly three times in
 a row.
 
 .. avembed:: Exercises/PL/RP15part2.html ka
 
-Exercise 2
-----------
+RP 15 part 3
+------------
 
 The following exercise will test your ability to complete a full
-substitution by applying the algorithm scrupulously.
+substitution by applying the algorithm scrupulously. To get credit for
+this randomized problem, you must solve it correctly three times in
+a row.
 
-.. .. avembed:: Exercises/PL/SubstitutionResult.html ka
+.. avembed:: Exercises/PL/RP15part3.html ka
 
 .. .. odsascript:: AV/PL/AV/substCase1b.js

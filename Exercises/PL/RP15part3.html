@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html data-require="math ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples RP15part3" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 15 part 3</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>var LAMBDA = {};</script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+<style>
+
+    div.jsavcanvas {
+         text-align: center; /* needed to center the array in the container */
+    }
+    
+    div#jsav  div.jsavcanvas ol.jsavarray   {
+       max-width: 400px;   /* needed for centering the array to work */
+       max-height: 30px;
+       min-height: 30px;
+    }
+
+    li.jsavhighlight {
+        border: 1px solid black !important;
+    }
+     ol.jsavarray  li.jsavindex  {
+       max-height: 30px;
+       min-height:30px;
+       height: 30px;
+    }
+
+      li.jsavindex span.jsavvalue {
+       max-height:30px;
+       min-height:30px;
+    }
+    
+    ol.jsavarray .defaultCellStyle {
+        border: none;
+        box-shadow : none; 
+    }
+
+    ol.jsavarray .lambdaWidth {
+        width : 20px !important;
+        min-width : 20px !important;
+    }
+
+    ol.jsavarray .oneCharWidth {
+        width : 12px   !important;                   
+        min-width : 12px !important;
+        text-align: center;
+    }
+
+    ol.jsavarray .parenWidth {
+        width : 7px;
+        min-width : 7px;
+    }
+
+    ol.jsavarray .emptyWidth {
+        width : 0px;
+        min-width : 0px;
+    }
+
+    .highlight { 
+        color : red;
+        font-weight: bold;
+    }
+
+    .unhighlight { 
+        color : black;
+        font-weight: normal;
+    }
+
+    .lambdaWidth.bindingVar {
+    border-radius: 0 !important;
+    border-bottom: 3px solid black !important;
+}
+
+</style>
+
+  </head>
+
+  <body data-height="600" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+	<var id="setup">RP15part3.init()</var>
+	<var id="substExpression">RP15part3.substExpression</var>	
+	<var id="answer">RP15part3.answer</var>
+      </div>
+      <div class="problems">
+        <div id="RP15part3p">
+      <p class="question">Trace the substitution algorithm to perform
+		    the following substitution and write down your
+		    final answer below, using ^ to denote
+		    &lambda;.  For each &alpha;-conversion that the
+		    algorithm requires when computing
+		    say, <span class="string"> subst(e, p,
+		    &lambda;x.B)</span>, you must choose for the new
+		    variable the letter that comes first
+		    alphabetically (i.e., "a", then "b", etc.)  among
+		    those that occur neither
+		    in <span class="string">e</span> nor
+		      <span class="string">B</span>.</p>
+
+<pre class="string">
+           <var>substExpression</var>
+
+</pre>
+      <textarea rows="1" cols="60" style="resize:none"
+                id="answerTextarea"></textarea>
+      <div class="solution" data-type="custom">
+        <div class="guess"> $('#answerTextarea').val()  </div>
+        <div class="validator-function">
+	  return RP15part3.validateAnswer(guess);
+        </div>
+      </div>
+
+      <div class="hints">
+	<p>For each step in the algorithm, make sure to pick the only
+        case that applies based on the type of the outermost
+        expression which you are substituting into.</p>
+	<p>Make sure to perform an &alpha;-conversion only when the
+        algorithm requires it, that is, in case 2c.</p>
+	<p>For each &alpha;-conversion, if any, you must choose the
+	correct variable name (reread the instructions above) to get
+	credit for your answer: there is only one correct answer for
+	each substitution.</p>
+      </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
