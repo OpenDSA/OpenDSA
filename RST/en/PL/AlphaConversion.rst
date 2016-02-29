@@ -13,8 +13,8 @@
 Alpha-Conversion
 ================
 
-Alpha-Conversion
-----------------
+Alpha-Conversion Rule
+---------------------
 
 We now turn our attention back to the semantics of the lambda calculus
 by focusing on how :ref:`free-and-bound-variables` in lambda

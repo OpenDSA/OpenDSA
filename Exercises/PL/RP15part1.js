@@ -46,14 +46,14 @@
 
 	init: function () {
 
-	    var answer;
 	    var jsav = new JSAV("jsav", {"animationMode": "none"});
 	    var vs = "xyz";
 	    var minDepth = 4;
 	    var maxDepth = 6;
 	    var exp, lambdas, chosenLambda, firstLambda, numBound;
 	    var attempts = 0;
-	    
+	    var answer;
+
 	    while (true) {
 		attempts++;
 		exp = L.getRndExp(1,minDepth,maxDepth,vs,"");
@@ -78,22 +78,17 @@
 		}
 	    }
 	    answer = answer.join("");
-	    question.answer = answer.replace(/@|\#/g,"a").replace(/\s+/g,"").replace(/\u03BB/g,"^").split("");
-	    question.answer = ("\\s*" + question.answer.join("\\s*") + "\\s*")
-		.replace(/\^/g,"\\^").replace(/\./g,"\\.").replace(/\(/g,"\\(")
-		.replace(/\)/g,"\\)");
+	    this.answer = answer.replace(/@|\#/g,"a")
+		.replace(/\s+/g,"")
+		.replace(/\u03BB/g,"^").replace(/\s+/g,"");
+
 	}, // init function
 
-	validateAnswer: function () {
-	    for(var i=0; i<question.answer.length; i++) {
-		if ((L.light[i] && question.answer[i] !== '#' &&
-		     question.answer[i] !== "\u03BB@.") ||
-		    (! L.light[i]  && question.answer[i] === '#')) {
-		    return false;
-		}
-	    }
-	    
-	    return true;
+	validateAnswer: function (studentAnswer) {
+	    //console.log(this.answer);
+	    //console.log(studentAnswer);
+	    return this.answer ===
+		studentAnswer.replace(/\s+/g,"");
 	}// validateAnswer function
 
     };// RP15part1

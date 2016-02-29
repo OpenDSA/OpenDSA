@@ -78,7 +78,7 @@
 
   </head>
 
-  <body data-height="550" data-width="950">
+  <body data-height="600" data-width="950">
     <div class="exercise">
       <div class="vars">
 	<var id="setup">RP15part1.init()</var>
@@ -92,10 +92,14 @@
 	</p>
 	<div id="jsav"></div>
       </div>
+
+      <textarea rows="1" cols="60" style="resize:none"
+                id="answerTextarea"></textarea>
       <div class="solution" data-type="custom">
-	<div class="guess">true</div>
-	<div class="validator-function">
-	  return RP15part1.validateAnswer()</div>
+        <div class="guess"> $('#answerTextarea').val()  </div>
+        <div class="validator-function">
+	  return RP15part1.validateAnswer(guess);
+        </div>
       </div>
 
       <div class="hints">
