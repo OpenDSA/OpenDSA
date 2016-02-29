@@ -8,9 +8,9 @@
 
 .. odsalink::  AV/PL/main.css
 
-======================
-Substitution Algorithm
-======================
+==========================================
+The Substitution-Based Model of Evaluation
+==========================================
 
 Substitution Algorithm
 ----------------------
@@ -128,13 +128,15 @@ examples listed above, the final result of the algorithm is
 :math:`(\lambda v.\lambda y.(y\ x)\ \lambda y.(y\ x))`.
 
 
-Exercise 1
-----------
+RP 15 part 2
+------------
 
-The following exercise is good practice for identifying which case applies
-at each step of the substitution algorithm.
+The following exercise is good practice for identifying which case
+applies at each step of the substitution algorithm. To get credit for
+this randomized algorithm, you must solve it correctly three times in
+a row.
 
-.. avembed:: Exercises/PL/SubstitutionCases.html ka
+.. avembed:: Exercises/PL/RP15part2.html ka
 
 Exercise 2
 ----------
@@ -142,6 +144,6 @@ Exercise 2
 The following exercise will test your ability to complete a full
 substitution by applying the algorithm scrupulously.
 
-.. avembed:: Exercises/PL/SubstitutionResult.html ka
+.. .. avembed:: Exercises/PL/SubstitutionResult.html ka
 
-.. odsascript:: AV/PL/AV/substCase1b.js
+.. .. odsascript:: AV/PL/AV/substCase1b.js

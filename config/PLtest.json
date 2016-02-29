@@ -552,7 +552,7 @@
         "sections": {
           "Semantics of the Lambda Calculus": {},
           "RP 14 part 3": {
-            "RP14part3p": {
+            "RP14part3": {
               "long_name": "RP set #14, question #3",
               "required": true,
               "points": 1.0,
@@ -567,7 +567,7 @@
         "sections": {
           "Free and Bound Variables": {},
           "RP 14 part 4": {
-            "RP14part4p": {
+            "RP14part4": {
               "long_name": "RP set #14, question #4",
               "required": true,
               "points": 1.0,
@@ -576,7 +576,7 @@
             }
           },
           "RP 14 part 5": {
-            "RP14part5p": {
+            "RP14part5": {
               "long_name": "RP set #14, question #5",
               "required": true,
               "points": 1.0,
@@ -591,7 +591,7 @@
             "long_name": "Alpha conversion",
             "sections": {
 		"RP 15 part 1": {
-		    "RP15part1p": {
+		    "RP15part1": {
 			"long_name": "RP set #15, question #1",
 			"required": true,
 			"points": 1.0,
@@ -601,35 +601,28 @@
 		}
             }
 	},
-      "PL/Substitution": {
-        "long_name": "Substitution algorithm",
-        "sections": {
-          "Substitution Algorithm": {
-            "substCase1b": {
-              "long_name": "Slideshow",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
+	"PL/Substitution": {
+            "long_name": "The Substitution-Based Model of Evaluation",
+            "sections": {
+		"Substitution Algorithm": {
+		    "substCase1b": {
+			"long_name": "Slideshow",
+			"required": false,
+			"points": 0.0,
+			"threshold": 1.0
+		    }
+		},
+		"RP 15 part 2": {
+		    "RP15part2": {
+			"long_name": "RP set #15, question #2",
+			"required": true,
+			"points": 1.0,
+			"threshold": 3.0,
+			"showhide": "Show"
+		    }
+		}
             }
-          },
-          "Exercise 1": {
-            "SubstitutionCases": {
-              "long_name": "Exercise 1",
-              "required": false,
-              "points": 1.0,
-              "threshold": 5
-            }
-          },
-          "Exercise 2": {
-            "SubstitutionResult": {
-              "long_name": "Exercise 2",
-              "required": false,
-              "points": 1.0,
-              "threshold": 5
-            }
-          }
-        }
-      },
+	},
       "PL/ApplicativeOrder": {
         "long_name": "Applicative-order Reduction Strategy",
         "sections": {

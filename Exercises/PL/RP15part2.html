@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html data-require="math jsav ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples RP15part2" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 15 part 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>var LAMBDA = {};</script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+    <link rel="stylesheet" href="./exercises.css" type="text/css" />
+<style>
+
+    div.jsavcanvas {
+         text-align: center; /* needed to center the array in the container */
+    }
+    
+    div#jsav  div.jsavcanvas ol.jsavarray   {
+       max-width: 400px;   /* needed for centering the array to work */
+       max-height: 30px;
+       min-height: 30px;
+    }
+
+    li.jsavhighlight {
+        border: 1px solid black !important;
+    }
+     ol.jsavarray  li.jsavindex  {
+       max-height: 30px;
+       min-height:30px;
+       height: 30px;
+    }
+
+      li.jsavindex span.jsavvalue {
+       max-height:30px;
+       min-height:30px;
+    }
+    
+    ol.jsavarray .defaultCellStyle {
+        border: none;
+        box-shadow : none; 
+    }
+
+    ol.jsavarray .lambdaWidth {
+        width : 20px !important;
+        min-width : 20px !important;
+    }
+
+    ol.jsavarray .oneCharWidth {
+        width : 12px   !important;                   
+        min-width : 12px !important;
+        text-align: center;
+    }
+
+    ol.jsavarray .parenWidth {
+        width : 7px;
+        min-width : 7px;
+    }
+
+    ol.jsavarray .emptyWidth {
+        width : 0px;
+        min-width : 0px;
+    }
+
+    .highlight { 
+        color : red;
+        font-weight: bold;
+    }
+
+    .unhighlight { 
+        color : black;
+        font-weight: normal;
+    }
+
+    .lambdaWidth.bindingVar {
+    border-radius: 0 !important;
+    border-bottom: 3px solid black !important;
+}
+
+</style>
+
+  </head>
+
+  <body data-height="850" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+	<var id="setup">RP15part2.init()</var>
+	<var id="CorrectAnswer">RP15part2.answer</var>
+	<var id="substExpression">RP15part2.substExpression</var>
+	<var id="Option1">RP15part2.option1</var>
+	<var id="Option2">RP15part2.option2</var>
+	<var id="Option3">RP15part2.option3</var>
+	<var id="Option4">RP15part2.option4</var>
+	<var id="Option5">RP15part2.option5</var>
+      </div>
+
+      <div class="problems">
+        <div id="RP15part2p">
+	  <p class="question">Which case of the
+	      substitution algorithm must be considered first when
+	      performing the following substitution?</p>
+<pre class="string">
+           <var>substExpression</var>
+
+</pre>
+
+	  <div class="solution"><var>CorrectAnswer</var></div>
+	  <ul class="choices">
+	    <li><var>Option1</var></li>
+	    <li><var>Option2</var></li>
+	    <li><var>Option3</var></li>
+	    <li><var>Option4</var></li>
+	    <li><var>Option5</var></li>
+	  </ul>
+
+	  <div class="hints">
+	    <p>First, determine which one of case 1, case 2,
+	      or case 3 applies based on the type of
+	      lambda expression that you are substituting
+	      into.</p>
+	    <p>If case 1 is applicable, check whether
+	      the variable you are substituting for is
+	      equal to the lambda expression you are
+	      substituting into.</p>
+	    <p>If case 2 is applicable, check whether
+	      the variable you are substituting for is the
+	      same as the parameter of the lambda
+	      abstraction you are substituting into.</p>
+	    <p>If case 2 is applicable and the answer to
+	      the previous hint is "No" then check whether
+	      the parameter of the lambda abstraction you
+	      are substituting into occurs free in the
+	      expression that you are substituting in.</p>
+	  </div>
+	</div>
+      </div>
+    </div>
+  </body>
+</html>
