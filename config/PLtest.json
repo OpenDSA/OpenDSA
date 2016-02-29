@@ -1,17 +1,13 @@
 {
-  "title": "Programming Languages",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
   },
   "lang": "en",
-  "module_origin": "http://algoviz.org",
-  "exercise_server": "https://opendsa.cs.vt.edu/",
-  "logging_server": "https://opendsa.cs.vt.edu/",
-  "score_server": "https://opendsa.cs.vt.edu/",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
   "suppress_todo": false,
+  "dispModComp": true,
   "glob_exer_options": {
     "JXOP-debug": "true"
   },
@@ -584,7 +580,7 @@
               "showhide": "Show"
             }
           },
-          "Formal definition of free variables": {}
+          "Formal Definition of Free Variables": {}
         }
       },
 	"PL/AlphaConversion": {
