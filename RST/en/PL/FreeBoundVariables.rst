@@ -113,7 +113,7 @@ problem, you must solve it correctly three times in a row.
 .. avembed:: Exercises/PL/RP14part5.html ka
 
 
-Formal definition of free variables
+Formal Definition of Free Variables
 -----------------------------------
 
 Throughout this section, we have attempted to be as intuitive and
