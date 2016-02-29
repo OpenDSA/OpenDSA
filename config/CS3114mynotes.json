@@ -139,9 +139,13 @@
         }
       }
     },
-    "Week 6": {
+    "Week 6-7": {
       "Slides/Sorting1": {
         "long_name": "Sorting, Part 1",
+        "exercises" : {}
+      },
+      "Slides/Sorting2": {
+        "long_name": "Sorting, Part 2",
         "exercises" : {}
       },
       "Slides/Interruptions": {
