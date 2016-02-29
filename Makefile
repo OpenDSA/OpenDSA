@@ -151,6 +151,9 @@ CS2in: min
 CSE017: min
 	python $(CONFIG_SCRIPT) config/CSE017.json -c config/CSE017in_LMSconf.json -b CSE017S16
 
+SIGCSE: min
+	python $(CONFIG_SCRIPT) config/SIGCSEDemo.json -c config/SIGCSEDemo_LMSconf.json -b SIGCSE
+
 CS3: min
 	python $(CONFIG_SCRIPT) config/CS3.json -c config/CS3_LMSconf.json -b CS3
 
