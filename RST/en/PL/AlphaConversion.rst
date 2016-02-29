@@ -15,6 +15,7 @@ Alpha-Conversion
 
 Alpha-Conversion
 ----------------
+
 We now turn our attention back to the semantics of the lambda calculus
 by focusing on how :ref:`free-and-bound-variables` in lambda
 expressions impact their meaning. Let us first consider bound variable
