@@ -10,7 +10,7 @@ $(document).ready(function() {
   var j;
 
   av.umsg(interpret("av_c1"));
-  arr.addClass(arr.size() - 1, "greytext");
+  arr.addClass(arr.size() - 1, "deemph");
   av.displayInit();
   arr.addClass(0, "processing");
   for (j = 1; j < arr.size() - 1; j++) {
@@ -25,7 +25,7 @@ $(document).ready(function() {
     arr.removeClass(j - 1, "processing");
   }
   arr.removeClass(j - 1, "processing");
-  arr.addClass(j - 1, "greytext");
+  arr.addClass(j - 1, "deemph");
   av.umsg(interpret("av_c4"));
   av.recorded();
 });
