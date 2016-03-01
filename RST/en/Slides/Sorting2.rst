@@ -19,6 +19,8 @@ Sorting Part 2
 
    * What is the average number of exchanges required?
 
+   .. odsalink:: AV/Sorting/ExchangeSortCON.css
+   
    .. inlineav:: ExchangeSortCON ss
       :output: show
 

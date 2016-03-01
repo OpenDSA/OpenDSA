@@ -96,6 +96,7 @@
             }
           },
           "Linked List Remove": {
+            "showsection": false,
             "llistRemoveCON": {
               "long_name": "Linked List Remove Slideshow",
               "required": false,
@@ -104,8 +105,8 @@
             },
             "LlistRemovePRO": {
               "long_name": "Linked List Remove Exercise",
-              "required": true,
-              "points": 2,
+              "required": false,
+              "points": 0,
               "threshold": 5
             },
             "llistOtherCON": {
@@ -153,32 +154,35 @@
             }
           },
           "Postorder Traversal Practice": {
+            "showsection": false,
             "btTravPostorderPRO": {
               "long_name": "Binary Tree Postorder Traversal Exercise",
               "exer_options": {
                 "JXOP-code": "none"
               },
-              "required": true,
-              "points": 1.0,
+              "required": false,
+              "points": 0.0,
               "threshold": 0.90
             }
           },
           "Preorder Traversal Practice": {
+            "showsection": false,
             "btTravPreorderPRO": {
               "long_name": "Binary Tree Preorder Traversal Exercise",
               "exer_options": {
                 "JXOP-code": "none"
               },
-              "required": true,
-              "points": 1.0,
+              "required": false,
+              "points": 0.0,
               "threshold": 0.90
             }
           },
           "Summary Questions": {
+            "showsection": false,
             "TravSumm": {
               "long_name": "Tree Traversal Summary Questions",
-              "required": true,
-              "points": 1.0,
+              "required": false,
+              "points": 0.0,
               "threshold": 3
             }
           }
@@ -239,6 +243,7 @@
             }
           },
           "BST Remove": {
+            "showsection": false,
             "BSTdeletemaxCON": {
               "long_name": "BST deletemax Slideshow",
               "required": false,
@@ -258,16 +263,17 @@
                 "JXOP-feedback": "continuous",
                 "JXOP-fixmode": "undo"
               },
-              "required": true,
-              "points": 2.0,
+              "required": false,
+              "points": 0.0,
               "threshold": 0.90
             }
           },
           "BST Analysis": {
+            "showsection": false,
             "BSTSumm": {
               "long_name": "BST Question Summary",
-              "required": true,
-              "points": 1,
+              "required": false,
+              "points": 0,
               "threshold": 2
             }
           }
@@ -303,6 +309,7 @@
         "long_name": "Heaps and Priority Queues",
         "sections": {
           "Heaps and Priority Queues": {
+            "showsection": false,
             "heapinsertCON": {
               "long_name": "Heap insert Slideshow",
               "required": false,
@@ -314,8 +321,8 @@
               "exer_options": {
                 "JXOP-code": "none"
               },
-              "required": true,
-              "points": 2.0,
+              "required": false,
+              "points": 0.0,
               "threshold": 0.90
             }
           },
@@ -343,6 +350,7 @@
             }
           },
           "Removing from the heap": {
+            "showsection": false,
             "heapmaxCON": {
               "long_name": "Remove Max Slideshow",
               "required": false,
@@ -354,8 +362,8 @@
               "exer_options": {
                 "JXOP-code": "none"
               },
-              "required": true,
-              "points": 2.0,
+              "required": false,
+              "points": 0.0,
               "threshold": 0.90
             },
             "heapremoveCON": {
@@ -366,10 +374,11 @@
             }
           },
           "Priority Queues": {
+            "showsection": false,
             "HeapSumm": {
               "long_name": "Heap Question Summary",
-              "required": true,
-              "points": 2.0,
+              "required": false,
+              "points": 0.0,
               "threshold": 5
             }
           }
@@ -379,14 +388,16 @@
         "long_name": "Quicksort",
         "sections": {
           "Introduction": {
+            "showsection": false,
             "QuicksortPivotPRO": {
               "long_name": "Quicksort Pivot Proficiency Exercise",
-              "required": true,
-              "points": 1.0,
+              "required": false,
+              "points": 0.0,
               "threshold": 5
             }
           },
           "Partition": {
+            "showsection": false,
             "quicksortCON": {
               "long_name": "Quicksort Partition Slideshow",
               "required": false,
@@ -395,8 +406,8 @@
             },
             "QuicksortPartitPRO": {
               "long_name": "Quicksort Partition Proficiency Exercise",
-              "required": true,
-              "points": 1.0,
+              "required": false,
+              "points": 0.0,
               "threshold": 5
             },
             "QuickSortPartitionAnalysisCON": {
@@ -407,6 +418,7 @@
             }
           },
           "Putting It Together": {
+            "showsection": false,
             "quicksortAV": {
               "long_name": "Quicksort Visualization",
               "required": false,
@@ -416,8 +428,8 @@
             },
             "quicksortPRO": {
               "long_name": "Quicksort Proficiency Exercise",
-              "required": true,
-              "points": 2.0,
+              "required": false,
+              "points": 0.0,
               "threshold": 0.90,
               "exer_options": {
                 "JXOP-feedback": "continuous",
@@ -486,9 +498,9 @@
         }
       },
       "NP/SAT_to_threeSAT": {
-        "long_name": "Reduction of SAT to 3-SAT.",
+        "long_name": "Reduction of SAT to 3-SAT",
         "sections": {
-          "SAT to 3-SAT Reduction": {
+          "Reduction of SAT to 3-SAT": {
             "SATto3SATCON": {
               "long_name": "SAT to 3-SAT Reduction Slideshow",
               "required": false,
