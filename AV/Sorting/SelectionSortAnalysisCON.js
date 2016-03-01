@@ -116,7 +116,7 @@ $(document).ready(function() {
 
   arr.swap(bigIndex, 5);
   arr.removeClass(bigIndex, "greenbg");
-  arr.addClass(5, "greybg");
+  arr.addClass(5, "deemph");
   av.g.rect(leftAlign + gap, topAlign, rectWidth, rectHeight);
   av.label("$i=0$",  {top: topAlign + 20, left: leftAlign + gap + 5});
   bigIndex = 0;
@@ -186,7 +186,7 @@ $(document).ready(function() {
 
   arr.swap(bigIndex, 4);
   arr.removeClass(bigIndex, "greenbg");
-  arr.addClass(4, "greybg");
+  arr.addClass(4, "deemph");
   av.g.rect(leftAlign + gap + rectWidth, topAlign, rectWidth, rectHeight);
   av.label("$i=1$",  {top: topAlign + 20, left: leftAlign + gap + rectWidth + 5});
   bigIndex = 0;
@@ -242,7 +242,7 @@ $(document).ready(function() {
 
   arr.swap(bigIndex, 3);
   arr.removeClass(bigIndex, "greenbg");
-  arr.addClass(3, "greybg");
+  arr.addClass(3, "deemph");
   av.g.rect(leftAlign + gap + 2 * rectWidth, topAlign, rectWidth, rectHeight);
   av.label("$i=2$", {top: topAlign + 20, left: leftAlign + gap + 2 * rectWidth + 5});
   bigIndex = 0;
@@ -284,7 +284,7 @@ $(document).ready(function() {
 
   arr.swap(bigIndex, 2);
   arr.removeClass(bigIndex, "greenbg");
-  arr.addClass(2, "greybg");
+  arr.addClass(2, "deemph");
   av.g.rect(leftAlign + gap + 3 * rectWidth, topAlign, rectWidth, rectHeight);
   av.label("$i=3$",  {top: topAlign + 20, left: leftAlign + gap + 3 * rectWidth + 5});
   bigIndex = 0;
@@ -310,11 +310,11 @@ $(document).ready(function() {
 
   arr.swap(bigIndex, 1);
   arr.removeClass(bigIndex, "greenbg");
-  arr.addClass(1, "greybg");
+  arr.addClass(1, "deemph");
   av.g.rect(leftAlign + gap + 4 * rectWidth, topAlign, rectWidth, rectHeight);
   av.label("$i=4$",  {top: topAlign + 20, left: leftAlign + gap + 4 * rectWidth + 5});
   pointer.hide();
-  arr.addClass(0, "greybg");
+  arr.addClass(0, "deemph");
   av.step();
 
   // Slide 24

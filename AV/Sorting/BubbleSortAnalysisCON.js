@@ -81,7 +81,7 @@ $(document).ready(function() {
     arr.swap(4, 5);
   }
   av.g.rect(leftAlign, topAlign - 4 * rectHeight, rectWidth, rectHeight);
-  arr.addClass(5, "greybg");
+  arr.addClass(5, "deemph");
   arr.removeClass(4, "greenbg");
   arr.removeClass(5, "greenbg");
   av.step();
@@ -121,7 +121,7 @@ $(document).ready(function() {
     arr.swap(3, 4);
   }
   av.g.rect(leftAlign + rectWidth, topAlign - 3 * rectHeight, rectWidth, rectHeight);
-  arr.addClass(4, "greybg");
+  arr.addClass(4, "deemph");
   arr.removeClass(3, "greenbg");
   arr.removeClass(4, "greenbg");
   av.step();
@@ -155,7 +155,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 16
-  arr.addClass(3, "greybg");
+  arr.addClass(3, "deemph");
   arr.removeClass(2, "greenbg");
   arr.removeClass(3, "greenbg");
   av.step();
@@ -180,7 +180,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 19
-  arr.addClass(2, "greybg");
+  arr.addClass(2, "deemph");
   arr.removeClass(1, "greenbg");
   arr.removeClass(2, "greenbg");
   av.step();
@@ -193,8 +193,8 @@ $(document).ready(function() {
   }
   av.g.rect(leftAlign + 4 * rectWidth, topAlign, rectWidth, rectHeight);
   av.label("i=4", {top: topAlign + 12, left: leftAlign + 4 * rectWidth + 10});
-  arr.addClass(1, "greybg");
-  arr.addClass(0, "greybg");
+  arr.addClass(1, "deemph");
+  arr.addClass(0, "deemph");
   arr.removeClass(0, "greenbg");
   arr.removeClass(1, "greenbg");
   av.step();
