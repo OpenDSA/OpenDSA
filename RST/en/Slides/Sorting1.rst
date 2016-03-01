@@ -119,15 +119,3 @@ Sorting Part 1
       \textrm{Average Case}&\Theta(n^2)&\Theta(n^2)&\Theta(n)\\
       \textrm{Worst Case}&\Theta(n^2)&\Theta(n^2)&\Theta(n)\\
       \end{array}
-
-
-.. slide:: Exchange Sorting
-
-   * All of the sorts so far rely on exchanges of adjacent records.
-
-   * What is the average number of exchanges required?
-
-   .. inlineav:: ExchangeSortCON ss
-      :output: show
-
-   .. odsascript:: AV/Sorting/ExchangeSortCON.js
