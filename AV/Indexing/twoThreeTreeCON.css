@@ -1,5 +1,3 @@
-/* General styling for the size of arrays */
-
 /* Removes top margin from array objects to make the diagram a litle more compact */
 .jsavarray {
   margin-top: 0;
@@ -8,13 +6,7 @@
 }
 
 .jsavoutput.jsavline {
-  width: 600px;
-  padding-top: 20px;
-  text-align: center;
-}
-
-.jsavoutput {
-  margin: -5px auto 15px auto;
+  height: 30px;
 }
 
 /* Change the size of each array box */
@@ -42,53 +34,29 @@
 
 /* Styling for the twoThreeTreeCON diagram ***********************************/
 
-/* Sets maximum width to JSAV container */
-#twoThreedgmCON {
-	padding-top: 20px;
-	width: 560px;
-}
-
-/* Sets width and height to the JSAV canvas */
-#twoThreedgmCON .jsavcanvas {
-	height: 200px;
-	width: 560px;
+#twoThreedgmCON .jsavcanvas{
+  height: 200px;
 }
 
 /* Sytling for the simpleInsertCON slide show ********************************/
 
-/* Set maximun width for the JSAV container */
-#simpleInsertCON {
-	width: 700px;
-}
 
 /* Set width and height for the JSAV canvas */
 #simpleInsertCON .jsavcanvas {
-	height: 250px;
-	width: 700px;
+  height: 230px;
 }
 
 /* Sytling for the promoteCON slide show ********************************/
 
-/* Set maximun width for the JSAV container */
-#promoteCON {
-	width: 800px;
-}
-
 /* Set width and height for the JSAV canvas */
 #promoteCON .jsavcanvas {
-	height: 250px;
-	width: 780px;
+  height: 230px;
 }
 
 /* Sytling for the splitCON slide show ********************************/
 
-/* Set maximun width for the JSAV container */
-#splitCON {
-	width: 800px;
-}
 
 /* Set width and height for the JSAV canvas */
 #splitCON .jsavcanvas {
-	height: 350px;
-	width: 800px;
+  height: 300px;
 }

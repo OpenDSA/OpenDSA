@@ -11,7 +11,7 @@
   // Create all the arrays that represent the nodes in the 2-3 tree.
   var arrays = window.twothreetree.getArrayNodes(jsav);
   // Position the array nodes.
-  var width = 560;
+  var width = 840;
   window.twothreetree.positionRow(arrays.slice(0, 1), 0, width, 70);
   window.twothreetree.positionRow(arrays.slice(1, 4), 80, width, 450);
   window.twothreetree.positionRow(arrays.slice(4), 160, width, 560);

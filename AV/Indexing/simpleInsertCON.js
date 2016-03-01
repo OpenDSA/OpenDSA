@@ -10,10 +10,12 @@
   // Create all the arrays that represent the nodes in the 2-3 tree.
   var arrays = window.twothreetree.getArrayNodes(jsav);
   // Position the array nodes.
-  var width = 700;
-  window.twothreetree.positionRow(arrays.slice(0, 1), 0, width, 70);
-  window.twothreetree.positionRow(arrays.slice(1, 4), 80, width, 450);
-  window.twothreetree.positionRow(arrays.slice(4), 160, width, 560);
+  var topoffset = 20;
+  var leftoffset = 40;
+  var width = 870;
+  window.twothreetree.positionRow(arrays.slice(0, 1), topoffset + 0, width, 70);
+  window.twothreetree.positionRow(arrays.slice(1, 4), topoffset + 80, width, 450);
+  window.twothreetree.positionRow(arrays.slice(4), topoffset + 160, width, 560);
 
   // Create lines that connect all the nodes.
   var properties = {"stroke-width": 1.5};
@@ -32,7 +34,7 @@
   /* 1st Slide *************************************************************/
   jsav.umsg(messages.shift());
   jsav.label("Insert:", {left: "55px", top: "5px"});
-  var insert = jsav.ds.array([14], {left: "100px", top: "0px"});
+  var insert = jsav.ds.array([14], {left: "100px", top: topoffset});
   jsav.displayInit();
 
   /* 2nd Slide *************************************************************/
