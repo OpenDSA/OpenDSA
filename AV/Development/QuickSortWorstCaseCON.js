@@ -52,19 +52,19 @@ $(document).ready(function() {
 
   // Slide 6
   av.umsg(interpret("Slide 6"));
-  av.label("...",  {top: "260px", left: "470px"}).addClass("largeLabel rotated");
-  av.label("...",  {top: "250px", left: "620px"}).addClass("largeLabel rotated");
-  av.g.rect(460, 315, 40, 30);
-  av.g.rect(460, 315, 20, 30);
-  av.label("pivot",  {top: "309px", left: "458px"}).addClass("smallLabel rotated");
-  av.label("$1$",  {top: "306px", left: "485px"}).addClass("mediumLabel");
-  av.label("$1$",  {top: "302px", left: "620px"}).addClass("mediumLabel");
+  av.label("............",  {top: "285px", left: "460px"}).addClass("largeLabel rotated");
+  av.label("............",  {top: "275px", left: "600px"}).addClass("largeLabel rotated");
+  av.g.rect(460, 365, 40, 30);
+  av.g.rect(460, 365, 20, 30);
+  av.label("pivot",  {top: "360px", left: "458px"}).addClass("smallLabel rotated");
+  av.label("$1$",  {top: "356px", left: "485px"}).addClass("mediumLabel");
+  av.label("$1$",  {top: "352px", left: "620px"}).addClass("mediumLabel");
   av.step();
 
   // Slide 7
   av.umsg(interpret("Slide 7"));
   av.label("|------------------- $n-1$ -------------------|",
-  {top: "180px", left: "550px"}).css({"font-size": "16px", "text-align": "center"}).addClass("rotated");
+  {top: "200px", left: "550px"}).css({"font-size": "16px", "text-align": "center"}).addClass("rotated");
   av.step();
 
   // Slide 8
