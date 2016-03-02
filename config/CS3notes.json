@@ -88,6 +88,10 @@
       "SlidesCanvas/Heaps": {
         "long_name": "Week 5: Heaps",
         "sections" : {}
+      },
+      "SlidesCanvas/Sorting": {
+        "long_name": "Week 6-7: Sorting",
+        "sections" : {}
       }
     }
   }
