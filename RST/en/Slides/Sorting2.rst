@@ -13,12 +13,24 @@
 Sorting Part 2
 ==============
 
+.. slide:: Code Tuning
+
+   * General strategy: Test to avoid work
+      * Balance test cost, success probability, work saved
+
+   * "Optimizations" for quadratic sorts:
+      * Insertion Sort shift vs swaps: Works
+      * Selection Sort avoid self-swaps: Does not work
+      * Bubble Sort avoid/count comparisions: Does not work
+ 
 .. slide:: Exchange Sorting
 
    * All of the sorts so far rely on exchanges of adjacent records.
-
+   * Inversions
    * What is the average number of exchanges required?
 
+   .. odsalink:: AV/Sorting/ExchangeSortCON.css
+   
    .. inlineav:: ExchangeSortCON ss
       :output: show
 

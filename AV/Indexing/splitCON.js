@@ -10,10 +10,11 @@
   // Create all the arrays that represent the nodes in the 2-3 tree.
   var arrays = window.twothreetree.getArrayNodes(jsav);
   // Position the array nodes.
-  var width = 800;
-  window.twothreetree.positionRow(arrays.slice(0, 1), 80, width, 70);
-  window.twothreetree.positionRow(arrays.slice(1, 4), 160, width, 480);
-  window.twothreetree.positionRow(arrays.slice(4), 240, width, 560);
+  var width = 870;
+  var topoffset = 20;
+  window.twothreetree.positionRow(arrays.slice(0, 1), topoffset + 80, width, 70);
+  window.twothreetree.positionRow(arrays.slice(1, 4), topoffset + 160, width, 480);
+  window.twothreetree.positionRow(arrays.slice(4), topoffset + 240, width, 560);
 
   // Create lines that connect all the nodes.
   var properties = {"stroke-width": 1.5};
@@ -41,8 +42,8 @@
   jsav.umsg(messages.shift());
   jsav.label("Insert:", {left: "55px", top: "5px"});
   jsav.label("Promote:", {left: "35px", top: "55px"});
-  var insert = jsav.ds.array([19], {left: "100px", top: "0px"});
-  var promote = jsav.ds.array([""], {left: "100px", top: "50px"});
+  var insert = jsav.ds.array([19], {left: "100px", top: topoffset});
+  var promote = jsav.ds.array([""], {left: "100px", top: topoffset + 50});
   jsav.displayInit();
 
   /* 2nd Slide *************************************************************/
@@ -71,7 +72,7 @@
   /* 5th Slide *************************************************************/
   jsav.umsg(messages.shift());
   arrays.splice(7, 0, jsav.ds.array(["", ""], {visible: false}));
-  window.twothreetree.positionRow(arrays.slice(4), 240, width, 640);
+  window.twothreetree.positionRow(arrays.slice(4), topoffset + 240, width, 640);
   arrays[7].show();
   for (var i = 3; i < lines.length; i += 1) {
     lines[i].hide();
@@ -153,8 +154,8 @@
   window.twothreetree.toggleArrayHiglight(arrays[3]);
   arrays.splice(0, 0, jsav.ds.array(["", ""], {visible: false}));
   arrays.splice(2, 0, jsav.ds.array(["", ""], {visible: false}));
-  window.twothreetree.positionRow(arrays.slice(0, 1), 0, width, 80);
-  window.twothreetree.positionRow(arrays.slice(1, 3), 80, width, 400);
+  window.twothreetree.positionRow(arrays.slice(0, 1), topoffset + 0, width, 80);
+  window.twothreetree.positionRow(arrays.slice(1, 3), topoffset + 80, width, 400);
   arrays[0].show();
   arrays[2].show();
   window.twothreetree.toggleArrayHiglight(arrays[0]);
