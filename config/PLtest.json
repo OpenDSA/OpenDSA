@@ -644,6 +644,16 @@
 			"showhide": "Show"
 		    }
 		}
+		,
+		"RP 16 part 2": {
+		    "RP16part2": {
+			"long_name": "RP set #16, question #2",
+			"required": true,
+			"points": 1.0,
+			"threshold": 3.0,
+			"showhide": "Show"
+		    }
+		}
             }
 	},
       "PL/ApplicativeOrder": {

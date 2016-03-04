@@ -111,6 +111,7 @@ function substitute(m,x,e) {
 	} else if (notFreeIn(paramStr, m)) {
 	    return LAMBDA.absyn.createLambdaAbs(param,substitute(m,x,body));
 	} else {
+	    LAMBDA.alpha = true;
 	    var newVar = LAMBDA.absyn.createVarExp(
 		newVariable(freeVars(m).concat(freeVars(body)).concat(xStr)));
 	    return LAMBDA.absyn.createLambdaAbs(
@@ -700,6 +701,7 @@ LAMBDA.labelBoundVariables = labelBoundVariables;
 LAMBDA.free = free;
 LAMBDA.substitute = substitute;
 LAMBDA.countBetaRedexes = countBetaRedexes;
+LAMBDA.findLeftmostOutermostBetaRedex = findLeftmostOutermostBetaRedex;
 })();
 
 // the code below is only used when creating slide shows

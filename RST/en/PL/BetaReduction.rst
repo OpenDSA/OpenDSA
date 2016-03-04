@@ -20,3 +20,13 @@ row.
 
 .. avembed:: Exercises/PL/RP16part1.html ka
 
+RP 16 Part 2
+------------
+
+This randomized problem will help you identify :math:`\beta`-redexes
+and prepare to reduce them by determining whether an
+:math:`\alpha`-conversion is needed.  To earn credit for it, you will
+have to solve it correctly three times in a row.
+
+.. avembed:: Exercises/PL/RP16part2.html ka
+
