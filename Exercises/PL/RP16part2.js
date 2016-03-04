@@ -48,7 +48,7 @@
 	    this.expression = L.printExp(e).replace(/\s/g,"  "); // increase spacing
 
 	    // print reduced redex only	    
-	    console.log(LAMBDA.alpha + " " + L.printExp(result));
+	    //console.log(LAMBDA.alpha + " " + L.printExp(result));
 	}, // init function
 
     };// RP16part1

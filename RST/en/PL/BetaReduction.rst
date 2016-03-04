@@ -30,3 +30,13 @@ have to solve it correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP16part2.html ka
 
+
+RP 16 Part 3
+------------
+
+This randomized problem will make you practice performing
+:math:`\beta`-reductions. To earn credit for it, you will have to
+solve it correctly three times in a row.
+
+.. avembed:: Exercises/PL/RP16part3.html ka
+

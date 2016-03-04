@@ -702,6 +702,7 @@ LAMBDA.free = free;
 LAMBDA.substitute = substitute;
 LAMBDA.countBetaRedexes = countBetaRedexes;
 LAMBDA.findLeftmostOutermostBetaRedex = findLeftmostOutermostBetaRedex;
+LAMBDA.beta = beta;
 })();
 
 // the code below is only used when creating slide shows

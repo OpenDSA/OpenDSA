@@ -32,10 +32,12 @@
 	}
     }
 
-    function getRndExp(depth,minDepth,maxDepth,allowed,bound) {
+    function getRndExp(depth,minDepth,maxDepth,allowed,bound,inputType) {
 	var type;
 	var v;
-	if (depth >= maxDepth) {
+	if ( inputType ) {
+	    type = inputType;
+	} else if (depth >= maxDepth) {
 	    type = 1;  
 	} else if (depth < minDepth) {
 	    type = getRnd(2,3);
