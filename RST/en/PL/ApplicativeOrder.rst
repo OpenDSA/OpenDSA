@@ -4,22 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: David Furcy, Tom Naps and Taylor Rydahl
-
+   :author: David Furcy and Tom Naps
 
 Applicative Order
 =================
 
-Applicative Order
------------------
-
-Practice an applicative order reduction in the following exercise:
-
-For some more practice, try:
-
-As a final test of your proficiency in doing beta reductions, try doing
+RP17 Part 1
+-----------
 
 1. All the steps in a complete applicative order reduction:
 
-.. avembed:: AV/PL/profexercises/applicativeNormalOrderPro.html pe
+.. avembed:: AV/PL/profexercises/applicativeNormalOrderPRO.html pe
 
