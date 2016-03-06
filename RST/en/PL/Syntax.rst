@@ -140,7 +140,7 @@ it correctly three times in a row.
 
 
 RP 14 part 2
--------------------
+------------
 
 Once you can consistently solve the previous problem, try this more
 intense exercise, in which you have to analyze four expressions each

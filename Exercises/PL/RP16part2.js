@@ -49,7 +49,7 @@
 
 	    // print reduced redex only	    
 	    //console.log(LAMBDA.alpha + " " + L.printExp(result));
-	}, // init function
+	} // init function
 
     };// RP16part1
     
