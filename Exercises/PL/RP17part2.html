@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html data-require="math jsav ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples RP17part2" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 17 part 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+    <script>var LAMBDA = {};</script>
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+	<var id="setup">RP17part2.init()</var>
+	<var id="expression">RP17part2.expression</var>
+	<var id="correctAnswer">RP17part2.answer</var>
+      </div>
+      <div class="problems">
+        <div id="RP17part2p">
+	  <p class="question">Consider the following &lambda;
+	  expression:</p>
+<pre class="string">
+             <var>expression</var>
+</pre>
+	  <p class="question">True or False? The number of &beta;-reductions
+	    performed in the evaluation of this expression is the
+	  same whether the applicative order strategy or the normal
+	  order strategy is used.</p>
+
+	  <div class="solution"><var>correctAnswer</var></div>
+	  <ul class="choices" data-category="true">
+	    <li>True</li>
+	    <li>False</li>
+	  </ul>
+
+      <div class="hints">
+	<p>It is good practice to start by identifying all of the
+	&beta;-redexes in the given &lambda; expression.</p>
+	<p>Recall that the applicative-order reduction strategy first
+	reduces the leftmost innermost &beta;-redex, while the
+	normal-order reduction strategy first reduces the leftmost
+	outermost &beta;-redex.</p>
+	<p>By <em>leftmost innermost</em> &beta;-redex, we mean the
+	first (going from left to right) among all of the innermost
+	&beta;-redexes.</p>
+	<p>By <em>leftmost outermost</em> &beta;-redex, we mean the
+	first (going from left to right) among all of the outermost
+	&beta;-redexes.</p>
+      </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

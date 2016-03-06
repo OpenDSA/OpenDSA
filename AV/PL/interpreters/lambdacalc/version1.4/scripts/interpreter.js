@@ -112,6 +112,9 @@ function substitute(m,x,e) {
 	    return LAMBDA.absyn.createLambdaAbs(param,substitute(m,x,body));
 	} else {
 	    LAMBDA.alpha = true;
+	    LAMBDA.numAlpha++;
+	    //console.log(LAMBDA.printExp(m), " ", LAMBDA.printExp(x), " " ,
+	//		LAMBDA.printExp(e));
 	    var newVar = LAMBDA.absyn.createVarExp(
 		newVariable(freeVars(m).concat(freeVars(body)).concat(xStr)));
 	    return LAMBDA.absyn.createLambdaAbs(

@@ -35,7 +35,7 @@ In this problem, you have to study the complete evaluation of a
 discussed. To get credit for this randomized exercise, you must solve
 it correctly three times in a row.
 
-.. .. avembed:: Exercises/PL/RP17part2.html ka
+.. avembed:: Exercises/PL/RP17part2.html ka
 
 RP 17 Part 3
 ------------
