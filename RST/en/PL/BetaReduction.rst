@@ -9,6 +9,9 @@
 Beta-Reduction
 ==============
 
+Section Text
+------------
+
 Section text is forthcoming.
 
 RP 16 Part 1

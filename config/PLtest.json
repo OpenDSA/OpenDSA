@@ -587,135 +587,138 @@
           "Formal Definition of Free Variables": {}
         }
       },
-	"PL/AlphaConversion": {
-            "long_name": "Alpha conversion",
-            "sections": {
-		"RP 15 part 1": {
-		    "RP15part1": {
-			"long_name": "RP set #15, question #1",
-			"required": true,
-			"points": 1.0,
-			"threshold": 3.0,
-			"showhide": "Show"
-		    }
-		}
+      "PL/AlphaConversion": {
+        "long_name": "Alpha conversion",
+        "sections": {
+          "RP 15 part 1": {
+            "RP15part1": {
+              "long_name": "RP set #15, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
             }
-	},
-	"PL/Substitution": {
-            "long_name": "The Substitution-Based Model of Evaluation",
-            "sections": {
-		"Substitution Algorithm": {
-		    "substCase1b": {
-			"long_name": "Slideshow",
-			"required": false,
-			"points": 0.0,
-			"threshold": 1.0
-		    }
-		},
-		"RP 15 part 2": {
-		    "RP15part2": {
-			"long_name": "RP set #15, question #2",
-			"required": true,
-			"points": 1.0,
-			"threshold": 3.0,
-			"showhide": "Show"
-		    }
-		},
-		"RP 15 part 3": {
-		    "RP15part3": {
-			"long_name": "RP set #15, question #3",
-			"required": true,
-			"points": 1.0,
-			"threshold": 3.0,
-			"showhide": "Show"
-		    }
-		}
+          }
+        }
+      },
+      "PL/Substitution": {
+        "long_name": "The Substitution-Based Model of Evaluation",
+        "sections": {
+          "Substitution Algorithm": {
+            "substCase1b": {
+              "long_name": "Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
             }
-	},
-	"PL/BetaReduction": {
-            "long_name": "Beta Reduction",
-            "sections": {
-		"RP 16 part 1": {
-		    "RP16part1": {
-			"long_name": "RP set #16, question #1",
-			"required": true,
-			"points": 1.0,
-			"threshold": 3.0,
-			"showhide": "Show"
-		    }
-		}
-		,
-		"RP 16 part 2": {
-		    "RP16part2": {
-			"long_name": "RP set #16, question #2",
-			"required": true,
-			"points": 1.0,
-			"threshold": 3.0,
-			"showhide": "Show"
-		    }
-		},
-		"RP 16 part 3": {
-		    "RP16part3": {
-			"long_name": "RP set #16, question #3",
-			"required": true,
-			"points": 1.0,
-			"threshold": 3.0,
-			"showhide": "Show"
-		    }
-		}
+          },
+          "RP 15 part 2": {
+            "RP15part2": {
+              "long_name": "RP set #15, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
             }
-	},
-	"PL/ReductionStrategies": {
-            "long_name": "Reduction Strategies",
-            "sections": {
-		"RP 17 part 1": {
-		    "RP17part1": {
-			"long_name": "RP set #17, question #1",
-			"required": true,
-			"points": 1.0,
-			"threshold": 3.0,
-			"showhide": "Show"
-		    }
-		},
-		"RP 17 part 2": {
-		    "RP17part2": {
-			"long_name": "RP set #17, question #2",
-			"required": true,
-			"points": 1.0,
-			"threshold": 3.0,
-			"showhide": "Show"
-		    }
-		},
-		"RP 17 part 3": {
-		    "applicativeNormalOrderPro": {
-			"long_name": "Applicative-order reduction Proficiency Exercise",
-			"required": false,
-			"points": 0.0,
-			"threshold": 3.0,
-			"exer_options": {
-			    "strategy": "applicative"
-			}
-		    }
-		},
-		"RP 17 part 4": {
-		    "applicativeNormalOrderPro": {
-			"long_name": "Normal-order reduction Proficiency Exercise",
-			"required": false,
-			"points": 0.0,
-			"threshold": 3.0,
-			"exer_options": {
-			    "strategy": "normal"
-			}
-		    }
-		}
-	    }
-	}
-    },
-      "Appendices": {
-	  "PL/PL_Glossary": {
-	      "long_name": "Glossary",
-	      "sections": {}
-	  }
+          },
+          "RP 15 part 3": {
+            "RP15part3": {
+              "long_name": "RP set #15, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+        }
+      },
+      "PL/BetaReduction": {
+        "long_name": "Beta Reduction",
+        "sections": {
+          "Section Text": {},
+          "RP 16 Part 1": {
+            "RP16part1": {
+              "long_name": "RP set #16, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+          ,
+          "RP 16 Part 2": {
+            "RP16part2": {
+              "long_name": "RP set #16, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 16 Part 3": {
+            "RP16part3": {
+              "long_name": "RP set #16, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+        }
+      },
+      "PL/ReductionStrategies": {
+        "long_name": "Reduction Strategies",
+        "sections": {
+          "Applicative Order": {},
+          "Normal Order": {},
+          "RP 17 Part 1": {
+            "RP17part1": {
+              "long_name": "RP set #17, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 17 Part 2": {
+            "RP17part2": {
+              "long_name": "RP set #17, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 17 Part 3": {
+            "applicativeNormalOrderPro": {
+              "long_name": "Applicative-order reduction Proficiency Exercise",
+              "required": false,
+              "points": 0.0,
+              "threshold": 3.0,
+              "exer_options": {
+                "strategy": "applicative"
+              }
+            }
+          },
+          "RP 17 Part 4": {
+            "applicativeNormalOrderPro": {
+              "long_name": "Normal-order reduction Proficiency Exercise",
+              "required": false,
+              "points": 0.0,
+              "threshold": 3.0,
+              "exer_options": {
+                "strategy": "normal"
+              }
+            }
+          }
+        }
       }
+    },
+    "Appendices": {
+      "PL/PL_Glossary": {
+        "long_name": "Glossary",
+        "sections": {}
+      }
+    }
   }
 }
