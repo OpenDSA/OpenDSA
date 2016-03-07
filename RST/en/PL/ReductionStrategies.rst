@@ -48,9 +48,13 @@ selected :math:`\lambda` expression, that is, perform as many
 :math:`\beta`-reductions as it takes until a :math:`\beta`-normal form
 is reached. For this problem, you must use the *applicative-order*
 reduction strategy. To get credit for this problem, you only need to
-solve it correctly once. However, each problem instance contains several
-steps that you must perform correctly (in this case, each step is a
-:math:`\beta`-reduction).
+solve one problem instance correctly. However, each problem
+instance contains several steps that you must perform correctly (in
+this case, each step is a :math:`\beta`-reduction). Read and follow
+the directions carefully. Note that the correct answer (called the
+*model answer*) is available. However, if you look it up, you will not
+get credit for the current problem instance. To get another chance for
+credit, start a new problem instance by clicking the *Reset* button.
 
 .. avembed:: Exercises/PL/RP17part3applicativeOrderPRO.html pe
 
@@ -59,9 +63,17 @@ RP 17 Part 4
 
 In this problem, you have to perform a full evaluation of a randomly
 selected :math:`\lambda` expression, that is, perform as many
-:math:`\beta`-reductions as it takes until a :math:`\beta`-normal form is
-reached. For this problem, you must use the *normal-order*
-reduction strategy. 
+:math:`\beta`-reductions as it takes until a :math:`\beta`-normal form
+is reached. For this problem, you must use the **normal-order**
+reduction strategy. To get credit for this problem, you only need to
+solve one problem instance  correctly. However, each problem instance contains
+several steps that you must perform correctly (in this case, each step
+is a :math:`\beta`-reduction). Read and follow the directions
+carefully. Note that the correct answer (called the *model answer*) is
+available. However, if you look it up, you will not get credit for the
+current problem instance. To get another chance for credit, start a
+new problem instance by clicking the *Reset* button.
+
 
 .. avembed:: Exercises/PL/RP17part4normalOrderPRO.html pe
 
