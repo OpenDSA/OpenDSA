@@ -692,7 +692,7 @@
           "RP 17 Part 3": {
             "applicativeNormalOrderPro": {
               "long_name": "Applicative-order reduction Proficiency Exercise",
-              "required": false,
+              "required": true,
               "points": 0.0,
               "threshold": 3.0,
               "exer_options": {
@@ -703,7 +703,7 @@
           "RP 17 Part 4": {
             "applicativeNormalOrderPro": {
               "long_name": "Normal-order reduction Proficiency Exercise",
-              "required": false,
+              "required": true,
               "points": 0.0,
               "threshold": 3.0,
               "exer_options": {

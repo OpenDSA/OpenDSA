@@ -13,9 +13,12 @@ Reduction Strategies
 Applicative Order
 -----------------
 
+Text forthcoming
 
 Normal Order
 ------------
+
+Text forthcoming
 
 RP 17 Part 1
 ------------
