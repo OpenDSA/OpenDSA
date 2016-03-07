@@ -712,6 +712,20 @@
             }
           }
         }
+      },
+      "PL/ChurchNumerals": {
+        "long_name": "Church numerals and Booleans",
+        "sections": {
+          "RP 18 Part 2": {
+            "RP18part2": {
+              "long_name": "RP set #18, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }
+	}
       }
     },
     "Appendices": {
