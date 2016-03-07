@@ -9,12 +9,9 @@ $(document).ready(function() {
   var rt = bt.root();
   rt.right(" ");
   rt.right().right(" ");
+  rt.right().edgeToRight().addClass("dashed");
   rt.right().right().right(" ");
-  var lastParent = rt.right().right().right();
-  lastParent.right(" ");
-  lastParent.edgeToRight().label("Any number of internal nodes");
-  lastParent.edgeToRight().addClass("dashed");
-  
+  var myLabel = av.label("Any number of internal nodes",{left:"410px",top:"95px"});
 
   bt.layout();
   av.displayInit();
