@@ -43,11 +43,26 @@ it correctly three times in a row.
 RP 17 Part 3
 ------------
 
-.. avembed:: AV/PL/profexercises/applicativeNormalOrderPRO.html pe
+In this problem, you have to perform a full evaluation of a randomly
+selected :math:`\lambda` expression, that is, perform as many
+:math:`\beta`-reductions as it takes until a :math:`\beta`-normal form
+is reached. For this problem, you must use the *applicative-order*
+reduction strategy. To get credit for this problem, you only need to
+solve it correctly once. However, each problem instance contains several
+steps that you must perform correctly (in this case, each step is a
+:math:`\beta`-reduction).
+
+.. avembed:: Exercises/PL/RP17part3applicativeOrderPRO.html pe
 
 RP 17 Part 4
 ------------
 
-.. avembed:: AV/PL/profexercises/applicativeNormalOrderPRO.html pe
+In this problem, you have to perform a full evaluation of a randomly
+selected :math:`\lambda` expression, that is, perform as many
+:math:`\beta`-reductions as it takes until a :math:`\beta`-normal form is
+reached. For this problem, you must use the *normal-order*
+reduction strategy. 
+
+.. avembed:: Exercises/PL/RP17part4normalOrderPRO.html pe
 
 

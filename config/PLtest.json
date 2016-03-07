@@ -690,22 +690,22 @@
             }
           },
           "RP 17 Part 3": {
-            "applicativeNormalOrderPro": {
+            "RP17part3applicativeOrderPRO": {
               "long_name": "Applicative-order reduction Proficiency Exercise",
               "required": true,
-              "points": 0.0,
-              "threshold": 3.0,
+              "points": 1.0,
+              "threshold": 0.9,
               "exer_options": {
                 "strategy": "applicative"
               }
             }
           },
           "RP 17 Part 4": {
-            "applicativeNormalOrderPro": {
+            "RP17part4normalOrderPRO": {
               "long_name": "Normal-order reduction Proficiency Exercise",
               "required": true,
-              "points": 0.0,
-              "threshold": 3.0,
+              "points": 1.0,
+              "threshold": 0.9,
               "exer_options": {
                 "strategy": "normal"
               }
