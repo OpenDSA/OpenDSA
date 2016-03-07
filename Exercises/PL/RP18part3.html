@@ -2,7 +2,7 @@
 <html data-require="math" lang="en">
   <head>
     <meta charset=utf-8>
-    <title>RP 18 part 2</title>
+    <title>RP 18 part 3</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
@@ -11,41 +11,29 @@
   <body data-height="950" data-width="950">
     <div class="exercise">
       <div class="problems">
-        <div id="RP18part2p">
-          <p class="question">Below are the &lambda; expressions that
-          we used to encode the Boolean constants and one Boolean operator:
-	    </p>
-<pre class="string">
-   &bull; TRUE = &lambda;x.&lambda;y.x
-   &bull; FALSE = &lambda;x.&lambda;y.y
-   &bull; AND = &lambda;p.&lambda;q.((p q) FALSE)
-</pre>
-
-          <p class="question">Suppose that we now want to encode a
-	    representation of
-	    the <span class="string">if/then/else</span> expression as
-	    a function of three arguments. The first argument is the
-	    representation of the Boolean value that makes up the
-	    condition to be tested. The second argument is the value
-	    of the <span class="string">if/then/else</span> expression
-	    when the Boolean condition evaluates to true. The third
-	    argument is the value of
-	    the <span class="string">if/then/else</span> expression when
-	    the Boolean condition evaluates to false. Which one of the
-	    following encodings achieves this goal?
-	    
+        <div id="RP18part3p">
+          <p class="question">Given appropriate encodings of TRUE,
+          FALSE, and IF, which one of the following definitions
+          correctly encodes the Boolean operator OR in the &lambda; calculus?
 	  </p>
 	  <div class="solution">
-	    <pre class="string">IF = &lambda;b.&lambda;x.&lambda;y.((b x) y)</pre></div>
+	    <pre class="string"> OR = &lambda;p.&lambda;q.(((IF p) TRUE) q)</pre>
+	  </div>
 	  <ul class="choices">
 	    <li>
-	      <pre class="string">IF = &lambda;b.&lambda;x.&lambda;y.(b (x y))</pre>
+	    <pre class="string"> OR = &lambda;p.&lambda;q.(((IF p) FALSE) q)</pre>
 	    </li>
 	    <li>
-	      <pre class="string">IF = &lambda;b.&lambda;x.&lambda;y.(b (y x))</pre>
+	    <pre class="string"> OR = &lambda;p.&lambda;q.(((IF TRUE) p) q)</pre>
 	    </li>
 	    <li>
-	      <pre class="string">IF = &lambda;b.&lambda;x.&lambda;y.((b y) x)</pre>
+	    <pre class="string"> OR = &lambda;p.&lambda;q.(((IF FALSE) p) q)</pre>
+	    </li>
+	    <li>
+	    <pre class="string"> OR = &lambda;p.&lambda;q.(((IF TRUE) q) p)</pre>
+	    </li>
+	    <li>
+	    <pre class="string"> OR = &lambda;p.&lambda;q.(((IF FALSE) q) p)</pre>
 	    </li>
 	  </ul>
 	  
@@ -66,7 +54,7 @@
 	      <span class="string">else</span>
 	      expression, in this order.</p>
 	    <p>Pick the expression that implements the semantics of the 
-	      <span class="string">if/then/else</span> expression
+	      Boolean  <span class="string">OR</span>
 	      using appropriate function calls in the &lambda;
 	      calculus, given the above conventions.
 	      </p>

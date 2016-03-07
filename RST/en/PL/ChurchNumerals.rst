@@ -20,14 +20,24 @@ RP 18 Part 1
 
 .. .. avembed:: Exercises/PL/RP18part1.html ka
 
+
+Church Booleans
+---------------
+
 RP 18 Part 2
 ------------
+
+This problem is about a possible representation for the ternary IF/THEN/ELSE
+operator.
 
 .. avembed:: Exercises/PL/RP18part2.html ka
 
 RP 18 Part 3
 ------------
 
-.. .. avembed:: Exercises/PL/RP18part3.html ka
+This problem is about a possible representation for the binary OR
+operator.
+
+.. avembed:: Exercises/PL/RP18part3.html ka
 
 
