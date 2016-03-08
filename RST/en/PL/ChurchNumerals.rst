@@ -18,8 +18,12 @@ Text forthcoming
 RP 18 Part 1
 ------------
 
-.. .. avembed:: Exercises/PL/RP18part1.html ka
+This problem will help you recognize and use the Church numerals as
+well as the representation of the corresponding addition and
+multiplication operators. To get credit for this randomized problem,
+you must solve it correctly three times in a row.
 
+.. avembed:: Exercises/PL/RP18part1.html ka
 
 Church Booleans
 ---------------

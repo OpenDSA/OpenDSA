@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html data-require="math ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples RP18part1" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 18 part 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>var LAMBDA = {};</script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+	<var id="setup">RP18part1.init()</var>
+	<var id="expression">RP18part1.expression</var>
+      </div>
+
+      <div class="problems">
+        <div id="RP18part1p">
+          <p class="question">Write down the &beta;-normal form of the
+          following &lambda; expression:
+<pre>
+<var>expression</var>
+</pre>
+          <p class="question">Write down your answer below using the
+          caret character (^) instead of the &lambda; character.</p>
+      <textarea rows="1" cols="60" style="resize:none"
+                id="answerTextarea"></textarea>
+      <div class="solution" data-type="custom">
+        <div class="guess"> $('#answerTextarea').val()  </div>
+        <div class="validator-function">
+	  return RP18part1.validateAnswer(guess);
+        </div>
+      </div>
+
+	  <div class="hints">
+	    <p>Make sure to review Church's representation for
+	    non-negative integers and the addition and multiplication
+	    operators.</p>
+	    <p>To solve this problem, there is no need to perform a
+	    single &beta;-reduction. Instead, you should recognize the
+	    arithmetic operation that the expression encodes, compute
+	    its value in your head, and finally convert it to a Church
+	    numeral.</p>
+	  </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
