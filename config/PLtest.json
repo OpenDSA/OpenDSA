@@ -716,6 +716,7 @@
       "PL/ChurchNumerals": {
         "long_name": "Church numerals and Booleans",
         "sections": {
+          "Church Numerals": {},
           "RP 18 Part 1": {
             "RP18part1": {
               "long_name": "RP set #18, question #1",
@@ -725,6 +726,7 @@
               "showhide": "Show"
             }
           },
+          "Church Booleans": {},
           "RP 18 Part 2": {
             "RP18part2": {
               "long_name": "RP set #18, question #2",
