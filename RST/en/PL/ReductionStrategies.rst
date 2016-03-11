@@ -58,8 +58,8 @@ it correctly three times in a row.
 	 
 	 .. avembed:: Exercises/PL/RP17part3applicativeOrderPRO.html pe
 
-		      RP 17 Part 4
-		      ------------
+	    RP 17 Part 4
+	    ------------
 
 	    In this problem, you have to perform a full evaluation of a randomly
 	    selected :math:`\lambda` expression, that is, perform as many

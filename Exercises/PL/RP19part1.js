@@ -11,6 +11,7 @@
 	init: function () {
 	    var prefix = "\u03BB";
 	    var i, c, word, lastLetter, firstLetter, secondLetter, thirdLetter;
+	    var rnd, options = [];
 	    word = words[ L.getRnd(0,words.length-1)];
 	    //word = words[0];
 	    lastLetter = word.charAt(word.length-1);	    
@@ -31,11 +32,19 @@
 		(word.length > 4 ? ", ... " : "") + 
 		", the result of which is applied to " + lastLetter +
 		".  And to all of that, we apply " + lastLetter + ".";
-	    this.answer = word.length-1;  // check this
-	    this.option1 = "0";    // to do
-	    this.option2 = "-1";
-	    this.option3 = "-2";
-	    this.option4 = "-3";
+	    this.answer = word.length-2; 
+	    while (options.length !== 4) {
+		rnd = L.getRnd(1,12);
+		if (rnd !== this.answer &&
+		    options.indexOf(rnd) === -1) {
+		    options.push(rnd);
+		}
+	    }
+	    console.log(options);
+	    this.option1 = options[0];
+	    this.option2 = options[1];
+	    this.option3 = options[2];
+	    this.option4 = options[3];
 	} // init function
 	
     };// RP19part1
