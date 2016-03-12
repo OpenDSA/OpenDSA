@@ -211,7 +211,8 @@ AlgorithmsLMS: min
 	python $(CONFIG_SCRIPT) config/Algorithms.json -c True
 
 PL: min
-	python $(CONFIG_SCRIPT) config/PLtest.json -o True -b PL
+	# python $(CONFIG_SCRIPT) config/PLtest.json -o True -b PL
+	python $(CONFIG_SCRIPT) config/PL.json -c config/PL_LMSconf.json
 
 PL2: min
 	python $(CONFIG_SCRIPT) config/PL2.json -o True
