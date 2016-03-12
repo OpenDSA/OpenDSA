@@ -585,7 +585,6 @@
       "PL/AlphaConversion": {
         "long_name": "Alpha conversion",
         "sections": {
-          "Alpha-Conversion Rule": {},
           "RP 15 part 1": {
             "RP15part1": {
               "long_name": "RP set #15, question #1",
@@ -678,24 +677,6 @@
           "RP 17 Part 2": {
             "RP17part2": {
               "long_name": "RP set #17, question #2",
-              "required": true,
-              "points": 1.0,
-              "threshold": 3.0,
-              "showhide": "Show"
-            }
-          },
-          "RP 17 Part 3": {
-            "RP17part3applicativeOrderPRO": {
-              "long_name": "RP17part3applicativeOrderPRO",
-              "required": true,
-              "points": 1.0,
-              "threshold": 3.0,
-              "showhide": "Show"
-            }
-          },
-          "RP 17 Part 4": {
-            "RP17part4normalOrderPRO": {
-              "long_name": "RP17part4normalOrderPRO",
               "required": true,
               "points": 1.0,
               "threshold": 3.0,
