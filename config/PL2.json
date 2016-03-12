@@ -661,6 +661,31 @@
             }
           }
         }
+      },
+      "PL/ReductionStrategies": {
+        "long_name": "Reduction Strategies",
+        "sections": {
+          "Applicative Order": {},
+          "Normal Order": {},
+          "RP 17 Part 1": {
+            "RP17part1": {
+              "long_name": "RP set #17, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 17 Part 2": {
+            "RP17part2": {
+              "long_name": "RP set #17, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+        }
       }
     },
     "Appendices": {
