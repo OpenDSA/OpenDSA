@@ -639,7 +639,8 @@
               "threshold": 3.0,
               "showhide": "Show"
             }
-          },
+          }
+          ,
           "RP 16 Part 2": {
             "RP16part2": {
               "long_name": "RP set #16, question #2",
@@ -682,8 +683,64 @@
               "threshold": 3.0,
               "showhide": "Show"
             }
+          },
+          "RP 17 Part 3": {
+            "RP17part3applicativeOrderPRO": {
+              "long_name": "Applicative-order reduction Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 0.9,
+              "exer_options": {
+                "strategy": "applicative"
+              }
+            }
+          },
+          "RP 17 Part 4": {
+            "RP17part4normalOrderPRO": {
+              "long_name": "Normal-order reduction Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 0.9,
+              "exer_options": {
+                "strategy": "normal"
+              }
+            }
           }
         }
+      },
+      "PL/ChurchNumerals": {
+        "long_name": "Church numerals and Booleans",
+        "sections": {
+          "Church Numerals": {},
+          "RP 18 Part 1": {
+            "RP18part1": {
+              "long_name": "RP set #18, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "Church Booleans": {},
+          "RP 18 Part 2": {
+            "RP18part2": {
+              "long_name": "RP set #18, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 18 Part 3": {
+            "RP18part3": {
+              "long_name": "RP set #18, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }
+	}
       }
     },
     "Appendices": {
