@@ -12,7 +12,7 @@ class VarLeafNode implements VarBinNode {
   VarLeafNode(String val) { operand = val; }
   boolean isLeaf() { return true; }
   String value() { return operand; }
-};
+}
 /* *** ODSAendTag: ExpressionTree1 *** */
 
 /* *** ODSATag: ExpressionTree2 *** */
