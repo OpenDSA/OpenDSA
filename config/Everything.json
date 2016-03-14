@@ -2396,7 +2396,7 @@
             "required": true,
             "showhide": "show",
             "points": 1.0,
-            "threshold": 1.0
+            "threshold": 0.9
           }
         }
       }

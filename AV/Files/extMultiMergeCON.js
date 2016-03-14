@@ -322,4 +322,4 @@ $(document).ready(function () {
   av.step();
 
   av.recorded();
-}(jQuery));
+});
