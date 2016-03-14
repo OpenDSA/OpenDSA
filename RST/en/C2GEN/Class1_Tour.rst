@@ -142,7 +142,7 @@ Students demonstrate that they understand how a given algorithm works.
 
 Finally, we have support for small programming exercises.
 
-.. avembed:: Exercises/RecurTutor2/btLeafPROG.html ka
+.. avembed:: Exercises/BTRecurTutor/BTincPROG.html ka
 
 Feedback: Grades and Gamification Elements
 ------------------------------------------
