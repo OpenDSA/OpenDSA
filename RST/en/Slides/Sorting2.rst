@@ -154,6 +154,16 @@ Sorting Part 2
    .. odsascript:: AV/Development/HeapSortAnalysisCON.js
 
 
+.. slide:: Sorting Lower Bounds
+
+   .. odsalink:: AV/Development/SortingLowerBoundCON.css
+
+   .. inlineav:: SortingLowerBoundCON ss
+      :output: show
+
+   .. odsascript:: AV/Development/SortingLowerBoundCON.js
+
+
 .. slide:: Binsort
 
    .. codeinclude:: Sorting/Binsort 
@@ -200,6 +210,17 @@ Sorting Part 2
    .. odsascript:: AV/Development/RadixSortAnalysisCON.js
 
 
+.. slide:: Optimizing Quicksort
+
+   Insertion Sort is faster than Quicksort for "small" lists (somwhere
+   around 10 items or less).
+
+   Could remove lots of function calls by inlining functions.
+
+   Best: Don't sort small lists at all, do a final Insertion Sort to
+   clean up.
+
+   
 .. slide:: Empirical Analysis
 
    .. math::
@@ -224,15 +245,3 @@ Sorting Part 2
       \textrm{Radix/8}   & .00799 & .044 & 0.40 &   3.99 &    40.0 &     404 &   4.00 &   3.99\\
       \hline
       \end{array}
-
-
-.. slide:: Sorting Lower Bounds
-
-   .. odsalink:: AV/Development/SortingLowerBoundCON.css
-
-   .. inlineav:: SortingLowerBoundCON ss
-      :output: show
-
-   .. odsascript:: AV/Development/SortingLowerBoundCON.js
-
-
