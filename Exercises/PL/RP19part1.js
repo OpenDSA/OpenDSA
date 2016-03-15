@@ -4,7 +4,7 @@
 (function() {
     "use strict";
     var L = LAMBDA;
-    var words = [ "coca",  "comma",  "counterplea",  "credenza",  "dilemma",  "gondola",  "gorilla",  "hoopla",  "hypoglycemia",  "hypothermia",  "lemma",  "leukemia",  "lymphoma",  "mimosa",  "minutia",  "pizza",  "pneumonia",  "tesla",  "tibia",  "trivia",  "xenophobia" ];
+    var words = [ "coca",  "comma",  "counterplea",  "credenza",  "dilemma",  "gondola",  "gorilla",  "hoopla",  "hypoglycemia",  "hypothermia",  "lemma",  "leukemia",  "lymphoma",  "mimosa",  "minutia",  "pizza",  "pneumonia",  "tesla",  "tibia",  "trivia",  "xenophobia", "absolutely", "already", "anarchy", "annoy", "apathy",  "apply", "astrology" , "beworry", "bully", "hurry", "marry", "worry" ];
 
     var RP19part1 = {    
 
@@ -40,7 +40,6 @@
 		    options.push(rnd);
 		}
 	    }
-	    console.log(options);
 	    this.option1 = options[0];
 	    this.option2 = options[1];
 	    this.option3 = options[2];

@@ -37,7 +37,7 @@ class RP19part1 {
 		if (// could be less than or equal to 
 		    (numberDistinctLetters(line) == line.length()-1) &&
 		     lastLetterNotRepeated(line) &&
-		     (line.endsWith("a"))) {
+		     (line.endsWith("r"))) {
 		    //comb.add(line);
 		    System.out.println(line);
 		}
