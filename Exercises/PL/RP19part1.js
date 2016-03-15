@@ -40,7 +40,6 @@
 		    options.push(rnd);
 		}
 	    }
-	    console.log(options);
 	    this.option1 = options[0];
 	    this.option2 = options[1];
 	    this.option3 = options[2];

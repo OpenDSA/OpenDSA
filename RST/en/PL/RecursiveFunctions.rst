@@ -13,13 +13,13 @@ Recursive Functions
 RP 19 Part 1
 ------------
 
-This problem will help you ...
-
+This problem will give you practice with fixed-point combinators.
 
 To reduce syntactic clutter in this problem, we will take some
-shortcuts in writing :math:`\lambda` expressions. First, we
-will drop all but the last dot for (curried) functions with two or
-more parameters. So, for example, we will use: 
+shortcuts in writing :math:`\lambda` expressions. First, we will drop
+all but the first :math:`\lambda` and all but the last dot for
+(curried) functions with two or more parameters. So, for example, we
+will use:
 
 .. math::
 
@@ -35,6 +35,6 @@ Second, to cut down on parentheses, we will use :math:`(u\ v\ w\ x\ y\
 z)` as an abbreviation for :math:`(((((u\ v)\ w)\ x)\ y)\ z)`. In
 essence, we are making function application left-associative. **This
 notation is to be used only for this review problem.  Do NOT use it
-for any assignments or exams.**
+for any assignments, exams, or other review problems.**
 
 .. avembed:: Exercises/PL/RP19part1.html ka
