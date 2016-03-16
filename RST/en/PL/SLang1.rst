@@ -38,3 +38,11 @@ This problem will illustrate the semantics of SLang 1 while helping
 you review the definition of the *curry* function.
 
 .. avembed:: Exercises/PL/RP20part3.html ka
+
+
+RP 20 Part 4
+------------
+
+This problem focuses on the semantics of SLang 1.
+
+.. avembed:: Exercises/PL/RP20part4.html ka
