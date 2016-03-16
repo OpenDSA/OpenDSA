@@ -18,8 +18,16 @@ Text forthcoming
 RP 20 Part 1
 ------------
 
-This problem will help you master the syntax of SLang 1. To earn
+This problem will help you master the concrete syntax of SLang 1. To earn
 credit for it, you must complete this randomized problem
 correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP20part1.html ka
+
+
+RP 20 Part 2
+------------
+
+This problem will help you master the abstract syntax of SLang 1.
+
+.. avembed:: Exercises/PL/RP20part2.html ka
