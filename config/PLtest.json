@@ -784,6 +784,15 @@
               "threshold": 1.0,
               "showhide": "Show"
             }
+          },
+          "RP 20 part 3": {
+            "RP20part3": {
+              "long_name": "RP set #20, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
           }
 	}
       }

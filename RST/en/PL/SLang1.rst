@@ -24,10 +24,17 @@ correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP20part1.html ka
 
-
 RP 20 Part 2
 ------------
 
 This problem will help you master the abstract syntax of SLang 1.
 
 .. avembed:: Exercises/PL/RP20part2.html ka
+
+RP 20 Part 3
+------------
+
+This problem will illustrate the semantics of SLang 1 while helping
+you review the definition of the *curry* function.
+
+.. avembed:: Exercises/PL/RP20part3.html ka
