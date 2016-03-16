@@ -164,7 +164,8 @@ function generateRandomSLang1Program (depth,minDepth,maxDepth,
 		params.push(v);
 	    }
 	    return createFnExp(params,
-			       helper(depth+1,minDepth,maxDepth,allowed,bound));
+			       helper(depth+1,minDepth,maxDepth,allowed,
+				      bound+v));
 	case 3:
 	    numArgs = getRnd(0,2);
 	    args = ["args"];
