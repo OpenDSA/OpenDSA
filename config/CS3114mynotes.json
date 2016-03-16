@@ -147,6 +147,12 @@
       "Slides/Sorting2": {
         "long_name": "Sorting, Part 2",
         "exercises" : {}
+      }
+    },
+    "Week 8-9": {
+      "Slides/FileProc": {
+        "long_name": "File Processing and Buffer Pools",
+        "exercises" : {}
       },
       "Slides/Interruptions": {
         "long_name": "Memory cues and resumption strategies",
