@@ -148,6 +148,7 @@ function printExp(exp) {
 }// printExp function
 
 SLang.interpret = interpret; // make the interpreter public
+SLang.evalExp = evalExp;
 SLang.printExp = printExp;
 
 }());

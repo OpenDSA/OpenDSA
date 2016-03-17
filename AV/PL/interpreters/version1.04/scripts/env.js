@@ -134,6 +134,6 @@ exports.lookup = lookup;
 exports.update = update;
 exports.initEnv = initEnv;
 
-SLang.env = exports;
+window.SLang.env = exports;
 
 }());
