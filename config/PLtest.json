@@ -809,7 +809,7 @@
         "long_name": "Environment-based model of evaluation",
         "sections": {
           "Environment data structure": {},
-          "RP 22 part 1": {
+          "RP 22 Part 1": {
             "RP22part1": {
               "long_name": "RP set #22, question #1",
               "required": true,

@@ -38,7 +38,9 @@
 		var i, index1, index2, rnd;
 		var variables = vs.split("");
 		var p1 = [], p2 = [], p1Length, p2Length, args, args, args2;
-		var exp, body;
+		var exp, body = SL.absyn.getProgramExp(
+		    SL.absyn.generateRandomSLang1Program(
+			0,2,2,"xyz",""));
 		p1 = pickParams(vs);
 		p2 = pickParams(vs);
 		// make sure all variables appear in p1 union p2
@@ -62,19 +64,16 @@
 			}
 		    }
 		}
-		console.log( p1 );
-		console.log( p2 );
-/*
-		var exp = SL.absyn.getProgramExp(
-		    SL.absyn.generateRandomSLang1Program(
-			0,4,7,"xyz",""));
-		expStr = SL.printExp(exp);
-		while (expStr.length < 10 ||  expStr.length>50) {
-		    exp = SL.absyn.getProgramExp(
-			SL.absyn.generateRandomSLang1Program(
-			    0,4,7,"xyz",""));
-		    expStr = SL.printExp(exp);
-		}
+
+		exp = SL.absyn.createAppExp(
+		    SL.absyn.createFnExp(
+			p1,SL.absyn.createFnExp(p2,getRndExp()),
+
+		); // createAppExp
+		
+//		expStr = SL.printExp(exp);
+//		while (expStr.length < 10 ||  expStr.length>50) {
+
 		return exp;
 	    }// getRndExp function
 */
