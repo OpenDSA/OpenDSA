@@ -66,6 +66,7 @@ File Processing and Buffer Pools
       \hline
       \end{array}
 
+   * (Costs per Megabyte)
 
    * RAM is usually volatile.
 
@@ -111,41 +112,42 @@ File Processing and Buffer Pools
 
 .. slide:: Terms
 
-   * Locality of Reference: When record is read from disk, next request is
+   * **Locality of Reference**: When record is read from disk, next request is
      likely to come from near the same place on the disk.
 
-   * Cluster: Smallest unit of file allocation,  usually several sectors.
+   * **Cluster**: Smallest unit of file allocation,  usually several sectors.
 
-   * Extent: A group of physically contiguous clusters.
+   * **Extent**: A group of physically contiguous clusters.
 
-   * Internal fragmentation: Wasted space within sector if record size does
-     not match sector size; wasted space within cluster if file size is not
-     a multiple of cluster size.
+   * **Internal fragmentation**: Wasted space within sector if record
+     size does not match sector size; wasted space within cluster if
+     file size is not a multiple of cluster size.
 
 
 .. slide:: Seek Time
 
-   * Seek time: Time for I/O head to reach desired track.  Largely
-     determined by distance between I/O head and desired track.
+   * **Seek time**: Time for I/O head to reach desired track.
+     Largely determined by distance between I/O head and desired
+     track.
 
-   * Track-to-track time: Minimum time to move from one track to an
-     adjacent track.
+   * **Track-to-track time**: Minimum time to move from one track to
+     an adjacent track.
 
-   * Average Access time: Average time to reach a track for random access.
+   * **Average Access time**: Average time to reach a track for random access.
 
 
 .. slide:: Other Factors
 
-   * Rotational Delay or Latency: Time for data to rotate under I/O head.
+   * **Rotational Delay** or **Latency**: Time for data to rotate under I/O head.
       * One half of a rotation on average.
       * At 7200 rpm, this is 8.3/2 = 4.2ms.
 
-   * Transfer time: Time for data to move under the I/O head.
+   * **Transfer time**: Time for data to move under the I/O head.
       * At 7200 rpm: Number of sectors read/Number of sectors per track *
         8.3ms.
 
 
-.. slide:: Disk Spec Example
+.. slide:: (Old) Disk Spec Example
 
    * 16.8 GB disk on 10 platters = 1.68GB/platter
    * 13,085 tracks/platter
@@ -187,13 +189,13 @@ File Processing and Buffer Pools
 .. slide:: How Much to Read?
 
    * Read time for one track:
-     :math:`9.5 + (11.1)(1.5) = 26.2ms`
+     :math:`9.5 + (11.1)(1.5) = 26.2` ms
 
    * Read time for one sector:
-     :math:`9.5 + 11.1/2 + (1/256)11.1 = 15.1ms`
+     :math:`9.5 + 11.1/2 + (1/256)11.1 = 15.1` ms
 
    * Read time for one byte:
-     :math:`9.5 + 11.1/2 = 15.05ms`
+     :math:`9.5 + 11.1/2 = 15.05` ms
 
    * Nearly all disk drives read/write one sector (or more) at every I/O
      access
@@ -208,7 +210,7 @@ File Processing and Buffer Pools
    * 7200 RPM
    * Track to track: 0.8 ms
    * Average track access: 8.9 ms
-   * Bytes/sector 512
+   * Bytes/sector: 512
    * 6 surfaces/heads
 
 
@@ -255,6 +257,15 @@ File Processing and Buffer Pools
 
    * Least Recently used (LRU): Keep buffers on a linked list.  When
      buffer is accessed, bring it to front.  Reuse the one at end.
+
+
+.. slide:: LRU
+
+   .. inlineav:: LRUCON ss
+      :align: center
+      :output: show
+
+   .. odsascript:: AV/Files/LRUCON.js
 
 
 .. slide:: Bufferpool ADT: Message Passing
