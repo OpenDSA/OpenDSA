@@ -14,11 +14,11 @@ Environment data structure
 
 Text forthcoming
 
-RP 21 Part 1
+RP 22 Part 1
 ------------
 
 This problem will ... To earn
 credit for it, you must complete this randomized problem
 correctly three times in a row.
 
-.. avembed:: Exercises/PL/RP21part1.html ka
+.. avembed:: Exercises/PL/RP22part1.html ka
