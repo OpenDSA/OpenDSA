@@ -34,7 +34,7 @@
 		// p1 is 1 to 3 vars and args is the same # of vars/ints
 		// p2 is 1 to 2 vars such that p1 union p2 = {x,y,z}
                 // the length of args2 is equal to the length of p2
-		// body as depth 2 and ony uses variables as leaves
+		// body has depth 2 and only uses variables as leaves
 		var i, index1, index2, rnd;
 		var variables = vs.split("");
 		var p1 = [], p2 = [], p1Length, p2Length, args, args, args2;
