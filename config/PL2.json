@@ -762,7 +762,51 @@
 	    }
 	}
     },
-    "Appendices": {
+    "Interpreting the Functional Language SLang 1": {
+      "PL/SLang1": {
+        "long_name": "Defining SLang 1",
+        "sections": {
+          "Syntax of SLang 1": {},
+          "RP 20 part 1": {
+            "RP20part1": {
+              "long_name": "RP set #20, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 20 part 2": {
+            "RP20part2": {
+              "long_name": "RP set #20, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 21 part 1": {
+            "RP21part1": {
+              "long_name": "RP set #21, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+            "RP 21 part 2": {
+            "RP21part2": {
+              "long_name": "RP set #21, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }
+	}
+      }
+    },
+      "Appendices": {
       "PL/PL_Glossary": {
         "long_name": "Glossary",
         "sections": {}

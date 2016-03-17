@@ -7,7 +7,7 @@
 
 	init: function() {
 	    var SL = SLang;
-	    var vs = "uvxyz";
+	    var vs = "xyz";
 	    var maxDepth = 5;
 	    var minDepth = 4;
 	    var exp, expStr;
@@ -17,15 +17,53 @@
 	    var valueType = SL.absyn.getRnd(0,1) === 0 ? "integer" : "closure";
 	    valueType = "closure";
 
+	    function pickParams(variables) {
+		var n, result = [];
+		variables = variables.split("");
+		PLutils.shuffle(variables);
+		n = SL.absyn.getRnd(1,3);
+		for(i=0; i< n; i++) {
+		    result.push(variables[0]);
+		    variables.splice(0,1);
+		}
+		return result;
+	    }
 
 	    function getRndExpTmp() {
-		//  structure of exp: (fn(p1)=>(fn(p2)=>body args') args)
+		//  structure of exp: (fn(p1)=>(fn(p2)=>body args2) args)
 		// p1 is 1 to 3 vars and args is the same # of vars/ints
 		// p2 is 1 to 2 vars such that p1 union p2 = {x,y,z}
-                // the length of args' is equal to the length of p2
+                // the length of args2 is equal to the length of p2
 		// body as depth 2 and ony uses variables as leaves
-		
+		var i, index1, index2, rnd;
+		var variables = vs.split("");
+		var p1 = [], p2 = [], p1Length, p2Length, args, args, args2;
 		var exp, body;
+		p1 = pickParams(vs);
+		p2 = pickParams(vs);
+		// make sure all variables appear in p1 union p2
+		for(i=0; i<variables.length; i++) {
+		    index1 = p1.indexOf(variables[i]);
+		    index2 = p2.indexOf(variables[i]);
+		    if (index1 === -1 && index2 === -1) {
+			rnd = SL.absyn.getRnd(0,10);
+			if (rnd===1) {
+			    if (index1===-1) {
+				p1.push(variables[i]);
+			    } else {
+				p2.push(variables[i]);
+			    }
+			} else {
+			    if (index2===-1) {
+				p2.push(variables[i]);
+			    } else {
+				p1.push(variables[i]);
+			    }
+			}
+		    }
+		}
+		console.log( p1 );
+		console.log( p2 );
 /*
 		var exp = SL.absyn.getProgramExp(
 		    SL.absyn.generateRandomSLang1Program(
@@ -67,7 +105,8 @@
 		return exp;
 	    }// getRndExp function
 	    
-	    
+	    console.log( getRndExpTmp());
+
 	    while (true) {
 		exp = getRndExp();
 		done = true;
