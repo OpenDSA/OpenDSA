@@ -232,22 +232,17 @@ The advantage is reduced programmer effort because a good virtual memory
 system provides the appearance of larger main memory without
 modifying the program.
 
-.. inlineav:: buffpoolCON ss
-   :output: show
+.. The following AV and exercise need to be fixed, so that this can be
+.. added back in.
 
-|
+.. Here is a visualization to let you experiment with the various buffer
+.. pool replacement strategies.
 
-.. inlineav:: buffpooldgmCON dgm
-   :output: show
+.. .. avembed:: AV/Files/BufferPoolAV.html ss
 
-Here is a visualization to let you experiment with the various buffer
-pool replacement strategies.
+.. Here is an exercise to help you practice.
 
-.. avembed:: AV/Files/BufferPoolAV.html ss
-
-Here is an exercise to help you practice.
-
-.. avembed:: AV/Files/bufferpoolPRO.html pe
+.. .. avembed:: AV/Files/bufferpoolPRO.html pe
 
 
 Implementing Buffer Pools
@@ -440,5 +435,3 @@ all over where the record is stored.
 .. odsascript:: AV/Files/buffintroCON.js
 .. odsascript:: AV/Files/LRUCON.js
 .. odsascript:: AV/Files/LRUwriteCON.js
-.. odsascript:: AV/Files/buffpoolCON.js
-.. odsascript:: AV/Files/buffpooldgmCON.js
