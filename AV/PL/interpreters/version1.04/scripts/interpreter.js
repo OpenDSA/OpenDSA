@@ -150,5 +150,5 @@ function printExp(exp) {
 SLang.interpret = interpret; // make the interpreter public
 SLang.evalExp = evalExp;
 SLang.printExp = printExp;
-
+SLang.applyPrimitive = applyPrimitive;
 }());

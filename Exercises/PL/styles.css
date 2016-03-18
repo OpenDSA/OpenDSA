@@ -7,3 +7,11 @@ table.grammar {
 .string {
     font-family: monospace;
 }
+
+.raisedString {
+    font-family: monospace;
+    line-height: 1em;
+    position: relative;
+    vertical-align: baseline;
+    bottom: 0.5em;
+}
