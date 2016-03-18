@@ -15,7 +15,6 @@
 		<var id="init">RP22part1.init()</var>
 		<var id="expression">RP22part1.expression</var>
 		<var id="underlinedExpression">RP22part1.underlinedExpression</var>
-		<var id="CorrectAnswer">RP22part1.answer</var>
 	</div>
 
       <div class="problems">
@@ -33,15 +32,29 @@
 <var>underlinedExpression</var>
 </pre>
           <p class="question">In the active environment in which it is
-	    evaluated, what value is the underlined variable occurrence
-	    bound to?</p>
+	    evaluated, what value is the underlined variable
+	    occurrence bound to? The answer is a single integer (e.g.,
+	    23), the word "function" or the word "error" (if the
+	    evaluation of the expression above throws an exception). In
+	    the last two cases, the one-word answer is in all
+	    lowercase letters and does NOT include the double quotes.</p>
 
-          <p class="solution" data-type="text"><var>CorrectAnswer</var></p>
+	  <textarea rows="1" cols="10" style="resize:none"
+                id="answerTextarea"></textarea>
+	  <div class="solution" data-type="custom">
+            <div class="guess"> $('#answerTextarea').val()</div>
+            <div class="validator-function">
+	      return RP22part1.validateAnswer(guess);
+            </div>
+	  </div>
 	  
 	  <div class="hints">
-	    <p></p>
-	    <p></p>
-	    <p></p>
+	    <p>Determine the scope of the binding occurrences in each
+	    function definition that this expression contains.</p>
+	    <p>Note that SLang 1 uses static scoping (or static binding).</p>
+	    <p>Match parameters to arguments in function calls.</p>
+	    <p>Remember that the overall expression is evaluated in a
+	    global environment that is not empty.</p>
 	  </div>	 
         </div>
       </div>

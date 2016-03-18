@@ -240,12 +240,24 @@
 
 		// build args
 		for(i=0; i < p1.length; i++) {
-		    if (SL.absyn.getRnd(0,1)===0) {
+		    rnd = SL.absyn.getRnd(0,2);
+		    rnd = 2;
+		    switch (rnd) {
+		    case 0: 
 			args.push(SL.absyn.createVarExp(
 			    variables[SL.absyn.getRnd(0,variables.length-1)]));
-		    } else {
+			break;
+		    case 1:
 			args.push(SL.absyn.createIntExp(
 			    SL.absyn.getRnd(4,20)));
+			break;
+		    case 2:
+			args.push(SL.absyn.createFnExp(
+			    [ variables[SL.absyn.getRnd(0,
+							variables.length-1)] ],
+			    SL.absyn.createIntExp(SL.absyn.getRnd(0,10))
+			));
+			break;
 		    }
 		}
 		exp = SL.absyn.createAppExp(
@@ -291,9 +303,17 @@
 	    //console.log(JSON.stringify(allVariables));
 	    this.expression = SL.printExp(exp);
 	    this.underlinedExpression = underlineExp(exp);
-	    this.answer = E.getNumValue(selectedVar.value) + "";
+	    this.answer = E.isNum(selectedVar.value) ?
+		(E.getNumValue(selectedVar.value) + "") : "function";
+				
 	    console.log(this.answer);
-    }// init function
+	},// init function
+
+	validateAnswer: function (studentAnswer) {
+	    return this.answer.replace(/\s+/g,"") ===
+		studentAnswer.replace(/\s+/g,"");
+	}// validateAnswer function
+
     };
 
     window.RP22part1 = window.RP22part1 || RP22part1;
