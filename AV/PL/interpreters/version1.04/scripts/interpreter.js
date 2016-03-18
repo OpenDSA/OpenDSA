@@ -1,4 +1,4 @@
-/* global SLang : true, parser, console */
+/* global SLang : true, parser */
 
 (function () {
 

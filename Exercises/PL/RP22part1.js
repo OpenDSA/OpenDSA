@@ -304,9 +304,9 @@
 	    this.expression = SL.printExp(exp);
 	    this.underlinedExpression = underlineExp(exp);
 	    this.answer = E.isNum(selectedVar.value) ?
-		(E.getNumValue(selectedVar.value) + "") : "function";
+		(E.getNumValue(selectedVar.value) + "") : "closure";
 				
-	    console.log(this.answer);
+	    //console.log(this.answer);
 	},// init function
 
 	validateAnswer: function (studentAnswer) {
