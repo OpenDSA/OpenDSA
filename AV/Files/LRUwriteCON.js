@@ -65,6 +65,9 @@ $(document).ready(function () {
   av.umsg("The first request is to block 9. This is not in the buffer pool, so it gets read into the first free buffer.");
   buffer_pool.value(0, 0, 9);
   av.effects.copyValue(arr, 9, arrB0, 0);
+  arr.addClass(9, "processing");
+  buffer_pool.addClass(0, 0, "processing");
+  arrB0.addClass(0, "processing");
   av.step();
 
   // Slide 3
@@ -76,6 +79,11 @@ $(document).ready(function () {
   arrB1.value(0, "AXXXXA");
   buffer_pool.value(0, 1, 1);
   writelines();
+  arr.removeClass(9, "processing");
+  arrB0.removeClass(0, "processing");
+  arr.addClass(0, "processing");
+  arrB1.addClass(0, "processing");
+  buffer_pool.addClass(0, 1, "processing");
   av.step();
 
   // Slide 4
@@ -87,6 +95,11 @@ $(document).ready(function () {
   buffer_pool.swap(1, 0, 0, 0); buffer_pool.swap(1, 1, 0, 1);
   av.effects.copyValue(arr, 1, arrB2, 0);
   writelines();
+  arr.removeClass(0, "processing");
+  arrB1.removeClass(0, "processing");
+  buffer_pool.removeClass(0, 1, "processing");
+  arr.addClass(1, "processing");
+  arrB2.addClass(0, "processing");
   av.step();
 
   // Slide 5
@@ -100,6 +113,10 @@ $(document).ready(function () {
   buffer_pool.swap(1, 0, 0, 0); buffer_pool.swap(1, 1, 0, 1);
   av.effects.copyValue(arr, 7, arrB3, 0);
   writelines();
+  arr.removeClass(1, "processing");
+  arrB2.removeClass(0, "processing");
+  arr.addClass(7, "processing");
+  arrB3.addClass(0, "processing");
   av.step();
 
   // Slide 6
@@ -115,12 +132,17 @@ $(document).ready(function () {
   buffer_pool.swap(1, 0, 0, 0); buffer_pool.swap(1, 1, 0, 1);
   av.effects.copyValue(arr, 6, arrB4, 0);
   writelines();
+  arr.removeClass(7, "processing");
+  arrB3.removeClass(0, "processing");
+  arr.addClass(6, "processing");
+  arrB4.addClass(0, "processing");
   av.step();
 
   // Slide 7
   av.umsg("Another request for block 6 can be served without reading any new data into memory. And since buffer 0 stores block 6, the blocks in the buffer pool need not be moved. But if this writes to the block (here we change the middle letters to X), then the dirty bit must be set.");
   arrB4.value(0, "GXXXXG");
   buffer_pool.value(0, 1, 1);
+  buffer_pool.addClass(0, 1, "processing");
   av.step();
   
   // Slide 8
@@ -136,6 +158,11 @@ $(document).ready(function () {
   buffer_pool.swap(1, 0, 0, 0); buffer_pool.swap(1, 1, 0, 1);
   av.effects.copyValue(arr, 8, arrB0, 0);
   writelines();
+  arr.removeClass(6, "processing");
+  arrB4.removeClass(0, "processing");
+  arr.addClass(8, "processing");
+  arrB0.addClass(0, "processing");
+  buffer_pool.removeClass(0, 1, "processing");
   av.step();
 
   // Slide 9
@@ -147,11 +174,22 @@ $(document).ready(function () {
   buffer_pool.swap(2, 0, 1, 0); buffer_pool.swap(2, 1, 1, 1);
   buffer_pool.swap(1, 0, 0, 0); buffer_pool.swap(1, 1, 0, 1);
   writelines();
+  arr.removeClass(8, "processing");
+  arrB0.removeClass(0, "processing");
+  arr.addClass(1, "processing");
+  arrB2.addClass(0, "processing");
   av.step();
 
   // Slide 10
-  av.umsg("Let's add one more request, for block 4. Since block 4 is not in the buffer pool, this will require emptying the contents of the least recently used buffer (the block in position 4), which is block 0. So block 0's data will be removed from the buffer pool, the other blocks in the pool are shifted down one step, and block 4 will be read into the buffer now at position 0. However, since the dirty bit for block 0 is 1, we must first write the contents for block 0 back to the file. Notice that the value is changed.");
+  av.umsg("Let's add one more request, for block 5. Since block 5 is not in the buffer pool, this will require emptying the contents of the least recently used buffer (the block at position 4), which is block 0. So block 0's data will be removed from the buffer pool, the other blocks in the pool are shifted down one step, and block 5 will be read into the buffer now at position 0. However, since the dirty bit for block 0 is 1, we must first write the contents for block 0 back to the file. Notice that the value is changed.");
   av.effects.copyValue(arrB1, 0, arr, 0);
+  arr.removeClass(1, "processing");
+  arrB2.removeClass(0, "processing");
+  arr.addClass(0, "processing");
+  arrB1.removeClass(0, "processing");
+  buffer_pool.removeClass(0, 0, "processing");
+  buffer_pool.addClass(4, 0, "processing");
+  buffer_pool.addClass(4, 1, "processing");
   av.step();
 
   // Slide 11
@@ -168,5 +206,11 @@ $(document).ready(function () {
   buffer_pool.swap(1, 0, 0, 0); buffer_pool.swap(1, 1, 0, 1);
   av.effects.copyValue(arr, 4, arrB1, 0);
   writelines();
+  buffer_pool.removeClass(4, 0, "processing");
+  buffer_pool.removeClass(4, 1, "processing");
+  buffer_pool.addClass(0, 0, "processing");
+  arr.removeClass(0, "processing");
+  arr.addClass(4, "processing");
+  arrB1.addClass(0, "processing");
   av.recorded();
 });
