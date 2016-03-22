@@ -1,0 +1,31 @@
+#SortingProblemCON {
+  height: 460px;
+  width:900px;
+}
+
+#SortingProblemCON .jsavline{
+  height: 120px;
+}
+
+#SortingProblemCON .jsavhorizontalarray .jsavnode{
+  min-width: 50px !important;
+  max-width: 200px !important;
+  min-height: 35px !important;
+  max-height: 35px !important;
+}
+
+#SortingProblemCON .jsavcodeline{
+  background-color: transparent;
+  font-family:Helvetica, Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif !important;
+  font-size: 14px;
+}
+
+.largeLabel{
+  font-size: 18px; 
+  text-align: center; 
+}
+.codeLabel{
+  font-family:Helvetica, Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+}

@@ -1,0 +1,13 @@
+{
+  "translations": {
+    "en": {
+      "sc1": "Here is a visual explanation about Sorting Problem.",
+      "sc2": "Here, we have: <br><b><u>Input:</u></b> An unsorted array of records :R1, R2, ..., Rn with associated key values :K1, K2, ..., Kn,",
+      "sc3":" <br><b><u>Output:</u></b>: the permutation Ks1, Ks2, ..., Ksn such that Ks1 <= Ks2 <= ... <= Ksn.",
+      "sc4": "<br><br> Here we see an example of a Sorting problem instance in which we have initialized an unsorted array and we obtained the sorted array as a result.",
+      "lab1": "Sorting Problem",
+      "lab2": "input",
+      "lab3": "output"
+}
+}
+}
