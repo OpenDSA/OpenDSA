@@ -2,7 +2,7 @@
 (function() {
   "use strict";
 
-    var RP22part1 = {    
+    var RP22part3 = {    
 
 
 	init: function() {
@@ -125,7 +125,7 @@
 
 	    // eval the exp while storing with each variable expression in it
 	    // its value
-	    function evalExpRP22part1(exp,envir) {
+	    function evalExpRP22part3(exp,envir) {
 		if (A.isIntExp(exp)) {
 		    return E.createNum(A.getIntExpValue(exp));
 		}
@@ -138,10 +138,10 @@
 			A.getFnExpParams(exp),A.getFnExpBody(exp),envir);
 		}
 		else if (A.isAppExp(exp)) {
-		    var f = evalExpRP22part1(A.getAppExpFn(exp),envir);
+		    var f = evalExpRP22part3(A.getAppExpFn(exp),envir);
 		    var args = A.getAppExpArgs(exp)
 			.map( function(arg) { 
-			    return evalExpRP22part1(arg,envir); } );
+			    return evalExpRP22part3(arg,envir); } );
 		    if (E.isClo(f)) {
 			if (E.getCloParams(f).length !== args.length) {		
 			    throw new Error(
@@ -149,7 +149,7 @@
 		"a function call (" + E.getCloParams(f).length +
 		" expected but " + args.length + " given)");
 			} else {
-			    return evalExpRP22part1(E.getCloBody(f),
+			    return evalExpRP22part3(E.getCloBody(f),
 					   E.update(E.getCloEnv(f),
 						    E.getCloParams(f),args));
 			}
@@ -162,14 +162,14 @@
 		    return SL.applyPrimitive(
 			A.getPrimAppExpPrim(exp),
 			A.getPrimAppExpArgs(exp).map( function(arg) { 
-			    return evalExpRP22part1(arg,envir); } ));
+			    return evalExpRP22part3(arg,envir); } ));
 		} else {
 		    throw new Error(
 			"Error: Attempting to evaluate an invalid expression");
 		}
-	    }// evalExpRP22part1
+	    }// evalExpRP22part3
 
-	    function getRndExpRP22part1() {
+	    function getRndExpRP22part3() {
 		// structure of exp: (fn(p1)=>(fn(p2)=>body args2) args)
 		// p1 is 1 to 3 vars and args is the same # of vars/ints
 		// p2 is 1 to 2 vars such that p1 union p2 = {x,y,z}
@@ -273,15 +273,25 @@
 		    SL.absyn.generateRandomSLang1Program(
 			0,min,max,"xyz",""));
 	    }// getRndExp function
-	    
+
 	    while (true) {
-		exp = getRndExpRP22part1();
+		allVariables = [];	   
+		exp = getRndExpRP22part3();
 		expStr = SL.printExp(exp);
 		if (expStr.length > 50) { continue; }
-		done = true;
+		collectVariables(exp);
+		// pick one variable
+		selectedVar = allVariables[A.getRnd(0,allVariables.length-1)];
+		selectedVar.selected = true;
 		try {
-		    // eval just to make sure that the whole exp has a value
-		    SL.evalExp(exp,globalEnv);
+		    value = evalExpRP22part3(exp,globalEnv);
+		    //value = SL.evalExp(exp,globalEnv);
+//		    console.log(JSON.stringify(value));
+		    if  (E.isClo(selectedVar.value)) {
+			done = true;
+		    } else {
+			done = false;
+		    }		    
 		} catch (e) {
 		    done = false;
 		}
@@ -289,16 +299,66 @@
 		    break;
 		}
 	    }
-
-
-	    allVariables = [];
-	    collectVariables(exp);
-	    // pick one variable
-	    selectedVar = allVariables[A.getRnd(0,allVariables.length-1)];
-	    selectedVar.selected = true;
-	    // eval again to get the value of the selected variable
-	    evalExpRP22part1(exp,globalEnv);
+		
 	    //console.log(JSON.stringify(allVariables));
+	    //console.log(JSON.stringify(value,null,2));
+	    var lines = value; // JSON.stringify(value,null,2).split('\n');
+	    var indent, largestIndent = -1;
+	    var copy = [];
+	    var longestLine = -1;
+	    var line, n = 0,tmp;
+	    var newline;
+	    var maxLength = 50;
+
+	    // to limit the number of lines used up by the JSON format, pack
+	    // as much on each line (but only up to MaxLength characters)
+	    // Precondition: 
+	    //     exp is either a string, or an array in which the first
+	    //     element is always a string
+	    function myStringify(indent,arr,maxLength) {
+		//function nSpaces(n) { return new Array(n+1).join(' '); }
+		var spaces = new Array(indent+1).join(' ');
+		var line = JSON.stringify(arr);
+		if (line.length <= maxLength) {
+		    return [ spaces + line ];
+		}
+		var i, result = [], prefix, suffix; 
+		for(i=0; i<arr.length; i++) {
+		    prefix = spaces + (i=== 0 ? "[ " : "  ");
+		    suffix = i === arr.length-1 ? "" : ",";
+		    if (typeof arr[i] === "object") {
+			line = JSON.stringify(arr[i]);
+			if (line.length <= maxLength) {
+			    result.push( prefix + line + suffix);
+			} else {
+			    result = result.concat(
+				myStringify(indent+2,arr[i],maxLength)
+			    );
+			}
+		    } else {
+			// array element is a string or a number
+			if (typeof(arr[i]) === "string") {
+			    result.push(prefix + '"' + arr[i] + '"' + suffix);
+			} else {
+			    result.push(prefix  + arr[i] + suffix);
+			}
+		    }
+
+		}
+		result[result.length-1] = 
+		    result[result.length-1] + "]";
+		//result.push( prefix + "]");
+		return result;
+
+	    }
+	    console.log(JSON.stringify(lines)); // .join("\n"));
+	    console.log("==================");
+	    var tmp = myStringify(0,lines,maxLength);
+	    for(var i=0; i<tmp.length; i++) {
+		console.log(tmp[i]);
+	    }
+	    this.value = "test";
+	    console.log(this.value);
 	    this.expression = SL.printExp(exp);
 	    this.underlinedExpression = underlineExp(exp);
 	    this.answer = E.isNum(selectedVar.value) ?
@@ -314,7 +374,7 @@
 
     };
 
-    window.RP22part1 = window.RP22part1 || RP22part1;
+    window.RP22part3 = window.RP22part3 || RP22part3;
 
 }());
 
