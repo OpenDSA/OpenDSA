@@ -23,7 +23,7 @@ $(document).ready(function () {
   av.step();
 
 
-  av.umsg("Our basic Mergesort would start by merging runs of length 1 into runs of length 2, and thos would be merged into runs of length 4, then 8, and so on. It would take 9 merge passes to create runs with 512 records.");
+  av.umsg("Our basic Mergesort would start by merging runs of length 1 into runs of length 2, and those would be merged into runs of length 4, then 8, and so on. It would take 9 merge passes to create runs with 512 records.");
   // hide previous unneeded variables
   rectlabel3.hide();
   rectlabel4.hide();
@@ -54,7 +54,7 @@ $(document).ready(function () {
   line2.hide();
   av.step();
 
-  av.umsg("Now assume we have 256k records. Standard Mergesort would require eighteen passes to process 256k records.");
+  av.umsg("Now assume we have 256k records. Standard Mergesort would require eighteen passes to process 256k ($= 2^{18}$) records.");
   av.step();
 
   av.umsg("However, processing each block as a unit can do 512 records in one pass with an internal sort instead of 9 passes with the simple Mergesort.");
@@ -85,7 +85,7 @@ $(document).ready(function () {
   av.umsg("Now the runs of 512 records can be merged by Mergesort. By using an internal sort it takes one initial pass to create the runs of 512 records and nine merge passes to put them all together, approximately half as many passes.");
   var rect7 = av.g.rect(50, 37, 190, 100);
   var rect8 = av.g.rect(380, 37, 190, 100);
-  var rectlabel15 = av.label("500 blocks each with", {left: 60, top: 50});
+  var rectlabel15 = av.label("512 blocks each with", {left: 60, top: 50});
   var rectlabel16 = av.label("512 sorted records", {left: 60, top: 70});
   var rectlabel17 = av.label("One run of 256k", {left: 390, top: 50});
   var rectlabel18 = av.label("sorted records", {left: 390, top: 70});

@@ -19,9 +19,7 @@
 				     [E.createNum(1),
 				      E.createNum(2),
 				      E.createNum(3)]);
-	    var valueType = SL.absyn.getRnd(0,1) === 0 ? "integer" : "closure";
 	    var allVariables, selectedVar;
-	    valueType = "closure";
 
 	    function pickParams(variables) {
 		var n, i, result = [];
