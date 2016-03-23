@@ -8,7 +8,7 @@
    :requires: sorting introduction
    :satisfies: sorting terminology
    :topic: Sorting
-.. odsalink:: AV/Development/Sorting/SortingProblemCON.css
+
 Sorting Terminology and Notation
 ================================
 
@@ -27,8 +27,10 @@ have keys obeying the property
 In other words, the sorting problem is to arrange a set of records so
 that the values of their key fields are in non-decreasing order.
 
-.. inlineav:: SortingProblemCON ss
-   :output: show
+.. TODO::
+   :type: Slideshow
+
+   The preceding paragraph could be turned into a slideshow.
 
 As defined, the Sorting Problem allows input with two or more
 records that have the same key value.
@@ -96,4 +98,3 @@ We will call attention to sorting algorithms that require significant
 extra memory beyond the input array.
 
 .. avembed:: Exercises/Sorting/SortIntroSumm.html ka
-.. odsascript:: AV/Development/Sorting/SortingProblemCON.js
