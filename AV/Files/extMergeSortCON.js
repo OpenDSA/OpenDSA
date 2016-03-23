@@ -28,16 +28,16 @@ var setYellow = function (index, arr) {
   var inputlabel2 = av.label("Runs of length 1", {left: 50, top: 195});
   var outputlabel2 = av.label("Runs of length 2", {left: 400, top: 195});
 
-  var inputline1 = av.g.line(82, 45, 82, 76, {"stroke-width": "2"});
-  var inputline2 = av.g.line(114, 45, 114, 76, {"stroke-width": "2"});
-  var inputline3 = av.g.line(144, 45, 144, 76, {"stroke-width": "2"});
+  var inputline1 = av.g.line(81, 43, 81, 79, {"stroke-width": "2"});
+  var inputline2 = av.g.line(111, 43, 111, 79, {"stroke-width": "2"});
+  var inputline3 = av.g.line(141, 43, 141, 79, {"stroke-width": "2"});
 
-  var inputline4 = av.g.line(82, 145, 82, 176, {"stroke-width": "2"});
-  var inputline5 = av.g.line(114, 145, 114, 176, {"stroke-width": "2"});
-  var inputline6 = av.g.line(144, 145, 144, 176, {"stroke-width": "2"});
+  var inputline4 = av.g.line(81, 143, 81, 179, {"stroke-width": "2"});
+  var inputline5 = av.g.line(111, 143, 111, 179, {"stroke-width": "2"});
+  var inputline6 = av.g.line(141, 143, 141, 179, {"stroke-width": "2"});
 
-  var outputline1 = av.g.line(464, 45, 464, 76, {"stroke-width": "2"});
-  var outputline2 = av.g.line(464, 145, 464, 176, {"stroke-width": "2"});
+  var outputline1 = av.g.line(461, 43, 461, 79, {"stroke-width": "2"});
+  var outputline2 = av.g.line(461, 143, 461, 179, {"stroke-width": "2"});
 
   av.displayInit();
 
