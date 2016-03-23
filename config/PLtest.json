@@ -826,6 +826,15 @@
               "threshold": 3.0,
               "showhide": "Show"
             }
+          },
+          "RP 22 Part 3": {
+            "RP22part3": {
+              "long_name": "RP set #22, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
           }
 	}
       }
