@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html data-require="math ../../AV/PL/interpreters/version1.04/scripts/absyn ../../AV/PL/interpreters/version1.04/scripts/env ../../AV/PL/interpreters/version1.04/scripts/grammar ../../AV/PL/interpreters/version1.04/scripts/interpreter PLutils RP22part2" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 22 part 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>var SLang = {};</script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="950" data-width="950">
+    <div class="exercise">
+	<div class="vars">
+		<var id="init">RP22part2.init()</var>
+		<var id="expression">RP22part2.expression</var>
+	</div>
+
+      <div class="problems">
+        <div id="RP22part2p">
+          <p class="question">What is the value of the following SLang
+	    1 exression when evaluated in a global environment in
+	    which
+	    <span class="string">x</span>, <span class="string">y</span>, and
+	    <span class="string">z</span> are bound to the values 
+	    <span class="string">1</span>, <span class="string">2</span>, and
+	    <span class="string">3</span>, respectively?</p>
+<pre class="string">
+<var>expression</var>
+</pre>
+<pre class="raisedString">
+</pre>
+          <p class="question">The answer is a single integer (e.g.,
+	    23), the word "closure" or the word "error" (if the
+	    evaluation of the expression above throws an exception). In
+	    the last two cases, the one-word answer is in all
+	    lowercase letters and does NOT include the double quotes.</p>
+
+	  <textarea rows="1" cols="10" style="resize:none"
+                id="answerTextarea"></textarea>
+	  <div class="solution" data-type="custom">
+            <div class="guess"> $('#answerTextarea').val()</div>
+            <div class="validator-function">
+	      return RP22part2.validateAnswer(guess);
+            </div>
+	  </div>
+	  
+	  <div class="hints">
+	    <p>The SLang 1 interpreter uses <em>eager</em>
+	    evaluation. Therefore, in a function call, all arguments
+	    are evaluated before the body of the function.</p>
+	    <p>Determine the scope of the binding occurrences in each
+	    function definition that this expression contains.</p>
+	    <p>Note that SLang 1 uses static scoping (or static binding).</p>
+	    <p>Match parameters to arguments in function calls.</p>
+	    <p>Remember that the overall expression is evaluated in a
+	    global environment that is not empty.</p>
+	  </div>	 
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

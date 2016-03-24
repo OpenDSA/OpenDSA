@@ -1,4 +1,4 @@
-/*global window */
+/*global window, PLutils */
 (function() {
     "use strict";
 
@@ -20,16 +20,6 @@
     var i;
     var left1;
     var left2;
-    var shuffle = function ( list ) {
-	var i = list.length;
-	while ( --i ) {
-	    var j = Math.floor( Math.random() * ( i + 1 ) );
-	    var tempi = list[i];
-	    var tempj = list[j];
-	    list[i] = tempj;
-	    list[j] = tempi;
-	}
-    };
 
     function parse_exp() {
 	
@@ -118,7 +108,7 @@
 	    grammar2 = "";
 	    grammar = "";
 	    ops = ["+","-","*","/"];
-	    shuffle(ops);
+	    PLutils.shuffle(ops);
 
 	    left1 = (Math.random() < 0.5);
 	    left2 = (Math.random() < 0.5);
@@ -159,7 +149,7 @@
 	    infix_exp = "";
 	    ops = ["+","-","*","/"];
 	    // operands = ["p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-	    shuffle(ops);
+	    PLutils.shuffle(ops);
 	    var five_ops = false;
 	    if (Math.random() < 0.5) {
 		five_ops = true;
@@ -168,7 +158,7 @@
 	    var parens = (Math.random() < 0.66);
 	    var parens_start = (parens ? (Math.random() < 0.5 ? 1 : 2) : 100); // After first or second operator
 	    var parens_end = (parens ? (Math.random() < 0.5 ? ops.length-1 : ops.length) : 100); // After second-last or last operand
-	    shuffle(operands);
+	    PLutils.shuffle(operands);
 	    for (i = 0; i < ops.length; i++) {
 		infix_exp = infix_exp + (i === parens_start ? "(" : "") + operands[i] + (i === parens_end ? ")" : "") + ops[i];
 	    }

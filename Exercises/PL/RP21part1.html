@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 21 part 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="950" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP21part1p">
+          <p class="question">Which one of the following expressions is
+          the <em>curry</em> function written in SLang 1?</p>
+	  <div class="solution">
+	    <pre class="string">fn(f)=>fn(x)=>fn(y)=>(f x y)</pre></div>
+	  <ul class="choices">
+	    <li><pre class="string">fn(f)=>fn(x)=>fn(y)=>(f (x y))</pre></li>
+	    <li><pre class="string">fn(f)=>fn(x)=>fn(y)=>((f x) y)</pre></li>
+	    <li><pre class="string">fn(f)=>fn(x)=>(fn(y)=>(f (x y)))</pre></li>
+	    <li><pre class="string">fn(f)=>fn(x)=>(fn(y)=>((f x) y))</pre></li>
+	    <li><pre class="string">fn(f)=>fn(x)=>(fn(y)=>(f x y))</pre></li>
+	  </ul>
+	  
+	  <div class="hints">
+	    <p>Make sure to review the behavior of the <em>curry</em>
+	    function. What does it take as input? What does it
+	    return?</p>
+	    <p>Review the syntax and semantics of function calls in SLang 1.</p>
+	  </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

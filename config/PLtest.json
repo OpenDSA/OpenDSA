@@ -583,85 +583,241 @@
           "Formal Definition of Free Variables": {}
         }
       },
-	"PL/AlphaConversion": {
-            "long_name": "Alpha conversion",
-            "sections": {
-		"RP 15 part 1": {
-		    "RP15part1": {
-			"long_name": "RP set #15, question #1",
-			"required": true,
-			"points": 1.0,
-			"threshold": 3.0,
-			"showhide": "Show"
-		    }
-		}
-            }
-	},
-	"PL/Substitution": {
-            "long_name": "The Substitution-Based Model of Evaluation",
-            "sections": {
-		"Substitution Algorithm": {
-		    "substCase1b": {
-			"long_name": "Slideshow",
-			"required": false,
-			"points": 0.0,
-			"threshold": 1.0
-		    }
-		},
-		"RP 15 part 2": {
-		    "RP15part2": {
-			"long_name": "RP set #15, question #2",
-			"required": true,
-			"points": 1.0,
-			"threshold": 3.0,
-			"showhide": "Show"
-		    }
-		},
-		"RP 15 part 3": {
-		    "RP15part3": {
-			"long_name": "RP set #15, question #3",
-			"required": true,
-			"points": 1.0,
-			"threshold": 3.0,
-			"showhide": "Show"
-		    }
-		}
-            }
-	},
-      "PL/ApplicativeOrder": {
-        "long_name": "Applicative-order Reduction Strategy",
+      "PL/AlphaConversion": {
+        "long_name": "Alpha conversion",
         "sections": {
-          "Applicative Order": {
-            "applicativeNormalOrderPro": {
-              "long_name": "Applicative-order reduction Proficiency Exercise",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0,
-              "exer_options": {
-                "strategy": "applicative"
-              }
+          "RP 15 part 1": {
+            "RP15part1": {
+              "long_name": "RP set #15, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
             }
           }
         }
       },
-      "PL/NormalOrder": {
-        "long_name": "Normal-order Reduction Strategy",
+      "PL/Substitution": {
+        "long_name": "The Substitution-Based Model of Evaluation",
         "sections": {
-          "Normal Order": {
-            "applicativeNormalOrderPro": {
-              "long_name": "Normal-order reduction Proficiency Exercise",
+          "Substitution Algorithm": {
+            "substCase1b": {
+              "long_name": "Slideshow",
               "required": false,
               "points": 0.0,
-              "threshold": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "RP 15 part 2": {
+            "RP15part2": {
+              "long_name": "RP set #15, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 15 part 3": {
+            "RP15part3": {
+              "long_name": "RP set #15, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+        }
+      },
+      "PL/BetaReduction": {
+        "long_name": "Beta Reduction",
+        "sections": {
+          "Section Text": {},
+          "RP 16 Part 1": {
+            "RP16part1": {
+              "long_name": "RP set #16, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+          ,
+          "RP 16 Part 2": {
+            "RP16part2": {
+              "long_name": "RP set #16, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 16 Part 3": {
+            "RP16part3": {
+              "long_name": "RP set #16, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+        }
+      },
+      "PL/ReductionStrategies": {
+        "long_name": "Reduction Strategies",
+        "sections": {
+          "Applicative Order": {},
+          "Normal Order": {},
+          "RP 17 Part 1": {
+            "RP17part1": {
+              "long_name": "RP set #17, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 17 Part 2": {
+            "RP17part2": {
+              "long_name": "RP set #17, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 17 Part 3": {
+            "RP17part3applicativeOrderPRO": {
+              "long_name": "Applicative-order reduction Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 0.9,
+              "exer_options": {
+                "strategy": "applicative"
+              }
+            }
+          },
+          "RP 17 Part 4": {
+            "RP17part4normalOrderPRO": {
+              "long_name": "Normal-order reduction Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 0.9,
               "exer_options": {
                 "strategy": "normal"
               }
             }
           }
         }
+      },
+      "PL/ChurchNumerals": {
+        "long_name": "Church numerals and Booleans",
+        "sections": {
+          "Church Numerals": {},
+          "RP 18 Part 1": {
+            "RP18part1": {
+              "long_name": "RP set #18, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "Church Booleans": {},
+          "RP 18 Part 2": {
+            "RP18part2": {
+              "long_name": "RP set #18, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 18 Part 3": {
+            "RP18part3": {
+              "long_name": "RP set #18, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }
+	}
+      },
+	"PL/RecursiveFunctions": {
+            "long_name": "Recursive Functions",
+            "sections": {
+		"RP 19 Part 1": {
+		    "RP19part1": {
+			"long_name": "RP set #19, question #1",
+			"required": true,
+			"points": 1.0,
+			"threshold": 3.0,
+			"showhide": "Show"
+		    }
+		}
+	    }
+	}
+    },
+    "Interpreting the Functional Language SLang 1": {
+      "PL/SLang1": {
+        "long_name": "Defining SLang 1",
+        "sections": {
+          "Syntax of SLang 1": {},
+          "RP 20 Part 1": {
+            "RP20part1": {
+              "long_name": "RP set #20, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 20 Part 2": {
+            "RP20part2": {
+              "long_name": "RP set #20, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 21 Part 1": {
+            "RP21part1": {
+              "long_name": "RP set #21, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+            "RP 21 Part 2": {
+            "RP21part2": {
+              "long_name": "RP set #21, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }
+	}
+      },
+      "PL/Environment": {
+        "long_name": "Environment-based model of evaluation",
+        "sections": {
+          "Environment data structure": {},
+          "RP 22 part 1": {
+            "RP22part1": {
+              "long_name": "RP set #22, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+	}
       }
     },
-    "Appendices": {
+      "Appendices": {
       "PL/PL_Glossary": {
         "long_name": "Glossary",
         "sections": {}

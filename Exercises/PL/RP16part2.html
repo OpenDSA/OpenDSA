@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html data-require="math jsav ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples RP16part2" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 16 part 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>var LAMBDA = {};</script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+	<var id="setup">RP16part2.init()</var>
+	<var id="expression">RP16part2.expression</var>
+	<var id="correctAnswer">RP16part2.answer</var>
+      </div>
+      <div class="problems">
+        <div id="RP16part2p">
+	  <p class="question">The following &lambda; expression
+	  contains exactly one &beta;-redex:</p>
+<pre>
+<var>expression</var>
+</pre>
+	  <p class="question">True or False? An &alpha;-conversion is
+	    required when performing one full execution of the
+	    substitution algorithm needed to perform the first step
+	    (or &beta;-reduction) in the evaluation of this redex.
+
+
+	  <div class="solution"><var>correctAnswer</var></div>
+	  <ul class="choices" data-category="true">
+	    <li>True</li>
+	    <li>False</li>
+	  </ul>
+
+      <div class="hints">
+	<p>Once you have identified the &beta;-redex in the expression
+	given above, write down the substitution that is needed to
+	reduce it, that is, replace the question marks in <em>subst(
+	?, ?, ?)</em>.
+	</p>
+	<p>Once you have identified the substitution that must take
+	  place, determine which (sub-)case of the substitution
+	  algorithm applies.
+	</p>
+	<p>Identifying the applicable (sub-)case of the substitution
+	algorithm immediately gives you the answer to this problem,
+	since &alpha;-conversions are only required in one
+	sub-case.</p>
+	<p>Watch out! The single &beta;-reduction that you are asked
+	to think about translates into a call to the substitute
+	algorithm, which can make several recursive calls as the
+	substitution proceeds through the whole body of the &lambda;
+	abstraction</p>
+      </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

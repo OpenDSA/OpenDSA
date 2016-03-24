@@ -111,6 +111,10 @@ function substitute(m,x,e) {
 	} else if (notFreeIn(paramStr, m)) {
 	    return LAMBDA.absyn.createLambdaAbs(param,substitute(m,x,body));
 	} else {
+	    LAMBDA.alpha = true;
+	    LAMBDA.numAlpha++;
+	    //console.log(LAMBDA.printExp(m), " ", LAMBDA.printExp(x), " " ,
+	//		LAMBDA.printExp(e));
 	    var newVar = LAMBDA.absyn.createVarExp(
 		newVariable(freeVars(m).concat(freeVars(body)).concat(xStr)));
 	    return LAMBDA.absyn.createLambdaAbs(
@@ -662,6 +666,26 @@ function startAV(exps,order) {
 
 // end of code for slide shows
 
+function countBetaRedexes(exp) {
+    function helper(e) {
+	if (LAMBDA.absyn.isAppExp(e)) {
+	    return countBetaRedexes(LAMBDA.absyn.getAppExpFn(e)) +
+		countBetaRedexes(LAMBDA.absyn.getAppExpArg(e)) +
+		(isBetaRedex(e) ? 1 : 0);
+	} else if (LAMBDA.absyn.isLambdaAbs(e)) {
+	    return countBetaRedexes(LAMBDA.absyn.getLambdaAbsBody(e));
+	} else {
+	    return 0; // no beta-redex in a variable
+	}	
+    }
+    return helper(exp,0);
+}// countBetaRedexes function
+
+
+
+
+
+
 LAMBDA.interpret = interpret; // make the interpreter public
 LAMBDA.interpretForSlideShow = interpretForSlideShow; // only used for slide shows
 LAMBDA.printExp = printExp;
@@ -679,7 +703,9 @@ LAMBDA.listLambdas = listLambdas;
 LAMBDA.labelBoundVariables = labelBoundVariables;
 LAMBDA.free = free;
 LAMBDA.substitute = substitute;
-
+LAMBDA.countBetaRedexes = countBetaRedexes;
+LAMBDA.findLeftmostOutermostBetaRedex = findLeftmostOutermostBetaRedex;
+LAMBDA.beta = beta;
 })();
 
 // the code below is only used when creating slide shows

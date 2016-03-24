@@ -66,7 +66,19 @@
 		result.push(arr);
 	    }
 	    return result;
-	} //  generateRandomListOfLists
+	}, //  generateRandomListOfLists
+
+	// randomizes the order of the element in the given list
+	shuffle : function ( list ) {
+	    var i = list.length;
+	    while ( --i ) {
+		var j = Math.floor( Math.random() * ( i + 1 ) );
+		var tempi = list[i];
+		var tempj = list[j];
+		list[i] = tempj;
+		list[j] = tempi;
+	    }
+	}// shuffle
 
     };// PLutils
     

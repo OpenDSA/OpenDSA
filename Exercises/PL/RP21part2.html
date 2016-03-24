@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 21 part 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="950" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP21part2p">
+          <p class="question">Consider the following SLang 1 program:</p>
+<pre class="string">
+((fn(f,g)=>fn(x)=>(f (g x)) fn(p)=>add1(p) fn(q)=>*(q,4)) 6)
+</pre>
+          <p class="question">What does it return when evaluated?</p>
+	  <div class="solution">25</div>
+	  <ul class="choices">
+	    <li>28</li>
+	    <li>a function</li>
+	    <li>an integer different from 25 and 28</li>
+	    <li>It produces an error, since it is not a valid SLang 1
+	    program.</li>
+	  </ul>
+	  
+	  <div class="hints">
+	    <p>It may help you to build a complete parse tree for this
+	    expression.</p>
+	    <p>What is the behavior of the first (leftmost) anonymous
+	    function?</p>
+	  </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

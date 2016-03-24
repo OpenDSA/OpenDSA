@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html data-require="math ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples RP19part1" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 19 part 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>var LAMBDA = {};</script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+    <style>
+     sub {
+         font-size: 75% !important;
+         line-height: 0;
+         position: relative;
+         vertical-align: baseline;
+         bottom: -0.25em;
+    }
+    </style>
+  </head>
+
+  <body data-height="1050" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+	<var id="setup">RP19part1.init()</var>
+	<var id="expression">RP19part1.expression</var>
+	<var id="clarification">RP19part1.clarification</var>
+	<var id="answer">RP19part1.answer</var>
+	<var id="option1">RP19part1.option1</var>
+	<var id="option2">RP19part1.option2</var>
+	<var id="option3">RP19part1.option3</var>
+	<var id="option4">RP19part1.option4</var>
+      </div>
+
+      <div class="problems">
+        <div id="RP19part1p">
+          <p class="question">Using our two shortcut notations,
+          define <span class="string">Q</span> to be equal to:</p>
+<pre class="string">
+<var>expression</var>
+</pre>
+
+	  <p class="question"><var>clarification</var> Now, suppose
+	    that we apply <span class="string">Q</span> to
+	    itself <span class="string">n</span> times, yielding the
+	    expression <span class="string">(Q Q ... Q)</span> that
+	    contains <span class="string">n + 1</span> copies of
+	    <span class="string">Q</span>. Let us call this
+	    expression <span class="string">R<sub>n</sub></span>. For
+	    example, in the
+	    expression <span class="string">R<sub>2</sub> = (Q Q
+	    Q)</span>,
+	    <span class="string">Q</span> is applied to itself
+	    twice. So
+	    <span class="string">R<sub>2</sub></span> contains 3 copies
+	      of <span class="string">Q</span>.</p>
+
+	  <p class="question">After all of this setup, we are now
+	    ready for the punch line: if we pick the right value of 
+	    <span class="string">n</span>, 
+	    <span class="string">R<sub>n</sub></span>
+	      is a fixed-point combinator, just like the Y combinator!</p>
+
+	  <p class="question">What is the value
+	      of <span class="string">n</span> so that  
+	    <span class="string">R<sub>n</sub></span> is a
+	      fixed-point combinator?</p>
+
+          <div class="solution"><var>answer</var></div>
+          <ul class="choices">
+            <li><var>option1</var></li>
+            <li><var>option2</var></li>
+            <li><var>option3</var></li>
+            <li><var>option4</var></li>
+          </ul>
+
+	  <div class="hints">
+	    <p>What &lambda; expression results if we apply   
+	      <span class="string">Q</span> to
+	      itself once, that is, what is  
+	      <span class="string">R<sub>1</sub> = (Q Q)</span>? 
+              Keep  <span class="string">Q</span> intact whenever possible; 
+	      that is, expand  <span class="string">Q</span> into its full
+	      expression only when needed. For now, perform only ONE
+	      &beta;-reduction.</p>
+	    <p>What &lambda; expression results if we apply   
+	      <span class="string">(Q Q)</span> to
+	      <span class="string">Q</span>, that is, what is  
+	      <span class="string">R<sub>2</sub> = (Q Q Q)</span>? 
+	      Perform only ONE more &beta;-reduction for now.</p>
+	    <p>What &lambda; expression results if we apply   
+	      <span class="string">(Q Q Q)</span> to
+	      <span class="string">Q</span>, that is, what is  
+	      <span class="string">R<sub>3</sub> = (Q Q Q Q)</span>? 
+	      Again, perform only ONE more &beta;-reduction.</p>
+	    <p>If you see a pattern emerge, generalize it to answer
+             the question. Otherwise, do as many &beta;-reductions as it
+             takes until you get the answer.</p>
+	  </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html data-require="math jsav ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples RP16part1" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 16 part 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>var LAMBDA = {};</script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="550" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+	<var id="setup">RP16part1.init()</var>
+	<var id="expression">RP16part1.expression</var>
+	<var id="correctAnswer">RP16part1.answer</var>
+      </div>
+      <div class="problems">
+        <div id="RP16part1p">
+	  <p class="question">How many &beta;-redexes does the
+      following &lambda; expression contain?</p>
+<pre>
+<var>expression</var>
+</pre>
+	  <p class="question">Enter your answer (a single integer,
+	  e.g., 3) below.</p>
+      <textarea rows="1" cols="20" style="resize:none"
+                id="answerTextarea"></textarea>
+      <div class="solution" data-type="custom">
+        <div class="guess"> $('#answerTextarea').val()  </div>
+        <div class="validator-function">
+	  return RP16part1.validateAnswer(guess);
+        </div>
+      </div>
+
+      <div class="hints">
+	<p>What is the definition of a &beta;-redex?</p>
+	<p>If the expression is too long to parse in your head, build
+	a parse tree for it.</p>
+      </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -63,30 +63,57 @@ $(document).ready(function () {
   av.umsg("The first request is to block 9. This is not in the buffer pool, so it gets read into the first free buffer.");
   buffer_pool.value(0, 9);
   av.effects.copyValue(arr, 9, arrB0, 0);
+  arr.addClass(9, "processing");
+  buffer_pool.addClass(0, "processing");
+  arrB0.addClass(0, "processing");
   av.step();
 
   // Slide 3
   av.umsg("The next request is to block 0. This is not in the buffer pool, so it goes to into the next free buffer.");
   buffer_pool.value(1, 0);
   av.effects.copyValue(arr, 0, arrB1, 0);
+  arr.removeClass(9, "processing");
+  buffer_pool.removeClass(0, "processing");
+  arrB0.removeClass(0, "processing");
+  arr.addClass(0, "processing");
+  buffer_pool.addClass(1, "processing");
+  arrB1.addClass(0, "processing");
   av.step();
 
   // Slide 4
   av.umsg("The next request is to block 1. This is not in the buffer pool, so it goes to into the next free buffer.");
   buffer_pool.value(2, 1);
   av.effects.copyValue(arr, 1, arrB2, 0);
+  arr.removeClass(0, "processing");
+  buffer_pool.removeClass(1, "processing");
+  arrB1.removeClass(0, "processing");
+  arr.addClass(1, "processing");
+  buffer_pool.addClass(2, "processing");
+  arrB2.addClass(0, "processing");
   av.step();
 
   // Slide 5
   av.umsg("The next request is to block 7. This is not in the buffer pool, so it goes to into the next free buffer.");
   buffer_pool.value(3, 7);
   av.effects.copyValue(arr, 7, arrB3, 0);
+  arr.removeClass(1, "processing");
+  buffer_pool.removeClass(2, "processing");
+  arrB2.removeClass(0, "processing");
+  arr.addClass(7, "processing");
+  buffer_pool.addClass(3, "processing");
+  arrB3.addClass(0, "processing");
   av.step();
 
   // Slide 6
   av.umsg("The next request is to block 6. This is not in the buffer pool, so it goes to into the next free buffer.");
   buffer_pool.value(4, 6);
   av.effects.copyValue(arr, 6, arrB4, 0);
+  arr.removeClass(7, "processing");
+  buffer_pool.removeClass(3, "processing");
+  arrB3.removeClass(0, "processing");
+  arr.addClass(6, "processing");
+  buffer_pool.addClass(4, "processing");
+  arrB4.addClass(0, "processing");
   av.step();
 
   // Slide 7
@@ -95,5 +122,9 @@ $(document).ready(function () {
   
   // Slide 6
   av.umsg("The next request is to block 8. This is not in the buffer pool. But unfortunately, all of the buffers are full. What do we do now?");
+  arr.removeClass(6, "processing");
+  buffer_pool.removeClass(4, "processing");
+  arrB4.removeClass(0, "processing");
+  arr.addClass(8, "processing");
   av.recorded();
 });

@@ -42,8 +42,8 @@
   height: 50px;
 }
 
-#llistInsertCON {
-  height: 440px;
+#llistInsertCON  .jsavcanvas {
+  height: 340px;
 }
 
 #llistInsertCON .jsavoutput.jsavline {

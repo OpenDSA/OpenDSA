@@ -47,6 +47,7 @@
         "long_name": "Linked Lists",
         "sections": {
           "Linked Lists": {
+            "showsection": false,
             "llistRepCON": {},
             "llistBadCON": {
               "long_name": "Linked List Slideshow 1",
@@ -143,6 +144,7 @@
             }
           },
           "Implementation": {
+            "showsection": false,
             "btTravInorderPRO": {
               "long_name": "Binary Tree Inorder Traversal Exercise",
               "exer_options": {
@@ -205,6 +207,7 @@
         "long_name": "Binary Search Trees",
         "sections": {
           "Binary Search Tree Definition": {
+            "showsection": false,
             "BSTsearchCON": {
               "long_name": "BST Search Slideshow",
               "required": false,
@@ -379,87 +382,6 @@
               "long_name": "Heap Question Summary",
               "required": false,
               "points": 0.0,
-              "threshold": 5
-            }
-          }
-        }
-      },
-      "Sorting/Quicksort": {
-        "long_name": "Quicksort",
-        "sections": {
-          "Introduction": {
-            "showsection": false,
-            "QuicksortPivotPRO": {
-              "long_name": "Quicksort Pivot Proficiency Exercise",
-              "required": false,
-              "points": 0.0,
-              "threshold": 5
-            }
-          },
-          "Partition": {
-            "showsection": false,
-            "quicksortCON": {
-              "long_name": "Quicksort Partition Slideshow",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
-            "QuicksortPartitPRO": {
-              "long_name": "Quicksort Partition Proficiency Exercise",
-              "required": false,
-              "points": 0.0,
-              "threshold": 5
-            },
-            "QuickSortPartitionAnalysisCON": {
-              "long_name": "Quicksort Partition Analysis Slideshow",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            }
-          },
-          "Putting It Together": {
-            "showsection": false,
-            "quicksortAV": {
-              "long_name": "Quicksort Visualization",
-              "required": false,
-              "points": 0,
-              "showhide": "none",
-              "threshold": 1.0
-            },
-            "quicksortPRO": {
-              "long_name": "Quicksort Proficiency Exercise",
-              "required": false,
-              "points": 0.0,
-              "threshold": 0.90,
-              "exer_options": {
-                "JXOP-feedback": "continuous",
-                "JXOP-fixmode": "fix"
-              }
-            }
-          },
-          "Quicksort Analysis": {
-            "QuickSortWorstCaseCON": {
-              "long_name": "Quicksort Worst Case Analysis Slideshow",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
-            "QuickSortBestCaseCON": {
-              "long_name": "Quicksort Best Case Analysis Slideshow",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
-            "QuickSortAverageCaseCON": {
-              "long_name": "Quicksort Average Case Analysis Slideshow",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
-            "QuicksortSumm": {
-              "long_name": "Quicksort Summary Exercise",
-              "required": true,
-              "points": 1.0,
               "threshold": 5
             }
           }

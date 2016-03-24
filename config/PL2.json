@@ -1,8 +1,7 @@
 {
   "build_dir": "Books",
   "code_dir": "SourceCode/",
-  "code_lang": {
-  },
+  "code_lang": {},
   "lang": "en",
   "build_JSAV": false,
   "allow_anonymous_credit": true,
@@ -19,6 +18,125 @@
       }
     },
     "Grammars": {
+      "PL/Grammars1": {
+        "long_name": "Introduction to BNF grammars - Part 1",
+        "sections": {
+          "RP 1 part 1": {
+            "RP1part1": {
+              "long_name": "RP set #1, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "RP 1 part 2": {
+            "RP1part2": {
+              "long_name": "RP set #1, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "RP 1 part 3": {
+            "RP1part3": {
+              "long_name": "RP set #1, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "RP 1 part 4": {
+            "RP1part4": {
+              "long_name": "RP set #1, question #4",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "PL/Grammars2": {
+        "long_name": "Introduction to BNF grammars - Part 2",
+        "sections": {
+          "RP 2 part 1": {
+            "RP2part1": {
+              "long_name": "RP set #2, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "RP 2 part 2": {
+            "RP2part2": {
+              "long_name": "RP set #2, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "RP 2 part 3": {
+            "RP2part3": {
+              "long_name": "RP set #2, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "RP 2 part 4": {
+            "RP2part4": {
+              "long_name": "RP set #2, question #4",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "PL/Grammars3": {
+        "long_name": "Introduction to BNF grammars - Part 3",
+        "sections": {
+          "RP 3 part 1": {
+            "RP3part1": {
+              "long_name": "RP set #3, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0
+            }
+          },
+          "RP 3 part 2": {
+            "RP3part2": {
+              "long_name": "RP set #3, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "RP 3 part 3": {
+            "RP3part3": {
+              "long_name": "RP set #3, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "RP 3 part 4": {
+            "RP3part4": {
+              "long_name": "RP set #3, question #4",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "RP 3 part 5": {
+            "RP3part5": {
+              "long_name": "RP set #3, question #5",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
       "PL/Grammars4": {
         "long_name": "Introduction to BNF grammars - Part 4",
         "sections": {
@@ -129,7 +247,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/FP3": {
         "long_name": "Introduction to functional programming - Part 3",
@@ -170,7 +288,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/FP4": {
         "long_name": "Introduction to functional programming - Part 4",
@@ -202,7 +320,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/FP5": {
         "long_name": "Introduction to functional programming - Part 5",
@@ -243,7 +361,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/FP6": {
         "long_name": "Introduction to functional programming - Part 6",
@@ -284,7 +402,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/FP7": {
         "long_name": "Introduction to functional programming - Part 7",
@@ -300,7 +418,7 @@
           },
           "RP 11 part 2": {
             "RP11part2": {
-		"long_name": "RP set #11, question #2",
+              "long_name": "RP set #11, question #2",
               "required": true,
               "points": 1.0,
               "threshold": 1.0,
@@ -309,7 +427,7 @@
           },
           "RP 11 part 3": {
             "RP11part3": {
-		"long_name": "RP set #11, question #3",
+              "long_name": "RP set #11, question #3",
               "required": true,
               "points": 1.0,
               "threshold": 1.0,
@@ -325,7 +443,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/FP8": {
         "long_name": "Introduction to functional programming - Part 8",
@@ -339,7 +457,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/FP9": {
         "long_name": "Introduction to functional programming - Part 9",
@@ -389,7 +507,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       }
     },
     "Lambda Calculus": {
@@ -461,56 +579,229 @@
               "showhide": "Show"
             }
           },
-          "Formal definition of free variables": {}
+          "Formal Definition of Free Variables": {}
         }
       },
-	"PL/AlphaConversion": {
-            "long_name": "Alpha conversion",
+      "PL/AlphaConversion": {
+        "long_name": "Alpha conversion",
+        "sections": {
+          "RP 15 part 1": {
+            "RP15part1": {
+              "long_name": "RP set #15, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+        }
+      },
+      "PL/Substitution": {
+        "long_name": "The Substitution-Based Model of Evaluation",
+        "sections": {
+          "Substitution Algorithm": {
+            "substCase1b": {
+              "long_name": "Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "RP 15 part 2": {
+            "RP15part2": {
+              "long_name": "RP set #15, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 15 part 3": {
+            "RP15part3": {
+              "long_name": "RP set #15, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+        }
+      },
+      "PL/BetaReduction": {
+        "long_name": "Beta Reduction",
+        "sections": {
+          "Section Text": {},
+          "RP 16 Part 1": {
+            "RP16part1": {
+              "long_name": "RP set #16, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+          ,
+          "RP 16 Part 2": {
+            "RP16part2": {
+              "long_name": "RP set #16, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 16 Part 3": {
+            "RP16part3": {
+              "long_name": "RP set #16, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+        }
+      },
+      "PL/ReductionStrategies": {
+        "long_name": "Reduction Strategies",
+        "sections": {
+          "Applicative Order": {},
+          "Normal Order": {},
+          "RP 17 Part 1": {
+            "RP17part1": {
+              "long_name": "RP set #17, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 17 Part 2": {
+            "RP17part2": {
+              "long_name": "RP set #17, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 17 Part 3": {
+            "RP17part3applicativeOrderPRO": {
+              "long_name": "Applicative-order reduction Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 0.9,
+              "exer_options": {
+                "strategy": "applicative"
+              }
+            }
+          },
+          "RP 17 Part 4": {
+            "RP17part4normalOrderPRO": {
+              "long_name": "Normal-order reduction Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 0.9,
+              "exer_options": {
+                "strategy": "normal"
+              }
+            }
+          }
+        }
+      },
+      "PL/ChurchNumerals": {
+        "long_name": "Church numerals and Booleans",
+        "sections": {
+          "Church Numerals": {},
+          "RP 18 Part 1": {
+            "RP18part1": {
+              "long_name": "RP set #18, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "Church Booleans": {},
+          "RP 18 Part 2": {
+            "RP18part2": {
+              "long_name": "RP set #18, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 18 Part 3": {
+            "RP18part3": {
+              "long_name": "RP set #18, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }
+	}
+      },
+	"PL/RecursiveFunctions": {
+            "long_name": "Recursive Functions",
             "sections": {
-		"RP 15 part 1": {
-		    "RP15part1": {
-			"long_name": "RP set #15, question #1",
+		"RP 19 Part 1": {
+		    "RP19part1": {
+			"long_name": "RP set #19, question #1",
 			"required": true,
 			"points": 1.0,
 			"threshold": 3.0,
 			"showhide": "Show"
 		    }
 		}
-            }
-	},
-	"PL/Substitution": {
-            "long_name": "The Substitution-Based Model of Evaluation",
-            "sections": {
-		"Substitution Algorithm": {
-		    "substCase1b": {
-			"long_name": "Slideshow",
-			"required": false,
-			"points": 0.0,
-			"threshold": 1.0
-		    }
-		},
-		"RP 15 part 2": {
-		    "RP15part2": {
-			"long_name": "RP set #15, question #2",
-			"required": true,
-			"points": 1.0,
-			"threshold": 3.0,
-			"showhide": "Show"
-		    }
-		},
-		"RP 15 part 3": {
-		    "RP15part3": {
-			"long_name": "RP set #15, question #3",
-			"required": true,
-			"points": 1.0,
-			"threshold": 3.0,
-			"showhide": "Show"
-		    }
-		}
-            }
+	    }
 	}
     },
-    "Appendices": {
+    "Interpreting the Functional Language SLang 1": {
+      "PL/SLang1": {
+        "long_name": "Defining SLang 1",
+        "sections": {
+          "Syntax of SLang 1": {},
+          "RP 20 Part 1": {
+            "RP20part1": {
+              "long_name": "RP set #20, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 20 Part 2": {
+            "RP20part2": {
+              "long_name": "RP set #20, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 21 Part 1": {
+            "RP21part1": {
+              "long_name": "RP set #21, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+            "RP 21 Part 2": {
+            "RP21part2": {
+              "long_name": "RP set #21, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }
+	}
+      }
+    },
+      "Appendices": {
       "PL/PL_Glossary": {
         "long_name": "Glossary",
         "sections": {}

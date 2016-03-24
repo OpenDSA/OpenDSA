@@ -54,7 +54,7 @@ $(document).ready(function () {
   }
 
   // Slide 1
-  av.umsg("Let's see an example of buffer pool replacement using the LRU replacement heuristic. The following series of memory requests will be processed: 9 0 1 7 6 6 8 1");
+  av.umsg("Here is an example of buffer pool replacement using the LRU replacement heuristic. The following series of memory requests will be processed: 9 0 1 7 6 6 8 1");
   writelines();
   av.displayInit();
 
@@ -62,6 +62,9 @@ $(document).ready(function () {
   av.umsg("The first request is to block 9. This is not in the buffer pool, so it gets read into the first free buffer.");
   buffer_pool.value(0, 9);
   av.effects.copyValue(arr, 9, arrB0, 0);
+  arr.addClass(9, "processing");
+  buffer_pool.addClass(0, "processing");
+  arrB0.addClass(0, "processing");
   av.step();
 
   // Slide 3
@@ -71,6 +74,10 @@ $(document).ready(function () {
   buffer_pool.swap(0, 1);
   av.effects.copyValue(arr, 0, arrB1, 0);
   writelines();
+  arr.removeClass(9, "processing");
+  arrB0.removeClass(0, "processing");
+  arr.addClass(0, "processing");
+  arrB1.addClass(0, "processing");
   av.step();
 
   // Slide 4
@@ -82,6 +89,10 @@ $(document).ready(function () {
   buffer_pool.swap(1, 0);
   av.effects.copyValue(arr, 1, arrB2, 0);
   writelines();
+  arr.removeClass(0, "processing");
+  arrB1.removeClass(0, "processing");
+  arr.addClass(1, "processing");
+  arrB2.addClass(0, "processing");
   av.step();
 
   // Slide 5
@@ -95,6 +106,10 @@ $(document).ready(function () {
   buffer_pool.swap(1, 0);
   av.effects.copyValue(arr, 7, arrB3, 0);
   writelines();
+  arr.removeClass(1, "processing");
+  arrB2.removeClass(0, "processing");
+  arr.addClass(7, "processing");
+  arrB3.addClass(0, "processing");
   av.step();
 
   // Slide 6
@@ -110,6 +125,10 @@ $(document).ready(function () {
   buffer_pool.swap(1, 0);
   av.effects.copyValue(arr, 6, arrB4, 0);
   writelines();
+  arr.removeClass(7, "processing");
+  arrB3.removeClass(0, "processing");
+  arr.addClass(6, "processing");
+  arrB4.addClass(0, "processing");
   av.step();
 
   // Slide 7
@@ -129,6 +148,10 @@ $(document).ready(function () {
   buffer_pool.swap(1, 0);
   av.effects.copyValue(arr, 8, arrB0, 0);
   writelines();
+  arr.removeClass(6, "processing");
+  arrB4.removeClass(0, "processing");
+  arr.addClass(8, "processing");
+  arrB0.addClass(0, "processing");
   av.step();
 
   // Slide 9
@@ -140,5 +163,9 @@ $(document).ready(function () {
   buffer_pool.swap(2, 1);
   buffer_pool.swap(1, 0);
   writelines();
+  arr.removeClass(8, "processing");
+  arrB0.removeClass(0, "processing");
+  arr.addClass(1, "processing");
+  arrB2.addClass(0, "processing");
   av.recorded();
 });

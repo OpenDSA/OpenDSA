@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 18 part 3</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="950" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP18part3p">
+          <p class="question">Given appropriate encodings of TRUE,
+          FALSE, and IF, which one of the following definitions
+          correctly encodes the Boolean operator OR in the &lambda; calculus?
+	  </p>
+	  <div class="solution">
+	    <pre class="string"> OR = &lambda;p.&lambda;q.(((IF p) TRUE) q)</pre>
+	  </div>
+	  <ul class="choices">
+	    <li>
+	    <pre class="string"> OR = &lambda;p.&lambda;q.(((IF p) FALSE) q)</pre>
+	    </li>
+	    <li>
+	    <pre class="string"> OR = &lambda;p.&lambda;q.(((IF TRUE) p) q)</pre>
+	    </li>
+	    <li>
+	    <pre class="string"> OR = &lambda;p.&lambda;q.(((IF FALSE) p) q)</pre>
+	    </li>
+	    <li>
+	    <pre class="string"> OR = &lambda;p.&lambda;q.(((IF TRUE) q) p)</pre>
+	    </li>
+	    <li>
+	    <pre class="string"> OR = &lambda;p.&lambda;q.(((IF FALSE) q) p)</pre>
+	    </li>
+	  </ul>
+	  
+	  <div class="hints">
+	    <p>Recall that, in the chosen
+	      encoding, <span class="string"> TRUE</span> is a curried
+	      function of two arguments that returns its first
+	      argument.</p>
+	    <p>Similarly, <span class="string"> FALSE</span> is a curried
+	      function of two arguments that returns its second
+	      argument.</p>
+	    <p>Observe that <span class="string">IF</span> is a
+	      curried function of three arguments,
+	      namely a Boolean expression, the
+	      value of the
+	      <span class="string">then</span>
+	      expression, and the value of the
+	      <span class="string">else</span>
+	      expression, in this order.</p>
+	    <p>Pick the expression that implements the semantics of the 
+	      Boolean  <span class="string">OR</span>
+	      using appropriate function calls in the &lambda;
+	      calculus, given the above conventions.
+	      </p>
+	  </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

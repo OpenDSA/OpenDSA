@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 20 part 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="950" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP20part2p">
+          <p class="question">Consider the following abstract syntax tree:</p>
+<pre class="string">
+         Program
+            |
+          FnExp
+        /       \
+     p,q,r    PrimAppExp
+                  |
+                  *
+               /     \
+            VarExp PrimAppExp
+              |       |
+              p       +
+                   /     \
+                VarExp  VarExp
+                  |       |
+                  q       r
+</pre>
+
+          <p class="question">Which one of the following SLang 1
+          expressions does it represent?</p>
+	  <div class="solution">
+	    <pre class="string">fn(p,q,r)=>*(p,+(q,r))</pre></div>
+	  <ul class="choices">
+	    <li><pre class="string">fn(p,q,r)=>+(p,*(q,r))</pre></li>
+	    <li><pre class="string">(fn(p,q,r)=>*(p,+(q,r)))</pre></li>
+	    <li><pre class="string">(fn(p,q,r)=>+(p,*(q,r)))</pre></li>
+	  </ul>
+	  
+	  <div class="hints">
+	    <p>Review the differences between <em>concrete syntax</em> and 
+	    <em>abstract syntax</em>.</p>
+	    <p>Where are parentheses used in SLang 1?</p>
+	  </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

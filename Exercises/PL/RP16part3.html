@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html data-require="math jsav ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/absyn ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/interpreter ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/randomExamples ../../AV/PL/interpreters/lambdacalc/version1.4/scripts/grammar RP16part3" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 16 part 3</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>var LAMBDA = {};</script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+	<var id="setup">RP16part3.init()</var>
+	<var id="expression">RP16part3.expression</var>
+      </div>
+      <div class="problems">
+        <div id="RP16part3p">
+	  <p class="question">The following &lambda; expression
+	  is a &beta;-redex:</p>
+<pre class>
+<var>expression</var>
+</pre>
+	  <p class="question">You must perform one full
+	    &beta;-reduction on <em>this</em> redex, not on one of the
+	    redexes inside of it, if any. Write down the result of
+	    this &beta;-reduction below, using the caret (^) character
+	    instead of the &lambda; character. If one or more
+	    &alpha;-conversions are needed, then you MUST introduce
+	    new variable names in alphabetical order starting with the
+	    letter "a", then "b", etc., as you perform the
+	    &beta;-reduction from left to right. Finally, note that it
+	    is possible for a new variable name, say "a", to appear more
+	    than once in the correct answer.</p>
+	    <textarea rows="1" cols="60" style="resize:none"
+                    id="answerTextarea"></textarea>
+            <div class="solution" data-type="custom">
+              <div class="guess"> $('#answerTextarea').val()  </div>
+              <div class="validator-function">
+		return RP16part3.validateAnswer(guess);
+            </div>
+          </div>
+
+      <div class="hints">
+	<p>Which substitution is used to
+	&beta;-reduce <span class="string">(&lambda;p.b a)</span>?</p>
+	<p>Review the substitution algorithm if needed.</p>
+	<p>Make sure to use the required variable name if an
+	&alpha;-conversion is required.</p>
+	<p>If you copy and paste the &lambda;-expression above,
+	remember to replace each occurrence of &lambda; with a ^.</p>
+      </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

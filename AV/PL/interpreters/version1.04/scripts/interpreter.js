@@ -4,8 +4,8 @@
 
 "use strict";
 
-    var A = SLang.absyn;
-    var E = SLang.env;
+    var A = window.SLang.absyn;
+    var E = window.SLang.env;
 
 function nth(n) {
     switch (n+1) {
@@ -51,7 +51,6 @@ function evalExp(exp,envir) {
 	return E.createClo(A.getFnExpParams(exp),A.getFnExpBody(exp),envir);
     }
     else if (A.isAppExp(exp)) {
-        //console.log( JSON.stringify(envir) );
 	var f = evalExp(A.getAppExpFn(exp),envir);
 	var args = A.getAppExpArgs(exp).map( function(arg) { return evalExp(arg,envir); } );
 	if (E.isClo(f)) {
@@ -100,6 +99,56 @@ function interpret(source) {
     return output;
 }
 
-SLang.interpret = interpret; // make the interpreter public
+function printExp(exp) {
+    var i, params, args, result = "";
+    if (A.isVarExp(exp)) {
+	return A.getVarExpId(exp);
+    } else if (A.isFnExp(exp)) {
+	result  = "fn(";
+	params = A.getFnExpParams(exp);
+	for(i=0; i< params.length; i++) {
+	    result += params[i];
+	    if (i<params.length-1) {
+		result += ",";
+	    }
+	}
+	result += ")=>" + printExp(A.getFnExpBody(exp));
+	return result;
+    } else if (A.isAppExp(exp)) {
+	result = "(" + printExp(A.getAppExpFn(exp));	
+	args = A.getAppExpArgs(exp);
+	if (args.length > 0) {
+	    result += " ";
+	}
+	for(i=0; i<args.length-1; i++) {
+	    result += printExp(args[i]) + " ";
+	}
+	if (args.length>0) {
+	    result += printExp(args[args.length-1]);
+	}
+	result += ")";
+	return result;
+    } else if (A.isPrimAppExp(exp)) {
+	result = A.getPrimAppExpPrim(exp) + "(";
+	args = A.getPrimAppExpArgs(exp);
+	for(i=0; i<args.length-1; i++) {
+	    result += printExp(args[i]) + ",";
+	}
+	if (args.length>0) {
+	    result += printExp(args[args.length-1]);
+	}
+	result += ")";
+	return result;
+    } else if (A.isIntExp(exp)) {
+	return A.getIntExpValue(exp);
+    } else { 
+	throw new Error("Unknown expression type: " +
+		       JSON.stringify(exp));
+    }
+}// printExp function
 
+SLang.interpret = interpret; // make the interpreter public
+SLang.evalExp = evalExp;
+SLang.printExp = printExp;
+SLang.applyPrimitive = applyPrimitive;
 }());
