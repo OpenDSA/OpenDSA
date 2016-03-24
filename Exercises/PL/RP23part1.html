@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 23 part 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1500" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP23part1p">
+          <p class="question">Recall the main function in 
+	    <span class="string">interpreter.js</span>:</p>
+<pre class="string">
+1.  function evalExp(exp,envir) {
+2.     if (SLang.absyn.isIntExp(exp)) {
+3.         return SLang.env.createNum(SLang.absyn.getIntExpValue(exp));
+4.     } else if (SLang.absyn.isVarExp(exp)) {
+5.         return SLang.env.lookup(envir,SLang.absyn.getVarExpId(exp));
+6.     } else if (SLang.absyn.isFnExp(exp)) {
+7.         return SLang.env.createClo(
+                            SLang.absyn.getFnExpParams(exp),
+                            SLang.absyn.getFnExpBody(exp),
+                            envir);
+8.     } else if (SLang.absyn.isAppExp(exp)) {
+9.         var f = evalExp(SLang.absyn.getAppExpFn(exp),envir);
+10.        var args = SLang.absyn.getAppExpArgs(exp).map( 
+                        function(arg) { return evalExp(arg,envir); } );
+11.        if (SLang.env.isClo(f)) {
+12.            return evalExp(SLang.env.getCloBody(f),
+                           SLang.env.update(
+                                 SLang.env.getCloEnv(f),
+                                 SLang.env.getCloParams(f),args));
+13.        } else {
+14.            throw new Error( f +
+                    " is not a closure and thus cannot be applied.");
+15.        }
+16.     } else if (SLang.absyn.isPrimAppExp(exp)) {
+17.         return applyPrimitive(SLang.absyn.getPrimAppExpPrim(exp),
+                              SLang.absyn.getPrimAppExpArgs(exp)
+                                 .map( function(arg) { 
+                                       return evalExp(arg,envir); } ));
+18.    } else {
+19.        throw "Error: Attempting to evaluate an invalid expression";
+20.    }
+21. }
+</pre>
+
+          <p class="question">Among the options listed below, which
+          one is the largest set of lines that get executed when the
+          following SLang 1 program is interpreted? Note that, when a
+          statement takes up more than one line, only its first line is
+	  numbered.</p>
+<pre class="string">
+          (fn (u,v) => fn (f) => 3 x +(x,y)) 
+
+</pre>
+
+
+	  <div class="solution">Lines 5, 7, 12, 17</div>
+	  <ul class="choices">
+	    <li>Line 12</li>
+	    <li>Lines 7, 12</li>
+	    <li>Lines 3, 7, 12</li>
+	    <li>Lines 3, 5, 7, 12</li>
+	    <li>Lines 3, 5, 7, 17</li>
+	    <li>Lines 3, 5, 7, 12, 17</li>
+	  </ul>
+	  
+	  <div class="hints">
+	    <p>Note that each one of the lines in the sets above is a
+	    <span class="string">return</span> statement for 
+		one of the <span class="string">if</span> branches.</p>
+	    <p>It may be helpful to build the AST for this
+	      program and then traverse this tree while tracing the
+	    interpreter.</p>
+	    <p>How many functions are defined in this program?</p>
+	    <p>How many function applications does this program
+	      contain?</p>
+	  </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
