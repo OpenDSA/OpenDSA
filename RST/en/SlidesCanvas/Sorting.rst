@@ -162,7 +162,8 @@ Shellsort
    .. avembed:: AV/Sorting/shellsortAV.html ss
 
 
-.. slide:: Shellsort (2)
+Shellsort (2)
+~~~~~~~~~~~~~
 
    .. codeinclude:: Sorting/Shellsort
       :tag: Shellsort
@@ -174,7 +175,8 @@ Mergesort
    .. avembed:: AV/Sorting/mergesortAV.html ss
 
 
-.. slide:: Mergesort cost
+Mergesort cost
+~~~~~~~~~~~~~~
 
    * Mergesort cost:
 

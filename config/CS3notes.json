@@ -92,6 +92,10 @@
       "SlidesCanvas/Sorting": {
         "long_name": "Week 6-7: Sorting",
         "sections" : {}
+      },
+      "SlidesCanvas/FileProc": {
+        "long_name": "Week 8-9: File Processing and Buffer Pools",
+        "sections" : {}
       }
     }
   }
