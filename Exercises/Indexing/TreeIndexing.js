@@ -12,6 +12,9 @@
       av = new JSAV("TreeIndexing");
       var bst = av.ds.binarytree({nodegap: 10});
 
+      // (Re)initialize
+      bottom_layer = [];
+
       // Create color array
       var colors = ["#7BFF95", "#77CCFF", "#FF6F52", "#FFDE70", "#E39BCF"];
 
