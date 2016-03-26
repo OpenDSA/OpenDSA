@@ -15,3 +15,14 @@ table.grammar {
     vertical-align: baseline;
     bottom: 0.5em;
 }
+
+.answerRP23part2 {
+    font-weight: bold;  
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+
+.answerRP23part2 td{
+    vertical-align: top;
+}

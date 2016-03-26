@@ -49,3 +49,12 @@ RP 23 Part 1
 This problem will ... 
 
 .. avembed:: Exercises/PL/RP23part1.html ka
+
+RP 23 Part 2
+------------
+
+This problem will ... To earn
+credit for it, you must complete this randomized problem
+correctly three times in a row.
+
+.. avembed:: Exercises/PL/RP23part2.html ka
