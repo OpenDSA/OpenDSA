@@ -8,7 +8,9 @@
    :requires: sorting introduction
    :satisfies: sorting terminology
    :topic: Sorting
-.. odsalink:: AV/Development/Sorting/SortingProblemCON.css
+
+   .. odsalink:: AV/Development/Sorting/SortingProblemCON.css
+
 Sorting Terminology and Notation
 ================================
 
