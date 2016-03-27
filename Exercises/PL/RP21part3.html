@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html data-require="math ../../AV/PL/interpreters/version1.04/scripts/absyn ../../AV/PL/interpreters/version1.04/scripts/env ../../AV/PL/interpreters/version1.04/scripts/grammar ../../AV/PL/interpreters/version1.04/scripts/interpreter PLutils RP21part3" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 21 part 3</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>var SLang = {};</script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="950" data-width="950">
+    <div class="exercise">
+	<div class="vars">
+		<var id="init">RP21part3.init()</var>
+		<var id="expression">RP21part3.expression</var>
+		<var id="underlinedExpression">RP21part3.underlinedExpression</var>
+	</div>
+
+      <div class="problems">
+        <div id="RP21part3p">
+          <p class="question">Assume that the following expression is
+          evaluated in a global environment in which 
+	    <span class="string">x</span>, <span class="string">y</span>, and
+	    <span class="string">z</span> are bound to the values 
+	    <span class="string">1</span>, <span class="string">2</span>, and
+	    <span class="string">3</span>, respectively.</p>
+<pre class="string">
+<var>expression</var>
+</pre>
+<pre class="raisedString">
+<var>underlinedExpression</var>
+</pre>
+          <p class="question">In the active environment in which it is
+	    evaluated, what value is the underlined variable
+	    occurrence bound to? The answer is a single integer (e.g.,
+	    23), the word "closure" or the word "error" (if the
+	    evaluation of the expression above throws an exception). In
+	    the last two cases, the one-word answer is in all
+	    lowercase letters and does NOT include the double quotes.</p>
+
+	  <textarea rows="1" cols="10" style="resize:none"
+                id="answerTextarea"></textarea>
+	  <div class="solution" data-type="custom">
+            <div class="guess"> $('#answerTextarea').val()</div>
+            <div class="validator-function">
+	      return RP21part3.validateAnswer(guess);
+            </div>
+	  </div>
+	  
+	  <div class="hints">
+	    <p>Note that the answer is a single integer or
+	    word, <em>NOT</em> a full denoted value like 
+	      <span class="string">["Num",99]</span> or
+	      <span class="string">["Clo", ... , ... , ...]</span>
+	    </p>
+	    <p>Determine the scope of the binding occurrences in each
+	    function definition that this expression contains.</p>
+	    <p>Note that SLang 1 uses static scoping (or static binding).</p>
+	    <p>Match parameters to arguments in function calls.</p>
+	    <p>Remember that the overall expression is evaluated in a
+	    global environment that is not empty.</p>
+	  </div>	 
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

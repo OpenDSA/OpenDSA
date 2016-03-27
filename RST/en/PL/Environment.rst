@@ -6,55 +6,39 @@
 .. avmetadata:: 
    :author: David Furcy and Tom Naps
 
-Environment-based model of evaluation
+Environment-based Model of Evaluation
 =====================================
 
-Environment data structure
+Environment Data Structure
 --------------------------
 
 Text forthcoming
 
-RP 22 Part 1
+RP 21 Part 3
 ------------
 
-This problem will ... To earn
-credit for it, you must complete this randomized problem
+This problem provides practice determining to which value a SLang
+1 variable is bound. To earn credit for it, you must complete this
+randomized problem correctly three times in a row.
+
+.. avembed:: Exercises/PL/RP21part3.html ka
+
+RP 21 Part 4
+------------
+
+This problem provides practice fully evaluating SLang 1 expressions.  To
+earn credit for it, you must complete this randomized problem
 correctly three times in a row.
 
-.. avembed:: Exercises/PL/RP22part1.html ka
+.. avembed:: Exercises/PL/RP21part4.html ka
 
-RP 22 Part 2
+
+RP 21 Part 5
 ------------
 
-This problem will ... To earn
-credit for it, you must complete this randomized problem
-correctly three times in a row.
+This problem gives you practice with denoted values in the SLang 1
+interpreter. To earn credit for it, you must complete this randomized
+problem correctly three times in a row.
 
-.. avembed:: Exercises/PL/RP22part2.html ka
+.. avembed:: Exercises/PL/RP21part5.html ka
 
-
-RP 22 Part 3
-------------
-
-This problem will ... To earn
-credit for it, you must complete this randomized problem
-correctly three times in a row.
-
-.. avembed:: Exercises/PL/RP22part3.html ka
-
-
-RP 23 Part 1
-------------
-
-This problem will ... 
-
-.. avembed:: Exercises/PL/RP23part1.html ka
-
-RP 23 Part 2
-------------
-
-This problem will ... To earn
-credit for it, you must complete this randomized problem
-correctly three times in a row.
-
-.. avembed:: Exercises/PL/RP23part2.html ka
