@@ -7,7 +7,7 @@ $(document).ready(function () {
   var arr = av.ds.array(empty, {indexed: true});
 
   av.umsg("Now we try the alternate second hash function. Use a hash table of size M = 16 (a power of 2), our primary hash function is a simple mod on the table size (as usual), and our secondary hash function is h<sub>2</sub>(k) = (((k/M) % (M/2)) * 2) + 1.");
-  av.label("h<sub>2</sub>(k) = (((k/M) % (M/2)) * 2) + 1", {top: 85, left: 315});
+  av.label("h<sub>2</sub>(k) = (((k/M) % (M/2)) * 2) + 1", {top: 55, left: 330});
   av.displayInit();
 
   av.umsg("Insert 55. 55 % 16 = 7.");

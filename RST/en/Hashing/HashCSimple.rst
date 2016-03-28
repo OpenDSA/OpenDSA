@@ -20,11 +20,12 @@ Collision Resolution
 --------------------
 
 We now turn to the most commonly used form of hashing:
-closed hashing with no bucketing, and a collision resolution policy
-that can potentially use any slot in the hash table.
+:term:`closed hashing <closed hash system>` with no bucketing, and a
+:term:`collision resolution policy` that can potentially use any slot
+in the hash table.
 
-During insertion, the goal of collision resolution is to find a free
-slot in the hash table when the home position for the record is
+During insertion, the goal of :term:`collision resolution` is to find
+a free slot in the hash table when the home position for the record is
 already occupied.
 We can view any collision resolution method as generating a sequence
 of hash table slots that can potentially hold the record.
@@ -148,4 +149,5 @@ long probe sequences.
 
 .. avembed:: Exercises/Hashing/HashLinearPPRO.html ka
 
-.. odsascript:: AV/Hashing/linProbeCON.js
+.. odsascript:: AV/Hashing/linProbeCON1.js
+.. odsascript:: AV/Hashing/linProbeCON2.js

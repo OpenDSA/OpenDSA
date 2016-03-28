@@ -153,6 +153,12 @@
       "Slides/FileProc": {
         "long_name": "File Processing and Buffer Pools",
         "exercises" : {}
+      }
+    },
+    "Week 10-11": {
+      "Slides/Hashing": {
+        "long_name": "Hashing",
+        "exercises" : {}
       },
       "Slides/Interruptions": {
         "long_name": "Memory cues and resumption strategies",
