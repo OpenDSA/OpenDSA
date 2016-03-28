@@ -7,7 +7,7 @@ $(document).ready(function () {
   var arrows = [];
   var i;
   var skipheight = 29;
-  var offset = 48;
+  var offset = 32;
   var loffset = 4;
   for (i = 0; i < 10; i++) { empty[i] = ""; }
   var av = new JSAV(av_name, {"animationMode": "none"});

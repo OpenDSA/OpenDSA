@@ -9,7 +9,7 @@ $(document).ready(function () {
   var empty = [];
   var empty2 = [];
   var i;
-  var offset = 75;
+  var offset = 74;
   var stepsize = 58;
 
   for (i = 0; i < 10; i++) { empty[i] = ""; }
