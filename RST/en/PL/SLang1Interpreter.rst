@@ -12,15 +12,15 @@ Interpreter Implementation
 RP 22 Part 1
 ------------
 
-This problem will ... 
+This problem will help you review the behavior of our SLang 1 interpreter.
 
 .. avembed:: Exercises/PL/RP22part1.html ka
 
 RP 22 Part 2
 ------------
 
-This problem will ... To earn
-credit for it, you must complete this randomized problem
-correctly three times in a row.
+This problem focuses on the binding rules for our SLang 1
+interpreter. To earn credit for it, you must complete this randomized
+problem correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP22part2.html ka
