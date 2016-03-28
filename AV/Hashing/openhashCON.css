@@ -1,8 +1,8 @@
-#openhashCON1 .jsavcontainer {
+#openhashCON .jsavcontainer {
   height: 330px;
 }
 
-#openhashCON1 .jsavlist .jsavlistnode {
+#openhashCON .jsavlist .jsavlistnode {
   min-height: 25px !important;
   max-height: 25px !important;
   line-height: 23px !important;

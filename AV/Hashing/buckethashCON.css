@@ -1,7 +1,7 @@
-.jsavcontainer {
+#buckethashCON1 .jsavcontainer {
   height: 600px;
 }
 
-.jsavcanvas {
-  height: 440px;
+#buckethashCON2 .jsavcontainer {
+  height: 600px;
 }

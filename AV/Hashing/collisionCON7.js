@@ -7,7 +7,7 @@ $(document).ready(function () {
   var arr = av.ds.array(empty, {indexed: true});
 
   av.umsg("Let's see what happens when we use a hash table of size M = 11 (a prime number), our primary hash function is a simple mod on the table size (as usual), and our secondary hash function is h<sub>2</sub>(k) = 1 + (k % (M-1)).");
-  av.label("h<sub>2</sub>(k) = 1 + (k % (M-1))", {top: 85, left: 250});
+  av.label("h<sub>2</sub>(k) = 1 + (k % (M-1))", {top: 55, left: 350});
   av.displayInit();
 
   av.umsg("Insert 55.");

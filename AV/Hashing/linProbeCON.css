@@ -1,4 +1,18 @@
-.jsavhorizontalarray .jsavnode {
+#linProbeCON1 .jsavcontainer {
+  height: 100px;
+}
+
+#linProbeCON1 .jsavhorizontalarray .jsavnode {
+  min-width: 35px !important;
+  max-width: 35px !important;
+}
+
+
+#linProbeCON2 .jsavcontainer {
+  height: 120px;
+}
+
+#linProbeCON2 .jsavhorizontalarray .jsavnode {
   min-width: 35px !important;
   max-width: 35px !important;
 }
