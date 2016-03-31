@@ -832,6 +832,29 @@
             }
           }
 	}
+      },
+	"PL/SLang1Interpreter": {
+        "long_name": "Interpreter Implementation",
+        "sections": {
+          "RP 22 Part 1": {
+            "RP22part1": {
+              "long_name": "RP set #22, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 22 Part 2": {
+            "RP22part2": {
+              "long_name": "RP set #22, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+	}
       }
     },
       "Appendices": {
