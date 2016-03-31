@@ -2,12 +2,12 @@
 <html data-require="math" lang="en">
   <head>
     <meta charset=utf-8>
-    <title>RP 23 part 2</title>
+    <title>RP 23 part 4</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <script>
-      function RP23part2Validate(guess) {
-        var correct = [false, true, false, true ];
+      function RP23part4Validate(guess) {
+        var correct = [true, true, false, true ];
         for(var i=0; i < guess.length; i++) {
 	    if (guess[i] !== correct[i]) {
 		return false;
@@ -19,21 +19,44 @@
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
   </head>
 
-  <body data-height="1000" data-width="950">
+  <body data-height="1500" data-width="950">
     <div class="exercise">
       <div class="problems">
-        <div id="RP23part2p">
+        <div id="RP23part4p">
           <p class="question">In this problem, you must add to SLang 1
-	    a new primitive operation, namely subtraction, but with a
-	    different syntax, namely the Cobol syntax. So,</p>
-<pre class="string">
-     (lambda x . subtract 5 from x 20)
-</pre>
+            a "special" function called <span class="string">gt1</span>
+	    that takes in a
+            space-separated list of 1 or more real numbers and returns
+            the first one (from left to right) that is larger than
+            1.0. Here are some sample programs and their value:</p>
 
-          <p class="question">should be interpreted as</p>
-<pre class="string">
-     ["Num",15]
-</pre>
+	  <p class="question">
+	    <span class="string">gt1 [ 0.2 0.1 8.9 3.4 6.4 ]</span>
+	    returns <span class="string">[ "RealExp" , 8.9 ]</span>
+	  </p>
+	  <p class="question">
+	    <span class="string">gt1 [ 0.2 8.9 lambda x . x ]</span>
+	    returns <span class="string">[ "RealExp" , 8.9 ]</span>. Note
+	    that there is no syntax error in this case: the parser
+	    accepts one or
+	    more <span class="string">&lt;exp&gt;</span> non-terminals
+	    between the brackets. The restriction that the expressions
+	    be real numbers is not enforced in the grammar, but at
+	    run-time, that is, in the interpreter.
+	  </p>
+
+	  <p class="question">
+	    <span class="string">gt1 [ lambda x . x 0.2 8.9 ]</span>
+	    causes the interpreter to generate a runtime error. 
+	    Note that a runtime error is not a syntax
+	    error.</p>
+
+
+
+	  <p class="question">
+	    <span class="string">gt1 [ 0.7 0.2 8.9 ]</span>
+	    causes the interpreter to generate a runtime error because the
+	    argument list does not contain any real numbers greater than 1.</p>
 
           <p class="question">For your answer, check each and every
           file below that MUST be altered to implement this modification.</p>
@@ -51,7 +74,7 @@
 	      $('#interpreter').prop('checked')
 	      ] </div>
 	    <div class="validator-function">
-	      return RP23part2Validate(guess);
+	      return RP23part4Validate(guess);
 	    </div>
 	  </div>
 	  
@@ -67,6 +90,7 @@
 	    <p>Must the main function of the interpreter be extended?
 	    Does the overall evaluation process need to handle
 	    additional cases?</p>
+	    <p>Why is <span class="string">gt1</span> a special function?</p>
 	  </div>
         </div>
       </div>

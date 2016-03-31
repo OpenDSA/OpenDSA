@@ -2,12 +2,13 @@
 <html data-require="math" lang="en">
   <head>
     <meta charset=utf-8>
-    <title>RP 23 part 2</title>
+    <title>RP 23 part 3</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <script>
-      function RP23part2Validate(guess) {
-        var correct = [false, true, false, true ];
+      function RP23part3Validate(guess) {
+        var correct = [true, true, true, true ];
+      console.log(guess);
         for(var i=0; i < guess.length; i++) {
 	    if (guess[i] !== correct[i]) {
 		return false;
@@ -22,18 +23,12 @@
   <body data-height="1000" data-width="950">
     <div class="exercise">
       <div class="problems">
-        <div id="RP23part2p">
-          <p class="question">In this problem, you must add to SLang 1
-	    a new primitive operation, namely subtraction, but with a
-	    different syntax, namely the Cobol syntax. So,</p>
-<pre class="string">
-     (lambda x . subtract 5 from x 20)
-</pre>
+        <div id="RP23part3p">
+          <p class="question">In this problem, you must add real
+	    values to the runtime system so that, for example, the
+	    expression 3.8 is interpreted as
+	    <span class="string">["RealNum",3.8]</span>.</p>
 
-          <p class="question">should be interpreted as</p>
-<pre class="string">
-     ["Num",15]
-</pre>
 
           <p class="question">For your answer, check each and every
           file below that MUST be altered to implement this modification.</p>
@@ -51,7 +46,7 @@
 	      $('#interpreter').prop('checked')
 	      ] </div>
 	    <div class="validator-function">
-	      return RP23part2Validate(guess);
+	      return RP23part3Validate(guess);
 	    </div>
 	  </div>
 	  

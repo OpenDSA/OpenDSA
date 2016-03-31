@@ -11,7 +11,7 @@ Interpreter Modifications
 
 
 The following review problems are designed to help you prepare for the
-exercises that we will complete in class on Monday.  These exercises
+exercises that you will complete in class on Monday.  These exercises
 will consequently set the stage for your next assignment.  In each one
 of these in-class exercises as well as in the upcoming assignments,
 you will have to extend the SLang interpreter.  Recall that the
@@ -46,3 +46,14 @@ RP 23 Part 2
 ------------
 
 .. avembed:: Exercises/PL/RP23part2.html ka
+
+RP 23 Part 3
+------------
+
+.. avembed:: Exercises/PL/RP23part3.html ka
+
+
+RP 23 Part 4
+------------
+
+.. avembed:: Exercises/PL/RP23part4.html ka
