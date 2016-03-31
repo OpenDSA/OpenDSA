@@ -860,6 +860,20 @@
             }
           }
 	}
+      },
+	"PL/SLang1InterpreterModifications": {
+        "long_name": "Interpreter Modifications",
+        "sections": {
+          "RP 23 Part 1": {
+            "RP23part1": {
+              "long_name": "RP set #23, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }
+	}
       }
     },
       "Appendices": {
