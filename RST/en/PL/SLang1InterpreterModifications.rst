@@ -40,3 +40,9 @@ RP 23 Part 1
 ------------
 
 .. avembed:: Exercises/PL/RP23part1.html ka
+
+
+RP 23 Part 2
+------------
+
+.. avembed:: Exercises/PL/RP23part2.html ka
