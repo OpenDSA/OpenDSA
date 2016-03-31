@@ -7,8 +7,11 @@
    :author: David Furcy and Tom Naps
 
 Interpreter Modifications
-==========================
+=========================
 
+
+Overview of Exercises
+---------------------
 
 The following review problems are designed to help you prepare for the
 exercises that you will complete in class on Monday.  These exercises
@@ -36,11 +39,10 @@ file that you check, be prepared to give an overview of the changes
 that would need to be made in that file.  
 
 
-RP 23 Part 1 
+RP 23 Part 1
 ------------
 
 .. avembed:: Exercises/PL/RP23part1.html ka
-
 
 RP 23 Part 2
 ------------
@@ -51,7 +53,6 @@ RP 23 Part 3
 ------------
 
 .. avembed:: Exercises/PL/RP23part3.html ka
-
 
 RP 23 Part 4
 ------------
