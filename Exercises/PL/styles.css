@@ -16,13 +16,13 @@ table.grammar {
     bottom: 0.5em;
 }
 
-.answerRP22part2 {
+.answerRP22part2, .answerRP24part1 {
     font-weight: bold;  
     border-collapse: separate;
     border-spacing: 10px;
 }
 
 
-.answerRP22part2 td {
+.answerRP22part2 td , .answerRP24part1 td {
     vertical-align: top;
 }
