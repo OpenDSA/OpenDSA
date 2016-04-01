@@ -860,6 +860,48 @@
             }
           }
 	}
+      },
+	"PL/SLang1InterpreterModifications": {
+        "long_name": "Interpreter Modifications",
+        "sections": {
+          "Overview of Exercises" : {},
+          "RP 23 Part 1": {
+            "RP23part1": {
+              "long_name": "RP set #23, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 23 Part 2": {
+            "RP23part2": {
+              "long_name": "RP set #23, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 23 Part 3": {
+            "RP23part3": {
+              "long_name": "RP set #23, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 23 Part 4": {
+            "RP23part4": {
+              "long_name": "RP set #23, question #4",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }
+	}
       }
     },
       "Appendices": {
