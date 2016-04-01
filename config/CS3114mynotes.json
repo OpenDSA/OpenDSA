@@ -160,6 +160,10 @@
         "long_name": "Hashing",
         "exercises" : {}
       },
+      "Slides/MemManage": {
+        "long_name": "Memory Management",
+        "exercises" : {}
+      },
       "Slides/Interruptions": {
         "long_name": "Memory cues and resumption strategies",
         "exercises" : {}
