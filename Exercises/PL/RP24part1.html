@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html data-require="math ../../AV/PL/interpreters/version1.04/scripts/absyn ../../AV/PL/interpreters/version1.04/scripts/env ../../AV/PL/interpreters/version1.04/scripts/grammar ../../AV/PL/interpreters/version1.04/scripts/interpreter PLutils RP24part1" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 24 part 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>var SLang = {};</script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1000" data-width="950">
+    <div class="exercise">
+	<div class="vars">
+		<var id="init">RP24part1.init()</var>
+		<var id="expression">RP24part1.expression</var>
+	</div>
+
+      <div class="problems">
+        <div class="RP24part1p">
+          <p class="question">Consider the following SLang
+	    1 program:</p> 
+<pre class="string">
+<var>expression</var>
+</pre>
+          <p class="question">
+	    Recall that there are 5 types of expressions in SLang 1
+	    and that the main function in the interpreter is
+	    structured around these 5 cases. In this problem, you must
+	    determine how many times each case is evaluated when
+	    the SLang 1 program above is interpreted in a global
+	    environment in which
+	    <span class="string">x</span>, <span class="string">y</span>, and
+	    <span class="string">z</span> are bound to the values 
+	    <span class="string">1</span>, <span class="string">2</span>, and
+	    <span class="string">3</span>, respectively.</p>
+
+          <p class="question">
+	  Fill in your answer below, one count per box.
+	  </p>
+	  <table class="answerRP24part1">
+	    <tr><td># of integer expressions evaluated:</td> 
+	      <td><textarea rows="1" cols="3" style="resize:none"
+			    id="numInt">0</textarea></td>
+	    </tr>
+	    <tr><td># of variable expressions evaluated:</td> 
+	      <td><textarea rows="1" cols="3" style="resize:none"
+	      id="numVar">0</textarea></td>
+	    </tr>
+	    <tr><td># of function expressions evaluated:</td> 
+	      <td><textarea rows="1" cols="3" style="resize:none"
+	      id="numFn">0</textarea></td>
+	    </tr>
+	    <tr><td># of application expressions evaluated:</td> 
+	      <td><textarea rows="1" cols="3" style="resize:none"
+	      id="numApp">0</textarea></td>
+	    </tr>
+	    <tr><td># of primitive application expressions evaluated:</td> 
+	      <td><textarea rows="1" cols="3" style="resize:none"
+	      id="numPrim">0</textarea></td>
+	    </tr>
+	  </table>
+	  <div class="solution" data-type="custom">
+            <div class="guess"> 
+	      { numInt :  $('#numInt').val(), 
+	        numVar :  $('#numVar').val(), 
+	        numFn :   $('#numFn').val(), 
+     	        numApp :  $('#numApp').val(), 
+	        numPrim : $('#numPrim').val() }</div>
+            <div class="validator-function">
+	      return RP24part1.validateAnswer(guess);
+            </div>
+	  </div>
+	  
+	  <div class="hints">
+	    <p>If the interpretation of the program generates a
+	      runtime error, then the correct answer is the set of all
+	      correct count values accumulated up to and including the
+	      case that threw the exception.</p>
+	    <p>Counting the number of each type of expressions in the
+	    given program gives you an upper bound on the possible values
+	      for each count.</p>
+	    <p>Why does counting the number of each type of
+	    expressions in the given program not necessarily yield the correct
+	      answer to this problem?</p>
+	    <p>Because of the answer to the previous hint/question and
+	    the possibility of runtime errors, it is imperative that
+	    you not only understand each case individually but also
+	    the order in which they apply.</p>
+	    <p>You should study the code for each one of the 5 cases
+	    of the main function in the
+	      <span class="string">interpreter.js</span> file until
+	      you can trace the code for each case correctly in your
+	      head.</p>
+	    <p>Make sure to leave no boxes empty. Each box MUST
+	    contain an integer, even when the correct count is 0.</p>
+	  </div>	 
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

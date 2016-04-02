@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html data-require="math ../../AV/PL/interpreters/version1.07/scripts/absyn ../../AV/PL/interpreters/version1.07/scripts/env ../../AV/PL/interpreters/version1.07/scripts/grammar ../../AV/PL/interpreters/version1.07/scripts/interpreter PLutils RP25part1" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 25 part 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>var SLang = {};</script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="950" data-width="950">
+    <div class="exercise">
+	<div class="vars">
+		<var id="init">RP25part1.init()</var>
+		<var id="expression">RP25part1.expression</var>
+	</div>
+
+      <div class="problems">
+        <div class="RP25part1p">
+          <p class="question">Consider the following SLang
+	    1 expression:</p> 
+<pre class="string">
+<var>expression</var>
+</pre>
+          <p class="question">Convert this program to an equivalent
+	    expression containing no <span class="string">let</span>
+	    expressions. Type your answer below:
+	  </p>
+
+	  <textarea rows="1" cols="50" style="resize:none"
+			id="answer"></textarea>
+
+	  <div class="solution" data-type="custom">
+            <div class="guess">$('#answer').val() </div>
+            <div class="validator-function">
+	      return RP25part1.validateAnswer(guess);
+            </div>
+	  </div>
+	  
+	  <div class="hints">
+	    <p>Determine the scope of the binding occurrences in each
+	    function definition that this expression contains. If needed,
+	    build an AST for this expression.</p>
+	    <p>Match parameters to arguments in function calls.</p>
+	    <p>Remember that the overall expression is evaluated in a
+	    global environment that is not empty.</p>
+	    <p>The SLang 1 interpreter uses <em>eager</em>
+	    evaluation. Therefore, in a function call, all arguments
+	    are evaluated before the body of the function.</p>
+
+	  </div>	 
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

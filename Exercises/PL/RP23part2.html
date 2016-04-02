@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 23 part 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>
+      function RP23part2Validate(guess) {
+        var correct = [false, true, false, true ];
+        for(var i=0; i < guess.length; i++) {
+	    if (guess[i] !== correct[i]) {
+		return false;
+	    }
+        }     
+        return true;
+      }
+    </script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1000" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP23part2p">
+          <p class="question">In this problem, you must add to SLang 1
+	    a new primitive operation, namely subtraction, but with a
+	    different syntax, namely the Cobol syntax. So,</p>
+<pre class="string">
+     (lambda x . subtract 5 from x 20)
+</pre>
+
+          <p class="question">should be interpreted as</p>
+<pre class="string">
+     ["Num",15]
+</pre>
+
+          <p class="question">For your answer, check each and every
+          file below that MUST be altered to implement this modification.</p>
+
+	  <label><input type="checkbox" id="absyn">absyn.js</label><br />
+	  <label><input type="checkbox" id="grammar">grammar.jison</label><br />
+	  <label><input type="checkbox" id="env">env.js</label><br />
+	  <label><input type="checkbox" id="interpreter">interpreter.js</label><br />
+
+	  <div class="solution" data-type="custom">
+	    <div class="guess"> [ 
+	      $('#absyn').prop('checked'), 
+	      $('#grammar').prop('checked'),
+	      $('#env').prop('checked'),
+	      $('#interpreter').prop('checked')
+	      ] </div>
+	    <div class="validator-function">
+	      return RP23part2Validate(guess);
+	    </div>
+	  </div>
+	  
+	  <div class="hints">
+	    <p>Remember that you are modifying the code that you
+	      obtained at the end of the previous exercise, not the code
+	      that was discussed in class.</p>
+	    <p>Does this change impact the concrete syntax or the
+	    abstract syntax of SLang 1 (or both)?</p>
+	    <p>Are we adding new types of denoted values or modifying the
+	    existing ones?</p>
+	    <p>Are we adding new types of expressions?</p>
+	    <p>Must the main function of the interpreter be extended?
+	    Does the overall evaluation process need to handle
+	    additional cases?</p>
+	  </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
