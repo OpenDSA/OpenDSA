@@ -4,8 +4,6 @@
 
 "use strict";
 
-
-
 var exports = {};
 
 // denoted values in the interpreted language SLang 1
@@ -136,6 +134,6 @@ exports.lookup = lookup;
 exports.update = update;
 exports.initEnv = initEnv;
 
-SLang.env = exports;
+window.SLang.env = exports;
 
 }());
