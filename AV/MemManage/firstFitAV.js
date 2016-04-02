@@ -73,7 +73,8 @@
     $("#input").val("");
     OriginalMemBlock();
     $('#next').attr("disabled", "disabled");
-    if($("#fitAlgorithm").val() === 0) {
+    console.log("When resetting, fitAlgorithm is: " + $("#fitAlgorithm").val());
+    if($("#fitAlgorithm").val() == 0) { // Doesn't work with ===
       $('#submit').attr("disabled", "disabled");
     }
   }
@@ -190,7 +191,7 @@
 
     //jsav array object to act as the free list
     if (array !== null) {
-console.log("Clear");
+      console.log("Clear");
       array.clear();
     }
     array = jsav.ds.array([free1Size, free2Size, free3Size, free4Size], {"left": 280, "top": 400, "bottom": 500});
@@ -639,73 +640,74 @@ console.log("Clear");
     }
   }
   //updates the lines if an add occurs
-  function updateLinesOnAdd() {   var j = 0;
-                                  var lbottom = 416;
-                                  var ltop = 180;
-                                  //loop calculates which blocks were effected
-                                  //finn is the array spot the block was inseerted to
-                                  while(i < recArraySize) {
-                                    if(freeOrNot[i] == 1) {
-                                      j++;
-                                    }
-                                    if(i == finn) {
-                                      break;
-                                    }
-                                    i++;
-                                  }
-                                  var k = 0;
-                                  i = 0;
-                                  while(i < recArraySize) {
-                                    //calculates where free blocks start and finsih to be used to move lines
-                                    if(freeOrNot[i] == 1) {
-                                      freeStartArray[k] = startArray[i];
-                                      freeFinArray[k]= startArray[i+1];
-                                      if(i == 0) {
-                                        freeStartArray[i] = 280;
-                                      }
-                                      if(i == 1) {
-                                        freeStartArray[0] = startArray[1];
-                                      }
-                                      k++;
-                                    }
-                                    i++;
-                                  }
-                                  //used to check if any free blocks remain
-                                  var count =0;
-                                  for(i = 0; i <recArraySize; i++) {
-                                    if( freeOrNot[i] == 1) {
-                                      count++;
-                                    }
-                                  }
-                                  //group of if/if else statements use previously claculated start and end points to update lines
-                                  if(array.size() == 4) {
-                                    linesArray[0].movePoints([[0, connectStartArray[0], lbottom], [1, ((freeStartArray[0] + freeFinArray[0])/2), ltop]]).css({"stroke-width": 1});
-                                    linesArray[1].movePoints([[0, connectStartArray[1], lbottom], [1, ((freeStartArray[1] + freeFinArray[1])/2), ltop]]).css({"stroke-width": 1});
-                                    linesArray[2].movePoints([[0, connectStartArray[2], lbottom], [1, ((freeStartArray[2] + freeFinArray[2])/2), ltop]]).css({"stroke-width": 1});
-                                    linesArray[3].movePoints([[0, connectStartArray[3], lbottom], [1, ((freeStartArray[3] + freeFinArray[3])/2), ltop]]).css({"stroke-width": 1});
-                                  } else if(array.size() == 3) {
-                                    linesArray[0].movePoints([[0, connectStartArray[0], lbottom], [1, ((freeStartArray[0] + freeFinArray[0])/2), ltop]]).css({"stroke-width": 1});
-                                    linesArray[1].movePoints([[0, connectStartArray[1], lbottom], [1, ((freeStartArray[1] + freeFinArray[1])/2), ltop]]).css({"stroke-width": 1});
-                                    linesArray[2].movePoints([[0, connectStartArray[2], lbottom], [1, ((freeStartArray[2] + freeFinArray[2])/2), ltop]]).css({"stroke-width": 1});
-                                    linesArray[3].movePoints([[0, 0, 0], [1,0,0]]);
-                                  } else if(array.size() == 2) {
-                                    linesArray[0].movePoints([[0, connectStartArray[0], lbottom], [1, ((freeStartArray[0] + freeFinArray[0])/2), ltop]]).css({"stroke-width": 1});
-                                    linesArray[1].movePoints([[0, connectStartArray[1], lbottom], [1, ((freeStartArray[1] + freeFinArray[1])/2), ltop]]).css({"stroke-width": 1});
-                                    linesArray[2].movePoints([[0, 0, 0], [1,0,0]]);
-                                    linesArray[3].movePoints([[0, 0, 0], [1,0,0]]);
-                                  } else if(array.size() == 1 & count != 0) {
-                                    linesArray[0].movePoints([[0, connectStartArray[0], lbottom], [1, ((freeStartArray[0] + freeFinArray[0])/2), ltop]]).css({"stroke-width": 1});
-                                    linesArray[1].movePoints([[0, 0, 0], [1,0,0]]);
-                                    linesArray[2].movePoints([[0, 0, 0], [1,0,0]]);
-                                    linesArray[3].movePoints([[0, 0, 0], [1,0,0]]);
-                                  } else {
-                                    linesArray[0].movePoints([[0, 0, 0], [1,0,0]]);
-                                    linesArray[1].movePoints([[0, 0, 0], [1,0,0]]);
-                                    linesArray[2].movePoints([[0, 0, 0], [1,0,0]]);
-                                    linesArray[3].movePoints([[0, 0, 0], [1,0,0]]);
-                                  }
-                                  var as = array.size();
-                              }
+  function updateLinesOnAdd() {
+    var j = 0;
+    var lbottom = 416;
+    var ltop = 180;
+    //loop calculates which blocks were effected
+    //finn is the array spot the block was inseerted to
+    while(i < recArraySize) {
+      if(freeOrNot[i] == 1) {
+        j++;
+      }
+      if(i == finn) {
+        break;
+      }
+      i++;
+    }
+    var k = 0;
+    i = 0;
+    while(i < recArraySize) {
+      //calculates where free blocks start and finsih to be used to move lines
+      if(freeOrNot[i] == 1) {
+        freeStartArray[k] = startArray[i];
+        freeFinArray[k]= startArray[i+1];
+        if(i == 0) {
+          freeStartArray[i] = 280;
+        }
+        if(i == 1) {
+          freeStartArray[0] = startArray[1];
+        }
+        k++;
+      }
+      i++;
+    }
+    //used to check if any free blocks remain
+    var count =0;
+    for(i = 0; i <recArraySize; i++) {
+      if( freeOrNot[i] == 1) {
+        count++;
+      }
+    }
+    //group of if/if else statements use previously claculated start and end points to update lines
+    if(array.size() == 4) {
+      linesArray[0].movePoints([[0, connectStartArray[0], lbottom], [1, ((freeStartArray[0] + freeFinArray[0])/2), ltop]]).css({"stroke-width": 1});
+      linesArray[1].movePoints([[0, connectStartArray[1], lbottom], [1, ((freeStartArray[1] + freeFinArray[1])/2), ltop]]).css({"stroke-width": 1});
+      linesArray[2].movePoints([[0, connectStartArray[2], lbottom], [1, ((freeStartArray[2] + freeFinArray[2])/2), ltop]]).css({"stroke-width": 1});
+      linesArray[3].movePoints([[0, connectStartArray[3], lbottom], [1, ((freeStartArray[3] + freeFinArray[3])/2), ltop]]).css({"stroke-width": 1});
+    } else if(array.size() == 3) {
+      linesArray[0].movePoints([[0, connectStartArray[0], lbottom], [1, ((freeStartArray[0] + freeFinArray[0])/2), ltop]]).css({"stroke-width": 1});
+      linesArray[1].movePoints([[0, connectStartArray[1], lbottom], [1, ((freeStartArray[1] + freeFinArray[1])/2), ltop]]).css({"stroke-width": 1});
+      linesArray[2].movePoints([[0, connectStartArray[2], lbottom], [1, ((freeStartArray[2] + freeFinArray[2])/2), ltop]]).css({"stroke-width": 1});
+      linesArray[3].movePoints([[0, 0, 0], [1,0,0]]);
+    } else if(array.size() == 2) {
+      linesArray[0].movePoints([[0, connectStartArray[0], lbottom], [1, ((freeStartArray[0] + freeFinArray[0])/2), ltop]]).css({"stroke-width": 1});
+      linesArray[1].movePoints([[0, connectStartArray[1], lbottom], [1, ((freeStartArray[1] + freeFinArray[1])/2), ltop]]).css({"stroke-width": 1});
+      linesArray[2].movePoints([[0, 0, 0], [1,0,0]]);
+      linesArray[3].movePoints([[0, 0, 0], [1,0,0]]);
+    } else if(array.size() == 1 & count != 0) {
+      linesArray[0].movePoints([[0, connectStartArray[0], lbottom], [1, ((freeStartArray[0] + freeFinArray[0])/2), ltop]]).css({"stroke-width": 1});
+      linesArray[1].movePoints([[0, 0, 0], [1,0,0]]);
+      linesArray[2].movePoints([[0, 0, 0], [1,0,0]]);
+      linesArray[3].movePoints([[0, 0, 0], [1,0,0]]);
+    } else {
+      linesArray[0].movePoints([[0, 0, 0], [1,0,0]]);
+      linesArray[1].movePoints([[0, 0, 0], [1,0,0]]);
+      linesArray[2].movePoints([[0, 0, 0], [1,0,0]]);
+      linesArray[3].movePoints([[0, 0, 0], [1,0,0]]);
+    }
+    var as = array.size();
+  }
 
 
   //very similar to method above except these line shifts occur on merges
@@ -1665,7 +1667,7 @@ console.log("Clear");
       if (submitRec !== null)
         submitRec.css({"opacity": "0"});
       if (requestedBlockLabel !== null)
-      requestedBlockLabel.css({"opacity": "0"});
+        requestedBlockLabel.css({"opacity": "0"});
     });
 
 
@@ -1678,9 +1680,6 @@ console.log("Clear");
     var settings = new JSAV.utils.Settings($(".jsavsettings"));
     setDefaultControlState();
     reset();
-    if($("#fitAlgorithm").val() === 0)
-    {
-      $('#submit').attr("disabled", "disabled");
-    }
+    console.log("Initial fitAlgorithm: " + $("#fitAlgorithm").val());
   });
 }(jQuery));
