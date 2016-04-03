@@ -268,6 +268,8 @@
 		if (value && E.isNum(value)) {
 		    break;
 		}
+
+		break; // temporary debugging
 	    }
 
 	    this.expression = expStr.join("<br />");

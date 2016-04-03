@@ -112,7 +112,7 @@
 	    this.expression = expStr;
 	    this.answer = SLang.countCases;
 
-	    console.log(JSON.stringify(this.answer));
+	    //console.log(JSON.stringify(this.answer));
 	},// init function
 
 	validateAnswer: function (guess) {
