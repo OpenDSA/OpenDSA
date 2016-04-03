@@ -17,3 +17,12 @@ sugar*. Solve it correctly three times in a row to get
 credit for it.
 
 .. avembed:: Exercises/PL/RP25part1.html ka
+
+RP 25 Part 3
+------------
+
+This randomized problem focuses on the evaluation of deeply nested
+*let expressions*. Solve it correctly three times in a row to get
+credit for it.
+
+.. avembed:: Exercises/PL/RP25part3.html ka

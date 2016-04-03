@@ -9,7 +9,7 @@
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
   </head>
 
-  <body data-height="950" data-width="950">
+  <body data-height="750" data-width="950">
     <div class="exercise">
 	<div class="vars">
 		<var id="init">RP25part1.init()</var>
@@ -23,7 +23,7 @@
 <pre class="string">
 <var>expression</var>
 </pre>
-          <p class="question">Convert this program to an equivalent
+          <p class="question">Convert this expression to an equivalent
 	    expression containing no <span class="string">let</span>
 	    expressions. Type your answer below:
 	  </p>
@@ -39,16 +39,13 @@
 	  </div>
 	  
 	  <div class="hints">
-	    <p>Determine the scope of the binding occurrences in each
-	    function definition that this expression contains. If needed,
-	    build an AST for this expression.</p>
-	    <p>Match parameters to arguments in function calls.</p>
-	    <p>Remember that the overall expression is evaluated in a
-	    global environment that is not empty.</p>
-	    <p>The SLang 1 interpreter uses <em>eager</em>
-	    evaluation. Therefore, in a function call, all arguments
-	    are evaluated before the body of the function.</p>
-
+	    <p>If needed, review the general pattern for converting any 
+	      <span class="string">let</span> expression into an equivalent
+	      function call.</p>
+	    <p>Notice how nested <span class="string">let</span> 
+	      expressions translate into nested function calls.</p>
+	    <p>When writing a syntactically correct SLang 1 program,
+	    make sure to match opening and closing parentheses.</p>
 	  </div>	 
         </div>
       </div>
