@@ -219,11 +219,11 @@ def break_up_sections(path, module_data, config):
     for a_tag in soup(tag_name):
       if a_tag.has_attr(tag_url):
         if triple_up.match(a_tag[tag_url]):
-          a_tag[tag_url] = 'OpenDSA/' + a_tag[tag_url][len('../../../'):]
+          a_tag[tag_url] = '/OpenDSA/' + a_tag[tag_url][len('../../../'):]
         elif a_tag[tag_url].startswith('_static/'):
-          a_tag[tag_url] = 'OpenDSA/Books/'+book_name+'/html/'+a_tag[tag_url]
+          a_tag[tag_url] = '/OpenDSA/Books/'+book_name+'/html/'+a_tag[tag_url]
         elif a_tag[tag_url].startswith('_images/'):
-          a_tag[tag_url] = 'OpenDSA/Books/'+book_name+'/html/'+a_tag[tag_url]
+          a_tag[tag_url] = '/OpenDSA/Books/'+book_name+'/html/'+a_tag[tag_url]
 
 
   '''
@@ -314,8 +314,8 @@ def break_up_sections(path, module_data, config):
     # Expand this to handle src
     for a_tag in soup.find_all(tag_name):
       if a_tag.has_attr(tag_url) and (
-            a_tag[tag_url].startswith('OpenDSA/AV/')
-            or a_tag[tag_url].startswith('OpenDSA/DataStructures/')):
+            a_tag[tag_url].startswith('/OpenDSA/AV/')
+            or a_tag[tag_url].startswith('/OpenDSA/DataStructures/')):
         name = os.path.splitext(os.path.basename(a_tag[tag_url]))[0]
         script_tag = a_tag.extract()
         if "CON" in name and tag_name == "script":

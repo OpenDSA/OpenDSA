@@ -526,11 +526,10 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                             section_action = "update"
 
                         LTI_url_opts = {
-                        "problem_type":"module",
-                        "problem_url": book_name,
-                        "short_name": module_name_url + "-" + str(section_couter).zfill(2),
+                        "book_folder_name": book_name,
+                        "section_file_name": module_name_url + "-" + str(section_couter).zfill(2),
                         "gradeable_exercise": gradeable_exercise,
-                        "section_name": indexed_section_name
+                        "section_title": indexed_section_name
                         }
                         # if section object contains gradeable exercie then assignment will be created in canvas
                         if section_points > 0:
@@ -545,7 +544,7 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
 
                                 results = assignments.create_assignment(request_ctx, course_id, assignment_name=indexed_section_name,
                                     assignment_submission_types="external_tool",assignment_external_tool_tag_attributes={
-                                        "url": LTI_url + "/lti_tool?" + urllib.urlencode(LTI_url_opts)}, assignment_points_possible=section_points, assignment_description=breadcrumb, assignment_assignment_group_id=assignment_group_id)
+                                        "url": LTI_url + "/lti/launch?" + urllib.urlencode(LTI_url_opts)}, assignment_points_possible=section_points, assignment_description=breadcrumb, assignment_assignment_group_id=assignment_group_id)
                                 item_id = results.json().get("id")
 
                                 # add assignment to canvas module
@@ -562,7 +561,7 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                                     module_item_id = module_item_obj["id"]
 
                                 if item_id is not None and module_item_id is not None:
-                                    results = assignments.edit_assignment(request_ctx, course_id, item_id, assignment_name=indexed_section_name, assignment_position=module_item_counter, assignment_submission_types="external_tool", assignment_external_tool_tag_attributes= {"url": LTI_url + "/lti_tool?"+ urllib.urlencode(LTI_url_opts)}, assignment_points_possible=section_points, assignment_description=breadcrumb)
+                                    results = assignments.edit_assignment(request_ctx, course_id, item_id, assignment_name=indexed_section_name, assignment_position=module_item_counter, assignment_submission_types="external_tool", assignment_external_tool_tag_attributes= {"url": LTI_url + "/lti/launch?"+ urllib.urlencode(LTI_url_opts)}, assignment_points_possible=section_points, assignment_description=breadcrumb)
 
                             config.chapters[chapter_name][str(module)]['sections'][section_name]['module_item_id'] = module_item_id
                             if section_couter == 1:
@@ -571,11 +570,11 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                                 config['module_map'].update(module_map)
                         else:
                             if section_action == "add":
-                                results = modules.create_module_item(request_ctx, course_id, module_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?" + urllib.urlencode(LTI_url_opts), module_item_content_id=None,module_item_title=indexed_section_name, module_item_indent=1, module_item_position=module_item_counter)
+                                results = modules.create_module_item(request_ctx, course_id, module_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti/launch?" + urllib.urlencode(LTI_url_opts), module_item_content_id=None,module_item_title=indexed_section_name, module_item_indent=1, module_item_position=module_item_counter)
                                 item_id = results.json().get("id")
                             else:
                                 item_id = prev_section_obj.get('item_id', None)
-                                results = modules.update_module_item(request_ctx, course_id, module_id, item_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?" + urllib.urlencode(LTI_url_opts),
+                                results = modules.update_module_item(request_ctx, course_id, module_id, item_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti/launch?" + urllib.urlencode(LTI_url_opts),
                                     module_item_title=indexed_section_name, module_item_indent=1, module_item_position=module_item_counter)
                             if section_couter == 1:
                                     module_map[module_name_url]['item_id'] = item_id
@@ -623,14 +622,13 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                 indexed_module_name = str(module_position).zfill(2) + "." + str(module_item_position).zfill(2) + ".01 - " + module_name
 
                 LTI_url_opts = {
-                "problem_type":"module",
-                "problem_url": book_name,
-                "short_name": module_name_url,
-                "section_name": indexed_module_name
+                "book_folder_name": book_name,
+                "section_file_name": module_name_url,
+                "section_title": indexed_module_name
                 }
 
                 if section_action == "add":
-                    results = modules.create_module_item(request_ctx, course_id, module_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?" + urllib.urlencode(LTI_url_opts),
+                    results = modules.create_module_item(request_ctx, course_id, module_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti/launch?" + urllib.urlencode(LTI_url_opts),
                         module_item_content_id=None, module_item_title=indexed_module_name, module_item_indent=1, module_item_position=module_item_counter)
                     item_id = results.json().get("id")
 
@@ -648,7 +646,7 @@ def save_odsa_chapter(request_ctx, config, course_id, module_id, module_position
                 else:
                     item_id = prev_module_obj.get('item_id', None)
                     if item_id is not None:
-                        results = modules.update_module_item(request_ctx, course_id, module_id, item_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti_tool?" + urllib.urlencode(LTI_url_opts), module_item_title=indexed_module_name, module_item_indent=1, module_item_position=module_item_counter)
+                        results = modules.update_module_item(request_ctx, course_id, module_id, item_id, module_item_type='ExternalTool', module_item_external_url=LTI_url + "/lti/launch?" + urllib.urlencode(LTI_url_opts), module_item_title=indexed_module_name, module_item_indent=1, module_item_position=module_item_counter)
 
                 module_map[module_name_url]['item_id'] = item_id
                 config['module_map'].update(module_map)
@@ -796,7 +794,7 @@ def create_course(config):
         results = external_tools.create_external_tool_courses(
             request_ctx, course_id, "OpenDSA-LTI",
             privacy_level, config.LTI_consumer_key, config.LTI_secret,
-            url=LTI_url + "/lti_tool")
+            url=LTI_url + "/lti/launch")
 
         # # create OpenDSA assignment group
         # results = assignment_groups.create_assignment_group(request_ctx, course_id, name="OpenDSA")
