@@ -4,7 +4,7 @@ label {
 
 #container {
   width: 800px;
-  height: 575px;
+  height: 675px;
 }
 
 #bottom {
@@ -45,12 +45,14 @@ padding-left: 5px;
 }
 
 .jsavarray .jsavindex {
-  min-height: 30px;
-  min-width: 30px;
+  min-height: 30px !important;
+  min-width: 30px !important;
+  max-height: 30px !important;
+  max-width: 30px !important;
 }
 
 .jsavnode {
-  line-height: 30px;
+  line-height: 30px !important;
 }
 
 .jsavscroll {
