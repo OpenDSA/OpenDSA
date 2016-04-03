@@ -100,7 +100,7 @@
 					 numApp: 0, numPrim: 0 };
 		    value = evalExpRP24part1(exp,globalEnv);
 		} catch (e) {
-		    console.log("My exception: ",e);
+		    //console.log("My exception: ",e);
 
 		    // a semantic error occurred
 		}
