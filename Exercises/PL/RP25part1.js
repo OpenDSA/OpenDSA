@@ -177,7 +177,7 @@
 			0,min,max,"xyz",""));
 	    }// getRndExp function
 
-	    // convert two two applictions to let expressions
+	    // convert two two applications to let expressions
 	    function convertToLetExpressions(exp) {
 		// exp always has the form:
 		//     (fn(p1)=>(fn(p2)=>body args2) args1)
