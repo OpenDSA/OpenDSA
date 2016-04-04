@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html data-require="math ../../AV/PL/interpreters/version1.07/scripts/absyn ../../AV/PL/interpreters/version1.07/scripts/env ../../AV/PL/interpreters/version1.07/scripts/grammar ../../AV/PL/interpreters/version1.07/scripts/interpreter PLutils RP25part3" lang="en">
+<html data-require="math ../../AV/PL/interpreters/version1.07/scripts/absyn ../../AV/PL/interpreters/version1.07/scripts/env ../../AV/PL/interpreters/version1.07/scripts/grammar ../../AV/PL/interpreters/version1.07/scripts/interpreter PLutils RP25part2" lang="en">
   <head>
     <meta charset=utf-8>
-    <title>RP 25 part 3</title>
+    <title>RP 25 part 2</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <script>var SLang = {};</script>
@@ -12,12 +12,12 @@
   <body data-height="950" data-width="950">
     <div class="exercise">
 	<div class="vars">
-		<var id="init">RP25part3.init()</var>
-		<var id="expression">RP25part3.expression</var>
+		<var id="init">RP25part2.init()</var>
+		<var id="expression">RP25part2.expression</var>
 	</div>
 
       <div class="problems">
-        <div class="RP25part3p">
+        <div class="RP25part2p">
           <p class="question">Consider the following SLang
 	    1 expression:</p> 
 <pre class="string">
@@ -38,15 +38,14 @@
 	  <div class="solution" data-type="custom">
             <div class="guess">$('#answer').val() </div>
             <div class="validator-function">
-	      return RP25part3.validateAnswer(guess);
+	      return RP25part2.validateAnswer(guess);
             </div>
 	  </div>
 	  
 	  <div class="hints">
-	    <p>Recall that SLang 1 uses static binding.</p>
+	    <p>Note that the correct answer is a <em>denoted</em> value.</p>
 	    <p>Remember that the overall expression is evaluated in a
 	    global environment that is not empty.</p>
-	    <p>You may need pencil and paper to solve this problem.</p>
 	  </div>	 
         </div>
       </div>
