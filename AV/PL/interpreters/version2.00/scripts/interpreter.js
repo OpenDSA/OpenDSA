@@ -171,6 +171,63 @@ function interpret(source,parameter_passing_mechanism) {
     return output;
 }
 
-SLang.interpret = interpret; // make the interpreter public
 
+function printExps(exps) {
+    return exps.reduce(function (a,e) { return a + " " + printExp(e); },"");
+}
+function printExp(exp) {
+    var i, params, args, result = "";
+    if (A.isVarExp(exp)) {
+	return A.getVarExpId(exp);
+    } else if (A.isFnExp(exp)) {
+	result  = "fn (";
+	params = A.getFnExpParams(exp);
+	for(i=0; i< params.length; i++) {
+	    result += params[i];
+	    if (i<params.length-1) {
+		result += ",";
+	    }
+	}
+	result += ") =>" + printExps(A.getFnExpBody(exp));
+	return result;
+    } else if (A.isAppExp(exp)) {
+	result = "(" + printExp(A.getAppExpFn(exp));	
+	args = A.getAppExpArgs(exp);
+	if (args.length > 0) {
+	    result += " ";
+	}
+	for(i=0; i<args.length-1; i++) {
+	    result += printExp(args[i]) + " ";
+	}
+	if (args.length>0) {
+	    result += printExp(args[args.length-1]);
+	}
+	result += ")";
+	return result;
+    } else if (A.isPrim1AppExp(exp)) {
+	return A.getPrim1AppExpPrim(exp) + "(" +
+	    printExp(A.getPrimApp1ExpArg(exp)) + ")";
+    } else if (A.isPrim2AppExp(exp)) {
+	return "(" + printExp(A.getPrim2AppExpArg1(exp)) + 
+	    A.getPrim2AppExpPrim(exp) + printExp(A.getPrim2AppExpArg2(exp)) + 
+	    ")";
+    } else if (A.isIntExp(exp)) {
+	return A.getIntExpValue(exp);
+    } else if (A.isAssignExp(exp)) {
+	return "set " + A.getAssignExpVar(exp) + " = " + 
+	    printExp(A.getAssignExpRHS(exp));
+    } else if (A.isPrintExp(exp)) {
+	return "print " + printExp(A.getPrintExpExp(exp));
+    } else { 
+	throw new Error("Unknown expression type: " +
+		       JSON.stringify(exp));
+    }
+}// printExp function
+
+
+SLang.interpret = interpret; // make the interpreter public
+SLang.printExp = printExp;
+SLang.printExps = printExps;
+SLang.ppm = ppm;
+SLang.applyPrimitive = applyPrimitive;
 }());

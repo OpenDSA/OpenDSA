@@ -248,6 +248,13 @@ function getIfExpElse(e) {
     }
 }
 
+
+	// returns a random number between min and max includeed
+function getRnd (min,max) {
+	    return Math.floor(Math.random() * (1+max-min)) + min;
+}
+
+
 exports.createProgram = createProgram;
 exports.isProgram = isProgram;
 exports.getProgramExp = getProgramExp;
@@ -293,6 +300,7 @@ exports.isIfExp = isIfExp;
 exports.getIfExpCond = getIfExpCond;
 exports.getIfExpThen = getIfExpThen;
 exports.getIfExpElse = getIfExpElse;
+exports.getRnd= getRnd;
 
 SLang.absyn = exports;
 }());

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html data-require="math ../../AV/PL/interpreters/version2.00/scripts/absyn ../../AV/PL/interpreters/version2.00/scripts/env ../../AV/PL/interpreters/version2.00/scripts/grammar ../../AV/PL/interpreters/version2.00/scripts/interpreter PLutils RP26part1" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 26 part 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>var SLang = {};</script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1250" data-width="950">
+    <div class="exercise">
+	<div class="vars">
+		<var id="init">RP26part1.init()</var>
+		<var id="expression">RP26part1.expression</var>
+	</div>
+
+      <div class="problems">
+        <div class="RP26part1p">
+          <p class="question">Consider the following SLang
+	    2 program:</p> 
+<pre class="string">
+<var>expression</var>
+</pre>
+          <p class="question">What is the output printed to the
+	    console by this program when it is interpreted in a global
+	    environment in which
+	    <span class="string">x</span>, <span class="string">y</span>, and
+	    <span class="string">z</span> are bound to the values 
+	    <span class="string">1</span>, <span class="string">2</span>, and
+	    <span class="string">3</span>, respectively?</p>
+
+
+	  <textarea rows="10" cols="50" style="resize:none"
+			id="answer"></textarea>
+
+	  <div class="solution" data-type="custom">
+            <div class="guess">$('#answer').val() </div>
+            <div class="validator-function">
+	      return RP26part1.validateAnswer(guess);
+            </div>
+	  </div>
+	  
+	  <div class="hints">
+	    <p>Recall that the SLang 2 interpreter uses static binding.</p>
+	    <p>When two or more bindings are included in a
+	      <span class="string">let</span> block, are they
+	      performed in sequence or in parallel? </p>
+	    <p>By default in SLang 2, the arguments in a function call
+	    are passed by value.</p>
+	    <p>Recall that this program is interpreted in a global
+	      environment that is not empty.</p>
+	  </div>	 
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
