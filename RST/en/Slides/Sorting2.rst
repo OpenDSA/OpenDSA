@@ -138,9 +138,12 @@ Sorting Part 2
 .. slide:: Optimizations for Quicksort
 
    * Better Pivot
-   * Better algorithm for small sublists
-      * Use Insertion Sort as a "cleanup" at the end for small lists
+   * Inline instead of function calls
    * Eliminate recursion
+   * Better algorithm for small sublists: Insertion sort
+      * Best: Don't sort small lists at all, do a final Insertion Sort to
+        clean up.
+
 
 .. slide:: Heapsort
 
@@ -217,17 +220,6 @@ Sorting Part 2
    .. odsascript:: AV/Development/RadixSortAnalysisCON.js
 
 
-.. slide:: Optimizing Quicksort
-
-   Insertion Sort is faster than Quicksort for "small" lists (somwhere
-   around 10 items or less).
-
-   Could remove lots of function calls by inlining functions.
-
-   Best: Don't sort small lists at all, do a final Insertion Sort to
-   clean up.
-
-   
 .. slide:: Empirical Analysis
 
    .. math::
