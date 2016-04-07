@@ -135,6 +135,13 @@ Sorting Part 2
    .. odsascript:: AV/Development/QuickSortAverageCaseCON.js
 
 
+.. slide:: Optimizations for Quicksort
+
+   * Better Pivot
+   * Better algorithm for small sublists
+      * Use Insertion Sort as a "cleanup" at the end for small lists
+   * Eliminate recursion
+
 .. slide:: Heapsort
 
    .. inlineav:: heapsortCON ss

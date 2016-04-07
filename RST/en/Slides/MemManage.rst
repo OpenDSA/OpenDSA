@@ -22,7 +22,7 @@ Memory Management
 
       * Like a coat-check stand, give them your coat, get back a ticket.
         Later, return the ticket for your coat.
-      * We call the ticket a handle.
+      * We call the ticket a **handle**.
 
 
 .. slide:: Memory Manager ADT
@@ -44,7 +44,7 @@ Memory Management
 
 .. slide:: Implementation Issues
 
-   * The client doesn’t know what is in the ticket.
+   * The client doesn’t know what is in the handle.
 
    * The memory manager doesn’t know what is in the message.
 
@@ -143,6 +143,14 @@ Memory Management
       * Store by block size, or search list
       * Avoid external fragmentation
 
+
+.. slide:: Example
+
+   .. avembed:: AV/MemManage/firstFitAV.html ss
+
+.. slide:: .
+
+   .
 
 .. slide:: Failure Policies
 
