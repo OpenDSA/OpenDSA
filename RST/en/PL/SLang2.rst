@@ -18,3 +18,13 @@ credit for it, you must complete this randomized problem
 correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP26part1.html ka
+
+RP 27 Part 1
+------------
+
+This problem focuses on the data structures used to implement the
+environment in the SLang 2 interpreter, as well as some of the data
+structures used to implement the AST. To earn credit for it, you must
+complete this randomized problem correctly three times in a row.
+
+.. avembed:: Exercises/PL/RP27part1.html ka
