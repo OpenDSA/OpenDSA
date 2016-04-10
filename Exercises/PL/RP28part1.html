@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html data-require="math ../../AV/PL/interpreters/version2.00/scripts/absyn ../../AV/PL/interpreters/version2.00/scripts/env ../../AV/PL/interpreters/version2.00/scripts/grammar ../../AV/PL/interpreters/version2.00/scripts/interpreter PLutils RP28part1" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 28 part 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>var SLang = {};</script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1250" data-width="950">
+    <div class="exercise">
+	<div class="vars">
+		<var id="init">RP28part1.init()</var>
+		<var id="expression">RP28part1.expression</var>
+	</div>
+
+      <div class="problems">
+        <div class="RP28part1p">
+          <p class="question">Consider the following SLang
+	    2 program:</p> 
+<pre class="string">
+<var>expression</var>
+</pre>
+          <p class="question">What is the console output when this program
+	    is interpreted?</p>
+
+
+	  <textarea rows="10" cols="50" style="resize:none"
+			id="answer"></textarea>
+
+	  <div class="solution" data-type="custom">
+            <div class="guess">$('#answer').val() </div>
+            <div class="validator-function">
+	      return RP28part1.validateAnswer(guess);
+            </div>
+	  </div>
+	  
+	  <div class="hints">
+	    <p>Recall that each <span class="string">print</span>
+	    statement outputs a <em>denoted</em> value.</p>
+	    <p>It may be helpful to use pencil and paper to build a 
+	      two-dimensional table of numbers.</p>
+	  </div>	 
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

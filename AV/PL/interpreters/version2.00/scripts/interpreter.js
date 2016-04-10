@@ -218,7 +218,12 @@ function printExp(exp) {
 	    printExp(A.getAssignExpRHS(exp));
     } else if (A.isPrintExp(exp)) {
 	return "print " + printExp(A.getPrintExpExp(exp));
-    } else { 
+    } else if (A.isIfExp(exp)) {
+	return "if " + printExp(A.getIfExpCond(exp)) + " then " +
+	    printExp(A.getIfExpThen(exp)) + " else " +
+	    printExp(A.getIfExpElse(exp));
+	    
+    } else {
 	throw new Error("Unknown expression type: " +
 		       JSON.stringify(exp));
     }
