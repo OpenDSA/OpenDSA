@@ -945,6 +945,31 @@
 	}
       }
     },
+    "Interpreting the Imperative Language SLang 2": {
+      "PL/SLang2": {
+        "long_name": "Defining SLang 2",
+        "sections": {
+          "RP 26 Part 1": {
+            "RP26part1": {
+              "long_name": "RP set #26, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 27 Part 1": {
+            "RP27part1": {
+              "long_name": "RP set #27, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+	}
+      }
+    },
       "Appendices": {
       "PL/PL_Glossary": {
         "long_name": "Glossary",
