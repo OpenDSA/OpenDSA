@@ -66,7 +66,7 @@
 		    right = A.createVarExp(params[0]);
 		    break;
 		}
-		return A.createFnExp(params,[A.createPrim2AppExp(op,left,right)]);
+		return A.createFnExp(params,[A.createPrimApp2Exp(op,left,right)]);
 	    }// getRandomFunction function
 
 	    function makeRecFunction(vName,fName,startValue,p) {
@@ -76,20 +76,20 @@
 		var two = A.createIntExp(2);
 		var rnd = A.getRnd(1,2);
 		body = A.createIfExp(
-		    A.createPrim2AppExp(
+		    A.createPrimApp2Exp(
 			"===",v, A.createIntExp(startValue)),
 		    A.createVarExp(p[0]),
 		    A.createIfExp(
-			A.createPrim2AppExp(
+			A.createPrimApp2Exp(
 			    "===", v, A.createIntExp(startValue+1)),
 			A.createVarExp(p[1]),
-			A.createPrim2AppExp(
+			A.createPrimApp2Exp(
 			    "+",
 			    A.createAppExp(A.createVarExp(fName + rnd),
-					   [ "args", A.createPrim2AppExp(
+					   [ "args", A.createPrimApp2Exp(
 						 "-", v,one) ]),
 			    A.createAppExp(A.createVarExp(fName+(1+(rnd+2)%2)),
-					   [ "args", A.createPrim2AppExp(
+					   [ "args", A.createPrimApp2Exp(
 					       "-", v,two) ]) ) ) );
 		return A.createFnExp(vName, [ body ]);
 	    }// makeRecFunction functiom
@@ -211,13 +211,13 @@
 		}
 		else if (A.isAppExp(exp)) {
 		    return callByValueRP28part1(exp,envir);
-		} else if (A.isPrim1AppExp(exp)) {
-		    return SL.applyPrimitive(A.getPrim1AppExpPrim(exp),
-					     [evalExpRP28part1(A.getPrim1AppExpArg(exp),envir)]);
-		} else if (A.isPrim2AppExp(exp)) {
-		    return SL.applyPrimitive(A.getPrim2AppExpPrim(exp),
-					     [evalExpRP28part1(A.getPrim2AppExpArg1(exp),envir),
-					      evalExpRP28part1(A.getPrim2AppExpArg2(exp),envir)]);
+		} else if (A.isPrimApp1Exp(exp)) {
+		    return SL.applyPrimitive(A.getPrimApp1ExpPrim(exp),
+					     [evalExpRP28part1(A.getPrimApp1ExpArg(exp),envir)]);
+		} else if (A.isPrimApp2Exp(exp)) {
+		    return SL.applyPrimitive(A.getPrimApp2ExpPrim(exp),
+					     [evalExpRP28part1(A.getPrimApp2ExpArg1(exp),envir),
+					      evalExpRP28part1(A.getPrimApp2ExpArg2(exp),envir)]);
 		} else if (A.isIfExp(exp)) {
 		    if (E.getBoolValue(evalExpRP28part1(A.getIfExpCond(exp),envir))) {
 			return evalExpRP28part1(A.getIfExpThen(exp),envir);

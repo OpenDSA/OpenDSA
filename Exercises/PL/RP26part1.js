@@ -70,7 +70,7 @@
 			right = A.createVarExp(vars[0]);
 		    }
 		}
-		RHS = A.createPrim2AppExp(op,left,right);
+		RHS = A.createPrimApp2Exp(op,left,right);
 		return A.createFnExp(params,[A.createAssignExp(LHS,RHS)]);
 	    }// getRandomFunction function
 
@@ -297,13 +297,13 @@
 		//	case "bycpr" : return callByCopyRestore(exp,envir);
 		//	}
 		//    }
-		} else if (A.isPrim1AppExp(exp)) {
-		    return SL.applyPrimitive(A.getPrim1AppExpPrim(exp),
-					     [evalExpRP26part1(A.getPrim1AppExpArg(exp),envir)]);
-		} else if (A.isPrim2AppExp(exp)) {
-		    return SL.applyPrimitive(A.getPrim2AppExpPrim(exp),
-					     [evalExpRP26part1(A.getPrim2AppExpArg1(exp),envir),
-					      evalExpRP26part1(A.getPrim2AppExpArg2(exp),envir)]);
+		} else if (A.isPrimApp1Exp(exp)) {
+		    return SL.applyPrimitive(A.getPrimApp1ExpPrim(exp),
+					     [evalExpRP26part1(A.getPrimApp1ExpArg(exp),envir)]);
+		} else if (A.isPrimApp2Exp(exp)) {
+		    return SL.applyPrimitive(A.getPrimApp2ExpPrim(exp),
+					     [evalExpRP26part1(A.getPrimApp2ExpArg1(exp),envir),
+					      evalExpRP26part1(A.getPrimApp2ExpArg2(exp),envir)]);
 		} else if (A.isIfExp(exp)) {
 		    if (E.getBoolValue(evalExpRP26part1(A.getIfExpCond(exp),envir))) {
 			return evalExpRP26part1(A.getIfExpThen(exp),envir);
