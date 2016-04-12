@@ -18,3 +18,13 @@ value* and *call by reference*. To earn credit for it, you must
 complete this randomized problem correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP28part2.html ka
+
+
+RP 29 Part 1
+------------
+
+This problem will help you review the difference between *call by
+reference* and *call by copy-restore*. To earn credit for it, you must
+complete this randomized problem correctly three times in a row.
+
+.. avembed:: Exercises/PL/RP29part1.html ka
