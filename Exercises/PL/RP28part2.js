@@ -427,7 +427,7 @@
 
 	    this.expression = expStr.join("<br />");
 	    
-	    console.log(this.answer);
+	    //console.log(this.answer);
 	},// init function
 
 	validateAnswer: function (guess) {

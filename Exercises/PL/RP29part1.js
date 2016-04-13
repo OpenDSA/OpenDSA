@@ -13,7 +13,7 @@
 	    var arrName, arrLen, arrVals = [];
 	    var mainVal, mainParams = [ ];
 	    var fooParams = [], fooParamConstIndex;
-	    var body;
+	    var fooBody, fooBodyLen;
 
 	    var vs = "xyz";	    
 	    var fs = "fgh";
@@ -24,6 +24,30 @@
 				     [E.createNum(1),
 				      E.createNum(2),
 				      E.createNum(3)]);
+
+	    function getRandomLHS() {
+		var rnd = A.getRnd(0,4);
+		switch (rnd) {
+		case 0: return fooParams[0];		    
+		case 1: return fooParams[1];		
+		case 2: return globVar;
+		case 3: return arrName + "[" + A.getRnd(0,arrLen-1) + "]";
+		case 4: return arrName + "[" + globVar + "]";
+		};
+	    }//  getRandomLHS function
+
+	    function getRandomRHS(LHS) {
+		return "To Do";
+	    }// getRandomRHS function
+
+	    function getRandomAssignment() {
+		var LHS = getRandomLHS();
+		var RHS = getRandomRHS(LHS);
+		while (JSON.stringify(RHS) === JSON.stringify(LHS)) {
+		       RHS = getRandomRHS(LHS);
+		}
+		return [LHS,RHS];
+	    }// getRandomAssignment function
 
 	    function initRandomParts() {
 		var i;
@@ -43,6 +67,11 @@
 		    case 2: fooParams = ["u","v"]; break;
 		}
 		fooParamConstIndex = headsOrTails() ? 0 : 1;
+		fooBody = [];
+		fooBodyLen = A.getRnd(3,6);
+		for(i=0; i<fooBodyLen; i++) {
+		    fooBody.push(getRandomAssignment());
+		}
 	    }// initRandomParts function
 
 
@@ -68,6 +97,9 @@
 		} else {
 		    output.push("  foo(" + arrName + "[" + globVar + "], " +
 				arrName + "[" + mainVal + "]);");
+		}
+		for(i=0; i<fooBodyLen; i++) {
+		    output.push("  " + fooBody[0] + " = " +  fooBody[1] + ";");
 		}
 		output.push("}");
 		return output;
@@ -158,58 +190,6 @@
 		return body;
 	    }// getRandomPrimApp function
 
-	    function getRandomAssignment() {
-		// returns: 
-		//      a_or_b = random_func_of_a_and_b
-		//
-		var LHS = headsOrTails() ? "a" : "b";
-		var RHS;
-		// in order to not have to change the original function
-		// from which getRandomPrimApp was copied, which uses 3
-		// vars, even though we have only tw vars (a and b)...
-		RHS = headsOrTails() ? 
-		    getRandomPrimApp("aba") :
-		    getRandomPrimApp("abb");
-		return A.createAssignExp(LHS,RHS);
-	    }
-
-	    function getRandomBody() {
-		// returns: between 3 and 5 copies of the following
-		//      a_or_b = random_func_of_a_and_b
-		//
-		var body = [ ];
-		var i, rnd = A.getRnd(3,5);
-		var aModified = false, bModified = false; 
-		var assignment;
-		for(i=0; i<rnd; i++) {
-		    assignment = getRandomAssignment();
-		    body.push( assignment );
-		    if (A.getAssignExpVar(assignment) === "a") {
-			aModified = true;
-		    } else {
-			bModified = true;
-		    }
-		}
-		if (! aModified) {
-		    while (true) {
-			assignment = getRandomAssignment();
-			if (A.getAssignExpVar(assignment) === "a") {
-			    break;
-			}
-		    }
-		    body[ A.getRnd(0,body.length) ] = assignment;
-		}
-		if (! bModified) {
-		    while (true) {
-			assignment = getRandomAssignment();
-			if (A.getAssignExpVar(assignment) === "b") {
-			    break;
-			}
-		    }
-		    body[ A.getRnd(0,body.length) ] = assignment;
-		}
-		return body;
-	    }
 
 	    function assignmentToCppSyntax(assignment) {
 

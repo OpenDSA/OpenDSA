@@ -295,7 +295,7 @@
 	    this.expression = expStr.join("<br />");
 	    this.answer = SL.output;
 	    
-	    console.log(SL.output);
+	    //console.log(SL.output);
 	},// init function
 
 	validateAnswer: function (guess) {
