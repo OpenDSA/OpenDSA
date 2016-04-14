@@ -125,13 +125,13 @@ function evalExp(exp,envir) {
 	    case "bycpr" : return callByCopyRestore(exp,envir);
 	    }
 	}
-    } else if (A.isPrim1AppExp(exp)) {
-        return applyPrimitive(A.getPrim1AppExpPrim(exp),
-			      [evalExp(A.getPrim1AppExpArg(exp),envir)]);
-    } else if (A.isPrim2AppExp(exp)) {
-        return applyPrimitive(A.getPrim2AppExpPrim(exp),
-			      [evalExp(A.getPrim2AppExpArg1(exp),envir),
-			       evalExp(A.getPrim2AppExpArg2(exp),envir)]);
+    } else if (A.isPrimApp1Exp(exp)) {
+        return applyPrimitive(A.getPrimApp1ExpPrim(exp),
+			      [evalExp(A.getPrimApp1ExpArg(exp),envir)]);
+    } else if (A.isPrimApp2Exp(exp)) {
+        return applyPrimitive(A.getPrimApp2ExpPrim(exp),
+			      [evalExp(A.getPrimApp2ExpArg1(exp),envir),
+			       evalExp(A.getPrimApp2ExpArg2(exp),envir)]);
     } else if (A.isIfExp(exp)) {
 	if (E.getBoolValue(evalExp(A.getIfExpCond(exp),envir))) {
 	    return evalExp(A.getIfExpThen(exp),envir);
@@ -204,12 +204,12 @@ function printExp(exp) {
 	}
 	result += ")";
 	return result;
-    } else if (A.isPrim1AppExp(exp)) {
-	return A.getPrim1AppExpPrim(exp) + "(" +
+    } else if (A.isPrimApp1Exp(exp)) {
+	return A.getPrimApp1ExpPrim(exp) + "(" +
 	    printExp(A.getPrimApp1ExpArg(exp)) + ")";
-    } else if (A.isPrim2AppExp(exp)) {
-	return "(" + printExp(A.getPrim2AppExpArg1(exp)) + 
-	    A.getPrim2AppExpPrim(exp) + printExp(A.getPrim2AppExpArg2(exp)) + 
+    } else if (A.isPrimApp2Exp(exp)) {
+	return "(" + printExp(A.getPrimApp2ExpArg1(exp)) + 
+	    A.getPrimApp2ExpPrim(exp) + printExp(A.getPrimApp2ExpArg2(exp)) + 
 	    ")";
     } else if (A.isIntExp(exp)) {
 	return A.getIntExpValue(exp);
