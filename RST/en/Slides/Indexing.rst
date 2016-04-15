@@ -135,8 +135,8 @@ Indexing
 
 .. slide:: 2-3 Tree Insertion (2)
 
-.. inlineav:: promoteCON ss
-   :output: show
+   .. inlineav:: promoteCON ss
+      :output: show
 
    .. odsascript:: AV/Indexing/promoteCON.js
 
@@ -167,11 +167,8 @@ Indexing
       efficiency while reducing the typical number of disk fetches
       necessary during a search or update operation.
 
-
-.. slide:: B-Tree example
-
    .. odsafig:: Images/BTexamp.png
-      :width: 400
+      :width: 600
       :align: center
       :capalign: justify
       :figwidth: 90%
@@ -217,7 +214,7 @@ Indexing
 .. slide:: B+-Tree Example
 
    .. odsafig:: Images/BPexamp.png
-      :width: 400
+      :width: 800
       :align: center
       :capalign: justify
       :figwidth: 90%
@@ -227,7 +224,7 @@ Indexing
 .. slide:: B+-Tree Insertion
 
    .. odsafig:: Images/BPins.png
-      :width: 400
+      :width: 600
       :align: center
       :capalign: justify
       :figwidth: 90%
@@ -237,7 +234,7 @@ Indexing
 .. slide:: B+-Tree Deletion (1)
 
    .. odsafig:: Images/BPsimDel.png
-      :width: 400
+      :width: 800
       :align: center
       :capalign: justify
       :figwidth: 90%
@@ -247,7 +244,7 @@ Indexing
 .. slide:: B+-Tree Deletion (2)
 
    .. odsafig:: Images/BPborrow.png
-      :width: 400
+      :width: 800
       :align: center
       :capalign: justify
       :figwidth: 90%
@@ -258,7 +255,7 @@ Indexing
 .. slide:: B+-Tree Deletion (3)
 
    .. odsafig:: Images/BPmerge.png
-      :width: 400
+      :width: 800
       :align: center
       :capalign: justify
       :figwidth: 90%
@@ -269,11 +266,11 @@ Indexing
    * B+-Trees nodes are always at least half full.
 
    * The B*-Tree splits two pages for three, and combines three pages into
-     two.  In this way, nodes are always 2/3 full.
+     two. In this way, nodes are always 2/3 full.
 
    * Asymptotic cost of search, insertion, and deletion of nodes from
      B-Trees is :math:`\Theta(log n)`.
-      * Base of the log is the (average) branching factor of the tree.
+       * Base of the log is the (average) branching factor of the tree.
 
 
 .. slide:: B-Tree Space Analysis (2)
