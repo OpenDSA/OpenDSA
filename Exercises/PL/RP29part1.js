@@ -223,7 +223,50 @@
 		}
 	    }
 	    function getRndExpRP29part1() {
-		// structure of exp: 
+		/*
+		// structure of exp in peudocode:
+		
+
+		int h = 2;                   // globVar
+		int a[3] = { -7, 7, -9 };    // arr
+
+		void foo(int p, int q) {     // fooParams
+		    h = 0;
+		    a[h] = p * 6;
+		    a[h] = p;
+		    a[h] = p - 7;            // fooBody
+		    q = q - 6;
+		    print p;
+		    print q;
+		    print h;
+		}
+		int main() {
+		    int h = 0;               // mainVal
+		    foo(a[h], a[0]);         // mainParams
+		    print h;
+		    print a[0];
+		    print a[1];
+		    print a[2];
+		}
+		*/
+
+		// structure of SLand expression
+		//                               AppExp (AKA app1 for outer let)
+		//                     _________/     \
+		//        FnExp (fn1)                 args1 = globVal+arrVals
+		//      /            \
+		// globVar+a[.]     [ AppExp ]    <-- app2 (nested let)
+		//                 /          \
+		//             FnExp (fn2)     args2 = foo's definition
+		//           /            \
+		//       "foo"         [ AppExp ]    <-- app3 (nested let)
+		//                   /            \
+		//               FnExp (fn3)       args3 = mainVal
+		//             /            \
+		//         globVar        [ AppExp ]    <-- fooApp
+		//                       /          \
+		//                    "foo"        args3 = mainParams
+		
 		var i, output;
 		var args1 =  ["args", A.createIntExp(globVal) ];
 		var args2 = [ "args" ];
