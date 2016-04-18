@@ -1004,6 +1004,15 @@
               "threshold": 3.0,
               "showhide": "Show"
             }
+          },
+          "RP 30 Part 1": {
+            "RP30part1": {
+              "long_name": "RP set #30, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
           }
 	}
       }
