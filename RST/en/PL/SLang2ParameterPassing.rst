@@ -29,3 +29,13 @@ for it, you must complete this randomized problem correctly three
 times in a row.
 
 .. avembed:: Exercises/PL/RP29part1.html ka
+
+
+RP 30 Part 1
+------------
+
+This problem will help you practice *call by macro*. To earn credit
+for it, you must complete this randomized problem correctly three
+times in a row.
+
+.. avembed:: Exercises/PL/RP30part1.html ka
