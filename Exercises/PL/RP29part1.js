@@ -1,9 +1,8 @@
-/* global console, SLang, PLutils  */
+/* global console, SLang  */
 (function() {
   "use strict";
 
     var RP29part1 = {    
-
 
 	init: function() {
 	    var SL = SLang;
@@ -13,17 +12,17 @@
 	    var arrName, arrLen, arrVals = [];
 	    var mainVal, mainParams = [ ];
 	    var fooParams = [], fooParamConstIndex;
-	    var fooBody, fooBodyLen;
-
+	    var fooBody, fooBodyBlock = [], fooBodyLen;
 	    var vs = "xyz";	    
 	    var fs = "fgh";
 	    var exp, expStr;
-	    var value, value2, rnd, iterations;
+	    var value, value2, value3, rnd, iterations;
 	    var globalEnv = E.update(E.createEmptyEnv(),
 				     ["x","y","z"],
 				     [E.createNum(1),
 				      E.createNum(2),
 				      E.createNum(3)]);
+	    var tooLong = function (s) { return s.length > 3; };
 
 	    function getRandomLHS() {
 		var rnd = A.getRnd(0,4);
@@ -33,11 +32,54 @@
 		case 2: return globVar;
 		case 3: return arrName + "[" + A.getRnd(0,arrLen-1) + "]";
 		case 4: return arrName + "[" + globVar + "]";
-		};
+		}
 	    }//  getRandomLHS function
 
 	    function getRandomRHS(LHS) {
-		return "To Do";
+		var rnd = A.getRnd(0,5);
+		var index, output;		
+		if (LHS === globVar) {
+		    output = A.getRnd(0,arrLen-1);
+		    if (output === globVal) {
+			output = (output + 1) % arrLen;
+		    }
+		    return output;
+		}
+		switch (rnd) {
+		case 0:  // integer
+		    return (headsOrTails() ? 1 : -1) * A.getRnd(0,10);
+		case 1:  // parameter
+		    index = fooParams.indexOf(LHS);
+		    if (index === -1) {
+			return fooParams[A.getRnd(0,fooParams.length-1)];
+		    } else {
+			return fooParams[(index+1) % fooParams.length];
+		    }
+		    break;
+		case 2: // globalArray element
+		    output = arrName + "[" + globVar + "]";
+		    if (LHS === output) {
+			return arrName + "[" + A.getRnd(0,arrLen-1) + "]";
+		    } else {
+			return output;
+		    }
+		    break;
+		case 3: // addition
+		    return A.createPrimApp2Exp( '+',			
+			A.createVarExp(
+			    fooParams[A.getRnd(0,fooParams.length-1)]),
+			A.createIntExp(A.getRnd(1,10)));
+		case 4: // subtraction
+		    return A.createPrimApp2Exp( '-',			
+			A.createVarExp(
+			    fooParams[A.getRnd(0,fooParams.length-1)]),
+			A.createIntExp(A.getRnd(1,10)));
+		case 5: // multiplication
+		    return A.createPrimApp2Exp( '*',			
+			A.createVarExp(
+			    fooParams[A.getRnd(0,fooParams.length-1)]),
+			A.createIntExp(A.getRnd(2,10)));
+		}
 	    }// getRandomRHS function
 
 	    function getRandomAssignment() {
@@ -49,18 +91,57 @@
 		return [LHS,RHS];
 	    }// getRandomAssignment function
 
+	    function tweakAssignments(block) {
+		var i, output = [ block[0] ];
+		var str, strArray = [ JSON.stringify(block[0]) ];
+		var indexGlobVar = -1, indexArrGlobVar = -1, tmp;
+		// remove duplicates
+		for(i = 1; i<block.length; i++) {
+		    str = JSON.stringify(block[i]);
+		    if (strArray.indexOf(str) === -1) {
+			output.push( block[i] );
+			strArray.push(str);
+		    }
+		}
+		// make sure that, if both are present, the assingment to 
+		// appears before the assignment to the global array indexed
+		// by globVar 
+		for(i = 0; i<output.length; i++) {
+		    if (output[i][0] === globVar) {
+			indexGlobVar = i;
+			break;
+		    }		    
+		}
+		for(i = 0; i<output.length; i++) {
+		    if (output[i][0] === arrName + "[" + globVar + "]") {
+			indexArrGlobVar = i;
+			break;
+		    }		    
+		}
+		if (indexGlobVar > -1 &&  indexArrGlobVar > -1 && 
+		    indexGlobVar > indexArrGlobVar) {
+		    // swap them
+		    tmp = output[indexArrGlobVar];
+		    output[indexArrGlobVar] = output[indexGlobVar];
+		    output[indexGlobVar] = tmp;
+		}
+		return output;
+	    }
 	    function initRandomParts() {
 		var i;
 		var globVars = [ "f", "g", "h" ];
 		var arrNames = [ "a", "b", "c" ];
 		globVar = globVars[ A.getRnd(0,globVars.length-1)];
-		globVal = (headsOrTails() ? 1 : -1) * A.getRnd(0,10);
 		arrName = arrNames[ A.getRnd(0,arrNames.length-1)];
 		arrLen = A.getRnd(3,5);
+		globVal = A.getRnd(0,arrLen-1);		
 		for(i=0; i<arrLen; i++) {
 		    arrVals.push((headsOrTails() ? 1 : -1)*A.getRnd(0,10));
 		}
 		mainVal = A.getRnd(0,arrLen-1);
+		if (mainVal === globVal) {
+		    mainVal = (mainVal + 1) % arrLen;
+		}
 		switch (A.getRnd(0,2)) {
 		    case 0: fooParams = ["p","q"]; break;
 		    case 1: fooParams = ["r","s"]; break;
@@ -72,11 +153,14 @@
 		for(i=0; i<fooBodyLen; i++) {
 		    fooBody.push(getRandomAssignment());
 		}
+		fooBody = tweakAssignments(fooBody);
+		fooBodyLen = fooBody.length;
 	    }// initRandomParts function
 
 
 	    function getPseudocode() {
 		var i, output = [], line;
+		var left, op ,right;
 		output.push("int " + globVar + " = " + globVal + ";");
 		line = "int " + arrName + "[" + arrLen + "] = { ";
 		for(i=0; i<arrLen-1; i++) {
@@ -87,7 +171,24 @@
 		output.push("");
 		output.push("void foo(int " + fooParams[0] + ", int " + 
 			    fooParams[1] + ") {");
-		output.push("");
+		for(i=0; i<fooBodyLen; i++) {
+		    if (typeof fooBody[i][1] === "object") {
+			// a primitive application
+			op = A.getPrimApp2ExpPrim(fooBody[i][1]);
+			left = A.getVarExpId(
+			    A.getPrimApp2ExpArg1(fooBody[i][1]));
+			right = A.getIntExpValue(
+			    A.getPrimApp2ExpArg2(fooBody[i][1]));
+			output.push( "  " + fooBody[i][0] + " = " +  	     
+				     left + " " + op + " " + right + ";");
+		    } else {
+			output.push("  " + fooBody[i][0] + " = " +  	    
+				    fooBody[i][1] + ";");
+		    }
+		}
+		output.push("  print " + fooParams[0] + ";");
+		output.push("  print " + fooParams[1] + ";");
+		output.push("  print " + globVar + ";");
 		output.push("}");
 		output.push("int main() {");
 		output.push("  int " + globVar + " = " + mainVal + ";");
@@ -98,8 +199,9 @@
 		    output.push("  foo(" + arrName + "[" + globVar + "], " +
 				arrName + "[" + mainVal + "]);");
 		}
-		for(i=0; i<fooBodyLen; i++) {
-		    output.push("  " + fooBody[0] + " = " +  fooBody[1] + ";");
+		output.push("  print " + globVar + ";");
+		for(i=0; i<arrLen; i++) {
+		    output.push("  print " + arrName + "[" + i + "];");
 		}
 		output.push("}");
 		return output;
@@ -108,216 +210,75 @@
 		return A.getRnd(0,1)===0;
 	    }
 
-	    function getRandomPrimApp(variables) {
-		// assumes that variables.length >= 2
-		var v = variables.split("");
-		PLutils.shuffle(v);
-		var body;
-		var incr = A.createPrimApp1Exp("add1",A.createVarExp(v[0]));
-		var addition1 = A.createPrimApp2Exp(headsOrTails() ? "+" : "-",
-						    A.createVarExp(v[0]),
-						     A.createVarExp(v[1]));
-		var addition2 = A.createPrimApp2Exp(headsOrTails() ? "+" : "-",
-		    A.createIntExp(A.getRnd(3,10)), A.createVarExp(v[2]));
-		var addition3 = A.createPrimApp2Exp(headsOrTails() ? "+" : "-",
-		    A.createVarExp(v[1]), A.createIntExp(A.getRnd(3,10)));
-		var mult1 = A.createPrimApp2Exp("*",
-					         A.createVarExp(v[0]),
-						 A.createVarExp(v[1]));
-		var mult2 = A.createPrimApp2Exp("*",
-  	            A.createIntExp(A.getRnd(3,10)), A.createVarExp(v[2]));
-		var mult3 = A.createPrimApp2Exp("*",
-		    A.createVarExp(v[1]), A.createIntExp(A.getRnd(3,10)));
-
-		PLutils.shuffle(v);
-		switch (A.getRnd(0,22)) {
-		case 0: body = incr; break;
-		case 1: body = addition1; break;
-		case 2: body = addition2; break;
-		case 3: body = addition3; break;
-		case 4: body = mult1; break;
-		case 5: body = mult2; break;
-		case 6: body = mult3; break;
-		case 7: body = A.createPrimApp2Exp(headsOrTails() ? "+" : "-",
-				A.createVarExp(v[0]), mult1 );
-		    break;
-		case 8: body = A.createPrimApp2Exp(headsOrTails() ? "+" : "-",
-				 A.createVarExp(v[0]), mult2 );
-		    break;
-		case 9: body = A.createPrimApp2Exp(headsOrTails() ? "+" : "-",
-				 A.createVarExp(v[0]), mult3 );
-		    break;
-		case 10: body = A.createPrimApp2Exp(headsOrTails() ? "+" : "-",
-				 mult1, A.createVarExp(v[0]) );
-		    break;
-		case 11: body = A.createPrimApp2Exp(headsOrTails() ? "+" : "-",
-				 mult2, A.createVarExp(v[0]) );
-		    break;
-		case 12: body = A.createPrimApp2Exp(headsOrTails() ? "+" : "-",
-				 mult3, A.createVarExp(v[0]) );
-		    break;
-		case 13: body = A.createPrimApp2Exp(headsOrTails() ? "+" : "-",
-			 incr, A.createVarExp(v[0]) );		  
-		    break;
-		case 14: body = A.createPrimApp2Exp(headsOrTails() ? "+" : "-",
-			 A.createVarExp(v[0]), incr );		  
-		    break;
-		case 15: body = A.createPrimApp2Exp("*", 
-			 incr, A.createVarExp(v[0]) );		  
-		    break;
-		case 16: body = A.createPrimApp2Exp("*", 
-			 A.createVarExp(v[0]), incr );		  
-		    break;
-		case 17: body = A.createPrimApp2Exp("*", 
-			 A.createVarExp(v[0]), addition1 );		  
-		    break;
-		case 18: body = A.createPrimApp2Exp("*", 
-			 A.createVarExp(v[0]), addition2 );		  
-		    break;
-		case 19: body = A.createPrimApp2Exp("*", 
-			 A.createVarExp(v[0]), addition3 );		  
-		    break;
-		case 20: body = A.createPrimApp2Exp("*", 
-			 addition1, A.createVarExp(v[0]) );		  
-		    break;
-		case 21: body = A.createPrimApp2Exp("*", 
-			 addition2, A.createVarExp(v[0]) );		  
-		    break;
-		case 22: body = A.createPrimApp2Exp("*", 
-			 addition3, A.createVarExp(v[0]) );		  
-		    break;
-		}
-		return body;
-	    }// getRandomPrimApp function
-
-
-	    function assignmentToCppSyntax(assignment) {
-
-		function isAtomic(exp) {
-		    return A.isIntExp(exp) || A.isVarExp(exp);
-		}
-		function arithmeticToString(exp) {
-		    var op, left, right;
-		    if (A.isIntExp(exp)) {
-			return A.getIntExpValue(exp) + "";
-		    } else if (A.isVarExp(exp)) {
-			return A.getVarExpId(exp);
-		    } else if (A.isPrimApp2Exp(exp)) {
-			op = A.getPrimApp2ExpPrim(exp);
-			left = A.getPrimApp2ExpArg1(exp);
-			right = A.getPrimApp2ExpArg2(exp);
-			if (isAtomic(left)) {
-			    if (isAtomic(right)) {
-				return arithmeticToString(left) + op + 
-				    arithmeticToString(right);
-			    } else {
-				return arithmeticToString(left) + op + 
-				    "(" + arithmeticToString(right) +")";
-			    }
-			} else {
-			    if (isAtomic(right)) {
-				return "(" + arithmeticToString(left) + ")" + op + 
-				    arithmeticToString(right);
-			    } else {
-				return "(" + arithmeticToString(left) + ")"+ op + 
-				    "(" + arithmeticToString(right) +")";
-			    }
-			}
-		    } else {
-			// add1 case
-			return arithmeticToString(A.getPrimApp1ExpArg(exp)) + "+1";
-		    }		    
-		}
-		var LHS = A.getAssignExpVar(assignment);
-		return   "  " + LHS + " = " + arithmeticToString(A.getAssignExpRHS(assignment));
-
-	    }
-	    function convertToCppSyntax(exp) {
-		var xVal = A.getIntExpValue( A.getAppExpArgs(exp)[0] );
-		var yVal = A.getIntExpValue( A.getAppExpArgs(exp)[1] );
-		var body = A.getFnExpBody( A.getAppExpArgs(exp)[2] );
-		var i;
-		var code = [ 
-		    "#include &lt;iostream&gt;", 
-		    "using namespace std;",
-		    "",
-		    "void by_value(int a, int b)  {"];
-		var shared = [];
-		for(i = 0; i<body.length; i++) {
-		    shared.push( assignmentToCppSyntax(body[i]) + ";" );
-		}
-		code = code.concat(shared);
-		code.push( "}" );
-		code.push( "void by_reference(int &a, int &b) {" );
-		code = code.concat(shared);
-		code.push( "}" );
-		code.push( "" );
-		code.push("int main() {");
-		code.push("  int x,y;");
-		code.push("  x = " + xVal + "; y = " + yVal + ";");
-
-
-		code.push("  by_value(" + exp.v1 + "," + exp.v2 + ");");
-		if (exp.v1 === exp.v2) {
-		    code.push("  cout &lt;&lt; " + exp.v1 + " &lt;&lt; endl;");
+	    function makeSLangExp(s) {
+		var indexLeftBrack, indexRightBrack, index;
+		if (isFinite(s)) {
+		    return A.createIntExp(s);
+		} else 	if (typeof s === "object") {
+		    //s is already a SLang exp
+		    return s;
 		} else {
-		    code.push("  cout &lt;&lt; x &lt;&lt; endl &lt;&lt; y &lt;&lt; endl;");
+		    // s is a simple variable or an array element
+		    return A.createVarExp(s);
 		}
-		code.push(" ");
-		code.push("  x = " + xVal + "; y = " + yVal + ";");
-		code.push("  by_reference(" + exp.v1 + "," + exp.v2 + ");");
-		if (exp.v1 === exp.v2) {
-		    code.push("  cout &lt;&lt; " + exp.v1 + " &lt;&lt; endl;");
-		} else {
-		    code.push("  cout &lt;&lt; x &lt;&lt; endl &lt;&lt; y &lt;&lt; endl;");
-		}
-		code.push( "}" );
-		
-		return code;
 	    }
 	    function getRndExpRP29part1() {
 		// structure of exp: 
-		//  let x =<int> y = <int>
-		//      f = fn (a,b) => let notUsed=-1 in  body1 end
-                //  in
-		//     (f x y);  // this is body below
-		//     print x;		
-		//     print y
-		//  end
-		// that is:
-		// (fn (x,y,f) =>(fn(_)=>body -1)  <int> <int> fn(a,b)=>body1 )
-		// where body = (f v1 v2); print v1; print v2
-		// or    body = (f v v); print v
-		// and body assigns a and b using between 2 and 4 assignments
-		var xVal = A.getRnd(4,10);
-		var yVal = A.getRnd(4,10);
-		var innerApp, innerFunc, body = [], args;
-		var fVarExp = A.createVarExp("f");
-		var v1 = headsOrTails() ? "x" : "y";
-		var v2 = headsOrTails() ? "x" : "y";
-		var v1VarExp = A.createVarExp(v1);
-		var v2VarExp = A.createVarExp(v2);
-		var output;
-		body.push(A.createAppExp(fVarExp,["args",v1VarExp,v2VarExp]));
-		if (v1 !== v2) {
-		    body.push(A.createPrintExp(A.createVarExp("x")));
-		    body.push(A.createPrintExp(A.createVarExp("y")));
-		} else {
-		    body.push(A.createPrintExp(v1VarExp));
+		var i, output;
+		var args1 =  ["args", A.createIntExp(globVal) ];
+		var args2 = [ "args" ];
+		var args3 = ["args", A.createIntExp(mainVal) ];
+		var args4 = ["args"];
+		var fn1, fn1Params = [ globVar ], fn2, fn3, fn3Body;
+		var app1, app2, app3, fooApp;
+		var fooBodyBlock = [];
+		for(i=0; i<arrLen; i++) { 
+		    args1.push( A.createIntExp(arrVals[i]) );		    
 		}
-		innerFunc = A.createFnExp(["notUsed"],body);
-		innerApp = A.createAppExp(innerFunc,
-					  ["args",A.createIntExp(-1)]);
-		innerApp.comesFromLetBlock = true; // to avoid call by ref
-		args = ["args", A.createIntExp(xVal),A.createIntExp(yVal)];
-		args.push( A.createFnExp(["a","b"], getRandomBody() ) );
-		output= SL.absyn.createAppExp( 
-		    SL.absyn.createFnExp(["x","y","f"],[ innerApp ]),
-		    args);
-		output.comesFromLetBlock = true; // to avoid call by ref
-		output.v1 = v1;		
-		output.v2 = v2;
-		return output;
+		for(i=0; i<fooBodyLen; i++) {
+		    fooBodyBlock.push(
+			A.createAssignExp(
+			    fooBody[i][0],
+			    makeSLangExp(fooBody[i][1])));
+		}
+		fooBodyBlock.push(
+		    A.createPrintExp(A.createVarExp(fooParams[0])));
+		fooBodyBlock.push(
+		    A.createPrintExp(A.createVarExp(fooParams[1])));
+		fooBodyBlock.push(
+		    A.createPrintExp(A.createVarExp(globVar)));
+		args2.push( A.createFnExp(fooParams,fooBodyBlock) );
+		if (fooParamConstIndex === 0) {
+		    args4.push(A.createVarExp(arrName + "_" + mainVal));
+
+		    args4.push(A.createVarExp(arrName + "_" + globVar));
+		} else {
+		    args4.push(A.createVarExp(arrName + "_" + globVar));
+
+		    args4.push(A.createVarExp(arrName + "_" + mainVal));
+
+		}
+		fooApp = A.createAppExp(A.createVarExp("foo"), args4);
+		fn3Body = [ fooApp ];
+		fn3Body.push(
+		    A.createPrintExp(A.createVarExp(globVar)));
+		for(i=0; i<arrLen; i++) {
+		    fn3Body.push(
+			A.createPrintExp(A.createVarExp(arrName + "_" + i)));
+		}
+		fn3 = A.createFnExp([globVar], fn3Body);
+		app3 = A.createAppExp(fn3,args3);
+		app3.comesFromLetBlock = true;
+		fn2 = A.createFnExp(["foo"],[ app3 ]);
+		app2 = A.createAppExp(fn2,args2);
+		app2.comesFromLetBlock = true;
+		for(i=0; i<arrLen; i++) {
+		    fn1Params.push(arrName + "_" + i);
+		}
+		fn1 = A.createFnExp(fn1Params, [ app2 ]); 
+		app1 = A.createAppExp(fn1,args1);
+		app1.comesFromLetBlock = true;
+		return app1;
 	    }// getRndExpRP29part1 function
 
 	    function callByValueRP29part1(exp,envir) {
@@ -343,7 +304,7 @@
 		var f = evalExpRP29part1(A.getAppExpFn(exp),envir);
 		var args = A.getAppExpArgs(exp).map( function (arg) {
 		    if (A.isVarExp(arg)) {
-			return E.lookupReference(envir,A.getVarExpId(arg));
+			return E.lookupReference(envir,dealWithArray(A.getVarExpId(arg),envir));
 		    } else {
 			throw new Error("The arguments of a function called by-ref must all be variables.");
 		    }
@@ -365,18 +326,74 @@
 		}    
 	    }
 
+	    function callByCopyRestoreRP29part1(exp,envir) {
+		var f = evalExpRP29part1(A.getAppExpFn(exp),envir);
+		var args = A.getAppExpArgs(exp).map( function (arg) {
+		    if (A.isVarExp(arg)) {
+			return E.lookupReference(envir,dealWithArray(A.getVarExpId(arg),envir));
+		    } else {
+			throw new Error("The arguments of a function called by-ref must all be variables.");
+		    }
+		} );
+		// make copies
+		var copies = args.map( function (arg) { return [ arg[0] ]; } );
+		var restore = function ( list1, list2 ) {
+		    for(var i=0; i<list1.length; i++) {
+			list1[i][0] = list2[i][0];
+		    }
+		};
+		if (E.isClo(f)) {
+		    if (E.getCloParams(f).length !== args.length) {		
+			throw new Error("Runtime error: wrong number of arguments in " +
+					"a function call (" + E.getCloParams(f).length +
+					" expected but " + args.length + " given)");
+		    } else {
+			var values = evalExpsRP29part1(E.getCloBody(f),
+						       E.updateWithReferences(
+							   E.getCloEnv(f),
+							   E.getCloParams(f),copies));
+			restore(args,copies);
+			return values[values.length-1];
+		    }
+		} else {
+		    throw new Error(f + " is not a closure and thus cannot be applied.");
+		}    
+	    }
+
 	    function evalExpsRP29part1(list,envir) {
 		return list.map( function(e) { return evalExpRP29part1(e,envir); } );
 	    }
 
-
+	    // if s is a simple variable or s is <arr>_<int>: return s
+	    // else s = <arr>[<var>]: return <arr>_<value_of_var>
+	    function dealWithArray(s,envir) {	
+		var tmp = s;
+		var parts, index, indexLeftBrack = s.indexOf("[");
+		if (s.indexOf("_") === -1 && indexLeftBrack === -1) {
+		    return s;
+		}
+		if (indexLeftBrack > -1) {
+		    s = s.charAt(0) + "_" + 
+			s.substring(indexLeftBrack+1,s.length-1);
+		}
+		parts = s.split("_");
+		if (parts[1].match(/\d/)) {
+		    return s;
+		}
+		index = E.getNumValue(
+		    evalExpRP29part1(A.createVarExp(parts[1]),
+				     envir));
+		return parts[0] +  "_" + index;
+	    }
 
 	    function evalExpRP29part1(exp,envir) {
+		var v, parts, index, indexLeftBrack;
 		if (A.isIntExp(exp)) {
 		    return E.createNum(A.getIntExpValue(exp));
 		}
 		else if (A.isVarExp(exp)) {
-		    return E.lookup(envir,A.getVarExpId(exp));
+		    v = dealWithArray(A.getVarExpId(exp),envir);
+		    return E.lookup(envir,v);
 		} else if (A.isPrintExp(exp)) {
 		    SL.output += JSON.stringify(
 			evalExpRP29part1( A.getPrintExpExp(exp), envir ));
@@ -387,9 +404,9 @@
 								 envir ) )
 				  : "");
 		} else if (A.isAssignExp(exp)) {
-		    var v = evalExpRP29part1(A.getAssignExpRHS(exp),envir);
+		    v = evalExpRP29part1(A.getAssignExpRHS(exp),envir);
 		    E.lookupReference(
-                        envir,A.getAssignExpVar(exp))[0] = v;
+                        envir,dealWithArray(A.getAssignExpVar(exp),envir))[0] = v;
 		    return v;
 		} else if (A.isFnExp(exp)) {
 		    return E.createClo(A.getFnExpParams(exp),
@@ -402,6 +419,7 @@
 			switch (SL.ppm) {
 			case "byval" : return callByValueRP29part1(exp,envir);
 			case "byref" : return callByReferenceRP29part1(exp,envir);
+			case "bycpr" : return callByCopyRestoreRP29part1(exp,envir);
 			}
 		    }
 		} else if (A.isPrimApp1Exp(exp)) {
@@ -422,40 +440,51 @@
 		}
 	    }// evalExpRP29part1 function
 
-
-
-	    initRandomParts();
-	    this.expression = getPseudocode().join("<br />");
-
-	    return;
-
 	    iterations = 0;
 	    while(true) {
 		exp = undefined;
 		iterations++;
+		initRandomParts();
+		this.expression = getPseudocode().join("<br />");
 		exp = getRndExpRP29part1();
-		expStr =  convertToCppSyntax(exp);
 		value = null;
 		try {
 		    expStr = undefined;
 		    SL.output = "";
 		    SL.ppm = "byval";
 		    value = evalExpRP29part1(exp,globalEnv);
+		    this.byvalOutput = 
+			SL.output.match(/-?\d+/g).join(" ");
+		    SL.output = "";
 		    SL.ppm = "byref";
 		    value2 = evalExpRP29part1(exp,globalEnv);
-		    expStr = convertToCppSyntax(exp);
+		    this.byrefOutput = 
+			SL.output.match(/-?\d+/g).join(" ");
+		    SL.output = "";
+		    SL.ppm = "bycpr";
+		    value3 = evalExpRP29part1(exp,globalEnv);
+		    this.bycprOutput = 
+			SL.output.match(/-?\d+/g).join(" ");	    
 		} catch (e) {
 		    //console.log("My exception: ",e);
 		}
-		if (value !== null && value2 !== null &&
-		    SL.output.match(/-?\d+/g).filter(
-			function (s) { return s.length > 6; } )
-		    .length === 0) {
 
-		    // no printed number is longer than 6 digits
-		    this.answer = SL.output.match(/-?\d+/g).join(" ");
+
+		if (value !== null && value2 !== null && value3 !== null &&
+		    this.byvalOutput !== this.byrefOutput && 
+		    this.byvalOutput !== this.bycprOutput && 
+		    this.byrefOutput !== this.bycprOutput && 
+		    this.byvalOutput.match(/-?\d+/g)
+		    .filter(tooLong).length === 0 &&
+		    this.byrefOutput.match(/-?\d+/g)
+		    .filter(tooLong).length === 0 &&
+		    this.bycprOutput.match(/-?\d+/g)
+		    .filter(tooLong).length === 0 ) {
+
 		    break;
 		}
+
+
 		if (iterations>500) {
 		    // not needed locally but might be needed on Canvas
 		    // when the files do not load appropriately???
@@ -464,15 +493,19 @@
 		    break;
 		}
 	    }
-
-	    this.expression = expStr.join("<br />");
-	    
-	    console.log(this.answer);
+	    	   
+	    //console.log(this.byvalOutput);
+	    //console.log(this.byrefOutput);
+	    //console.log(this.bycprOutput);
 	},// init function
 
 	validateAnswer: function (guess) {
-	    return this.answer.replace(/\s+/g,"") ===
-		guess.replace(/\s+/g,"");
+	    return this.byvalOutput.replace(/\s+/g,"") ===
+		guess[0].replace(/\s+/g,"")  &&
+		this.byrefOutput.replace(/\s+/g,"") ===
+		guess[1].replace(/\s+/g,"")  &&
+		this.bycprOutput.replace(/\s+/g,"") ===
+		guess[2].replace(/\s+/g,"");
 	}// validateAnswer function
 	
     };
