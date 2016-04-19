@@ -41,3 +41,4 @@ credit for it, you must complete this randomized problem correctly
 three times in a row.
 
 .. avembed:: Exercises/PL/RP30part1.html ka
+

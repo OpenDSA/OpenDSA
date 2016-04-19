@@ -70,6 +70,24 @@ function getBoolValue(value) {
     }
 }
 
+
+
+
+function createThunk(exp,env) {
+    return ["Thunk", function () { return SLang.absyn.getVarExp(exp); },env];
+}
+function isThunk(value) {
+    return value[0] === "Thunk";
+}
+function getThunkThawed(t) {
+    if (isThunk(t)) {
+	return lookupReference(t[2],t[1]());
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getThunkThawed is not a thunk.");
+    }
+}
+
 // implementation of the environment
 
 // data constructors
@@ -105,8 +123,13 @@ function getEnvEnv (env) {
 // accessor
 function getReference(v,bindings) {
     var value = bindings.filter(function (p) { return p[0]===v; });
+    var thunkFunc, thunkEnv;
     if (value.length === 0) {
 	return undefined;
+    } else if (isThunk(value[0][1])) {
+	thunkFunc = value[0][1][1];
+	thunkEnv = value[0][1][2];
+	return lookupReference(thunkEnv,thunkFunc());
     } else {
 	return value[0][1];
     }
@@ -162,7 +185,7 @@ exports.initEnv = initEnv;
 exports.createBool = createBool;
 exports.isBool = isBool;
 exports.getBoolValue = getBoolValue;
-
+exports.createThunk = createThunk;
 SLang.env = exports;
 
 }());
