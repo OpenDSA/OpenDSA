@@ -220,6 +220,8 @@ Indexing
       :figwidth: 90%
       :alt: Example of a :math:`\mathrm{B}^+` tree.
 
+   * In this example, an internal node can have 2 to 4 children
+   * A leaf node can hold 3 to 5 keys
 
 .. slide:: B+-Tree Insertion
 
@@ -233,6 +235,15 @@ Indexing
 
 .. slide:: B+-Tree Deletion (1)
 
+   .. odsafig:: Images/BPexamp.png
+      :width: 800
+      :align: center
+      :capalign: justify
+      :figwidth: 90%
+      :alt: Example of a :math:`\mathrm{B}^+` tree.
+
+   * Delete 18
+
    .. odsafig:: Images/BPsimDel.png
       :width: 800
       :align: center
@@ -242,6 +253,15 @@ Indexing
 
 
 .. slide:: B+-Tree Deletion (2)
+
+   .. odsafig:: Images/BPexamp.png
+      :width: 800
+      :align: center
+      :capalign: justify
+      :figwidth: 90%
+      :alt: Example of a :math:`\mathrm{B}^+` tree.
+
+   * Delete 12
 
    .. odsafig:: Images/BPborrow.png
       :width: 800
@@ -254,12 +274,25 @@ Indexing
 
 .. slide:: B+-Tree Deletion (3)
 
+   .. odsafig:: Images/BPexamp.png
+      :width: 800
+      :align: center
+      :capalign: justify
+      :figwidth: 90%
+      :alt: Example of a :math:`\mathrm{B}^+` tree.
+
+   * Delete 33
+
    .. odsafig:: Images/BPmerge.png
       :width: 800
       :align: center
       :capalign: justify
       :figwidth: 90%
       :alt: Deletion from a :math:`\mathrm{B}^+` tree via collapsing siblings
+
+.. slide:: .
+
+   .
 
 .. slide:: B-Tree Space Analysis (1)
 
