@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html data-require="math ../../AV/PL/interpreters/version2.00/scripts/absyn ../../AV/PL/interpreters/version2.00/scripts/env ../../AV/PL/interpreters/version2.00/scripts/grammar ../../AV/PL/interpreters/version2.00/scripts/interpreter PLutils RP31part1" lang="en">
+<html data-require="math ../../AV/PL/interpreters/version2.00/scripts/absyn ../../AV/PL/interpreters/version2.00/scripts/env ../../AV/PL/interpreters/version2.00/scripts/grammar ../../AV/PL/interpreters/version2.00/scripts/interpreter PLutils RP31part2" lang="en">
   <head>
     <meta charset=utf-8>
-    <title>RP 31 part 1</title>
+    <title>RP 31 part 2</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <script>var SLang = {};</script>
@@ -12,23 +12,32 @@
   <body data-height="1250" data-width="950">
     <div class="exercise">
 	<div class="vars">
-		<var id="init">RP31part1.init()</var>
-		<var id="expression">RP31part1.expression</var>
+		<var id="init">RP31part2.init()</var>
+		<var id="expression">RP31part2.expression</var>
 	</div>
 
       <div class="problems">
-        <div class="RP31part1p">
+        <div class="RP31part2p">
           <p class="question">Consider the following program written in generic pseudocode:</p> 
 <pre class="string">
 <var>expression</var>
 </pre>
           <p class="question">What is the output printed to the
 	    console when this program is executed using
+	    call-by-value,  call-by-reference,
 	    call-by-copy-restore, call-by-macro, and call-by-name? 
-	    The answer has three components, each of
+	    The answer has five components, each of
 	    which is a list of integers to be entered below.</p>
 
 	  <table class="answerRP22part2">
+	    <tr><td>Output for call-by-value:</td> 
+	      <td><textarea rows="1" cols="40" style="resize:none"
+			    id="byvalAnswer"></textarea></td>
+	    </tr>
+	    <tr><td>Output for call-by-reference:</td> 
+	      <td><textarea rows="1" cols="40" style="resize:none"
+			    id="byrefAnswer"></textarea></td>
+	    </tr>
 	    <tr><td>Output for call-by-copy-restore:</td> 
 	      <td><textarea rows="1" cols="40" style="resize:none"
 			    id="bycprAnswer"></textarea></td>
@@ -45,12 +54,14 @@
 
 	  <div class="solution" data-type="custom">
             <div class="guess">[
+	      $('#byvalAnswer').val(),
+	      $('#byrefAnswer').val(),
 	      $('#bycprAnswer').val(),
 	      $('#bymacAnswer').val(),
 	      $('#bynamAnswer').val()
 	      ]</div>
             <div class="validator-function">
-	      return RP31part1.validateAnswer(guess);
+	      return RP31part2.validateAnswer(guess);
             </div>
 	  </div>
 	  

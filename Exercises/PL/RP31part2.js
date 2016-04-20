@@ -2,7 +2,7 @@
 (function() {
   "use strict";
 
-    var RP31part1 = {    
+    var RP31part2 = {    
 	
 	init: function() {
 	    var SL = SLang;
@@ -16,7 +16,8 @@
 	    var vs = "xyz";	    
 	    var fs = "fgh";
 	    var exp, expStr;
-	    var value, value2, value3, rnd, iterations;
+	    var value, value2, value3, value4, value5, rnd, iterations;
+	    var values, numDup, i;
 	    var globalEnv = E.update(E.createEmptyEnv(),
 				     ["x","y","z"],
 				     [E.createNum(1),
@@ -41,7 +42,7 @@
 		    return s;
 		}
 		index = E.getNumValue(
-		    evalExpRP31part1(A.createVarExp(parts[1]),
+		    evalExpRP31part2(A.createVarExp(parts[1]),
 				     envir));
 		return parts[0] +  "_" + index;
 	    }
@@ -179,6 +180,9 @@
 		fooBodyLen = fooBody.length;
 	    }// initRandomParts function
 
+
+
+	    
 	    function getPseudocode() {
 		var i, output = [], line;
 		var left, op ,right;
@@ -213,6 +217,13 @@
 		output.push("}");
 		output.push("int main() {");
 		output.push("  int " + globVar + " = " + mainVal + ";");
+
+		// this change in the call to foo is so that call by ref
+		// and call by name may have different output
+		// thereby making it possible get five different outputs
+		output.push("  foo(" + globVar + ", " +
+				arrName + "[" + globVar + "]);");
+/*
 		if (fooParamConstIndex === 0) {
 		    output.push("  foo(" + arrName + "[" + mainVal + "], " +
 				arrName + "[" + globVar + "]);");
@@ -220,6 +231,7 @@
 		    output.push("  foo(" + arrName + "[" + globVar + "], " +
 				arrName + "[" + mainVal + "]);");
 		}
+*/
 		output.push("  print " + globVar + ";");
 		for(i=0; i<arrLen; i++) {
 		    output.push("  print " + arrName + "[" + i + "];");
@@ -243,7 +255,7 @@
 		    return A.createVarExp(s);
 		}
 	    }
-	    function getRndExpRP31part1() {
+	    function getRndExpRP31part2() {
 		/*
 		// structure of exp in peudocode:
 		
@@ -312,6 +324,14 @@
 		fooBodyBlock.push(
 		    A.createPrintExp(A.createVarExp(globVar)));
 		args2.push( A.createFnExp(fooParams,fooBodyBlock) );
+
+
+		// this change in the call to foo is so that call by ref
+		// and call by name may have different output
+		// thereby making it possible get five different outputs
+		args4.push(A.createVarExp(globVar));
+		args4.push(A.createVarExp(arrName + "_" + globVar));
+/*
 		if (fooParamConstIndex === 0) {
 		    args4.push(A.createVarExp(arrName + "_" + mainVal));
 
@@ -322,6 +342,7 @@
 		    args4.push(A.createVarExp(arrName + "_" + mainVal));
 
 		}
+*/
 		fooApp = A.createAppExp(A.createVarExp("foo"), args4);
 		fn3Body = [ fooApp ];
 		fn3Body.push(
@@ -343,18 +364,18 @@
 		app1 = A.createAppExp(fn1,args1);
 		app1.comesFromLetBlock = true;
 		return app1;
-	    }// getRndExpRP31part1 function
+	    }// getRndExpRP31part2 function
 
-	    function callByValueRP31part1(exp,envir) {
-		var f = evalExpRP31part1(A.getAppExpFn(exp),envir);
-		var args = evalExpsRP31part1(A.getAppExpArgs(exp),envir);
+	    function callByValueRP31part2(exp,envir) {
+		var f = evalExpRP31part2(A.getAppExpFn(exp),envir);
+		var args = evalExpsRP31part2(A.getAppExpArgs(exp),envir);
 		if (E.isClo(f)) {
 		    if (E.getCloParams(f).length !== args.length) {		
 			throw new Error("Runtime error: wrong number of arguments in " +
 					"a function call (" + E.getCloParams(f).length +
 					" expected but " + args.length + " given)");
 		    } else {
-			var values = evalExpsRP31part1(E.getCloBody(f),
+			var values = evalExpsRP31part2(E.getCloBody(f),
 					      E.update(E.getCloEnv(f),
 						       E.getCloParams(f),args));
 			return values[values.length-1];
@@ -364,8 +385,8 @@
 		}    
 	    }
 
-	    function callByReferenceRP31part1(exp,envir) {
-		var f = evalExpRP31part1(A.getAppExpFn(exp),envir);
+	    function callByReferenceRP31part2(exp,envir) {
+		var f = evalExpRP31part2(A.getAppExpFn(exp),envir);
 		var args = A.getAppExpArgs(exp).map( function (arg) {
 		    if (A.isVarExp(arg)) {
 			return E.lookupReference(envir,
@@ -380,7 +401,7 @@
 					"a function call (" + E.getCloParams(f).length +
 					" expected but " + args.length + " given)");
 		    } else {
-			var values = evalExpsRP31part1(E.getCloBody(f),
+			var values = evalExpsRP31part2(E.getCloBody(f),
 					      E.updateWithReferences(
 						  E.getCloEnv(f),
 						  E.getCloParams(f),args));
@@ -391,8 +412,8 @@
 		}    
 	    }
 
-	    function callByCopyRestoreRP31part1(exp,envir) {
-		var f = evalExpRP31part1(A.getAppExpFn(exp),envir);
+	    function callByCopyRestoreRP31part2(exp,envir) {
+		var f = evalExpRP31part2(A.getAppExpFn(exp),envir);
 		var args = A.getAppExpArgs(exp).map( function (arg) {
 		    if (A.isVarExp(arg)) {
 			return E.lookupReference(envir,dealWithArray(A.getVarExpId(arg),envir));
@@ -413,7 +434,7 @@
 					"a function call (" + E.getCloParams(f).length +
 					" expected but " + args.length + " given)");
 		    } else {
-			var values = evalExpsRP31part1(E.getCloBody(f),
+			var values = evalExpsRP31part2(E.getCloBody(f),
 						       E.updateWithReferences(
 							   E.getCloEnv(f),
 							   E.getCloParams(f),copies));
@@ -425,19 +446,19 @@
 		}    
 	    }
 
-	    function evalExpsRP31part1(list,envir) {
-		return list.map( function(e) { return evalExpRP31part1(e,envir); } );
+	    function evalExpsRP31part2(list,envir) {
+		return list.map( function(e) { return evalExpRP31part2(e,envir); } );
 	    }
 
-	    function callByMacroRP31part1(exp,envir) {
-		var f = evalExpRP31part1(A.getAppExpFn(exp),envir);
+	    function callByMacroRP31part2(exp,envir) {
+		var f = evalExpRP31part2(A.getAppExpFn(exp),envir);
 		if (E.isClo(f)) {
 		    if (E.getCloParams(f).length !== A.getAppExpArgs(exp).length) {		
 			throw new Error("Runtime error: wrong number of arguments in " +
 					"a function call (" + E.getCloParams(f).length +
 					" expected but " + A.getAppExpArgs(exp).length + " given)");
 		    } else {
-			var values = evalExpsRP31part1(
+			var values = evalExpsRP31part2(
 			    E.getCloBody(f).map(
 				function (e) {
 				    return subst(A.getAppExpArgs(exp),
@@ -453,8 +474,8 @@
 		}    
 	    }
 
-	    function callByNameRP31part1(exp,envir) {
-		var f = evalExpRP31part1(A.getAppExpFn(exp),envir);
+	    function callByNameRP31part2(exp,envir) {
+		var f = evalExpRP31part2(A.getAppExpFn(exp),envir);
 		if (E.isClo(f)) {
 		    if (E.getCloParams(f).length !== A.getAppExpArgs(exp).length) {		
 			throw new Error("Runtime error: wrong number of arguments in " +
@@ -464,7 +485,7 @@
 			var args = A.getAppExpArgs(exp).map(
 			    function (v) { return E.createThunk(v,envir); } );
 
-			var values = evalExpsRP31part1(
+			var values = evalExpsRP31part2(
 			    E.getCloBody(f),
 			    E.update(E.getCloEnv(f), E.getCloParams(f),args));
 			return values[values.length-1];
@@ -530,7 +551,7 @@
 		}
 	    }// subst function
 
-	    function evalExpRP31part1(exp,envir) {
+	    function evalExpRP31part2(exp,envir) {
 		var v, parts, index, indexLeftBrack;
 		if (A.isIntExp(exp)) {
 		    return E.createNum(A.getIntExpValue(exp));
@@ -540,15 +561,15 @@
 		    return E.lookup(envir,v);
 		} else if (A.isPrintExp(exp)) {
 		    SL.output += JSON.stringify(
-			evalExpRP31part1( A.getPrintExpExp(exp), envir ));
+			evalExpRP31part2( A.getPrintExpExp(exp), envir ));
 		} else if (A.isPrint2Exp(exp)) {
 		    SL.output += A.getPrint2ExpString(exp) +
 				 (A.getPrint2ExpExp(exp) !== null ?
-				  " " + JSON.stringify( evalExpRP31part1( A.getPrint2ExpExp(exp), 
+				  " " + JSON.stringify( evalExpRP31part2( A.getPrint2ExpExp(exp), 
 								 envir ) )
 				  : "");
 		} else if (A.isAssignExp(exp)) {
-		    v = evalExpRP31part1(A.getAssignExpRHS(exp),envir);
+		    v = evalExpRP31part2(A.getAssignExpRHS(exp),envir);
 		    E.lookupReference(
                         envir,dealWithArray(A.getAssignExpVar(exp),envir))[0] = v;
 		    return v;
@@ -558,33 +579,33 @@
 		}
 		else if (A.isAppExp(exp)) {
 		    if (exp.comesFromLetBlock) {
-			return callByValueRP31part1(exp,envir);
+			return callByValueRP31part2(exp,envir);
 		    } else {
 			switch (SL.ppm) {
-			case "byval" : return callByValueRP31part1(exp,envir);
-			case "byref" : return callByReferenceRP31part1(exp,envir);
-			case "bycpr" : return callByCopyRestoreRP31part1(exp,envir);
-			case "bymac" : return callByMacroRP31part1(exp,envir);
-			case "bynam" : return callByNameRP31part1(exp,envir);
+			case "byval" : return callByValueRP31part2(exp,envir);
+			case "byref" : return callByReferenceRP31part2(exp,envir);
+			case "bycpr" : return callByCopyRestoreRP31part2(exp,envir);
+			case "bymac" : return callByMacroRP31part2(exp,envir);
+			case "bynam" : return callByNameRP31part2(exp,envir);
 			}
 		    }
 		} else if (A.isPrimApp1Exp(exp)) {
 		    return SL.applyPrimitive(A.getPrimApp1ExpPrim(exp),
-					     [evalExpRP31part1(A.getPrimApp1ExpArg(exp),envir)]);
+					     [evalExpRP31part2(A.getPrimApp1ExpArg(exp),envir)]);
 		} else if (A.isPrimApp2Exp(exp)) {
 		    return SL.applyPrimitive(A.getPrimApp2ExpPrim(exp),
-					     [evalExpRP31part1(A.getPrimApp2ExpArg1(exp),envir),
-					      evalExpRP31part1(A.getPrimApp2ExpArg2(exp),envir)]);
+					     [evalExpRP31part2(A.getPrimApp2ExpArg1(exp),envir),
+					      evalExpRP31part2(A.getPrimApp2ExpArg2(exp),envir)]);
 		} else if (A.isIfExp(exp)) {
-		    if (E.getBoolValue(evalExpRP31part1(A.getIfExpCond(exp),envir))) {
-			return evalExpRP31part1(A.getIfExpThen(exp),envir);
+		    if (E.getBoolValue(evalExpRP31part2(A.getIfExpCond(exp),envir))) {
+			return evalExpRP31part2(A.getIfExpThen(exp),envir);
 		    } else {
-			return evalExpRP31part1(A.getIfExpElse(exp),envir);
+			return evalExpRP31part2(A.getIfExpElse(exp),envir);
 		    }
 		} else {
 		    throw "Error: Attempting to evaluate an invalid expression";
 		}
-	    }// evalExpRP31part1 function
+	    }// evalExpRP31part2 function
 
 	    this.dealWithArray = dealWithArray; // needed for env.js 
              	                      // in version2.00 of the interpreter
@@ -593,35 +614,93 @@
 		exp = undefined;
 		iterations++;
 		initRandomParts();
+
+/*
+		console.log(JSON.stringify(fooBody));
+
+		globVar = "g";
+		arrName = "c";
+		arrLen = 4;
+		globVal = 2;
+		arrVals = [0,-4,1,2];
+		mainVal = 3;
+		fooParams = ["p","q"];
+		fooBody = [];
+		fooBodyLen = 2;
+		fooBody = [ ["p", -10],  
+			    ["c[g]", 0] 
+			    ];
+*/
+		//fooParamConstIndex = 0;
+
 		this.expression = getPseudocode().join("<br />");
-		exp = getRndExpRP31part1();
-		value = null;
+		exp = getRndExpRP31part2();
+		value = value2 = value3 = value4 = value5 = null;
+		// once in a while, with the new params for the call to foo
+		// the foo body sets globVar to a value that outside the 
+		// bounds of the global array; this crashes the interpreter
+		// In such cases, resetting the values above to null will
+		// prevent a crash on line MMMMM below. This way, more while
+		// iterations can be executed until a good example is found
+		// (and, empirically, before the number of iterations
+		// reaches 1000
 		try {
 		    expStr = undefined;
 		    SL.output = "";
+		    SL.ppm = "byval";
+		    value = evalExpRP31part2(exp,globalEnv);
+		    this.byvalOutput = 
+			SL.output.match(/-?\d+/g).join(" ");
+		    //console.log(this.byvalOutput);
+		    SL.output = "";
+		    SL.ppm = "byref";
+		    value2 = evalExpRP31part2(exp,globalEnv);
+		    this.byrefOutput = 
+			SL.output.match(/-?\d+/g).join(" ");
+		    //console.log(this.byrefOutput);
+		    SL.output = "";
 		    SL.ppm = "bycpr";
-		    value = evalExpRP31part1(exp,globalEnv);
+		    value3 = evalExpRP31part2(exp,globalEnv);
 		    this.bycprOutput = 
 			SL.output.match(/-?\d+/g).join(" ");
+		    //console.log(this.bycprOutput);
 		    SL.output = "";
 		    SL.ppm = "bymac";
-		    value2 = evalExpRP31part1(exp,globalEnv);
+		    value4 = evalExpRP31part2(exp,globalEnv);
 		    this.bymacOutput = 
 			SL.output.match(/-?\d+/g).join(" ");	    
+		    //console.log(this.bymacOutput);
 		    SL.output = "";
 		    SL.ppm = "bynam";
-		    value3 = evalExpRP31part1(exp,globalEnv);
+		    value5 = evalExpRP31part2(exp,globalEnv);
 		    this.bynamOutput = 
 			SL.output.match(/-?\d+/g).join(" ");
-
+		    //console.log(this.bynamOutput);
 		} catch (e) {
 		    //console.log("My exception: ",e);
 		}
 
+		values = [ this.byvalOutput, this.byrefOutput, 
+			    this.bycprOutput, this.bymacOutput, 
+			    this.bynamOutput ]; 
+		values.sort();
+		numDup = 0;
+		for(i=0; i<values.length-1; i++) {
+		    if (values[i] === values[i+1]) {
+			numDup++;
+		    }
+		}
+
+		// with the current randomized code, by ref and by need
+		// will (I think) always produce the same output
+		// I counter-example would be with: foo(g,A[g]);
 		if (value !== null && value2 !== null && value3 !== null &&
-		    this.bycprOutput !== this.bymacOutput && 
-		    this.bycprOutput !== this.bynamOutput && 
-		    this.bymacOutput !== this.bynamOutput && 
+		    value4 !== null && value5 !== null &&
+		    numDup === 0   && 
+		    this.byvalOutput.match(/-?\d+/g)    /* line MMMMM */
+		    .filter(tooLong).length === 0 &&
+		    this.byrefOutput.match(/-?\d+/g)
+		    .filter(tooLong).length === 0 &&
 		    this.bycprOutput.match(/-?\d+/g)
 		    .filter(tooLong).length === 0 &&
 		    this.bymacOutput.match(/-?\d+/g)
@@ -632,7 +711,7 @@
 		    break;
 		}
 
-		if (iterations>500) {
+		if (iterations>1000) {
 		    // not needed locally but might be needed on Canvas
 		    // when the files do not load appropriately???
 		    this.expression = ["Something went wrong...",
@@ -641,24 +720,30 @@
 		}
 	    }
 	    	   
+	    //console.log(this.byvalOutput);
+	    //console.log(this.byrefOutput);
 	    //console.log(this.bycprOutput);
 	    //console.log(this.bymacOutput);
 	    //console.log(this.bynamOutput);	    
 	},// init function
 
 	validateAnswer: function (guess) {
-	    return this.bycprOutput.replace(/\s+/g,"") ===
+	    return this.byvalOutput.replace(/\s+/g,"") ===
 		guess[0].replace(/\s+/g,"")  &&
+		this.byrefOutput.replace(/\s+/g,"") ===
+		guess[1].replace(/\s+/g,"")  &&
+		this.bycprOutput.replace(/\s+/g,"") ===
+		guess[2].replace(/\s+/g,"")  &&
 		this.bymacOutput.replace(/\s+/g,"") ===
-		guess[1].replace(/\s+/g,"") &&
+		guess[3].replace(/\s+/g,"") &&
 		this.bynamOutput.replace(/\s+/g,"") ===
-		guess[2].replace(/\s+/g,"");
+		guess[4].replace(/\s+/g,"");
 				 
 	}// validateAnswer function
 	
     };
 
-    window.RP31part1 = window.RP31part1 || RP31part1;
+    window.RP31part2 = window.RP31part2 || RP31part2;
 
 }());
 
