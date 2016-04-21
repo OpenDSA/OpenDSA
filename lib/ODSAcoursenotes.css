@@ -37,6 +37,12 @@ ul li::before {
 .jsavvaluelabel{
   font-size: 15px !important;
 }
-.jsavlabel{
+/*.jsavlabel{
   line-height: 1em !important;
+}*/
+.jsavarray{
+  font-size: 15px !important;
+}
+.jsavlist{
+  font-size: 15px !important; 
 }
