@@ -1,7 +1,7 @@
 $(document).ready(function () {
   "use strict";
-  var jsav = new JSAV("MCSTCON", {"animationMode": "none"});
-  var g = jsav.ds.graph({width: 500, height: 250,
+  var av = new JSAV("MCSTCON", {"animationMode": "none"});
+  var g = av.ds.graph({width: 500, height: 250,
                          layout: "manual", directed: false});
   var j1 = g.addNode("A", {"left":  20, "top":   0});
   var j2 = g.addNode("B", {"left": 250, "top":   0});
@@ -18,6 +18,6 @@ $(document).ready(function () {
   g.addEdge(j4, j6, {"weight": 2});
   g.addEdge(j5, j6, {"weight": 1});
   g.layout();
-  jsav.displayInit();
+  av.displayInit();
   av.recorded();
 });

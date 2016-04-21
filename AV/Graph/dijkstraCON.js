@@ -1,7 +1,7 @@
 $(document).ready(function () {
   "use strict";
-  var jsav = new JSAV("dijkstraCON", {"animationMode": "none"});
-  var g = jsav.ds.graph({width: 300, height: 200,
+  var av = new JSAV("dijkstraCON", {"animationMode": "none"});
+  var g = av.ds.graph({width: 300, height: 200,
                          layout: "manual", directed: true});
   var a = g.addNode("a", {"left": 0, "top":  75});
   var b = g.addNode("b", {"left": 100, "top":  0});
@@ -17,6 +17,6 @@ $(document).ready(function () {
   g.addEdge(c, e, {"weight": 15});
   g.addEdge(d, e, {"weight": 11});
   g.layout();
-  jsav.displayInit();
+  av.displayInit();
   av.recorded();
 });

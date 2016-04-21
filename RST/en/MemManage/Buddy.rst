@@ -67,8 +67,8 @@ The primary advantages of the buddy system are:
 #. There is less external fragmentation.
 
 #. Search for a block of the right size is
-cheaper than, say, best fit because we need only find the first
-available block on the block list for blocks of size :math:`2^k`.
+   cheaper than, say, best fit because we need only find the first
+   available block on the block list for blocks of size :math:`2^k`.
 
 #. Merging adjacent free blocks is easy.
 
@@ -88,17 +88,22 @@ Merging simply requires that the address for the combined buddies be
 moved to the freelist for the next larger
 block size.
 
+.. TODO::
+   :type: Visualization
 
-.. raw:: html
+   Re-implement the buddy method visualization from the original Java
+   tutorial
 
-   <center> 
-   <iframe id="FirstFit_iframe" 
-        src="http://research.cs.vt.edu/AVresearch/MMtutorial/buddy.html"
-        width="1000" height="600"
-        frameborder="1" marginwidth="0" marginheight="0"
-	scrolling="no">
-   </iframe>
-   </center>
+.. .. raw:: html
+
+..   <center> 
+..   <iframe id="FirstFit_iframe" 
+..        src="http://research.cs.vt.edu/AVresearch/MMtutorial/buddy.html"
+..        width="1000" height="600"
+..        frameborder="1" marginwidth="0" marginheight="0"
+..	scrolling="no">
+..   </iframe>
+..   </center>
 
 
 Other Methods

@@ -169,9 +169,13 @@
         "exercises" : {}
       }
     },
-    "Week 12-13": {
+    "Week 12-14": {
       "Slides/Indexing": {
         "long_name": "Indexing",
+        "exercises" : {}
+      },
+      "Slides/Graphs": {
+        "long_name": "Graphs",
         "exercises" : {}
       }
     }
