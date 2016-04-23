@@ -51,9 +51,9 @@ var is = {};
       @return {array} an array with the first n evaluated members of the sequence
   */
   var take = function (seq, n) {
-    if (n === 0)
+    if (n === 0) {
       return [];
-    else {
+    } else {
       var result = take(tl(seq), n - 1).slice(0);
       result.unshift(hd(seq));
       return result;
@@ -66,9 +66,9 @@ var is = {};
       @return {sequence} a sequence formed by removing the first n items from seq
   */
   var drop = function (seq, n) {
-    if (n === 0)
+    if (n === 0) {
       return seq;
-    else {
+    } else {
       return drop(tl(seq), n - 1);
     }
   };
