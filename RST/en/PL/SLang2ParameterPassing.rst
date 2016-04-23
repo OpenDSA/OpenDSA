@@ -36,9 +36,27 @@ RP 30 Part 1
 
 This problem will help you review the differences among *call by
 reference*, *call by copy-restore*, and *call by macro*. To earn
-credit This problem will help you practice *call by macro*. To earn
-credit for it, you must complete this randomized problem correctly
+credit, you must complete this randomized problem correctly
 three times in a row.
 
 .. avembed:: Exercises/PL/RP30part1.html ka
 
+RP 31 Part 1
+------------
+
+This problem will help you review the differences among *call by
+copy-restore*, *call by macro*, and *call by name*. To earn credit
+for it, you must complete this randomized problem correctly three
+times in a row.
+
+.. avembed:: Exercises/PL/RP31part1.html ka
+
+RP 31 Part 2
+------------
+
+This problem will help you review the differences among *call by
+value*, *call by reference*, *call by copy-restore*, *call by macro*,
+and *call by name*. To earn credit for it, you must complete this
+randomized problem correctly three times in a row.
+
+.. avembed:: Exercises/PL/RP31part2.html ka

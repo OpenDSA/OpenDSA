@@ -1,8 +1,8 @@
 $(document).ready(function () {
   "use strict";
-  var jsav = new JSAV("topsortCON", {"animationMode": "none"});
-  var g = jsav.ds.graph({width: 500, height: 200,
-                         layout: "manual", directed: true});
+  var av = new JSAV("topsortCON", {"animationMode": "none"});
+  var g = av.ds.graph({width: 500, height: 200,
+                       layout: "manual", directed: true});
   var j1 = g.addNode("J1", {"left":   0, "top":  75});
   var j2 = g.addNode("J2", {"left": 100, "top":  75});
   var j3 = g.addNode("J3", {"left": 100, "top": 150});

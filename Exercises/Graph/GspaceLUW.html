@@ -37,7 +37,7 @@
               undirected, so we need the directed edge in each
               direction). And for each edge there  has to be a vertex
               ID, a weight, and a  pointer to the next edge.</p>
-            <p> (V * pointer) + (E * (2 * vertex_index + edge_weight + pointer))
+            <p> (V * pointer) + (2 * E * (vertex_index + edge_weight + pointer))
               bytes = <var>ANS</var></p>
           </div>
         </div>

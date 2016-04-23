@@ -1,4 +1,4 @@
-/* global SLang : true */
+/* global SLang : true, console */
 
 (function(){
 
@@ -71,20 +71,26 @@ function getBoolValue(value) {
 }
 
 
-
-
 function createThunk(exp,env) {
-    return ["Thunk", function () { return SLang.absyn.getVarExp(exp); },env];
+    return ["Thunk",exp,env];
 }
 function isThunk(value) {
     return value[0] === "Thunk";
 }
-function getThunkThawed(t) {
+function getThunkExp(t) {
     if (isThunk(t)) {
-	return lookupReference(t[2],t[1]());
+	return t[1];
     } else {
 	throw new Error("Interpreter error: "  +
-			"The argument of getThunkThawed is not a thunk.");
+			"The argument of getThunkExp is not a thunk.");
+    }
+}
+function getThunkEnv(t) {
+    if (isThunk(t)) {
+	return t[2];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getThunkEnv is not a thunk.");
     }
 }
 
@@ -123,13 +129,18 @@ function getEnvEnv (env) {
 // accessor
 function getReference(v,bindings) {
     var value = bindings.filter(function (p) { return p[0]===v; });
-    var thunkFunc, thunkEnv;
+    var thunkExp, thunkEnv, dealWithArray;
     if (value.length === 0) {
 	return undefined;
-    } else if (isThunk(value[0][1])) {
-	thunkFunc = value[0][1][1];
-	thunkEnv = value[0][1][2];
-	return lookupReference(thunkEnv,thunkFunc());
+    } else if (isThunk(value[0][1][0])) {
+	dealWithArray = (window.RP31part1 && window.RP31part1.dealWithArray) ||
+	    (window.RP31part2 && window.RP31part2.dealWithArray);
+	thunkExp = getThunkExp(value[0][1][0]); // must be a VarExp
+	thunkEnv = getThunkEnv(value[0][1][0]);
+	return lookupReference(thunkEnv,
+			       dealWithArray(
+				   SLang.absyn.getVarExpId(thunkExp),
+				   thunkEnv));
     } else {
 	return value[0][1];
     }
