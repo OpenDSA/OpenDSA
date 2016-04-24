@@ -1,58 +1,88 @@
 <!DOCTYPE html>
-<html data-require="math is RP13part5 PLutils" lang="en">
+<html data-require="math" lang="en">
   <head>
     <meta charset=utf-8>
-    <title>RP 13 part 5</title>
+    <title>RP 32 part 1</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
   </head>
 
-  <body data-height="1100" data-width="950">
+  <body data-height="1400" data-width="950">
     <div class="exercise">
-      <div class="vars">
-        <var id="setup">RP13part5.init()</var>
-        <var id="answer">RP13part5.answer</var>
-        <var id="functionDisplayed">RP13part5.functionDisplayed</var>        
-	<var id="initialStatement">RP13part5.initialStatement</var>
-      </div>
       <div class="problems">
         <div id="RP13part5p">
+          <p class="question">Consider the following five snippets of
+          JavaScript code:</p>
+
+<table class="codeSnippet"><tr><td>
+<pre>
+var m3 = is.map( function (n) { return n + 3; }, is.from(1));
+console.log(is.take(m3,10));
+</pre></td></tr></table>
+<br />
+<table class="codeSnippet"><tr><td>
+<pre>
+var m3 = is.iterates( function (n) { return n * 3; }, 3);
+console.log(is.take(m3,10));
+</pre></td></tr></table>
+<br />
+<table class="codeSnippet"><tr><td>
+<pre>
+var m3 = is.filter( function (n) { return n % 3 !== 0; }, is.from(1));
+console.log(is.take(m3,10));
+</pre></td></tr></table>
+<br />
+<table class="codeSnippet"><tr><td>
+<pre>
+var m3 = function () {
+             var helper = function (n) {
+                    return is.cons(n,helper(n + 3));
+             }
+             return helper(3);
+};
+console.log(is.take(m3(),10));
+</pre></td></tr></table>
+<br />
+<table class="codeSnippet"><tr><td>
+<pre>
+var m3 = function () {
+     var helper = 
+            function (n) {
+               return is.cons(
+                    is.hd(is.drop(is.from(n),2)),
+                    function () {
+                         return is.cons(
+                               is.hd(is.drop(is.from(n + 3),2)),
+                               function () {
+                                   return helper(n + 6);
+                               });
+                    });
+            };
+     return helper(1);
+};
+console.log(is.take(m3(),10));
+</pre></td></tr></table>
+
           <p class="question">
-            <var>initialStatement</var></p>
-<pre class="string">
-<var>functionDisplayed</var>
-</pre>
-          <p class="question">
-	    Write down below the code segment that must replace the
-	  comment above. For you to get credit, your code will have to
-	  be syntactically correct functional JavaScript (e.g., use
-	  <span class="string">if/then/else</span> instead
-	  of <span class="string">... ? ... : ...</span>), use
-	  the <span class="string"> fp</span> helper functions
-	  WHENEVER possible (e.g., use <span class="string">fp.add</span>
-	  instead of the JavaScript
-	  operator <span class="string">+</span>), pass all of the unit
-	  tests for this problem, and use continuations as
-	  intended. Recall that a continuation is a function that
-	  takes in the result of completed computations and then
-	  performs the remaining computations.</p>
-	    <textarea rows="5" cols="40" style="resize:none"
-                    id="answerTextarea"></textarea>
-            <div class="solution" data-type="custom">
-              <div class="guess"> $('#answerTextarea').val()  </div>
-              <div class="validator-function">
-		return RP13part5.checkAnswer(guess);
-            </div>
-          </div>
+	    Note that each one of these code snippets ends with a
+            print statement. Assuming that each code snippet is run by 
+	    itself, how many of them will output the following list?</p>
+            <pre class="string">        [ 3, 6, 9, 12, 15, 18, 21, 24, 27, 30 ]</pre>
+	  
+          <div class="solution">1</div>
+          <ul class="choices" data-category="true">
+            <li>0</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+          </ul>
+
           <div class="hints">
-	    <p>Make sure to double-check your answer for typos (e.g.,
-	    recall that JavaScript is case sensitive), missing or extra
-	    parentheses, etc.</p>
-	    <p>While there may be several answers that pass all of the
-	    unit tests, the only accepted answers are those that use
-	    the continuation <span class="string">k</span> as
-	    intended.</p>
+	    <p>Make sure that each thunk is created/processed correctly
+	    (e.g., each tail must be frozen).</p>
           </div>
         </div>
       </div>

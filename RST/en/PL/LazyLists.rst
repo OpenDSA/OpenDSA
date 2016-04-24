@@ -10,6 +10,14 @@
 Lazy Lists
 ==========
 
+RP 32 Part 1
+------------
+
+This problem will help you understand code that processes infinite
+sequences.
+
+.. avembed:: Exercises/PL/RP32part1.html ka
+
 RP 32 Part 2
 ------------
 
