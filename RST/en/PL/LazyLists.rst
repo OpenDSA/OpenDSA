@@ -13,7 +13,7 @@ Lazy Lists
 RP 32 Part 1
 ------------
 
-This problem will help you understand code that processes infinite
+This problem will help you understand code that creates infinite
 sequences.
 
 .. avembed:: Exercises/PL/RP32part1.html ka
@@ -21,7 +21,7 @@ sequences.
 RP 32 Part 2
 ------------
 
-This problem will help you write code to process infinite
+This problem will help you write recursive code to process infinite
 sequences. To earn credit for it, you must complete this randomized
 problem correctly three times in a row.
 

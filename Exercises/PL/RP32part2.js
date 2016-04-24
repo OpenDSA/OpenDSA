@@ -1,9 +1,18 @@
-/* global console, fp */
+/* global console, is */
 (function() {
   "use strict";
 
     var randomDigit;
 
+    function makeSeq(list,seq) {
+	var hd;
+	if (list.length===0) {
+	    return seq;
+	} else {
+	    hd = list.splice(0,1)[0];
+	    return is.cons(hd,function () { return makeSeq(list,seq); });
+	}
+    }
     function acceptableTokens( code ) {
 	var tokens = code.trim().split(/[\*\+,\(\) \n\t;{}]+/);
 	var good = [ "return", "function", "if", "else", 
@@ -24,7 +33,7 @@
 		return false;
 	    }
 	}
-	console.log("no bad tokens");
+	//console.log("no bad tokens");
 	return true;
     }
 
@@ -392,26 +401,80 @@ if (is.hd(s1) > is.hd(s2)) {
                   function () {  
                            return f(is.tl(s2),is.tl(s1)); });
 */ 
+    ],
+
+   [ // 14: merge sorted sequences while keeping duplicated
+      "The following function takes in two sequences of integers sorted in " +
+      "ascending order. After you replace the comment made up of question " +
+      "marks with the correct body, this function is supposed to return the " +
+      "sequence obtained by merging, in ascending order, the two input " +
+      "sequences without deleting any elements. For example:<br />" +
+      "f ( [1,2,5,5,8, ... ], [3,4,6,7,8, ... ] ) = [1,2,3,4,5,5,6,7,8,8 ... ]",
+      "s1,s2",
+      [ /* test 0 */
+	["is.take(f(is.from(1),is.from(3)),10)", 
+	  "[1,2,3,3,4,4,5,5,6,6]"],
+       /* test 1 */
+	["is.take(f(makeSeq([1,2,5,5,8],is.from(9)),makeSeq([3,4,6,7,8],is.from(10))),10)",
+	"[1,2,3,4,5,5,6,7,8,8]"]
+
+      ],
+/*
+   if (is.hd(s1) < is.hd(s2)) {
+      return is.cons(is.hd(s1),
+                     function () {  
+                           return f(is.tl(s1),s2)});
+   } else {
+      return is.cons(is.hd(s2),
+                     function () {  
+                           return f(s1,is.tl(s2))});
+   }
+*/ 
+    ],
+
+   [ // 15: merge sorted sequences WITHOUT duplicates
+      "The following function takes in two sequences of integers sorted in " +
+      "ascending order containing NO duplicates. After you replace the comment made up of question " +
+      "marks with the correct body, this function is supposed to return the " +
+      "sequence obtained by merging, in ascending order, the two input " +
+      "sequences with NO duplicates in the output sequence. For example:<br />" +
+      "f ( [1,2,5,8,9, ... ], [3,4,5,6,7,8,9,10, ... ] ) = [1,2,3,4,5,6,7,8,9,10, ... ]",
+      "s1,s2",
+      [ /* test 0 */
+	["is.take(f(is.from(1),is.from(3)),10)", 
+	  "[1,2,3,4,5,6,7,8,9,10]"],
+       /* test 1 */
+	["is.take(f(makeSeq([1,2,5,8,9],is.from(10)),makeSeq([3,4,5,6,7,8,9,10],is.from(10))),10)",
+	"[1,2,3,4,5,6,7,8,9,10]"]
+
+      ],
+/*
+  if (is.hd(s1) === is.hd(s2)) {
+     return f(s1,is.tl(s2));
+  } else if (is.hd(s1) < is.hd(s2)) {
+      return is.cons(is.hd(s1),
+                     function () {  
+                           return f(is.tl(s1),s2)});
+   } else {
+      return is.cons(is.hd(s2),
+                     function () {  
+                           return f(s1,is.tl(s2))});
+   }
+*/ 
     ]
-
-
-
-
-
-
 	    
 	    ];// functions array
 
 	    // pick a random function
 	    var functionNumber = Math.floor(Math.random() * 
 					    functions.length); 
-	    functionNumber = 13;
 	    this.initialStatement = functions[ functionNumber ][0];
 	    this.functionDisplayed = "var f = function (" + 
 		functions[functionNumber][1] + ")" +
 		 " {\n             /* ?????????????????? */    \n};";
 
 	    this.tests = functions[ functionNumber ][2];
+
 	}, //init
 	
 	checkAnswer: function (studentAnswer) {
@@ -429,17 +492,14 @@ if (is.hd(s1) > is.hd(s2)) {
 		    .toString().replace(/\/\*[ ]*[\?]+[ ]*\*\//,
 					 studentAnswer);
 		for(i=0; i<this.tests.length; i++) {
-		    console.log("test " + i);
-		    console.log(this.tests[i][1].replace(/\s+/g,""));
 		    output = eval(fDefinition + this.tests[i][0]);
-		    console.log(output);
 		    if (JSON.stringify(output).replace(/\s+/g,"") !==
 			this.tests[i][1].replace(/\s+/g,"")) {
 			return false;
 		    }
 		}
 	    } catch (e) {
-		console.log("exception: " + e);
+		//console.log("exception: " + e);
 		passTests = false;
 	    }
 	    // return this.answer === studentAnswer.replace(/\s+/g,"");
