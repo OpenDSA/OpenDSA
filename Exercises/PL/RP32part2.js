@@ -5,8 +5,9 @@
     var randomDigit;
 
     function acceptableTokens( code ) {
-	var tokens = code.trim().split(/[,\(\) \n\t;{}]+/);
-	var good = [ "return", "function", "if", "else", "s", "f", "+", "*",
+	var tokens = code.trim().split(/[\*\+,\(\) \n\t;{}]+/);
+	var good = [ "return", "function", "if", "else", 
+		     "s", "s1","s2", "f", "+", "*",
 		   "===","<",">"];
 	for(var i=0; i<tokens.length; i++) {
 	    if (tokens[i] === "") {
@@ -262,7 +263,66 @@
       "			       is.hd(s) + is.hd(is.tl(s))," +
       " 			       function () {" +
       "    				   return is.tl(is.tl(s)); }));});"
+    ],
+
+   [ // 10: sum of two sequences
+      "The following function takes in two sequences of integers. After " +
+      "you replace the comment made up of question marks with the correct " +
+      "body, this function is supposed to return the sequence containing " +
+      "the sum of the first number in the first sequence and the first " +
+      "number in the second sequence, then the sum of the second " +
+      "number in the first sequence and the second number in the second " +
+      "sequence, etc.",
+      "s1,s2",
+      [ /* test 0 */
+	["is.take(f(is.from(1),is.from(5)),10)",
+	  "[6,8,10,12,14,16,18,20,22,24]"],
+       /* test 1 */
+	["is.take(f(is.from(10),is.iterates(function(n){ return n;},1)),10)", 
+	  "[11,12,13,14,15,16,17,18,19,20]"]
+      ],
+
+      "return is.cons(is.hd(s)," +
+      "     	   function () {" +
+      "			   return f(is.cons(" +
+      "			       is.hd(s) + is.hd(is.tl(s))," +
+      " 			       function () {" +
+      "    				   return is.tl(is.tl(s)); }));});"
+    ],
+
+   [ // 11: max of two sequences
+      "The following function takes in two sequences of integers. After " +
+      "you replace the comment made up of question marks with the correct " +
+      "body, this function is supposed to return the sequence containing " +
+      "the largest number between the first number in the first sequence and " +
+      "the first number in the second sequence, then the largest number " +
+      "between the second number in the first sequence and the second number " +
+      "in the second sequence, etc.",
+      "s1,s2",
+      [ /* test 0 */
+	["is.take(f(is.from(1),is.iterates(function(n){ return n;},5)),10)", 
+	  "[5,5,5,5,5,6,7,8,9,10]"],
+       /* test 1 */
+
+	["is.take(f(is.map(function (n) { return Math.round(10*Math.sin(n)); },is.from(1)),is.from(-5)),10)",
+	 "[8, 9, 1, -2, -1, 0, 7, 10, 4, 4]"
+	],
+      ],
+/*
+if (is.hd(s1) > is.hd(s2)) {
+  return is.cons(is.hd(s1),
+                        function () {
+                            return f(is.tl(s1),is.tl(s2)); } );
+} else {
+  return is.cons(is.hd(s2),
+                        function () {
+                            return f(is.tl(s1),is.tl(s2)); } );
+} 
+*/ 
     ]
+
+
+
 
 	    
 	    ];// functions array
@@ -270,7 +330,7 @@
 	    // pick a random function
 	    var functionNumber = Math.floor(Math.random() * 
 					    functions.length); 
-	    functionNumber = 9;
+	    functionNumber = 11;
 	    this.initialStatement = functions[ functionNumber ][0];
 	    this.functionDisplayed = "var f = function (" + 
 		functions[functionNumber][1] + ")" +
