@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html data-require="math InfiniteSequence RP32part2 PLutils" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 32 part 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1100" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="setup">RP32part2.init()</var>
+        <var id="answer">RP32part2.answer</var>
+        <var id="functionDisplayed">RP32part2.functionDisplayed</var>        
+	<var id="initialStatement">RP32part2.initialStatement</var>
+      </div>
+      <div class="problems">
+        <div id="RP32part2p">
+          <p class="question">
+            <var>initialStatement</var></p>
+<pre class="string">
+<var>functionDisplayed</var>
+</pre>
+          <p class="question">
+	    Write down below the code segment that must replace the
+	  comment above. For you to get credit, your code will have to
+	  be syntactically correct JavaScript code that passes all of the
+	  unit tests for this problem and ONLY uses following JavaScript
+	  features: the binary operators 
+	  <span class="string">+</span>,
+	  <span class="string">*</span>,
+	  <span class="string">&lt;</span>,
+	  <span class="string">&gt;</span>, and
+	  <span class="string">===</span>, 
+	  function expressions,
+	  calls to the
+	  <span class="string">f</span>,
+	  <span class="string">is.hd</span>,
+	  <span class="string">is.tl</span>, and
+	  <span class="string">is.cons</span> functions,
+	  <span class="string">return</span> and
+	  <span class="string">if/else</span> statements
+	  </p>
+	    <textarea rows="10" cols="60" style="resize:none"
+                    id="answerTextarea"></textarea>
+            <div class="solution" data-type="custom">
+              <div class="guess"> $('#answerTextarea').val()  </div>
+              <div class="validator-function">
+		return RP32part2.checkAnswer(guess);
+            </div>
+          </div>
+          <div class="hints">
+	    <p>Make sure to double-check your answer for typos (e.g.,
+	    recall that JavaScript is case sensitive), missing or extra
+	    parentheses or braces, etc.</p>
+	    <p>Your answer must strictly replace the comment above. Do
+	    not include any of the code that is already present before or
+	    after the comment.</p>
+	    <p>Correct answers are purely recursive and may NOT call the
+	      <span class="string">map</span>, 	      
+	      <span class="string">filter</span>,
+	      <span class="string">iterates</span>,
+	      <span class="string">from</span>, 
+	      <span class="string">take</span>, or
+	      <span class="string">drop</span> functions.
+	    </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -26,3 +26,8 @@ table.grammar {
 .answerRP22part2 td , .answerRP24part1 td {
     vertical-align: top;
 }
+
+table.codeSnippet {
+    border: 1px black solid;
+    font-family: monospace !important;    
+}
