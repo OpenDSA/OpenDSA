@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html data-require="math InfiniteSequence RP33part1" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 33 part 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1100" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="setup">RP33part1.init()</var>
+        <var id="answer">RP33part1.answer</var>
+        <var id="problemCode">RP33part1.code</var>        
+        <var id="index">RP33part1.index</var>        
+	<var id="indexPlusOne">RP33part1.indexPlusOne</var>        
+      </div>
+      <div class="problems">
+        <div id="RP33part1p">
+          <p class="question">Consider the following JavaScript code
+          that defines and then calls a recursive function to build a
+          sequence:</p>
+<pre class="string">
+<var>problemCode</var>
+</pre>
+          <p class="question">
+	    What is the value <span class="string">is.take(seq,<var>indexPlusOne</var>)[<var>index</var>]</span> 
+	    after this code is executed?
+	  </p>
+	    <textarea rows="1" cols="40" style="resize:none"
+                    id="answerTextarea"></textarea>
+            <div class="solution" data-type="custom">
+              <div class="guess"> $('#answerTextarea').val()  </div>
+              <div class="validator-function">
+		return RP33part1.checkAnswer(guess);
+            </div>
+          </div>
+          <div class="hints">
+	    <p>Note that the correct answer is a single integer.</p>
+	    <p>Once you have determined the correct sequence, make sure
+	    to extract the element at the correct position.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
