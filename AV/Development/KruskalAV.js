@@ -23,7 +23,7 @@
     graph.layout();
     arr = new Array(graph.edges().length);
     for (i = 0; i < arr.length; i++) {
-      arr[i] = "("+graph.edges()[i].start().value()+","+graph.edges()[i].end().value()+")";
+      arr[i] = "("+graph.edges()[i].start().value()+","+graph.edges()[i].end().valuen()+")";
     }
     labels = jsav.ds.array(arr, {layout: "vertical", left: 573, top: -40});
     for (i = 0; i < arr.length; i++) {
