@@ -231,6 +231,12 @@ Graphs
       * If there is no such edge, then :math:`w(A, B) = \infty`.
 
 
+   .. inlineav:: dijkstraCON dgm
+      :align: center
+
+   .. odsascript:: AV/Graph/dijkstraCON.js
+
+
 .. slide:: Single-Source Shortest Paths
 
    * Given start vertex :math:`s`, find the shortest path from
@@ -244,14 +250,6 @@ Graphs
      through :math:`x`.
 
    * Solution: Process vertices in order of distance from :math:`s`.
-
-
-.. slide:: Example Graph
-
-   .. inlineav:: dijkstraCON dgm
-      :align: center
-
-   .. odsascript:: AV/Graph/dijkstraCON.js
 
 
 .. slide:: Dijkstra’s Algorithm Example
@@ -275,12 +273,12 @@ Graphs
      ``minVertex``)
 
    * Approach 1: Scan through the table of current distances.
-      * Cost: :math:`\Theta(|V|2 + |E|) = \Theta(|V|2)`.
+      * Cost: :math:`\Theta(|V|^2 + |E|) = \Theta(|V|^2)`.
 
    * Approach 2: Store unprocessed vertices using a min-heap to
      implement a priority queue ordered by :math:`D` value.  Must
      update priority queue for each edge.
-      * Cost: :math:`\Theta(|V| + |E|)log|V|)`
+      * Cost: :math:`\Theta((|V| + |E|)log|V|)`
 
 
 .. slide:: Approach 1
@@ -364,6 +362,11 @@ Graphs
 .. slide:: Kruskal’s MST Algorithm (2)
 
    .. avembed:: AV/Development/KruskalUFAV.html ss
+
+
+.. slide:: .
+
+   .
 
 
 .. slide:: Kruskal’s MST Algorithm (3)
