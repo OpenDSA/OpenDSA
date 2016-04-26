@@ -1032,6 +1032,47 @@
             }
           }
 	}
+      },
+      "PL/LazyLists": {
+        "long_name": "Lazy Lists",
+        "sections": {
+          "RP 32 Part 1": {
+            "RP32part1": {
+              "long_name": "RP set #32, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 32 Part 2": {
+            "RP32part2": {
+              "long_name": "RP set #32, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 33 Part 1": {
+            "RP33part1": {
+              "long_name": "RP set #33, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 33 Part 2": {
+            "RP33part2": {
+              "long_name": "RP set #33, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }
+	}
       }
     },
       "Appendices": {

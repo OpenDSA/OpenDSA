@@ -27,3 +27,20 @@ problem correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP32part2.html ka
 
+RP 33 Part 1
+------------
+
+This problem reviews recursive definitions of sequences.  To earn
+credit for it, you must complete this randomized problem correctly
+three times in a row.
+
+.. avembed:: Exercises/PL/RP33part1.html ka
+
+RP 33 Part 2
+------------
+
+This problem deals with one more example of a recursive definition of
+a sequence.
+
+.. avembed:: Exercises/PL/RP33part2.html ka
+
