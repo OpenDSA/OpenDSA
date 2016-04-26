@@ -104,6 +104,10 @@
       "SlidesCanvas/Indexing": {
         "long_name": "Week 12-13: Indexing",
         "sections" : {}
+      },
+      "SlidesCanvas/Graphs": {
+        "long_name": "Week 12-13: Graphs",
+        "sections" : {}
       }
     }
   }
