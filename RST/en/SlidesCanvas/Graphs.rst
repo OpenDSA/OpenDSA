@@ -6,14 +6,12 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-.. slideconf::
-   :autoslides: False
-
 ======
 Graphs
 ======
 
-.. slide:: Graphs
+Graphs
+~~~~~~
 
    * A graph :math:`G = (V, E)` consists of a set of vertices :math:`V`,
      and a set of edges :math:`E`, such that each edge in :math:`E` is a
@@ -30,7 +28,8 @@ Graphs
 
    .. odsascript:: AV/Graph/GdirundirCON.js
 
-.. slide:: Paths, Cycles
+Paths, Cycles
+~~~~~~~~~~~~~
 
    .. inlineav:: GneighborCON dgm
       :output: show
@@ -43,7 +42,8 @@ Graphs
    .. odsascript:: AV/Graph/GpathDefCON.js
 
 
-.. slide:: Connected Components
+Connected Components
+~~~~~~~~~~~~~~~~~~~~
 
    .. inlineav:: GconcomCON dgm
       :output: show
@@ -54,7 +54,8 @@ Graphs
      connected components.
 
 
-.. slide:: Directed Graph Representation
+Directed Graph Representation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    .. inlineav:: GdirRepCON dgm 
       :output: show
@@ -62,7 +63,8 @@ Graphs
    .. odsascript:: AV/Graph/GdirRepCON.js
 
 
-.. slide:: Undirected Graph Representation
+Undirected Graph Representation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    .. inlineav:: GundirRepCON dgm 
       :output: show 
@@ -70,7 +72,8 @@ Graphs
    .. odsascript:: AV/Graph/GundirRepCON.js
 
 
-.. slide:: Representation Space Costs
+Representation Space Costs
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    * Adjacency Matrix Space:
       * :math:`|V|^2`
@@ -81,24 +84,22 @@ Graphs
       * Larger constants
 
 
-.. slide:: Graph ADT
+Graph ADT
+~~~~~~~~~
 
    .. codeinclude:: Graphs/Graph 
       :tag: GraphADT
 
 
-.. slide:: .
-
-   .
-
-
-.. slide:: Visiting Neighbors
+Visiting Neighbors
+~~~~~~~~~~~~~~~~~~
 
    .. codeinclude:: Graphs/GraphDummy 
       :tag: GraphNeighbor
 
 
-.. slide:: Graph Traversals
+Graph Traversals
+~~~~~~~~~~~~~~~~
 
    * Some applications require visiting every vertex in the graph exactly
      once.
@@ -111,7 +112,8 @@ Graphs
       * Shortest paths problems
 
 
-.. slide:: Graph Traversals (2)
+Graph Traversals (2)
+~~~~~~~~~~~~~~~~~~~~
 
    * To insure visiting all vertices:
 
@@ -119,46 +121,43 @@ Graphs
       :tag: GraphTrav
 
 
-.. slide:: Depth First Search (1)
+Depth First Search (1)
+~~~~~~~~~~~~~~~~~~~~~~
 
    .. codeinclude:: Graphs/DFS 
       :tag: DFS
 
 
-.. slide:: Depth First Search (2)
+Depth First Search (2)
+~~~~~~~~~~~~~~~~~~~~~~
 
    .. avembed:: AV/Graph/graphDFS.html ss
 
    Cost: :math:`\Theta(|V| + |E|)`.
 
 
-.. slide:: .
-
-   .
-
-
-.. slide:: Breadth First Search (1)
+Breadth First Search (1)
+~~~~~~~~~~~~~~~~~~~~~~~~
 
    * Like DFS, but replace stack with a queue.
       * Visit vertex’s neighbors before continuing deeper in the tree.
 
 
-.. slide:: Breadth First Search (2)
+Breadth First Search (2)
+~~~~~~~~~~~~~~~~~~~~~~~~
 
    .. codeinclude:: Graphs/BFS 
       :tag: BFS
 
 
-.. slide:: Breadth First Search (3)
+Breadth First Search (3)
+~~~~~~~~~~~~~~~~~~~~~~~~
 
    .. avembed:: AV/Graph/graphBFS.html ss
 
 
-.. slide:: .
-
-   .
-
-.. slide:: Topological Sort
+Topological Sort
+~~~~~~~~~~~~~~~~
 
    * Problem: Given a set of jobs, courses, etc., with prerequisite
      constraints, output the jobs in an order that does not violate
@@ -170,44 +169,34 @@ Graphs
    .. odsascript:: AV/Graph/topsortCON.js
 
 
-.. slide:: Depth-First Topological Sort (1)
+Depth-First Topological Sort (1)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    .. codeinclude:: Graphs/TopsortDFS 
       :tag: TopsortDFS
 
 
-.. slide:: Depth-First Topological Sort (1)
+Depth-First Topological Sort (1)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    .. avembed:: AV/Graph/topSort.html ss
 
 
-.. slide:: .
-
-   .
-
-
-.. slide:: Queue-Based Topsort (1)
+Queue-Based Topsort (1)
+~~~~~~~~~~~~~~~~~~~~~~~
 
    .. codeinclude:: Graphs/TopsortBFS 
       :tag: TopsortBFS
 
 
-.. slide:: .
-
-   .
-
-
-.. slide:: Queue-Based Topsort (2)
+Queue-Based Topsort (2)
+~~~~~~~~~~~~~~~~~~~~~~~
 
    .. avembed:: AV/Graph/qTopSort.html ss
 
 
-.. slide:: .
-
-   .
-
-
-.. slide:: Shortest Paths Problems
+Shortest Paths Problems
+~~~~~~~~~~~~~~~~~~~~~~~
 
    * Input: A graph with weights or costs associated with each edge.
 
@@ -221,7 +210,8 @@ Graphs
    * Will actually calculate only distances.
 
 
-.. slide:: Shortest Paths Definitions
+Shortest Paths Definitions
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    * :math:`d(A, B)` is the shortest distance from vertex :math:`A` to
      :math:`B`.
@@ -237,7 +227,8 @@ Graphs
    .. odsascript:: AV/Graph/dijkstraCON.js
 
 
-.. slide:: Single-Source Shortest Paths
+Single-Source Shortest Paths
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    * Given start vertex :math:`s`, find the shortest path from
      :math:`s` to all other vertices.
@@ -252,22 +243,21 @@ Graphs
    * Solution: Process vertices in order of distance from :math:`s`.
 
 
-.. slide:: Dijkstra’s Algorithm Example
+Dijkstra’s Algorithm Example
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  
    .. avembed:: AV/Graph/DijkstraAV.html ss
 
 
-.. slide:: .
-
-   .
-
-.. slide:: Dijkstra’s Implementation
+Dijkstra’s Implementation
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
    .. codeinclude:: Graphs/Dijkstra 
       :tag: GraphDijk1
 
 
-.. slide:: Implementing minVertex
+Implementing minVertex
+~~~~~~~~~~~~~~~~~~~~~~
 
    * Issue: How to determine the next-closest vertex? (I.e., implement
      ``minVertex``)
@@ -281,24 +271,22 @@ Graphs
       * Cost: :math:`\Theta((|V| + |E|)log|V|)`
 
 
-.. slide:: Approach 1
+Approach 1
+~~~~~~~~~~
 
    .. codeinclude:: Graphs/Dijkstra 
       :tag: MinVertex
 
 
-.. slide:: Approach 2
+Approach 2
+~~~~~~~~~~
 
    .. codeinclude:: Graphs/DijkstraPQ 
       :tag: DijkstraPQ
 
 
-.. slide:: .
-
-   .
-
-
-.. slide:: Minimal Cost Spanning Trees
+Minimal Cost Spanning Trees
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    * Minimal Cost Spanning Tree (MST) Problem:
 
@@ -309,7 +297,8 @@ Graphs
          2. keeps the vertices connected.
 
 
-.. slide:: MST Example
+MST Example
+~~~~~~~~~~~
 
    .. inlineav:: MCSTCON dgm
       :align: justify
@@ -317,23 +306,21 @@ Graphs
    .. odsascript:: AV/Graph/MCSTCON.js
 
 
-.. slide:: Prim’s MST Algorithm
+Prim’s MST Algorithm
+~~~~~~~~~~~~~~~~~~~~
 
    .. avembed:: AV/Graph/PrimAV.html ss
 
 
-.. slide:: .
-
-   .
-
-
-.. slide:: Implementation 1
+Implementation 1
+~~~~~~~~~~~~~~~~
 
    .. codeinclude:: Graphs/Prim
       :tag: Prims
 
 
-.. slide:: Alternate Implementation
+Alternate Implementation
+~~~~~~~~~~~~~~~~~~~~~~~~
 
    * As with Dijkstra’s algorithm, the key issue is determining which
      vertex is next closest.
@@ -345,7 +332,8 @@ Graphs
      corresponding Dijkstra’s algorithm implementations.
 
 
-.. slide:: Kruskal’s MST Algorithm (1)
+Kruskal’s MST Algorithm (1)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    * Initially, each vertex is in its own MST.
 
@@ -359,17 +347,14 @@ Graphs
         representation.
 
 
-.. slide:: Kruskal’s MST Algorithm (2)
+Kruskal’s MST Algorithm (2)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    .. avembed:: AV/Development/KruskalUFAV.html ss
 
 
-.. slide:: .
-
-   .
-
-
-.. slide:: Kruskal’s MST Algorithm (3)
+Kruskal’s MST Algorithm (3)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    * Cost is dominated by the time to remove edges from the heap.
       * Can stop processing edges once all vertices are in the same MST
