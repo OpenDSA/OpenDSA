@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 34 part 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1600" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP34part1p">
+          <p class="question">Consider the following Java program:</p>
+
+<table class="codeSnippet"><tr><td style="width: 20px;"></td><td>
+<pre>
+class A {
+    int x;
+    int  getX()               { return x;   }
+    void setX(int x)          { this.x = x; }
+    void mA(int v)            { x = v;      }
+}
+
+class B extends A {
+    int x, y;
+    int  getX()               { return x;   }    
+    void setX(int x)          { this.x = x; }
+    int  getY()               { return y;   }
+    void setY(int y)          { this.y = y; }
+    void mB(int v1, int v2)   { x = v1; 
+                                y = v2;     }
+}
+
+class C extends B {
+    int y;
+    int  getY()               { return y;   }
+    void setY(int y)          { this.y = y; }
+    void mC(int v)            { y = v;      }
+}
+
+class Exercise {
+
+    public static void main(String[] args) {
+	A a = new A(); 
+	B b = new B(); 
+        C c = new C();
+	a.setX(1);
+	b.setX(2);
+	b.setY(3);
+	c.setX(4);
+	c.setY(5);
+        a.mA(6);
+        b.mA(7);
+        c.mA(8);
+        b.mB(9,10);
+        c.mB(11,12);
+        c.mC(13);
+	System.out.println(a.getX());
+	System.out.println(b.getX());
+	System.out.println(b.getY());
+	System.out.println(c.getX());
+	System.out.println(c.getY());
+    }
+}
+</pre></td></tr></table>
+
+          <p class="question">
+	    What is the output of this program?</p>
+	  
+          <div class="solution">6, 9, 10, 11, 13</div>
+         <ul class="choices" data-category="true">
+            <li>1, 2, 3, 4, 5</li>
+            <li>6, 9, 10, 11, 13</li>
+            <li>6, 9, 10, 12, 13</li>
+            <li>6, 2, 3, 11, 5</li>
+	    <li>None of the above</li>
+          </ul>
+
+          <div class="hints">
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

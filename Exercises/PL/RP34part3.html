@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 34 part 3</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1600" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP34part3p">
+          <p class="question">Consider the following Java program:</p>
+
+<table class="codeSnippet"><tr><td style="width: 20px;"></td><td>
+<pre>
+class A extends Object  { 
+     void m1() { System.out.println("A_m1");  }
+     void m2() { System.out.println("A_m2");  } 
+     void m3() { m4();                        } 
+     void m4() { System.out.println("A_m4");  } 
+}
+class B extends A { 
+     void m2() { m1();                        } 
+     void m3() { super.m3();                  } 
+}
+class C extends B { 
+     void m1() { super.m1();
+                 System.out.println("C_m1");  }
+     void m2() { super.m2();                  } 
+     void m3() { super.m3();                  } 
+}
+class D extends C { 
+     void m2() { System.out.println("D_m2");  } 
+} 
+class E extends D {     
+     void m4() { super.m3();                  } 
+} 
+public class Exercise extends Object {
+        public static  void main(String[] args) {  
+            A a = new B();
+            a.m1();
+            a = new E();
+	    a.m1();
+	    a.m2();
+            a = new C();
+            a.m2();
+            a = new E();
+	    a.m3();
+        }
+}
+
+</pre></td></tr></table>
+
+          <p class="question">
+	    What is the output of this program?</p>
+	  
+          <div class="solution">A_m1 A_m1 C_m1 D_m2 A_m1 C_m1 then
+                goes into an infinite loop</div>
+         <ul class="choices" data-category="true">
+            <li>A_m1 then goes into an infinite loop</li>
+            <li>A_m1 A_m1 C_m1 D_m2 A_m1 C_m1 then crashes because some
+                method is not found</li>
+            <li>A_m1 A_m1 C_m1 D_m2 A_m1 C_m1 then goes into an infinite
+                loop</li>
+            <li>A_m1 A_m1 C_m1 D_m2 then goes into an infinite loop</li>
+	    <li>None of the above</li>
+          </ul>
+
+          <div class="hints">
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
