@@ -7,7 +7,7 @@
     "Java_Generic": { "ext":["java"], "label":"Java (Generic)","lang":"java"}
   },
   "tabbed_codeinc": false,
-  "module_origin": "http://algoviz.org",
+  "module_origin": "http://lti.cs.vt.edu",
   "exercise_server": "https://opendsa.cs.vt.edu/",
   "logging_server": "https://opendsa.cs.vt.edu/",
   "score_server": "https://opendsa.cs.vt.edu/",
