@@ -78,8 +78,12 @@
 		list[i] = tempj;
 		list[j] = tempi;
 	    }
-	}// shuffle
+	},// shuffle
 
+	getRnd(min,max) {
+	    return min + Math.floor((max-min+1) * Math.random());
+
+	}// getRnd function
     };// PLutils
     
     window.PLutils = window.PLutils || PLutils;

@@ -7,7 +7,7 @@
     var A = SLang.absyn;
     var E = SLang.env;
     var classEnv;
-    var defaultValue = E.createNum( -12345 );
+    var defaultValue;
     
 function nth(n) {
     switch (n+1) {
@@ -266,6 +266,7 @@ function myEval(p) {
     }
 }
 function interpret(source) {
+    defaultValue = E.createNum( -12345 );
     var output='';
 
     try {
@@ -283,6 +284,72 @@ function interpret(source) {
     return output;
 }
 
+
+function printExps(exps) {
+    return exps.reduce(function (a,e) { return a + " " + printExp(e); },"");
+}
+function printExp(exp) {
+    var i, params, args, result = "";
+    if (A.isVarExp(exp)) {
+	return A.getVarExpId(exp);
+    } else if (A.isFnExp(exp)) {
+	result  = "fn (";
+	params = A.getFnExpParams(exp);
+	for(i=0; i< params.length; i++) {
+	    result += params[i];
+	    if (i<params.length-1) {
+		result += ",";
+	    }
+	}
+	result += ") =>" + printExps(A.getFnExpBody(exp));
+	return result;
+    } else if (A.isAppExp(exp)) {
+	result = "(" + printExp(A.getAppExpFn(exp));	
+	args = A.getAppExpArgs(exp);
+	if (args.length > 0) {
+	    result += " ";
+	}
+	for(i=0; i<args.length-1; i++) {
+	    result += printExp(args[i]) + " ";
+	}
+	if (args.length>0) {
+	    result += printExp(args[args.length-1]);
+	}
+	result += ")";
+	return result;
+    } else if (A.isPrim1AppExp(exp)) {
+	return A.getPrim1AppExpPrim(exp) + "(" +
+	    printExp(A.getPrim1AppExpArg(exp)) + ")";
+    } else if (A.isPrim2AppExp(exp)) {
+	return "(" + printExp(A.getPrim2AppExpArg1(exp)) + 
+	    A.getPrim2AppExpPrim(exp) + printExp(A.getPrim2AppExpArg2(exp)) + 
+	    ")";
+    } else if (A.isIntExp(exp)) {
+	return A.getIntExpValue(exp);
+    } else if (A.isAssignExp(exp)) {
+	return "set " + A.getAssignExpVar(exp) + " = " + 
+	    printExp(A.getAssignExpRHS(exp));
+    } else if (A.isPrintExp(exp)) {
+	return "print " + printExp(A.getPrintExpExp(exp));
+    } else if (A.isIfExp(exp)) {
+	return "if " + printExp(A.getIfExpCond(exp)) + " then " +
+	    printExp(A.getIfExpThen(exp)) + " else " +
+	    printExp(A.getIfExpElse(exp));
+    } else if (A.isNewExp(exp)) {
+	return "new " + A.getNewExpClass(exp) + "(" + ")";
+    } else if (A.isMethodCall(exp)) {
+	return "call " + printExp(A.getMethodCallObject(exp)) + "." +
+	    A.getMethodCallMethod(exp) + "(" +
+	    ")";
+    } else {
+	throw new Error("Unknown expression type: " +
+		       JSON.stringify(exp));
+    }
+}// printExp function
+
+
 SLang.interpret = interpret; // make the interpreter public
+SLang.printExp = printExp;
+SLang.printExps = printExps;
 
 }());
