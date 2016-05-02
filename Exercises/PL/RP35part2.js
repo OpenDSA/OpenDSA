@@ -2,36 +2,25 @@
 (function() {
   "use strict";
 
-    var RP35part1 = {    
+    var RP35part2 = {    
 
 	init: function() {
 	    var SL = SLang;
 	    var A = SL.absyn;
 	    var E = SL.env;
-	    var vs = "xyz";
-	    var exp, expStr,value;
-	    var globalEnv = E.update(E.createEmptyEnv(),
-				     ["x","y","z"],
-				     [E.createNum(1),
-				      E.createNum(2),
-				      E.createNum(3)]);
-	    var allVariables, selectedVar;
-	    var varBoundToClosure, varBoundToInt;
-	    var rnd, params, body, env;
-	    var isClo = function (v) { return E.isClo(v.value); };
-	    var isNum = function (v) { return E.isNum(v.value); };
-
-
 	    var numClasses, cNames, mNames, vNames, mBodies;
 	    var methods, ast;
-	    var maxLength = 50;
+	    var maxLength = 70;
 	    // to limit the number of lines used up by the JSON format, pack
 	    // as much on each line (but only up to MaxLength characters)
 	    // Precondition: 
 	    //     exp is either a string, or an array in which the first
 	    //     element is always a string
+
+	    // because of the assumption above, this method does not work
+	    // for printing an AST in SLang 3 (e.g., the array of classes does
+	    // start with a string)
 	    function myStringify(indent,arr,maxLength) {
-		//function nSpaces(n) { return new Array(n+1).join(' '); }
 		var spaces = new Array(indent+1).join(' ');
 		var line = JSON.stringify(arr);
 		if (line.length <= maxLength) {
@@ -108,7 +97,6 @@
 						 A.createVarExp(vNames[0]),
 						 A.createVarExp(vNames[1])));
 		PLutils.shuffle(mBodies);		
-//		console.log(JSON.stringify(mBodies));
 	    }// initRandomParts function
 
 	    function makeRandomCall() {
@@ -208,88 +196,19 @@
 
 	    initRandomParts();
 	    ast = buildAST();
-	    if (PLutils.getRnd(0,1) === 0) {
-		this.program = getSourceCode(ast).join("<br />");
-		this.answer = "True";
-	    } else {
-		this.answer = "False";
-		switch (PLutils.getRnd(0,12)) {
-		case 0:  // replace 'extends' with 'extend'
-		    this.program = getSourceCode(ast).join("<br />")
-			.replace(/extends/g,"extend");
-		    break;
-		case 1:  // replace 'method main' with 'void main'
-		    this.program = getSourceCode(ast).join("<br />")
-			.replace(/method main/g,"void main");
-		    break;
-		case 2:  // replace 'extends Object" with ""
-		    this.program = getSourceCode(ast).join("<br />")
-			.replace(/extends Object /g,"");
-		    break;
-		case 3:  // replace 'protected' with "int"
-		    this.program = getSourceCode(ast).join("<br />")
-			.replace(/protected/g,"int");
-		    break;
-		case 4:  // replace 'protected ' with ""
-		    this.program = getSourceCode(ast).join("<br />")
-			.replace(/protected /g,"");
-		    break;
-		case 5:  // insert instance var declaration before main
-		    this.program = getSourceCode(ast);
-		    this.program.splice(this.program.length-4, 0, 
-					"  protected " + vNames[0]);
-		    this.program = this.program.join("<br />");
-		    break;
-		case 6:  // insert instance var declaration inside main
-		    this.program = getSourceCode(ast);
-		    this.program.splice(this.program.length-3, 0, 
-					"    protected " + vNames[0]);
-		    this.program = this.program.join("<br />");
-		    break;
-		case 7:  // insert semi-colon in first/only statement in main
-		    this.program = getSourceCode(ast);
-		    this.program[this.program.length-3] += ";";
-		    this.program = this.program.join("<br />");
-		    break;
-		case 8:  // rename Main to Driver
-		    this.program = getSourceCode(ast).join("<br />")
-		    .replace(/ Driver /g," Main ");
-		    break;
-		case 9:  // skip 'public' in main declaration
-		    this.program = getSourceCode(ast).join("<br />")
-		    .replace(/public /g,"");
-		    break;
-		case 10:  // insert 'public' in front of non-Driver classes
-		    this.program = getSourceCode(ast).join("<br />")
-			.replace(/class (..?) /g,"public class $1 ");
-		    break;
-		case 11:  // insert "return" in body of all methods
-		    this.program = getSourceCode(ast).join("<br />");
-		    // must have at least one method NOT in main
-		    if (this.program.match(/method [^D]+ Driver/)) {
-			    this.program = this.program
-			    .replace(/(method [^\)]+\) { )/g,"$1return ");
-		    } else {
-			this.answer = "True";	
-		    }
-		    break;
-		case 12:  // remove commas (if any) in method params
-		    this.program = getSourceCode(ast).join("<br />");
-		    // must have at least one method with 2 params
-		    if (this.program.match(/,/)) {
-			    this.program = this.program.replace(/,/g," ");
-		    } else {
-			this.answer = "True";	
-		    }
-		    break;
-		}
-	    }
+	    this.program = getSourceCode(ast).join("<br />");
+	    this.answer = JSON.stringify(ast);
+	    //console.log(this.answer);
+	}, // init function
 
-	    console.log(this.answer);
-	}// init function
+	validateAnswer: function (guess) {
+	    return this.answer.replace(/\s+/g,"") ===
+		guess.replace(/\s+/g,"");
+	}// validateAnswer function
+
     };
 
-    window.RP35part1 = window.RP35part1 || RP35part1;
+    window.RP35part2 = window.RP35part2 || RP35part2;
 
 }());
 

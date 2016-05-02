@@ -11,45 +11,6 @@
 	    var numClasses, cNames, mNames, vNames, mBodies;
 	    var methods, ast;
 	    var maxLength = 50;
-	    // to limit the number of lines used up by the JSON format, pack
-	    // as much on each line (but only up to MaxLength characters)
-	    // Precondition: 
-	    //     exp is either a string, or an array in which the first
-	    //     element is always a string
-	    function myStringify(indent,arr,maxLength) {
-		//function nSpaces(n) { return new Array(n+1).join(' '); }
-		var spaces = new Array(indent+1).join(' ');
-		var line = JSON.stringify(arr);
-		if (line.length <= maxLength) {
-		    return [ spaces + line ];
-		}
-		var i, result = [], prefix, suffix; 
-		for(i=0; i<arr.length; i++) {
-		    prefix = spaces + (i=== 0 ? "[ " : "  ");
-		    suffix = i === arr.length-1 ? "" : ",";
-		    if (typeof arr[i] === "object") {
-			line = JSON.stringify(arr[i]);
-			if (line.length <= maxLength) {
-			    result.push( prefix + line + suffix);
-			} else {
-			    result = result.concat(
-				myStringify(indent+2,arr[i],maxLength)
-			    );
-			}
-		    } else {
-			// array element is a string or a number
-			if (typeof(arr[i]) === "string") {
-			    result.push(prefix + '"' + arr[i] + '"' + suffix);
-			} else {
-			    result.push(prefix  + arr[i] + suffix);
-			}
-		    }
-
-		}
-		result[result.length-1] = 
-		    result[result.length-1] + "]";
-		return result;
-	    }// myStringify function
 
 	    function initRandomParts() {
 		var classNames = [ ["A","B","C"],
