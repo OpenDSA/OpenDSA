@@ -10,6 +10,7 @@
 	    var E = SL.env;
 	    var vTop, vTopCount, vMid, vMidCount, mMid, vBot, vBotCount, mBot;
 	    var ast, cNames, mNames;
+	    var varsFromMidUp, varsFromBotUp;
 
 	    function initRandomParts() {
 		var i;
@@ -32,7 +33,7 @@
 				 ["u","v","w"],
 				 ["s","t","u"] ];
 
-		PLutils.shuffle(options);
+		PLutils.shuffle(options); // used for method names
 		cNames = classNames[ PLutils.getRnd(0,classNames.length-1)];
 
 		// root (top) class
@@ -49,66 +50,104 @@
 		vBot = varNames[ PLutils.getRnd(0,varNames.length-1)];
 		vBotCount = PLutils.getRnd(1,3);
 		mBot = methodNames[ options[1] ];
+
 	    }// initRandomParts function
 
 	    function buildAST() {
-		var classes = [];
-		var i, j, classIndex, numIVars, iVars, methods;
-		var methodIndex = 0, params;
+		var tmp, classes = [];
+		var i, j, classIndex, numIVars, iVarsTop, iVarsMid, iVarsBot;
+		var methods, methodIndex = 0, params;
 		var body, fn, args, mainBody;
 
-		// top class
+		// pick instance variables for all classes
 		PLutils.shuffle(vTop);
-		iVars = [];
-		for(i=0; i<vTopCount; i++) { iVars.push(vTop[i]);  }
+		iVarsTop = [];
+		for(i=0; i<vTopCount; i++) { iVarsTop.push(vTop[i]);  }
+		PLutils.shuffle(vMid);
+		iVarsMid = [];
+		for(i=0; i<vMidCount; i++) { iVarsMid.push(vMid[i]);  }
+		PLutils.shuffle(vBot);
+		iVarsBot = [];
+		for(i=0; i<vBotCount; i++) { iVarsBot.push(vBot[i]);  }
+
+		// compute the unin of all ivars
+		// for top and middle classes
+		// for all three classes
+		tmp = [];
+		for(i=0; i<iVarsTop.length; i++) {
+		    tmp.push( iVarsTop[i] );
+		}
+		for(i=0; i<iVarsMid.length; i++) {
+		    tmp.push( iVarsMid[i] );
+		}
+		// remove dups
+		varsFromMidUp = tmp.filter(function(item, pos) {
+		    return tmp.indexOf(item) === pos;
+		});
+		for(i=0; i<iVarsBot.length; i++) {
+		    tmp.push( iVarsBot[i] );
+		}
+		// remove dups
+		varsFromBotUp = tmp.filter(function(item, pos) {
+		    return tmp.indexOf(item) === pos;
+		});
+
+		PLutils.shuffle(varsFromMidUp);
+		PLutils.shuffle(varsFromBotUp);
+		//console.log(varsFromMidUp);
+		//console.log(varsFromBotUp);
+
+		// top class
 		switch (vTopCount) {
 		    case 1: 
 		    params = [ "m" ]; 
-		    body = [A.createAssignExp(vTop[0],A.createVarExp("m"))]; 
+		    body = [A.createAssignExp(iVarsTop[0],
+					      A.createVarExp("m"))]; 
 		    break;
 		    case 2: 
 		    params = [ "m", "n" ]; 
-		    body = [ A.createAssignExp(vTop[0],A.createVarExp("m")),
-			     A.createAssignExp(vTop[1],A.createVarExp("n")) ]; 
+		    body = [ A.createAssignExp(iVarsTop[0],
+					       A.createVarExp("m")),
+			     A.createAssignExp(iVarsTop[1],
+					       A.createVarExp("n")) ]; 
 		    break;
 		    case 3: 
 		    params = [ "m", "n", "o" ]; 
-		    body = [ A.createAssignExp(vTop[0],A.createVarExp("m")),
-			     A.createAssignExp(vTop[1],A.createVarExp("n")),
-			     A.createAssignExp(vTop[2],A.createVarExp("o")) ]; 
+		    body = [ A.createAssignExp(iVarsTop[0],A.createVarExp("m")),
+			     A.createAssignExp(iVarsTop[1],A.createVarExp("n")),
+			     A.createAssignExp(iVarsTop[2],A.createVarExp("o"))
+			   ]; 
 
 		    break;
 		}
 		methods = [];
 		methods.push(A.createMethod("initialize",params,body));
-		classes.push(A.createClass(cNames[0],"Object",iVars,methods));
+		classes.push(A.createClass(cNames[0],"Object",
+					   iVarsTop,methods));
 
 		// middle class
-		PLutils.shuffle(vMid);
-		iVars = [];
-		for(i=0; i<vMidCount; i++) { iVars.push(vMid[i]);  }
 		methods = [];
 		params = [ "m", "n", "o"];
-		for(i=0; i<vMidCount; i++) { 
+		for(i=0; i<iVarsMid.length; i++) { 
 		    methods.push(A.createMethod(
 			mMid[i],[params[i]],
-			[ A.createAssignExp(iVars[i],
+			[ A.createAssignExp(varsFromMidUp[i],
 					    A.createVarExp(params[i])) ]));
 		}
-		classes.push(A.createClass(cNames[1],cNames[0],iVars,methods));
+		classes.push(A.createClass(cNames[1],cNames[0],
+					   iVarsMid,methods));
 
 		// bottom class
-		PLutils.shuffle(vBot);
-		iVars = [];
-		for(i=0; i<vBotCount; i++) { iVars.push(vBot[i]);  }
 		methods = [];
-		for(i=0; i<vBotCount; i++) { 
+		for(i=0; i<iVarsBot.length; i++) { 
 		    methods.push(A.createMethod(
 			mBot[i],[params[i]],
-			[ A.createAssignExp(iVars[i],
+			[ A.createAssignExp(varsFromBotUp[i],
 					    A.createVarExp(params[i])) ]));
 		}
-		classes.push(A.createClass(cNames[2],cNames[1],iVars,methods));
+		classes.push(A.createClass(cNames[2],cNames[1],
+					   iVarsBot,methods));
+
 
 		// main body
 		body = [];
@@ -290,6 +329,7 @@ function evalExpRP36part1(exp,envir) {
 
 	    initRandomParts();
 	    ast = buildAST();
+	    this.program = getSourceCode(ast).join("<br />");
 	    // eval the program
 	    SLang.output = "";
 	    SLang.elaborateDecls(A.getProgramDecls(ast));

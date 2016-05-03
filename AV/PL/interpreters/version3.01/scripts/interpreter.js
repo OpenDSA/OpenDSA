@@ -7,7 +7,8 @@
     var A = SLang.absyn;
     var E = SLang.env;
     var classEnv;
-    var defaultValue;
+    var defaultValue = E.createNum( -12345 );
+
     
 function nth(n) {
     switch (n+1) {
@@ -266,7 +267,6 @@ function myEval(p) {
     }
 }
 function interpret(source) {
-    defaultValue = E.createNum( -12345 );
     var output='';
 
     try {
