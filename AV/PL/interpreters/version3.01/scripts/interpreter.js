@@ -359,5 +359,6 @@ SLang.elaborateDecls = elaborateDecls;
 SLang.makeNewObject = makeNewObject;
 SLang.findAndInvokeMethod = findAndInvokeMethod;
 SLang.getClassNameInterp = getClassNameInterp;
+SLang.applyPrimitive = applyPrimitive;
 
 }());

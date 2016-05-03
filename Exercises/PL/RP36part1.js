@@ -53,7 +53,6 @@
 		var i, j, classIndex, numIVars, iVars, methods;
 		var methodIndex = 0, params;
 		var body, fn, args, mainBody;
-		var iVars, methods, params;
 
 		// top class
 		PLutils.shuffle(vTop);
@@ -143,7 +142,7 @@
 		for(i=0; i<numMethods-1; i++) {
 		    code += SLang.printExp(A.getMethodBody(m)[i]) + "; ";
 		}
-		code += SLang.printExp(A.getMethodBody(m)[numMethods-1]) + " }"
+		code += SLang.printExp(A.getMethodBody(m)[numMethods-1]) + " }";
 		return code;
 	    }
 	    function getSourceForClass(c) {
@@ -200,7 +199,7 @@
 	    }// getSourceCode function
 
 
-function RP36part1EvalExp(exp,envir) {
+function evalExpRP36part1(exp,envir) {
     var f, v, args, values, obj, sup;
     if (A.isIntExp(exp)) {
 	return E.createNum(A.getIntExpValue(exp));
@@ -208,15 +207,15 @@ function RP36part1EvalExp(exp,envir) {
 	return E.lookup(envir,A.getVarExpId(exp));
     } else if (A.isPrintExp(exp)) {
 	SLang.output += JSON.stringify(
-	    RP36part1EvalExp( A.getPrintExpExp(exp), envir ));
+	    evalExpRP36part1( A.getPrintExpExp(exp), envir ));
     } else if (A.isPrint2Exp(exp)) {
 	console.log( A.getPrint2ExpString(exp) +
 		     (A.getPrint2ExpExp(exp) !== null ?
-		      " " + JSON.stringify( RP36part1EvalExp( A.getPrint2ExpExp(exp), 
+		      " " + JSON.stringify( evalExpRP36part1( A.getPrint2ExpExp(exp), 
 						     envir ) )
 		      : ""));
     } else if (A.isAssignExp(exp)) {
-	v = RP36part1EvalExp(A.getAssignExpRHS(exp),envir);
+	v = evalExpRP36part1(A.getAssignExpRHS(exp),envir);
 	E.lookupReference(
                         envir,A.getAssignExpVar(exp))[0] = v;
 	return v;
@@ -224,15 +223,15 @@ function RP36part1EvalExp(exp,envir) {
 	return E.createClo(A.getFnExpParams(exp),
 				   A.getFnExpBody(exp),envir);
     } else if (A.isAppExp(exp)) {
-	f = RP36part1EvalExp(A.getAppExpFn(exp),envir);
-	args = RP36part1EvalExps(A.getAppExpArgs(exp),envir);
+	f = evalExpRP36part1(A.getAppExpFn(exp),envir);
+	args = evalExpRP36part1s(A.getAppExpArgs(exp),envir);
 	if (E.isClo(f)) {
 	    if (E.getCloParams(f).length !== args.length) {		
 		throw new Error("Runtime error: wrong number of arguments in " +
 				"a function call (" + E.getCloParams(f).length +
 				" expected but " + args.length + " given)");
 	    } else {
-		values = RP36part1EvalExps(E.getCloBody(f),
+		values = evalExpRP36part1s(E.getCloBody(f),
 			          E.update(E.getCloEnv(f),
 					   E.getCloParams(f),args));
 		return values[values.length-1];
@@ -241,28 +240,28 @@ function RP36part1EvalExp(exp,envir) {
 	    throw f + " is not a closure and thus cannot be applied.";
 	}
     } else if (A.isPrim1AppExp(exp)) {
-        return applyPrimitive(A.getPrim1AppExpPrim(exp),
-			      [RP36part1EvalExp(A.getPrim1AppExpArg(exp),envir)]);
+        return SLang.applyPrimitive(A.getPrim1AppExpPrim(exp),
+			      [evalExpRP36part1(A.getPrim1AppExpArg(exp),envir)]);
     } else if (A.isPrim2AppExp(exp)) {
-        return applyPrimitive(A.getPrim2AppExpPrim(exp),
-			      [RP36part1EvalExp(A.getPrim2AppExpArg1(exp),envir),
-			       RP36part1EvalExp(A.getPrim2AppExpArg2(exp),envir)]);
+        return SLang.applyPrimitive(A.getPrim2AppExpPrim(exp),
+			      [evalExpRP36part1(A.getPrim2AppExpArg1(exp),envir),
+			       evalExpRP36part1(A.getPrim2AppExpArg2(exp),envir)]);
     } else if (A.isIfExp(exp)) {
-	if (E.getBoolValue(RP36part1EvalExp(A.getIfExpCond(exp),envir))) {
-	    return RP36part1EvalExp(A.getIfExpThen(exp),envir);
+	if (E.getBoolValue(evalExpRP36part1(A.getIfExpCond(exp),envir))) {
+	    return evalExpRP36part1(A.getIfExpThen(exp),envir);
 	} else {
-	    return RP36part1EvalExp(A.getIfExpElse(exp),envir);
+	    return evalExpRP36part1(A.getIfExpElse(exp),envir);
 	}
     } else if (A.isThisExp(exp)) {
 	return E.lookup(envir,"_this");
     } else if (A.isNewExp(exp)) {
-	args = RP36part1EvalExps(A.getNewExpArgs(exp),envir);
+	args = evalExpRP36part1s(A.getNewExpArgs(exp),envir);
 	obj = SLang.makeNewObject(A.getNewExpClass(exp));
 	SLang.findAndInvokeMethod("initialize",A.getNewExpClass(exp),obj,args);
         return obj;
     } else if (A.isMethodCall(exp)) {
-	obj = RP36part1EvalExp(A.getMethodCallObject(exp),envir);
-	args = RP36part1EvalExps(A.getMethodCallArgs(exp),envir);
+	obj = evalExpRP36part1(A.getMethodCallObject(exp),envir);
+	args = evalExpRP36part1s(A.getMethodCallArgs(exp),envir);
 	return SLang.findAndInvokeMethod(A.getMethodCallMethod(exp),
 				   SLang.getClassNameInterp(E.getObjectState(obj)),
 				   obj, 
@@ -271,7 +270,7 @@ function RP36part1EvalExp(exp,envir) {
     } else if (A.isSuperCall(exp)) {
 	obj = E.lookup(envir,"_this");
 	sup = E.lookup(envir,"_super");
-	args = RP36part1EvalExps(A.getSuperCallArgs(exp),envir);
+	args = evalExpRP36part1s(A.getSuperCallArgs(exp),envir);
 	return SLang.findAndInvokeMethod(A.getSuperCallMethod(exp),
 				   E.getClassNameName(sup),
 				   obj, 
@@ -281,8 +280,8 @@ function RP36part1EvalExp(exp,envir) {
 	throw new Error("Error: Attempting to evaluate an invalid expression");
     }
 }
-	    function RP36part1EvalExps(list,envir) {
-		return list.map( function(e) { return RP36part1EvalExp(e,envir); } );
+	    function evalExpRP36part1s(list,envir) {
+		return list.map( function(e) { return evalExpRP36part1(e,envir); } );
 	    }
 
 
@@ -291,7 +290,7 @@ function RP36part1EvalExp(exp,envir) {
 	    // eval the program
 	    SLang.output = "";
 	    SLang.elaborateDecls(A.getProgramDecls(ast));
-	    var values = RP36part1EvalExps(A.getProgramMainBody(ast),
+	    var values = evalExpRP36part1s(A.getProgramMainBody(ast),
 				       E.createEmptyEnv());
 	    this.program = getSourceCode(ast).join("<br />");
 	    this.answer = SLang.output;
