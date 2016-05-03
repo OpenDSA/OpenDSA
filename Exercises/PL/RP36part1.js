@@ -23,7 +23,7 @@
 				    ["m1","m2","m3"],
 				    ["f1","f2","f3"],
 				    ["g1","g2","g3"] ];
-		
+		var options = [ 0, 1, 2, 3, 4];
 		var varNames = [ ["a","b","c"],
 				 ["b","c","d"],
 				 ["c","d","e"],
@@ -31,7 +31,10 @@
 				 ["x","y","z"],
 				 ["u","v","w"],
 				 ["s","t","u"] ];
+
+		PLutils.shuffle(options);
 		cNames = classNames[ PLutils.getRnd(0,classNames.length-1)];
+
 		// root (top) class
 		vTop = varNames[ PLutils.getRnd(0,varNames.length-1)];
 		vTopCount = PLutils.getRnd(1,3);
@@ -40,12 +43,12 @@
 		// middle class
 		vMid = varNames[ PLutils.getRnd(0,varNames.length-1)];
 		vMidCount = PLutils.getRnd(1,3);
-		mMid = methodNames[ PLutils.getRnd(0,methodNames.length-1)];
+		mMid = methodNames[ options[0] ];
 
 		// bottom class
 		vBot = varNames[ PLutils.getRnd(0,varNames.length-1)];
 		vBotCount = PLutils.getRnd(1,3);
-		mBot = methodNames[ PLutils.getRnd(0,methodNames.length-1)];
+		mBot = methodNames[ options[1] ];
 	    }// initRandomParts function
 
 	    function buildAST() {
