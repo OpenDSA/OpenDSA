@@ -98,7 +98,7 @@ function viewObjectAs(object,cName) {
     }
     throw new Error("Not an object: " + JSON.stringify(object));
 }
-function getClassName(state) {
+function getClassNameInterp(state) {
     if (state.length > 0 ) {
 	return state[0][0];
     } else {
@@ -235,7 +235,7 @@ function evalExp(exp,envir) {
 	obj = evalExp(A.getMethodCallObject(exp),envir);
 	args = evalExps(A.getMethodCallArgs(exp),envir);
 	return findAndInvokeMethod(A.getMethodCallMethod(exp),
-				   getClassName(E.getObjectState(obj)),
+				   getClassNameInterp(E.getObjectState(obj)),
 				   obj, 
 				   args
 				   );
@@ -338,8 +338,12 @@ function printExp(exp) {
     } else if (A.isNewExp(exp)) {
 	return "new " + A.getNewExpClass(exp) + "(" + ")";
     } else if (A.isMethodCall(exp)) {
+	args = [];
+	for(i=0; i<A.getMethodCallArgs(exp).length; i++) {
+	    args.push(printExp(A.getMethodCallArgs(exp)[i]));
+	}
 	return "call " + printExp(A.getMethodCallObject(exp)) + "." +
-	    A.getMethodCallMethod(exp) + "(" +
+	    A.getMethodCallMethod(exp) + "(" + args +
 	    ")";
     } else {
 	throw new Error("Unknown expression type: " +
@@ -351,5 +355,9 @@ function printExp(exp) {
 SLang.interpret = interpret; // make the interpreter public
 SLang.printExp = printExp;
 SLang.printExps = printExps;
+SLang.elaborateDecls = elaborateDecls;
+SLang.makeNewObject = makeNewObject;
+SLang.findAndInvokeMethod = findAndInvokeMethod;
+SLang.getClassNameInterp = getClassNameInterp;
 
 }());
