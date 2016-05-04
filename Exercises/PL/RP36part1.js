@@ -94,8 +94,6 @@
 
 		PLutils.shuffle(varsFromMidUp);
 		PLutils.shuffle(varsFromBotUp);
-		//console.log(varsFromMidUp);
-		//console.log(varsFromBotUp);
 
 		// top class
 		switch (vTopCount) {
@@ -337,7 +335,7 @@ function evalExpRP36part1(exp,envir) {
 				       E.createEmptyEnv());
 	    this.program = getSourceCode(ast).join("<br />");
 	    this.answer = SLang.output;
-	    console.log(this.answer);
+	    //console.log(this.answer);
 	}, // init function
 
 	validateAnswer: function (guess) {
