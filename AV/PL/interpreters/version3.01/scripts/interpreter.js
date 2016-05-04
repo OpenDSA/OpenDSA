@@ -156,6 +156,7 @@ function applyMethod(method,className,object,args) {
     return values[values.length-1];
 }
 function findAndInvokeMethod(methodName, className, object, args) {
+    SLang.numFindAndInvoke++;
     var theClass, method, methods;
     if (className === "Object") {
 	throw new Error("Unknown method: " + methodName);
