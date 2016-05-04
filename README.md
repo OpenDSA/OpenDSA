@@ -11,7 +11,7 @@ exercises.
 
 ## Documentation
 
-System documentation can be found at http://opendsa.readthedocs.org/.
+System documentation can be found at http://opendsa.readthedocs.io/.
 
 
 ## Setup
@@ -43,7 +43,7 @@ The source files for the documentation can be found in the "Doc"
 directory.
 Changes to the documentation source, once pushed back to the
 repository, will automatically revise the public version at
-readthedocs.org.
+readthedocs.io.
 You can also re-compile the documentation by going to the "Doc"
 directory and typing "make".
 The result will then be in "Doc/manual".

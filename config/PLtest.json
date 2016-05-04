@@ -1108,7 +1108,64 @@
             }
           }
 	}
+      },
+      "PL/SLang3concreteSyntax": {
+        "long_name": "Concrete Syntax of SLang 3",
+        "sections": {
+          "RP 35 Part 1": {
+            "RP35part1": {
+              "long_name": "RP set #35, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+	}
+      },
+      "PL/SLang3abstractSyntax": {
+        "long_name": "Abstract Syntax of SLang 3",
+        "sections": {
+          "RP 35 Part 2": {
+            "RP35part2": {
+              "long_name": "RP set #35, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+	}
+      },
+      "PL/SLang3objects": {
+        "long_name": "Object Representation in the Runtime System for SLang 3",
+        "sections": {
+          "RP 36 Part 1": {
+            "RP36part1": {
+              "long_name": "RP set #36, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+	}
+      },
+      "PL/SLang3interpreter": {
+        "long_name": "Implementation of the Interpreter for SLang 3",
+        "sections": {
+          "RP 37 Part 1": {
+            "RP37part1": {
+              "long_name": "RP set #37, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+	}
       }
+
     },
       "Appendices": {
       "PL/PL_Glossary": {
