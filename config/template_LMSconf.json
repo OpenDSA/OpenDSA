@@ -8,7 +8,7 @@
   "access_token": "",
   "LTI_consumer_key": "test",
   "LTI_secret": "secret",
-  "module_origin": "https://192.168.33.10:9292",
+  "module_origin": "https://192.168.33.10:3000",
   "exercise_server": "https://192.168.33.10:8443",
   "logging_server": "https://192.168.33.10:8443",
   "score_server": "https://192.168.33.10:8443"
