@@ -155,7 +155,7 @@ SIGCSE: min
 	python $(CONFIG_SCRIPT) config/SIGCSEDemo.json -c config/SIGCSEDemo_LMSconf.json -b SIGCSE
 
 CS3: min
-	python $(CONFIG_SCRIPT) config/CS3.json -c config/CS3_LMSconf.json -b CS3
+	python $(CONFIG_SCRIPT) config/CS3.json -b vt/cs1114/spring-2016/TR_1100am
 
 CS3vt: min
 	python $(CONFIG_SCRIPT) config/CS3.json -c config/CS3vt_LMSconf.json -b CS3vt

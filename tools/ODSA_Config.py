@@ -24,11 +24,10 @@ from urlparse import urlparse
 
 error_count = 0
 
-LTI_fields = ["odsa_username",  "odsa_password",  "target_LMS",  "LMS_url",  "course_code",  "access_token",  "LTI_consumer_key",  "LTI_secret",  'module_origin', 'title','exercise_server','logging_server','score_server']
-
 required_fields = ['chapters', 'code_lang']
 
-optional_fields = ['allow_anonymous_credit', 'assumes', 'av_origin', 'av_root_dir', 'build_cmap', 'build_dir', 'build_JSAV','code_dir', 'exercise_origin', 'exercises_root_dir', 'glob_mod_options', 'glob_exer_options', 'lang','req_full_ss', 'start_chap_num', 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir', 'dispModComp', 'tag', 'local_mode']
+optional_fields = ['allow_anonymous_credit', 'assumes', 'av_origin', 'av_root_dir', 'build_cmap', 'build_dir', 'build_JSAV','code_dir', 'exercise_origin', 'exercises_root_dir', 'glob_mod_options', 'glob_exer_options', 'lang','req_full_ss', 'start_chap_num', 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir', 'dispModComp', 'tag', 'local_mode', 'title', 'av_origin', 'av_root_dir']
+
 
 lang_file = os.path.abspath('tools/language_msg.json')
 
@@ -265,71 +264,6 @@ def validate_config_file(config_file_path, conf_data):
         sys.exit(1)
 
 
-# Validate LMS configuration file
-def validate_LMS_config_file(config_file_path, LMS_conf_data):
-    """" Load and validates LMS configuration file"""
-    global error_count
-
-    print "\nValidating " + config_file_path + '\n'
-
-    # load LMS config file
-    # Throw an error if the specified LMS config files doesn't exist
-    for field in LTI_fields:
-        if field not in LMS_conf_data:
-            print_err('ERROR: LMS_config file, %s, is missing required field, %s' % (config_file_path, field))
-            error_count += 1
-        else:
-            if LMS_conf_data[field] == '':
-                print_err('ERROR: LMS_config file, %s, has empty value for required field, %s' % (config_file_path, field))
-                error_count += 1
-
-    validate_origin(LMS_conf_data['module_origin'], 'module')
-
-    # Ensure optional fields are configured properly
-    if 'score_server' in LMS_conf_data and LMS_conf_data['score_server'] != '' and not LMS_conf_data['score_server'].startswith('https'):
-        print_err('WARNING: "score_server" should use HTTPS')
-
-    if 'av_origin' in LMS_conf_data:
-        validate_origin(LMS_conf_data['av_origin'], 'av')
-
-        # av_origin does not match the module origin, but av_root_dir does not point to a remote system
-        if ('av_root_dir' not in LMS_conf_data or not LMS_conf_data['av_root_dir'].startswith('http')) and LMS_conf_data['av_origin'] != LMS_conf_data['module_origin']:
-            print_err('ERROR: av_root_dir is local but av_origin does not match module_origin')
-            error_count += 1
-
-    if 'exercise_origin' in LMS_conf_data:
-        validate_origin(LMS_conf_data['exercise_origin'], 'exercise')
-
-        # exercise_origin does not match the module origin, but exercise_root_dir does not point to a remote system
-        if ('exercise_root_dir' not in LMS_conf_data or not LMS_conf_data['exercise_root_dir'].startswith('http')) and LMS_conf_data['exercise_origin'] != LMS_conf_data['module_origin']:
-            print_err('ERROR: exercise_root_dir is local but exercise_origin does not match module_origin')
-            error_count += 1
-
-    # Display an error message and exit if 'av_root_dir' is an absolute pathname to a remote system and its domain doesn't match 'module_origin' or 'av_origin' (or 'av_origin' isn't specified)
-    if 'av_root_dir' in LMS_conf_data and LMS_conf_data['av_root_dir'].startswith('http') and not LMS_conf_data['av_root_dir'].startswith(LMS_conf_data['module_origin']) and ('av_origin' not in LMS_conf_data or not LMS_conf_data['av_root_dir'].startswith(LMS_conf_data['av_origin'])):
-        error_count += 1
-
-        if 'av_origin' not in LMS_conf_data:
-            print_err('ERROR: "av_origin" not specified when "av_root_dir" points to a remote system')
-        else:
-            print_err('ERROR: "av_origin" does not match domain of remote "av_root_dir"')
-
-    # Display an error message and exit if 'exercises_root_dir' is an absolute
-    # pathname to a remote system and its domain doesn't match 'module_origin'
-    # or 'exercise_origin' (or 'exercise_origin' isn't specified)
-    if 'exercises_root_dir' in LMS_conf_data and LMS_conf_data['exercises_root_dir'].startswith('http') and not LMS_conf_data['exercises_root_dir'].startswith(LMS_conf_data['module_origin']) and ('exercise_origin' not in LMS_conf_data or not LMS_conf_data['exercises_root_dir'].startswith(LMS_conf_data['exercise_origin'])):
-        error_count += 1
-
-        if 'exercise_origin' not in LMS_conf_data:
-            print_err('ERROR: "exercise_origin" not specified when "exercises_root_dir" points to a remote system')
-        else:
-            print_err('ERROR: "exercise_origin" does not match domain of remote "exercises_root_dir"')
-
-
-    if error_count > 0:
-        print_err('Errors found: %d\n' % error_count)
-        sys.exit(1)
-
 def set_defaults(conf_data):
     """Assign default values to optional config attributes"""
 
@@ -401,53 +335,15 @@ def set_defaults(conf_data):
     if 'theme_dir' not in conf_data:
         conf_data['theme_dir'] = '%sRST/_themes' % odsa_dir
 
-    # conf_data['title'] = ''
-    # conf_data['av_origin'] = ''
-    # conf_data['av_root_dir'] = odsa_dir
+    conf_data['title'] = ''
+    conf_data['av_origin'] = ''
+    conf_data['av_root_dir'] = odsa_dir
     # conf_data['exercise_server'] = ''
     # conf_data['logging_server'] = ''
     # conf_data['score_server'] = ''
     # conf_data['module_origin'] = ''
     # conf_data['exercise_origin'] = ''
-    # conf_data['exercises_root_dir'] = odsa_dir
-
-def set_LMS_conf_defaults(conf_data, LMS_conf_data):
-    """Assign default values to optional config attributes"""
-
-    odsa_dir = get_odsa_dir()
-
-    # conf_data['code_dir'] = process_path(LMS_conf_data['code_dir'], odsa_dir)
-
-    # 'assumes' does not need to be initialized
-
-    # Assume exercises are hosted on same domain as modules
-    if 'av_origin' not in LMS_conf_data:
-        conf_data['av_origin'] = LMS_conf_data['module_origin']
-
-    # If no exercise_server is specified, use an empty string to specify a disabled server
-    if 'exercise_server' not in LMS_conf_data:
-        conf_data['exercise_server'] = ''
-
-    # If no logging_server is specified, use an empty string to specify a disabled server
-    if 'logging_server' not in LMS_conf_data:
-        conf_data['logging_server'] = ''
-
-    # If no score_server is specified, use an empty string to specify a disabled server
-    if 'score_server' not in LMS_conf_data:
-        conf_data['score_server'] = ''
-
-    # Strip the '/' from the end of the server URLs
-    conf_data['exercise_server'] = LMS_conf_data['exercise_server'].rstrip('/')
-    conf_data['logging_server'] = LMS_conf_data['logging_server'].rstrip('/')
-    conf_data['score_server'] = LMS_conf_data['score_server'].rstrip('/')
-
-    if 'module_origin' not in LMS_conf_data:
-        # Create a default module_origin for later processing
-        conf_data['module_origin'] = ''
-
-    # Assume exercises are hosted on same domain as modules
-    if 'exercise_origin' not in LMS_conf_data:
-        conf_data['exercise_origin'] = LMS_conf_data['module_origin']
+    conf_data['exercises_root_dir'] = odsa_dir
 
 
 def group_exercises(conf_data):
@@ -576,8 +472,7 @@ class ODSA_Config:
     def __setitem__(self, key, value):
         self.__dict__[key] = value
 
-    # def __init__(self, config_file_path, output_directory=None, create_course=False):
-    def __init__(self, config_file_path, output_directory=None, LMS_config_file=None):
+    def __init__(self, config_file_path, output_directory=None):
         """Initializes an ODSA_Config object by reading in the JSON config file, setting default values, and validating the configuration"""
 
         conf_data = read_conf_file(config_file_path)
@@ -591,29 +486,7 @@ class ODSA_Config:
         # Make sure the config file is valid
         validate_config_file(config_file_path, conf_data)
 
-
-        if LMS_config_file is not None:
-            # Throw an error if the specified LMS config files doesn't exist
-            # LMS_config = config_file_path[:-5] + '_LMSconf.json'
-
-            # LMS_conf_data = read_conf_file(LMS_config)
-            LMS_conf_data = read_conf_file(LMS_config_file)
-
-            # Assign defaults to optional settings
-            set_LMS_conf_defaults(conf_data, LMS_conf_data)
-
-            # validate LMS config data
-            # validate_LMS_config_file(LMS_config, LMS_conf_data)
-            validate_LMS_config_file(LMS_config_file, LMS_conf_data)
-
-            for field in LMS_conf_data:
-                self[field] = LMS_conf_data[field]
-        else:
-            for field in LTI_fields:
-                self[field] = ''
-
-
-        # Convert the Python booleans to JavaScript booleans
+       # Convert the Python booleans to JavaScript booleans
         conf_data['allow_anonymous_credit'] = str(conf_data['allow_anonymous_credit']).lower()
 
         conf_data['req_full_ss'] = str(conf_data['req_full_ss']).lower()
@@ -656,12 +529,6 @@ class ODSA_Config:
 
         # The Unix-style relative path between the build directory and the OpenDSA root directory
         self.rel_build_to_odsa_path = os.path.relpath(self.odsa_dir, self.book_dir + self.rel_book_output_path).replace("\\", "/") + '/'
-
-        # LMS course_id, will be filled later while course creation.
-        self.course_id = ''
-
-        # LMS assignment_group_id, will be filled later while course creation.
-        self.assignment_group_id = ''
 
         # module canvas id map, will be filled later while course creation.
         self.module_map = {}
