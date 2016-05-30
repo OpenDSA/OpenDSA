@@ -26,7 +26,7 @@ error_count = 0
 
 required_fields = ['chapters', 'code_lang']
 
-optional_fields = ['allow_anonymous_credit', 'assumes', 'av_origin', 'av_root_dir', 'build_cmap', 'build_dir', 'build_JSAV','code_dir', 'exercise_origin', 'exercises_root_dir', 'glob_mod_options', 'glob_exer_options', 'lang','req_full_ss', 'start_chap_num', 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir', 'dispModComp', 'tag', 'local_mode', 'title', 'av_origin', 'av_root_dir']
+optional_fields = ['assumes', 'av_origin', 'av_root_dir', 'build_cmap', 'build_dir', 'build_JSAV','code_dir', 'exercise_origin', 'exercises_root_dir', 'glob_mod_options', 'glob_exer_options', 'lang','req_full_ss', 'start_chap_num', 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir', 'dispModComp', 'tag', 'local_mode', 'title', 'av_origin', 'av_root_dir']
 
 
 lang_file = os.path.abspath('tools/language_msg.json')
@@ -284,10 +284,6 @@ def set_defaults(conf_data):
         conf_data['exercises_root_dir'] = odsa_dir
 
 
-    # Allow anonymous credit by default
-    if 'allow_anonymous_credit' not in conf_data:
-        conf_data['allow_anonymous_credit'] = True
-
     # 'assumes' does not need to be initialized
 
     if 'build_dir' not in conf_data:
@@ -485,9 +481,6 @@ class ODSA_Config:
 
         # Make sure the config file is valid
         validate_config_file(config_file_path, conf_data)
-
-       # Convert the Python booleans to JavaScript booleans
-        conf_data['allow_anonymous_credit'] = str(conf_data['allow_anonymous_credit']).lower()
 
         conf_data['req_full_ss'] = str(conf_data['req_full_ss']).lower()
 

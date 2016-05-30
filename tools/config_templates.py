@@ -412,8 +412,6 @@ config_js_template = '''\
   //@efouh: added this variable back because it is needed by gradebook.html
   settings.BOOK_NAME = "%(book_name)s";
   settings.BOOK_LANG = "%(lang)s";
-  // Flag controlling whether or not the system will assign credit (scores) obtained by anonymous users to the next user to log in
-  settings.ALLOW_ANON_CREDIT = %(allow_anonymous_credit)s;
   settings.REQ_FULL_SS = %(req_full_ss)s;
   settings.BUILD_TO_ODSA = "OpenDSA/";
   settings.LOCAL_MODE = %(local_mode)s;
