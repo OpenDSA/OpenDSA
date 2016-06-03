@@ -312,7 +312,7 @@ function evalExpRP37part1(exp,envir) {
 	obj = E.lookup(envir,"_this");
 	sup = E.lookup(envir,"_super");
 	args = evalExpsRP37part1(A.getSuperCallArgs(exp),envir);
-	return Slang.findAndInvokeMethod(A.getSuperCallMethod(exp),
+	return SLang.findAndInvokeMethod(A.getSuperCallMethod(exp),
 				   E.getClassNameName(sup),
 				   obj, 
 				   args
@@ -334,8 +334,8 @@ function evalExpRP37part1(exp,envir) {
 	    var values = evalExpsRP37part1(A.getProgramMainBody(ast),
 				       E.createEmptyEnv());
 	    this.program = getSourceCode(ast).join("<br />");
-	    this.answer = SLang.numFindAndInvoke;
-	    console.log(this.answer);
+	    this.answer = SLang.numFindAndInvoke + "";
+	    //console.log(this.answer);
 	}, // init function
 
 	validateAnswer: function (guess) {
