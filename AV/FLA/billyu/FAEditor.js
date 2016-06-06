@@ -1,4 +1,5 @@
 (function ($) {
+	console.log("executing FAEditor.js");
 	var jsav = new JSAV("av"), // Instance variable to store the JSAV algorithm visualization.
 		jsavArray, // Instance variable to store the JSAV array (in which input strings are displayed).
 		first = null, // Instance variable to store the first node clicked in "Add Edges" mode.
