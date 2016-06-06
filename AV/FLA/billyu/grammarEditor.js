@@ -84,54 +84,59 @@
       if (index2 === 1) {
         return;
       }
-      var prev = this.value(index, index2);
-      // create an input box for editing the cell
-      $('#firstinput').remove();
-      var createInput = "<input type='text' id='firstinput' value="+prev+">";
-      $('body').append(createInput);
-      var offset = this._arrays[index]._indices[index2].element.offset();
-      var topOffset = offset.top;
-      var leftOffset = offset.left;
-      var fi = $('#firstinput');
-      fi.offset({top: topOffset, left: leftOffset});
-      fi.outerHeight($('.jsavvalue').height());
-      fi.width($(this._arrays[index]._indices[index2].element).width());
-      fi.focus();
-      // finalize the changes to the grammar when the enter key is pressed
-      fi.keyup(function(event){
-        if(event.keyCode == 13){
-          var input = $(this).val();
-          var regex = new RegExp(emptystring, g);
-          input = input.replace(regex, "");
-          if (input === "" && index2 === 2) {
-            input = emptystring;
-          }
-          if (index2 === 0 && (input.length !== 1 || variables.indexOf(input) === -1)) {
-            alert('Invalid left-hand side.');
-            return;
-          }
-          if (index2 === 0 && _.find(arr, function(x) { return x[0] === input && x[2] === arr[index][2];})) {
-            alert('This production already exists.');
-            return;
-          }
-          if (index2 === 2 && _.find(arr, function(x) { return x[0] === arr[index][0] && x[2] === input;})) {
-            alert('This production already exists.');
-            return;
-          }
-          if (index2 === 0 && !arr[index][2]) {
-            m.value(index, 2, emptystring);
-            arr[index][2] = emptystring;
-          }
-          m.value(index, index2, input);
-          arr[index][index2] = input;
-          // adding a new production
-          addProduction(index);
-          layoutTable(m, 2);
-          fi.remove();
-        }
-      });
+			focus(index, index2);
     }
   };
+
+	function focus(index, index2) {
+		var prev = m.value(index, index2);
+		// create an input box for editing the cell
+		$('#firstinput').remove();
+		var createInput = "<input type='text' id='firstinput' onfocus='this.value = this.value;' value="+prev+">";
+		$('body').append(createInput);
+		var offset = m._arrays[index]._indices[index2].element.offset();
+		var topOffset = offset.top;
+		var leftOffset = offset.left;
+		var fi = $('#firstinput');
+		fi.offset({top: topOffset, left: leftOffset});
+		fi.outerHeight($('.jsavvalue').height());
+		fi.width($(m._arrays[index]._indices[index2].element).width());
+		fi.focus();
+		// finalize the changes to the grammar when the enter key is pressed
+		fi.keyup(function(event){
+			if(event.keyCode == 13){
+				var input = $(this).val();
+				var regex = new RegExp(emptystring, g);
+				input = input.replace(regex, "");
+				if (input === "" && index2 === 2) {
+					input = emptystring;
+				}
+				if (index2 === 0 && (input.length !== 1 || variables.indexOf(input) === -1)) {
+					alert('Invalid left-hand side.');
+					return;
+				}
+				if (index2 === 0 && _.find(arr, function(x) { return x[0] === input && x[2] === arr[index][2];})) {
+					alert('This production already exists.');
+					return;
+				}
+				if (index2 === 2 && _.find(arr, function(x) { return x[0] === arr[index][0] && x[2] === input;})) {
+					alert('This production already exists.');
+					return;
+				}
+				if (index2 === 0 && !arr[index][2]) {
+					m.value(index, 2, emptystring);
+					arr[index][2] = emptystring;
+				}
+				m.value(index, index2, input);
+				arr[index][index2] = input;
+				// adding a new production
+				addProduction(index);
+				layoutTable(m, 2);
+				fi.remove();
+			}
+		});
+	}
+
   // Function to check to see if a new row should be added and lengthen the array
   var addProduction = function (index) {
     if (m.value(index, 0) && index === lastRow) {
