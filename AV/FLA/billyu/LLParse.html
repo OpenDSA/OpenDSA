@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Grammar Editor</title>
+  <title>LL Parsing</title>
   <link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
   <link rel="stylesheet" href="../resources/FA.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 	<link rel="stylesheet" href="./tester.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
@@ -52,23 +52,15 @@
 </head>
 <body>
   <div id="container">
-    <h1>Grammar Editor</h1>
+    <h1 id="ll">LL Parsing Exercise</h1>
     <div align="center">
       <span id='mode'></span><br>
-      <button type="button" id="editbutton">Edit</button>
-      <button type="button" id="deletebutton">Delete</button>
-      <button type="button" id="bfpbutton">Brute Force Parse</button>
-      <button type="button" id="llbutton">LL(1) Parse</button>
-      <button type="button" id="slrbutton">SLR(1) Parse</button>
       <button type="button" class="parsingbutton" id="followbutton">Next</button>
       <button type="button" class="parsingbutton" id="slrdfabutton">Next</button>
       <button type="button" class="parsingbutton" id="parsetablebutton">Next</button>
       <button type="button" class="parsingbutton" id="parsereadybutton">Next</button>
       <button type="button" class="parsingbutton" id="parsebutton">Parse</button>
       <button type="button" id="backbutton">Back</button><br>
-      <button type="button" id="convertRLGbutton">Convert RLG to FA</button>
-      <button type="button" id="convertCFGbutton">Convert CFG to PDA (LL)</button>
-      <button type="button" id="transformbutton">Transform Grammar</button>
       <div id="dfabuttons">
         <button type="button" id="movebutton">Move</button>
         <button type="button" id="finalbutton">Make final</button>
@@ -96,6 +88,6 @@
   <script src="../../../JSAV/build/JSAV.js"></script>
   <script src="../resources/underscore-min.js"></script>
   <script src="../resources/FA.js"></script>
-  <script src="./grammarEditor.js"></script>
+	<script src="./grammarEditor.js"></script>
 </body>
 </html>

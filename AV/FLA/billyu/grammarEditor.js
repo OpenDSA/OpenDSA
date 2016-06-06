@@ -1,3 +1,4 @@
+(function($) {
   var variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var jsav = new JSAV("av");
   var arrow = String.fromCharCode(8594),
@@ -13,7 +14,8 @@
       arrayStep,          // the position of FIRST or FOLLOW cells
       selectedNode,       // used for FA/graph editing
       modelDFA,           // DFA used to build SLR parse table
-      builtDFA;           // DFA created by the user
+      builtDFA,           // DFA created by the user
+			type; 							// type of parsing, can be bf, ll, slr
 
   var lambda = String.fromCharCode(955),
       epsilon = String.fromCharCode(949),
@@ -1081,7 +1083,7 @@
     $('#convertCFGbutton').hide();
     $('#transformbutton').hide();
     $('.jsavcontrols').show();
-    $('#backbutton').show();
+		if (type !== "ll") $('#backbutton').show();
     $('#bfpbutton').hide();
     $('#llbutton').hide();
     $('#slrbutton').hide();
@@ -2787,13 +2789,42 @@
   $('#convertCFGbutton').click(convertToPDA);
 
 	function onLoadHandler() {
-		var type = $("h1").attr('id');
+		type = $("h1").attr('id');
 		if (type == "bf") {
+			$('#loadFile').hide();
+			$('#saveFile').hide();	
+			$('#backbutton').hide();
+			$.ajax({
+				url: "./grammarTests.xml",
+				dataType: 'xml',
+				async: true,
+				success: function(data) {
+					var xmlText = new XMLSerializer().serializeToString(data);
+					parseFile(xmlText);
+					bfParse();
+				}
+			});
 			return;
 		}
+		else if (type == "ll") {
+			$('#loadFile').hide();
+			$('#saveFile').hide();	
+			$('#backbutton').hide();
+			$.ajax({
+				url: "./grammarTests.xml",
+				dataType: 'xml',
+				async: true,
+				success: function(data) {
+					var xmlText = new XMLSerializer().serializeToString(data);
+					parseFile(xmlText);
+					llParse();
+				}
+			});
+			return;
+		}	
 		m = init();
   	$('.jsavmatrix').addClass("editMode");
 	}
 
 	onLoadHandler();
-
+}(jQuery));
