@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Grammar Editor</title>
+  <link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+  <link rel="stylesheet" href="../resources/FA.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+	<link rel="stylesheet" href="./tester.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+  <style>
+    #container {
+      width: 1000px;
+    }
+    .jsavmatrix .jsavnode {
+      cursor: pointer;
+    }
+    .jsavmatrix .jsavvalue {
+      width: 100px;
+    }
+    .jsavmatrix {
+      margin-top: 50px;
+    }
+    .jsavtree {
+      position: relative;
+    }
+    p.jsavoutput.jsavline {
+      height: 10px;
+    }
+    .parsingbutton {
+      display: none;
+    }
+    #backbutton {
+      display: none;
+    }
+    #dfabuttons {
+      display: none;
+    }
+    .terminal {
+      background-color: lightgreen;
+    }
+    .parsetree {
+      outline: transparent;
+    }
+    .jsavedge {
+      stroke-width: 2;
+    }
+    .jsavcanvas {
+      height: auto;
+    }
+    #av {
+      padding-bottom: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>Grammar Editor</h1>
+    <div align="center">
+      <span id='mode'></span><br>
+      <button type="button" id="editbutton">Edit</button>
+      <button type="button" id="deletebutton">Delete</button>
+      <button type="button" id="bfpbutton">Brute Force Parse</button>
+      <button type="button" id="llbutton">LL(1) Parse</button>
+      <button type="button" id="slrbutton">SLR(1) Parse</button>
+      <button type="button" class="parsingbutton" id="followbutton">Next</button>
+      <button type="button" class="parsingbutton" id="slrdfabutton">Next</button>
+      <button type="button" class="parsingbutton" id="parsetablebutton">Next</button>
+      <button type="button" class="parsingbutton" id="parsereadybutton">Next</button>
+      <button type="button" class="parsingbutton" id="parsebutton">Parse</button>
+      <button type="button" id="backbutton">Back</button><br>
+      <button type="button" id="convertRLGbutton">Convert RLG to FA</button>
+      <button type="button" id="convertCFGbutton">Convert CFG to PDA (LL)</button>
+      <button type="button" id="transformbutton">Transform Grammar</button>
+      <div id="dfabuttons">
+        <button type="button" id="movebutton">Move</button>
+        <button type="button" id="finalbutton">Make final</button>
+        <button type="button" id="gotobutton">Continue DFA</button>
+      </div>
+      <input style="display: none;" type="button" id="convertmovebutton" value="Move states">
+    </div>
+    <div id="av">
+      <div class="jsavcontrols">  
+      </div>
+      <p align="center" class="jsavoutput jsavline"></p>
+    </div>
+    <div id="files">
+      <input id="savefile" type="button" value="Save">
+      <input id="loadfile" type="file">
+      <div style='display: none;'id='download'></div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+  <script src="../../../JSAV/lib/raphael.js"></script>
+  <script src="../../../JSAV/lib/jquery.transit.js"></script>
+  <script src="../../../JSAV/lib/dagre.min.js"></script>
+  <script src="../../../JSAV/build/JSAV.js"></script>
+  <script src="../resources/underscore-min.js"></script>
+  <script src="../resources/FA.js"></script>
+  <script src="./grammarEditor.js"></script>
+</body>
+</html>
