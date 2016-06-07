@@ -15,7 +15,9 @@
       selectedNode,       // used for FA/graph editing
       modelDFA,           // DFA used to build SLR parse table
       builtDFA,           // DFA created by the user
-			type; 							// type of parsing, can be bf, ll, slr
+			type, 							// type of parsing, can be bf, ll, slr
+			grammars,						// stores grammar exercises, xml
+			currentExercise = 0;// current exercise index
 
   var lambda = String.fromCharCode(955),
       epsilon = String.fromCharCode(949),
@@ -2738,22 +2740,30 @@
 
   // Loading:
   // Function to read the loaded XML file and create the grammar
-  var parseFile = function (text) {
+  var parseFile = function (text, condition) {
     var parser,
-        xmlDoc;
-    if (window.DOMParser) {
-      parser=new DOMParser();
-      xmlDoc=parser.parseFromString(text,"text/xml");
-    } else {
-      xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
-      xmlDoc.async=false;
-      xmlDoc.loadXML(text);
-    }
-    if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue !== 'grammar') {
-      alert('File does not contain a grammar.');
-    } else {
-      arr = [];
-      var xmlElem = xmlDoc.getElementsByTagName("production");
+        xmlDoc,
+				xmlElem;
+		if (!condition) {
+			if (window.DOMParser) {
+				parser=new DOMParser();
+				xmlDoc=parser.parseFromString(text,"text/xml");
+			} else {
+				xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+				xmlDoc.async=false;
+				xmlDoc.loadXML(text);
+			}
+			if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue !== 'grammar') {
+				alert('File does not contain a grammar.');
+				return;
+			} else {
+				xmlElem = xmlDoc.getElementsByTagName("production");
+			}
+		}
+		else {
+			xmlElem = text.getElementsByTagName("production");
+		} 
+			arr = [];
       for (var i = 0; i < xmlElem.length; i++) {
         var l = xmlElem[i].getElementsByTagName("left")[0].childNodes[0].nodeValue;
         var r = xmlElem[i].getElementsByTagName("right")[0].childNodes[0].nodeValue;
@@ -2765,13 +2775,13 @@
       arr.push(["", arrow, ""]);
       m = init();
       $('.jsavmatrix').addClass("editMode");
-    }
     // clear input
     var loaded = $('#loadfile');
     loaded.wrap('<form>').closest('form').get(0).reset();
     loaded.unwrap();
     return;
   };
+
   // Function for reading the XML file
   var waitForReading = function (reader) {
     reader.onloadend = function(event) {
@@ -3062,57 +3072,65 @@
 
 	function onLoadHandler() {
 		type = $("h1").attr('id');
-		if (type == "bf") {
-			$('#loadFile').hide();
-			$('#saveFile').hide();	
-			$('#backbutton').hide();
-			$.ajax({
-				url: "./grammarTests.xml",
-				dataType: 'xml',
-				async: true,
-				success: function(data) {
-					var xmlText = new XMLSerializer().serializeToString(data);
-					parseFile(xmlText);
+		$('#loadFile').hide();
+		$('#saveFile').hide();	
+		$('#backbutton').hide();
+		if (type == "editor") {
+			m = init();
+  		$('.jsavmatrix').addClass("editMode");
+			return;
+		}
+		$.ajax({
+			url: "./grammarTests.xml",
+			dataType: 'xml',
+			async: true,
+			success: function(data) {
+				grammars = data.getElementsByTagName("grammar");
+				initQuestionLinks();
+				$('.links').click(toExercise);
+				updateExercise(0);
+				switch (type) {
+				case "bf":
 					bfParse();
-				}
-			});
-			return;
-		}
-		else if (type == "ll") {
-			$('#loadFile').hide();
-			$('#saveFile').hide();	
-			$('#backbutton').hide();
-			$.ajax({
-				url: "./grammarTests.xml",
-				dataType: 'xml',
-				async: true,
-				success: function(data) {
-					var xmlText = new XMLSerializer().serializeToString(data);
-					parseFile(xmlText);
+					break;
+				case "ll":
 					llParse();
-				}
-			});
-			return;
-		}	
-		else if (type == "slr") {
-			$("#loadFile").hide();
-			$("#saveFile").hide();
-			$("#backbutton").hide();
-			$.ajax({
-				url: "./grammarTests.xml",
-				dataType: 'xml',
-				async: true,
-				success: function(data) {
-					var xmlText = new XMLSerializer().serializeToString(data);
-					parseFile(xmlText);
+					break;
+				case "slr":
 					slrParse();
+					break;
+				default:
+					break;
 				}
-			});
-			return;
-		}
+				m = init();
+  			$('.jsavmatrix').addClass("editMode");
+			}
+		});
+	}
 
-		m = init();
-  	$('.jsavmatrix').addClass("editMode");
+	function initQuestionLinks() {
+		//not from localStorage but from XML file
+		if (grammars) {
+			for (i = 0; i < grammars.length; i++) {
+				$("#exerciseLinks").append("<a href='#' id='" + i + "' class='links'>" + (i+1) + "</a>");
+			}			
+		}
+ 	}
+	
+	function updateQuestionLinks() {
+		$(".links").removeClass("currentExercise");
+		$("#" + currentExercise).addClass("currentExercise");
+	}
+	
+	function updateExercise(index) {
+		currentExercise = index;
+		parseFile(grammars[index], "exer");
+		updateQuestionLinks();
+	}	
+
+	function toExercise() {
+		var index = $(this).attr('id');
+		updateExercise(index);
 	}
 
 	onLoadHandler();
