@@ -103,8 +103,11 @@
 		fi.width($(m._arrays[index]._indices[index2].element).width());
 		fi.focus();
 		// finalize the changes to the grammar when the enter key is pressed
+		var validKeys = [13, 9, 37, 38, 39, 40];
+		// keys for functions
 		fi.keyup(function(event){
-			if(event.keyCode == 13){
+			var keyCode = event.keyCode;
+			if (validKeys.indexOf(keyCode) !== -1) {
 				var input = $(this).val();
 				var regex = new RegExp(emptystring, g);
 				input = input.replace(regex, "");
@@ -114,34 +117,61 @@
 				if (index2 === 0 && (input.length !== 1 || variables.indexOf(input) === -1)) {
 					alert('Invalid left-hand side.');
 					return;
-				}
-				if (index2 === 0 && _.find(arr, function(x) { return x[0] === input && x[2] === arr[index][2];})) {
+				}	
+				if (index2 == 2 && _.find(arr, function(x) { return x[0] == arr[index][0] && x[2] == input;})) {
 					alert('This production already exists.');
 					return;
 				}
-				if (index2 === 2 && _.find(arr, function(x) { return x[0] === arr[index][0] && x[2] === input;})) {
-					alert('This production already exists.');
-					return;
-				}
-				if (index2 === 0 && !arr[index][2]) {
-					m.value(index, 2, emptystring);
-					arr[index][2] = emptystring;
-				}
+				fi.remove();
 				m.value(index, index2, input);
 				arr[index][index2] = input;
-				// adding a new production
-				addProduction(index);
 				layoutTable(m, 2);
-				fi.remove();
+				switch (keyCode) {
+				case 13:
+					if (index2 == 0) {
+						focus(index, 2);
+					}
+					else {
+						// adding a new production
+						var newProduction = addProduction(index);
+						layoutTable(m);
+						if (newProduction) {
+							focus(index + 1, 0);
+						}
+					}
+					break;
+				case 37:
+					if (index2 == 2) {
+						focus(index, 0);
+					}
+					break;	
+				case 38:
+					if (index > 0) {
+						focus(index - 1, index2);
+					}
+					break;	
+				case 39:
+					if (index2 == 0) {
+						focus(index, 2);
+					}
+					break;	
+				case 40:
+					var newProduction = addProduction(index);
+					layoutTable(m);
+					focus(index + 1, 0);
+					break;	
+				default:
+					break;
+				}
 			}
 		});
 	}
 
   // Function to check to see if a new row should be added and lengthen the array
   var addProduction = function (index) {
-    if (m.value(index, 0) && index === lastRow) {
+    if (m.value(index, 0) && index == lastRow) {
       // if array out of bounds, double the array size and recreate the matrix
-      if (lastRow === arr.length - 1 || lastRow === arr.length) {
+      if (lastRow == arr.length - 1 || lastRow == arr.length) {
         var l = arr.length;
         for (var i = 0; i < l; i++) {
           arr.push(['', arrow, '']);
@@ -151,9 +181,10 @@
       } 
       m._arrays[lastRow + 1].show();
       lastRow++;
+			return true;
     }
+		return false;
   };
-
 
   // LL(1) parsing
   var llParse = function () {
