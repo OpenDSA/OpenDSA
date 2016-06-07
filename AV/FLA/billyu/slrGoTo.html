@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Go to</title>
+  <link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+  <link rel="stylesheet" href="../resources/FA.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+  <style>
+    #av {
+      width: 97%;
+    }
+    .jsavmatrix .jsavnode {
+      cursor: pointer;
+    }
+    .jsavmatrix .jsavvalue {
+      width: 100px;
+    }
+    .prodTable {
+      margin-top:50px;
+      margin-left: 50px;
+    }
+    #prodMenu {
+      display: none;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div align="center">
+      <button type="button" id="closurebutton">Closure</button>
+      <button type="button" id="finishbutton">Finish</button>
+    </div>
+    <div id="av">
+      <div class="jsavcontrols">  
+      </div>
+      <p align="center" class="jsavoutput jsavline"></p>
+    </div>
+    <div align="center">
+      <button type="button" id="okbutton">OK</button>
+      <button type="button" id="cancelbutton">Cancel</button>
+    </div>
+    <div id="prodMenu">
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+  <script src="../../../JSAV/lib/raphael.js"></script>
+  <script src="../../../JSAV/lib/jquery.transit.js"></script>
+  <script src="../../../JSAV/build/JSAV.js"></script>
+  <script src="../resources/underscore-min.js"></script>
+  <script src="../resources/FA.js"></script>
+  <script src="slrGoTo.js"></script>
+</body>
+</html>

@@ -118,7 +118,7 @@
 					alert('Invalid left-hand side.');
 					return;
 				}	
-				if (index2 == 2 && _.find(arr, function(x) { return x[0] == arr[index][0] && x[2] == input;})) {
+				if (index2 == 2 && _.find(arr, function(x) { return x[0] == arr[index][0] && x[2] == input && arr.indexOf(x) !== index;})) {
 					alert('This production already exists.');
 					return;
 				}
@@ -158,7 +158,12 @@
 				case 40:
 					var newProduction = addProduction(index);
 					layoutTable(m);
-					focus(index + 1, 0);
+					if (newProduction) {
+						focus(index + 1, 0);
+					}
+					else {
+						focus(index + 1, index2);
+					}
 					break;	
 				default:
 					break;
@@ -179,6 +184,10 @@
         m = init();
         $('.jsavmatrix').addClass('editMode');
       } 
+			if (!arr[index][2]) {
+				arr[index][2] = lambda;
+				m.value(index, 2, lambda);
+			}
       m._arrays[lastRow + 1].show();
       lastRow++;
 			return true;
@@ -1346,7 +1355,7 @@
     $('#convertCFGbutton').hide();
     $('#transformbutton').hide();
     $('.jsavcontrols').show();
-		if (type !== "ll") $('#backbutton').show();
+		if (type !== "ll" && type !== "slr") $('#backbutton').show();
     $('#bfpbutton').hide();
     $('#llbutton').hide();
     $('#slrbutton').hide();
@@ -3085,6 +3094,23 @@
 			});
 			return;
 		}	
+		else if (type == "slr") {
+			$("#loadFile").hide();
+			$("#saveFile").hide();
+			$("#backbutton").hide();
+			$.ajax({
+				url: "./grammarTests.xml",
+				dataType: 'xml',
+				async: true,
+				success: function(data) {
+					var xmlText = new XMLSerializer().serializeToString(data);
+					parseFile(xmlText);
+					slrParse();
+				}
+			});
+			return;
+		}
+
 		m = init();
   	$('.jsavmatrix').addClass("editMode");
 	}
