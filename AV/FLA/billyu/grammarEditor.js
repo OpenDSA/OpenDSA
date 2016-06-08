@@ -1388,6 +1388,10 @@
       } else {
         var ret = [];
         var strings = pDict[str];
+				if (!strings) {
+					alert("Error: this grammar is not LL(1)");
+					return;
+				}
         for (var i = 0; i < strings.length; i++) {
           if (strings[i][0] !== str) {
             ret = _.union(ret, first(strings[i], pDict, lambdaVars));
@@ -3118,6 +3122,10 @@
   $('#convertCFGbutton').click(convertToPDA);
 	$('#multipleButton').click(toggleMultiple);
 	$('#addExerciseButton').click(addExercise);
+	$('.function').click(function() {
+		$('#multipleButton').hide();
+		$('#addExerciseButton').hide();
+	});
 
 	function onLoadHandler() {
 		type = $("h1").attr('id');
