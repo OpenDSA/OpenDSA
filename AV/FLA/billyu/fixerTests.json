@@ -1,0 +1,17 @@
+[{"expression": "aa*(b+c)",
+	"testCases": [{
+		"aac": true
+	}, {
+		"bb": false
+	}],
+"graph": {"nodes":[{"left":753,"top":171,"i":true,"f":false},{"left":505,"top":342,"i":false,"f":false},{"left":1042,"top":199,"i":false,"f":false},{"left":287,"top":123,"i":false,"f":false},{"left":535,"top":0,"i":false,"f":false},{"left":0,"top":89,"i":false,"f":true}],"edges":[{"start":0,"end":1,"weight":"a"},{"start":0,"end":2,"weight":"b"},{"start":1,"end":3,"weight":"a"},{"start":3,"end":4,"weight":"b"},{"start":3,"end":5,"weight":"a"},{"start":4,"end":0,"weight":"a"},{"start":5,"end":3,"weight":"g"}],"shorthand":false}
+},
+{
+"expression": "a*bca*",
+"testCases": [{
+	"abca": true
+	}, {
+		"bb": false
+	}],
+"graph": {"nodes":[{"left":107.375,"top":128.15625,"i":true,"f":false},{"left":401.375,"top":161.15625,"i":false,"f":false},{"left":722.375,"top":59.15625,"i":false,"f":true},{"left":651.375,"top":312.15625,"i":false,"f":true}],"edges":[{"start":0,"end":1,"weight":"a"},{"start":1,"end":2,"weight":"b"},{"start":1,"end":3,"weight":"c"},{"start":1,"end":1,"weight":"a"}],"shorthand":false}
+}]

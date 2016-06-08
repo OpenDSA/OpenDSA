@@ -1,0 +1,42 @@
+#container {
+	width: 100%;
+}
+.jsavmatrix .jsavnode {
+	cursor: pointer;
+}
+.jsavmatrix .jsavvalue {
+	width: 100px;
+}
+.jsavmatrix {
+	margin-top: 50px;
+}
+.jsavtree {
+	position: relative;
+}
+p.jsavoutput.jsavline {
+	height: 10px;
+}
+.parsingbutton {
+	display: none;
+}
+#backbutton {
+	display: none;
+}
+#dfabuttons {
+	display: none;
+}
+.terminal {
+	background-color: lightgreen;
+}
+.parsetree {
+	outline: transparent;
+}
+.jsavedge {
+	stroke-width: 2;
+}
+.jsavcanvas {
+	height: auto;
+}
+#av {
+	padding-bottom: 50px;
+}

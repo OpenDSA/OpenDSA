@@ -48,7 +48,11 @@
       "Bibliography": {
         "long_name": "Bibliography",
         "exercises": {}
-      }
+      },
+			"FAEditor": {
+				"long_name": "FAEditor",
+				"exercises": {}
+			}
     }
   }
 }
