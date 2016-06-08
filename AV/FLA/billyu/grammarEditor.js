@@ -17,7 +17,8 @@
       builtDFA,           // DFA created by the user
 			type, 							// type of parsing, can be bf, ll, slr
 			grammars,						// stores grammar exercises, xml
-			currentExercise = 0;// current exercise index
+			currentExercise = 0,// current exercise index
+			multiple = false;		// if multiple grammar editing is enabled
 
   var lambda = String.fromCharCode(955),
       epsilon = String.fromCharCode(949),
@@ -2713,33 +2714,65 @@
 
   // Saving:
   // Function to encode grammar to XML
-  function serializeGrammar (g) {
-    var text = '<?xml version="1.0" encoding="UTF-8"?>';
-    text = text + "<structure>";
-    text = text + "<type>grammar</type>"
-    for (var i = 0; i < g.length; i++) {
+  function serializeGrammar () {
+		var productions = _.filter(arr, function(x) { return x[0]});
+    if (productions.length == 0) {
+			if (multiple) {
+				return "<grammar></grammar>";
+			}
+			else {
+				return "<?xml version='1.0' encoding='UTF-8'?><structure><type>grammar</type></structure>";
+			}
+    }
+    var text = "";
+		if (!multiple) {
+			text = text + '<?xml version="1.0" encoding="UTF-8"?>';
+    	text = text + "<structure>";
+    	text = text + "<type>grammar</type>"
+		}
+		else {
+			text = text + "<grammar>";
+		} 
+    for (var i = 0; i < productions.length; i++) {
       text = text + "<production>";
-      text = text + "<left>" + g[i][0] + "</left>";
-      text = text + "<right>" + g[i][2] + "</right>";
+      text = text + "<left>" + productions[i][0] + "</left>";
+      text = text + "<right>" + productions[i][2] + "</right>";
       text = text + "</production>";
     }
-    text = text + "</structure>"
+		if (multiple) {
+			text = text + "</grammar>";
+		}
+		else {
+    	text = text + "</structure>"
+		}
     return text;
   };
+
   // Function to save and download the grammar
   var saveFile = function () {
-    var productions = _.filter(arr, function(x) { return x[0]});
-    if (productions.length === 0) {
-      alert('No grammar.');
-      return;
-    }
-    var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(serializeGrammar(productions));
+		var downloadData = "text/xml; charset=utf-8,";
+		if (!multiple) {
+    	downloadData += encodeURIComponent(serializeGrammar());
+		}
+		else {
+			grammars[currentExercise] = serializeGrammar();
+			var data = '<?xml version="1.0" encoding="UTF-8"?><structure><type>grammar</type>';
+			_.each(grammars, function(grammar) {
+				data += grammar;
+			});
+			data += "</structure>";
+			downloadData += encodeURIComponent(data);
+		}
     $('#download').html('<a href="data:' + downloadData + '" target="_blank" download="grammar.xml">Download Grammar</a>');
     $('#download a')[0].click();
   };
 
   // Loading:
   // Function to read the loaded XML file and create the grammar
+	// @param condition: whether text is of the form "<grammar>...</grammar>"
+	//									used for parsing a grammar in multiple mode
+	//									"exer": LL, BF, SLR parsing exercises
+	//									"multiple": multiple grammar editing
   var parseFile = function (text, condition) {
     var parser,
         xmlDoc,
@@ -2760,9 +2793,23 @@
 				xmlElem = xmlDoc.getElementsByTagName("production");
 			}
 		}
-		else {
+		else if (condition == "exer") {
 			xmlElem = text.getElementsByTagName("production");
 		} 
+		else if (condition == "multiple") {
+			if (window.DOMParser) {
+				parser=new DOMParser();
+				xmlDoc=parser.parseFromString(text,"text/xml");
+			} else {
+				xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+				xmlDoc.async=false;
+				xmlDoc.loadXML(text);
+			}
+			xmlElem = xmlDoc.getElementsByTagName("production");
+		}
+		else {
+			alert("unknown error");
+		}
 			arr = [];
       for (var i = 0; i < xmlElem.length; i++) {
         var l = xmlElem[i].getElementsByTagName("left")[0].childNodes[0].nodeValue;
@@ -3069,12 +3116,16 @@
   $('#savefile').click(saveFile);
   $('#convertRLGbutton').click(convertToFA);
   $('#convertCFGbutton').click(convertToPDA);
+	$('#multipleButton').click(toggleMultiple);
+	$('#addExerciseButton').click(addExercise);
 
 	function onLoadHandler() {
 		type = $("h1").attr('id');
 		$('#loadFile').hide();
 		$('#saveFile').hide();	
 		$('#backbutton').hide();
+		$('.multiple').hide();
+		$('#addExerciseButton').hide();
 		if (type == "editor") {
 			m = init();
   		$('.jsavmatrix').addClass("editMode");
@@ -3087,7 +3138,6 @@
 			success: function(data) {
 				grammars = data.getElementsByTagName("grammar");
 				initQuestionLinks();
-				$('.links').click(toExercise);
 				updateExercise(0);
 				switch (type) {
 				case "bf":
@@ -3109,11 +3159,13 @@
 	}
 
 	function initQuestionLinks() {
+		$("#exerciseLinks").html("");
 		//not from localStorage but from XML file
 		if (grammars) {
 			for (i = 0; i < grammars.length; i++) {
 				$("#exerciseLinks").append("<a href='#' id='" + i + "' class='links'>" + (i+1) + "</a>");
 			}			
+			$('.links').click(toExercise);
 		}
  	}
 	
@@ -3124,13 +3176,45 @@
 	
 	function updateExercise(index) {
 		currentExercise = index;
-		parseFile(grammars[index], "exer");
+		if (multiple) {
+			parseFile(grammars[index], "multiple");
+		}
+		else {
+			parseFile(grammars[index], "exer");
+		}
 		updateQuestionLinks();
 	}	
 
 	function toExercise() {
+		$('#firstinput').remove();
+		grammars[currentExercise] = serializeGrammar();
 		var index = $(this).attr('id');
 		updateExercise(index);
+	}
+
+	function toggleMultiple() {
+		multiple = !multiple;
+		if (multiple) {
+			$('#addExerciseButton').show();
+			$('#loadfile').hide();
+			$('.multiple').show();
+			$('#firstinput').remove();
+			grammars = [];
+			grammars.push(serializeGrammar());
+			initQuestionLinks();
+			updateQuestionLinks();
+		}
+		else {
+			$('.multiple').hide();
+			$('#addExerciseButton').hide();
+			$('#loadfile').show();
+		}
+	}
+
+	function addExercise() {
+		grammars.push("<grammar></grammar>");
+		initQuestionLinks();
+		updateQuestionLinks();
 	}
 
 	onLoadHandler();
