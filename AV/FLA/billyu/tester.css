@@ -82,5 +82,7 @@ td {
 }
 
 #container {
+	width: 800px;
+	height: auto;
 	overflow: scroll;
 }
