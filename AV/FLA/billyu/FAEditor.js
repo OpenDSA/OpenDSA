@@ -753,6 +753,7 @@
 		removeModeClasses();
 		var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(serializeGraphToXML(g));
     	$('#download').html('<a href="data:' + downloadData + '" target="_blank" download="fa.xml">Download FA</a>');
+			$('#download a')[0].click();
     	jsav.umsg("Saved");
 	};
 
@@ -1122,4 +1123,5 @@
 		if (e.keyCode === 13) console.log(serialize(g)); //for debug
 		if (e.keyCode === 27) cancel();   // esc
 	});
+	$('#download').hide();
 }(jQuery));
