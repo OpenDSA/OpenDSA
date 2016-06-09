@@ -2,7 +2,7 @@
 var executeAddNode = function(graph, top, left){
 	var newNode = graph.addNode();
 	var offsetTop = top - newNode.element.height()/2.0,
-		offsetLeft = left - newNode.element.width()/2.0;
+			offsetLeft = left - newNode.element.width()/2.0;
 	$(newNode.element).offset({top: offsetTop, left: offsetLeft});
 	// Node position is centered on the given top, left coordinates.
 	return newNode;
@@ -56,32 +56,6 @@ var executeMoveNode = function(graph, node, top, left){
 			next.layout();
 		}
 	}
-};
-
-// Changes properties of the specified node on the specified graph. Used only by Finite Automaton Editor.
-var executeEditFANode = function(graph, node, initialState, finalState, nodeLabel){
-	if (initialState) {
-		// If this node is the initial state, no other node may be the initial state.
-		for (var i = 0; i < graph.nodeCount(); i++) {
-			graph.removeInitial(graph.nodes()[i]);
-		}
-		graph.makeInitial(node);
-	}
-	else {
-		// Remove initial state if not the initial state. This has no effect if it wasn't the initial state to begin with.
-		graph.removeInitial(node);
-	}
-	if (finalState) {
-		// Make final state.
-		node.addClass('final');
-	}
-	else {
-		// Remove final state.
-		node.removeClass('final');
-	}
-	// Add the state label (if applicable) and update its position relative to that of the node.
-	node.stateLabel(nodeLabel);
-	node.stateLabelPositionUpdate();
 };
 
 // Changes properties of the specified node on the specified graph. Used only by Mealy Machine Editor.

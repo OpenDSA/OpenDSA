@@ -91,7 +91,7 @@
 				data = localStorage['minimized'];
 			}
 			else {
-				data = '{"nodes":[{"left":753.90625,"top":171.109375,"i":true,"f":false},{"left":505.890625,"top":342,"i":false,"f":false},{"left":1042,"top":199.40625,"i":false,"f":false},{"left":287.90625,"top":123.625,"i":false,"f":false},{"left":535.921875,"top":0,"i":false,"f":false},{"left":0,"top":89.234375,"i":false,"f":true}],"edges":[{"start":0,"end":1,"weight":"a"},{"start":0,"end":2,"weight":"b"},{"start":1,"end":3,"weight":"a"},{"start":3,"end":4,"weight":"b"},{"start":3,"end":5,"weight":"a"},{"start":4,"end":0,"weight":"a"},{"start":5,"end":3,"weight":"g"}]}';
+				data = '{"nodes":[{"left":100.90625,"top":171.109375,"i":true,"f":false},{"left":200.890625,"top":342,"i":false,"f":false},{"left":166,"top":66.40625,"i":false,"f":false},{"left":400.90625,"top":270.625,"i":false,"f":false},{"left":535.921875,"top":0,"i":false,"f":false},{"left":552,"top":268.234375,"i":false,"f":true}],"edges":[{"start":0,"end":1,"weight":"a"},{"start":0,"end":2,"weight":"b"},{"start":1,"end":3,"weight":"a"},{"start":3,"end":4,"weight":"b"},{"start":3,"end":5,"weight":"a"},{"start":4,"end":0,"weight":"a"},{"start":5,"end":3,"weight":"g"}]}';
 			}
 		}
 		initialize(data);
@@ -110,7 +110,7 @@
 		// Remove the old graph, parse JSON, and initialize the new graph.
 		$('.jsavgraph').remove();
 		var gg = opts.graph ? opts.graph : jQuery.parseJSON(g);
-		g = jsav.ds.fa($.extend({width: '90%', height: 440}, opts));
+		g = jsav.ds.fa($.extend({width: '750px', height: 440}, opts));
 		// Add the JSON nodes to the graph.
 		for (var i = 0; i < gg.nodes.length; i++) {
 	    	var node = g.addNode('q' + i),
@@ -783,7 +783,7 @@
 	    	if (g) {
 				g.clear();
 			}
-			g = new jsav.ds.fa({width: '90%', height: 440, layout: "automatic"});
+			g = new jsav.ds.fa({width: '750px', height: 440, layout: "automatic"});
 			var nodeMap = {};			// map node IDs to nodes
 	      	var xmlStates = xmlDoc.getElementsByTagName("state");
 	      	xmlStates = _.sortBy(xmlStates, function(x) { return x.id; })

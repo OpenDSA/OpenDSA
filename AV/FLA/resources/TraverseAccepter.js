@@ -3,6 +3,7 @@
 var willReject = function (graph, inputString) {
 	// Start with the closure of the initial state.
 	var currentStates = [graph.initial];
+	console.log(currentStates);
 	currentStates = addLambdaClosure(graph, currentStates);
 	var nextStates = currentStates;
 	// Iterate over each character in the input string.

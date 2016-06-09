@@ -80,3 +80,7 @@ td {
 #rmenu .editNode:hover {
 	background-color: #cdc9c9;
 }
+
+#container {
+	overflow: scroll;
+}

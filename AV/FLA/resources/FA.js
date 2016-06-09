@@ -2,6 +2,7 @@
 Finite Automaton module.
 An extension to the JFLAP library.
 */
+var lambda = String.fromCharCode(955);
 (function ($) {
   "use strict";
   if (typeof JSAV === "undefined") {
@@ -141,7 +142,7 @@ An extension to the JFLAP library.
   */
   faproto.addEdge = function(fromNode, toNode, options) {
     // assumes a weight is always given
-    if (options.weight === "") {
+    if (options.weight === "" || options.weight == lambda) {
       options.weight = this.emptystring;
     }
     if (this.hasEdge(fromNode, toNode)) {     // if an edge already exists update it
@@ -959,8 +960,6 @@ Requires underscore.js
 The commented code creates a slideshow of the conversion (buggy).
 */
 var convertToDFA = function(jsav, graph, opts) {
-  // $('button').hide();
-  // $('input').hide();
   // jsav.label("Converted:");
   var g = jsav.ds.fa($.extend({layout: 'automatic'}, opts)),
       alphabet = Object.keys(graph.alphabet),
@@ -971,12 +970,9 @@ var convertToDFA = function(jsav, graph, opts) {
   newStates.push(first);
   var temp = newStates.slice(0);
 
-  //jsav.displayInit();
   first = g.addNode({value: val}); 
   g.makeInitial(first);
-  //first.addClass("start");
   g.layout();
-  //jsav.step();
 
   // Repeatedly get next states and apply lambda closure
   while (temp.length > 0) {
@@ -990,6 +986,7 @@ var convertToDFA = function(jsav, graph, opts) {
         next = _.union(next, lambdaClosure(graph.transitionFunction(graph.getNodeWithValue(valArr[j]), letter), graph));
       }
       var node = next.sort().join();
+			
       if (node) {
         if (!_.contains(newStates, node)) {
           temp.push(node);
@@ -999,9 +996,6 @@ var convertToDFA = function(jsav, graph, opts) {
           node = g.getNodeWithValue(node);
         }
         var edge = g.addEdge(prev, node, {weight: letter});
-
-        //g.layout();
-        //jsav.step();
       }
     }
   }
@@ -1012,44 +1006,11 @@ var convertToDFA = function(jsav, graph, opts) {
   for (var next = nodes.next(); next; next = nodes.next()) {
     next.stateLabel(next.value());
     next.stateLabelPositionUpdate();
-    //next.hide();
-    //next._stateLabel.hide();
   }
   g.updateNodes();
   return g;
-  // var edges = g.edges();
-  // for (next = edges.next(); next; next = edges.next()) {
-  //   next.hide();
-  // }
-  // graph.hide();
-
-  // jsav.displayInit();
-  // var bfs = [],
-  //     visited = [];
-  // bfs.push(g.initial);
-  // visited.push(g.initial);
-  // while (bfs.length > 0) {
-  //   var cur = bfs.shift();
-  //   cur.show();
-  //   cur._stateLabel.show();
-  //   var successors = cur.neighbors();
-  //   for (var next = successors.next(); next; next = successors.next()) {
-  //     if (!_.contains(visited, next)) {
-  //       bfs.push(next);
-  //       visited.push(next);
-  //     }
-  //   }
-  //   jsav.step();
-  // }
-  // for (var i = 0; i < visited.length; i++) {
-  //   var outgoing = visited[i].getOutgoing();
-  //   for (var j = 0; j < outgoing.length; j++) {
-  //     outgoing[j].show();
-  //   }
-  //   jsav.step();
-  // }
-  // jsav.recorded();
 };
+
 // Function to add final markers to the resulting DFA
 var addFinals = function(g1, g2) {
   var nodes = g1.nodes();
@@ -1070,17 +1031,16 @@ Only used in NFA to DFA conversion.
 There's a different lambda closure function used for nondeterministic traversal in certain tests.
 */
 var lambdaClosure = function(input, graph) {
-  var l = "\&lambda;",
-      arr = [];
+  var arr = [];
   for (var i = 0; i < input.length; i++) {
     arr.push(input[i]);
-    var next = graph.transitionFunction(graph.getNodeWithValue(input[i]), l);
+    var next = graph.transitionFunction(graph.getNodeWithValue(input[i]), lambda);
     arr = _.union(arr, next);
   }
   var temp = arr.slice(0);
   while (temp.length > 0) {
     var val = temp.pop(),
-        next = graph.transitionFunction(graph.getNodeWithValue(val), l);
+        next = graph.transitionFunction(graph.getNodeWithValue(val), lambda);
     next = _.difference(next, arr);
     arr = _.union(arr, next);
     temp = _.union(temp, next);
