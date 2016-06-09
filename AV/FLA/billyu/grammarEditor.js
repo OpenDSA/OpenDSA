@@ -207,7 +207,7 @@
 	function defocus(e) {
 		if ($(e.target).hasClass("jsavvaluelabel")) return;
 		if ($(e.target).attr('id') == "firstinput") return;
-		if (!fi.is(':visible')) return;
+		if (!fi || !fi.is(':visible')) return;
 		var input = fi.val();
 		var regex = new RegExp(emptystring, g);
 		input = input.replace(regex, "");
@@ -3176,10 +3176,6 @@
   $('#convertCFGbutton').click(convertToPDA);
 	$('#multipleButton').click(toggleMultiple);
 	$('#addExerciseButton').click(addExercise);
-	$('.function').click(function() {
-		$('#multipleButton').hide();
-		$('#addExerciseButton').hide();
-	});
 	$(document).click(defocus);
 
 	function onLoadHandler() {
