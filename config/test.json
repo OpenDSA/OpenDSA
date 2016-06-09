@@ -35,7 +35,7 @@
     }
   },
   "lang": "en",
-  "module_origin": "http://lti.cs.vt.edu",
+  "module_origin": "http://billyu.me",
   "exercise_server": "https://opendsa.cs.vt.edu/",
   "logging_server": "https://opendsa.cs.vt.edu/",
   "score_server": "https://opendsa.cs.vt.edu/",
