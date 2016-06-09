@@ -18,7 +18,10 @@
 			type, 							// type of parsing, can be bf, ll, slr
 			grammars,						// stores grammar exercises, xml
 			currentExercise = 0,// current exercise index
-			multiple = false;		// if multiple grammar editing is enabled
+			multiple = false,		// if multiple grammar editing is enabled
+			fi,									// input box for matrix
+			row,							// row number for input box
+			col;							// column number for input box
 
   var lambda = String.fromCharCode(955),
       epsilon = String.fromCharCode(949),
@@ -76,6 +79,28 @@
   
   // handler for grammar editing
   var matrixClickHandler = function(index, index2) {
+		if ((row != index || col != index2) && fi) {
+			var input = fi.val();
+			var regex = new RegExp(emptystring, g);
+			input = input.replace(regex, "");
+			input = input.replace(regex, "!");
+			if (input === "" && col == 2) {
+				input = emptystring;
+			}
+			if (col == 0 && (input.length !== 1 || variables.indexOf(input) === -1)) {
+				alert('Invalid left-hand side.');
+				return;
+			}	
+			if (col == 2 && _.find(arr, function(x) { return x[0] == arr[row][0] && x[2] == input && arr.indexOf(x) !== row;})) {
+				alert('This production already exists.');
+				return;
+			}
+			fi.remove();
+			m.value(row, col, input);
+			arr[row][col] = input;
+			layoutTable(m, 2);
+		}
+	
     if ($('.jsavmatrix').hasClass('deleteMode') && index !== lastRow) {
       // recreates the matrix when deleting a row...
       arr.splice(index, 1);
@@ -92,6 +117,7 @@
   };
 
 	function focus(index, index2) {
+		row = index; col = index2;
 		var prev = m.value(index, index2);
 		// create an input box for editing the cell
 		$('#firstinput').remove();
@@ -100,7 +126,7 @@
 		var offset = m._arrays[index]._indices[index2].element.offset();
 		var topOffset = offset.top;
 		var leftOffset = offset.left;
-		var fi = $('#firstinput');
+		fi = $('#firstinput');
 		fi.offset({top: topOffset, left: leftOffset});
 		fi.outerHeight($('.jsavvalue').height());
 		fi.width($(m._arrays[index]._indices[index2].element).width());
@@ -114,6 +140,7 @@
 				var input = $(this).val();
 				var regex = new RegExp(emptystring, g);
 				input = input.replace(regex, "");
+				input = input.replace(regex, "!");
 				if (input === "" && index2 === 2) {
 					input = emptystring;
 				}
@@ -173,6 +200,33 @@
 				}
 			}
 		});
+	}
+
+	// fired when document is clicked
+	// saves current fi input value
+	function defocus(e) {
+		if ($(e.target).hasClass("jsavvaluelabel")) return;
+		if ($(e.target).attr('id') == "firstinput") return;
+		if (!fi.is(':visible')) return;
+		var input = fi.val();
+		var regex = new RegExp(emptystring, g);
+		input = input.replace(regex, "");
+		input = input.replace(regex, "!");
+		if (input == "" && col == 2) {
+			input = emptystring;
+		}
+		if (col == 0 && (input.length !== 1 || variables.indexOf(input) === -1)) {
+			alert('Invalid left-hand side.');
+			return;
+		}	
+		if (col == 2 && _.find(arr, function(x) { return x[0] == arr[row][0] && x[2] == input && arr.indexOf(x) !== row;})) {
+			alert('This production already exists.');
+			return;
+		}
+		fi.remove();
+		m.value(row, col, input);
+		arr[row][col] = input;
+		layoutTable(m, 2);
 	}
 
   // Function to check to see if a new row should be added and lengthen the array
@@ -3126,6 +3180,7 @@
 		$('#multipleButton').hide();
 		$('#addExerciseButton').hide();
 	});
+	$(document).click(defocus);
 
 	function onLoadHandler() {
 		type = $("h1").attr('id');
