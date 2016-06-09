@@ -64,7 +64,7 @@ encountered, ``inssort`` is done with that record because all
 records to its left in the array must have smaller keys.
 
 .. avembed:: AV/Sorting/mergesortAV.html ss
-.. avembed:: AV/FLA/billyu/FEditor.html ss
+.. avembed:: AV/FLA/billyu/FAEditor.html ss
 .. avembed:: Exercises/Sorting/QuicksortSumm.html ka
 
 FAEditorTest2

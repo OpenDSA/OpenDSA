@@ -1,65 +1,78 @@
 <!DOCTYPE html>
 
 <html>
-	<head>
-		<title>FA Editor</title>
-    	<link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
-    	<link rel="stylesheet" href="../resources/customPrompt.css" type="text/css" />
-    	<link rel="stylesheet" href="../resources/FA.css" type="text/css" />
-			<link rel="stylesheet" href="./tester.css" type="text/css" />
-	</head>
-	<body>
-		<h1 id="editor">Finite Automaton Editor</h1>
-		<div id="dialogueoverlay"></div>
-  		<div id="dialoguebox">
-  		 	<div>
-    			<div id="dialogueboxhead"></div>
-      			<div id="dialogueboxbody"></div>
-      			<div id="dialogueboxfoot"></div>
-    		</div>
-  		</div>
-		<p align="center" class="arrayPlace"></p>
-		<button class="functionality" id="begin">Traverse</button>
-		<button class="functionality" id="saveButton">Save</button>
-		<button class="createExercise" id="finish">Finish</button>
-		<input type="file" id="loadFile">
-		<div id="av">
-			<button id="undoButton">Undo</button>
-			<button id="redoButton">Redo</button>
-			<button id="cancelButton">Cancel</button>
-			<br>
-			<button id="nodeButton">Add Nodes</button>
-			<button id="edgeButton">Add Edges</button>
-			<button id="moveButton">Move Nodes</button>
-			<button id="editButton">Edit Nodes/Edges</button>
-			<button id="deleteButton">Delete Nodes/Edges</button>
-			<span id='mode'></span>
-      		<p class="jsavoutput jsavline"></p>
-		</div>
-		<button id="layoutButton">Layout</button>
-		<button class="functionality" id="ndButton">Highlight Nondeterminism</button>
-		<button class="functionality" id="lambdaButton">Highlight &lambda;-Transitions</button>
-		<button class="functionality" id="epsilonButton">&epsilon; Mode</button>
-		<button class="functionality" id="shorthandButton">Enable Shorthand</button>
-		<button class="functionality" id="toDFAButton">Convert to DFA</button>
-		<button class="functionality" id="minimizeButton">Minimize DFA</button>
-		<button class="functionality" id="toGrammarButton">Convert to Right-Linear Grammar</button>
-		<div>&Sigma;: <span id='alphabet'></span></div>
-		<div id='download'></div>
-		<div id="rmenu"></div>
-		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-		<script src="../../../JSAV/lib/raphael.js"></script>
-   	<script src="../../../JSAV/lib/dagre.min.js"></script>
-		<script src="../../../JSAV/lib/jquery.transit.js"></script>
-		<script src="../../../JSAV/build/JSAV.js"></script>
-		<script src="../resources/serializableGraph.js"></script>
-		<script src="../resources/underscore-min.js"></script>
-		<script src="../resources/FA.js"></script>
-		<script src="../resources/CustomPrompt.js"></script>
-		<script src="../resources/Commands.js"></script>
-		<script src="../resources/TraverseAccepter.js"></script>
-		<script src="./FAEditor.js"></script>
-   	</body>
+  <head>
+    <title>FA Editor</title>
+    <link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+    <link rel="stylesheet" href="../../../lib/odsaAV-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/odsaStyle-min.css" type="text/css" />
+    <link rel="stylesheet" href="../resources/customPrompt.css" type="text/css" />
+    <link rel="stylesheet" href="../resources/FA.css" type="text/css" />
+    <link rel="stylesheet" href="./tester.css" type="text/css" />
+    <style>
+      #container {
+      width: 780px;
+      height: 540px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="container">
+      <h1 id="editor">Finite Automaton Editor</h1>
+      <div id="dialogueoverlay"></div>
+      <div id="dialoguebox">
+        <div>
+          <div id="dialogueboxhead"></div>
+          <div id="dialogueboxbody"></div>
+          <div id="dialogueboxfoot"></div>
+        </div>
+      </div>
+      <p align="center" class="arrayPlace"></p>
+      <button class="functionality" id="begin">Traverse</button>
+      <button class="functionality" id="saveButton">Save</button>
+      <button class="createExercise" id="finish">Finish</button>
+      <input type="file" id="loadFile">
+      <div id="av">
+        <button id="undoButton">Undo</button>
+        <button id="redoButton">Redo</button>
+        <button id="cancelButton">Cancel</button>
+        <br>
+        <button id="nodeButton">Add Nodes</button>
+        <button id="edgeButton">Add Edges</button>
+        <button id="moveButton">Move Nodes</button>
+        <button id="editButton">Edit Nodes/Edges</button>
+        <button id="deleteButton">Delete Nodes/Edges</button>
+        <span id='mode'></span>
+        <p class="jsavoutput jsavline"></p>
+      </div>
+      <button id="layoutButton">Layout</button>
+      <button class="functionality" id="ndButton">Highlight Nondeterminism</button>
+      <button class="functionality" id="lambdaButton">Highlight &lambda;-Transitions</button>
+      <button class="functionality" id="epsilonButton">&epsilon; Mode</button>
+      <button class="functionality" id="shorthandButton">Enable Shorthand</button>
+      <button class="functionality" id="toDFAButton">Convert to DFA</button>
+      <button class="functionality" id="minimizeButton">Minimize DFA</button>
+      <button class="functionality" id="toGrammarButton">Convert to Right-Linear Grammar</button>
+      <div>&Sigma;: <span id='alphabet'></span></div>
+      <div id='download'></div>
+      <div id="rmenu"></div>
+
+      <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+      <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+      <script src="../../../JSAV/lib/jquery.transit.js"></script>
+      <script src="../../../JSAV/lib/raphael.js"></script>
+      <script src="../../../JSAV/lib/dagre.min.js"></script>
+      <script src="../../../JSAV/build/JSAV.js"></script>
+      <script src="../../../lib/odsaUtils-min.js"></script>
+      <script src="../../../lib/odsaAV-min.js"></script>
+      <script src="../resources/serializableGraph.js"></script>
+      <script src="../resources/underscore-min.js"></script>
+      <script src="../resources/FA.js"></script>
+      <script src="../resources/CustomPrompt.js"></script>
+      <script src="../resources/Commands.js"></script>
+      <script src="../resources/TraverseAccepter.js"></script>
+      <script src="./FAEditor.js"></script>
+    </div>
+  </body>
 </html>
