@@ -102,12 +102,11 @@
     prodTable = jsav.ds.matrix(productions, {style: "table"});
     prodTable.element.addClass('prodTable');
     prodTable.layout();
+		$(prodTable).off('click');
     prodTable.on('click', prodHandler);
-    jsav.label('Grammar', {relativeTo: prodTable, anchor: "center top", myAnchor: "center bottom"});
     itemTable = jsav.ds.matrix(itemArr, {style: "table", left: "50px", relativeTo: prodTable, anchor: "right top", myAnchor: "left top"});
     itemTable.layout();
     itemTable.on('click', itemHandler);
-    jsav.label('Items', {relativeTo: itemTable, anchor: "center top", myAnchor: "center bottom"});
     return prodTable;
   };
   // adds an item to the next item set
@@ -147,6 +146,7 @@
   };
   // handler for individual items in the item menu
   var menuItemHandler = function (e) {
+		$('#prodMenu').hide();
     addToItemTable($(this).val());
   };
   // handler for the grammar
@@ -165,9 +165,10 @@
     var xOffset = e.pageX,
         yOffset = e.pageY;
         w = $('.jsavvalue').width();
-    $('#prodMenu').offset({left: xOffset, top: yOffset});
+    $('#prodMenu').css({left: xOffset, top: yOffset});
+		console.log($('#prodMenu').offset());
     $('#prodMenu').show();
-    $('.menuItem').click(menuItemHandler);
+    $('.menuItem').off('click').click(menuItemHandler);
   };
   // handler for the next item set table
   var itemHandler = function (index, index2, e) {
