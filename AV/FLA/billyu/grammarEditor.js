@@ -10,6 +10,7 @@
       derivationTable,    // the derivation table shown during brute-force parsing
       parseTableDisplay,  // the parse table
       parseTree,          // parse tree shown during parsing slideshows
+			parseTable,					// parse table used for pasing
 			conflictTable,			// used for SLR parsing conflicts
       ffTable,            // table for FIRST and FOLLOW sets
       arrayStep,          // the position of FIRST or FOLLOW cells
@@ -301,7 +302,7 @@
     parseTable is the parse table, while parseTableDisplay is the matrix displayed to the user.
     parseTableDisplay includes the row/column headers (which are ignored by the click handler).
     */
-    var parseTable = [];
+    parseTable = [];
     for (var i = 0; i < v.length; i++) {
       var a = [];
       for (var j = 0; j < t.length; j++) {
@@ -396,6 +397,7 @@
         pTableDisplay.push(toPush);
       }
       parseTableDisplay = new jsav.ds.matrix(pTableDisplay);
+			parseTableDisplay.addClass("parseTableDisplay");
       parseTableDisplay.click(parseTableHandler);
     };
     $('#parsetablebutton').click(continueToParseTable);
@@ -902,7 +904,7 @@
     var tv = t.concat(v);
     // variables + terminals:
     var vt = v.concat(t);
-    var parseTable = [];
+    parseTable = [];
     for (var i = 0; i < productions.length; i++) {
       var a = [];
       for (var j = 0; j < tv.length; j++) {
@@ -2978,15 +2980,21 @@
       ptr.unhighlight();
       for (var j = 1; j < ptr._indices.length; j++) {
 				// check conflict table first to avoid mistaken the students
+				var wrongEntry = false;
 				if (conflictTable[i - 1] && conflictTable[i - 1][j - 1]) {
         	if (conflictTable[i-1][j-1].indexOf(parseTableDisplay.value(i, j)) == -1) {
           	parseTableDisplay.highlight(i, j);
           	incorrect = true;
+						wrongEntry = true;
 					}
         }
 				else if (parseTable[i-1][j-1] !== parseTableDisplay.value(i, j)) {
 					parseTableDisplay.highlight(i, j);
 					incorrect = true;
+					wrongEntry = true;
+				}
+				if (!wrongEntry) {
+					parseTable[i-1][j-1] = parseTableDisplay.value(i, j);
 				}
       }
     }
@@ -2996,14 +3004,22 @@
       var confirmed = confirm('Highlighted cells are incorrect.\nFix automatically?');
       if (confirmed) {
         for (var i = 1; i < parseTableDisplay._arrays.length; i++) {
-          var ptr = parseTableDisplay._arrays[i];
-          ptr.unhighlight();
           for (var j = 1; j < ptr._indices.length; j++) {
-						console.log(parseTableDisplay.isHighlight(i, j));
-						console.log(parseTableDisplay.css(i, j, "top"));
-						var $chooseConflict = $("<div>");
-						if (conflictTable[i-1] && conflictTable[i-1][j-1]) {
-							_.each(conflictTable[i-1][j-1], function(choice) {$chooseConflict.append("<input type='button' value='" + choice + "' class='choice'/>");});
+						var wrong = parseTableDisplay.isHighlight(i, j);
+						parseTableDisplay.unhighlight(i, j);
+						var $chooseConflict = $("<div>", {class: "conflictMenu"});
+						// when current entry is wrong && there is a conflict
+						if (wrong && conflictTable[i-1] && conflictTable[i-1][j-1] && conflictTable[i-1][j-1].length > 1) {
+							// there is a conflict, either reduce-reduce or reduce-shift
+							console.log(parseTableDisplay.css(i, j, "position"));
+							_.each(conflictTable[i-1][j-1], function(choice) {$chooseConflict.append("<input type='button' value='" + choice + "' class='choice'/><br>");});
+							$chooseConflict.attr({"i": i, "j": j});
+							// in order to pass indices of matrix
+							$chooseConflict.show();
+							$('#container').append($chooseConflict);
+							parseTableDisplay.highlight(i, j);
+							parseTable[i-1][j-1]["conflict"] = true;
+							$('.choice').off('click').click(choiceClickHandler);
 						}
             parseTableDisplay.value(i, j, parseTable[i-1][j-1]);
           }
@@ -3018,6 +3034,18 @@
     jsav.umsg("");
     $('.jsavarray').off();
   };
+
+	// click handler for conflict resolving menu choice button
+	function choiceClickHandler() {
+		var $menu = $(this).parent();
+		var i = $menu.attr('i');
+		var j = $menu.attr('j');
+		parseTable[i-1][j-1] = $(this).attr('value');
+		parseTableDisplay.value(i, j, parseTable[i-1][j-1]);	// NOT WORKING
+		$('.jsavmatrixtable:eq(2)').children().eq(i).children().eq(j).children().first().children().first().text(parseTable[i-1][j-1]);
+		// I had no choice
+		$menu.hide();
+	}
 
   // click handler for the FIRST/FOLLOW table
   function firstFollowHandler(index) {
@@ -3153,6 +3181,8 @@
     }
     if (derivationTable) { derivationTable.clear();}
     if (ffTable) { ffTable.clear();}
+		parseTable = [];
+		$('.conflictMenu').remove();
     if (parseTableDisplay) { parseTableDisplay.clear();}
     if (modelDFA) { modelDFA.clear();}
     if (builtDFA) { builtDFA.clear();}
