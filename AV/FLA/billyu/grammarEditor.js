@@ -10,6 +10,7 @@
       derivationTable,    // the derivation table shown during brute-force parsing
       parseTableDisplay,  // the parse table
       parseTree,          // parse tree shown during parsing slideshows
+			conflictTable,			// used for SLR parsing conflicts
       ffTable,            // table for FIRST and FOLLOW sets
       arrayStep,          // the position of FIRST or FOLLOW cells
       selectedNode,       // used for FA/graph editing
@@ -1023,7 +1024,7 @@
     // Create parse table using the DFA
     nodes.reset();
     var index = 0;
-		var conflictTable = [];
+		conflictTable = [];
     for (var next = nodes.next(); next; next = nodes.next()) {
       var row = [];
 			var conflictRow = [];
@@ -2976,10 +2977,17 @@
       var ptr = parseTableDisplay._arrays[i];
       ptr.unhighlight();
       for (var j = 1; j < ptr._indices.length; j++) {
-        if (parseTable[i-1][j-1] !== parseTableDisplay.value(i, j)) {
-          parseTableDisplay.highlight(i, j);
-          incorrect = true;
+				// check conflict table first to avoid mistaken the students
+				if (conflictTable[i - 1] && conflictTable[i - 1][j - 1]) {
+        	if (conflictTable[i-1][j-1].indexOf(parseTableDisplay.value(i, j)) == -1) {
+          	parseTableDisplay.highlight(i, j);
+          	incorrect = true;
+					}
         }
+				else if (parseTable[i-1][j-1] !== parseTableDisplay.value(i, j)) {
+					parseTableDisplay.highlight(i, j);
+					incorrect = true;
+				}
       }
     }
     // provide option to automatically complete the parse table
@@ -2991,6 +2999,12 @@
           var ptr = parseTableDisplay._arrays[i];
           ptr.unhighlight();
           for (var j = 1; j < ptr._indices.length; j++) {
+						console.log(parseTableDisplay.isHighlight(i, j));
+						console.log(parseTableDisplay.css(i, j, "top"));
+						var $chooseConflict = $("<div>");
+						if (conflictTable[i-1] && conflictTable[i-1][j-1]) {
+							_.each(conflictTable[i-1][j-1], function(choice) {$chooseConflict.append("<input type='button' value='" + choice + "' class='choice'/>");});
+						}
             parseTableDisplay.value(i, j, parseTable[i-1][j-1]);
           }
         }
