@@ -29,15 +29,6 @@
       dot = String.fromCharCode(183),
       emptystring = lambda;
   /*
-				$.ajax({
-  				url: "./LLTests.json",
-  				dataType: 'json',
-  				async: false,
-  				success: function(data) {
-						tests = data;
-  				}
-				});
-
   If there is a grammar in local storage, load that grammar.
   This is used to import grammars from certain proofs.
   */
@@ -1030,22 +1021,27 @@
     productions.unshift(["S'", arrow, productions[0][0]]);
 
     // Create parse table using the DFA
-    // Does not check for conflicts!
     nodes.reset();
     var index = 0;
+		var conflictTable = [];
     for (var next = nodes.next(); next; next = nodes.next()) {
       var row = [];
+			var conflictRow = [];
       for (var j = 0; j < tv.length; j++) {
         row.push("");
+				conflictRow.push([]);
       }
       parseTable.push(row);
+			conflictTable.push(conflictRow);
       var edges = next.getOutgoing();
       for (var i = 0; i < edges.length; i++) {
         var w = edges[i].weight().split('<br>');
         for (var j = 0; j < w.length; j++) {
           var ti = t.indexOf(w[j]);
           if (ti !== -1) {
-            parseTable[index][ti] = 's' + edges[i].end().value().substring(1);
+						var entry = 's' + edges[i].end().value().substring(1);
+            parseTable[index][ti] = entry;
+						conflictTable[index][ti].push(entry);
           } else {
             var vi = tv.indexOf(w[j]);
             parseTable[index][vi] = edges[i].end().value().substring(1);
@@ -1055,7 +1051,7 @@
       if (next.hasClass('final')) {
         var l = next.stateLabel().split('<br>');
         var rItem = null;
-        var rk = null;
+        var rk = [];
         for (var i = 0; i < l.length; i++){
           if (l[i].indexOf(dot) === l[i].length - 1) {
             rItem = l[i].substring(0, l[i].length-1);
@@ -1071,23 +1067,36 @@
         } else {
           for (var i = 0; i < productions.length; i++) {
             if (productions[i].join('') === rItem) {
-              rk = i;
-              break;
+              rk.push(i);
             }
           }
-          var followSet = follows[productions[rk][0]];
-          for (var i = 0; i < followSet.length; i++) {
-            var ti = tv.indexOf(followSet[i]);
-            parseTable[index][ti] = 'r' + rk;
-          }
+					for (var j = 0; j < rk.length; j++) {
+          	var followSet = follows[productions[rk[j]][0]];
+          	for (var i = 0; i < followSet.length; i++) {
+            	var ti = tv.indexOf(followSet[i]);
+            	parseTable[index][ti] = 'r' + rk[j];
+							conflictTable[index][ti].push('r' + rk[j]);
+          	}
+					}
         }
       }
       index++;
     }
-    modelDFA.hide();
-    $('#followbutton').show();
+
+		var conflict = _.filter(conflictTable, function(row) {return _.filter(row, function(entry) {return entry.length > 1;});});
+
+		modelDFA.hide();
+		$('#followbutton').show();
     $('.jsavcontrols').hide();
 
+		if (conflict.length > 0) {
+			var contin = confirm("This grammar is not SLR(1)\nContinue?");
+			if (!contin) {
+				$('#backbutton').click();
+				return;
+			}
+		}
+			
     // interactable FIRST/FOLLOW, same as LL parsing
     ffTable.click(firstFollowHandler);
     $('#followbutton').click(function () {
@@ -2975,6 +2984,7 @@
     }
     // provide option to automatically complete the parse table
     if (incorrect) {
+			window.scrollTo(0,document.body.scrollHeight);
       var confirmed = confirm('Highlighted cells are incorrect.\nFix automatically?');
       if (confirmed) {
         for (var i = 1; i < parseTableDisplay._arrays.length; i++) {
