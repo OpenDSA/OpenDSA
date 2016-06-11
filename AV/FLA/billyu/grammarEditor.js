@@ -3007,19 +3007,10 @@
           for (var j = 1; j < ptr._indices.length; j++) {
 						var wrong = parseTableDisplay.isHighlight(i, j);
 						parseTableDisplay.unhighlight(i, j);
-						var $chooseConflict = $("<div>", {class: "conflictMenu"});
 						// when current entry is wrong && there is a conflict
 						if (wrong && conflictTable[i-1] && conflictTable[i-1][j-1] && conflictTable[i-1][j-1].length > 1) {
 							// there is a conflict, either reduce-reduce or reduce-shift
-							console.log(parseTableDisplay.css(i, j, "position"));
-							_.each(conflictTable[i-1][j-1], function(choice) {$chooseConflict.append("<input type='button' value='" + choice + "' class='choice'/><br>");});
-							$chooseConflict.attr({"i": i, "j": j});
-							// in order to pass indices of matrix
-							$chooseConflict.show();
-							$('#container').append($chooseConflict);
 							parseTableDisplay.highlight(i, j);
-							parseTable[i-1][j-1]["conflict"] = true;
-							$('.choice').off('click').click(choiceClickHandler);
 						}
             parseTableDisplay.value(i, j, parseTable[i-1][j-1]);
           }
@@ -3088,12 +3079,26 @@
   // click handler for the parse table
   function parseTableHandler (index, index2, e) { 
     // ignore if first row or column   
+		$('#firstinput').remove();
     if (index === 0 || index2 === 0) { return; }
+		if (conflictTable[index-1] && conflictTable[index-1][index2-1] && conflictTable[index-1][index2-1].length > 1) {
+			$('.conflictMenu').remove();
+			var offsetX = e.pageX;
+			var offsetY = e.pageY;
+			var $chooseConflict = $("<div>", {class: "conflictMenu"});
+			_.each(conflictTable[index-1][index2-1], function(choice) {$chooseConflict.append("<input type='button' value='" + choice + "' class='choice'/><br>");});
+			// in order to pass indices of matrix
+			$chooseConflict.attr({"i": index, "j": index2});
+			$chooseConflict.css({"position": "absolute", top: offsetY, left: offsetX});
+			$chooseConflict.show();
+			$('#container').append($chooseConflict);
+			$('.choice').off('click').click(choiceClickHandler);
+			return;
+		}
     var self = this;
     var prev = this.value(index, index2);
     // create input box
-    $('#firstinput').remove();
-    var createInput = "<input type='text' id='firstinput' value="+prev+">";
+    var createInput = "<input type='text' id='firstinput' value="+prev+" onfocus='this.value = this.value;'>";
     $('body').append(createInput);
     var offset = this._arrays[index]._indices[index2].element.offset();
     var topOffset = offset.top;
