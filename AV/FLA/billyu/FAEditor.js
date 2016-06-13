@@ -207,15 +207,6 @@
 				drag: dragging
 			});
 		} 
-		else if ($('.jsavgraph').hasClass('moveNodes') && selected != null) {
-			// If in "Move Nodes" mode, and a node has already been selected, save the graph and move the node.
-			saveFAState();
-			executeMoveNode(g, selected, e.pageY, e.pageX);
-			selected.unhighlight();
-			selected = null;
-			e.stopPropagation();
-			jsav.umsg('Click a node.');
-		}
 	};
 
 	// Sets click handlers for when the user clicks on a JSAV node.
@@ -227,39 +218,6 @@
 			var Prompt = new FANodePrompt(updateNode);
 			Prompt.render(selected.value(), selected.hasClass('start'), selected.hasClass('final'), selected.stateLabel());
 			selected.unhighlight();
-		}
-		else if ($(".jsavgraph").hasClass("addEdges")) {
-			/*
-			if (!$(".jsavgraph").hasClass("working")) {
-				// If in "Add Edges" mode, and this is the first node clicked, highlight it and store a pointer to it.
-				first = this;
-				first.highlight();
-				console.log($('jsavnode[data-value="' + first.value() + '"]'));
-				$('.jsavgraph').addClass("working");
-				jsav.umsg('Select a node to make an edge to.');
-   		}
-   		else {
-				// If in "Add Edges" mode and this is the second node clicked, open the custom prompt box to add an edge between the nodes.
-				selected = this;
-				selected.highlight();
-				var Prompt = new EdgePrompt(createEdge, emptystring);
-				Prompt.render("");
-				$('.jsavgraph').removeClass("working");
-				first.unhighlight();
-				selected.unhighlight();
-				jsav.umsg('Click a node.');
-			}
-			*/
-		}
-		else if ($('.jsavgraph').hasClass('moveNodes')) {
-			// If in "Move Nodes" mode, selected the node as the node to be moved.
-			if (selected) {
-				selected.unhighlight();
-			}
-			selected = this;
-			selected.highlight();
-			jsav.umsg('Click to place node.');
-			e.stopPropagation();
 		}
 		else if ($('.jsavgraph').hasClass('deleteNodes')) {
 			// If in "Delete Nodes" mode, save the graph and delete the node.
@@ -401,9 +359,8 @@
 	var moveNodes = function() {
 		removeModeClasses();
 		removeND();
-		$('.jsavgraph').addClass('moveNodes');
-		$("#mode").html('Moving nodes');
-		jsav.umsg('Click a node.');
+		$('.jsavnode').draggable('enable');
+		jsav.umsg('Drag to Move.');
 	};
 
 	// Function to switch to "Edit Nodes" mode.
@@ -1139,6 +1096,7 @@
 			if (next.value() == state) dragNode = next;
 		}
 		dragNode.unhighlight();
+		$('.jsavnode').off('contextmenu').contextmenu(showMenu);
 	};
 	
 	function dragging(event, node) {
@@ -1213,6 +1171,7 @@
 		$('path[opacity="1.5"]').remove();
 		first.unhighlight();
 		selected.unhighlight();
+		$('.jsavnode').off('contextmenu').contextmenu(showMenu);
 	}
 
 	function mouseMove(e) {
