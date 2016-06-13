@@ -103,6 +103,7 @@
 	var initialize = function(graph) {
 		g = graph;
 		initGraph({layout: "automatic"});
+		$('.jsavnode').draggable();
 	};
 
 	// Initializes a graph by parsing a JSON representation.
@@ -171,6 +172,11 @@
 			$('.jsavnode').contextmenu(showMenu);
 			$('.jsavgraph').click(graphClickHandler);
 			$('.jsavedgelabel').click(labelClickHandler);
+			$('.jsavnode').draggable({
+				start: dragStart,
+				stop: dragStop,
+				drag: dragging
+			});
     };
 
     // Function to switch which empty string is being used (lambda or epsilon) if a loaded graph uses the opposite representation to what the editor is currently using.
@@ -195,6 +201,11 @@
 			saveFAState();
 			executeAddNode(g, e.pageY, e.pageX);
 			$('.jsavnode').off('contextmenu').contextmenu(showMenu);
+			$('.jsavnode').draggable({
+				start: dragStart,
+				stop: dragStop,
+				drag: dragging
+			});
 		} 
 		else if ($('.jsavgraph').hasClass('moveNodes') && selected != null) {
 			// If in "Move Nodes" mode, and a node has already been selected, save the graph and move the node.
@@ -231,10 +242,10 @@
    				selected.highlight();
    				var Prompt = new EdgePrompt(createEdge, emptystring);
    				Prompt.render("");
-				$('.jsavgraph').removeClass("working");
-				first.unhighlight();
-				selected.unhighlight();
-				jsav.umsg('Click a node.');
+					$('.jsavgraph').removeClass("working");
+					first.unhighlight();
+					selected.unhighlight();
+					jsav.umsg('Click a node.');
    			}
 		}
 		else if ($('.jsavgraph').hasClass('moveNodes')) {
@@ -733,7 +744,7 @@
 
 	//cancel all current options
 	function cancel() {
-		$(".jsavgraph").removeClass("addNodes").removeClass("moveNodes").removeClass("editNodes").removeClass("deleteNodes").removeClass("working");
+		$(".jsavgraph").removeClass("addNodes").removeClass("addEdges").removeClass("moveNodes").removeClass("editNodes").removeClass("deleteNodes").removeClass("working");
 		jsav.umsg("");
 		$("#mode").html("");
 		collapseEdges();
@@ -917,7 +928,7 @@
 		window.alert("Beware that the minimization algorithm will fail on an incomplete DFA.");
 		localStorage['minimizeDFA'] = true;
 		localStorage['toMinimize'] = serialize(g);
-		window.open("../../shkim/minimizationTest.html");
+		window.open("../shkim/minimizationTest.html");
 	}
 
 	// function to hide the right click menu
@@ -1093,7 +1104,68 @@
 		$("#percentage").hide();
 	};
 
+	// draggable functions
+	function dragStart(event, node) {
+		var state = node.helper.attr('data-value');
+		var nodes = g.nodes();
+		var dragNode;
+		for (var next = nodes.next(); next; next = nodes.next()) {
+			if (next.value() == state) dragNode = next;
+		}
+		dragNode.highlight();
+	};
+
+	function dragStop(event, node) {
+		var state = node.helper.attr('data-value');
+		var nodes = g.nodes();
+		var dragNode;
+		for (var next = nodes.next(); next; next = nodes.next()) {
+			if (next.value() == state) dragNode = next;
+		}
+		dragNode.unhighlight();
+	};
 	
+	function dragging(event, node) {
+		var state = node.helper.attr('data-value');
+		var nodes = g.nodes();
+		var dragNode;
+		for (var next = nodes.next(); next; next = nodes.next()) {
+			if (next.value() == state) dragNode = next;
+		}	
+		var neighbors = dragNode.neighbors();
+		nodes.reset();
+		for (var next = nodes.next(); next; next = nodes.next()) {
+			if (next.neighbors().includes(dragNode)) {
+				neighbors.push(next);
+			}
+		}
+		for (var i = 0; i < neighbors.length; i++) {
+			var neighbor = neighbors[i];
+			var from, to;
+			if (g.hasEdge(dragNode, neighbor)) {
+				from = dragNode;
+				to = neighbor;
+			}
+			else {
+				from = neighbor;
+				to = dragNode;
+			}
+			var edgeWeight = g.getEdge(from, to).weight();
+			g.removeEdge(from, to);
+			var edge = executeAddEdge(g, from, to, edgeWeight);
+			$(edge._label.element).click(labelClickHandler);
+		}
+		if (dragNode == g.initial) {
+			g.removeInitial(dragNode);
+			g.makeInitial(dragNode);
+		}
+		$('.jsavnode').draggable({
+			start: dragStart,
+			stop: dragStop,
+			drag: dragging
+		});
+	};
+
 	// magic happens here
 	onLoadHandler();
 
