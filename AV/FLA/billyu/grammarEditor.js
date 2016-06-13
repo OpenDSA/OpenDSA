@@ -398,11 +398,11 @@
       }
       parseTableDisplay = new jsav.ds.matrix(pTableDisplay);
 			parseTableDisplay.addClass("parseTableDisplay");
-      parseTableDisplay.click(parseTableHandler);
+      parseTableDisplay.click(llparseTableHandler);
     };
     $('#parsetablebutton').click(continueToParseTable);
     $('#parsereadybutton').click(function() {
-      checkParseTable(parseTableDisplay, parseTable);
+      checkllParseTable(parseTableDisplay, parseTable);
     });
 
     // do the parsing
@@ -1206,11 +1206,11 @@
       }
       //jsav.label('Grammar', {relativeTo: m, anchor: "center top", myAnchor: "center bottom"});
       parseTableDisplay = new jsav.ds.matrix(pTableDisplay);
-      parseTableDisplay.click(parseTableHandler);
+      parseTableDisplay.click(slrparseTableHandler);
     };
     $('#parsetablebutton').click(continueToParseTable);
     $('#parsereadybutton').click(function() {
-      checkParseTable(parseTableDisplay, parseTable);
+      checkslrParseTable(parseTableDisplay, parseTable);
     });
 
     // do the parsing
@@ -2971,8 +2971,8 @@
     return incorrect
   };
 
-  // Function to check if the parse table is correct and transition
-  function checkParseTable(parseTableDisplay, parseTable) {
+  // Function to check if the SLR parse table is correct and transition
+  function checkslrParseTable(parseTableDisplay, parseTable) {
     $('#firstinput').remove();
     var incorrect = false;
     for (var i = 1; i < parseTableDisplay._arrays.length; i++) {
@@ -3012,6 +3012,43 @@
 							// there is a conflict, either reduce-reduce or reduce-shift
 							parseTableDisplay.highlight(i, j);
 						}
+            parseTableDisplay.value(i, j, parseTable[i-1][j-1]);
+          }
+        }
+        layoutTable(parseTableDisplay);
+      } else {
+        return;
+      }
+    }
+    $('#parsereadybutton').hide();
+    $('#parsebutton').show();
+    jsav.umsg("");
+    $('.jsavarray').off();
+  };
+
+	// check for the correctness of parse table of LL
+	var checkllParseTable = function (parseTableDisplay, parseTable) {
+    $('#firstinput').remove();
+    var incorrect = false;
+    for (var i = 1; i < parseTableDisplay._arrays.length; i++) {
+      var ptr = parseTableDisplay._arrays[i];
+      ptr.unhighlight();
+      for (var j = 1; j < ptr._indices.length; j++) {
+        if (parseTable[i-1][j-1] !== parseTableDisplay.value(i, j)) {
+          parseTableDisplay.highlight(i, j);
+          incorrect = true;
+        }
+      }
+    }
+    // provide option to automatically complete the parse table
+    if (incorrect) {
+			window.scrollTo(0,document.body.scrollHeight);
+      var confirmed = confirm('Highlighted cells are incorrect.\nFix automatically?');
+      if (confirmed) {
+        for (var i = 1; i < parseTableDisplay._arrays.length; i++) {
+          var ptr = parseTableDisplay._arrays[i];
+          ptr.unhighlight();
+          for (var j = 1; j < ptr._indices.length; j++) {
             parseTableDisplay.value(i, j, parseTable[i-1][j-1]);
           }
         }
@@ -3076,8 +3113,38 @@
     });
   };
 
-  // click handler for the parse table
-  function parseTableHandler (index, index2, e) { 
+	// parse table click handler for LL
+	function llparseTableHandler(index, index2, e) { 
+    // ignore if first row or column   
+    if (index === 0 || index2 === 0) { return; }
+    var self = this;
+    var prev = this.value(index, index2);
+    // create input box
+    $('#firstinput').remove();
+    var createInput = "<input type='text' id='firstinput' value="+prev+">";
+    $('body').append(createInput);
+    var offset = this._arrays[index]._indices[index2].element.offset();
+    var topOffset = offset.top;
+    var leftOffset = offset.left;
+    var fi = $('#firstinput');
+    fi.offset({top: topOffset, left: leftOffset});
+    fi.outerHeight($('.jsavvalue').height());
+    fi.width($(this._arrays[index]._indices[index2].element).width());
+    fi.focus();
+    // finalize changes when enter key is pressed
+    fi.keyup(function(event){
+      if(event.keyCode == 13){
+        var firstInput = $(this).val();
+        firstInput = firstInput.replace(/!/g, emptystring);
+        self.value(index, index2, firstInput);
+        layoutTable(self, index2);
+        fi.remove();
+      }
+    });
+  };
+
+  // click handler for the SLR parse table
+  function slrparseTableHandler (index, index2, e) { 
     // ignore if first row or column   
 		$('#firstinput').remove();
     if (index === 0 || index2 === 0) { return; }
