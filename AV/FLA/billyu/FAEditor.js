@@ -749,6 +749,10 @@
 		$(".jsavgraph").removeClass("addNodes").removeClass("addEdges").removeClass("moveNodes").removeClass("editNodes").removeClass("deleteNodes").removeClass("working");
 		jsav.umsg("");
 		$("#mode").html("");
+		var nodes = g.nodes();
+		_.each(nodes, function(x) {x.unhighlight();});
+		selected = null;
+		hideRMenu();
 		collapseEdges();
 	}
 
