@@ -4,11 +4,14 @@
 	<head>
 		<title>FA Tester</title>
     	<link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+    	<link rel="stylesheet" href="../../../lib/odsaAV-min.css" type="text/css" />
+    	<link rel="stylesheet" href="../../../lib/odsaStyle-min.css" type="text/css" />
     	<link rel="stylesheet" href="../resources/customPrompt.css" type="text/css" />
     	<link rel="stylesheet" href="../resources/FA.css" type="text/css" />
     	<link rel="stylesheet" href="./tester.css" type="text/css" />
 	</head>
 	<body>
+		<div id="container">
 		<h1 id="tester">Finite Automaton Tester</h1>
 		<h2>Questions: </h2>
 		<p id="exerciseLinks"></p>
@@ -46,6 +49,7 @@
 		<table id="testResults"></table>
 
 		<div id="rmenu"></div>
+		</div>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
@@ -53,6 +57,8 @@
 		<script src="../../../JSAV/lib/raphael.js"></script>
    	<script src="../../../JSAV/lib/dagre.min.js"></script>
 		<script src="../../../JSAV/build/JSAV.js"></script>
+		<script src="../../../lib/odsaUtils-min.js"></script>
+		<script src="../../../lib/odsaAV-min.js"></script>
 		<script src="../resources/serializableGraph.js"></script>
 		<script src="../resources/underscore-min.js"></script>
 		<script src="../resources/CustomPrompt.js"></script>

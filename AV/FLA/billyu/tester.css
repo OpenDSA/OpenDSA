@@ -83,6 +83,6 @@ td {
 
 #container {
 	width: 800px;
-	height: auto;
+	height: 1000px;
 	overflow: scroll;
 }
