@@ -4,6 +4,7 @@
 		jsavArray, // Instance variable to store the JSAV array (in which input strings are displayed).
 		first = null, // Instance variable to store the first node clicked in "Add Edges" mode.
 		selected = null, // Instance variable to store a node or edge that is clicked.
+		menuSelected = null, // Instance variable to store a node that is right clicked on.
 		label = null, // Instance variable to store the label clicked in "Edit Edges" mode.
 		undoStack, // Instance variable to store a backup array of serialized graphs, loaded when the user clicks "Undo".
 		redoStack, // Instance variable to store a backup array of serialized graphs, loaded when the user clicks "Redo".
@@ -233,20 +234,21 @@
 				// If in "Add Edges" mode, and this is the first node clicked, highlight it and store a pointer to it.
 				first = this;
 				first.highlight();
+				console.log($('jsavnode[data-value="' + first.value() + '"]'));
 				$('.jsavgraph').addClass("working");
 				jsav.umsg('Select a node to make an edge to.');
-   			}
-   			else {
-   				// If in "Add Edges" mode and this is the second node clicked, open the custom prompt box to add an edge between the nodes.
-   				selected = this;
-   				selected.highlight();
-   				var Prompt = new EdgePrompt(createEdge, emptystring);
-   				Prompt.render("");
-					$('.jsavgraph').removeClass("working");
-					first.unhighlight();
-					selected.unhighlight();
-					jsav.umsg('Click a node.');
-   			}
+   		}
+   		else {
+				// If in "Add Edges" mode and this is the second node clicked, open the custom prompt box to add an edge between the nodes.
+				selected = this;
+				selected.highlight();
+				var Prompt = new EdgePrompt(createEdge, emptystring);
+				Prompt.render("");
+				$('.jsavgraph').removeClass("working");
+				first.unhighlight();
+				selected.unhighlight();
+				jsav.umsg('Click a node.');
+			}
 		}
 		else if ($('.jsavgraph').hasClass('moveNodes')) {
 			// If in "Move Nodes" mode, selected the node as the node to be moved.
@@ -935,9 +937,10 @@
 	// called when mouse clicks on anywhere on the page except the menu
 	var hideRMenu = function() {
 		var nodes = g.nodes();
-		for (var node = nodes.next(); node; node = nodes.next()) {
-			node.unhighlight();
+		if (menuSelected) {
+			menuSelected.unhighlight();
 		}
+		menuSelected = null;
 		$("#rmenu").hide();
 	};
 
@@ -1008,6 +1011,7 @@
 		//find faState object with jQuery selected object
 		var node = g.getNodeWithValue(selected.attr('data-value'));
 		node.highlight();
+		menuSelected = node;
 
 		e.preventDefault();
 		//make menu appear where mouse clicks
@@ -1048,8 +1052,8 @@
 	// shows the right click menu
 	// function exists because displayRightClickMenu requires three parameters
 	var showMenu = function(e) {
-		var selected = $(this);
-		displayRightClickMenu(g, selected, e);
+		var rightNode = $(this);
+		displayRightClickMenu(g, rightNode, e);
 	}
 
 	// used by FAFixer and FATester
@@ -1106,6 +1110,7 @@
 
 	// draggable functions
 	function dragStart(event, node) {
+		saveFAState();
 		var state = node.helper.attr('data-value');
 		var nodes = g.nodes();
 		var dragNode;
