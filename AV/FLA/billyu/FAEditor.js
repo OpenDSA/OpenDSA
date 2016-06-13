@@ -351,7 +351,7 @@
 		$('.jsavgraph').off('mousemove').mousemove(mouseMove);
 		$('.jsavgraph').off('mouseup').mouseup(mouseUp);
 		$("#mode").html('Adding edges');
-		jsav.umsg('Click a node.');
+		jsav.umsg('Drag from one node to another.');
 	};
 
 	// Function to switch to "Move Nodes" mode.
@@ -1020,6 +1020,10 @@
 	// shows the right click menu
 	// function exists because displayRightClickMenu requires three parameters
 	var showMenu = function(e) {
+		var nodes = g.nodes();
+		for (var next = nodes.next(); next; next = nodes.next()) {
+			next.unhighlight();
+		}
 		var rightNode = $(this);
 		displayRightClickMenu(g, rightNode, e);
 	}
