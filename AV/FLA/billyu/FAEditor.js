@@ -1,5 +1,4 @@
 (function ($) {
-	console.log("executing FAEditor.js");
 	var jsav = new JSAV("av"), // Instance variable to store the JSAV algorithm visualization.
 		jsavArray, // Instance variable to store the JSAV array (in which input strings are displayed).
 		first = null, // Instance variable to store the first node clicked in "Add Edges" mode.
@@ -230,6 +229,7 @@
 			selected.unhighlight();
 		}
 		else if ($(".jsavgraph").hasClass("addEdges")) {
+			/*
 			if (!$(".jsavgraph").hasClass("working")) {
 				// If in "Add Edges" mode, and this is the first node clicked, highlight it and store a pointer to it.
 				first = this;
@@ -249,6 +249,7 @@
 				selected.unhighlight();
 				jsav.umsg('Click a node.');
 			}
+			*/
 		}
 		else if ($('.jsavgraph').hasClass('moveNodes')) {
 			// If in "Move Nodes" mode, selected the node as the node to be moved.
@@ -305,6 +306,8 @@
 		// This new edge does need its edge label click handler to be set individually.
 		updateAlphabet();
 		checkEdge(edge);
+		first = null;
+		selected = null;
 	};
 
 	// Called by the edit edge custom prompt box to save the graph and update the edge upon clicking "Done".
@@ -384,7 +387,11 @@
 	var addEdges = function() {
 		removeModeClasses();
 		removeND();
+		$('.jsavnode').draggable('disable');
 		$(".jsavgraph").addClass("addEdges");
+		$('.jsavgraph').off('mousedown').mousedown(mouseDown);
+		$('.jsavgraph').off('mousemove').mousemove(mouseMove);
+		$('.jsavgraph').off('mouseup').mouseup(mouseUp);
 		$("#mode").html('Adding edges');
 		jsav.umsg('Click a node.');
 	};
@@ -1174,6 +1181,47 @@
 			drag: dragging
 		});
 	};
+
+	var startX, startY, endX, endY; // start position of dragging edge line
+	function mouseDown(e) {
+		if (!$('.jsavgraph').hasClass('addEdges')) return;
+		var targetClass = $(e.target).attr('class');
+		if (targetClass !== "jsavvaluelabel") return;
+		var node = $(e.target);
+		first = g.getNodeWithValue(node.text());
+		first.highlight();
+		offset = $('.jsavgraph').offset(),
+	 	offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
+		startX = e.pageX - offset.left + offset2;
+		startY = e.pageY - offset.top + offset2;
+	}
+
+	function mouseUp(e) {
+		if (!first) return;
+		var targetClass = $(e.target).attr('class');
+		if (targetClass !== "jsavvaluelabel") {
+			$('path[opacity="1.5"]').remove();
+			first.unhighlight();
+			first = null;
+			return;
+		}
+		var node = $(e.target);
+		selected = g.getNodeWithValue(node.text());
+		selected.highlight();
+		var Prompt = new EdgePrompt(createEdge, emptystring);
+		Prompt.render("");
+		$('path[opacity="1.5"]').remove();
+		first.unhighlight();
+		selected.unhighlight();
+	}
+
+	function mouseMove(e) {
+		if (!first) return;
+		endX = e.pageX - offset.left + offset2;
+		endY = e.pageY - offset.top + offset2;
+		$('path[opacity="1.5"]').remove();
+		jsav.g.line(startX, startY, endX, endY, {"opacity": 1.5});
+	}
 
 	// magic happens here
 	onLoadHandler();
