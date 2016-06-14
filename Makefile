@@ -180,6 +180,9 @@ CS3114am: min
 CS3114pm: min
 	python $(CONFIG_SCRIPT) config/CS3114.json -c config/CS3114vtpm_LMSconf.json -b CS3114S16pm
 
+CS240: min
+	python $(CONFIG_SCRIPT) config/CS240.json -c config/CS240_LMSconf.json -b CS240
+
 CISC-187in: min
 	python $(CONFIG_SCRIPT) config/CISC-187.json -c config/CISC-187in_LMSconf.json -b CISC-187in
 
