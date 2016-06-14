@@ -268,6 +268,10 @@ testcpp: min
 uwosh: min
 	python $(CONFIG_SCRIPT) config/uwosh.json
 
+simple_demo: min
+#	python $(CONFIG_SCRIPT) config/simple_demo.json
+	python $(CONFIG_SCRIPT) config/simple_demo.json --local
+
 PL: min
 	python $(CONFIG_SCRIPT) config/PL.json
 

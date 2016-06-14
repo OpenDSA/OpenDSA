@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html data-require="math Simple_demo_ex3">
+  <head>
+    <title>Pick the largest using multiple-choice</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="arrSize">Khan.randRange(4, 11)</var>
+	<var id="lastIndex">arrSize - 1</var>
+        <var id="arrValues">simple_demo_ex3.initArr(arrSize)</var>
+        <var id="theAnswer">simple_demo_ex3.maxValue()</var>
+        <var id="option0">simple_demo_ex3.option[0]</var>
+        <var id="option1">simple_demo_ex3.option[1]</var>
+        <var id="option2">simple_demo_ex3.option[2]</var>
+      </div>
+      <div class="problems">
+        <div id="Simple_demo_ex3p">
+          <p class="question">What is the largest value in this list of numbers? </p>
+	  <pre><var>arrValues</var></pre>
+          <div class="solution"> <var>theAnswer</var></div>
+	  <ul class="choices">
+	    <li><var>option0</var></li>
+	    <li><var>option1</var></li>
+	    <li><var>option2</var></li>
+	  </ul>
+          <div class="hints">
+            <p>Choose something between 0 and index <var>lastIndex</var> </p>
+            <p>This problem is really too easy for a second hint</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
