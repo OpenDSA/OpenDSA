@@ -1,4 +1,4 @@
-function($) {
+$(document).ready(function () {
   var variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var jsav = new JSAV("av");
   var arrow = String.fromCharCode(8594),
@@ -3419,4 +3419,4 @@ function($) {
 	}
 
 	onLoadHandler();
-}(jQuery));
+});
