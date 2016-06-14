@@ -3,6 +3,7 @@ Finite Automaton module.
 An extension to the JFLAP library.
 */
 var lambda = String.fromCharCode(955);
+var fa; // stores the FA when 'this' cannot be used conveniently
 (function ($) {
   "use strict";
   if (typeof JSAV === "undefined") {
@@ -80,6 +81,11 @@ var lambda = String.fromCharCode(955);
     else{
       value = options.value;
     }
+		$('.jsavnode').draggable({
+			start: dragStart,
+			stop: dragStop,
+			drag: dragging
+		});
     return this.newNode(value, options);
   };
 
@@ -487,6 +493,24 @@ var lambda = String.fromCharCode(955);
     return ret;
   };
 
+	/*
+	Function to enable dragging to move nodes in FA.
+	*/
+	faproto.enableDragging = function() {
+		fa = this;
+		$('.jsavnode').draggable({
+			start: dragStart,
+			stop: dragStop,
+			drag: dragging
+		});
+	};
+
+	/*
+	Function to disable dragging to move nodes in FA.
+	*/
+	faproto.disableDragging = function() {
+		$('.jsavnode').draggable('disable');
+	};
 
   /*
   FA edge/transition class.
@@ -1329,5 +1353,65 @@ var produceOutput = function (t) {
     temp = temp._right;
   }
   return output;
+};
+
+// draggable functions
+function dragStart(event, node) {
+	var state = node.helper.attr('data-value');
+	var nodes = fa.nodes();
+	var dragNode;
+	for (var next = nodes.next(); next; next = nodes.next()) {
+		if (next.value() == state) dragNode = next;
+	}
+	dragNode.highlight();
+};
+
+function dragStop(event, node) {
+	var state = node.helper.attr('data-value');
+	var nodes = fa.nodes();
+	var dragNode;
+	for (var next = nodes.next(); next; next = nodes.next()) {
+		if (next.value() == state) dragNode = next;
+	}
+	dragNode.unhighlight();
+	//$('.jsavnode').off('contextmenu').contextmenu(showMenu);
+};
+
+function dragging(event, node) {
+	$('path[opacity="0"]').remove();
+	var state = node.helper.attr('data-value');
+	var nodes = fa.nodes();
+	var dragNode;
+	for (var next = nodes.next(); next; next = nodes.next()) {
+		if (next.value() == state) dragNode = next;
+	}	
+	var neighbors = dragNode.neighbors();
+	nodes.reset();
+	for (var next = nodes.next(); next; next = nodes.next()) {
+		if (next.neighbors().includes(dragNode)) {
+			neighbors.push(next);
+		}
+	}
+	for (var i = 0; i < neighbors.length; i++) {
+		var neighbor = neighbors[i];
+		var from, to;
+		if (fa.hasEdge(dragNode, neighbor)) {
+			from = dragNode;
+			to = neighbor;
+		}
+		else {
+			from = neighbor;
+			to = dragNode;
+		}
+		var edgeWeight = fa.getEdge(from, to).weight();
+		fa.removeEdge(from, to);
+		var edge = executeAddEdge(fa, from, to, edgeWeight);
+		//$(edge._label.element).click(labelClickHandler);
+	}
+	if (dragNode == fa.initial) {
+		fa.removeInitial(dragNode);
+		fa.makeInitial(dragNode);
+	}
+	fa.enableDragging();
 };
 

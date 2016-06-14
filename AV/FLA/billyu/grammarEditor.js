@@ -1,4 +1,4 @@
-(function($) {
+function($) {
   var variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var jsav = new JSAV("av");
   var arrow = String.fromCharCode(8594),
@@ -1131,6 +1131,7 @@
       jsav.umsg('Build the DFA: Click a state.');
       // create the DFA
       builtDFA = jsav.ds.fa({width: '90%', height: 440});
+			builtDFA.enableDragging();
       builtDFA.click(dfaHandler);
       $('.jsavgraph').click(graphHandler);
       $('#av').append($('#dfabuttons'));
@@ -2577,6 +2578,7 @@
     // keep a map of variables to FA states
     var nodeMap = {};
     builtDFA = jsav.ds.fa({width: '90%', height: 440, layout: "automatic"});
+		builtDFA.enableDragging();
     var newStates = [];     // variables
     for (var i = 0; i < productions.length; i++) {
       newStates.push(productions[i][0]);
