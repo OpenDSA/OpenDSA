@@ -242,6 +242,11 @@ function EdgePrompt(func, nostr) {
     this.render = function(values) {
         renderBox();
         // Add content to the prompt box, with references to the functions to run within the buttons.
+				$(document).keyup(function(e) {
+					if (e.keyCode == 13) {
+						addEdge();
+					}
+				});
         document.getElementById('dialogueboxbody').innerHTML = 'Transition: <input class="newedge" id="transition"> <button onclick="deleteWeight(0)">Delete Transition</button>';
         document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="addNewWeight()">Add New Transition</button> <button onclick="addEdge()">Done</button> <button onclick="terminate()">Cancel</button>';
         // If render function was passed an empty string, it means this prompt is creating a new edge.
@@ -351,6 +356,11 @@ function MealyEdgePrompt(func, nostr) {
         renderBox();
         // Add content to the prompt box, with references to the functions to run within the buttons.
         document.getElementById('dialogueboxbody').innerHTML = 'Input Character: <input class="newedgein" id="transition"> <br>Output Character: <input class="newedgeout"> <br><button onclick="deleteWeight(0)">Delete Transition</button>';
+				document.keyup(function(e) {
+					if (e.keyCode == 13) {
+						addEdge();
+					}
+				});
         document.getElementById('dialogueboxfoot').innerHTML = '<button onclick="addNewWeight()">Add New Transition</button> <button onclick="addEdge()">Done</button> <button onclick="terminate()">Cancel</button>';
         // If render function was passed an empty string, it means this prompt is creating a new edge.
         if (!values) {

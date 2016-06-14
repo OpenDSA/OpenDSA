@@ -1104,6 +1104,7 @@
 	};
 	
 	function dragging(event, node) {
+		$('path[opacity="0"]').remove();
 		var state = node.helper.attr('data-value');
 		var nodes = g.nodes();
 		var dragNode;
@@ -1212,7 +1213,6 @@
 	$('.links').click(toExercise);	
 	$(document).click(hideRMenu);
 	$(document).keyup(function(e) {
-		if (e.keyCode === 13) console.log(serialize(g)); //for debug
 		if (e.keyCode === 27) cancel();   // esc
 	});
 	$('#download').hide();
