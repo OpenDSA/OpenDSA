@@ -14,9 +14,8 @@ Swapping array elements
 -----------------------
 
 
-The following slideshow demonstrates how, starting with a slideshow
-like you worked with in the first week's lab, you can incorporate it into a
-learning module as an inlineav.
+The following demonstrates how, once you have a slideshow created, you
+can then incorporate it into a learning module as an inlineav.
 
 .. inlineav:: simple_demo1 ss
    :output: show
