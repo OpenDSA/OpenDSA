@@ -54,7 +54,7 @@
 						"<span>Test Case 1: </span>"+
 						"<span>String: </span><input type='text' name='testString'>"+
 						"<input type='radio' name='result" + resultCount + "' value='true' checked> <span>Accept</span>"+
-						"<input type='radio' name='result" + resultCount + "' value='false'> <span>Reject</span>"+
+						" <input type='radio' name='result" + resultCount + "' value='false'> <span>Reject</span>"+
 						"<br>" + 
 					"</div>"+
 					"</div>"+

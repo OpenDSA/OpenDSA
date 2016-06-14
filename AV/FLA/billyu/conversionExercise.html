@@ -3,6 +3,8 @@
 	<head>
 		<title>Convert NFA to DFA test</title>
     	<link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+	    <link rel="stylesheet" href="../../../lib/odsaAV-min.css" type="text/css" />
+			<link rel="stylesheet" href="../../../lib/odsaStyle-min.css" type="text/css" />
     	<link rel="stylesheet" href="../resources/FA.css" type="text/css" />
 			<link rel="stylesheet" href="./tester.css" type="text/css" />
 		<style>
@@ -18,7 +20,7 @@
     		#editable .jsavnode { cursor: pointer;}
     		#editable .jsavedge { 
     			cursor: pointer;
-    			stroke-width: 1;	/*can change to make edges easier to click */
+    			stroke-width: 2;	/*can change to make edges easier to click */
     		}
     		#conversionButton {
     			display: none;
@@ -29,7 +31,7 @@
 		</style>
 	</head>
 	<body>
-		
+		<div id="container">	
 		<div id="av">
 			<h1>Convert NFA to DFA</h1>
 			<h2 id="questionTitle" style="text-align: left;">Questions: </h2>
@@ -52,8 +54,7 @@
 			<button type="button" id="movenodesbutton" class="editButton">Move nodes</button>
 			<button type="button" id="removenodesbutton" class="editButton">Remove nodes</button>
 		</div>
-		<!-- <button onclick="convertToDFA(g)">Convert NFA to DFA</button> 
-		<button onclick="g.layout()">Layout</button> -->
+		</div>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
@@ -61,6 +62,8 @@
   	<script src="../../../JSAV/lib/dagre.min.js"></script>
 		<script src="../../../JSAV/lib/jquery.transit.js"></script>
 		<script src="../../../JSAV/build/JSAV.js"></script>
+		<script src="../../../lib/odsaUtils-min.js"></script>
+		<script src="../../../lib/odsaAV-min.js"></script>
 		<script src="../resources/serializableGraph.js"></script>
 		<script src="../resources/underscore-min.js"></script>
 		<script src="../resources/FA.js"></script>
