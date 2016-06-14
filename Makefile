@@ -198,6 +198,9 @@ CS3114: min
 	python $(CONFIG_SCRIPT) config/CS3114.json
 	# python $(CONFIG_SCRIPT) config/CS3114.json --local
 
+CS240: min
+	python $(CONFIG_SCRIPT) config/CS240.json
+
 NewKA: min
 	python $(CONFIG_SCRIPT) config/NewKA.json
 
