@@ -718,6 +718,7 @@
 		selected = null;
 		hideRMenu();
 		collapseEdges();
+		$('.jsavnode').draggable('enable');
 	}
 
 	function finishExercise() {
