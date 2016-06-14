@@ -874,7 +874,7 @@
 		// (same format as how the grammar test exports grammars to local storage)
 		localStorage['grammar'] = converted;
 		// open grammar
-		window.open("../../shkim/grammarTest.html");
+		window.open("./grammarEditor.html");
 	};
 
 	// Function to convert an NFA to a DFA.

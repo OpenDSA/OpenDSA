@@ -425,14 +425,14 @@
       //parseTableDisplay = new jsav.ds.matrix(pTableDisplay, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
       var remainingInput = inputString + '$';
       // display remaining input and the parse stack
-      jsav.umsg('<mark>' + remainingInput[0] + '</mark>' + remainingInput.substring(1) + ' | <mark>' + productions[0][0] + '</mark>');
+      updateSLRDisplay('<mark>' + remainingInput[0] + '</mark>' + remainingInput.substring(1) , ' <mark>' + productions[0][0] + '</mark>');
       jsav.displayInit();
       parseTree = new jsav.ds.tree();
 
       var next;
       var parseStack = [parseTree.root(productions[0][0])];
 
-      jsav.umsg('<mark>' + remainingInput[0] + '</mark>' + remainingInput.substring(1) + ' | ');
+      updateSLRDisplay('<mark>' + remainingInput[0] + '</mark>' + remainingInput.substring(1), "");
       var accept = true;
       
       parseTree.layout();
@@ -484,8 +484,8 @@
         } else if (next.value() === remainingInput[0]) {
             remainingInput = remainingInput.substring(1);
         } 
-        jsav.umsg('<mark>' + remainingInput[0] + '</mark>' + remainingInput.substring(1) + ' | '
-         + _.map(parseStack, function(x, k) {
+        updateSLRDisplay('<mark>' + remainingInput[0] + '</mark>' + remainingInput.substring(1),
+           _.map(parseStack, function(x, k) {
           if (k === parseStack.length - 1) {return '<mark>'+x.value()+'</mark>';} return x.value();}));
       }
       jsav.step();
@@ -1248,12 +1248,12 @@
       var currentRow = 0;
       var accept = false;
       var displayOrder = [];
-      jsav.umsg(remainingInput + ' | ' + productions[1][0]);
+      updateSLRDisplay(remainingInput, productions[1][0]);
       
       jsav.displayInit();
       // m.hide();
       // parseTableDisplay.hide();
-      jsav.umsg(remainingInput + ' | ');
+     	updateSLRDisplay(remainingInput ,"");
       
       counter = 0;
       while (true) {
@@ -1316,8 +1316,8 @@
             var n = parseStack[parseStack.length - 1];
           }
           parseTree.layout();
-          jsav.umsg(remainingInput + ' | '
-           + _.map(parseStack, function(x, k) {
+          updateSLRDisplay(remainingInput,
+           	_.map(parseStack, function(x, k) {
             if (typeof x === 'number' || typeof x === 'string') {
               return x;
             }
@@ -1333,8 +1333,8 @@
           parseStack.push(currentRow);
           parseTree.layout();
         }
-        jsav.umsg(remainingInput + ' | '
-         + _.map(parseStack, function(x, k) {
+        updateSLRDisplay(remainingInput,
+           _.map(parseStack, function(x, k) {
           if (typeof x === 'number' || typeof x === 'string') {
             return x;
           }
@@ -1350,6 +1350,11 @@
     };
     $('#parsebutton').click(continueParse);
   };
+
+	function updateSLRDisplay (remainingInput, stack) {
+		jsav.umsg("<pre>Remaining Input: " + remainingInput + "\nStack: " + stack + "</pre>");
+	}
+
   // Function to add closure to an item set
   var addClosure = function (items, productions) {
     // takes an array of strings
@@ -3000,6 +3005,8 @@
     }
     // provide option to automatically complete the parse table
     if (incorrect) {
+			var container = document.getElementById("container");
+			container.scrollTop = container.scrollHeight;
 			window.scrollTo(0,document.body.scrollHeight);
       var confirmed = confirm('Highlighted cells are incorrect.\nFix automatically?');
       if (confirmed) {
@@ -3042,7 +3049,8 @@
     }
     // provide option to automatically complete the parse table
     if (incorrect) {
-			window.scrollTo(0,document.body.scrollHeight);
+			var container = document.getElementById("container");
+			container.scrollTop = container.scrollHeight;
       var confirmed = confirm('Highlighted cells are incorrect.\nFix automatically?');
       if (confirmed) {
         for (var i = 1; i < parseTableDisplay._arrays.length; i++) {
@@ -3303,6 +3311,12 @@
 	$('#multipleButton').click(toggleMultiple);
 	$('#addExerciseButton').click(addExercise);
 	$(document).click(defocus);
+	$(document).keyup(function(e) {
+		if (e.keyCode == 27) {
+			$('#firstinput').remove();
+			fi = null;
+		}
+	});
 
 	function onLoadHandler() {
 		type = $("h1").attr('id');

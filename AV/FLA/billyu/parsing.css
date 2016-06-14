@@ -12,8 +12,8 @@
 .jsavtree {
 	position: relative;
 }
-p.jsavoutput.jsavline {
-	height: 10px;
+.jsavline {
+	height: auto;
 }
 .parsingbutton {
 	display: none;
