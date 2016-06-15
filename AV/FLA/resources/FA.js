@@ -48,6 +48,9 @@ var lambda = String.fromCharCode(955);
     if (!this.options.element) {
       $(jsav.canvas).append(el);
     }
+		if (this.options.labelClickHandler) {
+			this.labelClickHandler = options.labelClickHandler;
+		}
     this.element = el;
     el.attr({"id": this.id()}).width(this.options.width).height(this.options.height);
     if (this.options.autoresize) {
@@ -80,8 +83,28 @@ var lambda = String.fromCharCode(955);
     else{
       value = options.value;
     }
-    return this.newNode(value, options);
+    var newNode = this.newNode(value, options);
+		newNode.fa = this;
+		newNode.element.draggable({
+			start: dragStart,
+			stop: dragStop,
+			drag: dragging,
+			containment: "parent"
+		});
+		return newNode;
   };
+
+	faproto.enableDragging = function() {
+		for (var i = this._nodes.length; i--; ) {
+			this._nodes[i].element.draggable('enable');
+		}
+	};
+
+	faproto.disableDragging = function() {
+		for (var i = this._nodes.length; i--; ) {
+			this._nodes[i].element.draggable('disable');
+		}
+	};
 
   // Method to remove the given node
   faproto.removeNode = function(node, options) {
@@ -179,8 +202,28 @@ var lambda = String.fromCharCode(955);
       prevEdge.layout();
       edge.layout();
     }
-    return edge;
+
+		if (edge) {
+			// Acquire each distinct edge transition.
+			var weight = edge.weight().split('<br>');
+			var transitions = [];
+			for (var i = 0; i < weight.length; i++) {
+				// Ensure there are no repeated edge transitions.
+				if (transitions.indexOf(weight[i]) == -1) {
+					transitions.push(weight[i]);
+				}
+			}
+			// Update edge weight to erase any duplicate edge transitions.
+			edge.weight(transitions.join("<br>"));
+			edge.layout();
+			return edge;
+		}
+		else {
+			// This should never happen, but it's here just in case (to prevent the program from simply crashing).
+			return graph.getEdge(fromNode, toNode);
+		}
   };
+
   // Function to delete the given edge. Can pass in an edge or two nodes.
   faproto.removeEdge = function(fNode, tNode, options) {
     var edge,
@@ -1329,4 +1372,54 @@ var produceOutput = function (t) {
     temp = temp._right;
   }
   return output;
+};
+
+// draggable functions
+function dragStart(event, node) {
+	var dragNode = node.helper.data("node");
+	//saveFAState();
+	dragNode.highlight();
+};
+
+function dragStop(event, node) {
+	var dragNode = node.helper.data("node");
+	dragNode.unhighlight();
+};
+
+function dragging(event, node) {
+	$('path[opacity="0"]').remove();
+	var dragNode = node.helper.data("node");
+	g = dragNode.fa;
+	var nodes = g.nodes();
+	var neighbors = dragNode.neighbors();
+	nodes.reset();
+	for (var next = nodes.next(); next; next = nodes.next()) {
+		if (next.neighbors().includes(dragNode)) {
+			neighbors.push(next);
+		}
+	}
+	for (var i = 0; i < neighbors.length; i++) {
+		var neighbor = neighbors[i];
+		var from, to;
+		if (g.hasEdge(dragNode, neighbor)) {
+			from = dragNode;
+			to = neighbor;
+		}
+		else {
+			from = neighbor;
+			to = dragNode;
+		}
+		var edgeWeight = g.getEdge(from, to).weight();
+		g.removeEdge(from, to);
+		var edge = g.addEdge(from, to, {weight: edgeWeight});
+		if (g.labelClickHandler) {
+			$(edge._label.element).click(g.labelClickHandler);
+		}
+	}
+	if (dragNode == g.initial) {
+		g.removeInitial(dragNode);
+		g.makeInitial(dragNode);
+	}
+	dragNode.stateLabelPositionUpdate();
+	dragNode.element.draggable('enable');
 };

@@ -95,7 +95,7 @@ var correctSteps = 0,
 	 }
 	 jsav.umsg("Choose a state to expand:");
 	 studentGraph = jsav.ds.fa({width: '45%', height: 440, element: $('#editable')});
-	 var initialNode = studentGraph.addNode();
+	 var initialNode = studentGraph.addNode({left: "20px"});
 	 initialNode.stateLabel(lambdaClosure([referenceGraph.initial.value()], referenceGraph).sort().join());
 	 initialNode.stateLabelPositionUpdate();
 	 studentGraph.makeInitial(initialNode);

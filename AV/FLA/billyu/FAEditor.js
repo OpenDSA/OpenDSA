@@ -103,7 +103,17 @@
 	var initialize = function(graph) {
 		g = graph;
 		initGraph({layout: "automatic"});
-		$('.jsavnode').draggable();
+	};
+
+	// Sets click handler for when the user clicks a JSAV edge label.
+	var labelClickHandler = function(e) {
+		if ($(".jsavgraph").hasClass("editNodes")) {
+			// If in "Edit Nodes" mode (which also serves to edit edges), open the custom prompt box to edit the edge.
+			label = this;
+			var values = $(label).html().split('<br>');
+			var Prompt = new EdgePrompt(updateEdge, emptystring);
+   			Prompt.render(values);
+		}
 	};
 
 	// Initializes a graph by parsing a JSON representation.
@@ -111,7 +121,7 @@
 		// Remove the old graph, parse JSON, and initialize the new graph.
 		$('.jsavgraph').remove();
 		var gg = opts.graph ? opts.graph : jQuery.parseJSON(g);
-		g = jsav.ds.fa($.extend({width: '750px', height: 440}, opts));
+		g = jsav.ds.fa($.extend({width: '750px', height: 440, labelClickHandler: labelClickHandler}, opts));
 		// Add the JSON nodes to the graph.
 		for (var i = 0; i < gg.nodes.length; i++) {
 	    	var node = g.addNode('q' + i),
@@ -172,11 +182,6 @@
 			$('.jsavnode').contextmenu(showMenu);
 			$('.jsavgraph').click(graphClickHandler);
 			$('.jsavedgelabel').click(labelClickHandler);
-			$('.jsavnode').draggable({
-				start: dragStart,
-				stop: dragStop,
-				drag: dragging
-			});
     };
 
     // Function to switch which empty string is being used (lambda or epsilon) if a loaded graph uses the opposite representation to what the editor is currently using.
@@ -201,11 +206,6 @@
 			saveFAState();
 			executeAddNode(g, e.pageY, e.pageX);
 			$('.jsavnode').off('contextmenu').contextmenu(showMenu);
-			$('.jsavnode').draggable({
-				start: dragStart,
-				stop: dragStop,
-				drag: dragging
-			});
 		} 
 	};
 
@@ -236,17 +236,6 @@
 			executeDeleteEdge(g, this);
 			updateAlphabet();
 			checkAllEdges();
-		}
-	};
-
-	// Sets click handler for when the user clicks a JSAV edge label.
-	var labelClickHandler = function(e) {
-		if ($(".jsavgraph").hasClass("editNodes")) {
-			// If in "Edit Nodes" mode (which also serves to edit edges), open the custom prompt box to edit the edge.
-			label = this;
-			var values = $(label).html().split('<br>');
-			var Prompt = new EdgePrompt(updateEdge, emptystring);
-   			Prompt.render(values);
 		}
 	};
 
@@ -345,7 +334,7 @@
 	var addEdges = function() {
 		removeModeClasses();
 		removeND();
-		$('.jsavnode').draggable('disable');
+		g.disableDragging();
 		$(".jsavgraph").addClass("addEdges");
 		$('.jsavgraph').off('mousedown').mousedown(mouseDown);
 		$('.jsavgraph').off('mousemove').mousemove(mouseMove);
@@ -359,7 +348,7 @@
 	var moveNodes = function() {
 		removeModeClasses();
 		removeND();
-		$('.jsavnode').draggable('enable');
+		g.enableDragging();
 		jsav.umsg('Drag to Move.');
 	};
 
@@ -718,7 +707,7 @@
 		selected = null;
 		hideRMenu();
 		collapseEdges();
-		$('.jsavnode').draggable('enable');
+		g.enableDragging();
 	}
 
 	function finishExercise() {
@@ -766,7 +755,7 @@
 	    	if (g) {
 				g.clear();
 			}
-			g = new jsav.ds.fa({width: '750px', height: 440, layout: "automatic"});
+			g = new jsav.ds.fa({width: '750px', height: 440, layout: "automatic", labelClickHandler: labelClickHandler});
 			var nodeMap = {};			// map node IDs to nodes
 	      	var xmlStates = xmlDoc.getElementsByTagName("state");
 	      	xmlStates = _.sortBy(xmlStates, function(x) { return x.id; })
@@ -1081,72 +1070,6 @@
 		$("#percentage").hide();
 	};
 
-	// draggable functions
-	function dragStart(event, node) {
-		saveFAState();
-		var state = node.helper.attr('data-value');
-		var nodes = g.nodes();
-		var dragNode;
-		for (var next = nodes.next(); next; next = nodes.next()) {
-			if (next.value() == state) dragNode = next;
-		}
-		dragNode.highlight();
-	};
-
-	function dragStop(event, node) {
-		var state = node.helper.attr('data-value');
-		var nodes = g.nodes();
-		var dragNode;
-		for (var next = nodes.next(); next; next = nodes.next()) {
-			if (next.value() == state) dragNode = next;
-		}
-		dragNode.unhighlight();
-		$('.jsavnode').off('contextmenu').contextmenu(showMenu);
-	};
-	
-	function dragging(event, node) {
-		$('path[opacity="0"]').remove();
-		var state = node.helper.attr('data-value');
-		var nodes = g.nodes();
-		var dragNode;
-		for (var next = nodes.next(); next; next = nodes.next()) {
-			if (next.value() == state) dragNode = next;
-		}	
-		var neighbors = dragNode.neighbors();
-		nodes.reset();
-		for (var next = nodes.next(); next; next = nodes.next()) {
-			if (next.neighbors().includes(dragNode)) {
-				neighbors.push(next);
-			}
-		}
-		for (var i = 0; i < neighbors.length; i++) {
-			var neighbor = neighbors[i];
-			var from, to;
-			if (g.hasEdge(dragNode, neighbor)) {
-				from = dragNode;
-				to = neighbor;
-			}
-			else {
-				from = neighbor;
-				to = dragNode;
-			}
-			var edgeWeight = g.getEdge(from, to).weight();
-			g.removeEdge(from, to);
-			var edge = executeAddEdge(g, from, to, edgeWeight);
-			$(edge._label.element).click(labelClickHandler);
-		}
-		if (dragNode == g.initial) {
-			g.removeInitial(dragNode);
-			g.makeInitial(dragNode);
-		}
-		dragNode.stateLabelPositionUpdate();
-		$('.jsavnode').draggable({
-			start: dragStart,
-			stop: dragStop,
-			drag: dragging
-		});
-	};
-
 	var startX, startY, endX, endY; // start position of dragging edge line
 	function mouseDown(e) {
 		if (!$('.jsavgraph').hasClass('addEdges')) return;
@@ -1178,7 +1101,9 @@
 		$('path[opacity="1.5"]').remove();
 		first.unhighlight();
 		selected.unhighlight();
+		$('.jsavgraph').removeClass('addEdges');
 		$('.jsavnode').off('contextmenu').contextmenu(showMenu);
+		g.enableDragging();
 	}
 
 	function mouseMove(e) {

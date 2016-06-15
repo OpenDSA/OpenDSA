@@ -13,8 +13,13 @@ var executeDeleteNode = function(graph, node){
 	graph.removeNode(node);
 };
 
+// Removes the specified edge from the specified graph.
+var executeDeleteEdge = function(graph, edge){
+	graph.removeEdge(edge);
+};
+
 // Adds a new edge to the specified graph between the two given nodes with the given weight.
-var executeAddEdge = function(graph, fromNode, toNode, weight){
+function executeAddEdge(graph, fromNode, toNode, weight){
 	var newEdge = graph.addEdge(fromNode, toNode, {weight: weight});
 	if (newEdge) {
 		// Acquire each distinct edge transition.
@@ -35,11 +40,6 @@ var executeAddEdge = function(graph, fromNode, toNode, weight){
 		// This should never happen, but it's here just in case (to prevent the program from simply crashing).
 		return graph.getEdge(fromNode, toNode);
 	}
-};
-
-// Removes the specified edge from the specified graph.
-var executeDeleteEdge = function(graph, edge){
-	graph.removeEdge(edge);
 };
 
 // Moves the specified node on the specified graph to the given x, y coordinates.
