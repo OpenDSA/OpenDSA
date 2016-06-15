@@ -101,7 +101,7 @@ var lambda = String.fromCharCode(955);
 	};
 
 	faproto.disableDragging = function() {
-		for (var i = this._nodes.length; i--; ) {
+		for (var i = 0; i < this._nodes.length; i++) {
 			this._nodes[i].element.draggable('disable');
 		}
 	};

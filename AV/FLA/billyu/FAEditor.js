@@ -53,7 +53,7 @@
 			case "tester":
 				$('#begin').click(testWithExpression);
 				$.ajax({
-  				url: "./tests.json",
+  				url: "./FAwithExpression.json",
   				dataType: 'json',
   				async: false,
   				success: function(data) {
@@ -91,7 +91,7 @@
 				data = localStorage['minimized'];
 			}
 			else {
-				data = '{"nodes":[{"left":100.90625,"top":171.109375,"i":true,"f":false},{"left":200.890625,"top":342,"i":false,"f":false},{"left":166,"top":66.40625,"i":false,"f":false},{"left":400.90625,"top":270.625,"i":false,"f":false},{"left":535.921875,"top":0,"i":false,"f":false},{"left":552,"top":268.234375,"i":false,"f":true}],"edges":[{"start":0,"end":1,"weight":"a"},{"start":0,"end":2,"weight":"b"},{"start":1,"end":3,"weight":"a"},{"start":3,"end":4,"weight":"b"},{"start":3,"end":5,"weight":"a"},{"start":4,"end":0,"weight":"a"},{"start":5,"end":3,"weight":"g"}]}';
+				data = '{"nodes":[],"edges":[]}';
 			}
 		}
 		initialize(data);
@@ -1010,6 +1010,7 @@
 	// shows the right click menu
 	// function exists because displayRightClickMenu requires three parameters
 	var showMenu = function(e) {
+		g.disableDragging();
 		var nodes = g.nodes();
 		for (var next = nodes.next(); next; next = nodes.next()) {
 			next.unhighlight();
@@ -1101,9 +1102,7 @@
 		$('path[opacity="1.5"]').remove();
 		first.unhighlight();
 		selected.unhighlight();
-		$('.jsavgraph').removeClass('addEdges');
 		$('.jsavnode').off('contextmenu').contextmenu(showMenu);
-		g.enableDragging();
 	}
 
 	function mouseMove(e) {
