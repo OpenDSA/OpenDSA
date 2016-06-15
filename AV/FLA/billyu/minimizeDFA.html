@@ -41,6 +41,8 @@
 		<div id="container">		
 		<div id="av">
 			<h1>DFA Minimization test</h1>
+			<h2 id="questionTitle" style="text-align: left;">Questions: </h2>
+			<p style="text-align: left;" id="exerciseLinks"></p>
 			<a class="jsavsettings" href="#">Settings</a>
 			<p style="font-size: 30px">&Sigma;: <span id='alphabet'></span></p>
       		<button type='button' id="addchildbutton" class='treework'>Add child</button>
@@ -56,8 +58,10 @@
 			<button type="button" id="completebutton" class="hide">Complete</button>
 			<button type="button" id="dfadonebutton" class="hide">Done?</button>
       		<p class="jsavoutput jsavline"></p>
-			<div id="reference" class="jsavcanvas"></div>
-			<div id="editable" class="jsavcanvas"></div>
+			<div id="graphs">
+				<div id="reference" class="jsavcanvas"></div>
+				<div id="editable" class="jsavcanvas"></div>
+			</div>
 		</div>
 		<button type="button" id="layoutRef">Layout</button>
 		</div>

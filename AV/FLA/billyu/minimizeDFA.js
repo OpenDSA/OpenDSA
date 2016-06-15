@@ -22,8 +22,8 @@ if computational complexity is a concern, should be changed to use a union-find 
 	var jsav = new JSAV("av"),
 		input,						// terminal to partition on
 		selectedNode = null,
-		g1,							// reference (original DFA); assumes its a DFA
-		g,							// working conversion
+		referenceGraph,							// reference (original DFA); assumes its a DFA
+		studentGraph,							// working conversion
 		bt,							// tree
 		alphabet,
 		partitions = [],			// user created partitions
@@ -31,58 +31,63 @@ if computational complexity is a concern, should be changed to use a union-find 
 		minimizedEdges = {};		// adjlist of minimized DFA
 	
 	var lambda = String.fromCharCode(955),
-		epsilon = String.fromCharCode(949);
+			epsilon = String.fromCharCode(949);
+
+	var automata, currentExercise = 0;
+	var correctSteps = 0,
+		incorrectSteps = 0,
+		studentScore = 0;
+
+ 	initGraph();
+ 	initQuestionLinks();
+ 	updateQuestionLinks();
+	jsav.umsg('Split a leaf node');
+  
 	// initialize reference/original DFA
 	function initGraph() {
-		if (localStorage['minimizeDFA'] === "true") {
+		if (localStorage['minimizeDFA'] == "true") {
 			localStorage['minimizeDFA'] = false;
 			var data = localStorage['toMinimize'];
 			return deserialize(data);
 		}
-		var graph = jsav.ds.fa({width: '45%', height: 440, layout: 'manual', element: $('#reference')});
-		var gWidth = graph.element.width();
-		var a = graph.addNode({left: 0.05*gWidth, top: 50}),		
-      		b = graph.addNode({left: 0.2*gWidth, top: 300}),
-      		c = graph.addNode({left: 0.2*gWidth, top: 10}),
-      		d = graph.addNode({left: 0.85*gWidth, top: 30}),
-      		e = graph.addNode({left: 0.25*gWidth, top: 200}),
-      		f = graph.addNode({left: 0.1*gWidth, top: 370}),
-      		h = graph.addNode({left: 0.55*gWidth, top: 300}),
-      		i = graph.addNode({left: 0.55*gWidth, top: 100}),
-      		j = graph.addNode({left: 0.85*gWidth, top: 350});
-
-      	graph.makeInitial(a);
-      	d.addClass("final");
-      	h.addClass('final');
-      	j.addClass('final');
-
-	    graph.addEdge(a, f, {weight: 'a'});
-	    graph.addEdge(a, c, {weight: 'b'});
-	    graph.addEdge(b, e, {weight: 'a'});
-	    graph.addEdge(b, a, {weight: 'b'});
-	    graph.addEdge(c, d, {weight: 'a'});
-	    graph.addEdge(c, e, {weight: 'b'});
-	    graph.addEdge(d, i, {weight: 'b'});
-	    graph.addEdge(d, j, {weight: 'a'});
-	    graph.addEdge(e, a, {weight: 'b'});
-	    graph.addEdge(e, i, {weight: 'a'});
-	    graph.addEdge(f, b, {weight: 'b'});
-	    graph.addEdge(f, j, {weight: 'a'});
-	    graph.addEdge(h, h, {weight: 'a'});
-	    graph.addEdge(h, b, {weight: 'b'});
-	    graph.addEdge(i, a, {weight: 'b'});
-	    graph.addEdge(i, e, {weight: 'a'});
-	    graph.addEdge(j, h, {weight: 'a'});
-	    graph.addEdge(j, i, {weight: 'b'});
-		graph.layout();
-		a.stateLabelPositionUpdate();
-		graph.updateAlphabet();
-		alphabet = Object.keys(graph.alphabet).sort();
-		$("#alphabet").html("" + alphabet);
-
-		graph.click(refClickHandlers);
-		return graph;
+		loadXML();
 	};
+
+	function loadXML () {
+		$.ajax({
+			url: "./conversions.xml",
+			dataType: 'xml',
+			async: false,
+			success: function(data) {
+				//allow multiple automata in one file
+				automata = data.getElementsByTagName("automaton");
+				presentAutomaton(0);
+			}
+		});
+	};
+
+ 	function initQuestionLinks() {
+	//not from localStorage but from XML file
+		if (automata) {
+			for (i = 0; i < automata.length; i++) {
+				$("#exerciseLinks").append("<a href='#' id='" + i + "' class='links'>" + (i+1) + "</a>");
+			}			
+		}
+	}
+
+ //called when a question link is clicked
+ function toAutomaton() {
+	presentAutomaton(this.getAttribute('id'));
+	currentExercise = this.getAttribute('id');
+	updateQuestionLinks();
+ }
+
+ //add a square border to current link
+ function updateQuestionLinks() {
+	$('.links').removeClass('currentExercise');
+	$("#" + currentExercise).addClass('currentExercise');
+ }
+
 
 	function deserialize (data) {
 		var gg = jQuery.parseJSON(data);
@@ -119,18 +124,18 @@ if computational complexity is a concern, should be changed to use a union-find 
 	};
 
 	// initialize tree of undistinguishable states
-	function initialize() {
-		if (bt) {
-			//g.clear();
+	function initializeBT() {
+		console.log("initializeBT");
+		//if (bt) {
 			$('#editable').empty();
-		}
-		bt = jsav.ds.tree();
+		//}
+		bt = jsav.ds.tree({element: '#editable'});
 		var val = [],
 			finals = [],
 			nonfinals = [];
 		// ignore unreachable states
-		var reachable = [g1.initial];
-		dfs(reachable, g1.initial);
+		var reachable = [referenceGraph.initial];
+		dfs(reachable, referenceGraph.initial);
 		for (var i = 0; i < reachable.length; i++) {
 			val.push(reachable[i].value());
 			if (reachable[i].hasClass('final')) {
@@ -145,15 +150,16 @@ if computational complexity is a concern, should be changed to use a union-find 
 		bt.root().child(1).addClass('final');
 		bt.layout();
 		bt.click(treeClickHandlers);
-		return bt;
+		console.log("here");
 	};
+
 	// check if tree is complete
 	function done() {
 		if (selectedNode) {
 			selectedNode.unhighlight();
 			selectedNode = null;
 		}
-		unhighlightAll(g1);
+		unhighlightAll(referenceGraph);
 		var leaves = getLeaves(bt.root());
 		for (var i = 0; i < leaves.length; i++) {
 			var leaf = leaves[i].split(',');
@@ -161,8 +167,8 @@ if computational complexity is a concern, should be changed to use a union-find 
 				var dArr = [],
 					letter = alphabet[k];
 				for (var j = 0 ; j < leaf.length; j++) {
-					var node = g1.getNodeWithValue(leaf[j]);
-					var next = g1.transitionFunction(node, letter);
+					var node = referenceGraph.getNodeWithValue(leaf[j]);
+					var next = referenceGraph.transitionFunction(node, letter);
 					
 					dArr.push(next[0]);
 				}
@@ -183,8 +189,8 @@ if computational complexity is a concern, should be changed to use a union-find 
 			node.stateLabel(leaves[i]);
 			var leaf = leaves[i].split(',');
 			for (var j = 0; j < leaf.length; j++) {
-				var n = g1.getNodeWithValue(leaf[j]);
-				if (n.equals(g1.initial)) {
+				var n = referenceGraph.getNodeWithValue(leaf[j]);
+				if (n.equals(referenceGraph.initial)) {
 					graph.makeInitial(node);
 					break;
 				}
@@ -194,7 +200,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 				}
 			}
 		}
-		var edges = g1.edges();
+		var edges = referenceGraph.edges();
 		// "create" edges, store as a reference
 		for (var next = edges.next(); next; next = edges.next()) {
 			// get nodes make edges
@@ -223,7 +229,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 		$("#editable").click(graphClickHandlers);
 		graph.click(nodeClickHandlers);
 		jsav.umsg("Finish the DFA");
-		g = graph;
+		studentGraph = graph;
 		return graph;
 	};
 	
@@ -245,8 +251,10 @@ if computational complexity is a concern, should be changed to use a union-find 
 			bt.layout();
 		}
 	};
+
 	// handler for the nodes of the tree
 	var treeClickHandlers = function(e) {
+		console.log("tree");
 		var leaves = getLeaves(bt.root());
 		// ignore if not a leaf node
 		if (!_.contains(leaves, this.value())) {
@@ -255,11 +263,11 @@ if computational complexity is a concern, should be changed to use a union-find 
 		if (!$('#editable').hasClass('working')) {
 			if (selectedNode) {
 				selectedNode.unhighlight();
-				unhighlightAll(g1);
+				unhighlightAll(referenceGraph);
 			}
 			var val = this.value().split(',');
 			// highlight the DFA states which are in the selected tree node
-			var hNodes = g1.nodes();
+			var hNodes = referenceGraph.nodes();
 			for (var next = hNodes.next(); next; next = hNodes.next()) {
 				if (_.contains(val, next.value())) {
 					next.highlight();
@@ -283,7 +291,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 		if ($('.jsavgraph').hasClass('moveNodes') && selectedNode) {
 			var nodeX = selectedNode.element.width()/2.0,
 				nodeY = selectedNode.element.height()/2.0,
-				edges = g.edges();
+				edges = studentGraph.edges();
 			$(selectedNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
 			selectedNode.stateLabelPositionUpdate();
 			for (var next = edges.next(); next; next = edges.next()) {
@@ -318,7 +326,7 @@ if computational complexity is a concern, should be changed to use a union-find 
    				var newEdge;
    				// check if valid transition
 				if (_.contains(minimizedEdges[first.value()], "" + this.value() +','+ input2)) {
-					newEdge = g.addEdge(first, this, {weight: input2});
+					newEdge = studentGraph.addEdge(first, this, {weight: input2});
 					if (!(typeof newEdge === 'undefined')) {
 						newEdge.layout();
 					}
@@ -332,10 +340,6 @@ if computational complexity is a concern, should be changed to use a union-find 
    			}
 		}
 	};
-	jsav.umsg('Split a leaf node');
-    g1 = initGraph();
-    bt = initialize();
-
     //================================
 	// DFA editing modes
 
@@ -357,11 +361,11 @@ if computational complexity is a concern, should be changed to use a union-find 
 	var hint = function() {
 		for (var i in minimizedEdges) {
 			for (var j = 0; j < minimizedEdges[i].length; j++) {
-				var n1 = g.getNodeWithValue(i),
-					n2 = g.getNodeWithValue(minimizedEdges[i][j].split(',')[0]),
+				var n1 = studentGraph.getNodeWithValue(i),
+					n2 = studentGraph.getNodeWithValue(minimizedEdges[i][j].split(',')[0]),
 					w = minimizedEdges[i][j].split(',')[1];
-				if (!g.hasEdge(n1, n2) || !_.contains(g.getEdge(n1, n2).weight().split(','), w)) {
-					var newEdge = g.addEdge(n1, n2, {weight: w});
+				if (!studentGraph.hasEdge(n1, n2) || !_.contains(studentGraph.getEdge(n1, n2).weight().split(','), w)) {
+					var newEdge = studentGraph.addEdge(n1, n2, {weight: w});
 					if (newEdge) {
 						newEdge.layout();
 					}
@@ -374,10 +378,10 @@ if computational complexity is a concern, should be changed to use a union-find 
 	var complete = function() {
 		for (var i in minimizedEdges) {
 			for (var j = 0; j < minimizedEdges[i].length; j++) {
-				var n1 = g.getNodeWithValue(i),
-					n2 = g.getNodeWithValue(minimizedEdges[i][j].split(',')[0]),
+				var n1 = studentGraph.getNodeWithValue(i),
+					n2 = studentGraph.getNodeWithValue(minimizedEdges[i][j].split(',')[0]),
 					w = minimizedEdges[i][j].split(',')[1];
-				var newEdge = g.addEdge(n1, n2, {weight: w});
+				var newEdge = studentGraph.addEdge(n1, n2, {weight: w});
 				if (newEdge) {
 					newEdge.layout();
 				}
@@ -386,7 +390,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 	};
 	// check if the minimized DFA is complete
 	var dfaDone = function() {
-		var edges = g.edges(),
+		var edges = studentGraph.edges(),
 			currentCount = 0,
 			minimizedCount = 0;
 		for (var next = edges.next(); next; next = edges.next()) {
@@ -425,7 +429,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 		}
 		if (_.difference(checker, partitions).length === 0) {
 			if (selectedNode) { selectedNode.unhighlight();}
-			unhighlightAll(g1);
+			unhighlightAll(referenceGraph);
 			selectedNode = null;
 			$('#editable').removeClass("working");
 			$('.treework').hide();
@@ -471,8 +475,8 @@ if computational complexity is a concern, should be changed to use a union-find 
 			partitions = [];
 			// get next nodes (assumes DFA)
 			for (var i = 0 ; i < val.length; i++) {
-				var node = g1.getNodeWithValue(val[i]);
-				var next = g1.transitionFunction(node, input);
+				var node = referenceGraph.getNodeWithValue(val[i]);
+				var next = referenceGraph.transitionFunction(node, input);
 				if (!nObj.hasOwnProperty(next[0])) {
 					nObj[next[0]] = [];
 				}
@@ -543,8 +547,8 @@ if computational complexity is a concern, should be changed to use a union-find 
 			nObj = {};
 			letter = alphabet[k];
 			for (var j = 0 ; j < val.length; j++) {
-				var node = g1.getNodeWithValue(val[j]);
-				var next = g1.transitionFunction(node, letter);
+				var node = referenceGraph.getNodeWithValue(val[j]);
+				var next = referenceGraph.transitionFunction(node, letter);
 				if (!nObj.hasOwnProperty(next[0])) {
 					nObj[next[0]] = [];
 				}
@@ -557,7 +561,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 			else if (k === alphabet.length - 1) {
 				alert('Cannot split this node');
 				selectedNode.unhighlight();
-				unhighlightAll(g1);
+				unhighlightAll(referenceGraph);
 				selectedNode = null;
 				return;
 			}
@@ -583,7 +587,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 		}
 		selectedNode.unhighlight();
 		selectedNode = null;
-		unhighlightAll(g1);
+		unhighlightAll(referenceGraph);
 		if ($('#editable').hasClass('working')) {
 			$('#editable').removeClass("working");
 			$('.treework').hide();
@@ -593,6 +597,69 @@ if computational complexity is a concern, should be changed to use a union-find 
 		bt.layout();
 		return;
 	};
+
+ //function to present an automaton in XML file with index
+ function presentAutomaton(index) {
+	 var automaton = automata[index];
+	 if (!automaton) {
+		 alert("No automaton with this index");
+		 return;
+	 }
+	 if (referenceGraph) {
+		referenceGraph.clear();
+		//because this clear step deletes the html as well
+		$("#graphs").prepend("<div id='reference' class='jsavcanvas'></div>");
+	 }
+	 	referenceGraph = jsav.ds.fa({width: '45%', height: 440, layout: "automatic", element: $("#reference")});
+	 var nodeMap = {};			// map node IDs to nodes
+	 var xmlStates = automaton.getElementsByTagName("state");
+	 xmlStates = _.sortBy(xmlStates, function(x) { return x.id; })
+		 var xmlTrans = automaton.getElementsByTagName("transition");
+	 // Iterate over the nodes and initialize them.
+	 for (var i = 0; i < xmlStates.length; i++) {
+		 var x = Number(xmlStates[i].getElementsByTagName("x")[0].childNodes[0].nodeValue);
+		 var y = Number(xmlStates[i].getElementsByTagName("y")[0].childNodes[0].nodeValue);
+		 var newNode = referenceGraph.addNode({left: x, top: y});
+		 // Add the various details, including initial/final states and state labels.
+		 var isInitial = xmlStates[i].getElementsByTagName("initial")[0];
+		 var isFinal = xmlStates[i].getElementsByTagName("final")[0];
+		 var isLabel = xmlStates[i].getElementsByTagName("label")[0];
+		 if (isInitial) {
+			 referenceGraph.makeInitial(newNode);
+		 }
+		 if (isFinal) {
+			 newNode.addClass('final');
+		 }
+		 if (isLabel) {
+			 ewNode.stateLabel(isLabel.childNodes[0].nodeValue);
+		 }
+		 nodeMap[xmlStates[i].id] = newNode;
+		 newNode.stateLabelPositionUpdate();
+	 }
+	 // Iterate over the edges and initialize them.
+	 for (var i = 0; i < xmlTrans.length; i++) {
+		 var from = xmlTrans[i].getElementsByTagName("from")[0].childNodes[0].nodeValue;
+		 var to = xmlTrans[i].getElementsByTagName("to")[0].childNodes[0].nodeValue;
+		 var read = xmlTrans[i].getElementsByTagName("read")[0].childNodes[0];
+		 // Empty string always needs to be checked for.
+		 if (!read) {
+			 read = lambda;
+		 }
+		 else {
+			 read = read.nodeValue;
+		 }
+		 var edge = referenceGraph.addEdge(nodeMap[from], nodeMap[to], {weight: read});
+		 edge.layout();
+	 }
+	 initializeBT();
+	 console.log(bt);
+	 referenceGraph.layout();
+	 referenceGraph.updateAlphabet();
+	 alphabet = Object.keys(referenceGraph.alphabet).sort();
+	 $("#alphabet").html("" + alphabet);
+	 referenceGraph.click(refClickHandlers);
+ };
+
 
 	$('#movebutton').click(moveNodesMode);
 	$('#edgebutton').click(addEdgesMode);
@@ -604,6 +671,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 	$('#removetreenodebutton').click(removeTreeNode);
 	$('#setterminalbutton').click(setTerminal);
 	$('#autobutton').click(autoPartition);
-	$('#layoutRef').click(function(){g1.layout()});
+	$('#layoutRef').click(function(){referenceGraph.layout()});
 	$('#dfadonebutton').click(dfaDone);
+	$('.links').click(toAutomaton);
 }(jQuery));

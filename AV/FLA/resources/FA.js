@@ -3,8 +3,6 @@ Finite Automaton module.
 An extension to the JFLAP library.
 */
 var lambda = String.fromCharCode(955);
-var fa; // stores the FA when 'this' cannot be used conveniently
-var labelClickHandler;
 (function ($) {
   "use strict";
   if (typeof JSAV === "undefined") {
@@ -12,7 +10,6 @@ var labelClickHandler;
   }
   var Edge = JSAV._types.ds.Edge;
   JSAV.ext.ds.fa = function (options) {
-		labelClickHandler = options.labelClickHandler;
     var opts = $.extend(true, {visible: true, autoresize: true}, options);
     return new FiniteAutomaton(this, opts);
   };
@@ -83,11 +80,6 @@ var labelClickHandler;
     else{
       value = options.value;
     }
-		$('.jsavnode').draggable({
-			start: dragStart,
-			stop: dragStop,
-			drag: dragging
-		});
     return this.newNode(value, options);
   };
 
@@ -495,24 +487,6 @@ var labelClickHandler;
     return ret;
   };
 
-	/*
-	Function to enable dragging to move nodes in FA.
-	*/
-	faproto.enableDragging = function() {
-		fa = this;
-		$('.jsavnode').draggable({
-			start: dragStart,
-			stop: dragStop,
-			drag: dragging
-		});
-	};
-
-	/*
-	Function to disable dragging to move nodes in FA.
-	*/
-	faproto.disableDragging = function() {
-		$('.jsavnode').draggable('disable');
-	};
 
   /*
   FA edge/transition class.
@@ -1356,63 +1330,3 @@ var produceOutput = function (t) {
   }
   return output;
 };
-
-// draggable functions
-function dragStart(event, node) {
-	var state = node.helper.attr('data-value');
-	var nodes = fa.nodes();
-	var dragNode;
-	for (var next = nodes.next(); next; next = nodes.next()) {
-		if (next.value() == state) dragNode = next;
-	}
-	dragNode.highlight();
-};
-
-function dragStop(event, node) {
-	var state = node.helper.attr('data-value');
-	var nodes = fa.nodes();
-	var dragNode;
-	for (var next = nodes.next(); next; next = nodes.next()) {
-		if (next.value() == state) dragNode = next;
-	}
-	dragNode.unhighlight();
-};
-
-function dragging(event, node) {
-	$('path[opacity="0"]').remove();
-	var state = node.helper.attr('data-value');
-	var nodes = fa.nodes();
-	var dragNode;
-	for (var next = nodes.next(); next; next = nodes.next()) {
-		if (next.value() == state) dragNode = next;
-	}	
-	var neighbors = dragNode.neighbors();
-	nodes.reset();
-	for (var next = nodes.next(); next; next = nodes.next()) {
-		if (next.neighbors().includes(dragNode)) {
-			neighbors.push(next);
-		}
-	}
-	for (var i = 0; i < neighbors.length; i++) {
-		var neighbor = neighbors[i];
-		var from, to;
-		if (fa.hasEdge(dragNode, neighbor)) {
-			from = dragNode;
-			to = neighbor;
-		}
-		else {
-			from = neighbor;
-			to = dragNode;
-		}
-		var edgeWeight = fa.getEdge(from, to).weight();
-		fa.removeEdge(from, to);
-		var edge = executeAddEdge(fa, from, to, edgeWeight);
-		$(edge._label.element).click(labelClickHandler);
-	}
-	if (dragNode == fa.initial) {
-		fa.removeInitial(dragNode);
-		fa.makeInitial(dragNode);
-	}
-	fa.enableDragging();
-};
-
