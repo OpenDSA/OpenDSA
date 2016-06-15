@@ -1139,6 +1139,7 @@
 			g.removeInitial(dragNode);
 			g.makeInitial(dragNode);
 		}
+		dragNode.stateLabelPositionUpdate();
 		$('.jsavnode').draggable({
 			start: dragStart,
 			stop: dragStop,

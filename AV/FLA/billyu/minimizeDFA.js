@@ -37,11 +37,6 @@ if computational complexity is a concern, should be changed to use a union-find 
 	var correctSteps = 0,
 		incorrectSteps = 0,
 		studentScore = 0;
-
- 	initGraph();
- 	initQuestionLinks();
- 	updateQuestionLinks();
-	jsav.umsg('Split a leaf node');
   
 	// initialize reference/original DFA
 	function initGraph() {
@@ -55,13 +50,14 @@ if computational complexity is a concern, should be changed to use a union-find 
 
 	function loadXML () {
 		$.ajax({
-			url: "./conversions.xml",
+			url: "./minimizeDFA.xml",
 			dataType: 'xml',
 			async: false,
 			success: function(data) {
 				//allow multiple automata in one file
 				automata = data.getElementsByTagName("automaton");
-				presentAutomaton(0);
+				initQuestionLinks();				
+				$('.links')[0].click();
 			}
 		});
 	};
@@ -72,6 +68,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 			for (i = 0; i < automata.length; i++) {
 				$("#exerciseLinks").append("<a href='#' id='" + i + "' class='links'>" + (i+1) + "</a>");
 			}			
+			$('.links').click(toAutomaton);
 		}
 	}
 
@@ -125,11 +122,8 @@ if computational complexity is a concern, should be changed to use a union-find 
 
 	// initialize tree of undistinguishable states
 	function initializeBT() {
-		console.log("initializeBT");
-		//if (bt) {
-			$('#editable').empty();
-		//}
-		bt = jsav.ds.tree({element: '#editable'});
+		$('#editable').empty();
+		bt = jsav.ds.tree();
 		var val = [],
 			finals = [],
 			nonfinals = [];
@@ -150,7 +144,6 @@ if computational complexity is a concern, should be changed to use a union-find 
 		bt.root().child(1).addClass('final');
 		bt.layout();
 		bt.click(treeClickHandlers);
-		console.log("here");
 	};
 
 	// check if tree is complete
@@ -253,8 +246,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 	};
 
 	// handler for the nodes of the tree
-	var treeClickHandlers = function(e) {
-		console.log("tree");
+	function treeClickHandlers(e) {
 		var leaves = getLeaves(bt.root());
 		// ignore if not a leaf node
 		if (!_.contains(leaves, this.value())) {
@@ -407,8 +399,8 @@ if computational complexity is a concern, should be changed to use a union-find 
 			jsav.umsg("You got it!");
 			alert("Congratulations!");
 			localStorage['toMinimize'] = true;
-			localStorage['minimized'] = serialize(g);
-			window.open('../martin tamayo/Finite Accepter/FAEditor.html');
+			localStorage['minimized'] = serialize(studentGraph);
+			window.open('./FAEditor.html');
 		}
 	};
 
@@ -423,7 +415,6 @@ if computational complexity is a concern, should be changed to use a union-find 
 	// checks if user's current partitioning is correct
 	var checkNodes = function() {
 		var checker = [];
-		//console.log(checkNodeArr);
 		for (var i = 0; i < checkNodeArr.length; i++) {
 			checker.push(checkNodeArr[i].value());
 		}
@@ -436,7 +427,6 @@ if computational complexity is a concern, should be changed to use a union-find 
 			$('.split').show();
 			jsav.umsg("The expansion is correct - Split a leaf node");
 		} else {
-			//console.log(checker);
 			alert('Those partitions are incorrect');
 		}
 	};
@@ -652,14 +642,12 @@ if computational complexity is a concern, should be changed to use a union-find 
 		 edge.layout();
 	 }
 	 initializeBT();
-	 console.log(bt);
 	 referenceGraph.layout();
 	 referenceGraph.updateAlphabet();
 	 alphabet = Object.keys(referenceGraph.alphabet).sort();
 	 $("#alphabet").html("" + alphabet);
 	 referenceGraph.click(refClickHandlers);
  };
-
 
 	$('#movebutton').click(moveNodesMode);
 	$('#edgebutton').click(addEdgesMode);
@@ -673,5 +661,8 @@ if computational complexity is a concern, should be changed to use a union-find 
 	$('#autobutton').click(autoPartition);
 	$('#layoutRef').click(function(){referenceGraph.layout()});
 	$('#dfadonebutton').click(dfaDone);
-	$('.links').click(toAutomaton);
+
+ 	initGraph();
+	jsav.umsg('Split a leaf node');
+
 }(jQuery));
