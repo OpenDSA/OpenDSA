@@ -254,11 +254,30 @@
 						var step1 = normalizeTransitionToRE(begin);
 						var step2 = normalizeTransitionToRE(pause);
 						var step3 = normalizeTransitionToRE(end);
-						if (step2 == none) {
-							indirect = step1 + step3;
+						if (step2 == none || step2 == lambda) {
+							if (step1 == lambda) {
+								indirect = step3;
+							}
+							else if (step3 == lambda) {
+								indirect = step1;
+							}
+							else {
+								indirect = step1 + step3;
+							}
 						}
 						else {
-							indirect = step1 + step2 + "*" + step3;
+							if (step1 == lambda && step3 == lambda) {
+								indirect = step2 + "*";
+							}
+							else if (step1 == lambda) {
+								indirect = step2 + "*" + step3;
+							}
+							else if (step3 == lambda) {
+								indirect = step1 + step2 + "*";
+							}
+							else {
+								indirect = step1 + step2 + "*" + step3;
+							}
 						}
 						if (direct == none) {
 							table.push([from.value(), to.value(), indirect]);
@@ -274,6 +293,7 @@
 
 			$dialog = $("#dialog");
 			var tav = new JSAV("transitions");
+			if (transitions) transitions.clear();
 			transitions = tav.ds.matrix(table, {style: "table"});
 			transitions.click(transitionsTableHandler);
 			$dialog.dialog({
@@ -1024,6 +1044,7 @@
 			nodes2.reset();
 		}
 		$('#collapseButton').show();
+		$('#edgeButton').hide();
 		$('#cheat').hide();
 		jsav.umsg("Use collapse state tool to remove nonfinal, noninitial states.");
 	}
@@ -1254,11 +1275,13 @@
 		selected = g.getNodeWithValue(node.text());
 		selected.highlight();
 		if ($('.jsavgraph').hasClass("RE")) {
-			g.addEdge(first, selected, {weight: none});
+			createEdge(none);
 			var edgesNum = g.edges().length;
 			var nodesNum = g.nodes().length;
 			if (edgesNum == nodesNum * nodesNum) {
 				$('#collapseButton').show();
+				$('#cheat').hide();
+				$('#edgeButton').hide();
 				$('.jsavgraph').removeClass('addEdges');
 				jsav.umsg("Use collapse state tool to remove nonfinal, noninitial states.");
 			}

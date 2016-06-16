@@ -111,4 +111,10 @@ td {
 .ui-dialog-titlebar {
 	height: 20px;
 	background-color: #999999;
+	cursor: move;
+}
+.jsavoutput {
+	padding-top: 10px;
+	margin: 0 auto;
+	text-align: center;
 }
