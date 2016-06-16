@@ -276,7 +276,11 @@
 			var tav = new JSAV("transitions");
 			transitions = tav.ds.matrix(table, {style: "table"});
 			transitions.click(transitionsTableHandler);
-			$dialog.dialog({dialogClass: "no-close"});
+			$dialog.dialog({
+				dialogClass: "no-close",
+				width: 120,
+				maxHeight: 800 
+			});
 			$dialog.dialog("open");
 		}
 	};
