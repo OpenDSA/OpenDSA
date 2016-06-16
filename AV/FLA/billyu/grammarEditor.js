@@ -1199,6 +1199,7 @@ $(document).ready(function () {
 
     // do the parsing
     var continueParse = function () {
+			$('#buttons').prepend($('#parsebutton'));
       var inputString = prompt('Input string');
       if (inputString === null) {
         return;
@@ -1233,7 +1234,12 @@ $(document).ready(function () {
       var accept = false;
       var displayOrder = [];
       updateSLRDisplay(remainingInput, productions[1][0]);
-      
+
+ 			$('.jsavcontrols').insertAfter($('.jsavmatrix:eq(1)'));
+			$('.jsavoutput').insertAfter($('.jsavcontrols'));
+			var container = document.getElementById("container");
+			container.scrollTop = container.scrollHeight;
+     
       jsav.displayInit();
       // m.hide();
       // parseTableDisplay.hide();
@@ -2978,6 +2984,9 @@ $(document).ready(function () {
     }
     $('#parsereadybutton').hide();
     $('#parsebutton').show();
+		$temp = $('<div>').attr({"align":"center"});
+		$temp.append($('#parsebutton'));
+		$temp.insertBefore($('.jsavcanvas .jsavmatrix:last-child'));
     jsav.umsg("");
     $('.jsavarray').off();
   };
@@ -3121,6 +3130,7 @@ $(document).ready(function () {
 		}
     var self = this;
     var prev = this.value(index, index2);
+		if (!prev) return;
     // create input box
     var createInput = "<input type='text' id='firstinput' value="+prev+" onfocus='this.value = this.value;'>";
     $('body').append(createInput);
