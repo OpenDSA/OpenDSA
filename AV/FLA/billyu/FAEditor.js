@@ -14,7 +14,8 @@
 		emptystring = lambda, // Instance variable to store which empty string notation is being used.
 		willRejectFunction = willReject, // Instance variable to indicate which traversal function to run (shorthand or no).
 		exerciseIndex,//for creating exercises
-		type;//type of editor: fixer, tester or editor
+		type,//type of editor: fixer, tester or editor
+		collapseStateTable; // table according to which a state is collapsed in converting to RE
 
 	// variables used by FATester and FAFixer
 	var tests, currentExercise = 0, testCases;
@@ -230,8 +231,66 @@
 		else if ($('.jsavgraph').hasClass('collapse')) {
 			selected = this;
 			if (selected == g.initial || selected.hasClass('final')) return;
+
+			var table = [];
+			var nodes1 = g.nodes();
+			var nodes2 = g.nodes();
+			for (var from = nodes1.next(); from; from = nodes1.next()) {
+				nodes2.reset();
+				for (var to = nodes2.next(); to; to = nodes2.next()) {
+					if (from == selected || to == selected) continue;
+					var straight = g.getEdge(from, to).weight();
+					var begin = g.getEdge(from, selected).weight();
+					var pause = g.getEdge(selected, selected).weight();
+					var end = g.getEdge(selected, to).weight();
+					var indirect = "";
+
+					direct = normalizeTransitionToRE(straight);
+					if (begin == none || end == none) {
+						table.push([from.value(), to.value(), direct]);
+					}
+					else {
+						var step1 = normalizeTransitionToRE(begin);
+						var step2 = normalizeTransitionToRE(pause);
+						var step3 = normalizeTransitionToRE(end);
+						if (step2 == none) {
+							indirect = step1 + step3;
+						}
+						else {
+							indirect = step1 + step2 + "*" + step3;
+						}
+						console.log(indirect);
+						if (direct == none) {
+							table.push([from.value(), to.value(), indirect]);
+						}
+						else {
+							table.push([from.value(), to.value(), direct + "+" + indirect]);
+						}
+					}
+				}
+			}
+			console.log(table);
+			collapseStateTable = table;
+
+			$dialog = $("#dialog");
+			var tav = new JSAV("transitions");
+			var m = tav.ds.matrix({rows: 5, columns: 8, style: "table"});
+			$dialog.dialog({dialogClass: "no-close"});
+			$dialog.dialog("open");
 		}
 	};
+
+	// change ...<br>... to (...+...)
+	function normalizeTransitionToRE(transition) {
+		var arr = transition.split("<br>");
+		if (arr.length == 1) return arr[0];
+		var re = "(" + arr[0];
+		for (var i = 1; i < arr.length; i++) {
+			re += "+" + arr[i];
+		}
+		re += ")";
+		return re;
+	}
 
 	// Sets click handler for when the user clicks a JSAV edge.
 	var edgeClickHandler = function(e) {
@@ -253,7 +312,9 @@
 	// Called by the add edge custom prompt box to save the graph and create the edge upon clicking "Done".
 	function createEdge(edge_label) {
 		saveFAState();
-		var edge = executeAddEdge(g, first, selected, edge_label);
+		console.log(first);
+		console.log(selected);
+		var edge = g.addEdge(first, selected, {weight: edge_label});
 		$(edge._label.element).click(labelClickHandler);
 		// This new edge does need its edge label click handler to be set individually.
 		updateAlphabet();
@@ -916,6 +977,7 @@
 		$('.jsavgraph').addClass("collapse");
 	}
 
+	// add empty transitions to states without transitions to each other
 	function completeTransitions() {
 		removeModeClasses();
 		var nodes1 = g.nodes();
@@ -932,6 +994,25 @@
 		$('#cheat').hide();
 		g.layout();
 		jsav.umsg("Use collapse state tool to remove nonfinal, noninitial states.");
+	}
+
+	// closes the transitions box and update FA
+	function finalizeRE() {
+		if (!collapseStateTable) return;
+		$('#dialog').dialog("close");
+
+		var table = collapseStateTable;
+		for (var i = 0; i < table.length; i++) {
+			var row = table[i];
+			var from = g.getNodeWithValue(row[0]);
+			var to = g.getNodeWithValue(row[1]);
+			console.log(from.value() + " to " + to.value());
+			var newTransition = row[2];
+			g.removeEdge(from, to);
+			g.addEdge(from, to, {weight: newTransition});
+		}
+		g.removeNode(selected);
+		if (g.nodes().length == 2) alert("done");
 	}
 
 	// function to hide the right click menu
@@ -1157,7 +1238,6 @@
 		$('path[opacity="1.5"]').remove();
 		first.unhighlight();
 		selected.unhighlight();
-		first = null;
 		$('.jsavnode').off('contextmenu').contextmenu(showMenu);
 	}
 
@@ -1197,6 +1277,8 @@
 	$('#collapseButton').click(collapseState);
 	$('#cheat').hide();
 	$('.links').click(toExercise);	
+	$( "#dialog" ).dialog({ autoOpen: false });
+	$('#finalize').click(finalizeRE);
 	$(document).click(hideRMenu);
 	$(document).keyup(function(e) {
 		if (e.keyCode === 27) cancel();   // esc

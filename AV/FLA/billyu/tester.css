@@ -86,3 +86,6 @@ td {
 	height: 800px;
 	overflow: scroll;
 }
+.no-close .ui-dialog-titlebar-close {
+  display: none;
+}
