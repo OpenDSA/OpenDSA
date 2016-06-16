@@ -282,6 +282,17 @@ var lambda = String.fromCharCode(955);
     this.shorthand = setBoolean;
   }
 
+	// return final states as [fastate]
+	faproto.getFinals = function() {
+		var nodes = this.nodes(), finals = [];
+		for (var node = nodes.next(); node; node = nodes.next()) {
+			if (node.hasClass('final')) {
+				finals.push(node);
+			}
+		}
+		return finals;
+	}
+
   /*
   Function to update the input alphabet.
   Returns an object.

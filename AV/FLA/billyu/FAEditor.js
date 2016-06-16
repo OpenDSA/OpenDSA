@@ -10,6 +10,7 @@
 		g, // Instance variable to store the current JSAV graph.
 		lambda = String.fromCharCode(955), // Instance variable to store the JavaScript representation of lambda.
 		epsilon = String.fromCharCode(949), // Instance variable to store the JavaScript representation of epsilon.
+		none = String.fromCharCode(248), // empty set symbol used for converting to RE
 		emptystring = lambda, // Instance variable to store which empty string notation is being used.
 		willRejectFunction = willReject, // Instance variable to indicate which traversal function to run (shorthand or no).
 		exerciseIndex,//for creating exercises
@@ -226,6 +227,10 @@
 			updateAlphabet();
 			checkAllEdges();
 		}
+		else if ($('.jsavgraph').hasClass('collapse')) {
+			selected = this;
+			if (selected == g.initial || selected.hasClass('final')) return;
+		}
 	};
 
 	// Sets click handler for when the user clicks a JSAV edge.
@@ -325,7 +330,6 @@
 		removeModeClasses();
 		removeND();
 		$('.jsavgraph').addClass("addNodes");
-		$("#mode").html('Adding nodes');
 		jsav.umsg('Click to add nodes.');
 	};
 
@@ -339,7 +343,6 @@
 		$('.jsavgraph').off('mousedown').mousedown(mouseDown);
 		$('.jsavgraph').off('mousemove').mousemove(mouseMove);
 		$('.jsavgraph').off('mouseup').mouseup(mouseUp);
-		$("#mode").html('Adding edges');
 		jsav.umsg('Drag from one node to another.');
 	};
 
@@ -358,7 +361,6 @@
 		removeModeClasses();
 		removeND();
 		$('.jsavgraph').addClass('editNodes');
-		$("#mode").html('Editing nodes and edges');
 		jsav.umsg('Click a node or edge label.');
 	};
 
@@ -368,7 +370,6 @@
 		removeModeClasses();
 		removeND();
 		$('.jsavgraph').addClass('deleteNodes');
-		$("#mode").html('Deleting nodes and edges');
 		jsav.umsg('Click a node or edge to delete it.');
 		// Expand the edges to make them easier to click.
 		expandEdges();
@@ -380,7 +381,6 @@
 		// Clear all superfluous or otherwise outdated information on the page.
 		$('.arrayPlace').empty();
 		$('#download').html('');
-		$("#mode").html('');
 		jsav.umsg('');
 		// Unselect and unhighlight any selected nodes or edges.
 		if (first) {
@@ -701,7 +701,6 @@
 	function cancel() {
 		$(".jsavgraph").removeClass("addNodes").removeClass("addEdges").removeClass("moveNodes").removeClass("editNodes").removeClass("deleteNodes").removeClass("working");
 		jsav.umsg("");
-		$("#mode").html("");
 		var nodes = g.nodes();
 		_.each(nodes, function(x) {x.unhighlight();});
 		selected = null;
@@ -888,7 +887,51 @@
 		window.alert("Beware that the minimization algorithm will fail on an incomplete DFA.");
 		localStorage['minimizeDFA'] = true;
 		localStorage['toMinimize'] = serialize(g);
-		window.open("../shkim/minimizationTest.html");
+		window.open("./minimizeDFA.html");
+	}
+
+	// transfrom FA to regular expression
+	var toRE = function() {
+		removeModeClasses();
+		if (!g.initial) {
+			alert("You must have an initial state.");
+			return;
+		}
+		var finals = g.getFinals();
+		if (finals.length !== 1) {
+			alert("You must have exactly one final state.");
+			return;
+		}
+		$('.jsavgraph').addClass('RE');
+		$('#nodeButton').hide();
+		$('#editButton').hide();
+		$('#deleteButton').hide();
+		jsav.umsg("Use add edges tool to put empty transitions between states with no transitions.");
+		$('#cheat').show();
+		$('#cheat').click(completeTransitions);
+	}
+
+	var collapseState = function() {
+		jsav.umsg("Click a nonfinal, noninitial state.");
+		$('.jsavgraph').addClass("collapse");
+	}
+
+	function completeTransitions() {
+		removeModeClasses();
+		var nodes1 = g.nodes();
+		var nodes2 = g.nodes();
+		for (var from = nodes1.next(); from; from = nodes1.next()) {
+			for (var to = nodes2.next(); to; to = nodes2.next()) {
+				if (!g.hasEdge(from, to)) {
+					g.addEdge(from, to, {weight: none});
+				}
+			}
+			nodes2.reset();
+		}
+		$('#collapseButton').show();
+		$('#cheat').hide();
+		g.layout();
+		jsav.umsg("Use collapse state tool to remove nonfinal, noninitial states.");
 	}
 
 	// function to hide the right click menu
@@ -1097,11 +1140,24 @@
 		var node = $(e.target);
 		selected = g.getNodeWithValue(node.text());
 		selected.highlight();
-		var Prompt = new EdgePrompt(createEdge, emptystring);
-		Prompt.render("");
+		if ($('.jsavgraph').hasClass("RE")) {
+			g.addEdge(first, selected, {weight: none});
+			var edgesNum = g.edges().length;
+			var nodesNum = g.nodes().length;
+			if (edgesNum == nodesNum * nodesNum) {
+				$('#collapseButton').show();
+				$('.jsavgraph').removeClass('addEdges');
+				jsav.umsg("Use collapse state tool to remove nonfinal, noninitial states.");
+			}
+		}
+		else {
+			var Prompt = new EdgePrompt(createEdge, emptystring);
+			Prompt.render("");
+		}
 		$('path[opacity="1.5"]').remove();
 		first.unhighlight();
 		selected.unhighlight();
+		first = null;
 		$('.jsavnode').off('contextmenu').contextmenu(showMenu);
 	}
 
@@ -1136,6 +1192,10 @@
 	$('#toDFAButton').click(convertToDFA);
 	$('#minimizeButton').click(minimizeDFA);
 	$('#toGrammarButton').click(convertToGrammar);
+	$('#toREButton').click(toRE);
+	$('#collapseButton').hide();
+	$('#collapseButton').click(collapseState);
+	$('#cheat').hide();
 	$('.links').click(toExercise);	
 	$(document).click(hideRMenu);
 	$(document).keyup(function(e) {
