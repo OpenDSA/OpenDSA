@@ -15,7 +15,8 @@
 		willRejectFunction = willReject, // Instance variable to indicate which traversal function to run (shorthand or no).
 		exerciseIndex,//for creating exercises
 		type,//type of editor: fixer, tester or editor
-		collapseStateTable; // table according to which a state is collapsed in converting to RE
+		collapseStateTable, // table according to which a state is collapsed in converting to RE
+		transitions; // jsav table for transitions after collapsing a state when converting to RE
 
 	// variables used by FATester and FAFixer
 	var tests, currentExercise = 0, testCases;
@@ -259,7 +260,6 @@
 						else {
 							indirect = step1 + step2 + "*" + step3;
 						}
-						console.log(indirect);
 						if (direct == none) {
 							table.push([from.value(), to.value(), indirect]);
 						}
@@ -274,7 +274,8 @@
 
 			$dialog = $("#dialog");
 			var tav = new JSAV("transitions");
-			var m = tav.ds.matrix({rows: 5, columns: 8, style: "table"});
+			transitions = tav.ds.matrix(table, {style: "table"});
+			transitions.click(transitionsTableHandler);
 			$dialog.dialog({dialogClass: "no-close"});
 			$dialog.dialog("open");
 		}
@@ -290,6 +291,33 @@
 		}
 		re += ")";
 		return re;
+	}
+
+	function transitionsTableHandler(row, col, e) {
+		for (var i = 0; i < transitions._arrays.length; i++) {
+			transitions.unhighlight(i);
+		}
+		transitions.highlight(row);
+		var edges = g.edges();
+		for (var edge = edges.next(); edge; edge = edges.next()) {
+			edge.element.removeClass('testingLambda');
+			edge._label.element.removeClass('testingLambda');
+		}
+		var table = collapseStateTable;
+		var from = g.getNodeWithValue(table[row][0]);
+		var to = g.getNodeWithValue(table[row][1]);
+		var direct = g.getEdge(from, to);
+		var step1 = g.getEdge(from, selected);
+		var step2 = g.getEdge(selected, selected);
+		var step3 = g.getEdge(selected, to);
+		direct.element.addClass('testingLambda');
+		step1.element.addClass('testingLambda');
+		step2.element.addClass('testingLambda');
+		step3.element.addClass('testingLambda');
+		direct._label.element.addClass('testingLambda');
+		step1._label.element.addClass('testingLambda');
+		step2._label.element.addClass('testingLambda');
+		step3._label.element.addClass('testingLambda');
 	}
 
 	// Sets click handler for when the user clicks a JSAV edge.
@@ -311,14 +339,15 @@
 
 	// Called by the add edge custom prompt box to save the graph and create the edge upon clicking "Done".
 	function createEdge(edge_label) {
+		if (!first || !selected) return;
 		saveFAState();
-		console.log(first);
-		console.log(selected);
 		var edge = g.addEdge(first, selected, {weight: edge_label});
 		$(edge._label.element).click(labelClickHandler);
 		// This new edge does need its edge label click handler to be set individually.
 		updateAlphabet();
 		checkEdge(edge);
+		first.unhighlight();
+		selected.unhighlight();
 		first = null;
 		selected = null;
 	};
@@ -992,7 +1021,6 @@
 		}
 		$('#collapseButton').show();
 		$('#cheat').hide();
-		g.layout();
 		jsav.umsg("Use collapse state tool to remove nonfinal, noninitial states.");
 	}
 
@@ -1006,7 +1034,6 @@
 			var row = table[i];
 			var from = g.getNodeWithValue(row[0]);
 			var to = g.getNodeWithValue(row[1]);
-			console.log(from.value() + " to " + to.value());
 			var newTransition = row[2];
 			g.removeEdge(from, to);
 			g.addEdge(from, to, {weight: newTransition});
@@ -1134,6 +1161,7 @@
 	// shows the right click menu
 	// function exists because displayRightClickMenu requires three parameters
 	var showMenu = function(e) {
+		first = null;
 		g.disableDragging();
 		var nodes = g.nodes();
 		for (var next = nodes.next(); next; next = nodes.next()) {
@@ -1236,8 +1264,6 @@
 			Prompt.render("");
 		}
 		$('path[opacity="1.5"]').remove();
-		first.unhighlight();
-		selected.unhighlight();
 		$('.jsavnode').off('contextmenu').contextmenu(showMenu);
 	}
 
