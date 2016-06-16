@@ -511,12 +511,8 @@ $(document).ready(function () {
     }
     if ($('.jsavgraph').hasClass('addfinals')) {
       this.toggleClass('final');
-    } else if ($('.jsavgraph').hasClass('movenodes')) {
-      this.highlight();
-      selectedNode = this;
-      jsav.umsg("Click to place node");
-      e.stopPropagation();
-    } else {
+    } 
+    else {
       this.highlight();
       // if node clicked is the toNode for the new edge
       // check for goto set
@@ -587,58 +583,46 @@ $(document).ready(function () {
 
   // click handler for the DFA graph window/canvas
   var graphHandler = function (e) {
-    // if moving nodes
-    if ($('.jsavgraph').hasClass('movenodes')) {
-      var nodeX = selectedNode.element.width()/2.0,
-          nodeY = selectedNode.element.height()/2.0;
-      $(selectedNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
-      builtDFA.layout();
-      selectedNode.unhighlight();
-      selectedNode = null;
-      e.stopPropagation();
-      jsav.umsg("Click a node.");
-    } else {
-      // if adding initial node
-      if (localStorage['slrdfareturn'] && localStorage['slrdfasymbol'] === 'initial') {
-        var builtInitial = builtDFA.addNode({left: 50, top: 50}),
-            nodeX = builtInitial.element.width()/2.0,
-            nodeY = builtInitial.element.height()/2.0;
-        $(builtInitial.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
-        builtDFA.makeInitial(builtInitial);
-        builtInitial.stateLabel(localStorage['slrdfareturn'].replace(/,/g, '<br>'));
-        builtDFA.layout();
-        localStorage.removeItem('slrdfareturn');
-        localStorage.removeItem('slrdfasymbol');
-        jsav.umsg('Build the DFA: Click a state.');
-        return;
-      }
-      // if user has determined the next item set and is ready to place the new DFA node
-      if(selectedNode && localStorage['slrdfareturn']) {
-        var newItemSet = localStorage['slrdfareturn'].replace(/,/g, '<br>');
-        var newItemSetArr = newItemSet.split('<br>');
-        // check to see if the toNode has already been created
-        var nodes = builtDFA.nodes();
-        for (var next = nodes.next(); next; next = nodes.next()) {
-          var sla = next.stateLabel().split('<br>');
-          var inter = _.intersection(sla, newItemSetArr);
-          if (inter.length === sla.length && inter.length === newItemSetArr.length) {
-            alert('The node already exists!');
-            return;
-          }
-        }
-        // add new node
-        var newNode = builtDFA.addNode(),
-            nodeX = newNode.element.width()/2.0,
-            nodeY = newNode.element.height()/2.0;
-        $(newNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
-        newNode.stateLabel(newItemSet);
-        builtDFA.addEdge(selectedNode, newNode, {weight: localStorage['slrdfasymbol']});
-        builtDFA.layout();
-        jsav.umsg("Build the DFA: Click a state.");
-        selectedNode.unhighlight();
-        selectedNode = null;
-      }
-    }
+		// if adding initial node
+		if (localStorage['slrdfareturn'] && localStorage['slrdfasymbol'] === 'initial') {
+			var builtInitial = builtDFA.addNode({left: 50, top: 50}),
+					nodeX = builtInitial.element.width()/2.0,
+					nodeY = builtInitial.element.height()/2.0;
+			$(builtInitial.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
+			builtDFA.makeInitial(builtInitial);
+			builtInitial.stateLabel(localStorage['slrdfareturn'].replace(/,/g, '<br>'));
+			builtDFA.layout();
+			localStorage.removeItem('slrdfareturn');
+			localStorage.removeItem('slrdfasymbol');
+			jsav.umsg('Build the DFA: Click a state.');
+			return;
+		}
+		// if user has determined the next item set and is ready to place the new DFA node
+		if(selectedNode && localStorage['slrdfareturn']) {
+			var newItemSet = localStorage['slrdfareturn'].replace(/,/g, '<br>');
+			var newItemSetArr = newItemSet.split('<br>');
+			// check to see if the toNode has already been created
+			var nodes = builtDFA.nodes();
+			for (var next = nodes.next(); next; next = nodes.next()) {
+				var sla = next.stateLabel().split('<br>');
+				var inter = _.intersection(sla, newItemSetArr);
+				if (inter.length === sla.length && inter.length === newItemSetArr.length) {
+					alert('The node already exists!');
+					return;
+				}
+			}
+			// add new node
+			var newNode = builtDFA.addNode(),
+					nodeX = newNode.element.width()/2.0,
+					nodeY = newNode.element.height()/2.0;
+			$(newNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
+			newNode.stateLabel(newItemSet);
+			builtDFA.addEdge(selectedNode, newNode, {weight: localStorage['slrdfasymbol']});
+			builtDFA.layout();
+			jsav.umsg("Build the DFA: Click a state.");
+			selectedNode.unhighlight();
+			selectedNode = null;
+		}
   };
 
 	// brute force parsing
@@ -1191,7 +1175,6 @@ $(document).ready(function () {
         }
       } 
       $('#dfabuttons').hide();
-      $('#movedfabutton').remove();
       $('#parsetablebutton').hide();
       $('#parsereadybutton').show();
       jsav.umsg('Fill entries in parse table. ! is '+emptystring+'.');
@@ -2619,75 +2602,50 @@ $(document).ready(function () {
     // handler for the nodes of the FA
     var convertDfaHandler = function (e) {
       // adding transitions
-      if (!$('.jsavgraph').hasClass('movenodes')) {
-        this.highlight();
-        if (selectedNode) {
-          var t = prompt('Terminal to transition on?');
-          if (t === null) {
-            selectedNode.unhighlight();
-            selectedNode = null;
-            this.unhighlight();
-            return;
-          }
-          var lv = selectedNode.stateLabel();
-          var rv = this.stateLabel();
-          // check if valid transition
-          for (var i = 0; i < productions.length; i++) {
-            var r = productions[i][2];
-            var add = false;
-            if (rv && productions[i][0] === lv && r[r.length - 1] === rv && r.substring(0, r.length - 1) === t) {
-              add = true;
-            }
-            if (productions[i][0] === lv && this.hasClass('final') && (r === t || (r === emptystring && t === ""))) {
-              add = true;
-            }
-            if (add) {
-              m.highlight(i);
-              var newEdge = builtDFA.addEdge(selectedNode, this, {weight: t});
-              selectedNode.unhighlight();
-              selectedNode = null;
-              this.unhighlight();
-              if (newEdge) { 
-                newEdge.layout();
-                checkDone();
-              }
-              return;
-            }
-          }
-          alert('That transition is not correct.');
-          selectedNode.unhighlight();
-          selectedNode = null;
-          this.unhighlight();
-        } else {
-          selectedNode = this;
-        }
-      } else {      // selecting node to move
-        if (selectedNode) {
-          selectedNode.unhighlight();
-        }
-        this.highlight();
-        selectedNode = this;
-      }
-      e.stopPropagation();
+			this.highlight();
+			if (selectedNode) {
+				var t = prompt('Terminal to transition on?');
+				if (t === null) {
+					selectedNode.unhighlight();
+					selectedNode = null;
+					this.unhighlight();
+					return;
+				}
+				var lv = selectedNode.stateLabel();
+				var rv = this.stateLabel();
+				// check if valid transition
+				for (var i = 0; i < productions.length; i++) {
+					var r = productions[i][2];
+					var add = false;
+					if (rv && productions[i][0] === lv && r[r.length - 1] === rv && r.substring(0, r.length - 1) === t) {
+						add = true;
+					}
+					if (productions[i][0] === lv && this.hasClass('final') && (r === t || (r === emptystring && t === ""))) {
+						add = true;
+					}
+					if (add) {
+						m.highlight(i);
+						var newEdge = builtDFA.addEdge(selectedNode, this, {weight: t});
+						selectedNode.unhighlight();
+						selectedNode = null;
+						this.unhighlight();
+						if (newEdge) { 
+							newEdge.layout();
+							checkDone();
+						}
+						return;
+					}
+				}
+				alert('That transition is not correct.');
+				selectedNode.unhighlight();
+				selectedNode = null;
+				this.unhighlight();
+			} else {
+				selectedNode = this;
+			}
+			e.stopPropagation();
     };
-    // handler for the graph window, for moving nodes
-    var convertGraphHandler = function (e) {
-      if (selectedNode && $('.jsavgraph').hasClass('movenodes')) {
-        var nodeX = selectedNode.element.width()/2.0,
-            nodeY = selectedNode.element.height()/2.0;
-        $(selectedNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
-        selectedNode.stateLabelPositionUpdate();
-        var edges = builtDFA.edges();
-        for (var next = edges.next(); next; next = edges.next()) {
-          if (next.start().equals(selectedNode) || next.end().equals(selectedNode)) {
-            next.layout();
-          }
-        }
-        selectedNode.unhighlight();
-        selectedNode = null;
-        e.stopPropagation();
-      }
-    };
+    
     // handler for the grammar table: clicking a production will create the appropriate transition
     var convertGrammarHandler = function (index) {
       this.highlight(index);
@@ -2704,21 +2662,10 @@ $(document).ready(function () {
         checkDone();
       }
     };
-    var toggleMove = function () {
-      if ($('.jsavgraph').hasClass('movenodes')) {
-        $('.jsavgraph').removeClass('movenodes');
-        this.value = 'Move states';
-      } else {
-        $('.jsavgraph').addClass('movenodes');
-        this.value = 'Add transitions';
-      }
-    };
+
     builtDFA.click(convertDfaHandler);
-    $('.jsavgraph').click(convertGraphHandler);
     m.click(convertGrammarHandler);
     $('#av').append($('#convertmovebutton'));
-    $('#convertmovebutton').click(toggleMove);
-    $('#convertmovebutton').show();
   };
 
   // interactive converting context-free grammar to NPDA
@@ -3235,21 +3182,13 @@ $(document).ready(function () {
 
   //=================================
   // Buttons for editing the SLR DFA
-  $('#movebutton').click(function() {
-    $('.jsavgraph').removeClass('addfinals');
-    $('.jsavgraph').removeClass('builddfa');
-    $('.jsavgraph').addClass('movenodes');
-    jsav.umsg('Click a node.');
-  });
   $('#finalbutton').click(function() {
-    $('.jsavgraph').removeClass('movenodes');
     $('.jsavgraph').removeClass('builddfa');
     $('.jsavgraph').addClass('addfinals');
     jsav.umsg('Click a node to toggle final state.');
   });
   $('#gotobutton').click(function() {
     $('.jsavgraph').removeClass('addfinals');
-    $('.jsavgraph').removeClass('movenodes');
     $('.jsavgraph').addClass('builddfa');
     jsav.umsg('Build the DFA: Click a state.');
   });

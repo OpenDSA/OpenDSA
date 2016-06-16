@@ -219,7 +219,6 @@ if computational complexity is a concern, should be changed to use a union-find 
 		}
 		graph.layout();
 		
-		$("#editable").click(graphClickHandlers);
 		graph.click(nodeClickHandlers);
 		jsav.umsg("Finish the DFA");
 		studentGraph = graph;
@@ -278,36 +277,10 @@ if computational complexity is a concern, should be changed to use a union-find 
 			this.highlight();
 		}
 	};
-	// handler for the minimized DFA window
-	var graphClickHandlers = function(e) {
-		if ($('.jsavgraph').hasClass('moveNodes') && selectedNode) {
-			var nodeX = selectedNode.element.width()/2.0,
-				nodeY = selectedNode.element.height()/2.0,
-				edges = studentGraph.edges();
-			$(selectedNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
-			selectedNode.stateLabelPositionUpdate();
-			for (var next = edges.next(); next; next = edges.next()) {
-				if (next.start().equals(selectedNode) || next.end().equals(selectedNode)) {
-					next.layout();
-				}
-			}
-			selectedNode.unhighlight();
-			selectedNode = null;
-			e.stopPropagation();
-			jsav.umsg("Click a state");
-		} 
-	};
+
 	// handler for the nodes of the minimized DFA
 	var nodeClickHandlers = function(e) {
-		if ($('.jsavgraph').hasClass('moveNodes')) {
-			if (selectedNode) {
-				selectedNode.unhighlight();
-			}
-			this.highlight();
-			selectedNode = this;
-			jsav.umsg("Click to place state");
-			e.stopPropagation();
-		} else if ($(".jsavgraph").hasClass("addEdges")) {
+		if ($(".jsavgraph").hasClass("addEdges")) {
 			this.highlight();
 			if (!$(".jsavgraph").hasClass("working")) {
 				first = this;
@@ -335,14 +308,7 @@ if computational complexity is a concern, should be changed to use a union-find 
     //================================
 	// DFA editing modes
 
-	var moveNodesMode = function() {
-		$(".jsavgraph").removeClass("addEdges");
-		$(".jsavgraph").addClass("moveNodes");
-		$("#mode").html('Moving states');
-		jsav.umsg("Click a state");
-	};
 	var addEdgesMode = function() {
-		$(".jsavgraph").removeClass("moveNodes");
 		$(".jsavgraph").addClass("addEdges");
 		$("#mode").html('Adding edges');
 		jsav.umsg("Click a state");
@@ -649,7 +615,6 @@ if computational complexity is a concern, should be changed to use a union-find 
 	 referenceGraph.click(refClickHandlers);
  };
 
-	$('#movebutton').click(moveNodesMode);
 	$('#edgebutton').click(addEdgesMode);
 	$('#donebutton').click(done);
 	$('#hintbutton').click(hint);

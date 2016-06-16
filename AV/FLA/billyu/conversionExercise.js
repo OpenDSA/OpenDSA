@@ -113,85 +113,61 @@ var correctSteps = 0,
 
  // handler for the graph window
  var graphClickHandlers = function (e) {
-	 // place selected node
-	 if ($('.jsavgraph').hasClass('moveNodes') && selectedNode != null) {
-		 var nodeX = selectedNode.element.width()/2.0,
-				 nodeY = selectedNode.element.height()/2.0,
-				 edges = studentGraph.edges();
-		 $(selectedNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
-		 selectedNode.stateLabelPositionUpdate();
-		 for (var next = edges.next(); next; next = edges.next()) {
-			 if (next.start().equals(selectedNode) || next.end().equals(selectedNode)) {
-				 next.layout();
-			 }
+	 if ($(".jsavgraph").hasClass("working")) {
+		 // user is allowed to omit 'q' and separate state names with empty space or commas
+		 var targetS = prompt("Which group of NFA states will that go to on " + expandT + "?");
+		 if (!targetS) {
+			 return;
 		 }
-		 selectedNode.unhighlight();
-		 selectedNode = null;
-		 e.stopPropagation();
-		 jsav.umsg("Click a state");
-	 }
-	 else { 
-		 if ($(".jsavgraph").hasClass("working")) {
-			 // user is allowed to omit 'q' and separate state names with empty space or commas
-			 var targetS = prompt("Which group of NFA states will that go to on " + expandT + "?");
-			 if (!targetS) {
-				 return;
-			 }
-			 var inputArr = targetS.trim().split(/\s*[,\s]\s*/);
-			 for (var i = 0; i < inputArr.length; i++) {
-				 if (inputArr[i].indexOf("q") === -1) {
-					 inputArr[i] = 'q' + inputArr[i];
-				 } 
-			 }
-			 targetS = inputArr.sort().join();
-			 if (targetS !== expanded) {
-				 alert("State label is incorrect.");
-				 $('.editButton').show();
-				 $('.jsavgraph').removeClass("working");
-				 selectedNode.unhighlight();
-				 jsav.umsg("Choose a state to expand:");
-				 return;
-			 }
-			 // create the new state
-			 var newNode = studentGraph.addNode(),
-					 nodeX = newNode.element.width()/2.0,
-					 nodeY = newNode.element.height()/2.0;
-			 $(newNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
-			 var check = expanded.split(',');
-			 // make the new state final if any of the original states were final
-			 for (var i = 0; i < check.length; i++) {
-				 if (referenceGraph.getNodeWithValue(check[i]).hasClass('final')) {
-					 newNode.addClass('final');
-					 break;
-				 }
-			 }
-			 newNode.stateLabel(expanded);
-			 newNode.stateLabelPositionUpdate();
-			 var newEdge = studentGraph.addEdge(selectedNode, newNode, {weight: expandT})
-				 if(newEdge) {newEdge.layout();}
-			 correctSteps++;
-			 studentScore++;
-			 $("#correctSteps").text(correctSteps);
-			 $("#studentScore").text(studentScore);
-
+		 var inputArr = targetS.trim().split(/\s*[,\s]\s*/);
+		 for (var i = 0; i < inputArr.length; i++) {
+			 if (inputArr[i].indexOf("q") === -1) {
+				 inputArr[i] = 'q' + inputArr[i];
+			 } 
+		 }
+		 targetS = inputArr.sort().join();
+		 if (targetS !== expanded) {
+			 alert("State label is incorrect.");
 			 $('.editButton').show();
 			 $('.jsavgraph').removeClass("working");
 			 selectedNode.unhighlight();
-			 newNode.unhighlight();
 			 jsav.umsg("Choose a state to expand:");
-		 } 
-	 }
+			 return;
+		 }
+		 // create the new state
+		 var newNode = studentGraph.addNode(),
+				 nodeX = newNode.element.width()/2.0,
+				 nodeY = newNode.element.height()/2.0;
+		 $(newNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
+		 var check = expanded.split(',');
+		 // make the new state final if any of the original states were final
+		 for (var i = 0; i < check.length; i++) {
+			 if (referenceGraph.getNodeWithValue(check[i]).hasClass('final')) {
+				 newNode.addClass('final');
+				 break;
+			 }
+		 }
+		 newNode.stateLabel(expanded);
+		 newNode.stateLabelPositionUpdate();
+		 var newEdge = studentGraph.addEdge(selectedNode, newNode, {weight: expandT})
+			 if(newEdge) {newEdge.layout();}
+		 correctSteps++;
+		 studentScore++;
+		 $("#correctSteps").text(correctSteps);
+		 $("#studentScore").text(studentScore);
+
+		 $('.editButton').show();
+		 $('.jsavgraph').removeClass("working");
+		 selectedNode.unhighlight();
+		 newNode.unhighlight();
+		 jsav.umsg("Choose a state to expand:");
+	 } 
  };
  // handler for the nodes of the DFA
  var nodeClickHandlers = function (e) {	
 	 this.highlight();
-	 if ($('.jsavgraph').hasClass('moveNodes')) {
-		 selectedNode = this;
-		 jsav.umsg("Click to place state");
-		 e.stopPropagation();
-	 } 
 	 // allow user to remove nodes since there is no check to see if a new node already exists
-	 else if ($(".jsavgraph").hasClass("removeNodes")) {
+	 if ($(".jsavgraph").hasClass("removeNodes")) {
 		 if (!this.equals(studentGraph.initial)) {		//dont remove if it's an initial state
 			 studentGraph.removeNode(this);
 		 }
@@ -269,22 +245,13 @@ var correctSteps = 0,
  //================================
  //editing modes
 
- var moveNodesMode = function () {
-	 $(".jsavgraph").removeClass("removeNodes");
-	 $(".jsavgraph").addClass("moveNodes");
-	 $("#mode").html('Moving states');
-	 jsav.umsg("Click a state");
-	 $('#conversionButton').show();
- };
  var removeNodesMode = function () {
-	 $(".jsavgraph").removeClass("moveNodes");
 	 $(".jsavgraph").addClass("removeNodes");
 	 $("#mode").html('Removing states');
 	 jsav.umsg("Click a state");
 	 $('#conversionButton').show();
  };
  var conversionMode = function () {
-	 $(".jsavgraph").removeClass("moveNodes");
 	 $('.jsavgraph').removeClass("removeNodes");
 	 $("#mode").html('');
 	 jsav.umsg("Choose a state to expand");
@@ -382,7 +349,6 @@ var correctSteps = 0,
 	};
 
 	$('#conversionButton').click(conversionMode);
-	$('#movenodesbutton').click(moveNodesMode);
 	$('#removenodesbutton').click(removeNodesMode);
 	$('.links').click(toAutomaton);
 }(jQuery));
