@@ -1040,6 +1040,7 @@
 			$('#edgeButton').hide();
 			$('.jsavgraph').removeClass('addEdges');
 			jsav.umsg("Use collapse state tool to remove nonfinal, noninitial states.");
+			if (g.nodes().length == 2) generateExpression();
 		}
 	}
 
@@ -1061,10 +1062,7 @@
 			}
 			nodes2.reset();
 		}
-		$('#collapseButton').show();
-		$('#edgeButton').hide();
-		$('#cheat').hide();
-		jsav.umsg("Use collapse state tool to remove nonfinal, noninitial states.");
+		checkForTransitions();
 	}
 
 	// closes the transitions box and update FA
@@ -1083,76 +1081,81 @@
 		}
 		g.removeNode(selected);
 		if (g.nodes().length == 2) {
-			var from = g.initial;
-			var to = g.getFinals()[0];
-			var fromm = normalizeTransitionToRE(g.getEdge(from, from).weight());
-			var fromTo = normalizeTransitionToRE(g.getEdge(from, to).weight());
-			var toFrom = normalizeTransitionToRE(g.getEdge(to, from).weight());
-			var too = normalizeTransitionToRE(g.getEdge(to, to).weight());
-			var cycle = "", target = "", expression = "";
-			if (fromTo == none) {
-				expression = none;
-			}
-			else {
-				if (toFrom == none) {
-					//cycle = "";
-					if ((fromm == none || fromm == lambda) && (too == none || too == lambda)) {
-						expression = fromTo;
-					}
-					else if (fromm == none || fromm == lambda) {
-						if (too.length > 1) {
-							expression = fromTo + "(" + too + ")*";
-						}
-						else {
-							expression = fromTo + too + "*";
-						}
-					}
-					else if (too == none || too == lambda) {
-						if (fromm.length > 1) {
-							expression = "(" + fromm + ")*" + fromTo;
-						}
-						else {
-							expression = fromm + "*" + fromTo;
-						}
+			generateExpression();
+		}	
+	}
+
+	// get the RE from last two states;
+	function generateExpression() {
+		var from = g.initial;
+		var to = g.getFinals()[0];
+		var fromm = normalizeTransitionToRE(g.getEdge(from, from).weight());
+		var fromTo = normalizeTransitionToRE(g.getEdge(from, to).weight());
+		var toFrom = normalizeTransitionToRE(g.getEdge(to, from).weight());
+		var too = normalizeTransitionToRE(g.getEdge(to, to).weight());
+		var cycle = "", target = "", expression = "";
+		if (fromTo == none) {
+			expression = none;
+		}
+		else {
+			if (toFrom == none) {
+				//cycle = "";
+				if ((fromm == none || fromm == lambda) && (too == none || too == lambda)) {
+					expression = fromTo;
+				}
+				else if (fromm == none || fromm == lambda) {
+					if (too.length > 1) {
+						expression = fromTo + "(" + too + ")*";
 					}
 					else {
-						if (fromm.length > 1 && too.length > 1) {
-							expression = "(" + fromm + ")*" + fromTo + "(" + too + ")*";
-						}
-						else if (fromm.length > 1) {
-							expression = "(" + fromm + ")*" + fromTo + too + "*";
-						}
-						else if (too.length > 1) {
-							expression = fromm + "*" + fromTo + "(" + too + ")*";
-						}
-						else {
-							expression = fromm + "*" + fromTo + too + "*";
-						}
+						expression = fromTo + too + "*";
+					}
+				}
+				else if (too == none || too == lambda) {
+					if (fromm.length > 1) {
+						expression = "(" + fromm + ")*" + fromTo;
+					}
+					else {
+						expression = fromm + "*" + fromTo;
 					}
 				}
 				else {
-					//cycle = something;
-					if ((fromm == none || fromm == lambda) && (too == none || too == lambda)) {
-						cycle = "(" + fromTo + toFrom + ")*";
-						target = fromTo;
+					if (fromm.length > 1 && too.length > 1) {
+						expression = "(" + fromm + ")*" + fromTo + "(" + too + ")*";
 					}
-					else if (fromm == none || fromm == lambda) {
-						cycle = "(" + fromTo + addStar(too) + toFrom + ")*";
-						target = fromTo + addStar(too);
+					else if (fromm.length > 1) {
+						expression = "(" + fromm + ")*" + fromTo + too + "*";
 					}
-					else if (too == none || too == lambda) {
-						cycle = "(" + addStar(fromm) + fromTo + toFrom + ")*";
-						target = addStar(fromm) + fromTo;
+					else if (too.length > 1) {
+						expression = fromm + "*" + fromTo + "(" + too + ")*";
 					}
 					else {
-						cycle = "(" + addStar(fromm) + fromTo + addStar(too) + toFrom + ")*";
-						target = addStar(fromm) + fromTo + addStar(too);
+						expression = fromm + "*" + fromTo + too + "*";
 					}
-					expression = cycle + target;
 				}
 			}
-			jsav.umsg("Expression: " + expression);
+			else {
+				//cycle = something;
+				if ((fromm == none || fromm == lambda) && (too == none || too == lambda)) {
+					cycle = "(" + fromTo + toFrom + ")*";
+					target = fromTo;
+				}
+				else if (fromm == none || fromm == lambda) {
+					cycle = "(" + fromTo + addStar(too) + toFrom + ")*";
+					target = fromTo + addStar(too);
+				}
+				else if (too == none || too == lambda) {
+					cycle = "(" + addStar(fromm) + fromTo + toFrom + ")*";
+					target = addStar(fromm) + fromTo;
+				}
+				else {
+					cycle = "(" + addStar(fromm) + fromTo + addStar(too) + toFrom + ")*";
+					target = addStar(fromm) + fromTo + addStar(too);
+				}
+				expression = cycle + target;
+			}
 		}
+		jsav.umsg("Expression: " + expression);
 	}
 
 	// add star if needed for transitions
