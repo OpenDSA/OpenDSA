@@ -101,6 +101,9 @@ td {
 	padding: 0;
 	margin: 0 auto;
 }
+.jsavcanvas {
+	overflow-x: initial;
+}
 .jsavmatrix {
 	margin-left: 0;
 }

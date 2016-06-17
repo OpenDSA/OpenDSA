@@ -4,7 +4,7 @@
 }
 .arrayPlace {
 	max-width: 100%;
-    overflow: scroll;
+	overflow: initial;
 }
 .start {	
 	font-style: italic;
