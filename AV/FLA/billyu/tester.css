@@ -118,3 +118,13 @@ td {
 	margin: 0 auto;
 	text-align: center;
 }
+.jsavoutput > div {
+	font-size: 120%;
+	-webkit-touch-callout: initial; /* iOS Safari */
+	-webkit-user-select: initial;   /* Chrome/Safari/Opera */
+	-khtml-user-select: initial;    /* Konqueror */
+	-moz-user-select: initial;      /* Firefox */
+	-ms-user-select: initial;       /* Internet Explorer/Edge */
+	user-select: initial;           /* Non-prefixed version, currently
+						                                  not supported by any browser */
+}

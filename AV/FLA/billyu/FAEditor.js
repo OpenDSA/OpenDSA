@@ -288,7 +288,6 @@
 					}
 				}
 			}
-			console.log(table);
 			collapseStateTable = table;
 
 			$dialog = $("#dialog");
@@ -306,9 +305,15 @@
 	};
 
 	// change ...<br>... to (...+...)
+	// add parentheses to the ones with + sign
 	function normalizeTransitionToRE(transition) {
 		var arr = transition.split("<br>");
-		if (arr.length == 1) return arr[0];
+		if (arr.length == 1) {
+			if (arr[0].indexOf('+') > -1) {
+				return "(" + arr[0] + ")";
+			}
+			return arr[0];
+		}
 		var re = "(" + arr[0];
 		for (var i = 1; i < arr.length; i++) {
 			re += "+" + arr[i];
@@ -1023,6 +1028,19 @@
 		jsav.umsg("Use add edges tool to put empty transitions between states with no transitions.");
 		$('#cheat').show();
 		$('#cheat').click(completeTransitions);
+		checkForTransitions();
+	}
+
+	function checkForTransitions() {
+		var edgesNum = g.edges().length;
+		var nodesNum = g.nodes().length;
+		if (edgesNum == nodesNum * nodesNum) {
+			$('#collapseButton').show();
+			$('#cheat').hide();
+			$('#edgeButton').hide();
+			$('.jsavgraph').removeClass('addEdges');
+			jsav.umsg("Use collapse state tool to remove nonfinal, noninitial states.");
+		}
 	}
 
 	var collapseState = function() {
@@ -1064,7 +1082,90 @@
 			g.addEdge(from, to, {weight: newTransition});
 		}
 		g.removeNode(selected);
-		if (g.nodes().length == 2) alert("done");
+		if (g.nodes().length == 2) {
+			var from = g.initial;
+			var to = g.getFinals()[0];
+			var fromm = normalizeTransitionToRE(g.getEdge(from, from).weight());
+			var fromTo = normalizeTransitionToRE(g.getEdge(from, to).weight());
+			var toFrom = normalizeTransitionToRE(g.getEdge(to, from).weight());
+			var too = normalizeTransitionToRE(g.getEdge(to, to).weight());
+			var cycle = "", target = "", expression = "";
+			if (fromTo == none) {
+				expression = none;
+			}
+			else {
+				if (toFrom == none) {
+					//cycle = "";
+					if ((fromm == none || fromm == lambda) && (too == none || too == lambda)) {
+						expression = fromTo;
+					}
+					else if (fromm == none || fromm == lambda) {
+						if (too.length > 1) {
+							expression = fromTo + "(" + too + ")*";
+						}
+						else {
+							expression = fromTo + too + "*";
+						}
+					}
+					else if (too == none || too == lambda) {
+						if (fromm.length > 1) {
+							expression = "(" + fromm + ")*" + fromTo;
+						}
+						else {
+							expression = fromm + "*" + fromTo;
+						}
+					}
+					else {
+						if (fromm.length > 1 && too.length > 1) {
+							expression = "(" + fromm + ")*" + fromTo + "(" + too + ")*";
+						}
+						else if (fromm.length > 1) {
+							expression = "(" + fromm + ")*" + fromTo + too + "*";
+						}
+						else if (too.length > 1) {
+							expression = fromm + "*" + fromTo + "(" + too + ")*";
+						}
+						else {
+							expression = fromm + "*" + fromTo + too + "*";
+						}
+					}
+				}
+				else {
+					//cycle = something;
+					if ((fromm == none || fromm == lambda) && (too == none || too == lambda)) {
+						cycle = "(" + fromTo + toFrom + ")*";
+						target = fromTo;
+					}
+					else if (fromm == none || fromm == lambda) {
+						cycle = "(" + fromTo + addStar(too) + toFrom + ")*";
+						target = fromTo + addStar(too);
+					}
+					else if (too == none || too == lambda) {
+						cycle = "(" + addStar(fromm) + fromTo + toFrom + ")*";
+						target = addStar(fromm) + fromTo;
+					}
+					else {
+						cycle = "(" + addStar(fromm) + fromTo + addStar(too) + toFrom + ")*";
+						target = addStar(fromm) + fromTo + addStar(too);
+					}
+					expression = cycle + target;
+				}
+			}
+			jsav.umsg("Expression: " + expression);
+		}
+	}
+
+	// add star if needed for transitions
+	function addStar(transition) {
+		if (transition.length == 1) return transition + "*";
+		var count = 0;
+		if (transition.charAt(0) !== "(") return "(" + transition + ")*";
+		for (var i = 0; i < transition.length; i++) {
+			if (transition.charAt(i) == "(") count++;
+			else if (transition.charAt(i) == ")") count--;
+			if (count == 0 && i < transition.length - 1) return "(" + transition + ")";
+		}
+		return transition + "*";
 	}
 
 	// function to hide the right click menu
@@ -1276,15 +1377,7 @@
 		selected.highlight();
 		if ($('.jsavgraph').hasClass("RE")) {
 			createEdge(none);
-			var edgesNum = g.edges().length;
-			var nodesNum = g.nodes().length;
-			if (edgesNum == nodesNum * nodesNum) {
-				$('#collapseButton').show();
-				$('#cheat').hide();
-				$('#edgeButton').hide();
-				$('.jsavgraph').removeClass('addEdges');
-				jsav.umsg("Use collapse state tool to remove nonfinal, noninitial states.");
-			}
+			checkForTransitions();
 		}
 		else {
 			var Prompt = new EdgePrompt(createEdge, emptystring);
