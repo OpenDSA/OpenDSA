@@ -297,7 +297,7 @@
 			transitions.click(transitionsTableHandler);
 			$dialog.dialog({
 				dialogClass: "no-close",
-				width: 120,
+				width: 200,
 				maxHeight: 800 
 			});
 			$dialog.dialog("open");

@@ -86,35 +86,11 @@ td {
 	height: 800px;
 	overflow: scroll;
 }
-.no-close .ui-dialog-titlebar-close {
-  display: none;
-}
-.ui-dialog {
-	z-index: 1000;
-	background-color: #f8fff8;
-	border-radius: 5px;
-}
-#transitions > .jsavcanvas {
-	height: auto;
-}
-#transitions {
-	padding: 0;
-	margin: 0 auto;
-}
 .jsavcanvas {
 	overflow-x: initial;
 }
 .jsavmatrix {
 	margin-left: 0;
-}
-.jsavhorizontalarray .jsavnode {
-	min-width: 50px !important;
-  max-width: 50px !important;
-}
-.ui-dialog-titlebar {
-	height: 20px;
-	background-color: #999999;
-	cursor: move;
 }
 .jsavoutput {
 	padding-top: 10px;
