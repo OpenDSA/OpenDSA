@@ -151,7 +151,7 @@ controllerProto.completeStep = function() {
 			this.lambda(replacements[replacements.length - 1].end(), to);
 			break;
 		case DESTAR:
-			this.lambda(from, replacements[0].from());
+			this.lambda(from, replacements[0].start());
 			this.lambda(replacements[0].end(), to);
 			this.lambda(from, to);
 			this.lambda(to, from);

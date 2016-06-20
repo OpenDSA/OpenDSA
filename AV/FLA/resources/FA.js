@@ -1417,17 +1417,10 @@ function dragging(event, node) {
 	}
 	for (var i = 0; i < neighbors.length; i++) {
 		var neighbor = neighbors[i];
-		var from, to;
-		if (g.hasEdge(dragNode, neighbor)) {
-			from = dragNode;
-			to = neighbor;
-		}
-		else {
-			from = neighbor;
-			to = dragNode;
-		}
-		var edge = g.getEdge(from, to);
-		if (edge) edge.layout();
+		var edge1 = g.getEdge(dragNode, neighbor);
+		var edge2 = g.getEdge(neighbor, dragNode);
+		if (edge1) edge1.layout();
+		if (edge2) edge2.layout();
 	}
 	if (dragNode == g.initial) {
 		g.removeInitial(dragNode);
