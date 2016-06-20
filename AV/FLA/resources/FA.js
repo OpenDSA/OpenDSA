@@ -48,9 +48,6 @@ var lambda = String.fromCharCode(955);
     if (!this.options.element) {
       $(jsav.canvas).append(el);
     }
-		if (this.options.labelClickHandler) {
-			this.labelClickHandler = options.labelClickHandler;
-		}
     this.element = el;
     el.attr({"id": this.id()}).width(this.options.width).height(this.options.height);
     if (this.options.autoresize) {
@@ -259,6 +256,7 @@ var lambda = String.fromCharCode(955);
     // we "remove" the edge by hiding it
     edge.hide();
   };
+
   // Function to make a state initial.
   faproto.makeInitial = function(node, options) {
     node.addClass("start");
@@ -1428,12 +1426,8 @@ function dragging(event, node) {
 			from = neighbor;
 			to = dragNode;
 		}
-		var edgeWeight = g.getEdge(from, to).weight();
-		g.removeEdge(from, to);
-		var edge = g.addEdge(from, to, {weight: edgeWeight});
-		if (g.labelClickHandler) {
-			$(edge._label.element).click(g.labelClickHandler);
-		}
+		var edge = g.getEdge(from, to);
+		if (edge) edge.layout();
 	}
 	if (dragNode == g.initial) {
 		g.removeInitial(dragNode);
