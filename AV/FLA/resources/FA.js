@@ -278,6 +278,14 @@ var lambda = String.fromCharCode(955);
     }
   };
 
+	faproto.makeFinal = function(node) {
+		node.addClass("final");
+	}
+
+	faproto.removeFinal = function(node) {
+		node.removeClass("final");
+	}
+
   faproto.setShorthand = function (setBoolean) {
     this.shorthand = setBoolean;
   }
