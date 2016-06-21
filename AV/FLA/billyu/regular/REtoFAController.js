@@ -1,7 +1,8 @@
 const DEOR = 1,
 			DECAT = 2,
 			DESTAR = 3,
-			DEPARENS = 4;
+			DEPARENS = 4,
+			NOTRECOGNIZED = 5;
 /** The set of transitions that still require expansion. */
 var toDo = []; 
 
@@ -31,15 +32,21 @@ var controllerProto = REtoFAController.prototype;
 
 controllerProto.init = function(jsav, expression, options) {
 	this.jsav = jsav;	
-	this.fa = jsav.ds.fa($.extend({width: '750px', height: 440}, options));
-	var start = this.fa.addNode();
-	var end = this.fa.addNode();
+	this.fa = jsav.ds.fa($.extend({width: '750px', height: 440, layout: 'automatic'}, options));
+	var start = this.fa.addNode({left: '15px'});
+	var end = this.fa.addNode({left: '700px', top: '400px'});
 	this.fa.makeInitial(start);
 	this.fa.makeFinal(end);
 	var t = this.fa.addEdge(start, end, {weight: expression});
 	this.transition = t;
-	if (this.requiredAction(expression) != 0)
+	var action = this.requiredAction(expression);
+	if (action == NOTRECOGNIZED) {
+		alert("Expression not recognized!");
+		return;
+	}
+	else if (action != 0) {
 		toDo.push(t);
+	}
 	this.nextStep();
 }
 
@@ -66,7 +73,7 @@ controllerProto.requiredAction = function(expression) {
 	if (expression.charAt(0) == '('
 			&& expression.charAt(expression.length - 1) == ')')
 		return DEPARENS;
-	alert("Expression not recognized!");
+	return NOTRECOGNIZED;
 }
 
 /**

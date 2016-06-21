@@ -914,6 +914,14 @@ var lambda = String.fromCharCode(955);
     JSAV.utils._helpers.handlePosition(this);
     JSAV.utils._helpers.handleVisibility(this, this.options);
   };
+
+	fastateproto.point = function() {
+		var position = {};
+		position['left'] = this.element.css('left');
+		position['top'] = this.element.css('top');
+		return position;
+	}
+
   /*
   Function to get all outgoing edges of a node.
   Returns a normal array, not an iterable array like .getNodes does.
