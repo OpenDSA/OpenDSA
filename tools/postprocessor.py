@@ -290,7 +290,9 @@ def break_up_sections(path, module_data, config):
   if element:
     element.extract()
 
-  total_real_exercises = len(sections)#0
+  total_real_exercises = 0
+  if sections != None:
+    total_real_exercises = len(sections)#0
   #for exercise, properties in exercises.items():
   #  if 'points' in properties:
   #    total_real_exercises += 1
@@ -406,7 +408,7 @@ def break_up_sections(path, module_data, config):
     # Add the relevant content back in
     for body_index, (parent, body) in enumerate(slide):
       parent.insert(body_index, body)
-    if index != 0:
+    if index != 0 and sections.values()[index-1] != None:
       potential_exercises = sections.values()[index-1].keys()
     else:
       potential_exercises = []
@@ -422,7 +424,7 @@ def break_up_sections(path, module_data, config):
     #if verbose: print(len(sss_div))
     # Add back in slide specific scripts
     sgs_div.insert_after(sss_div)
-    if index != 0:
+    if index != 0 and sections.values()[index-1] != None:
         potential_exercises = sections.values()[index-1].keys()
     else:
         potential_exercises = []

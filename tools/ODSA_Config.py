@@ -26,8 +26,10 @@ error_count = 0
 
 required_fields = ['chapters', 'code_lang']
 
-optional_fields = ['assumes', 'av_origin', 'av_root_dir', 'build_cmap', 'build_dir', 'build_JSAV','code_dir', 'exercise_origin', 'exercises_root_dir', 'glob_mod_options', 'glob_exer_options', 'lang','req_full_ss', 'start_chap_num', 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir', 'dispModComp', 'tag', 'local_mode', 'title', 'av_origin', 'av_root_dir', 'book_url', 'book_code']
+optional_fields = ['assumes', 'av_origin', 'av_root_dir', 'build_cmap', 'build_dir', 'build_JSAV','code_dir', 'exercise_origin', 'exercises_root_dir', 'glob_mod_options', 'glob_exer_options', 'lang','req_full_ss', 'start_chap_num', 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir', 'dispModComp', 'tag', 'local_mode', 'title', 'av_origin', 'av_root_dir']
 
+
+lang_file = os.path.abspath('tools/language_msg.json')
 
 listed_modules = []
 listed_chapters = []
@@ -79,8 +81,6 @@ def get_odsa_dir():
     # Convert to Unix-style path
     return os.path.dirname(os.path.dirname(os.path.abspath(__file__))).replace("\\", "/") + '/'
 
-lang_file = get_odsa_dir() +  '/tools/language_msg.json'
-
 
 # Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
 def parse_error(err):
@@ -119,9 +119,8 @@ def validate_origin(origin, origin_type):
         error_count += 1
 
 
-def validate_exercise(exercise):
+def validate_exercise(exer_name, exercise):
     """Validate an exercise object"""
-    exer_name = exercise['short_name']
     global error_count
 
     # Ensure exercise name is <= the max length of the Exercise name field in the database
@@ -131,7 +130,7 @@ def validate_exercise(exercise):
         error_count += 1
 
     required_fields = []
-    optional_fields = ['id', 'name', 'short_name', 'exer_options', 'long_name', 'points', 'remove', 'required', 'showhide', 'threshold', 'external_url']
+    optional_fields = ['exer_options', 'long_name', 'points', 'remove', 'required', 'showhide', 'threshold', 'external_url']
 
     # Ensure required fields are present
     for field in required_fields:
@@ -147,38 +146,32 @@ def validate_exercise(exercise):
 
 
 # Validate a module
-def validate_module(module, conf_data):
+def validate_module(mod_name, module, conf_data):
     """Validate a module object"""
-    mod_path = module['path']
     global error_count
 
     required_fields = []
-    optional_fields = ['id', 'path','name', 'codeinclude', 'dispModComp', 'long_name', 'mod_options', 'sections', 'exercises']
+    optional_fields = ['codeinclude', 'dispModComp', 'long_name', 'mod_options', 'sections', 'exercises']
 
     # Get module name
-    get_mod_name(mod_path)
+    get_mod_name(mod_name)
 
     # Ensure required fields are present
     for field in required_fields:
         if field not in module:
-            print_err('ERROR: Module, %s, is missing required field, %s' % (mod_path, field))
+            print_err('ERROR: Module, %s, is missing required field, %s' % (mod_name, field))
             error_count += 1
 
     # Ensure there are no invalid fields in the module
     for field in module:
         if field not in (required_fields + optional_fields):
-            print_err('ERROR: Unknown field, %s, found in module %s' % (field, mod_path))
+            print_err('ERROR: Unknown field, %s, found in module %s' % (field, mod_name))
             error_count += 1
 
     # Check validity of exercises
-    sections = module.get("sections")
-    if bool(sections):
-      for sec_idx, sec_obj in enumerate(sections):
-
-        exercises = sec_obj.get("exercises")
-        if bool(exercises):
-          for ex_idx, ex_obj in enumerate(exercises):
-            validate_exercise(ex_obj)
+    if 'exercises' in module:
+        for exer in module['exercises']:
+            validate_exercise(exer, module['exercises'][exer])
 
     if 'codeinclude' in module:
         # Check whether every language specified for a codeinclude is supported in code_lang
@@ -196,23 +189,35 @@ def validate_module(module, conf_data):
 
 
 # get names of chapter
-def get_chap_names(conf_data):
-
-    chapters = conf_data['chapters']
-
-    for ch_idx, ch_obj in enumerate(chapters):
-      listed_chapters.append(ch_obj['name'])
+def get_chap_names(chapters):
+    for k in chapters:
+        listed_chapters.append(k)
 
 
-def validate_chapter(conf_data):
-    """Validate a chapter"""
-    chapters = conf_data['chapters']
+# Validate a section
+def validate_section(section, conf_data):
+    """Validate a chapter or section"""
+    for subsect in section:
+        if 'hidden' in section[subsect]:
+            print_err('WARNING: Section %s will be hidden from the TOC' % subsect)
+            continue
+        is_mod = 'exercises' in section[subsect]
 
-    for ch_idx, ch_obj in enumerate(chapters):
+        if section[subsect] == {}:
+            print_err('WARNING: Section %s is empty' % subsect)
+            continue
+        elif not is_mod:
+            for field in section[subsect]:
+                if type(section[subsect][field]) != type(collections.OrderedDict()):
+                    is_mod = True
+                    break
 
-        modules = ch_obj.get("modules")
-        for mod_idx, mod_obj in enumerate(modules):
-            validate_module(mod_obj, conf_data)
+        if is_mod:
+            # Subsect is a module
+            validate_module(subsect, section[subsect], conf_data)
+        else:
+            validate_section(section[subsect], conf_data)
+
 
 # Validate an OpenDSA configuration file
 def validate_config_file(config_file_path, conf_data):
@@ -251,8 +256,8 @@ def validate_config_file(config_file_path, conf_data):
             print_err('ERROR: Unknown field, %s' % field)
             error_count += 1
 
-    validate_chapter(conf_data)
-    get_chap_names(conf_data)
+    validate_section(conf_data['chapters'], conf_data)
+    get_chap_names(conf_data['chapters'])
 
     if error_count > 0:
         print_err('Errors found: %d\n' % error_count)
@@ -277,6 +282,7 @@ def set_defaults(conf_data):
     # 'exercises_root_dir' should default to the OpenDSA root directory
     if 'exercises_root_dir' not in conf_data:
         conf_data['exercises_root_dir'] = odsa_dir
+
 
     # 'assumes' does not need to be initialized
 
@@ -340,28 +346,23 @@ def group_exercises(conf_data):
     """group all exercises of one module in exercises attribute"""
     chapters = conf_data['chapters']
 
-    for ch_idx, ch_obj in enumerate(chapters):
+    for chapter in chapters:
+        chapter_obj = chapters[chapter]
 
-        modules = ch_obj.get("modules")
-        for mod_idx, mod_obj in enumerate(modules):
-            conf_data['chapters'][ch_idx][mod_idx]['exercises'] = {}
+        for module in chapter_obj:
+            module_obj = chapter_obj[module]
+            conf_data['chapters'][chapter][module]['exercises'] = {}
 
-            sections = mod_obj.get("sections")
-            if bool(sections):
-              for sec_idx, sec_obj in enumerate(sections):
-
-                exercises = sec_obj.get("exercises")
-                if bool(exercises):
-                  for ex_idx, ex_obj in enumerate(exercises):
-                    conf_data['chapters'][ch_idx][mod_idx]['exercises'][attr] = exercise_obj
-
+            sections = module_obj.get("sections")
+            if bool(sections) and sections != None:
                 for section in sections:
                     section_obj = sections[section]
-                    for attr in section_obj:
-                        if isinstance(section_obj[attr], dict):
-                            exercise_obj = section_obj[attr]
-                            # conf_data['chapters'][chapter][module]['exercises'][attr] = {}
-                            conf_data['chapters'][chapter][module]['exercises'][attr] = exercise_obj
+                    if section_obj != None:
+                      for attr in section_obj:
+                          if isinstance(section_obj[attr], dict):
+                              exercise_obj = section_obj[attr]
+                              # conf_data['chapters'][chapter][module]['exercises'][attr] = {}
+                              conf_data['chapters'][chapter][module]['exercises'][attr] = exercise_obj
 
 
 def get_translated_text(lang_):
@@ -427,8 +428,7 @@ def read_conf_file(config_file_path):
     try:
         with open(config_file_path) as config:
             # Force python to maintain original order of JSON objects (or else the chapters and modules will appear out of order)
-            # conf_data = json.load(config, object_pairs_hook=collections.OrderedDict)
-            conf_data = json.load(config)
+            conf_data = json.load(config, object_pairs_hook=collections.OrderedDict)
     except ValueError, err:
         # Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
         msg = err.message
@@ -473,6 +473,9 @@ class ODSA_Config:
         """Initializes an ODSA_Config object by reading in the JSON config file, setting default values, and validating the configuration"""
 
         conf_data = read_conf_file(config_file_path)
+
+        # group exercises
+        group_exercises(conf_data)
 
         # Assign defaults to optional settings
         set_defaults(conf_data)

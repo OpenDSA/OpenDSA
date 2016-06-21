@@ -526,7 +526,7 @@ class ODSA_RST_Module:
       if not avmetadata_found:
         print_err("%sWARNING: %s does not contain an ..avmetadata:: directive" % (console_msg_prefix, mod_name))
 
-      mod_sections = mod_attrib['sections'].keys() if 'sections' in mod_attrib else []
+      mod_sections = mod_attrib['sections'].keys() if 'sections' in mod_attrib and mod_attrib['sections'] != None else []
 
       # Print a list of sections that appear in the config file but not the module
       missing_sections = list(set(mod_sections) - set(processed_sections))
