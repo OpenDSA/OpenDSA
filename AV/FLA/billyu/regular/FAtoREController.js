@@ -39,6 +39,7 @@ function normalizeTransitionToRE(transition) {
 		}
 		return arr[0];
 	}
+	if (arr.length == 0) return re;
 	var re = "(" + arr[0];
 	for (var i = 1; i < arr.length; i++) {
 		re += "+" + arr[i];
@@ -203,7 +204,7 @@ controllerProto.generateExpression = function() {
 		if (toFrom == none) {
 			//cycle = "";
 			if ((fromm == none || fromm == lambda) && (too == none || too == lambda)) {
-				expression = fromTo.substring(1, fromTo.length - 1);
+				expression = fromTo;
 			}
 			else if (fromm == none || fromm == lambda) {
 				if (too.length > 1) {
