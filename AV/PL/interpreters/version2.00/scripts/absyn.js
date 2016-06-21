@@ -92,56 +92,56 @@ function getAppExpArgs(e) {
 			"The argument of getAppExpArgs is not an AppExp.");
     }
 }
-function createPrim1AppExp(prim,arg) {
+function createPrimApp1Exp(prim,arg) {
     return ["PrimApp1Exp",prim,arg];
 }
-function isPrim1AppExp(e) { 
+function isPrimApp1Exp(e) { 
     return e[0] === "PrimApp1Exp"; 
 }
-function getPrim1AppExpPrim(e) { 
-    if (isPrim1AppExp(e)) {
+function getPrimApp1ExpPrim(e) { 
+    if (isPrimApp1Exp(e)) {
 	return e[1];
     } else {
 	throw new Error("Interpreter error: "  +
-			"The argument of getPrim1AppExpPrim is not a Prim1AppExp.");
+			"The argument of getPrimApp1ExpPrim is not a PrimApp1Exp.");
     }
 }
-function getPrim1AppExpArg(e) { 
-    if (isPrim1AppExp(e)) {
+function getPrimApp1ExpArg(e) { 
+    if (isPrimApp1Exp(e)) {
 	return e[2];
     } else {
 	throw new Error("Interpreter error: "  +
-			"The argument of getPrim1AppExpArg is not a Prim1AppExp.");
+			"The argument of getPrimApp1ExpArg is not a PrimApp1Exp.");
     }
 }
-function createPrim2AppExp(prim,arg1,arg2) {
-    return ["Prim2AppExp",prim,arg1,arg2];
+function createPrimApp2Exp(prim,arg1,arg2) {
+    return ["PrimApp2Exp",prim,arg1,arg2];
 }
-function isPrim2AppExp(e) { 
-    return e[0] === "Prim2AppExp"; 
+function isPrimApp2Exp(e) { 
+    return e[0] === "PrimApp2Exp"; 
 }
-function getPrim2AppExpPrim(e) { 
-    if (isPrim2AppExp(e)) {
+function getPrimApp2ExpPrim(e) { 
+    if (isPrimApp2Exp(e)) {
 	return e[1];
     } else {
 	throw new Error("Interpreter error: "  +
-			"The argument of getPrim2AppExpPrim is not a Prim2AppExp.");
+			"The argument of getPrimApp2ExpPrim is not a PrimApp2Exp.");
     }
 }
-function getPrim2AppExpArg1(e) { 
-    if (isPrim2AppExp(e)) {
+function getPrimApp2ExpArg1(e) { 
+    if (isPrimApp2Exp(e)) {
 	return e[2];
     } else {
 	throw new Error("Interpreter error: "  +
-			"The argument of getPrim2AppExpArg is not a Prim2AppExp.");
+			"The argument of getPrimApp2ExpArg is not a PrimApp2Exp.");
     }
 }
-function getPrim2AppExpArg2(e) { 
-    if (isPrim2AppExp(e)) {
+function getPrimApp2ExpArg2(e) { 
+    if (isPrimApp2Exp(e)) {
 	return e[3];
     } else {
 	throw new Error("Interpreter error: "  +
-			"The argument of getPrim2AppExpArg is not a Prim2AppExp.");
+			"The argument of getPrimApp2ExpArg is not a PrimApp2Exp.");
     }
 }
 function createPrintExp(e) {
@@ -248,6 +248,13 @@ function getIfExpElse(e) {
     }
 }
 
+
+	// returns a random number between min and max includeed
+function getRnd (min,max) {
+	    return Math.floor(Math.random() * (1+max-min)) + min;
+}
+
+
 exports.createProgram = createProgram;
 exports.isProgram = isProgram;
 exports.getProgramExp = getProgramExp;
@@ -279,20 +286,21 @@ exports.getAssignExpRHS = getAssignExpRHS;
 exports.createBlock = createBlock;
 exports.isBlock = isBlock;
 exports.getBlockList = getBlockList;
-exports.createPrim1AppExp = createPrim1AppExp;
-exports.createPrim2AppExp = createPrim2AppExp;
-exports.isPrim1AppExp = isPrim1AppExp;
-exports.isPrim2AppExp = isPrim2AppExp;
-exports.getPrim1AppExpPrim = getPrim1AppExpPrim;
-exports.getPrim2AppExpPrim = getPrim2AppExpPrim;
-exports.getPrim1AppExpArg = getPrim1AppExpArg;
-exports.getPrim2AppExpArg1 = getPrim2AppExpArg1;
-exports.getPrim2AppExpArg2 = getPrim2AppExpArg2;
+exports.createPrimApp1Exp = createPrimApp1Exp;
+exports.createPrimApp2Exp = createPrimApp2Exp;
+exports.isPrimApp1Exp = isPrimApp1Exp;
+exports.isPrimApp2Exp = isPrimApp2Exp;
+exports.getPrimApp1ExpPrim = getPrimApp1ExpPrim;
+exports.getPrimApp2ExpPrim = getPrimApp2ExpPrim;
+exports.getPrimApp1ExpArg = getPrimApp1ExpArg;
+exports.getPrimApp2ExpArg1 = getPrimApp2ExpArg1;
+exports.getPrimApp2ExpArg2 = getPrimApp2ExpArg2;
 exports.createIfExp = createIfExp;
 exports.isIfExp = isIfExp;
 exports.getIfExpCond = getIfExpCond;
 exports.getIfExpThen = getIfExpThen;
 exports.getIfExpElse = getIfExpElse;
+exports.getRnd= getRnd;
 
 SLang.absyn = exports;
 }());

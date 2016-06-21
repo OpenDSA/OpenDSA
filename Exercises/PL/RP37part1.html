@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html data-require="math PLutils ../../AV/PL/interpreters/version3.01/scripts/absyn ../../AV/PL/interpreters/version3.01/scripts/env ../../AV/PL/interpreters/version3.01/scripts/grammar ../../AV/PL/interpreters/version3.01/scripts/interpreter RP37part1" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 37 part 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>var SLang = {};</script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1450" data-width="950">
+    <div class="exercise">
+	<div class="vars">
+		<var id="init">RP37part1.init()</var>
+		<var id="program">RP37part1.program</var>
+		<var id="correctAnswer">RP37part1.answer</var>
+	</div>
+
+      <div class="problems">
+        <div id="RP37part1p">
+          <p class="question">Consider the following SLang 3 program:</p>
+<pre class="string">
+<var>program</var>
+</pre>
+
+          <p class="question">How many times is the 
+	    <span class="string">findAndInvoke</span>
+            function in the SLang 3 interpeter called when interpreting
+            the program above?</p>
+
+	  <textarea rows="1" cols="15" style="resize:none"
+			id="answer"></textarea>
+
+	  <div class="solution" data-type="custom">
+            <div class="guess">$('#answer').val() </div>
+            <div class="validator-function">
+	      return RP37part1.validateAnswer(guess);
+            </div>
+	  </div>
+
+	  <div class="hints">
+	    <p>The correct answer is an integer written as a number
+	    (e.g., 3), not as a word (e.g., three).</p>
+	  </div>	 
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

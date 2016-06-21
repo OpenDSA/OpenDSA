@@ -68,13 +68,13 @@ $(document).ready(function () {
   // set up Vertex 2 linked list
   var list2 = av.ds.list({top: listTop + listGap * 2, left: listLeft});
   list2.addFirst("3");
-  list2.addFirst("4");
+  list2.add("4");
   list2.layout();
 
   // set up Vertex 3 linked list
   var list3 = av.ds.list({top: listTop + listGap * 3, left: listLeft});
   list3.addFirst("1");
-  list3.addFirst("2");
+  list3.add("2");
   list3.layout();
 
   // set up Vertex 4 linked list

@@ -29,8 +29,8 @@ $(document).ready(function () {
   //set up adjancey matrix 
   var a = av.label("Adajceny Matrix: Weights", {top: lTop, left: 310}).show();
 
-  var mat = av.ds.matrix([[ , 3, , , 4], [ , , , 3, ,], [ , , , , 4],
-                          [ , , , 7, ,], [ , , 1, , ,]], 
+  var mat = av.ds.matrix([[ , 3, , , 4], [ , , , 3, ,], [ , , , , 1],
+                          [ , , 7, , ,], [ , 1, , , ,]], 
                          {style: "table", top: gTop + 20, left: gLeft + 250});
 
   var row = av.label(" 0 1 2 3 4", {top: gTop, left: gLeft + 265}).addClass("addSpace");

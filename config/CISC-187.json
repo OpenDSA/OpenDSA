@@ -759,7 +759,7 @@
         "long_name": "Tracing Practice Exercises",
         "sections": {
           "Forward Flow Tracing Exercises": {
-            "RecTraceSummFwdFlow.html": {
+            "RecTraceSummFwdFlow": {
               "long_name": "Recursion Tracing Exercises Set 1",
               "required": true,
               "points": 1.0,

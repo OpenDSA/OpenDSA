@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 32 part 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1400" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP32part1p">
+          <p class="question">Consider the following five snippets of
+          JavaScript code:</p>
+
+<table class="codeSnippet"><tr><td>
+<pre>
+var m3 = is.map( function (n) { return n + 3; }, is.from(1));
+console.log(is.take(m3,10));
+</pre></td></tr></table>
+<br />
+<table class="codeSnippet"><tr><td>
+<pre>
+var m3 = is.iterates( function (n) { return n * 3; }, 3);
+console.log(is.take(m3,10));
+</pre></td></tr></table>
+<br />
+<table class="codeSnippet"><tr><td>
+<pre>
+var m3 = is.filter( function (n) { return n % 3 !== 0; }, is.from(1));
+console.log(is.take(m3,10));
+</pre></td></tr></table>
+<br />
+<table class="codeSnippet"><tr><td>
+<pre>
+var m3 = function () {
+             var helper = function (n) {
+                    return is.cons(n,helper(n + 3));
+             }
+             return helper(3);
+};
+console.log(is.take(m3(),10));
+</pre></td></tr></table>
+<br />
+<table class="codeSnippet"><tr><td>
+<pre>
+var m3 = function () {
+     var helper = 
+            function (n) {
+               return is.cons(
+                    is.hd(is.drop(is.from(n),2)),
+                    function () {
+                         return is.cons(
+                               is.hd(is.drop(is.from(n + 3),2)),
+                               function () {
+                                   return helper(n + 6);
+                               });
+                    });
+            };
+     return helper(1);
+};
+console.log(is.take(m3(),10));
+</pre></td></tr></table>
+
+          <p class="question">
+	    Note that each one of these code snippets ends with a
+            print statement. Assuming that each code snippet is run by 
+	    itself, how many of them will output the following list?</p>
+            <pre class="string">        [ 3, 6, 9, 12, 15, 18, 21, 24, 27, 30 ]</pre>
+	  
+          <div class="solution">1</div>
+          <ul class="choices" data-category="true">
+            <li>0</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+          </ul>
+
+          <div class="hints">
+	    <p>Make sure that each thunk is created/processed correctly
+	    (e.g., each tail must be frozen).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

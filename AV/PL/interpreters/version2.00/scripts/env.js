@@ -1,4 +1,4 @@
-/* global SLang : true */
+/* global SLang : true, console */
 
 (function(){
 
@@ -70,6 +70,30 @@ function getBoolValue(value) {
     }
 }
 
+
+function createThunk(exp,env) {
+    return ["Thunk",exp,env];
+}
+function isThunk(value) {
+    return value[0] === "Thunk";
+}
+function getThunkExp(t) {
+    if (isThunk(t)) {
+	return t[1];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getThunkExp is not a thunk.");
+    }
+}
+function getThunkEnv(t) {
+    if (isThunk(t)) {
+	return t[2];
+    } else {
+	throw new Error("Interpreter error: "  +
+			"The argument of getThunkEnv is not a thunk.");
+    }
+}
+
 // implementation of the environment
 
 // data constructors
@@ -105,8 +129,18 @@ function getEnvEnv (env) {
 // accessor
 function getReference(v,bindings) {
     var value = bindings.filter(function (p) { return p[0]===v; });
+    var thunkExp, thunkEnv, dealWithArray;
     if (value.length === 0) {
 	return undefined;
+    } else if (isThunk(value[0][1][0])) {
+	dealWithArray = (window.RP31part1 && window.RP31part1.dealWithArray) ||
+	    (window.RP31part2 && window.RP31part2.dealWithArray);
+	thunkExp = getThunkExp(value[0][1][0]); // must be a VarExp
+	thunkEnv = getThunkEnv(value[0][1][0]);
+	return lookupReference(thunkEnv,
+			       dealWithArray(
+				   SLang.absyn.getVarExpId(thunkExp),
+				   thunkEnv));
     } else {
 	return value[0][1];
     }
@@ -162,7 +196,7 @@ exports.initEnv = initEnv;
 exports.createBool = createBool;
 exports.isBool = isBool;
 exports.getBoolValue = getBoolValue;
-
+exports.createThunk = createThunk;
 SLang.env = exports;
 
 }());

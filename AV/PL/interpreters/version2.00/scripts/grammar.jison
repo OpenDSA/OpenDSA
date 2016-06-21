@@ -153,12 +153,12 @@ app_exp
 
 prim1_app_exp
     : prim1_op LPAREN exp RPAREN
-       { $$ = SLang.absyn.createPrim1AppExp($1,$3); }
+       { $$ = SLang.absyn.createPrimApp1Exp($1,$3); }
     ;
 
 prim2_app_exp
     : LPAREN exp prim2_op exp RPAREN
-       { $$ = SLang.absyn.createPrim2AppExp($3,$2,$4); }
+       { $$ = SLang.absyn.createPrimApp2Exp($3,$2,$4); }
     ;
 
 prim1_op

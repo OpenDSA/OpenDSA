@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html data-require="math ../../AV/PL/interpreters/version1.07/scripts/absyn ../../AV/PL/interpreters/version1.07/scripts/env ../../AV/PL/interpreters/version1.07/scripts/grammar ../../AV/PL/interpreters/version1.07/scripts/interpreter PLutils RP25part2" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 25 part 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>var SLang = {};</script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="950" data-width="950">
+    <div class="exercise">
+	<div class="vars">
+		<var id="init">RP25part2.init()</var>
+		<var id="expression">RP25part2.expression</var>
+	</div>
+
+      <div class="problems">
+        <div class="RP25part2p">
+          <p class="question">Consider the following SLang
+	    1 expression:</p> 
+<pre class="string">
+<var>expression</var>
+</pre>
+          <p class="question">What is the denoted value returned by
+	    the SLang 1 interpreter when this expression is evaluated
+	    in a global environment in which
+	    <span class="string">x</span>, <span class="string">y</span>, and
+	    <span class="string">z</span> are bound to the values 
+	    <span class="string">1</span>, <span class="string">2</span>, and
+	    <span class="string">3</span>, respectively?
+	  </p>
+
+	  <textarea rows="1" cols="30" style="resize:none"
+			id="answer"></textarea>
+
+	  <div class="solution" data-type="custom">
+            <div class="guess">$('#answer').val() </div>
+            <div class="validator-function">
+	      return RP25part2.validateAnswer(guess);
+            </div>
+	  </div>
+	  
+	  <div class="hints">
+	    <p>Note that the correct answer is a <em>denoted</em> value.</p>
+	    <p>Remember that the overall expression is evaluated in a
+	    global environment that is not empty.</p>
+	  </div>	 
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

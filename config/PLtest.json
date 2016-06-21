@@ -856,6 +856,314 @@
             }
           }
 	}
+      },
+	"PL/SLang1InterpreterModifications": {
+        "long_name": "Interpreter Modifications",
+        "sections": {
+          "Overview of Exercises" : {},
+          "RP 23 Part 1": {
+            "RP23part1": {
+              "long_name": "RP set #23, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 23 Part 2": {
+            "RP23part2": {
+              "long_name": "RP set #23, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 23 Part 3": {
+            "RP23part3": {
+              "long_name": "RP set #23, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 23 Part 4": {
+            "RP23part4": {
+              "long_name": "RP set #23, question #4",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }
+	}
+      },
+      "PL/SLang1InterpreterReview": {
+        "long_name": "Interpreter Review",
+        "sections": {
+          "RP 24 Part 1": {
+            "RP24part1": {
+              "long_name": "RP set #24, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+	}
+      },
+      "PL/SLang1withLetExpressions": {
+        "long_name": "Let Expressions",
+        "sections": {
+          "RP 25 Part 1": {
+            "RP25part1": {
+              "long_name": "RP set #25, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 25 Part 2": {
+            "RP25part2": {
+              "long_name": "RP set #25, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 25 Part 3": {
+            "RP25part3": {
+              "long_name": "RP set #25, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+	}
+      }
+    },
+    "Interpreting the Imperative Language SLang 2": {
+      "PL/SLang2": {
+        "long_name": "Defining SLang 2",
+        "sections": {
+          "RP 26 Part 1": {
+            "RP26part1": {
+              "long_name": "RP set #26, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 27 Part 1": {
+            "RP27part1": {
+              "long_name": "RP set #27, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+	}
+      },
+      "PL/SLang2TTK": {
+        "long_name": "Tying The Knot",
+        "sections": {
+          "RP 28 Part 1": {
+            "RP28part1": {
+              "long_name": "RP set #28, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+	}
+      },
+      "PL/SLang2ParameterPassing": {
+        "long_name": "Parameter-Passing Mechanisms",
+        "sections": {
+          "RP 28 Part 2": {
+            "RP28part2": {
+              "long_name": "RP set #28, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 29 Part 1": {
+            "RP29part1": {
+              "long_name": "RP set #29, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 30 Part 1": {
+            "RP30part1": {
+              "long_name": "RP set #30, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 31 Part 1": {
+            "RP31part1": {
+              "long_name": "RP set #31, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 31 Part 2": {
+            "RP31part2": {
+              "long_name": "RP set #31, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+	}
+      },
+      "PL/LazyLists": {
+        "long_name": "Lazy Lists",
+        "sections": {
+          "RP 32 Part 1": {
+            "RP32part1": {
+              "long_name": "RP set #32, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 32 Part 2": {
+            "RP32part2": {
+              "long_name": "RP set #32, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 33 Part 1": {
+            "RP33part1": {
+              "long_name": "RP set #33, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 33 Part 2": {
+            "RP33part2": {
+              "long_name": "RP set #33, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }
+	}
+      }
+    },
+    "Interpreting the Object-Oriented Language SLang 3": {
+      "PL/SLang3reviewOfOOP": {
+        "long_name": "Review of OOP",
+        "sections": {
+          "RP 34 Part 1": {
+            "RP34part1": {
+              "long_name": "RP set #34, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 34 Part 2": {
+            "RP34part2": {
+              "long_name": "RP set #34, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          },
+          "RP 34 Part 3": {
+            "RP34part3": {
+              "long_name": "RP set #34, question #3",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1.0,
+              "showhide": "Show"
+            }
+          }
+	}
+      },
+      "PL/SLang3concreteSyntax": {
+        "long_name": "Concrete Syntax of SLang 3",
+        "sections": {
+          "RP 35 Part 1": {
+            "RP35part1": {
+              "long_name": "RP set #35, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+	}
+      },
+      "PL/SLang3abstractSyntax": {
+        "long_name": "Abstract Syntax of SLang 3",
+        "sections": {
+          "RP 35 Part 2": {
+            "RP35part2": {
+              "long_name": "RP set #35, question #2",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+	}
+      },
+      "PL/SLang3objects": {
+        "long_name": "Object Representation in the Runtime System for SLang 3",
+        "sections": {
+          "RP 36 Part 1": {
+            "RP36part1": {
+              "long_name": "RP set #36, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+	}
+      },
+      "PL/SLang3interpreter": {
+        "long_name": "Implementation of the Interpreter for SLang 3",
+        "sections": {
+          "RP 37 Part 1": {
+            "RP37part1": {
+              "long_name": "RP set #37, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+	}
       }
     },
       "Appendices": {

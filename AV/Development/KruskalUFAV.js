@@ -18,8 +18,8 @@
     var i;
     ODSA.AV.reset(true);
     jsav = new JSAV($('.avcontainer'));
-    graph = jsav.ds.graph({width: 600, height: 400, layout: "manual", directed: false});
-    mst = jsav.ds.graph({width: 600, height: 400, layout: "manual", directed: false});
+    graph = jsav.ds.graph({width: 600, height: 400, left: 250, layout: "manual", directed: false});
+    mst = jsav.ds.graph({width: 600, height: 400, left: 250, layout: "manual", directed: false});
 	mst.hide();
     initGraph();
     initTree();
@@ -29,11 +29,11 @@
     for (i = 0; i < arr.length; i++) {
       arr[i] = "("+graph.edges()[i].start().value()+","+graph.edges()[i].end().value()+")";
     }
-    labels = jsav.ds.array(arr, {layout: "vertical", left: 673, top: -120});
+    labels = jsav.ds.array(arr, {layout: "vertical", left: 673, top: 0});
     for (i = 0; i < arr.length; i++) {
       arr[i] = graph.edges()[i].weight();
     }
-    weights = jsav.ds.array(arr, {layout: "vertical", left: 720, top: -120});
+    weights = jsav.ds.array(arr, {layout: "vertical", left: 720, top: 0});
 	
 	arr = new Array(gnodes.length);
     //Initializing the labels

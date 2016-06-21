@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html data-require="math ../../AV/PL/interpreters/version1.07/scripts/absyn ../../AV/PL/interpreters/version1.07/scripts/env ../../AV/PL/interpreters/version1.07/scripts/grammar ../../AV/PL/interpreters/version1.07/scripts/interpreter PLutils RP25part1" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 25 part 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>var SLang = {};</script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="750" data-width="950">
+    <div class="exercise">
+	<div class="vars">
+		<var id="init">RP25part1.init()</var>
+		<var id="expression">RP25part1.expression</var>
+	</div>
+
+      <div class="problems">
+        <div class="RP25part1p">
+          <p class="question">Consider the following SLang
+	    1 expression:</p> 
+<pre class="string">
+<var>expression</var>
+</pre>
+          <p class="question">Convert this expression to an equivalent
+	    expression containing no <span class="string">let</span>
+	    expressions. Type your answer below:
+	  </p>
+
+	  <textarea rows="1" cols="50" style="resize:none"
+			id="answer"></textarea>
+
+	  <div class="solution" data-type="custom">
+            <div class="guess">$('#answer').val() </div>
+            <div class="validator-function">
+	      return RP25part1.validateAnswer(guess);
+            </div>
+	  </div>
+	  
+	  <div class="hints">
+	    <p>If needed, review the general pattern for converting any 
+	      <span class="string">let</span> expression into an equivalent
+	      function call.</p>
+	    <p>Notice how nested <span class="string">let</span> 
+	      expressions translate into nested function calls.</p>
+	    <p>When writing a syntactically correct SLang 1 program,
+	    make sure to match opening and closing parentheses.</p>
+	  </div>	 
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 33 part 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1400" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP33part2p">
+          <p class="question">Consider the following JavaScript code
+          in which the function <span class="string">add</span>
+          (developed in a previous problem) returns
+          the sequence obtained by adding the corresponding elements
+          in two sequences:</p>
+
+<table class="codeSnippet"><tr><td>
+<pre>
+var s = function () {
+     return is.cons (
+               1,
+               function () {
+                    return is.cons(
+                              1,
+                              function () {
+                                   return add(s,is.tl(s));
+                              });
+               });
+}();
+console.log(is.take(s,10));
+</pre></td></tr></table>
+
+          <p class="question">
+	    What is the output produced by the code given above?</p>
+	  
+          <div class="solution">[ 1, 1, 2, 3, 5, 8, 13, 21, 34, 55 ]</div>
+          <ul class="choices" data-category="true">
+            <li>[ 1, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]</li>
+            <li>[ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]</li>
+	    <li>[ 1, 1, 2, 3, 5, 8, 13, 21, 34, 55 ]</li>
+            <li>A list of 10 integers that is different from all of
+            the lists above.</li>
+            <li>There is no output because the code snippet given
+            above contains an error.</li>
+          </ul>
+
+          <div class="hints">
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,4 +1,4 @@
-/* global SLang : true */
+/* global SLang : true, console  */
 
 (function (){
 
@@ -115,6 +115,96 @@ function getPrimAppExpArgs(e) {
     }
 }
 
+	// returns a random number between min and max includeed
+function getRnd (min,max) {
+	    return Math.floor(Math.random() * (1+max-min)) + min;
+}
+
+function getRndVarIn (list) {
+    var n = list.length;
+    if (n === 0) {
+	throw new Error("Exhausted the supply of variables");
+    } else {
+	return list.substr(getRnd(0,n-1),1);
+    }
+}
+    
+function generateRandomSLang1Program (depth,minDepth,maxDepth,
+				      allowed,bound,inputType) {
+    function helper(depth,minDepth,maxDepth,allowed,bound,inputType) {
+	var type, i, op, arity;
+	var v, params,numParams, args, numArgs;
+	// type: 1 (var_exp), 2 (fn_exp), 3 (app_exp), 
+	//       4 (papp_exp), 5 (int)
+	if ( inputType ) {
+	    type = inputType;
+	} else if (depth >= maxDepth) {
+	    type = Math.random() < 0.5 ? 1 : 5;
+	} else if (depth < minDepth) {
+	    type = getRnd(2,4);
+	} else {
+	    type = getRnd(1,5);
+	}
+	switch (type) {
+	case 1: 
+	    if (bound !== "" && Math.random()>0.3) {
+		v = getRndVarIn(bound);
+	    } else {
+		v = getRndVarIn(allowed);
+	    }
+	    return createVarExp(v);
+	case 2:
+	    numParams = getRnd(0,2);
+	    params = [];
+	    v = getRndVarIn(bound+allowed);
+	    for(i=0; i<numParams; i++) {
+		while (params.indexOf(v) !== -1) {
+		    v = getRndVarIn(bound+allowed);
+		}
+		params.push(v);
+	    }
+	    return createFnExp(params,
+			       helper(depth+1,minDepth,maxDepth,allowed,
+				      bound+v));
+	case 3:
+	    numArgs = getRnd(0,2);
+	    args = ["args"];
+	    for(i=0; i<numArgs; i++) {
+		args.push( 
+		    helper(depth+1,minDepth,maxDepth,allowed,bound));
+	    }
+	    return createAppExp(
+		helper(depth+1,minDepth,maxDepth,allowed,bound),
+		args);
+	case 4:
+	    arity = getRnd(1,2);
+	    args = [];
+	    //console.log("before ",arity, args);
+	    if (arity === 1) {
+		op = "add1";
+		//console.log("picked ",op);
+		args.push(helper(depth+1,minDepth,maxDepth,allowed,bound));
+		//console.log(" *****1 ",op, JSON.stringify(args));		
+	    } else {
+		op = (getRnd(0,1) === 0 ? '+' : '*');
+		//console.log("picked ",op);		
+		args.push(helper(depth+1,minDepth,maxDepth,allowed,bound));
+		args.push(helper(depth+1,minDepth,maxDepth,allowed,bound));
+		//console.log(" *****2 ",op, JSON.stringify(args));		
+	    }
+	    //console.log("after ",arity,JSON.stringify(args));
+	    return createPrimAppExp(op,args);
+	case 5:
+	    return createIntExp(getRnd(1,10)+"");
+	}
+	throw new Error( "Incorrect expression type: ", type);
+    }// helper
+    var e = helper(depth,minDepth,maxDepth,allowed,bound,inputType);
+    //console.log(e );
+    return createProgram( e);
+
+}// 	generateRandomSLang1Program function
+
 
 exports.createProgram = createProgram;
 exports.isProgram = isProgram;
@@ -137,6 +227,9 @@ exports.createPrimAppExp = createPrimAppExp;
 exports.isPrimAppExp = isPrimAppExp;
 exports.getPrimAppExpPrim = getPrimAppExpPrim;
 exports.getPrimAppExpArgs = getPrimAppExpArgs;
+exports.getRnd = getRnd;
+exports.getRndVarIn = getRndVarIn;
+exports.generateRandomSLang1Program = generateRandomSLang1Program;
 
-SLang.absyn = exports;
+window.SLang.absyn = exports;
 }());

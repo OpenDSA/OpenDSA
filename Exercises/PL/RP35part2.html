@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html data-require="math PLutils ../../AV/PL/interpreters/version3.01/scripts/absyn ../../AV/PL/interpreters/version3.01/scripts/env ../../AV/PL/interpreters/version3.01/scripts/grammar ../../AV/PL/interpreters/version3.01/scripts/interpreter RP35part2" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 35 part 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>var SLang = {};</script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1450" data-width="950">
+    <div class="exercise">
+	<div class="vars">
+		<var id="init">RP35part2.init()</var>
+		<var id="program">RP35part2.program</var>
+		<var id="ast">RP35part2.ast</var>
+		<var id="correctAnswer">RP35part2.answer</var>
+	</div>
+
+      <div class="problems">
+        <div id="RP35part2p">
+          <p class="question">Consider the following program:</p>
+<pre class="string">
+<var>program</var>
+</pre>
+
+          <p class="question">Write down the full data structure that
+	    represents the AST for this SLang 3 program.</p>
+
+	  <textarea rows="20" cols="80" style="resize:none"
+			id="answer"></textarea>
+
+	  <div class="solution" data-type="custom">
+            <div class="guess">$('#answer').val() </div>
+            <div class="validator-function">
+	      return RP35part2.validateAnswer(guess);
+            </div>
+	  </div>
+
+	  <div class="hints">
+	    <p>The second element in the AST is an array of classes.</p>
+	    <p>Recall that the body of each method, including
+	    <span class="string">main</span>'s, is an array of one or
+	    more expressions or statements.</p>
+	    <p>Be aware that, in SLang 3, the name given to the two types
+	    of primitive applications are 
+	      <span class="string">Prim1AppExp</span> and
+	      <span class="string">Prim2AppExp</span>.</p>
+	    <p>While extra white space characters do not matter in
+	    the correct answer, correctness does depend on proper letter
+	    case for each and every string in the AST.</p>
+	  </div>	 
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

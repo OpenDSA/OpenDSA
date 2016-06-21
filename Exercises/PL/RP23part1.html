@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 23 part 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>
+      function RP23part1Validate(guess) {
+        var correct = [false, true, false, false ];
+        for(var i=0; i < guess.length; i++) {
+	    if (guess[i] !== correct[i]) {
+		return false;
+	    }
+        }     
+        return true;
+      }
+    </script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1000" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP23part1p">
+          <p class="question">In this problem, you must change the
+          concrete syntax for function abstraction as follows. First,
+          the "fn" and "=>" keywords are replaced with  "lambda" and
+          a "." (period), respectively. Second, the parentheses around
+          the list of formal parameters are dropped. In other words,<br />
+	    "<span class="string">fn (x,y) => &lt;exp&gt;</span>"
+	    becomes "<span class="string">lambda x,y . &lt;exp&gt;</span>".
+	    So, for example:<br />
+	    "<span class="string">(lambda u,v . lambda f . 3 x
+	    +(x,y))</span>" should return:</p>
+
+<pre class="string">
+[ "Clo",
+  [ "f" ],
+  [ "IntExp", 3 ],
+  [ "Env",
+    [ [ "u", [ "Num", 1 ] ], [ "v", [ "Num", 3 ] ] ],
+    [ "Env",
+      [ [ "x", [ "Num", 1 ] ], [ "y", [ "Num", 2 ] ], [ "z", [ "Num", 3 ] ] ],
+      [ "EmptyEnv" ] ] ] ]
+</pre>
+
+          <p class="question">and 
+	    "<span class="string">lambda . 3</span>" should return<br />
+
+<pre class="string">
+[ "Clo",
+  [ ],
+  [ "IntExp", 3 ],
+  [ "Env",
+    [ [ "x", [ "Num", 1 ] ], [ "y", [ "Num", 2 ] ], [ "z", [ "Num", 3 ] ] ],
+    [ "EmptyEnv" ] ] ]
+</pre>
+
+
+
+
+          <p class="question">For your answer, check each and every
+          file below that MUST be altered to implement this modification.</p>
+
+	  <label><input type="checkbox" id="absyn">absyn.js</label><br />
+	  <label><input type="checkbox" id="grammar">grammar.jison</label><br />
+	  <label><input type="checkbox" id="env">env.js</label><br />
+	  <label><input type="checkbox" id="interpreter">interpreter.js</label><br />
+
+	  <div class="solution" data-type="custom">
+	    <div class="guess"> [ 
+	      $('#absyn').prop('checked'), 
+	      $('#grammar').prop('checked'),
+	      $('#env').prop('checked'),
+	      $('#interpreter').prop('checked')
+	      ] </div>
+	    <div class="validator-function">
+	      return RP23part1Validate(guess);
+	    </div>
+	  </div>
+	  
+	  <div class="hints">
+	    <p>Does this change impact the concrete syntax or the
+	    abstract syntax of SLang 1 (or both)?</p>
+	    <p>Are we adding new types of denoted values or modifying the
+	    existing ones?</p>
+	    <p>Are we adding new types of expressions?</p>
+	  </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -30,7 +30,7 @@ $(document).ready(function () {
   var a = av.label("Adajceny Matrix", {top: lTop, left: 355}).show();
 
   var mat = av.ds.matrix([[, 1, , , 1], [ , , , 1, ,], [ , , , , 1],
-                          [ , , , 1, ,], [, , 1, , ,]], 
+                          [ , , 1, , ,], [, 1, , , ,]], 
                          {style: "table", top: gTop + 20, left: gLeft + 250});
 
   var row = av.label(" 0 1 2 3 4", {top: gTop, left: gLeft + 265}).addClass("addSpace");

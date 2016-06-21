@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html data-require="math" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 23 part 4</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>
+      function RP23part4Validate(guess) {
+        var correct = [true, true, false, true ];
+        for(var i=0; i < guess.length; i++) {
+	    if (guess[i] !== correct[i]) {
+		return false;
+	    }
+        }     
+        return true;
+      }
+    </script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1500" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="RP23part4p">
+          <p class="question">In this problem, you must add to SLang 1
+            a "special" function called <span class="string">gt1</span>
+	    that takes in a
+            space-separated list of 1 or more real numbers and returns
+            the first one (from left to right) that is larger than
+            1.0. Here are some sample programs and their value:</p>
+
+	  <p class="question">
+	    <span class="string">gt1 [ 0.2 0.1 8.9 3.4 6.4 ]</span>
+	    returns <span class="string">[ "RealExp" , 8.9 ]</span>
+	  </p>
+	  <p class="question">
+	    <span class="string">gt1 [ 0.2 8.9 lambda x . x ]</span>
+	    returns <span class="string">[ "RealExp" , 8.9 ]</span>. Note
+	    that there is no syntax error in this case: the parser
+	    accepts one or
+	    more <span class="string">&lt;exp&gt;</span> non-terminals
+	    between the brackets. The restriction that the expressions
+	    be real numbers is not enforced in the grammar, but at
+	    run-time, that is, in the interpreter.
+	  </p>
+
+	  <p class="question">
+	    <span class="string">gt1 [ lambda x . x 0.2 8.9 ]</span>
+	    causes the interpreter to generate a runtime error. 
+	    Note that a runtime error is not a syntax
+	    error.</p>
+
+
+
+	  <p class="question">
+	    <span class="string">gt1 [ 0.7 0.2 ]</span>
+	    causes the interpreter to generate a runtime error because the
+	    argument list does not contain any real numbers greater than 1.</p>
+
+          <p class="question">For your answer, check each and every
+          file below that MUST be altered to implement this modification.</p>
+
+	  <label><input type="checkbox" id="absyn">absyn.js</label><br />
+	  <label><input type="checkbox" id="grammar">grammar.jison</label><br />
+	  <label><input type="checkbox" id="env">env.js</label><br />
+	  <label><input type="checkbox" id="interpreter">interpreter.js</label><br />
+
+	  <div class="solution" data-type="custom">
+	    <div class="guess"> [ 
+	      $('#absyn').prop('checked'), 
+	      $('#grammar').prop('checked'),
+	      $('#env').prop('checked'),
+	      $('#interpreter').prop('checked')
+	      ] </div>
+	    <div class="validator-function">
+	      return RP23part4Validate(guess);
+	    </div>
+	  </div>
+	  
+	  <div class="hints">
+	    <p>Remember that you are modifying the code that you
+	      obtained at the end of the previous exercise, not the code
+	      that was discussed in class.</p>
+	    <p>Does this change impact the concrete syntax or the
+	    abstract syntax of SLang 1 (or both)?</p>
+	    <p>Are we adding new types of denoted values or modifying the
+	    existing ones?</p>
+	    <p>Are we adding new types of expressions?</p>
+	    <p>Must the main function of the interpreter be extended?
+	    Does the overall evaluation process need to handle
+	    additional cases?</p>
+	    <p>Why is <span class="string">gt1</span> a special function?</p>
+	  </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

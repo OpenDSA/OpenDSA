@@ -60,3 +60,6 @@ env
 
 # todo files
 tasks.todo
+
+# Other versions of OpenDSA
+NewKA

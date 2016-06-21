@@ -96,6 +96,18 @@
       "SlidesCanvas/FileProc": {
         "long_name": "Week 8-9: File Processing and Buffer Pools",
         "sections" : {}
+      },
+      "SlidesCanvas/Hashing": {
+        "long_name": "Week 10-11: Hashing",
+        "sections" : {}
+      },
+      "SlidesCanvas/Indexing": {
+        "long_name": "Week 12-13: Indexing",
+        "sections" : {}
+      },
+      "SlidesCanvas/Graphs": {
+        "long_name": "Week 12-13: Graphs",
+        "sections" : {}
       }
     }
   }

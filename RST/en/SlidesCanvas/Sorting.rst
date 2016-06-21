@@ -256,6 +256,17 @@ Quicksort Average Case
    .. odsascript:: AV/Development/QuickSortAverageCaseCON.js
 
 
+Optimizations for Quicksort
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   * Better Pivot
+   * Inline instead of function calls
+   * Eliminate recursion
+   * Better algorithm for small sublists: Insertion sort
+      * Best: Don't sort small lists at all, do a final Insertion Sort to
+        clean up.
+
+
 Heapsort
 ~~~~~~~~
 

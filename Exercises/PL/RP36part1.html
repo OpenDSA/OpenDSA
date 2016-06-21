@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html data-require="math PLutils ../../AV/PL/interpreters/version3.01/scripts/absyn ../../AV/PL/interpreters/version3.01/scripts/env ../../AV/PL/interpreters/version3.01/scripts/grammar ../../AV/PL/interpreters/version3.01/scripts/interpreter RP36part1" lang="en">
+  <head>
+    <meta charset=utf-8>
+    <title>RP 36 part 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>var SLang = {};</script>
+    <link rel="stylesheet"  href="./styles.css" type="text/css" />
+  </head>
+
+  <body data-height="1450" data-width="950">
+    <div class="exercise">
+	<div class="vars">
+		<var id="init">RP36part1.init()</var>
+		<var id="program">RP36part1.program</var>
+		<var id="correctAnswer">RP36part1.answer</var>
+	</div>
+
+      <div class="problems">
+        <div id="RP36part1p">
+          <p class="question">Consider the following SLang 3 program:</p>
+<pre class="string">
+<var>program</var>
+</pre>
+
+          <p class="question">Write down below the full data structure
+	    that represents the denoted value that the variable
+	    <span class="string">o</span> is bound to after the last
+	  method call in the body of <span class="string">main</span>
+	  is executed, that is, at the time the interpreter is about 
+	  to return the value of this program.</p>
+
+	  <textarea rows="20" cols="80" style="resize:none"
+			id="answer"></textarea>
+
+	  <div class="solution" data-type="custom">
+            <div class="guess">$('#answer').val() </div>
+            <div class="validator-function">
+	      return RP36part1.validateAnswer(guess);
+            </div>
+	  </div>
+
+	  <div class="hints">
+	    <p>The expected answer is the value
+	    of <span class="string">o</span>, not a reference to that
+	    value.</p>
+	    <p>Make sure to use double quotes (not single quotes)
+	      around each string in the answer, if any.</p>
+	    <p>Remember that the default value for instance variables
+	    that never get explicitly assigned a value is -12345.</p>
+	  </div>	 
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

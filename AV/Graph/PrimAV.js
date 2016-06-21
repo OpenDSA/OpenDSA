@@ -82,11 +82,11 @@
     for (i = 0; i < arr.length; i++) {
       arr[i] = Infinity;
     }
-    distances = jsav.ds.array(arr, {layout: "vertical", left: 650, top: -25});
+    distances = jsav.ds.array(arr, {layout: "vertical", left: 650, top: 0});
     for (i = 0; i < arr.length; i++) {
       arr[i] = gnodes[i].value();
     }
-    labels = jsav.ds.array(arr, {layout: "vertical", left: 603, top: -25});
+    labels = jsav.ds.array(arr, {layout: "vertical", left: 603, top: 0});
     jsav.umsg("We will call Prim's algorithm with a start vertex of " +
               gnodes[0].value() + ". Any vertex would do to start.");
     jsav.displayInit();
