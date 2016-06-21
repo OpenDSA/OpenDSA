@@ -24,6 +24,8 @@ var replacements = [];
 /** For the concatenation. */
 var catBeginMade = false, catEndMade = false;
 
+paper.install(window);
+
 var REtoFAController = function(jsav, options) {
 	this.init(jsav, options);
 };
@@ -107,7 +109,7 @@ controllerProto.transitionCheck = function(transition) {
 			var s1 = transition.start(), s2 = transition.end();
 			var newLabel = delambda(label.substring(1, label.length - 1));
 			this.fa.removeEdge(transition);
-			var t = g.addEdge(s1, s2, {weight: newLabel});
+			var t = this.fa.addEdge(s1, s2, {weight: newLabel});
 			if (this.requiredAction(newLabel) != 0)
 				toDo.push(t);
 				action = 0; // That's all that need be done.
@@ -222,10 +224,36 @@ controllerProto.completeAll = function() {
 controllerProto.replaceTransition = function(transition, exps) {
 	// Compose the transform.
 	var t = [];
+	var at = new Matrix(); // AffineTransform to draw the new nodes
+	var startPos = transition.start().position();
+	var endPos = transition.end().position();
+	var pStart = new Point(startPos.left, startPos.top);
+	var pEnd = new Point(endPos.left, endPos.top);
+
+	at.translate(pStart.x, pStart.y);
+	at.scale(pStart.getDistance(pEnd), pStart.getDistance(pEnd));
+	at.rotate(Math.atan2(pEnd.y - pStart.y, pEnd.x - pStart.x));
+
+	var ps = new Point(0.2, 0.0);
+	var pe = new Point(0.8, 0.0);	
+
 	this.fa.removeEdge(transition);
+
 	for (var i = 0; i < exps.length; i++) {
-		var s = this.fa.addNode();
-		var e = this.fa.addNode();
+		pStart = new Point();
+		pEnd = new Point();
+		var y = exps.length > 1 ? (1.0 * i / (1.0 * exps.length - 1.0) - 0.5) * 0.5 : 0.0;
+		pe.y = ps.y = y;
+		pStart = at.transform(ps);
+		pEnd = at.transform(pe);
+		// Clamp bounds.
+		pStart.x = Math.max(pStart.x, 20);
+		pStart.y = Math.max(pStart.y, 20);
+		pEnd.x = Math.max(pEnd.x, 20);
+		pEnd.y = Math.max(pEnd.y, 20);
+
+		var s = this.fa.addNode({left: pStart.x + 'px', top: pStart.y + 'px'});
+		var e = this.fa.addNode({left: pEnd.x + 'px', top: pEnd.y + 'px'});
 		var edge = this.fa.addEdge(s, e, {weight: exps[i]});
 		t.push(edge);
 		if (this.requiredAction(edge.weight()) != 0)
