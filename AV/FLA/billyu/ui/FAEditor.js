@@ -39,7 +39,7 @@
 			case "fixer":
 				$('#begin').click(testWithExpression);
 				$.ajax({
-  				url: "./fixerTests.json",
+  				url: "../exercises/fixerTests.json",
   				dataType: 'json',
   				async: false,
   				success: function(data) {
@@ -56,7 +56,7 @@
 			case "tester":
 				$('#begin').click(testWithExpression);
 				$.ajax({
-  				url: "./FAwithExpression.json",
+  				url: "../exercises/FAwithExpression.json",
   				dataType: 'json',
   				async: false,
   				success: function(data) {
@@ -1025,150 +1025,21 @@
 		$('#nodeButton').hide();
 		$('#editButton').hide();
 		$('#deleteButton').hide();
+		$('#collapseButton').hide();
+		var controller = new FAtoREController(jsav, g, {});
 		jsav.umsg("Use add edges tool to put empty transitions between states with no transitions.");
 		$('#cheat').show();
-		$('#cheat').click(completeTransitions);
-		checkForTransitions();
-	}
+		$('#cheat').click(function() {
+			controller.completeTransitions();
+		});
+		$('#collapseButton').click(function() {
+			controller.collapseState();
+		});
+		$('#finalize').click(function() {
+			controller.finalizeRE();
+		});
 
-	function checkForTransitions() {
-		var edgesNum = g.edges().length;
-		var nodesNum = g.nodes().length;
-		if (edgesNum == nodesNum * nodesNum) {
-			$('#collapseButton').show();
-			$('#cheat').hide();
-			$('#edgeButton').hide();
-			$('.jsavgraph').removeClass('addEdges');
-			jsav.umsg("Use collapse state tool to remove nonfinal, noninitial states.");
-			if (g.nodes().length == 2) generateExpression();
-		}
-	}
-
-	var collapseState = function() {
-		jsav.umsg("Click a nonfinal, noninitial state.");
-		$('.jsavgraph').addClass("collapse");
-	}
-
-	// add empty transitions to states without transitions to each other
-	function completeTransitions() {
-		removeModeClasses();
-		var nodes1 = g.nodes();
-		var nodes2 = g.nodes();
-		for (var from = nodes1.next(); from; from = nodes1.next()) {
-			for (var to = nodes2.next(); to; to = nodes2.next()) {
-				if (!g.hasEdge(from, to)) {
-					g.addEdge(from, to, {weight: none});
-				}
-			}
-			nodes2.reset();
-		}
-		checkForTransitions();
-	}
-
-	// closes the transitions box and update FA
-	function finalizeRE() {
-		if (!collapseStateTable) return;
-		$('#dialog').dialog("close");
-
-		var table = collapseStateTable;
-		for (var i = 0; i < table.length; i++) {
-			var row = table[i];
-			var from = g.getNodeWithValue(row[0]);
-			var to = g.getNodeWithValue(row[1]);
-			var newTransition = row[2];
-			g.removeEdge(from, to);
-			g.addEdge(from, to, {weight: newTransition});
-		}
-		g.removeNode(selected);
-		if (g.nodes().length == 2) {
-			generateExpression();
-		}	
-	}
-
-	// get the RE from last two states;
-	function generateExpression() {
-		var from = g.initial;
-		var to = g.getFinals()[0];
-		var fromm = normalizeTransitionToRE(g.getEdge(from, from).weight());
-		var fromTo = normalizeTransitionToRE(g.getEdge(from, to).weight());
-		var toFrom = normalizeTransitionToRE(g.getEdge(to, from).weight());
-		var too = normalizeTransitionToRE(g.getEdge(to, to).weight());
-		var cycle = "", target = "", expression = "";
-		if (fromTo == none) {
-			expression = none;
-		}
-		else {
-			if (toFrom == none) {
-				//cycle = "";
-				if ((fromm == none || fromm == lambda) && (too == none || too == lambda)) {
-					expression = fromTo;
-				}
-				else if (fromm == none || fromm == lambda) {
-					if (too.length > 1) {
-						expression = fromTo + "(" + too + ")*";
-					}
-					else {
-						expression = fromTo + too + "*";
-					}
-				}
-				else if (too == none || too == lambda) {
-					if (fromm.length > 1) {
-						expression = "(" + fromm + ")*" + fromTo;
-					}
-					else {
-						expression = fromm + "*" + fromTo;
-					}
-				}
-				else {
-					if (fromm.length > 1 && too.length > 1) {
-						expression = "(" + fromm + ")*" + fromTo + "(" + too + ")*";
-					}
-					else if (fromm.length > 1) {
-						expression = "(" + fromm + ")*" + fromTo + too + "*";
-					}
-					else if (too.length > 1) {
-						expression = fromm + "*" + fromTo + "(" + too + ")*";
-					}
-					else {
-						expression = fromm + "*" + fromTo + too + "*";
-					}
-				}
-			}
-			else {
-				//cycle = something;
-				if ((fromm == none || fromm == lambda) && (too == none || too == lambda)) {
-					cycle = "(" + fromTo + toFrom + ")*";
-					target = fromTo;
-				}
-				else if (fromm == none || fromm == lambda) {
-					cycle = "(" + fromTo + addStar(too) + toFrom + ")*";
-					target = fromTo + addStar(too);
-				}
-				else if (too == none || too == lambda) {
-					cycle = "(" + addStar(fromm) + fromTo + toFrom + ")*";
-					target = addStar(fromm) + fromTo;
-				}
-				else {
-					cycle = "(" + addStar(fromm) + fromTo + addStar(too) + toFrom + ")*";
-					target = addStar(fromm) + fromTo + addStar(too);
-				}
-				expression = cycle + target;
-			}
-		}
-		jsav.umsg("Expression: " + expression);
-	}
-
-	// add star if needed for transitions
-	function addStar(transition) {
-		if (transition.length == 1) return transition + "*";
-		var count = 0;
-		if (transition.charAt(0) !== "(") return "(" + transition + ")*";
-		for (var i = 0; i < transition.length; i++) {
-			if (transition.charAt(i) == "(") count++;
-			else if (transition.charAt(i) == ")") count--;
-			if (count == 0 && i < transition.length - 1) return "(" + transition + ")";
-		}
-		return transition + "*";
+		controller.checkForTransitions();
 	}
 
 	// function to hide the right click menu
@@ -1422,12 +1293,9 @@
 	$('#minimizeButton').click(minimizeDFA);
 	$('#toGrammarButton').click(convertToGrammar);
 	$('#toREButton').click(toRE);
-	$('#collapseButton').hide();
-	$('#collapseButton').click(collapseState);
 	$('#cheat').hide();
 	$('.links').click(toExercise);	
 	$( "#dialog" ).dialog({ autoOpen: false });
-	$('#finalize').click(finalizeRE);
 	$(document).click(hideRMenu);
 	$(document).keyup(function(e) {
 		if (e.keyCode === 27) cancel();   // esc

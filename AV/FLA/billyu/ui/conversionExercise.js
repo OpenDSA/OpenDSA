@@ -337,7 +337,7 @@ var correctSteps = 0,
 
  function loadXML () {
 		$.ajax({
-			url: "./conversions.xml",
+			url: "../exercises/conversions.xml",
 			dataType: 'xml',
 			async: false,
 			success: function(data) {
