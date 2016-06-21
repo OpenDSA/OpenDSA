@@ -914,6 +914,7 @@ var lambda = String.fromCharCode(955);
     JSAV.utils._helpers.handlePosition(this);
     JSAV.utils._helpers.handleVisibility(this, this.options);
   };
+
   /*
   Function to get all outgoing edges of a node.
   Returns a normal array, not an iterable array like .getNodes does.

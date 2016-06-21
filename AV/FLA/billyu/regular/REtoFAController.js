@@ -1,7 +1,8 @@
 const DEOR = 1,
 			DECAT = 2,
 			DESTAR = 3,
-			DEPARENS = 4;
+			DEPARENS = 4,
+			NOTRECOGNIZED = 5;
 /** The set of transitions that still require expansion. */
 var toDo = []; 
 
@@ -23,6 +24,8 @@ var replacements = [];
 /** For the concatenation. */
 var catBeginMade = false, catEndMade = false;
 
+paper.install(window);
+
 var REtoFAController = function(jsav, options) {
 	this.init(jsav, options);
 };
@@ -31,15 +34,21 @@ var controllerProto = REtoFAController.prototype;
 
 controllerProto.init = function(jsav, expression, options) {
 	this.jsav = jsav;	
-	this.fa = jsav.ds.fa($.extend({width: '750px', height: 440}, options));
-	var start = this.fa.addNode();
-	var end = this.fa.addNode();
+	this.fa = jsav.ds.fa($.extend({width: '750px', height: 440, layout: 'automatic'}, options));
+	var start = this.fa.addNode({left: '15px'});
+	var end = this.fa.addNode({left: '700px', top: '400px'});
 	this.fa.makeInitial(start);
 	this.fa.makeFinal(end);
 	var t = this.fa.addEdge(start, end, {weight: expression});
 	this.transition = t;
-	if (this.requiredAction(expression) != 0)
+	var action = this.requiredAction(expression);
+	if (action == NOTRECOGNIZED) {
+		alert("Expression not recognized!");
+		return;
+	}
+	else if (action != 0) {
 		toDo.push(t);
+	}
 	this.nextStep();
 }
 
@@ -66,7 +75,7 @@ controllerProto.requiredAction = function(expression) {
 	if (expression.charAt(0) == '('
 			&& expression.charAt(expression.length - 1) == ')')
 		return DEPARENS;
-	alert("Expression not recognized!");
+	return NOTRECOGNIZED;
 }
 
 /**
@@ -100,7 +109,7 @@ controllerProto.transitionCheck = function(transition) {
 			var s1 = transition.start(), s2 = transition.end();
 			var newLabel = delambda(label.substring(1, label.length - 1));
 			this.fa.removeEdge(transition);
-			var t = g.addEdge(s1, s2, {weight: newLabel});
+			var t = this.fa.addEdge(s1, s2, {weight: newLabel});
 			if (this.requiredAction(newLabel) != 0)
 				toDo.push(t);
 				action = 0; // That's all that need be done.
@@ -215,10 +224,36 @@ controllerProto.completeAll = function() {
 controllerProto.replaceTransition = function(transition, exps) {
 	// Compose the transform.
 	var t = [];
+	var at = new Matrix(); // AffineTransform to draw the new nodes
+	var startPos = transition.start().position();
+	var endPos = transition.end().position();
+	var pStart = new Point(startPos.left, startPos.top);
+	var pEnd = new Point(endPos.left, endPos.top);
+
+	at.translate(pStart.x, pStart.y);
+	at.scale(pStart.getDistance(pEnd), pStart.getDistance(pEnd));
+	at.rotate(Math.atan2(pEnd.y - pStart.y, pEnd.x - pStart.x));
+
+	var ps = new Point(0.2, 0.0);
+	var pe = new Point(0.8, 0.0);	
+
 	this.fa.removeEdge(transition);
+
 	for (var i = 0; i < exps.length; i++) {
-		var s = this.fa.addNode();
-		var e = this.fa.addNode();
+		pStart = new Point();
+		pEnd = new Point();
+		var y = exps.length > 1 ? (1.0 * i / (1.0 * exps.length - 1.0) - 0.5) * 0.5 : 0.0;
+		pe.y = ps.y = y;
+		pStart = at.transform(ps);
+		pEnd = at.transform(pe);
+		// Clamp bounds.
+		pStart.x = Math.max(pStart.x, 20);
+		pStart.y = Math.max(pStart.y, 20);
+		pEnd.x = Math.max(pEnd.x, 20);
+		pEnd.y = Math.max(pEnd.y, 20);
+
+		var s = this.fa.addNode({left: pStart.x + 'px', top: pStart.y + 'px'});
+		var e = this.fa.addNode({left: pEnd.x + 'px', top: pEnd.y + 'px'});
 		var edge = this.fa.addEdge(s, e, {weight: exps[i]});
 		t.push(edge);
 		if (this.requiredAction(edge.weight()) != 0)
