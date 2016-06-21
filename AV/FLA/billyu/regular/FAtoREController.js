@@ -31,7 +31,7 @@ controllerProto.checkForTransitions = function() {
 
 // change ...<br>... to (...+...)
 // add parentheses to the ones with + sign
-function normalizeTransitionToRE(transition) {
+function normalizeTransitionToRE(transition, last) {
 	var arr = transition.split("<br>");
 	if (arr.length == 1) {
 		if (arr[0].indexOf('+') > -1) {
@@ -39,7 +39,7 @@ function normalizeTransitionToRE(transition) {
 		}
 		return arr[0];
 	}
-	if (arr.length == 0) return re;
+	if (arr.length == 0 && last) return re;
 	var re = "(" + arr[0];
 	for (var i = 1; i < arr.length; i++) {
 		re += "+" + arr[i];
@@ -193,7 +193,7 @@ controllerProto.generateExpression = function() {
 	var from = this.fa.initial;
 	var to = this.fa.getFinals()[0];
 	var fromm = normalizeTransitionToRE(this.fa.getEdge(from, from).weight());
-	var fromTo = normalizeTransitionToRE(this.fa.getEdge(from, to).weight());
+	var fromTo = normalizeTransitionToRE(this.fa.getEdge(from, to).weight(), true);
 	var toFrom = normalizeTransitionToRE(this.fa.getEdge(to, from).weight());
 	var too = normalizeTransitionToRE(this.fa.getEdge(to, to).weight());
 	var cycle = "", target = "", expression = "";
