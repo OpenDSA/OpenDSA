@@ -145,6 +145,10 @@ def process_section(config, section, index_rst, depth, current_section_numbers=[
     if depth >= len(current_section_numbers):
         current_section_numbers.append(config.start_chap_num)
 
+    chapters = section
+    for ch_idx, ch_obj in enumerate(chapters):
+      subsect =
+
     for subsect in section:
         # Parse the subsection name by eliminating the path and file extension
         # if its a module
@@ -473,7 +477,6 @@ def configure(config_file_path, options):
 
     # local mode option
     config.local_mode = str(options.local).lower()
-
 
     # Initialize output directory, create index.rst, and process all of the
     # modules

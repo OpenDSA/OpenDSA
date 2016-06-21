@@ -162,6 +162,9 @@ CS3: min
 	python $(CONFIG_SCRIPT) config/CS3.json -b vt/cs1114/summer-ii-2016/TR_1100am
 	python $(CONFIG_SCRIPT) config/CS3.json -b vt/cs1114/summer-ii-2016/MWF_1000am
 
+CS3_test: min
+	python $(CONFIG_SCRIPT) config/CS3_test.json -b vt/cs1114/spring-2016/TR_1100am
+
 CS3vt: min
 	python $(CONFIG_SCRIPT) config/CS3.json -c config/CS3vt_LMSconf.json -b CS3vt
 
