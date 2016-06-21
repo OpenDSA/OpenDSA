@@ -2,7 +2,8 @@
 Finite Automaton module.
 An extension to the JFLAP library.
 */
-var lambda = String.fromCharCode(955);
+var lambda = String.fromCharCode(955),
+		menuSelected; // stores the node that's right clicked on
 (function ($) {
   "use strict";
   if (typeof JSAV === "undefined") {
@@ -32,8 +33,11 @@ var lambda = String.fromCharCode(955);
     this.alphabet = {};           // input alphabet
     this.jsav = jsav;
     this.initial;                 // initial state
+		this.first;										// first selected node, used for creating edges
+		this.selected;								// selected node, used for right click, delete etc
+		this.editable = options.editable;
     this.options = $.extend({visible: true, nodegap: 40, autoresize: true, width: 400, height: 200,
-                              directed: true, center: true, arcoffset: 50, emptystring: String.fromCharCode(955)}, options);
+			directed: true, center: true, arcoffset: 50, emptystring: String.fromCharCode(955)}, options);
     //this.options = $.extend({directed: true}, options);
     this.emptystring = this.options.emptystring;
     this.shorthand = false;
@@ -63,6 +67,10 @@ var lambda = String.fromCharCode(955);
     }, this.options.constructors);
     JSAV.utils._helpers.handlePosition(this);
     JSAV.utils._helpers.handleVisibility(this, this.options); 
+		var t = this;
+		$(document).click(function() {
+			t.hideRMenu();
+		});
   };
 
   JSAV.utils._events._addEventSupport(faproto);
@@ -88,6 +96,11 @@ var lambda = String.fromCharCode(955);
 			drag: dragging,
 			containment: "parent"
 		});
+		if (this.editable) {
+			newNode.element.contextmenu(function(e) {
+				newNode.showMenu(e);
+			});
+		}
 		return newNode;
   };
 
@@ -298,38 +311,6 @@ var lambda = String.fromCharCode(955);
 		}
 		return finals;
 	}
-
-  /*
-  Function to update the input alphabet.
-  Returns an object.
-  Currently assumes every character is a unique input symbol.
-  */
-  faproto.updateAlphabet = function () {
-    var alphabet = {};
-    var edges = this.edges();
-    var w;
-    for (var next = edges.next(); next; next = edges.next()) {
-      w = next.weight();
-      w = w.split('<br>');
-      for (var i = 0; i < w.length; i++) {
-        var t = w[i].split('|');
-        for (var j = 0; j < t.length; j++) {
-          var letters = t[j].split(':')[0];
-          if (letters !== String.fromCharCode(955) && letters !== String.fromCharCode(949)) {
-            for (var k = 0; k < letters.length; k++) {
-              var letter = letters[k];
-              if (!(letter in alphabet)) {
-                alphabet[letter] = 0;
-              }
-              alphabet[letter]++;
-            }
-          }
-        }
-      }
-    }
-    this.alphabet = alphabet;
-    return alphabet;
-  };
 
   /*
   Function to get the stack alphabet for a PDA
@@ -546,6 +527,17 @@ var lambda = String.fromCharCode(955);
     }
     return ret;
   };
+
+	// function to hide the right click menu
+	// called when mouse clicks on anywhere on the page except the menu
+	faproto.hideRMenu = function() {
+		var nodes = this.nodes();
+		if (menuSelected) {
+			menuSelected.unhighlight();
+		}
+		menuSelected = null;
+		$("#rmenu").hide();
+	};
 
   /*
   FA edge/transition class.
@@ -944,6 +936,56 @@ var lambda = String.fromCharCode(955);
       }
     }
   };
+
+	// displays the right click menu, called when right clicks on a node
+	fastateproto.showMenu = function(e) {
+		var g = this.fa;
+		g.first = null;
+		g.disableDragging();
+		var nodes = g.nodes();
+		for (var next = nodes.next(); next; next = nodes.next()) {
+			next.unhighlight();
+		}
+		this.highlight();
+		menuSelected = this;
+
+		e.preventDefault();
+		//make menu appear where mouse clicks
+		$("#rmenu").css({left: this.element.offset().left + e.offsetX, top: this.element.offset().top + e.offsetY});
+
+		$("#rmenu").show();
+		// add a check mark if the node is already a certain state
+		if (this.equals(g.initial)) {
+			$("#makeInitial").html("&#x2713;Initial");
+		}
+		else {
+			$("#makeInitial").html("Initial");
+		}
+		if (this.hasClass("final")) {
+			$("#makeFinal").html("&#x2713;Final");
+		}
+		else {
+			$("#makeFinal").html("Final");
+		}
+		
+		var node = this;
+		//off and on to avoid binding event more than once
+		$("#makeInitial").off('click').click(function() {
+			toggleInitial(g, node);
+		});
+		$("#makeFinal").off('click').click(function() {
+			toggleFinal(g, node);
+		});
+		$("#deleteNode").off('click').click(function() {
+			deleteNode(g, node);
+		});
+		$("#changeLabel").off('click').click(function() {
+			changeLabel(node);
+		});
+		$("#clearLabel").off('click').click(function() {
+			clearLabel(node);
+		});
+	}
 
   fastateproto.mooreOutput = function(newOutput, options) {
     // the editable labels that go underneath the states
@@ -1429,3 +1471,63 @@ function dragging(event, node) {
 	dragNode.stateLabelPositionUpdate();
 	dragNode.element.draggable('enable');
 };
+
+// function to toggle the intitial state of a node
+// appears as a button in the right click menu
+var toggleInitial = function(g, node) {
+	$("#rmenu").hide();
+	node.unhighlight();
+	if (node.equals(g.initial)) {
+		g.removeInitial(node);
+	}
+	else {
+		if (g.initial) {
+			alert("There can only be one intial state!");
+		} else {
+			g.makeInitial(node);
+		}
+	}
+};
+
+// function to toggle the final state of a node
+// appears as a button in the right click menu
+var toggleFinal = function(g, node) {
+	if (node.hasClass("final")) {
+		node.removeClass("final");
+	}
+	else {
+		node.addClass("final");
+	}
+	$("#rmenu").hide();
+	node.unhighlight();
+};
+
+// function to change the customized label of a node
+// an option in right click menu
+var changeLabel = function(node) {
+	$("#rmenu").hide();
+	var nodeLabel = prompt("How do you want to label it?");
+	if (!nodeLabel) {
+		nodeLabel = "";
+	}
+	node.stateLabel(nodeLabel);
+	node.stateLabelPositionUpdate();
+	node.unhighlight();
+}
+
+// function to clear the customized label
+// an option in the right click menu
+var clearLabel = function(node) {
+	$("#rmenu").hide();
+	node.unhighlight();
+	node.stateLabel("");
+}
+
+// function to delete the node and its adjacent edges
+// option in the right click menu
+var deleteNode = function(g, node) {
+	$("#rmenu").hide();
+	node.unhighlight();
+	//saveFAState();
+	g.removeNode(node);
+}

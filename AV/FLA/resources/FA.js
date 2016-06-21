@@ -3,6 +3,7 @@ Finite Automaton module.
 An extension to the JFLAP library.
 */
 var lambda = String.fromCharCode(955);
+var menuSelected; // variable for node that's right clicked on
 (function ($) {
   "use strict";
   if (typeof JSAV === "undefined") {
@@ -88,6 +89,9 @@ var lambda = String.fromCharCode(955);
 			stop: dragStop,
 			drag: dragging,
 			containment: "parent"
+		});
+		newNode.element.contextmenu(function(e) {
+			this.data('node').showMenu(e);
 		});
 		return newNode;
   };
@@ -548,6 +552,15 @@ var lambda = String.fromCharCode(955);
     return ret;
   };
 
+	// function to hide the right click menu
+	// called when mouse clicks on anywhere on the page except the menu
+	faproto.hideRMenu = function() {
+		if (menuSelected) {
+			menuSelected.unhighlight();
+		}
+		menuSelected = null;
+		$("#rmenu").hide();
+	};
 
   /*
   FA edge/transition class.
@@ -946,6 +959,54 @@ var lambda = String.fromCharCode(955);
       }
     }
   };
+
+	// shows the right click menu
+	// function exists because displayRightClickMenu requires three parameters
+	fastateproto.showMenu = function(e) {
+		var g = this.fa;
+		g.disableDragging();
+		var nodes = g.nodes();
+		for (var next = nodes.next(); next; next = nodes.next()) {
+			next.unhighlight();
+		}
+		this.highlight();
+		menuSelected = this;
+
+		e.preventDefault();
+		//make menu appear where mouse clicks
+		$("#rmenu").css({left: this.element.offset().left + e.offsetX, top: this.element.offset().top + e.offsetY});
+
+		$("#rmenu").show();
+		// add a check mark if the node is already a certain state
+		if (this.equals(g.initial)) {
+			$("#makeInitial").html("&#x2713;Initial");
+		}
+		else {
+			$("#makeInitial").html("Initial");
+		}
+		if (this.hasClass("final")) {
+			$("#makeFinal").html("&#x2713;Final");
+		}
+		else {
+			$("#makeFinal").html("Final");
+		}
+		//off and on to avoid binding event more than once
+		$("#makeInitial").off('click').click(function() {
+			toggleInitial(g, this);
+		});
+		$("#makeFinal").off('click').click(function() {
+			toggleFinal(g, this);
+		});
+		$("#deleteNode").off('click').click(function() {
+			deleteNode(g, this);
+		});
+		$("#changeLabel").off('click').click(function() {
+			changeLabel(this);
+		});
+		$("#clearLabel").off('click').click(function() {
+			clearLabel(this);
+		});
+	}
 
   fastateproto.mooreOutput = function(newOutput, options) {
     // the editable labels that go underneath the states
@@ -1431,3 +1492,65 @@ function dragging(event, node) {
 	dragNode.stateLabelPositionUpdate();
 	dragNode.element.draggable('enable');
 };
+
+// function to toggle the intitial state of a node
+// appears as a button in the right click menu
+function toggleInitial(g, node) {
+	$("#rmenu").hide();
+	node.unhighlight();
+	if (node.equals(g.initial)) {
+		g.removeInitial(node);
+	}
+	else {
+		if (g.initial) {
+			alert("There can only be one intial state!");
+		} else {
+			g.makeInitial(node);
+		}
+	}
+};
+
+// function to toggle the final state of a node
+// appears as a button in the right click menu
+function toggleFinal(g, node) {
+	if (node.hasClass("final")) {
+		node.removeClass("final");
+	}
+	else {
+		node.addClass("final");
+	}
+	$("#rmenu").hide();
+	node.unhighlight();
+};
+
+// function to change the customized label of a node
+// an option in right click menu
+function changeLabel(node) {
+	$("#rmenu").hide();
+	var nodeLabel = prompt("How do you want to label it?");
+	if (!nodeLabel) {
+		nodeLabel = "";
+	}
+	node.stateLabel(nodeLabel);
+	node.stateLabelPositionUpdate();
+	node.unhighlight();
+}
+
+// function to clear the customized label
+// an option in the right click menu
+function clearLabel(node) {
+	$("#rmenu").hide();
+	node.unhighlight();
+	node.stateLabel("");
+}
+
+// function to delete the node and its adjacent edges
+// option in the right click menu
+function deleteNode(g, node) {
+	$("#rmenu").hide();
+	node.unhighlight();
+	saveFAState();
+	executeDeleteNode(g, node);
+	updateAlphabet();
+	checkAllEdges();
+}

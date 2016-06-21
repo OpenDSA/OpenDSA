@@ -1,8 +1,6 @@
 (function ($) {
 	var jsav = new JSAV("av"), // Instance variable to store the JSAV algorithm visualization.
 		jsavArray, // Instance variable to store the JSAV array (in which input strings are displayed).
-		first = null, // Instance variable to store the first node clicked in "Add Edges" mode.
-		menuSelected = null, // Instance variable to store a node that is right clicked on.
 		label = null, // Instance variable to store the label clicked in "Edit Edges" mode.
 		undoStack, // Instance variable to store a backup array of serialized graphs, loaded when the user clicks "Undo".
 		redoStack, // Instance variable to store a backup array of serialized graphs, loaded when the user clicks "Redo".
@@ -122,7 +120,7 @@
 		// Remove the old graph, parse JSON, and initialize the new graph.
 		$('.jsavgraph').remove();
 		var gg = opts.graph ? opts.graph : jQuery.parseJSON(g);
-		g = jsav.ds.fa($.extend({width: '750px', height: 440}, opts));
+		g = jsav.ds.fa($.extend({width: '750px', height: 440, editable: true}, opts));
 		// Add the JSON nodes to the graph.
 		for (var i = 0; i < gg.nodes.length; i++) {
 	    	var node = g.addNode('q' + i),
@@ -176,11 +174,9 @@
 
     // Update input character alphabet, display the graph, and add click handlers.
     var finalize = function() {
-    	updateAlphabet();
 	    jsav.displayInit();
 	    g.click(nodeClickHandler);
 			g.click(edgeClickHandler, {edge: true});
-			$('.jsavnode').contextmenu(showMenu);
 			$('.jsavgraph').click(graphClickHandler);
 			$('.jsavedgelabel').click(labelClickHandler);
     };
@@ -200,13 +196,12 @@
     // Sets click handlers for when the user clicks on the JSAV graph.
 	var graphClickHandler = function(e) {
 		if ($("#rmenu").is(":visible")) {
-			hideRMenu();
+			g.hideRMenu();
 		}
 		else if ($(".jsavgraph").hasClass("addNodes")) {
 			// If in "Add Nodes" mode, save the graph and add a node.
 			saveFAState();
 			executeAddNode(g, e.pageY, e.pageX);
-			$('.jsavnode').off('contextmenu').contextmenu(showMenu);
 		} 
 	};
 
@@ -224,7 +219,6 @@
 			// If in "Delete Nodes" mode, save the graph and delete the node.
 			saveFAState();
 			executeDeleteNode(g, this);
-			updateAlphabet();
 			checkAllEdges();
 		}
 		else if ($('.jsavgraph').hasClass('collapse')) {
@@ -240,7 +234,6 @@
 			// If in "Delete Nodes" mode (which also serves to delete edges), save the graph and delete the edge.
 			saveFAState();
 			executeDeleteEdge(g, this);
-			updateAlphabet();
 			checkAllEdges();
 		}
 	};
@@ -253,16 +246,15 @@
 
 	// Called by the add edge custom prompt box to save the graph and create the edge upon clicking "Done".
 	function createEdge(edge_label) {
-		if (!first || !g.selected) return;
+		if (!g.first || !g.selected) return;
 		saveFAState();
-		var edge = g.addEdge(first, g.selected, {weight: edge_label});
+		var edge = g.addEdge(g.first, g.selected, {weight: edge_label});
 		$(edge._label.element).click(labelClickHandler);
 		// This new edge does need its edge label click handler to be set individually.
-		updateAlphabet();
 		checkEdge(edge);
-		first.unhighlight();
+		g.first.unhighlight();
 		g.selected.unhighlight();
-		first = null;
+		g.first = null;
 		g.selected = null;
 	};
 
@@ -270,7 +262,6 @@
 	function updateEdge(edge_label) {
 		saveFAState();
 		executeEditEdge(g, label, edge_label);
-		updateAlphabet();
 		checkAllEdges();
 		// Check to see if shorthand notation is disabled, and whether the transitions on this edge are therefore allowed (i.e. only one character long).
 		if (!g.shorthand) {
@@ -319,13 +310,6 @@
 				}
 			}
 		}
-	};
-
-	// Function to automatically update the alphabet display at the bottom of the view.
-	// Called whenever a graph is loaded, an action is undone/redone, or any edges are add/edited/removed.
-	var updateAlphabet = function() {
-		g.updateAlphabet();
-		$("#alphabet").html("" + Object.keys(g.alphabet).sort());
 	};
 
 	// Function to switch to "Add Nodes" mode.
@@ -678,7 +662,7 @@
 		var nodes = g.nodes();
 		_.each(nodes, function(x) {x.unhighlight();});
 		g.selected = null;
-		hideRMenu();
+		g.hideRMenu();
 		collapseEdges();
 		g.enableDragging();
 	}
@@ -728,7 +712,7 @@
 	    	if (g) {
 				g.clear();
 			}
-			g = new jsav.ds.fa({width: '750px', height: 440, layout: "automatic"});
+			g = new jsav.ds.fa({width: '750px', height: 440, layout: "automatic", editable: true});
 			var nodeMap = {};			// map node IDs to nodes
 	      	var xmlStates = xmlDoc.getElementsByTagName("state");
 	      	xmlStates = _.sortBy(xmlStates, function(x) { return x.id; })
@@ -897,135 +881,6 @@
 		fatoreController.checkForTransitions();
 	}
 
-	// function to hide the right click menu
-	// called when mouse clicks on anywhere on the page except the menu
-	var hideRMenu = function() {
-		var nodes = g.nodes();
-		if (menuSelected) {
-			menuSelected.unhighlight();
-		}
-		menuSelected = null;
-		$("#rmenu").hide();
-	};
-
-	// function to toggle the intitial state of a node
-	// appears as a button in the right click menu
-	var toggleInitial = function(g, node) {
-		$("#rmenu").hide();
-		node.unhighlight();
-		if (node.equals(g.initial)) {
-			g.removeInitial(node);
-		}
-		else {
-			if (g.initial) {
-				alert("There can only be one intial state!");
-			} else {
-				g.makeInitial(node);
-			}
-		}
-	};
-
-	// function to toggle the final state of a node
-	// appears as a button in the right click menu
-	var toggleFinal = function(g, node) {
-		if (node.hasClass("final")) {
-			node.removeClass("final");
-		}
-		else {
-			node.addClass("final");
-		}
-		$("#rmenu").hide();
-		node.unhighlight();
-	};
-
-	// function to change the customized label of a node
-	// an option in right click menu
-	var changeLabel = function(node) {
-		$("#rmenu").hide();
-		var nodeLabel = prompt("How do you want to label it?");
-		if (!nodeLabel) {
-			nodeLabel = "";
-		}
-		node.stateLabel(nodeLabel);
-		node.stateLabelPositionUpdate();
-		node.unhighlight();
-	}
-
-	// function to clear the customized label
-	// an option in the right click menu
-	var clearLabel = function(node) {
-		$("#rmenu").hide();
-		node.unhighlight();
-		node.stateLabel("");
-	}
-
-	// function to delete the node and its adjacent edges
-	// option in the right click menu
-	var deleteNode = function(g, node) {
-		$("#rmenu").hide();
-		node.unhighlight();
-		saveFAState();
-		executeDeleteNode(g, node);
-		updateAlphabet();
-		checkAllEdges();
-	}
-
-	// displays the right click menu, called when right clicks on a node
-	var displayRightClickMenu = function(g, selected, e) {
-		//find faState object with jQuery selected object
-		var node = g.getNodeWithValue(selected.attr('data-value'));
-		node.highlight();
-		menuSelected = node;
-
-		e.preventDefault();
-		//make menu appear where mouse clicks
-		$("#rmenu").css({left: selected.offset().left + e.offsetX, top: selected.offset().top + e.offsetY});
-
-		$("#rmenu").show();
-		// add a check mark if the node is already a certain state
-		if (node.equals(g.initial)) {
-			$("#makeInitial").html("&#x2713;Initial");
-		}
-		else {
-			$("#makeInitial").html("Initial");
-		}
-		if (node.hasClass("final")) {
-			$("#makeFinal").html("&#x2713;Final");
-		}
-		else {
-			$("#makeFinal").html("Final");
-		}
-		//off and on to avoid binding event more than once
-		$("#makeInitial").off('click').click(function() {
-			toggleInitial(g, node);
-		});
-		$("#makeFinal").off('click').click(function() {
-			toggleFinal(g, node);
-		});
-		$("#deleteNode").off('click').click(function() {
-			deleteNode(g, node);
-		});
-		$("#changeLabel").off('click').click(function() {
-			changeLabel(node);
-		});
-		$("#clearLabel").off('click').click(function() {
-			clearLabel(node);
-		});
-	};
-
-	// shows the right click menu
-	// function exists because displayRightClickMenu requires three parameters
-	var showMenu = function(e) {
-		first = null;
-		g.disableDragging();
-		var nodes = g.nodes();
-		for (var next = nodes.next(); next; next = nodes.next()) {
-			next.unhighlight();
-		}
-		var rightNode = $(this);
-		displayRightClickMenu(g, rightNode, e);
-	}
-
 	// used by FAFixer and FATester
 	// test if the student's FA passes the test cases and show the results at the bottom of the page
 	function testWithExpression() {
@@ -1069,9 +924,9 @@
 		$('#download').html('');
 		jsav.umsg('');
 		// Unselect and unhighlight any selected nodes or edges.
-		if (first) {
-			first.unhighlight();
-			first = null;
+		if (g.first) {
+			g.first.unhighlight();
+			g.first = null;
 		}
 		if (g.selected) {
 			g.selected.unhighlight();
@@ -1114,8 +969,8 @@
 		var targetClass = $(e.target).attr('class');
 		if (targetClass !== "jsavvaluelabel") return;
 		var node = $(e.target);
-		first = g.getNodeWithValue(node.text());
-		first.highlight();
+		g.first = g.getNodeWithValue(node.text());
+		g.first.highlight();
 		offset = $('.jsavgraph').offset(),
 	 	offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
 		startX = e.pageX - offset.left + offset2;
@@ -1123,12 +978,12 @@
 	}
 
 	function mouseUp(e) {
-		if (!first) return;
+		if (!g.first) return;
 		var targetClass = $(e.target).attr('class');
 		if (targetClass !== "jsavvaluelabel") {
 			$('path[opacity="1.5"]').remove();
-			first.unhighlight();
-			first = null;
+			g.first.unhighlight();
+			g.first = null;
 			return;
 		}
 		var node = $(e.target);
@@ -1143,11 +998,10 @@
 			Prompt.render("");
 		}
 		$('path[opacity="1.5"]').remove();
-		$('.jsavnode').off('contextmenu').contextmenu(showMenu);
 	}
 
 	function mouseMove(e) {
-		if (!first) return;
+		if (!g.first) return;
 		endX = e.pageX - offset.left + offset2;
 		endY = e.pageY - offset.top + offset2;
 		$('path[opacity="1.5"]').remove();
@@ -1178,10 +1032,10 @@
 	$('#minimizeButton').click(minimizeDFA);
 	$('#toGrammarButton').click(convertToGrammar);
 	$('#toREButton').click(toRE);
+	$('#collapseButton').hide();
 	$('#cheat').hide();
 	$('.links').click(toExercise);	
 	$( "#dialog" ).dialog({ autoOpen: false });
-	$(document).click(hideRMenu);
 	$(document).keyup(function(e) {
 		if (e.keyCode === 27) cancel();   // esc
 	});

@@ -203,7 +203,7 @@ controllerProto.generateExpression = function() {
 		if (toFrom == none) {
 			//cycle = "";
 			if ((fromm == none || fromm == lambda) && (too == none || too == lambda)) {
-				expression = fromTo;
+				expression = fromTo.substring(1, fromTo.length - 1);
 			}
 			else if (fromm == none || fromm == lambda) {
 				if (too.length > 1) {
