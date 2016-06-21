@@ -24,12 +24,10 @@ from urlparse import urlparse
 
 error_count = 0
 
-required_fields = ['chapters', 'code_lang']
+required_fields = ['chapters']
 
-optional_fields = ['assumes', 'av_origin', 'av_root_dir', 'build_cmap', 'build_dir', 'build_JSAV','code_dir', 'exercise_origin', 'exercises_root_dir', 'glob_mod_options', 'glob_exer_options', 'lang','req_full_ss', 'start_chap_num', 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir', 'dispModComp', 'tag', 'local_mode', 'title', 'av_origin', 'av_root_dir']
+optional_fields = ['assumes', 'av_origin', 'av_root_dir', 'build_cmap', 'build_dir', 'build_JSAV','code_dir', 'exercise_origin', 'exercises_root_dir', 'glob_mod_options', 'glob_exer_options', 'lang','req_full_ss', 'start_chap_num', 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir', 'dispModComp', 'tag', 'local_mode', 'title', 'av_origin', 'av_root_dir', 'code_lang']
 
-
-lang_file = os.path.abspath('tools/language_msg.json')
 
 listed_modules = []
 listed_chapters = []
@@ -81,6 +79,7 @@ def get_odsa_dir():
     # Convert to Unix-style path
     return os.path.dirname(os.path.dirname(os.path.abspath(__file__))).replace("\\", "/") + '/'
 
+lang_file = get_odsa_dir() +  '/tools/language_msg.json'
 
 # Error message handling based on validate_json.py (https://gist.github.com/byrongibson/1921038)
 def parse_error(err):
@@ -340,6 +339,18 @@ def set_defaults(conf_data):
     # conf_data['module_origin'] = ''
     # conf_data['exercise_origin'] = ''
     conf_data['exercises_root_dir'] = odsa_dir
+
+    if 'code_lang' not in conf_data:
+        conf_data['code_lang'] ={
+                                                  "Java": {"ext": ["java"],"label": "Java","lang": "java"
+                                                  },
+                                                  "Processing": {"ext": ["pde"],"label": "Processing","lang": "java"
+                                                  },
+                                                  "Java_Generic": {"ext": [  "java"],"label": "Java (Generic)","lang": "java"
+                                                  },
+                                                  "C++": {"ext": [  "cpp",  "h"],"label": "C++","lang": "C++"
+                                                  }
+                                                }
 
 
 def group_exercises(conf_data):
