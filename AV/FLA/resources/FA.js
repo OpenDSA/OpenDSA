@@ -32,6 +32,7 @@ var lambda = String.fromCharCode(955);
     this.alphabet = {};           // input alphabet
     this.jsav = jsav;
     this.initial;                 // initial state
+		this.selected;
     this.options = $.extend({visible: true, nodegap: 40, autoresize: true, width: 400, height: 200,
                               directed: true, center: true, arcoffset: 50, emptystring: String.fromCharCode(955)}, options);
     //this.options = $.extend({directed: true}, options);

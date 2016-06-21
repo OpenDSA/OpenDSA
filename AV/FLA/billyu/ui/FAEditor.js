@@ -2,7 +2,6 @@
 	var jsav = new JSAV("av"), // Instance variable to store the JSAV algorithm visualization.
 		jsavArray, // Instance variable to store the JSAV array (in which input strings are displayed).
 		first = null, // Instance variable to store the first node clicked in "Add Edges" mode.
-		selected = null, // Instance variable to store a node or edge that is clicked.
 		menuSelected = null, // Instance variable to store a node that is right clicked on.
 		label = null, // Instance variable to store the label clicked in "Edit Edges" mode.
 		undoStack, // Instance variable to store a backup array of serialized graphs, loaded when the user clicks "Undo".
@@ -15,8 +14,7 @@
 		willRejectFunction = willReject, // Instance variable to indicate which traversal function to run (shorthand or no).
 		exerciseIndex,//for creating exercises
 		type,//type of editor: fixer, tester or editor
-		collapseStateTable, // table according to which a state is collapsed in converting to RE
-		transitions; // jsav table for transitions after collapsing a state when converting to RE
+		fatoreController;
 
 	// variables used by FATester and FAFixer
 	var tests, currentExercise = 0, testCases;
@@ -216,11 +214,11 @@
 	var nodeClickHandler = function(e) {	
 		if ($(".jsavgraph").hasClass("editNodes")) {
 			// If in "Edit Nodes" mode, open the custom prompt box to edit the selected node.
-			selected = this;
-			selected.highlight();
+			g.selected = this;
+			g.selected.highlight();
 			var Prompt = new FANodePrompt(updateNode);
-			Prompt.render(selected.value(), selected.hasClass('start'), selected.hasClass('final'), selected.stateLabel());
-			selected.unhighlight();
+			Prompt.render(g.selected.value(), g.selected.hasClass('start'), g.selected.hasClass('final'), g.selected.stateLabel());
+			g.selected.unhighlight();
 		}
 		else if ($('.jsavgraph').hasClass('deleteNodes')) {
 			// If in "Delete Nodes" mode, save the graph and delete the node.
@@ -230,124 +228,11 @@
 			checkAllEdges();
 		}
 		else if ($('.jsavgraph').hasClass('collapse')) {
-			selected = this;
-			if (selected == g.initial || selected.hasClass('final')) return;
-
-			var table = [];
-			var nodes1 = g.nodes();
-			var nodes2 = g.nodes();
-			for (var from = nodes1.next(); from; from = nodes1.next()) {
-				nodes2.reset();
-				for (var to = nodes2.next(); to; to = nodes2.next()) {
-					if (from == selected || to == selected) continue;
-					var straight = g.getEdge(from, to).weight();
-					var begin = g.getEdge(from, selected).weight();
-					var pause = g.getEdge(selected, selected).weight();
-					var end = g.getEdge(selected, to).weight();
-					var indirect = "";
-
-					direct = normalizeTransitionToRE(straight);
-					if (begin == none || end == none) {
-						table.push([from.value(), to.value(), direct]);
-					}
-					else {
-						var step1 = normalizeTransitionToRE(begin);
-						var step2 = normalizeTransitionToRE(pause);
-						var step3 = normalizeTransitionToRE(end);
-						if (step2 == none || step2 == lambda) {
-							if (step1 == lambda) {
-								indirect = step3;
-							}
-							else if (step3 == lambda) {
-								indirect = step1;
-							}
-							else {
-								indirect = step1 + step3;
-							}
-						}
-						else {
-							if (step1 == lambda && step3 == lambda) {
-								indirect = step2 + "*";
-							}
-							else if (step1 == lambda) {
-								indirect = step2 + "*" + step3;
-							}
-							else if (step3 == lambda) {
-								indirect = step1 + step2 + "*";
-							}
-							else {
-								indirect = step1 + step2 + "*" + step3;
-							}
-						}
-						if (direct == none) {
-							table.push([from.value(), to.value(), indirect]);
-						}
-						else {
-							table.push([from.value(), to.value(), direct + "+" + indirect]);
-						}
-					}
-				}
-			}
-			collapseStateTable = table;
-
-			$dialog = $("#dialog");
-			var tav = new JSAV("transitions");
-			if (transitions) transitions.clear();
-			transitions = tav.ds.matrix(table, {style: "table"});
-			transitions.click(transitionsTableHandler);
-			$dialog.dialog({
-				dialogClass: "no-close",
-				width: 200,
-				maxHeight: 800 
-			});
-			$dialog.dialog("open");
+			g.selected = this;
+			if (g.selected == g.initial || g.selected.hasClass('final')) return;
+			fatoreController.collapseState(g.selected);
 		}
 	};
-
-	// change ...<br>... to (...+...)
-	// add parentheses to the ones with + sign
-	function normalizeTransitionToRE(transition) {
-		var arr = transition.split("<br>");
-		if (arr.length == 1) {
-			if (arr[0].indexOf('+') > -1) {
-				return "(" + arr[0] + ")";
-			}
-			return arr[0];
-		}
-		var re = "(" + arr[0];
-		for (var i = 1; i < arr.length; i++) {
-			re += "+" + arr[i];
-		}
-		re += ")";
-		return re;
-	}
-
-	function transitionsTableHandler(row, col, e) {
-		for (var i = 0; i < transitions._arrays.length; i++) {
-			transitions.unhighlight(i);
-		}
-		transitions.highlight(row);
-		var edges = g.edges();
-		for (var edge = edges.next(); edge; edge = edges.next()) {
-			edge.element.removeClass('testingLambda');
-			edge._label.element.removeClass('testingLambda');
-		}
-		var table = collapseStateTable;
-		var from = g.getNodeWithValue(table[row][0]);
-		var to = g.getNodeWithValue(table[row][1]);
-		var direct = g.getEdge(from, to);
-		var step1 = g.getEdge(from, selected);
-		var step2 = g.getEdge(selected, selected);
-		var step3 = g.getEdge(selected, to);
-		direct.element.addClass('testingLambda');
-		step1.element.addClass('testingLambda');
-		step2.element.addClass('testingLambda');
-		step3.element.addClass('testingLambda');
-		direct._label.element.addClass('testingLambda');
-		step1._label.element.addClass('testingLambda');
-		step2._label.element.addClass('testingLambda');
-		step3._label.element.addClass('testingLambda');
-	}
 
 	// Sets click handler for when the user clicks a JSAV edge.
 	var edgeClickHandler = function(e) {
@@ -363,22 +248,22 @@
 	// Called by the edit node custom prompt box to save the graph and update the node upon clicking "OK".
 	function updateNode(initial_state, final_state, node_label) {
 		saveFAState();
-		executeEditFANode(g, selected, initial_state, final_state, node_label);
+		executeEditFANode(g, g.selected, initial_state, final_state, node_label);
 	};
 
 	// Called by the add edge custom prompt box to save the graph and create the edge upon clicking "Done".
 	function createEdge(edge_label) {
-		if (!first || !selected) return;
+		if (!first || !g.selected) return;
 		saveFAState();
-		var edge = g.addEdge(first, selected, {weight: edge_label});
+		var edge = g.addEdge(first, g.selected, {weight: edge_label});
 		$(edge._label.element).click(labelClickHandler);
 		// This new edge does need its edge label click handler to be set individually.
 		updateAlphabet();
 		checkEdge(edge);
 		first.unhighlight();
-		selected.unhighlight();
+		g.selected.unhighlight();
 		first = null;
-		selected = null;
+		g.selected = null;
 	};
 
 	// Called by the edit edge custom prompt box to save the graph and update the edge upon clicking "Done".
@@ -492,36 +377,6 @@
 		jsav.umsg('Click a node or edge to delete it.');
 		// Expand the edges to make them easier to click.
 		expandEdges();
-	};
-
-	// Disable all editing modes so that click handlers do not fire.
-	// Called when the user switches editing modes, or otherwise presses a button that changes the view.
-	var removeModeClasses = function() {
-		// Clear all superfluous or otherwise outdated information on the page.
-		$('.arrayPlace').empty();
-		$('#download').html('');
-		jsav.umsg('');
-		// Unselect and unhighlight any selected nodes or edges.
-		if (first) {
-			first.unhighlight();
-			first = null;
-		}
-		if (selected) {
-			selected.unhighlight();
-			selected = null;
-		}
-		if ($(".jsavgraph").hasClass("deleteNodes")) {
-			$(".jsavgraph").removeClass("deleteNodes");
-			// Return edges to normal size.
-			collapseEdges();
-		}
-		else {
-			$(".jsavgraph").removeClass("addNodes");
-			$(".jsavgraph").removeClass("addEdges");
-			$(".jsavgraph").removeClass("editNodes");
-			$(".jsavgraph").removeClass("moveNodes");
-			$(".jsavgraph").removeClass("working");
-		}
 	};
 
 	// Function to enlarge edges in "Delete Nodes/Edges" mode, making them easier to click.
@@ -822,7 +677,7 @@
 		jsav.umsg("");
 		var nodes = g.nodes();
 		_.each(nodes, function(x) {x.unhighlight();});
-		selected = null;
+		g.selected = null;
 		hideRMenu();
 		collapseEdges();
 		g.enableDragging();
@@ -1026,20 +881,20 @@
 		$('#editButton').hide();
 		$('#deleteButton').hide();
 		$('#collapseButton').hide();
-		var controller = new FAtoREController(jsav, g, {});
+		fatoreController = new FAtoREController(jsav, g, {});
 		jsav.umsg("Use add edges tool to put empty transitions between states with no transitions.");
 		$('#cheat').show();
 		$('#cheat').click(function() {
-			controller.completeTransitions();
+			fatoreController.completeTransitions();
 		});
 		$('#collapseButton').click(function() {
-			controller.collapseState();
+			fatoreController.collapseState();
 		});
 		$('#finalize').click(function() {
-			controller.finalizeRE();
+			fatoreController.finalizeRE();
 		});
 
-		controller.checkForTransitions();
+		fatoreController.checkForTransitions();
 	}
 
 	// function to hide the right click menu
@@ -1205,6 +1060,36 @@
 		currentExercise = this.getAttribute('id');
 		updateExercise(currentExercise);
 	};
+
+	// Disable all editing modes so that click handlers do not fire.
+	// Called when the user switches editing modes, or otherwise presses a button that changes the view.
+	var removeModeClasses = function() {
+		// Clear all superfluous or otherwise outdated information on the page.
+		$('.arrayPlace').empty();
+		$('#download').html('');
+		jsav.umsg('');
+		// Unselect and unhighlight any selected nodes or edges.
+		if (first) {
+			first.unhighlight();
+			first = null;
+		}
+		if (g.selected) {
+			g.selected.unhighlight();
+			g.selected = null;
+		}
+		if ($(".jsavgraph").hasClass("deleteNodes")) {
+			$(".jsavgraph").removeClass("deleteNodes");
+			// Return edges to normal size.
+			collapseEdges();
+		}
+		else {
+			$(".jsavgraph").removeClass("addNodes");
+			$(".jsavgraph").removeClass("addEdges");
+			$(".jsavgraph").removeClass("editNodes");
+			$(".jsavgraph").removeClass("moveNodes");
+			$(".jsavgraph").removeClass("working");
+		}
+	};
 	
 	// the function that really changes the problem displayed
 	// called by toExercise
@@ -1247,8 +1132,8 @@
 			return;
 		}
 		var node = $(e.target);
-		selected = g.getNodeWithValue(node.text());
-		selected.highlight();
+		g.selected = g.getNodeWithValue(node.text());
+		g.selected.highlight();
 		if ($('.jsavgraph').hasClass("RE")) {
 			createEdge(none);
 			checkForTransitions();

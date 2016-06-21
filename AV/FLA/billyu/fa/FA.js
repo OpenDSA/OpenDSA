@@ -547,7 +547,6 @@ var lambda = String.fromCharCode(955);
     return ret;
   };
 
-
   /*
   FA edge/transition class.
   Extended from JSAV graph edge class.
