@@ -3,6 +3,7 @@ Finite Automaton module.
 An extension to the JFLAP library.
 */
 var lambda = String.fromCharCode(955),
+		emptystring = lambda,
 		menuSelected; // stores the node that's right clicked on
 (function ($) {
   "use strict";
@@ -35,6 +36,8 @@ var lambda = String.fromCharCode(955),
     this.initial;                 // initial state
 		this.first;										// first selected node, used for creating edges
 		this.selected;								// selected node, used for right click, delete etc
+		this.undoStack = [];
+		this.redoStack = [];
 		this.editable = options.editable;
     this.options = $.extend({visible: true, nodegap: 40, autoresize: true, width: 400, height: 200,
 			directed: true, center: true, arcoffset: 50, emptystring: String.fromCharCode(955)}, options);
@@ -74,6 +77,49 @@ var lambda = String.fromCharCode(955),
   };
 
   JSAV.utils._events._addEventSupport(faproto);
+
+	faproto.initFromParsedJSONSource = function(source) {
+		var nodes = this.nodes();
+		for (var next = nodes.next(); next; next = nodes.next()) {
+			this.removeNode(next);
+		}
+		for (var i = 0; i < source.nodes.length; i++) {
+			var node = this.addNode('q' + i),
+				offset = $('.jsavgraph').offset(),
+				offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
+			// Expand the graph lengthways if we are loading it from a smaller window (conversionExersice.html / minimizationTest.html).
+			if (localStorage['toConvert'] === "true" || localStorage['toMinimize'] === "true") {
+				$(node.element).offset({top : parseInt(source.nodes[i].top) + offset.top + offset2, left: (parseInt(source.nodes[i].left) * 2) + offset.left + offset2});
+			}
+			else {
+				$(node.element).offset({top : parseInt(source.nodes[i].top) + offset.top + offset2, left: parseInt(source.nodes[i].left) + offset.left + offset2});
+			}
+			// Make the node initial if it is the initial node.
+			if (source.nodes[i].i) {
+				this.makeInitial(node);
+			}
+			// Make the node a final state if it is a final state.
+			if (source.nodes[i].f) {
+				this.makeFinal(node);
+			}
+			// Add the state label (if applicable) and update its position on the graph.
+			node.stateLabel(source.nodes[i].stateLabel);
+			node.stateLabelPositionUpdate();
+		}
+		// Add the JSON edges to the graph.
+		for (var i = 0; i < source.edges.length; i++) {
+			if (source.edges[i].weight !== undefined) {
+				// Any instances of lambda or epsilon need to be converted from HTML format to JS format.
+				var w = delambdafy(source.edges[i].weight);
+				w = checkEmptyString(w);
+				var edge = this.addEdge(this.nodes()[source.edges[i].start], this.nodes()[source.edges[i].end], {weight: w});
+				}
+			else {
+				var edge = this.addEdge(this.nodes()[source.edges[i].start], this.nodes()[source.edges[i].end]);
+			}
+			edge.layout();
+		}
+	}
 
   /*
   Method used to add a new node to the FA.
@@ -313,6 +359,38 @@ var lambda = String.fromCharCode(955),
 	}
 
   /*
+  Function to update the input alphabet.
+  Returns an object.
+  Currently assumes every character is a unique input symbol.
+  */
+  faproto.updateAlphabet = function () {
+    var alphabet = {};
+    var edges = this.edges();
+    var w;
+    for (var next = edges.next(); next; next = edges.next()) {
+      w = next.weight();
+      w = w.split('<br>');
+      for (var i = 0; i < w.length; i++) {
+        var t = w[i].split('|');
+        for (var j = 0; j < t.length; j++) {
+          var letters = t[j].split(':')[0];
+          if (letters !== String.fromCharCode(955) && letters !== String.fromCharCode(949)) {
+            for (var k = 0; k < letters.length; k++) {
+              var letter = letters[k];
+              if (!(letter in alphabet)) {
+                alphabet[letter] = 0;
+              }
+              alphabet[letter]++;
+            }
+          }
+        }
+      }
+    }
+    this.alphabet = alphabet;
+    return alphabet;
+  };
+
+  /*
   Function to get the stack alphabet for a PDA
   Returns an array.
   */
@@ -537,6 +615,50 @@ var lambda = String.fromCharCode(955),
 		}
 		menuSelected = null;
 		$("#rmenu").hide();
+	};
+
+	// Function to save the state of the graph and push it to the undo stack.
+	// Called whenever any graph manipulation is made.
+	// Note that a size restriction of 20 is imposed on both the undo stack and the redo stack.
+	faproto.saveFAState = function() {
+		var data = serialize(this);
+		this.undoStack.push(data);
+		this.redoStack = [];
+		document.getElementById("undoButton").disabled = false;
+		document.getElementById("redoButton").disabled = true;
+		if (this.undoStack.length > 20) {
+			this.undoStack.shift();
+		}
+	};
+
+	// Function to undo previous action by reinitializing the graph that existed before it was performed.
+	// Pushes the current graph to the redo stack and enables the redo button.
+	// Triggered by clicking the "Undo" button.
+	faproto.undo = function() {
+		var data = serialize(this);
+		this.redoStack.push(data);
+		data = this.undoStack.pop();
+		data = jQuery.parseJSON(data);
+		this.initFromParsedJSONSource(data);
+		document.getElementById("redoButton").disabled = false;
+		if(this.undoStack.length == 0) {
+			document.getElementById("undoButton").disabled = true;
+		}
+	};
+
+	// Function to redo previous action by reinitializing the graph that existed after it was performed.
+	// Pushes the current graph to the undo stack and, if applicable, enables the undo button.
+	// Enabled by clicking the "Undo" button, and triggered by clicking the "Redo" button.
+	faproto.redo = function() {
+		var data = serialize(this);
+		this.undoStack.push(data);
+		data = this.redoStack.pop();
+		data = jQuery.parseJSON(data);
+		this.initFromParsedJSONSource(data);
+		document.getElementById("undoButton").disabled = false;
+		if(this.redoStack.length == 0) {
+			document.getElementById("redoButton").disabled = true;
+		}
 	};
 
   /*
@@ -977,7 +1099,8 @@ var lambda = String.fromCharCode(955),
 			toggleFinal(g, node);
 		});
 		$("#deleteNode").off('click').click(function() {
-			deleteNode(g, node);
+			g.hideRMenu();
+			g.removeNode(node);
 		});
 		$("#changeLabel").off('click').click(function() {
 			changeLabel(node);
@@ -1436,7 +1559,6 @@ var produceOutput = function (t) {
 // draggable functions
 function dragStart(event, node) {
 	var dragNode = node.helper.data("node");
-	//saveFAState();
 	dragNode.highlight();
 };
 
@@ -1523,11 +1645,14 @@ var clearLabel = function(node) {
 	node.stateLabel("");
 }
 
-// function to delete the node and its adjacent edges
-// option in the right click menu
-var deleteNode = function(g, node) {
-	$("#rmenu").hide();
-	node.unhighlight();
-	//saveFAState();
-	g.removeNode(node);
-}
+// Function to switch which empty string is being used (lambda or epsilon) if a loaded graph uses the opposite representation to what the editor is currently using.
+var checkEmptyString = function(w) {
+	var wArray = w.split("<br>");
+	// It is necessary to check every transition on the edge.
+	for (var i = 0; i < wArray.length; i++) {
+		if ((wArray[i] == lambda || wArray[i] == epsilon) && wArray[i] != emptystring) {
+			emptyString();
+		}
+	}
+	return wArray.join("<br>");
+};
