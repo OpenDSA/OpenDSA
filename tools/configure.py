@@ -49,12 +49,12 @@ from ODSA_RST_Module import ODSA_RST_Module
 from ODSA_Config import ODSA_Config, parse_error
 from postprocessor import update_TOC, update_TermDef, make_lti
 from urlparse import urlparse
-from canvas_sdk.methods import accounts, courses, external_tools, modules, assignments, assignment_groups
-from canvas_sdk import RequestContext
+# from canvas_sdk.methods import accounts, courses, external_tools, modules, assignments, assignment_groups
+# from canvas_sdk import RequestContext
 
 requests.packages.urllib3.disable_warnings()
 
-# List of exercises encountered in RST files that do not appear in the
+# List ocanvas_module_idf exercises encountered in RST files that do not appear in the
 # configuration file
 missing_exercises = []
 

@@ -20,13 +20,14 @@ import os
 import json
 import collections
 import codecs
+from collections import Iterable
 from urlparse import urlparse
 
 error_count = 0
 
 required_fields = ['chapters']
 
-optional_fields = ['assumes', 'av_origin', 'av_root_dir', 'build_cmap', 'build_dir', 'build_JSAV','code_dir', 'exercise_origin', 'exercises_root_dir', 'glob_mod_options', 'glob_exer_options', 'lang','req_full_ss', 'start_chap_num', 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir', 'dispModComp', 'tag', 'local_mode', 'title', 'av_origin', 'av_root_dir', 'code_lang']
+optional_fields = ['assumes', 'av_origin', 'av_root_dir', 'build_cmap', 'build_dir', 'build_JSAV','code_dir', 'exercise_origin', 'exercises_root_dir', 'glob_mod_options', 'glob_exer_options', 'lang','req_full_ss', 'start_chap_num', 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir', 'dispModComp', 'tag', 'local_mode', 'title', 'av_origin', 'av_root_dir', 'code_lang', 'course_id', 'LMS_url']
 
 
 listed_modules = []
@@ -150,7 +151,7 @@ def validate_module(mod_name, module, conf_data):
     global error_count
 
     required_fields = []
-    optional_fields = ['codeinclude', 'dispModComp', 'long_name', 'mod_options', 'sections', 'exercises']
+    optional_fields = ['codeinclude', 'dispModComp', 'long_name', 'mod_options', 'sections', 'exercises', 'canvas_module_id', 'assignment_group_id']
 
     # Get module name
     get_mod_name(mod_name)
@@ -167,10 +168,6 @@ def validate_module(mod_name, module, conf_data):
             print_err('ERROR: Unknown field, %s, found in module %s' % (field, mod_name))
             error_count += 1
 
-    # Check validity of exercises
-    if 'exercises' in module:
-        for exer in module['exercises']:
-            validate_exercise(exer, module['exercises'][exer])
 
     if 'codeinclude' in module:
         # Check whether every language specified for a codeinclude is supported in code_lang
@@ -186,6 +183,15 @@ def validate_module(mod_name, module, conf_data):
                 print('ERROR: Language directory %s does not exist' % lang_dir)
                 error_count += 1
 
+    sections = module['sections']
+
+    if sections != None:
+        for section in sections:
+            section_obj = sections[section]
+            if isinstance(section_obj, dict):
+              for attr in section_obj:
+                if isinstance(section_obj[attr], dict):
+                    validate_exercise(attr, section_obj[attr])
 
 # get names of chapter
 def get_chap_names(chapters):
@@ -194,29 +200,15 @@ def get_chap_names(chapters):
 
 
 # Validate a section
-def validate_section(section, conf_data):
-    """Validate a chapter or section"""
-    for subsect in section:
-        if 'hidden' in section[subsect]:
-            print_err('WARNING: Section %s will be hidden from the TOC' % subsect)
-            continue
-        is_mod = 'exercises' in section[subsect]
-
-        if section[subsect] == {}:
-            print_err('WARNING: Section %s is empty' % subsect)
-            continue
-        elif not is_mod:
-            for field in section[subsect]:
-                if type(section[subsect][field]) != type(collections.OrderedDict()):
-                    is_mod = True
-                    break
-
-        if is_mod:
-            # Subsect is a module
-            validate_module(subsect, section[subsect], conf_data)
-        else:
-            validate_section(section[subsect], conf_data)
-
+def validate_chapter(conf_data):
+    """Validate a chapter by validating all its modules"""
+    chapters = conf_data['chapters']
+    for chapter in chapters:
+        chapter_obj = chapters[chapter]
+        for module in chapter_obj:
+            module_obj = chapter_obj[module]
+            if isinstance(module_obj, dict):
+                validate_module(module, module_obj, conf_data)
 
 # Validate an OpenDSA configuration file
 def validate_config_file(config_file_path, conf_data):
@@ -255,7 +247,7 @@ def validate_config_file(config_file_path, conf_data):
             print_err('ERROR: Unknown field, %s' % field)
             error_count += 1
 
-    validate_section(conf_data['chapters'], conf_data)
+    validate_chapter(conf_data)
     get_chap_names(conf_data['chapters'])
 
     if error_count > 0:
@@ -360,19 +352,25 @@ def group_exercises(conf_data):
     for chapter in chapters:
         chapter_obj = chapters[chapter]
 
+        if not isinstance(chapter_obj, Iterable):
+            continue
+
         for module in chapter_obj:
             module_obj = chapter_obj[module]
+
+            if not isinstance(module_obj, Iterable):
+                continue
+
             conf_data['chapters'][chapter][module]['exercises'] = {}
 
             sections = module_obj.get("sections")
             if bool(sections) and sections != None:
                 for section in sections:
                     section_obj = sections[section]
-                    if section_obj != None:
+                    if section_obj != None and isinstance(section_obj, dict):
                       for attr in section_obj:
                           if isinstance(section_obj[attr], dict):
                               exercise_obj = section_obj[attr]
-                              # conf_data['chapters'][chapter][module]['exercises'][attr] = {}
                               conf_data['chapters'][chapter][module]['exercises'][attr] = exercise_obj
 
 

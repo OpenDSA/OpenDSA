@@ -180,10 +180,10 @@ triple_up = re.compile(r'^\.\.[\/\\]\.\.[\/\\]\.\.[\/\\]')
 def break_up_sections(path, module_data, config):
   book_name = config.book_name
   sections = module_data['sections']
-  # module_map = config['module_map']
-  # course_id = config.course_id
-  # item_url = config.LMS_url+"/courses/{course_id}/modules/items/{item_id}"
-  # assignment_url = config.LMS_url+"/courses/{course_id}/assignments/{assignment_id}?module_item_id={module_item_id}"
+  module_map = config['module_map']
+  course_id = config.course_id
+  item_url = config.LMS_url+"/courses/{course_id}/modules/items/{item_id}"
+  assignment_url = config.LMS_url+"/courses/{course_id}/assignments/{assignment_id}?module_item_id={module_item_id}"
 
   # Read contents of module HTML file
   try:
@@ -263,13 +263,14 @@ def break_up_sections(path, module_data, config):
       if external.endswith('.html'):
         # Snip off the ".html"
         external = external[:-5]
+
         # Map it to the proper folder in canvas
-        # if external in module_map:
-        #   module_obj = module_map[external]
-        #   if 'assignment_id' in module_map[external]:
-        #     external = assignment_url.format(course_id=course_id, module_item_id=module_obj.get('module_item_id'), assignment_id=module_obj.get('assignment_id'))
-        #   else:
-        #     external = item_url.format(course_id=course_id, item_id=module_obj.get('item_id'))
+        if external in module_map:
+          module_obj = module_map[external]
+          if 'assignment_id' in module_map[external]:
+            external = assignment_url.format(course_id=course_id, module_item_id=module_obj.get('module_item_id'), assignment_id=module_obj.get('assignment_id'))
+          else:
+            external = item_url.format(course_id=course_id, item_id=module_obj.get('item_id'))
         # Force it to approach it from the top
         link['href'] = '#'.join((external,internal))
       # Do something with the actual href

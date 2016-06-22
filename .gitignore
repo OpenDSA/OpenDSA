@@ -38,7 +38,7 @@ src
 .idea
 
 # Ignore LMS course configuration files
-config/*_LMSconf.json
+config/temp
 
 # cache files for sublime text
 *.tmlanguage.cache
