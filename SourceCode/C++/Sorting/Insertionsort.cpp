@@ -76,9 +76,86 @@ bool sorttest(int array[], int n, int threshold) {
     delete A[i];
   }
   
-  delete[] array;
+  return true;
+}
+
+
+bool sorttime(int array[], int arraysize, int listsize, int threshold) {
+  Comparable* A[arraysize];
+  int i;
+
+  /* Sort an array of Ints */
+  for (i = 0; i < arraysize; ++i) {
+    A[i] = new Int(array[i]);
+  }
+
+  Settime();
+  for (i=0; i<arraysize; i+=listsize) {
+    inssort(&A[i], listsize);
+  }
+  cout << "Sort Int array with list size " << listsize
+       << ", array size " << arraysize
+       << ", and threshold " << threshold << ": "
+       << Gettime() << " seconds\n";
+
+  for (i=0; i<arraysize; i+=listsize) {
+    if (!checkorder(&A[i], listsize)) return false;
+  }
+
+  for (i = 0; i < arraysize; ++i) {
+    delete A[i];
+  }
+
+
+  /* Sort an array of KVPairs */
+  
+  for (i = 0; i < arraysize; ++i) {
+    A[i] = new KVPair(array[i], &array[i]);
+  }
+
+  Settime();
+  for (i=0; i<arraysize; i+=listsize) {
+    inssort(&A[i], listsize);
+  }
+  cout << "Sort KVPair with list size " << listsize
+       << ", array size " << arraysize
+       << ", and threshold " << threshold << ": "
+       << Gettime() << " seconds\n";
+
+  for (i=0; i<arraysize; i+=listsize) {
+    if (!checkorder(&A[i], listsize)) return false;
+  }
+
+  for (i = 0; i < arraysize; ++i) {
+    delete A[i];
+  }
+  
+
+  /* Sort an array of KVPairs */
+  
+  for (i = 0; i < arraysize; ++i) {
+    A[i] = new KVPair(array[i], &array[i]);
+  }
+
+  Settime();
+  for (i=0; i<arraysize; i+=listsize) {
+    inssortshift(&A[i], listsize);
+  }
+  cout << "Sort KVPair shifting with list size " << listsize
+       << ", array size " << arraysize
+       << ", and threshold " << threshold << ": "
+       << Gettime() << " seconds\n";
+
+  for (i=0; i<arraysize; i+=listsize) {
+    if (!checkorder(&A[i], listsize)) return false;
+  }
+
+  for (i = 0; i < arraysize; ++i) {
+    delete A[i];
+  }
 
   return true;
 }
+
 
 #include "SortTest.cpp"

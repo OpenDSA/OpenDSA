@@ -81,7 +81,7 @@ int main(int argc, char** argv) {
     for (i=0; i<arraysize; i++)
       array[i] = i;              // Sorted
 
-  sorttime(&array[i], arraysize, listsize, threshold);
+  sorttime(&array[i], arraysize, listsize, THRESHOLD);
 
   return 0;
 }
