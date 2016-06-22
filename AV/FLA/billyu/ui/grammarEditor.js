@@ -3282,7 +3282,7 @@ $(document).ready(function () {
 			return;
 		}
 		$.ajax({
-			url: "./grammarTests.xml",
+			url: "../exercises/grammarTests.xml",
 			dataType: 'xml',
 			async: true,
 			success: function(data) {

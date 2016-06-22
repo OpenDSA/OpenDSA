@@ -3,6 +3,7 @@ Finite Automaton module.
 An extension to the JFLAP library.
 */
 var lambda = String.fromCharCode(955),
+		epsilon = String.fromCharCode(949),
 		emptystring = lambda,
 		menuSelected; // stores the node that's right clicked on
 (function ($) {

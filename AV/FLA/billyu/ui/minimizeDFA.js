@@ -50,7 +50,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 
 	function loadXML () {
 		$.ajax({
-			url: "./minimizeDFA.xml",
+			url: "../exercises/minimizeDFA.xml",
 			dataType: 'xml',
 			async: false,
 			success: function(data) {

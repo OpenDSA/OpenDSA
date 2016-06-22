@@ -96,7 +96,7 @@
 		//let FAEditor know we are editing graphs for exercises so we don't need certain functions.
 		localStorage['createExercise'] = true;
 		localStorage['exerciseIndex'] = problemIndex;
-		window.open("./FAEditor.html");
+		window.open("../ui/FAEditor.html");
 	}
 		
 	$('input:radio[name="mode"]').change(function() {

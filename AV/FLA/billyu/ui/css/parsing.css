@@ -3,9 +3,6 @@
 .jsavmatrix .jsavnode {
 	cursor: pointer;
 }
-.jsavmatrix .jsavvalue {
-	width: 100px;
-}
 .jsavmatrix {
 	margin-top: 50px;
 }
