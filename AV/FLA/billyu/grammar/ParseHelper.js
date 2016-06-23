@@ -1,14 +1,21 @@
 var emptystring = String.fromCharCode(955),
   	variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-var ParseHelper = function(productions) {
-	this.init(productions);
+var ParseHelper = function(productions, m, jsav) {
+	this.init(productions, m, jsav);
 }
 
 var helperProto = ParseHelper.prototype;
 
-helperProto.init = function(productions) {
+helperProto.init = function(productions, m, jsav) {
 	this.productions = productions;
+	this.m;
+	this.jsav;
+  this.parseTableDisplay;  // the parse table
+	this.parseTree;          // parse tree shown during parsing slideshows
+	this.parseTable;					// parse table used for pasing
+	this.conflictTable;			// used for SLR parsing conflicts
+	this.ffTable;            // table for FIRST and FOLLOW sets
 }
 
 helperProto.getDict = function() {
@@ -107,3 +114,93 @@ helperProto.follow = function(str, productions, pDict, lambdaVars) {
 	}
 	return ret;
 }
+
+// click handler for the FIRST/FOLLOW table
+helperProto.firstFollowHandler = function(table, index) {
+	// ignore if first row (headers)
+	if (index === 0) { return; }
+	var prev = table.value(index, arrayStep);
+	prev = prev.replace(/,/g, "");
+	// create input box
+	$('#firstinput').remove();
+	var createInput = "<input type='text' id='firstinput' value="+prev+">";
+	$('body').append(createInput);
+	var offset = table._arrays[index]._indices[arrayStep].element.offset();
+	var topOffset = offset.top;
+	var leftOffset = offset.left;
+	var w = $(table._arrays[index]._indices[arrayStep].element).width();
+	var fi = $('#firstinput');
+	fi.offset({top: topOffset, left: leftOffset});
+	fi.outerHeight($('.jsavvalue').height());
+	fi.width(w);
+	fi.focus();
+	// finalize changes when enter key is pressed
+	fi.keyup(function(event){
+		if(event.keyCode == 13){
+			var firstInput = $(this).val();
+			firstInput = firstInput.split("");
+			// read ! as lambda
+			for (var i = 0; i < firstInput.length; i++) {
+				if (firstInput[i] === '!') {
+					firstInput[i] = emptystring;
+				}
+			}
+			firstInput = _.uniq(firstInput).join(',');
+			ffTable.value(index, arrayStep, firstInput);
+			layoutTable(ffTable, arrayStep);
+			fi.remove();
+		}
+	});
+}
+
+// Function to transition from editing FIRST sets to editing FOLLOW sets
+helperProto.continueToFollow = function(firsts, follows) {
+	$('#firstinput').remove();
+	var incorrect = this.checkTable(firsts, follows);
+	// provide option to complete the FIRST sets automatically
+	if (incorrect.length > 0) {
+		var confirmed = confirm('The following sets are incorrect: ' + incorrect + '.\nFix automatically?');
+		if (confirmed) {
+			for (var i = 1; i < ffTable._arrays.length; i++) {
+				var a = ffTable._arrays[i].value(0);
+				ffTable.value(i, 1, firsts[a]);
+			}
+			layoutTable(ffTable);
+		} else {
+			return false;
+		}
+	}
+	$(ffTable.element).off();
+	$('#followbutton').hide();
+	jsav.umsg('Define FOLLOW sets. $ is the end of string character.');
+	arrayStep = 2;
+	ffTable.click(firstFollowHandler);
+	return true;
+};
+
+/*
+Function to check if FIRST / FOLLOW sets are correct (either FIRST sets or FOLLOW sets).
+Returns a list of the incorrect variables.
+*/
+helperProto.checkTable = function(firsts, follows) {
+	var checker;
+	// arrayStep can be 1 or 2
+	if (arrayStep === 1) {
+		checker = firsts;
+	} else {
+		checker = follows;
+	}
+	var incorrect = [];
+	for (var i = 1; i < ffTable._arrays.length; i++) {
+		var a = ffTable._arrays[i];
+		var fvar = a.value(0);
+		var fset = a.value(arrayStep);
+		var check1 = checker[fvar];
+		var check2 = fset.split(',');
+		var inter = _.intersection(check1, check2);
+		if (inter.length !== check1.length || inter.length !== check2.length) {
+			incorrect.push(fvar);
+		} 
+	} 
+	return incorrect
+};

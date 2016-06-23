@@ -26,3 +26,32 @@ toolProto.removeLambdaHelper = function(set, productions) {
 	}
 	return false;
 }
+
+// Function to fix all table column widths
+toolProto.layout = function(mat, index) {
+	// if column index is given, does layout for that column, otherwise lays out all columns
+	if (typeof index === 'undefined') {
+		for (var i = 0; i < mat._arrays[0]._indices.length; i++) {
+			this.layoutColumn(mat, i);
+		}
+	} else {
+		this.layoutColumn(mat, index);
+	}
+	mat.layout();
+};
+
+toolProto.layoutColumn = function(mat, index) {
+	var maxWidth = 100;     // default cell size
+	for (var i = 0; i < mat._arrays.length; i++) {
+		var cell = mat._arrays[i]._indices[index].element;
+		if ($(cell).width() > maxWidth) {
+			maxWidth = $(cell).width();
+		}
+	}
+	if (maxWidth > 100) {
+		for (var i = 0; i < mat._arrays.length; i++) {
+			var cell = mat._arrays[i]._indices[index].element;
+			$(cell).find('.jsavvalue').width(maxWidth);
+		}
+	}
+};
