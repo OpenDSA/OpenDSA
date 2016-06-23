@@ -111,8 +111,63 @@ $(document).ready(function () {
 
 	function focus(index, index2) {
 		row = index; col = index2;
+		createInputBoxForCell(row, col);
+		// finalize the changes to the grammar when the enter key is pressed
+		var validKeys = [13, 9, 37, 38, 39, 40];
+		// keys for functions
+		fi.keyup(function(event){
+			var keyCode = event.keyCode;
+			if (validKeys.indexOf(keyCode) !== -1) {
+				var input = $(this).val();
+				input = emptyInputToEmptyString(input, index, index2);
+
+				if (!validInput(input, index, index2)) return;
+
+				fi.remove();
+				m.value(index, index2, input);
+				arr[index][index2] = input;
+				layoutTable(m, 2);
+				handleArrowKeysOnFocus(keyCode, index, index2);
+			}
+		});
+	}
+
+	var emptyInputToEmptyString = function(string, index, index2) {
+		var input = string;
+		var regex = new RegExp(emptystring, g);
+		input = input.replace(regex, "");
+		input = input.replace(regex, "!");
+		if (input === "" && index2 === 2) {
+			input = emptystring;
+		}
+		return input;
+	}
+
+	var validInput = function(input, index, index2) {
+		var inputtingLeft = index2 == 0;
+		var falseLength = input.length !== 1;
+		var notVariable = variables.indexOf(input) == -1;
+		if (inputtingLeft && (falseLength || notVariable)) {
+			alert('Invalid left-hand side.');
+			return false;
+		}	
+
+		var inputtingRight = index2 == 2;
+		var alreadyExists = _.find(arr, function(x) { 
+												var leftEqual = x[0] == arr[index][0];
+												var rightEqual = x[2] == input;
+												var notSameRow = arr.indexOf(x) !== index;
+												return leftEqual && rightEqual && notSameRow;
+											})
+		if (inputtingRight && alreadyExists) {
+			alert('This production already exists.');
+			return false;
+		}
+		return true;
+	}
+
+	var createInputBoxForCell = function(index, index2) {
 		var prev = m.value(index, index2);
-		// create an input box for editing the cell
 		$('#firstinput').remove();
 		var createInput = "<input type='text' id='firstinput' onfocus='this.value = this.value;' value="+prev+">";
 		$('body').append(createInput);
@@ -124,75 +179,51 @@ $(document).ready(function () {
 		fi.outerHeight($('.jsavvalue').height());
 		fi.width($(m._arrays[index]._indices[index2].element).width());
 		fi.focus();
-		// finalize the changes to the grammar when the enter key is pressed
-		var validKeys = [13, 9, 37, 38, 39, 40];
-		// keys for functions
-		fi.keyup(function(event){
-			var keyCode = event.keyCode;
-			if (validKeys.indexOf(keyCode) !== -1) {
-				var input = $(this).val();
-				var regex = new RegExp(emptystring, g);
-				input = input.replace(regex, "");
-				input = input.replace(regex, "!");
-				if (input === "" && index2 === 2) {
-					input = emptystring;
+	}
+
+	var handleArrowKeysOnFocus = function(keyCode, index, index2) {
+		switch (keyCode) {
+			case 13:
+				if (index2 == 0) {
+					focus(index, 2);
 				}
-				if (index2 === 0 && (input.length !== 1 || variables.indexOf(input) === -1)) {
-					alert('Invalid left-hand side.');
-					return;
-				}	
-				if (index2 == 2 && _.find(arr, function(x) { return x[0] == arr[index][0] && x[2] == input && arr.indexOf(x) !== index;})) {
-					alert('This production already exists.');
-					return;
-				}
-				fi.remove();
-				m.value(index, index2, input);
-				arr[index][index2] = input;
-				layoutTable(m, 2);
-				switch (keyCode) {
-				case 13:
-					if (index2 == 0) {
-						focus(index, 2);
-					}
-					else {
-						// adding a new production
-						var newProduction = addProduction(index);
-						layoutTable(m);
-						if (newProduction) {
-							focus(index + 1, 0);
-						}
-					}
-					break;
-				case 37:
-					if (index2 == 2) {
-						focus(index, 0);
-					}
-					break;	
-				case 38:
-					if (index > 0) {
-						focus(index - 1, index2);
-					}
-					break;	
-				case 39:
-					if (index2 == 0) {
-						focus(index, 2);
-					}
-					break;	
-				case 40:
+				else {
+					// adding a new production
 					var newProduction = addProduction(index);
 					layoutTable(m);
 					if (newProduction) {
 						focus(index + 1, 0);
 					}
-					else {
-						focus(index + 1, index2);
-					}
-					break;	
-				default:
-					break;
 				}
-			}
-		});
+				break;
+			case 37:
+				if (index2 == 2) {
+					focus(index, 0);
+				}
+				break;	
+			case 38:
+				if (index > 0) {
+					focus(index - 1, index2);
+				}
+				break;	
+			case 39:
+				if (index2 == 0) {
+					focus(index, 2);
+				}
+				break;	
+			case 40:
+				var newProduction = addProduction(index);
+				layoutTable(m);
+				if (newProduction) {
+					focus(index + 1, 0);
+				}
+				else {
+					focus(index + 1, index2);
+				}
+				break;	
+			default:
+				break;
+		}
 	}
 
 	// fired when document is clicked
@@ -201,21 +232,12 @@ $(document).ready(function () {
 		if ($(e.target).hasClass("jsavvaluelabel")) return;
 		if ($(e.target).attr('id') == "firstinput") return;
 		if (!fi || !fi.is(':visible')) return;
+
 		var input = fi.val();
-		var regex = new RegExp(emptystring, g);
-		input = input.replace(regex, "");
-		input = input.replace(regex, "!");
-		if (input == "" && col == 2) {
-			input = emptystring;
-		}
-		if (col == 0 && (input.length !== 1 || variables.indexOf(input) === -1)) {
-			alert('Invalid left-hand side.');
-			return;
-		}	
-		if (col == 2 && _.find(arr, function(x) { return x[0] == arr[row][0] && x[2] == input && arr.indexOf(x) !== row;})) {
-			alert('This production already exists.');
-			return;
-		}
+		input = emptyInputToEmptyString(input, row, col);
+
+		if (!validInput(input, row, col)) return;
+
 		fi.remove();
 		m.value(row, col, input);
 		arr[row][col] = input;
