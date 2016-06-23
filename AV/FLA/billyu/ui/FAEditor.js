@@ -10,10 +10,8 @@
 		willRejectFunction = willReject, // Instance variable to indicate which traversal function to run (shorthand or no).
 		exerciseIndex,//for creating exercises
 		type,//type of editor: fixer, tester or editor
-		fatoreController;
-
-	// variables used by FATester and FAFixer
-	var tests, currentExercise = 0, testCases;
+		fatoreController,
+		exerController;
 
 	// Handler for initializing graph upon loading the web page.
 	// Loads the graph from conversionExercise.html / minimizationTest.html if we are navigating here from those pages.
@@ -23,75 +21,49 @@
 		$("#rmenu").load("./rmenu.html");
 		$("#rmenu").hide();
 
-		// get what type of editor this html should be
-		type = $("h1").attr('id');
-		switch (type) {
-			case "editor":
-				// for FAEditor, #begin button fires traversal function
-				$('#begin').click(displayTraversals);
+		type = $('h1').attr('id');
+		if (type == 'fixer' || type == 'texter') {
+			switch (type) {
+			case 'fixer':
+				exerController = new ExerciseController(jsav, g, "../exercises/fixerTests.json", "json", {initGraph: initGraph});
+				exerController.load();
 				break;
-			case "fixer":
-				$('#begin').click(testWithExpression);
-				$.ajax({
-  				url: "../exercises/fixerTests.json",
-  				dataType: 'json',
-  				async: false,
-  				success: function(data) {
-						tests = data;
-  				}
-				});
-				for (i = 0; i < tests.length; i++) {
-					$("#exerciseLinks").append("<a href='#' id='" + i + "' class='links'>" + (i+1) + "</a>");
-				}
-				$('.links').click(toExercise);
-				$("#testResults").hide();
-				updateExercise(currentExercise);
+			case 'tester':
+				exerController = new ExerciseController(jsav, g, "../exercises/FAwithExpression.json", "json", {initGraph: initGraph});
+				exerController.load();
 				break;
-			case "tester":
-				$('#begin').click(testWithExpression);
-				$.ajax({
-  				url: "../exercises/FAwithExpression.json",
-  				dataType: 'json',
-  				async: false,
-  				success: function(data) {
-						tests = data;
-  				}
-				});
-				for (i = 0; i < tests.length; i++) {
-					$("#exerciseLinks").append("<a href='#' id='" + i + "' class='links'>" + (i+1) + "</a>");
-				}
-				$('.links').click(toExercise);
-				$("#testResults").hide();
-				updateExercise(currentExercise);
-				resetUndoButtons();
-				return;
-			default: break;
-		}
-
-		var data;
-		//this editor is opened from exercise generator
-		if (localStorage['createExercise']) {
-			jsav.umsg("When you're done, click 'finish'.");
-			// exercise generator does not need the functionality buttons
-			$(".functionality").hide();
-			$(".createExercise").show();
-			exerciseIndex = localStorage['exerciseIndex'];
-			data = localStorage['problem' + exerciseIndex];
+			default:
+				break;
+			}
 		}
 		else {
-			$(".functionality").show();
-			$(".createExercise").hide();
-			if (localStorage['toConvert'] === "true") {
-				data = localStorage['converted'];
-			}
-			else if (localStorage['toMinimize'] === "true") {
-				data = localStorage['minimized'];
+			$('#begin').click(displayTraversals);
+			var data;
+			//this editor is opened from exercise generator
+			console.log(localStorage['createExercise']);
+			if (localStorage['createExercise'] == 'true') {
+				jsav.umsg("When you're done, click 'finish'.");
+				// exercise generator does not need the functionality buttons
+				$(".functionality").hide();
+				$(".createExercise").show();
+				exerciseIndex = localStorage['exerciseIndex'];
+				data = localStorage['problem' + exerciseIndex];
 			}
 			else {
-				data = '{"nodes":[],"edges":[]}';
+				$(".functionality").show();
+				$(".createExercise").hide();
+				if (localStorage['toConvert'] === "true") {
+					data = localStorage['converted'];
+				}
+				else if (localStorage['toMinimize'] === "true") {
+					data = localStorage['minimized'];
+				}
+				else {
+					data = '{"nodes":[],"edges":[]}';
+				}
 			}
+			initialize(data);
 		}
-		initialize(data);
 		$('#undoButton').click(function(){
 			g.undo();
 		});
@@ -124,7 +96,7 @@
 		// Remove the old graph, parse JSON, and initialize the new graph.
 		$('.jsavgraph').remove();
 		var source = opts.graph ? opts.graph : jQuery.parseJSON(g);
-		g = jsav.ds.fa($.extend({width: '730px', height: 440, editable: true}, opts));
+		g = jsav.ds.fa($.extend({width: '750px', height: 440, editable: true}, opts));
 		g.initFromParsedJSONSource(source);
 
 		// Clear anything in local storage as we do not need it anymore.
@@ -132,6 +104,7 @@
 		localStorage['toConvert'] = false;
 		localStorage['toMinimize'] = false;
 		finalize();
+		return g;
 	};
 
 	// Update input character alphabet, display the graph, and add click handlers.
@@ -575,7 +548,6 @@
 		window.close();
 	}
 
-
 	// Function to save the current graph as an XML file and provide a download link for it.
 	// Triggered by clicking the "Save" button.
 	// Note that there are some browser-specific differences in how this is handled.
@@ -783,41 +755,6 @@
 		fatoreController.checkForTransitions();
 	}
 
-	// used by FAFixer and FATester
-	// test if the student's FA passes the test cases and show the results at the bottom of the page
-	function testWithExpression() {
-		if (g.initial == null) {
-			window.alert("FA traversal requires an initial state.");
-			return;
-		}
-		$("#testResults").empty();
-		$("#testResults").append("<tr><td>Test Case</td><td>Standard Answer</td><td>Result</td></tr>");
-		var count = 0;
-		for (i = 0; i < testCases.length; i++) {
-			var testCase = testCases[i];
-			var input = Object.keys(testCase)[0];
-			var inputResult = willReject(g, input);
-			if (inputResult !== testCase[input]) {
-				$("#testResults").append("<tr><td>" + input + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>Correct</td></tr>");
-				count++;
-			}
-			else {
-				$("#testResults").append("<tr><td>" + input + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='wrong'>Wrong</td></tr>");
-			}
-		}
-		$("#percentage").text("Correct cases: " + count + " / " + testCases.length);
-		$("#percentage").show();
-		$("#testResults").show();
-		window.scrollTo(0,document.body.scrollHeight);
-	};
-
-	// binded with question links at the top of the page
-	// change the problem displayed
-	function toExercise() {
-		currentExercise = this.getAttribute('id');
-		updateExercise(currentExercise);
-	};
-
 	// Disable all editing modes so that click handlers do not fire.
 	// Called when the user switches editing modes, or otherwise presses a button that changes the view.
 	var removeModeClasses = function() {
@@ -848,23 +785,6 @@
 		}
 	};
 	
-	// the function that really changes the problem displayed
-	// called by toExercise
-	function updateExercise(id) {
-		var exercise = tests[id];
-		$("#expression").text(exercise["expression"]);
-		$(".links").removeClass("currentExercise");
-		$("#" + currentExercise).addClass("currentExercise");
-		testCases = exercise["testCases"];
-		if (type == "tester") {
-			initGraph({graph: {"nodes":[], "edges":[]}, layout: "automatic"});
-		} else {
-			initGraph({graph: exercise["graph"], layout: "automatic"});
-		}
-		$("#testResults").hide();
-		$("#percentage").hide();
-	};
-
 	var startX, startY, endX, endY; // start position of dragging edge line
 	function mouseDown(e) {
 		if (!$('.jsavgraph').hasClass('addEdges')) return;
@@ -934,7 +854,6 @@
 	$('#toREButton').click(toRE);
 	$('#collapseButton').hide();
 	$('#cheat').hide();
-	$('.links').click(toExercise);	
 	$( "#dialog" ).dialog({ autoOpen: false });
 	$(document).keyup(function(e) {
 		if (e.keyCode === 27) cancel();   // esc
