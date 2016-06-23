@@ -27,7 +27,7 @@ error_count = 0
 
 required_fields = ['chapters']
 
-optional_fields = ['assumes', 'av_origin', 'av_root_dir', 'build_cmap', 'build_dir', 'build_JSAV','code_dir', 'exercise_origin', 'exercises_root_dir', 'glob_mod_options', 'glob_exer_options', 'lang','req_full_ss', 'start_chap_num', 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir', 'dispModComp', 'tag', 'local_mode', 'title', 'av_origin', 'av_root_dir', 'code_lang', 'course_id', 'LMS_url']
+optional_fields = ['assumes', 'av_origin', 'av_root_dir', 'build_cmap', 'build_dir', 'build_JSAV','code_dir', 'exercise_origin', 'exercises_root_dir', 'glob_mod_options', 'glob_exer_options', 'lang','req_full_ss', 'start_chap_num', 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir', 'dispModComp', 'tag', 'local_mode', 'title', 'av_origin', 'av_root_dir', 'code_lang', 'course_id', 'LMS_url', 'module_map']
 
 
 listed_modules = []
@@ -151,7 +151,7 @@ def validate_module(mod_name, module, conf_data):
     global error_count
 
     required_fields = []
-    optional_fields = ['codeinclude', 'dispModComp', 'long_name', 'mod_options', 'sections', 'exercises', 'canvas_module_id', 'assignment_group_id']
+    optional_fields = ['codeinclude', 'dispModComp', 'long_name', 'mod_options', 'sections', 'exercises', 'lms_module_item_id', 'lms_section_item_id']
 
     # Get module name
     get_mod_name(mod_name)

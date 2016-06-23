@@ -9,6 +9,7 @@ import re
 import codecs
 import json
 import xml.dom.minidom as minidom
+from collections import Iterable
 from pprint import pprint
 from xml.etree.ElementTree import ElementTree, SubElement, Element
 from bs4 import BeautifulSoup, element
@@ -176,13 +177,14 @@ def update_TermDef(glossary_file, terms_dict):
         i-= 1
     i += 1
 
+
 triple_up = re.compile(r'^\.\.[\/\\]\.\.[\/\\]\.\.[\/\\]')
 def break_up_sections(path, module_data, config):
   book_name = config.book_name
   sections = module_data['sections']
   module_map = config['module_map']
   course_id = config.course_id
-  item_url = config.LMS_url+"/courses/{course_id}/modules/items/{item_id}"
+  item_url = config.LMS_url+"/courses/{course_id}/modules/items/{module_item_id}"
   assignment_url = config.LMS_url+"/courses/{course_id}/assignments/{assignment_id}?module_item_id={module_item_id}"
 
   # Read contents of module HTML file
@@ -270,7 +272,7 @@ def break_up_sections(path, module_data, config):
           if 'assignment_id' in module_map[external]:
             external = assignment_url.format(course_id=course_id, module_item_id=module_obj.get('module_item_id'), assignment_id=module_obj.get('assignment_id'))
           else:
-            external = item_url.format(course_id=course_id, item_id=module_obj.get('item_id'))
+            external = item_url.format(course_id=course_id, module_item_id=module_obj.get('module_item_id'))
         # Force it to approach it from the top
         link['href'] = '#'.join((external,internal))
       # Do something with the actual href
@@ -439,6 +441,7 @@ def break_up_sections(path, module_data, config):
   if verbose:
     print "\tPhase 3: complete"
 
+
 def pretty_print_xml(data, file_path):
     ElementTree(data).write(file_path)
     xml = minidom.parse(file_path)
@@ -446,7 +449,10 @@ def pretty_print_xml(data, file_path):
         # [23:] omits the stupid xml header
         resaved_file.write(xml.toprettyxml()[23:])
 
+
 def make_lti(config):
+  config['module_map'] = get_module_map(config)
+  print(json.dumps(config['module_map']))
   dest_dir = config.book_dir + config.rel_book_output_path
   # Iterate through all of the existing files
   ignore_files = ('Gradebook.html', 'search.html', 'conceptMap.html',
@@ -469,6 +475,43 @@ def make_lti(config):
   config_file_path = os.path.join(dest_dir, '..', 'lti_html', 'lti_config.json')
   with codecs.open(config_file_path, 'w', 'utf-8') as o:
     o.write(json.dumps(config.__dict__))
+
+
+def get_module_map(config):
+    """extract module map from config object"""
+    module_map = {}
+    chapters = config['chapters']
+
+    for chapter in chapters:
+        chapter_obj = chapters[chapter]
+
+        if not isinstance(chapter_obj, Iterable):
+            continue
+
+        for module in chapter_obj:
+            module_obj = chapter_obj[module]
+
+            if not isinstance(module_obj, Iterable):
+                continue
+
+            module_name = module.split('/')[1] if '/' in module else module
+            module_map[module_name] = {}
+
+            sections = module_obj.get("sections")
+            if bool(sections) and sections != None:
+                section_count = 0
+                for section in sections:
+                    section_obj = sections[section]
+                    if section_obj != None and isinstance(section_obj, dict):
+                        section_count += 1
+                        if section_count == 1:
+                            module_map[module_name]['module_item_id'] = section_obj['lms_item_id']
+                            module_map[module_name]['assignment_id'] = section_obj['lms_assignment_id']
+            else:
+                module_map[module_name]['module_item_id'] = module_obj['lms_section_item_id']
+
+
+    return module_map
 
 
 def main(argv):
