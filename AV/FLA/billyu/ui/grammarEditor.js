@@ -71,45 +71,22 @@ $(document).ready(function () {
   };
   
   // handler for grammar editing
-  var matrixClickHandler = function(index, index2) {
-		if ((row != index || col != index2) && fi) {
-			var input = fi.val();
-			var regex = new RegExp(emptystring, g);
-			input = input.replace(regex, "");
-			input = input.replace(regex, "!");
-			if (input === "" && col == 2) {
-				input = emptystring;
-			}
-			if (col == 0 && (input.length !== 1 || variables.indexOf(input) === -1)) {
-				alert('Invalid left-hand side.');
-				return;
-			}	
-			if (col == 2 && _.find(arr, function(x) { return x[0] == arr[row][0] && x[2] == input && arr.indexOf(x) !== row;})) {
-				alert('This production already exists.');
-				return;
-			}
-			fi.remove();
-			m.value(row, col, input);
-			arr[row][col] = input;
-			layoutTable(m, 2);
-		}
-	
+  var matrixClickHandler = function(index, index2) {	
     if ($('.jsavmatrix').hasClass('deleteMode') && index !== lastRow) {
       // recreates the matrix when deleting a row...
       arr.splice(index, 1);
       lastRow--;
       m = init();
       $('.jsavmatrix').addClass('deleteMode');
-    } else if ($('.jsavmatrix').hasClass('editMode')) {
-      // ignore if the user clicked an arrow
-      if (index2 === 1) {
-        return;
-      }
-			focus(index, index2);
+    } 
+		else if ($('.jsavmatrix').hasClass('editMode')) {
+			defocus();
+			if (index2 != 1)
+				focus(index, index2);
     }
   };
 
-	function focus(index, index2) {
+	var focus = function(index, index2) {
 		row = index; col = index2;
 		createInputBoxForCell(row, col);
 		// finalize the changes to the grammar when the enter key is pressed
@@ -229,8 +206,8 @@ $(document).ready(function () {
 	// fired when document is clicked
 	// saves current fi input value
 	function defocus(e) {
-		if ($(e.target).hasClass("jsavvaluelabel")) return;
-		if ($(e.target).attr('id') == "firstinput") return;
+		if (e && $(e.target).hasClass("jsavvaluelabel")) return;
+		if (e && $(e.target).attr('id') == "firstinput") return;
 		if (!fi || !fi.is(':visible')) return;
 
 		var input = fi.val();
@@ -276,56 +253,38 @@ $(document).ready(function () {
       alert('No grammar.');
       return;
     }
-    var pDict = {};     // a dictionary mapping left sides to right sides
-    for (var i = 0; i < productions.length; i++) {
-      if (!(productions[i][0] in pDict)) {
-        pDict[productions[i][0]] = [];
-      }
-      pDict[productions[i][0]].push(productions[i][2]);
-    }
-    var derivers = {};  // variables that derive lambda
+
+		var parseHelper = new ParseHelper(productions);
+		var grammarTools = new GrammarTools();
+		var pDict = parseHelper.getDict();  // a dictionary mapping left sides to right sides
+
+		var derivers = {};  // variables that derive lambda
     var counter = 0;
-    while (removeLambdaHelper(derivers, productions)) {
+    while (grammarTools.removeLambdaHelper(derivers, productions)) {
       counter++;
       if (counter > 500) {
         console.log(counter);
         break;
       }
     };
-    // variables
-    var v = {};
-    // terminals
-    var t = {};
-    for (var i = 0; i < productions.length; i++) {
-      var x = productions[i];
-      v[x[0]] = true;
-      for (var j = 0; j < x[2].length; j++) {
-        if (variables.indexOf(x[2][j]) !== -1) {
-          v[x[2][j]] = true;
-        } else if (x[2][j] !== emptystring) {
-          t[x[2][j]] = true;
-        }
-      }
-    }
-    v = Object.keys(v);
-    v.sort();
-    t = Object.keys(t);
-    t.sort();
-    t.push('$');
+
+		var VTObject = parseHelper.gatherVT();
+		var v = VTObject.v;
+		var t = VTObject.t;
 
     // populate firsts and follows sets
     for (var i = 0; i < v.length; i++) {
-      firsts[v[i]] = first(v[i], pDict, derivers).sort();
+      firsts[v[i]] = parseHelper.first(v[i], pDict, derivers).sort();
     }
     for (var i = 0; i < v.length; i++) {
-      follows[v[i]] = follow(v[i], productions, pDict, derivers).sort();
+      follows[v[i]] = parseHelper.follow(v[i], productions, pDict, derivers).sort();
     }
     /*
     parseTable is the parse table, while parseTableDisplay is the matrix displayed to the user.
     parseTableDisplay includes the row/column headers (which are ignored by the click handler).
     */
     parseTable = [];
-    for (var i = 0; i < v.length; i++) {
+		for (var i = 0; i < v.length; i++) {
       var a = [];
       for (var j = 0; j < t.length; j++) {
         a.push("");
@@ -334,7 +293,7 @@ $(document).ready(function () {
     }
     // fill in parseTable
     for (var i = 0; i < productions.length; i++) {
-      var pFirst = first(productions[i][2], pDict, derivers);
+      var pFirst = parseHelper.first(productions[i][2], pDict, derivers);
       var vi = v.indexOf(productions[i][0]);
       for (var j = 0; j < pFirst.length; j++) {
         var ti = t.indexOf(pFirst[j]);
@@ -362,6 +321,7 @@ $(document).ready(function () {
         }
       }
     }
+
     startParse();
     $('#followbutton').show();
     $('.jsavcontrols').hide();
@@ -886,30 +846,18 @@ $(document).ready(function () {
       alert('No grammar.');
       return;
     }
+		var parseHelper = new ParseHelper(productions);
+
+		var VTObject = parseHelper.gatherVT();
     // variables:
-    var v = {};
+    var v = VTObject.v;
     // terminals:
-    var t = {};
-    for (var i = 0; i < productions.length; i++) {
-      var x = productions[i];
-      v[x[0]] = true;
-      for (var j = 0; j < x[2].length; j++) {
-        if (variables.indexOf(x[2][j]) !== -1) {
-          v[x[2][j]] = true;
-        } else if (x[2][j] !== emptystring) {
-          t[x[2][j]] = true;
-        }
-      }
-    }
-    v = Object.keys(v);
-    v.sort();
-    t = Object.keys(t);
-    t.sort();
-    t.push('$');
+    var t = VTObject.t;
     // terminals + variables:
     var tv = t.concat(v);
     // variables + terminals:
     var vt = v.concat(t);
+
     parseTable = [];
     for (var i = 0; i < productions.length; i++) {
       var a = [];
@@ -996,14 +944,9 @@ $(document).ready(function () {
     modelDFA.layout();
 
     // use DFA to generate the parse table
-    var pDict = {};     // a dictionary mapping left sides to right sides
-    for (var i = 0; i < productions.length; i++) {
-      if (!(productions[i][0] in pDict)) {
-        pDict[productions[i][0]] = [];
-      }
-      pDict[productions[i][0]].push(productions[i][2]);
-    }
-    var derivers = {};  // variables that derive lambda
+    var pDict = parseHelper.getDict();
+		
+		var derivers = {};  // variables that derive lambda
     var counter = 0;
     while (removeLambdaHelper(derivers, productions)) {
       counter++;
@@ -1015,11 +958,11 @@ $(document).ready(function () {
     // get FIRSTs and FOLLOWs
     var firsts = {};
     for (var i = 0; i < v.length; i++) {
-      firsts[v[i]] = first(v[i], pDict, derivers).sort();
+      firsts[v[i]] = parseHelper.first(v[i], pDict, derivers).sort();
     }
     var follows = {};
     for (var i = 0; i < v.length; i++) {
-      follows[v[i]] = follow(v[i], productions, pDict, derivers).sort();
+      follows[v[i]] = parseHelper.follow(v[i], productions, pDict, derivers).sort();
     }
 
     // add the extra S' -> S production
@@ -1458,69 +1401,6 @@ $(document).ready(function () {
     }
   };
 
-  // gets FIRST set
-  var first = function (str, pDict, lambdaVars) {
-    if (!str) {
-      return [];
-    }
-    if (str === emptystring) {
-      return [emptystring];
-    } if (str.length === 1){
-      if (variables.indexOf(str) === -1) {
-        return [str];
-      } else {
-        var ret = [];
-        var strings = pDict[str];
-				if (!strings) {
-					alert("Error: this grammar is not LL(1)");
-					return;
-				}
-        for (var i = 0; i < strings.length; i++) {
-          if (strings[i][0] !== str) {
-            ret = _.union(ret, first(strings[i], pDict, lambdaVars));
-          } else if (str in lambdaVars) {
-            ret = _.union(ret, first(strings[i].substring(1), pDict, lambdaVars));
-          }
-        }
-        return ret;
-      }
-    } else if (str.length > 1) {
-      if (!(str[0] in lambdaVars)) {
-        return first(str[0], pDict, lambdaVars);
-      } else {
-        return _.union(_.without(first(str[0], pDict, lambdaVars), emptystring), first(str.substring(1), pDict, lambdaVars));
-      }
-    }
-  };
-  // gets FOLLOW set
-  var follow = function (str, productions, pDict, lambdaVars) {
-    var ret = [];
-    if (str === productions[0][0]) {
-      ret.push('$');
-    }
-    for (var i = 0; i < productions.length; i++) {
-      var p = productions[i][2] + '$';
-      for (var j = 0; j < p.length - 1; j++) {
-        if (p[j] === str) {
-          if (j === p.length - 2) {
-            if (productions[i][0] !== str) {
-              ret = _.union(ret, follow(productions[i][0], productions, pDict, lambdaVars));
-            }
-          } else {
-            var nextSymbol = first(p.substring(j + 1), pDict, lambdaVars);
-            ret = _.union(ret, _.without(nextSymbol, emptystring));
-            if (nextSymbol.indexOf(emptystring) !== -1) {
-              if (productions[i][0] !== str) {
-                ret = _.union(ret, follow(productions[i][0], productions, pDict, lambdaVars));
-              }
-            }
-          }
-        }
-      }
-    }
-    return ret;
-  };
-
   var getLeaves = function(node) {
     var leaves = [];
     if (node.childnodes == false) {
@@ -1595,23 +1475,6 @@ $(document).ready(function () {
     return ret;
   };
 
-  /*
-  Function to find lambda-deriving variables.
-  A variable derives lambda if it directly produces lambda or if its right side is
-  composed only of lambda-deriving variables.
-  Used during parsing as well.
-  */
-  function removeLambdaHelper (set, productions) {
-    for (var i = 0; i < productions.length; i++) {
-      if (productions[i][2] === emptystring || _.every(productions[i][2], function(x) { return x in set;})) {
-        if (!(productions[i][0] in set)) {
-          set[productions[i][0]] = true;
-          return true;
-        } 
-      }
-    }
-    return false;
-  };
   // check if browser supports generators
   var isGeneratorSupported = function () {
     try {
