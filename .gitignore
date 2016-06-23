@@ -10,6 +10,7 @@ Doc/manual
 # Sourcecode testing
 SourceCode/Processing/build
 SourceCode/Java/build
+SourceCode/Java/SortingTime/build
 SourceCode/Java_Generic/build
 SourceCode/JavaScript/build
 SourceCode/Python/build
