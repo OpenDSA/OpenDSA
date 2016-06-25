@@ -2,7 +2,7 @@
 /**
  * @author Souleymane Dia
  * @version <05/24/2016>~ summer 2016
- * see SkipList file comments before use
+ * This represent the Key value pair script (KVPair) used in the SkipList implementation
  */
  function KVPair(k, v) {
 	this.key = k;
@@ -14,30 +14,18 @@ KVPair.prototype.getKey = function() {
 KVPair.prototype.getVal = function() {
 	return this.value;
 };
-var isNum = function(str) {
-	str = !isNaN(parseInt(str));
-	return str;
-};
-var compareTo = function (first, sec){
-	str = isNum(sec);
-	if (str === true) {
-		rsl = first - sec;
-		return rsl;
-	}
-	rsl = first.localeCompare(sec);
-	return rsl;
-};
-// add case where there is a type mismatch
+/** compare to KVPair value */
 KVPair.prototype.compareTo = function kvlocaleCompare(otherKey) {
-	str = isNum(otherKey);
-	if (str === true) {
+	var rsl = null;
+	if (typeof(this.key) === 'number' && typeof(otherKey) === 'number') {
 		rsl = this.key - otherKey;
 		return rsl;
+	}else if ((typeof(this.key) === 'number') || (typeof(otherKey) === 'number')){
+		throw new Error("illegal arguments: type mismatch");
 	}
-	rsl = this.key.localeCompare(otherKey);
+	rsl = first.localeCompare(otherKey);
 	return rsl;
 };
-
 KVPair.prototype.toString = function kvToString() {
 	if (this === null){
 		return '\/';
@@ -45,4 +33,3 @@ KVPair.prototype.toString = function kvToString() {
 	str = '' + this.key + ' | ' + this.value.toString()+ '';
 	return str;
 };
-
