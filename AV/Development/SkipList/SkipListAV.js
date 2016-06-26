@@ -1,6 +1,6 @@
 /**
  * @author Souleymane Dia
- * @version <05/24/2016>~ summer 2016
+ * @version <06/26/2016>~ summer 2016
  * XXX: I mimic the ArrayTree datastructure implementation as closely as possible. In doing so
  * I implemented certain functions That I am not sure what they do. They have "????" next to them.
  * So anybody who know what they do can answer them in the comment or refer me to where I can read
