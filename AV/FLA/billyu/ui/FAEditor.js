@@ -22,7 +22,7 @@
 		$("#rmenu").hide();
 
 		type = $('h1').attr('id');
-		if (type == 'fixer' || type == 'texter') {
+		if (type == 'fixer' || type == 'tester') {
 			switch (type) {
 			case 'fixer':
 				exerController = new ExerciseController(jsav, g, "../exercises/fixerTests.json", "json", {initGraph: initGraph});
