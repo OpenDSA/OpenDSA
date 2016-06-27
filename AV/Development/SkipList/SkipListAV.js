@@ -44,7 +44,7 @@
 		this.init(jsav, options);
     };
 	// XXX: ???
-	JSAV.utils.extend(SkipList, JSAV._type.ds.List);
+	//JSAV.utils.extend(SkipList, JSAV._type.ds.List);
 	
 	// Get SkipList prototype
 	var SkipListProto = SkipList.prototype;
