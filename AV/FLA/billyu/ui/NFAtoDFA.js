@@ -204,19 +204,24 @@
 	 $('#conversionButton').hide();
 	};
 
-	function modelAnswer() {
-	 // bug: all of the edges seem to be shifted a screen to the right
-	 var graph = convertToDFA(modeljsav, referenceGraph, {width: '90%', height: 440, layout: 'automatic', element: $('.jsavmodelanswer .jsavcanvas')});
-	 graph.layout();
-	 if (graph.equals(studentGraph)) {
+	function complete() {
+	 var nodes = studentGraph.nodes();
+	 for (var next = nodes.next(); next; next = nodes.next()) {
+	 	studentGraph.removeNode(next);
+	 }
+	 studentGraph = convertToDFA(jsav, referenceGraph, {width: '45%', height: 440, layout: 'automatic', element: $('#editable')});
+	 studentGraph.layout();
+	 jsav.umsg("Conversion completed");
+	 var exp = confirm("Conversion is completed!\nExport?");
+	 if (exp) {
 		 localStorage['toConvert'] = true;
 		 localStorage['converted'] = serialize(studentGraph);
 		 window.open('./FAEditor.html');
-	 }
-	 return graph;		
+		}
 	};
 
 	$('#conversionButton').click(conversionMode);
 	$('#removenodesbutton').click(removeNodesMode);
+	$('#completeButton').click(complete);
 	initGraph();
 }(jQuery));
