@@ -11,8 +11,6 @@
 	var lambda = String.fromCharCode(955),
 	epsilon = String.fromCharCode(949);
 
-	var automata, currentExercise = 0;
-
 	// initializes the reference/original NFA
 	function initGraph () {
 	 if (localStorage['convertNFA'] == "true") {

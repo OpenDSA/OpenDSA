@@ -184,8 +184,11 @@ controllerProto.nextStep = function() {
 		action = 0;
 		// We're all done.
 		this.jsav.umsg("The automaton is complete.");
-		//convertPane.detailLabel.setText("\"Export\" will put it in a new window.");
-		return;
+		$('#export').show();
+		var exp = confirm("Regex to FA complete!\nExport?");
+		if (exp) {
+			this.exportToFA();
+		}
 	}
 
 	//convertPane.detailLabel.setText(transitionNeeded + " more "+Universe.curProfile.getEmptyString()+"-transitions needed.");
@@ -200,6 +203,13 @@ controllerProto.nextStep = function() {
 			this.jsav.umsg("De-staring " + this.transition.weight());
 			break;
 	}
+}
+
+controllerProto.exportToFA = function() {
+	localStorage["REtoFA"] = true;
+	localStorage["FAfromRE"] = serialize(this.fa);
+	console.log(serialize(this.fa));
+	window.open("../ui/FAEditor.html");
 }
 
 /**

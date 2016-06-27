@@ -58,6 +58,9 @@
 				else if (localStorage['toMinimize'] === "true") {
 					data = localStorage['minimized'];
 				}
+				else if (localStorage['REtoFA'] == "true") {
+					data = localStorage['FAfromRE'];
+				}
 				else {
 					data = '{"nodes":[],"edges":[]}';
 				}
@@ -96,6 +99,7 @@
 		// Remove the old graph, parse JSON, and initialize the new graph.
 		$('.jsavgraph').remove();
 		var source = opts.graph ? opts.graph : jQuery.parseJSON(g);
+		console.log(source);
 		g = jsav.ds.fa($.extend({width: '750px', height: 440, editable: true}, opts));
 		g.initFromParsedJSONSource(source);
 
@@ -103,6 +107,7 @@
 		// (Local storage is used to transfer graph information between different windows. It is used by conversionExercise.html and minimizationTest.html.)
 		localStorage['toConvert'] = false;
 		localStorage['toMinimize'] = false;
+		localStorage['REtoFA'] = false;
 		finalize();
 		return g;
 	};

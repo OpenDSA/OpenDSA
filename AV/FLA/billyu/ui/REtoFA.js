@@ -31,6 +31,10 @@ var jsav,
 		$('#layoutButton').click(function() {
 			controller.fa.layout();
 		});
+		$('#export').click(function() {
+			controller.exportToFA();
+		});
+		$('#export').hide();
 	}
 
 	onLoad();
