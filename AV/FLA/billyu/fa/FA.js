@@ -92,7 +92,6 @@ var lambda = String.fromCharCode(955),
 				offset = $('.jsavgraph').offset(),
 				offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
 			// Expand the graph lengthways if we are loading it from a smaller window (conversionExersice.html / minimizationTest.html).
-			console.log(ratio);
 			$(node.element).offset({top : parseInt(source.nodes[i].top) + offset.top + offset2, left: (parseInt(source.nodes[i].left) + offset2) * ratio + offset.left});
 			// Make the node initial if it is the initial node.
 			if (source.nodes[i].i) {
@@ -1195,7 +1194,7 @@ var convertToDFA = function(jsav, graph, opts) {
   newStates.push(first);
   var temp = newStates.slice(0);
 
-  first = g.addNode({value: val}); 
+  first = g.addNode({value: first}); 
   g.makeInitial(first);
   g.layout();
 
@@ -1210,15 +1209,16 @@ var convertToDFA = function(jsav, graph, opts) {
       for (var j = 0; j < valArr.length; j++) {
         next = _.union(next, lambdaClosure(graph.transitionFunction(graph.getNodeWithValue(valArr[j]), letter), graph));
       }
-      var node = next.sort().join();
+      var nodeName = next.sort().join();
+			var node;
 			
-      if (node) {
-        if (!_.contains(newStates, node)) {
-          temp.push(node);
-          newStates.push(node);
-          node = g.addNode({value: node});
+      if (nodeName) {
+        if (!_.contains(newStates, nodeName)) {
+          temp.push(nodeName);
+          newStates.push(nodeName);
+          node = g.addNode({value: nodeName});
         } else {
-          node = g.getNodeWithValue(node);
+          node = g.getNodeWithValue(nodeName);
         }
         var edge = g.addEdge(prev, node, {weight: letter});
       }
