@@ -1,60 +1,32 @@
 (function ($) {	
- localStorage["jsav-speed"] = 0; // set default animation speed to max
- var jsav = new JSAV("av"),
- expandT,						// terminal to expand on
- selectedNode = null,
- expanded,					// string containing the names of the next states
- referenceGraph,							// reference (original NFA)
- studentGraph,							// working conversion
- alphabet;
+	localStorage["jsav-speed"] = 0; // set default animation speed to max
+	var jsav = new JSAV("av"),
+	expandT,						// terminal to expand on
+	selectedNode = null,
+	expanded,					// string containing the names of the next states
+	referenceGraph,							// reference (original NFA)
+	studentGraph,							// working conversion
+	alphabet;
 
- var lambda = String.fromCharCode(955),
- epsilon = String.fromCharCode(949);
+	var lambda = String.fromCharCode(955),
+	epsilon = String.fromCharCode(949);
 
- var automata, currentExercise = 0;
- initGraph();
- initQuestionLinks();
- updateQuestionLinks();
+	var automata, currentExercise = 0;
 
-var correctSteps = 0,
-		incorrectSteps = 0,
-		studentScore = 0;
+	// initializes the reference/original NFA
+	function initGraph () {
+	 if (localStorage['convertNFA'] == "true") {
+		 //localStorage['convertNFA'] = false;
+		 var data = localStorage['toConvert'];
+		 referenceGraph = deserialize(data);
+		 initialize();
+	 } 
+	 else {
+		 alert("If you want to convert an NFA, please use FAEditor.");
+	 }
+	};
 
- // initializes the reference/original NFA
- function initGraph () {
- 	if (localStorage['convertNFA'] == "true") {
- 		localStorage['convertNFA'] = false;
- 		var data = localStorage['toConvert'];
- 		referenceGraph = deserialize(data);
-		$("#questionTitle").hide();
- 	} else {
-		loadXML();
-	}
- };
-	
- function initQuestionLinks() {
-	//not from localStorage but from XML file
-	if (automata) {
-		for (i = 0; i < automata.length; i++) {
-			$("#exerciseLinks").append("<a href='#' id='" + i + "' class='links'>" + (i+1) + "</a>");
-		}			
-	}
- }
-
- //called when a question link is clicked
- function toAutomaton() {
-	presentAutomaton(this.getAttribute('id'));
-	currentExercise = this.getAttribute('id');
-	updateQuestionLinks();
- }
-
- //add a square border to current link
- function updateQuestionLinks() {
-	$('.links').removeClass('currentExercise');
-	$("#" + currentExercise).addClass('currentExercise');
- }
-
- function deserialize (data) {
+	function deserialize (data) {
 	 var gg = jQuery.parseJSON(data);
 	 var graph = jsav.ds.fa({width: '45%', height: 440, layout: 'manual', element: $('#reference')});
 	 for (var i = 0; i < gg.nodes.length; i++) {
@@ -86,10 +58,10 @@ var correctSteps = 0,
 	 alphabet = Object.keys(graph.alphabet).sort();
 	 $("#alphabet").html("" + alphabet);
 	 return graph;
- };
+	};
 
- // initializes the DFA to be created by the user
- function initialize () {
+	// initializes the DFA to be created by the user
+	function initialize () {
 	 if (studentGraph) {
 		 $('#editable').empty();
 	 }
@@ -99,20 +71,14 @@ var correctSteps = 0,
 	 initialNode.stateLabel(lambdaClosure([referenceGraph.initial.value()], referenceGraph).sort().join());
 	 initialNode.stateLabelPositionUpdate();
 	 studentGraph.makeInitial(initialNode);
-	
-	 correctSteps = 0;
-	 incorrectSteps = 0;
-	 studentScore = 0;
-	 $("#correctSteps").text(correctSteps);
-	 $("#incorrectSteps").text(incorrectSteps);
-	 $("#studentScore").text(studentScore); 
+
 	 $("#editable").off('click').click(graphClickHandlers);
 	 studentGraph.click(nodeClickHandlers);
 	 return studentGraph;
- };
+	};
 
- // handler for the graph window
- var graphClickHandlers = function (e) {
+	// handler for the graph window
+	var graphClickHandlers = function (e) {
 	 if ($(".jsavgraph").hasClass("working")) {
 		 // user is allowed to omit 'q' and separate state names with empty space or commas
 		 var targetS = prompt("Which group of NFA states will that go to on " + expandT + "?");
@@ -151,10 +117,6 @@ var correctSteps = 0,
 		 newNode.stateLabelPositionUpdate();
 		 var newEdge = studentGraph.addEdge(selectedNode, newNode, {weight: expandT})
 			 if(newEdge) {newEdge.layout();}
-		 correctSteps++;
-		 studentScore++;
-		 $("#correctSteps").text(correctSteps);
-		 $("#studentScore").text(studentScore);
 
 		 $('.editButton').show();
 		 $('.jsavgraph').removeClass("working");
@@ -162,9 +124,10 @@ var correctSteps = 0,
 		 newNode.unhighlight();
 		 jsav.umsg("Choose a state to expand:");
 	 } 
- };
- // handler for the nodes of the DFA
- var nodeClickHandlers = function (e) {	
+	};
+
+	// handler for the nodes of the DFA
+	var nodeClickHandlers = function (e) {	
 	 this.highlight();
 	 // allow user to remove nodes since there is no check to see if a new node already exists
 	 if ($(".jsavgraph").hasClass("removeNodes")) {
@@ -182,10 +145,6 @@ var correctSteps = 0,
 				 return;
 			 } else if (!_.contains(alphabet, expandT)) {
 				 alert("That terminal is not in the alphabet!");
-				 incorrectSteps++;
-			 	 studentScore -= 0.25;
-			 	 $("#incorrectSteps").text(incorrectSteps);
-			 	 $("#studentScore").text(studentScore);
 
 				 this.unhighlight();
 				 return;
@@ -200,10 +159,6 @@ var correctSteps = 0,
 				 var node = next.sort().join();
 				 if (!node) {
 					 alert("There are no paths on that terminal!");
-					 incorrectSteps++;
-				 	 studentScore -= 0.25;
-				 		$("#incorrectSteps").text(incorrectSteps);
-				 		$("#studentScore").text(studentScore);
 
 					 this.unhighlight();
 					 return;
@@ -219,13 +174,9 @@ var correctSteps = 0,
 			 if (this.stateLabel() === expanded) {
 				 var newEdge = studentGraph.addEdge(selectedNode, this, {weight: expandT});
 				 if (newEdge) { newEdge.layout();}
- 			 }
+			 }
 			 else {
 				 alert("State label is incorrect.");
-				 incorrectSteps++;
-				 studentScore -= 0.25;
-				 $("#incorrectSteps").text(incorrectSteps);
-				 $("#studentScore").text(studentScore);
 			 }
 			 $('.editButton').show();
 			 $('.jsavgraph').removeClass("working");
@@ -235,120 +186,37 @@ var correctSteps = 0,
 			 e.stopPropagation();
 		 }
 	 }
- };
- var exercise = jsav.exercise(modelAnswer, initialize, {compare: {class: "jsavhighlight"}, modelButtonTitle: "Answer", feedback: "continuous"});
- //use customized score showing instead of poorly documented jsavscore
- $(".jsavscore").hide();
- $(".realScore").show();
- exercise.reset();
+	};
 
- //================================
- //editing modes
+	//================================
+	//editing modes
 
- var removeNodesMode = function () {
+	var removeNodesMode = function () {
 	 $(".jsavgraph").addClass("removeNodes");
 	 $("#mode").html('Removing states');
 	 jsav.umsg("Click a state");
 	 $('#conversionButton').show();
- };
- var conversionMode = function () {
+	};
+	var conversionMode = function () {
 	 $('.jsavgraph').removeClass("removeNodes");
 	 $("#mode").html('');
 	 jsav.umsg("Choose a state to expand");
 	 $('#conversionButton').hide();
- };
+	};
 
- function modelAnswer (modeljsav) {
+	function modelAnswer() {
 	 // bug: all of the edges seem to be shifted a screen to the right
 	 var graph = convertToDFA(modeljsav, referenceGraph, {width: '90%', height: 440, layout: 'automatic', element: $('.jsavmodelanswer .jsavcanvas')});
 	 graph.layout();
 	 if (graph.equals(studentGraph)) {
-		 jsav.umsg("You got it!");
-		 alert("Congratulations!");
 		 localStorage['toConvert'] = true;
 		 localStorage['converted'] = serialize(studentGraph);
 		 window.open('./FAEditor.html');
 	 }
-	 modeljsav.displayInit();
-	 modeljsav.recorded();
 	 return graph;		
- };
-
- //function to present an automaton in XML file with index
- function presentAutomaton(index) {
-	 var automaton = automata[index];
-	 if (!automaton) {
-		 alert("No automaton with this index");
-		 return;
-	 }
-	 if (referenceGraph) {
-		var nodes = referenceGraph.nodes();
-		referenceGraph.clear();
-		//because this clear step deletes the html as well
-		$("#graphs").prepend("<div id='reference' class='jsavcanvas'></div>");
-	 }
-	 	referenceGraph = jsav.ds.fa({width: '45%', height: 440, layout: "automatic", element: $("#reference")});
-	 var nodeMap = {};			// map node IDs to nodes
-	 var xmlStates = automaton.getElementsByTagName("state");
-	 xmlStates = _.sortBy(xmlStates, function(x) { return x.id; })
-		 var xmlTrans = automaton.getElementsByTagName("transition");
-	 // Iterate over the nodes and initialize them.
-	 for (var i = 0; i < xmlStates.length; i++) {
-		 var x = Number(xmlStates[i].getElementsByTagName("x")[0].childNodes[0].nodeValue);
-		 var y = Number(xmlStates[i].getElementsByTagName("y")[0].childNodes[0].nodeValue);
-		 var newNode = referenceGraph.addNode({left: x, top: y});
-		 // Add the various details, including initial/final states and state labels.
-		 var isInitial = xmlStates[i].getElementsByTagName("initial")[0];
-		 var isFinal = xmlStates[i].getElementsByTagName("final")[0];
-		 var isLabel = xmlStates[i].getElementsByTagName("label")[0];
-		 if (isInitial) {
-			 referenceGraph.makeInitial(newNode);
-		 }
-		 if (isFinal) {
-			 newNode.addClass('final');
-		 }
-		 if (isLabel) {
-			 ewNode.stateLabel(isLabel.childNodes[0].nodeValue);
-		 }
-		 nodeMap[xmlStates[i].id] = newNode;
-		 newNode.stateLabelPositionUpdate();
-	 }
-	 // Iterate over the edges and initialize them.
-	 for (var i = 0; i < xmlTrans.length; i++) {
-		 var from = xmlTrans[i].getElementsByTagName("from")[0].childNodes[0].nodeValue;
-		 var to = xmlTrans[i].getElementsByTagName("to")[0].childNodes[0].nodeValue;
-		 var read = xmlTrans[i].getElementsByTagName("read")[0].childNodes[0];
-		 // Empty string always needs to be checked for.
-		 if (!read) {
-			 read = lambda;
-		 }
-		 else {
-			 read = read.nodeValue;
-		 }
-		 var edge = referenceGraph.addEdge(nodeMap[from], nodeMap[to], {weight: read});
-		 edge.layout();
-	 }
-	 referenceGraph.layout();
-	 referenceGraph.updateAlphabet();
-	 alphabet = Object.keys(referenceGraph.alphabet).sort();
-	 $("#alphabet").html("" + alphabet);
-
- };
-
- function loadXML () {
-		$.ajax({
-			url: "../exercises/conversions.xml",
-			dataType: 'xml',
-			async: false,
-			success: function(data) {
-				//allow multiple automata in one file
-				automata = data.getElementsByTagName("automaton");
-				presentAutomaton(0);
-			}
-		});
 	};
 
 	$('#conversionButton').click(conversionMode);
 	$('#removenodesbutton').click(removeNodesMode);
-	$('.links').click(toAutomaton);
+	initGraph();
 }(jQuery));

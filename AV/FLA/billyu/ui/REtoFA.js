@@ -4,7 +4,13 @@ var jsav,
 
 (function($) {
 	var start = function() {
-		expression = prompt("Regular Expression:");
+		if (localStorage["expression"] && localStorage["expression"] !== "null") {
+			expression = localStorage["expression"];
+			localStorage["expression"] = null;
+		}
+		else {
+			expression = prompt("Regular Expression:");
+		}
 		while (!expression) {
 			alert("put in something, don't try to trick the program!");
 			expression = prompt("Regular Expression:");
