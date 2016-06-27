@@ -14,6 +14,7 @@
 	// initializes the reference/original NFA
 	function initGraph () {
 	 if (localStorage['convertNFA'] == "true") {
+	   localStorage['convertNFA'] = false;
 		 //localStorage['convertNFA'] = false;
 		 var data = localStorage['toConvert'];
 		 referenceGraph = deserialize(data);
@@ -21,37 +22,43 @@
 	 } 
 	 else {
 		 alert("If you want to convert an NFA, please use FAEditor.");
+		 window.close();
 	 }
 	};
 
 	function deserialize (data) {
 	 var gg = jQuery.parseJSON(data);
 	 var graph = jsav.ds.fa({width: '45%', height: 440, layout: 'manual', element: $('#reference')});
-	 for (var i = 0; i < gg.nodes.length; i++) {
-		 var node = graph.addNode('q' + i),
-				 offset = $('.jsavgraph').offset(),
-				 offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
-		 $(node.element).offset({top : parseInt(gg.nodes[i].top) + offset.top + offset2, left: (parseInt(gg.nodes[i].left) / 2) + offset.left + offset2});
-		 if (gg.nodes[i].i) {
-			 graph.makeInitial(node);
-		 }
-		 if (gg.nodes[i].f) {
-			 node.addClass("final");
-		 }
-		 node.stateLabel(gg.nodes[i].stateLabel);
-		 node.stateLabelPositionUpdate();
-	 }
-	 for (var i = 0; i < gg.edges.length; i++) {
-		 if (gg.edges[i].weight !== undefined) {
-			 var w = delambdafy(gg.edges[i].weight);
-			 var edge = graph.addEdge(graph.nodes()[gg.edges[i].start], graph.nodes()[gg.edges[i].end], {weight: w});
-		 }
-		 else {
-			 var edge = graph.addEdge(graph.nodes()[gg.edges[i].start], graph.nodes()[gg.edges[i].end]);
-		 }
-		 edge.layout();
-	 }
-	 graph.layout();
+	 graph.initFromParsedJSONSource(gg, 0.5);
+//	 for (var i = 0; i < gg.nodes.length; i++) {
+//		 var node = graph.addNode('q' + i),
+//				 offset = $('.jsavgraph').offset(),
+//				 offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
+//		 var leftOffset = (parseInt(gg.nodes[i].left) / 2) + offset.left + offset2;
+//		 leftOffset = leftOffset > 315 ? 315: leftOffset;
+//		 console.log(leftOffset);
+//		 var topOffset = parseInt(gg.nodes[i].top) + offset.top + offset2;
+//		 $(node.element).offset({top : topOffset, left: leftOffset});
+//		 if (gg.nodes[i].i) {
+//			 graph.makeInitial(node);
+//		 }
+//		 if (gg.nodes[i].f) {
+//			 node.addClass("final");
+//		 }
+//		 node.stateLabel(gg.nodes[i].stateLabel);
+//		 node.stateLabelPositionUpdate();
+//	 }
+//	 for (var i = 0; i < gg.edges.length; i++) {
+//		 if (gg.edges[i].weight !== undefined) {
+//			 var w = delambdafy(gg.edges[i].weight);
+//			 var edge = graph.addEdge(graph.nodes()[gg.edges[i].start], graph.nodes()[gg.edges[i].end], {weight: w});
+//		 }
+//		 else {
+//			 var edge = graph.addEdge(graph.nodes()[gg.edges[i].start], graph.nodes()[gg.edges[i].end]);
+//		 }
+//		 edge.layout();
+//	 }
+//	 graph.layout();
 	 graph.updateAlphabet();
 	 alphabet = Object.keys(graph.alphabet).sort();
 	 $("#alphabet").html("" + alphabet);
@@ -210,16 +217,22 @@
 	 studentGraph = convertToDFA(jsav, referenceGraph, {width: '45%', height: 440, layout: 'automatic', element: $('#editable')});
 	 studentGraph.layout();
 	 jsav.umsg("Conversion completed");
+	 $('exportButton').show();
 	 var exp = confirm("Conversion is completed!\nExport?");
 	 if (exp) {
-		 localStorage['toConvert'] = true;
-		 localStorage['converted'] = serialize(studentGraph);
-		 window.open('./FAEditor.html');
-		}
+	 	exportToFA();
+	 }
 	};
+
+	var exportToFA = function() {
+	 localStorage['toConvert'] = true;
+	 localStorage['converted'] = serialize(studentGraph);
+	 window.open('./FAEditor.html');
+	}	
 
 	$('#conversionButton').click(conversionMode);
 	$('#removenodesbutton').click(removeNodesMode);
 	$('#completeButton').click(complete);
+	$('#exportButton').click(exportToFA);
 	initGraph();
 }(jQuery));

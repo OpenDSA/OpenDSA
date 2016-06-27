@@ -79,8 +79,11 @@ var lambda = String.fromCharCode(955),
 
   JSAV.utils._events._addEventSupport(faproto);
 
-	faproto.initFromParsedJSONSource = function(source) {
+	faproto.initFromParsedJSONSource = function(source, ratio) {
 		var nodes = this.nodes();
+		if (!ratio) {
+			ratio = 1;
+		}
 		for (var next = nodes.next(); next; next = nodes.next()) {
 			this.removeNode(next);
 		}
@@ -89,12 +92,8 @@ var lambda = String.fromCharCode(955),
 				offset = $('.jsavgraph').offset(),
 				offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
 			// Expand the graph lengthways if we are loading it from a smaller window (conversionExersice.html / minimizationTest.html).
-			if (localStorage['toConvert'] === "true" || localStorage['toMinimize'] === "true") {
-				$(node.element).offset({top : parseInt(source.nodes[i].top) + offset.top + offset2, left: (parseInt(source.nodes[i].left) * 2) + offset.left + offset2});
-			}
-			else {
-				$(node.element).offset({top : parseInt(source.nodes[i].top) + offset.top + offset2, left: parseInt(source.nodes[i].left) + offset.left + offset2});
-			}
+			console.log(ratio);
+			$(node.element).offset({top : parseInt(source.nodes[i].top) + offset.top + offset2, left: (parseInt(source.nodes[i].left) + offset2) * ratio + offset.left});
 			// Make the node initial if it is the initial node.
 			if (source.nodes[i].i) {
 				this.makeInitial(node);
