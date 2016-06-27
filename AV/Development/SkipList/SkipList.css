@@ -1,0 +1,19 @@
+.jsavarray .jsavindex {
+		width: 35px;
+		min-width: 20px;
+		height: 35px;
+		min-height: 20px;
+		line-height: 45px
+}
+.jsavcounter {
+    position: absolute;
+    top: 15px;
+}
+.jsavcanvas { height: 300px;}
+    .mypointer {
+    text-decoration: underline;
+}
+.mypointer .jsavpointerarea {
+    border-color: blue;
+    background-color: red;
+}
