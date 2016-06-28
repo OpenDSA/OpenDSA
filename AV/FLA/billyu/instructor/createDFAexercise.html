@@ -2,12 +2,7 @@
 <html>
 	<head>
 		<title>DFA exercise Editor</title>
-    <link rel="stylesheet" href="../../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
-    <link rel="stylesheet" href="../../../../lib/odsaAV-min.css" type="text/css" />
-    <link rel="stylesheet" href="../../../../lib/odsaStyle-min.css" type="text/css" />
-    <link rel="stylesheet" href="../ui/css/customPrompt.css" type="text/css" />
-    <link rel="stylesheet" href="../ui/css/FA.css" type="text/css" />
-    <link rel="stylesheet" href="../ui/css/tester.css" type="text/css" />
+		<link rel="stylesheet" href="./createDFAexercise.css" type="text/css" />
 	</head>
 	<body>
 		<div id="container">
@@ -25,15 +20,15 @@
 				<br>
 				<input type="radio" name="show1" value="false">
 				<span>Description: </span>
-				<input type="text" name="description" style="width:500px">
+				<input type="text" name="description">
 				<br>
 
 				<div class="testCases">
 					<div class="testCase">
 						<span>Test Case 1: </span>
-						<span>String: </span><input type="text" name="testString">
 						<input type="radio" name="result1" value="true" checked> <span>Accept</span>
 						<input type="radio" name="result1" value="false"> <span>Reject</span>
+						<input type="text" name="testString">
 						<br>
 					</div>
 				</div>
@@ -50,12 +45,6 @@
 		
 		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-		<script src="../../../../JSAV/lib/jquery.transit.js"></script>
-		<script src="../../../../JSAV/lib/raphael.js"></script>
-		<script src="../../../../JSAV/lib/dagre.min.js"></script>
-		<script src="../../../../JSAV/build/JSAV.js"></script>
-		<script src="../../../../lib/odsaUtils-min.js"></script>
-		<script src="../../../../lib/odsaAV-min.js"></script>
 		<script src="../fa/serializableGraph.js"></script>
 		<script src="../../resources/underscore-min.js"></script>
 		<script src="../fa/FA.js"></script>

@@ -61,14 +61,14 @@
 					"<br>" + 
 					"<input type='radio' name='show" + problemCount + "' value='false'>" + 
 					"<span>Description: </span>" + 
-					"<input type='text' name='description' style='width:500px'>" + 
+					"<input type='text' name='description'" + 
 					"<br>"+
 					"<div class='testCases'>" + 
 					"<div class='testCase'>"+
 						"<span>Test Case 1: </span>"+
-						"<span>String: </span><input type='text' name='testString'>"+
 						"<input type='radio' name='result" + resultCount + "' value='true' checked> <span>Accept</span>"+
 						" <input type='radio' name='result" + resultCount + "' value='false'> <span>Reject</span>"+
+						"<input type='text' name='testString'>"+
 						"<br>" + 
 					"</div>"+
 					"</div>"+
@@ -97,9 +97,9 @@
 		testCases.append("" +
 			"<div class='testCase'>"+
 				"<span>Test Case " + caseCount + ": </span>"+
-				"<span>String: </span><input type='text' name='testString'>"+
 				"<input type='radio' name='result" + resultCount + "' value='true' checked> <span>Accept</span>"+
 				"<input type='radio' name='result" + resultCount + "' value='false'> <span>Reject</span>"+
+				"<input type='text' name='testString'>"+
 				"<br>"+
 			"</div>");
 	}
