@@ -65,6 +65,7 @@ controllerProto.startTesting = function() {
 	$("#percentage").show();
 	$("#testResults").show();
 	window.scrollTo(0,document.body.scrollHeight);
+	$('#container').scrollTop($('#container').prop("scrollHeight"));
 };
 
 // binded with question links at the top of the page

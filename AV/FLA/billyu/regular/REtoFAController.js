@@ -185,7 +185,6 @@ controllerProto.nextStep = function() {
 		// We're all done.
 		this.jsav.umsg("The automaton is complete.");
 		$('#export').show();
-		var exp = confirm("Regex to FA complete!\nExport?");
 		if (exp) {
 			this.exportToFA();
 		}

@@ -99,9 +99,12 @@
 		// Remove the old graph, parse JSON, and initialize the new graph.
 		$('.jsavgraph').remove();
 		var source = opts.graph ? opts.graph : jQuery.parseJSON(g);
-		console.log(source);
 		g = jsav.ds.fa($.extend({width: '750px', height: 440, editable: true}, opts));
-		g.initFromParsedJSONSource(source);
+		var ratio = 1;
+		if (localStorage['toConvert'] == "true" || localStorage['toMinimize'] == "true") {
+			ratio = 2;
+		}
+		g.initFromParsedJSONSource(source, ratio);
 
 		// Clear anything in local storage as we do not need it anymore.
 		// (Local storage is used to transfer graph information between different windows. It is used by conversionExercise.html and minimizationTest.html.)
@@ -729,6 +732,7 @@
 
 	// transfrom FA to regular expression
 	var toRE = function() {
+		$("html, body").animate({ scrollTop: 0 }, "slow");
 		removeModeClasses();
 		if (!g.initial) {
 			alert("You must have an initial state.");
@@ -859,6 +863,7 @@
 	$('#toREButton').click(toRE);
 	$('#collapseButton').hide();
 	$('#cheat').hide();
+	$('#exportButton').hide();
 	$( "#dialog" ).dialog({ autoOpen: false });
 	$(document).keyup(function(e) {
 		if (e.keyCode === 27) cancel();   // esc

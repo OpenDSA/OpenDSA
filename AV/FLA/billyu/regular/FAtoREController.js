@@ -259,11 +259,18 @@ controllerProto.generateExpression = function() {
 		}
 	}
 	this.jsav.umsg("Expression: " + expression);
-	var exp = confirm("Expression is: " + expression + "\nConvert to NFA?");
+	$('#exportButton').show();
+	$('#exportButton').click(function() {
+		exportToRE(expression);
+	});
 	if (exp) {
-		localStorage["expression"] = expression;
-		window.open("../ui/REtoFA.html");
+		exportToRE(expression);
 	}
+}
+
+function exportToRE(expression) {
+	localStorage["expression"] = expression;
+	window.open("../ui/REtoFA.html");
 }
 
 // add star if needed for transitions

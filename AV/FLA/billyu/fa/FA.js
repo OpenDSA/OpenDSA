@@ -91,16 +91,26 @@ var lambda = String.fromCharCode(955),
 			var node = this.addNode('q' + i),
 				offset = $('.jsavgraph').offset(),
 				offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
-			// Expand the graph lengthways if we are loading it from a smaller window (conversionExersice.html / minimizationTest.html).
-			$(node.element).offset({top : parseInt(source.nodes[i].top) + offset.top + offset2, left: (parseInt(source.nodes[i].left) + offset2) * ratio + offset.left});
+				var topOffset = parseInt(source.nodes[i].top) + offset.top + offset2;
+				var leftOffset = (parseInt(source.nodes[i].left) + offset2) * ratio + offset.left;
+				console.log(leftOffset);
+				if (leftOffset > 550 && ratio == 0.5) {
+					leftOffset = 550;
+				}
 			// Make the node initial if it is the initial node.
 			if (source.nodes[i].i) {
 				this.makeInitial(node);
+				if (leftOffset < 250 && ratio == 0.5) {
+					leftOffset = 250;
+				}
 			}
 			// Make the node a final state if it is a final state.
 			if (source.nodes[i].f) {
 				this.makeFinal(node);
 			}
+			// Expand the graph lengthways if we are loading it from a smaller window (conversionExersice.html / minimizationTest.html).
+			$(node.element).offset({top : topOffset, left: leftOffset});
+
 			// Add the state label (if applicable) and update its position on the graph.
 			node.stateLabel(source.nodes[i].stateLabel);
 			node.stateLabelPositionUpdate();
