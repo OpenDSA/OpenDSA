@@ -818,7 +818,7 @@
 		g.selected.highlight();
 		if ($('.jsavgraph').hasClass("RE")) {
 			createEdge(none);
-			checkForTransitions();
+			fatoreController.checkForTransitions();
 		}
 		else {
 			var Prompt = new EdgePrompt(createEdge, emptystring);
