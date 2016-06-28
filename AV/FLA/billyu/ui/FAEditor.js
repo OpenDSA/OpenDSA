@@ -727,7 +727,7 @@
 		window.alert("Beware that the minimization algorithm will fail on an incomplete DFA.");
 		localStorage['minimizeDFA'] = true;
 		localStorage['toMinimize'] = serialize(g);
-		window.open("./minimizeDFA.html");
+		window.open("./minDFA.html");
 	}
 
 	// transfrom FA to regular expression

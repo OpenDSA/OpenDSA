@@ -32,54 +32,19 @@ if computational complexity is a concern, should be changed to use a union-find 
 	
 	var lambda = String.fromCharCode(955),
 			epsilon = String.fromCharCode(949);
-
-	var automata, currentExercise = 0;
-	var correctSteps = 0,
-		incorrectSteps = 0,
-		studentScore = 0;
   
 	// initialize reference/original DFA
 	function initGraph() {
-		loadXML();
-	};
-
-	function loadXML () {
-		$.ajax({
-			url: "../exercises/minimizeDFA.xml",
-			dataType: 'xml',
-			async: false,
-			success: function(data) {
-				//allow multiple automata in one file
-				automata = data.getElementsByTagName("automaton");
-				initQuestionLinks();				
-				$('.links')[0].click();
-			}
-		});
-	};
-
- 	function initQuestionLinks() {
-	//not from localStorage but from XML file
-		if (automata) {
-			for (i = 0; i < automata.length; i++) {
-				$("#exerciseLinks").append("<a href='#' id='" + i + "' class='links'>" + (i+1) + "</a>");
-			}			
-			$('.links').click(toAutomaton);
+		if (localStorage['minimizeDFA'] == "true") {
+			localStorage['minimizeDFA'] = false;
+			var data = localStorage['toMinimize'];
+			return deserialize(data);
 		}
-	}
-
- //called when a question link is clicked
- function toAutomaton() {
-	presentAutomaton(this.getAttribute('id'));
-	currentExercise = this.getAttribute('id');
-	updateQuestionLinks();
- }
-
- //add a square border to current link
- function updateQuestionLinks() {
-	$('.links').removeClass('currentExercise');
-	$("#" + currentExercise).addClass('currentExercise');
- }
-
+		else {
+			alert("Use FAEditor to minimize DFA.");
+			window.close();
+		}
+	};
 
 	function deserialize (data) {
 		var gg = jQuery.parseJSON(data);
@@ -88,7 +53,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 		graph.updateAlphabet();
 		alphabet = Object.keys(graph.alphabet).sort();
 		$("#alphabet").html("" + alphabet);
-	   	return graph;
+	  return graph;
 	};
 
 	// initialize tree of undistinguishable states
@@ -101,6 +66,8 @@ if computational complexity is a concern, should be changed to use a union-find 
 		// ignore unreachable states
 		var reachable = [referenceGraph.initial];
 		dfs(reachable, referenceGraph.initial);
+		console.log(referenceGraph.initial);
+		console.log(reachable);
 		for (var i = 0; i < reachable.length; i++) {
 			val.push(reachable[i].value());
 			if (reachable[i].hasClass('final')) {
@@ -525,67 +492,6 @@ if computational complexity is a concern, should be changed to use a union-find 
 		return;
 	};
 
- //function to present an automaton in XML file with index
- function presentAutomaton(index) {
-	 var automaton = automata[index];
-	 if (!automaton) {
-		 alert("No automaton with this index");
-		 return;
-	 }
-	 if (referenceGraph) {
-		referenceGraph.clear();
-		//because this clear step deletes the html as well
-		$("#graphs").prepend("<div id='reference' class='jsavcanvas'></div>");
-	 }
-	 	referenceGraph = jsav.ds.fa({width: '45%', height: 440, layout: "automatic", element: $("#reference")});
-	 var nodeMap = {};			// map node IDs to nodes
-	 var xmlStates = automaton.getElementsByTagName("state");
-	 xmlStates = _.sortBy(xmlStates, function(x) { return x.id; })
-		 var xmlTrans = automaton.getElementsByTagName("transition");
-	 // Iterate over the nodes and initialize them.
-	 for (var i = 0; i < xmlStates.length; i++) {
-		 var x = Number(xmlStates[i].getElementsByTagName("x")[0].childNodes[0].nodeValue);
-		 var y = Number(xmlStates[i].getElementsByTagName("y")[0].childNodes[0].nodeValue);
-		 var newNode = referenceGraph.addNode({left: x, top: y});
-		 // Add the various details, including initial/final states and state labels.
-		 var isInitial = xmlStates[i].getElementsByTagName("initial")[0];
-		 var isFinal = xmlStates[i].getElementsByTagName("final")[0];
-		 var isLabel = xmlStates[i].getElementsByTagName("label")[0];
-		 if (isInitial) {
-			 referenceGraph.makeInitial(newNode);
-		 }
-		 if (isFinal) {
-			 newNode.addClass('final');
-		 }
-		 if (isLabel) {
-			 ewNode.stateLabel(isLabel.childNodes[0].nodeValue);
-		 }
-		 nodeMap[xmlStates[i].id] = newNode;
-		 newNode.stateLabelPositionUpdate();
-	 }
-	 // Iterate over the edges and initialize them.
-	 for (var i = 0; i < xmlTrans.length; i++) {
-		 var from = xmlTrans[i].getElementsByTagName("from")[0].childNodes[0].nodeValue;
-		 var to = xmlTrans[i].getElementsByTagName("to")[0].childNodes[0].nodeValue;
-		 var read = xmlTrans[i].getElementsByTagName("read")[0].childNodes[0];
-		 // Empty string always needs to be checked for.
-		 if (!read) {
-			 read = lambda;
-		 }
-		 else {
-			 read = read.nodeValue;
-		 }
-		 var edge = referenceGraph.addEdge(nodeMap[from], nodeMap[to], {weight: read});
-		 edge.layout();
-	 }
-	 initializeBT();
-	 referenceGraph.layout();
-	 referenceGraph.updateAlphabet();
-	 alphabet = Object.keys(referenceGraph.alphabet).sort();
-	 $("#alphabet").html("" + alphabet);
-	 referenceGraph.click(refClickHandlers);
- };
-
 	$('#edgebutton').click(addEdgesMode);
 	$('#donebutton').click(done);
 	$('#hintbutton').click(hint);
@@ -598,7 +504,17 @@ if computational complexity is a concern, should be changed to use a union-find 
 	$('#layoutRef').click(function(){referenceGraph.layout()});
 	$('#dfadonebutton').click(dfaDone);
 
- 	initGraph();
-	jsav.umsg('Split a leaf node');
+	var onLoadHandler = function() {
+		referenceGraph = initGraph();
+		jsav.umsg('Split a leaf node');
+		initializeBT();
+		referenceGraph.layout();
+		referenceGraph.updateAlphabet();
+		alphabet = Object.keys(referenceGraph.alphabet).sort();
+		$("#alphabet").html("" + alphabet);
+		referenceGraph.click(refClickHandlers);
+	}
+
+	onLoadHandler();
 
 }(jQuery));

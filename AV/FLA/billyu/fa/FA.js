@@ -100,8 +100,8 @@ var lambda = String.fromCharCode(955),
 			// Make the node initial if it is the initial node.
 			if (source.nodes[i].i) {
 				this.makeInitial(node);
-				if (leftOffset < 250 && ratio == 0.5) {
-					leftOffset = 250;
+				if (leftOffset < 25 && ratio == 0.5) {
+					leftOffset = 25;
 				}
 			}
 			// Make the node a final state if it is a final state.
@@ -158,6 +158,16 @@ var lambda = String.fromCharCode(955),
 		}
 		return newNode;
   };
+
+	faproto.getTransitionsFromState = function(node) {
+		var neighbors = node.neighbors();
+		var re = [];
+		for each (var neighbor in neighbors) {
+			var edge = this.getEdge(node, neighbor);
+			re.push(edge);
+		}
+		return re;
+	}
 
 	faproto.enableDragging = function() {
 		for (var i = this._nodes.length; i--; ) {
