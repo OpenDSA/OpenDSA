@@ -79,7 +79,17 @@ controllerProto.toExercise = function(button) {
 // called by toExercise
 controllerProto.updateExercise = function(id) {
 	var exercise = this.tests[id];
-	$("#expression").text(exercise["expression"]);
+	var type = exercise["type"];
+	if (type == "expression") {
+		$("#expression").text(exercise["expression"]);
+		$("#question").show();
+		$("#description").hide();
+	}
+	else {
+		$("#description").text(exercise["description"]);
+		$("#description").show();
+		$("#question").hide();
+	}
 	$(".links").removeClass("currentExercise");
 	$("#" + this.currentExercise).addClass("currentExercise");
 	this.testCases = exercise["testCases"];

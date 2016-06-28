@@ -18,16 +18,25 @@
 			fileName = "tests.json";
 		}
 		$('#download').html('<a href="data:' + downloadData + '" target="_blank" download="' + fileName + '">Download Exercises JSON File</a>');
+		$('#download').click();
 	}
 	
 	function problemInfo() {
 		var problem = {
     	expression: "",
+			description: "",
+			type: "",
     	testCases: [],
 			graph: ""
 		};
 		var index = $(this).index();
+
+		var typeButtons = $(this).find("input[type='radio']");
+		var showType = typeButtons[0].checked ? "expression" : "description";
+		problem.type = showType;
 		problem.expression = $(this).find("input[name='expression']")[0].value;
+		problem.description = $(this).find("input[name='description']")[0].value;
+
 		$(this).find(".testCase").each(function() {
 			var _case = {},
 					testString = $(this).find("input[name='testString']")[0].value,
@@ -46,8 +55,13 @@
 		$("#problems").append(""+
 			"<fieldset id='" + problemCount + "'>" + 
 				"<legend>Problem " + problemCount + "</legend>" + 
+					"<input type='radio' name='show" + problemCount + "' value='true' checked>" + 
 					"<span>Expression: </span>" + 
-					"<input type='text' name='expression'>"+
+					"<input type='text' name='expression'>" + 
+					"<br>" + 
+					"<input type='radio' name='show" + problemCount + "' value='false'>" + 
+					"<span>Description: </span>" + 
+					"<input type='text' name='description' style='width:500px'>" + 
 					"<br>"+
 					"<div class='testCases'>" + 
 					"<div class='testCase'>"+
