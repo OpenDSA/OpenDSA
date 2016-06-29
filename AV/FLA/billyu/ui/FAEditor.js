@@ -742,6 +742,7 @@
 			alert("You must have exactly one final state.");
 			return;
 		}
+		$('h1').text("Finite Automaton to Regular Expression");
 		$('.jsavgraph').addClass('RE');
 		$('#nodeButton').hide();
 		$('#editButton').hide();

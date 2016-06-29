@@ -255,7 +255,7 @@ controllerProto.generateExpression = function() {
 			expression = cycle + target;
 		}
 	}
-	this.jsav.umsg("Expression: " + expression);
+	$('h1').text("Expression: " + expression);
 	$('#exportButton').show();
 	$('#exportButton').click(function() {
 		exportToRE(expression);
