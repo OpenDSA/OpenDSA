@@ -1,10 +1,8 @@
 /**
  * @author Souleymane Dia
- * @version <06/26/2016>~ summer 2016
- * XXX: I mimic the ArrayTree datastructure implementation as closely as possible. In doing so
- * I implemented certain functions That I am not sure what they do. They have "????" next to them.
- * So anybody who know what they do can answer them in the comment or refer me to where I can read
- * about them.
+ * @version <05/24/2016>~ summer 2016
+ * XXX: I mimic the ArrayTree datastructure as closely as possible. In doing so
+ * I implemented certain function That I am not sure what they do. They have "????" next to them.
  * This data structure is not ready for use 
  * Task to be completed:
  * support adding in the middle: ~completed
@@ -15,11 +13,11 @@
  * delete debugging helpers codes ~completed
  * follow the naming convention and structure the class ~completed
  */
- (function($) {
+ //(function($) {
     "use strict";
-    if (typeof JSAV === "undefined") {
-      return;
-    }
+    //if (typeof JSAV === "undefined") {
+    //  return;
+    //}
 	/********************************************************************
 	 * Add the SkipList constructor to the public facing JSAV interface.
 	 ********************************************************************/
@@ -130,33 +128,6 @@
 		JSAV.utils._helpers.handleVisibility(this, this.options);
 		this.size = 0;
 	};
-/**	// even to register as function on array
-	var event = ["clcik", "dblclick", "mousedown", "mousemove",
-			"mouseup", "mouseenter", "mouseleave"];
-	// ??? (are we just overiding these methodes from jsav library?) ~not sure why we need this function
-	// return a function for the passed event type that binds a passed function
-	// to that event type for indice in the array
-	var eventhandler = function (eventType){
-		// what are we returning here
-		return function(data, handler);
-		// store reference to this, needed when executing the handler
-		var self = this;
-		// bind a jQuery event handler, limit to .jsavindex
-		this.element.on(eventType, ".jsavindex", function (e){
-			//get the array of the clicked element
-			// ??? (how does this get the click element?)
-			var $curr = $(this),
-			elem = $curr.data.("array"); // get the JSAV node object
-			while (!elem){
-				$curr = $curr.parent();
-				elem = $curr.dara("array");
-			}
-			// get the index of the clicked element
-			var index = elem.no
-		}
-	}
-	*/
-   
    /** generate a random value, note that the 237 is arbitrary and could have been any number
      also we are preventing the depth to be greater than 4 */
     var randomLevel = function() {
@@ -390,7 +361,7 @@
           var upFwrd = update[i].getForward();
           if (upFwrd[i] != null) {
             var longer = upFwrd[i].getNodeNum() - update[i].getNodeNum();
-            opt = {
+            var opt = {
               targetIndex: i,
               left: -(longer - 1) * 100 - 85,
               top: 23,
@@ -650,7 +621,6 @@ KVPair.prototype.toString = function kvToString() {
 	if (this === null){
 		return '\/';
 	}
-	str = '' + this.key + ' | ' + this.value.toString()+ '';
-	return str;
+	return '' + this.key + ' | ' + this.value.toString()+ '';
 };
-} (jQuery));
+//} (jQuery));
