@@ -100,10 +100,12 @@ if computational complexity is a concern, should be changed to use a union-find 
 				for (var j = 0 ; j < leaf.length; j++) {
 					var node = referenceGraph.getNodeWithValue(leaf[j]);
 					var next = referenceGraph.transitionFunction(node, letter);
-					
-					dArr.push(next[0]);
+					if (next[0]) {
+						dArr.push(next[0]);
+					}
 				}
-				if (!_.find(leaves, function(v){return _.difference(dArr, v.split(',')).length === 0})) {
+				if (!_.find(leaves, function(v){return _.difference(dArr, v.split(',')).length === 0}) && dArr.length !== 0) {
+					//console.log(dArr);
 					jsav.umsg("There are distinguishable states remaining");
 					return;
 				}
@@ -113,6 +115,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 		$('.split').hide();
 		$('#autobutton').hide();
 		$('.hide').show();
+		$('#exportbutton').hide();
 		$('#editable').empty();
 		var graph = jsav.ds.fa({width: '45%', height: 440, layout: 'automatic', element: $('#editable')});
 		for (var i = 0; i < leaves.length; i ++) {
@@ -152,8 +155,12 @@ if computational complexity is a concern, should be changed to use a union-find 
 			if(!minimizedEdges.hasOwnProperty(node1.value())) {
 				minimizedEdges[node1.value()] = [];
 			}
-			minimizedEdges[node1.value()] = _.union(minimizedEdges[node1.value()], 
-					[""+node2.value()+','+next.weight()]);
+			var edgesFrom1 = minimizedEdges[node1.value()];
+			if (!edgesFrom1.hasOwnProperty(node2.value())) {
+				edgesFrom1[node2.value()] = [];
+			}
+			edgesFrom1[node2.value()] = _.union(edgesFrom1[node2.value()], 
+					next.weight().split("<br>"));
 		}
 		graph.layout();
 		
@@ -228,7 +235,7 @@ if computational complexity is a concern, should be changed to use a union-find 
    				var input2 = prompt("Accepted character?");
    				var newEdge;
    				// check if valid transition
-				if (_.contains(minimizedEdges[first.value()], "" + this.value() +','+ input2)) {
+				if (_.contains(minimizedEdges[first.value()][this.value()], input2)) {
 					newEdge = studentGraph.addEdge(first, this, {weight: input2});
 					if (!(typeof newEdge === 'undefined')) {
 						newEdge.layout();
@@ -256,10 +263,10 @@ if computational complexity is a concern, should be changed to use a union-find 
 	// creates a single remaining transition in the minimized DFA
 	var hint = function() {
 		for (var i in minimizedEdges) {
-			for (var j = 0; j < minimizedEdges[i].length; j++) {
+			for (var j in minimizedEdges[i]) {
 				var n1 = studentGraph.getNodeWithValue(i),
-					n2 = studentGraph.getNodeWithValue(minimizedEdges[i][j].split(',')[0]),
-					w = minimizedEdges[i][j].split(',')[1];
+					n2 = studentGraph.getNodeWithValue(j),
+					w = minimizedEdges[i][j].join('<br>');
 				if (!studentGraph.hasEdge(n1, n2) || !_.contains(studentGraph.getEdge(n1, n2).weight().split(','), w)) {
 					var newEdge = studentGraph.addEdge(n1, n2, {weight: w});
 					if (newEdge) {
@@ -273,10 +280,10 @@ if computational complexity is a concern, should be changed to use a union-find 
 	// completes the minimized DFA
 	var complete = function() {
 		for (var i in minimizedEdges) {
-			for (var j = 0; j < minimizedEdges[i].length; j++) {
+			for (var j in minimizedEdges[i]) {
 				var n1 = studentGraph.getNodeWithValue(i),
-					n2 = studentGraph.getNodeWithValue(minimizedEdges[i][j].split(',')[0]),
-					w = minimizedEdges[i][j].split(',')[1];
+					n2 = studentGraph.getNodeWithValue(j),
+					w = minimizedEdges[i][j].join('<br>');
 				var newEdge = studentGraph.addEdge(n1, n2, {weight: w});
 				if (newEdge) {
 					newEdge.layout();
@@ -293,7 +300,10 @@ if computational complexity is a concern, should be changed to use a union-find 
 			currentCount += next.weight().split('<br>').length;
 		}
 		for (var i in minimizedEdges) {
-			minimizedCount += minimizedEdges[i].length;
+			for (var j in minimizedEdges[i]) {
+				minimizedCount += minimizedEdges[i][j].length;
+				console.log(i + " " + minimizedEdges[i]);
+			}
 		}
 		// if not complete, tell the user how many transitions are left
 		if (currentCount !== minimizedCount) {
@@ -301,12 +311,15 @@ if computational complexity is a concern, should be changed to use a union-find 
 		}
 		else {
 			jsav.umsg("You got it!");
-			alert("Congratulations!");
-			localStorage['toMinimize'] = true;
-			localStorage['minimized'] = serialize(studentGraph);
-			window.open('./FAEditor.html');
+			$('#exportbutton').show();
 		}
 	};
+
+	var exportToFA = function() {
+		localStorage['toMinimize'] = true;
+		localStorage['minimized'] = serialize(studentGraph);
+		window.open('./FAEditor.html');
+	}
 
 	// tree editing functions:
 	// function to unhighlight all of the nodes of the reference DFA
@@ -316,6 +329,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 			next.unhighlight();
 		}
 	};
+
 	// checks if user's current partitioning is correct
 	var checkNodes = function() {
 		var checker = [];
@@ -334,6 +348,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 			alert('Those partitions are incorrect');
 		}
 	};
+
 	// adds another partition (since splitting a node only generates two children)
 	var addAnotherChild = function() {
 		var par = checkNodeArr[0].parent(),
@@ -341,6 +356,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 		checkNodeArr.push(par.child(i, "", {edgeLabel: input}).child(i));
 		bt.layout();
 	};
+
 	// deletes a partition
 	var removeTreeNode = function() {
 		if (selectedNode) {
@@ -503,6 +519,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 	$('#autobutton').click(autoPartition);
 	$('#layoutRef').click(function(){referenceGraph.layout()});
 	$('#dfadonebutton').click(dfaDone);
+	$('#exportbutton').click(exportToFA);
 
 	var onLoadHandler = function() {
 		referenceGraph = initGraph();

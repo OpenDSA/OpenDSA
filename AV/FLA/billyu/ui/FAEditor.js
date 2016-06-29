@@ -724,7 +724,6 @@
 			window.alert("This Finite Automaton is nondeterministic.\nPlease convert to DFA before minimizing.");
 			return;
 		}
-		window.alert("Beware that the minimization algorithm will fail on an incomplete DFA.");
 		localStorage['minimizeDFA'] = true;
 		localStorage['toMinimize'] = serialize(g);
 		window.open("./minDFA.html");

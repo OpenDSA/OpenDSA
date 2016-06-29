@@ -162,10 +162,10 @@ var lambda = String.fromCharCode(955),
 	faproto.getTransitionsFromState = function(node) {
 		var neighbors = node.neighbors();
 		var re = [];
-		for each (var neighbor in neighbors) {
+		neighbors.foreach(function(neighbor, index, nbrs) {
 			var edge = this.getEdge(node, neighbor);
 			re.push(edge);
-		}
+		});
 		return re;
 	}
 
