@@ -1042,6 +1042,7 @@ var lambda = String.fromCharCode(955),
       el.addClass("jsavautoresize");
     }
     this.container.element.append(el);
+		this.wasHighlighted;
 
     JSAV.utils._helpers.handlePosition(this);
     JSAV.utils._helpers.handleVisibility(this, this.options);
@@ -1082,7 +1083,6 @@ var lambda = String.fromCharCode(955),
 	fastateproto.showMenu = function(e) {
 		var g = this.fa;
 		g.first = null;
-		g.disableDragging();
 		var nodes = g.nodes();
 		for (var next = nodes.next(); next; next = nodes.next()) {
 			next.unhighlight();
@@ -1579,12 +1579,15 @@ var produceOutput = function (t) {
 // draggable functions
 function dragStart(event, node) {
 	var dragNode = node.helper.data("node");
+	dragNode.wasHighlighted = dragNode.hasClass("jsavhighlight");
 	dragNode.highlight();
 };
 
 function dragStop(event, node) {
 	var dragNode = node.helper.data("node");
-	dragNode.unhighlight();
+	if (!dragNode.wasHighlighted) {
+		dragNode.unhighlight();
+	}
 };
 
 function dragging(event, node) {

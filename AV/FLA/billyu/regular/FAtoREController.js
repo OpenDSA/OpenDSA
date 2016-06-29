@@ -29,9 +29,6 @@ controllerProto.checkForTransitions = function() {
 	}
 }
 
-console.log(normalizeTransitionToRE("(a+b)", true));
-console.log(addStar("(a+b)"));
-
 // change ...<br>... to (...+...)
 // add parentheses to the ones with + sign
 function normalizeTransitionToRE(transition, last) {

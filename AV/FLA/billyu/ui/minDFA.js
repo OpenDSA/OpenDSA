@@ -86,7 +86,6 @@ if computational complexity is a concern, should be changed to use a union-find 
 	function addTrapState() {
 		var alphabet = Object.keys(referenceGraph.alphabet);
 		var nodes = referenceGraph.nodes();
-		console.log(alphabet);
 		var trapEdge = alphabet.join("<br>");
 		var trapNode;
 		for (var node = nodes.next(); node; node = nodes.next()) {
@@ -124,7 +123,6 @@ if computational complexity is a concern, should be changed to use a union-find 
 					}
 				}
 				if (!_.find(leaves, function(v){return _.difference(dArr, v.split(',')).length === 0}) && dArr.length !== 0) {
-					//console.log(dArr);
 					jsav.umsg("There are distinguishable states remaining");
 					return;
 				}
@@ -321,7 +319,6 @@ if computational complexity is a concern, should be changed to use a union-find 
 		for (var i in minimizedEdges) {
 			for (var j in minimizedEdges[i]) {
 				minimizedCount += minimizedEdges[i][j].length;
-				console.log(i + " " + minimizedEdges[i]);
 			}
 		}
 		// if not complete, tell the user how many transitions are left
@@ -381,7 +378,6 @@ if computational complexity is a concern, should be changed to use a union-find 
 	var removeTreeNode = function() {
 		if (selectedNode) {
 			checkNodeArr = _.without(checkNodeArr, selectedNode);
-			//console.log(checkNodeArr);
 			selectedNode.remove();
 			selectedNode = null;
 			bt.layout();
