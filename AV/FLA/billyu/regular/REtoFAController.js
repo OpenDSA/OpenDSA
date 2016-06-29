@@ -185,9 +185,6 @@ controllerProto.nextStep = function() {
 		// We're all done.
 		this.jsav.umsg("The automaton is complete.");
 		$('#export').show();
-		if (exp) {
-			this.exportToFA();
-		}
 	}
 
 	//convertPane.detailLabel.setText(transitionNeeded + " more "+Universe.curProfile.getEmptyString()+"-transitions needed.");

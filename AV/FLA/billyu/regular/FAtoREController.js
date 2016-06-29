@@ -29,15 +29,15 @@ controllerProto.checkForTransitions = function() {
 	}
 }
 
+console.log(normalizeTransitionToRE("(a+b)", true));
+console.log(addStar("(a+b)"));
+
 // change ...<br>... to (...+...)
 // add parentheses to the ones with + sign
 function normalizeTransitionToRE(transition, last) {
 	var arr = transition.split("<br>");
 	if (arr.length == 1) {
-		if (arr[0].indexOf('+') > -1) {
-			return "(" + arr[0] + ")";
-		}
-		return arr[0];
+		return transition;
 	}
 	if (arr.length == 0 && last) return re;
 	var re = "(" + arr[0];
@@ -116,16 +116,16 @@ controllerProto.collapseState = function(node) {
 				}
 				else {
 					if (step1 == lambda && step3 == lambda) {
-						indirect = step2 + "*";
+						indirect = addStar(step2);
 					}
 					else if (step1 == lambda) {
-						indirect = step2 + "*" + step3;
+						indirect = addStar(step2) + step3;
 					}
 					else if (step3 == lambda) {
-						indirect = step1 + step2 + "*";
+						indirect = step1 + addStar(step2);
 					}
 					else {
-						indirect = step1 + step2 + "*" + step3;
+						indirect = step1 + addStar(step2) + step3;
 					}
 				}
 				if (direct == none) {
@@ -208,7 +208,7 @@ controllerProto.generateExpression = function() {
 			}
 			else if (fromm == none || fromm == lambda) {
 				if (too.length > 1) {
-					expression = fromTo + "(" + too + ")*";
+					expression = fromTo + addStar(too);
 				}
 				else {
 					expression = fromTo + too + "*";
@@ -216,7 +216,7 @@ controllerProto.generateExpression = function() {
 			}
 			else if (too == none || too == lambda) {
 				if (fromm.length > 1) {
-					expression = "(" + fromm + ")*" + fromTo;
+					expression = addStar(fromm) + fromTo;
 				}
 				else {
 					expression = fromm + "*" + fromTo;
@@ -224,13 +224,13 @@ controllerProto.generateExpression = function() {
 			}
 			else {
 				if (fromm.length > 1 && too.length > 1) {
-					expression = "(" + fromm + ")*" + fromTo + "(" + too + ")*";
+					expression = addStar(fromm) + fromTo + addStar(too);
 				}
 				else if (fromm.length > 1) {
-					expression = "(" + fromm + ")*" + fromTo + too + "*";
+					expression = addStar(fromm) + fromTo + too + "*";
 				}
 				else if (too.length > 1) {
-					expression = fromm + "*" + fromTo + "(" + too + ")*";
+					expression = fromm + "*" + fromTo + addStar(too);
 				}
 				else {
 					expression = fromm + "*" + fromTo + too + "*";
@@ -240,19 +240,19 @@ controllerProto.generateExpression = function() {
 		else {
 			//cycle = something;
 			if ((fromm == none || fromm == lambda) && (too == none || too == lambda)) {
-				cycle = "(" + fromTo + toFrom + ")*";
+				cycle = addStar(fromTo + toFrom);
 				target = fromTo;
 			}
 			else if (fromm == none || fromm == lambda) {
-				cycle = "(" + fromTo + addStar(too) + toFrom + ")*";
+				cycle = addStar(fromTo + addStar(too) + toFrom);
 				target = fromTo + addStar(too);
 			}
 			else if (too == none || too == lambda) {
-				cycle = "(" + addStar(fromm) + fromTo + toFrom + ")*";
+				cycle = addStar(addStar(fromm) + fromTo + toFrom);
 				target = addStar(fromm) + fromTo;
 			}
 			else {
-				cycle = "(" + addStar(fromm) + fromTo + addStar(too) + toFrom + ")*";
+				cycle = addStar(addStar(fromm) + fromTo + addStar(too) + toFrom);
 				target = addStar(fromm) + fromTo + addStar(too);
 			}
 			expression = cycle + target;
@@ -263,9 +263,6 @@ controllerProto.generateExpression = function() {
 	$('#exportButton').click(function() {
 		exportToRE(expression);
 	});
-	if (exp) {
-		exportToRE(expression);
-	}
 }
 
 function exportToRE(expression) {
@@ -281,7 +278,7 @@ function addStar (transition) {
 	for (var i = 0; i < transition.length; i++) {
 		if (transition.charAt(i) == "(") count++;
 		else if (transition.charAt(i) == ")") count--;
-		if (count == 0 && i < transition.length - 1) return "(" + transition + ")";
+		if (count == 0 && i < transition.length - 1) return "(" + transition + ")*";
 	}
 	return transition + "*";
 }
