@@ -60,14 +60,13 @@ if computational complexity is a concern, should be changed to use a union-find 
 	function initializeBT() {
 		$('#editable').empty();
 		bt = jsav.ds.tree();
+		addTrapState();
 		var val = [],
 			finals = [],
 			nonfinals = [];
 		// ignore unreachable states
 		var reachable = [referenceGraph.initial];
 		dfs(reachable, referenceGraph.initial);
-		console.log(referenceGraph.initial);
-		console.log(reachable);
 		for (var i = 0; i < reachable.length; i++) {
 			val.push(reachable[i].value());
 			if (reachable[i].hasClass('final')) {
@@ -82,6 +81,26 @@ if computational complexity is a concern, should be changed to use a union-find 
 		bt.root().child(1).addClass('final');
 		bt.layout();
 		bt.click(treeClickHandlers);
+	};
+
+	function addTrapState() {
+		var alphabet = Object.keys(referenceGraph.alphabet);
+		var nodes = referenceGraph.nodes();
+		console.log(alphabet);
+		var trapEdge = alphabet.join("<br>");
+		var trapNode;
+		for (var node = nodes.next(); node; node = nodes.next()) {
+			for (var i = 0; i < alphabet.length; i++) {
+				var letter = alphabet[i];
+				var toNode = referenceGraph.transitionFunction(node, letter)[0];
+				if (toNode) continue;
+				if (!trapNode) {
+					trapNode = referenceGraph.addNode();
+					referenceGraph.addEdge(trapNode, trapNode, {weight: trapEdge});
+				}
+				referenceGraph.addEdge(node, trapNode, {weight: letter});
+			}
+		}
 	};
 
 	// check if tree is complete
@@ -311,6 +330,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 		}
 		else {
 			jsav.umsg("You got it!");
+			$('.hide').hide();
 			$('#exportbutton').show();
 		}
 	};
