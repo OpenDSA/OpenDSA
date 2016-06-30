@@ -18,9 +18,6 @@
 	// Otherwise simply initializes a default data set.
 	function onLoadHandler() {
 		// initialize right click menu and hide it for future use
-		$("#rmenu").load("./rmenu.html");
-		$("#rmenu").hide();
-
 		type = $('h1').attr('id');
 		if (type == 'fixer' || type == 'tester') {
 			switch (type) {

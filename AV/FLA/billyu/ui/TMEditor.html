@@ -20,25 +20,9 @@
 
   <body>
     <div id="container">
-      <h1 id="editor">Finite Automaton Editor</h1>
-      <div id="dialogueoverlay"></div>
-      <div id="dialoguebox">
-        <div>
-          <div id="dialogueboxhead"></div>
-          <div id="dialogueboxbody"></div>
-          <div id="dialogueboxfoot"></div>
-        </div>
-      </div>
-			<div id="dialog" title="Transitions">
-				<div id="transitions"></div>	
-				<div align="center">
-				<button id="finalize">Finalize</button> 
-				</div>
-			</div>
+      <h1 id="editor">Turing Machine Editor</h1>
       <p align="center" class="arrayPlace"></p>
-      <button class="functionality" id="begin">Traverse</button>
       <button class="functionality" id="saveButton">Save</button>
-      <button class="createExercise" id="finish">Finish</button>
       <input type="file" id="loadFile">
       <div id="av">
         <button id="undoButton">Undo</button>
@@ -50,22 +34,12 @@
         <button id="moveButton">Move Nodes</button>
         <button id="editButton">Edit Nodes/Edges</button>
         <button id="deleteButton">Delete Nodes/Edges</button>
-				<button id="collapseButton">Collapse State</button>
 				<button id="cheat">Do It</button>
 				<button id="exportButton">Export</button>
         <span id='mode'></span>
         <p class="jsavoutput jsavline"></p>
       </div>
       <button id="layoutButton">Layout</button>
-      <button class="functionality" id="ndButton">Highlight Nondeterminism</button>
-      <button class="functionality" id="lambdaButton">Highlight &lambda;-Transitions</button>
-      <button class="functionality" id="epsilonButton">&epsilon; Mode</button>
-      <button class="functionality" id="shorthandButton">Enable Shorthand</button>
-			<br>
-      <button class="functionality" id="toDFAButton">to DFA</button>
-      <button class="functionality" id="minimizeButton">Minimize DFA</button>
-      <button class="functionality" id="toGrammarButton">to RLG</button>
-      <button class="functionality" id="toREButton">to RE</button>
       <div id='download'></div>
       <div id="rmenu"></div>
 
@@ -83,10 +57,7 @@
 			<script src="../fa/TuringMachine.js"></script>
       <script src="./CustomPrompt.js"></script>
       <script src="../fa/Commands.js"></script>
-      <script src="../fa/TraverseAccepter.js"></script>
-			<script src="../regular/FAtoREController.js"></script>
-			<script src="../exerController/ExerciseController.js"></script>
-      <script src="./FAEditor.js"></script>
+      <script src="./TMEditor.js"></script>
     </div>
   </body>
 </html>
