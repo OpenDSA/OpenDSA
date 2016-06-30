@@ -56,7 +56,7 @@
 		this.jsav = jsav; // set the jsav object for this tree
 		this.level = 0; // level of the tree
 		// use specific starting point and ending point
-		this.options = $.extend({layout: "vertical", indexed: true, left: 80, top:20}, options);
+		this.options = $.extend({layout: "vertical", indexed: true, left: 70, top:15}, options);
 		
 		/**
 		 * XXX: ???
@@ -217,7 +217,7 @@
           x.setPointer(j, jsav.pointer(" ", x.getDispArr(), {
             targetIndex: j,
             left: -(longer - 1) * 100 - 85,
-            top: 23,
+            top: 21,
             arrowAnchor: "left center",
             fixed: false
           }));
@@ -238,7 +238,7 @@
           x.setPointer(j, jsav.pointer(" ", x.getDispArr(), {
             targetIndex: j,
             left: -(longer - 1) * 100 - 85,
-            top: 23,
+            top: 21,
             arrowAnchor: "left center",
             fixed: false
           }));
@@ -319,7 +319,7 @@
         for (var i = 0; i <= this.level; i++) { // Splice into list
           var upFwrd = update[i].getForward()[i];
           while (upFwrd != null &&
-            (upFwrd.equalKey(otherKey)) && (removed.equals(upFwrd))) {
+            (upFwrd.getNodeNum() === removed.getNodeNum())) {
             if (upFwrd.getForward()[i] == null) {
               update[i].resetArrDis(i);
             }
@@ -364,7 +364,7 @@
             var opt = {
               targetIndex: i,
               left: -(longer - 1) * 100 - 85,
-              top: 23,
+              top: 21,
               arrowAnchor: "left center",
               fixed: false
             }
@@ -477,7 +477,7 @@ skipNodeProto.updateNextPointer = function(longer, j){
 	this.pointer[j] =  this.jsav.pointer(" ", this.disArr, {
 			targetIndex: j,
 			left: -(longer - 1)*100 + (-85),
-			top: 23,
+			top: 21,
 			arrowAnchor: "left center",
 			fixed: false,
 			"stroke-width": 2	
@@ -493,7 +493,7 @@ skipNodeProto.movePointerRight = function(lev, longer, t) {
 		this.pointer[i] = this.jsav.pointer(" ", this.disArr, {
 			targetIndex: i,
 			left: (t == 0)? lef - 100: (d <= -lef)? lef - 100: lef,
-			top: 23,
+			top: 21,
 			arrowAnchor: "left center",
 			fixed: false,
 			"stroke-width": 2	
@@ -513,7 +513,7 @@ skipNodeProto.movePointerLeft = function(lev, longer, t) {
 		this.pointer[i] = this.jsav.pointer(" ", this.disArr, {
 			targetIndex: i,
 			left: (d > -lef)? lef: lef + 100,
-			top: 23,
+			top: 21,
 			arrowAnchor: "left center",
 			fixed: false
 		});
