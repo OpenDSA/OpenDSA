@@ -6,64 +6,68 @@ var lambda = String.fromCharCode(955),
 		epsilon = String.fromCharCode(949),
 		emptystring = lambda,
 		menuSelected; // stores the node that's right clicked on
-"use strict";
-if (typeof JSAV === "undefined") {
-	console.log("Error!!! No JSAV lib!!!");
-}
-var Edge = JSAV._types.ds.Edge;
-JSAV.ext.ds.fa = function (options) {
-	var opts = $.extend(true, {visible: true, autoresize: true}, options);
-	return new FiniteAutomaton(this, opts);
-};
 
-/*
-	 Finite automaton class, used for DFAs/NFAs, PDAs, Mealy/Moore machines, and Turing Machines.
-	 Extended from the JSAV graph class.
- */
-var FiniteAutomaton = function (jsav, options) {
-	this.init(jsav, options);
-};
-JSAV.utils.extend(FiniteAutomaton, JSAV._types.ds.Graph);
-var faproto = FiniteAutomaton.prototype;
 
-faproto.init = function (jsav, options) {
-	this._nodes = [];
-	this._edges = [];
-	this._alledges = null;
-	this.stack = ['Z'];           // for PDA
-	this.alphabet = {};           // input alphabet
-	this.jsav = jsav;
-	this.initial;                 // initial state
-	this.first;										// first selected node, used for creating edges
-	this.selected;								// selected node, used for right click, delete etc
-	this.undoStack = [];
-	this.redoStack = [];
-	this.editable = options.editable;
-	this.options = $.extend({visible: true, nodegap: 40, autoresize: true, width: 400, height: 200,
-			directed: true, center: true, arcoffset: 50, emptystring: String.fromCharCode(955)}, options);
-	//this.options = $.extend({directed: true}, options);
-	this.emptystring = this.options.emptystring;
-	this.shorthand = false;
-	var el = this.options.element || $("<div/>");
-	el.addClass("jsavgraph jsavfiniteautomaton");
-	for (var key in this.options) {
-		var val = this.options[key];
-		if (this.options.hasOwnProperty(key) && typeof(val) === "string" || typeof(val) === "number" || typeof(val) === "boolean") {
-			el.attr("data-" + key, val);
+(function($) {
+	"use strict";
+	if (typeof JSAV === "undefined") {
+		console.log("Error!!! No JSAV lib!!!");
+	}
+	var Edge = JSAV._types.ds.Edge;
+	JSAV.ext.ds.fa = function (options) {
+		var opts = $.extend(true, {visible: true, autoresize: true}, options);
+		return new FiniteAutomaton(this, opts);
+	};
+
+	/*
+		 Finite automaton class, used for DFAs/NFAs, PDAs, Mealy/Moore machines, and Turing Machines.
+		 Extended from the JSAV graph class.
+	 */
+	 console.log(this);
+	var FiniteAutomaton = function (jsav, options) {
+		this.init(jsav, options);
+	};
+	JSAV.utils.extend(FiniteAutomaton, JSAV._types.ds.Graph);
+	var faproto = FiniteAutomaton.prototype;
+
+	faproto.init = function (jsav, options) {
+		this._nodes = [];
+		this._edges = [];
+		this._alledges = null;
+		this.stack = ['Z'];           // for PDA
+		this.alphabet = {};           // input alphabet
+		this.jsav = jsav;
+		this.initial;                 // initial state
+		this.first;										// first selected node, used for creating edges
+		this.selected;								// selected node, used for right click, delete etc
+		this.undoStack = [];
+		this.redoStack = [];
+		this.editable = options.editable;
+		this.options = $.extend({visible: true, nodegap: 40, autoresize: true, width: 400, height: 200,
+				directed: true, center: true, arcoffset: 50, emptystring: String.fromCharCode(955)}, options);
+		//this.options = $.extend({directed: true}, options);
+		this.emptystring = this.options.emptystring;
+		this.shorthand = false;
+		var el = this.options.element || $("<div/>");
+		el.addClass("jsavgraph jsavfiniteautomaton");
+		for (var key in this.options) {
+			var val = this.options[key];
+			if (this.options.hasOwnProperty(key) && typeof(val) === "string" || typeof(val) === "number" || typeof(val) === "boolean") {
+				el.attr("data-" + key, val);
+			}
 		}
-	}
-	if (!this.options.element) {
-		$(jsav.canvas).append(el);
-	}
-	this.element = el;
-	el.attr({"id": this.id()}).width(this.options.width).height(this.options.height);
-	if (this.options.autoresize) {
-		el.addClass("jsavautoresize");
-	}
-	if (this.options.center) {
-		el.addClass("jsavcenter");
-	}
-	this.constructors = $.extend({
+		if (!this.options.element) {
+			$(jsav.canvas).append(el);
+		}
+		this.element = el;
+		el.attr({"id": this.id()}).width(this.options.width).height(this.options.height);
+		if (this.options.autoresize) {
+			el.addClass("jsavautoresize");
+		}
+		if (this.options.center) {
+			el.addClass("jsavcenter");
+		}
+		this.constructors = $.extend({
 Graph: FiniteAutomaton,
 Node: faState,
 Edge: faTransition
@@ -75,8 +79,8 @@ $(document).click(function() {
 		t.hideRMenu();
 		});
 
-		$("#rmenu").load("./rmenu.html");
-		$("#rmenu").hide();
+$("#rmenu").load("./rmenu.html");
+$("#rmenu").hide();
 
 };
 
@@ -1195,6 +1199,8 @@ var dstypes = JSAV._types.ds;
 dstypes.FiniteAutomaton = FiniteAutomaton;
 dstypes.faState = faState;
 dstypes.faTransition = faTransition;
+
+}(jQuery));
 
 /*
 	 NFA to DFA conversion

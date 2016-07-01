@@ -12,7 +12,7 @@ JSAV.ext.ds.tm = function (options) {
 
 JSAV.utils.extend(TuringMachine, JSAV._types.ds.Graph);
 
-TuringMachine.prototype = Object.create(FiniteAutomaton.prototype, {});
+TuringMachine.prototype = Object.create(FA.FiniteAutomaton.prototype, {});
 var tm = TuringMachine.prototype;
 
 tm.addTransition = function(start, end, toRead, toWrite, direction) {
