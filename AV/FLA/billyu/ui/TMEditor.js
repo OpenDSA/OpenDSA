@@ -151,46 +151,6 @@ var lambda = String.fromCharCode(955),
 			this.stateLabelPositionUpdate();
 			this.unhighlight();
 		}
-		else if ($(".jsavgraph").hasClass("addEdges")) {
-			this.highlight();
-			if (!$(".jsavgraph").hasClass("working")) {
-				first = this;
-				$('.jsavgraph').addClass("working");
-				jsav.umsg("Select a state to make a transition to");
-   			} else {
-   				var input2 = prompt("Character to read?");
-   				var input3 = prompt('Character to write?');
-   				var input4 = prompt('Direction to move the tape head: left, right, or stay? L, R, S?');
-   				if (input4) {
-   					input4 = input4.toUpperCase();
-   				}
-   				var newEdge;
-   				if (!input2) {
-   					input2 = emptystring;
-   				}
-   				if (!input3) {
-   					input3 = emptystring;
-   				}
-   				if (!input4 || (input4 !== 'L' && input4 !== 'R' && input4 !== 'S')) {
-   					input4 = 'S';
-   				}
-   				var w = input2 + ':' + input3 + ':' + input4;
-				if (input2 != null) {
-					newEdge = g.addEdge(first, this, {weight: w});
-					if (newEdge) {
-						$(newEdge._label.element).click(labelClickHandler);
-					}
-				} 
-				if (!(typeof newEdge === 'undefined')) {
-					newEdge.layout();
-				}
-				$('.jsavgraph').removeClass("working");
-				first.unhighlight();
-				this.unhighlight();
-				updateAlphabet();
-				jsav.umsg("Click a node");
-   			}
-		} 
 		else if ($('.jsavgraph').hasClass('moveNodes')) {
 		}
 		else if ($('.jsavgraph').hasClass('delete')) {
@@ -238,8 +198,13 @@ var lambda = String.fromCharCode(955),
 		cancel();
 		var jg = $(".jsavgraph");
 		jg.addClass("addEdges");
+		g.disableDragging();
+		$(".jsavgraph").addClass("addEdges");
+		$('.jsavgraph').off('mousedown').mousedown(mouseDown);
+		$('.jsavgraph').off('mousemove').mousemove(mouseMove);
+		$('.jsavgraph').off('mouseup').mouseup(mouseUp);
 		$("#mode").html('Adding edges');
-		jsav.umsg("Click a node");
+		jsav.umsg("Drag from one edge to another.");
 	};
 	var moveNodesMode = function() {
 		cancel();
@@ -352,6 +317,80 @@ var lambda = String.fromCharCode(955),
 				g.initFromXML(text);
 		}
 	};
+
+	var startX, startY, endX, endY; // start position of dragging edge line
+	function mouseDown(e) {
+		if (!$('.jsavgraph').hasClass('addEdges')) return;
+		var targetClass = $(e.target).attr('class');
+		if (targetClass !== "jsavvaluelabel") return;
+		var node = $(e.target);
+		g.first = g.getNodeWithValue(node.text());
+		g.first.highlight();
+		offset = $('.jsavgraph').offset(),
+	 	offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
+		startX = e.pageX - 15; 
+		startY = e.pageY - offset.top + offset2 - 5;
+	}
+
+	function mouseUp(e) {
+		if (!g.first) return;
+		var targetClass = $(e.target).attr('class');
+		if (targetClass !== "jsavvaluelabel") {
+			$('path[opacity="1.5"]').remove();
+			g.first.unhighlight();
+			g.first = null;
+			return;
+		}
+		var node = $(e.target);
+		g.selected = g.getNodeWithValue(node.text());
+		g.selected.highlight();
+		
+		initEdgeInput();
+	}
+
+	function initEdgeInput() {
+		// draw the edge input box at correct position
+		var path = $('path[opacity="1.5"]');
+		var box = path[0].getBBox();
+		var edgeInput = $('#edge');
+		edgeInput.show();
+		var leftOffset = 15 + box.x + box.width / 2;
+		var topOffset = box.y + box.height / 2 + $('.jsavgraph').offset().top - 5;
+		edgeInput.css({left: leftOffset, top: topOffset});
+		path.remove();
+		first = g.first;
+		g.first = null;
+		$('#toRead').focus();
+		$(document).keyup(function(e) {
+			if (e.keyCode == 13) {
+				addEdgeWithInputBox();
+			}
+		});
+	}
+
+	function addEdgeWithInputBox() {
+		if (!first) return;
+		var edgeInput = $('#edge');
+		var toRead = $('#toRead').val();
+		var toWrite = $('#toWrite').val();
+		var direction = $('#direction').val();
+		var edgeWeight = toRead + ":" + toWrite + ":" + direction;
+		g.addEdge(first, g.selected, {weight: edgeWeight});
+
+		edgeInput.hide();
+		first.unhighlight();
+		g.selected.unhighlight();
+		first = null;
+		g.selected= null;
+	}
+
+	function mouseMove(e) {
+		if (!g.first) return;
+		endX = e.pageX - 15;
+		endY = e.pageY - offset.top + offset2 - 5;
+		$('path[opacity="1.5"]').remove();
+		jsav.g.line(startX, startY, endX, endY, {"opacity": 1.5});
+	}
 
 	$('#playButton').click(function() {onClickTraverse()});
 	//$('#multiplebutton').click(displayTraversals);

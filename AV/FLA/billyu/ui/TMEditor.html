@@ -48,6 +48,25 @@
 
       <div id='download'></div>
       <div id="rmenu"></div>
+			<div id="edge">
+				<table>
+					<tr>
+						<td>
+							<input type="text" id="toRead" onfocus='this.select();' maxlength='1' value="□"/>
+						</td>
+						<td>
+							<input type="text" id="toWrite" onfocus='this.select();' maxlength='1' value="□"/>
+						</td>
+						<td>
+							<select id="direction" dir="rtl">
+								<option value="L">L</option>
+								<option value="R">R</option>
+								<option value="S">S</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+			</div>
 
       <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
       <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>

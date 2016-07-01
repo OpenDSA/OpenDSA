@@ -12,3 +12,22 @@
 #jsavoutput {
 	margin-top: 0;
 }
+#edge {
+	text-align: center;
+	background-color: white;
+	width: 150px;
+	transform: translate(-50%, -50%);
+	position: absolute;
+	z-index: 1000;
+	display: none;
+}
+#direction {
+	background-color: white;
+	width: 100%;
+	border: none;
+}
+#toRead, #toWrite {
+	width: 90%;
+	text-align: center;
+	border: none;
+}
