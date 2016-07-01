@@ -2,3 +2,13 @@
 	background-color: #000033;
 	color: white;
 }
+#functionality {
+	margin-left: 20px;
+}
+#mode {
+	margin-top: 10px;
+	height: 20px;
+}
+#jsavoutput {
+	margin-top: 0;
+}

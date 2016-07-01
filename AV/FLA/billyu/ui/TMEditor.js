@@ -10,7 +10,7 @@ var lambda = String.fromCharCode(955),
 
 // initialize graph
 	var initGraph = function(opts) {
-		g = jsav.ds.tm($.extend({width: '90%', height: 440, emptystring: square}, opts));
+		g = jsav.ds.tm($.extend({width: '90%', height: 440, emptystring: square, editable: true}, opts));
 		emptystring = g.emptystring;
 		var gWidth = g.element.width(),
 				gHeight = g.element.height();
@@ -95,6 +95,7 @@ var lambda = String.fromCharCode(955),
 					}
 				}
 			};
+
 			// function for deleting the selected transition
 			var deleteTransition = function() {
 				var x = document.getElementById('edgelabelselect').selectedIndex;
@@ -107,6 +108,7 @@ var lambda = String.fromCharCode(955),
 					}
 				}
 			};
+
 			// applies changes to the transitions and closes the menu
 			var finishEdgeLabel = function() {
 				var newVal = [];
@@ -135,21 +137,7 @@ var lambda = String.fromCharCode(955),
 				nodeY = newNode.element.height()/2.0;
 			$(newNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
 		} 
-		else if ($('.jsavgraph').hasClass('moveNodes') && selectedNode != null) {
-			var nodeX = selectedNode.element.width()/2.0,
-				nodeY = selectedNode.element.height()/2.0,
-				edges = g.edges();
-			$(selectedNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
-			selectedNode.stateLabelPositionUpdate();
-			for (var next = edges.next(); next; next = edges.next()) {
-				if (next.start().equals(selectedNode) || next.end().equals(selectedNode)) {
-					next.layout();
-				}
-			}
-			selectedNode.unhighlight();
-			selectedNode = null;
-			e.stopPropagation();
-			jsav.umsg("Click a node");
+		else if ($('.jsavgraph').hasClass('moveNodes')) {
 		}
 	};
 
@@ -158,34 +146,10 @@ var lambda = String.fromCharCode(955),
 		// editing nodes should be changed to match the interface in multitapeTest.js
 		if ($(".jsavgraph").hasClass("editNodes")) {
 			this.highlight();
-			var input = prompt("Delete state, make state initial, make state final, or give state a label? d, i, f, or l");
-			if (input === null) {
-				this.unhighlight();
-				return;
-			}
-			input = input.toUpperCase();
-			if (input == 'D') {
-				g.removeNode(this);
-				updateAlphabet();
-			}
-			else if (input == 'I') {
-				var nodes = g.nodes();
-				for (var next = nodes.next(); next; next = nodes.next()) {
-					g.removeInitial(next);
-				}
-				g.makeInitial(this);
-			} else if (input == 'F') {
-				this.toggleClass('final');
-			} 
-			//adds labels to states
-			else if (input == 'L') {
-				var input2 = prompt("Label?");
-				if (input2 !== null) {
-					this.stateLabel(input2);
-					this.stateLabelPositionUpdate();
-				}
-			}
-   			this.unhighlight();
+			var input = prompt("State Label: ", this.stateLabel());
+			this.stateLabel(input);
+			this.stateLabelPositionUpdate();
+			this.unhighlight();
 		} else if ($(".jsavgraph").hasClass("addEdges")) {
 			this.highlight();
 			if (!$(".jsavgraph").hasClass("working")) {
@@ -225,14 +189,8 @@ var lambda = String.fromCharCode(955),
 				updateAlphabet();
 				jsav.umsg("Click a node");
    			}
-		} else if ($('.jsavgraph').hasClass('moveNodes')) {
-			if (selectedNode) {
-				selectedNode.unhighlight();
-			}
-			this.highlight();
-			selectedNode = this;
-			jsav.umsg("Click to place node");
-			e.stopPropagation();
+		} 
+		else if ($('.jsavgraph').hasClass('moveNodes')) {
 		}
 	};
 
@@ -298,8 +256,8 @@ var lambda = String.fromCharCode(955),
 		jg.removeClass("addEdges");
 		jg.removeClass("editNodes");
 		jg.addClass("moveNodes");
-		$("#mode").html('Moving nodes');
-		jsav.umsg("Click a node");
+		$("#mode").html('\n');
+		jsav.umsg("Drag to move.");
 	};
 	var editNodesMode = function() {
 		var jg = $(".jsavgraph");
@@ -331,6 +289,16 @@ var lambda = String.fromCharCode(955),
 		$('.notEditing').toggle();
 		$('.editing').toggle();
 	};
+	var cancel = function() {
+		var jg = $(".jsavgraph");
+		jg.removeClass("working");
+		jg.removeClass("addNodes");
+		jg.removeClass("addEdges");
+		jg.removeClass("moveNodes");
+		jg.removeClass("editNodes");
+		$("#mode").html('\n');
+		jsav.umsg("Enjoy");
+	}
 
 	// make edges easier to click
 	var addEdgeSelect = function () {
@@ -405,6 +373,14 @@ var lambda = String.fromCharCode(955),
 	$('#editButton').click(editNodesMode);
 	$('#saveButton').click(save);
   $('#loadFile').on('change', load);
+	$('#undoButton').click(function() {g.undo();});
+	$('#redoButton').click(function() {g.redo();});
+	$('#cancelButton').click(cancel);
+	$(document).keyup(function(e) {
+		if (e.keyCode == 27) {
+			cancel();
+		}
+	});
 
 	g = initGraph({layout: "manual"});
 	g.layout();
