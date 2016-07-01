@@ -375,6 +375,27 @@ var lambda = String.fromCharCode(955),
 		g.play(inputString);
 	}
 
+	var save = function() {
+		var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(g.serializeToXML());
+		$('#download').html('<a href="data:' + downloadData + '" target="_blank" download="tm.xml">Download TM</a>');
+		$('#download a')[0].click();
+	}
+
+	var load = function() {
+		var loaded = document.getElementById('loadFile');
+		var file = loaded.files[0],
+		reader = new FileReader();
+		waitForReading(reader);
+		reader.readAsText(file);
+	}
+
+	var waitForReading = function (reader) {
+		reader.onloadend = function(event) {
+				var text = event.target.result;
+				g.initFromXML(text);
+		}
+	};
+
 	$('#playButton').click(function() {onClickTraverse()});
 	//$('#multiplebutton').click(displayTraversals);
 	$('#nodeButton').click(addNodesMode);
@@ -382,8 +403,8 @@ var lambda = String.fromCharCode(955),
 	$('#edgeButton').click(addEdgesMode);
 	$('#moveButton').click(moveNodesMode);
 	$('#editButton').click(editNodesMode);
-	//$('#savebutton').click(save);
-  //$('#loadbutton').on('change', load);
+	$('#saveButton').click(save);
+  $('#loadFile').on('change', load);
 
 	g = initGraph({layout: "manual"});
 	g.layout();
