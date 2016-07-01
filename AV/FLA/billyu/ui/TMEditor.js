@@ -150,7 +150,8 @@ var lambda = String.fromCharCode(955),
 			this.stateLabel(input);
 			this.stateLabelPositionUpdate();
 			this.unhighlight();
-		} else if ($(".jsavgraph").hasClass("addEdges")) {
+		}
+		else if ($(".jsavgraph").hasClass("addEdges")) {
 			this.highlight();
 			if (!$(".jsavgraph").hasClass("working")) {
 				first = this;
@@ -192,6 +193,9 @@ var lambda = String.fromCharCode(955),
 		} 
 		else if ($('.jsavgraph').hasClass('moveNodes')) {
 		}
+		else if ($('.jsavgraph').hasClass('delete')) {
+			g.removeNode(this);
+		}
 	};
 
 	// handler for the edges of the graph
@@ -224,62 +228,44 @@ var lambda = String.fromCharCode(955),
 	//editing modes
 
 	var addNodesMode = function() {
-		removeEdgeSelect();
-		removeLabelMenu();
+		cancel();
 		var jg = $(".jsavgraph");
-		jg.removeClass("working");
-		jg.removeClass("addEdges");
-		jg.removeClass("moveNodes");
-		jg.removeClass("editNodes");
 		jg.addClass("addNodes");
 		$("#mode").html('Adding nodes');
 		jsav.umsg("Click to add nodes");
 	};
 	var addEdgesMode = function() {
-		removeEdgeSelect();
-		removeLabelMenu();
+		cancel();
 		var jg = $(".jsavgraph");
-		jg.removeClass("working");
-		jg.removeClass("addNodes");
-		jg.removeClass("moveNodes");
-		jg.removeClass("editNodes");
 		jg.addClass("addEdges");
 		$("#mode").html('Adding edges');
 		jsav.umsg("Click a node");
 	};
 	var moveNodesMode = function() {
-		removeEdgeSelect();
-		removeLabelMenu();
+		cancel();
 		var jg = $(".jsavgraph");
-		jg.removeClass("working");
-		jg.removeClass("addNodes");
-		jg.removeClass("addEdges");
-		jg.removeClass("editNodes");
 		jg.addClass("moveNodes");
-		$("#mode").html('\n');
+		$("#mode").html('');
 		jsav.umsg("Drag to move.");
 	};
 	var editNodesMode = function() {
+		cancel();
 		var jg = $(".jsavgraph");
-		jg.removeClass("working");
-		jg.removeClass("addNodes");
-		jg.removeClass("addEdges");
-		jg.removeClass("moveNodes");
 		jg.addClass("editNodes");
 		$("#mode").html('Editing nodes and edges');
 		addEdgeSelect();
-		jsav.umsg("Click a node or edge");
+		jsav.umsg("Click a node or edge to edit.");
+	};
+	var deleteMode = function() {
+		cancel();
+		var jg = $(".jsavgraph");
+		jg.addClass("delete");
+		$("#mode").html('Deleting');
+		jsav.umsg("Click a node or edge to delete.");
 	};
 	// change between editing and not editing (traversal)
 	var changeEditingMode = function() {
-		removeLabelMenu();
-		var jg = $(".jsavgraph");
-		jg.removeClass("working");
-		jg.removeClass("addNodes");
-		jg.removeClass("addEdges");
-		jg.removeClass("moveNodes");
-		jg.removeClass('editNodes');
-		removeEdgeSelect();
+		cancel();
 		$("#mode").html('Editing');
 		if ($(".notEditing").is(":visible")) {
 			$('#changeButton').html('Done editing');
@@ -290,12 +276,15 @@ var lambda = String.fromCharCode(955),
 		$('.editing').toggle();
 	};
 	var cancel = function() {
+		removeEdgeSelect();
+		removeLabelMenu();
 		var jg = $(".jsavgraph");
 		jg.removeClass("working");
 		jg.removeClass("addNodes");
 		jg.removeClass("addEdges");
 		jg.removeClass("moveNodes");
 		jg.removeClass("editNodes");
+		jg.removeClass("delete");
 		$("#mode").html('\n');
 		jsav.umsg("Enjoy");
 	}
@@ -376,6 +365,7 @@ var lambda = String.fromCharCode(955),
 	$('#undoButton').click(function() {g.undo();});
 	$('#redoButton').click(function() {g.redo();});
 	$('#cancelButton').click(cancel);
+	$('#deleteButton').click(deleteMode);
 	$(document).keyup(function(e) {
 		if (e.keyCode == 27) {
 			cancel();
