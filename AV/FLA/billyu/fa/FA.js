@@ -152,17 +152,17 @@ faproto.addNode = function(options) {
 	var newNode = this.newNode(value, options);
 	newNode.fa = this;
 	newNode.element.draggable({
-start: dragStart,
-stop: dragStop,
-drag: dragging,
-containment: "parent"
-});
-if (this.editable) {
-	newNode.element.contextmenu(function(e) {
+		start: dragStart,
+		stop: dragStop,
+		drag: dragging,
+		containment: "parent"
+		});
+		if (this.editable) {
+			newNode.element.contextmenu(function(e) {
 			newNode.showMenu(e);
-			});
-}
-return newNode;
+		});
+	}
+	return newNode;
 };
 
 faproto.getTransitionsFromState = function(node) {
@@ -1348,6 +1348,11 @@ function dragging(event, node) {
 	$('path[opacity="0"]').remove();
 	var dragNode = node.helper.data("node");
 	g = dragNode.fa;
+	if (dragNode == g.initial) {
+		if (node.helper.offset().left < 45) {
+			node.helper.offset({left: 45});
+		}
+	}
 	var nodes = g.nodes();
 	var neighbors = dragNode.neighbors();
 	nodes.reset();
