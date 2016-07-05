@@ -51,9 +51,12 @@
 				$(".createExercise").hide();
 				if (localStorage['toConvert'] === "true") {
 					data = localStorage['converted'];
+					$('#clearLabelButton').show();
+					console.log("here");
 				}
 				else if (localStorage['toMinimize'] === "true") {
 					data = localStorage['minimized'];
+					$('#clearLabelButton').show();
 				}
 				else if (localStorage['REtoFA'] == "true") {
 					data = localStorage['FAfromRE'];
@@ -790,6 +793,13 @@
 			$(".jsavgraph").removeClass("working");
 		}
 	};
+
+	function clearLabels() {
+		var nodes = g.nodes();
+		for (var node = nodes.next(); node; node = nodes.next()) {
+			clearLabel(node); // function declared in FA.js
+		}
+	}
 	
 	var startX, startY, endX, endY; // start position of dragging edge line
 	function mouseDown(e) {
@@ -836,9 +846,6 @@
 		jsav.g.line(startX, startY, endX, endY, {"opacity": 1.5});
 	}
 
-	// magic happens here
-	onLoadHandler();
-
 	// Button click handlers.
 	$('#saveButton').click(saveXML);
 	$("#finish").click(finishExercise);
@@ -858,12 +865,18 @@
 	$('#minimizeButton').click(minimizeDFA);
 	$('#toGrammarButton').click(convertToGrammar);
 	$('#toREButton').click(toRE);
+	$('#clearLabelButton').click(clearLabels);
 	$('#collapseButton').hide();
 	$('#cheat').hide();
 	$('#exportButton').hide();
+	$('#clearLabelButton').hide();
 	$( "#dialog" ).dialog({ autoOpen: false });
 	$(document).keyup(function(e) {
 		if (e.keyCode === 27) cancel();   // esc
 	});
 	$('#download').hide();
+
+	// magic happens here
+	onLoadHandler();
+
 }(jQuery));
