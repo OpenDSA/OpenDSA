@@ -1,3 +1,4 @@
+var latexit = "http://latex.codecogs.com/svg.latex?";
 (function ($) {
 	var jsav = new JSAV("av"), // Instance variable to store the JSAV algorithm visualization.
 		jsavArray, // Instance variable to store the JSAV array (in which input strings are displayed).
