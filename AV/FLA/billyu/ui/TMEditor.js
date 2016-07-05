@@ -51,82 +51,79 @@ var lambda = String.fromCharCode(955),
 
 	// handler for editing edges/transitions
 	var labelClickHandler = function(e) {
-		if ($(".jsavgraph").hasClass("editNodes") && !$(".jsavgraph").hasClass("working")) {
-			var jg = $(".jsavgraph");
-			jg.addClass("working");
-			var self = this;
-			var values = $(this).html().split('<br>');
-			// interface for editing individual transitions is as a dropdown menu
-			var createForm = '<form id="editedgelabel"><select class="labelmenu" id="edgelabelselect" size="' + values.length + '">'
-			for (var i = 0; i < values.length; i++) {
-				createForm += '<option>' + values[i] + '</option>';
-			}
-			createForm += '</select><br><input type="button" class="labelmenu" id="changetransitionbutton" value="Change transition"><input type="button" class="labelmenu" id="deletetransitionbutton" value="Delete transition"><input type="button" class="labelmenu" id="donelabelbutton" value="Done"></form>'
-			$(createForm).appendTo(jg);
-			// place menu where the user clicked (adjust positioning near the edges of the window)
-			var xBound = jg.offset().left + jg.width(),
-				yBound = jg.offset().top + jg.height(),
-				xOffset = e.pageX,
-				yOffset = e.pageY,
-				xWidth = $('#editedgelabel').width(),
-				yHeight = $('#editedgelabel').height();
-			if (xBound < xOffset + xWidth) {
-				xOffset -= xWidth;
-			}
-			if (yBound < yOffset + yHeight) {
-				yOffset -= yHeight;
-			}
-			$('#editedgelabel').offset({top: yOffset, left: xOffset});
-			// function for editing the selected transition
-			var changeTransition = function() {
-				var x = document.getElementById("edgelabelselect").selectedIndex;
-				if (x !== -1) {
-					var y = document.getElementById('edgelabelselect').options[x].text;
-					var n = prompt("New transition label?", y);
-					if (n) {
-						var nSplit = n.split(':');
-						for (var i = 0; i < nSplit.length; i++) {
-							if (nSplit[i] === "") {
-								nSplit[i] = emptystring;
-							}
-						}
-						n = nSplit.join(':');
-						document.getElementById('edgelabelselect').options[x].innerHTML = n;
-					}
-				}
-			};
+		initEditEdgeInput(this);
+	};
 
-			// function for deleting the selected transition
-			var deleteTransition = function() {
-				var x = document.getElementById('edgelabelselect').selectedIndex;
-				if (x !== -1) {
-					document.getElementById('edgelabelselect').remove(x);
-					document.getElementById('edgelabelselect').size--;
-					// if all transitions are deleted, close the menu
-					if (document.getElementById('edgelabelselect').size === 0) {
-						$('#donelabelbutton').trigger("click");
-					}
-				}
-			};
-
-			// applies changes to the transitions and closes the menu
-			var finishEdgeLabel = function() {
-				var newVal = [];
-				for (var j = 0; j < $('#edgelabelselect > option').length; j++) {
-					newVal.push(document.getElementById('edgelabelselect').options[j].text);
-				}
-				newVal = newVal.join('<br>');
-				$(self).html(newVal);
-				$('#editedgelabel').remove();
-				g.layout({layout: "automatic"});
-				// console.log(_.map(g._alledges, function(x){return x.weight()}))
-				$('.jsavgraph').removeClass("working");
-				updateAlphabet();
-			};
-			$('#changetransitionbutton').click(changeTransition);
-			$('#deletetransitionbutton').click(deleteTransition);
-			$('#donelabelbutton').click(finishEdgeLabel);
+	// show table for the label clicked
+	var initEditEdgeInput = function(label) {
+		var weights = $(label).html().split("<br>");
+		var tbody = $('#editEdge > table > tbody');
+		var rows = tbody.find('tr');
+		for (var i = rows.length - 1; i > 0; i--) {
+			rows[i].remove();
 		}
+		var row = $(rows[0]);
+		for (var i = 0; i < weights.length; i++) {
+			var letters = weights[i].split(":");
+			rows = tbody.find('tr');
+			if (i >= rows.length) {
+				var newRow = row.clone();
+				tbody.append(newRow);
+			}
+			var lastRow = tbody.find('tr').last();
+			lastRow.find('#read').val(letters[0]);
+			lastRow.find('#write').val(letters[1]);
+			lastRow.find('#dir').val(letters[2]);
+			lastRow.find('#deleteEdge').click(deleteRowInEditEdge);
+		}
+		var editEdgeInput = $('#editEdge');
+		tbody.attr({remove: false});
+		$('#deleteEdge').text("Delete");
+		editEdgeInput.css({left: $(label).offset().left, top: $(label).offset().top});
+		editEdgeInput.show();
+
+		$(document).off('keyup').keyup(function(e) {
+			if (e.keyCode == 13) {
+				completeEditEdge(label);
+			} else if (e.keyCode == 27) {
+				cancel();
+			}
+		});
+	};
+
+	var deleteRowInEditEdge = function() {
+		var tbody = $(this).parent().parent().parent();
+		if (tbody.children().length == 1) {
+			$('#deleteEdge').text("Deleted");
+			tbody.attr({remove: 'true'});
+			return;
+		}
+		$(this).parent().parent().remove();
+	};
+
+	var completeEditEdge = function(label) {
+		var editEdgeInput = $('#editEdge');
+		var tbody = editEdgeInput.find('tbody');
+		var newWeight = "";
+		if (tbody.attr('remove') == 'true') {
+			newWeight = "";
+		}
+		else {
+			var rows = tbody.find('tr');
+			var weights = [];
+			for (var i = 0; i < rows.length; i++) {
+				var row = $(rows[i]);
+				var read = row.find('#read').val();
+				var write = row.find('#write').val();
+				var dir = row.find('#dir').val();
+				weights.push(read + ":" + write + ":" + dir);
+			}
+			newWeight = weights.join("<br>");
+		}
+		$(label).html(newWeight);
+		g.layout({layout: 'manual'});
+		editEdgeInput.hide();
+		updateAlphabet();
 	};
 
 	// handler for the graph window
@@ -147,6 +144,11 @@ var lambda = String.fromCharCode(955),
 		if ($(".jsavgraph").hasClass("editNodes")) {
 			this.highlight();
 			var input = prompt("State Label: ", this.stateLabel());
+			console.log(input);
+			if (!input || input == "null"){
+				this.unhighlight();
+				return;
+			}
 			this.stateLabel(input);
 			this.stateLabelPositionUpdate();
 			this.unhighlight();
@@ -226,7 +228,7 @@ var lambda = String.fromCharCode(955),
 		var jg = $(".jsavgraph");
 		jg.addClass("delete");
 		$("#mode").html('Deleting');
-		jsav.umsg("Click a node or edge to delete.");
+		jsav.umsg("Click a node or edge to delete. Enter to confirm.");
 	};
 	// change between editing and not editing (traversal)
 	var changeEditingMode = function() {
@@ -250,6 +252,12 @@ var lambda = String.fromCharCode(955),
 		jg.removeClass("moveNodes");
 		jg.removeClass("editNodes");
 		jg.removeClass("delete");
+		var nodes = g.nodes();
+		for (var node = nodes.next(); node; node = nodes.next()) {
+			node.unhighlight();
+		}
+		$('#edge').hide();
+		$('#editEdge').hide();
 		$("#mode").html('\n');
 		jsav.umsg("Enjoy");
 	}
@@ -353,6 +361,12 @@ var lambda = String.fromCharCode(955),
 		var path = $('path[opacity="1.5"]');
 		var box = path[0].getBBox();
 		var edgeInput = $('#edge');
+		var rows = $('#edge > table > tr');
+		for (var i = 1; i < rows.length; i++) {
+			rows[i].remove();
+		}
+		$('#toRead').val(square);
+		$('#toWrite').val(square);
 		edgeInput.show();
 		var leftOffset = 15 + box.x + box.width / 2;
 		var topOffset = box.y + box.height / 2 + $('.jsavgraph').offset().top - 5;
@@ -407,6 +421,7 @@ var lambda = String.fromCharCode(955),
 	$('#deleteButton').click(deleteMode);
 	$(document).keyup(function(e) {
 		if (e.keyCode == 27) {
+			e.preventDefault();
 			cancel();
 		}
 	});

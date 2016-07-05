@@ -1411,7 +1411,7 @@ var toggleFinal = function(g, node) {
 var changeLabel = function(node) {
 	$("#rmenu").hide();
 	var nodeLabel = prompt("How do you want to label it?");
-	if (!nodeLabel) {
+	if (!nodeLabel || nodeLabel == "null") {
 		nodeLabel = "";
 	}
 	node.stateLabel(nodeLabel);

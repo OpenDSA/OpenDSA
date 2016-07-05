@@ -68,6 +68,29 @@
 				</table>
 			</div>
 
+			<div id="editEdge">
+				<table>
+					<tr>
+						<td>
+							<input type="text" id="read" onfocus='this.select();' maxlength='1' value="□"/>
+						</td>
+						<td>
+							<input type="text" id="write" onfocus='this.select();' maxlength='1' value="□"/>
+						</td>
+						<td>
+							<select id="dir" dir="rtl">
+								<option value="L">L</option>
+								<option value="R">R</option>
+								<option value="S">S</option>
+							</select>
+						</td>
+						<td>
+							<button id="deleteEdge">Delete</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+
       <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
       <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
       <script src="../../../../JSAV/lib/jquery.transit.js"></script>
