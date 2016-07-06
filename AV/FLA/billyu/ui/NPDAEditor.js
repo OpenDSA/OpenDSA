@@ -1,6 +1,5 @@
 var lambda = String.fromCharCode(955),
 		epsilon = String.fromCharCode(949),
-		square = String.fromCharCode(9633),
 		emptystring;
 
 (function($) {
@@ -10,42 +9,40 @@ var lambda = String.fromCharCode(955),
 
 // initialize graph
 	var initGraph = function(opts) {
-		g = jsav.ds.tm($.extend({width: '90%', height: 440, emptystring: square, editable: true}, opts));
+		g = jsav.ds.npda($.extend({width: '90%', height: 440, emptystring: lambda, editable: true}, opts));
 		emptystring = g.emptystring;
 		var gWidth = g.element.width(),
 				gHeight = g.element.height();
-  		var a = g.addNode({left: 0.10 * gWidth, top: 0.3 * gHeight}),		
-      		b = g.addNode({left: 0.35 * gWidth, top: 0.7 * gHeight}),
-      		c = g.addNode({left: 0.10 * gWidth, top: 0.7 * gHeight}),
-      		d = g.addNode({left: 0.6 * gWidth, top: 0.7 * gHeight}),
-      		e = g.addNode({left: 0.85 * gWidth, top: 0.5 * gHeight}),
-      		f = g.addNode({left: 0.35 * gWidth, top: 0.3 * gHeight});
-      	g.makeInitial(a);
-      	c.addClass('final');
+		var a = g.addNode({left: 0.10 * gWidth, top: 0.3 * gHeight}),		
+				b = g.addNode({left: 0.35 * gWidth, top: 0.3 * gHeight}),
+				c = g.addNode({left: 0.60 * gWidth, top: 0.3 * gHeight}),
+				d = g.addNode({left: 0.25 * gWidth, top: 0.7 * gHeight}),
+				e = g.addNode({left: 0.50 * gWidth, top: 0.7 * gHeight}),
+				f = g.addNode({left: 0.85 * gWidth, top: 0.3 * gHeight});
+		g.makeInitial(a);
+		f.addClass('final');
 
-	    g.addEdge(a, b, {weight: 'a:#:R'});
-	   	g.addEdge(a, a, {weight: '#:#:R'});
-	    //g.addEdge(a, d); 		it's a FA, need to always provide a weight
+		g.addEdge(a, b, {weight: 'a:' + emptystring + ":a"});
+		//g.addEdge(a, d); 		it's a FA, need to always provide a weight
 
-	    g.addEdge(b, b, {weight: '#:#:R'});
-	    g.addEdge(b, c, {weight: square + ':' + square + ':L'});
-	    g.addEdge(b, d, {weight: 'a:a:R'});
+		g.addEdge(b, b, {weight: 'a:a:aa'});
+		g.addEdge(b, c, {weight: 'b:a:' + emptystring});
+		g.addEdge(b, d, {weight: 'b:a:a'});
 
-	   	g.addEdge(d, d, {weight: '#:#:R'});
-	    g.addEdge(d, e, {weight: 'a:#:R'});
-	   	g.addEdge(d, f, {weight: square + ':' + square + ':L'});
+		g.addEdge(c, c, {weight: 'b:a:' + emptystring});
+		g.addEdge(c, d, {weight: 'b:a:a'});
+		g.addEdge(c, f, {weight: emptystring + ':' + emptystring + ':' + emptystring});
 
-	    g.addEdge(e, e, {weight: '#:#:R'});
-	    g.addEdge(e, d, {weight: 'a:a:R'});
+		g.addEdge(d, c, {weight: 'b:a:' + emptystring});
+		g.addEdge(d, e, {weight: 'b:a:a'});
 
-	    g.addEdge(f, f, {weight: '#:#:L'});
-	    g.addEdge(f, f, {weight: 'a:a:L'});
-	    g.addEdge(f, a, {weight: square + ':' + square + ':R'});
-	
-    $(".jsavgraph").click(graphClickHandler);
+		g.addEdge(e, c, {weight: 'b:a:' + emptystring});
+
+		$(".jsavgraph").click(graphClickHandler);
     g.click(nodeClickHandler);
 		g.click(edgeClickHandler, {edge: true});
 		$('.jsavedgelabel').click(labelClickHandler);
+
 		return g;
 	};
 
@@ -63,7 +60,6 @@ var lambda = String.fromCharCode(955),
 			rows[i].remove();
 		}
 		var row = $(rows[0]);
-		row.find('#read').focus();
 		for (var i = 0; i < weights.length; i++) {
 			var letters = weights[i].split(":");
 			rows = tbody.find('tr');
@@ -72,9 +68,9 @@ var lambda = String.fromCharCode(955),
 				tbody.append(newRow);
 			}
 			var lastRow = tbody.find('tr').last();
-			lastRow.find('#read').val(letters[0]);
-			lastRow.find('#write').val(letters[1]);
-			lastRow.find('#dir').val(letters[2]);
+			lastRow.find('#input').val(letters[0]);
+			lastRow.find('#pop').val(letters[1]);
+			lastRow.find('#push').val(letters[2]);
 			lastRow.find('#deleteEdge').click(deleteRowInEditEdge);
 		}
 		var editEdgeInput = $('#editEdge');
@@ -82,6 +78,7 @@ var lambda = String.fromCharCode(955),
 		$('#deleteEdge').text("Delete");
 		editEdgeInput.css({left: $(label).offset().left, top: $(label).offset().top});
 		editEdgeInput.show();
+		$('#input').focus();
 
 		$(document).off('keyup').keyup(function(e) {
 			if (e.keyCode == 13) {
@@ -114,13 +111,13 @@ var lambda = String.fromCharCode(955),
 			var weights = [];
 			for (var i = 0; i < rows.length; i++) {
 				var row = $(rows[i]);
-				var read = row.find('#read').val();
-				var write = row.find('#write').val();
-				var dir = row.find('#dir').val();
-				if (read == "") read = square;
-				if (write == "") write = square;
-				if (dir == "") dir = square;
-				weights.push(read + ":" + write + ":" + dir);
+				var input = row.find('#input').val();
+				var pop = row.find('#pop').val();
+				var push = row.find('#push').val();
+				if (input == "") input = lambda;
+				if (pop == "") pop = lambda;
+				if (push == "") push = lambda;
+				weights.push(input + ":" + pop + ":" + push);
 			}
 			newWeight = weights.join("<br>");
 		}
@@ -148,7 +145,6 @@ var lambda = String.fromCharCode(955),
 		if ($(".jsavgraph").hasClass("editNodes")) {
 			this.highlight();
 			var input = prompt("State Label: ", this.stateLabel());
-			console.log(input);
 			if (!input || input == "null"){
 				this.unhighlight();
 				return;
@@ -180,14 +176,26 @@ var lambda = String.fromCharCode(955),
 			this.unhighlight();
 		}
 	};
-	
-	//===============================
-	// updates the alphabets displayed above the graph
-	var updateAlphabet = function() {
-		g.updateAlphabet();
-		$("#alphabet").html("" + Object.keys(g.alphabet).sort());
-		var sa = getTapeAlphabet(g);
-		$('#stackalphabet').html(emptystring + "," + sa.sort());
+
+
+	var toggleND = function() {
+		$('#changeButton').toggleClass("highlightingND");
+		if ($('#changeButton').hasClass("highlightingND") || $('#changeButton').hasClass("highlightingL")) {
+			$('#changeButton').hide();
+		} else{
+			$('#changeButton').show();
+		}
+		g.toggleND();
+	};
+
+	var toggleLambda = function() {
+		$('#changeButton').toggleClass("highlightingL");
+		if ($('#changeButton').hasClass("highlightingND") || $('#changeButton').hasClass("highlightingL")) {
+			$('#changeButton').hide();
+		} else{
+			$('#changeButton').show();
+		}
+		g.toggleLambda();
 	};
 
 	//===============================
@@ -233,18 +241,6 @@ var lambda = String.fromCharCode(955),
 		jg.addClass("delete");
 		$("#mode").html('Deleting');
 		jsav.umsg("Click a node or edge to delete. Enter to confirm.");
-	};
-	// change between editing and not editing (traversal)
-	var changeEditingMode = function() {
-		cancel();
-		$("#mode").html('Editing');
-		if ($(".notEditing").is(":visible")) {
-			$('#changeButton').html('Done editing');
-		} else {
-			$('#changeButton').html('Edit');
-		}
-		$('.notEditing').toggle();
-		$('.editing').toggle();
 	};
 	var cancel = function() {
 		removeEdgeSelect();
@@ -294,24 +290,28 @@ var lambda = String.fromCharCode(955),
 			alert('Please define an initial state');
 			return;
 		}
-		var inputString = prompt("Input string?", "aaaa");
-		while (inputString == null) {
-			alert("Don't try to trick the program!");
-			inputString = prompt("Input string?", "aaaa");	
+		var inputString = prompt("Input string?", "abb");
+		if (inputString === null) {
+			return;
 		}
 		jsav.umsg("");
+		var textArray = [];
 		$("#functionality").hide();			//disable buttons
-		$('#alphabets').hide();
 		$("#mode").html('');
 		$('.jsavcontrols').show();
-		$('.jsavoutput').css({"text-align": "center", 'font-size': '2em', 'font-family': 'monospace'});
-
 		g.play(inputString);
-	}
+	};
+
+	var updateAlphabet = function() {
+		g.updateAlphabet();
+		$("#alphabet").html("" + Object.keys(g.alphabet).sort());
+		var sa = g.getStackAlphabet();
+		$('#stackalphabet').html("Z," + _.without(sa.sort(), 'Z'));
+	};
 
 	var save = function() {
 		var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(g.serializeToXML());
-		$('#download').html('<a href="data:' + downloadData + '" target="_blank" download="tm.xml">Download TM</a>');
+		$('#download').html('<a href="data:' + downloadData + '" target="_blank" download="npda.xml">Download NPDA</a>');
 		$('#download a')[0].click();
 	}
 
@@ -326,8 +326,8 @@ var lambda = String.fromCharCode(955),
 
 	var waitForReading = function (reader) {
 		reader.onloadend = function(event) {
-				var text = event.target.result;
-				g.initFromXML(text);
+			var text = event.target.result;
+			g.initFromXML(text);
 		}
 	};
 
@@ -370,8 +370,8 @@ var lambda = String.fromCharCode(955),
 		for (var i = 1; i < rows.length; i++) {
 			rows[i].remove();
 		}
-		$('#toRead').val(square);
-		$('#toWrite').val(square);
+		$('#input').val(lambda);
+		$('#pop').val(lambda);
 		edgeInput.show();
 		var leftOffset = 15 + box.x + box.width / 2;
 		var topOffset = box.y + box.height / 2 + $('.jsavgraph').offset().top - 5;
@@ -379,7 +379,7 @@ var lambda = String.fromCharCode(955),
 		path.remove();
 		first = g.first;
 		g.first = null;
-		$('#toRead').focus();
+		$('#input').focus();
 		$(document).keyup(function(e) {
 			if (e.keyCode == 13) {
 				addEdgeWithInputBox();
@@ -390,10 +390,10 @@ var lambda = String.fromCharCode(955),
 	function addEdgeWithInputBox() {
 		if (!first) return;
 		var edgeInput = $('#edge');
-		var toRead = $('#toRead').val();
-		var toWrite = $('#toWrite').val();
-		var direction = $('#direction').val();
-		var edgeWeight = toRead + ":" + toWrite + ":" + direction;
+		var input = $('#input').val();
+		var pop = $('#pop').val();
+		var push = $('#push').val();
+		var edgeWeight = input + ":" + pop + ":" + push;
 		g.addEdge(first, g.selected, {weight: edgeWeight});
 
 		edgeInput.hide();
@@ -411,29 +411,20 @@ var lambda = String.fromCharCode(955),
 		jsav.g.line(startX, startY, endX, endY, {"opacity": 1.5});
 	}
 
-	$('#playButton').click(function() {onClickTraverse()});
-	//$('#multiplebutton').click(displayTraversals);
-	$('#nodeButton').click(addNodesMode);
-	$('#changeButton').click(changeEditingMode);
+
+	$('#playButton').click(onClickTraverse);
+	$('#layoutbutton').click(function() {g.layout()});
+	$('#testNDbutton').click(toggleND);
+	$('#testlambdabutton').click(toggleLambda);
+	$('#nodeNutton').click(addNodesMode);
 	$('#edgeButton').click(addEdgesMode);
 	$('#moveButton').click(moveNodesMode);
 	$('#editButton').click(editNodesMode);
 	$('#saveButton').click(save);
-  $('#loadFile').on('change', load);
-	$('#undoButton').click(function() {g.undo();});
-	$('#redoButton').click(function() {g.redo();});
-	$('#cancelButton').click(cancel);
-	$('#deleteButton').click(deleteMode);
-	$(document).keyup(function(e) {
-		if (e.keyCode == 27) {
-			e.preventDefault();
-			cancel();
-		}
-	});
+	$('#loadFile').on('change', load);
 
 	g = initGraph({layout: "manual"});
 	g.layout();
 	jsav.displayInit();
 	updateAlphabet();
-
 }(jQuery));
