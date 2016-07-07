@@ -22,21 +22,21 @@ var lambda = String.fromCharCode(955),
 		g.makeInitial(a);
 		f.addClass('final');
 
-		g.addEdge(a, b, {weight: 'a:' + emptystring + ":a"});
+		g.addEdge(a, b, {weight: 'a,' + emptystring + ";a"});
 		//g.addEdge(a, d); 		it's a FA, need to always provide a weight
 
-		g.addEdge(b, b, {weight: 'a:a:aa'});
-		g.addEdge(b, c, {weight: 'b:a:' + emptystring});
-		g.addEdge(b, d, {weight: 'b:a:a'});
+		g.addEdge(b, b, {weight: 'a,a;aa'});
+		g.addEdge(b, c, {weight: 'b,a;' + emptystring});
+		g.addEdge(b, d, {weight: 'b,a;a'});
 
-		g.addEdge(c, c, {weight: 'b:a:' + emptystring});
-		g.addEdge(c, d, {weight: 'b:a:a'});
-		g.addEdge(c, f, {weight: emptystring + ':' + emptystring + ':' + emptystring});
+		g.addEdge(c, c, {weight: 'b,a;' + emptystring});
+		g.addEdge(c, d, {weight: 'b,a;a'});
+		g.addEdge(c, f, {weight: emptystring + ',' + emptystring + ';' + emptystring});
 
-		g.addEdge(d, c, {weight: 'b:a:' + emptystring});
-		g.addEdge(d, e, {weight: 'b:a:a'});
+		g.addEdge(d, c, {weight: 'b,a;' + emptystring});
+		g.addEdge(d, e, {weight: 'b,a;a'});
 
-		g.addEdge(e, c, {weight: 'b:a:' + emptystring});
+		g.addEdge(e, c, {weight: 'b,a;' + emptystring});
 
 		$(".jsavgraph").click(graphClickHandler);
     g.click(nodeClickHandler);
@@ -68,6 +68,7 @@ var lambda = String.fromCharCode(955),
 		}
 		var row = $(rows[0]);
 		for (var i = 0; i < weights.length; i++) {
+			weights[i] = toColonForm(weights[i]);
 			var letters = weights[i].split(":");
 			rows = tbody.find('tr');
 			if (i >= rows.length) {
@@ -125,7 +126,7 @@ var lambda = String.fromCharCode(955),
 				if (input == "") input = lambda;
 				if (pop == "") pop = lambda;
 				if (push == "") push = lambda;
-				weights.push(input + ":" + pop + ":" + push);
+				weights.push(input + "," + pop + ";" + push);
 			}
 			newWeight = weights.join("<br>");
 		}
@@ -403,7 +404,7 @@ var lambda = String.fromCharCode(955),
 		var input = $('#input').val();
 		var pop = $('#pop').val();
 		var push = $('#push').val();
-		var edgeWeight = input + ":" + pop + ":" + push;
+		var edgeWeight = input + "," + pop + ";" + push;
 		g.addEdge(first, g.selected, {weight: edgeWeight});
 		$('.jsavedgelabel').off('click').click(labelClickHandler);
 

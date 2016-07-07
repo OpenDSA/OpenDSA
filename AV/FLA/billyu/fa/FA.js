@@ -425,40 +425,6 @@ faproto.updateAlphabet = function () {
 };
 
 /*
-	 Function to get the stack alphabet for a PDA
-	 Returns an array.
- */
-faproto.getStackAlphabet = function () {
-	var alphabet = [];
-	var edges = this.edges();
-	var w;
-	for (var next = edges.next(); next; next = edges.next()) {
-		w = next.weight();
-		w = w.split('<br>');
-		for (var i = 0; i < w.length; i++) {
-			var letter1 = w[i].split(':')[1],
-					letter2 = w[i].split(':')[2],
-					letters;
-			if (letter1 !== this.emptystring && letter2 !== this.emptystring) {
-				letters = letter1.split('').concat(letter2.split(''));
-			} else if (letter1 !== this.emptystring) {
-				letters = letter1.split('');
-			} else if (letter2 !== this.emptystring) {
-				letters = letter2.split('');
-			} else {
-				break;
-			}
-			for (var j = 0; j < letters.length; j++) {
-				if (letters[j] !== this.emptystring && alphabet.indexOf(letters[j]) === -1){
-					alphabet.push(letters[j]);
-				}
-			}
-		}
-	}
-	return alphabet;
-};
-
-/*
 	 Function to update the names of the nodes.
 	 Used to renumber nodes when one is deleted.
  */

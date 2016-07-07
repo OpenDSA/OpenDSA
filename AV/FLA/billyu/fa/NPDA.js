@@ -43,7 +43,7 @@ npda.toggleND = function() {
 	for(var next = nodes.next(); next; next = nodes.next()) {
 		var edges = next.getOutgoing();
 		if (edges.length === 0) {continue;}
-		var weights = _.map(edges, function(e) {return e.weight().split('<br>')});
+		var weights = _.map(edges, function(e) {return toColonForm(e.weight()).split('<br>')});
 		for (var i = 0; i < weights.length; i++) {
 			var findLambda = _.find(weights[i], function(e) {return e.split(':')[0] === emptystring});
 			if (findLambda) { break; }
@@ -59,7 +59,7 @@ npda.toggleND = function() {
 npda.toggleLambda = function() {
 	var edges = this.edges();
 	for (var next = edges.next(); next; next = edges.next()) {
-		var wSplit = next.weight().split('<br>');
+		var wSplit = toColonForm(next.weight()).split('<br>');
 		for (var i = 0; i < wSplit.length; i++) {
 			if (_.every(wSplit[i].split(':'), function(x) {return x == emptystring})) {
 				next.g.element.toggleClass('testingLambda');
@@ -138,6 +138,7 @@ npda.traverse = function(currentStates) {
 			var w = this.getEdge(currentStates[i].state, next).weight().split('<br>');
 			for (var j = 0; j < w.length; j++) {
 				var nextIndex = curIndex + 1;
+				w[j] = toColonForm(w[j]);
 				var t = w[j].split(':');
 				if (t[0] !== letter && t[0] !== emptystring) {continue;}
 				if (t[0] === emptystring) {nextIndex = curIndex;}
@@ -188,7 +189,8 @@ npda.addLambdaClosure = function(nextStates) {
 	for (var i = 0; i < nextStates.length; i++) {
 		var successors = nextStates[i].state.neighbors();
 		for (var next = successors.next(); next; next = successors.next()) {
-			var weight = this.getEdge(nextStates[i].state, next).weight().split('<br>');
+			var weight = toColonForm(this.getEdge(nextStates[i].state, next).weight());
+			weight = weight.split("<br>");
 			for (var j = 0; j < weight.length; j++) {
 				if (!next.hasClass('current') && _.every(weight[j].split(':'), function(x) {return x === emptystring})) {
 					next.addClass('current');
@@ -257,6 +259,7 @@ npda.serializeToXML = function () {
 			text = text + '<transition>';
 			text = text + '<from>' + fromNode + '</from>';
 			text = text + '<to>' + toNode + '</to>';
+			w[i] = toColonForm(w[i]);
 			var wSplit = w[i].split(":");
 			if (wSplit[0] === emptystring) {
 				text = text + '<read/>';
@@ -349,7 +352,43 @@ npda.initFromXML = function(text) {
 		} else {
 			push = push.nodeValue;
 		}
-		this.addEdge(nodeMap[from], nodeMap[to], {weight: read + ":" + pop + ":" + push});
+		this.addEdge(nodeMap[from], nodeMap[to], {weight: read + "," + pop + ";" + push});
 	}
 	this.layout();
 };
+
+/*
+	 Function to get the stack alphabet for a PDA
+	 Returns an array.
+ */
+npda.getStackAlphabet = function () {
+	var alphabet = [];
+	var edges = this.edges();
+	var w;
+	for (var next = edges.next(); next; next = edges.next()) {
+		w = next.weight();
+		w = toColonForm(w);
+		w = w.split('<br>');
+		for (var i = 0; i < w.length; i++) {
+			var letter1 = w[i].split(':')[1],
+					letter2 = w[i].split(':')[2],
+					letters;
+			if (letter1 !== this.emptystring && letter2 !== this.emptystring) {
+				letters = letter1.split('').concat(letter2.split(''));
+			} else if (letter1 !== this.emptystring) {
+				letters = letter1.split('');
+			} else if (letter2 !== this.emptystring) {
+				letters = letter2.split('');
+			} else {
+				break;
+			}
+			for (var j = 0; j < letters.length; j++) {
+				if (letters[j] !== this.emptystring && alphabet.indexOf(letters[j]) === -1){
+					alphabet.push(letters[j]);
+				}
+			}
+		}
+	}
+	return alphabet;
+};
+
