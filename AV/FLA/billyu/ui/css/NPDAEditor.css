@@ -1,0 +1,43 @@
+#playButton {
+	background-color: #000033;
+	color: white;
+}
+#functionality {
+	margin-left: 20px;
+}
+#mode {
+	margin-top: 10px;
+	height: 20px;
+}
+#jsavoutput {
+	margin-top: 0;
+}
+#edge, #editEdge {
+	text-align: center;
+	background-color: white;
+	width: 150px;
+	transform: translate(-50%, -50%);
+	position: absolute;
+	z-index: 1000;
+	display: none;
+}
+#input, #pop, #push {
+	width: 90%;
+	text-align: center;
+	border: none;
+}
+#editEdge {
+	width: 200px;
+	transform: translate(-30%, -120%);
+}
+#editEdge > tbody > tr {
+	width: 25%;
+}
+#deleteEdge {
+	padding: 0;
+	border: 0;
+}
+.jsavgraph {
+	margin-top: 0;
+	margin-bottom: 0;
+}

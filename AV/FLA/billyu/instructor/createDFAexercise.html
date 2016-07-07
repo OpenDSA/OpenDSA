@@ -9,6 +9,12 @@
 		<h1>DFA Exercise Generator</h1>
 		<input type="radio" name="mode" value="noGraph" checked>Expression Only
 		<input type="radio" name="mode" value="yesGraph">With Wrong Graph
+		<div class="dropdown">
+  		<button class="dropbtn">Hint</button>
+  		<div class="dropdown-content">
+				<p>LaTex supported for expressions.</p>
+			</div>
+		</div>	
 		<form name="exercises" action="" method="get">
 			<div id="problems">
 			<fieldset>
@@ -45,9 +51,7 @@
 		
 		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-		<script src="../fa/serializableGraph.js"></script>
 		<script src="../../resources/underscore-min.js"></script>
-		<script src="../fa/FA.js"></script>
 		<script src="./createDFAexercise.js"></script>
  	</body>
 </html>

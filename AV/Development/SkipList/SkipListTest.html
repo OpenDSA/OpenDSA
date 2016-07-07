@@ -7,28 +7,32 @@
     <link rel="stylesheet" href="../../../lib/odsaStyle-min.css" type="text/css" />
     <style>
       #container {
-        width: 98%;
-        position: relative;
-      }
-      .jsavarray .jsavindex {
-        width: 35px;
-        min-width: 20px;
-        height: 35px;
-        min-height: 20px;
-        line-height: 45px
-      }
-      .jsavcounter {
-        position: absolute;
-        top: 15px;
-      }
-      .jsavcanvas { height: 300px;}
-      .mypointer {
-        text-decoration: underline;
-      }
-      .mypointer .jsavpointerarea {
-        border-color: blue;
-        background-color: red;
-      }
+      width: 98%;
+      position: relative;
+     }
+     .jsavautoresize .jsavnode {
+	  min-width: 33px;
+	  min-height: 33px;
+     }
+     .jsavverticalarray .jsavnode {
+	line-height: 30px !important;
+	min-width: 33px !important;
+	max-width: 33px !important;
+	min-height: 33px !important;
+	max-height: 33px !important;
+	}
+    .jsavcounter {
+      position: absolute;
+      top: 15px;
+    }
+    .jsavcanvas { height: 300px;}
+    .mypointer {
+      text-decoration: underline;
+    }
+    .mypointer .jsavpointerarea {
+      border-color: blue;
+      background-color: red;
+    }
     </style>
   </head>
   <body>

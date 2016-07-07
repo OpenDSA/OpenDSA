@@ -81,7 +81,7 @@ controllerProto.updateExercise = function(id) {
 	var exercise = this.tests[id];
 	var type = exercise["type"];
 	if (type == "expression") {
-		$("#expression").text(exercise["expression"]);
+		$("#expression").html("<img src='" + latexit + exercise["expression"] + "' border='0'/>");
 		$("#question").show();
 		$("#description").hide();
 	}

@@ -1,6 +1,6 @@
 /**
  * @author Souleymane Dia
- * @version <05/24/2016>~ summer 2016
+ * @version <07/01/2016>~ summer 2016
  * XXX: I mimic the ArrayTree datastructure as closely as possible. In doing so
  * I implemented certain function That I am not sure what they do. They have "????" next to them.
  * This data structure is not ready for use 
@@ -56,7 +56,7 @@
 		this.jsav = jsav; // set the jsav object for this tree
 		this.level = 0; // level of the tree
 		// use specific starting point and ending point
-		this.options = $.extend({layout: "vertical", indexed: true, left: 80, top:20}, options);
+		this.options = $.extend({layout: "vertical", indexed: true, left: 70, top:42}, options);
 		
 		/**
 		 * XXX: ???
@@ -217,7 +217,7 @@
           x.setPointer(j, jsav.pointer(" ", x.getDispArr(), {
             targetIndex: j,
             left: -(longer - 1) * 100 - 85,
-            top: 23,
+            top: 22,
             arrowAnchor: "left center",
             fixed: false
           }));
@@ -238,7 +238,7 @@
           x.setPointer(j, jsav.pointer(" ", x.getDispArr(), {
             targetIndex: j,
             left: -(longer - 1) * 100 - 85,
-            top: 23,
+            top: 22,
             arrowAnchor: "left center",
             fixed: false
           }));
@@ -319,7 +319,7 @@
         for (var i = 0; i <= this.level; i++) { // Splice into list
           var upFwrd = update[i].getForward()[i];
           while (upFwrd != null &&
-            (upFwrd.equalKey(otherKey)) && (removed.equals(upFwrd))) {
+            (upFwrd.getNodeNum() === removed.getNodeNum())) {
             if (upFwrd.getForward()[i] == null) {
               update[i].resetArrDis(i);
             }
@@ -364,7 +364,7 @@
             var opt = {
               targetIndex: i,
               left: -(longer - 1) * 100 - 85,
-              top: 23,
+              top: 22,
               arrowAnchor: "left center",
               fixed: false
             }
@@ -427,10 +427,10 @@ function SkipNode(p, nodeLevel, jsav, options, num) {
 	this.disArr = this.jsav.ds.array(this.arr, options);
 	this.newOp = $.extend(true, {autoresize: true}, this.options);
 	this.newOp.indexed = false;
-	this.newOp.top = -15;
+	this.newOp.top = 10;
 	this.newOp.left = (this.options.indexed === true)? this.options.left + 8: this.options.left;
 	if (this.pair === null){
-		this.val = jsav.ds.array(['head'],this.newOp);
+		this.val = jsav.ds.array(['Hd'],this.newOp);
 	}else{
 		this.val = jsav.ds.array([p.toString() ],this.newOp);
 	}
@@ -477,7 +477,7 @@ skipNodeProto.updateNextPointer = function(longer, j){
 	this.pointer[j] =  this.jsav.pointer(" ", this.disArr, {
 			targetIndex: j,
 			left: -(longer - 1)*100 + (-85),
-			top: 23,
+			top: 22,
 			arrowAnchor: "left center",
 			fixed: false,
 			"stroke-width": 2	
@@ -493,7 +493,7 @@ skipNodeProto.movePointerRight = function(lev, longer, t) {
 		this.pointer[i] = this.jsav.pointer(" ", this.disArr, {
 			targetIndex: i,
 			left: (t == 0)? lef - 100: (d <= -lef)? lef - 100: lef,
-			top: 23,
+			top: 22,
 			arrowAnchor: "left center",
 			fixed: false,
 			"stroke-width": 2	
@@ -513,7 +513,7 @@ skipNodeProto.movePointerLeft = function(lev, longer, t) {
 		this.pointer[i] = this.jsav.pointer(" ", this.disArr, {
 			targetIndex: i,
 			left: (d > -lef)? lef: lef + 100,
-			top: 23,
+			top: 22,
 			arrowAnchor: "left center",
 			fixed: false
 		});

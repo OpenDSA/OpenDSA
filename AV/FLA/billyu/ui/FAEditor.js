@@ -1,3 +1,4 @@
+var latexit = "http://latex.codecogs.com/svg.latex?";
 (function ($) {
 	var jsav = new JSAV("av"), // Instance variable to store the JSAV algorithm visualization.
 		jsavArray, // Instance variable to store the JSAV array (in which input strings are displayed).
@@ -18,9 +19,6 @@
 	// Otherwise simply initializes a default data set.
 	function onLoadHandler() {
 		// initialize right click menu and hide it for future use
-		$("#rmenu").load("./rmenu.html");
-		$("#rmenu").hide();
-
 		type = $('h1').attr('id');
 		if (type == 'fixer' || type == 'tester') {
 			switch (type) {
@@ -54,9 +52,12 @@
 				$(".createExercise").hide();
 				if (localStorage['toConvert'] === "true") {
 					data = localStorage['converted'];
+					$('#clearLabelButton').show();
+					console.log("here");
 				}
 				else if (localStorage['toMinimize'] === "true") {
 					data = localStorage['minimized'];
+					$('#clearLabelButton').show();
 				}
 				else if (localStorage['REtoFA'] == "true") {
 					data = localStorage['FAfromRE'];
@@ -91,6 +92,10 @@
 			var values = $(label).html().split('<br>');
 			var Prompt = new EdgePrompt(updateEdge, emptystring);
    			Prompt.render(values);
+		}
+		else if ($(".jsavgraph").hasClass("deleteNodes")) {
+			$(this).html("");
+			g.layout({layout:"manual"});
 		}
 	};
 
@@ -186,6 +191,7 @@
 		checkEdge(edge);
 		g.first.unhighlight();
 		g.selected.unhighlight();
+		g.updateEdgePositions();
 		g.first = null;
 		g.selected = null;
 	};
@@ -724,7 +730,6 @@
 			window.alert("This Finite Automaton is nondeterministic.\nPlease convert to DFA before minimizing.");
 			return;
 		}
-		window.alert("Beware that the minimization algorithm will fail on an incomplete DFA.");
 		localStorage['minimizeDFA'] = true;
 		localStorage['toMinimize'] = serialize(g);
 		window.open("./minDFA.html");
@@ -743,6 +748,7 @@
 			alert("You must have exactly one final state.");
 			return;
 		}
+		$('h1').text("Finite Automaton to Regular Expression");
 		$('.jsavgraph').addClass('RE');
 		$('#nodeButton').hide();
 		$('#editButton').hide();
@@ -793,6 +799,13 @@
 			$(".jsavgraph").removeClass("working");
 		}
 	};
+
+	function clearLabels() {
+		var nodes = g.nodes();
+		for (var node = nodes.next(); node; node = nodes.next()) {
+			clearLabel(node); // function declared in FA.js
+		}
+	}
 	
 	var startX, startY, endX, endY; // start position of dragging edge line
 	function mouseDown(e) {
@@ -839,9 +852,6 @@
 		jsav.g.line(startX, startY, endX, endY, {"opacity": 1.5});
 	}
 
-	// magic happens here
-	onLoadHandler();
-
 	// Button click handlers.
 	$('#saveButton').click(saveXML);
 	$("#finish").click(finishExercise);
@@ -861,12 +871,18 @@
 	$('#minimizeButton').click(minimizeDFA);
 	$('#toGrammarButton').click(convertToGrammar);
 	$('#toREButton').click(toRE);
+	$('#clearLabelButton').click(clearLabels);
 	$('#collapseButton').hide();
 	$('#cheat').hide();
 	$('#exportButton').hide();
+	$('#clearLabelButton').hide();
 	$( "#dialog" ).dialog({ autoOpen: false });
 	$(document).keyup(function(e) {
 		if (e.keyCode === 27) cancel();   // esc
 	});
 	$('#download').hide();
+
+	// magic happens here
+	onLoadHandler();
+
 }(jQuery));
