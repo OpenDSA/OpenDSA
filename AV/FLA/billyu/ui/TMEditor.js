@@ -75,6 +75,7 @@ var lambda = String.fromCharCode(955),
 			lastRow.find('#read').val(letters[0]);
 			lastRow.find('#write').val(letters[1]);
 			lastRow.find('#dir').val(letters[2]);
+			lastRow.find('#deleteEdge').text("Delete");
 			lastRow.find('#deleteEdge').click(deleteRowInEditEdge);
 		}
 		var editEdgeInput = $('#editEdge');
@@ -126,7 +127,7 @@ var lambda = String.fromCharCode(955),
 		}
 		$(label).html(newWeight);
 		g.layout({layout: 'manual'});
-		g.stateLabelPositionUpdate();
+		g.updateEdgePositions();
 		editEdgeInput.hide();
 		updateAlphabet();
 	};
@@ -397,10 +398,12 @@ var lambda = String.fromCharCode(955),
 		var direction = $('#direction').val();
 		var edgeWeight = toRead + ":" + toWrite + ":" + direction;
 		g.addEdge(first, g.selected, {weight: edgeWeight});
+		$('.jsavedgelabel').off('click').click(labelClickHandler);
 
 		edgeInput.hide();
 		first.unhighlight();
 		g.selected.unhighlight();
+		g.updateEdgePositions();
 		first = null;
 		g.selected= null;
 	}

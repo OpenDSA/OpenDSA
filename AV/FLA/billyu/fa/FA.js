@@ -386,9 +386,7 @@ faproto.getFinals = function() {
 //update all edge label positions
 faproto.updateEdgePositions = function() {
 	var edges = this.edges();
-	console.log(edges);
 	for (var edge = edges.next(); edge; edge = edges.next()) {
-		console.log(edge);
 		edge.layout();
 	}
 }

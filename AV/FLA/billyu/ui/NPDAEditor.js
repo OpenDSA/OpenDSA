@@ -71,6 +71,7 @@ var lambda = String.fromCharCode(955),
 			lastRow.find('#input').val(letters[0]);
 			lastRow.find('#pop').val(letters[1]);
 			lastRow.find('#push').val(letters[2]);
+			lastRow.find('#deleteEdge').text("Delete");
 			lastRow.find('#deleteEdge').click(deleteRowInEditEdge);
 		}
 		var editEdgeInput = $('#editEdge');
@@ -397,10 +398,12 @@ var lambda = String.fromCharCode(955),
 		var push = $('#push').val();
 		var edgeWeight = input + ":" + pop + ":" + push;
 		g.addEdge(first, g.selected, {weight: edgeWeight});
+		$('.jsavedgelabel').off('click').click(labelClickHandler);
 
 		edgeInput.hide();
 		first.unhighlight();
 		g.selected.unhighlight();
+		g.updateEdgePositions();
 		first = null;
 		g.selected= null;
 	}
