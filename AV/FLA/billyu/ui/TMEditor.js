@@ -57,6 +57,13 @@ var lambda = String.fromCharCode(955),
 	// show table for the label clicked
 	var initEditEdgeInput = function(label) {
 		var weights = $(label).html().split("<br>");
+		if (weights.length == 1 && g.hasClass("delete")) {
+			$(label).html("");
+			g.layout({layout: "manual"});
+			g.updateEdgePositions();
+			updateAlphabet();
+			return;
+		}
 		var tbody = $('#editEdge > table > tbody');
 		var rows = tbody.find('tr');
 		for (var i = rows.length - 1; i > 0; i--) {
@@ -147,7 +154,7 @@ var lambda = String.fromCharCode(955),
 	// handler for the nodes of the graph
 	var nodeClickHandler = function(e) {	
 		// editing nodes should be changed to match the interface in multitapeTest.js
-		if ($(".jsavgraph").hasClass("editNodes")) {
+		if ($(".jsavgraph").hasClass("edit")) {
 			this.highlight();
 			var input = prompt("State Label: ", this.stateLabel());
 			console.log(input);
@@ -168,7 +175,7 @@ var lambda = String.fromCharCode(955),
 
 	// handler for the edges of the graph
 	var edgeClickHandler = function(e) {
-		if ($('.jsavgraph').hasClass('editNodes')) {
+		if ($('.jsavgraph').hasClass('edit')) {
 			this.highlight();
 			var input = confirm("Delete edge?");
 			if (input === null) {
@@ -222,10 +229,10 @@ var lambda = String.fromCharCode(955),
 		$("#mode").html('');
 		jsav.umsg("Drag to move.");
 	};
-	var editNodesMode = function() {
+	var editMode = function() {
 		cancel();
 		var jg = $(".jsavgraph");
-		jg.addClass("editNodes");
+		jg.addClass("edit");
 		$("#mode").html('Editing nodes and edges');
 		addEdgeSelect();
 		jsav.umsg("Click a node or edge to edit.");
@@ -257,7 +264,7 @@ var lambda = String.fromCharCode(955),
 		jg.removeClass("addNodes");
 		jg.removeClass("addEdges");
 		jg.removeClass("moveNodes");
-		jg.removeClass("editNodes");
+		jg.removeClass("edit");
 		jg.removeClass("delete");
 		var nodes = g.nodes();
 		for (var node = nodes.next(); node; node = nodes.next()) {
@@ -422,7 +429,7 @@ var lambda = String.fromCharCode(955),
 	$('#changeButton').click(changeEditingMode);
 	$('#edgeButton').click(addEdgesMode);
 	$('#moveButton').click(moveNodesMode);
-	$('#editButton').click(editNodesMode);
+	$('#editButton').click(editMode);
 	$('#saveButton').click(save);
   $('#loadFile').on('change', load);
 	$('#undoButton').click(function() {g.undo();});
