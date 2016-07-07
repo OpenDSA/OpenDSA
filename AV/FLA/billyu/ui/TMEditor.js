@@ -23,24 +23,24 @@ var lambda = String.fromCharCode(955),
       	g.makeInitial(a);
       	c.addClass('final');
 
-	    g.addEdge(a, b, {weight: 'a:#:R'});
-	   	g.addEdge(a, a, {weight: '#:#:R'});
+	    g.addEdge(a, b, {weight: 'a;#,R'});
+	   	g.addEdge(a, a, {weight: '#;#,R'});
 	    //g.addEdge(a, d); 		it's a FA, need to always provide a weight
 
-	    g.addEdge(b, b, {weight: '#:#:R'});
-	    g.addEdge(b, c, {weight: square + ':' + square + ':L'});
-	    g.addEdge(b, d, {weight: 'a:a:R'});
+	    g.addEdge(b, b, {weight: '#;#,R'});
+	    g.addEdge(b, c, {weight: square + ';' + square + ',L'});
+	    g.addEdge(b, d, {weight: 'a;a,R'});
 
-	   	g.addEdge(d, d, {weight: '#:#:R'});
-	    g.addEdge(d, e, {weight: 'a:#:R'});
-	   	g.addEdge(d, f, {weight: square + ':' + square + ':L'});
+	   	g.addEdge(d, d, {weight: '#;#,R'});
+	    g.addEdge(d, e, {weight: 'a;#,R'});
+	   	g.addEdge(d, f, {weight: square + ';' + square + ',L'});
 
-	    g.addEdge(e, e, {weight: '#:#:R'});
-	    g.addEdge(e, d, {weight: 'a:a:R'});
+	    g.addEdge(e, e, {weight: '#;#,R'});
+	    g.addEdge(e, d, {weight: 'a;a,R'});
 
-	    g.addEdge(f, f, {weight: '#:#:L'});
-	    g.addEdge(f, f, {weight: 'a:a:L'});
-	    g.addEdge(f, a, {weight: square + ':' + square + ':R'});
+	    g.addEdge(f, f, {weight: '#;#,L'});
+	    g.addEdge(f, f, {weight: 'a;a,L'});
+	    g.addEdge(f, a, {weight: square + ';' + square + ',R'});
 	
     $(".jsavgraph").click(graphClickHandler);
     g.click(nodeClickHandler);
@@ -72,6 +72,7 @@ var lambda = String.fromCharCode(955),
 		var row = $(rows[0]);
 		row.find('#read').focus();
 		for (var i = 0; i < weights.length; i++) {
+			weights[i] = toColonForm(weights[i]);
 			var letters = weights[i].split(":");
 			rows = tbody.find('tr');
 			if (i >= rows.length) {
@@ -128,7 +129,7 @@ var lambda = String.fromCharCode(955),
 				if (read == "") read = square;
 				if (write == "") write = square;
 				if (dir == "") dir = square;
-				weights.push(read + ":" + write + ":" + dir);
+				weights.push(read + ";" + write + "," + dir);
 			}
 			newWeight = weights.join("<br>");
 		}
@@ -157,7 +158,6 @@ var lambda = String.fromCharCode(955),
 		if ($(".jsavgraph").hasClass("edit")) {
 			this.highlight();
 			var input = prompt("State Label: ", this.stateLabel());
-			console.log(input);
 			if (!input || input == "null"){
 				this.unhighlight();
 				return;
@@ -195,7 +195,7 @@ var lambda = String.fromCharCode(955),
 	var updateAlphabet = function() {
 		g.updateAlphabet();
 		$("#alphabet").html("" + Object.keys(g.alphabet).sort());
-		var sa = getTapeAlphabet(g);
+		var sa = g.getTapeAlphabet();
 		$('#stackalphabet').html(emptystring + "," + sa.sort());
 	};
 
@@ -403,7 +403,7 @@ var lambda = String.fromCharCode(955),
 		var toRead = $('#toRead').val();
 		var toWrite = $('#toWrite').val();
 		var direction = $('#direction').val();
-		var edgeWeight = toRead + ":" + toWrite + ":" + direction;
+		var edgeWeight = toRead + ";" + toWrite + "," + direction;
 		g.addEdge(first, g.selected, {weight: edgeWeight});
 		$('.jsavedgelabel').off('click').click(labelClickHandler);
 

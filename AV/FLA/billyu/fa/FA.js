@@ -406,6 +406,7 @@ faproto.updateAlphabet = function () {
 		for (var i = 0; i < w.length; i++) {
 			var t = w[i].split('|');
 			for (var j = 0; j < t.length; j++) {
+				t[j] = toColonForm(t[j]);
 				var letters = t[j].split(':')[0];
 				if (letters !== String.fromCharCode(955) && letters !== String.fromCharCode(949)) {
 					for (var k = 0; k < letters.length; k++) {
@@ -1446,3 +1447,9 @@ var checkEmptyString = function(w) {
 	}
 	return wArray.join("<br>");
 };
+
+var toColonForm = function(string) {
+	var re = string.replace(/,/g, ":");
+	re = re.replace(/;/g, ":");
+	return re;
+}

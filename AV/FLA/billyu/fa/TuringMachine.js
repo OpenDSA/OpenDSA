@@ -104,6 +104,7 @@ tm.traverse = function(currentStates) {
 			var edge = this.getEdge(currentState.state, next),
 					weight = edge.weight().split('<br>');
 			for (var i = 0; i < weight.length; i++) {
+				weight[i] = toColonForm(weight[i]);
 				var w = weight[i].split(':');
 				if (currentState.tape.value() === w[0]) {
 					var nextConfig = new Configuration(next, currentState.tape);
@@ -158,6 +159,7 @@ tm.serializeToXML = function() {
 			text = text + '<transition>';
 			text = text + '<from>' + fromNode + '</from>';
 			text = text + '<to>' + toNode + '</to>';
+			w[i] = toColonForm(w[i]);
 			var wSplit = w[i].split(":");
 			if (wSplit[0] === emptystring) {
 				text = text + '<read/>';
@@ -240,7 +242,7 @@ tm.initFromXML = function(text) {
 			} else {
 				write = write.nodeValue;
 			}
-			this.addEdge(nodeMap[from], nodeMap[to], {weight: read + ":" + write + ":" + move});
+			this.addEdge(nodeMap[from], nodeMap[to], {weight: read + ";" + write + "," + move});
 		}
 		this.layout();
 	}
@@ -264,7 +266,7 @@ var Configuration = function(state, tape) {
 
 // Transition object for Turing Machine
 var TMTransition = function(jsav, start, end, toRead, toWrite, direction, options) {
-	var weight = toRead + ":" + toWrite + ":" + direction;
+	var weight = toRead + ";" + toWrite + "," + direction;
 	this.weight = weight;
 	this.jsav = jsav;
 	this.start = start;
@@ -450,12 +452,13 @@ var extendTape = function (dir, node, n) {
 /*
 	 Function to get the tape alphabet.
  */
-var getTapeAlphabet = function (graph) {
+tm.getTapeAlphabet = function () {
 	var alphabet = [];
-	var edges = graph.edges();
+	var edges = this.edges();
 	var w;
 	for (var next = edges.next(); next; next = edges.next()) {
 		w = next.weight();
+		w = toColonForm(w);
 		w = w.split('<br>');
 		for (var i = 0; i < w.length; i++) {
 			var t = w[i].split('|');
@@ -463,17 +466,17 @@ var getTapeAlphabet = function (graph) {
 				var letter1 = t[k].split(':')[0],
 						letter2 = t[k].split(':')[1],
 						letters;
-				if (letter1 !== graph.emptystring && letter2 !== graph.emptystring) {
+				if (letter1 !== this.emptystring && letter2 !== this.emptystring) {
 					letters = letter1.split('').concat(letter2.split(''));
-				} else if (letter1 !== graph.emptystring) {
+				} else if (letter1 !== this.emptystring) {
 					letters = letter1.split('');
-				} else if (letter2 !== graph.emptystring) {
+				} else if (letter2 !== this.emptystring) {
 					letters = letter2.split('');
 				} else {
 					break;
 				}
 				for (var j = 0; j < letters.length; j++) {
-					if (letters[j] !== graph.emptystring && alphabet.indexOf(letters[j]) === -1){
+					if (letters[j] !== this.emptystring && alphabet.indexOf(letters[j]) === -1){
 						alphabet.push(letters[j]);
 					}
 				}
