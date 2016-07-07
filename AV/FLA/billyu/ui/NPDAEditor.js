@@ -123,6 +123,7 @@ var lambda = String.fromCharCode(955),
 		}
 		$(label).html(newWeight);
 		g.layout({layout: 'manual'});
+		g.updateEdgePositions();
 		editEdgeInput.hide();
 		updateAlphabet();
 	};
@@ -222,6 +223,7 @@ var lambda = String.fromCharCode(955),
 	};
 	var moveNodesMode = function() {
 		cancel();
+		g.enableDragging();
 		var jg = $(".jsavgraph");
 		jg.addClass("moveNodes");
 		$("#mode").html('');

@@ -383,6 +383,16 @@ faproto.getFinals = function() {
 	return finals;
 }
 
+//update all edge label positions
+faproto.updateEdgePositions = function() {
+	var edges = this.edges();
+	console.log(edges);
+	for (var edge = edges.next(); edge; edge = edges.next()) {
+		console.log(edge);
+		edge.layout();
+	}
+}
+
 /*
 	 Function to update the input alphabet.
 	 Returns an object.
