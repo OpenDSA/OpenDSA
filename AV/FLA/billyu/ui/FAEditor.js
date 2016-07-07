@@ -93,6 +93,10 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 			var Prompt = new EdgePrompt(updateEdge, emptystring);
    			Prompt.render(values);
 		}
+		else if ($(".jsavgraph").hasClass("deleteNodes")) {
+			$(this).html("");
+			g.layout({layout:"manual"});
+		}
 	};
 
 	// Initializes a graph by parsing a JSON representation.
@@ -187,6 +191,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 		checkEdge(edge);
 		g.first.unhighlight();
 		g.selected.unhighlight();
+		g.updateEdgePositions();
 		g.first = null;
 		g.selected = null;
 	};
