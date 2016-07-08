@@ -297,6 +297,7 @@ faproto.addEdge = function(fromNode, toNode, options) {
 		// Update edge weight to erase any duplicate edge transitions.
 		edge.weight(transitions.join("<br>"));
 		edge.layout();
+		this.updateAlphabet();
 		return edge;
 	}
 	else {
@@ -339,6 +340,7 @@ faproto.removeEdge = function(fNode, tNode, options) {
 	}
 	// we "remove" the edge by hiding it
 	edge.hide();
+	this.updateAlphabet();
 };
 
 // Function to make a state initial.
