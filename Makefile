@@ -163,22 +163,28 @@ CS3vt: min
 CS3in: min
 	python $(CONFIG_SCRIPT) config/CS3.json -c config/CS3in_LMSconf.json -b CS3in
 
-CS3114: CS3114am CS3114pm
-
-CS3114test: min
-	python $(CONFIG_SCRIPT) config/CS3114.json -c config/CS3114vttest_LMSconf.json -b CS3114S16test
-
 CS3114testupdate: min
 	python $(CONFIG_SCRIPT) config/CS3114.json -c config/CS3114vttest_LMSconf.json -b CS3114S16test -o True
 
 CS3114notestest: min
 	python $(CONFIG_SCRIPT) config/CS3114notes.json -c config/CS3114notes_LMSconf.json -b CS3114notestest
 
+CS3114test: min
+	python $(CONFIG_SCRIPT) config/CS3114.json -c config/CS3114vttest_LMSconf.json -b CS3114F16test
+
+CS3114F16: CS3114am CS3114pm
+
+CS3114SS2:
+	python $(CONFIG_SCRIPT) config/CS3114.json -c config/CS3114vtSS2_LMSconf.json -b CS3114SS2
+
 CS3114am: min
 	python $(CONFIG_SCRIPT) config/CS3114.json -c config/CS3114vtam_LMSconf.json -b CS3114S16am
 
 CS3114pm: min
 	python $(CONFIG_SCRIPT) config/CS3114.json -c config/CS3114vtpm_LMSconf.json -b CS3114S16pm
+
+CS3114in: min
+	python $(CONFIG_SCRIPT) config/CS3114.json -c config/CS3114in_LMSconf.json -b CS3114in
 
 CS240: min
 	python $(CONFIG_SCRIPT) config/CS240.json -c config/CS240_LMSconf.json -b CS240
