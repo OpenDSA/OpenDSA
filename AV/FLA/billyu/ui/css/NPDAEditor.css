@@ -9,8 +9,9 @@
 	margin-top: 10px;
 	height: 20px;
 }
-#jsavoutput {
+.jsavoutput {
 	margin-top: 0;
+	clear: both;
 }
 #edge, #editEdge {
 	text-align: center;
@@ -40,4 +41,39 @@
 .jsavgraph {
 	margin-top: 0;
 	margin-bottom: 0;
+}
+.configuration {
+	overflow: scroll;
+	width: 120px;
+	height: 40px;
+	padding: 5px;
+	float: left;
+}
+#currentState {
+	float: left;
+	margin-right: 10px;
+}
+#readInput {
+	color: gray;
+	float: left;
+}
+#unreadInput {
+	color: black;
+	float: left;
+}
+#stack {
+	float: left;
+	clear: both;
+}
+.configAccepted {
+	background-color: #C0FFAB;
+}
+.configRejected {
+	background-color: #FFA1A1;
+}
+.configNormal {
+	background-color: white;
+}
+#alphabets {
+	clear: both;
 }

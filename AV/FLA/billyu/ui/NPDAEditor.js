@@ -308,6 +308,7 @@ var lambda = String.fromCharCode(955),
 		$("#functionality").hide();			//disable buttons
 		$("#mode").html('');
 		$('.jsavcontrols').show();
+		$('#configurations').show();
 		g.play(inputString);
 	};
 
@@ -426,6 +427,8 @@ var lambda = String.fromCharCode(955),
 	$('#deleteButton').click(deleteMode);
 	$('#saveButton').click(save);
 	$('#loadFile').on('change', load);
+	$('#configurations').hide();
+	$('.configuration').hide();
 
 	g = initGraph({layout: "manual"});
 	g.layout();

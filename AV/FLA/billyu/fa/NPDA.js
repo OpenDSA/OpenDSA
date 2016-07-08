@@ -73,14 +73,14 @@ npda.toggleLambda = function() {
 //traversal
 
 npda.play = function(inputString) {
+	var configurations = $('#configurations');
 	this.initial.addClass('current');
 	var currentStates = [new Configuration(this.initial, ['Z'], inputString, 0)];
 	currentStates = this.addLambdaClosure(currentStates);
-	var configView = "Configurations: ";
+	configurations.empty();
 	for (var j = 0; j < currentStates.length; j++) {
-		configView += currentStates[j].toString() + ' | ';
+		currentStates[j].update();
 	}
-	this.jsav.umsg(configView);
 	var cur;
 
 	this.jsav.displayInit();
@@ -89,6 +89,7 @@ npda.play = function(inputString) {
 	while (true) {
 		this.jsav.step();
 		counter++;
+		console.log(counter);
 		if (counter > 500) {
 			break;
 		}
@@ -102,7 +103,9 @@ npda.play = function(inputString) {
 			break;
 		}
 		currentStates = cur;
-		configView = "Configurations: ";
+
+		configurations.empty();
+		console.log(configurations);
 		for (var j = 0; j < currentStates.length; j++) {
 			if (currentStates[j].curIndex === inputString.length) {
 				if (currentStates[j].state.hasClass('final')) {
@@ -112,9 +115,8 @@ npda.play = function(inputString) {
 					currentStates[j].state.addClass('rejected');
 				}
 			}
-			configView += cur[j].toString() + ' | ';
+			currentStates[j].update();
 		}
-		this.jsav.umsg(configView);
 	}
 
 	if (stringAccepted) {
@@ -216,6 +218,23 @@ var Configuration = function(state, stack, str, index) {
 	this.inputString = str;
 	this.curIndex = index;
 	this.stack = stack.slice(0);
+	this.element = $('.configuration').last().clone();
+	this.update = function() {
+		this.element.find('#currentState').text(this.state.value());
+		this.element.find('#readInput').text(this.inputString.substring(0, this.curIndex));
+		this.element.find('#unreadInput').text(this.inputString.substring(this.curIndex, this.inputString.length));
+		this.element.find('#stack').text(this.stack.join());
+		this.element.removeClass('configNormal').removeClass('configAccepted').removeClass('configRejected');
+		if (this.state.hasClass('accepted')) {
+			this.element.addClass('configAccepted');
+		} else if (this.state.hasClass('rejected')) {
+			this.element.addClass('configRejected');
+		} else {
+			this.element.addClass('configNormal');
+		}
+		$('#configurations').append(this.element);
+		this.element.show();
+	}
 	this.toString = function() {
 		return this.state.value() + ' ' + this.inputString.substring(0, this.curIndex) + ' ' + this.stack.join();
 	}
