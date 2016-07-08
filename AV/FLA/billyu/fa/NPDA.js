@@ -392,3 +392,11 @@ npda.getStackAlphabet = function () {
 	return alphabet;
 };
 
+npda.updateAlphabetFunction = npda.updateAlphabet;
+npda.updateAlphabet = function() {
+	this.updateAlphabetFunction();
+	$("#alphabet").html("" + Object.keys(this.alphabet).sort());
+	var sa = this.getStackAlphabet();
+	$('#stackalphabet').html(emptystring + "," + sa.sort());
+}
+

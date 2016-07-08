@@ -58,7 +58,6 @@ var lambda = String.fromCharCode(955),
 		if (weights.length == 1 && g.hasClass("delete")) {
 			$(label).html("");
 			g.layout({layout: 'manual'});
-			updateAlphabet();
 			return;
 		}
 		var tbody = $('#editEdge > table > tbody');
@@ -134,7 +133,7 @@ var lambda = String.fromCharCode(955),
 		g.layout({layout: 'manual'});
 		g.updateEdgePositions();
 		editEdgeInput.hide();
-		updateAlphabet();
+		g.updateAlphabet();
 	};
 
 	// handler for the graph window
@@ -182,7 +181,6 @@ var lambda = String.fromCharCode(955),
 			if (input) {
 				g.removeEdge(this);
 			}
-			updateAlphabet();
 			this.unhighlight();
 		}
 	};
@@ -313,13 +311,6 @@ var lambda = String.fromCharCode(955),
 		g.play(inputString);
 	};
 
-	var updateAlphabet = function() {
-		g.updateAlphabet();
-		$("#alphabet").html("" + Object.keys(g.alphabet).sort());
-		var sa = g.getStackAlphabet();
-		$('#stackalphabet').html("Z," + _.without(sa.sort(), 'Z'));
-	};
-
 	var save = function() {
 		var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(g.serializeToXML());
 		$('#download').html('<a href="data:' + downloadData + '" target="_blank" download="npda.xml">Download NPDA</a>');
@@ -332,7 +323,6 @@ var lambda = String.fromCharCode(955),
 		reader = new FileReader();
 		waitForReading(reader);
 		reader.readAsText(file);
-		updateAlphabet();
 	}
 
 	var waitForReading = function (reader) {
@@ -440,5 +430,4 @@ var lambda = String.fromCharCode(955),
 	g = initGraph({layout: "manual"});
 	g.layout();
 	jsav.displayInit();
-	updateAlphabet();
 }(jQuery));

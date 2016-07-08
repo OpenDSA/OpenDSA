@@ -525,6 +525,14 @@ var viewTape = function (t) {
 	return view;
 };
 
+tm.updateAlphabetFunction = tm.updateAlphabet;
+tm.updateAlphabet = function() {
+	this.updateAlphabetFunction();
+	$("#alphabet").html("" + Object.keys(this.alphabet).sort());
+	var sa = this.getTapeAlphabet();
+	$('#stackalphabet').html(emptystring + "," + sa.sort());
+}
+
 /*
 	 Function to get the tape output, the string made from the current position up to,
 	 but not including, the first empty square found.
