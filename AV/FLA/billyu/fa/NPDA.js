@@ -2,6 +2,9 @@
 var NPDA = function(jsav, options) {
 	FiniteAutomaton.apply(this, arguments);
 	this.transitions = [];
+	this.configurations = $("<ul>"); // configurations jQuery object used to setup view at a step
+	this.configViews = []; // configurations view for a step
+	this.step = 0; // current step the user is at, used for changing configuration display
 }
 
 JSAV.ext.ds.npda = function (options) {
@@ -73,23 +76,28 @@ npda.toggleLambda = function() {
 //traversal
 
 npda.play = function(inputString) {
-	var configurations = $('#configurations');
+	this.setupControls();
+
+	var configArray = this.jsav.ds.array();
+	this.configViews.push(configArray.element);
 	this.initial.addClass('current');
-	var currentStates = [new Configuration(this.initial, ['Z'], inputString, 0)];
+	var currentStates = [new Configuration(this.configurations, this.initial, ['Z'], inputString, 0)];
 	currentStates = this.addLambdaClosure(currentStates);
-	configurations.empty();
+	this.configurations = $("<ul>");
 	for (var j = 0; j < currentStates.length; j++) {
 		currentStates[j].update();
 	}
+
+	configArray = this.jsav.ds.array(this.configurations);
+	this.configViews.push(configArray.element);
 	var cur;
 
 	this.jsav.displayInit();
-	var counter = 0;
+	counter = 0;
 	var stringAccepted = false;
 	while (true) {
 		this.jsav.step();
 		counter++;
-		console.log(counter);
 		if (counter > 500) {
 			break;
 		}
@@ -104,8 +112,7 @@ npda.play = function(inputString) {
 		}
 		currentStates = cur;
 
-		configurations.empty();
-		console.log(configurations);
+		this.configurations = $("<ul>");
 		for (var j = 0; j < currentStates.length; j++) {
 			if (currentStates[j].curIndex === inputString.length) {
 				if (currentStates[j].state.hasClass('final')) {
@@ -117,6 +124,8 @@ npda.play = function(inputString) {
 			}
 			currentStates[j].update();
 		}
+		configArray = this.jsav.ds.array(this.configurations);
+		this.configViews.push(configArray.element);
 	}
 
 	if (stringAccepted) {
@@ -156,7 +165,7 @@ npda.traverse = function(currentStates) {
 						}
 					}
 					if (t[1] === l.join('')) {
-						var nextConfig = new Configuration(next, curStack, s, nextIndex);
+						var nextConfig = new Configuration(this.configurations, next, curStack, s, nextIndex);
 						if (t[2] !== emptystring){
 							for (var h = t[2].length - 1; h >= 0; h--) {
 								nextConfig.stack.push(t[2].charAt(h));
@@ -168,7 +177,7 @@ npda.traverse = function(currentStates) {
 					l.reverse();
 					curStack = curStack.concat(l);
 				} else {
-					var nextConfig = new Configuration(next, curStack, s, nextIndex);
+					var nextConfig = new Configuration(this.configurations, next, curStack, s, nextIndex);
 					if (t[2] !== emptystring){
 						for (var h = t[2].length - 1; h >= 0; h--) {
 							nextConfig.stack.push(t[2].charAt(h));
@@ -196,7 +205,7 @@ npda.addLambdaClosure = function(nextStates) {
 			for (var j = 0; j < weight.length; j++) {
 				if (!next.hasClass('current') && _.every(weight[j].split(':'), function(x) {return x === emptystring})) {
 					next.addClass('current');
-					var nextConfig = new Configuration(next, nextStates[i].stack, nextStates[i].inputString, nextStates[i].curIndex)
+					var nextConfig = new Configuration(this.configurations, next, nextStates[i].stack, nextStates[i].inputString, nextStates[i].curIndex)
 						lambdaStates.push(nextConfig);
 				}
 			}
@@ -213,7 +222,7 @@ npda.addLambdaClosure = function(nextStates) {
 };
 
 // Configuration object
-var Configuration = function(state, stack, str, index) {
+var Configuration = function(configurations, state, stack, str, index) {
 	this.state = state;
 	this.inputString = str;
 	this.curIndex = index;
@@ -232,7 +241,9 @@ var Configuration = function(state, stack, str, index) {
 		} else {
 			this.element.addClass('configNormal');
 		}
-		$('#configurations').append(this.element);
+		var newL = $("<li>");
+		newL.append(this.element);
+		configurations.append(newL);
 		this.element.show();
 	}
 	this.toString = function() {
@@ -419,3 +430,28 @@ npda.updateAlphabet = function() {
 	$('#stackalphabet').html(emptystring + "," + sa.sort());
 }
 
+npda.setupControls = function() {
+	var t = this;	
+	var $configView = $('#configurations');
+	$('.jsavbegin').click(function() {
+		$configView.empty();
+		t.step = 0;
+	});
+	$('.jsavend').click(function() {
+		$configView.empty();
+		$configView.append(t.configViews[t.configViews.length - 1]);
+		t.step = t.configViews.length - 1;
+	});
+	$('.jsavforward').click(function() {
+		if (t.step >= t.configViews.length - 1) return;
+		t.step++;
+		$configView.empty();
+		$configView.append(t.configViews[t.step]);
+	});
+	$('.jsavbackward').click(function() {
+		if (t.step <= 0) return;
+		t.step--;
+		$configView.empty();
+		$configView.append(t.configViews[t.step]);
+	});
+};

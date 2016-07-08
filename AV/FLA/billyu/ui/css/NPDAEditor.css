@@ -44,10 +44,12 @@
 }
 .configuration {
 	overflow: scroll;
-	width: 120px;
+	width: 100px;
 	height: 40px;
 	padding: 5px;
 	float: left;
+	border: 1px solid black;
+	margin: 0 5px;
 }
 #currentState {
 	float: left;
