@@ -58,6 +58,7 @@
 #readInput {
 	color: gray;
 	float: left;
+	font-style: italic;
 }
 #unreadInput {
 	color: black;
