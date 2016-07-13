@@ -625,7 +625,8 @@ static void sorttime(){
  System.out.println("inssort Time for lists of size 10000 double Slightly Disordered: "+ totaltime);
  
  System.out.println();
- 
+
+ setupDouble();
  funcInssortDouble(dsize10Asc,10,"inssort2Double");
  System.out.println("inssort2 Time for lists of size 10 double in ascending order: "+ totaltime);
  
