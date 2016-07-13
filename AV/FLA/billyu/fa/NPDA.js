@@ -1,7 +1,6 @@
 // NPDA "class", extending FiniteAutomaton
 var NPDA = function(jsav, options) {
 	FiniteAutomaton.apply(this, arguments);
-	this.transitions = [];
 	this.configurations = $("<ul>"); // configurations jQuery object used to setup view at a step
 	this.configViews = []; // configurations view for a step
 	this.step = 0; // current step the user is at, used for changing configuration display

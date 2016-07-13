@@ -1183,7 +1183,6 @@ dstypes.faTransition = faTransition;
 	 NFA to DFA conversion
 Note: g.transitionFunction takes a single node and returns an array of node values
 Requires underscore.js
-The commented code creates a slideshow of the conversion (buggy).
  */
 var convertToDFA = function(jsav, graph, opts) {
 	// jsav.label("Converted:");
@@ -1276,26 +1275,6 @@ var lambdaClosure = function(input, graph) {
 	return arr;
 };
 
-/*
-	 DFA minimization.
-	 UNUSED AND INCOMPLETE.
-	 See minimizationTest.html for interactive DFA minimization, which features an
-	 algorithm for automatic splitting of minimization tree nodes.
-	 However, automatic minimization of the whole DFA is not yet implemented.
- */
-var minimize = function (graph) {
-	// this assumes all of the edges are in the alphabet
-	// remove all unreachable states
-	var reachable = [graph.initial],
-			nodes = graph.nodes();
-	dfs(reachable, graph.initial);
-	for (var next = nodes.next(); next; next = nodes.next()) {
-		if ($.inArray(next, reachable) < 0) {
-			graph.removeNode(next);
-		}
-	}
-	// incomplete
-};
 // helper depth-first search to find connected component
 var dfs = function (visited, node, options) {
 	var successors = node.neighbors();
