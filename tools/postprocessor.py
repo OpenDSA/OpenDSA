@@ -452,7 +452,6 @@ def pretty_print_xml(data, file_path):
 
 def make_lti(config):
   config['module_map'] = get_module_map(config)
-  print(json.dumps(config['module_map']))
   dest_dir = config.book_dir + config.rel_book_output_path
   # Iterate through all of the existing files
   ignore_files = ('Gradebook.html', 'search.html', 'conceptMap.html',
