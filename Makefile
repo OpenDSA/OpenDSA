@@ -198,6 +198,11 @@ CS3114: min
 	python $(CONFIG_SCRIPT) config/CS3114.json
 	# python $(CONFIG_SCRIPT) config/CS3114.json --local
 
+CS271-UWO: min
+	# python $(CONFIG_SCRIPT) config/CS3114.json
+	# python $(CONFIG_SCRIPT) config/CS3114.json --local
+	python $(CONFIG_SCRIPT) config/CS271-UWO.json --local
+
 CS240: min
 	python $(CONFIG_SCRIPT) config/CS240.json
 
