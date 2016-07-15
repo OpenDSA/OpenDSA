@@ -855,8 +855,6 @@ $(document).ready(function () {
   /*
   SLR(1) parsing
   Does not check to see if the grammar is correct format.
-  Does not check for parse table conflicts!
-  JFLAP allows users to choose which to use during conflicts.
   */
   var slrParse = function () {
     var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
