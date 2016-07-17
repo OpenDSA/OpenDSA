@@ -218,7 +218,7 @@ If the limit goes to some constant other than zero, then
 
 .. topic:: Example
 
-   If :math:`f(n) = 2n\log n` and :math:`g(n)=n^2`, is :math:`f(n)` in
+   If :math:`f(n) = n^2` and :math:`g(n) = 2n\log n`, is :math:`f(n)` in
    :math:`O(g(n))`, :math:`\Omega(g(n))`, or :math:`\Theta(g(n))`?
    Since
 

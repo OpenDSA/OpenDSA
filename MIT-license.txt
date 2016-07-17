@@ -1,7 +1,7 @@
 OpenDSA Project
 Distributed under the MIT License
 
-Copyright (c) 2011-2013 - Ville Karavirta and Cliff Shaffer
+Copyright (c) 2011-2016 - Ville Karavirta and Cliff Shaffer
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
