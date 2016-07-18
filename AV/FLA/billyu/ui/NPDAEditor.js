@@ -439,8 +439,16 @@ var lambda = String.fromCharCode(955),
 	$('#editButton').click(editMode);
 	$('#deleteButton').click(deleteMode);
 	$('#saveButton').click(save);
-	$('#undoButton').click(function() {g.undo();});
-	$('#redoButton').click(function() {g.redo();});
+	$('#undoButton').click(function() {
+		g.undo();
+		$(".jsavgraph").click(graphClickHandler);
+		$('.jsavedgelabel').click(labelClickHandler);
+	});
+	$('#redoButton').click(function() {
+		g.redo();
+		$(".jsavgraph").click(graphClickHandler);
+		$('.jsavedgelabel').click(labelClickHandler);
+	});
 	$('#loadFile').on('change', load);
 	$('#configurations').hide();
 	$('.configuration').hide();

@@ -433,8 +433,16 @@ var lambda = String.fromCharCode(955),
 	$('#editButton').click(editMode);
 	$('#saveButton').click(save);
   $('#loadFile').on('change', load);
-	$('#undoButton').click(function() {g.undo();});
-	$('#redoButton').click(function() {g.redo();});
+	$('#undoButton').click(function() {
+		g.undo();
+		$(".jsavgraph").click(graphClickHandler);
+		$('.jsavedgelabel').click(labelClickHandler);
+	});
+	$('#redoButton').click(function() {
+		g.redo();
+		$(".jsavgraph").click(graphClickHandler);
+		$('.jsavedgelabel').click(labelClickHandler);
+	});
 	$('#cancelButton').click(cancel);
 	$('#deleteButton').click(deleteMode);
 	$(document).keyup(function(e) {
@@ -446,7 +454,7 @@ var lambda = String.fromCharCode(955),
 
 	g = initGraph({layout: "manual"});
 	g.layout();
-	resetUndeoButtons();
+	resetUndoButtons();
 	jsav.displayInit();
 
 }(jQuery));
