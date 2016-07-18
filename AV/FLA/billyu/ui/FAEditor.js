@@ -38,7 +38,6 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 			$('#begin').click(displayTraversals);
 			var data;
 			//this editor is opened from exercise generator
-			console.log(localStorage['createExercise']);
 			if (localStorage['createExercise'] == 'true') {
 				jsav.umsg("When you're done, click 'finish'.");
 				// exercise generator does not need the functionality buttons
@@ -70,9 +69,13 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 		}
 		$('#undoButton').click(function(){
 			g.undo();
+			$('.jsavgraph').click(graphClickHandler);
+			$('.jsavedgelabel').click(labelClickHandler);
 		});
 		$('#redoButton').click(function(){
 			g.redo();
+			$('.jsavgraph').click(graphClickHandler);
+			$('.jsavedgelabel').click(labelClickHandler);
 		});
 		resetUndoButtons();
 	};
@@ -94,6 +97,8 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
    			Prompt.render(values);
 		}
 		else if ($(".jsavgraph").hasClass("deleteNodes")) {
+			console.log("click on label");
+			g.saveFAState();
 			$(this).html("");
 			g.layout({layout:"manual"});
 		}
