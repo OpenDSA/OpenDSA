@@ -56,6 +56,7 @@ var lambda = String.fromCharCode(955),
 		var weights = $(label).html().split("<br>");
 		// delete edge if there is only one transition and in delete mode
 		if (weights.length == 1 && g.hasClass("delete")) {
+			g.saveFAState();
 			$(label).html("");
 			g.layout({layout: 'manual'});
 			return;
@@ -130,6 +131,7 @@ var lambda = String.fromCharCode(955),
 			newWeight = weights.join("<br>");
 		}
 		$(label).html(newWeight);
+		g.saveFAState();
 		g.layout({layout: 'manual'});
 		g.updateEdgePositions();
 		editEdgeInput.hide();
@@ -139,13 +141,12 @@ var lambda = String.fromCharCode(955),
 	// handler for the graph window
 	var graphClickHandler = function(e) {
 		if ($(".jsavgraph").hasClass("addNodes")) {
+			g.saveFAState();
 			var newNode = g.addNode(),
 			    nodeX = newNode.element.width()/2.0,
 				nodeY = newNode.element.height()/2.0;
 			$(newNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
 		} 
-		else if ($('.jsavgraph').hasClass('moveNodes')) {
-		}
 	};
 
 	// handler for the nodes of the graph
@@ -158,6 +159,7 @@ var lambda = String.fromCharCode(955),
 				this.unhighlight();
 				return;
 			}
+			g.saveFAState();
 			this.stateLabel(input);
 			this.stateLabelPositionUpdate();
 			this.unhighlight();
@@ -179,6 +181,7 @@ var lambda = String.fromCharCode(955),
 				return;
 			}
 			if (input) {
+				g.saveFAState();
 				g.removeEdge(this);
 			}
 			this.unhighlight();
@@ -396,6 +399,7 @@ var lambda = String.fromCharCode(955),
 		var pop = $('#pop').val();
 		var push = $('#push').val();
 		var edgeWeight = input + "," + pop + ";" + push;
+		g.saveFAState();
 		g.addEdge(first, g.selected, {weight: edgeWeight});
 		$('.jsavedgelabel').off('click').click(labelClickHandler);
 
@@ -415,6 +419,14 @@ var lambda = String.fromCharCode(955),
 		jsav.g.line(startX, startY, endX, endY, {"opacity": 1.5});
 	}
 
+	// Function to reset the size of the undo stack and the redo stack.
+	// Since both of them are empty, both buttons are also disabled.
+	// Called whenever the user loads a new graph.
+	function resetUndoButtons () {
+		document.getElementById("undoButton").disabled = true;
+		document.getElementById("redoButton").disabled = true;
+	};
+
 
 	$('#playButton').click(onClickTraverse);
 	$('#layoutbutton').click(function() {g.layout()});
@@ -427,11 +439,14 @@ var lambda = String.fromCharCode(955),
 	$('#editButton').click(editMode);
 	$('#deleteButton').click(deleteMode);
 	$('#saveButton').click(save);
+	$('#undoButton').click(function() {g.undo();});
+	$('#redoButton').click(function() {g.redo();});
 	$('#loadFile').on('change', load);
 	$('#configurations').hide();
 	$('.configuration').hide();
 
 	g = initGraph({layout: "manual"});
 	g.layout();
+	resetUndoButtons();
 	jsav.displayInit();
 }(jQuery));

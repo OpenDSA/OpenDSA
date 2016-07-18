@@ -133,6 +133,7 @@ var lambda = String.fromCharCode(955),
 			newWeight = weights.join("<br>");
 		}
 		$(label).html(newWeight);
+		g.saveFAState();
 		g.layout({layout: 'manual'});
 		g.updateEdgePositions();
 		editEdgeInput.hide();
@@ -142,6 +143,7 @@ var lambda = String.fromCharCode(955),
 	// handler for the graph window
 	var graphClickHandler = function(e) {
 		if ($(".jsavgraph").hasClass("addNodes")) {
+			g.saveFAState();
 			var newNode = g.addNode(),
 			    nodeX = newNode.element.width()/2.0,
 				nodeY = newNode.element.height()/2.0;
@@ -161,6 +163,7 @@ var lambda = String.fromCharCode(955),
 				this.unhighlight();
 				return;
 			}
+			g.saveFAState();
 			this.stateLabel(input);
 			this.stateLabelPositionUpdate();
 			this.unhighlight();
@@ -168,6 +171,7 @@ var lambda = String.fromCharCode(955),
 		else if ($('.jsavgraph').hasClass('moveNodes')) {
 		}
 		else if ($('.jsavgraph').hasClass('delete')) {
+			g.saveFAState();
 			g.removeNode(this);
 		}
 	};
@@ -182,6 +186,7 @@ var lambda = String.fromCharCode(955),
 				return;
 			}
 			if (input) {
+				g.saveFAState();
 				g.removeEdge(this);
 			}
 			this.unhighlight();
@@ -411,6 +416,14 @@ var lambda = String.fromCharCode(955),
 		jsav.g.line(startX, startY, endX, endY, {"opacity": 1.5});
 	}
 
+	// Function to reset the size of the undo stack and the redo stack.
+	// Since both of them are empty, both buttons are also disabled.
+	// Called whenever the user loads a new graph.
+	function resetUndoButtons () {
+		document.getElementById("undoButton").disabled = true;
+		document.getElementById("redoButton").disabled = true;
+	};
+
 	$('#playButton').click(function() {onClickTraverse()});
 	//$('#multiplebutton').click(displayTraversals);
 	$('#nodeButton').click(addNodesMode);
@@ -433,6 +446,7 @@ var lambda = String.fromCharCode(955),
 
 	g = initGraph({layout: "manual"});
 	g.layout();
+	resetUndeoButtons();
 	jsav.displayInit();
 
 }(jQuery));
