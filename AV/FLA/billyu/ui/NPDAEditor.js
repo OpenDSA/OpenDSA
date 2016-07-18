@@ -420,7 +420,8 @@ var lambda = String.fromCharCode(955),
 	$('#layoutbutton').click(function() {g.layout()});
 	$('#testNDbutton').click(toggleND);
 	$('#testlambdabutton').click(toggleLambda);
-	$('#nodeNutton').click(addNodesMode);
+	$('#cancelButton').click(cancel);
+	$('#nodeButton').click(addNodesMode);
 	$('#edgeButton').click(addEdgesMode);
 	$('#moveButton').click(moveNodesMode);
 	$('#editButton').click(editMode);
