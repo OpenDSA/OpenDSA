@@ -233,10 +233,6 @@
         "long_name": "BSTcheck Function",
 	"dispModComp": true,
         "exercises": {}
-      },
-      "RecurTutor2/recSorting": {
-        "long_name": "Recursive Sorting",
-        "exercises": {}
       }
     },
     "Appendix": {
