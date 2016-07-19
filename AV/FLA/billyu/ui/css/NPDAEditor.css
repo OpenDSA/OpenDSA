@@ -43,7 +43,7 @@
 	margin-bottom: 0;
 }
 .configuration {
-	overflow: scroll;
+	overflow-x: auto;
 	width: 100px;
 	height: 40px;
 	padding: 5px;
@@ -57,12 +57,12 @@
 }
 #readInput {
 	color: gray;
-	float: left;
+	display: inline-block;
 	font-style: italic;
 }
 #unreadInput {
 	color: black;
-	float: left;
+	display: inline-block;
 }
 #stack {
 	float: left;
