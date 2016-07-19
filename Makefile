@@ -6,7 +6,7 @@ CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicat
 CSSLINTFLAGS = --quiet --ignore=ids,adjoining-classes
 MINIMIZE = uglifyjs
 
-.PHONY: all clean lint csslint jshint min CS2114S215 CS2114F15 CS223 CS5114 CS3114 NewKA CS3114F15 CS3114notes CS150 OpenDSA test testX IS allBooks nomin pull CPSC270S15 CS2401 COP3530 CS208 ECE252 Tutorial TDDD86F15 TDDC91F15 S15 CSCI115 CS316 CSE017F15 CS226JHU
+.PHONY: all clean lint csslint jshint min CS2114S215 CS2114F15 CS223 CS5114 CS3114 NewKA CS3114F15 CS3114notes CS150 OpenDSA test testX IS allBooks nomin pull CPSC270S15 CS2401 COP3530 CS208 ECE252 Tutorial TDDD86F15 TDDC91F15 S15 CSCI115 CS316 CSE017F15 CS226JHU JFLAP
 
 all: alllint
 
@@ -310,7 +310,10 @@ C2GEN: min
 slides: min
 	python $(CONFIG_SCRIPT) -s config/slides.json
 
-allBooks: CS208 CS2114 CS2401 CS3114 CS3530 OpenDSA Everything testcmap
+JFLAP: min
+	python $(CONFIG_SCRIPT) config/JFLAP.json
+
+allBooks: CS208 CS2114 CS2401 CS3114 CS3530 OpenDSA Everything testcmap JFLAP
 
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js

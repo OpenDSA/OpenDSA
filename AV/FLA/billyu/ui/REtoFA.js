@@ -37,5 +37,5 @@ var jsav,
 		$('#export').hide();
 	}
 
-	onLoad();
+	$(document).ready(onLoad);
 }(jQuery));
