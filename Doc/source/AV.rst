@@ -28,8 +28,13 @@ In the meantime, a good example is ``AV/Sorting/insertionsortAV.json``.
 Use Case: Standalone AV or Proficiency Exercise
 ===============================================
 
+Standalone AVs and proficiency exercises are embedded into the HTML
+page using an iframe.
+The size of the iframe is taken from the size of a ``div`` element
+with classname ``container``.
+
 Given a standalone AV with HTML file ``foo.html`` that contains a
-``div`` with classnam ``avcontainer`` and
+``div`` with classname ``avcontainer`` and
 JavaScript file ``foo.js``, the configuration file would normally be
 named ``foo.json``.
 After creating a configuration object, the string interpreter and code
@@ -224,14 +229,6 @@ This is done using the ``avembed`` directive
 (see :ref:`avembed`).
 When converted to HTML, the mechanism used is a standard ``iframe``
 tag to include the artifact.
-Note that the size of the iframe is controlled by an XML file
-corresponding to the thing being embedded.
-For example, if you are going to avembed something at
-``AV/Sorting/insertionsortAV.html``, then there must be an XML file to
-define the size at
-``AV/Sorting/xml/insertionsortAV.xml``.
-The book compilation script will hard stop when processing the avembed
-directive if that XML file does not exist.
 
 "Inline" AVs are usually either a JSAV diagram or a JSAV slideshow
 (a diagram is just a "slideshow" with no slide controls at the top).

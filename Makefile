@@ -198,6 +198,14 @@ CS3114: min
 	python $(CONFIG_SCRIPT) config/CS3114.json
 	# python $(CONFIG_SCRIPT) config/CS3114.json --local
 
+CS271-UWO: min
+	# python $(CONFIG_SCRIPT) config/CS3114.json
+	# python $(CONFIG_SCRIPT) config/CS3114.json --local
+	python $(CONFIG_SCRIPT) config/CS271-UWO.json --local
+
+CS240: min
+	python $(CONFIG_SCRIPT) config/CS240.json
+
 NewKA: min
 	python $(CONFIG_SCRIPT) config/NewKA.json
 
@@ -264,6 +272,10 @@ testcpp: min
 
 uwosh: min
 	python $(CONFIG_SCRIPT) config/uwosh.json
+
+simple_demo: min
+#	python $(CONFIG_SCRIPT) config/simple_demo.json
+	python $(CONFIG_SCRIPT) config/simple_demo.json --local
 
 PL: min
 	python $(CONFIG_SCRIPT) config/PL.json

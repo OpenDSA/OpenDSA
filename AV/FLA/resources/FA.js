@@ -2,6 +2,8 @@
 Finite Automaton module.
 An extension to the JFLAP library.
 */
+var lambda = String.fromCharCode(955);
+var menuSelected; // variable for node that's right clicked on
 (function ($) {
   "use strict";
   if (typeof JSAV === "undefined") {
@@ -31,6 +33,7 @@ An extension to the JFLAP library.
     this.alphabet = {};           // input alphabet
     this.jsav = jsav;
     this.initial;                 // initial state
+		this.selected;
     this.options = $.extend({visible: true, nodegap: 40, autoresize: true, width: 400, height: 200,
                               directed: true, center: true, arcoffset: 50, emptystring: String.fromCharCode(955)}, options);
     //this.options = $.extend({directed: true}, options);
@@ -79,8 +82,31 @@ An extension to the JFLAP library.
     else{
       value = options.value;
     }
-    return this.newNode(value, options);
+    var newNode = this.newNode(value, options);
+		newNode.fa = this;
+		newNode.element.draggable({
+			start: dragStart,
+			stop: dragStop,
+			drag: dragging,
+			containment: "parent"
+		});
+		newNode.element.contextmenu(function(e) {
+			this.data('node').showMenu(e);
+		});
+		return newNode;
   };
+
+	faproto.enableDragging = function() {
+		for (var i = this._nodes.length; i--; ) {
+			this._nodes[i].element.draggable('enable');
+		}
+	};
+
+	faproto.disableDragging = function() {
+		for (var i = 0; i < this._nodes.length; i++) {
+			this._nodes[i].element.draggable('disable');
+		}
+	};
 
   // Method to remove the given node
   faproto.removeNode = function(node, options) {
@@ -141,7 +167,7 @@ An extension to the JFLAP library.
   */
   faproto.addEdge = function(fromNode, toNode, options) {
     // assumes a weight is always given
-    if (options.weight === "") {
+    if (options.weight === "" || options.weight == lambda) {
       options.weight = this.emptystring;
     }
     if (this.hasEdge(fromNode, toNode)) {     // if an edge already exists update it
@@ -178,8 +204,28 @@ An extension to the JFLAP library.
       prevEdge.layout();
       edge.layout();
     }
-    return edge;
+
+		if (edge) {
+			// Acquire each distinct edge transition.
+			var weight = edge.weight().split('<br>');
+			var transitions = [];
+			for (var i = 0; i < weight.length; i++) {
+				// Ensure there are no repeated edge transitions.
+				if (transitions.indexOf(weight[i]) == -1) {
+					transitions.push(weight[i]);
+				}
+			}
+			// Update edge weight to erase any duplicate edge transitions.
+			edge.weight(transitions.join("<br>"));
+			edge.layout();
+			return edge;
+		}
+		else {
+			// This should never happen, but it's here just in case (to prevent the program from simply crashing).
+			return graph.getEdge(fromNode, toNode);
+		}
   };
+
   // Function to delete the given edge. Can pass in an edge or two nodes.
   faproto.removeEdge = function(fNode, tNode, options) {
     var edge,
@@ -215,6 +261,7 @@ An extension to the JFLAP library.
     // we "remove" the edge by hiding it
     edge.hide();
   };
+
   // Function to make a state initial.
   faproto.makeInitial = function(node, options) {
     node.addClass("start");
@@ -234,9 +281,28 @@ An extension to the JFLAP library.
     }
   };
 
+	faproto.makeFinal = function(node) {
+		node.addClass("final");
+	}
+
+	faproto.removeFinal = function(node) {
+		node.removeClass("final");
+	}
+
   faproto.setShorthand = function (setBoolean) {
     this.shorthand = setBoolean;
   }
+
+	// return final states as [fastate]
+	faproto.getFinals = function() {
+		var nodes = this.nodes(), finals = [];
+		for (var node = nodes.next(); node; node = nodes.next()) {
+			if (node.hasClass('final')) {
+				finals.push(node);
+			}
+		}
+		return finals;
+	}
 
   /*
   Function to update the input alphabet.
@@ -486,6 +552,15 @@ An extension to the JFLAP library.
     return ret;
   };
 
+	// function to hide the right click menu
+	// called when mouse clicks on anywhere on the page except the menu
+	faproto.hideRMenu = function() {
+		if (menuSelected) {
+			menuSelected.unhighlight();
+		}
+		menuSelected = null;
+		$("#rmenu").hide();
+	};
 
   /*
   FA edge/transition class.
@@ -853,6 +928,7 @@ An extension to the JFLAP library.
     JSAV.utils._helpers.handlePosition(this);
     JSAV.utils._helpers.handleVisibility(this, this.options);
   };
+
   /*
   Function to get all outgoing edges of a node.
   Returns a normal array, not an iterable array like .getNodes does.
@@ -883,6 +959,54 @@ An extension to the JFLAP library.
       }
     }
   };
+
+	// shows the right click menu
+	// function exists because displayRightClickMenu requires three parameters
+	fastateproto.showMenu = function(e) {
+		var g = this.fa;
+		g.disableDragging();
+		var nodes = g.nodes();
+		for (var next = nodes.next(); next; next = nodes.next()) {
+			next.unhighlight();
+		}
+		this.highlight();
+		menuSelected = this;
+
+		e.preventDefault();
+		//make menu appear where mouse clicks
+		$("#rmenu").css({left: this.element.offset().left + e.offsetX, top: this.element.offset().top + e.offsetY});
+
+		$("#rmenu").show();
+		// add a check mark if the node is already a certain state
+		if (this.equals(g.initial)) {
+			$("#makeInitial").html("&#x2713;Initial");
+		}
+		else {
+			$("#makeInitial").html("Initial");
+		}
+		if (this.hasClass("final")) {
+			$("#makeFinal").html("&#x2713;Final");
+		}
+		else {
+			$("#makeFinal").html("Final");
+		}
+		//off and on to avoid binding event more than once
+		$("#makeInitial").off('click').click(function() {
+			toggleInitial(g, this);
+		});
+		$("#makeFinal").off('click').click(function() {
+			toggleFinal(g, this);
+		});
+		$("#deleteNode").off('click').click(function() {
+			deleteNode(g, this);
+		});
+		$("#changeLabel").off('click').click(function() {
+			changeLabel(this);
+		});
+		$("#clearLabel").off('click').click(function() {
+			clearLabel(this);
+		});
+	}
 
   fastateproto.mooreOutput = function(newOutput, options) {
     // the editable labels that go underneath the states
@@ -959,8 +1083,6 @@ Requires underscore.js
 The commented code creates a slideshow of the conversion (buggy).
 */
 var convertToDFA = function(jsav, graph, opts) {
-  // $('button').hide();
-  // $('input').hide();
   // jsav.label("Converted:");
   var g = jsav.ds.fa($.extend({layout: 'automatic'}, opts)),
       alphabet = Object.keys(graph.alphabet),
@@ -971,12 +1093,9 @@ var convertToDFA = function(jsav, graph, opts) {
   newStates.push(first);
   var temp = newStates.slice(0);
 
-  //jsav.displayInit();
   first = g.addNode({value: val}); 
   g.makeInitial(first);
-  //first.addClass("start");
   g.layout();
-  //jsav.step();
 
   // Repeatedly get next states and apply lambda closure
   while (temp.length > 0) {
@@ -990,6 +1109,7 @@ var convertToDFA = function(jsav, graph, opts) {
         next = _.union(next, lambdaClosure(graph.transitionFunction(graph.getNodeWithValue(valArr[j]), letter), graph));
       }
       var node = next.sort().join();
+			
       if (node) {
         if (!_.contains(newStates, node)) {
           temp.push(node);
@@ -999,9 +1119,6 @@ var convertToDFA = function(jsav, graph, opts) {
           node = g.getNodeWithValue(node);
         }
         var edge = g.addEdge(prev, node, {weight: letter});
-
-        //g.layout();
-        //jsav.step();
       }
     }
   }
@@ -1012,44 +1129,11 @@ var convertToDFA = function(jsav, graph, opts) {
   for (var next = nodes.next(); next; next = nodes.next()) {
     next.stateLabel(next.value());
     next.stateLabelPositionUpdate();
-    //next.hide();
-    //next._stateLabel.hide();
   }
   g.updateNodes();
   return g;
-  // var edges = g.edges();
-  // for (next = edges.next(); next; next = edges.next()) {
-  //   next.hide();
-  // }
-  // graph.hide();
-
-  // jsav.displayInit();
-  // var bfs = [],
-  //     visited = [];
-  // bfs.push(g.initial);
-  // visited.push(g.initial);
-  // while (bfs.length > 0) {
-  //   var cur = bfs.shift();
-  //   cur.show();
-  //   cur._stateLabel.show();
-  //   var successors = cur.neighbors();
-  //   for (var next = successors.next(); next; next = successors.next()) {
-  //     if (!_.contains(visited, next)) {
-  //       bfs.push(next);
-  //       visited.push(next);
-  //     }
-  //   }
-  //   jsav.step();
-  // }
-  // for (var i = 0; i < visited.length; i++) {
-  //   var outgoing = visited[i].getOutgoing();
-  //   for (var j = 0; j < outgoing.length; j++) {
-  //     outgoing[j].show();
-  //   }
-  //   jsav.step();
-  // }
-  // jsav.recorded();
 };
+
 // Function to add final markers to the resulting DFA
 var addFinals = function(g1, g2) {
   var nodes = g1.nodes();
@@ -1070,17 +1154,16 @@ Only used in NFA to DFA conversion.
 There's a different lambda closure function used for nondeterministic traversal in certain tests.
 */
 var lambdaClosure = function(input, graph) {
-  var l = "\&lambda;",
-      arr = [];
+  var arr = [];
   for (var i = 0; i < input.length; i++) {
     arr.push(input[i]);
-    var next = graph.transitionFunction(graph.getNodeWithValue(input[i]), l);
+    var next = graph.transitionFunction(graph.getNodeWithValue(input[i]), lambda);
     arr = _.union(arr, next);
   }
   var temp = arr.slice(0);
   while (temp.length > 0) {
     var val = temp.pop(),
-        next = graph.transitionFunction(graph.getNodeWithValue(val), l);
+        next = graph.transitionFunction(graph.getNodeWithValue(val), lambda);
     next = _.difference(next, arr);
     arr = _.union(arr, next);
     temp = _.union(temp, next);
@@ -1371,3 +1454,103 @@ var produceOutput = function (t) {
   return output;
 };
 
+// draggable functions
+function dragStart(event, node) {
+	var dragNode = node.helper.data("node");
+	//saveFAState();
+	dragNode.highlight();
+};
+
+function dragStop(event, node) {
+	var dragNode = node.helper.data("node");
+	dragNode.unhighlight();
+};
+
+function dragging(event, node) {
+	$('path[opacity="0"]').remove();
+	var dragNode = node.helper.data("node");
+	g = dragNode.fa;
+	var nodes = g.nodes();
+	var neighbors = dragNode.neighbors();
+	nodes.reset();
+	for (var next = nodes.next(); next; next = nodes.next()) {
+		if (next.neighbors().includes(dragNode)) {
+			neighbors.push(next);
+		}
+	}
+	for (var i = 0; i < neighbors.length; i++) {
+		var neighbor = neighbors[i];
+		var edge1 = g.getEdge(dragNode, neighbor);
+		var edge2 = g.getEdge(neighbor, dragNode);
+		if (edge1) edge1.layout();
+		if (edge2) edge2.layout();
+	}
+	if (dragNode == g.initial) {
+		g.removeInitial(dragNode);
+		g.makeInitial(dragNode);
+	}
+	dragNode.stateLabelPositionUpdate();
+	dragNode.element.draggable('enable');
+};
+
+// function to toggle the intitial state of a node
+// appears as a button in the right click menu
+function toggleInitial(g, node) {
+	$("#rmenu").hide();
+	node.unhighlight();
+	if (node.equals(g.initial)) {
+		g.removeInitial(node);
+	}
+	else {
+		if (g.initial) {
+			alert("There can only be one intial state!");
+		} else {
+			g.makeInitial(node);
+		}
+	}
+};
+
+// function to toggle the final state of a node
+// appears as a button in the right click menu
+function toggleFinal(g, node) {
+	if (node.hasClass("final")) {
+		node.removeClass("final");
+	}
+	else {
+		node.addClass("final");
+	}
+	$("#rmenu").hide();
+	node.unhighlight();
+};
+
+// function to change the customized label of a node
+// an option in right click menu
+function changeLabel(node) {
+	$("#rmenu").hide();
+	var nodeLabel = prompt("How do you want to label it?");
+	if (!nodeLabel) {
+		nodeLabel = "";
+	}
+	node.stateLabel(nodeLabel);
+	node.stateLabelPositionUpdate();
+	node.unhighlight();
+}
+
+// function to clear the customized label
+// an option in the right click menu
+function clearLabel(node) {
+	$("#rmenu").hide();
+	node.unhighlight();
+	node.stateLabel("");
+}
+
+// function to delete the node and its adjacent edges
+// option in the right click menu
+function deleteNode(g, node) {
+	$("#rmenu").hide();
+	node.unhighlight();
+	saveFAState();
+	executeDeleteNode(g, node);
+	updateAlphabet();
+	checkAllEdges();
+}

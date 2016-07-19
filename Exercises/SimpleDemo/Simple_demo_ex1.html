@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<!-- Cap C here matches file name -->
+<html data-require="jsav math Simple_demo_ex1">  
+  <head>
+    <title>Find a Maximum</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="arrSize">Khan.randRange(4, 11)</var>
+	<var id="lastIndex">arrSize - 1</var>
+	<!-- Lower case C here matches export name -->
+        <var id="JSAV">simple_demo_ex1.initJSAV(arrSize)</var> 
+      </div>
+      <div class="problems">
+	<!-- Cap C and trailing p necessary here -->
+        <div id="Simple_demo_ex1p"> 
+          <div class="question">
+            <p>Highlight the array element containing the largest value</p>
+	    <!-- Cap C here -->
+            <div id="Simple_demo_ex1" class="jsavcanvas"></div> 
+          </div>
+          <div class="solution" data-type="custom">
+	    <!-- Lower case C here matches export name -->
+            <div class="guess"> [simple_demo_ex1.userInput] </div> 
+            <div class="validator-function">
+              if (!guess[0]) {
+                return ""; // User did not click anything
+              } else { return simple_demo_ex1.checkAnswer(); } 
+            </div>
+          </div>
+          <div class="hints">
+            <p>Choose something between 0 and index <var>lastIndex</var> </p>
+            <p>This problem is really too easy for a second hint</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

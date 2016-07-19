@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>DFA minimization</title>
+    <link rel="stylesheet" href="../../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+    <link rel="stylesheet" href="../../../../lib/odsaAV-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../lib/odsaStyle-min.css" type="text/css" />
+    <link rel="stylesheet" href="./css/customPrompt.css" type="text/css" />
+    <link rel="stylesheet" href="./css/FA.css" type="text/css" />
+    <link rel="stylesheet" href="./css/tester.css" type="text/css" />
+		<link rel="stylesheet" href="./css/minimizeDFA.css" type="text/css" />
+		<style>
+			#av {
+      			text-align: center;
+			}
+			p.jsavoutput.jsavline {
+				height: 10px;
+			}
+    		.jsavgraph {
+    			display: inline-block;
+    		}
+    		#reference .jsavedge { 
+    			stroke-width: 2;	/*can change to make edges easier to click */
+    		}
+    		#editable {
+    			margin-top: 16px;
+    			margin-bottom: 16px;
+    			width: 45%;
+    			height: 440px;
+    			
+    			outline: 1px black solid;
+    			border: 10px transparent solid;
+    			display: inline-block;
+    		}
+    		.hide {
+    			display: none;
+    		}
+    		.treework {display: none;}
+		</style>
+	</head>
+	<body>
+		<div id="container">		
+		<div id="av">
+			<h1>DFA Minimization</h1>
+			<a class="jsavsettings" href="#">Settings</a>
+			<p style="font-size: 30px">&Sigma;: <span id='alphabet'></span></p>
+      		<button type='button' id="addchildbutton" class='treework'>Add child</button>
+      		<button type='button' id='removetreenodebutton' class='treework'>Remove selected partition</button>
+			<button type="button" id="checkbutton" class="treework">Check nodes</button>
+			<button type="button" id="setterminalbutton" class="split">Set terminal</button>
+			<button type="button" id="autobutton">Auto partition</button>
+			<button type="button" id="donebutton" class="split">Done?</button>
+			<span id='mode'></span>
+			<br>
+			<button type="button" id="movebutton" class="hide">Move states</button>
+			<button type="button" id="edgebutton" class="hide">Add transitions</button>
+			<button type="button" id="hintbutton" class="hide">Hint</button>
+			<button type="button" id="completebutton" class="hide">Complete</button>
+			<button type="button" id="dfadonebutton" class="hide">Done?</button>
+			<button type="button" id="exportbutton" class="hide">Export</button>
+      		<p class="jsavoutput jsavline"></p>
+			<div id="graphs">
+				<div id="reference" class="jsavcanvas"></div>
+				<div id="editable" class="jsavcanvas"></div>
+			</div>
+		</div>
+		<button type="button" id="layoutRef">Layout</button>
+		</div>
+		
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+		<script src="../../../../JSAV/lib/jquery.transit.js"></script>
+		<script src="../../../../JSAV/lib/raphael.js"></script>
+		<script src="../../../../JSAV/lib/dagre.min.js"></script>
+		<script src="../../../../JSAV/build/JSAV.js"></script>
+		<script src="../../../../lib/odsaUtils-min.js"></script>
+		<script src="../../../../lib/odsaAV-min.js"></script>
+		<script src="../fa/serializableGraph.js"></script>
+		<script src="../../resources/underscore-min.js"></script>
+		<script src="../fa/FA.js"></script>
+		<script src="minDFA.js"></script>
+   	</body>
+</html>

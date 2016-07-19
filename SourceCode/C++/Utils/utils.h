@@ -27,6 +27,18 @@ inline int Random(int n)
 { return rand() % (n); }
 
 
+// Timing variables and functions
+unsigned tstart = 0;  // Time at beginning of timed section
+
+// Initialize the program timer
+void Settime() { tstart = (unsigned) clock(); }
+
+// Return the elapsed time since the last call to Settime
+double Gettime() {
+  unsigned tcurr = (unsigned) clock();
+  return (double)(tcurr - tstart)/(double)CLOCKS_PER_SEC;
+}
+
 // Swap two integers
 inline void swap(int A[], int i, int j) {
   int temp = A[i];
