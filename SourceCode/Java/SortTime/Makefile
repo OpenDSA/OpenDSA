@@ -168,7 +168,7 @@ build/BinsortTest/success: build SortTime/Binsort.java SortTime/SortTest.1 SortT
 	-@rm -rf build/BinsortTest
 	@mkdir build/BinsortTest
 	cat SortTime/SortTest.1 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java SortTime/Binsort.java SortTime/SortTest.2 > build/BinsortTest/SortTest.java
-	cp Utils/KVPair.java build/QuickSortTest
+	cp Utils/KVPair.java build/BinsortTest
 	cd build/BinsortTest; \
 	javac $(CFLAGS) SortTest.java; \
 	$(JAVA) $(RFLAGS) SortTest
@@ -230,7 +230,7 @@ build/InssortTest/success: build Sorting/Insertionsort.java Sorting/SortTest.1 S
 	@echo "Insertionsort Test"
 	-@rm -rf build/InssortTest
 	@mkdir build/InssortTest
-	cat Sorting/SortTest.1 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java Sorting/Insertionsort.java Sorting/SortTest.2 > build/InssortTest/SortTest.java
+	cat SortTime/SortTest.1 Utils/Swap.java Utils/Processing.java Utils/Checkorder.java SortTime/Insertionsort.java SortTime/SortTest.2 > build/InssortTest/SortTest.java
 	cp Utils/KVPair.java build/InssortTest
 	cd build/InssortTest; \
 	javac $(CFLAGS) SortTest.java; \

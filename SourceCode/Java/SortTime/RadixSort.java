@@ -2,80 +2,92 @@ static void sorttime(){
 
 System.out.println();
 
+
+
 setupInteger();
 System.out.println();
 
-System.out.println("10 size Integer array, random distribution ");
+
+
+System.out.println("Radix Sort");
+System.out.println("Method Name, Array Size,  Array Type,Data Distribution");
+
+System.out.println("radixSortInteger,10, Linked List Integer array, random distribution, "+ totaltime);
 funcRadixSortInteger(size10,10);
-System.out.println("100 size Integer array, random distribution ");
+System.out.println("radixSortInteger,100 , Linked List Integer array, random distribution ,"+ totaltime);
 funcRadixSortInteger(size100,100);
-System.out.println("1000 size Integer array, random distribution ");
+System.out.println("radixSortInteger,1000 ,Linked List Integer array, random distribution ,"+ totaltime);
 funcRadixSortInteger(size1000,1000);
-System.out.println("10000 size Integer array, random distribution ");
+System.out.println("radixSortInteger,10000 , Linked List Integer array, random distribution ,"+ totaltime);
 funcRadixSortInteger(size10000,10000);
 System.out.println();
-System.out.println("10 size Integer array in ascending order ");
+System.out.println("radixSortInteger,10 ,Linked List  Integer array , ascending order ,"+ totaltime);
 funcRadixSortInteger(size10Asc,10);
-System.out.println("100 size Integer array in ascending order ");
+System.out.println("radixSortInteger,100 ,Linked List  Integer array , ascending order, "+ totaltime);
 funcRadixSortInteger(size100Asc,100);
-System.out.println("1000 size Integer array in ascending order ");
+System.out.println("radixSortInteger,1000 ,Linked List  Integer array , ascending order ,"+ totaltime);
 funcRadixSortInteger(size1000Asc,1000);
-System.out.println("10000 size Integer array in ascending order ");
+System.out.println("radixSortInteger,10000 ,Linked List  Integer array , ascending order ,"+ totaltime);
 funcRadixSortInteger(size10000Asc,10000);
 System.out.println();
-System.out.println("10 size Integer array in descending order ");
+System.out.println("radixSortInteger,10 ,Linked List  Integer array ,descending order ,"+ totaltime);
 funcRadixSortInteger(size10Des,10);
-System.out.println("100 size Integer array in descending order ");
+System.out.println("radixSortInteger,100 ,Linked List  Integer array , descending order, "+ totaltime);
 funcRadixSortInteger(size100Des,100);
-System.out.println("1000 size Integer array in descending order ");
+
+
+System.out.println("radixSortInteger,1000 ,Linked List  Integer array , descending order, "+ totaltime);
 funcRadixSortInteger(size1000Des,1000);
-System.out.println("10000 size Integer array in descending order ");
+
+System.out.println("radixSortInteger,10000 ,Linked List  Integer array , descending order ,"+ totaltime);
 funcRadixSortInteger(size10000Des,10000);
+
 System.out.println();
-System.out.println("10 size Integer array, idendical keys ");
+System.out.println("radixSortInteger,10 , Linked List Integer array, idendical keys ,"+ totaltime);
 funcRadixSortInteger(size10Ide,10);
-System.out.println("100 size Integer array, idendical keys ");
+System.out.println("radixSortInteger,100 ,Linked List Integer array, idendical keys ,"+ totaltime);
 funcRadixSortInteger(size100Ide,100);
-System.out.println("1000 size Integer array, idendical keys ");
+System.out.println("radixSortInteger,1000 ,Linked List Integer array, idendical keys, "+ totaltime);
 funcRadixSortInteger(size1000Ide,1000);
-System.out.println("10000 size Integer array, idendical keys ");
+System.out.println("radixSortInteger,10000 ,Linked List Integer array, idendical keys, "+ totaltime);
 funcRadixSortInteger(size10000Ide,10000);
 System.out.println();
-System.out.println("10 size Integer array, few duplicates ");
+System.out.println("radixSortInteger,10 ,Linked List Integer array, few duplicates ,"+ totaltime);
 funcRadixSortInteger(size10FewDup,10);
-System.out.println("100 size Integer array, few duplicates ");
+System.out.println("radixSortInteger,100 , Linked List Integer array, few duplicates, "+ totaltime);
 funcRadixSortInteger(size100FewDup,100);
-System.out.println("1000 size Integer array, few duplicates ");
+System.out.println("radixSortInteger,1000 , Linked List Integer array, few duplicates ,"+ totaltime);
 funcRadixSortInteger(size1000FewDup,1000);
-System.out.println("10000 size Integer array, few duplicates ");
+System.out.println("radixSortInteger,10000 , Linked List Integer array, few duplicates, "+ totaltime);
 funcRadixSortInteger(size10000FewDup,10000);
 System.out.println();
-System.out.println("10 size Integer array, some duplicates ");
+System.out.println("radixSortInteger,10 , Linked List Integer array, some duplicates ,"+ totaltime);
 funcRadixSortInteger(size10SomeDup,10);
-System.out.println("100 size Integer array, some duplicates ");
+System.out.println("radixSortInteger,100 , Linked List Integer array, some duplicates ,"+ totaltime);
 funcRadixSortInteger(size100SomeDup,100);
-System.out.println("1000 size Integer array, some duplicates ");
+System.out.println("radixSortInteger,1000 , Linked List Integer array, some duplicates ,"+ totaltime);
 funcRadixSortInteger(size1000SomeDup,1000);
 
-System.out.println("10000 size Integer array, some duplicates ");
+System.out.println("radixSortInteger,10000 , Linked List Integer array, some duplicates ,"+ totaltime);
 funcRadixSortInteger(size10000SomeDup,10000);
 System.out.println();
-System.out.println("10 size Integer array, many duplicates ");
+System.out.println("radixSortInteger,10 , Linked List Integer array, many duplicates ,"+ totaltime);
 funcRadixSortInteger(size10ManyDup,10);
-System.out.println("100 size Integer array, many duplicates ");
+System.out.println("radixSortInteger,100 , Linked List Integer array, many duplicates ,"+ totaltime);
 funcRadixSortInteger(size100ManyDup,100);
-System.out.println("1000 size Integer array, many duplicates ");
+System.out.println("radixSortInteger,1000 , Linked List Integer array, many duplicates ,"+ totaltime);
 funcRadixSortInteger(size1000ManyDup,1000);
-System.out.println("10000 size Integer array, many duplicates ");
+System.out.println("radixSortInteger,10000 , Linked List Integer array, many duplicates ,"+ totaltime);
 funcRadixSortInteger(size10000ManyDup,10000);
 System.out.println();
-System.out.println("10 size Integer array, slightly disordered ");
+System.out.println("radixSortInteger,10 , Linked List Integer array, slightly disordered ,"+ totaltime);
 funcRadixSortInteger(size10SlightlyDis,10);
-System.out.println("100 size Integer array, slightly disordered ");
+System.out.println("radixSortInteger,100 , Linked List Integer array, slightly disordered ,"+ totaltime);
+
 funcRadixSortInteger(size100SlightlyDis,100);
-System.out.println("1000 size Integer array, slightly disordered ");
+System.out.println("radixSortInteger,1000 , Linked List Integer array, slightly disordered ,"+ totaltime);
 funcRadixSortInteger(size1000SlightlyDis,1000);
-System.out.println("10000 size Integer array, slightly disordered ");
+System.out.println("radixSortInteger,10000 , Linked List Integer array, slightly disordered ,"+ totaltime);
 funcRadixSortInteger(size10000SlightlyDis,10000);
 
 // inssort
@@ -83,290 +95,172 @@ setupint();
 
 
 callRadixMethodInt(int10,10);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 10: "+ totaltime);
+System.out.println("radixInt, 10, int array,random distribution, " + totaltime);
 
 callRadixMethodInt(int10Asc,10);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 10 in ascending order: "+ totaltime);
+System.out.println("radixInt, 10, int array, ascending order, "+ totaltime);
 
 callRadixMethodInt(int10Des,10);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 10 in descending order: "+ totaltime);
+System.out.println("radixInt, 10, int array, descending order, "+ totaltime);
 
 callRadixMethodInt(int10Ide,10);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 10 idendical keys: "+ totaltime);
+System.out.println("radixInt, 10, int array, idendical keys, "+ totaltime);
 
 callRadixMethodInt(int10FewDup,10);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 10 Few Duplicates: "+ totaltime);
+System.out.println("radixInt, 10, int array, Few Duplicates, "+ totaltime);
 
 callRadixMethodInt(int10SomeDup,10);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 10 Some Duplicates: "+ totaltime);
+System.out.println("radixInt, 10, int array, Some Duplicates, "+ totaltime);
 
 callRadixMethodInt(int10ManyDup,10);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 10 Many Duplicates: "+ totaltime);
+System.out.println("radixInt, 10, int array, Many Duplicates, "+ totaltime);
 
 callRadixMethodInt(int10SlightlyDis,10);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 10 Slightly Distributed: "+ totaltime);
+System.out.println("radixInt, 10, int array, Slightly Distributed, "+ totaltime);
 
 System.out.println();
 
 callRadixMethodInt(int100,100);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 100: "+totaltime);
+System.out.println("radixInt, 100, int array, random distribution,  "+totaltime);
 
 callRadixMethodInt(int100Asc,100);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 100 in ascending order: "+ totaltime);
+System.out.println("radixInt, 100, int array, ascending order, "+ totaltime);
 
 callRadixMethodInt(int100Des,100);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 100 in descending order: "+ totaltime);
+System.out.println("radixInt, 100, int array, descending order, "+ totaltime);
 
 callRadixMethodInt(int100Ide,100);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 100 idendical keys: "+ totaltime);
+System.out.println("radixInt, 100, int array, idendical keys, "+ totaltime);
 
 callRadixMethodInt(int100FewDup,100);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 100 Few Duplicates: "+ totaltime);
+System.out.println("radixInt, 100, int array, Few Duplicates, "+ totaltime);
 
 callRadixMethodInt(int100SomeDup,100);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 100 Some Duplicates: "+ totaltime);
+System.out.println("radixInt, 100, int array, Some Duplicates, "+ totaltime);
 
 callRadixMethodInt(int100ManyDup,100);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 100 Many Duplicates: "+ totaltime);
+System.out.println("radixInt, 100, int array, Many Duplicates, "+ totaltime);
 
 callRadixMethodInt(int100SlightlyDis,100);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 100 Slightly Distributed: "+ totaltime);
+System.out.println("radixInt, 100, int array, Slightly Distributed, "+ totaltime);
 
 System.out.println();
 
 callRadixMethodInt(int1000,1000);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 1000: "+totaltime);
+System.out.println("radixInt, 1000, int array, random distribution,  "+totaltime);
 
 callRadixMethodInt(int1000Asc,1000);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 1000 in ascending order: "+ totaltime);
+System.out.println("radixInt, 1000, int array, ascending order, "+ totaltime);
 
 callRadixMethodInt(int1000Des,1000);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 1000 in descending order: "+ totaltime);
+System.out.println("radixInt, 1000, int array, descending order, "+ totaltime);
 
 callRadixMethodInt(int1000Ide,1000);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 1000 idendical keys: "+ totaltime);
+System.out.println("radixInt, 1000, int array, idendical keys, "+ totaltime);
 
 callRadixMethodInt(int1000FewDup,1000);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 1000 Few Duplicates: "+ totaltime);
+System.out.println("radixInt, 1000, int array, Few Duplicates, "+ totaltime);
 
 callRadixMethodInt(int1000SomeDup,1000);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 1000 Some Duplicates: "+ totaltime);
+System.out.println("radixInt, 1000, int array, Some Duplicates, "+ totaltime);
 
 callRadixMethodInt(int1000SlightlyDis,1000);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 1000 Slightly Distributed: "+ totaltime);
+System.out.println("radixInt, 1000, int array, Many Duplicates, "+ totaltime);
 
 callRadixMethodInt(int1000ManyDup,1000);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 1000 Many Duplicates: "+ totaltime);
+System.out.println("radixInt, 1000, int array, Slightly Distributed, "+ totaltime);
 
 System.out.println();
 
 callRadixMethodInt(int10000,10000);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 10000: "+totaltime);
+System.out.println("radixInt, 10000, int array, random distribution,  "+totaltime);
 
 callRadixMethodInt(int10000Asc,10000);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 10000 in ascending order: "+ totaltime);
+System.out.println("radixInt, 10000, int array, ascending order, "+ totaltime);
 
 callRadixMethodInt(int10000Des,10000);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 10000 in descending order: "+ totaltime);
+System.out.println("radixInt, 10000, int array, descending order, "+ totaltime);
 
 callRadixMethodInt(int10000Ide,10000);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 10000 idendical keys: "+ totaltime);
+System.out.println("radixInt, 10000, int array, idendical keys, "+ totaltime);
 
 callRadixMethodInt(int10000FewDup,10000);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 10000 Few Duplicates: "+ totaltime);
+System.out.println("radixInt, 10000, int array, few duplicates, "+ totaltime);
 
 callRadixMethodInt(int10000SomeDup,10000);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 10000 Some Duplicates: "+ totaltime);
+System.out.println("radixInt, 10000, int array, some duplicates, "+ totaltime);
 
 callRadixMethodInt(int10000SlightlyDis,10000);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 10000 Slightly Distributed: "+ totaltime);
+System.out.println("radixInt, 1000, int array, Slightly Distributed, "+ totaltime);
 
 callRadixMethodInt(int10000ManyDup,10000);
-System.out.println("Total execution time for Array based radix sort " + "for lists of size 10000 Many Duplicates: "+ totaltime);
+System.out.println("radixInt, 10000, int array, Many Duplicates, "+ totaltime);
 
 System.out.println();
 
 System.out.println();
-/*
-setupDouble();
 
-callRadixMethodDouble(dsize10Asc,10);
-System.out.println("Total execution time for Array based radix sort " +"for lists of size 10 double in ascending order: "+ totaltime);
-
-callRadixMethodDouble(dsize10Des,10);
-System.out.println("Total execution time for Array based radix sort " +"for lists of double 10 in decreasing order: "+ totaltime);
-
-callRadixMethodDouble(dsize10Ide,10);
-System.out.println("Total execution time for Array based radix sort " +"for lists of size 10 double idendical keys: "+ totaltime);
-
-callRadixMethodDouble(dsize10FewDup,10);
-System.out.println("Total execution time for Array based radix sort " +"for lists of size 10 double Few Duplicates: "+ totaltime);
-
-callRadixMethodDouble(dsize10SomeDup,10);
-System.out.println("Total execution time for Array based radix sort " +"for lists of size 10 double Some Duplicates: "+ totaltime);
-
-callRadixMethodDouble(dsize10ManyDup,10);
-System.out.println("Total execution time for Array based radix sort " +"for lists of size 10 double Many Duplicates: "+ totaltime);
-
-callRadixMethodDouble(dsize10SlightlyDis,10);
-System.out.println("Total execution time for Array based radix sort " +"for lists of size 10 double Slightly Disordered: "+ totaltime);
-
-
-System.out.println();
-
-callRadixMethodDouble(dsize100Asc,100);
-System.out.println("Total execution time for Array based radix sort " +"for lists of size 100 double in ascending order: "+ totaltime);
-
-callRadixMethodDouble(dsize100Des,100);
-System.out.println("Total execution time for Array based radix sort " +"for lists of double 100 in decreasing order: "+ totaltime);
-
-callRadixMethodDouble(dsize100Ide,100);
-System.out.println("Total execution time for Array based radix sort " +"for lists of size 100 double idendical keys: "+ totaltime);
-
-callRadixMethodDouble(dsize100FewDup,100);
-System.out.println("Total execution time for Array based radix sort " +"for lists of size 100 double Few Duplicates: "+ totaltime);
-
-callRadixMethodDouble(dsize100SomeDup,100);
-System.out.println("Total execution time for Array based radix sort " +"for lists of size 100 double Some Duplicates: "+ totaltime);
-
-callRadixMethodDouble(dsize100ManyDup,100);
-System.out.println("Total execution time for Array based radix sort " +"for lists of size 100 double Many Duplicates: "+ totaltime);
-
-callRadixMethodDouble(dsize100SlightlyDis,100);
-System.out.println("Total execution time for Array based radix sort " +"for lists of size 100 double Slightly Disordered: "+ totaltime);
-
-System.out.println();
-
-callRadixMethodDouble(dsize1000Asc,1000);
-System.out.println("Total execution time for Array based radix sort " +"for lists of size 1000 double in ascending order: "+ totaltime);
-
-callRadixMethodDouble(dsize1000Des,1000);
-System.out.println("Total execution time for Array based radix sort " +"for lists of double 1000 in decreasing order: "+ totaltime);
-
-callRadixMethodDouble(dsize1000Ide,1000);
-System.out.println("Total execution time for Array based radix sort " +"for lists of size 1000 double idendical keys: "+ totaltime);
-
-callRadixMethodDouble(dsize1000FewDup,1000);
-System.out.println("Total execution time for Array based radix sort " +"for lists of size 1000 double Few Duplicates: "+ totaltime);
-
-callRadixMethodDouble(dsize1000SomeDup,1000);
-System.out.println("Total execution time for Array based radix sort " +"for lists of size 1000 double Some Duplicates: "+ totaltime);
-
-callRadixMethodDouble(dsize1000ManyDup,1000);
-System.out.println("Total execution time for Array based radix sort " +"for lists of size 1000 double Many Duplicates: "+ totaltime);
-
-callRadixMethodDouble(dsize1000SlightlyDis,1000);
-System.out.println("Total execution time for Array based radix sort " +"for lists of size 1000 double Slightly Disordered: "+ totaltime);
-
-System.out.println();
-
-callRadixMethodDouble(dsize10000Asc,10000);
-System.out.println("Total execution time for Array based radix sort " +"for lists of size 10000 double in ascending order: "+ totaltime);
-
-callRadixMethodDouble(dsize10000Des,10000);
-System.out.println("Total execution time for Array based radix sort " +"for lists of double 10000 in decreasing order: "+ totaltime);
-
-callRadixMethodDouble(dsize10000Ide,10000);
-System.out.println("Total execution time for Array based radix sort " +"for lists of size 10000 double idendical keys: "+ totaltime);
-
-callRadixMethodDouble(dsize10000FewDup,10000);
-System.out.println("Total execution time for Array based radix sort " +"for lists of size 10000 double Few Duplicates: "+ totaltime);
-
-callRadixMethodDouble(dsize10000SomeDup,10000);
-System.out.println("Total execution time for Array based radix sort " +"for lists of size 10000 double Some Duplicates: "+ totaltime);
-
-callRadixMethodDouble(dsize10000ManyDup,10000);
-System.out.println("Total execution time for Array based radix sort " +"for lists of size 10000 double Many Duplicates: "+ totaltime);
-
-callRadixMethodDouble(dsize10000SlightlyDis,10000);
-System.out.println("Total execution time for Array based radix sort " +"for lists of size 10000 double Slightly Disordered: "+ totaltime);*/
 }
 
 
 /* *** ODSATag: Radixsort *** */
-    static void radix(Integer[] A,int length) {
-
-        int k = (int) Math.log10(length) + 1;
-        int r = length;
-        Integer[] B = new Integer[A.length];
-        int[] count = new int[length];
-        int i, j, rtok;
+    static void radix(Integer[] A,int startpos, int length) {
+        int k = (int) Math.log10(startpos+length-1) + 1; //digit number
+        int r = 10;
+        Integer[] B = new Integer[length];
+        int[] count = new int[10];
+        int i, j,l, rtok;
         for (i=0, rtok=1; i<k; i++, rtok*=r) {
-            for (j=0; j<r; j++)
+            for (j=0; j<10; j++)
                 count[j] = 0;
-            for (j=0; j<A.length; j++)
+            for (j=startpos; j<startpos+length; j++)
                 count[(A[j]/rtok)%r]++;
                 count[0] = count[0] - 1;
-            for (j=1; j<r; j++)
+            for (j=1; j<10; j++)
                 count[j] = count[j-1] + count[j];
-            for (j=A.length-1; j>=0; j--) {
+            for (j=startpos+length-1; j>=startpos; j--) {
                 B[count[(A[j]/rtok)%r]] = A[j];
                 count[(A[j]/rtok)%r]--;
             }
-        for (j=0; j<A.length; j++) A[j] = B[j];
+            for (j=startpos,l=0; j<startpos+length; j++,l++) A[j] = B[l];
         }
     }
 /* *** ODSAendTag: Radixsort *** */
 
 
 /* *** ODSATag: Radixsort *** */
-    static void radixInt(int[] A,int length) {
+    static void radixInt(int[] A,int startpos,int length) {
 
-        int k = (int) Math.log10(length) + 1;
-        int r = length;
-        int[] B = new int[A.length];
-        int[] count = new int[length];
-        int i, j, rtok;
+        int k = (int) Math.log10(startpos+length-1) + 1; //digit number
+        int r = 10;
+        int[] B = new int[length];
+        int[] count = new int[10];
+        int i, j,l, rtok;
         for (i=0, rtok=1; i<k; i++, rtok*=r) {
-            for (j=0; j<r; j++)
+            for (j=0; j<10; j++)
                 count[j] = 0;
-            for (j=0; j<A.length; j++)
+            for (j=startpos; j<startpos+length; j++)
                 count[(A[j]/rtok)%r]++;
-            count[0] = count[0] - 1;
-            for (j=1; j<r; j++)
+                count[0] = count[0] - 1;
+            for (j=1; j<10; j++)
                 count[j] = count[j-1] + count[j];
-            for (j=A.length-1; j>=0; j--) {
+            for (j=startpos+length-1; j>=startpos; j--) {
                 B[count[(A[j]/rtok)%r]] = A[j];
                 count[(A[j]/rtok)%r]--;
             }
-            for (j=0; j<A.length; j++) A[j] = B[j];
+            for (j=startpos,l=0; j<startpos+length; j++,l++) A[j] = B[l];
         }
     }
-/* *** ODSAendTag: Radixsort *** */
 
-/* *** ODSATag: Radixsort ***
-    static void radixDouble(double[] A,int length) {
-
-        int k = (int) Math.log10(length) + 1;
-        int r = length;
-        double[] B = new double[A.length];
-        int[] count = new int[length];
-        int i, j, rtok;
-        for (i=0, rtok=1; i<k; i++, rtok*=r) {
-            for (j=0; j<r; j++)
-                count[j] = 0;
-            for (j=0; j<A.length; j++)
-                count[(A[j]/rtok)%r]++;
-            count[0] = count[0] - 1;
-            for (j=1; j<r; j++)
-                count[j] = count[j-1] + count[j];
-            for (j=A.length-1; j>=0; j--) {
-                B[count[(A[j]/rtok)%r]] = A[j];
-                count[(A[j]/rtok)%r]--;
-            }
-            for (j=0; j<A.length; j++) A[j] = B[j];
-        }
-    }
- *** ODSAendTag: Radixsort *** */
-
-static void radixSortInteger(LinkedList<Integer> array,int length)
+static void radixSortInteger(LinkedList<Integer> array,int startpos,int length)
 {
 
-int size = array.size();
+int size = length;
 int power = 1;
 int value;
 
-int digitNumber = (int) Math.log10(length) + 1;
+int digitNumber = (int) Math.log10(startpos+length-1) + 1;
+
 for(int j=0; j<digitNumber;j++)
 {
 
@@ -390,84 +284,54 @@ bucket.get(l).clear();
 }
 power = power*10;
 }
-
 }
 
 public static void callRadixMethodInt(int[] array,int length){
-int[] arrayTemp = new int[length];
 totaltime = 0;
-for (int runs=0; runs<20; runs++) {
-for(int z=0; z<length;z++)
-arrayTemp[z] = array[z];
+for (int runs=0; runs<TESTSIZE; runs+=length) {
 time1 = millis();
-radixInt(arrayTemp,length);
+radixInt(array,runs,length);
 time2 = millis();
 totaltime += (time2-time1);
 }
-totaltime = totaltime/20;
-
-System.out.println();
+totaltime = totaltime/(TESTSIZE/length);
 
 
 }
-/*
-public static void callRadixMethodDouble(double[] array,int length){
-double[] arrayTemp = new double[length];
-totaltime = 0;
-for (int runs=0; runs<20; runs++) {
-for(int z=0; z<length;z++)
-arrayTemp[z] = array[z];
-time1 = millis();
-radixDouble(arrayTemp,length);
-time2 = millis();
-totaltime += (time2-time1);
-}
-totaltime = totaltime/20;
 
-System.out.println();
-
- 
-}*/
 public static void funcRadixSortInteger(Integer[] array,int length){
 
 
-Integer[] arrayTemp = new Integer[length];
-
-
 for(int z=0;z<10;z++){
-
-bucket.add(new LinkedList<Integer>());
-
+    bucket.add(new LinkedList<Integer>());
 }
 
 totaltime = 0;
-for (int runs=0; runs<20; runs++) {
-    for(int z=0; z<length;z++)
+for (int runs=0; runs<TESTSIZE; runs+=length) {
+    for(int z=runs; z<runs+length;z++)
         arrayList.add(array[z]);
     time1 = millis();
-    radixSortInteger(arrayList,length);
+    radixSortInteger(arrayList,runs,length);
     time2 = millis();
     totaltime += (time2-time1);
     arrayList.clear();
 }
-totaltime = totaltime/20;
+totaltime = totaltime/(TESTSIZE/length);
 
 bucket.clear();
 
-System.out.println("Total execution time for radix sort Linked List based : " + totaltime);
+//System.out.println("Total execution time for radix sort Linked List based : " + totaltime);
 
 totaltime = 0;
-for (int runs=0; runs<20; runs++) {
-    for(int z=0; z<length;z++)
-    arrayTemp[z] = array[z];
+for (int runs=0; runs<TESTSIZE; runs+=length) {
     time1 = millis();
-    radix(arrayTemp,length);
+    radix(array,runs,length);
     time2 = millis();
     totaltime += (time2-time1);
 }
-totaltime = totaltime/20;
+totaltime = totaltime/(TESTSIZE/length);
 
-System.out.println("Total execution time for radix sort Array based : " + totaltime);
+//System.out.println("Total execution time for radix sort Array based : " + totaltime);
 
 System.out.println();
 

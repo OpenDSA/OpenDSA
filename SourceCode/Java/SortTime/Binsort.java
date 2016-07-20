@@ -35,110 +35,117 @@ void output(Object x) {} */
 static void sorttime(){
 System.out.println();
 
+System.out.println("Bin Sort");
+
+System.out.println("Method Name, Array Size, Array Type, Data Distribution");
 setupInteger();
 
 
 simplebinsort2(size10,10);
-System.out.println("simplebinsort2 Time for lists of size 10 Integer random distribution: "+ totaltime);
+System.out.println("simplebinsort2 ,10, Integer, random distribution: "+ totaltime);
+
+
 
 simplebinsort2(size10Asc,10);
-System.out.println("simplebinsort2 Time for lists of size 10 Integer in ascending order: "+ totaltime);
+System.out.println("simplebinsort2 , 10 ,Integer , ascending order: "+ totaltime);
 
 simplebinsort2(size10Des,10);
-System.out.println("simplebinsort2 Time for lists of size 10 Integer in decreasing order: "+ totaltime);
+System.out.println("simplebinsort2 ,10 ,Integer , decreasing order: "+ totaltime);
 
 simplebinsort2(size10Ide,10);
-System.out.println("simplebinsort2 Time for lists of size 10 Integer idendical keys: "+ totaltime);
+System.out.println("simplebinsort2, 10, Integer ,idendical keys: "+ totaltime);
 
 simplebinsort2(size10FewDup,10);
-System.out.println("simplebinsort2 Time for lists of size 10 Integer Few Duplicates: "+ totaltime);
+System.out.println("simplebinsort2 ,10, Integer, Few Duplicates: "+ totaltime);
 
 simplebinsort2(size10SomeDup,10);
-System.out.println("simplebinsort2 Time for lists of size 10 Integer Some Duplicates: "+ totaltime);
+System.out.println("simplebinsort2 ,10 ,Integer ,Some Duplicates: "+ totaltime);
 
 simplebinsort2(size10ManyDup,10);
-System.out.println("simplebinsort2 Time for lists of size 10 Integer Many Duplicates: "+ totaltime);
+System.out.println("simplebinsort2 , 10, Integer ,Many Duplicates: "+ totaltime);
 
 simplebinsort2(size10SlightlyDis,10);
-System.out.println("simplebinsort2 Time for lists of size 10 Integer Slightly Disordered: "+ totaltime);
+System.out.println("simplebinsort2 , 10, Integer ,Slightly Disordered: "+ totaltime);
 
 System.out.println();
 
 simplebinsort2(size100,100);
-System.out.println("simplebinsort2 Time for lists of size 100 Integer random distribution: "+ totaltime);
+System.out.println("simplebinsort2 , 100 ,Integer, random distribution: "+ totaltime);
 
 simplebinsort2(size100Asc,100);
-System.out.println("simplebinsort2 Time for lists of size 100 Integer in ascending order: "+ totaltime);
+System.out.println("simplebinsort2 , 100, Integer , ascending order: "+ totaltime);
 
 simplebinsort2(size100Des,100);
-System.out.println("simplebinsort2 Time for lists of size 100 Integer in decreasing order: "+ totaltime);
+System.out.println("simplebinsort2 , 100 ,Integer , decreasing order: "+ totaltime);
 
 simplebinsort2(size100Ide,100);
-System.out.println("simplebinsort2 Time for lists of size 100 Integer idendical keys: "+ totaltime);
+System.out.println("simplebinsort2 , 100 ,Integer, idendical keys: "+ totaltime);
 
 simplebinsort2(size100FewDup,100);
-System.out.println("simplebinsort2 Time for lists of size 100 Integer Few Duplicates: "+ totaltime);
+System.out.println("simplebinsort2 , 100 ,Integer, Few Duplicates: "+ totaltime);
 
 simplebinsort2(size100SomeDup,100);
-System.out.println("simplebinsort2 Time for lists of size 100 Integer Some Duplicates: "+ totaltime);
+System.out.println("simplebinsort2 , 100, Integer, Some Duplicates: "+ totaltime);
 
 simplebinsort2(size100ManyDup,100);
-System.out.println("simplebinsort2 Time for lists of size 100 Integer Many Duplicates: "+ totaltime);
+System.out.println("simplebinsort2 , 100 ,Integer,Many Duplicates: "+ totaltime);
 
 simplebinsort2(size100SlightlyDis,100);
-System.out.println("simplebinsort2 Time for lists of size 100 Integer Slightly Disordered: "+ totaltime);
+System.out.println("simplebinsort2, 100, Integer, Slightly Disordered: "+ totaltime);
 
 System.out.println();
 
 simplebinsort2(size1000,1000);
-System.out.println("simplebinsort2 Time for lists of size 1000 Integer random distribution: "+ totaltime);
+System.out.println("simplebinsort2 , 1000 ,Integer, random distribution: "+ totaltime);
 
 simplebinsort2(size100Asc,1000);
-System.out.println("simplebinsort2 Time for lists of size 1000 Integer in ascending order: "+ totaltime);
+System.out.println("simplebinsort2 , 1000 ,Integer , ascending order: "+ totaltime);
 
 simplebinsort2(size1000Des,1000);
-System.out.println("simplebinsort2 Time for lists of size 1000 Integer in decreasing order: "+ totaltime);
+System.out.println("simplebinsort2 , 1000, Integer , decreasing order: "+ totaltime);
 
 simplebinsort2(size1000Ide,1000);
-System.out.println("simplebinsort2 Time for lists of size 1000 Integer idendical keys: "+ totaltime);
+System.out.println("simplebinsort2 , 1000, Integer ,idendical keys: "+ totaltime);
 
 simplebinsort2(size1000FewDup,1000);
-System.out.println("simplebinsort2 Time for lists of size 1000 Integer Few Duplicates "+ totaltime);
+System.out.println("simplebinsort2 , 1000 ,Integer, Few Duplicates "+ totaltime);
 
 simplebinsort2(size1000SomeDup,1000);
-System.out.println("simplebinsort2 Time for lists of size 1000 Integer Some Duplicates "+ totaltime);
+System.out.println("simplebinsort2 , 1000 ,Integer, Some Duplicates "+ totaltime);
 
 simplebinsort2(size1000ManyDup,1000);
-System.out.println("simplebinsort2 Time for lists of size 1000 Integer Many Duplicates "+ totaltime);
+System.out.println("simplebinsort2 ,1000, Integer, Many Duplicates "+ totaltime);
 
 simplebinsort2(size1000SlightlyDis,1000);
-System.out.println("simplebinsort2 Time for lists of size 1000 Integer Slightly Disordered: "+ totaltime);
+System.out.println("simplebinsort2 ,1000, Integer, Slightly Disordered: "+ totaltime);
 
 System.out.println();
 
 simplebinsort2(size10000,10000);
-System.out.println("simplebinsort2 Time for lists of size 10000 Integer random distribution: "+ totaltime);
+System.out.println("simplebinsort2 , 10000 ,Integer, random distribution: "+ totaltime);
+
+
 
 simplebinsort2(size10000Asc,10000);
-System.out.println("simplebinsort2 Time for lists of size 10000 Integer in ascending order: "+ totaltime);
+System.out.println("simplebinsort2 ,10000,Integer , ascending order: "+ totaltime);
 
 simplebinsort2(size10000Des,10000);
-System.out.println("simplebinsort2 Time for lists of size 10000 Integer in decreasing order: "+ totaltime);
+System.out.println("simplebinsort2 , 10000, Integer , decreasing order: "+ totaltime);
 
 simplebinsort2(size10000Ide,10000);
-System.out.println("simplebinsort2 Time for lists of size 10000 Integer idendical keys: "+ totaltime);
+System.out.println("simplebinsort2 , 10000, Integer ,idendical keys: "+ totaltime);
 
 simplebinsort2(size10000FewDup,10000);
 System.out.println("simplebinsort2 Time for lists of size 10000 Integer Few Duplicates: "+ totaltime);
 
 simplebinsort2(size10000SomeDup,10000);
-System.out.println("simplebinsort2 Time for lists of size 10000 Integer Some Duplicates: "+ totaltime);
+System.out.println("simplebinsort2, 10000 ,Integer ,Some Duplicates: "+ totaltime);
 
 simplebinsort2(size10000ManyDup,10000);
-System.out.println("simplebinsort2 Time for lists of size 10000 Integer Many Duplicates: "+ totaltime);
+System.out.println("simplebinsort2 ,10000 ,Integer, Many Duplicates: "+ totaltime);
 
 simplebinsort2(size10000SlightlyDis,10000);
-System.out.println("simplebinsort2 Time for lists of size 10000 Integer Slightly Disordered: "+ totaltime);
+System.out.println("simplebinsort2 , 10000, Integer, Slightly Disordered: "+ totaltime);
 
 System.out.println();
 
@@ -146,106 +153,109 @@ setupint();
 
 
 simplebinsort2Int(int10,10);
-System.out.println("simplebinsort2Int Time for lists of size 10: "+ totaltime);
+System.out.println("simplebinsort2Int , 10,int,random distribution: "+ totaltime);
 
 simplebinsort2Int(int10Asc,10);
-System.out.println("simplebinsort2Int Time for lists of size 10 in ascending order: "+ totaltime);
+System.out.println("simplebinsort2Int ,10 ,int,ascending order: "+ totaltime);
 
 simplebinsort2Int(int10Des,10);
-System.out.println("simplebinsort2Int Time for lists of size 10 in descending order: "+ totaltime);
+System.out.println("simplebinsort2Int ,10, int, descending order: "+ totaltime);
 
 simplebinsort2Int(int10Ide,10);
-System.out.println("simplebinsort2Int Time for lists of size 10 idendical keys: "+ totaltime);
+System.out.println("simplebinsort2Int , 10,int, idendical keys: "+ totaltime);
 
 simplebinsort2Int(int10FewDup,10);
-System.out.println("simplebinsort2Int Time for lists of size 10 Few Duplicates: "+ totaltime);
+System.out.println("simplebinsort2Int , 10,int,  Few Duplicates: "+ totaltime);
 
 simplebinsort2Int(int10SomeDup,10);
-System.out.println("simplebinsort2Int Time for lists of size 10 Some Duplicates: "+ totaltime);
+System.out.println("simplebinsort2Int , 10,int,  Some Duplicates: "+ totaltime);
 
 simplebinsort2Int(int10ManyDup,10);
-System.out.println("simplebinsort2Int Time for lists of size 10 Many Duplicates: "+ totaltime);
+System.out.println("simplebinsort2Int , 10,int,  Many Duplicates: "+ totaltime);
 
 simplebinsort2Int(int10SlightlyDis,10);
-System.out.println("simplebinsort2Int Time for lists of size 10 Slightly Distributed: "+ totaltime);
+System.out.println("simplebinsort2Int , 10,int,  Slightly Distributed: "+ totaltime);
 
 System.out.println();
 
 simplebinsort2Int(int100,100);
-System.out.println("simplebinsort2Int Time for lists of size 100: "+totaltime);
+System.out.println("simplebinsort2Int , 100,int,random distribution : "+totaltime);
+
+for(int i=0;i<100;i++)
+System.out.println(size100[i]);
 
 simplebinsort2Int(int100Asc,100);
-System.out.println("simplebinsort2Int Time for lists of size 100 in ascending order: "+ totaltime);
+System.out.println("simplebinsort2Int , 100,int,ascending order: "+ totaltime);
 
 simplebinsort2Int(int100Des,100);
-System.out.println("simplebinsort2Int Time for lists of size 100 in descending order: "+ totaltime);
+System.out.println("simplebinsort2Int , 100,int, descending order: "+ totaltime);
 
 simplebinsort2Int(int100Ide,100);
-System.out.println("simplebinsort2Int Time for lists of size 100 idendical keys: "+ totaltime);
+System.out.println("simplebinsort2Int, 100,int,idendical keys: "+ totaltime);
 
 simplebinsort2Int(int100FewDup,100);
-System.out.println("simplebinsort2Int Time for lists of size 100 Few Duplicates: "+ totaltime);
+System.out.println("simplebinsort2Int , 100,int, Few Duplicates: "+ totaltime);
 
 simplebinsort2Int(int100SomeDup,100);
-System.out.println("simplebinsort2Int Time for lists of size 100 Some Duplicates: "+ totaltime);
+System.out.println("simplebinsort2Int , 100,int, Some Duplicates: "+ totaltime);
 
 simplebinsort2Int(int100ManyDup,100);
-System.out.println("simplebinsort2Int Time for lists of size 100 Many Duplicates: "+ totaltime);
+System.out.println("simplebinsort2Int , 100,int,Many Duplicates: "+ totaltime);
 
 simplebinsort2Int(int100SlightlyDis,100);
-System.out.println("simplebinsort2Int Time for lists of size 100 Slightly Distributed: "+ totaltime);
+System.out.println("simplebinsort2Int , 100,int, Slightly Distributed: "+ totaltime);
 
 System.out.println();
 
 simplebinsort2Int(int1000,1000);
-System.out.println("simplebinsort2Int Time for lists of size 1000: "+totaltime);
+System.out.println("simplebinsort2Int , 1000,int,random distribution: "+totaltime);
 
 simplebinsort2Int(int1000Asc,1000);
-System.out.println("simplebinsort2Int Time for lists of size 1000 in ascending order: "+ totaltime);
+System.out.println("simplebinsort2Int   , 1000,int, ascending order: "+ totaltime);
 
 simplebinsort2Int(int1000Des,1000);
-System.out.println("simplebinsort2Int Time for lists of size 1000 in descending order: "+ totaltime);
+System.out.println("simplebinsort2Int   , 1000,int,descending order: "+ totaltime);
 
 simplebinsort2Int(int1000Ide,1000);
-System.out.println("simplebinsort2Int Time for lists of size 1000 idendical keys: "+ totaltime);
+System.out.println("simplebinsort2Int   , 1000,int, idendical keys: "+ totaltime);
 
 simplebinsort2Int(int1000FewDup,1000);
-System.out.println("simplebinsort2Int Time for lists of size 1000 Few Duplicates: "+ totaltime);
+System.out.println("simplebinsort2Int   , 1000,int, Few Duplicates: "+ totaltime);
 
 simplebinsort2Int(int1000SomeDup,1000);
-System.out.println("simplebinsort2Int Time for lists of size 1000 Some Duplicates: "+ totaltime);
+System.out.println("simplebinsort2Int   , 1000,int, Some Duplicates: "+ totaltime);
 
 simplebinsort2Int(int1000SlightlyDis,1000);
-System.out.println("simplebinsort2Int Time for lists of size 1000 Slightly Distributed: "+ totaltime);
+System.out.println("simplebinsort2Int  , 1000,int,Slightly Distributed: "+ totaltime);
 
 simplebinsort2Int(int1000ManyDup,1000);
-System.out.println("simplebinsort2Int Time for lists of size 1000 Many Duplicates: "+ totaltime);
+System.out.println("simplebinsort2Int  , 1000,int, Many Duplicates: "+ totaltime);
 
 System.out.println();
 
 simplebinsort2Int(int10000,10000);
-System.out.println("simplebinsort2Int Time for lists of size 10000: "+totaltime);
+System.out.println("simplebinsort2Int , 10000,int,random distribution: "+totaltime);
 
 simplebinsort2Int(int10000Asc,10000);
-System.out.println("simplebinsort2Int Time for lists of size 10000 in ascending order: "+ totaltime);
+System.out.println("simplebinsort2Int , 10000,int, ascending order: "+ totaltime);
 
 simplebinsort2Int(int10000Des,10000);
-System.out.println("simplebinsort2Int Time for lists of size 10000 in descending order: "+ totaltime);
+System.out.println("simplebinsort2Int , 10000,int,descending order: "+ totaltime);
 
 simplebinsort2Int(int10000Ide,10000);
-System.out.println("simplebinsort2Int Time for lists of size 10000 idendical keys: "+ totaltime);
+System.out.println("simplebinsort2Int , 10000,int, idendical keys: "+ totaltime);
 
 simplebinsort2Int(int10000FewDup,10000);
-System.out.println("simplebinsort2Int Time for lists of size 10000 Few Duplicates: "+ totaltime);
+System.out.println("simplebinsort2Int , 10000,int, Few Duplicates: "+ totaltime);
 
 simplebinsort2Int(int10000SomeDup,10000);
-System.out.println("simplebinsort2Int Time for lists of size 10000 Some Duplicates: "+ totaltime);
+System.out.println("simplebinsort2Int , 10000,int, Some Duplicates: "+ totaltime);
 
 simplebinsort2Int(int10000SlightlyDis,10000);
-System.out.println("simplebinsort2Int Time for lists of size 10000 Slightly Distributed: "+ totaltime);
+System.out.println("simplebinsort2Int , 10000,int, Slightly Distributed: "+ totaltime);
 
 simplebinsort2Int(int10000ManyDup,10000);
-System.out.println("simplebinsort2Int Time for lists of size 10000 Many Duplicates: "+ totaltime);
+System.out.println("simplebinsort2Int , 10000,int, Many Duplicates: "+ totaltime);
 
 System.out.println();
 System.out.println();
@@ -376,17 +386,15 @@ void simplebinsort(Integer[] A, Integer[] B) {
 
 static void simplebinsort2(Integer[] A,int length) {
 
-Integer [] array = new Integer[length];
-int numruns = 20;
+
 int i;
 totaltime = 0;
-for (i=0; i<numruns; i++)
+int runs;
+for (runs=0; runs<TESTSIZE; runs+=length)
 {
-for(int z=0; z<length;z++)
-array[z] = new Integer(A[z]);
 time1 = millis();
 /* *** ODSATag: simplebinsort2 *** */
-for (i=0; i<A.length; i++)
+for (i=runs; i<runs+length; i++)
   while (A[i] != i) // Swap element A[i] with A[A[i]]
     swap(A, i, A[i]);
 /* *** ODSAendTag: simplebinsort2 *** */
@@ -394,7 +402,7 @@ for (i=0; i<A.length; i++)
 time2 = millis();
 totaltime += (time2-time1);
 }
-totaltime = totaltime/numruns;
+totaltime = totaltime/(TESTSIZE/length);
 
 
 }
@@ -426,17 +434,14 @@ totaltime = totaltime/numruns;
 
 static void simplebinsort2Int(int[] A,int length) {
 
-int [] array = new int[length];
-int numruns = 20;
 int i;
 totaltime = 0;
-for (i=0; i<numruns; i++)
+int runs;
+for (runs=0; runs<TESTSIZE; runs+=length)
 {
-for(int z=0; z<length;z++)
-array[z] = A[z];
 time1 = millis();
 /* *** ODSATag: simplebinsort2 *** */
-for (i=0; i<A.length; i++)
+for (i=runs; i<runs+length; i++)
 while (A[i] != i) // Swap element A[i] with A[A[i]]
 swap(A, i, A[i]);
 /* *** ODSAendTag: simplebinsort2 *** */
@@ -444,7 +449,7 @@ swap(A, i, A[i]);
 time2 = millis();
 totaltime += (time2-time1);
 }
-totaltime = totaltime/numruns;
+totaltime = totaltime/(TESTSIZE/length);
 
 
 }
