@@ -2,6 +2,23 @@ h1 {
 	text-align: center;
 }
 
+#helpButton {
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	top: 20px;
+	left: 700px;
+	background: rgba(0,0,0,0);
+	border: none;
+	padding: 0;
+	border-radius: 15px;
+}
+
+#helpButton > img {
+	height: auto;
+	max-width: 100%;
+}
+
 p {
 	font-size: 100%;
 }
@@ -106,4 +123,20 @@ td {
 	-ms-user-select: initial;       /* Internet Explorer/Edge */
 	user-select: initial;           /* Non-prefixed version, currently
 						                                  not supported by any browser */
+}
+
+.ui-dialog-titlebar-close {
+	float: right;
+	height: 21px;
+	font-size: small;
+	border-radius: 0;
+	padding: 0;
+}
+
+#helpInfo {
+	height: 300px;
+	width: 400px;
+	background-color: white;
+	box-sizing: border-box;
+	padding: 5px 10px;
 }

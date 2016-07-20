@@ -882,6 +882,15 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 	$('#exportButton').hide();
 	$('#clearLabelButton').hide();
 	$( "#dialog" ).dialog({ autoOpen: false });
+	$("#help").dialog({autoOpen: false });
+	$("#helpButton").click(function() {
+		$("#help").dialog({
+			dialogClass: "alert",
+			width: 400,
+			height: 300
+		});
+		$("#help").dialog("open");
+	});
 	$(document).keyup(function(e) {
 		if (e.keyCode === 27) cancel();   // esc
 	});

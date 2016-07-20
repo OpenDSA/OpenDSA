@@ -21,6 +21,7 @@
   <body>
     <div id="container">
       <h1 id="editor">Finite Automaton Editor</h1>
+			<button id="helpButton"><img src="./help.png" /></button>
       <div id="dialogueoverlay"></div>
       <div id="dialoguebox">
         <div>
@@ -33,6 +34,16 @@
 				<div id="transitions"></div>	
 				<div align="center">
 				<button id="finalize">Finalize</button> 
+				</div>
+			</div>
+			<div id="help" title="Help" style="display:none">
+				<div id="helpInfo">
+					<p>Click on "Add Nodes" and then on the graph to add a new node.</p>
+					<p>Click on "Add Edges" and then drag from one node to another to add an edge.</p>
+					<p>Drag to move nodes.</p>
+					<p>Click on the edit button and then click on nodes, edges or edge labels to edit.</p>
+					<p>Click on the delete button and then on nodes, edges, or edge labels to delete.</p>
+					<p>Right click on a node to make it the initial/final node, change/clear its label or delete.</p>
 				</div>
 			</div>
       <p align="center" class="arrayPlace"></p>
@@ -63,10 +74,10 @@
       <button class="functionality" id="epsilonButton">&epsilon; Mode</button>
       <button class="functionality" id="shorthandButton">Enable Shorthand</button>
 			<br>
-      <button class="functionality" id="toDFAButton">to DFA</button>
+      <button class="functionality" id="toDFAButton" title="convert to DFA" >to DFA</button>
       <button class="functionality" id="minimizeButton">Minimize DFA</button>
-      <button class="functionality" id="toGrammarButton">to RLG</button>
-      <button class="functionality" id="toREButton">to RE</button>
+      <button class="functionality" id="toGrammarButton" title="convert to Right Linear Grammar">to RLG</button>
+      <button class="functionality" id="toREButton" title="convert to Regular Expression" >to RE</button>
       <div id='download'></div>
       <div id="rmenu"></div>
 
