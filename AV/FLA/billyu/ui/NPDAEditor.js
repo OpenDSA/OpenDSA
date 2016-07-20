@@ -22,7 +22,7 @@ var lambda = String.fromCharCode(955),
 		g.makeInitial(a);
 		f.addClass('final');
 
-		g.addEdge(a, b, {weight: 'a,' + emptystring + ";a"});
+		g.addEdge(a, b, {weight: 'a,' + "Z" + ";aZ"});
 		//g.addEdge(a, d); 		it's a FA, need to always provide a weight
 
 		g.addEdge(b, b, {weight: 'a,a;aa'});
@@ -31,7 +31,7 @@ var lambda = String.fromCharCode(955),
 
 		g.addEdge(c, c, {weight: 'b,a;' + emptystring});
 		g.addEdge(c, d, {weight: 'b,a;a'});
-		g.addEdge(c, f, {weight: emptystring + ',' + emptystring + ';' + emptystring});
+		g.addEdge(c, f, {weight: emptystring + ',' + "Z" + ';' + "Z"});
 
 		g.addEdge(d, c, {weight: 'b,a;' + emptystring});
 		g.addEdge(d, e, {weight: 'b,a;a'});
