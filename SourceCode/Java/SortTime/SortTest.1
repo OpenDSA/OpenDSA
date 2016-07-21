@@ -1,6 +1,9 @@
 // Top part of sort timing framework
 // This part contains all of the test harness for defining the tests
 // to be run.
+// To compile, combine this file with the code for the sorts
+// (invoked by a controlling function called "sorttime")
+// followed by SortTest.2
 
 import java.io.*;
 import java.math.*;
@@ -22,6 +25,9 @@ static Random value = new Random(); // Hold the Random class object
     @param n The upper bound for the range.
     @return A value in the range 0 to n-1.
 */
+static int random(int n) {
+  return Math.abs(value.nextInt()) % n;
+}
 
 
 // The timer variables
@@ -112,71 +118,67 @@ static double[] dsize100SlightlyDis = new double[TESTSIZE];
 static double[] dsize1000SlightlyDis = new double[TESTSIZE];
 static double[] dsize10000SlightlyDis = new double[TESTSIZE];
 
-
-static int[] int10;      // For lists of size 10
-static int[] int10Asc;
-static int[] int10Des;
-static int[] int10Ide;
-static int[] int10FewDup;
-static int[] int10SomeDup;
-static int[] int10ManyDup;
-static int[] int10SlightlyDis;
-static int[] int100;     // For lists of size 100
-static int[] int100Asc;
-static int[] int100Des;
-static int[] int100Ide;
-static int[] int100FewDup;
-static int[] int100SomeDup;
-static int[] int100ManyDup;
-static int[] int100SlightlyDis;
-static int[] int1000;     // For lists of size 1000
-static int[] int1000Asc;
-static int[] int1000Des;
-static int[] int1000Ide;
-static int[] int1000FewDup;
-static int[] int1000SomeDup;
-static int[] int1000ManyDup;
-static int[] int1000SlightlyDis;
-static int[] int10000;     // For lists of size 10000
-static int[] int10000Asc;
-static int[] int10000Des;
-static int[] int10000Ide;
-static int[] int10000FewDup;
-static int[] int10000SomeDup;
-static int[] int10000ManyDup;
-static int[] int10000SlightlyDis;
-static int[] int100000;     // For lists of size 100000
-static int[] int100000Asc;
-static int[] int100000Des;
-static int[] int100000Ide;
-static int[] int100000FewDup;
-static int[] int100000SomeDup;
-static int[] int100000ManyDup;
-static int[] int100000SlightlyDis;
-static int[] int1000000;     // For lists of size 1000000
-static int[] int1000000Asc;
-static int[] int1000000Des;
-static int[] int1000000Ide;
-static int[] int1000000FewDup;
-static int[] int1000000SomeDup;
-static int[] int1000000ManyDup;
-static int[] int1000000SlightlyDis;
+static int[] int10 = new int[TESTSIZE];      // For lists of size 10
+static int[] int10Asc = new int[TESTSIZE];
+static int[] int10Des = new int[TESTSIZE];
+static int[] int10Ide = new int[TESTSIZE];
+static int[] int10FewDup = new int[TESTSIZE];
+static int[] int10SomeDup = new int[TESTSIZE];
+static int[] int10ManyDup = new int[TESTSIZE];
+static int[] int10SlightlyDis = new int[TESTSIZE];
+static int[] int100 = new int[TESTSIZE];     // For lists of size 100
+static int[] int100Asc = new int[TESTSIZE];
+static int[] int100Des = new int[TESTSIZE];
+static int[] int100Ide = new int[TESTSIZE];
+static int[] int100FewDup = new int[TESTSIZE];
+static int[] int100SomeDup = new int[TESTSIZE];
+static int[] int100ManyDup = new int[TESTSIZE];
+static int[] int100SlightlyDis = new int[TESTSIZE];
+static int[] int1000 = new int[TESTSIZE];     // For lists of size 1000
+static int[] int1000Asc = new int[TESTSIZE];
+static int[] int1000Des = new int[TESTSIZE];
+static int[] int1000Ide = new int[TESTSIZE];
+static int[] int1000FewDup = new int[TESTSIZE];
+static int[] int1000SomeDup = new int[TESTSIZE];
+static int[] int1000ManyDup = new int[TESTSIZE];
+static int[] int1000SlightlyDis = new int[TESTSIZE];
+static int[] int10000 = new int[TESTSIZE];     // For lists of size 10000
+static int[] int10000Asc = new int[TESTSIZE];
+static int[] int10000Des = new int[TESTSIZE];
+static int[] int10000Ide = new int[TESTSIZE];
+static int[] int10000FewDup = new int[TESTSIZE];
+static int[] int10000SomeDup = new int[TESTSIZE];
+static int[] int10000ManyDup = new int[TESTSIZE];
+static int[] int10000SlightlyDis = new int[TESTSIZE];
+static int[] int100000 = new int[TESTSIZE];     // For lists of size 100000
+static int[] int100000Asc = new int[TESTSIZE];
+static int[] int100000Des = new int[TESTSIZE];
+static int[] int100000Ide = new int[TESTSIZE];
+static int[] int100000FewDup = new int[TESTSIZE];
+static int[] int100000SomeDup = new int[TESTSIZE];
+static int[] int100000ManyDup = new int[TESTSIZE];
+static int[] int100000SlightlyDis = new int[TESTSIZE];
+static int[] int1000000 = new int[TESTSIZE];     // For lists of size 1000000
+static int[] int1000000Asc = new int[TESTSIZE];
+static int[] int1000000Des = new int[TESTSIZE];
+static int[] int1000000Ide = new int[TESTSIZE];
+static int[] int1000000FewDup = new int[TESTSIZE];
+static int[] int1000000SomeDup = new int[TESTSIZE];
+static int[] int1000000ManyDup = new int[TESTSIZE];
+static int[] int1000000SlightlyDis = new int[TESTSIZE];
 
 
 
 public static void main(String[]args){
 
-	sorttime();
-}
-
-static int random(int n) {
-  return Math.abs(value.nextInt()) % n;
+	sorttime(); // This function is defined inside the specific
+                    // sorting code
 }
 
 
 // ====================================================================
 // Swap section: Swap the values in a list
-// Add more versions of swap as needed.
+// Add more versions of swap as needed for different data types
 
 // Swap for string arrays
 static void swapString(String[] A, int i, int j) {
@@ -203,7 +205,7 @@ static void swapInteger(Integer[] A, int i, int j) {
 
 // ====================================================================
 // Permute section: Randomly permute the values in a list
-// Add more versions of permute as needed.
+// Add more versions of permute as needed for different data types
 
 static void permute(int[] A, int startpos, int length) {
   for (int i = startpos + length; i > startpos; i--) // for each i
@@ -626,15 +628,6 @@ static void setupint() {
   int i, j;
 
   // int array of size 10: Uniform random distribution
-  int10 = new int[TESTSIZE];
-  int10Asc = new int[TESTSIZE];
-  int10Des = new int[TESTSIZE];
-  int10Ide = new int[TESTSIZE];
-  int10FewDup = new int[TESTSIZE];
-  int10SomeDup = new int[TESTSIZE];
-  int10ManyDup = new int[TESTSIZE];
-  int10SlightlyDis = new int[TESTSIZE];
-
   numtests = TESTSIZE/10;
   for (i=0; i<numtests; i++) {
     startpos = 10 * i;
@@ -658,15 +651,6 @@ static void setupint() {
 
 
   // int array of size 100: Uniform random distribution
-  int100 = new int[TESTSIZE];
-  int100Asc = new int[TESTSIZE];
-  int100Des = new int[TESTSIZE];
-  int100Ide = new int[TESTSIZE];
-  int100FewDup = new int[TESTSIZE];
-  int100SomeDup = new int[TESTSIZE];
-  int100ManyDup = new int[TESTSIZE];
-  int100SlightlyDis = new int[TESTSIZE];
-
   numtests = TESTSIZE/100;
   for (i=0; i<numtests; i++) {
     startpos = 100 * i;
@@ -691,15 +675,6 @@ static void setupint() {
 
 
  // int array of size 1000: Uniform random distribution
-  int1000 = new int[TESTSIZE];
-  int1000Asc = new int[TESTSIZE];
-  int1000Des = new int[TESTSIZE];
-  int1000Ide = new int[TESTSIZE];
-  int1000FewDup = new int[TESTSIZE];
-  int1000SomeDup = new int[TESTSIZE];
-  int1000ManyDup = new int[TESTSIZE];
-  int1000SlightlyDis = new int[TESTSIZE];
-
   numtests = TESTSIZE/1000;
   for (i=0; i<numtests; i++) {
     startpos = 1000 * i;
@@ -723,15 +698,6 @@ static void setupint() {
   }
 
  // int array of size 10000: Uniform random distribution
-  int10000 = new int[TESTSIZE];
-  int10000Asc = new int[TESTSIZE];
-  int10000Des = new int[TESTSIZE];
-  int10000Ide = new int[TESTSIZE];
-  int10000FewDup = new int[TESTSIZE];
-  int10000SomeDup = new int[TESTSIZE];
-  int10000ManyDup = new int[TESTSIZE];
-  int10000SlightlyDis = new int[TESTSIZE];
-
   numtests = TESTSIZE/10000;
   for (i=0; i<numtests; i++) {
     startpos = 10000 * i;
@@ -755,15 +721,6 @@ static void setupint() {
   }
 
  // int array of size 100000: Uniform random distribution
-  int100000 = new int[TESTSIZE];
-  int100000Asc = new int[TESTSIZE];
-  int100000Des = new int[TESTSIZE];
-  int100000Ide = new int[TESTSIZE];
-  int100000FewDup = new int[TESTSIZE];
-  int100000SomeDup = new int[TESTSIZE];
-  int100000ManyDup = new int[TESTSIZE];
-  int100000SlightlyDis = new int[TESTSIZE];
-
   numtests = TESTSIZE/100000;
   for (i=0; i<numtests; i++) {
     startpos = 100000 * i;
@@ -787,15 +744,6 @@ static void setupint() {
   }
 
  // int array of size 1000000: Uniform random distribution
-  int1000000 = new int[TESTSIZE];
-  int1000000Asc = new int[TESTSIZE];
-  int1000000Des = new int[TESTSIZE];
-  int1000000Ide = new int[TESTSIZE];
-  int1000000FewDup = new int[TESTSIZE];
-  int1000000SomeDup = new int[TESTSIZE];
-  int1000000ManyDup = new int[TESTSIZE];
-  int1000000SlightlyDis = new int[TESTSIZE];
-
   numtests = TESTSIZE/1000000;
   for (i=0; i<numtests; i++) {
     startpos = 1000000 * i;
@@ -820,3 +768,106 @@ static void setupint() {
 }
 
 
+static void testsortallint(String name, int testsize) {
+  int length;
+  if (testsize >= 10) {
+    length = 10;
+    testsortint(name, testsize, int10, length);
+    testsortint(name, testsize, int10Asc, length);
+    testsortint(name, testsize, int10Des, length);
+    testsortint(name, testsize, int10Ide, length);
+    testsortint(name, testsize, int10FewDup, length);
+    testsortint(name, testsize, int10SomeDup, length);
+    testsortint(name, testsize, int10ManyDup, length);
+    testsortint(name, testsize, int10SlightlyDis, length);
+  }
+  if (testsize >= 100) {
+    length = 100;
+    testsortint(name, testsize, int100, length);
+    testsortint(name, testsize, int100Asc, length);
+    testsortint(name, testsize, int100Des, length);
+    testsortint(name, testsize, int100Ide, length);
+    testsortint(name, testsize, int100FewDup, length);
+    testsortint(name, testsize, int100SomeDup, length);
+    testsortint(name, testsize, int100ManyDup, length);
+    testsortint(name, testsize, int100SlightlyDis, length);
+  }
+  if (testsize >= 1000) {
+    length = 1000;
+    testsortint(name, testsize, int1000, length);
+    testsortint(name, testsize, int1000Asc, length);
+    testsortint(name, testsize, int1000Des, length);
+    testsortint(name, testsize, int1000Ide, length);
+    testsortint(name, testsize, int1000FewDup, length);
+    testsortint(name, testsize, int1000SomeDup, length);
+    testsortint(name, testsize, int1000ManyDup, length);
+    testsortint(name, testsize, int1000SlightlyDis, length);
+  }
+  if (testsize >= 10000) {
+    length = 10000;
+    testsortint(name, testsize, int10000, length);
+    testsortint(name, testsize, int10000Asc, length);
+    testsortint(name, testsize, int10000Des, length);
+    testsortint(name, testsize, int10000Ide, length);
+    testsortint(name, testsize, int10000FewDup, length);
+    testsortint(name, testsize, int10000SomeDup, length);
+    testsortint(name, testsize, int10000ManyDup, length);
+    testsortint(name, testsize, int10000SlightlyDis, length);
+  }
+  if (testsize >= 100000) {
+    length = 100000;
+    testsortint(name, testsize, int100000, length);
+    testsortint(name, testsize, int100000Asc, length);
+    testsortint(name, testsize, int100000Des, length);
+    testsortint(name, testsize, int100000Ide, length);
+    testsortint(name, testsize, int100000FewDup, length);
+    testsortint(name, testsize, int100000SomeDup, length);
+    testsortint(name, testsize, int100000ManyDup, length);
+    testsortint(name, testsize, int100000SlightlyDis, length);
+  }
+  if (testsize >= 1000000) {
+    length = 1000000;
+    testsortint(name, testsize, int1000000, length);
+    testsortint(name, testsize, int1000000Asc, length);
+    testsortint(name, testsize, int1000000Des, length);
+    testsortint(name, testsize, int1000000Ide, length);
+    testsortint(name, testsize, int1000000FewDup, length);
+    testsortint(name, testsize, int1000000SomeDup, length);
+    testsortint(name, testsize, int1000000ManyDup, length);
+    testsortint(name, testsize, int1000000SlightlyDis, length);
+  }
+}
+
+@SuppressWarnings("unchecked")
+static void testsortint(String methodName, int testsize, int[] A, int length) {
+  System.out.print(methodName + ",int, " + length + ", random distribution: ");
+  try {
+    int numruns;
+    for(numruns = 0; numruns < 20; numruns++) {
+      setupint();
+      int [] array = new int[TESTSIZE];
+      SortTest s = new SortTest();
+      Class cls = s.getClass();
+      Class[] c = new Class[3];
+      c[0] = array.getClass();
+      c[1] = int.class;
+      c[2] = int.class;
+      Method method = cls.getDeclaredMethod(methodName, c);
+      method.setAccessible(true);
+
+      int i;
+      totaltime = 0;
+      time1 = millis();
+      for (i = 0; i < testsize; i += length) {
+        Object[] arguments = {A, i, length};
+        method.invoke(s, arguments);
+      }
+      time2 = millis();
+      totaltime = time2 - time1;
+      System.out.println(totaltime);
+    }
+  }
+  catch(Exception ex){
+    ex.printStackTrace();
+  }
+}
