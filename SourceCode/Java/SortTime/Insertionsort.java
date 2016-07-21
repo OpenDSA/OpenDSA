@@ -70,4 +70,9 @@ static void sorttime() {
   // inssort
   testsortallint("inssort", testsize);
   testsortallint("inssort2", testsize);
+  testsortallInteger("inssortInteger",testsize);
+  testsortallInteger("inssort2Integer",testsize);
+  testsortallDouble("inssortDouble",testsize);
+  testsortallDouble("inssort2Double",testsize);
+
 }

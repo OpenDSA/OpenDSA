@@ -40,7 +40,7 @@ static long totaltime;
 // For full timing tests, this should be 1,000,000.
 // But for debugging purposes, might want to make it shorter to speed
 // things up.
-final static int TESTSIZE = 10000;
+final static int TESTSIZE = 100000;
 
 
 // ====================================================================
@@ -49,34 +49,58 @@ static Integer[] size10 = new Integer[TESTSIZE];
 static Integer[] size100 = new Integer[TESTSIZE];
 static Integer[] size1000 = new Integer[TESTSIZE];
 static Integer[] size10000 = new Integer[TESTSIZE];
+static Integer[] size100000 = new Integer[TESTSIZE];
+static Integer[] size1000000 = new Integer[TESTSIZE];
+
 static Integer[] size10Asc;
 static Integer[] size100Asc;
 static Integer[] size1000Asc;
 static Integer[] size10000Asc;
+static Integer[] size100000Asc = new Integer[TESTSIZE];
+static Integer[] size1000000Asc = new Integer[TESTSIZE];
+
 static Integer[] size10Des;
 static Integer[] size100Des;
 static Integer[] size1000Des;
 static Integer[] size10000Des;
+static Integer[] size100000Des = new Integer[TESTSIZE];
+static Integer[] size1000000Des = new Integer[TESTSIZE];
+
 static Integer[] size10Ide;
 static Integer[] size100Ide;
 static Integer[] size1000Ide;
 static Integer[] size10000Ide;
+static Integer[] size100000Ide = new Integer[TESTSIZE];
+static Integer[] size1000000Ide = new Integer[TESTSIZE];
+
 static Integer[] size10FewDup;
 static Integer[] size100FewDup;
 static Integer[] size1000FewDup;
 static Integer[] size10000FewDup;
+static Integer[] size100000FewDup = new Integer[TESTSIZE];
+static Integer[] size1000000FewDup = new Integer[TESTSIZE];
+
 static Integer[] size10SomeDup;
 static Integer[] size100SomeDup;
 static Integer[] size1000SomeDup;
 static Integer[] size10000SomeDup;
+static Integer[] size100000SomeDup = new Integer[TESTSIZE];
+static Integer[] size1000000SomeDup = new Integer[TESTSIZE];
+
 static Integer[] size10ManyDup;
 static Integer[] size100ManyDup;
 static Integer[] size1000ManyDup;
 static Integer[] size10000ManyDup;
+static Integer[] size100000ManyDup = new Integer[TESTSIZE];
+static Integer[] size1000000ManyDup = new Integer[TESTSIZE];
+
 static Integer[] size10SlightlyDis;
 static Integer[] size100SlightlyDis;
 static Integer[] size1000SlightlyDis;
 static Integer[] size10000SlightlyDis;
+static Integer[] size100000SlightlyDis = new Integer[TESTSIZE];
+static Integer[] size1000000SlightlyDis = new Integer[TESTSIZE];
+
 
 
 static LinkedList<Integer> arrayList = new LinkedList<Integer>();
@@ -89,34 +113,57 @@ static double[] dsize10 = new double[TESTSIZE];
 static double[] dsize100 = new double[TESTSIZE];
 static double[] dsize1000 = new double[TESTSIZE];
 static double[] dsize10000 = new double[TESTSIZE];
+static double[] dsize100000 = new double[TESTSIZE];
+static double[] dsize1000000 = new double[TESTSIZE];
+
 static double[] dsize10Asc = new double[TESTSIZE];
 static double[] dsize100Asc = new double[TESTSIZE];
 static double[] dsize1000Asc = new double[TESTSIZE];
 static double[] dsize10000Asc = new double[TESTSIZE];
+static double[] dsize100000Asc = new double[TESTSIZE];
+static double[] dsize1000000Asc = new double[TESTSIZE];
+
 static double[] dsize10Des = new double[TESTSIZE];
 static double[] dsize100Des = new double[TESTSIZE];
 static double[] dsize1000Des = new double[TESTSIZE];
 static double[] dsize10000Des = new double[TESTSIZE];
+static double[] dsize100000Des = new double[TESTSIZE];
+static double[] dsize1000000Des = new double[TESTSIZE];
+
 static double[] dsize10Ide = new double[TESTSIZE];
 static double[] dsize100Ide = new double[TESTSIZE];
 static double[] dsize1000Ide = new double[TESTSIZE];
 static double[] dsize10000Ide = new double[TESTSIZE];
+static double[] dsize100000Ide = new double[TESTSIZE];
+static double[] dsize1000000Ide = new double[TESTSIZE];
+
 static double[] dsize10FewDup = new double[TESTSIZE];
 static double[] dsize100FewDup = new double[TESTSIZE];
 static double[] dsize1000FewDup = new double[TESTSIZE];
 static double[] dsize10000FewDup = new double[TESTSIZE];
+static double[] dsize100000FewDup = new double[TESTSIZE];
+static double[] dsize1000000FewDup = new double[TESTSIZE];
+
 static double[] dsize10SomeDup = new double[TESTSIZE];
 static double[] dsize100SomeDup = new double[TESTSIZE];
 static double[] dsize1000SomeDup = new double[TESTSIZE];
 static double[] dsize10000SomeDup = new double[TESTSIZE];
+static double[] dsize100000SomeDup = new double[TESTSIZE];
+static double[] dsize1000000SomeDup = new double[TESTSIZE];
+
 static double[] dsize10ManyDup = new double[TESTSIZE];
 static double[] dsize100ManyDup = new double[TESTSIZE];
 static double[] dsize1000ManyDup = new double[TESTSIZE];
 static double[] dsize10000ManyDup = new double[TESTSIZE];
+static double[] dsize100000ManyDup = new double[TESTSIZE];
+static double[] dsize1000000ManyDup = new double[TESTSIZE];
+
 static double[] dsize10SlightlyDis = new double[TESTSIZE];
 static double[] dsize100SlightlyDis = new double[TESTSIZE];
 static double[] dsize1000SlightlyDis = new double[TESTSIZE];
 static double[] dsize10000SlightlyDis = new double[TESTSIZE];
+static double[] dsize100000SlightlyDis = new double[TESTSIZE];
+static double[] dsize1000000SlightlyDis = new double[TESTSIZE];
 
 static int[] int10 = new int[TESTSIZE];      // For lists of size 10
 static int[] int10Asc = new int[TESTSIZE];
@@ -232,15 +279,14 @@ static void fewDuplicates(int[] A, int startpos, int length){
 	{
 		randomValue = random(length + startpos);
 		randomValue2 = random(length + startpos);
-		while(randomValue==randomValue2 && A[randomValue]==randomValue)
+		while(randomValue==randomValue2 || A[randomValue]!=randomValue)
 		{
-			randomValue = random(length);
-			randomValue2 = random(length);
+			randomValue = random(length + startpos);
+			randomValue2 = random(length + startpos);
 		}
 		A[randomValue] = randomValue2;
 	}
-	
-	
+		
 }
 
 static void fewDuplicatesDouble(double[] A, int startpos, int length){
@@ -249,10 +295,10 @@ static void fewDuplicatesDouble(double[] A, int startpos, int length){
 	{
 		randomValue = random(length + startpos);
 		randomValue2 = random(length + startpos);
-		while(randomValue==randomValue2 && A[randomValue]==randomValue)
+		while(randomValue==randomValue2 || A[randomValue]!=randomValue)
 		{
-			randomValue = random(length);
-			randomValue2 = random(length);
+			randomValue = random(length + startpos);
+			randomValue2 = random(length + startpos);
 		}
 		A[randomValue] = randomValue2;
 	}
@@ -266,10 +312,10 @@ static void fewDuplicatesInteger(Integer[] A, int startpos, int length){
 	{
 		randomValue = random(length + startpos);
 		randomValue2 = random(length + startpos);
-		while(randomValue==randomValue2 && A[randomValue]==randomValue)
+		while(randomValue==randomValue2 || A[randomValue]!=randomValue)
 		{
-			randomValue = random(length);
-			randomValue2 = random(length);
+			randomValue = random(length + startpos);
+			randomValue2 = random(length + startpos);
 		}
 		A[randomValue] = randomValue2;
 	}
@@ -282,9 +328,9 @@ static void someDuplicates(int[] A,int startpos, int length){
 	for(int i=0;i<(length*0.2); i++){
 		randomValue=random(length + startpos);
 		randomValue2=random(length + startpos);
-		while(randomValue==randomValue2 && A[randomValue]==randomValue){
-			randomValue=random(length);
-			randomValue2=random(length);
+		while(randomValue==randomValue2 || A[randomValue]!=randomValue){
+			randomValue=random(length + startpos);
+			randomValue2=random(length + startpos);
 		}
 		A[randomValue]=randomValue2;
 	}
@@ -295,9 +341,9 @@ static void someDuplicatesInteger(Integer[] A,int startpos, int length){
 	for(int i=0;i<(length*0.2); i++){
 		randomValue=random(length + startpos);
 		randomValue2=random(length + startpos);
-		while(randomValue==randomValue2 && A[randomValue]==randomValue){
-			randomValue=random(length);
-			randomValue2=random(length);
+		while(randomValue==randomValue2 || A[randomValue]!=randomValue){
+			randomValue=random(length + startpos);
+			randomValue2=random(length + startpos);
 		}
 		A[randomValue]=randomValue2;
 	}
@@ -308,9 +354,9 @@ static void someDuplicatesDouble(double[] A,int startpos, int length){
 	for(int i=0;i<(length*0.2); i++){
 		randomValue=random(length + startpos);
 		randomValue2=random(length + startpos);
-		while(randomValue==randomValue2 && A[randomValue]==randomValue){
-			randomValue=random(length);
-			randomValue2=random(length);
+		while(randomValue==randomValue2 || A[randomValue]!=randomValue){
+			randomValue=random(length + startpos);
+			randomValue2=random(length + startpos);
 		}
 		A[randomValue]=randomValue2;
 	}
@@ -321,9 +367,9 @@ static void manyDuplicates(int[] A,int startpos, int length){
 	for(int i=0;i<(length*0.5); i++){
 		randomValue=random(length + startpos);
 		randomValue2=random(length + startpos);
-		while(randomValue==randomValue2 && A[randomValue]==randomValue){
-			randomValue=random(length);
-			randomValue2=random(length);
+		while(randomValue==randomValue2 || A[randomValue]!=randomValue){
+			randomValue=random(length + startpos);
+			randomValue2=random(length + startpos);
 		}
 		A[randomValue]=randomValue2;
 	}
@@ -334,9 +380,9 @@ static void manyDuplicatesInteger(Integer[] A,int startpos, int length){
 	for(int i=0;i<(length*0.5); i++){
 		randomValue=random(length + startpos);
 		randomValue2=random(length + startpos);
-		while(randomValue==randomValue2 && A[randomValue]==randomValue){
-			randomValue=random(length);
-			randomValue2=random(length);
+		while(randomValue==randomValue2 || A[randomValue]!=randomValue){
+			randomValue=random(length + startpos);
+			randomValue2=random(length + startpos);
 		}
 		A[randomValue]=randomValue2;
 	}
@@ -347,9 +393,9 @@ static void manyDuplicatesDouble(double[] A,int startpos, int length){
 	for(int i=0;i<(length*0.5); i++){
 		randomValue=random(length + startpos);
 		randomValue2=random(length + startpos);
-		while(randomValue==randomValue2 && A[randomValue]==randomValue){
-			randomValue=random(length);
-			randomValue2=random(length);
+		while(randomValue==randomValue2 || A[randomValue]!=randomValue){
+			randomValue=random(length + startpos);
+			randomValue2=random(length + startpos);
 		}
 		A[randomValue]=randomValue2;
 	}
@@ -360,9 +406,9 @@ static void slightlyDisordered(int[] A,int startpos, int length){
 	for(int i=0;i<(length*0.1);i++){
 		randomValue=random(length + startpos);
 		randomValue2=random(length + startpos);
-		while(randomValue==randomValue2 && A[randomValue]==randomValue){
-			randomValue=random(length);
-			randomValue2=random(length);
+		while(randomValue==randomValue2 || A[randomValue]!=randomValue){
+			randomValue=random(length + startpos);
+			randomValue2=random(length + startpos);
 		}	
 		temp=A[randomValue];
 		A[randomValue]=A[randomValue2];
@@ -375,9 +421,9 @@ static void slightlyDisorderedInteger(Integer[] A,int startpos, int length){
 	for(int i=0;i<(length*0.1);i++){
 		randomValue=random(length + startpos);
 		randomValue2=random(length + startpos);
-		while(randomValue==randomValue2 && A[randomValue]==randomValue){
-			randomValue=random(length);
-			randomValue2=random(length);
+		while(randomValue==randomValue2 || A[randomValue]!=randomValue){
+			randomValue=random(length + startpos);
+			randomValue2=random(length + startpos);
 		}	
 		temp=A[randomValue];
 		A[randomValue]=A[randomValue2];
@@ -391,9 +437,9 @@ static void slightlyDisorderedDouble(double[] A,int startpos, int length){
 	for(int i=0;i<(length*0.1);i++){
 		randomValue=random(length + startpos);
 		randomValue2=random(length + startpos);
-		while(randomValue==randomValue2 && A[randomValue]==randomValue){
-			randomValue=random(length);
-			randomValue2=random(length);
+		while(randomValue==randomValue2 || A[randomValue]!=randomValue){
+			randomValue=random(length + startpos);
+			randomValue2=random(length + startpos);
 		}	
 		temp=A[randomValue];
 		A[randomValue]=A[randomValue2];
@@ -495,6 +541,46 @@ static void setupDouble() {
     someDuplicatesDouble(dsize10000SomeDup,startpos,10000);
     manyDuplicatesDouble(dsize10000ManyDup,startpos,10000);
     slightlyDisorderedDouble(dsize10000SlightlyDis,startpos,10000);
+  }
+
+numtests = TESTSIZE/100000;
+ for (i=0; i<numtests; i++) {
+    startpos = 100000 * i;
+    for (j=0; j<100000; j++){
+      dsize100000[startpos + j] = startpos + j;
+      dsize100000Asc[startpos + j] = startpos + j; //ascending order size of 100000
+      dsize100000Des[startpos + j] = startpos + 100000-j-1;
+      dsize100000Ide[startpos + j] = 99999;
+      dsize100000FewDup[startpos + j] = startpos + j;
+      dsize100000SomeDup[startpos + j] = startpos + j;
+      dsize100000ManyDup[startpos + j] = startpos + j;
+      dsize100000SlightlyDis[startpos + j] = startpos + j;
+    }
+    permuteDouble(dsize100000, startpos, 100000);
+    fewDuplicatesDouble(dsize100000FewDup,startpos,100000);
+    someDuplicatesDouble(dsize100000SomeDup,startpos,100000);
+    manyDuplicatesDouble(dsize100000ManyDup,startpos,100000);
+    slightlyDisorderedDouble(dsize100000SlightlyDis,startpos,100000);
+  }
+
+numtests = TESTSIZE/1000000;
+ for (i=0; i<numtests; i++) {
+    startpos = 1000000 * i;
+    for (j=0; j<1000000; j++){
+      dsize1000000[startpos + j] = startpos + j;
+      dsize1000000Asc[startpos + j] = startpos + j; //ascending order size of 1000000
+      dsize1000000Des[startpos + j] = startpos + 1000000-j-1;
+      dsize1000000Ide[startpos + j] = 999999;
+      dsize1000000FewDup[startpos + j] = startpos + j;
+      dsize1000000SomeDup[startpos + j] = startpos + j;
+      dsize1000000ManyDup[startpos + j] = startpos + j;
+      dsize1000000SlightlyDis[startpos + j] = startpos + j;
+    }
+    permuteDouble(dsize1000000, startpos, 1000000);
+    fewDuplicatesDouble(dsize1000000FewDup,startpos,1000000);
+    someDuplicatesDouble(dsize1000000SomeDup,startpos,1000000);
+    manyDuplicatesDouble(dsize1000000ManyDup,startpos,1000000);
+    slightlyDisorderedDouble(dsize1000000SlightlyDis,startpos,1000000);
   }
 
 }
@@ -621,6 +707,50 @@ static void setupInteger() {
     slightlyDisorderedInteger(size10000SlightlyDis,startpos,10000);
 
   }
+
+
+  numtests = TESTSIZE/100000;
+ for (i=0; i<numtests; i++) {
+    startpos = 100000 * i;
+    for (j=0; j<100000; j++){
+      size100000[startpos + j] = startpos + j;
+      size100000Asc[startpos + j] = startpos + j; //ascending order size of 100000
+      size100000Des[startpos + j] = startpos + 100000-j-1;
+      size100000Ide[startpos + j] = 99999;
+      size100000FewDup[startpos + j] = startpos + j;
+      size100000SomeDup[startpos + j] = startpos + j;
+      size100000ManyDup[startpos + j] = startpos + j;
+      size100000SlightlyDis[startpos + j] = startpos + j;
+    }
+    permuteInteger(size100000, startpos, 100000);
+    fewDuplicatesInteger(size100000FewDup,startpos,100000);
+    someDuplicatesInteger(size100000SomeDup,startpos,100000);
+    manyDuplicatesInteger(size100000ManyDup,startpos,100000);
+    slightlyDisorderedInteger(size100000SlightlyDis,startpos,100000);
+
+  }
+
+  numtests = TESTSIZE/1000000;
+ for (i=0; i<numtests; i++) {
+    startpos = 1000000 * i;
+    for (j=0; j<1000000; j++){
+      size1000000[startpos + j] = startpos + j;
+      size1000000Asc[startpos + j] = startpos + j; //ascending order size of 1000000
+      size1000000Des[startpos + j] = startpos + 1000000-j-1;
+      size1000000Ide[startpos + j] = 999999;
+      size1000000FewDup[startpos + j] = startpos + j;
+      size1000000SomeDup[startpos + j] = startpos + j;
+      size1000000ManyDup[startpos + j] = startpos + j;
+      size1000000SlightlyDis[startpos + j] = startpos + j;
+    }
+    permuteInteger(size1000000, startpos, 1000000);
+    fewDuplicatesInteger(size1000000FewDup,startpos,1000000);
+    someDuplicatesInteger(size1000000SomeDup,startpos,1000000);
+    manyDuplicatesInteger(size1000000ManyDup,startpos,1000000);
+    slightlyDisorderedInteger(size1000000SlightlyDis,startpos,1000000);
+
+  }
+
 }
 static void setupint() {
   int startpos; // Each tests start position in array
@@ -767,6 +897,146 @@ static void setupint() {
   }
 }
 
+static void testsortallDouble(String name, int testsize) {
+  int length;
+  if (testsize >= 10) {
+    length = 10;
+    testsortDouble(name, testsize, dsize10, length);
+    testsortDouble(name, testsize, dsize10Asc, length);
+    testsortDouble(name, testsize, dsize10Des, length);
+    testsortDouble(name, testsize, dsize10Ide, length);
+    testsortDouble(name, testsize, dsize10FewDup, length);
+    testsortDouble(name, testsize, dsize10SomeDup, length);
+    testsortDouble(name, testsize, dsize10ManyDup, length);
+    testsortDouble(name, testsize, dsize10SlightlyDis, length);
+  }
+  if (testsize >= 100) {
+    length = 100;
+    testsortDouble(name, testsize, dsize100, length);
+    testsortDouble(name, testsize, dsize100Asc, length);
+    testsortDouble(name, testsize, dsize100Des, length);
+    testsortDouble(name, testsize, dsize100Ide, length);
+    testsortDouble(name, testsize, dsize100FewDup, length);
+    testsortDouble(name, testsize, dsize100SomeDup, length);
+    testsortDouble(name, testsize, dsize100ManyDup, length);
+    testsortDouble(name, testsize, dsize100SlightlyDis, length);
+  }
+  if (testsize >= 1000) {
+    length = 1000;
+    testsortDouble(name, testsize, dsize1000, length);
+    testsortDouble(name, testsize, dsize1000Asc, length);
+    testsortDouble(name, testsize, dsize1000Des, length);
+    testsortDouble(name, testsize, dsize1000Ide, length);
+    testsortDouble(name, testsize, dsize1000FewDup, length);
+    testsortDouble(name, testsize, dsize1000SomeDup, length);
+    testsortDouble(name, testsize, dsize1000ManyDup, length);
+    testsortDouble(name, testsize, dsize1000SlightlyDis, length);
+  }
+  if (testsize >= 10000) {
+    length = 10000;
+    testsortDouble(name, testsize, dsize10000, length);
+    testsortDouble(name, testsize, dsize10000Asc, length);
+    testsortDouble(name, testsize, dsize10000Des, length);
+    testsortDouble(name, testsize, dsize10000Ide, length);
+    testsortDouble(name, testsize, dsize10000FewDup, length);
+    testsortDouble(name, testsize, dsize10000SomeDup, length);
+    testsortDouble(name, testsize, dsize10000ManyDup, length);
+    testsortDouble(name, testsize, dsize10000SlightlyDis, length);
+  }
+  if (testsize >= 100000) {
+    length = 100000;
+    testsortDouble(name, testsize, dsize100000, length);
+    testsortDouble(name, testsize, dsize100000Asc, length);
+    testsortDouble(name, testsize, dsize100000Des, length);
+    testsortDouble(name, testsize, dsize100000Ide, length);
+    testsortDouble(name, testsize, dsize100000FewDup, length);
+    testsortDouble(name, testsize, dsize100000SomeDup, length);
+    testsortDouble(name, testsize, dsize100000ManyDup, length);
+    testsortDouble(name, testsize, dsize100000SlightlyDis, length);
+  }
+  if (testsize >= 1000000) {
+    length = 1000000;
+    testsortDouble(name, testsize, dsize1000000, length);
+    testsortDouble(name, testsize, dsize1000000Asc, length);
+    testsortDouble(name, testsize, dsize1000000Des, length);
+    testsortDouble(name, testsize, dsize1000000Ide, length);
+    testsortDouble(name, testsize, dsize1000000FewDup, length);
+    testsortDouble(name, testsize, dsize1000000SomeDup, length);
+    testsortDouble(name, testsize, dsize1000000ManyDup, length);
+    testsortDouble(name, testsize, dsize1000000SlightlyDis, length);
+  }
+}
+
+
+static void testsortallInteger(String name, int testsize) {
+  int length;
+  if (testsize >= 10) {
+    length = 10;
+    testsortInteger(name, testsize, size10, length);
+    testsortInteger(name, testsize, size10Asc, length);
+    testsortInteger(name, testsize, size10Des, length);
+    testsortInteger(name, testsize, size10Ide, length);
+    testsortInteger(name, testsize, size10FewDup, length);
+    testsortInteger(name, testsize, size10SomeDup, length);
+    testsortInteger(name, testsize, size10ManyDup, length);
+    testsortInteger(name, testsize, size10SlightlyDis, length);
+  }
+  if (testsize >= 100) {
+    length = 100;
+    testsortInteger(name, testsize, size100, length);
+    testsortInteger(name, testsize, size100Asc, length);
+    testsortInteger(name, testsize, size100Des, length);
+    testsortInteger(name, testsize, size100Ide, length);
+    testsortInteger(name, testsize, size100FewDup, length);
+    testsortInteger(name, testsize, size100SomeDup, length);
+    testsortInteger(name, testsize, size100ManyDup, length);
+    testsortInteger(name, testsize, size100SlightlyDis, length);
+  }
+  if (testsize >= 1000) {
+    length = 1000;
+    testsortInteger(name, testsize, size1000, length);
+    testsortInteger(name, testsize, size1000Asc, length);
+    testsortInteger(name, testsize, size1000Des, length);
+    testsortInteger(name, testsize, size1000Ide, length);
+    testsortInteger(name, testsize, size1000FewDup, length);
+    testsortInteger(name, testsize, size1000SomeDup, length);
+    testsortInteger(name, testsize, size1000ManyDup, length);
+    testsortInteger(name, testsize, size1000SlightlyDis, length);
+  }
+  if (testsize >= 10000) {
+    length = 10000;
+    testsortInteger(name, testsize, size10000, length);
+    testsortInteger(name, testsize, size10000Asc, length);
+    testsortInteger(name, testsize, size10000Des, length);
+    testsortInteger(name, testsize, size10000Ide, length);
+    testsortInteger(name, testsize, size10000FewDup, length);
+    testsortInteger(name, testsize, size10000SomeDup, length);
+    testsortInteger(name, testsize, size10000ManyDup, length);
+    testsortInteger(name, testsize, size10000SlightlyDis, length);
+  }
+  if (testsize >= 100000) {
+    length = 100000;
+    testsortInteger(name, testsize, size100000, length);
+    testsortInteger(name, testsize, size100000Asc, length);
+    testsortInteger(name, testsize, size100000Des, length);
+    testsortInteger(name, testsize, size100000Ide, length);
+    testsortInteger(name, testsize, size100000FewDup, length);
+    testsortInteger(name, testsize, size100000SomeDup, length);
+    testsortInteger(name, testsize, size100000ManyDup, length);
+    testsortInteger(name, testsize, size100000SlightlyDis, length);
+  }
+  if (testsize >= 1000000) {
+    length = 1000000;
+    testsortInteger(name, testsize, size1000000, length);
+    testsortInteger(name, testsize, size1000000Asc, length);
+    testsortInteger(name, testsize, size1000000Des, length);
+    testsortInteger(name, testsize, size1000000Ide, length);
+    testsortInteger(name, testsize, size1000000FewDup, length);
+    testsortInteger(name, testsize, size1000000SomeDup, length);
+    testsortInteger(name, testsize, size1000000ManyDup, length);
+    testsortInteger(name, testsize, size1000000SlightlyDis, length);
+  }
+}
 
 static void testsortallint(String name, int testsize) {
   int length;
@@ -839,8 +1109,77 @@ static void testsortallint(String name, int testsize) {
 }
 
 @SuppressWarnings("unchecked")
+static void testsortDouble(String methodName, int testsize, double[] A, int length) {
+  System.out.print(methodName + ",double, " + length );
+  try {
+    int numruns;
+    for(numruns = 0; numruns < 20; numruns++) {
+      setupDouble();
+      double [] array = new double[TESTSIZE];
+      SortTest s = new SortTest();
+      Class cls = s.getClass();
+      Class[] c = new Class[3];
+      c[0] = array.getClass();
+      c[1] = int.class;
+      c[2] = int.class;
+      Method method = cls.getDeclaredMethod(methodName, c);
+      method.setAccessible(true);
+
+      int i;
+      totaltime = 0;
+      time1 = millis();
+      for (i = 0; i < testsize; i += length) {
+        Object[] arguments = {A, i, length};
+        method.invoke(s, arguments);
+      }
+      time2 = millis();
+      totaltime = time2 - time1;
+      System.out.println(totaltime);
+    }
+  }
+  catch(Exception ex){
+    ex.printStackTrace();
+  }
+}
+
+
+@SuppressWarnings("unchecked")
+static void testsortInteger(String methodName, int testsize, Integer[] A, int length) {
+  System.out.print(methodName + ",Integer, " + length );
+  try {
+    int numruns;
+    for(numruns = 0; numruns < 20; numruns++) {
+      setupInteger();
+      Integer [] array = new Integer[TESTSIZE];
+      SortTest s = new SortTest();
+      Class cls = s.getClass();
+      Class[] c = new Class[3];
+      c[0] = array.getClass();
+      c[1] = int.class;
+      c[2] = int.class;
+      Method method = cls.getDeclaredMethod(methodName, c);
+      method.setAccessible(true);
+
+      int i;
+      totaltime = 0;
+      time1 = millis();
+      for (i = 0; i < testsize; i += length) {
+        Object[] arguments = {A, i, length};
+        method.invoke(s, arguments);
+      }
+      time2 = millis();
+      totaltime = time2 - time1;
+      System.out.println(totaltime);
+    }
+  }
+  catch(Exception ex){
+    ex.printStackTrace();
+  }
+}
+
+@SuppressWarnings("unchecked")
 static void testsortint(String methodName, int testsize, int[] A, int length) {
-  System.out.print(methodName + ",int, " + length + ", random distribution: ");
+  System.out.print(methodName + ",int, " + length );
   try {
     int numruns;
     for(numruns = 0; numruns < 20; numruns++) {
