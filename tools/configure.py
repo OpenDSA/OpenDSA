@@ -435,6 +435,7 @@ def configure(config_file_path, options):
     global satisfied_requirements
 
     slides = options.slides
+    no_lms = options.no_lms
 
     print "Configuring OpenDSA, using " + config_file_path
 
@@ -551,7 +552,7 @@ def configure(config_file_path, options):
         with codecs.open(config.book_dir + 'html/_static/GraphDefs.json', 'w', 'utf-8') as graph_defs_file:
             json.dump(cmap_map, graph_defs_file)
 
-    make_lti(config)
+    make_lti(config, no_lms)
 
 # Code to execute when run as a standalone program
 if __name__ == "__main__":
@@ -560,6 +561,7 @@ if __name__ == "__main__":
     parser.add_option("--dry-run", help="Causes configure.py to configure the book but stop before compiling it", dest="dry_run", action="store_true", default=False)
     parser.add_option("-b", help="Accepts a custom directory name instead of using the config file's name.",dest="output_directory", default=None)
     parser.add_option("--local", help="Causes the compiled book to work in local mode, which means no communication with the server",dest="local", action="store_true", default=False)
+    parser.add_option("--no-lms", help="Compile book without changing internal links required by LMS",dest="no_lms", action="store_true", default=False)
     (options, args) = parser.parse_args()
 
     if options.slides:
@@ -570,7 +572,7 @@ if __name__ == "__main__":
     # Process script arguments
     if len(args) != 1:
         print_err(
-            "Usage: " + sys.argv[0] + " [-s] [--dry-run] config_file_path [-c]")
+            "Usage: " + sys.argv[0] + " [-s] [--dry-run] [--no-lms] config_file_path [-c]")
         sys.exit(1)
 
     configure(args[0], options)

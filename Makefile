@@ -155,7 +155,7 @@ SIGCSE: min
 	python $(CONFIG_SCRIPT) config/SIGCSEDemo.json -c config/SIGCSEDemo_LMSconf.json -b SIGCSE
 
 CS3: min
-	python $(CONFIG_SCRIPT) config/CS3.json
+	python $(CONFIG_SCRIPT) config/CS3.json --no-lms
 
 CS3_export: min
 	python $(CONFIG_SCRIPT) config/CS3_export.json -b CS3_export

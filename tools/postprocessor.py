@@ -184,8 +184,9 @@ def break_up_sections(path, module_data, config):
   sections = module_data['sections']
   module_map = config['module_map']
   course_id = config.course_id
-  item_url = config.LMS_url+"/courses/{course_id}/modules/items/{module_item_id}"
-  assignment_url = config.LMS_url+"/courses/{course_id}/assignments/{assignment_id}?module_item_id={module_item_id}"
+  if bool(module_map):
+    item_url = config.LMS_url+"/courses/{course_id}/modules/items/{module_item_id}"
+    assignment_url = config.LMS_url+"/courses/{course_id}/assignments/{assignment_id}?module_item_id={module_item_id}"
 
   # Read contents of module HTML file
   try:
@@ -267,12 +268,13 @@ def break_up_sections(path, module_data, config):
         external = external[:-5]
 
         # Map it to the proper folder in canvas
-        if external in module_map:
-          module_obj = module_map[external]
-          if 'assignment_id' in module_map[external]:
-            external = assignment_url.format(course_id=course_id, module_item_id=module_obj.get('module_item_id'), assignment_id=module_obj.get('assignment_id'))
-          else:
-            external = item_url.format(course_id=course_id, module_item_id=module_obj.get('module_item_id'))
+        if bool(module_map):
+          if external in module_map:
+            module_obj = module_map[external]
+            if 'assignment_id' in module_map[external]:
+              external = assignment_url.format(course_id=course_id, module_item_id=module_obj.get('module_item_id'), assignment_id=module_obj.get('assignment_id'))
+            else:
+              external = item_url.format(course_id=course_id, module_item_id=module_obj.get('module_item_id'))
         # Force it to approach it from the top
         link['href'] = '#'.join((external,internal))
       # Do something with the actual href
@@ -450,8 +452,9 @@ def pretty_print_xml(data, file_path):
         resaved_file.write(xml.toprettyxml()[23:])
 
 
-def make_lti(config):
-  config['module_map'] = get_module_map(config)
+def make_lti(config, no_lms = False):
+  if not no_lms:
+    config['module_map'] = get_module_map(config)
   dest_dir = config.book_dir + config.rel_book_output_path
   # Iterate through all of the existing files
   ignore_files = ('Gradebook.html', 'search.html', 'conceptMap.html',
@@ -504,10 +507,10 @@ def get_module_map(config):
                     if section_obj != None and isinstance(section_obj, dict):
                         section_count += 1
                         if section_count == 1:
-                            module_map[module_name]['module_item_id'] = section_obj['lms_item_id']
-                            module_map[module_name]['assignment_id'] = section_obj['lms_assignment_id']
+                            module_map[module_name]['module_item_id'] = section_obj['lms_item_id'] if section_obj['lms_item_id'] else None
+                            module_map[module_name]['assignment_id'] = section_obj['lms_assignment_id'] if section_obj['lms_assignment_id'] else None
             else:
-                module_map[module_name]['module_item_id'] = module_obj['lms_section_item_id']
+                module_map[module_name]['module_item_id'] = module_obj['lms_section_item_id'] if module_obj['lms_section_item_id'] else None
 
 
     return module_map
