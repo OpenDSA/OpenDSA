@@ -1,17 +1,15 @@
 {
   "build_dir": "Books",
   "code_dir": "SourceCode/",
-  "code_lang": {
-    "Java_Generic": { "ext":["java"], "label":"Java (Generic)","lang":"java"}
-  },
+  "code_lang": {},
   "tabbed_codeinc": false,
   "lang": "en",
   "build_JSAV": false,
   "build_cmap": false,
-  "allow_anonymous_credit": true,
   "suppress_todo": true,
-  "tag": "CS2",
   "assumes": "ADT; relations",
+  "dispModComp": true,
+  "tag": "CS2",
   "chapters": {
     "Preface": {
       "Intro": {

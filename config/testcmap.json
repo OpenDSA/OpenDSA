@@ -19,7 +19,6 @@
   },
   "lang": "en",
   "build_JSAV": false,
-  "allow_anonymous_credit": true,
   "suppress_todo": false,
   "build_cmap": true,
   "glob_exer_options": {

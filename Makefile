@@ -90,156 +90,35 @@ jsonlint:
 min: nomin
 #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
+Plain: EverythingPlain CS2Plain CS3Plain PLPlain CS3nodesPlain
+
+EverythingPlain: min
+	python $(CONFIG_SCRIPT) config/Everything.json --no-lms
+
+CS2Plain: min
+	python $(CONFIG_SCRIPT) config/CS2.json --no-lms
+
+CS3Plain: min
+	python $(CONFIG_SCRIPT) config/CS3.json --no-lms
+
+PLPlain: min
+	python $(CONFIG_SCRIPT) config/PL.json --no-lms
+
+CS3notesPlain: min
+	python $(CONFIG_SCRIPT) config/CS3notes.json --no-lms
+
+testcmapPlain: min
+	python $(CONFIG_SCRIPT) config/testcmap.json --no-lms
+
+
 testLTI: min
 	python $(CONFIG_SCRIPT) config/testLTI.json -c config/testLTI_LMSconf.json
 	# python $(CONFIG_SCRIPT) config/testLTI.json -c config/testLTI_LMSconf.json -o True
 	# python $(CONFIG_SCRIPT) config/testLTI.json -c config/testLTI_LMSconf_local.json
 	# python $(CONFIG_SCRIPT) config/testLTI.json -c config/testLTI_LMSconf_local.json -o True
 
-S16: ECE252 Indiain CSCI204 CSE017 CPSC270 CS316 CS3in CS2114 CSCI115
-
-Test: min
-	python $(CONFIG_SCRIPT) config/Test.json -c config/Test_LMSconf.json
-
-Testvt: min
-	python $(CONFIG_SCRIPT) config/Test.json -c config/Testvt_LMSconf.json -b Testvt
-
-Testin: min
-	python $(CONFIG_SCRIPT) config/Test.json -c config/Testin_LMSconf.json -b Testin
-
-testcmap: min
-	python $(CONFIG_SCRIPT) config/testcmap.json -b testcmap
-
-testcmapin: min
-	python $(CONFIG_SCRIPT) config/testcmap.json -c config/testcmapin_LMSconf.json -b testcmapin
-
-RecurTutor: min
-	python $(CONFIG_SCRIPT) config/RecurTutor.json -b RecurTutor
-
-RecurTutorvt: min
-	python $(CONFIG_SCRIPT) config/RecurTutor.json -c config/RecurTutorvt_LMSconf.json -b RecurTutorvt
-
-RecurTutorin: min
-	python $(CONFIG_SCRIPT) config/RecurTutor.json -c config/RecurTutorin_LMSconf.json -b RecurTutorin
-
-Everything: min
-	python $(CONFIG_SCRIPT) config/Everything.json
-
-Everythingin: min
-	python $(CONFIG_SCRIPT) config/Everything.json -c config/Everythingin_LMSconf.json -b Everythingin
-
-Everythingvtt: min
-	python $(CONFIG_SCRIPT) config/Everything.json -c config/Everythingvtt_LMSconf.json -b Everythingvtt
-
-CS2: min
-	python $(CONFIG_SCRIPT) config/CS2.json
-
-CS2114: min
-	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12506_LMSconf.json -b CS2114_12506
-	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12507_LMSconf.json -b CS2114_12507
-	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12508_LMSconf.json -b CS2114_12508
-	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12509_LMSconf.json -b CS2114_12509
-	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12510_LMSconf.json -b CS2114_12510
-	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12511_LMSconf.json -b CS2114_12511
-	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12512_LMSconf.json -b CS2114_12512
-	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_12513_LMSconf.json -b CS2114_12513
-	python $(CONFIG_SCRIPT) config/CS2114.json -c config/CS2114_20419_LMSconf.json -b CS2114_20419
-
-CS2in: min
-	python $(CONFIG_SCRIPT) config/CS2.json -c config/CS2in_LMSconf.json -b CS2in
-
-CSE017: min
-	python $(CONFIG_SCRIPT) config/CSE017.json -c config/CSE017in_LMSconf.json -b CSE017S16
-
-SIGCSE: min
-	python $(CONFIG_SCRIPT) config/SIGCSEDemo.json -c config/SIGCSEDemo_LMSconf.json -b SIGCSE
-
-CS3: min
-	python $(CONFIG_SCRIPT) config/CS3.json --no-lms
-
 CS3_export: min
 	python $(CONFIG_SCRIPT) config/CS3_export.json -b CS3_export
-
-CS3vt: min
-	python $(CONFIG_SCRIPT) config/CS3.json -c config/CS3vt_LMSconf.json -b CS3vt
-
-CS3in: min
-	python $(CONFIG_SCRIPT) config/CS3.json -c config/CS3in_LMSconf.json -b CS3in
-
-CS3114: CS3114am CS3114pm
-
-CS3114test: min
-	python $(CONFIG_SCRIPT) config/CS3114.json -c config/CS3114vttest_LMSconf.json -b CS3114S16test
-
-CS3114testupdate: min
-	python $(CONFIG_SCRIPT) config/CS3114.json -c config/CS3114vttest_LMSconf.json -b CS3114S16test -o True
-
-CS3114notestest: min
-	python $(CONFIG_SCRIPT) config/CS3114notes.json -c config/CS3114notes_LMSconf.json -b CS3114notestest
-
-CS3114am: min
-	python $(CONFIG_SCRIPT) config/CS3114.json -c config/CS3114vtam_LMSconf.json -b CS3114S16am
-
-CS3114pm: min
-	python $(CONFIG_SCRIPT) config/CS3114.json -c config/CS3114vtpm_LMSconf.json -b CS3114S16pm
-
-CS240: min
-	python $(CONFIG_SCRIPT) config/CS240.json -c config/CS240_LMSconf.json -b CS240
-
-CISC-187in: min
-	python $(CONFIG_SCRIPT) config/CISC-187.json -c config/CISC-187in_LMSconf.json -b CISC-187in
-
-CS316: min
-	python $(CONFIG_SCRIPT) config/CS3.json -c config/CS316in_LMSconf.json -b CS316S16
-
-CPSC270: min
-	python $(CONFIG_SCRIPT) config/CS3.json -c config/CPSC270in_LMSconf.json -b CPSC270S16
-
-CSCI115: min
-	python $(CONFIG_SCRIPT) config/CSCI115.json -c config/CSCI115in_LMSconf.json -b CSCI115S16
-
-CSCI204: min
-	python $(CONFIG_SCRIPT) config/CSCI204.json -c config/CSCI204in_LMSconf.json -b CSCI204S16
-
-ECE252: min
-	python $(CONFIG_SCRIPT) config/ECE252.json -c config/ECE252in_LMSconf.json -b ECE252S16
-
-India: min
-	python $(CONFIG_SCRIPT) config/DS2.json
-
-Indiain: min
-	python $(CONFIG_SCRIPT) config/DS2.json -c config/DS2in_LMSconf.json -b DS2in
-
-Algorithms: min
-	python $(CONFIG_SCRIPT) config/Algorithms.json $(opts)
-
-AlgorithmsLMS: min
-	python $(CONFIG_SCRIPT) config/Algorithms.json -c True
-
-PL: min
-	python $(CONFIG_SCRIPT) config/PLtest.json -o True -b PL
-
-PL2: min
-	python $(CONFIG_SCRIPT) config/PL2.json -o True
-
-PLin: min
-	python $(CONFIG_SCRIPT) config/PL.json -c config/PLin_LMSconf.json -b PLin
-
-PL2vt: min
-	python $(CONFIG_SCRIPT) config/PL2.json -c config/PL2vt_LMSconf.json -b PL2vt
-
-PL2in: min
-	python $(CONFIG_SCRIPT) config/PL2.json -c config/PL2in_LMSconf.json -b PL2in
-
-PLtest: min
-	python $(CONFIG_SCRIPT) config/PLtest.json -c config/PLtest_LMSconf.json -b PLtest
-
-CS3notes: min
-	python $(CONFIG_SCRIPT) config/CS3notes.json -c config/CS3notes_LMSconf.json -b CS3notes
-
-CS3114notes: min
-	python $(CONFIG_SCRIPT) config/CS3notes.json -c config/CS3114notes_LMSconf.json -b CS3114notes
-
 
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
