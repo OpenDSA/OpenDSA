@@ -309,7 +309,7 @@ System.out.println("Method Name,  Array Type, Array Size,Data Distribution");
 testsortallint("bubblesortcheck", testsize);
 testsortallint("bubblesortcheck2", testsize);
 testsortallint("bubblecheckswapInt", testsize);
-testsortallint("unwikipedia", testsize);
+/*testsortallint("unwikipedia", testsize);
 testsortallint("wikipedia2", testsize);
 testsortallint("bubblesortInt", testsize);
 
@@ -327,7 +327,7 @@ testsortallDouble("bubblesortcheck2Double",testsize);
 testsortallDouble("bubblecheckswapDouble",testsize);
 testsortallDouble("unwikipediaDouble",testsize);
 testsortallDouble("wikipedia2Double",testsize);
-testsortallDouble("bubblesortDouble",testsize);
+testsortallDouble("bubblesortDouble",testsize);*/
 
 }
 

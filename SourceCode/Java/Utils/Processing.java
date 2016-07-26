@@ -5,5 +5,5 @@ static public void println(String s) {
 }
 
 static public long millis() {
-  return System.nanoTime();
+  return System.currentTimeMillis();
 }
