@@ -28,7 +28,7 @@ return;
 
 //pick the pivot
 int middle = low + (high - low) / 2;
-Integer pivot = arr[low];
+Integer pivot = arr[middle];
 
 //make left < pivot and right > pivot
 int i = low, j = high;
@@ -152,18 +152,34 @@ quickSortDouble(arr, i, high);
 
 // -------------- Driver function. Invoke all of the sorts to be tested -----------------
 
-static void sorttime() {
-int testsize = TESTSIZE; // Put this here so that we can easily control the size for debugging
+static void sorttime(String arraySize,String dataType) {
+Integer temporaryValue = Integer.parseInt(arraySize);
+int testsize = temporaryValue.intValue(); // Put this here so that we can easily control the size for debugging
+
+
 
 //Quick sort
 System.out.println("Quick Sort");
 System.out.println("Method Name,  Array Type, Array Size,Data Distribution");
 
+if(dataType.equals("int"))
+{
 testsortallint("QuickSort", testsize);
 
+}
+else if(dataType.equals("Integer"))
+{
 testsortallInteger("QuickSortInteger",testsize);
 
+}
+else if(dataType.equals("double"))
+{
 testsortallDouble("QuickSortDouble",testsize);
+
+}
+
+
+
 
 
 }

@@ -61,18 +61,28 @@ static void inssort2Double(double[] A, int startpos, int length) {
 
 // -------------- Driver function. Invoke all of the sorts to be tested -----------------
 
-static void sorttime() {
-  int testsize = TESTSIZE; // Put this here so that we can easily control the size for debugging
+static void sorttime(String arraySize,String dataType) {
+Integer temporaryValue = Integer.parseInt(arraySize);
+int testsize = temporaryValue.intValue(); // Put this here so that we can easily control the size for debugging
+
 
   System.out.println("Insertion Sort");
   System.out.println("Method Name,  Array Type, Array Size,Data Distribution");
 
   // inssort
+if(dataType.equals("int"))
+{
   testsortallint("inssort", testsize);
   testsortallint("inssort2", testsize);
+}
+else if(dataType.equals("Integer"))
+{
   testsortallInteger("inssortInteger",testsize);
   testsortallInteger("inssort2Integer",testsize);
+}
+else if(dataType.equals("double"))
+{
   testsortallDouble("inssortDouble",testsize);
   testsortallDouble("inssort2Double",testsize);
-
+}
 }

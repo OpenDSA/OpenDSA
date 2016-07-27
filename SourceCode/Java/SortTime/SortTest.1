@@ -40,7 +40,7 @@ static long totaltime;
 // For full timing tests, this should be 1,000,000.
 // But for debugging purposes, might want to make it shorter to speed
 // things up.
-final static int TESTSIZE = 100000;
+static int TESTSIZE = 100000;
 
 
 // ====================================================================
@@ -218,7 +218,7 @@ static int[] int1000000SlightlyDis = new int[TESTSIZE];
 
 public static void main(String[]args){
 
-	sorttime(); // This function is defined inside the specific
+	sorttime(args[0],args[1]); // This function is defined inside the specific
                     // sorting code
 }
 
@@ -899,7 +899,7 @@ static void setupint() {
 
 static void testsortallDouble(String name, int testsize) {
   int length;
-  if (testsize >= 10) {
+  if (testsize == 10) {
     length = 10;
     testsortDouble(name, testsize, dsize10, length,"Random Distribution");
     testsortDouble(name, testsize, dsize10Asc, length,"Ascending Order");
@@ -910,7 +910,7 @@ static void testsortallDouble(String name, int testsize) {
     testsortDouble(name, testsize, dsize10ManyDup, length,"Many Duplicates");
     testsortDouble(name, testsize, dsize10SlightlyDis, length,"Slightly Distributed");
   }
-  if (testsize >= 100) {
+  if (testsize == 100) {
     length = 100;
     testsortDouble(name, testsize, dsize100, length,"Random Distribution");
     testsortDouble(name, testsize, dsize100Asc, length,"Ascending Order");
@@ -921,7 +921,7 @@ static void testsortallDouble(String name, int testsize) {
     testsortDouble(name, testsize, dsize100ManyDup, length,"Many Duplicates");
     testsortDouble(name, testsize, dsize100SlightlyDis, length,"Slightly Distributed");
   }
-  if (testsize >= 1000) {
+  if (testsize == 1000) {
     length = 1000;
     testsortDouble(name, testsize, dsize1000, length,"Random Distribution");
     testsortDouble(name, testsize, dsize1000Asc, length,"Ascending Order");
@@ -932,7 +932,7 @@ static void testsortallDouble(String name, int testsize) {
     testsortDouble(name, testsize, dsize1000ManyDup, length,"Many Duplicates");
     testsortDouble(name, testsize, dsize1000SlightlyDis, length,"Slightly Distributed");
   }
-  if (testsize >= 10000) {
+  if (testsize == 10000) {
     length = 10000;
     testsortDouble(name, testsize, dsize10000, length,"Random Distribution");
     testsortDouble(name, testsize, dsize10000Asc, length,"Ascending Order");
@@ -943,7 +943,7 @@ static void testsortallDouble(String name, int testsize) {
     testsortDouble(name, testsize, dsize10000ManyDup, length,"Many Duplicates");
     testsortDouble(name, testsize, dsize10000SlightlyDis, length,"Slightly Distributed");
   }
-  if (testsize >= 100000) {
+  if (testsize == 100000) {
     length = 100000;
     testsortDouble(name, testsize, dsize100000, length,"Random Distribution");
     testsortDouble(name, testsize, dsize100000Asc, length,"Ascending Order");
@@ -954,7 +954,7 @@ static void testsortallDouble(String name, int testsize) {
     testsortDouble(name, testsize, dsize100000ManyDup, length,"Many Duplicates");
     testsortDouble(name, testsize, dsize100000SlightlyDis, length,"Slightly Distributed");
   }
-  if (testsize >= 1000000) {
+  if (testsize == 1000000) {
     length = 1000000;
     testsortDouble(name, testsize, dsize1000000, length,"Random Distribution");
     testsortDouble(name, testsize, dsize1000000Asc, length,"Ascending Order");
@@ -970,7 +970,7 @@ static void testsortallDouble(String name, int testsize) {
 
 static void testsortallInteger(String name, int testsize) {
   int length;
-  if (testsize >= 10) {
+  if (testsize == 10) {
     length = 10;
     testsortInteger(name, testsize, size10, length,"Random Distribution");
     testsortInteger(name, testsize, size10Asc, length,"Ascending Order");
@@ -981,7 +981,7 @@ static void testsortallInteger(String name, int testsize) {
     testsortInteger(name, testsize, size10ManyDup, length,"Many Duplicates");
     testsortInteger(name, testsize, size10SlightlyDis, length,"Slightly Distributed");
   }
-  if (testsize >= 100) {
+  if (testsize == 100) {
     length = 100;
     testsortInteger(name, testsize, size100, length,"Random Distribution");
     testsortInteger(name, testsize, size100Asc, length,"Ascending Order");
@@ -992,7 +992,7 @@ static void testsortallInteger(String name, int testsize) {
     testsortInteger(name, testsize, size100ManyDup, length,"Many Duplicates");
     testsortInteger(name, testsize, size100SlightlyDis, length,"Slightly Distributed");
   }
-  if (testsize >= 1000) {
+  if (testsize == 1000) {
     length = 1000;
     testsortInteger(name, testsize, size1000, length,"Random Distribution");
     testsortInteger(name, testsize, size1000Asc, length,"Ascending Order");
@@ -1003,7 +1003,7 @@ static void testsortallInteger(String name, int testsize) {
     testsortInteger(name, testsize, size1000ManyDup, length,"Many Duplicates");
     testsortInteger(name, testsize, size1000SlightlyDis, length,"Slightly Distributed");
   }
-  if (testsize >= 10000) {
+  if (testsize == 10000) {
     length = 10000;
     testsortInteger(name, testsize, size10000, length,"Random Distribution");
     testsortInteger(name, testsize, size10000Asc, length,"Ascending Order");
@@ -1014,7 +1014,7 @@ static void testsortallInteger(String name, int testsize) {
     testsortInteger(name, testsize, size10000ManyDup, length,"Many Duplicates");
     testsortInteger(name, testsize, size10000SlightlyDis, length,"Slightly Distributed");
   }
-  if (testsize >= 100000) {
+  if (testsize == 100000) {
     length = 100000;
     testsortInteger(name, testsize, size100000, length,"Random Distribution");
     testsortInteger(name, testsize, size100000Asc, length,"Ascending Order");
@@ -1025,7 +1025,7 @@ static void testsortallInteger(String name, int testsize) {
     testsortInteger(name, testsize, size100000ManyDup, length,"Many Duplicates");
     testsortInteger(name, testsize, size100000SlightlyDis, length,"Slightly Distributed");
   }
-  if (testsize >= 1000000) {
+  if (testsize == 1000000) {
     length = 1000000;
     testsortInteger(name, testsize, size1000000, length,"Random Distribution");
     testsortInteger(name, testsize, size1000000Asc, length,"Ascending Order");
@@ -1040,7 +1040,7 @@ static void testsortallInteger(String name, int testsize) {
 
 static void testsortallint(String name, int testsize) {
   int length;
-  if (testsize >= 10) {
+  if (testsize == 10) {
     length = 10;
     testsortint(name, testsize, int10, length,"Random Distribution");
     testsortint(name, testsize, int10Asc, length,"Ascending Order");
@@ -1051,7 +1051,7 @@ static void testsortallint(String name, int testsize) {
     testsortint(name, testsize, int10ManyDup, length,"Many Duplicates");
     testsortint(name, testsize, int10SlightlyDis, length,"Slightly Distributed");
   }
-  if (testsize >= 100) {
+  if (testsize == 100) {
     length = 100;
     testsortint(name, testsize, int100, length,"Random Distribution");
     testsortint(name, testsize, int100Asc, length,"Ascending Order");
@@ -1062,7 +1062,7 @@ static void testsortallint(String name, int testsize) {
     testsortint(name, testsize, int100ManyDup, length,"Many Duplicates");
     testsortint(name, testsize, int100SlightlyDis, length,"Slightly Distributed");
   }
-  if (testsize >= 1000) {
+  if (testsize == 1000) {
     length = 1000;
     testsortint(name, testsize, int1000, length,"Random Distribution");
     testsortint(name, testsize, int1000Asc, length,"Ascending Order");
@@ -1073,7 +1073,7 @@ static void testsortallint(String name, int testsize) {
     testsortint(name, testsize, int1000ManyDup, length,"Many Duplicates");
     testsortint(name, testsize, int1000SlightlyDis, length,"Slightly Distributed");
   }
-  if (testsize >= 10000) {
+  if (testsize == 10000) {
     length = 10000;
     testsortint(name, testsize, int10000, length,"Random Distribution");
     testsortint(name, testsize, int10000Asc, length,"Ascending Order");
@@ -1084,7 +1084,7 @@ static void testsortallint(String name, int testsize) {
     testsortint(name, testsize, int10000ManyDup, length,"Many Duplicates");
     testsortint(name, testsize, int10000SlightlyDis, length,"Slightly Distributed");
   }
-  if (testsize >= 100000) {
+  if (testsize == 100000) {
     length = 100000;
     testsortint(name, testsize, int100000, length,"Random Distribution");
     testsortint(name, testsize, int100000Asc, length,"Ascending Order");
@@ -1095,7 +1095,7 @@ static void testsortallint(String name, int testsize) {
     testsortint(name, testsize, int100000ManyDup, length,"Many Duplicates");
     testsortint(name, testsize, int100000SlightlyDis, length,"Slightly Distributed");
   }
-  if (testsize >= 1000000) {
+  if (testsize == 1000000) {
     length = 1000000;
     testsortint(name, testsize, int1000000, length,"Random Distribution");
     testsortint(name, testsize, int1000000Asc, length,"Ascending Order");
@@ -1115,7 +1115,7 @@ static void testsortDouble(String methodName, int testsize, double[] A, int leng
 
   try {
     int numruns;
-    for(numruns = 0; numruns < 20; numruns++) {
+    for(numruns = 0; numruns < 9; numruns++) {
       setupDouble();
       double [] array = new double[TESTSIZE];
       SortTest s = new SortTest();
@@ -1135,9 +1135,12 @@ static void testsortDouble(String methodName, int testsize, double[] A, int leng
         method.invoke(s, arguments);
       }
       time2 = millis();
-      totaltime = time2 - time1;
-      System.out.println(totaltime);
+      if(numruns == 4){
+     	 totaltime = time2 - time1;
+    	 System.out.println(totaltime);
+      }
     }
+
   }
   catch(Exception ex){
     ex.printStackTrace();
@@ -1152,7 +1155,7 @@ static void testsortInteger(String methodName, int testsize, Integer[] A, int le
 
   try {
     int numruns;
-    for(numruns = 0; numruns < 20; numruns++) {
+    for(numruns = 0; numruns < 9; numruns++) {
       setupInteger();
       Integer [] array = new Integer[TESTSIZE];
       SortTest s = new SortTest();
@@ -1172,8 +1175,10 @@ static void testsortInteger(String methodName, int testsize, Integer[] A, int le
         method.invoke(s, arguments);
       }
       time2 = millis();
-      totaltime = time2 - time1;
-      System.out.println(totaltime);
+      if(numruns == 4){
+     	 totaltime = time2 - time1;
+    	 System.out.println(totaltime);
+      }
     }
   }
   catch(Exception ex){
@@ -1187,7 +1192,7 @@ static void testsortint(String methodName, int testsize, int[] A, int length, St
   System.out.println();
   try {
     int numruns;
-    for(numruns = 0; numruns < 20; numruns++) {
+    for(numruns = 0; numruns < 9; numruns++) {
       setupint();
       int [] array = new int[TESTSIZE];
       SortTest s = new SortTest();
@@ -1207,8 +1212,10 @@ static void testsortint(String methodName, int testsize, int[] A, int length, St
         method.invoke(s, arguments);
       }
       time2 = millis();
-      totaltime = time2 - time1;
-      System.out.println(totaltime);
+      if(numruns == 4){
+     	 totaltime = time2 - time1;
+    	 System.out.println(totaltime);
+      }
     }
   }
   catch(Exception ex){

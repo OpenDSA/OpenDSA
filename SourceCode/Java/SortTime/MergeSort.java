@@ -135,16 +135,31 @@ a[rightEnd] = tmp[rightEnd];
 
 // -------------- Driver function. Invoke all of the sorts to be tested -----------------
 
-static void sorttime() {
-int testsize = TESTSIZE; // Put this here so that we can easily control the size for debugging
+
+static void sorttime(String arraySize,String dataType) {
+Integer temporaryValue = Integer.parseInt(arraySize);
+int testsize = temporaryValue.intValue(); // Put this here so that we can easily control the size for debugging
+
+
 
 //merge sort
 System.out.println("Merge Sort");
 System.out.println("Method Name,  Array Type, Array Size,Data Distribution");
 
+if(dataType.equals("int"))
+{
 testsortallint("mergeSort", testsize);
+}
+else if(dataType.equals("Integer"))
+{
 testsortallInteger("mergeSortInteger",testsize);
+
+}
+else if(dataType.equals("double"))
+{
 testsortallDouble("mergeSortDouble",testsize);
+
+}
 
 
 }

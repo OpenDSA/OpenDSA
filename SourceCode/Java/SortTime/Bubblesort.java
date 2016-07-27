@@ -299,35 +299,43 @@ swapDouble(A, j-1, j);
 
 // -------------- Driver function. Invoke all of the sorts to be tested -----------------
 
-static void sorttime() {
-int testsize = TESTSIZE; // Put this here so that we can easily control the size for debugging
+static void sorttime(String arraySize,String dataType) {
+Integer temporaryValue = Integer.parseInt(arraySize);
+int testsize = temporaryValue.intValue(); // Put this here so that we can easily control the size for debugging
 
 //bubble sort
 System.out.println("Bubble Sort");
 System.out.println("Method Name,  Array Type, Array Size,Data Distribution");
 
-testsortallint("bubblesortcheck", testsize);
-testsortallint("bubblesortcheck2", testsize);
-testsortallint("bubblecheckswapInt", testsize);
-/*testsortallint("unwikipedia", testsize);
-testsortallint("wikipedia2", testsize);
-testsortallint("bubblesortInt", testsize);
+if(dataType.equals("int"))
+{
+    testsortallint("bubblesortcheck", testsize);
+    testsortallint("bubblesortcheck2", testsize);
+    testsortallint("bubblecheckswapInt", testsize);
+    testsortallint("unwikipedia", testsize);
+    testsortallint("wikipedia2", testsize);
+    testsortallint("bubblesortInt", testsize);
+}
 
+else if(dataType.equals("Integer"))
+{
+    testsortallInteger("bubblesortcheckInteger",testsize);
+    testsortallInteger("bubblesortcheck2Integer",testsize);
+    testsortallInteger("bubblecheckswap",testsize);
+    testsortallInteger("unwikipediaInteger",testsize);
+    testsortallInteger("wikipedia2Integer",testsize);
+    testsortallInteger("bubblesort",testsize);
+}
 
-testsortallInteger("bubblesortcheckInteger",testsize);
-testsortallInteger("bubblesortcheck2Integer",testsize);
-testsortallInteger("bubblecheckswap",testsize);
-testsortallInteger("unwikipediaInteger",testsize);
-testsortallInteger("wikipedia2Integer",testsize);
-testsortallInteger("bubblesort",testsize);
-
-
-testsortallDouble("bubblesortcheckDouble",testsize);
-testsortallDouble("bubblesortcheck2Double",testsize);
-testsortallDouble("bubblecheckswapDouble",testsize);
-testsortallDouble("unwikipediaDouble",testsize);
-testsortallDouble("wikipedia2Double",testsize);
-testsortallDouble("bubblesortDouble",testsize);*/
+else if(dataType.equals("double"))
+{
+    testsortallDouble("bubblesortcheckDouble",testsize);
+    testsortallDouble("bubblesortcheck2Double",testsize);
+    testsortallDouble("bubblecheckswapDouble",testsize);
+    testsortallDouble("unwikipediaDouble",testsize);
+    testsortallDouble("wikipedia2Double",testsize);
+    testsortallDouble("bubblesortDouble",testsize);
+}
 
 }
 

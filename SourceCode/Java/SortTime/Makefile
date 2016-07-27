@@ -36,7 +36,7 @@ build/BubblesortTest/success: build Bubblesort.java SortTest.1 SortTest.2 ../Uti
 	cp ../Utils/KVPair.java build/BubblesortTest
 	cd build/BubblesortTest; \
 	javac $(CFLAGS) SortTest.java; \
-	$(JAVA) $(RFLAGS) SortTest > Bubblesort.txt
+	$(JAVA) $(RFLAGS) SortTest 10000 int > Bubblesort.txt
 
 Mergesort: build/MergesortTest/success
 
