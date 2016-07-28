@@ -893,7 +893,6 @@ static void setupint() {
     someDuplicates(int1000000SomeDup,startpos,1000000);
     manyDuplicates(int1000000ManyDup,startpos,1000000);
     slightlyDisordered(int1000000SlightlyDis,startpos,1000000);
-
   }
 }
 
@@ -965,6 +964,7 @@ static void testsortallDouble(String name, int testsize) {
     testsortDouble(name, testsize, dsize1000000ManyDup, length,"Many Duplicates");
     testsortDouble(name, testsize, dsize1000000SlightlyDis, length,"Slightly Distributed");
   }
+  System.out.println();
 }
 
 
@@ -1036,6 +1036,7 @@ static void testsortallInteger(String name, int testsize) {
     testsortInteger(name, testsize, size1000000ManyDup, length,"Many Duplicates");
     testsortInteger(name, testsize, size1000000SlightlyDis, length,"Slightly Distributed");
   }
+  System.out.println();
 }
 
 static void testsortallint(String name, int testsize) {
@@ -1106,12 +1107,12 @@ static void testsortallint(String name, int testsize) {
     testsortint(name, testsize, int1000000ManyDup, length,"Many Duplicates");
     testsortint(name, testsize, int1000000SlightlyDis, length,"Slightly Distributed");
   }
+  System.out.println();
 }
 
 @SuppressWarnings("unchecked")
 static void testsortDouble(String methodName, int testsize, double[] A, int length, String dataDist) {
-  System.out.println(methodName + ",double, " + length + "," + dataDist + "," );
-  System.out.println();
+  System.out.print(methodName + ",double, " + length + "," + dataDist + "," );
 
   try {
     int numruns;
@@ -1150,8 +1151,7 @@ static void testsortDouble(String methodName, int testsize, double[] A, int leng
 
 @SuppressWarnings("unchecked")
 static void testsortInteger(String methodName, int testsize, Integer[] A, int length, String dataDist) {
-  System.out.println(methodName + ",Integer, " + length + "," + dataDist + ","  );
-  System.out.println();
+  System.out.print(methodName + ",Integer, " + length + "," + dataDist + ","  );
 
   try {
     int numruns;
@@ -1188,8 +1188,7 @@ static void testsortInteger(String methodName, int testsize, Integer[] A, int le
 
 @SuppressWarnings("unchecked")
 static void testsortint(String methodName, int testsize, int[] A, int length, String dataDist) {
-  System.out.println(methodName + ",int, " + length + "," + dataDist + ","  );
-  System.out.println();
+  System.out.print(methodName + ",int, " + length + "," + dataDist + ","  );
   try {
     int numruns;
     for(numruns = 0; numruns < 9; numruns++) {

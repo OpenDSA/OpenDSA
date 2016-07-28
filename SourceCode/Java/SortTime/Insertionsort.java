@@ -67,7 +67,7 @@ int testsize = temporaryValue.intValue(); // Put this here so that we can easily
 
 
   System.out.println("Insertion Sort");
-  System.out.println("Method Name,  Array Type, Array Size,Data Distribution");
+  System.out.println("Method Name,  Array Type, Array Size,Data Distribution,Time");
 
   // inssort
 if(dataType.equals("int"))

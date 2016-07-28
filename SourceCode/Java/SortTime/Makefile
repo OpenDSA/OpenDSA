@@ -24,7 +24,7 @@ build/InssortTest/success: build Insertionsort.java SortTest.1 SortTest.2 ../Uti
 	cp ../Utils/KVPair.java build/InssortTest
 	cd build/InssortTest; \
 	javac $(CFLAGS) SortTest.java; \
-	$(JAVA) $(RFLAGS) SortTest $(arraySize) $(arrayType) > Inssort.txt
+	$(JAVA) $(RFLAGS) SortTest $(arraySize) $(arrayType) > Inssort.csv
 
 Bubblesort: build/BubblesortTest/success
 
@@ -36,7 +36,7 @@ build/BubblesortTest/success: build Bubblesort.java SortTest.1 SortTest.2 ../Uti
 	cp ../Utils/KVPair.java build/BubblesortTest
 	cd build/BubblesortTest; \
 	javac $(CFLAGS) SortTest.java; \
-	$(JAVA) $(RFLAGS) SortTest $(arraySize) $(arrayType) > Bubblesort.txt
+	$(JAVA) $(RFLAGS) SortTest $(arraySize) $(arrayType) > Bubblesort.csv
 
 Mergesort: build/MergesortTest/success
 
@@ -48,7 +48,7 @@ build/MergesortTest/success: build Mergesort.java SortTest.1 SortTest.2 ../Utils
 	cp ../Utils/KVPair.java build/MergesortTest
 	cd build/MergesortTest; \
 	javac $(CFLAGS) SortTest.java; \
-	$(JAVA) $(RFLAGS) SortTest $(arraySize) $(arrayType) > Mergesort.txt
+	$(JAVA) $(RFLAGS) SortTest $(arraySize) $(arrayType) > Mergesort.csv
 
 QuickSort: build/QuickSortTest/success
 
@@ -60,7 +60,7 @@ build/QuickSortTest/success: build QuickSort.java SortTest.1 SortTest.2 ../Utils
 	cp ../Utils/KVPair.java build/QuickSortTest
 	cd build/QuickSortTest; \
 	javac $(CFLAGS) SortTest.java; \
-	$(JAVA) $(RFLAGS) SortTest $(arraySize) $(arrayType) > Quicksort.txt
+	$(JAVA) $(RFLAGS) SortTest $(arraySize) $(arrayType) > Quicksort.csv
 
 QuickSort3: build/QuickSort3Test/success
 
@@ -72,7 +72,7 @@ build/QuickSort3Test/success: build QuickSort3.java SortTest.1 SortTest.2 ../Uti
 	cp ../Utils/KVPair.java build/QuickSort3Test
 	cd build/QuickSort3Test; \
 	javac $(CFLAGS) SortTest.java; \
-	$(JAVA) $(RFLAGS) SortTest $(arraySize) $(arrayType) > QuickSort3.txt
+	$(JAVA) $(RFLAGS) SortTest $(arraySize) $(arrayType) > QuickSort3.csv
 
 RadixSort: build/RadixSortTest/success
 
@@ -84,7 +84,7 @@ build/RadixSortTest/success: build RadixSort.java SortTest.1 SortTest.2 ../Utils
 	cp ../Utils/KVPair.java build/RadixSortTest
 	cd build/RadixSortTest; \
 	javac $(CFLAGS) SortTest.java; \
-	$(JAVA) $(RFLAGS) SortTest $(arraySize) $(arrayType) > RadixSort.txt
+	$(JAVA) $(RFLAGS) SortTest $(arraySize) $(arrayType) > RadixSort.csv
 
 SelectionSort: build/SelectionSortTest/success
 
@@ -96,4 +96,4 @@ build/SelectionSortTest/success: build SelectionSort.java SortTest.1 SortTest.2 
 	cp ../Utils/KVPair.java build/SelectionSortTest
 	cd build/SelectionSortTest; \
 	javac $(CFLAGS) SortTest.java; \
-	$(JAVA) $(RFLAGS) SortTest $(arraySize) $(arrayType) > SelectionSort.txt
+	$(JAVA) $(RFLAGS) SortTest $(arraySize) $(arrayType) > SelectionSort.csv
