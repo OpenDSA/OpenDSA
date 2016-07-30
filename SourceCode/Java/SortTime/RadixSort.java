@@ -102,8 +102,6 @@ for(int z=0;z<10;z++){
 bucket.clear();
 
 
-    radix(array,startpos,length);
-
 System.out.println();
 
 
@@ -120,7 +118,7 @@ int testsize = temporaryValue.intValue(); // Put this here so that we can easily
 
 //bubble sort
 System.out.println("Radix Sort");
-System.out.println("Method Name,  Array Type, Array Size,Data Distribution");
+System.out.println("Method Name,  Array Type, Array Size,Data Distribution,Time");
 
 if(dataType.equals("int"))
 {
@@ -130,6 +128,8 @@ testsortallint("callRadixMethodInt", testsize);
 else if(dataType.equals("Integer"))
 {
 testsortallInteger("funcRadixSortInteger",testsize);
+testsortallInteger("radix",testsize);
+
 
 }
 

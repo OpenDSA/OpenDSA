@@ -227,7 +227,7 @@ int testsize = temporaryValue.intValue(); // Put this here so that we can easily
 
 //Quick sort median of three
 System.out.println("Quick Sort Median of Three");
-System.out.println("Method Name,  Array Type, Array Size,Data Distribution");
+System.out.println("Method Name,  Array Type, Array Size,Data Distribution,Time");
 
 if(dataType.equals("int"))
 {

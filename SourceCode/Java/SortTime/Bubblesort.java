@@ -305,7 +305,7 @@ int testsize = temporaryValue.intValue(); // Put this here so that we can easily
 
 //bubble sort
 System.out.println("Bubble Sort");
-System.out.println("Method Name,  Array Type, Array Size,Data Distribution");
+System.out.println("Method Name,  Array Type, Array Size,Data Distribution,Time");
 
 if(dataType.equals("int"))
 {
