@@ -1,7 +1,6 @@
 {
   "build_dir": "Books",
   "code_dir": "SourceCode/",
-  "code_lang": {},
   "lang": "en",
   "build_JSAV": false,
   "suppress_todo": false,
@@ -638,8 +637,7 @@
               "threshold": 3.0,
               "showhide": "Show"
             }
-          }
-          ,
+          },
           "RP 16 Part 2": {
             "RP16part2": {
               "long_name": "RP set #16, question #2",
@@ -739,22 +737,22 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
-	"PL/RecursiveFunctions": {
-            "long_name": "Recursive Functions",
-            "sections": {
-		"RP 19 Part 1": {
-		    "RP19part1": {
-			"long_name": "RP set #19, question #1",
-			"required": true,
-			"points": 1.0,
-			"threshold": 3.0,
-			"showhide": "Show"
-		    }
-		}
-	    }
-	}
+      "PL/RecursiveFunctions": {
+        "long_name": "Recursive Functions",
+        "sections": {
+          "RP 19 Part 1": {
+            "RP19part1": {
+              "long_name": "RP set #19, question #1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 3.0,
+              "showhide": "Show"
+            }
+          }
+        }
+      }
     },
     "Interpreting the Functional Language SLang 1": {
       "PL/SLang1": {
@@ -788,7 +786,7 @@
               "showhide": "Show"
             }
           },
-            "RP 21 Part 2": {
+          "RP 21 Part 2": {
             "RP21part2": {
               "long_name": "RP set #21, question #2",
               "required": true,
@@ -797,7 +795,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/Environment": {
         "long_name": "Environment-based Model of Evaluation",
@@ -830,9 +828,9 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
-	"PL/SLang1Interpreter": {
+      "PL/SLang1Interpreter": {
         "long_name": "Interpreter Implementation",
         "sections": {
           "RP 22 Part 1": {
@@ -853,12 +851,12 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
-	"PL/SLang1InterpreterModifications": {
+      "PL/SLang1InterpreterModifications": {
         "long_name": "Interpreter Modifications",
         "sections": {
-          "Overview of Exercises" : {},
+          "Overview of Exercises": {},
           "RP 23 Part 1": {
             "RP23part1": {
               "long_name": "RP set #23, question #1",
@@ -895,7 +893,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/SLang1InterpreterReview": {
         "long_name": "Interpreter Review",
@@ -909,7 +907,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/SLang1withLetExpressions": {
         "long_name": "Let Expressions",
@@ -941,7 +939,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       }
     },
     "Interpreting the Imperative Language SLang 2": {
@@ -966,7 +964,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/SLang2TTK": {
         "long_name": "Tying The Knot",
@@ -980,7 +978,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/SLang2ParameterPassing": {
         "long_name": "Parameter-Passing Mechanisms",
@@ -1030,7 +1028,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/LazyLists": {
         "long_name": "Lazy Lists",
@@ -1071,7 +1069,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       }
     },
     "Interpreting the Object-Oriented Language SLang 3": {
@@ -1105,7 +1103,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/SLang3concreteSyntax": {
         "long_name": "Concrete Syntax of SLang 3",
@@ -1119,7 +1117,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/SLang3abstractSyntax": {
         "long_name": "Abstract Syntax of SLang 3",
@@ -1133,7 +1131,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/SLang3objects": {
         "long_name": "Object Representation in the Runtime System for SLang 3",
@@ -1147,7 +1145,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       },
       "PL/SLang3interpreter": {
         "long_name": "Implementation of the Interpreter for SLang 3",
@@ -1161,7 +1159,7 @@
               "showhide": "Show"
             }
           }
-	}
+        }
       }
     },
     "Appendices": {

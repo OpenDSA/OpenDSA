@@ -110,16 +110,6 @@ CS3notesPlain: min
 testcmapPlain: min
 	python $(CONFIG_SCRIPT) config/testcmap.json --no-lms
 
-
-testLTI: min
-	python $(CONFIG_SCRIPT) config/testLTI.json -c config/testLTI_LMSconf.json
-	# python $(CONFIG_SCRIPT) config/testLTI.json -c config/testLTI_LMSconf.json -o True
-	# python $(CONFIG_SCRIPT) config/testLTI.json -c config/testLTI_LMSconf_local.json
-	# python $(CONFIG_SCRIPT) config/testLTI.json -c config/testLTI_LMSconf_local.json -o True
-
-CS3_export: min
-	python $(CONFIG_SCRIPT) config/CS3_export.json -b CS3_export
-
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
 	@cp lib/odsaUtils.js lib/odsaUtils-min.js

@@ -1,37 +1,6 @@
 {
   "build_dir": "Books",
   "code_dir": "SourceCode/",
-  "code_lang": {
-    "Java": {
-      "ext": [
-        "java"
-      ],
-      "label": "Java",
-      "lang": "java"
-    },
-    "Processing": {
-      "ext": [
-        "pde"
-      ],
-      "label": "Processing",
-      "lang": "java"
-    },
-    "Java_Generic": {
-      "ext": [
-        "java"
-      ],
-      "label": "Java (Generic)",
-      "lang": "java"
-    },
-    "C++": {
-      "ext": [
-        "cpp",
-        "h"
-      ],
-      "label": "C++",
-      "lang": "C++"
-    }
-  },
   "lang": "en",
   "tabbed_codeinc": false,
   "build_JSAV": false,
@@ -46,67 +15,67 @@
     "CS3114 Course Notes": {
       "SlidesCanvas/Day1": {
         "long_name": "Week 1: Introduction",
-        "sections" : {}
+        "sections": {}
       },
       "SlidesCanvas/ProjManage": {
         "long_name": "Week 1: Project Management",
-        "sections" : {}
+        "sections": {}
       },
       "SlidesCanvas/SkipList": {
         "long_name": "Week 1: SkipLists",
-        "sections" : {}
+        "sections": {}
       },
       "SlidesCanvas/AlgAnal": {
         "long_name": "Week 2: Algorithm Analysis",
-        "sections" : {}
+        "sections": {}
       },
       "SlidesCanvas/Coding": {
         "long_name": "Week 2: Clean Code",
-        "sections" : {}
+        "sections": {}
       },
       "SlidesCanvas/Lists": {
         "long_name": "Week 3: Lists",
-        "sections" : {}
+        "sections": {}
       },
       "SlidesCanvas/Lists2": {
         "long_name": "Week 3: Lists2",
-        "sections" : {}
+        "sections": {}
       },
       "SlidesCanvas/Binary": {
         "long_name": "Week 4: Binary Trees Part 1",
-        "sections" : {}
+        "sections": {}
       },
       "SlidesCanvas/Binary2": {
         "long_name": "Week 4: Binary Trees Part 2",
-        "sections" : {}
+        "sections": {}
       },
       "SlidesCanvas/Binary3": {
         "long_name": "Week 5: Binary Trees Part 3",
-        "sections" : {}
+        "sections": {}
       },
       "SlidesCanvas/Heaps": {
         "long_name": "Week 5: Heaps",
-        "sections" : {}
+        "sections": {}
       },
       "SlidesCanvas/Sorting": {
         "long_name": "Week 6-7: Sorting",
-        "sections" : {}
+        "sections": {}
       },
       "SlidesCanvas/FileProc": {
         "long_name": "Week 8-9: File Processing and Buffer Pools",
-        "sections" : {}
+        "sections": {}
       },
       "SlidesCanvas/Hashing": {
         "long_name": "Week 10-11: Hashing",
-        "sections" : {}
+        "sections": {}
       },
       "SlidesCanvas/Indexing": {
         "long_name": "Week 12-13: Indexing",
-        "sections" : {}
+        "sections": {}
       },
       "SlidesCanvas/Graphs": {
         "long_name": "Week 12-13: Graphs",
-        "sections" : {}
+        "sections": {}
       }
     }
   }
