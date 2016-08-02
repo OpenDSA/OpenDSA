@@ -90,7 +90,7 @@ jsonlint:
 min: nomin
 #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
-Plain: EverythingPlain CS2Plain CS3Plain PLPlain CS3nodesPlain
+Plain: EverythingPlain CS2Plain CS3Plain PLPlain CS3notesPlain
 
 EverythingPlain: min
 	python $(CONFIG_SCRIPT) config/Everything.json --no-lms
