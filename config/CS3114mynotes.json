@@ -1,0 +1,183 @@
+{
+  "title": "CS3114 Fall Coursenotes",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "lang": "en",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Processing": {
+      "ext": [
+        "pde"
+      ],
+      "label": "Processing",
+      "lang": "java"
+    },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "tabbed_codeinc": false,
+  "module_origin": "http://lti.cs.vt.edu",
+  "exercise_server": "https://opendsa.cs.vt.edu/",
+  "logging_server": "https://opendsa.cs.vt.edu/",
+  "score_server": "https://opendsa.cs.vt.edu/",
+  "build_JSAV": false,
+  "allow_anonymous_credit": false,
+  "suppress_todo": false,
+  "chapters": {
+    "Weeks 1-3": {
+      "Slides/Day1": {
+        "long_name": "Introduction",
+        "exercises" : {
+          "ADTCON": {}
+        }
+      },
+      "Slides/ProjManage": {
+        "long_name": "Project Management",
+        "exercises" : {}
+      },
+      "Slides/SkipList": {
+        "long_name": "SkipLists",
+        "exercises" : {
+        }
+      },
+      "Slides/AlgAnal": {
+        "long_name": "Algorithm Analysis",
+        "exercises" : {
+          "ProblemAlgorithmCON": {
+            "long_name": "Problem, Algorithm, and Program definitions Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      },
+      "Slides/Coding": {
+        "long_name": "Clean Code",
+        "exercises" : {}
+      },
+      "Slides/Lists": {
+        "long_name": "Lists",
+        "exercises" : {}
+      },
+      "Slides/Lists2": {
+        "long_name": "Lists",
+        "exercises" : {}
+      }
+    },
+    "Weeks 4-5": {
+      "Slides/Binary": {
+        "long_name": "Binary Trees Part 1",
+        "exercises" : {}
+      },
+      "Slides/Binary2": {
+        "long_name": "Binary Trees Part 2",
+        "exercises" : {}
+      },
+      "Slides/Binary3": {
+        "long_name": "Binary Trees Part 3",
+        "exercises" : {}
+      },
+      "Slides/Heaps": {
+        "long_name": "Heaps and Priority Queues",
+        "exercises": {
+          "heapinsertCON": {
+            "long_name": "Heap insert Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "heapbuildCON": {
+            "long_name": "Heapbuild Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "heapbuildProofCON": {
+            "long_name": "Heap build analysis proof Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "BuildHeapVisualProof": {
+            "long_name": "Buildheap Visual Proof",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "heapmaxCON": {
+            "long_name": "Remove Max Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "heapremoveCON": {
+            "long_name": "Remove Any Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      }
+    },
+    "Week 6-7": {
+      "Slides/Sorting1": {
+        "long_name": "Sorting, Part 1",
+        "exercises" : {}
+      },
+      "Slides/Sorting2": {
+        "long_name": "Sorting, Part 2",
+        "exercises" : {}
+      }
+    },
+    "Week 8-9": {
+      "Slides/FileProc": {
+        "long_name": "File Processing and Buffer Pools",
+        "exercises" : {}
+      }
+    },
+    "Week 10-11": {
+      "Slides/Hashing": {
+        "long_name": "Hashing",
+        "exercises" : {}
+      },
+      "Slides/MemManage": {
+        "long_name": "Memory Management",
+        "exercises" : {}
+      },
+      "Slides/Interruptions": {
+        "long_name": "Memory cues and resumption strategies",
+        "exercises" : {}
+      }
+    },
+    "Week 12-14": {
+      "Slides/Indexing": {
+        "long_name": "Indexing",
+        "exercises" : {}
+      },
+      "Slides/Graphs": {
+        "long_name": "Graphs",
+        "exercises" : {}
+      }
+    }
+  }
+}

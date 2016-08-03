@@ -40,15 +40,12 @@ index_header = '''\
 
 '''
 
-
 todo_rst_template = '''\
 .. index:: ! todo
 
 TODO List
 =========
-
 '''
-
 makefile_template = '''\
 # Makefile for Sphinx documentation
 #
@@ -94,6 +91,8 @@ slides:
 	@SLIDES=yes \
 	$(SPHINXBUILD) -b slides source $(HTMLDIR)
 	rm html/_static/jquery.js html/_static/websupport.js
+	rm html/_static/styles.css
+	cp "%(odsa_dir)slib/styles.css" html/_static/
 	rm *.json
 	@echo
 	@echo "Build finished. The HTML pages are in $(HTMLDIR)."
@@ -319,6 +318,10 @@ html_context = {"script_files": [
                 "odsa_root_path": "%(eb2root)s",
                 %(text_translated)s}
 
+if on_slides: 
+   html_context["css_files"].append('%(eb2root)slib/ODSAcoursenotes.css');   
+   html_context["odsa_scripts"].append('%(eb2root)slib/ODSAcoursenotes.js');   
+				
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.

@@ -1,0 +1,9 @@
+.jsavmatrix .jsavvalue { /* Center linked list cell values vertically */
+  height: 30px;
+  width: 30px;
+}
+
+.jsavhorizontalarray .jsavnode {
+	min-width: 80px !important;
+  max-width: 80px !important;
+}

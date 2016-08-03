@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>FA Tester</title>
+			<link rel="stylesheet" href="../../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+			<link rel="stylesheet" href="../../../../lib/odsaAV-min.css" type="text/css" />
+			<link rel="stylesheet" href="../../../../lib/odsaStyle-min.css" type="text/css" />
+			<link rel="stylesheet" href="./css/customPrompt.css" type="text/css" />
+			<link rel="stylesheet" href="./css/FA.css" type="text/css" />
+			<link rel="stylesheet" href="./css/tester.css" type="text/css" />
+	</head>
+	<body>
+		<div id="container">
+		<h1 id="tester">Finite Automaton Tester</h1>
+		<h2>Questions: </h2>
+		<p id="exerciseLinks"></p>
+		<h2 id="question">Give an NFA or DFA that accepts the language: L(<span id="expression"></span>)</h2>
+		<h2 id="description"></h2>
+		<div id="dialogueoverlay"></div>
+  		<div id="dialoguebox">
+  		 	<div>
+    			<div id="dialogueboxhead"></div>
+      			<div id="dialogueboxbody"></div>
+      			<div id="dialogueboxfoot"></div>
+    		</div>
+  		</div>
+		<p align="center" class="arrayPlace"></p>
+		<button id="begin">Test</button>
+		<button id="saveButton">Save</button>
+		<input type="file" id="loadFile">
+		<div id="av">
+			<button id="undoButton">Undo</button>
+			<button id="redoButton">Redo</button>
+			<button id="cancelButton">Cancel</button>
+			<br>
+			<button id="nodeButton">Add Nodes</button>
+			<button id="edgeButton">Add Edges</button>
+			<button id="moveButton">Move Nodes</button>
+			<button id="editButton">Edit Nodes/Edges</button>
+			<button id="deleteButton">Delete Nodes/Edges</button>
+			<span id='mode'></span>
+      		<p class="jsavoutput jsavline"></p>
+		</div>
+		
+		<button id="layoutButton">Layout</button>
+		<div id='download'></div>
+		
+		<p id="percentage"></p>
+		<table id="testResults"></table>
+
+		<div id="rmenu"></div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
+		<script src="../../../../JSAV/lib/jquery.transit.js"></script>
+		<script src="../../../../JSAV/lib/raphael.js"></script>
+		<script src="../../../../JSAV/lib/dagre.min.js"></script>
+		<script src="../../../../JSAV/build/JSAV.js"></script>
+		<script src="../../../../lib/odsaUtils-min.js"></script>
+		<script src="../../../../lib/odsaAV-min.js"></script>
+		<script src="../fa/serializableGraph.js"></script>
+		<script src="../../resources/underscore-min.js"></script>
+		<script src="../fa/FA.js"></script>
+		<script src="./CustomPrompt.js"></script>
+		<script src="../fa/Commands.js"></script>
+		<script src="../fa/TraverseAccepter.js"></script>
+		<script src="../exerController/ExerciseController.js"></script>
+		<script src="./FAEditor.js"></script>
+
+   	</body>
+</html>

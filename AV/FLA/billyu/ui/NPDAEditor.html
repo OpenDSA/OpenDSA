@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="FAEditor">
+		<meta name="author" content="Bill Yu">
+
+		<title>NPDA Editor</title>
+    <link rel="stylesheet" href="../../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+    <link rel="stylesheet" href="../../../../lib/odsaAV-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../lib/odsaStyle-min.css" type="text/css" />
+    <link rel="stylesheet" href="./css/customPrompt.css" type="text/css" />
+    <link rel="stylesheet" href="./css/FA.css" type="text/css" />
+    <link rel="stylesheet" href="./css/tester.css" type="text/css" />
+		<link rel="stylesheet" href="./css/NPDAEditor.css" type="text/css" />
+  </head>
+
+  <body>
+    <div id="container">
+      <h1 id="editor">Non-deterministic Pushdown Automaton Editor</h1>
+			<div id="functionality">
+				<button id="saveButton">Save</button>
+				<input type="file" id="loadFile">
+				<br>
+				<button id="undoButton">Undo</button>
+				<button id="redoButton">Redo</button>
+				<button id="cancelButton">Cancel</button>
+				<br>
+				<button id="playButton">Traverse</button>
+				<button id="nodeButton">Add Nodes</button>
+				<button id="edgeButton">Add Edges</button>
+				<button id="moveButton">Move Nodes</button>
+				<button id="editButton">Edit Nodes/Edges</button>
+				<button id="deleteButton">Delete Nodes/Edges</button>
+				<div id='mode'></div>
+			</div>
+
+      <div id="av">
+				<a class="jsavsettings" href="#">Settings</a>
+				<div class="jsavcontrols"></div>
+
+				<div id="configurations">
+				</div>
+				<div style="display: none;" class="configuration">
+					<span id="currentState">q0</span>
+					<span id="readInput">aaabbb</span>
+					<span id="unreadInput">ccdd</span>
+					<span id="stack">Zabc</span>
+				</div>
+
+				<p class="jsavoutput jsavline"></p>
+				<div id="alphabets" align="center" style="font-size: 20px">&Sigma;: <span id='alphabet'></span><br>&Gamma;: <span id='stackalphabet'></span></div>
+      	<p align="center" class="arrayPlace"></p>
+      </div>
+
+			<div id="functionality">
+				<button type='button' id="layoutbutton">Layout</button>
+				<button type="button" id='testNDbutton'>Highlight Nondeterminism</button>
+				<button type='button' id='testlambdabutton'>Highlight &lambda;-Transitions</button>
+			</div>
+
+      <div id='download'></div>
+      <div id="rmenu"></div>
+			<div id="edge">
+				<table>
+					<tr>
+						<td>
+							<input type="text" id="input" onfocus='this.select();' value="&lambda;"/>
+						</td>
+						<td>
+							<input type="text" id="pop" onfocus='this.select();' value="&lambda;"/>
+						</td>
+						<td>
+							<input type="text" id="push" onfocus='this.select();' value="&lambda;"/>
+						</td>
+					</tr>
+				</table>
+			</div>
+
+			<div id="editEdge">
+				<table>
+					<tr>
+						<td>
+							<input type="text" id="input" onfocus='this.select();' value="&lambda;"/>
+						</td>
+						<td>
+							<input type="text" id="pop" onfocus='this.select();' value="&lambda;"/>
+						</td>
+						<td>
+							<input type="text" id="push" onfocus='this.select();' value="&lambda;"/>
+						</td>
+						<td>
+							<button id="deleteEdge">Delete</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+
+      <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+      <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+      <script src="../../../../JSAV/lib/jquery.transit.js"></script>
+      <script src="../../../../JSAV/lib/raphael.js"></script>
+      <script src="../../../../JSAV/lib/dagre.min.js"></script>
+      <script src="../../../../JSAV/build/JSAV.js"></script>
+      <script src="../../../../lib/odsaUtils-min.js"></script>
+      <script src="../../../../lib/odsaAV-min.js"></script>
+      <script src="../fa/serializableGraph.js"></script>
+      <script src="../../resources/underscore-min.js"></script>
+      <script src="../fa/FA.js"></script>
+			<script src="../fa/NPDA.js"></script>
+      <script src="./CustomPrompt.js"></script>
+      <script src="../fa/Commands.js"></script>
+      <script src="./NPDAEditor.js"></script>
+    </div>
+  </body>
+</html>

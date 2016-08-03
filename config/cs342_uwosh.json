@@ -1,0 +1,60 @@
+{
+    "title": "Example of Simple Book",
+    "build_dir": "Books",
+    "code_dir": "SourceCode/",
+    "code_lang": {
+    },
+    "lang": "en",
+    "module_origin": "http://csf11.acs.uwosh.edu",
+    "exercise_server": "https://opendsa.cs.vt.edu/",
+    "logging_server": "https://opendsa.cs.vt.edu/",
+    "score_server": "https://opendsa.cs.vt.edu/",
+    "build_JSAV": false,
+    "allow_anonymous_credit": true,
+    "suppress_todo": false,
+    "glob_exer_options": {
+	"JXOP-debug": "true"
+    },
+    "chapters": {
+	"Preface": {
+	    "Intro": {
+		"long_name": "How to Use this System",
+		"sections": {}
+	    }
+	},
+	"A Simple Example": {
+	    "Development/cs342_uwosh": {
+		"long_name": "Simple Example of Using a Slide Show in a Book Module",
+		"sections": {
+		    "A Khan Academy Exericse with JSAV object": {
+			"Cs342_uwosh_ex1": {
+			    "long_name": "KA Exercise Example with JSAV object",
+			    "required": true,
+			    "points": 1.0,
+			    "threshold": 3.0,
+			    "showhide": "Show"
+			}
+		    },
+		    "A Khan Academy Exericse with fill-in-the-blank question": {
+			"Cs342_uwosh_ex2": {
+			    "long_name": "KA Exercise Example with fill in the blank question",
+			    "required": true,
+			    "points": 1.0,
+			    "threshold": 3.0,
+			    "showhide": "Show"
+			}
+		    },
+		    "A Khan Academy Exericse with multiple-choice question": {
+			"Cs342_uwosh_ex3": {
+			    "long_name": "KA Exercise Example with MC question",
+			    "required": true,
+			    "points": 1.0,
+			    "threshold": 3.0,
+			    "showhide": "Show"
+			}
+		    }
+		}
+	    }
+	}
+    }
+}

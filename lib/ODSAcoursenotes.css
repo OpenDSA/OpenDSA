@@ -1,11 +1,17 @@
 .jsavoutput.jsavline{
   line-height: 1.2em !important;
   font-size: 15px !important;
+  font-family: "DejaVu Sans", Arial, Helvetica, sans-serif !important;
+  text-align: justify !important;
+  margin-bottom: 5px !important;
 }
-.jsavtree.jsavbinarytree{
-  width: 356px !important;
-  height: 248px !important;
-  left: 247px !important;
+.jsavlabel{
+  font-family: "DejaVu Sans", Arial, Helvetica, sans-serif !important;
+  color: black !important;
+}
+.jsavcontainer{
+  letter-spacing: 0px !important;
+  text-shadow: none !important;
 }
 .divdgm .jsavlabel{
   font-size: 15px !important;
@@ -13,6 +19,34 @@
 .highlight{
   font-size: 20px !important;
 }
+/*.jsavcode.jsavcenter{
+  width: 500px !important;
+}*/
+ul li::before {
+    content: none !important;
+    width: 0px;
+    margin-left: 0px !important;
+}
+.jsavcanvas{
+  /*min-height: 600px !important;*/
+  overflow-x: visible !important;
+}
+.hide{
+  display: none !important;
+}
+.jsavvaluelabel{
+  font-size: 15px !important;
+}
+/*.jsavlabel{
+  line-height: 1em !important;
+}*/
+.jsavarray{
+  font-size: 15px !important;
+}
+.jsavlist{
+  font-size: 15px !important; 
+}
 .MathJax, .MathJax_Display  {
   font-size: 40%  !important;
 }
+

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>DFA exercise Editor</title>
+		<link rel="stylesheet" href="./createDFAexercise.css" type="text/css" />
+	</head>
+	<body>
+		<div id="container">
+		<h1>DFA Exercise Generator</h1>
+		<input type="radio" name="mode" value="noGraph" checked>Expression Only
+		<input type="radio" name="mode" value="yesGraph">With Wrong Graph
+		<div class="dropdown">
+  		<button class="dropbtn">Hint</button>
+  		<div class="dropdown-content">
+				<p>LaTex supported for expressions.</p>
+			</div>
+		</div>	
+		<form name="exercises" action="" method="get">
+			<div id="problems">
+			<fieldset>
+				<legend>Problem 1</legend>
+
+				<input type="radio" name="show1" value="true" checked>
+				<span>Expression: </span>
+				<input type="text" name="expression">
+				<br>
+				<input type="radio" name="show1" value="false">
+				<span>Description: </span>
+				<input type="text" name="description">
+				<br>
+
+				<div class="testCases">
+					<div class="testCase">
+						<span>Test Case 1: </span>
+						<input type="radio" name="result1" value="true" checked> <span>Accept</span>
+						<input type="radio" name="result1" value="false"> <span>Reject</span>
+						<input type="text" name="testString">
+						<br>
+					</div>
+				</div>
+
+				<button type="button" id="addTestCase">Add another test case</button>
+				<button type="button" id="editGraph">Edit Graph</button>
+			</fieldset>
+			</div>
+		</form>
+		<button id="addExercise">Add another problem</button>
+		<button id="getjson">get JSON</button>
+		<p id="download"></p>
+		</div>
+		
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+		<script src="../../resources/underscore-min.js"></script>
+		<script src="./createDFAexercise.js"></script>
+ 	</body>
+</html>

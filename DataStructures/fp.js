@@ -328,6 +328,36 @@ var max = makeArithmeticOp( "max", Math.max);
     @throws Exception: Both arguments of min must be numbers.
  */
 var min = makeArithmeticOp( "min", Math.min);
+/** bitAnd takes in two numbers and returns the bitwise AND of their 2's
+    complement representation
+    @function 
+    @param n1 {number} - any finite number    
+    @param n2 {number} - any finite number
+    @alias module:fp.bitAnd
+    @return {number} the bitwise AND of the two inputs
+    @throws Exception: Both arguments of add must be numbers.
+ */
+var bitAnd = makeArithmeticOp( "bitAnd", function (a,b) { return a & b; } );
+/** bitOr takes in two numbers and returns the bitwise OR of their 2's
+    complement representation
+    @function 
+    @param n1 {number} - any finite number    
+    @param n2 {number} - any finite number
+    @alias module:fp.bitOr
+    @return {number} the bitwise OR of the two inputs
+    @throws Exception: Both arguments of add must be numbers.
+ */
+var bitOr = makeArithmeticOp( "bitOr", function (a,b) { return a | b; } );
+/** bitXor takes in two numbers and returns the bitwise XOR of their 2's
+    complement representation
+    @function 
+    @param n1 {number} - any finite number    
+    @param n2 {number} - any finite number
+    @alias module:fp.bitXor
+    @return {number} the bitwise XOR of the two inputs
+    @throws Exception: Both arguments of add must be numbers.
+ */
+var bitXor = makeArithmeticOp( "bitXor", function (a,b) { return a ^ b; } );
 /** compose takes in two functions of one argument f and g and 
     returns the function "f after g" that takes one argument and returns the
     result of applying f to the result of applying g to the argument
@@ -528,6 +558,9 @@ exports.div = div;
 exports.pow = pow;
 exports.max = max;
 exports.min = min;
+exports.bitAnd = bitAnd;
+exports.bitOr = bitOr;
+exports.bitXor = bitXor;
 exports.compose = compose;
 exports.map = map;
 exports.filter = filter;

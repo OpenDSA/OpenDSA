@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Grammar Editor</title>
+	<link rel="stylesheet" href="../../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+	<link rel="stylesheet" href="../../../../lib/odsaAV-min.css" type="text/css" />
+	<link rel="stylesheet" href="../../../../lib/odsaStyle-min.css" type="text/css" />
+	<link rel="stylesheet" href="./css/customPrompt.css" type="text/css" />
+	<link rel="stylesheet" href="./css/FA.css" type="text/css" />
+  <link rel="stylesheet" href="./css/grammar.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+	<link rel="stylesheet" href="./css/parsing.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+  <link rel="stylesheet" href="./css/grammarEditor.css" type="text/css" />
+</head>
+
+<body>
+  <div id="container">
+    <h1 id="editor">Grammar Editor</h1>
+		<div align="left">
+			<button type="button" id="multipleButton">Multiple</button>
+			<button type="button" id="addExerciseButton">Add</button>
+		</div>
+		<h2 class="multiple">Grammars</h2>
+		<p class="multiple" id="exerciseLinks"></p>
+    <div id="buttons" align="center">
+      <span id='mode'></span><br>
+      <button type="button" id="editbutton">Edit</button>
+      <button type="button" id="deletebutton">Delete</button>
+      <button type="button" class="function" id="bfpbutton">Brute Force Parse</button>
+      <button type="button" class="function" id="llbutton">LL(1) Parse</button>
+      <button type="button" class="function" id="slrbutton">SLR(1) Parse</button>
+      <button type="button" class="parsingbutton" id="followbutton">Next</button>
+      <button type="button" class="parsingbutton" id="slrdfabutton">Next</button>
+      <button type="button" class="parsingbutton" id="parsetablebutton">Next</button>
+      <button type="button" class="parsingbutton" id="parsereadybutton">Next</button>
+      <button type="button" class="parsingbutton" id="parsebutton">Parse</button>
+      <button type="button" id="backbutton">Back</button><br>
+      <button type="button" class="function" id="convertRLGbutton">Convert RLG to FA</button>
+      <button type="button" class="function" id="convertCFGbutton">Convert CFG to PDA (LL)</button>
+      <button type="button" class="function" id="transformbutton">Transform Grammar</button>
+      <div id="dfabuttons">
+        <button type="button" id="finalbutton">Make final</button>
+        <button type="button" id="gotobutton">Continue DFA</button>
+      </div>
+      <input style="display: none;" type="button" id="convertmovebutton" value="Move states">
+    </div>
+    <div id="av">
+      <div class="jsavcontrols">  
+      </div>
+      <p align="center" class="jsavoutput jsavline"></p>
+    </div>
+    <div id="files">
+      <input id="savefile" type="button" value="Save">
+      <input id="loadfile" type="file">
+      <div style='display: none;'id='download'></div>
+    </div>
+  </div>
+
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+	<script src="../../../../JSAV/lib/jquery.transit.js"></script>
+	<script src="../../../../JSAV/lib/raphael.js"></script>
+	<script src="../../../../JSAV/lib/dagre.min.js"></script>
+	<script src="../../../../JSAV/build/JSAV.js"></script>
+	<script src="../../../../lib/odsaUtils-min.js"></script>
+	<script src="../../../../lib/odsaAV-min.js"></script>
+	<script src="../fa/serializableGraph.js"></script>
+	<script src="../../resources/underscore-min.js"></script>
+	<script src="../fa/FA.js"></script>
+  <script src="./grammarEditor.js"></script>
+</body>
+</html>
+

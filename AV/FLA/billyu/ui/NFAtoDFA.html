@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Convert NFA to DFA test</title>
+			<link rel="stylesheet" href="../../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+			<link rel="stylesheet" href="../../../../lib/odsaAV-min.css" type="text/css" />
+			<link rel="stylesheet" href="../../../../lib/odsaStyle-min.css" type="text/css" />
+			<link rel="stylesheet" href="./css/FA.css" type="text/css" />
+			<link rel="stylesheet" href="./css/tester.css" type="text/css" />
+			<link rel="stylesheet" href="./css/NFAtoDFA.css" type="text/css" />
+		<style>
+			#av {
+      			text-align: center;
+			}
+			p.jsavoutput.jsavline {
+				height: 10px;
+			}
+    		.jsavgraph {
+    			display: inline-block;
+    		}
+    		#editable .jsavnode { cursor: pointer;}
+    		#editable .jsavedge { 
+    			cursor: pointer;
+    			stroke-width: 2;	/*can change to make edges easier to click */
+    		}
+    		#conversionButton {
+    			display: none;
+    		}
+    		.jsavmodelanswer {
+    			text-align: center;
+    		}
+		</style>
+	</head>
+	<body>
+		<div id="container">	
+		<div id="av">
+			<h1>Convert NFA to DFA</h1>
+			<a class="jsavsettings" href="#">Settings</a>
+			<p style="font-size: 30px">&Sigma;: <span id='alphabet'></span></p>
+			<button type="button" id="completeButton">Complete</button>
+			<button type="button" id="checkDone">Done?</button>
+			<button type="button" id="exportButton">Export</button>
+   		<p class="jsavoutput jsavline"></p>
+			<br>
+			<div id="graphs">
+				<div id="reference" class="jsavcanvas"></div>
+				<div id="editable" class="jsavcanvas"></div>
+				<div id="answer" class="jsavcanvas"></div>
+			</div>
+		</div>
+		<div align="right">
+			<span id='mode'></span>
+			<button type="button" id="conversionButton">Continue expanding</button>
+			<button type="button" id="removenodesbutton" class="editButton">Remove nodes</button>
+		</div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+		<script src="../../../../JSAV/lib/jquery.transit.js"></script>
+		<script src="../../../../JSAV/lib/raphael.js"></script>
+		<script src="../../../../JSAV/lib/dagre.min.js"></script>
+		<script src="../../../../JSAV/build/JSAV.js"></script>
+		<script src="../../../../lib/odsaUtils-min.js"></script>
+		<script src="../../../../lib/odsaAV-min.js"></script>
+		<script src="../fa/serializableGraph.js"></script>
+		<script src="../../resources/underscore-min.js"></script>
+		<script src="../fa/FA.js"></script>
+		<script src="./NFAtoDFA.js"></script>
+   	</body>
+  </html>
