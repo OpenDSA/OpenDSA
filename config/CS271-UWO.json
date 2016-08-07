@@ -1913,13 +1913,6 @@
             "points": 0,
             "showhide": "none",
             "threshold": 1.0
-          },
-          "bufferpoolPRO": {
-            "long_name": "Buffer Pool Proficiency Exercise",
-            "required": true,
-            "showhide": "show",
-            "points": 1,
-            "threshold": 0.9
           }
         }
       },
