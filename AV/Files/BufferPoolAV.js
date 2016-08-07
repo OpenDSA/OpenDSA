@@ -1136,12 +1136,10 @@ $(document).ready(function () {
   var dirty_bit_array = [];
   var read_write = 0;       // if reading = 0, writing = 1
 
-  // Load the config object with interpreter and code created by odsaUtils.js
+  // Load the config object with interpreter created by odsaUtils.js
   var config = ODSA.UTILS.loadConfig(),
       interpret = config.interpreter,       // get the interpreter
-      code = config.code                    // get the code object
       settings = config.getSettings();      // Settings for the AV
 
-  console.log("Code object: " + JSON.stringify(code));
   initialize()
 });
