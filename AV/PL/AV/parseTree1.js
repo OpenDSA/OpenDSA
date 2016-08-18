@@ -19,9 +19,10 @@ $(document).ready(function () {
     var the_tree = "";		// String representation of the tree
 
     // A  + B * C
-    // A + B * C + (E * F +G)
+    // A + B * C + ( E * F + G )
 
-    var the_exp = "A + B * C";	// The expression to parse
+    //    var the_exp = "A + B * C";	// The expression to parse
+    var the_exp = "A + B * C + ( E * F + G )";	// The expression to parse
 
     var valid_operand = function(c) {
 	if ('A' <= c && c <= 'Z') {
@@ -180,10 +181,16 @@ $(document).ready(function () {
 	}
     };
 
-    var display_parse = function (nodes) {
+    var display_parse = function (nodes, arr_index_to_highlight) {
 	
 	if (nodes.length === 0) return;
 	var node = nodes.shift();
+	if (node.child(0) === undefined && node.value() !== empty_prod) {
+	    node.addClass("jsavhighlight");
+	    arr.addClass(arr_index_to_highlight, "jsavhighlight");
+	    arr_index_to_highlight++;
+	    av.step();
+	}
 	console.log("node " + node.value());
 	var i = 0;
 	var temp = [];
@@ -197,7 +204,7 @@ $(document).ready(function () {
 	while (temp.length !== 0) {
 	    nodes.unshift(temp.pop());
 	}
-	display_parse(nodes);
+	display_parse(nodes, arr_index_to_highlight);
     };
 
 //     var parenChar = function(x) { 
@@ -253,7 +260,7 @@ $(document).ready(function () {
 //     nodes_to_display.push(tree.root().child(1));
 //     nodes_to_display.shift().show({recursive: false});
 //     av.step();
-    display_parse([tree.root()]);
+    display_parse([tree.root()], 0);
 
 //     console.log(""+tree.root().child(0));
 //     console.log(""+tree.root().child(1));
