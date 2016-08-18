@@ -7,6 +7,7 @@ $(document).ready(function () {
     //var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
     //var av = new JSAV(av_name);
 
+    var av;
     var lt = "&lt;";
     var gt = "&gt;";
     var empty_prod = "&epsilon;";
@@ -179,6 +180,26 @@ $(document).ready(function () {
 	}
     };
 
+    var display_parse = function (nodes) {
+	
+	if (nodes.length === 0) return;
+	var node = nodes.shift();
+	console.log("node " + node.value());
+	var i = 0;
+	var temp = [];
+	while (node.child(i) !== undefined) {
+	    node.child(i).show( {recursive: false} );
+	    temp.push(node.child(i));
+	    i = i + 1;
+	}
+	if (temp.length !== 0) av.step();
+	
+	while (temp.length !== 0) {
+	    nodes.unshift(temp.pop());
+	}
+	display_parse(nodes);
+    };
+
 //     var parenChar = function(x) { 
 // 	return arr.value(x) === '(' || arr.value(x) === ')' ||
 // 	    arr.value(x) === ' '; };
@@ -194,7 +215,7 @@ $(document).ready(function () {
     JSAV.ext.SPEED = 500;
 
     
-    var av = new JSAV($("#parseTree"));
+    av = new JSAV($("#parseTree"));
 
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     arr = av.ds.array(the_exp.split(" "));
@@ -222,8 +243,21 @@ $(document).ready(function () {
 
 //    tree.root(lt + "E" +gt);
 //    tree.root().addClass("wider");
+//    tree.hide();
     tree.layout();
+    tree.root().child(0).hide();
+    tree.root().child(1).hide();
     av.displayInit();
+//     var nodes_to_display = [];
+//     nodes_to_display.push(tree.root().child(0));
+//     nodes_to_display.push(tree.root().child(1));
+//     nodes_to_display.shift().show({recursive: false});
+//     av.step();
+    display_parse([tree.root()]);
+
+//     console.log(""+tree.root().child(0));
+//     console.log(""+tree.root().child(1));
+//     if (tree.root().child(2) !== undefined) console.log(""+tree.root().child(2));
 
 //     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 //     arr.addClass([0],"lambdaexphighlight");
