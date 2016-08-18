@@ -49,9 +49,4 @@ than just a single path, but not all of the nodes.
 .. inlineav:: IneffBinaryTreeRangeCON ss
    :output: show
    
-Practice guided traversal with the following programming
-exercises.
-
-.. avembed:: Exercises/BTRecurTutor/BSTsmallcountPROG.html ka
-
 .. odsascript:: AV/BTRecurTutor/IneffBinaryTreeRangeCON.js
