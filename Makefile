@@ -219,6 +219,9 @@ CS3114notes: min
 CS3114mynotes: min
 	python $(CONFIG_SCRIPT) -s config/CS3114mynotes.json
 
+CS3114F16notes: min
+	python $(CONFIG_SCRIPT) -s config/CS3114F16notes.json
+
 CS316: min
 	python $(CONFIG_SCRIPT) config/CS316.json
 
