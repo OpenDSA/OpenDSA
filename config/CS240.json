@@ -115,21 +115,15 @@
     "Object-Oriented Programming": {
       "Design/IntroOO": {
         "long_name": "Introduction to Object Orientation",
-        "sections": {
-          "Introduction to Object Oriented Programming": {}
-        }
+        "sections": {}
       },
       "Design/IntroUML": {
         "long_name": "The Unified Modeling Language",
-        "sections": {
-          "The Unified Modeling Language": {}
-        }
+        "sections": {}
       },
       "Design/IntroProcess": {
         "long_name": "Software Development Processes",
-        "sections": {
-          "Software Development Processes": {}
-        }
+        "sections": {}
       }
     },
     "Mathematical Background": {
@@ -257,30 +251,32 @@
     "Searching": {
       "Development/SearchIntro": {
         "long_name": "Search Chapter Introduction",
-        "exercises": {}
+        "sections": {}
       },
       "Development/UnsortedSearch": {
         "long_name": "Analyzing Search in Unsorted Arrays",
-        "exercises": {}
+        "sections": {}
       },
       "Development/SortedSearch": {
         "long_name": "Search in sorted Arrays",
-        "exercises": {}
+        "sections": {}
       },
       "Searching/BinarySearch": {
         "long_name": "Binary Search",
-        "exercises": {
-          "binarySearchCON": {
-            "long_name": "Binary Search Algorithm Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
-          },
-          "binarySearchPRO": {
-            "long_name": "Binary Search Proficiency Exercise",
-            "required": true,
-            "points": 0.0,
-            "threshold": 1.0
+        "sections": {
+          "Binary Search": {
+            "binarySearchCON": {
+              "long_name": "Binary Search Algorithm Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "binarySearchPRO": {
+              "long_name": "Binary Search Proficiency Exercise",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
           }
         }
       }
