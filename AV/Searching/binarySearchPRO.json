@@ -32,9 +32,9 @@
       "av_lines": "(rivit {first} ja {second})"
     }
   },
-  "code" : {
-    "java" : {
-      "url": "../../SourceCode/Java/Searching/bsearch.java",
+  "code": {
+    "java": {
+      "url": "../../SourceCode/Java/Searching/Bsearch.java",
       "lineNumbers": true,
       "tags": {
         "highlight": 7,
@@ -42,8 +42,8 @@
         "tbl_mid_gt_key": 9
       }
     },
-    "processing" : {
-      "url": "../../SourceCode/Processing/Searching/bsearch.pde",
+    "processing": {
+      "url": "../../SourceCode/Processing/Searching/Bsearch.pde",
       "lineNumbers": true,
       "tags": {
         "highlight": 7,
