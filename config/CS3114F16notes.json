@@ -43,12 +43,20 @@
   "allow_anonymous_credit": false,
   "suppress_todo": false,
   "chapters": {
-    "Weeks 1-3": {
+    "Week 1": {
       "F16/Day1": {
         "long_name": "Introduction",
         "exercises" : {
           "ADTCON": {}
         }
+      },
+      "F16/ProjManage": {
+        "long_name": "Project Management",
+        "exercises" : {}
+      },
+      "F16/MemManage": {
+        "long_name": "Memory Management",
+        "exercises" : {}
       }
     }
   }
