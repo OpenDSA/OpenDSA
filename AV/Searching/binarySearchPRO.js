@@ -145,7 +145,10 @@ $(document).ready(function () {
       pseudo,
       config = ODSA.UTILS.loadConfig({"av_container": "jsavcontainer", "default_code": "none"}),
       interpret = config.interpreter,
-      code = config.code,
+// Need to handle this correctly -- read the JXOP-code parameter and process as directed
+//      code = config.code,
+// Turning it off for the moment.
+code = null,
       codeOptions = {after: {element: $(".instructions")}, visible: true},
       av = new JSAV($("#container"), {settings: config.getSettings()});
 
