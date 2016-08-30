@@ -57,8 +57,26 @@
       "F16/MemManage": {
         "long_name": "Memory Management",
         "exercises" : {}
+      },
+      "F16/P1": {
+        "long_name": "Project 1 Implementation Details",
+        "exercises" : {}
+      },
+      "F16/AlgAnal": {
+        "long_name": "Algorithm Analysis",
+        "exercises" : {
+          "ProblemAlgorithmCON": {
+            "long_name": "Problem, Algorithm, and Program definitions Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      },
+      "F16/Coding": {
+        "long_name": "Clean Code",
+        "exercises" : {}
       }
     }
   }
 }
-
