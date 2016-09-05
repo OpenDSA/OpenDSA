@@ -136,11 +136,15 @@ CS3114 Introduction
 .. slide:: Logical vs. Physical Form
 
    * Data items have both a logical and a physical form.
+
    * Logical form: definition of the data item within an ADT.
-      * Ex: Integers in mathematical sense: +, -
+
+     * Ex: Integers in mathematical sense: +, -
+
    * Physical form: implementation of the data item within a data
      structure.
-      * Ex: 32/64 bit integers, overflow.
+
+     * Ex: 32/64 bit integers, overflow.
 
 .. slide:: Logical vs. Physical Form (2)
 

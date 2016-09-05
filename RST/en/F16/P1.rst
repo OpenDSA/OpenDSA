@@ -25,6 +25,7 @@ Project 1 Implementation Details
      operations.
 
    * A better design:
+
      * Separate logical activities into separate classes (even if a
        couple of them end up small this time).
      * Main class only initializes the program

@@ -73,8 +73,20 @@
           }
         }
       },
+      "F16/JUnit": {
+        "long_name": "JUnit testing",
+        "exercises" : {}
+      },
       "F16/Coding": {
         "long_name": "Clean Code",
+        "exercises" : {}
+      },
+      "Slides/Lists": {
+        "long_name": "Lists",
+        "exercises" : {}
+      },
+      "Slides/Lists2": {
+        "long_name": "Lists",
         "exercises" : {}
       }
     }
