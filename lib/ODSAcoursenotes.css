@@ -16,8 +16,8 @@
 .divdgm .jsavlabel{
   font-size: 15px !important;
 }
-.highlight{
-  font-size: 20px !important;
+.highlight, .highlight-guess{
+  font-size: 15px !important;
 }
 /*.jsavcode.jsavcenter{
   width: 500px !important;
@@ -49,4 +49,6 @@ ul li::before {
 .MathJax, .MathJax_Display  {
   font-size: 40%  !important;
 }
-
+.ui-widget{
+  font-size: 15px !important;
+}
