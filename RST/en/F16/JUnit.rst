@@ -13,6 +13,27 @@
 JUnit Testing
 =============
 
+.. slide:: Testing
+
+   What is the difference between testing and debugging?
+
+   How much time have you already spent on this project
+   testing/debugging your code?
+
+
+.. slide:: JUnit testing and code coverage
+
+   * It is a true art to be able to think in your head all the
+     possible ways that your program could go wrong.
+
+   * One thing that you can get from proper JUnit testing is an
+     indication of what lines are not covered.
+
+   * This indicates situations that you have not yet thought to test.
+
+   * Sort of an automatic test generator!
+
+
 .. slide:: Philosophy
 
    * Essential rule: Anything that you do in a test must be 
@@ -28,13 +49,14 @@ JUnit Testing
 
 .. slide:: A Bad test (1)
 
-   * I see many examples of this::
+   * I see many tests like this::
 
       public void testMInit() {
         Memman mem = new Memman();
         assertNotNull(mem);
         Memman.main(new String[] {"25", "20", "P1SampleInput.txt"});
       }
+
 
 .. slide:: A Bad test (2)
 
@@ -81,3 +103,49 @@ JUnit Testing
         Memman.main(args);
         assertTrue(systemOut().getHistory().endsWith("(17,47)\n"));
       }
+
+
+.. slide:: What would be good testing for Project 1?
+
+   ?
+
+
+.. slide:: Models
+
+   * JUnit testing compares a model of what the program should do
+     against what your program does do.
+   * Executing commands puts your program into a certain state
+     (expressed by the output).
+   * The assertions define characterstics of what you expect from that
+     state. This is the model.
+   * The test then compares what state YOUR program is in (expressed
+     by the output) against the model (assertions).
+
+
+.. slide:: What if your model is wrong?
+
+   * If you have a model in your head, and you write the program to
+     that model, and you test to that model, a "properly working"
+     program will meet that model.
+   * What if your model does not match reality?
+   * In this program, that most often happens when:
+      * Your output text is not what is expected. BUT you should have
+        used the sample output file to write your tests.
+      * You have the wrong model about how probing works. BUT you
+        should then see that you pass your tests, and fail the (one)
+        Web-CAT test. Then you should be suspicious about your model
+        if they tell you different things.
+
+.. slide:: Regression testing
+
+   * This means running all of your old tests on the program to make
+     sure that any new changes don't break anything.
+
+   * Students sometimes add print statements to help them debug, and
+     then forget to remove them. Then Web-CAT tells them they failed a
+     bunch of tests.
+
+     * Your unit tests should warn you about this.
+
+   * If you find a bug, and your tests all pass, then update the tests
+     to trigger on the bug.
