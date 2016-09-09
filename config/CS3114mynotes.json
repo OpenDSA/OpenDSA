@@ -43,7 +43,7 @@
   "allow_anonymous_credit": false,
   "suppress_todo": false,
   "chapters": {
-    "Weeks 1-3": {
+    "Introduction": {
       "Slides/Day1": {
         "long_name": "Introduction",
         "exercises" : {
@@ -53,11 +53,7 @@
       "Slides/ProjManage": {
         "long_name": "Project Management",
         "exercises" : {}
-      },
-      "Slides/SkipList": {
-        "long_name": "SkipLists",
-        "exercises" : {
-        }
+      
       },
       "Slides/AlgAnal": {
         "long_name": "Algorithm Analysis",
