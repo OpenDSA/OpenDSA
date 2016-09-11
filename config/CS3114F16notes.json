@@ -61,7 +61,9 @@
       "F16/P1": {
         "long_name": "Project 1 Implementation Details",
         "exercises" : {}
-      },
+      }
+    },
+    "Week 2": {
       "F16/AlgAnal": {
         "long_name": "Algorithm Analysis",
         "exercises" : {
@@ -72,7 +74,9 @@
             "threshold": 1.0
           }
         }
-      },
+      }
+    },
+    "Week 3": {
       "F16/JUnit": {
         "long_name": "JUnit testing",
         "exercises" : {}
@@ -81,12 +85,20 @@
         "long_name": "Clean Code",
         "exercises" : {}
       },
-      "Slides/Lists": {
+      "F16/Lists": {
         "long_name": "Lists",
         "exercises" : {}
       },
-      "Slides/Lists2": {
-        "long_name": "Lists",
+      "F16/Binary": {
+        "long_name": "Binary Trees Part 1",
+        "exercises" : {}
+      },
+      "F16/Binary2": {
+        "long_name": "Binary Trees Part 2",
+        "exercises" : {}
+      },
+      "F16/Binary3": {
+        "long_name": "Binary Trees Part 3",
         "exercises" : {}
       }
     }

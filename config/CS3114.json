@@ -408,13 +408,6 @@
             "required": false,
             "points": 0.0,
             "threshold": 1.0
-          },
-          "ListADTPROG": {
-            "long_name": "List ADT Programming Exercise",
-            "required": true,
-            "showhide": "show",
-            "points": 1.0,
-            "threshold": 3
           }
         }
       },
@@ -972,56 +965,17 @@
       "Binary/WritingTraversals": {
         "long_name": "Writing Tree Traversals",
         "exercises": {
-          "BTincPROG": {
-            "long_name": "Node Increment Exercise",
-            "required": true,
-            "showhide": "show",
-            "points": 1.0,
-            "threshold": 1
-          }
         }
       },
       "BTRecurTutor/BinaryTreeInfFlw": {
         "long_name": "Binary Tree Information Flow",
         "exercises": {
-          "BTsetdepthPROG": {
-            "long_name": "Set Node Depth Programming Exercise",
-            "showhide": "show",
-            "required": true,
-            "showhide": "show",
-            "points": 2.0,
-            "threshold": 1
-          },
           "BinaryTreeMistakesCON": {
             "long_name": "Binary Tree Common Mistakes Slideshow",
             "required": true,
             "showhide": "show",
             "points": 1.0,
             "threshold": 0.90
-          },
-          "BTreturnPROGSumm": {
-            "long_name": "Collect-and-Return Programming Exercises",
-            "showhide": "show",
-            "required": true,
-            "showhide": "show",
-            "points": 4.0,
-            "threshold": 2.0
-          },
-          "BTcheckvalPROG": {
-            "long_name": "Node Value Count Programming Exercise",
-            "showhide": "show",
-            "required": true,
-            "showhide": "show",
-            "points": 2.0,
-            "threshold": 1
-          },
-          "BTtransferPROGSumm": {
-            "long_name": "Duel-Flow Programming Exercises",
-            "showhide": "show",
-            "required": true,
-            "showhide": "show",
-            "points": 4.0,
-            "threshold": 2
           }
         }
       },
@@ -1143,26 +1097,12 @@
             "required": false,
             "points": 0.0,
             "threshold": 0.90
-          },
-          "BSTsmallcountPROG": {
-            "long_name": "BST Small Value Count Programming Exercise",
-            "required": true,
-            "showhide": "show",
-            "points": 2.0,
-            "threshold": 1.0
           }
         }
       },
       "BTRecurTutor/MultipleBinaryTrees": {
         "long_name": "Multiple Binary Trees",
         "exercises": {
-          "MultiTreePROGSumm": {
-            "long_name": "Multiple Binary Trees Exercises",
-            "required": true,
-            "points": 4.0,
-            "showhide": "Show",
-            "threshold": 2.0
-          }
         }
       },
       "BTRecurTutor/BSTCheck": {

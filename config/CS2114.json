@@ -367,76 +367,20 @@
         "long_name": "Code Completion Exercises",
         "sections": {
           "Programming Exercise: Largest": {
-            "RecCLargestPROG": {
-              "long_name": "Recursion Code Completion Exercise Largest",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
           },
           "Programming Exercise: Multiply": {
-            "RecCMultiplyPROG": {
-              "long_name": "Recursion Code Completion Exercise Multiply",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
           },
           "Programming Exercise: GCD": {
-            "RecCGcdPROG": {
-              "long_name": "Recursion Code Completion Exercise GCD",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
           },
           "Programming Exercise: Logs": {
-            "RecCLogPROG": {
-              "long_name": "Recursion Code Completion Exercise Log",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
           },
           "Programming Exercise: Cummulative Sum": {
-            "RecCSumtokPROG": {
-              "long_name": "Recursion Code Completion Exercise Sum to k",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
           },
           "Programming Exercise: Array Sum": {
-            "RecCAddoddPROG": {
-              "long_name": "Recursion Code Completion Exercise Add Odd",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
           },
           "Programming Exercise: Digits Sum": {
-            "RecCSumOfDigitsPROG": {
-              "long_name": "Recursion Code Completion Exercise Sum of Digits",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
           },
           "Programming Exercise: Characters": {
-            "RecCCountChrPROG": {
-              "long_name": "Recursion Code Completion Exercise Count Characters",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
           }
         }
       },
@@ -448,31 +392,10 @@
         "long_name": "Harder Code Completion Exercises",
         "sections": {
           "Programming Exercise: Array Min": {
-            "RecHMinPROG": {
-              "long_name": "Recursion Code Completion Exercise: Minimum",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
           },
           "Programming Exercise: String Reverse": {
-            "RecHIsReversePROG": {
-              "long_name": "Recursion Code Completion Exercise: Is Reverse",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
           },
           "Programming Exercise: Decimal to Binary": {
-            "RecHDecibinaryPROG": {
-              "long_name": "Recursion Code Completion Exercise: Decimal to Binary",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
           }
         }
       },
@@ -480,40 +403,12 @@
         "long_name": "Code Writing Exercises",
         "sections": {
           "Programming Exercise: Cannonballs": {
-            "RecWCannonballPROG": {
-              "long_name": "Recursion Code Writing Exercise: Cannon Ball",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
           },
           "Programming Exercise: Palindrome": {
-            "RecWCheckPalPROG": {
-              "long_name": "Recursion Code Writing Exercise: Check Palindrom",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
           },
           "Programming Exercise: Reverse String": {
-            "RecWRevStringPROG": {
-              "long_name": "Recursion Code Writing Exercise: Reverse String",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
           },
           "Programming Exercise: Pascal's Triangle": {
-            "RecWPascalPROG": {
-              "long_name": "Recursion Code Writing Exercise: Pascal",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
           }
         }
       },
@@ -924,12 +819,6 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            },
-            "ListADTPROG": {
-              "long_name": "List ADT Programming Exercise",
-              "required": true,
-              "points": 1.0,
-              "threshold": 3
             }
           }
         }
