@@ -39,12 +39,7 @@
         "long_name": "Abstract Data Types",
         "sections": {
           "Abstract Data Types": {
-            "ADTCON": {
-              "long_name": "",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
+            "ADTCON": {},
             "IntroADTSumm": {
               "long_name": "ADT Summary Questions",
               "required": true,
@@ -360,12 +355,7 @@
         "long_name": "Linked Stacks",
         "sections": {
           "Linked Stack Implementation": {
-            "lstackDiagramCON": {
-              "long_name": "",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
+            "lstackDiagramCON": {},
             "lstackPushCON": {
               "long_name": "Linked stack push",
               "required": false,
@@ -392,12 +382,7 @@
               "points": 1,
               "threshold": 5
             },
-            "lstackTwostackCON": {
-              "long_name": "",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            }
+            "lstackTwostackCON": {}
           }
         }
       }
@@ -578,12 +563,7 @@
               "points": 0.0,
               "threshold": 1.0
             },
-            "TOHfigCON": {
-              "long_name": "",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
+            "TOHfigCON": {},
             "recurTraceTOHCON": {
               "long_name": "Recursion Tracing Towers of Hanoi",
               "required": true,
@@ -957,12 +937,7 @@
         "long_name": "Linked Lists",
         "sections": {
           "Linked Lists": {
-            "llistRepCON": {
-              "long_name": "",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
+            "llistRepCON": {},
             "llistBadCON": {
               "long_name": "Linked List Slideshow 1",
               "required": false,
@@ -975,18 +950,8 @@
               "points": 0.0,
               "threshold": 1.0
             },
-            "llistInitCON": {
-              "long_name": "",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
-            "llistHeaderCON": {
-              "long_name": "",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            }
+            "llistInitCON": {},
+            "llistHeaderCON": {}
           },
           "Linked List Implementation": {
             "llistVarsCON": {
@@ -1067,12 +1032,7 @@
         "long_name": "Doubly Linked Lists",
         "sections": {
           "Doubly Linked Lists": {
-            "dlistDiagramCON": {
-              "long_name": "",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
+            "dlistDiagramCON": {},
             "dlistInsertCON": {
               "long_name": "Doubly Linked List Insert",
               "required": false,
@@ -1175,24 +1135,9 @@
         "long_name": "Binary Tree Terminology",
         "sections": {
           "Definitions and Properties": {
-            "BinExampCON": {
-              "long_name": "",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
-            "BinDiffCON": {
-              "long_name": "",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
-            "FullCompCON": {
-              "long_name": "",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
+            "BinExampCON": {},
+            "BinDiffCON": {},
+            "FullCompCON": {},
             "DefSumm": {
               "long_name": "Tree Definition Summary Exercises",
               "required": false,
@@ -1215,12 +1160,7 @@
         "long_name": "Binary Tree Traversals",
         "sections": {
           "Binary Tree Traversals": {
-            "BinExampCON": {
-              "long_name": "",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
+            "BinExampCON": {},
             "preorderCON": {
               "long_name": "Preorder Traversal Slideshow",
               "required": false,
