@@ -38,12 +38,7 @@
         "long_name": "Abstract Data Types",
         "sections": {
           "Abstract Data Types": {
-            "ADTCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
+            "ADTCON": {},
             "IntroADTSumm": {
               "long_name": "ADT Summary Questions",
               "required": true,
@@ -211,12 +206,7 @@
         "long_name": "Mathematical Proof Techniques",
         "sections": {
           "Mathematical Proof Techniques": {
-            "twoColorCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
+            "twoColorCON": {},
             "TwoColoringProofCON": {
               "long_name": "Two Coloring Proof Slideshow",
               "required": false,
@@ -558,12 +548,7 @@
         "long_name": "Linked Lists",
         "sections": {
           "Linked Lists": {
-            "llistRepCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
+            "llistRepCON": {},
             "llistBadCON": {
               "long_name": "Linked List Slideshow 1",
               "required": false,
@@ -576,18 +561,8 @@
               "points": 0.0,
               "threshold": 1.0
             },
-            "llistInitCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
-            "llistHeaderCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            }
+            "llistInitCON": {},
+            "llistHeaderCON": {}
           },
           "Linked List Implementation": {
             "llistVarsCON": {
@@ -668,12 +643,7 @@
         "long_name": "Doubly Linked Lists",
         "sections": {
           "Doubly Linked Lists": {
-            "dlistDiagramCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
+            "dlistDiagramCON": {},
             "dlistInsertCON": {
               "long_name": "Doubly Linked List Insert",
               "required": false,
@@ -782,12 +752,7 @@
         "long_name": "Linked Stacks",
         "sections": {
           "Linked Stack Implementation": {
-            "lstackDiagramCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
+            "lstackDiagramCON": {},
             "lstackPushCON": {
               "long_name": "Linked stack push",
               "required": false,
@@ -814,12 +779,7 @@
               "points": 1,
               "threshold": 5
             },
-            "lstackTwostackCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            }
+            "lstackTwostackCON": {}
           }
         }
       },
@@ -1023,24 +983,9 @@
         "long_name": "Binary Tree Terminology",
         "sections": {
           "Definitions and Properties": {
-            "BinExampCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
-            "BinDiffCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
-            "FullCompCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
+            "BinExampCON": {},
+            "BinDiffCON": {},
+            "FullCompCON": {},
             "DefSumm": {
               "long_name": "Tree Definition Summary Exercises",
               "required": false,
@@ -1063,18 +1008,8 @@
         "long_name": "Binary Tree as a Recursive Data Structure",
         "sections": {
           "Binary Tree as a Recursive Data Structure": {
-            "ListRecDSCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
-            "BinRecDSCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
+            "ListRecDSCON": {},
+            "BinRecDSCON": {},
             "SumBinaryTreeCON": {
               "long_name": "Sum values in a Binary Tree Slide Show",
               "required": false,
@@ -1092,12 +1027,7 @@
         "long_name": "Binary Tree Traversals",
         "sections": {
           "Binary Tree Traversals": {
-            "BinExampCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
+            "BinExampCON": {},
             "preorderCON": {
               "long_name": "Preorder Traversal Slideshow",
               "required": false,
@@ -1557,12 +1487,7 @@
         "long_name": "Proof for Huffman Coding",
         "sections": {
           "Proof of Optimality for Huffman Coding": {
-            "HuffProofCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            }
+            "HuffProofCON": {}
           }
         }
       },
@@ -1802,12 +1727,7 @@
               "points": 0.0,
               "threshold": 1.0
             },
-            "shellsortCON3": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
+            "shellsortCON3": {},
             "shellsortCON4": {
               "long_name": "Shellsort Slideshow 3",
               "required": false,
@@ -1820,24 +1740,14 @@
               "points": 0.0,
               "threshold": 1.0
             },
-            "shellsortCON6": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
+            "shellsortCON6": {},
             "shellsortCON7": {
               "long_name": "Shellsort Slideshow 5",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
-            "shellsortCON8": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
+            "shellsortCON8": {},
             "shellsortCON9": {
               "long_name": "Shellsort Slideshow 6",
               "required": false,
@@ -2206,7 +2116,7 @@
       },
       "Files/Diskdrive": {
         "long_name": "Disk Drives",
-      "sections": {}
+        "sections": {}
       },
       "Files/BuffPool": {
         "long_name": "Buffer Pools",
@@ -2236,12 +2146,7 @@
               "points": 0.0,
               "threshold": 1.0
             },
-            "buffpooldgmCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
+            "buffpooldgmCON": {},
             "BufferPoolAV": {
               "long_name": "Buffer Pool Visualization",
               "required": false,
@@ -2272,24 +2177,14 @@
               "points": 0.0,
               "threshold": 1.0
             },
-            "extSortOverCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
+            "extSortOverCON": {},
             "extRSCON": {
               "long_name": "External Replacement Selection Slideshow",
               "required": true,
               "points": 0.0,
               "threshold": 1.0
             },
-            "extSortSnowCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
+            "extSortSnowCON": {},
             "extRSPRO": {
               "long_name": "Replacement Selection Proficiency Exercise",
               "required": true,
@@ -2404,12 +2299,7 @@
         "long_name": "Open Hashing",
         "sections": {
           "Open Hashing": {
-            "openhashCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
+            "openhashCON": {},
             "OpenHashPRO": {
               "long_name": "Open Hashing Proficiency Exercise",
               "required": true,
@@ -2625,18 +2515,8 @@
         "long_name": "Dynamic Memory Allocation",
         "sections": {
           "Dynamic Storage Allocation": {
-            "freeblocklistCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
-            "fragCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            }
+            "freeblocklistCON": {},
+            "fragCON": {}
           }
         }
       },
@@ -2644,12 +2524,7 @@
         "long_name": "Sequential-Fit Methods",
         "sections": {
           "Sequential-Fit Methods": {
-            "seqFitCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            }
+            "seqFitCON": {}
           }
         }
       },
@@ -2816,12 +2691,7 @@
         "long_name": "2-3 Trees",
         "sections": {
           "2-3 Trees": {
-            "twoThreeTreeCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
+            "twoThreeTreeCON": {},
             "simpleInsertCON": {
               "long_name": "2-3 Tree Insert Slideshow",
               "required": false,
@@ -2878,12 +2748,7 @@
         "long_name": "General Trees",
         "sections": {
           "General Trees": {
-            "GenTreeCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
+            "GenTreeCON": {},
             "GenTreePreTravCON": {
               "long_name": "General Tree Preorder Traversal Slideshow",
               "required": false,
@@ -2903,18 +2768,8 @@
         "long_name": "Union/Find",
         "sections": {
           "The Union/Find Problem": {
-            "UFfigCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
-            "UFconcomCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
+            "UFfigCON": {},
+            "UFconcomCON": {},
             "ufCON": {
               "long_name": "Union/Find Example",
               "required": false,
@@ -2940,12 +2795,7 @@
         "long_name": "Sequential Tree Representations",
         "sections": {
           "Sequential Tree Representations": {
-            "BinExampCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
+            "BinExampCON": {},
             "SequentialTreeCON": {
               "long_name": "First sequential representation Slideshow",
               "required": true,
@@ -3009,56 +2859,16 @@
         "long_name": "Introduction and Terminology",
         "sections": {
           "Graph Terminology": {
-            "GdirundirCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
-            "GneighborCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
-            "GpathDefCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
-            "GconcomCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
-            "GsparseDefCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            }
+            "GdirundirCON": {},
+            "GneighborCON": {},
+            "GpathDefCON": {},
+            "GconcomCON": {},
+            "GsparseDefCON": {}
           },
           "Graph Representations": {
-            "GdirRepCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
-            "GundirRepCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
-            "GweightedCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
+            "GdirRepCON": {},
+            "GundirRepCON": {},
+            "GweightedCON": {},
             "GspaceCalcSumm": {
               "long_name": "Graph Space Requirements Exercise",
               "required": true,
@@ -3120,12 +2930,7 @@
         "long_name": "Topological Sort",
         "sections": {
           "Topological Sort": {
-            "topsortCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
+            "topsortCON": {},
             "topSort": {
               "long_name": "Topological Sort (DFS) visualization",
               "required": false,
@@ -3147,12 +2952,7 @@
         "long_name": "Shortest-Paths Problems",
         "sections": {
           "Shortest-Paths Problems": {
-            "dijkstraCON": {
-              "long_name": "",
-              "required": true,
-              "points": 0.0,
-              "threshold": 5
-            },
+            "dijkstraCON": {},
             "DijkstraAV": {
               "long_name": "Dijkstra's Algorithm Visualization",
               "required": false,
