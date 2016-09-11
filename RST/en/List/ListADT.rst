@@ -184,11 +184,6 @@ There are two standard approaches to implementing lists, the
 :ref:`linked list <linked list> <ListLinked>`.
 
 
-ADT Practice Exercise
-~~~~~~~~~~~~~~~~~~~~~
-
-.. avembed:: Exercises/List/ListADTPROG.html ka
-  
 .. TODO::
    :tag: Exercise
 

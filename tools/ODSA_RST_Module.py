@@ -147,6 +147,18 @@ def isFigure(item):
 
   return False
 
+def isSlide(item):
+  if item.startswith('.. slide::'):
+    return True
+
+  return False
+
+def isSlideConf(item):
+  if item.startswith('.. slideconf::'):
+    return True
+
+  return False
+
 
 def get_directive_type(directive):
   if isTable(directive):
@@ -160,6 +172,12 @@ def get_directive_type(directive):
 
   elif isFigure(directive):
     return 'figure'
+
+  elif isSlide(directive):
+    return 'slide'
+
+  elif isSlideConf(directive):
+    return 'slideconf'
 
   return ''
 
@@ -306,6 +324,24 @@ class ODSA_RST_Module:
 
         # Determine the type of directive
         dir_type = get_directive_type(line)
+
+
+        #Code to change the ..slide directive to a header when the -s option 
+        # is not added
+        if (os.environ['SLIDES'] == 'no'):
+          #Remove the slideConf Directive
+          if dir_type == 'slideconf' or line.startswith(':autoslides:'):
+            mod_data[i] = ''
+        
+          #Change the slide directive
+          if dir_type == 'slide':
+            line_split = line.split('::')
+            header = line_split[1].strip()
+            underline = ''
+            for c in range(0, len(header)):
+              underline += '~'
+            mod_data[i] =  header + '\n' + underline
+
 
         # Update figure, equation, theorem, table counters
         if dir_type in ['table', 'example', 'theorem', 'figure']:

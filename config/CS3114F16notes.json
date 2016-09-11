@@ -1,0 +1,106 @@
+{
+  "title": "CS3114 Fall 2016 Coursenotes",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "lang": "en",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Processing": {
+      "ext": [
+        "pde"
+      ],
+      "label": "Processing",
+      "lang": "java"
+    },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "tabbed_codeinc": false,
+  "module_origin": "http://lti.cs.vt.edu",
+  "exercise_server": "https://opendsa.cs.vt.edu/",
+  "logging_server": "https://opendsa.cs.vt.edu/",
+  "score_server": "https://opendsa.cs.vt.edu/",
+  "build_JSAV": false,
+  "allow_anonymous_credit": false,
+  "suppress_todo": false,
+  "chapters": {
+    "Week 1": {
+      "F16/Day1": {
+        "long_name": "Introduction",
+        "exercises" : {
+          "ADTCON": {}
+        }
+      },
+      "F16/ProjManage": {
+        "long_name": "Project Management",
+        "exercises" : {}
+      },
+      "F16/MemManage": {
+        "long_name": "Memory Management",
+        "exercises" : {}
+      },
+      "F16/P1": {
+        "long_name": "Project 1 Implementation Details",
+        "exercises" : {}
+      }
+    },
+    "Week 2": {
+      "F16/AlgAnal": {
+        "long_name": "Algorithm Analysis",
+        "exercises" : {
+          "ProblemAlgorithmCON": {
+            "long_name": "Problem, Algorithm, and Program definitions Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      }
+    },
+    "Week 3": {
+      "F16/JUnit": {
+        "long_name": "JUnit testing",
+        "exercises" : {}
+      },
+      "F16/Coding": {
+        "long_name": "Clean Code",
+        "exercises" : {}
+      },
+      "F16/Lists": {
+        "long_name": "Lists",
+        "exercises" : {}
+      },
+      "F16/Binary": {
+        "long_name": "Binary Trees Part 1",
+        "exercises" : {}
+      },
+      "F16/Binary2": {
+        "long_name": "Binary Trees Part 2",
+        "exercises" : {}
+      },
+      "F16/Binary3": {
+        "long_name": "Binary Trees Part 3",
+        "exercises" : {}
+      }
+    }
+  }
+}
