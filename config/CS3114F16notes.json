@@ -92,13 +92,21 @@
       "F16/Binary": {
         "long_name": "Binary Trees Part 1",
         "exercises" : {}
-      },
+      }
+    },
+    "Week 4": {
       "F16/Binary2": {
         "long_name": "Binary Trees Part 2",
         "exercises" : {}
       },
       "F16/Binary3": {
         "long_name": "Binary Trees Part 3",
+        "exercises" : {}
+      }
+    },
+    "Week 5": {
+      "F16/23Tree": {
+        "long_name": "2-3 Trees",
         "exercises" : {}
       }
     }

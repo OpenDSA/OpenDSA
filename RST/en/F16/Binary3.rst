@@ -13,63 +13,61 @@
 Binary Trees Part 3
 ===================
 
-.. slide:: Midterm 1
+.. slide:: Comparison (1)
 
-   Midterm 1 is Tuesday, February 23
+   * How do we generalize the concept of comparison?
+   * "<" is not good enough. String < String won't give you what you
+     want.
+   * Need a general way to get the key out of a record
+   * Define a method record.key()?
+      * [Note for C++ users: Operator overloading is effectively the
+        same thing.]
+      * That is not good enough. What if we want to search on different
+        key fields?
 
-   Topics:
+.. slide:: Comparison (2)
 
-   * Algorithm Analysis:
-      * Upper, lower bounds, bounds on a problem
-
-   * Linear Structures: Lists, Stacks, Queues
-      * Implementation and Analysis, space requirements
-
-   * Binary Trees: Notation, full binary tree theorem, space analysis
-
-   * BST implementation and analysis, compare to SkipList
-
-.. slide:: Spatial Data Structures
-
-   * BST, SkipList handle a one dimensional key.
-
-   * What if we have 2 or more dimensions?
-      * Could concatenate sub-keys into one. But that makes one dimension
-        more important.
-      * We want all dimensions to be equally important.
-
-   * Keystone functionality: Regionsearch, nearest
+   * Fundamental issue: Defining the key is a property of the context,
+     NOT a property of the record.
 
 
-.. slide:: Spatial Data Structure (2)
+.. slide:: KVpair
 
-   * Key design considerations:
-      * Alternating dimensions vs. multiway splits
-      * Key space vs. Object space decomposition
-      * Decomposition rule
+   This is a truly general way to solve the problem.
 
-
-.. slide:: PR Quadtree (1)
-
-   .. odsafig:: Images/PRexamp.png
-      :width: 700
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Example of a PR quadtree
+   .. codeinclude:: Utils/KVPair
+      :tag: KVPair
 
 
-.. slide:: PR Quadtree (2)
+.. slide:: .
 
-   .. odsafig:: Images/PRinsert.png
-      :width: 700
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: PR quadtree insertion example.
+   .
 
 
-.. slide:: Binary Tree Implementation
+.. slide:: KVpair: Generics
+
+   .. codeinclude:: Utils/KVPairGen
+      :tag: KVPair
+
+
+.. slide:: .
+
+   .
+
+
+.. slide:: Using the KVpair (1)
+
+   .. codeinclude:: Sorting/Insertionsort
+      :tag: Insertionsort
+
+   What is being compared?
+
+   What if we want to find the record that has a given key?
+
+
+.. slide:: Binary Tree Implementation (1)
+
+   "Simple" node model.
 
    .. odsafig:: Images/BinLink.png
       :width: 600
@@ -81,6 +79,8 @@ Binary Trees Part 3
 
 .. slide:: Binary Tree Implementation (2)
 
+   Internal nodes can be different from leaf nodes.
+   
    .. odsafig:: Images/DiffNode.png
       :width: 400
       :align: center
@@ -109,6 +109,7 @@ Binary Trees Part 3
 
    .. odsascript:: AV/Binary/expressionTraversalCON.js
 
+
 .. slide:: Design Patterns
 
    * Design patterns capture reusable pieces of design wisdom.
@@ -134,10 +135,6 @@ Binary Trees Part 3
    .. codeinclude:: Binary/ExpressionTreeC
       :tag: Composite3
 
-.. slide:: Flyweight Design Pattern
-
-   (Otherwise) multiple copies of a stateless object, all references
-   pointing to the same copy.
 
 .. slide:: Space Overhead (1)
 
