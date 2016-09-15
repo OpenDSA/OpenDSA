@@ -13,6 +13,9 @@
 Binary Trees Part 3
 ===================
 
+Binary Trees Part 3
+-------------------
+
 .. slide:: Comparison (1)
 
    * How do we generalize the concept of comparison?
@@ -80,7 +83,7 @@ Binary Trees Part 3
 .. slide:: Binary Tree Implementation (2)
 
    Internal nodes can be different from leaf nodes.
-   
+
    .. odsafig:: Images/DiffNode.png
       :width: 400
       :align: center
@@ -163,7 +166,7 @@ Binary Trees Part 3
    This is 1/2 if :math:`p = d`.
 
    :math:`(2p)/(2p + d)` if data only at leaves :math:`\Rightarrow`
-   2/3 overhead. 
+   2/3 overhead.
 
    Note that some method is needed to distinguish leaves from internal
    nodes.

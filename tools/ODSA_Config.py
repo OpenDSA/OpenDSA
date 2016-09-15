@@ -334,15 +334,15 @@ def set_defaults(conf_data):
 
     if 'code_lang' not in conf_data:
         conf_data['code_lang'] ={
-                                                  "Java": {"ext": ["java"],"label": "Java","lang": "java"
-                                                  },
-                                                  "Processing": {"ext": ["pde"],"label": "Processing","lang": "java"
-                                                  },
-                                                  "Java_Generic": {"ext": [  "java"],"label": "Java (Generic)","lang": "java"
-                                                  },
-                                                  "C++": {"ext": [  "cpp",  "h"],"label": "C++","lang": "C++"
-                                                  }
-                                                }
+                                  "Java": {"ext": ["java"],"label": "Java","lang": "java"
+                                  },
+                                  "Processing": {"ext": ["pde"],"label": "Processing","lang": "java"
+                                  },
+                                  "Java_Generic": {"ext": [  "java"],"label": "Java (Generic)","lang": "java"
+                                  },
+                                  "C++": {"ext": [  "cpp",  "h"],"label": "C++","lang": "C++"
+                                  }
+                                }
 
 
 def group_exercises(conf_data):

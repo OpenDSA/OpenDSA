@@ -13,6 +13,9 @@
 Binary Trees Part 1
 ===================
 
+Binary Trees Part 1
+-------------------
+
 .. slide:: Binary Trees
 
    .. odsalink:: AV/Binary/BinExampCON.css
@@ -40,7 +43,7 @@ Binary Trees Part 1
 
    .. inlineav:: BinRecDSCON dgm
       :align: justify
-   
+
    .. odsascript:: AV/Binary/ListRecDSCON.js
    .. odsascript:: AV/Binary/BinRecDSCON.js
 

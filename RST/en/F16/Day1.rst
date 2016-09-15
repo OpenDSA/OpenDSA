@@ -16,6 +16,9 @@
 CS3114 Introduction
 ===================
 
+Introduction
+------------
+
 .. slide:: Introduction
 
    What we are doing today:
@@ -105,7 +108,7 @@ CS3114 Introduction
    * OpenDSA exercises test knowledge of how algorithms work
    * Exams test understanding of the theory (analysis)
 
-.. note:: 
+.. note::
 
    Most graduates from our department will tell you that this is one
    of the two hardest courses, and also one of the two most important

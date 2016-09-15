@@ -1,5 +1,6 @@
 {
   "title": "CS3114 Fall 2016 Coursenotes",
+  "desc": "CS3114 Fall 2016 Coursenotes",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "lang": "en",
@@ -35,43 +36,57 @@
     }
   },
   "tabbed_codeinc": false,
-  "module_origin": "http://lti.cs.vt.edu",
-  "exercise_server": "https://opendsa.cs.vt.edu/",
-  "logging_server": "https://opendsa.cs.vt.edu/",
-  "score_server": "https://opendsa.cs.vt.edu/",
   "build_JSAV": false,
-  "allow_anonymous_credit": false,
   "suppress_todo": false,
   "chapters": {
     "Week 1": {
       "F16/Day1": {
         "long_name": "Introduction",
-        "exercises" : {
-          "ADTCON": {}
+        "sections": {
+          "Introduction": {
+            "ADTCON": {}
+          }
         }
       },
       "F16/ProjManage": {
         "long_name": "Project Management",
-        "exercises" : {}
+        "sections": {}
       },
       "F16/MemManage": {
         "long_name": "Memory Management",
-        "exercises" : {}
+        "sections": {
+          "Memory Management": {
+            "freeblocklistCON": {},
+            "fragCON": {},
+            "seqFitCON": {},
+            "firstFitAV": {
+              "long_name": "First Fit Visualization",
+              "required": false,
+              "points": 0,
+              "threshold": 1.0,
+              "exer_options": {
+                "fitAlgorithm": "1"
+              }
+            }
+          }
+        }
       },
       "F16/P1": {
         "long_name": "Project 1 Implementation Details",
-        "exercises" : {}
+        "sections": {}
       }
     },
     "Week 2": {
       "F16/AlgAnal": {
         "long_name": "Algorithm Analysis",
-        "exercises" : {
-          "ProblemAlgorithmCON": {
-            "long_name": "Problem, Algorithm, and Program definitions Slideshow",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
+        "sections": {
+          "Algorithm Analysis": {
+            "ProblemAlgorithmCON": {
+              "long_name": "Problem, Algorithm, and Program definitions Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
           }
         }
       }
@@ -79,35 +94,213 @@
     "Week 3": {
       "F16/JUnit": {
         "long_name": "JUnit testing",
-        "exercises" : {}
+        "sections": {}
       },
       "F16/Coding": {
         "long_name": "Clean Code",
-        "exercises" : {}
+        "sections": {}
       },
       "F16/Lists": {
         "long_name": "Lists",
-        "exercises" : {}
+        "sections": {
+          "Lists": {
+            "alistInsertCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "llistBadCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "llistBadDelCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "llistInitCON": {},
+            "llistHeaderCON": {},
+            "llistVarsCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "llistConsCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "llistInsertCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "llistRemoveCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "llistOtherCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "listFreeCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "dlistDiagramCON": {},
+            "dlistInsertCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "dlistRemoveCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "aqueueFirstCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "aqueueDriftCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "aqueueBadCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "aqueueCircularCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "aqueueEmptyCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
       },
       "F16/Binary": {
         "long_name": "Binary Trees Part 1",
-        "exercises" : {}
+        "sections": {
+          "Binary Trees Part 1": {
+            "BinExampCON": {},
+            "ListRecDSCON": {},
+            "BinRecDSCON": {},
+            "preorderCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "BinaryTreeMistakesCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
       }
     },
     "Week 4": {
       "F16/Binary2": {
         "long_name": "Binary Trees Part 2",
-        "exercises" : {}
+        "sections": {
+          "Binary Trees Part 2": {
+            "BSTsearchCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "BSTinsertCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "BSTdeletemaxCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "BSTremoveCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
       },
       "F16/Binary3": {
         "long_name": "Binary Trees Part 3",
-        "exercises" : {}
+        "sections": {
+          "Binary Trees Part 3": {
+            "expressionTraversalCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
       }
     },
     "Week 5": {
       "F16/23Tree": {
         "long_name": "2-3 Trees",
-        "exercises" : {}
+        "sections": {
+          "2-3 Trees": {
+            "twoThreedgmCON": {},
+            "simpleInsertCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "promoteCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "splitCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
       }
     }
   }

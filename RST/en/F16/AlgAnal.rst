@@ -15,6 +15,9 @@
 Algorithm Analysis
 ==================
 
+Algorithm Analysis
+------------------
+
 .. slide:: Algorithm Efficiency
 
    There are often many approaches (algorithms) to solve a problem.
@@ -67,7 +70,7 @@ Algorithm Analysis
 
    Example 3: Double loop
 
-   .. codeinclude:: Misc/Anal 
+   .. codeinclude:: Misc/Anal
       :tag: c3p4
 
 .. slide:: Growth Rate Graph
@@ -118,7 +121,7 @@ Algorithm Analysis
 
       \begin{array} {l|r|r|l|r}
       \mathbf{f(n)} &
-      \mathbf{n} & 
+      \mathbf{n} &
       \mathbf{n'} &
       \mathbf{Change} &
       \mathbf{n'/n}\\
@@ -173,7 +176,7 @@ Algorithm Analysis
 .. slide:: Big-Oh Examples (2)
 
    Example 2: Suppose :math:`\textbf{T}(n) = c_{1}n^2 + c_{2}n`, where
-   :math:`c_1` and :math:`c_2` are positive. 
+   :math:`c_1` and :math:`c_2` are positive.
 
    :math:`c_{1}n^2 + c_{2}n \leq c_{1}n^2 + c_{2}n^2 \leq (c_1 + c_2)n^2`
    for all :math:`n > 1`.
@@ -226,7 +229,7 @@ Algorithm Analysis
 
 .. slide:: Theta Notation :math:`\Theta`
 
-   When big-Oh and :math:`\Omega` coincide, we indicate this by using 
+   When big-Oh and :math:`\Omega` coincide, we indicate this by using
    :math:`\Theta` (big-Theta) notation.
 
    Definition: An algorithm is said to be in :math:`\Theta(h(n))` if
@@ -266,21 +269,21 @@ Algorithm Analysis
 
    Example:
 
-   .. codeinclude:: Misc/Anal 
+   .. codeinclude:: Misc/Anal
       :tag: c3p3
 
 .. slide:: Time Complexity Examples (2)
 
    Example:
 
-   .. codeinclude:: Misc/Anal 
+   .. codeinclude:: Misc/Anal
       :tag: c3p4
 
 .. slide:: Time Complexity Examples (3)
 
    Example: Compare these two code fragments:
 
-   .. codeinclude:: Misc/Anal 
+   .. codeinclude:: Misc/Anal
       :tag: c3p5
 
 .. slide:: Time Complexity Examples (4)
@@ -344,7 +347,7 @@ Algorithm Analysis
    Compute the rank ordering for all C pixel values in a picture of P
    pixels.
 
-   .. codeinclude:: Misc/Anal 
+   .. codeinclude:: Misc/Anal
       :tag: c3p16
 
    If we use P as the measure, then time is :math:`(P \log P)`.

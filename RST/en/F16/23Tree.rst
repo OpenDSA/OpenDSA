@@ -13,6 +13,9 @@
 2-3 Trees
 =========
 
+2-3 Trees
+---------
+
 .. slide:: 2-3 Tree
 
    * A 2-3 Tree has the following properties:
