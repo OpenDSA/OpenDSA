@@ -9,12 +9,9 @@
 .. slideconf::
    :autoslides: False
 
-=========
-2-3 Trees
-=========
-
-2-3 Trees
----------
+==========
+2-3+ Trees
+==========
 
 .. slide:: 2-3 Tree
 
@@ -28,141 +25,62 @@
    * The 2-3 Tree has a search tree property analogous to the BST.
 
 
-.. slide:: 2-3 Tree Example
+.. slide:: 2-3+ Tree
 
-   * The advantage of the 2-3 Tree over the BST is that it can be
-     updated at low cost.
-
-   .. odsalink:: AV/Indexing/twoThreeTreeCON.css
-
-   .. inlineav:: twoThreedgmCON dgm
-      :align: center
-
-   .. odsascript:: AV/Indexing/twoThreeTreeCON.js
-   .. odsascript:: AV/Indexing/twoThreedgmCON.js
-
-
-.. slide:: 2-3 Tree Insertion (1)
-
-   .. inlineav:: simpleInsertCON ss
-      :output: show
-
-   .. odsascript:: AV/Indexing/simpleInsertCON.js
-
-
-.. slide:: 2-3 Tree Insertion (2)
-
-   .. inlineav:: promoteCON ss
-      :output: show
-
-   .. odsascript:: AV/Indexing/promoteCON.js
-
-
-.. slide:: 2-3 Tree Insertion (3)
-
-   .. inlineav:: splitCON ss
-      :output: show
-
-   .. odsascript:: AV/Indexing/splitCON.js
-
-
-.. slide:: B-Trees (1)
-
-   * The B-Tree is an extension of the 2-3 Tree.
-
-   * The B-Tree is now the standard file organization for applications
-     requiring insertion, deletion, and key range searches.
-
-
-.. slide:: B+-Trees
-
-   * The most commonly implemented form of the B-Tree is the B+-Tree.
-
-   * Internal nodes of the B+-Tree do not store record -- only key
-     values to guild the search.
-
+   * Internal nodes of the 2-3+ Tree do not store records
+      * They only store key values to guide the search.
    * Leaf nodes store records or pointers to records.
-
    * A leaf node may store more or less records than an internal node
      stores keys.
 
+   See this link for examples of operations:
+   http://lti.cs.vt.edu/NewKA/OpenDSA/AV/Development/TTPlusTree.html
 
-.. slide:: B+-Tree Example
-
-   .. odsafig:: Images/BPexamp.png
-      :width: 800
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Example of a :math:`\mathrm{B}^+` tree.
-
-   * In this example, an internal node can have 2 to 4 children
-   * A leaf node can hold 3 to 5 keys
+   See this link for an interactive visualization:
+   http://www.cs.usfca.edu/~galles/visualization/BPlusTree.html
 
 
-.. slide:: B+-Tree Insertion
+.. slide:: 2-3+ Tree Insert Rules
 
-   .. odsafig:: Images/BPins.png
-      :width: 600
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Examples of :math:`\mathrm{B}^+` tree insertion.
-
-
-.. slide:: B+-Tree Deletion (1)
-
-   .. odsafig:: Images/BPexamp.png
-      :width: 800
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Example of a :math:`\mathrm{B}^+` tree.
-
-   * Delete 18
-
-   .. odsafig:: Images/BPsimDel.png
-      :width: 800
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Simple deletion from a :math:`\mathrm{B}^+` tree.
+   #. If you have room in the node, add in the record.
+       * You might need to update parent keys, but not parent structure
+   #. If the node overflows, then split 1/2.
+       * Promote the right node's first key value to the parent.
+       * This can cause a cascade of splits.
 
 
-.. slide:: B+-Tree Deletion (2)
+.. slide:: 2-3+ Tree Deletion Rules (1)
 
-   .. odsafig:: Images/BPexamp.png
-      :width: 800
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Example of a :math:`\mathrm{B}^+` tree.
-
-   * Delete 12
-
-   .. odsafig:: Images/BPborrow.png
-      :width: 800
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Deletion from a :math:`\mathrm{B}^+` tree via borrowing from
-            a sibling.
+   1. If the node has enough records, simply remove this one.
+       * Don't bother to adjust key values of parents
+   2. If the node underflows, attempt to borrow from a sibling.
+       * Do not borrow from cousins.
+       * Borrowing will require update of keys in parents, but not
+         parent structure.
 
 
-.. slide:: B+-Tree Deletion (3)
+.. slide:: 2-3+ Tree Deletion Rules (2)
 
-   .. odsafig:: Images/BPexamp.png
-      :width: 800
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Example of a :math:`\mathrm{B}^+` tree.
+   3. If borrowing is impossible, then that means something has to
+      change structurally.
 
-   * Delete 33
+       * If this is a leaf node, then it goes away (no records left). Which
+         means a deletion from the parent.
+       * If this is an internal node that lost a child, then it is down
+         to one child that must be merged with a sibling.
+       * At a minimum, this means adjustment to other key values up the
+         tree.
+       * It could cause a cascade of merges up the tree. In the limit,
+         the root might go away, making the tree become one level
+         shorter.
 
-   .. odsafig:: Images/BPmerge.png
-      :width: 800
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Deletion from a :math:`\mathrm{B}^+` tree via collapsing siblings
+.. slide:: Special Considerations for Project 2
+
+   * The difference between Key and Value are slightly blurred.
+   * The tree stores KVPairs, each record is a "track".
+   * We represent each track with TWO records: artist|song and
+     song|artist
+   * An artist with multiple songs appears as multiple KVPairs with
+     the same "key" (artist), but different "values" (songs).
+   * When searching, use the "value" to break ties in the "key"
+

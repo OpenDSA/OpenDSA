@@ -279,22 +279,45 @@
       "F16/23Tree": {
         "long_name": "2-3 Trees",
         "sections": {
-          "2-3 Trees": {
-            "twoThreedgmCON": {},
-            "simpleInsertCON": {
-              "long_name": "",
+        }
+      },
+      "F16/Heaps": {
+        "long_name": "Heaps and Priority Queues",
+        "sections": {
+          "Heaps": {
+            "heapinsertCON": {
+              "long_name": "Heap insert Slideshow",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
-            "promoteCON": {
-              "long_name": "",
+            "heapbuildCON": {
+              "long_name": "Heapbuild Slideshow",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
             },
-            "splitCON": {
-              "long_name": "",
+            "heapbuildProofCON": {
+              "long_name": "Heap build analysis proof Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "BuildHeapVisualProof": {
+              "long_name": "Buildheap Visual Proof",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            },
+            "heapmaxCON": {
+              "long_name": "Remove Max Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "heapremoveCON": {
+              "long_name": "Remove Any Slideshow",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
