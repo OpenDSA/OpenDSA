@@ -279,10 +279,7 @@
     "Week 5": {
       "F16/23Tree": {
         "long_name": "2-3 Trees",
-        "sections": {
-          "long_name": "2-3 Trees",
-          "sections": {}
-        }
+        "sections": {}
       },
       "F16/Heaps": {
         "long_name": "Heaps and Priority Queues",
