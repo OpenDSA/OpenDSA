@@ -13,6 +13,9 @@
 2-3+ Trees
 ==========
 
+2-3+ Trees
+----------
+
 .. slide:: 2-3 Tree
 
    * A 2-3 Tree has the following properties:
@@ -33,11 +36,19 @@
    * A leaf node may store more or less records than an internal node
      stores keys.
 
-   See this link for examples of operations:
-   http://lti.cs.vt.edu/NewKA/OpenDSA/AV/Development/TTPlusTree.html
+   See |TTViz_link| for examples of operations.
 
-   See this link for an interactive visualization:
-   http://www.cs.usfca.edu/~galles/visualization/BPlusTree.html
+   .. |TTViz_link| raw:: html
+
+      <a href=" http://lti.cs.vt.edu/NewKA/OpenDSA/AV/Development/TTPlusTree.html"
+      target="_blank">this link</a>
+
+   See |BP_link| for an interactive visualization.
+
+   .. |BP_link| raw:: html
+
+      <a href="http://www.cs.usfca.edu/~galles/visualization/BPlusTree.html"
+      target="_blank">this link</a>
 
 
 .. slide:: 2-3+ Tree Insert Rules
