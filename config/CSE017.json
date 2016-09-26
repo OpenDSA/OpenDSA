@@ -1,6 +1,7 @@
 {
   "title": "CSE017 Fall 2016",
   "desc": "CSE017 Fall 2016",
+  "inst_book_id": 16,
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "tabbed_codeinc": false,
@@ -30,8 +31,7 @@
               "threshold": 5
             }
           },
-          "Some Software Engineering Topics": {
-          }
+          "Some Software Engineering Topics": {}
         }
       },
       "Design/ADT": {
