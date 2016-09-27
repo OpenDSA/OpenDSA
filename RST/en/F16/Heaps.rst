@@ -13,6 +13,9 @@
 Heaps
 =====
 
+Heaps
+-----
+
 .. slide:: Complete Trees
    
    .. odsalink:: AV/slides.css
@@ -80,21 +83,3 @@ Heaps
       :output: show
 
    .. odsascript:: AV/Binary/heapmaxCON.js
-
-
-.. slide:: Tree vs. Trie (1)
-
-   .. odsalink:: AV/Development/TreeTrieCON.css
-
-   .. inlineav:: TreeTimelineCON ss
-      :output: show
-
-   .. odsascript:: AV/Development/TreeTimelineCON.js
-
-
-.. slide:: Tree vs. Trie (2)
-
-   .. inlineav:: TrieTimelineCON ss
-      :output: show
-
-   .. odsascript:: AV/Development/TrieTimelineCON.js

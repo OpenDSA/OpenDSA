@@ -328,6 +328,51 @@
           }
         }
       }
+    },
+    "Week 6": {
+      "F16/Huffman": {
+        "long_name": "Huffman Coding Trees",
+        "sections": {
+          "Huffman Coding": {
+            "huffmanBuildCON": {
+              "long_name": "Building a Huffman Tree",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "huffmanLabelCON": {
+              "long_name": "Labeling a Huffman Tree",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "huffmanCodesCON": {
+              "long_name": "Using Codes",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "huffmanDecodeCON": {
+              "long_name": "Decoding Huffman Codes",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "TreeTrieCON": {
+              "long_name": "Tree vs. Trie",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "TreeTimelineCON": {
+              "long_name": "Tree vs. Trie 2",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      }
     }
   }
 }
