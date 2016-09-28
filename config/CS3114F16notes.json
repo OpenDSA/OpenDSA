@@ -280,7 +280,26 @@
       "F16/23Tree": {
         "long_name": "2-3 Trees",
         "sections": {
-          "2-3+ Trees": {
+          "2-3 Trees": {
+            "twoThreedgmCON": {},
+            "simpleInsertCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "promoteCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "splitCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
           }
         }
       },
