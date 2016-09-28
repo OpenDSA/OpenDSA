@@ -13,6 +13,9 @@
 Binary Trees Part 2
 ===================
 
+Binary Trees Part 2
+-------------------
+
 .. slide:: Full and Complete Binary Trees
 
    .. odsalink:: AV/Binary/FullCompCON.css

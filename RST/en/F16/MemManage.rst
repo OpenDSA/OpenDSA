@@ -13,6 +13,9 @@
 Memory Management
 =================
 
+Memory Management
+-----------------
+
 .. slide:: Memory Management
 
    * Problem: Records (of various lengths) need to be stored.

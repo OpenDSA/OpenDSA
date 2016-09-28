@@ -108,6 +108,16 @@
       "F16/23Tree": {
         "long_name": "2-3 Trees",
         "exercises" : {}
+      },
+      "F16/Heaps": {
+        "long_name": "2-3 Heaps",
+        "exercises" : {}
+      }
+    },
+    "Week 6": {
+      "F16/Huffman": {
+        "long_name": "Huffman Coding Trees",
+        "exercises" : {}
       }
     }
   }

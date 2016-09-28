@@ -14,6 +14,9 @@
 Program Management
 ==================
 
+Program Management
+------------------
+
 .. slide:: Project Management
 
    * Project management is a skill
@@ -152,7 +155,7 @@ Program Management
       * Scheduling (The Plan for How)
       * Issue trackers
       * Documenting/Commenting
-      * Be able to update lists at any time, 
+      * Be able to update lists at any time,
 
    * Repository: GitHub
 
@@ -173,7 +176,7 @@ Program Management
    * Implement and TEST and COMMENT the core
    * Then gradually add functionality
    * On any given day, write only as much code as you have time to debug
-     THAT DAY 
+     THAT DAY
    * This works well with Scheduling and Organizing
 
 .. note::
