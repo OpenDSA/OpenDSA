@@ -1,4 +1,6 @@
 {
+  "title": "Programming Languages",
+  "desc": "Programming Languages",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "lang": "en",
