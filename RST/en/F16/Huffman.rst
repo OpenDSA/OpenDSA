@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
+.. odsalink:: DataStructures/huffman.css
+
 .. slideconf::
    :autoslides: False
 
@@ -40,13 +42,14 @@ Huffman Coding
    .. inlineav:: huffmanBuildCON ss
       :output: show
 
+   .. odsascript:: DataStructures/huffman.js
    .. odsascript:: AV/Binary/huffmanBuildCON.js
 
 
 .. slide:: Assigning Codes
 
 
-   .. inlineav:: huffmanLabelCON ss 
+   .. inlineav:: huffmanLabelCON ss
       :output: show
 
    .. odsascript:: AV/Binary/huffmanLabelCON.js
@@ -55,7 +58,7 @@ Huffman Coding
 .. slide:: Using Codes
 
 
-   .. inlineav:: huffmanCodesCON ss 
+   .. inlineav:: huffmanCodesCON ss
       :output: show
 
    .. odsascript:: AV/Binary/huffmanCodesCON.js
@@ -64,7 +67,7 @@ Huffman Coding
 .. slide:: Decoding
 
 
-   .. inlineav:: huffmanDecodeCON ss 
+   .. inlineav:: huffmanDecodeCON ss
       :output: show
 
    .. odsascript:: AV/Binary/huffmanDecodeCON.js
@@ -86,3 +89,5 @@ Huffman Coding
       :output: show
 
    .. odsascript:: AV/Development/TrieTimelineCON.js
+
+
