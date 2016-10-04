@@ -392,6 +392,16 @@
           }
         }
       }
+    },
+    "Week 7-8": {
+      "F16/Sorting1": {
+        "long_name": "Sorting, Part 1",
+        "sections" : {}
+      },
+      "F16/Sorting2": {
+        "long_name": "Sorting, Part 2",
+        "sections" : {}
+      }
     }
   }
 }
