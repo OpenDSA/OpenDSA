@@ -140,16 +140,6 @@ Sorting Part 2
    .. odsascript:: AV/Development/HeapSortAnalysisCON.js
 
 
-.. slide:: Sorting Lower Bounds
-
-   .. odsalink:: AV/Development/SortingLowerBoundCON.css
-
-   .. inlineav:: SortingLowerBoundCON ss
-      :output: show
-
-   .. odsascript:: AV/Development/SortingLowerBoundCON.js
-
-
 .. slide:: Binsort
 
    .. codeinclude:: Sorting/Binsort 
@@ -226,13 +216,13 @@ Sorting Part 2
 
    * We would like to know a lower bound for the problem of sorting
 
-   * Sorting is $O(n \log n)$ (average, worst cases) because we know of
+   * Sorting is :math:`O(n \log n)` (average, worst cases) because we know of
      algorithms with this upper bound.
 
-   * Sorting I/O takes $\Omega(n)$ time. You have to look at all records
+   * Sorting I/O takes :math:`\Omega(n)` time. You have to look at all records
      to tell if the list is sorted.
 
-   * We will now prove $\Omega(n log n)$ lower bound for sorting.
+   * We will now prove :math:`\Omega(n log n)` lower bound for sorting.
 
 
 .. slide:: Sorting Lower Bound (2)
