@@ -1,0 +1,32 @@
+.PrQuadFullleaf {
+  border-radius: 0.2px;
+  background-color: DarkOrange;
+  line-height: 01px; /*22px*/
+  z-index: 100; /* Prevents the tails of the edges from showing up in the background of the node */
+}
+
+.PrQuadEmptyleaf {
+
+  border-radius: 0.2px;
+  background-color: white;
+  line-height: 01px; /*22px*/
+  z-index: 100; /* Prevents the tails of the edges from showing up in the background of the node */
+}
+
+.jsavcanvas { height: 500px;} /* set the height of the container */
+
+
+#container {
+  /* Change the size of the container */
+  width: 900px;
+  height: 620px;
+}
+
+/* Change the size of the tree nodes */
+#pagedBSTCON .jsavtree .jsavnode, #pagedBSTCON .jsavtree .jsavvalue {
+  line-height: 5px;
+  min-width: 10px;
+  max-width: 10px;
+  min-height: 10px;
+  max-height: 10px;
+}
