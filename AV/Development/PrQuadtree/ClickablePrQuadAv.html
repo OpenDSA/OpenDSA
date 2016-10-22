@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Clickable PrQuadTree AV</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/odsaAV-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/odsaStyle-min.css" type="text/css" />
+  <link rel="stylesheet" href="PrQuadAvC.css" type="text/css" />
+  <style>
+      #container {
+      width: 98%;
+      position: relative;
+     }
+	 </style
+</head>
+<body>
+  <div id="container">
+    <table class="headerTable">
+      <tr>
+        <td class="headerLeft"></td>
+        <td class="headerCenter avTitle"></td>
+        <td class="headerRight">
+          <input type="button" id="about" name="about" />
+          <a id="settings" class="jsavsettings" href="#"></a>
+        </td>
+      </tr>
+    </table>
+    <form id="ssperform">
+      <p>
+        <input type="button" id="insert" name="insert" value="insert" />
+        <input type="button" id="remove" name="remove" value="remove" />
+      </p>
+    </form>
+    <div class="avcontainer">
+      <div class="jsavcontrols"></div>
+      <p class="jsavoutput jsavline"></p>
+	  <table class="headerTable">
+		<td class="headerRight">
+		  <input type="submit" id="submit" name="submit" value="submit" />
+		  <input type="number" min="1" id="text" value="1">
+		  <input type="reset" id="reset" name="reset" value="reset" />
+		</td>
+	  </table>
+    </div>
+    <!--avcontainer-->
+  </div>
+  <!--container-->
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+  <script src="../../../JSAV/lib/jquery.transit.js"></script>
+    <script src="../../../JSAV/lib/raphael.js"></script>
+    <script src="../../../JSAV/build/JSAV-min.js"></script>
+    <script src="../../../lib/odsaUtils-min.js"></script>
+    <script src="../../../lib/odsaAV-min.js"></script>
+  <script src="Quadtree.js"></script>
+  <script>
+    //global alert: true, ODSA 
+    $(document).ready(function() {
+      //document.getElementById("headerTable").style.zIndex = "-1";
+      // Process About button: Pop up a message with an Alert
+      function about() {
+        alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
+      }
+      var numPoint = 1;
+      var insertMode = 0;
+      // Connect action callbacks to the HTML entities
+      // Execute the "Run" button function
+      $('#about').click(about);
+      $('#remove').click(rmv);
+      $('#insert').click(insert);
+      $('#submit').click(sbmt);
+	  $('#reset').click(rst);
+
+      var mapleft = 640;
+      var maptop = 25;
+      var w = 256;
+      var h = 256
+      var txt = 3;
+      var again = true;
+      var submited = false;
+	  
+      var jsav = new JSAV("container", $('.avcontainer'), {
+          settings: settings
+        }),
+        bint = new QuadTree(jsav, 256, 256, txt);
+		rectangle = jsav.g.rect(mapleft, maptop, w, h);
+		runIt();
+      jsav.umsg("Submit number of point for splitting and start inserting");
+
+      function rmv() {
+        if (insertMode == 1) {
+          insertMode = 2;
+          jsav.umsg("Remove Mode");
+          //document.getElementById("remove").style.color = "green";
+          $('#insert').css("background-color", "transparent");
+          $('#remove').css("background-color", "#FFFF00");
+        } else if (insertMode == 0) {
+          insertMode = 0;
+          alert("You must first submit/insert a point to be in this state");
+        }
+      }
+      function sbmt() {
+        if (again) {
+          txt = $('#text').val();
+          submited = true;
+          jsav.umsg("Submited! now you can press insert and start inserting");
+          alert("Subtmited with spliting value " + txt);
+          again = false;
+        }
+        $('#submit').attr("disabled", true);
+      }
+      function rst() {
+		location.reload(true);
+      }
+      function insert() {
+        if (!submited) {
+          alert("You must submit the number of point for spliting!");
+        } else {
+          insertMode = 1;
+          jsav.umsg("Insert Mode");
+          //document.getElementById("insert").style.color = "green";
+          $('#remove').css("background-color", "transparent");
+          $('#insert').css("background-color", "#FFFF00");
+        }
+      }
+      function runIt() {
+        rectangle.click(function(event) {
+          var point = new Point(event.pageX - 648, event.pageY - 223, "'");
+          if (insertMode === 0) {
+            alert("You must submit number point /press insert before interacting with the rectangle");
+          } else if (insertMode === 1) {
+            bint.insert(point, txt);
+          } else if (insertMode === 2) {
+            bint.remove(point);
+          }
+        });
+      }
+	  //////////////////////////////////////////////////////////////////
+      // Start processing here
+      //////////////////////////////////////////////////////////////////
+      // Load the config object with interpreter and code created by odsaUtils.js
+      var config = ODSA.UTILS.loadConfig(),
+        interpret = config.interpreter, // get the interpreter
+        settings = config.getSettings(); // Settings for the AV
+      jsav.displayInit();
+    }());
+  </script>
+</body>
+
+</html>
