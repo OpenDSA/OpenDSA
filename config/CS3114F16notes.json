@@ -414,6 +414,16 @@
         "long_name": "Hashing",
         "sections" : {}
       }
+    },
+    "Week 11": {
+      "F16/Union-Find": {
+        "long_name": "Union/FIND",
+        "sections" : {}
+      },
+      "F16/Graphs": {
+        "long_name": "Graphs",
+        "sections" : {}
+      }
     }
   }
 }
