@@ -92,7 +92,7 @@
 	leafProto.insert = function (rt, point, x, y, w, h, pointer){
 		//if (this.count > 3){
 			this.jsav.step();
-			this.jsav.umsg("pointer reach a leaf node and we will inset. click next");
+			this.jsav.umsg("Currently at a leaf node, so we will try to insert the point here.");
 			(pointer === undefined)? pointer = this.jsav.pointer("curr quad", rt):pointer.hide();
 			pointer.show();
 			this.qdt.layout();

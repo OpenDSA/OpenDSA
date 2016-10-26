@@ -7,6 +7,8 @@
    :author: Cliff Shaffer
    :topic: Randomized Algorithms
 
+.. odsalink:: AV/Development/SkipList/SkipList.css
+
 Skip Lists
 ==========
 
@@ -219,6 +221,9 @@ the nodes stored in ``update[i]`` for indices 0 through 2 have
 their ``forward[i]`` pointers changed to point to the new node.
 This "splices" the new node into the Skip List at all levels.
 
+.. inlineav:: SkipListInsertCON ss
+   :output: show
+
 The ``remove`` function is left as an exercise.
 It is similar to insertion in that the ``update`` array is built
 as part of searching for the record to be deleted.
@@ -264,3 +269,6 @@ worst case (in this case, :math:`\Theta(n)` for a Skip List
 operation), and a rapidly increasing probability of average-case
 performance of :math:`\Theta(\log n)`, that characterizes
 probabilistic data structures.
+
+.. odsascript:: AV/Development/SkipList/SkipList.js
+.. odsascript:: AV/Development/SkipList/SkipListInsertCON.js
