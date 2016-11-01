@@ -298,6 +298,35 @@ Graphs
    .
 
 
+.. slide:: All-pairs Shortest Paths (1)
+
+   * We could run Shortest Paths starting at each vertex.
+
+   * Better is to use Floyd's algorithm.
+      * An example of Dynamic Programming
+      * Simpler than it sounds: A trivial triple loop
+
+   * Define a k-path from vertex :math:`v` to vertex :math:`u` to be
+     any path whose intermediate vertices (aside from :math:`v` and
+     :math:`u`) all have indices less than :math:`k`.
+
+
+.. slide:: All-pairs Shortest Paths (2)
+
+   .. odsafig:: Images/Floyd.png
+      :width: 400
+      :align: center
+      :capalign: justify
+      :figwidth: 90%
+      :alt: An example of :math:`k`-paths in Floyd's algorithm
+
+
+.. slide:: Floyd's Algorithm
+
+   .. codeinclude:: Graphs/Floyd 
+      :tag: Floyd
+
+
 .. slide:: Minimal Cost Spanning Trees
 
    * Minimal Cost Spanning Tree (MST) Problem:
