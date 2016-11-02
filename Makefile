@@ -119,6 +119,9 @@ CS3114F16notes: min
 CS260: min
 	python $(CONFIG_SCRIPT) config/CS260.json --no-lms
 
+COSC2436: min
+	python $(CONFIG_SCRIPT) config/COSC2436.json --no-lms
+
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
 	@cp lib/odsaUtils.js lib/odsaUtils-min.js
