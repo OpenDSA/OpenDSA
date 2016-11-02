@@ -1,9 +1,6 @@
 /**
  * @author Souleymane Dia
  * @version <07/01/2016>~ summer 2016
- * XXX: I mimic the ArrayTree datastructure as closely as possible. In doing so
- * I implemented certain function That I am not sure what they do. They have "????" next to them.
- * This data structure is not ready for use 
  * Task to be completed:
  * support adding in the middle: ~completed
  * support removing from the middle and end ~completed
@@ -159,13 +156,9 @@
             arrowAnchor: "left center",
             fixed: false
           }));
-		  //jsav.step();
           if (xfwr[j] != null) {
-			//jsav.step();
-			//jsav.umsg("update pointers");
             longer = (xfwr[j].getNodeNum() - x.getNodeNum());
             xfwr[j].updateNextPointer(longer, j);
-			//jsav.step();
           }
         }
       }
