@@ -154,7 +154,7 @@ $(document).ready(function() {
     top: 225,
     left: 540
   }).addClass("largeLabel rotated");
-  av.label("|-------------- $n-1$ -------------|", {
+  av.label("|------------ $n-1$ -----------|", {
     top: 320,
     left: 330
   }).addClass("largeLabel");

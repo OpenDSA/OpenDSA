@@ -21,7 +21,7 @@ $(document).ready(function() {
     arr_values[i] = parseInt(Math.random() * 100 + 1, 10);
   }
   arr = av.ds.array(arr_values, {left: 10, top: 0, indexed: true});
-  av.label("|------------------------------ $n$ -------------------------------|", {top: "-20px", left: "20px"}).addClass("mediumLabel");
+  av.label("|------------------------------ $n$ -------------------------------|", {top: "-20px", left: "22px"}).addClass("mediumLabel");
   av.displayInit();
 
   // Slide 2
@@ -39,7 +39,7 @@ $(document).ready(function() {
     arr_values[i] = 0;
   }
   count = av.ds.array(arr_values, {left: 10, top: 120, indexed: true});
-  av.label("|-------------------------- $r$ ---------------------------|", {top: "100px", left: "20px"}).addClass("mediumLabel");
+  av.label("|------------------------- $r$ --------------------------|", {top: "100px", left: "20px"}).addClass("mediumLabel");
   av.step();
 
   // Slide 4
@@ -75,7 +75,7 @@ $(document).ready(function() {
     count.value(arr.value(i) % 10, count.value(arr.value(i) % 10) - 1);
   }
   out = av.ds.array(arr_values, {left: 10, top: 240, indexed: true});
-  av.label("|-------------------------------- $n$ ---------------------------------|", {top: "220px", left: "20px"}).addClass("mediumLabel");
+  av.label("|------------------------------- $n$ --------------------------------|", {top: "220px", left: "20px"}).addClass("mediumLabel");
   av.step();
 
   // Slide 7

@@ -47,7 +47,7 @@ $(document).ready(function() {
   //Slide 6
   av.umsg(interpret("sc6"));
   var eq = av.label("$\\displaystyle\\sum_{i=1}^{n-1}\\frac{i}{2}$", {top: "0px", left: "15px"}).addClass("mediumLabel");
-  var label = av.label("|---------- $n-1$ ---------|",  {top: "40px", left: "310px"}).addClass("largeLabel");
+  var label = av.label("|--------- $n-1$ --------|",  {top: "40px", left: "310px"}).addClass("largeLabel");
   pseudo.highlight("loop1");
   arr.unhighlight(4);
   arr.removeClass([0, 1, 2, 3], "greenbg");

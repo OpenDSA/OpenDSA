@@ -24,10 +24,10 @@ $(document).ready(function() {
 
   // Slide 2
   av.umsg(interpret("Slide 2"));
-  label_set.push(av.label("XYZ", {top: "-13px", left: "395px"}).addClass("mediumLabel"));
+  label_set.push(av.label("XYZ", {top: "-15px", left: "395px"}).addClass("mediumLabel"));
   set.push(av.g.rect(360, 2, 100, 20).css({fill: "orange", opacity: "0.5"}));
   set.push(av.g.rect(360, 22, 100, 80));
-  label_set.push(av.label("XYZ YZX<br>XZY ZXY<br>YXZ ZYX", {top: "15px", left: "380px"}).addClass("mediumLabel"));
+  label_set.push(av.label("XYZ YZX<br>XZY ZXY<br>YXZ ZYX", {top: "12px", left: "378px"}).addClass("mediumLabel"));
   av.step();
 
   // Slide 3
@@ -41,9 +41,9 @@ $(document).ready(function() {
   set.push(left_branch_1);
   label_set.push(av.label("Yes", {top: "90px", left: "310px"}).addClass("smallLabel"));
   set.push(av.g.rect(275, 140, 50, 20).css({fill: "orange", opacity: "0.5"}));
-  label_set.push(av.label("YXZ", {top: "126px", left: "285px"}).addClass("mediumLabel"));
+  label_set.push(av.label("YXZ", {top: "124px", left: "285px"}).addClass("mediumLabel"));
   set.push(av.g.rect(275, 160, 50, 80));
-  label_set.push(av.label("YXZ<br>YZX<br>ZYX", {top: "155px", left: "285px"}).addClass("mediumLabel"));
+  label_set.push(av.label("YXZ<br>YZX<br>ZYX", {top: "150px", left: "285px"}).addClass("mediumLabel"));
   av.step();
 
   // Slide 5
@@ -52,9 +52,9 @@ $(document).ready(function() {
   set.push(right_branch_1);
   label_set.push(av.label("No", {top: "90px", left: "485px"}).addClass("smallLabel"));
   set.push(av.g.rect(495, 140, 50, 20).css({fill: "orange", opacity: "0.5"}));
-  label_set.push(av.label("XYZ", {top: "126px", left: "505px"}).addClass("mediumLabel"));
+  label_set.push(av.label("XYZ", {top: "124px", left: "505px"}).addClass("mediumLabel"));
   set.push(av.g.rect(495, 160, 50, 80));
-  label_set.push(av.label("XYZ<br>XZY<br>ZXY", {top: "155px", left: "505px"}).addClass("mediumLabel"));
+  label_set.push(av.label("XYZ<br>XZY<br>ZXY", {top: "150px", left: "505px"}).addClass("mediumLabel"));
   av.step();
 
   // Slide 6
@@ -73,9 +73,9 @@ $(document).ready(function() {
   set.push(left_branch_2);
   label_set.push(av.label("Yes", {top: "230px", left: "225px"}).addClass("smallLabel"));
   set.push(av.g.rect(190, 280, 50, 20).css({fill: "orange", opacity: "0.5"}));
-  label_set.push(av.label("YZX", {top: "266px", left: "200px"}).addClass("mediumLabel"));
+  label_set.push(av.label("YZX", {top: "264px", left: "200px"}).addClass("mediumLabel"));
   set.push(av.g.rect(190, 300, 50, 40));
-  label_set.push(av.label("YZX<br>ZYX", {top: "282px", left: "200px"}).addClass("mediumLabel"));
+  label_set.push(av.label("YZX<br>ZYX", {top: "280px", left: "200px"}).addClass("mediumLabel"));
   av.step();
 
   // Slide 9
@@ -117,9 +117,9 @@ $(document).ready(function() {
   set.push(left_branch_3);
   label_set.push(av.label("Yes", {top: "230px", left: "445px"}).addClass("smallLabel"));
   set.push(av.g.rect(420, 280, 50, 20).css({fill: "orange", opacity: "0.5"}));
-  label_set.push(av.label("XZY", {top: "266px", left: "430px"}).addClass("mediumLabel"));
+  label_set.push(av.label("XZY", {top: "264px", left: "430px"}).addClass("mediumLabel"));
   set.push(av.g.rect(420, 300, 50, 40));
-  label_set.push(av.label("XZY<br>ZXY", {top: "282px", left: "430px"}).addClass("mediumLabel"));
+  label_set.push(av.label("XZY<br>ZXY", {top: "280px", left: "430px"}).addClass("mediumLabel"));
   av.step();
 
   // Slide 13
