@@ -1,6 +1,15 @@
 {
   "translations" :{
     "en": {
+    	"sc1": "Let's look at a visualization to explain why the cost for buildheap is $\\theta(n)$. We will use an example with 31 records in the heap. This means thatthere are 16 leaf nodes and 15 internal nodes.",
+    	"sc2": "At depth 4 there are 2<sup>4</sup> = 16 nodes. Nodes are already at the bottom, and so cannot move down.",
+    	"sc3": "At depth 3 there are 2<sup>3</sup> = 8 nodes. Each can move at most 1 step to reach the bottom.",
+    	"sc4": "At depth 2 there are 2<sup>2</sup> = 4 nodes. Each can move at most 2 steps to reach the bottom.",
+    	"sc5": "At depth 1 there are 2<sup>1</sup> = 2 nodes. Each can move at most 3 steps to reach the bottom.",
+    	"sc6": "At depth 0 there is a single node that can move at most 4 steps to reach the bottom.",
+    	"sc7": "Rearrange the rectangles...",
+    	"sc12": "The total area of the resulting shape is bounded by 2 X (8+4+2+1) = 30 = 2 X (2<sup>4</sup> - 1).",
+    	"sc13": "We have n=31 nodes, and so the total amount of work required is $\\theta(n)$."
     }
   }
 }

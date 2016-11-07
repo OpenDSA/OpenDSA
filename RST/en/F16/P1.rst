@@ -1,0 +1,49 @@
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://algoviz.org/OpenDSA for more details.
+.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
+
+.. avmetadata::
+   :author: Cliff Shaffer
+
+.. slideconf::
+   :autoslides: False
+
+================================
+Project 1 Implementation Details
+================================
+
+.. slide:: Design Points
+
+   * Normally for container classes we would want to detach the
+     implementation from the data type. But since the hash function is
+     tied to the key, we will just hard code them to store strings in
+     P1.
+
+   * A bad design: Main file (Memman.java) initializes program and
+     implements the command processor. Calls hash tables to do main
+     operations.
+
+   * A better design:
+
+     * Separate logical activities into separate classes (even if a
+       couple of them end up small this time).
+     * Main class only initializes the program
+     * Syntax is done in separate command processor class
+     * Semantics are handled in a separate "world" or "database"
+       class. For P1, this has hash tables and memory manager.
+
+.. slide:: Byte manipulation
+
+   * System.arraycopy is useful for copying bytes.
+   * String.getBytes will give you a byte array from a string.
+   * Be careful about manipulating the 2-byte length field
+
+   ::
+
+     lenb = new byte[2];
+     lenbb = ByteBuffer.wrap(lenb);
+     int len = 25;
+     lenbb.putShort(0, (short)len);     // Put into byte buffer
+     int msgLength = lenbb.getShort(0); // Take it back out
+

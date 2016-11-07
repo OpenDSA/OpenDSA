@@ -1,25 +1,8 @@
 {
   "build_dir": "Books",
   "code_dir": "SourceCode/",
-  "code_lang": {
-    "Java": {
-      "ext": [
-        "java"
-      ],
-      "label": "Java",
-      "lang": "java"
-    },
-    "Processing": {
-      "ext": [
-        "pde"
-      ],
-      "label": "Processing",
-      "lang": "java"
-    }
-  },
   "lang": "en",
   "build_JSAV": false,
-  "allow_anonymous_credit": true,
   "suppress_todo": false,
   "build_cmap": true,
   "glob_exer_options": {

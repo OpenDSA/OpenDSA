@@ -1,10 +1,14 @@
 /*global ODSA */
-"use strict";
+// Written by Sally Hamouda (updated by Cliff Shaffer)
 $(document).ready(function () {
-  var av = new JSAV("IneffBinaryTreeRangeCON");
-  
-  var pseudo = av.code({url: "OpenDSA/SourceCode/Java/BTRecurTutor/RecIneffRng.java",
-                       lineNumbers: false,top:10 , left: 100});
+  "use strict";
+  var av_name = "IneffBinaryTreeRangeCON";
+  // Load the config object with interpreter and code created by odsaUtils.js
+  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
+      interpret = config.interpreter,       // get the interpreter
+      code = config.code;                   // get the code object
+  var av = new JSAV(av_name);
+  var pseudo = av.code(code[0]);
 
   // Slide 1
   av.umsg("Suppose that you want to write a recursive function named range that, given a root to a BST, a key value min, and a key value max, returns the number of nodes having key values that fall between min and max. Function range should visit as few nodes in the BST as possible. An inefficient solution is shown.");

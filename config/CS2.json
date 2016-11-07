@@ -1,17 +1,16 @@
 {
+  "title": "CS2 Software Design & Data Structures",
+  "desc": "CS2 Software Design & Data Structures",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
-  "code_lang": {
-    "Java_Generic": { "ext":["java"], "label":"Java (Generic)","lang":"java"}
-  },
   "tabbed_codeinc": false,
   "lang": "en",
   "build_JSAV": false,
   "build_cmap": false,
-  "allow_anonymous_credit": true,
   "suppress_todo": true,
-  "tag": "CS2",
   "assumes": "ADT; relations",
+  "dispModComp": true,
+  "tag": "CS2",
   "chapters": {
     "Preface": {
       "Intro": {
@@ -81,13 +80,13 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            },
-            "ListADTPROG": {
-              "long_name": "List ADT Programming Exercise",
-              "required": true,
-              "points": 1.0,
-              "threshold": 3
             }
+          },
+          "List ADT Programming Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 1.0
           }
         }
       },
@@ -430,77 +429,53 @@
       "RecurTutor/CodeCompletionEx": {
         "long_name": "Code Completion Exercises",
         "sections": {
-          "Programming Exercise: Largest": {
-            "RecCLargestPROG": {
-              "long_name": "Recursion Code Completion Exercise Largest",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
+          "Recursion Programming Exercise: Largest": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 1.0
           },
-          "Programming Exercise: Multiply": {
-            "RecCMultiplyPROG": {
-              "long_name": "Recursion Code Completion Exercise Multiply",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
+          "Recursion Programming Exercise: Multiply": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 1.0
           },
-          "Programming Exercise: GCD": {
-            "RecCGcdPROG": {
-              "long_name": "Recursion Code Completion Exercise GCD",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
+          "Recursion Programming Exercise: GCD": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 1.0
           },
-          "Programming Exercise: Logs": {
-            "RecCLogPROG": {
-              "long_name": "Recursion Code Completion Exercise Log",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
+          "Recursion Programming Exercise: log": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 1.0
           },
-          "Programming Exercise: Cummulative Sum": {
-            "RecCSumtokPROG": {
-              "long_name": "Recursion Code Completion Exercise Sum to k",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
+          "Recursion Programming Exercise: Cummulative Sum": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 1.0
           },
-          "Programming Exercise: Array Sum": {
-            "RecCAddoddPROG": {
-              "long_name": "Recursion Code Completion Exercise Add Odd",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
+          "Recursion Programming Exercise: Add odd positions": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 1.0
           },
-          "Programming Exercise: Digits Sum": {
-            "RecCSumOfDigitsPROG": {
-              "long_name": "Recursion Code Completion Exercise Sum of Digits",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
+          "Recursion Programming Exercise: Sum Of the Digits": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 1.0
           },
-          "Programming Exercise: Characters": {
-            "RecCCountChrPROG": {
-              "long_name": "Recursion Code Completion Exercise Count Characters",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
+          "Recursion Programming Exercise: Count Characters": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 1.0
           }
         }
       },
@@ -511,73 +486,52 @@
       "RecurTutor/HarderCodeCompletionEx": {
         "long_name": "Harder Code Completion Exercises",
         "sections": {
-          "Programming Exercise: Array Min": {
-            "RecHMinPROG": {
-              "long_name": "Recursion Code Completion Exercise: Minimum",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
+          "Recursion Programming Exercise: Minimum of array": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 1.0
           },
-          "Programming Exercise: String Reverse": {
-            "RecHIsReversePROG": {
-              "long_name": "Recursion Code Completion Exercise: Is Reverse",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
+          "Recursion Programming Exercise: Is Reverse": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 1.0
           },
-          "Programming Exercise: Decimal to Binary": {
-            "RecHDecibinaryPROG": {
-              "long_name": "Recursion Code Completion Exercise: Decimal to Binary",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
+          "Recursion Programming Exercise: Decimal to Binary": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 1.0
           }
         }
       },
       "RecurTutor/WritingEx": {
         "long_name": "Code Writing Exercises",
         "sections": {
-          "Programming Exercise: Cannonballs": {
-            "RecWCannonballPROG": {
-              "long_name": "Recursion Code Writing Exercise: Cannon Ball",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
+          "Recursion Programming Exercise: Cannonballs": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 1.0
           },
-          "Programming Exercise: Palindrome": {
-            "RecWCheckPalPROG": {
-              "long_name": "Recursion Code Writing Exercise: Check Palindrom",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
+          "Recursion Programming Exercise: Check Palindrome": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 1.0
           },
-          "Programming Exercise: Reverse String": {
-            "RecWRevStringPROG": {
-              "long_name": "Recursion Code Writing Exercise: Reverse String",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
+          "Recursion Programming Exercise: Subset Sum": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 1.0
           },
-          "Programming Exercise: Pascal's Triangle": {
-            "RecWPascalPROG": {
-              "long_name": "Recursion Code Writing Exercise: Pascal",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1.0,
-              "showhide": "Show"
-            }
+          "Recursion Programming Exercise: Pascal Triangle": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 1.0
           }
         }
       },
@@ -657,7 +611,7 @@
               "threshold": 1.0,
               "showhide": "Show"
             }
-          }, 
+          },
           "How Many Times Tracing Exercises": {
             "RecTraceSummHowmany": {
               "long_name": "Recursion Tracing Exercises Set 5",
@@ -666,7 +620,7 @@
               "threshold": 1.0,
               "showhide": "Show"
             }
-          },        
+          },
           "Harder Tracing Exercises": {
             "RecTraceSummHard": {
               "long_name": "Recursion Tracing Exercises Set 6",

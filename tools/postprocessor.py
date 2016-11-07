@@ -9,6 +9,7 @@ import re
 import codecs
 import json
 import xml.dom.minidom as minidom
+from collections import Iterable
 from pprint import pprint
 from xml.etree.ElementTree import ElementTree, SubElement, Element
 from bs4 import BeautifulSoup, element
@@ -176,14 +177,16 @@ def update_TermDef(glossary_file, terms_dict):
         i-= 1
     i += 1
 
+
 triple_up = re.compile(r'^\.\.[\/\\]\.\.[\/\\]\.\.[\/\\]')
 def break_up_sections(path, module_data, config):
   book_name = config.book_name
   sections = module_data['sections']
   module_map = config['module_map']
   course_id = config.course_id
-  item_url = config.LMS_url+"/courses/{course_id}/modules/items/{item_id}"
-  assignment_url = config.LMS_url+"/courses/{course_id}/assignments/{assignment_id}?module_item_id={module_item_id}"
+  if bool(module_map):
+    item_url = config.LMS_url+"/courses/{course_id}/modules/items/{module_item_id}"
+    assignment_url = config.LMS_url+"/courses/{course_id}/assignments/{assignment_id}?module_item_id={module_item_id}"
 
   # Read contents of module HTML file
   try:
@@ -219,11 +222,11 @@ def break_up_sections(path, module_data, config):
     for a_tag in soup(tag_name):
       if a_tag.has_attr(tag_url):
         if triple_up.match(a_tag[tag_url]):
-          a_tag[tag_url] = 'OpenDSA/' + a_tag[tag_url][len('../../../'):]
+          a_tag[tag_url] = '/OpenDSA/' + a_tag[tag_url][len('../../../../../../'):]
         elif a_tag[tag_url].startswith('_static/'):
-          a_tag[tag_url] = 'OpenDSA/Books/'+book_name+'/html/'+a_tag[tag_url]
+          a_tag[tag_url] = '/OpenDSA/Books/'+book_name+'/html/'+a_tag[tag_url]
         elif a_tag[tag_url].startswith('_images/'):
-          a_tag[tag_url] = 'OpenDSA/Books/'+book_name+'/html/'+a_tag[tag_url]
+          a_tag[tag_url] = '/OpenDSA/Books/'+book_name+'/html/'+a_tag[tag_url]
 
 
   '''
@@ -263,13 +266,15 @@ def break_up_sections(path, module_data, config):
       if external.endswith('.html'):
         # Snip off the ".html"
         external = external[:-5]
+
         # Map it to the proper folder in canvas
-        if external in module_map:
-          module_obj = module_map[external]
-          if 'assignment_id' in module_map[external]:
-            external = assignment_url.format(course_id=course_id, module_item_id=module_obj.get('module_item_id'), assignment_id=module_obj.get('assignment_id'))
-          else:
-            external = item_url.format(course_id=course_id, item_id=module_obj.get('item_id'))
+        if bool(module_map):
+          if external in module_map:
+            module_obj = module_map[external]
+            if 'assignment_id' in module_map[external]:
+              external = assignment_url.format(course_id=course_id, module_item_id=module_obj.get('module_item_id'), assignment_id=module_obj.get('assignment_id'))
+            else:
+              external = item_url.format(course_id=course_id, module_item_id=module_obj.get('module_item_id'))
         # Force it to approach it from the top
         link['href'] = '#'.join((external,internal))
       # Do something with the actual href
@@ -290,7 +295,9 @@ def break_up_sections(path, module_data, config):
   if element:
     element.extract()
 
-  total_real_exercises = len(sections)#0
+  total_real_exercises = 0
+  if sections != None:
+    total_real_exercises = len(sections)#0
   #for exercise, properties in exercises.items():
   #  if 'points' in properties:
   #    total_real_exercises += 1
@@ -314,8 +321,8 @@ def break_up_sections(path, module_data, config):
     # Expand this to handle src
     for a_tag in soup.find_all(tag_name):
       if a_tag.has_attr(tag_url) and (
-            a_tag[tag_url].startswith('OpenDSA/AV/')
-            or a_tag[tag_url].startswith('OpenDSA/DataStructures/')):
+            a_tag[tag_url].startswith('/OpenDSA/AV/')
+            or a_tag[tag_url].startswith('/OpenDSA/DataStructures/')):
         name = os.path.splitext(os.path.basename(a_tag[tag_url]))[0]
         script_tag = a_tag.extract()
         if "CON" in name and tag_name == "script":
@@ -406,7 +413,7 @@ def break_up_sections(path, module_data, config):
     # Add the relevant content back in
     for body_index, (parent, body) in enumerate(slide):
       parent.insert(body_index, body)
-    if index != 0:
+    if index != 0 and sections.values()[index-1] != None:
       potential_exercises = sections.values()[index-1].keys()
     else:
       potential_exercises = []
@@ -422,7 +429,7 @@ def break_up_sections(path, module_data, config):
     #if verbose: print(len(sss_div))
     # Add back in slide specific scripts
     sgs_div.insert_after(sss_div)
-    if index != 0:
+    if index != 0 and sections.values()[index-1] != None:
         potential_exercises = sections.values()[index-1].keys()
     else:
         potential_exercises = []
@@ -436,6 +443,7 @@ def break_up_sections(path, module_data, config):
   if verbose:
     print "\tPhase 3: complete"
 
+
 def pretty_print_xml(data, file_path):
     ElementTree(data).write(file_path)
     xml = minidom.parse(file_path)
@@ -443,7 +451,10 @@ def pretty_print_xml(data, file_path):
         # [23:] omits the stupid xml header
         resaved_file.write(xml.toprettyxml()[23:])
 
-def make_lti(config):
+
+def make_lti(config, no_lms = False):
+  if not no_lms:
+    config['module_map'] = get_module_map(config)
   dest_dir = config.book_dir + config.rel_book_output_path
   # Iterate through all of the existing files
   ignore_files = ('Gradebook.html', 'search.html', 'conceptMap.html',
@@ -466,6 +477,43 @@ def make_lti(config):
   config_file_path = os.path.join(dest_dir, '..', 'lti_html', 'lti_config.json')
   with codecs.open(config_file_path, 'w', 'utf-8') as o:
     o.write(json.dumps(config.__dict__))
+
+
+def get_module_map(config):
+    """extract module map from config object"""
+    module_map = {}
+    chapters = config['chapters']
+
+    for chapter in chapters:
+        chapter_obj = chapters[chapter]
+
+        if not isinstance(chapter_obj, Iterable):
+            continue
+
+        for module in chapter_obj:
+            module_obj = chapter_obj[module]
+
+            if not isinstance(module_obj, Iterable):
+                continue
+
+            module_name = module.split('/')[1] if '/' in module else module
+            module_map[module_name] = {}
+
+            sections = module_obj.get("sections")
+            if bool(sections) and sections != None:
+                section_count = 0
+                for section in sections:
+                    section_obj = sections[section]
+                    if section_obj != None and isinstance(section_obj, dict):
+                        section_count += 1
+                        if section_count == 1:
+                            module_map[module_name]['module_item_id'] = section_obj['lms_item_id'] if section_obj['lms_item_id'] else None
+                            module_map[module_name]['assignment_id'] = section_obj['lms_assignment_id'] if section_obj['lms_assignment_id'] else None
+            else:
+                module_map[module_name]['module_item_id'] = module_obj['lms_section_item_id'] if module_obj['lms_section_item_id'] else None
+
+
+    return module_map
 
 
 def main(argv):

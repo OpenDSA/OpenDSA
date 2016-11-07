@@ -12,8 +12,8 @@
       "sc12": "At $i=4$ four comparisons are required, so four boxes.",
       "sc16": "At $i=5$ five comparisons are required, so five boxes.",
       "sc21": "The total running time now will be the total surface area of this shape.",
-      "sc22_1": "The total area will be the sum of the areas of the big traingle <br>",
-      "sc22_2": "+ <br> the series of $(n-1)$ small traingles.",
+      "sc22_1": "The total area will be the sum of the areas of the big triangle <br>",
+      "sc22_2": "+ <br> the series of $(n-1)$ small triangles.",
       "sc23": "<br>So, the total area is $\\frac{(n-1)(n-1)}{2} + \\frac{(n-1)}{2}$ which gives $\\frac{n(n-1)}{2}$.",
       "sc24": "Therefore, the worst case running time of insertion sort is $\\theta(n^2)$."
     }

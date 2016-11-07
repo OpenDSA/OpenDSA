@@ -115,11 +115,6 @@ Make the call, and let their own base case handle it.
    So the function should simply increment the root value, and make
    recursive calls on the children.
 
-As an exercise, write a simpler variant of the node update function
-(increment the value of each node by one).
-
-.. avembed:: Exercises/BTRecurTutor/BTincPROG.html ka
-  
 In rare problems, you might need to explicitly check if the children
 are null or access the children values for each node.
 For example, you might need to check if all nodes in a tree satisfy

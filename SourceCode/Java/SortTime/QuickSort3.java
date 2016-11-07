@@ -1,141 +1,38 @@
 
-public static void sorttime(){
+   public static void quickSortMedianOfThree(int[] intArray,int startpos,int length) {
 
 
-// inssort
-setupint();
-
-
-quickSortMedianOfThree(int10,10);
-System.out.println("quickSortMedianOfThree Time for lists of size 10: "+ totaltime);
-
-quickSortMedianOfThree(int10Asc,10);
-System.out.println("quickSortMedianOfThree Time for lists of size 10 in ascending order: "+ totaltime);
-
-quickSortMedianOfThree(int10Des,10);
-System.out.println("quickSortMedianOfThree Time for lists of size 10 in descending order: "+ totaltime);
-
-quickSortMedianOfThree(int10Ide,10);
-System.out.println("quickSortMedianOfThree Time for lists of size 10 idendical keys: "+ totaltime);
-
-quickSortMedianOfThree(int10FewDup,10);
-System.out.println("quickSortMedianOfThree Time for lists of size 10 Few Duplicates: "+ totaltime);
-
-quickSortMedianOfThree(int10SomeDup,10);
-System.out.println("quickSortMedianOfThree Time for lists of size 10 Some Duplicates: "+ totaltime);
-
-quickSortMedianOfThree(int10ManyDup,10);
-System.out.println("quickSortMedianOfThree Time for lists of size 10 Many Duplicates: "+ totaltime);
-
-quickSortMedianOfThree(int10SlightlyDis,10);
-System.out.println("quickSortMedianOfThree Time for lists of size 10 Slightly Distributed: "+ totaltime);
-
-System.out.println();
-
-quickSortMedianOfThree(int100,100);
-System.out.println("quickSortMedianOfThree Time for lists of size 100: "+totaltime);
-
-quickSortMedianOfThree(int100Asc,100);
-System.out.println("quickSortMedianOfThree Time for lists of size 100 in ascending order: "+ totaltime);
-
-quickSortMedianOfThree(int100Des,100);
-System.out.println("quickSortMedianOfThree Time for lists of size 100 in descending order: "+ totaltime);
-
-quickSortMedianOfThree(int100Ide,100);
-System.out.println("quickSortMedianOfThree Time for lists of size 100 idendical keys: "+ totaltime);
-
-quickSortMedianOfThree(int100FewDup,100);
-System.out.println("quickSortMedianOfThree Time for lists of size 100 Few Duplicates: "+ totaltime);
-
-quickSortMedianOfThree(int100SomeDup,100);
-System.out.println("quickSortMedianOfThree Time for lists of size 100 Some Duplicates: "+ totaltime);
-
-quickSortMedianOfThree(int100ManyDup,100);
-System.out.println("quickSortMedianOfThree Time for lists of size 100 Many Duplicates: "+ totaltime);
-
-quickSortMedianOfThree(int100SlightlyDis,100);
-System.out.println("quickSortMedianOfThree Time for lists of size 100 Slightly Distributed: "+ totaltime);
-
-System.out.println();
-
-quickSortMedianOfThree(int1000,1000);
-System.out.println("quickSortMedianOfThree Time for lists of size 1000: "+totaltime);
-
-quickSortMedianOfThree(int1000Asc,1000);
-System.out.println("quickSortMedianOfThree Time for lists of size 1000 in ascending order: "+ totaltime);
-
-quickSortMedianOfThree(int1000Des,1000);
-System.out.println("quickSortMedianOfThree Time for lists of size 1000 in descending order: "+ totaltime);
-
-quickSortMedianOfThree(int1000Ide,1000);
-System.out.println("quickSortMedianOfThree Time for lists of size 1000 idendical keys: "+ totaltime);
-
-quickSortMedianOfThree(int1000FewDup,1000);
-System.out.println("quickSortMedianOfThree Time for lists of size 1000 Few Duplicates: "+ totaltime);
-
-quickSortMedianOfThree(int1000SomeDup,1000);
-System.out.println("quickSortMedianOfThree Time for lists of size 1000 Some Duplicates: "+ totaltime);
-
-quickSortMedianOfThree(int1000SlightlyDis,1000);
-System.out.println("quickSortMedianOfThree Time for lists of size 1000 Slightly Distributed: "+ totaltime);
-
-quickSortMedianOfThree(int1000ManyDup,1000);
-System.out.println("quickSortMedianOfThree Time for lists of size 1000 Many Duplicates: "+ totaltime);
-
-System.out.println();
-
-quickSortMedianOfThree(int10000,10000);
-System.out.println("quickSortMedianOfThree Time for lists of size 10000: "+totaltime);
-
-quickSortMedianOfThree(int10000Asc,10000);
-System.out.println("quickSortMedianOfThree Time for lists of size 10000 in ascending order: "+ totaltime);
-
-quickSortMedianOfThree(int10000Des,10000);
-System.out.println("quickSortMedianOfThree Time for lists of size 10000 in descending order: "+ totaltime);
-
-quickSortMedianOfThree(int10000Ide,10000);
-System.out.println("quickSortMedianOfThree Time for lists of size 10000 idendical keys: "+ totaltime);
-
-quickSortMedianOfThree(int10000FewDup,10000);
-System.out.println("quickSortMedianOfThree Time for lists of size 10000 Few Duplicates: "+ totaltime);
-
-quickSortMedianOfThree(int10000SomeDup,10000);
-System.out.println("quickSortMedianOfThree Time for lists of size 10000 Some Duplicates: "+ totaltime);
-
-quickSortMedianOfThree(int10000SlightlyDis,10000);
-System.out.println("quickSortMedianOfThree Time for lists of size 10000 Slightly Distributed: "+ totaltime);
-
-quickSortMedianOfThree(int10000ManyDup,10000);
-System.out.println("quickSortMedianOfThree Time for lists of size 10000 Many Duplicates: "+ totaltime);
-
-System.out.println();
-
+        recQuickSort(intArray, startpos, startpos+length - 1);
 
 }
 
 
 
-   public static void quickSortMedianOfThree(int[] intArray,int length) {
+    public static void quickSortMedianOfThreeInteger(Integer[] intArray,int startpos,int length) {
 
-    long startTime,endTime;
 
-    // INPUT
+        recQuickSortInteger(intArray, startpos, startpos+length - 1);
 
-    int[] A = new int[length];
-    int numruns = 20;
-    int runs;
-
-    System.out.println("Quick - Median of Three");
-    for (runs=0; runs<numruns; runs++) {
-    for (i=0; i<length; i++) A[i] = intArray[i];
-        startTime=System.nanoTime();
-        recQuickSort(A, 0, length - 1);
-        endTime   = System.nanoTime();
-        totalTime =+ (endTime - startTime);
     }
-    totaltime = totaltime/numruns;
-    System.out.print(totalTime);
-}
+
+
+    public static void quickSortMedianOfThreeDouble(double[] intArray,int startpos,int length) {
+
+        recQuickSortDouble(intArray, startpos, startpos+length - 1);
+
+    }
+
+    public static void recQuickSortInteger(Integer[] intArray, int left, int right) {
+        int size = right - left + 1;
+        if (size <= 3)
+            manualSortInteger(intArray, left, right);
+        else {
+            double median = medianOf3Integer(intArray, left, right);
+            int partition = partitionItInteger(intArray, left, right, median);
+            recQuickSortInteger(intArray, left, partition - 1);
+            recQuickSortInteger(intArray, partition + 1, right);
+        }
+    }
 
   public static void recQuickSort(int[] intArray, int left, int right) {
     int size = right - left + 1;
@@ -148,6 +45,19 @@ System.out.println();
       recQuickSort(intArray, partition + 1, right);
     }
   }
+
+    public static void recQuickSortDouble(double[] intArray, int left, int right) {
+        int size = right - left + 1;
+        if (size <= 3)
+            manualSortDouble(intArray, left, right);
+        else {
+            double median = medianOf3Double(intArray, left, right);
+            int partition = partitionItDouble(intArray, left, right, median);
+            recQuickSortDouble(intArray, left, partition - 1);
+            recQuickSortDouble(intArray, partition + 1, right);
+        }
+    }
+
   public static int medianOf3(int[] intArray, int left, int right) {
     int center = (left + right) / 2;
 
@@ -164,11 +74,37 @@ System.out.println();
     return intArray[right - 1];
   }
 
-  public static void swap(int[] intArray, int dex1, int dex2) {
-    int temp = intArray[dex1];
-    intArray[dex1] = intArray[dex2];
-    intArray[dex2] = temp;
-  }
+    public static Integer medianOf3Integer(Integer[] intArray, int left, int right) {
+        int center = (left + right) / 2;
+
+        if (intArray[left].compareTo(intArray[center])>0)
+            swapInteger(intArray, left, center);
+
+        if (intArray[left].compareTo(intArray[right])>0)
+            swap(intArray, left, right);
+
+        if (intArray[center].compareTo(intArray[right])>0)
+            swap(intArray, center, right);
+
+        swapInteger(intArray, center, right - 1);
+        return intArray[right - 1];
+}
+
+    public static double medianOf3Double(double[] intArray, int left, int right) {
+        int center = (left + right) / 2;
+
+        if (intArray[left] > intArray[center])
+            swapDouble(intArray, left, center);
+
+        if (intArray[left] > intArray[right])
+            swapDouble(intArray, left, right);
+
+        if (intArray[center] > intArray[right])
+            swapDouble(intArray, center, right);
+
+        swapDouble(intArray, center, right - 1);
+        return intArray[right - 1];
+    }
 
   public static int partitionIt(int[] intArray, int left, int right, double pivot) {
     int leftPtr = left;
@@ -187,6 +123,43 @@ System.out.println();
     swap(intArray, leftPtr, right - 1);
     return leftPtr;
   }
+
+    public static int partitionItDouble(double[] intArray, int left, int right, double pivot) {
+        int leftPtr = left;
+        int rightPtr = right - 1;
+
+        while (true) {
+            while (intArray[++leftPtr] < pivot)
+                ;
+            while (intArray[--rightPtr] > pivot)
+                ;
+            if (leftPtr >= rightPtr)
+                break;
+            else
+                swapDouble(intArray, leftPtr, rightPtr);
+            }
+            swapDouble(intArray, leftPtr, right - 1);
+            return leftPtr;
+    }
+
+
+    public static int partitionItInteger(Integer[] intArray, int left, int right, double pivot) {
+        int leftPtr = left;
+        int rightPtr = right - 1;
+
+        while (true) {
+            while (pivot > intArray[++leftPtr])
+                ;
+            while (intArray[--rightPtr] > pivot)
+                ;
+            if (leftPtr >= rightPtr)
+                break;
+            else
+                swapInteger(intArray, leftPtr, rightPtr);
+        }
+        swapInteger(intArray, leftPtr, right - 1);
+        return leftPtr;
+    }
 
   public static void manualSort(int[] intArray, int left, int right) {
     int size = right - left + 1;
@@ -208,6 +181,73 @@ System.out.println();
 
 
 
+    public static void manualSortInteger(Integer[] intArray, int left, int right) {
+        int size = right - left + 1;
+        if (size <= 1)
+            return;
+        if (size == 2) {
+            if (intArray[left].compareTo(intArray[right]) > 0)
+            swapInteger(intArray, left, right);
+            return;
+        } else {
+            if (intArray[left].compareTo(intArray[right-1]) > 0)
+                swapInteger(intArray, left, right - 1);
+            if (intArray[left].compareTo(intArray[right]) > 0)
+                swapInteger(intArray, left, right);
+            if (intArray[right-1].compareTo(intArray[right]) > 0)
+                swapInteger(intArray, right - 1, right);
+            }
+        }
 
+
+
+    public static void manualSortDouble(double[] intArray, int left, int right) {
+        int size = right - left + 1;
+        if (size <= 1)
+            return;
+        if (size == 2) {
+            if (intArray[left] > intArray[right])
+                swapDouble(intArray, left, right);
+            return;
+        } else {
+            if (intArray[left] > intArray[right - 1])
+                swapDouble(intArray, left, right - 1);
+            if (intArray[left] > intArray[right])
+                swapDouble(intArray, left, right);
+            if (intArray[right - 1] > intArray[right])
+                swapDouble(intArray, right - 1, right);
+        }
+    }
+
+// -------------- Driver function. Invoke all of the sorts to be tested -----------------
+
+static void sorttime(String arraySize,String dataType) {
+Integer temporaryValue = Integer.parseInt(arraySize);
+int testsize = temporaryValue.intValue(); // Put this here so that we can easily control the size for debugging
+
+//Quick sort median of three
+System.out.println("Quick Sort Median of Three");
+System.out.println("Method Name,  Array Type, Array Size,Data Distribution,Time");
+
+if(dataType.equals("int"))
+{
+testsortallint("quickSortMedianOfThree", testsize);
+
+}
+else if(dataType.equals("Integer"))
+{
+testsortallInteger("quickSortMedianOfThreeInteger",testsize);
+
+}
+else if(dataType.equals("double"))
+{
+testsortallDouble("quickSortMedianOfThreeDouble",testsize);
+
+}
+
+
+
+
+}
 
 

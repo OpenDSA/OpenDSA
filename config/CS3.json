@@ -1,47 +1,15 @@
 {
+  "title": "CS3 Data Structures & Algorithms",
+  "desc": "CS3 Data Structures & Algorithms",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
-  "code_lang": {
-    "Java": {
-      "ext": [
-        "java"
-      ],
-      "label": "Java",
-      "lang": "java"
-    },
-    "Processing": {
-      "ext": [
-        "pde"
-      ],
-      "label": "Processing",
-      "lang": "java"
-    },
-    "Java_Generic": {
-      "ext": [
-        "java"
-      ],
-      "label": "Java (Generic)",
-      "lang": "java"
-    },
-    "C++": {
-      "ext": [
-        "cpp",
-        "h"
-      ],
-      "label": "C++",
-      "lang": "C++"
-    }
-  },
   "lang": "en",
   "build_JSAV": false,
-  "allow_anonymous_credit": true,
+  "build_cmap": false,
   "suppress_todo": true,
-  "build_cmap": true,
   "assumes": "recursion",
   "dispModComp": true,
-  "glob_exer_options": {
-    "JXOP-debug": "true"
-  },
+  "glob_exer_options": {},
   "chapters": {
     "Preface": {
       "Intro": {
@@ -505,13 +473,13 @@
               "required": false,
               "points": 0.0,
               "threshold": 1.0
-            },
-            "ListADTPROG": {
-              "long_name": "List ADT Programming Exercise",
-              "required": true,
-              "points": 1.0,
-              "threshold": 3
             }
+          },
+          "List ADT Programming Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 1.0
           }
         }
       },
@@ -1125,27 +1093,24 @@
       "Binary/WritingTraversals": {
         "long_name": "Implementing Tree Traversals",
         "sections": {
-          "Implementing Tree Traversals": {
-            "BTincPROG": {
-              "long_name": "Node Increment Exercise",
-              "required": true,
-              "points": 1.0,
-              "threshold": 1
-            }
+          "Implementing Tree Traversals": {},
+          "Binary Tree Increment By One Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 1.0
           }
         }
       },
       "BTRecurTutor/BinaryTreeInfFlw": {
         "long_name": "Binary Tree Information Flow",
         "sections": {
-          "Information Flow in Recursive Functions": {
-            "BTsetdepthPROG": {
-              "long_name": "Set Node Depth Programming Exercise",
-              "showhide": "show",
-              "required": true,
-              "points": 2.0,
-              "threshold": 1
-            }
+          "Information Flow in Recursive Functions": {},
+          "Binary Tree Set Depth Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 2.0
           },
           "Collect-and-return": {
             "BinaryTreeMistakesCON": {
@@ -1153,32 +1118,51 @@
               "required": false,
               "points": 1.0,
               "threshold": 0.90
-            },
-            "BTreturnPROGSumm": {
-              "long_name": "Collect-and-Return Programming Exercises",
-              "showhide": "show",
-              "required": true,
-              "points": 4.0,
-              "threshold": 2.0
             }
           },
-          "Combining Information Flows": {
-            "BTcheckvalPROG": {
-              "long_name": "Node Value Count Programming Exercise",
-              "showhide": "show",
-              "required": true,
-              "points": 2.0,
-              "threshold": 1
-            }
+          "Binary Tree Check Sum Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 2.0
           },
-          "Combination Problems": {
-            "BTtransferPROGSumm": {
-              "long_name": "Duel-Flow Programming Exercises",
-              "showhide": "show",
-              "required": true,
-              "points": 4.0,
-              "threshold": 2
-            }
+          "Binary Tree Leaf Nodes Count Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 2.0
+          },
+          "Binary Tree Sum Nodes Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 2.0
+          },
+          "Combining Information Flows": {},
+          "Binary Tree Check Value Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 2.0
+          },
+          "Combination Problems": {},
+          "Binary Tree Height Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 2.0
+          },
+          "Binary Tree Get Difference Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 2.0
+          },
+          "Binary Tree Has Path Sum Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 2.0
           }
         }
       },
@@ -1310,28 +1294,43 @@
               "required": false,
               "points": 1.0,
               "threshold": 0.90
-            },
-            "BSTsmallcountPROG": {
-              "long_name": "BST Small Value Count Programming Exercise",
-              "required": true,
-              "points": 2.0,
-              "threshold": 1.0,
-              "showhide": "Show"
             }
+          },
+          "Binary Search Tree Small Count Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 2.0
           }
         }
       },
       "BTRecurTutor/MultipleBinaryTrees": {
         "long_name": "Multiple Binary Trees",
         "sections": {
-          "Practice Exercises": {
-            "MultiTreePROGSumm": {
-              "long_name": "Multiple Binary Trees Exercises",
-              "required": true,
-              "points": 4.0,
-              "threshold": 2.0,
-              "showhide": "Show"
-            }
+          "Practice Exercises": {},
+          "Mirror Image Binary Trees Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 2.0
+          },
+          "Same Binary Tree Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 2.0
+          },
+          "Structurally Identical Binary Trees Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 2.0
+          },
+          "Swap Binary Trees Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 2.0
           }
         }
       },
@@ -2154,12 +2153,6 @@
               "points": 0,
               "showhide": "none",
               "threshold": 1.0
-            },
-            "bufferpoolPRO": {
-              "long_name": "Buffer Pool Proficiency Exercise",
-              "required": true,
-              "points": 1.0,
-              "threshold": 0.9
             }
           }
         }
@@ -2207,7 +2200,7 @@
               "points": 0.0,
               "threshold": 1.0
             },
-           "extMultiMergePRO": {
+            "extMultiMergePRO": {
               "long_name": "Multi-way Merge Proficiency Exercise",
               "required": true,
               "points": 1.0,

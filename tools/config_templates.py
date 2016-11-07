@@ -40,15 +40,12 @@ index_header = '''\
 
 '''
 
-
 todo_rst_template = '''\
 .. index:: ! todo
 
 TODO List
 =========
-
 '''
-
 makefile_template = '''\
 # Makefile for Sphinx documentation
 #
@@ -94,6 +91,8 @@ slides:
 	@SLIDES=yes \
 	$(SPHINXBUILD) -b slides source $(HTMLDIR)
 	rm html/_static/jquery.js html/_static/websupport.js
+	rm html/_static/styles.css
+	cp "%(odsa_dir)slib/styles.css" html/_static/
 	rm *.json
 	@echo
 	@echo "Build finished. The HTML pages are in $(HTMLDIR)."
@@ -319,6 +318,10 @@ html_context = {"script_files": [
                 "odsa_root_path": "%(eb2root)s",
                 %(text_translated)s}
 
+if on_slides: 
+   html_context["css_files"].append('%(eb2root)slib/ODSAcoursenotes.css');   
+   html_context["odsa_scripts"].append('%(eb2root)slib/ODSAcoursenotes.js');   
+				
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
@@ -374,21 +377,9 @@ todo_include_todos = True
 # @efouh: despise the fact that we are using an url hash, gradebook still needs book name
 book_name = '%(book_name)s'
 
-# Protocol and domain of the exercise_server
-exercise_server = '%(exercise_server)s'
-
-# Protocol and domain of the logging_server
-logging_server = '%(logging_server)s'
-
-# Protocol and domain of the score_server
-score_server = '%(score_server)s'
-
 # Boolean to control whether book will compile in local mode, which means no communication with the server
 local_mode = %(local_mode)s
 
-
-# Protocol and domain of the server hosting the module files
-module_origin = '%(module_origin)s'
 
 #Absolute path to OpenDSA directory
 odsa_path = '%(odsa_dir)s'
@@ -424,14 +415,6 @@ config_js_template = '''\
   //@efouh: added this variable back because it is needed by gradebook.html
   settings.BOOK_NAME = "%(book_name)s";
   settings.BOOK_LANG = "%(lang)s";
-  settings.EXERCISE_SERVER = "%(exercise_server)s";
-  settings.LOGGING_SERVER = "%(logging_server)s";
-  settings.SCORE_SERVER = "%(score_server)s";
-  settings.MODULE_ORIGIN = "%(module_origin)s";
-  settings.EXERCISE_ORIGIN = "%(exercise_origin)s";
-  settings.AV_ORIGIN = "%(av_origin)s";
-  // Flag controlling whether or not the system will assign credit (scores) obtained by anonymous users to the next user to log in
-  settings.ALLOW_ANON_CREDIT = %(allow_anonymous_credit)s;
   settings.REQ_FULL_SS = %(req_full_ss)s;
   settings.BUILD_TO_ODSA = "OpenDSA/";
   settings.LOCAL_MODE = %(local_mode)s;

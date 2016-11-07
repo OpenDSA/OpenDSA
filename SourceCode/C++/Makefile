@@ -10,9 +10,9 @@ CC= g++ -std=c++0x
 
 #### Do the chapters #######################################################
 
-all: build sorting lists
+all: sorting lists
 
-build: build
+build:
 	mkdir build
 
 clean:
@@ -69,7 +69,26 @@ build/InssortTest/success: Sorting/Insertionsort.cpp Sorting/SortTest.cpp Utils/
 	cd build/InssortTest; \
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o Insertionsort.o Insertionsort.cpp; \
 	$(CC) $(CFLAGS) Insertionsort.o -o Insertionsort; \
-	./Insertionsort 1000
+	./Insertionsort 10000
+
+
+InssortTime: build build/InssortTime/success
+
+build/InssortTime/success: Sorting/Insertionsort.cpp Sorting/SortTime.cpp Utils/Checkorder.cpp Utils/Comparable.cpp Utils/utils.h Utils/KVPair.cpp Utils/Int.cpp
+	@echo "Inssort Time Test"
+	-@rm -rf build/InssortTime
+	@mkdir build/InssortTime
+	@cp Sorting/Insertionsort.cpp build/InssortTime
+	@cp Sorting/SortTime.cpp build/InssortTime/SortTest.cpp
+	@cp Utils/Checkorder.cpp build/InssortTime
+	@cp Utils/KVPair.cpp build/InssortTime
+	@cp Utils/Comparable.cpp build/InssortTime
+	@cp Utils/Int.cpp build/InssortTime
+	@cp Utils/utils.h build/InssortTime
+	cd build/InssortTime; \
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o Insertionsort.o Insertionsort.cpp; \
+	$(CC) $(CFLAGS) Insertionsort.o -o Insertionsort; \
+	./Insertionsort 10000 1000
 
 
 Bubblesort: build build/BubblesortTest/success

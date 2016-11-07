@@ -14,7 +14,3 @@ Multiple Binary Trees
 
 Practice Exercises
 ------------------
-
-Here are programming exercises that involve more than one binary tree.
-
-.. avembed:: Exercises/BTRecurTutor/MultiTreePROGSumm.html ka

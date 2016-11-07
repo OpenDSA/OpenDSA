@@ -1,5 +1,5 @@
 /*global alert: true, ODSA */
-$(document).ready(function () {
+$(document).ready(function() {
   "use strict";
   // Process help button: Give a full help page for this activity
   function help() {
@@ -27,11 +27,25 @@ $(document).ready(function () {
     initinput = JSAV.utils.rand.numKeys(10, 100, 5);
     initData = JSAV.utils.rand.numKeys(10, 100, nodeNum); // Tree data
     // Create labels
-    jsav.label("Input:", {left: 650, top: 250});
-    jsav.label("Output:", {left: 10, top: 250});
+    jsav.label("Input:", {
+      left: 650,
+      top: 250
+    });
+    jsav.label("Output:", {
+      left: 10,
+      top: 250
+    });
     // Create arrays
-    inputarray = jsav.ds.array(initinput, {indexed: false, left: 650, top: 290});
-    outputarray = jsav.ds.array(initoutput, {indexed: false, left: 10, top: 290});
+    inputarray = jsav.ds.array(initinput, {
+      indexed: false,
+      left: 650,
+      top: 290
+    });
+    outputarray = jsav.ds.array(initoutput, {
+      indexed: false,
+      left: 10,
+      top: 290
+    });
 
     // Log the initial state of the exercise
     var exInitData = {};
@@ -47,12 +61,12 @@ $(document).ready(function () {
     ODSA.AV.logExerciseInit(exInitInput);
 
     // Create binary heap tree
-    bh = jsav.ds.binheap(initData,
-      { nodegap: 25,
-        compare: function (a, b) {
-          return a - b;
-        }
-      });
+    bh = jsav.ds.binheap(initData, {
+      nodegap: 25,
+      compare: function(a, b) {
+        return a - b;
+      }
+    });
 
     swapIndex = jsav.variable(-1);
     jsav._undo = [];
@@ -88,7 +102,9 @@ $(document).ready(function () {
     var size = modelHeap.size();
     swapIndex.value(-1); // only swaps are graded so swapIndex cannot be anything else after correct step
     for (var i = 0; i < size; i++) {
-      bh.css(i, {"background-color": modelHeap.css(i, "background-color")});
+      bh.css(i, {
+        "background-color": modelHeap.css(i, "background-color")
+      });
       bh.value(i, modelHeap.value(i));
     }
     bh.heapsize(modelHeap.heapsize());
@@ -96,27 +112,41 @@ $(document).ready(function () {
 
   function model(modeljsav) {
     // Create binary heap tree
-    var modelbh = modeljsav.ds.binheap(initData,
-      { nodegap: 20,
-        compare: function (a, b) {
-          return a - b;
-        }
-      });
+    var modelbh = modeljsav.ds.binheap(initData, {
+      nodegap: 20,
+      compare: function(a, b) {
+        return a - b;
+      }
+    });
 
     modelbh.origswap = modelbh.swap; // store original heap grade function
     // set all steps that include a swap to be gradable
-    modelbh.swap = function (ind1, ind2, opts) {
+    modelbh.swap = function(ind1, ind2, opts) {
       this.origswap(ind1, ind2, opts);
       this.jsav.stepOption("grade", true);
     };
 
     // Create labels
-    modeljsav.label("Input:", {left: 650, top: 230});
-    modeljsav.label("Output:", {left: 10, top: 230});
+    modeljsav.label("Input:", {
+      left: 650,
+      top: 230
+    });
+    modeljsav.label("Output:", {
+      left: 10,
+      top: 230
+    });
 
     // Create arrays
-    var modelinputarray = modeljsav.ds.array(initinput, {indexed: false, left: 650, top: 270});
-    var modeloutputarray = modeljsav.ds.array(initoutput, {indexed: false, left: 10, top: 270});
+    var modelinputarray = modeljsav.ds.array(initinput, {
+      indexed: false,
+      left: 650,
+      top: 270
+    });
+    var modeloutputarray = modeljsav.ds.array(initoutput, {
+      indexed: false,
+      left: 10,
+      top: 270
+    });
 
     modeljsav.displayInit(); // Set initial setup for model answer
     var currentoutput = 0;
@@ -127,9 +157,9 @@ $(document).ready(function () {
       modeljsav.umsg("We start by sending the root to the output.");
       modeljsav.step();
 
-//      modeljsav.effects.moveValue(modelbh, 0, modeloutputarray, currentoutput);
-//      modeloutputarray.value(currentoutput, modelbh.value(0));
-//      modelbh.value(0, "");
+      //      modeljsav.effects.moveValue(modelbh, 0, modeloutputarray, currentoutput);
+      //      modeloutputarray.value(currentoutput, modelbh.value(0));
+      //      modelbh.value(0, "");
       modelbh.moveValue(modelbh, 0, modeloutputarray, currentoutput);
 
       currentoutput++;
@@ -138,11 +168,13 @@ $(document).ready(function () {
 
       // swap with last value
       if (modeloutputarray.value(currentoutput - 1) > modelinputarray.value(currentinput)) {
-        modeljsav.umsg("<br/>...The heap now takes an input", {preserve: true});
+        modeljsav.umsg("<br/>...The heap now takes an input", {
+          preserve: true
+        });
 
-//        modeljsav.effects.moveValue(modelinputarray, currentinput, modelbh, 0);
-//        modelbh.value(0, modelinputarray.value(currentinput));
-//        modelinputarray.value(currentinput, "");
+        //        modeljsav.effects.moveValue(modelinputarray, currentinput, modelbh, 0);
+        //        modelbh.value(0, modelinputarray.value(currentinput));
+        //        modelinputarray.value(currentinput, "");
         modelbh.moveValue(modelinputarray, currentinput, modelbh, 0);
 
         currentinput++;
@@ -153,27 +185,36 @@ $(document).ready(function () {
         modeljsav.stepOption("grade", true);
         modeljsav.step();
 
-        modeljsav.umsg("<br/>...decrement the heap size", {preserve: true});
+        modeljsav.umsg("<br/>...decrement the heap size", {
+          preserve: true
+        });
         modelbh._treenodes[modelbh.heapsize() - 1].edgeToParent().hide();
-        modelbh.css(modelbh.heapsize() - 1, {"background-color": "#ddd"});
+        modelbh.css(modelbh.heapsize() - 1, {
+          "background-color": "#ddd"
+        });
         modelbh.heapsize(modelbh.heapsize() - 1);
         modeljsav.stepOption("grade", true);
         modeljsav.step();
-        modeljsav.umsg("<br/>...and restore the heap property", {preserve: true});
+        modeljsav.umsg("<br/>...and restore the heap property", {
+          preserve: true
+        });
         modelbh.heapify(1);
-      }
-      else { // normal insert
-        modeljsav.umsg("<br/>...The heap now takes an input", {preserve: true});
+      } else { // normal insert
+        modeljsav.umsg("<br/>...The heap now takes an input", {
+          preserve: true
+        });
 
-//        modeljsav.effects.moveValue(modelinputarray, currentinput, modelbh, 0);
-//        modelbh.value(0, modelinputarray.value(currentinput));
-//        modelinputarray.value(currentinput, "");
+        //        modeljsav.effects.moveValue(modelinputarray, currentinput, modelbh, 0);
+        //        modelbh.value(0, modelinputarray.value(currentinput));
+        //        modelinputarray.value(currentinput, "");
         modelbh.moveValue(modelinputarray, currentinput, modelbh, 0);
 
         currentinput++;
         modeljsav.stepOption("grade", true);
         modeljsav.step();
-        modeljsav.umsg("<br/>...and restore the heap property", {preserve: true});
+        modeljsav.umsg("<br/>...and restore the heap property", {
+          preserve: true
+        });
         modelbh.heapify(1);
       }
     }
@@ -190,21 +231,27 @@ $(document).ready(function () {
 
     if (prevIndex === -1) { // if first click
       firstSelection = (entity === bh) ? bh : this;
-      firstSelection.css(index, {"font-size": "145%"});
+      firstSelection.css(index, {
+        "font-size": "145%"
+      });
       swapIndex.value(index);
     } else if (prevIndex === index) {
       secondSelection = (entity === bh) ? bh : this;
       if (firstSelection === secondSelection) {
-        firstSelection.css(index, {"font-size": "100%"});
+        firstSelection.css(index, {
+          "font-size": "100%"
+        });
         swapIndex.value(-1);
         firstSelection = null;
         secondSelection = null;
       } else { // different entities were selected
-        firstSelection.css(prevIndex, {"font-size": "100%"});
+        firstSelection.css(prevIndex, {
+          "font-size": "100%"
+        });
 
-//        jsav.effects.moveValue(firstSelection, prevIndex, secondSelection, index);
-//        secondSelection.value(index, firstSelection.value(prevIndex));
-//        firstSelection.value(prevIndex, "");
+        //        jsav.effects.moveValue(firstSelection, prevIndex, secondSelection, index);
+        //        secondSelection.value(index, firstSelection.value(prevIndex));
+        //        firstSelection.value(prevIndex, "");
         bh.moveValue(firstSelection, prevIndex, secondSelection, index);
 
         firstSelection = null;
@@ -215,15 +262,18 @@ $(document).ready(function () {
     } else { // second click will swap
       secondSelection = (entity === bh) ? bh : this;
       if (firstSelection === secondSelection) {
-        firstSelection.css([prevIndex, index], {"font-size": "100%"});
+        firstSelection.css([prevIndex, index], {
+          "font-size": "100%"
+        });
         firstSelection.swap(prevIndex, index, {});
-      }
-      else { // different entities were selected
-        firstSelection.css(prevIndex, {"font-size": "100%"});
+      } else { // different entities were selected
+        firstSelection.css(prevIndex, {
+          "font-size": "100%"
+        });
 
-//        jsav.effects.moveValue(firstSelection, prevIndex, secondSelection, index);
-//        secondSelection.value(index, firstSelection.value(prevIndex));
-//        firstSelection.value(prevIndex, "");
+        //        jsav.effects.moveValue(firstSelection, prevIndex, secondSelection, index);
+        //        secondSelection.value(index, firstSelection.value(prevIndex));
+        //        firstSelection.value(prevIndex, "");
         bh.moveValue(firstSelection, prevIndex, secondSelection, index);
       }
       firstSelection = null;
@@ -233,14 +283,16 @@ $(document).ready(function () {
     }
   }
 
-  $("#decrement").click(function () {
+  $("#decrement").click(function() {
     if (bh.heapsize() === 0) {
       alert("Heapsize is already zero, cannot decrement!");
       return;
     }
     bh._treenodes[bh.heapsize() - 1].edgeToParent().hide();
     bh.heapsize(bh.heapsize() - 1);
-    bh.css(bh.heapsize(), {"background-color": "#ddd"});
+    bh.css(bh.heapsize(), {
+      "background-color": "#ddd"
+    });
     exercise.gradeableStep();
   });
   $("#about").click(about);
@@ -250,11 +302,15 @@ $(document).ready(function () {
   // Start processing here
   //////////////////////////////////////////////////////////////////
   // Load the interpreter created by odsaAV.js
-  var config = ODSA.UTILS.loadConfig({"json_path": "extRSPRO.json"}),
-      interpret = config.interpreter,       // get the interpreter
-      settings = config.getSettings();      // Settings for the AV
+  var config = ODSA.UTILS.loadConfig({
+      "json_path": "AV/Files/extRSPRO.json"
+    }),
+    interpret = config.interpreter, // get the interpreter
+    settings = config.getSettings(); // Settings for the AV
 
-  var jsav = new JSAV($('.avcontainer'), {settings: settings}),
+  var jsav = new JSAV($('.avcontainer'), {
+      settings: settings
+    }),
     exercise,
     swapIndex;
 
@@ -264,13 +320,15 @@ $(document).ready(function () {
 
   jsav.recorded();
 
-  exercise = jsav.exercise(model, init,
-    { compare: { css: "background-color" },
-      controls: $('.jsavexercisecontrols'),
-      fix: fixState
-    });
+  exercise = jsav.exercise(model, init, {
+    compare: {
+      css: "background-color"
+    },
+    controls: $('.jsavexercisecontrols'),
+    fix: fixState
+  });
 
-  $(".jsavcontainer").on("click", ".jsavbinarytree .jsavbinarynode", function () {
+  $(".jsavcontainer").on("click", ".jsavbinarytree .jsavbinarynode", function() {
     var index = $(this).data("jsav-heap-index") - 1;
     // passes bh to the handler to tell it the tree was clicked
     clickHandler(index, bh);

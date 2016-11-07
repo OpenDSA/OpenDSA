@@ -15,22 +15,13 @@ Harder Code Completion Practice Exercises
 Programming Exercise: Array Min
 -------------------------------
 
-.. avembed:: Exercises/RecurTutor/RecHMinPROG.html ka
-
 
 Programming Exercise: String Reverse
 ------------------------------------
 
-.. avembed:: Exercises/RecurTutor/RecHIsReversePROG.html ka
-
 
 Programming Exercise: Decimal to Binary
 ---------------------------------------
-
-.. avembed:: Exercises/RecurTutor/RecHDecibinaryPROG.html ka
-
-
-
 
 
 

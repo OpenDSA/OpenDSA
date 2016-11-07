@@ -232,13 +232,13 @@ The advantage is reduced programmer effort because a good virtual memory
 system provides the appearance of larger main memory without
 modifying the program.
 
-.. The following AV and exercise need to be fixed, so that this can be
+Here is a visualization to let you experiment with the various buffer
+pool replacement strategies.
+
+.. avembed:: AV/Files/BufferPoolAV.html ss
+
+.. The following exercise needs to be completed, so that this can be
 .. added back in.
-
-.. Here is a visualization to let you experiment with the various buffer
-.. pool replacement strategies.
-
-.. .. avembed:: AV/Files/BufferPoolAV.html ss
 
 .. Here is an exercise to help you practice.
 

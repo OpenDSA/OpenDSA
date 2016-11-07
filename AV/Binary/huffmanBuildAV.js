@@ -13,7 +13,7 @@ $(document).ready(function () {
   // Start processing here
   //////////////////////////////////////////////////////////////////
   // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig({"json_path": "huffman.json"}),
+  var config = ODSA.UTILS.loadConfig({"json_path": "AV/Binary/huffman.json"}),
       interpret = config.interpreter,       // get the interpreter
       settings = config.getSettings();      // Settings for the AV
 

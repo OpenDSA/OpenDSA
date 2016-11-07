@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html data-require="math Simple_demo_ex2">
+  <head>
+    <title>Pick the largest using fill-in-the-blank</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="arrSize">Khan.randRange(4, 11)</var>
+	<var id="lastIndex">arrSize - 1</var>
+        <var id="arrValues">simple_demo_ex2.initArr(arrSize)</var>
+        <var id="theAnswer">simple_demo_ex2.maxValue()</var>
+      </div>
+      <div class="problems">
+        <div id="Simple_demo_ex2p">
+          <p class="question">What is the largest value in this list of numbers? </p>
+	  <pre><var>arrValues</var></pre>
+          <p class="solution" data-type="text"><var>theAnswer</var></p>
+          <div class="hints">
+            <p>Choose something between 0 and index <var>lastIndex</var> </p>
+            <p>This problem is really too easy for a second hint</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

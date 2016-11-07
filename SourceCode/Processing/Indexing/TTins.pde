@@ -3,8 +3,7 @@ private TTNode<Key,E> inserthelp(TTNode<Key,E> rt, Key k, E e) {
   if (rt == null) // Empty tree: create a leaf node for root
     return new TTNode<Key,E>(k, e, null, null, null, null, null);
   if (rt.isLeaf()) // At leaf node: insert here
-    return rt.add(new TTNode<Key,E>(k, e, null, null,
-                                  null, null, null));
+    return rt.add(new TTNode<Key,E>(k, e, null, null, null, null, null));
   // Add to internal node
   if (k.compareTo(rt.lkey()) < 0) { // Insert left
     retval = inserthelp(rt.lchild(), k, e);
@@ -31,7 +30,7 @@ public TTNode<Key,E> add(TTNode<Key,E> it) {
   if (rkey == null) { // Only one key, add here
     if (lkey.compareTo(it.lkey()) < 0) {
       rkey = it.lkey(); rval = it.lval();
-      right = center; center = it.cchild();
+      center = it.lchild(); right = it.cchild();
     }
     else {
       rkey = lkey; rval = lval; right = center;
@@ -47,7 +46,7 @@ public TTNode<Key,E> add(TTNode<Key,E> it) {
     lkey = rkey; lval = rval; rkey = null; rval = null;
     return N1;
   }
-  else if (rkey.compareTo(it.lkey()) < 0) { // Add center
+  else if (rkey.compareTo(it.lkey()) >= 0) { // Add center
     it.setCenterChild(new TTNode<Key,E>(rkey, rval, null, null, it.cchild(), right, null));
     it.setLeftChild(this);
     rkey = null; rval = null; right = null;
@@ -60,4 +59,3 @@ public TTNode<Key,E> add(TTNode<Key,E> it) {
     return N1;
   }
 }
-

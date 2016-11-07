@@ -1,0 +1,429 @@
+{
+  "title": "CS3114 Fall 2016 Coursenotes",
+  "desc": "CS3114 Fall 2016 Coursenotes",
+  "inst_book_id": 20,
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "lang": "en",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Processing": {
+      "ext": [
+        "pde"
+      ],
+      "label": "Processing",
+      "lang": "java"
+    },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "tabbed_codeinc": false,
+  "build_JSAV": false,
+  "suppress_todo": false,
+  "chapters": {
+    "Week 1": {
+      "F16/Day1": {
+        "long_name": "Introduction",
+        "sections": {
+          "Introduction": {
+            "ADTCON": {}
+          }
+        }
+      },
+      "F16/ProjManage": {
+        "long_name": "Project Management",
+        "sections": {}
+      },
+      "F16/MemManage": {
+        "long_name": "Memory Management",
+        "sections": {
+          "Memory Management": {
+            "freeblocklistCON": {},
+            "fragCON": {},
+            "seqFitCON": {},
+            "firstFitAV": {
+              "long_name": "First Fit Visualization",
+              "required": false,
+              "points": 0,
+              "threshold": 1.0,
+              "exer_options": {
+                "fitAlgorithm": "1"
+              }
+            }
+          }
+        }
+      },
+      "F16/P1": {
+        "long_name": "Project 1 Implementation Details",
+        "sections": {}
+      }
+    },
+    "Week 2": {
+      "F16/AlgAnal": {
+        "long_name": "Algorithm Analysis",
+        "sections": {
+          "Algorithm Analysis": {
+            "ProblemAlgorithmCON": {
+              "long_name": "Problem, Algorithm, and Program definitions Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      }
+    },
+    "Week 3": {
+      "F16/JUnit": {
+        "long_name": "JUnit testing",
+        "sections": {}
+      },
+      "F16/Coding": {
+        "long_name": "Clean Code",
+        "sections": {}
+      },
+      "F16/Lists": {
+        "long_name": "Lists",
+        "sections": {
+          "Lists": {
+            "alistInsertCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "llistBadCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "llistBadDelCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "llistInitCON": {},
+            "llistHeaderCON": {},
+            "llistVarsCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "llistConsCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "llistInsertCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "llistRemoveCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "llistOtherCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "listFreeCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "dlistDiagramCON": {},
+            "dlistInsertCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "dlistRemoveCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "aqueueFirstCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "aqueueDriftCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "aqueueBadCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "aqueueCircularCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "aqueueEmptyCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "F16/Binary": {
+        "long_name": "Binary Trees Part 1",
+        "sections": {
+          "Binary Trees Part 1": {
+            "BinExampCON": {},
+            "ListRecDSCON": {},
+            "BinRecDSCON": {},
+            "preorderCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "BinaryTreeMistakesCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      }
+    },
+    "Week 4": {
+      "F16/Binary2": {
+        "long_name": "Binary Trees Part 2",
+        "sections": {
+          "Binary Trees Part 2": {
+            "BSTsearchCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "BSTinsertCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "BSTdeletemaxCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "BSTremoveCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "F16/Binary3": {
+        "long_name": "Binary Trees Part 3",
+        "sections": {
+          "Binary Trees Part 3": {
+            "expressionTraversalCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      }
+    },
+    "Week 5": {
+      "F16/23Tree": {
+        "long_name": "2-3 Trees",
+        "sections": {
+          "2-3 Trees": {
+            "twoThreedgmCON": {},
+            "simpleInsertCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "promoteCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "splitCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "F16/Heaps": {
+        "long_name": "Heaps and Priority Queues",
+        "sections": {
+          "Heaps": {
+            "heapinsertCON": {
+              "long_name": "Heap insert Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "heapbuildCON": {
+              "long_name": "Heapbuild Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "heapbuildProofCON": {
+              "long_name": "Heap build analysis proof Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "BuildHeapVisualProof": {
+              "long_name": "Buildheap Visual Proof",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            },
+            "heapmaxCON": {
+              "long_name": "Remove Max Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "heapremoveCON": {
+              "long_name": "Remove Any Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      }
+    },
+    "Week 6": {
+      "F16/Huffman": {
+        "long_name": "Huffman Coding Trees",
+        "sections": {
+          "Huffman Coding": {
+            "huffmanBuildCON": {
+              "long_name": "Building a Huffman Tree",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "huffmanLabelCON": {
+              "long_name": "Labeling a Huffman Tree",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "huffmanCodesCON": {
+              "long_name": "Using Codes",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "huffmanDecodeCON": {
+              "long_name": "Decoding Huffman Codes",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "TreeTrieCON": {
+              "long_name": "Tree vs. Trie",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "TreeTimelineCON": {
+              "long_name": "Tree vs. Trie 2",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      }
+    },
+    "Week 7-8": {
+      "F16/Sorting1": {
+        "long_name": "Sorting, Part 1",
+        "sections" : {}
+      },
+      "F16/Sorting2": {
+        "long_name": "Sorting, Part 2",
+        "sections" : {}
+      }
+    },
+    "Week 8-9": {
+      "F16/FileProc": {
+        "long_name": "File Processing and Buffer Pools",
+        "sections" : {}
+      }
+    },
+    "Week 10": {
+      "F16/Hashing": {
+        "long_name": "Hashing",
+        "sections" : {}
+      }
+    },
+    "Week 11": {
+      "F16/Union-Find": {
+        "long_name": "Union/FIND",
+        "sections" : {}
+      },
+      "F16/Graphs": {
+        "long_name": "Graphs",
+        "sections" : {}
+      }
+    }
+  }
+}

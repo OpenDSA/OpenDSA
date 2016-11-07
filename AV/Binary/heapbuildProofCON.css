@@ -21,3 +21,7 @@
   -o-transform: rotate(90deg);
   transform: rotate(90deg);
 }
+.colored{
+
+	fill: green;
+}

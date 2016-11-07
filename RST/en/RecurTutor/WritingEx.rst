@@ -14,22 +14,14 @@ Writing Practice Exercises
 Programming Exercise: Cannonballs
 ---------------------------------
 
-.. avembed:: Exercises/RecurTutor/RecWCannonballPROG.html ka
-
 
 Programming Exercise: Palindrome
 --------------------------------
-
-.. avembed:: Exercises/RecurTutor/RecWCheckPalPROG.html ka
 
 
 Programming Exercise: Reverse String
 ------------------------------------
 
-.. avembed:: Exercises/RecurTutor/RecWRevStringPROG.html ka
-
 
 Programming Exercise: Pascal's Triangle
 ---------------------------------------
-
-.. avembed:: Exercises/RecurTutor/RecWPascalPROG.html ka

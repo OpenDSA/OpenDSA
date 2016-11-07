@@ -28,8 +28,13 @@ In the meantime, a good example is ``AV/Sorting/insertionsortAV.json``.
 Use Case: Standalone AV or Proficiency Exercise
 ===============================================
 
+Standalone AVs and proficiency exercises are embedded into the HTML
+page using an iframe.
+The size of the iframe is taken from the size of a ``div`` element
+with classname ``container``.
+
 Given a standalone AV with HTML file ``foo.html`` that contains a
-``div`` with classnam ``avcontainer`` and
+``div`` with classname ``avcontainer`` and
 JavaScript file ``foo.js``, the configuration file would normally be
 named ``foo.json``.
 After creating a configuration object, the string interpreter and code

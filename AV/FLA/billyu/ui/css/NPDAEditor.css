@@ -1,0 +1,82 @@
+#playButton {
+	background-color: #000033;
+	color: white;
+}
+#functionality {
+	margin-left: 20px;
+}
+#mode {
+	margin-top: 10px;
+	height: 20px;
+}
+.jsavoutput {
+	margin-top: 0;
+	clear: both;
+}
+#edge, #editEdge {
+	text-align: center;
+	background-color: white;
+	width: 150px;
+	transform: translate(-50%, -50%);
+	position: absolute;
+	z-index: 1000;
+	display: none;
+}
+#input, #pop, #push {
+	width: 90%;
+	text-align: center;
+	border: none;
+}
+#editEdge {
+	width: 200px;
+	transform: translate(-30%, -120%);
+}
+#editEdge > tbody > tr {
+	width: 25%;
+}
+#deleteEdge {
+	padding: 0;
+	border: 0;
+}
+.jsavgraph {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.configuration {
+	overflow-x: auto;
+	width: 100px;
+	height: 40px;
+	padding: 5px;
+	float: left;
+	border: 1px solid black;
+	margin: 0 5px;
+}
+#currentState {
+	float: left;
+	margin-right: 10px;
+}
+#readInput {
+	color: gray;
+	display: inline-block;
+	font-style: italic;
+}
+#unreadInput {
+	color: black;
+	display: inline-block;
+}
+#stack {
+	float: left;
+	clear: both;
+}
+.configAccepted {
+	background-color: #C0FFAB;
+}
+.configRejected {
+	background-color: #FFA1A1;
+}
+.configNormal {
+	background-color: white;
+}
+#alphabets {
+	clear: both;
+}
