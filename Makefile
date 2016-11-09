@@ -95,6 +95,9 @@ Plain: EverythingPlain CS2Plain CS3Plain PLPlain CS3notesPlain
 EverythingPlain: min
 	python $(CONFIG_SCRIPT) config/Everything.json --no-lms
 
+test: min
+	python $(CONFIG_SCRIPT) config/Test.json --no-lms
+
 CS2Plain: min
 	python $(CONFIG_SCRIPT) config/CS2.json --no-lms
 
