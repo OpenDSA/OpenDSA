@@ -62,7 +62,7 @@ $(document).ready(function() {
   arr11 = av.ds.array([arr_values[0], arr_values[1], arr_values[2], arr_values[3]], {left: 40, top: 75, indexed: false});
   arr12 = av.ds.array([arr_values[4], arr_values[5], arr_values[6], arr_values[7]], {left: 200, top: 75, indexed: false});
   av.label(interpret("lab1"),  {top: "-22px", left: "370px"}).addClass("largeLabel");
-  av.label("|------------ $n$ ------------|",  {top: "-3px", left: "355px"});
+  av.label("|----------- $n$ -----------|",  {top: "-3px", left: "355px"});
   for (i = 0; i < 8; i++) {
     av.g.rect(rectLeftAlign + (i * 20), rectTopAlign, 20, 20);
   }
@@ -274,7 +274,7 @@ $(document).ready(function() {
   merge(arr11, arr12, arr);
   arr11.hide();
   arr12.hide();
-  av.label("|------------ $n$ ------------|",  {top: "65px", left: rectLeftAlign + 250 + 5});
+  av.label("|----------- $n$ -----------|",  {top: "65px", left: rectLeftAlign + 250 + 5});
   for (i = 0; i < 8; i++) {
     av.g.rect(rectLeftAlign + 250 + (i * 20), 105, 20, 20);
   }
