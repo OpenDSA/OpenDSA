@@ -5,7 +5,7 @@ static boolean SUCCESS = true;
 static long time1, time2, totaltime;   // These get set by the testing routine
 
 static void visit(BinNode rt) {
-//  System.out.print(rt.element() + " ");
+//  System.out.print(rt.value() + " ");
 }
 
 public static void main(String args[]) throws IOException {

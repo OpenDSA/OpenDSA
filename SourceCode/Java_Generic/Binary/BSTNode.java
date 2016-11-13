@@ -12,8 +12,8 @@ class BSTNode<E extends Comparable<? super E>> implements BinNode<E> {
     { left = l; right = r; element = val; }
 
   // Get and set the element value
-  public E element() { return element; }
-  public void setElement(E v) { element = v; }
+  public E value() { return element; }
+  public void setValue(E v) { element = v; }
 
   // Get and set the left child
   public BSTNode<E> left() { return left; }

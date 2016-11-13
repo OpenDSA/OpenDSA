@@ -44,10 +44,10 @@ class BST {
 /* *** ODSATag: findhelp *** */
   private Comparable findhelp(BSTNode rt, Comparable k) {
     if (rt == null) return null;
-    if (rt.element().compareTo(k) > 0)
+    if (rt.value().compareTo(k) > 0)
       return findhelp(rt.left(), k);
-    else if (rt.element().compareTo(k) == 0)
-      return rt.element();
+    else if (rt.value().compareTo(k) == 0)
+      return rt.value();
     else return findhelp(rt.right(), k);
   }
 /* *** ODSAendTag: findhelp *** */
@@ -58,7 +58,7 @@ class BST {
 /* *** ODSATag: inserthelp *** */
   private BSTNode inserthelp(BSTNode rt, Comparable e) {
     if (rt == null) return new BSTNode(e);
-    if (rt.element().compareTo(e) >= 0)
+    if (rt.value().compareTo(e) >= 0)
       rt.setLeft(inserthelp(rt.left(), e));
     else
       rt.setRight(inserthelp(rt.right(), e));
@@ -88,16 +88,16 @@ class BST {
 /* *** ODSATag: removehelp *** */
   private BSTNode removehelp(BSTNode rt, Comparable k) {
     if (rt == null) return null;
-    if (rt.element().compareTo(k) > 0)
+    if (rt.value().compareTo(k) > 0)
       rt.setLeft(removehelp(rt.left(), k));
-    else if (rt.element().compareTo(k) < 0)
+    else if (rt.value().compareTo(k) < 0)
       rt.setRight(removehelp(rt.right(), k));
     else { // Found it
       if (rt.left() == null) return rt.right();
       else if (rt.right() == null) return rt.left();
       else { // Two children
         BSTNode temp = getmax(rt.left());
-        rt.setElement(temp.element());
+        rt.setElement(temp.value());
         rt.setLeft(deletemax(rt.left()));
       }
     }
@@ -109,7 +109,7 @@ class BST {
   private void printhelp(BSTNode rt) {
     if (rt == null) return;
     printhelp(rt.left());
-    printVisit(rt.element());
+    printVisit(rt.value());
     printhelp(rt.right());
   }
 /* *** ODSAendTag: printhelp *** */

@@ -2,7 +2,7 @@
 /* *** ODSATag: checkBST *** */
 static boolean checkBST(BSTNode rt, Comparable low, Comparable high) {
   if (rt == null) return true; // Empty subtree
-  Comparable rootval = rt.element();
+  Comparable rootval = rt.value();
   if ((rootval.compareTo(low) <= 0) || (rootval.compareTo(high) > 0))
     return false; // Out of range
   if (!checkBST(rt.left(), low, rootval))
