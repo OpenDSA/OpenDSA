@@ -4945,10 +4945,6 @@
       "Development/SortProgExer": {
         "long_name": "Sorting programming exercises",
         "sections": {}
-      },
-      "BTRecurTutor/recSorting": {
-        "long_name": "Recursive Sorting",
-        "sections": {}
       }
     },
     "Limits to Computing": {

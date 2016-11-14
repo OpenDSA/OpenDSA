@@ -419,9 +419,17 @@
       "F16/Union-Find": {
         "long_name": "Union/FIND",
         "sections" : {}
-      },
+      }
+    },
+    "Weeks 12-13": {
       "F16/Graphs": {
         "long_name": "Graphs",
+        "sections" : {}
+      }
+    },
+    "Week 14": {
+      "F16/Indexing": {
+        "long_name": "Indexing",
         "sections" : {}
       }
     }

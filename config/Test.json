@@ -1,9 +1,11 @@
 {
+  "title": "Test",
+  "desc": "Test",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "lang": "en",
   "build_JSAV": false,
-  "allow_anonymous_credit": true,
+  "build_cmap": false,
   "suppress_todo": false,
   "dispModComp": true,
   "tag": "CPP;CS2",

@@ -16,7 +16,7 @@ class HuffLeafNode implements HuffBaseNode {
     { element = el; weight = wt; }
 
   /** @return The element value */
-  char element() { return element; }
+  char value() { return element; }
 
   /** @return The weight */
   int weight() { return weight; }

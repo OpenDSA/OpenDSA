@@ -20,8 +20,8 @@
 Quicksort
 =========
 
-Introduction
-------------
+Quicksort Introduction
+----------------------
 
 While Mergesort uses the most obvious form of divide and conquer
 (split the list in half then sort the halves), this is not the only way

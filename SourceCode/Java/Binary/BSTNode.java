@@ -12,9 +12,9 @@ class BSTNode implements BinNode {
     { left = l; right = r; element = val; }
 
   // Get and set the element value
-  public Comparable element() { return element; }
-  public void setElement(Comparable v) { element = v; }
-  public void setElement(Object v) { // We need this one to satisfy BinNode interface
+  public Comparable value() { return element; }
+  public void setValue(Comparable v) { element = v; }
+  public void setValue(Object v) { // We need this one to satisfy BinNode interface
     if (!(v instanceof Comparable))
       throw new ClassCastException("A Comparable object is required.");
     element = (Comparable)v;

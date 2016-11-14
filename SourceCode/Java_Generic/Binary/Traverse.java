@@ -21,7 +21,7 @@ static <E> void postorder(BinNode<E> rt) {
 /* *** ODSAendTag: postorder *** */
 
 static <E> void visit(BinNode<E> rt) {
-  System.out.print(rt.element() + " ");
+  System.out.print(rt.value() + " ");
 }
 
 /* *** ODSATag: count *** */

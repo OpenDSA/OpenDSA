@@ -1,8 +1,8 @@
 /* *** ODSATag: BinNode *** */
 interface BinNode { // Binary tree node ADT
   // Get and set the element value
-  public Object element();
-  public void setElement(Object v);
+  public Object value();
+  public void setValue(Object v);
 
   // return the children
   public BinNode left();

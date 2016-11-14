@@ -29,13 +29,13 @@ static int ineff_count(BinNode root) {
 /* *** ODSATag: IneffbtInc *** */
 static void ineff_BTinc(BinNode root) {
   if (root != null) {
-    root.setElement((root.element()) + 1);
+    root.setValue((root.value()) + 1);
     if (root.left() != null) {
-      root.left().setElement((root.left().element()) + 1);
+      root.left().setValue((root.left().value()) + 1);
       ineff_BTinc(root.left().left());
     }
     if (root.right() != null) {
-      root.right().setElement((root.right().element()) + 1);
+      root.right().setValue((root.right().value()) + 1);
       ineff_BTinc(root.right().right());
     }
   }

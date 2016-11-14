@@ -31,10 +31,10 @@ $(document).ready(function () {
   var bh = av.ds.binheap(arr, {left: 190, top: bhvoffset, nodegap: 15});
   bh.element.hide(); // Because we don't want to see the array
   av.label("depth 4 -------", {top: bhvoffset + 126, left: 85});
-  av.label("depth 3 ----------", {top: bhvoffset + 94, left: 85});
-  av.label("depth 2 -----------------", {top: bhvoffset + 62, left: 85});
-  av.label("depth 1 ------------------------------", {top: bhvoffset + 30, left: 85});
-  av.label("depth 0 --------------------------------------------------------", {top: bhvoffset - 2, left: 85});
+  av.label("depth 3 ----------", {top: bhvoffset + 92, left: 85});
+  av.label("depth 2 ----------------", {top: bhvoffset + 60, left: 85});
+  av.label("depth 1 ----------------------------", {top: bhvoffset + 30, left: 85});
+  av.label("depth 0 ----------------------------------------------------", {top: bhvoffset - 2, left: 85});
   slider1 = av.g.rect(190, bhvoffset + 142, 513, 20).addClass("colored");
   slider1.hide();
 

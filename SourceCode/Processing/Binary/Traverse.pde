@@ -21,7 +21,7 @@ void postorder(BinNode rt) {
 /* *** ODSAendTag: postorder *** */
 
 void visit(BinNode rt) {
-  print(rt.element() + " ");
+  print(rt.value() + " ");
 }
 
 /* *** ODSATag: count *** */
