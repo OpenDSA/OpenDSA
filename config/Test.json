@@ -28,6 +28,12 @@
         }
       }
     },
+    "Advanced Data Structures": {
+      "SearchStruct/Skiplist1": {
+        "long_name": "Skip Lists Test",
+        "sections": {}
+      }
+    },
     "Appendix": {
       "Glossary": {
         "long_name": "Glossary",

@@ -7,7 +7,10 @@
    :author: Cliff Shaffer
    :topic: Randomized Algorithms
 
-.. odsalink:: AV/Development/SkipList/SkipList.css
+.. odsalink:: DataStructures/SkipList.css
+.. odsalink:: AV/Development/SkipList/SkipListInsertCON.css
+.. odsaslink:: AV/Development/SkipList/SkipListRmvCON.css
+.. odsalink:: AV/Development/SkipList/SkipListSrchCON.css
 
 Skip Lists
 ==========
@@ -275,7 +278,7 @@ operation), and a rapidly increasing probability of average-case
 performance of :math:`\Theta(\log n)`, that characterizes
 probabilistic data structures.
 
-.. odsascript:: AV/Development/SkipList/SkipList.js
+.. odsascript:: DataStructures/SkipList.js
 .. odsascript:: AV/Development/SkipList/SkipListInsertCON.js
 .. odsascript:: AV/Development/SkipList/SkipListRmvCON.js
 .. odsascript:: AV/Development/SkipList/SkipListSrchCON.js
