@@ -2,7 +2,7 @@
 $(document).ready(function() {
   "use strict";
   var av_name = "SkipListInsertCON";
-  var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
+//  var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
 
   var jsav = new JSAV(av_name);
   jsav.umsg("We start with an empty SkipList");
