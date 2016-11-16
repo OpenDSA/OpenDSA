@@ -25,7 +25,7 @@ $(document).ready(function() {
   // Slide 3
   av.umsg(interpret("Slide 3"));
   var right_side = av.label("|----------------  $n-1-k$  ---------------|",  {top: "15px", left: "370px"}).addClass("mediumLabel");
-  var left_side = av.label("|---------- $k$ ----------|", {top: "15px", left: "225px"}).addClass("mediumLabel2");
+  var left_side = av.label("|--------- $k$ ---------|", {top: "15px", left: "225px"}).addClass("mediumLabel2");
   av.step();
 
   // Slide 4
@@ -62,7 +62,7 @@ $(document).ready(function() {
   right_side.hide();
   right_side = av.label("|-------------------------  $n-3$  -----------------------|",  {top: "15px", left: "315px"}).addClass("mediumLabel");
   left_side.hide();
-  left_side = av.label("|---- $2$ ----|", {top: "15px", left: "225px"}).addClass("mediumLabel2");
+  left_side = av.label("|--- $2$ ---|", {top: "15px", left: "225px"}).addClass("mediumLabel2");
   av.step();
 
   // Slide 7
@@ -84,16 +84,16 @@ $(document).ready(function() {
   piv.hide();
   piv = av.label("pivot", {top: "45px", left: "331px"}).addClass("smallLabel");
   index.hide();
-  index = av.label("$k$", {top: "15px", left: "335px"}).addClass("mediumLabel");
+  index = av.label("$k$", {top: "15px", left: "337px"}).addClass("mediumLabel");
   right_side.hide();
   left_side.hide();
   right_side = av.label("|----------------  $n-1-k$  ---------------|",  {top: "15px", left: "370px"}).addClass("mediumLabel");
-  left_side = av.label("|---------- $k$ ----------|", {top: "15px", left: "225px"}).addClass("mediumLabel2");
+  left_side = av.label("|--------- $k$ ---------|", {top: "15px", left: "225px"}).addClass("mediumLabel2");
   av.step();
 
   // Slide 9
   av.umsg(interpret("Slide 9"));
-  var eqn = av.label("$$\\frac{1}{n}\\displaystyle\\sum_{k=0}^{n-1}[T(k)+T(n-1-k)]$$",  {top: "-36px", left: "0px"}).addClass("largeLabel");
+  var eqn = av.label("$$\\frac{1}{n}\\displaystyle\\sum_{k=0}^{n-1}[T(k)+T(n-1-k)]$$",  {top: "-38px", left: "0px"}).addClass("largeLabel");
   av.step();
 
   // Slide 10

@@ -21,7 +21,7 @@
       "startAfter": "/* *** ODSATag: Radixsort *** */",
       "endBefore": "/* *** ODSAendTag: Radixsort *** */",
       "top": -10,
-      "left": 450,
+      "left": 420,
       "tags": {
         "loops": [5, 6, 8, 11, 13, 17],
         "loop1": 5,
