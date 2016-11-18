@@ -318,3 +318,12 @@ Indexing
    * Ways to reduce the number of disk fetches:
       * Keep the upper levels in memory.
       * Manage B+-Tree pages with a buffer pool.
+
+
+.. slide:: B-Trees: The Big Idea
+
+   * B-trees are really good at managing a sorted list
+
+      * They break the list into manageable chunks
+      * The leaves of the B+-tree form the list
+      * The internal nodes of the B+-tree merely help find the right chunk

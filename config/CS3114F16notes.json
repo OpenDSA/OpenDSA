@@ -421,15 +421,21 @@
         "sections" : {}
       }
     },
-    "Weeks 12-13": {
+    "Week 12": {
       "F16/Graphs": {
         "long_name": "Graphs",
         "sections" : {}
       }
     },
-    "Week 14": {
+    "Week 13": {
       "F16/Indexing": {
         "long_name": "Indexing",
+        "sections" : {}
+      }
+    },
+    "Week 14": {
+      "F16/General": {
+        "long_name": "General Trees",
         "sections" : {}
       }
     }
