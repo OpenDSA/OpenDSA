@@ -21,7 +21,7 @@ $(document).ready(function() {
 
   // Slide 2
   av.umsg(interpret("sc2"));
-  var nLabel = av.label("|---------------------------- $n$ ----------------------------|", {left: leftAlign + 25, top: topAlign + 60});
+  var nLabel = av.label("|--------------------------- $n$ ---------------------------|", {left: leftAlign + 22, top: topAlign + 60});
   var count = 0;
   while (count < arraySize) {
     var value = Math.round(Math.random() * 10) + 1;

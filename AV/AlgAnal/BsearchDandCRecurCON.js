@@ -98,7 +98,7 @@ $(document).ready(function() {
   //Slide 7
   av.umsg(interpret("sc7"));
   last.removeClass("subProblemNode");
-  labelSet.push(av.label("|-------------------------------------------------- $\\displaystyle\\sum_{i=0}^{\\log{n}}1$ -------------------------------------------------|", {top: topAlign + 1.5 * nodeHeight, left: leftAlign + 0.5 * nodeWidth + 3}));
+  labelSet.push(av.label("|----------------------------------------------- $\\displaystyle\\sum_{i=0}^{\\log{n}}1$ ----------------------------------------------|", {top: topAlign + 1.5 * nodeHeight, left: leftAlign + 0.5 * nodeWidth + 3}));
   av.step();
 
   //Slide 8

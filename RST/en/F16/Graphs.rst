@@ -25,7 +25,7 @@ Graphs
 
    .. odsalink:: AV/Graph/GraphDefCON.css
 
-   .. inlineav:: GdirundirCON dgm 
+   .. inlineav:: GdirundirCON dgm
       :output: show
 
    .. odsascript:: AV/Graph/GdirundirCON.js
@@ -37,8 +37,8 @@ Graphs
 
    .. odsascript:: AV/Graph/GneighborCON.js
 
-   .. inlineav:: GpathDefCON dgm 
-      :output: show 
+   .. inlineav:: GpathDefCON dgm
+      :output: show
 
    .. odsascript:: AV/Graph/GpathDefCON.js
 
@@ -56,7 +56,7 @@ Graphs
 
 .. slide:: Directed Graph Representation
 
-   .. inlineav:: GdirRepCON dgm 
+   .. inlineav:: GdirRepCON dgm
       :output: show
 
    .. odsascript:: AV/Graph/GdirRepCON.js
@@ -64,8 +64,8 @@ Graphs
 
 .. slide:: Undirected Graph Representation
 
-   .. inlineav:: GundirRepCON dgm 
-      :output: show 
+   .. inlineav:: GundirRepCON dgm
+      :output: show
 
    .. odsascript:: AV/Graph/GundirRepCON.js
 
@@ -83,7 +83,7 @@ Graphs
 
 .. slide:: Graph ADT
 
-   .. codeinclude:: Graphs/Graph 
+   .. codeinclude:: Graphs/Graph
       :tag: GraphADT
 
 
@@ -94,7 +94,7 @@ Graphs
 
 .. slide:: Visiting Neighbors
 
-   .. codeinclude:: Graphs/GraphDummy 
+   .. codeinclude:: Graphs/GraphDummy
       :tag: GraphNeighbor
 
 
@@ -115,13 +115,13 @@ Graphs
 
    * To insure visiting all vertices:
 
-   .. codeinclude:: Graphs/GraphTrav 
+   .. codeinclude:: Graphs/GraphTrav
       :tag: GraphTrav
 
 
 .. slide:: Depth First Search (1)
 
-   .. codeinclude:: Graphs/DFS 
+   .. codeinclude:: Graphs/DFS
       :tag: DFS
 
 
@@ -145,7 +145,7 @@ Graphs
 
 .. slide:: Breadth First Search (2)
 
-   .. codeinclude:: Graphs/BFS 
+   .. codeinclude:: Graphs/BFS
       :tag: BFS
 
 
@@ -172,7 +172,7 @@ Graphs
 
 .. slide:: Depth-First Topological Sort (1)
 
-   .. codeinclude:: Graphs/TopsortDFS 
+   .. codeinclude:: Graphs/TopsortDFS
       :tag: TopsortDFS
 
 
@@ -188,7 +188,7 @@ Graphs
 
 .. slide:: Queue-Based Topsort (1)
 
-   .. codeinclude:: Graphs/TopsortBFS 
+   .. codeinclude:: Graphs/TopsortBFS
       :tag: TopsortBFS
 
 
@@ -228,7 +228,7 @@ Graphs
 
    * :math:`w(A, B)` is the weight of the edge connecting :math:`A` to
      :math:`B`.
-      * If there is no such edge, then :math:`w(A, B) = \infty`.
+   * If there is no such edge, then :math:`w(A, B) = \infty`.
 
 
    .. inlineav:: dijkstraCON dgm
@@ -253,7 +253,7 @@ Graphs
 
 
 .. slide:: Dijkstra’s Algorithm Example
- 
+
    .. avembed:: AV/Graph/DijkstraAV.html ss
 
 
@@ -263,7 +263,7 @@ Graphs
 
 .. slide:: Dijkstra’s Implementation
 
-   .. codeinclude:: Graphs/Dijkstra 
+   .. codeinclude:: Graphs/Dijkstra
       :tag: GraphDijk1
 
 
@@ -278,18 +278,18 @@ Graphs
    * Approach 2: Store unprocessed vertices using a min-heap to
      implement a priority queue ordered by :math:`D` value.  Must
      update priority queue for each edge.
-      * Cost: :math:`\Theta((|V| + |E|)log|V|)`
+   * Cost: :math:`\Theta((|V| + |E|)log|V|)`
 
 
 .. slide:: Approach 1
 
-   .. codeinclude:: Graphs/Dijkstra 
+   .. codeinclude:: Graphs/Dijkstra
       :tag: MinVertex
 
 
 .. slide:: Approach 2
 
-   .. codeinclude:: Graphs/DijkstraPQ 
+   .. codeinclude:: Graphs/DijkstraPQ
       :tag: DijkstraPQ
 
 
@@ -323,7 +323,7 @@ Graphs
 
 .. slide:: Floyd's Algorithm
 
-   .. codeinclude:: Graphs/Floyd 
+   .. codeinclude:: Graphs/Floyd
       :tag: Floyd
 
 
@@ -384,7 +384,7 @@ Graphs
 
    * How to tell if an edge connects two vertices already in the same
      MST?
-      * Use the UNION/FIND algorithm with parent-pointer
+   * Use the UNION/FIND algorithm with parent-pointer
         representation.
 
 

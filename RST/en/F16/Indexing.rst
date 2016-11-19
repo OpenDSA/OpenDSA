@@ -303,18 +303,27 @@ Indexing
 
    * Asymptotic cost of search, insertion, and deletion of nodes from
      B-Trees is :math:`\Theta(log n)`.
-       * Base of the log is the (average) branching factor of the tree.
+   * Base of the log is the (average) branching factor of the tree.
 
 
 .. slide:: B-Tree Space Analysis (2)
 
    * Example: Consider a B+-Tree of order 100 with leaf nodes
      containing 100 records.
-      * 1 level B+-tree:
-      * 2 level B+-tree:
-      * 3 level B+-tree:
-      * 4 level B+-tree:
+   * 1 level B+-tree:
+   * 2 level B+-tree:
+   * 3 level B+-tree:
+   * 4 level B+-tree:
 
    * Ways to reduce the number of disk fetches:
       * Keep the upper levels in memory.
       * Manage B+-Tree pages with a buffer pool.
+
+
+.. slide:: B-Trees: The Big Idea
+
+   * B-trees are really good at managing a sorted list
+
+      * They break the list into manageable chunks
+      * The leaves of the B+-tree form the list
+      * The internal nodes of the B+-tree merely help find the right chunk

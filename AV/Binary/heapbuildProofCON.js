@@ -107,6 +107,7 @@ $(document).ready(function () {
   av.g.rect(580, voffset + 30, 25, 20);
   slider4 = av.g.rect(430, voffset + 30, 175, 20).addClass("colored");
   slider4.css({"opacity": 0.3});
+  slider3.removeClass("colored");
   av.step();
 	
   // Slide 9
@@ -115,6 +116,7 @@ $(document).ready(function () {
   av.g.rect(680, voffset + 30, 25, 20);
   slider5 = av.g.rect(630, voffset + 30, 75, 20).addClass("colored");
   slider5.css({"opacity": 0.3});
+  slider4.removeClass("colored");
   av.step();
 	
   // Slide 10
@@ -122,6 +124,7 @@ $(document).ready(function () {
   av.g.rect(730, voffset + 30, 25, 20);
   slider6 = av.g.rect(730, voffset + 30, 25, 20).addClass("colored");
   slider6.css({"opacity": 0.3});
+  slider5.removeClass("colored");
   av.step();
 	
   // Slide 11
@@ -129,6 +132,7 @@ $(document).ready(function () {
   av.g.rect(705, voffset + 30, 25, 20).css({fill: "black"});
   av.g.rect(755, voffset + 30, 25, 20).css({fill: "black"});
   av.g.rect(780, voffset + 30, 25, 20).css({fill: "black"});
+  slider6.removeClass("colored");
   av.label("-1",  {top: voffset - 5, left: 610});
   av.label("-1",  {top: voffset - 5, left: 710});
   av.label("-1",  {top: voffset - 5, left: 760});

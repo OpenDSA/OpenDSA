@@ -16,15 +16,15 @@ $(document).ready(function() {
   // Slide 2
   av.umsg(interpret("Slide 2"));
   av.g.rect(100, 5, 400, 30);
-  av.label("$n$",  {top: "-5px", left: "300px"}).addClass("mediumLabel");
+  av.label("$n$",  {top: "-3px", left: "300px"}).addClass("mediumLabel");
   av.step();
 
   // Slide 3
   av.umsg(interpret("Slide 3"));
   av.g.rect(100, 80, 400, 30);
   av.g.rect(290, 80, 10, 30);
-  av.label("|--------  $< A[pivot]$  --------|",  {top: "35px", left: "105px"}).addClass("mediumLabel2");
-  av.label("|---------  $> A[pivot]$  ---------|",  {top: "35px", left: "310px"}).addClass("mediumLabel2");
+  av.label("|------------  $< A[pivot]$  -------------|",  {top: "35px", left: "105px"}).addClass("mediumLabel2");
+  av.label("|-------------  $> A[pivot]$  --------------|",  {top: "35px", left: "305px"}).addClass("mediumLabel2");
   av.label("pivot",  {top: "75px", left: "281px"}).addClass("smallLabel rotated");
   av.label("$\\frac{n}{2}$",  {top: "70px", left: "190px"}).addClass("mediumLabel");
   av.label("$\\frac{n}{2}$",  {top: "70px", left: "390px"}).addClass("mediumLabel");

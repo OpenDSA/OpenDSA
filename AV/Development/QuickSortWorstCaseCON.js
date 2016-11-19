@@ -23,7 +23,7 @@ $(document).ready(function() {
   av.umsg(interpret("Slide 3"));
   av.g.rect(100, 80, 400, 30);
   av.g.rect(100, 80, 20, 30);
-  av.label("|---------------------------------------  $> A[pivot]$  -------------------------------------|",  {top: "40px", left: "120px"}).addClass("mediumLabel2");
+  av.label("|------------------------------------  $> A[pivot]$  -----------------------------------|",  {top: "40px", left: "120px"}).addClass("mediumLabel2");
   av.label("pivot",  {top: "76px", left: "98px"}).addClass("smallLabel rotated");
   av.label("$n-1$",  {top: "71px", left: "270px"}).addClass("mediumLabel");
   av.label("$n-1$",  {top: "67px", left: "600px"}).addClass("mediumLabel");
@@ -34,7 +34,7 @@ $(document).ready(function() {
   av.umsg(interpret("Slide 4"));
   av.g.rect(120, 160, 380, 30);
   av.g.rect(120, 160, 20, 30);
-  av.label("|------------------------------------- $> A[pivot]$  ----------------------------------|",  {top: "120px", left: "140px"}).addClass("mediumLabel2");
+  av.label("|---------------------------------- $> A[pivot]$  ---------------------------------|",  {top: "120px", left: "140px"}).addClass("mediumLabel2");
   av.label("pivot",  {top: "156px", left: "118px"}).addClass("smallLabel rotated");
   av.label("$n-2$",  {top: "151px", left: "290px"}).addClass("mediumLabel");
   av.label("$n-2$",  {top: "147px", left: "600px"}).addClass("mediumLabel");
@@ -44,7 +44,7 @@ $(document).ready(function() {
   av.umsg(interpret("Slide 5"));
   av.g.rect(140, 240, 360, 30);
   av.g.rect(140, 240, 20, 30);
-  av.label("|----------------------------------  $> A[pivot]$  --------------------------------|",  {top: "200px", left: "160px"}).addClass("mediumLabel2");
+  av.label("|-------------------------------  $> A[pivot]$  -------------------------------|",  {top: "200px", left: "160px"}).addClass("mediumLabel2");
   av.label("pivot",  {top: "236px", left: "138px"}).addClass("smallLabel rotated");
   av.label("$n-3$",  {top: "231px", left: "300px"}).addClass("mediumLabel");
   av.label("$n-3$",  {top: "227px", left: "600px"}).addClass("mediumLabel");
