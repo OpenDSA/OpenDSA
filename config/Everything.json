@@ -212,13 +212,11 @@
       "Pointers/Exercises": {
         "long_name": "Exercises",
         "sections": {
-          "Exercises": {
-            "FindNodePROG": {
-              "long_name": "Find Node Exercise",
-              "required": true,
-              "points": 1.0,
-              "threshold": 3
-            }
+          "FindNodePROG Pointer Programming Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 1.0
           }
         }
       }

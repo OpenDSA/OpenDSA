@@ -17,4 +17,8 @@ Exercises
 
 Solve following exercise.
 
-.. avembed:: Exercises/Pointers/FindNodePROG.html ka
+.. TODO::
+   :type: Exercise
+
+   Was Exercises/Pointers/FindNodePROG.html. Now is a code workout
+   exercise that needs to be included.
