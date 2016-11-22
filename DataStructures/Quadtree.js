@@ -136,7 +136,7 @@
 	  if (p == 0) {
 	    this.list[this.current++] = this.jsav.label(point.getName(), {
 	      left: mapleft + point.getX(),
-	      top: maptop + point.getY() - 3 c
+	      top: maptop + point.getY() - 35,
 	    });
 	    if (!noClick) { // jsav output disable
 	      this.list[(this.current - 1)].hide();
@@ -165,7 +165,7 @@
 	  // remove closest point upon clicking
 	  if (noClick === false) { // there is clicking enable
 	    for (var i = 0; i < this.list.length; i++) {
-	      if (i % 2 == 0 && (this.list[i] instanceof Point)) {
+	      if ((this.list[i] instanceof Point)) {
 	        // -+5 ratio difference
 	        var diffX = point.getX() - this.list[i].getX();
 	        var diffY = point.getY() - this.list[i].getY();
@@ -219,8 +219,17 @@
 	    rt.addClass('PrQuadEmptyleaf');
 	    return new leafNode(this.jsav, this.qdt);
 	  } else {
-	    (this.list.length > 4) ? rt.value(this.list[0].getName() + " " +
-	      this.list[2].getName()): rt.value(this.list[0].getName());
+	    //(this.list.length > 4) ? rt.value(this.list[0].getName() + " " +
+	      //this.list[2].getName()): rt.value(this.list[0].getName());
+		if(this.list.length >= 3){
+			var res = "";
+			for (var i = 0; i < this.list.length; i++){
+				if(this.list[i] instanceof Point){
+					res += this.list[i].getName() + " ";
+				}
+			}
+			rt.value(res);
+		}
 	    if (d !== undefined) {
 	      d.hide();
 	      label.hide();
@@ -393,7 +402,7 @@
 	        }
 	        var str = "";
 	        for (var c = 0; c < arr.length; c++) {
-	          if (c % 2 === 0 && (arr[c] instanceof Point)) {
+	          if ((arr[c] instanceof Point)) {
 	            str += arr[c].getName() + " ";
 	          }
 	        }
