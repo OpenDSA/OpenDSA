@@ -168,7 +168,7 @@
 	  // remove closest point upon clicking
 	  if (noClick === false) { // there is clicking enable
 	    for (var i = 0; i < this.list.length; i++) {
-	      if (i % 2 == 0 && (point instanceof Point)) {
+	      if ((this.list[i] instanceof Point)) {
 	        // -+5 ratio difference
 	        var diffX = point.getX() - this.list[i].getX();
 	        var diffY = point.getY() - this.list[i].getY();
@@ -222,8 +222,17 @@
 	    rt.addClass('PrQuadEmptyleaf');
 	    return new leafNode(this.jsav, this.qdt);
 	  } else {
-	    (this.list.length > 4) ? rt.value(this.list[0].getName() + " " +
-	      this.list[2].getName()): rt.value(this.list[0].getName());
+	    //(this.list.length > 4) ? rt.value(this.list[0].getName() + " " +
+	      //this.list[2].getName()): rt.value(this.list[0].getName());
+		if(this.list.length >= 3){
+			var res = "";
+			for (var i = 0; i < this.list.length; i++){
+				if(this.list[i] instanceof Point){
+					res += this.list[i].getName() + " ";
+				}
+			}
+			rt.value(res);
+		}
 	    if (d !== undefined) {
 	      d.hide();
 	      label.hide();
@@ -418,7 +427,7 @@
 	          pointer.hide();
 	        }
 	        var str = "";
-	        for (var c = 0; c < arr.length; c += 2) {
+	        for (var c = 0; c < arr.length; c++) {
 	          if ((arr[c] instanceof Point)) {
 	            str += arr[c].getName() + " ";
 	          }
