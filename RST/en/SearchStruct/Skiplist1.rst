@@ -9,7 +9,7 @@
 
 .. odsalink:: DataStructures/SkipList.css
 .. odsalink:: AV/Development/SkipList/SkipListInsertCON.css
-.. odsaslink:: AV/Development/SkipList/SkipListRmvCON.css
+.. odsalink:: AV/Development/SkipList/SkipListRmvCON.css
 .. odsalink:: AV/Development/SkipList/SkipListSrchCON.css
 
 Skip Lists
@@ -65,6 +65,9 @@ implementation and performance.
    To find the node with key value 62, we visit nodes in the order
    31, 69, 58, then 69 again, and finally, 62.
 
+.. inlineav:: SkipListInsertAvCON ss
+   :output: show
+   
 Figure :num:`Figure #SkipIdeal` illustrates the concept behind the
 Skip List.
 Part (a) shows a simple linked list whose nodes are
@@ -188,6 +191,9 @@ Figure :num:`Figure #SkipExamp` part (a).
    (e) The final Skip List after inserting value 30 at
    level 2.
 
+.. inlineav:: SkipListInsertExplainCON ss
+   :output: show
+   
 Next, insert the value 20.
 Assume this time that ``randomLevel`` returns 0.
 The search process goes to the node with value 10, and the new node
@@ -226,9 +232,6 @@ set to be ``update[i]->forward[i]``, and
 the nodes stored in ``update[i]`` for indices 0 through 2 have
 their ``forward[i]`` pointers changed to point to the new node.
 This "splices" the new node into the Skip List at all levels.
-
-.. inlineav:: SkipListInsertCON ss
-   :output: show
 
 The ``remove`` function is similar to insertion in that the ``update`` array is built
 as part of searching for the record to be deleted.
@@ -279,6 +282,8 @@ performance of :math:`\Theta(\log n)`, that characterizes
 probabilistic data structures.
 
 .. odsascript:: DataStructures/SkipList.js
-.. odsascript:: AV/Development/SkipList/SkipListInsertCON.js
 .. odsascript:: AV/Development/SkipList/SkipListRmvCON.js
 .. odsascript:: AV/Development/SkipList/SkipListSrchCON.js
+.. odsascript:: AV/Development/SkipList/SkipListInsertCON.js
+.. odsascript:: AV/Development/SkipList/SkipListInsertAvCON.js
+.. odsascript:: AV/Development/SkipList/SkipListInsertExplainCON.js
