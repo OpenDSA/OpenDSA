@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PrQuadtree AV</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="../../../lib/odsaAV-min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../DataStructures/PrQuadAv.css" type="text/css" />
+  <style>
+      #container {
+      width: 80%;
+      position: relative;
+     }
+  </style>
+</head>
+
+<body>
+<div id="container">
+  <table class="headerTable">
+    <tr>
+      <td class="headerLeft"></td>
+      <td class="headerCenter avTitle"></td>
+      <td class="headerRight">
+        <input type="button" id="about" name="about" />
+        <a id="settings" class="jsavsettings" href="#"></a>
+      </td>
+    </tr>
+  </table>
+  <form id="ssperform">
+    <p>
+      <input type="button" id="run" name="run" value="Run" />
+      <input type="button" id="reset" name="reset" value="Reset" />
+    </p>
+  </form>
+  <div class="avcontainer">
+    <span class="jsavcounter"></span>
+    <div class="jsavcontrols"></div>
+    <p class="jsavoutput jsavline"></p>
+  </div> <!--avcontainer-->
+</div> <!--container-->
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="../../../JSAV/lib/jquery.transit.js"></script>
+<script src="../../../JSAV/lib/raphael.js"></script>
+<script src="../../../JSAV/build/JSAV-min.js"></script>
+<script src="../../../lib/odsaUtils-min.js"></script>
+<script src="../../../lib/odsaAV-min.js"></script>
+<script src="../../../DataStructures/Quadtree.js"></script>
+<script>
+	//global alert: true, ODSA 
+	$(document).ready(function () {
+	  // Process About button: Pop up a message with an Alert
+	  function about() {
+		alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
+	  }
+	  // Connect action callbacks to the HTML entities
+	  $('#about').click(about);
+	  $('#run').click(runIt);
+	  $('#reset').click(ODSA.AV.reset);
+	  
+	   //////////////////////////////////////////////////////////////////
+	  // Start processing here
+	  //////////////////////////////////////////////////////////////////
+	  // Load the config object with interpreter and code created by odsaUtils.js
+	 var config = ODSA.UTILS.loadConfig(),
+	  interpret = config.interpreter,       // get the interpreter
+	  settings = config.getSettings();      // Settings for the AV
+	  // Execute the "Run" button function
+	  function runIt() {
+		ODSA.AV.reset(true);
+		var jsav = new JSAV($('.avcontainer'), {settings: settings});
+		var point = new Point(120, 120, "A");
+		jsav.umsg("Let's get started");
+		//console.log("Setup the Bintree");
+		var bint = new QuadTree(jsav, 256, 256);
+		jsav.displayInit();
+		
+		jsav.umsg("Step 1: insert node with value 'A @ 130, 120");
+		var point = new Point(130, 120, "A");
+		bint.insert(point, 2);
+		
+		jsav.step();
+		jsav.umsg("Step 2: Insert C- (90,200)");
+		var point = new Point(90, 200, "C");
+		bint.insert(point, 2);
+		
+		jsav.step();
+		jsav.umsg("Step 3: Insert D- (30,154)");
+		var point = new Point(30, 154, "D");
+		bint.insert(point, 2);
+		
+		jsav.step();
+		jsav.umsg("Step 4: Insert E- (45,214)");
+		var point = new Point(45, 214, "E");
+		 bint.insert(point, 2);
+		 jsav.step();
+		jsav.umsg("Step 4: remove E- (45,214)");
+		bint.remove(point, 2);
+		jsav.recorded(); // mark the end
+	  }
+	});
+</script>
+</body>
+</html>

@@ -65,7 +65,7 @@ implementation and performance.
    To find the node with key value 62, we visit nodes in the order
    31, 69, 58, then 69 again, and finally, 62.
 
-.. inlineav:: SkipListInsertAvCON ss
+.. inlineav:: SkipListInsertCON ss
    :output: show
    
 Figure :num:`Figure #SkipIdeal` illustrates the concept behind the
@@ -110,9 +110,6 @@ The ``find`` function is shown next along a visualization.
 
 .. codeinclude:: Randomized/SkipList
    :tag: SkipFind
-
-.. inlineav:: SkipListSrchCON ss
-   :output: show
 
 Searching for a node with value 62 in the
 Skip List of Figure :num:`Figure #SkipIdeal` Part (c)
@@ -191,7 +188,7 @@ Figure :num:`Figure #SkipExamp` part (a).
    (e) The final Skip List after inserting value 30 at
    level 2.
 
-.. inlineav:: SkipListInsertExplainCON ss
+.. inlineav:: SkipListSrchCON ss
    :output: show
    
 Next, insert the value 20.

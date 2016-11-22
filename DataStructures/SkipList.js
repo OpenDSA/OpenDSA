@@ -49,7 +49,7 @@ SkipListProto.init = function(jsav, options) {
   this.options = $.extend({
     layout: "vertical",
     indexed: true,
-    left: 250,
+    left: 100,
     top: topVal
   }, options);
   // create an empty SkipNode and set it as root
