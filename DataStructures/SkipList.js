@@ -10,11 +10,8 @@
  * delete debugging helpers codes ~completed
  * follow the naming convention and structure the class ~completed
  */
-//(function($) {
 "use strict";
-//if (typeof JSAV === "undefined") {
-//  return;
-//}
+
 /********************************************************************
  * Add the SkipList constructor to the public facing JSAV interface.
  ********************************************************************/
@@ -35,8 +32,11 @@ function SkipList(jsav, options) {
 };
 // Get SkipList prototype
 var SkipListProto = SkipList.prototype;
-var pointerLen = 72;
 var hztalDist = 70;
+var topVal = 72;
+var HeadTopVal = 40;
+var noRedraw = 0;
+var showStep = true;
 /**
  * initialize the SkipList. Create an empty head
  * @param jsav The JSAV object for this skiplist
@@ -49,11 +49,11 @@ SkipListProto.init = function(jsav, options) {
   this.options = $.extend({
     layout: "vertical",
     indexed: true,
-    left: 250,
-    top: 42
+    left: 100,
+    top: topVal
   }, options);
   // create an empty SkipNode and set it as root
-  this.head = new SkipNode(null, this.level + 1, this.jsav, this.options, 0);
+  this.head = new SkipNode(null, this.level, this.jsav, this.options, 0);
   this.size = 0;
 };
 /** generate a random value, note that the 237 is arbitrary and could have been any number
@@ -80,24 +80,29 @@ var adjustHead = function(nLev, head, oldLev, jsav, options) {
   return head;
 };
 /** insert a kv pair into a the SkipList */
-SkipListProto.insert = function(it) {
+SkipListProto.insert = function(it, lev, showS) {  
   if (!(it instanceof KVPair)) {
     throw new Error("illegal arguments Exception: arg must be of type KVPair")
   }
-  var newLevel = randomLevel();
+  var newLevel = 0;
+  (lev === undefined)? newLevel = randomLevel(): newLevel = lev;
   if (this.level < newLevel) {
     var flag = false;
     if (this.level + 1 < newLevel) {
-      var flag = true;
-      this.jsav.step();
-      this.jsav.umsg("the randon depth of the node to be insert is " +
-        newLevel + ", so we must adjust the depth of our head node before inserting");
-      this.jsav.step();
+		var flag = true;
+		if (showStep){
+		  this.jsav.step();
+		  this.jsav.umsg("the randon depth of the node to be insert is " +
+			newLevel + ", so we must adjust the depth of our head node before inserting");
+		  this.jsav.step();
+		}
     }
     this.head = adjustHead(newLevel, this.head, this.level, this.jsav,
       this.options);
     this.level = newLevel;
-    (flag === true) ? this.jsav.step(): flag = false;
+	if (showStep){
+		(flag === true) ? this.jsav.step(): flag = false;
+	}
   }
   var update = new Array(this.level + 1);
   var x = this.head;
@@ -117,8 +122,8 @@ SkipListProto.insert = function(it) {
       var disOption = xfwrd.getOptions();
       xfwrd.incrNodeNum();
       var newOp = xfwrd.getNewOp();
-      newOp.left += 70;
-      disOption.left += 70;
+      newOp.left += hztalDist;
+      disOption.left += hztalDist;
       xfwrd.updateDis(disOption, newOp);
       xfwrd.movePointerRight(x.getLevel(), update[0].getNodeNum() + 1, i);
       i++;
@@ -128,7 +133,7 @@ SkipListProto.insert = function(it) {
     insertMidHelper(it, x, update, newOption, this.jsav, newLevel);
   } else { // inserting at the end
     var newOption = {
-      left: this.options.left + (this.size + 1) * 70,
+      left: this.options.left + (this.size + 1) * hztalDist,
       top: this.options.top,
       layout: "vertical"
     };
@@ -139,11 +144,15 @@ SkipListProto.insert = function(it) {
 };
 /** helper function to insert in the middle */
 var insertMidHelper = function(it, x, update, newOption, jsav, newLevel) {
-    jsav.umsg("This key is to be insert in the middle so we must make space to insert and update pointers");
-    jsav.step();
+    if(showStep){
+		jsav.umsg("This key is to be insert in the middle so we must make space to insert and update pointers");
+		jsav.step();
+	}
     x = new SkipNode(it, newLevel, jsav, newOption, (update[0].getNodeNum() + 1));
-    jsav.step();
-    jsav.umsg("update pointers");
+    if(showStep){
+		jsav.step();
+		jsav.umsg("update pointers");
+	}
     var xfwr = x.getForward();
     for (var j = 0; j <= newLevel; j++) { // Splice into list
       xfwr[j] = update[j].getForward()[j]; // Who x points to
@@ -155,11 +164,13 @@ var insertMidHelper = function(it, x, update, newOption, jsav, newLevel) {
       if (xfwr[j] == null) {
         update[j].updateArrDis(j);
       }
+	  if(showStep){
       //jsav.step();
-      jsav.umsg("update pointers");
+		jsav.umsg("update pointers");
+	  }
       x.setPointer(j, jsav.pointer(" ", x.getDispArr(), {
         targetIndex: j,
-        left: -(longer - 1) * 70 - 55,
+        left: -(longer - 1) * hztalDist - 55,
         top: 22,
         arrowAnchor: "left center",
         fixed: false
@@ -180,7 +191,7 @@ var insertEndHelper = function(it, x, update, newOption, jsav, newLevel) {
       var longer = (x.getNodeNum() - update[j].getNodeNum())
       x.setPointer(j, jsav.pointer(" ", x.getDispArr(), {
         targetIndex: j,
-        left: -(longer - 1) * 70 - 55,
+        left: -(longer - 1) * hztalDist - 55,
         top: 22,
         arrowAnchor: "left center",
         fixed: false
@@ -194,43 +205,54 @@ SkipListProto.search = function(otherKey) {
     var result = " ";
     var x = this.head; // Dummy header node
     var j = this.level
+	if(showStep){
     this.jsav.umsg("Searching for key: " + otherKey + " starting at the deepest level")
-    unhigh[ind++] = x.getDispArr().highlight(j);
-    this.jsav.step();
+		unhigh[ind++] = x.getDispArr().highlight(j);
+		this.jsav.step();
+	}
     for (var i = j; i >= 0; i--) { // go forward
       while ((x.getForward()[i] !== null) &&
         (otherKey, x.getForward()[i].getPair().compareTo(otherKey) < 0)) {
         var xfwr = x.getForward()[i];
         if (xfwr !== null) {
-          unhigh[ind++] = xfwr.getDispArr().highlight(i);
-
-          this.jsav.umsg("we compare " + otherKey + " to the next record " +
+		  if(showStep){
+			unhigh[ind++] = xfwr.getDispArr().highlight(i);
+			this.jsav.umsg("we compare " + otherKey + " to the next record " +
             xfwr.getPair().getKey() + ". If what it points to is less, we move forward, else we go down a level");
-          this.jsav.step();
+			this.jsav.step();
+		  }
         }
         x = x.getForward()[i];
 
       } // Go one last step
     }
-    unhigh[ind++] = x.getDispArr().highlight(0);
-    this.jsav.umsg("we go down to the lowest level");
-    this.jsav.step();
+	if(showStep){
+		unhigh[ind++] = x.getDispArr().highlight(0);
+		this.jsav.umsg("we go down to the lowest level");
+		this.jsav.step();
+	}
     x = x.getForward()[0]; // Move to actual record, if it exists
     if (x !== null) {
       while ((x.equalKey(otherKey) === 0)) {
         result += x.getPair().getVal().toString();
         x = x.getForward()[0];
       }
-      unhigh[ind++] = x.getDispArr().highlight(0);
-      this.jsav.umsg("now we move to the record muching our key " + otherKey);
-      this.jsav.step();
+	  if(showStep){
+		  unhigh[ind++] = x.getDispArr().highlight(0);
+		  this.jsav.umsg("now we move to the record muching our key " + otherKey);
+		  this.jsav.step();
+	  }
     } else {
-      this.jsav.umsg("key " + otherKey + " not found");
-      this.jsav.step();
+		if(showStep){
+		  this.jsav.umsg("key " + otherKey + " not found");
+		  this.jsav.step();
+		}
     }
-    for (var i = 0; i < ind; i++) {
-      unhigh[i].unhighlight();
-    }
+	if(showStep){
+		for (var i = 0; i < ind; i++) {
+		  unhigh[i].unhighlight();
+		}
+	}
     return result;
   }
   /** helper function for remove */
@@ -244,11 +266,16 @@ var find = function(val, head) {
     }
     return null;
   }
+  var isStepShown = function(val){
+	showStep = val;
+  }
   /** remove by key */
 SkipListProto.removeKey = function(otherKey) {
-  this.jsav.step();
-  this.jsav.umsg("To remove " + otherKey + " we must search find then disconnect pointer");
-  this.jsav.step();
+  if (showStep){
+	  this.jsav.step();
+	  this.jsav.umsg("To remove " + otherKey + " we must search find then disconnect pointer");
+	  this.jsav.step();
+  }
   var x = this.head;
   var removed = null;
   var update = new Array(this.level + 1);
@@ -262,8 +289,10 @@ SkipListProto.removeKey = function(otherKey) {
   if (x.getForward()[0] !== null &&
     (x.getForward()[0].getPair().compareTo(otherKey) === 0)) {
     removed = x.getForward()[0];
-    this.jsav.umsg("We have successfull find our key in the SkipList, We need to remove and reset pointers");
-    removed.getDispArr().highlight(0);
+	if (showStep){
+		this.jsav.umsg("We have successfull find our key in the SkipList, We need to remove and reset pointers");
+		removed.getDispArr().highlight(0);
+	}
     for (var i = 0; i <= this.level; i++) { // Splice into list
       var upFwrd = update[i].getForward()[i];
       while (upFwrd != null &&
@@ -276,8 +305,10 @@ SkipListProto.removeKey = function(otherKey) {
         break; // break so that it does not remove all duplicate
       } // Who x points to
     }
+	if (showStep){
     this.jsav.step();
-    removed.getDispArr().highlight(0);
+		removed.getDispArr().highlight(0);
+	}
     this.size--; // Increment dictionary size
     if (removed.getForward()[0] == null) { // if removing from the end
       removed.clear();
@@ -289,8 +320,8 @@ SkipListProto.removeKey = function(otherKey) {
         var disOption = xfwr.getOptions();
         xfwr.decrNodeNum();
         var newOp = xfwr.getNewOp();
-        newOp.left -= 70;
-        disOption.left -= 70;
+        newOp.left -= hztalDist;
+        disOption.left -= hztalDist;
         xfwr.updateDis(disOption, newOp);
         xfwr.movePointerLeft(x.getLevel(), removed.getNodeNum() - 1, i);
         i++;
@@ -313,7 +344,7 @@ var updateNxt = function(update, jsav) {
         var longer = upFwrd[i].getNodeNum() - update[i].getNodeNum();
         var opt = {
           targetIndex: i,
-          left: -(longer - 1) * 70 - 55,
+          left: -(longer - 1) * hztalDist - 55,
           top: 22,
           arrowAnchor: "left center",
           fixed: false
@@ -360,10 +391,14 @@ function SkipNode(p, nodeLevel, jsav, options, num) {
     autoresize: true
   }, this.options);
   this.newOp.indexed = false;
-  this.newOp.top = 10;
+  this.newOp.top = HeadTopVal;
   this.newOp.left = (this.options.indexed === true) ? this.options.left + 8 : this.options.left;
   if (this.pair === null) {
     this.val = jsav.ds.array(['Hd'], this.newOp);
+	if(noRedraw == 0){
+		var ponter2 = jsav.pointer("Head", this.val.index(0));
+		noRedraw++;
+	}
   } else {
     this.val = jsav.ds.array([p.toString()], this.newOp);
   }
@@ -377,6 +412,9 @@ skipNodeProto.updateDis = function(options, newOp) {
   this.val.show();
   this.disArr.show();
 };
+skipNodeProto.getVal = function(){
+	return this.val;
+}
 skipNodeProto.resetArrDis = function(i) {
   this.arr[i] = "null";
   this.disArr.value(i, "null");
@@ -408,7 +446,7 @@ skipNodeProto.updateNextPointer = function(longer, j) {
   this.pointer[j].hide();
   this.pointer[j] = this.jsav.pointer(" ", this.disArr, {
     targetIndex: j,
-    left: -(longer - 1) * 70 + (-55),
+    left: -(longer - 1) * hztalDist + (-55),
     top: 22,
     arrowAnchor: "left center",
     fixed: false,
@@ -421,11 +459,11 @@ skipNodeProto.movePointerRight = function(lev, longer, t) {
     (i < (this.nodeLevel + 1) && point[i] !== null); i++) {
     var lef = this.pointer[i].options.left;
     this.pointer[i].hide();
-    var d = -((this.nodeNum - longer) - 1) * 70 - 55;
+    var d = -((this.nodeNum - longer) - 1) * hztalDist - 55;
     d = -d;
     this.pointer[i] = this.jsav.pointer(" ", this.disArr, {
       targetIndex: i,
-      left: (t == 0) ? lef - 70 : (d <= -lef) ? lef - 70 : lef,
+      left: (t == 0) ? lef - hztalDist : (d <= -lef) ? lef - hztalDist : lef,
       top: 22,
       arrowAnchor: "left center",
       fixed: false,
@@ -442,11 +480,11 @@ skipNodeProto.movePointerLeft = function(lev, longer, t) {
     (i < (this.nodeLevel + 1) && point[i] !== null); i++) {
     var lef = this.pointer[i].options.left;
     this.pointer[i].hide();
-    var d = -((this.nodeNum - longer)) * 70 - 55;
+    var d = -((this.nodeNum - longer)) * hztalDist - 55;
     d = -d;
     this.pointer[i] = this.jsav.pointer(" ", this.disArr, {
       targetIndex: i,
-      left: (d > -lef) ? lef : lef + 70,
+      left: (d > -lef) ? lef : lef + hztalDist,
       top: 22,
       arrowAnchor: "left center",
       fixed: false
