@@ -25,8 +25,8 @@ $(document).ready(function() {
     jsav.step();
     jsav.umsg("adding another key-value pair (9, B)");
     ll.insert(new KVPair(9, "B"));
-	jsav.displayInit();
-	isStepShown(true);
+    jsav.displayInit();
+    isStepShown(true);
     jsav.step();
     jsav.umsg("removing key 1");
     ll.removeKey(1);
