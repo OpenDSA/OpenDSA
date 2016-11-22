@@ -101,6 +101,9 @@ test: min
 CS2Plain: min
 	python $(CONFIG_SCRIPT) config/CS2.json --no-lms
 
+CS2114: min
+	python $(CONFIG_SCRIPT) config/CS2114.json --no-lms
+
 CS3Plain: min
 	python $(CONFIG_SCRIPT) config/CS3.json --no-lms
 
