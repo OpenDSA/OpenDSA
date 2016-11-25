@@ -6,7 +6,7 @@
 	 */
 	var mapleft = 800;
 	var maptop = 25;
-	var numPoint = 9;
+	var numPoint = 6;
 	var p = 0;
 	var noClick = true; // there is not going to be any clicking associated with the rectangle
 	/**
@@ -39,7 +39,7 @@
 	}
 
 	QuadTreeProto.insert = function(point, nPoint) {
-	  (nPoint === undefined) ? numPoint = 9: numPoint = 3 * nPoint;
+	  (nPoint === undefined) ? numPoint = 6: numPoint = 3 * nPoint;
 	  if (point.getX() < 0 || point.getX() > 256 ||
 	    point.getY() < 0 || point.getY() > 256) {
 	    return;
