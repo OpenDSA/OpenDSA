@@ -97,6 +97,9 @@ step is to find where the node should be inserted and link it in as
 appropriate at all of its levels.
 Here is an implementation for inserting a new
 value into the Skip List.
+Note that we build an ``update`` array as we progress through the Skip
+List, so that we can update the pointers for the nodes that will
+preceed the one being inserted.
 
 .. codeinclude:: Randomized/SkipList
    :tag: SkipInsert
@@ -104,77 +107,10 @@ value into the Skip List.
 .. inlineav:: SkipListInsertCON ss
    :output: show
 
-.. _SkipExamp:
-
-.. odsafig:: Images/SkipExamp.png
-   :width: 500
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Skip List insertion example
-
-   Illustration of Skip List insertion.
-   (a) The Skip List after inserting initial value~10 at level 1.
-   (b) The Skip List after inserting value 20 at level 0.
-   (c) The Skip List after inserting value 5 at level 0.
-   (d) The Skip List after inserting value 2 at level 3.
-   (e) The final Skip List after inserting value 30 at
-   level 2.
-
-Next we illustrate the Skip List insertion process.
-In this example, we begin by inserting a node with value 10 into an
-empty Skip List.
-Assume that ``randomLevel`` returns a value of 1 (i.e., the node is
-at level 1, with 2 pointers).
-Because the empty Skip List has no nodes, the level of the list
-(and thus the level of the header node) must be set to 1.
-The new node is inserted, yielding the Skip List of
-Figure :num:`Figure #SkipExamp` part (a).
-
-Next, insert the value 20.
-Assume this time that ``randomLevel`` returns 0.
-The search process goes to the node with value 10, and the new node
-is inserted after, as shown in
-Figure :num:`Figure #SkipExamp` part (b).
-The third node inserted has value 5, and again assume that
-``randomLevel`` returns 0.
-This yields the Skip List of Figure :num:`Figure #SkipExamp` part (c).
-
-The fourth node inserted has value 2, and assume that
-``randomLevel`` returns 3.
-This means that the level of the Skip List must rise, causing the
-header node to gain an additional two (null) pointers.
-At this point, the new node is added to the front of the list, as
-shown in Figure :num:`Figure #SkipExamp` part (d).
-
-Finally, insert a node with value 30 at level 2.
-This time, let us take a close look at what array ``update`` is
-used for.
-It stores the farthest node reached at each level during the search
-for the proper location of the new node.
-The search process begins in the header node at level 3 and proceeds
-to the node storing value 2.
-Because ``forward[3]`` for this node is null, we cannot go further
-at this level.
-Thus, ``update[3]`` stores a pointer to the node with value 2.
-Likewise, we cannot proceed at level 2, so ``update[2]`` also
-stores a pointer to the node with value 2.
-At level 1, we proceed to the node storing value 10.
-This is as far as we can go at level 1, so ``update[1]`` stores a
-pointer to the node with value 10.
-Finally, at level 0 we end up at the node with value 20.
-At this point, we can add in the new node with value 30.
-For each value ``i``, the new node's ``forward[i]`` pointer is
-set to be ``update[i]->forward[i]``, and
-the nodes stored in ``update[i]`` for indices 0 through 2 have
-their ``forward[i]`` pointers changed to point to the new node.
-This "splices" the new node into the Skip List at all levels.
-
-The ``remove`` function is similar to insertion in that the ``update`` array is built
-as part of searching for the record to be deleted.
-Then those nodes
-specified by the update array have their forward pointers adjusted to
-point around the node being deleted.
+The ``remove`` function is similar to insertion in that the ``update``
+array is built as part of searching for the record to be deleted.
+Then those nodes specified by the update array have their forward
+pointers adjusted to point around the node being deleted.
 
 .. inlineav:: SkipListRmvCON ss
    :output: show

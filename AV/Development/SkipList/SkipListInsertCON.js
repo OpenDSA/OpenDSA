@@ -12,7 +12,11 @@ $(document).ready(function() {
   jsav.displayInit();
 
   // Slide 2
-  jsav.umsg("Insert initial value 10, assuming randomLevel returns 1.");
+  jsav.umsg("The tree is initialized with a header node whose forward pointers are set to null.");
+  jsav.step();
+
+  // Slide 3
+  jsav.umsg("Now we will insert initial value 10, assuming randomLevel returns 1.");
   jsav.step();
 
   ll.insert(new KVPair(10, "A"), 1);
