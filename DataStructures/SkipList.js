@@ -27,8 +27,8 @@ JSAV.ext.ds.skiplist = function(options) {
   /**********************************************************************
    * Implement SkipList data structure.
    *********************************************************************/
-function SkipList(jsav, options) {
-  this.init(jsav, options);
+function SkipList(jsav, options, ndLev) {
+  this.init(jsav, options, ndLev);
 };
 // Get SkipList prototype
 var SkipListProto = SkipList.prototype;
@@ -42,9 +42,9 @@ var showStep = true;
  * @param jsav The JSAV object for this skiplist
  * @param options Options to be passed to the skiplist structure
  */
-SkipListProto.init = function(jsav, options) {
+SkipListProto.init = function(jsav, options, ndLev) {
   this.jsav = jsav; // set the jsav object for this tree
-  this.level = 0; // level of the tree
+  (ndLev === undefined)? this.level = 0: this.level = ndLev; // level of the tree
   // use specific starting point and ending point
   this.options = $.extend({
     layout: "vertical",
@@ -80,7 +80,7 @@ var adjustHead = function(nLev, head, oldLev, jsav, options) {
   return head;
 };
 /** insert a kv pair into a the SkipList */
-SkipListProto.insert = function(it, lev, showS) {  
+SkipListProto.insert = function(it, lev, showS) {
   if (!(it instanceof KVPair)) {
     throw new Error("illegal arguments Exception: arg must be of type KVPair")
   }
@@ -105,14 +105,36 @@ SkipListProto.insert = function(it, lev, showS) {
 	}
   }
   var update = new Array(this.level + 1);
-  var x = this.head;
+  var unhigh = new Array(this.size + 3); 
+  var x = this.head; // Dummy header node
+  var j = this.level
+  var ind = 0;
+  if(showStep){
+    this.jsav.umsg("Starting from level " + this.level + " of the head, we look for the first node whose pointer point to a key bigger than the key " + it.getKey() + " we want to insert. If no such key is present, we insert at the end.");
+		unhigh[ind++] = x.getDispArr().highlight(j);
+		this.jsav.step();
+	}
   for (var i = this.level; i >= 0; i--) { // Find insert position
     while ((x.getForward()[i] !== null) &&
       (x.getForward()[i] !== undefined) &&
       (it.compareTo((x.getForward()[i]).getPair().getKey())) > 0) {
+	  var xfwr = x.getForward()[i];
+      if (xfwr !== null) {
+		  if(showStep){
+		  unhigh[ind++] = xfwr.getDispArr().highlight(i);
+		  this.jsav.umsg("We compare " + it.getKey() + " to the next record " +
+          xfwr.getPair().getKey() + ". If what it points to is less, we move forward, else we go down a level.");
+		  this.jsav.step();
+		  }
+        }
       x = x.getForward()[i];
     }
     update[i] = x; // Track end at level i
+  }
+  if(showStep && this.head.getForward()[0] !== null){
+		unhigh[ind++] = x.getDispArr().highlight(0);
+		this.jsav.umsg("This is the node that will point to our new key "+ it.getKey() +", so we go down to its lowest level 0 to start inserting.");
+		this.jsav.step();
   }
   var xfwrd = x.getForward()[0];
   if (xfwrd !== null) { // inserting in the middle
@@ -139,16 +161,23 @@ SkipListProto.insert = function(it, lev, showS) {
     };
     insertEndHelper(it, x, update, newOption, this.jsav, newLevel);
   }
+  if(showStep){
+		for (var i = 0; i < ind; i++) {
+		  unhigh[i].unhighlight();
+		}
+  }
   this.size++; // Increment dictionary size
   return true;
 };
 /** helper function to insert in the middle */
 var insertMidHelper = function(it, x, update, newOption, jsav, newLevel) {
     if(showStep){
-		jsav.umsg("This key is to be inserted into the middle, so we must make space to insert and update pointers.");
-		jsav.step();
+		jsav.umsg("This key is to be inserted into the middle, so we must update both, its pointer and the node before it.");
 	}
     x = new SkipNode(it, newLevel, jsav, newOption, (update[0].getNodeNum() + 1));
+	if (showStep){
+		jsav.step();
+	}
     if(showStep){
 		jsav.step();
 		jsav.umsg("Update pointers.");
@@ -183,7 +212,13 @@ var insertMidHelper = function(it, x, update, newOption, jsav, newLevel) {
   }
   /** helper function for inserting at the end */
 var insertEndHelper = function(it, x, update, newOption, jsav, newLevel) {
+	if(showStep){
+		jsav.umsg("We are inserting at the end of the Skip List, so we just need to update the pointer of the node before it.");
+	}
     x = new SkipNode(it, newLevel, jsav, newOption, (update[0].getNodeNum() + 1));
+	if (showStep){
+		jsav.step();
+	}
     for (var j = 0; j <= newLevel; j++) { // Splice into list
       x.getForward()[j] = update[j].getForward()[j]; // Who x points to
       update[j].getForward()[j] = x; // Who y points to
@@ -212,7 +247,7 @@ SkipListProto.search = function(otherKey) {
 	}
     for (var i = j; i >= 0; i--) { // go forward
       while ((x.getForward()[i] !== null) &&
-        (otherKey, x.getForward()[i].getPair().compareTo(otherKey) < 0)) {
+        (otherKey, x.getForward()[i].getPair().compareTo(otherKey) < 0)) { 
         var xfwr = x.getForward()[i];
         if (xfwr !== null) {
 		  if(showStep){
@@ -395,10 +430,10 @@ function SkipNode(p, nodeLevel, jsav, options, num) {
   this.newOp.left = (this.options.indexed === true) ? this.options.left + 8 : this.options.left;
   if (this.pair === null) {
     this.val = jsav.ds.array(['Hd'], this.newOp);
-	if(noRedraw == 0){
-		var ponter2 = jsav.pointer("Head", this.val.index(0));
-		noRedraw++;
-	}
+	//if(noRedraw == 0){
+	var ponter2 = jsav.pointer("Head", this.val.index(0));
+	noRedraw++;
+	//}
   } else {
     this.val = jsav.ds.array([p.toString()], this.newOp);
   }

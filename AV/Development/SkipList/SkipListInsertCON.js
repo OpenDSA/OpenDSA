@@ -8,7 +8,7 @@ $(document).ready(function() {
 
   // Slide 1
   jsav.umsg("Now we will illustrate Skip List insertion");
-  var ll = new SkipList(jsav);
+  var ll = new SkipList(jsav, undefined, 1);
   jsav.displayInit();
 
   // Slide 2
