@@ -10,11 +10,6 @@
 		max-height: 33px !important;
 		border-radius: 0.2px !important;
 	}
-    .jsavcounter {
-      position: absolute;
-      top: 15px;
-    }
-    .jsavcanvas { height: 300px;}
     .mypointer {
       text-decoration: underline;
     }

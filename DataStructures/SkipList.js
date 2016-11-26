@@ -92,8 +92,8 @@ SkipListProto.insert = function(it, lev, showS) {
 		var flag = true;
 		if (showStep){
 		  this.jsav.step();
-		  this.jsav.umsg("the randon depth of the node to be insert is " +
-			newLevel + ", so we must adjust the depth of our head node before inserting");
+		  this.jsav.umsg("The random depth of the node to be insert is " +
+			newLevel + ", so we must adjust the depth of our head node before inserting.");
 		  this.jsav.step();
 		}
     }
@@ -145,13 +145,13 @@ SkipListProto.insert = function(it, lev, showS) {
 /** helper function to insert in the middle */
 var insertMidHelper = function(it, x, update, newOption, jsav, newLevel) {
     if(showStep){
-		jsav.umsg("This key is to be insert in the middle so we must make space to insert and update pointers");
+		jsav.umsg("This key is to be inserted into the middle, so we must make space to insert and update pointers.");
 		jsav.step();
 	}
     x = new SkipNode(it, newLevel, jsav, newOption, (update[0].getNodeNum() + 1));
     if(showStep){
 		jsav.step();
-		jsav.umsg("update pointers");
+		jsav.umsg("Update pointers.");
 	}
     var xfwr = x.getForward();
     for (var j = 0; j <= newLevel; j++) { // Splice into list
@@ -166,7 +166,7 @@ var insertMidHelper = function(it, x, update, newOption, jsav, newLevel) {
       }
 	  if(showStep){
       //jsav.step();
-		jsav.umsg("update pointers");
+		jsav.umsg("Update pointers.");
 	  }
       x.setPointer(j, jsav.pointer(" ", x.getDispArr(), {
         targetIndex: j,
@@ -206,7 +206,7 @@ SkipListProto.search = function(otherKey) {
     var x = this.head; // Dummy header node
     var j = this.level
 	if(showStep){
-    this.jsav.umsg("Searching for key: " + otherKey + " starting at the deepest level")
+    this.jsav.umsg("Searching for key: " + otherKey + " starting at the deepest level.");
 		unhigh[ind++] = x.getDispArr().highlight(j);
 		this.jsav.step();
 	}
@@ -217,8 +217,8 @@ SkipListProto.search = function(otherKey) {
         if (xfwr !== null) {
 		  if(showStep){
 			unhigh[ind++] = xfwr.getDispArr().highlight(i);
-			this.jsav.umsg("we compare " + otherKey + " to the next record " +
-            xfwr.getPair().getKey() + ". If what it points to is less, we move forward, else we go down a level");
+			this.jsav.umsg("We compare " + otherKey + " to the next record " +
+            xfwr.getPair().getKey() + ". If what it points to is less, we move forward, else we go down a level.");
 			this.jsav.step();
 		  }
         }
@@ -228,7 +228,7 @@ SkipListProto.search = function(otherKey) {
     }
 	if(showStep){
 		unhigh[ind++] = x.getDispArr().highlight(0);
-		this.jsav.umsg("we go down to the lowest level");
+		this.jsav.umsg("We go down to the lowest level.");
 		this.jsav.step();
 	}
     x = x.getForward()[0]; // Move to actual record, if it exists
@@ -239,12 +239,12 @@ SkipListProto.search = function(otherKey) {
       }
 	  if(showStep){
 		  unhigh[ind++] = x.getDispArr().highlight(0);
-		  this.jsav.umsg("now we move to the record muching our key " + otherKey);
+		  this.jsav.umsg("Now we move to the record muching our key " + otherKey + ".");
 		  this.jsav.step();
 	  }
     } else {
 		if(showStep){
-		  this.jsav.umsg("key " + otherKey + " not found");
+		  this.jsav.umsg("Key " + otherKey + " not found.");
 		  this.jsav.step();
 		}
     }
@@ -273,7 +273,7 @@ var find = function(val, head) {
 SkipListProto.removeKey = function(otherKey) {
   if (showStep){
 	  this.jsav.step();
-	  this.jsav.umsg("To remove " + otherKey + " we must search find then disconnect pointer");
+	  this.jsav.umsg("To remove " + otherKey + " we must search find then disconnect pointer.");
 	  this.jsav.step();
   }
   var x = this.head;
