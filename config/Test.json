@@ -32,6 +32,10 @@
       "SearchStruct/Skiplist1": {
         "long_name": "Skip Lists Test",
         "sections": {}
+      },
+	  "Spatial/BintreeNew": {
+        "long_name": "Bintree Test",
+        "sections": {}
       }
     },
     "Appendix": {
