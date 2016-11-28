@@ -13,6 +13,9 @@
 File Processing and Buffer Pools
 ================================
 
+File Processing and Buffer Pools
+--------------------------------
+
 .. slide:: Programmer’s View of Files
 
    * Logical view of files:
@@ -237,7 +240,7 @@ File Processing and Buffer Pools
 
 .. slide:: Buffer Pools
 
-   .. odsalink:: AV/Files/buffpoolCON.css      
+   .. odsalink:: AV/Files/buffpoolCON.css
 
    .. inlineav:: buffintroCON ss
       :align: center
@@ -290,13 +293,13 @@ File Processing and Buffer Pools
 .. slide:: Design Issues
 
    * Disadvantage of message passing:
-      * Messages are copied and passed back and forth. 
+      * Messages are copied and passed back and forth.
 
    * Disadvantages of buffer passing:
       * The user is given access to system memory (the buffer itself)
       * The user must explicitly tell the buffer pool when buffer contents
         have been modified, so that modified data can be rewritten to disk
-        when the buffer is flushed. 
+        when the buffer is flushed.
       * The pointer might become stale when the bufferpool replaces the
         contents of a buffer.
 

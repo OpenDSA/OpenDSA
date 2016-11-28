@@ -13,6 +13,9 @@
 Hashing
 =======
 
+Hashing
+-------
+
 .. slide:: Hashing (1)
 
    Hashing: The process of mapping a key value to a position in a table.
@@ -183,7 +186,7 @@ Hashing
             mult *= 256;
           }
         }
-      
+
         char c[] = s.substring(intLength * 4).toCharArray();
         long mult = 1;
         for (int k = 0; k < c.length; k++) {

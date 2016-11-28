@@ -13,6 +13,9 @@
 Sorting Part 1
 ==============
 
+Sorting Part 1
+--------------
+
 .. slide:: Sorting
 
    * Each record contains a field called the key.
@@ -105,7 +108,7 @@ Sorting Part 1
 
 .. slide:: Summary
 
-   .. math:: 
+   .. math::
 
       \begin{array}{rccc}
       &\textbf{Insertion}&\textbf{Bubble}&\textbf{Selection}\\
@@ -129,7 +132,7 @@ Sorting Part 1
       * Insertion Sort shift vs swaps: Works
       * Selection Sort avoid self-swaps: Does not work
       * Bubble Sort avoid/count comparisions: Does not work
- 
+
 .. slide:: Exchange Sorting
 
    * All of the sorts so far rely on exchanges of adjacent records.
@@ -137,7 +140,7 @@ Sorting Part 1
    * What is the average number of exchanges required?
 
    .. odsalink:: AV/Sorting/ExchangeSortCON.css
-   
+
    .. inlineav:: ExchangeSortCON ss
       :output: show
 

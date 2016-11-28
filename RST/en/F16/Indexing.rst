@@ -13,6 +13,9 @@
 Indexing
 ========
 
+Indexing
+--------
+
 .. slide:: Indexing
 
    * Goals:

@@ -13,6 +13,9 @@
 Lists
 =====
 
+Lists
+-----
+
 .. slide:: Lists, Stacks, Queues
 
    .. odsalink:: AV/List/alistCON.css
@@ -149,7 +152,7 @@ Lists
 
    .. inlineav:: llistInsertCON ss
       :output: show
-   
+
    .. odsascript:: AV/List/llistInsertCON.js
 
 .. slide:: Removal
@@ -265,7 +268,7 @@ Lists
 .. slide:: Doubly Linked Insert
 
    .. inlineav:: dlistInsertCON ss
-      :output: show   
+      :output: show
 
    .. odsascript:: AV/List/dlistInsertCON.js
 

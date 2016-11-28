@@ -13,6 +13,9 @@
 Graphs
 ======
 
+Graphs
+------
+
 .. slide:: Graphs
 
    * A graph :math:`G = (V, E)` consists of a set of vertices :math:`V`,

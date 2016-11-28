@@ -13,6 +13,9 @@
 Union/FIND
 ==========
 
+Union/FIND
+----------
+
 .. slide:: Disjoint Sets and Equivalence Classes
 
    Sometimes we have a collection of objects that we want to divide

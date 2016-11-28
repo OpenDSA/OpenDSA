@@ -13,6 +13,9 @@
 Sorting Part 2
 ==============
 
+Sorting Part 2
+--------------
+
 .. slide:: Shellsort
 
    .. avembed:: AV/Sorting/shellsortAV.html ss
@@ -142,7 +145,7 @@ Sorting Part 2
 
 .. slide:: Binsort
 
-   .. codeinclude:: Sorting/Binsort 
+   .. codeinclude:: Sorting/Binsort
       :tag: simplebinsort
 
    .. inlineav:: binsortS1CON ss
