@@ -3,9 +3,6 @@
   var ll = new SkipList(jsav);
   jsav.umsg("We start with an empty SkipList");
   jsav.displayInit();
-  jsav.umsg("adding another key-value pair (0, D)");
-  ll.insert(new KVPair(0, "D"), null, 1);
-  jsav.step();
   jsav.umsg("adding another key-value pair (3, C)");
   ll.insert(new KVPair(0, "E"));
   jsav.step();

@@ -8,11 +8,11 @@ $(document).ready(function() {
 
   // Slide 1
   jsav.umsg("Now we will illustrate Skip List insertion");
-  var ll = new SkipList(jsav, undefined, 1);
+  var ll = new SkipList(jsav);
   jsav.displayInit();
 
   // Slide 2
-  jsav.umsg("The tree is initialized with a header node whose forward pointers are set to null.");
+  jsav.umsg("The Skip List is initialized with a header node whose forward pointers are set to null.");
   jsav.step();
 
   // Slide 3
