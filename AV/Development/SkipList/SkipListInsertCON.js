@@ -12,7 +12,7 @@ $(document).ready(function() {
   jsav.displayInit();
 
   // Slide 2
-  jsav.umsg("The Skip List is initialized with a header node whose forward pointers are set to null.");
+  jsav.umsg("The Skip List is initialized with a header node at level 0, whose forward pointers are set to null.");
   jsav.step();
 
   // Slide 3

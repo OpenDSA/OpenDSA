@@ -36,6 +36,46 @@ General Trees
    .. odsascript:: AV/General/GenTreePreTravCON.js
 
 
+.. slide:: Rep: Lists of Children
+
+   .. odsafig:: Images/ChildLst.png
+      :width: 500
+      :align: center
+      :capalign: justify
+      :figwidth: 90%
+      :alt: The "list of children" implementation for general trees.
+
+
+.. slide:: Rep: Dynamic Node (Array)
+
+   .. odsafig:: Images/GenLkFx.png
+      :width: 500
+      :align: center
+      :capalign: justify
+      :figwidth: 90%
+      :alt: A dynamic general tree with fixed-size arrays
+
+
+.. slide:: Rep: Dynamic Node (linked list)
+
+   .. odsafig:: Images/GenLkLk.png
+      :width: 500
+      :align: center
+      :capalign: justify
+      :figwidth: 90%
+      :alt: A dynamic general tree with linked lists of child pointers
+
+
+.. slide:: Rep: Lift-Child/Right-Sibling
+
+   .. odsafig:: Images/FortoBin.png
+      :width: 600
+      :align: center
+      :capalign: justify
+      :figwidth: 90%
+      :alt: Converting from a forest of general trees to a binary tree
+
+           
 .. slide:: Serialization
 
    Serialization is the process of storing an object as a series of

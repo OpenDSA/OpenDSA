@@ -92,8 +92,8 @@ SkipListProto.insert = function(it, lev, showS) {
 		var flag = true;
 		if (showStep){
 		  this.jsav.step();
-		  this.jsav.umsg("The random depth of the node to be insert is " +
-			newLevel + ", so we must adjust the depth of the head node before inserting.");
+		  this.jsav.umsg("The random depth of the node to be inserted is " +
+			newLevel + ", so we must adjust the depth of the header node before inserting.");
 		  this.jsav.step();
 		}
     }
@@ -110,7 +110,7 @@ SkipListProto.insert = function(it, lev, showS) {
   var j = this.level
   var ind = 0;
   if(showStep){
-    this.jsav.umsg("Starting from level " + this.level + " of the head, we look for the first node whose pointer point to a key bigger than the key " + it.getKey() + " we want to insert, and save it into a temporary update array. If no such key, the update array will contain the last node and we insert.");
+    this.jsav.umsg("Starting from level " + this.level + " of the head, we look for the first node whose pointer points to a key bigger than the key " + it.getKey() + " that we want to insert, and save it into a temporary update array. If no such key exists, then the update array will contain the last node and we insert.");
 		unhigh[ind++] = x.getDispArr().highlight(j);
 		this.jsav.step();
 	}
@@ -133,7 +133,7 @@ SkipListProto.insert = function(it, lev, showS) {
   }
   if(showStep && this.head.getForward()[0] !== null){
 		unhigh[ind++] = x.getDispArr().highlight(0);
-		this.jsav.umsg("Now the update array contain the nodes that will point to the new key "+ it.getKey() + ", from which all the nodes that will preceed the key are accessible if any. We start inserting.");
+		this.jsav.umsg("Now the update array contains the nodes that will point to the new key "+ it.getKey() + ", from which all the nodes that preceed the key are accessible. We start updating.");
 		this.jsav.step();
   }
   var xfwrd = x.getForward()[0];
@@ -172,7 +172,7 @@ SkipListProto.insert = function(it, lev, showS) {
 /** helper function to insert in the middle */
 var insertMidHelper = function(it, x, update, newOption, jsav, newLevel) {
     if(showStep){
-		jsav.umsg("This key is to be inserted into the middle, so we must update both, its pointer and the node before it.");
+		jsav.umsg("This key is to be inserted into the middle, so we must update both its pointer, and the node before it, at each level.");
 	}
     x = new SkipNode(it, newLevel, jsav, newOption, (update[0].getNodeNum() + 1));
 	if (showStep){
@@ -213,7 +213,7 @@ var insertMidHelper = function(it, x, update, newOption, jsav, newLevel) {
   /** helper function for inserting at the end */
 var insertEndHelper = function(it, x, update, newOption, jsav, newLevel) {
 	if(showStep){
-		jsav.umsg("We are inserting at the end of the Skip List, so we just need to update the pointer of the node before it.");
+		jsav.umsg("We are inserting at the end of the Skip List, so we just need to update the pointers of the nodes before it.");
 	}
     x = new SkipNode(it, newLevel, jsav, newOption, (update[0].getNodeNum() + 1));
 	if (showStep){
@@ -318,7 +318,7 @@ SkipListProto.removeKey = function(otherKey) {
   var ind = 0;
   var update = new Array(this.level + 1); //**************************************
   if(showStep){
-    this.jsav.umsg("As with insert, starting from the highest level: " + this.level + " of the head, the update array is to contain nodes that point to key " + otherKey + " to be removed. If no such node, we just return");
+    this.jsav.umsg("As with insert, start from the deepest level " + this.level + " of the head. The update array tracks nodes that point to the node with key " + otherKey + ", that is being removed. If no such node exists, then we just return.");
 		unhigh[ind++] = x.getDispArr().highlight(j);
 		this.jsav.step();
 	}
@@ -331,7 +331,7 @@ SkipListProto.removeKey = function(otherKey) {
   }
   if(showStep && this.head.getForward()[0] !== null){
 		unhigh[ind++] = x.getDispArr().highlight(0);
-		this.jsav.umsg("Now the update array contain the nodes that  point to the key "+ otherKey + " to be removed. Note that from this node, all other node that preceed the key, if any, can be reached. We start removing because the key has been found.");
+		this.jsav.umsg("Now the update array contain the nodes that point to the node with key "+ otherKey + ".");
 		this.jsav.step();
   }
   if (x.getForward()[0] !== null &&
@@ -564,7 +564,7 @@ skipNodeProto.clear = function(i, pt) {
   if(showStep){
 	  this.jsav.umsg("In this step, we disconnect all pointers that point to the value to be removed. The next step is to now connect these pointers to the ones that preceed the key, if any");
 	  this.jsav.step();
-	  this.jsav.umsg("The Skip List is now updated with all node connected");
+	  this.jsav.umsg("The Skip List is now updated, with all nodes connected");
   }
   this.disArr.hide();
   this.val.hide();
