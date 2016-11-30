@@ -1,36 +1,55 @@
 	/**
 	 * @Author: Souleymane Dia
 	 * @version <11/10/2016>
-	 * This represent a visualization data structure for PrQuadtree
+	 * This represent a visualization data structure for the Bintree
 	 *
 	 */
+	/********************************************************************
+	 * Add the Bintree constructor to the public facing JSAV interface.
+	 ********************************************************************/
+	 "use strict";
+JSAV.ext.ds.bintree = function(options) {
+
+    var ex_options = $.extend(true, {
+      visible: true,
+      autoresize: true
+    }, options);
+    // create a new bintree object
+    return new Bintree(this, xRange, yRange, clickackble, ex_options);
+  }
+  function Bintree(jsav,xRange, yRange, clickackble, options) {
+	this.init(jsav,xRange, yRange, clickackble, options);
+  };
 	var swt = 0;
 	var mapleft = 800;
 	var maptop = 25;
-	var numPoint = 3; //
+	var numPoint = 3; 
 	var p = 0;
 	var noClick = true; // there is not going to be any clicking associated with the rectangle
 	/**
-	 * @xRange: width of the rectangle (PrQuadtree region)
-	 * @yRange: height of the rectangle (PrQuadtree region)
+	 * @xRange: width of the rectangle (Bintree region)
+	 * @yRange: height of the rectangle (Bintree region)
 	 * @noClick: if there not going to be any clicking associated with the rectangle to insert point
 	 */
-	function Bintree(jsav, xRange, yRange, notClick) {
+	var BinTreeProto = Bintree.prototype;
+	
+	BinTreeProto.init = function(jsav, xRange, yRange, notClick, options) {
 	  (notClick === false) ? noClick = false: noClick = true;
 	  this.jsav = jsav;
 	  this.xRange = xRange;
 	  this.yRange = yRange;
 	  this.map = jsav.g.rect(mapleft, maptop, xRange, yRange);
-	  this.qdt = jsav.ds.binarytree({
+	  this.options = $.extend({
 	    nodegap: 10,
 	    left: 50
-	  });
+	  }, options);
+	  this.qdt = jsav.ds.binarytree(this.options);
 	  this.qdt.root("");
 	  this.qdt.root().addClass('PrQuadEmptyleaf');
 	  this.underRoot = new leafNode(jsav, this.qdt);
 	  this.pte = undefined;
 	}
-	var BinTreeProto = Bintree.prototype;
+	
 	BinTreeProto.dump = function(x, w, y, h) {
 	  var result = "quadtree dump: \n";
 	  var indent = "";
@@ -106,12 +125,12 @@
 	  if (this.willSplit(point)) {
 	    if (noClick) {
 	      this.jsav.step();
-	      this.jsav.umsg("This leaf node is full so we must split");
+	      this.jsav.umsg("This leaf node is full so we must split.");
 	      (pointer === undefined) ? pointer = this.jsav.pointer("curr quad", rt): pointer.hide();
 	      pointer.show();
 	      this.qdt.layout();
 	      this.jsav.step();
-	      this.jsav.umsg("After spliting, now we need re-insert points");
+	      this.jsav.umsg("After spliting, now we need re-insert points.");
 	      pointer.hide();
 	    }
 	    return this.split(rt, point, x, y, w, h);
@@ -119,13 +138,13 @@
 	  // will not split now print jsav
 	  if (noClick) { // jsav output active
 	    this.jsav.step();
-	    this.jsav.umsg("Pointer reach leaf node and we can insert now");
+	    this.jsav.umsg("Pointer reach leaf node and we can insert now.");
 	    (pointer === undefined) ? pointer = this.jsav.pointer("curr quad", rt): pointer.hide();
 	    pointer.show();
 	    this.qdt.layout();
 
 	    this.jsav.step();
-	    this.jsav.umsg("Point " + point.getName() + " inserted");
+	    this.jsav.umsg("Point " + point.getName() + " inserted.");
 	    rt.removeClass("PrQuadEmptyleaf");
 	    rt.addClass('PrQuadFullleaf');
 	    rt.value(rt.value() + point.getName() + " ");
@@ -194,28 +213,28 @@
 	  } else {
 	    if (noClick) {
 	      this.jsav.step();
-	      this.jsav.umsg("pointer reach leaf node-remove");
+	      this.jsav.umsg("Pointer reach leaf node-remove.");
 	      pointer = this.jsav.pointer("curr quad", rt); //);
 	      pointer.show();
 	      this.jsav.step();
-	      this.umsg("point " + point.getName() + " not present");
+	      this.umsg("Point " + point.getName() + " not present.");
 	      pointer.hide();
 	    }
 	    return this;
 	  }
 	  if (noClick) {
 	    this.jsav.step();
-	    this.jsav.umsg("pointer reach leaf node-remove");
+	    this.jsav.umsg("Pointer reach leaf node-remove.");
 	    pointer = this.jsav.pointer("curr quad", rt); //);
 	    pointer.show();
 	    this.jsav.step();
-	    this.jsav.umsg("point " + point.getName() + " removed");
+	    this.jsav.umsg("Point " + point.getName() + " removed.");
 	    pointer.hide();
 	  }
 
 	  this.list.splice(index, 3);
 	  if (this.list.length == 0 && d != undefined) {
-	    current = 0;
+	    this.current = 0;
 	    d.hide();
 	    label.hide();
 	    rt.value("");
@@ -267,7 +286,7 @@
 
 	    if (noClick) {
 	      this.jsav.step();
-	      this.jsav.umsg("re-inserting point " + this.list[i].getName());
+	      this.jsav.umsg("Re-inserting point " + this.list[i].getName() + ".");
 	    } else {
 	      this.list[i + 1].hide(); // very necessary
 	      this.list[i + 2].hide();
@@ -336,11 +355,11 @@
 	interProto.insert = function(rt, point, x, y, w, h, pointer) {
 	  if (noClick) {
 	    this.jsav.step();
-	    this.jsav.umsg("current location of the pointer: internal node");
+	    this.jsav.umsg("Current location of the pointer: internal node.");
 	    pointer = this.jsav.pointer("curr quad", rt); //);
 	    pointer.show();
 	    this.jsav.step();
-	    this.jsav.umsg("navigate towards leaf node");
+	    this.jsav.umsg("Navigate towards leaf node.");
 	    pointer.hide();
 	  }
 	  var dir = undefined;
@@ -370,11 +389,11 @@
 	interProto.remove = function(rt, point, x, y, w, h, pointer) {
 	  if (noClick) {
 	    this.jsav.step();
-	    this.jsav.umsg("current location of the pointer: internal node,");
+	    this.jsav.umsg("Current location of the pointer: internal node.");
 	    pointer = this.jsav.pointer("curr quad", rt);
 	    pointer.show();
 	    this.jsav.step();
-	    this.jsav.umsg("navigate towards leaf node to locate the point to be removed");
+	    this.jsav.umsg("Navigate towards leaf node to locate the point to be removed.");
 	    pointer.hide();
 	  }
 	  var dir = undefined;
@@ -420,10 +439,10 @@
 	      } else if (arr.length <= numPoint) { // number of point allowed can feet and we need to merge
 	        if (noClick) {
 	          this.jsav.step();
-	          this.jsav.umsg("After removeing " + point.getName() + ", leaf belonging to this internal do not have enought point to remain splitted so we must merge");
+	          this.jsav.umsg("After removeing " + point.getName() + ", leaf belonging to this internal do not have enought point to remain splitted so we must merge.");
 	          pointer.show();
 	          this.jsav.step();
-	          this.jsav.umsg("This is the current state of the tree after merging");
+	          this.jsav.umsg("This is the current state of the tree after merging.");
 	          pointer.hide();
 	        }
 	        var str = "";

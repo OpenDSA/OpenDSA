@@ -10,6 +10,8 @@
    :topic: Spatial Data Structures
 
 .. odsalink:: AV/Development/bintreeCON.css
+.. odsalink:: DataStructures/PrQuadAv.css
+.. odsalink:: DataStructures/PrQuadAvC.css
 
 The Bintree
 ===========
@@ -229,10 +231,12 @@ implement when using the composite design.
 Below is a visualization of the Bintree. Use this visualization to
 help understand how the Bintree data structure works.
 
-.. avembed:: AV/Development/bintreeAV.html ss
+.. avembed:: AV/Development/PrQuadtree/NBintreeAV.html ss
 
 .. [#] A more efficient computation is
        :math:`(P_x - N_x)^2 + (P_y - N_y)^2 \leq d^2`.
        This avoids performing a square root function.
 
-.. odsascript:: AV/Development/bintreeCON.js
+Below is an interactive visualization of the Bintree for practice.
+
+.. avembed:: AV/Development/PrQuadtree/ClickableBintree.html ss
