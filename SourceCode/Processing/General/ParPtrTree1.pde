@@ -19,9 +19,9 @@ class ParPtrTree {
 
   // Return the root of curr's tree
   int FIND(int curr) {
-    if (array[curr] == -1) return curr; // At root
-    while (array[curr] != -1) curr = array[curr];
-    return curr;
+    while (array[curr] != -1)
+      curr = array[curr];
+    return curr; // Now at root
   }
 /* *** ODSAendTag: UF1 *** */
 
