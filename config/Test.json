@@ -36,6 +36,10 @@
 	  "Spatial/BintreeNew": {
         "long_name": "Bintree Test",
         "sections": {}
+      },
+	  "Spatial/Bintree": {
+        "long_name": "Bintree Test",
+        "sections": {}
       }
     },
     "Appendix": {

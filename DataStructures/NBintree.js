@@ -21,7 +21,7 @@ JSAV.ext.ds.bintree = function(options) {
 	this.init(jsav,xRange, yRange, clickackble, options);
   };
 	var swt = 0;
-	var mapleft = 800;
+	var mapleft = 500;
 	var maptop = 25;
 	var numPoint = 3; 
 	var p = 0;
@@ -45,7 +45,7 @@ JSAV.ext.ds.bintree = function(options) {
 	  }, options);
 	  this.qdt = jsav.ds.binarytree(this.options);
 	  this.qdt.root("");
-	  this.qdt.root().addClass('PrQuadEmptyleaf');
+	  this.qdt.root().addClass('bintreeemptyleaf');
 	  this.underRoot = new leafNode(jsav, this.qdt);
 	  this.pte = undefined;
 	}
@@ -145,13 +145,13 @@ JSAV.ext.ds.bintree = function(options) {
 
 	    this.jsav.step();
 	    this.jsav.umsg("Point " + point.getName() + " inserted.");
-	    rt.removeClass("PrQuadEmptyleaf");
-	    rt.addClass('PrQuadFullleaf');
+	    rt.removeClass("bintreeemptyleaf");
+	    rt.addClass('bintreefullleaf');
 	    rt.value(rt.value() + point.getName() + " ");
 	    pointer.hide();
 	  } else { //not clickable
-	    rt.removeClass("PrQuadEmptyleaf");
-	    rt.addClass('PrQuadFullleaf');
+	    rt.removeClass("bintreeemptyleaf");
+	    rt.addClass('bintreefullleaf');
 	    rt.value(rt.value() + point.getName() + " ");
 	  }
 	  this.list[this.current++] = point;
@@ -238,7 +238,7 @@ JSAV.ext.ds.bintree = function(options) {
 	    d.hide();
 	    label.hide();
 	    rt.value("");
-	    rt.addClass('PrQuadEmptyleaf');
+	    rt.addClass('bintreeemptyleaf');
 	    return new leafNode(this.jsav, this.qdt);
 	  } else {
 	    //(this.list.length > 4) ? rt.value(this.list[0].getName() + " " +
@@ -265,10 +265,10 @@ JSAV.ext.ds.bintree = function(options) {
 	  //--------------------------------------------------------
 	  rt.value("");
 	  rt.left("");
-	  rt.left().addClass('PrQuadEmptyleaf'); // nw dir === left
+	  rt.left().addClass('bintreeemptyleaf'); // nw dir === left
 	  rt.right("");
-	  rt.right().addClass('PrQuadEmptyleaf'); // ne dir === right
-	  rt.removeClass('PrQuadFullleaf');
+	  rt.right().addClass('bintreeemptyleaf'); // ne dir === right
+	  rt.removeClass('bintreefullleaf');
 	  if (swt % 2 === 0) {
 	    //horrizontal split
 	    newNode.setXLine(this.jsav.g.line((mapleft + x), (maptop + y) + (h / 2), (mapleft + x + w), (maptop + h / 2) + y));
@@ -456,7 +456,7 @@ JSAV.ext.ds.bintree = function(options) {
 	        rt.left().remove();
 	        rt.right().remove();
 	        rt.value(str);
-	        rt.addClass('PrQuadFullleaf');
+	        rt.addClass('bintreefullleaf');
 	        return new leafNode(this.jsav, this.qdt, undefined, arr);
 	      }
 	    }

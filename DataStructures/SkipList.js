@@ -131,7 +131,7 @@ SkipListProto.insert = function(it, lev, showS) {
     }
     update[i] = x; // Track end at level i
   }
-  if(showStep && this.head.getForward()[0] !== null){
+  if(showStep){
 		unhigh[ind++] = x.getDispArr().highlight(0);
 		this.jsav.umsg("Now the update array contains the nodes that will point to the new key "+ it.getKey() + ", from which all the nodes that preceed the key are accessible. We start updating.");
 		this.jsav.step();
