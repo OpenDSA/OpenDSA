@@ -29,7 +29,7 @@
       }
     },
     "Advanced Data Structures": {
-      "SearchStruct/Skiplist1": {
+      "SearchStruct/SkipList": {
         "long_name": "Skip Lists Test",
         "sections": {}
       },
