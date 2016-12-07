@@ -134,6 +134,9 @@ COMP232: min
 SDAP13: min
 	python $(CONFIG_SCRIPT) config/SDAP13.json --no-lms
 
+simple_demo: min
+	python $(CONFIG_SCRIPT) config/simple_demo.json --no-lms
+
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
 	@cp lib/odsaUtils.js lib/odsaUtils-min.js
