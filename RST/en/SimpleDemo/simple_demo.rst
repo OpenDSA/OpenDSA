@@ -10,6 +10,9 @@
 Illustrate slide shows and KA exercises in a Simple Demonstration of an OpenDSA learning module
 ===============================================================================================
 
+Introduction
+------------
+
 To get you started, the following "learning module" illustrates how to
 create some slideshows and exercises.  The slideshows you see here are
 in the AV/SimpleDemo directory, and the the exercises are in the
@@ -17,7 +20,7 @@ Exercises/SimpleDemo directory.  No real "algorithm" is illustrated
 here, but rather the slideshows and exercises are meant as starting
 points for you to create your own content.
 
-A slideshow to swap array elements displayed as an inline AV 
+A slideshow to swap array elements displayed as an inline AV
 ------------------------------------------------------------
 
 
@@ -29,7 +32,7 @@ inline AV.
 .. inlineav:: simple_demo1 ss
    :output: show
 
-Swapping array elements with user input of the array and a reset button 
+Swapping array elements with user input of the array and a reset button
 -----------------------------------------------------------------------
 
 Here we have the same visualization as in the previous inlineav, but
