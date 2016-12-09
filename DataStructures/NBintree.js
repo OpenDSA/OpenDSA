@@ -39,17 +39,22 @@ JSAV.ext.ds.bintree = function(options) {
 	  this.xRange = xRange;
 	  this.yRange = yRange;
 	  this.map = jsav.g.rect(mapleft, maptop, xRange, yRange);
-	  this.options = $.extend({
-	    nodegap: 10,
-	    left: 50
-	  }, options);
+	  if (options!== undefined && options.left === undefined){
+		  this.options = $.extend({
+			nodegap: 15,
+		}, options);
+	  }else{
+		  this.options = $.extend({
+			nodegap: 15,
+			left: 50
+		}, options);
+	  }
 	  this.qdt = jsav.ds.binarytree(this.options);
 	  this.qdt.root("");
 	  this.qdt.root().addClass('bintreeemptyleaf');
 	  this.underRoot = new leafNode(jsav, this.qdt);
 	  this.pte = undefined;
 	}
-	
 	BinTreeProto.dump = function(x, w, y, h) {
 	  var result = "quadtree dump: \n";
 	  var indent = "";
