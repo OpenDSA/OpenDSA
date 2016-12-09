@@ -393,7 +393,7 @@ SkipListProto.removeKey = function(otherKey) {
       x = x.getForward()[j];
     } // Go one last step
 	if(showStep){
-		  this.jsav.umsg("We save this highlighted node into our updated array since it will point to the key: " + it.getKey() + " we want to remove, if their height matches.");
+		  this.jsav.umsg("We save this highlighted node into our updated array since it will point to the key: " + otherKey + " we want to remove, if their height matches.");
 		  unhigh[ind++] = x.getDispArr().highlight(i);
 		  updArray.value(i, x.getVal().value(0));
 		  updArray.hide();
