@@ -1,0 +1,86 @@
+{
+  "title": "OpenDSA PintersBook",
+  "desc": "OpenDSA Java Pointers Book",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "lang": "en",
+  "build_JSAV": false,
+  "suppress_todo": false,
+  "dispModComp": true,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "chapters": {
+    "PointersJava": {
+      "PointersJava/PointerIntro": {
+        "long_name": "Pointers Chapter Introduction",
+        "sections": {}
+      },
+      "PointersJava/BasicPointers": {
+        "long_name": "Basic Pointers",
+        "sections": {
+          "What is a pointer?": {},
+          "Pointer Reference and Dereference": {},
+          "Pointer Assignment": {},
+          "Bad Pointers": {},
+          "Syntax": {},
+          "Example Pointer Code": {},
+          "Pointer Rules Summary": {},
+          "How Do Pointers Work In Java?": {},
+          "How Are Pointers Implemented In The Machine?": {},
+          "The Term 'Reference'": {},
+          "Why Are Bad Pointer Bugs So Common?": {}
+        }
+      },
+      "PointersJava/LocalMem": {
+        "long_name": "Local Memory",
+        "sections": {
+          "Thanks For The Memory: Allocation and Deallocation": {},
+          "Local Memory": {},
+          "Examples": {},
+          "Local Parameters": {},
+          "How Does The Function Call Stack Work?": {}
+        }
+      },
+      "PointersJava/RefParam": {
+        "long_name": "Reference Parameters",
+        "sections": {
+          "Reference Parameters": {},
+          "Passing By Reference": {},
+          "Simple Reference Parameter Example: Swap()": {},
+          "More Syntax": {},
+          "Reference Parameter Summary": {},
+          "Reference Parameters in Java": {},
+          "Reference Parameters in C++": {}
+        }
+      },
+      "PointersJava/HeapMem": {
+        "long_name": "Heap Memory",
+        "sections": {
+          "Heap Memory": {},
+          "What Does The Heap Look Like?": {},
+          "Programming The Heap": {},
+          "C Specifics": {},
+          "Simple Heap Example": {},
+          "Simple Heap Observations": {},
+          "Heap Array": {},
+          "Heap String Example": {},
+          "Memory Leaks": {},
+          "Ownership": {},
+          "Heap Memory Summary": {}
+        }
+      },
+      "PointersJava/Exercises": {
+        "long_name": "Exercises",
+        "sections": {
+          "FindNodePROG Pointer Programming Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 1.0
+          }
+        }
+      }
+    }
+  }
+}
