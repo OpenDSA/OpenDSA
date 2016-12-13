@@ -310,12 +310,6 @@
             "showhide": "show",
             "points": 1.0,
             "threshold": 5
-          },
-          "AnalyzingProblemsCON": {
-            "long_name": "Worst Case Lower Bound Visualization",
-            "required": false,
-            "points": 0.0,
-            "threshold": 1.0
           }
         }
       },

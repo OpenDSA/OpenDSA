@@ -388,13 +388,6 @@
       "AlgAnal/AnalProblem": {
         "long_name": "Analyzing Problems",
         "sections": {
-          "Analyzing Problems": {
-            "AnalyzingProblemsCON": {
-              "long_name": "Worst Case Lower Bound Visualization",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            },
             "AnalProblemSumm": {
               "long_name": "Problem Analysis Exercise",
               "required": true,
