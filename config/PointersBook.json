@@ -26,7 +26,7 @@
           "Syntax": {},
           "Example Pointer Code": {},
           "Pointer Rules Summary": {},
-          "How Do Pointers Work In Java?": {},
+          "Java Pointers Features": {},
           "How Are Pointers Implemented In The Machine?": {},
           "The Term 'Reference'": {},
           "Why Are Bad Pointer Bugs So Common?": {}
@@ -80,6 +80,16 @@
             "points": 1.0
           }
         }
+      }
+    },
+    "Appendix": {
+      "Glossary": {
+        "long_name": "Glossary",
+        "sections": {}
+      },
+      "Bibliography": {
+        "long_name": "Bibliography",
+        "sections": {}
       }
     }
   }

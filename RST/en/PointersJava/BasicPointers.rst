@@ -239,7 +239,7 @@ has influenced the syntaxes of several languages.
 Pointer Type Syntax
 ~~~~~~~~~~~~~~~~~~~
 
-A reference type in Java is any cariable of Objects or Arrays.
+A reference type in Java is any variable of Objects or Arrays.
 
 ``Employee`` type pointer to ``Employee object``
 
