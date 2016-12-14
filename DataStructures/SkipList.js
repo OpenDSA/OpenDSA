@@ -155,13 +155,8 @@ SkipListProto.insert = function(it, lev, showS) {
 		unhigh[ind--] = x.getDispArr().unhighlight(j);
 	}
   for (var i = this.level; i >= 0; i--) { // Find insert position
-  if(showStep && x.getForward()[i] != null){
-			  unhigh[ind++] = x.getForward()[i].getDispArr().highlight(i);
-			  this.jsav.umsg("We compare " + it.getKey() + " to the next record " +
-			  x.getForward()[i].getPair().getKey() + ". If what it points to is less, we move forward, else we go down a level and store this value in the update array.");
-			  this.jsav.step();
-			  unhigh[ind--] = x.getForward()[i].getDispArr().unhighlight(i);
-	}
+	if ((x.getForward()[i] !== null) &&
+      (it.compareTo((x.getForward()[i]).getPair().getKey())) > 0){
     while ((x.getForward()[i] !== null) &&
       (it.compareTo((x.getForward()[i]).getPair().getKey())) > 0) {
 	  var xfwr = x.getForward()[i];
@@ -169,13 +164,23 @@ SkipListProto.insert = function(it, lev, showS) {
 		  if(showStep){
 			  unhigh[ind++] = xfwr.getDispArr().highlight(i);
 			  this.jsav.umsg("We compare " + it.getKey() + " to the next record " +
-			  xfwr.getPair().getKey() + ". If what it points to is less, we move forward, else we go down a level.");
+			  xfwr.getPair().getKey() + ". If it is less, we move forward, else we save this value and go down a level.");
 			  this.jsav.step();
 			  unhigh[ind--] = xfwr.getDispArr().unhighlight(i);
 		  }
         }
       x = x.getForward()[i];
     }
+	}
+	else{
+		if(showStep && x.getForward()[i] != null){
+			unhigh[ind++] = x.getForward()[i].getDispArr().highlight(i);
+			this.jsav.umsg("We compare " + it.getKey() + " to the next record " +
+			x.getForward()[i].getPair().getKey() + ". If what it points to is less, we move forward, else we go down a level and store this value in the update array.");
+			this.jsav.step();
+			unhigh[ind--] = x.getForward()[i].getDispArr().unhighlight(i);
+		}
+	}
 	if(showStep){
 		  this.jsav.umsg("We save this highlighted node into our updated array since it will point to our new key: " + it.getKey() + " if their height matches.");
 		  unhigh[ind++] = x.getDispArr().highlight(i);
@@ -383,30 +388,47 @@ SkipListProto.removeKey = function(otherKey) {
   }
   if(showStep){
     this.jsav.umsg("As with insert, start from the deepest level " + this.level + " of the head. The update array tracks nodes that point to the node with key " + otherKey + ", that is being removed. If no such node exists, then we just return.");
-		unhigh[ind++] = x.getDispArr().highlight(j);
-		this.jsav.step();
-		unhigh[ind++] = x.getDispArr().unhighlight(j);
+	unhigh[ind++] = x.getDispArr().highlight(j);
+	this.jsav.step();
+	unhigh[ind++] = x.getDispArr().unhighlight(j);
 	}
   for (var j = this.level; j >= 0; j--) { // go forward
+  if ((x.getForward()[j] !== null) &&
+      (x.getForward()[j].getPair().compareTo(otherKey) < 0)) {
     while ((x.getForward()[j] !== null) &&
       (x.getForward()[j].getPair().compareTo(otherKey) < 0)) {
+		  var xfwr = x.getForward()[j];
+		if (xfwr !== undefined) {
+		  if(showStep){
+			  unhigh[ind++] = xfwr.getDispArr().highlight(j);
+			  this.jsav.umsg("We compare " + otherKey + " to the next record " +
+			  xfwr.getPair().getKey() + ". If what it points to is less, we move forward, else we go down a level.");
+			  this.jsav.step();
+			  unhigh[ind--] = xfwr.getDispArr().unhighlight(j);
+		  }
+        }
       x = x.getForward()[j];
     } // Go one last step
+  }
+	else{
+		if(showStep && x.getForward()[j] != null){
+			unhigh[ind++] = x.getForward()[j].getDispArr().highlight(j);
+			this.jsav.umsg("We compare " + otherKey + " to the next record " +
+			x.getForward()[j].getPair().getKey() + ". If what it points to is less, we move forward, else we go down a level and store this value in the update array.");
+			this.jsav.step();
+			unhigh[ind--] = x.getForward()[j].getDispArr().unhighlight(j);
+		}
+	}
 	if(showStep){
 		  this.jsav.umsg("We save this highlighted node into our updated array since it will point to the key: " + otherKey + " we want to remove, if their height matches.");
-		  unhigh[ind++] = x.getDispArr().highlight(i);
-		  updArray.value(i, x.getVal().value(0));
+		  unhigh[ind++] = x.getDispArr().highlight(j);
+		  updArray.value(j, x.getVal().value(0));
 		  updArray.hide();
 		  updArray.show();
 		  this.jsav.step();
 	}
     update[j] = x;
   }
-  /**if(showStep && this.head.getForward()[0] !== null){
-		unhigh[ind++] = x.getDispArr().highlight(0);
-		this.jsav.umsg("Now the update array contain the nodes that point to the node with key "+ otherKey + ".");
-		this.jsav.step();
-  }*/
   if (x.getForward()[0] !== null &&
     (x.getForward()[0].getPair().compareTo(otherKey) === 0)) {
     removed = x.getForward()[0];
@@ -422,11 +444,6 @@ SkipListProto.removeKey = function(otherKey) {
         break; // break so that it does not remove all duplicate
       } // Who x points to
     }
-	if (showStep){
-		this.jsav.step();
-		removed.getDispArr().highlight(0);
-	}
-	
     this.size--; // decrement dictionary size
     if (removed.getForward()[0] == null) { // if removing from the end
       removed.clear();
@@ -452,6 +469,8 @@ SkipListProto.removeKey = function(otherKey) {
 		for (var i = 0; i < ind; i++) {
 			unhigh[i].unhighlight();
 		}
+	  updArray.hide();
+	  updArrayPointer.hide();
 	}
     return removed.getPair();
 
@@ -460,6 +479,8 @@ SkipListProto.removeKey = function(otherKey) {
 		for (var i = 0; i < ind; i++) {
 		  unhigh[i].unhighlight();
 		}
+	  updArray.hide();
+	  updArrayPointer.hide();
 	}
     return null;
   }
