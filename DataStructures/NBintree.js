@@ -17,11 +17,11 @@ JSAV.ext.ds.bintree = function(options) {
     // create a new bintree object
     return new Bintree(this, xRange, yRange, clickackble, ex_options);
   }
-  function Bintree(jsav,xRange, yRange, clickackble, options) {
-	this.init(jsav,xRange, yRange, clickackble, options);
+  function Bintree(jsav,xRange, yRange, clickackble, options, mLeft, mTop) {
+	this.init(jsav,xRange, yRange, clickackble, options, mLeft, mTop);
   };
 	var swt = 0;
-	var mapleft = 500;
+	var mapleft = 630;
 	var maptop = 25;
 	var numPoint = 3; 
 	var p = 0;
@@ -33,7 +33,13 @@ JSAV.ext.ds.bintree = function(options) {
 	 */
 	var BinTreeProto = Bintree.prototype;
 	
-	BinTreeProto.init = function(jsav, xRange, yRange, notClick, options) {
+	BinTreeProto.init = function(jsav, xRange, yRange, notClick, options, mLeft, mTop) {
+		if (mLeft !== undefined){
+			mapleft = mLeft;
+		}
+		if (mTop !== undefined){
+			maptop = mTop;
+		}
 	  (notClick === false) ? noClick = false: noClick = true;
 	  this.jsav = jsav;
 	  this.xRange = xRange;
