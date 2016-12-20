@@ -3,7 +3,7 @@
 .. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
    :author: Nick Parlante, Cliff Shaffer, and Sally Hamouda
    :requires: Local memory
    :satisfies: Reference parameters
@@ -56,24 +56,24 @@ code and the state of memory is shown for each state...
 	  worth = worth + 1;
 	  // T2
 	}
-	
+
 	void A() {
 	  int netWorth;
 	  netWorth = 55;  // T1
-	
-	  B(netWorth); 
+
+	  B(netWorth);
 	  // T3 -- B() did not change netWorth
 	}
-	
-	
-	
+
+
+
 .. odsafig:: Images/T1-T3.png
    :width: 600
    :align: center
    :capalign: justify
-   :figwidth: 100%  
-   
-``B()`` adds 1 to its local ``worth`` copy, but when ``B()`` exits, ``worth`` is deallocated, so changing it was useless. The value of interest, 
+   :figwidth: 100%
+
+``B()`` adds 1 to its local ``worth`` copy, but when ``B()`` exits, ``worth`` is deallocated, so changing it was useless. The value of interest,
 `netWorth`, rests unchanged the whole time in A()'s local storage. A function can change its local copy of the value of interest,
 but that change is not reflected back in the original value. This is
 really just the old "independence" property of local storage, but in
@@ -85,7 +85,7 @@ By Reference
 The reference solution to the Bill Gates problem is to use a single
 ``netWorth`` variable for the value of interest and never copy
 it. Instead, each function can receives a pointer to ``netWorth``.
-Each function can see the current value of `netWorth` by dereferencing its pointer. More importantly, each function can change the net 
+Each function can see the current value of `netWorth` by dereferencing its pointer. More importantly, each function can change the net
 ``worth``  |---| just dereference the pointer to the centralized  ``netWorth`` and change it directly. Everyone agrees what
 the current value of ``netWorth``  because it exists in only one place |---| everyone has a pointer to the one master copy. The following memory drawing shows `A()` and `B()`
 functions changed to use :term:`reference parameters`.
@@ -97,7 +97,7 @@ yet.
    :width: 600
    :align: center
    :capalign: justify
-   :figwidth: 100%  
+   :figwidth: 100%
 
 The reference parameter strategy: ``B()`` receives a pointer to the value of interest instead of
 a copy.
@@ -109,7 +109,7 @@ Passing By Reference
 Here are the steps to use in the code to use the pass-by-reference strategy:
 
 * Have a single copy of the value of interest.
-  The single "master" copy. 
+  The single "master" copy.
 * Pass pointers to that value to any function which wants to see or
   change the value.
 * Functions can dereference their pointer to see or change the value
@@ -140,7 +140,7 @@ the parameters:
    (pointer to the value of interest) will agree with the type in (2)
    above. If the value of interest is local to the caller, then this
    will often involve a use of the & operator (Section 1).
- 
+
 #. When the callee is running, if it wishes to access the value of
    interest, it must dereference its pointer to access the actual
    value of interest. Typically, this equates to use of the
@@ -152,7 +152,7 @@ Bill Gates By Reference
 
 Here is the Bill Gates example written to use reference
 parameters. This code now matches the by-reference memory drawing
-above. 
+above.
 
 ::
 
@@ -164,7 +164,7 @@ above.
 	*worthRef = *worthRef + 1; // use * to get at value of interest
 	// T2
 	}
-	
+
 	void A() {
 	int netWorth;
 	netWorth = 55; // T1 -- the value of interest is local to A()
@@ -172,7 +172,7 @@ above.
 	               // In this case using &.
 	// T3 -- B() has used its pointer to change the value of interest
    }
-   
+
 
 Don't Make Copies
 ~~~~~~~~~~~~~~~~~
@@ -215,12 +215,12 @@ interest.
 
 	void Swap(int* a, int* b) {
 	  int temp;
-	  
+
 	  temp = *a;
 	  *a = *b;
 	  *b = temp;
 	}
-	
+
 Swap() Caller
 ~~~~~~~~~~~~~
 
@@ -231,17 +231,17 @@ To call Swap(), the caller must pass pointers to the values of interest.
 	void SwapCaller() {
 	  int x = 1;
 	  int y = 2;
-	
+
 	  Swap(&x, &y); // Use & to pass pointers to the int values of interest
 	                //  (x and y).
 	}
-	
-	
+
+
 .. odsafig:: Images/swapswapcaller.png
    :width: 400
    :align: center
    :capalign: justify
-   :figwidth: 100%  
+   :figwidth: 100%
 
 The parameters to ``Swap()`` are pointers to values of interest which are back in the caller's
 locals. The ``Swap()`` code can dereference the pointers to get back to the caller's memory to
@@ -265,13 +265,13 @@ the ``ints`` can be anywhere. An ``int`` inside an array is still an ``int``.
 	  Swap(&(scores[0]), &(scores[9]));// the ints of interest do not need to be
 	         // simple variables -- they can be any int. The caller is responsible
 	         // for computing a pointer to the int.
-	         
+
 The above call to ``Swap()`` can be written equivalently as
 ``Swap(scores, scores+9)`` due to the array syntax in C. You can
 
 ignore this case if it is not familiar to you |---|
 it's
-not an important area of the language and both forms compile to the exact same thing anyway.	         
+not an important area of the language and both forms compile to the exact same thing anyway.
 
 More Syntax
 -----------
@@ -293,15 +293,15 @@ of interest...
 	void C(int* worthRef) {
 	  *worthRef = *worthRef + 2;
 	}
-	
+
 	// Adds 1 to the value of interest, and calls C().
 	void B(int* worthRef) {
 	  *worthRef = *worthRef + 1; // add 1 to value of interest as before
-	
+
 	  C(worthRef);    // NOTE no & required. We already have
 	                  // a pointer to the value of interest, so
 	                  // it can be passed through directly.
-    }	
+    }
 
 
 
@@ -322,13 +322,13 @@ The ** Case
 ~~~~~~~~~~~
 
 What if the value of interest to be shared and changed between the caller and callee is
-already a pointer, such as an ``int*`` or a ``struct fraction*``? 
-Does that change the rules for setting  up reference parameters? No. 
+already a pointer, such as an ``int*`` or a ``struct fraction*``?
+Does that change the rules for setting  up reference parameters? No.
 In that case, there is no change in the rules.
 They operate just as before. The reference parameter is still a pointer to the value of
 interest, even if the value of interest is itself a pointer. Suppose the value of interest is
-``int*``. This means there is an ``int*`` value which the caller and callee want to share and change. Then the reference parameter should be an 
-``int**``. For a ``struct fraction*``  value of interest, the reference parameter is ``struct fraction**``. 
+``int*``. This means there is an ``int*`` value which the caller and callee want to share and change. Then the reference parameter should be an
+``int**``. For a ``struct fraction*``  value of interest, the reference parameter is ``struct fraction**``.
 A single dereference (``*``) operation on the reference parameter yields the value of interest as it did in the simple cases. Double pointer (``**``) parameters are common in linked list or
 other pointer manipulating code were the value of interest to share and change is itself a pointer, such as a linked list head pointer.
 
@@ -382,14 +382,14 @@ look simpler than in C, even though they accomplish the same thing..
 	  a = b;
 	  b = temp;
 	}
-	
+
 	void SwapCaller() {
 	  int x = 1;
 	  int y = 2;
 	  Swap(x, y);
 	  // No &'s required -- the compiler takes care of it
 	}
-	
+
 The types of the various variables and parameters operate simply as they are declared
 (``int`` in this case). The complicating layer of pointers required to implement the
 reference parameters is hidden. The compiler takes care of it without allowing the
