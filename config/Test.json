@@ -29,11 +29,15 @@
       }
     },
     "Advanced Data Structures": {
-      "SearchStruct/Skiplist1": {
+      "SearchStruct/SkipList": {
         "long_name": "Skip Lists Test",
         "sections": {}
       },
 	  "Spatial/BintreeNew": {
+        "long_name": "Bintree Test",
+        "sections": {}
+      },
+	  "Spatial/Bintree": {
         "long_name": "Bintree Test",
         "sections": {}
       }

@@ -240,3 +240,5 @@ help understand how the Bintree data structure works.
 Below is an interactive visualization of the Bintree for practice.
 
 .. avembed:: AV/Development/PrQuadtree/ClickableBintree.html ss
+
+.. odsascript:: AV/Development/bintreeCON.js

@@ -4,7 +4,7 @@ $(document).ready(function() {
     var av_name = "SkipListRmvCON";
 //    var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
   
-    var jsav = new JSAV(av_name);
+    var jsav = new JSAV(av_name, {left: 200});
 	isStepShown(false);
     var ll = new SkipList(jsav);
     ll.insert(new KVPair(0, "D"));

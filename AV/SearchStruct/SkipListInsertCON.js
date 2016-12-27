@@ -4,7 +4,7 @@ $(document).ready(function() {
   var av_name = "SkipListInsertCON";
 //  var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
 
-  var jsav = new JSAV(av_name);
+var jsav = new JSAV(av_name, {left: 250});
 
   // Slide 1
   jsav.umsg("Now we will illustrate Skip List insertion");

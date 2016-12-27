@@ -7,22 +7,22 @@
   <link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" />
   <link rel="stylesheet" href="../../../lib/odsaAV-min.css" type="text/css" />
   <link rel="stylesheet" href="../../../lib/odsaStyle-min.css" type="text/css" />
-  <link rel="stylesheet" href="../../../DataStructures/PrQuadAvC.css" type="text/css" />
-  <style>
+  <link rel="stylesheet" href="../../../AV/Development/BintreeAV.css" type="text/css" />
+  <!--<style>
       #container {
       width: 115%;
       position: relative;
      }
-	 </style>
+	 </style>-->
 </head>
 <body>
   <div id="container">
     <table class="headerTable">
       <tr>
         <td class="headerLeft"></td>
-        <td class="headerCenter avTitle"></td>
+        <td class="headerCenter avTitle">Interactive Bintree Visualization</td>
         <td class="headerRight">
-          <input type="button" id="about" name="about" />
+          <input type="button" id="about" name="about" value ="About"/>
           <a id="settings" class="jsavsettings" href="#"></a>
         </td>
       </tr>
@@ -57,8 +57,9 @@
   <script src="../../../DataStructures/NBintree.js"></script>
   <script>
     $(document).ready(function() {
+	  
       function about() {
-        alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
+        alert(ODSA.AV.aboutstring(interpret("Bintree Visualization"), interpret("Souleymane Dia")));
       }
       var numPoint = 1;
       var insertMode = 0;
@@ -78,8 +79,8 @@
             bint.remove(point, txt);
           }
 	  }
-	  var clickOffsetX = 809;
-	  var clickOffsetY = 186;
+	  var clickOffsetX = 638;
+	  var clickOffsetY = 194;
       var mapleft = 640;
       var maptop = 25;
       var w = 256;
@@ -128,6 +129,13 @@
           $('#insert').css("background-color", "#FFFF00");
         }
       }
+	  //////////////////////////////////////////////////////////////////
+	  // Start processing here
+	  //////////////////////////////////////////////////////////////////
+	  // Load the config object with interpreter and code created by odsaUtils.js
+	 var config = ODSA.UTILS.loadConfig(),
+	  interpret = config.interpreter,       // get the interpreter
+	  settings = config.getSettings();      // Settings for the AV
     }());
   </script>
 </body>

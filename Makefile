@@ -128,6 +128,16 @@ CS260: min
 COSC2436: min
 	python $(CONFIG_SCRIPT) config/COSC2436.json --no-lms
 
+COMP232: min
+	python $(CONFIG_SCRIPT) config/COMP232.json --no-lms
+
+SDAP13: min
+	python $(CONFIG_SCRIPT) config/SDAP13.json --no-lms
+
+simple_demo: min
+	python $(CONFIG_SCRIPT) config/simple_demo.json --no-lms
+PointersBook: min
+	python $(CONFIG_SCRIPT) config/PointersBook.json --no-lms
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
 	@cp lib/odsaUtils.js lib/odsaUtils-min.js
