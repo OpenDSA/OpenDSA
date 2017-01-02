@@ -226,6 +226,10 @@ $(document).ready(function () {
 
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     arr = av.ds.array(the_exp.split(" "));
+    arr.addClass(true, "oneCharWidth");
+    label1 = av.label("\nThe root node of the parse tree for any ");
+    av.umsg("&lambda; expression  is always the non-terminal " + empty_prod +".");
+//    label2 = av.label("&lambda; expression  is always the non-terminal " + empty_prod +".");
 //     arr.removeClass(true,"oneCharWidth");
 //     arr.removeClass(true,"emptyWidth");
 //     arr.removeClass(true,"lambdaWidth");
@@ -237,8 +241,6 @@ $(document).ready(function () {
 //     arr.addClass(lambdaChar,"lambdaWidth");
 
 //    setArrayCellsWidth();
-    label1 = av.label("The root node of the parse tree for any ");
-    label2 = av.label("&lambda; expression  is always the non-terminal " + empty_prod +".");
 //     label1.addClass("labelstyle");
 //     label2.addClass("labelstyle");
     tree = av.ds.tree({nodegap: 10});
