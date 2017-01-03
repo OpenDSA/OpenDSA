@@ -3,9 +3,17 @@
 $(document).ready(function () {
 "use strict";
 
-    //var av_name = "parseTree";
-    //var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
-    //var av = new JSAV(av_name);
+    JSAV.init();
+    JSAV.ext.SPEED = 500;
+
+    // Use this instatiation for embedding in standalone parseTree1.html file
+    //    av = new JSAV($("#parseTree"));
+    //////////////////////////////////////////////////////
+
+    // Use this instatiation for embedding as inlineav in RST file
+    var av_name = "parseTree1";
+    var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
+    var av = new JSAV(av_name);
 
     var av;
     var lt = "&lt;";
@@ -44,8 +52,10 @@ $(document).ready(function () {
 
 	//	the_tree = the_tree + "\n" + indent + "|EXP " + (s.length ===  0 ? "NULL" : s) + "|";
 	var n = tree.newNode(lt+"Exp"+gt);
+	n.addClass("wider");
 	if (parent === null) {
 	    tree.root(n);
+	    //	    tree.root().addClass("wider");
 	} else {
 	    parent.addChild(n);
 	}
@@ -62,6 +72,7 @@ $(document).ready(function () {
     var verify_factor = function(s, indent, parent) {
 	
 	var n = tree.newNode(lt+"Fac"+gt);
+	n.addClass("wider");
 	parent.addChild(n);
 	//	the_tree = the_tree + "\n" + indent + "|FACTOR " + (s.length ===  0 ? "NULL" : s) + "|";
 	the_tree = the_tree + "\n" + indent + "|FACTOR |";
@@ -77,6 +88,7 @@ $(document).ready(function () {
     var verify_addf = function(s, indent, parent) {
 
 	var n = tree.newNode(lt+"Add"+gt);
+	n.addClass("wider");
 	parent.addChild(n);
 	//	the_tree = the_tree + "\n" + indent + "|ADD_FACTOR " + (s.length ===  0 ? "NULL" : s) + "|";
 	the_tree = the_tree + "\n" + indent + "|ADD_FACTOR |";
@@ -107,6 +119,7 @@ $(document).ready(function () {
     var verify_multf = function(s,indent, parent) {
 
 	var n = tree.newNode(lt+"Mul"+gt);
+	n.addClass("wider");
 	parent.addChild(n);
 	//	the_tree = the_tree + "\n" + indent + "|MULT_FACTOR " + (s.length ===  0 ? "NULL" : s)  + "|";
 	the_tree = the_tree + "\n" + indent + "|MULT_FACTOR |";
@@ -137,6 +150,7 @@ $(document).ready(function () {
     var verify_primary = function(s, indent, parent) {
 
 	var n = tree.newNode(lt+"Pri"+gt);
+	n.addClass("wider");
 	parent.addChild(n);
 	//	the_tree = the_tree + "\n" + indent + "|PRIMARY " + (s.length ===  0 ? "NULL" : s) + "|";
 	the_tree = the_tree + "\n" + indent + "|PRIMARY |";
@@ -218,11 +232,6 @@ $(document).ready(function () {
 //     var lambdaChar = function(x) { return arr.value(x).length === 3; };
 
 
-    JSAV.init();
-    JSAV.ext.SPEED = 500;
-
-    
-    av = new JSAV($("#parseTree"));
 
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     arr = av.ds.array(the_exp.split(" "));
