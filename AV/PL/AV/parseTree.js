@@ -4,10 +4,33 @@
 
 $(document).ready(function () {
 
-    //var av_name = "parseTree";
-    //var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
-    //var av = new JSAV(av_name);
+    function mySplit(s) {
+	var output = [];
+	var index;
+	while (s.length > 0) {
+            if (s[0] !== "\u03bb") {
+		output.push(s[0]);
+		s = s.substr(1);
+            } else {
+		index = s.indexOf(".");
+		output.push(s.substr(0,index+1));
+		s = s.substr(index+1);
+            }
+	}
+	
+	return output;
+    }
 
+    // Use this for testing in standalone parseTree.html file
+    //        var av = new JSAV($("#parseTree"));
+    // End of declaration for standalone
+    
+    // Use this for inlineav reference in RST file
+    var av_name = "parseTree";
+    var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
+    var av = new JSAV(av_name);
+    // End of section for reference in inlineav
+    
     var lt = "&lt;";
     var gt = "&gt;";
     var eNT = lt + "&lambda;exp" + gt;
@@ -29,10 +52,9 @@ $(document).ready(function () {
     JSAV.init();
     JSAV.ext.SPEED = 500;
 
-    var av = new JSAV($("#parseTree"));
 
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    arr = av.ds.array(LAMBDA.mySplit(lambdaexp.replace(/\^/g,"\u03BB")));
+    arr = av.ds.array(mySplit(lambdaexp.replace(/\^/g,"\u03BB")));
     arr.removeClass(true,"oneCharWidth");
     arr.removeClass(true,"emptyWidth");
     arr.removeClass(true,"lambdaWidth");

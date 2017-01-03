@@ -10,6 +10,11 @@
        padding: 0;
     }
 
+    .jsavnode {
+       width: 6px;
+       max-width: 6px;
+   }
+
     .jsavhorizontalarray  {
         min-width : 165px;
         max-width : 165px;

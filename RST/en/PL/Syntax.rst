@@ -110,8 +110,8 @@ second and third productions in the grammar  above.
 The following slideshow demonstrates how to use the grammar above
 to build the parse tree for a given lambda expression.
 
-.. .. inlineav:: parseTree ss
-..    :output: show
+.. inlineav:: parseTree ss
+   :output: show
 
 
 **Questions to ponder**
@@ -148,3 +148,5 @@ time.  To get credit for this randomized exercise, you must solve it
 correctly three times in a row.
 
 .. avembed:: Exercises/PL/RP14part2.html ka
+
+.. odsascript:: AV/PL/AV/parseTree.js   	     
