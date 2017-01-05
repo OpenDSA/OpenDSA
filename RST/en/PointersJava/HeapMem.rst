@@ -54,7 +54,7 @@ Nonetheless, there are many problems that can only be solved with heap
 memory, so that's that way it has to be.
 
 Java Garbage Collection
-------------------------
+-----------------------
 The following are some important points about Garbage Collection:
 
 * Garbage collection is a mechanism that is frequently invoked by the Java Virtual
@@ -86,54 +86,13 @@ memory by garbage collection:
 
 * If the object is defined inside a block of code and all references to that object
 are out of scoop after the execution of that block. Here is an example
-::
 
-  void test(boolean found)
-  {
-    if(found)
-    {
-      Employee employee = new Employee();
-      //do something with employee
-    }
-    //here the only reference to the created object is out of scoop so the object will
-    //be eligible for garbage collection.
-  }
+.. codeinclude:: PointersBook/Scoop
 
 * If an object A contains a reference to another object B. Object B will be eligible
 for garbage collection one object A set to ``null``. Here is an example:
 
-::
-  class Date
-  {
-    int day, mounth, year;
-    public Date(int d, int m, int y)
-    {
-      day = d;
-      mounth = m;
-      year = y;
-    }
-  }
-  class Employee
-  {
-    String name;
-    Date dateOfBirth;
-    public Employee(String n, int d, int m, int y)
-    {
-      name = n;
-      dateOfBirth = new Date(h, m, s);
-    }
-  }
-  class Test
-  {
-    public static void main()
-    {
-      Employee empPtr = new Employee("Sam", 3, 9, 1983);
-      //now empPtr is an object that contains a reference to Date object
-      empPtr = null; // now empPtr is eligible for garbage collection and also
-      //the inner Date object will also be eligible for garbage collection
-    }
-  }
-
+.. codeinclude:: PointersBook/Date
 
 What Does The Heap Look Like?
 -----------------------------
@@ -255,13 +214,7 @@ two areas to be accurate since the rules which govern the two areas are so diffe
 In this case, the lifetime of the local variable empPtr is totally separate from
 the lifetime of the heap block, and the drawing needs to reflect that difference.
 
-::
-
-   void Heap1() {
-     Employee empPtr;
-     // Allocates local pointer local variable (but not its pointee)
-     // T1
-
+.. codeinclude:: PointersBook/SimpleHeapExampleT1
 
 .. odsafig:: Images/LocalHeapintptrxxx.png
    :width: 300
@@ -271,13 +224,7 @@ the lifetime of the heap block, and the drawing needs to reflect that difference
 
 
 
-::
-
-	 // Allocates heap block and stores its pointer in local variable.
-	 // Dereferences the pointer to set the the name to Sam
-	 empPtr = new Employee();
-   empPrt.setName("Sam");
-	 // T2
+.. codeinclude:: PointersBook/SimpleHeapExampleT2
 
 .. odsafig:: Images/LocalHeapintptr42.png
    :width: 300
@@ -286,16 +233,7 @@ the lifetime of the heap block, and the drawing needs to reflect that difference
    :figwidth: 100%
 
 
-::
-
-	 // Deallocates heap block making the pointer equals null.
-   //This will let the garbage collection to know that this object is unsed and it
-   //must be cleared from the head
-	 // The programmer must remember not to use the pointer
-	 // after the pointee has been deallocated (this is
-	 // why the pointer is shown in gray).
-	 empPtr = null;
-	 // T3
+.. codeinclude:: PointersBook/SimpleHeapExampleT3
 
 .. odsafig:: Images/LocalHeapintptr.png
    :width: 300
@@ -341,32 +279,10 @@ of the array memory block is the size of each element multiplied by the number o
 elements. So the following code heap allocates an array of 100
 ``Fractions``'s in the heap, sets them all to 22/7, and deallocates the heap array.
 
-::
-
-  class Fraction
-  {
-    int numerator, denominator;
-    public Fraction(int num, int den)
-    {
-      numerator = num;
-      denominator = den;
-    }
-  }
-	void HeapArray() {
-	  Fraction fracts;
-	  int i;
-	  // allocate the array
-	  fracts =  new Fraction[100];
-	  // use it like an array -- in this case set them all to 22/7
-	  for (i=0; i<99; i++) {
-	    fracts[i] = new Fraction(22,7);
-	  }
-	  // Deallocate the whole array
-	  fractions = null;
-	}
+.. codeinclude:: PointersBook/Fraction
 
 Heap Array Observations
-~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
 
 In the previous example the array is diamically allocated memory in two steps:
 

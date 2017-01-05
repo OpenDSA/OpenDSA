@@ -54,22 +54,8 @@ Here is the code and memory drawing for a simple, but incorrect implementation w
 ``A()`` and ``B()`` use pass by value. Three points in time, T1, T2, and T3 are marked in the
 code and the state of memory is shown for each state...
 
-::
 
-	void B(int worth) {
-	  worth = worth + 1;
-	  // T2
-	}
-
-	void A() {
-	  int netWorth;
-	  netWorth = 55;  // T1
-
-	  B(netWorth);
-	  // T3 -- B() did not change netWorth
-	}
-
-
+.. codeinclude:: PointersBook/BillGatesByValue
 
 .. odsafig:: Images/T1-T3.png
    :width: 600
@@ -131,35 +117,7 @@ Bill Gates By Reference
 
 Here is the Bill Gates example written to use reference parameters.
 
-::
-
-  class BillGatesBillions
-  {
-    int netWorth;
-    public BillGatesBillions(int value)
-    {
-      netWorth = value;
-    }
-    public getNetWorth()
-    {
-      return netWorth;
-    }
-    public setNetWorth(int value)
-    {
-      netWorth = value;
-    }
-  } //end of class
-
-	void B(BillGatesBillions billGatesMoneyRef) {
-	// Java will send a copy of the reference instead of a copy of the object
-  int money = billGatesMoneyRef.getNetWorth();
-	billGatesMoneyRef.setNetWorth(money + 1);
-	}
-
-	void A() {
-    BillGatesBillions billGatesMoney = new BillGatesBillions(55);
-	  B(billGatesMoney);  // Pass a reference to the object.
-   }
+.. codeinclude:: PointersBook/BillGatesBillions
 
 
 Don't Make Copies
@@ -185,26 +143,12 @@ It's a simple function, but it does need to change the caller's memory
 which is the key feature of pass by reference.
 
 Swap With Arrays
-~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 
 If we want to exchange the first and last ``int``s in an array. ``Swap()`` takes ``int[]`` array,
-two indeces for the elements to be swaped.
+two indices for the elements to be swaped.
 
-::
-
-	void SwapCaller() {
-	  int[] scores = new int[10]; //all values will be initialized by 0
-	  scores[0] = 1;
-	  scores[9[ = 2;
-	  Swap(scores, 0, 9);// the first argument is the array,
-    //the other parameters are the indeces of the two elements to be swapped
-
-  void Swap(int[] array, int firstIndex, int secondIndex) {
-    int temp;
-    temp = array[firstIndex];
-    array[firstIndex] = array[secondIndex];
-    array[secondIndex] = array[firstIndex];
-    }
+.. codeinclude:: PointersBook/SwapWithArrays
 
 This example will show that Java sendes the reference (by value) to the callee function and the callee
 function was able to change the values of array elements.
@@ -224,27 +168,14 @@ of the array by creating a new array. In this case, the caller function will acc
 array. The reseon is that the callee function changed the copy of the reference not
 the original reference to the array.
 
-::
-  void caller()
-  {
-    int[] array = new int[]{1,2,3,4,5};
-    callee(array);
-    System.out.println(array[1]);\\this will print 100.
-    System.out.println(array.length); // the array still 5 elements what evere happened in the callee.
-  }
-
-  void callee(int[] array) //function that will modify the array reference
-  {
-    array[1] = 100; //this will modify the value of index 1 in the original array.
-    array = new int[]{1,2}; // But this will not affect the original reference in the caller function.
-  }
+.. codeinclude:: PointersBook/JavaPassByValue
 
 Reference Parameter Summary
 ---------------------------
 
 Passing by value (copying the value) does not allow the callee to communicate back to its caller
 and has also has the usual disadvantages of making copies. Pass by reference (in Java, copying the reference of objects or arrays)
-uses referrences to avoid copying the value of interest, and allow the callee to communicate back
+uses references to avoid copying the value of interest, and allow the callee to communicate back
 to the caller.
 
 For pass by reference, there is only one copy of the value of interest, and copyies of that references to that

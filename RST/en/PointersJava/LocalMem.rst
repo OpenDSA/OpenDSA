@@ -61,14 +61,8 @@ All of the local variables and parameters taken together are called
 its :term:`local storage` or just its "locals", such as
 ``num`` and ``result`` in the following code...
 
-::
+.. codeinclude:: PointersBook/LocalMemory
 
-	// Local storage example
-	int Square(int num) {
-	  int result;
-	  result = num * num;
-	  return result;
-	}
 
 The variables are called "local" to capture the idea that their lifetime is tied
 to the function where they are declared. Whenever the function runs, its local
@@ -114,19 +108,7 @@ Examples
 
 Here is a simple example of the lifetime of local storage.
 
-::
-
-  void Foo(int a) {
-	// (1) Locals (a, b, i, scores) allocated when Foo runs
-	int i;
-	float scores[100];
-	// This array of 100 floats is allocated locally.
-	a = a + 1;
-	// (2) Local storage is used by the computation
-	for (i=0; i<a; i++) {
-	  Bar(i + a); // (3) Locals continue to exist undisturbed,
-	}  // even during calls to other functions.
-  } // (4) The locals are all deallocated when the function exits.
+.. codeinclude:: PointersBook/LocalStorageLifeTime
 
 Here is a larger example which shows how the simple rule "the locals
 are allocated when their function begins running and are deallocated
@@ -138,26 +120,7 @@ result when the function X() calls the function Y() twice.
 The points in time T1, T2, etc. are marked in
 the code and the state of memory at that time is shown in the drawing.
 
-::
-
-  void X() {
-    int a = 1;
-    int b = 2;
-    //T1
-
-    Y(a);
-    //T3
-    Y(b);
-
-   //T5
-  }
-
-  void Y(int p) {
-    int q;
-    q = p + 2;
-    //T2 (first time through), T4 (second time through)
-  }
-
+.. codeinclude:: PointersBook/LifeTimeLargerExample
 
 
 .. odsafig:: Images/T1-T5.png

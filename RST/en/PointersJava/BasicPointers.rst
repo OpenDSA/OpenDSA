@@ -246,6 +246,11 @@ A reference type in Java is any variable of Objects or Arrays.
 ``int[]`` type pointer to an ``array of integers``
 
 
+In this tutorial, the following class will be used to provide some examples about pointers.
+
+.. codeinclude:: PointersBook/Employee
+
+
 Pointer Variables
 ~~~~~~~~~~~~~~~~~
 
@@ -255,11 +260,7 @@ reserves memory to hold its value.
 The declaration does not assign a pointee for the pointer |---| the
 pointer starts out with a ``null`` in Java language.
 
-::
-
-       Employee empPtr; // Declare the Employee (reference to Employee) variable empPtr.
-                    // This allocates space for the pointer, but not the pointee.
-                    // The pointer starts out with "null"
+.. codeinclude:: PointersBook/pointerVariable
 
 
 Assigning a pointee to a pointer
@@ -278,14 +279,8 @@ The code below uses a pointer and an = to produce the earlier ``employee/empPtr`
    :capalign: justify
    :figwidth: 100%
 
-::
+.. codeinclude:: PointersBook/AssigningPointer
 
- void EmpPtrExample() {
-   Emplyee employee = new employee("John");
-   Employee empPtr = employee;
-   // Assign the reference value of emplyee to empPtr
-   // At this point, memory looks like drawing above
-  }
 
 Dereference the pointer
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -300,16 +295,7 @@ Example Pointer Code
 With the syntax defined, we can now write some pointer code that
 demonstrates all the pointer rules.
 
-::
-
-  void PointerTest() {
-    // allocate three integers and two pointers
-    Employee employee1 = new Employee("John");
-    Employee employee2 = new Employee("Alex");
-    Employee empPtr = null;
-    Employee empPtr2;
-    // Here is the state of memory at this point.
-    // T1 -- Notice that the pointers start out bad.
+.. codeinclude:: PointersBook/ExamplePointerCode
 
 .. odsafig:: Images/abcpqxxx.png
    :width: 400
@@ -317,33 +303,11 @@ demonstrates all the pointer rules.
    :capalign: justify
    :figwidth: 100%
 
-::
-
-  empPtr1 = employee1;
-  // set empPtr to refer to employee1
-  empPtr2 = employee2;
-  // set empPtr2 to refer to employee2
-  // T2 -- The pointers now have pointees
-
-
 .. odsafig:: Images/abcpq.png
    :width: 400
    :align: center
    :capalign: justify
    :figwidth: 100%
-
-
-::
-
-  // Now we mix things up a bit
-  employee2 = empPtr2;
-  // retrieve empPtr2's pointee value and put it in employee2
-  empPtr2 = empPtr1;
-  // change empPtr2 to share with empPtr1 (empPtr2's pointee is now employee1)
-  empPrt2.setName("Sam");
-  // dereference empPtr2 to set its pointee (employee1's name) to Sam (empPtr1's name is now Sam)
-  // T3 -- Dereferences and assignments mix things up
-
 
 .. odsafig:: Images/abcpqX.png
    :width: 400
@@ -366,15 +330,7 @@ pointee before it is used.
 The following example shows a simple example of the bad code and a
 drawing of how memory is likely to react.
 
-::
-
-	void BadPointer() {
-	  Empolyee empPtr;
-	  // allocate the pointer, but not the pointee
-	  Employee empPtr2 = empPtr;
-	  // this dereference is a serious runtime error of type NullPointerException
-	 }
-	// What happens at runtime when the bad pointer is dereferenced?
+.. codeinclude:: PointersBook/BadPointer
 
 .. odsafig:: Images/pPow.png
    :width: 400
