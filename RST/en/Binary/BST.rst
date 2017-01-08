@@ -103,7 +103,7 @@ The alternative is to check if a given assignment is necessary, which
 is probably more expensive than the assignment!
 
 We have to decide what to do when the node that we want to
-insert has has a key value equal to the key of some node already in
+insert has a key value equal to the key of some node already in
 the tree.
 If during insert we find a node that duplicates the key value to be
 inserted, then we have two options.
