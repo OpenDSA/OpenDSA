@@ -110,6 +110,9 @@ CS3Plain: min
 PLPlain: min
 	python $(CONFIG_SCRIPT) config/PL.json --no-lms
 
+CS4104: min
+	python $(CONFIG_SCRIPT) config/CS4104.json --no-lms
+
 CS3notesPlain: min
 	python $(CONFIG_SCRIPT) config/CS3notes.json --no-lms
 
