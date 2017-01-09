@@ -26,6 +26,16 @@
         "sections": {}
       }
     },
+    "Introduction": {
+      "SeniorAlgAnal/AAIntro": {
+        "long_name": "Data and Algorithm Analysis",
+        "sections": {}
+      },
+      "SeniorAlgAnal/ProblemSolving": {
+        "long_name": "An Introduction to Problem Solving",
+        "sections": {}
+      }
+    },
     "Mathematical Background": {
       "Background/MathpreIntro": {
         "long_name": "Chapter Introduction",
