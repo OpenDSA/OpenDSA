@@ -87,16 +87,16 @@ We will make use of the algorithm analysis simplifying rules:
    We work from the inside of the loop outward.
    The expression ``sum++`` requires constant time; call it
    :math:`c_3`.
-   Because the inner ``for`` loop is executed :math:`i` times,
-   by simplifying rule (4) it has cost :math:`c_3i`.
+   Because the inner ``for`` loop is executed :math:`j` times,
+   by simplifying rule (4) it has cost :math:`c_3j`.
    The outer ``for`` loop is executed :math:`n` times, but each time
    the cost of the inner loop is different because it costs
-   :math:`c_3i` with :math:`i` changing each time.
+   :math:`c_3j` with :math:`j` changing each time.
    You should see that for the first execution of the outer loop,
-   :math:`i` is 1.
-   For the second execution of the outer loop, :math:`i` is 2.
-   Each time through the outer loop, :math:`i` becomes one greater,
-   until the last time through the loop when :math:`i = n`.
+   :math:`j` is 1.
+   For the second execution of the outer loop, :math:`j` is 2.
+   Each time through the outer loop, :math:`j` becomes one greater,
+   until the last time through the loop when :math:`j = n`.
    Thus, the total cost of the loop is :math:`c_3` times the sum of
    the integers 1 through :math:`n`.
    We know that
