@@ -107,6 +107,9 @@ CS2114: min
 CS3Plain: min
 	python $(CONFIG_SCRIPT) config/CS3.json --no-lms
 
+ECE252: min
+	python $(CONFIG_SCRIPT) config/ECE252.json --no-lms
+
 PLPlain: min
 	python $(CONFIG_SCRIPT) config/PL.json --no-lms
 
