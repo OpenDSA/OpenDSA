@@ -8,13 +8,13 @@ $(document).ready(function () {
     var av;
 
     // Use this instatiation for embedding in standalone parseTree1.html file
-    //    av = new JSAV($("#parseTree"));
+    av = new JSAV($("#parseTree"));
     //////////////////////////////////////////////////////
 
     // Use this instatiation for embedding as inlineav in RST file
-    var av_name = "parseTree1";
-    var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
-    av = new JSAV(av_name);
+//     var av_name = "parseTree1";
+//     var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
+//     av = new JSAV(av_name);
     //////////////////////////////////////////////////////
 
     var lt = "&lt;";
@@ -32,7 +32,31 @@ $(document).ready(function () {
 
     //    var the_exp = "A + B * C";	// The expression to parse
     var the_exp = "A + B * C + ( E * F + G )";	// The expression to parse
+    var the_parse_tree = [ 'program',			// The parse tree produced by the JISON parser
+		     [ 'exp',
+		       [ 'exp',
+			 [ 'exp', [ 'trm', [ 'fac', [ 'pri', 'A' ] ] ] ],
+			 '+',
+			 [ 'trm',
+			   [ 'trm', [ 'fac', [ 'pri', 'B' ] ] ],
+			   '*',
+			   [ 'fac', [ 'pri', 'C' ] ] ] ],
+		       '+',
+		       [ 'trm',
+			 [ 'fac',
+			   [ 'parens',
+			     '(',
+			     [ 'exp',
+			       [ 'exp',
+				 [ 'trm',
+				   [ 'trm', [ 'fac', [ 'pri', 'E' ] ] ],
+				   '*',
+				   [ 'fac', [ 'pri', 'F' ] ] ] ],
+			       '+',
+			       [ 'trm', [ 'fac', [ 'pri', 'G' ] ] ] ],
+			     ')' ] ] ] ] ];
 
+	
     var valid_operand = function(c) {
 	if ('A' <= c && c <= 'Z') {
 	    return true;
@@ -224,28 +248,26 @@ $(document).ready(function () {
 
 
 
-    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%% slide 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     arr = av.ds.array(the_exp.split(" "));
     arr.addClass(true, "oneCharWidth");
-    label1 = av.label("\nThe root node of the parse tree for any ");
-    av.umsg("&lambda; expression  is always the non-terminal " + empty_prod +".");
+    label1 = av.label("\nThe root node of the parse tree ");
+    av.umsg("exp is always a non-terminal ");
     tree = av.ds.tree({nodegap: 10});
 
+    // Build the JSAV tree representation of the JISON parse tree
     top_level(the_exp);
 
     tree.layout();
     tree.root().child(0).hide();
     tree.root().child(1).hide();
     av.displayInit();
+    // Now display the parse tree in stages
     display_parse([tree.root()], 0);
-
 
 
     av.recorded();
 
     // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
 
 });
