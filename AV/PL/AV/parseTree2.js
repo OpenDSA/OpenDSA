@@ -32,7 +32,7 @@ $(document).ready(function () {
 
     //    var the_exp = "A + B * C";	// The expression to parse
     var the_exp = "A + B * C + ( E * F + G )";	// The expression to parse
-    var the_parse_tree = [ 'program',			// The parse tree produced by the JISON parser
+    var the_parse_tree = [ 'program',			// The parse tree produced by the JISON parser.  At each level, index 0 is the type of node and remaining indices are its childrew
 		     [ 'exp',
 		       [ 'exp',
 			 [ 'exp', [ 'trm', [ 'fac', [ 'pri', 'A' ] ] ] ],
@@ -57,166 +57,171 @@ $(document).ready(function () {
 			     ')' ] ] ] ] ];
 
 	
-    var valid_operand = function(c) {
-	if ('A' <= c && c <= 'Z') {
-	    return true;
-	} else {
-	    return false;
-	}
-    };
+//     var valid_operand = function(c) {
+// 	if ('A' <= c && c <= 'Z') {
+// 	    return true;
+// 	} else {
+// 	    return false;
+// 	}
+//     };
+// 
+//     var valid_operator = function(c) {
+// 	if ('+' === c || c === '*') {
+// 	    return true;
+// 	} else {
+// 	    return false;
+// 	}
+//     };
+// 
+//     var verify_exp = function(s, indent, parent) {
+// 
+// 	//	the_tree = the_tree + "\n" + indent + "|EXP " + (s.length ===  0 ? "NULL" : s) + "|";
+// 	var n = tree.newNode(lt+"Exp"+gt);
+// 	n.addClass("wider");
+// 	if (parent === null) {
+// 	    tree.root(n);
+// 	    //	    tree.root().addClass("wider");
+// 	} else {
+// 	    parent.addChild(n);
+// 	}
+// 	the_tree = the_tree + "\n" + indent + "|EXP |";
+// 	s = verify_factor(s, indent + " ",n);
+// 	if (!s.startsWith("ERROR ")) {
+// 	    s = verify_addf(s, indent + " ",n);
+// 	} else {
+// 	    throw(s);
+// 	}
+// 	return s;
+//     };
+// 
+//     var verify_factor = function(s, indent, parent) {
+// 	
+// 	var n = tree.newNode(lt+"Fac"+gt);
+// 	n.addClass("wider");
+// 	parent.addChild(n);
+// 	//	the_tree = the_tree + "\n" + indent + "|FACTOR " + (s.length ===  0 ? "NULL" : s) + "|";
+// 	the_tree = the_tree + "\n" + indent + "|FACTOR |";
+// 	s = verify_primary(s, indent + " ", n);
+// 	if (!s.startsWith("ERROR ")) {
+// 	    s = verify_multf(s, indent + " ", n);
+// 	} else {
+// 	    throw(s);
+// 	}
+// 	return s;
+//     };
+// 
+//     var verify_addf = function(s, indent, parent) {
+// 
+// 	var n = tree.newNode(lt+"Add"+gt);
+// 	n.addClass("wider");
+// 	parent.addChild(n);
+// 	//	the_tree = the_tree + "\n" + indent + "|ADD_FACTOR " + (s.length ===  0 ? "NULL" : s) + "|";
+// 	the_tree = the_tree + "\n" + indent + "|ADD_FACTOR |";
+// 	if (s.length !== 0) {
+// 	    if (valid_operator(s.charAt(0))) {
+// 		if (s.charAt(0) === '+') {
+// 		    n.addChild(s.substring(0,1));
+// 		    the_tree = the_tree + "\n" + indent + " " + s.substring(0,1);
+// 		    if (s.substring(1).length !== 0) {
+// 			s = verify_factor(s.substring(1), indent + " ", n);
+// 			s = verify_addf(s, indent + " ", n);
+// 			return s;
+// 		    } else {
+// 			throw("ERROR " + s);
+// 		    }
+// 		} else {
+// 		    n.addChild(empty_prod);
+// 		    the_tree = the_tree + "\n" + indent + " " + "NULL";
+// 		    return s;	// Null prod
+// 		}
+// 	    }
+// 	}
+// 	n.addChild(empty_prod);
+// 	the_tree = the_tree + "\n" + indent + " " + "NULL";
+// 	return s;		// NULL PROD
+//     };
+// 
+//     var verify_multf = function(s,indent, parent) {
+// 
+// 	var n = tree.newNode(lt+"Mul"+gt);
+// 	n.addClass("wider");
+// 	parent.addChild(n);
+// 	//	the_tree = the_tree + "\n" + indent + "|MULT_FACTOR " + (s.length ===  0 ? "NULL" : s)  + "|";
+// 	the_tree = the_tree + "\n" + indent + "|MULT_FACTOR |";
+// 	if (s.length !== 0) {
+// 	    if (valid_operator(s.charAt(0))) {
+// 		if (s.charAt(0) === '*') {
+// 		    n.addChild(s.substring(0,1));
+// 		    the_tree = the_tree + "\n" + indent + " " + s.substring(0,1);
+// 		    if (s.substring(1).length !== 0) {
+// 			s = verify_primary(s.substring(1), indent + " ",n);
+// 			s = verify_multf(s, indent + " ",n);
+// 			return s;
+// 		    } else {
+// 			throw("ERROR " + s);
+// 		    }
+// 		} else {
+// 		    n.addChild(empty_prod);
+// 		    the_tree = the_tree + "\n" + indent + " " + "NULL";
+// 		    return s; // NULL prod
+// 		}
+// 	    }
+// 	}
+// 	n.addChild(empty_prod);
+// 	the_tree = the_tree + "\n" + indent + " " + "NULL";
+// 	return s;
+//     };
+// 
+//     var verify_primary = function(s, indent, parent) {
+// 
+// 	var n = tree.newNode(lt+"Pri"+gt);
+// 	n.addClass("wider");
+// 	parent.addChild(n);
+// 	//	the_tree = the_tree + "\n" + indent + "|PRIMARY " + (s.length ===  0 ? "NULL" : s) + "|";
+// 	the_tree = the_tree + "\n" + indent + "|PRIMARY |";
+// 	if (valid_operand(s.charAt(0))) {
+// 	    n.addChild(s.substring(0,1));
+// 	    the_tree = the_tree + "\n" + indent + " " + s.substring(0,1);
+// 	    return(s.substring(1));
+// 	} else if (s.charAt(0) === '(') {
+// 	    n.addChild("(");
+// 	    the_tree = the_tree + "\n" + indent + " ( ";
+// 	    s = verify_exp(s.substring(1), indent + " ",n);
+// 	    if (s.charAt(0) === ')') {
+// 		n.addChild(")");
+// 		the_tree = the_tree + "\n" + indent + " ) ";
+// 		return(s.substring(1));
+// 	    } else {
+// 		throw("ERROR " + s);
+// 	    }
+// 	} else {
+// 	    throw("ERROR " + s);
+// 	}
+//     };
 
-    var valid_operator = function(c) {
-	if ('+' === c || c === '*') {
-	    return true;
-	} else {
-	    return false;
-	}
-    };
-
-    var verify_exp = function(s, indent, parent) {
-
-	//	the_tree = the_tree + "\n" + indent + "|EXP " + (s.length ===  0 ? "NULL" : s) + "|";
-	var n = tree.newNode(lt+"Exp"+gt);
-	n.addClass("wider");
-	if (parent === null) {
-	    tree.root(n);
-	    //	    tree.root().addClass("wider");
-	} else {
-	    parent.addChild(n);
-	}
-	the_tree = the_tree + "\n" + indent + "|EXP |";
-	s = verify_factor(s, indent + " ",n);
-	if (!s.startsWith("ERROR ")) {
-	    s = verify_addf(s, indent + " ",n);
-	} else {
-	    throw(s);
-	}
-	return s;
-    };
-
-    var verify_factor = function(s, indent, parent) {
-	
-	var n = tree.newNode(lt+"Fac"+gt);
-	n.addClass("wider");
-	parent.addChild(n);
-	//	the_tree = the_tree + "\n" + indent + "|FACTOR " + (s.length ===  0 ? "NULL" : s) + "|";
-	the_tree = the_tree + "\n" + indent + "|FACTOR |";
-	s = verify_primary(s, indent + " ", n);
-	if (!s.startsWith("ERROR ")) {
-	    s = verify_multf(s, indent + " ", n);
-	} else {
-	    throw(s);
-	}
-	return s;
-    };
-
-    var verify_addf = function(s, indent, parent) {
-
-	var n = tree.newNode(lt+"Add"+gt);
-	n.addClass("wider");
-	parent.addChild(n);
-	//	the_tree = the_tree + "\n" + indent + "|ADD_FACTOR " + (s.length ===  0 ? "NULL" : s) + "|";
-	the_tree = the_tree + "\n" + indent + "|ADD_FACTOR |";
-	if (s.length !== 0) {
-	    if (valid_operator(s.charAt(0))) {
-		if (s.charAt(0) === '+') {
-		    n.addChild(s.substring(0,1));
-		    the_tree = the_tree + "\n" + indent + " " + s.substring(0,1);
-		    if (s.substring(1).length !== 0) {
-			s = verify_factor(s.substring(1), indent + " ", n);
-			s = verify_addf(s, indent + " ", n);
-			return s;
-		    } else {
-			throw("ERROR " + s);
-		    }
-		} else {
-		    n.addChild(empty_prod);
-		    the_tree = the_tree + "\n" + indent + " " + "NULL";
-		    return s;	// Null prod
-		}
-	    }
-	}
-	n.addChild(empty_prod);
-	the_tree = the_tree + "\n" + indent + " " + "NULL";
-	return s;		// NULL PROD
-    };
-
-    var verify_multf = function(s,indent, parent) {
-
-	var n = tree.newNode(lt+"Mul"+gt);
-	n.addClass("wider");
-	parent.addChild(n);
-	//	the_tree = the_tree + "\n" + indent + "|MULT_FACTOR " + (s.length ===  0 ? "NULL" : s)  + "|";
-	the_tree = the_tree + "\n" + indent + "|MULT_FACTOR |";
-	if (s.length !== 0) {
-	    if (valid_operator(s.charAt(0))) {
-		if (s.charAt(0) === '*') {
-		    n.addChild(s.substring(0,1));
-		    the_tree = the_tree + "\n" + indent + " " + s.substring(0,1);
-		    if (s.substring(1).length !== 0) {
-			s = verify_primary(s.substring(1), indent + " ",n);
-			s = verify_multf(s, indent + " ",n);
-			return s;
-		    } else {
-			throw("ERROR " + s);
-		    }
-		} else {
-		    n.addChild(empty_prod);
-		    the_tree = the_tree + "\n" + indent + " " + "NULL";
-		    return s; // NULL prod
-		}
-	    }
-	}
-	n.addChild(empty_prod);
-	the_tree = the_tree + "\n" + indent + " " + "NULL";
-	return s;
-    };
-
-    var verify_primary = function(s, indent, parent) {
-
-	var n = tree.newNode(lt+"Pri"+gt);
-	n.addClass("wider");
-	parent.addChild(n);
-	//	the_tree = the_tree + "\n" + indent + "|PRIMARY " + (s.length ===  0 ? "NULL" : s) + "|";
-	the_tree = the_tree + "\n" + indent + "|PRIMARY |";
-	if (valid_operand(s.charAt(0))) {
-	    n.addChild(s.substring(0,1));
-	    the_tree = the_tree + "\n" + indent + " " + s.substring(0,1);
-	    return(s.substring(1));
-	} else if (s.charAt(0) === '(') {
-	    n.addChild("(");
-	    the_tree = the_tree + "\n" + indent + " ( ";
-	    s = verify_exp(s.substring(1), indent + " ",n);
-	    if (s.charAt(0) === ')') {
-		n.addChild(")");
-		the_tree = the_tree + "\n" + indent + " ) ";
-		return(s.substring(1));
-	    } else {
-		throw("ERROR " + s);
-	    }
-	} else {
-	    throw("ERROR " + s);
-	}
-    };
-
-    var top_level = function(s) {
+    var build_jsav_tree = function(node, parent) {
 	//    document.getElementById('parse-result').innerHTML = s;
 
-	try {
-	    the_tree = "";
-	    s = s.replace(/\s/g, ''); // Squeeze out spaces
-	    s = verify_exp(s, " ", null);
-	    if (s.length === 0) {
-		console.log("SUCCESS");
-		console.log("" + the_tree);
-	    } else {
-		console.log("ERROR " + s);
-		console.log("" + the_tree);
+	var n;
+	var i;
+	if (parent === null) {
+	    n = tree.newNode(lt+node[0]+gt); // node[0] should be "exp"
+	    n.addClass("wider");
+	    tree.root(n);
+	    for (i = 1; i < node.length; i++) { // now recursively process the children
+		build_jsav_tree(node[i], n);
 	    }
-	    //	console.log("Initial string is " + s);
-	}
-	catch(error) {
-	    console.log(error);
+	} else if (Array.isArray(node)) {
+ 	    n = tree.newNode(lt+node[0]+gt);
+ 	    n.addClass("wider");
+ 	    parent.addChild(n);
+ 	    for (i = 1; i < node.length; i++) { // now recursively process the children
+ 		build_jsav_tree(node[i], n);
+	    }
+	} else {
+ 	    n = tree.newNode(node);
+	    //	    n.addClass("wider");
+ 	    parent.addChild(n);
 	}
     };
 
@@ -256,11 +261,13 @@ $(document).ready(function () {
     tree = av.ds.tree({nodegap: 10});
 
     // Build the JSAV tree representation of the JISON parse tree
-    top_level(the_exp);
+    build_jsav_tree(the_parse_tree[1], null); // Skip the program node from the JISON grammar, which occurs at index 0
 
     tree.layout();
+//    av.step();
     tree.root().child(0).hide();
     tree.root().child(1).hide();
+    tree.root().child(2).hide();
     av.displayInit();
     // Now display the parse tree in stages
     display_parse([tree.root()], 0);
