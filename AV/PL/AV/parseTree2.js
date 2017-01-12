@@ -32,31 +32,31 @@ $(document).ready(function () {
 
     //    var the_exp = "A + B * C";	// The expression to parse
     var the_exp = "A + B * C + ( E * F + G )";	// The expression to parse
-    var the_parse_tree = [ 'program',			// The parse tree produced by the JISON parser.  At each level, index 0 is the type of node and remaining indices are its childrew
-		     [ 'exp',
-		       [ 'exp',
-			 [ 'exp', [ 'trm', [ 'fac', [ 'pri', 'A' ] ] ] ],
-			 '+',
-			 [ 'trm',
-			   [ 'trm', [ 'fac', [ 'pri', 'B' ] ] ],
-			   '*',
-			   [ 'fac', [ 'pri', 'C' ] ] ] ],
-		       '+',
-		       [ 'trm',
-			 [ 'fac',
-			   [ 'parens',
-			     '(',
-			     [ 'exp',
-			       [ 'exp',
-				 [ 'trm',
-				   [ 'trm', [ 'fac', [ 'pri', 'E' ] ] ],
-				   '*',
-				   [ 'fac', [ 'pri', 'F' ] ] ] ],
-			       '+',
-			       [ 'trm', [ 'fac', [ 'pri', 'G' ] ] ] ],
-			     ')' ] ] ] ] ];
-
-	
+    the_exp = the_exp.replace(/\s/g,'');	// Squeeze spaces from the string
+    var the_parse_tree =
+	[ 'program', // The parse tree produced by the JISON parser.  At each level, index 0 is the type of node and remaining indices are its childrew
+	  [ 'exp',
+	    [ 'exp',
+	      [ 'exp', [ 'trm', [ 'fac', [ 'pri', 'A' ] ] ] ],
+	      '+',
+	      [ 'trm',
+		[ 'trm', [ 'fac', [ 'pri', 'B' ] ] ],
+		'*',
+		[ 'fac', [ 'pri', 'C' ] ] ] ],
+	    '+',
+	    [ 'trm',
+	      [ 'fac',
+		'(',
+		[ 'exp',
+		  [ 'exp',
+		    [ 'trm',
+		      [ 'trm', [ 'fac', [ 'pri', 'E' ] ] ],
+		      '*',
+		      [ 'fac', [ 'pri', 'F' ] ] ] ],
+		  '+',
+		  [ 'trm', [ 'fac', [ 'pri', 'G' ] ] ] ],
+		')' ] ] ] ];
+    
 
     var build_jsav_tree = function(node, parent) {
 	//    document.getElementById('parse-result').innerHTML = s;
@@ -89,6 +89,7 @@ $(document).ready(function () {
 	if (nodes.length === 0) return;
 	var node = nodes.shift();
 	if (node.child(0) === undefined && node.value() !== empty_prod) {
+	    label1.text("\nParsing terminal " + node.value());
 	    node.addClass("jsavhighlight");
 	    arr.addClass(arr_index_to_highlight, "jsavhighlight");
 	    arr_index_to_highlight++;
@@ -97,12 +98,15 @@ $(document).ready(function () {
 	console.log("node " + node.value());
 	var i = 0;
 	var temp = [];
+	label1.text("\nParsing non-terminal " + node.value());
 	while (node.child(i) !== undefined) {
 	    node.child(i).show( {recursive: false} );
 	    temp.push(node.child(i));
 	    i = i + 1;
 	}
-	if (temp.length !== 0) av.step();
+	if (temp.length !== 0) {
+	    av.step();
+	}
 	
 	while (temp.length !== 0) {
 	    nodes.unshift(temp.pop());
@@ -113,10 +117,11 @@ $(document).ready(function () {
 
 
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    arr = av.ds.array(the_exp.split(" "));
+    //    arr = av.ds.array(the_exp.split(" "));
+    arr = av.ds.array(the_exp.split("")); // Spaces have been squeezed from the_exp by the time this happens, splitting with an empty string yields an array of the non-space characters
     arr.addClass(true, "oneCharWidth");
-    label1 = av.label("\nThe root node of the parse tree ");
-    av.umsg("exp is always a non-terminal ");
+    label1 = av.label("\nBeginning the parse ");
+    av.umsg(" ");
     tree = av.ds.tree({nodegap: 10});
 
     // Build the JSAV tree representation of the JISON parse tree
