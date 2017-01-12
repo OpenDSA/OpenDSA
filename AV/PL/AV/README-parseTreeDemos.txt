@@ -15,4 +15,8 @@ empty or a number.
   not left recursive.  Taken from chapter on recursive descent parsers
   in Tom's data structures book.
 
-* parseTree2.js/html -- slide show demo for JISON-generated parser
+* parseTree2.js/html -- initial attempt at slide show demo for
+  JISON-generated parser.  Currently the tree is hard-wired, that is,
+  the tree is produced from JISON's parser in a separate run and then
+  hard-wired into the AV.
+  
