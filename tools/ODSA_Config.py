@@ -340,7 +340,7 @@ def set_defaults(conf_data):
     # conf_data['exercise_origin'] = ''
     conf_data['exercises_root_dir'] = odsa_dir
 
-    if 'code_lang' not in conf_data:
+    if 'code_lang' not in conf_data or not bool(conf_data['code_lang']) or conf_data['code_lang'] == '{}':
         conf_data['code_lang'] ={
                                   "Java": {"ext": ["java"],"label": "Java","lang": "java"
                                   },
