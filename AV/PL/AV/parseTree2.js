@@ -8,13 +8,13 @@ $(document).ready(function () {
     var av;
 
     // Use this instatiation for embedding in standalone parseTree1.html file
-    av = new JSAV($("#parseTree"));
+//    av = new JSAV($("#parseTree"));
     //////////////////////////////////////////////////////
 
     // Use this instatiation for embedding as inlineav in RST file
-//     var av_name = "parseTree2";
-//     var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
-//     av = new JSAV(av_name);
+     var av_name = "parseTree2";
+     var interpret = ODSA.UTILS.loadConfig({"av_name": av_name}).interpreter;
+     av = new JSAV(av_name);
     //////////////////////////////////////////////////////
 
     var lt = "&lt;";

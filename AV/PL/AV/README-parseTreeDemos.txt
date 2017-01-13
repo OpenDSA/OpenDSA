@@ -18,6 +18,5 @@ empty or a number.
 * parseTree2.js/html -- initial attempt at slide show demo for
   JISON-generated parser.  Currently the tree is hard-wired, that is,
   the tree is produced from JISON's parser in a separate run and then
-  hard-wired into the AV.  Still needed -- produce a meaningful
-  legend.
+  hard-wired into the AV.  
   
