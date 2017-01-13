@@ -1993,6 +1993,46 @@
         }
       },
 
+      "SearchStruct/BalancedTree":
+      {
+        "long_name": "Balanced Trees",
+        "sections": {}
+      },
+
+      "SearchStruct/AVL":
+      {
+        "long_name": "AVL Tree",
+        "sections": {}
+      },
+
+      "SearchStruct/RedBlack":
+      {
+        "long_name": "The Red-Black Tree",
+        "sections":
+        {
+          "Exercise 1":
+          {
+            "redBlackTreeColoring":
+            {
+              "long_name": "Red-Black Tree Coloring Exercise",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Exercise 2":
+          {
+            "redBlackTreePRO":
+            {
+              "long_name": "Red-Black Tree Proficiency Exercise",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+
       "Binary/CompleteTree":
       {
         "long_name": "Array Implementation for Complete Trees",
@@ -3243,52 +3283,11 @@
       }
     },
 
-    "Search Structures":
-    {
+    "Search Structures": {
       "SearchStruct/SkipList":
       {
         "long_name": "Skip Lists",
         "sections": {}
-      },
-
-      "SearchStruct/BalancedTree":
-      {
-        "long_name": "Balanced Trees",
-        "sections": {}
-      },
-
-      "SearchStruct/AVL":
-      {
-        "long_name": "AVL Tree",
-        "sections": {}
-      },
-
-      "SearchStruct/RedBlack":
-      {
-        "long_name": "The Red-Black Tree",
-        "sections":
-        {
-          "Exercise 1":
-          {
-            "redBlackTreeColoring":
-            {
-              "long_name": "Red-Black Tree Coloring Exercise",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            }
-          },
-          "Exercise 2":
-          {
-            "redBlackTreePRO":
-            {
-              "long_name": "Red-Black Tree Proficiency Exercise",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            }
-          }
-        }
       }
     },
 
