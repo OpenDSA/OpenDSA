@@ -1,6 +1,6 @@
 {
-  "title": "OpenDSA entire modules",
-  "desc": "OpenDSA entire modules",
+  "title": "CS4104 Data and Algorithm Analysis",
+  "desc": "CS4104 Data and Algorithm Analysis",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
