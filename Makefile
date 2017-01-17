@@ -116,6 +116,9 @@ PLPlain: min
 CS4104: min
 	python $(CONFIG_SCRIPT) config/CS4104.json --no-lms
 
+CS4104raw: min
+	python $(CONFIG_SCRIPT) config/CS4104raw.json --no-lms
+
 CS3notesPlain: min
 	python $(CONFIG_SCRIPT) config/CS3notes.json --no-lms
 
@@ -134,6 +137,9 @@ CS260: min
 CSCI204: min
 	python $(CONFIG_SCRIPT) config/CSCI204.json --no-lms
 
+CSCI115: min
+	python $(CONFIG_SCRIPT) config/CSCI115.json --no-lms
+
 COSC2436: min
 	python $(CONFIG_SCRIPT) config/COSC2436.json --no-lms
 
@@ -145,8 +151,10 @@ SDAP13: min
 
 simple_demo: min
 	python $(CONFIG_SCRIPT) config/simple_demo.json --no-lms
+
 PointersBook: min
 	python $(CONFIG_SCRIPT) config/PointersBook.json --no-lms
+
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
 	@cp lib/odsaUtils.js lib/odsaUtils-min.js

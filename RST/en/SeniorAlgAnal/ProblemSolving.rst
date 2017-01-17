@@ -71,7 +71,6 @@ All of the heuristics for solving problems start with that.
 Fogler and LeBlanc [FL95] discuss the differences between effective and
 ineffective problem solvers.
 
-.. quote::
    The most important factors that distinguish between ineffective and
    effective problem solvers are the attitudes with which they
    approach the problem, their aggressiveness in the problem-solving
@@ -101,7 +100,7 @@ ineffective problem solvers.
 Investigation and Argument
 --------------------------
 
-Problem solving has two parts [Zietz]: the investigation and the
+Problem solving has two parts [Zei07]: the investigation and the
 argument.
 Students are too used to seeing only the argument in their textbooks
 and lectures.
