@@ -138,8 +138,9 @@ That's the way to do it.
 
 In this tutorial, the following class will be used to provide some examples about pointers.
 
-.. codeinclude:: PointersBook/PointerExample
+.. codeinclude:: PointersBook/BasicPointers/PointerExample
    :tag: EmployeeClass
+   :lang: Java
 
 Sharing
 ~~~~~~~
@@ -184,8 +185,9 @@ deep case, the smiley face is copied, and each function gets their own.
 
 Here is an example of the difference between shallow and deep copying:
 
-.. codeinclude:: PointersBook/shallowCopy
+.. codeinclude:: PointersBook/BasicPointers/shallowCopy
    :tag: shallow
+
 
 The next module will explain the above sharing technique in detail.
 
@@ -265,8 +267,9 @@ reserves memory to hold its value.
 The declaration does not assign a pointee for the pointer |---| the
 pointer starts out with a ``null`` in Java language.
 
-.. codeinclude:: PointersBook/PointerExample
+.. codeinclude:: PointersBook/BasicPointers/PointerExample
    :tag: PointerVariables
+   :lang: Java
 
 Assigning a pointee to a pointer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -284,8 +287,9 @@ The code below uses a pointer and an = to produce the earlier ``employee/empPtr`
    :capalign: justify
    :figwidth: 100%
 
-.. codeinclude:: PointersBook/PointerExample
+.. codeinclude:: PointersBook/BasicPointers/PointerExample
    :tag: AssigningPointee
+   :lang: Java
 
 Dereference the pointer
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -300,7 +304,7 @@ Example Pointer Code
 With the syntax defined, we can now write some pointer code that
 demonstrates all the pointer rules.
 
-.. codeinclude:: PointersBook/PointerExample
+.. codeinclude:: PointersBook/BasicPointers/PointerExample
    :tag: Example
 
 .. odsafig:: Images/abcpqxxx.png
@@ -336,7 +340,7 @@ pointee before it is used.
 The following example shows a simple example of the bad code and a
 drawing of how memory is likely to react.
 
-.. codeinclude:: PointersBook/badPointers
+.. codeinclude:: PointersBook/BasicPointers/badPointers
    :tag: badPointers
 
 .. odsafig:: Images/pPow.png
