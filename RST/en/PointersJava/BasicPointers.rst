@@ -15,7 +15,7 @@ Basic Pointers
 What is a pointer?
 ------------------
 
-There's a lot of nice, tidy code you can write without knowing about pointers. But once
+There's a lot of nice, tidy code you can write without knowing about :term:`pointers`. But once
 you learn to use the power of pointers, you can never go back. There are too many things
 that can only be done with pointers. But with increased power comes increased
 responsibility. Pointers allow new and more ugly types of bugs, and pointer bugs can
@@ -27,7 +27,7 @@ interchangeable)
 Pointers solve two common software problems. First, pointers allow different sections of
 code to share information easily. You can get the same effect by copying information
 back and forth, but pointers solve the problem better. Second, pointers enable complex
-linked data structures like linked lists and binary trees.
+linked data structures like :term:`linked lists` and :term:`binary tree`s.
 
 Simple ``int`` and ``float`` variables operate pretty intuitively. An
 ``int`` variable is like a box which can store a single ``int`` value such
@@ -53,10 +53,9 @@ explanations.)
 In Java,  Objects and Arrays are always accessed by references. The language
 automatically uses pointers behind the scenes for such complex types, and no pointer
 specific syntax is required. The programmer just needs to realize that operations like
-``a=b;`` will automatically be implemented with pointers if a and b are arrays or objects. Or
-put another way, the programmer needs to remember that assignments and parameters
-with arrays and objects are intrinsically shallow or shared |---| see the Deep vs. Shallow
-material below.
+``a = b;`` will automatically be implemented with pointers if a and b are arrays or objects. The programmer needs to
+remember that assignments and parameters with arrays and objects are intrinsically shallow or
+shared |---| see the Deep vs. Shallow material below.
 
 The following drawing shows an object of type Employee : ``employee`` and a refernece (pointer) ``empPtr`` from the same type.
 The object ``employee`` contains the data of an employee named ``John``. The reference empPtr
@@ -127,15 +126,20 @@ which pointee a pointer refers to.
 
 
 After assignment, the ``==`` test comparing the two pointers will return true. For example
-``(second==empPtr)`` above is true. The assignment operation also works with the
+``(second == empPtr)`` above is true. The assignment operation also works with the
 NULL value. An assignment operation with a NULL pointer copies the NULL value
 from one pointer to another.
 
 Memory drawings are the key to thinking about pointer code.
 When you are looking at code, thinking about how it will use memory at
 run time, then make a quick drawing to work out your ideas.
-This tutorial certainly uses drawings (Visualizations) to show how pointers work.
+This tutorial certainly uses drawings (visualizations) to show how pointers work.
 That's the way to do it.
+
+In this tutorial, the following class will be used to provide some examples about pointers.
+
+.. codeinclude:: PointersBook/PointerExample
+   :tag: EmployeeClass
 
 Sharing
 ~~~~~~~
@@ -154,7 +158,7 @@ communication between parts of a program.
 Shallow and Deep Copying
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-In particular, sharing can enable communication between two functions. One function
+In particular, sharing can enable communication between two :term:`functions`. One function
 passes a pointer to the value of interest to another function. Both functions can access the
 value of interest, but the value of interest itself is not copied.
 This communication is called :term:`shallow copy` since instead of
@@ -177,6 +181,11 @@ deep case, the smiley face is copied, and each function gets their own.
    :align: center
    :capalign: justify
    :figwidth: 100%
+
+Here is an example of the difference between shallow and deep copying:
+
+.. codeinclude:: PointersBook/shallowCopy
+   :tag: shallow
 
 The next module will explain the above sharing technique in detail.
 
@@ -211,7 +220,7 @@ Quite the opposite |---| most languages make it easy to omit this important step
 have to program carefully. If your code is crashing, a bad pointer should be your first
 suspicion.
 Pointers in dynamic languages such as Perl, LISP, and Java work a little differently. The
-run-time system sets each pointer to NULL when it is allocated and checks it each time it
+run-time system sets each pointer to ``null`` when it is allocated and checks it each time it
 is dereferenced. So code can still exhibit pointer bugs, but they will halt politely on the
 offending line instead of crashing haphazardly like C. As a result, it is much easier to
 locate and fix pointer bugs in dynamic languages. The run-time checks are also a reason
@@ -220,7 +229,7 @@ C++.
 
 One way to think about pointer code is that operates at two levels |---| pointer level and
 pointee level. The trick is that **both** levels need to be initialized and connected for things
-to work. (1) the pointer must be allocated, (1) the pointee must be allocated, and (3) the
+to work. (1) the pointer must be allocated, (2) the pointee must be allocated, and (3) the
 pointer must be assigned to point to the pointee. It's rare to forget step (1). But forget (2)
 or (3), and the whole thing will blow up at the first dereference. Remember to account for
 both levels |---| make a memory drawing during your design to make sure it's right.
@@ -239,16 +248,12 @@ has influenced the syntaxes of several languages.
 Pointer Type Syntax
 ~~~~~~~~~~~~~~~~~~~
 
-A reference type in Java is any variable of Objects or Arrays.
+A reference data type in Java is any variable of Objects or Arrays.
 
 ``Employee`` type pointer to ``Employee object``
 
 ``int[]`` type pointer to an ``array of integers``
 
-
-In this tutorial, the following class will be used to provide some examples about pointers.
-
-.. codeinclude:: PointersBook/Employee
 
 
 Pointer Variables
@@ -260,8 +265,8 @@ reserves memory to hold its value.
 The declaration does not assign a pointee for the pointer |---| the
 pointer starts out with a ``null`` in Java language.
 
-.. codeinclude:: PointersBook/pointerVariable
-
+.. codeinclude:: PointersBook/PointerExample
+   :tag: PointerVariables
 
 Assigning a pointee to a pointer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -279,12 +284,12 @@ The code below uses a pointer and an = to produce the earlier ``employee/empPtr`
    :capalign: justify
    :figwidth: 100%
 
-.. codeinclude:: PointersBook/AssigningPointer
-
+.. codeinclude:: PointersBook/PointerExample
+   :tag: AssigningPointee
 
 Dereference the pointer
 ~~~~~~~~~~~~~~~~~~~~~~~
-Using the pointer in any position that reads the value of the pointer will dereference it.
+Using the pointer in any position that reads the value of the pointer will :term:`dereference` it.
 For example, when you are pointer variable is on the right hand side of an assignment statement.
 The pointer must have a pointee, or it's a runtime error of type NullPointerException
 
@@ -295,7 +300,8 @@ Example Pointer Code
 With the syntax defined, we can now write some pointer code that
 demonstrates all the pointer rules.
 
-.. codeinclude:: PointersBook/ExamplePointerCode
+.. codeinclude:: PointersBook/PointerExample
+   :tag: Example
 
 .. odsafig:: Images/abcpqxxx.png
    :width: 400
@@ -330,7 +336,8 @@ pointee before it is used.
 The following example shows a simple example of the bad code and a
 drawing of how memory is likely to react.
 
-.. codeinclude:: PointersBook/BadPointer
+.. codeinclude:: PointersBook/badPointers
+   :tag: badPointers
 
 .. odsafig:: Images/pPow.png
    :width: 400

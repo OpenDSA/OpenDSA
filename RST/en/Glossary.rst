@@ -926,6 +926,9 @@ Glossary
    decision problem
       A problem whose output is either "YES" or "NO".
 
+   deep copy
+      Copying the actual content of a :term:`pointee`.
+
    degree
       In :term:`graph` terminology, the degree for a :term:`vertex` is
       its number of :term:`neighbors <neighbor>`.
@@ -972,6 +975,9 @@ Glossary
 
    dequeue
       A specialized term used to indicate removing an element from a queue.
+
+   dereference
+      Means accessing the value of a :term:`pointee`.
 
    descendant
       In a tree, the set of all nodes that have a node :math:`A` as an
@@ -2880,6 +2886,12 @@ Glossary
       list elements are in a position. Many list ADTs support access
       by position.
 
+   pointee
+      The term pointee refers to anything that is pointed to by a :term:`pointer` or :term:`reference`.
+
+   pointers
+      variable that points to memory address.
+
    postorder traversal
       In a :term:`binary tree`, a :term:`traversal` that first
       :term:`recursively <recursion>` :term:`visits <visit>` the left
@@ -3286,6 +3298,9 @@ Glossary
       This approach can fail if there is a cycle in the chain of
       references.
 
+   reference parameter
+      a :term:`function` of :term:`method` parameter that can be modified inside the function or method.
+
    reflexive
       In set notation, binary relation :math:`R` on set :math:`S` is
       reflexive if :math:`aRa` for all :math:`a \in \mathbf{S}`.
@@ -3543,6 +3558,10 @@ Glossary
    set
       A collection of distinguishable :term:`members <member>` or
       :term:`elements <element>`.
+
+   shallow copy
+      Copying the :term:`reference` or :term:`pointer` value without copying the actual content.
+
 
    Shellsort
       A sort that relies on the best-case cost of
@@ -4078,6 +4097,9 @@ Glossary
       disjoint sets when it is determined that they are members of the
       same :term:`equivalence class` under some
       :term:`equivalence relation`.
+
+   uninitialized
+      uninitialized variable means it has no initial value.
 
    unsolveable problem
       A problem that can proved impossible to solve on a computer.
