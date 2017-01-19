@@ -3,6 +3,22 @@
   "desc": "OpenDSA Java Pointers Book",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Java_CompleteCode": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Complete Code)",
+      "lang": "java"
+    }
+  },
   "lang": "en",
   "build_JSAV": false,
   "suppress_todo": false,

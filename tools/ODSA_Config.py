@@ -330,14 +330,8 @@ def set_defaults(conf_data):
     if 'theme_dir' not in conf_data:
         conf_data['theme_dir'] = '%sRST/_themes' % odsa_dir
 
-    conf_data['title'] = ''
     conf_data['av_origin'] = ''
     conf_data['av_root_dir'] = odsa_dir
-    # conf_data['exercise_server'] = ''
-    # conf_data['logging_server'] = ''
-    # conf_data['score_server'] = ''
-    # conf_data['module_origin'] = ''
-    # conf_data['exercise_origin'] = ''
     conf_data['exercises_root_dir'] = odsa_dir
 
     if 'code_lang' not in conf_data or not bool(conf_data['code_lang']) or conf_data['code_lang'] == '{}':
