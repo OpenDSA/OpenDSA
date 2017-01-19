@@ -20,7 +20,7 @@ Lower Bounds and Theta Notation
 Lower Bounds
 ~~~~~~~~~~~~
 
-Big-Oh notation describes an upper bound.
+:term:`Big-Oh notation` describes an upper bound.
 In other words, big-Oh notation states a claim about the greatest
 amount of some resource (usually time) that is required by an
 algorithm for some class of inputs of size :math:`n` (typically

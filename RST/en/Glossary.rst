@@ -121,7 +121,8 @@ Glossary
       :to-term: lower bound :label: key concept
 
       A less formal version of the term
-      :term:`asymptotic algorithm analysis`.
+      :term:`asymptotic algorithm analysis`, generally used as a
+      synonym for :term:`asymptotic analysis`.
 
    all-pairs shortest paths problem
       :to-term: Floyd's algorithm :label: solved by
@@ -322,7 +323,7 @@ Glossary
       and 7.
       In this example, the base type is integers.
 
-   basic operations
+   basic operation
       Examples of basic operations include inserting a data
       item into the data structure, deleting a data item from the
       data structure, and finding a specified data item.
@@ -848,6 +849,16 @@ Glossary
 
    cost
       The amount of resources that the solution consumes.
+
+   cost model
+      In :term:`algorithm analysis`, a definition for the cost of each
+      :term:`basic operation` performed by the algorithm,
+      along with a definition for the size of the input.
+      Having these definitions allows us to calculate the :term:`cost`
+      to run the algorithm on a given input, and from there determine
+      the :term:`growth rate` of the algorithm.
+      A cost model would be considered "good" if it yields predictions
+      that conform to our understanding of reality.
 
    CPU
       Acronym for Central Processing Unit, the primary processing
@@ -2516,6 +2527,14 @@ Glossary
    mod
       Abbreviation for the :term:`modulus` function.
 
+   model
+      A simplification of reality that preserves only the essential
+      elements.
+      With a model, we can more easily focus on and reason about these
+      essentials.
+      In :term:`algorithm analysis`, we are especially concerned with
+      the :term:`cost model` for measuring the cost of an algorithm.
+
    modulus
       :to-term: mod :label: abbreviation
 
@@ -2671,6 +2690,12 @@ Glossary
       and right parts.
       An object space decomposition is in opposition to an
       :term:`image space decomposition`.
+
+   Omega notation
+      In :term:`algorithm analysis`,
+      :math:`\Omega` notation is used to describe a :term:`lower bound`.
+      Roughly (but not completely) analogous to
+      :term:`big-Oh notation` used to define an :term:`upper bound`.
 
    one-way list
       A synonym for a :term:`singly linked list`.
@@ -2887,7 +2912,8 @@ Glossary
       by position.
 
    pointee
-      The term pointee refers to anything that is pointed to by a :term:`pointer` or :term:`reference`.
+      The term pointee refers to anything that is pointed to by a
+      :term:`pointer <pointers>` or :term:`reference`.
 
    pointers
       variable that points to memory address.
@@ -3023,6 +3049,8 @@ Glossary
    problem instance
       A specific selection of values for the parameters to a problem.
       In other words, a specific set of inputs to a problem.
+      A given problem instance has a size under some
+      :term:`cost model`.
 
    problem lower bound
       In :term:`algorithm analysis`, the tightest :term:`lower bound`
@@ -3560,7 +3588,8 @@ Glossary
       :term:`elements <element>`.
 
    shallow copy
-      Copying the :term:`reference` or :term:`pointer` value without copying the actual content.
+      Copying the :term:`reference` or :term:`pointer <pointers>`
+      value without copying the actual content.
 
 
    Shellsort
@@ -3922,6 +3951,12 @@ Glossary
 
    tail
       The end of a :term:`list`.
+
+   Theta notation
+      In :term:`algorithm analysis`, :math:`\Theta` notation is used
+      to indicate that the
+      :term:`upper bound` and :term:`lower bound` for an
+      :term:`algorithm` or :term:`problem` match. 
 
    tombstone
       In :term:`hashing`, a tombstone is used to mark a :term:`slot`

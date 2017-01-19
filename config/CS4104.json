@@ -34,6 +34,10 @@
       "SeniorAlgAnal/ProblemSolving": {
         "long_name": "An Introduction to Problem Solving",
         "sections": {}
+      },
+      "SeniorAlgAnal/AAOverview": {
+        "long_name": "Semester Overview",
+        "sections": {}
       }
     },
    "Appendix": {
