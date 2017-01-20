@@ -19,4 +19,9 @@ empty or a number.
   JISON-generated parser.  Currently the tree is hard-wired, that is,
   the tree is produced from JISON's parser in a separate run and then
   hard-wired into the AV.  
+
+* parseTree3.js/html -- Slide show demo for JISON-generated parser.
+  Unlike parseTree2, the JISON parser is now incorporated into the
+  parseTree3.js and called on the fly to produce the parse tree
   
+
