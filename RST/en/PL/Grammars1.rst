@@ -38,6 +38,10 @@ ParseTree 3 AV
 .. inlineav:: parseTree3 ss
    :output: show
 
+Slide show with user input
+	    
+.. avembed:: AV/PL/AV/parseTree3a.html ss
+	    
 The review problem set for today contains four review problems.
 
 This problem is about building a parse tree given a grammar and a string.
