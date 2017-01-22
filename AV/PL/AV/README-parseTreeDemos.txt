@@ -23,5 +23,8 @@ empty or a number.
 * parseTree3.js/html -- Slide show demo for JISON-generated parser.
   Unlike parseTree2, the JISON parser is now incorporated into the
   parseTree3.js and called on the fly to produce the parse tree
-  
+
+* parseTree3a.js/html/css -- Slide show demo in which the viewer can
+  enter the expression to be parsed.
+
 

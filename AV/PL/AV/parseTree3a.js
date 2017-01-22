@@ -675,7 +675,8 @@
 	// A + B * C + ( E * F + G )
 
 	//    var the_exp = "A + B * C";	// The expression to parse
-	var the_exp = "A + B * C + ( E * F + G )";	// The expression to parse
+	//	var the_exp = "A + B * C + ( E * F + G )";	// The expression to parse
+	var the_exp = $("#expValue").val();
 	the_exp = the_exp.replace(/\s/g,'');	// Squeeze spaces from the string
 	var the_parse_tree = parseTree3_grammar.parse(the_exp);
 
@@ -686,12 +687,9 @@
 	    var n;
 	    var i;
 	    if (parent === null) {
-//		tree.layout();
 		n = tree.newNode(lt+node[0]+gt); // node[0] should be "exp"
 		n.addClass("wider");
-//		tree.layout();
 		tree.root(n);
-//		tree.layout();
 		for (i = 1; i < node.length; i++) { // now recursively process the children
 		    build_jsav_tree(node[i], n);
 		}
@@ -699,7 +697,6 @@
  		n = tree.newNode(lt+node[0]+gt);
  		n.addClass("wider");
  		parent.addChild(n);
-//		tree.layout();
  		for (i = 1; i < node.length; i++) { // now recursively process the children
  		    build_jsav_tree(node[i], n);
 		}
@@ -707,7 +704,6 @@
  		n = tree.newNode(node);
 		//	    n.addClass("wider");
  		parent.addChild(n);
-//		tree.layout();
 	    }
 	};
 
@@ -720,9 +716,7 @@
 		node.addClass("jsavhighlight");
 		arr.addClass(arr_index_to_highlight, "jsavhighlight");
 		arr_index_to_highlight++;
-//		tree.layout();
 		av.step();
-//		tree.layout();
 	    }
 	    console.log("node " + node.value());
 	    var i = 0;
@@ -734,9 +728,7 @@
 		i = i + 1;
 	    }
 	    if (temp.length !== 0) {
-//		tree.layout();
 		av.step();
-//		tree.layout();
 	    }
 	    
 	    while (temp.length !== 0) {
