@@ -63,6 +63,10 @@ div.avcontainer  div.jsavcanvas ol.jsavarray   {
     padding-right: 20px;
 }
 
+.err_message {
+    font-family: monospace; 
+}
+
 ol.jsavarray .defaultCellStyle {
     border: none;
     box-shadow : none; 

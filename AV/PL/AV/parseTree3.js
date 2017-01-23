@@ -672,7 +672,8 @@ $(document).ready(function () {
     // A + B * C + ( E * F + G )
 
     //    var the_exp = "A + B * C";	// The expression to parse
-    var the_exp = "A + B * C + ( E * F + G )";	// The expression to parse
+    //    var the_exp = "A + B * C + ( E * F + G )";	// The expression to parse
+    var the_exp = "A + B * C";	// The expression to parse
     the_exp = the_exp.replace(/\s/g,'');	// Squeeze spaces from the string
     var the_parse_tree = parseTree3_grammar.parse(the_exp);
 

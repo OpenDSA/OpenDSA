@@ -27,4 +27,12 @@ empty or a number.
 * parseTree3a.js/html/css -- Slide show demo in which the viewer can
   enter the expression to be parsed.
 
+* parseTree4.js/html -- Like parseTree3 except the grammar used for
+  this one does not take operator precedence into account
+
+* For those that have the JISON parser incorporated into the JS code
+  (parseTree3 and parseTree4), the corresponding JISON grammar is also
+  here.  You must run that grammar through JISON and then take the
+  parser produced by JISON and cut-and-paste it into your AV
+  
 
