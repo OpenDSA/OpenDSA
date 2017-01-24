@@ -6,9 +6,10 @@
 .. avmetadata:: 
    :author: David Furcy and Tom Naps
 
-=============================
-Grammars - Part 5 (W 2/10/16)
-=============================
+=================
+Grammars - Part 5 
+=================
+.. (W 2/10/16)
 
 RP 5 part 1
 -----------

@@ -6,9 +6,12 @@
 .. avmetadata:: 
    :author: David Furcy and Tom Naps
 
-============================
-Grammars - Part 3 (F 2/5/16)
-============================
+.. odsalink::  AV/PL/AV/parseTree.css
+	    
+=================
+Grammars - Part 3 
+=================
+.. (F 2/5/16)
 
 RP 3 part 1
 -----------
@@ -18,6 +21,17 @@ Topics of the day:
   1. Operator precedence
   2. EBNF extensions and their advantages
 
+ParseTree 3 AV
+
+.. inlineav:: parseTree3 ss
+   :output: show
+
+
+Slide show with grammar from Parse Tree 3 and user input
+	    
+.. avembed:: AV/PL/AV/parseTree3a.html ss
+	    
+	    
 The review problem set for today contains five review problems.
 
 This problem illustrates how grammatical structure influences the
@@ -63,3 +77,4 @@ same one as in part 4 above) and a smaller EBNF grammar.
 .. avembed:: Exercises/PL/RP3part5.html ka
 
 .. odsascript:: Exercises/PL/RP3part1.js
+.. odsascript:: AV/PL/AV/parseTree3.js   	     

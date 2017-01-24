@@ -30,6 +30,9 @@ empty or a number.
 * parseTree4.js/html -- Like parseTree3 except the grammar used for
   this one does not take operator precedence into account
 
+* parseTree5a & b -- These are two parses of the same expression using
+  an ambiguous grammar
+
 * For those that have the JISON parser incorporated into the JS code
   (parseTree3 and parseTree4), the corresponding JISON grammar is also
   here.  You must run that grammar through JISON and then take the
