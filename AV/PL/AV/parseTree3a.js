@@ -775,11 +775,11 @@
     }
 
     function about() {
-	alert("Simple parse tree visualization");
+	alert("Produce a parse tree visualization for expression you enter");
     }
     
     function help() {
-	alert("Help for parse tree visualization");
+	alert("Enter expression in text box and then click the Parse button");
     }
     
     // Connect action callbacks to the HTML entities

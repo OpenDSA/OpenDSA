@@ -24,19 +24,19 @@ In this module we will learn about
 
 In the previous module, we saw that ambiguous grammars are to be avoided because the parse trees that result from them lead to confusion when we attach semantic meaning to the structure of the parse tree. The tree cannot be relied on to specify the order of operations.
 
-     Although :ref:`eg1` does not suffer from ambiguity, it has another problem.  In particular, if you return to the parse tree slide-show that accompanied :ref:`eg1`, you will note that in parsing :math:`A+B*C`, the :math:`+` operation was at a deeper level in the tree than :math:`*`, thereby indicating that :math:`A+B` would be multiplied by :math:`C`.  However that order of operation does not coincide with the operator precedence rules in almost every programming language.  So :ref:`eg1`, although unambiguous, is not the algebraic expression grammar that we need.  Instead consider:
+    Although :ref:`eg1` does not suffer from ambiguity, it has another problem.  In particular, if you return to the parse tree slide-show that accompanied :ref:`eg1`, you will note that in parsing :math:`A+B*C`, the :math:`+` operation was at a deeper level in the tree than :math:`*`, thereby indicating that :math:`A+B` would be evaluated first and then multiplied by :math:`C`.  However that order of operation does not coincide with the operator precedence rules in almost every programming language.  So :ref:`eg1`, although unambiguous, is not the algebraic expression grammar that we need.  Instead consider:
 
-
-
+    
 Example Grammar 3
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
+
 .. math::
 
    \begin{eqnarray*} 
    <exp> &::=& <trm>\\
    &|& <exp> + <trm> \\
    &|& <exp> - <trm> \\
-   <trm> &:== <fac> \\
+   <trm> &:==& <fac> \\
    &|&  <trm> * <fac> \\
    &|&  <trm> / <fac> \\
    <fac> &::=& <pri> \\
@@ -49,28 +49,26 @@ Note how the parse tree in the slide-show below produced by Example Grammar 3 is
 .. inlineav:: parseTree3 ss
    :output: show
 
-In particular with Example Grammar 3 the sub-tree corresponding to the
+In particular, with Example Grammar 3, the sub-tree corresponding to the
 multiplication is at a deeper level than the sub-tree for addition,
 thereby corresponding to normal operator precedence in programming
 languages.
 
 Below you have a slide-show "producer" for Example Grammar 3 that you can
 control by entering the expression for which you want a parse tree
-produced.  You should experiment a lot with producing a variety of
+produced.  You should experiment  with producing a variety of
 slide-shows until you feel confident that you could manually construct
 the parse tree corresponding to any possible expression.
 
-Slide show with grammar from Parse Tree 3 and user input
-	    
 .. avembed:: AV/PL/AV/parseTree3a.html ss
 	    
-Now that you feel confident working with parse trees, here are two
+Once you feel confident working with parse trees, here are two
 questions to consider before you start on the review problems for this
 module.
 
-**Question 1:** If you are designing a grammar corresponding to expressions, what is the strategy you would employ for level of operator precedence that you need to have.  How would this strategy play out with respect to Example Grammar 3 if you wanted to add an operator corresponding to exponentiation?
+**Question 1:** If you are designing a grammar corresponding to expressions, what is the strategy you would employ for introducing a different level of operator precedence -- one that is either higher or lower than that of other operators?  How would this strategy play out with respect to Example Grammar 3 if you wanted to add an operator corresponding to exponentiation?
 
-**Question 2:** In Example Grammar 3, operators on the same level of precedence associate in left-to-right fashion, that is, :math:`A+B-C` evaluates as :math:`(A+B)-C`.  What about the grammar dictates this left-to-right associativity?  How would you change the productions to achieve right-to-left associativity, that is, :math:`A+(B-C)`?
+**Question 2:** In Example Grammar 3, operators on the same level of precedence associate in left-to-right fashion, that is, :math:`A+B-C` evaluates as the parenthesized expression :math:`((A+B)-C)`.  What about the grammar dictates this left-to-right associativity?  How would you change the productions to achieve right-to-left associativity, that is, :math:`(A+(B-C))`?
 	     
 The review problem set for this module contains five review problems,
 the first four of which concern themselves with how a grammar dictates
@@ -78,11 +76,13 @@ operator precedence and associativity.  Do not start these problems
 until you have thought through answers to the two questions posed
 above.
 
-The problem illustrates how grammatical structure influences the
-evaluation of arithmetic expressions, and thus the meaning of programs.
-
-Note that, **to get credit for this problem,** you must solve it
-correctly three times in a row (the question is randomized).
+The first problem illustrates how grammatical structure influences the
+evaluation of arithmetic expressions, and thus the semantics of
+programs.  Note that, **to get credit for the first problem,** you
+must solve it correctly three times in a row because the question is
+randomized.  After you get the question right one time, the *Check
+Answer* button will then allow you to proceed to the next instance of
+the question.
 
 .. avembed:: Exercises/PL/RP3part1.html ka
 
@@ -121,13 +121,32 @@ collectively comprise what is known as *Backus-Naur Form* (BNF).  In
 already used in BNF notation:
 
 
-   1. Kleene closure operator :math:`*`, which means "zero or more" Hence if :math:`<fn_name>` were a non-terminal representing a valid function name and :math:`<parameter>` were a non-terminal representing a valid parameter, then the EBNF notation for function calls with zero or more parameters would be :math:`<fn_name> ( <parameter>* )`
-   2. Positive closure operator :math:`+`.  The EBNF notation for function calls that must have at least one parameter would be :math:`<fn_name> ( <parameter>+ )`
-   3. The two symbols left and right parenthesis :math:`( )`, which are used for grouping.  For example, if :math:`<positive_number>` were the non-terminal denoting a valid positive number, then the following EBNF would dictate that we *must* have a plus or minus sign preceding a number -- :math:`(+ | -) <positive_number>`
-   4. The "optional operator" :math:`?`, which specifies that you can have zero or one of whatever grammatical structure follows the operator.  For example, if our language allowed an optional plus or minus sign in front of a number, we would use the EBNF :math:`(+ | -)? <positive_number>`
+   1. Kleene closure operator :math:`*`, which means "zero or more" Hence if :math:`<fn\_name>`   were a non-terminal representing a valid function name and :math:`<parameter>` were a non-terminal representing a valid parameter, then the EBNF notation for function calls with zero or more parameters would be
+
+      .. math::
+ 
+     <fn\_name> "(" <parameter>* ")"
+   
+   2. Positive closure operator :math:`+`.  The EBNF notation for function calls that must have at least one parameter would be
+
+      .. math::
+ 
+     <fn\_name> "(" <parameter>+ ")"
+
+   3. The two paired parenthesis symbols :math:`( \; )`, which are used for grouping.  For example, if :math:`<positive\_number>` were the non-terminal denoting a valid positive number, then the following EBNF would dictate that we *must* have a plus or minus sign preceding a number
+
+     .. math::
+
+     (+ | -) <positive\_number>
+
+   4. The "optional operator" :math:`?`, which specifies that you can have zero or one of whatever grammatical structure follows the operator.  For example, if our language allowed an optional plus or minus sign in front of a number, we would use the EBNF
+
+      .. math::
+
+      (+ | -)? <positive\_number>
 
 EBNF is used to reduce the number of productions a grammar needs to
-specify a language.  However, it does increase the expressive power of
+specify a language.  However, it does not increase the expressive power of
 grammars, that is, any grammatical structure that can be expressed in
 EBNF can also be expressed in BNF if one is willing to use more
 productions.

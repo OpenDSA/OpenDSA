@@ -7,9 +7,10 @@
    :author: David Furcy and Tom Naps
 
 ===========================================
-Functional Programming - Part 6 (M 2/22/16)
+Functional Programming - Part 6 
 ===========================================
-
+.. (M 2/22/16)
+   
 RP 10 part 1
 ------------
 
