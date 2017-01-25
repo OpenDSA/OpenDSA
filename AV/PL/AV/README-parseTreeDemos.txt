@@ -33,9 +33,10 @@ empty or a number.
 * parseTree5a & b -- These are two parses of the same expression using
   an ambiguous grammar
 
-* For those that have the JISON parser incorporated into the JS code
-  (parseTree3 and parseTree4), the corresponding JISON grammar is also
-  here.  You must run that grammar through JISON and then take the
-  parser produced by JISON and cut-and-paste it into your AV
+* For those AVs that have the JISON parser incorporated into the JS
+  code (currently this is parseTree3 and parseTree4), the
+  corresponding JISON grammar is also in this directory.  You must run
+  that grammar through JISON and then take the parser produced by
+  JISON and cut-and-paste it into your AV code.
   
 

@@ -8,7 +8,7 @@
 
 .. odsalink::  AV/PL/AV/parseTree.css
 .. odsalink::  AV/PL/main.css
-	    
+
 =================
 Grammars - Part 1
 =================
@@ -23,7 +23,7 @@ Topics in this module:
   2. Derivations and parse trees
 
 Grammars provide a formalism for expressing the syntax of programming
-langugages.  That syntax is consequently used to parse, that is,
+languages.  That syntax is consequently used to parse, that is,
 determine the correctness, of a "program" in the language.  A grammar
 is composed of the following three elements.
 
@@ -54,7 +54,12 @@ is composed of the following three elements.
 
 We say that the non-terminal on the left of such a production *derives* the string on the right.
 
-An example of a context-free grammar should help to clarify this three-part definition.
+An example of a context-free grammar should help to clarify this three-part definition.   By convention the non-terminal on the left of the first production is the start symbol, and that is what ultimately must be parsed to have a complete expression in the language.   Hence in the example below, :math:`<exp>` is the start symbol.
+
+.. _eg1:
+
+Example Grammar 1
+^^^^^^^^^^^^^^^^^
 
 .. math::
 
@@ -88,11 +93,11 @@ the production that is being applied to "grow" the parse tree.
 Note that, in a complete parse tree, leaf nodes are always terminals,
 and a traversal of the tree that would output these leaf nodes
 reproduces the expression being parsed.  This is indicated by the red
-highlighting in the above slideshow.
+highlighting in the above slide-show.
 
-The review problem set for today contains four review problems.
+The following set of four review problems for this module should be completed before you go on.   In these review problem, the symbol :math:`\epsilon` is used to represent the *empty production*.   When :math:`\epsilon` appears on the right of a production, it means that one of the possibilities for the non-terminal on the left side of the production is for it to derive the empty string, that is, the string with no characters.  This is typically used when the syntax for the language being parsed allows the option of the non-terminal not appearing at all.   Often with productions that are recursive, it provides a way for the recursion to bottom out -- similar to the way a recursive termination condition would work in a recursive algorithm.
 
-This problem is about building a parse tree given a grammar and a string.
+The first problem is about building a parse tree given a grammar and a string.
 
 .. avembed:: Exercises/PL/RP1part1.html ka
 
