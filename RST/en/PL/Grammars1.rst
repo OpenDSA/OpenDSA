@@ -42,8 +42,8 @@ is composed of the following three elements.
     the grammar.
   
   * A set of productions.  The productions are formal rules defining
-    the syntactical composition of the non-terminals from point 2. The
-    productions take the form:
+    the syntactical composition of the non-terminals from the
+    previous point. The productions take the form:
 
 .. math::
 
@@ -76,13 +76,13 @@ Example Grammar 1
 
 
 This is essentially a grammar for algebraic expressions with variables
-(the :math:`<pri>` non-terminal) allowed to be a single upper-case
+(that is, the :math:`<pri>` non-terminal) allowed to be a single upper-case
 letter.  When reading a grammar, the vertical bar :math:`|` means
 "or".  Hence :math:`<pri>` can be A or B or C ...  The :math:`<trm>`
 non-terminal must either be a :math:`<pri>` or a parenthesized
 :math:`<exp>`.  A derivation of the expression :math:`A + B * C`
 according to this grammar proceeds as illustrated in the following
-slide show, with the final result being *parse tree*.  You should step
+slide show, with the final result being a *parse tree*.  You should step
 through all the slides, making sure that at each step you understand
 the production that is being applied to "grow" the parse tree.
    
@@ -92,10 +92,10 @@ the production that is being applied to "grow" the parse tree.
 
 Note that, in a complete parse tree, leaf nodes are always terminals,
 and a traversal of the tree that would output these leaf nodes
-reproduces the expression being parsed.  This is indicated by the red
+would reproduce the expression being parsed.  This is indicated by the red
 highlighting in the above slide-show.
 
-The following set of four review problems for this module should be completed before you go on.   In these review problem, the symbol :math:`\epsilon` is used to represent the *empty production*.   When :math:`\epsilon` appears on the right of a production, it means that one of the possibilities for the non-terminal on the left side of the production is for it to derive the empty string, that is, the string with no characters.  This is typically used when the syntax for the language being parsed allows the option of the non-terminal not appearing at all.   Often with productions that are recursive, it provides a way for the recursion to bottom out -- similar to the way a recursive termination condition would work in a recursive algorithm.
+The following set of four review problems for this module should be completed before you go on.   In these review problems, the symbol :math:`\epsilon` is used to represent the *empty production*.   When :math:`\epsilon` appears on the right of a production, it means that one of the possibilities for the non-terminal on the left side of the production is for it to derive the empty string, that is, the string with no characters.  This is typically used when the syntax for the language being parsed allows the option of the non-terminal not appearing at all.   Often with productions that are recursive, it provides a way for the recursion to bottom out -- similar to the way a recursive termination condition would work in a recursive algorithm.
 
 The first problem is about building a parse tree given a grammar and a string.
 

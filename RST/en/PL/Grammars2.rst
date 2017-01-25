@@ -16,9 +16,8 @@ Grammars - Part 2
 RP 2 part 1
 -----------
 
-The main topic of this module is *ambiguous grammars*.  In :ref:`eg1` of *Grammars - Part 1*, we developed a grammar for algebraic expressions that involved three non-terminals :math:`<exp>, <trm>, <pri>`.   Could we develop a simpler grammar for the same language that only required two non-terminals?   Here is a candidate for doing that with only two non-terminals.
+      The main topic of this module is *ambiguous grammars*.  In :ref:`eg1` of *Grammars - Part 1*, we developed a grammar for algebraic expressions that involved three non-terminals :math:`<exp>, <trm>, <pri>`.   Could we develop a simpler grammar for the same language that only required two non-terminals?   Here is a candidate for doing that with only two non-terminals.
 
-.. _eg2:
 
 Example Grammar 2
 ^^^^^^^^^^^^^^^^^
@@ -49,7 +48,7 @@ Or we could also start with the production having the :math:`*` operator, in whi
 .. inlineav:: parseTree5b ss
    :output: show
 
-Note that both of the slide-shows above produce valid parse trees for this grammar.   The problem, however, is that the two parse trees are different.   In the first of the two parse trees, B would multiply C, which would correspond to usual operator precedence.   However, in the second, B would be added to A, a result that is contrary to usual operator precedence.   A grammar such as this, which allows two different parse trees for the same expression, is called an *ambiguous grammar*.   Ambiguous grammars should always be avoided.   Although they allow you to determine the syntactic correctness of an expression, the variety of parse trees they allow confounds our ability to use the parse trees for any type of reliable semantic action.
+Note that both of the slide-shows above produce valid parse trees for this grammar.   The problem, however, is that the two parse trees are different.   In the first of the two parse trees, B would multiply C, which would correspond to usual operator precedence.   However, in the parse tree produced by the second slide-show, B would be added to A, a result that is contrary to usual operator precedence.   A grammar such as this, which allows two different parse trees for the same expression, is called an *ambiguous grammar*.   Ambiguous grammars should always be avoided.   Although they allow you to determine the syntactic correctness of an expression, the variety of parse trees they allow confounds our ability to use the parse trees for any type of reliable semantic action.
       
 The review problem set for this module contains four review problems, the first three of which refer to the same grammar.  The first problem is about determining how many parse trees a given string has in a given grammar.
 
