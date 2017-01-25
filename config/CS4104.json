@@ -38,9 +38,15 @@
       "SeniorAlgAnal/AAOverview": {
         "long_name": "Semester Overview",
         "sections": {}
-      },
+      }
+    },
+    "Analyzing Problems: The basics": {
       "SeniorAlgAnal/TOH": {
         "long_name": "Introduction to Analyzing a Problem",
+        "sections": {}
+      },
+      "SeniorAlgAnal/MathTechnique": {
+        "long_name": "Some Math Technique",
         "sections": {}
       }
     },
