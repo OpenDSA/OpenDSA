@@ -38,6 +38,10 @@
       "SeniorAlgAnal/AAOverview": {
         "long_name": "Semester Overview",
         "sections": {}
+      },
+      "SeniorAlgAnal/TOH": {
+        "long_name": "Introduction to Analyzing a Problem",
+        "sections": {}
       }
     },
    "Appendix": {
