@@ -1,0 +1,138 @@
+{
+  "title": "CS3 Data Structures & Algorithms -- Only Exercises",
+  "desc": "CS3 Data Structures & Algorithms -- Only Exercises",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Processing": {
+      "ext": [
+        "pde"
+      ],
+      "label": "Processing",
+      "lang": "java"
+    },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "lang": "en",
+  "build_JSAV": false,
+  "build_cmap": false,
+  "suppress_todo": true,
+  "assumes": "recursion",
+  "dispModComp": true,
+  "glob_exer_options": {},
+  "chapters": {
+    "Sorting": {
+      "Sorting/Quicksort_exs": {
+        "long_name": "Quicksort",
+        "sections": {
+          "Quicksort Pivot Proficiency Exercise": {
+            "QuicksortPivotPRO": {
+              "long_name": "Quicksort Pivot Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "Quicksort Partition Slideshow": {
+            "quicksortCON": {
+              "long_name": "Quicksort Partition Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Quicksort Partition Proficiency Exercise": {
+            "Quicksort Partition Proficiency Exercise": {
+              "long_name": "Quicksort Partition Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          },
+          "Quicksort Partition Analysis Slideshow": {
+            "QuickSortPartitionAnalysisCON": {
+              "long_name": "Quicksort Partition Analysis Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Quicksort Visualization": {
+            "quicksortAV": {
+              "long_name": "Quicksort Visualization",
+              "required": false,
+              "points": 1.0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          },
+          "Quicksort Proficiency Exercise": {
+            "quicksortPRO": {
+              "long_name": "Quicksort Proficiency Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 0.90,
+              "exer_options": {
+                "JXOP-feedback": "continuous",
+                "JXOP-fixmode": "fix"
+              }
+            }
+          },
+          "Quicksort Worst Case Analysis Slideshow": {
+            "QuickSortWorstCaseCON": {
+              "long_name": "Quicksort Worst Case Analysis Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Quicksort Best Case Analysis Slideshow": {
+            "QuickSortBestCaseCON": {
+              "long_name": "Quicksort Best Case Analysis Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Quicksort Average Case Analysis Slideshow": {
+            "QuickSortAverageCaseCON": {
+              "long_name": "Quicksort Average Case Analysis Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 1.0
+            }
+          },
+          "Quicksort Summary Exercise": {
+            "QuicksortSumm": {
+              "long_name": "Quicksort Summary Exercise",
+              "required": true,
+              "points": 1.0,
+              "threshold": 5
+            }
+          }
+        }
+      }
+    }
+  }
+}

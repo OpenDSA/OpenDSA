@@ -158,6 +158,9 @@ PointersBook: min
 PointersSushma: min
 	python $(CONFIG_SCRIPT) config/PointersSushma.json --no-lms
 
+CS3_exs: min
+	python $(CONFIG_SCRIPT) config/CS3_exs.json --no-lms
+
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js
 	@cp lib/odsaUtils.js lib/odsaUtils-min.js
