@@ -954,10 +954,6 @@
       }
     },
     "Lower Bounds": {
-      "Bounds/BoundLower": {
-        "long_name": "Introduction to Lower Bounds",
-        "sections": {}
-      },
       "Bounds/BoundSearch": {
         "long_name": "Lower Bounds on Search",
         "sections": {}

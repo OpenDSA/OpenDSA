@@ -14,7 +14,7 @@
   },
   "lang": "en",
   "build_JSAV": false,
-  "suppress_todo": false,
+  "suppress_todo": true,
   "dispModComp": true,
   "glob_exer_options": {
     "JXOP-debug": "true"
@@ -45,9 +45,82 @@
         "long_name": "Introduction to Analyzing a Problem",
         "sections": {}
       },
-      "SeniorAlgAnal/MathTechnique": {
-        "long_name": "Some Math Technique",
+      "SeniorAlgAnal/BoundsReview": {
+        "long_name": "Problem Bounds",
         "sections": {}
+      },
+      "SeniorAlgAnal/GrowthRate": {
+        "long_name": "Growth Rates Review",
+        "sections": {}
+      },
+      "Background/Summations": {
+        "long_name": "Summation Introduction",
+        "sections": {
+          "Summations": {
+            "SummationOneToNCON": {
+              "long_name": "Summation of the first N Integers visualization",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "SummationTwoPowerICON": {
+              "long_name": "Summation Two Power I visualization",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Development/AdvSumm": {
+        "long_name": "Summation Techniques",
+        "sections": {}
+      },
+      "Background/RecurrenceIntro": {
+        "long_name": "Recurrence Relations Introduction",
+        "sections": {
+          "Recurrence Relations": {
+            "LinearRecurrencesCON": {
+              "long_name": "Linear Recurrences Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "LinearRecurrencesNCON": {
+              "long_name": "Linear Recurrences Slideshow (n)",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Development/Recurrence": {
+        "long_name": "Solving Recurrence Relations",
+        "sections": {
+          "Solving Recurrence Relations": {
+            "DivideAndConquerRecurrencesCON": {
+              "long_name": "Divide-and-Conquer Expansion Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Background/Proofs": {
+        "long_name": "Mathematical Proof Techniques",
+        "sections": {
+          "Mathematical Proof Techniques": {
+            "twoColorCON": {},
+            "TwoColoringProofCON": {
+              "long_name": "Two Coloring Proof Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
       }
     },
    "Appendix": {
