@@ -49,7 +49,7 @@ Quicksort Visualization
 -----------------------
 
 .. avembed:: AV/Sorting/quicksortAV.html ss
-   :output: show
+
 
 Quicksort Proficiency Exercise
 ------------------------------
