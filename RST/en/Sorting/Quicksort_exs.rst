@@ -30,6 +30,7 @@ Quicksort Partition Slideshow
 -----------------------------
 
 .. inlineav:: quicksortCON ss
+   :output: show
 
 
 Quicksort Partition Proficiency Exercise
@@ -42,13 +43,13 @@ Quicksort Partition Analysis Slideshow
 ----------------------------------------
 
 .. inlineav:: QuickSortPartitionAnalysisCON ss
-
+   :output: show
 
 Quicksort Visualization
 -----------------------
 
 .. avembed:: AV/Sorting/quicksortAV.html ss
-
+   :output: show
 
 Quicksort Proficiency Exercise
 ------------------------------
@@ -60,19 +61,19 @@ Quicksort Worst Case Analysis Slideshow
 ---------------------------------------
 
 .. inlineav:: QuickSortWorstCaseCON ss
-
+   :output: show
 
 Quicksort Best Case Analysis Slideshow
 --------------------------------------
 
 .. inlineav:: QuickSortBestCaseCON ss
-
+   :output: show
 
 Quicksort Average Case Analysis Slideshow
 -----------------------------------------
 
 .. inlineav:: QuickSortAverageCaseCON ss
-
+   :output: show
 
 Quicksort Summary Exercise
 --------------------------
