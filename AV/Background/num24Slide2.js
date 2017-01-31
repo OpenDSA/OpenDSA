@@ -23,8 +23,9 @@ var width = 30;
   gv.label("42", {top: yPositionR1 - 6, left: xPosition + 30});
   gv.label("numPtr",  {top: yPositionR2, left: xPosition - 50});
 
-  gv.g.polyline([[xPosition + length1 + 15, yPositionR1 + width], [xPosition + length1 + 7, yPositionR1 + width - 4],
-    [xPosition + length1 + 15, yPositionR1 + width - 8]], {fill: "black"});
+  gv.g.polyline([[xPosition + 60, yPositionR1 + 25], [xPosition + 70, yPositionR1 + 18],
+    [xPosition + 80, yPositionR1 + 25]], {fill: "black"});
+  gv.g.line(xPosition + 70, yPositionR1 + 65, xPosition + 70, yPositionR1 + 18);
 
   gv.displayInit();
   gv.recorded();
