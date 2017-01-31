@@ -1,5 +1,7 @@
 /*global JSAV, document */
 // Written by Cliff Shaffer
+*/
+
 $(document).ready(function() {
   "use strict";
   var av = new JSAV("twoColorCON", {animationMode: "none"});

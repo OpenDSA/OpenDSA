@@ -9,6 +9,10 @@
    :satisfies: Pointer intro
    :topic: Pointers
 
+   .. odsalink:: AV/Background/num24.css
+   .. odsalink:: AV/Background/num24Slide2.css
+   .. odsalink:: AV/Background/firstSlideShow.css
+
 Basic Pointers
 ==============
 
@@ -42,6 +46,11 @@ drawn inside.
    :capalign: justify
    :figwidth: 100%
 
+.. inlineav:: num24 dgm
+   :align: center
+
+   A two-coloring for the regions formed by three lines in the plane.
+
 A pointer works a little differently, it does not store
 a simple value directly. Instead, a pointer stores a :term:`reference` to another value.
 The variable the pointer refers to is sometimes known as its :term:`pointee`.
@@ -71,6 +80,9 @@ reference to an ``Employess``.
    :align: center
    :capalign: justify
    :figwidth: 100%
+
+.. inlineav:: num24Slide2 dgm
+
 
 
 Pointer Reference and Dereference
@@ -287,9 +299,17 @@ The code below uses a pointer and an = to produce the earlier ``employee/empPtr`
    :capalign: justify
    :figwidth: 100%
 
+
+
+
+
 .. codeinclude:: PointersBook/BasicPointers/PointerExample
    :tag: AssigningPointee
    :lang: Java
+
+
+
+
 
 Dereference the pointer
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -324,6 +344,11 @@ demonstrates all the pointer rules.
    :align: center
    :capalign: justify
    :figwidth: 100%
+
+.. inlineav:: firstSlideShow ss
+   :output: show
+
+
 
 
 Bad Pointer Example
@@ -421,7 +446,6 @@ This technique is the subject of a later module.
 
 Why Are Bad Pointer Bugs So Common?
 -----------------------------------
-
 Why is it so often the case that programmers will allocate a pointer,
 but forget to set it to refer to a pointee?
 The rules for pointers don't seem that complex, yet every programmer
@@ -436,3 +460,7 @@ that a variable may be used once it is declared. Unfortunately, pointers look li
 before use. It's unfortunate, in a way, that pointers happen look like other variables, since
 it makes it easy to forget that the rules for their use are very different. Oh well. Try to
 remember to assign your pointers to refer to pointees. Don't be surprised when you forget.
+
+.. odsascript:: AV/Background/num24.js
+.. odsascript:: AV/Background/num24Slide2.js
+.. odsascript:: AV/Background/firstSlideShow.js
