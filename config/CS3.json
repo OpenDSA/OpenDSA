@@ -1350,12 +1350,6 @@
             "resource_type": "external_assignment",
             "resource_name": "",
             "points": 2.0
-          },
-          "Swap Binary Trees Exercise": {
-            "learning_tool": "code-workout",
-            "resource_type": "external_assignment",
-            "resource_name": "",
-            "points": 2.0
           }
         }
       },

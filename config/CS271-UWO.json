@@ -939,58 +939,78 @@
         }
       },
       "Binary/WritingTraversals": {
-        "long_name": "Writing Tree Traversals",
-        "exercises": {
-          "BTincPROG": {
-            "long_name": "Node Increment Exercise",
-            "required": true,
-            "showhide": "show",
-            "points": 1.0,
-            "threshold": 1
+        "long_name": "Implementing Tree Traversals",
+        "sections": {
+          "Implementing Tree Traversals": {},
+          "Binary Tree Increment By One Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 1.0
           }
         }
       },
       "BTRecurTutor/BinaryTreeInfFlw": {
         "long_name": "Binary Tree Information Flow",
-        "exercises": {
-          "BTsetdepthPROG": {
-            "long_name": "Set Node Depth Programming Exercise",
-            "showhide": "show",
-            "required": true,
-            "showhide": "show",
-            "points": 2.0,
-            "threshold": 1
+        "sections": {
+          "Information Flow in Recursive Functions": {},
+          "Binary Tree Set Depth Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 2.0
           },
-          "BinaryTreeMistakesCON": {
-            "long_name": "Binary Tree Common Mistakes Slideshow",
-            "required": true,
-            "showhide": "show",
-            "points": 1.0,
-            "threshold": 0.90
+          "Collect-and-return": {
+            "BinaryTreeMistakesCON": {
+              "long_name": "Binary Tree Common Mistakes Slideshow",
+              "required": false,
+              "points": 1.0,
+              "threshold": 0.90
+            }
           },
-          "BTreturnPROGSumm": {
-            "long_name": "Collect-and-Return Programming Exercises",
-            "showhide": "show",
-            "required": true,
-            "showhide": "show",
-            "points": 4.0,
-            "threshold": 2.0
+          "Binary Tree Check Sum Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 2.0
           },
-          "BTcheckvalPROG": {
-            "long_name": "Node Value Count Programming Exercise",
-            "showhide": "show",
-            "required": true,
-            "showhide": "show",
-            "points": 2.0,
-            "threshold": 1
+          "Binary Tree Leaf Nodes Count Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 2.0
           },
-          "BTtransferPROGSumm": {
-            "long_name": "Duel-Flow Programming Exercises",
-            "showhide": "show",
-            "required": true,
-            "showhide": "show",
-            "points": 4.0,
-            "threshold": 2
+          "Binary Tree Sum Nodes Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 2.0
+          },
+          "Combining Information Flows": {},
+          "Binary Tree Check Value Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 2.0
+          },
+          "Combination Problems": {},
+          "Binary Tree Height Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 2.0
+          },
+          "Binary Tree Get Difference Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 2.0
+          },
+          "Binary Tree Has Path Sum Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 2.0
           }
         }
       },
@@ -1106,31 +1126,44 @@
       },
       "BTRecurTutor/BinaryTreeGuidedInfFlw": {
         "long_name": "Binary Tree Guided Information Flow",
-        "exercises": {
-          "IneffBinaryTreeRangeCON": {
-            "long_name": "Inefficient Binary Tree Traversal on Range Slide Show",
-            "required": false,
-            "points": 0.0,
-            "threshold": 0.90
+        "sections": {
+          "Binary Tree Guided Information Flow": {
+            "IneffBinaryTreeRangeCON": {
+              "long_name": "Inefficient Binary Tree Traversal on Range Slide Show",
+              "required": false,
+              "points": 1.0,
+              "threshold": 0.90
+            }
           },
-          "BSTsmallcountPROG": {
-            "long_name": "BST Small Value Count Programming Exercise",
-            "required": true,
-            "showhide": "show",
-            "points": 2.0,
-            "threshold": 1.0
+          "Binary Search Tree Small Count Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 2.0
           }
         }
       },
       "BTRecurTutor/MultipleBinaryTrees": {
         "long_name": "Multiple Binary Trees",
-        "exercises": {
-          "MultiTreePROGSumm": {
-            "long_name": "Multiple Binary Trees Exercises",
-            "required": true,
-            "points": 4.0,
-            "showhide": "Show",
-            "threshold": 2.0
+        "sections": {
+          "Practice Exercises": {},
+          "Mirror Image Binary Trees Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 2.0
+          },
+          "Same Binary Tree Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 2.0
+          },
+          "Structurally Identical Binary Trees Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 2.0
           }
         }
       },
