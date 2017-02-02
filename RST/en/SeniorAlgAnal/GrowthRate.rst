@@ -15,9 +15,9 @@ Growth Rates Review
 Growth Rates Review
 -------------------
 
-Two functions of :math:`n` have different :term:`growth rates` if as
-:math:`n` goes to infinity their ratio either goes to infinity or goes
-to zero.
+Two functions of :math:`n` have different
+:term:`growth rates <growth rate>` if as :math:`n` goes to infinity
+their ratio either goes to infinity or goes to zero.
 
 .. _RunTimeGraph:
 

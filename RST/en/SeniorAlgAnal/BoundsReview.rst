@@ -45,7 +45,7 @@ from first principles.
 Our most  significant example of a lower bounds argument so far is the
 :ref:`sorting lower bound proof <sorting lower bound> <SortingLowerBound>`,
 which shows that the problem of sorting has a lower bound of
-:math:`O(n \log n)` in the worst case.
+:math:`O(n \log n)` in the :term:`worst case`.
 
 The lower bound for the problem is the tightest (highest) lower bound
 that we can prove **for all possible algorithms** that solve the
@@ -126,10 +126,12 @@ for the algorithm that moves sequentially through the array from the
 start to the end, as opposed to the algorithm that moves sequentially
 through the array from the end to the start.
 
-The :term:`worst-case cost` (for all input of size $n$) is the maximum
-cost for the algorithm over all problem instances of size :math:`n`.
-The :term:`best-case cost` (for all input of size $n$) is the minimum
-cost for the algorithm over all problem instances of size :math:`n`.
+The :term:`worst-case cost <worst case>` (for all input of size $n$)
+is the maximum cost for the algorithm over all problem instances of
+size :math:`n`.
+The :term:`best-case cost <best case>` (for all input of size $n$)
+is the minimum cost for the algorithm over all problem instances of
+size :math:`n`.
 It is possible that the \{best, worst\} case cost changes
 radically with :math:`n`.
 That is, even :math:`n` might have a very different cost from odd
@@ -164,8 +166,8 @@ So it would be wrong to say something like
 
    Show graphs of cost vs $I_n$ for factorial, find, and findmax.
 
-If we want the :term:`average-case cost`, it is even more
-complicated.
+If we want the :term:`average-case cost <average case>`,
+it is even more complicated.
 We might model this as half way between the best and worst case costs,
 but this is not often correct.
 (Think about what circumstances would make it correct, and some
@@ -211,6 +213,86 @@ Then, the lower bound of a problem in the **worst case** is:
    \max_{I \in I_n} f_{\mathcal A}(I)\right\}
 
 
+Modeling the Inputs
+~~~~~~~~~~~~~~~~~~~
+
+Especially when trying to come to grips with what the average case
+cost of the algorithm will be, it might be easier to think about what
+is going on if we simplify the model that we use for the class of
+inputs that we are considering.
+
+Think about the seemingly simple problem of finding the value
+:math:`X` in an (unsorted) array of :math:`n` records.
+What are the inputs to this problem?
+Of course, an array of :math:`n` records!
+But what does that mean if we try to enumerate all of the inputs of
+size :math:`n`?
+How many such inputs are there?
+
+Well, if each position in the array can take any value, then there are
+an infinite number of values for each position.
+Even if we restrict these values to something like a 64-bit integer,
+it is still a lot of possibilities to consider!
+
+Given the cognative load involved in thinking about all of those
+inputs, we might want to consider instead analyzing a simpler set of
+inputs.
+For example, we might decide to only consider (for analysis purposes)
+that the input is a permuation of the numbers 1 to :math:`n`.
+The argument here might be that we don't care about the actual values
+in the array. We only care about whether a given value is :math:`X` or
+not, and so we can simplify the inputs that we consider.
+
+There are two dangers that we have to be aware of when doing such a
+simplification.
+First, our simplification has to still reflect reality.
+If we simplify an array of :math:`n` numbers as a permutation of the
+numbers 1 to :math:`n`, then we eliminate the inputs that have
+duplicates.
+That might make for a wrong analysis.
+Second, we have to separate the issue of inputs for the purpose of
+analysis from inputs for the purpose of solving a problem.
+In the case of sorting, we might want to analyze behavior on a
+collection of :math:`n` records each with a unique key value.
+Since we don't care about the actual key values, we might simplify
+this to some permuation of a set of records with key values 1 to
+:math:`n`.
+But, sorting a collection of records whose keys are known to be a
+permuation of the values 1 to :math:`n` is much simpler than sorting a
+collection of :math:`n` arbitrary records!
+For example, we can sort the permutation in linear time with a simple
+Binsort.
+
+Going back to the example of finding value :math:`X` in an array of
+:math:`n` records,
+we might want to consider a model that only considers the position of
+the first occcurance of :math:`X` in the array.
+In other words, we lump all inputs whose first occurance of :math:`X`
+is in the first position into one input.
+All inputs whose first occurance of :math:`X` is in the second
+position is another input.
+And so on.
+Then we can analyze the cost only for those "groups" of inputs that we
+care about.
+Of course, we might have difficulty deciding what the proper
+frequencies are for each of these synthetic input groups.
+Perhaps it is reasonable to say that each position in the array has
+equal probability of holding the first occurrance of :math:`X`.
+Or perhaps it is not.
+
+.. TODO::
+   :type: Example
+
+   Show a figure of many simple graphs.
+
+   First row of graphs is for (fixed) size n inputs for TOH [a point],
+   findmax [a horizontal line at n], and find [a line with slope 1].
+
+   Second row of graphs is for the worst case GROWTH of these 3
+   problems.
+
+   Then, add some graphs to show that for the find problem, the best,
+   average, and worst case growths are different.
 
 .. [#] Throughout this discussion, it should be
        understood that any mention of bounds must specify what class

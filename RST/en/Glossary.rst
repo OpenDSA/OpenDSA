@@ -152,8 +152,8 @@ Glossary
       cost for a series of operations and amortizes this total cost
       over the full series. 
       This is as opposed to considering every individual operation to
-      independently have the worst case cost, which might lead to an
-      overestimate for the total cost of the series.
+      independently have the :term:`worst case` cost, which might lead
+      to an overestimate for the total cost of the series.
 
    amortized cost
       The total cost for a series of operations to be used in an
@@ -502,8 +502,9 @@ Glossary
    bubble sort
       :to-term: algorithm :label: type of
 
-      A simple sort that requires :math:`Theta(n^2)` time in best,
-      average, and worst cases.
+      A simple sort that requires :math:`Theta(n^2)` time in
+      :term:`best <best case>`, :term:`average <average case>`,
+      and :term:`worst <worst case>` cases.
       Even an optimized version will normally run slower than
       :term:`insertion sort`, so it has little to recommend it.
 
@@ -932,7 +933,7 @@ Glossary
       Decision trees can be used in
       :term:`lower bounds proofs <lower bounds proof>`,
       such as the proof that sorting requires
-      :math:`\Omega(n \log n)` comparisons in the worst case.
+      :math:`\Omega(n \log n)` comparisons in the :term:`worst case`.
 
    decision problem
       A problem whose output is either "YES" or "NO".
@@ -1354,7 +1355,7 @@ Glossary
       :term:`Insertion Sort <insertion sort>` and
       :term:`Bubble Sort` are examples of exchange sorts.
       All exchange sorts require
-      :math:`\Theta(n^2)` time in the worst case.
+      :math:`\Theta(n^2)` time in the :term:`worst case`.
 
    expanding the recurrence
       A technique for solving a :term:`recurrence relation`.
@@ -1362,8 +1363,8 @@ Glossary
       a copy of recurrence.
 
    exponential growth rate
-      A growth rate function where :math:`n` (the input size) appears
-      in the exponent. For example, :math:`2^n`.
+      A :term:`growth rate` function where :math:`n` (the input size)
+      appears in the exponent. For example, :math:`2^n`.
 
    expression tree
       A :term:`tree` structure meant to represent a mathematical expression.
@@ -1780,7 +1781,7 @@ Glossary
       To add a new value to a heap, or to remove the extreme value
       (the max value in a max-heap or min value in a min-heap) and
       update the heap,
-      takes :math:`\Theta(\log n)` time in the worst case.
+      takes :math:`\Theta(\log n)` time in the :term:`worst case`.
       However, if given all of the values in an unordered array,
       the values can be re-arranged to form a heap in only
       :math:`\Theta(n)` time. 
@@ -1789,7 +1790,8 @@ Glossary
 
    Heapsort
       A sorting algorithm that costs :math:`\Theta(n \log n)` time in
-      the best, average, and worst cases.
+      the :term`best <best case>, :term:`average <average case>,
+      and :term:`worst <worst case>` cases.
       It tends to be slower than :term:`Mergesort` and
       :term:`Quicksort`.
       It works by building a :term:`max heap`, and
@@ -1944,9 +1946,10 @@ Glossary
       :term:`enumerate <enumeration>` the nodes in sorted order.
 
    Insertion Sort
-      A sorting algorithm with :math:`\Theta(n^2)` average and worst
-      case cost, and :math:`Theta(n)` best case cost.
-      This best-case cost makes it useful when we have reason to
+      A sorting algorithm with :math:`\Theta(n^2)`
+      :term`average <average case>` and :term:`worst case` cost,
+      and :math:`Theta(n)` :term:`best case` cost.
+      This best case cost makes it useful when we have reason to
       expect the input to be nearly sorted.
 
    instance variable
@@ -2374,7 +2377,8 @@ Glossary
 
    Mergesort
       A sorting algorithm that requires :math:`\Theta(n \log n)` in
-      the best, average, and worst cases.
+      the :term:`best <best case>`, :term:`average <average case>`,
+      and :term:`worst <worst case>` cases.
       Conceptually it is simple:
       Split the list in half, sort the halves, then merge them
       together.
@@ -3166,13 +3170,16 @@ Glossary
       end, and removed only from the other one end.
 
    Quicksort
-      A sort that is :math:`\Theta(n \log n)` in the best and average
-      cases, though :math:`\Theta(n^2)` in the worst case. However, a
-      reasonable implmentation will make the worst case occur under
-      exceedingly rare circumstances. Due to its tight inner loop, it
-      tends to run better than any other known sort in general
-      cases. Thus, it is a popular sort to use in code libraries. It
-      works by divide and conquor, by selecting a :term:`pivot` value,
+      A sort that is :math:`\Theta(n \log n)` in the
+      :term:`best <best case>` and :term:`average <average case>`
+      cases, though :math:`\Theta(n^2)` in the :term:`worst case`.
+      However, a reasonable implmentation will make the worst case
+      occur under exceedingly rare circumstances.
+      Due to its tight inner loop, it tends to run better than any
+      other known sort in general cases.
+      Thus, it is a popular sort to use in code libraries.
+      It works by divide and conquer, by selecting a :term:`pivot`
+      value,
       splitting the list into parts that are either less than or
       greater than the pivot, and then sorting the two parts.
 
@@ -3508,12 +3515,14 @@ Glossary
       :term:`disk access`.
 
    selection sort
-      While this sort requires :math:`\Theta(n^2)` time in the best,
-      average, and worst cases, it requires only :math:`\Theta(n)`
-      swap operations. Thus, it does relatively well in cases where
-      swaps are expensive. It can be viewed as an optimization on
-      bubble sort where swaps are deferred until the end of each
-      iteration.
+      While this sort requires :math:`\Theta(n^2)` time in the
+      :term:`best <best case>`, :term:`average <average case>`,
+      and :term:`worst <worst case>` cases, it requires only
+      :math:`\Theta(n)` swap operations.
+      Thus, it does relatively well in applications where swaps are
+      expensive.
+      It can be viewed as an optimization on :term:`bubble sort`,
+      where a swap is deferred until the end of each iteration.
 
    self-organizing list
       :to-term: move-to-front :label: heuristic
@@ -3594,8 +3603,8 @@ Glossary
 
    Shellsort
       A sort that relies on the best-case cost of
-      :term:`insertion sort` to improve over :math:`\Theta(n^2)` worst
-      case cost. 
+      :term:`insertion sort` to improve over :math:`\Theta(n^2)`
+      :term:`worst case` cost.
 
    shortest path
       Given a :term:`graph` with distances or :term:`weights <weight>`
