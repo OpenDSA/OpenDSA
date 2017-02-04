@@ -90,7 +90,7 @@ jsonlint:
 min: nomin
 #lib/odsaUtils-min.js lib/site-min.css lib/odsaAV-min.js lib/odsaAV-min.css lib/odsaMOD-min.js lib/odsaMOD-min.css lib/gradebook-min.js lib/gradebook-min.css lib/registerbook-min.js
 
-Plain: EverythingPlain CS2Plain CS3Plain PLPlain CS3notesPlain
+Plain: EverythingPlain CS2Plain CS3Plain PLPlain
 
 EverythingPlain: min
 	python $(CONFIG_SCRIPT) config/Everything.json --no-lms
@@ -119,17 +119,14 @@ CS4104: min
 CS4104raw: min
 	python $(CONFIG_SCRIPT) config/CS4104raw.json --no-lms
 
-CS3notesPlain: min
-	python $(CONFIG_SCRIPT) config/CS3notes.json --no-lms
+CS3slides: min
+	python $(CONFIG_SCRIPT) -s config/CS3slides.json --no-lms
+
+CS3notes: min
+	python $(CONFIG_SCRIPT) config/CS3slides.json -b CS3notes --no-lms
 
 testcmapPlain: min
 	python $(CONFIG_SCRIPT) config/testcmap.json --no-lms
-
-CS3114mynotes: min
-	python $(CONFIG_SCRIPT) -s config/CS3114mynotes.json --no-lms
-
-CS3114F16notes: min
-	python $(CONFIG_SCRIPT) -s config/CS3114F16notes.json --no-lms
 
 CS260: min
 	python $(CONFIG_SCRIPT) config/CS260.json --no-lms

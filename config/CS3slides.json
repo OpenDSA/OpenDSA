@@ -1,6 +1,6 @@
 {
-  "title": "CS3114 Fall 2016 Coursenotes",
-  "desc": "CS3114 Fall 2016 Coursenotes",
+  "title": "CS3 Coursenotes",
+  "desc": "CS3 Coursenotes",
   "inst_book_id": 20,
   "build_dir": "Books",
   "code_dir": "SourceCode/",
@@ -280,7 +280,7 @@
       "F16/23Tree": {
         "long_name": "2-3 Trees",
         "sections": {
-          "2-3 Trees": {
+          "2-3+ Trees": {
             "twoThreedgmCON": {},
             "simpleInsertCON": {
               "long_name": "",
@@ -470,7 +470,7 @@
       "F16/Sorting2": {
         "long_name": "Sorting, Part 2",
         "sections": {
-          "Sorting2": {
+          "Sorting Part 2": {
             "shellsortAV": {
               "long_name": "",
               "required": false,
@@ -888,7 +888,7 @@
       "F16/General": {
         "long_name": "General Trees",
         "sections": {
-          "General": {
+          "General Trees": {
             "GenTreeCON": {},
             "GenTreePreTravCON": {
               "long_name": "",
