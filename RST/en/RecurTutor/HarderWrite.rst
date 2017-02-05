@@ -33,9 +33,9 @@ The following is the general structure for a recursive function.
 .. topic:: Example
 
    Here is a function that has multiple recursive calls.
-   Given an ``int`` array named ``arr``, function
+   Given an ``int`` array named ``set``, function
    ``isSubsetSum`` determines whether some of the values in
-   ``arr`` add up to ``sum``.
+   ``set`` add up to ``sum``.
    For example, given the number 3, 8, 1, 7, and -3, with ``sum = 4``,
    the result is ``true`` because the values 3 and 1 sum to 4. 
    If ``sum = 6``, then the result will be ``true`` because the
@@ -44,7 +44,7 @@ The following is the general structure for a recursive function.
    there is no combination of the five numbers that adds up to 2.
    In this code, variable ``n`` is the number of values that we look
    at.
-   We don't want to just use ``arr.length`` because the recursive
+   We don't want to just use ``set.length`` because the recursive
    calls need to limit their work to part of the array.
    
    .. codeinclude:: RecurTutor/IsSubsetSum
