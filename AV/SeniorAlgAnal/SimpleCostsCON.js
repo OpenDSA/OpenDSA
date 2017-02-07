@@ -55,7 +55,6 @@ $(document).ready(function() {
   topAlign += 260;
   left = 100;
   av.label("Costs, as $n$ grows, for some representative algorithms", {top: topAlign - 50, left: 200}).addClass("largeLabel");
-
   av.g.polyline([[left, topAlign], [left, topAlign + yLength],
                  [left + xLength, topAlign + yLength]]);
   av.label("$n$", {top: topAlign + yLength - 5,
@@ -66,6 +65,17 @@ $(document).ready(function() {
   av.label("_", {top: topAlign - 20, left: left - 4}).addClass("largeLabel");
   av.label("$T(n) = 2^n-1$", {top: topAlign + 50, left: left + 30});
   av.label("Towers of Hanoi", {top: topAlign + 150, left: left + 20});
+
+  var xGraph = left;
+  var yGraph = topAlign + yLength;
+
+  // It appears that path can only handle 6 points, so the last one is
+  // made a bit high 
+  av.g.path(["M", xGraph + 1, yGraph - 1, "C",
+             xGraph + 2, yGraph - 3, xGraph + 3, yGraph - 7,
+             xGraph + 4, yGraph - 15, xGraph + 5, yGraph - 31,
+             xGraph + 6, yGraph - 63, xGraph + 7, yGraph - 150,
+            ].join(","));
 
   left += 250;
   av.g.polyline([[left, topAlign], [left, topAlign + yLength],

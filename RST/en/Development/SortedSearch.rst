@@ -12,6 +12,10 @@
 Search in Sorted Arrays
 =======================
 
+
+Analysis
+--------
+
 For large collections of records that are searched repeatedly,
 sequential search is unacceptably slow.
 One way to reduce search time is to preprocess the records by
@@ -315,3 +319,76 @@ this is not a typical situation.
 Fortunately, algorithm growth rates are usually well behaved, so that
 asymptotic algorithm analysis nearly always gives us a practical
 indication for which of two algorithms is better.
+
+
+Lower Bounds Proof
+------------------
+
+We will now assume that list **L** is sorted.
+In this case, is linear search still optimal?
+Clearly no, but why not?
+Because we have additional information to work with that we do not
+have when the list is unsorted.
+We know that the standard binary search algorithm has a worst case cost
+of :math:`O(\log n)`.
+Can we do better than this?
+We can prove that this is the best possible in the worst case with a
+proof similar to that used to show the lower bound on sorting.
+
+Again we use the decision tree to model our algorithm.
+Unlike when searching an unsorted list, comparisons between elements
+of **L** tell us nothing new about their relative order, so we
+consider only comparisons between :math:`K` and an element in **L**.
+At the root of the decision tree, our knowledge rules out no positions
+in **L**, so all are potential candidates.
+As we take branches in the decision tree based on the result of
+comparing :math:`K` to an element in **L**, we gradually rule out
+potential candidates.
+Eventually we reach a leaf node in the tree representing the single
+position in **L** that can contain :math:`K`.
+There must be at least :math:`n+1` nodes in the tree because we have
+:math:`n+1` distinct positions that :math:`K` can be in (any position
+in **L**, plus not in **L** at all).
+Some path in the tree must be at least :math:`\log n` levels deep, and
+the deepest node in the tree represents the worst case for that
+algorithm.
+Thus, any algorithm on a sorted array requires at least
+:math:`\Omega(\log n)` comparisons in the worst case.
+
+We can modify this proof to find the average cost lower bound.
+Again, we model algorithms using decision trees.
+Except now we are interested not in the depth of the deepest node (the
+worst case) and therefore the tree with the least-deepest node.
+Instead, we are interested in knowing what the minimum possible is for
+the "average depth" of the leaf nodes.
+Define the :term:`total path length` as the sum of the levels for each
+node.
+The cost of an outcome is the level of the corresponding node plus 1.
+The average cost of the algorithm is the average cost of the outcomes
+(total path length / :math:`n`).
+What is the tree with the least average depth?
+This is equivalent to the tree that corresponds to binary search.
+Thus, binary search is optimal in the average case.
+
+While binary search is indeed an optimal algorithm for a sorted list
+in the worst and average cases when searching a sorted array, there
+are a number of circumstances that might lead us to select another
+algorithm instead.
+One possibility is that we know something about the distribution of
+the data in the array.
+If each position in **L** is equally likely to hold :math:`K`
+(equivalently, the data are 
+well distributed along the full key range), then an
+:ref:`interpolation search <interpolation search> <SortedSearch>`
+is :math:`\Theta(\log \log n)` in the average case.
+If the data are not sorted, then using binary search requires us to
+pay the cost of sorting the list in advance, which is only worthwhile
+if many (at least :math:`O(\log n)` searches will be performed on the
+list.
+Binary search also requires that the list (even if sorted) be
+implemented using an array or some other structure that supports
+random access to all elements with equal cost.
+Finally, if we know all search requests in advance, we might prefer to
+sort the list by frequency and do linear search in extreme search
+distributions, or use a
+:ref:`self-organizing list <self-organizing list> <SelfOrg>`.
