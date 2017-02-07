@@ -9,8 +9,10 @@
    :satisfies:
    :topic:
 
+.. odsalink:: AV/SeniorAlgAnal/SimpleCostsCON.css
+
 Bounds Review
-===================
+=============
 
 Introduction
 ------------
@@ -161,10 +163,8 @@ In other words, we don't pick the :math:`n` for which the best
 So it would be wrong to say something like
 "The best case is when :math:`n=1`."
 
-.. TODO::
-   :type: Example Visualization
-
-   Show graphs of cost vs $I_n$ for factorial, find, and findmax.
+.. inlineav:: SimpleCostsCON dgm
+   :output: show
 
 If we want the :term:`average-case cost <average case>`,
 it is even more complicated.
@@ -280,20 +280,6 @@ Perhaps it is reasonable to say that each position in the array has
 equal probability of holding the first occurrance of :math:`X`.
 Or perhaps it is not.
 
-.. TODO::
-   :type: Example
-
-   Show a figure of many simple graphs.
-
-   First row of graphs is for (fixed) size n inputs for TOH [a point],
-   findmax [a horizontal line at n], and find [a line with slope 1].
-
-   Second row of graphs is for the worst case GROWTH of these 3
-   problems.
-
-   Then, add some graphs to show that for the find problem, the best,
-   average, and worst case growths are different.
-
 .. [#] Throughout this discussion, it should be
        understood that any mention of bounds must specify what class
        of inputs are being considered.
@@ -301,3 +287,5 @@ Or perhaps it is not.
        The average cost over all inputs?
        Regardless of which class of inputs we
        consider, all of the issues raised apply equally.
+
+.. odsascript:: AV/SeniorAlgAnal/SimpleCostsCON.js
