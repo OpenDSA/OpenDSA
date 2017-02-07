@@ -9,9 +9,14 @@
    :satisfies: Pointer intro
    :topic: Pointers
 
-   .. odsalink:: AV/Background/num24.css
-   .. odsalink:: AV/Background/num24Slide2.css
-   .. odsalink:: AV/Background/firstSlideShow.css
+   .. odsalink:: AV/PointersSushma/num42.css
+   .. odsalink:: AV/PointersSushma/employeeEmpPtr.css
+   .. odsalink:: AV/PointersSushma/empPtrnull.css
+   .. odsalink:: AV/PointersSushma/examplePointerCodeCON.css
+   .. odsalink:: AV/PointersSushma/empPtrsecond.css
+   .. odsalink:: AV/PointersSushma/empPtrxxx.css
+   .. odsalink:: AV/PointersSushma/employeeEmpPtr2.css
+   .. odsalink:: AV/PointersSushma/badPointerPow.css
 
 Basic Pointers
 ==============
@@ -46,7 +51,7 @@ drawn inside.
    :capalign: justify
    :figwidth: 100%
 
-.. inlineav:: num24 dgm
+.. inlineav:: num42 dgm
    :align: center
 
    A two-coloring for the regions formed by three lines in the plane.
@@ -81,7 +86,7 @@ reference to an ``Employess``.
    :capalign: justify
    :figwidth: 100%
 
-.. inlineav:: num24Slide2 dgm
+.. inlineav:: employeeEmpPtr dgm
 
 
 
@@ -113,6 +118,8 @@ line between the corners of the pointer variable's box.
    :capalign: justify
    :figwidth: 100%
 
+.. inlineav:: empPtrnull dgm
+
 The Java language uses the symbol ``null`` for this purpose.
 
 
@@ -136,6 +143,7 @@ which pointee a pointer refers to.
    :capalign: justify
    :figwidth: 100%
 
+.. inlineav:: empPtrsecond dgm
 
 After assignment, the ``==`` test comparing the two pointers will return true. For example
 ``(second == empPtr)`` above is true. The assignment operation also works with the
@@ -226,6 +234,8 @@ value.
    :capalign: justify
    :figwidth: 100%
 
+.. inlineav:: empPtrxxx dgm
+
 Bad pointers are very common. In fact,  **every pointer starts out with a bad value**.
 Correct code overwrites the bad value with a correct reference to a pointee, and thereafter
 the pointer works fine. There is nothing automatic that gives a pointer a valid pointee.
@@ -301,11 +311,11 @@ The code below uses a pointer and an = to produce the earlier ``employee/empPtr`
 
 
 
-
-
 .. codeinclude:: PointersBook/BasicPointers/PointerExample
    :tag: AssigningPointee
    :lang: Java
+
+.. inlineav:: employeeEmpPtr2 dgm
 
 
 
@@ -345,7 +355,7 @@ demonstrates all the pointer rules.
    :capalign: justify
    :figwidth: 100%
 
-.. inlineav:: firstSlideShow ss
+.. inlineav:: examplePointerCodeCON ss
    :output: show
 
 
@@ -373,6 +383,8 @@ drawing of how memory is likely to react.
    :align: center
    :capalign: justify
    :figwidth: 100%
+
+.. inlineav:: badPointerPow dgm
 
 
 Pointer Rules Summary
@@ -461,6 +473,11 @@ before use. It's unfortunate, in a way, that pointers happen look like other var
 it makes it easy to forget that the rules for their use are very different. Oh well. Try to
 remember to assign your pointers to refer to pointees. Don't be surprised when you forget.
 
-.. odsascript:: AV/Background/num24.js
-.. odsascript:: AV/Background/num24Slide2.js
-.. odsascript:: AV/Background/firstSlideShow.js
+.. odsascript:: AV/PointersSushma/num42.js
+.. odsascript:: AV/PointersSushma/employeeEmpPtr.js
+.. odsascript:: AV/PointersSushma/examplePointerCodeCON.js
+.. odsascript:: AV/PointersSushma/empPtrsecond.js
+.. odsascript:: AV/PointersSushma/empPtrxxx.js
+.. odsascript:: AV/PointersSushma/employeeEmpPtr2.js
+.. odsascript:: AV/PointersSushma/badPointerPow.js
+.. odsascript:: AV/PointersSushma/empPtrnull.js
