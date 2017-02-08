@@ -105,7 +105,7 @@ Basic Operations and Input Size
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Of primary consideration when estimating an algorithm's performance
-is the number of :term:`basic operations` required by
+is the number of :term:`basic operations <basic operation>` required by
 the algorithm to process an input of a certain size.
 The terms "basic operations" and "size" are both
 rather vague and depend on the algorithm being analyzed.

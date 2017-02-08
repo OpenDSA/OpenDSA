@@ -12,16 +12,13 @@
 Harder Code Completion Practice Exercises
 ===========================================
 
-Programming Exercise: Array Min
--------------------------------
+Recursion Programming Exercise: Minimum of array
+------------------------------------------------
 
 
-Programming Exercise: String Reverse
-------------------------------------
+Recursion Programming Exercise: Is Reverse
+------------------------------------------
 
 
-Programming Exercise: Decimal to Binary
----------------------------------------
-
-
-
+Recursion Programming Exercise: Decimal to Binary
+-------------------------------------------------

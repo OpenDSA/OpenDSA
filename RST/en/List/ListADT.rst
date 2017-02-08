@@ -184,6 +184,9 @@ There are two standard approaches to implementing lists, the
 :ref:`linked list <linked list> <ListLinked>`.
 
 
+List ADT Programming Exercise
+-----------------------------
+
 .. TODO::
    :tag: Exercise
 

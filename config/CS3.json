@@ -1332,7 +1332,6 @@
       "BTRecurTutor/MultipleBinaryTrees": {
         "long_name": "Multiple Binary Trees",
         "sections": {
-          "Practice Exercises": {},
           "Mirror Image Binary Trees Exercise": {
             "learning_tool": "code-workout",
             "resource_type": "external_assignment",
