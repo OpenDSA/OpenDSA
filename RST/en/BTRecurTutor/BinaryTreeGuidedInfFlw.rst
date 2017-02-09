@@ -49,4 +49,8 @@ than just a single path, but not all of the nodes.
 .. inlineav:: IneffBinaryTreeRangeCON ss
    :output: show
    
+
+Binary Search Tree Small Count Exercise
+---------------------------------------
+
 .. odsascript:: AV/BTRecurTutor/IneffBinaryTreeRangeCON.js

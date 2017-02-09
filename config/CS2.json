@@ -459,6 +459,7 @@
       "RecurTutor/CodeCompletionEx": {
         "long_name": "Code Completion Exercises",
         "sections": {
+          "Introduction": {},
           "Recursion Programming Exercise: Largest": {
             "learning_tool": "code-workout",
             "resource_type": "external_assignment",

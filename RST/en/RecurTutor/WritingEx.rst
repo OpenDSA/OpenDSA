@@ -11,17 +11,17 @@
 Writing Practice Exercises
 ==========================
 
-Programming Exercise: Cannonballs
----------------------------------
+Recursion Programming Exercise: Cannonballs
+-------------------------------------------
 
 
-Programming Exercise: Palindrome
---------------------------------
+Recursion Programming Exercise: Check Palindrome
+------------------------------------------------
 
 
-Programming Exercise: Reverse String
-------------------------------------
+Recursion Programming Exercise: Subset Sum
+------------------------------------------
 
 
-Programming Exercise: Pascal's Triangle
----------------------------------------
+Recursion Programming Exercise: Pascal Triangle
+-----------------------------------------------

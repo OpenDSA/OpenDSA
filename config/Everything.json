@@ -1126,6 +1126,7 @@
       "RecurTutor/CodeCompletionEx": {
         "long_name": "Code Completion Exercises",
         "sections": {
+          "Introduction": {},
           "Recursion Programming Exercise: Largest": {
             "learning_tool": "code-workout",
             "resource_type": "external_assignment",
@@ -1722,7 +1723,6 @@
       "BTRecurTutor/MultipleBinaryTrees": {
         "long_name": "Multiple Binary Trees",
         "sections": {
-          "Practice Exercises": {},
           "Mirror Image Binary Trees Exercise": {
             "learning_tool": "code-workout",
             "resource_type": "external_assignment",
@@ -4649,18 +4649,67 @@
         "sections": {}
       }
     },
+    "Senior Algorithms Course": {
+      "SeniorAlgAnal/AAIntro": {
+        "long_name": "Data and Algorithm Analysis",
+        "sections": {}
+      },
+      "SeniorAlgAnal/ProblemSolving": {
+        "long_name": "An Introduction to Problem Solving",
+        "sections": {}
+      },
+      "SeniorAlgAnal/AAOverview": {
+        "long_name": "Semester Overview",
+        "sections": {}
+      },
+      "SeniorAlgAnal/TOH": {
+        "long_name": "Introduction to Analyzing a Problem",
+        "sections": {}
+      },
+      "SeniorAlgAnal/BoundsReview": {
+        "long_name": "Problem Bounds",
+        "sections": {}
+      },
+      "Development/GrowthRate": {
+        "long_name": "Growth Rates Review",
+        "sections": {}
+      },
+      "SeniorAlgAnal/AdvSumm": {
+        "long_name": "Summation Techniques",
+        "sections": {}
+      },
+      "SeniorAlgAnal/Recurrence": {
+        "long_name": "Solving Recurrence Relations",
+        "sections": {
+          "Solving Recurrence Relations": {
+            "DivideAndConquerRecurrencesCON": {
+              "long_name": "Divide-and-Conquer Expansion Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      }
+    },
     "Searching": {
-      "Development/SearchIntro": {
+      "Searching/SearchIntro": {
         "long_name": "Search Chapter Introduction",
         "sections": {}
       },
-      "Development/UnsortedSearch": {
-        "long_name": "Analyzing Search in Unsorted Arrays",
-        "sections": {}
+      "Searching/UnsortedSearch": {
+        "long_name": "Analyzing Search in Unsorted Lists",
+        "sections": {
+          "Analysis": {},
+          "Lower Bounds Proofs": {}
+        }
       },
-      "Development/SortedSearch": {
+      "Searching/SortedSearch": {
         "long_name": "Search in sorted Arrays",
-        "sections": {}
+        "sections": {
+          "Analysis": {},
+          "Lower Bounds Proof": {}
+        }
       },
       "Development/SelfOrg": {
         "long_name": "Self Organizing Lists",
@@ -4782,23 +4831,6 @@
       }
     },
     "Advanced Analysis": {
-      "Development/AdvSumm": {
-        "long_name": "Summation Techniques",
-        "sections": {}
-      },
-      "Development/Recurrence": {
-        "long_name": "Solving Recurrence Relations",
-        "sections": {
-          "Solving Recurrence Relations": {
-            "DivideAndConquerRecurrencesCON": {
-              "long_name": "Divide-and-Conquer Expansion Slideshow",
-              "required": true,
-              "points": 0.0,
-              "threshold": 1.0
-            }
-          }
-        }
-      },
       "Development/AmortAnal": {
         "long_name": "Amortized Analysis",
         "sections": {}
@@ -4927,14 +4959,6 @@
       }
     },
     "Lower Bounds": {
-      "Bounds/BoundLower": {
-        "long_name": "Introduction to Lower Bounds",
-        "sections": {}
-      },
-      "Bounds/BoundSearch": {
-        "long_name": "Lower Bounds on Search",
-        "sections": {}
-      },
       "Bounds/BoundMax": {
         "long_name": "Lower Bounds on Search",
         "sections": {}

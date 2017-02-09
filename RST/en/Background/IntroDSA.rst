@@ -182,7 +182,8 @@ implemented using a simpler design.
 When selecting a data structure to solve a problem, you should follow
 these steps.
 
-#. Analyze your problem to determine the :term:`basic operations` that
+#. Analyze your problem to determine the
+   :term:`basic operations <basic operation>` that
    must be supported. 
    Examples of basic operations include inserting a data
    item into the data structure, deleting a data item from the

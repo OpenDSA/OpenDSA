@@ -10,8 +10,8 @@
 Code Completion Practice Exercises
 ==================================
 
-Programming Exercise: Largest
------------------------------
+Introduction
+------------
 
 The most important step to learning recursion is doing a lot of
 practice.
@@ -19,29 +19,33 @@ The rest of this tutorial will take you through the process with a
 series of practice exercises that will lead you to master recursion.
 
 
-Programming Exercise: Multiply
-------------------------------
+Recursion Programming Exercise: Largest
+---------------------------------------
 
 
-Programming Exercise: GCD
--------------------------
+Recursion Programming Exercise: Multiply
+----------------------------------------
 
 
-Programming Exercise: Logs
---------------------------
+Recursion Programming Exercise: GCD
+-----------------------------------
 
 
-Programming Exercise: Cummulative Sum
--------------------------------------
+Recursion Programming Exercise: log
+-----------------------------------
 
 
-Programming Exercise: Array Sum
--------------------------------
+Recursion Programming Exercise: Cummulative Sum
+-----------------------------------------------
 
 
-Programming Exercise: Digits Sum
---------------------------------
+Recursion Programming Exercise: Add odd positions
+-------------------------------------------------
 
 
-Programming Exercise: Characters
---------------------------------
+Recursion Programming Exercise: Sum Of the Digits
+-------------------------------------------------
+
+
+Recursion Programming Exercise: Count Characters
+------------------------------------------------

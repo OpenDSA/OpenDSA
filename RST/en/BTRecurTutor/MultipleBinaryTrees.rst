@@ -12,5 +12,13 @@
 Multiple Binary Trees
 =====================
 
-Practice Exercises
-------------------
+Mirror Image Binary Trees Exercise
+----------------------------------
+
+
+Same Binary Tree Exercise
+-------------------------
+
+
+Structurally Identical Binary Trees Exercise
+--------------------------------------------

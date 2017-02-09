@@ -49,7 +49,7 @@
         "long_name": "Problem Bounds",
         "sections": {}
       },
-      "SeniorAlgAnal/GrowthRate": {
+      "Development/GrowthRate": {
         "long_name": "Growth Rates Review",
         "sections": {}
       },
@@ -72,7 +72,7 @@
           }
         }
       },
-      "Development/AdvSumm": {
+      "SeniorAlgAnal/AdvSumm": {
         "long_name": "Summation Techniques",
         "sections": {}
       },
@@ -95,7 +95,7 @@
           }
         }
       },
-      "Development/Recurrence": {
+      "SeniorAlgAnal/Recurrence": {
         "long_name": "Solving Recurrence Relations",
         "sections": {
           "Solving Recurrence Relations": {
@@ -124,22 +124,22 @@
       }
     },
     "Searching": {
-      "Development/SearchIntro": {
+      "Searching/SearchIntro": {
         "long_name": "Search Chapter Introduction",
         "sections": {}
       },
-      "Development/UnsortedSearch": {
+      "Searching/UnsortedSearch": {
         "long_name": "Analyzing Search in Unsorted Lists",
         "sections": {
           "Analysis": {},
           "Lower Bounds Proofs": {}
         }
       },
-      "Development/SortedSearch": {
+      "Searching/SortedSearch": {
         "long_name": "Search in sorted Arrays",
         "sections": {
           "Analysis": {},
-          "Lower Bounds Proofs": {}
+          "Lower Bounds Proof": {}
         }
       }
     },

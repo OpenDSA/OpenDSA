@@ -1790,7 +1790,7 @@ Glossary
 
    Heapsort
       A sorting algorithm that costs :math:`\Theta(n \log n)` time in
-      the :term`best <best case>, :term:`average <average case>,
+      the :term`best <best case>`, :term:`average <average case>`,
       and :term:`worst <worst case>` cases.
       It tends to be slower than :term:`Mergesort` and
       :term:`Quicksort`.
