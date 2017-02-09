@@ -97,8 +97,21 @@ $(document).ready(function() {
   //Slide 7
   av.umsg(interpret("sc7"));
   last.removeClass("subProblemNode");
-  labelSet.push(av.label("|--------------------------------------------------------- $\\displaystyle\\sum_{i=1}^{n}i$ ---------------------------------------------------------|",
-                         {top: topAlign + 1.5 * nodeHeight, left: leftAlign + 0.5 * nodeWidth}));
+  //labelSet.push(av.label("|--------------------------------------------------------- $\\displaystyle\\sum_{i=1}^{n}i$ ---------------------------------------------------------|",
+                         //{top: topAlign + 1.5 * nodeHeight, left: leftAlign + 0.5 * nodeWidth}));
+  var labelLine1 = av.g.line (leftAlign + nodeWidth - 5,
+                           topAlign + nodeHeight * 2,
+                           leftAlign + 3 * (nodeGap + nodeWidth),
+                           topAlign + nodeHeight * 2);
+  var labelLine2 = av.g.line (leftAlign + 3.35 * (nodeGap + nodeWidth),
+                           topAlign + nodeHeight * 2,
+                           leftAlign + 6.3 * (nodeGap + nodeWidth),
+                           topAlign + nodeHeight * 2);
+  labelLine1.addClass("dashed");
+  labelLine2.addClass("dashed");
+
+  var labelText = av.label ("$\\displaystyle\\sum_{i=1}^{n}i$", 
+                  {top: topAlign + nodeHeight * 1.15, left: leftAlign + 3 * (nodeGap + nodeWidth)});
   av.step();
 
   //Slide 8
