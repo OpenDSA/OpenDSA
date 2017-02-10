@@ -15,14 +15,16 @@ Multiple Binary Trees
 Mirror Image Binary Trees Exercise
 ----------------------------------
 
-.. avembed:: cw
+.. extrtoolembed:: https://codeworkout.cs.vt.edu/gym/workouts cw
+
 
 Same Binary Tree Exercise
 -------------------------
 
-.. avembed:: cw
+.. extrtoolembed:: https://codeworkout.cs.vt.edu/gym/workouts cw
+
 
 Structurally Identical Binary Trees Exercise
 --------------------------------------------
 
-.. avembed:: cw
+.. extrtoolembed:: https://codeworkout.cs.vt.edu/gym/workouts cw

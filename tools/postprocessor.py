@@ -228,7 +228,6 @@ def break_up_sections(path, module_data, config):
         elif a_tag[tag_url].startswith('_images/'):
           a_tag[tag_url] = '/OpenDSA/Books/'+book_name+'/html/'+a_tag[tag_url]
 
-
   '''
   Skip any sections that don't have points
 

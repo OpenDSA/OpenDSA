@@ -346,7 +346,7 @@ def set_defaults(conf_data):
                                   }
                                 }
 
-def group_exercises(conf_data):
+def group_exercises(conf_data, no_lms):
     """group all exercises of one module in exercises attribute"""
     chapters = conf_data['chapters']
 
@@ -373,11 +373,11 @@ def group_exercises(conf_data):
                           if isinstance(section_obj[attr], dict):
                               exercise_obj = section_obj[attr]
                               conf_data['chapters'][chapter][module]['exercises'][attr] = exercise_obj
-                    if 'learning_tool' in section_obj.keys():
+                    if 'learning_tool' in section_obj.keys() and no_lms:
                         exercise_obj = {}
-                        exercise_obj['points'] = section_obj['points']
                         exercise_obj['long_name'] = section
                         exercise_obj['required'] = True
+                        exercise_obj['points'] = section_obj['points']
                         exercise_obj['threshold'] = 1.0
                         conf_data['chapters'][chapter][module]['exercises'][section] = exercise_obj
 
@@ -485,15 +485,15 @@ class ODSA_Config:
     def __setitem__(self, key, value):
         self.__dict__[key] = value
 
-    def __init__(self, config_file_path, output_directory=None):
+    def __init__(self, config_file_path, output_directory=None, no_lms=None):
+
         """Initializes an ODSA_Config object by reading in the JSON config file, setting default values, and validating the configuration"""
 
         conf_data = read_conf_file(config_file_path)
 
         # group exercises
-        group_exercises(conf_data)
-        print(json.dumps(conf_data))
-
+        group_exercises(conf_data, no_lms)
+        # print(json.dumps(conf_data))
 
         # Assign defaults to optional settings
         set_defaults(conf_data)

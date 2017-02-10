@@ -49,6 +49,8 @@ from ODSA_RST_Module import ODSA_RST_Module
 from ODSA_Config import ODSA_Config, parse_error
 from postprocessor import update_TOC, update_TermDef, make_lti
 from urlparse import urlparse
+from pprint import pprint
+
 # from canvas_sdk.methods import accounts, courses, external_tools, modules, assignments, assignment_groups
 # from canvas_sdk import RequestContext
 
@@ -440,7 +442,8 @@ def configure(config_file_path, options):
     print "Configuring OpenDSA, using " + config_file_path
 
     # Load and validate the configuration
-    config = ODSA_Config(config_file_path, options.output_directory)
+    config = ODSA_Config(config_file_path, options.output_directory, options.no_lms)
+    pprint (json.dumps(vars(config)))
 
     # Delete everything in the book's HTML directory, otherwise the
     # post-processor can sometimes append chapter numbers to the existing HTML
@@ -552,7 +555,7 @@ def configure(config_file_path, options):
         with codecs.open(config.book_dir + 'html/_static/GraphDefs.json', 'w', 'utf-8') as graph_defs_file:
             json.dump(cmap_map, graph_defs_file)
 
-    if not slides:
+    if not slides and not no_lms:
         make_lti(config, no_lms)
 
 # Code to execute when run as a standalone program

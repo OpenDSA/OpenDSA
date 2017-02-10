@@ -1,4 +1,4 @@
-# Copyright (C) 2012 Eric Fouh
+# Copyright (C) 2017 Hossameldin Shahin
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the MIT License as published by
@@ -12,7 +12,7 @@
 #
 #
 
-__author__ = 'efouh'
+__author__ = 'hshahin'
 
 from docutils import nodes
 from docutils.parsers.rst import directives
@@ -28,7 +28,7 @@ import urllib
 import json
 
 def setup(app):
-    app.add_directive('avembed',avembed)
+    app.add_directive('extrtoolembed',extrtoolembed)
 
 # Must use the exercise name as the ID of the container (required for
 # client-side framework processing and as an anchor for hyperlinking
@@ -158,7 +158,7 @@ def showhide(argument):
   return directives.choice(argument, ('show', 'hide', 'none'))
 
 
-class avembed(Directive):
+class extrtoolembed(Directive):
   required_arguments = 2
   optional_arguments = 7
   final_argument_whitespace = True
@@ -262,17 +262,16 @@ class avembed(Directive):
     # if self.options['showhide'] != "none":
     #   self.options['content'] = BUTTON_HTML % (self.options)
 
-    # print(self.options)
     res = CONTAINER_HTML % (self.options)
 
-    # print(res)
+    print(res)
     return [nodes.raw('', res, format='html')]
 
 
 source = """\
 This is some text.
 
-.. avembed:: address type
+.. extrtoolembed:: address type
 
 This is some more text.
 """
@@ -280,7 +279,7 @@ This is some more text.
 if __name__ == '__main__':
   from docutils.core import publish_parts
 
-  directives.register_directive('avembed',avembed)
+  directives.register_directive('extrtoolembed',extrtoolembed)
 
   doc_parts = publish_parts(source,
           settings_overrides={'output_encoding': 'utf8',
