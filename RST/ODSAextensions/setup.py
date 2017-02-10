@@ -8,5 +8,5 @@ setup(name="OpenDSA eBook",
       author='efouh',
       author_email="efouh@cs.vt.edu",
       url='',
-      packages=['odsa','odsa.avembed', 'odsa.avmetadata'],
+      packages=['odsa','odsa.avembed', 'odsa.avmetadata', 'odsa.extrtoolembed'],
       )
