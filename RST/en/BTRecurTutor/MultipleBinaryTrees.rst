@@ -15,10 +15,14 @@ Multiple Binary Trees
 Mirror Image Binary Trees Exercise
 ----------------------------------
 
+.. avembed:: cw
 
 Same Binary Tree Exercise
 -------------------------
 
+.. avembed:: cw
 
 Structurally Identical Binary Trees Exercise
 --------------------------------------------
+
+.. avembed:: cw

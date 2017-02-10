@@ -373,7 +373,7 @@ def group_exercises(conf_data):
                           if isinstance(section_obj[attr], dict):
                               exercise_obj = section_obj[attr]
                               conf_data['chapters'][chapter][module]['exercises'][attr] = exercise_obj
-
+                        #  add exercises for external tools
 
 def get_translated_text(lang_):
     """ Loads appropriate text from language_msg.json file based on book language  """
