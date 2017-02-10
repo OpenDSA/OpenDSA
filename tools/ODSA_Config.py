@@ -373,7 +373,13 @@ def group_exercises(conf_data):
                           if isinstance(section_obj[attr], dict):
                               exercise_obj = section_obj[attr]
                               conf_data['chapters'][chapter][module]['exercises'][attr] = exercise_obj
-                        #  add exercises for external tools
+                    if 'learning_tool' in section_obj.keys():
+                        exercise_obj = {}
+                        exercise_obj['points'] = section_obj['points']
+                        exercise_obj['long_name'] = section
+                        exercise_obj['required'] = True
+                        exercise_obj['threshold'] = 1.0
+                        conf_data['chapters'][chapter][module]['exercises'][section] = exercise_obj
 
 def get_translated_text(lang_):
     """ Loads appropriate text from language_msg.json file based on book language  """
@@ -486,6 +492,8 @@ class ODSA_Config:
 
         # group exercises
         group_exercises(conf_data)
+        print(json.dumps(conf_data))
+
 
         # Assign defaults to optional settings
         set_defaults(conf_data)
