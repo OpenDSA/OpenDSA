@@ -371,7 +371,7 @@ def group_exercises(conf_data, no_lms):
                           if isinstance(section_obj[attr], dict):
                               exercise_obj = section_obj[attr]
                               conf_data['chapters'][chapter][module]['exercises'][attr] = exercise_obj
-                    if 'learning_tool' in section_obj.keys() and no_lms:
+                    if 'learning_tool' in section_obj.keys():
                         exercise_obj = {}
                         exercise_obj['long_name'] = section
                         exercise_obj['learning_tool'] = section_obj['learning_tool']
