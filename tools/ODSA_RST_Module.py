@@ -326,13 +326,13 @@ class ODSA_RST_Module:
         dir_type = get_directive_type(line)
 
 
-        #Code to change the ..slide directive to a header when the -s option 
+        #Code to change the ..slide directive to a header when the -s option
         # is not added
         if (os.environ['SLIDES'] == 'no'):
           #Remove the slideConf Directive
           if dir_type == 'slideconf' or line.startswith(':autoslides:'):
             mod_data[i] = ''
-        
+
           #Change the slide directive
           if dir_type == 'slide':
             line_split = line.split('::')
@@ -464,6 +464,51 @@ class ODSA_RST_Module:
               # If a warning if the exercise type doesn't match something we expect
               print_err("%sWARNING: Unsupported type '%s' specified for %s, line %d" % (console_msg_prefix, av_type, av_name, i + 1))
         elif line.startswith('.. avembed::'):
+          # Parse the arguments from the directive
+          args = parse_directive_args(mod_data[i], i, 2, console_msg_prefix)
+
+          if args:
+            (av_name, av_type) = args
+            av_name = os.path.splitext(os.path.basename(av_name))[0]
+
+            # If the config file states the exercise should be removed, remove it
+            if av_name in exercises and 'remove' in exercises[av_name] and exercises[av_name]['remove']:
+              print '%sRemoving: %s' % (console_msg_prefix, av_name)
+
+              # Config file states exercise should be removed, remove it from the RST file
+              while (i < len(mod_data) and mod_data[i].rstrip() != ''):
+                mod_data[i] = ''
+                i += 1
+            else:
+              # Append module name to embedded exercise
+              mod_data[i] += ' '*start_space + '   :module: %s\n' % mod_name
+
+              if av_name not in exercises:
+                # Add the name to a list of missing exercises
+                missing_exercises.append(av_name)
+              else:
+                # Add the necessary information from the configuration file
+                exer_conf = exercises[av_name]
+
+                # List of valid options for avembed directive
+                options = ['long_name', 'points', 'required', 'showhide', 'threshold', 'external_url']
+
+                rst_options = [' '*start_space + '   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
+
+                # JSAV grading options are not applicable to Khan Academy exercises or slideshows and will be ignored
+                #if av_type not in ['ka', 'ss']:
+                # Merge exercise-specific settings with the global settings (if applicable) so that the specific settings override the global ones
+                if 'exer_options' in exer_conf:
+                  xops = dict(config.glob_exer_options.items() + exer_conf['exer_options'].items())
+                else:
+                  xops = config.glob_exer_options
+
+                # Convert python booleans to JavaScript booleans, URL-encode the string and append it to the RST options
+                xop_str = '&amp;'.join(['%s=%s' % (option, value) if str(value) not in ['True', 'False'] else '%s=%s' % (option, str(value).lower()) for option, value in xops.iteritems()])
+                rst_options.append(' '*start_space +'   :exer_opts: %s\n' % xop_str)
+
+                mod_data[i] += ''.join(rst_options)
+        elif line.startswith('.. extrtoolembed::'):
           # Parse the arguments from the directive
           args = parse_directive_args(mod_data[i], i, 2, console_msg_prefix)
 

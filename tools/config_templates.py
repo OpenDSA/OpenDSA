@@ -132,6 +132,7 @@ on_slides = os.environ.get('SLIDES', None) == "yes"
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 
 sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/avembed'))
+sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/extrtoolembed'))
 sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/avmetadata'))
 sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/codeinclude'))
 sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/numref'))
@@ -146,7 +147,7 @@ sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/odsatable')
 sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/chapref'))
 sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/odsatoctree'))
 sys.path.append(os.path.abspath('%(odsa_dir)sRST/ODSAextensions/odsa/showhidecontent'))
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'avembed', 'avmetadata', 'codeinclude', 'numref', 'chapnum', 'odsalink', 'odsascript', 'numfig', 'inlineav', 'html5', 'odsafig', 'odsatable', 'chapref', 'odsatoctree','showhidecontent']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'avembed', 'avmetadata', 'extrtoolembed', 'codeinclude', 'numref', 'chapnum', 'odsalink', 'odsascript', 'numfig', 'inlineav', 'html5', 'odsafig', 'odsatable', 'chapref', 'odsatoctree','showhidecontent']
 
 slides_lib = '%(slides_lib)s'
 
@@ -318,10 +319,10 @@ html_context = {"script_files": [
                 "odsa_root_path": "%(eb2root)s",
                 %(text_translated)s}
 
-if on_slides: 
-   html_context["css_files"].append('%(eb2root)slib/ODSAcoursenotes.css');   
-   html_context["odsa_scripts"].append('%(eb2root)slib/ODSAcoursenotes.js');   
-				
+if on_slides:
+   html_context["css_files"].append('%(eb2root)slib/ODSAcoursenotes.css');
+   html_context["odsa_scripts"].append('%(eb2root)slib/ODSAcoursenotes.js');
+
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
