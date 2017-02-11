@@ -38,8 +38,6 @@ listed_modules = []
 listed_chapters = []
 
 # Prints the given string to standard error
-
-
 def print_err(err_msg):
     sys.stderr.write('%s\n' % err_msg)
 
@@ -376,9 +374,7 @@ def group_exercises(conf_data, no_lms):
                     if 'learning_tool' in section_obj.keys() and no_lms:
                         exercise_obj = {}
                         exercise_obj['long_name'] = section
-                        exercise_obj['required'] = True
-                        exercise_obj['points'] = section_obj['points']
-                        exercise_obj['threshold'] = 1.0
+                        exercise_obj['learning_tool'] = section_obj['learning_tool']
                         conf_data['chapters'][chapter][module]['exercises'][section] = exercise_obj
 
 def get_translated_text(lang_):

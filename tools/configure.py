@@ -49,10 +49,7 @@ from ODSA_RST_Module import ODSA_RST_Module
 from ODSA_Config import ODSA_Config, parse_error
 from postprocessor import update_TOC, update_TermDef, make_lti
 from urlparse import urlparse
-from pprint import pprint
 
-# from canvas_sdk.methods import accounts, courses, external_tools, modules, assignments, assignment_groups
-# from canvas_sdk import RequestContext
 
 requests.packages.urllib3.disable_warnings()
 
@@ -443,7 +440,6 @@ def configure(config_file_path, options):
 
     # Load and validate the configuration
     config = ODSA_Config(config_file_path, options.output_directory, options.no_lms)
-    pprint (json.dumps(vars(config)))
 
     # Delete everything in the book's HTML directory, otherwise the
     # post-processor can sometimes append chapter numbers to the existing HTML

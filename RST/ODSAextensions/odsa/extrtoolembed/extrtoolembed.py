@@ -19,13 +19,16 @@ from docutils.parsers.rst import directives
 from docutils.parsers.rst import Directive
 import random
 import os, sys
-import re
-sys.path.append(os.path.abspath('./source'))
-import conf
-import xml.etree.ElementTree as ET
-from xml.dom.minidom import parse, parseString # Can be removed when embedlocal is gone
 import urllib
-import json
+
+# dictionary of all avalibale external learning tools
+extrenal_tools_urls = {
+  "code-workout": {
+          "url": "https://codeworkout.cs.vt.edu/gym/workouts",
+          "height": 650,
+          "width": 950
+    }
+}
 
 def setup(app):
     app.add_directive('extrtoolembed',extrtoolembed)
@@ -40,14 +43,9 @@ CONTAINER_HTML= '''\
     class="embedContainer"
     data-exer-name="%(exer_name)s"
     data-long-name="%(long_name)s"
-    data-frame-src="%(av_address)s"
+    data-frame-src="%(tool_address)s"
     data-frame-width="%(width)s"
     data-frame-height="%(height)s"
-    data-external="%(external)s"
-    data-points="%(points)s"
-    data-required="%(required)s"
-    data-showhide="%(showhide)s"
-    data-threshold="%(threshold)s"
     data-type="%(type)s">
   %(content)s
   <div class="center">
@@ -56,215 +54,40 @@ CONTAINER_HTML= '''\
 </div>
 '''
 
-BUTTON_HTML = '''\
-<input type="button"
-  id="%(exer_name)s_showhide_btn"
-  class="showHideLink"
-  data-target="%(exer_name)s_iframe"
-  value="%(show_hide_text)s %(long_name)s"/>
-<span id="%(exer_name)s_shb_error_msg" class="shb_msg">
-  <img src="_static/Images/warning.png" class="shb_warning_icon" />
-  &nbsp;Server Error&nbsp;<a class="resubmit_link" href="#">Resubmit</a>
-</span>
-<span id="%(exer_name)s_shb_saving_msg" class="shb_msg">Saving...</span>
-<img id="%(exer_name)s_spinner" class="loading-spinner" src="_static/Images/spinner.gif" />
-'''
-
-
-def getDimensions(exer_path):
-  """Read the specified KA exercise HTML file and extract the height and width from the body's data attributes"""
-  # Originally used xml.etree.ElementTree to parse the entire file, but
-  # JavaScript conditionals interfered with the parsing, so I reverted
-  # to reading the file line-by-line and just looking for and parsing
-  # the body tag
-  if '?' in exer_path:
-    exer_path = exer_path[:exer_path.index('?')]
-
-  with open(exer_path, 'r') as exer_file:
-    lines = exer_file.readlines()
-
-  # Loop through all the lines in the file until it find the body tag
-  for line in lines:
-    if line.strip().startswith('<body'):
-      try:
-        body = ET.fromstring(line + '</body>')
-        attribs = body.attrib
-      except Exception, err:
-        return {'err': err}
-
-      if 'data-height' not in attribs or 'data-width' not in attribs:
-        return {'err': 'data-height or data-width not found'}
-
-      return {'height': attribs['data-height'], 'width': attribs['data-width']}
-
-  return {'err': 'No body tag detected'}
-
 # Prints the given string to standard error
 def print_err(err_msg):
   sys.stderr.write('%s\n' % err_msg)
 
-# Loads translation file
-def loadTable():
-  try:
-    table=open(conf.translation_file)
-    data = json.load(table)
-    table.close()
-    if conf.language in data:
-      return dict(data[conf.language]['jinja'].items() + data[conf.language]['js'].items())
-    else:
-      return dict(data['en']['jinja'].items() + data['en']['js'].items())
-  except IOError:
-    print 'ERROR: No table.json file.'
-
-
-def embedlocal(av_path):
-  embed=[]
-  av_fullname = os.path.basename(av_path)
-  av_name = av_fullname.partition('.')[0]
-
-  xmlfile = conf.av_dir + os.path.dirname(av_path) + '/xml/' + av_name + '.xml'
-
-  avwidth = 0
-  avheight = 0
-  try:
-    dom = parse(xmlfile)
-    #node = dom.documentElement
-    widths = dom.getElementsByTagName("width")
-    for width in widths:
-      nodes = width.childNodes
-      for node in nodes:
-        if node.nodeType == node.TEXT_NODE:
-          avwidth=node.data
-
-    heights = dom.getElementsByTagName("height")
-    for height in heights:
-      nodes = height.childNodes
-      for node in nodes:
-        if node.nodeType == node.TEXT_NODE:
-          avheight=node.data
-    embed.append(av_name)
-    embed.append(os.path.relpath(conf.av_dir,conf.ebook_path) + '/' + av_path)
-    embed.append(avwidth)
-    embed.append(avheight)
-    return embed
-
-  except IOError:
-    print 'ERROR: No description file when embedding: ' + xmlfile
-    sys.exit()
-
-
-def showhide(argument):
-  """Conversion function for the "showhide" option."""
-  return directives.choice(argument, ('show', 'hide', 'none'))
-
-
 class extrtoolembed(Directive):
-  required_arguments = 2
-  optional_arguments = 7
+  required_arguments = 0
+  optional_arguments = 3
   final_argument_whitespace = True
   has_content = True
   option_spec = {
-                 'exer_opts': directives.unchanged,
                  'long_name': directives.unchanged,
                  'module': directives.unchanged,
-                 'points': directives.unchanged,
-                 'required': directives.unchanged,
-                 'showhide':showhide,
-                 'threshold': directives.unchanged,
-                 'external_url': directives.unchanged,
+                 'learning_tool': directives.unchanged
                  }
 
   def run(self):
-    """ Restructured text extension for inserting embedded AVs with show/hide button """
-    av_path = self.arguments[0]
-    self.options['type'] = self.arguments[1]
+    """ Restructured text extension for inserting embedded external learning tools """
+    self.options['type'] = 'external_tool'
 
     url_params = {}
-    url_params['localMode'] = str(conf.local_mode).lower()
-    url_params['module'] = self.options['module']
-    url_params['selfLoggingEnabled'] = 'false'
+    url_params['resourse_name'] = self.options['long_name']
 
     self.options['content'] = ''
-    self.options['exer_name'] = os.path.basename(av_path).partition('.')[0]
+    self.options['exer_name'] = self.options['long_name'].replace(" ", "_")
 
-
-    # Use reasonable defaults
-    self.options['width'] = 950
-    self.options['height'] = 650
-
-    # Set av_address and dimensions (depends on whether it is an AV or a KA exercise)
-    if self.options['type'] == 'ka':
-      self.options['av_address'] = os.path.relpath(conf.exercises_dir, conf.ebook_path)
-      dimensions = getDimensions(conf.exercises_dir + av_path)
-
-      if 'height' in dimensions and 'width' in dimensions:
-        self.options['height'] = dimensions['height']
-        self.options['width'] = dimensions['width']
-      else:
-        print_err('WARNING: Unable to parse dimensions of %s' % av_path)
-
-        if 'err' in dimensions:
-          print_err('  %s' % str(dimensions['err']))
-
-        # Use XML files as a backup until data attributes have been implemented for all exercises
-        # TODO: Remove embedlocal and replace this section after XML files have been removed
-        embed = embedlocal(av_path)
-        self.options['width'] = embed[2]
-        self.options['height'] = embed[3]
-    else:
-      self.options['av_address'] = os.path.relpath(conf.av_dir, conf.ebook_path).replace('\\', '/')
-
-    # Append AV path and URL parameters to base av_address
-    self.options['av_address'] += '/%s' % av_path
-
-    if '?' in self.options['av_address']:
-      self.options['av_address'] += '&amp;'
-    else:
-      self.options['av_address'] += '?'
-
-    self.options['av_address'] += urllib.urlencode(url_params).replace('&', '&amp;')
-
-    # Load translation
-    langDict = loadTable()
-
-    # Add the JSAV exercise options to the AV address
-    if 'exer_opts' in self.options and self.options['exer_opts'] != '':
-      self.options['av_address'] += '&amp;' + self.options['exer_opts']
-
-    if 'required' not in self.options:
-      self.options['required'] = False
-
-    if 'points' not in self.options:
-      self.options['points'] = 0
-
-    if 'threshold' not in self.options:
-      self.options['threshold'] = 1.0
-
-    if 'long_name' not in self.options:
-      self.options['long_name'] = self.options['exer_name']
-
-    if 'showhide' not in self.options:
-      self.options['showhide'] = 'show'
-
-    if self.options['showhide'] == "show":
-      self.options['show_hide_text'] = langDict["hide"]
-    elif self.options['showhide'] == "hide":
-      self.options['show_hide_text'] = langDict["show"]
-
-    if 'external_url' not in self.options:
-      # Exercise does not use external source
-      self.options['external'] = 'false'
-    else:
-      # Exercise uses external source
-      self.options['external'] = 'true'
-      self.options['av_address'] = self.options['external_url']
-
-    # if self.options['showhide'] != "none":
-    #   self.options['content'] = BUTTON_HTML % (self.options)
+    external_tool = extrenal_tools_urls[self.options['learning_tool']]
+    self.options['tool_address'] = external_tool['url']
+    self.options['width'] = external_tool['width']
+    self.options['height'] = external_tool['height']
+    self.options['tool_address'] += '?'
+    self.options['tool_address'] += urllib.urlencode(url_params).replace('&', '&amp;')
 
     res = CONTAINER_HTML % (self.options)
 
-    print(res)
     return [nodes.raw('', res, format='html')]
 
 

@@ -116,7 +116,6 @@ def loadTable():
   except IOError:
     print 'ERROR: No table.json file.'
 
-
 def embedlocal(av_path):
   embed=[]
   av_fullname = os.path.basename(av_path)
@@ -186,7 +185,6 @@ class avembed(Directive):
 
     self.options['content'] = ''
     self.options['exer_name'] = os.path.basename(av_path).partition('.')[0]
-
 
     # Use reasonable defaults
     self.options['width'] = 950
@@ -262,10 +260,8 @@ class avembed(Directive):
     # if self.options['showhide'] != "none":
     #   self.options['content'] = BUTTON_HTML % (self.options)
 
-    # print(self.options)
     res = CONTAINER_HTML % (self.options)
 
-    # print(res)
     return [nodes.raw('', res, format='html')]
 
 

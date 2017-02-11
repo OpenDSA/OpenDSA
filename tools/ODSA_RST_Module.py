@@ -90,7 +90,10 @@ def parse_directive_args(line, line_num, expected_num_args = -1, console_msg_pre
     print_err("%sERROR: Invalid Sphinx directive declaration" % console_msg_prefix)
 
   # Isolates the arguments to the directive
-  args = line[line.find(':: ') + 3:].split(' ')
+  if "'" in line:
+    args = [line[line.find(':: ') + 3:]]
+  else:
+    args = line[line.find(':: ') + 3:].split(' ')
 
   # Ensure the expected number of arguments was parsed (skip the check if -1)
   if expected_num_args > -1 and len(args) != expected_num_args:
@@ -510,49 +513,26 @@ class ODSA_RST_Module:
                 mod_data[i] += ''.join(rst_options)
         elif line.startswith('.. extrtoolembed::'):
           # Parse the arguments from the directive
-          args = parse_directive_args(mod_data[i], i, 2, console_msg_prefix)
 
+          args = parse_directive_args(mod_data[i], i, 1, console_msg_prefix)
           if args:
-            (av_name, av_type) = args
-            av_name = os.path.splitext(os.path.basename(av_name))[0]
+            external_tool_name = args[0].replace("'", "")
 
-            # If the config file states the exercise should be removed, remove it
-            if av_name in exercises and 'remove' in exercises[av_name] and exercises[av_name]['remove']:
-              print '%sRemoving: %s' % (console_msg_prefix, av_name)
+            # Append module name to embedded exercise
+            mod_data[i] += ' '*start_space + '   :module: %s\n' % mod_name
 
-              # Config file states exercise should be removed, remove it from the RST file
-              while (i < len(mod_data) and mod_data[i].rstrip() != ''):
-                mod_data[i] = ''
-                i += 1
+            if external_tool_name not in exercises:
+              # Add the name to a list of missing exercises
+              missing_exercises.append(external_tool_name)
             else:
-              # Append module name to embedded exercise
-              mod_data[i] += ' '*start_space + '   :module: %s\n' % mod_name
+              # Add the necessary information from the configuration file
+              exer_conf = exercises[external_tool_name]
+              # List of valid options for avembed directive
+              options = ['long_name', 'learning_tool']
 
-              if av_name not in exercises:
-                # Add the name to a list of missing exercises
-                missing_exercises.append(av_name)
-              else:
-                # Add the necessary information from the configuration file
-                exer_conf = exercises[av_name]
+              rst_options = [' '*start_space + '   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
 
-                # List of valid options for avembed directive
-                options = ['long_name', 'points', 'required', 'showhide', 'threshold', 'external_url']
-
-                rst_options = [' '*start_space + '   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
-
-                # JSAV grading options are not applicable to Khan Academy exercises or slideshows and will be ignored
-                #if av_type not in ['ka', 'ss']:
-                # Merge exercise-specific settings with the global settings (if applicable) so that the specific settings override the global ones
-                if 'exer_options' in exer_conf:
-                  xops = dict(config.glob_exer_options.items() + exer_conf['exer_options'].items())
-                else:
-                  xops = config.glob_exer_options
-
-                # Convert python booleans to JavaScript booleans, URL-encode the string and append it to the RST options
-                xop_str = '&amp;'.join(['%s=%s' % (option, value) if str(value) not in ['True', 'False'] else '%s=%s' % (option, str(value).lower()) for option, value in xops.iteritems()])
-                rst_options.append(' '*start_space +'   :exer_opts: %s\n' % xop_str)
-
-                mod_data[i] += ''.join(rst_options)
+              mod_data[i] += ''.join(rst_options)
         elif line.startswith('.. showhidecontent::'):
           # Parse the arguments from the directive
           args = parse_directive_args(mod_data[i], i, 1, console_msg_prefix)
