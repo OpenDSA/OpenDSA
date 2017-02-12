@@ -6,7 +6,7 @@
       "sc3": "If the numbers are simple enough, then you will do the task on your own.",
       "sc4": "Otherwise, you will simplify and delegate this task to a friend.",
       "sc5": "Your friend will do a smaller version of the problem by multiplying x-1 and y. When he returns the result back, you will add a y to that result to complete your task.",
-      "sc6": "When you delegate the task to your friend. You are not worried how he is going to do it. You are just waiting for the answer.",
+      "sc6": "When you delegate the task to your friend, you are not worried how he is going to do it. You are just waiting for the answer.",
       "sc7": "You will simply add y to the result and you will be done with your task!"
     }
   },
