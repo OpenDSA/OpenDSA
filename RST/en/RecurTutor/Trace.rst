@@ -100,7 +100,7 @@ the disks, the world will end.
    :output: show 
 
 The Towers of Hanoi puzzle begins with three poles and :math:`n`
-rings, where all rings start on the leftmost pole (labeled Pole 1).
+rings, where all rings start on the leftmost pole (labeled Pole A).
 The rings each have a different size, and are stacked in order of
 decreasing size with the largest ring at the bottom, as shown in
 part (a) of the figure.
