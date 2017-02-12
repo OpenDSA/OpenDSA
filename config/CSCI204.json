@@ -325,6 +325,12 @@
               "points": 0.0,
               "threshold": 1.0
             }
+          },
+          "List ADT Programming Exercise": {
+            "learning_tool": "code-workout",
+            "resource_type": "external_assignment",
+            "resource_name": "",
+            "points": 1.0
           }
         }
       },
@@ -1395,7 +1401,6 @@
       "BTRecurTutor/MultipleBinaryTrees": {
         "long_name": "Multiple Binary Trees",
         "sections": {
-          "Practice Exercises": {},
           "Mirror Image Binary Trees Exercise": {
             "learning_tool": "code-workout",
             "resource_type": "external_assignment",

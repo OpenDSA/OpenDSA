@@ -15,10 +15,16 @@ Harder Code Completion Practice Exercises
 Recursion Programming Exercise: Minimum of array
 ------------------------------------------------
 
+.. extrtoolembed:: 'Recursion Programming Exercise: Minimum of array'
+
 
 Recursion Programming Exercise: Is Reverse
 ------------------------------------------
 
+.. extrtoolembed:: 'Recursion Programming Exercise: Is Reverse'
+
 
 Recursion Programming Exercise: Decimal to Binary
 -------------------------------------------------
+
+.. extrtoolembed:: 'Recursion Programming Exercise: Decimal to Binary'

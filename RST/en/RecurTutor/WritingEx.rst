@@ -14,14 +14,22 @@ Writing Practice Exercises
 Recursion Programming Exercise: Cannonballs
 -------------------------------------------
 
+.. extrtoolembed:: 'Recursion Programming Exercise: Cannonballs'
+
 
 Recursion Programming Exercise: Check Palindrome
 ------------------------------------------------
+
+.. extrtoolembed:: 'Recursion Programming Exercise: Check Palindrome'
 
 
 Recursion Programming Exercise: Subset Sum
 ------------------------------------------
 
+.. extrtoolembed:: 'Recursion Programming Exercise: Subset Sum'
+
 
 Recursion Programming Exercise: Pascal Triangle
 -----------------------------------------------
+
+.. extrtoolembed:: 'Recursion Programming Exercise: Pascal Triangle'

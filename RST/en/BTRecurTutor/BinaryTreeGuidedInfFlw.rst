@@ -53,4 +53,6 @@ than just a single path, but not all of the nodes.
 Binary Search Tree Small Count Exercise
 ---------------------------------------
 
+.. extrtoolembed:: 'Binary Search Tree Small Count Exercise'
+
 .. odsascript:: AV/BTRecurTutor/IneffBinaryTreeRangeCON.js

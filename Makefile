@@ -131,6 +131,9 @@ testcmapPlain: min
 CS260: min
 	python $(CONFIG_SCRIPT) config/CS260.json --no-lms
 
+CS271-UWO: min
+	python $(CONFIG_SCRIPT) config/CS271-UWO.json --no-lms
+
 CSCI204: min
 	python $(CONFIG_SCRIPT) config/CSCI204.json --no-lms
 
@@ -157,6 +160,9 @@ PointersSushma: min
 
 CS3_exs: min
 	python $(CONFIG_SCRIPT) config/CS3_exs.json --no-lms
+
+JFLAP: min
+	python $(CONFIG_SCRIPT) config/JFLAP.json --no-lms
 
 nomin:
 	@cp JSAV/build/JSAV.js JSAV/build/JSAV-min.js

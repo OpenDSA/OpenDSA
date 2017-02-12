@@ -1,6 +1,6 @@
 {
   "title": "JFLAP",
-  "tag": "Java;CPP",
+  "desc": "JFLAP",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
@@ -35,64 +35,59 @@
     }
   },
   "lang": "en",
-  "module_origin": "http://billyu.me",
-  "exercise_server": "https://opendsa.cs.vt.edu/",
-  "logging_server": "https://opendsa.cs.vt.edu/",
-  "score_server": "https://opendsa.cs.vt.edu/",
   "build_JSAV": false,
-  "allow_anonymous_credit": true,
-  "suppress_todo": false,
-  "build_cmap": true,
-  "glob_exer_options": {
-    "JXOP-debug": "true"
-  },
+  "build_cmap": false,
+  "suppress_todo": true,
+  "assumes": "recursion",
+  "dispModComp": true,
+  "glob_exer_options": {},
   "chapters": {
     "Introduction": {
-			"JFLAP/Introduction": {
-				"long_name": "Introduction",
-				"exercises": {}
-			}
+      "JFLAP/Introduction": {
+        "long_name": "Introduction",
+        "sections": {}
+      }
     },
-		"Finite Automata": {
-			"JFLAP/FAEditor": {
-				"long_name": "Finite Automaton Editor",
-				"exercises": {}
-			},
-			"JFLAP/NPDAEditor": {
-				"long_name": "Non-deterministic Pushdown Automaton Editor",
-				"exercises": {}
-			},
-			"JFLAP/TMEditor": {
-				"long_name": "Turing Machine Editor",
-				"exercises": {}
-			}
+    "Finite Automata": {
+      "JFLAP/FAEditor": {
+        "long_name": "Finite Automaton Editor",
+        "sections": {}
+      },
+      "JFLAP/NPDAEditor": {
+        "long_name": "Non-deterministic Pushdown Automaton Editor",
+        "sections": {}
+      },
+      "JFLAP/TMEditor": {
+        "long_name": "Turing Machine Editor",
+        "sections": {}
+      }
 
-		},
-		"Grammar": {
-			"JFLAP/GrammarEditor": {
-				"long_name": "Grammar Editor",
-				"exercises": {}
-			}
-		},
-		"Regular Expression": {
-			"JFLAP/REtoFA": {
-				"long_name": "Regular Expression to Finite Automaton Converter",
-				"exercises": {}
-			}
-		},
-		"Exercises": {
-			"JFLAP/FATester": {
-				"long_name": "Create FA Exercise",
-				"exercises": {}
-			},
-			"JFLAP/FAFixer": {
-				"long_name": "Fix FA Exercise",
-				"exercises": {}
-			},
-			"JFLAP/ExerciseGenerator": {
-				"long_name": "Finite Automaton Exercise Generator",
-				"exercises": {}
-			}
-		}
+    },
+    "Grammar": {
+      "JFLAP/GrammarEditor": {
+        "long_name": "Grammar Editor",
+        "sections": {}
+      }
+    },
+    "Regular Expression": {
+      "JFLAP/REtoFA": {
+        "long_name": "Regular Expression to Finite Automaton Converter",
+        "sections": {}
+      }
+    },
+    "Sections": {
+      "JFLAP/FATester": {
+        "long_name": "Create FA Exercise",
+        "sections": {}
+      },
+      "JFLAP/FAFixer": {
+        "long_name": "Fix FA Exercise",
+        "sections": {}
+      },
+      "JFLAP/ExerciseGenerator": {
+        "long_name": "Finite Automaton Exercise Generator",
+        "sections": {}
+      }
+    }
   }
 }

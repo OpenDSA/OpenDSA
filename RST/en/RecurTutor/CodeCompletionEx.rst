@@ -22,30 +22,46 @@ series of practice exercises that will lead you to master recursion.
 Recursion Programming Exercise: Largest
 ---------------------------------------
 
+.. extrtoolembed:: 'Recursion Programming Exercise: Largest'
+
 
 Recursion Programming Exercise: Multiply
 ----------------------------------------
+
+.. extrtoolembed:: 'Recursion Programming Exercise: Multiply'
 
 
 Recursion Programming Exercise: GCD
 -----------------------------------
 
+.. extrtoolembed:: 'Recursion Programming Exercise: GCD'
+
 
 Recursion Programming Exercise: log
 -----------------------------------
+
+.. extrtoolembed:: 'Recursion Programming Exercise: log'
 
 
 Recursion Programming Exercise: Cummulative Sum
 -----------------------------------------------
 
+.. extrtoolembed:: 'Recursion Programming Exercise: Cummulative Sum'
+
 
 Recursion Programming Exercise: Add odd positions
 -------------------------------------------------
+
+.. extrtoolembed:: 'Recursion Programming Exercise: Add odd positions'
 
 
 Recursion Programming Exercise: Sum Of the Digits
 -------------------------------------------------
 
+.. extrtoolembed:: 'Recursion Programming Exercise: Sum Of the Digits'
+
 
 Recursion Programming Exercise: Count Characters
 ------------------------------------------------
+
+.. extrtoolembed:: 'Recursion Programming Exercise: Count Characters'

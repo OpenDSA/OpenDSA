@@ -59,6 +59,8 @@ each recursive call must adjust that value (by adding one).
 Binary Tree Set Depth Exercise
 ------------------------------
 
+.. extrtoolembed:: 'Binary Tree Set Depth Exercise'
+
 
 Collect-and-return
 ------------------
@@ -103,13 +105,19 @@ Another common mistake is to not return a value.
 Binary Tree Check Sum Exercise
 ------------------------------
 
+.. extrtoolembed:: 'Binary Tree Check Sum Exercise'
+
 
 Binary Tree Leaf Nodes Count Exercise
 -------------------------------------
 
+.. extrtoolembed:: 'Binary Tree Leaf Nodes Count Exercise'
+
 
 Binary Tree Sum Nodes Exercise
 ------------------------------
+
+.. extrtoolembed:: 'Binary Tree Sum Nodes Exercise'
 
 
 Combining Information Flows
@@ -130,6 +138,8 @@ Return True if and only if one of the children returns True.
 Binary Tree Check Value Exercise
 --------------------------------
 
+.. extrtoolembed:: 'Binary Tree Check Value Exercise'
+
 
 Combination Problems
 --------------------
@@ -142,12 +152,18 @@ Data passed back up the tree uses the collect-and-return paradigm.
 Binary Tree Height Exercise
 ---------------------------
 
+.. extrtoolembed:: 'Binary Tree Height Exercise'
+
 
 Binary Tree Get Difference Exercise
 -----------------------------------
 
+.. extrtoolembed:: 'Binary Tree Get Difference Exercise'
+
 
 Binary Tree Has Path Sum Exercise
 ---------------------------------
+
+.. extrtoolembed:: 'Binary Tree Has Path Sum Exercise'
 
 .. odsascript:: AV/Binary/BinaryTreeMistakesCON.js
