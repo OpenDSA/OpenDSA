@@ -74,7 +74,7 @@ class extrtoolembed(Directive):
     self.options['type'] = 'external_tool'
 
     url_params = {}
-    url_params['resourse_name'] = self.options['long_name']
+    url_params['resource_name'] = self.options['long_name']
 
     self.options['content'] = ''
     self.options['exer_name'] = self.options['long_name'].replace(" ", "_")
