@@ -138,8 +138,7 @@
       "Searching/SortedSearch": {
         "long_name": "Search in sorted Arrays",
         "sections": {
-          "Analysis": {},
-          "Lower Bounds Proof": {}
+          "Analysis": {}
         }
       },
       "SearchStruct/SkipList": {
