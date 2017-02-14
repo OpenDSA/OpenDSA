@@ -9,6 +9,8 @@
    :satisfies: Local memory
    :topic: Pointers
 
+   .. odsalink:: AV/PointersSushma/T1-T5CON.css
+
 Local Memory
 ============
 
@@ -128,6 +130,9 @@ the code and the state of memory at that time is shown in the drawing.
    :align: center
    :capalign: justify
    :figwidth: 100%
+
+
+.. inlineav:: T1-T5CON ss
 
 
 (optional extra...) The drawing shows the sequence of the locals being allocated and
@@ -270,3 +275,6 @@ function call process:
   registers and others through the stack, so the overall process is
   complex. However, the apparent the lifetime of the variables will
   always follow the "stack" model presented here.
+
+
+.. odsascript:: AV/PointersSushma/T1-T5CON.js

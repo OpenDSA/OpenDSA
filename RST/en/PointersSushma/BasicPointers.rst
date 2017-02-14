@@ -17,6 +17,7 @@
    .. odsalink:: AV/PointersSushma/empPtrxxx.css
    .. odsalink:: AV/PointersSushma/employeeEmpPtr2.css
    .. odsalink:: AV/PointersSushma/badPointerPow.css
+   .. odsalink:: AV/PointersSushma/shallowdeep.css
 
 Basic Pointers
 ==============
@@ -203,10 +204,13 @@ deep case, the smiley face is copied, and each function gets their own.
    :capalign: justify
    :figwidth: 100%
 
+.. inlineav:: shallowdeep dgm
+
 Here is an example of the difference between shallow and deep copying:
 
 .. codeinclude:: PointersBook/BasicPointers/shallowCopy
    :tag: shallow
+
 
 
 The next module will explain the above sharing technique in detail.
@@ -481,3 +485,4 @@ remember to assign your pointers to refer to pointees. Don't be surprised when y
 .. odsascript:: AV/PointersSushma/employeeEmpPtr2.js
 .. odsascript:: AV/PointersSushma/badPointerPow.js
 .. odsascript:: AV/PointersSushma/empPtrnull.js
+.. odsascript:: AV/PointersSushma/shallowdeep.js
