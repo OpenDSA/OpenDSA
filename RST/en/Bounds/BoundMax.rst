@@ -57,7 +57,7 @@ So let's try again.
 
 This proof is sound.
 However, it will be useful later to abstract this by introducing the
-concept of :ref:`posets <poset> <BoundSearch>`.
+concept of :term:`posets <poset>`.
 We can view the maximum-finding problem as starting with a poset where
 there are no known relationships, so every member of the collection is
 in its own separate DAG of one element.
