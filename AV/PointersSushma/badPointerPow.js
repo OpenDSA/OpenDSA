@@ -12,7 +12,7 @@ $(document).ready(function() {
 
   av.g.rect(xPosition, yPositionR1, length1, width);
   av.label("badPointer",  {top: yPositionR1, left: xPosition - 73});
-//creating the x's
+  //creating the x's
   av.g.line(xPosition + 10, yPositionR1 + 25, xPosition + 30, yPositionR1 + 3, {"stroke-width": 2});
   av.g.line(xPosition + 10, yPositionR1 + 3, xPosition + 30, yPositionR1 + 25, {"stroke-width": 2});
 
