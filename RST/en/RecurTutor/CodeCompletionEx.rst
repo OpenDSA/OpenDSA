@@ -43,7 +43,7 @@ Recursion Programming Exercise: log
 .. extrtoolembed:: 'Recursion Programming Exercise: log'
 
 
-Recursion Programming Exercise: Cummulative Sum
+Recursion Programming Exercise: Cumulative Sum
 -----------------------------------------------
 
 .. extrtoolembed:: 'Recursion Programming Exercise: Cumulative Sum'
