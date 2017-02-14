@@ -133,6 +133,7 @@ the code and the state of memory at that time is shown in the drawing.
 
 
 .. inlineav:: T1-T5CON ss
+   :output: show
 
 
 (optional extra...) The drawing shows the sequence of the locals being allocated and
