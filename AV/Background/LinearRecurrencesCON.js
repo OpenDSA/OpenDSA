@@ -99,14 +99,14 @@ $(document).ready(function() {
   av.umsg(interpret("sc7"));
   var labelLine1 = av.g.line (leftAlign + nodeWidth - 5,
                            topAlign + nodeHeight * 2,
-                           leftAlign + 3 * (nodeGap + nodeWidth),
-                           topAlign + nodeHeight * 2);
-  var labelLine2 = av.g.line (leftAlign + 3.4 * (nodeGap + nodeWidth),
+                           leftAlign + 2.8 * (nodeGap + nodeWidth),
+                           topAlign + nodeHeight * 2, {"stroke-width": 2, "arrow-start":"classic-wide-long"});
+  var labelLine2 = av.g.line (leftAlign + 3.55 * (nodeGap + nodeWidth),
                            topAlign + nodeHeight * 2,
                            leftAlign + 6.3 * (nodeGap + nodeWidth),
-                           topAlign + nodeHeight * 2);
-  labelLine1.addClass("dashed");
-  labelLine2.addClass("dashed");
+                           topAlign + nodeHeight * 2, {"stroke-width": 2,"arrow-end":"classic-wide-long"});
+  //labelLine1.addClass("dashed");
+  //labelLine2.addClass("dashed");
 
   var labelText = av.label ("$\\displaystyle\\sum_{i=1}^{n}1$", 
                   {top: topAlign + nodeHeight * 1.15, left: leftAlign + 3 * (nodeGap + nodeWidth)});
