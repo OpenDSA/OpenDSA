@@ -43,10 +43,10 @@ Recursion Programming Exercise: log
 .. extrtoolembed:: 'Recursion Programming Exercise: log'
 
 
-Recursion Programming Exercise: Cumulative Sum
+Recursion Programming Exercise: Cummulative Sum
 -----------------------------------------------
 
-.. extrtoolembed:: 'Recursion Programming Exercise: Cumulative Sum'
+.. extrtoolembed:: 'Recursion Programming Exercise: Cummulative Sum'
 
 
 Recursion Programming Exercise: Add odd positions
