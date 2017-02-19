@@ -2,7 +2,6 @@
 // Written by Sushma Mandava
 $(document).ready(function() {
   "use strict";
-
   var av_name = "LocalHeapintptr42";
   // Load the config object with interpreter and code created by odsaUtils.js
   var av;
