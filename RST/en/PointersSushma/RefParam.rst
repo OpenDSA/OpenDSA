@@ -9,6 +9,8 @@
    :satisfies: Reference parameters
    :topic: Pointers
 
+   .. odsalink:: AV/PointersSushma/T1-T3CON.css
+
 Reference Parameters
 ====================
 
@@ -25,7 +27,6 @@ Using a "return" at the end of the callee to copy a result back to the
 caller works for simple cases, but does not work well for all
 situations. In Java, all premitive data types like int, float, double, boolean , ...etc
 are passed only by value.
-
 :term:`Pass by reference` parameters solve all of these problems.
 For the following discussion, the term "value of interest" will be a
 value that the caller and callee wish to communicate between each
@@ -62,6 +63,10 @@ code and the state of memory is shown for each state...
    :align: center
    :capalign: justify
    :figwidth: 100%
+
+   
+.. inlineav:: T1-T3CON ss
+   :output: show
 
 Because that the worth variable is of type int. It is passed by value and any modifications to
 its value of interest in function B will not make any changes on the original value on netWorth.
@@ -181,3 +186,5 @@ to the caller.
 For pass by reference, there is only one copy of the value of interest, and copyies of that references to that
 one copy are passed. So if the value of interest is an array of int, a copy of its reference parameter will
 be passed to any function instead of copying the array.
+
+.. odsalink:: AV/PointersSushma/T1-T3CON.js

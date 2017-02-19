@@ -9,6 +9,13 @@
    :satisfies: Heap Memory
    :topic: Pointers
 
+   .. odsalink:: AV/PointersSushma/LocalHeapaloc.css
+   .. odsalink:: AV/PointersSushma/LocalHeapdealoc.css
+   .. odsalink:: AV/PointersSushma/LocalHeapintptr42.css
+   .. odsalink:: AV/PointersSushma/T1-T5CON.css
+
+
+
 Heap Memory
 ===========
 
@@ -119,6 +126,8 @@ the three allocation requests, memory might look like.
    :capalign: justify
    :figwidth: 100%
 
+.. inlineav:: LocalHeapaloc dgm
+
 Each allocation request reserves a contiguous area of the requested size in the heap and
 returns a pointer to that new block to the program. Since each block is always referred to
 by a pointer, the block always plays the role of a "pointee" (Section 1) and the program
@@ -152,6 +161,8 @@ the second of the three blocks.
    :align: center
    :capalign: justify
    :figwidth: 100%
+
+.. inlineav:: LocalHeapdealoc dgm
 
 After the deallocation, the pointer continues to point to the now deallocated block. The
 program must not access the deallocated pointee. This is why the pointer is drawn in gray
@@ -241,7 +252,11 @@ the lifetime of the heap block, and the drawing needs to reflect that difference
    :capalign: justify
    :figwidth: 100%
 
+.. inlineav:: T1-T5CON ss
+   :output: show
 
+.. inlineav:: LocalHeapintptr42 ss
+   :output: show
 
 Simple Heap Observations
 ------------------------
@@ -318,3 +333,8 @@ can be used to build linked structures such as linked lists and binary trees. Th
 disadvantage of heap memory is that  the program must make explicit allocation
 calls to manage the heap memory. The heap memory does not operate automatically
 and conveniently the way local memory does.
+
+.. odsascript:: AV/PointersSushma/LocalHeapaloc.js
+.. odsascript:: AV/PointersSushma/LocalHeapdealoc.js
+.. odsalink:: AV/PointersSushma/LocalHeapintptr42.js
+.. odsalink:: AV/PointersSushma/T1-T5CON.js
