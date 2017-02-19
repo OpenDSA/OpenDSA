@@ -9,10 +9,9 @@
    :satisfies: Heap Memory
    :topic: Pointers
 
-   .. odsalink:: AV/PointersSushma/LocalHeapaloc.css
-   .. odsalink:: AV/PointersSushma/LocalHeapdealoc.css
-   .. odsalink:: AV/PointersSushma/LocalHeapintptr42.css
-   .. odsalink:: AV/PointersSushma/T1-T5CON.css
+   .. odsascript:: AV/PointersSushma/LocalHeapaloc.css
+   .. odsascript:: AV/PointersSushma/LocalHeapdealoc.css
+   .. odsascript:: AV/PointersSushma/LocalHeapintptr42.css
 
 
 
@@ -252,9 +251,6 @@ the lifetime of the heap block, and the drawing needs to reflect that difference
    :capalign: justify
    :figwidth: 100%
 
-.. inlineav:: T1-T5CON ss
-   :output: show
-
 .. inlineav:: LocalHeapintptr42 ss
    :output: show
 
@@ -336,5 +332,4 @@ and conveniently the way local memory does.
 
 .. odsascript:: AV/PointersSushma/LocalHeapaloc.js
 .. odsascript:: AV/PointersSushma/LocalHeapdealoc.js
-.. odsalink:: AV/PointersSushma/LocalHeapintptr42.js
-.. odsalink:: AV/PointersSushma/T1-T5CON.js
+.. odsascript:: AV/PointersSushma/LocalHeapintptr42.js

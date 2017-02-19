@@ -64,9 +64,11 @@ code and the state of memory is shown for each state...
    :capalign: justify
    :figwidth: 100%
 
-   
 .. inlineav:: T1-T3CON ss
-   :output: show
+   :output:show
+
+
+
 
 Because that the worth variable is of type int. It is passed by value and any modifications to
 its value of interest in function B will not make any changes on the original value on netWorth.
@@ -187,4 +189,4 @@ For pass by reference, there is only one copy of the value of interest, and copy
 one copy are passed. So if the value of interest is an array of int, a copy of its reference parameter will
 be passed to any function instead of copying the array.
 
-.. odsalink:: AV/PointersSushma/T1-T3CON.js
+.. odsascript:: AV/PointersSushma/T1-T3CON.js
