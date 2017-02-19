@@ -97,19 +97,22 @@ $(document).ready(function() {
   // Slide 7
   last.removeClass("subProblemNode");
   av.umsg(interpret("sc7"));
-  var labelLine1 = av.g.line (leftAlign + nodeWidth - 5,
-                           topAlign + nodeHeight * 2,
-                           leftAlign + 3 * (nodeGap + nodeWidth),
-                           topAlign + nodeHeight * 2);
-  var labelLine2 = av.g.line (leftAlign + 3.4 * (nodeGap + nodeWidth),
-                           topAlign + nodeHeight * 2,
-                           leftAlign + 6.3 * (nodeGap + nodeWidth),
-                           topAlign + nodeHeight * 2);
-  labelLine1.addClass("dashed");
-  labelLine2.addClass("dashed");
-
-  var labelText = av.label ("$\\displaystyle\\sum_{i=1}^{n}1$", 
-                  {top: topAlign + nodeHeight * 1.15, left: leftAlign + 3 * (nodeGap + nodeWidth)});
+  av.g.line(leftAlign + nodeWidth - 7, topAlign + nodeHeight * 2,
+            leftAlign + 2.7 * (nodeGap + nodeWidth), topAlign + nodeHeight * 2,
+            {"stroke-width": 2, "arrow-start":"classic-wide-long"});
+  av.g.line(leftAlign + 3.55 * (nodeGap + nodeWidth),
+            topAlign + nodeHeight * 2, leftAlign + 6.35 * (nodeGap + nodeWidth),
+            topAlign + nodeHeight * 2,
+            {"stroke-width": 2,"arrow-end":"classic-wide-long"});
+  av.g.line(leftAlign + 6.35 * (nodeGap + nodeWidth), topAlign + 65,
+           leftAlign + 6.35 * (nodeGap + nodeWidth), topAlign + 95);
+  av.g.line(leftAlign + 6.35 * (nodeGap + nodeWidth), topAlign + 65,
+           leftAlign + 6.35 * (nodeGap + nodeWidth), topAlign + 95);
+  av.g.line(leftAlign + nodeWidth - 7, topAlign + 65,
+            leftAlign + nodeWidth - 7, topAlign + 95);
+  av.label ("$\\displaystyle\\sum_{i=1}^{n}1$", 
+            {top: topAlign + nodeHeight * 1.15,
+             left: leftAlign + 3 * (nodeGap + nodeWidth)});
   av.step();
 
   // Slide 8

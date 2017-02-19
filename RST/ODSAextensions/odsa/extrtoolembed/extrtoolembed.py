@@ -22,11 +22,12 @@ import os, sys
 import urllib
 
 # dictionary of all avalibale external learning tools
+
 extrenal_tools_urls = {
   "code-workout": {
-          "url": "https://codeworkout.cs.vt.edu/gym/workouts",
-          "height": 650,
-          "width": 950
+          "url": "https://codeworkoutdev.cs.vt.edu/gym/workouts/embed",
+          "width": 1000,
+          "height": 900
     }
 }
 
@@ -71,13 +72,21 @@ class extrtoolembed(Directive):
 
   def run(self):
     """ Restructured text extension for inserting embedded external learning tools """
+    if 'long_name' not in self.options or self.options['long_name'] == '' :
+        print 'ERROR: External learning tool is not properly configured'
+        sys.exit()
+
+    if 'learning_tool' not in self.options or self.options['learning_tool'] =='' :
+        print 'ERROR: External learning tool is not properly configured'
+        sys.exit()
+
     self.options['type'] = 'external_tool'
 
     url_params = {}
     url_params['resource_name'] = self.options['long_name']
 
     self.options['content'] = ''
-    self.options['exer_name'] = self.options['long_name'].replace(" ", "_")
+    self.options['exer_name'] = self.options['long_name'].replace(":", "").replace(" ", "_")
 
     external_tool = extrenal_tools_urls[self.options['learning_tool']]
     self.options['tool_address'] = external_tool['url']
@@ -89,6 +98,7 @@ class extrtoolembed(Directive):
     res = CONTAINER_HTML % (self.options)
 
     return [nodes.raw('', res, format='html')]
+
 
 
 source = """\

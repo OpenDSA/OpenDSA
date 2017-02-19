@@ -18,7 +18,7 @@ $(document).ready(function() {
   var yPositionQ = yPositionP + widthSmall
 
   //creating everything in the X rectangle
-  //av.umsg(interpret("My message here"));
+  av.umsg("My message here");
   av.g.rect(xPositionBigRectangles, yPositionRectX + (widthBig / 2), lengthBig, widthBig);
   av.g.rect(xPositionSmallRectangles, yPositionA, lengthSmall, widthSmall);
   av.g.rect(xPositionSmallRectangles, yPositionB, lengthSmall, widthSmall);
@@ -31,6 +31,7 @@ $(document).ready(function() {
   av.step();
 
   //creating everything in the Y rectangle
+  av.umsg("My message here 2");
   var rectY = av.g.rect(xPositionBigRectangles, yPositionRectY + (widthBig / 2), lengthBig, widthBig);
   var rectP = av.g.rect(xPositionSmallRectangles, yPositionP, lengthSmall, widthSmall);
   var rectQ = av.g.rect(xPositionSmallRectangles, yPositionQ, lengthSmall, widthSmall);

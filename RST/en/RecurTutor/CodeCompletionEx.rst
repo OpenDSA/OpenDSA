@@ -3,7 +3,7 @@
 .. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
    :author: Sally Hamouda and Cliff Shaffer
    :topic: Recursion
 

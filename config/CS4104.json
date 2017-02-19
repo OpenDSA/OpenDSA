@@ -138,9 +138,53 @@
       "Searching/SortedSearch": {
         "long_name": "Search in sorted Arrays",
         "sections": {
-          "Analysis": {},
-          "Lower Bounds Proof": {}
+          "Analysis": {}
         }
+      },
+      "SearchStruct/SkipList": {
+        "long_name": "Skip Lists",
+        "sections": {}
+      }
+    },
+    "Lower Bounds": {
+      "Sorting/SortingLowerBound": {
+        "long_name": "Lower Bounds of Sorting",
+        "sections": {
+          "Lower Bounds for Sorting": {
+            "SortingLowerBoundCON": {
+              "long_name": "Sorting Lower Bound Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "SortBoundSumm": {
+              "long_name": "Lower Bounds Summary Exercise",
+              "required": false,
+              "points": 0.0,
+              "threshold": 0
+            }
+          }
+        }
+      },
+      "Bounds/BoundMax": {
+        "long_name": "Lower Bounds on Search",
+        "sections": {}
+      },
+      "Bounds/BoundAdversary": {
+        "long_name": "Adversary Lower Bounds",
+        "sections": {}
+      },
+      "Bounds/BoundState": {
+        "long_name": "State Space Lower Bounds",
+        "sections": {}
+      },
+      "Bounds/BoundiBest": {
+        "long_name": "Finding ith Best Element",
+        "sections": {}
+      },
+      "Bounds/SortingOptimal": {
+        "long_name": "Optimal Sorting",
+        "sections": {}
       }
     },
     "Appendix": {

@@ -100,15 +100,15 @@ times before we reach 1. [#]_
        But writing a convincing proof that no algorithm could ever be
        discovered that is better is surprisingly difficult.
        This is an example of a
-       :ref:`lower bounds proof <lower bounds proof> <BoundLower>` to
+       :term:`lower bounds proof <lower bounds proof> <BoundLower>` to
        find the cost for the beest possible :term:`algorithm` to solve
        the :term:`problem` of search in an unsorted array.
 
 .. [#] It is possible to
-       :ref:`prove <Search Lower Bound> <BoundSearch>`
+       :term:`prove <Search Lower Bound> <SortedSearch>`
        that binary search is the most efficient algorithm possible in
        the worst case when searching in a sorted array.
-       This is even more difficult than proving the sequential search
+       This is even more difficult than proving that sequential search
        is the most efficient algorithm possible on an unsorted array.
 
 .. odsascript:: AV/Searching/binarySearchCON.js
