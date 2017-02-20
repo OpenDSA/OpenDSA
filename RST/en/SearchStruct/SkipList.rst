@@ -48,7 +48,6 @@ implementation and performance.
 .. inlineav:: SkipListIntroCON ss
    :output: show
 
-
 We can continue adding pointers to selected nodes in this way --- give
 a third pointer to every fourth node, give a fourth pointer to every
 eighth node, and so on |---|  until we reach the
@@ -141,13 +140,22 @@ performance than a BST.
 The BST can have bad performance caused by the order in which data are
 inserted.
 For example, if :math:`n` nodes are inserted into a BST in ascending
-order of their key value, then the BST will look like a linked list
+order of their key values, then the BST will look like a linked list
 with the deepest node at depth :math:`n-1`.
-The Skip List's performance does not depend on the order in which
-values are inserted into the list.
+If the data inserted over the life of the BST could be randomly
+ordered, then the probability distribution for the cost of the insert
+and search operations would be similar to that of the Skip List.
+The problem for the BST is that this randomization does not happen in
+fact, but rather the BST is constrained by the actual order of inputs
+and searches.
+
+In contrast, the Skip List's performance does not depend on the order
+in which values are inserted into the list.
+In a sense, the data are "randomization" automatically as part of the
+Skip List probabilistic behavior as the depths of the nodes are being
+selected.
 As the number of nodes in the Skip List increases, the probability of
-encountering the worst case decreases
-geometrically.
+encountering the worst case decreases geometrically.
 Thus, the Skip List illustrates a tension between the theoretical
 worst case (in this case, :math:`\Theta(n)` for a Skip List
 operation), and a rapidly increasing probability of average-case

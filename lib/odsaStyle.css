@@ -1,3 +1,7 @@
+.jsavcanvas {
+  font-family: Helvetica, Arial;
+}
+
 /* Mark that an item (such as an array cell) is currently being processed
    by the algorithm. This color is a medium blue. */
 .processing {
