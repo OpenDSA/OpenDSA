@@ -6,8 +6,8 @@
 .. avmetadata::
    :author: Nick Parlante, Cliff Shaffer, Sally Hamouda and Mostafa Mohammed
    :requires:
-   :satisfies: reference intro
-   :topic: references
+   :satisfies: Pointer intro
+   :topic: Pointers
 
 Basic References
 ================
@@ -183,7 +183,7 @@ the smiley face is copied, and each function gets their own.
 
 Here is an example of the difference between shallow and deep copying:
 
-.. codeinclude:: referencesBook/Basicreferences/shallowCopy
+.. codeinclude:: PointersBook/BasicPointers/shallowCopy
    :tag: shallow
 
 
@@ -238,7 +238,7 @@ Non-primitive Type Syntax
 
 As stated earlier, non-primitive data types are defined by declaring references to point to them. For example,
 
-``Integer`` type reference to ``Integer`` object and ``int[]`` type reference to an ``array of integers``
+``Integer`` type reference to ``Integer`` object, and ``int[]`` type reference to an ``array of integers``
 
 
 reference Variables
@@ -248,7 +248,7 @@ Reference variables are declared just like any other variable. The declaration g
 variable and reserves memory to hold its value. The declaration does not assign a pointee for the reference |---| the
 reference starts out with a ``null``.
 
-.. codeinclude:: referencesBook/Basicreferences/referenceExample
+.. codeinclude:: PointersBook/BasicPointers/referenceExample
    :tag: referenceVariables
    :lang: Java
 
@@ -265,7 +265,7 @@ reference in the left hand side. The code below uses a reference and an ``=`` to
    :capalign: justify
    :figwidth: 100%
 
-.. codeinclude:: referencesBook/Basicreferences/referenceExample
+.. codeinclude:: PointersBook/BasicPointers/referenceExample
    :tag: AssigningPointee
    :lang: Java
 
@@ -281,7 +281,7 @@ Example reference Code
 
 With the syntax defined, we can now write some reference code that demonstrates all the reference rules.
 
-.. codeinclude:: referencesBook/Basicreferences/referenceExample
+.. codeinclude:: PointersBook/BasicPointers/referenceExample
    :tag: Example
 
 .. odsafig:: Images/abcpqxxx.png
@@ -312,7 +312,7 @@ a bad reference will raise NullPointerException and the program will crash. It i
 each reference is assigned a pointee before it is used. The following example shows a simple example of the bad code and a
 drawing of how memory is likely to react.
 
-.. codeinclude:: referencesBook/Basicreferences/badreferences
+.. codeinclude:: PointersBook/BasicPointers/badreferences
    :tag: badreferences
 
 .. odsafig:: Images/pPow.png
