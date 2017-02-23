@@ -19,15 +19,16 @@ $(document).ready(function() {
 
   //creating everything in the X rectangle
   //av.umsg(interpret("My message here"));
+  av.umsg("The value of interest netWorth is local to A()");
   av.g.rect(xPositionBigRectangles, yPositionRectA + (widthBig / 2), lengthBig, widthBig);
   av.g.rect(xPositionSmallRectangles, yPosition55Top, lengthSmall, widthSmall);
   av.label("A ()",  {top: yPosition55Top - (widthBig / 2) + 3, left: xPositionBigRectangles - 30});
   av.label("networth",  {top: yPosition55Top - (widthSmall / 2) - 1, left: xPositionBigRectangles + 14});
   av.label("55", {top: yPosition55Top - (widthSmall / 2), left: xPositionSmallRectangles + 5});
-  av.umsg("The value of interest netWorth is local to A()");
   av.displayInit();
   av.step();
   //creating the second slide
+  av.umsg("netWorth is copied to B()'s local worth. B() changes its local worth from 55 to 56");
   var bigB = av.g.rect(xPositionBigRectangles, yPositionRectB + (widthBig / 2), lengthBig, widthBig);
   var smallB = av.g.rect(xPositionSmallRectangles, yPosition55Bottom, lengthSmall, widthSmall);
   var labelB = av.label("B ()",  {top: yPosition55Bottom - (widthBig / 2) + 3, left: xPositionBigRectangles - 30});
@@ -36,9 +37,9 @@ $(document).ready(function() {
   var x1 = av.g.line(xPositionSmallRectangles + 6, yPosition55Bottom - (widthSmall / 2) + 30, xPositionSmallRectangles + 23, yPosition55Bottom - (widthSmall / 2) + 20, {"stroke-width": 2});
   var x2 = av.g.line(xPositionSmallRectangles + 6, yPosition55Bottom - (widthSmall / 2) + 20, xPositionSmallRectangles + 23, yPosition55Bottom - (widthSmall / 2) + 30, {"stroke-width": 2});
   var label56 = av.label("56", {top: yPosition55Bottom - (widthSmall / 2), left: xPositionSmallRectangles + 30});
-  av.umsg("netWorth is copied to B()'s local worth. B() changes its local worth from 55 to 56");
-  av.step();
 
+  av.step();
+  av.umsg("B() exits and its local worth is deallocated. The value of interest has not been changed");
   bigB.hide();
   smallB.hide();
   labelB.hide();
@@ -47,6 +48,5 @@ $(document).ready(function() {
   x1.hide();
   x2.hide();
   label56.hide();
-  av.umsg("B() exits and its local worth is deallocated. The value of interest has not been changed");
   av.recorded();
 });

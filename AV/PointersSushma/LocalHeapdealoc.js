@@ -24,9 +24,9 @@ $(document).ready(function() {
 
   //big rectangles
   av.g.rect(xPositionBigRectangles, yPositionBig1, lengthBig, widthBig);
-  av.g.rect(xPositionBigRectangles, yPositionBig2, lengthBig, widthBig);
+  av.g.rect(xPositionBigRectangles, yPositionBig2, lengthBig, widthBig, {"stroke-width": 3, color:gray});
   av.g.rect(xPositionBigRectangles, yPositionBig3, lengthBig, widthBig);
-  av.g.rect(xPositionBigRectangles, yPositionBig4, lengthBig, widthBig);
+  av.g.rect(xPositionBigRectangles, yPositionBig4, lengthBig, widthBig, {"stroke-width": 3, color: gray});
 
   //gray line in the middle
   av.g.line((xPositionSmallRectangles + 100), 0, (xPositionSmallRectangles + 100),

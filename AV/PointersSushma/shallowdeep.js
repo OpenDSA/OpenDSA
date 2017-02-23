@@ -21,7 +21,6 @@ $(document).ready(function() {
   av.label("Shallow / Sharing ", {top: yPositionABig - 75, left: xPositionBigRectangles + 50});
   av.label("Deep / Copying ", {top: yPositionABig - 75, left: xPositionBigRectangles + 450});
   av.g.line((xPositionBigRectangles + 350), 0, (xPositionBigRectangles + 350), 300, {"stroke-width": 3, stroke: "gray"});
-  
 
 
 
@@ -75,6 +74,14 @@ $(document).ready(function() {
   av.g.ellipse(xPositionBigRectangles2 + 180 + lengthBig / 2, yPositionABig + widthBig / 2, lengthBig - 70, widthBig - 50);
   av.g.circle(xPositionBigRectangles2 + 220, yPositionABig + 30, 4);
   av.g.circle(xPositionBigRectangles2 + 245, yPositionABig + 30, 4);
+
+
+  var path = "M 257,200 C 270,208 281,211 303,200";
+  var smiley1 = "M 713,150 C 726,158 737,161 759,150";
+  var smiley2 = "M 713,250 C 726,258 737,261 759,250";
+  av.g.path(path);
+  av.g.path(smiley1);
+  av.g.path(smiley2);
   av.displayInit();
   av.recorded();
 });

@@ -12,7 +12,8 @@ $(document).ready(function() {
   var length1 = 100;
   var width = 30;
 
-
+  av.g.path(["M", 340 + 80,  yPositionLocal1 + (width / 2),
+    490, yPositionLocal1 + (width / 2)].join(","), {stroke: "clear", "arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
   //first image of the three
   av.label("Local",  {top: 0, left: xPositionLocalRectangles + 20});
   av.label("Heap",  {top: 0, left: xPositionLocalRectangles + 200});
@@ -41,7 +42,11 @@ $(document).ready(function() {
   x5.hide();
   x6.hide();
   var heapRectangle = av.g.rect(xPositionHeapRectangles, yPositionLocal1, length1, width);
+  av.g.path(["M", 340 + 80,  yPositionLocal1 + (width / 2),
+    490, yPositionLocal1 + (width / 2)].join(","), {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
   av.step();
   heapRectangle.hide();
+  av.g.path(["M", 340 + 80,  yPositionLocal1 + (width / 2),
+    490, yPositionLocal1 + (width / 2)].join(","), {stroke: "gray", "arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
   av.recorded();
 });
