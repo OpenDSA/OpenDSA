@@ -18,7 +18,7 @@ $(document).ready(function() {
   var yPositionQ = yPositionP + widthSmall
 
   //creating everything in the X rectangle
-  av.umsg("My message here");
+  av.umsg("X()'s locals have been allocated and given values");
   av.g.rect(xPositionBigRectangles, yPositionRectX + (widthBig / 2), lengthBig, widthBig);
   av.g.rect(xPositionSmallRectangles, yPositionA, lengthSmall, widthSmall);
   av.g.rect(xPositionSmallRectangles, yPositionB, lengthSmall, widthSmall);
@@ -31,7 +31,7 @@ $(document).ready(function() {
   av.step();
 
   //creating everything in the Y rectangle
-  av.umsg("My message here 2");
+  av.umsg("Y() is called with p = 1, and its locals are allocated. X()'s locals continue to be allocated");
   var rectY = av.g.rect(xPositionBigRectangles, yPositionRectY + (widthBig / 2), lengthBig, widthBig);
   var rectP = av.g.rect(xPositionSmallRectangles, yPositionP, lengthSmall, widthSmall);
   var rectQ = av.g.rect(xPositionSmallRectangles, yPositionQ, lengthSmall, widthSmall);
@@ -40,10 +40,8 @@ $(document).ready(function() {
   var labelQ = av.label("q",  {top: yPositionQ - (widthSmall / 2) + 3, left: xPositionSmallRectangles - 16});
   var label1 = av.label("1", {top: yPositionP - (widthSmall / 2) + 3, left: xPositionSmallRectangles + (widthSmall / 2) + 14});
   var label3 = av.label("3", {top: yPositionQ - (widthSmall / 2) + 3, left: xPositionSmallRectangles + (widthSmall / 2) + 14});
-
-
   av.step();
-
+  av.umsg("Y() is called again with p=2, and its locals are allocated a second time");
   rectY.hide();
   rectP.hide();
   rectQ.hide();
@@ -52,9 +50,8 @@ $(document).ready(function() {
   labelQ.hide();
   label1.hide();
   label3.hide();
-
   av.step();
-
+  av.umsg("Y() is called again with p=2, and its locals are allocated a second time");
   rectY.show();
   rectP.show();
   rectQ.show();
@@ -65,7 +62,7 @@ $(document).ready(function() {
   label3.show();
 
   av.step();
-
+  av.umsg("Y() exits and its locals are deallocated. X()'s locals will be deallocated when it exits");
   rectY.hide();
   rectP.hide();
   rectQ.hide();
@@ -74,14 +71,5 @@ $(document).ready(function() {
   labelQ.hide();
   label1.hide();
   label3.hide();
-
-
-
-
-
-
-
-
-
   av.recorded();
 });

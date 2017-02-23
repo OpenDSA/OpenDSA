@@ -3,7 +3,7 @@
 $(document).ready(function() {
   "use strict";
   var av = new JSAV("num42", {animationMode: "none"});
-  var xPosition = 375;
+  var xPosition = 100;
   var yPosition = 2;
   var length1 = 125;
   var width = 30;

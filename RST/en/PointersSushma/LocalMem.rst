@@ -131,7 +131,6 @@ the code and the state of memory at that time is shown in the drawing.
    :capalign: justify
    :figwidth: 100%
 
-
 .. inlineav:: T1-T5CON ss
    :output: show
 
