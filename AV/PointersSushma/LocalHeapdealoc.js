@@ -1,8 +1,9 @@
-/*global JSAV, document */
-// Written by Sushma Mandava
 $(document).ready(function() {
   "use strict";
-  var av = new JSAV("LocalHeapdealoc", {animationMode: "none"});
+  var av_name = "LocalHeapdealoc";
+  // Load the config object with interpreter and code created by odsaUtils.js
+  var av;
+  av = new JSAV(av_name);
   var xPositionSmallRectangles = 280;
   var xPositionBigRectangles = 450;
   var yPositionSmall1 = 95;
@@ -17,27 +18,32 @@ $(document).ready(function() {
   var yPositionBig3 = yPositionBig2 + widthBig;
   var yPositionBig4 = yPositionBig3 + widthBig;
 
+
   //small rectanges
   av.g.rect(xPositionSmallRectangles, yPositionSmall1, lengthSmall, widthSmall);
   av.g.rect(xPositionSmallRectangles, yPositionSmall2, lengthSmall, widthSmall);
   av.g.rect(xPositionSmallRectangles, yPositionSmall3, lengthSmall, widthSmall);
 
+
   //big rectangles
   av.g.rect(xPositionBigRectangles, yPositionBig1, lengthBig, widthBig);
-  av.g.rect(xPositionBigRectangles, yPositionBig2, lengthBig, widthBig, {"stroke-width": 3, color:gray});
+  av.g.rect(xPositionBigRectangles, yPositionBig2, lengthBig, widthBig, {"stroke-width": 3, fill: "#7c7c7c", opacity: 0.4});
+  av.g.rect(xPositionBigRectangles, yPositionBig2, lengthBig, widthBig, {"stroke-width": 3});
   av.g.rect(xPositionBigRectangles, yPositionBig3, lengthBig, widthBig);
-  av.g.rect(xPositionBigRectangles, yPositionBig4, lengthBig, widthBig, {"stroke-width": 3, color: gray});
+  av.g.rect(xPositionBigRectangles, yPositionBig4, lengthBig, widthBig, {"stroke-width": 3, fill: "#7c7c7c", opacity: 0.4});
+  av.g.rect(xPositionBigRectangles, yPositionBig4, lengthBig, widthBig, {"stroke-width": 3});
 
-  //gray line in the middle
-  av.g.line((xPositionSmallRectangles + 100), 0, (xPositionSmallRectangles + 100),
-   250, {"stroke-width": 3, stroke: "gray"});
-  //labels
   av.label("Local", {top: 0, left: xPositionSmallRectangles});
   av.label("Heap", {top: 0, left: xPositionBigRectangles});
   av.label("(Free)", {top: yPositionBig1, left: xPositionBigRectangles + 28});
   av.label("(Gif3)", {top: yPositionBig2, left: xPositionBigRectangles + 28});
   av.label("(Free)", {top: yPositionBig3, left: xPositionBigRectangles + 28});
   av.label("(Gif1)", {top: yPositionBig4, left: xPositionBigRectangles + 28});
+  //gray line in the middle
+  av.g.line((xPositionSmallRectangles + 100), 0, (xPositionSmallRectangles + 100),
+   250, {"stroke-width": 3, stroke: "gray"});
+  //labels
+
 
   //arrows
   av.g.path(["M", xPositionSmallRectangles + lengthSmall / 2,  yPositionSmall1 + (widthSmall / 2),

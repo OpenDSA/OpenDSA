@@ -24,6 +24,9 @@ $(document).ready(function() {
 
   //big rectangles
   av.g.rect(xPositionBigRectangles, yPositionBig1, lengthBig, widthBig);
+  av.g.rect(xPositionBigRectangles, yPositionBig2, lengthBig, widthBig, {"stroke-width": 3, fill: "#7c7c7c", opacity: 0.4});
+  av.g.rect(xPositionBigRectangles, yPositionBig3, lengthBig, widthBig, {"stroke-width": 3, fill: "#7c7c7c", opacity: 0.4});
+  av.g.rect(xPositionBigRectangles, yPositionBig4, lengthBig, widthBig, {"stroke-width": 3, fill: "#7c7c7c", opacity: 0.4});
   av.g.rect(xPositionBigRectangles, yPositionBig2, lengthBig, widthBig, {"stroke-width": 3});
   av.g.rect(xPositionBigRectangles, yPositionBig3, lengthBig, widthBig, {"stroke-width": 3});
   av.g.rect(xPositionBigRectangles, yPositionBig4, lengthBig, widthBig, {"stroke-width": 3});
