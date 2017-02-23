@@ -170,6 +170,36 @@
         "long_name": "Lower Bounds on Search",
         "sections": {}
       },
+      "Background/SetDef": {
+        "long_name": "Set Definitions",
+        "sections": {
+          "Set Notation": {},
+          "Relations": {
+            "SetTFrelation": {
+              "long_name": "Relations Exercise",
+              "required": false,
+              "points": 0.0,
+              "threshold": 5
+            }
+          },
+          "Equivalence Relations": {
+            "SetTFequivrel": {
+              "long_name": "Equivalence Exercise",
+              "required": false,
+              "points": 0.0,
+              "threshold": 3
+            }
+          },
+          "Partial Orders": {
+            "SetTFpartialorder": {
+              "long_name": "PartialOrder Exercise",
+              "required": false,
+              "points": 0.0,
+              "threshold": 3
+            }
+          }
+        }
+      },
       "Bounds/BoundAdversary": {
         "long_name": "Adversary Lower Bounds",
         "sections": {}
