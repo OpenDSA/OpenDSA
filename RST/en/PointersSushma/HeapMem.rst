@@ -163,6 +163,9 @@ the second of the three blocks.
 
 .. inlineav:: LocalHeapdealoc dgm
 
+
+
+
 After the deallocation, the pointer continues to point to the now deallocated block. The
 program must not access the deallocated pointee. This is why the pointer is drawn in gray
 |---| the pointer is there, but it must not be used. Sometimes the code will set
