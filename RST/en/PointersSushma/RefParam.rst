@@ -65,8 +65,7 @@ code and the state of memory is shown for each state...
    :figwidth: 100%
 
 .. inlineav:: T1-T3CON ss
-   :output:show
-
+   :output: show
 
 
 
