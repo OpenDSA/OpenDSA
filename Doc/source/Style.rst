@@ -52,3 +52,19 @@ Each should pass its respective validation tools without
 complaint.
 See the developer's "Getting Started" guide for details on using the
 validation tools.
+
+
+Use of Gendered Pronouns in Prose
+---------------------------------
+
+It frequently happens that some pronoun is needed, and authors are
+then faced with a somewhat arbitrary decision about the nominal
+gender.
+There are a number of choices that have been used, all of which appear
+awkward to some portion of the reading population.
+When possible, the best choice is to write to avoid the need for a
+gendered pronoun in the first place.
+When this is not practical, our preferred style is to use the
+"singular they" construction.
+That is, we recommend us of "they" in place of "he" or "she",
+and "their" in place of "his vs. her". 
