@@ -66,5 +66,5 @@ When possible, the best choice is to write to avoid the need for a
 gendered pronoun in the first place.
 When this is not practical, our preferred style is to use the
 "singular they" construction.
-That is, we recommend us of "they" in place of "he" or "she",
+That is, we recommend use of "they" in place of "he" or "she",
 and "their" in place of "his vs. her". 
