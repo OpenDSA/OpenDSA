@@ -98,10 +98,8 @@ $(document).ready(function () {
 
   // Slide 12
   av.umsg("The recursive calls should be controlled by if statements to avoid unnecessary node visits. The following code checks the current node value so as to decide whether to visit children.");
-  
   pseudo.hide();
-  var pseudo2 = av.code({url: "OpenDSA/SourceCode/Java/BTRecurTutor/RecEffRng.java",
-                       lineNumbers: false,top:10 , left: 100});
+  var pseudo2 = av.code(code[1]);
   el2.hide();
   label2.hide();
   rt1.hide();
