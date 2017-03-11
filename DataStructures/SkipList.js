@@ -552,12 +552,12 @@ function SkipNode(p, nodeLevel, jsav, options, num) {
   }
   if (noRedraw == 0){
 	  this.disArr = this.jsav.ds.array(this.arr, {layout: "vertical", indexed: true, relativeTo: this.val, myAnchor: "right top", follow:true, anchor: "right bottom", relativeIndex:0});
-	  this.disArr.css({"left":"-=5px"});
+	  this.disArr.css({"left":"-=6px"});
 	  this.disArr.css({"top":"-=1px"});
 	   noRedraw++;
   }else{
 	  this.disArr = this.jsav.ds.array(this.arr, {layout: "vertical", indexed: false, relativeTo: this.val, myAnchor: "right top", follow:true, anchor: "right bottom", relativeIndex:0});
-	  this.disArr.css({"left":"+=4px"});
+	  this.disArr.css({"left":"+=2px"});
 	  this.disArr.css({"top":"-=1px"});
   }
 }
@@ -567,7 +567,7 @@ skipNodeProto.updateDis = function(options, newOp) {
   this.val = this.jsav.ds.array([this.pair.toString()], newOp);
   this.disArr.hide();
   this.disArr = this.jsav.ds.array(this.arr, {layout: "vertical", indexed: false, relativeTo: this.val, myAnchor: "right top", follow:true, anchor: "right bottom", relativeIndex:0});
-	  this.disArr.css({"left":"+=4px"});
+	  this.disArr.css({"left":"+=2px"});
 	  this.disArr.css({"top":"-=1px"});
   this.val.show();
   this.disArr.show();
