@@ -124,6 +124,9 @@ Glossary
       :term:`asymptotic algorithm analysis`, generally used as a
       synonym for :term:`asymptotic analysis`.
 
+   allocation
+      Reserving memory for an object in the Heap memory.
+
    all-pairs shortest paths problem
       :to-term: Floyd's algorithm :label: solved by
 
@@ -235,6 +238,10 @@ Glossary
       :term:`balanced <balanced tree>`.
       Similar to a :term:`Splay Tree` in that it uses the concept of
       :term:`rotations <rotation>` in the insert and remove operations.
+
+   automatic variables
+       When program flow enters and leaves the variable's scope, automatic variables will be allocated and de-allocated automatically.
+
 
    B$^+$-tree
       The most commonly implemented form of :term:`B-tree`.
@@ -605,6 +612,9 @@ Glossary
       An example of a caching technique is the use of a
       :term:`buffer pool`.
 
+   call stack
+      Known also as execution stack. A stack that stores the function call sequence and the return address for each function.
+
    ceiling
       Written :math:`\lceil x \rceil`, for real value :math:`x` the
       ceiling is the least integer :math:`\geq x`.
@@ -924,6 +934,9 @@ Glossary
 
       A type together with a collection of operations to manipulate
       the type.
+
+   deallocation
+      Free the memory allocated by an unused object.
 
    decision tree
       A theoretical construct for modeling the behavior of algorithms.
@@ -1345,6 +1358,9 @@ Glossary
 
    exact-match query
       Records are accessed by unique identifier.
+
+   exceptions
+      Exceptions are techniques used to predict possible runtime errors and handle them properly.
 
    exchange
       A swap of adjacent records in an array.
@@ -2169,6 +2185,13 @@ Glossary
       level :math:`d` in the tree.
       The root is the only node at level 0, and its depth is 0.
 
+   lexical scoping
+      Lexical scoping, also known as static scoping, of a variable so that it may only referenced in the block of code
+      in which the variable is defined.
+
+   lifetime
+      For a variable, lifetime is the amount of time it will exist before it is destroyed.
+
    linear growth rate
       For input size :math:`n`, a growth rate of :math:`cn` (for
       :math:`c` any positive constant).
@@ -2248,6 +2271,7 @@ Glossary
       Hash systems usually try to keep the load factor below 50%.
 
    local variable
+   local variables
       A variable declared within a function or method.
       It exists only from the time when the function is called to when
       the function exits.
@@ -2266,6 +2290,9 @@ Glossary
       that the next or future accesses will come close to the most
       recent access.
       This is the fundamental property for success of :term:`caching`.
+
+   local storage
+      local storage.
 
    logarithm
       The `logarithm` of base :math:`b` for value :math:`y` is the power
@@ -2816,6 +2843,12 @@ Glossary
       :term:`pivot` value, and the other with values greater than the
       pivot. This process takes :math:`\Theta(i)` time on a sublist of
       length :math:`i`.
+
+   pass by value
+      A copy of a variable is passed to the called function. So, any modifications will not affect the original variable.
+
+   pass by reference
+      A reference to the variable is passed to the called function. So, any modifications will affect the original variable.
 
    path
       In :term:`tree` or :term:`graph` terminology,
@@ -3818,6 +3851,9 @@ Glossary
 
       A list-like structure in which elements may be inserted or
       removed from only one end.
+
+   stack frame
+      Frame of data that pushed into and poped from call stack
 
    stale pointer
       Within the context of a :term:`buffer pool` or

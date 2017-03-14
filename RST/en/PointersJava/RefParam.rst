@@ -15,7 +15,7 @@ Reference Parameters
 Reference Parameters
 --------------------
 
-In the simplest :term:`pass by value` or :term:`value parameter`
+In the simplest :term:`pass by value` or value parameter
 scheme, each function has separate, local memory and parameters are
 copied from the caller to the callee at the moment of the function
 call.

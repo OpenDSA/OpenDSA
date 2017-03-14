@@ -11,12 +11,12 @@
 
 Basic References
 ================
-As stated in the introduction, this tutorial is willing to explain the pointers topic. Pointers is on of the important
+As stated in the introduction, this tutorial is willing to explain the pointers topic. Pointers is one of the important
 topic in languages like C and C++. But, this tutorial will use Java language, in Java there are no pointers, there are
 references. Actually, Pointers are similar to Java references in many aspects. A question may be raised in head that why Java
 call them references instead of pointers?
 The answer is that pointers are well known by programmers and they are use in some unsafe connotations. Pointers also provide
-a lot of abilities that are considered unnecessary, dangerous and lead to complex code. For example there are pointers arthmitic
+a lot of abilities that are considered unnecessary, dangerous and lead to complex code. For example there are pointers arithmetic
 which include adding pointers, increment a pointer, decrement a pointer, etc.
 
 So, Java uses restricted model of pointers and calls it references. With references, programmers have limited access to
@@ -37,11 +37,12 @@ their problems, references are an irresistibly powerful programming construct.
 References solve two common software problems. First, references allow different sections of
 code to share information easily. You can get the same effect by copying information
 back and forth, but references solve the problem better. Second, references enable complex
-linked data structures like :term:`linked lists` and :term:`binary tree`s.
+linked data structures like :term:`linked list` and :term:`binary tree`s.
 
 Data Types in Java
 ~~~~~~~~~~~~~~~~~~
 Data Types in Java are classified into two classes:
+
 * Primitive data types: Simple data types like ``int`` and ``float``. These variables operate pretty intuitively. An
 ``int`` variable is like a box which can store a single ``int`` value such as 42. In a drawing,
 a simple variable is a box with its current value drawn inside.
@@ -54,7 +55,7 @@ a simple variable is a box with its current value drawn inside.
    :capalign: justify
    :figwidth: 100%
 
-*Non-primitive data type: which include Classes, Interfaces, and Arrays. Any object of these data types it pointed to by
+* Non-primitive data type: which include Classes, Interfaces, and Arrays. Any object of these data types it pointed to by
 a reference. A reference works a little differently, it does not store a simple value directly. Instead, a reference stores
 a :term:`reference` to another value. The variable whtich the reference refers to is sometimes known as its :term:`pointee`.
 In a drawing, a reference is a box which contains the beginning of an arrow which leads
@@ -161,7 +162,7 @@ often the real goal. Later we will see how sharing can be used to provide effici
 Shallow and Deep Copying
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-In particular, sharing can enable communication between two :term:`functions`. One function passes a reference to the object
+In particular, sharing can enable communication between more than one :term:`function`. One function passes a reference to the object
 of interest to another function. Both functions can access the object of interest, but the object of interest itself is
 not copied. This communication is called :term:`shallow copy` since instead of making and sending a (large) copy of the object
 of interest, a (small) reference is sent and the object of interest is shared. The recipient needs to understand that they
@@ -257,7 +258,7 @@ Assigning a pointee to a reference
 
 There are several ways to compute a reference to a pointee suitable for storing in a reference.
 The simplest way is the assignment operator. The assignment operator can assign the reference value of the right hand side to
-reference in the left hand side. The code below uses a reference and an ``=`` to produce the earlier ``?????????????`` example.
+reference in the left hand side. The code below uses a reference and an ``=`` to produce the earlier example.
 
 .. odsafig:: Images/numnumptr2.png
    :width: 400
@@ -276,7 +277,7 @@ you are reference variable is on the right hand side of an assignment statement.
 it's a runtime error of type ``NullPointerException``
 
 
-Example reference Code
+Example Reference Code
 ----------------------
 
 With the syntax defined, we can now write some reference code that demonstrates all the reference rules.
@@ -353,7 +354,7 @@ The Java references have two main features.
   programmer efficiency and fewer bugs makes the slowness worthwhile for some  applications.
 
 
-How Are references Implemented In The Machine?
+How Are References Implemented In The Machine?
 ----------------------------------------------
 
 How are references implemented?
@@ -369,7 +370,7 @@ dereference operations with bad references are so unpredictable.
 The Term 'Pointer'
 ------------------
 
-The word :term:`pointer` means almost the same thing as the word "reference".
+The word :term:`pointers` means almost the same thing as the word "reference".
 The difference is that "pointer" tends to be used in a discussion of pointers issues
 which is not specific to any particular language or implementation.
 The word "pointers" connotes the common C/C++ implementation of pointers as addresses.
@@ -377,13 +378,13 @@ The word "reference" is also used in the phrase :term:`reference parameter`
 which is a technique that uses reference parameters for two-way communication between functions in C like languages.
 
 
-Why Are Bad reference Bugs So Common?
+Why Are Bad Reference Bugs So Common?
 -------------------------------------
 
 Why is it so often the case that programmers will allocate a reference, but forget to set it to refer to a pointee?
 The rules for references do not seem that complex, yet every programmer makes this error repeatedly. Why?
 The problem is that we are trained by the tools we use. Simple variables don't require any extra setup. You can allocate
-a simple variable, such as ``int`` , and use it immediately. All that ``int``, ``char``or ``boolean`` variables you
+a simple variable, such as ``int`` , and use it immediately. All that ``int``, ``char`` or ``boolean`` variables you
 have written has trained you, quite reasonably, that a variable may be used once it is declared. Unfortunately, references
 look like simple variables but they require the extra initialization before use. It's unfortunate, in a way, that references
 happen look like other variables, since it makes it easy to forget that the rules for their use are very different.

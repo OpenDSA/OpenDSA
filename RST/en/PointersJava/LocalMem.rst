@@ -15,7 +15,7 @@ Local Memory
 Thanks For The Memory: Allocation and Deallocation
 --------------------------------------------------
 
-:term:`Local variables <local variable` are the programming structure
+:term:`Local variable`s are the programming structure
 everyone uses but no one thinks about.
 You think about them a little when first mastering the syntax.
 But after a few weeks, the variables are so automatic that you soon
@@ -38,12 +38,12 @@ Instead, modern languages are smart about giving memory to a variable
 only when necessary.
 The terminology is that a variable is allocated when it is given an
 area of memory to store its value.
-While the variable is :term:`allocated`, it can operate as a variable
+While the variable is allocated, it can operate as a variable
 in the usual way to hold a value.
-A variable is :term:`deallocated` when the system reclaims the memory
+A variable is deallocated when the system reclaims the memory
 from the variable, so it no longer has an area to store its value.
 For a variable, the period of time from its allocation until its
-deallocation is called its :term:`lifetime`.
+:term:`deallocation' is called its :term:`lifetime`.
 
 The most common memory related error is using a deallocated variable.
 For local variables, modern languages automatically protect against
@@ -147,7 +147,7 @@ This independence of local storage is the root cause of both its
 advantages and disadvantages.
 
 Advantages Of Locals
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
 
 Locals are great for 90% of a program's memory needs:
 
@@ -199,7 +199,7 @@ Synonyms For "Local"
 Local variables are also known as :term:`automatic variables` since
 their allocation and deallocation is done automatically as part of the
 function call mechanism.
-Local variables are also sometimes known as :term:`stack variables`
+Local variables are also sometimes known as stack variables.
 because, at a low level, languages almost always implement local
 variables using a stack structure in memory.
 
