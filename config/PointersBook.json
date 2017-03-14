@@ -33,19 +33,19 @@
         "sections": {}
       },
       "PointersJava/BasicPointers": {
-        "long_name": "Basic Pointers",
+        "long_name": "Basic References",
         "sections": {
-          "What is a pointer?": {},
-          "Pointer Reference and Dereference": {},
-          "Pointer Assignment": {},
-          "Bad Pointers": {},
+          "What is a reference?": {},
+          "Reference Dereferencing": {},
+          "Reference Assignment": {},
+          "Bad references": {},
           "Syntax": {},
-          "Example Pointer Code": {},
-          "Pointer Rules Summary": {},
-          "Java Pointers Features": {},
-          "How Are Pointers Implemented In The Machine?": {},
-          "The Term 'Reference'": {},
-          "Why Are Bad Pointer Bugs So Common?": {}
+          "Example Reference Code": {},
+          "Reference Rules Summary": {},
+          "Java references Features": {},
+          "How Are References Implemented In The Machine?": {},
+          "The Term 'Pointer'": {},
+          "Why Are Bad Reference Bugs So Common?": {}
         }
       },
       "PointersJava/LocalMem": {
@@ -64,25 +64,21 @@
           "Reference Parameters": {},
           "Passing By Reference": {},
           "Simple Reference Parameter Example: Swap()": {},
-          "More Syntax": {},
-          "Reference Parameter Summary": {},
-          "Reference Parameters in Java": {},
-          "Reference Parameters in C++": {}
+          "Java is always pass-by-value": {},
+          "Reference Parameter Summary": {}
         }
       },
       "PointersJava/HeapMem": {
         "long_name": "Heap Memory",
         "sections": {
           "Heap Memory": {},
+	  "Java Garbage Collection":{},
           "What Does The Heap Look Like?": {},
           "Programming The Heap": {},
-          "C Specifics": {},
           "Simple Heap Example": {},
           "Simple Heap Observations": {},
           "Heap Array": {},
-          "Heap String Example": {},
           "Memory Leaks": {},
-          "Ownership": {},
           "Heap Memory Summary": {}
         }
       },
