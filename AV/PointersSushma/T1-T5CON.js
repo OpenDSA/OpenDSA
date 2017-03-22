@@ -1,3 +1,4 @@
+//variable xPosition controls the horizontal position of the visualization
 $(document).ready(function() {
   "use strict";
   var av_name = "T1-T5CON";
@@ -11,7 +12,7 @@ $(document).ready(function() {
   var xPositionBigRectangles = 380;
   var yPositionRectX = 100;
   var yPositionRectY = 0;
-  var xPositionSmallRectangles = 405;
+  var xPositionSmallRectangles = xPositionBigRectangles + 25;
   var yPositionA = yPositionRectX + (widthBig / 2) + 10;
   var yPositionB = yPositionA + widthSmall;
   var yPositionP = yPositionRectY + (widthBig / 2) + 10;

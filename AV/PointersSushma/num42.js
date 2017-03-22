@@ -1,9 +1,10 @@
 /*global JSAV, document */
 // Written by Sushma Mandava
+//variable xPosition controls the horizontal position of the visualization
 $(document).ready(function() {
   "use strict";
   var av = new JSAV("num42", {animationMode: "none"});
-  var xPosition = 100;
+  var xPosition = 375;
   var yPosition = 2;
   var length1 = 125;
   var width = 30;

@@ -1,5 +1,6 @@
 /*global JSAV, document */
 // Written by Sushma Mandava
+//variable xPositionLocalRectangles controls the horizontal position of the visualization
 $(document).ready(function() {
   "use strict";
   var av_name = "LocalHeapintptr42";
@@ -8,7 +9,7 @@ $(document).ready(function() {
   av = new JSAV(av_name);
   var xPositionLocalRectangles = 340;
   var yPositionLocal1 = 60;
-  var xPositionHeapRectangles = 500;
+  var xPositionHeapRectangles = xPositionLocalRectangles + 160;
   var length1 = 100;
   var width = 30;
 
@@ -30,7 +31,7 @@ $(document).ready(function() {
   //gray line in the middle
   av.g.line((xPositionLocalRectangles + 130), 0, (xPositionLocalRectangles + 130),
    140, {"stroke-width": 3, stroke: "gray"});
-  var ptline = av.g.line(340 + 80,  yPositionLocal1 + (width / 2), 490,
+  var ptline = av.g.line(xPositionLocalRectangles + 80,  yPositionLocal1 + (width / 2), xPositionLocalRectangles + 150,
             yPositionLocal1 + (width / 2),
             {"arrow-end": "classic-wide-long", "stroke-width": 2});
   ptline.hide();

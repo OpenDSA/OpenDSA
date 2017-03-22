@@ -1,3 +1,4 @@
+//variable xPositionSmallRectangles controls the horizontal position of the visualization
 $(document).ready(function() {
   "use strict";
   var av_name = "LocalHeapdealoc";
@@ -5,7 +6,7 @@ $(document).ready(function() {
   var av;
   av = new JSAV(av_name);
   var xPositionSmallRectangles = 280;
-  var xPositionBigRectangles = 450;
+  var xPositionBigRectangles = xPositionSmallRectangles + 170;
   var yPositionSmall1 = 95;
   var yPositionSmall2 = yPositionSmall1 + 40;
   var yPositionSmall3 = yPositionSmall2 + 40;

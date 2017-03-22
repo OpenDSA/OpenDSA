@@ -1,3 +1,4 @@
+//variable xPositionBigRectangles controls the horizontal position of the visualization
 $(document).ready(function() {
   "use strict";
   var av_name = "T1-T3CON";

@@ -1,3 +1,4 @@
+//variable xPositionBigRectangles controls the horizontal position of the visualization
 $(document).ready(function() {
   "use strict";
   var av_name = "shallowdeep";
@@ -28,13 +29,13 @@ $(document).ready(function() {
   av.g.rect(xPositionBigRectangles, yPositionABig, lengthBig, widthBig);
   av.g.rect(xPositionSmallRectangles, yPositionASmall, lengthSmall, widthSmall);
   av.g.path(["M", xPositionSmallRectangles + lengthSmall - 10,  yPositionASmall + (widthSmall / 2),
-    xPositionSmallRectangles + lengthSmall + 50, yPositionASmall + (widthBig / 2) + 20].join(","), {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2})
+    xPositionSmallRectangles + lengthSmall + 50, yPositionASmall + (widthBig / 2) + 20].join(","), {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
 
   //rectangle B
   av.g.rect(xPositionBigRectangles, yPositionBBig, lengthBig, widthBig);
   av.g.rect(xPositionSmallRectangles, yPositionBSmall, lengthSmall, widthSmall);
   av.g.path(["M", xPositionSmallRectangles + lengthSmall - 10,  yPositionBSmall + (widthSmall / 2),
-    xPositionSmallRectangles + lengthSmall + 50, yPositionBSmall - (widthBig / 2)].join(","), {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2})
+    xPositionSmallRectangles + lengthSmall + 50, yPositionBSmall - (widthBig / 2)].join(","), {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
 
   //smiley face rectangle
   av.g.rect(xPositionBigRectangles + 150, (yPositionABig + yPositionBBig) / 2, lengthBig, widthBig);
@@ -62,14 +63,14 @@ $(document).ready(function() {
   //
   //smiley face rectangles
   av.g.path(["M", xPositionSmallRectangles2 + lengthSmall - 10,  yPositionASmall + (widthSmall / 2),
-    xPositionBigRectangles2 + 150, yPositionASmall + (widthSmall / 2)].join(","), {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2})
+    xPositionBigRectangles2 + 150, yPositionASmall + (widthSmall / 2)].join(","), {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
   av.g.rect(xPositionBigRectangles2 + 180, yPositionBBig, lengthBig, widthBig);
   av.g.ellipse(xPositionBigRectangles2 + 180 + lengthBig / 2, yPositionBBig + widthBig / 2, lengthBig - 70, widthBig - 50);
   av.g.circle(xPositionBigRectangles2 + 220, yPositionBBig + 30, 4);
   av.g.circle(xPositionBigRectangles2 + 245, yPositionBBig + 30, 4);
 
   av.g.path(["M", xPositionSmallRectangles2 + lengthSmall - 10,  yPositionBSmall + (widthSmall / 2),
-    xPositionBigRectangles2 + 150, yPositionBSmall + (widthSmall / 2)].join(","), {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2})
+    xPositionBigRectangles2 + 150, yPositionBSmall + (widthSmall / 2)].join(","), {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
   av.g.rect(xPositionBigRectangles2 + 180, yPositionABig, lengthBig, widthBig);
   av.g.ellipse(xPositionBigRectangles2 + 180 + lengthBig / 2, yPositionABig + widthBig / 2, lengthBig - 70, widthBig - 50);
   av.g.circle(xPositionBigRectangles2 + 220, yPositionABig + 30, 4);

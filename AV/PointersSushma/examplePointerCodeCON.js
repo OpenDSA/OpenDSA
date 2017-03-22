@@ -1,6 +1,7 @@
 /*global ODSA */
 // Written by Mohammed Farghally and Cliff Shaffer
 // Two Coloring Proof
+//variable xPosition controls the horizonatl position of the visualization
 $(document).ready(function() {
   "use strict";
   var av_name = "examplePointerCodeCON";
@@ -9,10 +10,10 @@ $(document).ready(function() {
   av = new JSAV(av_name);
   // Slide 1
   var xPosition = 275;
-  var xPosition2 = 475;
+  var xPosition2 = xPosition + 200;
   var yPositionR1 = 10;
-  var yPositionR2 = 60;
-  var yPositionR3 = 110;
+  var yPositionR2 = yPositionR1 + 50;
+  var yPositionR3 = yPositionR1 + 100;
   var length1 = 100;
   var width = 30;
   av.g.rect(xPosition, yPositionR1, length1, width);

@@ -1,5 +1,6 @@
 /*global JSAV, document */
 // Written by Sushma Mandava
+//variable xPosition controls the horizonatl position of the visualization
 $(document).ready(function() {
   "use strict";
   var gv = new JSAV("employeeEmpPtr2", {animationMode: "none"});

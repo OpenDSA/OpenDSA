@@ -1,10 +1,11 @@
 /*global JSAV, document */
 // Written by Sushma Mandava
+//variable xPositionSmallRectangles controls the horizonatl position of the visualization
 $(document).ready(function() {
   "use strict";
   var av = new JSAV("LocalHeapaloc", {animationMode: "none"});
   var xPositionSmallRectangles = 230;
-  var xPositionBigRectangles = 400;
+  var xPositionBigRectangles = xPositionSmallRectangles + 170;
   var yPositionSmall1 = 95;
   var yPositionSmall2 = yPositionSmall1 + 40;
   var yPositionSmall3 = yPositionSmall2 + 40;
