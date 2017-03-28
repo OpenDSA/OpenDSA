@@ -27,12 +27,12 @@
     "JXOP-debug": "true"
   },
   "chapters": {
-    "PointersJava": {
-      "PointersJava/PointerIntro": {
+    "Pointers": {
+      "Pointers/PointerIntro": {
         "long_name": "Pointers Chapter Introduction",
         "sections": {}
       },
-      "PointersJava/BasicPointers": {
+      "Pointers/BasicPointers": {
         "long_name": "Basic References",
         "sections": {
           "What is a reference?": {},
@@ -48,7 +48,7 @@
           "Why Are Bad Reference Bugs So Common?": {}
         }
       },
-      "PointersJava/LocalMem": {
+      "Pointers/LocalMem": {
         "long_name": "Local Memory",
         "sections": {
           "Thanks For The Memory: Allocation and Deallocation": {},
@@ -58,7 +58,7 @@
           "How Does The Function Call Stack Work?": {}
         }
       },
-      "PointersJava/RefParam": {
+      "Pointers/RefParam": {
         "long_name": "Reference Parameters",
         "sections": {
           "Reference Parameters": {},
@@ -68,7 +68,7 @@
           "Reference Parameter Summary": {}
         }
       },
-      "PointersJava/HeapMem": {
+      "Pointers/HeapMem": {
         "long_name": "Heap Memory",
         "sections": {
           "Heap Memory": {},
@@ -82,7 +82,7 @@
           "Heap Memory Summary": {}
         }
       },
-      "PointersJava/Exercises": {
+      "Pointers/Exercises": {
         "long_name": "Exercises",
         "sections": {
           "FindNode Pointer Programming Exercise": {

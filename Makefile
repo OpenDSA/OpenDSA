@@ -152,6 +152,9 @@ SDAP13: min
 simple_demo: min
 	python $(CONFIG_SCRIPT) config/simple_demo.json --no-lms
 
+Pointers: min
+	python $(CONFIG_SCRIPT) config/Pointers.json --no-lms
+
 PointersBook: min
 	python $(CONFIG_SCRIPT) config/PointersBook.json --no-lms
 

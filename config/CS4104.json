@@ -49,7 +49,7 @@
         "long_name": "Problem Bounds",
         "sections": {}
       },
-      "Development/GrowthRate": {
+      "SeniorAlgAnal/GrowthRate": {
         "long_name": "Growth Rates Review",
         "sections": {}
       },
@@ -140,10 +140,6 @@
         "sections": {
           "Analysis": {}
         }
-      },
-      "SearchStruct/SkipList": {
-        "long_name": "Skip Lists",
-        "sections": {}
       }
     },
     "Lower Bounds": {
@@ -167,8 +163,10 @@
         }
       },
       "Bounds/BoundMax": {
-        "long_name": "Lower Bounds on Search",
-        "sections": {}
+        "long_name": "Finding the Maximum Value",
+        "sections": {
+          "Finding the Maximum Value": {}
+        }
       },
       "Background/SetDef": {
         "long_name": "Set Definitions",
@@ -211,9 +209,340 @@
       "Bounds/BoundiBest": {
         "long_name": "Finding ith Best Element",
         "sections": {}
+      }
+    },
+    "Number Problems": {
+      "SeniorAlgAnal/Numeric": {
+        "long_name": "Number Problems",
+        "sections": {
+          "Introduction": {},
+          "Exponentiation": {},
+          "Largest Common Factor": {}
+        }
+      },
+      "SeniorAlgAnal/FFT": {
+        "long_name": "Fast Fourier Transform",
+        "sections": {}
+      }
+    },
+    "Probabilistic Algorithms": {
+      "SeniorAlgAnal/Probabilistic": {
+        "long_name": "Probabilistic Algorithms",
+        "sections": {}
+      },
+      "SeniorAlgAnal/Primes": {
+        "long_name": "Finding Prime Numbers",
+        "sections": {}
+      },
+      "SeniorAlgAnal/RandomNums": {
+        "long_name": "Random Numbers",
+        "sections": {}
+      },
+      "SearchStruct/SkipList": {
+        "long_name": "Skip Lists",
+        "sections": {}
+      }
+    },
+    "Miscellaneous": {
+      "Development/DynamicProgramming": {
+        "long_name": "Dynamic Programming",
+        "sections": {}
+      },
+      "Graph/Floyd": {
+        "long_name": "All-Pairs Shortest Paths",
+        "sections": {}
+      },
+      "Development/AmortAnal": {
+        "long_name": "Amortized Analysis",
+        "sections": {}
       },
       "Bounds/SortingOptimal": {
         "long_name": "Optimal Sorting",
+        "sections": {}
+      }
+    },
+    "Limits to Computing": {
+      "NP/LimComp": {
+        "long_name": "Chapter Intro: Limits to Computing",
+        "sections": {}
+      },
+      "NP/Reduction": {
+        "long_name": "Reductions",
+        "sections": {
+          "Reductions": {
+            "pairToSortReduction": {
+              "long_name": "Reduction of Pairing to Sorting",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            },
+            "sortToPairReduction": {
+              "long_name": "Reduction of Sorting to Pairing",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            },
+            "matrixMulReduction": {
+              "long_name": "Matrix Multiplication",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "NP/NPComplete": {
+        "long_name": "NP Completeness",
+        "sections": {}
+      },
+      "NP/circuitSAT": {
+        "long_name": "The Circuit Satisfiability problem",
+        "sections": {
+          "Circuit Satisfiability": {
+            "circuitSATCON": {
+              "long_name": "Circuit Satisfiability",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "NP/SAT": {
+        "long_name": "The Formula Satisfiability problem",
+        "sections": {
+          "Formula Satisfiability": {
+            "SATCON": {
+              "long_name": "Formula Satisfiability",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "NP/threeSAT": {
+        "long_name": "The 3-CNF Satisfiability problem",
+        "sections": {
+          "3-CNF Satisfiability": {
+            "threeSATCON": {
+              "long_name": "3-Satisfiability",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "threeSAT_KA": {
+              "long_name": "Practice Exercise for 3-SAT",
+              "required": true,
+              "points": 1,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "NP/clique": {
+        "long_name": "The Clique problem",
+        "sections": {
+          "The Clique Problem": {
+            "cliqueCON": {
+              "long_name": "Clique",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "clique_KA": {
+              "long_name": "Practice Exercise for Clique",
+              "required": true,
+              "points": 1,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "NP/independentSet": {
+        "long_name": "The Independent Set problem",
+        "sections": {
+          "Independent Set": {
+            "independentSetCON": {
+              "long_name": "Independent Set",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "independentSet_KA": {
+              "long_name": "Practice Exercise for Independent Set",
+              "required": true,
+              "points": 1,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "NP/vertexCover": {
+        "long_name": "The Independent Set problem",
+        "sections": {
+          "Vertex Cover": {
+            "vertexCoverCON": {
+              "long_name": "Vertex Cover",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "vertexCover_KA": {
+              "long_name": "Practice Exercise for Vertex Cover",
+              "required": true,
+              "points": 1,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "NP/hamiltonianCycle": {
+        "long_name": "The Hamiltonian Cycle problem",
+        "sections": {
+          "Hamiltonian Cycle": {
+            "hamiltonianCycleCON": {
+              "long_name": "Hamiltonian Cycle",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "hamiltonianCycle_KA": {
+              "long_name": "Practice Exercise for Hamiltonian Cycle",
+              "required": true,
+              "points": 1,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "NP/TSP": {
+        "long_name": "The Traveling Salesman problem",
+        "sections": {
+          "Traveling Salesman": {
+            "TSPCON": {
+              "long_name": "Traveling Salesman",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "TSP_KA": {
+              "long_name": "Practice Exercise for Traveling Salesman Problem",
+              "required": true,
+              "points": 1,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "NP/provingNPC": {
+        "long_name": "NP-completeness Proofs",
+        "sections": {
+          "NP-Completeness Proofs": {
+            "NPCProofDiagramCON": {}
+          }
+        }
+      },
+      "NP/circuitSAT_to_SAT": {
+        "long_name": "Reduction of circuit SAT to SAT.",
+        "sections": {
+          "Reduction of Circuit SAT to SAT": {
+            "circuitSATtoSATCON": {
+              "long_name": "Circuit SAT to SAT",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "NP/SAT_to_threeSAT": {
+        "long_name": "Reduction of SAT to 3-SAT.",
+        "sections": {
+          "Reduction of SAT to 3-SAT": {
+            "circuitSATtoSATCON": {
+              "long_name": "SAT to 3-SAT Reduction",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "NP/threeSAT_to_clique": {
+        "long_name": "Reduction of 3-SAT to Clique problem.",
+        "sections": {
+          "Reduction of 3-SAT to Clique": {
+            "circuitSATtoCliqueCON": {
+              "long_name": "3-SAT to Clique Reduction",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "NP/clique_to_independentSet": {
+        "long_name": "Reduction of Clique to Independent Set",
+        "sections": {
+          "Clique to Independent Set": {
+            "cliqueToISCON": {
+              "long_name": "Clique to IS Reduction",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "NP/independentSet_to_vertexCover": {
+        "long_name": "Reduction of Independent Set to Vertex Cover",
+        "sections": {
+          "Independent Set to Vertex Cover": {
+            "IStoVCCON": {
+              "long_name": "IS to VC Reduction",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "NP/threeSAT_to_hamiltonianCycle": {
+        "long_name": "Reduction of 3-SAT to Hamiltonian Cycle Problem.",
+        "sections": {
+          "3-SAT to Hamiltonian Cycle": {
+            "threeSATtoHCCON": {
+              "long_name": "3-SAT to HC Reduction",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "NP/hamiltonianCycle_to_TSP": {
+        "long_name": "Reduction of Hamiltonian Cycle Problem to TSP.",
+        "sections": {
+          "Hamiltonian Cycle to Traveling Salesman": {
+            "HCtoTSPCON": {
+              "long_name": "HC to TSP Reduction",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "NP/NPCoping": {
+        "long_name": "Coping with NP-complete problems",
+        "sections": {}
+      },
+      "Development/Impossible": {
+        "long_name": "Unsolveable Problems",
         "sections": {}
       }
     },

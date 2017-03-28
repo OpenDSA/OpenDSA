@@ -7,8 +7,11 @@
    :author: Cliff Shaffer
    :topic: Randomized Algorithms
 
-Randomized Algorithms: Introduction
-===================================
+Introduction to Probabilistic Algorithms
+========================================
+
+Probabilistic Algorithms
+------------------------
 
 We now consider how introducing randomness into our
 algorithms might speed things up, although perhaps at the expense of
@@ -28,18 +31,22 @@ requirement in various ways.
 There are several possible guarantees that we might require from an
 algorithm that produces :math:`X` as the maximum value, when the true
 maximum is :math:`Y`.
-So far we have assumed that we require :math:`X` to equal :math:`Y`.
-This is known as an exact or deterministic algorithm to solve the
-problem.
-We could relax this and require only that :math:`X` 's rank is
-"close to" :math:`Y` 's rank (perhaps within a fixed distance or
-percentage).
-This is known as an approximation algorithm.
-We could require that :math:`X` is "usually" :math:`Y`.
-This is known as a probabilistic algorithm.
-Finally, we could require only that :math:`X` 's rank is "usually"
-"close" to :math:`Y` 's rank.
-This is known as a heuristic algorithm.
+
+* So far we have assumed that we require :math:`X` to equal :math:`Y`.
+  This is known as an exact or :term:`deterministic algorithm` to
+  solve the problem.
+
+* We could relax this and require only that :math:`X` 's rank is
+  "close to" :math:`Y` 's rank (perhaps within a fixed distance or
+  percentage).
+  This is known as an :term:`approximation algorithm`.
+
+* We could require that :math:`X` is "usually" :math:`Y`.
+  This is known as a :term:`probabilistic algorithm`.
+
+* Finally, we could require only that :math:`X` 's rank is "usually"
+  "close" to :math:`Y` 's rank.
+  This is known as a :term:`heuristic algorithm`.
 
 There are also different ways that we might choose to sacrifice
 reliability for speed.

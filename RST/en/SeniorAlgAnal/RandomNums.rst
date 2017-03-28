@@ -10,6 +10,9 @@
 Random Numbers
 ==============
 
+Random Numbers
+--------------
+
 The success of randomized algorithms depends on having access to a
 good random number generator.
 While modern compilers are likely to include a random number generator

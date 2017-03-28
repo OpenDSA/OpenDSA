@@ -13,33 +13,19 @@
     "JXOP-debug": "true"
   },
   "chapters": {
-    "Sorting": {
-      "Sorting/InsertionSort": {
-        "long_name": "Insertion Sort",
+    "Jieon": {
+      "Binary/BinaryTreeImpl": {
+        "long_name": "Full Binary Tree Node Implementations",
         "sections": {
-          "Insertion Sort": {
-            "insertionsortCON": {
-              "long_name": "Insertion Sort Slideshow",
+          "Binary Tree Node Implementations": {
+            "expressionTraversalCON": {
+              "long_name": "Expression Tree Traversal Slideshow",
               "required": false,
               "points": 0.0,
               "threshold": 1.0
             }
           }
         }
-      }
-    },
-    "Advanced Data Structures": {
-      "SearchStruct/SkipList": {
-        "long_name": "Skip Lists Test",
-        "sections": {}
-      },
-	  "Spatial/BintreeNew": {
-        "long_name": "Bintree Test",
-        "sections": {}
-      },
-	  "Spatial/Bintree": {
-        "long_name": "Bintree Test",
-        "sections": {}
       }
     },
     "Appendix": {

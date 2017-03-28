@@ -52,7 +52,7 @@ assuming that a binary number of length :math:`n` is stored in array
 .. codeinclude:: Analysis/Increment
 
 If we count from 0 through :math:`2^n - 1`, (requiring a counter with
-at least "math:`n` bits), what is the average cost for an increment
+at least :math:`n` bits), what is the average cost for an increment
 operation in terms of the number of bits processed?
 Naive worst-case analysis says that if all :math:`n` bits are 1
 (except for the high-order bit), then :math:`n` bits need to be
@@ -187,7 +187,7 @@ frequently accessed record, and so on.
    with :math:`i \leq j`.
    Under the optimal static ordering, :math:`i` unsuccessful
    comparisons are required because :math:`B` must appear before
-   :math`A` in the list (because its access frequency is higher).
+   :math:`A` in the list (because its access frequency is higher).
    Move-to-front will yield an unsuccessful comparison whenever the
    request sequence changes from :math:`A` to :math:`B` or from
    :math:`B` to :math:`A`.

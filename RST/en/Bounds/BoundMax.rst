@@ -12,6 +12,9 @@
 Finding the Maximum Value
 =========================
 
+Finding the Maximum Value
+-------------------------
+
 How can we find the :math:`i` th largest value in a sorted list?
 Obviously we just go to the :math:`i` th position.
 But what if we have an unsorted list?
