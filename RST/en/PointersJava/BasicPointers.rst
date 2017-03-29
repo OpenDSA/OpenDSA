@@ -4,189 +4,223 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Nick Parlante, Cliff Shaffer, Sally Hamouda and Mostafa Mohammed
+   :author: Nick Parlante, Cliff Shaffer, Sally Hamouda, and Mostafa Mohammed
    :requires:
    :satisfies: Pointer intro
    :topic: Pointers
 
+   .. odsalink:: AV/PointersSushma/num42.css
+   .. odsalink:: AV/PointersSushma/employeeEmpRef.css
+   .. odsalink:: AV/PointersSushma/empRefnull.css
+   .. odsalink:: AV/PointersSushma/empRefsecond.css
+   .. odsalink:: AV/PointersSushma/shallowdeep.css
+
+   .. odsalink:: AV/PointersSushma/examplePointerCodeCON.css
+   .. odsalink:: AV/PointersSushma/empPtrxxx.css
+   .. odsalink:: AV/PointersSushma/employeeEmpPtr2.css
+   .. odsalink:: AV/PointersSushma/badPointerPow.css
+
 Basic References
 ================
-As stated in the introduction, this tutorial is willing to explain the pointers topic. Pointers is one of the important
-topic in languages like C and C++. But, this tutorial will use Java language, in Java there are no pointers, there are
-references. Actually, Pointers are similar to Java references in many aspects. A question may be raised in head that why Java
-call them references instead of pointers?
-The answer is that pointers are well known by programmers and they are use in some unsafe connotations. Pointers also provide
-a lot of abilities that are considered unnecessary, dangerous and lead to complex code. For example there are pointers arithmetic
-which include adding pointers, increment a pointer, decrement a pointer, etc.
 
-So, Java uses restricted model of pointers and calls it references. With references, programmers have limited access to
-references, i.e. programmers cam only assign to a reference and compare two references for equality. Other uses of a reference
-is done implicitly with no control from the programmer. So, the use of Java references will lead to more safer and
-simpler code.
+What is a pointer?
+------------------
+
+There's a lot of nice, tidy code you can write without knowing about
+:term:`pointers <pointer>`.
+But once you learn to use the power of pointers, you can never go
+back.
+There are too many things that can only be done with pointers.
+But with increased power comes increased responsibility.
+Pointers allow new and more ugly types of bugs, and pointer bugs can
+crash in random ways which makes them more difficult to debug.
+Nonetheless, even with their problems, pointers are an irresistibly
+powerful programming construct.
+
+Pointers solve two common software problems.
+First, pointers allow different sections of code to share information
+easily.
+You can get the same effect by copying information back and forth, but
+pointers solve the problem better.
+Second, pointers enable complex linked data structures like
+:term:`linked lists <linked list>` and
+:term:`binary trees <binary tree>`. 
+
 
 What is a reference?
 --------------------
 
-There's a lot of nice, tidy code you can write without knowing about :term:`reference`. But once
-you learn to use the power of references, you can never go back. There are too many things
-that can only be done with referees. But with increased power comes increased
-responsibility. references allow new and more ugly types of bugs, and reference bugs can
-crash in random ways which makes them more difficult to debug. Nonetheless, even with
-their problems, references are an irresistibly powerful programming construct.
-
-References solve two common software problems. First, references allow different sections of
-code to share information easily. You can get the same effect by copying information
-back and forth, but references solve the problem better. Second, references enable complex
-linked data structures like :term:`linked list` and :term:`binary tree`s.
+Java actually uses only a restricted version of the pointer concept,
+which is called a :term:`reference`.
+While they mean roughly the same thing, the term "pointer" tends to be
+used in discussions that are not specific to any particular language
+or implementation.
+The word "pointers" connotes the common C/C++ implementation of
+pointers as :term:`addresses <address>` or locations in memory.
+Programmers have limited access to what they can do with a reference.
+Programmers cam only assign to a reference and compare two references
+for equality.
+Other uses of a reference is done implicitly with no control from the
+programmer.
+These restrictions reduce the chance for bugs.
 
 Data Types in Java
-~~~~~~~~~~~~~~~~~~
-Data Types in Java are classified into two classes:
+------------------
 
-* Primitive data types: Simple data types like ``int`` and ``float``. These variables operate pretty intuitively. An
-``int`` variable is like a box which can store a single ``int`` value such as 42. In a drawing,
-a simple variable is a box with its current value drawn inside.
+Simple ``int`` and ``float`` variables operate pretty intuitively. An
+``int`` variable is like a box which can store a single ``int`` value such
+as 42. In a drawing, a simple variable is a box with its current value
+drawn inside.
 
 .. _num42Fig:
 
-.. odsafig:: Images/num42.png
-   :width: 200
+.. inlineav:: num42 dgm
    :align: center
-   :capalign: justify
-   :figwidth: 100%
 
-* Non-primitive data type: which include Classes, Interfaces, and Arrays. Any object of these data types it pointed to by
-a reference. A reference works a little differently, it does not store a simple value directly. Instead, a reference stores
-a :term:`reference` to another value. The variable whtich the reference refers to is sometimes known as its :term:`pointee`.
-In a drawing, a reference is a box which contains the beginning of an arrow which leads
-to its pointee. (There is no single, official, word for the concept of a pointee |---| pointee is just the word used in these
-explanations.)
-
-In Java,  Objects and Arrays are always accessed by references. The language automatically uses references behind the scenes
-for such complex types, and no reference specific syntax is required. The programmer just needs to realize that operations like
-``a = b;`` will automatically be implemented with references if a and b are arrays or objects. The programmer needs to
-remember that assignments and parameters with arrays and objects are intrinsically shallow or shared |---| see the Deep vs. Shallow
-material below.
-
-Integer VS. int data type
-~~~~~~~~~~~~~~~~~~~~~~~~~
-Java provides many primitive data types and their equivalent non primitive data types. Here some examples,
-``int`` and ``Integer``, ``boolean`` vs ``Boolean``, ``char`` vs ``Character``, ``short`` vs ``Short``, ``long`` vs ``Long``,
-``float`` vs ``Float`` or ``double`` vs ``Double``.
-The main differences between them are:
-
-* ``Integer``, ``Boolean``, ..., ``Double`` are non-primitive data types that contain a single primitive data type from its primitive data
-type |--| Integer object contains a single int variable, and the value of this int variable can be accessed via intValue method.
-
-* Like any non-primitive data type, to define an object of any of them, the new operator should be used to create the object
-
-* Objects from these non-primitive data types are immutable |--| means their values cannot be changed, and the only way to
-change it is to create a new object for the same reference which will discard the old object.
-
-The following drawing shows an object of type Integer : ``IntVar`` and a refernece (reference) ``IntRef`` from the same type.
-The object ``IntVar`` contains the value 45. The reference IntRef is a reference which contains a reference to the object
-IntVar. The ``IntRef`` is the reference and ``IntVar`` is its pointee. What is stored inside of ``IntRef``? Its value is not an
-``Integer`` object. Its value is a reference to an ``Integer``.
-
+A reference works a little differently.
+It does not store a simple value directly.
+Instead, a reference stores a :term:`reference` to another value.
+The variable that the reference refers to is sometimes known as its
+:term:`pointee`. 
+In the next figure, the reference (called ``empRef``) is shown as a
+box that contains the beginning of a directed line, which leads to its
+pointee (an ``Employee`` object in the box named ``employee1``).
+So ``empRef`` is the reference and ``employee1`` is its pointee.
+What is stored inside of ``empRef``?
+Its value is not an ``Employee`` object.
+Its value is only a reference to an ``Employee`` object.
+(By the way, there is no commonly used word for the concept of a
+pointee |---| pointee is just the word used in these explanations.)
 
 .. _numnumptrFig:
 
-.. odsafig:: Images/numnumptr.png
-   :width: 500
-   :align: center
-   :capalign: justify
-   :figwidth: 100%
+.. inlineav:: employeeEmpRef dgm
 
+Going back to simple things like ``int`` and ``float`` variables that
+just store a value in a box.
+In Java, these are referred to as :term:`primitive data types`.
+In Java, Objects and Arrays are :term:`non-primitive data types`,
+and they are always accessed by references.
+Java automatically uses references behind the scenes for such complex
+types, and no reference-specific syntax used.
+You just need to realize that assignment operations like 
+``a = b`` will automatically be implemented with references if ``a`` and
+``b`` are arrays or objects.
+Assignments and parameters with arrays and objects are intrinsically
+shallow or shared |---| see the Deep vs. Shallow Copy material below.
 
-Reference Dereferencing
------------------------
+Referenceing and  Dereferencing
+-------------------------------
 
-The :term:`dereference` operation follows a reference's reference to get the value of its pointee. The value of the dereference
-of ``IntRef`` above is the object ``IntVar``. Dereference is just accessing the value of the pointee. The only restriction
-is that the reference must have a pointee for the dereference to access. Almost all bugs in reference code involve violating
-that one restriction. A reference must be assigned a pointee before dereference operations will work.
+The :term:`dereference` operation follows a reference to get the value
+of its pointee.
+The value of the dereference of ``empRef`` above is the object
+``employee1``.
+Dereference is just accessing the value of the pointee.
+The only restriction is that the reference must have a pointee for the
+dereference to access.
+Almost all bugs in reference code involve violating that one
+restriction.
+A reference must be assigned a pointee before dereference operations
+will work.
 
-
-The constant ``null`` is a special reference value which encodes the idea of "points to nothing". It turns out to be
-convenient to have a well defined reference value which represents the idea that a reference does not have a pointee.
-It is a runtime error to dereference a NULL reference. In drawings, the value NULL is usually drawn as a diagonal
+The constant ``null`` is a special reference value that encodes the
+idea of "points to nothing".
+It turns out to be convenient to have a well defined reference value
+to represent the idea that a reference does not have a pointee.
+It is a runtime error to dereference a ``null`` reference.
+In drawings, the value ``null`` is often drawn as a diagonal
 line between the corners of the reference variable's box.
 
 .. _numptrnullFig:
 
-.. odsafig:: Images/numptrnull.png
-   :width: 200
-   :align: center
-   :capalign: justify
-   :figwidth: 100%
-
-The Java language uses the symbol ``null`` for this purpose.
+.. inlineav:: empRefnull dgm
 
 
-Reference Assignment
---------------------
+Reference Assignments
+---------------------
 
-The assignment operation (``=``) between two references makes them point to the same pointee. It's a simple rule for a
-potentially complex situation, so it is worth repeating: assigning one reference to another makes them point to the same
-thing. The example below adds a second reference, ``second``, assigned with the statement ``second = IntRef;``. The result
-is that second points to the same pointee as IntRef. In the drawing, this means that the second and IntRef boxes both
-contain arrows pointing to ``IntVar``. Assignment between references does not change or even touch the pointees. It just
-changes which pointee a reference refers to.
+The assignment operation (``=``) between two references makes them
+point to the same pointee.
+It's a simple rule for a potentially complex situation, so it is worth
+repeating: assigning one reference to another makes them point to the
+same thing.
+The example below adds a second reference, ``second``, assigned with
+the statement ``second = empRef;``.
+The result is that ``second`` points to the same pointee as
+``empRef``.
+In the drawing, this means that the ``second`` and ``empRef`` boxes
+both contain arrows pointing to ``employee1``.
+Assignment between references does not change or even touch the
+pointees.
+It just changes which pointee a reference refers to.
 
 .. _numptrsecondlFig:
 
-.. odsafig:: Images/numptrsecond.png
-   :width: 500
-   :align: center
-   :capalign: justify
-   :figwidth: 100%
+.. inlineav:: empRefsecond dgm
 
 
-After assignment, the ``==`` test comparing the two references and will return true if both references are pointing to the
-same pointee. For example ``(second == IntRef)`` above is true. The assignment operation also works with the
-NULL value. An assignment operation with a NULL reference copies the NULL value from one reference to another.
+After the assignment, ``(second == empRef)`` would return true.
 
-Memory drawings are the key to thinking about reference code. When you are looking at code, thinking about how it will use
-memory at run time, then make a quick drawing to work out your ideas. This tutorial certainly uses drawings (visualizations)
-to show how references work. That's the way to do it.
+The assignment operation also works with the ``null`` value.
+An assignment operation with a ``null`` reference copies the ``null``
+value from one reference to another.
+
+Memory drawings are the key to thinking about reference code.
+When you are looking at code, think about how it will use
+memory at run time, then make a quick drawing to work out your ideas.
+This tutorial certainly uses a lot of drawings to show how references
+work.
+That's the way to do it.
 
 Sharing
-~~~~~~~
+-------
 
-Two references which both refer to a single pointee are said to be "sharing". That two or more entities can cooperatively
-share a single memory structure is a key advantage of references. For example ``second`` and  ``IntRef`` in the above example
- share the same object, both can modify the objects value. Reference manipulation is just technique |---| sharing is
-often the real goal. Later we will see how sharing can be used to provide efficient communication between parts of a program.
+Two references which both refer to a single pointee are said to be
+"sharing".
+That two or more entities can cooperatively share a single memory
+structure is a key advantage of references.
+References ``second`` and ``empRef`` in the above example both share the
+same object, so both can modify the object's value.
+Reference manipulation is just technique |---| sharing is often the
+real goal.
+Later we will see how sharing can be used to provide efficient
+communication between parts of a program.
 
 
 Shallow and Deep Copying
-~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------
 
-In particular, sharing can enable communication between more than one :term:`function`. One function passes a reference to the object
-of interest to another function. Both functions can access the object of interest, but the object of interest itself is
-not copied. This communication is called :term:`shallow copy` since instead of making and sending a (large) copy of the object
-of interest, a (small) reference is sent and the object of interest is shared. The recipient needs to understand that they
-have a shallow copy, so they know not to change or delete it since it is shared. The alternative where a complete copy is
-made and sent is known as a :term:`deep copy`.
-
-Deep copies are simpler in a way, since each function can change their copy without interfering with the other copy, but
-deep copies run slower because of all the copying. The drawing below shows shallow and deep copying between two functions,
-A() and B(). In the shallow case, the smiley face is shared by passing a reference between the two. In the deep case,
-the smiley face is copied, and each function gets their own.
+In particular, sharing can enable communication between two functions.
+One function passes a reference to the object of interest to another
+function.
+Both functions can access the object of interest, but the object of
+interest itself is not copied.
+This communication is called :term:`shallow copy` since instead of
+making and sending a (large) copy of the object of interest, a (small)
+reference is sent and the object of interest is shared.
+The recipient needs to understand that they have a shallow copy, so
+they know not to change or delete it since it is shared.
+The alternative where a complete copy is made and sent is known as a
+:term:`deep copy`.
+Deep copies are simpler in a way, since each function can change their
+copy without interfering with the other copy, but deep copies run
+slower because of all the copying.
+The drawing below shows shallow and deep copying between two functions, 
+A() and B().
+In the shallow case, the smiley face is shared by passing a reference
+between the two.
+In the deep case, the smiley face is copied, and each function gets
+their own.
 
 .. _shallowdeepFig:
 
-.. odsafig:: Images/shallowdeep.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 100%
+.. inlineav:: shallowdeep dgm
 
 Here is an example of the difference between shallow and deep copying:
 
 .. codeinclude:: PointersBook/BasicPointers/shallowCopy
    :tag: shallow
-
 
 The next module will explain the above sharing technique in detail.
 
@@ -194,11 +228,15 @@ The next module will explain the above sharing technique in detail.
 Bad references
 --------------
 
-When a reference is first allocated, it does not have a pointee. The reference is :term:`uninitialized` or simply "bad".
-A bad reference has a value ``null``. A dereference operation on a bad reference is a serious runtime error. The dereference
-operation will crash or halt immediately. Each reference must be assigned a pointee before it can support dereference operations.
-Before that, the reference is bad and must not be used. In our memory drawings, the bad reference value is shown with an XXX
-value.
+When a reference is first allocated, it does not have a pointee.
+The reference is :term:`uninitialized` or simply "bad".
+A bad reference has a value ``null``.
+A dereference operation on a bad reference is a serious runtime error.
+The dereference operation will crash or halt immediately.
+Each reference must be assigned a pointee before it can support
+dereference operations.
+Before that, the reference is bad and must not be used. In our memory
+drawings, the bad reference value is shown with an XXX value.
 
 .. _numptrxxxFig:
 
@@ -226,6 +264,16 @@ both levels |---| make a memory drawing during your design to make sure it's rig
 What happens when a dereference to a bad reference occur? A runtime error called ``NullPointerException`` will occur and
 the program will crash. There are some techniques that prevent the program from crashing like using :term:`Exceptions`.
 
+
+The ``Employee`` Class
+----------------------
+
+In this tutorial, the following class will be used to provide some
+examples about pointers.
+
+.. codeinclude:: PointersBook/BasicPointers/PointerExample
+   :tag: EmployeeClass
+   :lang: Java
 
 Syntax
 ------
@@ -367,17 +415,6 @@ which contains a NULL value. The reference has not yet been assigned the specifi
 dereference operations with bad references are so unpredictable.
 
 
-The Term 'Pointer'
-------------------
-
-The word :term:`pointers` means almost the same thing as the word "reference".
-The difference is that "pointer" tends to be used in a discussion of pointers issues
-which is not specific to any particular language or implementation.
-The word "pointers" connotes the common C/C++ implementation of pointers as addresses.
-The word "reference" is also used in the phrase :term:`reference parameter`
-which is a technique that uses reference parameters for two-way communication between functions in C like languages.
-
-
 Why Are Bad Reference Bugs So Common?
 -------------------------------------
 
@@ -388,4 +425,18 @@ a simple variable, such as ``int`` , and use it immediately. All that ``int``, `
 have written has trained you, quite reasonably, that a variable may be used once it is declared. Unfortunately, references
 look like simple variables but they require the extra initialization before use. It's unfortunate, in a way, that references
 happen look like other variables, since it makes it easy to forget that the rules for their use are very different.
-Oh well. Try to remember to assign your references to refer to pointees. Don't be surprised when you forget.
+Oh well. Try to remember to assign your references to refer to
+pointees.
+But don't be surprised when you forget, and your program breaks.
+
+.. odsascript:: AV/PointersSushma/num42.js
+.. odsascript:: AV/PointersSushma/employeeEmpRef.js
+.. odsascript:: AV/PointersSushma/empRefnull.js
+.. odsascript:: AV/PointersSushma/empRefsecond.js
+.. odsascript:: AV/PointersSushma/shallowdeep.js
+
+.. odsascript:: AV/PointersSushma/examplePointerCodeCON.js
+.. odsascript:: AV/PointersSushma/empPtrxxx.js
+.. odsascript:: AV/PointersSushma/employeeEmpPtr2.js
+.. odsascript:: AV/PointersSushma/badPointerPow.js
+.. odsascript:: AV/PointersSushma/empPtrnull.js

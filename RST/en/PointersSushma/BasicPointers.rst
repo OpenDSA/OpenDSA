@@ -211,8 +211,6 @@ Here is an example of the difference between shallow and deep copying:
 .. codeinclude:: PointersBook/BasicPointers/shallowCopy
    :tag: shallow
 
-
-
 The next module will explain the above sharing technique in detail.
 
 
