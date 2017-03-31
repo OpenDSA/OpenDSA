@@ -13,7 +13,15 @@
     "JXOP-debug": "true"
   },
   "chapters": {
-    "Jieon": {
+    "01 Task 1": {
+      "Binary/BinaryTreeImpl_Jieun": {
+        "long_name": "Full Binary Tree Node Implementations",
+        "sections": {
+            }
+          }
+    },
+
+    "02 Line Test": {
       "Binary/BinaryTreeImpl": {
         "long_name": "Full Binary Tree Node Implementations",
         "sections": {
@@ -28,6 +36,8 @@
         }
       }
     },
+
+
     "Appendix": {
       "Glossary": {
         "long_name": "Glossary",
