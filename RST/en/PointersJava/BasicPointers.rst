@@ -277,7 +277,7 @@ The trick is that **both** levels need to be initialized and connected
 for things to work.
 (1) The reference must be allocated, 
 (2) The pointee must be allocated, and (3) the reference must be
- assigned to point to the pointee.
+assigned to point to the pointee.
 It's rare to forget step (1).
 But forget (2) or (3), and the whole thing will blow up at the first
 dereference.
