@@ -129,7 +129,7 @@ the node's subclass.
 .. codeinclude:: Binary/ExpressionTree
    :tag: ExpressionTree
 
-.. inlineav:: Binary/expressionTraversalCon ss
+.. inlineav:: expressionTraversalCON ss
    :output: show
 
 The Expression Tree implementation includes two subclasses derived
@@ -150,4 +150,4 @@ function ``traverse``.
 
 .. odsascript:: AV/Binary/BSTLink.js
 .. odsascript:: AV/Binary/BSTexpression.js
-.. odsascript:: AV/Binary/expressionTraversalCon.js
+.. odsascript:: AV/Binary/expressionTraversalCON.js
