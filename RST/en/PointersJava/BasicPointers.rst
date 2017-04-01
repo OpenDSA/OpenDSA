@@ -159,7 +159,6 @@ It just changes which pointee a reference refers to.
 
 .. inlineav:: empRefsecond dgm
 
-
 After the assignment, ``(second == empRef)`` would return true.
 
 The assignment operation also works with the ``null`` value.
@@ -246,23 +245,48 @@ drawings, the bad reference value is shown with an XXX value.
    :capalign: justify
    :figwidth: 100%
 
-Bad references are very common. In fact,  **every reference starts out with a bad value**. Correct code overwrites the
-bad value with a correct reference to a pointee, and thereafter the reference works fine. There is nothing automatic that
-gives a reference a valid pointee. Quite the opposite |---| most languages make it easy to omit this important step. You just
-have to program carefully. If your code is crashing, a bad reference should be your first suspicion.
-In Java, the run-time system sets each reference to ``null`` when it is allocated and checks it each time it is dereferenced.
-So code can still exhibit reference bugs, but they will halt politely on the offending line. As a result, it is much easier to
-locate and fix reference bugs in dynamic languages (Java). The run-time checks are also a reason why such languages always
-run at least a little slower than a compiled language like C or C++.
+Bad references are common.
+In fact,  **every reference starts out with a bad value**.
+Correct code overwrites the bad value with a correct reference to a
+pointee, and thereafter the reference works fine.
+There is nothing automatic that gives a reference a valid pointee.
+You just have to program carefully.
+Fortunately, in Java, the compiler will usually spot when a reference
+variable has not been initialized, and generate an error (meaning
+that you cannot even complete compiling and run the program).
 
-One way to think about reference code is that operates at two levels |---| reference level and pointee level. The trick
-is that **both** levels need to be initialized and connected for things to work. (1) the reference must be allocated,
-(2) the pointee must be allocated, and (3) the reference must be assigned to point to the pointee. It's rare to forget
-step (1). But forget (2) or (3), and the whole thing will blow up at the first dereference. Remember to account for
-both levels |---| make a memory drawing during your design to make sure it's right.
+On the other hand, that does not stop you from assigning the variable
+to something that will lead to a serious problem later.
+If your code is crashing, a bad reference should be your first
+suspicion.
+In Java, the run-time system checks each time that a reference
+variable is dereferenced to see if it is ``null``.
+So code can still exhibit reference bugs, but the kind that
+dereferences a ``null`` value will at least halt politely on the
+offending line.
+A runtime error called ``NullPointerException`` will occur and
+the program will stop.
+As a result, it is much easier to locate and fix reference bugs in
+Java.
+Such run-time checks are also a reason why Java tends to run at least
+a little slower than a language like C or C++.
 
-What happens when a dereference to a bad reference occur? A runtime error called ``NullPointerException`` will occur and
-the program will crash. There are some techniques that prevent the program from crashing like using :term:`Exceptions`.
+One way to think about reference code is that operates at two levels
+|---| reference level and pointee level.
+The trick is that **both** levels need to be initialized and connected
+for things to work.
+(1) The reference must be allocated, 
+(2) The pointee must be allocated, and (3) the reference must be
+ assigned to point to the pointee.
+It's rare to forget step (1).
+But forget (2) or (3), and the whole thing will blow up at the first
+dereference.
+For example, a popular mistake is declare a string variable, but then
+never assign it an actual string before tyring to print or otherwise
+use it.
+Remember to account for both levels.
+Making a memory drawing during your design can help to make sure that
+it's right.
 
 
 The ``Employee`` Class
