@@ -1,0 +1,10 @@
+#expressionTreeCON .jsavcanvas {
+ height: 225px;
+}
+
+#expressionTreeCON .internalnode {
+  border-radius: 50px;
+  background-color: white;
+  line-height: 22px;
+  z-index: 100; /* Prevents the tails of the edges from showing up in the background of the node */
+}
