@@ -43,7 +43,7 @@ in the usual way to hold a value.
 A variable is deallocated when the system reclaims the memory
 from the variable, so it no longer has an area to store its value.
 For a variable, the period of time from its allocation until its
-:term:`deallocation' is called its :term:`lifetime`.
+:term:`deallocation` is called its :term:`lifetime`.
 
 The most common memory related error is using a deallocated variable.
 For local variables, modern languages automatically protect against

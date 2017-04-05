@@ -9,12 +9,12 @@ CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicat
 CSSLINTFLAGS = --quiet --ignore=ids,adjoining-classes
 MINIMIZE = uglifyjs
 
-.PHONY: all clean alllint csslint lint lintExe jsonlint min testLTI Test TestLMS
+.PHONY: all clean alllint csslint lint lintExe jsonlint min testLTI test TestLMS
 
 all: alllint
 
 
-allbooks: Everything Test CS2 CS3 RecurTutor PL
+allbooks: Everything test CS2 CS3 RecurTutor PL
 
 clean:
 	- $(RM) *~

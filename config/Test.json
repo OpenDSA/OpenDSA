@@ -45,7 +45,7 @@
   },
   "chapters": {
     "02 Line Test": {
-      "Binary/BinaryTreeImpl_Jieun": {
+      "Binary/BinaryTreeImpl": {
         "long_name": "Full Binary Tree Node Implementations",
         "sections": {
           "Binary Tree Node Implementations": {
