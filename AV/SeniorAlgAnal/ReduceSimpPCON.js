@@ -73,8 +73,8 @@ $(document).ready(function() {
   //formula for y
   // var y = 450 - Math.sqrt(400 - Math.pow((x - 410), 2));
 
-var smiley1 = "M 280,90 C 500,-40 650,150 810,450";
-av.g.path(smiley1, {"stroke-width": 4, stroke: "gray"});
+var poly = "M 280,90 C 500,-40 650,150 810,450";
+av.g.path(poly, {"stroke-width": 4, stroke: "gray"});
 
 
   av.displayInit();
