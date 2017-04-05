@@ -16,7 +16,7 @@ $(document).ready(function() {
   var yPositionA = yPositionRectX + (widthBig / 2) + 10;
   var yPositionB = yPositionA + widthSmall;
   var yPositionP = yPositionRectY + (widthBig / 2) + 10;
-  var yPositionQ = yPositionP + widthSmall
+  var yPositionQ = yPositionP + widthSmall;
 
   //creating everything in the X rectangle
   av.umsg("X()'s locals have been allocated and given values");
