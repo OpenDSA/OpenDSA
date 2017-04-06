@@ -7,11 +7,13 @@
    :author: Cliff Shaffer
    :topic: Reductions
 
+.. odsalink:: AV/SeniorAlgAnal/ReduceSimpPCON.css
+
 Reductions
 ==========
 
-Reductions
-----------
+Introduction
+------------
 
 This module introduces an important concept for
 understanding the relationships between problems, called
@@ -21,7 +23,6 @@ Equally importantly, when we wish to understand the difficulty of a
 problem, reduction allows us to make relative statements about
 upper and lower bounds on the cost of a problem (as opposed to an
 algorithm or program).
-
 
 Because the concept of a problem is discussed extensively in this
 chapter, we want notation to simplify problem descriptions.
@@ -39,6 +40,10 @@ follows:
    **Output:**
    A permutation :math:`y_0, y_1, y_2, \ldots, y_{n-1}` of the
    sequence such that :math:`y_i \leq y_j` whenever :math:`i < j`.
+
+
+Example: The Pairing Problem
+----------------------------
 
 When you buy or write a program to solve one problem, such
 as sorting, you might be able to use it to help solve a different
@@ -120,6 +125,10 @@ Certainly if we use sorting to solve **PAIRING**,
 the algorithms will require :math:`\Omega(n \log n)` time.
 But, another approach might conceivably be faster.
 
+
+Reductino and Finding a Lower Bound
+-----------------------------------
+
 There is another use of reductions aside from applying an old
 algorithm to solve a new problem (and thereby establishing an upper
 bound for the new problem).
@@ -173,6 +182,10 @@ The conversion of **SORTING** to **PAIRING** can be done in
 :math:`O(n)` time. 
 Thus, the cost of this "sorting algorithm" is dominated by the cost
 for **PAIRING**.
+
+
+The Reduction Template
+----------------------
 
 Consider any two problems for which a suitable reduction from one to
 the other can be found.
@@ -228,6 +241,10 @@ the upper bound of the first problem is at most the upper bound of
 the second.
 Conversely, the lower bound of the second problem is at least the
 lower bound of the first.
+
+
+Two Matrix Multiplication Examples
+----------------------------------
 
 As a second example of reduction, consider the simple problem of
 multiplying two :math:`n`-digit numbers.
@@ -356,3 +373,73 @@ The following slideshow illustrates this reduction process.
        in position :math:`ji` of the transpose matrix.
        This can easily be done in :math:`n^2` time for an
        :math:`n \times n` matrix.
+
+
+Bounds Theorems
+---------------
+
+We will use the following notation:
+:math:`\leq_{O(g(n))}` means that a reduction can be done
+with transformations that cost :math:`O(g(n))`.
+
+**Lower Bound Theorem}**: If :math:`P_1 \leq_{O(g(n))} P_2`,
+then there is a lower bound of :math:`\Omega(h(n))` on the time
+complexity of :math:`P_1`, and :math:`g(n) = o(h(n))`,
+then there is a lower bound of :math:`\Omega(h(n))` on
+:math:`P_2`.
+(Notice little-oh, not big-Oh.)
+
+Example:
+SORTING :math:`\leq_{O(n)}` PAIRING, because
+:math:`g(n) = n`, :math:`h(n) = n \log n`, and
+:math:`g(n) = o(h(n))`.
+The Lower Bound Theorem gives us an :math:`\Omega(n \log n)`
+lower bound on PAIRING.
+
+This also goes the other way.
+
+**Upper Bound Theorem**: If :math:`P_2` has time complexity
+:math:`O(h(n))` and :math:`P_1 \leq_{O(g(n))} P_2`, then
+:math:`P_1` has time complexity :math:`O(g(n) + h(n))`.
+
+So, given good transformations, both problems take at least
+:math:`\Omega(P_1)` and at most :math:`O(P_2)`.
+
+
+The Cost of Making a Simple Polygon
+-----------------------------------
+
+SIMPLE POLYGON: Given a set of :math:`n` points in the plane,
+find a simple polygon with those points as vertices.
+(Here, "simple" means that no lines cross.)
+We will show that SORTING :math:`\leq_{O(n)}` SIMPLE POLYGON.
+
+We start with an instance of SORTING: :math:`\{x_1, x_2, \cdots, x_n\}`.
+In linear time, find :math:`M = \max|x_i|`.
+Let :math:`C` be a circle centered at the origin, of radius :math:`M`.
+
+We will generate an instance of SIMPLE POLYGON by replacing each value
+in the array to be sorted with a corresponding point defined as
+
+.. math::
+
+   \{(x_1, \sqrt{M^2 - x_i^2}), \cdots, (x_n, \sqrt{M^2 - x_n^2})\}.
+
+.. inlineav:: ReduceSimpPCON dgm
+   :align: center
+
+   Input to SORTING: the values 5, -3, 2, 0, 10.
+   When converted to points, they fall on a circle as shown.
+
+It is an important fact that all of these points fall on :math:`C`.
+Furthermore, when we find a simple polygon, the points all fall along
+the circle in sort order.
+This is because
+the only simple polygon having all of its points on :math:`C` as
+vertices is the convex one.
+Therefore, by the Lower Bound Theorem, SIMPLE POLYGON is in
+:math:`\Omega(n \log n)`.
+
+
+
+.. odsascript:: AV/SeniorAlgAnal/ReduceSimpPCON.js

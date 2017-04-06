@@ -143,6 +143,17 @@ line between the corners of the reference variable's box.
 .. inlineav:: empRefnullCON dgm
 
 
+The ``Employee`` Class
+----------------------
+
+We are going to use the ``Employee`` object for a lot of our examples,
+so let's introduce it now.
+
+.. codeinclude:: PointersBook/BasicPointers/PointerExample
+   :tag: EmployeeClass
+   :lang: Java
+
+
 Reference Assignments
 ---------------------
 
@@ -303,17 +314,6 @@ Making a memory drawing during your design can help to make sure that
 it's right.
 
 
-The ``Employee`` Class
-----------------------
-
-In this tutorial, the following class will be used to provide some
-examples about pointers.
-
-.. codeinclude:: PointersBook/BasicPointers/PointerExample
-   :tag: EmployeeClass
-   :lang: Java
-
-
 Syntax
 ------
 
@@ -337,8 +337,8 @@ Reference variables are declared just like any other variable. The declaration g
 variable and reserves memory to hold its value. The declaration does not assign a pointee for the reference |---| the
 reference starts out with a ``null``.
 
-.. codeinclude:: PointersBook/BasicPointers/referenceExample
-   :tag: referenceVariables
+.. codeinclude:: PointersBook/BasicPointers/PointerExample
+   :tag: PointerVariables
    :lang: Java
 
 Assigning a pointee to a reference
@@ -354,7 +354,7 @@ reference in the left hand side. The code below uses a reference and an ``=`` to
    :capalign: justify
    :figwidth: 100%
 
-.. codeinclude:: PointersBook/BasicPointers/referenceExample
+.. codeinclude:: PointersBook/BasicPointers/PointerExample
    :tag: AssigningPointee
    :lang: Java
 
@@ -370,7 +370,7 @@ Example Reference Code
 
 With the syntax defined, we can now write some reference code that demonstrates all the reference rules.
 
-.. codeinclude:: PointersBook/BasicPointers/referenceExample
+.. codeinclude:: PointersBook/BasicPointers/PointerExample
    :tag: Example
 
 .. odsafig:: Images/abcpqxxx.png
@@ -401,8 +401,8 @@ a bad reference will raise NullPointerException and the program will crash. It i
 each reference is assigned a pointee before it is used. The following example shows a simple example of the bad code and a
 drawing of how memory is likely to react.
 
-.. codeinclude:: PointersBook/BasicPointers/badreferences
-   :tag: badreferences
+.. codeinclude:: PointersBook/BasicPointers/badPointers
+   :tag: badPointers
 
 .. odsafig:: Images/pPow.png
    :width: 400
