@@ -1,0 +1,14 @@
+#GrowthRatesCON .jsavcanvas {
+  height: 1000px;
+  width: 600px;
+}
+
+.squareLine{
+  stroke-width: 1.5;
+  stroke-dasharray: 7,7;
+}
+
+.dashLine{
+  stroke-width: 1;
+  stroke-dasharray: 10,10;
+}
