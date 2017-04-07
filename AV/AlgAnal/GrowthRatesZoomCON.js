@@ -3,12 +3,12 @@
 
 $(document).ready(function() {
   "use strict";
-  var av = new JSAV("GrowthRatesCON", {animationMode: "none"});
+  var av = new JSAV("GrowthRatesZoomCON", {animationMode: "none"});
 
   var xStart = 100, yStart = 50;
   var width = 600, height = 300;
   var xyScale = height/width;
-  var xMax = 50, yMax = 1500;
+  var xMax = 15, yMax = 400;
 
   var xSteps = width / xMax;  //each pixels per 1 x-unit.
   var ySteps = height / yMax;  //each pixels per 1 y-unit.
@@ -23,50 +23,38 @@ $(document).ready(function() {
   av.g.line(xStart, yStart, xStart, yEnd, {"stroke-width": 2});
 
   //draw x-asix lines for graph 1
-  var stepx1 = width/10;
-  var x1 = xStart + stepx1;
-  for(i = 0; i < 10; i++){
-    av.g.line(x1, yEnd - 5, x1, yEnd, {"stroke-width": 0.8});
-    x1 += stepx1;
+  var stepx = width/3;
+  var lines_x = xStart + stepx;
+  for(i = 0; i < 3; i++){
+    av.g.line(lines_x, yEnd - 5, lines_x, yEnd, {"stroke-width": 0.8});
+    lines_x += stepx;
   }
 
   // draw y-asix lines for graph 1:
-  var stepy1 = height/15;
-  var y1 = yEnd - stepy1;
-  for(i = 0; i < 15; i++){
-    av.g.line(xStart, y1, xStart + 5, y1, {"stroke-width": 0.8});
-    y1 -= stepy1;
+  var stepy = height/4;
+  var lines_y = yEnd - stepy;
+  for(i = 0; i < 4; i++){
+    av.g.line(xStart, lines_y, xStart + 5, lines_y, {"stroke-width": 0.8});
+    lines_y -= stepy;
   }
 
   //plot1 x-asix labels
   var labelx1_x = xStart - 10;
   var labelx1_y = yEnd;
-  for (i = 0; i <= 50; i += 10){
+  var xlabelSize = 5;
+  for (i = 0; i <= xMax; i += xlabelSize){
     av.label(i,  {left: labelx1_x, top: labelx1_y});
-    labelx1_x += (xSteps * 10);
+    labelx1_x += (xSteps * xlabelSize);
   }
-
+//
   // plot1 y-asix labels
   var labely1_x = xStart - 40;
   var labely1_y = yEnd - 25;
-  for (var i = 0; i <= 1400; i += 200){
+  var ylabelSize = 100;
+  for (var i = 0; i <= yMax; i += ylabelSize){
       av.label(i,  {left: labely1_x, top: labely1_y}).addClass("yLabel");
-      labely1_y -= (ySteps * 200);
+      labely1_y -= (ySteps * ylabelSize);
   }
-
-  //horizontal lines
-  var xBoxEnd = xStart + (xSteps * 15);
-  var yBoxEnd = yEnd - (ySteps * 500);
-  var dashBoxLine1 = av.g.line(xStart, yBoxEnd, xBoxEnd, yBoxEnd);
-  var dashBoxLine2 = av.g.line(xStart, yEnd, xBoxEnd, yEnd);
-  // //vertical lines
-  var dashBoxLine3 = av.g.line(xStart,  yBoxEnd, xStart, yEnd);
-  var dashBoxLine4 = av.g.line(xBoxEnd, yBoxEnd, xBoxEnd, yEnd);
-  dashBoxLine1.addClass("dashBoxLine");
-  dashBoxLine2.addClass("dashBoxLine");
-  dashBoxLine3.addClass("dashBoxLine");
-  dashBoxLine4.addClass("dashBoxLine");
-
 //--------------------------------------------------------------------
   /**
     Drawing Dash Line Function:
@@ -102,7 +90,6 @@ $(document).ready(function() {
     return 20 * n;
   }
 
-//----------------------------------------------------------------------
 //--------------------------------------------------------------------
   /**
     Drawing Curve:
@@ -125,12 +112,13 @@ $(document).ready(function() {
   var DC_xStep = DC_width / DC_xMax;
   var DC_x;
   var DC_y;
+  var DC_incSize = 0.01;
 
 //20nlogn-----------------------------------------------------
-  for(i = 0; i < DC_xMax; i += 0.1){
+  for(i = 1; i < DC_xMax; i += DC_incSize){
     DC_x = DC_xFrom + (i * DC_xStep);
     DC_y = DC_yFrom - ((DC_func(i)/DC_yMax) * DC_height);
-    av.g.circle(DC_x, DC_y, 0.7, {fill: 'black'});
+    av.g.circle(DC_x, DC_y, 0.5, {fill: 'black'});
     if(DC_y < DC_yTO){
       break;
     }
@@ -139,10 +127,12 @@ $(document).ready(function() {
 //-------------------------------------------------------------
 
 //2 * pow(n, 2)-----------------------------------------------------
+
+  DC_incSize = 0.001;
   DC_func = function(n){
    return 2 * Math.pow(n, 2);
   };
-  for(i = 0; i < DC_xMax; i += 0.05){
+  for(i = 0; i < DC_xMax; i += DC_incSize){
     DC_x = DC_xFrom + (i * DC_xStep);
     DC_y = DC_yFrom - (DC_func(i)/DC_yMax * DC_height);
     av.g.circle(DC_x, DC_y, 0.7, {fill: 'black'});
@@ -155,13 +145,14 @@ $(document).ready(function() {
 
 
 // pow(2, n)-----------------------------------------------------
+  DC_incSize = 0.0005;
   DC_func = function(n){
    return Math.pow(2, n);
   };
   for(i = 0; i < DC_xMax; i += 0.005){
     DC_x = DC_xFrom + (i * DC_xStep);
     DC_y = DC_yFrom - (DC_func(i)/DC_yMax * DC_height);
-    av.g.circle(DC_x, DC_y, 0.7, {fill: 'black'});
+    av.g.circle(DC_x, DC_y, 1, {fill: 'black'});
     if(DC_y < DC_yTO){
       break;
     }
@@ -194,7 +185,8 @@ $(document).ready(function() {
   };
 
   var points = [];
-  for(i = 0; i < DC_xMax; i += 0.01){
+  DC_incSize = 0.001;
+  for(i = 0; i < DC_xMax; i += DC_incSize){
     DC_x = DC_xFrom + (i * DC_xStep);
     DC_y = DC_yFrom - (DC_func(i)/DC_yMax * DC_height);
     points.push([DC_x, DC_y]);

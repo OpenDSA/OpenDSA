@@ -10,6 +10,7 @@
    :topic: Algorithm Analysis
 
 .. odsalink:: AV/AlgAnal/GrowthRatesCON.css
+.. odsalink:: AV/AlgAnal/GrowthRatesZoomCON.css
 
 Comparing Algorithms
 ====================
@@ -236,6 +237,9 @@ algorithms are shown.
 .. _RunTimeGraph:
 
 .. inlineav:: GrowthRatesCON dgm
+    :align: center
+
+.. inlineav:: GrowthRatesZoomCON dgm
    :align: center
 
    Two views of a graph illustrating the growth rates for
@@ -348,3 +352,4 @@ Growth Rates Ordering Exercise
 
 
 .. odsascript:: AV/AlgAnal/GrowthRatesCON.js
+.. odsascript:: AV/AlgAnal/GrowthRatesZoomCON.js

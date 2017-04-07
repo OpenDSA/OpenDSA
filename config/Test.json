@@ -44,25 +44,25 @@
     "JXOP-debug": "true"
   },
   "chapters": {
-    "02 Line Test": {
+    "01 Line Test": {
       "Binary/BinaryTreeImpl": {
         "long_name": "Full Binary Tree Node Implementations",
         "sections": {
-          "Binary Tree Node Implementations": {
-            "expressionTraversalCON": {
-              "long_name": "Expression Tree Traversal Slideshow",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            }
-          }
         }
       }
     },
 
     "02 Line Test": {
       "NP/Reduction": {
-        "long_name": "Full Binary Tree Node Implementations",
+        "long_name": "Reduction test",
+        "sections": {
+        }
+      }
+    },
+
+    "03 Plot Test": {
+      "AlgAnal/AnalIntro_Jieun": {
+        "long_name": "plot test",
         "sections": {
         }
       }
