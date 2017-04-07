@@ -126,7 +126,7 @@ the algorithms will require :math:`\Omega(n \log n)` time.
 But, another approach might conceivably be faster.
 
 
-Reductino and Finding a Lower Bound
+Reduction and Finding a Lower Bound
 -----------------------------------
 
 There is another use of reductions aside from applying an old
@@ -243,8 +243,8 @@ Conversely, the lower bound of the second problem is at least the
 lower bound of the first.
 
 
-Two Matrix Multiplication Examples
-----------------------------------
+Two Multiplication Examples
+---------------------------
 
 As a second example of reduction, consider the simple problem of
 multiplying two :math:`n`-digit numbers.
@@ -282,9 +282,14 @@ The significance of this formula is that it allows us to
 convert an arbitrary instance of multiplication to a series of
 operations involving three addition/subtractions (each of which can be
 done in linear time), two squarings, and a division by 4.
+This is because
+
+.. math::
+
+   (X + Y)^2 - (X - Y)^2 = X^2 + 2XY + Y^2 - (X^2 - 2XY + Y^2) = 4XY
+
 Note that the division by 4 can be done in linear time (simply convert
 to binary, shift right by two digits, and convert back).
-
 This reduction shows that if a linear time algorithm for squaring can
 be found, it can be used to construct a linear time algorithm for
 multiplication.
