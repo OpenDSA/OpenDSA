@@ -853,6 +853,16 @@ Glossary
       In Theta notation, this is traditionally written as
       :math:`\Theta(1)`.
 
+   constructive induction
+      A process for finding the closed form for a
+      :term:`recurrence relation` ,
+      that involves substituting in a guess for the closed form to
+      replace the recursive part(s) of the recurrence.
+      Depending on the goal (typically either to show that the
+      hypothesized growth rate is right, or to find the precise
+      constants), one then manipulates the resulting non-recursive
+      equation.
+
    container
    container class
       A :term:`data structure` that stores a collection of
@@ -1691,6 +1701,14 @@ Glossary
 
       In :term:`algorithm analysis`, the rate at which the cost
       of the :term:`algorithm` grows as the size of its input grows.
+
+   guess-and-test
+      A technique used when trying to determine the
+      :term:`closed-form solution` for a 
+      :term:`summation` or :term:`recurrence relation`.
+      Given a hypothesis for the closed-form solution,
+      if it is correct, then it is often relatively easy to prove that
+      using :term:`induction`.
 
    guided traversal
       A :term:`tree traversal` that does not need to visit every node
