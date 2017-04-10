@@ -244,7 +244,7 @@
       }
     },
     "Miscellaneous": {
-      "Development/DynamicProgramming": {
+      "SeniorAlgAnal/DynamicProgramming": {
         "long_name": "Dynamic Programming",
         "sections": {}
       },
@@ -252,7 +252,7 @@
         "long_name": "All-Pairs Shortest Paths",
         "sections": {}
       },
-      "Development/AmortAnal": {
+      "SeniorAlgAnal/AmortAnal": {
         "long_name": "Amortized Analysis",
         "sections": {}
       },

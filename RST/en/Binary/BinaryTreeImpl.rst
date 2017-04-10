@@ -10,6 +10,8 @@
    :topic: Binary Trees
 
 .. odsalink:: AV/Binary/BTCON.css
+.. odsalink:: AV/Binary/BTnullpointerCON.css
+.. odsalink:: AV/Binary/expressionTreeCON.css
 
 Binary Tree Node Implementations
 ================================
@@ -39,14 +41,12 @@ one to its left child and another to its right child.
 .. codeinclude:: Binary/BSTNode
    :tag: BSTNode
 
+|
+
 .. _BinLink:
 
-.. odsafig:: Images/BinLink.png
-   :width: 300
+.. inlineav:: BTnullpointerCON dgm
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Binary tree node implementation
 
    Illustration of a typical pointer-based binary tree implementation,
    where each node stores two child pointers and a value.
@@ -85,12 +85,8 @@ implementations for internal and leaf nodes.
 
 .. _DiffNodes:
 
-.. odsafig:: Images/DiffNode.png
-   :width: 300
+.. inlineav:: expressionTreeCON dgm
    :align: center
-   :capalign: center
-   :figwidth: 90%
-   :alt: Expression Tree
 
    An expression tree for :math:`4x(2x + a) - c`.
 
@@ -154,4 +150,6 @@ The other member functions for the derived subclasses are accessed by
 type-casting the base class pointer as appropriate, as shown in
 function ``traverse``.
 
+.. odsascript:: AV/Binary/BTnullpointerCON.js
+.. odsascript:: AV/Binary/expressionTreeCON.js
 .. odsascript:: AV/Binary/expressionTraversalCON.js

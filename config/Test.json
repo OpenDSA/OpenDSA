@@ -3,28 +3,67 @@
   "desc": "Test",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
+  "code_lang": {
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Processing": {
+      "ext": [
+        "pde"
+      ],
+      "label": "Processing",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
   "lang": "en",
   "build_JSAV": false,
   "build_cmap": false,
-  "suppress_todo": false,
+  "suppress_todo": true,
   "dispModComp": true,
   "tag": "CPP;CS2",
   "glob_exer_options": {
     "JXOP-debug": "true"
   },
   "chapters": {
-    "02 Line Test": {
-      "Binary/BinaryTreeImpl_Jieun": {
+    "01 Line Test": {
+      "Binary/BinaryTreeImpl": {
         "long_name": "Full Binary Tree Node Implementations",
         "sections": {
-          "Binary Tree Node Implementations": {
-            "expressionTraversalCON": {
-              "long_name": "Expression Tree Traversal Slideshow",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            }
-          }
+        }
+      }
+    },
+
+    "02 Line Test": {
+      "NP/Reduction": {
+        "long_name": "Reduction test",
+        "sections": {
+        }
+      }
+    },
+
+    "03 Plot Test": {
+      "AlgAnal/AnalIntro_Jieun": {
+        "long_name": "plot test",
+        "sections": {
         }
       }
     },

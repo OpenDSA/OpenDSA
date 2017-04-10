@@ -9,21 +9,21 @@
    :satisfies: Pointer intro
    :topic: Pointers
 
-   .. odsalink:: AV/PointersSushma/num42.css
-   .. odsalink:: AV/PointersSushma/employeeEmpRef.css
-   .. odsalink:: AV/PointersSushma/empRefnull.css
-   .. odsalink:: AV/PointersSushma/empRefsecond.css
-   .. odsalink:: AV/PointersSushma/shallowdeep.css
+.. odsalink:: AV/PointersSushma/num42CON.css
+.. odsalink:: AV/PointersSushma/employeeEmpRefCON.css
+.. odsalink:: AV/PointersSushma/empRefnullCON.css
+.. odsalink:: AV/PointersSushma/empRefsecondCON.css
+.. odsalink:: AV/PointersSushma/shallowdeepCON.css
 
-   .. odsalink:: AV/PointersSushma/examplePointerCodeCON.css
-   .. odsalink:: AV/PointersSushma/empPtrxxx.css
-   .. odsalink:: AV/PointersSushma/employeeEmpPtr2.css
-   .. odsalink:: AV/PointersSushma/badPointerPow.css
+.. odsalink:: AV/PointersSushma/examplePointerCodeCON.css
+.. odsalink:: AV/PointersSushma/empPtrxxx.css
+.. odsalink:: AV/PointersSushma/employeeEmpPtr2.css
+.. odsalink:: AV/PointersSushma/badPointerPow.css
 
 Basic References
 ================
 
-What is a pointer?
+What is a Pointer?
 ------------------
 
 There's a lot of nice, tidy code you can write without knowing about
@@ -47,7 +47,7 @@ Second, pointers enable complex linked data structures like
 :term:`binary trees <binary tree>`. 
 
 
-What is a reference?
+What is a Reference?
 --------------------
 
 Java actually uses only a restricted version of the pointer concept,
@@ -57,12 +57,14 @@ used in discussions that are not specific to any particular language
 or implementation.
 The word "pointers" connotes the common C/C++ implementation of
 pointers as :term:`addresses <address>` or locations in memory.
-Programmers have limited access to what they can do with a reference.
+Programmers have more limited access with a reference,
+and so more limits on what they can do.
 Programmers cam only assign to a reference and compare two references
 for equality.
 Other uses of a reference is done implicitly with no control from the
 programmer.
 These restrictions reduce the chance for bugs.
+
 
 Data Types in Java
 ------------------
@@ -70,36 +72,39 @@ Data Types in Java
 Simple ``int`` and ``float`` variables operate pretty intuitively. An
 ``int`` variable is like a box which can store a single ``int`` value such
 as 42. In a drawing, a simple variable is a box with its current value
-drawn inside.
+shown inside.
 
 .. _num42Fig:
 
-.. inlineav:: num42 dgm
+.. inlineav:: num42CON dgm
    :align: center
 
-A reference works a little differently.
+A reference variable works a little differently.
 It does not store a simple value directly.
-Instead, a reference stores a :term:`reference` to another value.
-The variable that the reference refers to is sometimes known as its
+Instead, a reference variable stores a :term:`reference` to some
+:term:`object`.
+The object that the reference refers to is sometimes known as its
 :term:`pointee`. 
-In the next figure, the reference (called ``empRef``) is shown as a
-box that contains the beginning of a directed line, which leads to its
-pointee (an ``Employee`` object in the box named ``employee1``).
+In the next figure, the reference variable (called ``empRef``) is
+shown as a box that contains the beginning of a directed line, which
+leads to its pointee (an ``Employee`` object in the box named
+``employee1``).
 So ``empRef`` is the reference and ``employee1`` is its pointee.
 What is stored inside of ``empRef``?
-Its value is not an ``Employee`` object.
+Its value is **not** an ``Employee`` object.
 Its value is only a reference to an ``Employee`` object.
 (By the way, there is no commonly used word for the concept of a
 pointee |---| pointee is just the word used in these explanations.)
 
 .. _numnumptrFig:
 
-.. inlineav:: employeeEmpRef dgm
+.. inlineav:: employeeEmpRefCON dgm
 
 Going back to simple things like ``int`` and ``float`` variables that
-just store a value in a box.
-In Java, these are referred to as :term:`primitive data types`.
-In Java, Objects and Arrays are :term:`non-primitive data types`,
+just store a value in a box:
+In Java, these are referred to as
+:term:`primitive data types <primitive data type>`.
+In Java, Objects and Arrays are non-primitive data types,
 and they are always accessed by references.
 Java automatically uses references behind the scenes for such complex
 types, and no reference-specific syntax used.
@@ -109,24 +114,25 @@ You just need to realize that assignment operations like
 Assignments and parameters with arrays and objects are intrinsically
 shallow or shared |---| see the Deep vs. Shallow Copy material below.
 
-Referenceing and  Dereferencing
--------------------------------
 
-The :term:`dereference` operation follows a reference to get the value
-of its pointee.
-The value of the dereference of ``empRef`` above is the object
-``employee1``.
-Dereference is just accessing the value of the pointee.
-The only restriction is that the reference must have a pointee for the
+Referencing and  Dereferencing
+------------------------------
+
+:term:`Dereferencing <dereference>` means to follow a reference to get
+the value of its pointee.
+The value of the dereference of ``empRef`` in the figure above is the
+object ``employee1``.
+So, "dereference" just means to access the value of the pointee.
+The key restriction is that the reference must have a pointee for the
 dereference to access.
-Almost all bugs in reference code involve violating that one
+A lot of bugs in reference code involve violating that one
 restriction.
 A reference must be assigned a pointee before dereference operations
 will work.
 
 The constant ``null`` is a special reference value that encodes the
 idea of "points to nothing".
-It turns out to be convenient to have a well defined reference value
+It turns out to be convenient to have a well-defined reference value
 to represent the idea that a reference does not have a pointee.
 It is a runtime error to dereference a ``null`` reference.
 In drawings, the value ``null`` is often drawn as a diagonal
@@ -134,19 +140,33 @@ line between the corners of the reference variable's box.
 
 .. _numptrnullFig:
 
-.. inlineav:: empRefnull dgm
+.. inlineav:: empRefnullCON dgm
+
+
+The ``Employee`` Class
+----------------------
+
+We are going to use the ``Employee`` object for a lot of our examples,
+so let's introduce it now.
+
+.. codeinclude:: PointersBook/BasicPointers/PointerExample
+   :tag: EmployeeClass
+   :lang: Java
 
 
 Reference Assignments
 ---------------------
 
-The assignment operation (``=``) between two references makes them
-point to the same pointee.
+An assignment (``=``) of one reference to another makes them point to
+the same pointee.
 It's a simple rule for a potentially complex situation, so it is worth
 repeating: assigning one reference to another makes them point to the
 same thing.
 The example below adds a second reference, ``second``, assigned with
-the statement ``second = empRef;``.
+the statement::
+
+   second = empRef;
+
 The result is that ``second`` points to the same pointee as
 ``empRef``.
 In the drawing, this means that the ``second`` and ``empRef`` boxes
@@ -157,9 +177,10 @@ It just changes which pointee a reference refers to.
 
 .. _numptrsecondlFig:
 
-.. inlineav:: empRefsecond dgm
+.. inlineav:: empRefsecondCON dgm
 
-After the assignment, ``(second == empRef)`` would return true.
+After the assignment, testing for ``(second == empRef)`` would return
+true.
 
 The assignment operation also works with the ``null`` value.
 An assignment operation with a ``null`` reference copies the ``null``
@@ -168,9 +189,9 @@ value from one reference to another.
 Memory drawings are the key to thinking about reference code.
 When you are looking at code, think about how it will use
 memory at run time, then make a quick drawing to work out your ideas.
-This tutorial certainly uses a lot of drawings to show how references
-work.
-That's the way to do it.
+This tutorial uses a lot of drawings to show how references work.
+You should too.
+
 
 Sharing
 -------
@@ -180,7 +201,7 @@ Two references which both refer to a single pointee are said to be
 That two or more entities can cooperatively share a single memory
 structure is a key advantage of references.
 References ``second`` and ``empRef`` in the above example both share the
-same object, so both can modify the object's value.
+same object, so either can modify the object's value.
 Reference manipulation is just technique |---| sharing is often the
 real goal.
 Later we will see how sharing can be used to provide efficient
@@ -190,23 +211,27 @@ communication between parts of a program.
 Shallow and Deep Copying
 ------------------------
 
-In particular, sharing can enable communication between two functions.
+An important use of sharing is to enable communication between two
+functions.
 One function passes a reference to the object of interest to another
 function.
 Both functions can access the object of interest, but the object of
 interest itself is not copied.
-This communication is called :term:`shallow copy` since instead of
+This communication is called :term:`shallow copy` since, instead of
 making and sending a (large) copy of the object of interest, a (small)
 reference is sent and the object of interest is shared.
-The recipient needs to understand that they have a shallow copy, so
-they know not to change or delete it since it is shared.
-The alternative where a complete copy is made and sent is known as a
-:term:`deep copy`.
+The recipient needs to understand that they have a shallow copy,
+so that they know not to change or delete it accidentally,
+since it is shared.
+The alternative |---| where a complete copy is made and sent |---| is
+known as a :term:`deep copy`.
 Deep copies are simpler in a way, since each function can change their
-copy without interfering with the other copy, but deep copies run
-slower because of all the copying.
+copy without interfering with the other copy.
+But deep copies run slower because of all the copying.
+And if the second function was **meant** to modify the copy for every
+user of the object, then deep copy won't let this happen.
 The drawing below shows shallow and deep copying between two functions, 
-A() and B().
+``A()`` and ``B()``.
 In the shallow case, the smiley face is shared by passing a reference
 between the two.
 In the deep case, the smiley face is copied, and each function gets
@@ -214,7 +239,7 @@ their own.
 
 .. _shallowdeepFig:
 
-.. inlineav:: shallowdeep dgm
+.. inlineav:: shallowdeepCON dgm
 
 Here is an example of the difference between shallow and deep copying:
 
@@ -224,7 +249,7 @@ Here is an example of the difference between shallow and deep copying:
 The next module will explain the above sharing technique in detail.
 
 
-Bad references
+Bad References
 --------------
 
 When a reference is first allocated, it does not have a pointee.
@@ -289,22 +314,13 @@ Making a memory drawing during your design can help to make sure that
 it's right.
 
 
-The ``Employee`` Class
-----------------------
-
-In this tutorial, the following class will be used to provide some
-examples about pointers.
-
-.. codeinclude:: PointersBook/BasicPointers/PointerExample
-   :tag: EmployeeClass
-   :lang: Java
-
 Syntax
 ------
 
 The above basic features of references, pointees, dereferencing, and assigning are the only concepts you need to build
 reference code. However, in order to talk about reference code, we need to use a known syntax which is about as interesting
 as... a syntax. We will use the Java language syntax which has the advantage that it has influenced the syntaxes of several languages.
+
 
 Non-primitive Type Syntax
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -321,8 +337,8 @@ Reference variables are declared just like any other variable. The declaration g
 variable and reserves memory to hold its value. The declaration does not assign a pointee for the reference |---| the
 reference starts out with a ``null``.
 
-.. codeinclude:: PointersBook/BasicPointers/referenceExample
-   :tag: referenceVariables
+.. codeinclude:: PointersBook/BasicPointers/PointerExample
+   :tag: PointerVariables
    :lang: Java
 
 Assigning a pointee to a reference
@@ -338,7 +354,7 @@ reference in the left hand side. The code below uses a reference and an ``=`` to
    :capalign: justify
    :figwidth: 100%
 
-.. codeinclude:: PointersBook/BasicPointers/referenceExample
+.. codeinclude:: PointersBook/BasicPointers/PointerExample
    :tag: AssigningPointee
    :lang: Java
 
@@ -354,7 +370,7 @@ Example Reference Code
 
 With the syntax defined, we can now write some reference code that demonstrates all the reference rules.
 
-.. codeinclude:: PointersBook/BasicPointers/referenceExample
+.. codeinclude:: PointersBook/BasicPointers/PointerExample
    :tag: Example
 
 .. odsafig:: Images/abcpqxxx.png
@@ -385,8 +401,8 @@ a bad reference will raise NullPointerException and the program will crash. It i
 each reference is assigned a pointee before it is used. The following example shows a simple example of the bad code and a
 drawing of how memory is likely to react.
 
-.. codeinclude:: PointersBook/BasicPointers/badreferences
-   :tag: badreferences
+.. codeinclude:: PointersBook/BasicPointers/badPointers
+   :tag: badPointers
 
 .. odsafig:: Images/pPow.png
    :width: 400
@@ -411,7 +427,7 @@ No matter how complex a reference structure gets, the list of rules remains shor
 * Assignment between two references makes them refer to the same pointee which introduces ``object sharing``.
 
 
-Java references Features
+Java References Features
 ------------------------
 The Java references have two main features.
 
@@ -453,14 +469,13 @@ Oh well. Try to remember to assign your references to refer to
 pointees.
 But don't be surprised when you forget, and your program breaks.
 
-.. odsascript:: AV/PointersSushma/num42.js
-.. odsascript:: AV/PointersSushma/employeeEmpRef.js
-.. odsascript:: AV/PointersSushma/empRefnull.js
-.. odsascript:: AV/PointersSushma/empRefsecond.js
-.. odsascript:: AV/PointersSushma/shallowdeep.js
+.. odsascript:: AV/PointersSushma/num42CON.js
+.. odsascript:: AV/PointersSushma/employeeEmpRefCON.js
+.. odsascript:: AV/PointersSushma/empRefnullCON.js
+.. odsascript:: AV/PointersSushma/empRefsecondCON.js
+.. odsascript:: AV/PointersSushma/shallowdeepCON.js
 
 .. odsascript:: AV/PointersSushma/examplePointerCodeCON.js
 .. odsascript:: AV/PointersSushma/empPtrxxx.js
 .. odsascript:: AV/PointersSushma/employeeEmpPtr2.js
 .. odsascript:: AV/PointersSushma/badPointerPow.js
-.. odsascript:: AV/PointersSushma/empPtrnull.js

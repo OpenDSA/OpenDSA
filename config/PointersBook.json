@@ -35,16 +35,20 @@
       "PointersJava/BasicPointers": {
         "long_name": "Basic References",
         "sections": {
-          "What is a reference?": {},
-          "Reference Dereferencing": {},
-          "Reference Assignment": {},
-          "Bad references": {},
+          "What is a Pointer?": {},
+          "What is a Reference?": {},
+          "Data Types in Java": {},
+          "Referencing and  Dereferencing": {},
+          "The ``Employee`` Class": {},
+          "Reference Assignments": {},
+          "Sharing": {},
+          "Shallow and Deep Copying": {},
+          "Bad References": {},
           "Syntax": {},
           "Example Reference Code": {},
           "Reference Rules Summary": {},
-          "Java references Features": {},
+          "Java References Features": {},
           "How Are References Implemented In The Machine?": {},
-          "The Term 'Pointer'": {},
           "Why Are Bad Reference Bugs So Common?": {}
         }
       },

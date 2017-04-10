@@ -63,6 +63,9 @@ Glossary
       In :term:`graph` terminology, a graph that contains no
       :term:`cycles <cycle>`.
 
+   address
+      A location in memory.
+
    adjacent
       Two :term:`nodes <node>` of a :term:`tree` or two
       :term:`vertices <vertex>` of a :term:`graph` are said to be
@@ -849,6 +852,16 @@ Glossary
       input size.
       In Theta notation, this is traditionally written as
       :math:`\Theta(1)`.
+
+   constructive induction
+      A process for finding the closed form for a
+      :term:`recurrence relation` ,
+      that involves substituting in a guess for the closed form to
+      replace the recursive part(s) of the recurrence.
+      Depending on the goal (typically either to show that the
+      hypothesized growth rate is right, or to find the precise
+      constants), one then manipulates the resulting non-recursive
+      equation.
 
    container
    container class
@@ -1688,6 +1701,14 @@ Glossary
 
       In :term:`algorithm analysis`, the rate at which the cost
       of the :term:`algorithm` grows as the size of its input grows.
+
+   guess-and-test
+      A technique used when trying to determine the
+      :term:`closed-form solution` for a 
+      :term:`summation` or :term:`recurrence relation`.
+      Given a hypothesis for the closed-form solution,
+      if it is correct, then it is often relatively easy to prove that
+      using :term:`induction`.
 
    guided traversal
       A :term:`tree traversal` that does not need to visit every node
@@ -2921,9 +2942,8 @@ Glossary
       Formal name for what is commonly referred to as a
       :term:`PR quadtree`.
 
-   pop
-      A specialized term used to indicate removing an :term:`element`
-      from a :term:`stack`. 
+   pointer
+      A variable whose value is the :term:`address` of another variable; a link.
 
    pointer-based implementation for binary tree nodes
       A common way to implement :term:`binary tree` :term:`nodes
@@ -2940,6 +2960,10 @@ Glossary
       dynamically.  Two basic forms exist:
       :term:`run-time polymorphism` and :term:`compile-time polymorphism`.
 
+   pop
+      A specialized term used to indicate removing an :term:`element`
+      from a :term:`stack`. 
+
    poset
       Another name for a :term:`partially ordered set`.
 
@@ -2950,10 +2974,7 @@ Glossary
 
    pointee
       The term pointee refers to anything that is pointed to by a
-      :term:`pointer <pointers>` or :term:`reference`.
-
-   pointers
-      variable that points to memory address.
+      :term:`pointer` or :term:`reference`.
 
    postorder traversal
       In a :term:`binary tree`, a :term:`traversal` that first
@@ -3039,6 +3060,12 @@ Glossary
       The classic example is :term:`linear probing`.
       This tends to happen when a group of keys follow the same
       :term`probe sequence` during collision resolution.
+
+   primitive data type
+      In Java, one of a particular group of
+      :term:`simple types <simple type>` that are not implemented as
+      objects.
+      An example is an ``int``.
 
    priority
       A quantity assigned to each of a collection of
@@ -3630,9 +3657,8 @@ Glossary
       :term:`elements <element>`.
 
    shallow copy
-      Copying the :term:`reference` or :term:`pointer <pointers>`
+      Copying the :term:`reference` or :term:`pointer`
       value without copying the actual content.
-
 
    Shellsort
       A sort that relies on the best-case cost of
