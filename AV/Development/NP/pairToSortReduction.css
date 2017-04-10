@@ -8,21 +8,21 @@
 }
 
 .jsavline{
-  height: 50px;
+  height: 30px;
 }
 
 .jsavarray .jsavindex{
-	min-width:30px;
-	min-height:30px;
-	height:30px;
-	line-height:30px;
-        text-align:center;
+  min-width:30px;
+  min-height:30px;
+  height:30px;
+  line-height:30px;
+  text-align:center;
 }
+
 .jsavnode, .jsavvalue{
-        height:25px;
+  height:25px;
 }
+
 .jsavindexlabel {
-        color:blue;
+  color:blue;
 }
-
-

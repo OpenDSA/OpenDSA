@@ -1,6 +1,5 @@
 /*global ODSA */
-// Written by Mohammed Farghally and Cliff Shaffer
-// Two Coloring Proof
+// Written by Sushma Mandava
 //variable xPosition controls the horizonatl position of the visualization
 $(document).ready(function() {
   "use strict";
@@ -8,6 +7,7 @@ $(document).ready(function() {
   // Load the config object with interpreter and code created by odsaUtils.js
   var av;
   av = new JSAV(av_name);
+
   // Slide 1
   var xPosition = 275;
   var xPosition2 = xPosition + 200;
@@ -75,21 +75,21 @@ $(document).ready(function() {
   av.g.line(xPosition2 + 20, yPositionR1 + (width / 2), xPosition + length1 + 20, yPositionR1 + (width / 2), {"stroke-width": 2});
   av.g.line(xPosition2 + 20, yPositionR2 + (width / 2), xPosition + length1 + 20, yPositionR2 + (width / 2), {"stroke-width": 2});
   av.g.polyline([[xPosition + length1 + 20, yPositionR1 + (width / 2) + 4], [xPosition + length1 + 10, yPositionR1 + (width / 2)],
-    [xPosition + length1 + 20, yPositionR1 + (width / 2) - 4]], {fill: "black"});
+                 [xPosition + length1 + 20, yPositionR1 + (width / 2) - 4]], {fill: "black"});
   av.g.polyline([[xPosition + length1 + 20, yPositionR2 + (width / 2) + 4], [xPosition + length1 + 10, yPositionR2 + (width / 2)],
-    [xPosition + length1 + 20, yPositionR2 + (width / 2) - 4]], {fill: "black"});
+                 [xPosition + length1 + 20, yPositionR2 + (width / 2) - 4]], {fill: "black"});
   av.step();
 
   // Slide 3
   av.g.line(xPosition2 + 20, yPositionR1 + (width / 2), xPosition + length1 + 20, yPositionR1 + (width / 2), {"stroke-width": 2, stroke: "gray"});
   av.g.polyline([[xPosition + length1 + 20, yPositionR1 + (width / 2) + 4], [xPosition + length1 + 10, yPositionR1 + (width / 2)],
-    [xPosition + length1 + 20, yPositionR1 + (width / 2) - 4]], {fill: "gray", stroke: "gray"});
+                 [xPosition + length1 + 20, yPositionR1 + (width / 2) - 4]], {fill: "gray", stroke: "gray"});
   av.g.line(xPosition2 + 20, yPositionR1 + (width / 2) + 2, xPosition + length1 + 15, yPositionR2 + (width / 2) - 9, {"stroke-width": 2});
   label2.hide();
   label2 = av.label("Sam", {top: yPositionR2 - (width / 2) + 3, left: xPosition + 28});
   av.g.line(xPosition + length1 + 40, yPositionR1 + width - 3, xPosition + length1 + 53, yPositionR1 + 3, {"stroke-width": 3});
   av.g.line(xPosition + length1 + 40, yPositionR1 + 3, xPosition + length1 + 53, yPositionR1 + width - 3, {"stroke-width": 3});
   av.g.polyline([[xPosition + length1 + 20, yPositionR2 + (width / 2) - 6], [xPosition + length1 + 7 + 3, yPositionR2 + (width / 2) - 5],
-    [xPosition + length1 + 20 - 5 + 5 - 5, yPositionR2 + (width / 2) - 4 - 3 - 5 - 3]], {fill: "black"});
+                 [xPosition + length1 + 20 - 5 + 5 - 5, yPositionR2 + (width / 2) - 4 - 3 - 5 - 3]], {fill: "black"});
   av.recorded();
 });

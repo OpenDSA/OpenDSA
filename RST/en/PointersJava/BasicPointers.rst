@@ -14,11 +14,10 @@
 .. odsalink:: AV/PointersSushma/empRefnullCON.css
 .. odsalink:: AV/PointersSushma/empRefsecondCON.css
 .. odsalink:: AV/PointersSushma/shallowdeepCON.css
-
+.. odsalink:: AV/PointersSushma/empPtrxxxCON.css
+.. odsalink:: AV/PointersSushma/employeePtr2CON.css
 .. odsalink:: AV/PointersSushma/examplePointerCodeCON.css
-.. odsalink:: AV/PointersSushma/empPtrxxx.css
-.. odsalink:: AV/PointersSushma/employeeEmpPtr2.css
-.. odsalink:: AV/PointersSushma/badPointerPow.css
+.. odsalink:: AV/PointersSushma/badPointerPowCON.css
 
 Basic References
 ================
@@ -264,11 +263,7 @@ drawings, the bad reference value is shown with an XXX value.
 
 .. _numptrxxxFig:
 
-.. odsafig:: Images/numptrxxx.png
-   :width: 200
-   :align: center
-   :capalign: justify
-   :figwidth: 100%
+.. inlineav:: empPtrxxxCON dgm
 
 Bad references are common.
 In fact,  **every reference starts out with a bad value**.
@@ -317,98 +312,111 @@ it's right.
 Syntax
 ------
 
-The above basic features of references, pointees, dereferencing, and assigning are the only concepts you need to build
-reference code. However, in order to talk about reference code, we need to use a known syntax which is about as interesting
-as... a syntax. We will use the Java language syntax which has the advantage that it has influenced the syntaxes of several languages.
+The above basic features of references, pointees, dereferencing, and
+assigning are the only concepts you need to build reference code.
+However, in order to talk about reference code, we need to use a known
+syntax which is about as interesting as... a syntax.
+We will use the Java language syntax which has the advantage that it
+has influenced the syntaxes of several languages.
 
 
-Non-primitive Type Syntax
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Declaring a Reference Variable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-As stated earlier, non-primitive data types are defined by declaring references to point to them. For example,
-
-``Integer`` type reference to ``Integer`` object, and ``int[]`` type reference to an ``array of integers``
-
-
-reference Variables
-~~~~~~~~~~~~~~~~~~~
-
-Reference variables are declared just like any other variable. The declaration gives the type and identifier of the new
-variable and reserves memory to hold its value. The declaration does not assign a pointee for the reference |---| the
-reference starts out with a ``null``.
+A reference variable to a non-primitive data type (that is, any object) is
+defined by declaring a variable of that object's type.
+In other words, reference variables are declared just like any other
+variable.
+The declaration gives the type and identifier of the new variable, and
+reserves memory to hold its value.
+But |---| and here is the most important thing |---| declaring the
+reference variable  does not assign a pointee for the reference.
+The reference starts out with a "bad" value until you assign it to something.
 
 .. codeinclude:: PointersBook/BasicPointers/PointerExample
    :tag: PointerVariables
    :lang: Java
 
+
 Assigning a pointee to a reference
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-There are several ways to compute a reference to a pointee suitable for storing in a reference.
-The simplest way is the assignment operator. The assignment operator can assign the reference value of the right hand side to
-reference in the left hand side. The code below uses a reference and an ``=`` to produce the earlier example.
+We assign a pointee to a reference variable with a simple assignment
+statement.
+We could assign our reference variable to the same value as another
+reference variable, as in this picture.
 
-.. odsafig:: Images/numnumptr2.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 100%
+.. inlineav:: employeePtr2CON dgm
 
-.. codeinclude:: PointersBook/BasicPointers/PointerExample
-   :tag: AssigningPointee
-   :lang: Java
+We can do this with the following code::
+
+   Employee empPtr = johnRef;
+
+Of course, this begs the question of how the variable ``johnRef`` got
+its value in the first place.
+We create an object with the ``new`` operator, as follows::
+
+   Employee johnRef = new Employee("John");
+
 
 Dereference the reference
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-Using the reference in any position that reads the value of the reference will :term:`dereference` it. For example, when
-you are reference variable is on the right hand side of an assignment statement. The reference must have a pointee, or
-it's a runtime error of type ``NullPointerException``
+
+Anytime a reference variable appears anywhere **other** than the left
+side of an assignment statement, it is :term:`dereferenced`.
+This is really no different than how a primitive variable like an
+``int`` is used.
+Consider the following code::
+
+   int a = 5;
+   int b = a;
+
+In this case, the value of ``a`` in the second line is just 5.
+In exactly the same way, in this code::
+
+   Employee empPtr = johnRef;
+
+the value of ``johnRef`` is simply the location of the object that it
+is referencing.
+This is why empPtr ends up pointing to that same object.
+Of course, whenever you dereference any reference variable, it had
+better have a pointee.
+Otherwise, you get a runtime error of type ``NullPointerException``.
 
 
 Example Reference Code
 ----------------------
 
-With the syntax defined, we can now write some reference code that demonstrates all the reference rules.
+With the syntax defined, we can now write some reference code that
+demonstrates all the reference rules.
 
 .. codeinclude:: PointersBook/BasicPointers/PointerExample
    :tag: Example
 
-.. odsafig:: Images/abcpqxxx.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 100%
-
-.. odsafig:: Images/abcpq.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 100%
-
-.. odsafig:: Images/abcpqX.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 100%
+.. inlineav:: examplePointerCodeCON ss
+   :output: show
 
 
 Bad reference Example
-~~~~~~~~~~~~~~~~~~~~~
+---------------------
 
-Code with the most common sort of reference bug will **look** like the above correct code, but without the middle step
-where the references are assigned pointees. The bad code will compile fine, but at run-time, each dereference with
-a bad reference will raise NullPointerException and the program will crash. It is up to the programmer to ensure that
-each reference is assigned a pointee before it is used. The following example shows a simple example of the bad code and a
+Code with the most common sort of reference bug will **look** like the
+above correct code, but without the middle step where the references
+are assigned pointees.
+The bad code will compile fine, but at run-time, each dereference with
+a bad reference will raise ``NullPointerException`` and the program
+will crash.
+It is up to you to ensure that each reference is assigned a pointee
+before it is used.
+Here is a simple example of bad code, and a
 drawing of how memory is likely to react.
 
 .. codeinclude:: PointersBook/BasicPointers/badPointers
    :tag: badPointers
 
-.. odsafig:: Images/pPow.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 100%
+|
+
+.. inlineav:: badPointerPowCON dgm
 
 
 Reference Rules Summary
@@ -474,8 +482,7 @@ But don't be surprised when you forget, and your program breaks.
 .. odsascript:: AV/PointersSushma/empRefnullCON.js
 .. odsascript:: AV/PointersSushma/empRefsecondCON.js
 .. odsascript:: AV/PointersSushma/shallowdeepCON.js
-
+.. odsascript:: AV/PointersSushma/empPtrxxxCON.js
+.. odsascript:: AV/PointersSushma/employeePtr2CON.js
 .. odsascript:: AV/PointersSushma/examplePointerCodeCON.js
-.. odsascript:: AV/PointersSushma/empPtrxxx.js
-.. odsascript:: AV/PointersSushma/employeeEmpPtr2.js
-.. odsascript:: AV/PointersSushma/badPointerPow.js
+.. odsascript:: AV/PointersSushma/badPointerPowCON.js

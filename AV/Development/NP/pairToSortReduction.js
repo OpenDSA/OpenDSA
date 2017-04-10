@@ -14,6 +14,7 @@
   var sortarr2;
   var oparr;
   var paired;
+  var yoffset = 20;
 
 function runit() {
   ODSA.AV.reset(true);
@@ -25,71 +26,70 @@ function runit() {
 
   input1 = new Array(23,42,17,93,88,12,57,90);
   input2 = new Array(48,59,11,89,12,91,64,34);
-  var r1 = jsav.g.rect(95,10,560,60);
+  var r1 = jsav.g.rect(95,10 + yoffset,560,60);
   r1.show();
-  iparr1 = jsav.ds.array(input1,  {left: 100, top: 8});
+  iparr1 = jsav.ds.array(input1,  {left: 100, top: 8 + yoffset});
   for(var i=0;i<input1.length;i++)
     iparr1.css(i,{"background-color":"AntiqueWhite"});
-  iparr2 = jsav.ds.array(input2,  {left: 400, top: 8});
+  iparr2 = jsav.ds.array(input2,  {left: 400, top: 8 + yoffset});
   for(var i=0;i<input2.length;i++)
     iparr2.css(i,{"background-color":"AntiqueWhite"});
-  jsav.label("<b>Arrays to be paired</b>",{left: 300, top: -28});
+  jsav.label("<b>Arrays to be paired</b>",{left: 300, top: -28 + yoffset});
   jsav.step();
 
 
-  var r12 = jsav.g.rect(95,110,560,60);
+  var r12 = jsav.g.rect(95,110 + yoffset,560,60);
   r12.show();
-  iparr1 = jsav.ds.array(input1,  {left: 100, top: 107});
+  iparr1 = jsav.ds.array(input1,  {left: 100, top: 107 + yoffset});
   for(var i=0;i<input1.length;i++)
     iparr1.css(i,{"background-color":"AntiqueWhite"});
-  iparr2 = jsav.ds.array(input2,  {left: 400, top: 107});
+  iparr2 = jsav.ds.array(input2,  {left: 400, top: 107 + yoffset});
   for(var i=0;i<input2.length;i++)
     iparr2.css(i,{"background-color":"AntiqueWhite"});
-  var l11 = jsav.g.line(369,70,369,110);
+  var l11 = jsav.g.line(369,70 + yoffset,369,110 + yoffset);
   l11.show();
-  jsav.label("<b>Transformation - Identity function Cost= O(n)</b>",{left: 400, top: 65});
+  jsav.label("<b>Transformation - Identity function Cost= O(n)</b>",{left: 400, top: 65 + yoffset});
   jsav.umsg("The arrays are fed as input to the sorting problem directly");
   jsav.step();
   
-  var l1= jsav.g.line(220,170,220,190);
+  var l1= jsav.g.line(220,170 + yoffset,220,190 + yoffset);
   l1.show();
-  var l2= jsav.g.line(520,170,520,190);
+  var l2= jsav.g.line(520,170 + yoffset,520,190 + yoffset);
   l2.show();
   
   jsav.umsg("Sort the two arrays individually");
-  var r2 = jsav.g.rect(190,190,60,40);
+  var r2 = jsav.g.rect(190,190 + yoffset,60,40);
   r2.show();
-  var r3 = jsav.g.rect(490,190,60,40);
+  var r3 = jsav.g.rect(490,190 + yoffset,60,40);
   r3.show();
-  jsav.label("<b>Sort</b>",{left: 202, top: 185});
-  jsav.label("<b>Sort</b>",{left: 502, top: 185});
+  jsav.label("<b>Sort</b>",{left: 202, top: 185 + yoffset});
+  jsav.label("<b>Sort</b>",{left: 502, top: 185 + yoffset});
   jsav.step();
 
-  var l3= jsav.g.line(220,230,220,240);
+  var l3= jsav.g.line(220,230 + yoffset,220,240 + yoffset);
   l3.show();
-  var l4= jsav.g.line(520,230,520,240);
+  var l4= jsav.g.line(520,230 + yoffset,520,240 + yoffset);
   l4.show();
   sort1 = new Array(12,17,23,42,57,88,90,93);
   sort2 = new Array(11,12,34,48,59,64,89,91);
-  var r4 = jsav.g.rect(95,240,560,60);
+  var r4 = jsav.g.rect(95,240 + yoffset,560,60);
   r4.show();
-  sortarr1 = jsav.ds.array(sort1,  {left: 100, top: 237});
-  jsav.label("Sorted array",{left:10,top:240});
-  sortarr2 = jsav.ds.array(sort2,  {left: 400, top: 237});
-  jsav.label("Sorted array",{left:660,top:240});
+  sortarr1 = jsav.ds.array(sort1, {left: 100, top: 237 + yoffset});
+  jsav.label("Sorted array",{left:10,top:240 + yoffset});
+  sortarr2 = jsav.ds.array(sort2, {left: 400, top: 237 + yoffset});
+  jsav.label("Sorted array",{left:660,top:240 + yoffset});
   jsav.step();
 
-
-  var r4 = jsav.g.rect(95,330,560,60);
+  var r4 = jsav.g.rect(95,330 + yoffset,560,60);
   r4.show();
-  var l12 = jsav.g.line(369,300,369,330);
+  var l12 = jsav.g.line(369,300 + yoffset,369,330 + yoffset);
   l12.show();
   jsav.umsg("The sorted arrays are reverse transformed.");
-  jsav.label("<b>Reverse Transformation Cost= O(n)</b>",{left: 400, top: 290});
+  jsav.label("<b>Reverse Transformation Cost= O(n)</b>",{left: 400, top: 290 + yoffset});
   jsav.step();
 
   jsav.umsg("Pair the numbers at the same index of two sorted arrays together.");
-  oparr= jsav.ds.array([" "," "," "," "," "," "," "," "],  {left: 180, top: 327});
+  oparr= jsav.ds.array([" "," "," "," "," "," "," "," "],  {left: 180, top: 327 + yoffset});
   jsav.step();
   
   oparr.show();
@@ -112,15 +112,16 @@ function runit() {
   oparr.unhighlight(i-1);
   jsav.umsg("The output array gives the pairing" );
   jsav.step();
-  var l13 = jsav.g.line(369,390,369,415);
+
+  var l13 = jsav.g.line(369,390 + yoffset,369,415 + yoffset);
   l13.show();
-  var oparr2= jsav.ds.array([" "," "," "," "," "," "," "," "],  {left: 180, top: 397});
+  var oparr2= jsav.ds.array([" "," "," "," "," "," "," "," "],  {left: 180, top: 397 + yoffset});
   for(var i=0;i<8;i++)
  	oparr2.value(i,oparr.value(i));
   for(var i=0;i<8;i++)
     oparr2.css(i,{"background-color":"#CCFF99"});
   jsav.umsg("Cost of pairing = O(n) + Cost of sorting");
-  jsav.label("<b>Paired array</b>",{left:570,top:400});
+  jsav.label("<b>Paired array</b>",{left:570,top:400 + yoffset});
   jsav.step(); 
   jsav.recorded();
 }

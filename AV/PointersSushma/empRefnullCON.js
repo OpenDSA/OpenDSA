@@ -11,7 +11,7 @@ $(document).ready(function() {
   av.g.rect(xPosition, yPosition, length1, width);
   av.label("<tt>empRef</tt>", {top: yPosition - (width / 2) + 5, left: xPosition - 56});
   av.g.line(xPosition, yPosition + width, xPosition + length1, yPosition,
-            {"stroke-width": 2, "font": tt});
+            {"stroke-width": 2});
   av.displayInit();
   av.recorded();
 });

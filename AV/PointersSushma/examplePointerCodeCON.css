@@ -1,3 +1,7 @@
-#examplePointerCode .jsavcanvas {
- height: 500px;
+#examplePointerCodeCON .jsavcanvas {
+  height: 300px;
+}
+
+#examplePointerCodeCON {
+  height: 300px;
 }
