@@ -25,7 +25,7 @@ import urllib
 
 extrenal_tools_urls = {
   "code-workout": {
-          "url": "https://codeworkoutdev.cs.vt.edu/gym/workouts/embed",
+          "url": "https://codeworkout.cs.vt.edu/gym/workouts/embed",
           "width": 1000,
           "height": 900
     }
