@@ -1708,7 +1708,7 @@ Glossary
       :term:`summation` or :term:`recurrence relation`.
       Given a hypothesis for the closed-form solution,
       if it is correct, then it is often relatively easy to prove that
-      using :term:`induction`.
+      using :term:`induction <proof by induction>`.
 
    guided traversal
       A :term:`tree traversal` that does not need to visit every node

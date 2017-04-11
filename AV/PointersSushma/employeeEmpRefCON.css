@@ -1,3 +1,7 @@
-#employeeEmpRef {
-  height: 180px;
+#employeeEmpRefCON {
+  height: 165px;
+}
+
+#employeeEmpRefCON .jsavcanvas {
+  height: 165px;
 }

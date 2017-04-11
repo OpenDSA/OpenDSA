@@ -49,7 +49,7 @@ Second, pointers enable complex linked data structures like
 What is a Reference?
 --------------------
 
-Java actually uses only a restricted version of the pointer concept,
+Java actually uses a restricted version of the pointer concept,
 which is called a :term:`reference`.
 While they mean roughly the same thing, the term "pointer" tends to be
 used in discussions that are not specific to any particular language
@@ -58,7 +58,7 @@ The word "pointers" connotes the common C/C++ implementation of
 pointers as :term:`addresses <address>` or locations in memory.
 Programmers have more limited access with a reference,
 and so more limits on what they can do.
-Programmers cam only assign to a reference and compare two references
+Programmers can only assign to a reference and compare two references
 for equality.
 Other uses of a reference is done implicitly with no control from the
 programmer.
@@ -68,10 +68,11 @@ These restrictions reduce the chance for bugs.
 Data Types in Java
 ------------------
 
-Simple ``int`` and ``float`` variables operate pretty intuitively. An
-``int`` variable is like a box which can store a single ``int`` value such
-as 42. In a drawing, a simple variable is a box with its current value
-shown inside.
+Simple ``int`` and ``float`` variables operate pretty intuitively.
+An ``int`` variable is like a box that can store a single ``int``
+value such as 42.
+In a drawing, a simple variable is a box with its current value shown
+inside.
 
 .. _num42Fig:
 
@@ -86,9 +87,10 @@ The object that the reference refers to is sometimes known as its
 :term:`pointee`. 
 In the next figure, the reference variable (called ``empRef``) is
 shown as a box that contains the beginning of a directed line, which
-leads to its pointee (an ``Employee`` object in the box named
-``employee1``).
-So ``empRef`` is the reference and ``employee1`` is its pointee.
+leads to its pointee (an ``Employee`` object, shown as the box storing
+the string value "John").
+So ``empRef`` is the reference and the ``Employee`` object is its
+pointee.
 What is stored inside of ``empRef``?
 Its value is **not** an ``Employee`` object.
 Its value is only a reference to an ``Employee`` object.
@@ -120,7 +122,7 @@ Referencing and  Dereferencing
 :term:`Dereferencing <dereference>` means to follow a reference to get
 the value of its pointee.
 The value of the dereference of ``empRef`` in the figure above is the
-object ``employee1``.
+``Employee`` object.
 So, "dereference" just means to access the value of the pointee.
 The key restriction is that the reference must have a pointee for the
 dereference to access.
@@ -161,15 +163,15 @@ the same pointee.
 It's a simple rule for a potentially complex situation, so it is worth
 repeating: assigning one reference to another makes them point to the
 same thing.
-The example below adds a second reference, ``second``, assigned with
-the statement::
+The example below adds a second reference, named ``second``, assigned
+with the statement::
 
    second = empRef;
 
 The result is that ``second`` points to the same pointee as
 ``empRef``.
 In the drawing, this means that the ``second`` and ``empRef`` boxes
-both contain arrows pointing to ``employee1``.
+both contain arrows pointing to the ``Employee`` object.
 Assignment between references does not change or even touch the
 pointees.
 It just changes which pointee a reference refers to.
@@ -185,9 +187,9 @@ The assignment operation also works with the ``null`` value.
 An assignment operation with a ``null`` reference copies the ``null``
 value from one reference to another.
 
-Memory drawings are the key to thinking about reference code.
-When you are looking at code, think about how it will use
-memory at run time, then make a quick drawing to work out your ideas.
+Memory drawings are key to thinking about reference code.
+When you are looking at code, think about how it will use memory at
+run time, then make a quick drawing to work out your ideas.
 This tutorial uses a lot of drawings to show how references work.
 You should too.
 
@@ -245,8 +247,6 @@ Here is an example of the difference between shallow and deep copying:
 .. codeinclude:: PointersBook/BasicPointers/shallowCopy
    :tag: shallow
 
-The next module will explain the above sharing technique in detail.
-
 
 Bad References
 --------------
@@ -291,8 +291,8 @@ Java.
 Such run-time checks are also a reason why Java tends to run at least
 a little slower than a language like C or C++.
 
-One way to think about reference code is that operates at two levels
-|---| reference level and pointee level.
+One way to think about reference code is that it operates at two
+levels |---| reference level and pointee level.
 The trick is that **both** levels need to be initialized and connected
 for things to work.
 (1) The reference must be allocated, 
@@ -352,9 +352,9 @@ We can do this with the following code::
 
    Employee empPtr = johnRef;
 
-Of course, this begs the question of how the variable ``johnRef`` got
-its value in the first place.
-We create an object with the ``new`` operator, as follows::
+Of course, this begs the question of how the reference ``johnRef`` got
+its value (its pointee) in the first place.
+We create an ``Employee`` object with the ``new`` operator, as follows::
 
    Employee johnRef = new Employee("John");
 
@@ -363,7 +363,8 @@ Dereference the reference
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Anytime a reference variable appears anywhere **other** than the left
-side of an assignment statement, it is :term:`dereferenced`.
+side of an assignment statement, it is
+:term:`dereferenced <dereference>`. 
 This is really no different than how a primitive variable like an
 ``int`` is used.
 Consider the following code::
@@ -378,7 +379,7 @@ In exactly the same way, in this code::
 
 the value of ``johnRef`` is simply the location of the object that it
 is referencing.
-This is why empPtr ends up pointing to that same object.
+This is why ``empPtr`` ends up pointing to that same object.
 Of course, whenever you dereference any reference variable, it had
 better have a pointee.
 Otherwise, you get a runtime error of type ``NullPointerException``.
@@ -424,57 +425,88 @@ Reference Rules Summary
 
 No matter how complex a reference structure gets, the list of rules remains short.
 
-* A reference variable stores a reference to its pointee. The pointee, in turn,   stores something useful.
+* A reference variable stores a reference to its pointee. The pointee,
+  in turn, stores something useful.
 
-* The dereference operation on a reference accesses its pointee. A reference may only be dereferenced after it has been
-  assigned to refer to a pointee. Most reference bugs involve violating this one rule.
+* The dereference operation on a reference accesses its pointee.
+  A reference may only be dereferenced after it has been assigned to
+  refer to a pointee.
+  Most reference bugs involve violating this one rule. 
 
-* Allocating a reference does not automatically assign it to refer to a pointee. Assigning the reference to refer to a
-  specific pointee is a separate operation which is easy to forget.
+* Allocating a reference does not automatically assign it to refer to
+  a pointee.
+  Assigning the reference to refer to a specific pointee is a separate
+  operation, which is easy to forget.
 
-* Assignment between two references makes them refer to the same pointee which introduces ``object sharing``.
+* Assignment between two references makes them refer to the same
+  pointee, which introduces ``object sharing``.
 
 
 Java References Features
 ------------------------
-The Java references have two main features.
 
-* Fewer bugs. Because the language implements the reference manipulation accurately and automatically, the most common
-  reference bug are no longer possible, Yay! Also, the Java runtime system checks each reference value every time it is
-  used, so NULL reference dereferences are caught immediately on the line where they occur. This can make a programmer
-  much more productive.
+Java references have two main features.
 
-* Slower. Because the language takes responsibility for implementing so much reference machinery at runtime, Java code
-  runs slower than other languages like C and C++. (There are other reasons for Java to run slowly as well. There is active
-  research in making Java faster in interesting ways |---| the Sun "Hot Spot" project.) In any case, the appeal of increased
-  programmer efficiency and fewer bugs makes the slowness worthwhile for some  applications.
+* Fewer bugs.
+  Because the language implements the reference manipulation
+  accurately and automatically, the most common reference bug are no
+  longer possible. Yay!
+  Also, the Java runtime system checks each reference value every time
+  it is used, so NULL reference dereferences are caught immediately on
+  the line where they occur.
+  This can make a programmer much more productive.
+
+* Slower. Because the language takes responsibility for implementing
+  so much reference machinery at runtime, Java code runs slower than
+  other languages like C and C++.
+  But the appeal of increased programmer efficiency and fewer bugs
+  makes the slowness worthwhile for many applications.
 
 
 How Are References Implemented In The Machine?
 ----------------------------------------------
 
 How are references implemented?
-The short explanation is that every area of memory in the machine has a numeric address like 1000 or 20452. A reference
-to an area of memory is really just an integer which is storing the address of that area of memory. The dereference operation
-looks at the address, and goes to that area of memory to retrieve the pointee stored there. Reference assignment just copies
-the numeric address from one reference to another. The NULL value is generally just the numeric address 0 |---| the computer
-just never allocates a pointee at 0 so that address can be used to represent NULL. A bad reference is really just a reference
-which contains a NULL value. The reference has not yet been assigned the specific address of a valid pointee. This is why
-dereference operations with bad references are so unpredictable.
+The short explanation is that every area of memory in the machine has
+a numeric address like 1000 or 20452.
+A reference to an area of memory is really just an integer which is
+storing the address of that area of memory.
+The dereference operation looks at the address, and goes to that area
+of memory to retrieve the pointee stored there.
+Reference assignment just copies the numeric address from one
+reference to another.
+The NULL value is generally just the numeric address 0 |---| the
+computer just never allocates a pointee at 0 so that address can be
+used to represent NULL.
+A bad reference is really just a reference which contains a NULL
+value.
+The reference has not yet been assigned the specific address of a
+valid pointee.
+This is why dereference operations with bad references are so
+unpredictable.
 
 
 Why Are Bad Reference Bugs So Common?
 -------------------------------------
 
-Why is it so often the case that programmers will allocate a reference, but forget to set it to refer to a pointee?
-The rules for references do not seem that complex, yet every programmer makes this error repeatedly. Why?
-The problem is that we are trained by the tools we use. Simple variables don't require any extra setup. You can allocate
-a simple variable, such as ``int`` , and use it immediately. All that ``int``, ``char`` or ``boolean`` variables you
-have written has trained you, quite reasonably, that a variable may be used once it is declared. Unfortunately, references
-look like simple variables but they require the extra initialization before use. It's unfortunate, in a way, that references
-happen look like other variables, since it makes it easy to forget that the rules for their use are very different.
-Oh well. Try to remember to assign your references to refer to
-pointees.
+Why is it so often the case that programmers will allocate a
+reference, but forget to set it to refer to a pointee?
+The rules for references do not seem that complex, yet every
+programmer makes this error repeatedly. Why?
+The problem is that we are trained by the tools we use.
+Simple variables don't require any extra setup.
+You can allocate a simple variable, such as ``int``, and use it
+immediately.
+All that ``int``, ``char`` or ``boolean`` variables you have written
+has trained you, quite reasonably, that a variable may be used once it
+is declared.
+Unfortunately, references look like simple variables but they require
+the extra initialization before use.
+It's unfortunate, in a way, that references happen look like other
+variables, since it makes it easy to forget that the rules for their
+use are very different.
+Oh well.
+Try to remember to assign your references to refer to pointees.
 But don't be surprised when you forget, and your program breaks.
 
 .. odsascript:: AV/PointersSushma/num42CON.js

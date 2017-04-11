@@ -22,8 +22,6 @@ $(document).ready(function() {
   //text
   gv.label("A second pointer is initialized with the assignment <tt>second = empRef</tt>. This causes <tt>second</tt> to refer to the same pointee as <tt>empRef</tt>.",
            {top: yPositionR3 - 60, left: xPosition + 195});
-  gv.label("<tt>employee1</tt>",
-           {top: yPositionR1 - (width / 2) + 3, left: xPosition - 75});
   gv.label("John", {top: yPositionR1 - (width / 2) + 3, left: xPosition + 25});
   gv.label("<tt>empRef</tt>",
            {top: yPositionR2 - (width / 2) + 3, left: xPosition - 55});

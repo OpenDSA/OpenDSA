@@ -45,9 +45,9 @@ public class PointerExample {
     public static void main(String[] args) {
 /* *** ODSATag: Example *** */
         /* *** ODSATag: PointerVariables *** */
-        Employee empPtr1;// Declare the Employee (reference to Employee) variable empPtr.
-        // This allocates space for the pointer, but not the pointee.
-        // The pointer starts out with "null"
+        Employee empPtr1; // Declare a reference to an Employee
+        // This allocates space for the reference, but not the pointee.
+        // The reference starts out as "null"
         /* *** ODSAendTag: PointerVariables *** */
         // allocate three integers and two pointers
         Employee employee1 = new Employee("John");
