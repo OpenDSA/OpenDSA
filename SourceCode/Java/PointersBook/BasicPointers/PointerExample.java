@@ -2,43 +2,58 @@
 /**
  * Employee is a class used in this tutorial to explain various pointers concepts
  */
-class Employee {
-    String name;
+ /**
+  * Employee is a class used in this tutorial to explain various references concepts
+  */
+ class Employee {
+     String name;
+     int salary;
 
-    /**
-     * class default constructor
-     */
-    public Employee()
-    {
-        this.name = "";
-    }
-    /**
-     * class constructor to initialize the name variable
-     * @param name: employee name
-     */
-    public Employee(String name)
-    {
-        this.name = name;
-    }
+     /**
+      * class constructor to initialize name and salary fields
+      * @param name: employee name
+      * @param salary: employee salary
+      */
+     public Employee(String name, int salary)
+     {
+         this.name = name;
+         this.salary = salary;
+     }
 
-    /**
-     * getter method for the name variable
-     * @return the value of name variable
-     */
-    public String getName()
-    {
-        return name;
-    }
+     /**
+      * getter method for the name field
+      * @return the value of name field
+      */
+     public String getName()
+     {
+         return name;
+     }
 
-    /**
-     * setter method for the name variable
-     * @param newName the value to be assigned to name variable
-     */
-    public void setName(String newName)
-    {
-        name = newName;
-    }
-}
+     /**
+      * setter method for the name field
+      * @param newName the value to be assigned to name field
+      */
+     public void setName(String newName)
+     {
+         name = newName;
+     }
+     /**
+      * getter method for the salary field
+      * @return the value of salary field
+      */
+     public int getSalary()
+     {
+         return salary;
+     }
+     /**
+      * setter method for the salary field
+      * @param newSalary the value to be assigned to salary field
+      */
+     public void setSalary(int newSalary)
+     {
+         salary = newSalary;
+     }
+ }
 /* *** ODSAendTag: EmployeeClass *** */
 public class PointerExample {
 
