@@ -18,9 +18,6 @@ $(document).ready(function() {
   var xSteps = width / xMax;  //each pixels per 1 x-unit.
   var ySteps = height / yMax;  //each pixels per 1 y-unit.
 
-
-
-
   //x-axis 1
   av.g.line(xStart, yStart, xEnd, yStart, {"stroke-width": 2});
 
@@ -100,30 +97,10 @@ $(document).ready(function() {
   }
 
   //----------------------------------------------------------------------
-  //--------------------------------------------------------------------
   /**
      Drawing Curve:
      drawingCurve(func(), xFrom, xTo, yFrom, xMax, yMax, width, height)
   */
-  //1. inputs
-  var DC_func = function(n){
-    return 5 * n * (Math.log2(n));
-  };
-  var DC_xFrom = xStart;
-  var DC_xTo = xEnd;
-  var DC_yFrom = yStart;
-  var DC_yTO = yEnd;
-  var DC_xMax = xMax;
-  var DC_yMax = yMax;
-  var DC_width = width;
-  var DC_height = height;
-
-  //2. calculate and make a line
-  var DC_xStep = DC_width / DC_xMax;
-  var DC_x;
-  var DC_y;
-
-
 
   function drawCurve(func, xStart, yStart, yEnd, xMax, width, label, labelx, labely, increment, isLog){
     var points = [];
@@ -133,10 +110,12 @@ $(document).ready(function() {
     for (var i = start ; i <= xMax; i += increment){
       x = xStart + (i * xStep);
       y = yStart - ((func(i)/yMax) * height);
-      points.push([x, y]);
       if(y < yEnd){
+        y = yEnd;
+        points.push([x, y]);
         break;
       }
+      points.push([x, y]);
     }
     av.label(label,  {left: x + labelx, top: y + labely});
     return points;
@@ -147,20 +126,20 @@ $(document).ready(function() {
   av.g.polyline(curve1, {"stroke-width": 3});
 
   var curve2 = drawCurve(_2npow2, xStart, yStart, yEnd, xMax, width,
-                         "$2n^2$", -40, -30, 0.1, false);
+                         "$2n^2$", -40, -20, 0.1, false);
   av.g.polyline(curve2, {"stroke-width": 3});
 
   var curve3 = drawCurve(_2pown, xStart, yStart, yEnd, xMax, width,
-                         "$2^n$", -30, -20, 0.01, false);
+                         "$2^n$", -25, -20, 0.01, false);
   av.g.polyline(curve3, {"stroke-width": 3});
 
   var curve4 = drawCurve(_factorial, xStart, yStart, yEnd, xMax, width,
-                         "$n!$", -25, 0, 1, false);
+                         "$n!$", -25, -20, 1, false);
   av.g.polyline(curve4, {"stroke-width": 3});
 
 
   function _5nlog2n(n) {
-    return 5 * n * (Math.log(n) / Math.log(2));
+    return 5 * n * (Math.log2(n));
   };
 
   function _2npow2(n) {
@@ -171,7 +150,6 @@ $(document).ready(function() {
     return Math.pow(2, n);
   };
 
-  // n! using polyline---------------------------------------------
   function _factorial(n) {
     var i;
     var temp = 1;

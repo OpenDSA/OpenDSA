@@ -89,59 +89,70 @@ $(document).ready(function() {
     return 20 * n;
   }
 
-//--------------------------------------------------------------------
-//   /**
-//     Drawing Curve:
-//     drawingCurve(func(), xFrom, xTo, yFrom, xMax, yMax, width, height)
-//   */
+  //--------------------------------------------------------------------
+  //   /**
+  //     Drawing Curve:
+  //     drawingCurve(func(), xFrom, xTo, yFrom, xMax, yMax, width, height)
+  //   */
 
-function drawCurve(func, xStart, yStart, yEnd, xMax, width, label, labelx, labely, increment, isLog){
-  var points = [];
-  var xStep = width / xMax;
-  var start = isLog ? 1 : 0;
-  var x, y;
-  for (var i = start ; i <= xMax; i += increment){
-    x = xStart + (i * xStep);
-    y = yStart - ((func(i)/yMax) * height);
-    if(y < yEnd){
-      break;
+    function drawCurve(func, xStart, yStart, yEnd, xMax, width, label, labelx, labely, increment, isLog){
+    var points = [];
+    var xStep = width / xMax;
+    var start = isLog ? 1 : 0;
+    var x, y;
+    for (var i = start ; i <= xMax; i += increment){
+      x = xStart + (i * xStep);
+      y = yStart - ((func(i)/yMax) * height);
+      if(y < yEnd){
+        y = yEnd;
+        points.push([x, y]);
+        break;
+      }
+      points.push([x, y]);
     }
-    points.push([x, y]);
-  }
-  av.label(label,  {left: x + labelx, top: y + labely});
-  return points;
-};
+    av.label(label,  {left: x + labelx, top: y + labely});
+    return points;
+  };
 
-var c1 = drawCurve(_5nlog2n, xStart, yStart, yEnd, xMax, width,
-  "$5n\\log_2{n}$", -40, -40, 1, true);
-av.g.polyline(c1, {"stroke-width": 3});
+  var curve1 = drawCurve(_5nlog2n, xStart, yStart, yEnd, xMax, width,
+    "$5n\\log_2{n}$", -40, 10, 1, true);
+  av.g.polyline(curve1, {"stroke-width": 3});
 
-var c2 = drawCurve(_2npow2, xStart, yStart, yEnd, xMax, width,
-  "$2n^2$", -40, -30, 0.1, false);
-av.g.polyline(c2, {"stroke-width": 3});
+  var curve2 = drawCurve(_2npow2, xStart, yStart, yEnd, xMax, width,
+    "$2n^2$", -40, -30, 0.1, false);
+  av.g.polyline(curve2, {"stroke-width": 3});
 
-var c3 = drawCurve(_2pown, xStart, yStart, yEnd, xMax, width,
-  "$2^n$", -30, -20, 0.01, false);
-av.g.polyline(c3, {"stroke-width": 3});
+  var curve3 = drawCurve(_2pown, xStart, yStart, yEnd, xMax, width,
+    "$2^n$", -30, -20, 0.01, false);
+  av.g.polyline(curve3, {"stroke-width": 3});
 
-// var c4 = drawCurve(factorial, xStart, yStart, yEnd, xMax, width,
-//   "$n!$", -30, -20, 1, false);
-// av.g.polyline(c3, {"stroke-width": 3});
+  var curve4 = drawCurve(_factorial, xStart, yStart, yEnd, xMax, width,
+                         "$n!$", -25, -20, 1, false);
+  av.g.polyline(curve4, {"stroke-width": 3});
 
 
-function _5nlog2n(n){
-  return 5 * n * Math.log(n);
-};
+  function _5nlog2n(n){
+    return 5 * n * Math.log2(n);
+  };
 
-function _2npow2(n){
- return 2 * Math.pow(n, 2);
-};
+  function _2npow2(n){
+   return 2 * Math.pow(n, 2);
+  };
 
-function _2pown(n){
- return Math.pow(2, n);
-};
+  function _2pown(n){
+   return Math.pow(2, n);
+  };
+
+  function _factorial(n) {
+    var i;
+    var temp = 1;
+    for (i = 1; i <= n; i++) {
+      temp = temp * i;
+    }
+    return temp;
+  };
 
   av.displayInit();
-	av.recorded();
+  av.recorded();
 
 });
