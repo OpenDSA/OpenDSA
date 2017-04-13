@@ -485,19 +485,6 @@
           }
         }
       },
-      "NP/clique_to_independentSet": {
-        "long_name": "Reduction of Clique to Independent Set",
-        "sections": {
-          "Clique to Independent Set": {
-            "cliqueToISCON": {
-              "long_name": "Clique to IS Reduction",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            }
-          }
-        }
-      },
       "NP/independentSet_to_vertexCover": {
         "long_name": "Reduction of Independent Set to Vertex Cover",
         "sections": {
@@ -517,19 +504,6 @@
           "3-SAT to Hamiltonian Cycle": {
             "threeSATtoHCCON": {
               "long_name": "3-SAT to HC Reduction",
-              "required": false,
-              "points": 0.0,
-              "threshold": 1.0
-            }
-          }
-        }
-      },
-      "NP/hamiltonianCycle_to_TSP": {
-        "long_name": "Reduction of Hamiltonian Cycle Problem to TSP.",
-        "sections": {
-          "Hamiltonian Cycle to Traveling Salesman": {
-            "HCtoTSPCON": {
-              "long_name": "HC to TSP Reduction",
               "required": false,
               "points": 0.0,
               "threshold": 1.0

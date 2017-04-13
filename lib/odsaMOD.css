@@ -193,3 +193,7 @@ svg {
 {
     text-align:left;
 }
+
+tt {
+  background-color: #eed;
+}
