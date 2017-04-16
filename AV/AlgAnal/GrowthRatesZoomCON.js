@@ -52,34 +52,19 @@ $(document).ready(function() {
   var labely1_y = yStart - 25;
   var ylabelSize = 100;
   for (var i = 0; i <= yMax; i += ylabelSize){
-      av.label(i,  {left: labely1_x, top: labely1_y}).addClass("yLabel");
-      labely1_y -= (ySteps * ylabelSize);
+    av.label(i,  {left: labely1_x, top: labely1_y}).addClass("yLabel");
+    labely1_y -= (ySteps * ylabelSize);
   }
 
+  // draw dashline and label for 10n
+  var p1 = Plot.drawDash(_10n, xStart, yStart, xEnd, xMax, yMax, height);
+  av.g.line(p1).addClass("dashLine");
+  av.label("$10n$",  {left: p1[2] - 30, top: p1[3] - 35});
 
-//--------------------------------------------------------------------
-  /**
-    Drawing Dash Line Function:
-    drawingDashLine(func(xMax), xFrom, xTo, yFrom, xMax, yMax, height)
-  */
-
-  function drawDash(func, xStart, yStart, xEnd, xMax, yMax, height){
-    var points = [xStart, yStart, xEnd];
-    var y = yStart - func(xMax) * height / yMax;
-    points.push(y);
-    return points;
-  }
-
-    // draw dashline and label for 10n
-    var p1 = drawDash(_10n, xStart, yStart, xEnd, xMax, yMax, height);
-    av.g.line(p1).addClass("dashLine");
-    av.label("$10n$",  {left: p1[2] - 30, top: p1[3] - 35});
-
-    // draw dashline and label for 10n
-    var p1 = drawDash(_20n, xStart, yStart, xEnd, xMax, yMax, height);
-    av.g.line(p1).addClass("dashLine");
-    av.label("$20n$",  {left: p1[2] - 30, top: p1[3] - 35});
-
+  // draw dashline and label for 10n
+  var p1 = Plot.drawDash(_20n, xStart, yStart, xEnd, xMax, yMax, height);
+  av.g.line(p1).addClass("dashLine");
+  av.label("$20n$", {left: p1[2] - 30, top: p1[3] - 35});
 
   function _10n(n){
     return 10 * n;
@@ -89,45 +74,20 @@ $(document).ready(function() {
     return 20 * n;
   }
 
-  //--------------------------------------------------------------------
-  //   /**
-  //     Drawing Curve:
-  //     drawingCurve(func(), xFrom, xTo, yFrom, xMax, yMax, width, height)
-  //   */
-
-    function drawCurve(func, xStart, yStart, yEnd, xMax, width, label, labelx, labely, increment, isLog){
-    var points = [];
-    var xStep = width / xMax;
-    var start = isLog ? 1 : 0;
-    var x, y;
-    for (var i = start ; i <= xMax; i += increment){
-      x = xStart + (i * xStep);
-      y = yStart - ((func(i)/yMax) * height);
-      if(y < yEnd){
-        y = yEnd;
-        points.push([x, y]);
-        break;
-      }
-      points.push([x, y]);
-    }
-    av.label(label,  {left: x + labelx, top: y + labely});
-    return points;
-  };
-
-  var curve1 = drawCurve(_5nlog2n, xStart, yStart, yEnd, xMax, width,
-    "$5n\\log_2{n}$", -40, 10, 1, true);
+  var curve1 = Plot.drawCurve(_5nlog2n, av, xStart, yStart, yEnd, xMax, yMax, width, height,
+                              "$5n\\log_2{n}$", -40, 10, 1, true);
   av.g.polyline(curve1, {"stroke-width": 3});
 
-  var curve2 = drawCurve(_2npow2, xStart, yStart, yEnd, xMax, width,
-    "$2n^2$", -40, -30, 0.1, false);
+  var curve2 = Plot.drawCurve(_2npow2, av, xStart, yStart, yEnd, xMax, yMax, width, height,
+                              "$2n^2$", -40, -30, 0.1, false);
   av.g.polyline(curve2, {"stroke-width": 3});
 
-  var curve3 = drawCurve(_2pown, xStart, yStart, yEnd, xMax, width,
-    "$2^n$", -30, -20, 0.01, false);
+  var curve3 = Plot.drawCurve(_2pown, av, xStart, yStart, yEnd, xMax, yMax, width, height,
+                              "$2^n$", -30, -20, 0.01, false);
   av.g.polyline(curve3, {"stroke-width": 3});
 
-  var curve4 = drawCurve(_factorial, xStart, yStart, yEnd, xMax, width,
-                         "$n!$", -25, -20, 1, false);
+  var curve4 = Plot.drawCurve(_factorial, av, xStart, yStart, yEnd, xMax, yMax, width, height,
+                              "$n!$", -25, -20, 1, false);
   av.g.polyline(curve4, {"stroke-width": 3});
 
 
@@ -136,11 +96,11 @@ $(document).ready(function() {
   };
 
   function _2npow2(n){
-   return 2 * Math.pow(n, 2);
+    return 2 * Math.pow(n, 2);
   };
 
   function _2pown(n){
-   return Math.pow(2, n);
+    return Math.pow(2, n);
   };
 
   function _factorial(n) {

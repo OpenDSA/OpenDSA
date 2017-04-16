@@ -239,6 +239,8 @@ algorithms are shown.
 .. inlineav:: GrowthRatesCON dgm
     :align: center
 
+|
+
 .. inlineav:: GrowthRatesZoomCON dgm
    :align: center
 
@@ -351,5 +353,6 @@ Growth Rates Ordering Exercise
    faster than the other.
 
 
+.. odsascript:: DataStructures/Plot.js
 .. odsascript:: AV/AlgAnal/GrowthRatesCON.js
 .. odsascript:: AV/AlgAnal/GrowthRatesZoomCON.js
