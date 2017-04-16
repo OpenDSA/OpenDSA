@@ -3,6 +3,10 @@
 .. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
+.. Hopefully this module is now obsolete. Its contents ought to be
+   contained in the NPComplete and provingNPC module in the NP
+   chapter. But this is left here for the moment, just in case.
+
 .. avmetadata::
    :author: Cliff Shaffer
    :topic: NP-completeness

@@ -17,7 +17,7 @@ Consider the following simple summation.
 .. math::
    \sum_{i=1}^n i.
 
-An easy :term:`proof by induction <proof by induction> <Proofs>`
+An easy :term:`proof by induction <proof by induction>`
 shows that this summation has the well-known closed form
 :math:`n(n+1)/2`.
 But while induction is a good technique for proving that a proposed

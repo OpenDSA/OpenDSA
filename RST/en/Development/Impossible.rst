@@ -48,7 +48,7 @@ way, carefully examine the following code fragment before reading on.
 This is a famous piece of code.
 The sequence of values that is assigned to :math:`n` by this code is
 sometimes called the :term:`Collatz sequence` for input value
-:term:`n`.
+:math:`n`.
 Does this code fragment halt for all values of :math:`n`?
 Nobody knows the answer.
 Every input that has been tried halts.

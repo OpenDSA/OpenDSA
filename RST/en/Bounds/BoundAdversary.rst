@@ -51,7 +51,7 @@ to prove a lower bound.
    second largest.
 
 This proof is wrong.
-It exhibits the :term:`necessity fallacy`:
+It exhibits the :term:`necessary fallacy`:
 "Our algorithm does something, therefore all algorithms solving
 the problem must do the same."
 
@@ -202,7 +202,7 @@ That is, :math:`k` direct losers to the winner must be compared.
 There must be at least :math:`n + k - 2` comparisons.
 The question is: How low can we make :math:`k`?
 
-Call the :term:`strength` of element ``A[i]`` the number of
+Call the **strength** of element ``A[i]`` the number of
 elements that ``A[i]`` is (known to be) bigger than.
 If ``A[i]`` has strength :math:`a`, and ``A[j]`` has
 strength :math:`b`, then the winner has strength :math:`a + b + 1`.

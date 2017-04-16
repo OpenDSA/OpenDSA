@@ -92,6 +92,10 @@ Glossary
    ADT
       Abbreviation for :term:`abstract data type`.
 
+   adversary
+      A fictional construct introduced for use in an
+      :term:`adversary argument`.
+
    adversary argument
       A type of :term:`lower bounds proof` for a problem where a
       (fictional) "adversary" is assumed to control access to an
@@ -854,8 +858,9 @@ Glossary
       :math:`\Theta(1)`.
 
    constructive induction
-      A process for finding the closed form for a
-      :term:`recurrence relation` ,
+      A process for finding the
+      :term:`closed form <closed-form solution>` for a
+      :term:`recurrence relation`,
       that involves substituting in a guess for the closed form to
       replace the recursive part(s) of the recurrence.
       Depending on the goal (typically either to show that the
@@ -1214,6 +1219,10 @@ Glossary
       divided into :math:`a` subproblems of size :math:`n/b`,
       while :math:`cn^k` is the amount of work necessary to combine the
       partial solutions.
+
+   divide-and-guess
+      A technique for finding a :term:`closed-form solution` to a
+      :term:`summation` or :term:`recurrence relation`.
 
    domain
       The set of possible inputs to a function.
@@ -2639,6 +2648,13 @@ Glossary
       This term is sometimes used as a synonym to the term
       :term:`bag`.
 
+   necessary fallacy
+      A common mistake in a
+      :term:`lower bounds proof` for a problem, where the proof makes
+      an inappropriate assumption that any algorithm must operate in
+      some manner (typically in the way that some known algorithm
+      behaves).
+
    neighbor
       :to-term: adjacent :label: is
       :to-term: graph :label: context
@@ -3665,6 +3681,10 @@ Glossary
       :term:`insertion sort` to improve over :math:`\Theta(n^2)`
       :term:`worst case` cost.
 
+   shifting method
+      A technique for finding a :term:`closed form solution` to a
+      :term:`summation` or :term:`recurrence relation`.
+
    shortest path
       Given a :term:`graph` with distances or :term:`weights <weight>`
       on the :term:`edges <edge>`, the shortest path between two nodes
@@ -3985,6 +4005,10 @@ Glossary
       :math:`B`, or equivalently :math:`B` is a :term:`superset` of
       :math:`A`, if all elements of :math:`A` are also elements of
       :math:`B`.
+
+   subtract-and-guess
+      A technique for finding a :term:`closed-form solution` to a
+      :term:`summation` or :term:`recurrence relation`.
 
    subtree
       A subtree is a :term:`subset` of the nodes of a binary tree that

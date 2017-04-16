@@ -11,7 +11,7 @@ NP-Completeness
 ===============
 
 Hard Problems
-~~~~~~~~~~~~~
+-------------
 
 There are several ways that a problem could be considered hard.
 For example, we might have trouble understanding the definition of the
@@ -102,7 +102,7 @@ to be one that runs in exponential time, that is, in
 A definition for a hard *problem* will be presented soon.
 
 The Theory of NP-Completeness
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------
 
 Imagine a magical computer that works by guessing the correct
 solution from among all of the possible solutions to a problem.
@@ -141,6 +141,87 @@ print out :math:`O(2^n)` moves for :math:`n` disks.
 A non-deterministic machine cannot "guess" and print the correct
 answer in less time.
 
+On the other hand, consider the TRAVELING SALESMAN problem.
+
+.. topic:: Problem
+
+   TRAVELING SALESMAN (1)
+
+   **Input:** A complete, directed graph :math:`G` with
+   positive distances assigned to each edge in the graph.
+
+   **Output:** The shortest simple cycle that includes every vertex.
+
+Figure :num:`Figure #Sales` illustrates this problem.
+Five vertices are shown, with edges and associated costs between each
+pair of edges.
+(For simplicity Figure :num:`Figure #Sales` shows an undirected graph,
+assuming that the cost is the same in both
+directions, though this need not be the case.)
+If the salesman visits the cities in the order ABCDEA, he will travel
+a total distance of 13.
+A better route would be ABDCEA, with cost 11.
+The best route for this particular graph would be ABEDCA, with cost 9.
+
+.. _Sales:
+
+.. odsafig:: Images/Sales.png
+   :width: 175
+   :alt: Illustration of the TRAVELING SALESMAN problem
+   :capalign: justify
+   :figwidth: 90%
+   :align: center
+
+   An illustration of the TRAVELING SALESMAN problem.
+   Five vertices are shown, with edges between each pair of cities.
+   The problem is to visit all of the cities exactly once,
+   returning to the start city, with the least total cost.
+
+We cannot solve this problem in polynomial time with a guess-and-test
+non-deterministic computer.
+The problem is that, given a candidate cycle, while we can quickly
+check that the answer is indeed a cycle of the appropriate form,
+and while we can quickly calculate the length of the cycle,
+we have no easy way of knowing if it is in fact the <em>shortest</em>
+such cycle.
+However, we can solve a variant of this problem cast in the form
+of a :term:`decision problem`.
+A decision problem is simply one whose answer is either YES or NO.
+The decision problem form of TRAVELING SALESMAN is as follows.
+
+.. topic:: Problem
+
+   TRAVELING SALESMAN (2)
+
+   **Input:** A complete, directed graph :math:`G` with
+   positive distances assigned to each edge in the graph, and an
+   integer :math:`k`.
+
+   **Output:** YES if there is a simple cycle with total
+   distance :math:`\leq k` containing every vertex in :math:`G`,
+   and NO otherwise.
+
+We can solve this version of the problem in polynomial time with a
+non-deterministic computer.
+The non-deterministic algorithm simply checks all of the possible
+subsets of edges in the graph, in parallel.
+If any subset of the edges is an appropriate cycle of total length
+less than or equal to :math:`k`, the answer is YES; otherwise the
+answer is NO.
+Note that it is only necessary that *some* subset meet the
+requirement; it does not matter how many subsets fail.
+Checking a particular subset is done in polynomial time by adding the
+distances of the edges and verifying that the edges form a cycle that
+visits each vertex exactly once.
+Thus, the checking algorithm runs in polynomial time.
+Unfortunately, there are :math:`2^{|{\mathrm E}|}` subsets to check,
+so this algorithm cannot be converted to a polynomial time algorithm
+on a regular computer.
+Nor does anybody in the world know of any other polynomial time
+algorithm to solve TRAVELING SALESMAN on a regular computer, despite
+the fact that the problem has been studied extensively by many
+computer scientists for many years.
+
 It turns out that there is a large collection of
 problems with this property:
 We know efficient non-deterministic algorithms, but we do not know if
@@ -162,6 +243,74 @@ A problem :math:`X` is defined to be NP-complete if
 #. :math:`X` is in NP, and
 #. :math:`X` is NP-hard.
 
+The requirement that a problem be NP-hard might seem to be impossible,
+but in fact there are hundreds of such problems,
+including TRAVELING SALESMAN. 
+Another such problem is called K-CLIQUE.
+
+.. topic:: Problem
+
+   K-CLIQUE
+
+   **Input:** An arbitrary undirected graph :math:`G` and an
+   integer :math:`k`.
+
+   **Output:** YES if there is a complete subgraph of at
+   least :math:`k` vertices, and NO otherwise.
+
+.. avembed:: AV/Development/clique.html ss
+
+Nobody knows whether there is a polynomial time solution for
+K-CLIQUE, but if such an algorithm is found for K-CLIQUE *or*
+for TRAVELING SALESMAN, then that solution can be modified to solve
+the other, or any other problem in NP, in polynomial time.
+
+The primary theoretical advantage of knowing that a problem P1 is
+NP-complete is that it can be used to show that another problem
+P2 is NP-complete.
+This is done by finding a polynomial time reduction of
+P1 to P2.
+Because we already know that all problems in NP can be reduced to P1
+in polynomial time (by the definition of NP-complete), we now know
+that all problems can be reduced to P2 as well by the simple algorithm
+of reducing to P1 and then from there reducing to P2.
+
+There is a practical advantage to knowing that a problem is
+NP-complete.
+It relates to knowing that if a polynomial time solution can be found
+for *any* problem that is NP-complete, then a polynomial
+solution can be found for *all* such problems.
+The implication is that, 
+
+#. Because no one has yet found such a solution,
+   it must be difficult or impossible to do; and
+
+#. Effort to find a polynomial time solution for one
+   NP-complete problem can be considered to have been expended for all
+   NP-complete problems.
+
+How is NP-completeness of practical significance for typical
+programmers?
+Well, if your boss demands that you provide a fast algorithm to solve
+a problem, she will not be happy if you come back saying that the
+best you could do was an exponential time algorithm.
+But, if you can prove that the problem is NP-complete, while she
+still won't be happy, at least she should not be mad at you!
+By showing that her problem is NP-complete, you are in effect saying
+that the most brilliant computer scientists for the last 50 years
+have been trying and failing to find a polynomial time algorithm for
+her problem.
+
+Problems that are solvable in polynomial time on a regular computer
+are said to be in class P.
+Clearly, all problems in P are solvable in polynomial time on a
+non-deterministic computer simply by neglecting to use the
+non-deterministic capability.
+Some problems in NP are NP-complete.
+We can consider all problems solvable in exponential time or better as
+an even bigger class of problems because all problems solvable in
+polynomial time are solvable in exponential time.
+Thus, we can view the world of exponential-time-or-better problems in
 terms of Figure :num:`Figure #Complex`.
 
 .. _Complex:
@@ -182,5 +331,12 @@ terms of Figure :num:`Figure #Complex`.
 
 The most important unanswered question in theoretical computer
 science is whether :math:`P = NP`.
-
-The next few modules show examples of NP Complete Problems.
+If they are equal, then there is a polynomial time
+algorithm for TRAVELING SALESMAN and all related problems.
+Because TRAVELING SALESMAN is known to be NP-complete, if a
+polynomial time algorithm were to be found for this problem, then
+*all* problems in NP would also be solvable in polynomial
+time.
+Conversely, if we were able to prove that TRAVELING SALESMAN has an
+exponential time lower bound, then we would know that
+:math:`P \neq NP`.
