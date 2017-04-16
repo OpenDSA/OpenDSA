@@ -9,6 +9,9 @@
    :satisfies: growth rate
    :topic: Algorithm Analysis
 
+.. odsalink:: AV/AlgAnal/GrowthRatesCON.css
+.. odsalink:: AV/AlgAnal/GrowthRatesZoomCON.css
+
 Comparing Algorithms
 ====================
 
@@ -42,7 +45,7 @@ But, how would you know if any algorithm can meet the resource budget?
 Perhaps the problem is simply too difficult for any implementation to
 be within budget.
 
-These problems can often be avoided by using 
+These problems can often be avoided by using
 asymptotic analysis.
 Asymptotic analysis measures the efficiency of an algorithm, or its
 implementation as a program, as the input size becomes large.
@@ -61,7 +64,7 @@ required to run the program (both main memory and disk space).
 Typically you will analyze the *time* required for an
 *algorithm* (or the instantiation of an algorithm in the form
 of a program), and the *space* required for a
-*data structure*. 
+*data structure*.
 
 Many factors affect the running time of a program.
 Some relate to the environment in which the program
@@ -112,7 +115,7 @@ rather vague and depend on the algorithm being analyzed.
 Size is often the number of inputs processed.
 For example, when comparing sorting algorithms
 the size of the problem is typically measured by the number of
-records to be sorted. 
+records to be sorted.
 A basic operation must have the property that its time to
 complete does not depend on the particular values of its operands.
 Adding or comparing two integer variables are examples of basic
@@ -188,7 +191,7 @@ because the cost depends on the value of :math:`n`
    No matter how large the array on a typical computer
    (given reasonable conditions for memory and array size), the time
    to copy the value from the first position of the array is always
-   :math:`c_1`. 
+   :math:`c_1`.
    Thus, the equation for this algorithm is simply
 
    .. math::
@@ -203,19 +206,19 @@ because the cost depends on the value of :math:`n`
 
    Consider the following code:
 
-   .. codeinclude:: Misc/Anal 
+   .. codeinclude:: Misc/Anal
       :tag: Analp1
 
    What is the running time for this code fragment?
    Clearly it takes longer to run when :math:`n` is larger.
-   The basic operation in this example is the 
+   The basic operation in this example is the
    increment operation for variable ``sum``.
    We can assume that incrementing takes constant time;
    call this time :math:`c_2`.
    (We can ignore the time required to initialize ``sum``,
    and to increment the loop counters ``i`` and ``j``.
    In practice, these costs can safely be bundled into time
-   :math:`c_2`.) 
+   :math:`c_2`.)
    The total number of increment operations is :math:`n^2`.
    Thus, we say that the running time is
    :math:`\mathbf{T}(n) = c_2 n^2`.
@@ -233,12 +236,13 @@ algorithms are shown.
 
 .. _RunTimeGraph:
 
-.. odsafig:: Images/plot.png
-   :width: 500
+.. inlineav:: GrowthRatesCON dgm
+    :align: center
+
+|
+
+.. inlineav:: GrowthRatesZoomCON dgm
    :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: The growth rates for five equations
 
    Two views of a graph illustrating the growth rates for
    six equations.
@@ -251,7 +255,7 @@ algorithms are shown.
 The two equations labeled :math:`10n` and :math:`20n` are graphed by
 straight lines.
 A growth rate of :math:`cn` (for :math:`c` any positive constant) is
-often referred to as a :term:`linear growth rate` or running time. 
+often referred to as a :term:`linear growth rate` or running time.
 This means that as the value of :math:`n` grows, the running time of
 the algorithm grows in the same proportion.
 Doubling the value of :math:`n` roughly doubles the running time.
@@ -282,12 +286,12 @@ This graph also shows that the equation
 :math:`\mathbf{T}(n) = 5 n \log n`
 grows somewhat more quickly than both :math:`\mathbf{T}(n) = 10 n` and
 :math:`\mathbf{T}(n) = 20 n`, but not nearly so quickly as the
-equation :math:`\mathbf{T}(n) = 2n^2`. 
+equation :math:`\mathbf{T}(n) = 2n^2`.
 For constants :math:`a, b > 1, n^a` grows faster than either
 :math:`\log^b n` or :math:`\log n^b`.
 Finally, algorithms with cost :math:`\mathbf{T}(n) = 2^n` or
 :math:`\mathbf{T}(n) = n!` are prohibitively expensive for even modest
-values of :math:`n`. 
+values of :math:`n`.
 Note that for constants :math:`a, b \geq 1, a^n` grows faster than
 :math:`n^b`.
 
@@ -330,12 +334,12 @@ resources consumed by an algorithm.
       \mathsf{2^{60}} & \mathsf{2^{90}} & \mathsf{2^{1 {\rm G}}}\\
       \end{array}
 
-.. avembed:: Exercises/AlgAnal/CompareGrowth.html ka 
+.. avembed:: Exercises/AlgAnal/CompareGrowth.html ka
 
 Growth Rates Ordering Exercise
 ------------------------------
 
-.. avembed:: Exercises/AlgAnal/GrowthRatesPRO.html ka 
+.. avembed:: Exercises/AlgAnal/GrowthRatesPRO.html ka
 
 .. todo::
    :type: AV
@@ -347,3 +351,8 @@ Growth Rates Ordering Exercise
    with the constant values for both functions and see that this only
    changes the crossing point but doesn't change which function grows
    faster than the other.
+
+
+.. odsascript:: DataStructures/Plot.js
+.. odsascript:: AV/AlgAnal/GrowthRatesCON.js
+.. odsascript:: AV/AlgAnal/GrowthRatesZoomCON.js
