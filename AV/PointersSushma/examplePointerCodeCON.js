@@ -16,23 +16,23 @@ $(document).ready(function() {
   var yPositionR3 = yPositionR1 + 140;
   var length1 = 100;
   var width = 30;
-  av.g.rect(xPosition, yPositionR1, length1, width + 20);
-  av.g.rect(xPosition, yPositionR2, length1, width + 20);
-  av.g.rect(xPosition, yPositionR3, length1, width + 20);
-  av.g.rect(xPosition2, yPositionR1, length1, width);
-  av.label("<tt>empPtr1</tt>", {top: yPositionR1 - (width / 2) + 5, left: xPosition2 + length1 + 15});
-  av.g.rect(xPosition2, yPositionR2, length1, width);
-  av.label("<tt>empPtr2</tt>", {top: yPositionR2 - (width / 2) + 5, left: xPosition2 + length1 + 15});
+  var emp1 = av.g.rect(xPosition, yPositionR1, length1, width + 20);
+  var emp2 = av.g.rect(xPosition, yPositionR2, length1, width + 20);
+  var emp3 = av.g.rect(xPosition, yPositionR3, length1, width + 20);
+  var empptr1 = av.g.rect(xPosition2, yPositionR1, length1, width);
+  var empptr1label = av.label("<tt>empPtr1</tt>", {top: yPositionR1 - (width / 2) + 5, left: xPosition2 + length1 + 15});
+  var empptr2 = av.g.rect(xPosition2, yPositionR2, length1, width);
+  var empptr2label = av.label("<tt>empPtr2</tt>", {top: yPositionR2 - (width / 2) + 5, left: xPosition2 + length1 + 15});
   //av.g.line(xPosition + 135, yPositionR1 + 10, 460, yPositionR1 - 15, {"stroke-width": 3});
   //label for rectangle 1
-  av.label("John", {top: yPositionR1 - (width / 2) + 3, left: xPosition + 28});
-  av.label("1000", {top: yPositionR1 - (width / 2) + 23, left: xPosition + 28});
+  var labelJohn = av.label("John", {top: yPositionR1 - (width / 2) + 3, left: xPosition + 28});
+  var labelJohnSalary = av.label("1000", {top: yPositionR1 - (width / 2) + 23, left: xPosition + 28});
   //label for rectangle 2
-  var label2 = av.label("Alex", {top: yPositionR2 - (width / 2) + 3, left: xPosition + 28});
+  var labelAlex = av.label("Alex", {top: yPositionR2 - (width / 2) + 3, left: xPosition + 28});
   var labelAlexSalary = av.label("1000", {top: yPositionR2 - (width / 2) + 23, left: xPosition + 28});
   //label for rectangle 3
-  av.label("Nick", {top: yPositionR3 - (width / 2) + 3, left: xPosition + 28});
-  av.label("5000", {top: yPositionR3 - (width / 2) + 23, left: xPosition + 28});
+  var labelNick = av.label("Nick", {top: yPositionR3 - (width / 2) + 3, left: xPosition + 28});
+  var labelNickSalary = av.label("5000", {top: yPositionR3 - (width / 2) + 23, left: xPosition + 28});
   //label for rectangle 4 + x's
   var x1 = av.g.line(xPosition2 + 10, yPositionR1 + 25, xPosition2 + 30, yPositionR1 + 3, {"stroke-width": 3});
   var x2 = av.g.line(xPosition2 + 10, yPositionR1 + 3, xPosition2 + 30, yPositionR1 + 25, {"stroke-width": 3});
@@ -72,26 +72,74 @@ $(document).ready(function() {
   x12.hide();
 
   //creating the arrows
-  av.g.line(xPosition2 + 20, yPositionR1 + (width / 2), xPosition + length1 + 20, yPositionR1 + (width / 2), {"stroke-width": 2});
-  av.g.line(xPosition2 + 20, yPositionR2 + (width / 2), xPosition + length1 + 20, yPositionR2 + (width / 2), {"stroke-width": 2});
-  av.g.polyline([[xPosition + length1 + 20, yPositionR1 + (width / 2) + 4], [xPosition + length1 + 10, yPositionR1 + (width / 2)],
+  var arrow1 = av.g.line(xPosition2 + 20, yPositionR1 + (width / 2), xPosition + length1 + 20, yPositionR1 + (width / 2), {"stroke-width": 2});
+  var arrow2 = av.g.line(xPosition2 + 20, yPositionR2 + (width / 2), xPosition + length1 + 20, yPositionR2 + (width / 2), {"stroke-width": 2});
+  var arrow1triangle = av.g.polyline([[xPosition + length1 + 20, yPositionR1 + (width / 2) + 4], [xPosition + length1 + 10, yPositionR1 + (width / 2)],
                  [xPosition + length1 + 20, yPositionR1 + (width / 2) - 4]], {fill: "black"});
-  av.g.polyline([[xPosition + length1 + 20, yPositionR2 + (width / 2) + 4], [xPosition + length1 + 10, yPositionR2 + (width / 2)],
+  var arrow2triangle = av.g.polyline([[xPosition + length1 + 20, yPositionR2 + (width / 2) + 4], [xPosition + length1 + 10, yPositionR2 + (width / 2)],
                  [xPosition + length1 + 20, yPositionR2 + (width / 2) - 4]], {fill: "black"});
   av.step();
 
   // Slide 3
-  av.g.line(xPosition2 + 20, yPositionR1 + (width / 2), xPosition + length1 + 20, yPositionR1 + (width / 2), {"stroke-width": 2, stroke: "gray"});
-  av.g.polyline([[xPosition + length1 + 20, yPositionR1 + (width / 2) + 4], [xPosition + length1 + 10, yPositionR1 + (width / 2)],
+  arrow1.hide();
+  arrow1triangle.hide();
+  arrow1 = av.g.line(xPosition2 + 20, yPositionR1 + (width / 2), xPosition + length1 + 20, yPositionR1 + (width / 2), {"stroke-width": 2, stroke: "gray"});
+  arrow1triangle = av.g.polyline([[xPosition + length1 + 20, yPositionR1 + (width / 2) + 4], [xPosition + length1 + 10, yPositionR1 + (width / 2)],
                  [xPosition + length1 + 20, yPositionR1 + (width / 2) - 4]], {fill: "gray", stroke: "gray"});
-  av.g.line(xPosition2 + 20, yPositionR1 + (width / 2) + 2, xPosition + length1 + 15, yPositionR2 + (width / 2) - 9, {"stroke-width": 2});
-  label2.hide();
+  var arrow3 = av.g.line(xPosition2 + 20, yPositionR1 + (width / 2) + 2, xPosition + length1 + 15, yPositionR2 + (width / 2) - 9, {"stroke-width": 2});
+  labelAlex.hide();
   labelAlexSalary.hide();
-  label2 = av.label("Sam", {top: yPositionR2 - (width / 2) + 3, left: xPosition + 28});
+  labelAlex = av.label("Sam", {top: yPositionR2 - (width / 2) + 3, left: xPosition + 28});
   labelAlexSalary = av.label("3000", {top: yPositionR2 - (width / 2) + 23, left: xPosition + 28});
-  av.g.line(xPosition + length1 + 40, yPositionR1 + width - 3, xPosition + length1 + 53, yPositionR1 + 3, {"stroke-width": 3});
-  av.g.line(xPosition + length1 + 40, yPositionR1 + 3, xPosition + length1 + 53, yPositionR1 + width - 3, {"stroke-width": 3});
-  av.g.polyline([[xPosition + length1 + 20, yPositionR2 + (width / 2) - 6], [xPosition + length1 + 7 + 3, yPositionR2 + (width / 2) - 5],
+  var x = av.g.line(xPosition + length1 + 40, yPositionR1 + width - 3, xPosition + length1 + 53, yPositionR1 + 3, {"stroke-width": 3});
+  var xTwo = av.g.line(xPosition + length1 + 40, yPositionR1 + 3, xPosition + length1 + 53, yPositionR1 + width - 3, {"stroke-width": 3});
+  var arrow3triangle = av.g.polyline([[xPosition + length1 + 20, yPositionR2 + (width / 2) - 6], [xPosition + length1 + 7 + 3, yPositionR2 + (width / 2) - 5],
                  [xPosition + length1 + 20 - 5 + 5 - 5, yPositionR2 + (width / 2) - 4 - 3 - 5 - 3]], {fill: "black"});
+  av.step();
+  //bad PointerSlide
+  emp1.hide();
+  emp2.hide();
+  emp3.hide();
+  empptr1.hide();
+  empptr1label.hide();
+  empptr2.hide();
+  empptr2label.hide();
+  labelJohn.hide();
+  labelJohnSalary.hide();
+  labelAlex.hide();
+  labelAlexSalary.hide();
+  labelNick.hide();
+  labelNickSalary.hide();
+  arrow1.hide();
+  arrow2.hide();
+  arrow1triangle.hide();
+  arrow2triangle.hide();
+  x.hide();
+  xTwo.hide();
+  arrow3.hide();
+  arrow3triangle.hide();
+  //bad pointer visualization
+  var xPositionBAD = 475;
+  var yPositionR1BAD = 10;
+  var length1BAD = 100;
+  var widthBAD = 30;
+
+  av.g.rect(xPositionBAD, yPositionR1BAD, length1BAD, widthBAD);
+
+  av.g.rect(xPositionBAD, yPositionR1BAD, length1BAD, widthBAD);
+  av.label("POW!!!",  {top: yPositionR1BAD + 60, left: xPositionBAD + 170});
+  //creating the x's
+  av.g.line(xPositionBAD + 10, yPositionR1BAD + 25, xPositionBAD + 30, yPositionR1BAD + 3, {"stroke-width": 2});
+  av.g.line(xPositionBAD + 10, yPositionR1BAD + 3, xPositionBAD + 30, yPositionR1BAD + 25, {"stroke-width": 2});
+
+  av.g.line(xPositionBAD + 40, yPositionR1BAD + 25, xPositionBAD + 60, yPositionR1BAD + 3, {"stroke-width": 2});
+  av.g.line(xPositionBAD + 40, yPositionR1BAD + 3, xPositionBAD + 60, yPositionR1BAD + 25, {"stroke-width": 2});
+
+  av.g.line(xPositionBAD + 70, yPositionR1BAD + 25, xPositionBAD + 90, yPositionR1BAD + 3, {"stroke-width": 2});
+  av.g.line(xPositionBAD + 70, yPositionR1BAD + 3, xPositionBAD + 90, yPositionR1BAD + 25, {"stroke-width": 2});
+
+  av.g.line(xPositionBAD + length1BAD - 5, yPositionR1BAD + widthBAD - 3, xPositionBAD + length1BAD + 60, yPositionR1BAD + widthBAD + 40, {"stroke-width": 3});
+  av.g.polyline([[xPositionBAD + length1BAD + 50, yPositionR1BAD + widthBAD + 43], [xPositionBAD + length1BAD + 65, yPositionR1BAD + widthBAD + 45],
+    [xPositionBAD + length1BAD + 69, yPositionR1BAD + widthBAD + 35]], {fill: "black"});
   av.recorded();
 });
