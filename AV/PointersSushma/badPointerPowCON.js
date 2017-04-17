@@ -11,7 +11,6 @@ $(document).ready(function() {
   av.g.rect(xPosition, yPositionR1, length1, width);
 
   av.g.rect(xPosition, yPositionR1, length1, width);
-  av.label("<tt>badPointer</tt>",  {top: yPositionR1 - 10, left: xPosition - 83});
   av.label("POW!!!",  {top: yPositionR1 + 60, left: xPosition + 170});
   //creating the x's
   av.g.line(xPosition + 10, yPositionR1 + 25, xPosition + 30, yPositionR1 + 3, {"stroke-width": 2});

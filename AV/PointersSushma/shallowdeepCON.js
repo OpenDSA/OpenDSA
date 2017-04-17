@@ -62,7 +62,7 @@ $(document).ready(function() {
 
   // smiley face rectangles
   av.g.path(["M", xPositionSmallRectangles2 + lengthSmall - 10, yPositionASmall + (widthSmall / 2),
-             xPositionBigRectangles2 + 150, yPositionASmall + (widthSmall / 2)].join(","),
+             xPositionBigRectangles2 + 170, yPositionASmall + (widthSmall / 2)].join(","),
             {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
   av.g.rect(xPositionBigRectangles2 + 180, yPositionBBig, lengthBig, widthBig);
   av.g.ellipse(xPositionBigRectangles2 + 180 + lengthBig / 2,
@@ -71,7 +71,7 @@ $(document).ready(function() {
   av.g.circle(xPositionBigRectangles2 + 245, yPositionBBig + 30, 4);
 
   av.g.path(["M", xPositionSmallRectangles2 + lengthSmall - 10, yPositionBSmall + (widthSmall / 2),
-             xPositionBigRectangles2 + 150, yPositionBSmall + (widthSmall / 2)].join(","),
+             xPositionBigRectangles2 + 170, yPositionBSmall + (widthSmall / 2)].join(","),
             {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
   av.g.rect(xPositionBigRectangles2 + 180, yPositionABig, lengthBig, widthBig);
   av.g.ellipse(xPositionBigRectangles2 + 180 + lengthBig / 2,

@@ -10,7 +10,6 @@ $(document).ready(function() {
   var width = 30;
 
   av.g.rect(xPosition, yPositionR1, length1, width);
-  av.label("<tt>empPtr</tt>",  {top: yPositionR1 - 10, left: xPosition - 55});
   //creating the x's
   av.g.line(xPosition + 10, yPositionR1 + 25, xPosition + 30, yPositionR1 + 3, {"stroke-width": 2});
   av.g.line(xPosition + 10, yPositionR1 + 3, xPosition + 30, yPositionR1 + 25, {"stroke-width": 2});

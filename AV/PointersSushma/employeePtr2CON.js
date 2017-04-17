@@ -6,16 +6,16 @@ $(document).ready(function() {
   var gv = new JSAV("employeePtr2CON", {animationMode: "none"});
   var xPosition = 400;
   var yPositionR1 = 5;
-  var yPositionR2 = 50;
+  var yPositionR2 = 70;
   var length1 = 100;
-  var width = 30;
+  var width = 35;
 
-  gv.g.rect(xPosition, yPositionR1, length1, width);
+  gv.g.rect(xPosition, yPositionR1, length1, width + 20);
   gv.g.rect(xPosition, yPositionR2, length1, width);
 
   //gv.g.line(230, 150, 100, 400, {"stroke-width": 3});
-  gv.label("<tt>johnRef</tt>",  {top: yPositionR1 - 11, left: xPosition - 70});
-  gv.label("John", {top: yPositionR1 - 11, left: xPosition + 25});
+  gv.label("John", {top: yPositionR1 - 8, left: xPosition + 25});
+  gv.label("1000", {top: yPositionR1 + 12, left: xPosition + 25});
   gv.label("<tt>empPtr</tt>",  {top: yPositionR2 - 11, left: xPosition - 55});
 
   gv.g.path(["M", xPosition + length1 - 10, yPositionR2 + (width / 2),

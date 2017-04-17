@@ -6,12 +6,12 @@ $(document).ready(function() {
   var gv = new JSAV("empRefsecondCON", {animationMode: "none"});
   var xPosition = 275;
   var yPositionR1 = 5;
-  var yPositionR2 = 55;
-  var yPositionR3 = 105;
+  var yPositionR2 = 75;
+  var yPositionR3 = 125;
   var length1 = 100;
-  var width = 30;
+  var width = 35;
 
-  gv.g.rect(xPosition, yPositionR1, length1, width);
+  gv.g.rect(xPosition, yPositionR1, length1, width + 20);
   gv.g.rect(xPosition, yPositionR2, length1, width);
   gv.g.rect(xPosition, yPositionR3, length1, width);
 
@@ -22,11 +22,10 @@ $(document).ready(function() {
   //text
   gv.label("A second pointer is initialized with the assignment <tt>second = empRef</tt>. This causes <tt>second</tt> to refer to the same pointee as <tt>empRef</tt>.",
            {top: yPositionR3 - 60, left: xPosition + 195});
-  gv.label("John", {top: yPositionR1 - (width / 2) + 3, left: xPosition + 25});
+  gv.label("John", {top: yPositionR1 - (width / 2) + 8, left: xPosition + 25});
+  gv.label("1000", {top: yPositionR1 - (width / 2) + 25, left: xPosition + 25});
   gv.label("<tt>empRef</tt>",
-           {top: yPositionR2 - (width / 2) + 3, left: xPosition - 55});
-  gv.label("<tt>second</tt>",
-           {top: yPositionR3 - (width / 2) + 3, left: xPosition - 55});
+           {top: yPositionR2 - (width / 2) + 3, left: xPosition - 55
 
   //first arrow
   gv.g.path(["M", xPosition + length1 - 10, yPositionR2 + (width / 2),
