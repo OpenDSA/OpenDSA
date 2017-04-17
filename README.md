@@ -70,9 +70,6 @@ directives that we have created.
 Exercises: Our Khan Academy Infrastructure-based exercises. Subdirectories
 divide the content by topic.
 
-**Frontend: Experimental interface for allowing instructor selection of modules.
-Currently not in use, will be replaced at some point.
-
 JSAV: The JavaScript Algorithm Visualization library (JSAV). This is a submodule
 for the OpenDSA repository, linked to: https://github.com/vkaravir/JSAV. Thus,
 when you check out OpenDSA, you must get the JSAV submodule by either running
