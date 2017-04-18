@@ -1,7 +1,7 @@
 {
   "translations" : {
     "en": {
-      ".avTitle": "Radix Sort: Linked List",
+      ".avTitle": "Radix Sort: Array-Based List",
       "av_Authors": "Brandon Watkins and Cliff Shaffer",
       "#help": "Help",
       "#about": "About",
