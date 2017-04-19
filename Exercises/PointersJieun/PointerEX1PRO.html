@@ -1,0 +1,83 @@
+<!--
+    Linked List Deletion mini-proficiency exercise.
+    Written by Jieun Chon and Cliff Shaffer
+  -->
+
+<!DOCTYPE html>
+<html data-require="jsav math PointerEX1PRO LinkList">
+  <head>
+    <title>Pointer Exercise 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+      #PointerEX1PRO .jsavnode {
+        min-width: 100px !important;
+        min-height: 80px !important;
+      }
+
+      #PointerEX1PRO .nullBox {      /* For the nodes */
+        border: 0;
+      }
+
+      #PointerEX1PRO .jsavpointer {
+        width: 40px;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      #PointerEX1PRO .highlight {      /* For the pointer */
+        background-color: yellow;
+      }
+
+      #PointerEX1PRO .smallLabel {      /* For the pointer */
+        font-size: 16px;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      #PointerEX1PRO .boldLabel {      /* For the pointer */
+
+      }
+
+    </style>
+  </head>
+
+  <body data-height="900" data-width="950">
+
+    <div class="exercise">
+      <div class="vars">
+        <var id="JSAV">pointerEX1PRO.initJSAV()</var>
+      </div>
+
+      <div class="problems">
+        <div id="PointerEX1PROp"> <!-- Supresses answer box -->
+          <p class="problem">
+            Employee johnRef = new Employee("John", 1000);<br>
+            Employee samRef = new Employee("Sam", 2000);<br>
+            Employee empRef;<br><br>
+
+            empRef = johnRef;<br>
+            johnRef = null;<br>
+          </p>
+          <div class="question">
+            <input id="reset" type="button" value="Reset" />
+            <input id="makenull" type="button" value="makenull" />
+            <div id="PointerEX1PRO" class="jsavcanvas"></div>
+          </div>
+          <div class="solution" data-type="custom">
+            <div class="guess"> [pointerEX1PRO.userInput] </div>
+            <div class="validator-function">
+              if (!pointerEX1PRO.checkAnswer() && !guess[0]) {
+                return ""; // User did not click, and correct answer is not
+                           // initial array state
+              } else {return pointerEX1PRO.checkAnswer();}
+            </div>
+          </div>
+          <div class="hints">
+            <p>No hints</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
