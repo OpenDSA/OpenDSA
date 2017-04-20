@@ -127,7 +127,7 @@
     reset: function() {
       // JSAV-List position.
       var leftMargin = 36,
-          topMargin = 50;
+          topMargin = 250;
       // Reset the value of global variables.
       pointerEX1PRO.userInput = false;
       selected_node = null;
@@ -138,6 +138,14 @@
 
       // Set up the display
       av = new JSAV("PointerEX1PRO");
+      var codes = [];
+      codes[0] = "Employee johnRef = new Employee(\"John\", 1000);";
+      codes[1] = "Employee samRef = new Employee(\"Sam\", 2000);";
+      codes[2] = "Employee empRef;";
+      codes[3] = "";
+      codes[4] = "empRef = johnRef;";
+      codes[5] = "johnRef = null;";
+      av.code(codes);
 
       var width = 60;
 
