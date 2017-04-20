@@ -17,16 +17,25 @@
 
     // Helper function for setting pointer
     setPointer: function(pname, newnode, oldpointer) {
+      // Click the node that the pointer is already pointing
       if (oldpointer) {
         if (newnode === oldpointer.target()) { return null; }
       }
+
+      // Two pointers are already pointing the node
       if (newnode.llist_pleft && newnode.llist_pright) { return null; }
+
+      //Create Right Pointer
       var pointerRight = {visible: true, anchor: "right top",
                           myAnchor: "left bottom",
                           left: -5, top: -20};
+
+      //Create Left Pointer
       var pointerLeft = {visible: true, anchor: "left top",
                          myAnchor: "right bottom",
                          left: 15, top: -20};
+
+      //Remove old pointer and copy it to create again
       if (oldpointer) {
         if (oldpointer.target().llist_pleft === oldpointer) {
           oldpointer.target().llist_pleft = null;
@@ -38,6 +47,9 @@
         oldpointer.arrow.element.remove();
       }
 
+      // If nothing is pointhing (left pointer is empty), insert left poitner.
+      // Otherwise, insert right pointer
+      // (when there is already left pointer for the node)
       if (!newnode.llist_pleft) {
         newnode.llist_pleft = newnode.jsav.pointer(pname, newnode, pointerLeft);
         newnode.llist_pleft.click(pointerEX1PRO.pclick);
@@ -78,23 +90,10 @@
           selected_pointer = null;
       }
 
-      // else {
-      //   if(selected_node === null){
-      //     this.addClass(0, "bgColor");
-      //     selected_node = this;
-      //   } else if (this === selected_node){
-      //     this.removeClass(0, "bgColor");
-      //     selected_node = null;
-      //   } else {
-      //     selected_node.removeClass(0, "bgColor");
-      //     this.addClass(0, "bgColor");
-      //     selected_node = this;
-      //   }
-      // }
       pointerEX1PRO.userInput = true;
     },
 
-    nullClickHandler: function(n){
+    nullClickHandler: function(){
       if(selected_pointer !== null){
         if(selected_pointer.target() !== nullNode){
           pointerEX1PRO.setPointer(selected_pointer.element.text(), nullNode, selected_pointer);
@@ -104,6 +103,25 @@
       }
       pointerEX1PRO.userInput = true;
     },
+
+    labelClickHandler: function(){
+      if(selected_pointer !== null){
+        if(this.hasClass("samLabel")){
+          if(selected_pointer.target() !== samNode){
+            pointerEX1PRO.setPointer(selected_pointer.element.text(), samNode, selected_pointer);
+          }
+        } else if(this.hasClass("johnLabel")){
+          if(selected_pointer.target() !== johnNode){
+            pointerEX1PRO.setPointer(selected_pointer.element.text(), johnNode, selected_pointer);
+          }
+        }
+          selected_pointer.removeClass("highlight");
+          selected_pointer = null;
+      }
+      pointerEX1PRO.userInput = true;
+    },
+
+
 
       // Reinitialize the exercise.
     reset: function() {
@@ -130,16 +148,9 @@
 
       // Create nodes
       nullNode = av.ds.array([""], {top: topP, left: nullP});
-      johnNode = av.ds.array([""], {top: topP, left: johnP});
-      samNode = av.ds.array([""], {top: topP, left: samP});
+      johnNode = av.ds.array(["John, 1000"], {top: topP, left: johnP});
+      samNode = av.ds.array(["Sam, 2000"], {top: topP, left: samP});
       nullNode.css(0, {"border-width": 0, "background-color": "transparent"});
-
-      // Create labels
-      av.label("John", {top:topP + 20, left: johnP + 35}).addClass("smallLabel");
-      av.label("1000", {top:topP + 40, left: johnP + 35}).addClass("smallLabel");
-
-      av.label("Sam", {top:topP + 20, left: samP + 35}).addClass("smallLabel");
-      av.label("2000", {top:topP + 40, left: samP + 35}).addClass("smallLabel");
 
       // Create pointers
       empRef = pointerEX1PRO.setPointer("empRef", nullNode);
@@ -170,19 +181,49 @@
 
     // Check user's answer for correctness: User's array must match answer
     checkAnswer: function() {
-      if(johnRef.target() !== nullNode){
-        window.alert("john");
-        return false;
-      } else if (samRef.target() !== samNode){
-        window.alert("sam");
-        return false;
-      } else if (empRef.target() !== johnNode){
-        window.alert("emp");
-        return false;
-      }
-      return true;
-    }
+      if(nullNode.llist_pleft != null ^ nullNode.llist_pright != null){
+        if(nullNode.llist_pleft != null){
+            if(nullNode.llist_pleft.element.text() != "johnRef"){
+              return false;
+            }
+          } else {
+            if(nullNode.llist_pright.element.text() != "johnRef"){
+              return false;
+            }
+          }
+        } else {
+          return false;
+        }
 
+        if(johnNode.llist_pleft != null ^ johnNode.llist_pright != null){
+          if(johnNode.llist_pleft != null){
+              if(johnNode.llist_pleft.element.text() != "empRef"){
+                return false;
+              }
+            } else {
+              if(johnNode.llist_pright.element.text() != "empRef"){
+                return false;
+              }
+            }
+          } else {
+            return false;
+          }
+
+          if(samNode.llist_pleft != null ^ samNode.llist_pright != null){
+            if(samNode.llist_pleft != null){
+                if(samNode.llist_pleft.element.text() != "samRef"){
+                  return false;
+                }
+              } else {
+                if(samNode.llist_pright.element.text() != "samRef"){
+                  return false;
+                }
+              }
+            } else {
+              return false;
+            }
+        return true;
+    },
   };
 
   window.pointerEX1PRO = window.pointerEX1PRO || pointerEX1PRO;
