@@ -126,7 +126,7 @@
       // Reinitialize the exercise.
     reset: function() {
       // JSAV-List position.
-      var leftMargin = 36,
+      var leftMargin = 50,
           topMargin = 250;
       // Reset the value of global variables.
       pointerEX1PRO.userInput = false;
