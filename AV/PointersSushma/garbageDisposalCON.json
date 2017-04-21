@@ -1,0 +1,36 @@
+{
+  "translations": {
+  },
+  "code": {
+    "java": [{
+      "url": "../PointersSushma/Employee.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: test *** */",
+      "endBefore": "/* *** ODSAendTag: test *** */",
+      "tags": {
+        "sig": 1,
+        "checknull": 2,
+        "checkgreater": 3,
+        "visitleft": 4,
+        "checkequal": 5,
+        "found": 6,
+        "visitright": 7,
+        "end": 8
+      }
+    }],
+    "java_generic": [{
+      "url": "../PointersSushma/Employee.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: AListVars *** */",
+      "endBefore": "/* *** ODSAendTag: AListVars *** */",
+      "tags": {
+        "sig": 1,
+        "listArray": 2,
+        "default": 3,
+        "maxSize": 4,
+        "listSize": 5,
+        "curr": 6
+      }
+    }]
+  }
+}
