@@ -20,8 +20,7 @@ Solve following exercise.
 .. TODO::
    :type: Exercise
 
-.. avembed:: Exercises/Pointers/GrowthRatesPRO.html ka
-
+.. avembed:: Exercises/PointersJieun/PointerEX1PRO.html ka
 
    Was Exercises/Pointers/FindNodePROG.html. Now is a code workout
    exercise that needs to be included.

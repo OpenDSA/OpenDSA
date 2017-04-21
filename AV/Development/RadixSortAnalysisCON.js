@@ -20,8 +20,14 @@ $(document).ready(function() {
   for (i = 0; i < 12; i++) {
     arr_values[i] = parseInt(Math.random() * 100 + 1, 10);
   }
-  arr = av.ds.array(arr_values, {left: 10, top: 0, indexed: true});
-  av.label("|------------------------------ $n$ -------------------------------|", {top: "-20px", left: "22px"}).addClass("mediumLabel");
+  arr = av.ds.array(arr_values, {left: 10, top: 10, indexed: true});
+  av.g.line(20, 10, 175, 10,
+            {"stroke-width": 2, "arrow-start":"classic-wide-long"});
+  av.g.line(20, -20, 20, 20);
+  av.label("$n$", {top: "-20px", left: "183px"}).addClass("mediumLabel");
+  av.g.line(200, 10, 355, 10,
+            {"stroke-width": 2,"arrow-end":"classic-wide-long"});
+  av.g.line(355, -20, 355, 20);
   av.displayInit();
 
   // Slide 2
@@ -39,7 +45,13 @@ $(document).ready(function() {
     arr_values[i] = 0;
   }
   count = av.ds.array(arr_values, {left: 10, top: 120, indexed: true});
-  av.label("|------------------------- $r$ --------------------------|", {top: "100px", left: "20px"}).addClass("mediumLabel");
+  av.g.line(20, 120, 145, 120,
+            {"stroke-width": 2, "arrow-start":"classic-wide-long"});
+  av.g.line(20, 110, 20, 130);
+  av.label("$r$", {top: "90px", left: "155px"}).addClass("mediumLabel");
+  av.g.line(170, 120, 300, 120,
+            {"stroke-width": 2,"arrow-end":"classic-wide-long"});
+  av.g.line(300, 110, 300, 130);
   av.step();
 
   // Slide 4
@@ -75,7 +87,13 @@ $(document).ready(function() {
     count.value(arr.value(i) % 10, count.value(arr.value(i) % 10) - 1);
   }
   out = av.ds.array(arr_values, {left: 10, top: 240, indexed: true});
-  av.label("|------------------------------- $n$ --------------------------------|", {top: "220px", left: "20px"}).addClass("mediumLabel");
+  av.g.line(20, 240, 175, 240,
+            {"stroke-width": 2, "arrow-start":"classic-wide-long"});
+  av.g.line(20, 230, 20, 250);
+  av.label("$n$", {top: "210px", left: "183px"}).addClass("mediumLabel");
+  av.g.line(200, 240, 355, 240,
+            {"stroke-width": 2,"arrow-end":"classic-wide-long"});
+  av.g.line(355, 230, 355, 250);
   av.step();
 
   // Slide 7

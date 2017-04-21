@@ -68,6 +68,22 @@
       }
     },
 
+    "04 Pointer exercises": {
+      "PointersSushma/BasicPointers": {
+        "long_name": "pointer",
+        "sections": {
+        }
+      }
+    },
+
+    "05 Pointers": {
+      "Pointers/Exercises_J": {
+        "long_name": "pointer",
+        "sections": {
+        }
+      }
+    },
+
 
     "Appendix": {
       "Glossary": {
