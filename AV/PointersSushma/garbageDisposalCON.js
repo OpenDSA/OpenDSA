@@ -11,9 +11,9 @@ $(document).ready(function() {
   var xPosition = 50;
   var yPosition = 0;
   var widthBig = 300;
-  var lengthBig = 520;
-  var widthSmall = 150;
-  var lengthSmall = 90;
+  var lengthBig = 470;
+  var widthSmall = 120;
+  var lengthSmall = 65;
   // Load the config object with interpreter and code created by odsaUtils.js
   // Slide 1
   av.umsg("This slide show will explain Java Garbage Collection");
@@ -21,14 +21,14 @@ $(document).ready(function() {
   var e1Arrow = av.g.line(xPosition + 490,  yPosition + (lengthSmall / 2) + 70, xPosition + 540,
             yPosition + (lengthSmall / 2) + 70,
             {"arrow-end": "classic-wide-long", "stroke-width": 2});
-  var firstArrow = av.g.line(xPosition + 490,  yPosition + (lengthSmall / 2) + 200, xPosition + 540,
-            yPosition + (lengthSmall / 2) + 200,
+  var firstArrow = av.g.line(xPosition + 490,  yPosition + (lengthSmall / 2) + 175, xPosition + 540,
+            yPosition + (lengthSmall / 2) + 175,
             {"arrow-end": "classic-wide-long", "stroke-width": 2});
-  var secondArrow = av.g.line(xPosition + 490,  yPosition + (lengthSmall / 2) + 330, xPosition + 540,
-            yPosition + (lengthSmall / 2) + 330,
+  var secondArrow = av.g.line(xPosition + 490,  yPosition + (lengthSmall / 2) + 280, xPosition + 540,
+            yPosition + (lengthSmall / 2) + 280,
             {"arrow-end": "classic-wide-long", "stroke-width": 2});
-  var thirdArrow = av.g.line(xPosition + 490,  yPosition + (lengthSmall / 2) + 460, xPosition + 540,
-            yPosition + (lengthSmall / 2) + 460,
+  var thirdArrow = av.g.line(xPosition + 490,  yPosition + (lengthSmall / 2) + 390, xPosition + 540,
+            yPosition + (lengthSmall / 2) + 390,
             {"arrow-end": "classic-wide-long", "stroke-width": 2});
   e1Arrow.hide();
   firstArrow.hide();
@@ -83,64 +83,53 @@ $(document).ready(function() {
   av.label("heap", {top: yPosition + 10, left: xPosition + 570});
   av.g.rect(xPosition + 430, yPosition + 50, widthBig, lengthBig);
   av.g.rect(xPosition + 550, yPosition + 70, widthSmall, lengthSmall);
-  av.g.line(xPosition + 550, yPosition + 70 + (lengthSmall / 2), xPosition + 550 + widthSmall, yPosition + 70 + (lengthSmall / 2));
   av.label("Ali", {top: yPosition + 70, left: xPosition + 550 + (widthSmall / 2) - 10});
-  av.label("5000", {top: yPosition + 110, left: xPosition + 540 + (widthSmall / 2) - 10});
+  av.label("5000", {top: yPosition + 90, left: xPosition + 540 + (widthSmall / 2) - 10});
   av.step();
   //Slide 9
   av.umsg("Object first will dynamically allocated memory from heap memory");
-  var rect1 = av.g.rect(xPosition + 550, yPosition + 200, widthSmall, lengthSmall);
-  var line1 = av.g.line(xPosition + 550, yPosition + 200 + (lengthSmall / 2), xPosition + 550 + widthSmall, yPosition + 200 + (lengthSmall / 2));
-  var labelAlex = av.label("Alex", {top: yPosition + 200, left: xPosition + 550 + (widthSmall / 2) - 10});
-  var labelAlexPay = av.label("1500", {top: yPosition + 240, left: xPosition + 540 + (widthSmall / 2) - 10});
+  var rect1 = av.g.rect(xPosition + 550, yPosition + 175, widthSmall, lengthSmall);
+  var labelAlex = av.label("Alex", {top: yPosition + 175, left: xPosition + 550 + (widthSmall / 2) - 10});
+  var labelAlexPay = av.label("1500", {top: yPosition + 190, left: xPosition + 540 + (widthSmall / 2) - 10});
   firstArrow.show();
   var labelFirst = av.label("<tt>first</tt>", {top: yPosition + 200 + (lengthSmall / 2) - 30, left: xPosition + 435});
   av.step();
   //Slide 10
   av.umsg("The same will happen for second");
-  var rect2 = av.g.rect(xPosition + 550, yPosition + 330, widthSmall, lengthSmall);
-  var line2 = av.g.line(xPosition + 550, yPosition + 330 + (lengthSmall / 2), xPosition + 550 + widthSmall, yPosition + 330 + (lengthSmall / 2));
-  var labelJohn = av.label("John", {top: yPosition + 330, left: xPosition + 550 + (widthSmall / 2) - 10});
-  var labelJohnPay = av.label("2000", {top: yPosition + 370, left: xPosition + 540 + (widthSmall / 2) - 10});
+  var rect2 = av.g.rect(xPosition + 550, yPosition + 280, widthSmall, lengthSmall);
+  var labelJohn = av.label("John", {top: yPosition + 280, left: xPosition + 550 + (widthSmall / 2) - 10});
+  var labelJohnPay = av.label("2000", {top: yPosition + 300, left: xPosition + 540 + (widthSmall / 2) - 10});
   secondArrow.show();
-  var labelSecond = av.label("<tt>second</tt>", {top: yPosition + 330 + (lengthSmall / 2) - 30, left: xPosition + 435});
+  var labelSecond = av.label("<tt>second</tt>", {top: yPosition + 280 + (lengthSmall / 2) - 30, left: xPosition + 435});
   av.step();
   //Slide 11
   av.umsg("Now first reference becomes null. This leaves the object (Alex, 1500) unreferenced and garbage collector may remove it anytime it feels that it has to empty space in heap memory");
   rect1.hide();
-  line1.hide();
   firstArrow.hide();
   labelFirst.hide();
   rect1 = av.g.rect(xPosition + 550, yPosition + 200, widthSmall, lengthSmall, {stroke: "gray"});
-  line1 = av.g.line(xPosition + 550, yPosition + 200 + (lengthSmall / 2), xPosition + 550 + widthSmall, yPosition + 200 + (lengthSmall / 2),  {stroke: "gray"});
   av.step();
   //Slide 12
   av.umsg("Now new objects will be added to heap memory");
   rect1.hide();
-  line1.hide();
   labelAlex.hide();
   labelAlexPay.hide();
   rect2.hide();
-  line2.hide();
   labelJohn.hide();
   labelJohnPay.hide();
   firstArrow.show();
   labelFirst.show();
   rect1 = av.g.rect(xPosition + 550, yPosition + 200, widthSmall, lengthSmall);
-  line1 = av.g.line(xPosition + 550, yPosition + 200 + (lengthSmall / 2), xPosition + 550 + widthSmall, yPosition + 200 + (lengthSmall / 2));
   labelAlex = av.label("John", {top: yPosition + 200, left: xPosition + 545 + (widthSmall / 2) - 10});
   labelAlexPay = av.label("2000", {top: yPosition + 240, left: xPosition + 540 + (widthSmall / 2) - 10});
-  rect2 = av.g.rect(xPosition + 550, yPosition + 330, widthSmall, lengthSmall);
-  line2 = av.g.line(xPosition + 550, yPosition + 330 + (lengthSmall / 2), xPosition + 550 + widthSmall, yPosition + 330 + (lengthSmall / 2));
-  labelJohn = av.label("Sam", {top: yPosition + 330, left: xPosition + 545 + (widthSmall / 2) - 10});
-  labelJohnPay = av.label("3000", {top: yPosition + 370, left: xPosition + 540 + (widthSmall / 2) - 10});
+  rect2 = av.g.rect(xPosition + 550, yPosition + 280, widthSmall, lengthSmall);
+  labelJohn = av.label("Sam", {top: yPosition + 280, left: xPosition + 545 + (widthSmall / 2) - 10});
+  labelJohnPay = av.label("3000", {top: yPosition + 300, left: xPosition + 540 + (widthSmall / 2) - 10});
   av.step();
   //Slide 13
   av.umsg("Now reference second points to third object. Thus the object (John, 2000) is unreferenced. Now we have 2 objects that are subject to Garbage Collection removal");
   rect1.hide();
-  line1.hide();
   rect2.hide();
-  line2.hide();
   labelJohn.hide();
   labelJohnPay.hide();
   firstArrow.hide();
@@ -153,14 +142,11 @@ $(document).ready(function() {
   thirdArrow.show();
   labelAlex = av.label("Alex", {top: yPosition + 200, left: xPosition + 550 + (widthSmall / 2) - 10});
   labelAlexPay = av.label("1500", {top: yPosition + 240, left: xPosition + 540 + (widthSmall / 2) - 10});
-  labelJohn = av.label("John", {top: yPosition + 330, left: xPosition + 550 + (widthSmall / 2) - 10});
-  labelJohnPay = av.label("2000", {top: yPosition + 370, left: xPosition + 540 + (widthSmall / 2) - 10});
+  labelJohn = av.label("John", {top: yPosition + 280, left: xPosition + 550 + (widthSmall / 2) - 10});
+  labelJohnPay = av.label("2000", {top: yPosition + 300, left: xPosition + 540 + (widthSmall / 2) - 10});
   rect1 = av.g.rect(xPosition + 550, yPosition + 200, widthSmall, lengthSmall, {stroke: "gray"});
-  line1 = av.g.line(xPosition + 550, yPosition + 200 + (lengthSmall / 2), xPosition + 550 + widthSmall, yPosition + 200 + (lengthSmall / 2), {stroke: "gray"});
-  rect2 = av.g.rect(xPosition + 550, yPosition + 330, widthSmall, lengthSmall, {stroke: "gray"});
-  line2 = av.g.line(xPosition + 550, yPosition + 330 + (lengthSmall / 2), xPosition + 550 + widthSmall, yPosition + 330 + (lengthSmall / 2), {stroke: "gray"});
+  rect2 = av.g.rect(xPosition + 550, yPosition + 280, widthSmall, lengthSmall, {stroke: "gray"});
   var rect4 = av.g.rect(xPosition + 550, yPosition + 460, widthSmall, lengthSmall);
-  var line4 = av.g.line(xPosition + 550, yPosition + 460 + (lengthSmall / 2), xPosition + 550 + widthSmall, yPosition + 460 + (lengthSmall / 2));
   var labelSam4 = av.label("Sam", {top: yPosition + 460, left: xPosition + 545 + (widthSmall / 2) - 10});
   var labelSamPay4 = av.label("3000", {top: yPosition + 500, left: xPosition + 540 + (widthSmall / 2) - 10});
   av.step();
@@ -169,40 +155,32 @@ $(document).ready(function() {
   labelThird.hide();
   av.umsg("After the end of this block, the scope of the third and second will end. The object (Sam, 3000) will be unreferenced");
   rect4.hide();
-  line4.hide();
   rect4 = av.g.rect(xPosition + 550, yPosition + 460, widthSmall, lengthSmall, {stroke: "gray"});
-  line4 = av.g.line(xPosition + 550, yPosition + 460 + (lengthSmall / 2), xPosition + 550 + widthSmall, yPosition + 460 + (lengthSmall / 2), {stroke: "gray"});
   av.step();
   //Slide 15
   av.umsg("Now we need to define a new object but there is not enough space for it. This will trigger Garbage Collector to start looking for objects that are unreferenced. This will lead to removing 3 objects from heap memory. After that the last object will be created in the available space in heap memory");
   rect1.hide();
-  line1.hide();
   labelAlex.hide();
   labelAlexPay.hide();
   rect2.hide();
-  line2.hide();
   labelJohn.hide();
   labelJohnPay.hide();
   rect4.hide();
-  line4.hide();
   labelSam4.hide();
   labelSamPay4.hide();
   firstArrow.show();
   labelFirst.hide();
   labelFirst = av.label("<tt>last</tt>", {top: yPosition + 200 + (lengthSmall / 2) - 30, left: xPosition + 435});
   rect1 = av.g.rect(xPosition + 550, yPosition + 200, widthSmall, lengthSmall);
-  line1 = av.g.line(xPosition + 550, yPosition + 200 + (lengthSmall / 2), xPosition + 550 + widthSmall, yPosition + 200 + (lengthSmall / 2));
   labelAlex = av.label("Fox", {top: yPosition + 200, left: xPosition + 550 + (widthSmall / 2) - 10});
   labelAlexPay = av.label("1000", {top: yPosition + 240, left: xPosition + 540 + (widthSmall / 2) - 10});
   av.step();
   //Slide 16
   av.umsg("At the end of this method, there is only one object remaining, which is el. This object will not be selected by Garbage Collector because it is passed to the method and has another reference in another place. The last object will be unreferenced and will be removed by Garbage Collector at any time");
   rect1.hide();
-  line1.hide();
   labelFirst.hide();
   secondArrow.hide();
   firstArrow.hide();
   rect1 = av.g.rect(xPosition + 550, yPosition + 200, widthSmall, lengthSmall, {stroke: "gray"});
-  line1 = av.g.line(xPosition + 550, yPosition + 200 + (lengthSmall / 2), xPosition + 550 + widthSmall, yPosition + 200 + (lengthSmall / 2), {stroke: "gray"});
   av.recorded();
 });
