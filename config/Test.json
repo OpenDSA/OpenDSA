@@ -83,8 +83,13 @@
         }
       }
     },
-
-
+    "Turing Machines": {
+      "SeniorAlgAnal/Turing": {
+        "long_name": "Turing Machines",
+        "sections": {
+        }
+      }
+    },
     "Appendix": {
       "Glossary": {
         "long_name": "Glossary",
