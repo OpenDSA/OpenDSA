@@ -381,13 +381,18 @@ Here are some basic machines and notation
 
    (For :math:`\Sigma = \{a, b,c\}`) Move head to the right until a
    blank is found.
+   We will use the notation :math:`R_{\#}` for this process.
 
 |
 
 .. inlineav:: Turing3CON dgm
    :align: center
 
-   Find first blank square to left: :math:`L_{\#}`
+   Find first blank square to left, then transition to machine :math:`M`.
+   The version on the left shows this in greater detail.
+   In our more abstract notation, on the right, we use the notation
+   :math:`L_{\#}`, and the transition to :math:`M` on the horizontal
+   line is assumed to occur on seeing the first :math:`\#` symbol.
 
 |
 
@@ -396,6 +401,10 @@ Here are some basic machines and notation
 
    Copy Machine: Transform :math:`\#w\underline{\#}` into
    :math:`\#w\#w\underline{\#}`.
+   Note the difference between :math:`L_{\#}` in the start state
+   (which means move left until seeing the first blank), and
+   :math:`L\#` at the bottom (which means move left and then write a
+   space).
 
 |
 
