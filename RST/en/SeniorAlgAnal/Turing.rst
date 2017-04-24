@@ -388,9 +388,10 @@ Here are some basic machines and notation
 .. inlineav:: Turing3CON dgm
    :align: center
 
-   Find first blank square to left, then transition to machine :math:`M`.
+   Two views of a simple machine to find the first blank square to the
+   left, and then transition to machine :math:`M`.
    The version on the left shows this in greater detail.
-   In our more abstract notation, on the right, we use the notation
+   In the more abstract notation on the right, we use the notation
    :math:`L_{\#}`, and the transition to :math:`M` on the horizontal
    line is assumed to occur on seeing the first :math:`\#` symbol.
 
